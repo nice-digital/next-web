@@ -8,8 +8,8 @@
         <owners>nice-digital</owners>
         <projectUrl>https://github.com/nice-digital/next-web</projectUrl>
         <requireLicenseAcceptance>false</requireLicenseAcceptance>
-        <description>CDN Package for niceorg's client side assets, using the NICE Design System. Includes minified and development versions of the build plus the sourcemap</description>
-        <tags>cdn nice design system niceorg-client javascript css</tags>
+        <description>NICE website (www.nice.org.uk) front-end, built in NextJS </description>
+        <tags>nice nextjs</tags>
     </metadata>
     <files>
 		<file src=".next\**" target=".next" />
