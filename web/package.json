@@ -6,10 +6,16 @@
     "dev": "next dev",
     "build": "next build",
     "start": "next start",
-    "lint": "next lint"
+    "lint": "next lint",
+    "pm2": "pm2",
+    "pm2:start": "pm2 start pm2.config.json --env production",
+    "pm2:stop": "pm2 start \"Next Web\"",
+    "pm2:reload": "pm2 reload \"Next Web\"",
+    "pm2:delete": "pm2 delete \"Next Web\""
   },
   "dependencies": {
     "next": "11.0.0",
+    "pm2": "^5.1.0",
     "react": "17.0.2",
     "react-dom": "17.0.2"
   },
