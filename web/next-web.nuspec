@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8"?>
+<package xmlns="http://schemas.microsoft.com/packaging/2011/08/nuspec.xsd">
+    <metadata>
+        <id>NICE.NextWeb</id>
+        <version>1.0.0</version>
+        <title>Next Web</title>
+        <authors>NICE Digital Services,Ian Routledge</authors>
+        <owners>nice-digital</owners>
+        <projectUrl>https://github.com/nice-digital/next-web</projectUrl>
+        <requireLicenseAcceptance>false</requireLicenseAcceptance>
+        <description>CDN Package for niceorg's client side assets, using the NICE Design System. Includes minified and development versions of the build plus the sourcemap</description>
+        <tags>cdn nice design system niceorg-client javascript css</tags>
+    </metadata>
+    <files>
+		<file src=".next/" />
+		<file src="public/" />
+		<file src="node_modules/" />
+		<file src="package.json" />
+	</files>
+</package>
