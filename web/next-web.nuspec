@@ -12,9 +12,9 @@
         <tags>cdn nice design system niceorg-client javascript css</tags>
     </metadata>
     <files>
-		<file src=".next/" />
-		<file src="public/" />
-		<file src="node_modules/" />
+		<file src=".next\**" target=".next" />
+		<file src="public\**" target="public" />
+		<file src="node_modules\**" target="node_modules" />
 		<file src="package.json" />
 	</files>
 </package>
