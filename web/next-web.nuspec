@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8"?>
+<package xmlns="http://schemas.microsoft.com/packaging/2011/08/nuspec.xsd">
+    <metadata>
+        <id>NICE.NextWeb</id>
+        <version>1.0.0</version>
+        <title>Next Web</title>
+        <authors>NICE Digital Services,Ian Routledge</authors>
+        <owners>nice-digital</owners>
+        <projectUrl>https://github.com/nice-digital/next-web</projectUrl>
+        <requireLicenseAcceptance>false</requireLicenseAcceptance>
+        <description>NICE website (www.nice.org.uk) front-end, built in NextJS </description>
+        <tags>nice nextjs</tags>
+    </metadata>
+    <files>
+		<file src=".next\**" target=".next" />
+		<file src="public\**" target="public" />
+		<file src="node_modules\**" target="node_modules" />
+		<file src="package.json" />
+	</files>
+</package>
