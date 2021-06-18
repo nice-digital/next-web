@@ -7,9 +7,10 @@
     "build": "next build",
     "start": "next start",
     "lint": "next lint",
+    "// PM2 HOSTING": "",
     "pm2": "pm2",
-    "pm2:start": "pm2 start pm2.config.json --env production",
-    "pm2:stop": "pm2 start \"Next Web\"",
+    "pm2:start": "pm2 startOrReload pm2.config.json --env production",
+    "pm2:stop": "pm2 stop \"Next Web\"",
     "pm2:reload": "pm2 reload \"Next Web\"",
     "pm2:delete": "pm2 delete \"Next Web\""
   },
