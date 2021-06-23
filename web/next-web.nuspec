@@ -16,5 +16,7 @@
 		<file src="public\**" target="public" />
 		<file src="node_modules\**" target="node_modules" />
 		<file src="package.json" />
+		<file src="package-lock.json" />
+		<file src="pm2.config.json" />
 	</files>
 </package>

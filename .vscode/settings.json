@@ -3,5 +3,6 @@
   "editor.defaultFormatter": "esbenp.prettier-vscode",
   "editor.rulers": [80, 120],
   "files.eol": "\n",
-  "typescript.tsdk": "web\\node_modules\\typescript\\lib"
+  "typescript.tsdk": "node_modules\\typescript\\lib",
+  "npm.includeDirectories": ["web"]
 }
