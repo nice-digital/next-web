@@ -1,17 +1,10 @@
 {
-  "name": "@nice-digital/next-web",
-  "version": "0.1.0",
+  "name": "@nice-digital/next-web-monorepo",
   "private": true,
+  "version": "1.0.0",
+  "description": "Monorepo for Next Web",
   "scripts": {
-    "dev": "next dev",
-    "build": "next build",
-    "start": "next start",
-    "// PM2 HOSTING": "",
-    "pm2": "pm2",
-    "pm2:start": "pm2 startOrReload pm2.config.json --env production",
-    "pm2:stop": "pm2 stop \"Next Web\"",
-    "pm2:reload": "pm2 reload \"Next Web\"",
-    "pm2:delete": "pm2 delete \"Next Web\""
+    "test": "echo \"Error: no test specified\" && exit 1"
   },
   "repository": {
     "type": "git",
@@ -28,13 +21,12 @@
     "Ian Routledge (https://ediblecode.com)"
   ],
   "homepage": "https://github.com/nice-digital/next-web#readme",
-  "dependencies": {
-    "next": "^11.0.1",
-    "pm2": "^5.1.0",
-    "react": "^17.0.2",
-    "react-dom": "^17.0.2"
+  "devDependencies": {
+    "@types/node": "^14.17.4",
+    "@types/react": "^17.0.11",
+    "eslint": "^7.29.0",
+    "typescript": "^4.3.4"
   },
-  "devDependencies": {},
   "volta": {
     "node": "14.17.1"
   }
