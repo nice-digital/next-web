@@ -27,7 +27,7 @@ We use [Prettier](https://prettier.io/) for code formatting, [ESLint](https://es
 
 VSCode is also configured with the necessary extensions (via [extensions.json](.vscode/extensions.json)) and settings (via [settings.json](.vscode/settings.json)) to do in-IDE linting and formatting. There's no further setup needed beyond installing the recommended extensions when you open the project. Just save source files and they'll be reformatted automatically.
 
-Using VSCode should work all the time but if it doesn't you can run the lint commands manually. Run `npm run lint` in the root to run Prettier, ESLint, stylelint and TS type checking against all source files. This includes source files for the NextJS web app, Jest tests and WDIO functional tests.
+Using VSCode should work for in-IDE linting but if it doesn't you can run the lint commands manually. Run `npm run lint` in the root to run Prettier, ESLint, stylelint and TS type checking against all source files. This includes source files for the NextJS web app, Jest tests and WDIO functional tests.
 
 If you prefer using an IDE to command line, open the VSCode command palette (`Ctrl` + `Shift` + `P`) and choose _Tasks: Run Task_ then _Lint all the things_.
 
