@@ -1,8 +1,29 @@
 {
   "editor.formatOnSave": true,
+  "editor.codeActionsOnSave": {
+    "source.fixAll": true
+  },
   "editor.defaultFormatter": "esbenp.prettier-vscode",
   "editor.rulers": [80, 120],
+  "markdown.extension.toc.levels": "2..6",
   "files.eol": "\n",
   "typescript.tsdk": "node_modules\\typescript\\lib",
-  "npm.includeDirectories": ["web"]
+  "npm.includeDirectories": ["web"],
+  "files.exclude": {
+    "**/.git": true,
+    "**/.svn": true,
+    "**/.hg": true,
+    "**/CVS": true,
+    "**/.DS_Store": true,
+    "**/.next": true
+  },
+  "css.validate": false,
+  "less.validate": false,
+  "scss.validate": false,
+  "sasslint.enable": false,
+  "debug.javascript.terminalOptions": {
+    "skipFiles": ["<node_internals>/**"]
+  },
+  "jestrunner.disableCodeLens": true,
+  "jest.autoRun": { "watch": true }
 }

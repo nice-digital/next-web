@@ -5,6 +5,8 @@
     "christian-kohler.npm-intellisense",
     "eg2.vscode-npm-script",
     "editorconfig.editorconfig",
-    "dbaeumer.vscode-eslint"
+    "dbaeumer.vscode-eslint",
+    "stylelint.vscode-stylelint",
+    "orta.vscode-jest"
   ]
 }

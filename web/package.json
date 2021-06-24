@@ -6,6 +6,7 @@
     "dev": "next dev",
     "build": "next build",
     "start": "next start",
+    "test": "echo \"Error: run tests from the root\" && exit 1",
     "// PM2 HOSTING": "",
     "pm2": "pm2",
     "pm2:start": "pm2 startOrReload pm2.config.json --env production",
@@ -34,7 +35,9 @@
     "react": "^17.0.2",
     "react-dom": "^17.0.2"
   },
-  "devDependencies": {},
+  "devDependencies": {
+    "sass": "^1.35.1"
+  },
   "volta": {
     "node": "14.17.1"
   }

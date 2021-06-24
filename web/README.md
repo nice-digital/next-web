@@ -28,10 +28,8 @@
   - With recommended extensions (VS Code will prompt you to install these automatically)
 - [NextJS](https://nextjs.org/) for a React full stack framework
 - [TypeScript](https://www.typescriptlang.org/) for static type checking
-- [Prettier](https://prettier.io/) for code formatting
-- [ESLint](https://eslint.org/) for JavaScript/TypeScripting linting
-- [Jest](https://jestjs.io/) for JS unit testing
-  - With [React Testing Library](https://testing-library.com/docs/react-testing-library/intro)
+
+Linting, code style and unit testing are all handled at the root of this repository.
 
 > If you're new to NextJS, don't worry: it's a well used React framework and its [documentation](https://nextjs.org/) and community is superb.
 

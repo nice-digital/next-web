@@ -1,0 +1,13 @@
+{
+  "version": "2.0.0",
+  "tasks": [
+    {
+      "type": "npm",
+      "script": "lint",
+      "problemMatcher": ["$tsc"],
+      "label": "Lint all the things",
+      "detail": "Runs prettier, eslint, stylelint and TS typechecking against all source files",
+      "runOptions": { "instanceLimit": 1 }
+    }
+  ]
+}
