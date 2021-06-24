@@ -7,9 +7,10 @@ module.exports = {
 	preset: "ts-jest",
 	collectCoverage: process.env.TEAMCITY_VERSION ? true : false,
 	collectCoverageFrom: [
-		"**/*.{js,jsx,ts,tsx}",
+		"web/**/*.{js,jsx,ts,tsx}",
 		"!**/node_modules/**",
 		"!**/.next/**",
+		"!**/*.d.ts",
 	],
 	testResultsProcessor: "jest-teamcity-reporter",
 	moduleFileExtensions: ["js", "jsx", "ts", "tsx"],
