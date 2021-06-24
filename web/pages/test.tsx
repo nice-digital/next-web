@@ -1,8 +1,15 @@
-import { InferGetServerSidePropsType, GetServerSidePropsContext } from "next";
+import {
+	InferGetServerSidePropsType,
+	GetServerSidePropsContext,
+	GetServerSideProps,
+} from "next";
 import Head from "next/head";
 
-// A test SSR page
-export const getServerSideProps = async (
+export interface TestProps {
+	test: true;
+}
+
+export const getServerSideProps: GetServerSideProps<TestProps> = async (
 	_context: GetServerSidePropsContext
 ) => {
 	return {
@@ -14,7 +21,7 @@ export const getServerSideProps = async (
 
 export default function Test({
 	test,
-}: InferGetServerSidePropsType<typeof getServerSideProps>) {
+}: InferGetServerSidePropsType<typeof getServerSideProps>): JSX.Element {
 	return (
 		<>
 			<Head>
