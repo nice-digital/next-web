@@ -4,7 +4,7 @@
 
 ## Project structure
 
-The repository is set up as a monorepo. That is, there are various sub folders providing different
+The repository is set up as a monorepo. That is, there are various sub folders providing different parts of the project e.g. the web app and functional tests:
 
 | Folder            | Purpose        |
 | ----------------- | -------------- |
