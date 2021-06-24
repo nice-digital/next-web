@@ -17,9 +17,13 @@
     "**/.DS_Store": true,
     "**/.next": true
   },
-  "jest.autoRun": "off",
   "css.validate": false,
   "less.validate": false,
   "scss.validate": false,
-  "sasslint.enable": false
+  "sasslint.enable": false,
+  "debug.javascript.terminalOptions": {
+    "skipFiles": ["<node_internals>/**"]
+  },
+  "jestrunner.disableCodeLens": true,
+  "jest.autoRun": { "watch": true }
 }

@@ -7,7 +7,7 @@
 	"endOfLine": "lf",
 	"overrides": [
 		{
-			"files": ["**/*.{scss,md,yml,sh}"],
+			"files": ["**/*.{scss,css,md,yml,sh}"],
 			"options": {
 				"useTabs": false,
 				"tabWidth": 2,

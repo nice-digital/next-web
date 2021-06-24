@@ -4,7 +4,10 @@
   "version": "1.0.0",
   "description": "Monorepo for Next Web",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1",
+    "// TESTS": "",
+    "test": "jest --notify --detectOpenHandles",
+    "test:watch": "jest --watch",
+    "test:coverage": "jest --coverage",
     "// LINTING/CODE STYLE": "",
     "lint": "npm run prettier && npm run lint:ts && npm run lint:scss && npm run typecheck",
     "prettier": "prettier --check \"./**/*.{ts,tsx,js}\"",
@@ -48,12 +51,14 @@
     "eslint-plugin-react": "^7.24.0",
     "eslint-plugin-react-hooks": "^4.2.0",
     "eslint-plugin-testing-library": "^4.6.0",
+    "identity-obj-proxy": "^3.0.0",
     "jest": "^26.6.3",
     "jest-teamcity-reporter": "^0.9.0",
     "prettier": "^2.3.1",
     "stylelint": "^13.13.1",
     "stylelint-config-sass-guidelines": "^8.0.0",
     "stylelint-config-standard": "^22.0.0",
+    "ts-jest": "^26.5.6",
     "typescript": "^4.3.4"
   },
   "volta": {

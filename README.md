@@ -37,27 +37,12 @@ Alternatively, run individual commands like `npm run prettier`, `npm run lint:ts
 
 We use [Jest](https://jestjs.io/) for JS unit testing with [React Testing Library](https://testing-library.com/docs/react-testing-library/intro) for testing React components.
 
-To run the tests:
+[vscode-jest](https://marketplace.visualstudio.com/items?itemName=Orta.vscode-jest) is added as recommended extension (via [extensions.json](.vscode/extensions.json)). This gives you the ability in-IDE to run and debug tests.
+
+Use the command line instead if you neeed more granular control:
 
 1. Run `npm test` to run the Jest tests (note: this doesn't run the WDIO functional tests)
    1. Or, run `npm run test:watch` to run the tests and watch for changes to files, to re-run the tests
    2. Or, run `npm run test:coverage` to run the tests and output a _coverage_ folder with an lcov report.
 
 > Running tests in watch mode via `npm run test:watch` is most useful when developing locally.
-
-If you prefer to run (and debug) the tests via an IDE (VS Code), then read on:
-
-#### Debugging tests
-
-We've configured 3 launch configurations (see [.vscode/launch.json](.vscode/launch.json)) for running and debugging Jest test:
-
-1. **Jest tests (all)** - runs all test, with a debugger attached
-2. **Jest tests (current file)** - runs the Jest against the file currently opened file.
-3. **Jest tests (watch current file)** - runs the Jest against the file currently opened file and watches for changes.
-
-Run these from the 'Run and Debug' panel (_Ctrl+Shift+D_) in VS Code:
-
-1. Choose the relevent launch configuration from the menu
-2. Press the green play button (or press _F5_).
-
-> Note: these launch configurations are based on [Microsoft's "Debugging tests in VS Code" recipe](https://github.com/microsoft/vscode-recipes/tree/master/debugging-jest-tests).
