@@ -1,0 +1,14 @@
+{"level":30,"wasRaw":true,"time":1624630604786,"tags":["info"],"data":"ready - started server on 0.0.0.0:3000, url: http://localhost:3000"}
+{"level":30,"wasRaw":true,"time":1624630799071,"tags":["info"],"data":"ready - started server on 0.0.0.0:3000, url: http://localhost:3000"}
+{"level":40,"time":1624630806066,"pid":9864,"hostname":"DESKTOP-6D8Q0LE","msg":"A warning in getServerSideProps"}
+{"level":30,"wasRaw":true,"time":1624632681097,"tags":["info"],"data":"ready - started server on 0.0.0.0:3000, url: http://localhost:3000"}
+{"level":40,"time":1624632715518,"pid":13832,"hostname":"DESKTOP-6D8Q0LE","msg":"A warning in getServerSideProps"}
+{"level":30,"wasRaw":true,"time":1624632794048,"tags":["info"],"data":"ready - started server on 0.0.0.0:8092, url: http://localhost:8092"}
+{"level":40,"time":1624632817324,"pid":18700,"hostname":"DESKTOP-6D8Q0LE","msg":"A warning in getServerSideProps"}
+{"level":40,"time":1624632822296,"pid":18700,"hostname":"DESKTOP-6D8Q0LE","msg":"A warning in getServerSideProps"}
+{"level":40,"time":1624632825544,"pid":18700,"hostname":"DESKTOP-6D8Q0LE","msg":"A warning in getServerSideProps"}
+{"level":40,"time":1624632828066,"pid":18700,"hostname":"DESKTOP-6D8Q0LE","msg":"A warning in getServerSideProps"}
+{"level":30,"wasRaw":true,"time":1624632916338,"tags":["info"],"data":"ready - started server on 0.0.0.0:8092, url: http://localhost:8092"}
+{"level":40,"time":1624632918714,"pid":15632,"hostname":"DESKTOP-6D8Q0LE","msg":"A warning in getServerSideProps"}
+{"level":40,"time":1624632919761,"pid":15632,"hostname":"DESKTOP-6D8Q0LE","msg":"A warning in getServerSideProps"}
+{"level":40,"time":1624632923590,"pid":15632,"hostname":"DESKTOP-6D8Q0LE","msg":"A warning in getServerSideProps"}

@@ -8,14 +8,15 @@
 <summary><strong>Table of contents</strong></summary>
 <!-- START doctoc -->
 
-- [Next Web](#next-web)
-	- [Stack](#stack)
-		- [Software](#software)
-		- [React and NextJS learning resources](#react-and-nextjs-learning-resources)
-	- [:rocket: Set up](#rocket-set-up)
-	- [Production hosting](#production-hosting)
-		- [NextJS server](#nextjs-server)
-		- [PM2](#pm2)
+- [Stack](#stack)
+	- [Software](#software)
+	- [React and NextJS learning resources](#react-and-nextjs-learning-resources)
+	- [Logging](#logging)
+		- [Logging performance](#logging-performance)
+- [:rocket: Set up](#rocket-set-up)
+- [Production hosting](#production-hosting)
+	- [NextJS server](#nextjs-server)
+	- [PM2](#pm2)
 
 <!-- END doctoc -->
 </details>
@@ -28,6 +29,7 @@
   - With recommended extensions (VS Code will prompt you to install these automatically)
 - [NextJS](https://nextjs.org/) for a React full stack framework
 - [TypeScript](https://www.typescriptlang.org/) for static type checking
+- [Pino](https://getpino.io/) for logging
 
 Linting, code style and unit testing are all handled at the root of this repository.
 
@@ -47,11 +49,34 @@ These resources area a great place to start learning NextJS:
   - [Next.js Crash Course for Beginners 2021](https://www.youtube.com/watch?v=MFuwkrseXVE)
   - [Next.js Crash Course 2021](https://www.youtube.com/watch?v=mTz0GXj8NN0)
 
+### Logging
+
+We use [Pino](https://getpino.io/) for logging. Pino is a 'very low overhead Node.js logger' - it's super fast and performant (see [benchmarks](https://getpino.io/#/docs/benchmarks)). It also feature-rich (e.g. redaction), well-used and the default logger in frameworks like [Fastify](https://www.fastify.io/).
+
+Logging is all set up and configured both for development and production so you can just use it. Locally (for development) logs will go to the console (formatted using [pino-pretty](https://github.com/pinojs/pino-pretty)). In production, logs will go to our [ELK stack](https://www.elastic.co/what-is/elk-stack) via RabbitMQ, exactly like [NICELogging](https://github.com/nice-digital/NICELogging).
+
+To use logging, import the `logger` and call log methods like `logger.info` or `warn` etc:
+
+```js
+import { logger } from "../logger/logger";
+logger.warn("A warning");
+```
+
+See the pino docs for the [`logger` instance](https://getpino.io/#/docs/api?id=logger) for a full list of log methods.
+
+#### Logging performance
+
+Pino is focussed on performance. As a result it doesn't natively support [in-process transports](https://getpino.io/#/docs/transports?id=in-process-transports).  That means the core pino `logger` handles writing logs to `stdout` but doesn't (and shouldn't) handle sending to RabbitMQ or writing to files. To quote the docs:
+
+> Ideally, a transport should consume logs in a separate process to the application, Using transports in the same process causes unnecessary load and slows down Node's single threaded event loop.
+
+This means our npm scripts are _slightly_ more complicated: they contain both the script _and_ a pino transport that receives a piped `stdout`. Generally this Just Works™ and you don't need to worry about it. However it's worth knowing in case you need to debug the npm scripts.
+
 ## :rocket: Set up
 
 We will set up VS Code debug integration, but in the mean time use the command line:
 
-1. Install [Node 12+](https://nodejs.org/en/download/) (latest LTS version)
+1. Install [Node LTS](https://nodejs.org/en/download/) or even better, use [Volta](https://volta.sh/) to automatically use the correct, pinned version of Node.
 2. Clone this repository
 3. Open the root of the repository in VS Code
 4. Install dependencies from npm:

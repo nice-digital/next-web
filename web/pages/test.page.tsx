@@ -5,6 +5,8 @@ import {
 } from "next";
 import Head from "next/head";
 
+import { logger } from "../logger/logger";
+
 export interface TestProps {
 	test: true;
 }
@@ -12,6 +14,8 @@ export interface TestProps {
 export const getServerSideProps: GetServerSideProps<TestProps> = async (
 	_context: GetServerSidePropsContext
 ) => {
+	logger.warn("A warning in getServerSideProps");
+
 	return {
 		props: {
 			test: true,
