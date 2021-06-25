@@ -5,18 +5,3 @@ declare module "*.scss" {
 	const content: { [className: string]: string };
 	export default content;
 }
-
-declare module "pino-mq" {
-	import { DestinationStream } from "pino";
-
-	export type TransportOptions = {
-		type: "RABBITMQ";
-		exchange?: string;
-		queue?: string;
-		queuePattern?: string;
-		queueMap?: string;
-		fields?: string[];
-	};
-
-	export const getTransport: (options?: TransportOptions) => DestinationStream;
-}
