@@ -30,7 +30,9 @@
   ],
   "homepage": "https://github.com/nice-digital/next-web#readme",
   "dependencies": {
+    "config": "^3.3.6",
     "cross-env": "^7.0.3",
+    "js-yaml": "^4.1.0",
     "next": "^11.0.1",
     "next-logger": "^2.0.0",
     "pino": "^6.11.3",

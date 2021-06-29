@@ -1,6 +1,18 @@
 import { LoggerOptions } from "pino";
 import { serializeError } from "serialize-error";
 
+import { SettingsConfig } from "../config/config";
+
+// NextJS (and the Pino logger) compile for both server and client sides.
+// Client can't access fs (and therefore config) on the client
+// so we need to load config server-side only, hence the dynamic require
+let environmentName = "browser";
+if (typeof window === "undefined") {
+	// eslint-disable-next-line @typescript-eslint/no-var-requires
+	const { settings }: { settings: SettingsConfig } = require("../config");
+	environmentName = settings.environment;
+}
+
 const errorSerializer = (error: Error): unknown =>
 	process.env.NODE_ENV === "production"
 		? // Nice logging requires exception to be a string
@@ -24,7 +36,7 @@ export const niceLoggingPinoOptions: LoggerOptions = {
 	mixin: () => ({
 		NodeEnv: process.env.NODE_ENV,
 		Application: "Next Web",
-		Environment: "To do", // TODO: Get the environment name from config so we can inject it via Octo
+		Environment: environmentName,
 	}),
 	formatters: {
 		level(label, _number) {

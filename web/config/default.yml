@@ -1,0 +1,4 @@
+# ! This is a PUBLIC repo so please don't put any sensitive info or secrets in here: use local.yml or local.json etc instead
+settings:
+  # Name of the environment e.g. dev,test etc, used for logging to ELK
+  environment: 'local'

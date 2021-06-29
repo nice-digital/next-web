@@ -14,6 +14,8 @@
 	- [Logging](#logging)
 		- [RabbitMQ locally](#rabbitmq-locally)
 		- [Logging performance](#logging-performance)
+- [Config](#config)
+	- [Secrets](#secrets)
 - [:rocket: Set up](#rocket-set-up)
 - [Production hosting](#production-hosting)
 	- [NextJS server](#nextjs-server)
@@ -96,6 +98,16 @@ Pino is focussed on performance. As a result it doesn't natively support [in-pro
 > Ideally, a transport should consume logs in a separate process to the application, Using transports in the same process causes unnecessary load and slows down Node's single threaded event loop.
 
 This means our npm scripts are _slightly_ more complicated: they contain the command to run NextJS (e.g. `next dev`) which pipes the `stdout` output to a pino transport (pino-pretty locally or pino-mq once deployed). Generally this Just Works™ and you don't need to worry about it. However it's worth knowing in case you need to debug the npm scripts.
+
+## Config
+
+The application is configured using [node-config](https://www.npmjs.com/package/config). The file _default.yml_ in the config folder contains _all_ the necessary config options.
+
+This _default.yml_ file will be transformed with real values on deployment via Octopus, using [Structured Configuration Variables](https://octopus.com/docs/projects/steps/configuration-features/structured-configuration-variables-feature).
+
+### Secrets
+
+Sensitive values like secrets are deliberately empty - this is a *public* repo. Create a local file (e.g. _local.json_ or _local.yml_) in the _config_ directory with any secrets and these will be automatically merged with the config from _default.yml_.
 
 ## :rocket: Set up
 
