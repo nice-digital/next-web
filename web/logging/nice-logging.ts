@@ -8,8 +8,10 @@ import { SettingsConfig } from "../config/config";
 // so we need to load config server-side only, hence the dynamic require
 let environmentName = "browser";
 if (typeof window === "undefined") {
-	// eslint-disable-next-line @typescript-eslint/no-var-requires
-	const { settings }: { settings: SettingsConfig } = require("../config");
+	const {
+		settings,
+	}: // eslint-disable-next-line @typescript-eslint/no-var-requires
+	{ settings: SettingsConfig } = require("../config/config");
 	environmentName = settings.environment;
 }
 
