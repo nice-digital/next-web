@@ -17,7 +17,8 @@
 		<file src="node_modules\**" target="node_modules" />
 		<file src="package.json" />
 		<file src="package-lock.json" />
-		<file src="pm2.config.json" />
+		<file src="pm2.ecosystem.json" />
 		<file src="pm2.start.js" />
+		<file src=".pino-mqrc.json" />
 	</files>
 </package>

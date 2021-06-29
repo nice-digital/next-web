@@ -1,0 +1,10 @@
+{
+  "//": "Config for local development logging with pino-prettier. See https://github.com/pinojs/pino-pretty#options.",
+  "singleLine": true,
+  "ignore": "Application,Environment,Hostname,MachineName,Message,NodeEnv,ProcessId,Properties,hostname,pid,name,prefix",
+  "levelFirst": true,
+  "timestampKey": "Timestamp",
+  "levelKey": "Level",
+  "messageFormat": "{Message}{msg} {Properties.RequestPath}",
+  "errorLikeObjectKeys": "err,error,Exception"
+}

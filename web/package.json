@@ -3,13 +3,13 @@
   "version": "0.1.0",
   "private": true,
   "scripts": {
-    "dev": "cross-env NODE_OPTIONS=\"-r next-logger\" next dev | pino-pretty -c -l -t HH:MM:ss.l -S -i hostname",
+    "dev": "cross-env NODE_OPTIONS=\"-r next-logger/presets/next-only\" next dev | pino-pretty",
     "build": "next build",
-    "start": "next start | rotate-logs --config=.request-log.js",
+    "start": "cross-env NODE_OPTIONS=\"-r next-logger/presets/next-only\" next start | pino-mq -c .pino-mqrc.json",
     "test": "echo \"Error: run tests from the root\" && exit 1",
     "// PM2 HOSTING": "",
     "pm2": "pm2",
-    "pm2:start": "pm2 startOrReload pm2.config.json --env production",
+    "pm2:start": "pm2 startOrReload pm2.ecosystem.json --env production",
     "pm2:stop": "pm2 stop \"Next Web\"",
     "pm2:reload": "pm2 reload \"Next Web\"",
     "pm2:delete": "pm2 delete \"Next Web\""
@@ -30,7 +30,6 @@
   ],
   "homepage": "https://github.com/nice-digital/next-web#readme",
   "dependencies": {
-    "@vrbo/pino-rotating-file": "^3.0.0",
     "cross-env": "^7.0.3",
     "next": "^11.0.1",
     "next-logger": "^2.0.0",
@@ -38,7 +37,8 @@
     "pino-mq": "^1.0.1",
     "pm2": "^5.1.0",
     "react": "^17.0.2",
-    "react-dom": "^17.0.2"
+    "react-dom": "^17.0.2",
+    "serialize-error": "^8.1.0"
   },
   "devDependencies": {
     "pino-pretty": "^5.1.0",

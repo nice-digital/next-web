@@ -12,6 +12,7 @@
 	- [Software](#software)
 	- [React and NextJS learning resources](#react-and-nextjs-learning-resources)
 	- [Logging](#logging)
+		- [RabbitMQ locally](#rabbitmq-locally)
 		- [Logging performance](#logging-performance)
 - [:rocket: Set up](#rocket-set-up)
 - [Production hosting](#production-hosting)
@@ -53,24 +54,48 @@ These resources area a great place to start learning NextJS:
 
 We use [Pino](https://getpino.io/) for logging. Pino is a 'very low overhead Node.js logger' - it's super fast and performant (see [benchmarks](https://getpino.io/#/docs/benchmarks)). It also feature-rich (e.g. redaction), well-used and the default logger in frameworks like [Fastify](https://www.fastify.io/).
 
-Logging is all set up and configured both for development and production so you can just use it. Locally (for development) logs will go to the console (formatted using [pino-pretty](https://github.com/pinojs/pino-pretty)). In production, logs will go to our [ELK stack](https://www.elastic.co/what-is/elk-stack) via RabbitMQ, exactly like [NICELogging](https://github.com/nice-digital/NICELogging).
+Locally (for development using `npm run dev`) logs will go to the console (formatted using [pino-pretty](https://github.com/pinojs/pino-pretty)). In production (via `npm run build && npm start`), logs will go to our [ELK stack](https://www.elastic.co/what-is/elk-stack) via RabbitMQ, exactly like [NICELogging](https://github.com/nice-digital/NICELogging).
 
-To use logging, import the `logger` and call log methods like `logger.info` or `warn` etc:
+To use logging, import the `logger` and call log methods like `logger.info` or `logger.warn` etc:
 
 ```js
 import { logger } from "../logger/logger";
 logger.warn("A warning");
 ```
 
+If you're in a React component then use the `useLogger` hook - this logs extra details about the current URL:
+
+```js
+import { useLogger } from "../logger/logger";
+
+export const SomeReactComponent = () => {
+	const logger = useLogger();
+
+	logger.info("Some log message");
+}
+```
+
 See the pino docs for the [`logger` instance](https://getpino.io/#/docs/api?id=logger) for a full list of log methods.
+
+The above development/production logging is configured so you can just use `logger.warn` etc and not worry about config. However, debugging production logging via RabbitMQ can be tricky:
+
+#### RabbitMQ locally
+
+Sometimes it's useful to use RabbitMQ locally for debugging production logging locally, for example to check JSON message formats. The easiest way to do this is to RabbitMQ locally using Docker. Run the following in a terminal to run RabbitMQ on 5672 and the Rabbit management UI on 8080:
+
+```
+docker run --rm -d --hostname my-rabbit --name some-rabbit -p 5672:5672 -p 8080:15672 rabbitmq:3-management
+```
+
+Then use `amqp://guest:guest@localhost:5672/` as the URL for the `uri` property in _.pino-mqrc.json_. Open http://localhost:8080/ in a browser to access the local RabbitMQ management UI and login with guest/guest. Run `npm run build` then `npm start` and you should be able to see log messages come through into RabbitMQ.
 
 #### Logging performance
 
-Pino is focussed on performance. As a result it doesn't natively support [in-process transports](https://getpino.io/#/docs/transports?id=in-process-transports).  That means the core pino `logger` handles writing logs to `stdout` but doesn't (and shouldn't) handle sending to RabbitMQ or writing to files. To quote the docs:
+Pino is focussed on performance. As a result it doesn't natively support [in-process transports](https://getpino.io/#/docs/transports?id=in-process-transports).  That means the core pino `logger` handles writing logs to `stdout` in single line JSON format but doesn't (and shouldn't) handle sending to RabbitMQ or writing to files. To quote the Pino docs:
 
 > Ideally, a transport should consume logs in a separate process to the application, Using transports in the same process causes unnecessary load and slows down Node's single threaded event loop.
 
-This means our npm scripts are _slightly_ more complicated: they contain both the script _and_ a pino transport that receives a piped `stdout`. Generally this Just Works™ and you don't need to worry about it. However it's worth knowing in case you need to debug the npm scripts.
+This means our npm scripts are _slightly_ more complicated: they contain the command to run NextJS (e.g. `next dev`) which pipes the `stdout` output to a pino transport (pino-pretty locally or pino-mq once deployed). Generally this Just Works™ and you don't need to worry about it. However it's worth knowing in case you need to debug the npm scripts.
 
 ## :rocket: Set up
 
