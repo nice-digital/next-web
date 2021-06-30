@@ -1,0 +1,10 @@
+{
+  "//": "Config for production logging with pino-mq. See https://github.com/itavy/pino-mq#configuration-json-file.",
+  "type": "RABBITMQ",
+  "uri": "amqp://guest:guest@localhost:5672/",
+  "exchange": "",
+  "queue": "test",
+  "queuePattern": null,
+  "queueMap": null,
+  "fields": []
+}

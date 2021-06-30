@@ -15,8 +15,12 @@
 		<file src=".next\**" target=".next" />
 		<file src="public\**" target="public" />
 		<file src="node_modules\**" target="node_modules" />
+		<!-- Config TypeScript source gets compiled to .next so we only need yml/json etc -->
+		<file src="config\**" target="config" exclude="**\*.ts" />
+		<file src=".pino-mqrc.json" />
 		<file src="package.json" />
 		<file src="package-lock.json" />
-		<file src="pm2.config.json" />
+		<file src="pm2.ecosystem.json" />
+		<file src="pm2.start.js" />
 	</files>
 </package>

@@ -2,8 +2,8 @@
   "apps": [
     {
       "name": "Next Web",
-      "script": "node_modules/next/dist/bin/next",
-      "args": "start",
+      "script": "pm2.start.js",
+      "args": "",
       "instances": -1,
       "exec_mode": "cluster",
       "env": {

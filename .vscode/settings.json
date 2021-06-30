@@ -25,5 +25,6 @@
     "skipFiles": ["<node_internals>/**"]
   },
   "jestrunner.disableCodeLens": true,
-  "jest.autoRun": { "watch": true }
+  "jest.autoRun": { "watch": true },
+  "editor.wordWrap": "on"
 }
