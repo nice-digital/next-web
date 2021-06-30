@@ -3,7 +3,7 @@
   "version": "0.1.0",
   "private": true,
   "scripts": {
-    "dev": "cross-env NODE_OPTIONS=\"-r next-logger/presets/next-only\" next dev",
+    "dev": "cross-env NODE_OPTIONS=\"-r next-logger/presets/next-only\" next dev | pino-pretty",
     "build": "next build",
     "start": "cross-env NODE_OPTIONS=\"-r next-logger/presets/next-only\" next start | pino-mq -c .pino-mqrc.json",
     "test": "echo \"Error: run tests from the root\" && exit 1",
