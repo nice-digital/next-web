@@ -24,10 +24,6 @@
     "url": "git+https://github.com/nice-digital/next-web.git"
   },
   "license": "MIT",
-  "engines": {
-    "node": ">=12",
-    "npm": ">=6"
-  },
   "author": "NICE Digital (https://www.nice.org.uk/digital)",
   "contributors": [
     "NICE Digital Services (https://www.nice.org.uk/digital)",
