@@ -1,4 +1,3 @@
-// eslint-disable-next-line @typescript-eslint/no-var-requires,@typescript-eslint/no-unused-vars
 const baseConfig = require("./../jest.config"),
 	tsconfig = require("./tsconfig.json");
 

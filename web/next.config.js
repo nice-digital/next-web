@@ -1,5 +1,4 @@
 // @ts-check
-/* eslint-disable @typescript-eslint/no-var-requires */
 const { readdirSync } = require("fs"),
 	path = require("path"),
 	withTranspiledModules = require("next-transpile-modules");
