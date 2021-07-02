@@ -4,7 +4,8 @@ module.exports = {
 	preset: "ts-jest",
 	collectCoverage: process.env.TEAMCITY_VERSION ? true : false,
 	rootDir: "./",
-	// collectCoverageFrom is global, until https://github.com/facebook/jest/pull/9633 is merged
+	// collectCoverageFrom is global, until https://github.com/facebook/jest/pull/9633 is merged.
+	// So it has to here in the root config rather than sub projects
 	collectCoverageFrom: [
 		"**/*.{js,ts,tsx}",
 		"!**/dist/**",
