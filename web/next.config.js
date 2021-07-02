@@ -83,7 +83,7 @@ const nextConfig = {
 
 // The NextConfig type def requires future/experimental so we remove them here as a bit of a hack.
 // Avoids scary warnings like 'You have enabled experimental feature(s)...Use them at your own risk. '
-// delete nextConfig).future;
+// delete nextConfig.future;
 // delete nextConfig.experimental;
 
 // The weird comment syntax below is a JSDoc TypeScript cast: https://edibleco.de/2UMm8nx
