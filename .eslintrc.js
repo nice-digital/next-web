@@ -23,9 +23,12 @@ module.exports = {
 		react: {
 			version: "17",
 		},
+		"import/parsers": {
+			"@typescript-eslint/parser": [".ts", ".tsx"],
+		},
 		"import/resolver": {
-			node: {
-				extensions: [".js", ".jsx", ".ts", ".tsx"],
+			typescript: {
+				project: ["./tsconfig.json", "./web/tsconfig.json"],
 			},
 		},
 	},
@@ -38,9 +41,18 @@ module.exports = {
 		"react/react-in-jsx-scope": "off",
 		"react/display-name": "off",
 		"react/prop-types": "off",
-		"@next/next/no-html-link-for-pages": ["warn", "./web/pages"],
+		"@next/next/no-html-link-for-pages": ["warn", "./web/src/pages"],
 		"import/first": 2,
 		"import/order": 2,
 		"import/newline-after-import": 2,
+		"import/no-unresolved": "error",
 	},
+	overrides: [
+		{
+			files: ["*.js"],
+			rules: {
+				"@typescript-eslint/no-var-requires": "off",
+			},
+		},
+	],
 };

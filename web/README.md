@@ -11,6 +11,7 @@
 - [Stack](#stack)
 	- [Software](#software)
 	- [React and NextJS learning resources](#react-and-nextjs-learning-resources)
+	- [TypeScript path mapping](#typescript-path-mapping)
 	- [Logging](#logging)
 		- [RabbitMQ locally](#rabbitmq-locally)
 		- [Logging performance](#logging-performance)
@@ -49,8 +50,20 @@ These resources area a great place to start learning NextJS:
   - [Next.js for Beginners - Full Course](https://www.youtube.com/watch?v=1WmNXEVia8I)
   - [Learn Next.js in One Video - Fundamentals of Next.js](https://www.youtube.com/watch?v=tt3PUvhOVzo)
   - [Next.js Crash Course for Beginners 2021](https://www.youtube.com/watch?v=MFuwkrseXVE)
-  - [Next.js Crash Course for Beginners 2021](https://www.youtube.com/watch?v=MFuwkrseXVE)
   - [Next.js Crash Course 2021](https://www.youtube.com/watch?v=mTz0GXj8NN0)
+
+### TypeScript path mapping
+
+We use [TypeScript path mapping](https://www.typescriptlang.org/docs/handbook/module-resolution.html#path-mapping) in various places. This allows us to avoid references like _../../../../logging/logger_ in nested files. So for example, use:
+
+- `import { render, getMockRouter } from "@/test-utils";` to get utils/helpers for unit testing with Jest
+- `import { logger, useLogger } from "@/logger";` for quick access to logging functions
+- `import { settings, SettingsConfig } from "@/config";` for quick access to configuration values.
+- `import { Test } from "@/components/Test/Test";` for quick access to components.
+
+This isn't necessarily a complete list of aliases though: look at `compilerOptions.paths` in [tsconfig.json](tsconfig.json) for the complete list.
+
+> Note: we deliberately use _@/_ to avoid confusion with paths to npm packages in node_modules.
 
 ### Logging
 
@@ -61,14 +74,16 @@ Locally (for development using `npm run dev`) logs will go to the console (forma
 To use logging, import the `logger` and call log methods like `logger.info` or `logger.warn` etc:
 
 ```js
-import { logger } from "../logger/logger";
+import { logger } from "@/logger";
 logger.warn("A warning");
 ```
+
+> Note: the `@/logger` path might look odd but it's a [TypeScript path mapping](https://www.typescriptlang.org/docs/handbook/module-resolution.html#path-mapping). This allows us to avoid references like _../../../../logging/logger_ in nested files.
 
 If you're in a React component then use the `useLogger` hook - this logs extra details about the current URL:
 
 ```js
-import { useLogger } from "../logger/logger";
+import { useLogger } from "@/logger";
 
 export const SomeReactComponent = () => {
 	const logger = useLogger();

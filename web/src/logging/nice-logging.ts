@@ -1,7 +1,7 @@
 import { LoggerOptions } from "pino";
 import { serializeError } from "serialize-error";
 
-import { SettingsConfig } from "../config/config";
+import { SettingsConfig } from "@/config";
 
 // NextJS (and the Pino logger) compile for both server and client sides.
 // Client can't access fs (and therefore config) on the client

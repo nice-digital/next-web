@@ -1,5 +1,13 @@
 **/package.json
 **/package-lock.json
 
-# NextJS folders
+# NextJS output folder
 .next
+
+# Generated NextJS types
+next-env.d.ts
+
+# Generated test coverage
+coverage
+
+dist

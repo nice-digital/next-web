@@ -6,7 +6,7 @@
     "dev": "cross-env NODE_OPTIONS=\"-r next-logger/presets/next-only\" next dev | pino-pretty",
     "build": "next build",
     "start": "cross-env NODE_OPTIONS=\"-r next-logger/presets/next-only\" next start | pino-mq -c .pino-mqrc.json",
-    "test": "echo \"Error: run tests from the root\" && exit 1",
+    "test": "cd .. && npm run test -- --selectProjects web",
     "// PM2 HOSTING": "",
     "pm2": "pm2",
     "pm2:start": "pm2 startOrRestart pm2.ecosystem.json --env production",
@@ -26,11 +26,14 @@
   ],
   "homepage": "https://github.com/nice-digital/next-web#readme",
   "dependencies": {
+    "@nice-digital/design-system": "^1.2.13",
+    "@nice-digital/global-nav": "github:nice-digital/global-nav",
     "config": "^3.3.6",
     "cross-env": "^7.0.3",
     "js-yaml": "^4.1.0",
     "next": "^11.0.1",
     "next-logger": "^2.0.0",
+    "next-seo": "^4.26.0",
     "pino": "^6.11.3",
     "pino-mq": "^1.0.1",
     "pm2": "^5.1.0",
@@ -39,6 +42,8 @@
     "serialize-error": "^8.1.0"
   },
   "devDependencies": {
+    "next-page-tester": "^0.26.1",
+    "next-transpile-modules": "^8.0.0",
     "pino-pretty": "^5.1.0",
     "sass": "^1.35.1"
   },

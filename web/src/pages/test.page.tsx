@@ -5,13 +5,14 @@ import {
 } from "next";
 import Head from "next/head";
 
-import { logger, useLogger } from "../logging/logger";
+import { logger, useLogger } from "@/logger";
+import { Test } from "@/components/Test/Test";
 
-export interface TestProps {
+export interface TestPageProps {
 	test: true;
 }
 
-export const getServerSideProps: GetServerSideProps<TestProps> = async (
+export const getServerSideProps: GetServerSideProps<TestPageProps> = async (
 	_context: GetServerSidePropsContext
 ) => {
 	logger.warn("A warning in getServerSideProps");
@@ -28,7 +29,7 @@ export const getServerSideProps: GetServerSideProps<TestProps> = async (
 	};
 };
 
-export default function Test({
+export default function TestPage({
 	test,
 }: InferGetServerSidePropsType<typeof getServerSideProps>): JSX.Element {
 	const childLogger = useLogger();
@@ -43,6 +44,7 @@ export default function Test({
 				<title>Test</title>
 			</Head>
 			Test: {test}
+			<Test />
 		</>
 	);
 }
