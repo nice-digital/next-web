@@ -1,4 +1,5 @@
 import "@testing-library/jest-dom/extend-expect";
+import "jest-extended";
 import { renderToString } from "react-dom/server";
 
 // next-transpile-modules tries to look for various modules but because our tests are running in the root it looks in the wrong place.

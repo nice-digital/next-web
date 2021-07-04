@@ -8,7 +8,7 @@ describe("FourOhFourPage", () => {
 		it("should render 'Page not found' in the page title", async () => {
 			render(<FourOhFourPage />);
 			await waitFor(() => {
-				expect(document.title).toContain("Page not found | ");
+				expect(document.title).toStartWith("Page not found | ");
 			});
 		});
 	});
