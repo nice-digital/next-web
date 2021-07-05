@@ -15,7 +15,9 @@
     "**/.hg": true,
     "**/CVS": true,
     "**/.DS_Store": true,
-    "**/.next": true
+    "**/.next": true,
+    "**/coverage": true,
+    "**/dist": true
   },
   "css.validate": false,
   "less.validate": false,

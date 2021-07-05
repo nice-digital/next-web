@@ -1,19 +1,7 @@
 import { LoggerOptions } from "pino";
 import { serializeError } from "serialize-error";
 
-import { SettingsConfig } from "../config/config";
-
-// NextJS (and the Pino logger) compile for both server and client sides.
-// Client can't access fs (and therefore config) on the client
-// so we need to load config server-side only, hence the dynamic require
-let environmentName = "browser";
-if (typeof window === "undefined") {
-	const {
-		settings,
-	}: // eslint-disable-next-line @typescript-eslint/no-var-requires
-	{ settings: SettingsConfig } = require("../config/config");
-	environmentName = settings.environment;
-}
+import { publicRuntimeConfig } from "@/config";
 
 const errorSerializer = (error: Error): unknown =>
 	process.env.NODE_ENV === "production"
@@ -32,13 +20,13 @@ export const niceLoggingPinoOptions: LoggerOptions = {
 	// Only log warnings and above in production
 	level: process.env.NODE_ENV === "production" ? "warn" : "debug",
 	messageKey: "Message",
-	// The preceeding command here looks a bit weird, but pino requires "a partial JSON string representation of the time"
+	// The preceeding comma here looks a bit weird, but pino requires "a partial JSON string representation of the time"
 	// See https://getpino.io/#/docs/api?id=timestamp-boolean-function
 	timestamp: () => `,"Timestamp":"${new Date(Date.now()).toISOString()}"`,
 	mixin: () => ({
 		NodeEnv: process.env.NODE_ENV,
 		Application: "Next Web",
-		Environment: environmentName,
+		Environment: publicRuntimeConfig.environment,
 	}),
 	formatters: {
 		level(label, _number) {

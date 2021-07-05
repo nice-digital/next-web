@@ -1,0 +1,183 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`ErrorPageContent should match snapshot for main content 1`] = `
+<body>
+  <div>
+    <nav
+      aria-label="Breadcrumbs"
+      role="navigation"
+    >
+      <ol
+        class="breadcrumbs"
+      >
+        <li
+          class="breadcrumbs__crumb"
+        >
+          <a
+            href="/"
+          >
+            Home
+          </a>
+        </li>
+        <li
+          class="breadcrumbs__crumb"
+        >
+          <span>
+            A test title
+          </span>
+        </li>
+      </ol>
+    </nav>
+    <script
+      type="application/ld+json"
+    >
+      {
+  "@context": "http://schema.org",
+  "@type": "BreadcrumbList",
+  "itemListElement": [
+    {
+      "@type": "ListItem",
+      "position": 1,
+      "item": {
+        "@id": "/",
+        "name": "Home"
+      }
+    },
+    {
+      "@type": "ListItem",
+      "position": 2,
+      "item": {
+        "name": "A test title"
+      }
+    }
+  ]
+}
+    </script>
+    <div
+      class="page-header"
+    >
+      <h1
+        class="page-header__heading"
+      >
+        A test heading
+      </h1>
+      <p
+        class="page-header__lead"
+      >
+        A test lead
+      </p>
+    </div>
+    <h2>
+      What can I do now?
+    </h2>
+    <div
+      class="grid grid--loose"
+    >
+      <div
+        data-g="12 sm:6 md:4"
+      >
+        <ul
+          class="mt--0"
+        >
+          <li>
+            Check that the web address has been typed correctly
+          </li>
+          <li>
+            Look for it using search
+          </li>
+          <li>
+            Browse for it from the 
+            <a
+              href="/"
+            >
+              homepage
+            </a>
+          </li>
+        </ul>
+        <p>
+          And if you still can't find what you're looking for,
+           
+          <a
+            href="/get-involved/contact-us"
+          >
+            get in touch
+          </a>
+          .
+        </p>
+      </div>
+      <div
+        data-g="12 sm:6 md:8"
+      >
+        <p
+          class="mt--0"
+        >
+          Here's where you can go from here:
+        </p>
+        <ul>
+          <li>
+            Explore
+             
+            <a
+              href="/guidance"
+            >
+              NICE guidance, quality standards and advice
+            </a>
+            . You can do this by
+             
+            <a
+              href="/guidance/conditions-and-diseases"
+            >
+              category to find a topic
+            </a>
+            , or choose a
+             
+            <a
+              href="/guidance/published"
+            >
+              list organised by date or title
+            </a>
+            .
+          </li>
+          <li>
+            <a
+              href="http://www.evidence.nhs.uk/"
+            >
+              Try evidence search
+            </a>
+            . This is our unique index of authoritative, evidence-based information from hundreds of trustworthy and accredited sources.
+          </li>
+          <li>
+            <a
+              href="/about"
+            >
+              Visit our about pages
+            </a>
+             to find information about our services, 
+            <a
+              href="/about/who-we-are"
+            >
+              who we are
+            </a>
+             and
+             
+            <a
+              href="/about/what-we-do"
+            >
+              what we do
+            </a>
+          </li>
+        </ul>
+        <p>
+          If this is not the first time you have seen this message and believe that there is a serious problem
+           
+          <a
+            href="/get-involved/contact-us"
+          >
+            please contact us directly
+          </a>
+        </p>
+      </div>
+    </div>
+  </div>
+</body>
+`;
