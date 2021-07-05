@@ -19,10 +19,11 @@ declare module "next-plugin-node-config" {
 }
 
 declare module "next/config" {
-	import { PublicConfig } from "@/config";
+	import { PublicConfig, ServerConfig } from "@/config";
 
 	export type NextRuntimeConfig = {
 		publicRuntimeConfig: PublicConfig;
+		serverRuntimeConfig: ServerConfig;
 	};
 
 	function getConfig(): NextRuntimeConfig;
