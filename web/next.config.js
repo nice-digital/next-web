@@ -1,7 +1,8 @@
 // @ts-check
 const { readdirSync } = require("fs"),
 	path = require("path"),
-	withTranspiledModules = require("next-transpile-modules");
+	withTranspiledModules = require("next-transpile-modules"),
+	withNodeConfig = require("next-plugin-node-config");
 
 /**
  * A list of paths to node modules that should allow transpilation.
@@ -58,6 +59,8 @@ const securityHeaders = [
  * @type {import('next/dist/next-server/server/config').NextConfig}
  **/
 const nextConfig = {
+	nodeConfigServerKey: "server",
+	nodeConfigPublicKey: "public",
 	// Strict mode gives useful feedback in dev, see https://edibleco.de/3x9GXry
 	reactStrictMode: true,
 	eslint: {
@@ -81,15 +84,10 @@ const nextConfig = {
 	experimental: {},
 };
 
-// The NextConfig type def requires future/experimental so we remove them here as a bit of a hack.
-// Avoids scary warnings like 'You have enabled experimental feature(s)...Use them at your own risk. '
-// delete nextConfig.future;
-// delete nextConfig.experimental;
-
 // The weird comment syntax below is a JSDoc TypeScript cast: https://edibleco.de/2UMm8nx
-const finalConfig =
-	/** @type {import('next/dist/next-server/server/config').NextConfig} */ (
-		withTranspiledModules(niceDigitalModulesToTranspile)(nextConfig)
-	);
+/** @type {import('next/dist/next-server/server/config').NextConfig} */
+const finalConfig = withNodeConfig(
+	withTranspiledModules(niceDigitalModulesToTranspile)(nextConfig)
+);
 
 module.exports = finalConfig;

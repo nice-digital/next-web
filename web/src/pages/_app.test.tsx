@@ -30,12 +30,56 @@ describe("NextWebApp", () => {
 			expect(document.title).toBe("A test title | NICE");
 		});
 
-		it("should add twitter site meta tag", async () => {
-			renderApp();
+		describe("open graph", () => {
+			it("should set en_GB open graph locale meta tag", async () => {
+				renderApp();
 
-			expect(
-				document.querySelector("meta[name='twitter:site']")
-			).toHaveAttribute("content", "@NICEComms");
+				expect(
+					document.querySelector("meta[property='og:locale']")
+				).toHaveAttribute("content", "en_GB");
+			});
+
+			it("should set open graph type meta tag", async () => {
+				renderApp();
+
+				expect(
+					document.querySelector("meta[property='og:type']")
+				).toHaveAttribute("content", "website");
+			});
+
+			it("should set open graph url meta tag", async () => {
+				renderApp({ pathname: "/test" });
+
+				expect(
+					document.querySelector("meta[property='og:url']")
+				).toHaveAttribute("content", "https://next-web-tests.nice.org.uk/test");
+			});
+
+			it("should set open graph site meta tag", async () => {
+				renderApp();
+
+				expect(
+					document.querySelector("meta[property='og:site_name']")
+				).toHaveAttribute("content", "NICE");
+			});
+		});
+
+		describe("twitter", () => {
+			it("should set twitter site meta tag", async () => {
+				renderApp();
+
+				expect(
+					document.querySelector("meta[name='twitter:site']")
+				).toHaveAttribute("content", "@NICEComms");
+			});
+
+			it("should set twitter creator meta tag", async () => {
+				renderApp();
+
+				expect(
+					document.querySelector("meta[name='twitter:creator']")
+				).toHaveAttribute("content", "@NICEComms");
+			});
 		});
 	});
 

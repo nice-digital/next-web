@@ -33,6 +33,7 @@
     "js-yaml": "^4.1.0",
     "next": "^11.0.1",
     "next-logger": "^2.0.0",
+    "next-plugin-node-config": "^1.0.2",
     "next-seo": "^4.26.0",
     "pino": "^6.11.3",
     "pino-mq": "^1.0.1",

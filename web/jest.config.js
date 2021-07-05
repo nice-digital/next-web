@@ -24,9 +24,9 @@ module.exports = {
 		"<rootDir>/.next/",
 		"<rootDir>/pm2.start.js",
 	],
-	testPathIgnorePatterns: ["/node_modules/", "/.next/", "/dist/"],
-	setupFilesAfterEnv: ["./jest.setup.ts"],
-	testURL: "https://next-web-tests.nice.org.uk/",
+	testPathIgnorePatterns: ["/node_modules/", "/.next/", "/dist/", "./config/"],
+	setupFilesAfterEnv: ["./jest.presetup.js", "./jest.setup.ts"],
+	testURL: "https://next-web-tests.nice.org.uk",
 	testEnvironment: "jsdom",
 	globals: {
 		"ts-jest": {

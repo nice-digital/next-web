@@ -17,7 +17,7 @@ class NextWebDocument extends Document {
 
 	render(): JSX.Element {
 		return (
-			<Html>
+			<Html lang="en-GB">
 				<Head>
 					<link rel="preconnect" href="https://fonts.googleapis.com" />
 					<link
