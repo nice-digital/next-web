@@ -19,10 +19,11 @@ export default function FourOhFourPage(): JSX.Element {
 				lead="It's probably been moved, updated or&nbsp;deleted."
 			/>
 
+			<h2>What can I do&nbsp;now?</h2>
+
 			<Grid gutter="loose" data-testid="wrapper">
 				<GridItem cols={12} sm={6} md={4}>
-					<h2 className="mt--0">What can I do&nbsp;now?</h2>
-					<ul>
+					<ul className="mt--0">
 						<li>Check that the web address has been typed correctly</li>
 						<li>Look for it using search</li>
 						<li>

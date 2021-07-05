@@ -8,12 +8,9 @@ exports[`FourOhFourPage should match snapshot for main content 1`] = `
   <div
     data-g="12 sm:6 md:4"
   >
-    <h2
+    <ul
       class="mt--0"
     >
-      What can I do now?
-    </h2>
-    <ul>
       <li>
         Check that the web address has been typed correctly
       </li>
