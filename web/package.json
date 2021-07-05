@@ -5,7 +5,7 @@
   "scripts": {
     "dev": "cross-env NODE_OPTIONS=\"-r next-logger/presets/next-only\" next dev | pino-pretty",
     "build": "next build",
-    "start": "cross-env NODE_OPTIONS=\"-r next-logger/presets/next-only\" next start | pino-mq -c .pino-mqrc.json",
+    "start": "cross-env NODE_OPTIONS=\"-r next-logger\" next start | pino-mq -c .pino-mqrc.json",
     "test": "cd .. && npm run test -- --selectProjects web",
     "// PM2 HOSTING": "",
     "pm2": "pm2",

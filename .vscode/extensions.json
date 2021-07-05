@@ -7,6 +7,7 @@
     "editorconfig.editorconfig",
     "dbaeumer.vscode-eslint",
     "stylelint.vscode-stylelint",
-    "orta.vscode-jest"
+    "orta.vscode-jest",
+    "ExodiusStudios.comment-anchors"
   ]
 }

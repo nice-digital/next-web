@@ -32,6 +32,8 @@ module.exports = {
 		"ts-jest": {
 			tsconfig: {
 				...tsconfig.compilerOptions,
+				// To avoid errors like "Class constructor App cannot be invoked without 'new'"
+				target: "ESNext",
 				// NextJS needs jsx=preserve but in Jest we need react-jsxdev:
 				jsx: "react-jsxdev",
 			},

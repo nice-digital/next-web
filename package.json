@@ -5,8 +5,8 @@
   "description": "Monorepo for Next Web",
   "scripts": {
     "// TESTS": "",
-    "test": "jest --notify --detectOpenHandles",
-    "test:web": "jest --notify --detectOpenHandles --selectProjects web",
+    "test": "jest --silent --notify --detectOpenHandles",
+    "test:web": "jest --silent --notify --detectOpenHandles --selectProjects web",
     "test:watch": "jest --watch",
     "test:coverage": "jest --coverage",
     "// LINTING/CODE STYLE": "",

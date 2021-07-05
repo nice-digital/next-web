@@ -3,8 +3,13 @@ import type { AppProps } from "next/app";
 import { NextSeo } from "next-seo";
 import { render, screen } from "@testing-library/react";
 
+import { useEffect } from "react";
 import NextWebApp from "./_app.page";
 import { getMockRouter } from "@/test-utils";
+import { logger } from "@/logger";
+
+// NextWebApp.componentDidCatch logs so we don't want extra console logs littering our tests
+jest.mock("@/logger", () => ({ logger: { error: jest.fn() } }));
 
 const FakeComponentWithSEO: AppProps["Component"] = () => (
 	<>
@@ -81,6 +86,61 @@ describe("NextWebApp", () => {
 				).toHaveAttribute("content", "@NICEComms");
 			});
 		});
+	});
+
+	it("should log error when caught", () => {
+		const error = new Error("A client side error");
+		const FakeErroringComponent: AppProps["Component"] = () => {
+			useEffect(() => {
+				throw error;
+			}, []);
+
+			return <></>;
+		};
+
+		render(
+			<NextWebApp
+				pageProps={{}}
+				Component={FakeErroringComponent}
+				router={getMockRouter() as AppProps["router"]}
+			/>
+		);
+
+		expect(logger.error as jest.Mock).toHaveBeenCalledWith(
+			error,
+			// errorInfo:
+			expect.stringContaining("at FakeErroringComponent")
+		);
+	});
+
+	it("should render error when error caught", () => {
+		const FakeErroringComponent: AppProps["Component"] = () => {
+			useEffect(() => {
+				throw new Error("A client side error");
+			}, []);
+
+			return (
+				<p>
+					This text shouldnt show as an error component should render instead,
+					because of Apps componentDidCatch
+				</p>
+			);
+		};
+
+		render(
+			<NextWebApp
+				pageProps={{}}
+				Component={FakeErroringComponent}
+				router={getMockRouter() as AppProps["router"]}
+			/>
+		);
+
+		expect(screen.getByRole("main")).not.toHaveTextContent(
+			"This text shouldnt show"
+		);
+		expect(screen.getByRole("heading", { level: 1 })).toHaveTextContent(
+			"Something's gone wrong"
+		);
 	});
 
 	it("should wrap main element around content", () => {
