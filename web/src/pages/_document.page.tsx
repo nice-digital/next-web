@@ -7,7 +7,9 @@ import Document, {
 	DocumentInitialProps,
 } from "next/document";
 
-class NextWebDocument extends Document {
+export type NextWebDocumentProps = Record<string, never>;
+
+class NextWebDocument extends Document<NextWebDocumentProps> {
 	static async getInitialProps(
 		ctx: DocumentContext
 	): Promise<DocumentInitialProps> {
