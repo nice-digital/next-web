@@ -1,12 +1,18 @@
 /* eslint-disable testing-library/no-node-access */
 import type { AppProps } from "next/app";
 import { NextSeo } from "next-seo";
-import { render, screen } from "@testing-library/react";
+import { render, screen, waitFor } from "@testing-library/react";
+import TagManager from "react-gtm-module";
+import { Router } from "next/router";
 
 import { useEffect } from "react";
 import NextWebApp from "./_app.page";
 import { getMockRouter } from "@/test-utils";
 import { logger } from "@/logger";
+
+jest.mock("react-gtm-module", () => ({
+	initialize: jest.fn(),
+}));
 
 // NextWebApp.componentDidCatch logs so we don't want extra console logs littering our tests
 jest.mock("@/logger", () => ({ logger: { error: jest.fn() } }));
@@ -88,59 +94,87 @@ describe("NextWebApp", () => {
 		});
 	});
 
-	it("should log error when caught", () => {
-		const error = new Error("A client side error");
-		const FakeErroringComponent: AppProps["Component"] = () => {
-			useEffect(() => {
-				throw error;
-			}, []);
+	describe("Error handling", () => {
+		it("should log error when caught", () => {
+			const error = new Error("A client side error");
+			const FakeErroringComponent: AppProps["Component"] = () => {
+				useEffect(() => {
+					throw error;
+				}, []);
 
-			return <></>;
-		};
+				return <></>;
+			};
 
-		render(
-			<NextWebApp
-				pageProps={{}}
-				Component={FakeErroringComponent}
-				router={getMockRouter() as AppProps["router"]}
-			/>
-		);
+			render(
+				<NextWebApp
+					pageProps={{}}
+					Component={FakeErroringComponent}
+					router={getMockRouter() as AppProps["router"]}
+				/>
+			);
 
-		expect(logger.error as jest.Mock).toHaveBeenCalledWith(
-			error,
-			// errorInfo:
-			expect.stringContaining("at FakeErroringComponent")
-		);
+			expect(logger.error as jest.Mock).toHaveBeenCalledWith(
+				error,
+				// errorInfo:
+				expect.stringContaining("at FakeErroringComponent")
+			);
+		});
+
+		it("should render error when error caught", () => {
+			const FakeErroringComponent: AppProps["Component"] = () => {
+				useEffect(() => {
+					throw new Error("A client side error");
+				}, []);
+
+				return (
+					<p>
+						This text shouldnt show as an error component should render instead,
+						because of Apps componentDidCatch
+					</p>
+				);
+			};
+
+			render(
+				<NextWebApp
+					pageProps={{}}
+					Component={FakeErroringComponent}
+					router={getMockRouter() as AppProps["router"]}
+				/>
+			);
+
+			expect(screen.getByRole("main")).not.toHaveTextContent(
+				"This text shouldnt show"
+			);
+			expect(screen.getByRole("heading", { level: 1 })).toHaveTextContent(
+				"Something's gone wrong"
+			);
+		});
 	});
 
-	it("should render error when error caught", () => {
-		const FakeErroringComponent: AppProps["Component"] = () => {
-			useEffect(() => {
-				throw new Error("A client side error");
-			}, []);
+	describe("Google Tag Manager", () => {
+		it("should add GTM snippet", async () => {
+			renderApp();
 
-			return (
-				<p>
-					This text shouldnt show as an error component should render instead,
-					because of Apps componentDidCatch
-				</p>
-			);
-		};
+			const gtmInitMock = TagManager.initialize as jest.Mock;
 
-		render(
-			<NextWebApp
-				pageProps={{}}
-				Component={FakeErroringComponent}
-				router={getMockRouter() as AppProps["router"]}
-			/>
-		);
+			expect(gtmInitMock).toHaveBeenCalledTimes(1);
+			expect(gtmInitMock).toHaveBeenCalledWith({
+				gtmId: "GTM-M55QTQ",
+			});
+		});
 
-		expect(screen.getByRole("main")).not.toHaveTextContent(
-			"This text shouldnt show"
-		);
-		expect(screen.getByRole("heading", { level: 1 })).toHaveTextContent(
-			"Something's gone wrong"
-		);
+		it.skip("should push event to the datalayer on route change", async () => {
+			renderApp();
+			// TODO: work out how we can use router events
+			Router.events.emit("routeChangeComplete", { url: "/test" });
+			await waitFor(() => {
+				expect(window.dataLayer).toBeArrayOfSize(1);
+				expect(window.dataLayer[0]).toStrictEqual({
+					event: "pageview",
+					path: "/test",
+				});
+			});
+		});
 	});
 
 	it("should wrap main element around content", () => {

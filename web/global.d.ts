@@ -6,6 +6,23 @@ declare module "*.scss" {
 	export default content;
 }
 
+/**
+ * The type of object to push into Google Tag Manager (GTM) data layer via `window.dataLayer.push`.
+ * Needed to avoid TypeScript errors like "Property 'dataLayer' does not exist on type 'Window & typeof globalThis'" when you use `window.dataLayer`
+ */
+type DataLayerEntry = {
+	event: string;
+	eventCallback?: () => void;
+	[key: string]: unknown;
+};
+
+interface Window {
+	/**
+	 * The Google Tag Manager (GTM) data layer
+	 */
+	dataLayer: DataLayerEntry[];
+}
+
 declare module "next-plugin-node-config" {
 	import { NextConfig } from "next/dist/next-server/server/config";
 

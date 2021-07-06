@@ -5,11 +5,11 @@ export default function Published(): JSX.Element {
 	return (
 		<>
 			<Head>
-				<title>Published guidance</title>
+				<title>In development guidance</title>
 			</Head>
-			Published guidance
-			<Link href="/guidance/indevelopment">
-				<a>Go to in development guidance</a>
+			In development guidance
+			<Link href="/guidance/published">
+				<a>Go to published guidance</a>
 			</Link>
 		</>
 	);
