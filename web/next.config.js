@@ -2,7 +2,8 @@
 const { readdirSync } = require("fs"),
 	path = require("path"),
 	withTranspiledModules = require("next-transpile-modules"),
-	withNodeConfig = require("next-plugin-node-config");
+	withNodeConfig = require("next-plugin-node-config"),
+	config = require("config");
 
 /**
  * A list of paths to node modules that should allow transpilation.
@@ -17,10 +18,10 @@ const niceDigitalModulesToTranspile = readdirSync(
 	.filter((dirent) => dirent.isDirectory())
 	.map(({ name }) => `@nice-digital/${name}`);
 
-/**
- * 'Best practice' security headers as per https://edibleco.de/3xcg71N
- */
-const securityHeaders = [
+const commonHeaders = [
+	/**
+	 * 'Best practice' security headers as per https://edibleco.de/3xcg71N
+	 */
 	{
 		key: "X-DNS-Prefetch-Control",
 		value: "on",
@@ -53,6 +54,21 @@ const securityHeaders = [
 		key: "Content-Security-Policy",
 		value: "frame-ancestors 'none'", // TODO: Add a strong CSP
 	},
+	/**
+	 * Preload external assets and preconnecting external domains via Link header
+	 */
+	{
+		key: "Link",
+		value: [
+			// Preload the cookie banner with API key domain preconnect - we want the cookie banner to show as quickly as possible
+			`<${config.get("public.cookieBannerScriptUrl")}>; rel=preload; as=script`,
+			"<https://apikeys.civiccomputing.com>; rel=preconnect; crossorigin",
+			"<https://www.googletagmanager.com>; rel=preconnect",
+			// ANCHOR[id=font-preconnects] Speed up Google font loading with preconnects
+			"<https://fonts.googleapis.com>; rel=preconnect",
+			"<https://fonts.gstatic.com>; rel=preconnect; crossorigin",
+		].join(","),
+	},
 ];
 
 /**
@@ -74,9 +90,9 @@ const nextConfig = {
 	async headers() {
 		return [
 			{
-				// Add common security headers to all pages
+				// Add common headers to all pages
 				source: "/(.*)",
-				headers: securityHeaders,
+				headers: commonHeaders,
 			},
 		];
 	},

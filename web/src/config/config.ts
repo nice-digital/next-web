@@ -14,6 +14,11 @@ export interface PublicConfig {
 	 *
 	 * **Note** the lack of trailing slash! It will get prepended to paths that start with a slash. */
 	baseUrl: string;
+
+	/**
+	 * The absolute URL to the NICE cookie banner script include
+	 */
+	cookieBannerScriptUrl: string;
 }
 
 /**

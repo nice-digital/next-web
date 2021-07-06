@@ -1,7 +1,7 @@
-import { ErrorInfo } from "react";
+import { ErrorInfo, FC } from "react";
 import { DefaultSeo } from "next-seo";
 import App, { AppProps } from "next/app";
-import TagManager from "react-gtm-module";
+import Script from "next/script";
 
 import "@nice-digital/design-system/scss/base.scss";
 
@@ -9,6 +9,7 @@ import { Header, HeaderProps, Footer } from "@nice-digital/global-nav";
 import { Container } from "@nice-digital/nds-container";
 
 import { ErrorPageContent } from "@/components/ErrorPageContent/ErrorPageContent";
+import { GoogleTagManager } from "@/components/GoogleTagManager/GoogleTagManager";
 import { publicRuntimeConfig } from "@/config";
 import { logger } from "@/logger";
 
@@ -20,10 +21,21 @@ interface AppState {
 	hasError: boolean;
 }
 
+const AppFooter: FC = () => (
+	<>
+		<GoogleTagManager />
+		<Script
+			src={publicRuntimeConfig.cookieBannerScriptUrl}
+			strategy="beforeInteractive"
+		/>
+		<Footer />
+	</>
+);
+
 const headerProps: HeaderProps = {
 	search: {
 		url: "/search",
-		autocomplete: "/autocomplete?ajax=ajax",
+		autocomplete: "/autocomplete",
 	},
 	auth: { provider: "niceAccounts", environment: "live" },
 };
@@ -43,8 +55,6 @@ class NextWebApp extends App<{}, {}, AppState> {
 	}
 
 	componentDidMount(): void {
-		TagManager.initialize({ gtmId: "GTM-M55QTQ" });
-
 		this.props.router.events.on("routeChangeComplete", this.handleRouteChange);
 	}
 
@@ -84,7 +94,7 @@ class NextWebApp extends App<{}, {}, AppState> {
 							<ErrorPageContent />
 						</Container>
 					</main>
-					<Footer />
+					<AppFooter />
 				</>
 			);
 
@@ -110,7 +120,7 @@ class NextWebApp extends App<{}, {}, AppState> {
 						<Component {...pageProps} />
 					</Container>
 				</main>
-				<Footer />
+				<AppFooter />
 			</>
 		);
 	}

@@ -1,18 +1,12 @@
 /* eslint-disable testing-library/no-node-access */
 import type { AppProps } from "next/app";
 import { NextSeo } from "next-seo";
-import { render, screen, waitFor } from "@testing-library/react";
-import TagManager from "react-gtm-module";
-import { Router } from "next/router";
+import { render, screen } from "@testing-library/react";
 
 import { useEffect } from "react";
 import NextWebApp from "./_app.page";
 import { getMockRouter } from "@/test-utils";
 import { logger } from "@/logger";
-
-jest.mock("react-gtm-module", () => ({
-	initialize: jest.fn(),
-}));
 
 // NextWebApp.componentDidCatch logs so we don't want extra console logs littering our tests
 jest.mock("@/logger", () => ({ logger: { error: jest.fn() } }));
@@ -148,32 +142,6 @@ describe("NextWebApp", () => {
 			expect(screen.getByRole("heading", { level: 1 })).toHaveTextContent(
 				"Something's gone wrong"
 			);
-		});
-	});
-
-	describe("Google Tag Manager", () => {
-		it("should add GTM snippet", async () => {
-			renderApp();
-
-			const gtmInitMock = TagManager.initialize as jest.Mock;
-
-			expect(gtmInitMock).toHaveBeenCalledTimes(1);
-			expect(gtmInitMock).toHaveBeenCalledWith({
-				gtmId: "GTM-M55QTQ",
-			});
-		});
-
-		it.skip("should push event to the datalayer on route change", async () => {
-			renderApp();
-			// TODO: work out how we can use router events
-			Router.events.emit("routeChangeComplete", { url: "/test" });
-			await waitFor(() => {
-				expect(window.dataLayer).toBeArrayOfSize(1);
-				expect(window.dataLayer[0]).toStrictEqual({
-					event: "pageview",
-					path: "/test",
-				});
-			});
 		});
 	});
 
