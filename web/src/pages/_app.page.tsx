@@ -1,6 +1,7 @@
 import { ErrorInfo } from "react";
 import { DefaultSeo } from "next-seo";
 import App, { AppProps } from "next/app";
+import TagManager from "react-gtm-module";
 
 import "@nice-digital/design-system/scss/base.scss";
 
@@ -33,6 +34,22 @@ class NextWebApp extends App<{}, {}, AppState> {
 		super(props);
 
 		this.state = { hasError: false };
+
+		this.handleRouteChange = this.handleRouteChange.bind(this);
+	}
+
+	handleRouteChange(path: string): void {
+		window.dataLayer.push({ event: "pageview", path });
+	}
+
+	componentDidMount(): void {
+		TagManager.initialize({ gtmId: "GTM-M55QTQ" });
+
+		this.props.router.events.on("routeChangeComplete", this.handleRouteChange);
+	}
+
+	componentWillUnmount(): void {
+		this.props.router.events.off("routeChangeComplete", this.handleRouteChange);
 	}
 
 	/**

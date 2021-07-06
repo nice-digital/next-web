@@ -33,6 +33,14 @@ class NextWebDocument extends Document<NextWebDocumentProps> {
 					/>
 				</Head>
 				<body>
+					<noscript>
+						<iframe
+							src="https://www.googletagmanager.com/ns.html?id=GTM-M55QTQ"
+							height="0"
+							width="0"
+							style={{ display: "none" }}
+						></iframe>
+					</noscript>
 					<Main />
 					<NextScript />
 				</body>
