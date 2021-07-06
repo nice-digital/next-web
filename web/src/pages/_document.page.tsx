@@ -21,26 +21,13 @@ class NextWebDocument extends Document<NextWebDocumentProps> {
 		return (
 			<Html lang="en-GB">
 				<Head>
-					<link rel="preconnect" href="https://fonts.googleapis.com" />
-					<link
-						rel="preconnect"
-						href="https://fonts.gstatic.com"
-						crossOrigin="anonymous"
-					/>
+					{/* Note: The 2 google font preconnects are set in the global Link header. See LINK ./../../next.config.js#font-preconnects */}
 					<link
 						href="https://fonts.googleapis.com/css2?family=Lato:ital,wght@0,400;0,700;0,900;1,400&display=swap"
 						rel="stylesheet"
 					/>
 				</Head>
 				<body>
-					<noscript>
-						<iframe
-							src="https://www.googletagmanager.com/ns.html?id=GTM-M55QTQ"
-							height="0"
-							width="0"
-							style={{ display: "none" }}
-						></iframe>
-					</noscript>
 					<Main />
 					<NextScript />
 				</body>

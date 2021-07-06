@@ -45,6 +45,10 @@ describe("next.config.js", () => {
 		    "key": "Content-Security-Policy",
 		    "value": "frame-ancestors 'none'",
 		  },
+		  Object {
+		    "key": "Link",
+		    "value": "<https://cdn.nice.org.uk/cookie-banner/cookie-banner.min.js>; rel=preload; as=script,<https://apikeys.civiccomputing.com>; rel=preconnect; crossorigin,<https://www.googletagmanager.com>; rel=preconnect,<https://fonts.googleapis.com>; rel=preconnect,<https://fonts.gstatic.com>; rel=preconnect; crossorigin",
+		  },
 		]
 	`);
 	});
