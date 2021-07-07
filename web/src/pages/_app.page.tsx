@@ -8,6 +8,7 @@ import "@nice-digital/design-system/scss/base.scss";
 import { Header, HeaderProps, Footer } from "@nice-digital/global-nav";
 import { Container } from "@nice-digital/nds-container";
 
+import { getDefaultSeoConfig } from "./next-seo.config";
 import { ErrorPageContent } from "@/components/ErrorPageContent/ErrorPageContent";
 import { GoogleTagManager } from "@/components/GoogleTagManager/GoogleTagManager";
 import { publicRuntimeConfig } from "@/config";
@@ -87,7 +88,7 @@ class NextWebApp extends App<{}, {}, AppState> {
 		if (this.state.hasError)
 			return (
 				<>
-					<DefaultSeo titleTemplate={`%s | NICE`} />
+					<DefaultSeo {...getDefaultSeoConfig(pathname)} />
 					<Header {...headerProps} service={service} />
 					<main id="content-start">
 						<Container>
@@ -100,20 +101,7 @@ class NextWebApp extends App<{}, {}, AppState> {
 
 		return (
 			<>
-				<DefaultSeo
-					titleTemplate={`%s | NICE`}
-					openGraph={{
-						type: "website",
-						locale: "en_GB",
-						url: publicRuntimeConfig.baseUrl + pathname,
-						site_name: "NICE",
-					}}
-					twitter={{
-						handle: "@NICEComms",
-						site: "@NICEComms",
-						cardType: "summary",
-					}}
-				/>
+				<DefaultSeo {...getDefaultSeoConfig(pathname)} />
 				<Header {...headerProps} service={service} />
 				<main id="content-start">
 					<Container>

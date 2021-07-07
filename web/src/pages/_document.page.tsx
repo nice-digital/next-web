@@ -19,7 +19,7 @@ class NextWebDocument extends Document<NextWebDocumentProps> {
 
 	render(): JSX.Element {
 		return (
-			<Html lang="en-GB">
+			<Html lang="en-GB" prefix="og: http://ogp.me/ns#">
 				<Head>
 					{/* Note: The 2 google font preconnects are set in the global Link header. See LINK ./../../next.config.js#font-preconnects */}
 					<link
