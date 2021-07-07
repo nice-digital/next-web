@@ -13,7 +13,8 @@
     </metadata>
     <files>
 		<file src=".next\**" target=".next" />
-		<file src="public\**" target="public" />
+		<!-- Move the public files down a level so that we have a clear route behind Varnish -->
+		<file src="public\**" target="public\next-web" />
 		<file src="node_modules\**" target="node_modules" />
 		<!-- Config TypeScript source gets compiled to .next so we only need yml/json etc -->
 		<file src="config\**" target="config" exclude="**\*.ts" />
