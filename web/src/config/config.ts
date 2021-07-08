@@ -27,12 +27,27 @@ export interface PublicConfig {
 	readonly publicBaseUrl: string;
 }
 
+export interface FeedConfig {
+	/** The origin URL of the feeds */
+	readonly origin: string;
+
+	/** The API key for accessing the feed */
+	readonly apiKey: string;
+}
+
+export interface FeedsConfig {
+	/** Feed config for publications */
+	readonly publications: FeedConfig;
+
+	/** Feed config for indev */
+	readonly inDev: FeedConfig;
+}
+
 /**
  * Server-only run time config, useful for secrets etc
  */
-// eslint-disable-next-line @typescript-eslint/no-empty-interface
 export interface ServerConfig {
-	// Add types for server config here
+	feeds: FeedsConfig;
 }
 
 export { publicRuntimeConfig, serverRuntimeConfig };

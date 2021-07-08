@@ -36,6 +36,13 @@ jest.mock("next/head", () => {
 	};
 });
 
+// Default mock of needle to avoid actually trying to make HTTP calls in tests
+jest.mock("needle", () =>
+	jest
+		.fn()
+		.mockRejectedValue("Please provide a mock of needle for testing purposes")
+);
+
 window.dataLayer = [];
 const originalPush = window.dataLayer.push;
 

@@ -19,3 +19,10 @@ public:
 # ! Use local.yml or local.json to override settings locally instead: https://edibleco.de/3dLJKiP
 # ! Server config is accessible to server-only so is great for secrets (like API keys etc):
 server:
+  feeds:
+    publications:
+      origin: SECRET
+      apiKey: SECRET
+    inDev:
+      origin: SECRET
+      apiKey: SECRET

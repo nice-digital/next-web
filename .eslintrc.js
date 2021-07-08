@@ -33,18 +33,22 @@ module.exports = {
 		},
 	},
 	rules: {
-		// Place to specify ESLint rules. Can be used to overwrite rules specified from the extended configs
-		// e.g. "@typescript-eslint/explicit-function-return-type": "off",
+		// We use noImplicitAny so don't need function return types
+		"@typescript-eslint/explicit-function-return-type": "off",
 		"@typescript-eslint/no-explicit-any": "error",
+		"@typescript-eslint/explicit-module-boundary-types": [
+			"error",
+			{ allowedNames: ["getServerSideProps"] },
+		],
 		// Allow unused variables that start with _ see https://stackoverflow.com/a/64067915/486434
 		"@typescript-eslint/no-unused-vars": ["warn", { argsIgnorePattern: "^_" }],
 		"react/react-in-jsx-scope": "off",
 		"react/display-name": "off",
 		"react/prop-types": "off",
 		"@next/next/no-html-link-for-pages": ["warn", "./web/src/pages"],
-		"import/first": 2,
-		"import/order": 2,
-		"import/newline-after-import": 2,
+		"import/first": "error",
+		"import/order": "error",
+		"import/newline-after-import": "error",
 		"import/no-unresolved": "error",
 	},
 	overrides: [
