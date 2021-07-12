@@ -121,7 +121,7 @@ export default function Published({
 export const getServerSideProps = async (
 	_context: GetServerSidePropsContext
 ): Promise<{ props: PublishedGuidancePageProps }> => {
-	// Download required assets in parallel
+	// Retrieve required objects in parallel
 	const productsTask = getAllProducts(),
 		productTypesTask = getAllProductTypes(),
 		areasOfInterestTask = getAllAreasOfInterest();

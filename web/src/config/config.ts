@@ -27,6 +27,26 @@ export interface PublicConfig {
 	readonly publicBaseUrl: string;
 }
 
+/**
+ * Config for object cache
+ */
+export interface CacheConfig {
+	/** The prefix for cache keys */
+	readonly keyPrefix: string;
+
+	/** Path to the folder used for file system disk cache */
+	readonly filePath: string;
+
+	/** The default TTL (time to live), in seconds, of cache entries */
+	readonly defaultTTL: number;
+
+	/** The longer TTL (time to live), in seconds, for long-lived cache entries that rarely change */
+	readonly longTTL: number;
+
+	/** Threshold for TTL, in seconds, below which object caches are refreshed in the background as per https://edibleco.de/3hyfpGG */
+	readonly refreshThreshold: number;
+}
+
 export interface FeedConfig {
 	/** The origin URL of the feeds */
 	readonly origin: string;
@@ -47,6 +67,7 @@ export interface FeedsConfig {
  * Server-only run time config, useful for secrets etc
  */
 export interface ServerConfig {
+	cache: CacheConfig;
 	feeds: FeedsConfig;
 }
 

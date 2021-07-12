@@ -1,4 +1,5 @@
 import needle from "needle";
+
 import {
 	AreaOfInterest,
 	AreasOfInterestList,
@@ -6,25 +7,58 @@ import {
 	ProductLite,
 	ProductType,
 	ProductTypeList,
+	FeedPath,
 } from "./types";
 import { serverRuntimeConfig } from "@/config";
+import { cache, getCacheKey } from "@/cache";
+
+export * from "./types";
 
 const { apiKey, origin } = serverRuntimeConfig.feeds.publications,
-	productsLiteFeedPath = "/feeds/products-lite",
-	productTypesFeedPath = "/feeds/producttypes",
-	areasOfInterestFeedPath = "/feeds/areaofinteresttypes";
+	{ defaultTTL, longTTL } = serverRuntimeConfig.cache;
 
-type FeedPaths =
-	| typeof productsLiteFeedPath
-	| typeof productTypesFeedPath
-	| typeof areasOfInterestFeedPath;
+/**
+ * Gets a list of products from the 'products lite' endpoint.
+ */
+export const getAllProducts = async (): Promise<ProductLite[]> =>
+	(await getFeedBodyCached<ProductListLite>(FeedPath.ProductsLite, defaultTTL))
+		._embedded["nice.publications:product-list-lite"]._embedded[
+		"nice.publications:product-lite"
+	];
+
+/**
+ * Gets _all_ product types.
+ *
+ * Note: there's no pre-filter so it includes both enabled _and_ disabled product types.
+ */
+export const getAllProductTypes = async (): Promise<ProductType[]> =>
+	(await getFeedBodyCached<ProductTypeList>(FeedPath.ProductTypes, longTTL))
+		._embedded["nice.publications:product-type-list"]._embedded[
+		"nice.publications:product-type"
+	];
+
+/**
+ * Gets _all_ areas of interest e.g. Covid-19 and Antimicrbial prescribing.
+ *
+ * Note: there's no pre-filter so it includes both enabled _and_ disabled areas of interest.
+ */
+export const getAllAreasOfInterest = async (): Promise<AreaOfInterest[]> =>
+	(
+		await getFeedBodyCached<AreasOfInterestList>(
+			FeedPath.AreasOfInterest,
+			longTTL
+		)
+	)._embedded["nice.publications:area-of-interest-type-list"]._embedded[
+		"nice.publications:area-of-interest-type"
+	];
 
 /**
  * Gets the body of a feed directly from publications
+ *
  * @param path The path of the feed to request
  * @returns The body of the feed
  */
-const getFeedBodyUnCached = async <T>(path: FeedPaths) =>
+const getFeedBodyUnCached = async <T>(path: FeedPath) =>
 	(
 		await needle("get", origin + path, {
 			json: true,
@@ -34,41 +68,17 @@ const getFeedBodyUnCached = async <T>(path: FeedPaths) =>
 		})
 	).body as T;
 
-const getFeedBodyCached = async <T>(path: FeedPaths) =>
-	getFeedBodyUnCached<T>(path);
-// cache.wrap<T>(getCacheKey("publications", path), () =>
-// 	getFeedBodyUnCached<T>(path)
-// );
-
 /**
- * Gets a list of products from the 'products lite' endpoint.
- */
-export const getAllProducts = async (): Promise<readonly ProductLite[]> =>
-	(await getFeedBodyCached<ProductListLite>(productsLiteFeedPath))._embedded[
-		"nice.publications:product-list-lite"
-	]._embedded["nice.publications:product-lite"];
-
-/**
- * Gets a list of product types.
+ * Gets the body of a feed from the cache, if it exists.
+ * If the item isn't in cache then it will hit the publications feed endpoint directly to get fresh data.
  *
- * Note: there's no pre-filter so it includes both enabled _and_ disabled.
+ * @param path The path of the feed endpoint to request
+ * @param ttl The TTL (time to live) of the entry
+ * @returns The body of the feed
  */
-export const getAllProductTypes = async (): Promise<readonly ProductType[]> =>
-	(await getFeedBodyCached<ProductTypeList>(productTypesFeedPath))._embedded[
-		"nice.publications:product-type-list"
-	]._embedded["nice.publications:product-type"];
-
-/**
- * Gets _all areas of interest e.g. Covid-19 and Antimicrbial prescribing.
- *
- * Note: there's no pre-filter so it includes both enabled _and_ disabled.
- */
-export const getAllAreasOfInterest = async (): Promise<
-	readonly AreaOfInterest[]
-> =>
-	(await getFeedBodyCached<AreasOfInterestList>(areasOfInterestFeedPath))
-		._embedded["nice.publications:area-of-interest-type-list"]._embedded[
-		"nice.publications:area-of-interest-type"
-	];
-
-export * from "./types";
+const getFeedBodyCached = async <T>(path: FeedPath, ttl: number) =>
+	cache.wrap<T>(
+		getCacheKey("publications", path),
+		() => getFeedBodyUnCached<T>(path),
+		{ ttl }
+	);

@@ -1,3 +1,9 @@
+export enum FeedPath {
+	ProductsLite = "/feeds/products-lite",
+	ProductTypes = "/feeds/producttypes",
+	AreasOfInterest = "/feeds/areaofinteresttypes",
+}
+
 export enum ProductStatus {
 	Published = "Published",
 	Withdrawn = "Withdrawn",
@@ -174,7 +180,7 @@ type FeedContent<
 				readonly self: ReadonlyArray<Link>;
 			};
 			readonly _embedded: {
-				readonly [key in TEmbeddedInner]: readonly TItemType[];
+				readonly [key in TEmbeddedInner]: TItemType[];
 			};
 			readonly ETag: null;
 		};
