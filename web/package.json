@@ -28,9 +28,14 @@
   "dependencies": {
     "@nice-digital/design-system": "^1.2.13",
     "@nice-digital/global-nav": "github:nice-digital/global-nav",
+    "cache-manager": "^3.4.4",
+    "cache-manager-fs-hash": "^1.0.0",
     "config": "^3.3.6",
     "cross-env": "^7.0.3",
+    "dayjs": "^1.10.6",
+    "fast-sort": "^3.0.2",
     "js-yaml": "^4.1.0",
+    "needle": "^2.8.0",
     "next": "^11.0.1",
     "next-logger": "^2.0.0",
     "next-plugin-node-config": "^1.0.2",
@@ -43,9 +48,12 @@
     "serialize-error": "^8.1.0"
   },
   "devDependencies": {
+    "@types/cache-manager": "^3.4.2",
+    "@types/cache-manager-fs-hash": "0.0.1",
     "next-transpile-modules": "^8.0.0",
     "pino-pretty": "^5.1.0",
-    "sass": "^1.35.1"
+    "sass": "^1.35.1",
+    "type-fest": "^1.2.2"
   },
   "volta": {
     "node": "14.17.1"

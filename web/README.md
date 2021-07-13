@@ -122,7 +122,7 @@ This _default.yml_ file will be transformed with real values on deployment via O
 
 ### Secrets
 
-Sensitive values like secrets are deliberately empty - this is a *public* repo. Create a local file (e.g. _local.json_ or _local.yml_) in the _config_ directory with any secrets and these will be automatically merged with the config from _default.yml_.
+Sensitive values like secrets are deliberately empty - this is a *public* repo. Create a local file (e.g. _local-development.json_ or _local-development.yml_) in the _config_ directory with any secrets and these will be automatically merged with the config from _default.yml_. Note: avoid using just _local.yml_ as this will also affect tests.
 
 ## :rocket: Set up
 

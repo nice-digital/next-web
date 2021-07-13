@@ -13,7 +13,7 @@ module.exports = {
 		"!**/jest.config.js",
 	],
 	testResultsProcessor: "jest-teamcity-reporter",
-	moduleFileExtensions: ["js", "ts", "tsx"],
+	moduleFileExtensions: ["ts", "tsx", "js"],
 	transform: {
 		"^.+\\.(ts|tsx|js)$": "ts-jest",
 	},

@@ -16,6 +16,26 @@ public:
   publicBaseUrl: ''
 
 # ! This is a PUBLIC repo so please don't put any sensitive info or secrets in here
-# ! Use local.yml or local.json to override settings locally instead: https://edibleco.de/3dLJKiP
+# ! Use local-development.yml or local-development.json to override settings locally instead: https://edibleco.de/3dLJKiP
 # ! Server config is accessible to server-only so is great for secrets (like API keys etc):
 server:
+  cache:
+    # Prefix added to all cache keys
+    keyPrefix: next-web:local
+    # The folder into which the feed cache is stored
+    filePath: ./.cache/
+    # The default TTL (time to live) (aka expiry duration), in seconds, for the object cache
+    defaultTTL: 86400
+    # A longer TTL, in seconds, than the default, used for 'long-lived' cache entries that very rarely change.
+    longTTL: 604800
+    # Threshold for TTL, in seconds, below which object caches are refreshed in the background as per https://edibleco.de/3hyfpGG
+    # Should be lower than defaultTTL.
+    # Example: to check for fresh data every 5 minutes, it should be 300 seconds (5 * 60) lower than defaultTTL.
+    refreshThreshold: 86100
+  feeds:
+    publications:
+      origin: SECRET
+      apiKey: SECRET
+    inDev:
+      origin: SECRET
+      apiKey: SECRET

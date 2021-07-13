@@ -6,6 +6,13 @@ declare module "*.scss" {
 	export default content;
 }
 
+// So that we can import JSON files in TypeScript.
+declare module "*.json" {
+	const value: unknown;
+
+	export default value;
+}
+
 /**
  * The type of object to push into Google Tag Manager (GTM) data layer via `window.dataLayer.push`.
  * Needed to avoid TypeScript errors like "Property 'dataLayer' does not exist on type 'Window & typeof globalThis'" when you use `window.dataLayer`

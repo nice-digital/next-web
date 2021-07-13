@@ -17,7 +17,8 @@
     "**/.DS_Store": true,
     "**/.next": true,
     "**/coverage": true,
-    "**/dist": true
+    "**/dist": true,
+    "**/.cache": true
   },
   "css.validate": false,
   "less.validate": false,

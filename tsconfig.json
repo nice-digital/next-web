@@ -7,6 +7,8 @@
     "strictFunctionTypes": true,
     "strictPropertyInitialization": true,
     "strictBindCallApply": true,
+    "noImplicitAny": true,
+    "noImplicitReturns": true,
     "alwaysStrict": true,
     "forceConsistentCasingInFileNames": true,
     "esModuleInterop": true,
