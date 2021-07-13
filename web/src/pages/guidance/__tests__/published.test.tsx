@@ -1,34 +1,9 @@
 import { GetServerSidePropsContext } from "next";
 
 import { getServerSideProps, productsPerPageDefault } from "../published.page";
-import {
-	getAllProducts,
-	getAllProductTypes,
-	getAllAreasOfInterest,
-} from "@/feeds/publications/publications";
-
-import products from "@/feeds/publications/mockData/products-lite-list.json";
-
-jest.mock("@/feeds/publications/publications", () => ({
-	...jest.requireActual("@/feeds/publications/publications"),
-	// We only need to mock the functions that get the data (not enums etc)
-	getAllProducts: jest.fn(),
-	getAllProductTypes: jest.fn(),
-	getAllAreasOfInterest: jest.fn(),
-}));
 
 describe("/guidance/published", () => {
-	const mockAllProductTypes = [] as unknown[],
-		mockAllAreasOfInterest = [] as unknown[];
-	beforeEach(() => {
-		(getAllProducts as jest.Mock).mockResolvedValue(products);
-		(getAllProductTypes as jest.Mock).mockResolvedValue(mockAllProductTypes);
-		(getAllAreasOfInterest as jest.Mock).mockResolvedValue(
-			mockAllAreasOfInterest
-		);
-	});
-
-	describe("getServerSideProps", async () => {
+	describe("getServerSideProps", () => {
 		it("should return page 1 with empty pa querystring", async () => {
 			const { props } = await getServerSideProps({
 				query: { pa: "" },

@@ -16,14 +16,14 @@ public:
   publicBaseUrl: ''
 
 # ! This is a PUBLIC repo so please don't put any sensitive info or secrets in here
-# ! Use local.yml or local.json to override settings locally instead: https://edibleco.de/3dLJKiP
+# ! Use local-development.yml or local-development.json to override settings locally instead: https://edibleco.de/3dLJKiP
 # ! Server config is accessible to server-only so is great for secrets (like API keys etc):
 server:
   cache:
     # Prefix added to all cache keys
     keyPrefix: next-web:local
     # The folder into which the feed cache is stored
-    filePath: c:\.next-web-cache\
+    filePath: ./.cache/
     # The default TTL (time to live) (aka expiry duration), in seconds, for the object cache
     defaultTTL: 86400
     # A longer TTL, in seconds, than the default, used for 'long-lived' cache entries that very rarely change.

@@ -1,0 +1,51 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`publications getAllAreasOfInterest should load raw feed data with empty cache 1`] = `
+Object {
+  "ETag": null,
+  "Enabled": true,
+  "IdentifierPrefix": "AMP",
+  "LastModified": "2021-02-23T00:00:00",
+  "Name": "Antimicrobial prescribing",
+  "PluralName": "Antimicrobial prescribing",
+  "_links": Object {
+    "self": Array [
+      Object {},
+    ],
+  },
+}
+`;
+
+exports[`publications getAllProductTypes should load raw feed data with empty cache 1`] = `
+Object {
+  "ETag": null,
+  "Enabled": true,
+  "Group": "Advice",
+  "IdentifierPrefix": "APA",
+  "LastModified": "2016-09-06T00:00:00",
+  "Name": "Antimicrobial prescribing evidence summary",
+  "Parent": "ES",
+  "PluralName": "Antimicrobial prescribing evidence summaries",
+  "_links": Object {
+    "self": Array [
+      Object {},
+    ],
+  },
+}
+`;
+
+exports[`publications getAllProducts should load raw feed data with empty cache 1`] = `
+Object {
+  "AreasOfInterestList": Array [],
+  "DevelopedAs": null,
+  "Id": "CG1",
+  "LastMajorModificationDate": "2002-12-01T00:00:00",
+  "LastModified": "2020-09-02T08:58:37.35792Z",
+  "ProductGroup": "Guideline",
+  "ProductStatus": "Withdrawn",
+  "ProductType": "CG",
+  "PublishedDate": "2002-12-01T00:00:00",
+  "RelevantTo": Array [],
+  "Title": "Schizophrenia",
+}
+`;

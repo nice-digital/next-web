@@ -1,3 +1,5 @@
+import type { Except, ReadonlyDeep } from "type-fest";
+
 export enum FeedPath {
 	ProductsLite = "/feeds/products-lite",
 	ProductTypes = "/feeds/producttypes",
@@ -125,69 +127,83 @@ interface EmptyLinks {
 	readonly self: [Record<string, never>];
 }
 
-export interface BaseFeedItem {
-	readonly _links: EmptyLinks;
+export type BaseFeedItem = ReadonlyDeep<{
+	_links: EmptyLinks;
 	/** ETag is always null so kind of pointless but kept here for completeness */
-	readonly ETag: null;
+	ETag: null;
 	/** Full ISO date string like `2021-04-15T08:18:13.7945978Z` */
-	readonly LastModified: string;
-}
+	LastModified: string;
+}>;
 
-export interface ProductLite extends BaseFeedItem {
-	readonly _links: EmptyLinks & {
-		readonly "nice.publications:productfeed": Link[];
-	};
-	readonly Id: string;
-	readonly Title: string;
-	readonly ProductStatus: ProductStatus;
-	readonly ProductType: ProductTypeAcronym;
-	/** ISO date string like `2017-07-06T00:00:00`. Notice it's a rounded time because it's set manually by an editor. */
-	readonly PublishedDate: string;
-	/** ISO date string like `2017-07-06T00:00:00` or `2021-05-21T10:54:52.4655487`. */
-	readonly LastMajorModificationDate: string;
-	readonly AreasOfInterestList: AreaOfInterestAcronym[];
-	readonly DevelopedAs: DevelopedAsProductTypeAcronym | null;
-	readonly RelevantTo: RelevantToProductTypeAcronym[];
-	readonly ProductGroup: ProductGroup;
-}
+/**
+ * The raw object that comes back from the feed
+ */
+export type ProductLiteRaw = BaseFeedItem &
+	ReadonlyDeep<{
+		_links: EmptyLinks & {
+			"nice.publications:productfeed": Link[];
+		};
+		ETag: null;
+		Id: string;
+		Title: string;
+		ProductStatus: ProductStatus;
+		ProductType: ProductTypeAcronym;
+		/** ISO date string like `2017-07-06T00:00:00`. Notice it's a rounded time because it's set manually by an editor. */
+		PublishedDate: string;
+		/** ISO date string like `2017-07-06T00:00:00` or `2021-05-21T10:54:52.4655487`. */
+		LastMajorModificationDate: string;
+		AreasOfInterestList: AreaOfInterestAcronym[];
+		DevelopedAs: DevelopedAsProductTypeAcronym | null;
+		RelevantTo: RelevantToProductTypeAcronym[];
+		ProductGroup: ProductGroup;
+	}>;
 
-export interface ProductType extends BaseFeedItem {
-	readonly Enabled: boolean;
-	readonly Name: string;
-	readonly PluralName: string;
-	readonly IdentifierPrefix: ProductTypeAcronym;
-	readonly Group: ProductGroup;
-	readonly Parent: ParentProductTypeAcronym | "";
-}
+/** A product lite from the feed, but with redundant properties removed */
+export type ProductLite = Except<ProductLiteRaw, "ETag" | "_links">;
 
-export interface AreaOfInterest extends BaseFeedItem {
-	readonly Enabled: boolean;
-	readonly Name: string;
-	readonly PluralName: string;
-}
+export type ProductType = BaseFeedItem &
+	ReadonlyDeep<{
+		Enabled: boolean;
+		Name: string;
+		PluralName: string;
+		IdentifierPrefix: ProductTypeAcronym;
+		Group: ProductGroup;
+		Parent: ParentProductTypeAcronym | "";
+	}>;
+
+export type AreaOfInterest = BaseFeedItem &
+	ReadonlyDeep<{
+		Enabled: boolean;
+		Name: string;
+		PluralName: string;
+	}>;
 
 type FeedContent<
 	TEmbeddedOuter extends string,
 	TEmbeddedInner extends string,
-	TItemType extends BaseFeedItem
-> = {
-	readonly _links: {
-		readonly self: Link[];
-	};
-	readonly _embedded: {
-		readonly [key in TEmbeddedOuter]: {
-			readonly _links: {
-				readonly self: ReadonlyArray<Link>;
-			};
-			readonly _embedded: {
-				readonly [key in TEmbeddedInner]: TItemType[];
-			};
-			readonly ETag: null;
-		};
-	};
-	readonly ETag: string | null;
-	readonly LastModified: string;
-};
+	TItemType
+> = Readonly<{
+	_links: Readonly<{
+		self: Link[];
+	}>;
+	_embedded: Readonly<
+		{
+			[key in TEmbeddedOuter]: Readonly<{
+				_links: Readonly<{
+					self: ReadonlyArray<Link>;
+				}>;
+				_embedded: Readonly<
+					{
+						[key in TEmbeddedInner]: TItemType[];
+					}
+				>;
+				ETag: null;
+			}>;
+		}
+	>;
+	ETag: string | null;
+	LastModified: string;
+}>;
 
 export type AreasOfInterestList = FeedContent<
 	"nice.publications:area-of-interest-type-list",
@@ -204,5 +220,5 @@ export type ProductTypeList = FeedContent<
 export type ProductListLite = FeedContent<
 	"nice.publications:product-list-lite",
 	"nice.publications:product-lite",
-	ProductLite
+	ProductLiteRaw
 >;

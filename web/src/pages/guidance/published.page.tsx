@@ -1,6 +1,7 @@
 import { GetServerSidePropsContext } from "next";
 import { NextSeo } from "next-seo";
 import dayjs from "dayjs";
+import { inPlaceSort } from "fast-sort";
 
 import { Breadcrumbs, Breadcrumb } from "@nice-digital/nds-breadcrumbs";
 import { PageHeader } from "@nice-digital/nds-page-header";
@@ -25,15 +26,6 @@ import { Link } from "@/components/Link/Link";
  * The number of products to show per page, if the user hasn't specified
  */
 export const productsPerPageDefault = 10;
-// const prefixesThatShouldNotBeFilteredBy = [
-// 	ProductPrefix.NG,
-// 	ProductPrefix.PIP,
-// 	ProductPrefix.PSG,
-// 	ProductPrefix.COA,
-// 	ProductPrefix.COVT,
-// 	ProductPrefix.COVM,
-// 	ProductPrefix.LGB,
-// ];
 
 interface PublishedGuidancePageProps {
 	products: readonly ProductLite[];
@@ -104,16 +96,29 @@ export default function Published({
 			</p>
 			<h2>Product types</h2>
 			{productTypes.map(({ Name }) => (
-				<div key={Name}>{Name}</div>
+				<p key={Name}>{Name}</p>
 			))}
 			<h2>Areas of interest</h2>
 			{areasOfInterest.map(({ Name }) => (
-				<div key={Name}>{Name}</div>
+				<p key={Name}>{Name}</p>
 			))}
 			<h2>Products</h2>
-			{products.map(({ Title }) => (
-				<div key={Title}>{Title}</div>
-			))}
+			{products.map(
+				({ Title, Id, LastMajorModificationDate, PublishedDate }) => (
+					<div key={Title}>
+						<h3>
+							{Title} ({Id})
+						</h3>
+						<p>
+							<br />
+							Last modified:{" "}
+							{dayjs(LastMajorModificationDate).format("DD MMM YYYY")}
+							<br />
+							Published: {dayjs(PublishedDate).format("DD MMM YYYY")}
+						</p>
+					</div>
+				)
+			)}
 		</>
 	);
 }
@@ -129,15 +134,21 @@ export const getServerSideProps = async (
 	// Filter down to only what we need - the raw feed methods just give us everything
 	const productTypes = (await productTypesTask).filter(isEnabled),
 		areasOfInterest = (await areasOfInterestTask).filter(isEnabled),
-		allPublishedListProducts = (await productsTask)
-			.filter(isPublishedListProduct)
-			.sort(defaultProductSortComparer);
+		publishedListProducts = (await productsTask).filter(isPublishedListProduct);
+
+	// Exclude times when we're comparing dates because we never show times to users
+	inPlaceSort(publishedListProducts).by([
+		// We don't use standard modification date as that could just be a small spelling fix.
+		{ desc: (u) => stripTime(u.LastMajorModificationDate) },
+		{ desc: (u) => stripTime(u.PublishedDate) },
+		{ asc: "Title" },
+	]);
 
 	const pageSize = Number(_context.query["ps"]) || productsPerPageDefault,
 		currentPage = Number(_context.query["pa"]) || 1,
-		totalProducts = allPublishedListProducts.length,
+		totalProducts = publishedListProducts.length,
 		totalPages = Math.ceil(totalProducts / pageSize),
-		products = allPublishedListProducts.slice(currentPage - 1, pageSize);
+		products = publishedListProducts.slice(currentPage - 1, pageSize);
 
 	return {
 		props: {
@@ -156,7 +167,9 @@ export const getServerSideProps = async (
  * Simple function that returns true/false for whether the given object is enabled or not.
  * Used for filtering arrays.
  */
-const isEnabled = ({ Enabled }: Pick<ProductType, "Enabled">) => Enabled;
+const isEnabled = ({
+	Enabled,
+}: Pick<ProductType | AreaOfInterest, "Enabled">) => Enabled;
 
 /**
  * Determines whether the given product should appear in the list.
@@ -169,23 +182,12 @@ const isPublishedListProduct = (product: ProductLite) =>
 	product.ProductStatus == ProductStatus.Published &&
 	product.ProductGroup != ProductGroup.Corporate;
 
-/** The default sort order for a list of products, in this order:
- * - last major modification date
- * - published date
- * - alphabetical
- * Note: we don't use modification date as that could just be a small spelling fix.
- * Note: we exclude times when we're comaping date because we never show times to users
+/**
+ * Returns a a sortable date with just year, month and date (without time).
+ * We never expose times to users so it makes sense to just sort by date instead.
+ *
+ * @param isoDateStr The full date string with timezone e.g. `2021-05-21T10:54:52.4655487`
+ * @returns The sortable date, without the timezone e.g. `2021-05-21`
  */
-const defaultProductSortComparer = (a: ProductLite, b: ProductLite) => {
-	if (a.LastMajorModificationDate != b.LastMajorModificationDate)
-		return dayjs(b.LastMajorModificationDate)
-			.startOf("day")
-			.diff(dayjs(a.LastMajorModificationDate).startOf("day"));
-
-	if (a.PublishedDate != b.PublishedDate)
-		return dayjs(b.PublishedDate)
-			.startOf("day")
-			.diff(dayjs(a.PublishedDate).startOf("day"));
-
-	return a.Title.localeCompare(b.Title);
-};
+const stripTime = (isoDateStr: string) =>
+	isoDateStr.substring(0, isoDateStr.indexOf("T"));
