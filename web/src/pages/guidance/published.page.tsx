@@ -1,14 +1,9 @@
 import { GetServerSidePropsContext } from "next";
 import { NextSeo } from "next-seo";
-import dayjs from "dayjs";
 import { inPlaceSort } from "fast-sort";
 
 import { Breadcrumbs, Breadcrumb } from "@nice-digital/nds-breadcrumbs";
 import { PageHeader } from "@nice-digital/nds-page-header";
-import {
-	HorizontalNav,
-	HorizontalNavLink,
-} from "@nice-digital/nds-horizontal-nav";
 
 import {
 	getAllProductTypes,
@@ -20,7 +15,8 @@ import {
 	ProductType,
 	ProductGroup,
 } from "@/feeds/publications/publications";
-import { Link } from "@/components/Link/Link";
+import { GuidanceListNav } from "@/components/GuidanceListNav/GuidanceListNav";
+import { formatDateStr, stripTime } from "@/utils";
 
 /**
  * The number of products to show per page, if the user hasn't specified
@@ -50,45 +46,22 @@ export default function Published({
 }: PublishedGuidancePageProps): JSX.Element {
 	return (
 		<>
-			<NextSeo title="Published guidance, advice and quality standards" />
+			<NextSeo title="Published guidance, quality standards and advice" />
 
 			<Breadcrumbs>
 				<Breadcrumb to="/">Home</Breadcrumb>
 				<Breadcrumb to="/guidance">NICE guidance</Breadcrumb>
 				<Breadcrumb>
-					Published guidance, advice&nbsp;and quality&nbsp;standards
+					Published guidance, quality standards and&nbsp;advice
 				</Breadcrumb>
 			</Breadcrumbs>
 
 			<PageHeader
 				preheading="Published"
-				heading="Guidance, advice&nbsp;and quality&nbsp;standards"
+				heading="Guidance, quality standards and&nbsp;advice"
 			/>
 
-			<HorizontalNav>
-				<HorizontalNavLink
-					destination="/guidance/published"
-					isCurrent
-					elementType={Link}
-				>
-					<a>Published</a>
-				</HorizontalNavLink>
-				<HorizontalNavLink
-					destination="/guidance/inconsultation"
-					elementType={Link}
-				>
-					<a>In consultation</a>
-				</HorizontalNavLink>
-				<HorizontalNavLink
-					destination="/guidance/indevelopment"
-					elementType={Link}
-				>
-					<a>In development</a>
-				</HorizontalNavLink>
-				<HorizontalNavLink destination="/guidance/proposed" elementType={Link}>
-					<a>Proposed</a>
-				</HorizontalNavLink>
-			</HorizontalNav>
+			<GuidanceListNav />
 
 			<p>
 				Showing {products.length} products on page {currentPage} of {totalPages}{" "}
@@ -111,10 +84,9 @@ export default function Published({
 						</h3>
 						<p>
 							<br />
-							Last modified:{" "}
-							{dayjs(LastMajorModificationDate).format("DD MMM YYYY")}
+							Last modified: {formatDateStr(LastMajorModificationDate)}
 							<br />
-							Published: {dayjs(PublishedDate).format("DD MMM YYYY")}
+							Published: {formatDateStr(PublishedDate)}
 						</p>
 					</div>
 				)
@@ -181,13 +153,3 @@ const isEnabled = ({
 const isPublishedListProduct = (product: ProductLite) =>
 	product.ProductStatus == ProductStatus.Published &&
 	product.ProductGroup != ProductGroup.Corporate;
-
-/**
- * Returns a a sortable date with just year, month and date (without time).
- * We never expose times to users so it makes sense to just sort by date instead.
- *
- * @param isoDateStr The full date string with timezone e.g. `2021-05-21T10:54:52.4655487`
- * @returns The sortable date, without the timezone e.g. `2021-05-21`
- */
-const stripTime = (isoDateStr: string) =>
-	isoDateStr.substring(0, isoDateStr.indexOf("T"));
