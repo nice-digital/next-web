@@ -26,7 +26,7 @@
   ],
   "homepage": "https://github.com/nice-digital/next-web#readme",
   "dependencies": {
-    "@nice-digital/design-system": "^1.2.13",
+    "@nice-digital/design-system": "^1.2.16-alpha.0",
     "@nice-digital/global-nav": "github:nice-digital/global-nav",
     "cache-manager": "^3.4.4",
     "cache-manager-fs-hash": "^1.0.0",

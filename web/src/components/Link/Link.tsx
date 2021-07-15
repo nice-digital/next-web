@@ -1,20 +1,50 @@
 import { cloneElement, ReactElement, FC } from "react";
-import NextJSLink from "next/link";
+import NextJSLink, { LinkProps as NextJSLinkProps } from "next/link";
+import { RequireExactlyOne, SetOptional, Except } from "type-fest";
 
-export interface LinkProps {
-	to: string;
-	className?: string;
-	children: ReactElement;
+type NextJSUrl = NextJSLinkProps["href"];
+
+export type LinkProps = RequireExactlyOne<
+	{
+		to?: NextJSUrl;
+		className?: string;
+		children: ReactElement;
+	} & SetOptional<Except<NextJSLinkProps, "prefetch">, "href">,
+	// Support either using `href` or `to` because of different prop types for NDS components vs other.
+	"href" | "to"
+> & {
 	[prop: string]: unknown;
-}
+};
 
 /**
- * @deprecated Only here as a short term thing
- * Simple wrapper around the NextJS link component because of:
- * https://github.com/nice-digital/nice-design-system/issues/213
+ * Simple wrapper around the NextJS link component to allow us pass classes etc directly to the parent wrapper.
+ *
+ * The className prop and any other attributes are passed to the child anchor element.
  */
-export const Link: FC<LinkProps> = ({ children, to, className, ...attrs }) => (
-	<NextJSLink href={to}>
+export const Link: FC<LinkProps> = ({
+	// NextJS link props
+	href,
+	as,
+	replace,
+	scroll,
+	shallow,
+	passHref,
+	locale,
+	// 'Normal' link props
+	to,
+	children,
+	className,
+	...attrs
+}) => (
+	<NextJSLink
+		href={(to || href) as NextJSUrl}
+		as={as}
+		replace={replace}
+		scroll={scroll}
+		shallow={shallow}
+		passHref={passHref}
+		locale={locale}
+	>
 		{cloneElement(children, { className, ...attrs })}
 	</NextJSLink>
 );

@@ -1,6 +1,10 @@
 import dayjs from "dayjs";
 import { Project, ProjectStatus } from "@/feeds/inDev/types";
-import { ProductGroup } from "@/feeds/publications/types";
+import {
+	ProductGroup,
+	ProductLite,
+	ProductTypeAcronym,
+} from "@/feeds/publications/types";
 
 /**
  * Returns a a sortable date with just year, month and date (without time).
@@ -28,7 +32,7 @@ export const formatDateStr = (isoDateStr: string): string =>
 	dayjs(isoDateStr).format(niceDateFormat);
 
 /**
- * Gets the relative path, relative to the root, of an indevelopment project overview page.
+ * Gets the path, relative to the root, of an indevelopment project overview page.
  *
  * Note: advice projects don't have project pages, so return null.
  *
@@ -41,3 +45,35 @@ export const getProjectPath = (project: Project): string | null =>
 		: project.Status === ProjectStatus.Proposed
 		? `/guidance/proposed/${project.Reference.toLowerCase()}`
 		: `/guidance/indevelopment/${project.Reference.toLowerCase()}`;
+
+/**
+ * Gets the path, relative to the root, of an published product overview page.
+ *
+ * @param product The product for which to get the URL
+ * @returns The path of the product, relative to the root
+ */
+export const getProductPath = (product: ProductLite): string => {
+	let productPath: string;
+
+	switch (product.ProductGroup) {
+		case "Guideline":
+		case "Guidance":
+		case "Standard":
+			productPath = "guidance";
+			break;
+		case "Advice":
+			productPath = "advice";
+			break;
+		case "Corporate":
+			// There are 2 types of corporate products that have different URLs: corporate vs process and methods
+			productPath =
+				product.ProductType === ProductTypeAcronym.ECD
+					? "corporate"
+					: "process";
+			break;
+		default:
+			throw `Unsupported product group ${product.ProductGroup}`;
+	}
+
+	return `/${productPath}/${product.Id.toLowerCase()}`;
+};

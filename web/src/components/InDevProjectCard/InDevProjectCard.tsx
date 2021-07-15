@@ -9,6 +9,9 @@ export interface InDevProjectCardProps {
 	project: Project;
 }
 
+/**
+ * NICE Design System Card component for an in development project
+ */
 export const InDevProjectCard: FC<InDevProjectCardProps> = ({ project }) => {
 	const { Title, ProductTypeName, Status, PublishedDate, Reference } = project,
 		destination = getProjectPath(project);
@@ -17,15 +20,20 @@ export const InDevProjectCard: FC<InDevProjectCardProps> = ({ project }) => {
 		{ label: "Product type:", value: ProductTypeName },
 		Status !== ProjectStatus.Proposed
 			? {
-					label: "Expected publication date",
+					visibleLabel: true,
+					label: "Expected publication date:",
 					value: PublishedDate ? (
 						<time dateTime={PublishedDate}>{formatDateStr(PublishedDate)}</time>
 					) : (
-						"TBC"
+						<abbr title="To be confirmed">TBC</abbr>
 					),
 			  }
 			: undefined,
-		{ label: "Reference:", value: Reference },
+		{
+			visibleLabel: true,
+			label: "Reference:",
+			value: Reference,
+		},
 	].filter(Boolean);
 
 	return (

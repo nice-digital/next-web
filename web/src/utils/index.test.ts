@@ -1,5 +1,9 @@
-import { stripTime, formatDateStr, getProjectPath } from "./";
-import { ProductGroup } from "@/feeds/publications/types";
+import { stripTime, formatDateStr, getProjectPath, getProductPath } from "./";
+import {
+	ProductGroup,
+	ProductLite,
+	ProductTypeAcronym,
+} from "@/feeds/publications/types";
 import { Project, ProjectStatus } from "@/feeds/inDev/types";
 
 describe("utils", () => {
@@ -43,5 +47,27 @@ describe("utils", () => {
 				} as Project)
 			).toBe("/guidance/indevelopment/gid-ta123");
 		});
+	});
+
+	describe("getProductPath", () => {
+		it.each([
+			[ProductGroup.Guidance, ProductTypeAcronym.TA, "/guidance/ta123"],
+			[ProductGroup.Guideline, ProductTypeAcronym.NG, "/guidance/ng123"],
+			[ProductGroup.Advice, ProductTypeAcronym.MIB, "/advice/mib123"],
+			[ProductGroup.Standard, ProductTypeAcronym.QS, "/guidance/qs123"],
+			[ProductGroup.Corporate, ProductTypeAcronym.ECD, "/corporate/ecd123"],
+			[ProductGroup.Corporate, ProductTypeAcronym.PMG, "/process/pmg123"],
+		])(
+			"should return correct path for %s (e.g. %s) products",
+			(groupName, productTypeAcronym, expectedPath) => {
+				expect(
+					getProductPath({
+						Id: `${productTypeAcronym}123`,
+						ProductType: productTypeAcronym,
+						ProductGroup: groupName,
+					} as ProductLite)
+				).toBe(expectedPath);
+			}
+		);
 	});
 });

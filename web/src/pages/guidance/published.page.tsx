@@ -1,9 +1,11 @@
 import { GetServerSidePropsContext } from "next";
+import { useCallback } from "react";
 import { NextSeo } from "next-seo";
 import { inPlaceSort } from "fast-sort";
 
 import { Breadcrumbs, Breadcrumb } from "@nice-digital/nds-breadcrumbs";
 import { PageHeader } from "@nice-digital/nds-page-header";
+import { Grid, GridItem } from "@nice-digital/nds-grid";
 
 import {
 	getAllProductTypes,
@@ -16,7 +18,8 @@ import {
 	ProductGroup,
 } from "@/feeds/publications/publications";
 import { GuidanceListNav } from "@/components/GuidanceListNav/GuidanceListNav";
-import { formatDateStr, stripTime } from "@/utils";
+import { ProductCard } from "@/components/ProductCard/ProductCard";
+import { stripTime } from "@/utils";
 
 /**
  * The number of products to show per page, if the user hasn't specified
@@ -44,6 +47,14 @@ export default function Published({
 	areasOfInterest,
 	products,
 }: PublishedGuidancePageProps): JSX.Element {
+	const getProductTypeName = useCallback(
+		(product: ProductLite) =>
+			productTypes.find(
+				({ IdentifierPrefix }) => IdentifierPrefix === product.ProductType
+			)?.Name,
+		[productTypes]
+	);
+
 	return (
 		<>
 			<NextSeo title="Published guidance, quality standards and advice" />
@@ -67,30 +78,35 @@ export default function Published({
 				Showing {products.length} products on page {currentPage} of {totalPages}{" "}
 				({totalProducts} products total)
 			</p>
-			<h2>Product types</h2>
-			{productTypes.map(({ Name }) => (
-				<p key={Name}>{Name}</p>
-			))}
-			<h2>Areas of interest</h2>
-			{areasOfInterest.map(({ Name }) => (
-				<p key={Name}>{Name}</p>
-			))}
-			<h2>Products</h2>
-			{products.map(
-				({ Title, Id, LastMajorModificationDate, PublishedDate }) => (
-					<div key={Title}>
-						<h3>
-							{Title} ({Id})
-						</h3>
-						<p>
-							<br />
-							Last modified: {formatDateStr(LastMajorModificationDate)}
-							<br />
-							Published: {formatDateStr(PublishedDate)}
-						</p>
-					</div>
-				)
-			)}
+
+			<Grid gutter="loose">
+				<GridItem cols={12} md={4} lg={3}>
+					<h2>Product types</h2>
+					<ul className="list list--unstyled">
+						{productTypes.map(({ Name }) => (
+							<li key={Name}>{Name}</li>
+						))}
+					</ul>
+					<h2>Areas of interest</h2>
+					<ul className="list list--unstyled">
+						{areasOfInterest.map(({ Name }) => (
+							<li key={Name}>{Name}</li>
+						))}
+					</ul>
+				</GridItem>
+				<GridItem cols={12} md={8} lg={9}>
+					<h2>Products</h2>
+					<ol className="list list--unstyled">
+						{products.map((product) => (
+							<ProductCard
+								key={product.Id}
+								product={product}
+								productTypeName={getProductTypeName(product)}
+							/>
+						))}
+					</ol>
+				</GridItem>
+			</Grid>
 		</>
 	);
 }

@@ -40,5 +40,61 @@ describe("InDevProjectCard", () => {
 		);
 	});
 
-	it.todo("Metadata");
+	it("should render product type metadata", () => {
+		render(
+			<InDevProjectCard
+				project={
+					{
+						Title: "Test title",
+						Reference: "GID-ABC123",
+						ProductTypeName: "Test product type",
+					} as Project
+				}
+			/>
+		);
+
+		expect(screen.getByText("Product type:").tagName).toBe("DT");
+		expect(screen.getByText("Test product type").tagName).toBe("DD");
+	});
+
+	it("should render expected publication date metadata for TBC date", () => {
+		render(
+			<InDevProjectCard
+				project={
+					{
+						Title: "Test title",
+						Reference: "GID-ABC123",
+						ProductTypeName: "Test product type",
+						PublishedDate: null,
+					} as Project
+				}
+			/>
+		);
+
+		expect(screen.getByText("Expected publication date:").tagName).toBe("DT");
+		expect(screen.getByText("TBC").tagName).toBe("ABBR");
+		expect(screen.getByText("TBC")).toHaveAttribute("title", "To be confirmed");
+	});
+
+	it("should render expected publication date metadata as time tag with correct formatted date", () => {
+		render(
+			<InDevProjectCard
+				project={
+					{
+						Title: "Test title",
+						Reference: "GID-ABC123",
+						ProductTypeName: "Test product type",
+						PublishedDate: "2020-12-31",
+					} as Project
+				}
+			/>
+		);
+
+		expect(screen.getByText("Expected publication date:").tagName).toBe("DT");
+		expect(screen.getByText("31 December 2020").tagName).toBe("TIME");
+		expect(screen.getByText("31 December 2020")).toHaveAttribute(
+			"datetime",
+			"2020-12-31"
+		);
+	});
 });

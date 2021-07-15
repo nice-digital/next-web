@@ -6,7 +6,6 @@ import { Breadcrumbs, Breadcrumb } from "@nice-digital/nds-breadcrumbs";
 import { PageHeader } from "@nice-digital/nds-page-header";
 
 import { getAllProjects, Project, ProjectStatus } from "@/feeds/inDev/inDev";
-import { stripTime } from "@/utils";
 import { InDevProjectCard } from "@/components/InDevProjectCard/InDevProjectCard";
 import { GuidanceListNav } from "@/components/GuidanceListNav/GuidanceListNav";
 
