@@ -14,7 +14,7 @@ import { GuidanceListNav } from "@/components/GuidanceListNav/GuidanceListNav";
  */
 export const projectsPerPageDefault = 10;
 
-interface InDevGuidancePageProps {
+interface ProposedGuidancePageProps {
 	projects: readonly Project[];
 	totalProjects: number;
 	/** 1-based index of the current page */
@@ -23,30 +23,27 @@ interface InDevGuidancePageProps {
 	pageSize: number;
 }
 
-export default function InDevGuidancePage({
+export default function ProposedGuidancePage({
 	pageSize,
 	currentPage,
 	totalProjects,
 	totalPages,
 	projects,
-}: InDevGuidancePageProps): JSX.Element {
+}: ProposedGuidancePageProps): JSX.Element {
 	return (
 		<>
 			<NextSeo
-				title="In development | Guidance"
-				description="Guidance, quality standards and advice in development"
+				title="Proposed | Guidance"
+				description="Guidance and quality standards that have been proposed for development"
 			/>
 
 			<Breadcrumbs>
 				<Breadcrumb to="/">Home</Breadcrumb>
 				<Breadcrumb to="/guidance">NICE guidance</Breadcrumb>
-				<Breadcrumb>In development</Breadcrumb>
+				<Breadcrumb>Proposed</Breadcrumb>
 			</Breadcrumbs>
 
-			<PageHeader
-				preheading="Guidance, quality standards and advice"
-				heading="In development"
-			/>
+			<PageHeader heading="Proposed guidance and quality standards" />
 
 			<GuidanceListNav />
 
@@ -67,13 +64,11 @@ export default function InDevGuidancePage({
 
 export const getServerSideProps = async (
 	_context: GetServerSidePropsContext
-): Promise<{ props: InDevGuidancePageProps }> => {
+): Promise<{ props: ProposedGuidancePageProps }> => {
 	const projectsTask = getAllProjects();
 
 	const allProjects = (await projectsTask).filter(
-		(project) =>
-			project.Status !== ProjectStatus.Discontinued &&
-			project.Status !== ProjectStatus.Proposed
+		(project) => project.Status === ProjectStatus.Proposed
 	);
 
 	inPlaceSort(allProjects).by([

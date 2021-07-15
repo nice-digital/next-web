@@ -5,7 +5,7 @@ import { inPlaceSort } from "fast-sort";
 import { Breadcrumbs, Breadcrumb } from "@nice-digital/nds-breadcrumbs";
 import { PageHeader } from "@nice-digital/nds-page-header";
 
-import { getAllProjects, Project, ProjectStatus } from "@/feeds/inDev/inDev";
+import { getAllConsultations, Consultation } from "@/feeds/inDev/inDev";
 import { InDevProjectCard } from "@/components/InDevProjectCard/InDevProjectCard";
 import { GuidanceListNav } from "@/components/GuidanceListNav/GuidanceListNav";
 
@@ -14,50 +14,51 @@ import { GuidanceListNav } from "@/components/GuidanceListNav/GuidanceListNav";
  */
 export const projectsPerPageDefault = 10;
 
-interface InDevGuidancePageProps {
-	projects: readonly Project[];
-	totalProjects: number;
+interface InConsultationsGuidancePageProps {
+	consultations: readonly Consultation[];
+	totalConsultations: number;
 	/** 1-based index of the current page */
 	currentPage: number;
 	totalPages: number;
 	pageSize: number;
 }
 
-export default function InDevGuidancePage({
+export default function InConsultationsGuidancePage({
 	pageSize,
 	currentPage,
-	totalProjects,
+	totalConsultations,
 	totalPages,
-	projects,
-}: InDevGuidancePageProps): JSX.Element {
+	consultations,
+}: InConsultationsGuidancePageProps): JSX.Element {
 	return (
 		<>
 			<NextSeo
-				title="In development | Guidance"
-				description="Guidance, quality standards and advice in development"
+				title="In consultation | Guidance"
+				description="Guidance and quality standards open for consultation"
 			/>
 
 			<Breadcrumbs>
 				<Breadcrumb to="/">Home</Breadcrumb>
 				<Breadcrumb to="/guidance">NICE guidance</Breadcrumb>
-				<Breadcrumb>In development</Breadcrumb>
+				<Breadcrumb>In consultation</Breadcrumb>
 			</Breadcrumbs>
 
 			<PageHeader
-				preheading="Guidance, quality standards and advice"
-				heading="In development"
+				preheading="Guidance and quality standards"
+				heading="In consultation"
 			/>
 
 			<GuidanceListNav />
 
 			<p>
-				Showing {projects.length} products on page {currentPage} of {totalPages}{" "}
-				({totalProjects} products total)
+				Showing {consultations.length} products on page {currentPage} of{" "}
+				{totalPages} ({totalConsultations} products total)
 			</p>
 			<ol className="list list--unstyled">
-				{projects.map((project) => (
-					<li key={project.Reference}>
-						<InDevProjectCard project={project} />
+				{consultations.map((consultation) => (
+					<li key={consultation.ConsultationId}>
+						{/* <InDevProjectCard project={project} /> */}
+						{consultation.Title}
 					</li>
 				))}
 			</ol>
@@ -67,16 +68,12 @@ export default function InDevGuidancePage({
 
 export const getServerSideProps = async (
 	_context: GetServerSidePropsContext
-): Promise<{ props: InDevGuidancePageProps }> => {
-	const projectsTask = getAllProjects();
+): Promise<{ props: InConsultationsGuidancePageProps }> => {
+	const consultationsTask = getAllConsultations();
 
-	const allProjects = (await projectsTask).filter(
-		(project) =>
-			project.Status !== ProjectStatus.Discontinued &&
-			project.Status !== ProjectStatus.Proposed
-	);
+	const allConsultations = await consultationsTask;
 
-	inPlaceSort(allProjects).by([
+	inPlaceSort(allConsultations).by([
 		{
 			asc: "Title",
 			// Case insensitive sorting
@@ -86,17 +83,17 @@ export const getServerSideProps = async (
 
 	const pageSize = Number(_context.query["ps"]) || projectsPerPageDefault,
 		currentPage = Number(_context.query["pa"]) || 1,
-		totalProjects = allProjects.length,
-		totalPages = Math.ceil(totalProjects / pageSize),
-		projects = allProjects.slice(currentPage - 1, pageSize);
+		totalConsultations = allConsultations.length,
+		totalPages = Math.ceil(totalConsultations / pageSize),
+		consultations = allConsultations.slice(currentPage - 1, pageSize);
 
 	return {
 		props: {
 			currentPage,
 			pageSize,
 			totalPages,
-			totalProjects,
-			projects,
+			totalConsultations,
+			consultations,
 		},
 	};
 };

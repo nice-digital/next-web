@@ -1,6 +1,7 @@
 import { render, screen } from "@testing-library/react";
 
 import { InDevProjectCard } from "./InDevProjectCard";
+import { ProjectStatus } from "@/feeds/inDev/types";
 
 type Project = Parameters<typeof InDevProjectCard>[0]["project"];
 
@@ -57,7 +58,7 @@ describe("InDevProjectCard", () => {
 		expect(screen.getByText("Test product type").tagName).toBe("DD");
 	});
 
-	it("should render expected publication date metadata for TBC date", () => {
+	it("should render expected publication date metadata for TBC date with non-proposed guidance", () => {
 		render(
 			<InDevProjectCard
 				project={
@@ -76,7 +77,7 @@ describe("InDevProjectCard", () => {
 		expect(screen.getByText("TBC")).toHaveAttribute("title", "To be confirmed");
 	});
 
-	it("should render expected publication date metadata as time tag with correct formatted date", () => {
+	it("should render expected publication date metadata as time tag with correct formatted date with non-proposed guidance", () => {
 		render(
 			<InDevProjectCard
 				project={
@@ -96,5 +97,20 @@ describe("InDevProjectCard", () => {
 			"datetime",
 			"2020-12-31"
 		);
+	});
+
+	it("should not render expected publication date for proposed guidance", () => {
+		render(
+			<InDevProjectCard
+				project={
+					{
+						Reference: "GID-ABC123",
+						Status: ProjectStatus.Proposed,
+					} as Project
+				}
+			/>
+		);
+
+		expect(screen.queryByText("Expected publication date:")).toBeNull();
 	});
 });

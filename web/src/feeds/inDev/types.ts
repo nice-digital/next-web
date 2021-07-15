@@ -113,3 +113,61 @@ export interface Project {
 	/** TODO Always seems to be an empty array */
 	AreasOfInterestList: [];
 }
+
+export interface InConsultationProjects {
+	_links: {
+		self: [
+			{
+				href: "/inconsultationprojects?Page=0&PageSize=2048";
+			}
+		];
+	};
+	// Sometimes there are no consultations running, in which case `_embedded` is not in the feed at all
+	_embedded?: {
+		"nice.indev:inconsultation-product": Consultation[];
+	};
+	ETag: null;
+	// Page and size is hard coded here
+	Page: 0;
+	PageSize: 2048;
+	TotalItems: number;
+}
+
+export interface Consultation {
+	_links: {
+		self: [
+			{
+				href: `/guidance/${GIDReference}/consultation/html-content${
+					| number
+					| ""}`;
+			}
+		];
+	};
+	ETag: null;
+	Reference: GIDReference;
+	Title: string;
+	ConsultationName: string;
+	/** ISO formatted date like `2021-06-18T00:00:00` */
+	StartDate: string;
+	/** ISO formatted date like `2021-06-18T00:00:00` */
+	EndDate: string;
+	ConsultationType: string;
+	ResourceTitleId: string;
+	ProjectType: ProjectProcess | string;
+	ProductTypeName: string;
+	ShowExpressionOfInterestSubmissionQuestion: boolean;
+	DevelopedAs: null;
+	RelevantTo: null;
+	ConsultationId: number;
+	/** E.g. QSD, IP etc */
+	Process: string;
+	HasDocumentsWhichAllowConsultationComments: boolean;
+	IsCHTE: boolean;
+	/** E.g. HSCTeam or CHTETeam */
+	AllowedRole: string;
+	FirstConvertedDocumentId: null;
+	FirstChapterSlugOfFirstConvertedDocument: null;
+	PartiallyUpdatedProjectReference: null;
+	OrigProjectReference: null;
+	AreasOfInterestList: [];
+}
