@@ -1,7 +1,7 @@
 import { ProductGroup, ProductTypeAcronym } from "@/feeds/publications/types";
 
 export enum FeedPath {
-	AllProjects = "/gidprojects/All",
+	AllProjects = "/gidprojects/all",
 	InConsultationProjects = "/inconsultationprojects",
 }
 

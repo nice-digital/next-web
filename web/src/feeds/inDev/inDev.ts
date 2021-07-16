@@ -8,7 +8,6 @@ import {
 } from "./types";
 
 import { serverRuntimeConfig } from "@/config";
-import { logger } from "@/logger";
 
 export * from "./types";
 

@@ -13,6 +13,9 @@ module.exports = {
 			publications: {
 				origin: "https://next-web-tests-publications.nice.org.uk",
 			},
+			inDev: {
+				origin: "https://next-web-tests-indev.nice.org.uk",
+			},
 		},
 	},
 };

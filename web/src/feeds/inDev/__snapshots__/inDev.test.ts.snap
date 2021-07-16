@@ -1,0 +1,65 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`feeds/inDev getAllConsultations should load raw feed data with empty cache 1`] = `
+Object {
+  "AllowedRole": "CHTETeam",
+  "AreasOfInterestList": Array [],
+  "ConsultationId": 1229,
+  "ConsultationName": "Draft guidance",
+  "ConsultationType": "Draft guidance",
+  "DevelopedAs": null,
+  "ETag": null,
+  "EndDate": "2021-07-16T17:00:00",
+  "FirstChapterSlugOfFirstConvertedDocument": null,
+  "FirstConvertedDocumentId": null,
+  "HasDocumentsWhichAllowConsultationComments": true,
+  "IsCHTE": true,
+  "OrigProjectReference": null,
+  "PartiallyUpdatedProjectReference": null,
+  "Process": "MT",
+  "ProductTypeName": "Medical technologies guidance",
+  "ProjectType": "MTG",
+  "Reference": "GID-MT553",
+  "RelevantTo": null,
+  "ResourceTitleId": "html-content",
+  "ShowExpressionOfInterestSubmissionQuestion": false,
+  "StartDate": "2021-06-18T00:00:00",
+  "Title": "GID-MT553 Synergo for non-muscle-invasive bladder cancer",
+  "_links": Object {
+    "self": Array [
+      Object {
+        "href": "/guidance/GID-MT553/consultation/html-content",
+      },
+    ],
+  },
+}
+`;
+
+exports[`feeds/inDev getAllProjects should load raw feed data with empty cache 1`] = `
+Object {
+  "AreasOfInterestList": Array [],
+  "CreatedDate": "2014-07-16T13:14:34",
+  "DevelopedAs": null,
+  "ETag": "01000000-0000-001B-0000-000000005402",
+  "EvidenceAssessmentGroup": null,
+  "FirstGoLiveDate": null,
+  "IdNumber": null,
+  "LastModifiedDate": "2014-07-16T13:14:34",
+  "Process": "MTA",
+  "ProductTypeName": "Technology appraisal guidance",
+  "ProjectGroup": "Guidance",
+  "ProjectType": "TA",
+  "PublishedDate": null,
+  "Reference": "GID-TAG377",
+  "RelevantTo": null,
+  "Status": "Discontinued",
+  "Title": "Atrial fibrillation - ximelagatran [ID376]",
+  "_links": Object {
+    "self": Array [
+      Object {
+        "href": "/project/GID-TAG377",
+      },
+    ],
+  },
+}
+`;
