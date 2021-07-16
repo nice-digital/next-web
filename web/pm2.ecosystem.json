@@ -2,6 +2,7 @@
   "apps": [
     {
       "name": "Next Web",
+      "cwd": "./",
       "script": "pm2.start.js",
       "args": "",
       "instances": -1,

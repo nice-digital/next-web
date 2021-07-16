@@ -1,6 +1,6 @@
 {
   "name": "@nice-digital/next-web",
-  "version": "0.2.0",
+  "version": "0.3.0",
   "private": true,
   "scripts": {
     "dev": "cross-env NODE_OPTIONS=\"-r next-logger/presets/next-only\" next dev | pino-pretty",
