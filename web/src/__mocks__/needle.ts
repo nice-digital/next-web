@@ -1,11 +1,12 @@
 import { NeedleHttpVerbs, NeedleOptions, NeedleResponse } from "needle";
 
 import { serverRuntimeConfig } from "@/config";
-import { FeedPath } from "@/feeds/publications/publications";
+import { FeedPath as PublicationsFeedPath } from "@/feeds/publications/publications";
+import { FeedPath as InDevFeedPath } from "@/feeds/inDev/inDev";
 
 const mockDataDirectory = "./__data__/";
 
-const { publications } = serverRuntimeConfig.feeds;
+const { publications, inDev } = serverRuntimeConfig.feeds;
 
 const okResponse = (path: string): NeedleResponse =>
 	({
@@ -26,13 +27,26 @@ const fakeNeedleImplementation = async (
 	// Publications feeds
 	if (url.origin === publications.origin) {
 		switch (url.pathname) {
-			case FeedPath.AreasOfInterest:
-			case FeedPath.ProductTypes:
-			case FeedPath.ProductsLite:
+			case PublicationsFeedPath.AreasOfInterest:
+			case PublicationsFeedPath.ProductTypes:
+			case PublicationsFeedPath.ProductsLite:
 				return okResponse(`publications/${url.pathname}.json`);
 			default:
 				throw new Error(
 					`Publications feed ${url.pathname} needs to be mocked: edit file ${__filename} to add a fake implementation for unit testing`
+				);
+		}
+	}
+
+	// InDev feeds
+	if (url.origin === inDev.origin) {
+		switch (url.pathname) {
+			case InDevFeedPath.AllProjects:
+			case InDevFeedPath.InConsultationProjects:
+				return okResponse(`inDev/${url.pathname}.json`);
+			default:
+				throw new Error(
+					`In Dev feed ${url.pathname} needs to be mocked: edit file ${__filename} to add a fake implementation for unit testing`
 				);
 		}
 	}

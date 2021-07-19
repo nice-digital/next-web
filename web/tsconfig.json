@@ -15,7 +15,8 @@
       "@/config": ["src/config/config"],
       "@/logger": ["src/logging/logger"],
       "@/components/*": ["src/components/*"],
-      "@/feeds/*": ["src/feeds/*"]
+      "@/feeds/*": ["src/feeds/*"],
+      "@/utils": ["src/utils"]
     }
   },
   "include": ["./**/*", "./**/*.json", "../jest.config.js"],
