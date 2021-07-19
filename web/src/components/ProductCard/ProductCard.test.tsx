@@ -27,7 +27,7 @@ describe("ProductCard", () => {
 		).toHaveAttribute("value", "NG123");
 	});
 
-	it("should render product title as link to project", () => {
+	it("should render product title as link to product", () => {
 		render(<ProductCard product={mockProduct} />);
 
 		// Note: \xa0 below is because of https://github.com/testing-library/dom-testing-library/issues/904
