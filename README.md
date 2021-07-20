@@ -6,11 +6,14 @@
 
 The repository is set up as a monorepo. That is, there are various sub folders providing different parts of the project e.g. the web app and functional tests:
 
-| Folder            | Purpose        |
-| ----------------- | -------------- |
-| [web](web#readme) | NextJS web app |
+| Folder                      | Purpose                            |
+| --------------------------- | ---------------------------------- |
+| [web](web#readme)           | NextJS web app                     |
+| [web-host](web-host#readme) | PM2 hosting for the NextJS web app |
 
 ## Stack
+
+The common components of the stack are:
 
 - [VS Code IDE](https://code.visualstudio.com/)
   - With recommended extensions (VS Code will prompt you to install these automatically)
@@ -20,6 +23,8 @@ The repository is set up as a monorepo. That is, there are various sub folders p
 - [stylelint](https://stylelint.io/) for SCSS linting
 - [Jest](https://jestjs.io/) for JS unit testing
   - With [React Testing Library](https://testing-library.com/docs/react-testing-library/intro)
+
+There are also more specific stacks detailed in the readme for each sub folder.
 
 ### Linting
 

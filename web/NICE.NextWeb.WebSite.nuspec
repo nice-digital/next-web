@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <package xmlns="http://schemas.microsoft.com/packaging/2011/08/nuspec.xsd">
     <metadata>
-        <id>NICE.NextWeb</id>
+        <id>NICE.NextWeb.WebSite</id>
         <version>1.0.0</version>
         <title>Next Web</title>
         <authors>NICE Digital Services,Ian Routledge</authors>
@@ -22,7 +22,5 @@
 		<file src="next.config.js" />
 		<file src="package.json" />
 		<file src="package-lock.json" />
-		<file src="pm2.ecosystem.json" />
-		<file src="pm2.start.js" />
 	</files>
 </package>

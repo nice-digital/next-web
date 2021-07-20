@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8"?>
+<package xmlns="http://schemas.microsoft.com/packaging/2011/08/nuspec.xsd">
+    <metadata>
+        <id>NICE.NextWeb.WebHost</id>
+        <version>1.0.0</version>
+        <title>Next Web</title>
+        <authors>NICE Digital Services,Ian Routledge</authors>
+        <owners>nice-digital</owners>
+        <projectUrl>https://github.com/nice-digital/next-web/web-host</projectUrl>
+        <requireLicenseAcceptance>false</requireLicenseAcceptance>
+        <description>Web host for Next Web, using PM2</description>
+        <tags>nice nextjs</tags>
+    </metadata>
+    <files>
+		<file src="pm2.start.js" />
+		<file src="pm2.ecosystem.js" />
+		<file src="package.json" />
+		<file src="package-lock.json" />
+	</files>
+</package>
