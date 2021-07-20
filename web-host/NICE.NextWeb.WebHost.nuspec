@@ -13,7 +13,7 @@
     </metadata>
     <files>
 		<file src="pm2.start.js" />
-		<file src="pm2.ecosystem.js" />
+		<file src="pm2.ecosystem.json" />
 		<file src="package.json" />
 		<file src="package-lock.json" />
 	</files>
