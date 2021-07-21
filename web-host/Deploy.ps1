@@ -30,7 +30,7 @@ If ($OctopusParameters) {
 
 Write-Output "Web app is deployed to $deployedWebAppDir"
 
-$pm2WorkingDirectory = Resolve-Path "./current"
+$pm2WorkingDirectory = Join-Path (Resolve-Path .) "current"
 
 Write-Output "Creating symlink from $pm2WorkingDirectory to $deployedWebAppDir"
 
