@@ -1,9 +1,9 @@
 {
   "apps": [
     {
-      "name": "Next Web",
+      "name": "next-web",
       "cwd": "../web",
-      "script": "pm2.start.js",
+      "script": "start.js",
       "args": "",
       "instances": -1,
       "exec_mode": "cluster",

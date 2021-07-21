@@ -12,7 +12,7 @@
         <tags>nice nextjs</tags>
     </metadata>
     <files>
-		<file src="pm2.start.js" />
+		<file src="Deploy.ps1" />
 		<file src="pm2.ecosystem.json" />
 		<file src="package.json" />
 		<file src="package-lock.json" />

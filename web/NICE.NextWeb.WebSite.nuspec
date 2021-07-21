@@ -22,5 +22,6 @@
 		<file src="next.config.js" />
 		<file src="package.json" />
 		<file src="package-lock.json" />
+		<file src="start.js" />
 	</files>
 </package>

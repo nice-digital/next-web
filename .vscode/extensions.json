@@ -8,6 +8,7 @@
     "dbaeumer.vscode-eslint",
     "stylelint.vscode-stylelint",
     "orta.vscode-jest",
-    "ExodiusStudios.comment-anchors"
+    "ExodiusStudios.comment-anchors",
+    "ms-vscode.powershell"
   ]
 }
