@@ -13,7 +13,7 @@ npm run pm2 -- update --mini-list
 # If we're debugging this script locally then we can just point up a level to the web app folder, otherwise get the directory from Octopus
 $deployedWebAppDir = Resolve-Path "../web"
 If ($OctopusParameters) {
-	$deployedWebAppDir = $OctopusParameters["Octopus.Action[Deploy NextJS webapp].Output.Package.InstallationDirectoryPath"]
+	$deployedWebAppDir = $OctopusParameters["Octopus.Action[Deploy NextJS web app].Output.Package.InstallationDirectoryPath"]
 }
 
 Write-Output "Web app is deployed to $deployedWebAppDir"
