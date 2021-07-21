@@ -1,5 +1,8 @@
 # ! OctopusDeploy deployment script, see https://octopus.com/docs/deployments/custom-scripts/scripts-in-packages#supported-scripts
 
+# Hide pesky npm update banner https://stackoverflow.com/a/60525400/486434
+npm config set update-notifier false
+
 # TeamCity builds runs on a linux agent so we have to rebuild binaries for our Windows application servers
 # Using `!$IsLinux` works on both PowerShell 5 and PSCore.
 if(!$IsLinux) {
@@ -10,15 +13,17 @@ if(!$IsLinux) {
 # Update pm2 in case we have a newer version as per https://pm2.keymetrics.io/docs/usage/quick-start/#how-to-update-pm2
 npm run pm2 -- update --mini-list
 
-# If we're debugging this script locally then we can just point up a level to the web app folder, otherwise get the directory from Octopus
-$deployedWebAppDir = Resolve-Path "../web"
 If ($OctopusParameters) {
+	# Find where the Next web app was deployed to: we'll symlink to it
 	$webAppStepNameVariable = "DeployWebAppStepName"
 	$deployWebAppStepName = $OctopusParameters[$webAppStepNameVariable]
 	if(!$deployWebAppStepName) {
 		throw "Could not find Octopus variable called $webAppStepNameVariable. Did you rename it? It should be the name of the step that deploys the NextJS web app."
 	}
 	$deployedWebAppDir = $OctopusParameters["Octopus.Action[$deployWebAppStepName].Output.Package.InstallationDirectoryPath"]
+} else {
+	# If we're debugging this script locally then we can just point up a level to the web app folder
+	$deployedWebAppDir = Resolve-Path "../web"
 }
 
 Write-Output "Web app is deployed to $deployedWebAppDir"
