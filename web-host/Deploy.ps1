@@ -13,7 +13,7 @@ if(!$IsLinux) {
 }
 
 # Update pm2 in case we have a newer version as per https://pm2.keymetrics.io/docs/usage/quick-start/#how-to-update-pm2
-Start-Process "npm" -ArgumentList "run pm2 -- update --mini-list" -NoNewWindow -PassThru -Wait
+#Start-Process "npm" -ArgumentList "run pm2 -- update --mini-list" -NoNewWindow -PassThru -Wait
 #& npm run pm2 -- update --mini-list
 
 If ($OctopusParameters) {
