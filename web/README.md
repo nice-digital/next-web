@@ -157,4 +157,4 @@ This is a good, quick way to verify the production build works properly but it's
 
 > Note: We've opted to use existing server infrastructure (hence use of PM2) in the short term for ease and speed. We ~might~ migrate to serverless infrastructure in the future at which point we'll remove PM2.
 
-See the [pm2](../pm2) folder for more information.
+See the [web-host](../web-host) folder for more information.

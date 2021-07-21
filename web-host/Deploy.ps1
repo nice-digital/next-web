@@ -13,7 +13,7 @@ if(!$IsLinux) {
 }
 
 If ($OctopusParameters) {
-	# Find where the Next web app was deployed to: we'll symlink to it
+	# Find where the Next web app was deployed to: we'll symlink the current folder to it
 	$webAppStepNameVariable = "DeployWebAppStepName"
 	$deployWebAppStepName = $OctopusParameters[$webAppStepNameVariable]
 	if(!$deployWebAppStepName) {
@@ -21,7 +21,7 @@ If ($OctopusParameters) {
 	}
 	$deployedWebAppDir = $OctopusParameters["Octopus.Action[$deployWebAppStepName].Output.Package.InstallationDirectoryPath"]
 } else {
-	# If we're debugging this script locally then we can just point up a level to the web app folder
+	# If we're debugging this script locally (ie NOT in Octo) then we can just point up a level to the web app folder
 	$deployedWebAppDir = Resolve-Path "../web"
 }
 
