@@ -43,3 +43,5 @@ npm start -- --mini-list
 
 # Save the PM2 process list, which allows it to persist across machine restarts
 npm run save
+
+Exit 0
