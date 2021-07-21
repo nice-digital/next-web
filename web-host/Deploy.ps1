@@ -1,5 +1,7 @@
 # ! OctopusDeploy deployment script, see https://octopus.com/docs/deployments/custom-scripts/scripts-in-packages#supported-scripts
 
+$ErrorActionPreference = "Stop"
+
 # Hide pesky npm update banner https://stackoverflow.com/a/60525400/486434
 npm config set update-notifier false
 
