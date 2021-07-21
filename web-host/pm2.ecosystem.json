@@ -1,0 +1,22 @@
+{
+  "apps": [
+    {
+      "name": "next-web",
+      "cwd": "../web",
+      "script": "start.js",
+      "args": "",
+      "instances": -1,
+      "exec_mode": "cluster",
+      "env": {
+        "PORT": 3000,
+        "NODE_ENV": "development",
+        "NODE_OPTIONS": "-r next-logger/presets/next-only"
+      },
+      "env_production": {
+        "PORT": 8092,
+        "NODE_ENV": "production",
+        "NODE_OPTIONS": "-r next-logger"
+      }
+    }
+  ]
+}

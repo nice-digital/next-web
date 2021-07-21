@@ -157,6 +157,4 @@ This is a good, quick way to verify the production build works properly but it's
 
 > Note: We've opted to use existing server infrastructure (hence use of PM2) in the short term for ease and speed. We ~might~ migrate to serverless infrastructure in the future at which point we'll remove PM2.
 
-Run `npm run pm2:start` to run the above NextJS server across multiple process on the available CPU cores using PM2. For example, it will run 7 processes on an 8-core CPU. This command will list out the running processes on the terminal and then leave the processes (and server on http://localhost:3000) running in the background.
-
-There are other commands for controlling PM2, for example `npm run pm2:stop`, `npm run pm2:reload` or `npm run pm2:delete`. For more fine-grained PM2 control use `npm run pm2 -- <options>` for example `npm run pm2 -- monit` to monitor processes or `npm run pm2 -- list` to list all processes.
+See the [web-host](../web-host) folder for more information.
