@@ -12,10 +12,6 @@ if(!$IsLinux) {
 	npm rebuild pm2
 }
 
-# Update pm2 in case we have a newer version as per https://pm2.keymetrics.io/docs/usage/quick-start/#how-to-update-pm2
-#Start-Process "npm" -ArgumentList "run pm2 -- update --mini-list" -NoNewWindow -PassThru -Wait
-#& npm run pm2 -- update --mini-list
-
 If ($OctopusParameters) {
 	# Find where the Next web app was deployed to: we'll symlink to it
 	$webAppStepNameVariable = "DeployWebAppStepName"
@@ -41,10 +37,8 @@ New-Item -Force -ItemType SymbolicLink -Path $pm2WorkingDirectory -Value $deploy
 
 # Start/reload the webapp. We use --mini-list because of the way that Octopus Deploy shows the PM2 tables in logs
 Start-Process "npm" -ArgumentList "start -- --mini-list" -NoNewWindow -PassThru -Wait
-#& npm start -- --mini-list
 
 # Save the PM2 process list, which allows it to persist across machine restarts
 Start-Process "npm" -ArgumentList "run save" -NoNewWindow -PassThru -Wait
-#& npm run save
 
 Exit 0
