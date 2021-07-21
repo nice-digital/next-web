@@ -12,6 +12,7 @@
         <tags>nice nextjs</tags>
     </metadata>
     <files>
+		<file src="node_modules\**" target="node_modules" />
 		<file src="Deploy.ps1" />
 		<file src="pm2.ecosystem.json" />
 		<file src="package.json" />
