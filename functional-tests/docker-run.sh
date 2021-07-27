@@ -36,7 +36,8 @@ function processTestOutput() {
 }
 
 function cleanup() {
-  docker-compose down --remove-orphans --volumes
+  # Stop in the background so the script finishes quicker - we don't need to wait
+  nohup docker-compose down --remove-orphans --volumes > /dev/null 2>&1 &
 }
 
 function exitWithCode()
