@@ -3,6 +3,7 @@ export const pagePaths = {
 	"in consultation guidance list": "/guidance/inconsultation",
 	"in developmen guidancet list": "/guidance/indevelopment",
 	"proposed guidance list": "/guidance/proposed",
+	status: "/status",
 } as const;
 
 export type PageName = keyof typeof pagePaths;
