@@ -9,6 +9,7 @@
     "stylelint.vscode-stylelint",
     "orta.vscode-jest",
     "ExodiusStudios.comment-anchors",
-    "ms-vscode.powershell"
+    "ms-vscode.powershell",
+    "alexkrechik.cucumberautocomplete"
   ]
 }

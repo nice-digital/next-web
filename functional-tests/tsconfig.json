@@ -3,6 +3,7 @@
   "compilerOptions": {
     "target": "esnext",
     "module": "commonjs",
+    "sourceMap": true,
     "composite": true,
     "noEmit": false,
     "outDir": "./dist",

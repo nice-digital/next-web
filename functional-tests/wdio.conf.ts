@@ -2,8 +2,7 @@ const isInDocker = !!process.env.IN_DOCKER,
 	isTeamCity = !!process.env.TEAMCITY_VERSION;
 
 export const config: WebdriverIO.Config = {
-	//runner: "local",
-	maxInstances: isInDocker ? 10 : 2,
+	maxInstances: isInDocker ? 5 : 1,
 	services: isInDocker
 		? []
 		: [
@@ -18,8 +17,6 @@ export const config: WebdriverIO.Config = {
 	path: "/wd/hub",
 
 	specs: ["./features/**/*.feature"],
-
-	//bail: 0,
 
 	capabilities: [
 		{
@@ -46,16 +43,14 @@ export const config: WebdriverIO.Config = {
 		],
 	].filter(Boolean) as WebdriverIO.Config["reporters"],
 
-	// Use BDD with Cucumber
 	framework: "cucumber",
-
 	cucumberOpts: {
 		require: [
 			"./steps/**/*.ts",
 			"./node_modules/@nice-digital/wdio-cucumber-steps/lib",
 		],
 		tagExpression: "not @pending", // See https://docs.cucumber.io/tag-expressions/
-		timeout: 30000,
+		timeout: 15000,
 	},
 
 	afterStep: async function (_test, _scenario, { error }) {

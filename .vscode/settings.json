@@ -8,7 +8,7 @@
   "markdown.extension.toc.levels": "2..6",
   "files.eol": "\n",
   "typescript.tsdk": "node_modules\\typescript\\lib",
-  "npm.includeDirectories": ["web"],
+  "npm.includeDirectories": ["web", "web-host", "functional-tests"],
   "files.exclude": {
     "**/.git": true,
     "**/.svn": true,
@@ -29,5 +29,19 @@
   },
   "jestrunner.disableCodeLens": true,
   "jest.autoRun": { "watch": true },
-  "editor.wordWrap": "on"
+  "editor.wordWrap": "on",
+  "debug.showInStatusBar": "always",
+  "[feature]": {
+    "editor.insertSpaces": true,
+    "editor.tabSize": 2,
+    "editor.defaultFormatter": "alexkrechik.cucumberautocomplete"
+  },
+  "cucumberautocomplete.steps": [
+    "functional-tests/node_modules/@nice-digital/wdio-cucumber-steps/lib/given/definitions.js",
+    "functional-tests/node_modules/@nice-digital/wdio-cucumber-steps/lib/when/definitions.js",
+    "functional-tests/node_modules/@nice-digital/wdio-cucumber-steps/lib/then/definitions.js",
+    "functional-tests/steps/given.ts",
+    "functional-tests/steps/when.ts",
+    "functional-tests/steps/then.ts"
+  ]
 }
