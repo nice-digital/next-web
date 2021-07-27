@@ -8,6 +8,7 @@ services:
 
   selenium-chrome:
     image: selenium/node-chrome:3.141.59-20210713
+    container_name: selenium-chrome
     shm_size: '1gb'
     depends_on:
       - selenium-hub

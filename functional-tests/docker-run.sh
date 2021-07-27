@@ -12,9 +12,6 @@ function cleanupBeforeStart() {
   # Avoid "Mount denied" errors for Chrome/Firefox containers on Windows
   # See https://github.com/docker/for-win/issues/1829#issuecomment-376328022
   export COMPOSE_CONVERT_WINDOWS_PATHS=1
-
-  # Clean up before starting containers
-  docker-compose down --remove-orphans --volumes && docker-compose rm -vf
 }
 
 function runTests() {
@@ -58,7 +55,7 @@ catch() {
 }
 
 cleanupBeforeStart
-docker-compose up -d --scale selenium-chrome=2
+docker-compose up -d --no-recreate
 runTests
 processTestOutput
 cleanup
