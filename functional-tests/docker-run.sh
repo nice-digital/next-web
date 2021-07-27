@@ -2,9 +2,6 @@
 
 # Runs functional tests via Docker
 
-# See https://docs.docker.com/compose/reference/envvars/#compose_project_name
-export COMPOSE_PROJECT_NAME=next-web-functional-tests
-
 # Avoid "Mount denied" errors for Chrome/Firefox containers on Windows
 # See https://github.com/docker/for-win/issues/1829#issuecomment-376328022
 export COMPOSE_CONVERT_WINDOWS_PATHS=1
@@ -15,7 +12,7 @@ function cleanupBeforeStart() {
 }
 
 function runTests() {
-  if [[ -v TEAMCITY_GIT_PATH ]]; then
+  if [[ -v TEAMCITY_VERSION ]]; then
     # Assume that on TeamCity we've created the containers in the background but not started them
     docker-compose start
   else
