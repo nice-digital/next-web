@@ -5,16 +5,23 @@
 # See https://docs.docker.com/compose/reference/envvars/#compose_project_name
 export COMPOSE_PROJECT_NAME=next-web-functional-tests
 
+# Avoid "Mount denied" errors for Chrome/Firefox containers on Windows
+# See https://github.com/docker/for-win/issues/1829#issuecomment-376328022
+export COMPOSE_CONVERT_WINDOWS_PATHS=1
+
 function cleanupBeforeStart() {
   # Clean up before we start
   rm -rf docker-output && rm -rf allure-results && rm -rf allure-report
-
-  # Avoid "Mount denied" errors for Chrome/Firefox containers on Windows
-  # See https://github.com/docker/for-win/issues/1829#issuecomment-376328022
-  export COMPOSE_CONVERT_WINDOWS_PATHS=1
 }
 
 function runTests() {
+  if [[ -v TEAMCITY_VERSION ]]; then
+    # Assume that on TeamCity we've created the containers in the background but not started them
+    docker-compose start
+  else
+    docker-compose up -d
+  fi
+
   # Wait for the web app to be up before running the tests
   docker-compose run -T test-runner npm run wait-then-test
   # Or for dev mode, uncomment:
@@ -55,7 +62,6 @@ catch() {
 }
 
 cleanupBeforeStart
-docker-compose up -d --no-recreate
 runTests
 processTestOutput
 cleanup
