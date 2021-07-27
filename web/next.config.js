@@ -96,6 +96,10 @@ const nextConfig = {
 			},
 		];
 	},
+	typescript: {
+		// We run our own typechecking so no need to do it twice
+		ignoreBuildErrors: process.env.NODE_ENV === "production",
+	},
 	future: {},
 	experimental: {},
 };
