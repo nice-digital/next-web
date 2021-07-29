@@ -7,8 +7,7 @@
     "test": "wdio run wdio.conf.ts",
     "test:docker": "npm test -- --hostname selenium-hub --baseUrl http://next-web-tests.nice.org.uk:8092",
     "wait:docker": "wait-on http://next-web-tests.nice.org.uk:8092/status --timeout 10000",
-    "wait-then-test": "npm run wait:docker && npm run test:docker",
-    "tsn": "ts-node --show-config"
+    "wait-then-test": "npm run wait:docker && npm run test:docker"
   },
   "repository": {
     "type": "git",
