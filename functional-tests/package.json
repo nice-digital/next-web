@@ -21,7 +21,7 @@
   ],
   "homepage": "https://github.com/nice-digital/next-web/functional-tests#readme",
   "devDependencies": {
-    "@nice-digital/wdio-cucumber-steps": "^2.0.0",
+    "@nice-digital/wdio-cucumber-steps": "^2.0.1",
     "@wdio/allure-reporter": "^7.8.0",
     "@wdio/cli": "^7.8.0",
     "@wdio/cucumber-framework": "^7.8.0",
