@@ -2,18 +2,12 @@ const isInDocker = !!process.env.IN_DOCKER,
 	isTeamCity = !!process.env.TEAMCITY_VERSION;
 
 export const config: WebdriverIO.Config = {
+	// Use devtools to control Chrome when we're running tests locally
+	// Avoids issues with having the wrong ChromeDriver installed via selenium-standalone when Chrome updates every 6 weeks.
+	// We need to use webdriver protocol in Docker because we use the selenium grid.
+	automationProtocol: isInDocker ? "webdriver" : "devtools",
+
 	maxInstances: isInDocker ? 5 : 1,
-	services: isInDocker
-		? []
-		: [
-				[
-					"selenium-standalone",
-					{
-						drivers: { firefox: true, chrome: true, chromiumedge: true },
-						logPath: "./logs",
-					},
-				],
-		  ],
 	path: "/wd/hub",
 
 	specs: ["./features/**/*.feature"],
