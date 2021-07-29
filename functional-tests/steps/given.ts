@@ -1,7 +1,7 @@
 import { Given } from "@cucumber/cucumber";
 
-import { openWebsite } from "@nice-digital/wdio-cucumber-steps/lib/support/action/openWebsite";
 import { acceptCookieBanner } from "@nice-digital/wdio-cucumber-steps/lib/support/action/acceptCookieBanner";
+import { openWebsite } from "@nice-digital/wdio-cucumber-steps/lib/support/action/openWebsite";
 
 import { getPath, PageName } from "../support/pagePaths";
 

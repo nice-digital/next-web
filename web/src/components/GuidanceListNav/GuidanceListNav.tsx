@@ -5,6 +5,7 @@ import {
 	HorizontalNav,
 	HorizontalNavLink,
 } from "@nice-digital/nds-horizontal-nav";
+
 import { Link } from "@/components/Link/Link";
 
 export const GuidanceListNav: FC = () => {

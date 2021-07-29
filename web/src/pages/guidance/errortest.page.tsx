@@ -5,8 +5,8 @@ import {
 } from "next";
 import Head from "next/head";
 
-import { useLogger } from "@/logger";
 import { Test } from "@/components/Test/Test";
+import { useLogger } from "@/logger";
 
 export interface TestPageProps {
 	test: true;

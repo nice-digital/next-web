@@ -1,7 +1,8 @@
 import { render, screen } from "@testing-library/react";
 
-import { InDevProjectCard } from "./InDevProjectCard";
 import { ProjectStatus } from "@/feeds/inDev/types";
+
+import { InDevProjectCard } from "./InDevProjectCard";
 
 type Project = Parameters<typeof InDevProjectCard>[0]["project"];
 

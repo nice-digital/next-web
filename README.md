@@ -36,7 +36,7 @@ Using VSCode should work for in-IDE linting but if it doesn't you can run the li
 
 If you prefer using an IDE to command line, open the VSCode command palette (`Ctrl` + `Shift` + `P`) and choose _Tasks: Run Task_ then _Lint all the things_.
 
-Alternatively, run individual commands like `npm run prettier`, `npm run lint:ts`, `npm run lint:scss` or `npm run typecheck` for more granular control, although you shouldn't normally need to do this - IDE support and the single `npm run lint` command are usually enough.
+Alternatively, run individual commands like `npm run prettier`, `npm run lint:ts`, `npm run lint:scss` or `npm run ts:check` for more granular control, although you shouldn't normally need to do this - IDE support and the single `npm run lint` command are usually enough.
 
 ### Tests
 

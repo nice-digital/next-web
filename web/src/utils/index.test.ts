@@ -1,10 +1,11 @@
-import { stripTime, formatDateStr, getProjectPath, getProductPath } from "./";
+import { Project, ProjectStatus } from "@/feeds/inDev/types";
 import {
 	ProductGroup,
 	ProductLite,
 	ProductTypeAcronym,
 } from "@/feeds/publications/types";
-import { Project, ProjectStatus } from "@/feeds/inDev/types";
+
+import { stripTime, formatDateStr, getProjectPath, getProductPath } from "./";
 
 describe("utils", () => {
 	describe("stripTime", () => {

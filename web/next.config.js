@@ -1,9 +1,10 @@
 // @ts-check
 const { readdirSync } = require("fs"),
-	path = require("path"),
-	withTranspiledModules = require("next-transpile-modules"),
+	path = require("path");
+
+const config = require("config"),
 	withNodeConfig = require("next-plugin-node-config"),
-	config = require("config");
+	withTranspiledModules = require("next-transpile-modules");
 
 /**
  * A list of paths to node modules that should allow transpilation.

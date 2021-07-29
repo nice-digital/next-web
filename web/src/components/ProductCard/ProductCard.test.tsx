@@ -1,7 +1,8 @@
 import { render, screen } from "@testing-library/react";
 
-import { ProductCard } from "./ProductCard";
 import { ProductGroup } from "@/feeds/publications/types";
+
+import { ProductCard } from "./ProductCard";
 
 type Product = Parameters<typeof ProductCard>[0]["product"];
 

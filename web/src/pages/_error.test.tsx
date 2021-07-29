@@ -1,7 +1,8 @@
 import { screen, waitFor } from "@testing-library/react";
 
-import ErrorPage from "./_error.page";
 import { render } from "@/test-utils";
+
+import ErrorPage from "./_error.page";
 
 describe("_error", () => {
 	describe("SEO", () => {

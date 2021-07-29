@@ -1,12 +1,14 @@
 /* eslint-disable testing-library/no-node-access */
-import type { AppProps } from "next/app";
-import { NextSeo } from "next-seo";
 import { render, screen } from "@testing-library/react";
-
+import { NextSeo } from "next-seo";
 import { useEffect } from "react";
-import NextWebApp from "./_app.page";
-import { getMockRouter } from "@/test-utils";
+
 import { logger } from "@/logger";
+import { getMockRouter } from "@/test-utils";
+
+import NextWebApp from "./_app.page";
+
+import type { AppProps } from "next/app";
 
 // NextWebApp.componentDidCatch logs so we don't want extra console logs littering our tests
 jest.mock("@/logger", () => ({ logger: { error: jest.fn() } }));

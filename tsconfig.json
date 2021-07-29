@@ -23,5 +23,5 @@
     "noEmit": true
   },
   "files": [],
-  "references": [{ "path": "web" }]
+  "references": [{ "path": "web" }, { "path": "functional-tests" }]
 }

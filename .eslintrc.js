@@ -28,7 +28,11 @@ module.exports = {
 		},
 		"import/resolver": {
 			typescript: {
-				project: ["./tsconfig.json", "./web/tsconfig.json"],
+				project: [
+					"./tsconfig.json",
+					"./web/tsconfig.json",
+					"./functional-tests/tsconfig.json",
+				],
 			},
 		},
 	},
@@ -47,7 +51,38 @@ module.exports = {
 		"react/prop-types": "off",
 		"@next/next/no-html-link-for-pages": ["warn", "./web/src/pages"],
 		"import/first": "error",
-		"import/order": "error",
+		"import/order": [
+			"error",
+			{
+				"newlines-between": "always",
+				groups: [
+					"builtin",
+					"external",
+					"internal",
+					"unknown",
+					"parent",
+					"sibling",
+					"index",
+					"object",
+					"type",
+				],
+				alphabetize: { order: "asc", caseInsensitive: true },
+				pathGroupsExcludedImportTypes: ["builtin"],
+				warnOnUnassignedImports: true,
+				pathGroups: [
+					{
+						pattern: "@nice-digital/**",
+						group: "external",
+						position: "after",
+					},
+					{
+						pattern: "@/**",
+						group: "internal",
+						position: "before",
+					},
+				],
+			},
+		],
 		"import/newline-after-import": "error",
 		"import/no-unresolved": "error",
 	},
@@ -56,6 +91,12 @@ module.exports = {
 			files: ["*.js"],
 			rules: {
 				"@typescript-eslint/no-var-requires": "off",
+			},
+		},
+		{
+			files: ["*.d.ts"],
+			rules: {
+				"import/order": "off",
 			},
 		},
 	],

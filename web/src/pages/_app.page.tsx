@@ -1,18 +1,19 @@
+/* eslint-disable import/order */
 import { ErrorInfo, FC } from "react";
 import { DefaultSeo } from "next-seo";
 import App, { AppProps } from "next/app";
 import Script from "next/script";
 
 import "@nice-digital/design-system/scss/base.scss";
-
 import { Header, HeaderProps, Footer } from "@nice-digital/global-nav";
 import { Container } from "@nice-digital/nds-container";
 
-import { getDefaultSeoConfig } from "./next-seo.config";
 import { ErrorPageContent } from "@/components/ErrorPageContent/ErrorPageContent";
 import { GoogleTagManager } from "@/components/GoogleTagManager/GoogleTagManager";
 import { publicRuntimeConfig } from "@/config";
 import { logger } from "@/logger";
+
+import { getDefaultSeoConfig } from "./next-seo.config";
 
 interface AppState {
 	/**

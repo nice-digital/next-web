@@ -1,11 +1,9 @@
+import { NextSeo } from "next-seo";
 import { FC, ReactNode } from "react";
 
-import { NextSeo } from "next-seo";
-
-import { PageHeader } from "@nice-digital/nds-page-header";
 import { Breadcrumbs, Breadcrumb } from "@nice-digital/nds-breadcrumbs";
-
 import { Grid, GridItem } from "@nice-digital/nds-grid";
+import { PageHeader } from "@nice-digital/nds-page-header";
 
 export interface ErrorPageContentProps {
 	title?: string;

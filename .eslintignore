@@ -1,3 +1,5 @@
 dist
 coverage
 .next
+current
+node_modules
