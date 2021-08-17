@@ -15,6 +15,7 @@
     "module": "esnext",
     "moduleResolution": "node",
     "resolveJsonModule": true,
+    "sourceMap": true,
     "isolatedModules": true,
     "allowJs": true,
     "checkJs": true,
@@ -22,5 +23,5 @@
     "noEmit": true
   },
   "files": [],
-  "references": [{ "path": "web" }]
+  "references": [{ "path": "web" }, { "path": "functional-tests" }]
 }

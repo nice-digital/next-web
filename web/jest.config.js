@@ -1,5 +1,6 @@
-const { pathsToModuleNameMapper } = require("ts-jest/utils"),
-	baseConfig = require("./../jest.config"),
+const { pathsToModuleNameMapper } = require("ts-jest/utils");
+
+const baseConfig = require("./../jest.config"),
 	{ compilerOptions } = require("./tsconfig.json");
 
 // Translation of TypeScript path mappings to jest paths: https://kulshekhar.github.io/ts-jest/docs/getting-started/paths-mapping

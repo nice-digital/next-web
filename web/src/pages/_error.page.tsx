@@ -1,7 +1,7 @@
 import { NextPageContext } from "next";
 
-import { logger } from "@/logger";
 import { ErrorPageContent } from "@/components/ErrorPageContent/ErrorPageContent";
+import { logger } from "@/logger";
 
 interface ErrorComponentProps {
 	statusCode?: number;

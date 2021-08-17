@@ -1,4 +1,5 @@
 import { NextSeoProps } from "next-seo";
+
 import { publicRuntimeConfig } from "@/config";
 
 /**

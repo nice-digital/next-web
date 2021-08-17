@@ -7,6 +7,7 @@
       "args": "",
       "instances": -1,
       "exec_mode": "cluster",
+      "merge_logs": true,
       "env": {
         "PORT": 3000,
         "NODE_ENV": "development",

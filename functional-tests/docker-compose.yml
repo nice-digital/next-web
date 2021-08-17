@@ -1,0 +1,47 @@
+version: '3.8'
+services:
+  selenium-hub:
+    image: selenium/hub:3.141.59-20210713
+    container_name: selenium-hub
+    ports:
+      - '4444:4444'
+
+  selenium-chrome:
+    image: selenium/node-chrome:3.141.59-20210713
+    container_name: selenium-chrome
+    shm_size: '1gb'
+    depends_on:
+      - selenium-hub
+    environment:
+      - HUB_HOST=selenium-hub
+      - HUB_PORT=4444
+
+  test-runner:
+    build: .
+    container_name: test-runner
+    depends_on:
+      - selenium-hub
+      - next-web
+    environment:
+      - TEAMCITY_VERSION
+    volumes:
+      - ./:/next-web/tests
+      - /next-web/tests/node_modules/
+
+  # Next Web (NextJS web app)
+  next-web:
+    build: ../web-host
+    container_name: next-web
+    ports:
+      - '8092:8092'
+    volumes:
+      - ./../web:/web
+    networks:
+      default:
+        aliases:
+          # Make sure the app uses a nice.org.uk domain so that the cookie banner license works
+          - next-web-tests.nice.org.uk
+
+networks:
+  default:
+    name: next-web-functional-tests

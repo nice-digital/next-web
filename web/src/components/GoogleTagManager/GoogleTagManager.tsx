@@ -1,5 +1,5 @@
-import { FC } from "react";
 import Script from "next/script";
+import { FC } from "react";
 
 /**
  * Ensures the `dataLayer` variable exists, loads the GTM snippet and creates the noscript GTM iframe

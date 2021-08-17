@@ -1,8 +1,8 @@
 import { NeedleHttpVerbs, NeedleOptions, NeedleResponse } from "needle";
 
 import { serverRuntimeConfig } from "@/config";
-import { FeedPath as PublicationsFeedPath } from "@/feeds/publications/publications";
 import { FeedPath as InDevFeedPath } from "@/feeds/inDev/inDev";
+import { FeedPath as PublicationsFeedPath } from "@/feeds/publications/publications";
 
 const mockDataDirectory = "./__data__/";
 

@@ -1,4 +1,7 @@
+import { serverRuntimeConfig } from "@/config";
+
 import { getFeedBodyCached, getFeedBodyUnCached } from "..";
+
 import {
 	Project,
 	FeedPath,
@@ -6,8 +9,6 @@ import {
 	Consultation,
 	InConsultationProjects,
 } from "./types";
-
-import { serverRuntimeConfig } from "@/config";
 
 export * from "./types";
 

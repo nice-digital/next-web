@@ -1,16 +1,18 @@
-import type { Mutable } from "type-fest";
+import { serverRuntimeConfig } from "@/config";
 
 import { getFeedBodyCached, getFeedBodyUnCached } from "../";
+
 import {
 	AreaOfInterest,
 	AreasOfInterestList,
+	FeedPath,
 	ProductListLite,
 	ProductLite,
 	ProductType,
 	ProductTypeList,
-	FeedPath,
 } from "./types";
-import { serverRuntimeConfig } from "@/config";
+
+import type { Mutable } from "type-fest";
 
 export * from "./types";
 

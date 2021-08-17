@@ -1,12 +1,14 @@
-import { GetServerSidePropsContext } from "next";
-import { useCallback } from "react";
-import { NextSeo } from "next-seo";
 import { inPlaceSort } from "fast-sort";
+import { GetServerSidePropsContext } from "next";
+import { NextSeo } from "next-seo";
+import { useCallback } from "react";
 
 import { Breadcrumbs, Breadcrumb } from "@nice-digital/nds-breadcrumbs";
-import { PageHeader } from "@nice-digital/nds-page-header";
 import { Grid, GridItem } from "@nice-digital/nds-grid";
+import { PageHeader } from "@nice-digital/nds-page-header";
 
+import { GuidanceListNav } from "@/components/GuidanceListNav/GuidanceListNav";
+import { ProductCard } from "@/components/ProductCard/ProductCard";
 import {
 	getAllProductTypes,
 	getAllAreasOfInterest,
@@ -17,8 +19,6 @@ import {
 	ProductType,
 	ProductGroup,
 } from "@/feeds/publications/publications";
-import { GuidanceListNav } from "@/components/GuidanceListNav/GuidanceListNav";
-import { ProductCard } from "@/components/ProductCard/ProductCard";
 import { stripTime } from "@/utils";
 
 /**

@@ -1,7 +1,8 @@
 /**
  * @jest-environment node
  */
-import type { PromiseValue } from "type-fest";
+import { cache } from "@/cache";
+import { serverRuntimeConfig } from "@/config";
 
 import {
 	getAllAreasOfInterest,
@@ -9,8 +10,7 @@ import {
 	getAllProducts,
 } from "./publications";
 
-import { cache } from "@/cache";
-import { serverRuntimeConfig } from "@/config";
+import type { PromiseValue } from "type-fest";
 
 const cacheWrapMock = cache.wrap as jest.Mock;
 

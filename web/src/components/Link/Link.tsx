@@ -1,5 +1,5 @@
-import { cloneElement, ReactElement, FC } from "react";
 import NextJSLink, { LinkProps as NextJSLinkProps } from "next/link";
+import { cloneElement, ReactElement, FC } from "react";
 import { RequireExactlyOne, SetOptional, Except } from "type-fest";
 
 type NextJSUrl = NextJSLinkProps["href"];

@@ -1,16 +1,17 @@
 /* eslint-disable import/export -- We're deliberately overrind the default render from @testing-library with a custom render method */
-import { ReactElement, useEffect, PropsWithChildren } from "react";
-import { renderToString } from "react-dom/server";
 import {
 	render as testingLibrRender,
 	RenderResult,
 } from "@testing-library/react";
 import { HeadManagerContext } from "next/dist/next-server/lib/head-manager-context";
 import { RouterContext } from "next/dist/next-server/lib/router-context";
-import type { AppProps } from "next/app";
 import { NextRouter } from "next/router";
+import { ReactElement, useEffect, PropsWithChildren } from "react";
+import { renderToString } from "react-dom/server";
 
 import NextWebApp from "./pages/_app.page";
+
+import type { AppProps } from "next/app";
 
 /**
  *

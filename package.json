@@ -10,7 +10,7 @@
     "test:watch": "jest --watch",
     "test:coverage": "jest --coverage",
     "// LINTING/CODE STYLE": "",
-    "lint": "npm run prettier && npm run lint:ts && npm run lint:scss && npm run typecheck",
+    "lint": "npm run prettier && npm run lint:ts && npm run lint:scss && npm run ts:check",
     "prettier": "prettier --check \"./**/*.{ts,tsx,js}\"",
     "prettier:fix": "npm run prettier -- --write",
     "lint:ts": "eslint .",
@@ -18,7 +18,8 @@
     "lint:scss": "stylelint \"**/*.scss\"",
     "lint:scss:fix": "npm run lint:scss -- --fix",
     "// TYPECHECKING": "",
-    "typecheck": "tsc -b"
+    "ts:check": "tsc -p web -p web-host -p functional-tests --noEmit",
+    "ts:build": "tsc -b"
   },
   "repository": {
     "type": "git",

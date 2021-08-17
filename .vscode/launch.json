@@ -3,5 +3,55 @@
   // Hover to view descriptions of existing attributes.
   // For more information, visit: https://go.microsoft.com/fwlink/?linkid=830387
   "version": "0.2.0",
-  "configurations": []
+  "configurations": [
+    {
+      "type": "node",
+      "request": "launch",
+      "name": "Functional tests - current feature",
+      "cwd": "${workspaceFolder}/functional-tests",
+      "localRoot": "${workspaceFolder}/functional-tests",
+      "remoteRoot": "${workspaceFolder}/functional-tests",
+      "runtimeExecutable": "npm",
+      "runtimeArgs": [
+        "run",
+        "test",
+        "--",
+        "--spec",
+        "${fileBasenameNoExtension}",
+        "--baseUrl",
+        "${input:baseUrl}"
+      ],
+      "autoAttachChildProcesses": true,
+      "outFiles": [
+        "${workspaceFolder}/functional-tests/**/*.js",
+        "!**/node_modules/**"
+      ],
+      "console": "integratedTerminal",
+      "protocol": "inspector",
+      "sourceMaps": true,
+      "disableOptimisticBPs": true,
+      "presentation": {
+        "hidden": false,
+        "group": "Functional tests",
+        "order": 1
+      }
+    }
+  ],
+  "inputs": [
+    {
+      "id": "baseUrl",
+      "description": "Base URL",
+      "default": "http://localhost:3000",
+      "type": "pickString",
+      "options": [
+        "http://localhost:3000",
+        "http://localhost:8092",
+        "https://dev.nice.org.uk",
+        "https://test.nice.org.uk",
+        "https://alpha.nice.org.uk",
+        "https://beta.nice.org.uk",
+        "https://www.nice.org.uk"
+      ]
+    }
+  ]
 }

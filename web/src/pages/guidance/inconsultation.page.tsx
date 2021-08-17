@@ -1,13 +1,13 @@
+import { inPlaceSort } from "fast-sort";
 import { GetServerSidePropsContext } from "next";
 import { NextSeo } from "next-seo";
-import { inPlaceSort } from "fast-sort";
 
 import { Breadcrumbs, Breadcrumb } from "@nice-digital/nds-breadcrumbs";
 import { PageHeader } from "@nice-digital/nds-page-header";
 
-import { getAllConsultations, Consultation } from "@/feeds/inDev/inDev";
-import { InDevProjectCard } from "@/components/InDevProjectCard/InDevProjectCard";
 import { GuidanceListNav } from "@/components/GuidanceListNav/GuidanceListNav";
+import { InDevProjectCard } from "@/components/InDevProjectCard/InDevProjectCard";
+import { getAllConsultations, Consultation } from "@/feeds/inDev/inDev";
 
 /**
  * The number of products to show per page, if the user hasn't specified
