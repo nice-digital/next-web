@@ -27,7 +27,7 @@ const AppFooter: FC = () => (
 	<>
 		<GoogleTagManager />
 		<Script
-			src={publicRuntimeConfig.cookieBannerScriptUrl}
+			src={publicRuntimeConfig.cookieBannerScriptURL}
 			strategy="beforeInteractive"
 		/>
 		<Footer />

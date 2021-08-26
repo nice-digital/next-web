@@ -62,7 +62,7 @@ const commonHeaders = [
 		key: "Link",
 		value: [
 			// Preload the cookie banner with API key domain preconnect - we want the cookie banner to show as quickly as possible
-			`<${config.get("public.cookieBannerScriptUrl")}>; rel=preload; as=script`,
+			`<${config.get("public.cookieBannerScriptURL")}>; rel=preload; as=script`,
 			"<https://apikeys.civiccomputing.com>; rel=preconnect; crossorigin",
 			"<https://www.googletagmanager.com>; rel=preconnect",
 			// ANCHOR[id=font-preconnects] Speed up Google font loading with preconnects
