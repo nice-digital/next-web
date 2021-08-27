@@ -7,7 +7,9 @@ import { Card, CardMetaDataProps } from "@nice-digital/nds-card";
 import {
 	FilterPanel,
 	FilterGroup,
+	FilterByInput,
 	FilterOption,
+	FilterSummary,
 } from "@nice-digital/nds-filters";
 import { Grid, GridItem } from "@nice-digital/nds-grid";
 import { PageHeader } from "@nice-digital/nds-page-header";
@@ -22,6 +24,7 @@ import {
 } from "@nice-digital/search-client";
 
 import { GuidanceListNav } from "@/components/GuidanceListNav/GuidanceListNav";
+import { Link } from "@/components/Link/Link";
 import { publicRuntimeConfig } from "@/config";
 import { dateFormat } from "@/utils/constants";
 
@@ -68,20 +71,14 @@ export default function Published({
 
 			<GuidanceListNav />
 
-			{/* <p>
-				Showing {products.length} products on page {currentPage} of {totalPages}{" "}
-				({totalProducts} products total)
-			</p> */}
-
-			{activeModifiers?.map((modifier) => (
-				<a key={modifier.displayName} href={modifier.toggleUrl.fullUrl}>
-					{modifier.displayName}
-				</a>
-			))}
-
 			<Grid gutter="loose">
 				<GridItem cols={12} md={4} lg={3}>
 					<FilterPanel heading="Filter">
+						<FilterByInput
+							name="q"
+							label="Filter by title"
+							buttonLabel="Filter by title"
+						/>
 						{results.navigators.map(({ shortName, displayName, modifiers }) => (
 							<FilterGroup
 								key={shortName}
@@ -112,6 +109,17 @@ export default function Published({
 					</FilterPanel>
 				</GridItem>
 				<GridItem cols={12} md={8} lg={9}>
+					<FilterSummary
+						activeFilters={activeModifiers.map((modifier) => ({
+							label: modifier.displayName,
+							destination: modifier.toggleUrl.fullUrl,
+						}))}
+						sorting={[{ label: "Date" }, { label: "Title" }]}
+					>
+						Showing {results.firstResult} to {results.lastResult} of{" "}
+						{results.resultCount}
+					</FilterSummary>
+
 					<ol className="list list--unstyled">
 						{results.documents.map((doc) => (
 							<li key={doc.id}>
