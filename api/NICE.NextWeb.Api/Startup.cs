@@ -32,7 +32,7 @@ namespace NICE.NextWeb.Api
             {
                 endpoints.MapGet("/", async context =>
                 {
-                    await context.Response.WriteAsync("Hello World!");
+                    await context.Response.WriteAsync("Dev deployment");
                 });
             });
         }
