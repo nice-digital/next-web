@@ -1,9 +1,9 @@
-import { GetServerSidePropsContext } from "next";
+import { render } from "@/test-utils";
 
-import { getServerSideProps } from "./published.page";
+import { Published } from "./published.page";
 
 describe("/guidance/published", () => {
-	describe("getServerSideProps", () => {
-		it.todo("Write some tests!");
+	describe("Table", () => {
+		it.todo("should have some sort of test");
 	});
 });

@@ -102,7 +102,11 @@ const nextConfig = {
 		ignoreBuildErrors: process.env.NODE_ENV === "production",
 	},
 	future: {},
-	experimental: {},
+	experimental: {
+		sassOptions: {
+			includePaths: [path.join(__dirname, "node_modules/@nice-digital")],
+		},
+	},
 };
 
 // The weird comment syntax below is a JSDoc TypeScript cast: https://edibleco.de/2UMm8nx

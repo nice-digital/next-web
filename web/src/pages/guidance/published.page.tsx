@@ -24,7 +24,7 @@ import {
 
 import { GuidanceListNav } from "@/components/GuidanceListNav/GuidanceListNav";
 import { publicRuntimeConfig } from "@/config";
-import { formatDateStr, removeGuidanceReference } from "@/utils/index";
+import { formatDateStr } from "@/utils/index";
 
 import styles from "./published.module.scss";
 
@@ -41,7 +41,7 @@ interface PublishedGuidancePageProps {
 	activeModifiers: Modifier[];
 }
 
-export default function Published({
+export function Published({
 	results,
 	activeModifiers,
 }: PublishedGuidancePageProps): JSX.Element {
@@ -98,11 +98,6 @@ export default function Published({
 									>
 										{modifier.displayName}
 									</FilterOption>
-									// <li key={modifier.displayName}>
-									// 	<Link href={modifier.toggleUrl.fullUrl}>
-									// 		<a>{modifier.displayName}</a>
-									// 	</Link>
-									// </li>
 								))}
 							</FilterGroup>
 						))}
@@ -120,14 +115,16 @@ export default function Published({
 						Showing {results.firstResult} to {results.lastResult} of{" "}
 						{results.resultCount}
 					</FilterSummary>
-
 					<Table aria-describedby="filter-summary">
+						<caption className="visually-hidden">
+							Published guidance, quality standards and advice
+						</caption>
 						<thead>
 							<tr>
-								<th>Title</th>
-								<th>Reference Number</th>
-								<th>Published</th>
-								<th>Last updated</th>
+								<th scope="col">Title</th>
+								<th scope="col">Reference Number</th>
+								<th scope="col">Published</th>
+								<th scope="col">Last updated</th>
 							</tr>
 						</thead>
 						<tbody>
@@ -138,35 +135,36 @@ export default function Published({
 									guidanceRef,
 									publicationDate,
 									lastUpdated,
-									sourceUrl,
+									pathAndQuery,
 								}) => {
-									const strippedTitle = guidanceRef
-										? title.replace(`(${guidanceRef})`, "").trim()
-										: title;
 									return (
 										<tr key={id}>
 											<td>
-												<a href={sourceUrl}>{strippedTitle}</a>
+												<a href={pathAndQuery}>{title}</a>
 											</td>
 											<td>{guidanceRef}</td>
 											<td>
-												<time dateTime={String(lastUpdated)}>
-													<span className={styles.longTime}>
-														{formatDateStr(String(publicationDate))}
-													</span>
-													<span className={styles.shortTime}>
-														{formatDateStr(String(publicationDate), true)}
-													</span>
+												<time
+													className={styles.tableDate}
+													dateTime={String(publicationDate)}
+													data-shortdate={formatDateStr(
+														String(publicationDate),
+														true
+													)}
+												>
+													<span>{formatDateStr(String(publicationDate))}</span>
 												</time>
 											</td>
 											<td>
-												<time dateTime={String(lastUpdated)}>
-													<span className={styles.longTime}>
-														{formatDateStr(String(lastUpdated))}
-													</span>
-													<span className={styles.shortTime}>
-														{formatDateStr(String(lastUpdated), true)}
-													</span>
+												<time
+													className={styles.tableDate}
+													dateTime={String(lastUpdated)}
+													data-shortdate={formatDateStr(
+														String(lastUpdated),
+														true
+													)}
+												>
+													<span>{formatDateStr(String(lastUpdated))}</span>
 												</time>
 											</td>
 										</tr>
@@ -203,3 +201,5 @@ export const getServerSideProps = async (
 		},
 	};
 };
+
+export default Published;

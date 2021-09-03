@@ -1,14 +1,13 @@
-@use '../../../node_modules/@nice-digital/nds-core/scss/core';
+@use '@nice-digital/nds-core/scss/core';
 
-.shortTime {
-  @include core.mq($from: md) {
-    display: none;
-  }
-}
+.tableDate {
+  @include core.mq($until: md) {
+    &::after {
+      content: attr(data-shortdate);
+    }
 
-.longTime {
-  display: none;
-  @include core.mq($from: md) {
-    display: block;
+    span {
+      @include core.nds-invisible;
+    }
   }
 }
