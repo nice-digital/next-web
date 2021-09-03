@@ -5,13 +5,7 @@ import {
 	ProductTypeAcronym,
 } from "@/feeds/publications/types";
 
-import {
-	stripTime,
-	formatDateStr,
-	getProjectPath,
-	getProductPath,
-	removeGuidanceReference,
-} from "./";
+import { stripTime, formatDateStr, getProjectPath, getProductPath } from "./";
 
 describe("utils", () => {
 	describe("stripTime", () => {
