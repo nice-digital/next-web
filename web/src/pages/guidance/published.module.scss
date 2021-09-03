@@ -1,0 +1,14 @@
+@use '../../../node_modules/@nice-digital/nds-core/scss/core';
+
+.shortTime {
+  @include core.mq($from: md) {
+    display: none;
+  }
+}
+
+.longTime {
+  display: none;
+  @include core.mq($from: md) {
+    display: block;
+  }
+}

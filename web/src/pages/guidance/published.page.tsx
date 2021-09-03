@@ -1,9 +1,7 @@
-import dayjs from "dayjs";
 import { GetServerSidePropsContext } from "next";
 import { NextSeo } from "next-seo";
 
 import { Breadcrumbs, Breadcrumb } from "@nice-digital/nds-breadcrumbs";
-import { Card, CardMetaDataProps } from "@nice-digital/nds-card";
 import {
 	FilterPanel,
 	FilterGroup,
@@ -13,6 +11,7 @@ import {
 } from "@nice-digital/nds-filters";
 import { Grid, GridItem } from "@nice-digital/nds-grid";
 import { PageHeader } from "@nice-digital/nds-page-header";
+import { Table } from "@nice-digital/nds-table";
 import {
 	search,
 	initialise,
@@ -24,9 +23,10 @@ import {
 } from "@nice-digital/search-client";
 
 import { GuidanceListNav } from "@/components/GuidanceListNav/GuidanceListNav";
-import { Link } from "@/components/Link/Link";
 import { publicRuntimeConfig } from "@/config";
-import { dateFormat } from "@/utils/constants";
+import { formatDateStr, removeGuidanceReference } from "@/utils/index";
+
+import styles from "./published.module.scss";
 
 import type { Except } from "type-fest";
 
@@ -110,6 +110,7 @@ export default function Published({
 				</GridItem>
 				<GridItem cols={12} md={8} lg={9}>
 					<FilterSummary
+						id="filter-summary"
 						activeFilters={activeModifiers.map((modifier) => ({
 							label: modifier.displayName,
 							destination: modifier.toggleUrl.fullUrl,
@@ -120,38 +121,60 @@ export default function Published({
 						{results.resultCount}
 					</FilterSummary>
 
-					<ol className="list list--unstyled">
-						{results.documents.map((doc) => (
-							<li key={doc.id}>
-								<Card
-									headingText={doc.title}
-									link={{ destination: doc.pathAndQuery }}
-									summary={doc.metaDescription}
-									metadata={[
-										{
-											label: "Programme",
-											value: doc.niceResultType,
-											visibleLabel: false,
-										} as CardMetaDataProps,
-									].concat(
-										doc.lastUpdated
-											? [
-													{
-														label: "Last updated",
-														visibleLabel: true,
-														value: (
-															<time dateTime={doc.lastUpdated}>
-																{dayjs(doc.lastUpdated).format(dateFormat)}
-															</time>
-														),
-													},
-											  ]
-											: []
-									)}
-								/>
-							</li>
-						))}
-					</ol>
+					<Table aria-describedby="filter-summary">
+						<thead>
+							<tr>
+								<th>Title</th>
+								<th>Reference Number</th>
+								<th>Published</th>
+								<th>Last updated</th>
+							</tr>
+						</thead>
+						<tbody>
+							{results.documents.map(
+								({
+									id,
+									title,
+									guidanceRef,
+									publicationDate,
+									lastUpdated,
+									sourceUrl,
+								}) => {
+									const strippedTitle = guidanceRef
+										? title.replace(`(${guidanceRef})`, "").trim()
+										: title;
+									return (
+										<tr key={id}>
+											<td>
+												<a href={sourceUrl}>{strippedTitle}</a>
+											</td>
+											<td>{guidanceRef}</td>
+											<td>
+												<time dateTime={String(lastUpdated)}>
+													<span className={styles.longTime}>
+														{formatDateStr(String(publicationDate))}
+													</span>
+													<span className={styles.shortTime}>
+														{formatDateStr(String(publicationDate), true)}
+													</span>
+												</time>
+											</td>
+											<td>
+												<time dateTime={String(lastUpdated)}>
+													<span className={styles.longTime}>
+														{formatDateStr(String(lastUpdated))}
+													</span>
+													<span className={styles.shortTime}>
+														{formatDateStr(String(lastUpdated), true)}
+													</span>
+												</time>
+											</td>
+										</tr>
+									);
+								}
+							)}
+						</tbody>
+					</Table>
 				</GridItem>
 			</Grid>
 		</>

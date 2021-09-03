@@ -5,7 +5,13 @@ import {
 	ProductTypeAcronym,
 } from "@/feeds/publications/types";
 
-import { stripTime, formatDateStr, getProjectPath, getProductPath } from "./";
+import {
+	stripTime,
+	formatDateStr,
+	getProjectPath,
+	getProductPath,
+	removeGuidanceReference,
+} from "./";
 
 describe("utils", () => {
 	describe("stripTime", () => {
@@ -17,7 +23,12 @@ describe("utils", () => {
 	describe("formatDateStr", () => {
 		it("should format ISO date string as NICE formatted date string", () => {
 			expect(formatDateStr("2020-10-05T12:27:21.5437767")).toBe(
-				"05 October 2020"
+				"5 October 2020"
+			);
+		});
+		it("should format ISO date string as NICE formatted date string (short version)", () => {
+			expect(formatDateStr("2020-10-05T12:27:21.5437767", true)).toBe(
+				"5/10/2020"
 			);
 		});
 	});
