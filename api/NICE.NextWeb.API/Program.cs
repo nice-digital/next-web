@@ -7,7 +7,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 
-namespace NICE.NextWeb.Api
+namespace NICE.NextWeb.API
 {
     public class Program
     {
