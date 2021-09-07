@@ -1,18 +1,13 @@
-using NUnit.Framework;
-using NICE.NextWeb.API;
-using System;
-using System.Collections.Generic;
-using System.Text;
+using Xunit;
 
 namespace NICE.NextWeb.API.Tests
 {
-	[TestFixture()]
 	public class GeneralTests
 	{
-		[Test()]
-		public void BasicTest()
+		[Fact()]
+		public void SampleTest()
 		{
-			Assert.Pass();
+			Assert.True(true, "This test needs an implementation");
 		}
 	}
 }
