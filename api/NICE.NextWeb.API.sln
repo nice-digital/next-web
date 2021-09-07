@@ -3,7 +3,9 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 16
 VisualStudioVersion = 16.0.31424.327
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "NICE.NextWeb.API", "NICE.NextWeb.API\NICE.NextWeb.API.csproj", "{5E0B243E-73EC-4AF6-AB35-578FBEBAA9FC}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "NICE.NextWeb.API", "NICE.NextWeb.API\NICE.NextWeb.API.csproj", "{5E0B243E-73EC-4AF6-AB35-578FBEBAA9FC}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "NICE.NextWeb.API.Tests", "NICE.NextWeb.API.Tests\NICE.NextWeb.API.Tests.csproj", "{44F5E229-34C1-43E5-8617-2AD6BB2DBD8D}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -15,6 +17,10 @@ Global
 		{5E0B243E-73EC-4AF6-AB35-578FBEBAA9FC}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{5E0B243E-73EC-4AF6-AB35-578FBEBAA9FC}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{5E0B243E-73EC-4AF6-AB35-578FBEBAA9FC}.Release|Any CPU.Build.0 = Release|Any CPU
+		{44F5E229-34C1-43E5-8617-2AD6BB2DBD8D}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{44F5E229-34C1-43E5-8617-2AD6BB2DBD8D}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{44F5E229-34C1-43E5-8617-2AD6BB2DBD8D}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{44F5E229-34C1-43E5-8617-2AD6BB2DBD8D}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
