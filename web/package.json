@@ -21,10 +21,9 @@
   ],
   "homepage": "https://github.com/nice-digital/next-web#readme",
   "dependencies": {
-    "@nice-digital/design-system": "^1.2.17-alpha.0",
+    "@nice-digital/design-system": "^1.2.20-alpha.0",
     "@nice-digital/global-nav": "github:nice-digital/global-nav",
-    "@nice-digital/nds-filters": "^1.2.9-alpha.0",
-    "@nice-digital/search-client": "^0.2.1357-SRCH-640-SSE-TS",
+    "@nice-digital/search-client": "^0.2.1359-SRCH-640-SSE-TS",
     "cache-manager": "^3.4.4",
     "cache-manager-fs-hash": "^1.0.0",
     "config": "^3.3.6",

@@ -18,14 +18,23 @@ jest.mock("next/router", () => ({
 
 describe("/guidance/published", () => {
 	describe("Table", () => {
-		it.only("should have some sort of test", () => {
+		it("should have some sort of test", () => {
 			render(
 				<Published
 					activeModifiers={[]}
 					results={sampleData as unknown as SearchResultsSuccess}
 				/>
 			);
-			screen.getByText("Title");
+			expect(screen.getByText("Title", { selector: "th" })).toBeInTheDocument();
+			expect(
+				screen.getByText("Reference Number", { selector: "th" })
+			).toBeInTheDocument();
+			expect(
+				screen.getByText("Published", { selector: "th" })
+			).toBeInTheDocument();
+			expect(
+				screen.getByText("Last updated", { selector: "th" })
+			).toBeInTheDocument();
 		});
 	});
 });
