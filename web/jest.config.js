@@ -29,8 +29,11 @@ module.exports = {
 	setupFilesAfterEnv: ["./jest.presetup.js", "./jest.setup.ts"],
 	testURL: "https://next-web-tests.nice.org.uk",
 	testEnvironment: "jsdom",
+	preset: "ts-jest/presets/js-with-babel",
 	globals: {
+		extensionsToTreatAsEsm: [".ts", ".js"],
 		"ts-jest": {
+			useESM: true,
 			tsconfig: {
 				...compilerOptions,
 				// To avoid errors like "Class constructor App cannot be invoked without 'new'"

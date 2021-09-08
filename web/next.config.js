@@ -102,10 +102,9 @@ const nextConfig = {
 		ignoreBuildErrors: process.env.NODE_ENV === "production",
 	},
 	future: {},
-	experimental: {
-		sassOptions: {
-			includePaths: [path.join(__dirname, "node_modules/@nice-digital")],
-		},
+	experimental: {},
+	sassOptions: {
+		includePaths: [path.join(__dirname, "node_modules/@nice-digital")],
 	},
 };
 
