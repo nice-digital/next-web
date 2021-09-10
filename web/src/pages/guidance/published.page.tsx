@@ -79,6 +79,7 @@ export function Published({
 							label="Filter by title"
 							buttonLabel="Filter by title"
 						/>
+
 						{results.navigators.map(({ shortName, displayName, modifiers }) => (
 							<FilterGroup
 								key={shortName}
@@ -103,6 +104,7 @@ export function Published({
 						))}
 					</FilterPanel>
 				</GridItem>
+
 				<GridItem cols={12} md={8} lg={9}>
 					<FilterSummary
 						id="filter-summary"
@@ -115,6 +117,7 @@ export function Published({
 						Showing {results.firstResult} to {results.lastResult} of{" "}
 						{results.resultCount}
 					</FilterSummary>
+
 					<Table aria-describedby="filter-summary">
 						<caption className="visually-hidden">
 							Published guidance, quality standards and advice
@@ -122,7 +125,7 @@ export function Published({
 						<thead>
 							<tr>
 								<th scope="col">Title</th>
-								<th scope="col">Reference Number</th>
+								<th scope="col">Reference number</th>
 								<th scope="col">Published</th>
 								<th scope="col">Last updated</th>
 							</tr>
