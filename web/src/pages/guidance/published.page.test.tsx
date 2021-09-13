@@ -63,7 +63,7 @@ describe("/guidance/published", () => {
 		});
 
 		it("should show the number of rows of data supplied", () => {
-			expect(screen.getAllByRole("row")).toHaveLength(3); // 11 = 10 rows of data and 1 for the heading row
+			expect(screen.getAllByRole("row")).toHaveLength(3); // 3 = 2 rows of data and 1 for the heading row
 		});
 
 		describe("First row data", () => {
