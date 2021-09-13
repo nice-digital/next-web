@@ -5,7 +5,6 @@ import { Breadcrumbs, Breadcrumb } from "@nice-digital/nds-breadcrumbs";
 import {
 	FilterPanel,
 	FilterGroup,
-	FilterByInput,
 	FilterOption,
 	FilterSummary,
 } from "@nice-digital/nds-filters";
@@ -23,6 +22,7 @@ import {
 } from "@nice-digital/search-client";
 
 import { GuidanceListNav } from "@/components/GuidanceListNav/GuidanceListNav";
+import { InlineTextFilter } from "@/components/InlineTextFilter/InlineTextFilter";
 import { publicRuntimeConfig } from "@/config";
 import { formatDateStr } from "@/utils/index";
 
@@ -34,6 +34,7 @@ const searchUrlDefaults: Except<SearchUrl, "fullUrl" | "route"> = {
 	s: "Date",
 	om: `[{"gst":["Published"]}]`,
 	ps: 10,
+	q: "",
 };
 
 interface PublishedGuidancePageProps {
@@ -45,6 +46,10 @@ export function Published({
 	results,
 	activeModifiers,
 }: PublishedGuidancePageProps): JSX.Element {
+	function titleChangeHandler(e: React.ChangeEvent<HTMLInputElement>) {
+		console.log(e.target.value);
+	}
+
 	if (results.failed)
 		return (
 			<>
@@ -71,15 +76,21 @@ export function Published({
 
 			<GuidanceListNav />
 
-			<Grid gutter="loose">
-				<GridItem cols={12} md={4} lg={3}>
-					<FilterPanel heading="Filter">
-						<FilterByInput
-							name="q"
-							label="Filter by title"
-							buttonLabel="Filter by title"
-						/>
+			<Grid>
+				<GridItem cols={12} md={{ cols: 6, push: 6 }}>
+					<InlineTextFilter
+						label="Filter by title"
+						name="q"
+						defaultValue={searchUrlDefaults.q}
+						placeholder="Enter title or keyword"
+						onChange={titleChangeHandler}
+					/>
+				</GridItem>
+			</Grid>
 
+			<Grid gutter="loose">
+				{/* <GridItem cols={12} md={4} lg={3}>
+					<FilterPanel heading="Filter">
 						{results.navigators.map(({ shortName, displayName, modifiers }) => (
 							<FilterGroup
 								key={shortName}
@@ -92,9 +103,7 @@ export function Published({
 									<FilterOption
 										key={modifier.displayName}
 										isSelected={modifier.active}
-										onChanged={() => {
-											/* what */
-										}}
+										onChanged={() => {}}
 										value={modifier.displayName}
 									>
 										{modifier.displayName}
@@ -103,10 +112,10 @@ export function Published({
 							</FilterGroup>
 						))}
 					</FilterPanel>
-				</GridItem>
+				</GridItem> */}
 
 				<GridItem cols={12} md={8} lg={9}>
-					<FilterSummary
+					{/* <FilterSummary
 						id="filter-summary"
 						activeFilters={activeModifiers.map((modifier) => ({
 							label: modifier.displayName,
@@ -116,7 +125,7 @@ export function Published({
 					>
 						Showing {results.firstResult} to {results.lastResult} of{" "}
 						{results.resultCount}
-					</FilterSummary>
+					</FilterSummary> */}
 
 					<Table aria-describedby="filter-summary">
 						<caption className="visually-hidden">
