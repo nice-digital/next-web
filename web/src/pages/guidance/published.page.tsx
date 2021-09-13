@@ -152,7 +152,10 @@ export function Published({
 									return (
 										<tr key={id}>
 											<td>
-												<a href={pathAndQuery}>{title}</a>
+												<a
+													href={pathAndQuery}
+													dangerouslySetInnerHTML={{ __html: title }}
+												/>
 											</td>
 											<td>{guidanceRef}</td>
 											<td>
