@@ -187,7 +187,7 @@ export const getServerSideProps = async (
 ): Promise<{ props: PublishedGuidancePageProps }> => {
 	initialise({
 		baseURL: publicRuntimeConfig.search.baseURL,
-		index: "nice",
+		index: "guidance",
 	});
 
 	const searchUrl: SearchUrl = {
