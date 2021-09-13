@@ -23,7 +23,7 @@
   "dependencies": {
     "@nice-digital/design-system": "^1.2.20-alpha.0",
     "@nice-digital/global-nav": "github:nice-digital/global-nav",
-    "@nice-digital/search-client": "^0.2.1359-SRCH-640-SSE-TS",
+    "@nice-digital/search-client": "^0.2.1362-SRCH-640-SSE-TS",
     "cache-manager": "^3.4.4",
     "cache-manager-fs-hash": "^1.0.0",
     "config": "^3.3.6",
