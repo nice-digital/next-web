@@ -1,5 +1,7 @@
 import { GetServerSidePropsContext } from "next";
 import { NextSeo } from "next-seo";
+import { useRouter } from "next/router";
+import { useState } from "react";
 
 import { Breadcrumbs, Breadcrumb } from "@nice-digital/nds-breadcrumbs";
 import {
@@ -34,21 +36,29 @@ const searchUrlDefaults: Except<SearchUrl, "fullUrl" | "route"> = {
 	s: "Date",
 	om: `[{"gst":["Published"]}]`,
 	ps: 10,
-	q: "",
 };
 
 interface PublishedGuidancePageProps {
 	results: SearchResults;
 	activeModifiers: Modifier[];
+	searchUrl: SearchUrl;
 }
 
 export function Published({
 	results,
-	activeModifiers,
-}: PublishedGuidancePageProps): JSX.Element {
-	function titleChangeHandler(e: React.ChangeEvent<HTMLInputElement>) {
-		console.log(e.target.value);
-	}
+	searchUrl,
+}: // activeModifiers,
+PublishedGuidancePageProps): JSX.Element {
+	// const [query, setQuery] = useState(searchUrlDefaults.q);
+	// const router = useRouter();
+	// function tempTitleClickHandler(e: React.MouseEventHandler) {
+	// 	debugger;
+	// 	// setQuery(e.target.value);
+	// 	// nextjs router navigate
+	// 	// import navigator from router push
+	// 	// useRouter from next?
+	// 	router.push("?q=" + e.target.value);
+	// }
 
 	if (results.failed)
 		return (
@@ -76,21 +86,19 @@ export function Published({
 
 			<GuidanceListNav />
 
-			<Grid>
-				<GridItem cols={12} md={{ cols: 6, push: 6 }}>
-					<InlineTextFilter
-						label="Filter by title"
-						name="q"
-						defaultValue={searchUrlDefaults.q}
-						placeholder="Enter title or keyword"
-						onChange={titleChangeHandler}
-					/>
-				</GridItem>
-			</Grid>
+			{/* <Grid>
+				<GridItem cols={12} md={{ cols: 6, push: 6 }}></GridItem>
+			</Grid> */}
 
-			<Grid gutter="loose">
-				{/* <GridItem cols={12} md={4} lg={3}>
+			<Grid gutter="loose" className={styles.sectionWrapper}>
+				<GridItem cols={12} md={4} lg={3} className={styles.panelWrapper}>
 					<FilterPanel heading="Filter">
+						<InlineTextFilter
+							label="Filter by title"
+							name="q"
+							defaultValue={searchUrl.q}
+							placeholder="Enter title or keyword"
+						/>
 						{results.navigators.map(({ shortName, displayName, modifiers }) => (
 							<FilterGroup
 								key={shortName}
@@ -112,7 +120,7 @@ export function Published({
 							</FilterGroup>
 						))}
 					</FilterPanel>
-				</GridItem> */}
+				</GridItem>
 
 				<GridItem cols={12} md={8} lg={9}>
 					{/* <FilterSummary
@@ -213,6 +221,7 @@ export const getServerSideProps = async (
 		props: {
 			results,
 			activeModifiers,
+			searchUrl,
 		},
 	};
 };
