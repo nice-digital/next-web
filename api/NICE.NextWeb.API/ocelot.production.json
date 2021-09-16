@@ -5,7 +5,7 @@
       },
       "DownstreamHostAndPorts": [
         {
-          "Host": "#{niceorgTaxonomyDownstreamHost}",
+          "Host": "#{Ocelot.NiceorgTaxonomyDownstreamHost}",
           "Port": 443
         }
       ],
