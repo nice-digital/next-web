@@ -7,6 +7,8 @@ import {
 	ProductTypeAcronym,
 } from "@/feeds/publications/types";
 
+import { dateFormat, dateFormatShort } from "./constants";
+
 /**
  * Returns a a sortable date with just year, month and date (without time).
  * We never expose times to users so it makes sense to just sort by date instead.
@@ -18,19 +20,14 @@ export const stripTime = (isoDateStr: string): string =>
 	isoDateStr.substring(0, isoDateStr.indexOf("T"));
 
 /**
- * The standard 'NICE' format for dates as per the NICE style guide at
- * https://www.nice.org.uk/corporate/ecd1/chapter/numbers-units-and-symbols#units
- */
-export const niceDateFormat = "DD MMMM YYYY";
-
-/**
  * Formats the given ISO date string into a standard NICE string format
  *
  * @param isoDateStr the ISO date string for format
+ * @param short whether to format the date in the standard short format
  * @returns The formatted date
  */
-export const formatDateStr = (isoDateStr: string): string =>
-	dayjs(isoDateStr).format(niceDateFormat);
+export const formatDateStr = (isoDateStr: string, short = false): string =>
+	dayjs(isoDateStr).format(short ? dateFormatShort : dateFormat);
 
 /**
  * Gets the path, relative to the root, of an indevelopment project overview page.

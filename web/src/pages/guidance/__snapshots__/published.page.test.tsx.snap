@@ -1,0 +1,108 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`/guidance/published Table should match the snapshot 1`] = `
+<table
+  aria-describedby="filter-summary"
+  class="table"
+>
+  <caption
+    class="visually-hidden"
+  >
+    Published guidance, quality standards and advice
+  </caption>
+  <thead>
+    <tr>
+      <th
+        scope="col"
+      >
+        Title
+      </th>
+      <th
+        scope="col"
+      >
+        Reference number
+      </th>
+      <th
+        scope="col"
+      >
+        Published
+      </th>
+      <th
+        scope="col"
+      >
+        Last updated
+      </th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>
+        <a
+          href="/guidance/qs202"
+        >
+          Workplace health: long-term sickness absence and capability to work (QS202)
+        </a>
+      </td>
+      <td>
+        QS202
+      </td>
+      <td>
+        <time
+          class="tableDate"
+          data-shortdate="4/9/2021"
+          datetime="2021-09-04T12:00:00"
+        >
+          <span>
+            4 September 2021
+          </span>
+        </time>
+      </td>
+      <td>
+        <time
+          class="tableDate"
+          data-shortdate="3/9/2021"
+          datetime="2021-09-03T12:00:00"
+        >
+          <span>
+            3 September 2021
+          </span>
+        </time>
+      </td>
+    </tr>
+    <tr>
+      <td>
+        <a
+          href="/guidance/qs13"
+        >
+          End of life care for adults (QS13)
+        </a>
+      </td>
+      <td>
+        QS13
+      </td>
+      <td>
+        <time
+          class="tableDate"
+          data-shortdate="28/11/2011"
+          datetime="2011-11-28T12:00:00"
+        >
+          <span>
+            28 November 2011
+          </span>
+        </time>
+      </td>
+      <td>
+        <time
+          class="tableDate"
+          data-shortdate="5/9/2021"
+          datetime="2021-09-05T12:00:00"
+        >
+          <span>
+            5 September 2021
+          </span>
+        </time>
+      </td>
+    </tr>
+  </tbody>
+</table>
+`;
