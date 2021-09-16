@@ -5,14 +5,14 @@
       },
       "DownstreamHostAndPorts": [
         {
-          "Host": "api.open-meteo.com",
+          "Host": "www.nice.org.uk",
           "Port": 443
         }
       ],
-      "DownstreamPathTemplate": "/v1/forecast?latitude=53.48&longitude=-2.24",
+      "DownstreamPathTemplate": "/api/TaxonomyMappings?ApiKey={niceorgTaxonomyApiKey}",
       "DownstreamScheme": "https",
       "UpstreamHttpMethod": [ "Get" ],
-      "UpstreamPathTemplate": "/mancweather"
+      "UpstreamPathTemplate": "/api/TaxonomyMappings?ApiKey={niceorgTaxonomyApiKey}"
     }
   ],
   "Aggregates": [],
