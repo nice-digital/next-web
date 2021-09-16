@@ -51,5 +51,10 @@
     "functional-tests/steps/given.ts",
     "functional-tests/steps/when.ts",
     "functional-tests/steps/then.ts"
-  ]
+  ],
+  "workbench.colorCustomizations": {
+		"activityBar.background": "#a1b8ca",
+		"titleBar.activeBackground": "#a1b8ca",
+		"titleBar.activeForeground": "#222",
+		"activityBar.foreground": "#222"
 }

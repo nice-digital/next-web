@@ -1,7 +1,14 @@
 //import config from "config";
 import getConfig from "next/config";
 
+import type { InitialiseOptions as SearchClientInitOptions } from "@nice-digital/search-client";
+
 const { publicRuntimeConfig, serverRuntimeConfig } = getConfig();
+
+export interface SearchConfig {
+	/** The base URL of the Single Search Endpoint (SSE) e.g. https://beta-search-api.nice.org.uk/api/ */
+	readonly baseURL: SearchClientInitOptions["baseURL"];
+}
 
 /**
  * Public run time config, available to both client and server
@@ -13,18 +20,20 @@ export interface PublicConfig {
 	/** The base URL of the website including protocol and port e.g. http://localhost:3000 for local dev or http://dev.nice.org.uk.
 	 *
 	 * **Note** the lack of trailing slash! It will get prepended to paths that start with a slash. */
-	readonly baseUrl: string;
+	readonly baseURL: string;
 
 	/**
 	 * The absolute URL to the NICE cookie banner script include
 	 */
-	readonly cookieBannerScriptUrl: string;
+	readonly cookieBannerScriptURL: string;
 
 	/**
 	 * The base URL to the deployed NextJS _public_ folder, see https://nextjs.org/docs/basic-features/static-file-serving.
 	 * Empty string means relative to the deployed app. Set it to an absolute path in _config.yml_ to use a CDN.
 	 */
-	readonly publicBaseUrl: string;
+	readonly publicBaseURL: string;
+
+	readonly search: SearchConfig;
 }
 
 /**
