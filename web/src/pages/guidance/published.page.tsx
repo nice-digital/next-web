@@ -50,6 +50,8 @@ export function Published({
 	searchUrl,
 	activeModifiers,
 }: PublishedGuidancePageProps): JSX.Element {
+	const router = useRouter();
+
 	if (results.failed)
 		return (
 			<>
@@ -59,8 +61,18 @@ export function Published({
 
 	const ref = createRef();
 
-	function handleSubmit() {
+	function submitForm() {
 		console.log(serialize(ref.current));
+		router.push("?" + serialize(ref.current), undefined, { scroll: false });
+	}
+
+	function handleChange() {
+		submitForm();
+	}
+
+	function handleSubmit(e: React.FormEvent<HTMLFormElement>): void {
+		e.preventDefault();
+		submitForm();
 	}
 
 	return (
@@ -81,10 +93,6 @@ export function Published({
 			/>
 
 			<GuidanceListNav />
-
-			{/* <Grid>
-				<GridItem cols={12} md={{ cols: 6, push: 6 }}></GridItem>
-			</Grid> */}
 
 			<Grid gutter="loose" className={styles.sectionWrapper}>
 				<GridItem cols={12} md={4} lg={3} className={styles.panelWrapper}>
@@ -107,7 +115,7 @@ export function Published({
 									<FilterOption
 										key={modifier.displayName}
 										isSelected={modifier.active}
-										onChanged={handleSubmit}
+										onChanged={handleChange}
 										value={modifier.displayName}
 									>
 										{modifier.displayName}
