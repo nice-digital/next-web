@@ -25,3 +25,7 @@
     margin: core.rem(0 core.$nds-spacing-small 0 0);
   }
 }
+
+.input {
+  flex-grow: 1;
+}

@@ -1,7 +1,8 @@
+import serialize from "form-serialize";
 import { GetServerSidePropsContext } from "next";
 import { NextSeo } from "next-seo";
 import { useRouter } from "next/router";
-import { useState } from "react";
+import { createRef } from "react";
 
 import { Breadcrumbs, Breadcrumb } from "@nice-digital/nds-breadcrumbs";
 import {
@@ -47,25 +48,20 @@ interface PublishedGuidancePageProps {
 export function Published({
 	results,
 	searchUrl,
-}: // activeModifiers,
-PublishedGuidancePageProps): JSX.Element {
-	// const [query, setQuery] = useState(searchUrlDefaults.q);
-	// const router = useRouter();
-	// function tempTitleClickHandler(e: React.MouseEventHandler) {
-	// 	debugger;
-	// 	// setQuery(e.target.value);
-	// 	// nextjs router navigate
-	// 	// import navigator from router push
-	// 	// useRouter from next?
-	// 	router.push("?q=" + e.target.value);
-	// }
-
+	activeModifiers,
+}: PublishedGuidancePageProps): JSX.Element {
 	if (results.failed)
 		return (
 			<>
 				Error: todo {results.errorMessage} {results.debug?.rawResponse}
 			</>
 		);
+
+	const ref = createRef();
+
+	function handleSubmit() {
+		console.log(serialize(ref.current));
+	}
 
 	return (
 		<>
@@ -92,7 +88,7 @@ PublishedGuidancePageProps): JSX.Element {
 
 			<Grid gutter="loose" className={styles.sectionWrapper}>
 				<GridItem cols={12} md={4} lg={3} className={styles.panelWrapper}>
-					<FilterPanel heading="Filter">
+					<FilterPanel heading="Filter" innerRef={ref} onSubmit={handleSubmit}>
 						<InlineTextFilter
 							label="Filter by title"
 							name="q"
@@ -111,7 +107,7 @@ PublishedGuidancePageProps): JSX.Element {
 									<FilterOption
 										key={modifier.displayName}
 										isSelected={modifier.active}
-										onChanged={() => {}}
+										onChanged={handleSubmit}
 										value={modifier.displayName}
 									>
 										{modifier.displayName}
@@ -123,7 +119,7 @@ PublishedGuidancePageProps): JSX.Element {
 				</GridItem>
 
 				<GridItem cols={12} md={8} lg={9}>
-					{/* <FilterSummary
+					<FilterSummary
 						id="filter-summary"
 						activeFilters={activeModifiers.map((modifier) => ({
 							label: modifier.displayName,
@@ -133,7 +129,7 @@ PublishedGuidancePageProps): JSX.Element {
 					>
 						Showing {results.firstResult} to {results.lastResult} of{" "}
 						{results.resultCount}
-					</FilterSummary> */}
+					</FilterSummary>
 
 					<Table aria-describedby="filter-summary">
 						<caption className="visually-hidden">

@@ -3,7 +3,7 @@
   "version": "0.3.0",
   "private": true,
   "scripts": {
-    "dev": "cross-env NODE_OPTIONS=\"-r next-logger/presets/next-only\" next dev | pino-pretty",
+    "dev": "cross-env NODE_OPTIONS=\"-r next-logger/presets/next-only\" next dev -p 3000 | pino-pretty",
     "build": "next build",
     "start": "next start",
     "host": "npm start | pino-mq -c .pino-mqrc.json",
@@ -21,7 +21,7 @@
   ],
   "homepage": "https://github.com/nice-digital/next-web#readme",
   "dependencies": {
-    "@nice-digital/design-system": "^1.2.20-alpha.0",
+    "@nice-digital/design-system": "^1.2.21-alpha.0",
     "@nice-digital/global-nav": "github:nice-digital/global-nav",
     "@nice-digital/search-client": "^0.2.1362-SRCH-640-SSE-TS",
     "cache-manager": "^3.4.4",
@@ -29,6 +29,7 @@
     "config": "^3.3.6",
     "dayjs": "^1.10.6",
     "fast-sort": "^3.0.2",
+    "form-serialize": "^0.7.2",
     "js-yaml": "^4.1.0",
     "needle": "^2.8.0",
     "next": "^11.0.1",

@@ -13,13 +13,22 @@ interface InlineTextFilterProps {
 }
 
 export const InlineTextFilter: FC<InlineTextFilterProps> = (props) => {
+	function handleClick(e) {
+		e.preventDefault();
+	}
+
 	return (
 		<div className={styles.container}>
 			<label className={styles.label} htmlFor="q">
 				Search by title
 			</label>
-			<Input {...props} label="" style={{ flexGrow: 1 }} />
-			<Button className={styles.button} variant="cta" type="submit">
+			<Input {...props} label={null} className={styles.input} />
+			<Button
+				className={styles.button}
+				variant="cta"
+				type="submit"
+				onClick={handleClick}
+			>
 				Search
 			</Button>
 		</div>
