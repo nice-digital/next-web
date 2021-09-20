@@ -16,6 +16,7 @@
       "@/logger": ["src/logging/logger"],
       "@/components/*": ["src/components/*"],
       "@/feeds/*": ["src/feeds/*"],
+      "@/utils/*": ["src/utils/*"],
       "@/utils": ["src/utils"]
     }
   },

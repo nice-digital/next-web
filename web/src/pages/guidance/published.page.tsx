@@ -1,59 +1,56 @@
-import { inPlaceSort } from "fast-sort";
 import { GetServerSidePropsContext } from "next";
 import { NextSeo } from "next-seo";
-import { useCallback } from "react";
 
 import { Breadcrumbs, Breadcrumb } from "@nice-digital/nds-breadcrumbs";
+import {
+	FilterPanel,
+	FilterGroup,
+	FilterByInput,
+	FilterOption,
+	FilterSummary,
+} from "@nice-digital/nds-filters";
 import { Grid, GridItem } from "@nice-digital/nds-grid";
 import { PageHeader } from "@nice-digital/nds-page-header";
+import { Table } from "@nice-digital/nds-table";
+import {
+	search,
+	initialise,
+	SearchResults,
+	getSearchUrl,
+	getActiveModifiers,
+	Modifier,
+	SearchUrl,
+} from "@nice-digital/search-client";
 
 import { GuidanceListNav } from "@/components/GuidanceListNav/GuidanceListNav";
-import { ProductCard } from "@/components/ProductCard/ProductCard";
-import {
-	getAllProductTypes,
-	getAllAreasOfInterest,
-	getAllProducts,
-	AreaOfInterest,
-	ProductLite,
-	ProductStatus,
-	ProductType,
-	ProductGroup,
-} from "@/feeds/publications/publications";
-import { stripTime } from "@/utils";
+import { publicRuntimeConfig } from "@/config";
+import { formatDateStr } from "@/utils/index";
 
-/**
- * The number of products to show per page, if the user hasn't specified
- */
-export const productsPerPageDefault = 10;
+import styles from "./published.module.scss";
+
+import type { Except } from "type-fest";
+
+const searchUrlDefaults: Except<SearchUrl, "fullUrl" | "route"> = {
+	s: "Date",
+	om: `[{"gst":["Published"]}]`,
+	ps: 10,
+};
 
 interface PublishedGuidancePageProps {
-	products: readonly ProductLite[];
-	productTypes: readonly ProductType[];
-	areasOfInterest: readonly AreaOfInterest[];
-	totalProducts: number;
-	/** 1-based index of the current page */
-	currentPage: number;
-	totalPages: number;
-	/** The number of products to show per page */
-	pageSize: number;
+	results: SearchResults;
+	activeModifiers: Modifier[];
 }
 
-export default function Published({
-	pageSize,
-	currentPage,
-	totalProducts,
-	totalPages,
-	productTypes,
-	areasOfInterest,
-	products,
+export function Published({
+	results,
+	activeModifiers,
 }: PublishedGuidancePageProps): JSX.Element {
-	const getProductTypeName = useCallback(
-		(product: ProductLite) =>
-			productTypes.find(
-				({ IdentifierPrefix }) => IdentifierPrefix === product.ProductType
-			)?.Name,
-		[productTypes]
-	);
+	if (results.failed)
+		return (
+			<>
+				Error: todo {results.errorMessage} {results.debug?.rawResponse}
+			</>
+		);
 
 	return (
 		<>
@@ -74,37 +71,114 @@ export default function Published({
 
 			<GuidanceListNav />
 
-			<p>
-				Showing {products.length} products on page {currentPage} of {totalPages}{" "}
-				({totalProducts} products total)
-			</p>
-
 			<Grid gutter="loose">
 				<GridItem cols={12} md={4} lg={3}>
-					<h2>Product types</h2>
-					<ul className="list list--unstyled">
-						{productTypes.map(({ Name }) => (
-							<li key={Name}>{Name}</li>
+					<FilterPanel heading="Filter">
+						<FilterByInput
+							name="q"
+							label="Filter by title"
+							buttonLabel="Filter by title"
+						/>
+
+						{results.navigators.map(({ shortName, displayName, modifiers }) => (
+							<FilterGroup
+								key={shortName}
+								heading={displayName}
+								selectedCount={
+									modifiers.filter((modifier) => modifier.active).length
+								}
+							>
+								{modifiers.map((modifier) => (
+									<FilterOption
+										key={modifier.displayName}
+										isSelected={modifier.active}
+										onChanged={() => {
+											/* what */
+										}}
+										value={modifier.displayName}
+									>
+										{modifier.displayName}
+									</FilterOption>
+								))}
+							</FilterGroup>
 						))}
-					</ul>
-					<h2>Areas of interest</h2>
-					<ul className="list list--unstyled">
-						{areasOfInterest.map(({ Name }) => (
-							<li key={Name}>{Name}</li>
-						))}
-					</ul>
+					</FilterPanel>
 				</GridItem>
+
 				<GridItem cols={12} md={8} lg={9}>
-					<h2>Products</h2>
-					<ol className="list list--unstyled">
-						{products.map((product) => (
-							<ProductCard
-								key={product.Id}
-								product={product}
-								productTypeName={getProductTypeName(product)}
-							/>
-						))}
-					</ol>
+					<FilterSummary
+						id="filter-summary"
+						activeFilters={activeModifiers.map((modifier) => ({
+							label: modifier.displayName,
+							destination: modifier.toggleUrl.fullUrl,
+						}))}
+						sorting={[{ label: "Date" }, { label: "Title" }]}
+					>
+						Showing {results.firstResult} to {results.lastResult} of{" "}
+						{results.resultCount}
+					</FilterSummary>
+
+					<Table aria-describedby="filter-summary">
+						<caption className="visually-hidden">
+							Published guidance, quality standards and advice
+						</caption>
+						<thead>
+							<tr>
+								<th scope="col">Title</th>
+								<th scope="col">Reference number</th>
+								<th scope="col">Published</th>
+								<th scope="col">Last updated</th>
+							</tr>
+						</thead>
+						<tbody>
+							{results.documents.map(
+								({
+									id,
+									title,
+									guidanceRef,
+									publicationDate,
+									lastUpdated,
+									pathAndQuery,
+								}) => {
+									return (
+										<tr key={id}>
+											<td>
+												<a
+													href={pathAndQuery}
+													dangerouslySetInnerHTML={{ __html: title }}
+												/>
+											</td>
+											<td>{guidanceRef}</td>
+											<td>
+												<time
+													className={styles.tableDate}
+													dateTime={String(publicationDate)}
+													data-shortdate={formatDateStr(
+														String(publicationDate),
+														true
+													)}
+												>
+													<span>{formatDateStr(String(publicationDate))}</span>
+												</time>
+											</td>
+											<td>
+												<time
+													className={styles.tableDate}
+													dateTime={String(lastUpdated)}
+													data-shortdate={formatDateStr(
+														String(lastUpdated),
+														true
+													)}
+												>
+													<span>{formatDateStr(String(lastUpdated))}</span>
+												</time>
+											</td>
+										</tr>
+									);
+								}
+							)}
+						</tbody>
+					</Table>
 				</GridItem>
 			</Grid>
 		</>
@@ -112,60 +186,26 @@ export default function Published({
 }
 
 export const getServerSideProps = async (
-	_context: GetServerSidePropsContext
+	context: GetServerSidePropsContext
 ): Promise<{ props: PublishedGuidancePageProps }> => {
-	// Retrieve required objects in parallel
-	const productsTask = getAllProducts(),
-		productTypesTask = getAllProductTypes(),
-		areasOfInterestTask = getAllAreasOfInterest();
+	initialise({
+		baseURL: publicRuntimeConfig.search.baseURL,
+		index: "guidance",
+	});
 
-	// Filter down to only what we need - the raw feed methods just give us everything
-	const productTypes = (await productTypesTask).filter(isEnabled),
-		areasOfInterest = (await areasOfInterestTask).filter(isEnabled),
-		publishedListProducts = (await productsTask).filter(isPublishedListProduct);
-
-	// Exclude times when we're comparing dates because we never show times to users
-	inPlaceSort(publishedListProducts).by([
-		// We don't use standard modification date as that could just be a small spelling fix.
-		{ desc: (u) => stripTime(u.LastMajorModificationDate) },
-		{ desc: (u) => stripTime(u.PublishedDate) },
-		{ asc: "Title" },
-	]);
-
-	const pageSize = Number(_context.query["ps"]) || productsPerPageDefault,
-		currentPage = Number(_context.query["pa"]) || 1,
-		totalProducts = publishedListProducts.length,
-		totalPages = Math.ceil(totalProducts / pageSize),
-		products = publishedListProducts.slice(currentPage - 1, pageSize);
+	const searchUrl: SearchUrl = {
+			...searchUrlDefaults,
+			...getSearchUrl(context.resolvedUrl),
+		},
+		results = await search(searchUrl),
+		activeModifiers = results.failed ? [] : getActiveModifiers(results);
 
 	return {
 		props: {
-			currentPage,
-			pageSize,
-			totalPages,
-			totalProducts,
-			products,
-			productTypes,
-			areasOfInterest,
+			results,
+			activeModifiers,
 		},
 	};
 };
 
-/**
- * Simple function that returns true/false for whether the given object is enabled or not.
- * Used for filtering arrays.
- */
-const isEnabled = ({
-	Enabled,
-}: Pick<ProductType | AreaOfInterest, "Enabled">) => Enabled;
-
-/**
- * Determines whether the given product should appear in the list.
- * The raw feeds give us all products including corporate documents, process guides and withdrawn products.
- *
- * @param product The product to check against
- * @returns Whether the given product should show in the published guidance list
- */
-const isPublishedListProduct = (product: ProductLite) =>
-	product.ProductStatus == ProductStatus.Published &&
-	product.ProductGroup != ProductGroup.Corporate;
+export default Published;
