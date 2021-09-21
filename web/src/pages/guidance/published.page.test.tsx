@@ -131,12 +131,14 @@ describe("/guidance/published", () => {
 			it("should render the datetime attribute in ISO standard", () => {
 				const time = screen
 					.getByRole("cell", { name: /4 september 2021/i })
+					// eslint-disable-next-line testing-library/no-node-access
 					.querySelector("time");
 				expect(time).toHaveAttribute("datetime", "2021-09-04T12:00:00");
 			});
 			it("should render a short version of the date as a data attribute for display on small screens with CSS", () => {
 				const time = screen
 					.getByRole("cell", { name: /4 september 2021/i })
+					// eslint-disable-next-line testing-library/no-node-access
 					.querySelector("time");
 				expect(time).toHaveAttribute("data-shortdate", "4/9/2021");
 			});
