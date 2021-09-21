@@ -1,4 +1,4 @@
-import { NextConfig } from "next/dist/next-server/server/config";
+import { NextConfig } from "next";
 
 /**
  * next-transpile-modules tries to look for various modules but because our tests
