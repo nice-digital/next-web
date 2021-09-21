@@ -18,7 +18,10 @@ namespace NICE.NextWeb.API
                 {
                     var env = Environment.GetEnvironmentVariable("ASPNETCORE_ENVIRONMENT")?.ToLower();
                     webBuilder.UseStartup<Startup>();
-                    webBuilder.ConfigureAppConfiguration(config => config.AddJsonFile($"ocelot.{env}.json"));
+                    if (env != "Development")
+                    {
+                        webBuilder.ConfigureAppConfiguration(config => config.AddJsonFile($"ocelot.{env}.json"));
+                    }
                 });
     }
 }
