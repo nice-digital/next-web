@@ -1,20 +1,3 @@
 {
-  "Routes": [
-    {
-      "UpstreamHeaderTransform": {
-      },
-      "DownstreamHostAndPorts": [
-        {
-          "Host": "api.open-meteo.com",
-          "Port": 443
-        }
-      ],
-      "DownstreamPathTemplate": "/v1/forecast?latitude=53.48&longitude=-2.24",
-      "DownstreamScheme": "https",
-      "UpstreamHttpMethod": [ "Get" ],
-      "UpstreamPathTemplate": "/mancweather"
-    }
-  ],
-  "Aggregates": [],
-  "GlobalConfiguration": {}
+  "Secrets": "The contents of this file is replaced at runtime by values stored in user secrets file please see readme for more information"
 }

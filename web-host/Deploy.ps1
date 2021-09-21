@@ -2,6 +2,11 @@
 
 $ErrorActionPreference = "Stop"
 
+# Make sure pm2 is running by pinging it, but as a background job otherwise octopus hangs
+Start-Job -ScriptBlock { pm2 ping }
+# Wait for an arbitrary amount of time for PM2 daemon to spawn. Unforunately Wait-Job causes octo to hang so this'll have to do.
+Start-Sleep 5
+
 # Hide pesky npm update banner https://stackoverflow.com/a/60525400/486434
 npm config set update-notifier false
 
