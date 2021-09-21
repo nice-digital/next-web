@@ -23,7 +23,7 @@
   "dependencies": {
     "@nice-digital/design-system": "^1.2.22-alpha.0",
     "@nice-digital/global-nav": "github:nice-digital/global-nav",
-    "@nice-digital/search-client": "^0.2.1362-SRCH-640-SSE-TS",
+    "@nice-digital/search-client": "^0.2.1379-SRCH-655-PrettyUrls",
     "cache-manager": "^3.4.4",
     "cache-manager-fs-hash": "^1.0.0",
     "config": "^3.3.6",
@@ -32,7 +32,7 @@
     "form-serialize": "^0.7.2",
     "js-yaml": "^4.1.0",
     "needle": "^2.8.0",
-    "next": "^11.0.1",
+    "next": "^11.1.2",
     "next-logger": "^2.0.0",
     "next-plugin-node-config": "^1.0.2",
     "next-seo": "^4.26.0",
@@ -46,6 +46,7 @@
   "devDependencies": {
     "@types/cache-manager": "^3.4.2",
     "@types/cache-manager-fs-hash": "0.0.1",
+    "@types/form-serialize": "^0.7.2",
     "cross-env": "^7.0.3",
     "pino-pretty": "^5.1.0",
     "sass": "^1.35.1",
