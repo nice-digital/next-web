@@ -26,7 +26,7 @@ namespace NICE.NextWeb.API
                 .AddCacheManager(x =>
                     x.WithRedisConfiguration("redis", config =>
                         config.WithAllowAdmin()
-                            .WithDatabase(0)
+                            .WithDatabase(Configuration.GetValue<int>("Ocelot:RedisEndpointDatabase"))
                             .WithEndpoint(Configuration.GetValue<string>("Ocelot:RedisEndpoint"), Configuration.GetValue<int>("Ocelot:RedisEndpointPort")))
                         .WithJsonSerializer()
                         .WithRedisCacheHandle("redis"));
