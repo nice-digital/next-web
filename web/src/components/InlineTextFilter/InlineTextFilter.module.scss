@@ -14,6 +14,7 @@
 
 .button {
   margin-left: 0;
+
   @include core.mq($from: md) {
     margin: core.rem(0 0 0 core.$nds-spacing-small);
   }
@@ -21,6 +22,7 @@
 
 .label {
   font-weight: 700;
+
   @include core.mq($from: md) {
     margin: core.rem(0 core.$nds-spacing-small 0 0);
   }

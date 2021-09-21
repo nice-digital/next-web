@@ -1,4 +1,4 @@
-import React, { FC } from "react";
+import React, { FC, ReactNode } from "react";
 
 import { Button } from "@nice-digital/nds-button";
 import { Input } from "@nice-digital/nds-input";
@@ -6,22 +6,32 @@ import { Input } from "@nice-digital/nds-input";
 import styles from "./InlineTextFilter.module.scss";
 
 interface InlineTextFilterProps {
-	label: string;
+	label: ReactNode;
 	name: string;
 	placeholder?: string;
 	defaultValue?: string;
 }
 
-export const InlineTextFilter: FC<InlineTextFilterProps> = (props) => {
-	return (
-		<div className={styles.container}>
-			<label className={styles.label} htmlFor="q">
-				Search by title
-			</label>
-			<Input {...props} label={null} className={styles.input} />
-			<Button className={styles.button} variant="cta" type="submit">
-				Search
-			</Button>
-		</div>
-	);
-};
+export const InlineTextFilter: FC<InlineTextFilterProps> = ({
+	label,
+	name,
+	placeholder,
+	defaultValue,
+}) => (
+	<div className={styles.container}>
+		<label className={styles.label} htmlFor={name}>
+			{label}
+		</label>
+		<Input
+			name={name}
+			label={null}
+			placeholder={placeholder}
+			defaultValue={defaultValue}
+			className={styles.input}
+			autoComplete="off"
+		/>
+		<Button className={styles.button} variant="cta" type="submit">
+			Search
+		</Button>
+	</div>
+);
