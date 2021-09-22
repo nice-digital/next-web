@@ -22,12 +22,12 @@ namespace NICE.NextWeb.API
 
         public void ConfigureServices(IServiceCollection services)
         {
+            var redisDatabaseId = Configuration.GetValue<int>("Ocelot:RedisEndpointDatabase");
+            var redisConnectionString = Configuration.GetValue<string>("Ocelot:RedisConnectionString");
+
             services.AddOcelot()
                 .AddCacheManager(x =>
-                    x.WithRedisConfiguration("redis", config =>
-                        config.WithAllowAdmin()
-                            .WithDatabase(Configuration.GetValue<int>("Ocelot:RedisEndpointDatabase"))
-                            .WithEndpoint(Configuration.GetValue<string>("Ocelot:RedisEndpoint"), Configuration.GetValue<int>("Ocelot:RedisEndpointPort")))
+                    x.WithRedisConfiguration("redis", redisConnectionString, redisDatabaseId)
                         .WithJsonSerializer()
                         .WithRedisCacheHandle("redis"));
         }
