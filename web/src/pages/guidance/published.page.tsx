@@ -1,5 +1,5 @@
 import serialize from "form-serialize";
-import { GetServerSidePropsContext } from "next";
+import { GetServerSidePropsContext, GetServerSidePropsResult } from "next";
 import { NextSeo } from "next-seo";
 import { useRouter } from "next/router";
 import React, {
@@ -299,7 +299,7 @@ export function Published({
 
 export const getServerSideProps = async (
 	context: GetServerSidePropsContext
-): Promise<{ props: PublishedGuidancePageProps }> => {
+): Promise<GetServerSidePropsResult<PublishedGuidancePageProps>> => {
 	initialise({
 		baseURL: publicRuntimeConfig.search.baseURL,
 		index: "guidance",
@@ -320,11 +320,13 @@ export const getServerSideProps = async (
 					(mod) => mod.navigatorShortName !== "gst"
 			  );
 
-	if (results.failed)
+	if (results.failed) {
 		logger.error(
 			`Error loading guidance from search on page ${context.resolvedUrl}: ${results.errorMessage}`,
 			results.debug
 		);
+		context.res.statusCode = 500;
+	}
 
 	return {
 		props: {
