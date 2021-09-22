@@ -11,6 +11,7 @@ import React, {
 } from "react";
 
 import { Breadcrumbs, Breadcrumb } from "@nice-digital/nds-breadcrumbs";
+import { EnhancedPagination } from "@nice-digital/nds-enhanced-pagination";
 import {
 	FilterPanel,
 	FilterGroup,
@@ -52,6 +53,32 @@ interface PublishedGuidancePageProps {
 	activeModifiers: Modifier[];
 	searchUrl: SearchUrl;
 }
+
+const aFunction = () => console.log("HI!");
+
+const generatePagesActions = (maxDestinations: number) => {
+	const destinations = [];
+	for (let i = 0; i < maxDestinations; i++) {
+		destinations.push({
+			pageNumber: i,
+			destination: `#${i}`,
+			onClick: aFunction,
+		});
+	}
+	return destinations;
+};
+
+const pagesActions = generatePagesActions(100);
+
+const nextPageAction = {
+	destination: "#somewhere",
+	onClick: aFunction,
+};
+
+const previousPageAction = {
+	destination: "#somewhereElse",
+	onClick: aFunction,
+};
 
 export function Published({
 	results,
@@ -291,6 +318,14 @@ export function Published({
 							</tbody>
 						</Table>
 					)}
+
+					<EnhancedPagination
+						currentPage={Math.round(firstResult / pageSize) + 1}
+						totalPages={Math.round(resultCount / pageSize)}
+						pagesActions={pagesActions}
+						nextPageAction={nextPageAction}
+						previousPageAction={previousPageAction}
+					/>
 				</GridItem>
 			</Grid>
 		</>
