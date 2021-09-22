@@ -34,6 +34,22 @@ describe("/guidance/published", () => {
 		);
 	});
 
+	describe("Skip links", () => {
+		it("should render skip link to filters", () => {
+			expect(
+				screen.getByRole("link", { name: "Skip to filters" })
+			).toHaveAttribute("href", "#filters");
+		});
+
+		it("should render two skip links to results", () => {
+			const resultsSkipLinks = screen.getAllByRole("link", {
+				name: "Skip to results",
+			});
+			expect(resultsSkipLinks[0]).toHaveAttribute("href", "#results");
+			expect(resultsSkipLinks[1]).toHaveAttribute("href", "#results");
+		});
+	});
+
 	describe("Title filter", () => {
 		it("should render title filter input box and label", () => {
 			expect(
@@ -66,7 +82,45 @@ describe("/guidance/published", () => {
 		});
 	});
 
+	describe("Checkbox filters", () => {
+		it("should match snapshot for filter panel form", () => {
+			expect(screen.getByRole("form")).toMatchSnapshot();
+		});
+
+		it("should not render checkboxes for guidance status navigators", () => {
+			expect(screen.queryByLabelText(/Published/)).toBeNull();
+		});
+
+		it("should render filter groups in correct order", () => {
+			const filterGroupHeadings = within(screen.getByRole("form"))
+				.getAllByRole("heading", { level: 3 })
+				.map((el) => el.textContent || "");
+			expect(filterGroupHeadings).toStrictEqual([
+				"Area of interest",
+				"Type",
+				"Guidance programme",
+				"Advice programme",
+			]);
+		});
+
+		it("should use NextJS router with serialized form on search checkbox tick", () => {
+			const input = screen.getByLabelText("Antimicrobial prescribing (44)");
+
+			userEvent.click(input);
+
+			expect(routerPush).toHaveBeenCalledWith(
+				"?nai=Antimicrobial+prescribing",
+				undefined,
+				{ scroll: false }
+			);
+		});
+	});
+
 	describe("Table", () => {
+		it("should add skip link target id to results table", () => {
+			expect(screen.getByRole("table")).toHaveProperty("id", "results");
+		});
+
 		describe("Column headings", () => {
 			it.each([
 				["Title", 1],

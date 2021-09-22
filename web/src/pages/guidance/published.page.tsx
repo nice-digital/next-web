@@ -36,6 +36,7 @@ import { ErrorPageContent } from "@/components/ErrorPageContent/ErrorPageContent
 import { GuidanceListNav } from "@/components/GuidanceListNav/GuidanceListNav";
 import { InlineTextFilter } from "@/components/InlineTextFilter/InlineTextFilter";
 import { Link } from "@/components/Link/Link";
+import { SkipLink } from "@/components/SkipLink/SkipLink";
 import { publicRuntimeConfig } from "@/config";
 import { logger } from "@/logger";
 import { formatDateStr } from "@/utils/index";
@@ -46,6 +47,9 @@ const searchUrlDefaults = {
 	s: "Date",
 	ps: 10,
 };
+
+/** Search returns the order of navigators depending on what's selected but we want them in a consistent order */
+const navigatorsOrder = ["nai", "ndt", "ngt", "nat"];
 
 interface PublishedGuidancePageProps {
 	results: SearchResults;
@@ -122,20 +126,35 @@ export function Published({
 			{breadcrumbs}
 
 			<PageHeader
-				preheading="Published"
+				preheading="Published "
 				heading="Guidance, quality standards and&nbsp;advice"
+				lead={
+					<>
+						<SkipLink targetId="filters">Skip to filters</SkipLink>
+						<SkipLink targetId="results">Skip to results</SkipLink>
+					</>
+				}
 			/>
 
 			<GuidanceListNav />
 
 			<Grid gutter="loose" className={styles.sectionWrapper}>
-				<GridItem cols={12} md={4} lg={3} className={styles.panelWrapper}>
+				<GridItem
+					cols={12}
+					md={4}
+					lg={3}
+					className={styles.panelWrapper}
+					elementType="section"
+					aria-label="Filter results"
+				>
 					<FilterPanel
+						id="filters"
 						aria-label="Filter results"
 						heading="Filter"
 						innerRef={formRef}
 						onSubmit={formSubmitHandler}
 					>
+						<SkipLink targetId="results">Skip to results</SkipLink>
 						<input
 							type="hidden"
 							name="ps"
@@ -154,6 +173,11 @@ export function Published({
 						/>
 						{navigators
 							.filter((nav) => nav.shortName !== "gst")
+							.sort(
+								(a, b) =>
+									navigatorsOrder.indexOf(a.shortName) -
+									navigatorsOrder.indexOf(b.shortName)
+							)
 							.map(({ shortName, displayName, modifiers }) => (
 								<FilterGroup
 									key={shortName}
@@ -179,7 +203,13 @@ export function Published({
 					</FilterPanel>
 				</GridItem>
 
-				<GridItem cols={12} md={8} lg={9}>
+				<GridItem
+					cols={12}
+					md={8}
+					lg={9}
+					elementType="section"
+					aria-labelledby="filter-summary"
+				>
 					<FilterSummary
 						id="filter-summary"
 						activeFilters={activeModifiers.map(
@@ -219,7 +249,7 @@ export function Published({
 					</FilterSummary>
 
 					{documents.length === 0 ? (
-						<p>
+						<p id="results">
 							We can&apos;t find any guidance or advice. Try{" "}
 							<Link to={unfilteredResultsUrl?.fullUrl as string} scroll={false}>
 								clearing your filters
@@ -227,7 +257,7 @@ export function Published({
 							and starting again.
 						</p>
 					) : (
-						<Table aria-describedby="filter-summary">
+						<Table aria-describedby="filter-summary" id="results">
 							<caption className="visually-hidden">
 								Published guidance, quality standards and advice
 							</caption>
