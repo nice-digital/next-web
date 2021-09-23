@@ -68,7 +68,7 @@ const generatePagesActions = (maxDestinations: number) => {
 	return destinations;
 };
 
-const pagesActions = generatePagesActions(100);
+const pagesActions = generatePagesActions(5);
 
 const nextPageAction = {
 	destination: "#somewhere",
@@ -126,6 +126,23 @@ export function Published({
 			resultCount,
 			unfilteredResultsUrl,
 		} = results as SearchResultsSuccess;
+
+	console.log(
+		"results.pagerLinks.pages ----------> ",
+		results.pagerLinks.pages,
+		"results -------> ",
+		results,
+		"next",
+		results.pagerLinks.next,
+		"previous",
+		results.pagerLinks.previous
+	);
+
+	const TestLink = (props) => (
+		<Link href="/somewhere">
+			<a>{props.children}</a>
+		</Link>
+	);
 
 	useEffect(() => {
 		setAnnouncement(
@@ -320,6 +337,7 @@ export function Published({
 					)}
 
 					<EnhancedPagination
+						elementType={TestLink}
 						currentPage={Math.round(firstResult / pageSize) + 1}
 						totalPages={Math.round(resultCount / pageSize)}
 						pagesActions={pagesActions}
