@@ -11,6 +11,8 @@
 		- [Software](#software)
 	- [Local development setup](#local-development-setup)
 		- [.Net Core Locally stored secrets](#net-core-locally-stored-secrets)
+	- [Gothcas](#gothcas)
+		- [Redis SSL Connection](#redis-ssl-connection)
 
 <!-- END doctoc -->
 </details>
@@ -33,11 +35,17 @@
 1. Open NICE.NextWeb.API project in Visual Studio 2019
 1. Restore nuget packages
 1. Restore locally stored secrets see [.Net Core Locally stored secrets](#.Net-Core-Locally-stored-secrets)
+2. To run Redis locally start docker using the command `docker-compose up`
 
 ### .Net Core Locally stored secrets
 
-Secrets and sensitive information can be stored locally in a file outside of a projects source control using the built in Secrets feature of .Net Core. More information can be found [https://docs.microsoft.com/en-us/aspnet/core/security/app-secrets?tabs=windows&view=aspnetcore-3.1] (https://docs.microsoft.com/en-us/aspnet/core/security/app-secrets?tabs=windows&view=aspnetcore-3.1)
+Secrets and sensitive information can be stored locally in a file outside of a projects source control using the built in Secrets feature of .Net Core. More information can be found here [https://docs.microsoft.com/en-us/aspnet/core/security/app-secrets?tabs=windows&view=aspnetcore-3.1](https://docs.microsoft.com/en-us/aspnet/core/security/app-secrets?tabs=windows&view=aspnetcore-3.1)
 
 Individual values/objects can be stored in a file located in the dev users' profile (on Windows) or in home directory on Linux. This file can be easily managed using "Manage user secrets" feature in Visual Studio. This can be found by in the menu which is displayed by right clicking on the project in solution explorer. This will open up secrets.json. Initially it is best to obtain this file from another dev.
 
 In the production environment (dev, test, alpha, beta, live) the config is read from ocelot.production.json. This file has the secrets stored as Octopus variables which are replaced as part of the deployment process. 
+
+## Gothcas
+### Redis SSL Connection
+
+When running Redis locally TLS is not configured by default. However in AWS Elasticache it is turned on by default in versions higher than 6. To enable SSL connections use the change the RedisConnectionString entry in appsettings.json to  `SSL=True`

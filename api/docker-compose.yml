@@ -1,0 +1,7 @@
+version: '2'
+services: 
+    reddis:
+        image: redis:6.2.4
+        command: --port 6380
+        ports:
+            - 6380:6380
