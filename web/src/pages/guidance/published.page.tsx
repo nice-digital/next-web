@@ -124,13 +124,14 @@ export function Published({
 		"results -------> ",
 		results,
 		"next",
-		results.pagerLinks.next.fullUrl,
+		results.pagerLinks.next,
 		"previous",
-		results.pagerLinks.previous.fullUrl
+		results.pagerLinks.previous
 	);
 
-	const nextPageDestination = pagerLinks.next.fullUrl;
-	const previousPageDestination = pagerLinks.previous.fullUrl;
+	const nextPageDestination = pagerLinks.next && pagerLinks.next.fullUrl;
+	const previousPageDestination =
+		pagerLinks.previous && pagerLinks.previous.fullUrl;
 
 	const nextPageAction = {
 		destination: nextPageDestination,
