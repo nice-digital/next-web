@@ -129,7 +129,7 @@ export function Published({
 		results.pagerLinks.previous.fullUrl
 	);
 
-	const nextPageDestination = pagerLinks.previous.fullUrl;
+	const nextPageDestination = pagerLinks.next.fullUrl;
 	const previousPageDestination = pagerLinks.previous.fullUrl;
 
 	const nextPageAction = {
