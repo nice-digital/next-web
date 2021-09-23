@@ -106,7 +106,17 @@ export function Published({
 
 	const generatePagesActions = (results) => {
 		const pages = results.pagerLinks.pages;
-		const destinations: [] = [];
+		const firstPage =
+			(results.pagerLinks &&
+				results.pagerLinks.first &&
+				results.pagerLinks.first.fullUrl) ||
+			"/null";
+		const destinations: [] = [
+			{
+				pageNumber: 1,
+				destination: firstPage,
+			},
+		];
 		pages.forEach((page: { property: string }) => {
 			destinations.push({
 				pageNumber: parseInt(page.title),
@@ -116,11 +126,6 @@ export function Published({
 		console.log("generated page actions >>>>>>>>>>>>>>>>> ", destinations);
 		return destinations;
 	};
-	useEffect(() => {
-		setAnnouncement(
-			`Showing ${firstResult} to ${lastResult} of ${resultCount}`
-		);
-	}, [firstResult, lastResult, resultCount]);
 
 	if (results.failed)
 		return (
