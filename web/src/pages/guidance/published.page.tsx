@@ -102,6 +102,8 @@ export function Published({
 			pagerLinks,
 		} = results as SearchResultsSuccess;
 
+	console.log("RESULTS>>>>>>>>>>", results.pagerLinks);
+
 	const generatePagesActions = (results) => {
 		const pages = results.pagerLinks.pages;
 		const destinations: [] = [];
