@@ -129,20 +129,6 @@ export function Published({
 		results.pagerLinks.previous
 	);
 
-	const nextPageDestination = pagerLinks.next && pagerLinks.next.fullUrl;
-	const previousPageDestination =
-		pagerLinks.previous && pagerLinks.previous.fullUrl;
-
-	const nextPageAction = {
-		destination: nextPageDestination,
-		onClick: aFunction,
-	};
-
-	const previousPageAction = {
-		destination: previousPageDestination,
-		onClick: aFunction,
-	};
-
 	useEffect(() => {
 		setAnnouncement(
 			`Showing ${firstResult} to ${lastResult} of ${resultCount}`
@@ -344,8 +330,14 @@ export function Published({
 						currentPage={Math.round(firstResult / pageSize) + 1}
 						totalPages={Math.round(resultCount / pageSize)}
 						pagesActions={pagesActions}
-						nextPageAction={nextPageAction}
-						previousPageAction={previousPageAction}
+						nextPageAction={{
+							destination: pagerLinks.next && pagerLinks.next.fullUrl,
+							onClick: aFunction,
+						}}
+						previousPageAction={{
+							destination: pagerLinks.previous && pagerLinks.previous.fullUrl,
+							onClick: aFunction,
+						}}
 					/>
 				</GridItem>
 			</Grid>
