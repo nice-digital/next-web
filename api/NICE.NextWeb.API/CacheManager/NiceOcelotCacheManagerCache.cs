@@ -38,7 +38,7 @@ namespace NICE.NextWeb.API.CacheManager
 
         public T Get(string key, string region)
         {
-            if (_httpContextAccessor.HttpContext.Request.Headers["refreshcache"].Count > 0)
+            if (_httpContextAccessor.HttpContext.Request.Headers["X-CacheManager-RefreshCache"].Count > 0)
             {
                 return default(T);
             }
