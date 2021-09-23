@@ -107,7 +107,7 @@ export function Published({
 		const destinations: [] = [];
 		pages.forEach((page: { property: string }) => {
 			destinations.push({
-				pageNumber: page.title,
+				pageNumber: parseInt(page.title),
 				destination: page.url.fullUrl,
 			});
 		});
@@ -307,11 +307,12 @@ export function Published({
 					)}
 
 					<EnhancedPagination
-						elementType={({ children, ...props }) => (
-							<Link href="#" {...props}>
-								<a>{children}</a>
-							</Link>
-						)}
+						// elementType={({ children, ...props }) => (
+						// 	<Link href="#" {...props}>
+						// 		<a>{children}</a>
+						// 	</Link>
+						// )}
+
 						currentPage={Math.round(firstResult / pageSize) + 1}
 						totalPages={Math.round(resultCount / pageSize)}
 						pagesActions={generatePagesActions(results)}
