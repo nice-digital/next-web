@@ -70,16 +70,6 @@ const generatePagesActions = (maxDestinations: number) => {
 
 const pagesActions = generatePagesActions(5);
 
-const nextPageAction = {
-	destination: "#somewhere",
-	onClick: aFunction,
-};
-
-const previousPageAction = {
-	destination: "#somewhereElse",
-	onClick: aFunction,
-};
-
 export function Published({
 	results,
 	searchUrl: { q, s },
@@ -125,6 +115,7 @@ export function Published({
 			lastResult,
 			resultCount,
 			unfilteredResultsUrl,
+			pagerLinks,
 		} = results as SearchResultsSuccess;
 
 	console.log(
@@ -133,16 +124,23 @@ export function Published({
 		"results -------> ",
 		results,
 		"next",
-		results.pagerLinks.next,
+		results.pagerLinks.next.fullUrl,
 		"previous",
-		results.pagerLinks.previous
+		results.pagerLinks.previous.fullUrl
 	);
 
-	const TestLink = (props) => (
-		<Link href="/somewhere">
-			<a>{props.children}</a>
-		</Link>
-	);
+	const nextPageDestination = pagerLinks.previous.fullUrl;
+	const previousPageDestination = pagerLinks.previous.fullUrl;
+
+	const nextPageAction = {
+		destination: nextPageDestination,
+		onClick: aFunction,
+	};
+
+	const previousPageAction = {
+		destination: previousPageDestination,
+		onClick: aFunction,
+	};
 
 	useEffect(() => {
 		setAnnouncement(
@@ -337,7 +335,11 @@ export function Published({
 					)}
 
 					<EnhancedPagination
-						elementType={TestLink}
+						elementType={({ children, ...props }) => (
+							<Link href="#" {...props}>
+								<a>{children}</a>
+							</Link>
+						)}
 						currentPage={Math.round(firstResult / pageSize) + 1}
 						totalPages={Math.round(resultCount / pageSize)}
 						pagesActions={pagesActions}
