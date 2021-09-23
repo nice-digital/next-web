@@ -54,22 +54,6 @@ interface PublishedGuidancePageProps {
 	searchUrl: SearchUrl;
 }
 
-const aFunction = () => console.log("HI!");
-
-const generatePagesActions = (maxDestinations: number) => {
-	const destinations = [];
-	for (let i = 0; i < maxDestinations; i++) {
-		destinations.push({
-			pageNumber: i,
-			destination: `#${i}`,
-			onClick: aFunction,
-		});
-	}
-	return destinations;
-};
-
-const pagesActions = generatePagesActions(5);
-
 export function Published({
 	results,
 	searchUrl: { q, s },
@@ -118,17 +102,18 @@ export function Published({
 			pagerLinks,
 		} = results as SearchResultsSuccess;
 
-	console.log(
-		"results.pagerLinks.pages ----------> ",
-		results.pagerLinks.pages,
-		"results -------> ",
-		results,
-		"next",
-		results.pagerLinks.next,
-		"previous",
-		results.pagerLinks.previous
-	);
-
+	const generatePagesActions = (results) => {
+		const pages = results.pagerLinks.pages;
+		const destinations: [] = [];
+		pages.forEach((page: { property: string }) => {
+			destinations.push({
+				pageNumber: page.title,
+				destination: page.url.fullUrl,
+			});
+		});
+		console.log("generated page actions >>>>>>>>>>>>>>>>> ", destinations);
+		return destinations;
+	};
 	useEffect(() => {
 		setAnnouncement(
 			`Showing ${firstResult} to ${lastResult} of ${resultCount}`
@@ -329,14 +314,12 @@ export function Published({
 						)}
 						currentPage={Math.round(firstResult / pageSize) + 1}
 						totalPages={Math.round(resultCount / pageSize)}
-						pagesActions={pagesActions}
+						pagesActions={generatePagesActions(results)}
 						nextPageAction={{
 							destination: pagerLinks.next && pagerLinks.next.fullUrl,
-							onClick: aFunction,
 						}}
 						previousPageAction={{
 							destination: pagerLinks.previous && pagerLinks.previous.fullUrl,
-							onClick: aFunction,
 						}}
 					/>
 				</GridItem>
