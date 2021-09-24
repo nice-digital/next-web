@@ -1,22 +1,9 @@
-import serialize from "form-serialize";
 import { GetServerSidePropsContext, GetServerSidePropsResult } from "next";
 import { NextSeo } from "next-seo";
-import { useRouter } from "next/router";
-import React, {
-	createRef,
-	useCallback,
-	useEffect,
-	useMemo,
-	useState,
-} from "react";
+import React, { useEffect, useMemo, useState } from "react";
 
 import { Breadcrumbs, Breadcrumb } from "@nice-digital/nds-breadcrumbs";
-import {
-	FilterPanel,
-	FilterGroup,
-	FilterOption,
-	FilterSummary,
-} from "@nice-digital/nds-filters";
+import { FilterSummary } from "@nice-digital/nds-filters";
 import { Grid, GridItem } from "@nice-digital/nds-grid";
 import { PageHeader } from "@nice-digital/nds-page-header";
 import { Table } from "@nice-digital/nds-table";
@@ -33,8 +20,8 @@ import {
 
 import { Announcer } from "@/components/Announcer/Announcer";
 import { ErrorPageContent } from "@/components/ErrorPageContent/ErrorPageContent";
+import { GuidanceListFilters } from "@/components/GuidanceListFilters/GuidanceListFilters";
 import { GuidanceListNav } from "@/components/GuidanceListNav/GuidanceListNav";
-import { InlineTextFilter } from "@/components/InlineTextFilter/InlineTextFilter";
 import { Link } from "@/components/Link/Link";
 import { SkipLink } from "@/components/SkipLink/SkipLink";
 import { publicRuntimeConfig } from "@/config";
@@ -48,9 +35,6 @@ const searchUrlDefaults = {
 	ps: 10,
 };
 
-/** Search returns the order of navigators depending on what's selected but we want them in a consistent order */
-const navigatorsOrder = ["nai", "ndt", "ngt", "nat"];
-
 interface PublishedGuidancePageProps {
 	results: SearchResults;
 	activeModifiers: Modifier[];
@@ -59,28 +43,11 @@ interface PublishedGuidancePageProps {
 
 export function Published({
 	results,
-	searchUrl: { q, s },
+	searchUrl: { q, s, from, to },
 	activeModifiers,
 }: PublishedGuidancePageProps): JSX.Element {
-	const router = useRouter(),
-		formRef = createRef<HTMLFormElement>(),
-		doClientSideFormSubmit = useCallback(() => {
-			if (formRef.current) {
-				const url = serialize(formRef.current);
-				router.push(url ? "?" + url : "", undefined, { scroll: false });
-			}
-		}, [formRef, router]),
-		formSubmitHandler = useCallback(
-			(e: React.FormEvent<HTMLFormElement>) => {
-				if (formRef.current) {
-					e.preventDefault();
-					doClientSideFormSubmit();
-				}
-			},
-			[formRef, doClientSideFormSubmit]
-		),
-		// Announcement text, used for giving audible notifications to screen readers when results have changed
-		[announcement, setAnnouncement] = useState(""),
+	// Announcement text, used for giving audible notifications to screen readers when results have changed
+	const [announcement, setAnnouncement] = useState(""),
 		// Cache the breadcrumbs as their static and it means we can use them on the error view and success view
 		breadcrumbs = useMemo(
 			() => (
@@ -147,60 +114,14 @@ export function Published({
 					elementType="section"
 					aria-label="Filter results"
 				>
-					<FilterPanel
-						id="filters"
-						aria-label="Filter results"
-						heading="Filter"
-						innerRef={formRef}
-						onSubmit={formSubmitHandler}
-					>
-						<SkipLink targetId="results">Skip to results</SkipLink>
-						<input
-							type="hidden"
-							name="ps"
-							value={pageSize === searchUrlDefaults.ps ? "" : pageSize}
-						/>
-						<input
-							type="hidden"
-							name="s"
-							value={s === searchUrlDefaults.s ? "" : s}
-						/>
-						<InlineTextFilter
-							label="Filter by title or keyword"
-							name="q"
-							defaultValue={q}
-							placeholder="E.g. 'diabetes' or 'NG28'"
-						/>
-						{navigators
-							.filter((nav) => nav.shortName !== "gst")
-							.sort(
-								(a, b) =>
-									navigatorsOrder.indexOf(a.shortName) -
-									navigatorsOrder.indexOf(b.shortName)
-							)
-							.map(({ shortName, displayName, modifiers }) => (
-								<FilterGroup
-									key={shortName}
-									heading={displayName}
-									id={shortName}
-									selectedCount={
-										modifiers.filter((modifier) => modifier.active).length
-									}
-								>
-									{modifiers.map((modifier) => (
-										<FilterOption
-											key={modifier.displayName}
-											isSelected={modifier.active}
-											onChanged={doClientSideFormSubmit}
-											groupId={shortName}
-											value={modifier.displayName}
-										>
-											{`${modifier.displayName} (${modifier.resultCount})`}
-										</FilterOption>
-									))}
-								</FilterGroup>
-							))}
-					</FilterPanel>
+					<GuidanceListFilters
+						navigators={navigators}
+						pageSize={pageSize === searchUrlDefaults.ps ? "" : pageSize}
+						sortOrder={s === searchUrlDefaults.s ? "" : s}
+						queryText={q}
+						from={from}
+						to={to}
+					/>
 				</GridItem>
 
 				<GridItem

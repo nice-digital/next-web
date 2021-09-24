@@ -1,4 +1,3 @@
-import userEvent from "@testing-library/user-event";
 import { useRouter } from "next/router";
 
 import {
@@ -9,7 +8,8 @@ import {
 import { render, screen, within } from "@/test-utils";
 import { formatDateStr } from "@/utils/index";
 
-import sampleData from "./__mocks__/published.sample.json";
+import sampleData from "../../__mocks__/__data__/search/guidance-published.json";
+
 import { Published } from "./published.page";
 
 describe("/guidance/published", () => {
@@ -47,72 +47,6 @@ describe("/guidance/published", () => {
 			});
 			expect(resultsSkipLinks[0]).toHaveAttribute("href", "#results");
 			expect(resultsSkipLinks[1]).toHaveAttribute("href", "#results");
-		});
-	});
-
-	describe("Title filter", () => {
-		it("should render title filter input box and label", () => {
-			expect(
-				screen.getByLabelText("Filter by title or keyword")
-			).toBeInTheDocument();
-		});
-
-		it("should render placeholder attribute on title filter input", () => {
-			expect(
-				screen.getByLabelText("Filter by title or keyword")
-			).toHaveAttribute("placeholder", "E.g. 'diabetes' or 'NG28'");
-		});
-
-		it("should render search submit button", () => {
-			expect(screen.getByText("Search")).toBeInTheDocument();
-			expect(screen.getByText("Search")).toHaveProperty("tagName", "BUTTON");
-			expect(screen.getByText("Search")).toHaveAttribute("type", "submit");
-		});
-
-		it("should use NextJS router with serialized form on search button click", () => {
-			const input = screen.getByLabelText("Filter by title or keyword"),
-				button = screen.getByText("Search");
-
-			userEvent.type(input, "diabetes");
-			userEvent.click(button);
-
-			expect(routerPush).toHaveBeenCalledWith("?q=diabetes", undefined, {
-				scroll: false,
-			});
-		});
-	});
-
-	describe("Checkbox filters", () => {
-		it("should match snapshot for filter panel form", () => {
-			expect(screen.getByRole("form")).toMatchSnapshot();
-		});
-
-		it("should not render checkboxes for guidance status navigators", () => {
-			expect(screen.queryByLabelText(/Published/)).toBeNull();
-		});
-
-		it("should render filter groups in correct order", () => {
-			const filterGroupHeadings = within(screen.getByRole("form"))
-				.getAllByRole("heading", { level: 3 })
-				.map((el) => el.textContent || "");
-			expect(filterGroupHeadings).toStrictEqual([
-				"Area of interest",
-				"Type",
-				"Guidance programme",
-				"Advice programme",
-			]);
-		});
-
-		it("should use NextJS router with serialized form on search checkbox tick", () => {
-			const input = screen.getByLabelText("Antimicrobial prescribing (44)");
-
-			userEvent.click(input);
-
-			expect(routerPush).toHaveBeenCalledWith(
-				"?nai=Antimicrobial+prescribing",
-				undefined,
-				{ scroll: false }
-			);
 		});
 	});
 

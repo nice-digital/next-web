@@ -79,6 +79,8 @@ class NextWebApp extends App<{}, {}, AppState> {
 	}
 
 	render(): JSX.Element {
+		console.log({ Header });
+
 		const {
 				Component,
 				pageProps,
