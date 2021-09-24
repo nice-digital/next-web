@@ -314,12 +314,12 @@ export function Published({
 					)}
 
 					<EnhancedPagination
-						// elementType={({ children, ...props }) => (
-						// 	<Link href="#" {...props}>
-						// 		<a>{children}</a>
-						// 	</Link>
-						// )}
-
+						method="href"
+						elementType={({ children, ...props }) => (
+							<Link href="/" {...props}>
+								<a>{children}</a>
+							</Link>
+						)}
 						currentPage={Math.round(firstResult / pageSize) + 1}
 						totalPages={Math.round(resultCount / pageSize)}
 						pagesActions={generatePagesActions(results)}
