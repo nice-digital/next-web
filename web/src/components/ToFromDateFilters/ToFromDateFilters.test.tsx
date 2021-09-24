@@ -1,7 +1,7 @@
 import userEvent from "@testing-library/user-event";
 import dayjs from "dayjs";
 
-import { render, screen, waitFor } from "@/test-utils";
+import { render, screen } from "@/test-utils";
 
 import {
 	ToFromDateFilters,
