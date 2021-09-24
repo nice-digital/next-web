@@ -21,7 +21,10 @@ namespace NICE.NextWeb.API.CacheManager
 
         public void Add(string key, T value, TimeSpan ttl, string region)
         {
-            _cacheManager.Put(new CacheItem<T>(key, region, value, ExpirationMode.Absolute, ttl));
+            if (typeof(T).GetProperty("StatusCode") != null && typeof(T).GetProperty("StatusCode").GetValue(value).Equals(System.Net.HttpStatusCode.OK))
+            {
+                _cacheManager.Put(new CacheItem<T>(key, region, value, ExpirationMode.Absolute, ttl));
+            }
         }
 
         public void AddAndDelete(string key, T value, TimeSpan ttl, string region)
