@@ -11,3 +11,6 @@ next-env.d.ts
 coverage
 
 dist
+
+functional-tests/docker-output
+functional-tests/allure-report

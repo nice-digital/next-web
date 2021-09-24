@@ -11,3 +11,16 @@
     }
   }
 }
+
+.sectionWrapper {
+  @include core.mq($from: md) {
+    padding-top: core.rem(core.$nds-spacing-xx-large);
+    position: relative;
+  }
+}
+
+.panelWrapper {
+  @include core.mq($from: md) {
+    position: initial;
+  }
+}

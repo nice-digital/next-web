@@ -1,4 +1,10 @@
-import { SearchResultsSuccess } from "@nice-digital/search-client/types";
+import userEvent from "@testing-library/user-event";
+import { useRouter } from "next/router";
+
+import {
+	SearchResultsSuccess,
+	SearchUrl,
+} from "@nice-digital/search-client/types";
 
 import { render, screen, within } from "@/test-utils";
 import { formatDateStr } from "@/utils/index";
@@ -6,28 +12,61 @@ import { formatDateStr } from "@/utils/index";
 import sampleData from "./__mocks__/published.sample.json";
 import { Published } from "./published.page";
 
-jest.mock("next/router", () => ({
-	useRouter() {
-		return {
+describe("/guidance/published", () => {
+	let routerPush: jest.Mock;
+	beforeEach(() => {
+		routerPush = jest.fn();
+
+		(useRouter as jest.Mock).mockImplementation(() => ({
 			route: "/",
 			pathname: "",
 			query: "",
 			asPath: "",
-		};
-	},
-}));
+			push: routerPush,
+		}));
 
-describe("/guidance/published", () => {
-	describe("Table", () => {
-		beforeEach(() => {
-			render(
-				<Published
-					activeModifiers={[]}
-					results={sampleData as unknown as SearchResultsSuccess}
-				/>
-			);
+		render(
+			<Published
+				activeModifiers={[]}
+				results={sampleData as unknown as SearchResultsSuccess}
+				searchUrl={{} as SearchUrl}
+			/>
+		);
+	});
+
+	describe("Title filter", () => {
+		it("should render title filter input box and label", () => {
+			expect(
+				screen.getByLabelText("Filter by title or keyword")
+			).toBeInTheDocument();
 		});
 
+		it("should render placeholder attribute on title filter input", () => {
+			expect(
+				screen.getByLabelText("Filter by title or keyword")
+			).toHaveAttribute("placeholder", "E.g. 'diabetes' or 'NG28'");
+		});
+
+		it("should render search submit button", () => {
+			expect(screen.getByText("Search")).toBeInTheDocument();
+			expect(screen.getByText("Search")).toHaveProperty("tagName", "BUTTON");
+			expect(screen.getByText("Search")).toHaveAttribute("type", "submit");
+		});
+
+		it("should use NextJS router with serialized form on search button click", () => {
+			const input = screen.getByLabelText("Filter by title or keyword"),
+				button = screen.getByText("Search");
+
+			userEvent.type(input, "diabetes");
+			userEvent.click(button);
+
+			expect(routerPush).toHaveBeenCalledWith("?q=diabetes", undefined, {
+				scroll: false,
+			});
+		});
+	});
+
+	describe("Table", () => {
 		describe("Column headings", () => {
 			it.each([
 				["Title", 1],
@@ -91,12 +130,14 @@ describe("/guidance/published", () => {
 			it("should render the datetime attribute in ISO standard", () => {
 				const time = screen
 					.getByRole("cell", { name: /4 september 2021/i })
+					// eslint-disable-next-line testing-library/no-node-access
 					.querySelector("time");
 				expect(time).toHaveAttribute("datetime", "2021-09-04T12:00:00");
 			});
 			it("should render a short version of the date as a data attribute for display on small screens with CSS", () => {
 				const time = screen
 					.getByRole("cell", { name: /4 september 2021/i })
+					// eslint-disable-next-line testing-library/no-node-access
 					.querySelector("time");
 				expect(time).toHaveAttribute("data-shortdate", "4/9/2021");
 			});
