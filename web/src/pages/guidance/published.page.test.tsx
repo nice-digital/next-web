@@ -1,16 +1,18 @@
+import { GetServerSidePropsContext } from "next";
 import { useRouter } from "next/router";
 
 import {
+	search,
 	SearchResultsSuccess,
 	SearchUrl,
-} from "@nice-digital/search-client/types";
+} from "@nice-digital/search-client";
 
 import { render, screen, within } from "@/test-utils";
 import { formatDateStr } from "@/utils/index";
 
 import sampleData from "../../__mocks__/__data__/search/guidance-published.json";
 
-import { Published } from "./published.page";
+import { Published, getServerSideProps } from "./published.page";
 
 describe("/guidance/published", () => {
 	let routerPush: jest.Mock;
@@ -32,6 +34,33 @@ describe("/guidance/published", () => {
 				searchUrl={{} as SearchUrl}
 			/>
 		);
+	});
+
+	describe("getServerSideProps", () => {
+		it.todo("should log error on search failure");
+
+		it("should return 500 response status when search request fails", async () => {
+			(search as jest.Mock).mockResolvedValue({ failed: true });
+
+			const res = { statusCode: 0 };
+
+			await getServerSideProps({
+				resolvedUrl: "/guidance/published?q=test",
+				res,
+			} as GetServerSidePropsContext);
+
+			expect(res.statusCode).toBe(500);
+		});
+
+		it.todo("should return results prop from search");
+
+		it.todo(
+			"should insert from/to dates as first active modifier with correct toggle url"
+		);
+
+		it.todo("should set active modifiers from navigators");
+
+		it.todo("should return search url prop");
 	});
 
 	describe("Skip links", () => {

@@ -1,3 +1,4 @@
+import dayjs from "dayjs";
 import { GetServerSidePropsContext, GetServerSidePropsResult } from "next";
 import { NextSeo } from "next-seo";
 import React, { useEffect, useMemo, useState } from "react";
@@ -13,9 +14,9 @@ import {
 	SearchResults,
 	getSearchUrl,
 	getActiveModifiers,
-	Modifier,
 	SearchUrl,
 	SearchResultsSuccess,
+	getUrlPathAndQuery,
 } from "@nice-digital/search-client";
 
 import { Announcer } from "@/components/Announcer/Announcer";
@@ -26,6 +27,7 @@ import { Link } from "@/components/Link/Link";
 import { SkipLink } from "@/components/SkipLink/SkipLink";
 import { publicRuntimeConfig } from "@/config";
 import { logger } from "@/logger";
+import { dateFormatShort } from "@/utils/constants";
 import { formatDateStr } from "@/utils/index";
 
 import styles from "./published.module.scss";
@@ -37,7 +39,7 @@ const searchUrlDefaults = {
 
 interface PublishedGuidancePageProps {
 	results: SearchResults;
-	activeModifiers: Modifier[];
+	activeModifiers: { displayName: string; toggleUrl: string }[];
 	searchUrl: SearchUrl;
 }
 
@@ -48,7 +50,7 @@ export function Published({
 }: PublishedGuidancePageProps): JSX.Element {
 	// Announcement text, used for giving audible notifications to screen readers when results have changed
 	const [announcement, setAnnouncement] = useState(""),
-		// Cache the breadcrumbs as their static and it means we can use them on the error view and success view
+		// Cache the breadcrumbs as they're static and it means we can use them on both the error view and success view
 		breadcrumbs = useMemo(
 			() => (
 				<Breadcrumbs>
@@ -61,6 +63,7 @@ export function Published({
 			),
 			[]
 		),
+		{ failed } = results,
 		{
 			documents,
 			navigators,
@@ -77,7 +80,7 @@ export function Published({
 		);
 	}, [firstResult, lastResult, resultCount]);
 
-	if (results.failed)
+	if (failed)
 		return (
 			<>
 				<ErrorPageContent breadcrumbs={breadcrumbs} />
@@ -115,6 +118,7 @@ export function Published({
 					aria-label="Filter results"
 				>
 					<GuidanceListFilters
+						numActiveModifiers={activeModifiers.length}
 						navigators={navigators}
 						pageSize={pageSize === searchUrlDefaults.ps ? "" : pageSize}
 						sortOrder={s === searchUrlDefaults.s ? "" : s}
@@ -136,7 +140,7 @@ export function Published({
 						activeFilters={activeModifiers.map(
 							({ displayName, toggleUrl }) => ({
 								label: displayName,
-								destination: toggleUrl.fullUrl,
+								destination: toggleUrl,
 								method: "href",
 								elementType: ({ children, ...props }) => (
 									<Link {...props} scroll={false}>
@@ -266,10 +270,25 @@ export const getServerSideProps = async (
 		results = await search(searchUrl),
 		activeModifiers = results.failed
 			? []
-			: getActiveModifiers(results).filter(
-					// We pre filter by guidance status so don't want to be able to remove it
-					(mod) => mod.navigatorShortName !== "gst"
-			  );
+			: getActiveModifiers(results)
+					.filter(
+						// We pre filter by guidance status so don't want to be able to remove it
+						(mod) => mod.navigatorShortName !== "gst"
+					)
+					.map(
+						({
+							navigatorShortName,
+							displayName,
+							toggleUrl: { fullUrl: toggleUrl },
+						}) => ({
+							displayName: `${
+								results.navigators.find(
+									(nav) => nav.shortName === navigatorShortName
+								)?.displayName
+							}: ${displayName}`,
+							toggleUrl,
+						})
+					);
 
 	if (results.failed) {
 		logger.error(
@@ -277,6 +296,18 @@ export const getServerSideProps = async (
 			results.debug
 		);
 		context.res.statusCode = 500;
+	} else if (searchUrl.from && searchUrl.to) {
+		// Add an active modifier for the date range to allow users to easily toggle it
+		activeModifiers.unshift({
+			displayName: `Last updated between ${dayjs(searchUrl.from).format(
+				dateFormatShort
+			)} and ${dayjs(searchUrl.to).format(dateFormatShort)}`,
+			toggleUrl: getUrlPathAndQuery({
+				...searchUrl,
+				from: undefined,
+				to: undefined,
+			}),
+		});
 	}
 
 	return {

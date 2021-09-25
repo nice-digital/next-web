@@ -20,6 +20,7 @@ const navigatorsOrder = ["nai", "ndt", "ngt", "nat"];
 const navigatorsCollapsedByDefault = ["ngt", "nat"];
 
 export interface GuidanceListFiltersProps {
+	numActiveModifiers: number;
 	navigators: Navigator[];
 	pageSize?: "" | number;
 	sortOrder?: string;
@@ -29,6 +30,7 @@ export interface GuidanceListFiltersProps {
 }
 
 export const GuidanceListFilters: FC<GuidanceListFiltersProps> = ({
+	numActiveModifiers,
 	navigators,
 	pageSize,
 	sortOrder,
@@ -60,7 +62,9 @@ export const GuidanceListFilters: FC<GuidanceListFiltersProps> = ({
 		<FilterPanel
 			id="filters"
 			aria-label="Filter results"
-			heading="Filter"
+			heading={`Filter${
+				numActiveModifiers === 0 ? "" : ` (${numActiveModifiers} selected)`
+			}`}
 			innerRef={formRef}
 			onSubmit={formSubmitHandler}
 		>
@@ -73,9 +77,7 @@ export const GuidanceListFilters: FC<GuidanceListFiltersProps> = ({
 				defaultValue={queryText}
 				placeholder="E.g. 'diabetes' or 'NG28'"
 			/>
-			<FilterGroup heading="Date">
-				<ToFromDateFilters from={from} to={to} />
-			</FilterGroup>
+			<ToFromDateFilters heading="Last updated date" from={from} to={to} />
 			{navigators
 				.filter((nav) => nav.shortName !== "gst")
 				.sort(
@@ -93,17 +95,19 @@ export const GuidanceListFilters: FC<GuidanceListFiltersProps> = ({
 							modifiers.filter((modifier) => modifier.active).length
 						}
 					>
-						{modifiers.map((modifier) => (
-							<FilterOption
-								key={modifier.displayName}
-								isSelected={modifier.active}
-								onChanged={doClientSideFormSubmit}
-								groupId={shortName}
-								value={modifier.displayName}
-							>
-								{`${modifier.displayName} (${modifier.resultCount})`}
-							</FilterOption>
-						))}
+						{modifiers
+							.sort((a, b) => a.displayName.localeCompare(b.displayName))
+							.map((modifier) => (
+								<FilterOption
+									key={modifier.displayName}
+									isSelected={modifier.active}
+									onChanged={doClientSideFormSubmit}
+									groupId={shortName}
+									value={modifier.displayName}
+								>
+									{`${modifier.displayName} (${modifier.resultCount})`}
+								</FilterOption>
+							))}
 					</FilterGroup>
 				))}
 		</FilterPanel>

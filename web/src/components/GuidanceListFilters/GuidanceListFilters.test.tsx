@@ -24,6 +24,7 @@ describe("GuidanceListFilters", () => {
 
 		rerender = render(
 			<GuidanceListFilters
+				numActiveModifiers={2}
 				navigators={sampleData.navigators as unknown as Navigator[]}
 			/>
 		).rerender;
@@ -37,6 +38,7 @@ describe("GuidanceListFilters", () => {
 		it("should serialize given page size and sort order in form submission", () => {
 			rerender(
 				<GuidanceListFilters
+					numActiveModifiers={2}
 					pageSize={20}
 					sortOrder="Title"
 					navigators={sampleData.navigators as unknown as Navigator[]}
@@ -93,7 +95,7 @@ describe("GuidanceListFilters", () => {
 				.getAllByRole("heading", { level: 3 })
 				.map((el) => el.textContent || "");
 			expect(filterGroupHeadings).toStrictEqual([
-				"Date",
+				"Last updated date",
 				"Area of interest",
 				"Type",
 				"Guidance programme",
