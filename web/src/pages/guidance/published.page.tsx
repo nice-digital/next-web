@@ -37,7 +37,7 @@ const searchUrlDefaults = {
 	ps: 10,
 };
 
-interface PublishedGuidancePageProps {
+export interface PublishedGuidancePageProps {
 	results: SearchResults;
 	activeModifiers: { displayName: string; toggleUrl: string }[];
 	searchUrl: SearchUrl;
@@ -293,7 +293,7 @@ export const getServerSideProps = async (
 	if (results.failed) {
 		logger.error(
 			`Error loading guidance from search on page ${context.resolvedUrl}: ${results.errorMessage}`,
-			results.debug
+			results.debug?.rawResponse
 		);
 		context.res.statusCode = 500;
 	} else if (searchUrl.from && searchUrl.to) {

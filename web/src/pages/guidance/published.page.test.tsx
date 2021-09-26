@@ -1,18 +1,26 @@
-import { GetServerSidePropsContext } from "next";
+import { GetServerSidePropsContext, GetServerSidePropsResult } from "next";
 import { useRouter } from "next/router";
 
 import {
 	search,
+	SearchResultsError,
 	SearchResultsSuccess,
 	SearchUrl,
 } from "@nice-digital/search-client";
 
+import { logger } from "@/logger";
 import { render, screen, within } from "@/test-utils";
 import { formatDateStr } from "@/utils/index";
 
 import sampleData from "../../__mocks__/__data__/search/guidance-published.json";
 
-import { Published, getServerSideProps } from "./published.page";
+import {
+	Published,
+	getServerSideProps,
+	PublishedGuidancePageProps,
+} from "./published.page";
+
+jest.mock("@/logger", () => ({ logger: { error: jest.fn() } }));
 
 describe("/guidance/published", () => {
 	let routerPush: jest.Mock;
@@ -37,30 +45,94 @@ describe("/guidance/published", () => {
 	});
 
 	describe("getServerSideProps", () => {
-		it.todo("should log error on search failure");
+		describe("Error", () => {
+			beforeEach(() => {
+				(search as jest.Mock).mockResolvedValue({
+					failed: true,
+					errorMessage: "Some server side error message",
+					debug: { rawResponse: "Some raw debug response" },
+				} as SearchResultsError);
+			});
 
-		it("should return 500 response status when search request fails", async () => {
-			(search as jest.Mock).mockResolvedValue({ failed: true });
+			it("should log error and debug response on search failure", async () => {
+				await getServerSideProps({
+					resolvedUrl: "/guidance/published?q=test",
+					res: {},
+				} as GetServerSidePropsContext);
 
-			const res = { statusCode: 0 };
+				expect(logger.error as jest.Mock).toHaveBeenCalledWith(
+					"Error loading guidance from search on page /guidance/published?q=test: Some server side error message",
+					"Some raw debug response"
+				);
+			});
 
-			await getServerSideProps({
-				resolvedUrl: "/guidance/published?q=test",
-				res,
-			} as GetServerSidePropsContext);
+			it("should return 500 response status when search request fails", async () => {
+				const res = { statusCode: 0 };
 
-			expect(res.statusCode).toBe(500);
+				await getServerSideProps({
+					resolvedUrl: "/guidance/published?q=test",
+					res,
+				} as GetServerSidePropsContext);
+
+				expect(res.statusCode).toBe(500);
+			});
 		});
 
-		it.todo("should return results prop from search");
+		describe("Success", () => {
+			let result: { props: PublishedGuidancePageProps };
+			const resolvedUrl =
+				"/guidance/published?q=test&ndt=Guidance&from=2020-07-28&to=2021-06-04";
+			beforeEach(async () => {
+				(search as jest.Mock).mockResolvedValue(sampleData);
 
-		it.todo(
-			"should insert from/to dates as first active modifier with correct toggle url"
-		);
+				result = (await getServerSideProps({
+					resolvedUrl,
+				} as GetServerSidePropsContext)) as {
+					props: PublishedGuidancePageProps;
+				};
+			});
 
-		it.todo("should set active modifiers from navigators");
+			it("should return results from search in results prop", async () => {
+				expect(result.props.results).toBe(sampleData);
+			});
 
-		it.todo("should return search url prop");
+			it.todo(
+				"should insert from/to dates as first active modifier with correct toggle url"
+			);
+
+			it("should set active modifiers from navigators and form/to dates", () => {
+				expect(result.props.activeModifiers).toStrictEqual([
+					{
+						displayName: "Last updated between 28/7/2020 and 4/6/2021",
+						toggleUrl:
+							"/guidance/published?s=Date&ps=10&q=test&ndt=Guidance&gst=Published",
+					},
+					{
+						displayName: "Type: Guidance",
+						toggleUrl:
+							"/guidance/published?gst=Published&ngt=NICE%20guidelines&sp=on",
+					},
+					{
+						displayName: "Guidance programme: NICE guidelines",
+						toggleUrl: "/guidance/published?gst=Published&ndt=Guidance&sp=on",
+					},
+				]);
+			});
+
+			it("should return search url prop", async () => {
+				expect(result.props.searchUrl).toStrictEqual({
+					route: "/guidance/published",
+					q: "test",
+					from: "2020-07-28",
+					to: "2021-06-04",
+					fullUrl: resolvedUrl,
+					gst: "Published",
+					ndt: "Guidance",
+					s: "Date",
+					ps: 10,
+				});
+			});
+		});
 	});
 
 	describe("Skip links", () => {
