@@ -73,7 +73,7 @@ const commonHeaders = [
 ];
 
 /**
- * @type {import('next/dist/next-server/server/config').NextConfig}
+ * @type {import('next').NextConfig}
  **/
 const nextConfig = {
 	nodeConfigServerKey: "server",
@@ -101,15 +101,13 @@ const nextConfig = {
 		// We run our own typechecking so no need to do it twice
 		ignoreBuildErrors: process.env.NODE_ENV === "production",
 	},
-	future: {},
-	experimental: {},
 	sassOptions: {
 		includePaths: [path.join(__dirname, "node_modules/@nice-digital")],
 	},
 };
 
 // The weird comment syntax below is a JSDoc TypeScript cast: https://edibleco.de/2UMm8nx
-/** @type {import('next/dist/next-server/server/config').NextConfig} */
+/** @type {import('next').NextConfig} */
 const finalConfig = withNodeConfig(
 	withTranspiledModules(niceDigitalModulesToTranspile)(nextConfig)
 );

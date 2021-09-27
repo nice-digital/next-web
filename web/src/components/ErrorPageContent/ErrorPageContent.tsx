@@ -9,6 +9,7 @@ export interface ErrorPageContentProps {
 	title?: string;
 	heading?: ReactNode;
 	lead?: ReactNode;
+	breadcrumbs?: ReactNode;
 }
 
 export const ErrorPageContent: FC<ErrorPageContentProps> = ({
@@ -21,15 +22,18 @@ export const ErrorPageContent: FC<ErrorPageContentProps> = ({
 			<a href="/get-involved/contact-us">contact us</a>.
 		</>
 	),
+	breadcrumbs,
 }) => {
 	return (
 		<>
 			<NextSeo title={title} />
 
-			<Breadcrumbs>
-				<Breadcrumb to="/">Home</Breadcrumb>
-				<Breadcrumb>{title}</Breadcrumb>
-			</Breadcrumbs>
+			{breadcrumbs || (
+				<Breadcrumbs>
+					<Breadcrumb to="/">Home</Breadcrumb>
+					<Breadcrumb>{title}</Breadcrumb>
+				</Breadcrumbs>
+			)}
 
 			<PageHeader heading={heading} lead={lead} />
 

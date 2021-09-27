@@ -1,0 +1,33 @@
+@use '@nice-digital/nds-core/scss/core';
+
+.container {
+  @include core.mq($from: md) {
+    align-items: baseline;
+    display: flex;
+    justify-content: flex-end;
+    position: absolute;
+    right: 1rem;
+    top: 0;
+    width: 50%;
+  }
+}
+
+.button {
+  margin-left: 0;
+
+  @include core.mq($from: md) {
+    margin: core.rem(0 0 0 core.$nds-spacing-small);
+  }
+}
+
+.label {
+  font-weight: 700;
+
+  @include core.mq($from: md) {
+    margin: core.rem(0 core.$nds-spacing-small 0 0);
+  }
+}
+
+.input {
+  flex-grow: 1;
+}

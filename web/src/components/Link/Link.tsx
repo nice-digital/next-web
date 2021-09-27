@@ -8,7 +8,7 @@ export type LinkProps = RequireExactlyOne<
 	{
 		to?: NextJSUrl;
 		className?: string;
-		children: ReactElement;
+		children: string | ReactElement;
 	} & SetOptional<Except<NextJSLinkProps, "prefetch">, "href">,
 	// Support either using `href` or `to` because of different prop types for NDS components vs other.
 	"href" | "to"
@@ -45,6 +45,8 @@ export const Link: FC<LinkProps> = ({
 		passHref={passHref}
 		locale={locale}
 	>
-		{cloneElement(children, { className, ...attrs })}
+		{typeof children === "string"
+			? children
+			: cloneElement(children, { className, ...attrs })}
 	</NextJSLink>
 );

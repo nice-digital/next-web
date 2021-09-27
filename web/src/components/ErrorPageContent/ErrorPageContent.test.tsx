@@ -6,6 +6,7 @@ const props: Required<ErrorPageContentProps> = {
 	title: "A test title",
 	heading: "A test heading",
 	lead: "A test lead",
+	breadcrumbs: null,
 };
 
 describe("ErrorPageContent", () => {
@@ -42,6 +43,11 @@ describe("ErrorPageContent", () => {
 					selector: ".breadcrumbs span",
 				})
 			).toBeInTheDocument();
+		});
+
+		it("should render given given breadcrumbs", () => {
+			render(<ErrorPageContent {...props} breadcrumbs={"Some breadcrumbs"} />);
+			expect(screen.getByText("Some breadcrumbs")).toBeInTheDocument();
 		});
 	});
 
