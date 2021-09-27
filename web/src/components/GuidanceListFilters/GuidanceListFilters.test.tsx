@@ -47,9 +47,13 @@ describe("GuidanceListFilters", () => {
 
 			userEvent.click(screen.getByText("Search"));
 
-			expect(routerPush).toHaveBeenCalledWith("?ps=20&s=Title", undefined, {
-				scroll: false,
-			});
+			expect(routerPush).toHaveBeenCalledWith(
+				"?ps=20&s=Title&ndt=Guidance&ngt=NICE+guidelines",
+				undefined,
+				{
+					scroll: false,
+				}
+			);
 		});
 	});
 
@@ -79,9 +83,13 @@ describe("GuidanceListFilters", () => {
 			userEvent.type(input, "diabetes");
 			userEvent.click(button);
 
-			expect(routerPush).toHaveBeenCalledWith("?q=diabetes", undefined, {
-				scroll: false,
-			});
+			expect(routerPush).toHaveBeenCalledWith(
+				"?q=diabetes&ndt=Guidance&ngt=NICE+guidelines",
+				undefined,
+				{
+					scroll: false,
+				}
+			);
 		});
 	});
 
@@ -97,19 +105,18 @@ describe("GuidanceListFilters", () => {
 			expect(filterGroupHeadings).toStrictEqual([
 				"Last updated date",
 				"Area of interest",
-				"Type",
-				"Guidance programme",
-				"Advice programme",
+				"Type1 selected",
+				"Guidance programme1 selected",
 			]);
 		});
 
 		it("should use NextJS router with serialized form on search checkbox tick", () => {
-			const input = screen.getByLabelText("Antimicrobial prescribing (44)");
+			const input = screen.getByLabelText("Antimicrobial prescribing (21)");
 
 			userEvent.click(input);
 
 			expect(routerPush).toHaveBeenCalledWith(
-				"?nai=Antimicrobial+prescribing",
+				"?nai=Antimicrobial+prescribing&ndt=Guidance&ngt=NICE+guidelines",
 				undefined,
 				{ scroll: false }
 			);
