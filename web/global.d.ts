@@ -31,7 +31,7 @@ interface Window {
 }
 
 declare module "next-plugin-node-config" {
-	import { NextConfig } from "next/dist/next-server/server/config";
+	import { NextConfig } from "next";
 
 	// The withTranspiledModules module uses TS but doesn't use NextConfig.
 	// It just uses {} instead which isn't helpful, so we use unknown here for the argument
