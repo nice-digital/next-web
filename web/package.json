@@ -3,7 +3,7 @@
   "version": "0.3.0",
   "private": true,
   "scripts": {
-    "dev": "cross-env NODE_OPTIONS=\"-r next-logger/presets/next-only\" next dev -p 3000 | pino-pretty",
+    "dev": "cross-env NODE_OPTIONS=\"-r next-logger/presets/next-only --inspect\" next dev -p 3000 | pino-pretty",
     "build": "next build",
     "start": "next start",
     "host": "npm start | pino-mq -c .pino-mqrc.json",
