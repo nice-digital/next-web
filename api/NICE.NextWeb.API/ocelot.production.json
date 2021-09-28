@@ -12,7 +12,11 @@
       "DownstreamPathTemplate": "/api/TaxonomyMappings?ApiKey={niceorgTaxonomyApiKey}",
       "DownstreamScheme": "https",
       "UpstreamHttpMethod": [ "Get" ],
-      "UpstreamPathTemplate": "/api/TaxonomyMappings?ApiKey={niceorgTaxonomyApiKey}"
+      "UpstreamPathTemplate": "/api/TaxonomyMappings?ApiKey={niceorgTaxonomyApiKey}",
+      "FileCacheOptions": {
+        "TtlSeconds": 86400,
+        "Region": "OcelotNiceorg"
+      }
     }
   ],
   "Aggregates": [],
