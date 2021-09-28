@@ -1,4 +1,5 @@
 import userEvent from "@testing-library/user-event";
+import mockDate from "mockdate";
 import { useRouter } from "next/router";
 
 import { Navigator } from "@nice-digital/search-client/types";
@@ -22,12 +23,18 @@ describe("GuidanceListFilters", () => {
 			push: routerPush,
 		}));
 
+		mockDate.set("2020-11-22");
+
 		rerender = render(
 			<GuidanceListFilters
 				numActiveModifiers={2}
 				navigators={sampleData.navigators as unknown as Navigator[]}
 			/>
 		).rerender;
+	});
+
+	afterEach(() => {
+		mockDate.reset();
 	});
 
 	it("should match snapshot for filter panel form", () => {
