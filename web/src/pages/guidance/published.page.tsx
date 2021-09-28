@@ -2,6 +2,7 @@ import serialize from "form-serialize";
 import { GetServerSidePropsContext, GetServerSidePropsResult } from "next";
 import { NextSeo } from "next-seo";
 import { useRouter } from "next/router";
+import pluralize from "pluralize";
 import React, {
 	createRef,
 	useCallback,
@@ -32,6 +33,7 @@ import {
 } from "@nice-digital/search-client";
 
 import { Announcer } from "@/components/Announcer/Announcer";
+import { CopyToClipboard } from "@/components/CopyToClipboard/CopyToClipboard";
 import { ErrorPageContent } from "@/components/ErrorPageContent/ErrorPageContent";
 import { GuidanceListNav } from "@/components/GuidanceListNav/GuidanceListNav";
 import { InlineTextFilter } from "@/components/InlineTextFilter/InlineTextFilter";
@@ -60,6 +62,7 @@ export function Published({
 }: PublishedGuidancePageProps): JSX.Element {
 	const router = useRouter(),
 		formRef = createRef<HTMLFormElement>(),
+		tableRef = createRef<HTMLTableElement>(),
 		doClientSideFormSubmit = useCallback(() => {
 			if (formRef.current) {
 				const url = serialize(formRef.current);
@@ -227,69 +230,75 @@ export function Published({
 							and starting again.
 						</p>
 					) : (
-						<Table aria-describedby="filter-summary">
-							<caption className="visually-hidden">
-								Published guidance, quality standards and advice
-							</caption>
-							<thead>
-								<tr>
-									<th scope="col">Title</th>
-									<th scope="col">Reference number</th>
-									<th scope="col">Published</th>
-									<th scope="col">Last updated</th>
-								</tr>
-							</thead>
-							<tbody>
-								{documents.map(
-									({
-										id,
-										title,
-										guidanceRef,
-										publicationDate,
-										lastUpdated,
-										pathAndQuery,
-									}) => {
-										return (
-											<tr key={id}>
-												<td>
-													<a
-														href={pathAndQuery}
-														dangerouslySetInnerHTML={{ __html: title }}
-													/>
-												</td>
-												<td>{guidanceRef}</td>
-												<td>
-													<time
-														className={styles.tableDate}
-														dateTime={String(publicationDate)}
-														data-shortdate={formatDateStr(
-															String(publicationDate),
-															true
-														)}
-													>
-														<span>
-															{formatDateStr(String(publicationDate))}
-														</span>
-													</time>
-												</td>
-												<td>
-													<time
-														className={styles.tableDate}
-														dateTime={String(lastUpdated)}
-														data-shortdate={formatDateStr(
-															String(lastUpdated),
-															true
-														)}
-													>
-														<span>{formatDateStr(String(lastUpdated))}</span>
-													</time>
-												</td>
-											</tr>
-										);
-									}
-								)}
-							</tbody>
-						</Table>
+						<>
+							<Table id="results-table" aria-describedby="filter-summary">
+								<caption className="visually-hidden">
+									Published guidance, quality standards and advice
+								</caption>
+								<thead>
+									<tr>
+										<th scope="col">Title</th>
+										<th scope="col">Reference number</th>
+										<th scope="col">Published</th>
+										<th scope="col">Last updated</th>
+									</tr>
+								</thead>
+								<tbody>
+									{documents.map(
+										({
+											id,
+											title,
+											guidanceRef,
+											publicationDate,
+											lastUpdated,
+											pathAndQuery,
+										}) => {
+											return (
+												<tr key={id}>
+													<td>
+														<a
+															href={pathAndQuery}
+															dangerouslySetInnerHTML={{ __html: title }}
+														/>
+													</td>
+													<td>{guidanceRef}</td>
+													<td>
+														<time
+															className={styles.tableDate}
+															dateTime={String(publicationDate)}
+															data-shortdate={formatDateStr(
+																String(publicationDate),
+																true
+															)}
+														>
+															<span>
+																{formatDateStr(String(publicationDate))}
+															</span>
+														</time>
+													</td>
+													<td>
+														<time
+															className={styles.tableDate}
+															dateTime={String(lastUpdated)}
+															data-shortdate={formatDateStr(
+																String(lastUpdated),
+																true
+															)}
+														>
+															<span>{formatDateStr(String(lastUpdated))}</span>
+														</time>
+													</td>
+												</tr>
+											);
+										}
+									)}
+								</tbody>
+							</Table>
+
+							<CopyToClipboard targetId="results-table">
+								Copy {pluralize("result", documents.length, true)} to clipboard
+							</CopyToClipboard>
+						</>
 					)}
 				</GridItem>
 			</Grid>
