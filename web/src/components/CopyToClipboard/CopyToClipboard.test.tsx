@@ -120,6 +120,24 @@ describe("CopyToClipboard", () => {
 				expect(screen.queryByRole("alert")).toBeNull();
 			});
 		});
+
+		it("should restore focus to copy button after alert dismiss", async () => {
+			const targetElement = document.createElement("p");
+			targetElement.id = "test";
+			document.body.appendChild(targetElement);
+
+			render(
+				<CopyToClipboard targetId="test">Copy to clipboard</CopyToClipboard>
+			);
+
+			const copyButton = screen.getByText("Copy to clipboard");
+			userEvent.click(copyButton);
+			copyButton.blur();
+
+			userEvent.click(await screen.findByText("Dismiss message"));
+
+			expect(copyButton).toHaveFocus();
+		});
 	});
 
 	describe("Error handling", () => {
