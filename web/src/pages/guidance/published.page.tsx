@@ -316,7 +316,7 @@ export function Published({
 					<EnhancedPagination
 						method="href"
 						elementType={({ children, ...props }) => (
-							<Link href="/" {...props}>
+							<Link href="/" scroll={false} {...props}>
 								<a>{children}</a>
 							</Link>
 						)}
