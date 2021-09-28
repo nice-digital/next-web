@@ -11,6 +11,12 @@
 		- [Software](#software)
 	- [Local development setup](#local-development-setup)
 		- [.Net Core Locally stored secrets](#net-core-locally-stored-secrets)
+	- [Ocelot](#ocelot)
+		- [X-CacheManager-RefreshCache Header](#x-cachemanager-refreshcache-header)
+	- [Gotchas](#gotchas)
+		- [Redis SSL Connection](#redis-ssl-connection)
+		- [Running Redis on Docker - memory errors](#running-redis-on-docker---memory-errors)
+		- [Secrets.json](#secretsjson)
 
 <!-- END doctoc -->
 </details>
@@ -33,11 +39,43 @@
 1. Open NICE.NextWeb.API project in Visual Studio 2019
 1. Restore nuget packages
 1. Restore locally stored secrets see [.Net Core Locally stored secrets](#.Net-Core-Locally-stored-secrets)
+2. To run Redis locally start docker using the command `docker-compose up`
 
 ### .Net Core Locally stored secrets
 
-Secrets and sensitive information can be stored locally in a file outside of a projects source control using the built in Secrets feature of .Net Core. More information can be found [https://docs.microsoft.com/en-us/aspnet/core/security/app-secrets?tabs=windows&view=aspnetcore-3.1] (https://docs.microsoft.com/en-us/aspnet/core/security/app-secrets?tabs=windows&view=aspnetcore-3.1)
+Secrets and sensitive information can be stored locally in a file outside of a projects source control using the built in Secrets feature of .Net Core. More information can be found here [https://docs.microsoft.com/en-us/aspnet/core/security/app-secrets?tabs=windows&view=aspnetcore-3.1](https://docs.microsoft.com/en-us/aspnet/core/security/app-secrets?tabs=windows&view=aspnetcore-3.1)
 
 Individual values/objects can be stored in a file located in the dev users' profile (on Windows) or in home directory on Linux. This file can be easily managed using "Manage user secrets" feature in Visual Studio. This can be found by in the menu which is displayed by right clicking on the project in solution explorer. This will open up secrets.json. Initially it is best to obtain this file from another dev.
 
 In the production environment (dev, test, alpha, beta, live) the config is read from ocelot.production.json. This file has the secrets stored as Octopus variables which are replaced as part of the deployment process. 
+
+## Ocelot
+Ocelot is used by this project to provide basic API Gateway functionality. More information can be found here [Ocelot](https://ocelot.readthedocs.io/). This project is using version Ocelot 16.0.1 which is the highest version that supports .Net Core 3.1 LTS.
+
+Ocelot is loaded from Nuget packages with some minor customisations. Mainly a custom Cache Manager is injected into the service collection. This custom Cache Manager is default except it inspects headers for the X-CacheManager-RefreshCache header which is described [here](#x-cachemanager-refreshcache-header).
+
+Additionally some convenience configuration extension functions are provided to configure Ocelot and CacheManager.
+### X-CacheManager-RefreshCache Header
+If X-CacheManager-RefreshCache header is present on an incoming request Ocelot will not attempt to load the content from cache first. It will load the content from the downstream host. This content will then stored in cache replacing existing content). This is useful as it will provide a method to warm the cache up and also maintain it in a warm/hot state.
+
+If X-CacheManager-RefreshCache is not present on an incoming request the content is loaded from cache first and if not present in cache it will be loaded from the downstream host (and then stored in cache). Such a request would be a general request from an end user.
+
+## Gotchas
+### Redis SSL Connection
+
+When running Redis locally TLS is not configured by default. However in AWS Elasticache it is turned on by default in versions higher than 6. To enable SSL connections use the change the RedisConnectionString entry in appsettings.json to  `SSL=True`
+
+### Running Redis on Docker - memory errors
+
+If you encounter out of memory errors when starting up the docker-compose config for the local Redis instance you will need to make a change to the Docker virtual machine. This only occurs when you are running the Docker virtual machine in WSL 2.
+
+You need to connect to your Docker virtual machine in using a Powershell command window. Then you need to modify a systemmd property on the Docker virtual machine (which is running linux) 
+
+1. Run this command in Powershell - `
+wsl -d docker-desktop
+`
+1. You will then be at the bash prompt of the Docker engine (which is a WSL 2 vm). This should look something like this. - `I{your hostname}/tmp/docker-desktop-root/mnt/host/c/Users/{your username}#`
+2. Run `sysctl -w vm.overcommit_memory=1` command. This will change the engine.overcommit_memory property and it will apply it immediately. For some reason the change isn't persisted so you may find you need to reapply this after you reboot your host machine or the Docker engine vm. .  
+
+### Secrets.json
+By default when running in "Development" mode (which is set via environment variables or via Visual Studio debug configuration) the .Net core host loads configuration from locally stored secrets. Please ensure you have this configured correctly. You may need to get this config from another dev who has recently worked on this. More information can be found here [https://docs.microsoft.com/en-us/aspnet/core/security/app-secrets?view=aspnetcore-3.1&tabs=windows](https://docs.microsoft.com/en-us/aspnet/core/security/app-secrets?view=aspnetcore-3.1&tabs=windows)

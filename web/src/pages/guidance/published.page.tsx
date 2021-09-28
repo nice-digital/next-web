@@ -104,6 +104,12 @@ export function Published({
 
 	console.log("RESULTS>>>>>>>>>>", results.pagerLinks);
 
+	useEffect(() => {
+		setAnnouncement(
+			`Showing ${firstResult} to ${lastResult} of ${resultCount}`
+		);
+	}, [firstResult, lastResult, resultCount]);
+
 	const generatePagesActions = (results) => {
 		const pages = results.pagerLinks.pages;
 		const firstPage =
