@@ -44,6 +44,9 @@ export const CopyToClipboard: FC<CopyToClipboardProps> = ({
 				setSuccess(false);
 			}
 		} else {
+			logger.error(
+				`Couldn't copy to clipboard: couldn't find target element with id ${targetId}`
+			);
 			setSuccess(false);
 		}
 	}, [targetId, logger]);
