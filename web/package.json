@@ -20,6 +20,9 @@
     "Ian Routledge (https://ediblecode.com)"
   ],
   "homepage": "https://github.com/nice-digital/next-web#readme",
+  "browserslist": [
+    "extends @nice-digital/browserslist-config"
+  ],
   "dependencies": {
     "@nice-digital/design-system": "^1.2.24-alpha.0",
     "@nice-digital/global-nav": "github:nice-digital/global-nav",
@@ -44,6 +47,7 @@
     "serialize-error": "^8.1.0"
   },
   "devDependencies": {
+    "@nice-digital/browserslist-config": "^2.0.1",
     "@types/cache-manager": "^3.4.2",
     "@types/cache-manager-fs-hash": "0.0.1",
     "@types/form-serialize": "^0.7.2",
