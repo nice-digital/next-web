@@ -54,6 +54,31 @@ interface PublishedGuidancePageProps {
 	searchUrl: SearchUrl;
 }
 
+type destinationType = {
+	pageNumber: number;
+	destination: string | null;
+};
+
+const generatePagesActions = (results: SearchResultsSuccess) => {
+	if (!results) return;
+	const pages = results.pagerLinks.pages;
+	const firstPage = results?.pagerLinks?.first?.fullUrl || null;
+	const destinations: destinationType[] = [
+		{
+			pageNumber: 1,
+			destination: firstPage,
+		},
+	];
+	pages.forEach((page) => {
+		destinations.push({
+			pageNumber: parseInt(page.title),
+			destination: page.url.fullUrl,
+		});
+	});
+	console.log("generated page actions >>>>>>>>>>>>>>>>> ", destinations);
+	return destinations;
+};
+
 export function Published({
 	results,
 	searchUrl: { q, s },
@@ -102,36 +127,11 @@ export function Published({
 			pagerLinks,
 		} = results as SearchResultsSuccess;
 
-	console.log("RESULTS>>>>>>>>>>", results.pagerLinks);
-
 	useEffect(() => {
 		setAnnouncement(
 			`Showing ${firstResult} to ${lastResult} of ${resultCount}`
 		);
 	}, [firstResult, lastResult, resultCount]);
-
-	const generatePagesActions = (results) => {
-		const pages = results.pagerLinks.pages;
-		const firstPage =
-			(results.pagerLinks &&
-				results.pagerLinks.first &&
-				results.pagerLinks.first.fullUrl) ||
-			"/null";
-		const destinations: [] = [
-			{
-				pageNumber: 1,
-				destination: firstPage,
-			},
-		];
-		pages.forEach((page: { property: string }) => {
-			destinations.push({
-				pageNumber: parseInt(page.title),
-				destination: page.url.fullUrl,
-			});
-		});
-		console.log("generated page actions >>>>>>>>>>>>>>>>> ", destinations);
-		return destinations;
-	};
 
 	if (results.failed)
 		return (
@@ -342,6 +342,8 @@ export function Published({
 	);
 }
 
+export default Published;
+
 export const getServerSideProps = async (
 	context: GetServerSidePropsContext
 ): Promise<GetServerSidePropsResult<PublishedGuidancePageProps>> => {
@@ -381,5 +383,3 @@ export const getServerSideProps = async (
 		},
 	};
 };
-
-export default Published;
