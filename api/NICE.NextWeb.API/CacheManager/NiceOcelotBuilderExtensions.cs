@@ -13,39 +13,32 @@ using Ocelot.DependencyInjection;
 
 namespace NICE.NextWeb.API.CacheManager
 {
-    public static class OcelotBuilderExtensions
+    public static class NiceOcelotBuilderExtensions
     {
         public static IOcelotBuilder AddCacheManager(this IOcelotBuilder builder,
             Action<ConfigurationBuilderCachePart> settings)
         {
             var cacheManagerOutputCache = CacheFactory.Build<CachedResponse>("OcelotOutputCache", settings);
-            var ocelotOutputCacheManager =
-                new NiceOcelotCacheManagerCache<CachedResponse>(cacheManagerOutputCache, new HttpContextAccessor());
 
             builder.Services.RemoveAll(typeof(ICacheManager<CachedResponse>));
             builder.Services.RemoveAll(typeof(IOcelotCache<CachedResponse>));
-            builder.Services.AddSingleton<ICacheManager<CachedResponse>>(cacheManagerOutputCache);
-            builder.Services.AddSingleton<IOcelotCache<CachedResponse>>(ocelotOutputCacheManager);
+            builder.Services.AddSingleton(cacheManagerOutputCache);
+            builder.Services.AddSingleton<IOcelotCache<CachedResponse>, NiceOcelotCacheManagerCache<CachedResponse>>();
 
             var ocelotConfigCacheManagerOutputCache =
                 CacheFactory.Build<IInternalConfiguration>("OcelotConfigurationCache", settings);
-            var ocelotConfigCacheManager =
-                new NiceOcelotCacheManagerCache<IInternalConfiguration>(ocelotConfigCacheManagerOutputCache,
-                    new HttpContextAccessor());
             builder.Services.RemoveAll(typeof(ICacheManager<IInternalConfiguration>));
             builder.Services.RemoveAll(typeof(IOcelotCache<IInternalConfiguration>));
-            builder.Services.AddSingleton<ICacheManager<IInternalConfiguration>>(ocelotConfigCacheManagerOutputCache);
-            builder.Services.AddSingleton<IOcelotCache<IInternalConfiguration>>(ocelotConfigCacheManager);
+            builder.Services.AddSingleton(ocelotConfigCacheManagerOutputCache);
+            builder.Services.AddSingleton<IOcelotCache<IInternalConfiguration>, NiceOcelotCacheManagerCache<IInternalConfiguration>>();
 
             var fileConfigCacheManagerOutputCache =
                 CacheFactory.Build<FileConfiguration>("FileConfigurationCache", settings);
-            var fileConfigCacheManager =
-                new NiceOcelotCacheManagerCache<FileConfiguration>(fileConfigCacheManagerOutputCache,
-                    new HttpContextAccessor());
             builder.Services.RemoveAll(typeof(ICacheManager<FileConfiguration>));
             builder.Services.RemoveAll(typeof(IOcelotCache<FileConfiguration>));
-            builder.Services.AddSingleton<ICacheManager<FileConfiguration>>(fileConfigCacheManagerOutputCache);
-            builder.Services.AddSingleton<IOcelotCache<FileConfiguration>>(fileConfigCacheManager);
+            builder.Services.AddSingleton(fileConfigCacheManagerOutputCache);
+            builder.Services.AddSingleton<IOcelotCache<FileConfiguration>, NiceOcelotCacheManagerCache<FileConfiguration>>();
+
             return builder;
         }
     }
