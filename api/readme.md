@@ -15,6 +15,8 @@
 		- [X-CacheManager-RefreshCache Header](#x-cachemanager-refreshcache-header)
 	- [Gotchas](#gotchas)
 		- [Redis SSL Connection](#redis-ssl-connection)
+		- [Running Redis on Docker - memory errors](#running-redis-on-docker---memory-errors)
+		- [Secrets.json](#secretsjson)
 
 <!-- END doctoc -->
 </details>
@@ -62,3 +64,18 @@ If X-CacheManager-RefreshCache is not present on an incoming request the content
 ### Redis SSL Connection
 
 When running Redis locally TLS is not configured by default. However in AWS Elasticache it is turned on by default in versions higher than 6. To enable SSL connections use the change the RedisConnectionString entry in appsettings.json to  `SSL=True`
+
+### Running Redis on Docker - memory errors
+
+If you encounter out of memory errors when starting up the docker-compose config for the local Redis instance you will need to make a change to the Docker virtual machine. This only occurs when you are running the Docker virtual machine in WSL 2.
+
+You need to connect to your Docker virtual machine in using a Powershell command window. Then you need to modify a systemmd property on the Docker virtual machine (which is running linux) 
+
+1. Run this command in Powershell - `
+wsl -d docker-desktop
+`
+1. You will then be at the bash prompt of the Docker engine (which is a WSL 2 vm). This should look something like this. - `I{your hostname}/tmp/docker-desktop-root/mnt/host/c/Users/{your username}#`
+2. Run `sysctl -w vm.overcommit_memory=1` command. This will change the engine.overcommit_memory property and it will apply it immediately. For some reason the change isn't persisted so you may find you need to reapply this after you reboot your host machine or the Docker engine vm. .  
+
+### Secrets.json
+By default when running in "Development" mode (which is set via environment variables or via Visual Studio debug configuration) the .Net core host loads configuration from locally stored secrets. Please ensure you have this configured correctly. You may need to get this config from another dev who has recently worked on this. More information can be found here [https://docs.microsoft.com/en-us/aspnet/core/security/app-secrets?view=aspnetcore-3.1&tabs=windows](https://docs.microsoft.com/en-us/aspnet/core/security/app-secrets?view=aspnetcore-3.1&tabs=windows)
