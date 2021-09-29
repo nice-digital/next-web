@@ -23,7 +23,7 @@ namespace NICE.NextWeb.API
             // Read Logging configuration
 
             var configuration = new ConfigurationBuilder()
-                .AddJsonFile($"appsettings{env}.json", optional: false)
+                .AddJsonFile($"appsettings.{env}.json", optional: false)
                 .AddUserSecrets<Startup>()
                 .Build();
             var logCfg = configuration.GetSection("Logging");
