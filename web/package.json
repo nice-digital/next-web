@@ -25,6 +25,7 @@
   ],
   "dependencies": {
     "@nice-digital/design-system": "^1.2.24-alpha.0",
+    "@nice-digital/global-nav": "github:nice-digital/global-nav",
     "@nice-digital/icons": "^2.2.7-alpha.0",
     "@nice-digital/nds-action-banner": "^1.2.12-alpha.0",
     "@nice-digital/nds-alert": "^1.2.11-alpha.0",
@@ -35,6 +36,7 @@
     "@nice-digital/nds-checkbox": "^1.2.11-alpha.0",
     "@nice-digital/nds-container": "^1.0.7-alpha.0",
     "@nice-digital/nds-core": "^1.2.11-alpha.0",
+    "@nice-digital/nds-enhanced-pagination": "^1.0.1-alpha.0",
     "@nice-digital/nds-filters": "^1.2.17-alpha.0",
     "@nice-digital/nds-form-group": "^1.2.11-alpha.0",
     "@nice-digital/nds-forms": "^1.2.6-alpha.0",
@@ -56,7 +58,6 @@
     "@nice-digital/nds-tabs": "^1.2.14-alpha.0",
     "@nice-digital/nds-tag": "^1.2.11-alpha.0",
     "@nice-digital/nds-textarea": "^1.2.11-alpha.0",
-    "@nice-digital/global-nav": "github:nice-digital/global-nav",
     "@nice-digital/search-client": "^0.2.1379-SRCH-655-PrettyUrls",
     "cache-manager": "^3.4.4",
     "cache-manager-fs-hash": "^1.0.0",
