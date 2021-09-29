@@ -19,9 +19,11 @@ namespace NICE.NextWeb.API
     {
         public static LoggerConfiguration GetLoggerConfiguration()
         {
+            var env = Environment.GetEnvironmentVariable("ASPNETCORE_ENVIRONMENT");
             // Read Logging configuration
+
             var configuration = new ConfigurationBuilder()
-                .AddJsonFile("appsettings.json", optional: false)
+                .AddJsonFile($"appsettings{env}.json", optional: false)
                 .AddUserSecrets<Startup>()
                 .Build();
             var logCfg = configuration.GetSection("Logging");
