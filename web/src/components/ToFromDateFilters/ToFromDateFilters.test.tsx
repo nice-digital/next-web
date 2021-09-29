@@ -59,7 +59,7 @@ describe("ToFromDateFilters", () => {
 			expect(screen.getByLabelText("From date")).toHaveValue("1867-11-07");
 		});
 
-		it("should set empty 'to date' field to tomorrow when 'from date' is set", () => {
+		it("should set empty 'to date' field to today when 'from date' is set", () => {
 			render(<ToFromDateFilters />);
 
 			expect(screen.getByLabelText("To date")).toHaveValue("");
@@ -67,7 +67,7 @@ describe("ToFromDateFilters", () => {
 			userEvent.type(screen.getByLabelText("From date"), "1912-06-23");
 
 			expect(screen.getByLabelText("To date")).toHaveValue(
-				dayjs().add(1, "days").format("YYYY-MM-DD")
+				dayjs().format("YYYY-MM-DD")
 			);
 		});
 	});
@@ -100,12 +100,12 @@ describe("ToFromDateFilters", () => {
 			);
 		});
 
-		it(`should set max 'to date' as tomorrow`, () => {
+		it(`should set max 'to date' as today`, () => {
 			render(<ToFromDateFilters />);
 
 			expect(screen.getByLabelText("To date")).toHaveAttribute(
 				"max",
-				dayjs().add(1, "days").format("YYYY-MM-DD")
+				dayjs().format("YYYY-MM-DD")
 			);
 		});
 	});

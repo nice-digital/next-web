@@ -54,7 +54,7 @@ export const ToFromDateFiltersBody: FC<Except<ToFromDateFilters, "heading">> =
 
 				// We need a from AND to date for the filtering to work
 				if (!toDate) {
-					setToDate(dayjs().add(1, "day").format("YYYY-MM-DD"));
+					setToDate(dayjs().format("YYYY-MM-DD"));
 				}
 			},
 			[toDate]
@@ -117,7 +117,7 @@ export const ToFromDateFiltersBody: FC<Except<ToFromDateFilters, "heading">> =
 					pattern={isoDateInputFallbackPattern}
 					placeholder="yyyy-mm-dd"
 					min={fromDate || isoMinDate}
-					max={dayjs().add(1, "day").format("YYYY-MM-DD")}
+					max={dayjs().format("YYYY-MM-DD")}
 					value={toDate}
 					onChange={toDateChangeHandler}
 					required={!toDate && !!fromDate}
