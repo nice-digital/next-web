@@ -3,7 +3,7 @@
   "version": "0.3.0",
   "private": true,
   "scripts": {
-    "dev": "cross-env NODE_OPTIONS=\"-r next-logger/presets/next-only --inspect\" next dev -p 3000 | pino-pretty",
+    "dev": "cross-env NODE_OPTIONS=\"-r next-logger/presets/next-only --inspect\" next dev -p 4000 | pino-pretty",
     "build": "next build",
     "start": "next start",
     "host": "npm start | pino-mq -c .pino-mqrc.json",
@@ -58,7 +58,7 @@
     "@nice-digital/nds-tabs": "^1.2.14-alpha.0",
     "@nice-digital/nds-tag": "^1.2.11-alpha.0",
     "@nice-digital/nds-textarea": "^1.2.11-alpha.0",
-    "@nice-digital/search-client": "^0.2.1379-SRCH-655-PrettyUrls",
+    "@nice-digital/search-client": "^0.2.1398",
     "cache-manager": "^3.4.4",
     "cache-manager-fs-hash": "^1.0.0",
     "config": "^3.3.6",

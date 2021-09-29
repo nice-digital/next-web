@@ -11,7 +11,6 @@ import React, {
 } from "react";
 
 import { Breadcrumbs, Breadcrumb } from "@nice-digital/nds-breadcrumbs";
-import { EnhancedPagination } from "@nice-digital/nds-enhanced-pagination";
 import {
 	FilterPanel,
 	FilterGroup,
@@ -37,6 +36,7 @@ import { ErrorPageContent } from "@/components/ErrorPageContent/ErrorPageContent
 import { GuidanceListNav } from "@/components/GuidanceListNav/GuidanceListNav";
 import { InlineTextFilter } from "@/components/InlineTextFilter/InlineTextFilter";
 import { Link } from "@/components/Link/Link";
+import { SearchPagination } from "@/components/SearchPagination/SearchPagination";
 import { publicRuntimeConfig } from "@/config";
 import { logger } from "@/logger";
 import { formatDateStr } from "@/utils/index";
@@ -53,31 +53,6 @@ interface PublishedGuidancePageProps {
 	activeModifiers: Modifier[];
 	searchUrl: SearchUrl;
 }
-
-type destinationType = {
-	pageNumber: number;
-	destination: string | null;
-};
-
-const generatePagesActions = (results: SearchResultsSuccess) => {
-	if (!results) return;
-	const pages = results.pagerLinks.pages;
-	const firstPage = results?.pagerLinks?.first?.fullUrl || null;
-	const destinations: destinationType[] = [
-		{
-			pageNumber: 1,
-			destination: firstPage,
-		},
-	];
-	pages.forEach((page) => {
-		destinations.push({
-			pageNumber: parseInt(page.title),
-			destination: page.url.fullUrl,
-		});
-	});
-	console.log("generated page actions >>>>>>>>>>>>>>>>> ", destinations);
-	return destinations;
-};
 
 export function Published({
 	results,
@@ -319,23 +294,7 @@ export function Published({
 						</Table>
 					)}
 
-					<EnhancedPagination
-						method="href"
-						elementType={({ children, ...props }) => (
-							<Link href="/" scroll={false} {...props}>
-								<a>{children}</a>
-							</Link>
-						)}
-						currentPage={Math.round(firstResult / pageSize) + 1}
-						totalPages={Math.round(resultCount / pageSize)}
-						pagesActions={generatePagesActions(results)}
-						nextPageAction={{
-							destination: pagerLinks.next && pagerLinks.next.fullUrl,
-						}}
-						previousPageAction={{
-							destination: pagerLinks.previous && pagerLinks.previous.fullUrl,
-						}}
-					/>
+					<SearchPagination results={results} />
 				</GridItem>
 			</Grid>
 		</>
