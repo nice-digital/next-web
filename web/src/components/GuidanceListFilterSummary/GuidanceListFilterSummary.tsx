@@ -8,7 +8,7 @@ import {
 	upsertQueryParam,
 } from "@nice-digital/search-client";
 
-import { Link } from "@/components/Link/Link";
+import { NoScrollLink } from "@/components/Link/Link";
 
 export interface ActiveModifier {
 	displayName: string;
@@ -37,11 +37,7 @@ export const GuidanceListFilterSummary: FC<GuidanceListFilterSummaryProps> = ({
 				label: displayName,
 				destination: toggleUrl,
 				method: "href",
-				elementType: ({ children, ...props }) => (
-					<Link {...props} scroll={false}>
-						<a>{children}</a>
-					</Link>
-				),
+				elementType: NoScrollLink,
 			}))}
 			sorting={[
 				{
@@ -49,21 +45,13 @@ export const GuidanceListFilterSummary: FC<GuidanceListFilterSummaryProps> = ({
 						currentSortOrder === SortOrder.dateDescending || !currentSortOrder,
 					label: "Date",
 					destination: upsertQueryParam(asPath, "s", SortOrder.dateDescending),
-					elementType: ({ children, ...props }) => (
-						<Link {...props} scroll={false}>
-							<a>{children}</a>
-						</Link>
-					),
+					elementType: NoScrollLink,
 				},
 				{
 					active: currentSortOrder === SortOrder.titleAscending,
 					label: "Title",
 					destination: upsertQueryParam(asPath, "s", SortOrder.titleAscending),
-					elementType: ({ children, ...props }) => (
-						<Link {...props} scroll={false}>
-							<a>{children}</a>
-						</Link>
-					),
+					elementType: NoScrollLink,
 				},
 			]}
 		>

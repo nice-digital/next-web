@@ -1,5 +1,5 @@
 import NextJSLink, { LinkProps as NextJSLinkProps } from "next/link";
-import { cloneElement, ReactElement, FC } from "react";
+import { cloneElement, FC, Children, ReactElement } from "react";
 import { RequireExactlyOne, SetOptional, Except } from "type-fest";
 
 type NextJSUrl = NextJSLinkProps["href"];
@@ -45,8 +45,16 @@ export const Link: FC<LinkProps> = ({
 		passHref={passHref}
 		locale={locale}
 	>
-		{typeof children === "string"
-			? children
-			: cloneElement(children, { className, ...attrs })}
+		{typeof children === "string" || Children.count(children) > 1 ? (
+			<a className={className} {...attrs}>
+				{children}
+			</a>
+		) : (
+			cloneElement(children, { className, ...attrs })
+		)}
 	</NextJSLink>
+);
+
+export const NoScrollLink: FC<LinkProps & { scroll: never }> = (props) => (
+	<Link {...props} scroll={false} />
 );
