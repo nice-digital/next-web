@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace NICE.NextWeb.API.Controllers
 {
-    public class ErrorController : Controller
+    public class HomeController : Controller
     {
         public IActionResult Index()
         {

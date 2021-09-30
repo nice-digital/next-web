@@ -1,5 +1,7 @@
+using System.Net;
 using CacheManager.Core;
 using Microsoft.AspNetCore.Builder;
+using Microsoft.AspNetCore.Diagnostics;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Http;
 using Microsoft.Extensions.Configuration;
@@ -8,6 +10,8 @@ using Microsoft.Extensions.Hosting;
 using NICE.NextWeb.API.CacheManager;
 using Ocelot.DependencyInjection;
 using Ocelot.Middleware;
+using Serilog;
+using Serilog.Core;
 
 namespace NICE.NextWeb.API
 {
@@ -42,7 +46,22 @@ namespace NICE.NextWeb.API
             }
             else
             {
-                app.UseExceptionHandler("/Error");
+                app.UseExceptionHandler(
+                    options =>
+                    {
+                        options.Run(async context =>
+                        {
+                            context.Response.StatusCode = (int)HttpStatusCode.BadRequest;
+                            context.Response.ContentType = "text/html";
+                            var exceptionObject = context.Features.Get<IExceptionHandlerFeature>();
+
+                            if (null != exceptionObject)
+                            {
+                                Log.Error(exceptionObject.Error.Message, exceptionObject);
+                                await context.Response.WriteAsync("An error has occurred").ConfigureAwait(false);
+                            }
+                        });
+                    });
             }
 
             app.UseRouting();
