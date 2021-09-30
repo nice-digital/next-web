@@ -3,3 +3,4 @@ coverage
 .next
 current
 node_modules
+docker-output

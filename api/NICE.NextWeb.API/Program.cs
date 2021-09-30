@@ -10,15 +10,16 @@ namespace NICE.NextWeb.API
     {
         public static void Main(string[] args)
         {
-            Log.Logger = new LoggerConfiguration()
-                // .MinimumLevel.Override("Microsoft", LogEventLevel.Information)
-                .Enrich.FromLogContext()
-                .WriteTo.Console()
-                .CreateLogger();
-
-            Log.Information("Starting web host");
-
-            CreateHostBuilder(args).Build().Run();
+            Log.Logger = SeriLogger.GetLoggerConfiguration().CreateLogger();
+            try
+            {
+                CreateHostBuilder(args).Build().Run();
+                Log.Information("Application has started and logging up and running");
+            }
+            catch (Exception ex)
+            {
+                Log.Fatal(ex, "Application start-up failed");
+            }
         }
 
         public static IHostBuilder CreateHostBuilder(string[] args) =>
@@ -32,6 +33,7 @@ namespace NICE.NextWeb.API
                         webBuilder.ConfigureAppConfiguration(config => config
                             .AddJsonFile($"ocelot.{env}.json"));
                     }
-                });
+                })
+                .UseSerilog();
     }
 }

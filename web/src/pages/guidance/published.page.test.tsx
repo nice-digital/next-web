@@ -1,16 +1,26 @@
-import userEvent from "@testing-library/user-event";
+import { GetServerSidePropsContext, GetServerSidePropsResult } from "next";
 import { useRouter } from "next/router";
 
 import {
+	search,
+	SearchResultsError,
 	SearchResultsSuccess,
 	SearchUrl,
-} from "@nice-digital/search-client/types";
+} from "@nice-digital/search-client";
 
+import { logger } from "@/logger";
 import { render, screen, within } from "@/test-utils";
 import { formatDateStr } from "@/utils/index";
 
-import sampleData from "./__mocks__/published.sample.json";
-import { Published } from "./published.page";
+import sampleData from "../../__mocks__/__data__/search/guidance-published.json";
+
+import {
+	Published,
+	getServerSideProps,
+	PublishedGuidancePageProps,
+} from "./published.page";
+
+jest.mock("@/logger", () => ({ logger: { error: jest.fn() } }));
 
 describe("/guidance/published", () => {
 	let routerPush: jest.Mock;
@@ -34,39 +44,118 @@ describe("/guidance/published", () => {
 		);
 	});
 
-	describe("Title filter", () => {
-		it("should render title filter input box and label", () => {
-			expect(
-				screen.getByLabelText("Filter by title or keyword")
-			).toBeInTheDocument();
+	describe("getServerSideProps", () => {
+		describe("Error", () => {
+			beforeEach(() => {
+				(search as jest.Mock).mockResolvedValue({
+					failed: true,
+					errorMessage: "Some server side error message",
+					debug: { rawResponse: "Some raw debug response" },
+				} as SearchResultsError);
+			});
+
+			it("should log error and debug response on search failure", async () => {
+				await getServerSideProps({
+					resolvedUrl: "/guidance/published?q=test",
+					res: {},
+				} as GetServerSidePropsContext);
+
+				expect(logger.error as jest.Mock).toHaveBeenCalledWith(
+					"Error loading guidance from search on page /guidance/published?q=test: Some server side error message",
+					"Some raw debug response"
+				);
+			});
+
+			it("should return 500 response status when search request fails", async () => {
+				const res = { statusCode: 0 };
+
+				await getServerSideProps({
+					resolvedUrl: "/guidance/published?q=test",
+					res,
+				} as GetServerSidePropsContext);
+
+				expect(res.statusCode).toBe(500);
+			});
 		});
 
-		it("should render placeholder attribute on title filter input", () => {
-			expect(
-				screen.getByLabelText("Filter by title or keyword")
-			).toHaveAttribute("placeholder", "E.g. 'diabetes' or 'NG28'");
-		});
+		describe("Success", () => {
+			let result: { props: PublishedGuidancePageProps };
+			const resolvedUrl =
+				"/guidance/published?q=test&ndt=Guidance&from=2020-07-28&to=2021-06-04";
+			beforeEach(async () => {
+				(search as jest.Mock).mockResolvedValue(sampleData);
 
-		it("should render search submit button", () => {
-			expect(screen.getByText("Search")).toBeInTheDocument();
-			expect(screen.getByText("Search")).toHaveProperty("tagName", "BUTTON");
-			expect(screen.getByText("Search")).toHaveAttribute("type", "submit");
-		});
+				result = (await getServerSideProps({
+					resolvedUrl,
+				} as GetServerSidePropsContext)) as {
+					props: PublishedGuidancePageProps;
+				};
+			});
 
-		it("should use NextJS router with serialized form on search button click", () => {
-			const input = screen.getByLabelText("Filter by title or keyword"),
-				button = screen.getByText("Search");
+			it("should return results from search in results prop", async () => {
+				expect(result.props.results).toBe(sampleData);
+			});
 
-			userEvent.type(input, "diabetes");
-			userEvent.click(button);
+			it.todo(
+				"should insert from/to dates as first active modifier with correct toggle url"
+			);
 
-			expect(routerPush).toHaveBeenCalledWith("?q=diabetes", undefined, {
-				scroll: false,
+			it("should set active modifiers from navigators and form/to dates", () => {
+				expect(result.props.activeModifiers).toStrictEqual([
+					{
+						displayName: "Last updated between 28/7/2020 and 4/6/2021",
+						toggleUrl:
+							"/guidance/published?s=Date&ps=10&q=test&ndt=Guidance&gst=Published",
+					},
+					{
+						displayName: "Type: Guidance",
+						toggleUrl:
+							"/guidance/published?gst=Published&ngt=NICE%20guidelines&sp=on",
+					},
+					{
+						displayName: "Guidance programme: NICE guidelines",
+						toggleUrl: "/guidance/published?gst=Published&ndt=Guidance&sp=on",
+					},
+				]);
+			});
+
+			it("should return search url prop", async () => {
+				expect(result.props.searchUrl).toStrictEqual({
+					route: "/guidance/published",
+					q: "test",
+					from: "2020-07-28",
+					to: "2021-06-04",
+					fullUrl: resolvedUrl,
+					gst: "Published",
+					ndt: "Guidance",
+					s: "Date",
+					ps: 10,
+				});
 			});
 		});
 	});
 
+	describe("Skip links", () => {
+		it("should render skip link to filters", () => {
+			expect(
+				screen.getByRole("link", { name: "Skip to filters" })
+			).toHaveAttribute("href", "#filters");
+		});
+
+		it("should render two skip links to results", () => {
+			const resultsSkipLinks = screen.getAllByRole("link", {
+				name: "Skip to results",
+			});
+			expect(resultsSkipLinks[0]).toHaveAttribute("href", "#results");
+			expect(resultsSkipLinks[1]).toHaveAttribute("href", "#results");
+		});
+	});
+
 	describe("Table", () => {
+		it("should add skip link target id to results table", () => {
+			expect(screen.getByRole("table")).toHaveProperty("id", "results");
+		});
+
 		describe("Column headings", () => {
 			it.each([
 				["Title", 1],

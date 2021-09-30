@@ -5,7 +5,7 @@ VisualStudioVersion = 16.0.31424.327
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "NICE.NextWeb.API", "NICE.NextWeb.API\NICE.NextWeb.API.csproj", "{5E0B243E-73EC-4AF6-AB35-578FBEBAA9FC}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "NICE.NextWeb.APITests", "NICE.NextWeb.API.Tests\NICE.NextWeb.API.Tests.csproj", "{641C2E63-6174-4802-9158-AA0B327E31BA}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "NICE.NextWeb.API.Tests", "NICE.NextWeb.API.Tests\NICE.NextWeb.API.Tests.csproj", "{641C2E63-6174-4802-9158-AA0B327E31BA}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

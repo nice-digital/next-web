@@ -84,6 +84,7 @@
     "@types/cache-manager-fs-hash": "0.0.1",
     "@types/form-serialize": "^0.7.2",
     "cross-env": "^7.0.3",
+    "mockdate": "^3.0.5",
     "pino-pretty": "^5.1.0",
     "sass": "^1.35.1",
     "type-fest": "^1.2.2"

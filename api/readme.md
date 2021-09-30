@@ -49,7 +49,7 @@ Individual values/objects can be stored in a file located in the dev users' prof
 
 In the production environment (dev, test, alpha, beta, live) the config is read from ocelot.production.json. This file has the secrets stored as Octopus variables which are replaced as part of the deployment process. 
 
-## Ocelot
+### Ocelot
 Ocelot is used by this project to provide basic API Gateway functionality. More information can be found here [Ocelot](https://ocelot.readthedocs.io/). This project is using version Ocelot 16.0.1 which is the highest version that supports .Net Core 3.1 LTS.
 
 Ocelot is loaded from Nuget packages with some minor customisations. Mainly a custom Cache Manager is injected into the service collection. This custom Cache Manager is default except it inspects headers for the X-CacheManager-RefreshCache header which is described [here](#x-cachemanager-refreshcache-header).
@@ -59,6 +59,8 @@ Additionally some convenience configuration extension functions are provided to 
 If X-CacheManager-RefreshCache header is present on an incoming request Ocelot will not attempt to load the content from cache first. It will load the content from the downstream host. This content will then stored in cache replacing existing content). This is useful as it will provide a method to warm the cache up and also maintain it in a warm/hot state.
 
 If X-CacheManager-RefreshCache is not present on an incoming request the content is loaded from cache first and if not present in cache it will be loaded from the downstream host (and then stored in cache). Such a request would be a general request from an end user.
+
+Only successful HTTP (with HTTP status code 200) downstream requests are persisted to the cache.
 
 ## Gotchas
 ### Redis SSL Connection
