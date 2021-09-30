@@ -4,7 +4,6 @@ import { NextSeo } from "next-seo";
 import React, { useEffect, useMemo, useState } from "react";
 
 import { Breadcrumbs, Breadcrumb } from "@nice-digital/nds-breadcrumbs";
-import { FilterSummary } from "@nice-digital/nds-filters";
 import { Grid, GridItem } from "@nice-digital/nds-grid";
 import { PageHeader } from "@nice-digital/nds-page-header";
 import { Table } from "@nice-digital/nds-table";
@@ -17,11 +16,13 @@ import {
 	SearchUrl,
 	SearchResultsSuccess,
 	getUrlPathAndQuery,
+	SortOrder,
 } from "@nice-digital/search-client";
 
 import { Announcer } from "@/components/Announcer/Announcer";
 import { ErrorPageContent } from "@/components/ErrorPageContent/ErrorPageContent";
 import { GuidanceListFilters } from "@/components/GuidanceListFilters/GuidanceListFilters";
+import { GuidanceListFilterSummary } from "@/components/GuidanceListFilterSummary/GuidanceListFilterSummary";
 import { GuidanceListNav } from "@/components/GuidanceListNav/GuidanceListNav";
 import { Link } from "@/components/Link/Link";
 import { SkipLink } from "@/components/SkipLink/SkipLink";
@@ -32,10 +33,8 @@ import { formatDateStr } from "@/utils/index";
 
 import styles from "./published.module.scss";
 
-const searchUrlDefaults = {
-	s: "Date",
-	ps: 10,
-};
+const defaultSortOrder = SortOrder.dateDescending,
+	defaultPageSize = 10;
 
 export interface PublishedGuidancePageProps {
 	results: SearchResults;
@@ -120,8 +119,8 @@ export function Published({
 					<GuidanceListFilters
 						numActiveModifiers={activeModifiers.length}
 						navigators={navigators}
-						pageSize={pageSize === searchUrlDefaults.ps ? "" : pageSize}
-						sortOrder={s === searchUrlDefaults.s ? "" : s}
+						pageSize={pageSize === defaultPageSize ? "" : pageSize}
+						sortOrder={s === defaultSortOrder ? "" : s}
 						queryText={q}
 						from={from}
 						to={to}
@@ -135,43 +134,12 @@ export function Published({
 					elementType="section"
 					aria-labelledby="filter-summary"
 				>
-					<FilterSummary
-						id="filter-summary"
-						activeFilters={activeModifiers.map(
-							({ displayName, toggleUrl }) => ({
-								label: displayName,
-								destination: toggleUrl,
-								method: "href",
-								elementType: ({ children, ...props }) => (
-									<Link {...props} scroll={false}>
-										<a>{children}</a>
-									</Link>
-								),
-							})
-						)}
-						sorting={[
-							{
-								active: true,
-								label: s === "Title" ? "Title" : "Date",
-							},
-							{
-								active: false,
-								label: s !== "Title" ? "Title" : "Date",
-								destination: "?s=" + (s !== "Title" ? "Title" : "Date"),
-								elementType: ({ ...props }) => (
-									<Link {...props} scroll={false} />
-								),
-							},
-						]}
-					>
-						{resultCount === 0 ? (
-							"Showing 0 results"
-						) : (
-							<>
-								Showing {firstResult} to {lastResult} of {resultCount}
-							</>
-						)}
-					</FilterSummary>
+					<GuidanceListFilterSummary
+						results={results}
+						activeModifiers={activeModifiers}
+						currentSortOrder={s}
+						defaultSortOrder={defaultSortOrder}
+					/>
 
 					{documents.length === 0 ? (
 						<p id="results">
@@ -258,16 +226,15 @@ export const getServerSideProps = async (
 	initialise({
 		baseURL: publicRuntimeConfig.search.baseURL,
 		index: "guidance",
-		usePrettyUrls: true,
 	});
 
-	const searchUrl: SearchUrl = {
-			...searchUrlDefaults,
-			...getSearchUrl(context.resolvedUrl),
-			// Pre filter results to just show published products for this tab
-			...{ gst: "Published" },
-		},
-		results = await search(searchUrl),
+	const searchUrl = getSearchUrl(context.resolvedUrl),
+		results = await search(context.resolvedUrl, {
+			defaultSortOrder,
+			defaultPageSize,
+			usePrettyUrls: true,
+			orModifierPreFilter: { gst: ["Published"] },
+		}),
 		activeModifiers = results.failed
 			? []
 			: getActiveModifiers(results)
@@ -304,6 +271,7 @@ export const getServerSideProps = async (
 			)} and ${dayjs(searchUrl.to).format(dateFormatShort)}`,
 			toggleUrl: getUrlPathAndQuery({
 				...searchUrl,
+				sp: "on",
 				from: undefined,
 				to: undefined,
 			}),
