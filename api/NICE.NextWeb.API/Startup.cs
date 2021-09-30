@@ -22,6 +22,8 @@ namespace NICE.NextWeb.API
 
         public void ConfigureServices(IServiceCollection services)
         {
+            services.AddControllersWithViews();
+
             var redisDatabaseId = Configuration.GetValue<int>("Ocelot:RedisEndpointDatabase");
             var redisConnectionString = Configuration.GetValue<string>("Ocelot:RedisConnectionString");
 
@@ -38,12 +40,18 @@ namespace NICE.NextWeb.API
             {
                 app.UseDeveloperExceptionPage();
             }
+            else
+            {
+                app.UseExceptionHandler("/Error");
+            }
 
             app.UseRouting();
 
             app.UseEndpoints(endpoints =>
             {
-                endpoints.MapGet("/", async context => { await context.Response.WriteAsync("Ocelot"); });
+                endpoints.MapControllerRoute(
+                    name: "default",
+                    pattern: "{controller=Home}/{action=Index}/{id?}");
             });
 
             app.UseOcelot().Wait();
