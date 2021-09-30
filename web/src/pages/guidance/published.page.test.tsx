@@ -104,8 +104,7 @@ describe("/guidance/published", () => {
 				expect(result.props.activeModifiers).toStrictEqual([
 					{
 						displayName: "Last updated between 28/7/2020 and 4/6/2021",
-						toggleUrl:
-							"/guidance/published?s=Date&ps=10&q=test&ndt=Guidance&gst=Published",
+						toggleUrl: "/guidance/published?q=test&ndt=Guidance&sp=on",
 					},
 					{
 						displayName: "Type: Guidance",
@@ -126,10 +125,7 @@ describe("/guidance/published", () => {
 					from: "2020-07-28",
 					to: "2021-06-04",
 					fullUrl: resolvedUrl,
-					gst: "Published",
 					ndt: "Guidance",
-					s: "Date",
-					ps: 10,
 				});
 			});
 		});

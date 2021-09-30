@@ -135,7 +135,7 @@ export function Published({
 					aria-labelledby="filter-summary"
 				>
 					<GuidanceListFilterSummary
-						results={results}
+						results={results as SearchResultsSuccess}
 						activeModifiers={activeModifiers}
 						currentSortOrder={s}
 						defaultSortOrder={defaultSortOrder}
