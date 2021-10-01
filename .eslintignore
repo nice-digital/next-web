@@ -4,3 +4,4 @@ coverage
 current
 node_modules
 docker-output
+allure-report
