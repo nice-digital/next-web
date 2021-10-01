@@ -1,22 +1,10 @@
-import serialize from "form-serialize";
+import dayjs from "dayjs";
 import { GetServerSidePropsContext, GetServerSidePropsResult } from "next";
 import { NextSeo } from "next-seo";
-import { useRouter } from "next/router";
-import React, {
-	createRef,
-	useCallback,
-	useEffect,
-	useMemo,
-	useState,
-} from "react";
+import React, { useEffect, useMemo, useState } from "react";
 
 import { Breadcrumbs, Breadcrumb } from "@nice-digital/nds-breadcrumbs";
-import {
-	FilterPanel,
-	FilterGroup,
-	FilterOption,
-	FilterSummary,
-} from "@nice-digital/nds-filters";
+import { FilterSummary } from "@nice-digital/nds-filters";
 import { Grid, GridItem } from "@nice-digital/nds-grid";
 import { PageHeader } from "@nice-digital/nds-page-header";
 import { Table } from "@nice-digital/nds-table";
@@ -26,18 +14,20 @@ import {
 	SearchResults,
 	getSearchUrl,
 	getActiveModifiers,
-	Modifier,
 	SearchUrl,
 	SearchResultsSuccess,
+	getUrlPathAndQuery,
 } from "@nice-digital/search-client";
 
 import { Announcer } from "@/components/Announcer/Announcer";
 import { ErrorPageContent } from "@/components/ErrorPageContent/ErrorPageContent";
+import { GuidanceListFilters } from "@/components/GuidanceListFilters/GuidanceListFilters";
 import { GuidanceListNav } from "@/components/GuidanceListNav/GuidanceListNav";
-import { InlineTextFilter } from "@/components/InlineTextFilter/InlineTextFilter";
 import { Link } from "@/components/Link/Link";
+import { SkipLink } from "@/components/SkipLink/SkipLink";
 import { publicRuntimeConfig } from "@/config";
 import { logger } from "@/logger";
+import { dateFormatShort } from "@/utils/constants";
 import { formatDateStr } from "@/utils/index";
 
 import styles from "./published.module.scss";
@@ -47,37 +37,20 @@ const searchUrlDefaults = {
 	ps: 10,
 };
 
-interface PublishedGuidancePageProps {
+export interface PublishedGuidancePageProps {
 	results: SearchResults;
-	activeModifiers: Modifier[];
+	activeModifiers: { displayName: string; toggleUrl: string }[];
 	searchUrl: SearchUrl;
 }
 
 export function Published({
 	results,
-	searchUrl: { q, s },
+	searchUrl: { q, s, from, to },
 	activeModifiers,
 }: PublishedGuidancePageProps): JSX.Element {
-	const router = useRouter(),
-		formRef = createRef<HTMLFormElement>(),
-		doClientSideFormSubmit = useCallback(() => {
-			if (formRef.current) {
-				const url = serialize(formRef.current);
-				router.push(url ? "?" + url : "", undefined, { scroll: false });
-			}
-		}, [formRef, router]),
-		formSubmitHandler = useCallback(
-			(e: React.FormEvent<HTMLFormElement>) => {
-				if (formRef.current) {
-					e.preventDefault();
-					doClientSideFormSubmit();
-				}
-			},
-			[formRef, doClientSideFormSubmit]
-		),
-		// Announcement text, used for giving audible notifications to screen readers when results have changed
-		[announcement, setAnnouncement] = useState(""),
-		// Cache the breadcrumbs as their static and it means we can use them on the error view and success view
+	// Announcement text, used for giving audible notifications to screen readers when results have changed
+	const [announcement, setAnnouncement] = useState(""),
+		// Cache the breadcrumbs as they're static and it means we can use them on both the error view and success view
 		breadcrumbs = useMemo(
 			() => (
 				<Breadcrumbs>
@@ -90,6 +63,7 @@ export function Published({
 			),
 			[]
 		),
+		{ failed } = results,
 		{
 			documents,
 			navigators,
@@ -106,7 +80,7 @@ export function Published({
 		);
 	}, [firstResult, lastResult, resultCount]);
 
-	if (results.failed)
+	if (failed)
 		return (
 			<>
 				<ErrorPageContent breadcrumbs={breadcrumbs} />
@@ -122,70 +96,51 @@ export function Published({
 			{breadcrumbs}
 
 			<PageHeader
-				preheading="Published"
+				preheading="Published "
 				heading="Guidance, quality standards and&nbsp;advice"
+				lead={
+					<>
+						<SkipLink targetId="filters">Skip to filters</SkipLink>
+						<SkipLink targetId="results">Skip to results</SkipLink>
+					</>
+				}
 			/>
 
 			<GuidanceListNav />
 
 			<Grid gutter="loose" className={styles.sectionWrapper}>
-				<GridItem cols={12} md={4} lg={3} className={styles.panelWrapper}>
-					<FilterPanel
-						aria-label="Filter results"
-						heading="Filter"
-						innerRef={formRef}
-						onSubmit={formSubmitHandler}
-					>
-						<input
-							type="hidden"
-							name="ps"
-							value={pageSize === searchUrlDefaults.ps ? "" : pageSize}
-						/>
-						<input
-							type="hidden"
-							name="s"
-							value={s === searchUrlDefaults.s ? "" : s}
-						/>
-						<InlineTextFilter
-							label="Filter by title or keyword"
-							name="q"
-							defaultValue={q}
-							placeholder="E.g. 'diabetes' or 'NG28'"
-						/>
-						{navigators
-							.filter((nav) => nav.shortName !== "gst")
-							.map(({ shortName, displayName, modifiers }) => (
-								<FilterGroup
-									key={shortName}
-									heading={displayName}
-									id={shortName}
-									selectedCount={
-										modifiers.filter((modifier) => modifier.active).length
-									}
-								>
-									{modifiers.map((modifier) => (
-										<FilterOption
-											key={modifier.displayName}
-											isSelected={modifier.active}
-											onChanged={doClientSideFormSubmit}
-											groupId={shortName}
-											value={modifier.displayName}
-										>
-											{`${modifier.displayName} (${modifier.resultCount})`}
-										</FilterOption>
-									))}
-								</FilterGroup>
-							))}
-					</FilterPanel>
+				<GridItem
+					cols={12}
+					md={4}
+					lg={3}
+					className={styles.panelWrapper}
+					elementType="section"
+					aria-label="Filter results"
+				>
+					<GuidanceListFilters
+						numActiveModifiers={activeModifiers.length}
+						navigators={navigators}
+						pageSize={pageSize === searchUrlDefaults.ps ? "" : pageSize}
+						sortOrder={s === searchUrlDefaults.s ? "" : s}
+						queryText={q}
+						from={from}
+						to={to}
+					/>
 				</GridItem>
 
-				<GridItem cols={12} md={8} lg={9}>
+				<GridItem
+					cols={12}
+					md={8}
+					lg={9}
+					elementType="section"
+					aria-labelledby="filter-summary"
+				>
 					<FilterSummary
 						id="filter-summary"
 						activeFilters={activeModifiers.map(
 							({ displayName, toggleUrl }) => ({
 								label: displayName,
-								destination: toggleUrl.fullUrl,
+								destination: toggleUrl,
 								method: "href",
 								elementType: ({ children, ...props }) => (
 									<Link {...props} scroll={false}>
@@ -219,7 +174,7 @@ export function Published({
 					</FilterSummary>
 
 					{documents.length === 0 ? (
-						<p>
+						<p id="results">
 							We can&apos;t find any guidance or advice. Try{" "}
 							<Link to={unfilteredResultsUrl?.fullUrl as string} scroll={false}>
 								clearing your filters
@@ -227,7 +182,7 @@ export function Published({
 							and starting again.
 						</p>
 					) : (
-						<Table aria-describedby="filter-summary">
+						<Table aria-describedby="filter-summary" id="results">
 							<caption className="visually-hidden">
 								Published guidance, quality standards and advice
 							</caption>
@@ -315,17 +270,44 @@ export const getServerSideProps = async (
 		results = await search(searchUrl),
 		activeModifiers = results.failed
 			? []
-			: getActiveModifiers(results).filter(
-					// We pre filter by guidance status so don't want to be able to remove it
-					(mod) => mod.navigatorShortName !== "gst"
-			  );
+			: getActiveModifiers(results)
+					.filter(
+						// We pre filter by guidance status so don't want to be able to remove it
+						(mod) => mod.navigatorShortName !== "gst"
+					)
+					.map(
+						({
+							navigatorShortName,
+							displayName,
+							toggleUrl: { fullUrl: toggleUrl },
+						}) => ({
+							displayName: `${
+								results.navigators.find(
+									(nav) => nav.shortName === navigatorShortName
+								)?.displayName
+							}: ${displayName}`,
+							toggleUrl,
+						})
+					);
 
 	if (results.failed) {
 		logger.error(
 			`Error loading guidance from search on page ${context.resolvedUrl}: ${results.errorMessage}`,
-			results.debug
+			results.debug?.rawResponse
 		);
 		context.res.statusCode = 500;
+	} else if (searchUrl.from && searchUrl.to) {
+		// Add an active modifier for the date range to allow users to easily toggle it
+		activeModifiers.unshift({
+			displayName: `Last updated between ${dayjs(searchUrl.from).format(
+				dateFormatShort
+			)} and ${dayjs(searchUrl.to).format(dateFormatShort)}`,
+			toggleUrl: getUrlPathAndQuery({
+				...searchUrl,
+				from: undefined,
+				to: undefined,
+			}),
+		});
 	}
 
 	return {

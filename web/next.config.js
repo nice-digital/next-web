@@ -19,6 +19,14 @@ const niceDigitalModulesToTranspile = readdirSync(
 	.filter((dirent) => dirent.isDirectory())
 	.map(({ name }) => `@nice-digital/${name}`);
 
+/**
+ * Some npm modules are published as ES6, so we need to force them to be transpiled
+ * so they're ES5 compatible whilst we still support IE11.
+ *
+ * As per comment at https://github.com/vercel/next.js/discussions/13922#discussioncomment-23956
+ */
+const nonES5ModulesToTranspile = ["pino", "serialize-error"];
+
 const commonHeaders = [
 	/**
 	 * 'Best practice' security headers as per https://edibleco.de/3xcg71N
@@ -109,7 +117,9 @@ const nextConfig = {
 // The weird comment syntax below is a JSDoc TypeScript cast: https://edibleco.de/2UMm8nx
 /** @type {import('next').NextConfig} */
 const finalConfig = withNodeConfig(
-	withTranspiledModules(niceDigitalModulesToTranspile)(nextConfig)
+	withTranspiledModules(
+		niceDigitalModulesToTranspile.concat(nonES5ModulesToTranspile)
+	)(nextConfig)
 );
 
 module.exports = finalConfig;

@@ -35,8 +35,6 @@
   "debug.javascript.terminalOptions": {
     "skipFiles": ["<node_internals>/**"]
   },
-  "jestrunner.disableCodeLens": true,
-  "jest.autoRun": { "watch": true },
   "editor.wordWrap": "on",
   "debug.showInStatusBar": "always",
   "[feature]": {
@@ -57,4 +55,10 @@
 		"titleBar.activeBackground": "#a1b8ca",
 		"titleBar.activeForeground": "#222",
 		"activityBar.foreground": "#222"
+  },
+  "jest.jestCommandLine": "npm test --",
+  "jest.autoRun": {
+    "watch": false,
+    "onSave": "test-file"
+ }
 }

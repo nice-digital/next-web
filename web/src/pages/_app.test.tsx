@@ -10,6 +10,9 @@ import NextWebApp, { reportWebVitals } from "./_app.page";
 
 import type { AppProps } from "next/app";
 
+// Global nav is mocked globally to make tests simpler but we need the actual, original implementation here
+jest.unmock("@nice-digital/global-nav");
+
 // NextWebApp.componentDidCatch logs so we don't want extra console logs littering our tests
 jest.mock("@/logger", () => ({ logger: { error: jest.fn() } }));
 
