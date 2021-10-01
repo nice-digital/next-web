@@ -15,14 +15,46 @@ export const SearchPagination: FC<SearchPaginationProps> = ({ results }) => {
 	const { asPath } = useRouter();
 	const { firstResult, resultCount, pageSize, pagerLinks } = results;
 	const totalPages = Math.ceil(resultCount / pageSize);
+	const currentPage = Math.round(firstResult / pageSize) + 1;
 	const generatePageActions = useCallback(() => {
-		const links = [];
-		for (let i = 1; i <= totalPages; i++) {
-			links.push({
+		const allLinks = [];
+		const links = [
+			{
+				pageNumber: 1,
+				destination: upsertQueryParam(asPath, "pa", String(1)),
+			},
+			{
+				pageNumber: totalPages,
+				destination: upsertQueryParam(asPath, "pa", String(totalPages)),
+			},
+		];
+
+		const middleLinks = [];
+
+		for (
+			let i = Math.max(2, currentPage - 2);
+			i <= Math.min(totalPages, Math.min(totalPages - 1, currentPage + 2));
+			i++
+		) {
+			middleLinks.push({
 				pageNumber: i,
 				destination: upsertQueryParam(asPath, "pa", String(i)),
 			});
 		}
+
+		links.splice(1, 0, ...middleLinks);
+
+		console.log("links ", links);
+
+		for (let i = 1; i <= totalPages; i++) {
+			allLinks.push({
+				pageNumber: i,
+				destination: upsertQueryParam(asPath, "pa", String(i)),
+			});
+		}
+
+		console.log("all links ", allLinks);
+
 		return links;
 	}, [totalPages, asPath]);
 
@@ -34,7 +66,7 @@ export const SearchPagination: FC<SearchPaginationProps> = ({ results }) => {
 					<a>{children}</a>
 				</Link>
 			)}
-			currentPage={Math.round(firstResult / pageSize) + 1}
+			currentPage={currentPage}
 			totalPages={totalPages}
 			pagesActions={generatePageActions()}
 			nextPageAction={{
