@@ -4,7 +4,7 @@ exports[`/guidance/published Table should match the snapshot 1`] = `
 <table
   aria-describedby="filter-summary"
   class="table"
-  id="results-table"
+  id="results"
 >
   <caption
     class="visually-hidden"

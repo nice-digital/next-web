@@ -2,6 +2,7 @@ using Microsoft.AspNetCore.Hosting;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.Hosting;
 using System;
+using Serilog;
 
 namespace NICE.NextWeb.API
 {
@@ -9,7 +10,16 @@ namespace NICE.NextWeb.API
     {
         public static void Main(string[] args)
         {
-            CreateHostBuilder(args).Build().Run();
+            Log.Logger = SeriLogger.GetLoggerConfiguration().CreateLogger();
+            try
+            {
+                CreateHostBuilder(args).Build().Run();
+                Log.Information("Application has started and logging up and running");
+            }
+            catch (Exception ex)
+            {
+                Log.Fatal(ex, "Application start-up failed");
+            }
         }
 
         public static IHostBuilder CreateHostBuilder(string[] args) =>
@@ -20,8 +30,10 @@ namespace NICE.NextWeb.API
                     webBuilder.UseStartup<Startup>();
                     if (env != "Development")
                     {
-                        webBuilder.ConfigureAppConfiguration(config => config.AddJsonFile($"ocelot.{env}.json"));
+                        webBuilder.ConfigureAppConfiguration(config => config
+                            .AddJsonFile($"ocelot.{env}.json"));
                     }
-                });
+                })
+                .UseSerilog();
     }
 }

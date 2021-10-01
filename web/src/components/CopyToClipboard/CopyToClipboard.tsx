@@ -77,7 +77,7 @@ export const CopyToClipboard: FC<CopyToClipboardProps> = ({
 
 	return canUseDOM ? (
 		<>
-			<Button className="mt--e ml--0" onClick={copyClickHandler}>
+			<Button className="mt--d ml--0" onClick={copyClickHandler}>
 				{children}
 			</Button>
 			{success === true ? (
