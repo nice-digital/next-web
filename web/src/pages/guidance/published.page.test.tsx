@@ -1,4 +1,4 @@
-import { GetServerSidePropsContext, GetServerSidePropsResult } from "next";
+import { GetServerSidePropsContext } from "next";
 import { useRouter } from "next/router";
 
 import {
@@ -20,7 +20,10 @@ import {
 	PublishedGuidancePageProps,
 } from "./published.page";
 
-jest.mock("@/logger", () => ({ logger: { error: jest.fn() } }));
+jest.mock("@/logger", () => ({
+	logger: { error: jest.fn() },
+	useLogger: jest.fn(() => ({ error: jest.fn() })),
+}));
 
 describe("/guidance/published", () => {
 	let routerPush: jest.Mock;
@@ -39,7 +42,7 @@ describe("/guidance/published", () => {
 			<Published
 				activeModifiers={[]}
 				results={sampleData as unknown as SearchResultsSuccess}
-				searchUrl={{} as SearchUrl}
+				searchUrl={{ route: "/guidance/published" } as SearchUrl}
 			/>
 		);
 	});
