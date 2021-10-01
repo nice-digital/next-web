@@ -10,6 +10,11 @@ export interface SearchConfig {
 	readonly baseURL: SearchClientInitOptions["baseURL"];
 }
 
+export interface CacheControlConfig {
+	/** The default value for the cache-control header */
+	readonly defaultCacheHeader: string;
+}
+
 /**
  * Public run time config, available to both client and server
  */
@@ -34,6 +39,9 @@ export interface PublicConfig {
 	readonly publicBaseURL: string;
 
 	readonly search: SearchConfig;
+
+	/** Config for cache-control response headers */
+	readonly cacheControl: CacheControlConfig;
 }
 
 /**
