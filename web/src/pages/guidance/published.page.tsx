@@ -1,8 +1,8 @@
 import dayjs from "dayjs";
 import { GetServerSidePropsContext, GetServerSidePropsResult } from "next";
 import { NextSeo } from "next-seo";
-import React, { useEffect, useMemo, useState } from "react";
 import pluralize from "pluralize";
+import React, { useEffect, useMemo, useState } from "react";
 
 import { Breadcrumbs, Breadcrumb } from "@nice-digital/nds-breadcrumbs";
 import { FilterSummary } from "@nice-digital/nds-filters";
@@ -21,6 +21,7 @@ import {
 } from "@nice-digital/search-client";
 
 import { Announcer } from "@/components/Announcer/Announcer";
+import { CopyToClipboard } from "@/components/CopyToClipboard/CopyToClipboard";
 import { ErrorPageContent } from "@/components/ErrorPageContent/ErrorPageContent";
 import { GuidanceListFilters } from "@/components/GuidanceListFilters/GuidanceListFilters";
 import { GuidanceListNav } from "@/components/GuidanceListNav/GuidanceListNav";
@@ -32,7 +33,6 @@ import { dateFormatShort } from "@/utils/constants";
 import { formatDateStr } from "@/utils/index";
 
 import styles from "./published.module.scss";
-import { CopyToClipboard } from "@/components/CopyToClipboard/CopyToClipboard";
 
 const searchUrlDefaults = {
 	s: "Date",
