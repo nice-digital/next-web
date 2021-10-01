@@ -1,18 +1,16 @@
 import { waitFor } from "@testing-library/react";
 import userEvent from "@testing-library/user-event";
 import * as clipboard from "clipboard-polyfill";
-import { useRouter } from "next/router";
 import { renderToString } from "react-dom/server";
 
 import { render, screen } from "@/test-utils";
 
 import { CopyToClipboard } from "./CopyToClipboard";
 
-// Used by useLogger under the hood so needs mocking
-(useRouter as jest.Mock).mockImplementation(() => ({
-	route: "/",
-	pathname: "",
-	query: "",
+jest.mock("@/logger", () => ({
+	useLogger: jest.fn(() => ({
+		error: jest.fn(),
+	})),
 }));
 
 jest.mock("clipboard-polyfill", () => ({
