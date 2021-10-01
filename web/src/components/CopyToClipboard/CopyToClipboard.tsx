@@ -13,6 +13,37 @@ import { Button } from "@nice-digital/nds-button";
 
 import { useLogger } from "@/logger";
 
+const mapTableToTabSeparatedTextFallback = (tableElement: HTMLTableElement) => {
+	const tableRows: string[] = [];
+
+	const thead = tableElement.querySelector("thead");
+	if (thead) {
+		const cells: string[] = ["Link"];
+
+		thead.querySelectorAll<HTMLTableCellElement>("th").forEach((th) => {
+			cells.push(th.textContent?.trim() || "");
+		});
+		tableRows.push(cells.join("\t"));
+	}
+
+	tableElement
+		.querySelectorAll<HTMLTableRowElement>("tbody tr")
+		.forEach((row) => {
+			const cells: string[] = [];
+
+			const anchor = row.querySelector<HTMLAnchorElement>("a");
+			cells.push(anchor ? anchor.href : "n/a");
+
+			row.querySelectorAll<HTMLTableCellElement>("td").forEach((td) => {
+				cells.push(td.textContent?.trim() || "");
+			});
+
+			tableRows.push(cells.join("\t"));
+		});
+
+	return tableRows.join("\r\n");
+};
+
 export interface CopyToClipboardProps {
 	children: ReactNode;
 	targetId: string;
@@ -41,14 +72,14 @@ export const CopyToClipboard: FC<CopyToClipboardProps> = ({
 
 			setSuccess(undefined);
 
-			const el = document.getElementById(targetId);
+			const targetTableElement = document.getElementById(
+				targetId
+			) as HTMLTableElement | null;
 
-			if (el) {
+			if (targetTableElement) {
 				const item = new clipboard.ClipboardItem({
-					"text/html": new Blob([el.outerHTML], { type: "text/html" }),
-					"text/plain": new Blob(["Paste into Excel to see the results"], {
-						type: "text/plain",
-					}),
+					"text/html": targetTableElement.outerHTML,
+					"text/plain": mapTableToTabSeparatedTextFallback(targetTableElement),
 				});
 				try {
 					await clipboard.write([item]);

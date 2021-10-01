@@ -46,14 +46,13 @@ describe("CopyToClipboard", () => {
 	});
 
 	describe("Success", () => {
-		it("should write target element HTML to the clipboard", () => {
-			const targetElement = document.createElement("p");
-			targetElement.id = "test";
-			targetElement.textContent = "Target content";
-			document.body.appendChild(targetElement);
+		it("should write target element HTML and fallback TSV to the clipboard", () => {
+			const tableHtml = `<table id="test-table"><thead><tr><th>Header 1</th><th>Header 2</th></tr></thead><tbody><tr><td><a href="/test">Body 1a</a></td><td>Body 1b</td></tr><tr><td>Body 2a</td><td>Body 2b</td></tr></tbody></table>`;
+
+			document.body.innerHTML = tableHtml;
 
 			render(
-				<CopyToClipboard targetId={targetElement.id}>
+				<CopyToClipboard targetId="test-table">
 					Copy to clipboard
 				</CopyToClipboard>
 			);
@@ -65,13 +64,14 @@ describe("CopyToClipboard", () => {
 				expect.any(clipboard.ClipboardItem),
 			]);
 
-			expect(clipboard.ClipboardItem as jest.Mock).toHaveBeenCalledWith({
-				"text/html": new Blob([`<p id="test">Target content</p>`], {
-					type: "text/html",
-				}),
-				"text/plain": new Blob(["Paste into Excel to see the results"], {
-					type: "text/plain",
-				}),
+			const clipBoardItemMock = clipboard.ClipboardItem as jest.Mock;
+
+			expect(clipBoardItemMock).toHaveBeenCalledTimes(1);
+
+			expect(clipBoardItemMock.mock.calls[0][0]).toStrictEqual({
+				"text/html": tableHtml,
+				"text/plain":
+					"Link\tHeader 1\tHeader 2\r\nhttps://next-web-tests.nice.org.uk/test\tBody 1a\tBody 1b\r\nn/a\tBody 2a\tBody 2b",
 			});
 		});
 
