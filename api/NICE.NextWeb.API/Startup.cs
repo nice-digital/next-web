@@ -51,7 +51,7 @@ namespace NICE.NextWeb.API
                     {
                         options.Run(async context =>
                         {
-                            context.Response.StatusCode = (int)HttpStatusCode.BadRequest;
+                            context.Response.StatusCode = (int)HttpStatusCode.InternalServerError;
                             context.Response.ContentType = "text/html";
                             var exceptionObject = context.Features.Get<IExceptionHandlerFeature>();
 
