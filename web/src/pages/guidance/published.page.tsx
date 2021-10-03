@@ -25,6 +25,7 @@ import { CopyToClipboard } from "@/components/CopyToClipboard/CopyToClipboard";
 import { ErrorPageContent } from "@/components/ErrorPageContent/ErrorPageContent";
 import { GuidanceListFilters } from "@/components/GuidanceListFilters/GuidanceListFilters";
 import { GuidanceListNav } from "@/components/GuidanceListNav/GuidanceListNav";
+import { getRedirectUrl } from "@/components/GuidanceListPage/redirects";
 import { Link } from "@/components/Link/Link";
 import { SkipLink } from "@/components/SkipLink/SkipLink";
 import { publicRuntimeConfig } from "@/config";
@@ -262,6 +263,11 @@ export function Published({
 export const getServerSideProps = async (
 	context: GetServerSidePropsContext
 ): Promise<GetServerSidePropsResult<PublishedGuidancePageProps>> => {
+	const redirectUrl = getRedirectUrl(context);
+
+	if (redirectUrl)
+		return { redirect: { destination: redirectUrl, permanent: true } };
+
 	initialise({
 		baseURL: publicRuntimeConfig.search.baseURL,
 		index: "guidance",

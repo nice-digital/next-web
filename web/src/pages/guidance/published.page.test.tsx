@@ -1,4 +1,6 @@
-import { GetServerSidePropsContext } from "next";
+import { ParsedUrlQuery } from "querystring";
+
+import { GetServerSidePropsContext, Redirect } from "next";
 import { useRouter } from "next/router";
 
 import {
@@ -48,6 +50,26 @@ describe("/guidance/published", () => {
 	});
 
 	describe("getServerSideProps", () => {
+		describe("Redirects", () => {
+			it("should return permanent redirect object from old page style URL to new style URL", async () => {
+				const redirectResult = (await getServerSideProps({
+					resolvedUrl: "/guidance/published?title=test",
+					query: {
+						title: "test",
+					} as ParsedUrlQuery,
+				} as GetServerSidePropsContext)) as {
+					redirect: Redirect;
+				};
+
+				expect(redirectResult).toStrictEqual({
+					redirect: {
+						destination: "/guidance/published?q=test",
+						permanent: true,
+					},
+				});
+			});
+		});
+
 		describe("Error", () => {
 			beforeEach(() => {
 				(search as jest.Mock).mockResolvedValue({
