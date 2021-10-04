@@ -94,11 +94,23 @@ describe("getRedirectUrl", () => {
 
 	describe("Types", () => {
 		it("should redirect Guidelines type to ngt of guidelines", () => {
-			///guidance/published?type=Guidelines
 			const context = {
 				resolvedUrl: "/guidance/published?type=Guidelines",
 				query: {
 					type: "Guidelines",
+				},
+			} as unknown as GetServerSidePropsContext;
+
+			expect(getRedirectUrl(context)).toBe(
+				"/guidance/published?ngt=NICE%20guidelines"
+			);
+		});
+
+		it("should redirect all individual guidelines to ngt of guidelines", () => {
+			const context = {
+				resolvedUrl: "/guidance/published?type=apg,csg,cg,cov,mpg,ph,sg,sc",
+				query: {
+					type: "apg,csg,cg,cov,mpg,ph,sg,sc",
 				},
 			} as unknown as GetServerSidePropsContext;
 
