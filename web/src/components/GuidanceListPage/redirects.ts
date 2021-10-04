@@ -89,7 +89,10 @@ export const getRedirectUrl = ({
 			)
 			.filter(Boolean);
 
-	if (type) {
+	if (type === "Guidelines") {
+		// Sepcial redirect for group of guidelines
+		newParams["ngt"] = "NICE guidelines";
+	} else if (type) {
 		const newNDTKeys: string[] = [];
 
 		// Special cases where individual programmes selected together become a type
