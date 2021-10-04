@@ -1,6 +1,7 @@
 import dayjs from "dayjs";
 import { GetServerSidePropsContext, GetServerSidePropsResult } from "next";
 import { NextSeo } from "next-seo";
+import Head from "next/head";
 import pluralize from "pluralize";
 import React, { useEffect, useMemo, useState } from "react";
 
@@ -85,13 +86,20 @@ export function Published({
 	if (failed)
 		return (
 			<>
+				<NextSeo
+					title="Published guidance, quality standards and advice"
+					noindex={true}
+				/>
 				<ErrorPageContent breadcrumbs={breadcrumbs} />
 			</>
 		);
 
 	return (
 		<>
-			<NextSeo title="Published guidance, quality standards and advice" />
+			<NextSeo
+				title="Published guidance, quality standards and advice"
+				noindex={documents.length === 0}
+			/>
 
 			<Announcer announcement={announcement} />
 
