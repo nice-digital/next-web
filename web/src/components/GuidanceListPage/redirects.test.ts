@@ -117,7 +117,7 @@ describe("getRedirectUrl", () => {
 			} as unknown as GetServerSidePropsContext;
 
 			expect(getRedirectUrl(context)).toBe(
-				"/guidance/published?ndt=Guidance&ndt=Advice&ndt=Quality%20standard"
+				"/guidance/published?ndt=Guidance&ndt=NICE%20advice&ndt=Quality%20standard"
 			);
 		});
 
@@ -139,7 +139,9 @@ describe("getRedirectUrl", () => {
 				query: { type: "es,ktt,mib" },
 			} as unknown as GetServerSidePropsContext;
 
-			expect(getRedirectUrl(context)).toBe("/guidance/published?ndt=Advice");
+			expect(getRedirectUrl(context)).toBe(
+				"/guidance/published?ndt=NICE%20advice"
+			);
 		});
 
 		it("should redirect qs type to Quality standard ndt filter", () => {
@@ -171,7 +173,7 @@ describe("getRedirectUrl", () => {
 			} as unknown as GetServerSidePropsContext;
 
 			expect(getRedirectUrl(context)).toBe(
-				"/guidance/published?nat=Evidence%20summaries&ndt=Advice"
+				"/guidance/published?nat=Evidence%20summaries&ndt=NICE%20advice"
 			);
 		});
 
@@ -182,7 +184,7 @@ describe("getRedirectUrl", () => {
 			} as unknown as GetServerSidePropsContext;
 
 			expect(getRedirectUrl(context)).toBe(
-				"/guidance/published?ngt=Technology%20appraisal&ndt=Advice&ndt=Guidance"
+				"/guidance/published?ngt=Technology%20appraisal&ndt=NICE%20advice&ndt=Guidance"
 			);
 		});
 
@@ -194,7 +196,7 @@ describe("getRedirectUrl", () => {
 			} as unknown as GetServerSidePropsContext;
 
 			expect(getRedirectUrl(context)).toBe(
-				"/guidance/published?nat=Evidence%20summaries&ndt=Guidance&ndt=Quality%20standard&ndt=Advice"
+				"/guidance/published?nat=Evidence%20summaries&ndt=Guidance&ndt=Quality%20standard&ndt=NICE%20advice"
 			);
 		});
 	});
@@ -228,7 +230,7 @@ describe("getRedirectUrl", () => {
 			} as unknown as GetServerSidePropsContext;
 
 			expect(getRedirectUrl(context)).toBe(
-				"/guidance/published?q=diabetes%20type%201&from=2020-01-01&to=2020-03-31&nai=Antimicrobial%20prescribing&ngt=Technology%20appraisal&ndt=Advice&ndt=Quality%20standard&ndt=Guidance"
+				"/guidance/published?q=diabetes%20type%201&from=2020-01-01&to=2020-03-31&nai=Antimicrobial%20prescribing&ngt=Technology%20appraisal&ndt=NICE%20advice&ndt=Quality%20standard&ndt=Guidance"
 			);
 		});
 	});

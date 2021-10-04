@@ -97,7 +97,7 @@ export const getRedirectUrl = ({
 
 		// Special cases where individual programmes selected together become a type
 		if (type.includes(oldGuidanceTypeKeys)) newNDTKeys.push("Guidance");
-		if (type.includes(oldAdviceTypeKey)) newNDTKeys.push("Advice");
+		if (type.includes(oldAdviceTypeKey)) newNDTKeys.push("NICE advice");
 		if (type.includes("qs")) newNDTKeys.push("Quality standard");
 
 		// Any type params after the above groups are individual programmes
@@ -125,8 +125,8 @@ export const getRedirectUrl = ({
 			)
 			.filter(Boolean);
 
-		if (newParams["nat"].length > 0 && !newNDTKeys.includes("Advice"))
-			newNDTKeys.push("Advice");
+		if (newParams["nat"].length > 0 && !newNDTKeys.includes("NICE advice"))
+			newNDTKeys.push("NICE advice");
 
 		newParams["ndt"] = newNDTKeys;
 	}
