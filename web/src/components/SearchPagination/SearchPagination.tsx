@@ -17,71 +17,60 @@ export const SearchPagination: FC<SearchPaginationProps> = ({ results }) => {
 	const { firstResult, resultCount, pageSize, pagerLinks } = results;
 	const totalPages = Math.ceil(resultCount / pageSize);
 	const currentPage = Math.round(firstResult / pageSize) + 1;
-	console.log("round ", Math.round(firstResult / pageSize) + 1);
-	console.log("floor , ", Math.floor(firstResult / pageSize) + 1);
+
 	const generatePageActions = useCallback(() => {
-		const allLinks = [];
+		const rangeStartNumber = Math.max(2, currentPage - 2);
+		const rangeEndNumber = Math.min(
+			totalPages,
+			Math.min(totalPages - 1, currentPage + 2)
+		);
 		const links = [
 			{
 				pageNumber: 1,
 				destination: upsertQueryParam(asPath, "pa", String(1)),
 			},
+			...Array.from(
+				{ length: rangeEndNumber - rangeStartNumber + 1 },
+				(_v, index) => {
+					return {
+						pageNumber: rangeStartNumber + index,
+						destination: upsertQueryParam(
+							asPath,
+							"pa",
+							String(rangeStartNumber + index)
+						),
+					};
+				}
+			),
 			{
 				pageNumber: totalPages,
 				destination: upsertQueryParam(asPath, "pa", String(totalPages)),
 			},
 		];
-
-		const middleLinks = [];
-
-		for (
-			let i = Math.max(2, currentPage - 2);
-			i <= Math.min(totalPages, Math.min(totalPages - 1, currentPage + 2));
-			i++
-		) {
-			middleLinks.push({
-				pageNumber: i,
-				destination: upsertQueryParam(asPath, "pa", String(i)),
-			});
-		}
-
-		links.splice(1, 0, ...middleLinks);
-
-		console.log("links ", links);
-
-		for (let i = 1; i <= totalPages; i++) {
-			allLinks.push({
-				pageNumber: i,
-				destination: upsertQueryParam(asPath, "pa", String(i)),
-			});
-		}
-
-		console.log("all links ", allLinks);
-
 		return links;
-	}, [totalPages, asPath]);
+	}, [totalPages, asPath, currentPage]);
 
 	return (
 		<EnhancedPagination
-			method="href"
-			// elementType={({ children, ...props }) => (
-			// 	<NiceLink scroll={false} {...props}>
-			// 		<a>{children}</a>
-			// 	</NiceLink>
-			// )}
 			currentPage={currentPage}
-			totalPages={totalPages}
-			pagesActions={generatePageActions()}
+			elementType={({ children, ...props }) => (
+				<NiceLink scroll={false} {...props}>
+					<a>{children}</a>
+				</NiceLink>
+			)}
+			method="href"
 			nextPageAction={{
 				destination: pagerLinks.next
 					? upsertQueryParam(asPath, "pa", String(pagerLinks.next.pa))
 					: null,
 			}}
+			pagesActions={generatePageActions()}
 			previousPageAction={{
 				destination: pagerLinks.previous
 					? upsertQueryParam(asPath, "pa", String(pagerLinks.previous.pa))
 					: null,
 			}}
+			totalPages={totalPages}
 		/>
 	);
 };
