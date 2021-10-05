@@ -1,3 +1,4 @@
+import Link from "next/link";
 import { useRouter } from "next/router";
 import { FC, useCallback } from "react";
 
@@ -5,7 +6,7 @@ import { EnhancedPagination } from "@nice-digital/nds-enhanced-pagination";
 import type { SearchResultsSuccess } from "@nice-digital/search-client";
 import { upsertQueryParam } from "@nice-digital/search-client";
 
-import { Link } from "@/components/Link/Link";
+import { Link as NiceLink } from "@/components/Link/Link";
 
 export interface SearchPaginationProps {
 	results: SearchResultsSuccess;
@@ -16,6 +17,8 @@ export const SearchPagination: FC<SearchPaginationProps> = ({ results }) => {
 	const { firstResult, resultCount, pageSize, pagerLinks } = results;
 	const totalPages = Math.ceil(resultCount / pageSize);
 	const currentPage = Math.round(firstResult / pageSize) + 1;
+	console.log("round ", Math.round(firstResult / pageSize) + 1);
+	console.log("floor , ", Math.floor(firstResult / pageSize) + 1);
 	const generatePageActions = useCallback(() => {
 		const allLinks = [];
 		const links = [
@@ -61,11 +64,11 @@ export const SearchPagination: FC<SearchPaginationProps> = ({ results }) => {
 	return (
 		<EnhancedPagination
 			method="href"
-			elementType={({ children, ...props }) => (
-				<Link scroll={false} {...props}>
-					<a>{children}</a>
-				</Link>
-			)}
+			// elementType={({ children, ...props }) => (
+			// 	<NiceLink scroll={false} {...props}>
+			// 		<a>{children}</a>
+			// 	</NiceLink>
+			// )}
 			currentPage={currentPage}
 			totalPages={totalPages}
 			pagesActions={generatePageActions()}
