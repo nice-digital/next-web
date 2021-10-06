@@ -50,29 +50,26 @@ export const SearchPagination: FC<SearchPaginationProps> = ({ results }) => {
 	}, [totalPages, asPath, currentPage]);
 
 	return (
-		<>
-			<p>TEST</p>
-			<EnhancedPagination
-				currentPage={currentPage}
-				elementType={({ children, ...props }) => (
-					<Link scroll={false} {...props}>
-						<a>{children}</a>
-					</Link>
-				)}
-				method="href"
-				nextPageAction={{
-					destination: pagerLinks.next
-						? upsertQueryParam(asPath, "pa", String(pagerLinks.next.pa))
-						: "/nextPageNotPopulated",
-				}}
-				pagesActions={generatePageActions()}
-				previousPageAction={{
-					destination: pagerLinks.previous
-						? upsertQueryParam(asPath, "pa", String(pagerLinks.previous.pa))
-						: "/previousPageNotPopulated",
-				}}
-				totalPages={totalPages}
-			/>
-		</>
+		<EnhancedPagination
+			currentPage={currentPage}
+			elementType={({ children, ...props }) => (
+				<Link scroll={false} {...props}>
+					<a>{children}</a>
+				</Link>
+			)}
+			method="href"
+			nextPageAction={{
+				destination: pagerLinks.next
+					? upsertQueryParam(asPath, "pa", String(pagerLinks.next.pa))
+					: "/nextPageNotPopulated",
+			}}
+			pagesActions={generatePageActions()}
+			previousPageAction={{
+				destination: pagerLinks.previous
+					? upsertQueryParam(asPath, "pa", String(pagerLinks.previous.pa))
+					: "/previousPageNotPopulated",
+			}}
+			totalPages={totalPages}
+		/>
 	);
 };
