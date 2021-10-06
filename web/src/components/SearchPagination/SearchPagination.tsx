@@ -1,12 +1,11 @@
-import Link from "next/link";
 import { useRouter } from "next/router";
-import { FC, useCallback } from "react";
+import { FC, useCallback, useEffect } from "react";
 
 import { EnhancedPagination } from "@nice-digital/nds-enhanced-pagination";
 import type { SearchResultsSuccess } from "@nice-digital/search-client";
 import { upsertQueryParam } from "@nice-digital/search-client";
 
-import { Link as NiceLink } from "@/components/Link/Link";
+import { Link } from "@/components/Link/Link";
 
 export interface SearchPaginationProps {
 	results: SearchResultsSuccess;
@@ -51,26 +50,29 @@ export const SearchPagination: FC<SearchPaginationProps> = ({ results }) => {
 	}, [totalPages, asPath, currentPage]);
 
 	return (
-		<EnhancedPagination
-			currentPage={currentPage}
-			elementType={({ children, ...props }) => (
-				<NiceLink scroll={false} {...props}>
-					<a>{children}</a>
-				</NiceLink>
-			)}
-			method="href"
-			nextPageAction={{
-				destination: pagerLinks.next
-					? upsertQueryParam(asPath, "pa", String(pagerLinks.next.pa))
-					: null,
-			}}
-			pagesActions={generatePageActions()}
-			previousPageAction={{
-				destination: pagerLinks.previous
-					? upsertQueryParam(asPath, "pa", String(pagerLinks.previous.pa))
-					: null,
-			}}
-			totalPages={totalPages}
-		/>
+		<>
+			<p>TEST</p>
+			<EnhancedPagination
+				currentPage={currentPage}
+				elementType={({ children, ...props }) => (
+					<Link scroll={false} {...props}>
+						<a>{children}</a>
+					</Link>
+				)}
+				method="href"
+				nextPageAction={{
+					destination: pagerLinks.next
+						? upsertQueryParam(asPath, "pa", String(pagerLinks.next.pa))
+						: "/nextPageNotPopulated",
+				}}
+				pagesActions={generatePageActions()}
+				previousPageAction={{
+					destination: pagerLinks.previous
+						? upsertQueryParam(asPath, "pa", String(pagerLinks.previous.pa))
+						: "/previousPageNotPopulated",
+				}}
+				totalPages={totalPages}
+			/>
+		</>
 	);
 };
