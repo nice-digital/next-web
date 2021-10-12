@@ -15,12 +15,11 @@ import { render, screen, within } from "@/test-utils";
 import { formatDateStr } from "@/utils/index";
 
 import sampleData from "../../__mocks__/__data__/search/guidance-published.json";
-
 import {
 	Published,
 	getServerSideProps,
 	PublishedGuidancePageProps,
-} from "./published.page";
+} from "../../pages/guidance/published.page";
 
 jest.mock("@/logger", () => ({
 	logger: { error: jest.fn() },

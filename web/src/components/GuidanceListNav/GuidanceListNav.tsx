@@ -6,7 +6,7 @@ import {
 	HorizontalNavLink,
 } from "@nice-digital/nds-horizontal-nav";
 
-import { Link } from "@/components/Link/Link";
+import { NoScrollLink } from "@/components/Link/Link";
 
 interface NavLinkProps {
 	children: string;
@@ -20,7 +20,7 @@ const NavLink: FC<NavLinkProps> = ({ children, href }) => {
 		<HorizontalNavLink
 			destination={href}
 			isCurrent={pathname === href}
-			elementType={Link}
+			elementType={NoScrollLink}
 		>
 			{children}
 		</HorizontalNavLink>

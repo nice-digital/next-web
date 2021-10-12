@@ -1,17 +1,5 @@
 @use '@nice-digital/nds-core/scss/core';
 
-.tableDate {
-  @include core.mq($until: md) {
-    &::after {
-      content: attr(data-shortdate);
-    }
-
-    span {
-      @include core.nds-invisible;
-    }
-  }
-}
-
 .sectionWrapper {
   @include core.mq($from: md) {
     padding-top: core.rem(core.$nds-spacing-xx-large);

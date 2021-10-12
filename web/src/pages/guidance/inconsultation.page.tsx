@@ -1,99 +1,69 @@
-import { inPlaceSort } from "fast-sort";
-import { GetServerSidePropsContext } from "next";
-import { NextSeo } from "next-seo";
+import { SortOrder, Document } from "@nice-digital/search-client";
 
-import { Breadcrumbs, Breadcrumb } from "@nice-digital/nds-breadcrumbs";
-import { PageHeader } from "@nice-digital/nds-page-header";
+import {
+	getGetServerSidePropsFunc,
+	getGuidanceListPage,
+} from "@/components/GuidanceListPage/GuidanceListPage";
+import { ResponsiveDate } from "@/components/ResponsiveDate/ResponsiveDate";
 
-import { GuidanceListNav } from "@/components/GuidanceListNav/GuidanceListNav";
-import { InDevProjectCard } from "@/components/InDevProjectCard/InDevProjectCard";
-import { getAllConsultations, Consultation } from "@/feeds/inDev/inDev";
+const defaultSortOrder = SortOrder.dateAscending;
 
-/**
- * The number of products to show per page, if the user hasn't specified
- */
-export const projectsPerPageDefault = 10;
+const tableBodyRender = (documents: Document[]) => (
+	<>
+		<caption className="visually-hidden">
+			Guidance and quality standards in consultation
+		</caption>
+		<thead>
+			<tr>
+				<th scope="col">Title</th>
+				<th scope="col">Consultation</th>
+				<th scope="col">Type</th>
+				<th scope="col">Consultation end date</th>
+			</tr>
+		</thead>
+		<tbody>
+			{documents.map(
+				({
+					id,
+					title,
+					consultationType,
+					pathAndQuery,
+					niceResultType,
+					consultationEndDate,
+				}) => {
+					return (
+						<tr key={id}>
+							<td>
+								<a
+									href={pathAndQuery}
+									dangerouslySetInnerHTML={{ __html: title }}
+								/>
+							</td>
+							<td>{consultationType}</td>
+							<td>{niceResultType}</td>
+							<td>
+								<ResponsiveDate isoDateTime={String(consultationEndDate)} />
+							</td>
+						</tr>
+					);
+				}
+			)}
+		</tbody>
+	</>
+);
 
-interface InConsultationsGuidancePageProps {
-	consultations: readonly Consultation[];
-	totalConsultations: number;
-	/** 1-based index of the current page */
-	currentPage: number;
-	totalPages: number;
-	pageSize: number;
-}
+export default getGuidanceListPage({
+	breadcrumb: "In consultation",
+	preheading: "Guidance and quality standards ",
+	heading: "In consultation",
+	title: "Guidance and quality standards in consultation",
+	defaultSortOrder,
+	showDateFilter: true,
+	dateFilterLabel: "Consultation end date",
+	tableBodyRender,
+});
 
-export default function InConsultationsGuidancePage({
-	pageSize,
-	currentPage,
-	totalConsultations,
-	totalPages,
-	consultations,
-}: InConsultationsGuidancePageProps): JSX.Element {
-	return (
-		<>
-			<NextSeo
-				title="In consultation | Guidance"
-				description="Guidance and quality standards open for consultation"
-			/>
-
-			<Breadcrumbs>
-				<Breadcrumb to="/">Home</Breadcrumb>
-				<Breadcrumb to="/guidance">NICE guidance</Breadcrumb>
-				<Breadcrumb>In consultation</Breadcrumb>
-			</Breadcrumbs>
-
-			<PageHeader
-				preheading="Guidance and quality standards"
-				heading="In consultation"
-			/>
-
-			<GuidanceListNav />
-
-			<p>
-				Showing {consultations.length} products on page {currentPage} of{" "}
-				{totalPages} ({totalConsultations} products total)
-			</p>
-			<ol className="list list--unstyled">
-				{consultations.map((consultation) => (
-					<li key={consultation.ConsultationId}>
-						{/* <InDevProjectCard project={project} /> */}
-						{consultation.Title}
-					</li>
-				))}
-			</ol>
-		</>
-	);
-}
-
-export const getServerSideProps = async (
-	_context: GetServerSidePropsContext
-): Promise<{ props: InConsultationsGuidancePageProps }> => {
-	const consultationsTask = getAllConsultations();
-
-	const allConsultations = await consultationsTask;
-
-	inPlaceSort(allConsultations).by([
-		{
-			asc: "Title",
-			// Case insensitive sorting
-			comparer: Intl.Collator().compare,
-		},
-	]);
-
-	const pageSize = Number(_context.query["ps"]) || projectsPerPageDefault,
-		currentPage = Number(_context.query["pa"]) || 1,
-		totalConsultations = allConsultations.length,
-		totalPages = Math.ceil(totalConsultations / pageSize),
-		consultations = allConsultations.slice(currentPage - 1, pageSize);
-
-	return {
-		props: {
-			currentPage,
-			pageSize,
-			totalPages,
-			totalConsultations,
-			consultations,
-		},
-	};
-};
+export const getServerSideProps = getGetServerSidePropsFunc({
+	gstPreFilter: "In consultation",
+	defaultSortOrder,
+});
