@@ -99,6 +99,7 @@ exports[`GuidanceListFilters should match snapshot for filter panel form 1`] = `
               id="group-heading-last-updated-date"
             >
               Last updated date
+               
             </span>
           </button>
         </h3>
@@ -194,6 +195,7 @@ exports[`GuidanceListFilters should match snapshot for filter panel form 1`] = `
               id="group-heading-nai"
             >
               Area of interest
+               
             </span>
           </button>
         </h3>
@@ -271,12 +273,23 @@ exports[`GuidanceListFilters should match snapshot for filter panel form 1`] = `
               id="group-heading-ndt"
             >
               Type
+               
             </span>
             <span
               class="filter-group__count"
             >
+              <span
+                class="visually-hidden"
+              >
+                (
+              </span>
               1
                selected
+              <span
+                class="visually-hidden"
+              >
+                )
+              </span>
             </span>
           </button>
         </h3>
@@ -338,12 +351,23 @@ exports[`GuidanceListFilters should match snapshot for filter panel form 1`] = `
               id="group-heading-ngt"
             >
               Guidance programme
+               
             </span>
             <span
               class="filter-group__count"
             >
+              <span
+                class="visually-hidden"
+              >
+                (
+              </span>
               1
                selected
+              <span
+                class="visually-hidden"
+              >
+                )
+              </span>
             </span>
           </button>
         </h3>
