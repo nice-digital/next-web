@@ -110,10 +110,10 @@ describe("GuidanceListFilters", () => {
 				.getAllByRole("heading", { level: 3 })
 				.map((el) => el.textContent || "");
 			expect(filterGroupHeadings).toStrictEqual([
-				"Last updated date",
-				"Area of interest",
-				"Type1 selected",
-				"Guidance programme1 selected",
+				"Last updated date ",
+				"Area of interest ",
+				"Type (1 selected)",
+				"Guidance programme (1 selected)",
 			]);
 		});
 
