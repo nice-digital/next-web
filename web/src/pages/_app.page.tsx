@@ -1,7 +1,7 @@
 /* eslint-disable import/order */
 import { ErrorInfo, FC } from "react";
 import { DefaultSeo } from "next-seo";
-import App, { AppProps } from "next/app";
+import App, { AppProps, NextWebVitalsMetric } from "next/app";
 import Script from "next/script";
 
 import "@nice-digital/design-system/scss/base.scss";
@@ -116,3 +116,25 @@ class NextWebApp extends App<{}, {}, AppState> {
 }
 
 export default NextWebApp;
+
+/**
+ * Next.JS hook for sending web vitals to analytics.
+ *
+ * See https://nextjs.org/docs/advanced-features/measuring-performance
+ */
+export const reportWebVitals = ({
+	id,
+	name,
+	label,
+	value,
+}: NextWebVitalsMetric): void => {
+	window.dataLayer = window.dataLayer || [];
+	window.dataLayer.push({
+		event: "web-vitals",
+		eventCategory:
+			label === "web-vital" ? "Web Vitals" : "Next.js custom metric",
+		eventAction: name,
+		eventLabel: id,
+		eventValue: Math.round(name === "CLS" ? value * 1000 : value),
+	});
+};
