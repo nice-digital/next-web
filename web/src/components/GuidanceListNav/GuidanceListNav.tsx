@@ -8,39 +8,30 @@ import {
 
 import { Link } from "@/components/Link/Link";
 
-export const GuidanceListNav: FC = () => {
+interface NavLinkProps {
+	children: string;
+	href: string;
+}
+
+const NavLink: FC<NavLinkProps> = ({ children, href }) => {
 	const { pathname } = useRouter();
 
 	return (
-		<HorizontalNav aria-label="Stages of guidance development">
-			<HorizontalNavLink
-				destination="/guidance/published"
-				isCurrent={pathname === "/guidance/published"}
-				elementType={Link}
-			>
-				<a>Published</a>
-			</HorizontalNavLink>
-			<HorizontalNavLink
-				destination="/guidance/inconsultation"
-				isCurrent={pathname === "/guidance/inconsultation"}
-				elementType={Link}
-			>
-				<a>In consultation</a>
-			</HorizontalNavLink>
-			<HorizontalNavLink
-				destination="/guidance/indevelopment"
-				isCurrent={pathname === "/guidance/indevelopment"}
-				elementType={Link}
-			>
-				<a>In development</a>
-			</HorizontalNavLink>
-			<HorizontalNavLink
-				destination="/guidance/proposed"
-				isCurrent={pathname === "/guidance/proposed"}
-				elementType={Link}
-			>
-				<a>Proposed</a>
-			</HorizontalNavLink>
-		</HorizontalNav>
+		<HorizontalNavLink
+			destination={href}
+			isCurrent={pathname === href}
+			elementType={Link}
+		>
+			{children}
+		</HorizontalNavLink>
 	);
 };
+
+export const GuidanceListNav: FC = () => (
+	<HorizontalNav aria-label="Stages of guidance development">
+		<NavLink href="/guidance/published">Published</NavLink>
+		<NavLink href="/guidance/inconsultation">In consultation</NavLink>
+		<NavLink href="/guidance/indevelopment">In development</NavLink>
+		<NavLink href="/guidance/proposed">Proposed</NavLink>
+	</HorizontalNav>
+);
