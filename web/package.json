@@ -24,11 +24,12 @@
     "extends @nice-digital/browserslist-config"
   ],
   "dependencies": {
-    "@nice-digital/design-system": "^1.2.24-alpha.0",
+    "@nice-digital/design-system": "^1.2.25-alpha.0",
     "@nice-digital/global-nav": "github:nice-digital/global-nav",
-    "@nice-digital/search-client": "^0.2.1393-SRCH-657-PrettyDates",
+    "@nice-digital/search-client": "^1.0.1400-SRCH-659-PrefilterTS",
     "cache-manager": "^3.4.4",
     "cache-manager-fs-hash": "^1.0.0",
+    "clipboard-polyfill": "^3.0.3",
     "config": "^3.3.6",
     "dayjs": "^1.10.6",
     "fast-sort": "^3.0.2",
@@ -42,6 +43,7 @@
     "next-transpile-modules": "^8.0.0",
     "pino": "^6.11.3",
     "pino-mq": "^1.0.1",
+    "pluralize": "^8.0.0",
     "react": "^17.0.2",
     "react-dom": "^17.0.2",
     "serialize-error": "^8.1.0"
@@ -51,6 +53,7 @@
     "@types/cache-manager": "^3.4.2",
     "@types/cache-manager-fs-hash": "0.0.1",
     "@types/form-serialize": "^0.7.2",
+    "@types/pluralize": "0.0.29",
     "cross-env": "^7.0.3",
     "mockdate": "^3.0.5",
     "pino-pretty": "^5.1.0",
