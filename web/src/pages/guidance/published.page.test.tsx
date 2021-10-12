@@ -156,6 +156,39 @@ describe("/guidance/published", () => {
 		});
 	});
 
+	describe("Meta", () => {
+		it("should set page title", () => {
+			expect(document.title).toBe(
+				"Published guidance, quality standards and advice | NICE"
+			);
+		});
+
+		it("should not set noindex meta tag when there are results", () => {
+			expect(document.querySelector("meta[name='robots']")).toBeInTheDocument();
+			expect(document.querySelector("meta[name='robots']")).toHaveProperty(
+				"content",
+				"index,follow"
+			);
+		});
+
+		it("should set noindex meta tag when no results", () => {
+			render(
+				<Published
+					activeModifiers={[]}
+					results={
+						{ ...sampleData, documents: [] } as unknown as SearchResultsSuccess
+					}
+					searchUrl={{ route: "/guidance/published" } as SearchUrl}
+				/>
+			);
+			expect(document.querySelector("meta[name='robots']")).toBeInTheDocument();
+			expect(document.querySelector("meta[name='robots']")).toHaveProperty(
+				"content",
+				"noindex,follow"
+			);
+		});
+	});
+
 	describe("Skip links", () => {
 		it("should render skip link to filters", () => {
 			expect(
