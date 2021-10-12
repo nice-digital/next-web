@@ -24,8 +24,8 @@ import { ErrorPageContent } from "@/components/ErrorPageContent/ErrorPageContent
 import { GuidanceListFilters } from "@/components/GuidanceListFilters/GuidanceListFilters";
 import { GuidanceListNav } from "@/components/GuidanceListNav/GuidanceListNav";
 import { Link } from "@/components/Link/Link";
-import { SkipLink } from "@/components/SkipLink/SkipLink";
 import { SearchPagination } from "@/components/SearchPagination/SearchPagination";
+import { SkipLink } from "@/components/SkipLink/SkipLink";
 import { publicRuntimeConfig } from "@/config";
 import { logger } from "@/logger";
 import { dateFormatShort } from "@/utils/constants";
@@ -81,6 +81,10 @@ export function Published({
 			`Showing ${firstResult} to ${lastResult} of ${resultCount}`
 		);
 	}, [firstResult, lastResult, resultCount]);
+
+	useEffect(() => {
+		console.log("using effect", results);
+	}, [results]);
 
 	if (failed)
 		return (
@@ -248,7 +252,6 @@ export function Published({
 							</tbody>
 						</Table>
 					)}
-
 					<SearchPagination results={results} />
 				</GridItem>
 			</Grid>
@@ -295,6 +298,7 @@ export const getServerSideProps = async (
 							toggleUrl,
 						})
 					);
+	console.log(">>>>>>>>>", results);
 
 	if (results.failed) {
 		logger.error(
