@@ -174,7 +174,7 @@ describe("getRedirectUrl", () => {
 			} as unknown as GetServerSidePropsContext;
 
 			expect(getRedirectUrl(context)).toBe(
-				"/guidance/published?ngt=Technology%20appraisal&ndt=Guidance"
+				"/guidance/published?ngt=Technology%20appraisal%20guidance&ndt=Guidance"
 			);
 		});
 
@@ -196,7 +196,7 @@ describe("getRedirectUrl", () => {
 			} as unknown as GetServerSidePropsContext;
 
 			expect(getRedirectUrl(context)).toBe(
-				"/guidance/published?ngt=Technology%20appraisal&ndt=NICE%20advice&ndt=Guidance"
+				"/guidance/published?ngt=Technology%20appraisal%20guidance&ndt=NICE%20advice&ndt=Guidance"
 			);
 		});
 
@@ -242,7 +242,7 @@ describe("getRedirectUrl", () => {
 			} as unknown as GetServerSidePropsContext;
 
 			expect(getRedirectUrl(context)).toBe(
-				"/guidance/published?q=diabetes%20type%201&from=2020-01-01&to=2020-03-31&nai=Antimicrobial%20prescribing&ngt=Technology%20appraisal&ndt=NICE%20advice&ndt=Quality%20standard&ndt=Guidance"
+				"/guidance/published?q=diabetes%20type%201&from=2020-01-01&to=2020-03-31&nai=Antimicrobial%20prescribing&ngt=Technology%20appraisal%20guidance&ndt=NICE%20advice&ndt=Quality%20standard&ndt=Guidance"
 			);
 		});
 	});
