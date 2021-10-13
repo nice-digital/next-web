@@ -33,6 +33,8 @@ import { formatDateStr } from "@/utils/index";
 
 import styles from "./published.module.scss";
 
+// NOTE: Page size cannot be less than 10 due to a bug in Search
+// See https://github.com/nice-digital/search/blob/958b9eeab53db990aa5a8e4490703454db9b5dbd/Client/NICE.Search.Common/Models/PagerLinks.cs#L28
 const searchUrlDefaults = {
 	s: "Date",
 	ps: 10,
@@ -83,7 +85,7 @@ export function Published({
 	}, [firstResult, lastResult, resultCount]);
 
 	useEffect(() => {
-		console.log("using effect", results);
+		console.log("results.pagerLinks.next: ", results.pagerLinks.next);
 	}, [results]);
 
 	if (failed)
@@ -298,7 +300,6 @@ export const getServerSideProps = async (
 							toggleUrl,
 						})
 					);
-	console.log(">>>>>>>>>", results);
 
 	if (results.failed) {
 		logger.error(
