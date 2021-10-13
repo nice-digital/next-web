@@ -9,14 +9,7 @@ import { Grid, GridItem } from "@nice-digital/nds-grid";
 import { PageHeader } from "@nice-digital/nds-page-header";
 import { Table } from "@nice-digital/nds-table";
 import {
-	search,
-	initialise,
-	SearchResults,
-	getSearchUrl,
-	getActiveModifiers,
-	SearchUrl,
 	SearchResultsSuccess,
-	getUrlPathAndQuery,
 	SortOrder,
 	Document,
 } from "@nice-digital/search-client";
@@ -27,16 +20,14 @@ import { ErrorPageContent } from "@/components/ErrorPageContent/ErrorPageContent
 import { GuidanceListFilters } from "@/components/GuidanceListFilters/GuidanceListFilters";
 import { GuidanceListFilterSummary } from "@/components/GuidanceListFilterSummary/GuidanceListFilterSummary";
 import { GuidanceListNav } from "@/components/GuidanceListNav/GuidanceListNav";
-import { getRedirectUrl } from "@/components/GuidanceListPage/redirects";
 import { Link } from "@/components/Link/Link";
 import { SkipLink } from "@/components/SkipLink/SkipLink";
-import { publicRuntimeConfig } from "@/config";
-import { logger } from "@/logger";
-import { dateFormatShort } from "@/utils/constants";
 
+import { defaultPageSize } from "./GuidanceListGetServerSideProps";
 import styles from "./GuidanceListPage.module.scss";
+import { GuidanceListPageProps } from "./GuidanceListPageProps";
 
-const defaultPageSize = 10;
+export { getGetServerSidePropsFunc } from "./GuidanceListGetServerSideProps";
 
 export type GetGuidanceListPageOptions = {
 	breadcrumb: ReactChild;
@@ -52,12 +43,11 @@ export type GetGuidanceListPageOptions = {
 	| { showDateFilter: false }
 );
 
-export interface GuidanceListPageProps {
-	results: SearchResults;
-	activeModifiers: { displayName: string; toggleUrl: string }[];
-	searchUrl: SearchUrl;
-}
-
+/**
+ * Gets a guidance list page component with the given options
+ *
+ * @returns A guidance list page component
+ */
 export const getGuidanceListPage =
 	({
 		breadcrumb,
@@ -194,83 +184,4 @@ export const getGuidanceListPage =
 				</Grid>
 			</>
 		);
-	};
-
-export interface GetGetServerSidePropsOptions {
-	gstPreFilter: "Published" | "In consultation" | "In development" | "Proposed";
-	defaultSortOrder: SortOrder;
-}
-
-export const getGetServerSidePropsFunc =
-	({ gstPreFilter, defaultSortOrder }: GetGetServerSidePropsOptions) =>
-	async (
-		context: GetServerSidePropsContext
-	): Promise<GetServerSidePropsResult<GuidanceListPageProps>> => {
-		const redirectUrl = getRedirectUrl(context);
-
-		if (redirectUrl)
-			return { redirect: { destination: redirectUrl, permanent: true } };
-
-		initialise({
-			baseURL: publicRuntimeConfig.search.baseURL,
-			index: "guidance",
-		});
-
-		const searchUrl = getSearchUrl(context.resolvedUrl),
-			results = await search(context.resolvedUrl, {
-				defaultSortOrder,
-				defaultPageSize,
-				usePrettyUrls: true,
-				orModifierPreFilter: { gst: [gstPreFilter] },
-			}),
-			activeModifiers = results.failed
-				? []
-				: getActiveModifiers(results)
-						.filter(
-							// We pre filter by guidance status so don't want to be able to remove it
-							(mod) => mod.navigatorShortName !== "gst"
-						)
-						.map(
-							({
-								navigatorShortName,
-								displayName,
-								toggleUrl: { fullUrl: toggleUrl },
-							}) => ({
-								displayName: `${
-									results.navigators.find(
-										(nav) => nav.shortName === navigatorShortName
-									)?.displayName
-								}: ${displayName}`,
-								toggleUrl,
-							})
-						);
-
-		if (results.failed) {
-			logger.error(
-				`Error loading guidance from search on page ${context.resolvedUrl}: ${results.errorMessage}`,
-				results.debug?.rawResponse
-			);
-			context.res.statusCode = 500;
-		} else if (searchUrl.from && searchUrl.to) {
-			// Add an active modifier for the date range to allow users to easily toggle it
-			activeModifiers.unshift({
-				displayName: `Last updated between ${dayjs(searchUrl.from).format(
-					dateFormatShort
-				)} and ${dayjs(searchUrl.to).format(dateFormatShort)}`,
-				toggleUrl: getUrlPathAndQuery({
-					...searchUrl,
-					sp: "on",
-					from: undefined,
-					to: undefined,
-				}),
-			});
-		}
-
-		return {
-			props: {
-				results,
-				activeModifiers,
-				searchUrl,
-			},
-		};
 	};

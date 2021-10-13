@@ -1,8 +1,8 @@
 import { SortOrder, Document } from "@nice-digital/search-client";
 
 import {
-	getGetServerSidePropsFunc,
 	getGuidanceListPage,
+	getGetServerSidePropsFunc,
 } from "@/components/GuidanceListPage/GuidanceListPage";
 
 const defaultSortOrder = SortOrder.titleAscending;

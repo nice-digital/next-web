@@ -1,12 +1,13 @@
 import { Document, SortOrder } from "@nice-digital/search-client";
 
 import {
-	getGetServerSidePropsFunc,
 	getGuidanceListPage,
+	getGetServerSidePropsFunc,
 } from "@/components/GuidanceListPage/GuidanceListPage";
 import { ResponsiveDate } from "@/components/ResponsiveDate/ResponsiveDate";
 
-const defaultSortOrder = SortOrder.dateDescending;
+const defaultSortOrder = SortOrder.dateDescending,
+	dateFilterLabel = "Last updated date";
 
 const tableBodyRender = (documents: Document[]) => (
 	<>
@@ -61,11 +62,12 @@ export default getGuidanceListPage({
 	title: "Published guidance, NICE advice and quality standards",
 	defaultSortOrder,
 	showDateFilter: true,
-	dateFilterLabel: "Last updated date",
+	dateFilterLabel,
 	tableBodyRender,
 });
 
 export const getServerSideProps = getGetServerSidePropsFunc({
 	gstPreFilter: "Published",
 	defaultSortOrder,
+	dateFilterLabel,
 });

@@ -1,12 +1,13 @@
 import { SortOrder, Document } from "@nice-digital/search-client";
 
 import {
-	getGetServerSidePropsFunc,
 	getGuidanceListPage,
+	getGetServerSidePropsFunc,
 } from "@/components/GuidanceListPage/GuidanceListPage";
 import { ResponsiveDate } from "@/components/ResponsiveDate/ResponsiveDate";
 
-const defaultSortOrder = SortOrder.dateAscending;
+const defaultSortOrder = SortOrder.dateAscending,
+	dateFilterLabel = "Consultation end date";
 
 const tableBodyRender = (documents: Document[]) => (
 	<>
@@ -18,7 +19,7 @@ const tableBodyRender = (documents: Document[]) => (
 				<th scope="col">Title</th>
 				<th scope="col">Consultation</th>
 				<th scope="col">Type</th>
-				<th scope="col">Consultation end date</th>
+				<th scope="col">{dateFilterLabel}</th>
 			</tr>
 		</thead>
 		<tbody>
@@ -59,11 +60,12 @@ export default getGuidanceListPage({
 	title: "Guidance and quality standards in consultation",
 	defaultSortOrder,
 	showDateFilter: true,
-	dateFilterLabel: "Consultation end date",
+	dateFilterLabel,
 	tableBodyRender,
 });
 
 export const getServerSideProps = getGetServerSidePropsFunc({
 	gstPreFilter: "In consultation",
 	defaultSortOrder,
+	dateFilterLabel,
 });
