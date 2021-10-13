@@ -16,7 +16,7 @@ const niceDigitalModulesToTranspile = readdirSync(
 	path.join(__dirname, "node_modules", "@nice-digital"),
 	{ withFileTypes: true }
 )
-	.filter((dirent) => dirent.isDirectory())
+	.filter((dirent) => dirent.isDirectory() || dirent.isSymbolicLink())
 	.map(({ name }) => `@nice-digital/${name}`);
 
 /**

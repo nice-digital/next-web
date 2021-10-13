@@ -27,6 +27,7 @@ import { GuidanceListFilters } from "@/components/GuidanceListFilters/GuidanceLi
 import { GuidanceListFilterSummary } from "@/components/GuidanceListFilterSummary/GuidanceListFilterSummary";
 import { GuidanceListNav } from "@/components/GuidanceListNav/GuidanceListNav";
 import { Link } from "@/components/Link/Link";
+import { SearchPagination } from "@/components/SearchPagination/SearchPagination";
 import { SkipLink } from "@/components/SkipLink/SkipLink";
 import { publicRuntimeConfig } from "@/config";
 import { logger } from "@/logger";
@@ -35,6 +36,8 @@ import { formatDateStr } from "@/utils/index";
 
 import styles from "./published.module.scss";
 
+// NOTE: Page size cannot be less than 10 due to a bug in Search
+// See https://github.com/nice-digital/search/blob/958b9eeab53db990aa5a8e4490703454db9b5dbd/Client/NICE.Search.Common/Models/PagerLinks.cs#L28
 const defaultSortOrder = SortOrder.dateDescending,
 	defaultPageSize = 10;
 
@@ -216,6 +219,7 @@ export function Published({
 									)}
 								</tbody>
 							</Table>
+							<SearchPagination results={results} />
 							<CopyToClipboard targetId="results">
 								Copy {pluralize("result", documents.length, true)} to clipboard
 							</CopyToClipboard>
@@ -226,6 +230,8 @@ export function Published({
 		</>
 	);
 }
+
+export default Published;
 
 export const getServerSideProps = async (
 	context: GetServerSidePropsContext
@@ -293,5 +299,3 @@ export const getServerSideProps = async (
 		},
 	};
 };
-
-export default Published;
