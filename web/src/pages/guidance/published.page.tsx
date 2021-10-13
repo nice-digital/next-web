@@ -60,7 +60,14 @@ export default getGuidanceListPage({
 	preheading: "Published ",
 	heading: <>Guidance, NICE advice and quality&nbsp;standards</>,
 	title: "Published guidance, NICE advice and quality standards",
-	defaultSortOrder,
+	defaultSort: {
+		order: defaultSortOrder,
+		label: "Date",
+	},
+	secondarySort: {
+		order: SortOrder.titleAscending,
+		label: "Title",
+	},
 	showDateFilter: true,
 	dateFilterLabel,
 	tableBodyRender,

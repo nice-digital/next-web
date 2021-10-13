@@ -41,7 +41,10 @@ export default getGuidanceListPage({
 	preheading: "Guidance and quality standards ",
 	heading: "Proposed for development",
 	title: "Proposed guidance and quality standards",
-	defaultSortOrder,
+	defaultSort: {
+		order: defaultSortOrder,
+		label: "Title",
+	},
 	showDateFilter: false,
 	tableBodyRender,
 });

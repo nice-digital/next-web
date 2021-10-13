@@ -58,7 +58,14 @@ export default getGuidanceListPage({
 	preheading: "Guidance and quality standards ",
 	heading: "In consultation",
 	title: "Guidance and quality standards in consultation",
-	defaultSortOrder,
+	defaultSort: {
+		order: defaultSortOrder,
+		label: "Date",
+	},
+	secondarySort: {
+		order: SortOrder.titleAscending,
+		label: "Title",
+	},
 	showDateFilter: true,
 	dateFilterLabel,
 	tableBodyRender,

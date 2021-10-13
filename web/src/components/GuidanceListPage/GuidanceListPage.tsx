@@ -34,7 +34,14 @@ export type GetGuidanceListPageOptions = {
 	preheading: ReactChild;
 	heading: ReactChild;
 	title: string;
-	defaultSortOrder: SortOrder;
+	defaultSort: {
+		order: SortOrder;
+		label: string;
+	};
+	secondarySort?: {
+		order: SortOrder;
+		label: string;
+	};
 	showDateFilter: boolean;
 	dateFilterLabel?: string;
 	tableBodyRender: (documents: Document[]) => JSX.Element;
@@ -54,7 +61,8 @@ export const getGuidanceListPage =
 		preheading,
 		heading,
 		title,
-		defaultSortOrder,
+		defaultSort,
+		secondarySort,
 		showDateFilter,
 		dateFilterLabel,
 		tableBodyRender,
@@ -135,7 +143,7 @@ export const getGuidanceListPage =
 							numActiveModifiers={activeModifiers.length}
 							navigators={navigators}
 							pageSize={pageSize === defaultPageSize ? "" : pageSize}
-							sortOrder={s === defaultSortOrder ? "" : s}
+							sortOrder={s === defaultSort.order ? "" : s}
 							queryText={q}
 							from={from}
 							to={to}
@@ -155,7 +163,8 @@ export const getGuidanceListPage =
 							results={results as SearchResultsSuccess}
 							activeModifiers={activeModifiers}
 							currentSortOrder={s}
-							defaultSortOrder={defaultSortOrder}
+							defaultSort={defaultSort}
+							secondarySort={secondarySort}
 						/>
 
 						{documents.length === 0 ? (

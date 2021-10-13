@@ -59,7 +59,14 @@ export default getGuidanceListPage({
 	preheading: "Guidance, NICE advice and quality standards ",
 	heading: "In development",
 	title: "Guidance, NICE advice and quality standards in development",
-	defaultSortOrder,
+	defaultSort: {
+		order: defaultSortOrder,
+		label: "Title",
+	},
+	secondarySort: {
+		order: SortOrder.dateAscending,
+		label: "Date",
+	},
 	showDateFilter: true,
 	dateFilterLabel,
 	tableBodyRender,

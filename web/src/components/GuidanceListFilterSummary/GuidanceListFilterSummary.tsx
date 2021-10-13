@@ -1,8 +1,9 @@
 import { useRouter } from "next/router";
 import { FC } from "react";
 
-import { FilterSummary } from "@nice-digital/nds-filters";
+import { FilterSummary, FilterSummaryProps } from "@nice-digital/nds-filters";
 import {
+	removeQueryParam,
 	SearchResultsSuccess,
 	SortOrder,
 	upsertQueryParam,
@@ -19,16 +20,43 @@ export interface GuidanceListFilterSummaryProps {
 	results: SearchResultsSuccess;
 	activeModifiers: ActiveModifier[];
 	currentSortOrder?: string;
-	defaultSortOrder: SortOrder;
+	defaultSort: {
+		order: SortOrder;
+		label: string;
+	};
+	secondarySort?: {
+		order: SortOrder;
+		label: string;
+	};
 }
 
 export const GuidanceListFilterSummary: FC<GuidanceListFilterSummaryProps> = ({
 	results: { firstResult, lastResult, resultCount },
 	activeModifiers,
 	currentSortOrder,
-	defaultSortOrder,
+	defaultSort,
+	secondarySort,
 }) => {
 	const { asPath } = useRouter();
+
+	let sorting: FilterSummaryProps["sorting"] = undefined;
+
+	if (secondarySort) {
+		sorting = [
+			{
+				active: currentSortOrder === defaultSort.order || !currentSortOrder,
+				label: defaultSort.label,
+				destination: removeQueryParam(asPath, "s"),
+				elementType: NoScrollLink,
+			},
+			{
+				active: currentSortOrder === secondarySort.order,
+				label: secondarySort.label,
+				destination: upsertQueryParam(asPath, "s", secondarySort.order),
+				elementType: NoScrollLink,
+			},
+		];
+	}
 
 	return (
 		<FilterSummary
@@ -39,21 +67,7 @@ export const GuidanceListFilterSummary: FC<GuidanceListFilterSummaryProps> = ({
 				method: "href",
 				elementType: NoScrollLink,
 			}))}
-			sorting={[
-				{
-					active:
-						currentSortOrder === SortOrder.dateDescending || !currentSortOrder,
-					label: "Date",
-					destination: upsertQueryParam(asPath, "s", SortOrder.dateDescending),
-					elementType: NoScrollLink,
-				},
-				{
-					active: currentSortOrder === SortOrder.titleAscending,
-					label: "Title",
-					destination: upsertQueryParam(asPath, "s", SortOrder.titleAscending),
-					elementType: NoScrollLink,
-				},
-			]}
+			sorting={sorting}
 		>
 			{resultCount === 0 ? (
 				"Showing 0 results"
