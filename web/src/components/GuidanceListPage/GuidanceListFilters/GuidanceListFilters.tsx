@@ -29,6 +29,7 @@ export interface GuidanceListFiltersProps {
 	to?: string;
 	showDateFilter: boolean;
 	dateFilterLabel?: string;
+	useFutureDates?: boolean;
 }
 
 export const GuidanceListFilters: FC<GuidanceListFiltersProps> = ({
@@ -41,6 +42,7 @@ export const GuidanceListFilters: FC<GuidanceListFiltersProps> = ({
 	to,
 	showDateFilter,
 	dateFilterLabel,
+	useFutureDates,
 }) => {
 	const router = useRouter(),
 		formRef = createRef<HTMLFormElement>();
@@ -82,7 +84,12 @@ export const GuidanceListFilters: FC<GuidanceListFiltersProps> = ({
 				placeholder="E.g. 'diabetes' or 'NG28'"
 			/>
 			{showDateFilter ? (
-				<ToFromDateFilters heading={dateFilterLabel} from={from} to={to} />
+				<ToFromDateFilters
+					heading={dateFilterLabel}
+					from={from}
+					to={to}
+					useFutureDates={!!useFutureDates}
+				/>
 			) : (
 				<></>
 			)}

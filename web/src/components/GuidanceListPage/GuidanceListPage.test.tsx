@@ -1,25 +1,16 @@
-import { ParsedUrlQuery } from "querystring";
-
-import { GetServerSidePropsContext, Redirect } from "next";
 import { useRouter } from "next/router";
 
 import {
-	search,
-	SearchResultsError,
 	SearchResultsSuccess,
 	SearchUrl,
+	SortOrder,
 } from "@nice-digital/search-client";
 
-import { logger } from "@/logger";
-import { render, screen, within } from "@/test-utils";
-import { formatDateStr } from "@/utils/index";
+import { render, screen } from "@/test-utils";
 
 import sampleData from "../../__mocks__/__data__/search/guidance-published.json";
-import {
-	Published,
-	getServerSideProps,
-	PublishedGuidancePageProps,
-} from "../../pages/guidance/published.page";
+
+import { getGuidanceListPage } from "./GuidanceListPage";
 
 jest.mock("@/logger", () => ({
 	logger: { error: jest.fn() },
@@ -27,6 +18,25 @@ jest.mock("@/logger", () => ({
 }));
 
 describe("/guidance/published", () => {
+	const GuidanceListPage = getGuidanceListPage({
+		breadcrumb: "Published",
+		preheading: "Published ",
+		heading: <>Guidance, NICE advice and quality&nbsp;standards</>,
+		title: "Published guidance, NICE advice and quality standards",
+		defaultSort: {
+			order: SortOrder.dateDescending,
+			label: "Date",
+		},
+		secondarySort: {
+			order: SortOrder.titleAscending,
+			label: "Title",
+		},
+		showDateFilter: true,
+		useFutureDates: false,
+		dateFilterLabel: "Last updated date",
+		tableBodyRender: (_docs) => <p>test</p>,
+	});
+
 	let routerPush: jest.Mock;
 	beforeEach(() => {
 		routerPush = jest.fn();
@@ -40,7 +50,7 @@ describe("/guidance/published", () => {
 		}));
 
 		render(
-			<Published
+			<GuidanceListPage
 				activeModifiers={[]}
 				results={sampleData as unknown as SearchResultsSuccess}
 				searchUrl={{ route: "/guidance/published" } as SearchUrl}
@@ -48,117 +58,10 @@ describe("/guidance/published", () => {
 		);
 	});
 
-	describe("getServerSideProps", () => {
-		describe("Redirects", () => {
-			it("should return permanent redirect object from old page style URL to new style URL", async () => {
-				const redirectResult = (await getServerSideProps({
-					resolvedUrl: "/guidance/published?title=test",
-					query: {
-						title: "test",
-					} as ParsedUrlQuery,
-				} as GetServerSidePropsContext)) as {
-					redirect: Redirect;
-				};
-
-				expect(redirectResult).toStrictEqual({
-					redirect: {
-						destination: "/guidance/published?q=test",
-						permanent: true,
-					},
-				});
-			});
-		});
-
-		describe("Error", () => {
-			beforeEach(() => {
-				(search as jest.Mock).mockResolvedValue({
-					failed: true,
-					errorMessage: "Some server side error message",
-					debug: { rawResponse: "Some raw debug response" },
-				} as SearchResultsError);
-			});
-
-			it("should log error and debug response on search failure", async () => {
-				await getServerSideProps({
-					resolvedUrl: "/guidance/published?q=test",
-					res: {},
-				} as GetServerSidePropsContext);
-
-				expect(logger.error as jest.Mock).toHaveBeenCalledWith(
-					"Error loading guidance from search on page /guidance/published?q=test: Some server side error message",
-					"Some raw debug response"
-				);
-			});
-
-			it("should return 500 response status when search request fails", async () => {
-				const res = { statusCode: 0 };
-
-				await getServerSideProps({
-					resolvedUrl: "/guidance/published?q=test",
-					res,
-				} as GetServerSidePropsContext);
-
-				expect(res.statusCode).toBe(500);
-			});
-		});
-
-		describe("Success", () => {
-			let result: { props: PublishedGuidancePageProps };
-			const resolvedUrl =
-				"/guidance/published?q=test&ndt=Guidance&from=2020-07-28&to=2021-06-04";
-			beforeEach(async () => {
-				(search as jest.Mock).mockResolvedValue(sampleData);
-
-				result = (await getServerSideProps({
-					resolvedUrl,
-				} as GetServerSidePropsContext)) as {
-					props: PublishedGuidancePageProps;
-				};
-			});
-
-			it("should return results from search in results prop", async () => {
-				expect(result.props.results).toBe(sampleData);
-			});
-
-			it.todo(
-				"should insert from/to dates as first active modifier with correct toggle url"
-			);
-
-			it("should set active modifiers from navigators and form/to dates", () => {
-				expect(result.props.activeModifiers).toStrictEqual([
-					{
-						displayName: "Last updated between 28/7/2020 and 4/6/2021",
-						toggleUrl: "/guidance/published?q=test&ndt=Guidance&sp=on",
-					},
-					{
-						displayName: "Type: Guidance",
-						toggleUrl:
-							"/guidance/published?gst=Published&ngt=NICE%20guidelines&sp=on",
-					},
-					{
-						displayName: "Guidance programme: NICE guidelines",
-						toggleUrl: "/guidance/published?gst=Published&ndt=Guidance&sp=on",
-					},
-				]);
-			});
-
-			it("should return search url prop", async () => {
-				expect(result.props.searchUrl).toStrictEqual({
-					route: "/guidance/published",
-					q: "test",
-					from: "2020-07-28",
-					to: "2021-06-04",
-					fullUrl: resolvedUrl,
-					ndt: "Guidance",
-				});
-			});
-		});
-	});
-
 	describe("Meta", () => {
 		it("should set page title", () => {
 			expect(document.title).toBe(
-				"Published guidance, quality standards and advice | NICE"
+				"Published guidance, NICE advice and quality standards | Guidance | NICE"
 			);
 		});
 
@@ -172,7 +75,7 @@ describe("/guidance/published", () => {
 
 		it("should set noindex meta tag when no results", () => {
 			render(
-				<Published
+				<GuidanceListPage
 					activeModifiers={[]}
 					results={
 						{ ...sampleData, documents: [] } as unknown as SearchResultsSuccess
@@ -204,89 +107,23 @@ describe("/guidance/published", () => {
 		});
 	});
 
-	describe("Table", () => {
+	describe("Table body", () => {
 		it("should add skip link target id to results table", () => {
 			expect(screen.getByRole("table")).toHaveProperty("id", "results");
 		});
 
-		describe("Column headings", () => {
-			it.each([
-				["Title", 1],
-				["Reference number", 2],
-				["Published", 3],
-				["Last updated", 4],
-			])(
-				"should set column header '%s' at column %i",
-				(headingText, columnIndex) => {
-					expect(
-						screen.getByText(headingText, {
-							selector: `th:nth-child(${columnIndex})`,
-						})
-					).toBeInTheDocument();
-				}
-			);
-		});
-
-		it("should have a caption describing the content of the table", () => {
-			expect(
-				screen.getByText("Published guidance, quality standards and advice", {
-					selector: "caption",
-				})
-			).toBeInTheDocument();
-		});
-
-		it("should have a visually hidden caption", () => {
-			expect(
-				screen.getByText("Published guidance, quality standards and advice", {
-					selector: "caption",
-				})
-			).toHaveClass("visually-hidden");
-		});
-
-		it("should show the number of rows of data supplied", () => {
-			expect(screen.getAllByRole("row")).toHaveLength(3); // 3 = 2 rows of data and 1 for the heading row
-		});
-
-		describe("First row data", () => {
-			const { title, guidanceRef, publicationDate, lastUpdated } =
-				sampleData.documents[0];
-			it.each([
-				[title],
-				[guidanceRef],
-				[formatDateStr(String(publicationDate))],
-				[formatDateStr(String(lastUpdated))],
-			])("should set data cell to '%s'", (text) => {
-				const row = screen.getAllByRole("row")[1];
-				expect(
-					within(row).getByRole("cell", { name: text })
-				).toBeInTheDocument();
-			});
-		});
-
-		describe("Date formatting", () => {
-			it("should render the date in the NICE style format", () => {
-				expect(
-					screen.getByRole("cell", { name: /4 september 2021/i })
-				).toBeInTheDocument();
-			});
-			it("should render the datetime attribute in ISO standard", () => {
-				const time = screen
-					.getByRole("cell", { name: /4 september 2021/i })
-					// eslint-disable-next-line testing-library/no-node-access
-					.querySelector("time");
-				expect(time).toHaveAttribute("datetime", "2021-09-04T12:00:00");
-			});
-			it("should render a short version of the date as a data attribute for display on small screens with CSS", () => {
-				const time = screen
-					.getByRole("cell", { name: /4 september 2021/i })
-					// eslint-disable-next-line testing-library/no-node-access
-					.querySelector("time");
-				expect(time).toHaveAttribute("data-shortdate", "4/9/2021");
-			});
-		});
-
-		it("should match the snapshot", () => {
-			expect(screen.getByRole("table")).toMatchSnapshot();
+		it("should use custom renderer for table body", () => {
+			expect(screen.getByRole("table")).toMatchInlineSnapshot(`
+			<table
+			  aria-describedby="filter-summary"
+			  class="table"
+			  id="results"
+			>
+			  <p>
+			    test
+			  </p>
+			</table>
+		`);
 		});
 	});
 });

@@ -17,7 +17,10 @@ import { publicRuntimeConfig } from "@/config";
 import { logger } from "@/logger";
 import { dateFormatShort } from "@/utils/constants";
 
-import { GuidanceListPageProps, ActiveModifier } from "./GuidanceListPageProps";
+import {
+	GuidanceListPageProps,
+	ActiveModifier,
+} from "../GuidanceListPageProps";
 
 export const defaultPageSize = 10;
 

@@ -73,6 +73,7 @@ export default getGuidanceListPage({
 		label: "Date",
 	},
 	showDateFilter: true,
+	useFutureDates: true,
 	dateFilterLabel,
 	tableBodyRender,
 });

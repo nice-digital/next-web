@@ -21,11 +21,11 @@ import { GuidanceListNav } from "@/components/GuidanceListPage/GuidanceListNav/G
 import { Link } from "@/components/Link/Link";
 import { SkipLink } from "@/components/SkipLink/SkipLink";
 
-import { defaultPageSize } from "./GuidanceListGetServerSideProps";
+import { defaultPageSize } from "./GuidanceListGetServerSideProps/GuidanceListGetServerSideProps";
 import styles from "./GuidanceListPage.module.scss";
 import { GuidanceListPageProps } from "./GuidanceListPageProps";
 
-export { getGetServerSidePropsFunc } from "./GuidanceListGetServerSideProps";
+export { getGetServerSidePropsFunc } from "./GuidanceListGetServerSideProps/GuidanceListGetServerSideProps";
 
 export type GetGuidanceListPageOptions = {
 	breadcrumb: ReactChild;
@@ -42,10 +42,13 @@ export type GetGuidanceListPageOptions = {
 	};
 	showDateFilter: boolean;
 	dateFilterLabel?: string;
+	useFutureDates?: boolean;
 	tableBodyRender: (documents: Document[]) => JSX.Element;
 } & (
-	| { showDateFilter: true; dateFilterLabel: string }
-	| { showDateFilter: false }
+	| { showDateFilter: true; dateFilterLabel: string; useFutureDates: boolean }
+	| {
+			showDateFilter: false;
+	  }
 );
 
 /**
@@ -63,6 +66,7 @@ export const getGuidanceListPage =
 		secondarySort,
 		showDateFilter,
 		dateFilterLabel,
+		useFutureDates,
 		tableBodyRender,
 	}: GetGuidanceListPageOptions): FC<GuidanceListPageProps> =>
 	({ results, searchUrl: { q, s, from, to }, activeModifiers }) => {
@@ -147,6 +151,7 @@ export const getGuidanceListPage =
 							to={to}
 							showDateFilter={showDateFilter}
 							dateFilterLabel={dateFilterLabel}
+							useFutureDates={useFutureDates}
 						/>
 					</GridItem>
 

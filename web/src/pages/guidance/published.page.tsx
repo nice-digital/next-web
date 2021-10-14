@@ -69,6 +69,7 @@ export default getGuidanceListPage({
 		label: "Title",
 	},
 	showDateFilter: true,
+	useFutureDates: false,
 	dateFilterLabel,
 	tableBodyRender,
 });
