@@ -1,5 +1,3 @@
-import dayjs from "dayjs";
-import { GetServerSidePropsContext, GetServerSidePropsResult } from "next";
 import { NextSeo } from "next-seo";
 import pluralize from "pluralize";
 import React, { FC, ReactChild, useEffect, useMemo, useState } from "react";
@@ -17,9 +15,9 @@ import {
 import { Announcer } from "@/components/Announcer/Announcer";
 import { CopyToClipboard } from "@/components/CopyToClipboard/CopyToClipboard";
 import { ErrorPageContent } from "@/components/ErrorPageContent/ErrorPageContent";
-import { GuidanceListFilters } from "@/components/GuidanceListFilters/GuidanceListFilters";
-import { GuidanceListFilterSummary } from "@/components/GuidanceListFilterSummary/GuidanceListFilterSummary";
-import { GuidanceListNav } from "@/components/GuidanceListNav/GuidanceListNav";
+import { GuidanceListFilters } from "@/components/GuidanceListPage/GuidanceListFilters/GuidanceListFilters";
+import { GuidanceListFilterSummary } from "@/components/GuidanceListPage/GuidanceListFilterSummary/GuidanceListFilterSummary";
+import { GuidanceListNav } from "@/components/GuidanceListPage/GuidanceListNav/GuidanceListNav";
 import { Link } from "@/components/Link/Link";
 import { SkipLink } from "@/components/SkipLink/SkipLink";
 
