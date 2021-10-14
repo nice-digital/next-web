@@ -46,6 +46,7 @@ export const SearchPagination: FC<SearchPaginationProps> = ({ results }) => {
 				destination: upsertQueryParam(asPath, "pa", String(totalPages)),
 			},
 		];
+		console.log("the links are... ", links);
 		return links;
 	}, [totalPages, asPath, currentPage]);
 
@@ -53,7 +54,7 @@ export const SearchPagination: FC<SearchPaginationProps> = ({ results }) => {
 		<EnhancedPagination
 			currentPage={currentPage}
 			elementType={({ children, ...props }) => (
-				<Link scroll={false} {...props}>
+				<Link scroll={false} {...props} href="/blah">
 					<a>{children}</a>
 				</Link>
 			)}

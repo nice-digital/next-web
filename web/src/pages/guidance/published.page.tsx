@@ -84,6 +84,10 @@ export function Published({
 		);
 	}, [firstResult, lastResult, resultCount]);
 
+	useEffect(() => {
+		console.log(">>>> ", results);
+	}, [results]);
+
 	if (failed)
 		return (
 			<>
