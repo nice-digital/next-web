@@ -28,7 +28,7 @@
   ],
   "homepage": "https://github.com/nice-digital/next-web/web-host#readme",
   "dependencies": {
-    "pm2": "^5.1.0"
+    "pm2": "^5.1.2"
   },
   "volta": {
     "node": "14.17.1"

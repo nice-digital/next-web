@@ -2,19 +2,14 @@
 
 $ErrorActionPreference = "Stop"
 
-# Make sure pm2 is running by pinging it, but as a background job otherwise octopus hangs
-Start-Job -ScriptBlock { pm2 ping }
-# Wait for an arbitrary amount of time for PM2 daemon to spawn. Unforunately Wait-Job causes octo to hang so this'll have to do.
-Start-Sleep 5
-
 # Hide pesky npm update banner https://stackoverflow.com/a/60525400/486434
 npm config set update-notifier false
 
 # TeamCity builds runs on a linux agent so we have to rebuild binaries for our Windows application servers
 # Using `!$IsLinux` works on both PowerShell 5 and PSCore.
 if(!$IsLinux) {
-	Write-Output "Rebuilding pm2 package binary"
-	npm rebuild pm2
+	Write-Output "Rebuilding binaries because we're on Windows"
+	npm rebuild
 }
 
 If ($OctopusParameters) {
@@ -41,9 +36,9 @@ Write-Output "Creating symlink from $pm2WorkingDirectory to $deployedWebAppDir"
 New-Item -Force -ItemType SymbolicLink -Path $pm2WorkingDirectory -Value $deployedWebAppDir
 
 # Start/reload the webapp. We use --mini-list because of the way that Octopus Deploy shows the PM2 tables in logs
-Start-Process "npm" -ArgumentList "start -- --mini-list" -NoNewWindow -PassThru -Wait
+npm start -- --mini-list
 
-# Save the PM2 process list, which allows it to persist across machine restarts
-Start-Process "npm" -ArgumentList "run save" -NoNewWindow -PassThru -Wait
+# Save the PM2 process list, which allows it to persist across machine restarts via `pm2 resurrect`
+npm run save
 
 Exit 0
