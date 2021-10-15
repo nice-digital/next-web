@@ -1,3 +1,4 @@
+using System;
 using System.Net;
 using CacheManager.Core;
 using Microsoft.AspNetCore.Builder;
@@ -8,6 +9,8 @@ using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using NICE.NextWeb.API.CacheManager;
+using NICE.NextWeb.API.ScheduledTasks;
+using NICE.NextWeb.API.ScheduledTasks.Scheduler;
 using Ocelot.DependencyInjection;
 using Ocelot.Middleware;
 using Serilog;
@@ -36,6 +39,14 @@ namespace NICE.NextWeb.API
                     x.WithRedisConfiguration("redis", redisConnectionString, redisDatabaseId)
                         .WithJsonSerializer()
                         .WithRedisCacheHandle("redis"));
+
+            services.AddSingleton<IScheduledTask, RefreshGuidanceTaxonomyScheduledTask>();
+            services.AddScheduler((sender, args) =>
+            {
+                Console.Write(args.Exception.Message);
+                args.SetObserved();
+            });
+            services.AddHttpClient<RefreshGuidanceTaxonomyScheduledTask>();
         }
 
         public void Configure(IApplicationBuilder app, IWebHostEnvironment env)
