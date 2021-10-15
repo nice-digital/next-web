@@ -109,12 +109,11 @@ describe("getGetServerSidePropsFunc", () => {
 				},
 				{
 					displayName: "Type: Guidance",
-					toggleUrl:
-						"/guidance/published?gst=Published&ngt=NICE%20guidelines&sp=on",
+					toggleUrl: "/guidance/published?sp=on&ngt=NICE%20guidelines",
 				},
 				{
 					displayName: "Guidance programme: NICE guidelines",
-					toggleUrl: "/guidance/published?gst=Published&ndt=Guidance&sp=on",
+					toggleUrl: "/guidance/published?sp=on&ndt=Guidance",
 				},
 			]);
 		});

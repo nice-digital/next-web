@@ -1,3 +1,4 @@
+import mockDate from "mockdate";
 import { useRouter } from "next/router";
 
 import { SearchResultsSuccess, SearchUrl } from "@nice-digital/search-client";
@@ -27,6 +28,8 @@ describe("/guidance/published", () => {
 				searchUrl={{ route: "/guidance/published" } as SearchUrl}
 			/>
 		).container;
+
+		mockDate.set("2020-11-22");
 	});
 
 	it("should match the snapshot", () => {
@@ -64,7 +67,7 @@ describe("/guidance/published", () => {
 		});
 
 		it("should show the number of rows of data supplied", () => {
-			expect(screen.getAllByRole("row")).toHaveLength(3); // 3 = 2 rows of data and 1 for the heading row
+			expect(screen.getAllByRole("row")).toHaveLength(11); // 11 = 10 rows of data and 1 for the heading row
 		});
 
 		describe("First row data", () => {
@@ -86,22 +89,22 @@ describe("/guidance/published", () => {
 		describe("Date formatting", () => {
 			it("should render the date in the NICE style format", () => {
 				expect(
-					screen.getByRole("cell", { name: /4 september 2021/i })
+					screen.getByRole("cell", { name: /6 October 2021/i })
 				).toBeInTheDocument();
 			});
 			it("should render the datetime attribute in ISO standard", () => {
 				const time = screen
-					.getByRole("cell", { name: /4 september 2021/i })
+					.getByRole("cell", { name: /6 October 2021/i })
 					// eslint-disable-next-line testing-library/no-node-access
 					.querySelector("time");
-				expect(time).toHaveAttribute("datetime", "2021-09-04T12:00:00");
+				expect(time).toHaveAttribute("datetime", "2021-10-06T12:00:00");
 			});
 			it("should render a short version of the date as a data attribute for display on small screens with CSS", () => {
 				const time = screen
-					.getByRole("cell", { name: /4 september 2021/i })
+					.getByRole("cell", { name: /6 October 2021/i })
 					// eslint-disable-next-line testing-library/no-node-access
 					.querySelector("time");
-				expect(time).toHaveAttribute("data-shortdate", "4/9/2021");
+				expect(time).toHaveAttribute("data-shortdate", "6/10/2021");
 			});
 		});
 	});

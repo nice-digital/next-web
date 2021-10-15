@@ -488,14 +488,14 @@ exports[`GuidanceListFilters should match snapshot for filter panel form 1`] = `
             <input
               id="filter_ngt_interventional-procedures-guidance"
               name="ngt"
-              title="Guidance programme - Interventional procedures guidance (544)"
+              title="Guidance programme - Interventional procedures guidance (546)"
               type="checkbox"
               value="Interventional procedures guidance"
             />
             <span
               class="filter-option__text"
             >
-              Interventional procedures guidance (544)
+              Interventional procedures guidance (546)
             </span>
           </label>
           <label
@@ -505,14 +505,14 @@ exports[`GuidanceListFilters should match snapshot for filter panel form 1`] = `
             <input
               id="filter_ngt_medical-technologies-guidance"
               name="ngt"
-              title="Guidance programme - Medical technologies guidance (52)"
+              title="Guidance programme - Medical technologies guidance (53)"
               type="checkbox"
               value="Medical technologies guidance"
             />
             <span
               class="filter-option__text"
             >
-              Medical technologies guidance (52)
+              Medical technologies guidance (53)
             </span>
           </label>
           <label
@@ -603,36 +603,19 @@ exports[`GuidanceListFilters should match snapshot for filter panel form 1`] = `
           </label>
           <label
             class="filter-option"
-            for="filter_ngt_technology-appraisal"
-          >
-            <input
-              id="filter_ngt_technology-appraisal"
-              name="ngt"
-              title="Guidance programme - Technology appraisal (64)"
-              type="checkbox"
-              value="Technology appraisal"
-            />
-            <span
-              class="filter-option__text"
-            >
-              Technology appraisal (64)
-            </span>
-          </label>
-          <label
-            class="filter-option"
             for="filter_ngt_technology-appraisal-guidance"
           >
             <input
               id="filter_ngt_technology-appraisal-guidance"
               name="ngt"
-              title="Guidance programme - Technology appraisal guidance (487)"
+              title="Guidance programme - Technology appraisal guidance (560)"
               type="checkbox"
               value="Technology appraisal guidance"
             />
             <span
               class="filter-option__text"
             >
-              Technology appraisal guidance (487)
+              Technology appraisal guidance (560)
             </span>
           </label>
         </fieldset>
