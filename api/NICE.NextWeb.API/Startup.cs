@@ -14,7 +14,6 @@ using NICE.NextWeb.API.ScheduledTasks.Scheduler;
 using Ocelot.DependencyInjection;
 using Ocelot.Middleware;
 using Serilog;
-using Serilog.Core;
 
 namespace NICE.NextWeb.API
 {
@@ -40,6 +39,7 @@ namespace NICE.NextWeb.API
                         .WithJsonSerializer()
                         .WithRedisCacheHandle("redis"));
 
+            services.AddSingleton<INiceorgHttpRequestMessage, NiceorgHttpRequestMessage>();
             services.AddSingleton<IScheduledTask, RefreshGuidanceTaxonomyScheduledTask>();
             services.AddScheduler((sender, args) =>
             {

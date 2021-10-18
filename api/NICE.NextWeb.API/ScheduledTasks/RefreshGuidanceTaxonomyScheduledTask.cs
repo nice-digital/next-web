@@ -2,6 +2,7 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Net.Http;
+using System.Security.Policy;
 using System.Threading;
 using System.Threading.Tasks;
 using Microsoft.Extensions.Configuration;
@@ -14,34 +15,34 @@ namespace NICE.NextWeb.API.ScheduledTasks
     public class RefreshGuidanceTaxonomyScheduledTask : IScheduledTask
     {
         private readonly IHttpClientFactory _httpClientFactory;
-        private readonly IConfiguration _configuration;
+        private readonly INiceorgHttpRequestMessage _httpRequestMessage;
 
-        public RefreshGuidanceTaxonomyScheduledTask(IHttpClientFactory httpClientFactory, IConfiguration configuration)
+        public RefreshGuidanceTaxonomyScheduledTask(IHttpClientFactory httpClientFactory,
+            INiceorgHttpRequestMessage httpRequestMessage)
         {
             _httpClientFactory = httpClientFactory;
-            _configuration = configuration;
+            _httpRequestMessage = httpRequestMessage;
         }
+
         public string Schedule => "* * * * *";
         public string RefreshUrl => "api/TaxonomyMappings";
+
         public async Task ExecuteAsync(CancellationToken cancellationToken)
         {
-            var baseUrl = _configuration.GetValue<string>("CacheRefreshService:NiceOrgBaseUrl");
-            var apiKey = _configuration.GetValue<string>("CacheRefreshService:NiceOrgAPIKey");
             var httpClient = _httpClientFactory.CreateClient();
-            var requestUrl = $"{baseUrl}{RefreshUrl}?ApiKey={apiKey}";
-            var request = new HttpRequestMessage(HttpMethod.Get, requestUrl);
 
-            request.Headers.Add("X-CacheManager-RefreshCache", "");
-
-            var response = await httpClient.SendAsync(request, cancellationToken);
-
-            if (response.IsSuccessStatusCode)
+            try
             {
+                var response = await httpClient.SendAsync(_httpRequestMessage.GetNiceorgHttpRequestMessage(RefreshUrl),
+                    cancellationToken);
+                response.EnsureSuccessStatusCode();
+
                 Log.Information($"Successfully refreshed url:- {RefreshUrl}");
             }
-            else
+            catch (Exception e)
             {
-                Log.Error($"Error when refreshing url:- {RefreshUrl}");
+                Log.Error(e, $"Error when refreshing url:- {RefreshUrl}");
+                throw;
             }
         }
     }
