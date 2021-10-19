@@ -17,8 +17,7 @@ export const SearchPagination: FC<SearchPaginationProps> = ({ results }) => {
 	const totalPages = Math.ceil(resultCount / pageSize);
 	const currentPage = Math.round(firstResult / pageSize) + 1;
 
-	const mapPageNumberToHref = (pageNumber: number) =>
-		`${upsertQueryParam(asPath, "pa", String(pageNumber))}`;
+	const mapPageNumberToHref = (pageNumber: number) => upsertQueryParam(asPath, "pa", String(pageNumber))};
 
 	return (
 		<EnhancedPagination
