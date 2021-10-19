@@ -35,7 +35,7 @@ const tableBodyRender = (documents: Document[]) => (
 							<td>
 								{/* In dev advice don't have pages in their own right but search still sends back a fake URL */}
 								{pathAndQuery.indexOf("not_a_real_url") > -1 ? (
-									title
+									<span dangerouslySetInnerHTML={{ __html: title }} />
 								) : (
 									<a
 										href={pathAndQuery}

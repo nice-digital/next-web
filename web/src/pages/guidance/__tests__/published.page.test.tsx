@@ -21,6 +21,8 @@ import PublishedPage from "./../published.page";
 describe("/guidance/published", () => {
 	let container: HTMLElement;
 	beforeEach(() => {
+		mockDate.set("2020-11-22");
+
 		container = render(
 			<PublishedPage
 				activeModifiers={[]}
@@ -28,8 +30,6 @@ describe("/guidance/published", () => {
 				searchUrl={{ route: "/guidance/published" } as SearchUrl}
 			/>
 		).container;
-
-		mockDate.set("2020-11-22");
 	});
 
 	it("should match the snapshot", () => {
