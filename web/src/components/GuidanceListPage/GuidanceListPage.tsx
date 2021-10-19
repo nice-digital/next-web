@@ -183,9 +183,15 @@ export const getGuidanceListPage =
 							</p>
 						) : (
 							<>
-								<Table aria-describedby="filter-summary" id="results">
-									{tableBodyRender(documents)}
-								</Table>
+								<div className={styles.tableWrapper}>
+									<Table
+										aria-describedby="filter-summary"
+										id="results"
+										className={styles.table}
+									>
+										{tableBodyRender(documents)}
+									</Table>
+								</div>
 								<CopyToClipboard targetId="results">
 									Copy {pluralize("result", documents.length, true)} to
 									clipboard

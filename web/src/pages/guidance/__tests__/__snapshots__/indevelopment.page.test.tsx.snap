@@ -775,232 +775,236 @@ exports[`/guidance/indevelopment should match the snapshot 1`] = `
               </span>
             </p>
           </div>
-          <table
-            aria-describedby="filter-summary"
-            class="table"
-            id="results"
+          <div
+            class="tableWrapper"
           >
-            <caption
-              class="visually-hidden"
+            <table
+              aria-describedby="filter-summary"
+              class="table"
+              id="results"
             >
-              Guidance, NICE advice and quality standards in development
-            </caption>
-            <thead>
-              <tr>
-                <th
-                  scope="col"
-                >
-                  Title
-                </th>
-                <th
-                  scope="col"
-                >
-                  Type
-                </th>
-                <th
-                  scope="col"
-                >
-                  Expected publication date
-                </th>
-              </tr>
-            </thead>
-            <tbody>
-              <tr>
-                <td>
-                  <a
-                    href="/guidance/indevelopment/gid-ng10145"
+              <caption
+                class="visually-hidden"
+              >
+                Guidance, NICE advice and quality standards in development
+              </caption>
+              <thead>
+                <tr>
+                  <th
+                    scope="col"
                   >
-                    Adults with complex needs: social work interventions including assessment, care management and support
-                  </a>
-                </td>
-                <td>
-                  NICE guideline
-                </td>
-                <td>
-                  <abbr
-                    title="To be confirmed"
+                    Title
+                  </th>
+                  <th
+                    scope="col"
                   >
-                    TBC
-                  </abbr>
-                </td>
-              </tr>
-              <tr>
-                <td>
-                  <a
-                    href="/guidance/indevelopment/gid-ng10156"
+                    Type
+                  </th>
+                  <th
+                    scope="col"
                   >
-                    Advocacy services for adults with health and social care needs
-                  </a>
-                </td>
-                <td>
-                  NICE guideline
-                </td>
-                <td>
-                  <abbr
-                    title="To be confirmed"
-                  >
-                    TBC
-                  </abbr>
-                </td>
-              </tr>
-              <tr>
-                <td>
-                  <a
-                    href="/guidance/indevelopment/gid-ng10052"
-                  >
-                    Assessment, referral and management of Adrenal dysfunction
-                  </a>
-                </td>
-                <td>
-                  NICE guideline
-                </td>
-                <td>
-                  <abbr
-                    title="To be confirmed"
-                  >
-                    TBC
-                  </abbr>
-                </td>
-              </tr>
-              <tr>
-                <td>
-                  <a
-                    href="/guidance/indevelopment/gid-ng10186"
-                  >
-                    Asthma: diagnosis, monitoring and chronic asthma management
-                  </a>
-                </td>
-                <td>
-                  NICE guideline
-                </td>
-                <td>
-                  <abbr
-                    title="To be confirmed"
-                  >
-                    TBC
-                  </abbr>
-                </td>
-              </tr>
-              <tr>
-                <td>
-                  <a
-                    href="/guidance/indevelopment/gid-ng10165"
-                  >
-                    Barrett's oesophagus: medical management, endoscopic treatment, follow up and stage 1 adenocarcinoma
-                  </a>
-                </td>
-                <td>
-                  NICE guideline
-                </td>
-                <td>
-                  <abbr
-                    title="To be confirmed"
-                  >
-                    TBC
-                  </abbr>
-                </td>
-              </tr>
-              <tr>
-                <td>
-                  <a
-                    href="/guidance/indevelopment/gid-ng10168"
-                  >
-                    Blepharitis: antimicrobial prescribing
-                  </a>
-                </td>
-                <td>
-                  Antimicrobial prescribing guideline
-                </td>
-                <td>
-                  <abbr
-                    title="To be confirmed"
-                  >
-                    TBC
-                  </abbr>
-                </td>
-              </tr>
-              <tr>
-                <td>
-                  <a
-                    href="/guidance/indevelopment/gid-ng10178"
-                  >
-                    Cardiovascular disease: risk assessment and reduction, including lipid modification
-                  </a>
-                </td>
-                <td>
-                  NICE guideline
-                </td>
-                <td>
-                  <abbr
-                    title="To be confirmed"
-                  >
-                    TBC
-                  </abbr>
-                </td>
-              </tr>
-              <tr>
-                <td>
-                  <a
-                    href="/guidance/indevelopment/gid-ng10166"
-                  >
-                    Conjunctivitis: antimicrobial prescribing
-                  </a>
-                </td>
-                <td>
-                  Antimicrobial prescribing guideline
-                </td>
-                <td>
-                  <abbr
-                    title="To be confirmed"
-                  >
-                    TBC
-                  </abbr>
-                </td>
-              </tr>
-              <tr>
-                <td>
-                  <a
-                    href="/guidance/indevelopment/gid-ng10243"
-                  >
-                    COVID-19 rapid guideline: managing the long-term effects of COVID-19 (update)
-                  </a>
-                </td>
-                <td>
-                  NICE guideline
-                </td>
-                <td>
-                  <abbr
-                    title="To be confirmed"
-                  >
-                    TBC
-                  </abbr>
-                </td>
-              </tr>
-              <tr>
-                <td>
-                  <a
-                    href="/guidance/indevelopment/gid-cgwave0725"
-                  >
-                    Depression in adults: treatment and management (update)
-                  </a>
-                </td>
-                <td>
-                  NICE guideline
-                </td>
-                <td>
-                  <time
-                    class="date"
-                    data-shortdate="5/12/2022"
-                    datetime="2022-12-05T12:00:00"
-                  >
-                    <span>
-                      5 December 2022
-                    </span>
-                  </time>
-                </td>
-              </tr>
-            </tbody>
-          </table>
+                    Expected publication date
+                  </th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td>
+                    <a
+                      href="/guidance/indevelopment/gid-ng10145"
+                    >
+                      Adults with complex needs: social work interventions including assessment, care management and support
+                    </a>
+                  </td>
+                  <td>
+                    NICE guideline
+                  </td>
+                  <td>
+                    <abbr
+                      title="To be confirmed"
+                    >
+                      TBC
+                    </abbr>
+                  </td>
+                </tr>
+                <tr>
+                  <td>
+                    <a
+                      href="/guidance/indevelopment/gid-ng10156"
+                    >
+                      Advocacy services for adults with health and social care needs
+                    </a>
+                  </td>
+                  <td>
+                    NICE guideline
+                  </td>
+                  <td>
+                    <abbr
+                      title="To be confirmed"
+                    >
+                      TBC
+                    </abbr>
+                  </td>
+                </tr>
+                <tr>
+                  <td>
+                    <a
+                      href="/guidance/indevelopment/gid-ng10052"
+                    >
+                      Assessment, referral and management of Adrenal dysfunction
+                    </a>
+                  </td>
+                  <td>
+                    NICE guideline
+                  </td>
+                  <td>
+                    <abbr
+                      title="To be confirmed"
+                    >
+                      TBC
+                    </abbr>
+                  </td>
+                </tr>
+                <tr>
+                  <td>
+                    <a
+                      href="/guidance/indevelopment/gid-ng10186"
+                    >
+                      Asthma: diagnosis, monitoring and chronic asthma management
+                    </a>
+                  </td>
+                  <td>
+                    NICE guideline
+                  </td>
+                  <td>
+                    <abbr
+                      title="To be confirmed"
+                    >
+                      TBC
+                    </abbr>
+                  </td>
+                </tr>
+                <tr>
+                  <td>
+                    <a
+                      href="/guidance/indevelopment/gid-ng10165"
+                    >
+                      Barrett's oesophagus: medical management, endoscopic treatment, follow up and stage 1 adenocarcinoma
+                    </a>
+                  </td>
+                  <td>
+                    NICE guideline
+                  </td>
+                  <td>
+                    <abbr
+                      title="To be confirmed"
+                    >
+                      TBC
+                    </abbr>
+                  </td>
+                </tr>
+                <tr>
+                  <td>
+                    <a
+                      href="/guidance/indevelopment/gid-ng10168"
+                    >
+                      Blepharitis: antimicrobial prescribing
+                    </a>
+                  </td>
+                  <td>
+                    Antimicrobial prescribing guideline
+                  </td>
+                  <td>
+                    <abbr
+                      title="To be confirmed"
+                    >
+                      TBC
+                    </abbr>
+                  </td>
+                </tr>
+                <tr>
+                  <td>
+                    <a
+                      href="/guidance/indevelopment/gid-ng10178"
+                    >
+                      Cardiovascular disease: risk assessment and reduction, including lipid modification
+                    </a>
+                  </td>
+                  <td>
+                    NICE guideline
+                  </td>
+                  <td>
+                    <abbr
+                      title="To be confirmed"
+                    >
+                      TBC
+                    </abbr>
+                  </td>
+                </tr>
+                <tr>
+                  <td>
+                    <a
+                      href="/guidance/indevelopment/gid-ng10166"
+                    >
+                      Conjunctivitis: antimicrobial prescribing
+                    </a>
+                  </td>
+                  <td>
+                    Antimicrobial prescribing guideline
+                  </td>
+                  <td>
+                    <abbr
+                      title="To be confirmed"
+                    >
+                      TBC
+                    </abbr>
+                  </td>
+                </tr>
+                <tr>
+                  <td>
+                    <a
+                      href="/guidance/indevelopment/gid-ng10243"
+                    >
+                      COVID-19 rapid guideline: managing the long-term effects of COVID-19 (update)
+                    </a>
+                  </td>
+                  <td>
+                    NICE guideline
+                  </td>
+                  <td>
+                    <abbr
+                      title="To be confirmed"
+                    >
+                      TBC
+                    </abbr>
+                  </td>
+                </tr>
+                <tr>
+                  <td>
+                    <a
+                      href="/guidance/indevelopment/gid-cgwave0725"
+                    >
+                      Depression in adults: treatment and management (update)
+                    </a>
+                  </td>
+                  <td>
+                    NICE guideline
+                  </td>
+                  <td>
+                    <time
+                      class="date"
+                      data-shortdate="5/12/2022"
+                      datetime="2022-12-05T12:00:00"
+                    >
+                      <span>
+                        5 December 2022
+                      </span>
+                    </time>
+                  </td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
           <button
             class="btn mt--d ml--0"
             type="button"

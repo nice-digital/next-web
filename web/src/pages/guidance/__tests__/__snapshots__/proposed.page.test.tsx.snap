@@ -478,153 +478,157 @@ exports[`/guidance/proposed should match the snapshot 1`] = `
               </h2>
             </div>
           </div>
-          <table
-            aria-describedby="filter-summary"
-            class="table"
-            id="results"
+          <div
+            class="tableWrapper"
           >
-            <caption
-              class="visually-hidden"
+            <table
+              aria-describedby="filter-summary"
+              class="table"
+              id="results"
             >
-              Proposed guidance and quality standards
-            </caption>
-            <thead>
-              <tr>
-                <th
-                  scope="col"
-                >
-                  Title
-                </th>
-                <th
-                  scope="col"
-                >
-                  Type
-                </th>
-              </tr>
-            </thead>
-            <tbody>
-              <tr>
-                <td>
-                  <a
-                    href="/guidance/proposed/gid-qs10035"
+              <caption
+                class="visually-hidden"
+              >
+                Proposed guidance and quality standards
+              </caption>
+              <thead>
+                <tr>
+                  <th
+                    scope="col"
                   >
-                    Abdominal aortic aneurysm
-                  </a>
-                </td>
-                <td>
-                  Quality standard
-                </td>
-              </tr>
-              <tr>
-                <td>
-                  <a
-                    href="/guidance/proposed/gid-ta10718"
+                    Title
+                  </th>
+                  <th
+                    scope="col"
                   >
-                    Abilify MyCite for treating bipolar disorder 1 or schizophrenia [ID3833]
-                  </a>
-                </td>
-                <td>
-                  Technology appraisal guidance
-                </td>
-              </tr>
-              <tr>
-                <td>
-                  <a
-                    href="/guidance/proposed/gid-qs10036"
-                  >
-                    Acne
-                  </a>
-                </td>
-                <td>
-                  Quality standard
-                </td>
-              </tr>
-              <tr>
-                <td>
-                  <a
-                    href="/guidance/proposed/gid-qs10038"
-                  >
-                    Adrenal dysfunction
-                  </a>
-                </td>
-                <td>
-                  Quality standard
-                </td>
-              </tr>
-              <tr>
-                <td>
-                  <a
-                    href="/guidance/proposed/gid-qs10144"
-                  >
-                    Adults with lifelong or very severe hearing or visual impairment: health, well-being and social care
-                  </a>
-                </td>
-                <td>
-                  Quality standard
-                </td>
-              </tr>
-              <tr>
-                <td>
-                  <a
-                    href="/guidance/proposed/gid-qs10145"
-                  >
-                    Advocacy services for adults with health and social care needs
-                  </a>
-                </td>
-                <td>
-                  Quality standard
-                </td>
-              </tr>
-              <tr>
-                <td>
-                  <a
-                    href="/guidance/proposed/gid-ta10803"
-                  >
-                    Amcenestrant for treating ER-positive, HER2-negative advanced breast cancer after hormonal therapy [ID3919]
-                  </a>
-                </td>
-                <td>
-                  Technology appraisal guidance
-                </td>
-              </tr>
-              <tr>
-                <td>
-                  <a
-                    href="/guidance/proposed/gid-hst10037"
-                  >
-                    Arimoclomol for treating Niemann-Pick disease Type C [ID1312]
-                  </a>
-                </td>
-                <td>
-                  Highly specialised technology
-                </td>
-              </tr>
-              <tr>
-                <td>
-                  <a
-                    href="/guidance/proposed/gid-hst10046"
-                  >
-                    Asfotase alfa for treating paediatric-onset hypophosphatasia (review of HST6) [ID3927]
-                  </a>
-                </td>
-                <td>
-                  Highly specialised technology
-                </td>
-              </tr>
-              <tr>
-                <td>
-                  <a
-                    href="/guidance/proposed/gid-ta10574"
-                  >
-                    Atezolizumab in combination for advanced epithelial ovarian, fallopian tube or primary peritoneal cancer in people who have not received any prior systemic therapy  [ID2700]
-                  </a>
-                </td>
-                <td>
-                  Technology appraisal guidance
-                </td>
-              </tr>
-            </tbody>
-          </table>
+                    Type
+                  </th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td>
+                    <a
+                      href="/guidance/proposed/gid-qs10035"
+                    >
+                      Abdominal aortic aneurysm
+                    </a>
+                  </td>
+                  <td>
+                    Quality standard
+                  </td>
+                </tr>
+                <tr>
+                  <td>
+                    <a
+                      href="/guidance/proposed/gid-ta10718"
+                    >
+                      Abilify MyCite for treating bipolar disorder 1 or schizophrenia [ID3833]
+                    </a>
+                  </td>
+                  <td>
+                    Technology appraisal guidance
+                  </td>
+                </tr>
+                <tr>
+                  <td>
+                    <a
+                      href="/guidance/proposed/gid-qs10036"
+                    >
+                      Acne
+                    </a>
+                  </td>
+                  <td>
+                    Quality standard
+                  </td>
+                </tr>
+                <tr>
+                  <td>
+                    <a
+                      href="/guidance/proposed/gid-qs10038"
+                    >
+                      Adrenal dysfunction
+                    </a>
+                  </td>
+                  <td>
+                    Quality standard
+                  </td>
+                </tr>
+                <tr>
+                  <td>
+                    <a
+                      href="/guidance/proposed/gid-qs10144"
+                    >
+                      Adults with lifelong or very severe hearing or visual impairment: health, well-being and social care
+                    </a>
+                  </td>
+                  <td>
+                    Quality standard
+                  </td>
+                </tr>
+                <tr>
+                  <td>
+                    <a
+                      href="/guidance/proposed/gid-qs10145"
+                    >
+                      Advocacy services for adults with health and social care needs
+                    </a>
+                  </td>
+                  <td>
+                    Quality standard
+                  </td>
+                </tr>
+                <tr>
+                  <td>
+                    <a
+                      href="/guidance/proposed/gid-ta10803"
+                    >
+                      Amcenestrant for treating ER-positive, HER2-negative advanced breast cancer after hormonal therapy [ID3919]
+                    </a>
+                  </td>
+                  <td>
+                    Technology appraisal guidance
+                  </td>
+                </tr>
+                <tr>
+                  <td>
+                    <a
+                      href="/guidance/proposed/gid-hst10037"
+                    >
+                      Arimoclomol for treating Niemann-Pick disease Type C [ID1312]
+                    </a>
+                  </td>
+                  <td>
+                    Highly specialised technology
+                  </td>
+                </tr>
+                <tr>
+                  <td>
+                    <a
+                      href="/guidance/proposed/gid-hst10046"
+                    >
+                      Asfotase alfa for treating paediatric-onset hypophosphatasia (review of HST6) [ID3927]
+                    </a>
+                  </td>
+                  <td>
+                    Highly specialised technology
+                  </td>
+                </tr>
+                <tr>
+                  <td>
+                    <a
+                      href="/guidance/proposed/gid-ta10574"
+                    >
+                      Atezolizumab in combination for advanced epithelial ovarian, fallopian tube or primary peritoneal cancer in people who have not received any prior systemic therapy  [ID2700]
+                    </a>
+                  </td>
+                  <td>
+                    Technology appraisal guidance
+                  </td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
           <button
             class="btn mt--d ml--0"
             type="button"

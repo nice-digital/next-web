@@ -578,303 +578,307 @@ exports[`/guidance/inconsultation should match the snapshot 1`] = `
               </span>
             </p>
           </div>
-          <table
-            aria-describedby="filter-summary"
-            class="table"
-            id="results"
+          <div
+            class="tableWrapper"
           >
-            <caption
-              class="visually-hidden"
+            <table
+              aria-describedby="filter-summary"
+              class="table"
+              id="results"
             >
-              Guidance and quality standards in consultation
-            </caption>
-            <thead>
-              <tr>
-                <th
-                  scope="col"
-                >
-                  Title
-                </th>
-                <th
-                  scope="col"
-                >
-                  Consultation
-                </th>
-                <th
-                  scope="col"
-                >
-                  Type
-                </th>
-                <th
-                  scope="col"
-                >
-                  Consultation end date
-                </th>
-              </tr>
-            </thead>
-            <tbody>
-              <tr>
-                <td>
-                  <a
-                    href="/guidance/gid-ng10160/consultation/html-content"
+              <caption
+                class="visually-hidden"
+              >
+                Guidance and quality standards in consultation
+              </caption>
+              <thead>
+                <tr>
+                  <th
+                    scope="col"
                   >
-                    Type 2 diabetes in adults: management (update)
-                  </a>
-                </td>
-                <td>
-                  Draft guidance consultation
-                </td>
-                <td>
-                  NICE guideline
-                </td>
-                <td>
-                  <time
-                    class="date"
-                    data-shortdate="14/10/2021"
-                    datetime="2021-10-14T05:00:00"
+                    Title
+                  </th>
+                  <th
+                    scope="col"
                   >
-                    <span>
-                      14 October 2021
-                    </span>
-                  </time>
-                </td>
-              </tr>
-              <tr>
-                <td>
-                  <a
-                    href="/guidance/gid-ipg10181/consultation/html-content"
+                    Consultation
+                  </th>
+                  <th
+                    scope="col"
                   >
-                    Microwave ablation for treating primary lung cancer and metastases in the lung
-                  </a>
-                </td>
-                <td>
-                  Interventional procedure consultation
-                </td>
-                <td>
-                  Interventional procedures guidance
-                </td>
-                <td>
-                  <time
-                    class="date"
-                    data-shortdate="18/10/2021"
-                    datetime="2021-10-18T05:00:00"
+                    Type
+                  </th>
+                  <th
+                    scope="col"
                   >
-                    <span>
-                      18 October 2021
-                    </span>
-                  </time>
-                </td>
-              </tr>
-              <tr>
-                <td>
-                  <a
-                    href="/guidance/gid-ipg10179/consultation/html-content"
-                  >
-                    Stereotactic radiosurgery for trigeminal neuralgia
-                  </a>
-                </td>
-                <td>
-                  Interventional procedure consultation
-                </td>
-                <td>
-                  Interventional procedures guidance
-                </td>
-                <td>
-                  <time
-                    class="date"
-                    data-shortdate="18/10/2021"
-                    datetime="2021-10-18T05:00:00"
-                  >
-                    <span>
-                      18 October 2021
-                    </span>
-                  </time>
-                </td>
-              </tr>
-              <tr>
-                <td>
-                  <a
-                    href="/guidance/gid-ipg10175/consultation/html-content"
-                  >
-                    Transcutaneous electrical stimulation of the supraorbital nerve for treating and preventing migraine
-                  </a>
-                </td>
-                <td>
-                  Interventional procedure consultation
-                </td>
-                <td>
-                  Interventional procedures guidance
-                </td>
-                <td>
-                  <time
-                    class="date"
-                    data-shortdate="18/10/2021"
-                    datetime="2021-10-18T05:00:00"
-                  >
-                    <span>
-                      18 October 2021
-                    </span>
-                  </time>
-                </td>
-              </tr>
-              <tr>
-                <td>
-                  <a
-                    href="/guidance/gid-ta10478/consultation/html-content-3"
-                  >
-                    Venetoclax with a hypomethylating agent for untreated acute myeloid leukaemia when intensive chemotherapy is unsuitable [ID1564]
-                  </a>
-                </td>
-                <td>
-                  Appraisal consultation
-                </td>
-                <td>
-                  Technology appraisal guidance
-                </td>
-                <td>
-                  <time
-                    class="date"
-                    data-shortdate="25/10/2021"
-                    datetime="2021-10-25T05:00:00"
-                  >
-                    <span>
-                      25 October 2021
-                    </span>
-                  </time>
-                </td>
-              </tr>
-              <tr>
-                <td>
-                  <a
-                    href="/guidance/gid-ta10556/consultation/html-content-2"
-                  >
-                    Ponesimod for treating relapsing multiple sclerosis [ID1393]
-                  </a>
-                </td>
-                <td>
-                  Appraisal consultation
-                </td>
-                <td>
-                  Technology appraisal guidance
-                </td>
-                <td>
-                  <time
-                    class="date"
-                    data-shortdate="26/10/2021"
-                    datetime="2021-10-26T05:00:00"
-                  >
-                    <span>
-                      26 October 2021
-                    </span>
-                  </time>
-                </td>
-              </tr>
-              <tr>
-                <td>
-                  <a
-                    href="/guidance/gid-ng10140/consultation/html-content"
-                  >
-                    Mental wellbeing at work
-                  </a>
-                </td>
-                <td>
-                  Draft guidance consultation
-                </td>
-                <td>
-                  NICE guideline
-                </td>
-                <td>
-                  <time
-                    class="date"
-                    data-shortdate="29/10/2021"
-                    datetime="2021-10-29T05:00:00"
-                  >
-                    <span>
-                      29 October 2021
-                    </span>
-                  </time>
-                </td>
-              </tr>
-              <tr>
-                <td>
-                  <a
-                    href="/guidance/gid-ng10191/consultation/html-content"
-                  >
-                    Maternal and child nutrition
-                  </a>
-                </td>
-                <td>
-                  Draft scope consultation
-                </td>
-                <td>
-                  NICE guideline
-                </td>
-                <td>
-                  <time
-                    class="date"
-                    data-shortdate="29/10/2021"
-                    datetime="2021-10-29T05:00:00"
-                  >
-                    <span>
-                      29 October 2021
-                    </span>
-                  </time>
-                </td>
-              </tr>
-              <tr>
-                <td>
-                  <a
-                    href="/guidance/gid-ipg10163/consultation/html-content"
-                  >
-                    Intramedullary distraction for upper limb lengthening
-                  </a>
-                </td>
-                <td>
-                  Interventional procedure consultation
-                </td>
-                <td>
-                  Interventional procedures guidance
-                </td>
-                <td>
-                  <time
-                    class="date"
-                    data-shortdate="2/11/2021"
-                    datetime="2021-11-02T05:00:00"
-                  >
-                    <span>
-                      2 November 2021
-                    </span>
-                  </time>
-                </td>
-              </tr>
-              <tr>
-                <td>
-                  <a
-                    href="/guidance/gid-ipg10189/consultation/html-content"
-                  >
-                    Percutaneous insertion of a cystic duct stent after cholecystostomy for acute calculous cholecystitis
-                  </a>
-                </td>
-                <td>
-                  Interventional procedure consultation
-                </td>
-                <td>
-                  Interventional procedures guidance
-                </td>
-                <td>
-                  <time
-                    class="date"
-                    data-shortdate="2/11/2021"
-                    datetime="2021-11-02T05:00:00"
-                  >
-                    <span>
-                      2 November 2021
-                    </span>
-                  </time>
-                </td>
-              </tr>
-            </tbody>
-          </table>
+                    Consultation end date
+                  </th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td>
+                    <a
+                      href="/guidance/gid-ng10160/consultation/html-content"
+                    >
+                      Type 2 diabetes in adults: management (update)
+                    </a>
+                  </td>
+                  <td>
+                    Draft guidance consultation
+                  </td>
+                  <td>
+                    NICE guideline
+                  </td>
+                  <td>
+                    <time
+                      class="date"
+                      data-shortdate="14/10/2021"
+                      datetime="2021-10-14T05:00:00"
+                    >
+                      <span>
+                        14 October 2021
+                      </span>
+                    </time>
+                  </td>
+                </tr>
+                <tr>
+                  <td>
+                    <a
+                      href="/guidance/gid-ipg10181/consultation/html-content"
+                    >
+                      Microwave ablation for treating primary lung cancer and metastases in the lung
+                    </a>
+                  </td>
+                  <td>
+                    Interventional procedure consultation
+                  </td>
+                  <td>
+                    Interventional procedures guidance
+                  </td>
+                  <td>
+                    <time
+                      class="date"
+                      data-shortdate="18/10/2021"
+                      datetime="2021-10-18T05:00:00"
+                    >
+                      <span>
+                        18 October 2021
+                      </span>
+                    </time>
+                  </td>
+                </tr>
+                <tr>
+                  <td>
+                    <a
+                      href="/guidance/gid-ipg10179/consultation/html-content"
+                    >
+                      Stereotactic radiosurgery for trigeminal neuralgia
+                    </a>
+                  </td>
+                  <td>
+                    Interventional procedure consultation
+                  </td>
+                  <td>
+                    Interventional procedures guidance
+                  </td>
+                  <td>
+                    <time
+                      class="date"
+                      data-shortdate="18/10/2021"
+                      datetime="2021-10-18T05:00:00"
+                    >
+                      <span>
+                        18 October 2021
+                      </span>
+                    </time>
+                  </td>
+                </tr>
+                <tr>
+                  <td>
+                    <a
+                      href="/guidance/gid-ipg10175/consultation/html-content"
+                    >
+                      Transcutaneous electrical stimulation of the supraorbital nerve for treating and preventing migraine
+                    </a>
+                  </td>
+                  <td>
+                    Interventional procedure consultation
+                  </td>
+                  <td>
+                    Interventional procedures guidance
+                  </td>
+                  <td>
+                    <time
+                      class="date"
+                      data-shortdate="18/10/2021"
+                      datetime="2021-10-18T05:00:00"
+                    >
+                      <span>
+                        18 October 2021
+                      </span>
+                    </time>
+                  </td>
+                </tr>
+                <tr>
+                  <td>
+                    <a
+                      href="/guidance/gid-ta10478/consultation/html-content-3"
+                    >
+                      Venetoclax with a hypomethylating agent for untreated acute myeloid leukaemia when intensive chemotherapy is unsuitable [ID1564]
+                    </a>
+                  </td>
+                  <td>
+                    Appraisal consultation
+                  </td>
+                  <td>
+                    Technology appraisal guidance
+                  </td>
+                  <td>
+                    <time
+                      class="date"
+                      data-shortdate="25/10/2021"
+                      datetime="2021-10-25T05:00:00"
+                    >
+                      <span>
+                        25 October 2021
+                      </span>
+                    </time>
+                  </td>
+                </tr>
+                <tr>
+                  <td>
+                    <a
+                      href="/guidance/gid-ta10556/consultation/html-content-2"
+                    >
+                      Ponesimod for treating relapsing multiple sclerosis [ID1393]
+                    </a>
+                  </td>
+                  <td>
+                    Appraisal consultation
+                  </td>
+                  <td>
+                    Technology appraisal guidance
+                  </td>
+                  <td>
+                    <time
+                      class="date"
+                      data-shortdate="26/10/2021"
+                      datetime="2021-10-26T05:00:00"
+                    >
+                      <span>
+                        26 October 2021
+                      </span>
+                    </time>
+                  </td>
+                </tr>
+                <tr>
+                  <td>
+                    <a
+                      href="/guidance/gid-ng10140/consultation/html-content"
+                    >
+                      Mental wellbeing at work
+                    </a>
+                  </td>
+                  <td>
+                    Draft guidance consultation
+                  </td>
+                  <td>
+                    NICE guideline
+                  </td>
+                  <td>
+                    <time
+                      class="date"
+                      data-shortdate="29/10/2021"
+                      datetime="2021-10-29T05:00:00"
+                    >
+                      <span>
+                        29 October 2021
+                      </span>
+                    </time>
+                  </td>
+                </tr>
+                <tr>
+                  <td>
+                    <a
+                      href="/guidance/gid-ng10191/consultation/html-content"
+                    >
+                      Maternal and child nutrition
+                    </a>
+                  </td>
+                  <td>
+                    Draft scope consultation
+                  </td>
+                  <td>
+                    NICE guideline
+                  </td>
+                  <td>
+                    <time
+                      class="date"
+                      data-shortdate="29/10/2021"
+                      datetime="2021-10-29T05:00:00"
+                    >
+                      <span>
+                        29 October 2021
+                      </span>
+                    </time>
+                  </td>
+                </tr>
+                <tr>
+                  <td>
+                    <a
+                      href="/guidance/gid-ipg10163/consultation/html-content"
+                    >
+                      Intramedullary distraction for upper limb lengthening
+                    </a>
+                  </td>
+                  <td>
+                    Interventional procedure consultation
+                  </td>
+                  <td>
+                    Interventional procedures guidance
+                  </td>
+                  <td>
+                    <time
+                      class="date"
+                      data-shortdate="2/11/2021"
+                      datetime="2021-11-02T05:00:00"
+                    >
+                      <span>
+                        2 November 2021
+                      </span>
+                    </time>
+                  </td>
+                </tr>
+                <tr>
+                  <td>
+                    <a
+                      href="/guidance/gid-ipg10189/consultation/html-content"
+                    >
+                      Percutaneous insertion of a cystic duct stent after cholecystostomy for acute calculous cholecystitis
+                    </a>
+                  </td>
+                  <td>
+                    Interventional procedure consultation
+                  </td>
+                  <td>
+                    Interventional procedures guidance
+                  </td>
+                  <td>
+                    <time
+                      class="date"
+                      data-shortdate="2/11/2021"
+                      datetime="2021-11-02T05:00:00"
+                    >
+                      <span>
+                        2 November 2021
+                      </span>
+                    </time>
+                  </td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
           <button
             class="btn mt--d ml--0"
             type="button"

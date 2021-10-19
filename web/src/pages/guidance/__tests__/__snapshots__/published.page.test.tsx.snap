@@ -843,383 +843,387 @@ exports[`/guidance/published should match the snapshot 1`] = `
               </span>
             </p>
           </div>
-          <table
-            aria-describedby="filter-summary"
-            class="table"
-            id="results"
+          <div
+            class="tableWrapper"
           >
-            <caption
-              class="visually-hidden"
+            <table
+              aria-describedby="filter-summary"
+              class="table"
+              id="results"
             >
-              Published guidance, NICE advice and quality standards
-            </caption>
-            <thead>
-              <tr>
-                <th
-                  scope="col"
-                >
-                  Title
-                </th>
-                <th
-                  scope="col"
-                >
-                  Reference number
-                </th>
-                <th
-                  scope="col"
-                >
-                  Published
-                </th>
-                <th
-                  scope="col"
-                >
-                  Last updated
-                </th>
-              </tr>
-            </thead>
-            <tbody>
-              <tr>
-                <td>
-                  <a
-                    href="/guidance/cg181"
+              <caption
+                class="visually-hidden"
+              >
+                Published guidance, NICE advice and quality standards
+              </caption>
+              <thead>
+                <tr>
+                  <th
+                    scope="col"
                   >
-                    Cardiovascular disease: risk assessment and reduction, including lipid modification
-                  </a>
-                </td>
-                <td>
-                  CG181
-                </td>
-                <td>
-                  <time
-                    class="date"
-                    data-shortdate="18/7/2014"
-                    datetime="2014-07-18T12:00:00"
+                    Title
+                  </th>
+                  <th
+                    scope="col"
                   >
-                    <span>
-                      18 July 2014
-                    </span>
-                  </time>
-                </td>
-                <td>
-                  <time
-                    class="date"
-                    data-shortdate="6/10/2021"
-                    datetime="2021-10-06T12:00:00"
+                    Reference number
+                  </th>
+                  <th
+                    scope="col"
                   >
-                    <span>
-                      6 October 2021
-                    </span>
-                  </time>
-                </td>
-              </tr>
-              <tr>
-                <td>
-                  <a
-                    href="/guidance/ng191"
+                    Published
+                  </th>
+                  <th
+                    scope="col"
                   >
-                    COVID-19 rapid guideline: managing COVID-19
-                  </a>
-                </td>
-                <td>
-                  NG191
-                </td>
-                <td>
-                  <time
-                    class="date"
-                    data-shortdate="23/3/2021"
-                    datetime="2021-03-23T12:00:00"
-                  >
-                    <span>
-                      23 March 2021
-                    </span>
-                  </time>
-                </td>
-                <td>
-                  <time
-                    class="date"
-                    data-shortdate="4/10/2021"
-                    datetime="2021-10-04T12:00:00"
-                  >
-                    <span>
-                      4 October 2021
-                    </span>
-                  </time>
-                </td>
-              </tr>
-              <tr>
-                <td>
-                  <a
-                    href="/guidance/ng203"
-                  >
-                    Chronic kidney disease: assessment and management
-                  </a>
-                </td>
-                <td>
-                  NG203
-                </td>
-                <td>
-                  <time
-                    class="date"
-                    data-shortdate="25/8/2021"
-                    datetime="2021-08-25T12:00:00"
-                  >
-                    <span>
-                      25 August 2021
-                    </span>
-                  </time>
-                </td>
-                <td>
-                  <time
-                    class="date"
-                    data-shortdate="25/8/2021"
-                    datetime="2021-08-25T12:00:00"
-                  >
-                    <span>
-                      25 August 2021
-                    </span>
-                  </time>
-                </td>
-              </tr>
-              <tr>
-                <td>
-                  <a
-                    href="/guidance/ng204"
-                  >
-                    Babies, children and young people's experience of healthcare
-                  </a>
-                </td>
-                <td>
-                  NG204
-                </td>
-                <td>
-                  <time
-                    class="date"
-                    data-shortdate="25/8/2021"
-                    datetime="2021-08-25T12:00:00"
-                  >
-                    <span>
-                      25 August 2021
-                    </span>
-                  </time>
-                </td>
-                <td>
-                  <time
-                    class="date"
-                    data-shortdate="25/8/2021"
-                    datetime="2021-08-25T12:00:00"
-                  >
-                    <span>
-                      25 August 2021
-                    </span>
-                  </time>
-                </td>
-              </tr>
-              <tr>
-                <td>
-                  <a
-                    href="/guidance/ng202"
-                  >
-                    Obstructive sleep apnoea/hypopnoea syndrome and obesity hypoventilation syndrome in over 16s
-                  </a>
-                </td>
-                <td>
-                  NG202
-                </td>
-                <td>
-                  <time
-                    class="date"
-                    data-shortdate="20/8/2021"
-                    datetime="2021-08-20T12:00:00"
-                  >
-                    <span>
-                      20 August 2021
-                    </span>
-                  </time>
-                </td>
-                <td>
-                  <time
-                    class="date"
-                    data-shortdate="20/8/2021"
-                    datetime="2021-08-20T12:00:00"
-                  >
-                    <span>
-                      20 August 2021
-                    </span>
-                  </time>
-                </td>
-              </tr>
-              <tr>
-                <td>
-                  <a
-                    href="/guidance/ng201"
-                  >
-                    Antenatal care
-                  </a>
-                </td>
-                <td>
-                  NG201
-                </td>
-                <td>
-                  <time
-                    class="date"
-                    data-shortdate="19/8/2021"
-                    datetime="2021-08-19T12:00:00"
-                  >
-                    <span>
-                      19 August 2021
-                    </span>
-                  </time>
-                </td>
-                <td>
-                  <time
-                    class="date"
-                    data-shortdate="19/8/2021"
-                    datetime="2021-08-19T12:00:00"
-                  >
-                    <span>
-                      19 August 2021
-                    </span>
-                  </time>
-                </td>
-              </tr>
-              <tr>
-                <td>
-                  <a
-                    href="/guidance/ng9"
-                  >
-                    Bronchiolitis in children: diagnosis and management
-                  </a>
-                </td>
-                <td>
-                  NG9
-                </td>
-                <td>
-                  <time
-                    class="date"
-                    data-shortdate="1/6/2015"
-                    datetime="2015-06-01T12:00:00"
-                  >
-                    <span>
-                      1 June 2015
-                    </span>
-                  </time>
-                </td>
-                <td>
-                  <time
-                    class="date"
-                    data-shortdate="9/8/2021"
-                    datetime="2021-08-09T12:00:00"
-                  >
-                    <span>
-                      9 August 2021
-                    </span>
-                  </time>
-                </td>
-              </tr>
-              <tr>
-                <td>
-                  <a
-                    href="/guidance/ng200"
-                  >
-                    COVID-19 rapid guideline: vaccine-induced immune thrombocytopenia and thrombosis (VITT)
-                  </a>
-                </td>
-                <td>
-                  NG200
-                </td>
-                <td>
-                  <time
-                    class="date"
-                    data-shortdate="29/7/2021"
-                    datetime="2021-07-29T12:00:00"
-                  >
-                    <span>
-                      29 July 2021
-                    </span>
-                  </time>
-                </td>
-                <td>
-                  <time
-                    class="date"
-                    data-shortdate="29/7/2021"
-                    datetime="2021-07-29T12:00:00"
-                  >
-                    <span>
-                      29 July 2021
-                    </span>
-                  </time>
-                </td>
-              </tr>
-              <tr>
-                <td>
-                  <a
-                    href="/guidance/ng199"
-                  >
-                    Clostridioides difficile infection: antimicrobial prescribing
-                  </a>
-                </td>
-                <td>
-                  NG199
-                </td>
-                <td>
-                  <time
-                    class="date"
-                    data-shortdate="23/7/2021"
-                    datetime="2021-07-23T12:00:00"
-                  >
-                    <span>
-                      23 July 2021
-                    </span>
-                  </time>
-                </td>
-                <td>
-                  <time
-                    class="date"
-                    data-shortdate="23/7/2021"
-                    datetime="2021-07-23T12:00:00"
-                  >
-                    <span>
-                      23 July 2021
-                    </span>
-                  </time>
-                </td>
-              </tr>
-              <tr>
-                <td>
-                  <a
-                    href="/guidance/ng164"
-                  >
-                    COVID-19 rapid guideline: haematopoietic stem cell transplantation
-                  </a>
-                </td>
-                <td>
-                  NG164
-                </td>
-                <td>
-                  <time
-                    class="date"
-                    data-shortdate="1/4/2020"
-                    datetime="2020-04-01T12:00:00"
-                  >
-                    <span>
-                      1 April 2020
-                    </span>
-                  </time>
-                </td>
-                <td>
-                  <time
-                    class="date"
-                    data-shortdate="22/7/2021"
-                    datetime="2021-07-22T12:00:00"
-                  >
-                    <span>
-                      22 July 2021
-                    </span>
-                  </time>
-                </td>
-              </tr>
-            </tbody>
-          </table>
+                    Last updated
+                  </th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td>
+                    <a
+                      href="/guidance/cg181"
+                    >
+                      Cardiovascular disease: risk assessment and reduction, including lipid modification
+                    </a>
+                  </td>
+                  <td>
+                    CG181
+                  </td>
+                  <td>
+                    <time
+                      class="date"
+                      data-shortdate="18/7/2014"
+                      datetime="2014-07-18T12:00:00"
+                    >
+                      <span>
+                        18 July 2014
+                      </span>
+                    </time>
+                  </td>
+                  <td>
+                    <time
+                      class="date"
+                      data-shortdate="6/10/2021"
+                      datetime="2021-10-06T12:00:00"
+                    >
+                      <span>
+                        6 October 2021
+                      </span>
+                    </time>
+                  </td>
+                </tr>
+                <tr>
+                  <td>
+                    <a
+                      href="/guidance/ng191"
+                    >
+                      COVID-19 rapid guideline: managing COVID-19
+                    </a>
+                  </td>
+                  <td>
+                    NG191
+                  </td>
+                  <td>
+                    <time
+                      class="date"
+                      data-shortdate="23/3/2021"
+                      datetime="2021-03-23T12:00:00"
+                    >
+                      <span>
+                        23 March 2021
+                      </span>
+                    </time>
+                  </td>
+                  <td>
+                    <time
+                      class="date"
+                      data-shortdate="4/10/2021"
+                      datetime="2021-10-04T12:00:00"
+                    >
+                      <span>
+                        4 October 2021
+                      </span>
+                    </time>
+                  </td>
+                </tr>
+                <tr>
+                  <td>
+                    <a
+                      href="/guidance/ng203"
+                    >
+                      Chronic kidney disease: assessment and management
+                    </a>
+                  </td>
+                  <td>
+                    NG203
+                  </td>
+                  <td>
+                    <time
+                      class="date"
+                      data-shortdate="25/8/2021"
+                      datetime="2021-08-25T12:00:00"
+                    >
+                      <span>
+                        25 August 2021
+                      </span>
+                    </time>
+                  </td>
+                  <td>
+                    <time
+                      class="date"
+                      data-shortdate="25/8/2021"
+                      datetime="2021-08-25T12:00:00"
+                    >
+                      <span>
+                        25 August 2021
+                      </span>
+                    </time>
+                  </td>
+                </tr>
+                <tr>
+                  <td>
+                    <a
+                      href="/guidance/ng204"
+                    >
+                      Babies, children and young people's experience of healthcare
+                    </a>
+                  </td>
+                  <td>
+                    NG204
+                  </td>
+                  <td>
+                    <time
+                      class="date"
+                      data-shortdate="25/8/2021"
+                      datetime="2021-08-25T12:00:00"
+                    >
+                      <span>
+                        25 August 2021
+                      </span>
+                    </time>
+                  </td>
+                  <td>
+                    <time
+                      class="date"
+                      data-shortdate="25/8/2021"
+                      datetime="2021-08-25T12:00:00"
+                    >
+                      <span>
+                        25 August 2021
+                      </span>
+                    </time>
+                  </td>
+                </tr>
+                <tr>
+                  <td>
+                    <a
+                      href="/guidance/ng202"
+                    >
+                      Obstructive sleep apnoea/hypopnoea syndrome and obesity hypoventilation syndrome in over 16s
+                    </a>
+                  </td>
+                  <td>
+                    NG202
+                  </td>
+                  <td>
+                    <time
+                      class="date"
+                      data-shortdate="20/8/2021"
+                      datetime="2021-08-20T12:00:00"
+                    >
+                      <span>
+                        20 August 2021
+                      </span>
+                    </time>
+                  </td>
+                  <td>
+                    <time
+                      class="date"
+                      data-shortdate="20/8/2021"
+                      datetime="2021-08-20T12:00:00"
+                    >
+                      <span>
+                        20 August 2021
+                      </span>
+                    </time>
+                  </td>
+                </tr>
+                <tr>
+                  <td>
+                    <a
+                      href="/guidance/ng201"
+                    >
+                      Antenatal care
+                    </a>
+                  </td>
+                  <td>
+                    NG201
+                  </td>
+                  <td>
+                    <time
+                      class="date"
+                      data-shortdate="19/8/2021"
+                      datetime="2021-08-19T12:00:00"
+                    >
+                      <span>
+                        19 August 2021
+                      </span>
+                    </time>
+                  </td>
+                  <td>
+                    <time
+                      class="date"
+                      data-shortdate="19/8/2021"
+                      datetime="2021-08-19T12:00:00"
+                    >
+                      <span>
+                        19 August 2021
+                      </span>
+                    </time>
+                  </td>
+                </tr>
+                <tr>
+                  <td>
+                    <a
+                      href="/guidance/ng9"
+                    >
+                      Bronchiolitis in children: diagnosis and management
+                    </a>
+                  </td>
+                  <td>
+                    NG9
+                  </td>
+                  <td>
+                    <time
+                      class="date"
+                      data-shortdate="1/6/2015"
+                      datetime="2015-06-01T12:00:00"
+                    >
+                      <span>
+                        1 June 2015
+                      </span>
+                    </time>
+                  </td>
+                  <td>
+                    <time
+                      class="date"
+                      data-shortdate="9/8/2021"
+                      datetime="2021-08-09T12:00:00"
+                    >
+                      <span>
+                        9 August 2021
+                      </span>
+                    </time>
+                  </td>
+                </tr>
+                <tr>
+                  <td>
+                    <a
+                      href="/guidance/ng200"
+                    >
+                      COVID-19 rapid guideline: vaccine-induced immune thrombocytopenia and thrombosis (VITT)
+                    </a>
+                  </td>
+                  <td>
+                    NG200
+                  </td>
+                  <td>
+                    <time
+                      class="date"
+                      data-shortdate="29/7/2021"
+                      datetime="2021-07-29T12:00:00"
+                    >
+                      <span>
+                        29 July 2021
+                      </span>
+                    </time>
+                  </td>
+                  <td>
+                    <time
+                      class="date"
+                      data-shortdate="29/7/2021"
+                      datetime="2021-07-29T12:00:00"
+                    >
+                      <span>
+                        29 July 2021
+                      </span>
+                    </time>
+                  </td>
+                </tr>
+                <tr>
+                  <td>
+                    <a
+                      href="/guidance/ng199"
+                    >
+                      Clostridioides difficile infection: antimicrobial prescribing
+                    </a>
+                  </td>
+                  <td>
+                    NG199
+                  </td>
+                  <td>
+                    <time
+                      class="date"
+                      data-shortdate="23/7/2021"
+                      datetime="2021-07-23T12:00:00"
+                    >
+                      <span>
+                        23 July 2021
+                      </span>
+                    </time>
+                  </td>
+                  <td>
+                    <time
+                      class="date"
+                      data-shortdate="23/7/2021"
+                      datetime="2021-07-23T12:00:00"
+                    >
+                      <span>
+                        23 July 2021
+                      </span>
+                    </time>
+                  </td>
+                </tr>
+                <tr>
+                  <td>
+                    <a
+                      href="/guidance/ng164"
+                    >
+                      COVID-19 rapid guideline: haematopoietic stem cell transplantation
+                    </a>
+                  </td>
+                  <td>
+                    NG164
+                  </td>
+                  <td>
+                    <time
+                      class="date"
+                      data-shortdate="1/4/2020"
+                      datetime="2020-04-01T12:00:00"
+                    >
+                      <span>
+                        1 April 2020
+                      </span>
+                    </time>
+                  </td>
+                  <td>
+                    <time
+                      class="date"
+                      data-shortdate="22/7/2021"
+                      datetime="2021-07-22T12:00:00"
+                    >
+                      <span>
+                        22 July 2021
+                      </span>
+                    </time>
+                  </td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
           <button
             class="btn mt--d ml--0"
             type="button"
