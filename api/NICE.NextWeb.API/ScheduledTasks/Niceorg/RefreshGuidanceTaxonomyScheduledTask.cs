@@ -1,16 +1,11 @@
 using System;
-using System.Collections.Generic;
-using System.Linq;
 using System.Net.Http;
-using System.Security.Policy;
 using System.Threading;
 using System.Threading.Tasks;
-using Microsoft.Extensions.Configuration;
 using NICE.NextWeb.API.ScheduledTasks.Scheduler;
-using Ocelot.Middleware;
 using Serilog;
 
-namespace NICE.NextWeb.API.ScheduledTasks
+namespace NICE.NextWeb.API.ScheduledTasks.Niceorg
 {
     public class RefreshGuidanceTaxonomyScheduledTask : IScheduledTask
     {

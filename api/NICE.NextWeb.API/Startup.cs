@@ -10,6 +10,7 @@ using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using NICE.NextWeb.API.CacheManager;
 using NICE.NextWeb.API.ScheduledTasks;
+using NICE.NextWeb.API.ScheduledTasks.Niceorg;
 using NICE.NextWeb.API.ScheduledTasks.Scheduler;
 using Ocelot.DependencyInjection;
 using Ocelot.Middleware;

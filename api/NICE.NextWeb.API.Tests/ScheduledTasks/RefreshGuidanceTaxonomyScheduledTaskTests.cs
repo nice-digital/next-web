@@ -8,6 +8,7 @@ using Microsoft.Extensions.Configuration;
 using Moq;
 using Moq.Protected;
 using NICE.NextWeb.API.ScheduledTasks;
+using NICE.NextWeb.API.ScheduledTasks.Niceorg;
 using NICE.NextWeb.API.ScheduledTasks.Scheduler;
 using Xunit;
 
