@@ -1,6 +1,5 @@
 import { useRouter } from "next/router";
-import { FC, useCallback, useEffect } from "react";
-import { forEachChild } from "typescript";
+import { FC } from "react";
 
 import { EnhancedPagination } from "@nice-digital/nds-enhanced-pagination";
 import type { SearchResultsSuccess } from "@nice-digital/search-client";
