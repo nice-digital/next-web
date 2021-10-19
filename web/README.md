@@ -135,7 +135,7 @@ We will set up VS Code debug integration, but in the mean time use the command l
    1. Run 'npm: Install Dependencies' and then 'All' from the VS Code command palette (_Ctrl+Shift+P_)
    2. Or run `npm ci` on the command line in the root and each sub folder
 5. run `npm run dev` from the _web_ folder
-6. open http://localhost:3000 in a browser
+6. open http://localhost:4000 in a browser
 
 > This _web_ folder uses dev dependencies from the root folder, because of the way that [NodeJS traverses up folders to find modules](https://nodejs.org/api/modules.html#modules_loading_from_node_modules_folders).
 
