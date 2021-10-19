@@ -24,7 +24,7 @@
     "extends @nice-digital/browserslist-config"
   ],
   "dependencies": {
-    "@nice-digital/design-system": "^1.2.26-alpha.0",
+    "@nice-digital/design-system": "^1.2.27-alpha.0",
     "@nice-digital/global-nav": "github:nice-digital/global-nav",
     "@nice-digital/icons": "^2.2.7-alpha.0",
     "@nice-digital/nds-action-banner": "^1.2.12-alpha.0",
@@ -36,7 +36,7 @@
     "@nice-digital/nds-checkbox": "^1.2.11-alpha.0",
     "@nice-digital/nds-container": "^1.0.7-alpha.0",
     "@nice-digital/nds-core": "^1.2.11-alpha.0",
-    "@nice-digital/nds-enhanced-pagination": "^1.0.2-alpha.0",
+    "@nice-digital/nds-enhanced-pagination": "^1.0.3-alpha.0",
     "@nice-digital/nds-filters": "^1.2.18-alpha.0",
     "@nice-digital/nds-form-group": "^1.2.11-alpha.0",
     "@nice-digital/nds-forms": "^1.2.6-alpha.0",
