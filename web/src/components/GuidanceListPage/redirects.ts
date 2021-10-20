@@ -19,7 +19,7 @@ const areaOfInterestQueryMappings = {
 };
 
 const guidanceTypeQueryMappings = {
-	apg: "Antimicrobial+prescribing+guidelines",
+	apg: "Antimicrobial prescribing guidelines",
 	csg: "Cancer service guidelines",
 	cg: "Clinical guidelines",
 	cov: "COVID-19 rapid guidelines",
@@ -31,7 +31,7 @@ const guidanceTypeQueryMappings = {
 	hst: "Highly specialised technologies guidance",
 	ipg: "Interventional procedures guidance",
 	mtg: "Medical technologies guidance",
-	ta: "Technology appraisal",
+	ta: "Technology appraisal guidance",
 };
 
 const adviceTypeQueryMappings = {
