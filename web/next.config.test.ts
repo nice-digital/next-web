@@ -14,6 +14,14 @@ describe("next.config.js", () => {
 		expect(globalHeader?.headers).toMatchInlineSnapshot(`
 		Array [
 		  Object {
+		    "key": "Cache-Control",
+		    "value": "public, s-max-age=300, max-age=120, stale-while-revalidate=1800",
+		  },
+		  Object {
+		    "key": "X-App",
+		    "value": "next-web",
+		  },
+		  Object {
 		    "key": "X-DNS-Prefetch-Control",
 		    "value": "on",
 		  },

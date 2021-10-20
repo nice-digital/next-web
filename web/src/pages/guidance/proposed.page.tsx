@@ -1,97 +1,55 @@
-import { inPlaceSort } from "fast-sort";
-import { GetServerSidePropsContext } from "next";
-import { NextSeo } from "next-seo";
+import { SortOrder, Document } from "@nice-digital/search-client";
 
-import { Breadcrumbs, Breadcrumb } from "@nice-digital/nds-breadcrumbs";
-import { PageHeader } from "@nice-digital/nds-page-header";
+import {
+	getGuidanceListPage,
+	getGetServerSidePropsFunc,
+} from "@/components/GuidanceListPage/GuidanceListPage";
 
-import { GuidanceListNav } from "@/components/GuidanceListNav/GuidanceListNav";
-import { InDevProjectCard } from "@/components/InDevProjectCard/InDevProjectCard";
-import { getAllProjects, Project, ProjectStatus } from "@/feeds/inDev/inDev";
+const defaultSortOrder = SortOrder.titleAscending;
 
-/**
- * The number of products to show per page, if the user hasn't specified
- */
-export const projectsPerPageDefault = 10;
+const tableBodyRender = (documents: Document[]) => (
+	<>
+		<caption className="visually-hidden">
+			Proposed guidance and quality standards
+		</caption>
+		<thead>
+			<tr>
+				<th scope="col">Title</th>
+				<th scope="col">Type</th>
+			</tr>
+		</thead>
+		<tbody>
+			{documents.map(({ id, title, pathAndQuery, niceResultType }) => {
+				return (
+					<tr key={id}>
+						<td>
+							<a
+								href={pathAndQuery}
+								dangerouslySetInnerHTML={{ __html: title }}
+							/>
+						</td>
+						<td>{niceResultType}</td>
+					</tr>
+				);
+			})}
+		</tbody>
+	</>
+);
 
-interface ProposedGuidancePageProps {
-	projects: readonly Project[];
-	totalProjects: number;
-	/** 1-based index of the current page */
-	currentPage: number;
-	totalPages: number;
-	pageSize: number;
-}
+export default getGuidanceListPage({
+	breadcrumb: "Proposed",
+	preheading: "Guidance and quality standards ",
+	heading: "Proposed for development",
+	title: "Proposed guidance and quality standards",
+	defaultSort: {
+		order: defaultSortOrder,
+		label: "Title",
+	},
+	showDateFilter: false,
+	tableBodyRender,
+});
 
-export default function ProposedGuidancePage({
-	pageSize,
-	currentPage,
-	totalProjects,
-	totalPages,
-	projects,
-}: ProposedGuidancePageProps): JSX.Element {
-	return (
-		<>
-			<NextSeo
-				title="Proposed | Guidance"
-				description="Guidance and quality standards that have been proposed for development"
-			/>
-
-			<Breadcrumbs>
-				<Breadcrumb to="/">Home</Breadcrumb>
-				<Breadcrumb to="/guidance">NICE guidance</Breadcrumb>
-				<Breadcrumb>Proposed</Breadcrumb>
-			</Breadcrumbs>
-
-			<PageHeader heading="Proposed guidance and quality standards" />
-
-			<GuidanceListNav />
-
-			<p>
-				Showing {projects.length} products on page {currentPage} of {totalPages}{" "}
-				({totalProjects} products total)
-			</p>
-			<ol className="list list--unstyled">
-				{projects.map((project) => (
-					<li key={project.Reference}>
-						<InDevProjectCard project={project} />
-					</li>
-				))}
-			</ol>
-		</>
-	);
-}
-
-export const getServerSideProps = async (
-	_context: GetServerSidePropsContext
-): Promise<{ props: ProposedGuidancePageProps }> => {
-	const projectsTask = getAllProjects();
-
-	const allProjects = (await projectsTask).filter(
-		(project) => project.Status === ProjectStatus.Proposed
-	);
-
-	inPlaceSort(allProjects).by([
-		{
-			asc: "Title",
-			// Case insensitive sorting
-			comparer: Intl.Collator().compare,
-		},
-	]);
-
-	const pageSize = Number(_context.query["ps"]) || projectsPerPageDefault,
-		currentPage = Number(_context.query["pa"]) || 1,
-		totalProjects = allProjects.length,
-		totalPages = Math.ceil(totalProjects / pageSize),
-		projects = allProjects.slice(currentPage - 1, pageSize);
-
-	return {
-		props: {
-			currentPage,
-			pageSize,
-			totalPages,
-			totalProjects,
-			projects,
-		},
-	};
-};
+export const getServerSideProps = getGetServerSidePropsFunc({
+	gstPreFilter: "Proposed",
+	defaultSortOrder,
+});

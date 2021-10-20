@@ -15,7 +15,7 @@ describe("ToFromDateFilters", () => {
 		["From date", "from"],
 	])("%s attributes", (label, name) => {
 		beforeEach(() => {
-			render(<ToFromDateFilters />);
+			render(<ToFromDateFilters useFutureDates={false} />);
 		});
 
 		it(`should render ${label} input`, () => {
@@ -48,19 +48,19 @@ describe("ToFromDateFilters", () => {
 
 	describe("Initial values", () => {
 		it("should set initial 'to date' attribute from given 'to' prop", () => {
-			render(<ToFromDateFilters to="1856-07-10" />);
+			render(<ToFromDateFilters useFutureDates={false} to="1856-07-10" />);
 
 			expect(screen.getByLabelText("To date")).toHaveValue("1856-07-10");
 		});
 
 		it("should set initial 'from date' attribute from given 'from' prop", () => {
-			render(<ToFromDateFilters from="1867-11-07" />);
+			render(<ToFromDateFilters useFutureDates={false} from="1867-11-07" />);
 
 			expect(screen.getByLabelText("From date")).toHaveValue("1867-11-07");
 		});
 
 		it("should set empty 'to date' field to today when 'from date' is set", () => {
-			render(<ToFromDateFilters />);
+			render(<ToFromDateFilters useFutureDates={false} />);
 
 			expect(screen.getByLabelText("To date")).toHaveValue("");
 
@@ -73,40 +73,98 @@ describe("ToFromDateFilters", () => {
 	});
 
 	describe("Min and max", () => {
-		it(`should set max 'from date' as today when no given 'to date'`, () => {
-			render(<ToFromDateFilters />);
+		describe("Using past dates", () => {
+			it(`should set max 'from date' as today when no given 'to date' and using past dates`, () => {
+				render(<ToFromDateFilters useFutureDates={false} />);
 
-			expect(screen.getByLabelText("From date")).toHaveAttribute(
-				"max",
-				dayjs().format("YYYY-MM-DD")
-			);
+				expect(screen.getByLabelText("From date")).toHaveAttribute(
+					"max",
+					dayjs().format("YYYY-MM-DD")
+				);
+			});
+
+			it(`should set max 'from date' using given 'to date'`, () => {
+				render(<ToFromDateFilters useFutureDates={false} to="1858-07-15" />); // <-- look up the date
+
+				expect(screen.getByLabelText("From date")).toHaveAttribute(
+					"max",
+					"1858-07-15"
+				);
+			});
+
+			it(`should set min 'to date' using given 'from date'`, () => {
+				render(<ToFromDateFilters useFutureDates={false} from="1858-07-15" />);
+
+				expect(screen.getByLabelText("To date")).toHaveAttribute(
+					"min",
+					"1858-07-15"
+				);
+			});
+
+			it(`should set max 'to date' as today when using past dates`, () => {
+				render(<ToFromDateFilters useFutureDates={false} />);
+
+				expect(screen.getByLabelText("To date")).toHaveAttribute(
+					"max",
+					dayjs().format("YYYY-MM-DD")
+				);
+			});
 		});
 
-		it(`should set max 'from date' using given 'to date'`, () => {
-			render(<ToFromDateFilters to="1858-07-15" />); // <-- look up the date
+		describe("Using future dates", () => {
+			it(`should set min 'from date' as today when using future dates`, () => {
+				render(<ToFromDateFilters useFutureDates={true} />);
 
-			expect(screen.getByLabelText("From date")).toHaveAttribute(
-				"max",
-				"1858-07-15"
-			);
-		});
+				expect(screen.getByLabelText("From date")).toHaveAttribute(
+					"min",
+					dayjs().format("YYYY-MM-DD")
+				);
+			});
 
-		it(`should set min 'to date' using given 'from date'`, () => {
-			render(<ToFromDateFilters from="1858-07-15" />);
+			it(`should set max 'from date' as 10 years from now when using future dates`, () => {
+				render(<ToFromDateFilters useFutureDates={true} />);
 
-			expect(screen.getByLabelText("To date")).toHaveAttribute(
-				"min",
-				"1858-07-15"
-			);
-		});
+				expect(screen.getByLabelText("From date")).toHaveAttribute(
+					"max",
+					dayjs().add(10, "y").format("YYYY-MM-DD")
+				);
+			});
 
-		it(`should set max 'to date' as today`, () => {
-			render(<ToFromDateFilters />);
+			it(`should set max 'from date' using given 'to date'`, () => {
+				render(<ToFromDateFilters useFutureDates={true} to="1858-07-15" />); // <-- look up the date
 
-			expect(screen.getByLabelText("To date")).toHaveAttribute(
-				"max",
-				dayjs().format("YYYY-MM-DD")
-			);
+				expect(screen.getByLabelText("From date")).toHaveAttribute(
+					"max",
+					"1858-07-15"
+				);
+			});
+
+			it(`should set min 'to date' using given 'from date'`, () => {
+				render(<ToFromDateFilters useFutureDates={true} from="1858-07-15" />);
+
+				expect(screen.getByLabelText("To date")).toHaveAttribute(
+					"min",
+					"1858-07-15"
+				);
+			});
+
+			it(`should set min 'to date' as today when using future dates`, () => {
+				render(<ToFromDateFilters useFutureDates={true} />);
+
+				expect(screen.getByLabelText("To date")).toHaveAttribute(
+					"min",
+					dayjs().format("YYYY-MM-DD")
+				);
+			});
+
+			it(`should set max 'to date' as 10 years from now when using future dates`, () => {
+				render(<ToFromDateFilters useFutureDates={true} />);
+
+				expect(screen.getByLabelText("To date")).toHaveAttribute(
+					"max",
+					dayjs().add(10, "y").format("YYYY-MM-DD")
+				);
+			});
 		});
 	});
 
@@ -117,7 +175,7 @@ describe("ToFromDateFilters", () => {
 		])(
 			"should make '%s' required when '%s' has a value",
 			(requiredDate, inputtedDate) => {
-				render(<ToFromDateFilters />);
+				render(<ToFromDateFilters useFutureDates={false} />);
 
 				expect(screen.getByLabelText(requiredDate)).not.toHaveAttribute(
 					"required"

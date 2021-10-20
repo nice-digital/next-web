@@ -28,6 +28,14 @@ const niceDigitalModulesToTranspile = readdirSync(
 const nonES5ModulesToTranspile = ["pino", "serialize-error"];
 
 const commonHeaders = [
+	{
+		key: "Cache-Control",
+		value: config.get("public.cacheControl.defaultCacheHeader"),
+	},
+	{
+		key: "X-App",
+		value: "next-web",
+	},
 	/**
 	 * 'Best practice' security headers as per https://edibleco.de/3xcg71N
 	 */
