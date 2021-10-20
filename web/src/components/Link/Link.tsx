@@ -45,7 +45,9 @@ export const Link: FC<LinkProps> = ({
 		passHref={passHref}
 		locale={locale}
 	>
-		{typeof children === "string" || Children.count(children) > 1 ? (
+		{typeof children === "string" ||
+		typeof children === "number" ||
+		Children.count(children) > 1 ? (
 			<a className={className} {...attrs}>
 				{children}
 			</a>

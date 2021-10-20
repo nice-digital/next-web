@@ -19,6 +19,7 @@ import { GuidanceListFilters } from "@/components/GuidanceListPage/GuidanceListF
 import { GuidanceListFilterSummary } from "@/components/GuidanceListPage/GuidanceListFilterSummary/GuidanceListFilterSummary";
 import { GuidanceListNav } from "@/components/GuidanceListPage/GuidanceListNav/GuidanceListNav";
 import { Link } from "@/components/Link/Link";
+import { SearchPagination } from "@/components/SearchPagination/SearchPagination";
 import { SkipLink } from "@/components/SkipLink/SkipLink";
 
 import { defaultPageSize } from "./GuidanceListGetServerSideProps/GuidanceListGetServerSideProps";
@@ -192,6 +193,7 @@ export const getGuidanceListPage =
 										{tableBodyRender(documents)}
 									</Table>
 								</div>
+								<SearchPagination results={results as SearchResultsSuccess} />
 								<CopyToClipboard targetId="results">
 									Copy {pluralize("result", documents.length, true)} to
 									clipboard
