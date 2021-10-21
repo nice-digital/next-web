@@ -1,4 +1,5 @@
 import { NextSeo } from "next-seo";
+import { useRouter } from "next/router";
 import pluralize from "pluralize";
 import React, { FC, ReactChild, useEffect, useMemo, useState } from "react";
 
@@ -10,6 +11,7 @@ import {
 	SearchResultsSuccess,
 	SortOrder,
 	Document,
+	upsertQueryParam,
 } from "@nice-digital/search-client";
 
 import { Announcer } from "@/components/Announcer/Announcer";
@@ -18,7 +20,7 @@ import { ErrorPageContent } from "@/components/ErrorPageContent/ErrorPageContent
 import { GuidanceListFilters } from "@/components/GuidanceListPage/GuidanceListFilters/GuidanceListFilters";
 import { GuidanceListFilterSummary } from "@/components/GuidanceListPage/GuidanceListFilterSummary/GuidanceListFilterSummary";
 import { GuidanceListNav } from "@/components/GuidanceListPage/GuidanceListNav/GuidanceListNav";
-import { Link } from "@/components/Link/Link";
+import { Link, NoScrollLink } from "@/components/Link/Link";
 import { SearchPagination } from "@/components/SearchPagination/SearchPagination";
 import { SkipLink } from "@/components/SkipLink/SkipLink";
 
@@ -57,6 +59,8 @@ export type GetGuidanceListPageOptions = {
  *
  * @returns A guidance list page component
  */
+
+const resultsPerPage = [10, 50, 100, 250];
 export const getGuidanceListPage =
 	({
 		breadcrumb,
@@ -71,6 +75,7 @@ export const getGuidanceListPage =
 		tableBodyRender,
 	}: GetGuidanceListPageOptions): FC<GuidanceListPageProps> =>
 	({ results, searchUrl: { q, s, from, to }, activeModifiers }) => {
+		const { asPath } = useRouter();
 		// Announcement text, used for giving audible notifications to screen readers when results have changed
 		const [announcement, setAnnouncement] = useState(""),
 			// Cache the breadcrumbs as they're static and it means we can use them on both the error view and success view
@@ -194,10 +199,29 @@ export const getGuidanceListPage =
 									</Table>
 								</div>
 								<SearchPagination results={results as SearchResultsSuccess} />
-								<CopyToClipboard targetId="results">
-									Copy {pluralize("result", documents.length, true)} to
-									clipboard
-								</CopyToClipboard>
+
+								<Grid>
+									<GridItem cols={6}>
+										<CopyToClipboard targetId="results">
+											Copy {pluralize("result", documents.length, true)} to
+											clipboard
+										</CopyToClipboard>
+									</GridItem>
+									<GridItem cols={6}>
+										Results per page
+										<ol className="pagination__list">
+											{resultsPerPage.map((item, index) => (
+												<li key={`resultPerPageItem_${index}`}>
+													<NoScrollLink
+														href={upsertQueryParam(asPath, "ps", String(item))}
+													>
+														{(index ? "|" : "") + item}
+													</NoScrollLink>
+												</li>
+											))}
+										</ol>
+									</GridItem>
+								</Grid>
 							</>
 						)}
 					</GridItem>
