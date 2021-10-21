@@ -1,0 +1,24 @@
+@use '@nice-digital/nds-core/scss/core';
+
+.tableWrapper {
+  overflow-x: auto;
+  overflow-y: hidden;
+  width: 100%;
+}
+
+.table {
+  // Default NDS table expects to scroll and be less than 100% width for narrow tables.
+  // But we want to force a 100% width so we add the above extra wrapper div that handles the scroll
+  display: table;
+}
+
+@include core.mq($from: md) {
+  .sectionWrapper {
+    padding-top: core.rem(core.$nds-spacing-xx-large);
+    position: relative;
+  }
+
+  .panelWrapper {
+    position: initial;
+  }
+}

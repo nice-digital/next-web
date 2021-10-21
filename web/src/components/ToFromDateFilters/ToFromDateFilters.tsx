@@ -19,24 +19,30 @@ export const isoDateInputFallbackPattern =
 	"[0-9]{4}-(0[1-9]|1[012])-(0[1-9]|1[0-9]|2[0-9]|3[01])";
 
 export interface ToFromDateFilters {
+	useFutureDates: boolean;
 	heading?: string;
 	to?: string;
 	from?: string;
 }
 
 export const ToFromDateFilters: FC<ToFromDateFilters> = ({
+	useFutureDates,
 	heading = "Date",
 	to,
 	from,
 }) => (
 	<FilterGroup heading={heading} headingLevel={3}>
-		<ToFromDateFiltersBody from={from} to={to} />
+		<ToFromDateFiltersBody
+			from={from}
+			to={to}
+			useFutureDates={useFutureDates}
+		/>
 	</FilterGroup>
 );
 
 // Extra component to avoid the NDS filter group component passing invalid props (groupid/groupheading) into the div
 export const ToFromDateFiltersBody: FC<Except<ToFromDateFilters, "heading">> =
-	({ to = "", from = "" }) => {
+	({ to = "", from = "", useFutureDates }) => {
 		const [toDate, setToDate] = useState(to),
 			[toValid, setToValid] = useState(true),
 			[fromDate, setFromDate] = useState(from),
@@ -53,18 +59,23 @@ export const ToFromDateFiltersBody: FC<Except<ToFromDateFilters, "heading">> =
 				setFromDate(e.target.value);
 
 				// We need a from AND to date for the filtering to work
-				if (!toDate) {
+				if (!useFutureDates && !toDate) {
 					setToDate(dayjs().format("YYYY-MM-DD"));
 				}
 			},
-			[toDate]
+			[useFutureDates, toDate]
 		);
 
 		const toDateChangeHandler = useCallback(
 			(e: ChangeEvent<HTMLInputElement>) => {
 				setToDate(e.target.value);
+
+				// We need a from AND to date for the filtering to work
+				if (useFutureDates && !fromDate) {
+					setFromDate(dayjs().format("YYYY-MM-DD"));
+				}
 			},
-			[]
+			[useFutureDates, fromDate]
 		);
 
 		const fromDateInvalidHandler = useCallback(
@@ -89,6 +100,18 @@ export const ToFromDateFiltersBody: FC<Except<ToFromDateFilters, "heading">> =
 			[fromDate]
 		);
 
+		const fromMin = useFutureDates ? dayjs().format("YYYY-MM-DD") : isoMinDate,
+			fromMax = useFutureDates
+				? toDate || dayjs().add(10, "y").format("YYYY-MM-DD")
+				: dayjs(toDate || undefined).format("YYYY-MM-DD");
+
+		const toMin = useFutureDates
+				? fromDate || dayjs().format("YYYY-MM-DD")
+				: fromDate || isoMinDate,
+			toMax = useFutureDates
+				? dayjs().add(10, "y").format("YYYY-MM-DD")
+				: dayjs().format("YYYY-MM-DD");
+
 		return (
 			<div className="ph--c pt--c">
 				<Input
@@ -97,8 +120,8 @@ export const ToFromDateFiltersBody: FC<Except<ToFromDateFilters, "heading">> =
 					type="date"
 					pattern={isoDateInputFallbackPattern}
 					placeholder="yyyy-mm-dd"
-					min={isoMinDate}
-					max={dayjs(toDate || undefined).format("YYYY-MM-DD")}
+					min={fromMin}
+					max={fromMax}
 					value={fromDate}
 					onChange={fromDateChangeHandler}
 					required={!fromDate && !!toDate}
@@ -116,8 +139,8 @@ export const ToFromDateFiltersBody: FC<Except<ToFromDateFilters, "heading">> =
 					type="date"
 					pattern={isoDateInputFallbackPattern}
 					placeholder="yyyy-mm-dd"
-					min={fromDate || isoMinDate}
-					max={dayjs().format("YYYY-MM-DD")}
+					min={toMin}
+					max={toMax}
 					value={toDate}
 					onChange={toDateChangeHandler}
 					required={!toDate && !!fromDate}

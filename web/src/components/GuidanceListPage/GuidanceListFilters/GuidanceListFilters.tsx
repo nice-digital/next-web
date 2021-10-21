@@ -27,6 +27,9 @@ export interface GuidanceListFiltersProps {
 	queryText?: string;
 	from?: string;
 	to?: string;
+	showDateFilter: boolean;
+	dateFilterLabel?: string;
+	useFutureDates?: boolean;
 }
 
 export const GuidanceListFilters: FC<GuidanceListFiltersProps> = ({
@@ -37,6 +40,9 @@ export const GuidanceListFilters: FC<GuidanceListFiltersProps> = ({
 	queryText,
 	from,
 	to,
+	showDateFilter,
+	dateFilterLabel,
+	useFutureDates,
 }) => {
 	const router = useRouter(),
 		formRef = createRef<HTMLFormElement>();
@@ -77,7 +83,16 @@ export const GuidanceListFilters: FC<GuidanceListFiltersProps> = ({
 				defaultValue={queryText}
 				placeholder="E.g. 'diabetes' or 'NG28'"
 			/>
-			<ToFromDateFilters heading="Last updated date" from={from} to={to} />
+			{showDateFilter ? (
+				<ToFromDateFilters
+					heading={dateFilterLabel}
+					from={from}
+					to={to}
+					useFutureDates={!!useFutureDates}
+				/>
+			) : (
+				<></>
+			)}
 			{navigators
 				.filter((nav) => nav.shortName !== "gst")
 				.sort(

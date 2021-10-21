@@ -26,7 +26,7 @@
   "dependencies": {
     "@nice-digital/design-system": "^1.2.25-alpha.0",
     "@nice-digital/global-nav": "github:nice-digital/global-nav",
-    "@nice-digital/search-client": "^1.0.1400-SRCH-659-PrefilterTS",
+    "@nice-digital/search-client": "^1.0.1402",
     "cache-manager": "^3.4.4",
     "cache-manager-fs-hash": "^1.0.0",
     "clipboard-polyfill": "^3.0.3",

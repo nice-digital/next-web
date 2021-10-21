@@ -1,4 +1,5 @@
 import { useRouter } from "next/router";
+import { stringify } from "qs";
 import { FC } from "react";
 
 import {
@@ -6,7 +7,7 @@ import {
 	HorizontalNavLink,
 } from "@nice-digital/nds-horizontal-nav";
 
-import { Link } from "@/components/Link/Link";
+import { NoScrollLink } from "@/components/Link/Link";
 
 interface NavLinkProps {
 	children: string;
@@ -14,13 +15,20 @@ interface NavLinkProps {
 }
 
 const NavLink: FC<NavLinkProps> = ({ children, href }) => {
-	const { pathname } = useRouter();
+	const { pathname, query } = useRouter();
+
+	const newQuery = stringify(query, {
+		addQueryPrefix: true,
+		arrayFormat: "repeat",
+		filter: (key, value) =>
+			key === "from" || key === "to" ? undefined : value,
+	});
 
 	return (
 		<HorizontalNavLink
-			destination={href}
+			destination={href + newQuery}
 			isCurrent={pathname === href}
-			elementType={Link}
+			elementType={NoScrollLink}
 		>
 			{children}
 		</HorizontalNavLink>

@@ -1,102 +1,85 @@
-import { inPlaceSort } from "fast-sort";
-import { GetServerSidePropsContext } from "next";
-import { NextSeo } from "next-seo";
+import { SortOrder, Document } from "@nice-digital/search-client";
 
-import { Breadcrumbs, Breadcrumb } from "@nice-digital/nds-breadcrumbs";
-import { PageHeader } from "@nice-digital/nds-page-header";
+import {
+	getGuidanceListPage,
+	getGetServerSidePropsFunc,
+} from "@/components/GuidanceListPage/GuidanceListPage";
+import { ResponsiveDate } from "@/components/ResponsiveDate/ResponsiveDate";
 
-import { GuidanceListNav } from "@/components/GuidanceListNav/GuidanceListNav";
-import { InDevProjectCard } from "@/components/InDevProjectCard/InDevProjectCard";
-import { getAllProjects, Project, ProjectStatus } from "@/feeds/inDev/inDev";
+const defaultSortOrder = SortOrder.titleAscending,
+	dateFilterLabel = "Expected publication date";
 
-/**
- * The number of products to show per page, if the user hasn't specified
- */
-export const projectsPerPageDefault = 10;
+const tableBodyRender = (documents: Document[]) => (
+	<>
+		<caption className="visually-hidden">
+			Guidance, NICE advice and quality standards in development
+		</caption>
+		<thead>
+			<tr>
+				<th scope="col">Title</th>
+				<th scope="col">Type</th>
+				<th scope="col">Expected publication date</th>
+			</tr>
+		</thead>
+		<tbody>
+			{documents.map(
+				({
+					id,
+					title,
+					pathAndQuery,
+					niceResultType,
+					expectedPublicationDate,
+				}) => {
+					return (
+						<tr key={id}>
+							<td>
+								{/* In dev advice don't have pages in their own right but search still sends back a fake URL */}
+								{pathAndQuery.indexOf("not_a_real_url") > -1 ? (
+									<span dangerouslySetInnerHTML={{ __html: title }} />
+								) : (
+									<a
+										href={pathAndQuery}
+										dangerouslySetInnerHTML={{ __html: title }}
+									/>
+								)}
+							</td>
+							<td>{niceResultType}</td>
+							<td>
+								{expectedPublicationDate ? (
+									<ResponsiveDate isoDateTime={expectedPublicationDate} />
+								) : (
+									<abbr title="To be confirmed">TBC</abbr>
+								)}
+							</td>
+						</tr>
+					);
+				}
+			)}
+		</tbody>
+	</>
+);
 
-interface InDevGuidancePageProps {
-	projects: readonly Project[];
-	totalProjects: number;
-	/** 1-based index of the current page */
-	currentPage: number;
-	totalPages: number;
-	pageSize: number;
-}
+export default getGuidanceListPage({
+	breadcrumb: "In development",
+	preheading: "Guidance, NICE advice and quality standards ",
+	heading: "In development",
+	title: "Guidance, NICE advice and quality standards in development",
+	defaultSort: {
+		order: defaultSortOrder,
+		label: "Title",
+	},
+	secondarySort: {
+		order: SortOrder.dateAscending,
+		label: "Date",
+	},
+	showDateFilter: true,
+	useFutureDates: true,
+	dateFilterLabel,
+	tableBodyRender,
+});
 
-export default function InDevGuidancePage({
-	pageSize,
-	currentPage,
-	totalProjects,
-	totalPages,
-	projects,
-}: InDevGuidancePageProps): JSX.Element {
-	return (
-		<>
-			<NextSeo
-				title="In development | Guidance"
-				description="Guidance, quality standards and advice in development"
-			/>
-
-			<Breadcrumbs>
-				<Breadcrumb to="/">Home</Breadcrumb>
-				<Breadcrumb to="/guidance">NICE guidance</Breadcrumb>
-				<Breadcrumb>In development</Breadcrumb>
-			</Breadcrumbs>
-
-			<PageHeader
-				preheading="Guidance, quality standards and advice"
-				heading="In development"
-			/>
-
-			<GuidanceListNav />
-
-			<p>
-				Showing {projects.length} products on page {currentPage} of {totalPages}{" "}
-				({totalProjects} products total)
-			</p>
-			<ol className="list list--unstyled">
-				{projects.map((project) => (
-					<li key={project.Reference}>
-						<InDevProjectCard project={project} />
-					</li>
-				))}
-			</ol>
-		</>
-	);
-}
-
-export const getServerSideProps = async (
-	_context: GetServerSidePropsContext
-): Promise<{ props: InDevGuidancePageProps }> => {
-	const projectsTask = getAllProjects();
-
-	const allProjects = (await projectsTask).filter(
-		(project) =>
-			project.Status !== ProjectStatus.Discontinued &&
-			project.Status !== ProjectStatus.Proposed
-	);
-
-	inPlaceSort(allProjects).by([
-		{
-			asc: "Title",
-			// Case insensitive sorting
-			comparer: Intl.Collator().compare,
-		},
-	]);
-
-	const pageSize = Number(_context.query["ps"]) || projectsPerPageDefault,
-		currentPage = Number(_context.query["pa"]) || 1,
-		totalProjects = allProjects.length,
-		totalPages = Math.ceil(totalProjects / pageSize),
-		projects = allProjects.slice(currentPage - 1, pageSize);
-
-	return {
-		props: {
-			currentPage,
-			pageSize,
-			totalPages,
-			totalProjects,
-			projects,
-		},
-	};
-};
+export const getServerSideProps = getGetServerSidePropsFunc({
+	gstPreFilter: "In development",
+	defaultSortOrder,
+	dateFilterLabel,
+});
