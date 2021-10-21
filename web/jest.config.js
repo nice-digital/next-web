@@ -14,6 +14,7 @@ module.exports = {
 	...baseConfig,
 	displayName: "web",
 	rootDir: "./src/",
+	roots: ["<rootDir>", "<rootDir>/../"],
 	projects: undefined,
 	moduleNameMapper: {
 		"\\.(css|scss|svg)$": "identity-obj-proxy",
@@ -27,6 +28,7 @@ module.exports = {
 	coveragePathIgnorePatterns: ["<rootDir>/test-utils.tsx"],
 	transformIgnorePatterns: ["/node_modules/", "/dist/"],
 	setupFilesAfterEnv: ["./jest.presetup.js", "./jest.setup.ts"],
+	testPathIgnorePatterns: ["./config/"],
 	testURL: "https://next-web-tests.nice.org.uk",
 	testEnvironment: "jsdom",
 	globals: {

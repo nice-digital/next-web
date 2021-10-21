@@ -6,7 +6,7 @@ import { Navigator } from "@nice-digital/search-client/types";
 
 import { render, screen, within } from "@/test-utils";
 
-import sampleData from "../../__mocks__/__data__/search/guidance-published.json";
+import sampleData from "../../../__mocks__/__data__/search/guidance-published.json";
 
 import { GuidanceListFilters } from "./GuidanceListFilters";
 
@@ -29,6 +29,8 @@ describe("GuidanceListFilters", () => {
 			<GuidanceListFilters
 				numActiveModifiers={2}
 				navigators={sampleData.navigators as unknown as Navigator[]}
+				showDateFilter={true}
+				dateFilterLabel="Last updated date"
 			/>
 		).rerender;
 	});
@@ -49,6 +51,7 @@ describe("GuidanceListFilters", () => {
 					pageSize={20}
 					sortOrder="Title"
 					navigators={sampleData.navigators as unknown as Navigator[]}
+					showDateFilter={false}
 				/>
 			);
 
@@ -110,10 +113,10 @@ describe("GuidanceListFilters", () => {
 				.getAllByRole("heading", { level: 3 })
 				.map((el) => el.textContent || "");
 			expect(filterGroupHeadings).toStrictEqual([
-				"Last updated date",
-				"Area of interest",
-				"Type1 selected",
-				"Guidance programme1 selected",
+				"Last updated date ",
+				"Area of interest ",
+				"Type (1 selected)",
+				"Guidance programme (1 selected)",
 			]);
 		});
 

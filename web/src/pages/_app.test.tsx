@@ -6,7 +6,7 @@ import { useEffect } from "react";
 import { logger } from "@/logger";
 import { getMockRouter } from "@/test-utils";
 
-import NextWebApp from "./_app.page";
+import NextWebApp, { reportWebVitals } from "./_app.page";
 
 import type { AppProps } from "next/app";
 
@@ -176,5 +176,72 @@ describe("NextWebApp", () => {
 		expect(
 			screen.getByText("NICE guidance", { selector: "header a" })
 		).toHaveAttribute("aria-current", "true");
+	});
+
+	describe("reportWebVitals", () => {
+		beforeEach(() => {
+			window.dataLayer = [];
+		});
+
+		afterEach(() => {
+			window.dataLayer = [];
+		});
+
+		it("should push web vital to the data layer", () => {
+			reportWebVitals({
+				id: "1234",
+				name: "FCP",
+				value: 999,
+				startTime: 0,
+				label: "web-vital",
+			});
+
+			expect(window.dataLayer).toHaveLength(1);
+			expect(window.dataLayer[0]).toStrictEqual({
+				event: "web-vitals",
+				eventCategory: "Web Vitals",
+				eventAction: "FCP",
+				eventLabel: "1234",
+				eventValue: 999,
+			});
+		});
+
+		it("should push CLS vital to the data layer with 1000x value", () => {
+			reportWebVitals({
+				id: "abc",
+				name: "CLS",
+				value: 0.05,
+				startTime: 0,
+				label: "web-vital",
+			});
+
+			expect(window.dataLayer).toHaveLength(1);
+			expect(window.dataLayer[0]).toStrictEqual({
+				event: "web-vitals",
+				eventCategory: "Web Vitals",
+				eventAction: "CLS",
+				eventLabel: "abc",
+				eventValue: 50,
+			});
+		});
+
+		it("should push Next.js custom metric vital to the data layer", () => {
+			reportWebVitals({
+				id: "abc",
+				name: "Next.js-hydration",
+				value: 99,
+				startTime: 0,
+				label: "custom",
+			});
+
+			expect(window.dataLayer).toHaveLength(1);
+			expect(window.dataLayer[0]).toStrictEqual({
+				event: "web-vitals",
+				eventCategory: "Next.js custom metric",
+				eventAction: "Next.js-hydration",
+				eventLabel: "abc",
+				eventValue: 99,
+			});
+		});
 	});
 });

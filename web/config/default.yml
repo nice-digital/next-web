@@ -17,6 +17,11 @@ public:
   search:
     # The base URL of the Single Search Endpoint (SSE) e.g. https://beta-search-api.nice.org.uk/api/
     baseURL: http://localhost:19332/api
+  cacheControl:
+    # The default cache-control header used for 'dynamic' responses - apis/pages with getServerSideProps
+    # See https://nextjs.org/docs/going-to-production#caching for more details on cache headers with NextJS
+    # Note the use of s-max-age to cache in varnish, max-age to cache on the client and SWR for background refreshes
+    defaultCacheHeader: public, s-max-age=300, max-age=120, stale-while-revalidate=1800
 
 # ! This is a PUBLIC repo so please don't put any sensitive info or secrets in here
 # ! Use local-development.yml or local-development.json to override settings locally instead: https://edibleco.de/3dLJKiP
