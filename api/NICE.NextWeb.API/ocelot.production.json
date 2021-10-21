@@ -1,22 +1,21 @@
 {
   "Routes": [
     {
-      {
-        "DownstreamHostAndPorts": [
-          {
-            "Host": "#{Ocelot.NiceorgTaxonomyDownstreamHost}",
-            "Port": 443
-          }
-        ],
-        "DownstreamPathTemplate": "/api/{everything}",
-        "DownstreamScheme": "https",
-        "UpstreamHttpMethod": [ "Get" ],
-        "UpstreamPathTemplate": "/api/{everything}",
-        "FileCacheOptions": {
-          "TtlSeconds": 86400,
-          "Region": "OcelotNiceorg"
+      "DownstreamHostAndPorts": [
+        {
+          "Host": "#{Ocelot.NiceorgTaxonomyDownstreamHost}",
+          "Port": 443
         }
+      ],
+      "DownstreamPathTemplate": "/api/{everything}",
+      "DownstreamScheme": "https",
+      "UpstreamHttpMethod": [ "Get" ],
+      "UpstreamPathTemplate": "/api/{everything}",
+      "FileCacheOptions": {
+        "TtlSeconds": 86400,
+        "Region": "OcelotNiceorg"
       }
+    }
   ],
   "Aggregates": [],
   "GlobalConfiguration": {}
