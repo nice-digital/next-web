@@ -200,26 +200,33 @@ export const getGuidanceListPage =
 								</div>
 								<SearchPagination results={results as SearchResultsSuccess} />
 
-								<Grid>
-									<GridItem cols={6}>
+								<Grid verticalAlignment="top" horizontalAlignment="right">
+									<GridItem cols={10}>
 										<CopyToClipboard targetId="results">
 											Copy {pluralize("result", documents.length, true)} to
 											clipboard
 										</CopyToClipboard>
 									</GridItem>
-									<GridItem cols={6}>
-										Results per page
-										<ol className="pagination__list">
-											{resultsPerPage.map((item, index) => (
-												<li key={`resultPerPageItem_${index}`}>
-													<NoScrollLink
-														href={upsertQueryParam(asPath, "ps", String(item))}
-													>
-														{(index ? "|" : "") + item}
-													</NoScrollLink>
-												</li>
-											))}
-										</ol>
+									<GridItem cols={2}>
+										<div className="mt--d ml--0">
+											Results per page
+											<ol className="pagination__list">
+												{resultsPerPage.map((item, index) => (
+													<li key={`resultPerPageItem_${index}`}>
+														<NoScrollLink
+															aria-label={`Display ${item} results per page`}
+															href={upsertQueryParam(
+																asPath,
+																"ps",
+																String(item)
+															)}
+														>
+															{(index ? "|" : "") + item}
+														</NoScrollLink>
+													</li>
+												))}
+											</ol>
+										</div>
 									</GridItem>
 								</Grid>
 							</>
