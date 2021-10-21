@@ -18,13 +18,13 @@ export const InlineTextFilter: FC<InlineTextFilterProps> = ({
 	placeholder,
 	defaultValue,
 }) => {
-	const [value, setValue] = useState(defaultValue),
+	const [value, setValue] = useState(defaultValue || ""),
 		onInputChange = useCallback((e: React.ChangeEvent<HTMLInputElement>) => {
 			setValue(e.currentTarget.value);
 		}, []);
 
 	useEffect(() => {
-		setValue(defaultValue);
+		setValue(defaultValue || "");
 	}, [defaultValue]);
 
 	return (

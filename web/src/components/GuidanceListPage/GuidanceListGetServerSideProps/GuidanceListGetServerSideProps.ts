@@ -95,6 +95,17 @@ export const getGetServerSidePropsFunc =
 			});
 		}
 
+		if (searchUrl.q) {
+			activeModifiers.unshift({
+				displayName: searchUrl.q,
+				toggleUrl: getUrlPathAndQuery({
+					...searchUrl,
+					sp: undefined,
+					q: undefined,
+				}),
+			});
+		}
+
 		return {
 			props: {
 				results,

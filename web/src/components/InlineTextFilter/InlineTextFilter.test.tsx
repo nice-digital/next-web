@@ -56,6 +56,6 @@ describe("InlineTextFilter", () => {
 
 		expect(button).toBeInTheDocument();
 		expect(button).toHaveAttribute("type", "submit");
-		expect(button).toHaveClass("btn--primary");
+		expect(button).toHaveClass("btn");
 	});
 });
