@@ -38,19 +38,34 @@ describe("GuidanceListNav", () => {
 		expect(screen.getByText(linkText)).toHaveAttribute("aria-current", "true");
 	});
 
-	it("should keep querystring from current page without from and to", () => {
+	it("should keep querystring from current page without from, to and pa", () => {
 		(useRouter as jest.Mock).mockImplementation(() => ({
 			query: {
 				ndt: "Guidance",
 				nai: "Antimicrobial prescribing",
 				from: "2019-01-01",
 				to: "2019-03-31",
+				pa: "2",
 			},
 		}));
 		render(<GuidanceListNav />);
 		expect(screen.getByText("Proposed")).toHaveAttribute(
 			"href",
 			"/guidance/proposed?ndt=Guidance&nai=Antimicrobial%20prescribing"
+		);
+	});
+
+	it("should remove querystring for current tab link", () => {
+		(useRouter as jest.Mock).mockImplementation(() => ({
+			pathname: "/guidance/published",
+			query: {
+				ndt: "Guidance",
+			},
+		}));
+		render(<GuidanceListNav />);
+		expect(screen.getByText("Published")).toHaveAttribute(
+			"href",
+			"/guidance/published"
 		);
 	});
 });
