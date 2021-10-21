@@ -12,6 +12,7 @@ import {
 	SortOrder,
 	Document,
 	upsertQueryParam,
+	removeQueryParam,
 } from "@nice-digital/search-client";
 
 import { Announcer } from "@/components/Announcer/Announcer";
@@ -20,7 +21,7 @@ import { ErrorPageContent } from "@/components/ErrorPageContent/ErrorPageContent
 import { GuidanceListFilters } from "@/components/GuidanceListPage/GuidanceListFilters/GuidanceListFilters";
 import { GuidanceListFilterSummary } from "@/components/GuidanceListPage/GuidanceListFilterSummary/GuidanceListFilterSummary";
 import { GuidanceListNav } from "@/components/GuidanceListPage/GuidanceListNav/GuidanceListNav";
-import { Link, NoScrollLink } from "@/components/Link/Link";
+import { Link, ScrollToLink } from "@/components/Link/Link";
 import { SearchPagination } from "@/components/SearchPagination/SearchPagination";
 import { SkipLink } from "@/components/SkipLink/SkipLink";
 
@@ -29,6 +30,13 @@ import styles from "./GuidanceListPage.module.scss";
 import { GuidanceListPageProps } from "./GuidanceListPageProps";
 
 export { getGetServerSidePropsFunc } from "./GuidanceListGetServerSideProps/GuidanceListGetServerSideProps";
+
+const resultsPerPage = [
+	{ count: 10, label: "10" },
+	{ count: 25, label: "25" },
+	{ count: 50, label: "50" },
+	{ count: 9999, label: "All" },
+];
 
 export type GetGuidanceListPageOptions = {
 	breadcrumb: ReactChild;
@@ -59,8 +67,6 @@ export type GetGuidanceListPageOptions = {
  *
  * @returns A guidance list page component
  */
-
-const resultsPerPage = [10, 50, 100, 250];
 export const getGuidanceListPage =
 	({
 		breadcrumb,
@@ -74,7 +80,11 @@ export const getGuidanceListPage =
 		useFutureDates,
 		tableBodyRender,
 	}: GetGuidanceListPageOptions): FC<GuidanceListPageProps> =>
-	({ results, searchUrl: { q, s, from, to }, activeModifiers }) => {
+	({
+		results,
+		searchUrl: { q, s, from, to, ps = defaultPageSize },
+		activeModifiers,
+	}) => {
 		const { asPath } = useRouter();
 		// Announcement text, used for giving audible notifications to screen readers when results have changed
 		const [announcement, setAnnouncement] = useState(""),
@@ -198,35 +208,47 @@ export const getGuidanceListPage =
 										{tableBodyRender(documents)}
 									</Table>
 								</div>
-								<SearchPagination results={results as SearchResultsSuccess} />
+								<SearchPagination
+									results={results as SearchResultsSuccess}
+									scrollTargetId="filter-summary"
+								/>
 
-								<Grid verticalAlignment="top" horizontalAlignment="right">
-									<GridItem cols={10}>
+								<Grid verticalAlignment="middle" className="mt--d">
+									<GridItem cols={12} sm={6} className="mb--e mb--0-sm">
 										<CopyToClipboard targetId="results">
 											Copy {pluralize("result", documents.length, true)} to
 											clipboard
 										</CopyToClipboard>
 									</GridItem>
-									<GridItem cols={2}>
-										<div className="mt--d ml--0">
-											Results per page
-											<ol className="pagination__list">
-												{resultsPerPage.map((item, index) => (
-													<li key={`resultPerPageItem_${index}`}>
-														<NoScrollLink
-															aria-label={`Display ${item} results per page`}
-															href={upsertQueryParam(
-																asPath,
-																"ps",
-																String(item)
+									<GridItem cols={12} sm={6} className="text-right">
+										<h3 className="p mt--0 mb--c">Results per page</h3>
+										<ol className="list list--piped mv--0">
+											{resultsPerPage.map(({ count, label }) => (
+												<li key={label} className="pl--b">
+													{Number(ps) === count ? (
+														label
+													) : (
+														<ScrollToLink
+															className="ph--0"
+															aria-label={`Show ${label} results per page`}
+															href={removeQueryParam(
+																count === defaultPageSize
+																	? removeQueryParam(asPath, "ps")
+																	: upsertQueryParam(
+																			asPath,
+																			"ps",
+																			String(count)
+																	  ),
+																"pa"
 															)}
+															scrollTargetId="filter-summary"
 														>
-															{(index ? "|" : "") + item}
-														</NoScrollLink>
-													</li>
-												))}
-											</ol>
-										</div>
+															{label}
+														</ScrollToLink>
+													)}
+												</li>
+											))}
+										</ol>
 									</GridItem>
 								</Grid>
 							</>

@@ -57,6 +57,25 @@ export const Link: FC<LinkProps> = ({
 	</NextJSLink>
 );
 
-export const NoScrollLink: FC<LinkProps & { scroll: never }> = (props) => (
+export const NoScrollLink: FC<LinkProps & { scroll?: never }> = (props) => (
 	<Link {...props} scroll={false} />
+);
+
+export const ScrollToLink: FC<
+	LinkProps & { scrollTargetId: string; onClick?: never; scroll?: never }
+> = ({ scrollTargetId, ...props }) => (
+	<Link
+		{...props}
+		scroll={false}
+		onClick={() => {
+			const targetElement = document.getElementById(scrollTargetId);
+			if (targetElement) {
+				targetElement.setAttribute("tabIndex", "-1");
+				targetElement.focus();
+				targetElement.scrollIntoView();
+			} else {
+				console.warn(`Element with id ${scrollTargetId} could not be found`);
+			}
+		}}
+	/>
 );

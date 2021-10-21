@@ -8,14 +8,16 @@ import {
 	upsertQueryParam,
 } from "@nice-digital/search-client";
 
-import { NoScrollLink } from "@/components/Link/Link";
+import { ScrollToLink } from "@/components/Link/Link";
 
 export interface SearchPaginationProps {
 	results: SearchResultsSuccess;
+	scrollTargetId: string;
 }
 
 export const SearchPagination: FC<SearchPaginationProps> = ({
 	results: { firstResult, resultCount, pageSize },
+	scrollTargetId,
 }) => {
 	const { asPath } = useRouter(),
 		totalPages = Math.ceil(resultCount / pageSize),
@@ -30,7 +32,9 @@ export const SearchPagination: FC<SearchPaginationProps> = ({
 
 	return (
 		<EnhancedPagination
-			elementType={NoScrollLink}
+			elementType={(props) => (
+				<ScrollToLink {...props} scrollTargetId={scrollTargetId} />
+			)}
 			currentPage={currentPage}
 			totalPages={totalPages}
 			mapPageNumberToHref={mapPageNumberToHref}
