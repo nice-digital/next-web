@@ -6,8 +6,6 @@ import {
 } from "@/components/GuidanceListPage/GuidanceListPage";
 import { ResponsiveDate } from "@/components/ResponsiveDate/ResponsiveDate";
 
-// NOTE: Page size cannot be less than 10 due to a bug in Search
-// See https://github.com/nice-digital/search/blob/958b9eeab53db990aa5a8e4490703454db9b5dbd/Client/NICE.Search.Common/Models/PagerLinks.cs#L28
 const defaultSortOrder = SortOrder.dateDescending,
 	dateFilterLabel = "Last updated date";
 
