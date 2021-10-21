@@ -41,8 +41,8 @@ export const InlineTextFilter: FC<InlineTextFilterProps> = ({
 				onChange={onInputChange}
 				value={value}
 			/>
-			<Button className={styles.button} variant="cta" type="submit">
-				Search
+			<Button className={styles.button} variant="primary" type="submit">
+				Filter
 			</Button>
 		</div>
 	);
