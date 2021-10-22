@@ -894,14 +894,135 @@ exports[`/guidance/inconsultation should match the snapshot 1`] = `
               </tbody>
             </table>
           </div>
-          <button
-            class="btn mt--d ml--0"
-            type="button"
+          <nav
+            aria-label="Pagination"
+            class="pagination "
+            role="navigation"
           >
-            Copy 
-            10 results
-             to clipboard
-          </button>
+            <ol
+              class="pagination__list"
+            >
+              <li
+                aria-current="true"
+                class="pagination__item pagination__item--current"
+              >
+                <span
+                  class="pagination__inactive"
+                >
+                  <span
+                    class="visually-hidden"
+                  >
+                    Current page 
+                  </span>
+                  1
+                </span>
+              </li>
+              <li
+                class="pagination__item"
+              >
+                <a
+                  aria-label="Go to page 2"
+                  class="pagination__link"
+                  href="/?pa=2"
+                >
+                  2
+                </a>
+              </li>
+              <li
+                class="pagination__item pagination__item--count"
+              >
+                <span>
+                  Page 
+                  <strong>
+                    1
+                  </strong>
+                   of 
+                  <strong>
+                    2
+                  </strong>
+                </span>
+              </li>
+              <li
+                class="pagination__item pagination__item--bookend"
+              >
+                <a
+                  class="pagination__link"
+                  href="/?pa=2"
+                >
+                  Next page
+                </a>
+              </li>
+            </ol>
+          </nav>
+          <div
+            class="grid grid--middle mt--d"
+          >
+            <div
+              class="mb--e mb--0-sm"
+              data-g="12 sm:6"
+            >
+              <button
+                class="btn mv--0 mh--0"
+                type="button"
+              >
+                Copy 
+                10 results
+                 to clipboard
+              </button>
+            </div>
+            <div
+              class="text-right"
+              data-g="12 sm:6"
+            >
+              <h3
+                class="p mt--0 mb--c"
+              >
+                Results per page
+              </h3>
+              <ol
+                class="list list--piped mv--0"
+              >
+                <li
+                  class="pl--b"
+                >
+                  10
+                </li>
+                <li
+                  class="pl--b"
+                >
+                  <a
+                    aria-label="Show 25 results per page"
+                    class="ph--0"
+                    href="/?ps=25"
+                  >
+                    25
+                  </a>
+                </li>
+                <li
+                  class="pl--b"
+                >
+                  <a
+                    aria-label="Show 50 results per page"
+                    class="ph--0"
+                    href="/?ps=50"
+                  >
+                    50
+                  </a>
+                </li>
+                <li
+                  class="pl--b"
+                >
+                  <a
+                    aria-label="Show All results per page"
+                    class="ph--0"
+                    href="/?ps=9999"
+                  >
+                    All
+                  </a>
+                </li>
+              </ol>
+            </div>
+          </div>
         </section>
       </div>
     </div>

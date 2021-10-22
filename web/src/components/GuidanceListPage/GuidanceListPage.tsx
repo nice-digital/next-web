@@ -11,6 +11,8 @@ import {
 	SearchResultsSuccess,
 	SortOrder,
 	Document,
+	upsertQueryParam,
+	removeQueryParam,
 } from "@nice-digital/search-client";
 
 import { Announcer } from "@/components/Announcer/Announcer";
@@ -19,7 +21,8 @@ import { ErrorPageContent } from "@/components/ErrorPageContent/ErrorPageContent
 import { GuidanceListFilters } from "@/components/GuidanceListPage/GuidanceListFilters/GuidanceListFilters";
 import { GuidanceListFilterSummary } from "@/components/GuidanceListPage/GuidanceListFilterSummary/GuidanceListFilterSummary";
 import { GuidanceListNav } from "@/components/GuidanceListPage/GuidanceListNav/GuidanceListNav";
-import { Link } from "@/components/Link/Link";
+import { Link, ScrollToLink } from "@/components/Link/Link";
+import { SearchPagination } from "@/components/SearchPagination/SearchPagination";
 import { SkipLink } from "@/components/SkipLink/SkipLink";
 
 import { defaultPageSize } from "./GuidanceListGetServerSideProps/GuidanceListGetServerSideProps";
@@ -27,6 +30,13 @@ import styles from "./GuidanceListPage.module.scss";
 import { GuidanceListPageProps } from "./GuidanceListPageProps";
 
 export { getGetServerSidePropsFunc } from "./GuidanceListGetServerSideProps/GuidanceListGetServerSideProps";
+
+const resultsPerPage = [
+	{ count: 10, label: "10" },
+	{ count: 25, label: "25" },
+	{ count: 50, label: "50" },
+	{ count: 9999, label: "All" },
+];
 
 export type GetGuidanceListPageOptions = {
 	breadcrumb: ReactChild;
@@ -70,8 +80,12 @@ export const getGuidanceListPage =
 		useFutureDates,
 		tableBodyRender,
 	}: GetGuidanceListPageOptions): FC<GuidanceListPageProps> =>
-	({ results, searchUrl: { q, s, from, to, ps }, activeModifiers }) => {
-		const { pathname } = useRouter();
+	({
+		results,
+		searchUrl: { q, s, from, to, ps = defaultPageSize },
+		activeModifiers,
+	}) => {
+		const { asPath, pathname } = useRouter();
 		// Announcement text, used for giving audible notifications to screen readers when results have changed
 		const [announcement, setAnnouncement] = useState(""),
 			// Cache the breadcrumbs as they're static and it means we can use them on both the error view and success view
@@ -195,10 +209,49 @@ export const getGuidanceListPage =
 										{tableBodyRender(documents)}
 									</Table>
 								</div>
-								<CopyToClipboard targetId="results">
-									Copy {pluralize("result", documents.length, true)} to
-									clipboard
-								</CopyToClipboard>
+								<SearchPagination
+									results={results as SearchResultsSuccess}
+									scrollTargetId="filter-summary"
+								/>
+
+								<Grid verticalAlignment="middle" className="mt--d">
+									<GridItem cols={12} sm={6} className="mb--e mb--0-sm">
+										<CopyToClipboard targetId="results">
+											Copy {pluralize("result", documents.length, true)} to
+											clipboard
+										</CopyToClipboard>
+									</GridItem>
+									<GridItem cols={12} sm={6} className="text-right">
+										<h3 className="p mt--0 mb--c">Results per page</h3>
+										<ol className="list list--piped mv--0">
+											{resultsPerPage.map(({ count, label }) => (
+												<li key={label} className="pl--b">
+													{Number(ps) === count ? (
+														label
+													) : (
+														<ScrollToLink
+															className="ph--0"
+															aria-label={`Show ${label} results per page`}
+															href={removeQueryParam(
+																count === defaultPageSize
+																	? removeQueryParam(asPath, "ps")
+																	: upsertQueryParam(
+																			asPath,
+																			"ps",
+																			String(count)
+																	  ),
+																"pa"
+															)}
+															scrollTargetId="filter-summary"
+														>
+															{label}
+														</ScrollToLink>
+													)}
+												</li>
+											))}
+										</ol>
+									</GridItem>
+								</Grid>
 							</>
 						)}
 					</GridItem>

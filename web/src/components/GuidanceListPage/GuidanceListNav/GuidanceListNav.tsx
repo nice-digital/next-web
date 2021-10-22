@@ -21,12 +21,12 @@ const NavLink: FC<NavLinkProps> = ({ children, href }) => {
 		addQueryPrefix: true,
 		arrayFormat: "repeat",
 		filter: (key, value) =>
-			key === "from" || key === "to" ? undefined : value,
+			key === "from" || key === "to" || key === "pa" ? undefined : value,
 	});
 
 	return (
 		<HorizontalNavLink
-			destination={href + newQuery}
+			destination={href + (pathname === href ? "" : newQuery)}
 			isCurrent={pathname === href}
 			elementType={NoScrollLink}
 		>
