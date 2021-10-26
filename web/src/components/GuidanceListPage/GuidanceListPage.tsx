@@ -86,7 +86,6 @@ export const getGuidanceListPage =
 		searchUrl: { q, s, from, to, ps = defaultPageSize },
 		activeModifiers,
 	}) => {
-		const [announcementId, setAnnouncementId] = useState("");
 		const { asPath } = useRouter();
 		const router = useRouter();
 		// Announcement text, used for giving audible notifications to screen readers when results have changed
@@ -113,32 +112,14 @@ export const getGuidanceListPage =
 				unfilteredResultsUrl,
 			} = results as SearchResultsSuccess;
 
-		const insertCommas = () => {
-			const randomNumber = Math.floor(Math.random() * 20);
-			const filledArray = [...new Array(randomNumber)].map(() => ",");
-			return filledArray.join(",");
-		};
-
 		useEffect(() => {
-			console.log(
-				"setting announcement ",
-				firstResult,
-				lastResult,
-				resultCount,
-				q,
-				s,
-				from,
-				to
-			);
 			if (resultCount === 0) {
-				// setAnnouncement(`No results found ${insertCommas()}`);
 				setAnnouncement("No results found");
 			} else {
 				setAnnouncement(
 					`Showing ${firstResult} to ${lastResult} of ${resultCount}`
 				);
 			}
-			setAnnouncementId(Math.random().toString(36).replace("0.", ""));
 		}, [firstResult, lastResult, resultCount, q, s, from, to]);
 
 		// useEffect(() => {
@@ -171,10 +152,7 @@ export const getGuidanceListPage =
 					noindex={documents.length === 0}
 				/>
 
-				<Announcer
-					announcement={announcement}
-					announcementId={announcementId}
-				/>
+				<Announcer announcement={announcement} />
 
 				{breadcrumbs}
 

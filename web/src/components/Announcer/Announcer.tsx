@@ -1,8 +1,7 @@
-import { useEffect, FC, useState } from "react";
+import { useEffect, FC } from "react";
 
 export interface AnnounceProps {
 	announcement: string;
-	announcementId: string;
 }
 
 export const Announcer: FC<AnnounceProps> = ({ announcement }) => {
@@ -11,7 +10,12 @@ export const Announcer: FC<AnnounceProps> = ({ announcement }) => {
 		const nextJSRouteAnnouncer = document.getElementById(
 			"__next-route-announcer__"
 		);
-		if (nextJSRouteAnnouncer) nextJSRouteAnnouncer.textContent = announcement;
+		if (nextJSRouteAnnouncer) {
+			nextJSRouteAnnouncer.textContent = "";
+			setTimeout(() => {
+				nextJSRouteAnnouncer.textContent = announcement;
+			}, 250);
+		}
 	}, [announcement]);
 
 	return null;
