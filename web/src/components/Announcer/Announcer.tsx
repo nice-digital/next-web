@@ -1,7 +1,8 @@
-import { useEffect, FC } from "react";
+import { useEffect, FC, useState } from "react";
 
 export interface AnnounceProps {
 	announcement: string;
+	announcementId: string;
 }
 
 export const Announcer: FC<AnnounceProps> = ({ announcement }) => {

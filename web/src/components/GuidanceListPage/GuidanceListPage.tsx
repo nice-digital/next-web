@@ -13,6 +13,7 @@ import {
 	Document,
 	upsertQueryParam,
 	removeQueryParam,
+	getSearchUrl,
 } from "@nice-digital/search-client";
 
 import { Announcer } from "@/components/Announcer/Announcer";
@@ -85,7 +86,9 @@ export const getGuidanceListPage =
 		searchUrl: { q, s, from, to, ps = defaultPageSize },
 		activeModifiers,
 	}) => {
+		const [announcementId, setAnnouncementId] = useState("");
 		const { asPath } = useRouter();
+		const router = useRouter();
 		// Announcement text, used for giving audible notifications to screen readers when results have changed
 		const [announcement, setAnnouncement] = useState(""),
 			// Cache the breadcrumbs as they're static and it means we can use them on both the error view and success view
@@ -110,11 +113,48 @@ export const getGuidanceListPage =
 				unfilteredResultsUrl,
 			} = results as SearchResultsSuccess;
 
+		const insertCommas = () => {
+			const randomNumber = Math.floor(Math.random() * 20);
+			const filledArray = [...new Array(randomNumber)].map(() => ",");
+			return filledArray.join(",");
+		};
+
 		useEffect(() => {
-			setAnnouncement(
-				`Showing ${firstResult} to ${lastResult} of ${resultCount}`
+			console.log(
+				"setting announcement ",
+				firstResult,
+				lastResult,
+				resultCount,
+				q,
+				s,
+				from,
+				to
 			);
-		}, [firstResult, lastResult, resultCount]);
+			if (resultCount === 0) {
+				// setAnnouncement(`No results found ${insertCommas()}`);
+				setAnnouncement("No results found");
+			} else {
+				setAnnouncement(
+					`Showing ${firstResult} to ${lastResult} of ${resultCount}`
+				);
+			}
+			setAnnouncementId(Math.random().toString(36).replace("0.", ""));
+		}, [firstResult, lastResult, resultCount, q, s, from, to]);
+
+		// useEffect(() => {
+		// 	router.events.on("routeChangeComplete", () => {
+		// 		console.log("route change routeChangeComplete");
+		// 		console.log("guidance list page props ");
+		// 		console.log("!!! router ", router);
+		// 		console.log(">>> query", router.query);
+		// 		console.log("### path", router.asPath);
+		// 	});
+		// 	return () => {
+		// 		router.events.off("routeChangeComplete", () => {
+		// 			console.log("stoped");
+		// 		});
+		// 	};
+		// }, [router.events]);
 
 		if (failed)
 			return (
@@ -131,7 +171,10 @@ export const getGuidanceListPage =
 					noindex={documents.length === 0}
 				/>
 
-				<Announcer announcement={announcement} />
+				<Announcer
+					announcement={announcement}
+					announcementId={announcementId}
+				/>
 
 				{breadcrumbs}
 
