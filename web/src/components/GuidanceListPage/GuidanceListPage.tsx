@@ -91,16 +91,17 @@ export const getGuidanceListPage =
 		// Announcement text, used for giving audible notifications to screen readers when results have changed
 		const [announcement, setAnnouncement] = useState(""),
 			// Cache the breadcrumbs as they're static and it means we can use them on both the error view and success view
-			breadcrumbs = useMemo(
-				() => (
-					<Breadcrumbs>
-						<Breadcrumb to="/">Home</Breadcrumb>
-						<Breadcrumb to="/guidance">NICE guidance</Breadcrumb>
-						<Breadcrumb>{breadcrumb}</Breadcrumb>
-					</Breadcrumbs>
+			MemoizedBreadcrumbs = () =>
+				useMemo(
+					() => (
+						<Breadcrumbs>
+							<Breadcrumb to="/">Home</Breadcrumb>
+							<Breadcrumb to="/guidance">NICE guidance</Breadcrumb>
+							<Breadcrumb>{breadcrumb}</Breadcrumb>
+						</Breadcrumbs>
+					),
+					[]
 				),
-				[]
-			),
 			{ failed } = results,
 			{
 				documents,
@@ -130,26 +131,11 @@ export const getGuidanceListPage =
 			}
 		}, [s]);
 
-		// useEffect(() => {
-		// 	router.events.on("routeChangeComplete", () => {
-		// 		console.log("route change routeChangeComplete");
-		// 		console.log("guidance list page props ");
-		// 		console.log("!!! router ", router);
-		// 		console.log(">>> query", router.query);
-		// 		console.log("### path", router.asPath);
-		// 	});
-		// 	return () => {
-		// 		router.events.off("routeChangeComplete", () => {
-		// 			console.log("stoped");
-		// 		});
-		// 	};
-		// }, [router.events]);
-
 		if (failed)
 			return (
 				<>
 					<NextSeo title={title + " | Guidance"} noindex={true} />
-					<ErrorPageContent breadcrumbs={breadcrumbs} />
+					<ErrorPageContent breadcrumbs={MemoizedBreadcrumbs} />
 				</>
 			);
 
@@ -162,7 +148,7 @@ export const getGuidanceListPage =
 
 				<Announcer announcement={announcement} />
 
-				{breadcrumbs}
+				<MemoizedBreadcrumbs />
 
 				<PageHeader
 					preheading={preheading}

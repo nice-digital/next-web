@@ -91,7 +91,7 @@ class NextWebApp extends App<{}, {}, AppState> {
 				<>
 					<DefaultSeo {...getDefaultSeoConfig(pathname)} />
 					<Header {...headerProps} service={service} />
-					<main id="content-start">
+					<main>
 						<Container>
 							<ErrorPageContent />
 						</Container>
@@ -104,7 +104,7 @@ class NextWebApp extends App<{}, {}, AppState> {
 			<>
 				<DefaultSeo {...getDefaultSeoConfig(pathname)} />
 				<Header {...headerProps} service={service} />
-				<main id="content-start">
+				<main>
 					<Container>
 						<Component {...pageProps} />
 					</Container>
