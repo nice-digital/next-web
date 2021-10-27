@@ -14,8 +14,10 @@
     <files>
 		<file src="node_modules\**" target="node_modules" />
 		<file src="Deploy.ps1" />
-		<file src="pm2.ecosystem.json" />
-		<file src="package.json" />
 		<file src="package-lock.json" />
+		<file src="package.json" />
+		<file src="ping.ps1" />
+		<file src="pm2.ecosystem.json" />
+		<file src="resurrect.ps1" />
 	</files>
 </package>
