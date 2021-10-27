@@ -64,10 +64,6 @@ export const GuidanceListFilters: FC<GuidanceListFiltersProps> = ({
 		[formRef, doClientSideFormSubmit]
 	);
 
-	useEffect(() => {
-		console.log("SORT ORDER CHANGED ", sortOrder);
-	}, [sortOrder]);
-
 	return (
 		<FilterPanel
 			id="filters"
