@@ -122,6 +122,14 @@ export const getGuidanceListPage =
 			}
 		}, [firstResult, lastResult, resultCount, q, s, from, to]);
 
+		useEffect(() => {
+			if (s == "Title") {
+				setAnnouncement("Content loaded, sorted by Title");
+			} else {
+				setAnnouncement("Content loaded, sorted by Date");
+			}
+		}, [s]);
+
 		// useEffect(() => {
 		// 	router.events.on("routeChangeComplete", () => {
 		// 		console.log("route change routeChangeComplete");
