@@ -85,7 +85,6 @@ describe("getGetServerSidePropsFunc", () => {
 	});
 
 	describe("Success", () => {
-		jest.useRealTimers();
 		let result: { props: GuidanceListPageProps };
 		const resolvedUrl =
 			"/guidance/published?q=test&ndt=Guidance&from=2020-07-28&to=2021-06-04";
@@ -93,7 +92,7 @@ describe("getGetServerSidePropsFunc", () => {
 		beforeEach(async () => {
 			(search as jest.Mock).mockImplementation(
 				() =>
-					new Promise((resolve) => setTimeout(() => resolve(sampleData), 10))
+					new Promise((resolve) => setTimeout(() => resolve(sampleData), 11))
 			);
 
 			result = (await getServerSideProps({
@@ -110,7 +109,7 @@ describe("getGetServerSidePropsFunc", () => {
 			expect(setHeader).toHaveBeenCalledWith(
 				"Server-Timing",
 				// Can't assert on the actual time because it's not precise every time
-				expect.stringMatching(/^search;dur=\d{2}$/)
+				expect.stringMatching(/^search;dur=\d{2,}$/)
 			);
 		});
 
