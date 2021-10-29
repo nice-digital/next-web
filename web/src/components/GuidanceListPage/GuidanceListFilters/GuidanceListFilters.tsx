@@ -69,7 +69,7 @@ export const GuidanceListFilters: FC<GuidanceListFiltersProps> = ({
 			id="filters"
 			aria-label="Filter results"
 			heading={`Filter${
-				numActiveModifiers === 0 ? "" : ` (${numActiveModifiers} selected)`
+				numActiveModifiers === 0 ? "" : ` (${numActiveModifiers} active)`
 			}`}
 			innerRef={formRef}
 			onSubmit={formSubmitHandler}

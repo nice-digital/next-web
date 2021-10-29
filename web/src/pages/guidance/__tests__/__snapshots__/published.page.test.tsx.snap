@@ -243,10 +243,10 @@ exports[`/guidance/published should match the snapshot 1`] = `
                     />
                   </div>
                   <button
-                    class="btn btn--cta button"
+                    class="btn button"
                     type="submit"
                   >
-                    Search
+                    Filter
                   </button>
                 </div>
                 <div

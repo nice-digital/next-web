@@ -31,7 +31,7 @@ exports[`GuidanceListFilters should match snapshot for filter panel form 1`] = `
             fill="currentColor"
           />
         </svg>
-        Filter (2 selected)
+        Filter (2 active)
       </button>
     </h2>
     <div
@@ -78,10 +78,10 @@ exports[`GuidanceListFilters should match snapshot for filter panel form 1`] = `
           />
         </div>
         <button
-          class="btn btn--cta button"
+          class="btn button"
           type="submit"
         >
-          Search
+          Filter
         </button>
       </div>
       <div
