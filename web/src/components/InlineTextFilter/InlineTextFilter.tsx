@@ -18,13 +18,13 @@ export const InlineTextFilter: FC<InlineTextFilterProps> = ({
 	placeholder,
 	defaultValue,
 }) => {
-	const [value, setValue] = useState(defaultValue),
+	const [value, setValue] = useState(defaultValue || ""),
 		onInputChange = useCallback((e: React.ChangeEvent<HTMLInputElement>) => {
 			setValue(e.currentTarget.value);
 		}, []);
 
 	useEffect(() => {
-		setValue(defaultValue);
+		setValue(defaultValue || "");
 	}, [defaultValue]);
 
 	return (
@@ -41,8 +41,8 @@ export const InlineTextFilter: FC<InlineTextFilterProps> = ({
 				onChange={onInputChange}
 				value={value}
 			/>
-			<Button className={styles.button} variant="cta" type="submit">
-				Search
+			<Button className={styles.button} variant="primary" type="submit">
+				Filter
 			</Button>
 		</div>
 	);
