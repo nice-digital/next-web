@@ -13,7 +13,6 @@ import {
 	Document,
 	upsertQueryParam,
 	removeQueryParam,
-	getSearchUrl,
 } from "@nice-digital/search-client";
 
 import { Announcer } from "@/components/Announcer/Announcer";
@@ -87,7 +86,6 @@ export const getGuidanceListPage =
 		activeModifiers,
 	}) => {
 		const { asPath } = useRouter();
-		const router = useRouter();
 		// Announcement text, used for giving audible notifications to screen readers when results have changed
 		const [announcement, setAnnouncement] = useState(""),
 			// Cache the breadcrumbs as they're static and it means we can use them on both the error view and success view
