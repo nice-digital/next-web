@@ -1,9 +1,12 @@
+import { FC } from "react";
+
 import { SortOrder, Document } from "@nice-digital/search-client";
 
 import {
-	getGuidanceListPage,
+	GuidanceListPage,
 	getGetServerSidePropsFunc,
 } from "@/components/GuidanceListPage/GuidanceListPage";
+import { GuidanceListPageDataProps } from "@/components/GuidanceListPage/GuidanceListPageProps";
 
 const defaultSortOrder = SortOrder.titleAscending;
 
@@ -36,18 +39,26 @@ const tableBodyRender = (documents: Document[]) => (
 	</>
 );
 
-export default getGuidanceListPage({
-	breadcrumb: "Proposed",
-	preheading: "Guidance and quality standards ",
-	heading: "Proposed for development",
-	title: "Proposed guidance and quality standards",
-	defaultSort: {
-		order: defaultSortOrder,
-		label: "Title",
-	},
-	showDateFilter: false,
-	tableBodyRender,
-});
+const ProposedListPage: FC<GuidanceListPageDataProps> = (
+	props: GuidanceListPageDataProps
+) => (
+	<GuidanceListPage
+		{...props}
+		metaDescription="A complete list of guidance and quality standards awaiting development"
+		breadcrumb="Proposed"
+		preheading="Guidance and quality standards "
+		heading="Proposed for development"
+		title="Proposed guidance and quality standards"
+		defaultSort={{
+			order: defaultSortOrder,
+			label: "Title",
+		}}
+		showDateFilter={false}
+		tableBodyRender={tableBodyRender}
+	/>
+);
+
+export default ProposedListPage;
 
 export const getServerSideProps = getGetServerSidePropsFunc({
 	gstPreFilter: "Proposed",

@@ -1,9 +1,12 @@
+import { FC } from "react";
+
 import { SortOrder, Document } from "@nice-digital/search-client";
 
 import {
-	getGuidanceListPage,
+	GuidanceListPage,
 	getGetServerSidePropsFunc,
 } from "@/components/GuidanceListPage/GuidanceListPage";
+import { GuidanceListPageDataProps } from "@/components/GuidanceListPage/GuidanceListPageProps";
 import { ResponsiveDate } from "@/components/ResponsiveDate/ResponsiveDate";
 
 const defaultSortOrder = SortOrder.dateAscending,
@@ -53,24 +56,32 @@ const tableBodyRender = (documents: Document[]) => (
 	</>
 );
 
-export default getGuidanceListPage({
-	breadcrumb: "In consultation",
-	preheading: "Guidance and quality standards ",
-	heading: "In consultation",
-	title: "Guidance and quality standards in consultation",
-	defaultSort: {
-		order: defaultSortOrder,
-		label: "Date",
-	},
-	secondarySort: {
-		order: SortOrder.titleAscending,
-		label: "Title",
-	},
-	showDateFilter: true,
-	dateFilterLabel,
-	useFutureDates: true,
-	tableBodyRender,
-});
+const InConsultationListPage: FC<GuidanceListPageDataProps> = (
+	props: GuidanceListPageDataProps
+) => (
+	<GuidanceListPage
+		{...props}
+		metaDescription="A complete list of all guidance and quality standards currently open for consultation"
+		breadcrumb="In consultation"
+		preheading="Guidance and quality standards "
+		heading="In consultation"
+		title="Guidance and quality standards in consultation"
+		defaultSort={{
+			order: defaultSortOrder,
+			label: "Date",
+		}}
+		secondarySort={{
+			order: SortOrder.titleAscending,
+			label: "Title",
+		}}
+		showDateFilter={true}
+		dateFilterLabel={dateFilterLabel}
+		useFutureDates={true}
+		tableBodyRender={tableBodyRender}
+	/>
+);
+
+export default InConsultationListPage;
 
 export const getServerSideProps = getGetServerSidePropsFunc({
 	gstPreFilter: "In consultation",

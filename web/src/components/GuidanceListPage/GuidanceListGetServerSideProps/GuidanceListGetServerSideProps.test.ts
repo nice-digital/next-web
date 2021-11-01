@@ -7,7 +7,7 @@ import {
 import { logger } from "@/logger";
 
 import sampleData from "../../../__mocks__/__data__/search/guidance-published.json";
-import { GuidanceListPageProps } from "../GuidanceListPageProps";
+import { GuidanceListPageDataProps } from "../GuidanceListPageProps";
 
 import { getGetServerSidePropsFunc } from "./GuidanceListGetServerSideProps";
 
@@ -80,7 +80,7 @@ describe("getGetServerSidePropsFunc", () => {
 	});
 
 	describe("Success", () => {
-		let result: { props: GuidanceListPageProps };
+		let result: { props: GuidanceListPageDataProps };
 		const resolvedUrl =
 			"/guidance/published?q=test&ndt=Guidance&from=2020-07-28&to=2021-06-04";
 		beforeEach(async () => {
@@ -89,17 +89,13 @@ describe("getGetServerSidePropsFunc", () => {
 			result = (await getServerSideProps({
 				resolvedUrl,
 			} as GetServerSidePropsContext)) as {
-				props: GuidanceListPageProps;
+				props: GuidanceListPageDataProps;
 			};
 		});
 
 		it("should return results from search in results prop", async () => {
 			expect(result.props.results).toBe(sampleData);
 		});
-
-		it.todo(
-			"should insert from/to dates as first active modifier with correct toggle url"
-		);
 
 		it("should set active modifiers from navigators and form/to dates", () => {
 			expect(result.props.activeModifiers).toStrictEqual([

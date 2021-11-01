@@ -10,7 +10,7 @@ import { render, screen } from "@/test-utils";
 
 import sampleData from "../../__mocks__/__data__/search/guidance-published.json";
 
-import { getGuidanceListPage } from "./GuidanceListPage";
+import { GuidanceListPage } from "./GuidanceListPage";
 
 jest.mock("@/logger", () => ({
 	logger: { error: jest.fn() },
@@ -18,25 +18,6 @@ jest.mock("@/logger", () => ({
 }));
 
 describe("/guidance/published", () => {
-	const GuidanceListPage = getGuidanceListPage({
-		breadcrumb: "Published",
-		preheading: "Published ",
-		heading: <>Guidance, NICE advice and quality&nbsp;standards</>,
-		title: "Published guidance, NICE advice and quality standards",
-		defaultSort: {
-			order: SortOrder.dateDescending,
-			label: "Date",
-		},
-		secondarySort: {
-			order: SortOrder.titleAscending,
-			label: "Title",
-		},
-		showDateFilter: true,
-		useFutureDates: false,
-		dateFilterLabel: "Last updated date",
-		tableBodyRender: (_docs) => <p>test</p>,
-	});
-
 	let routerPush: jest.Mock;
 	beforeEach(() => {
 		routerPush = jest.fn();
@@ -54,11 +35,38 @@ describe("/guidance/published", () => {
 				activeModifiers={[]}
 				results={sampleData as unknown as SearchResultsSuccess}
 				searchUrl={{ route: "/guidance/published" } as SearchUrl}
+				metaDescription="A list of all published guidance"
+				breadcrumb="Published"
+				preheading="Published "
+				heading={<>Guidance, NICE advice and quality&nbsp;standards</>}
+				title="Published guidance, NICE advice and quality standards"
+				defaultSort={{
+					order: SortOrder.dateDescending,
+					label: "Date",
+				}}
+				secondarySort={{
+					order: SortOrder.titleAscending,
+					label: "Title",
+				}}
+				showDateFilter={true}
+				useFutureDates={false}
+				dateFilterLabel="Last updated date"
+				tableBodyRender={(_docs) => <p>test</p>}
 			/>
 		);
 	});
 
 	describe("Meta", () => {
+		it("should set meta description", () => {
+			expect(
+				document.querySelector("meta[name='description']")
+			).toBeInTheDocument();
+			expect(document.querySelector("meta[name='description']")).toHaveProperty(
+				"content",
+				"A list of all published guidance"
+			);
+		});
+
 		it("should set page title", () => {
 			expect(document.title).toBe(
 				"Published guidance, NICE advice and quality standards | Guidance | NICE"
@@ -81,6 +89,19 @@ describe("/guidance/published", () => {
 						{ ...sampleData, documents: [] } as unknown as SearchResultsSuccess
 					}
 					searchUrl={{ route: "/guidance/published" } as SearchUrl}
+					metaDescription="A list of all published guidance"
+					breadcrumb="Published"
+					preheading="Published "
+					heading={<>Guidance, NICE advice and quality&nbsp;standards</>}
+					title="Published guidance, NICE advice and quality standards"
+					defaultSort={{
+						order: SortOrder.dateDescending,
+						label: "Date",
+					}}
+					showDateFilter={true}
+					useFutureDates={false}
+					dateFilterLabel="Last updated date"
+					tableBodyRender={(_docs) => <p>test</p>}
 				/>
 			);
 			expect(document.querySelector("meta[name='robots']")).toBeInTheDocument();

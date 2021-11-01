@@ -1,9 +1,12 @@
+import { FC } from "react";
+
 import { Document, SortOrder } from "@nice-digital/search-client";
 
 import {
-	getGuidanceListPage,
 	getGetServerSidePropsFunc,
+	GuidanceListPage,
 } from "@/components/GuidanceListPage/GuidanceListPage";
+import { GuidanceListPageDataProps } from "@/components/GuidanceListPage/GuidanceListPageProps";
 import { ResponsiveDate } from "@/components/ResponsiveDate/ResponsiveDate";
 
 const defaultSortOrder = SortOrder.dateDescending,
@@ -55,24 +58,32 @@ const tableBodyRender = (documents: Document[]) => (
 	</>
 );
 
-export default getGuidanceListPage({
-	breadcrumb: "Published",
-	preheading: "Published ",
-	heading: <>Guidance, NICE advice and quality&nbsp;standards</>,
-	title: "Published guidance, NICE advice and quality standards",
-	defaultSort: {
-		order: defaultSortOrder,
-		label: "Date",
-	},
-	secondarySort: {
-		order: SortOrder.titleAscending,
-		label: "Title",
-	},
-	showDateFilter: true,
-	useFutureDates: false,
-	dateFilterLabel,
-	tableBodyRender,
-});
+const PublishedListPage: FC<GuidanceListPageDataProps> = (
+	props: GuidanceListPageDataProps
+) => (
+	<GuidanceListPage
+		{...props}
+		metaDescription="A complete list of all published guidance including guidelines, NICE advice and quality standards"
+		breadcrumb="Published"
+		preheading="Published "
+		heading={<>Guidance, NICE advice and quality&nbsp;standards</>}
+		title="Published guidance, NICE advice and quality standards"
+		defaultSort={{
+			order: defaultSortOrder,
+			label: "Date",
+		}}
+		secondarySort={{
+			order: SortOrder.titleAscending,
+			label: "Title",
+		}}
+		showDateFilter={true}
+		useFutureDates={false}
+		dateFilterLabel={dateFilterLabel}
+		tableBodyRender={tableBodyRender}
+	/>
+);
+
+export default PublishedListPage;
 
 export const getServerSideProps = getGetServerSidePropsFunc({
 	gstPreFilter: "Published",

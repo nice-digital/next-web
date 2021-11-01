@@ -18,7 +18,7 @@ import { logger } from "@/logger";
 import { dateFormatShort } from "@/utils/constants";
 
 import {
-	GuidanceListPageProps,
+	GuidanceListPageDataProps,
 	ActiveModifier,
 } from "../GuidanceListPageProps";
 
@@ -39,7 +39,7 @@ export const getGetServerSidePropsFunc =
 	}: GetGetServerSidePropsOptions) =>
 	async (
 		context: GetServerSidePropsContext
-	): Promise<GetServerSidePropsResult<GuidanceListPageProps>> => {
+	): Promise<GetServerSidePropsResult<GuidanceListPageDataProps>> => {
 		const redirectUrl = getRedirectUrl(context);
 
 		if (redirectUrl)
