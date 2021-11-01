@@ -6,7 +6,7 @@ import {
 	SortOrder,
 } from "@nice-digital/search-client";
 
-import { render, screen } from "@/test-utils";
+import { render, screen, cleanup } from "@/test-utils";
 
 import sampleData from "../../__mocks__/__data__/search/guidance-published.json";
 
@@ -24,7 +24,7 @@ describe("/guidance/published", () => {
 
 		(useRouter as jest.Mock).mockImplementation(() => ({
 			route: "/",
-			pathname: "",
+			pathname: "/guidance/published",
 			query: "",
 			asPath: "",
 			push: routerPush,
@@ -82,6 +82,8 @@ describe("/guidance/published", () => {
 		});
 
 		it("should set noindex meta tag when no results", () => {
+			cleanup();
+
 			render(
 				<GuidanceListPage
 					activeModifiers={[]}

@@ -59,7 +59,7 @@ export const GuidanceListPage: FC<GuidanceListPageProps> = ({
 	useFutureDates,
 	tableBodyRender,
 }) => {
-	const { asPath } = useRouter();
+	const { asPath, pathname } = useRouter();
 	// Announcement text, used for giving audible notifications to screen readers when results have changed
 	const [announcement, setAnnouncement] = useState(""),
 		// Cache the breadcrumbs as they're static and it means we can use them on both the error view and success view
@@ -71,18 +71,11 @@ export const GuidanceListPage: FC<GuidanceListPageProps> = ({
 					<Breadcrumb>{breadcrumb}</Breadcrumb>
 				</Breadcrumbs>
 			),
-			[breadcrumb]
+			[]
 		),
 		{ failed } = results,
-		{
-			documents,
-			navigators,
-			pageSize,
-			firstResult,
-			lastResult,
-			resultCount,
-			unfilteredResultsUrl,
-		} = results as SearchResultsSuccess;
+		{ documents, navigators, pageSize, firstResult, lastResult, resultCount } =
+			results as SearchResultsSuccess;
 
 	useEffect(() => {
 		setAnnouncement(
@@ -93,7 +86,11 @@ export const GuidanceListPage: FC<GuidanceListPageProps> = ({
 	if (failed)
 		return (
 			<>
-				<NextSeo title={title + " | Guidance"} noindex={true} />
+				<NextSeo
+					title={title + " | Guidance"}
+					noindex={true}
+					description={metaDescription}
+				/>
 				<ErrorPageContent breadcrumbs={breadcrumbs} />
 			</>
 		);
@@ -164,7 +161,12 @@ export const GuidanceListPage: FC<GuidanceListPageProps> = ({
 					{documents.length === 0 ? (
 						<p id="results">
 							We can&apos;t find any matching products. Try{" "}
-							<Link to={unfilteredResultsUrl?.fullUrl as string} scroll={false}>
+							<Link
+								to={
+									pathname +
+									(ps && Number(ps) != defaultPageSize ? `?ps=${ps}` : "")
+								}
+							>
 								clearing your filters
 							</Link>{" "}
 							and starting again.

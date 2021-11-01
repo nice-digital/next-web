@@ -97,8 +97,13 @@ describe("getGetServerSidePropsFunc", () => {
 			expect(result.props.results).toBe(sampleData);
 		});
 
-		it("should set active modifiers from navigators and form/to dates", () => {
+		it("should set active modifiers from navigators and from/to dates and q title query", () => {
 			expect(result.props.activeModifiers).toStrictEqual([
+				{
+					displayName: "test",
+					toggleUrl:
+						"/guidance/published?ndt=Guidance&from=2020-07-28&to=2021-06-04",
+				},
 				{
 					displayName: "Last updated date between 28/7/2020 and 4/6/2021",
 					toggleUrl: "/guidance/published?q=test&ndt=Guidance&sp=on",
