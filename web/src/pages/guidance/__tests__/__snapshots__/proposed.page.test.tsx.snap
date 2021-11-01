@@ -2,6 +2,7 @@
 
 exports[`/guidance/proposed should match the snapshot 1`] = `
 <div>
+  <div />
   <main
     id="content-start"
   >
