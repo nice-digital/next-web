@@ -16,8 +16,8 @@
 		<file src="Deploy.ps1" />
 		<file src="package-lock.json" />
 		<file src="package.json" />
-		<file src="ping.ps1" />
 		<file src="pm2.ecosystem.json" />
-		<file src="resurrect.ps1" />
+		<file src="pm2.ping.bat" />
+		<file src="pm2.resurrect.bat" />
 	</files>
 </package>
