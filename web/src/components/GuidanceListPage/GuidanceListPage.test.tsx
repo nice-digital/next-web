@@ -51,7 +51,13 @@ describe("/guidance/published", () => {
 				showDateFilter={true}
 				useFutureDates={false}
 				dateFilterLabel="Last updated date"
-				tableBodyRender={(_docs) => <p>test</p>}
+				tableBodyRender={(_docs) => (
+					<tbody>
+						<tr>
+							<td>test</td>
+						</tr>
+					</tbody>
+				)}
 			/>
 		);
 	});
@@ -142,9 +148,13 @@ describe("/guidance/published", () => {
 			  class="table"
 			  id="results"
 			>
-			  <p>
-			    test
-			  </p>
+			  <tbody>
+			    <tr>
+			      <td>
+			        test
+			      </td>
+			    </tr>
+			  </tbody>
 			</table>
 		`);
 		});
