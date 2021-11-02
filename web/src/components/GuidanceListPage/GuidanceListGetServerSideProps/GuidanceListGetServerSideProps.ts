@@ -52,12 +52,21 @@ export const getGetServerSidePropsFunc =
 
 		const searchUrl = getSearchUrl(context.resolvedUrl);
 
-		const results = await search(context.resolvedUrl, {
-			defaultSortOrder,
-			defaultPageSize,
-			usePrettyUrls: true,
-			orModifierPreFilter: { gst: [gstPreFilter] },
-		});
+		const searchStartTime = process.hrtime.bigint(),
+			results = await search(context.resolvedUrl, {
+				defaultSortOrder,
+				defaultPageSize,
+				usePrettyUrls: true,
+				orModifierPreFilter: { gst: [gstPreFilter] },
+			}),
+			searchEndTime = process.hrtime.bigint();
+
+		context.res.setHeader(
+			"Server-Timing",
+			`search;dur=${Math.round(
+				Number(searchEndTime - searchStartTime) / 1000000
+			)}`
+		);
 
 		if (results.failed) {
 			logger.error(

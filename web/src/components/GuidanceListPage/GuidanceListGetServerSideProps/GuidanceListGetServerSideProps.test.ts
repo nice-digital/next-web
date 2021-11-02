@@ -58,7 +58,9 @@ describe("getGetServerSidePropsFunc", () => {
 		it("should log error and debug response on search failure", async () => {
 			await getServerSideProps({
 				resolvedUrl: "/guidance/published?q=test",
-				res: {},
+				res: {
+					setHeader: jest.fn() as GetServerSidePropsContext["res"]["setHeader"],
+				},
 			} as GetServerSidePropsContext);
 
 			expect(logger.error as jest.Mock).toHaveBeenCalledWith(
@@ -68,7 +70,10 @@ describe("getGetServerSidePropsFunc", () => {
 		});
 
 		it("should return 500 response status when search request fails", async () => {
-			const res = { statusCode: 0 };
+			const res = {
+				statusCode: 0,
+				setHeader: jest.fn() as GetServerSidePropsContext["res"]["setHeader"],
+			};
 
 			await getServerSideProps({
 				resolvedUrl: "/guidance/published?q=test",
@@ -83,14 +88,29 @@ describe("getGetServerSidePropsFunc", () => {
 		let result: { props: GuidanceListPageProps };
 		const resolvedUrl =
 			"/guidance/published?q=test&ndt=Guidance&from=2020-07-28&to=2021-06-04";
+		const setHeader = jest.fn();
 		beforeEach(async () => {
-			(search as jest.Mock).mockResolvedValue(sampleData);
+			(search as jest.Mock).mockImplementation(
+				() =>
+					new Promise((resolve) => setTimeout(() => resolve(sampleData), 11))
+			);
 
 			result = (await getServerSideProps({
+				res: {
+					setHeader: setHeader as GetServerSidePropsContext["res"]["setHeader"],
+				},
 				resolvedUrl,
 			} as GetServerSidePropsContext)) as {
 				props: GuidanceListPageProps;
 			};
+		});
+
+		it("should set server timing header with search response time", async () => {
+			expect(setHeader).toHaveBeenCalledWith(
+				"Server-Timing",
+				// Can't assert on the actual time because it's not precise every time
+				expect.stringMatching(/^search;dur=\d{2,}$/)
+			);
 		});
 
 		it("should return results from search in results prop", async () => {
