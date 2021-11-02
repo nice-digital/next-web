@@ -68,6 +68,14 @@ export const GuidanceListFilterSummary: FC<GuidanceListFilterSummaryProps> = ({
 				elementType: NoScrollLink,
 			}))}
 			sorting={sorting}
-		></FilterSummary>
+		>
+			{resultCount === 0 ? (
+				"No results found"
+			) : (
+				<>
+					Showing {firstResult} to {lastResult} of {resultCount}
+				</>
+			)}
+		</FilterSummary>
 	);
 };
