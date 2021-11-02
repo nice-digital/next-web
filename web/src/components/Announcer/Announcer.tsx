@@ -12,9 +12,9 @@ export const Announcer: FC<AnnounceProps> = ({ announcement }) => {
 		);
 		if (nextJSRouteAnnouncer) {
 			nextJSRouteAnnouncer.textContent = "";
-			setTimeout(() => {
+			window.requestAnimationFrame((_timestamp) => {
 				nextJSRouteAnnouncer.textContent = announcement;
-			}, 250);
+			});
 		}
 	}, [announcement]);
 
