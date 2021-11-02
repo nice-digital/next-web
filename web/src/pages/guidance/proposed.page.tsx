@@ -37,6 +37,8 @@ const tableBodyRender = (documents: Document[]) => (
 );
 
 export default getGuidanceListPage({
+	metaDescription:
+		"A complete list of guidance and quality standards awaiting development",
 	breadcrumb: "Proposed",
 	preheading: "Guidance and quality standards ",
 	heading: "Proposed for development",
