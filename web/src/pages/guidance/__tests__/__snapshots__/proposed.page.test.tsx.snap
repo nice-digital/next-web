@@ -181,6 +181,21 @@ exports[`/guidance/proposed should match the snapshot 1`] = `
                   aria-expanded="true"
                   type="button"
                 >
+                  <svg
+                    aria-hidden="true"
+                    class="filter-panel__heading-icon filter-panel__heading-icon--expanded"
+                    fill="none"
+                    focusable="false"
+                    height="1em"
+                    viewBox="0 0 512 512"
+                    width="1em"
+                    xmlns="http://www.w3.org/2000/svg"
+                  >
+                    <path
+                      d="M478.152 174c0 10.091-3.525 18.661-10.576 25.712l-186 186c-7.243 7.243-15.909 10.864-26 10.864-10.283 0-18.853-3.621-25.712-10.864l-186-186C36.621 192.853 33 184.283 33 174c0-10.091 3.621-18.757 10.864-26L65 126.576C72.424 119.525 81.09 116 91 116c10.091 0 18.661 3.525 25.712 10.576L255.576 265.44 394.44 126.576c7.051-7.051 15.621-10.576 25.712-10.576 9.909 0 18.576 3.525 26 10.576L467.576 148c7.051 7.424 10.576 16.091 10.576 26z"
+                      fill="currentColor"
+                    />
+                  </svg>
                   Filter
                 </button>
               </h2>
@@ -228,10 +243,10 @@ exports[`/guidance/proposed should match the snapshot 1`] = `
                     />
                   </div>
                   <button
-                    class="btn btn--cta button"
+                    class="btn button"
                     type="submit"
                   >
-                    Search
+                    Filter
                   </button>
                 </div>
                 <div
@@ -629,14 +644,166 @@ exports[`/guidance/proposed should match the snapshot 1`] = `
               </tbody>
             </table>
           </div>
-          <button
-            class="btn mt--d ml--0"
-            type="button"
+          <nav
+            aria-label="Pagination"
+            class="pagination "
+            role="navigation"
           >
-            Copy 
-            10 results
-             to clipboard
-          </button>
+            <ol
+              class="pagination__list"
+            >
+              <li
+                aria-current="true"
+                class="pagination__item pagination__item--current"
+              >
+                <span
+                  class="pagination__inactive"
+                >
+                  <span
+                    class="visually-hidden"
+                  >
+                    Current page 
+                  </span>
+                  1
+                </span>
+              </li>
+              <li
+                class="pagination__item"
+              >
+                <a
+                  aria-label="Go to page 2"
+                  class="pagination__link"
+                  href="/?pa=2"
+                >
+                  2
+                </a>
+              </li>
+              <li
+                class="pagination__item"
+              >
+                <a
+                  aria-label="Go to page 3"
+                  class="pagination__link"
+                  href="/?pa=3"
+                >
+                  3
+                </a>
+              </li>
+              <li
+                class="pagination__item"
+              >
+                <span
+                  class="pagination__inactive"
+                >
+                  …
+                </span>
+              </li>
+              <li
+                class="pagination__item"
+              >
+                <a
+                  aria-label="Go to page 21"
+                  class="pagination__link"
+                  href="/?pa=21"
+                >
+                  21
+                </a>
+              </li>
+              <li
+                class="pagination__item pagination__item--count"
+              >
+                <span>
+                  Page 
+                  <strong>
+                    1
+                  </strong>
+                   of 
+                  <strong>
+                    21
+                  </strong>
+                </span>
+              </li>
+              <li
+                class="pagination__item pagination__item--bookend"
+              >
+                <a
+                  class="pagination__link"
+                  href="/?pa=2"
+                >
+                  Next page
+                </a>
+              </li>
+            </ol>
+          </nav>
+          <div
+            class="grid grid--middle mt--d"
+          >
+            <div
+              class="mb--e mb--0-sm"
+              data-g="12 sm:6"
+            >
+              <button
+                class="btn mv--0 mh--0"
+                type="button"
+              >
+                Copy 
+                10 results
+                 to clipboard
+              </button>
+            </div>
+            <div
+              class="text-right"
+              data-g="12 sm:6"
+            >
+              <h3
+                class="p mt--0 mb--c"
+              >
+                Results per page
+              </h3>
+              <ol
+                class="list list--piped mv--0"
+              >
+                <li
+                  class="pl--b"
+                >
+                  10
+                </li>
+                <li
+                  class="pl--b"
+                >
+                  <a
+                    aria-label="Show 25 results per page"
+                    class="ph--0"
+                    href="/?ps=25"
+                  >
+                    25
+                  </a>
+                </li>
+                <li
+                  class="pl--b"
+                >
+                  <a
+                    aria-label="Show 50 results per page"
+                    class="ph--0"
+                    href="/?ps=50"
+                  >
+                    50
+                  </a>
+                </li>
+                <li
+                  class="pl--b"
+                >
+                  <a
+                    aria-label="Show All results per page"
+                    class="ph--0"
+                    href="/?ps=9999"
+                  >
+                    All
+                  </a>
+                </li>
+              </ol>
+            </div>
+          </div>
         </section>
       </div>
     </div>

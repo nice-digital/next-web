@@ -6,7 +6,7 @@ import {
 	SortOrder,
 } from "@nice-digital/search-client";
 
-import { render, screen } from "@/test-utils";
+import { render, screen, cleanup } from "@/test-utils";
 
 import sampleData from "../../__mocks__/__data__/search/guidance-published.json";
 
@@ -34,7 +34,13 @@ describe("/guidance/published", () => {
 		showDateFilter: true,
 		useFutureDates: false,
 		dateFilterLabel: "Last updated date",
-		tableBodyRender: (_docs) => <p>test</p>,
+		tableBodyRender: (_docs) => (
+			<tbody>
+				<tr>
+					<td>test</td>
+				</tr>
+			</tbody>
+		),
 	});
 
 	let routerPush: jest.Mock;
@@ -43,7 +49,7 @@ describe("/guidance/published", () => {
 
 		(useRouter as jest.Mock).mockImplementation(() => ({
 			route: "/",
-			pathname: "",
+			pathname: "/guidance/published",
 			query: "",
 			asPath: "",
 			push: routerPush,
@@ -74,6 +80,8 @@ describe("/guidance/published", () => {
 		});
 
 		it("should set noindex meta tag when no results", () => {
+			cleanup();
+
 			render(
 				<GuidanceListPage
 					activeModifiers={[]}
@@ -119,9 +127,13 @@ describe("/guidance/published", () => {
 			  class="table"
 			  id="results"
 			>
-			  <p>
-			    test
-			  </p>
+			  <tbody>
+			    <tr>
+			      <td>
+			        test
+			      </td>
+			    </tr>
+			  </tbody>
 			</table>
 		`);
 		});

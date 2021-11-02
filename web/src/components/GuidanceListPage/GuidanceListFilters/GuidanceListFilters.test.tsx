@@ -55,7 +55,7 @@ describe("GuidanceListFilters", () => {
 				/>
 			);
 
-			userEvent.click(screen.getByText("Search"));
+			userEvent.click(screen.getByText("Filter"));
 
 			expect(routerPush).toHaveBeenCalledWith(
 				"?ps=20&s=Title&ndt=Guidance&ngt=NICE+guidelines",
@@ -81,14 +81,14 @@ describe("GuidanceListFilters", () => {
 		});
 
 		it("should render search submit button", () => {
-			expect(screen.getByText("Search")).toBeInTheDocument();
-			expect(screen.getByText("Search")).toHaveProperty("tagName", "BUTTON");
-			expect(screen.getByText("Search")).toHaveAttribute("type", "submit");
+			expect(screen.getByText("Filter")).toBeInTheDocument();
+			expect(screen.getByText("Filter")).toHaveProperty("tagName", "BUTTON");
+			expect(screen.getByText("Filter")).toHaveAttribute("type", "submit");
 		});
 
 		it("should use NextJS router with serialized form on search button click", () => {
 			const input = screen.getByLabelText("Filter by title or keyword"),
-				button = screen.getByText("Search");
+				button = screen.getByText("Filter");
 
 			userEvent.type(input, "diabetes");
 			userEvent.click(button);
