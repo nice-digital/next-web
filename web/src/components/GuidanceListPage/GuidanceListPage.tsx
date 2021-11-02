@@ -89,17 +89,16 @@ export const getGuidanceListPage =
 		// Announcement text, used for giving audible notifications to screen readers when results have changed
 		const [announcement, setAnnouncement] = useState(""),
 			// Cache the breadcrumbs as they're static and it means we can use them on both the error view and success view
-			MemoizedBreadcrumbs = () =>
-				useMemo(
-					() => (
-						<Breadcrumbs>
-							<Breadcrumb to="/">Home</Breadcrumb>
-							<Breadcrumb to="/guidance">NICE guidance</Breadcrumb>
-							<Breadcrumb>{breadcrumb}</Breadcrumb>
-						</Breadcrumbs>
-					),
-					[]
+			breadcrumbs = useMemo(
+				() => (
+					<Breadcrumbs>
+						<Breadcrumb to="/">Home</Breadcrumb>
+						<Breadcrumb to="/guidance">NICE guidance</Breadcrumb>
+						<Breadcrumb>{breadcrumb}</Breadcrumb>
+					</Breadcrumbs>
 				),
+				[]
+			),
 			{ failed } = results,
 			{
 				documents,
@@ -115,25 +114,18 @@ export const getGuidanceListPage =
 			if (resultCount === 0) {
 				setAnnouncement("No results found");
 			} else {
+				const sortOrder = s == "Title" ? "title" : "date";
 				setAnnouncement(
-					`Showing ${firstResult} to ${lastResult} of ${resultCount}`
+					`Showing ${firstResult} to ${lastResult} of ${resultCount}, sorted by ${sortOrder}`
 				);
 			}
 		}, [firstResult, lastResult, resultCount, q, s, from, to]);
-
-		useEffect(() => {
-			if (s == "Title") {
-				setAnnouncement("Content loaded, sorted by Title");
-			} else {
-				setAnnouncement("Content loaded, sorted by Date");
-			}
-		}, [s]);
 
 		if (failed)
 			return (
 				<>
 					<NextSeo title={title + " | Guidance"} noindex={true} />
-					<ErrorPageContent breadcrumbs={MemoizedBreadcrumbs} />
+					<ErrorPageContent breadcrumbs={breadcrumbs} />
 				</>
 			);
 
@@ -146,11 +138,12 @@ export const getGuidanceListPage =
 
 				<Announcer announcement={announcement} />
 
-				<MemoizedBreadcrumbs />
+				{breadcrumbs}
 
 				<PageHeader
 					preheading={preheading}
 					heading={heading}
+					id="content-start"
 					lead={
 						<>
 							<SkipLink targetId="filters">Skip to filters</SkipLink>
