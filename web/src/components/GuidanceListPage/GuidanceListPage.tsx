@@ -85,7 +85,7 @@ export const getGuidanceListPage =
 		searchUrl: { q, s, from, to, ps = defaultPageSize },
 		activeModifiers,
 	}) => {
-		const { asPath } = useRouter();
+		const { asPath, pathname } = useRouter();
 		// Announcement text, used for giving audible notifications to screen readers when results have changed
 		const [announcement, setAnnouncement] = useState(""),
 			// Cache the breadcrumbs as they're static and it means we can use them on both the error view and success view
@@ -107,7 +107,6 @@ export const getGuidanceListPage =
 				firstResult,
 				lastResult,
 				resultCount,
-				unfilteredResultsUrl,
 			} = results as SearchResultsSuccess;
 
 		useEffect(() => {
@@ -197,8 +196,10 @@ export const getGuidanceListPage =
 							<p id="results">
 								We can&apos;t find any matching products. Try{" "}
 								<Link
-									to={unfilteredResultsUrl?.fullUrl as string}
-									scroll={false}
+									to={
+										pathname +
+										(ps && Number(ps) != defaultPageSize ? `?ps=${ps}` : "")
+									}
 								>
 									clearing your filters
 								</Link>{" "}
