@@ -117,7 +117,7 @@ export const getGuidanceListPage =
 				const sortOrder =
 					s === "Title" ? "title" : s ? "date" : defaultSort.label;
 				setAnnouncement(
-					`Showing ${firstResult} to ${lastResult} of ${resultCount}, sorted by ${sortOrder}`
+					`Showing ${firstResult} to ${lastResult} of ${resultCount}, sorted by ${sortOrder.toLowerCase()}`
 				);
 			}
 		}, [firstResult, lastResult, resultCount, q, s, from, to]);
