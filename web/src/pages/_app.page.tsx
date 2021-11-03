@@ -44,12 +44,15 @@ const headerProps: HeaderProps = {
 
 // eslint-disable-next-line @typescript-eslint/ban-types
 class NextWebApp extends App<{}, {}, AppState> {
+	headerObserver: MutationObserver | null = null;
+
 	constructor(props: AppProps) {
 		super(props);
 
 		this.state = { hasError: false };
 
 		this.handleRouteChange = this.handleRouteChange.bind(this);
+		this.globalNavWrapperRef = this.globalNavWrapperRef.bind(this);
 	}
 
 	handleRouteChange(path: string): void {
@@ -62,6 +65,8 @@ class NextWebApp extends App<{}, {}, AppState> {
 
 	componentWillUnmount(): void {
 		this.props.router.events.off("routeChangeComplete", this.handleRouteChange);
+
+		if (this.headerObserver) this.headerObserver.disconnect();
 	}
 
 	/**
@@ -78,6 +83,37 @@ class NextWebApp extends App<{}, {}, AppState> {
 		this.setState({ hasError: true });
 	}
 
+	/**
+	 * TODO: Remove this hack to fix https://github.com/alphagov/accessible-autocomplete/issues/434
+	 * We do this to make our axe tests pass
+	 * Wait for the search box to appear before removing the aria-activedescendant attribute
+	 * Same fix as in CKS: https://github.com/nice-digital/cks-gatsby/blob/master/gatsby/src/components/Header/Header.tsx#L39-L61
+	 * @param node The div element that wraps global nav
+	 */
+	globalNavWrapperRef(node: HTMLDivElement | null): void {
+		let searchInput: HTMLElement | null;
+		if (node && "MutationObserver" in window) {
+			this.headerObserver = new MutationObserver(() => {
+				searchInput =
+					searchInput ||
+					document.querySelector("header form[role='search'] [name='q']");
+				if (
+					searchInput &&
+					searchInput.getAttribute("aria-activedescendant") === "false"
+				) {
+					searchInput.setAttribute("aria-activedescendant", "");
+				}
+			});
+
+			this.headerObserver.observe(node, {
+				attributeFilter: ["aria-activedescendant"],
+				attributes: true, // See https://stackoverflow.com/a/50593541/486434
+				childList: true,
+				subtree: true,
+			});
+		}
+	}
+
 	render(): JSX.Element {
 		const {
 				Component,
@@ -90,7 +126,9 @@ class NextWebApp extends App<{}, {}, AppState> {
 			return (
 				<>
 					<DefaultSeo {...getDefaultSeoConfig(pathname)} />
-					<Header {...headerProps} service={service} />
+					<div ref={this.globalNavWrapperRef}>
+						<Header {...headerProps} service={service} />
+					</div>
 					<main id="content-start">
 						<Container>
 							<ErrorPageContent />
@@ -103,7 +141,9 @@ class NextWebApp extends App<{}, {}, AppState> {
 		return (
 			<>
 				<DefaultSeo {...getDefaultSeoConfig(pathname)} />
-				<Header {...headerProps} service={service} />
+				<div ref={this.globalNavWrapperRef}>
+					<Header {...headerProps} service={service} />
+				</div>
 				<main id="content-start">
 					<Container>
 						<Component {...pageProps} />
