@@ -114,7 +114,8 @@ export const getGuidanceListPage =
 			if (resultCount === 0) {
 				setAnnouncement("No results found");
 			} else {
-				const sortOrder = s == "Title" ? "title" : "date";
+				const sortOrder =
+					s !== undefined && s !== null && s !== "" ? s : defaultSort.order;
 				setAnnouncement(
 					`Showing ${firstResult} to ${lastResult} of ${resultCount}, sorted by ${sortOrder}`
 				);
