@@ -7,13 +7,15 @@
   "scripts": {
     "test": "echo \"Error: no tests for the web host\" && exit 1",
     "// PM2 HOSTING": "",
-    "start": "pm2 startOrReload pm2.ecosystem.json --env production --update-env",
+    "start": "pm2 startOrRestart pm2.ecosystem.json --env production --update-env",
     "stop": "pm2 stop next-web",
     "reload": "pm2 reload next-web",
     "restart": "pm2 restart next-web",
     "delete": "pm2 delete next-web",
     "save": "pm2 save",
     "kill": "pm2 kill",
+    "ping": "pm2 ping",
+    "resurrect": "pm2 resurrect",
     "pm2": "pm2"
   },
   "repository": {
