@@ -102,9 +102,9 @@ export function Search({
 
 			<Announcer announcement={announcement} />
 
-			{breadcrumbs}
+			{/* {breadcrumbs} */}
 
-			<PageHeader
+			{/* <PageHeader
 				preheading="Search results for"
 				heading={`${results.finalSearchText}`}
 				lead={
@@ -113,7 +113,7 @@ export function Search({
 						<SkipLink targetId="results">Skip to results</SkipLink>
 					</>
 				}
-			/>
+			/> */}
 
 			<Grid gutter="loose" className={styles.sectionWrapper}>
 				<GridItem
@@ -148,20 +148,20 @@ export function Search({
 								),
 							})
 						)}
-						sorting={[
-							{
-								active: true,
-								label: s === "Title" ? "Title" : "Date",
-							},
-							{
-								active: false,
-								label: s !== "Title" ? "Title" : "Date",
-								destination: "?s=" + (s !== "Title" ? "Title" : "Date"),
-								elementType: ({ ...props }) => (
-									<Link {...props} scroll={false} />
-								),
-							},
-						]}
+						// sorting={[
+						// 	{
+						// 		active: true,
+						// 		label: s === "Title" ? "Title" : "Date",
+						// 	},
+						// 	{
+						// 		active: false,
+						// 		label: s !== "Title" ? "Title" : "Date",
+						// 		destination: "?s=" + (s !== "Title" ? "Title" : "Date"),
+						// 		elementType: ({ ...props }) => (
+						// 			<Link {...props} scroll={false} />
+						// 		),
+						// 	},
+						// ]}
 					>
 						{resultCount === 0 ? (
 							"Showing 0 results"
