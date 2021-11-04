@@ -118,13 +118,7 @@ describe("/guidance/published", () => {
 			const headingElement = screen.getByText(
 				"Guidance, NICE advice and quality standards"
 			);
-
 			expect(headingElement.parentElement?.getAttribute("id")).toEqual(
-				"content-start"
-			);
-
-			expect(screen.getByTestId("skip-link-target")).toHaveAttribute(
-				"id",
 				"content-start"
 			);
 		});

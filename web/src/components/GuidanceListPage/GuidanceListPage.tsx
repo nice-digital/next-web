@@ -144,7 +144,6 @@ export const getGuidanceListPage =
 					preheading={preheading}
 					heading={heading}
 					id="content-start"
-					data-testid="skip-link-target"
 					lead={
 						<>
 							<SkipLink targetId="filters">Skip to filters</SkipLink>
