@@ -11,8 +11,9 @@ describe("Announcer", () => {
 		document.body.appendChild(announcer);
 
 		render(<Announcer announcement="Test announcement" />);
-
-		expect(screen.getByRole("alert")).toHaveTextContent("Test announcement");
+		window.requestAnimationFrame((_timestamp) => {
+			expect(screen.getByRole("alert")).toHaveTextContent("Test announcement");
+		});
 
 		announcer.remove();
 	});
