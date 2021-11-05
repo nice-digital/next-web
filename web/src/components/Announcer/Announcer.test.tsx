@@ -1,9 +1,9 @@
-import { render, screen } from "@testing-library/react";
+import { render, screen, waitFor } from "@testing-library/react";
 
 import { Announcer } from "./Announcer";
 
 describe("Announcer", () => {
-	it("should set announcement in text content on NextJS announcer element", () => {
+	it("should set announcement in text content on NextJS announcer element", async () => {
 		const announcer = document.createElement("div");
 		announcer.id = "__next-route-announcer__";
 		announcer.setAttribute("aria-live", "assertive");
@@ -11,9 +11,10 @@ describe("Announcer", () => {
 		document.body.appendChild(announcer);
 
 		render(<Announcer announcement="Test announcement" />);
-		window.requestAnimationFrame((_timestamp) => {
-			expect(screen.getByRole("alert")).toHaveTextContent("Test announcement");
-		});
+
+		await waitFor(() =>
+			expect(screen.getByRole("alert")).toHaveTextContent("Test announcement")
+		);
 
 		announcer.remove();
 	});
