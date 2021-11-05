@@ -1,5 +1,4 @@
 import { useEffect, FC } from "react";
-import { isNoSubstitutionTemplateLiteral } from "typescript";
 
 export interface AnnounceProps {
 	announcement: string;
