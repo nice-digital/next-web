@@ -14,24 +14,13 @@ export const Announcer: FC<AnnounceProps> = ({ announcement }) => {
 			nextJSRouteAnnouncer?.setAttribute("aria-atomic", "true");
 		}
 
-		const appendSpaces = () => {
-			let stringToAppend = "";
-			let counter = 0;
-			const randomNumber = Math.floor(Math.random() * 25);
-			while (counter < randomNumber) {
-				counter++;
-				stringToAppend += "\xa0";
-			}
-			return stringToAppend;
-		};
-
 		if (nextJSRouteAnnouncer) {
 			nextJSRouteAnnouncer.textContent = "";
 			window.requestAnimationFrame((_timestamp) => {
-				nextJSRouteAnnouncer.textContent = announcement + appendSpaces();
+				nextJSRouteAnnouncer.textContent = announcement;
 			});
 		}
-	});
+	}, [announcement]);
 
 	return null;
 };

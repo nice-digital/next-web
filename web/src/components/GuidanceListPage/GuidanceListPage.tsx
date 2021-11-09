@@ -111,7 +111,11 @@ export const getGuidanceListPage =
 
 		useEffect(() => {
 			if (resultCount === 0) {
-				setAnnouncement("No results found");
+				setAnnouncement(
+					`No results found for ${activeModifiers
+						.map((a) => a.displayName)
+						.join(", ")}`
+				);
 			} else {
 				const sortOrder =
 					s === "Title" ? "title" : s ? "date" : defaultSort.label;
@@ -119,7 +123,7 @@ export const getGuidanceListPage =
 					`Showing ${firstResult} to ${lastResult} of ${resultCount}, sorted by ${sortOrder.toLowerCase()}`
 				);
 			}
-		}, [firstResult, lastResult, resultCount, q, s, from, to]);
+		}, [firstResult, lastResult, resultCount, q, s, from, to, activeModifiers]);
 
 		if (failed)
 			return (
