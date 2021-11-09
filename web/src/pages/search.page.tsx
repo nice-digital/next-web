@@ -193,6 +193,7 @@ export function Search({
 									teaser,
 									subSectionLinks,
 									niceResultType,
+									niceDocType,
 								}) => {
 									const formattedTitle = (
 										<span dangerouslySetInnerHTML={{ __html: title }} />
@@ -203,10 +204,16 @@ export function Search({
 
 									function getMeta() {
 										const things = [];
-										if (niceResultType) {
-											things.push({ label: "Type", value: niceResultType });
+										if (niceDocType || niceResultType) {
+											things.push({
+												label: "Type",
+												value:
+													niceDocType && niceDocType.length > 0
+														? niceDocType
+														: niceResultType,
+											});
 										}
-										if (lastUpdated) {
+										if (lastUpdated && lastUpdated != publicationDate) {
 											things.push({
 												visibleLabel: true,
 												label: "Last updated",
