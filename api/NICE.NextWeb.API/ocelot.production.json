@@ -9,6 +9,9 @@
       ],
       "DownstreamPathTemplate": "/api/{everything}",
       "DownstreamScheme": "https",
+      "DownstreamHeaderTransform": {
+        "X-Response-O-C": "True"
+      },
       "UpstreamHttpMethod": [ "Get" ],
       "UpstreamPathTemplate": "/api/{everything}",
       "FileCacheOptions": {
