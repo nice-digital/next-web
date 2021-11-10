@@ -204,11 +204,11 @@ export function Search({
 
 									function getMeta() {
 										const items = [];
-										if (niceDocType || niceResultType) {
+										if (niceResultType || niceDocType) {
 											items.push({
 												label: "Type",
 												value:
-													niceDocType && niceDocType.length > 0
+													niceResultType && niceResultType.length > 0
 														? niceResultType
 														: niceDocType,
 											});
