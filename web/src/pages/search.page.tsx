@@ -194,6 +194,8 @@ export function Search({
 									subSectionLinks,
 									niceResultType,
 									niceDocType,
+									resourceCategory,
+									resourceType,
 								}) => {
 									const formattedTitle = (
 										<span dangerouslySetInnerHTML={{ __html: title }} />
@@ -213,6 +215,18 @@ export function Search({
 														: niceDocType,
 											});
 										}
+										if (resourceCategory || resourceType) {
+											items.push({
+												visibleLabel: true,
+												label:
+													(resourceCategory && "DEBUG Resource category:") ||
+													"Resource type",
+												value:
+													resourceType && resourceType.length > 0
+														? resourceType
+														: resourceCategory,
+											});
+										}
 										if (lastUpdated && lastUpdated !== publicationDate) {
 											items.push({
 												visibleLabel: true,
@@ -222,7 +236,7 @@ export function Search({
 										} else if (publicationDate) {
 											items.push({
 												visibleLabel: true,
-												label: "Published on",
+												label: "Published",
 												value: formatDateStr(publicationDate),
 											});
 										}
