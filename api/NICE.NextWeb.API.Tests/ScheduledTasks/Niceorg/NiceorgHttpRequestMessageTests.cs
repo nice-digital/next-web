@@ -1,9 +1,9 @@
-using Xunit;
 using System.Collections.Generic;
 using Microsoft.Extensions.Configuration;
 using NICE.NextWeb.API.ScheduledTasks.Scheduler;
+using Xunit;
 
-namespace NICE.NextWeb.API.ScheduledTasks.RefreshGuidanceTaxonomyScheduledTask.Tests
+namespace NICE.NextWeb.API.Tests.ScheduledTasks.Niceorg
 {
     public class NiceorgHttpRequestMessageTests
     {
@@ -13,7 +13,7 @@ namespace NICE.NextWeb.API.ScheduledTasks.RefreshGuidanceTaxonomyScheduledTask.T
             //Arrange
             var inMemorySettings = new Dictionary<string, string>
             {
-                { "CacheRefreshService:NiceOrgBaseUrl", "http://niceorg.org.uk/" },
+                { "CacheRefreshService:OcelotBaseUrl", "http://next-web-api.nice.org.uk/" },
                 { "CacheRefreshService:NiceOrgAPIKey", "xxxx-xxxx-xxxx-xxxx" },
             };
 
@@ -25,7 +25,7 @@ namespace NICE.NextWeb.API.ScheduledTasks.RefreshGuidanceTaxonomyScheduledTask.T
             var sut = new NiceorgHttpRequestMessage(mockConfiguration);
 
             //Assert
-            Assert.Equal("http://niceorg.org.uk/api/endpoint?ApiKey=xxxx-xxxx-xxxx-xxxx",
+            Assert.Equal("http://next-web-api.nice.org.uk/api/endpoint?ApiKey=xxxx-xxxx-xxxx-xxxx",
                 sut.GetNiceorgHttpRequestMessage("api/endpoint").RequestUri.ToString());
         }
 
@@ -35,7 +35,7 @@ namespace NICE.NextWeb.API.ScheduledTasks.RefreshGuidanceTaxonomyScheduledTask.T
             //Arrange
             var inMemorySettings = new Dictionary<string, string>
             {
-                { "CacheRefreshService:NiceOrgBaseUrl", "http://niceorg.org.uk/" },
+                { "CacheRefreshService:OcelotBaseUrl", "http://next-web-api.nice.org.uk/" },
                 { "CacheRefreshService:NiceOrgAPIKey", "xxxx-xxxx-xxxx-xxxx" },
             };
 

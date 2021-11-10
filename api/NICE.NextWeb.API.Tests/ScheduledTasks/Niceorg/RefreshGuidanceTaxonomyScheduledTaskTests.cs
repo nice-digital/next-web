@@ -1,4 +1,3 @@
-using System;
 using System.Collections.Generic;
 using System.Net;
 using System.Net.Http;
@@ -7,12 +6,11 @@ using System.Threading.Tasks;
 using Microsoft.Extensions.Configuration;
 using Moq;
 using Moq.Protected;
-using NICE.NextWeb.API.ScheduledTasks;
 using NICE.NextWeb.API.ScheduledTasks.Niceorg;
 using NICE.NextWeb.API.ScheduledTasks.Scheduler;
 using Xunit;
 
-namespace NICE.NextWeb.API.Tests.ScheduledTasks
+namespace NICE.NextWeb.API.Tests.ScheduledTasks.Niceorg
 {
     public class RefreshGuidanceTaxonomyScheduledTaskTests
     {
@@ -22,7 +20,7 @@ namespace NICE.NextWeb.API.Tests.ScheduledTasks
             // Arrange
             var inMemorySettings = new Dictionary<string, string>
             {
-                { "CacheRefreshService:NiceOrgBaseUrl", "http://niceorg.org.uk" },
+                { "CacheRefreshService:OcelotBaseUrl", "http://next-web-api.nice.org.uk/" },
                 { "CacheRefreshService:NiceOrgAPIKey", "xxxx-xxxx-xxxx-xxxx" },
             };
 
@@ -63,7 +61,7 @@ namespace NICE.NextWeb.API.Tests.ScheduledTasks
             // Arrange
             var inMemorySettings = new Dictionary<string, string>
             {
-                { "CacheRefreshService:NiceOrgBaseUrl", "http://niceorg.org.uk" },
+                { "CacheRefreshService:OcelotBaseUrl", "http://next-web-api.nice.org.uk/" },
                 { "CacheRefreshService:NiceOrgAPIKey", "xxxx-xxxx-xxxx-xxxx" },
             };
 
