@@ -257,7 +257,7 @@ export function Search({
 												metadata={getMeta()}
 											/>
 											{subSectionLinks && (
-												<details>
+												<details className="btn btn--inverse">
 													<summary>Show all sections</summary>
 													<pre>{subSectionLinks}</pre>
 												</details>
