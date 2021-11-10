@@ -203,9 +203,9 @@ export function Search({
 									);
 
 									function getMeta() {
-										const things = [];
+										const items = [];
 										if (niceDocType || niceResultType) {
-											things.push({
+											items.push({
 												label: "Type",
 												value:
 													niceDocType && niceDocType.length > 0
@@ -213,21 +213,21 @@ export function Search({
 														: niceResultType,
 											});
 										}
-										if (lastUpdated && lastUpdated != publicationDate) {
-											things.push({
+										if (lastUpdated && lastUpdated !== publicationDate) {
+											items.push({
 												visibleLabel: true,
 												label: "Last updated",
 												value: formatDateStr(lastUpdated),
 											});
 										} else if (publicationDate) {
-											things.push({
+											items.push({
 												visibleLabel: true,
 												label: "Published on",
 												value: formatDateStr(publicationDate),
 											});
 										}
-										if (things.length === 0) return null;
-										return things;
+										if (items.length === 0) return null;
+										return items;
 									}
 
 									return (
