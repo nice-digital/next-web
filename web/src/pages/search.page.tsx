@@ -209,8 +209,8 @@ export function Search({
 												label: "Type",
 												value:
 													niceDocType && niceDocType.length > 0
-														? niceDocType
-														: niceResultType,
+														? niceResultType
+														: niceDocType,
 											});
 										}
 										if (lastUpdated && lastUpdated !== publicationDate) {
