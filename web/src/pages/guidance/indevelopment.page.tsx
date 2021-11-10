@@ -61,7 +61,7 @@ const tableBodyRender = (documents: Document[]) => (
 
 export default getGuidanceListPage({
 	metaDescription:
-		"A complete list of all guidance, NICE advice and quality standards in development",
+		"View a complete list of all our guidance, NICE advice and quality standards currently in development",
 	breadcrumb: "In development",
 	preheading: "Guidance, NICE advice and quality standards ",
 	heading: "In development",

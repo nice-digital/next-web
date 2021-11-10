@@ -57,7 +57,7 @@ const tableBodyRender = (documents: Document[]) => (
 
 export default getGuidanceListPage({
 	metaDescription:
-		"A complete list of all published guidance including guidelines, NICE advice and quality standards",
+		"Browse the complete list of all our published health and social care guidance, including guidelines, NICE advice and quality standards",
 	breadcrumb: "Published",
 	preheading: "Published ",
 	heading: <>Guidance, NICE advice and quality&nbsp;standards</>,
