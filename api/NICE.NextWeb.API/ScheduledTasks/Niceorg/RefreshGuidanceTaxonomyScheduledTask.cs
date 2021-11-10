@@ -19,24 +19,25 @@ namespace NICE.NextWeb.API.ScheduledTasks.Niceorg
             _httpRequestMessage = httpRequestMessage;
         }
 
-        public string Schedule => "01,16,31,46 * * * *"; //Cron schedule - “At minute 1, 16, 31, and 46.”
+        public string Schedule => "*/2 * * * *"; //Cron schedule - “At minute 1, 16, 31, and 46.”
         public string RefreshUrl => "api/TaxonomyMappings";
 
         public async Task ExecuteAsync(CancellationToken cancellationToken)
         {
             var httpClient = _httpClientFactory.CreateClient();
+            var httpRequestMessage = _httpRequestMessage.GetNiceorgHttpRequestMessage(RefreshUrl);
 
             try
             {
-                var response = await httpClient.SendAsync(_httpRequestMessage.GetNiceorgHttpRequestMessage(RefreshUrl),
+                var response = await httpClient.SendAsync(httpRequestMessage,
                     cancellationToken);
                 response.EnsureSuccessStatusCode();
 
-                Log.Information($"Successfully refreshed url:- {RefreshUrl}");
+                Log.Information($"Successfully refreshed url:- {httpRequestMessage.RequestUri}");
             }
             catch (Exception e)
             {
-                Log.Error(e, $"Error when refreshing url:- {RefreshUrl}");
+                Log.Error(e, $"Error when refreshing url:- {httpRequestMessage.RequestUri}");
                 throw;
             }
         }

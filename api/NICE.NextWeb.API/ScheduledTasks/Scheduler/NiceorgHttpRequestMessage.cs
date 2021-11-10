@@ -23,7 +23,7 @@ namespace NICE.NextWeb.API.ScheduledTasks.Scheduler
 
         public HttpRequestMessage GetNiceorgHttpRequestMessage(string refreshUrl)
         {
-            var baseUrl = _configuration.GetValue<string>("CacheRefreshService:NiceOrgBaseUrl");
+            var baseUrl = _configuration.GetValue<string>("CacheRefreshService:OcelotBaseUrl");
             var apiKey = _configuration.GetValue<string>("CacheRefreshService:NiceOrgAPIKey");
 
             var requestUrl = $"{baseUrl}{refreshUrl}?ApiKey={apiKey}";
