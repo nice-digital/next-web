@@ -51,6 +51,7 @@ namespace NICE.NextWeb.API
 
         public void Configure(IApplicationBuilder app, IWebHostEnvironment env)
         {
+            var ocelotEvniroment = Configuration.GetValue<string>("Ocelot:Environment");
             if (env.IsDevelopment())
             {
                 app.UseDeveloperExceptionPage();
@@ -81,12 +82,16 @@ namespace NICE.NextWeb.API
             {
                 endpoints
                     .MapControllerRoute(
-                    name: "default",
-                    pattern: "{controller=Home}/{action=Index}/{id?}");
-                endpoints
-                    .MapControllerRoute(
-                        name: "admin",
-                        pattern: "{admin}/{controller}/{action=Index}/{id?}");
+                        name: "default",
+                        pattern: "{controller=Home}/{action=Index}/{id?}");
+
+                if (ocelotEvniroment != "live")
+                {
+                    endpoints
+                        .MapControllerRoute(
+                            name: "admin",
+                            pattern: "{admin}/{controller}/{action=Index}/{id?}");
+                }
             });
 
             app.UseOcelot().Wait();
