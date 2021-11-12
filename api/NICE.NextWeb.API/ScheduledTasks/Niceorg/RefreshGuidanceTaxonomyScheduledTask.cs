@@ -19,7 +19,7 @@ namespace NICE.NextWeb.API.ScheduledTasks.Niceorg
             _httpRequestMessage = httpRequestMessage;
         }
 
-        public string Schedule => "*/2 * * * *"; //Cron schedule - “At minute 1, 16, 31, and 46.”
+        public string Schedule => "1,16,31,46 * * * *"; //Cron schedule - “At minute 1, 16, 31, and 46.”
         public string RefreshUrl => "api/TaxonomyMappings";
 
         public async Task ExecuteAsync(CancellationToken cancellationToken)
