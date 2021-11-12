@@ -79,9 +79,14 @@ namespace NICE.NextWeb.API
 
             app.UseEndpoints(endpoints =>
             {
-                endpoints.MapControllerRoute(
+                endpoints
+                    .MapControllerRoute(
                     name: "default",
                     pattern: "{controller=Home}/{action=Index}/{id?}");
+                endpoints
+                    .MapControllerRoute(
+                        name: "admin",
+                        pattern: "{admin}/{controller}/{action=Index}/{id?}");
             });
 
             app.UseOcelot().Wait();
