@@ -6,6 +6,7 @@ namespace NICE.NextWeb.API.Controllers
     {
         public IActionResult Index()
         {
+            this.HttpContext.Response.StatusCode = 404;
             return View();
         }
     }
