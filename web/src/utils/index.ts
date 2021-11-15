@@ -41,7 +41,7 @@ export const getProjectPath = (project: Project): string | null =>
 	project.ProjectGroup == ProductGroup.Advice
 		? null
 		: project.Status === ProjectStatus.Proposed
-		? `/guidance/proposed/${project.Reference.toLowerCase()}`
+		? `/guidance/awaiting-development/${project.Reference.toLowerCase()}`
 		: `/guidance/indevelopment/${project.Reference.toLowerCase()}`;
 
 /**

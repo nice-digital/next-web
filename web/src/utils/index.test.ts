@@ -34,14 +34,14 @@ describe("utils", () => {
 			).toBeNull();
 		});
 
-		it("should return lowercase proposed gid url for proposed status projects", () => {
+		it("should return lowercase awaiting development gid url for proposed status projects", () => {
 			expect(
 				getProjectPath({
 					ProjectGroup: ProductGroup.Guidance,
 					Status: ProjectStatus.Proposed,
 					Reference: "GID-TA123",
 				} as Project)
-			).toBe("/guidance/proposed/gid-ta123");
+			).toBe("/guidance/awaiting-development/gid-ta123");
 		});
 
 		it("should return lowercase guidance gid url for non-proposed status projects", () => {

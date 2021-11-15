@@ -1,8 +1,8 @@
 export const pagePaths = {
 	"published guidance list": "/guidance/published",
 	"in consultation guidance list": "/guidance/inconsultation",
-	"in developmen guidancet list": "/guidance/indevelopment",
-	"proposed guidance list": "/guidance/proposed",
+	"in developmen guidance list": "/guidance/indevelopment",
+	"awaiting development guidance list": "/guidance/awaiting-development",
 	status: "/status",
 } as const;
 

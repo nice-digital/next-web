@@ -10,7 +10,7 @@ const defaultSortOrder = SortOrder.titleAscending;
 const tableBodyRender = (documents: Document[]) => (
 	<>
 		<caption className="visually-hidden">
-			Proposed guidance and quality standards
+			Guidance and quality standards awaiting development
 		</caption>
 		<thead>
 			<tr>
@@ -39,10 +39,10 @@ const tableBodyRender = (documents: Document[]) => (
 export default getGuidanceListPage({
 	metaDescription:
 		"Find out which guidance and quality standards are awaiting development",
-	breadcrumb: "Proposed",
+	breadcrumb: "Awaiting development",
 	preheading: "Guidance and quality standards ",
-	heading: "Proposed for development",
-	title: "Proposed guidance and quality standards",
+	heading: "Awaiting development",
+	title: "Guidance and quality standards awaiting development",
 	defaultSort: {
 		order: defaultSortOrder,
 		label: "Title",
@@ -52,6 +52,6 @@ export default getGuidanceListPage({
 });
 
 export const getServerSideProps = getGetServerSidePropsFunc({
-	gstPreFilter: "Proposed",
+	gstPreFilter: "Awaiting development",
 	defaultSortOrder,
 });
