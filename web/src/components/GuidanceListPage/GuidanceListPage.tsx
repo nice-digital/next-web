@@ -39,6 +39,7 @@ const resultsPerPage = [
 ];
 
 export type GetGuidanceListPageOptions = {
+	metaDescription: string;
 	breadcrumb: ReactChild;
 	preheading: ReactChild;
 	heading: ReactChild;
@@ -69,6 +70,7 @@ export type GetGuidanceListPageOptions = {
  */
 export const getGuidanceListPage =
 	({
+		metaDescription,
 		breadcrumb,
 		preheading,
 		heading,
@@ -118,7 +120,11 @@ export const getGuidanceListPage =
 		if (failed)
 			return (
 				<>
-					<NextSeo title={title + " | Guidance"} noindex={true} />
+					<NextSeo
+						title={title + " | Guidance"}
+						noindex={true}
+						description={metaDescription}
+					/>
 					<ErrorPageContent breadcrumbs={breadcrumbs} />
 				</>
 			);
@@ -128,6 +134,7 @@ export const getGuidanceListPage =
 				<NextSeo
 					title={title + " | Guidance"}
 					noindex={documents.length === 0}
+					description={metaDescription}
 				/>
 
 				<Announcer announcement={announcement} />
