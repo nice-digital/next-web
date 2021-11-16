@@ -70,7 +70,7 @@ export const GuidanceListFilterSummary: FC<GuidanceListFilterSummaryProps> = ({
 			sorting={sorting}
 		>
 			{resultCount === 0 ? (
-				"Showing 0 results"
+				"No results found"
 			) : (
 				<>
 					Showing {firstResult} to {lastResult} of {resultCount}

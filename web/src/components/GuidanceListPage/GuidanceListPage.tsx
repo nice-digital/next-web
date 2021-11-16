@@ -112,10 +112,20 @@ export const getGuidanceListPage =
 			} = results as SearchResultsSuccess;
 
 		useEffect(() => {
-			setAnnouncement(
-				`Showing ${firstResult} to ${lastResult} of ${resultCount}`
-			);
-		}, [firstResult, lastResult, resultCount]);
+			if (resultCount === 0) {
+				setAnnouncement(
+					`No results found for ${activeModifiers
+						.map((a) => a.displayName)
+						.join(", ")}`
+				);
+			} else {
+				const sortOrder =
+					s === "Title" ? "title" : s ? "date" : defaultSort.label;
+				setAnnouncement(
+					`Showing ${firstResult} to ${lastResult} of ${resultCount}, sorted by ${sortOrder.toLowerCase()}`
+				);
+			}
+		}, [firstResult, lastResult, resultCount, q, s, from, to, activeModifiers]);
 
 		if (failed)
 			return (
@@ -144,6 +154,7 @@ export const getGuidanceListPage =
 				<PageHeader
 					preheading={preheading}
 					heading={heading}
+					id="content-start"
 					lead={
 						<>
 							<SkipLink targetId="filters">Skip to filters</SkipLink>
