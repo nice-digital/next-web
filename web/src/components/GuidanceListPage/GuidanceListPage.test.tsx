@@ -124,6 +124,15 @@ describe("/guidance/published", () => {
 			expect(resultsSkipLinks[0]).toHaveAttribute("href", "#results");
 			expect(resultsSkipLinks[1]).toHaveAttribute("href", "#results");
 		});
+
+		it("should add content-start skip link target id to div element", () => {
+			const headingElement = screen.getByText(
+				"Guidance, NICE advice and quality standards"
+			);
+			expect(headingElement.parentElement?.getAttribute("id")).toEqual(
+				"content-start"
+			);
+		});
 	});
 
 	describe("Table body", () => {

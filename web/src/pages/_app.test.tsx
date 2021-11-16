@@ -156,12 +156,6 @@ describe("NextWebApp", () => {
 		expect(screen.getByRole("main")).toHaveTextContent("some content");
 	});
 
-	it("should add content-start skip link target id to main element", () => {
-		renderApp();
-
-		expect(screen.getByRole("main")).toHaveAttribute("id", "content-start");
-	});
-
 	it("shouldn't highlight guidance on the menu for routes outside guidance", () => {
 		renderApp({ pathname: "/not-guidance" });
 

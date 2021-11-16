@@ -10,7 +10,16 @@ export const Announcer: FC<AnnounceProps> = ({ announcement }) => {
 		const nextJSRouteAnnouncer = document.getElementById(
 			"__next-route-announcer__"
 		);
-		if (nextJSRouteAnnouncer) nextJSRouteAnnouncer.textContent = announcement;
+		if (!nextJSRouteAnnouncer?.hasAttribute("aria-atomic")) {
+			nextJSRouteAnnouncer?.setAttribute("aria-atomic", "true");
+		}
+
+		if (nextJSRouteAnnouncer) {
+			nextJSRouteAnnouncer.textContent = "";
+			window.requestAnimationFrame((_timestamp) => {
+				nextJSRouteAnnouncer.textContent = announcement;
+			});
+		}
 	}, [announcement]);
 
 	return null;
