@@ -1,18 +1,19 @@
 {
   "Routes": [
     {
-      "UpstreamHeaderTransform": {
-      },
       "DownstreamHostAndPorts": [
         {
-          "Host": "#{Ocelot.NiceorgTaxonomyDownstreamHost}",
+          "Host": "#{Ocelot.Routes.NiceorgDownstreamHost}",
           "Port": 443
         }
       ],
-      "DownstreamPathTemplate": "/api/TaxonomyMappings?ApiKey={niceorgTaxonomyApiKey}",
+      "DownstreamPathTemplate": "/api/{everything}",
       "DownstreamScheme": "https",
+      "DownstreamHeaderTransform": {
+        "X-Response-O-C": "True"
+      },
       "UpstreamHttpMethod": [ "Get" ],
-      "UpstreamPathTemplate": "/api/TaxonomyMappings?ApiKey={niceorgTaxonomyApiKey}",
+      "UpstreamPathTemplate": "/api/{everything}",
       "FileCacheOptions": {
         "TtlSeconds": 86400,
         "Region": "OcelotNiceorg"
