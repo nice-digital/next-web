@@ -3,3 +3,5 @@ coverage
 dist
 
 .DS_Store
+api/assets/c4/.structurizr/*
+
