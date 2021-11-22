@@ -1,8 +1,5 @@
 using Xunit;
-using NICE.NextWeb.API.CacheManager;
 using System;
-using System.Collections.Generic;
-using System.Text;
 using CacheManager.Core;
 using Microsoft.AspNetCore.Http;
 using Moq;

@@ -1,3 +1,4 @@
+using System;
 using System.Net;
 using CacheManager.Core;
 using Microsoft.AspNetCore.Builder;
@@ -8,10 +9,11 @@ using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using NICE.NextWeb.API.CacheManager;
+using NICE.NextWeb.API.ScheduledTasks.Niceorg;
+using NICE.NextWeb.API.ScheduledTasks.Scheduler;
 using Ocelot.DependencyInjection;
 using Ocelot.Middleware;
 using Serilog;
-using Serilog.Core;
 
 namespace NICE.NextWeb.API
 {
@@ -36,10 +38,20 @@ namespace NICE.NextWeb.API
                     x.WithRedisConfiguration("redis", redisConnectionString, redisDatabaseId)
                         .WithJsonSerializer()
                         .WithRedisCacheHandle("redis"));
+
+            services.AddSingleton<INiceorgHttpRequestMessage, NiceorgHttpRequestMessage>();
+            services.AddSingleton<IScheduledTask, RefreshGuidanceTaxonomyScheduledTask>();
+            services.AddScheduler((sender, args) =>
+            {
+                Console.Write(args.Exception.Message);
+                args.SetObserved();
+            });
+            services.AddHttpClient<RefreshGuidanceTaxonomyScheduledTask>();
         }
 
         public void Configure(IApplicationBuilder app, IWebHostEnvironment env)
         {
+            var ocelotEvniroment = Configuration.GetValue<string>("Ocelot:Environment");
             if (env.IsDevelopment())
             {
                 app.UseDeveloperExceptionPage();
@@ -68,9 +80,18 @@ namespace NICE.NextWeb.API
 
             app.UseEndpoints(endpoints =>
             {
-                endpoints.MapControllerRoute(
-                    name: "default",
-                    pattern: "{controller=Home}/{action=Index}/{id?}");
+                endpoints
+                    .MapControllerRoute(
+                        name: "default",
+                        pattern: "{controller=Home}/{action=Index}/{id?}");
+
+                if (ocelotEvniroment != "live")
+                {
+                    endpoints
+                        .MapControllerRoute(
+                            name: "admin",
+                            pattern: "{admin}/{controller}/{action=Index}/{id?}");
+                }
             });
 
             app.UseOcelot().Wait();
