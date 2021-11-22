@@ -4,25 +4,30 @@
 
 <details>
 <summary><strong>Table of contents</strong></summary>
-<!-- START doctoc -->
+<!-- START doctoc generated TOC please keep comment here to allow auto update -->
+<!-- DON'T EDIT THIS SECTION, INSTEAD RE-RUN doctoc TO UPDATE -->
+- [Ocelot API Layer](#ocelot-api-layer)
 
 - [Ocelot API Layer](#ocelot-api-layer)
+	- [What is it?](#what-is-it)
 	- [Stack](#stack)
 		- [Software](#software)
+		- [Diagram](#diagram)
 	- [Local development setup](#local-development-setup)
 		- [.Net Core Locally stored secrets](#net-core-locally-stored-secrets)
-	- [Ocelot](#ocelot)
+		- [Ocelot](#ocelot)
 		- [X-CacheManager-RefreshCache Header](#x-cachemanager-refreshcache-header)
 	- [Gotchas](#gotchas)
 		- [Redis SSL Connection](#redis-ssl-connection)
 		- [Running Redis on Docker - memory errors](#running-redis-on-docker---memory-errors)
 		- [Secrets.json](#secretsjson)
 
-<!-- END doctoc -->
+<!-- END doctoc generated TOC please keep comment here to allow auto update -->
 </details>
 
+## What is it?
+Ocelot API is a Redis backed .dotnet Core app which provides transparent read through caching for some aspects Guidance Web and (in the future) Next Web. It uses the Ocelot framework as a base with minimal modifications. It also provides last know good for cached content (depending on the config) which in turn will enhance the availability of dependant systems.
 ## Stack
-
 ### Software
 
 - [Visual Studio 2019](https://visualstudio.microsoft.com/vs/)
@@ -33,6 +38,10 @@
 - [Redis](https://redis.io/) Key/Value store for CacheManager
 - [ElastiCache](https://aws.amazon.com/elasticache/) AWS Managed Redis service
 - [Docker](https://redis.io/) To run Redis locally for dev purposes
+
+### Diagram
+
+![assets\c4\NextWebAPI-C4-ComponentDiagram.png](assets\c4\NextWebAPI-C4-ComponentDiagram.png)
 
 ## Local development setup
 1. Clone next-web project to local machine

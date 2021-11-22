@@ -1,0 +1,221 @@
+{
+  "id" : 1,
+  "name" : "Name",
+  "description" : "Description",
+  "revision" : 0,
+  "lastModifiedDate" : "2021-11-22T15:26:36Z",
+  "lastModifiedAgent" : "structurizr-web/2553/diagram",
+  "properties" : {
+    "structurizr.dsl" : "d29ya3NwYWNlIHsKCiAgICBtb2RlbCB7CgkJbmljZUxvZ2dpbmcgPSBzb2Z0d2FyZXN5c3RlbSAiTklDRSBMb2dnaW5nIgoJCWd1aWRhbmNlV2ViID0gc29mdHdhcmVzeXN0ZW0gIkd1aWRhbmNlIFdlYiIKCQluaWNlT3JnID0gc29mdHdhcmVzeXN0ZW0gIk5pY2VvcmciCgkJbmV4dFdlYiA9IHNvZnR3YXJlc3lzdGVtICJOZXh0IFdlYiIKCgoJCW9jZWxvdEFQSSA9IHNvZnR3YXJlc3lzdGVtICJPY2Vsb3QgQVBJIiB7CgkJCW9jZWxvdGRvdG5ldCA9IGNvbnRhaW5lciAiT2NlbG90IEFQSSB3ZWIgYXBwbGljYXRpb24iICJkb3RuZXQgQ29yZSIKCQkJcmVkaXMgPSBjb250YWluZXIgIlJlc3BvbnNlIENhY2hlIiAiUmVkaXMvRWxhc3RpY2FjaGUiICJSZWRpcyIgIkRhdGFiYXNlIgoJCQlvY2Vsb3RSb3V0ZXNDb25maWcgPSBjb250YWluZXIgIm9jZWxvdC5qc29uIGNvbmZpZyIgIlJvdXRlIGNvbmZpZyIgImpzb24iICJKc29uZmlsZSIKCQkJdGFza1NjaGVkdWxlciA9IGNvbnRhaW5lciAiVGFzayBTY2hlZHVsZXIiICJUYXNrIFNjaGVkdWxlciIgIklIb3N0ZWQgU2VydmljZSIKCgkJCW9jZWxvdGRvdG5ldCAtPiByZWRpcyAiQ2FjaGVzIGRhdGEgaW4iICJSZWRpcyBQcm90b2NvbCIKCQkJb2NlbG90Um91dGVzQ29uZmlnIC0+IG9jZWxvdGRvdG5ldCAiUmVhZHMgcm91dGUgZGF0YSBmcm9tIgoJCQl0YXNrU2NoZWR1bGVyIC0+IG9jZWxvdGRvdG5ldCAiUmVmcmVzaGVzIHNwZWNpZmljIGNhY2hlZCBjb250ZW50IiAiSFRUUCIKCQkJb2NlbG90ZG90bmV0IC0+IG5pY2VMb2dnaW5nICJTaW5rcyBlcnJvciBsb2dzIHRvIiAiUmFiYml0TVEiCgkJCWd1aWRhbmNlV2ViIC0+IG9jZWxvdGRvdG5ldCAiUmVxdWVzdHMgY29udGVudCBmcm9tIiAiSFRUUCIKCQkJbmV4dFdlYiAtPiBvY2Vsb3Rkb3RuZXQgIlJlcXVlc3RzIGNvbnRlbnQgZnJvbSIgIkhUVFAiCgkJCW9jZWxvdGRvdG5ldCAtPiAgbmljZW9yZyAiUmVxdWVzdHMgY29udGVudCBmcm9tIiAiSFRUUCIKCQl9CgogICAgfQoKICAgIHZpZXdzIHsKCQljb250YWluZXIgb2NlbG90QVBJICJDb250YWluZXJzIiB7CgkJCWluY2x1ZGUgKgoJCX0KCQlzdHlsZXMgewogICAgICAgICAgICBlbGVtZW50ICJEYXRhYmFzZSIgewogICAgICAgICAgICAgICAgc2hhcGUgQ3lsaW5kZXIKICAgICAgICAgICAgfQoJCQllbGVtZW50ICJKc29uZmlsZSIgewogICAgICAgICAgICAgICAgc2hhcGUgRm9sZGVyCiAgICAgICAgICAgIH0KCQl9CgkJdGhlbWUgZGVmYXVsdAoKICAgIH0KCgoKfQo="
+  },
+  "configuration" : { },
+  "model" : {
+    "softwareSystems" : [ {
+      "id" : "1",
+      "tags" : "Element,Software System",
+      "name" : "NICE Logging",
+      "location" : "Unspecified"
+    }, {
+      "id" : "4",
+      "tags" : "Element,Software System",
+      "name" : "Next Web",
+      "relationships" : [ {
+        "id" : "18",
+        "tags" : "Relationship",
+        "sourceId" : "4",
+        "destinationId" : "5",
+        "description" : "Requests content from",
+        "technology" : "HTTP"
+      }, {
+        "id" : "17",
+        "tags" : "Relationship",
+        "sourceId" : "4",
+        "destinationId" : "6",
+        "description" : "Requests content from",
+        "technology" : "HTTP"
+      } ],
+      "location" : "Unspecified"
+    }, {
+      "id" : "5",
+      "tags" : "Element,Software System",
+      "name" : "Ocelot API",
+      "relationships" : [ {
+        "id" : "20",
+        "tags" : "Relationship",
+        "sourceId" : "5",
+        "destinationId" : "3",
+        "description" : "Requests content from",
+        "technology" : "HTTP"
+      }, {
+        "id" : "14",
+        "tags" : "Relationship",
+        "sourceId" : "5",
+        "destinationId" : "1",
+        "description" : "Sinks error logs to",
+        "technology" : "RabbitMQ"
+      } ],
+      "location" : "Unspecified",
+      "containers" : [ {
+        "id" : "6",
+        "tags" : "Element,Container",
+        "name" : "Ocelot API web application",
+        "description" : "dotnet Core",
+        "relationships" : [ {
+          "id" : "19",
+          "tags" : "Relationship",
+          "sourceId" : "6",
+          "destinationId" : "3",
+          "description" : "Requests content from",
+          "technology" : "HTTP"
+        }, {
+          "id" : "10",
+          "tags" : "Relationship",
+          "sourceId" : "6",
+          "destinationId" : "7",
+          "description" : "Caches data in",
+          "technology" : "Redis Protocol"
+        }, {
+          "id" : "13",
+          "tags" : "Relationship",
+          "sourceId" : "6",
+          "destinationId" : "1",
+          "description" : "Sinks error logs to",
+          "technology" : "RabbitMQ"
+        } ]
+      }, {
+        "id" : "7",
+        "tags" : "Element,Container,Database",
+        "name" : "Response Cache",
+        "description" : "Redis/Elasticache",
+        "technology" : "Redis"
+      }, {
+        "id" : "8",
+        "tags" : "Element,Container,Jsonfile",
+        "name" : "ocelot.json config",
+        "description" : "Route config",
+        "relationships" : [ {
+          "id" : "11",
+          "tags" : "Relationship",
+          "sourceId" : "8",
+          "destinationId" : "6",
+          "description" : "Reads route data from"
+        } ],
+        "technology" : "json"
+      }, {
+        "id" : "9",
+        "tags" : "Element,Container",
+        "name" : "Task Scheduler",
+        "description" : "Task Scheduler",
+        "relationships" : [ {
+          "id" : "12",
+          "tags" : "Relationship",
+          "sourceId" : "9",
+          "destinationId" : "6",
+          "description" : "Refreshes specific cached content",
+          "technology" : "HTTP"
+        } ],
+        "technology" : "IHosted Service"
+      } ]
+    }, {
+      "id" : "2",
+      "tags" : "Element,Software System",
+      "name" : "Guidance Web",
+      "relationships" : [ {
+        "id" : "16",
+        "tags" : "Relationship",
+        "sourceId" : "2",
+        "destinationId" : "5",
+        "description" : "Requests content from",
+        "technology" : "HTTP"
+      }, {
+        "id" : "15",
+        "tags" : "Relationship",
+        "sourceId" : "2",
+        "destinationId" : "6",
+        "description" : "Requests content from",
+        "technology" : "HTTP"
+      } ],
+      "location" : "Unspecified"
+    }, {
+      "id" : "3",
+      "tags" : "Element,Software System",
+      "name" : "Niceorg",
+      "location" : "Unspecified"
+    } ]
+  },
+  "documentation" : { },
+  "views" : {
+    "containerViews" : [ {
+      "softwareSystemId" : "5",
+      "key" : "Containers",
+      "dimensions" : {
+        "width" : 2358,
+        "height" : 2058
+      },
+      "externalSoftwareSystemBoundariesVisible" : true,
+      "elements" : [ {
+        "id" : "1",
+        "x" : 1598,
+        "y" : 153
+      }, {
+        "id" : "2",
+        "x" : 968,
+        "y" : 153
+      }, {
+        "id" : "3",
+        "x" : 968,
+        "y" : 1603
+      }, {
+        "id" : "4",
+        "x" : 348,
+        "y" : 153
+      }, {
+        "id" : "6",
+        "x" : 968,
+        "y" : 743
+      }, {
+        "id" : "7",
+        "x" : 1798,
+        "y" : 743
+      }, {
+        "id" : "8",
+        "x" : 110,
+        "y" : 1135
+      }, {
+        "id" : "9",
+        "x" : 108,
+        "y" : 743
+      } ],
+      "relationships" : [ {
+        "id" : "17"
+      }, {
+        "id" : "15"
+      }, {
+        "id" : "13"
+      }, {
+        "id" : "12"
+      }, {
+        "id" : "11"
+      }, {
+        "id" : "10"
+      }, {
+        "id" : "19"
+      } ]
+    } ],
+    "configuration" : {
+      "branding" : { },
+      "styles" : {
+        "elements" : [ {
+          "tag" : "Database",
+          "shape" : "Cylinder"
+        }, {
+          "tag" : "Jsonfile",
+          "shape" : "Folder"
+        } ]
+      },
+      "themes" : [ "https://static.structurizr.com/themes/default/theme.json" ],
+      "terminology" : { },
+      "lastSavedView" : "Containers"
+    }
+  }
+}
