@@ -20,7 +20,8 @@
 	- [Task Scheduler](#task-scheduler)
 	- [X-CacheManager-RefreshCache Header](#x-cachemanager-refreshcache-header)
 	- [Route config](#route-config)
-	- [Cache content keys](#cache-content-keys)
+	- [Ocelot Pipeline](#ocelot-pipeline)
+	- [Redis cached content keys](#redis-cached-content-keys)
 - [Gotchas](#gotchas)
 	- [Redis SSL Connection](#redis-ssl-connection)
 	- [Running Redis on Docker - memory errors](#running-redis-on-docker---memory-errors)
@@ -79,11 +80,31 @@ If X-CacheManager-RefreshCache header is present on an incoming request Ocelot w
 If X-CacheManager-RefreshCache is not present on an incoming request the content is loaded from cache first and if not present in cache it will be loaded from the downstream host (and then stored in cache). Such a request would be a general request from an end user.
 
 Only successful HTTP (with HTTP status code 200) downstream requests are persisted to the cache.
-
 ### Route config
-Routes are stored in ocelot.production.json and ocelot.development.json depending on the environment. More info on how to specify routes (https://ocelot.readthedocs.io/en/latest/features/routing.html)[https://ocelot.readthedocs.io/en/latest/features/routing.html]. These are loaded at application startup time.
 
-### Cache content keys
+Routes are stored in ocelot.production.json and ocelot.development.json depending on the environment. More info on how to specify routes (https://ocelot.readthedocs.io/en/latest/features/routing.html)[https://ocelot.readthedocs.io/en/latest/features/routing.html]. These are loaded at application startup time.
+### Ocelot Pipeline
+### Redis cached content keys
+
+Requests are handled the Ocelot pipeline by various stages. Ocelot Cache Manager is one such stage. This stage uses the similarly named (CacheManager)[https://cachemanager.michaco.net/] to implement the basic caching features. CacheManager in turn uses (StackExchange.Redis)[https://stackexchange.github.io/StackExchange.Redis/] as a client for Redis.
+
+A request comes in and a MD5 hash is generated from the requested URL along side the HTTP method. In the following way...
+
+GET Request on URL: `https://my.test.url/api/dummy-data`
+
+Cache key: `GET-https://my.test.url/api/dummy-data`
+
+MD5 Encoded cache key: `3FF7D3A1413B5BD9078F06684D4E87CF` (as you can see this is totally different to the above value despite only one character being different)
+
+**Warning**
+MD5 Hash functions generate totally different values even if one character is different (they are also case sensitive)
+
+GET Request on URL `http://my.test.url/api/dummy-data`
+
+Cache key `GET-http://my.test.url/api/dummy-data`
+
+MD5 Encoded cache key `D08EB3CB559F04B3E176FF6114FC85B1`
+
 
 
 ## Gotchas
