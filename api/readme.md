@@ -22,6 +22,9 @@
 	- [Route config](#route-config)
 	- [Ocelot Pipeline](#ocelot-pipeline)
 	- [Redis cached content keys](#redis-cached-content-keys)
+		- [Redis Key naming](#redis-key-naming)
+		- [Key Generation Admin tool](#key-generation-admin-tool)
+		- [Redis Key storage](#redis-key-storage)
 - [Gotchas](#gotchas)
 	- [Redis SSL Connection](#redis-ssl-connection)
 	- [Running Redis on Docker - memory errors](#running-redis-on-docker---memory-errors)
@@ -88,6 +91,7 @@ Routes are stored in ocelot.production.json and ocelot.development.json dependin
 
 Requests are handled the Ocelot pipeline by various stages. Ocelot Cache Manager is one such stage. This stage uses the similarly named (CacheManager)[https://cachemanager.michaco.net/] to implement the basic caching features. CacheManager in turn uses (StackExchange.Redis)[https://stackexchange.github.io/StackExchange.Redis/] as a client for Redis.
 
+#### Redis Key naming
 A request comes in and a MD5 hash is generated from the requested URL along side the HTTP method. In the following way...
 
 GET Request on URL: `https://my.test.url/api/dummy-data`
@@ -105,8 +109,13 @@ Cache key `GET-http://my.test.url/api/dummy-data`
 
 MD5 Encoded cache key `D08EB3CB559F04B3E176FF6114FC85B1`
 
+This MD5 value is then used as the key name for the cached content.
+#### Key Generation Admin tool
+If the API is running in pre-prod mode (set via environment var) then you can access a tool to generate key names. This is useful for diagnostic purposes. The url is:-
+`/admin/CacheKeyGenerator`
 
-
+#### Redis Key storage
+Cached items are stored as [Redis hashes](https://redis.io/topics/data-types#hashes) which are able to store a set of key value pairs. The name of the key is the MD5 encoded url [as noted here](#redis-key-naming). 
 ## Gotchas
 ### Redis SSL Connection
 
