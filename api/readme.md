@@ -1,6 +1,6 @@
-# Ocelot API Layer
+# Next Web API
 
-> Ocelot API Layer for Next Web
+> Ocelot API Layer for Next Web / Guidance Web
 
 <details>
 <summary><strong>Table of contents</strong></summary>
@@ -8,25 +8,29 @@
 <!-- DON'T EDIT THIS SECTION, INSTEAD RE-RUN doctoc TO UPDATE -->
 - [Ocelot API Layer](#ocelot-api-layer)
 
-- [Ocelot API Layer](#ocelot-api-layer)
-	- [What is it?](#what-is-it)
-	- [Stack](#stack)
-		- [Software](#software)
-		- [Diagram](#diagram)
-	- [Local development setup](#local-development-setup)
-		- [.Net Core Locally stored secrets](#net-core-locally-stored-secrets)
-		- [Ocelot](#ocelot)
-		- [X-CacheManager-RefreshCache Header](#x-cachemanager-refreshcache-header)
-	- [Gotchas](#gotchas)
-		- [Redis SSL Connection](#redis-ssl-connection)
-		- [Running Redis on Docker - memory errors](#running-redis-on-docker---memory-errors)
-		- [Secrets.json](#secretsjson)
+- [What is it?](#what-is-it)
+- [Stack](#stack)
+	- [Software](#software)
+	- [Diagram](#diagram)
+- [Local development setup](#local-development-setup)
+	- [.Net Core Locally stored secrets](#net-core-locally-stored-secrets)
+- [Overview](#overview)
+	- [NextWeb API](#nextweb-api)
+	- [Ocelot](#ocelot)
+	- [Task Scheduler](#task-scheduler)
+	- [X-CacheManager-RefreshCache Header](#x-cachemanager-refreshcache-header)
+	- [Route config](#route-config)
+	- [Cache content keys](#cache-content-keys)
+- [Gotchas](#gotchas)
+	- [Redis SSL Connection](#redis-ssl-connection)
+	- [Running Redis on Docker - memory errors](#running-redis-on-docker---memory-errors)
+	- [Secrets.json](#secretsjson)
 
 <!-- END doctoc generated TOC please keep comment here to allow auto update -->
 </details>
 
 ## What is it?
-Ocelot API is a Redis backed .dotnet Core app which provides transparent read through caching for some aspects Guidance Web and (in the future) Next Web. It uses the Ocelot framework as a base with minimal modifications. It also provides last know good for cached content (depending on the config) which in turn will enhance the availability of dependant systems.
+Next Web API is a Redis backed .dotnet Core app which provides transparent read through caching for some aspects Guidance Web and (in the future) Next Web. It uses the Ocelot framework as a base with minimal modifications. It also provides last know good for cached content (depending on the config) which in turn will enhance the availability of dependant systems.
 ## Stack
 ### Software
 
@@ -57,6 +61,9 @@ Secrets and sensitive information can be stored locally in a file outside of a p
 Individual values/objects can be stored in a file located in the dev users' profile (on Windows) or in home directory on Linux. This file can be easily managed using "Manage user secrets" feature in Visual Studio. This can be found by in the menu which is displayed by right clicking on the project in solution explorer. This will open up secrets.json. Initially it is best to obtain this file from another dev.
 
 In the production environment (dev, test, alpha, beta, live) the config is read from ocelot.production.json. This file has the secrets stored as Octopus variables which are replaced as part of the deployment process. 
+## Overview
+
+### NextWeb API
 
 ### Ocelot
 Ocelot is used by this project to provide basic API Gateway functionality. More information can be found here [Ocelot](https://ocelot.readthedocs.io/). This project is using version Ocelot 16.0.1 which is the highest version that supports .Net Core 3.1 LTS.
@@ -64,12 +71,20 @@ Ocelot is used by this project to provide basic API Gateway functionality. More 
 Ocelot is loaded from Nuget packages with some minor customisations. Mainly a custom Cache Manager is injected into the service collection. This custom Cache Manager is default except it inspects headers for the X-CacheManager-RefreshCache header which is described [here](#x-cachemanager-refreshcache-header).
 
 Additionally some convenience configuration extension functions are provided to configure Ocelot and CacheManager.
+### Task Scheduler
+An internal component which provides scheduling services to enable the refreshing of specific content in the cache. It uses the .Net IHosted service interface which runs in the background continuously once the app has started. The app only fully starts once its receives a HTTP request. If the application pool restarts then the scheduler stops until another HTTP request wakes the program up. The app pool is set to reset each night at 00:30am. This means that for environments that aren't frequently used the scheduler will stop running until another request comes in. The refresh task is optional and isn't needed for a url to be cached (any url specified in the route config will be cached). To refresh a cached item a HTTP client is used to make a standard HTTP GET request with the addition of a specific header noted [here](#x-cachemanager-refreshcache-header)
 ### X-CacheManager-RefreshCache Header
 If X-CacheManager-RefreshCache header is present on an incoming request Ocelot will not attempt to load the content from cache first. It will load the content from the downstream host. This content will then stored in cache replacing existing content). This is useful as it will provide a method to warm the cache up and also maintain it in a warm/hot state.
 
 If X-CacheManager-RefreshCache is not present on an incoming request the content is loaded from cache first and if not present in cache it will be loaded from the downstream host (and then stored in cache). Such a request would be a general request from an end user.
 
 Only successful HTTP (with HTTP status code 200) downstream requests are persisted to the cache.
+
+### Route config
+Routes are stored in ocelot.production.json and ocelot.development.json depending on the environment. More info on how to specify routes (https://ocelot.readthedocs.io/en/latest/features/routing.html)[https://ocelot.readthedocs.io/en/latest/features/routing.html]. These are loaded at application startup time.
+
+### Cache content keys
+
 
 ## Gotchas
 ### Redis SSL Connection
