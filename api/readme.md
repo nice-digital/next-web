@@ -15,7 +15,6 @@
 - [Local development setup](#local-development-setup)
 	- [.Net Core Locally stored secrets](#net-core-locally-stored-secrets)
 - [Overview](#overview)
-	- [NextWeb API](#nextweb-api)
 	- [Ocelot](#ocelot)
 	- [Task Scheduler](#task-scheduler)
 	- [X-CacheManager-RefreshCache Header](#x-cachemanager-refreshcache-header)
@@ -56,7 +55,7 @@ Next Web API is a Redis backed .dotnet Core app which provides transparent read 
 1. Open NICE.NextWeb.API project in Visual Studio 2019
 1. Restore nuget packages
 1. Restore locally stored secrets see [.Net Core Locally stored secrets](#.Net-Core-Locally-stored-secrets)
-2. To run Redis locally start docker using the command `docker-compose up`
+2. To run Redis locally start docker using the command ```docker-compose up```
 
 ### .Net Core Locally stored secrets
 
@@ -66,9 +65,6 @@ Individual values/objects can be stored in a file located in the dev users' prof
 
 In the production environment (dev, test, alpha, beta, live) the config is read from ocelot.production.json. This file has the secrets stored as Octopus variables which are replaced as part of the deployment process. 
 ## Overview
-
-### NextWeb API
-
 ### Ocelot
 Ocelot is used by this project to provide basic API Gateway functionality. More information can be found here [Ocelot](https://ocelot.readthedocs.io/). This project is using version Ocelot 16.0.1 which is the highest version that supports .Net Core 3.1 LTS.
 
@@ -85,11 +81,14 @@ If X-CacheManager-RefreshCache is not present on an incoming request the content
 Only successful HTTP (with HTTP status code 200) downstream requests are persisted to the cache.
 ### Route config
 
-Routes are stored in ocelot.production.json and ocelot.development.json depending on the environment. More info on how to specify routes (https://ocelot.readthedocs.io/en/latest/features/routing.html)[https://ocelot.readthedocs.io/en/latest/features/routing.html]. These are loaded at application startup time.
+Routes are stored in ocelot.production.json and ocelot.development.json depending on the environment. More info on how to specify routes [here]([https://ocelot.readthedocs.io/en/latest/features/routing.html). These are loaded at application startup time.
 ### Ocelot Pipeline
+Ocelot is a modified .Netcore Web Application pipeline. Each component of the pipeline is injected using .Netcore Dependency injection and therefore can be overridden. Next Web API overrides the caching module to add 2 extra features.
+1. Refresh cache using a header - this allows us to refresh the cache from a simple https request without waiting for the TTL to run out. This can be trigged internally by using the internal [Task Scheduler](#task-scheduler) or by simply making a http request with the correct header
+2. Don't cache errors (or anything other than status 200) - if a request fails then the resulting error content isn't stored in the cache. This means that the last known good content is always served from cache.
 ### Redis cached content keys
 
-Requests are handled the Ocelot pipeline by various stages. Ocelot Cache Manager is one such stage. This stage uses the similarly named (CacheManager)[https://cachemanager.michaco.net/] to implement the basic caching features. CacheManager in turn uses (StackExchange.Redis)[https://stackexchange.github.io/StackExchange.Redis/] as a client for Redis.
+Requests are handled the Ocelot pipeline by various stages. Ocelot Cache Manager is one such stage. This stage uses the similarly named [CacheManager](https://cachemanager.michaco.net/) to implement the basic caching features. CacheManager in turn uses [StackExchange.Redis](https://stackexchange.github.io/StackExchange.Redis/) as a client for Redis.
 
 #### Redis Key naming
 A request comes in and a MD5 hash is generated from the requested URL along side the HTTP method. In the following way...
@@ -127,11 +126,18 @@ If you encounter out of memory errors when starting up the docker-compose config
 
 You need to connect to your Docker virtual machine in using a Powershell command window. Then you need to modify a systemmd property on the Docker virtual machine (which is running linux) 
 
-1. Run this command in Powershell - `
-wsl -d docker-desktop
-`
-1. You will then be at the bash prompt of the Docker engine (which is a WSL 2 vm). This should look something like this. - `I{your hostname}/tmp/docker-desktop-root/mnt/host/c/Users/{your username}#`
-2. Run `sysctl -w vm.overcommit_memory=1` command. This will change the engine.overcommit_memory property and it will apply it immediately. For some reason the change isn't persisted so you may find you need to reapply this after you reboot your host machine or the Docker engine vm. .  
-
+1. Run this command in Powershell
+	```
+	wsl -d docker-desktop
+	```
+2. You will then be at the bash prompt of the Docker engine (which is a WSL 2 vm). This should look something like this.
+	```
+	{your hostname}/tmp/docker-desktop-root/mnt/host/c/Users/{your username}#
+	```
+3. Run
+	```
+	sysctl -w vm.overcommit_memory=1
+	```
+This will change the engine.overcommit_memory property and it will apply it immediately. For some reason the change isn't persisted so you may find you need to reapply this after you reboot your host machine or the Docker engine vm.
 ### Secrets.json
-By default when running in "Development" mode (which is set via environment variables or via Visual Studio debug configuration) the .Net core host loads configuration from locally stored secrets. Please ensure you have this configured correctly. You may need to get this config from another dev who has recently worked on this. More information can be found here [https://docs.microsoft.com/en-us/aspnet/core/security/app-secrets?view=aspnetcore-3.1&tabs=windows](https://docs.microsoft.com/en-us/aspnet/core/security/app-secrets?view=aspnetcore-3.1&tabs=windows)
+By default when running in "Development" mode (which is set via environment variables or via Visual Studio debug configuration) the .Net core host loads configuration from locally stored secrets. Please ensure you have this configured correctly. You may need to get this config from another dev who has recently worked on this. More information can be found [here](https://docs.microsoft.com/en-us/aspnet/core/security/app-secrets?view=aspnetcore-3.1&tabs=windows).
