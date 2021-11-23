@@ -41,7 +41,7 @@ Ocelot API is a Redis backed .dotnet Core app which provides transparent read th
 
 ### Diagram
 
-![assets\c4\NextWebAPI-C4-ComponentDiagram.png](assets\c4\NextWebAPI-C4-ComponentDiagram.png)
+![assets\c4\NextWebAPI-C4-ComponentDiagram.png](assets/c4/NextWebAPI-C4-ComponentDiagram.png)
 
 ## Local development setup
 1. Clone next-web project to local machine
