@@ -168,7 +168,7 @@ describe("NextWebApp", () => {
 		renderApp({ pathname: "/guidance/published" });
 
 		expect(
-			screen.getByText("Guidance", { selector: "header a" })
+			screen.getByText("Guidance", { selector: "header button" })
 		).toHaveAttribute("aria-current", "true");
 	});
 
