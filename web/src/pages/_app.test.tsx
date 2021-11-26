@@ -1,5 +1,5 @@
 /* eslint-disable testing-library/no-node-access */
-import { render, screen } from "@testing-library/react";
+import { render, screen, within } from "@testing-library/react";
 import { NextSeo } from "next-seo";
 import { useEffect } from "react";
 
@@ -156,20 +156,21 @@ describe("NextWebApp", () => {
 		expect(screen.getByRole("main")).toHaveTextContent("some content");
 	});
 
-	it("shouldn't highlight guidance on the menu for routes outside guidance", () => {
+	it("shouldn't highlight guidance on the menu for routes outside guidance", async () => {
 		renderApp({ pathname: "/not-guidance" });
 
 		expect(
-			screen.getByText("Guidance", { selector: "header a" })
+			screen.getByRole("button", { name: "Guidance" })
 		).not.toHaveAttribute("aria-current");
 	});
 
 	it("should highlight guidance on the menu for routes under guidance", () => {
 		renderApp({ pathname: "/guidance/published" });
 
-		expect(
-			screen.getByText("Guidance", { selector: "header button" })
-		).toHaveAttribute("aria-current", "true");
+		expect(screen.getByRole("button", { name: "Guidance" })).toHaveAttribute(
+			"aria-current",
+			"true"
+		);
 	});
 
 	describe("reportWebVitals", () => {
