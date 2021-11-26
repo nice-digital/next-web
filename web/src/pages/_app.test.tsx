@@ -160,7 +160,7 @@ describe("NextWebApp", () => {
 		renderApp({ pathname: "/not-guidance" });
 
 		expect(
-			screen.getByText("NICE guidance", { selector: "header a" })
+			screen.getByText("Guidance", { selector: "header a" })
 		).not.toHaveAttribute("aria-current");
 	});
 
@@ -168,7 +168,7 @@ describe("NextWebApp", () => {
 		renderApp({ pathname: "/guidance/published" });
 
 		expect(
-			screen.getByText("NICE guidance", { selector: "header a" })
+			screen.getByText("Guidance", { selector: "header button" })
 		).toHaveAttribute("aria-current", "true");
 	});
 
