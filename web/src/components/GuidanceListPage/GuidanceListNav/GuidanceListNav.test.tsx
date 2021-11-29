@@ -19,7 +19,7 @@ describe("GuidanceListNav", () => {
 		["Published"],
 		["In consultation"],
 		["In development"],
-		["Proposed"],
+		["Awaiting development"],
 	])("should render link for %s", (linkText) => {
 		render(<GuidanceListNav />);
 		const link = screen.getByText(linkText);
@@ -31,7 +31,7 @@ describe("GuidanceListNav", () => {
 		["Published", "/guidance/published"],
 		["In consultation", "/guidance/inconsultation"],
 		["In development", "/guidance/indevelopment"],
-		["Proposed", "/guidance/proposed"],
+		["Awaiting development", "/guidance/awaiting-development"],
 	])("should highlight %s when current path is %s", (linkText, pathname) => {
 		(useRouter as jest.Mock).mockImplementation(() => ({ pathname }));
 		render(<GuidanceListNav />);
@@ -49,9 +49,9 @@ describe("GuidanceListNav", () => {
 			},
 		}));
 		render(<GuidanceListNav />);
-		expect(screen.getByText("Proposed")).toHaveAttribute(
+		expect(screen.getByText("Awaiting development")).toHaveAttribute(
 			"href",
-			"/guidance/proposed?ndt=Guidance&nai=Antimicrobial%20prescribing"
+			"/guidance/awaiting-development?ndt=Guidance&nai=Antimicrobial%20prescribing"
 		);
 	});
 

@@ -60,4 +60,22 @@ describe("next.config.js", () => {
 		]
 	`);
 	});
+
+	describe("Redirects", () => {
+		it("should redirect proposed list page to awaiting development list page", async () => {
+			if (!nextConfig.redirects)
+				return expect(nextConfig.redirects).toBeTruthy();
+
+			const redirects = await nextConfig.redirects(),
+				proposedListPageRedirect = redirects.find(
+					(r) => r.source === "/guidance/proposed"
+				);
+
+			expect(proposedListPageRedirect).toHaveProperty(
+				"destination",
+				"/guidance/awaiting-development"
+			);
+			expect(proposedListPageRedirect).toHaveProperty("permanent", true);
+		});
+	});
 });

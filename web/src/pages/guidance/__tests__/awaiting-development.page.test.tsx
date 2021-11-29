@@ -6,7 +6,7 @@ import { SearchResultsSuccess, SearchUrl } from "@nice-digital/search-client";
 import { render } from "@/test-utils";
 
 import sampleData from "../../../__mocks__/__data__/search/guidance-proposed.json";
-import ProposedPage from "../proposed.page";
+import AwaitingDevelopmentPage from "../awaiting-development.page";
 
 (useRouter as jest.Mock).mockImplementation(() => ({
 	route: "/",
@@ -16,16 +16,16 @@ import ProposedPage from "../proposed.page";
 	push: jest.fn(),
 }));
 
-describe("/guidance/proposed", () => {
+describe("/guidance/awaiting-development", () => {
 	it("should match the snapshot", () => {
 		mockDate.set("2020-11-22");
 
 		expect(
 			render(
-				<ProposedPage
+				<AwaitingDevelopmentPage
 					activeModifiers={[]}
 					results={sampleData as unknown as SearchResultsSuccess}
-					searchUrl={{ route: "/guidance/proposed" } as SearchUrl}
+					searchUrl={{ route: "/guidance/awaiting-development" } as SearchUrl}
 				/>
 			).container
 		).toMatchSnapshot();

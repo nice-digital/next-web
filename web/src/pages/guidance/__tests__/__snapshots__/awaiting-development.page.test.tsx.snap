@@ -1,6 +1,6 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`/guidance/proposed should match the snapshot 1`] = `
+exports[`/guidance/awaiting-development should match the snapshot 1`] = `
 <div>
   <div />
   <main>
@@ -36,7 +36,7 @@ exports[`/guidance/proposed should match the snapshot 1`] = `
             class="breadcrumbs__crumb"
           >
             <span>
-              Proposed
+              Awaiting development
             </span>
           </li>
         </ol>
@@ -68,7 +68,7 @@ exports[`/guidance/proposed should match the snapshot 1`] = `
       "@type": "ListItem",
       "position": 3,
       "item": {
-        "name": "Proposed"
+        "name": "Awaiting development"
       }
     }
   ]
@@ -86,7 +86,7 @@ exports[`/guidance/proposed should match the snapshot 1`] = `
           >
             Guidance and quality standards 
           </span>
-          Proposed for development
+          Awaiting development
         </h1>
         <p
           class="page-header__lead"
@@ -151,9 +151,9 @@ exports[`/guidance/proposed should match the snapshot 1`] = `
             <a
               aria-current="false"
               class="horizontal-nav__link"
-              href="/guidance/proposed"
+              href="/guidance/awaiting-development"
             >
-              Proposed
+              Awaiting development
             </a>
           </li>
         </ul>
@@ -504,7 +504,7 @@ exports[`/guidance/proposed should match the snapshot 1`] = `
               <caption
                 class="visually-hidden"
               >
-                Proposed guidance and quality standards
+                Guidance and quality standards awaiting development
               </caption>
               <thead>
                 <tr>
@@ -524,7 +524,7 @@ exports[`/guidance/proposed should match the snapshot 1`] = `
                 <tr>
                   <td>
                     <a
-                      href="/guidance/proposed/gid-qs10035"
+                      href="/guidance/awaiting-development/gid-qs10035"
                     >
                       Abdominal aortic aneurysm
                     </a>
@@ -536,7 +536,7 @@ exports[`/guidance/proposed should match the snapshot 1`] = `
                 <tr>
                   <td>
                     <a
-                      href="/guidance/proposed/gid-ta10718"
+                      href="/guidance/awaiting-development/gid-ta10718"
                     >
                       Abilify MyCite for treating bipolar disorder 1 or schizophrenia [ID3833]
                     </a>
@@ -548,7 +548,7 @@ exports[`/guidance/proposed should match the snapshot 1`] = `
                 <tr>
                   <td>
                     <a
-                      href="/guidance/proposed/gid-qs10036"
+                      href="/guidance/awaiting-development/gid-qs10036"
                     >
                       Acne
                     </a>
@@ -560,7 +560,7 @@ exports[`/guidance/proposed should match the snapshot 1`] = `
                 <tr>
                   <td>
                     <a
-                      href="/guidance/proposed/gid-qs10038"
+                      href="/guidance/awaiting-development/gid-qs10038"
                     >
                       Adrenal dysfunction
                     </a>
@@ -572,7 +572,7 @@ exports[`/guidance/proposed should match the snapshot 1`] = `
                 <tr>
                   <td>
                     <a
-                      href="/guidance/proposed/gid-qs10144"
+                      href="/guidance/awaiting-development/gid-qs10144"
                     >
                       Adults with lifelong or very severe hearing or visual impairment: health, well-being and social care
                     </a>
@@ -584,7 +584,7 @@ exports[`/guidance/proposed should match the snapshot 1`] = `
                 <tr>
                   <td>
                     <a
-                      href="/guidance/proposed/gid-qs10145"
+                      href="/guidance/awaiting-development/gid-qs10145"
                     >
                       Advocacy services for adults with health and social care needs
                     </a>
@@ -596,7 +596,7 @@ exports[`/guidance/proposed should match the snapshot 1`] = `
                 <tr>
                   <td>
                     <a
-                      href="/guidance/proposed/gid-ta10803"
+                      href="/guidance/awaiting-development/gid-ta10803"
                     >
                       Amcenestrant for treating ER-positive, HER2-negative advanced breast cancer after hormonal therapy [ID3919]
                     </a>
@@ -608,7 +608,7 @@ exports[`/guidance/proposed should match the snapshot 1`] = `
                 <tr>
                   <td>
                     <a
-                      href="/guidance/proposed/gid-hst10037"
+                      href="/guidance/awaiting-development/gid-hst10037"
                     >
                       Arimoclomol for treating Niemann-Pick disease Type C [ID1312]
                     </a>
@@ -620,7 +620,7 @@ exports[`/guidance/proposed should match the snapshot 1`] = `
                 <tr>
                   <td>
                     <a
-                      href="/guidance/proposed/gid-hst10046"
+                      href="/guidance/awaiting-development/gid-hst10046"
                     >
                       Asfotase alfa for treating paediatric-onset hypophosphatasia (review of HST6) [ID3927]
                     </a>
@@ -632,7 +632,7 @@ exports[`/guidance/proposed should match the snapshot 1`] = `
                 <tr>
                   <td>
                     <a
-                      href="/guidance/proposed/gid-ta10574"
+                      href="/guidance/awaiting-development/gid-ta10574"
                     >
                       Atezolizumab in combination for advanced epithelial ovarian, fallopian tube or primary peritoneal cancer in people who have not received any prior systemic therapy  [ID2700]
                     </a>

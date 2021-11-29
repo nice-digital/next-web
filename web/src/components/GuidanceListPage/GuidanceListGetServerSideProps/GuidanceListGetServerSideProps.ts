@@ -26,7 +26,11 @@ export const defaultPageSize = 10;
 
 export interface GetGetServerSidePropsOptions {
 	/** Pre-filter for the guidance status type (gst) 'or modifier' that gets passed to search */
-	gstPreFilter: "Published" | "In consultation" | "In development" | "Proposed";
+	gstPreFilter:
+		| "Published"
+		| "In consultation"
+		| "In development"
+		| "Awaiting development";
 	defaultSortOrder: SortOrder;
 	dateFilterLabel?: string;
 }
