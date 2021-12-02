@@ -35,7 +35,7 @@
       "UpstreamPathTemplate": "/api/{everything}",
       "FileCacheOptions": {
         "TtlSeconds": 900,
-        "Region": "OcelotNiceorgTaxonomyMappings"
+        "Region": "OcelotNiceorg"
       }
     }
   ],
