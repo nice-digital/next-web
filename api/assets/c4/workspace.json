@@ -1,0 +1,319 @@
+{
+  "id" : 1,
+  "name" : "Name",
+  "description" : "Description",
+  "revision" : 0,
+  "lastModifiedDate" : "2021-11-23T13:06:50Z",
+  "lastModifiedAgent" : "structurizr-web/2553/diagram",
+  "properties" : {
+    "structurizr.dsl" : "d29ya3NwYWNlIHsKCiAgICBtb2RlbCB7CgkJbmljZUxvZ2dpbmcgPSBzb2Z0d2FyZXN5c3RlbSAiTklDRSBMb2dnaW5nIiAiUmFiYml0LCBMb2dzdGFzaCwgRWxhc3RpYyBhbmQgS2liYW5hIGxvZ2dpbmcgc29sdXRpb24iCgkJZ3VpZGFuY2VXZWIgPSBzb2Z0d2FyZXN5c3RlbSAiR3VpZGFuY2UgV2ViIiAiT25seSBOaWNlb3JnIGVuZHBvaW50cyBjdXJyZW50bHkgcm91dGVkIGJ5IE9jZWxvdCIKCQluaWNlT3JnID0gc29mdHdhcmVzeXN0ZW0gIk5pY2VvcmciICJNYWluIE5pY2Ugd2Vic2l0ZSBDTVMiCgkJbmV4dFdlYiA9IHNvZnR3YXJlc3lzdGVtICJOZXh0IFdlYiIgIk5vdCBjdXJyZW50bHkgaW1wbGVtZW50ZWQiICJEaXNhYmxlZCIKCgkJb2NlbG90QVBJID0gc29mdHdhcmVzeXN0ZW0gIk5leHQgV2ViIEFQSSIgewoJCQluZXh0V2ViQXBpID0gY29udGFpbmVyICJOZXh0IFdlYiBBUEkgV2ViIEFwcGxpY2F0aW9uIiAiZG90bmV0IENvcmUiIHsKCQkJCW9jZWxvdFJvdXRlc0NvbmZpZyA9IGNvbXBvbmVudCAib2NlbG90LmVudi5qc29uIGNvbmZpZyIgIlN0b3JlcyBPY2Vsb3Qgcm91dGUgY29uZmlnIGluIGpzb24gZmlsZSB3aGljaCBpcyByZWFkIG9uIGFwcGxpY2F0aW9uIHN0YXJ0dXAiICJqc29uIiAiSnNvbiBmaWxlIgoJCQkJdGFza1NjaGVkdWxlciA9IGNvbXBvbmVudCAiVGFzayBTY2hlZHVsZXIiICJJbnRlcm5hbCB0YXNrIHNjaGVkdWxlciBtYWtlcyByZXF1ZXN0cyB0byBPY2Vsb3QgdmlhIEhUVFAuIFVybHMgYW5kIGNyb24gdGltZXMgYXJlIHN0b3JlZCBpbiBjb2RlLiBTY2hlZHVsZXIgb25seSBzdGFydHMgd2hlbiBhIHZhbGlkIHJlcXVlc3QgaGFzIGJlZW4gcmVjZWl2ZWQgYW5kIGNvbnRpbnVlcyB1bnRpbCB0aGUgYXBwbGljYXRpb24gcG9vbCBpcyByZXN0YXJ0ZWQgIiAiSUhvc3RlZCBTZXJ2aWNlIgoJCQkJb2NlbG90ID0gY29tcG9uZW50ICJPY2Vsb3QiICJPcGVuIHNvdXJjZSBkb3ROZXQgQVBJIEdhdGV3YXkgcHJvamVjdCBpbXBvcnRlZCBhcyBhIG51Z2V0IHBhY2thZ2Ugd2l0aCBjdXN0b21pc2VkIG1vZHVsZXMiICJPY2Vsb3QiCgkJCX0KCQkJcmVkaXMgPSBjb250YWluZXIgIlJlc3BvbnNlIENhY2hlIiAiUmVkaXMgZGF0YWJhc2UgcnVucyBpbiBEb2NrZXIgY29udGFpbmVyIGxvY2FsbHkgZm9yIGRldi4gUnVucyBpbiBFbGFzdGljYWNoZSBpbiBBV1MiICJSZWRpcyIgIkRhdGFiYXNlIgoKCQkJb2NlbG90IC0+IHJlZGlzICJDYWNoZXMgZGF0YSBpbiIgIlJlZGlzIFByb3RvY29sIgoJCQlvY2Vsb3RSb3V0ZXNDb25maWcgLT4gb2NlbG90ICJSZWFkcyByb3V0ZSBkYXRhIGZyb20iCgkJCXRhc2tTY2hlZHVsZXIgLT4gb2NlbG90ICJSZWZyZXNoZXMgc3BlY2lmaWMgY2FjaGVkIGNvbnRlbnQiICJIVFRQIgoJCQlvY2Vsb3QgLT4gbmljZUxvZ2dpbmcgIlNpbmtzIGVycm9yIGxvZ3MgdG8iICJSYWJiaXRNUSIKCQkJZ3VpZGFuY2VXZWIgLT4gb2NlbG90ICJSZXF1ZXN0cyBjb250ZW50IGZyb20iICJIVFRQIgoJCQluZXh0V2ViIC0+IG9jZWxvdCAiUmVxdWVzdHMgY29udGVudCBmcm9tIiAiSFRUUCIKCQkJb2NlbG90IC0+ICBuaWNlb3JnICJSZXF1ZXN0cyBjb250ZW50IGZyb20iICJIVFRQIgoJCX0KICAgIH0KCiAgICB2aWV3cyB7CgkJY29udGFpbmVyIG9jZWxvdEFQSSAiQ29udGFpbmVycyIgewoJCQlpbmNsdWRlICoKCQl9CgkJY29tcG9uZW50IG5leHRXZWJBcGkgIkNvbXBvbmVudCIgewoJCQlpbmNsdWRlICoKCQl9CgkJc3R5bGVzIHsKICAgICAgICAgICAgZWxlbWVudCAiRGF0YWJhc2UiIHsKICAgICAgICAgICAgICAgIHNoYXBlIEN5bGluZGVyCiAgICAgICAgICAgIH0KCQkJZWxlbWVudCAiSnNvbiBmaWxlIiB7CiAgICAgICAgICAgICAgICBzaGFwZSBGb2xkZXIKICAgICAgICAgICAgfQoJCQllbGVtZW50ICJEaXNhYmxlZCIgewogICAgICAgICAgICAgICAgYmFja2dyb3VuZCAjQzBDMEMwCiAgICAgICAgICAgIH0KCQl9CgkJdGhlbWUgZGVmYXVsdAogICAgfQp9Cg=="
+  },
+  "configuration" : { },
+  "model" : {
+    "softwareSystems" : [ {
+      "id" : "4",
+      "tags" : "Element,Software System,Disabled",
+      "name" : "Next Web",
+      "description" : "Not currently implemented",
+      "relationships" : [ {
+        "id" : "21",
+        "tags" : "Relationship",
+        "sourceId" : "4",
+        "destinationId" : "9",
+        "description" : "Requests content from",
+        "technology" : "HTTP"
+      }, {
+        "id" : "23",
+        "tags" : "Relationship",
+        "sourceId" : "4",
+        "destinationId" : "5",
+        "description" : "Requests content from",
+        "technology" : "HTTP"
+      }, {
+        "id" : "22",
+        "tags" : "Relationship",
+        "sourceId" : "4",
+        "destinationId" : "6",
+        "description" : "Requests content from",
+        "technology" : "HTTP"
+      } ],
+      "location" : "Unspecified"
+    }, {
+      "id" : "3",
+      "tags" : "Element,Software System",
+      "name" : "Niceorg",
+      "description" : "Main Nice website CMS",
+      "location" : "Unspecified"
+    }, {
+      "id" : "1",
+      "tags" : "Element,Software System",
+      "name" : "NICE Logging",
+      "description" : "Rabbit, Logstash, Elastic and Kibana logging solution",
+      "location" : "Unspecified"
+    }, {
+      "id" : "5",
+      "tags" : "Element,Software System",
+      "name" : "Next Web API",
+      "relationships" : [ {
+        "id" : "17",
+        "tags" : "Relationship",
+        "sourceId" : "5",
+        "destinationId" : "1",
+        "description" : "Sinks error logs to",
+        "technology" : "RabbitMQ"
+      }, {
+        "id" : "26",
+        "tags" : "Relationship",
+        "sourceId" : "5",
+        "destinationId" : "3",
+        "description" : "Requests content from",
+        "technology" : "HTTP"
+      } ],
+      "location" : "Unspecified",
+      "containers" : [ {
+        "id" : "10",
+        "tags" : "Element,Container,Database",
+        "name" : "Response Cache",
+        "description" : "Redis database runs in Docker container locally for dev. Runs in Elasticache in AWS",
+        "technology" : "Redis"
+      }, {
+        "id" : "6",
+        "tags" : "Element,Container",
+        "name" : "Next Web API Web Application",
+        "description" : "dotnet Core",
+        "relationships" : [ {
+          "id" : "25",
+          "tags" : "Relationship",
+          "sourceId" : "6",
+          "destinationId" : "3",
+          "description" : "Requests content from",
+          "technology" : "HTTP"
+        }, {
+          "id" : "12",
+          "tags" : "Relationship",
+          "sourceId" : "6",
+          "destinationId" : "10",
+          "description" : "Caches data in",
+          "technology" : "Redis Protocol"
+        }, {
+          "id" : "16",
+          "tags" : "Relationship",
+          "sourceId" : "6",
+          "destinationId" : "1",
+          "description" : "Sinks error logs to",
+          "technology" : "RabbitMQ"
+        } ],
+        "components" : [ {
+          "id" : "9",
+          "tags" : "Element,Component",
+          "name" : "Ocelot",
+          "description" : "Open source dotNet API Gateway project imported as a nuget package with customised modules",
+          "relationships" : [ {
+            "id" : "11",
+            "tags" : "Relationship",
+            "sourceId" : "9",
+            "destinationId" : "10",
+            "description" : "Caches data in",
+            "technology" : "Redis Protocol"
+          }, {
+            "id" : "15",
+            "tags" : "Relationship",
+            "sourceId" : "9",
+            "destinationId" : "1",
+            "description" : "Sinks error logs to",
+            "technology" : "RabbitMQ"
+          }, {
+            "id" : "24",
+            "tags" : "Relationship",
+            "sourceId" : "9",
+            "destinationId" : "3",
+            "description" : "Requests content from",
+            "technology" : "HTTP"
+          } ],
+          "technology" : "Ocelot",
+          "size" : 0
+        }, {
+          "id" : "7",
+          "tags" : "Element,Component,Json file",
+          "name" : "ocelot.env.json config",
+          "description" : "Stores Ocelot route config in json file which is read on application startup",
+          "relationships" : [ {
+            "id" : "13",
+            "tags" : "Relationship",
+            "sourceId" : "7",
+            "destinationId" : "9",
+            "description" : "Reads route data from"
+          } ],
+          "technology" : "json",
+          "size" : 0
+        }, {
+          "id" : "8",
+          "tags" : "Element,Component",
+          "name" : "Task Scheduler",
+          "description" : "Internal task scheduler makes requests to Ocelot via HTTP. Urls and cron times are stored in code. Scheduler only starts when a valid request has been received and continues until the application pool is restarted",
+          "relationships" : [ {
+            "id" : "14",
+            "tags" : "Relationship",
+            "sourceId" : "8",
+            "destinationId" : "9",
+            "description" : "Refreshes specific cached content",
+            "technology" : "HTTP"
+          } ],
+          "technology" : "IHosted Service",
+          "size" : 0
+        } ]
+      } ]
+    }, {
+      "id" : "2",
+      "tags" : "Element,Software System",
+      "name" : "Guidance Web",
+      "description" : "Only Niceorg endpoints currently routed by Ocelot",
+      "relationships" : [ {
+        "id" : "18",
+        "tags" : "Relationship",
+        "sourceId" : "2",
+        "destinationId" : "9",
+        "description" : "Requests content from",
+        "technology" : "HTTP"
+      }, {
+        "id" : "19",
+        "tags" : "Relationship",
+        "sourceId" : "2",
+        "destinationId" : "6",
+        "description" : "Requests content from",
+        "technology" : "HTTP"
+      }, {
+        "id" : "20",
+        "tags" : "Relationship",
+        "sourceId" : "2",
+        "destinationId" : "5",
+        "description" : "Requests content from",
+        "technology" : "HTTP"
+      } ],
+      "location" : "Unspecified"
+    } ]
+  },
+  "documentation" : { },
+  "views" : {
+    "containerViews" : [ {
+      "softwareSystemId" : "5",
+      "key" : "Containers",
+      "dimensions" : {
+        "width" : 1977,
+        "height" : 1692
+      },
+      "externalSoftwareSystemBoundariesVisible" : true,
+      "elements" : [ {
+        "id" : "1",
+        "x" : 1349,
+        "y" : 100
+      }, {
+        "id" : "2",
+        "x" : 576,
+        "y" : 100
+      }, {
+        "id" : "3",
+        "x" : 576,
+        "y" : 1292
+      }, {
+        "id" : "4",
+        "x" : 99,
+        "y" : 100
+      }, {
+        "id" : "6",
+        "x" : 576,
+        "y" : 692
+      }, {
+        "id" : "10",
+        "x" : 1406,
+        "y" : 692
+      } ],
+      "relationships" : [ {
+        "id" : "16"
+      }, {
+        "id" : "25"
+      }, {
+        "id" : "12"
+      }, {
+        "id" : "22"
+      }, {
+        "id" : "19"
+      } ]
+    } ],
+    "componentViews" : [ {
+      "key" : "Component",
+      "dimensions" : {
+        "width" : 2160,
+        "height" : 1859
+      },
+      "containerId" : "6",
+      "externalContainerBoundariesVisible" : true,
+      "elements" : [ {
+        "id" : "1",
+        "x" : 1490,
+        "y" : 1459
+      }, {
+        "id" : "2",
+        "x" : 925,
+        "y" : 99
+      }, {
+        "id" : "3",
+        "x" : 925,
+        "y" : 1459
+      }, {
+        "id" : "4",
+        "x" : 120,
+        "y" : 104
+      }, {
+        "id" : "7",
+        "x" : 120,
+        "y" : 989
+      }, {
+        "id" : "8",
+        "x" : 120,
+        "y" : 596
+      }, {
+        "id" : "9",
+        "x" : 925,
+        "y" : 596
+      }, {
+        "id" : "10",
+        "x" : 1610,
+        "y" : 596
+      } ],
+      "relationships" : [ {
+        "id" : "18"
+      }, {
+        "id" : "15"
+      }, {
+        "id" : "14"
+      }, {
+        "id" : "24"
+      }, {
+        "id" : "13"
+      }, {
+        "id" : "11"
+      }, {
+        "id" : "21"
+      } ]
+    } ],
+    "configuration" : {
+      "branding" : { },
+      "styles" : {
+        "elements" : [ {
+          "tag" : "Database",
+          "shape" : "Cylinder"
+        }, {
+          "tag" : "Json file",
+          "shape" : "Folder"
+        }, {
+          "tag" : "Disabled",
+          "background" : "#c0c0c0"
+        } ]
+      },
+      "themes" : [ "https://static.structurizr.com/themes/default/theme.json" ],
+      "terminology" : { },
+      "lastSavedView" : "Component"
+    }
+  }
+}
