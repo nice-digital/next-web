@@ -25,7 +25,7 @@
   ],
   "dependencies": {
     "@nice-digital/design-system": "^1.2.30",
-    "@nice-digital/global-nav": "^4.1.651-GN-115-Mega-nav-prod",
+    "@nice-digital/global-nav": "^4.1.668",
     "@nice-digital/search-client": "^1.0.1402",
     "cache-manager": "^3.4.4",
     "cache-manager-fs-hash": "^1.0.0",
