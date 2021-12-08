@@ -27,6 +27,7 @@ import { Link } from "@/components/Link/Link";
 import { SearchPagination } from "@/components/SearchPagination/SearchPagination";
 import { SkipLink } from "@/components/SkipLink/SkipLink";
 import { publicRuntimeConfig } from "@/config";
+import { searchFormatMeta } from "@/helpers/search-format-meta";
 import { logger } from "@/logger";
 import { dateFormatShort } from "@/utils/constants";
 import { formatDateStr } from "@/utils/index";
@@ -182,8 +183,8 @@ export function Search({
 						</p>
 					) : (
 						<>
-							{documents.map(
-								({
+							{documents.map((item) => {
+								const {
 									id,
 									title,
 									guidanceRef,
@@ -196,77 +197,38 @@ export function Search({
 									niceDocType,
 									resourceCategory,
 									resourceType,
-								}) => {
-									const formattedTitle = (
-										<span dangerouslySetInnerHTML={{ __html: title }} />
-									);
-									const formattedTeaser = (
-										<span dangerouslySetInnerHTML={{ __html: teaser }} />
-									);
+									niceAdviceType,
+									niceGuidanceType,
+								} = item;
+								const formattedTitle = (
+									<span dangerouslySetInnerHTML={{ __html: title }} />
+								);
+								const formattedTeaser = (
+									<span dangerouslySetInnerHTML={{ __html: teaser }} />
+								);
 
-									function getMeta() {
-										const items = [];
-										if (niceResultType || niceDocType) {
-											items.push({
-												label: "Type",
-												value:
-													niceResultType && niceResultType.length > 0
-														? niceResultType
-														: niceDocType,
-											});
-										}
-										if (resourceCategory || resourceType) {
-											items.push({
-												visibleLabel: true,
-												label:
-													(resourceCategory && "DEBUG Resource category:") ||
-													"Resource type",
-												value:
-													resourceType && resourceType.length > 0
-														? resourceType
-														: resourceCategory,
-											});
-										}
-										if (lastUpdated && lastUpdated !== publicationDate) {
-											items.push({
-												visibleLabel: true,
-												label: "Last updated",
-												value: formatDateStr(lastUpdated),
-											});
-										} else if (publicationDate) {
-											items.push({
-												visibleLabel: true,
-												label: "Published",
-												value: formatDateStr(publicationDate),
-											});
-										}
-										if (items.length === 0) return null;
-										return items;
-									}
-
-									return (
-										<>
-											<Card
-												headingText={formattedTitle}
-												headingLink={pathAndQuery}
-												key={id}
-												summary={formattedTeaser}
-												link={{
-													destination: pathAndQuery,
-												}}
-												metadata={getMeta()}
-											/>
-											{subSectionLinks && (
-												<details className="btn btn--inverse">
-													<summary>Show all sections</summary>
-													<pre>{subSectionLinks}</pre>
-												</details>
-											)}
-											<hr />
-										</>
-									);
-								}
-							)}
+								return (
+									<>
+										<Card
+											headingText={formattedTitle}
+											headingLink={pathAndQuery}
+											key={id}
+											summary={formattedTeaser}
+											link={{
+												destination: pathAndQuery,
+											}}
+											metadata={searchFormatMeta(item)}
+										/>
+										{subSectionLinks && (
+											<details className="btn btn--inverse">
+												<summary>Show all sections</summary>
+												<pre>{subSectionLinks}</pre>
+											</details>
+										)}
+										<hr />
+									</>
+								);
+							})}
 						</>
 					)}
 					<SearchPagination results={results} />
