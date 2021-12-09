@@ -2,6 +2,7 @@ import dayjs from "dayjs";
 import { GetServerSidePropsContext, GetServerSidePropsResult } from "next";
 import { NextSeo } from "next-seo";
 import React, { useEffect, useMemo, useState } from "react";
+import xml2js from "xml2js";
 
 import { Breadcrumbs, Breadcrumb } from "@nice-digital/nds-breadcrumbs";
 import { Card } from "@nice-digital/nds-card";
@@ -72,6 +73,8 @@ export function Search({
 		),
 		[]
 	);
+
+	const parser = new xml2js.Parser();
 
 	const {
 		documents,
@@ -207,6 +210,14 @@ export function Search({
 									<span dangerouslySetInnerHTML={{ __html: teaser }} />
 								);
 
+								let parsedLinks;
+								subSectionLinks &&
+									parser.parseString(subSectionLinks, function (err, result) {
+										parsedLinks = result.SubSections.link;
+									});
+
+								console.log("###", parsedLinks);
+
 								return (
 									<>
 										<Card
@@ -226,12 +237,25 @@ export function Search({
 											</details>
 										)}
 										<hr />
+										{parsedLinks && (
+											<ul>
+												<ul>
+													<li>Parsed links here</li>
+													<li>
+														{parsedLinks.map(
+															({ $, _ }) => `URL ${$.url} | TEXT ${_}`
+														)}
+													</li>
+													);
+												</ul>
+											</ul>
+										)}
 									</>
 								);
 							})}
 						</>
 					)}
-					<SearchPagination results={results} />
+					<SearchPagination results={results} scrollTargetId="filter-summary" />
 				</GridItem>
 			</Grid>
 		</>

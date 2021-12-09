@@ -33,7 +33,7 @@ export function searchFormatMeta(item: Document): Array<FormattedMetaItem> {
 		console.log({ niceResultType }, { niceDocType });
 		items.push({
 			visibleLabel: true,
-			label: "Type",
+			label: "",
 			value: (niceResultType && niceResultType.length > 0
 				? niceResultType
 				: niceDocType) as string,
