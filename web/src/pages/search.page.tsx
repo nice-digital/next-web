@@ -191,7 +191,7 @@ export function Search({
 							and starting again.
 						</p>
 					) : (
-						<>
+						<ul>
 							{documents.map((item) => {
 								const {
 									id,
@@ -227,24 +227,23 @@ export function Search({
 								};
 
 								return (
-									<>
-										<Card
-											headingText={
-												<>
-													{isPathway(item.niceResultType) && (
-														<PathwaysIcon className="mr--b" />
-													)}
-													{formattedTitle}
-												</>
-											}
-											headingLink={pathAndQuery}
-											key={id}
-											summary={formattedTeaser}
-											link={{
-												destination: pathAndQuery,
-											}}
-											metadata={searchFormatMeta(item)}
-										/>
+									<Card
+										headingText={
+											<>
+												{isPathway(item.niceResultType) && (
+													<PathwaysIcon className="mr--b" />
+												)}
+												{formattedTitle}
+											</>
+										}
+										headingLink={pathAndQuery}
+										key={id}
+										summary={formattedTeaser}
+										link={{
+											destination: pathAndQuery,
+										}}
+										metadata={searchFormatMeta(item)}
+									>
 										{parsedLinks && (
 											<details className="btn btn--inverse">
 												<summary>Show all sections</summary>
@@ -259,11 +258,10 @@ export function Search({
 												</ul>
 											</details>
 										)}
-										<hr />
-									</>
+									</Card>
 								);
 							})}
-						</>
+						</ul>
 					)}
 					<SearchPagination results={results} scrollTargetId="filter-summary" />
 				</GridItem>

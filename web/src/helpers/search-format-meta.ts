@@ -29,8 +29,8 @@ export function searchFormatMeta(item: Document): Array<FormattedMetaItem> {
 
 	const items: FormattedMetaItem[] = [];
 
-	const isTopicPage = (resutlType: string) => {
-		return resutlType == "Topic page";
+	const isTopicPage = (resultType: string) => {
+		return resultType == "Topic page";
 	};
 
 	const isCategorised = (
@@ -39,8 +39,6 @@ export function searchFormatMeta(item: Document): Array<FormattedMetaItem> {
 		resourceCategory: readonly string[] | null,
 		resourceType: readonly string[]
 	) => {
-		// console.log("]]]]]", resultType, docType, resourceCategory, resourceType);
-
 		const result =
 			resultType ||
 			docType.length > 0 ||
@@ -50,36 +48,38 @@ export function searchFormatMeta(item: Document): Array<FormattedMetaItem> {
 		return !!result;
 	};
 
-	console.log(
-		"categorised? ",
-		isCategorised(niceResultType, niceDocType, resourceCategory, resourceType)
-	);
+	// if (niceResultType) {
+	// 	return niceResultType;
+	// } else if (resourceType.length) {
+	// 	return resourceType[0];
+	// } else {
+	// 	return null;
+	// }
 
-	if (niceResultType || niceDocType.length > 0) {
-		console.log({ niceResultType }, { niceDocType });
-		items.push({
-			visibleLabel: true,
-			label: "",
-			value: (niceResultType && niceResultType.length > 0
-				? niceResultType
-				: niceDocType) as string,
-		});
-	}
-	if (resourceCategory || resourceType) {
-		console.log(
-			{ niceResultType },
-			{ niceDocType },
-			{ resourceCategory },
-			{ resourceType }
-		);
+	if (niceResultType || (resourceType && resourceType.length > 0)) {
 		items.push({
 			visibleLabel: false,
-			label: (resourceCategory && "DEBUG Resource category:") || "Resource",
-			value: (resourceType && resourceType.length > 0
-				? resourceType[0]
-				: resourceCategory && resourceCategory[0]) as string,
+			label: "Result type",
+			value: (niceResultType || resourceType[0]) as string,
 		});
 	}
+
+	// if (resourceCategory || resourceType) {
+	// 	console.log(
+	// 		{ niceResultType },
+	// 		{ niceDocType },
+	// 		{ resourceCategory },
+	// 		{ resourceType }
+	// 	);
+	// 	items.push({
+	// 		visibleLabel: true,
+	// 		label: (resourceCategory && "DEBUG Resource category:") || "Resource",
+	// 		value: (resourceType && resourceType.length > 0
+	// 			? resourceType[0]
+	// 			: resourceCategory && resourceCategory[0]) as string,
+	// 	});
+	// }
+
 	if (
 		lastUpdated &&
 		lastUpdated !== publicationDate &&
@@ -103,5 +103,5 @@ export function searchFormatMeta(item: Document): Array<FormattedMetaItem> {
 		});
 	}
 
-	return items;
+	if (items.length > 0) return items;
 }
