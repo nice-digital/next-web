@@ -4,6 +4,7 @@ import { NextSeo } from "next-seo";
 import React, { useEffect, useMemo, useState } from "react";
 import xml2js from "xml2js";
 
+import PathwaysIcon from "@nice-digital/icons/lib/Pathways";
 import { Breadcrumbs, Breadcrumb } from "@nice-digital/nds-breadcrumbs";
 import { Card } from "@nice-digital/nds-card";
 import { FilterSummary } from "@nice-digital/nds-filters";
@@ -221,12 +222,21 @@ export function Search({
 										parsedLinks = result.SubSections.link;
 									});
 
-								console.log("###", parsedLinks);
+								const isPathway = (resultType: string) => {
+									return resultType == "NICE Pathway";
+								};
 
 								return (
 									<>
 										<Card
-											headingText={formattedTitle}
+											headingText={
+												<>
+													{isPathway(item.niceResultType) && (
+														<PathwaysIcon className="mr--b" />
+													)}
+													{formattedTitle}
+												</>
+											}
 											headingLink={pathAndQuery}
 											key={id}
 											summary={formattedTeaser}
@@ -244,7 +254,7 @@ export function Search({
 										{parsedLinks && (
 											<details className="btn btn--inverse">
 												<summary>Show all sections</summary>
-												<ul>
+												<ul className="list list--unstyled">
 													{(parsedLinks as SubSections[]).map(
 														({ $, _ }, index) => (
 															<li key={index}>
