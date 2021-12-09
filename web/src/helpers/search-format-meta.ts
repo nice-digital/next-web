@@ -29,6 +29,10 @@ export function searchFormatMeta(item: Document): Array<FormattedMetaItem> {
 
 	const items: FormattedMetaItem[] = [];
 
+	const isTopicPage = (resutlType: string) => {
+		return resutlType == "Topic page";
+	};
+
 	if (niceResultType || niceDocType.length > 0) {
 		console.log({ niceResultType }, { niceDocType });
 		items.push({
@@ -48,13 +52,17 @@ export function searchFormatMeta(item: Document): Array<FormattedMetaItem> {
 				: resourceCategory && resourceCategory[0]) as string,
 		});
 	}
-	if (lastUpdated && lastUpdated !== publicationDate) {
+	if (
+		lastUpdated &&
+		lastUpdated !== publicationDate &&
+		!isTopicPage(niceResultType)
+	) {
 		items.push({
 			visibleLabel: true,
 			label: "Last updated",
 			value: formatDateStr(lastUpdated),
 		});
-	} else if (publicationDate) {
+	} else if (publicationDate && !isTopicPage(niceResultType)) {
 		items.push({
 			visibleLabel: true,
 			label: "Published",
