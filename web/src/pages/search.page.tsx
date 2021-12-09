@@ -240,13 +240,11 @@ export function Search({
 										{parsedLinks && (
 											<ul>
 												<ul>
-													<li>Parsed links here</li>
-													<li>
-														{parsedLinks.map(
-															({ $, _ }) => `URL ${$.url} | TEXT ${_}`
-														)}
-													</li>
-													);
+													{parsedLinks.map(({ $, _ }) => (
+														<li>
+															<a href={$.url}>{_}</a>
+														</li>
+													))}
 												</ul>
 											</ul>
 										)}
