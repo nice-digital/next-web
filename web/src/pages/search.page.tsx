@@ -235,15 +235,15 @@ export function Search({
 											}}
 											metadata={searchFormatMeta(item)}
 										/>
-										{subSectionLinks && (
+										{/* {subSectionLinks && (
 											<details className="btn btn--inverse">
 												<summary>Show all sections</summary>
 												<pre>{subSectionLinks}</pre>
 											</details>
-										)}
-										<hr />
+										)} */}
 										{parsedLinks && (
-											<ul>
+											<details className="btn btn--inverse">
+												<summary>Show all sections</summary>
 												<ul>
 													{(parsedLinks as SubSections[]).map(
 														({ $, _ }, index) => (
@@ -253,8 +253,9 @@ export function Search({
 														)
 													)}
 												</ul>
-											</ul>
+											</details>
 										)}
+										<hr />
 									</>
 								);
 							})}
