@@ -245,12 +245,6 @@ export function Search({
 											}}
 											metadata={searchFormatMeta(item)}
 										/>
-										{/* {subSectionLinks && (
-											<details className="btn btn--inverse">
-												<summary>Show all sections</summary>
-												<pre>{subSectionLinks}</pre>
-											</details>
-										)} */}
 										{parsedLinks && (
 											<details className="btn btn--inverse">
 												<summary>Show all sections</summary>

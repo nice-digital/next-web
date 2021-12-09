@@ -33,6 +33,28 @@ export function searchFormatMeta(item: Document): Array<FormattedMetaItem> {
 		return resutlType == "Topic page";
 	};
 
+	const isCategorised = (
+		resultType: string,
+		docType: readonly string[],
+		resourceCategory: readonly string[] | null,
+		resourceType: readonly string[]
+	) => {
+		// console.log("]]]]]", resultType, docType, resourceCategory, resourceType);
+
+		const result =
+			resultType ||
+			docType.length > 0 ||
+			resourceCategory ||
+			resourceType.length > 0;
+
+		return !!result;
+	};
+
+	console.log(
+		"categorised? ",
+		isCategorised(niceResultType, niceDocType, resourceCategory, resourceType)
+	);
+
 	if (niceResultType || niceDocType.length > 0) {
 		console.log({ niceResultType }, { niceDocType });
 		items.push({
@@ -44,6 +66,12 @@ export function searchFormatMeta(item: Document): Array<FormattedMetaItem> {
 		});
 	}
 	if (resourceCategory || resourceType) {
+		console.log(
+			{ niceResultType },
+			{ niceDocType },
+			{ resourceCategory },
+			{ resourceType }
+		);
 		items.push({
 			visibleLabel: false,
 			label: (resourceCategory && "DEBUG Resource category:") || "Resource",
@@ -55,14 +83,19 @@ export function searchFormatMeta(item: Document): Array<FormattedMetaItem> {
 	if (
 		lastUpdated &&
 		lastUpdated !== publicationDate &&
-		!isTopicPage(niceResultType)
+		!isTopicPage(niceResultType) &&
+		isCategorised(niceResultType, niceDocType, resourceCategory, resourceType)
 	) {
 		items.push({
 			visibleLabel: true,
 			label: "Last updated",
 			value: formatDateStr(lastUpdated),
 		});
-	} else if (publicationDate && !isTopicPage(niceResultType)) {
+	} else if (
+		publicationDate &&
+		!isTopicPage(niceResultType) &&
+		isCategorised(niceResultType, niceDocType, resourceCategory, resourceType)
+	) {
 		items.push({
 			visibleLabel: true,
 			label: "Published",
