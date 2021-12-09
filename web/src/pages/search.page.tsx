@@ -35,6 +35,11 @@ import { formatDateStr } from "@/utils/index";
 
 import styles from "./../components/GuidanceListPage/GuidanceListPage.module.scss";
 
+type SubSections = {
+	$: { url: string };
+	_: string;
+};
+
 // NOTE: Page size cannot be less than 10 due to a bug in Search
 // See https://github.com/nice-digital/search/blob/958b9eeab53db990aa5a8e4490703454db9b5dbd/Client/NICE.Search.Common/Models/PagerLinks.cs#L28
 const searchUrlDefaults = {
@@ -240,11 +245,13 @@ export function Search({
 										{parsedLinks && (
 											<ul>
 												<ul>
-													{parsedLinks.map(({ $, _ }) => (
-														<li>
-															<a href={$.url}>{_}</a>
-														</li>
-													))}
+													{(parsedLinks as SubSections[]).map(
+														({ $, _ }, index) => (
+															<li key={index}>
+																<a href={$.url}>{_}</a>
+															</li>
+														)
+													)}
 												</ul>
 											</ul>
 										)}
