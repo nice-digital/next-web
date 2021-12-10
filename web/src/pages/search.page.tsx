@@ -12,6 +12,7 @@ import { Card } from "@nice-digital/nds-card";
 import { FilterSummary } from "@nice-digital/nds-filters";
 import { Grid, GridItem } from "@nice-digital/nds-grid";
 import { PageHeader } from "@nice-digital/nds-page-header";
+import { Panel } from "@nice-digital/nds-panel";
 import {
 	search,
 	initialise,
@@ -266,15 +267,18 @@ export function Search({
 													Show all sections
 													<ChevronRight />
 												</summary>
-												<ul className="list list--unstyled">
-													{(parsedLinks as SubSections[]).map(
-														({ $, _ }, index) => (
-															<li key={index}>
-																<a href={$.url}>{_}</a>
-															</li>
-														)
-													)}
-												</ul>
+												<Panel>
+													{guidanceRef && <h4>Sections for {guidanceRef}</h4>}
+													<ul className="list list--unstyled">
+														{(parsedLinks as SubSections[]).map(
+															({ $, _ }, index) => (
+																<li key={index}>
+																	<a href={$.url}>{_}</a>
+																</li>
+															)
+														)}
+													</ul>
+												</Panel>
 											</details>
 										)}
 									</li>
