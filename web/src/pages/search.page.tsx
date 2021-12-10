@@ -237,7 +237,7 @@ export function Search({
 								return (
 									<li className={searchStyles.list__item} key={id}>
 										<Card
-											className="mb--d"
+											className={classnames(["mb--d", searchStyles.card])}
 											elementType="div"
 											headingText={
 												<>

@@ -1,29 +1,48 @@
 @use '@nice-digital/nds-core/scss/core';
 
 .list {
-  list-style: none;
-  margin: 0; }
+list-style: none;
+margin: 0; }
 
 
 .list__item {
   position: relative;
-    border-bottom: 1px solid #adadad;
-    margin-bottom: core.rem(core.$nds-spacing-medium);
-    padding-bottom: core.rem(core.$nds-spacing-medium);
+  border-bottom: 1px solid core.$nds-colour-nice-grey-1;
+  margin-bottom: core.rem(core.$nds-spacing-medium);
+  padding-bottom: core.rem(core.$nds-spacing-medium);
+}
+
+.card svg {
+  vertical-align: text-bottom;
+  color: core.$nds-colour-link;
+}
+
+.card a {
+  svg {
+    border-bottom: 2px solid core.$nds-colour-link;
+  };
+  /* hover svg colour TODO core.$nds-colour-link-hover*/
+  /* visited colour $nds-colour-link-visited*/
+}
+
+.summaryControl {
+
+}
+
+.details {
+  vertical-align: middle;
+}
+
+.details summary {
+  svg {
+  vertical-align: text-bottom;
+  margin:0;
+  margin-left: core.rem(core.$nds-spacing-small);
   }
+}
 
-  .summaryControl {
-
+.details[open] summary {
+  svg {
+    transform: rotate(180deg);
   }
-
-  .details {
-    background: blue;
-    svg {
-      transform: rotate(180deg);
-    }
-  }
-
-  .details[open] {
-    background: red;
-  }
-
+}
