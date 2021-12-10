@@ -21,10 +21,17 @@ margin: 0; }
   svg {
     border-bottom: 2px solid core.$nds-colour-link;
   };
+
   /* hover svg colour TODO core.$nds-colour-link-hover*/
   /* visited colour $nds-colour-link-visited*/
 }
 
+.card a:hover {
+  svg {
+    color: core.$nds-colour-link-hover;
+    border-bottom-color: core.$nds-colour-link-hover;
+  }
+}
 .summaryControl {
 
 }
