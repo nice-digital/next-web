@@ -1,9 +1,11 @@
+import classnames from "classnames";
 import dayjs from "dayjs";
 import { GetServerSidePropsContext, GetServerSidePropsResult } from "next";
 import { NextSeo } from "next-seo";
 import React, { useEffect, useMemo, useState } from "react";
 import xml2js from "xml2js";
 
+import ChevronRight from "@nice-digital/icons/lib/ChevronDown";
 import PathwaysIcon from "@nice-digital/icons/lib/Pathways";
 import { Breadcrumbs, Breadcrumb } from "@nice-digital/nds-breadcrumbs";
 import { Card } from "@nice-digital/nds-card";
@@ -35,6 +37,7 @@ import { dateFormatShort } from "@/utils/constants";
 import { formatDateStr } from "@/utils/index";
 
 import styles from "./../components/GuidanceListPage/GuidanceListPage.module.scss";
+import searchStyles from "./search.page.module.scss";
 
 type SubSections = {
 	$: { url: string };
@@ -98,6 +101,11 @@ export function Search({
 			`Showing ${firstResult} to ${lastResult} of ${resultCount}`
 		);
 	}, [firstResult, lastResult, resultCount]);
+
+	// const handleDetailClick = (e: Event, id) => {
+	// 	console.log("detail click ", e.target);
+	// 	console.log("detail element", e.target.closest("details"));
+	// };
 
 	if (failed)
 		return (
@@ -191,7 +199,7 @@ export function Search({
 							and starting again.
 						</p>
 					) : (
-						<ul>
+						<ul className={searchStyles.list}>
 							{documents.map((item) => {
 								const {
 									id,
@@ -227,26 +235,37 @@ export function Search({
 								};
 
 								return (
-									<Card
-										headingText={
-											<>
-												{isPathway(item.niceResultType) && (
-													<PathwaysIcon className="mr--b" />
-												)}
-												{formattedTitle}
-											</>
-										}
-										headingLink={pathAndQuery}
-										key={id}
-										summary={formattedTeaser}
-										link={{
-											destination: pathAndQuery,
-										}}
-										metadata={searchFormatMeta(item)}
-									>
+									<li className={searchStyles.list__item} key={id}>
+										<Card
+											className="mb--d"
+											elementType="div"
+											headingText={
+												<>
+													{isPathway(item.niceResultType) && (
+														<PathwaysIcon className="mr--b" />
+													)}
+													{formattedTitle}
+												</>
+											}
+											headingLink={pathAndQuery}
+											summary={formattedTeaser}
+											link={{
+												destination: pathAndQuery,
+											}}
+											metadata={searchFormatMeta(item)}
+										/>
 										{parsedLinks && (
-											<details className="btn btn--inverse">
-												<summary>Show all sections</summary>
+											<details className={searchStyles.details}>
+												<summary
+													className={classnames([
+														"btn",
+														"btn--inverse",
+														searchStyles.summaryControl,
+													])}
+												>
+													Show all sections
+													<ChevronRight />
+												</summary>
 												<ul className="list list--unstyled">
 													{(parsedLinks as SubSections[]).map(
 														({ $, _ }, index) => (
@@ -258,7 +277,7 @@ export function Search({
 												</ul>
 											</details>
 										)}
-									</Card>
+									</li>
 								);
 							})}
 						</ul>
