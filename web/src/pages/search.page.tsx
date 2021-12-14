@@ -115,6 +115,29 @@ export function Search({
 			</>
 		);
 
+	const isKeyLink = (parsedLinks: []) => {
+		const qualityStatementsChapterLinkRegex =
+			/\/chapter\/(?:list-of-quality-statements$|list-of-statements$|quality-statements$)/im;
+
+		const recommendationsChapterLinkRegex =
+			/\/chapter\/(?:recommendations|\d+-recommendations|\d+-guidance)$/im;
+
+		const recLink = parsedLinks.find(function (el) {
+			return recommendationsChapterLinkRegex.test(el.$.url);
+		});
+
+		const qsLink = parsedLinks.find(function (el) {
+			return qualityStatementsChapterLinkRegex.test(el.$.url);
+		});
+
+		console.log("recLink ", recLink);
+		console.log("qsLink ", qsLink);
+
+		if (recLink) return recLink.$.url;
+		if (qsLink) return qsLink.$.url;
+		return true;
+	};
+
 	return (
 		<>
 			<NextSeo title="Published guidance, quality standards and advice" />
@@ -260,6 +283,9 @@ export function Search({
 											}}
 											metadata={searchFormatMeta(item)}
 										/>
+										{parsedLinks && isKeyLink(parsedLinks) && (
+											<pre>has key link {isKeyLink(parsedLinks)}</pre>
+										)}
 										{parsedLinks && (
 											<details className={searchStyles.details}>
 												<summary

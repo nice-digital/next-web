@@ -1,6 +1,5 @@
-import { SearchResultsSuccess, Document } from "@nice-digital/search-client";
+import { Document } from "@nice-digital/search-client";
 
-import { dateFormatShort } from "@/utils/constants";
 import { formatDateStr } from "@/utils/index";
 
 type FormattedMetaItem = {
@@ -11,20 +10,12 @@ type FormattedMetaItem = {
 
 export function searchFormatMeta(item: Document): Array<FormattedMetaItem> {
 	const {
-		id,
-		title,
-		guidanceRef,
 		publicationDate,
 		lastUpdated,
-		pathAndQuery,
-		teaser,
-		subSectionLinks,
 		niceResultType,
 		niceDocType,
 		resourceCategory,
 		resourceType,
-		niceAdviceType,
-		niceGuidanceType,
 	} = item;
 
 	const items: FormattedMetaItem[] = [];
@@ -48,14 +39,6 @@ export function searchFormatMeta(item: Document): Array<FormattedMetaItem> {
 		return !!result;
 	};
 
-	// if (niceResultType) {
-	// 	return niceResultType;
-	// } else if (resourceType.length) {
-	// 	return resourceType[0];
-	// } else {
-	// 	return null;
-	// }
-
 	if (niceResultType || (resourceType && resourceType.length > 0)) {
 		items.push({
 			visibleLabel: false,
@@ -63,22 +46,6 @@ export function searchFormatMeta(item: Document): Array<FormattedMetaItem> {
 			value: (niceResultType || resourceType[0]) as string,
 		});
 	}
-
-	// if (resourceCategory || resourceType) {
-	// 	console.log(
-	// 		{ niceResultType },
-	// 		{ niceDocType },
-	// 		{ resourceCategory },
-	// 		{ resourceType }
-	// 	);
-	// 	items.push({
-	// 		visibleLabel: true,
-	// 		label: (resourceCategory && "DEBUG Resource category:") || "Resource",
-	// 		value: (resourceType && resourceType.length > 0
-	// 			? resourceType[0]
-	// 			: resourceCategory && resourceCategory[0]) as string,
-	// 	});
-	// }
 
 	if (
 		lastUpdated &&
@@ -103,5 +70,9 @@ export function searchFormatMeta(item: Document): Array<FormattedMetaItem> {
 		});
 	}
 
-	if (items.length > 0) return items;
+	if (items.length > 0) {
+		return items;
+	} else {
+		return [];
+	}
 }
