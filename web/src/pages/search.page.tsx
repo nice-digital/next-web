@@ -200,7 +200,12 @@ export function Search({
 							and starting again.
 						</p>
 					) : (
-						<ul className={searchStyles.list}>
+						<ol
+							className={classnames([
+								"list--unstyled mv--0",
+								searchStyles.list,
+							])}
+						>
 							{documents.map((item) => {
 								const {
 									id,
@@ -284,7 +289,7 @@ export function Search({
 									</li>
 								);
 							})}
-						</ul>
+						</ol>
 					)}
 					<SearchPagination results={results} scrollTargetId="filter-summary" />
 				</GridItem>
