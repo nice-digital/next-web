@@ -28,8 +28,10 @@ import { Announcer } from "@/components/Announcer/Announcer";
 import { ErrorPageContent } from "@/components/ErrorPageContent/ErrorPageContent";
 import { GuidanceListFilters } from "@/components/GuidanceListPage/GuidanceListFilters/GuidanceListFilters";
 import { GuidanceListNav } from "@/components/GuidanceListPage/GuidanceListNav/GuidanceListNav";
+import { KeyLink } from "@/components/KeyLink/KeyLink";
 import { Link } from "@/components/Link/Link";
 import { SearchPagination } from "@/components/SearchPagination/SearchPagination";
+import { Sections } from "@/components/Sections/Sections";
 import { SkipLink } from "@/components/SkipLink/SkipLink";
 import { publicRuntimeConfig } from "@/config";
 import { searchFormatMeta } from "@/helpers/search-format-meta";
@@ -40,7 +42,7 @@ import { formatDateStr } from "@/utils/index";
 import styles from "./../components/GuidanceListPage/GuidanceListPage.module.scss";
 import searchStyles from "./search.page.module.scss";
 
-type SubSections = {
+export type SubSections = {
 	$: { url: string };
 	_: string;
 };
@@ -114,36 +116,6 @@ export function Search({
 				<ErrorPageContent breadcrumbs={breadcrumbs} />
 			</>
 		);
-
-	const isKeyLink = (parsedLinks: []) => {
-		const qualityStatementsChapterLinkRegex =
-			/\/chapter\/(?:list-of-quality-statements$|list-of-statements$|quality-statements$)/im;
-
-		const recommendationsChapterLinkRegex =
-			/\/chapter\/(?:recommendations|\d+-recommendations|\d+-guidance)$/im;
-
-		const recLink = parsedLinks.find(function (el) {
-			return recommendationsChapterLinkRegex.test(el.$.url);
-		});
-
-		const qsLink = parsedLinks.find(function (el) {
-			return qualityStatementsChapterLinkRegex.test(el.$.url);
-		});
-
-		if (recLink)
-			return (
-				<Link to={recLink.$.url} className="mb--a">
-					<a>View recommendations</a>
-				</Link>
-			);
-		if (qsLink)
-			return (
-				<Link to={qsLink.$.url} className="mb--a">
-					<a>View quality statements</a>
-				</Link>
-			);
-		return null;
-	};
 
 	return (
 		<>
@@ -290,34 +262,14 @@ export function Search({
 											}}
 											metadata={searchFormatMeta(item)}
 										/>
-										{parsedLinks && isKeyLink(parsedLinks) && (
-											<>{isKeyLink(parsedLinks)}</>
-										)}
 										{parsedLinks && (
-											<details className={searchStyles.details}>
-												<summary
-													className={classnames([
-														"btn",
-														"btn--inverse",
-														searchStyles.summaryControl,
-													])}
-												>
-													Show all sections
-													<ChevronRight />
-												</summary>
-												<Panel>
-													{guidanceRef && <h4>Sections for {guidanceRef}</h4>}
-													<ul className="list list--unstyled">
-														{(parsedLinks as SubSections[]).map(
-															({ $, _ }, index) => (
-																<li key={index}>
-																	<a href={$.url}>{_}</a>
-																</li>
-															)
-														)}
-													</ul>
-												</Panel>
-											</details>
+											<>
+												<KeyLink parsedLinks={parsedLinks} />
+												<Sections
+													parsedLinks={parsedLinks}
+													guidanceRef={guidanceRef}
+												/>
+											</>
 										)}
 									</li>
 								);
