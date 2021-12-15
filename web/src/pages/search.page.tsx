@@ -130,12 +130,19 @@ export function Search({
 			return qualityStatementsChapterLinkRegex.test(el.$.url);
 		});
 
-		console.log("recLink ", recLink);
-		console.log("qsLink ", qsLink);
-
-		if (recLink) return recLink.$.url;
-		if (qsLink) return qsLink.$.url;
-		return true;
+		if (recLink)
+			return (
+				<Link to={recLink.$.url} className="mb--a">
+					<a>View recommendations</a>
+				</Link>
+			);
+		if (qsLink)
+			return (
+				<Link to={qsLink.$.url} className="mb--a">
+					<a>View quality statements</a>
+				</Link>
+			);
+		return null;
 	};
 
 	return (
@@ -284,7 +291,7 @@ export function Search({
 											metadata={searchFormatMeta(item)}
 										/>
 										{parsedLinks && isKeyLink(parsedLinks) && (
-											<pre>has key link {isKeyLink(parsedLinks)}</pre>
+											<>{isKeyLink(parsedLinks)}</>
 										)}
 										{parsedLinks && (
 											<details className={searchStyles.details}>
