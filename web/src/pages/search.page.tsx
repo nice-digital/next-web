@@ -100,11 +100,6 @@ export function Search({
 		);
 	}, [firstResult, lastResult, resultCount]);
 
-	// const handleDetailClick = (e: Event, id) => {
-	// 	console.log("detail click ", e.target);
-	// 	console.log("detail element", e.target.closest("details"));
-	// };
-
 	if (failed)
 		return (
 			<>
@@ -234,7 +229,7 @@ export function Search({
 										<SearchCard
 											formattedTitle={formattedTitle}
 											guidanceRef={guidanceRef}
-											headingLink={pathAndQuery}
+											headinglink={pathAndQuery}
 											isPathway={isPathway(item.niceResultType)}
 											metadata={searchFormatMeta(item)}
 											parsedLinks={parsedLinks}

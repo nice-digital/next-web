@@ -12,7 +12,7 @@ import searchStyles from "./../../pages/search.page.module.scss";
 export interface SearchCardProps {
 	formattedTitle: JSX.Element;
 	guidanceRef: string | null;
-	headingLink: string;
+	headinglink: string;
 	isPathway: boolean;
 	metadata: CardMetaDataProps[];
 	parsedLinks?: [];
@@ -22,7 +22,7 @@ export interface SearchCardProps {
 export const SearchCard: FC<SearchCardProps> = ({
 	formattedTitle,
 	guidanceRef,
-	headingLink,
+	headinglink,
 	isPathway,
 	metadata,
 	parsedLinks,
@@ -39,10 +39,10 @@ export const SearchCard: FC<SearchCardProps> = ({
 						{formattedTitle}
 					</>
 				}
-				headingLink={headingLink}
+				headinglink={headinglink}
 				summary={summary}
 				link={{
-					destination: headingLink,
+					destination: headinglink,
 				}}
 				metadata={metadata}
 			/>
