@@ -113,9 +113,9 @@ export function Search({
 
 			<Announcer announcement={announcement} />
 
-			{/* {breadcrumbs} */}
+			{/* {breadcrumbs}
 
-			{/* <PageHeader
+			<PageHeader
 				preheading="Search results for"
 				heading={`${results.finalSearchText}`}
 				lead={

@@ -36,7 +36,7 @@ export const KeyLink: FC<KeyLinkProps> = ({
 	const linkObj = identifyKeyLink(parsedLinks);
 
 	return linkObj ? (
-		<Link to={linkObj.url} className="mb--a">
+		<Link to={linkObj.url}>
 			<a>{linkObj.text}</a>
 		</Link>
 	) : null;

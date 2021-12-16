@@ -3,6 +3,7 @@ import React, { FC } from "react";
 
 import PathwaysIcon from "@nice-digital/icons/lib/Pathways";
 import { Card, CardMetaDataProps } from "@nice-digital/nds-card";
+import { Grid, GridItem } from "@nice-digital/nds-grid";
 
 import { KeyLink } from "@/components/KeyLink/KeyLink";
 import { Sections } from "@/components/Sections/Sections";
@@ -47,10 +48,27 @@ export const SearchCard: FC<SearchCardProps> = ({
 				metadata={metadata}
 			/>
 			{parsedLinks && (
-				<>
-					<KeyLink parsedLinks={parsedLinks} />
-					<Sections parsedLinks={parsedLinks} guidanceRef={guidanceRef} />
-				</>
+				<Grid gutter="loose">
+					<GridItem
+						className="mb--d"
+						cols={12}
+						md={3}
+						// lg={12}
+						elementType="div"
+						//TODO aria-label=""
+					>
+						<KeyLink parsedLinks={parsedLinks} />
+					</GridItem>
+					<GridItem
+						cols={12}
+						md={9}
+						// lg={12}
+						elementType="div"
+						//TODO aria-label=""
+					>
+						<Sections parsedLinks={parsedLinks} guidanceRef={guidanceRef} />
+					</GridItem>
+				</Grid>
 			)}
 		</>
 	);
