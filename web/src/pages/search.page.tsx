@@ -5,14 +5,11 @@ import { NextSeo } from "next-seo";
 import React, { useEffect, useMemo, useState } from "react";
 import xml2js from "xml2js";
 
-import ChevronRight from "@nice-digital/icons/lib/ChevronDown";
-import PathwaysIcon from "@nice-digital/icons/lib/Pathways";
 import { Breadcrumbs, Breadcrumb } from "@nice-digital/nds-breadcrumbs";
 import { Card } from "@nice-digital/nds-card";
 import { FilterSummary } from "@nice-digital/nds-filters";
 import { Grid, GridItem } from "@nice-digital/nds-grid";
 import { PageHeader } from "@nice-digital/nds-page-header";
-import { Panel } from "@nice-digital/nds-panel";
 import {
 	search,
 	initialise,
@@ -28,16 +25,14 @@ import { Announcer } from "@/components/Announcer/Announcer";
 import { ErrorPageContent } from "@/components/ErrorPageContent/ErrorPageContent";
 import { GuidanceListFilters } from "@/components/GuidanceListPage/GuidanceListFilters/GuidanceListFilters";
 import { GuidanceListNav } from "@/components/GuidanceListPage/GuidanceListNav/GuidanceListNav";
-import { KeyLink } from "@/components/KeyLink/KeyLink";
 import { Link } from "@/components/Link/Link";
+import { SearchCard } from "@/components/SearchCard/SearchCard";
 import { SearchPagination } from "@/components/SearchPagination/SearchPagination";
-import { Sections } from "@/components/Sections/Sections";
 import { SkipLink } from "@/components/SkipLink/SkipLink";
 import { publicRuntimeConfig } from "@/config";
 import { searchFormatMeta } from "@/helpers/search-format-meta";
 import { logger } from "@/logger";
 import { dateFormatShort } from "@/utils/constants";
-import { formatDateStr } from "@/utils/index";
 
 import styles from "./../components/GuidanceListPage/GuidanceListPage.module.scss";
 import searchStyles from "./search.page.module.scss";
@@ -213,17 +208,9 @@ export function Search({
 									id,
 									title,
 									guidanceRef,
-									publicationDate,
-									lastUpdated,
 									pathAndQuery,
 									teaser,
 									subSectionLinks,
-									niceResultType,
-									niceDocType,
-									resourceCategory,
-									resourceType,
-									niceAdviceType,
-									niceGuidanceType,
 								} = item;
 								const formattedTitle = (
 									<span dangerouslySetInnerHTML={{ __html: title }} />
@@ -244,33 +231,15 @@ export function Search({
 
 								return (
 									<li className={searchStyles.list__item} key={id}>
-										<Card
-											className={classnames(["mb--d", searchStyles.card])}
-											elementType="div"
-											headingText={
-												<>
-													{isPathway(item.niceResultType) && (
-														<PathwaysIcon className="mr--b" />
-													)}
-													{formattedTitle}
-												</>
-											}
+										<SearchCard
+											formattedTitle={formattedTitle}
+											guidanceRef={guidanceRef}
 											headingLink={pathAndQuery}
-											summary={formattedTeaser}
-											link={{
-												destination: pathAndQuery,
-											}}
+											isPathway={isPathway(item.niceResultType)}
 											metadata={searchFormatMeta(item)}
+											parsedLinks={parsedLinks}
+											summary={formattedTeaser}
 										/>
-										{parsedLinks && (
-											<>
-												<KeyLink parsedLinks={parsedLinks} />
-												<Sections
-													parsedLinks={parsedLinks}
-													guidanceRef={guidanceRef}
-												/>
-											</>
-										)}
 									</li>
 								);
 							})}
