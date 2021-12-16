@@ -169,20 +169,20 @@ export function Search({
 								),
 							})
 						)}
-						// sorting={[
-						// 	{
-						// 		active: true,
-						// 		label: s === "Title" ? "Title" : "Date",
-						// 	},
-						// 	{
-						// 		active: false,
-						// 		label: s !== "Title" ? "Title" : "Date",
-						// 		destination: "?s=" + (s !== "Title" ? "Title" : "Date"),
-						// 		elementType: ({ ...props }) => (
-						// 			<Link {...props} scroll={false} />
-						// 		),
-						// 	},
-						// ]}
+						sorting={[
+							{
+								active: true,
+								label: s === "Relevance" ? "Relevance" : "Date",
+							},
+							{
+								active: false,
+								label: s !== "Relevance" ? "Relevance" : "Date",
+								destination: "?s=" + (s !== "Relevance" ? "Relevance" : "Date"),
+								elementType: ({ ...props }) => (
+									<Link {...props} scroll={false} />
+								),
+							},
+						]}
 					>
 						{resultCount === 0 ? (
 							"Showing 0 results"
