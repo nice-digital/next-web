@@ -8,13 +8,13 @@ import { KeyLink } from "@/components/KeyLink/KeyLink";
 import { Sections } from "@/components/Sections/Sections";
 
 import searchStyles from "./../../pages/search.page.module.scss";
-// eslint-disable-next-line @typescript-eslint/no-empty-interface
+
 export interface SearchCardProps {
 	formattedTitle: JSX.Element;
 	guidanceRef: string | null;
 	headingLink: string;
 	isPathway: boolean;
-	metadata?: CardMetaDataProps[];
+	metadata: CardMetaDataProps[];
 	parsedLinks?: [];
 	summary: React.ReactNode;
 }
