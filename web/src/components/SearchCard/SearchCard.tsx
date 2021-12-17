@@ -3,12 +3,9 @@ import React, { FC } from "react";
 
 import PathwaysIcon from "@nice-digital/icons/lib/Pathways";
 import { Card, CardMetaDataProps } from "@nice-digital/nds-card";
-import { Grid, GridItem } from "@nice-digital/nds-grid";
 
 import { KeyLink } from "@/components/KeyLink/KeyLink";
 import { Sections } from "@/components/Sections/Sections";
-
-import { SubSections } from "src/pages/search.page";
 
 import searchStyles from "./../../pages/search.page.module.scss";
 
@@ -52,29 +49,10 @@ export const SearchCard: FC<SearchCardProps> = ({
 				metadata={metadata}
 			/>
 			{parsedLinks && (
-				<Grid gutter="loose">
-					{keyLink && (
-						<GridItem
-							className="mb--d"
-							cols={12}
-							md={3}
-							// lg={12}
-							elementType="div"
-							//TODO aria-label=""
-						>
-							<KeyLink keyLink={keyLink} />
-						</GridItem>
-					)}
-					<GridItem
-						cols={12}
-						md={9}
-						// lg={12}
-						elementType="div"
-						//TODO aria-label=""
-					>
-						<Sections parsedLinks={parsedLinks} guidanceRef={guidanceRef} />
-					</GridItem>
-				</Grid>
+				<div className="mb--d">
+					{keyLink && <KeyLink keyLink={keyLink} guidanceRef={guidanceRef} />}
+					<Sections parsedLinks={parsedLinks} guidanceRef={guidanceRef} />
+				</div>
 			)}
 		</>
 	);
