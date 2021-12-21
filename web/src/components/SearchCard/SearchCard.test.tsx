@@ -6,19 +6,23 @@ import {
 } from "@/components/SearchCard/SearchCard";
 
 const defaultProps = {
-	formattedTitle: <span>Test title</span>,
+	formattedTitle: <span>Test title (NG45)</span>,
 	guidanceRef: "TEST101",
-	headinglink: "string",
+	headinglink: "http://beta.nice.org.uk",
 	isPathway: false,
 	summary: "a test summary",
 } as SearchCardProps;
 
 describe("SearchCard", () => {
-	it.only("should render title", () => {
+	it("should render search result title", () => {
 		render(<SearchCard {...defaultProps} />);
+		expect(screen.getByText("Test title (NG45)")).toBeInTheDocument();
 	});
 
-	it.todo("should render data element with ID value around product title");
+	it.only("should render an svg icon if it is a pathway ", () => {
+		render(<SearchCard {...defaultProps} />);
+		console.log(screen.debug);
+	});
 
 	it.todo("should render search result title as link to search result item");
 

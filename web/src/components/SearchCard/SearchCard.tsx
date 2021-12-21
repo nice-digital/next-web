@@ -4,16 +4,14 @@ import React, { FC } from "react";
 import PathwaysIcon from "@nice-digital/icons/lib/Pathways";
 import { Card, CardMetaDataProps } from "@nice-digital/nds-card";
 
-import { KeyLink } from "@/components/KeyLink/KeyLink";
-import { Sections } from "@/components/Sections/Sections";
+import { SearchSections } from "@/components/SearchSections/SearchSections";
 
-import searchStyles from "./../../pages/search.page.module.scss";
+import styles from "./SearchCard.module.scss";
 
 export interface SearchCardProps {
 	formattedTitle: JSX.Element;
 	guidanceRef: string | null;
 	headinglink: string;
-	keyLink?: { text: string; url: string };
 	isPathway: boolean;
 	metadata: CardMetaDataProps[];
 	parsedLinks?: [];
@@ -24,7 +22,6 @@ export const SearchCard: FC<SearchCardProps> = ({
 	formattedTitle,
 	guidanceRef,
 	headinglink,
-	keyLink,
 	isPathway,
 	metadata,
 	parsedLinks,
@@ -33,7 +30,7 @@ export const SearchCard: FC<SearchCardProps> = ({
 	return (
 		<>
 			<Card
-				className={classnames(["mb--d", searchStyles.card])}
+				className={classnames(["mb--d", styles.card])}
 				elementType="div"
 				headingText={
 					<>
@@ -49,10 +46,7 @@ export const SearchCard: FC<SearchCardProps> = ({
 				metadata={metadata}
 			/>
 			{parsedLinks && (
-				<div className="mb--d">
-					{keyLink && <KeyLink keyLink={keyLink} guidanceRef={guidanceRef} />}
-					<Sections parsedLinks={parsedLinks} guidanceRef={guidanceRef} />
-				</div>
+				<SearchSections parsedLinks={parsedLinks} guidanceRef={guidanceRef} />
 			)}
 		</>
 	);

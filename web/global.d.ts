@@ -52,3 +52,29 @@ declare module "next/config" {
 
 	export { getConfig as default, NextRuntimeConfig };
 }
+
+declare module "@nice-digital/icons/lib/ChevronDown" {
+	import { FC , FC } from "react";
+
+	export interface IconProps {
+		colour?: string;
+		[key: string]: unknown;
+	}
+
+	const ChevronDownIcon: FC<IconProps>;
+
+	export default ChevronDownIcon;
+}
+
+declare module "@nice-digital/icons/lib/Pathways" {
+
+
+	export interface IconProps {
+		colour?: string;
+		[key: string]: unknown;
+	}
+
+	const Pathways: FC<IconProps>;
+
+	export default Pathways;
+}

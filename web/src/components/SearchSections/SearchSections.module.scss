@@ -1,0 +1,15 @@
+@use '@nice-digital/nds-core/scss/core';
+
+.details summary {
+  svg {
+  vertical-align: text-bottom;
+  margin:0;
+  margin-left: core.rem(core.$nds-spacing-small);
+  }
+}
+
+.details[open] summary {
+  svg {
+    transform: rotate(180deg);
+  }
+}

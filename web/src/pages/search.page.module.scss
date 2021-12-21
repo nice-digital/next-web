@@ -4,29 +4,9 @@
 list-style: none;
 margin: 0; }
 
-
 .list__item {
   position: relative;
   border-bottom: 1px solid core.$nds-colour-nice-grey-1;
   margin-bottom: core.rem(core.$nds-spacing-medium);
   padding-bottom: core.rem(core.$nds-spacing-medium);
-}
-
-.card svg {
-  vertical-align: text-bottom;
-  // color: core.$nds-colour-link;
-}
-
-.details summary {
-  svg {
-  vertical-align: text-bottom;
-  margin:0;
-  margin-left: core.rem(core.$nds-spacing-small);
-  }
-}
-
-.details[open] summary {
-  svg {
-    transform: rotate(180deg);
-  }
 }
