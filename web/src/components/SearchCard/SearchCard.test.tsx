@@ -1,7 +1,22 @@
 import { render, screen } from "@testing-library/react";
 
+import {
+	SearchCard,
+	SearchCardProps,
+} from "@/components/SearchCard/SearchCard";
+
+const defaultProps = {
+	formattedTitle: <span>Test title</span>,
+	guidanceRef: "TEST101",
+	headinglink: "string",
+	isPathway: false,
+	summary: "a test summary",
+} as SearchCardProps;
+
 describe("SearchCard", () => {
-	it.todo("should render card title");
+	it.only("should render title", () => {
+		render(<SearchCard {...defaultProps} />);
+	});
 
 	it.todo("should render data element with ID value around product title");
 
