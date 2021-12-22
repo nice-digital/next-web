@@ -61,7 +61,6 @@ export function searchFormatMeta(item: Document): Array<FormattedMetaItem> {
 	}
 
 	if (items.length > 0) {
-		console.log(items);
 		return items;
 	} else {
 		return [];
