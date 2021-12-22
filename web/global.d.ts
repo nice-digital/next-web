@@ -54,7 +54,7 @@ declare module "next/config" {
 }
 
 declare module "@nice-digital/icons/lib/ChevronDown" {
-	import { FC , FC } from "react";
+	import { FC } from "react";
 
 	export interface IconProps {
 		colour?: string;
@@ -67,8 +67,6 @@ declare module "@nice-digital/icons/lib/ChevronDown" {
 }
 
 declare module "@nice-digital/icons/lib/Pathways" {
-
-
 	export interface IconProps {
 		colour?: string;
 		[key: string]: unknown;

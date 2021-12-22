@@ -1,15 +1,47 @@
 @use '@nice-digital/nds-core/scss/core';
 
-.details summary {
-  svg {
-  vertical-align: text-bottom;
-  margin:0;
-  margin-left: core.rem(core.$nds-spacing-small);
+.wrapper {
+  display: flex;
+  flex-direction: column;
+
+  @include core.mq($from: md) {
+    flex-direction: row;
   }
 }
 
-.details[open] summary {
-  svg {
-    transform: rotate(180deg);
+
+
+
+.keyLink {
+  // margin-bottom: core.rem(core.$nds-spacing-small);
+  margin-bottom: core.rem(core.$nds-spacing-small);
+  padding-top: core.rem(core.$nds-spacing-small);
+
+  @include core.mq($from: md) {
+    width: 33%;
+  }
+}
+
+.details {
+  flex: 1 1 100%;
+
+  summary {
+    svg {
+      margin: 0;
+      margin-left: core.rem(core.$nds-spacing-small);
+      vertical-align: text-bottom;
+    }
+  }
+
+  &[open] summary {
+    svg {
+      transform: rotate(180deg);
+    }
+  }
+}
+
+.panel {
+  @include core.mq($from: md) {
+    margin-left: -33%;
   }
 }

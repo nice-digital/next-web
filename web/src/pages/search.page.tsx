@@ -1,15 +1,10 @@
-import classnames from "classnames";
 import dayjs from "dayjs";
 import { GetServerSidePropsContext, GetServerSidePropsResult } from "next";
 import { NextSeo } from "next-seo";
-import React, { useEffect, useMemo, useState } from "react";
-import xml2js from "xml2js";
+import React, { useEffect, useState } from "react";
 
-import { Breadcrumbs, Breadcrumb } from "@nice-digital/nds-breadcrumbs";
-import { Card } from "@nice-digital/nds-card";
 import { FilterSummary } from "@nice-digital/nds-filters";
 import { Grid, GridItem } from "@nice-digital/nds-grid";
-import { PageHeader } from "@nice-digital/nds-page-header";
 import {
 	search,
 	initialise,
@@ -18,34 +13,21 @@ import {
 	getActiveModifiers,
 	SearchUrl,
 	SearchResultsSuccess,
+	SortOrder,
 	getUrlPathAndQuery,
 } from "@nice-digital/search-client";
 
 import { Announcer } from "@/components/Announcer/Announcer";
 import { ErrorPageContent } from "@/components/ErrorPageContent/ErrorPageContent";
-import { GuidanceListFilters } from "@/components/GuidanceListPage/GuidanceListFilters/GuidanceListFilters";
-import { GuidanceListNav } from "@/components/GuidanceListPage/GuidanceListNav/GuidanceListNav";
 import { Link } from "@/components/Link/Link";
-import { SearchCard } from "@/components/SearchCard/SearchCard";
+import { SearchCardList } from "@/components/SearchCard/SearchCardList";
 import { SearchPagination } from "@/components/SearchPagination/SearchPagination";
-import { SkipLink } from "@/components/SkipLink/SkipLink";
 import { publicRuntimeConfig } from "@/config";
-import { searchFormatMeta } from "@/helpers/search-format-meta";
 import { logger } from "@/logger";
 import { dateFormatShort } from "@/utils/constants";
 
-import styles from "./../components/GuidanceListPage/GuidanceListPage.module.scss";
-import searchStyles from "./search.page.module.scss";
-
-export type SubSections = {
-	$: { url: string };
-	_: string;
-};
-
-// NOTE: Page size cannot be less than 10 due to a bug in Search
-// See https://github.com/nice-digital/search/blob/958b9eeab53db990aa5a8e4490703454db9b5dbd/Client/NICE.Search.Common/Models/PagerLinks.cs#L28
 const searchUrlDefaults = {
-	s: "Relevance",
+	s: SortOrder.relevance,
 	ps: 10,
 };
 
@@ -64,24 +46,6 @@ export function Search({
 	const [announcement, setAnnouncement] = useState("");
 
 	const { failed } = results;
-	// Cache the breadcrumbs as they're static and it means we can use them on both the error view and success view
-	const breadcrumbs = useMemo(
-		() => (
-			<Breadcrumbs>
-				<Breadcrumb to="/">Home</Breadcrumb>
-				{failed ? (
-					<Breadcrumb>Search</Breadcrumb>
-				) : (
-					<Breadcrumb>
-						Search results for &quot;{results.finalSearchText}&quot;
-					</Breadcrumb>
-				)}
-			</Breadcrumbs>
-		),
-		[]
-	);
-
-	const parser = new xml2js.Parser();
 
 	const {
 		documents,
@@ -100,12 +64,7 @@ export function Search({
 		);
 	}, [firstResult, lastResult, resultCount]);
 
-	if (failed)
-		return (
-			<>
-				<ErrorPageContent breadcrumbs={breadcrumbs} />
-			</>
-		);
+	if (failed) return <ErrorPageContent />;
 
 	return (
 		<>
@@ -113,25 +72,13 @@ export function Search({
 
 			<Announcer announcement={announcement} />
 
-			{/* {breadcrumbs}
+			<h1 className="visually-hidden">Search results</h1>
 
-			<PageHeader
-				preheading="Search results for"
-				heading={`${results.finalSearchText}`}
-				lead={
-					<>
-						<SkipLink targetId="filters">Skip to filters</SkipLink>
-						<SkipLink targetId="results">Skip to results</SkipLink>
-					</>
-				}
-			/> */}
-
-			<Grid gutter="loose" className={styles.sectionWrapper}>
+			<Grid gutter="loose">
 				<GridItem
 					cols={12}
 					md={4}
 					lg={3}
-					className={styles.panelWrapper}
 					elementType="section"
 					aria-label="Filter results"
 				>
@@ -192,53 +139,7 @@ export function Search({
 							and starting again.
 						</p>
 					) : (
-						<ol
-							className={classnames([
-								"list--unstyled mv--0",
-								searchStyles.list,
-							])}
-						>
-							{documents.map((item) => {
-								const {
-									id,
-									title,
-									guidanceRef,
-									pathAndQuery,
-									teaser,
-									subSectionLinks,
-								} = item;
-								const formattedTitle = (
-									<span dangerouslySetInnerHTML={{ __html: title }} />
-								);
-								const formattedTeaser = (
-									<span dangerouslySetInnerHTML={{ __html: teaser }} />
-								);
-
-								let parsedLinks;
-								subSectionLinks &&
-									parser.parseString(subSectionLinks, function (err, result) {
-										parsedLinks = result.SubSections.link;
-									});
-
-								const isPathway = (resultType: string) => {
-									return resultType == "NICE Pathway";
-								};
-
-								return (
-									<li className={searchStyles.list__item} key={id}>
-										<SearchCard
-											formattedTitle={formattedTitle}
-											guidanceRef={guidanceRef}
-											headinglink={pathAndQuery}
-											isPathway={isPathway(item.niceResultType)}
-											metadata={searchFormatMeta(item)}
-											parsedLinks={parsedLinks}
-											summary={formattedTeaser}
-										/>
-									</li>
-								);
-							})}
-						</ol>
+						<SearchCardList documents={documents} />
 					)}
 					<SearchPagination results={results} scrollTargetId="filter-summary" />
 				</GridItem>
