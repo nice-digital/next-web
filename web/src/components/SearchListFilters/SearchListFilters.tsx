@@ -27,6 +27,7 @@ export interface SearchListFiltersProps {
 	queryText?: string;
 	from?: string;
 	to?: string;
+	navigatorShortNamesToExclude?: string;
 	showDateFilter: boolean;
 	showTextFilter: boolean;
 	dateFilterLabel?: string;
@@ -41,6 +42,7 @@ export const SearchListFilters: FC<SearchListFiltersProps> = ({
 	queryText,
 	from,
 	to,
+	navigatorShortNamesToExclude,
 	showDateFilter,
 	showTextFilter,
 	dateFilterLabel,
@@ -100,7 +102,7 @@ export const SearchListFilters: FC<SearchListFiltersProps> = ({
 				<></>
 			)}
 			{navigators
-				.filter((nav) => nav.shortName !== "gst")
+				.filter((nav) => nav.shortName !== navigatorShortNamesToExclude)
 				.sort(
 					(a, b) =>
 						navigatorsOrder.indexOf(a.shortName) -

@@ -19,8 +19,10 @@ import {
 
 import { Announcer } from "@/components/Announcer/Announcer";
 import { ErrorPageContent } from "@/components/ErrorPageContent/ErrorPageContent";
+import { defaultPageSize } from "@/components/GuidanceListPage/GuidanceListGetServerSideProps/GuidanceListGetServerSideProps";
 import { Link } from "@/components/Link/Link";
 import { SearchCardList } from "@/components/SearchCard/SearchCardList";
+import { SearchListFilters } from "@/components/SearchListFilters/SearchListFilters";
 import { SearchPagination } from "@/components/SearchPagination/SearchPagination";
 import { publicRuntimeConfig } from "@/config";
 import { logger } from "@/logger";
@@ -82,7 +84,19 @@ export function Search({
 					elementType="section"
 					aria-label="Filter results"
 				>
-					Filters here
+					<SearchListFilters
+						numActiveModifiers={activeModifiers.length}
+						navigators={navigators}
+						pageSize={pageSize === defaultPageSize ? "" : pageSize}
+						// sortOrder={s === defaultSort.order ? "" : s}
+						queryText={q}
+						from={from}
+						to={to}
+						// showDateFilter={showDateFilter}
+						showTextFilter={false}
+						// dateFilterLabel={dateFilterLabel}
+						// useFutureDates={useFutureDates}
+					/>
 				</GridItem>
 
 				<GridItem

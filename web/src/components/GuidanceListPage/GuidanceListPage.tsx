@@ -81,7 +81,6 @@ export const getGuidanceListPage =
 		defaultSort,
 		secondarySort,
 		showDateFilter,
-		showTextFilter,
 		dateFilterLabel,
 		useFutureDates,
 		tableBodyRender,
@@ -170,6 +169,7 @@ export const getGuidanceListPage =
 							queryText={q}
 							from={from}
 							to={to}
+							navigatorShortNamesToExclude="gst"
 							showDateFilter={showDateFilter}
 							showTextFilter={true}
 							dateFilterLabel={dateFilterLabel}
