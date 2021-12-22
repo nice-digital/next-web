@@ -8,9 +8,9 @@ import { render, screen, within } from "@/test-utils";
 
 import sampleData from "../../../__mocks__/__data__/search/guidance-published.json";
 
-import { GuidanceListFilters } from "./GuidanceListFilters";
+import { SearchListFilters } from "./SearchListFilters";
 
-describe("GuidanceListFilters", () => {
+describe("SearchListFilters", () => {
 	let routerPush: jest.Mock, rerender: ReturnType<typeof render>["rerender"];
 	beforeEach(() => {
 		routerPush = jest.fn();
@@ -26,10 +26,11 @@ describe("GuidanceListFilters", () => {
 		mockDate.set("2020-11-22");
 
 		rerender = render(
-			<GuidanceListFilters
+			<SearchListFilters
 				numActiveModifiers={2}
 				navigators={sampleData.navigators as unknown as Navigator[]}
 				showDateFilter={true}
+				showTextFilter={true}
 				dateFilterLabel="Last updated date"
 			/>
 		).rerender;
@@ -46,12 +47,13 @@ describe("GuidanceListFilters", () => {
 	describe("Hidden fields", () => {
 		it("should serialize given page size and sort order in form submission", () => {
 			rerender(
-				<GuidanceListFilters
+				<SearchListFilters
 					numActiveModifiers={2}
 					pageSize={20}
 					sortOrder="Title"
 					navigators={sampleData.navigators as unknown as Navigator[]}
 					showDateFilter={false}
+					showTextFilter={true}
 				/>
 			);
 

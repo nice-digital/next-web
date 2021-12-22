@@ -19,7 +19,7 @@ const navigatorsOrder = ["nai", "ndt", "ngt", "nat"];
 /** Some navigators are less used than others so collapse them by default */
 const navigatorsCollapsedByDefault = ["ngt", "nat"];
 
-export interface GuidanceListFiltersProps {
+export interface SearchListFiltersProps {
 	numActiveModifiers: number;
 	navigators: Navigator[];
 	pageSize?: "" | number;
@@ -28,11 +28,12 @@ export interface GuidanceListFiltersProps {
 	from?: string;
 	to?: string;
 	showDateFilter: boolean;
+	showTextFilter: boolean;
 	dateFilterLabel?: string;
 	useFutureDates?: boolean;
 }
 
-export const GuidanceListFilters: FC<GuidanceListFiltersProps> = ({
+export const SearchListFilters: FC<SearchListFiltersProps> = ({
 	numActiveModifiers,
 	navigators,
 	pageSize,
@@ -41,6 +42,7 @@ export const GuidanceListFilters: FC<GuidanceListFiltersProps> = ({
 	from,
 	to,
 	showDateFilter,
+	showTextFilter,
 	dateFilterLabel,
 	useFutureDates,
 }) => {
@@ -77,12 +79,16 @@ export const GuidanceListFilters: FC<GuidanceListFiltersProps> = ({
 			<SkipLink targetId="results">Skip to results</SkipLink>
 			<input type="hidden" name="ps" value={pageSize} />
 			<input type="hidden" name="s" value={sortOrder} />
-			<InlineTextFilter
-				label="Filter by title or keyword"
-				name="q"
-				defaultValue={queryText}
-				placeholder="E.g. 'diabetes' or 'NG28'"
-			/>
+			{showTextFilter ? (
+				<InlineTextFilter
+					label="Filter by title or keyword"
+					name="q"
+					defaultValue={queryText}
+					placeholder="E.g. 'diabetes' or 'NG28'"
+				/>
+			) : (
+				<></>
+			)}
 			{showDateFilter ? (
 				<ToFromDateFilters
 					heading={dateFilterLabel}
