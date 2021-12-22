@@ -8,69 +8,60 @@ type FormattedMetaItem = {
 	value: string;
 };
 
+const isTopicPage = (resultType: string) => {
+	return resultType == "Topic page";
+};
+
+const isCategorised = (item: Document) => {
+	const result =
+		item.niceResultType ||
+		item.niceDocType.length > 0 ||
+		item.resourceCategory ||
+		item.resourceType.length > 0;
+
+	return !!result;
+};
+
+const pushToArray = (
+	arr: FormattedMetaItem[],
+	visibleLabel: boolean,
+	label: string,
+	value: string
+) => {
+	arr.push({ visibleLabel, label, value });
+};
+
 export function searchFormatMeta(item: Document): Array<FormattedMetaItem> {
-	const {
-		publicationDate,
-		lastUpdated,
-		niceResultType,
-		niceDocType,
-		resourceCategory,
-		resourceType,
-	} = item;
+	const { publicationDate, lastUpdated, niceResultType, resourceType } = item;
 
 	const items: FormattedMetaItem[] = [];
 
-	const isTopicPage = (resultType: string) => {
-		return resultType == "Topic page";
-	};
-
-	const isCategorised = (
-		resultType: string,
-		docType: readonly string[],
-		resourceCategory: readonly string[] | null,
-		resourceType: readonly string[]
-	) => {
-		const result =
-			resultType ||
-			docType.length > 0 ||
-			resourceCategory ||
-			resourceType.length > 0;
-
-		return !!result;
-	};
-
 	if (niceResultType || (resourceType && resourceType.length > 0)) {
-		items.push({
-			visibleLabel: false,
-			label: "Result type",
-			value: (niceResultType || resourceType[0]) as string,
-		});
+		pushToArray(
+			items,
+			false,
+			"Result type",
+			(niceResultType || resourceType[0]) as string
+		);
 	}
 
 	if (
 		lastUpdated &&
 		lastUpdated !== publicationDate &&
 		!isTopicPage(niceResultType) &&
-		isCategorised(niceResultType, niceDocType, resourceCategory, resourceType)
+		isCategorised(item)
 	) {
-		items.push({
-			visibleLabel: true,
-			label: "Last updated",
-			value: formatDateStr(lastUpdated),
-		});
+		pushToArray(items, true, "Last updated", formatDateStr(lastUpdated));
 	} else if (
 		publicationDate &&
 		!isTopicPage(niceResultType) &&
-		isCategorised(niceResultType, niceDocType, resourceCategory, resourceType)
+		isCategorised(item)
 	) {
-		items.push({
-			visibleLabel: true,
-			label: "Published",
-			value: formatDateStr(publicationDate),
-		});
+		pushToArray(items, true, "Published", formatDateStr(publicationDate));
 	}
 
 	if (items.length > 0) {
+		console.log(items);
 		return items;
 	} else {
 		return [];
