@@ -1,7 +1,6 @@
 @use '@nice-digital/nds-core/scss/core';
 
 .card {
-  margin-bottom: core.rem(core.$nds-spacing-medium);
   position: relative;
 }
 
@@ -19,7 +18,6 @@
 
 .listItem {
   border-bottom: 1px solid core.$nds-colour-nice-grey-1;
-  margin-bottom: core.rem(core.$nds-spacing-medium);
   padding-bottom: core.rem(core.$nds-spacing-medium);
   position: relative;
 }

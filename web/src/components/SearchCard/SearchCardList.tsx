@@ -48,7 +48,7 @@ export const SearchCardList: FC<SearchCardListProps> = ({ documents }) => {
 				return (
 					<li className={styles.listItem} key={id}>
 						<Card
-							// className={styles.card}
+							className={styles.card}
 							elementType="div"
 							headingText={
 								<>
