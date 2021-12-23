@@ -1,6 +1,7 @@
 import dayjs from "dayjs";
 import { GetServerSidePropsContext, GetServerSidePropsResult } from "next";
 import { NextSeo } from "next-seo";
+import { useRouter } from "next/router";
 import React, { useEffect, useState } from "react";
 
 import { FilterSummary } from "@nice-digital/nds-filters";
@@ -11,9 +12,11 @@ import {
 	SearchResults,
 	getSearchUrl,
 	getActiveModifiers,
+	removeQueryParam,
 	SearchUrl,
 	SearchResultsSuccess,
 	SortOrder,
+	upsertQueryParam,
 	getUrlPathAndQuery,
 } from "@nice-digital/search-client";
 
@@ -29,7 +32,6 @@ import { logger } from "@/logger";
 import { dateFormatShort } from "@/utils/constants";
 
 const searchUrlDefaults = {
-	s: SortOrder.relevance,
 	ps: 10,
 };
 
@@ -48,6 +50,8 @@ export function Search({
 	const [announcement, setAnnouncement] = useState("");
 
 	const { failed } = results;
+
+	const { asPath } = useRouter();
 
 	const {
 		documents,
@@ -75,7 +79,7 @@ export function Search({
 
 			<h1 className="visually-hidden">Search results</h1>
 
-			<Grid gutter="loose">
+			<Grid gutter="loose" className="pt--e">
 				<GridItem
 					cols={12}
 					md={4}
@@ -86,19 +90,13 @@ export function Search({
 					<SearchListFilters
 						numActiveModifiers={activeModifiers.length}
 						navigators={navigators}
-						// pageSize={pageSize === defaultPageSize ? "" : pageSize}
 						pageSize={pageSize === searchUrlDefaults.ps ? "" : pageSize}
-						// sortOrder={s === defaultSort.order ? "" : s}
-						sortOrder={s === searchUrlDefaults.s ? "" : s}
+						sortOrder={s}
 						queryText={q}
 						from={from}
 						to={to}
-						// showDateFilter={showDateFilter}
 						showDateFilter={false}
 						showTextFilter={false}
-						// dateFilterLabel={dateFilterLabel}
-						// useFutureDates={useFutureDates}
-						useFutureDates={true}
 					/>
 				</GridItem>
 
@@ -126,12 +124,17 @@ export function Search({
 						sorting={[
 							{
 								active: true,
-								label: s === "Relevance" ? "Relevance" : "Date",
+								label: s ? "Date" : "Relevance",
+								destination: s
+									? upsertQueryParam(asPath, "s", "Date")
+									: upsertQueryParam(asPath, "s", "Relevance"),
 							},
 							{
 								active: false,
-								label: s !== "Relevance" ? "Relevance" : "Date",
-								destination: "?s=" + (s !== "Relevance" ? "Relevance" : "Date"),
+								label: s ? "Relevance" : "Date",
+								destination: s
+									? removeQueryParam(asPath, "s")
+									: upsertQueryParam(asPath, "s", "Date"),
 								elementType: ({ ...props }) => (
 									<Link {...props} scroll={false} />
 								),
@@ -180,7 +183,7 @@ export const getServerSideProps = async (
 			...searchUrlDefaults,
 			...getSearchUrl(context.resolvedUrl),
 		},
-		results = await search(searchUrl),
+		results = await search(searchUrl, { usePrettyUrls: true }),
 		activeModifiers = results.failed
 			? []
 			: getActiveModifiers(results).map(
