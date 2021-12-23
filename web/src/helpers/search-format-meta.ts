@@ -2,7 +2,7 @@ import { Document } from "@nice-digital/search-client";
 
 import { formatDateStr } from "@/utils/index";
 
-type FormattedMetaItem = {
+export type FormattedMetaItem = {
 	visibleLabel?: boolean;
 	label: string;
 	value: string;

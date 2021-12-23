@@ -6,7 +6,10 @@ import { Card } from "@nice-digital/nds-card";
 import { Document } from "@nice-digital/search-client";
 
 import { SearchSections } from "@/components/SearchSections/SearchSections";
-import { searchFormatMeta } from "@/helpers/search-format-meta";
+import {
+	searchFormatMeta,
+	FormattedMetaItem,
+} from "@/helpers/search-format-meta";
 
 import styles from "./SearchCardList.module.scss";
 
@@ -15,6 +18,10 @@ export interface SearchCardListProps {
 }
 
 type SubSections = { link: SubSection[] };
+
+type MetaProps = {
+	metadata?: FormattedMetaItem[];
+};
 
 export type SubSection = { $: { url: string }; _: string };
 
@@ -45,6 +52,14 @@ export const SearchCardList: FC<SearchCardListProps> = ({ documents }) => {
 						}
 					);
 
+				const metaProps: MetaProps = {};
+
+				if (searchFormatMeta(item).length > 0) {
+					metaProps.metadata = searchFormatMeta(item);
+				} else {
+					delete metaProps.metadata;
+				}
+
 				return (
 					<li className={styles.listItem} key={id}>
 						<Card
@@ -63,7 +78,7 @@ export const SearchCardList: FC<SearchCardListProps> = ({ documents }) => {
 							link={{
 								destination: pathAndQuery,
 							}}
-							metadata={searchFormatMeta(item)}
+							{...metaProps}
 						/>
 						{parsedLinks && (
 							<SearchSections
