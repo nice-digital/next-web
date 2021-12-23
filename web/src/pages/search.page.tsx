@@ -57,7 +57,6 @@ export function Search({
 		lastResult,
 		resultCount,
 		unfilteredResultsUrl,
-		pagerLinks,
 	} = results as SearchResultsSuccess;
 
 	useEffect(() => {
@@ -87,15 +86,19 @@ export function Search({
 					<SearchListFilters
 						numActiveModifiers={activeModifiers.length}
 						navigators={navigators}
-						pageSize={pageSize === defaultPageSize ? "" : pageSize}
+						// pageSize={pageSize === defaultPageSize ? "" : pageSize}
+						pageSize={pageSize === searchUrlDefaults.ps ? "" : pageSize}
 						// sortOrder={s === defaultSort.order ? "" : s}
+						sortOrder={s === searchUrlDefaults.s ? "" : s}
 						queryText={q}
 						from={from}
 						to={to}
 						// showDateFilter={showDateFilter}
+						showDateFilter={false}
 						showTextFilter={false}
 						// dateFilterLabel={dateFilterLabel}
 						// useFutureDates={useFutureDates}
+						useFutureDates={true}
 					/>
 				</GridItem>
 
