@@ -15,14 +15,12 @@ import {
 	removeQueryParam,
 	SearchUrl,
 	SearchResultsSuccess,
-	SortOrder,
 	upsertQueryParam,
 	getUrlPathAndQuery,
 } from "@nice-digital/search-client";
 
 import { Announcer } from "@/components/Announcer/Announcer";
 import { ErrorPageContent } from "@/components/ErrorPageContent/ErrorPageContent";
-import { defaultPageSize } from "@/components/GuidanceListPage/GuidanceListGetServerSideProps/GuidanceListGetServerSideProps";
 import { Link } from "@/components/Link/Link";
 import { SearchCardList } from "@/components/SearchCard/SearchCardList";
 import { SearchListFilters } from "@/components/SearchListFilters/SearchListFilters";

@@ -140,7 +140,10 @@ export const SearchCardList: FC<SearchCardListProps> = ({ documents }) => {
 							headingText={
 								<>
 									{item.niceResultType == "NICE Pathway" ? (
-										<PathwaysIcon className={styles.pathwaysIcon} />
+										<PathwaysIcon
+											className={styles.pathwaysIcon}
+											aria-label="Pathway"
+										/>
 									) : null}
 									<span dangerouslySetInnerHTML={{ __html: title }} />
 								</>
