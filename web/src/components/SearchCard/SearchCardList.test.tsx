@@ -1,16 +1,8 @@
 import { render, screen } from "@testing-library/react";
 
-import { Document } from "@nice-digital/search-client";
-
 import { SearchCardList } from "@/components/SearchCard/SearchCardList";
 
 import { mockDocuments, mockUncategorisedDocuments } from "./mockDocuments";
-
-// let wrapper;
-
-// beforeEach(() => {
-// 	render(<SearchCardList documents={mockDocuments} />);
-// });
 
 describe("SearchCard", () => {
 	it("should render search result title", () => {
