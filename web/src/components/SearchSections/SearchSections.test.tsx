@@ -8,6 +8,14 @@ const mockParsedLinksRec: SubSection[] = [
 	{ $: { url: "/testsubsection/1" }, _: "Test subsection 1" },
 	{ $: { url: "/testsubsection/2" }, _: "Test subsection 2" },
 	{ $: { url: "/chapter/recommendations" }, _: "Recommedations subsection" },
+	{
+		$: { url: "/chapter/test-recommendations" },
+		_: "Recommedations subsection 2",
+	},
+	{
+		$: { url: "/chapter/test-guidance" },
+		_: "Recommedations subsection 3",
+	},
 ];
 
 const mockParsedLinksQual: SubSection[] = [
@@ -16,6 +24,14 @@ const mockParsedLinksQual: SubSection[] = [
 	{
 		$: { url: "/chapter/list-of-quality-statements" },
 		_: "Quality subsection",
+	},
+	{
+		$: { url: "/chapter/list-of-statements" },
+		_: "Quality subsection 2",
+	},
+	{
+		$: { url: "/chapter/quality-statements" },
+		_: "Quality subsection 3",
 	},
 ];
 
@@ -58,11 +74,18 @@ describe("SearchSections", () => {
 		).toHaveAttribute("href", "/testsubsection/1");
 	});
 
-	it("should render correct number of links", () => {
+	it("should render correct number of recommendations key links", () => {
 		render(
 			<SearchSections parsedLinks={mockParsedLinksRec} {...defaultProps} />
 		);
-		expect(screen.getAllByRole("link").length).toBe(4);
+		expect(screen.getAllByRole("link").length).toBe(6);
+	});
+
+	it("should render correct number of quality standards key links", () => {
+		render(
+			<SearchSections parsedLinks={mockParsedLinksQual} {...defaultProps} />
+		);
+		expect(screen.getAllByRole("link").length).toBe(6);
 	});
 
 	it("should render a 'View Recommendations' keyLink", () => {
