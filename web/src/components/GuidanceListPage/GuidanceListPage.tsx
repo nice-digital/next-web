@@ -52,7 +52,7 @@ export type GetGuidanceListPageOptions = {
 		label: string;
 	};
 	showDateFilter: boolean;
-	showTextFilter: boolean;
+	showTextFilter?: boolean;
 	dateFilterLabel?: string;
 	useFutureDates?: boolean;
 	tableBodyRender: (documents: Document[]) => JSX.Element;

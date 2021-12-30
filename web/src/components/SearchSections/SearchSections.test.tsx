@@ -46,6 +46,25 @@ describe("SearchSections", () => {
 		).toBeInTheDocument();
 	});
 
+	it("should render section links with the correct href and link text", () => {
+		render(
+			<SearchSections parsedLinks={mockParsedLinksRec} {...defaultProps} />
+		);
+		expect(
+			screen.getByRole("link", { name: "Recommedations subsection" })
+		).toHaveAttribute("href", "/chapter/recommendations");
+		expect(
+			screen.getByRole("link", { name: "Test subsection 1" })
+		).toHaveAttribute("href", "/testsubsection/1");
+	});
+
+	it("should render correct number of links", () => {
+		render(
+			<SearchSections parsedLinks={mockParsedLinksRec} {...defaultProps} />
+		);
+		expect(screen.getAllByRole("link").length).toBe(4);
+	});
+
 	it("should render a 'View Recommendations' keyLink", () => {
 		render(
 			<SearchSections parsedLinks={mockParsedLinksRec} {...defaultProps} />
@@ -57,13 +76,33 @@ describe("SearchSections", () => {
 		).toBeInTheDocument();
 	});
 
-	it("should render a 'View quality statements' keyLink", () => {
+	it("should render a 'View quality statements' keyLink with the correct href", () => {
 		render(
 			<SearchSections parsedLinks={mockParsedLinksQual} {...defaultProps} />
 		);
 		expect(
 			screen.getByRole("link", {
 				name: /view quality statements for TestRef999/i,
+			})
+		).toBeInTheDocument();
+		expect(
+			screen.getByRole("link", {
+				name: /view quality statements for TestRef999/i,
+			})
+		).toHaveAttribute("href", "/chapter/list-of-quality-statements");
+	});
+
+	it("should render a heading including the guidanceRef", () => {
+		render(
+			<SearchSections
+				parsedLinks={mockParsedLinksQual}
+				guidanceRef="TestRef1001"
+			/>
+		);
+		expect(
+			screen.getByRole("heading", {
+				level: 4,
+				name: "Sections for TestRef1001",
 			})
 		).toBeInTheDocument();
 	});

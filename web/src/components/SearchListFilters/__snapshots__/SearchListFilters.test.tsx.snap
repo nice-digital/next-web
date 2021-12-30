@@ -1,0 +1,736 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`SearchListFilters should match snapshot for filter panel form 1`] = `
+<form
+  aria-label="Filter results"
+  id="filters"
+>
+  <div
+    class="filter-panel"
+  >
+    <h2
+      class="filter-panel__heading"
+    >
+      <button
+        aria-controls="filter-panel-body"
+        aria-expanded="true"
+        type="button"
+      >
+        <svg
+          aria-hidden="true"
+          class="filter-panel__heading-icon filter-panel__heading-icon--expanded"
+          fill="none"
+          focusable="false"
+          height="1em"
+          viewBox="0 0 512 512"
+          width="1em"
+          xmlns="http://www.w3.org/2000/svg"
+        >
+          <path
+            d="M478.152 174c0 10.091-3.525 18.661-10.576 25.712l-186 186c-7.243 7.243-15.909 10.864-26 10.864-10.283 0-18.853-3.621-25.712-10.864l-186-186C36.621 192.853 33 184.283 33 174c0-10.091 3.621-18.757 10.864-26L65 126.576C72.424 119.525 81.09 116 91 116c10.091 0 18.661 3.525 25.712 10.576L255.576 265.44 394.44 126.576c7.051-7.051 15.621-10.576 25.712-10.576 9.909 0 18.576 3.525 26 10.576L467.576 148c7.051 7.424 10.576 16.091 10.576 26z"
+            fill="currentColor"
+          />
+        </svg>
+        Filter (2 active)
+      </button>
+    </h2>
+    <div
+      aria-hidden="false"
+      class="filter-panel__body"
+      id="filter-panel-body"
+    >
+      <a
+        class="skipLink"
+        href="#results"
+      >
+        Skip to results
+      </a>
+      <input
+        name="ps"
+        type="hidden"
+        value=""
+      />
+      <input
+        name="s"
+        type="hidden"
+        value=""
+      />
+      <div
+        class="container"
+      >
+        <label
+          class="label"
+          for="q"
+        >
+          Filter by title or keyword
+        </label>
+        <div
+          class="input"
+        >
+          <input
+            autocomplete="off"
+            class="input__input"
+            id="q"
+            name="q"
+            placeholder="E.g. 'diabetes' or 'NG28'"
+            type="text"
+            value=""
+          />
+        </div>
+        <button
+          class="btn button"
+          type="submit"
+        >
+          Filter
+        </button>
+      </div>
+      <div
+        class="filter-group"
+      >
+        <h3
+          class="filter-group__heading"
+        >
+          <button
+            aria-controls="group-last-updated-date"
+            aria-expanded="true"
+            type="button"
+          >
+            <svg
+              aria-hidden="true"
+              class="filter-group__heading-icon filter-group__heading-icon--expanded"
+              fill="none"
+              focusable="false"
+              height="1em"
+              viewBox="0 0 512 512"
+              width="1em"
+              xmlns="http://www.w3.org/2000/svg"
+            >
+              <path
+                d="M478.152 174c0 10.091-3.525 18.661-10.576 25.712l-186 186c-7.243 7.243-15.909 10.864-26 10.864-10.283 0-18.853-3.621-25.712-10.864l-186-186C36.621 192.853 33 184.283 33 174c0-10.091 3.621-18.757 10.864-26L65 126.576C72.424 119.525 81.09 116 91 116c10.091 0 18.661 3.525 25.712 10.576L255.576 265.44 394.44 126.576c7.051-7.051 15.621-10.576 25.712-10.576 9.909 0 18.576 3.525 26 10.576L467.576 148c7.051 7.424 10.576 16.091 10.576 26z"
+                fill="currentColor"
+              />
+            </svg>
+            <span
+              id="group-heading-last-updated-date"
+            >
+              Last updated date
+               
+            </span>
+          </button>
+        </h3>
+        <fieldset
+          aria-hidden="false"
+          class="filter-group__options"
+          id="group-last-updated-date"
+        >
+          <legend>
+            Last updated date
+          </legend>
+          <div
+            class="ph--c pt--c"
+          >
+            <div
+              class="input"
+            >
+              <label
+                class="input__label"
+                for="from"
+              >
+                From date
+              </label>
+              <input
+                class="input__input"
+                id="from"
+                max="2020-11-22"
+                min="2000-01-01"
+                name="from"
+                pattern="[0-9]{4}-(0[1-9]|1[012])-(0[1-9]|1[0-9]|2[0-9]|3[01])"
+                placeholder="yyyy-mm-dd"
+                type="date"
+                value=""
+              />
+            </div>
+            <div
+              class="input"
+            >
+              <label
+                class="input__label"
+                for="to"
+              >
+                To date
+              </label>
+              <input
+                class="input__input"
+                id="to"
+                max="2020-11-22"
+                min="2000-01-01"
+                name="to"
+                pattern="[0-9]{4}-(0[1-9]|1[012])-(0[1-9]|1[0-9]|2[0-9]|3[01])"
+                placeholder="yyyy-mm-dd"
+                type="date"
+                value=""
+              />
+            </div>
+            <button
+              class="btn btn--secondary ml--0"
+              type="submit"
+            >
+              Apply date filters
+            </button>
+          </div>
+        </fieldset>
+      </div>
+      <div
+        class="filter-group"
+      >
+        <h3
+          class="filter-group__heading"
+        >
+          <button
+            aria-controls="group-gst"
+            aria-expanded="true"
+            type="button"
+          >
+            <svg
+              aria-hidden="true"
+              class="filter-group__heading-icon filter-group__heading-icon--expanded"
+              fill="none"
+              focusable="false"
+              height="1em"
+              viewBox="0 0 512 512"
+              width="1em"
+              xmlns="http://www.w3.org/2000/svg"
+            >
+              <path
+                d="M478.152 174c0 10.091-3.525 18.661-10.576 25.712l-186 186c-7.243 7.243-15.909 10.864-26 10.864-10.283 0-18.853-3.621-25.712-10.864l-186-186C36.621 192.853 33 184.283 33 174c0-10.091 3.621-18.757 10.864-26L65 126.576C72.424 119.525 81.09 116 91 116c10.091 0 18.661 3.525 25.712 10.576L255.576 265.44 394.44 126.576c7.051-7.051 15.621-10.576 25.712-10.576 9.909 0 18.576 3.525 26 10.576L467.576 148c7.051 7.424 10.576 16.091 10.576 26z"
+                fill="currentColor"
+              />
+            </svg>
+            <span
+              id="group-heading-gst"
+            >
+              Status
+               
+            </span>
+            <span
+              class="filter-group__count"
+            >
+              <span
+                class="visually-hidden"
+              >
+                (
+              </span>
+              1
+               selected
+              <span
+                class="visually-hidden"
+              >
+                )
+              </span>
+            </span>
+          </button>
+        </h3>
+        <fieldset
+          aria-hidden="false"
+          class="filter-group__options"
+          id="group-gst"
+        >
+          <legend>
+            Status
+          </legend>
+          <label
+            class="filter-option"
+            for="filter_gst_in-development"
+          >
+            <input
+              id="filter_gst_in-development"
+              name="gst"
+              title="Status - In development (65)"
+              type="checkbox"
+              value="In development"
+            />
+            <span
+              class="filter-option__text"
+            >
+              In development (65)
+            </span>
+          </label>
+          <label
+            class="filter-option"
+            for="filter_gst_published"
+          >
+            <input
+              checked=""
+              id="filter_gst_published"
+              name="gst"
+              title="Status - Published (350)"
+              type="checkbox"
+              value="Published"
+            />
+            <span
+              class="filter-option__text"
+            >
+              Published (350)
+            </span>
+          </label>
+        </fieldset>
+      </div>
+      <div
+        class="filter-group"
+      >
+        <h3
+          class="filter-group__heading"
+        >
+          <button
+            aria-controls="group-nai"
+            aria-expanded="true"
+            type="button"
+          >
+            <svg
+              aria-hidden="true"
+              class="filter-group__heading-icon filter-group__heading-icon--expanded"
+              fill="none"
+              focusable="false"
+              height="1em"
+              viewBox="0 0 512 512"
+              width="1em"
+              xmlns="http://www.w3.org/2000/svg"
+            >
+              <path
+                d="M478.152 174c0 10.091-3.525 18.661-10.576 25.712l-186 186c-7.243 7.243-15.909 10.864-26 10.864-10.283 0-18.853-3.621-25.712-10.864l-186-186C36.621 192.853 33 184.283 33 174c0-10.091 3.621-18.757 10.864-26L65 126.576C72.424 119.525 81.09 116 91 116c10.091 0 18.661 3.525 25.712 10.576L255.576 265.44 394.44 126.576c7.051-7.051 15.621-10.576 25.712-10.576 9.909 0 18.576 3.525 26 10.576L467.576 148c7.051 7.424 10.576 16.091 10.576 26z"
+                fill="currentColor"
+              />
+            </svg>
+            <span
+              id="group-heading-nai"
+            >
+              Area of interest
+               
+            </span>
+          </button>
+        </h3>
+        <fieldset
+          aria-hidden="false"
+          class="filter-group__options"
+          id="group-nai"
+        >
+          <legend>
+            Area of interest
+          </legend>
+          <label
+            class="filter-option"
+            for="filter_nai_antimicrobial-prescribing"
+          >
+            <input
+              id="filter_nai_antimicrobial-prescribing"
+              name="nai"
+              title="Area of interest - Antimicrobial prescribing (21)"
+              type="checkbox"
+              value="Antimicrobial prescribing"
+            />
+            <span
+              class="filter-option__text"
+            >
+              Antimicrobial prescribing (21)
+            </span>
+          </label>
+          <label
+            class="filter-option"
+            for="filter_nai_covid-19"
+          >
+            <input
+              id="filter_nai_covid-19"
+              name="nai"
+              title="Area of interest - COVID-19 (19)"
+              type="checkbox"
+              value="COVID-19"
+            />
+            <span
+              class="filter-option__text"
+            >
+              COVID-19 (19)
+            </span>
+          </label>
+        </fieldset>
+      </div>
+      <div
+        class="filter-group"
+      >
+        <h3
+          class="filter-group__heading"
+        >
+          <button
+            aria-controls="group-ndt"
+            aria-expanded="true"
+            type="button"
+          >
+            <svg
+              aria-hidden="true"
+              class="filter-group__heading-icon filter-group__heading-icon--expanded"
+              fill="none"
+              focusable="false"
+              height="1em"
+              viewBox="0 0 512 512"
+              width="1em"
+              xmlns="http://www.w3.org/2000/svg"
+            >
+              <path
+                d="M478.152 174c0 10.091-3.525 18.661-10.576 25.712l-186 186c-7.243 7.243-15.909 10.864-26 10.864-10.283 0-18.853-3.621-25.712-10.864l-186-186C36.621 192.853 33 184.283 33 174c0-10.091 3.621-18.757 10.864-26L65 126.576C72.424 119.525 81.09 116 91 116c10.091 0 18.661 3.525 25.712 10.576L255.576 265.44 394.44 126.576c7.051-7.051 15.621-10.576 25.712-10.576 9.909 0 18.576 3.525 26 10.576L467.576 148c7.051 7.424 10.576 16.091 10.576 26z"
+                fill="currentColor"
+              />
+            </svg>
+            <span
+              id="group-heading-ndt"
+            >
+              Type
+               
+            </span>
+            <span
+              class="filter-group__count"
+            >
+              <span
+                class="visually-hidden"
+              >
+                (
+              </span>
+              1
+               selected
+              <span
+                class="visually-hidden"
+              >
+                )
+              </span>
+            </span>
+          </button>
+        </h3>
+        <fieldset
+          aria-hidden="false"
+          class="filter-group__options"
+          id="group-ndt"
+        >
+          <legend>
+            Type
+          </legend>
+          <label
+            class="filter-option"
+            for="filter_ndt_guidance"
+          >
+            <input
+              checked=""
+              id="filter_ndt_guidance"
+              name="ndt"
+              title="Type - Guidance (350)"
+              type="checkbox"
+              value="Guidance"
+            />
+            <span
+              class="filter-option__text"
+            >
+              Guidance (350)
+            </span>
+          </label>
+        </fieldset>
+      </div>
+      <div
+        class="filter-group"
+      >
+        <h3
+          class="filter-group__heading"
+        >
+          <button
+            aria-controls="group-ngt"
+            aria-expanded="true"
+            type="button"
+          >
+            <svg
+              aria-hidden="true"
+              class="filter-group__heading-icon filter-group__heading-icon--expanded"
+              fill="none"
+              focusable="false"
+              height="1em"
+              viewBox="0 0 512 512"
+              width="1em"
+              xmlns="http://www.w3.org/2000/svg"
+            >
+              <path
+                d="M478.152 174c0 10.091-3.525 18.661-10.576 25.712l-186 186c-7.243 7.243-15.909 10.864-26 10.864-10.283 0-18.853-3.621-25.712-10.864l-186-186C36.621 192.853 33 184.283 33 174c0-10.091 3.621-18.757 10.864-26L65 126.576C72.424 119.525 81.09 116 91 116c10.091 0 18.661 3.525 25.712 10.576L255.576 265.44 394.44 126.576c7.051-7.051 15.621-10.576 25.712-10.576 9.909 0 18.576 3.525 26 10.576L467.576 148c7.051 7.424 10.576 16.091 10.576 26z"
+                fill="currentColor"
+              />
+            </svg>
+            <span
+              id="group-heading-ngt"
+            >
+              Guidance programme
+               
+            </span>
+            <span
+              class="filter-group__count"
+            >
+              <span
+                class="visually-hidden"
+              >
+                (
+              </span>
+              1
+               selected
+              <span
+                class="visually-hidden"
+              >
+                )
+              </span>
+            </span>
+          </button>
+        </h3>
+        <fieldset
+          aria-hidden="false"
+          class="filter-group__options"
+          id="group-ngt"
+        >
+          <legend>
+            Guidance programme
+          </legend>
+          <label
+            class="filter-option"
+            for="filter_ngt_antimicrobial-prescribing-guidelines"
+          >
+            <input
+              id="filter_ngt_antimicrobial-prescribing-guidelines"
+              name="ngt"
+              title="Guidance programme - Antimicrobial prescribing guidelines (20)"
+              type="checkbox"
+              value="Antimicrobial prescribing guidelines"
+            />
+            <span
+              class="filter-option__text"
+            >
+              Antimicrobial prescribing guidelines (20)
+            </span>
+          </label>
+          <label
+            class="filter-option"
+            for="filter_ngt_cancer-service-guidelines"
+          >
+            <input
+              id="filter_ngt_cancer-service-guidelines"
+              name="ngt"
+              title="Guidance programme - Cancer service guidelines (8)"
+              type="checkbox"
+              value="Cancer service guidelines"
+            />
+            <span
+              class="filter-option__text"
+            >
+              Cancer service guidelines (8)
+            </span>
+          </label>
+          <label
+            class="filter-option"
+            for="filter_ngt_clinical-guidelines"
+          >
+            <input
+              id="filter_ngt_clinical-guidelines"
+              name="ngt"
+              title="Guidance programme - Clinical guidelines (213)"
+              type="checkbox"
+              value="Clinical guidelines"
+            />
+            <span
+              class="filter-option__text"
+            >
+              Clinical guidelines (213)
+            </span>
+          </label>
+          <label
+            class="filter-option"
+            for="filter_ngt_covid-19-rapid-guidelines"
+          >
+            <input
+              id="filter_ngt_covid-19-rapid-guidelines"
+              name="ngt"
+              title="Guidance programme - COVID-19 rapid guidelines (19)"
+              type="checkbox"
+              value="COVID-19 rapid guidelines"
+            />
+            <span
+              class="filter-option__text"
+            >
+              COVID-19 rapid guidelines (19)
+            </span>
+          </label>
+          <label
+            class="filter-option"
+            for="filter_ngt_diagnostics-guidance"
+          >
+            <input
+              id="filter_ngt_diagnostics-guidance"
+              name="ngt"
+              title="Guidance programme - Diagnostics guidance (38)"
+              type="checkbox"
+              value="Diagnostics guidance"
+            />
+            <span
+              class="filter-option__text"
+            >
+              Diagnostics guidance (38)
+            </span>
+          </label>
+          <label
+            class="filter-option"
+            for="filter_ngt_highly-specialised-technologies-guidance"
+          >
+            <input
+              id="filter_ngt_highly-specialised-technologies-guidance"
+              name="ngt"
+              title="Guidance programme - Highly specialised technologies guidance (15)"
+              type="checkbox"
+              value="Highly specialised technologies guidance"
+            />
+            <span
+              class="filter-option__text"
+            >
+              Highly specialised technologies guidance (15)
+            </span>
+          </label>
+          <label
+            class="filter-option"
+            for="filter_ngt_interventional-procedures-guidance"
+          >
+            <input
+              id="filter_ngt_interventional-procedures-guidance"
+              name="ngt"
+              title="Guidance programme - Interventional procedures guidance (546)"
+              type="checkbox"
+              value="Interventional procedures guidance"
+            />
+            <span
+              class="filter-option__text"
+            >
+              Interventional procedures guidance (546)
+            </span>
+          </label>
+          <label
+            class="filter-option"
+            for="filter_ngt_medical-technologies-guidance"
+          >
+            <input
+              id="filter_ngt_medical-technologies-guidance"
+              name="ngt"
+              title="Guidance programme - Medical technologies guidance (53)"
+              type="checkbox"
+              value="Medical technologies guidance"
+            />
+            <span
+              class="filter-option__text"
+            >
+              Medical technologies guidance (53)
+            </span>
+          </label>
+          <label
+            class="filter-option"
+            for="filter_ngt_medicines-practice-guidelines"
+          >
+            <input
+              id="filter_ngt_medicines-practice-guidelines"
+              name="ngt"
+              title="Guidance programme - Medicines practice guidelines (5)"
+              type="checkbox"
+              value="Medicines practice guidelines"
+            />
+            <span
+              class="filter-option__text"
+            >
+              Medicines practice guidelines (5)
+            </span>
+          </label>
+          <label
+            class="filter-option"
+            for="filter_ngt_nice-guidelines"
+          >
+            <input
+              checked=""
+              id="filter_ngt_nice-guidelines"
+              name="ngt"
+              title="Guidance programme - NICE guidelines (350)"
+              type="checkbox"
+              value="NICE guidelines"
+            />
+            <span
+              class="filter-option__text"
+            >
+              NICE guidelines (350)
+            </span>
+          </label>
+          <label
+            class="filter-option"
+            for="filter_ngt_public-health-guidelines"
+          >
+            <input
+              id="filter_ngt_public-health-guidelines"
+              name="ngt"
+              title="Guidance programme - Public health guidelines (69)"
+              type="checkbox"
+              value="Public health guidelines"
+            />
+            <span
+              class="filter-option__text"
+            >
+              Public health guidelines (69)
+            </span>
+          </label>
+          <label
+            class="filter-option"
+            for="filter_ngt_safe-staffing-guidelines"
+          >
+            <input
+              id="filter_ngt_safe-staffing-guidelines"
+              name="ngt"
+              title="Guidance programme - Safe staffing guidelines (2)"
+              type="checkbox"
+              value="Safe staffing guidelines"
+            />
+            <span
+              class="filter-option__text"
+            >
+              Safe staffing guidelines (2)
+            </span>
+          </label>
+          <label
+            class="filter-option"
+            for="filter_ngt_social-care-guidelines"
+          >
+            <input
+              id="filter_ngt_social-care-guidelines"
+              name="ngt"
+              title="Guidance programme - Social care guidelines (14)"
+              type="checkbox"
+              value="Social care guidelines"
+            />
+            <span
+              class="filter-option__text"
+            >
+              Social care guidelines (14)
+            </span>
+          </label>
+          <label
+            class="filter-option"
+            for="filter_ngt_technology-appraisal-guidance"
+          >
+            <input
+              id="filter_ngt_technology-appraisal-guidance"
+              name="ngt"
+              title="Guidance programme - Technology appraisal guidance (560)"
+              type="checkbox"
+              value="Technology appraisal guidance"
+            />
+            <span
+              class="filter-option__text"
+            >
+              Technology appraisal guidance (560)
+            </span>
+          </label>
+        </fieldset>
+      </div>
+    </div>
+  </div>
+</form>
+`;
