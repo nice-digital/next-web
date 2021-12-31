@@ -69,9 +69,16 @@ export function Search({
 
 	if (failed) return <ErrorPageContent />;
 
+	console.log(results);
 	return (
 		<>
-			<NextSeo title="Published guidance, quality standards and advice" />
+			<NextSeo
+				title={
+					q !== "" && q !== undefined
+						? `${q} | Search results`
+						: `Search results`
+				}
+			/>
 
 			<Announcer announcement={announcement} />
 
