@@ -1,19 +1,11 @@
-// import { render } from "@testing-library/react";
 import mockDate from "mockdate";
 import { useRouter } from "next/router";
 
-import {
-	SearchResults,
-	SearchResultsSuccess,
-	SearchUrl,
-} from "@nice-digital/search-client";
+import { SearchResultsSuccess, SearchUrl } from "@nice-digital/search-client";
 
 import { render, screen, waitFor, within } from "@/test-utils";
-import { formatDateStr } from "@/utils/index";
 
-// import sampleData from "../../__mocks__/__data__/search/guidance-published.json";
 import sampleData from "../__mocks__/__data__/search/search-results.json";
-// import PublishedPage from "./../published.page";
 
 import SearchPage from "./search.page";
 
@@ -24,12 +16,6 @@ import SearchPage from "./search.page";
 	asPath: "",
 	push: jest.fn(),
 }));
-
-type SearchDefaultProps = {
-	results: SearchResults;
-	activeModifiers: { displayName: string; toggleUrl: string }[];
-	searchUrl: SearchUrl;
-};
 
 describe("search", () => {
 	let container: HTMLElement;

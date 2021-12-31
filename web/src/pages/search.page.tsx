@@ -69,7 +69,6 @@ export function Search({
 
 	if (failed) return <ErrorPageContent />;
 
-	console.log(results);
 	return (
 		<>
 			<NextSeo
