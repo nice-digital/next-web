@@ -1,6 +1,19 @@
 import { Document } from "@nice-digital/search-client";
 
-export const mockDocuments: Document[] = [
+type SearchResultDocument = Pick<
+	Document,
+	"niceDocType" | "publicationDate" | "lastUpdated"
+>;
+
+const pathwayDoc: SearchResultDocument = {
+	niceDocType: ["NICE Pathway"],
+	publicationDate: "2021-04-06T12:00:00",
+	lastUpdated: "2021-04-06T12:00:00",
+};
+
+export const mockDocuments: Document[] = [pathwayDoc as Document];
+
+export const mockDocuments2: Document[] = [
 	{
 		id: "1",
 		tagsHigh: null,

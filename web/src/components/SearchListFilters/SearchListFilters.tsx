@@ -89,7 +89,7 @@ export const SearchListFilters: FC<SearchListFiltersProps> = ({
 					placeholder="E.g. 'diabetes' or 'NG28'"
 				/>
 			) : (
-				<></>
+				<input type="hidden" name="q" value={queryText} />
 			)}
 			{showDateFilter ? (
 				<ToFromDateFilters
