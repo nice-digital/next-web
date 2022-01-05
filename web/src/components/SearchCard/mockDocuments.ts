@@ -86,6 +86,18 @@ const unpublishedDoc: SearchResultDocument = {
 	title: "<b>test</b> 321",
 };
 
+const qualityStandardWithoutSubSectionsDoc: SearchResultDocument = {
+	id: "7",
+	niceDocType: [],
+	niceResultType: "",
+	publicationDate: "2021-04-01T12:00:00",
+	lastUpdated: "2021-04-01T12:00:00",
+	pathAndQuery: "/qualitystandard/test",
+	resourceType: ["Test Resource Type"],
+	subSectionLinks: ",,,,,,,,,",
+	title: "Test quality standard",
+};
+
 export const mockDocuments: Document[] = [
 	pathwayDoc as Document,
 	guidanceDoc as Document,
@@ -98,3 +110,7 @@ export const mockDocumentMatchingDates: Document[] = [
 ];
 
 export const mockDocumentUnpublished: Document[] = [unpublishedDoc as Document];
+
+export const mockDocumentSubSectionLinksBroken: Document[] = [
+	qualityStandardWithoutSubSectionsDoc as Document,
+];

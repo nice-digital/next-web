@@ -6,6 +6,7 @@ import {
 	mockDocuments,
 	mockDocumentMatchingDates,
 	mockDocumentUnpublished,
+	mockDocumentSubSectionLinksBroken,
 } from "./mockDocuments";
 
 describe("SearchCard", () => {
@@ -66,6 +67,12 @@ describe("SearchCard", () => {
 	it.todo(
 		"test for no results returned, currently erroring when a no results returned"
 	);
+
+	it("should throw error if subsection links don't parse", () => {
+		expect(() =>
+			render(<SearchCardList documents={mockDocumentSubSectionLinksBroken} />)
+		).toThrow("Unhandled error. (Error: Non-whitespace before first tag.");
+	});
 
 	it("should render the published date in the correct date format if it matches the last updated date", () => {
 		render(<SearchCardList documents={mockDocumentMatchingDates} />);

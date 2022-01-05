@@ -118,7 +118,7 @@ export const SearchCardList: FC<SearchCardListProps> = ({ documents }) => {
 						subSectionLinks,
 						function (err: string, result: { SubSections: SubSections }) {
 							if (err) {
-								console.error("An error occurred - ", err);
+								throw err;
 							}
 							parsedLinks = result.SubSections.link;
 						}
