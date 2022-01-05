@@ -4,6 +4,11 @@ import { SubSection } from "@/components/SearchCard/SearchCardList";
 import { SearchSections } from "@/components/SearchSections/SearchSections";
 import { render } from "@/test-utils";
 
+const mockParsedLinks: SubSection[] = [
+	{ $: { url: "/testsubsection/1" }, _: "Test subsection 1" },
+	{ $: { url: "/testsubsection/2" }, _: "Test subsection 2" },
+];
+
 const mockParsedLinksRec: SubSection[] = [
 	{ $: { url: "/testsubsection/1" }, _: "Test subsection 1" },
 	{ $: { url: "/testsubsection/2" }, _: "Test subsection 2" },
@@ -113,6 +118,22 @@ describe("SearchSections", () => {
 				name: /view quality statements for TestRef999/i,
 			})
 		).toHaveAttribute("href", "/chapter/list-of-quality-statements");
+	});
+
+	it("should NOT render a key link when there is no match for recommendations or quality standards", () => {
+		render(<SearchSections parsedLinks={mockParsedLinks} {...defaultProps} />);
+
+		expect(
+			screen.queryByRole("link", {
+				name: /view quality statements for TestRef999/i,
+			})
+		).not.toBeInTheDocument();
+
+		expect(
+			screen.queryByRole("link", {
+				name: /view recommendations for TestRef999/i,
+			})
+		).not.toBeInTheDocument();
 	});
 
 	it("should render a heading including the guidanceRef", () => {
