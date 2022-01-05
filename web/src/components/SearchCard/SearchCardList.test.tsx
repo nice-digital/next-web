@@ -4,7 +4,6 @@ import { SearchCardList } from "@/components/SearchCard/SearchCardList";
 
 import {
 	mockDocuments,
-	mockUncategorisedDocuments,
 	mockDocumentMatchingDates,
 	mockDocumentUnpublished,
 } from "./mockDocuments";
@@ -19,7 +18,7 @@ describe("SearchCard", () => {
 		render(<SearchCardList documents={mockDocuments} />);
 		expect(screen.getByRole("link", { name: "Test title" })).toHaveAttribute(
 			"href",
-			"/pathways/test"
+			"/guidance/test"
 		);
 	});
 
@@ -43,33 +42,36 @@ describe("SearchCard", () => {
 
 	it("should render metadata", () => {
 		render(<SearchCardList documents={mockDocuments} />);
-		expect(screen.getAllByRole("definition").length).toBe(11);
-		expect(screen.getAllByText("NICE Pathway").length).toBe(2);
+		expect(screen.getAllByRole("definition").length).toBe(6);
+		expect(screen.getAllByText("Test Resource Type").length).toBe(2);
 	});
 
 	it("should NOT render metadata for uncategorised results", () => {
-		render(<SearchCardList documents={mockUncategorisedDocuments} />);
-		expect(screen.queryByText(/published/i)).not.toBeInTheDocument();
+		render(<SearchCardList documents={mockDocuments} />);
 		expect(screen.queryByText(/1 January 1970/i)).not.toBeInTheDocument();
 	});
 
 	it("should render last updated date metadata in the correct date format", () => {
 		render(<SearchCardList documents={mockDocuments} />);
-		expect(screen.getAllByText(/last updated/i).length).toBe(2);
+		expect(screen.getAllByText(/last updated/i).length).toBe(1);
 		expect(screen.getByText(/24 November 2021/i)).toBeInTheDocument();
 	});
 
 	it("should render published date in the correct date format", () => {
 		render(<SearchCardList documents={mockDocuments} />);
-		expect(screen.getAllByText(/published/i).length).toBe(3);
+		expect(screen.getAllByText(/published/i).length).toBe(2);
 		expect(screen.getByText(/6 April 2021/i)).toBeInTheDocument();
 	});
+
+	it.todo(
+		"test for no results returned, currently erroring when a no results returned"
+	);
 
 	it("should render the published date in the correct date format if it matches the last updated date", () => {
 		render(<SearchCardList documents={mockDocumentMatchingDates} />);
 		expect(screen.queryByText(/last updated/i)).not.toBeInTheDocument();
 		expect(screen.getByText(/published/i)).toBeInTheDocument();
-		expect(screen.getByText(/6 April 2021/i)).toBeInTheDocument();
+		expect(screen.getByText(/1 January 2021/i)).toBeInTheDocument();
 	});
 
 	it("should render meta data without published/last updated dates for an unpublished document", () => {
