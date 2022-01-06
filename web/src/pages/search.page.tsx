@@ -207,7 +207,7 @@ export const getServerSideProps = async (
 
 	if (results.failed) {
 		logger.error(
-			`Error loading guidance from search on page ${context.resolvedUrl}: ${results.errorMessage}`,
+			`Error loading results from search on page ${context.resolvedUrl}: ${results.errorMessage}`,
 			results.debug?.rawResponse
 		);
 		context.res.statusCode = 500;
