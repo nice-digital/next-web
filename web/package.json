@@ -24,9 +24,9 @@
     "extends @nice-digital/browserslist-config"
   ],
   "dependencies": {
-    "@nice-digital/design-system": "^1.2.29-alpha.0",
-    "@nice-digital/global-nav": "^4.1.594",
-    "@nice-digital/search-client": "^1.1.1412-SRCH-673-TopicSelect",
+    "@nice-digital/design-system": "^1.2.30",
+    "@nice-digital/global-nav": "^4.1.701",
+    "@nice-digital/search-client": "^1.1.1416-SRCH-673-TopicSelect",
     "cache-manager": "^3.4.4",
     "cache-manager-fs-hash": "^1.0.0",
     "clipboard-polyfill": "^3.0.3",
