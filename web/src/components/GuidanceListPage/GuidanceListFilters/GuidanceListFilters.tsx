@@ -14,7 +14,7 @@ import { SkipLink } from "@/components/SkipLink/SkipLink";
 import { ToFromDateFilters } from "@/components/ToFromDateFilters/ToFromDateFilters";
 
 /** Search returns the order of navigators depending on what's selected but we want them in a consistent order */
-const navigatorsOrder = ["nai", "ndt", "ngt", "nat"];
+const navigatorsOrder = ["nai", "tt", "tsd", "ndt", "ngt", "nat"];
 
 /** Some navigators are less used than others so collapse them by default */
 const navigatorsCollapsedByDefault = ["ngt", "nat"];
