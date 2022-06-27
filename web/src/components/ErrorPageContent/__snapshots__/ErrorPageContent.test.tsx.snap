@@ -55,6 +55,7 @@ exports[`ErrorPageContent should match snapshot for main content 1`] = `
     </script>
     <div
       class="page-header"
+      id="content-start"
     >
       <h1
         class="page-header__heading"

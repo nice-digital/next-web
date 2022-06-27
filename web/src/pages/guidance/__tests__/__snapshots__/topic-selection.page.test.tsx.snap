@@ -1,11 +1,9 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`/guidance/proposed should match the snapshot 1`] = `
+exports[`/guidance/topic-selection should match the snapshot 1`] = `
 <div>
   <div />
-  <main
-    id="content-start"
-  >
+  <main>
     <div
       class="container"
     >
@@ -38,7 +36,7 @@ exports[`/guidance/proposed should match the snapshot 1`] = `
             class="breadcrumbs__crumb"
           >
             <span>
-              Proposed
+              Topic selection
             </span>
           </li>
         </ol>
@@ -70,7 +68,7 @@ exports[`/guidance/proposed should match the snapshot 1`] = `
       "@type": "ListItem",
       "position": 3,
       "item": {
-        "name": "Proposed"
+        "name": "Topic selection"
       }
     }
   ]
@@ -78,6 +76,7 @@ exports[`/guidance/proposed should match the snapshot 1`] = `
       </script>
       <div
         class="page-header"
+        id="content-start"
       >
         <h1
           class="page-header__heading"
@@ -85,9 +84,9 @@ exports[`/guidance/proposed should match the snapshot 1`] = `
           <span
             class="page-header__pre-heading"
           >
-            Guidance and quality standards 
+            Guidance in 
           </span>
-          Proposed for development
+          Topic selection
         </h1>
         <p
           class="page-header__lead"
@@ -152,9 +151,20 @@ exports[`/guidance/proposed should match the snapshot 1`] = `
             <a
               aria-current="false"
               class="horizontal-nav__link"
-              href="/guidance/proposed"
+              href="/guidance/awaiting-development"
             >
-              Proposed
+              Awaiting development
+            </a>
+          </li>
+          <li
+            class="horizontal-nav__item"
+          >
+            <a
+              aria-current="false"
+              class="horizontal-nav__link"
+              href="/guidance/topic-selection"
+            >
+              Topic selection
             </a>
           </li>
         </ul>
@@ -318,7 +328,7 @@ exports[`/guidance/proposed should match the snapshot 1`] = `
                     class="filter-group__heading"
                   >
                     <button
-                      aria-controls="group-ndt"
+                      aria-controls="group-tt"
                       aria-expanded="true"
                       type="button"
                     >
@@ -338,9 +348,9 @@ exports[`/guidance/proposed should match the snapshot 1`] = `
                         />
                       </svg>
                       <span
-                        id="group-heading-ndt"
+                        id="group-heading-tt"
                       >
-                        Type
+                        Technology type
                          
                       </span>
                     </button>
@@ -348,43 +358,155 @@ exports[`/guidance/proposed should match the snapshot 1`] = `
                   <fieldset
                     aria-hidden="false"
                     class="filter-group__options"
-                    id="group-ndt"
+                    id="group-tt"
                   >
                     <legend>
-                      Type
+                      Technology type
                     </legend>
                     <label
                       class="filter-option"
-                      for="filter_ndt_guidance"
+                      for="filter_tt_device"
                     >
                       <input
-                        id="filter_ndt_guidance"
-                        name="ndt"
-                        title="Type - Guidance (178)"
+                        id="filter_tt_device"
+                        name="tt"
+                        title="Technology type - Device (2)"
                         type="checkbox"
-                        value="Guidance"
+                        value="Device"
                       />
                       <span
                         class="filter-option__text"
                       >
-                        Guidance (178)
+                        Device (2)
                       </span>
                     </label>
                     <label
                       class="filter-option"
-                      for="filter_ndt_quality-standard"
+                      for="filter_tt_diagnostic"
                     >
                       <input
-                        id="filter_ndt_quality-standard"
-                        name="ndt"
-                        title="Type - Quality standard (31)"
+                        id="filter_tt_diagnostic"
+                        name="tt"
+                        title="Technology type - Diagnostic (2)"
                         type="checkbox"
-                        value="Quality standard"
+                        value="Diagnostic"
                       />
                       <span
                         class="filter-option__text"
                       >
-                        Quality standard (31)
+                        Diagnostic (2)
+                      </span>
+                    </label>
+                    <label
+                      class="filter-option"
+                      for="filter_tt_medicine"
+                    >
+                      <input
+                        id="filter_tt_medicine"
+                        name="tt"
+                        title="Technology type - Medicine (1)"
+                        type="checkbox"
+                        value="Medicine"
+                      />
+                      <span
+                        class="filter-option__text"
+                      >
+                        Medicine (1)
+                      </span>
+                    </label>
+                    <label
+                      class="filter-option"
+                      for="filter_tt_procedure"
+                    >
+                      <input
+                        id="filter_tt_procedure"
+                        name="tt"
+                        title="Technology type - Procedure (1)"
+                        type="checkbox"
+                        value="Procedure"
+                      />
+                      <span
+                        class="filter-option__text"
+                      >
+                        Procedure (1)
+                      </span>
+                    </label>
+                  </fieldset>
+                </div>
+                <div
+                  class="filter-group"
+                >
+                  <h3
+                    class="filter-group__heading"
+                  >
+                    <button
+                      aria-controls="group-tsd"
+                      aria-expanded="true"
+                      type="button"
+                    >
+                      <svg
+                        aria-hidden="true"
+                        class="filter-group__heading-icon filter-group__heading-icon--expanded"
+                        fill="none"
+                        focusable="false"
+                        height="1em"
+                        viewBox="0 0 512 512"
+                        width="1em"
+                        xmlns="http://www.w3.org/2000/svg"
+                      >
+                        <path
+                          d="M478.152 174c0 10.091-3.525 18.661-10.576 25.712l-186 186c-7.243 7.243-15.909 10.864-26 10.864-10.283 0-18.853-3.621-25.712-10.864l-186-186C36.621 192.853 33 184.283 33 174c0-10.091 3.621-18.757 10.864-26L65 126.576C72.424 119.525 81.09 116 91 116c10.091 0 18.661 3.525 25.712 10.576L255.576 265.44 394.44 126.576c7.051-7.051 15.621-10.576 25.712-10.576 9.909 0 18.576 3.525 26 10.576L467.576 148c7.051 7.424 10.576 16.091 10.576 26z"
+                          fill="currentColor"
+                        />
+                      </svg>
+                      <span
+                        id="group-heading-tsd"
+                      >
+                        Topic selection decision
+                         
+                      </span>
+                    </button>
+                  </h3>
+                  <fieldset
+                    aria-hidden="false"
+                    class="filter-group__options"
+                    id="group-tsd"
+                  >
+                    <legend>
+                      Topic selection decision
+                    </legend>
+                    <label
+                      class="filter-option"
+                      for="filter_tsd_awaiting-decision"
+                    >
+                      <input
+                        id="filter_tsd_awaiting-decision"
+                        name="tsd"
+                        title="Topic selection decision - Awaiting decision (12)"
+                        type="checkbox"
+                        value="Awaiting decision"
+                      />
+                      <span
+                        class="filter-option__text"
+                      >
+                        Awaiting decision (12)
+                      </span>
+                    </label>
+                    <label
+                      class="filter-option"
+                      for="filter_tsd_further-information-required"
+                    >
+                      <input
+                        id="filter_tsd_further-information-required"
+                        name="tsd"
+                        title="Topic selection decision - Further information required (1)"
+                        type="checkbox"
+                        value="Further information required"
+                      />
+                      <span
+                        class="filter-option__text"
+                      >
+                        Further information required (1)
                       </span>
                     </label>
                   </fieldset>
@@ -433,19 +555,70 @@ exports[`/guidance/proposed should match the snapshot 1`] = `
                     </legend>
                     <label
                       class="filter-option"
+                      for="filter_ngt_diagnostics-guidance"
+                    >
+                      <input
+                        id="filter_ngt_diagnostics-guidance"
+                        name="ngt"
+                        title="Guidance programme - Diagnostics guidance (6)"
+                        type="checkbox"
+                        value="Diagnostics guidance"
+                      />
+                      <span
+                        class="filter-option__text"
+                      >
+                        Diagnostics guidance (6)
+                      </span>
+                    </label>
+                    <label
+                      class="filter-option"
                       for="filter_ngt_highly-specialised-technologies-guidance"
                     >
                       <input
                         id="filter_ngt_highly-specialised-technologies-guidance"
                         name="ngt"
-                        title="Guidance programme - Highly specialised technologies guidance (10)"
+                        title="Guidance programme - Highly specialised technologies guidance (1)"
                         type="checkbox"
                         value="Highly specialised technologies guidance"
                       />
                       <span
                         class="filter-option__text"
                       >
-                        Highly specialised technologies guidance (10)
+                        Highly specialised technologies guidance (1)
+                      </span>
+                    </label>
+                    <label
+                      class="filter-option"
+                      for="filter_ngt_interventional-procedures-guidance"
+                    >
+                      <input
+                        id="filter_ngt_interventional-procedures-guidance"
+                        name="ngt"
+                        title="Guidance programme - Interventional procedures guidance (3)"
+                        type="checkbox"
+                        value="Interventional procedures guidance"
+                      />
+                      <span
+                        class="filter-option__text"
+                      >
+                        Interventional procedures guidance (3)
+                      </span>
+                    </label>
+                    <label
+                      class="filter-option"
+                      for="filter_ngt_medical-technologies-guidance"
+                    >
+                      <input
+                        id="filter_ngt_medical-technologies-guidance"
+                        name="ngt"
+                        title="Guidance programme - Medical technologies guidance (2)"
+                        type="checkbox"
+                        value="Medical technologies guidance"
+                      />
+                      <span
+                        class="filter-option__text"
+                      >
+                        Medical technologies guidance (2)
                       </span>
                     </label>
                     <label
@@ -455,14 +628,14 @@ exports[`/guidance/proposed should match the snapshot 1`] = `
                       <input
                         id="filter_ngt_technology-appraisal-guidance"
                         name="ngt"
-                        title="Guidance programme - Technology appraisal guidance (168)"
+                        title="Guidance programme - Technology appraisal guidance (1)"
                         type="checkbox"
                         value="Technology appraisal guidance"
                       />
                       <span
                         class="filter-option__text"
                       >
-                        Technology appraisal guidance (168)
+                        Technology appraisal guidance (1)
                       </span>
                     </label>
                   </fieldset>
@@ -490,7 +663,7 @@ exports[`/guidance/proposed should match the snapshot 1`] = `
                  to 
                 10
                  of 
-                209
+                13
               </h2>
             </div>
           </div>
@@ -505,7 +678,7 @@ exports[`/guidance/proposed should match the snapshot 1`] = `
               <caption
                 class="visually-hidden"
               >
-                Proposed guidance and quality standards
+                Guidance in topic selection
               </caption>
               <thead>
                 <tr>
@@ -517,7 +690,12 @@ exports[`/guidance/proposed should match the snapshot 1`] = `
                   <th
                     scope="col"
                   >
-                    Type
+                    Technology type
+                  </th>
+                  <th
+                    scope="col"
+                  >
+                    Decision
                   </th>
                 </tr>
               </thead>
@@ -525,121 +703,151 @@ exports[`/guidance/proposed should match the snapshot 1`] = `
                 <tr>
                   <td>
                     <a
-                      href="/guidance/proposed/gid-qs10035"
+                      href="/guidance/indevelopment/GID-DG10162"
                     >
-                      Abdominal aortic aneurysm
+                      DG11
                     </a>
                   </td>
                   <td>
-                    Quality standard
+                    n/a
+                  </td>
+                  <td>
+                    Awaiting decision
                   </td>
                 </tr>
                 <tr>
                   <td>
                     <a
-                      href="/guidance/proposed/gid-ta10718"
+                      href="/guidance/indevelopment/GID-DG10161"
                     >
-                      Abilify MyCite for treating bipolar disorder 1 or schizophrenia [ID3833]
+                      DG-ID322
                     </a>
                   </td>
                   <td>
-                    Technology appraisal guidance
+                    n/a
+                  </td>
+                  <td>
+                    Awaiting decision
                   </td>
                 </tr>
                 <tr>
                   <td>
                     <a
-                      href="/guidance/proposed/gid-qs10036"
+                      href="/guidance/indevelopment/GID-TA10409"
                     >
-                      Acne
+                      TAID330
                     </a>
                   </td>
                   <td>
-                    Quality standard
+                    n/a
+                  </td>
+                  <td>
+                    Further information required
                   </td>
                 </tr>
                 <tr>
                   <td>
                     <a
-                      href="/guidance/proposed/gid-qs10038"
+                      href="/guidance/indevelopment/GID-IPG10126"
                     >
-                      Adrenal dysfunction
+                      TEST Project IP
                     </a>
                   </td>
                   <td>
-                    Quality standard
+                    n/a
+                  </td>
+                  <td>
+                    Awaiting decision
                   </td>
                 </tr>
                 <tr>
                   <td>
                     <a
-                      href="/guidance/proposed/gid-qs10144"
+                      href="/guidance/indevelopment/GID-DG10175"
                     >
-                      Adults with lifelong or very severe hearing or visual impairment: health, well-being and social care
+                      Idam476Nov112021a
                     </a>
                   </td>
                   <td>
-                    Quality standard
+                    Diagnostic
+                  </td>
+                  <td>
+                    Awaiting decision
                   </td>
                 </tr>
                 <tr>
                   <td>
                     <a
-                      href="/guidance/proposed/gid-qs10145"
+                      href="/guidance/indevelopment/GID-DG10167"
                     >
-                      Advocacy services for adults with health and social care needs
+                      DG321
                     </a>
                   </td>
                   <td>
-                    Quality standard
+                    n/a
+                  </td>
+                  <td>
+                    Awaiting decision
                   </td>
                 </tr>
                 <tr>
                   <td>
                     <a
-                      href="/guidance/proposed/gid-ta10803"
+                      href="/guidance/indevelopment/GID-IPG10130"
                     >
-                      Amcenestrant for treating ER-positive, HER2-negative advanced breast cancer after hormonal therapy [ID3919]
+                      TA321-2
                     </a>
                   </td>
                   <td>
-                    Technology appraisal guidance
+                    n/a
+                  </td>
+                  <td>
+                    Awaiting decision
                   </td>
                 </tr>
                 <tr>
                   <td>
                     <a
-                      href="/guidance/proposed/gid-hst10037"
+                      href="/guidance/indevelopment/GID-DG10177"
                     >
-                      Arimoclomol for treating Niemann-Pick disease Type C [ID1312]
+                      DG329
                     </a>
                   </td>
                   <td>
-                    Highly specialised technology
+                    Diagnostic
+                  </td>
+                  <td>
+                    Awaiting decision
                   </td>
                 </tr>
                 <tr>
                   <td>
                     <a
-                      href="/guidance/proposed/gid-hst10046"
+                      href="/guidance/indevelopment/GID-DG10172"
                     >
-                      Asfotase alfa for treating paediatric-onset hypophosphatasia (review of HST6) [ID3927]
+                      DG323
                     </a>
                   </td>
                   <td>
-                    Highly specialised technology
+                    n/a
+                  </td>
+                  <td>
+                    Awaiting decision
                   </td>
                 </tr>
                 <tr>
                   <td>
                     <a
-                      href="/guidance/proposed/gid-ta10574"
+                      href="/guidance/indevelopment/GID-MT590"
                     >
-                      Atezolizumab in combination for advanced epithelial ovarian, fallopian tube or primary peritoneal cancer in people who have not received any prior systemic therapy  [ID2700]
+                      MTG323
                     </a>
                   </td>
                   <td>
-                    Technology appraisal guidance
+                    Device
+                  </td>
+                  <td>
+                    Awaiting decision
                   </td>
                 </tr>
               </tbody>
@@ -680,37 +888,6 @@ exports[`/guidance/proposed should match the snapshot 1`] = `
                 </a>
               </li>
               <li
-                class="pagination__item"
-              >
-                <a
-                  aria-label="Go to page 3"
-                  class="pagination__link"
-                  href="/?pa=3"
-                >
-                  3
-                </a>
-              </li>
-              <li
-                class="pagination__item"
-              >
-                <span
-                  class="pagination__inactive"
-                >
-                  …
-                </span>
-              </li>
-              <li
-                class="pagination__item"
-              >
-                <a
-                  aria-label="Go to page 21"
-                  class="pagination__link"
-                  href="/?pa=21"
-                >
-                  21
-                </a>
-              </li>
-              <li
                 class="pagination__item pagination__item--count"
               >
                 <span>
@@ -720,7 +897,7 @@ exports[`/guidance/proposed should match the snapshot 1`] = `
                   </strong>
                    of 
                   <strong>
-                    21
+                    2
                   </strong>
                 </span>
               </li>

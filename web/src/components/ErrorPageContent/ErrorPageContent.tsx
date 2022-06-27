@@ -35,7 +35,7 @@ export const ErrorPageContent: FC<ErrorPageContentProps> = ({
 				</Breadcrumbs>
 			)}
 
-			<PageHeader heading={heading} lead={lead} />
+			<PageHeader heading={heading} lead={lead} id="content-start" />
 
 			<h2>What can I do&nbsp;now?</h2>
 

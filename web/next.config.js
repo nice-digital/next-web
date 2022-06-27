@@ -104,6 +104,15 @@ const nextConfig = {
 	pageExtensions: ["page.tsx", "api.tsx"],
 	// Don't send the x-powered-by header: we don't want to expose things like that. See https://edibleco.de/2TpDVAK
 	poweredByHeader: false,
+	async redirects() {
+		return [
+			{
+				source: "/guidance/proposed",
+				destination: "/guidance/awaiting-development",
+				permanent: true,
+			},
+		];
+	},
 	async headers() {
 		return [
 			{

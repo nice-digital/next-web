@@ -129,7 +129,7 @@ class NextWebApp extends App<{}, {}, AppState> {
 					<div ref={this.globalNavWrapperRef}>
 						<Header {...headerProps} service={service} />
 					</div>
-					<main id="content-start">
+					<main>
 						<Container>
 							<ErrorPageContent />
 						</Container>
@@ -144,7 +144,7 @@ class NextWebApp extends App<{}, {}, AppState> {
 				<div ref={this.globalNavWrapperRef}>
 					<Header {...headerProps} service={service} />
 				</div>
-				<main id="content-start">
+				<main>
 					<Container>
 						<Component {...pageProps} />
 					</Container>

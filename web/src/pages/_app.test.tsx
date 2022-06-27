@@ -156,27 +156,21 @@ describe("NextWebApp", () => {
 		expect(screen.getByRole("main")).toHaveTextContent("some content");
 	});
 
-	it("should add content-start skip link target id to main element", () => {
-		renderApp();
-
-		expect(screen.getByRole("main")).toHaveAttribute("id", "content-start");
-	});
-
-	it("shouldn't highlight guidance on the menu for routes outside guidance", () => {
+	it("shouldn't highlight guidance on the menu for routes outside guidance", async () => {
 		renderApp({ pathname: "/not-guidance" });
 
-		const button = screen.getByRole("button", {
-			name: /guidance/i,
-		});
-		expect(button).not.toHaveAttribute("aria-current", "true");
+		expect(
+			screen.getByRole("button", { name: "Guidance" })
+		).not.toHaveAttribute("aria-current");
 	});
 
 	it("should highlight guidance on the menu for routes under guidance", () => {
 		renderApp({ pathname: "/guidance/published" });
-		const button = screen.getByRole("button", {
-			name: /guidance/i,
-		});
-		expect(button).toHaveAttribute("aria-current", "true");
+
+		expect(screen.getByRole("button", { name: "Guidance" })).toHaveAttribute(
+			"aria-current",
+			"true"
+		);
 	});
 
 	describe("reportWebVitals", () => {

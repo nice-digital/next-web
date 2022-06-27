@@ -19,6 +19,7 @@ jest.mock("@/logger", () => ({
 
 describe("/guidance/published", () => {
 	const GuidanceListPage = getGuidanceListPage({
+		metaDescription: "A list of all published guidance",
 		breadcrumb: "Published",
 		preheading: "Published ",
 		heading: <>Guidance, NICE advice and quality&nbsp;standards</>,
@@ -65,6 +66,16 @@ describe("/guidance/published", () => {
 	});
 
 	describe("Meta", () => {
+		it("should set meta description", () => {
+			expect(
+				document.querySelector("meta[name='description']")
+			).toBeInTheDocument();
+			expect(document.querySelector("meta[name='description']")).toHaveProperty(
+				"content",
+				"A list of all published guidance"
+			);
+		});
+
 		it("should set page title", () => {
 			expect(document.title).toBe(
 				"Published guidance, NICE advice and quality standards | Guidance | NICE"
@@ -112,6 +123,15 @@ describe("/guidance/published", () => {
 			});
 			expect(resultsSkipLinks[0]).toHaveAttribute("href", "#results");
 			expect(resultsSkipLinks[1]).toHaveAttribute("href", "#results");
+		});
+
+		it("should add content-start skip link target id to div element", () => {
+			const headingElement = screen.getByText(
+				"Guidance, NICE advice and quality standards"
+			);
+			expect(headingElement.parentElement?.getAttribute("id")).toEqual(
+				"content-start"
+			);
 		});
 	});
 

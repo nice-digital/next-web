@@ -3,9 +3,7 @@
 exports[`/guidance/published should match the snapshot 1`] = `
 <div>
   <div />
-  <main
-    id="content-start"
-  >
+  <main>
     <div
       class="container"
     >
@@ -78,6 +76,7 @@ exports[`/guidance/published should match the snapshot 1`] = `
       </script>
       <div
         class="page-header"
+        id="content-start"
       >
         <h1
           class="page-header__heading"
@@ -152,9 +151,20 @@ exports[`/guidance/published should match the snapshot 1`] = `
             <a
               aria-current="false"
               class="horizontal-nav__link"
-              href="/guidance/proposed"
+              href="/guidance/awaiting-development"
             >
-              Proposed
+              Awaiting development
+            </a>
+          </li>
+          <li
+            class="horizontal-nav__item"
+          >
+            <a
+              aria-current="false"
+              class="horizontal-nav__link"
+              href="/guidance/topic-selection"
+            >
+              Topic selection
             </a>
           </li>
         </ul>

@@ -54,6 +54,8 @@ const tableBodyRender = (documents: Document[]) => (
 );
 
 export default getGuidanceListPage({
+	metaDescription:
+		"See a complete list of all our guidance and quality standards currently open for consultation",
 	breadcrumb: "In consultation",
 	preheading: "Guidance and quality standards ",
 	heading: "In consultation",
