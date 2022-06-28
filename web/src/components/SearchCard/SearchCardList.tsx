@@ -116,7 +116,7 @@ export const SearchCardList: FC<SearchCardListProps> = ({ documents }) => {
 				subSectionLinks &&
 					parser.parseString(
 						subSectionLinks,
-						function (err: string, result: { SubSections: SubSections }) {
+						function (err: Error | null, result: { SubSections: SubSections }) {
 							if (err) {
 								throw err;
 							}
