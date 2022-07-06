@@ -12,9 +12,12 @@ const config = require("config"),
  *
  * Avoids the error "CSS Modules cannot be imported from within node_modules."
  */
-const niceDigitalModulesToTranspile = glob.sync("**/@nice-digital/*", {
-	cwd: "node_modules",
-});
+const niceDigitalModulesToTranspile = glob.sync(
+	"@nice-digital/{*,*/node_modules/@nice-digital/*}",
+	{
+		cwd: "node_modules",
+	}
+);
 
 /**
  * Some npm modules are published as ES6, so we need to force them to be transpiled
