@@ -13,18 +13,6 @@ type SearchResultDocument = Pick<
 	| "title"
 >;
 
-// const pathwayDoc: SearchResultDocument = {
-// 	id: "1",
-// 	niceDocType: ["NICE Pathways"],
-// 	niceResultType: "NICE Pathway",
-// 	publicationDate: "2021-04-06T12:00:00",
-// 	lastUpdated: "2021-11-24T12:00:00",
-// 	pathAndQuery: "/pathways/test",
-// 	resourceType: ["Test Resource Type"],
-// 	subSectionLinks: "",
-// 	title: "Test pathway",
-// };
-
 const guidanceDoc: SearchResultDocument = {
 	id: "1",
 	niceDocType: ["Guidance"],
