@@ -24,9 +24,9 @@
     "extends @nice-digital/browserslist-config"
   ],
   "dependencies": {
-    "@nice-digital/design-system": "^1.6.3",
-    "@nice-digital/global-nav": "^4.1.805",
-    "@nice-digital/search-client": "^1.1.1422",
+    "@nice-digital/design-system": "^1.7.4",
+    "@nice-digital/global-nav": "^4.1.838",
+    "@nice-digital/search-client": "^2.0.1458",
     "cache-manager": "^3.4.4",
     "cache-manager-fs-hash": "^1.0.0",
     "classnames": "^2.3.1",
@@ -35,6 +35,7 @@
     "dayjs": "^1.10.6",
     "fast-sort": "^3.0.2",
     "form-serialize": "^0.7.2",
+    "glob": "^8.0.3",
     "js-yaml": "^4.1.0",
     "needle": "^2.8.0",
     "next": "^11.1.2",
@@ -56,6 +57,7 @@
     "@types/cache-manager": "^3.4.2",
     "@types/cache-manager-fs-hash": "0.0.1",
     "@types/form-serialize": "^0.7.2",
+    "@types/glob": "^7.2.0",
     "@types/pluralize": "0.0.29",
     "@types/qs": "^6.9.7",
     "@types/xml2js": "^0.4.9",

@@ -1,8 +1,8 @@
 // @ts-check
-const { readdirSync } = require("fs"),
-	path = require("path");
+const path = require("path");
 
 const config = require("config"),
+	glob = require("glob"),
 	withNodeConfig = require("next-plugin-node-config"),
 	withTranspiledModules = require("next-transpile-modules");
 
@@ -12,12 +12,12 @@ const config = require("config"),
  *
  * Avoids the error "CSS Modules cannot be imported from within node_modules."
  */
-const niceDigitalModulesToTranspile = readdirSync(
-	path.join(__dirname, "node_modules", "@nice-digital"),
-	{ withFileTypes: true }
-)
-	.filter((dirent) => dirent.isDirectory() || dirent.isSymbolicLink())
-	.map(({ name }) => `@nice-digital/${name}`);
+const niceDigitalModulesToTranspile = glob.sync(
+	"@nice-digital/{*,*/node_modules/@nice-digital/*}",
+	{
+		cwd: "node_modules",
+	}
+);
 
 /**
  * Some npm modules are published as ES6, so we need to force them to be transpiled
