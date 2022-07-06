@@ -82,7 +82,7 @@ const unpublishedDoc: SearchResultDocument = {
 	pathAndQuery: "",
 	publicationDate: null,
 	lastUpdated: null,
-	subSectionLinks: null,
+	subSectionLinks: "",
 	title: "<b>test</b> 321",
 };
 
