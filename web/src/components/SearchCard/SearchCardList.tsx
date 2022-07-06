@@ -1,7 +1,6 @@
 import React, { FC } from "react";
 import * as xml2js from "xml2js";
 
-import PathwaysIcon from "@nice-digital/icons/lib/Pathways";
 import { Card } from "@nice-digital/nds-card";
 import { Document } from "@nice-digital/search-client";
 
@@ -137,14 +136,7 @@ export const SearchCardList: FC<SearchCardListProps> = ({ documents }) => {
 						<Card
 							className={styles.card}
 							elementType="div"
-							headingText={
-								<>
-									{item.niceResultType == "NICE Pathway" ? (
-										<PathwaysIcon className={styles.pathwaysIcon} />
-									) : null}
-									<span dangerouslySetInnerHTML={{ __html: title }} />
-								</>
-							}
+							headingText={<span dangerouslySetInnerHTML={{ __html: title }} />}
 							headinglink={pathAndQuery}
 							summary={<span dangerouslySetInnerHTML={{ __html: teaser }} />}
 							link={{

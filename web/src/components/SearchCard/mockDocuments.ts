@@ -13,20 +13,20 @@ type SearchResultDocument = Pick<
 	| "title"
 >;
 
-const pathwayDoc: SearchResultDocument = {
-	id: "1",
-	niceDocType: ["NICE Pathways"],
-	niceResultType: "NICE Pathway",
-	publicationDate: "2021-04-06T12:00:00",
-	lastUpdated: "2021-11-24T12:00:00",
-	pathAndQuery: "/pathways/test",
-	resourceType: ["Test Resource Type"],
-	subSectionLinks: "",
-	title: "Test pathway",
-};
+// const pathwayDoc: SearchResultDocument = {
+// 	id: "1",
+// 	niceDocType: ["NICE Pathways"],
+// 	niceResultType: "NICE Pathway",
+// 	publicationDate: "2021-04-06T12:00:00",
+// 	lastUpdated: "2021-11-24T12:00:00",
+// 	pathAndQuery: "/pathways/test",
+// 	resourceType: ["Test Resource Type"],
+// 	subSectionLinks: "",
+// 	title: "Test pathway",
+// };
 
 const guidanceDoc: SearchResultDocument = {
-	id: "2",
+	id: "1",
 	niceDocType: ["Guidance"],
 	niceResultType: "",
 	publicationDate: "2021-04-06T12:00:00",
@@ -35,6 +35,18 @@ const guidanceDoc: SearchResultDocument = {
 	resourceType: ["Test Resource Type"],
 	subSectionLinks: "",
 	title: "Test title",
+};
+
+const guidanceDocNonMatchingDates: SearchResultDocument = {
+	id: "2",
+	niceDocType: ["Guidance"],
+	niceResultType: "",
+	publicationDate: "2021-04-06T12:00:00",
+	lastUpdated: "2021-11-24T12:00:00",
+	pathAndQuery: "/guidance/test",
+	resourceType: ["Test Resource Type"],
+	subSectionLinks: "",
+	title: "Test title 2",
 };
 
 const uncategorisedDoc: SearchResultDocument = {
@@ -99,7 +111,7 @@ const qualityStandardWithoutSubSectionsDoc: SearchResultDocument = {
 };
 
 export const mockDocuments: Document[] = [
-	pathwayDoc as Document,
+	guidanceDocNonMatchingDates as Document,
 	guidanceDoc as Document,
 	uncategorisedDoc as Document,
 	qualityStandardDoc as Document,

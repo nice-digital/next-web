@@ -65,14 +65,3 @@ declare module "@nice-digital/icons/lib/ChevronDown" {
 
 	export default ChevronDownIcon;
 }
-
-declare module "@nice-digital/icons/lib/Pathways" {
-	export interface IconProps {
-		colour?: string;
-		[key: string]: unknown;
-	}
-
-	const Pathways: FC<IconProps>;
-
-	export default Pathways;
-}
