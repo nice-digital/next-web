@@ -6,7 +6,7 @@ import {
 } from "@/components/GuidanceListPage/GuidanceListPage";
 import { ResponsiveDate } from "@/components/ResponsiveDate/ResponsiveDate";
 
-const defaultSortOrder = SortOrder.dateDescending,
+const defaultSortOrder = SortOrder.relevance,
 	dateFilterLabel = "Last updated date";
 
 const tableBodyRender = (documents: Document[]) => (
@@ -64,11 +64,11 @@ export default getGuidanceListPage({
 	title: "Published guidance, NICE advice and quality standards",
 	defaultSort: {
 		order: defaultSortOrder,
-		label: "Date",
+		label: "Relevance",
 	},
 	secondarySort: {
-		order: SortOrder.titleAscending,
-		label: "Title",
+		order: SortOrder.dateDescending,
+		label: "Date",
 	},
 	showDateFilter: true,
 	useFutureDates: false,
