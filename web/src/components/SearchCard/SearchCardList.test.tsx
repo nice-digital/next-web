@@ -1,13 +1,23 @@
 import { render, screen } from "@testing-library/react";
 
+import { Document, search } from "@nice-digital/search-client";
+
 import { SearchCardList } from "@/components/SearchCard/SearchCardList";
 
+import searchResultDocuments from "../../__mocks__/__data__/search/search-result-documents.json";
+
 import {
-	mockDocuments,
 	mockDocumentMatchingDates,
 	mockDocumentUnpublished,
 	mockDocumentSubSectionLinksBroken,
 } from "./mockDocuments";
+
+const mockDocuments = [
+	searchResultDocuments[0].guidanceNonMatchingDates as unknown as Document,
+	searchResultDocuments[0].guidance as unknown as Document,
+	searchResultDocuments[0].uncategorised as unknown as Document,
+	// searchResultDocuments[0].qualityStandard,
+] as unknown as Document[];
 
 describe("SearchCard", () => {
 	it("should render search result title", () => {

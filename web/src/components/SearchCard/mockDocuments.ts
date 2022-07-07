@@ -102,7 +102,7 @@ export const mockDocuments: Document[] = [
 	guidanceDocNonMatchingDates as Document,
 	guidanceDoc as Document,
 	uncategorisedDoc as Document,
-	qualityStandardDoc as Document,
+	// qualityStandardDoc as Document,
 ];
 
 export const mockDocumentMatchingDates: Document[] = [
