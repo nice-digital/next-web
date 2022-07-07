@@ -6,18 +6,25 @@ import { SearchCardList } from "@/components/SearchCard/SearchCardList";
 
 import searchResultDocuments from "../../__mocks__/__data__/search/search-result-documents.json";
 
-import {
-	mockDocumentMatchingDates,
-	mockDocumentUnpublished,
-	mockDocumentSubSectionLinksBroken,
-} from "./mockDocuments";
-
 const mockDocuments = [
 	searchResultDocuments[0].guidanceNonMatchingDates as unknown as Document,
 	searchResultDocuments[0].guidance as unknown as Document,
 	searchResultDocuments[0].uncategorised as unknown as Document,
 	// searchResultDocuments[0].qualityStandard,
 ] as unknown as Document[];
+
+const mockDocumentSubSectionLinksBroken = [
+	searchResultDocuments[0]
+		.qualityStandardWithoutSubsections as unknown as Document,
+] as unknown as Document[];
+
+const mockDocumentUnpublished = [
+	searchResultDocuments[0].unpublished as unknown as Document,
+] as unknown as Document[];
+
+const mockDocumentMatchingDates = [
+	searchResultDocuments[0].guidanceMatchingDates as unknown as Document,
+];
 
 describe("SearchCard", () => {
 	it("should render search result title", () => {
