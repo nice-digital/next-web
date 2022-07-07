@@ -10,7 +10,7 @@ const mockDocuments = [
 	searchResultDocuments[0].guidanceNonMatchingDates as unknown as Document,
 	searchResultDocuments[0].guidance as unknown as Document,
 	searchResultDocuments[0].uncategorised as unknown as Document,
-	// searchResultDocuments[0].qualityStandard,
+	searchResultDocuments[0].qualityStandard as unknown as Document,
 ] as unknown as Document[];
 
 const mockDocumentSubSectionLinksBroken = [

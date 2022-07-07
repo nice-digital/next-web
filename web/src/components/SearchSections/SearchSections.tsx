@@ -15,31 +15,33 @@ const recommendationsChapterLinkRegex =
 	/\/chapter\/(?:recommendations|\d+-recommendations|\d+-guidance)$/im;
 
 const keyLinkFinder = (keyLinkRegex: RegExp) => (el: SubSection) =>
-	keyLinkRegex.test(el.$.url);
+	keyLinkRegex.test(el.url);
 
 export interface SearchSectionsProps {
-	parsedLinks: SubSection[];
+	subSections: SubSection[];
 	guidanceRef?: string | null;
 }
 
 export const SearchSections: FC<SearchSectionsProps> = ({
-	parsedLinks,
+	subSections,
 	guidanceRef,
 }) => {
 	const keyLink = useMemo(() => {
-		const recLink = parsedLinks.find(
+		const recLink = subSections.find(
 			keyLinkFinder(recommendationsChapterLinkRegex)
 		);
 
-		if (recLink) return { text: "View recommendations", url: recLink.$.url };
+		if (recLink) return { text: "View recommendations", url: recLink.url };
 
-		const qsLink = parsedLinks.find(
+		const qsLink = subSections.find(
 			keyLinkFinder(qualityStatementsChapterLinkRegex)
 		);
 
-		if (qsLink) return { text: "View quality statements", url: qsLink.$.url };
+		if (qsLink) return { text: "View quality statements", url: qsLink.url };
 		return null;
-	}, [parsedLinks]);
+	}, [subSections]);
+
+	console.log({ subSections });
 
 	return (
 		<div className={styles.wrapper}>
@@ -59,12 +61,19 @@ export const SearchSections: FC<SearchSectionsProps> = ({
 				<Panel className={styles.panel}>
 					{guidanceRef && <h4>Sections for {guidanceRef}</h4>}
 					<ul className="list list--unstyled">
-						{parsedLinks.map(({ $, _ }, index) => (
+						{subSections.map((subSection, index) => (
 							<li key={index}>
-								<a href={$.url}>{_}</a>
+								<a href={subSection.url}>{subSection.title}</a>
 							</li>
 						))}
 					</ul>
+					{/* <ul className="list list--unstyled">
+						{subSections.map((subSection, index) => (
+							<li key={index}>
+								<a href={subSection.url}>{subSection.title}</a>
+							</li>
+						))}
+					</ul> */}
 				</Panel>
 			</details>
 		</div>

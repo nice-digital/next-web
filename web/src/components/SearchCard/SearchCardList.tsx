@@ -1,5 +1,4 @@
 import React, { FC } from "react";
-import * as xml2js from "xml2js";
 
 import { Card } from "@nice-digital/nds-card";
 import { Document } from "@nice-digital/search-client";
@@ -25,7 +24,7 @@ type MetaProps = {
 	metadata?: FormattedMetaItem[];
 };
 
-export type SubSection = { $: { url: string }; _: string };
+export type SubSection = { url: string; title: string };
 
 const isTopicPage = (resultType: string) => {
 	return resultType == "Topic page";
@@ -97,8 +96,6 @@ function searchFormatMeta(item: Document): Array<FormattedMetaItem> {
 }
 
 export const SearchCardList: FC<SearchCardListProps> = ({ documents }) => {
-	const parser = new xml2js.Parser();
-
 	return (
 		<ol className={styles.list}>
 			{documents.map((item: Document) => {
@@ -109,19 +106,43 @@ export const SearchCardList: FC<SearchCardListProps> = ({ documents }) => {
 					pathAndQuery,
 					teaser,
 					subSectionLinks,
+					subSections = [
+						{ title: "Overview", url: "/guidance/qs56" },
+						{
+							title: "Introduction",
+							url: "/guidance/qs56/chapter/Introduction",
+						},
+						{
+							title: "List of quality statements",
+							url: "/guidance/qs56/chapter/List-of-quality-statements",
+						},
+						{
+							title:
+								"Quality statement 1: Information about recognising the symptoms of metastatic spinal cord compression",
+							url: "/guidance/qs56/chapter/Quality-statement-1-Information-about-recognising-the-symptoms-of-metastatic-spinal-cord-compression",
+						},
+						{
+							title:
+								"Quality statement 2: Imaging and treatment plans for adults with suspected spinal metastases",
+							url: "/guidance/qs56/chapter/Quality-statement-2-Imaging-and-treatment-plans-for-adults-with-suspected-spinal-metastases",
+						},
+						{
+							title:
+								"Quality statement 3: Imaging and treatment plans for adults with suspected metastatic spinal cord compression",
+							url: "/guidance/qs56/chapter/Quality-statement-3-Imaging-and-treatment-plans-for-adults-with-suspected-metastatic-spinal-cord-compression",
+						},
+						{
+							title:
+								"Quality statement 4: Coordinating investigations for adults with suspected metastatic spinal cord compression",
+							url: "/guidance/qs56/chapter/Quality-statement-4-Coordinating-investigations-for-adults-with-suspected-metastatic-spinal-cord-compression",
+						},
+						{
+							title:
+								"Quality statement 5: Coordinating care for adults with metastatic spinal cord compression",
+							url: "/guidance/qs56/chapter/Quality-statement-5-Coordinating-care-for-adults-with-metastatic-spinal-cord-compression",
+						},
+					],
 				} = item;
-
-				let parsedLinks;
-				subSectionLinks &&
-					parser.parseString(
-						subSectionLinks,
-						function (err: Error | null, result: { SubSections: SubSections }) {
-							if (err) {
-								throw err;
-							}
-							parsedLinks = result.SubSections.link;
-						}
-					);
 
 				const metaProps: MetaProps = {};
 
@@ -144,9 +165,9 @@ export const SearchCardList: FC<SearchCardListProps> = ({ documents }) => {
 							}}
 							{...metaProps}
 						/>
-						{parsedLinks && (
+						{subSections && (
 							<SearchSections
-								parsedLinks={parsedLinks}
+								subSections={subSections}
 								guidanceRef={guidanceRef}
 							/>
 						)}
