@@ -837,37 +837,33 @@ exports[`/guidance/published should match the snapshot 1`] = `
                 350
               </h2>
             </div>
-            <p
-              class="filter-summary__sort hide-print"
+            <div
+              class="filter-summary__sorting"
             >
-              <span>
-                <span
-                  class="visually-hidden"
+              <label
+                class="filter-summary__sort-label"
+                for="sorting-options"
+              >
+                Sort by
+              </label>
+              <select
+                class="filter-summary__select"
+                id="sorting-options"
+                name="s"
+              >
+                <option
+                  selected=""
+                  value="Date"
                 >
-                  Sorted by
-                </span>
-                 
-                Date
-                <span
-                  class="visually-hidden"
-                >
-                  .
-                </span>
-              </span>
-               
-              |
-              <span>
-                 
-                <a
-                  aria-label="Sort by Title"
-                  class="filter-summary__sort-control"
-                  href="/?s=Title"
+                  Date
+                </option>
+                <option
+                  value="Title"
                 >
                   Title
-                </a>
-                 
-              </span>
-            </p>
+                </option>
+              </select>
+            </div>
           </div>
           <div
             class="tableWrapper"
