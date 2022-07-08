@@ -1,13 +1,8 @@
-import router, { useRouter } from "next/router";
+import { useRouter } from "next/router";
 import { FC } from "react";
 
 import { FilterSummary, FilterSummaryProps } from "@nice-digital/nds-filters";
-import {
-	removeQueryParam,
-	SearchResultsSuccess,
-	SortOrder,
-	upsertQueryParam,
-} from "@nice-digital/search-client";
+import { SearchResultsSuccess, SortOrder } from "@nice-digital/search-client";
 
 import { NoScrollLink } from "@/components/Link/Link";
 
