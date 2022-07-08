@@ -46,14 +46,18 @@ export const GuidanceListFilterSummary: FC<GuidanceListFilterSummaryProps> = ({
 			{
 				active: currentSortOrder === defaultSort.order || !currentSortOrder,
 				label: defaultSort.label,
-				destination: removeQueryParam(asPath, "s"),
-				elementType: NoScrollLink,
+				onSelected: () => {
+					removeQueryParam(asPath, "s");
+				},
+				value: defaultSort.label,
 			},
 			{
 				active: currentSortOrder === secondarySort.order,
 				label: secondarySort.label,
-				destination: upsertQueryParam(asPath, "s", secondarySort.order),
-				elementType: NoScrollLink,
+				onSelected: () => {
+					upsertQueryParam(asPath, "s", secondarySort.order);
+				},
+				value: secondarySort.label,
 			},
 		];
 	}
