@@ -1,4 +1,4 @@
-import { useRouter } from "next/router";
+import router, { useRouter } from "next/router";
 import { FC } from "react";
 
 import { FilterSummary, FilterSummaryProps } from "@nice-digital/nds-filters";
@@ -37,7 +37,15 @@ export const GuidanceListFilterSummary: FC<GuidanceListFilterSummaryProps> = ({
 	defaultSort,
 	secondarySort,
 }) => {
-	const { asPath } = useRouter();
+	const { push, pathname, query } = useRouter();
+
+	// Update query params and refresh page
+	const navigate = (sortOrder: SortOrder) => {
+		push({
+			pathname,
+			query: { ...query, s: sortOrder },
+		});
+	};
 
 	let sorting: FilterSummaryProps["sorting"] = undefined;
 
@@ -47,17 +55,17 @@ export const GuidanceListFilterSummary: FC<GuidanceListFilterSummaryProps> = ({
 				active: currentSortOrder === defaultSort.order || !currentSortOrder,
 				label: defaultSort.label,
 				onSelected: () => {
-					removeQueryParam(asPath, "s");
+					navigate(defaultSort.order);
 				},
-				value: defaultSort.label,
+				value: defaultSort.order,
 			},
 			{
 				active: currentSortOrder === secondarySort.order,
 				label: secondarySort.label,
 				onSelected: () => {
-					upsertQueryParam(asPath, "s", secondarySort.order);
+					navigate(secondarySort.order);
 				},
-				value: secondarySort.label,
+				value: secondarySort.order,
 			},
 		];
 	}
