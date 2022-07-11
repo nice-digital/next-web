@@ -24,23 +24,23 @@
   "index": 0,
   "lessSuitableForPrescribing": false,
   "niceDocType": [
-      "Local practice"
+      "Guidance"
   ],
   "niceGuidanceType": [],
   "niceAdviceType": [],
-  "niceResultType": null,
+  "niceResultType": "",
   "parentPathTitle": null,
   "parentPathUrl": null,
   "parentPathWayUrl": null,
   "pathAndQuery": "/sharedlearning/empowering-patients-to-be-their-own-personal-trainers-to-improve-function-and-strength-implementing-nice-cg79",
   "primaryDrug": null,
-  "publicationDate": "2017-01-09T12:00:00",
-  "lastUpdated": "2020-12-09T12:00:00",
+  "publicationDate": "2021-04-06T12:00:00",
+  "lastUpdated": "2021-11-24T12:00:00",
   "expectedPublicationDate": null,
   "consultationEndDate": null,
   "consultationType": null,
   "resourceType": [
-      "Shared learning"
+      "Test Resource Type"
   ],
   "guidanceStatus": [],
   "publicationType": null,
@@ -55,7 +55,8 @@
   "sourceName": "NICE Live Sitemap Crawl",
   "sourceUrl": "https://www.nice.org.uk/sharedlearning/empowering-patients-to-be-their-own-personal-trainers-to-improve-function-and-strength-implementing-nice-cg79",
   "staticAbstract": null,
-  "subSectionLinks": null,
+  "subSectionLinks": "",
+  "subSections": [],
   "summaryUrl": null,
   "tags": [],
   "teaser": "manner. The programme demonstrates the implementation of NICE guideline <mark>NG100</mark> for the management of RA in adults. The programme...",

@@ -1,55 +1,48 @@
-import { Matcher, render, screen } from "@testing-library/react";
+/* eslint-disable @typescript-eslint/no-unused-vars */
+import { render, screen } from "@testing-library/react";
 
-import { Document, search } from "@nice-digital/search-client";
+import { Document } from "@nice-digital/search-client";
 
 import { SearchCardList } from "@/components/SearchCard/SearchCardList";
 
-import guidanceDoc from "../../__mocks__/__data__/search/documents/guidance.json";
-import guidanceDocNonMatchingDates from "../../__mocks__/__data__/search/documents/guidnance-non-matching-dates.json";
-import qualityStandardDoc from "../../__mocks__/__data__/search/documents/quality-standard.json";
-import uncategorisedDoc from "../../__mocks__/__data__/search/documents/uncategorised.json";
-import searchResultDocuments from "../../__mocks__/__data__/search/search-result-documents.json";
-
-const mockDocuments = [
-	searchResultDocuments.guidanceNonMatchingDates as unknown as Document,
-	searchResultDocuments.guidance as unknown as Document,
-	searchResultDocuments.uncategorised as unknown as Document,
-	searchResultDocuments.qualityStandard as unknown as Document,
-] as unknown as Document[];
-
-const mockDocuments2 = [
+import {
 	guidanceDoc,
 	guidanceDocNonMatchingDates,
 	qualityStandardDoc,
 	uncategorisedDoc,
-] as unknown as Document[];
+	guidanceDocMatchingDates,
+	unpublishedDoc,
+} from "../../__mocks__/__data__/search/documents/";
 
-const mockDocumentSubSectionLinksBroken = [
-	searchResultDocuments.qualityStandardWithoutSubsections as unknown as Document,
-] as unknown as Document[];
-
-const mockDocumentUnpublished = [
-	searchResultDocuments.unpublished as unknown as Document,
-] as unknown as Document[];
-
-const mockDocumentMatchingDates = [
-	searchResultDocuments.guidanceMatchingDates as unknown as Document,
-];
+const mockDocuments = [
+	guidanceDoc,
+	guidanceDocNonMatchingDates,
+	qualityStandardDoc,
+	uncategorisedDoc,
+] as Document[];
 
 describe("SearchCard", () => {
-	it.only("should render search result title", () => {
-		render(<SearchCardList documents={mockDocuments2} />);
+	it("should render search result title", () => {
+		render(<SearchCardList documents={[guidanceDoc]} />);
 
-		expect(screen.getByText("Test title")).toBeInTheDocument();
-		expect(screen.getByText("NG100")).toBeInTheDocument();
+		const resultTitle = screen.getByText((content, element) => {
+			const theText =
+				element?.innerHTML ===
+				"Rheumatoid arthritis in adults: management (<b>NG100</b>)";
+
+			return theText;
+		});
+
+		expect(resultTitle).toBeInTheDocument();
 	});
 
 	it("should render search result title as link to search result item", () => {
-		render(<SearchCardList documents={mockDocuments} />);
-		expect(screen.getByRole("link", { name: "Test title" })).toHaveAttribute(
-			"href",
-			"/guidance/test"
-		);
+		render(<SearchCardList documents={[guidanceDoc]} />);
+		expect(
+			screen.getByRole("link", {
+				name: "Rheumatoid arthritis in adults: management ( NG100 )",
+			})
+		).toHaveAttribute("href", "/guidance/ng100");
 	});
 
 	it("should render metadata", () => {
@@ -59,43 +52,37 @@ describe("SearchCard", () => {
 	});
 
 	it("should NOT render metadata for uncategorised results", () => {
-		render(<SearchCardList documents={mockDocuments} />);
+		render(<SearchCardList documents={[uncategorisedDoc]} />);
 		expect(screen.queryByText(/1 January 1970/i)).not.toBeInTheDocument();
 	});
 
 	it("should render last updated date metadata in the correct date format", () => {
-		render(<SearchCardList documents={mockDocuments} />);
-		expect(screen.getAllByText(/last updated/i).length).toBe(1);
-		expect(screen.getByText(/24 November 2021/i)).toBeInTheDocument();
+		render(<SearchCardList documents={[guidanceDocNonMatchingDates]} />);
+		expect(screen.getAllByText("Last updated").length).toBe(1);
+		expect(screen.getByText("24 November 2021")).toBeInTheDocument();
 	});
 
 	it("should render published date in the correct date format", () => {
-		render(<SearchCardList documents={mockDocuments} />);
-		expect(screen.getAllByText(/published/i).length).toBe(2);
-		expect(screen.getByText(/6 April 2021/i)).toBeInTheDocument();
+		render(<SearchCardList documents={[guidanceDoc]} />);
+		expect(screen.getAllByText("Published").length).toBe(1);
+		expect(screen.getByText("6 April 2021")).toBeInTheDocument();
 	});
 
 	it.todo(
 		"test for no results returned, currently erroring when a no results returned"
 	);
 
-	it("should throw error if subsection links don't parse", () => {
-		expect(() =>
-			render(<SearchCardList documents={mockDocumentSubSectionLinksBroken} />)
-		).toThrow("Unhandled error. (Error: Non-whitespace before first tag.");
-	});
-
 	it("should render the published date in the correct date format if it matches the last updated date", () => {
-		render(<SearchCardList documents={mockDocumentMatchingDates} />);
-		expect(screen.queryByText(/last updated/i)).not.toBeInTheDocument();
-		expect(screen.getByText(/published/i)).toBeInTheDocument();
-		expect(screen.getByText(/1 January 2021/i)).toBeInTheDocument();
+		render(<SearchCardList documents={[guidanceDocMatchingDates]} />);
+		expect(screen.queryByText("Last updated")).not.toBeInTheDocument();
+		expect(screen.getByText("Published")).toBeInTheDocument();
+		expect(screen.getByText("1 January 2021")).toBeInTheDocument();
 	});
 
 	it("should render meta data without published/last updated dates for an unpublished document", () => {
-		render(<SearchCardList documents={mockDocumentUnpublished} />);
-		expect(screen.queryByText(/last updated/i)).not.toBeInTheDocument();
-		expect(screen.queryByText(/published/i)).not.toBeInTheDocument();
-		expect(screen.getByText(/nice guideline/i)).toBeInTheDocument();
+		render(<SearchCardList documents={[unpublishedDoc]} />);
+		expect(screen.queryByText("Last updated")).not.toBeInTheDocument();
+		expect(screen.queryByText("Published")).not.toBeInTheDocument();
+		expect(screen.getByText("NICE guideline")).toBeInTheDocument();
 	});
 });
