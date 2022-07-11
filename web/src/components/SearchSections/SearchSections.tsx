@@ -67,13 +67,6 @@ export const SearchSections: FC<SearchSectionsProps> = ({
 							</li>
 						))}
 					</ul>
-					{/* <ul className="list list--unstyled">
-						{subSections.map((subSection, index) => (
-							<li key={index}>
-								<a href={subSection.url}>{subSection.title}</a>
-							</li>
-						))}
-					</ul> */}
 				</Panel>
 			</details>
 		</div>
