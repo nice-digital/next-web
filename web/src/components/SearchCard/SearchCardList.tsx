@@ -92,6 +92,7 @@ function searchFormatMeta(item: Document): Array<FormattedMetaItem> {
 }
 
 export const SearchCardList: FC<SearchCardListProps> = ({ documents }) => {
+	console.log({ documents });
 	return (
 		<ol className={styles.list}>
 			{documents.map((item: Document) => {

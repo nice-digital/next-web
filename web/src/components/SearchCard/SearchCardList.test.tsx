@@ -1,9 +1,13 @@
-import { render, screen } from "@testing-library/react";
+import { Matcher, render, screen } from "@testing-library/react";
 
 import { Document, search } from "@nice-digital/search-client";
 
 import { SearchCardList } from "@/components/SearchCard/SearchCardList";
 
+import guidanceDoc from "../../__mocks__/__data__/search/documents/guidance.json";
+import guidanceDocNonMatchingDates from "../../__mocks__/__data__/search/documents/guidnance-non-matching-dates.json";
+import qualityStandardDoc from "../../__mocks__/__data__/search/documents/quality-standard.json";
+import uncategorisedDoc from "../../__mocks__/__data__/search/documents/uncategorised.json";
 import searchResultDocuments from "../../__mocks__/__data__/search/search-result-documents.json";
 
 const mockDocuments = [
@@ -11,6 +15,13 @@ const mockDocuments = [
 	searchResultDocuments.guidance as unknown as Document,
 	searchResultDocuments.uncategorised as unknown as Document,
 	searchResultDocuments.qualityStandard as unknown as Document,
+] as unknown as Document[];
+
+const mockDocuments2 = [
+	guidanceDoc,
+	guidanceDocNonMatchingDates,
+	qualityStandardDoc,
+	uncategorisedDoc,
 ] as unknown as Document[];
 
 const mockDocumentSubSectionLinksBroken = [
@@ -26,9 +37,11 @@ const mockDocumentMatchingDates = [
 ];
 
 describe("SearchCard", () => {
-	it("should render search result title", () => {
-		render(<SearchCardList documents={mockDocuments} />);
+	it.only("should render search result title", () => {
+		render(<SearchCardList documents={mockDocuments2} />);
+
 		expect(screen.getByText("Test title")).toBeInTheDocument();
+		expect(screen.getByText("NG100")).toBeInTheDocument();
 	});
 
 	it("should render search result title as link to search result item", () => {

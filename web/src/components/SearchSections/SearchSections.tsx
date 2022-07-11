@@ -42,8 +42,6 @@ export const SearchSections: FC<SearchSectionsProps> = ({
 		return null;
 	}, [subSections]);
 
-	console.log({ subSections });
-
 	return (
 		<div className={styles.wrapper}>
 			{keyLink && (
