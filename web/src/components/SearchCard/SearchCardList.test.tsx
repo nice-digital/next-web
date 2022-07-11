@@ -1,4 +1,3 @@
-/* eslint-disable @typescript-eslint/no-unused-vars */
 import { render, screen } from "@testing-library/react";
 
 import { Document } from "@nice-digital/search-client";
