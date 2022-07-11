@@ -22,8 +22,6 @@ type MetaProps = {
 	metadata?: FormattedMetaItem[];
 };
 
-export type SubSection = { url: string; title: string };
-
 const isTopicPage = (resultType: string) => {
 	return resultType == "Topic page";
 };

@@ -2,9 +2,9 @@ import { FC, useMemo } from "react";
 
 import ChevronRight from "@nice-digital/icons/lib/ChevronDown";
 import { Panel } from "@nice-digital/nds-panel";
+import { Document } from "@nice-digital/search-client";
 
 import { Link } from "@/components/Link/Link";
-import { SubSection } from "@/components/SearchCard/SearchCardList";
 
 import styles from "./SearchSections.module.scss";
 
@@ -14,11 +14,12 @@ const qualityStatementsChapterLinkRegex =
 const recommendationsChapterLinkRegex =
 	/\/chapter\/(?:recommendations|\d+-recommendations|\d+-guidance)$/im;
 
-const keyLinkFinder = (keyLinkRegex: RegExp) => (el: SubSection) =>
-	keyLinkRegex.test(el.url);
+const keyLinkFinder =
+	(keyLinkRegex: RegExp) => (el: Document["subSections"][0]) =>
+		keyLinkRegex.test(el.url);
 
 export interface SearchSectionsProps {
-	subSections: SubSection[];
+	subSections: Document["subSections"];
 	guidanceRef?: string | null;
 }
 

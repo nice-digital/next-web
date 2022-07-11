@@ -7,23 +7,22 @@ import { SearchCardList } from "@/components/SearchCard/SearchCardList";
 import searchResultDocuments from "../../__mocks__/__data__/search/search-result-documents.json";
 
 const mockDocuments = [
-	searchResultDocuments[0].guidanceNonMatchingDates as unknown as Document,
-	searchResultDocuments[0].guidance as unknown as Document,
-	searchResultDocuments[0].uncategorised as unknown as Document,
-	searchResultDocuments[0].qualityStandard as unknown as Document,
+	searchResultDocuments.guidanceNonMatchingDates as unknown as Document,
+	searchResultDocuments.guidance as unknown as Document,
+	searchResultDocuments.uncategorised as unknown as Document,
+	searchResultDocuments.qualityStandard as unknown as Document,
 ] as unknown as Document[];
 
 const mockDocumentSubSectionLinksBroken = [
-	searchResultDocuments[0]
-		.qualityStandardWithoutSubsections as unknown as Document,
+	searchResultDocuments.qualityStandardWithoutSubsections as unknown as Document,
 ] as unknown as Document[];
 
 const mockDocumentUnpublished = [
-	searchResultDocuments[0].unpublished as unknown as Document,
+	searchResultDocuments.unpublished as unknown as Document,
 ] as unknown as Document[];
 
 const mockDocumentMatchingDates = [
-	searchResultDocuments[0].guidanceMatchingDates as unknown as Document,
+	searchResultDocuments.guidanceMatchingDates as unknown as Document,
 ];
 
 describe("SearchCard", () => {
