@@ -18,8 +18,6 @@ type FormattedMetaItem = {
 	value: string;
 };
 
-type SubSections = { link: SubSection[] };
-
 type MetaProps = {
 	metadata?: FormattedMetaItem[];
 };
@@ -105,7 +103,6 @@ export const SearchCardList: FC<SearchCardListProps> = ({ documents }) => {
 					guidanceRef,
 					pathAndQuery,
 					teaser,
-					subSectionLinks,
 					subSections = [
 						{ title: "Overview", url: "/guidance/qs56" },
 						{
