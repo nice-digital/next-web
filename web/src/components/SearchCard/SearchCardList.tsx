@@ -95,49 +95,8 @@ export const SearchCardList: FC<SearchCardListProps> = ({ documents }) => {
 	return (
 		<ol className={styles.list}>
 			{documents.map((item: Document) => {
-				const {
-					id,
-					title,
-					guidanceRef,
-					pathAndQuery,
-					teaser,
-					subSections = [
-						{ title: "Overview", url: "/guidance/qs56" },
-						{
-							title: "Introduction",
-							url: "/guidance/qs56/chapter/Introduction",
-						},
-						{
-							title: "List of quality statements",
-							url: "/guidance/qs56/chapter/List-of-quality-statements",
-						},
-						{
-							title:
-								"Quality statement 1: Information about recognising the symptoms of metastatic spinal cord compression",
-							url: "/guidance/qs56/chapter/Quality-statement-1-Information-about-recognising-the-symptoms-of-metastatic-spinal-cord-compression",
-						},
-						{
-							title:
-								"Quality statement 2: Imaging and treatment plans for adults with suspected spinal metastases",
-							url: "/guidance/qs56/chapter/Quality-statement-2-Imaging-and-treatment-plans-for-adults-with-suspected-spinal-metastases",
-						},
-						{
-							title:
-								"Quality statement 3: Imaging and treatment plans for adults with suspected metastatic spinal cord compression",
-							url: "/guidance/qs56/chapter/Quality-statement-3-Imaging-and-treatment-plans-for-adults-with-suspected-metastatic-spinal-cord-compression",
-						},
-						{
-							title:
-								"Quality statement 4: Coordinating investigations for adults with suspected metastatic spinal cord compression",
-							url: "/guidance/qs56/chapter/Quality-statement-4-Coordinating-investigations-for-adults-with-suspected-metastatic-spinal-cord-compression",
-						},
-						{
-							title:
-								"Quality statement 5: Coordinating care for adults with metastatic spinal cord compression",
-							url: "/guidance/qs56/chapter/Quality-statement-5-Coordinating-care-for-adults-with-metastatic-spinal-cord-compression",
-						},
-					],
-				} = item;
+				const { id, title, guidanceRef, pathAndQuery, teaser, subSections } =
+					item;
 
 				const metaProps: MetaProps = {};
 
