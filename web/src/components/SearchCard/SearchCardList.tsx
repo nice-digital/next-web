@@ -160,12 +160,12 @@ export const SearchCardList: FC<SearchCardListProps> = ({ documents }) => {
 							}}
 							{...metaProps}
 						/>
-						{subSections && (
+						{subSections && subSections.length > 0 ? (
 							<SearchSections
 								subSections={subSections}
 								guidanceRef={guidanceRef}
 							/>
-						)}
+						) : null}
 					</li>
 				);
 			})}
