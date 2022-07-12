@@ -45,10 +45,6 @@ const defaultProps = {
 	guidanceRef: "TestRef999",
 };
 
-beforeEach(() => {
-	// render(<SearchSections parsedLinks={mockParsedLinks} {...defaultProps} />);
-});
-
 describe("SearchSections", () => {
 	it("should render a progressive disclosure element with the text 'show all sections'", () => {
 		render(
