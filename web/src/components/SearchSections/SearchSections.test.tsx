@@ -6,38 +6,38 @@ import { SearchSections } from "@/components/SearchSections/SearchSections";
 import { render } from "@/test-utils";
 
 const mockParsedLinks: Document["subSections"] = [
-	{ url: "/testsubsection/1", title: "Test subsection 1" },
-	{ url: "/testsubsection/2", title: "Test subsection 2" },
+	{ title: "Test subsection 1", url: "/testsubsection/1" },
+	{ title: "Test subsection 2", url: "/testsubsection/2" },
 ];
 
 const mockParsedLinksRec: Document["subSections"] = [
-	{ url: "/testsubsection/1", title: "Test subsection 1" },
-	{ url: "/testsubsection/2", title: "Test subsection 2" },
-	{ url: "/chapter/recommendations", title: "Recommedations subsection" },
+	{ title: "Test subsection 1", url: "/testsubsection/1" },
+	{ title: "Test subsection 2", url: "/testsubsection/2" },
+	{ title: "Recommedations subsection", url: "/chapter/recommendations" },
 	{
-		url: "/chapter/test-recommendations",
 		title: "Recommedations subsection 2",
+		url: "/chapter/test-recommendations",
 	},
 	{
-		url: "/chapter/test-guidance",
 		title: "Recommedations subsection 3",
+		url: "/chapter/test-guidance",
 	},
 ];
 
 const mockParsedLinksQual: Document["subSections"] = [
-	{ url: "/testsubsection/1", title: "Test subsection 1" },
-	{ url: "/testsubsection/2", title: "Test subsection 2" },
+	{ title: "Test subsection 1", url: "/testsubsection/1" },
+	{ title: "Test subsection 2", url: "/testsubsection/2" },
 	{
-		url: "/chapter/list-of-quality-statements",
 		title: "Quality subsection",
+		url: "/chapter/list-of-quality-statements",
 	},
 	{
-		url: "/chapter/list-of-statements",
 		title: "Quality subsection 2",
+		url: "/chapter/list-of-statements",
 	},
 	{
-		url: "/chapter/quality-statements",
 		title: "Quality subsection 3",
+		url: "/chapter/quality-statements",
 	},
 ];
 
