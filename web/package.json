@@ -26,7 +26,7 @@
   "dependencies": {
     "@nice-digital/design-system": "^1.7.4",
     "@nice-digital/global-nav": "^4.1.838",
-    "@nice-digital/search-client": "^2.0.1458",
+    "@nice-digital/search-client": "^2.0.1468-SRCH-666-Serialize-s",
     "cache-manager": "^3.4.4",
     "cache-manager-fs-hash": "^1.0.0",
     "clipboard-polyfill": "^3.0.3",
