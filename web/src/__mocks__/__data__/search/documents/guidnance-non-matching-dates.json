@@ -1,0 +1,73 @@
+{
+  "id": "1872935",
+  "tagsHigh": null,
+  "guidanceRef": null,
+  "xml": null,
+  "abstract": null,
+  "metaDescription": null,
+  "accredited": false,
+  "alternativePublicationDate": null,
+  "altSourceNames": [
+      "NICE Live Sitemap Crawl"
+  ],
+  "areaOfInterest": null,
+  "breadcrumbs": null,
+  "childDocumentCount": 0,
+  "childDocuments": [],
+  "childDocumentsUrl": null,
+  "clusterId": -1872935,
+  "evidenceTypes": [],
+  "headings": null,
+  "impact": null,
+  "content": null,
+  "contentId": "https://www.nice.org.uk/sharedlearning/empowering-patients-to-be-their-own-personal-trainers-to-improve-function-and-strength-implementing-nice-cg79",
+  "index": 0,
+  "lessSuitableForPrescribing": false,
+  "niceDocType": [
+      "Guidance"
+  ],
+  "niceGuidanceType": [],
+  "niceAdviceType": [],
+  "niceResultType": "",
+  "parentPathTitle": null,
+  "parentPathUrl": null,
+  "parentPathWayUrl": null,
+  "pathAndQuery": "/sharedlearning/empowering-patients-to-be-their-own-personal-trainers-to-improve-function-and-strength-implementing-nice-cg79",
+  "primaryDrug": null,
+  "publicationDate": "2021-04-06T12:00:00",
+  "lastUpdated": "2021-11-24T12:00:00",
+  "expectedPublicationDate": null,
+  "consultationEndDate": null,
+  "consultationType": null,
+  "resourceType": [
+      "Test Resource Type"
+  ],
+  "guidanceStatus": [],
+  "publicationType": null,
+  "publisher": null,
+  "resourceCategory": [
+      "Local practice"
+  ],
+  "relatedLinks": null,
+  "relatedLinkList": {},
+  "technologyType": null,
+  "topicSelectionDecision": null,
+  "sourceName": "NICE Live Sitemap Crawl",
+  "sourceUrl": "https://www.nice.org.uk/sharedlearning/empowering-patients-to-be-their-own-personal-trainers-to-improve-function-and-strength-implementing-nice-cg79",
+  "staticAbstract": null,
+  "subSectionLinks": "",
+  "subSections": [],
+  "summaryUrl": null,
+  "tags": [],
+  "teaser": "manner. The programme demonstrates the implementation of NICE guideline <mark>NG100</mark> for the management of RA in adults. The programme...",
+  "title": "Empowering patients to be their own personal trainers to improve function and strength - Implementing NICE <b>NG100</b>",
+  "titleNoHtml": null,
+  "boostValue": 90,
+  "score": 17.037624,
+  "titleParts": [
+      "Empowering patients to be their own personal trainers to improve function and strength - Implementing NICE <b>NG100</b>"
+  ],
+  "ukmiSummaryUrl": null,
+  "url": "https://www.nice.org.uk/sharedlearning/empowering-patients-to-be-their-own-personal-trainers-to-improve-function-and-strength-implementing-nice-cg79",
+  "debug": null
+}

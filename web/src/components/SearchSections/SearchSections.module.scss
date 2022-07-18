@@ -1,0 +1,65 @@
+@use '@nice-digital/nds-core/scss/core';
+
+.wrapper {
+  align-items: flex-start;
+  display: flex;
+  flex-direction: column;
+
+  @include core.mq($from: xs) {
+    flex-direction: row;
+  }
+}
+
+.keyLink {
+  margin-bottom: core.rem(core.$nds-spacing-small);
+  padding-top: core.rem(core.$nds-spacing-small);
+
+  @include core.mq($from: xs) {
+    flex: 1 0 50%;
+  }
+
+  @include core.mq($from: md) {
+    flex-basis: 33%;
+  }
+
+  @include core.mq($from: lg) {
+    flex-basis: 25%;
+  }
+}
+
+.details {
+  flex: 1 1 100%;
+
+  summary {
+    align-items: center;
+    display: inline-flex;
+    margin: 0;
+
+    svg {
+      margin: 0;
+      margin-left: core.rem(core.$nds-spacing-small);
+    }
+  }
+
+  &[open] summary {
+    svg {
+      transform: rotate(180deg);
+    }
+  }
+}
+
+.panel {
+  margin-top: core.rem(core.$nds-spacing-medium);
+
+  @include core.mq($from: xs) {
+    margin-left: -100%;
+  }
+
+  @include core.mq($from: md) {
+    margin-left: -50%;
+  }
+
+  @include core.mq($from: lg) {
+    margin-left: -33.3%;
+  }
+}
