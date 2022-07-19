@@ -1,4 +1,7 @@
-@use '@nice-digital/nds-core/scss/core';
+@use '@nice-digital/nds-core/scss/media-queries';
+@use '@nice-digital/nds-core/scss/spacing';
+@use '@nice-digital/nds-core/scss/typography';
+@use '@nice-digital/nds-core/scss/utils';
 
 .tableWrapper {
   overflow-x: auto;
@@ -12,13 +15,19 @@
   display: table;
 }
 
-@include core.mq($from: md) {
+@include media-queries.mq($from: md) {
   .sectionWrapper {
-    padding-top: core.rem(core.$nds-spacing-xx-large);
+    padding-top: utils.rem(spacing.$xx-large);
     position: relative;
   }
 
   .panelWrapper {
     position: initial;
   }
+}
+
+.resultsPerPage {
+  @include typography.p;
+  font-family: typography.get-font-family(sans);
+  margin: 0;
 }

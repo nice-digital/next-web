@@ -1,9 +1,9 @@
-@use '@nice-digital/nds-core/scss/core';
+@use '@nice-digital/nds-core/scss/visibility';
 
 .skipLink {
-  @include core.nds-invisible;
+  @include visibility.invisible;
 
   &:focus {
-    @include core.nds-invisible-off;
+    @include visibility.invisible-off;
   }
 }
