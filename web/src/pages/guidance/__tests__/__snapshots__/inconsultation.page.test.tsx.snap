@@ -586,10 +586,15 @@ exports[`/guidance/inconsultation should match the snapshot 1`] = `
                 id="sorting-options"
                 name="s"
               >
-                <option>
+                <option
+                  selected=""
+                  value="DateAsc"
+                >
                   Date
                 </option>
-                <option>
+                <option
+                  value="Title"
+                >
                   Title
                 </option>
               </select>
