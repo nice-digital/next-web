@@ -87,7 +87,8 @@ export const ScrollToLink: FC<
 
 	useEffect(() => {
 		return () => {
-			router.events.off("routeChangeComplete", handleRouteChange);
+			if (router.events)
+				router.events.off("routeChangeComplete", handleRouteChange);
 		};
 	}, [router.events, handleRouteChange]);
 
