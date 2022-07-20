@@ -27,7 +27,7 @@ describe("404", () => {
 		it("should render page not found as current page breadcrumb without link", () => {
 			render(<FourOhFourPage />);
 			expect(
-				screen.queryByText("Page not found", {
+				screen.getByText("Page not found", {
 					selector: ".breadcrumbs span",
 				})
 			).toBeInTheDocument();

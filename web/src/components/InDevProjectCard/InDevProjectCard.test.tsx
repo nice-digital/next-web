@@ -10,7 +10,7 @@ describe("InDevProjectCard", () => {
 	it("should render project title", () => {
 		render(
 			<InDevProjectCard
-				project={{ Title: "Test title", Reference: "" } as Project}
+				project={{ Title: "Test title", Reference: "" } as unknown as Project}
 			/>
 		);
 
@@ -20,7 +20,9 @@ describe("InDevProjectCard", () => {
 	it("should render data element with GID value around project title", () => {
 		render(
 			<InDevProjectCard
-				project={{ Title: "Test title", Reference: "GID-ABC123" } as Project}
+				project={
+					{ Title: "Test title", Reference: "GID-ABC123" } as unknown as Project
+				}
 			/>
 		);
 
@@ -32,7 +34,9 @@ describe("InDevProjectCard", () => {
 	it("should render project title as link to project", () => {
 		render(
 			<InDevProjectCard
-				project={{ Title: "Test title", Reference: "GID-ABC123" } as Project}
+				project={
+					{ Title: "Test title", Reference: "GID-ABC123" } as unknown as Project
+				}
 			/>
 		);
 
@@ -50,7 +54,7 @@ describe("InDevProjectCard", () => {
 						Title: "Test title",
 						Reference: "GID-ABC123",
 						ProductTypeName: "Test product type",
-					} as Project
+					} as unknown as Project
 				}
 			/>
 		);
@@ -68,7 +72,7 @@ describe("InDevProjectCard", () => {
 						Reference: "GID-ABC123",
 						ProductTypeName: "Test product type",
 						PublishedDate: null,
-					} as Project
+					} as unknown as Project
 				}
 			/>
 		);
@@ -87,7 +91,7 @@ describe("InDevProjectCard", () => {
 						Reference: "GID-ABC123",
 						ProductTypeName: "Test product type",
 						PublishedDate: "2020-12-31",
-					} as Project
+					} as unknown as Project
 				}
 			/>
 		);
@@ -107,7 +111,7 @@ describe("InDevProjectCard", () => {
 					{
 						Reference: "GID-ABC123",
 						Status: ProjectStatus.Proposed,
-					} as Project
+					} as unknown as Project
 				}
 			/>
 		);

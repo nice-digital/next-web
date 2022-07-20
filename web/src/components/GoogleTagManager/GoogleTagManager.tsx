@@ -14,7 +14,7 @@ export const GoogleTagManager: FC = () => (
 				style={{ display: "none" }}
 			></iframe>
 		</noscript>
-		<Script strategy="lazyOnload">
+		<Script strategy="lazyOnload" id="ensureDataLayer">
 			{/* Ensure the dataLayer array exists - lazy loading gtm.js means our code could execute before GTM has loaded */}
 			{`window.dataLayer = window.dataLayer || [];`}
 		</Script>

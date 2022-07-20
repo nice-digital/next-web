@@ -6,6 +6,9 @@ import Document, {
 	DocumentContext,
 	DocumentInitialProps,
 } from "next/document";
+import Script from "next/script";
+
+import { publicRuntimeConfig } from "@/config";
 
 export type NextWebDocumentProps = Record<string, never>;
 
@@ -30,6 +33,10 @@ class NextWebDocument extends Document<NextWebDocumentProps> {
 				<body>
 					<Main />
 					<NextScript />
+					<Script
+						src={publicRuntimeConfig.cookieBannerScriptURL}
+						strategy="beforeInteractive"
+					/>
 				</body>
 			</Html>
 		);
