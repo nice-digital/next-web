@@ -34,6 +34,7 @@ class NextWebDocument extends Document<NextWebDocumentProps> {
 					<Main />
 					<NextScript />
 					<Script
+						id="cookieBanner"
 						src={publicRuntimeConfig.cookieBannerScriptURL}
 						strategy="beforeInteractive"
 					/>

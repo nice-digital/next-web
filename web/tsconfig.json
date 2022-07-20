@@ -18,7 +18,8 @@
       "@/feeds/*": ["src/feeds/*"],
       "@/utils/*": ["src/utils/*"],
       "@/utils": ["src/utils"]
-    }
+    },
+    "incremental": true
   },
   "include": ["./**/*", "./**/*.json", "../jest.config.js"],
   "exclude": ["dist", ".next"]

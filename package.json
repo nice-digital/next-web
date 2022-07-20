@@ -71,5 +71,7 @@
   "volta": {
     "node": "14.20.0"
   },
-  "dependencies": {}
+  "dependencies": {
+    "@nice-digital/design-system": "^3.0.2-alpha.0"
+  }
 }
