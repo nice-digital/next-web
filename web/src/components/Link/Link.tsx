@@ -1,13 +1,6 @@
 import NextJSLink, { LinkProps as NextJSLinkProps } from "next/link";
 import { useRouter } from "next/router";
-import {
-	cloneElement,
-	FC,
-	Children,
-	ReactElement,
-	useEffect,
-	useCallback,
-} from "react";
+import { FC, ReactChild, useEffect, useCallback } from "react";
 import { RequireExactlyOne, SetOptional, Except } from "type-fest";
 
 type NextJSUrl = NextJSLinkProps["href"];
@@ -15,7 +8,7 @@ export type LinkProps = RequireExactlyOne<
 	{
 		to?: NextJSUrl;
 		className?: string;
-		children: string | ReactElement;
+		children: ReactChild;
 	} & SetOptional<Except<NextJSLinkProps, "prefetch">, "href">,
 	// Support either using `href` or `to` because of different prop types for NDS components vs other.
 	"href" | "to"
@@ -42,27 +35,25 @@ export const Link: FC<LinkProps> = ({
 	children,
 	className,
 	...attrs
-}) => (
-	<NextJSLink
-		href={(to || href) as NextJSUrl}
-		as={as}
-		replace={replace}
-		scroll={scroll}
-		shallow={shallow}
-		passHref={passHref}
-		locale={locale}
-	>
-		{typeof children === "string" ||
-		typeof children === "number" ||
-		Children.count(children) > 1 ? (
+}) => {
+	if (!children) throw Error("Expected Link to have children");
+
+	return (
+		<NextJSLink
+			href={(to || href) as NextJSUrl}
+			as={as}
+			replace={replace}
+			scroll={scroll}
+			shallow={shallow}
+			passHref={passHref}
+			locale={locale}
+		>
 			<a className={className} {...attrs}>
 				{children}
 			</a>
-		) : (
-			cloneElement(children, { className, ...attrs })
-		)}
-	</NextJSLink>
-);
+		</NextJSLink>
+	);
+};
 
 export const NoScrollLink: FC<LinkProps & { scroll?: never }> = (props) => (
 	<Link {...props} scroll={false} />
