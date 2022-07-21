@@ -1,13 +1,14 @@
-@use '@nice-digital/nds-core/scss/core';
+@use '@nice-digital/nds-core/scss/media-queries';
+@use '@nice-digital/nds-core/scss/visibility';
 
 .date {
-  @include core.mq($until: md) {
+  @include media-queries.mq($until: md) {
     &::after {
       content: attr(data-shortdate);
     }
 
     span {
-      @include core.nds-invisible;
+      @include visibility.invisible;
     }
   }
 }

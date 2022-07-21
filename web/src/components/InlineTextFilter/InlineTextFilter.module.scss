@@ -1,7 +1,9 @@
-@use '@nice-digital/nds-core/scss/core';
+@use '@nice-digital/nds-core/scss/media-queries';
+@use '@nice-digital/nds-core/scss/spacing';
+@use '@nice-digital/nds-core/scss/utils';
 
 .container {
-  @include core.mq($from: md) {
+  @include media-queries.mq($from: md) {
     align-items: baseline;
     display: flex;
     justify-content: flex-end;
@@ -15,16 +17,16 @@
 .button {
   margin-left: 0;
 
-  @include core.mq($from: md) {
-    margin: core.rem(0 0 0 core.$nds-spacing-small);
+  @include media-queries.mq($from: md) {
+    margin: utils.rem(0 0 0 spacing.$small);
   }
 }
 
 .label {
   font-weight: 700;
 
-  @include core.mq($from: md) {
-    margin: core.rem(0 core.$nds-spacing-small 0 0);
+  @include media-queries.mq($from: md) {
+    margin: utils.rem(0 spacing.$small 0 0);
   }
 }
 

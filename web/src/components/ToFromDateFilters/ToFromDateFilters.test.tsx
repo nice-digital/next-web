@@ -15,6 +15,7 @@ describe("ToFromDateFilters", () => {
 		["From date", "from"],
 	])("%s attributes", (label, name) => {
 		beforeEach(() => {
+			// eslint-disable-next-line testing-library/no-render-in-setup
 			render(<ToFromDateFilters useFutureDates={false} />);
 		});
 

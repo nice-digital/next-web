@@ -25,6 +25,7 @@ describe("GuidanceListFilters", () => {
 
 		mockDate.set("2020-11-22");
 
+		// eslint-disable-next-line testing-library/no-render-in-setup
 		rerender = render(
 			<GuidanceListFilters
 				numActiveModifiers={2}

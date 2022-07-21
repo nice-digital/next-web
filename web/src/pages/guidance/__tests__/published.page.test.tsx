@@ -23,6 +23,7 @@ describe("/guidance/published", () => {
 	beforeEach(() => {
 		mockDate.set("2020-11-22");
 
+		// eslint-disable-next-line testing-library/no-render-in-setup
 		container = render(
 			<PublishedPage
 				activeModifiers={[]}

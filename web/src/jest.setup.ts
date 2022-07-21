@@ -1,5 +1,7 @@
 import "@testing-library/jest-dom";
-import "jest-extended";
+//import * as matchers from "jest-extended/all";
+
+//expect.extend(matchers);
 
 // We run some tests (e.g. caching/feed logic) with a node environment (rather than JSDOM) so window isn't always available
 if (typeof window !== "undefined") {

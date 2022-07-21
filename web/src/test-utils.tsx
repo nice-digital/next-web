@@ -6,7 +6,7 @@ import {
 import { HeadManagerContext } from "next/dist/shared/lib/head-manager-context";
 import { RouterContext } from "next/dist/shared/lib/router-context";
 import { NextRouter } from "next/router";
-import { ReactElement, useEffect, PropsWithChildren } from "react";
+import { ReactElement, useEffect } from "react";
 import { renderToString } from "react-dom/server";
 
 import NextWebApp from "./pages/_app.page";
@@ -88,7 +88,7 @@ export type GetWrapperOptions = {
 };
 const getAppWrapper =
 	({ router, wrapper: Wrapper }: GetWrapperOptions) =>
-	({ children }: PropsWithChildren<unknown>) =>
+	({ children }: { children: ReactElement }) =>
 		(
 			<HeadProvider>
 				<RouterContext.Provider value={router}>

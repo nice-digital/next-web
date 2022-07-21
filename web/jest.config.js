@@ -1,4 +1,4 @@
-const { pathsToModuleNameMapper } = require("ts-jest/utils");
+const { pathsToModuleNameMapper } = require("ts-jest");
 
 const baseConfig = require("./../jest.config"),
 	{ compilerOptions } = require("./tsconfig.json");
@@ -27,9 +27,15 @@ module.exports = {
 	},
 	coveragePathIgnorePatterns: ["<rootDir>/test-utils.tsx"],
 	transformIgnorePatterns: ["/node_modules/", "/dist/"],
-	setupFilesAfterEnv: ["./jest.presetup.js", "./jest.setup.ts"],
+	setupFilesAfterEnv: [
+		"./jest.presetup.js",
+		"./jest.setup.ts",
+		"jest-extended/all",
+	],
 	testPathIgnorePatterns: ["./config/"],
-	testURL: "https://next-web-tests.nice.org.uk",
+	testEnvironmentOptions: {
+		url: "https://next-web-tests.nice.org.uk",
+	},
 	testEnvironment: "jsdom",
 	globals: {
 		"ts-jest": {

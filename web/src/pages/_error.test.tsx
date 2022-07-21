@@ -27,7 +27,7 @@ describe("_error", () => {
 		it("should render error as current page breadcrumb without link", () => {
 			render(<ErrorPage />);
 			expect(
-				screen.queryByText("Error", {
+				screen.getByText("Error", {
 					selector: ".breadcrumbs span",
 				})
 			).toBeInTheDocument();

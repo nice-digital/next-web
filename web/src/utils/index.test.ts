@@ -40,7 +40,7 @@ describe("utils", () => {
 					ProjectGroup: ProductGroup.Guidance,
 					Status: ProjectStatus.Proposed,
 					Reference: "GID-TA123",
-				} as Project)
+				} as unknown as Project)
 			).toBe("/guidance/awaiting-development/gid-ta123");
 		});
 
@@ -50,7 +50,7 @@ describe("utils", () => {
 					ProjectGroup: ProductGroup.Guidance,
 					Status: ProjectStatus.InProgress,
 					Reference: "GID-TA123",
-				} as Project)
+				} as unknown as Project)
 			).toBe("/guidance/indevelopment/gid-ta123");
 		});
 	});

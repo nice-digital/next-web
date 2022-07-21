@@ -240,7 +240,7 @@ export const getGuidanceListPage =
 										</CopyToClipboard>
 									</GridItem>
 									<GridItem cols={12} sm={6} className="text-right">
-										<h3 className="p mt--0 mb--c">Results per page</h3>
+										<h3 className={styles.resultsPerPage}>Results per page</h3>
 										<ol className="list list--piped mv--0">
 											{resultsPerPage.map(({ count, label }) => (
 												<li key={label} className="pl--b">

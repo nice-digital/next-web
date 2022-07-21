@@ -2,12 +2,7 @@ import { useRouter } from "next/router";
 import { FC } from "react";
 
 import { FilterSummary, FilterSummaryProps } from "@nice-digital/nds-filters";
-import {
-	removeQueryParam,
-	SearchResultsSuccess,
-	SortOrder,
-	upsertQueryParam,
-} from "@nice-digital/search-client";
+import { SearchResultsSuccess, SortOrder } from "@nice-digital/search-client";
 
 import { NoScrollLink } from "@/components/Link/Link";
 
@@ -37,7 +32,7 @@ export const GuidanceListFilterSummary: FC<GuidanceListFilterSummaryProps> = ({
 	defaultSort,
 	secondarySort,
 }) => {
-	const { asPath } = useRouter();
+	const { push, query } = useRouter();
 
 	let sorting: FilterSummaryProps["sorting"] = undefined;
 
@@ -46,14 +41,22 @@ export const GuidanceListFilterSummary: FC<GuidanceListFilterSummaryProps> = ({
 			{
 				active: currentSortOrder === defaultSort.order || !currentSortOrder,
 				label: defaultSort.label,
-				destination: removeQueryParam(asPath, "s"),
-				elementType: NoScrollLink,
+				onSelected: () => {
+					push({
+						query: { ...query, s: defaultSort.order },
+					});
+				},
+				value: defaultSort.order,
 			},
 			{
 				active: currentSortOrder === secondarySort.order,
 				label: secondarySort.label,
-				destination: upsertQueryParam(asPath, "s", secondarySort.order),
-				elementType: NoScrollLink,
+				onSelected: () => {
+					push({
+						query: { ...query, s: secondarySort.order },
+					});
+				},
+				value: secondarySort.order,
 			},
 		];
 	}

@@ -4,7 +4,7 @@ import jestConfig from "../jest.config";
 module.exports = {
 	public: {
 		environment: "test",
-		baseURL: jestConfig.testURL,
+		baseURL: jestConfig.testEnvironmentOptions.url,
 	},
 	server: {
 		cache: {
