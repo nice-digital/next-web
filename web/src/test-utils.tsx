@@ -6,7 +6,7 @@ import {
 import { HeadManagerContext } from "next/dist/shared/lib/head-manager-context";
 import { RouterContext } from "next/dist/shared/lib/router-context";
 import { NextRouter } from "next/router";
-import { ReactElement, useEffect, PropsWithChildren, ReactNode } from "react";
+import { ReactElement, useEffect } from "react";
 import { renderToString } from "react-dom/server";
 
 import NextWebApp from "./pages/_app.page";
