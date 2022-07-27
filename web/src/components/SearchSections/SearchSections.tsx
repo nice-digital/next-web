@@ -1,3 +1,4 @@
+import classnames from "classnames";
 import { FC, useMemo } from "react";
 
 import ChevronRight from "@nice-digital/icons/lib/ChevronDown";
@@ -57,7 +58,12 @@ export const SearchSections: FC<SearchSectionsProps> = ({
 					Show all sections
 					<ChevronRight />
 				</summary>
-				<Panel className={styles.panel}>
+				<Panel
+					className={classnames([
+						styles.panel,
+						keyLink ? styles.withKeylink : null,
+					])}
+				>
 					{guidanceRef && <h4>Sections for {guidanceRef}</h4>}
 					<ul className="list list--unstyled">
 						{subSections.map((subSection, index) => (
