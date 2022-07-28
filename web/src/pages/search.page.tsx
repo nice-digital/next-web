@@ -67,6 +67,7 @@ export function Search({
 		);
 	}, [firstResult, lastResult, resultCount]);
 
+	console.log({ navigators });
 	if (failed) return <ErrorPageContent />;
 
 	return (
