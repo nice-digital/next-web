@@ -79,7 +79,7 @@ exports[`/guidance/published should match the snapshot 1`] = `
         id="content-start"
       >
         <h1
-          class="page-header__heading"
+          class="page-header__heading "
         >
           <span
             class="page-header__pre-heading"
