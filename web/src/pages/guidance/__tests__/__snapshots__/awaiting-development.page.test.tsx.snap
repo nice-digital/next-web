@@ -767,46 +767,35 @@ exports[`/guidance/awaiting-development should match the snapshot 1`] = `
               data-g="12 sm:6"
             >
               <h3
-                class="resultsPerPage"
+                class="resultsPerPageHeading"
               >
                 Results per page
               </h3>
               <ol
-                class="list list--piped mv--0"
+                class="list list--piped resultsPerPageList"
               >
-                <li
-                  class="pl--b"
-                >
+                <li>
                   10
                 </li>
-                <li
-                  class="pl--b"
-                >
+                <li>
                   <a
                     aria-label="Show 25 results per page"
-                    class="ph--0"
                     href="/?ps=25"
                   >
                     25
                   </a>
                 </li>
-                <li
-                  class="pl--b"
-                >
+                <li>
                   <a
                     aria-label="Show 50 results per page"
-                    class="ph--0"
                     href="/?ps=50"
                   >
                     50
                   </a>
                 </li>
-                <li
-                  class="pl--b"
-                >
+                <li>
                   <a
                     aria-label="Show All results per page"
-                    class="ph--0"
                     href="/?ps=9999"
                   >
                     All

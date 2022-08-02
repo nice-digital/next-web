@@ -26,8 +26,13 @@
   }
 }
 
-.resultsPerPage {
+.resultsPerPageHeading {
   @include typography.p;
   font-family: typography.get-font-family(sans);
+  margin: 0;
+}
+
+.resultsPerPageList {
+  justify-content: flex-end;
   margin: 0;
 }
