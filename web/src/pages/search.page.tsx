@@ -17,6 +17,7 @@ import {
 	SearchResultsSuccess,
 	upsertQueryParam,
 	getUrlPathAndQuery,
+	Navigator,
 } from "@nice-digital/search-client";
 
 import { Announcer } from "@/components/Announcer/Announcer";
@@ -67,7 +68,35 @@ export function Search({
 		);
 	}, [firstResult, lastResult, resultCount]);
 
-	console.log({ navigators });
+	const flattenedNavigators: Navigator[] = [];
+
+	navigators.forEach((node) => {
+		console.log(node.displayName);
+
+		flattenedNavigators.push(node);
+
+		if (node.displayName == "Type") {
+			if (
+				node.modifiers[3].displayName == "NICE advice" &&
+				node.modifiers[3].childNavigators
+			) {
+				node.modifiers[3].childNavigators.forEach((niceAdviceItem) => {
+					flattenedNavigators.push(niceAdviceItem);
+					// console.log(niceAdviceItem.displayName);
+				});
+			}
+		}
+
+		if (node.modifiers[0] && node.modifiers[0].childNavigators) {
+			node.modifiers[0].childNavigators.forEach((child) => {
+				// console.log(child.displayName);
+				flattenedNavigators.push(child);
+			});
+		}
+	});
+
+	console.log(flattenedNavigators);
+
 	if (failed) return <ErrorPageContent />;
 
 	return (
@@ -94,7 +123,7 @@ export function Search({
 				>
 					<SearchListFilters
 						numActiveModifiers={activeModifiers.length}
-						navigators={navigators}
+						navigators={flattenedNavigators}
 						pageSize={pageSize === searchUrlDefaults.ps ? "" : pageSize}
 						sortOrder={s}
 						queryText={q}
