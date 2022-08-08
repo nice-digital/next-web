@@ -40,6 +40,21 @@ export interface SearchPageProps {
 	searchUrl: SearchUrl;
 }
 
+const flattenNavigators = (navigators: Navigator[]) => {
+	const arr: Navigator[] = [];
+	navigators.forEach((node) => {
+		arr.push(node);
+		node.modifiers.forEach((node) => {
+			if (node.childNavigators) {
+				node.childNavigators.forEach((child) => {
+					arr.push(child);
+				});
+			}
+		});
+	});
+	return arr;
+};
+
 export function Search({
 	results,
 	searchUrl: { q, s, from, to },
@@ -68,18 +83,7 @@ export function Search({
 		);
 	}, [firstResult, lastResult, resultCount]);
 
-	const flattenedNavigators: Navigator[] = [];
-
-	navigators.forEach((node) => {
-		flattenedNavigators.push(node);
-		node.modifiers.forEach((node) => {
-			if (node.childNavigators) {
-				node.childNavigators.forEach((child) => {
-					flattenedNavigators.push(child);
-				});
-			}
-		});
-	});
+	const flattenedNavigators = flattenNavigators(navigators);
 
 	if (failed) return <ErrorPageContent />;
 
@@ -211,17 +215,13 @@ export const getServerSideProps = async (
 						toggleUrl: { fullUrl: toggleUrl },
 					}) => ({
 						displayName: `${
-							results.navigators.find(
+							flattenNavigators(results.navigators).find(
 								(nav) => nav.shortName === navigatorShortName
 							)?.displayName
 						}: ${displayName}`,
 						toggleUrl,
 					})
 			  );
-
-	if (results) {
-		console.log({ results });
-	}
 
 	if (results.failed) {
 		logger.error(
