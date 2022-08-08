@@ -71,31 +71,15 @@ export function Search({
 	const flattenedNavigators: Navigator[] = [];
 
 	navigators.forEach((node) => {
-		console.log(node.displayName);
-
 		flattenedNavigators.push(node);
-
-		if (node.displayName == "Type") {
-			if (
-				node.modifiers[3].displayName == "NICE advice" &&
-				node.modifiers[3].childNavigators
-			) {
-				node.modifiers[3].childNavigators.forEach((niceAdviceItem) => {
-					flattenedNavigators.push(niceAdviceItem);
-					// console.log(niceAdviceItem.displayName);
+		node.modifiers.forEach((node) => {
+			if (node.childNavigators) {
+				node.childNavigators.forEach((child) => {
+					flattenedNavigators.push(child);
 				});
 			}
-		}
-
-		if (node.modifiers[0] && node.modifiers[0].childNavigators) {
-			node.modifiers[0].childNavigators.forEach((child) => {
-				// console.log(child.displayName);
-				flattenedNavigators.push(child);
-			});
-		}
+		});
 	});
-
-	console.log(flattenedNavigators);
 
 	if (failed) return <ErrorPageContent />;
 
@@ -234,6 +218,10 @@ export const getServerSideProps = async (
 						toggleUrl,
 					})
 			  );
+
+	if (results) {
+		console.log({ results });
+	}
 
 	if (results.failed) {
 		logger.error(
