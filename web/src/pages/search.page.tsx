@@ -51,19 +51,6 @@ const flattenNavigators = (navigators: Navigator[]): Navigator[] => {
 		});
 	});
 
-	const sortBy = [
-		"Area of interest",
-		"Type",
-		"Status",
-		"Last updated",
-		"Guidance programme",
-		"Advice programme",
-	];
-
-	arr.sort((a, b) => {
-		return sortBy.indexOf(a.displayName) - sortBy.indexOf(b.displayName);
-	});
-
 	return arr;
 };
 
@@ -131,6 +118,7 @@ export function Search({
 						to={to}
 						showDateFilter={false}
 						showTextFilter={false}
+						navigatorsOrder={["nai", "ndt", "gst", "drm", "ngt", "nat"]}
 					/>
 				</GridItem>
 
