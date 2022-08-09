@@ -40,18 +40,30 @@ export interface SearchPageProps {
 	searchUrl: SearchUrl;
 }
 
-const flattenNavigators = (navigators: Navigator[]) => {
+const flattenNavigators = (navigators: Navigator[]): Navigator[] => {
 	const arr: Navigator[] = [];
 	navigators.forEach((node) => {
 		arr.push(node);
 		node.modifiers.forEach((node) => {
 			if (node.childNavigators) {
-				node.childNavigators.forEach((child) => {
-					arr.push(child);
-				});
+				node.childNavigators.forEach((child) => arr.push(child));
 			}
 		});
 	});
+
+	const sortBy = [
+		"Area of interest",
+		"Type",
+		"Status",
+		"Last updated",
+		"Guidance programme",
+		"Advice programme",
+	];
+
+	arr.sort((a, b) => {
+		return sortBy.indexOf(a.displayName) - sortBy.indexOf(b.displayName);
+	});
+
 	return arr;
 };
 
