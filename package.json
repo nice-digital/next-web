@@ -72,6 +72,6 @@
     "node": "14.20.0"
   },
   "dependencies": {
-    "@nice-digital/design-system": "^3.0.12-alpha.0"
+    "@nice-digital/design-system": "^3.0.13-alpha.0"
   }
 }
