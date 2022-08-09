@@ -12,6 +12,7 @@
 
 .keyLink {
   margin-bottom: core.rem(core.$nds-spacing-small);
+  margin-right: core.rem(core.$nds-spacing-small);
   padding-top: core.rem(core.$nds-spacing-small);
 
   @include core.mq($from: xs) {
