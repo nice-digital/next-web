@@ -171,11 +171,17 @@ export function Search({
 							</>
 						)}
 					</FilterSummary>
-
 					{documents.length === 0 ? (
 						<p id="results">
 							We can&apos;t find any results. Try{" "}
-							<Link to={unfilteredResultsUrl?.fullUrl as string} scroll={false}>
+							<Link
+								to={
+									unfilteredResultsUrl?.fullUrl
+										? (unfilteredResultsUrl.fullUrl as string)
+										: "/unfilteredResultsUrl" //TODO
+								}
+								scroll={false}
+							>
 								clearing your filters
 							</Link>{" "}
 							and starting again.
@@ -183,7 +189,12 @@ export function Search({
 					) : (
 						<SearchCardList documents={documents} />
 					)}
-					<SearchPagination results={results} scrollTargetId="filter-summary" />
+					{documents.length !== 0 ? (
+						<SearchPagination
+							results={results}
+							scrollTargetId="filter-summary"
+						/>
+					) : null}
 				</GridItem>
 			</Grid>
 		</>
