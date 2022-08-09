@@ -34,14 +34,6 @@ const AppFooter: FC = () => (
 	</>
 );
 
-const headerProps: HeaderProps = {
-	search: {
-		url: "/search",
-		autocomplete: "/autocomplete",
-	},
-	auth: { provider: "niceAccounts", environment: "live" },
-};
-
 // eslint-disable-next-line @typescript-eslint/ban-types
 class NextWebApp extends App<{}, {}, AppState> {
 	headerObserver: MutationObserver | null = null;
@@ -115,6 +107,29 @@ class NextWebApp extends App<{}, {}, AppState> {
 	}
 
 	render(): JSX.Element {
+		const queryTerm = this.props.router.query.q as string;
+
+		const headerProps: HeaderProps = {
+			search: {
+				url: "/search",
+				// autocomplete: "/autocomplete",
+				// autocomplete: {
+				// 	suggestions: suggestionsUrl,
+				// 	suggestionTemplate: (suggestion) => {
+				// 		if (!suggestion || !suggestion.Link) return "";
+
+				// 		return `<a href="${suggestion.Link}">${suggestion.TitleHtml} (${
+				// 			(suggestion.TypeAheadType &&
+				// 				typeAheadLabelMappings[suggestion.TypeAheadType]) ||
+				// 			"search"
+				// 		})</a>`;
+				// 	},
+				// },
+				query: queryTerm,
+			},
+			auth: { provider: "niceAccounts", environment: "live" },
+		};
+
 		const {
 				Component,
 				pageProps,
