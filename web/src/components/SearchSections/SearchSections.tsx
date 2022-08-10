@@ -54,14 +54,16 @@ export const SearchSections: FC<SearchSectionsProps> = ({
 				</Link>
 			)}
 			<details className={styles.details}>
-				<summary className="btn btn--inverse">
+				<summary
+					className={classnames(["btn btn--inverse", styles.detailSummary])}
+				>
 					Show all sections
 					<ChevronRight />
 				</summary>
 				<Panel
 					className={classnames([
 						styles.panel,
-						keyLink ? styles.withKeylink : null,
+						keyLink ? styles.withKeyLink : null,
 					])}
 				>
 					{guidanceRef && <h4>Sections for {guidanceRef}</h4>}

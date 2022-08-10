@@ -43,19 +43,6 @@ export interface SearchPageProps {
 const flattenNavigators = (navigators: Navigator[]): Navigator[] => {
 	const arr: Navigator[] = [];
 	navigators.forEach((node) => {
-		if (node.displayName === "Last updated") {
-			//sort last updated modifiers into ascending order
-			const sortBy = [
-				"Last 3 months",
-				"Last 6 months",
-				"Last year",
-				"Last 3 years",
-			];
-			node.modifiers.sort((a, b) => {
-				return sortBy.indexOf(a.displayName) - sortBy.indexOf(b.displayName);
-			});
-			console.log("sorted", node.modifiers);
-		}
 		arr.push(node);
 		node.modifiers.forEach((node) => {
 			if (node.childNavigators) {
@@ -63,18 +50,6 @@ const flattenNavigators = (navigators: Navigator[]): Navigator[] => {
 			}
 		});
 	});
-
-	// const sortBy = [
-	// 	"Last 3 months",
-	// 	"Last 6 months",
-	// 	"Last year",
-	// 	"Last 3 years",
-	// ];
-
-	// arr.sort((a, b) => {
-	// 	return sortBy.indexOf(a.displayName) - sortBy.indexOf(b.displayName);
-	// });
-	// console.log({ arr });
 
 	return arr;
 };

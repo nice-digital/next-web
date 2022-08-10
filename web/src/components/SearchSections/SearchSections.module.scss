@@ -12,7 +12,7 @@
 
 .keyLink {
   margin-bottom: core.rem(core.$nds-spacing-small);
-  margin-right: core.rem(core.$nds-spacing-small);
+  // margin-right: core.rem(core.$nds-spacing-small);
   padding-top: core.rem(core.$nds-spacing-small);
 
   @include core.mq($from: xs) {
@@ -49,6 +49,10 @@
   }
 }
 
+.detailSummary {
+  margin-left: core.rem(core.$nds-spacing-medium) !important;
+}
+
 .panel {
   margin-top: core.rem(core.$nds-spacing-medium);
 
@@ -65,7 +69,7 @@
   }
 }
 
-.withKeylink {
+.withKeyLink {
   @include core.mq($from: lg) {
     margin-left: -33.3%;
   }

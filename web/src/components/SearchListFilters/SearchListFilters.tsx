@@ -70,6 +70,13 @@ export const SearchListFilters: FC<SearchListFiltersProps> = ({
 		[formRef, doClientSideFormSubmit]
 	);
 
+	const lastUpdatedModifiersSortOrder = [
+		"Last 3 months",
+		"Last 6 months",
+		"Last year",
+		"Last 3 years",
+	];
+
 	return (
 		<FilterPanel
 			id="filters"
@@ -123,6 +130,11 @@ export const SearchListFilters: FC<SearchListFiltersProps> = ({
 					>
 						{modifiers
 							.sort((a, b) => a.displayName.localeCompare(b.displayName))
+							.sort(
+								(a, b) =>
+									lastUpdatedModifiersSortOrder.indexOf(a.displayName) -
+									lastUpdatedModifiersSortOrder.indexOf(b.displayName)
+							)
 							.map((modifier) => (
 								<FilterOption
 									key={modifier.displayName}
