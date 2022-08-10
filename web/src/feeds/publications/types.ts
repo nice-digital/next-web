@@ -186,21 +186,17 @@ type FeedContent<
 	_links: Readonly<{
 		self: Link[];
 	}>;
-	_embedded: Readonly<
-		{
-			[key in TEmbeddedOuter]: Readonly<{
-				_links: Readonly<{
-					self: ReadonlyArray<Link>;
-				}>;
-				_embedded: Readonly<
-					{
-						[key in TEmbeddedInner]: TItemType[];
-					}
-				>;
-				ETag: null;
+	_embedded: Readonly<{
+		[key in TEmbeddedOuter]: Readonly<{
+			_links: Readonly<{
+				self: ReadonlyArray<Link>;
 			}>;
-		}
-	>;
+			_embedded: Readonly<{
+				[key in TEmbeddedInner]: TItemType[];
+			}>;
+			ETag: null;
+		}>;
+	}>;
 	ETag: string | null;
 	LastModified: string;
 }>;

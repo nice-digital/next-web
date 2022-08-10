@@ -39,7 +39,7 @@ describe("ErrorPageContent", () => {
 		it("should render given title as current page breadcrumb without link", () => {
 			render(<ErrorPageContent {...props} />);
 			expect(
-				screen.queryByText(props.title, {
+				screen.getByText(props.title, {
 					selector: ".breadcrumbs span",
 				})
 			).toBeInTheDocument();

@@ -58,7 +58,7 @@ exports[`ErrorPageContent should match snapshot for main content 1`] = `
       id="content-start"
     >
       <h1
-        class="page-header__heading"
+        class="page-header__heading "
       >
         A test heading
       </h1>

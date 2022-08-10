@@ -56,6 +56,7 @@ describe("/guidance/published", () => {
 			push: routerPush,
 		}));
 
+		// eslint-disable-next-line testing-library/no-render-in-setup
 		render(
 			<GuidanceListPage
 				activeModifiers={[]}
