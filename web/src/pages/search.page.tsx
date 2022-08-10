@@ -25,6 +25,7 @@ import { ErrorPageContent } from "@/components/ErrorPageContent/ErrorPageContent
 import { Link } from "@/components/Link/Link";
 import { SearchCardList } from "@/components/SearchCard/SearchCardList";
 import { SearchListFilters } from "@/components/SearchListFilters/SearchListFilters";
+import { SearchNoResults } from "@/components/SearchNoResults/SearchNoResults";
 import { SearchPagination } from "@/components/SearchPagination/SearchPagination";
 import { publicRuntimeConfig } from "@/config";
 import { logger } from "@/logger";
@@ -65,24 +66,92 @@ export function Search({
 	const { failed } = results;
 
 	const { asPath } = useRouter();
+	const [loading, setLoading] = useState<boolean>();
 
 	const {
 		documents,
 		navigators,
 		pageSize,
+		unfilteredResultsUrl,
+		finalSearchText,
+	} = results as SearchResultsSuccess;
+
+	// useEffect(() => {
+	// 	// TODO check if this is redundant
+	// 	setAnnouncement(
+	// 		`Showing ${firstResult} to ${lastResult} of ${resultCount}`
+	// 	);
+	// }, [firstResult, lastResult, resultCount]);
+
+	const flattenedNavigators = flattenNavigators(navigators);
+
+	const SummaryRecordCount = ({
 		firstResult,
 		lastResult,
 		resultCount,
-		unfilteredResultsUrl,
-	} = results as SearchResultsSuccess;
+		finalSearchText,
+	}: SearchResultsSuccess) => {
+		return (
+			<>
+				Showing{" "}
+				{resultCount === 1
+					? "1 result"
+					: `${firstResult} to ${lastResult} of ${resultCount} results`}
+				{finalSearchText && (
+					<>
+						{" "}
+						for <strong>{finalSearchText}</strong>
+					</>
+				)}
+			</>
+		);
+	};
+
+	const SummaryText = (results: SearchResultsSuccess) => {
+		const { originalSearch, finalSearchText, resultCount } = results;
+
+		if (resultCount === 0 && !originalSearch) {
+			return (
+				<>
+					We couldn&apos;t find any results for{" "}
+					<strong>{finalSearchText}</strong>
+					<br />
+					Check for spelling mistakes or try another search term.
+				</>
+			);
+		}
+
+		if (originalSearch) {
+			return (
+				<>
+					Your search for <strong>{originalSearch.searchText}</strong> returned
+					no results
+					<br />
+					<SummaryRecordCount {...results} />
+				</>
+			);
+		}
+
+		if (resultCount !== 0) {
+			return <SummaryRecordCount {...results} />;
+		}
+
+		return null;
+	};
 
 	useEffect(() => {
-		setAnnouncement(
-			`Showing ${firstResult} to ${lastResult} of ${resultCount}`
-		);
-	}, [firstResult, lastResult, resultCount]);
+		if (failed) setAnnouncement("There was an error getting search results");
 
-	const flattenedNavigators = flattenNavigators(navigators);
+		if (loading) setAnnouncement("Loading search results");
+
+		if (results && !failed) {
+			const summary = `Showing ${results.firstResult} to ${results.lastResult} of ${results.resultCount}`;
+			const spellcheck = results.finalSearchText
+				? ` for ${results.finalSearchText}`
+				: null;
+			setAnnouncement(summary + spellcheck);
+		}
+	}, [results, failed, loading]);
 
 	if (failed) return <ErrorPageContent />;
 
@@ -163,22 +232,45 @@ export function Search({
 							},
 						]}
 					>
-						{resultCount === 0 ? (
-							"Showing 0 results"
-						) : (
+						{results?.resultCount === 0 ? (
 							<>
-								Showing {firstResult} to {lastResult} of {resultCount}
+								<h2 className="mt--0" id="results-title">
+									No results found
+								</h2>
+								<SummaryText {...results} />
+								<SearchNoResults
+									searchText={
+										results?.originalSearch?.searchText ||
+										results?.finalSearchText
+									}
+								/>
 							</>
-						)}
+						) : null}
+
+						{/* TODO add loading state */}
+
+						{results && results.resultCount !== 0 ? (
+							<div
+								id="search-results-summary"
+								data-original-search-text={
+									results.originalSearch?.searchText || ""
+								}
+								data-final-search-text={results.finalSearchText}
+								data-result-count={results.resultCount}
+							>
+								<SummaryText {...results} />
+							</div>
+						) : null}
 					</FilterSummary>
-					{documents.length === 0 ? (
+
+					{results && results.resultCount !== 0 && documents.length === 0 ? (
 						<p id="results">
 							We can&apos;t find any results. Try{" "}
 							<Link
 								to={
 									unfilteredResultsUrl?.fullUrl
 										? (unfilteredResultsUrl.fullUrl as string)
-										: "/unfilteredResultsUrl" //TODO
+										: "/unfilteredResultsUrl" //TODO fix unfilteredResultsUrl prop as it is undefined
 								}
 								scroll={false}
 							>
