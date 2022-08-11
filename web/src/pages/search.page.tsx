@@ -67,23 +67,44 @@ export function Search({
 
 	const { asPath } = useRouter();
 
-	const {
-		documents,
-		navigators,
-		pageSize,
-		firstResult,
-		lastResult,
-		resultCount,
-		unfilteredResultsUrl,
-	} = data as SearchResultsSuccess;
+	const { documents, navigators, pageSize, unfilteredResultsUrl } =
+		data as SearchResultsSuccess;
 
-	useEffect(() => {
-		setAnnouncement(
-			`Showing ${firstResult} to ${lastResult} of ${resultCount}`
-		);
-	}, [firstResult, lastResult, resultCount]);
+	// useEffect(() => {
+	// 	setAnnouncement(
+	// 		`Showing ${firstResult} to ${lastResult} of ${resultCount}`
+	// 	);
+	// }, [firstResult, lastResult, resultCount]);
 
 	const flattenedNavigators = flattenNavigators(navigators);
+
+	useEffect(() => {
+		if (data && data.failed)
+			setAnnouncement("There was an error getting search results");
+
+		// if (loading) setAnnouncement("Loading search results");
+
+		if (data && !data.failed) {
+			//TODO reinstate loading state and check if window.dataLayer will be used
+			// if (!loading && window.dataLayer) {
+			// 	window.dataLayer.push({ location: document.location.href });
+			// 	if ("requestAnimationFrame" in window) {
+			// 		requestAnimationFrame(() => {
+			// 			requestAnimationFrame(() => {
+			// 				window.dataLayer.push({
+			// 					event: "search.resultsLoaded",
+			// 				});
+			// 			});
+			// 		});
+			// 	}
+			// }
+			const summary = `Showing ${data.firstResult} to ${data.lastResult} of ${data.resultCount}`;
+			const spellcheck = data.finalSearchText
+				? ` for ${data.finalSearchText}`
+				: null;
+			setAnnouncement(summary + spellcheck);
+		}
+	}, [data]);
 
 	if (failed) return <ErrorPageContent />;
 
