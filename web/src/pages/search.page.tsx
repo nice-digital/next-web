@@ -62,7 +62,7 @@ export function Search({
 }: SearchPageProps): JSX.Element {
 	// Announcement text, used for giving audible notifications to screen readers when results have changed
 	const [announcement, setAnnouncement] = useState("");
-
+	const [loading, setLoading] = useState<boolean>();
 	const { failed } = data;
 
 	const { asPath } = useRouter();
@@ -79,13 +79,20 @@ export function Search({
 	const flattenedNavigators = flattenNavigators(navigators);
 
 	useEffect(() => {
+		setLoading(true);
+		if (data) {
+			setLoading(false);
+		}
+	}, [data]);
+
+	useEffect(() => {
 		if (data && data.failed)
 			setAnnouncement("There was an error getting search results");
 
-		// if (loading) setAnnouncement("Loading search results");
+		if (loading) setAnnouncement("Loading search results");
 
 		if (data && !data.failed) {
-			//TODO reinstate loading state and check if window.dataLayer will be used
+			//TODO reinstate if window.dataLayer will be used
 			// if (!loading && window.dataLayer) {
 			// 	window.dataLayer.push({ location: document.location.href });
 			// 	if ("requestAnimationFrame" in window) {
@@ -102,9 +109,9 @@ export function Search({
 			const spellcheck = data.finalSearchText
 				? ` for ${data.finalSearchText}`
 				: null;
-			setAnnouncement(summary + spellcheck);
+			!loading && setAnnouncement(summary + spellcheck);
 		}
-	}, [data]);
+	}, [data, loading]);
 
 	if (failed) return <ErrorPageContent />;
 
@@ -174,7 +181,9 @@ export function Search({
 			<Announcer announcement={announcement} />
 			<h1 className="visually-hidden">Search results</h1>
 
-			{data?.resultCount === 0 && activeModifiers.length === 0 ? (
+			{loading ? (
+				"Loading search results…"
+			) : data?.resultCount === 0 && activeModifiers.length === 0 ? (
 				<>
 					<h2 id="results-title">No results found</h2>
 					<SearchNoResults
