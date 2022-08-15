@@ -7,7 +7,7 @@ import {
 	FilterGroup,
 	FilterOption,
 } from "@nice-digital/nds-filters";
-import { Navigator } from "@nice-digital/search-client";
+import { Navigator, KnownOrModifierKeys } from "@nice-digital/search-client";
 
 import { InlineTextFilter } from "@/components/InlineTextFilter/InlineTextFilter";
 import { SkipLink } from "@/components/SkipLink/SkipLink";
@@ -32,9 +32,10 @@ export interface SearchListFiltersProps {
 	showTextFilter: boolean;
 	dateFilterLabel?: string;
 	useFutureDates?: boolean;
-	navigatorsOrder?: string[];
+	navigatorsOrder: KnownOrModifierKeys[];
 }
 
+//TODO remove default and make pages responsible for their own ordering
 export const SearchListFilters: FC<SearchListFiltersProps> = ({
 	numActiveModifiers,
 	navigators,
@@ -48,7 +49,7 @@ export const SearchListFilters: FC<SearchListFiltersProps> = ({
 	showTextFilter,
 	dateFilterLabel,
 	useFutureDates,
-	navigatorsOrder = ["nai", "tt", "tsd", "ndt", "ngt", "nat"],
+	navigatorsOrder,
 }) => {
 	const router = useRouter(),
 		formRef = createRef<HTMLFormElement>();
@@ -115,8 +116,8 @@ export const SearchListFilters: FC<SearchListFiltersProps> = ({
 				.filter((nav) => nav.shortName !== navigatorShortNamesToExclude)
 				.sort(
 					(a, b) =>
-						navigatorsOrder.indexOf(a.shortName) -
-						navigatorsOrder.indexOf(b.shortName)
+						navigatorsOrder.indexOf(a.shortName as KnownOrModifierKeys) -
+						navigatorsOrder.indexOf(b.shortName as KnownOrModifierKeys)
 				)
 				.map(({ shortName, displayName, modifiers }) => (
 					<FilterGroup

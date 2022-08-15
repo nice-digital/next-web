@@ -192,6 +192,7 @@ export const getGuidanceListPage =
 							showTextFilter={true}
 							dateFilterLabel={dateFilterLabel}
 							useFutureDates={useFutureDates}
+							navigatorsOrder={["nai", "tt", "tsd", "ndt", "ngt", "nat"]}
 						/>
 					</GridItem>
 

@@ -112,19 +112,8 @@ class NextWebApp extends App<{}, {}, AppState> {
 		const headerProps: HeaderProps = {
 			search: {
 				url: "/search",
-				// autocomplete: "/autocomplete",
-				// autocomplete: {
-				// 	suggestions: suggestionsUrl,
-				// 	suggestionTemplate: (suggestion) => {
-				// 		if (!suggestion || !suggestion.Link) return "";
-
-				// 		return `<a href="${suggestion.Link}">${suggestion.TitleHtml} (${
-				// 			(suggestion.TypeAheadType &&
-				// 				typeAheadLabelMappings[suggestion.TypeAheadType]) ||
-				// 			"search"
-				// 		})</a>`;
-				// 	},
-				// },
+				autocomplete:
+					publicRuntimeConfig.search.baseURL + "/typeahead?index=nice",
 				query: queryTerm,
 			},
 			auth: { provider: "niceAccounts", environment: "live" },

@@ -83,22 +83,10 @@ export function Search({
 		if (data && data.failed)
 			setAnnouncement("There was an error getting search results");
 
+		//TODO use nextJS routing events possibly
 		if (loading) setAnnouncement("Loading search results");
 
 		if (data && !data.failed) {
-			//TODO reinstate if window.dataLayer will be used
-			// if (!loading && window.dataLayer) {
-			// 	window.dataLayer.push({ location: document.location.href });
-			// 	if ("requestAnimationFrame" in window) {
-			// 		requestAnimationFrame(() => {
-			// 			requestAnimationFrame(() => {
-			// 				window.dataLayer.push({
-			// 					event: "search.resultsLoaded",
-			// 				});
-			// 			});
-			// 		});
-			// 	}
-			// }
 			const summary = `Showing ${data.firstResult} to ${data.lastResult} of ${data.resultCount}`;
 			const spellcheck = data.finalSearchText
 				? ` for ${data.finalSearchText}`
