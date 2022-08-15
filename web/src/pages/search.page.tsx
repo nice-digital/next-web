@@ -70,12 +70,6 @@ export function Search({
 	const { documents, navigators, pageSize, unfilteredResultsUrl } =
 		data as SearchResultsSuccess;
 
-	// useEffect(() => {
-	// 	setAnnouncement(
-	// 		`Showing ${firstResult} to ${lastResult} of ${resultCount}`
-	// 	);
-	// }, [firstResult, lastResult, resultCount]);
-
 	const flattenedNavigators = flattenNavigators(navigators);
 
 	useEffect(() => {
