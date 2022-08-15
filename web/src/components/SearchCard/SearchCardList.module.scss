@@ -1,4 +1,7 @@
-@use '@nice-digital/nds-core/scss/core';
+@use '@nice-digital/nds-core/scss/colours/tokens/global';
+@use '@nice-digital/nds-core/scss/colours';
+@use '@nice-digital/nds-core/scss/spacing';
+@use '@nice-digital/nds-core/scss/utils';
 
 .card {
   position: relative;
@@ -12,7 +15,7 @@
 }
 
 .listItem {
-  border-bottom: 1px solid core.$nds-colour-nice-grey-1;
-  padding-bottom: core.rem(core.$nds-spacing-medium);
+  border-bottom: 1px solid global.$custom-grey-1;
+  padding-bottom: utils.rem(spacing.$medium);
   position: relative;
 }

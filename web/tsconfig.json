@@ -20,7 +20,8 @@
       "@/utils": ["src/utils"],
       "@/helpers/*": ["src/helpers/*"],
       "@/helpers": ["src/helpers"]
-    }
+    },
+    "incremental": true
   },
   "include": ["./**/*", "./**/*.json", "../jest.config.js"],
   "exclude": ["dist", ".next"]

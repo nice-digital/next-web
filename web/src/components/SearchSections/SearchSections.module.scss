@@ -1,29 +1,33 @@
-@use '@nice-digital/nds-core/scss/core';
+@use '@nice-digital/nds-core/scss/colours/tokens/global';
+@use '@nice-digital/nds-core/scss/colours';
+@use '@nice-digital/nds-core/scss/spacing';
+@use '@nice-digital/nds-core/scss/utils';
+@use '@nice-digital/nds-core/scss/media-queries';
 
 .wrapper {
   align-items: flex-start;
   display: flex;
   flex-direction: column;
 
-  @include core.mq($from: xs) {
+  @include media-queries.mq($from: xs) {
     flex-direction: row;
   }
 }
 
 .keyLink {
-  margin-bottom: core.rem(core.$nds-spacing-small);
-  // margin-right: core.rem(core.$nds-spacing-small);
-  padding-top: core.rem(core.$nds-spacing-small);
+  margin-bottom: utils.rem(spacing.$small);
+  // margin-right: utils.rem(spacing.$small);
+  padding-top: utils.rem(spacing.$small);
 
-  @include core.mq($from: xs) {
+  @include media-queries.mq($from: xs) {
     flex: 1 0 50%;
   }
 
-  @include core.mq($from: md) {
+  @include media-queries.mq($from: md) {
     flex-basis: 33%;
   }
 
-  @include core.mq($from: lg) {
+  @include media-queries.mq($from: lg) {
     flex-basis: 25%;
   }
 }
@@ -38,7 +42,7 @@
 
     svg {
       margin: 0;
-      margin-left: core.rem(core.$nds-spacing-small);
+      margin-left: utils.rem(spacing.$small);
     }
   }
 
@@ -50,27 +54,27 @@
 }
 
 .detailSummary {
-  margin-left: core.rem(core.$nds-spacing-medium) !important;
+  margin-left: utils.rem(spacing.$medium) !important;
 }
 
 .panel {
-  margin-top: core.rem(core.$nds-spacing-medium);
+  margin-top: utils.rem(spacing.$medium);
 
-  @include core.mq($from: xs) {
+  @include media-queries.mq($from: xs) {
     margin-left: -100%;
   }
 
-  @include core.mq($from: md) {
+  @include media-queries.mq($from: md) {
     margin-left: -50%;
   }
 
-  @include core.mq($from: lg) {
+  @include media-queries.mq($from: lg) {
     margin-left: 0;
   }
 }
 
 .withKeyLink {
-  @include core.mq($from: lg) {
+  @include media-queries.mq($from: lg) {
     margin-left: -33.3%;
   }
 }

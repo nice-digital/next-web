@@ -6,6 +6,9 @@ import Document, {
 	DocumentContext,
 	DocumentInitialProps,
 } from "next/document";
+import Script from "next/script";
+
+import { publicRuntimeConfig } from "@/config";
 
 export type NextWebDocumentProps = Record<string, never>;
 
@@ -23,13 +26,18 @@ class NextWebDocument extends Document<NextWebDocumentProps> {
 				<Head>
 					{/* Note: The 2 google font preconnects are set in the global Link header. See LINK ./../../next.config.js#font-preconnects */}
 					<link
-						href="https://fonts.googleapis.com/css2?family=Lato:ital,wght@0,400;0,700;0,900;1,400&display=swap"
+						href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600&family=Lora:ital,wght@0,600;1,600&display=swap"
 						rel="stylesheet"
 					/>
 				</Head>
 				<body>
 					<Main />
 					<NextScript />
+					<Script
+						id="cookieBanner"
+						src={publicRuntimeConfig.cookieBannerScriptURL}
+						strategy="beforeInteractive"
+					/>
 				</body>
 			</Html>
 		);
