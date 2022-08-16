@@ -65,7 +65,7 @@ export function Search({
 	const [loading, setLoading] = useState<boolean>();
 	const { failed } = data;
 
-	const { asPath } = useRouter();
+	const { asPath, push, query } = useRouter();
 
 	const { documents, navigators, pageSize, unfilteredResultsUrl } =
 		data as SearchResultsSuccess;
@@ -221,21 +221,24 @@ export function Search({
 								)}
 								sorting={[
 									{
-										active: true,
-										label: s ? "Date" : "Relevance",
-										destination: s
-											? upsertQueryParam(asPath, "s", "Date")
-											: upsertQueryParam(asPath, "s", "Relevance"),
+										active: !s,
+										label: "Relevance",
+										value: "relevance",
+										onSelected: () => {
+											// eslint-disable-next-line @typescript-eslint/no-unused-vars
+											const { s, ...modifiedQuery } = query;
+											push({
+												query: modifiedQuery,
+											});
+										},
 									},
 									{
-										active: false,
-										label: s ? "Relevance" : "Date",
-										destination: s
-											? removeQueryParam(asPath, "s")
-											: upsertQueryParam(asPath, "s", "Date"),
-										elementType: ({ ...props }) => (
-											<Link {...props} scroll={false} />
-										),
+										active: s == "date",
+										label: "Date",
+										value: "date",
+										onSelected: () => {
+											push({ query: { ...query, s: "date" } });
+										},
 									},
 								]}
 							>
@@ -250,6 +253,7 @@ export function Search({
 									<SummaryText {...data} />
 								</div>
 							</FilterSummary>
+
 							{documents.length === 0 ? (
 								<p id="results">
 									We can&apos;t find any results. Try{" "}
