@@ -7,7 +7,7 @@ import {
 	SearchUrl,
 } from "@nice-digital/search-client";
 
-import { render, screen, waitFor, within } from "@/test-utils";
+import { render, screen, waitFor } from "@/test-utils";
 
 import sampleDataFailed from "../__mocks__/__data__/search/search-results-failed.json";
 import sampleData from "../__mocks__/__data__/search/search-results.json";
@@ -24,19 +24,17 @@ import SearchPage from "./search.page";
 
 describe("search", () => {
 	describe("SEO", () => {
-		let container: HTMLElement;
 		beforeEach(() => {
 			mockDate.set("2020-11-22");
-
-			container = render(
+		});
+		it("should render 'Search results' in the page title", async () => {
+			render(
 				<SearchPage
 					activeModifiers={[]}
 					results={sampleData as unknown as SearchResultsSuccess}
 					searchUrl={{ route: "/search?q=" } as SearchUrl}
 				/>
-			).container;
-		});
-		it("should render 'Search results' in the page title", async () => {
+			);
 			await waitFor(() => {
 				expect(document.title).toStartWith("Search results");
 			});
