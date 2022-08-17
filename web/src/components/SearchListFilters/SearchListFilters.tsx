@@ -1,6 +1,16 @@
 import serialize from "form-serialize";
 import { useRouter } from "next/router";
-import React, { createRef, FC, useCallback } from "react";
+import React, {
+	createRef,
+	FC,
+	ReactComponentElement,
+	ReactElement,
+	ReactEventHandler,
+	RefObject,
+	useCallback,
+	useEffect,
+	useRef,
+} from "react";
 
 import {
 	FilterPanel,
@@ -78,6 +88,36 @@ export const SearchListFilters: FC<SearchListFiltersProps> = ({
 		"Last 3 years",
 	];
 
+	// const refs: React.MutableRefObject<
+	// RefObject<{
+	// 		i: string;
+	// 		current: typeof FilterOption;
+	// 	}>[]
+	// > = useRef([createRef(), createRef(), createRef(), createRef()]);
+
+	const refs: React.MutableRefObject<RefObject<typeof FilterOption>[]> = useRef(
+		[createRef(), createRef(), createRef(), createRef()]
+	);
+
+	const unCheck = (index: number, displayName: string) => {
+		// console.log("you clicked ", index, " ", displayName, " ", e);
+		// console.log(refs);
+
+		// refs.current.forEach((node) => {
+		// 	console.log(node.current);
+		// });
+		const checkedElements = document.querySelectorAll(
+			'input[type="checkbox"][name="drm"]:checked'
+		);
+
+		console.log({ checkedElements });
+
+		checkedElements.forEach((element) => {
+			const el = element as HTMLInputElement;
+			el.checked = false;
+		});
+	};
+
 	return (
 		<FilterPanel
 			id="filters"
@@ -119,7 +159,7 @@ export const SearchListFilters: FC<SearchListFiltersProps> = ({
 						navigatorsOrder.indexOf(a.shortName as KnownOrModifierKeys) -
 						navigatorsOrder.indexOf(b.shortName as KnownOrModifierKeys)
 				)
-				.map(({ shortName, displayName, modifiers }) => (
+				.map(({ shortName, displayName, modifiers }, index) => (
 					<FilterGroup
 						key={shortName}
 						heading={displayName}
@@ -136,17 +176,31 @@ export const SearchListFilters: FC<SearchListFiltersProps> = ({
 									lastUpdatedModifiersSortOrder.indexOf(a.displayName) -
 									lastUpdatedModifiersSortOrder.indexOf(b.displayName)
 							)
-							.map((modifier) => (
-								<FilterOption
-									key={modifier.displayName}
-									isSelected={modifier.active}
-									onChanged={doClientSideFormSubmit}
-									groupId={shortName}
-									value={modifier.displayName}
-								>
-									{`${modifier.displayName} (${modifier.resultCount})`}
-								</FilterOption>
-							))}
+							.map((modifier, index) => {
+								return shortName == "drm" ? (
+									<FilterOption
+										key={modifier.displayName}
+										isSelected={modifier.active}
+										onChanged={doClientSideFormSubmit}
+										groupId={shortName}
+										value={modifier.displayName}
+										onClick={() => unCheck(index, modifier.displayName)}
+										ref={refs.current[index]}
+									>
+										{`${modifier.displayName} (${modifier.resultCount})`}
+									</FilterOption>
+								) : (
+									<FilterOption
+										key={modifier.displayName}
+										isSelected={modifier.active}
+										onChanged={doClientSideFormSubmit}
+										groupId={shortName}
+										value={modifier.displayName}
+									>
+										{`${modifier.displayName} (${modifier.resultCount})`}
+									</FilterOption>
+								);
+							})}
 					</FilterGroup>
 				))}
 		</FilterPanel>
