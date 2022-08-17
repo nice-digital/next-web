@@ -1,16 +1,6 @@
 import serialize from "form-serialize";
 import { useRouter } from "next/router";
-import React, {
-	createRef,
-	FC,
-	ReactComponentElement,
-	ReactElement,
-	ReactEventHandler,
-	RefObject,
-	useCallback,
-	useEffect,
-	useRef,
-} from "react";
+import React, { createRef, FC, useCallback } from "react";
 
 import {
 	FilterPanel,
