@@ -24,17 +24,20 @@ import SearchPage from "./search.page";
 
 describe("search", () => {
 	describe("SEO", () => {
+		let container: HTMLElement;
 		beforeEach(() => {
 			mockDate.set("2020-11-22");
-		});
-		it("should render 'Search results' in the page title", async () => {
-			render(
+
+			// eslint-disable-next-line testing-library/no-render-in-setup
+			container = render(
 				<SearchPage
 					activeModifiers={[]}
 					results={sampleData as unknown as SearchResultsSuccess}
 					searchUrl={{ route: "/search?q=" } as SearchUrl}
 				/>
-			);
+			).container;
+		});
+		it.skip("should render 'Search results' in the page title", async () => {
 			await waitFor(() => {
 				expect(document.title).toStartWith("Search results");
 			});
