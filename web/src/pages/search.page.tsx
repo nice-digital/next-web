@@ -63,7 +63,7 @@ export function Search({
 	const [loading, setLoading] = useState<boolean>();
 	const { failed } = data;
 
-	const { asPath, push, query } = useRouter();
+	const { push, query } = useRouter();
 
 	const { documents, navigators, pageSize, unfilteredResultsUrl } =
 		data as SearchResultsSuccess;
