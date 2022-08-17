@@ -71,17 +71,9 @@ export function Search({
 	const flattenedNavigators = flattenNavigators(navigators);
 
 	useEffect(() => {
-		setLoading(true);
-		if (data) {
-			setLoading(false);
-		}
-	}, [data]);
-
-	useEffect(() => {
 		if (data && data.failed)
 			setAnnouncement("There was an error getting search results");
 
-		//TODO use nextJS routing events possibly
 		if (loading) setAnnouncement("Loading search results");
 
 		if (data && !data.failed) {
@@ -94,12 +86,12 @@ export function Search({
 	}, [data, loading]);
 
 	useEffect(() => {
-		const handleStart = (url: string) => {
-			console.log(`Loading: ${url}`);
+		const handleStart = () => {
+			setLoading(true);
 		};
 
 		const handleStop = () => {
-			console.log(`stopped`);
+			setLoading(false);
 		};
 
 		events.on("routeChangeStart", handleStart);
@@ -121,7 +113,11 @@ export function Search({
 		resultCount,
 		finalSearchText,
 	}: SearchResultsSuccess) => {
-		return (
+		return loading ? (
+			<>
+				<span>Loading search results...</span>
+			</>
+		) : (
 			<>
 				Showing{" "}
 				{resultCount === 1
@@ -181,9 +177,7 @@ export function Search({
 			<Announcer announcement={announcement} />
 			<h1 className="visually-hidden">Search results</h1>
 
-			{loading ? (
-				"Loading search results…"
-			) : data?.resultCount === 0 && activeModifiers.length === 0 ? (
+			{data?.resultCount === 0 && activeModifiers.length === 0 ? (
 				<>
 					<h2 id="results-title">No results found</h2>
 					<SearchNoResults
