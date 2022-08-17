@@ -110,6 +110,13 @@ class NextWebApp extends App<{}, {}, AppState> {
 				autocomplete:
 					publicRuntimeConfig.search.baseURL + "/typeahead?index=nice",
 				query: queryTerm,
+				onSearching: (e): void => {
+					// this.props.router.push("/search/?q=" + encodeURIComponent(e.query));
+					this.props.router.push({
+						pathname: "/search",
+						query: { q: e.query },
+					});
+				},
 			},
 			auth: { provider: "niceAccounts", environment: "live" },
 		};

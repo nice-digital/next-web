@@ -63,7 +63,7 @@ export function Search({
 	const [loading, setLoading] = useState<boolean>();
 	const { failed } = data;
 
-	const { push, query } = useRouter();
+	const { events, push, query } = useRouter();
 
 	const { documents, navigators, pageSize, unfilteredResultsUrl } =
 		data as SearchResultsSuccess;
@@ -92,6 +92,26 @@ export function Search({
 			!loading && setAnnouncement(summary + spellcheck);
 		}
 	}, [data, loading]);
+
+	useEffect(() => {
+		const handleStart = (url: string) => {
+			console.log(`Loading: ${url}`);
+		};
+
+		const handleStop = () => {
+			console.log(`stopped`);
+		};
+
+		events.on("routeChangeStart", handleStart);
+		events.on("routeChangeComplete", handleStop);
+		events.on("routeChangeError", handleStop);
+
+		return () => {
+			events.off("routeChangeStart", handleStart);
+			events.off("routeChangeComplete", handleStop);
+			events.off("routeChangeError", handleStop);
+		};
+	}, [events]);
 
 	if (failed) return <ErrorPageContent />;
 
@@ -212,7 +232,7 @@ export function Search({
 										method: "href",
 										elementType: ({ children, ...props }) => (
 											<Link {...props} scroll={false}>
-												<a>{children}</a>
+												{children}
 											</Link>
 										),
 									})
