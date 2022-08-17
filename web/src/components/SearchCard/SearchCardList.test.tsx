@@ -18,7 +18,7 @@ const mockDocuments = [
 	guidanceDocNonMatchingDates,
 	qualityStandardDoc,
 	uncategorisedDoc,
-] as Document[];
+] as unknown as Document[];
 
 describe("SearchCard", () => {
 	it("should render search result title", () => {

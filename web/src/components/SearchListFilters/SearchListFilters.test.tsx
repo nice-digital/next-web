@@ -2,13 +2,25 @@ import userEvent from "@testing-library/user-event";
 import mockDate from "mockdate";
 import { useRouter } from "next/router";
 
-import { Navigator } from "@nice-digital/search-client/types";
+import {
+	KnownOrModifierKeys,
+	Navigator,
+} from "@nice-digital/search-client/types";
 
 import { render, screen, within } from "@/test-utils";
 
 import sampleData from "../../__mocks__/__data__/search/guidance-published.json";
 
 import { SearchListFilters } from "./SearchListFilters";
+
+const guidanceNavigatorsOrder: KnownOrModifierKeys[] = [
+	"nai",
+	"tt",
+	"tsd",
+	"ndt",
+	"ngt",
+	"nat",
+];
 
 describe("SearchListFilters", () => {
 	let routerPush: jest.Mock, rerender: ReturnType<typeof render>["rerender"];
@@ -25,6 +37,7 @@ describe("SearchListFilters", () => {
 
 		mockDate.set("2020-11-22");
 
+		// eslint-disable-next-line testing-library/no-render-in-setup
 		rerender = render(
 			<SearchListFilters
 				numActiveModifiers={2}
@@ -32,6 +45,7 @@ describe("SearchListFilters", () => {
 				showDateFilter={true}
 				showTextFilter={true}
 				dateFilterLabel="Last updated date"
+				navigatorsOrder={guidanceNavigatorsOrder}
 			/>
 		).rerender;
 	});
@@ -54,6 +68,7 @@ describe("SearchListFilters", () => {
 					navigators={sampleData.navigators as unknown as Navigator[]}
 					showDateFilter={false}
 					showTextFilter={true}
+					navigatorsOrder={guidanceNavigatorsOrder}
 				/>
 			);
 
@@ -78,17 +93,18 @@ describe("SearchListFilters", () => {
 					showDateFilter={true}
 					showTextFilter={false}
 					queryText="diabetes"
+					navigatorsOrder={guidanceNavigatorsOrder}
 				/>
 			);
 
 			expect(
-				screen.queryByRole("button", {
+				screen.getByRole("button", {
 					name: /apply date filters/i,
 				})
 			).not.toBeNull();
 
-			expect(screen.queryByLabelText(/from date/i)).toBeInTheDocument();
-			expect(screen.queryByLabelText(/to date/i)).toBeInTheDocument();
+			expect(screen.getByLabelText(/from date/i)).toBeInTheDocument();
+			expect(screen.getByLabelText(/to date/i)).toBeInTheDocument();
 		});
 
 		it("should NOT show date filter when show date filter prop is false", () => {
@@ -99,6 +115,7 @@ describe("SearchListFilters", () => {
 					showDateFilter={false}
 					showTextFilter={false}
 					queryText="diabetes"
+					navigatorsOrder={guidanceNavigatorsOrder}
 				/>
 			);
 
@@ -122,6 +139,7 @@ describe("SearchListFilters", () => {
 					showDateFilter={false}
 					showTextFilter={false}
 					queryText="diabetes"
+					navigatorsOrder={guidanceNavigatorsOrder}
 				/>
 			);
 			const input = screen.getByLabelText("Antimicrobial prescribing (21)");
@@ -143,6 +161,7 @@ describe("SearchListFilters", () => {
 					showDateFilter={false}
 					showTextFilter={false}
 					queryText="diabetes"
+					navigatorsOrder={guidanceNavigatorsOrder}
 				/>
 			);
 
@@ -157,7 +176,7 @@ describe("SearchListFilters", () => {
 			).toBeNull();
 
 			expect(
-				screen.queryByRole("button", {
+				screen.getByRole("button", {
 					name: /filter/i,
 				})
 			).not.toBeNull();
@@ -207,6 +226,7 @@ describe("SearchListFilters", () => {
 					showDateFilter={false}
 					showTextFilter={false}
 					navigatorShortNamesToExclude="gst"
+					navigatorsOrder={guidanceNavigatorsOrder}
 				/>
 			);
 

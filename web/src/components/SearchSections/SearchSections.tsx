@@ -29,15 +29,15 @@ export const SearchSections: FC<SearchSectionsProps> = ({
 	guidanceRef,
 }) => {
 	const keyLink = useMemo(() => {
-		const recLink = subSections.find(
-			keyLinkFinder(recommendationsChapterLinkRegex)
-		);
+		const recLink =
+			subSections &&
+			subSections.find(keyLinkFinder(recommendationsChapterLinkRegex));
 
 		if (recLink) return { text: "View recommendations", url: recLink.url };
 
-		const qsLink = subSections.find(
-			keyLinkFinder(qualityStatementsChapterLinkRegex)
-		);
+		const qsLink =
+			subSections &&
+			subSections.find(keyLinkFinder(qualityStatementsChapterLinkRegex));
 
 		if (qsLink) return { text: "View quality statements", url: qsLink.url };
 		return null;
@@ -47,10 +47,10 @@ export const SearchSections: FC<SearchSectionsProps> = ({
 		<div className={styles.wrapper}>
 			{keyLink && (
 				<Link to={keyLink.url} className={styles.keyLink}>
-					<a>
+					<>
 						{keyLink.text}
 						<span className="visually-hidden">{` for ${guidanceRef}`}</span>
-					</a>
+					</>
 				</Link>
 			)}
 			<details className={styles.details}>
@@ -68,11 +68,12 @@ export const SearchSections: FC<SearchSectionsProps> = ({
 				>
 					{guidanceRef && <h4>Sections for {guidanceRef}</h4>}
 					<ul className="list list--unstyled">
-						{subSections.map((subSection, index) => (
-							<li key={index}>
-								<a href={subSection.url}>{subSection.title}</a>
-							</li>
-						))}
+						{subSections &&
+							subSections.map((subSection, index) => (
+								<li key={index}>
+									<a href={subSection.url}>{subSection.title}</a>
+								</li>
+							))}
 					</ul>
 				</Panel>
 			</details>
