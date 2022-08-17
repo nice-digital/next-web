@@ -12,10 +12,8 @@ import {
 	SearchResults,
 	getSearchUrl,
 	getActiveModifiers,
-	removeQueryParam,
 	SearchUrl,
 	SearchResultsSuccess,
-	upsertQueryParam,
 	getUrlPathAndQuery,
 	Navigator,
 } from "@nice-digital/search-client";
