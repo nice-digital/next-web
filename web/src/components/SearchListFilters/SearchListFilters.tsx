@@ -88,29 +88,11 @@ export const SearchListFilters: FC<SearchListFiltersProps> = ({
 		"Last 3 years",
 	];
 
-	// const refs: React.MutableRefObject<
-	// RefObject<{
-	// 		i: string;
-	// 		current: typeof FilterOption;
-	// 	}>[]
-	// > = useRef([createRef(), createRef(), createRef(), createRef()]);
-
-	const refs: React.MutableRefObject<RefObject<typeof FilterOption>[]> = useRef(
-		[createRef(), createRef(), createRef(), createRef()]
-	);
-
-	const unCheck = (index: number, displayName: string) => {
-		// console.log("you clicked ", index, " ", displayName, " ", e);
-		// console.log(refs);
-
-		// refs.current.forEach((node) => {
-		// 	console.log(node.current);
-		// });
+	//TODO make a more reacty fix for lastUpdated filter checkbox multiple selection issue
+	const unCheckLastUpdatedDates = () => {
 		const checkedElements = document.querySelectorAll(
 			'input[type="checkbox"][name="drm"]:checked'
 		);
-
-		console.log({ checkedElements });
 
 		checkedElements.forEach((element) => {
 			const el = element as HTMLInputElement;
@@ -176,26 +158,20 @@ export const SearchListFilters: FC<SearchListFiltersProps> = ({
 									lastUpdatedModifiersSortOrder.indexOf(a.displayName) -
 									lastUpdatedModifiersSortOrder.indexOf(b.displayName)
 							)
-							.map((modifier, index) => {
-								return shortName == "drm" ? (
+							.map((modifier) => {
+								const lastUpdatedDateProps =
+									shortName == "drm"
+										? { onClick: () => unCheckLastUpdatedDates() }
+										: null;
+
+								return (
 									<FilterOption
 										key={modifier.displayName}
 										isSelected={modifier.active}
 										onChanged={doClientSideFormSubmit}
 										groupId={shortName}
 										value={modifier.displayName}
-										onClick={() => unCheck(index, modifier.displayName)}
-										ref={refs.current[index]}
-									>
-										{`${modifier.displayName} (${modifier.resultCount})`}
-									</FilterOption>
-								) : (
-									<FilterOption
-										key={modifier.displayName}
-										isSelected={modifier.active}
-										onChanged={doClientSideFormSubmit}
-										groupId={shortName}
-										value={modifier.displayName}
+										{...lastUpdatedDateProps}
 									>
 										{`${modifier.displayName} (${modifier.resultCount})`}
 									</FilterOption>
