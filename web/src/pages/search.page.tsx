@@ -30,7 +30,7 @@ import { logger } from "@/logger";
 import { dateFormatShort } from "@/utils/constants";
 
 const searchUrlDefaults = {
-	ps: 10,
+	ps: 15,
 };
 
 export interface SearchPageProps {
