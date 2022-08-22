@@ -1,13 +1,17 @@
 import serialize from "form-serialize";
 import { useRouter } from "next/router";
-import React, { createRef, FC, useCallback } from "react";
+import React, { createRef, FC, useCallback, useState } from "react";
 
 import {
 	FilterPanel,
 	FilterGroup,
 	FilterOption,
 } from "@nice-digital/nds-filters";
-import { Navigator, KnownOrModifierKeys } from "@nice-digital/search-client";
+import {
+	Navigator,
+	KnownOrModifierKeys,
+	Modifier,
+} from "@nice-digital/search-client";
 
 import { InlineTextFilter } from "@/components/InlineTextFilter/InlineTextFilter";
 import { SkipLink } from "@/components/SkipLink/SkipLink";
@@ -54,12 +58,26 @@ export const SearchListFilters: FC<SearchListFiltersProps> = ({
 	const router = useRouter(),
 		formRef = createRef<HTMLFormElement>();
 
-	const doClientSideFormSubmit = useCallback(() => {
-		if (formRef.current) {
-			const url = serialize(formRef.current);
-			router.push(url ? "?" + url : "", undefined, { scroll: false });
-		}
-	}, [formRef, router]);
+	const [lastUpdatedChecked, setLastUpdatedChecked] = useState({});
+
+	const doClientSideFormSubmit = useCallback(
+		(lastUpdated?: string | null) => {
+			Array.prototype.forEach.call(formRef.current, (element) => {
+				if (element.name === "drm" && element.value !== lastUpdated) {
+					element.checked = false;
+				}
+			});
+
+			if (lastUpdated && formRef.current) {
+				setLastUpdatedChecked(lastUpdated);
+			}
+			if (formRef.current) {
+				const url = serialize(formRef.current);
+				router.push(url ? "?" + url : "", undefined, { scroll: false });
+			}
+		},
+		[formRef, router]
+	);
 
 	const formSubmitHandler = useCallback(
 		(e: React.FormEvent<HTMLFormElement>) => {
@@ -78,16 +96,21 @@ export const SearchListFilters: FC<SearchListFiltersProps> = ({
 		"Last 3 years",
 	];
 
-	//TODO make a more reacty fix for lastUpdated filter checkbox multiple selection issue
-	const unCheckLastUpdatedDates = () => {
-		const checkedElements = document.querySelectorAll(
-			'input[type="checkbox"][name="drm"]:checked'
-		);
-
-		checkedElements.forEach((element) => {
-			const el = element as HTMLInputElement;
-			el.checked = false;
-		});
+	const checkActive = (
+		shortName: string,
+		modifier: Modifier,
+		modifiers: Modifier[]
+	) => {
+		if (shortName == "drm" && lastUpdatedChecked) {
+			modifiers.forEach((modifier) => {
+				if (modifier.displayName !== lastUpdatedChecked) {
+					modifier.active = false;
+				}
+			});
+			return modifier.displayName === lastUpdatedChecked;
+		} else {
+			return modifier.active;
+		}
 	};
 
 	return (
@@ -149,19 +172,20 @@ export const SearchListFilters: FC<SearchListFiltersProps> = ({
 									lastUpdatedModifiersSortOrder.indexOf(b.displayName)
 							)
 							.map((modifier) => {
-								const lastUpdatedDateProps =
-									shortName == "drm"
-										? { onClick: () => unCheckLastUpdatedDates() }
-										: null;
-
 								return (
 									<FilterOption
 										key={modifier.displayName}
-										isSelected={modifier.active}
-										onChanged={doClientSideFormSubmit}
+										isSelected={
+											checkActive(shortName, modifier, modifiers) &&
+											modifier.active
+										}
+										onChanged={() => {
+											doClientSideFormSubmit(
+												shortName == "drm" ? modifier.displayName : null
+											);
+										}}
 										groupId={shortName}
 										value={modifier.displayName}
-										{...lastUpdatedDateProps}
 									>
 										{`${modifier.displayName} (${modifier.resultCount})`}
 									</FilterOption>
