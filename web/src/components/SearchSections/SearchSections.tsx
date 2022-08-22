@@ -1,5 +1,5 @@
 import classnames from "classnames";
-import { FC, useMemo } from "react";
+import { FC, useMemo, useState } from "react";
 
 import ChevronRight from "@nice-digital/icons/lib/ChevronDown";
 import { Panel } from "@nice-digital/nds-panel";
@@ -28,6 +28,8 @@ export const SearchSections: FC<SearchSectionsProps> = ({
 	subSections,
 	guidanceRef,
 }) => {
+	const [isExpanded, setIsExpanded] = useState(false);
+
 	const keyLink = useMemo(() => {
 		const recLink =
 			subSections &&
@@ -53,11 +55,14 @@ export const SearchSections: FC<SearchSectionsProps> = ({
 					</>
 				</Link>
 			)}
-			<details className={styles.details}>
+			<details
+				className={styles.details}
+				onClick={() => setIsExpanded(!isExpanded)}
+			>
 				<summary
 					className={classnames(["btn btn--inverse", styles.detailSummary])}
 				>
-					Show all sections
+					{isExpanded ? "Hide" : "Show"} all sections
 					<ChevronRight />
 				</summary>
 				<Panel
