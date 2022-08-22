@@ -100,12 +100,8 @@ export const SearchListFilters: FC<SearchListFiltersProps> = ({
 		"Last 3 years",
 	];
 
-	const checkActive = (
-		shortName: string,
-		modifier: Modifier,
-		modifiers: Modifier[]
-	) => {
-		if (shortName == "drm" && lastUpdatedChecked) {
+	const checkActive = (modifier: Modifier, modifiers: Modifier[]) => {
+		if (lastUpdatedChecked) {
 			modifiers.forEach((modifier) => {
 				if (modifier.displayName !== lastUpdatedChecked) {
 					modifier.active = false;
@@ -181,8 +177,7 @@ export const SearchListFilters: FC<SearchListFiltersProps> = ({
 										key={modifier.displayName}
 										isSelected={
 											shortName == "drm"
-												? checkActive(shortName, modifier, modifiers) &&
-												  modifier.active
+												? checkActive(modifier, modifiers) && modifier.active
 												: modifier.active
 										}
 										onChanged={() => {
