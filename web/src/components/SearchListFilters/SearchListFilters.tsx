@@ -17,7 +17,7 @@ import { ToFromDateFilters } from "@/components/ToFromDateFilters/ToFromDateFilt
 // const navigatorsOrder = ["nai", "tt", "tsd", "ndt", "ngt", "nat"];
 
 /** Some navigators are less used than others so collapse them by default */
-const navigatorsCollapsedByDefault = ["ngt", "nat"];
+const navigatorsCollapsedByDefault = ["ngt", "nat", "drm", "gst"];
 
 export interface SearchListFiltersProps {
 	numActiveModifiers: number;
