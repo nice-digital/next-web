@@ -63,7 +63,11 @@ export const SearchListFilters: FC<SearchListFiltersProps> = ({
 	const doClientSideFormSubmit = useCallback(
 		(lastUpdated?: string | null) => {
 			Array.prototype.forEach.call(formRef.current, (element) => {
-				if (element.name === "drm" && element.value !== lastUpdated) {
+				if (
+					lastUpdated &&
+					element.name === "drm" &&
+					element.value !== lastUpdated
+				) {
 					element.checked = false;
 				}
 			});
@@ -176,8 +180,10 @@ export const SearchListFilters: FC<SearchListFiltersProps> = ({
 									<FilterOption
 										key={modifier.displayName}
 										isSelected={
-											checkActive(shortName, modifier, modifiers) &&
-											modifier.active
+											shortName == "drm"
+												? checkActive(shortName, modifier, modifiers) &&
+												  modifier.active
+												: modifier.active
 										}
 										onChanged={() => {
 											doClientSideFormSubmit(
