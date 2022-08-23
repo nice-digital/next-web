@@ -58,6 +58,7 @@ export const SearchSections: FC<SearchSectionsProps> = ({
 			<details
 				className={styles.details}
 				onClick={() => setIsExpanded(!isExpanded)}
+				open={isExpanded}
 			>
 				<summary
 					className={classnames(["btn btn--inverse", styles.detailSummary])}
