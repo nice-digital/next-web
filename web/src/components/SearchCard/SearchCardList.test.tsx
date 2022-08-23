@@ -46,7 +46,7 @@ describe("SearchCard", () => {
 		).toHaveAttribute("href", "/guidance/ng100");
 	});
 
-	it("should append (PDF) to search result title if it's a link to a PDF", () => {
+	it("should append (PDF) to search result title if it links to a PDF", () => {
 		render(<SearchCardList documents={[pdf]} />);
 		const resultTitle = screen.getByText((content, element) => {
 			const theText =
