@@ -61,6 +61,7 @@ export const SearchSections: FC<SearchSectionsProps> = ({
 			>
 				<summary
 					className={classnames(["btn btn--inverse", styles.detailSummary])}
+					aria-expanded={isExpanded}
 				>
 					{isExpanded ? "Hide" : "Show"} all sections
 					<ChevronRight />
