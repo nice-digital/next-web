@@ -91,6 +91,10 @@ function searchFormatMeta(item: Document): Array<FormattedMetaItem> {
 	}
 }
 
+const formatTitle = (id: string, title: string): string => {
+	return id.slice(-4) == ".pdf" ? `${title} (PDF)` : title;
+};
+
 export const SearchCardList: FC<SearchCardListProps> = ({ documents }) => {
 	return (
 		<ol className={styles.list}>
@@ -111,7 +115,13 @@ export const SearchCardList: FC<SearchCardListProps> = ({ documents }) => {
 						<Card
 							className={styles.card}
 							elementType="div"
-							headingText={<span dangerouslySetInnerHTML={{ __html: title }} />}
+							headingText={
+								<span
+									dangerouslySetInnerHTML={{
+										__html: formatTitle(item.contentId, title),
+									}}
+								/>
+							}
 							headinglink={pathAndQuery}
 							summary={<span dangerouslySetInnerHTML={{ __html: teaser }} />}
 							link={{

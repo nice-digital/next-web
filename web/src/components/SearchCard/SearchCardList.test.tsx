@@ -11,6 +11,7 @@ import {
 	uncategorisedDoc,
 	guidanceDocMatchingDates,
 	unpublishedDoc,
+	pdf,
 } from "../../__mocks__/__data__/search/documents/";
 
 const mockDocuments = [
@@ -18,6 +19,7 @@ const mockDocuments = [
 	guidanceDocNonMatchingDates,
 	qualityStandardDoc,
 	uncategorisedDoc,
+	pdf,
 ] as unknown as Document[];
 
 describe("SearchCard", () => {
@@ -42,6 +44,18 @@ describe("SearchCard", () => {
 				name: "Rheumatoid arthritis in adults: management ( NG100 )",
 			})
 		).toHaveAttribute("href", "/guidance/ng100");
+	});
+
+	it("should append (PDF) to search result title if it's a link to a PDF", () => {
+		render(<SearchCardList documents={[pdf]} />);
+		const resultTitle = screen.getByText((content, element) => {
+			const theText =
+				element?.innerHTML === "<b>NICE</b> impact: <b>maternity</b> (PDF)";
+
+			return theText;
+		});
+
+		expect(resultTitle).toBeInTheDocument();
 	});
 
 	it("should render metadata", () => {
