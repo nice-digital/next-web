@@ -154,7 +154,7 @@ export const SearchListFilters: FC<SearchListFiltersProps> = ({
 						navigatorsOrder.indexOf(a.shortName as KnownOrModifierKeys) -
 						navigatorsOrder.indexOf(b.shortName as KnownOrModifierKeys)
 				)
-				.map(({ shortName, displayName, modifiers }, index) => (
+				.map(({ shortName, displayName, modifiers }) => (
 					<FilterGroup
 						key={shortName}
 						heading={displayName}
