@@ -165,6 +165,8 @@ export function Search({
 		return null;
 	};
 
+	// const window.dataLayer = window.dataLayer || [];
+
 	return (
 		<>
 			<NextSeo
@@ -239,6 +241,11 @@ export function Search({
 										onSelected: () => {
 											// eslint-disable-next-line @typescript-eslint/no-unused-vars
 											const { s, ...modifiedQuery } = query;
+											window.dataLayer &&
+												window.dataLayer.push({
+													event: "sort",
+													sort_by: "relevance",
+												});
 											push({
 												query: modifiedQuery,
 											});
@@ -249,6 +256,11 @@ export function Search({
 										label: "Date",
 										value: "date",
 										onSelected: () => {
+											window.dataLayer &&
+												window.dataLayer.push({
+													event: "sort",
+													sort_by: "date",
+												});
 											push({ query: { ...query, s: "date" } });
 										},
 									},

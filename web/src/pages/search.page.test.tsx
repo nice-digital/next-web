@@ -1,4 +1,4 @@
-import mockDate from "mockdate";
+import userEvent from "@testing-library/user-event";
 import { useRouter } from "next/router";
 
 import {
@@ -20,26 +20,52 @@ import SearchPage from "./search.page";
 	query: "",
 	asPath: "",
 	push: jest.fn(),
+	events: {
+		on: jest.fn(),
+		off: jest.fn(),
+	},
+	beforePopState: jest.fn(() => null),
+	prefetch: jest.fn(() => null),
 }));
 
 describe("search", () => {
 	describe("SEO", () => {
-		let container: HTMLElement;
-		beforeEach(() => {
-			mockDate.set("2020-11-22");
+		it("should render 'Search results' in the page title", async () => {
+			render(
+				<SearchPage
+					activeModifiers={[]}
+					results={sampleData as unknown as SearchResultsSuccess}
+					searchUrl={{ route: "/search?q=liver+cancer" } as SearchUrl}
+				/>
+			);
+			await waitFor(() => {
+				expect(document.title).toStartWith("Search results");
+			});
+		});
+	});
 
-			// eslint-disable-next-line testing-library/no-render-in-setup
-			container = render(
+	describe("Sorting", () => {
+		it("should push sort event to the data layer", async () => {
+			window.dataLayer = [];
+			render(
 				<SearchPage
 					activeModifiers={[]}
 					results={sampleData as unknown as SearchResultsSuccess}
 					searchUrl={{ route: "/search?q=" } as SearchUrl}
 				/>
-			).container;
-		});
-		it.skip("should render 'Search results' in the page title", async () => {
+			);
+
+			const sortSelect = screen.getByRole("combobox", {
+				name: /sort by/i,
+			});
+
+			userEvent.selectOptions(sortSelect, "relevance");
+
 			await waitFor(() => {
-				expect(document.title).toStartWith("Search results");
+				expect(window.dataLayer[0]).toStrictEqual({
+					event: "sort",
+					sort_by: "relevance",
+				});
 			});
 		});
 	});
