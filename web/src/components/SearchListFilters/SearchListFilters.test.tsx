@@ -233,7 +233,7 @@ describe("SearchListFilters", () => {
 			expect(screen.queryByLabelText(/Published/)).toBeNull();
 		});
 
-		it("should push an event to the data layer when checked", async () => {
+		it("should push an event to the data layer when checkbox checked", async () => {
 			window.dataLayer = [];
 			rerender(
 				<SearchListFilters
@@ -251,6 +251,7 @@ describe("SearchListFilters", () => {
 			});
 
 			userEvent.click(checkbox);
+			expect(checkbox).toBeChecked();
 
 			expect(window.dataLayer[0]).toStrictEqual({
 				event: "search.filter-select",
