@@ -181,6 +181,12 @@ export const SearchListFilters: FC<SearchListFiltersProps> = ({
 												: modifier.active
 										}
 										onChanged={() => {
+											window.dataLayer &&
+												window.dataLayer.push({
+													event: "search.filter-select",
+													filter: modifier.displayName,
+													action: modifier.active ? "deselected" : "selected",
+												});
 											doClientSideFormSubmit(
 												shortName == "drm" ? modifier.displayName : null
 											);

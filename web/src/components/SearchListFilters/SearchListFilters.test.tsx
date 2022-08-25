@@ -7,7 +7,7 @@ import {
 	Navigator,
 } from "@nice-digital/search-client/types";
 
-import { render, screen, within } from "@/test-utils";
+import { render, screen, within, waitFor } from "@/test-utils";
 
 import sampleData from "../../__mocks__/__data__/search/guidance-published.json";
 
@@ -233,12 +233,39 @@ describe("SearchListFilters", () => {
 			expect(screen.queryByLabelText(/Published/)).toBeNull();
 		});
 
-		it.skip("should render filter groups in correct order", () => {
+		it("should push an event to the data layer when checked", async () => {
+			window.dataLayer = [];
+			rerender(
+				<SearchListFilters
+					numActiveModifiers={2}
+					navigators={sampleData.navigators as unknown as Navigator[]}
+					showDateFilter={false}
+					showTextFilter={false}
+					navigatorShortNamesToExclude="gst"
+					navigatorsOrder={guidanceNavigatorsOrder}
+				/>
+			);
+
+			const checkbox = screen.getByRole("checkbox", {
+				name: "Antimicrobial prescribing (21)",
+			});
+
+			userEvent.click(checkbox);
+
+			expect(window.dataLayer[0]).toStrictEqual({
+				event: "search.filter-select",
+				filter: "Antimicrobial prescribing",
+				action: "selected",
+			});
+		});
+
+		it("should render filter groups in correct order", () => {
 			const filterGroupHeadings = within(screen.getByRole("form"))
 				.getAllByRole("heading", { level: 3 })
 				.map((el) => el.textContent || "");
 			expect(filterGroupHeadings).toStrictEqual([
 				"Last updated date ",
+				"Status (1 selected)",
 				"Area of interest ",
 				"Type (1 selected)",
 				"Guidance programme (1 selected)",
