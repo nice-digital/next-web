@@ -39,7 +39,6 @@ export interface SearchListFiltersProps {
 	navigatorsOrder: KnownOrModifierKeys[];
 }
 
-//TODO remove default and make pages responsible for their own ordering
 export const SearchListFilters: FC<SearchListFiltersProps> = ({
 	numActiveModifiers,
 	navigators,

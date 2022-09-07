@@ -8,6 +8,8 @@
   align-items: flex-start;
   display: flex;
   flex-direction: column;
+  padding-bottom: utils.rem(spacing.$medium);
+  padding-top: utils.rem(spacing.$medium);
 
   @include media-queries.mq($from: xs) {
     flex-direction: row;

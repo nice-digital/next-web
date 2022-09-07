@@ -5,6 +5,8 @@
 
 .card {
   position: relative;
+  margin-bottom: 0;
+  margin-top: 0;
 }
 
 .list {
@@ -16,6 +18,7 @@
 
 .listItem {
   border-bottom: 1px solid global.$custom-grey-1;
+  padding-top: utils.rem(spacing.$medium);
   padding-bottom: utils.rem(spacing.$medium);
   position: relative;
 }
