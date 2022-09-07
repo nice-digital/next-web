@@ -12,6 +12,7 @@ import { GoogleTagManager } from "@/components/GoogleTagManager/GoogleTagManager
 import { logger } from "@/logger";
 
 import { getDefaultSeoConfig } from "./next-seo.config";
+import { publicRuntimeConfig } from "@/config";
 
 interface AppState {
 	/**
@@ -27,14 +28,6 @@ const AppFooter: FC = () => (
 		<Footer />
 	</>
 );
-
-const headerProps: HeaderProps = {
-	search: {
-		url: "/search",
-		autocomplete: "/autocomplete",
-	},
-	auth: { provider: "niceAccounts", environment: "live" },
-};
 
 // eslint-disable-next-line @typescript-eslint/ban-types
 class NextWebApp extends App<{}, {}, AppState> {
@@ -109,6 +102,25 @@ class NextWebApp extends App<{}, {}, AppState> {
 	}
 
 	render(): JSX.Element {
+		const queryTerm = this.props.router.query.q as string;
+
+		const headerProps: HeaderProps = {
+			search: {
+				url: "/search",
+				autocomplete:
+					publicRuntimeConfig.search.baseURL + "/typeahead?index=nice",
+				query: queryTerm,
+				onSearching: (e): void => {
+					// this.props.router.push("/search/?q=" + encodeURIComponent(e.query));
+					this.props.router.push({
+						pathname: "/search",
+						query: { q: e.query },
+					});
+				},
+			},
+			auth: { provider: "niceAccounts", environment: "live" },
+		};
+
 		const {
 				Component,
 				pageProps,

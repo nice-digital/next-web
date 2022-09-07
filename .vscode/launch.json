@@ -5,6 +5,19 @@
   "version": "0.2.0",
   "configurations": [
     {
+      "name": "Next - Debug with Chrome",
+      "type": "chrome",
+      "userDataDir": true,
+      "request": "launch",
+      "url": "http://localhost:4000",
+      "webRoot": "${workspaceFolder}/web",
+      "presentation": {
+        "hidden": false,
+        "group": "Static site",
+        "order": 1
+      }
+    },
+    {
       "type": "node",
       "request": "launch",
       "name": "Functional tests - current feature",

@@ -1,0 +1,24 @@
+@use '@nice-digital/nds-core/scss/colours/tokens/global';
+@use '@nice-digital/nds-core/scss/colours';
+@use '@nice-digital/nds-core/scss/spacing';
+@use '@nice-digital/nds-core/scss/utils';
+
+.card {
+  margin-bottom: 0;
+  margin-top: 0;
+  position: relative;
+}
+
+.list {
+  list-style: none;
+  margin: 0;
+  max-width: unset;
+  padding: 0;
+}
+
+.listItem {
+  border-bottom: 1px solid global.$custom-grey-1;
+  padding-bottom: utils.rem(spacing.$medium);
+  padding-top: utils.rem(spacing.$medium);
+  position: relative;
+}
