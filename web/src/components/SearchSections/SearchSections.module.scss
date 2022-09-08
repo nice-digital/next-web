@@ -1,0 +1,82 @@
+@use '@nice-digital/nds-core/scss/colours/tokens/global';
+@use '@nice-digital/nds-core/scss/colours';
+@use '@nice-digital/nds-core/scss/spacing';
+@use '@nice-digital/nds-core/scss/utils';
+@use '@nice-digital/nds-core/scss/media-queries';
+
+.wrapper {
+  align-items: flex-start;
+  display: flex;
+  flex-direction: column;
+  padding-bottom: utils.rem(spacing.$medium);
+  padding-top: utils.rem(spacing.$medium);
+
+  @include media-queries.mq($from: xs) {
+    flex-direction: row;
+  }
+}
+
+.keyLink {
+  margin-bottom: utils.rem(spacing.$small);
+  // margin-right: utils.rem(spacing.$small);
+  padding-top: utils.rem(spacing.$small);
+
+  @include media-queries.mq($from: xs) {
+    flex: 1 0 50%;
+  }
+
+  @include media-queries.mq($from: md) {
+    flex-basis: 33%;
+  }
+
+  @include media-queries.mq($from: lg) {
+    flex-basis: 25%;
+  }
+}
+
+.details {
+  flex: 1 1 100%;
+
+  summary {
+    align-items: center;
+    display: inline-flex;
+    margin: 0;
+
+    svg {
+      margin: 0;
+      margin-left: utils.rem(spacing.$small);
+    }
+  }
+
+  &[open] summary {
+    svg {
+      transform: rotate(180deg);
+    }
+  }
+}
+
+.detailSummary {
+  margin-left: utils.rem(spacing.$medium) !important;
+}
+
+.panel {
+  margin-top: utils.rem(spacing.$medium);
+
+  @include media-queries.mq($from: xs) {
+    margin-left: -100%;
+  }
+
+  @include media-queries.mq($from: md) {
+    margin-left: -50%;
+  }
+
+  @include media-queries.mq($from: lg) {
+    margin-left: 0;
+  }
+}
+
+.withKeyLink {
+  @include media-queries.mq($from: lg) {
+    margin-left: -33.3%;
+  }
+}

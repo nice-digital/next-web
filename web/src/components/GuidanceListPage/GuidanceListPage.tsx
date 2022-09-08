@@ -18,10 +18,10 @@ import {
 import { Announcer } from "@/components/Announcer/Announcer";
 import { CopyToClipboard } from "@/components/CopyToClipboard/CopyToClipboard";
 import { ErrorPageContent } from "@/components/ErrorPageContent/ErrorPageContent";
-import { GuidanceListFilters } from "@/components/GuidanceListPage/GuidanceListFilters/GuidanceListFilters";
 import { GuidanceListFilterSummary } from "@/components/GuidanceListPage/GuidanceListFilterSummary/GuidanceListFilterSummary";
 import { GuidanceListNav } from "@/components/GuidanceListPage/GuidanceListNav/GuidanceListNav";
 import { Link, ScrollToLink } from "@/components/Link/Link";
+import { SearchListFilters } from "@/components/SearchListFilters/SearchListFilters";
 import { SearchPagination } from "@/components/SearchPagination/SearchPagination";
 import { SkipLink } from "@/components/SkipLink/SkipLink";
 
@@ -53,11 +53,16 @@ export type GetGuidanceListPageOptions = {
 		label: string;
 	};
 	showDateFilter: boolean;
+	showTextFilter?: boolean;
 	dateFilterLabel?: string;
 	useFutureDates?: boolean;
 	tableBodyRender: (documents: Document[]) => JSX.Element;
 } & (
-	| { showDateFilter: true; dateFilterLabel: string; useFutureDates: boolean }
+	| {
+			showDateFilter: true;
+			dateFilterLabel: string;
+			useFutureDates: boolean;
+	  }
 	| {
 			showDateFilter: false;
 	  }
@@ -174,7 +179,7 @@ export const getGuidanceListPage =
 						elementType="section"
 						aria-label="Filter results"
 					>
-						<GuidanceListFilters
+						<SearchListFilters
 							numActiveModifiers={activeModifiers.length}
 							navigators={navigators}
 							pageSize={pageSize === defaultPageSize ? "" : pageSize}
@@ -182,9 +187,12 @@ export const getGuidanceListPage =
 							queryText={q}
 							from={from}
 							to={to}
+							navigatorShortNamesToExclude="gst"
 							showDateFilter={showDateFilter}
+							showTextFilter={true}
 							dateFilterLabel={dateFilterLabel}
 							useFutureDates={useFutureDates}
+							navigatorsOrder={["nai", "tt", "tsd", "ndt", "ngt", "nat"]}
 						/>
 					</GridItem>
 
