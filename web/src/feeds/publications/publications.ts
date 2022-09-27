@@ -6,6 +6,7 @@ import {
 	AreaOfInterest,
 	AreasOfInterestList,
 	FeedPath,
+	ProductDetail,
 	ProductListLite,
 	ProductLite,
 	ProductType,
@@ -89,4 +90,23 @@ export const getAllAreasOfInterest = async (): Promise<AreaOfInterest[]> =>
 			)._embedded["nice.publications:area-of-interest-type-list"]._embedded[
 				"nice.publications:area-of-interest-type"
 			]
+	);
+
+/**
+ * Gets a product detail.
+ *
+ */
+export const getProductDetail = async (
+	productId: string
+): Promise<ProductDetail> =>
+	await getFeedBodyCached<ProductDetail>(
+		cacheKeyPrefix,
+		FeedPath.ProductDetail + productId,
+		longTTL,
+		async () =>
+			await getFeedBodyUnCached<ProductDetail>(
+				origin,
+				FeedPath.ProductDetail + productId,
+				apiKey
+			)
 	);

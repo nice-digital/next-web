@@ -4,6 +4,7 @@ export enum FeedPath {
 	ProductsLite = "/feeds/products-lite",
 	ProductTypes = "/feeds/producttypes",
 	AreasOfInterest = "/feeds/areaofinteresttypes",
+	ProductDetail = "/feeds/product/",
 }
 
 export enum ProductStatus {
@@ -218,3 +219,7 @@ export type ProductListLite = FeedContent<
 	"nice.publications:product-lite",
 	ProductLiteRaw
 >;
+
+export type ProductDetail = {
+	Title: string;
+};
