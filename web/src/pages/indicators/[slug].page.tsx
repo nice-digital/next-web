@@ -1,3 +1,4 @@
+import slugify from "@sindresorhus/slugify";
 import { GetServerSideProps } from "next";
 import React from "react";
 
@@ -16,7 +17,7 @@ export default function IndicatorsDetailsPage({
 	id,
 	product,
 }: IndicatorsDetailsPageProps): JSX.Element {
-	console.log({ product });
+	// console.log({ product });
 	return (
 		<>
 			<p>
@@ -38,11 +39,30 @@ export const getServerSideProps: GetServerSideProps = async ({ params }) => {
 
 	const [id, ...rest] = slug.split("-");
 
-	console.log(id);
-
 	const product = await getProductDetail(id);
 
-	const title = rest.join("-");
+	const titleExtractedFromSlug = rest.join("-").toLowerCase();
+
+	if (product && product.Id) {
+		const slugifiedProductTitle = slugify(product.Title);
+		if (titleExtractedFromSlug !== slugifiedProductTitle) {
+			const redirectUrl = id + "-" + slugifiedProductTitle;
+
+			return {
+				redirect: {
+					destination: redirectUrl,
+					permanent: false,
+				},
+			};
+		}
+	} else {
+		console.log(
+			"there is a problem with product ",
+			product.Message,
+			product.StatusCode
+		);
+		return { notFound: true };
+	}
 
 	return { props: { slug, id, product } };
 };
