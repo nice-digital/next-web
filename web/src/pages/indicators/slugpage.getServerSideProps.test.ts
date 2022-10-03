@@ -9,7 +9,7 @@ jest.mock("@/feeds/publications/publications", () => {
 		"@/feeds/publications/publications"
 	);
 
-	//Mock the default export and named export 'foo'
+	//Mock the getProductDetail export
 	return {
 		__esModule: true,
 		...originalModule,
