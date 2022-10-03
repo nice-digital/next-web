@@ -5,6 +5,7 @@ import { getFeedBodyCached, getFeedBodyUnCached } from "../";
 import {
 	AreaOfInterest,
 	AreasOfInterestList,
+	ErrorResponse,
 	FeedPath,
 	ProductDetail,
 	ProductListLite,
@@ -98,15 +99,22 @@ export const getAllAreasOfInterest = async (): Promise<AreaOfInterest[]> =>
  */
 export const getProductDetail = async (
 	productId: string
-): Promise<ProductDetail> =>
-	await getFeedBodyCached<ProductDetail>(
+): Promise<ProductDetail | ErrorResponse> =>
+	//TODO don't cache error response
+	await getFeedBodyCached<ProductDetail | ErrorResponse>(
 		cacheKeyPrefix,
 		FeedPath.ProductDetail + productId,
 		longTTL,
 		async () =>
-			await getFeedBodyUnCached<ProductDetail>(
+			await getFeedBodyUnCached<ProductDetail | ErrorResponse>(
 				origin,
 				FeedPath.ProductDetail + productId,
 				apiKey
 			)
 	);
+
+export function isErrorResponse<TValidResponse>(
+	response: TValidResponse | ErrorResponse
+): response is ErrorResponse {
+	return (response as ErrorResponse).StatusCode !== undefined;
+}

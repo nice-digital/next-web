@@ -4,8 +4,11 @@ import React from "react";
 
 import {
 	getProductDetail,
+	isErrorResponse,
 	ProductDetail,
 } from "@/feeds/publications/publications";
+
+export const slugifyFunction = slugify;
 
 export type IndicatorsDetailsPageProps = {
 	slug: string;
@@ -28,34 +31,15 @@ export default function IndicatorsDetailsPage({
 }
 
 export const getServerSideProps: GetServerSideProps = async ({ params }) => {
-	if (!params) {
-		return { notFound: true };
-	}
-	const { slug } = params;
-
-	if (!slug || Array.isArray(slug)) {
+	if (!params || !params.slug || Array.isArray(params.slug)) {
 		return { notFound: true };
 	}
 
-	const [id, ...rest] = slug.split("-");
+	const [id, ...rest] = params.slug.split("-");
 
 	const product = await getProductDetail(id);
 
-	const titleExtractedFromSlug = rest.join("-").toLowerCase();
-
-	if (product && product.Id) {
-		const slugifiedProductTitle = slugify(product.Title);
-		if (titleExtractedFromSlug !== slugifiedProductTitle) {
-			const redirectUrl = id + "-" + slugifiedProductTitle;
-
-			return {
-				redirect: {
-					destination: redirectUrl,
-					permanent: false,
-				},
-			};
-		}
-	} else {
+	if (isErrorResponse(product)) {
 		console.log(
 			"there is a problem with product ",
 			product.Message,
@@ -63,6 +47,21 @@ export const getServerSideProps: GetServerSideProps = async ({ params }) => {
 		);
 		return { notFound: true };
 	}
+	const titleExtractedFromSlug = rest.join("-").toLowerCase();
 
-	return { props: { slug, id, product } };
+	//TODO consider early return when there is no product;
+
+	const slugifiedProductTitle = slugify(product.Title);
+	if (titleExtractedFromSlug !== slugifiedProductTitle) {
+		const redirectUrl = id + "-" + slugifiedProductTitle;
+
+		return {
+			redirect: {
+				destination: redirectUrl,
+				permanent: false,
+			},
+		};
+	}
+
+	return { props: { slug: params.slug, id, product } };
 };

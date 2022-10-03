@@ -221,8 +221,11 @@ export type ProductListLite = FeedContent<
 >;
 
 export type ProductDetail = {
-	StatusCode: string;
-	Message: string;
 	Title: string;
 	Id: string;
+};
+
+export type ErrorResponse = {
+	StatusCode: string;
+	Message: string;
 };
