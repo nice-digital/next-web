@@ -15,6 +15,7 @@ jest.mock("@/feeds/publications/publications", () => {
 		...originalModule,
 		getProductDetail: jest.fn(() => ({
 			Title: "Test title 1",
+			Id: "IND1",
 		})),
 	};
 });
@@ -23,8 +24,8 @@ describe("getGetServerSidePropsFunc", () => {
 	describe("Redirects", () => {
 		it("should return permanent redirect object URL with incorrect title", async () => {
 			const redirectResult = await getServerSideProps({
-				resolvedUrl: "/indicators/ind1-incorrect-slug-title",
-			} as GetServerSidePropsContext);
+				params: { slug: "ind1-incorrect-slug-title" },
+			} as unknown as GetServerSidePropsContext);
 
 			expect(redirectResult).toStrictEqual({
 				redirect: {
@@ -33,7 +34,22 @@ describe("getGetServerSidePropsFunc", () => {
 				},
 			});
 		});
-		it.todo("if id doesn't exist return not found");
+		it("should return 404 response status if Id doesn't exist", async () => {
+			const res = {
+				statusCode: 0,
+				setHeader: jest.fn() as GetServerSidePropsContext["res"]["setHeader"],
+			};
+
+			await getServerSideProps({
+				params: { slug: "nonExistingId99-test-title-1" },
+				res,
+			} as unknown as GetServerSidePropsContext);
+
+			console.log({ res });
+
+			expect(res.statusCode).toBe(404);
+		});
+
 		it.todo("id with no dash and title");
 
 		//TODO check logic for any missing cases

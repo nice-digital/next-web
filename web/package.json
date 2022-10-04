@@ -27,7 +27,7 @@
     "@nice-digital/design-system": "^4.0.0",
     "@nice-digital/global-nav": "^5.0.906",
     "@nice-digital/search-client": "^2.0.1470",
-    "@sindresorhus/slugify": "^2.1.0",
+    "@sindresorhus/slugify": "^1.1.2",
     "cache-manager": "^4.1.0",
     "cache-manager-fs-hash": "^1.0.0",
     "clipboard-polyfill": "^3.0.3",
