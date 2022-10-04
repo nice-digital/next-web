@@ -43,12 +43,13 @@ export const getServerSideProps: GetServerSideProps = async ({
 	const product = await getProductDetail(id);
 
 	if (isErrorResponse(product)) {
-		//TODO set correct response statusCode when product.Id is undefined?
-		res.statusCode = 404;
-
-		console.log({ product });
 		return { notFound: true };
 	}
+
+	if (product.Id !== id) {
+		return { notFound: true };
+	}
+
 	const titleExtractedFromSlug = rest.join("-").toLowerCase();
 
 	//TODO consider early return when there is no product;

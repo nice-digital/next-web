@@ -15,6 +15,7 @@ jest.mock("@/feeds/publications/publications", () => {
 		...originalModule,
 		getProductDetail: jest.fn(() => ({
 			Title: "Test title 1",
+			Id: "IND1",
 		})),
 	};
 });
@@ -33,20 +34,12 @@ describe("getGetServerSidePropsFunc", () => {
 				},
 			});
 		});
-		it("should return 404 response status if Id doesn't exist", async () => {
-			const res = {
-				statusCode: 0,
-				setHeader: jest.fn() as GetServerSidePropsContext["res"]["setHeader"],
-			};
-
-			await getServerSideProps({
+		it("should return notFound if Id doesn't exist", async () => {
+			const redirectResult = await getServerSideProps({
 				params: { slug: "nonExistingId99-test-title-1" },
-				res,
 			} as unknown as GetServerSidePropsContext);
 
-			console.log({ res });
-
-			expect(res.statusCode).toBe(404);
+			expect(redirectResult).toStrictEqual({ notFound: true });
 		});
 
 		it.todo("id with no dash and title");
