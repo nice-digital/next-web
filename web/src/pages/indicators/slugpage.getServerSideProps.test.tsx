@@ -1,8 +1,11 @@
-import slugify from "@sindresorhus/slugify";
+import { render } from "@testing-library/react";
 
-import { getServerSideProps } from "./[slug].page";
+import IndicatorsDetailsPage, {
+	getServerSideProps,
+	IndicatorsDetailsPageProps,
+} from "./[slug].page";
 
-import type { GetServerSidePropsContext, Redirect } from "next";
+import type { GetServerSidePropsContext } from "next";
 
 jest.mock("@/feeds/publications/publications", () => {
 	const originalModule = jest.requireActual(
@@ -20,7 +23,35 @@ jest.mock("@/feeds/publications/publications", () => {
 	};
 });
 
+const props: Required<IndicatorsDetailsPageProps> = {
+	slug: "/ind-1-test-title-1",
+	id: "IND1",
+	product: { Title: "/test", Id: "IND1" },
+};
+
+describe("IndicatorDetailPage", () => {
+	it("should match snapshot for main content", () => {
+		render(<IndicatorsDetailsPage {...props} />);
+
+		expect(document.body).toMatchSnapshot();
+	});
+});
+
 describe("getGetServerSidePropsFunc", () => {
+	it("should return a correct props when supplied with an id", async () => {
+		const result = await getServerSideProps({
+			params: { slug: "ind1-test-title-1" },
+		} as unknown as GetServerSidePropsContext);
+
+		expect(result).toStrictEqual({
+			props: {
+				slug: "ind1-test-title-1",
+				id: "ind1",
+				product: { Id: "IND1", Title: "Test title 1" },
+			},
+		});
+	});
+
 	describe("Redirects", () => {
 		it("should return permanent redirect object URL with incorrect title", async () => {
 			const redirectResult = await getServerSideProps({

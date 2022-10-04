@@ -1,0 +1,14 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`IndicatorDetailPage should match snapshot for main content 1`] = `
+<body>
+  <div>
+    <p>
+      Indicators details page id:
+      IND1
+       title:
+      /test
+    </p>
+  </div>
+</body>
+`;

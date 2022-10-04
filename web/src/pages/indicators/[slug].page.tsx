@@ -20,7 +20,6 @@ export default function IndicatorsDetailsPage({
 	id,
 	product,
 }: IndicatorsDetailsPageProps): JSX.Element {
-	// console.log({ product });
 	return (
 		<>
 			<p>
