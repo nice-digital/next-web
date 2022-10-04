@@ -15,7 +15,6 @@ jest.mock("@/feeds/publications/publications", () => {
 		...originalModule,
 		getProductDetail: jest.fn(() => ({
 			Title: "Test title 1",
-			Id: "IND1",
 		})),
 	};
 });

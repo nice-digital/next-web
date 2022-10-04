@@ -30,7 +30,10 @@ export default function IndicatorsDetailsPage({
 	);
 }
 
-export const getServerSideProps: GetServerSideProps = async ({ params }) => {
+export const getServerSideProps: GetServerSideProps = async ({
+	params,
+	res,
+}) => {
 	if (!params || !params.slug || Array.isArray(params.slug)) {
 		return { notFound: true };
 	}
@@ -40,11 +43,10 @@ export const getServerSideProps: GetServerSideProps = async ({ params }) => {
 	const product = await getProductDetail(id);
 
 	if (isErrorResponse(product)) {
-		console.log(
-			"there is a problem with product ",
-			product.Message,
-			product.StatusCode
-		);
+		//TODO set correct response statusCode when product.Id is undefined?
+		res.statusCode = 404;
+
+		console.log({ product });
 		return { notFound: true };
 	}
 	const titleExtractedFromSlug = rest.join("-").toLowerCase();
@@ -53,12 +55,12 @@ export const getServerSideProps: GetServerSideProps = async ({ params }) => {
 
 	const slugifiedProductTitle = slugify(product.Title);
 	if (titleExtractedFromSlug !== slugifiedProductTitle) {
-		const redirectUrl = id + "-" + slugifiedProductTitle;
+		const redirectUrl = "/indicators/" + id + "-" + slugifiedProductTitle;
 
 		return {
 			redirect: {
 				destination: redirectUrl,
-				permanent: false,
+				permanent: true,
 			},
 		};
 	}
