@@ -30,11 +30,13 @@ export default function IndicatorsDetailsPage({
 	);
 }
 
-export const getServerSideProps: GetServerSideProps = async ({
-	params,
-	res,
-}) => {
-	if (!params || !params.slug || Array.isArray(params.slug)) {
+export const getServerSideProps: GetServerSideProps = async ({ params }) => {
+	if (
+		!params ||
+		!params.slug ||
+		Array.isArray(params.slug) ||
+		!params.slug.includes("-")
+	) {
 		return { notFound: true };
 	}
 
@@ -42,11 +44,10 @@ export const getServerSideProps: GetServerSideProps = async ({
 
 	const product = await getProductDetail(id);
 
-	if (isErrorResponse(product)) {
-		return { notFound: true };
-	}
-
-	if (product.Id !== id) {
+	if (
+		isErrorResponse(product) ||
+		product.Id.toLowerCase() !== id.toLowerCase()
+	) {
 		return { notFound: true };
 	}
 

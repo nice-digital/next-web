@@ -42,7 +42,13 @@ describe("getGetServerSidePropsFunc", () => {
 			expect(redirectResult).toStrictEqual({ notFound: true });
 		});
 
-		it.todo("id with no dash and title");
+		it("should return notFound if an unhyphenated slug is used", async () => {
+			const redirectResult = await getServerSideProps({
+				params: { slug: "slugwithouthyphenation" },
+			} as unknown as GetServerSidePropsContext);
+
+			expect(redirectResult).toStrictEqual({ notFound: true });
+		});
 
 		//TODO check logic for any missing cases
 	});
