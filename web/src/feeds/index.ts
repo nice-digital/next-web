@@ -1,4 +1,7 @@
-import needle from "needle";
+// import needle from "needle";
+
+import axios, { type AxiosInstance, type AxiosError } from "axios";
+import applyCaseMiddleware from "axios-case-converter";
 
 import { cache, getCacheKey } from "@/cache";
 
@@ -8,19 +11,54 @@ import { cache, getCacheKey } from "@/cache";
  * @param path The path of the feed to request
  * @returns The body of the feed
  */
+// export const getFeedBodyUnCached = async <T>(
+// 	origin: string,
+// 	path: string,
+// 	apiKey: string
+// ): Promise<T> =>
+// 	(
+// 		await needle("get", origin + path, {
+// 			json: true,
+// 			headers: {
+// 				"Api-Key": apiKey,
+// 			},
+// 		})
+// 	).body as T;
+
+// TODO remove test code
+// https://alpha-publications.nice.org.uk/feeds/product/ind6
+// (async (apiKey) => {
+// 	const { data } = await client.get(
+// 		"https://alpha-publications.nice.org.uk/feeds/product/ind6",
+
+// 		{
+// 			headers: { "Api-Key": apiKey },
+// 		}
+// 	);
+// 	console.log("====================", data);
+// })();
+
+const client: AxiosInstance = applyCaseMiddleware(axios.create());
+
 export const getFeedBodyUnCached = async <T>(
 	origin: string,
 	path: string,
 	apiKey: string
-): Promise<T> =>
-	(
-		await needle("get", origin + path, {
-			json: true,
-			headers: {
-				"Api-Key": apiKey,
-			},
-		})
-	).body as T;
+): Promise<T> => {
+	// return client.get(origin + path, {
+	// 	headers: {
+	// 		"Api-Key": apiKey,
+	// 	},
+	// });
+
+	const { data } = await client.get(origin + path, {
+		headers: {
+			"Api-Key": apiKey,
+		},
+	});
+
+	return data;
+};
 
 /**
  * Gets the body of a feed from the cache, if it exists.

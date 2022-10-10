@@ -23,7 +23,7 @@ export default function IndicatorsDetailsPage({
 	return (
 		<>
 			<p>
-				Indicators details page id:{id} title:{product.Title}
+				Indicators details page id:{id} title:{product.title}
 			</p>
 		</>
 	);
@@ -45,7 +45,7 @@ export const getServerSideProps: GetServerSideProps = async ({ params }) => {
 
 	if (
 		isErrorResponse(product) ||
-		product.Id.toLowerCase() !== id.toLowerCase()
+		product.id.toLowerCase() !== id.toLowerCase()
 	) {
 		return { notFound: true };
 	}
@@ -54,7 +54,7 @@ export const getServerSideProps: GetServerSideProps = async ({ params }) => {
 
 	//TODO consider early return when there is no product;
 
-	const slugifiedProductTitle = slugify(product.Title);
+	const slugifiedProductTitle = slugify(product.title);
 	if (titleExtractedFromSlug !== slugifiedProductTitle) {
 		const redirectUrl = "/indicators/" + id + "-" + slugifiedProductTitle;
 

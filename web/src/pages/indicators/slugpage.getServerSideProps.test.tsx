@@ -17,8 +17,8 @@ jest.mock("@/feeds/publications/publications", () => {
 		__esModule: true,
 		...originalModule,
 		getProductDetail: jest.fn(() => ({
-			Title: "Test title 1",
-			Id: "IND1",
+			title: "Test title 1",
+			id: "IND1",
 		})),
 	};
 });
@@ -26,7 +26,7 @@ jest.mock("@/feeds/publications/publications", () => {
 const props: Required<IndicatorsDetailsPageProps> = {
 	slug: "/ind-1-test-title-1",
 	id: "IND1",
-	product: { Title: "/test", Id: "IND1" },
+	product: { title: "/test", id: "IND1" },
 };
 
 describe("IndicatorDetailPage", () => {
@@ -47,7 +47,7 @@ describe("getGetServerSidePropsFunc", () => {
 			props: {
 				slug: "ind1-test-title-1",
 				id: "ind1",
-				product: { Id: "IND1", Title: "Test title 1" },
+				product: { id: "IND1", title: "Test title 1" },
 			},
 		});
 	});

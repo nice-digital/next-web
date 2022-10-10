@@ -221,8 +221,8 @@ export type ProductListLite = FeedContent<
 >;
 
 export type ProductDetail = {
-	Title: string;
-	Id: string;
+	title: string;
+	id: string;
 };
 
 export type ErrorResponse = {
