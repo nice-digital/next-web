@@ -25,20 +25,20 @@ import { cache, getCacheKey } from "@/cache";
 // 		})
 // 	).body as T;
 
-// TODO remove test code
-// https://alpha-publications.nice.org.uk/feeds/product/ind6
-// (async (apiKey) => {
-// 	const { data } = await client.get(
-// 		"https://alpha-publications.nice.org.uk/feeds/product/ind6",
-
-// 		{
-// 			headers: { "Api-Key": apiKey },
-// 		}
-// 	);
-// 	console.log("====================", data);
-// })();
-
 const client: AxiosInstance = applyCaseMiddleware(axios.create());
+
+// TODO remove test code
+//alpha-publications.nice.org.uk/feeds/product/ind6
+(async (apiKey) => {
+	const { data } = await client.get(
+		"https://alpha-publications.nice.org.uk/feeds/product/ind6",
+
+		{
+			headers: { "Api-Key": apiKey },
+		}
+	);
+	console.log("====================", data);
+})();
 
 export const getFeedBodyUnCached = async <T>(
 	origin: string,

@@ -22,6 +22,7 @@ export default function IndicatorsDetailsPage({
 }: IndicatorsDetailsPageProps): JSX.Element {
 	return (
 		<>
+			<h1>{product.title}</h1>
 			<p>
 				Indicators details page id:{id} title:{product.title}
 			</p>
