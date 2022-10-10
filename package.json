@@ -5,7 +5,7 @@
   "description": "Monorepo for Next Web",
   "scripts": {
     "// TESTS": "",
-    "test": "cross-env NODE_OPTIONS=\"--experimental-vm-modules\" jest --silent --notify --detectOpenHandles",
+    "test": "jest --silent --notify --detectOpenHandles",
     "test:web": "jest --silent --notify --detectOpenHandles --selectProjects web",
     "test:watch": "jest --watch",
     "test:coverage": "jest --coverage",
