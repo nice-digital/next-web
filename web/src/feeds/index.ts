@@ -40,18 +40,12 @@ const client: AxiosInstance = applyCaseMiddleware(axios.create());
 	console.log("====================", data);
 })();
 
-export const getFeedBodyUnCached = async <T>(
+export const getFeedBodyUnCached = async <TResponse>(
 	origin: string,
 	path: string,
 	apiKey: string
-): Promise<T> => {
-	// return client.get(origin + path, {
-	// 	headers: {
-	// 		"Api-Key": apiKey,
-	// 	},
-	// });
-
-	const { data } = await client.get(origin + path, {
+): Promise<TResponse> => {
+	const { data } = await client.get<TResponse>(origin + path, {
 		headers: {
 			"Api-Key": apiKey,
 		},

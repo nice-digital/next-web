@@ -3,6 +3,9 @@
 exports[`IndicatorDetailPage should match snapshot for main content 1`] = `
 <body>
   <div>
+    <h1>
+      /test
+    </h1>
     <p>
       Indicators details page id:
       IND1
