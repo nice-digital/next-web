@@ -6,11 +6,17 @@ exports[`IndicatorDetailPage should match snapshot for main content 1`] = `
     <h1>
       /test
     </h1>
+    <ul>
+      <li>
+        IND
+      </li>
+      <li>
+        IND1
+         
+      </li>
+    </ul>
     <p>
-      Indicators details page id:
-      IND1
-       title:
-      /test
+      summary goes here
     </p>
   </div>
 </body>

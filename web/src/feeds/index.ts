@@ -1,9 +1,13 @@
-// import needle from "needle";
-
-import axios, { type AxiosInstance, type AxiosError } from "axios";
+import axios, { type AxiosInstance } from "axios";
 import applyCaseMiddleware from "axios-case-converter";
 
 import { cache, getCacheKey } from "@/cache";
+
+const client: AxiosInstance = applyCaseMiddleware(axios.create(), {
+	preservedKeys: (propertyName) =>
+		// keep _embedded & nice. property names as is
+		propertyName[0] === "_" || propertyName.slice(0, 5) === "nice.",
+});
 
 /**
  * Gets the body of a feed directly from the back end system
@@ -11,35 +15,6 @@ import { cache, getCacheKey } from "@/cache";
  * @param path The path of the feed to request
  * @returns The body of the feed
  */
-// export const getFeedBodyUnCached = async <T>(
-// 	origin: string,
-// 	path: string,
-// 	apiKey: string
-// ): Promise<T> =>
-// 	(
-// 		await needle("get", origin + path, {
-// 			json: true,
-// 			headers: {
-// 				"Api-Key": apiKey,
-// 			},
-// 		})
-// 	).body as T;
-
-const client: AxiosInstance = applyCaseMiddleware(axios.create());
-
-// TODO remove test code
-//alpha-publications.nice.org.uk/feeds/product/ind6
-(async (apiKey) => {
-	const { data } = await client.get(
-		"https://alpha-publications.nice.org.uk/feeds/product/ind6",
-
-		{
-			headers: { "Api-Key": apiKey },
-		}
-	);
-	console.log("====================", data);
-})();
-
 export const getFeedBodyUnCached = async <TResponse>(
 	origin: string,
 	path: string,

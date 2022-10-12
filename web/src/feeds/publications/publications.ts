@@ -7,6 +7,7 @@ import {
 	AreasOfInterestList,
 	ErrorResponse,
 	FeedPath,
+	HTMLChapterContent,
 	ProductDetail,
 	ProductListLite,
 	ProductLite,
@@ -112,6 +113,20 @@ export const getProductDetail = async (
 				apiKey
 			)
 	);
+
+/**
+ * Gets chapter HTML.
+ *
+ */
+export const getChapterContent = async (
+	chapterHref: string
+): Promise<HTMLChapterContent | ErrorResponse> => {
+	return getFeedBodyUnCached<HTMLChapterContent | ErrorResponse>(
+		origin,
+		chapterHref,
+		apiKey
+	);
+};
 
 export function isErrorResponse<TValidResponse>(
 	response: TValidResponse | ErrorResponse

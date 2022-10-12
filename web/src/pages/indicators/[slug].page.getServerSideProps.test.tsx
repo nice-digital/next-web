@@ -1,5 +1,7 @@
 import { render } from "@testing-library/react";
 
+import { ProductGroup, ProductTypeAcronym } from "@/feeds/publications/types";
+
 import IndicatorsDetailsPage, {
 	getServerSideProps,
 	IndicatorsDetailsPageProps,
@@ -23,10 +25,23 @@ jest.mock("@/feeds/publications/publications", () => {
 	};
 });
 
-const props: Required<IndicatorsDetailsPageProps> = {
+const props: IndicatorsDetailsPageProps = {
 	slug: "/ind-1-test-title-1",
 	id: "IND1",
-	product: { title: "/test", id: "IND1" },
+	product: { title: "/test", id: "IND1", productType: "IND" },
+	productType: {
+		_links: {
+			self: [{}],
+		},
+		eTag: null,
+		lastModified: "2022-07-07T00:00:00",
+		enabled: true,
+		name: "NICE indicator",
+		pluralName: "NICE indicators",
+		identifierPrefix: ProductTypeAcronym.IND,
+		group: ProductGroup.Other,
+		parent: "",
+	},
 };
 
 describe("IndicatorDetailPage", () => {

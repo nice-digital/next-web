@@ -18,9 +18,10 @@ export enum ProductGroup {
 	Advice = "Advice",
 	Standard = "Standard",
 	Corporate = "Corporate",
+	Other = "Other",
 }
 
-export enum ProductTypeAcronym {
+export const enum ProductTypeAcronym {
 	/** Antimicrobial prescribing evidence summaries */
 	"APA" = "APA",
 	/** Antimicrobial prescribing guidelines */
@@ -45,6 +46,8 @@ export enum ProductTypeAcronym {
 	"ES" = "ES",
 	/** Highly specialised technologies guidance */
 	"HST" = "HST",
+	/** Indicators */
+	"IND" = "IND",
 	/** Interventional procedures guidance */
 	"IPG" = "IPG",
 	/** Key therapeutic topics (advice) */
@@ -131,9 +134,9 @@ interface EmptyLinks {
 export type BaseFeedItem = ReadonlyDeep<{
 	_links: EmptyLinks;
 	/** ETag is always null so kind of pointless but kept here for completeness */
-	ETag: null;
+	eTag: null;
 	/** Full ISO date string like `2021-04-15T08:18:13.7945978Z` */
-	LastModified: string;
+	lastModified: string;
 }>;
 
 /**
@@ -164,12 +167,12 @@ export type ProductLite = Except<ProductLiteRaw, "ETag" | "_links">;
 
 export type ProductType = BaseFeedItem &
 	ReadonlyDeep<{
-		Enabled: boolean;
-		Name: string;
-		PluralName: string;
-		IdentifierPrefix: ProductTypeAcronym;
-		Group: ProductGroup;
-		Parent: ParentProductTypeAcronym | "";
+		enabled: boolean;
+		name: string;
+		pluralName: string;
+		identifierPrefix: ProductTypeAcronym;
+		group: ProductGroup;
+		parent: ParentProductTypeAcronym | "";
 	}>;
 
 export type AreaOfInterest = BaseFeedItem &
@@ -220,9 +223,44 @@ export type ProductListLite = FeedContent<
 	ProductLiteRaw
 >;
 
-export type ProductDetail = {
+export type ProductChapter = {
 	title: string;
+	url: string;
+};
+
+export type HTMLChapterContentInfo = {
+	title: string;
+	chapterSlug: string;
+	_links: { self: [Link] };
+};
+
+export type HTMLChapterContent = {
+	content: string;
+};
+
+export type ProductDetail = {
+	chapterHeadings?: ProductChapter[];
+	_embedded: {
+		"nice.publications:content-part-list": {
+			_embedded: {
+				"nice.publications:upload-and-convert-content-part": {
+					_embedded: {
+						"nice.publications:html-content": {
+							_embedded: {
+								"nice.publications:html-chapter-content-info": HTMLChapterContentInfo[];
+							};
+						};
+					};
+				};
+			};
+		};
+	};
 	id: string;
+	lastUpdatedDate?: string;
+	productType: string;
+	publishedDate?: string;
+	summary?: string;
+	title: string;
 };
 
 export type ErrorResponse = {

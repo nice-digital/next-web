@@ -28,7 +28,7 @@
     "@nice-digital/global-nav": "^5.0.906",
     "@nice-digital/search-client": "^2.0.1470",
     "@sindresorhus/slugify": "^1.1.2",
-    "axios": "^1.0.0",
+    "axios": "^1.1.2",
     "axios-case-converter": "^0.9.0",
     "cache-manager": "^4.1.0",
     "cache-manager-fs-hash": "^1.0.0",

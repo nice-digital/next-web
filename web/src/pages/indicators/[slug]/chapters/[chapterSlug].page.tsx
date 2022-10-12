@@ -5,7 +5,10 @@ import React from "react";
 
 import {
 	getAllProductTypes,
+	getChapterContent,
+	getHypermedia,
 	getProductDetail,
+	HTMLChapterContent,
 	isErrorResponse,
 	ProductChapter,
 	ProductDetail,
@@ -15,84 +18,36 @@ import { formatDateStr } from "@/utils";
 
 export const slugifyFunction = slugify;
 
-export type IndicatorsDetailsPageProps = {
+export type IndicatorChapterPageProps = {
 	slug: string;
 	id: string;
 	product: ProductDetail;
 	productType: ProductType;
+	chapterContent: HTMLChapterContent;
 };
 
-export type ChapterHeadingsProps = {
-	chapters: ProductChapter[];
-};
-
-export function ChapterHeadingsList({
-	chapters,
-}: ChapterHeadingsProps): JSX.Element {
-	return (
-		<ul>
-			<legend>Chapters</legend>
-			{chapters.map((item, i) => {
-				return (
-					<li key={i}>
-						<Link href={item.url}>
-							<a>{item.title}</a>
-						</Link>
-					</li>
-				);
-			})}
-		</ul>
-	);
-}
-
-export default function IndicatorsDetailsPage({
+export default function IndicatorChapterPage({
 	id,
 	product,
 	productType,
-}: IndicatorsDetailsPageProps): JSX.Element {
-	return (
-		<>
-			<h1>{product.title}</h1>
-			<ul>
-				<li>{productType.name}</li>
-				<li>{id} </li>
-				{product.publishedDate ? (
-					<li>
-						published: <time>{formatDateStr(product.publishedDate)}</time>
-					</li>
-				) : null}
-
-				{product.lastUpdatedDate ? (
-					<li>
-						last updated: <time>{formatDateStr(product.lastUpdatedDate)}</time>
-					</li>
-				) : null}
-			</ul>
-			{product.chapterHeadings ? (
-				<ChapterHeadingsList chapters={product.chapterHeadings} />
-			) : null}
-			{product.summary ? <p>{product.summary}</p> : <p>summary goes here</p>}
-		</>
-	);
+	chapterContent,
+}: IndicatorChapterPageProps): JSX.Element {
+	return <>{chapterContent.content}</>;
 }
 
 export const getServerSideProps: GetServerSideProps<
-	IndicatorsDetailsPageProps
+	IndicatorChapterPageProps
 > = async ({ params }) => {
 	if (
 		!params ||
 		!params.slug ||
 		Array.isArray(params.slug) ||
-		!params.slug.includes("-")
+		!params.slug.includes("-") ||
+		!params.chapterSlug ||
+		Array.isArray(params.chapterSlug)
 	) {
 		return { notFound: true };
 	}
-
-	// const lookupProductTypeById = (id: string): string => {
-	// 	const productTypes = getAllProductTypes();
-	// 	console.log({ productTypes });
-	// 	return "product type";
-	// };
 
 	const productTypes = await getAllProductTypes();
 	const productType = productTypes.find((p) => p.identifierPrefix === "IND");
@@ -116,6 +71,7 @@ export const getServerSideProps: GetServerSideProps<
 
 	//TODO consider early return when there is no product;
 
+	//TODO redirect to chapter slug
 	const slugifiedProductTitle = slugify(product.title);
 	if (titleExtractedFromSlug !== slugifiedProductTitle) {
 		const redirectUrl = "/indicators/" + id + "-" + slugifiedProductTitle;
@@ -128,12 +84,28 @@ export const getServerSideProps: GetServerSideProps<
 		};
 	}
 
+	const chapter = product._embedded[
+		"nice.publications:content-part-list"
+	]._embedded["nice.publications:upload-and-convert-content-part"]._embedded[
+		"nice.publications:html-content"
+	]._embedded["nice.publications:html-chapter-content-info"].find(
+		(c) => c.chapterSlug === params.chapterSlug
+	);
+
+	console.log({ chapter });
+	console.log(chapter && chapter._links);
+
+	const chapterContent = await getChapterContent(
+		chapter?._links.self[0].href as string
+	);
+
 	return {
 		props: {
 			slug: params.slug,
 			id,
 			product,
 			productType,
+			chapterContent,
 		},
 	};
 };
