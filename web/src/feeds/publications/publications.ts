@@ -38,16 +38,16 @@ export const getAllProducts = async (): Promise<ProductLite[]> =>
 					FeedPath.ProductsLite,
 					apiKey
 				)
-			)._embedded["nice.publications:product-list-lite"]._embedded[
-				"nice.publications:product-lite"
-			].map((product) => {
-				// Discard unneeded properties on products to make what we're storing in cache a lot smaller.
-				// This means we're essentially storing a ProductLite in cache rather than a ProductLiteRaw.
-				// In perf tests this saved ~30% off the cache load time from the file system (once you factor in deserialization, file access times etc).
-				delete (product as Partial<Mutable<typeof product>>).ETag;
-				delete (product as Partial<Mutable<typeof product>>)._links;
-				return product;
-			})
+			).embedded.nicePublicationsProductListLite.embedded.nicePublicationsProductLite.map(
+				(product) => {
+					// Discard unneeded properties on products to make what we're storing in cache a lot smaller.
+					// This means we're essentially storing a ProductLite in cache rather than a ProductLiteRaw.
+					// In perf tests this saved ~30% off the cache load time from the file system (once you factor in deserialization, file access times etc).
+					delete (product as Partial<Mutable<typeof product>>).ETag;
+					delete (product as Partial<Mutable<typeof product>>)._links;
+					return product;
+				}
+			)
 	);
 
 /**
@@ -67,9 +67,8 @@ export const getAllProductTypes = async (): Promise<ProductType[]> =>
 					FeedPath.ProductTypes,
 					apiKey
 				)
-			)._embedded["nice.publications:product-type-list"]._embedded[
-				"nice.publications:product-type"
-			]
+			).embedded.nicePublicationsProductTypeList.embedded
+				.nicePublicationsProductType
 	);
 
 /**
@@ -89,9 +88,8 @@ export const getAllAreasOfInterest = async (): Promise<AreaOfInterest[]> =>
 					FeedPath.AreasOfInterest,
 					apiKey
 				)
-			)._embedded["nice.publications:area-of-interest-type-list"]._embedded[
-				"nice.publications:area-of-interest-type"
-			]
+			).embedded.nicePublicationsAreaOfInterestTypeList.embedded
+				.nicePublicationsAreaOfInterestType
 	);
 
 /**

@@ -8,7 +8,7 @@ exports[`IndicatorDetailPage should match snapshot for main content 1`] = `
     </h1>
     <ul>
       <li>
-        IND
+        NICE indicator
       </li>
       <li>
         IND1

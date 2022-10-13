@@ -182,44 +182,49 @@ export type AreaOfInterest = BaseFeedItem &
 		PluralName: string;
 	}>;
 
+type ETag = string | null;
+
+// axios-case-converter maps key property names like nice.publications:area-of-interest-type-list to nicePublicationsAreaOfInterestTypeList
+type EmbeddedKey = `nicePublications${string}`;
+
+type Embedded<TKey extends EmbeddedKey, TInner> = {
+	embedded: { [key in TKey]: TInner };
+};
+
+type FeedContentInner<TEmbeddedInner extends EmbeddedKey, TItemType> = {
+	_links: {
+		self: [Link];
+	};
+	eTag: ETag;
+} & Embedded<TEmbeddedInner, TItemType[]>;
+
 type FeedContent<
-	TEmbeddedOuter extends string,
-	TEmbeddedInner extends string,
+	TEmbeddedOuter extends EmbeddedKey,
+	TEmbeddedInner extends EmbeddedKey,
 	TItemType
-> = Readonly<{
-	_links: Readonly<{
-		self: Link[];
-	}>;
-	_embedded: Readonly<{
-		[key in TEmbeddedOuter]: Readonly<{
-			_links: Readonly<{
-				self: ReadonlyArray<Link>;
-			}>;
-			_embedded: Readonly<{
-				[key in TEmbeddedInner]: TItemType[];
-			}>;
-			ETag: null;
-		}>;
-	}>;
-	ETag: string | null;
-	LastModified: string;
-}>;
+> = {
+	_links: {
+		self: [Link];
+	};
+	eTag: ETag;
+	lastModified: string;
+} & Embedded<TEmbeddedOuter, FeedContentInner<TEmbeddedInner, TItemType>>;
 
 export type AreasOfInterestList = FeedContent<
-	"nice.publications:area-of-interest-type-list",
-	"nice.publications:area-of-interest-type",
+	"nicePublicationsAreaOfInterestTypeList",
+	"nicePublicationsAreaOfInterestType",
 	AreaOfInterest
 >;
 
 export type ProductTypeList = FeedContent<
-	"nice.publications:product-type-list",
-	"nice.publications:product-type",
+	"nicePublicationsProductTypeList",
+	"nicePublicationsProductType",
 	ProductType
 >;
 
 export type ProductListLite = FeedContent<
-	"nice.publications:product-list-lite",
-	"nice.publications:product-lite",
+	"nicePublicationsProductListLite",
+	"nicePublicationsProductLite",
 	ProductLiteRaw
 >;
 
@@ -235,33 +240,67 @@ export type HTMLChapterContentInfo = {
 };
 
 export type HTMLChapterContent = {
+	eTag: string;
 	content: string;
+	title: string;
+	reference: string;
+	partId: number;
+	chapterSlug: string;
 };
+
+export type HTMLContent = Embedded<
+	"nicePublicationsHtmlChapterContentInfo",
+	HTMLChapterContentInfo[]
+>;
+
+// export type HTMLContent = {
+// 	_embedded: {
+// 		"nice.publications:html-chapter-content-info": HTMLChapterContentInfo[];
+// 	};
+// };
+
+export type FileContent<TFileExtension extends "pdf" | "mobi" | "epub"> = {
+	fileName: `${string}.${TFileExtension}`;
+	length: number;
+	_links: { self: [Link] };
+	eTag: string | null;
+	uid: number;
+	id: string;
+	mimeType: string;
+	hash: string;
+	name: string;
+};
+
+export type UploadAndConvertContentPart = {
+	embedded: {
+		nicePublicationsHtmlContent: HTMLContent;
+		nicePublicationsPdfFile: FileContent<"pdf">;
+		nicePublicationsMobiFile: FileContent<"mobi">;
+		nicePublicationsEpubFile: FileContent<"epub">;
+	};
+};
+
+// export type ContentPartListOLD = {
+// 	"nice.publications:content-part-list": {
+// 		embedded: UploadAndConvertContentPart;
+// 	};
+// };
+
+export type ContentPartList = Embedded<
+	"nicePublicationsUploadAndConvertContentPart",
+	UploadAndConvertContentPart
+>;
 
 export type ProductDetail = {
 	chapterHeadings?: ProductChapter[];
-	_embedded: {
-		"nice.publications:content-part-list": {
-			_embedded: {
-				"nice.publications:upload-and-convert-content-part": {
-					_embedded: {
-						"nice.publications:html-content": {
-							_embedded: {
-								"nice.publications:html-chapter-content-info": HTMLChapterContentInfo[];
-							};
-						};
-					};
-				};
-			};
-		};
-	};
+	// embedded: ContentPartList;
 	id: string;
 	lastUpdatedDate?: string;
 	productType: string;
 	publishedDate?: string;
 	summary?: string;
 	title: string;
-};
+} & Embedded<"nicePublicationsContentPartList", ContentPartList>;
 
 export type ErrorResponse = {
 	StatusCode: string;

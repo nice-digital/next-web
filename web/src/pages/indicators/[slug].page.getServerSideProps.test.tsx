@@ -1,4 +1,5 @@
 import { render } from "@testing-library/react";
+import axios from "axios";
 
 import { ProductGroup, ProductTypeAcronym } from "@/feeds/publications/types";
 
@@ -8,6 +9,9 @@ import IndicatorsDetailsPage, {
 } from "./[slug].page";
 
 import type { GetServerSidePropsContext } from "next";
+
+// jest.mock("axios");
+// const mockedAxios = axios as jest.Mocked<typeof axios>;
 
 jest.mock("@/feeds/publications/publications", () => {
 	const originalModule = jest.requireActual(
@@ -42,7 +46,7 @@ const props: IndicatorsDetailsPageProps = {
 		group: ProductGroup.Other,
 		parent: "",
 	},
-};
+} as unknown as IndicatorsDetailsPageProps;
 
 describe("IndicatorDetailPage", () => {
 	it("should match snapshot for main content", () => {

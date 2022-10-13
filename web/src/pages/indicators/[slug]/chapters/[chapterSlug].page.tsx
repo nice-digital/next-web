@@ -1,20 +1,16 @@
 import slugify from "@sindresorhus/slugify";
 import { GetServerSideProps } from "next";
-import Link from "next/link";
 import React from "react";
 
 import {
 	getAllProductTypes,
 	getChapterContent,
-	getHypermedia,
 	getProductDetail,
 	HTMLChapterContent,
 	isErrorResponse,
-	ProductChapter,
 	ProductDetail,
 	ProductType,
 } from "@/feeds/publications/publications";
-import { formatDateStr } from "@/utils";
 
 export const slugifyFunction = slugify;
 
@@ -27,9 +23,6 @@ export type IndicatorChapterPageProps = {
 };
 
 export default function IndicatorChapterPage({
-	id,
-	product,
-	productType,
 	chapterContent,
 }: IndicatorChapterPageProps): JSX.Element {
 	return <>{chapterContent.content}</>;
@@ -84,20 +77,25 @@ export const getServerSideProps: GetServerSideProps<
 		};
 	}
 
-	const chapter = product._embedded[
-		"nice.publications:content-part-list"
-	]._embedded["nice.publications:upload-and-convert-content-part"]._embedded[
-		"nice.publications:html-content"
-	]._embedded["nice.publications:html-chapter-content-info"].find(
-		(c) => c.chapterSlug === params.chapterSlug
-	);
+	const chapter =
+		product.embedded.nicePublicationsContentPartList.embedded.nicePublicationsUploadAndConvertContentPart.embedded.nicePublicationsHtmlContent.embedded.nicePublicationsHtmlChapterContentInfo.find(
+			(c) => c.chapterSlug === params.chapterSlug
+		);
 
-	console.log({ chapter });
-	console.log(chapter && chapter._links);
+	// console.log({ chapter });
+	// console.log(chapter && chapter._links);
+
+	if (!chapter) {
+		return { notFound: true };
+	}
 
 	const chapterContent = await getChapterContent(
 		chapter?._links.self[0].href as string
 	);
+
+	if (isErrorResponse(chapterContent)) {
+		return { notFound: true };
+	}
 
 	return {
 		props: {
