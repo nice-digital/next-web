@@ -1,7 +1,12 @@
 import { render } from "@testing-library/react";
-import axios from "axios";
+import MockAdapter from "axios-mock-adapter";
 
 import { ProductGroup, ProductTypeAcronym } from "@/feeds/publications/types";
+
+import { testPathIgnorePatterns } from "jest.config";
+
+import productTypesMock from "../../__mocks__/__data__/publications/feeds/producttypes.json";
+import { client } from "../../feeds/";
 
 import IndicatorsDetailsPage, {
 	getServerSideProps,
@@ -10,8 +15,7 @@ import IndicatorsDetailsPage, {
 
 import type { GetServerSidePropsContext } from "next";
 
-// jest.mock("axios");
-// const mockedAxios = axios as jest.Mocked<typeof axios>;
+const axiosMock = new MockAdapter(client, { onNoMatch: "throwException" });
 
 jest.mock("@/feeds/publications/publications", () => {
 	const originalModule = jest.requireActual(
@@ -49,6 +53,11 @@ const props: IndicatorsDetailsPageProps = {
 } as unknown as IndicatorsDetailsPageProps;
 
 describe("IndicatorDetailPage", () => {
+	beforeEach(() => {
+		axiosMock.reset();
+		jest.resetModules();
+	});
+
 	it("should match snapshot for main content", () => {
 		render(<IndicatorsDetailsPage {...props} />);
 
@@ -57,7 +66,19 @@ describe("IndicatorDetailPage", () => {
 });
 
 describe("getGetServerSidePropsFunc", () => {
-	it("should return a correct props when supplied with an id", async () => {
+	it.only("should return a correct props when supplied with an id", async () => {
+		const fakeProductResponseData = {
+			title: "test-title",
+			id: "IND1",
+			productType: "IND",
+		};
+
+		axiosMock
+			.onGet(/\/feeds\/product\//)
+			.reply(200, fakeProductResponseData)
+			.onGet(/\/feeds\/producttypes/)
+			.reply(200, productTypesMock);
+
 		const result = await getServerSideProps({
 			params: { slug: "ind1-test-title-1" },
 		} as unknown as GetServerSidePropsContext);
@@ -67,6 +88,19 @@ describe("getGetServerSidePropsFunc", () => {
 				slug: "ind1-test-title-1",
 				id: "ind1",
 				product: { id: "IND1", title: "Test title 1" },
+				productType: {
+					eTag: null,
+					enabled: true,
+					group: "Other",
+					identifierPrefix: "IND",
+					lastModified: "2022-07-07T00:00:00",
+					links: {
+						self: [{}],
+					},
+					name: "NICE indicator",
+					parent: "",
+					pluralName: "NICE indicators",
+				},
 			},
 		});
 	});

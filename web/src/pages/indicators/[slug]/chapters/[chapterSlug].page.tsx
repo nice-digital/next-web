@@ -90,7 +90,7 @@ export const getServerSideProps: GetServerSideProps<
 	}
 
 	const chapterContent = await getChapterContent(
-		chapter?._links.self[0].href as string
+		chapter?.links.self[0].href as string
 	);
 
 	if (isErrorResponse(chapterContent)) {

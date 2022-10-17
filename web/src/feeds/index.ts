@@ -3,11 +3,13 @@ import applyCaseMiddleware from "axios-case-converter";
 
 import { cache, getCacheKey } from "@/cache";
 
-const client: AxiosInstance = applyCaseMiddleware(axios.create(), {
-	// preservedKeys: (propertyName) =>
-	// keep _embedded & nice. property names as is
-	// propertyName[0] === "_" || propertyName.slice(0, 5) === "nice.",
-});
+// const client: AxiosInstance = applyCaseMiddleware(axios.create(), {
+// preservedKeys: (propertyName) =>
+// keep _embedded & nice. property names as is
+// propertyName[0] === "_" || propertyName.slice(0, 5) === "nice.",
+// });
+
+export const client: AxiosInstance = applyCaseMiddleware(axios.create());
 
 /**
  * Gets the body of a feed directly from the back end system
@@ -26,6 +28,8 @@ export const getFeedBodyUnCached = async <TResponse>(
 		},
 	});
 
+	//TODO remove console log
+	// console.log("############ ", apiKey);
 	return data;
 };
 

@@ -132,7 +132,7 @@ interface EmptyLinks {
 }
 
 export type BaseFeedItem = ReadonlyDeep<{
-	_links: EmptyLinks;
+	links: EmptyLinks;
 	/** ETag is always null so kind of pointless but kept here for completeness */
 	eTag: null;
 	/** Full ISO date string like `2021-04-15T08:18:13.7945978Z` */
@@ -144,7 +144,7 @@ export type BaseFeedItem = ReadonlyDeep<{
  */
 export type ProductLiteRaw = BaseFeedItem &
 	ReadonlyDeep<{
-		_links: EmptyLinks & {
+		links: EmptyLinks & {
 			"nice.publications:productfeed": Link[];
 		};
 		ETag: null;
@@ -163,7 +163,7 @@ export type ProductLiteRaw = BaseFeedItem &
 	}>;
 
 /** A product lite from the feed, but with redundant properties removed */
-export type ProductLite = Except<ProductLiteRaw, "ETag" | "_links">;
+export type ProductLite = Except<ProductLiteRaw, "ETag" | "links">;
 
 export type ProductType = BaseFeedItem &
 	ReadonlyDeep<{
@@ -192,7 +192,7 @@ type Embedded<TKey extends EmbeddedKey, TInner> = {
 };
 
 type FeedContentInner<TEmbeddedInner extends EmbeddedKey, TItemType> = {
-	_links: {
+	links: {
 		self: [Link];
 	};
 	eTag: ETag;
@@ -203,7 +203,7 @@ type FeedContent<
 	TEmbeddedInner extends EmbeddedKey,
 	TItemType
 > = {
-	_links: {
+	links: {
 		self: [Link];
 	};
 	eTag: ETag;
@@ -236,7 +236,7 @@ export type ProductChapter = {
 export type HTMLChapterContentInfo = {
 	title: string;
 	chapterSlug: string;
-	_links: { self: [Link] };
+	links: { self: [Link] };
 };
 
 export type HTMLChapterContent = {
@@ -262,7 +262,7 @@ export type HTMLContent = Embedded<
 export type FileContent<TFileExtension extends "pdf" | "mobi" | "epub"> = {
 	fileName: `${string}.${TFileExtension}`;
 	length: number;
-	_links: { self: [Link] };
+	links: { self: [Link] };
 	eTag: string | null;
 	uid: number;
 	id: string;
