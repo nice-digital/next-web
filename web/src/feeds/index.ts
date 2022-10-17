@@ -27,9 +27,6 @@ export const getFeedBodyUnCached = async <TResponse>(
 			"Api-Key": apiKey,
 		},
 	});
-
-	//TODO remove console log
-	// console.log("############ ", apiKey);
 	return data;
 };
 

@@ -3,8 +3,6 @@ import MockAdapter from "axios-mock-adapter";
 
 import { ProductGroup, ProductTypeAcronym } from "@/feeds/publications/types";
 
-import { testPathIgnorePatterns } from "jest.config";
-
 import productTypesMock from "../../__mocks__/__data__/publications/feeds/producttypes.json";
 import { client } from "../../feeds/";
 
@@ -66,7 +64,7 @@ describe("IndicatorDetailPage", () => {
 });
 
 describe("getGetServerSidePropsFunc", () => {
-	it.only("should return a correct props when supplied with an id", async () => {
+	it("should return a correct props when supplied with an id", async () => {
 		const fakeProductResponseData = {
 			title: "test-title",
 			id: "IND1",
