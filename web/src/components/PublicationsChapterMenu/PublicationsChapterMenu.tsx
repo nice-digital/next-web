@@ -38,16 +38,20 @@ export const PublicationsChapterMenu: FC<ChapterHeadingsProps> = ({
 			<StackedNav>
 				{chapters.map((item) => {
 					const destination = buildChapterPath(item.url, productPath, slug);
-					console.log({ router });
+					// console.log({ router });
 					return (
-						<StackedNavLink
-							key={item.url}
-							destination={destination}
-							elementType={Link}
-							isCurrent={destination === router.asPath}
-						>
-							<span dangerouslySetInnerHTML={{ __html: item.title }} />
-						</StackedNavLink>
+						<>
+							{`ROUTER PATHNAME ${router.pathname}`}
+							{`ROUTER ASPATH ${router.asPath}`}
+							<StackedNavLink
+								key={item.url}
+								destination={destination}
+								elementType={Link}
+								isCurrent={destination === router.asPath}
+							>
+								<span dangerouslySetInnerHTML={{ __html: item.title }} />
+							</StackedNavLink>
+						</>
 					);
 				})}
 			</StackedNav>

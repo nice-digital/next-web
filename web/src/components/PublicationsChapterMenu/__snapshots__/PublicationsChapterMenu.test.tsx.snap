@@ -8,6 +8,8 @@ exports[`PublicationsChapterMenu should match the snapshot 1`] = `
     <ul
       class="stacked-nav__list"
     >
+      ROUTER PATHNAME undefined
+      ROUTER ASPATH undefined
       <li
         class="stacked-nav__list-item"
       >
@@ -24,6 +26,8 @@ exports[`PublicationsChapterMenu should match the snapshot 1`] = `
           </span>
         </a>
       </li>
+      ROUTER PATHNAME undefined
+      ROUTER ASPATH undefined
       <li
         class="stacked-nav__list-item"
       >

@@ -84,5 +84,18 @@ describe("PublicationsChapterMenu", () => {
 		);
 	});
 
-	it.todo("should highlight the link that matches the current route");
+	it("should highlight the link that matches the current route", () => {
+		(useRouter as jest.Mock).mockImplementation(() => ({
+			asPath: "/indicators/test001-test-product-title/chapters/test-chapter-2",
+		}));
+		render(<PublicationsChapterMenu {...defaultProps} />);
+
+		expect(
+			screen.getByRole("link", { name: "Test Chapter 1" })
+		).not.toHaveAttribute("aria-current", "true");
+
+		expect(
+			screen.getByRole("link", { name: "Test Chapter 2" })
+		).toHaveAttribute("aria-current", "true");
+	});
 });
