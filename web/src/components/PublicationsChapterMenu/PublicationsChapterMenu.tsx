@@ -31,7 +31,6 @@ export const PublicationsChapterMenu: FC<ChapterHeadingsProps> = ({
 
 	return (
 		<ul>
-			<legend>Chapters</legend>
 			{chapters.map((item, i) => {
 				return (
 					<li key={i}>

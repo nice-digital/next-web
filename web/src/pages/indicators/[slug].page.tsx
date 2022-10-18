@@ -2,7 +2,14 @@ import slugify from "@sindresorhus/slugify";
 import { GetServerSideProps } from "next";
 import React from "react";
 
+import { Breadcrumbs, Breadcrumb } from "@nice-digital/nds-breadcrumbs";
+import { Grid, GridItem } from "@nice-digital/nds-grid";
+import { PageHeader } from "@nice-digital/nds-page-header";
+import { PrevNext } from "@nice-digital/nds-prev-next";
+
+import { Link } from "@/components/Link/Link";
 import { PublicationsChapterMenu } from "@/components/PublicationsChapterMenu/PublicationsChapterMenu";
+import { SkipLink } from "@/components/SkipLink/SkipLink";
 import {
 	getAllProductTypes,
 	getProductDetail,
@@ -27,10 +34,30 @@ export default function IndicatorsDetailsPage({
 	productType,
 	slug,
 }: IndicatorsDetailsPageProps): JSX.Element {
+	const breadcrumbs = () => (
+		<Breadcrumbs>
+			<Breadcrumb to="/">Home</Breadcrumb>
+			<Breadcrumb to="/indicators">NICE indicators</Breadcrumb>
+			<Breadcrumb>some breadcrumb</Breadcrumb>
+		</Breadcrumbs>
+	);
+
 	return (
 		<>
-			<h1>{product.title}</h1>
-			<ul>
+			{/* TODO acquire & render breadcrumbs correctly - useMemo? */}
+			{breadcrumbs()}
+			<PageHeader
+				heading={product.title}
+				id="content-start"
+				lead={
+					<>
+						<SkipLink targetId="chapters">Skip to chapters</SkipLink>
+					</>
+				}
+			/>
+
+			{/* TODO render piped subheading correctly - existing NDS component? */}
+			<ul className={`list list--piped`}>
 				<li>{productType.name}</li>
 				<li>{id} </li>
 				{product.publishedDate ? (
@@ -45,19 +72,50 @@ export default function IndicatorsDetailsPage({
 					</li>
 				) : null}
 			</ul>
-			{product.chapterHeadings ? (
-				<PublicationsChapterMenu
-					chapters={product.chapterHeadings}
-					productType={productType.identifierPrefix}
-					slug={slug}
-				/>
-			) : null}
+			<Grid gutter="loose">
+				<GridItem
+					cols={12}
+					md={4}
+					lg={3}
+					// className={styles.panelWrapper}
+					elementType="section"
+					// aria-label=""
+				>
+					{product.chapterHeadings ? (
+						<PublicationsChapterMenu
+							chapters={product.chapterHeadings}
+							productType={productType.identifierPrefix}
+							slug={slug}
+						/>
+					) : null}
+				</GridItem>
+				<GridItem
+					cols={12}
+					md={8}
+					lg={9}
+					elementType="section"
+					// aria-labelledby=""
+				>
+					{product.summary ? (
+						<span dangerouslySetInnerHTML={{ __html: product.summary }} />
+					) : (
+						<p>summary goes here</p>
+					)}
 
-			{product.summary ? (
-				<span dangerouslySetInnerHTML={{ __html: product.summary }} />
-			) : (
-				<p>summary goes here</p>
-			)}
+					{/* TODO populate next-prev destinations dynamically */}
+					<PrevNext
+						nextPageLink={{
+							text: "To do",
+							destination: "/somewhere",
+							elementType: ({ children, ...props }) => (
+								<Link {...props} scroll={false}>
+									{children}
+								</Link>
+							),
+						}}
+					/>
+				</GridItem>
+			</Grid>
 		</>
 	);
 }
