@@ -53,7 +53,11 @@ export default function IndicatorsDetailsPage({
 				/>
 			) : null}
 
-			{product.summary ? <p>{product.summary}</p> : <p>summary goes here</p>}
+			{product.summary ? (
+				<span dangerouslySetInnerHTML={{ __html: product.summary }} />
+			) : (
+				<p>summary goes here</p>
+			)}
 		</>
 	);
 }
