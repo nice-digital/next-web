@@ -26,25 +26,9 @@ export type IndicatorChapterPageProps = {
 export default function IndicatorChapterPage({
 	chapterContent,
 }: IndicatorChapterPageProps): JSX.Element {
-	const defaultProps = {
-		chapters: [
-			{
-				title: "Test Chapter 1",
-				url: "/ind1001/chapter/test-chapter-1",
-			},
-			{
-				title: "Test Chapter 2",
-				url: "/ind1001/chapter/test-chapter-2",
-			},
-		],
-		productType: "IND",
-		slug: "test001-test-product-title",
-	};
-
 	return (
 		<>
-			{/* <PublicationsChapterMenu {...defaultProps} /> */}
-			<PublicationsChapterMenu
+			{/* <PublicationsChapterMenu
 				chapters={[
 					{
 						title: "some chapter",
@@ -54,7 +38,7 @@ export default function IndicatorChapterPage({
 				]}
 				productType="IND"
 				slug="ind1001-test-indicator-ind-1001-the-percentage-of-patients-with-one-or-more-of-the-following-conditions-chd-atrial-fibrillation-chronic-heart-failure-stroke-or-tia-diabetes-or-dementia-with-a-fast-score-of-3-or-more-or-audit-c-score-of-5-or-more-in-the-preceding-2-years-who-have-received-brief-intervention-to-help-them-reduce-their-alcohol-related-risk-within-3-months-of-the-score-being-recorded"
-			/>
+			/> */}
 			<span dangerouslySetInnerHTML={{ __html: chapterContent.content }} />
 		</>
 	);
