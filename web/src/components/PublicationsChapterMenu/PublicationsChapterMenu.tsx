@@ -26,6 +26,7 @@ export const PublicationsChapterMenu: FC<ChapterHeadingsProps> = ({
 	productType,
 	slug,
 }) => {
+	console.log({ chapters });
 	const productPath =
 		ProductTypePaths[productType as keyof typeof ProductTypePaths];
 
