@@ -38,6 +38,7 @@ export const PublicationsChapterMenu: FC<ChapterHeadingsProps> = ({
 			<StackedNav>
 				{chapters.map((item) => {
 					const destination = buildChapterPath(item.url, productPath, slug);
+					console.log({ router });
 					return (
 						<StackedNavLink
 							key={item.url}
