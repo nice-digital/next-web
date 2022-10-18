@@ -1,13 +1,12 @@
 import slugify from "@sindresorhus/slugify";
 import { GetServerSideProps } from "next";
-import Link from "next/link";
 import React from "react";
 
+import { PublicationsChapterMenu } from "@/components/PublicationsChapterMenu/PublicationsChapterMenu";
 import {
 	getAllProductTypes,
 	getProductDetail,
 	isErrorResponse,
-	ProductChapter,
 	ProductDetail,
 	ProductType,
 } from "@/feeds/publications/publications";
@@ -22,33 +21,11 @@ export type IndicatorsDetailsPageProps = {
 	productType: ProductType;
 };
 
-export type ChapterHeadingsProps = {
-	chapters: ProductChapter[];
-};
-
-export function ChapterHeadingsList({
-	chapters,
-}: ChapterHeadingsProps): JSX.Element {
-	return (
-		<ul>
-			<legend>Chapters</legend>
-			{chapters.map((item, i) => {
-				return (
-					<li key={i}>
-						<Link href={item.url}>
-							<a>{item.title}</a>
-						</Link>
-					</li>
-				);
-			})}
-		</ul>
-	);
-}
-
 export default function IndicatorsDetailsPage({
 	id,
 	product,
 	productType,
+	slug,
 }: IndicatorsDetailsPageProps): JSX.Element {
 	return (
 		<>
@@ -69,8 +46,13 @@ export default function IndicatorsDetailsPage({
 				) : null}
 			</ul>
 			{product.chapterHeadings ? (
-				<ChapterHeadingsList chapters={product.chapterHeadings} />
+				<PublicationsChapterMenu
+					chapters={product.chapterHeadings}
+					productType={productType.identifierPrefix}
+					slug={slug}
+				/>
 			) : null}
+
 			{product.summary ? <p>{product.summary}</p> : <p>summary goes here</p>}
 		</>
 	);
