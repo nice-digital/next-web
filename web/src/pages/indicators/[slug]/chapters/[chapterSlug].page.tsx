@@ -25,7 +25,11 @@ export type IndicatorChapterPageProps = {
 export default function IndicatorChapterPage({
 	chapterContent,
 }: IndicatorChapterPageProps): JSX.Element {
-	return <span dangerouslySetInnerHTML={{ __html: chapterContent.content }} />;
+	return (
+		<>
+			<span dangerouslySetInnerHTML={{ __html: chapterContent.content }} />
+		</>
+	);
 }
 
 export const getServerSideProps: GetServerSideProps<

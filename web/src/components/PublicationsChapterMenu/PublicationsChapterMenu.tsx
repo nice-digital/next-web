@@ -1,6 +1,9 @@
-import Link from "next/link";
+import { useRouter } from "next/router";
 import React, { FC } from "react";
 
+import { StackedNav, StackedNavLink } from "@nice-digital/nds-stacked-nav";
+
+import { Link } from "@/components/Link/Link";
 import { ProductChapter } from "@/feeds/publications/types";
 
 export type ChapterHeadingsProps = {
@@ -14,12 +17,10 @@ export enum ProductTypePaths {
 }
 
 const buildChapterPath = (url: string, productpath: string, slug: string) => {
-	const splitUrl = url.toString().toLowerCase().split("/");
-	console.log(splitUrl);
-	return productpath + slug + "/chapters/" + splitUrl[3];
+	return `${productpath}${slug}/chapters/${
+		url.toString().toLowerCase().split("/")[3]
+	}`;
 };
-
-//TODO active state useRoute
 
 export const PublicationsChapterMenu: FC<ChapterHeadingsProps> = ({
 	chapters,
@@ -27,20 +28,28 @@ export const PublicationsChapterMenu: FC<ChapterHeadingsProps> = ({
 	slug,
 }) => {
 	console.log({ chapters });
+	const router = useRouter();
 	const productPath =
 		ProductTypePaths[productType as keyof typeof ProductTypePaths];
 
 	return (
-		<ul>
-			{chapters.map((item, i) => {
-				return (
-					<li key={i}>
-						<Link href={buildChapterPath(item.url, productPath, slug)}>
-							<a>{item.title}</a>
-						</Link>
-					</li>
-				);
-			})}
-		</ul>
+		<>
+			{/* TODO accessibility attributes etc on wrapper component */}
+			<StackedNav>
+				{chapters.map((item) => {
+					const destination = buildChapterPath(item.url, productPath, slug);
+					return (
+						<StackedNavLink
+							key={item.url}
+							destination={destination}
+							elementType={Link}
+							isCurrent={destination === router.asPath}
+						>
+							<span dangerouslySetInnerHTML={{ __html: item.title }} />
+						</StackedNavLink>
+					);
+				})}
+			</StackedNav>
+		</>
 	);
 };
