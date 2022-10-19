@@ -1,6 +1,7 @@
 import slugify from "@sindresorhus/slugify";
 import { GetServerSideProps } from "next";
 import { useRouter } from "next/router";
+import { destination } from "pino";
 import React from "react";
 
 import { Breadcrumbs, Breadcrumb } from "@nice-digital/nds-breadcrumbs";
@@ -28,6 +29,7 @@ export enum ProductTypePaths {
 }
 
 const chaptersAndLinks = (
+	summary: string | undefined,
 	chapters: ProductChapter[],
 	productType: string,
 	slug: string
@@ -37,7 +39,17 @@ const chaptersAndLinks = (
 	const productPath =
 		ProductTypePaths[productType as keyof typeof ProductTypePaths];
 
+	if (summary) {
+		chaptersAndLinksArray.push({
+			title: "Overview",
+			url: `${productPath}${slug}`,
+		});
+	}
+
 	chapters.forEach((chapter) => {
+		if (summary && chapter.title == "Overview") {
+			return;
+		}
 		return chaptersAndLinksArray.push({
 			title: chapter.title,
 			url: `${productPath}${slug}/chapters/${
@@ -65,8 +77,10 @@ export default function IndicatorsDetailsPage({
 	const breadcrumbs = () => (
 		<Breadcrumbs>
 			<Breadcrumb to="/">Home</Breadcrumb>
+			<Breadcrumb to="/standards-and-indicators">NICE indicators</Breadcrumb>
 			<Breadcrumb to="/indicators">NICE indicators</Breadcrumb>
-			<Breadcrumb>some breadcrumb</Breadcrumb>
+			{/* TODO make id dynamic in lieu of shortTitles */}
+			<Breadcrumb>some breadcrumb : ID</Breadcrumb>
 		</Breadcrumbs>
 	);
 
@@ -76,6 +90,7 @@ export default function IndicatorsDetailsPage({
 
 	if (product.chapterHeadings) {
 		chapters = chaptersAndLinks(
+			product.summary,
 			product.chapterHeadings,
 			productType.identifierPrefix,
 			slug
@@ -83,10 +98,26 @@ export default function IndicatorsDetailsPage({
 	}
 
 	//TODO calculate current, previous and next chapters for prevnext component
+	let nextPageLink;
+
 	if (chapters) {
-		const chaptersLength = chapters.length;
-		console.log({ chapters });
-		console.log(router.asPath);
+		const currentIndex = chapters.findIndex(
+			(element) => element.url === router.asPath
+		);
+		console.log(currentIndex);
+		const next =
+			currentIndex < chapters.length &&
+			chapters[(currentIndex + 1) % chapters.length];
+
+		if (next) {
+			nextPageLink = {
+				text: next.title,
+				destination: next.url,
+			};
+
+			console.log(nextPageLink.text);
+			console.log(nextPageLink.destination);
+		}
 	}
 
 	return (
@@ -98,27 +129,26 @@ export default function IndicatorsDetailsPage({
 				id="content-start"
 				lead={
 					<>
-						<SkipLink targetId="chapters">Skip to chapters</SkipLink>
+						<span>{productType.name} | </span>
+						<span>{id} </span>
+						{product.publishedDate ? (
+							<span>
+								| published: <time>{formatDateStr(product.publishedDate)}</time>
+							</span>
+						) : null}
+
+						{product.lastUpdatedDate ? (
+							<span>
+								last updated:{" "}
+								<time> | {formatDateStr(product.lastUpdatedDate)} </time>
+							</span>
+						) : null}
 					</>
 				}
 			/>
 
 			{/* TODO render piped subheading correctly - existing NDS component? */}
-			<ul className={`list list--piped`}>
-				<li>{productType.name}</li>
-				<li>{id} </li>
-				{product.publishedDate ? (
-					<li>
-						published: <time>{formatDateStr(product.publishedDate)}</time>
-					</li>
-				) : null}
 
-				{product.lastUpdatedDate ? (
-					<li>
-						last updated: <time>{formatDateStr(product.lastUpdatedDate)}</time>
-					</li>
-				) : null}
-			</ul>
 			<Grid gutter="loose">
 				<GridItem
 					cols={12}
@@ -142,19 +172,28 @@ export default function IndicatorsDetailsPage({
 					) : (
 						<p>summary goes here</p>
 					)}
-
+				</GridItem>
+				<GridItem
+					cols={12}
+					md={8}
+					lg={9}
+					elementType="section"
+					// aria-labelledby=""
+				>
 					{/* TODO populate next-prev destinations dynamically */}
-					<PrevNext
-						nextPageLink={{
-							text: "To do",
-							destination: "/somewhere",
-							elementType: ({ children, ...props }) => (
-								<Link {...props} scroll={false}>
-									{children}
-								</Link>
-							),
-						}}
-					/>
+					{nextPageLink ? (
+						<PrevNext
+							nextPageLink={{
+								text: nextPageLink.text,
+								destination: nextPageLink.destination,
+								elementType: ({ children, ...props }) => (
+									<Link {...props} scroll={false}>
+										{children}
+									</Link>
+								),
+							}}
+						/>
+					) : null}
 				</GridItem>
 			</Grid>
 		</>
