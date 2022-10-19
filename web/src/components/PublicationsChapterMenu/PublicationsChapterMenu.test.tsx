@@ -55,6 +55,7 @@ describe("PublicationsChapterMenu", () => {
 		render(<PublicationsChapterMenu {...defaultProps} />);
 
 		//TODO is this a worthwhile test and can this be done without direct node access
+		//TODO calculation of path now happens outside this component - move this out
 		const href = screen
 			.getByRole("link", { name: "Test Chapter 2" })
 			.closest("a")

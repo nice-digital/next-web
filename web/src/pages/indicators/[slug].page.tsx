@@ -1,5 +1,6 @@
 import slugify from "@sindresorhus/slugify";
 import { GetServerSideProps } from "next";
+import { useRouter } from "next/router";
 import React from "react";
 
 import { Breadcrumbs, Breadcrumb } from "@nice-digital/nds-breadcrumbs";
@@ -14,12 +15,39 @@ import {
 	getAllProductTypes,
 	getProductDetail,
 	isErrorResponse,
+	ProductChapter,
 	ProductDetail,
 	ProductType,
 } from "@/feeds/publications/publications";
 import { formatDateStr } from "@/utils";
 
 export const slugifyFunction = slugify;
+
+export enum ProductTypePaths {
+	IND = "/indicators/",
+}
+
+const chaptersAndLinks = (
+	chapters: ProductChapter[],
+	productType: string,
+	slug: string
+): ProductChapter[] => {
+	const chaptersAndLinksArray: Array<ProductChapter> = [];
+
+	const productPath =
+		ProductTypePaths[productType as keyof typeof ProductTypePaths];
+
+	chapters.forEach((chapter) => {
+		return chaptersAndLinksArray.push({
+			title: chapter.title,
+			url: `${productPath}${slug}/chapters/${
+				chapter.url.toString().toLowerCase().split("/")[3]
+			}`,
+		});
+	});
+
+	return chaptersAndLinksArray;
+};
 
 export type IndicatorsDetailsPageProps = {
 	slug: string;
@@ -41,6 +69,25 @@ export default function IndicatorsDetailsPage({
 			<Breadcrumb>some breadcrumb</Breadcrumb>
 		</Breadcrumbs>
 	);
+
+	const router = useRouter();
+
+	let chapters;
+
+	if (product.chapterHeadings) {
+		chapters = chaptersAndLinks(
+			product.chapterHeadings,
+			productType.identifierPrefix,
+			slug
+		);
+	}
+
+	//TODO calculate current, previous and next chapters for prevnext component
+	if (chapters) {
+		const chaptersLength = chapters.length;
+		console.log({ chapters });
+		console.log(router.asPath);
+	}
 
 	return (
 		<>
@@ -81,13 +128,7 @@ export default function IndicatorsDetailsPage({
 					elementType="section"
 					// aria-label=""
 				>
-					{product.chapterHeadings ? (
-						<PublicationsChapterMenu
-							chapters={product.chapterHeadings}
-							productType={productType.identifierPrefix}
-							slug={slug}
-						/>
-					) : null}
+					{chapters ? <PublicationsChapterMenu chapters={chapters} /> : null}
 				</GridItem>
 				<GridItem
 					cols={12}
