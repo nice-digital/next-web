@@ -1,5 +1,6 @@
 import slugify from "@sindresorhus/slugify";
 import { GetServerSideProps } from "next";
+import { NextSeo } from "next-seo";
 import { useRouter } from "next/router";
 import { destination } from "pino";
 import React from "react";
@@ -99,6 +100,14 @@ export default function IndicatorsDetailsPage({
 
 	return (
 		<>
+			{/* TODO get meta description from api */}
+			<NextSeo
+				title={
+					product.title + " | Standards and Indicators | Indicators | NICE"
+				}
+				// noindex={}
+				// description={metaDescription}
+			/>
 			{/* TODO acquire & render breadcrumbs correctly - useMemo? */}
 			{breadcrumbs()}
 			<PageHeader

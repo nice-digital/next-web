@@ -3,21 +3,122 @@
 exports[`IndicatorDetailPage should match snapshot for main content 1`] = `
 <body>
   <div>
-    <h1>
-      /test
-    </h1>
-    <ul>
-      <li>
-        NICE indicator
-      </li>
-      <li>
-        IND1
-         
-      </li>
-    </ul>
-    <p>
-      summary goes here
-    </p>
+    <nav
+      aria-label="Breadcrumbs"
+      role="navigation"
+    >
+      <ol
+        class="breadcrumbs"
+      >
+        <li
+          class="breadcrumbs__crumb"
+        >
+          <a
+            href="/"
+          >
+            Home
+          </a>
+        </li>
+        <li
+          class="breadcrumbs__crumb"
+        >
+          <a
+            href="/standards-and-indicators"
+          >
+            Standards and Indicators
+          </a>
+        </li>
+        <li
+          class="breadcrumbs__crumb"
+        >
+          <a
+            href="/standards-and-indicators/indicators"
+          >
+            Indicators
+          </a>
+        </li>
+        <li
+          class="breadcrumbs__crumb"
+        >
+          <span>
+            IND1
+          </span>
+        </li>
+      </ol>
+    </nav>
+    <script
+      type="application/ld+json"
+    >
+      {
+  "@context": "http://schema.org",
+  "@type": "BreadcrumbList",
+  "itemListElement": [
+    {
+      "@type": "ListItem",
+      "position": 1,
+      "item": {
+        "@id": "/",
+        "name": "Home"
+      }
+    },
+    {
+      "@type": "ListItem",
+      "position": 2,
+      "item": {
+        "@id": "/standards-and-indicators",
+        "name": "Standards and Indicators"
+      }
+    },
+    {
+      "@type": "ListItem",
+      "position": 3,
+      "item": {
+        "@id": "/standards-and-indicators/indicators",
+        "name": "Indicators"
+      }
+    },
+    {
+      "@type": "ListItem",
+      "position": 4,
+      "item": {
+        "name": "IND1"
+      }
+    }
+  ]
+}
+    </script>
+    <div
+      class="page-header"
+      id="content-start"
+    >
+      <h1
+        class="page-header__heading page-header__heading--alt"
+      >
+        test title
+      </h1>
+      <p
+        class="page-header__lead"
+      >
+        <span>
+          NICE indicator
+           | 
+        </span>
+        <span>
+          IND1
+           
+        </span>
+      </p>
+    </div>
+    <div
+      class="grid grid--loose"
+    >
+      <section
+        data-g="12 md:4 lg:3"
+      />
+      <section
+        data-g="12 md:8 lg:9"
+      />
+    </div>
   </div>
 </body>
 `;

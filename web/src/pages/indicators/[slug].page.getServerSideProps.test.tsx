@@ -1,4 +1,4 @@
-import { render, screen, within } from "@testing-library/react";
+import { render, screen, within, waitFor } from "@testing-library/react";
 import MockAdapter from "axios-mock-adapter";
 import { useRouter } from "next/router";
 
@@ -35,7 +35,7 @@ jest.mock("@/feeds/publications/publications", () => {
 const props: IndicatorsDetailsPageProps = {
 	slug: "/ind-1-test-title-1",
 	id: "IND1",
-	product: { title: "/test", id: "IND1", productType: "IND" },
+	product: { title: "test title", id: "IND1", productType: "IND" },
 	productType: {
 		_links: {
 			self: [{}],
@@ -64,7 +64,16 @@ describe("IndicatorDetailPage", () => {
 		expect(document.body).toMatchSnapshot();
 	});
 
-	it.only("should render meta data id in uppercase", () => {
+	it("should render the title with reversed breadcrumb for SEO", async () => {
+		render(<IndicatorsDetailsPage {...props} />);
+		await waitFor(() => {
+			expect(document.title).toEqual(
+				"test title | Standards and Indicators | Indicators | NICE"
+			);
+		});
+	});
+
+	it("should render meta data id in uppercase", () => {
 		render(<IndicatorsDetailsPage {...props} />);
 		expect(
 			screen.getByText("IND1", { selector: ".page-header__lead span" })
@@ -72,6 +81,14 @@ describe("IndicatorDetailPage", () => {
 	});
 
 	it.todo("test for breadcrumb content");
+	it.todo("add tests for pageheader metadata content");
+	it.todo(
+		"add seo tests for page title and metadata description from product data"
+	);
+	it.todo("ensure time tag and datetime attribute in pageheader metadata");
+	it.todo(
+		"ensure time tag metadata is correctly formatted in time tag attribute and content"
+	);
 });
 
 describe("getGetServerSidePropsFunc", () => {
@@ -95,8 +112,7 @@ describe("getGetServerSidePropsFunc", () => {
 		expect(result).toStrictEqual({
 			props: {
 				slug: "ind1-test-title-1",
-				id: "ind1",
-				product: { id: "IND1", title: "Test title 1" },
+				product: { id: "ind1", title: "Test title 1" },
 				productType: {
 					eTag: null,
 					enabled: true,
