@@ -22,11 +22,9 @@ import {
 } from "@/feeds/publications/publications";
 import { formatDateStr } from "@/utils";
 
-export const slugifyFunction = slugify;
+import styles from "./[slug].page.module.scss";
 
-export enum ProductTypePaths {
-	IND = "/indicators/",
-}
+export const slugifyFunction = slugify;
 
 const chaptersAndLinks = (
 	summary: string | undefined,
@@ -36,13 +34,10 @@ const chaptersAndLinks = (
 ): ProductChapter[] => {
 	const chaptersAndLinksArray: Array<ProductChapter> = [];
 
-	const productPath =
-		ProductTypePaths[productType as keyof typeof ProductTypePaths];
-
 	if (summary) {
 		chaptersAndLinksArray.push({
 			title: "Overview",
-			url: `${productPath}${slug}`,
+			url: `/indicators/${slug}`,
 		});
 	}
 
@@ -52,9 +47,10 @@ const chaptersAndLinks = (
 		}
 		return chaptersAndLinksArray.push({
 			title: chapter.title,
-			url: `${productPath}${slug}/chapters/${
-				chapter.url.toString().toLowerCase().split("/")[3]
-			}`,
+			url: `/indicators/${slug}/chapters/${chapter.url
+				.split("/")
+				.pop()
+				?.toLowerCase()}`,
 		});
 	});
 
@@ -63,13 +59,11 @@ const chaptersAndLinks = (
 
 export type IndicatorsDetailsPageProps = {
 	slug: string;
-	id: string;
 	product: ProductDetail;
 	productType: ProductType;
 };
 
 export default function IndicatorsDetailsPage({
-	id,
 	product,
 	productType,
 	slug,
@@ -77,10 +71,13 @@ export default function IndicatorsDetailsPage({
 	const breadcrumbs = () => (
 		<Breadcrumbs>
 			<Breadcrumb to="/">Home</Breadcrumb>
-			<Breadcrumb to="/standards-and-indicators">NICE indicators</Breadcrumb>
-			<Breadcrumb to="/indicators">NICE indicators</Breadcrumb>
-			{/* TODO make id dynamic in lieu of shortTitles */}
-			<Breadcrumb>some breadcrumb : ID</Breadcrumb>
+			<Breadcrumb to="/standards-and-indicators">
+				Standards and Indicators
+			</Breadcrumb>
+			<Breadcrumb to="/standards-and-indicators/indicators">
+				Indicators
+			</Breadcrumb>
+			<Breadcrumb>{product.id}</Breadcrumb>
 		</Breadcrumbs>
 	);
 
@@ -98,27 +95,7 @@ export default function IndicatorsDetailsPage({
 	}
 
 	//TODO calculate current, previous and next chapters for prevnext component
-	let nextPageLink;
-
-	if (chapters) {
-		const currentIndex = chapters.findIndex(
-			(element) => element.url === router.asPath
-		);
-		console.log(currentIndex);
-		const next =
-			currentIndex < chapters.length &&
-			chapters[(currentIndex + 1) % chapters.length];
-
-		if (next) {
-			nextPageLink = {
-				text: next.title,
-				destination: next.url,
-			};
-
-			console.log(nextPageLink.text);
-			console.log(nextPageLink.destination);
-		}
-	}
+	const nextPageLink = chapters?.[1];
 
 	return (
 		<>
@@ -126,29 +103,34 @@ export default function IndicatorsDetailsPage({
 			{breadcrumbs()}
 			<PageHeader
 				heading={product.title}
+				useAltHeading
 				id="content-start"
 				lead={
 					<>
 						<span>{productType.name} | </span>
-						<span>{id} </span>
+						<span>{product.id} </span>
 						{product.publishedDate ? (
 							<span>
-								| published: <time>{formatDateStr(product.publishedDate)}</time>
+								| Published:{" "}
+								<time dateTime={product.publishedDate}>
+									{formatDateStr(product.publishedDate)}
+								</time>
 							</span>
 						) : null}
 
 						{product.lastUpdatedDate ? (
 							<span>
-								last updated:{" "}
-								<time> | {formatDateStr(product.lastUpdatedDate)} </time>
+								Last updated:
+								<time dateTime={product.lastUpdatedDate}>
+									{" "}
+									| {formatDateStr(product.lastUpdatedDate)}{" "}
+								</time>
 							</span>
 						) : null}
 					</>
 				}
 			/>
-
 			{/* TODO render piped subheading correctly - existing NDS component? */}
-
 			<Grid gutter="loose">
 				<GridItem
 					cols={12}
@@ -168,24 +150,17 @@ export default function IndicatorsDetailsPage({
 					// aria-labelledby=""
 				>
 					{product.summary ? (
-						<span dangerouslySetInnerHTML={{ __html: product.summary }} />
-					) : (
-						<p>summary goes here</p>
-					)}
-				</GridItem>
-				<GridItem
-					cols={12}
-					md={8}
-					lg={9}
-					elementType="section"
-					// aria-labelledby=""
-				>
+						<div
+							dangerouslySetInnerHTML={{ __html: product.summary }}
+							className={styles.summary}
+						/>
+					) : null}
 					{/* TODO populate next-prev destinations dynamically */}
 					{nextPageLink ? (
 						<PrevNext
 							nextPageLink={{
-								text: nextPageLink.text,
-								destination: nextPageLink.destination,
+								text: nextPageLink.title,
+								destination: nextPageLink.url,
 								elementType: ({ children, ...props }) => (
 									<Link {...props} scroll={false}>
 										{children}
@@ -211,12 +186,6 @@ export const getServerSideProps: GetServerSideProps<
 	) {
 		return { notFound: true };
 	}
-
-	// const lookupProductTypeById = (id: string): string => {
-	// 	const productTypes = getAllProductTypes();
-	// 	console.log({ productTypes });
-	// 	return "product type";
-	// };
 
 	const productTypes = await getAllProductTypes();
 	const productType = productTypes.find((p) => p.identifierPrefix === "IND");
@@ -255,7 +224,6 @@ export const getServerSideProps: GetServerSideProps<
 	return {
 		props: {
 			slug: params.slug,
-			id,
 			product,
 			productType,
 		},

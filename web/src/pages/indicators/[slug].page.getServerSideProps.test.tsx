@@ -1,5 +1,6 @@
-import { render } from "@testing-library/react";
+import { render, screen, within } from "@testing-library/react";
 import MockAdapter from "axios-mock-adapter";
+import { useRouter } from "next/router";
 
 import { ProductGroup, ProductTypeAcronym } from "@/feeds/publications/types";
 
@@ -26,7 +27,7 @@ jest.mock("@/feeds/publications/publications", () => {
 		...originalModule,
 		getProductDetail: jest.fn(() => ({
 			title: "Test title 1",
-			id: "IND1",
+			id: "ind1",
 		})),
 	};
 });
@@ -52,6 +53,7 @@ const props: IndicatorsDetailsPageProps = {
 
 describe("IndicatorDetailPage", () => {
 	beforeEach(() => {
+		(useRouter as jest.Mock).mockImplementation(() => ({}));
 		axiosMock.reset();
 		jest.resetModules();
 	});
@@ -61,6 +63,15 @@ describe("IndicatorDetailPage", () => {
 
 		expect(document.body).toMatchSnapshot();
 	});
+
+	it.only("should render meta data id in uppercase", () => {
+		render(<IndicatorsDetailsPage {...props} />);
+		expect(
+			screen.getByText("IND1", { selector: ".page-header__lead span" })
+		).toBeInTheDocument();
+	});
+
+	it.todo("test for breadcrumb content");
 });
 
 describe("getGetServerSidePropsFunc", () => {
