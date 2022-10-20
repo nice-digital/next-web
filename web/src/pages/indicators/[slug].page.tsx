@@ -1,4 +1,5 @@
 import slugify from "@sindresorhus/slugify";
+import dayjs from "dayjs";
 import { GetServerSideProps } from "next";
 import { NextSeo } from "next-seo";
 import React from "react";
@@ -98,7 +99,7 @@ export default function IndicatorsDetailsPage({
 				title={
 					product.title + " | Standards and Indicators | Indicators | NICE"
 				}
-				description={product.metaDesription}
+				description={product.metaDescription}
 			/>
 			{breadcrumbs()}
 			<PageHeader
@@ -106,13 +107,15 @@ export default function IndicatorsDetailsPage({
 				useAltHeading
 				id="content-start"
 				lead={
-					<>
-						<span>{productType.name} | </span>
-						<span>{product.id} </span>
+					<div className={styles.leadMeta}>
+						<span>{productType.name}</span>
+						<span>{product.id}</span>
 						{product.publishedDate ? (
 							<span>
-								| Published:{" "}
-								<time dateTime={product.publishedDate}>
+								Published:
+								<time
+									dateTime={dayjs(product.publishedDate).format("YYYY-MM-DD")}
+								>
 									{formatDateStr(product.publishedDate)}
 								</time>
 							</span>
@@ -121,13 +124,14 @@ export default function IndicatorsDetailsPage({
 						{product.lastUpdatedDate ? (
 							<span>
 								Last updated:
-								<time dateTime={product.lastUpdatedDate}>
-									{" "}
-									| {formatDateStr(product.lastUpdatedDate)}{" "}
+								<time
+									dateTime={dayjs(product.lastUpdatedDate).format("YYYY-MM-DD")}
+								>
+									{formatDateStr(product.lastUpdatedDate)}
 								</time>
 							</span>
 						) : null}
-					</>
+					</div>
 				}
 			/>
 			<Grid gutter="loose">

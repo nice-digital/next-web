@@ -287,7 +287,7 @@ export type ContentPartList = Embedded<
 
 export type ProductDetail = {
 	title: string;
-	metaDesription: string;
+	metaDescription: string;
 	chapterHeadings?: ProductChapter[];
 	id: string;
 	lastUpdatedDate?: string;

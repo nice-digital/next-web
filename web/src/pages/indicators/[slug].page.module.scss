@@ -2,6 +2,7 @@
 @use '@nice-digital/nds-core/scss/spacing';
 @use '@nice-digital/nds-core/scss/typography';
 @use '@nice-digital/nds-core/scss/utils';
+@use '@nice-digital/nds-core/scss/colours';
 
 .summary {
   margin-bottom: utils.rem(spacing.$large);
@@ -9,5 +10,21 @@
   > :first-child {
     margin-top: 0;
   }
+}
+
+.leadMeta {
+  display: flex;
+  flex-wrap: wrap;
+
+  > span:not(:first-child) {
+    margin-left: utils.rem(spacing.$small);
+    border-left: 3px solid colours.$text;
+    padding: 0 0 0 utils.rem(spacing.$small);
+  }
+
+  span {
+    max-height: fit-content;
+  }
+
 }
 

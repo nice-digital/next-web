@@ -98,9 +98,6 @@ export const getServerSideProps: GetServerSideProps<
 			(c) => c.chapterSlug === params.chapterSlug
 		);
 
-	// console.log({ chapter });
-	// console.log(chapter && chapter._links);
-
 	if (!chapter) {
 		return { notFound: true };
 	}
