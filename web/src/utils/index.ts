@@ -1,3 +1,4 @@
+import slugify from "@sindresorhus/slugify";
 import dayjs from "dayjs";
 
 import { Project, ProjectStatus } from "@/feeds/inDev/types";
@@ -51,27 +52,36 @@ export const getProjectPath = (project: Project): string | null =>
  * @returns The path of the product, relative to the root
  */
 export const getProductPath = (product: ProductLite): string => {
-	let productPath: string;
+	let rootPath: string,
+		productSlug = product.id.toLowerCase();
 
-	switch (product.ProductGroup) {
+	switch (product.productGroup) {
 		case "Guideline":
 		case "Guidance":
 		case "Standard":
-			productPath = "guidance";
+			rootPath = "guidance";
 			break;
 		case "Advice":
-			productPath = "advice";
+			rootPath = "advice";
 			break;
 		case "Corporate":
 			// There are 2 types of corporate products that have different URLs: corporate vs process and methods
-			productPath =
-				product.ProductType === ProductTypeAcronym.ECD
+			rootPath =
+				product.productType === ProductTypeAcronym.ECD
 					? "corporate"
 					: "process";
 			break;
+		case ProductGroup.Other:
+			if (product.productType !== ProductTypeAcronym.IND)
+				throw Error(
+					`Unsupported 'other' product type of ${product.productType}`
+				);
+			rootPath = "indicators";
+			productSlug += `-${slugify(product.title)}`;
+			break;
 		default:
-			throw `Unsupported product group ${product.ProductGroup}`;
+			throw `Unsupported product group ${product.productGroup}`;
 	}
 
-	return `/${productPath}/${product.Id.toLowerCase()}`;
+	return `/${rootPath}/${productSlug}`;
 };
