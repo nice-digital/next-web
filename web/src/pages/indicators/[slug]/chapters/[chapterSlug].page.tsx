@@ -2,7 +2,6 @@ import slugify from "@sindresorhus/slugify";
 import { GetServerSideProps } from "next";
 import React from "react";
 
-import { PublicationsChapterMenu } from "@/components/PublicationsChapterMenu/PublicationsChapterMenu";
 import {
 	getAllProductTypes,
 	getChapterContent,
