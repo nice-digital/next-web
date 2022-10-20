@@ -1,8 +1,6 @@
 import slugify from "@sindresorhus/slugify";
 import { GetServerSideProps } from "next";
 import { NextSeo } from "next-seo";
-import { useRouter } from "next/router";
-import { destination } from "pino";
 import React from "react";
 
 import { Breadcrumbs, Breadcrumb } from "@nice-digital/nds-breadcrumbs";
@@ -12,7 +10,6 @@ import { PrevNext } from "@nice-digital/nds-prev-next";
 
 import { Link } from "@/components/Link/Link";
 import { PublicationsChapterMenu } from "@/components/PublicationsChapterMenu/PublicationsChapterMenu";
-import { SkipLink } from "@/components/SkipLink/SkipLink";
 import {
 	getAllProductTypes,
 	getProductDetail,
@@ -82,8 +79,6 @@ export default function IndicatorsDetailsPage({
 		</Breadcrumbs>
 	);
 
-	const router = useRouter();
-
 	let chapters;
 
 	if (product.chapterHeadings) {
@@ -95,20 +90,16 @@ export default function IndicatorsDetailsPage({
 		);
 	}
 
-	//TODO calculate current, previous and next chapters for prevnext component
 	const nextPageLink = chapters?.[1];
 
 	return (
 		<>
-			{/* TODO get meta description from api */}
 			<NextSeo
 				title={
 					product.title + " | Standards and Indicators | Indicators | NICE"
 				}
-				// noindex={}
-				// description={metaDescription}
+				description={product.metaDesription}
 			/>
-			{/* TODO acquire & render breadcrumbs correctly - useMemo? */}
 			{breadcrumbs()}
 			<PageHeader
 				heading={product.title}
@@ -139,32 +130,23 @@ export default function IndicatorsDetailsPage({
 					</>
 				}
 			/>
-			{/* TODO render piped subheading correctly - existing NDS component? */}
 			<Grid gutter="loose">
 				<GridItem
 					cols={12}
 					md={4}
 					lg={3}
-					// className={styles.panelWrapper}
 					elementType="section"
-					// aria-label=""
+					aria-label="Chapters"
 				>
 					{chapters ? <PublicationsChapterMenu chapters={chapters} /> : null}
 				</GridItem>
-				<GridItem
-					cols={12}
-					md={8}
-					lg={9}
-					elementType="section"
-					// aria-labelledby=""
-				>
+				<GridItem cols={12} md={8} lg={9} elementType="section">
 					{product.summary ? (
 						<div
 							dangerouslySetInnerHTML={{ __html: product.summary }}
 							className={styles.summary}
 						/>
 					) : null}
-					{/* TODO populate next-prev destinations dynamically */}
 					{nextPageLink ? (
 						<PrevNext
 							nextPageLink={{
@@ -215,8 +197,6 @@ export const getServerSideProps: GetServerSideProps<
 	}
 
 	const titleExtractedFromSlug = rest.join("-").toLowerCase();
-
-	//TODO consider early return when there is no product;
 
 	const slugifiedProductTitle = slugify(product.title);
 	if (titleExtractedFromSlug !== slugifiedProductTitle) {

@@ -280,26 +280,20 @@ export type UploadAndConvertContentPart = {
 	};
 };
 
-// export type ContentPartListOLD = {
-// 	"nice.publications:content-part-list": {
-// 		embedded: UploadAndConvertContentPart;
-// 	};
-// };
-
 export type ContentPartList = Embedded<
 	"nicePublicationsUploadAndConvertContentPart",
 	UploadAndConvertContentPart
 >;
 
 export type ProductDetail = {
+	title: string;
+	metaDesription: string;
 	chapterHeadings?: ProductChapter[];
-	// embedded: ContentPartList;
 	id: string;
 	lastUpdatedDate?: string;
 	productType: string;
 	publishedDate?: string;
 	summary?: string;
-	title: string;
 } & Embedded<"nicePublicationsContentPartList", ContentPartList>;
 
 export type ErrorResponse = {

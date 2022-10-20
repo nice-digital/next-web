@@ -1,4 +1,4 @@
-import { render, screen, within, waitFor } from "@testing-library/react";
+import { render, screen, waitFor } from "@testing-library/react";
 import MockAdapter from "axios-mock-adapter";
 import { useRouter } from "next/router";
 
@@ -60,7 +60,6 @@ describe("IndicatorDetailPage", () => {
 
 	it("should match snapshot for main content", () => {
 		render(<IndicatorsDetailsPage {...props} />);
-
 		expect(document.body).toMatchSnapshot();
 	});
 
