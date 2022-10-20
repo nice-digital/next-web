@@ -99,7 +99,7 @@ exports[`IndicatorDetailPage should match snapshot for main content 1`] = `
       <p
         class="page-header__lead"
       >
-        <div
+        <span
           class="leadMeta"
         >
           <span>
@@ -116,7 +116,7 @@ exports[`IndicatorDetailPage should match snapshot for main content 1`] = `
               8 September 2022
             </time>
           </span>
-        </div>
+        </span>
       </p>
     </div>
     <div
