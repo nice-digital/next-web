@@ -284,7 +284,7 @@ export type ProductDetail = {
 	metaDescription: string;
 	chapterHeadings?: ProductChapter[];
 	id: string;
-	lastUpdatedDate?: string;
+	lastModified?: string;
 	productType: string;
 	publishedDate?: string;
 	summary?: string;

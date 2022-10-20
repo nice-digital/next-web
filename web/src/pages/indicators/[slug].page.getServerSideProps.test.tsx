@@ -116,7 +116,7 @@ describe("IndicatorDetailPage", () => {
 			).toBeInTheDocument();
 		});
 
-		it.each([["NICE indicator"], ["IND1"], ["Published:"]])(
+		it.each([["NICE indicator"], ["IND1"], ["Published:"], ["Last updated:"]])(
 			"should render a %s page header lead meta element",
 			(metaContent) => {
 				render(<IndicatorsDetailsPage {...props} />);
@@ -130,7 +130,7 @@ describe("IndicatorDetailPage", () => {
 			}
 		);
 
-		it("should render published date page header lead meta element in the correct format", () => {
+		it("should render 'Published' date page header lead meta element in the correct format", () => {
 			render(<IndicatorsDetailsPage {...props} />);
 			const publishedDateEl = screen.getByText("8 September 2022", {
 				selector: "time",
@@ -138,12 +138,28 @@ describe("IndicatorDetailPage", () => {
 			expect(publishedDateEl).toBeInTheDocument();
 		});
 
-		it("should render published date page header lead meta element with correctly formatted datetime attribute", () => {
+		it("should render 'Published' date page header lead meta element with correctly formatted datetime attribute", () => {
 			render(<IndicatorsDetailsPage {...props} />);
 			const publishedDateEl = screen.getByText("8 September 2022", {
 				selector: "time",
 			});
 			expect(publishedDateEl).toHaveAttribute("datetime", "2022-09-08");
+		});
+
+		it("should render 'Last updated' date page header lead meta element in the correct format", () => {
+			render(<IndicatorsDetailsPage {...props} />);
+			const publishedDateEl = screen.getByText("12 October 2022", {
+				selector: "time",
+			});
+			expect(publishedDateEl).toBeInTheDocument();
+		});
+
+		it("should render 'Last updated' date page header lead meta element with correctly formatted datetime attribute", () => {
+			render(<IndicatorsDetailsPage {...props} />);
+			const publishedDateEl = screen.getByText("12 October 2022", {
+				selector: "time",
+			});
+			expect(publishedDateEl).toHaveAttribute("datetime", "2022-10-12");
 		});
 	});
 });

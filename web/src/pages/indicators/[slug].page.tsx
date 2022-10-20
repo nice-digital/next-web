@@ -122,15 +122,13 @@ export default function IndicatorsDetailsPage({
 								</span>
 							) : null}
 
-							{product.lastUpdatedDate ? (
+							{product.lastModified ? (
 								<span>
 									Last updated:
 									<time
-										dateTime={dayjs(product.lastUpdatedDate).format(
-											"YYYY-MM-DD"
-										)}
+										dateTime={dayjs(product.lastModified).format("YYYY-MM-DD")}
 									>
-										{formatDateStr(product.lastUpdatedDate)}
+										{formatDateStr(product.lastModified)}
 									</time>
 								</span>
 							) : null}
