@@ -106,6 +106,7 @@ export default function IndicatorsDetailsPage({
 				heading={product.title}
 				useAltHeading
 				id="content-start"
+				className={styles.lead}
 				lead={
 					<>
 						<span className={styles.leadMeta}>
