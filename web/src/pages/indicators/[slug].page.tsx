@@ -117,6 +117,7 @@ export default function IndicatorsDetailsPage({
 									<time
 										dateTime={dayjs(product.publishedDate).format("YYYY-MM-DD")}
 									>
+										{" "}
 										{formatDateStr(product.publishedDate)}
 									</time>
 								</span>
@@ -128,6 +129,7 @@ export default function IndicatorsDetailsPage({
 									<time
 										dateTime={dayjs(product.lastModified).format("YYYY-MM-DD")}
 									>
+										{" "}
 										{formatDateStr(product.lastModified)}
 									</time>
 								</span>
