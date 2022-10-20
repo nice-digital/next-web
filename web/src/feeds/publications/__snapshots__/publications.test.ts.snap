@@ -2,35 +2,35 @@
 
 exports[`publications getAllAreasOfInterest should load raw feed data with empty cache 1`] = `
 Object {
-  "ETag": null,
-  "Enabled": true,
-  "IdentifierPrefix": "AMP",
-  "LastModified": "2021-02-23T00:00:00",
-  "Name": "Antimicrobial prescribing",
-  "PluralName": "Antimicrobial prescribing",
-  "_links": Object {
+  "eTag": null,
+  "enabled": true,
+  "identifierPrefix": "AMP",
+  "lastModified": "2021-02-23T00:00:00",
+  "links": Object {
     "self": Array [
       Object {},
     ],
   },
+  "name": "Antimicrobial prescribing",
+  "pluralName": "Antimicrobial prescribing",
 }
 `;
 
 exports[`publications getAllProductTypes should load raw feed data with empty cache 1`] = `
 Object {
-  "ETag": null,
-  "Enabled": true,
-  "Group": "Advice",
-  "IdentifierPrefix": "APA",
-  "LastModified": "2016-09-06T00:00:00",
-  "Name": "Antimicrobial prescribing evidence summary",
-  "Parent": "ES",
-  "PluralName": "Antimicrobial prescribing evidence summaries",
-  "_links": Object {
+  "eTag": null,
+  "enabled": true,
+  "group": "Advice",
+  "identifierPrefix": "APA",
+  "lastModified": "2016-09-06T00:00:00",
+  "links": Object {
     "self": Array [
       Object {},
     ],
   },
+  "name": "Antimicrobial prescribing evidence summary",
+  "parent": "ES",
+  "pluralName": "Antimicrobial prescribing evidence summaries",
 }
 `;
 

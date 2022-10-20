@@ -6,7 +6,9 @@ import MockAdapter from "axios-mock-adapter";
 import { cache } from "@/cache";
 import { serverRuntimeConfig } from "@/config";
 
+import areaOfInterestTypesMock from "../../__mocks__/__data__/publications/feeds/areaofinteresttypes.json";
 import productsLiteMock from "../../__mocks__/__data__/publications/feeds/products-lite.json";
+import productTypesMock from "../../__mocks__/__data__/publications/feeds/producttypes.json";
 import { client } from "../../feeds";
 
 import {
@@ -41,6 +43,9 @@ describe("publications", () => {
 		});
 
 		it("should load raw feed data with empty cache", async () => {
+			axiosMock
+				.onGet(/\/feeds\/areaofinteresttypes/)
+				.reply(200, areaOfInterestTypesMock);
 			await getAllAreasOfInterest();
 			const data: Awaited<ReturnType<typeof getAllAreasOfInterest>> =
 				await cacheWrapMock.mock.calls[0][1]();
@@ -72,11 +77,12 @@ describe("publications", () => {
 		});
 
 		it("should load raw feed data with empty cache", async () => {
+			axiosMock.onGet(/\/feeds\/producttypes/).reply(200, productTypesMock);
 			await getAllProductTypes();
 			const data: Awaited<ReturnType<typeof getAllProductTypes>> =
 				await cacheWrapMock.mock.calls[0][1]();
 
-			expect(data).toHaveLength(27);
+			expect(data).toHaveLength(29);
 			expect(data[0]).toMatchSnapshot();
 		});
 	});
@@ -102,7 +108,7 @@ describe("publications", () => {
 			);
 		});
 
-		it.only("should load raw feed data with empty cache", async () => {
+		it("should load raw feed data with empty cache", async () => {
 			axiosMock.onGet(/\/feeds\/products-lite/).reply(200, productsLiteMock);
 
 			await getAllProducts();
