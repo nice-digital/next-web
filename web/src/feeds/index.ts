@@ -3,12 +3,6 @@ import applyCaseMiddleware from "axios-case-converter";
 
 import { cache, getCacheKey } from "@/cache";
 
-// const client: AxiosInstance = applyCaseMiddleware(axios.create(), {
-// preservedKeys: (propertyName) =>
-// keep _embedded & nice. property names as is
-// propertyName[0] === "_" || propertyName.slice(0, 5) === "nice.",
-// });
-
 export const client: AxiosInstance = applyCaseMiddleware(axios.create());
 
 /**

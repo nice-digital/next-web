@@ -253,12 +253,6 @@ export type HTMLContent = Embedded<
 	HTMLChapterContentInfo[]
 >;
 
-// export type HTMLContent = {
-// 	_embedded: {
-// 		"nice.publications:html-chapter-content-info": HTMLChapterContentInfo[];
-// 	};
-// };
-
 export type FileContent<TFileExtension extends "pdf" | "mobi" | "epub"> = {
 	fileName: `${string}.${TFileExtension}`;
 	length: number;
