@@ -28,17 +28,6 @@ export default function IndicatorChapterPage({
 }: IndicatorChapterPageProps): JSX.Element {
 	return (
 		<>
-			<PublicationsChapterMenu
-				chapters={[
-					{
-						title: "some chapter",
-						url: "/indicators/ind1001-test-indicator-ind-1001-the-percentage-of-patients-with-one-or-more-of-the-following-conditions-chd-atrial-fibrillation-chronic-heart-failure-stroke-or-tia-diabetes-or-dementia-with-a-fast-score-of-3-or-more-or-audit-c-score-of-5-or-more-in-the-preceding-2-years-who-have-received-brief-intervention-to-help-them-reduce-their-alcohol-related-risk-within-3-months-of-the-score-being-recorded/indicator-nm181",
-					},
-					{ title: "some other chapter", url: "/elsewhere" },
-				]}
-				productType="IND"
-				slug="ind1001-test-indicator-ind-1001-the-percentage-of-patients-with-one-or-more-of-the-following-conditions-chd-atrial-fibrillation-chronic-heart-failure-stroke-or-tia-diabetes-or-dementia-with-a-fast-score-of-3-or-more-or-audit-c-score-of-5-or-more-in-the-preceding-2-years-who-have-received-brief-intervention-to-help-them-reduce-their-alcohol-related-risk-within-3-months-of-the-score-being-recorded"
-			/>
 			<span dangerouslySetInnerHTML={{ __html: chapterContent.content }} />
 		</>
 	);
