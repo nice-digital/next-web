@@ -107,31 +107,35 @@ export default function IndicatorsDetailsPage({
 				useAltHeading
 				id="content-start"
 				lead={
-					<div className={styles.leadMeta}>
-						<span>{productType.name}</span>
-						<span>{product.id}</span>
-						{product.publishedDate ? (
-							<span>
-								Published:
-								<time
-									dateTime={dayjs(product.publishedDate).format("YYYY-MM-DD")}
-								>
-									{formatDateStr(product.publishedDate)}
-								</time>
-							</span>
-						) : null}
+					<>
+						<span className={styles.leadMeta}>
+							<span>{productType.name}</span>
+							<span>{product.id}</span>
+							{product.publishedDate ? (
+								<span>
+									Published:
+									<time
+										dateTime={dayjs(product.publishedDate).format("YYYY-MM-DD")}
+									>
+										{formatDateStr(product.publishedDate)}
+									</time>
+								</span>
+							) : null}
 
-						{product.lastUpdatedDate ? (
-							<span>
-								Last updated:
-								<time
-									dateTime={dayjs(product.lastUpdatedDate).format("YYYY-MM-DD")}
-								>
-									{formatDateStr(product.lastUpdatedDate)}
-								</time>
-							</span>
-						) : null}
-					</div>
+							{product.lastUpdatedDate ? (
+								<span>
+									Last updated:
+									<time
+										dateTime={dayjs(product.lastUpdatedDate).format(
+											"YYYY-MM-DD"
+										)}
+									>
+										{formatDateStr(product.lastUpdatedDate)}
+									</time>
+								</span>
+							) : null}
+						</span>
+					</>
 				}
 			/>
 			<Grid gutter="loose">
