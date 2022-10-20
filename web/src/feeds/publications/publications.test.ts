@@ -1,8 +1,13 @@
 /**
  * @jest-environment node
  */
+import MockAdapter from "axios-mock-adapter";
+
 import { cache } from "@/cache";
 import { serverRuntimeConfig } from "@/config";
+
+import productsLiteMock from "../../__mocks__/__data__/publications/feeds/products-lite.json";
+import { client } from "../../feeds";
 
 import {
 	getAllAreasOfInterest,
@@ -10,8 +15,7 @@ import {
 	getAllProducts,
 } from "./publications";
 
-import type { PromiseValue } from "type-fest";
-
+const axiosMock = new MockAdapter(client, { onNoMatch: "throwException" });
 const cacheWrapMock = cache.wrap as jest.Mock;
 
 describe("publications", () => {
@@ -38,7 +42,7 @@ describe("publications", () => {
 
 		it("should load raw feed data with empty cache", async () => {
 			await getAllAreasOfInterest();
-			const data: PromiseValue<ReturnType<typeof getAllAreasOfInterest>> =
+			const data: Awaited<ReturnType<typeof getAllAreasOfInterest>> =
 				await cacheWrapMock.mock.calls[0][1]();
 
 			expect(data).toHaveLength(2);
@@ -69,7 +73,7 @@ describe("publications", () => {
 
 		it("should load raw feed data with empty cache", async () => {
 			await getAllProductTypes();
-			const data: PromiseValue<ReturnType<typeof getAllProductTypes>> =
+			const data: Awaited<ReturnType<typeof getAllProductTypes>> =
 				await cacheWrapMock.mock.calls[0][1]();
 
 			expect(data).toHaveLength(27);
@@ -98,9 +102,11 @@ describe("publications", () => {
 			);
 		});
 
-		it("should load raw feed data with empty cache", async () => {
+		it.only("should load raw feed data with empty cache", async () => {
+			axiosMock.onGet(/\/feeds\/products-lite/).reply(200, productsLiteMock);
+
 			await getAllProducts();
-			const data: PromiseValue<ReturnType<typeof getAllProducts>> =
+			const data: Awaited<ReturnType<typeof getAllProducts>> =
 				await cacheWrapMock.mock.calls[0][1]();
 
 			expect(data).toHaveLength(2717);

@@ -36,16 +36,17 @@ Object {
 
 exports[`publications getAllProducts should load raw feed data with empty cache 1`] = `
 Object {
-  "AreasOfInterestList": Array [],
-  "DevelopedAs": null,
-  "Id": "CG1",
-  "LastMajorModificationDate": "2002-12-01T00:00:00",
-  "LastModified": "2020-09-02T08:58:37.35792Z",
-  "ProductGroup": "Guideline",
-  "ProductStatus": "Withdrawn",
-  "ProductType": "CG",
-  "PublishedDate": "2002-12-01T00:00:00",
-  "RelevantTo": Array [],
-  "Title": "Schizophrenia",
+  "areasOfInterestList": Array [],
+  "developedAs": null,
+  "eTag": null,
+  "id": "CG1",
+  "lastMajorModificationDate": "2002-12-01T00:00:00",
+  "lastModified": "2020-09-02T08:58:37.35792Z",
+  "productGroup": "Guideline",
+  "productStatus": "Withdrawn",
+  "productType": "CG",
+  "publishedDate": "2002-12-01T00:00:00",
+  "relevantTo": Array [],
+  "title": "Schizophrenia",
 }
 `;
