@@ -100,6 +100,13 @@ export default function IndicatorsDetailsPage({
 					product.title + " | Standards and Indicators | Indicators | NICE"
 				}
 				description={product.metaDescription}
+				additionalLinkTags={[
+					{
+						rel: "sitemap",
+						type: "application/xml",
+						href: "/indicators/sitemap.xml",
+					},
+				]}
 			/>
 			{breadcrumbs()}
 			<PageHeader
