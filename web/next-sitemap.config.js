@@ -4,7 +4,7 @@ const isTeamCity = !!process.env.TEAMCITY_VERSION;
 
 const siteUrl = isTeamCity
 	? // Note the octopus deploy variable in #{} syntax so we can use each environment's full URL at deploy time
-	  "#{public:baseURL}#{public:publicBaseURL}"
+	  "#{public:baseURL}"
 	: `${config.get("public.baseURL")}${config.get("public.publicBaseURL")}`;
 
 /** @type {import('next-sitemap').IConfig} */
