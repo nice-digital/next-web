@@ -133,10 +133,6 @@ exports[`IndicatorDetailPage should match snapshot for main content 1`] = `
       class="grid grid--loose"
     >
       <section
-        aria-label="Chapters"
-        data-g="12 md:4 lg:3"
-      />
-      <section
         data-g="12 md:8 lg:9"
       />
     </div>

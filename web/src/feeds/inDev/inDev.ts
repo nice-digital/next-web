@@ -28,7 +28,7 @@ export const getAllProjects = async (): Promise<Project[]> =>
 					FeedPath.AllProjects,
 					apiKey
 				)
-			)._embedded["nice.indev:indevelopment-project"]
+			).embedded.niceIndevIndevelopmentProject
 	);
 
 export const getAllConsultations = async (): Promise<Consultation[]> =>
@@ -43,5 +43,5 @@ export const getAllConsultations = async (): Promise<Consultation[]> =>
 					FeedPath.InConsultationProjects,
 					apiKey
 				)
-			)?._embedded?.["nice.indev:inconsultation-product"] || []
+			)?.embedded?.niceIndevInconsultationProduct || []
 	);

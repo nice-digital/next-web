@@ -6,9 +6,8 @@ import {
 	SortOrder,
 } from "@nice-digital/search-client";
 
+import sampleData from "@/mockData/search/guidance-published.json";
 import { render, screen, cleanup } from "@/test-utils";
-
-import sampleData from "../../__mocks__/__data__/search/guidance-published.json";
 
 import { getGuidanceListPage } from "./GuidanceListPage";
 

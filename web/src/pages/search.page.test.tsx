@@ -7,10 +7,9 @@ import {
 	SearchUrl,
 } from "@nice-digital/search-client";
 
+import sampleDataFailed from "@/mockData/search/search-results-failed.json";
+import sampleData from "@/mockData/search/search-results.json";
 import { render, screen, waitFor } from "@/test-utils";
-
-import sampleDataFailed from "../__mocks__/__data__/search/search-results-failed.json";
-import sampleData from "../__mocks__/__data__/search/search-results.json";
 
 import SearchPage from "./search.page";
 

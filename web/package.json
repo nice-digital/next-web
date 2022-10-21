@@ -41,7 +41,6 @@
     "form-serialize": "^0.7.2",
     "glob": "^8.0.3",
     "js-yaml": "^4.1.0",
-    "needle": "^2.8.0",
     "next": "^12.2.2",
     "next-logger": "^3.0.1",
     "next-plugin-node-config": "^1.0.2",

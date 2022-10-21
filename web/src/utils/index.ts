@@ -39,11 +39,11 @@ export const formatDateStr = (isoDateStr: string, short = false): string =>
  * @returns The path of the project, relative to the root
  */
 export const getProjectPath = (project: Project): string | null =>
-	project.ProjectGroup == ProductGroup.Advice
+	project.projectGroup == ProductGroup.Advice
 		? null
-		: project.Status === ProjectStatus.Proposed
-		? `/guidance/awaiting-development/${project.Reference.toLowerCase()}`
-		: `/guidance/indevelopment/${project.Reference.toLowerCase()}`;
+		: project.status === ProjectStatus.Proposed
+		? `/guidance/awaiting-development/${project.reference.toLowerCase()}`
+		: `/guidance/indevelopment/${project.reference.toLowerCase()}`;
 
 /**
  * Gets the path, relative to the root, of an published product overview page.
@@ -56,15 +56,15 @@ export const getProductPath = (product: ProductLite): string => {
 		productSlug = product.id.toLowerCase();
 
 	switch (product.productGroup) {
-		case "Guideline":
-		case "Guidance":
-		case "Standard":
+		case ProductGroup.Guideline:
+		case ProductGroup.Guidance:
+		case ProductGroup.Standard:
 			rootPath = "guidance";
 			break;
-		case "Advice":
+		case ProductGroup.Advice:
 			rootPath = "advice";
 			break;
-		case "Corporate":
+		case ProductGroup.Corporate:
 			// There are 2 types of corporate products that have different URLs: corporate vs process and methods
 			rootPath =
 				product.productType === ProductTypeAcronym.ECD
@@ -80,7 +80,9 @@ export const getProductPath = (product: ProductLite): string => {
 			productSlug += `-${slugify(product.title)}`;
 			break;
 		default:
-			throw `Unsupported product group ${product.productGroup}`;
+			throw `Unsupported product group ${product.productGroup} ${JSON.stringify(
+				product
+			)}`;
 	}
 
 	return `/${rootPath}/${productSlug}`;

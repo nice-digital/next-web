@@ -3,8 +3,8 @@ import MockAdapter from "axios-mock-adapter";
 import { useRouter } from "next/router";
 
 import { ProductGroup, ProductTypeAcronym } from "@/feeds/publications/types";
+import productTypesMock from "@/mockData/publications/feeds/producttypes.json";
 
-import productTypesMock from "../../__mocks__/__data__/publications/feeds/producttypes.json";
 import { client } from "../../feeds/";
 
 import IndicatorsDetailsPage, {

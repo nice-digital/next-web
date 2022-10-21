@@ -38,7 +38,6 @@ exports[`publications getAllProducts should load raw feed data with empty cache 
 Object {
   "areasOfInterestList": Array [],
   "developedAs": null,
-  "eTag": null,
   "id": "CG1",
   "lastMajorModificationDate": "2002-12-01T00:00:00",
   "lastModified": "2020-09-02T08:58:37.35792Z",

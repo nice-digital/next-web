@@ -5,11 +5,10 @@ import MockAdapter from "axios-mock-adapter";
 
 import { cache } from "@/cache";
 import { serverRuntimeConfig } from "@/config";
-
-import areaOfInterestTypesMock from "../../__mocks__/__data__/publications/feeds/areaofinteresttypes.json";
-import productsLiteMock from "../../__mocks__/__data__/publications/feeds/products-lite.json";
-import productTypesMock from "../../__mocks__/__data__/publications/feeds/producttypes.json";
-import { client } from "../../feeds";
+import { client } from "@/feeds";
+import areaOfInterestTypesMock from "@/mockData/publications/feeds/areaofinteresttypes.json";
+import productsLiteMock from "@/mockData/publications/feeds/products-lite.json";
+import productTypesMock from "@/mockData/publications/feeds/producttypes.json";
 
 import {
 	getAllAreasOfInterest,

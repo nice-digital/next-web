@@ -10,9 +10,9 @@ import {
 } from "@/feeds/publications/publications";
 import { getProductPath } from "@/utils/index";
 
-const isPublishedIndicator = (product: ProductLite) =>
-	product.productStatus === ProductStatus.Published &&
-	product.productType === ProductTypeAcronym.IND;
+const isPublishedIndicator = ({ productStatus, productType }: ProductLite) =>
+	productStatus === ProductStatus.Published &&
+	productType === ProductTypeAcronym.IND;
 
 const toSitemapURL = (product: ProductLite) => ({
 	loc: publicRuntimeConfig.baseURL + getProductPath(product),
@@ -28,5 +28,6 @@ export const getServerSideProps: GetServerSideProps = async (context) => {
 };
 
 export default function Sitemap(): void {
-	// Default export to prevent next.js errors
+	// Default export to prevent next.js errors: we don't need an actual component
+	// because the work is done by next-sitemap to generate XML which is written to to `context.res` under the hood
 }

@@ -13,17 +13,17 @@ export interface InDevProjectCardProps {
  * NICE Design System Card component for an in development project
  */
 export const InDevProjectCard: FC<InDevProjectCardProps> = ({ project }) => {
-	const { Title, ProductTypeName, Status, PublishedDate, Reference } = project,
+	const { title, productTypeName, status, publishedDate, reference } = project,
 		destination = getProjectPath(project);
 
 	const metadata: (CardMetaDataProps | undefined)[] = [
-		{ label: "Product type:", value: ProductTypeName },
-		Status !== ProjectStatus.Proposed
+		{ label: "Product type:", value: productTypeName },
+		status !== ProjectStatus.Proposed
 			? {
 					visibleLabel: true,
 					label: "Expected publication date:",
-					value: PublishedDate ? (
-						<time dateTime={PublishedDate}>{formatDateStr(PublishedDate)}</time>
+					value: publishedDate ? (
+						<time dateTime={publishedDate}>{formatDateStr(publishedDate)}</time>
 					) : (
 						<abbr title="To be confirmed">TBC</abbr>
 					),
@@ -32,13 +32,13 @@ export const InDevProjectCard: FC<InDevProjectCardProps> = ({ project }) => {
 		{
 			visibleLabel: true,
 			label: "Reference:",
-			value: Reference,
+			value: reference,
 		},
 	].filter(Boolean);
 
 	return (
 		<Card
-			headingText={<data value={Reference}>{Title}</data>}
+			headingText={<data value={reference}>{title}</data>}
 			metadata={metadata as CardMetaDataProps[]}
 			link={destination ? { destination } : undefined}
 		></Card>
