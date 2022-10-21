@@ -1,5 +1,5 @@
 import { GetServerSideProps } from "next";
-import { getServerSideSitemap } from "next-sitemap";
+import { getServerSideSitemap, ISitemapField } from "next-sitemap";
 
 import { publicRuntimeConfig } from "@/config";
 import {
@@ -14,15 +14,22 @@ const isPublishedIndicator = ({ productStatus, productType }: ProductLite) =>
 	productStatus === ProductStatus.Published &&
 	productType === ProductTypeAcronym.IND;
 
-const toSitemapURL = (product: ProductLite) => ({
+const toSitemapURL = (product: ProductLite): ISitemapField => ({
 	loc: publicRuntimeConfig.baseURL + getProductPath(product),
 	lastmod: product.lastModified,
 });
 
 export const getServerSideProps: GetServerSideProps = async (context) => {
-	const sitemapURLs = (await getAllProducts())
-		.filter(isPublishedIndicator)
-		.map(toSitemapURL);
+	const startTime = process.hrtime.bigint(),
+		sitemapURLs = (await getAllProducts())
+			.filter(isPublishedIndicator)
+			.map(toSitemapURL),
+		endTime = process.hrtime.bigint();
+
+	context.res.setHeader(
+		"Server-Timing",
+		`api;dur=${Math.round(Number(endTime - startTime) / 1000000)}`
+	);
 
 	return getServerSideSitemap(context, sitemapURLs);
 };
