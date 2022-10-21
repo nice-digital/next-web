@@ -5,7 +5,7 @@ import MockAdapter from "axios-mock-adapter";
 
 import { cache } from "@/cache";
 import { serverRuntimeConfig } from "@/config";
-import { client } from "@/feeds";
+import { client } from "@/feeds/index";
 import areaOfInterestTypesMock from "@/mockData/publications/feeds/areaofinteresttypes.json";
 import productsLiteMock from "@/mockData/publications/feeds/products-lite.json";
 import productTypesMock from "@/mockData/publications/feeds/producttypes.json";
@@ -114,7 +114,7 @@ describe("publications", () => {
 			const data: Awaited<ReturnType<typeof getAllProducts>> =
 				await cacheWrapMock.mock.calls[0][1]();
 
-			expect(data).toHaveLength(2717);
+			expect(data).toHaveLength(2963);
 			expect(data[0]).toMatchSnapshot();
 		});
 	});

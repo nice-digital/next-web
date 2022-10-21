@@ -39,6 +39,7 @@ Object {
   "areasOfInterestList": Array [],
   "developedAs": null,
   "id": "CG1",
+  "indicatorSubTypeList": Array [],
   "lastMajorModificationDate": "2002-12-01T00:00:00",
   "lastModified": "2020-09-02T08:58:37.35792Z",
   "productGroup": "Guideline",
