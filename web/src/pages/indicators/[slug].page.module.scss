@@ -11,27 +11,3 @@
     margin-top: 0;
   }
 }
-
-.lead {
-  > p {
-    margin-bottom: utils.rem(spacing.$x-large);
-    max-width: 100%;
-  }
-}
-
-.leadMeta {
-  display: flex;
-  flex-wrap: wrap;
-  margin: 0;
-
-  > span:not(:first-child) {
-    border-left: 3px solid colours.$text;
-    margin-left: utils.rem(spacing.$small);
-    padding: 0 0 0 utils.rem(spacing.$small);
-  }
-
-  span {
-    max-height: fit-content;
-  }
-}
-

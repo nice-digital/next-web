@@ -276,7 +276,5 @@ describe("getGetServerSidePropsFunc", () => {
 
 			expect(redirectResult).toStrictEqual({ notFound: true });
 		});
-
-		//TODO check logic for any missing cases
 	});
 });
