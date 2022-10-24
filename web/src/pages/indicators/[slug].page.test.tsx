@@ -4,6 +4,7 @@ import {
 	screen,
 	waitFor,
 	within,
+	getDefaultNormalizer,
 } from "@testing-library/react";
 import MockAdapter from "axios-mock-adapter";
 import { useRouter } from "next/router";
@@ -101,7 +102,7 @@ describe("IndicatorDetailPage", () => {
 		render(<IndicatorsDetailsPage {...props} />);
 		await waitFor(() => {
 			expect(document.title).toEqual(
-				"test title | Standards and Indicators | Indicators | NICE"
+				"test title | Indicators | Standards and Indicators | NICE"
 			);
 		});
 	});
@@ -139,13 +140,14 @@ describe("IndicatorDetailPage", () => {
 			["Last updated: 12 October 2022"],
 		])("should render a %s page header meta element", (metaContent) => {
 			render(<IndicatorsDetailsPage {...props} />);
-			screen.debug();
-			expect(screen.getByTestId("page-header")).toHaveTextContent(metaContent);
 
 			expect(
 				screen.getByText(
 					(content, element) => {
-						return element?.textContent == metaContent;
+						return (
+							getDefaultNormalizer()(element?.textContent as string) ==
+							metaContent
+						);
 					},
 					{
 						selector: ".page-header__metadata li",

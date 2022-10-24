@@ -67,19 +67,6 @@ export default function IndicatorsDetailsPage({
 	productType,
 	slug,
 }: IndicatorsDetailsPageProps): JSX.Element {
-	const breadcrumbs = () => (
-		<Breadcrumbs>
-			<Breadcrumb to="/">Home</Breadcrumb>
-			<Breadcrumb to="/standards-and-indicators">
-				Standards and Indicators
-			</Breadcrumb>
-			<Breadcrumb to="/standards-and-indicators/indicators">
-				Indicators
-			</Breadcrumb>
-			<Breadcrumb>{product.id}</Breadcrumb>
-		</Breadcrumbs>
-	);
-
 	let chapters;
 
 	if (product.chapterHeadings) {
@@ -118,7 +105,7 @@ export default function IndicatorsDetailsPage({
 		<>
 			<NextSeo
 				title={
-					product.title + " | Standards and Indicators | Indicators | NICE"
+					product.title + " | Indicators | Standards and Indicators | NICE"
 				}
 				description={product.metaDescription}
 				additionalLinkTags={[
@@ -129,14 +116,25 @@ export default function IndicatorsDetailsPage({
 					},
 				]}
 			/>
-			{breadcrumbs()}
+
+			<Breadcrumbs>
+				<Breadcrumb to="/">Home</Breadcrumb>
+				<Breadcrumb to="/standards-and-indicators">
+					Standards and Indicators
+				</Breadcrumb>
+				<Breadcrumb to="/standards-and-indicators/indicators">
+					Indicators
+				</Breadcrumb>
+				<Breadcrumb>{product.id}</Breadcrumb>
+			</Breadcrumbs>
+
 			<PageHeader
 				heading={product.title}
 				useAltHeading
 				id="content-start"
 				metadata={metaData}
-				data-testid="page-header"
 			/>
+
 			<Grid gutter="loose">
 				{chapters ? (
 					<GridItem
