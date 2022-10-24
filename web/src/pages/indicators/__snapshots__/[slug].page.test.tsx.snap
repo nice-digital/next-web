@@ -88,7 +88,7 @@ exports[`IndicatorDetailPage should match snapshot for main content 1`] = `
 }
     </script>
     <div
-      class="lead"
+      class="page-header"
       id="content-start"
     >
       <h1
@@ -96,42 +96,50 @@ exports[`IndicatorDetailPage should match snapshot for main content 1`] = `
       >
         test title
       </h1>
-      <p
-        class="page-header__lead"
+      <ul
+        class="page-header__metadata"
       >
-        <span
-          class="leadMeta"
-        >
-          <span>
-            NICE indicator
-          </span>
-          <span>
-            IND1
-          </span>
-          <span>
-            Published:
-            <time
-              datetime="2022-09-08"
-            >
-               
-              8 September 2022
-            </time>
-          </span>
-          <span>
-            Last updated:
-            <time
-              datetime="2022-10-12"
-            >
-               
-              12 October 2022
-            </time>
-          </span>
-        </span>
-      </p>
+        <li>
+          NICE indicator
+        </li>
+        <li>
+          IND1
+        </li>
+        <li>
+          Published:
+          <time
+            datetime="2022-09-08"
+          >
+             
+            8 September 2022
+          </time>
+        </li>
+        <li>
+          Last updated:
+          <time
+            datetime="2022-10-12"
+          >
+             
+            12 October 2022
+          </time>
+        </li>
+      </ul>
     </div>
     <div
       class="grid grid--loose"
     >
+      <section
+        aria-label="Chapters"
+        data-g="12 md:4 lg:3"
+      >
+        <nav
+          class="stacked-nav"
+        >
+          <ul
+            class="stacked-nav__list"
+          />
+        </nav>
+      </section>
       <section
         data-g="12 md:8 lg:9"
       />

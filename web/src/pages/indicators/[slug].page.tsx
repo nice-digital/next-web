@@ -26,7 +26,7 @@ import styles from "./[slug].page.module.scss";
 export const slugifyFunction = slugify;
 
 const chaptersAndLinks = (
-	summary: string | undefined,
+	summary: string | null,
 	chapters: ProductChapter[],
 	productType: string,
 	slug: string
@@ -93,6 +93,27 @@ export default function IndicatorsDetailsPage({
 
 	const nextPageLink = chapters?.[1];
 
+	const metaData = [
+		productType.name,
+		product.id,
+		product.publishedDate ? (
+			<>
+				Published:
+				<time dateTime={dayjs(product.publishedDate).format("YYYY-MM-DD")}>
+					&nbsp;{formatDateStr(product.publishedDate)}
+				</time>
+			</>
+		) : null,
+		product.lastMajorModificationDate != product.publishedDate ? (
+			<>
+				Last updated:
+				<time dateTime={dayjs(product.lastModified).format("YYYY-MM-DD")}>
+					&nbsp;{formatDateStr(product.lastModified)}
+				</time>
+			</>
+		) : null,
+	];
+
 	return (
 		<>
 			<NextSeo
@@ -113,38 +134,8 @@ export default function IndicatorsDetailsPage({
 				heading={product.title}
 				useAltHeading
 				id="content-start"
-				className={styles.lead}
-				lead={
-					<>
-						<span className={styles.leadMeta}>
-							<span>{productType.name}</span>
-							<span>{product.id}</span>
-							{product.publishedDate ? (
-								<span>
-									Published:
-									<time
-										dateTime={dayjs(product.publishedDate).format("YYYY-MM-DD")}
-									>
-										{" "}
-										{formatDateStr(product.publishedDate)}
-									</time>
-								</span>
-							) : null}
-
-							{product.lastModified ? (
-								<span>
-									Last updated:
-									<time
-										dateTime={dayjs(product.lastModified).format("YYYY-MM-DD")}
-									>
-										{" "}
-										{formatDateStr(product.lastModified)}
-									</time>
-								</span>
-							) : null}
-						</span>
-					</>
-				}
+				metadata={metaData}
+				data-testid="page-header"
 			/>
 			<Grid gutter="loose">
 				{chapters ? (

@@ -278,13 +278,15 @@ export type ContentPartList = Embedded<
 
 export type ProductDetail = {
 	title: string;
+	shortTitle: string | null;
 	metaDescription: string;
-	chapterHeadings?: ProductChapter[];
+	chapterHeadings: ProductChapter[];
 	id: string;
-	lastModified?: string;
+	lastModified: string;
 	productType: string;
-	publishedDate?: string;
-	summary?: string;
+	publishedDate: string;
+	lastMajorModificationDate: string;
+	summary: string | null;
 } & Embedded<"nicePublicationsContentPartList", ContentPartList>;
 
 export type ErrorResponse = {

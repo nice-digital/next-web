@@ -1,8 +1,18 @@
-import { render, screen, waitFor } from "@testing-library/react";
+import {
+	getByTestId,
+	render,
+	screen,
+	waitFor,
+	within,
+} from "@testing-library/react";
 import MockAdapter from "axios-mock-adapter";
 import { useRouter } from "next/router";
 
-import { ProductGroup, ProductTypeAcronym } from "@/feeds/publications/types";
+import {
+	ContentPartList,
+	ProductGroup,
+	ProductTypeAcronym,
+} from "@/feeds/publications/types";
 import productTypesMock from "@/mockData/publications/feeds/producttypes.json";
 
 import { client } from "../../feeds/";
@@ -43,18 +53,24 @@ function getMetaByName(metaName: string) {
 	return "";
 }
 
+const mockProduct: IndicatorsDetailsPageProps["product"] = {
+	title: "test title",
+	shortTitle: null,
+	id: "IND1",
+	lastModified: "2022-10-12T07:57:45.0879965Z",
+	productType: "IND",
+	publishedDate: "2022-09-08T14:19:12.8893126",
+	lastMajorModificationDate: "2022-10-08T14:19:12.8893126",
+	metaDescription: "This is the test meta description",
+	embedded: {} as unknown as IndicatorsDetailsPageProps["product"]["embedded"],
+	chapterHeadings: [],
+	summary: "",
+};
+
 const props: IndicatorsDetailsPageProps = {
 	slug: "/ind-1-test-title-1",
 	id: "IND1",
-	product: {
-		title: "test title",
-		id: "IND1",
-		lastModified: "2022-10-12T07:57:45.0879965Z",
-		productType: "IND",
-		publishedDate: "2022-09-08T14:19:12.8893126",
-		lastMajorModificationDate: "2022-09-08T14:19:12.8893126",
-		metaDescription: "This is the test meta description",
-	},
+	product: mockProduct,
 	productType: {
 		_links: {
 			self: [{}],
@@ -112,23 +128,51 @@ describe("IndicatorDetailPage", () => {
 		it("should render meta data id in uppercase", () => {
 			render(<IndicatorsDetailsPage {...props} />);
 			expect(
-				screen.getByText("IND1", { selector: ".page-header__lead span" })
+				screen.getByText("IND1", { selector: ".page-header__metadata li" })
 			).toBeInTheDocument();
 		});
 
-		it.each([["NICE indicator"], ["IND1"], ["Published:"], ["Last updated:"]])(
-			"should render a %s page header lead meta element",
-			(metaContent) => {
-				render(<IndicatorsDetailsPage {...props} />);
+		it.each([
+			["NICE indicator"],
+			["IND1"],
+			["Published: 8 September 2022"],
+			["Last updated: 12 October 2022"],
+		])("should render a %s page header meta element", (metaContent) => {
+			render(<IndicatorsDetailsPage {...props} />);
+			screen.debug();
+			expect(screen.getByTestId("page-header")).toHaveTextContent(metaContent);
 
+			expect(
 				screen.getByText(
-					(content, _element) => {
-						return content == metaContent;
+					(content, element) => {
+						return element?.textContent == metaContent;
 					},
-					{ selector: ".leadMeta span" }
-				);
-			}
-		);
+					{
+						selector: ".page-header__metadata li",
+					}
+				)
+			);
+		});
+
+		it("should not render last updated date if published date == lastModified date", () => {
+			render(
+				<IndicatorsDetailsPage
+					{...props}
+					product={{
+						...mockProduct,
+						lastMajorModificationDate: mockProduct.publishedDate,
+					}}
+				/>
+			);
+
+			expect(screen.queryByText("Last updated:")).not.toBeInTheDocument();
+		});
+
+		it("should render last updated date if published date !== lastModified date", () => {
+			render(<IndicatorsDetailsPage {...props} />);
+
+			expect(screen.getByText("Last updated:")).toBeInTheDocument();
+		});
 
 		it("should render 'Published' date page header lead meta element in the correct format", () => {
 			render(<IndicatorsDetailsPage {...props} />);
@@ -161,6 +205,11 @@ describe("IndicatorDetailPage", () => {
 			});
 			expect(publishedDateEl).toHaveAttribute("datetime", "2022-10-12");
 		});
+	});
+
+	describe("Chapter menu", () => {
+		it.todo("should render overview chapter link when summary provided");
+		it.todo("should render correct chapter url based on producttype and slug");
 	});
 });
 
