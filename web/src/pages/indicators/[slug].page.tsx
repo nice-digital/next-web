@@ -100,6 +100,13 @@ export default function IndicatorsDetailsPage({
 					product.title + " | Standards and Indicators | Indicators | NICE"
 				}
 				description={product.metaDescription}
+				additionalLinkTags={[
+					{
+						rel: "sitemap",
+						type: "application/xml",
+						href: "/indicators/sitemap.xml",
+					},
+				]}
 			/>
 			{breadcrumbs()}
 			<PageHeader
@@ -140,15 +147,17 @@ export default function IndicatorsDetailsPage({
 				}
 			/>
 			<Grid gutter="loose">
-				<GridItem
-					cols={12}
-					md={4}
-					lg={3}
-					elementType="section"
-					aria-label="Chapters"
-				>
-					{chapters ? <PublicationsChapterMenu chapters={chapters} /> : null}
-				</GridItem>
+				{chapters ? (
+					<GridItem
+						cols={12}
+						md={4}
+						lg={3}
+						elementType="section"
+						aria-label="Chapters"
+					>
+						<PublicationsChapterMenu chapters={chapters} />
+					</GridItem>
+				) : null}
 				<GridItem cols={12} md={8} lg={9} elementType="section">
 					{product.summary ? (
 						<div

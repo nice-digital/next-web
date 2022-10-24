@@ -30,16 +30,18 @@ describe("utils", () => {
 	describe("getProjectPath", () => {
 		it("should return null for advice projects", () => {
 			expect(
-				getProjectPath({ ProjectGroup: ProductGroup.Advice } as Project)
+				getProjectPath({
+					projectGroup: ProductGroup.Advice,
+				} as unknown as Project)
 			).toBeNull();
 		});
 
 		it("should return lowercase awaiting development gid url for proposed status projects", () => {
 			expect(
 				getProjectPath({
-					ProjectGroup: ProductGroup.Guidance,
-					Status: ProjectStatus.Proposed,
-					Reference: "GID-TA123",
+					projectGroup: ProductGroup.Guidance,
+					status: ProjectStatus.Proposed,
+					reference: "GID-TA123",
 				} as unknown as Project)
 			).toBe("/guidance/awaiting-development/gid-ta123");
 		});
@@ -47,9 +49,9 @@ describe("utils", () => {
 		it("should return lowercase guidance gid url for non-proposed status projects", () => {
 			expect(
 				getProjectPath({
-					ProjectGroup: ProductGroup.Guidance,
-					Status: ProjectStatus.InProgress,
-					Reference: "GID-TA123",
+					projectGroup: ProductGroup.Guidance,
+					status: ProjectStatus.InProgress,
+					reference: "GID-TA123",
 				} as unknown as Project)
 			).toBe("/guidance/indevelopment/gid-ta123");
 		});
@@ -63,15 +65,21 @@ describe("utils", () => {
 			[ProductGroup.Standard, ProductTypeAcronym.QS, "/guidance/qs123"],
 			[ProductGroup.Corporate, ProductTypeAcronym.ECD, "/corporate/ecd123"],
 			[ProductGroup.Corporate, ProductTypeAcronym.PMG, "/process/pmg123"],
+			[
+				ProductGroup.Other,
+				ProductTypeAcronym.IND,
+				"/indicators/ind123-product",
+			],
 		])(
 			"should return correct path for %s (e.g. %s) products",
 			(groupName, productTypeAcronym, expectedPath) => {
 				expect(
 					getProductPath({
-						Id: `${productTypeAcronym}123`,
-						ProductType: productTypeAcronym,
-						ProductGroup: groupName,
-					} as ProductLite)
+						id: `${productTypeAcronym}123`,
+						productType: productTypeAcronym,
+						productGroup: groupName,
+						title: "Product",
+					} as unknown as ProductLite)
 				).toBe(expectedPath);
 			}
 		);

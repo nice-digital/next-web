@@ -7,9 +7,8 @@ import {
 	Navigator,
 } from "@nice-digital/search-client/types";
 
-import { render, screen, within, waitFor } from "@/test-utils";
-
-import sampleData from "../../__mocks__/__data__/search/guidance-published.json";
+import sampleData from "@/mockData/search/guidance-published.json";
+import { render, screen, within } from "@/test-utils";
 
 import { SearchListFilters } from "./SearchListFilters";
 

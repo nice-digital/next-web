@@ -1,3 +1,4 @@
+import slugify from "@sindresorhus/slugify";
 import dayjs from "dayjs";
 
 import { Project, ProjectStatus } from "@/feeds/inDev/types";
@@ -38,11 +39,11 @@ export const formatDateStr = (isoDateStr: string, short = false): string =>
  * @returns The path of the project, relative to the root
  */
 export const getProjectPath = (project: Project): string | null =>
-	project.ProjectGroup == ProductGroup.Advice
+	project.projectGroup == ProductGroup.Advice
 		? null
-		: project.Status === ProjectStatus.Proposed
-		? `/guidance/awaiting-development/${project.Reference.toLowerCase()}`
-		: `/guidance/indevelopment/${project.Reference.toLowerCase()}`;
+		: project.status === ProjectStatus.Proposed
+		? `/guidance/awaiting-development/${project.reference.toLowerCase()}`
+		: `/guidance/indevelopment/${project.reference.toLowerCase()}`;
 
 /**
  * Gets the path, relative to the root, of an published product overview page.
@@ -51,27 +52,38 @@ export const getProjectPath = (project: Project): string | null =>
  * @returns The path of the product, relative to the root
  */
 export const getProductPath = (product: ProductLite): string => {
-	let productPath: string;
+	let rootPath: string,
+		productSlug = product.id.toLowerCase();
 
-	switch (product.ProductGroup) {
-		case "Guideline":
-		case "Guidance":
-		case "Standard":
-			productPath = "guidance";
+	switch (product.productGroup) {
+		case ProductGroup.Guideline:
+		case ProductGroup.Guidance:
+		case ProductGroup.Standard:
+			rootPath = "guidance";
 			break;
-		case "Advice":
-			productPath = "advice";
+		case ProductGroup.Advice:
+			rootPath = "advice";
 			break;
-		case "Corporate":
+		case ProductGroup.Corporate:
 			// There are 2 types of corporate products that have different URLs: corporate vs process and methods
-			productPath =
-				product.ProductType === ProductTypeAcronym.ECD
+			rootPath =
+				product.productType === ProductTypeAcronym.ECD
 					? "corporate"
 					: "process";
 			break;
+		case ProductGroup.Other:
+			if (product.productType !== ProductTypeAcronym.IND)
+				throw Error(
+					`Unsupported 'other' product type of ${product.productType}`
+				);
+			rootPath = "indicators";
+			productSlug += `-${slugify(product.title)}`;
+			break;
 		default:
-			throw `Unsupported product group ${product.ProductGroup}`;
+			throw `Unsupported product group ${product.productGroup} ${JSON.stringify(
+				product
+			)}`;
 	}
 
-	return `/${productPath}/${product.Id.toLowerCase()}`;
+	return `/${rootPath}/${productSlug}`;
 };

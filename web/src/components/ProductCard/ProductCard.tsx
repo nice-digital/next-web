@@ -17,11 +17,11 @@ export const ProductCard: FC<ProductCardProps> = ({
 	product,
 	productTypeName,
 }) => {
-	const { Id, Title, LastMajorModificationDate, ProductGroup } = product,
+	const { id, title, lastMajorModificationDate, productGroup } = product,
 		destination = getProductPath(product);
 
 	const metadata: (CardMetaDataProps | undefined)[] = [
-		{ label: "Product type:", value: ProductGroup },
+		{ label: "Product type:", value: productGroup },
 		productTypeName
 			? { label: "Programme:", value: productTypeName }
 			: undefined,
@@ -29,8 +29,8 @@ export const ProductCard: FC<ProductCardProps> = ({
 			label: "Last updated:",
 			visibleLabel: true,
 			value: (
-				<time dateTime={LastMajorModificationDate}>
-					{formatDateStr(LastMajorModificationDate)}
+				<time dateTime={lastMajorModificationDate}>
+					{formatDateStr(lastMajorModificationDate)}
 				</time>
 			),
 		},
@@ -39,8 +39,8 @@ export const ProductCard: FC<ProductCardProps> = ({
 	return (
 		<Card
 			headingText={
-				<data value={Id}>
-					{Title}&nbsp;({Id})
+				<data value={id}>
+					{title}&nbsp;({id})
 				</data>
 			}
 			metadata={metadata as CardMetaDataProps[]}

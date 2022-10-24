@@ -1,4 +1,4 @@
-import type { Except, ReadonlyDeep } from "type-fest";
+import type { Except } from "type-fest";
 
 export enum FeedPath {
 	ProductsLite = "/feeds/products-lite",
@@ -123,64 +123,61 @@ export type RelevantToProductTypeAcronym =
 	| ProductTypeAcronym.SG;
 
 export type Link = {
-	readonly href: string;
+	href: string;
 };
 
 interface EmptyLinks {
 	/** Empty object that's never used but in here for completeness */
-	readonly self: [Record<string, never>];
+	self: [Record<string, never>];
 }
 
-export type BaseFeedItem = ReadonlyDeep<{
+export type BaseFeedItem = {
 	links: EmptyLinks;
 	/** ETag is always null so kind of pointless but kept here for completeness */
 	eTag: null;
 	/** Full ISO date string like `2021-04-15T08:18:13.7945978Z` */
 	lastModified: string;
-}>;
+};
 
 /**
  * The raw object that comes back from the feed
  */
-export type ProductLiteRaw = BaseFeedItem &
-	ReadonlyDeep<{
-		links: EmptyLinks & {
-			"nice.publications:productfeed": Link[];
-		};
-		ETag: null;
-		Id: string;
-		Title: string;
-		ProductStatus: ProductStatus;
-		ProductType: ProductTypeAcronym;
-		/** ISO date string like `2017-07-06T00:00:00`. Notice it's a rounded time because it's set manually by an editor. */
-		PublishedDate: string;
-		/** ISO date string like `2017-07-06T00:00:00` or `2021-05-21T10:54:52.4655487`. */
-		LastMajorModificationDate: string;
-		AreasOfInterestList: AreaOfInterestAcronym[];
-		DevelopedAs: DevelopedAsProductTypeAcronym | null;
-		RelevantTo: RelevantToProductTypeAcronym[];
-		ProductGroup: ProductGroup;
-	}>;
+export type ProductLiteRaw = BaseFeedItem & {
+	links: EmptyLinks & {
+		nicePublicationsProductFeed: Link[];
+	};
+	eTag: null;
+	id: string;
+	title: string;
+	productStatus: ProductStatus;
+	productType: ProductTypeAcronym;
+	/** ISO date string like `2017-07-06T00:00:00`. Notice it's a rounded time because it's set manually by an editor. */
+	publishedDate: string;
+	/** ISO date string like `2017-07-06T00:00:00` or `2021-05-21T10:54:52.4655487`. */
+	lastMajorModificationDate: string;
+	areasOfInterestList: AreaOfInterestAcronym[];
+	developedAs: DevelopedAsProductTypeAcronym | null;
+	relevantTo: RelevantToProductTypeAcronym[];
+	productGroup: ProductGroup;
+};
 
 /** A product lite from the feed, but with redundant properties removed */
-export type ProductLite = Except<ProductLiteRaw, "ETag" | "links">;
+export type ProductLite = Except<ProductLiteRaw, "eTag" | "links">;
 
-export type ProductType = BaseFeedItem &
-	ReadonlyDeep<{
-		enabled: boolean;
-		name: string;
-		pluralName: string;
-		identifierPrefix: ProductTypeAcronym;
-		group: ProductGroup;
-		parent: ParentProductTypeAcronym | "";
-	}>;
+export type ProductType = BaseFeedItem & {
+	enabled: boolean;
+	name: string;
+	pluralName: string;
+	identifierPrefix: ProductTypeAcronym;
+	group: ProductGroup;
+	parent: ParentProductTypeAcronym | "";
+};
 
-export type AreaOfInterest = BaseFeedItem &
-	ReadonlyDeep<{
-		Enabled: boolean;
-		Name: string;
-		PluralName: string;
-	}>;
+export type AreaOfInterest = BaseFeedItem & {
+	Enabled: boolean;
+	Name: string;
+	PluralName: string;
+};
 
 type ETag = string | null;
 

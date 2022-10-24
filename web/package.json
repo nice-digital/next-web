@@ -5,6 +5,7 @@
   "scripts": {
     "dev": "cross-env NODE_OPTIONS=\"-r next-logger/presets/next-only --inspect\" next dev -p 4000 | pino-pretty",
     "build": "next build",
+    "postbuild": "next-sitemap",
     "start": "next start",
     "host": "npm start | pino-mq -c .pino-mqrc.json",
     "test": "cd .. && npm run test -- --selectProjects web"
@@ -25,8 +26,8 @@
   ],
   "dependencies": {
     "@nice-digital/design-system": "^4.0.0",
-    "@nice-digital/nds-prev-next": "^3.0.2",
     "@nice-digital/global-nav": "^5.0.910",
+    "@nice-digital/nds-prev-next": "^3.0.2",
     "@nice-digital/search-client": "^2.0.1470",
     "@sindresorhus/slugify": "^1.1.2",
     "axios": "^1.1.2",
@@ -40,11 +41,11 @@
     "form-serialize": "^0.7.2",
     "glob": "^8.0.3",
     "js-yaml": "^4.1.0",
-    "needle": "^2.8.0",
     "next": "^12.2.2",
     "next-logger": "^3.0.1",
     "next-plugin-node-config": "^1.0.2",
     "next-seo": "^5.5.0",
+    "next-sitemap": "^3.1.29",
     "next-transpile-modules": "^9.0.0",
     "pino": "^6.14.0",
     "pino-mq": "^1.0.1",

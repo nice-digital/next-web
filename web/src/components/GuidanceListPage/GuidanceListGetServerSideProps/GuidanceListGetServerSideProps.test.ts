@@ -5,8 +5,8 @@ import {
 } from "@nice-digital/search-client";
 
 import { logger } from "@/logger";
+import sampleData from "@/mockData/search/guidance-published.json";
 
-import sampleData from "../../../__mocks__/__data__/search/guidance-published.json";
 import { GuidanceListPageProps } from "../GuidanceListPageProps";
 
 import { getGetServerSidePropsFunc } from "./GuidanceListGetServerSideProps";

@@ -45,7 +45,7 @@ export type ProjectGroup = ProductGroup.Guidance | ProductGroup.Advice;
 export type GIDReference = `GID-${Uppercase<string>}${number}`;
 
 export interface AllProjects {
-	_links: {
+	links: {
 		// In theory InDev supports pagination, but in reality the gidprojects/all feed always returns all projects and a page size of 2048
 		first: [
 			{
@@ -64,13 +64,13 @@ export interface AllProjects {
 			}
 		];
 	};
-	_embedded: {
-		"nice.indev:indevelopment-project": Project[];
+	embedded: {
+		niceIndevIndevelopmentProject: Project[];
 	};
 }
 
 export interface Project {
-	_links: {
+	links: {
 		self: [
 			{
 				href: `/project/${GIDReference}`;
@@ -78,44 +78,44 @@ export interface Project {
 		];
 	};
 	/** e.g. 01000000-0000-001B-0000-000000005402 */
-	ETag: string;
+	eTag: string;
 	/** Project reference e.g. GID-TAG377 */
-	Reference: GIDReference;
+	reference: GIDReference;
 	/** Acronym (usually 2 or 3 letters) for the type of the project e.g "TA", "IPG" etc */
-	ProjectType: ProductTypeAcronym;
+	projectType: ProductTypeAcronym;
 	/** The name of the project type e.g. "Technology appraisal guidance" for TA or "Interventional procedures guidance" for "IPG" */
-	ProductTypeName: string;
-	Process: ProjectProcess | string;
+	productTypeName: string;
+	process: ProjectProcess | string;
 	/** Project title e.g. "Atrial fibrillation - ximelagatran [ID376]" or "Clinically isolated syndrome - beta interferons and glatiramer acetate [ID109]" */
-	Title: string;
-	Status: ProjectStatus;
-	ProjectGroup: ProjectGroup;
+	title: string;
+	status: ProjectStatus;
+	projectGroup: ProjectGroup;
 	/**
 	 * `null` for unpublished projects or an ISO formatted date string like `2020-12-15T00:00:00`
 	 */
-	PublishedDate: string | null;
+	publishedDate: string | null;
 	/**
 	 * An ISO formatted date string like `2020-09-22T13:51:48.8447645`
 	 */
-	LastModifiedDate: string;
+	lastModifiedDate: string;
 	/**
 	 * Null for unpublished projects or an ISO formatted date string like `2020-10-05T12:27:21.5437767`
 	 */
-	FirstGoLiveDate: string | null;
+	firstGoLiveDate: string | null;
 	/** The date the project was created in in dev */
-	CreatedDate: string;
-	DevelopedAs: string | null;
+	createdDate: string;
+	developedAs: string | null;
 	/** Almost always the same as `DevelopedAs` */
-	RelevantTo: string | null;
-	IdNumber: `${number}` | null;
+	relevantTo: string | null;
+	idNumber: `${number}` | null;
 	/** E.g. "BMJ Evidence Centre, BMJ Group", "ScHARR" or "Warwick Evidence" etc */
-	EvidenceAssessmentGroup: string | null;
+	evidenceAssessmentGroup: string | null;
 	/** TODO Always seems to be an empty array */
-	AreasOfInterestList: [];
+	areasOfInterestList: [];
 }
 
 export interface InConsultationProjects {
-	_links: {
+	links: {
 		self: [
 			{
 				href: "/inconsultationprojects?Page=0&PageSize=2048";
@@ -123,14 +123,14 @@ export interface InConsultationProjects {
 		];
 	};
 	// Sometimes there are no consultations running, in which case `_embedded` is not in the feed at all
-	_embedded?: {
-		"nice.indev:inconsultation-product": Consultation[];
+	embedded?: {
+		niceIndevInconsultationProduct: Consultation[];
 	};
-	ETag: null;
+	eTag: null;
 	// Page and size is hard coded here
-	Page: 0;
-	PageSize: 2048;
-	TotalItems: number;
+	page: 0;
+	pageSize: 2048;
+	totalItems: number;
 }
 
 export interface Consultation {
@@ -143,31 +143,31 @@ export interface Consultation {
 			}
 		];
 	};
-	ETag: null;
-	Reference: GIDReference;
-	Title: string;
-	ConsultationName: string;
+	eTag: null;
+	reference: GIDReference;
+	title: string;
+	consultationName: string;
 	/** ISO formatted date like `2021-06-18T00:00:00` */
-	StartDate: string;
+	startDate: string;
 	/** ISO formatted date like `2021-06-18T00:00:00` */
-	EndDate: string;
-	ConsultationType: string;
-	ResourceTitleId: string;
-	ProjectType: ProjectProcess | string;
-	ProductTypeName: string;
-	ShowExpressionOfInterestSubmissionQuestion: boolean;
-	DevelopedAs: null;
-	RelevantTo: null;
-	ConsultationId: number;
+	endDate: string;
+	consultationType: string;
+	resourceTitleId: string;
+	projectType: ProjectProcess | string;
+	productTypeName: string;
+	showExpressionOfInterestSubmissionQuestion: boolean;
+	developedAs: null;
+	relevantTo: null;
+	consultationId: number;
 	/** E.g. QSD, IP etc */
-	Process: string;
-	HasDocumentsWhichAllowConsultationComments: boolean;
-	IsCHTE: boolean;
+	process: string;
+	hasDocumentsWhichAllowConsultationComments: boolean;
+	isCHTE: boolean;
 	/** E.g. HSCTeam or CHTETeam */
-	AllowedRole: string;
-	FirstConvertedDocumentId: null;
-	FirstChapterSlugOfFirstConvertedDocument: null;
-	PartiallyUpdatedProjectReference: null;
-	OrigProjectReference: null;
-	AreasOfInterestList: [];
+	allowedRole: string;
+	firstConvertedDocumentId: null;
+	firstChapterSlugOfFirstConvertedDocument: null;
+	partiallyUpdatedProjectReference: null;
+	origProjectReference: null;
+	areasOfInterestList: [];
 }
