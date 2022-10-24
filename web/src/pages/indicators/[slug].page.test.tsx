@@ -1,19 +1,13 @@
 import {
-	getByTestId,
 	render,
 	screen,
 	waitFor,
-	within,
 	getDefaultNormalizer,
 } from "@testing-library/react";
 import MockAdapter from "axios-mock-adapter";
 import { useRouter } from "next/router";
 
-import {
-	ContentPartList,
-	ProductGroup,
-	ProductTypeAcronym,
-} from "@/feeds/publications/types";
+import { ProductGroup, ProductTypeAcronym } from "@/feeds/publications/types";
 import productTypesMock from "@/mockData/publications/feeds/producttypes.json";
 
 import { client } from "../../feeds/";
