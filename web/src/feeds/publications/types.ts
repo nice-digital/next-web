@@ -277,16 +277,40 @@ export type ContentPartList = Embedded<
 >;
 
 export type ProductDetail = {
-	title: string;
-	shortTitle: string | null;
-	metaDescription: string;
-	chapterHeadings: ProductChapter[];
+	links: { self: [Link] };
+	eTag: string | null;
 	id: string;
 	lastModified: string;
 	productType: string;
+	title: string;
+	shortTitle: string | null;
+	inDevReference: string;
+	metaDescription: string;
+	summary: string | null;
+	productStatus: string;
+	versionNumber: number;
 	publishedDate: string;
 	lastMajorModificationDate: string;
-	summary: string | null;
+	majorChangeDate: string | null;
+	nextReviewDate: string | null;
+	collectionTypesList: [];
+	authorList: string[];
+	publisherList: string[];
+	audienceList: string[];
+	estimatedSavings: string;
+	estimatedSavingsDescription: string | null;
+	estimatedSavingsImpact: null;
+	developedAs: string | null;
+	relevantTo: string[];
+	terminatedAppraisal: null;
+	areasOfInterestList: AreaOfInterest[];
+	indicatorSubTypeList: string[];
+	indicatorOldCode: string;
+	indicatorOldUrl: string;
+	ipsv: string;
+	chapterHeadings: ProductChapter[];
+	productTypeName: string;
+	productTypeNamePlural: string;
 } & Embedded<"nicePublicationsContentPartList", ContentPartList>;
 
 export type ErrorResponse = {
