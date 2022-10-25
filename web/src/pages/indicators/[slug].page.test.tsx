@@ -241,13 +241,15 @@ describe("getServerSidePropsFunc", () => {
 			.onGet(/\/feeds\/producttypes/)
 			.reply(200, productTypesMock);
 
+		const slug = "ind1-test-title-1";
+
 		const result = await getServerSideProps({
-			params: { slug: "ind1-test-title-1" },
+			params: { slug: slug },
 		} as unknown as GetServerSidePropsContext);
 
 		expect(result).toStrictEqual({
 			props: {
-				slug: "ind1-test-title-1",
+				slug: slug,
 				product: { id: "ind1", title: "Test title 1" },
 				productType: {
 					eTag: null,
