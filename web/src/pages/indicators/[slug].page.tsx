@@ -28,7 +28,6 @@ export const slugifyFunction = slugify;
 const chaptersAndLinks = (
 	summary: string | null,
 	chapters: ProductChapter[],
-	productType: string,
 	slug: string
 ): ProductChapter[] => {
 	const chaptersAndLinksArray: Array<ProductChapter> = [];
