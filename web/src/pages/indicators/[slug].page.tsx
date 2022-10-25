@@ -17,9 +17,12 @@ import {
 	isErrorResponse,
 	ProductChapter,
 	ProductDetail,
+	ProductGroup,
+	ProductLite,
 	ProductType,
+	ProductTypeAcronym,
 } from "@/feeds/publications/publications";
-import { formatDateStr } from "@/utils";
+import { formatDateStr, getProductPath } from "@/utils";
 
 import styles from "./[slug].page.module.scss";
 
@@ -204,7 +207,13 @@ export const getServerSideProps: GetServerSideProps<
 
 	const slugifiedProductTitle = slugify(product.title);
 	if (titleExtractedFromSlug !== slugifiedProductTitle) {
-		const redirectUrl = "/indicators/" + id + "-" + slugifiedProductTitle;
+		const redirectUrl = getProductPath({
+			eTag: product.eTag,
+			id: product.id,
+			title: product.title,
+			productGroup: ProductGroup.Other,
+			productType: ProductTypeAcronym.IND,
+		} as unknown as ProductLite);
 
 		return {
 			redirect: {
