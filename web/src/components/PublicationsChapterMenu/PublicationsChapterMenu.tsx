@@ -7,18 +7,19 @@ import { Link } from "@/components/Link/Link";
 import { ProductChapter } from "@/feeds/publications/types";
 
 export type ChapterHeadingsProps = {
+	ariaLabel: string;
 	chapters: ProductChapter[];
 };
 
 export const PublicationsChapterMenu: FC<ChapterHeadingsProps> = ({
+	ariaLabel,
 	chapters,
 }) => {
 	const router = useRouter();
 
 	return (
 		<>
-			{/* TODO accessibility attributes etc on wrapper component */}
-			<StackedNav>
+			<StackedNav aria-label={ariaLabel}>
 				{chapters.map((item) => {
 					const destination = item.url;
 					return (

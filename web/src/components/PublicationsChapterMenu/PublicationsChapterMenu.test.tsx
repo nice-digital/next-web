@@ -25,7 +25,9 @@ describe("PublicationsChapterMenu", () => {
 
 	it("should match the snapshot", () => {
 		expect(
-			render(<PublicationsChapterMenu {...defaultProps} />).container
+			render(
+				<PublicationsChapterMenu ariaLabel="Chapter pages" {...defaultProps} />
+			).container
 		).toMatchSnapshot();
 	});
 
@@ -33,7 +35,9 @@ describe("PublicationsChapterMenu", () => {
 		["Test Chapter 1", "/ind1001/chapter/test-chapter-1"],
 		["Test Chapter 2", "/ind1001/chapter/test-chapter-2"],
 	])("should render chapter heading %s with link to %s", (linkText, href) => {
-		render(<PublicationsChapterMenu {...defaultProps} />);
+		render(
+			<PublicationsChapterMenu ariaLabel="Chapter pages" {...defaultProps} />
+		);
 		const link = screen.getByRole("link", { name: linkText });
 		expect(link).toBeInTheDocument();
 		expect(link).toHaveAttribute("href", href);
@@ -43,7 +47,9 @@ describe("PublicationsChapterMenu", () => {
 		(useRouter as jest.Mock).mockImplementation(() => ({
 			asPath: "/ind1001/chapter/test-chapter-2",
 		}));
-		render(<PublicationsChapterMenu {...defaultProps} />);
+		render(
+			<PublicationsChapterMenu ariaLabel="Chapter pages" {...defaultProps} />
+		);
 
 		expect(
 			screen.getByRole("link", { name: "Test Chapter 1" })
@@ -52,5 +58,16 @@ describe("PublicationsChapterMenu", () => {
 		expect(
 			screen.getByRole("link", { name: "Test Chapter 2" })
 		).toHaveAttribute("aria-current", "true");
+	});
+
+	it("should have populated aria-label attribute", () => {
+		render(
+			<PublicationsChapterMenu ariaLabel="Chapter pages" {...defaultProps} />
+		);
+
+		expect(screen.getByRole("navigation")).toHaveAttribute(
+			"aria-label",
+			"Chapter pages"
+		);
 	});
 });

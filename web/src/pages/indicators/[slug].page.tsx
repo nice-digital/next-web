@@ -138,7 +138,10 @@ export default function IndicatorsDetailsPage({
 						elementType="section"
 						aria-label="Chapters"
 					>
-						<PublicationsChapterMenu chapters={chapters} />
+						<PublicationsChapterMenu
+							ariaLabel="Chapter pages"
+							chapters={chapters}
+						/>
 					</GridItem>
 				) : null}
 				<GridItem cols={12} md={8} lg={9} elementType="section">
