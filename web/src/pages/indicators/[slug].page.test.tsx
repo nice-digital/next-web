@@ -7,8 +7,7 @@ import {
 import MockAdapter from "axios-mock-adapter";
 import { useRouter } from "next/router";
 
-import { ProductGroup, ProductTypeAcronym } from "@/feeds/publications/types";
-import productTypesMock from "@/mockData/publications/feeds/producttypes.json";
+import mockProduct from "@/mockData/publications/feeds/products/indicator.json";
 
 import { client } from "../../feeds/";
 
@@ -21,286 +20,237 @@ import type { GetServerSidePropsContext } from "next";
 
 const axiosMock = new MockAdapter(client, { onNoMatch: "throwException" });
 
-jest.mock("@/feeds/publications/publications", () => {
-	const originalModule = jest.requireActual(
-		"@/feeds/publications/publications"
-	);
+describe("/indicators/[slug].page", () => {
+	const slug =
+		"ind1001-test-indicator-ind-1001-the-percentage-of-patients-with-one-or-more-of-the-following-conditions-chd-atrial-fibrillation-chronic-heart-failure-stroke-or-tia-diabetes-or-dementia-with-a-fast-score-of-3-or-more-or-audit-c-score-of-5-or-more-in-the-preceding-2-years-who-have-received-brief-intervention-to-help-them-reduce-their-alcohol-related-risk-within-3-months-of-the-score-being-recorded";
 
-	//Mock the getProductDetail export
-	return {
-		__esModule: true,
-		...originalModule,
-		getProductDetail: jest.fn(() => ({
-			title: "Test title 1",
-			id: "ind1",
-		})),
-	};
-});
-
-function getMetaByName(metaName: string) {
-	// eslint-disable-next-line testing-library/no-node-access
-	const metas = document.getElementsByTagName("meta");
-	for (let i = 0; i < metas.length; i += 1) {
-		if (metas[i].getAttribute("name") === metaName) {
-			return metas[i].getAttribute("content");
-		}
-	}
-	return "";
-}
-
-const mockProduct: IndicatorsDetailsPageProps["product"] = {
-	links: {
-		self: [{ href: "/test-href" }],
-	},
-	embedded: {} as unknown as IndicatorsDetailsPageProps["product"]["embedded"],
-	eTag: "01000000-0000-003E-0000-000000000010",
-	id: "IND1",
-	lastModified: "2022-10-12T07:57:45.0879965Z",
-	productType: "IND",
-	title: "test title",
-	shortTitle: null,
-	inDevReference: "NA",
-	metaDescription: "This is the test meta description",
-	summary: "",
-	productStatus: "Published",
-	versionNumber: 2,
-	publishedDate: "2022-09-08T14:19:12.8893126",
-	lastMajorModificationDate: "2022-10-08T14:19:12.8893126",
-	majorChangeDate: null,
-	nextReviewDate: null,
-	collectionTypesList: [],
-	authorList: ["National Institute for Health and Care Excellence (NICE)"],
-	publisherList: ["National Institute for Health and Care Excellence (NICE)"],
-	audienceList: [],
-	estimatedSavings: "",
-	estimatedSavingsDescription: "",
-	estimatedSavingsImpact: null,
-	developedAs: null,
-	relevantTo: [],
-	terminatedAppraisal: null,
-	areasOfInterestList: [],
-	indicatorSubTypeList: ["GPIQ"],
-	indicatorOldCode: "",
-	indicatorOldUrl: "",
-	ipsv: "Health, well-being and care",
-	chapterHeadings: [],
-	productTypeName: "NICE indicator",
-	productTypeNamePlural: "NICE indicators",
-};
-
-const props: IndicatorsDetailsPageProps = {
-	slug: "/ind-1-test-title-1",
-	id: "IND1",
-	product: mockProduct,
-	productType: {
-		_links: {
-			self: [{}],
-		},
-		eTag: null,
-		enabled: true,
-		name: "NICE indicator",
-		pluralName: "NICE indicators",
-		identifierPrefix: ProductTypeAcronym.IND,
-		group: ProductGroup.Other,
-		parent: "",
-	},
-} as unknown as IndicatorsDetailsPageProps;
-
-describe("IndicatorDetailPage", () => {
 	beforeEach(() => {
 		(useRouter as jest.Mock).mockImplementation(() => ({}));
 		axiosMock.reset();
+
+		axiosMock.onGet(/\/feeds\/product\//).reply(200, mockProduct);
+
 		jest.resetModules();
 	});
 
-	it("should match snapshot for main content", () => {
-		render(<IndicatorsDetailsPage {...props} />);
-		expect(document.body).toMatchSnapshot();
-	});
+	describe("IndicatorDetailPage", () => {
+		let props: IndicatorsDetailsPageProps;
+		beforeEach(async () => {
+			const context = {
+				params: { slug: slug },
+			} as unknown as GetServerSidePropsContext;
 
-	it("should render the page title with reversed breadcrumbs for SEO", async () => {
-		render(<IndicatorsDetailsPage {...props} />);
-		await waitFor(() => {
-			expect(document.title).toEqual(
-				"test title | Indicators | Standards and Indicators | NICE"
-			);
-		});
-	});
-
-	it("should render the correct page meta tags for robots", async () => {
-		render(<IndicatorsDetailsPage {...props} />);
-
-		await waitFor(() =>
-			expect(getMetaByName("robots")).toEqual("index,follow")
-		);
-	});
-
-	it("should render the correct page meta tags for description", async () => {
-		render(<IndicatorsDetailsPage {...props} />);
-
-		await waitFor(() =>
-			expect(getMetaByName("description")).toEqual(
-				"This is the test meta description"
-			)
-		);
-	});
-
-	describe("PageHeader", () => {
-		it("should render meta data id in uppercase", () => {
-			render(<IndicatorsDetailsPage {...props} />);
-			expect(
-				screen.getByText("IND1", { selector: ".page-header__metadata li" })
-			).toBeInTheDocument();
+			props = (
+				(await getServerSideProps(context)) as {
+					props: IndicatorsDetailsPageProps;
+				}
+			).props;
 		});
 
-		it.each([
-			["NICE indicator"],
-			["IND1"],
-			["Published: 8 September 2022"],
-			["Last updated: 12 October 2022"],
-		])("should render a %s page header meta element", (metaContent) => {
+		it("should match snapshot for main content", () => {
+			render(<IndicatorsDetailsPage {...props} />);
+			expect(document.body).toMatchSnapshot();
+		});
+
+		it("should render the page title with reversed breadcrumbs for SEO", async () => {
+			render(<IndicatorsDetailsPage {...props} />);
+			await waitFor(() => {
+				expect(document.title).toEqual(
+					`${mockProduct.Title} | Indicators | Standards and Indicators`
+				);
+			});
+		});
+
+		it("should render the correct page meta tags for robots", async () => {
 			render(<IndicatorsDetailsPage {...props} />);
 
-			expect(
-				screen.getByText(
-					(content, element) => {
-						return (
-							getDefaultNormalizer()(element?.textContent as string) ==
-							metaContent
-						);
-					},
-					{
+			await waitFor(() => {
+				expect(
+					// eslint-disable-next-line testing-library/no-node-access
+					document.querySelector(`meta[name="robots"]`)
+				).toHaveAttribute("content", "index,follow");
+			});
+		});
+
+		it("should render the correct page meta tags for description", async () => {
+			render(<IndicatorsDetailsPage {...props} />);
+
+			await waitFor(() => {
+				expect(
+					// eslint-disable-next-line testing-library/no-node-access
+					document.querySelector(`meta[name="description"]`)
+				).toHaveAttribute("content", mockProduct.MetaDescription);
+			});
+		});
+
+		describe("PageHeader", () => {
+			it("should render meta data id in uppercase", () => {
+				render(<IndicatorsDetailsPage {...props} />);
+				expect(
+					screen.getByText(mockProduct.Id, {
 						selector: ".page-header__metadata li",
-					}
-				)
+					})
+				).toBeInTheDocument();
+			});
+
+			it.each([
+				["NICE indicator"],
+				["IND1001"],
+				["Published: 8 September 2022"],
+				["Last updated: 12 October 2022"],
+			])("should render a %s page header meta element", (metaContent) => {
+				render(
+					<IndicatorsDetailsPage
+						{...props}
+						product={{
+							...props.product,
+							lastMajorModificationDate: "2022-10-12",
+						}}
+					/>
+				);
+
+				expect(
+					screen.getByText(
+						(content, element) => {
+							return (
+								getDefaultNormalizer()(element?.textContent as string) ==
+								metaContent
+							);
+						},
+						{
+							selector: ".page-header__metadata li",
+						}
+					)
+				);
+			});
+
+			it("should not render last updated date if published date == lastModified date", () => {
+				render(
+					<IndicatorsDetailsPage
+						{...props}
+						product={{
+							...props.product,
+							lastMajorModificationDate: props.product.publishedDate,
+						}}
+					/>
+				);
+
+				expect(screen.queryByText("Last updated:")).not.toBeInTheDocument();
+			});
+
+			it("should render last updated date if published date !== lastModified date", () => {
+				render(
+					<IndicatorsDetailsPage
+						{...props}
+						product={{
+							...props.product,
+							lastMajorModificationDate: "2022-10-12",
+						}}
+					/>
+				);
+
+				expect(screen.getByText("Last updated:")).toBeInTheDocument();
+			});
+
+			it("should render 'Published' date page header lead meta element in the correct format", () => {
+				render(<IndicatorsDetailsPage {...props} />);
+				const publishedDateEl = screen.getByText("8 September 2022", {
+					selector: "time",
+				});
+				expect(publishedDateEl).toBeInTheDocument();
+			});
+
+			it("should render 'Published' date page header lead meta element with correctly formatted datetime attribute", () => {
+				render(<IndicatorsDetailsPage {...props} />);
+				const publishedDateEl = screen.getByText("8 September 2022", {
+					selector: "time",
+				});
+				expect(publishedDateEl).toHaveAttribute("datetime", "2022-09-08");
+			});
+
+			it("should render 'Last updated' date page header lead meta element in the correct format", () => {
+				render(
+					<IndicatorsDetailsPage
+						{...props}
+						product={{
+							...props.product,
+							lastMajorModificationDate: "2022-10-12",
+						}}
+					/>
+				);
+				const publishedDateEl = screen.getByText("12 October 2022", {
+					selector: "time",
+				});
+				expect(publishedDateEl).toBeInTheDocument();
+			});
+
+			it("should render 'Last updated' date page header lead meta element with correctly formatted datetime attribute", () => {
+				render(
+					<IndicatorsDetailsPage
+						{...props}
+						product={{
+							...props.product,
+							lastMajorModificationDate: "2022-10-12",
+						}}
+					/>
+				);
+				const publishedDateEl = screen.getByText("12 October 2022", {
+					selector: "time",
+				});
+				expect(publishedDateEl).toHaveAttribute("datetime", "2022-10-12");
+			});
+		});
+
+		describe("Chapter menu", () => {
+			it.todo("should render overview chapter link when summary provided");
+			it.todo(
+				"should render correct chapter url based on producttype and slug"
 			);
-		});
-
-		it("should not render last updated date if published date == lastModified date", () => {
-			render(
-				<IndicatorsDetailsPage
-					{...props}
-					product={{
-						...mockProduct,
-						lastMajorModificationDate: mockProduct.publishedDate,
-					}}
-				/>
-			);
-
-			expect(screen.queryByText("Last updated:")).not.toBeInTheDocument();
-		});
-
-		it("should render last updated date if published date !== lastModified date", () => {
-			render(<IndicatorsDetailsPage {...props} />);
-
-			expect(screen.getByText("Last updated:")).toBeInTheDocument();
-		});
-
-		it("should render 'Published' date page header lead meta element in the correct format", () => {
-			render(<IndicatorsDetailsPage {...props} />);
-			const publishedDateEl = screen.getByText("8 September 2022", {
-				selector: "time",
-			});
-			expect(publishedDateEl).toBeInTheDocument();
-		});
-
-		it("should render 'Published' date page header lead meta element with correctly formatted datetime attribute", () => {
-			render(<IndicatorsDetailsPage {...props} />);
-			const publishedDateEl = screen.getByText("8 September 2022", {
-				selector: "time",
-			});
-			expect(publishedDateEl).toHaveAttribute("datetime", "2022-09-08");
-		});
-
-		it("should render 'Last updated' date page header lead meta element in the correct format", () => {
-			render(<IndicatorsDetailsPage {...props} />);
-			const publishedDateEl = screen.getByText("12 October 2022", {
-				selector: "time",
-			});
-			expect(publishedDateEl).toBeInTheDocument();
-		});
-
-		it("should render 'Last updated' date page header lead meta element with correctly formatted datetime attribute", () => {
-			render(<IndicatorsDetailsPage {...props} />);
-			const publishedDateEl = screen.getByText("12 October 2022", {
-				selector: "time",
-			});
-			expect(publishedDateEl).toHaveAttribute("datetime", "2022-10-12");
 		});
 	});
 
-	describe("Chapter menu", () => {
-		it.todo("should render overview chapter link when summary provided");
-		it.todo("should render correct chapter url based on producttype and slug");
-	});
-});
+	describe("getServerSidePropsFunc", () => {
+		it("should return a correct props when supplied with an id", async () => {
+			const result = await getServerSideProps({
+				params: { slug },
+			} as unknown as GetServerSidePropsContext);
 
-describe("getGetServerSidePropsFunc", () => {
-	it("should return a correct props when supplied with an id", async () => {
-		const fakeProductResponseData = {
-			title: "test-title",
-			id: "IND1",
-			productType: "IND",
-		};
+			expect(result).toStrictEqual({
+				props: {
+					slug: slug,
+					product: expect.objectContaining({ id: "IND1001" }),
+				},
+			});
+		});
 
-		axiosMock
-			.onGet(/\/feeds\/product\//)
-			.reply(200, fakeProductResponseData)
-			.onGet(/\/feeds\/producttypes/)
-			.reply(200, productTypesMock);
+		describe("Redirects", () => {
+			it("should return permanent redirect object URL with incorrect title", async () => {
+				const redirectResult = await getServerSideProps({
+					params: { slug: "ind1001-incorrect-slug-title" },
+				} as unknown as GetServerSidePropsContext);
 
-		const result = await getServerSideProps({
-			params: { slug: "ind1-test-title-1" },
-		} as unknown as GetServerSidePropsContext);
-
-		expect(result).toStrictEqual({
-			props: {
-				slug: "ind1-test-title-1",
-				product: { id: "ind1", title: "Test title 1" },
-				productType: {
-					eTag: null,
-					enabled: true,
-					group: "Other",
-					identifierPrefix: "IND",
-					lastModified: "2022-07-07T00:00:00",
-					links: {
-						self: [{}],
+				expect(redirectResult).toStrictEqual({
+					redirect: {
+						destination: `/indicators/${slug}`,
+						permanent: true,
 					},
-					name: "NICE indicator",
-					parent: "",
-					pluralName: "NICE indicators",
-				},
-			},
-		});
-	});
-
-	describe("Redirects", () => {
-		it("should return permanent redirect object URL with incorrect title", async () => {
-			const redirectResult = await getServerSideProps({
-				params: { slug: "ind1-incorrect-slug-title" },
-			} as unknown as GetServerSidePropsContext);
-
-			expect(redirectResult).toStrictEqual({
-				redirect: {
-					destination: "/indicators/ind1-test-title-1",
-					permanent: true,
-				},
+				});
 			});
-		});
-		it("should return notFound if Id doesn't exist", async () => {
-			const redirectResult = await getServerSideProps({
-				params: { slug: "nonExistingId99-test-title-1" },
-			} as unknown as GetServerSidePropsContext);
+			it("should return notFound if Id doesn't exist", async () => {
+				const redirectResult = await getServerSideProps({
+					params: { slug: "nonExistingId99-test-title-1" },
+				} as unknown as GetServerSidePropsContext);
 
-			expect(redirectResult).toStrictEqual({ notFound: true });
-		});
+				expect(redirectResult).toStrictEqual({ notFound: true });
+			});
 
-		it("should return notFound if an unhyphenated slug is used", async () => {
-			const redirectResult = await getServerSideProps({
-				params: { slug: "slugwithouthyphenation" },
-			} as unknown as GetServerSidePropsContext);
+			it("should return notFound if an unhyphenated slug is used", async () => {
+				const redirectResult = await getServerSideProps({
+					params: { slug: "slugwithouthyphenation" },
+				} as unknown as GetServerSidePropsContext);
 
-			expect(redirectResult).toStrictEqual({ notFound: true });
+				expect(redirectResult).toStrictEqual({ notFound: true });
+			});
 		});
 	});
 });
