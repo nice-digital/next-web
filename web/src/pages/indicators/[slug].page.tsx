@@ -61,12 +61,10 @@ const chaptersAndLinks = (
 export type IndicatorsDetailsPageProps = {
 	slug: string;
 	product: ProductDetail;
-	productType: ProductType;
 };
 
 export default function IndicatorsDetailsPage({
 	product,
-	productType,
 	slug,
 }: IndicatorsDetailsPageProps): JSX.Element {
 	let chapters;
@@ -78,7 +76,7 @@ export default function IndicatorsDetailsPage({
 	const nextPageLink = chapters?.[1];
 
 	const metaData = [
-		productType.name,
+		product.productTypeName,
 		product.id,
 		product.publishedDate ? (
 			<>
@@ -185,16 +183,7 @@ export const getServerSideProps: GetServerSideProps<
 
 	const [id, ...rest] = params.slug.split("-");
 
-	const productTypes = getAllProductTypes();
-	const productDetail = getProductDetail(id);
-
-	const [productTypesArr, product] = [await productTypes, await productDetail];
-
-	const productType = productTypesArr.find((p) => p.identifierPrefix === "IND");
-
-	if (!productType) {
-		throw Error("Indicator product type could not be found");
-	}
+	const product = await getProductDetail(id);
 
 	if (
 		isErrorResponse(product) ||
@@ -208,12 +197,9 @@ export const getServerSideProps: GetServerSideProps<
 	const slugifiedProductTitle = slugify(product.title);
 	if (titleExtractedFromSlug !== slugifiedProductTitle) {
 		const redirectUrl = getProductPath({
-			eTag: product.eTag,
-			id: product.id,
-			title: product.title,
+			...product,
 			productGroup: ProductGroup.Other,
-			productType: ProductTypeAcronym.IND,
-		} as unknown as ProductLite);
+		});
 
 		return {
 			redirect: {
@@ -227,7 +213,6 @@ export const getServerSideProps: GetServerSideProps<
 		props: {
 			slug: params.slug,
 			product,
-			productType,
 		},
 	};
 };

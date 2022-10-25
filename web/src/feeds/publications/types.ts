@@ -281,7 +281,7 @@ export type ProductDetail = {
 	eTag: string | null;
 	id: string;
 	lastModified: string;
-	productType: string;
+	productType: ProductTypeAcronym;
 	title: string;
 	shortTitle: string | null;
 	inDevReference: string;
