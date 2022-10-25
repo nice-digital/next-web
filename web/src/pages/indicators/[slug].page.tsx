@@ -99,7 +99,7 @@ export default function IndicatorsDetailsPage({
 				</time>
 			</>
 		) : null,
-	].filter((el) => el !== null);
+	].filter(Boolean);
 
 	return (
 		<>
