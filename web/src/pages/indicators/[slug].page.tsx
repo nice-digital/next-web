@@ -12,15 +12,11 @@ import { PrevNext } from "@nice-digital/nds-prev-next";
 import { ScrollToLink } from "@/components/Link/Link";
 import { PublicationsChapterMenu } from "@/components/PublicationsChapterMenu/PublicationsChapterMenu";
 import {
-	getAllProductTypes,
 	getProductDetail,
 	isErrorResponse,
 	ProductChapter,
 	ProductDetail,
 	ProductGroup,
-	ProductLite,
-	ProductType,
-	ProductTypeAcronym,
 } from "@/feeds/publications/publications";
 import { formatDateStr, getProductPath } from "@/utils";
 
