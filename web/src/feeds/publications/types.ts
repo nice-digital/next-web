@@ -4,6 +4,7 @@ export enum FeedPath {
 	ProductsLite = "/feeds/products-lite",
 	ProductTypes = "/feeds/producttypes",
 	AreasOfInterest = "/feeds/areaofinteresttypes",
+	IndicatorSubTypes = "/feeds/indicatorsubtypes",
 	ProductDetail = "/feeds/product/",
 }
 
@@ -126,6 +127,8 @@ export type Link = {
 	href: string;
 };
 
+type ETag = string | null;
+
 interface EmptyLinks {
 	/** Empty object that's never used but in here for completeness */
 	self: [Record<string, never>];
@@ -133,8 +136,7 @@ interface EmptyLinks {
 
 export type BaseFeedItem = {
 	links: EmptyLinks;
-	/** ETag is always null so kind of pointless but kept here for completeness */
-	eTag: null;
+	eTag: ETag;
 	/** Full ISO date string like `2021-04-15T08:18:13.7945978Z` */
 	lastModified: string;
 };
@@ -146,7 +148,7 @@ export type ProductLiteRaw = BaseFeedItem & {
 	links: EmptyLinks & {
 		nicePublicationsProductFeed: Link[];
 	};
-	eTag: null;
+	eTag: ETag;
 	id: string;
 	title: string;
 	productStatus: ProductStatus;
@@ -174,12 +176,13 @@ export type ProductType = BaseFeedItem & {
 };
 
 export type AreaOfInterest = BaseFeedItem & {
-	Enabled: boolean;
-	Name: string;
-	PluralName: string;
+	enabled: boolean;
+	name: string;
+	pluralName: string;
+	identifierPrefix: string;
 };
 
-type ETag = string | null;
+export type IndicatorSubType = AreaOfInterest;
 
 // axios-case-converter maps key property names like nice.publications:area-of-interest-type-list to nicePublicationsAreaOfInterestTypeList
 type EmbeddedKey = `nicePublications${string}`;
@@ -223,6 +226,12 @@ export type ProductListLite = FeedContent<
 	"nicePublicationsProductListLite",
 	"nicePublicationsProductLite",
 	ProductLiteRaw
+>;
+
+export type IndicatorSubTypesList = FeedContent<
+	"nicePublicationsIndicatorSubTypeList",
+	"nicePublicationsIndicatorSubType",
+	IndicatorSubType
 >;
 
 export type ProductChapter = {
@@ -314,6 +323,6 @@ export type ProductDetail = {
 } & Embedded<"nicePublicationsContentPartList", ContentPartList>;
 
 export type ErrorResponse = {
-	StatusCode: string;
-	Message: string;
+	statusCode: string;
+	message: string;
 };

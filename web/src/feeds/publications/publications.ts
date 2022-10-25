@@ -8,6 +8,8 @@ import {
 	ErrorResponse,
 	FeedPath,
 	HTMLChapterContent,
+	IndicatorSubType,
+	IndicatorSubTypesList,
 	ProductDetail,
 	ProductListLite,
 	ProductLite,
@@ -91,6 +93,40 @@ export const getAllAreasOfInterest = async (): Promise<AreaOfInterest[]> =>
 	);
 
 /**
+ * Gets _all_ indicator sub types e.g. Clinical commissioning group indicator.
+ *
+ * Note: there's no pre-filter so it includes both enabled _and_ disabled indicator sub types.
+ */
+export const getAllIndicatorSubTypes = async (): Promise<IndicatorSubType[]> =>
+	await getFeedBodyCached<IndicatorSubType[]>(
+		cacheKeyPrefix,
+		FeedPath.IndicatorSubTypes,
+		longTTL,
+		async () =>
+			(
+				await getFeedBodyUnCached<IndicatorSubTypesList>(
+					origin,
+					FeedPath.IndicatorSubTypes,
+					apiKey
+				)
+			).embedded.nicePublicationsIndicatorSubTypeList.embedded
+				.nicePublicationsIndicatorSubType
+	);
+
+/**
+ * Gets the indicator sub type object from the given identifier prefix
+ *
+ * @param identifierPrefix The identifier prefix of the indicator sub type to find e.g. CCG, GPIQ, GPINQ, NLQ etc
+ * @returns The indicator sub type object if found, otherwise null
+ */
+export const getIndicatorSubType = async (
+	identifierPrefix: string
+): Promise<IndicatorSubType | null> =>
+	(await getAllIndicatorSubTypes()).find(
+		(subType) => subType.identifierPrefix === identifierPrefix
+	) || null;
+
+/**
  * Gets a product detail.
  *
  */
@@ -127,5 +163,5 @@ export const getChapterContent = async (
 export function isErrorResponse<TValidResponse>(
 	response: TValidResponse | ErrorResponse
 ): response is ErrorResponse {
-	return (response as ErrorResponse).StatusCode !== undefined;
+	return (response as ErrorResponse).statusCode !== undefined;
 }
