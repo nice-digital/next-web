@@ -26,7 +26,6 @@ jest.mock("@/feeds/publications/publications", () => {
 		"@/feeds/publications/publications"
 	);
 
-	//Mock the getProductDetail export
 	return {
 		__esModule: true,
 		...originalModule,
@@ -36,17 +35,6 @@ jest.mock("@/feeds/publications/publications", () => {
 		})),
 	};
 });
-
-function getMetaByName(metaName: string) {
-	// eslint-disable-next-line testing-library/no-node-access
-	const metas = document.getElementsByTagName("meta");
-	for (let i = 0; i < metas.length; i += 1) {
-		if (metas[i].getAttribute("name") === metaName) {
-			return metas[i].getAttribute("content");
-		}
-	}
-	return "";
-}
 
 const mockProduct: IndicatorsDetailsPageProps["product"] = {
 	links: {
@@ -122,7 +110,7 @@ describe("IndicatorDetailPage", () => {
 		render(<IndicatorsDetailsPage {...props} />);
 		await waitFor(() => {
 			expect(document.title).toEqual(
-				"test title | Indicators | Standards and Indicators | NICE"
+				"test title | Indicators | Standards and Indicators"
 			);
 		});
 	});
@@ -130,19 +118,23 @@ describe("IndicatorDetailPage", () => {
 	it("should render the correct page meta tags for robots", async () => {
 		render(<IndicatorsDetailsPage {...props} />);
 
-		await waitFor(() =>
-			expect(getMetaByName("robots")).toEqual("index,follow")
-		);
+		await waitFor(() => {
+			expect(
+				// eslint-disable-next-line testing-library/no-node-access
+				document.querySelector(`meta[name="robots"]`)
+			).toHaveAttribute("content", "index,follow");
+		});
 	});
 
 	it("should render the correct page meta tags for description", async () => {
 		render(<IndicatorsDetailsPage {...props} />);
 
-		await waitFor(() =>
-			expect(getMetaByName("description")).toEqual(
-				"This is the test meta description"
-			)
-		);
+		await waitFor(() => {
+			expect(
+				// eslint-disable-next-line testing-library/no-node-access
+				document.querySelector(`meta[name="description"]`)
+			).toHaveAttribute("content", "This is the test meta description");
+		});
 	});
 
 	describe("PageHeader", () => {
@@ -235,7 +227,7 @@ describe("IndicatorDetailPage", () => {
 	});
 });
 
-describe("getGetServerSidePropsFunc", () => {
+describe("getServerSidePropsFunc", () => {
 	it("should return a correct props when supplied with an id", async () => {
 		const fakeProductResponseData = {
 			title: "test-title",

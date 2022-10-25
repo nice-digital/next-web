@@ -9,7 +9,7 @@ import { Grid, GridItem } from "@nice-digital/nds-grid";
 import { PageHeader } from "@nice-digital/nds-page-header";
 import { PrevNext } from "@nice-digital/nds-prev-next";
 
-import { Link } from "@/components/Link/Link";
+import { ScrollToLink } from "@/components/Link/Link";
 import { PublicationsChapterMenu } from "@/components/PublicationsChapterMenu/PublicationsChapterMenu";
 import {
 	getAllProductTypes,
@@ -98,9 +98,7 @@ export default function IndicatorsDetailsPage({
 	return (
 		<>
 			<NextSeo
-				title={
-					product.title + " | Indicators | Standards and Indicators | NICE"
-				}
+				title={product.title + " | Indicators | Standards and Indicators"}
 				description={product.metaDescription}
 				additionalLinkTags={[
 					{
@@ -157,9 +155,9 @@ export default function IndicatorsDetailsPage({
 								text: nextPageLink.title,
 								destination: nextPageLink.url,
 								elementType: ({ children, ...props }) => (
-									<Link {...props} scroll={false}>
+									<ScrollToLink {...props} scrollTargetId="content-start">
 										{children}
-									</Link>
+									</ScrollToLink>
 								),
 							}}
 						/>
@@ -182,16 +180,18 @@ export const getServerSideProps: GetServerSideProps<
 		return { notFound: true };
 	}
 
-	const productTypes = await getAllProductTypes();
-	const productType = productTypes.find((p) => p.identifierPrefix === "IND");
+	const [id, ...rest] = params.slug.split("-");
+
+	const productTypes = getAllProductTypes();
+	const productDetail = getProductDetail(id);
+
+	const [productTypesArr, product] = [await productTypes, await productDetail];
+
+	const productType = productTypesArr.find((p) => p.identifierPrefix === "IND");
 
 	if (!productType) {
 		throw Error("Indicator product type could not be found");
 	}
-
-	const [id, ...rest] = params.slug.split("-");
-
-	const product = await getProductDetail(id);
 
 	if (
 		isErrorResponse(product) ||

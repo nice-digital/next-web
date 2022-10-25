@@ -136,11 +136,6 @@ exports[`IndicatorDetailPage should match snapshot for main content 1`] = `
           aria-label="Chapter pages"
           class="stacked-nav"
         >
-          <p
-            class="stacked-nav__root stacked-nav__root--no-link"
-          >
-            Chapters
-          </p>
           <ul
             class="stacked-nav__list"
           />
