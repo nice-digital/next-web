@@ -69,12 +69,7 @@ export default function IndicatorsDetailsPage({
 	let chapters;
 
 	if (product.chapterHeadings) {
-		chapters = chaptersAndLinks(
-			product.summary,
-			product.chapterHeadings,
-			productType.identifierPrefix,
-			slug
-		);
+		chapters = chaptersAndLinks(product.summary, product.chapterHeadings, slug);
 	}
 
 	const nextPageLink = chapters?.[1];
