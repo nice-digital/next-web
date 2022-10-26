@@ -2,12 +2,13 @@ import slugify from "@sindresorhus/slugify";
 import dayjs from "dayjs";
 import { GetServerSideProps } from "next";
 import { NextSeo } from "next-seo";
+import { useRouter } from "next/router";
 import React from "react";
 
 import { Breadcrumbs, Breadcrumb } from "@nice-digital/nds-breadcrumbs";
 import { Grid, GridItem } from "@nice-digital/nds-grid";
 import { PageHeader } from "@nice-digital/nds-page-header";
-import { PrevNext } from "@nice-digital/nds-prev-next";
+import { PrevNext, PrevNextProps } from "@nice-digital/nds-prev-next";
 
 import { ScrollToLink } from "@/components/Link/Link";
 import { PublicationsChapterMenu } from "@/components/PublicationsChapterMenu/PublicationsChapterMenu";
@@ -67,15 +68,65 @@ export default function IndicatorChapterPage({
 	product,
 	slug,
 }: IndicatorChapterPageProps): JSX.Element {
-	console.log({ chapterContent });
+	// console.log({ chapterContent });
 
-	let chapters;
+	const router = useRouter();
 
-	if (product.chapterHeadings) {
-		chapters = chaptersAndLinks(product.summary, product.chapterHeadings, slug);
-	}
+	//TODO check if this is acting as a typeguard and is working properly
+	const chapters: ProductChapter[] =
+		product.chapterHeadings !== undefined
+			? chaptersAndLinks(product.summary, product.chapterHeadings, slug)
+			: [];
 
-	const nextPageLink = chapters?.[1];
+	const calculatePreviousAndNextLinks = (chapters: ProductChapter[]) => {
+		const currentIndex = chapters.findIndex(
+			(element: { url: string }) => element.url === router.asPath
+		);
+
+		const nextPageLink =
+			currentIndex < chapters.length - 1 &&
+			chapters[(currentIndex + 1) % chapters.length];
+
+		const previousPageLink =
+			currentIndex > 0 && chapters[(currentIndex - 1) % chapters.length];
+
+		return { nextPageLink, previousPageLink };
+	};
+
+	const { nextPageLink, previousPageLink } =
+		calculatePreviousAndNextLinks(chapters);
+
+	const generatePrevNextProps = (): PrevNextProps => {
+		const prevNextObj: PrevNextProps = {};
+
+		if (nextPageLink) {
+			prevNextObj.nextPageLink = {
+				text: nextPageLink.title,
+				destination: nextPageLink.url,
+				elementType: ({ children, ...props }) => (
+					<ScrollToLink {...props} scrollTargetId="content-start">
+						{children}
+					</ScrollToLink>
+				),
+			};
+		}
+
+		if (previousPageLink) {
+			prevNextObj.previousPageLink = {
+				text: previousPageLink.title,
+				destination: previousPageLink.url,
+				elementType: ({ children, ...props }) => (
+					<ScrollToLink {...props} scrollTargetId="content-start">
+						{children}
+					</ScrollToLink>
+				),
+			};
+		}
+
+		return prevNextObj;
+	};
+
+	const prevNextProps = generatePrevNextProps();
 
 	const metaData = [
 		product.productTypeName,
@@ -148,18 +199,8 @@ export default function IndicatorChapterPage({
 						dangerouslySetInnerHTML={{ __html: chapterContent.content }}
 						className={styles.chapterContent}
 					/>
-					{nextPageLink ? (
-						<PrevNext
-							nextPageLink={{
-								text: nextPageLink.title,
-								destination: nextPageLink.url,
-								elementType: ({ children, ...props }) => (
-									<ScrollToLink {...props} scrollTargetId="content-start">
-										{children}
-									</ScrollToLink>
-								),
-							}}
-						/>
+					{nextPageLink || previousPageLink ? (
+						<PrevNext {...prevNextProps} />
 					) : null}
 				</GridItem>
 			</Grid>
