@@ -9,16 +9,13 @@ import {
 	HTMLChapterContent,
 	isErrorResponse,
 	ProductDetail,
-	ProductType,
 } from "@/feeds/publications/publications";
 
 export const slugifyFunction = slugify;
 
 export type IndicatorChapterPageProps = {
 	slug: string;
-	id: string;
 	product: ProductDetail;
-	productType: ProductType;
 	chapterContent: HTMLChapterContent;
 };
 
@@ -101,9 +98,7 @@ export const getServerSideProps: GetServerSideProps<
 	return {
 		props: {
 			slug: params.slug,
-			id,
 			product,
-			productType,
 			chapterContent,
 		},
 	};
