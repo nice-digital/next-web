@@ -9,17 +9,16 @@ import { Grid, GridItem } from "@nice-digital/nds-grid";
 import { PageHeader } from "@nice-digital/nds-page-header";
 import { PrevNext } from "@nice-digital/nds-prev-next";
 
-import { Link } from "@/components/Link/Link";
+import { ScrollToLink } from "@/components/Link/Link";
 import { PublicationsChapterMenu } from "@/components/PublicationsChapterMenu/PublicationsChapterMenu";
 import {
-	getAllProductTypes,
 	getProductDetail,
 	isErrorResponse,
 	ProductChapter,
 	ProductDetail,
-	ProductType,
+	ProductGroup,
 } from "@/feeds/publications/publications";
-import { formatDateStr } from "@/utils";
+import { formatDateStr, getProductPath } from "@/utils";
 
 import styles from "./[slug].page.module.scss";
 
@@ -58,12 +57,10 @@ const chaptersAndLinks = (
 export type IndicatorsDetailsPageProps = {
 	slug: string;
 	product: ProductDetail;
-	productType: ProductType;
 };
 
 export default function IndicatorsDetailsPage({
 	product,
-	productType,
 	slug,
 }: IndicatorsDetailsPageProps): JSX.Element {
 	let chapters;
@@ -75,7 +72,7 @@ export default function IndicatorsDetailsPage({
 	const nextPageLink = chapters?.[1];
 
 	const metaData = [
-		productType.name,
+		product.productTypeName,
 		product.id,
 		product.publishedDate ? (
 			<>
@@ -98,9 +95,7 @@ export default function IndicatorsDetailsPage({
 	return (
 		<>
 			<NextSeo
-				title={
-					product.title + " | Indicators | Standards and Indicators | NICE"
-				}
+				title={product.title + " | Indicators | Standards and Indicators"}
 				description={product.metaDescription}
 				additionalLinkTags={[
 					{
@@ -138,7 +133,10 @@ export default function IndicatorsDetailsPage({
 						elementType="section"
 						aria-label="Chapters"
 					>
-						<PublicationsChapterMenu chapters={chapters} />
+						<PublicationsChapterMenu
+							ariaLabel="Chapter pages"
+							chapters={chapters}
+						/>
 					</GridItem>
 				) : null}
 				<GridItem cols={12} md={8} lg={9} elementType="section">
@@ -154,9 +152,9 @@ export default function IndicatorsDetailsPage({
 								text: nextPageLink.title,
 								destination: nextPageLink.url,
 								elementType: ({ children, ...props }) => (
-									<Link {...props} scroll={false}>
+									<ScrollToLink {...props} scrollTargetId="content-start">
 										{children}
-									</Link>
+									</ScrollToLink>
 								),
 							}}
 						/>
@@ -179,13 +177,6 @@ export const getServerSideProps: GetServerSideProps<
 		return { notFound: true };
 	}
 
-	const productTypes = await getAllProductTypes();
-	const productType = productTypes.find((p) => p.identifierPrefix === "IND");
-
-	if (!productType) {
-		throw Error("Indicator product type could not be found");
-	}
-
 	const [id, ...rest] = params.slug.split("-");
 
 	const product = await getProductDetail(id);
@@ -201,7 +192,10 @@ export const getServerSideProps: GetServerSideProps<
 
 	const slugifiedProductTitle = slugify(product.title);
 	if (titleExtractedFromSlug !== slugifiedProductTitle) {
-		const redirectUrl = "/indicators/" + id + "-" + slugifiedProductTitle;
+		const redirectUrl = getProductPath({
+			...product,
+			productGroup: ProductGroup.Other,
+		});
 
 		return {
 			redirect: {
@@ -215,7 +209,6 @@ export const getServerSideProps: GetServerSideProps<
 		props: {
 			slug: params.slug,
 			product,
-			productType,
 		},
 	};
 };

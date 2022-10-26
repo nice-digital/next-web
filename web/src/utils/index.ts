@@ -51,7 +51,9 @@ export const getProjectPath = (project: Project): string | null =>
  * @param product The product for which to get the URL
  * @returns The path of the product, relative to the root
  */
-export const getProductPath = (product: ProductLite): string => {
+export const getProductPath = (
+	product: Pick<ProductLite, "productGroup" | "id" | "productType" | "title">
+): string => {
 	let rootPath: string,
 		productSlug = product.id.toLowerCase();
 
