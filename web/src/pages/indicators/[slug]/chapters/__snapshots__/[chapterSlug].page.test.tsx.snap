@@ -150,7 +150,7 @@ exports[`/indicators/[slug]/chapters/[chapterSlug].page IndicatorChapterPage sho
               class="stacked-nav__list-item"
             >
               <a
-                aria-current="false"
+                aria-current="true"
                 href="/indicators/ind1001-test-indicator-ind-1001-the-percentage-of-patients-with-one-or-more-of-the-following-conditions-chd-atrial-fibrillation-chronic-heart-failure-stroke-or-tia-diabetes-or-dementia-with-a-fast-score-of-3-or-more-or-audit-c-score-of-5-or-more-in-the-preceding-2-years-who-have-received-brief-intervention-to-help-them-reduce-their-alcohol-related-risk-within-3-months-of-the-score-being-recorded/chapters/indicator-nm181"
               >
                 <span
@@ -306,12 +306,27 @@ exports[`/indicators/[slug]/chapters/[chapterSlug].page IndicatorChapterPage sho
           >
             <a
               class="prev-next__link"
-              href="/indicators/ind1001-test-indicator-ind-1001-the-percentage-of-patients-with-one-or-more-of-the-following-conditions-chd-atrial-fibrillation-chronic-heart-failure-stroke-or-tia-diabetes-or-dementia-with-a-fast-score-of-3-or-more-or-audit-c-score-of-5-or-more-in-the-preceding-2-years-who-have-received-brief-intervention-to-help-them-reduce-their-alcohol-related-risk-within-3-months-of-the-score-being-recorded"
+              href="/indicators/ind1001-test-indicator-ind-1001-the-percentage-of-patients-with-one-or-more-of-the-following-conditions-chd-atrial-fibrillation-chronic-heart-failure-stroke-or-tia-diabetes-or-dementia-with-a-fast-score-of-3-or-more-or-audit-c-score-of-5-or-more-in-the-preceding-2-years-who-have-received-brief-intervention-to-help-them-reduce-their-alcohol-related-risk-within-3-months-of-the-score-being-recorded/chapters/indicator-type"
             >
               <span
                 class="prev-next__link-intro"
               >
                 Next page
+              </span>
+              <span
+                class="prev-next__link-text"
+              >
+                Indicator type
+              </span>
+            </a>
+            <a
+              class="prev-next__link"
+              href="/indicators/ind1001-test-indicator-ind-1001-the-percentage-of-patients-with-one-or-more-of-the-following-conditions-chd-atrial-fibrillation-chronic-heart-failure-stroke-or-tia-diabetes-or-dementia-with-a-fast-score-of-3-or-more-or-audit-c-score-of-5-or-more-in-the-preceding-2-years-who-have-received-brief-intervention-to-help-them-reduce-their-alcohol-related-risk-within-3-months-of-the-score-being-recorded"
+            >
+              <span
+                class="prev-next__link-intro"
+              >
+                Previous page
               </span>
               <span
                 class="prev-next__link-text"

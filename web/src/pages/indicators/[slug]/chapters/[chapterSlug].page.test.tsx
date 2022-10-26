@@ -24,14 +24,14 @@ describe("/indicators/[slug]/chapters/[chapterSlug].page", () => {
 	const chapterSlug = "indicator-nm181";
 
 	beforeEach(() => {
-		(useRouter as jest.Mock).mockImplementation(() => ({}));
+		(useRouter as jest.Mock).mockImplementation(() => ({
+			asPath: `/indicators/${slug}/chapters/${chapterSlug}`,
+		}));
 		axiosMock.reset();
 		axiosMock
 			.onGet(/\/feeds\/product\/(.*)\/part\/1\/chapter\/(.*)/)
 			.reply(200, mockChapter);
 		axiosMock.onGet(/\/feeds\/product\//).reply(200, mockProduct);
-
-		// /feeds/product/NG101/part/1/chapter/overview
 
 		jest.resetModules();
 	});
@@ -59,7 +59,6 @@ describe("/indicators/[slug]/chapters/[chapterSlug].page", () => {
 		// });
 
 		it("should match snapshot for main content", () => {
-			// console.log(props);
 			render(<IndicatorChapterPage {...props} />);
 			expect(document.body).toMatchSnapshot();
 		});
@@ -72,14 +71,77 @@ describe("/indicators/[slug]/chapters/[chapterSlug].page", () => {
 			);
 		});
 
-		// it("should render the chapter html content", () => {
-		// 	render(<IndicatorChapterPage {...props} />);
+		describe("pagination", () => {
+			it("should render the next chapter page pagination link", () => {
+				render(<IndicatorChapterPage {...props} />);
 
-		// 	const contentText = screen.getByText(
-		// 		/the percentage of patients with one or more of the following conditions: chd, atrial fibrillation, chronic heart failure, stroke or tia, diabetes or dementia with a fast score of 3 or more or audit-c score of 5 or more/i
-		// 	);
+				const nextPageLink = screen.getByText("Next page");
 
-		// 	expect(contentText).toBeInTheDocument();
-		// });
+				expect(nextPageLink).toBeInTheDocument();
+
+				// eslint-disable-next-line testing-library/no-node-access
+				expect(nextPageLink.parentElement).toHaveAttribute(
+					"href",
+					"/indicators/ind1001-test-indicator-ind-1001-the-percentage-of-patients-with-one-or-more-of-the-following-conditions-chd-atrial-fibrillation-chronic-heart-failure-stroke-or-tia-diabetes-or-dementia-with-a-fast-score-of-3-or-more-or-audit-c-score-of-5-or-more-in-the-preceding-2-years-who-have-received-brief-intervention-to-help-them-reduce-their-alcohol-related-risk-within-3-months-of-the-score-being-recorded/chapters/indicator-type"
+				);
+
+				// eslint-disable-next-line testing-library/no-node-access
+				expect(nextPageLink.parentElement).toHaveTextContent(
+					"Next pageIndicator type"
+				);
+			});
+
+			it("should render the previous chapter page pagination link", () => {
+				render(<IndicatorChapterPage {...props} />);
+
+				const previousPageLink = screen.getByText("Previous page");
+
+				expect(previousPageLink).toBeInTheDocument();
+
+				// eslint-disable-next-line testing-library/no-node-access
+				expect(previousPageLink.parentElement).toHaveAttribute(
+					"href",
+					"/indicators/ind1001-test-indicator-ind-1001-the-percentage-of-patients-with-one-or-more-of-the-following-conditions-chd-atrial-fibrillation-chronic-heart-failure-stroke-or-tia-diabetes-or-dementia-with-a-fast-score-of-3-or-more-or-audit-c-score-of-5-or-more-in-the-preceding-2-years-who-have-received-brief-intervention-to-help-them-reduce-their-alcohol-related-risk-within-3-months-of-the-score-being-recorded"
+				);
+				// eslint-disable-next-line testing-library/no-node-access
+				expect(previousPageLink.parentElement).toHaveTextContent(
+					"Previous pageOverview"
+				);
+			});
+
+			it("should not render a next page link on last chapter", () => {
+				(useRouter as jest.Mock).mockImplementation(() => ({
+					asPath: `/indicators/${slug}/chapters/further-information`,
+				}));
+				render(<IndicatorChapterPage {...props} />);
+				expect(screen.queryByText("Next page")).not.toBeInTheDocument();
+			});
+
+			it("should not render a previous page link on first chapter", () => {
+				(useRouter as jest.Mock).mockImplementation(() => ({
+					asPath: `/indicators/${slug}/chapters/overview`,
+				}));
+				render(<IndicatorChapterPage {...props} />);
+				expect(screen.queryByText("Previous page")).not.toBeInTheDocument();
+			});
+		});
+
+		describe("getServerSidePropsFunc", () => {
+			it("should return a correct props when supplied with an id", async () => {
+				const result = await getServerSideProps({
+					params: { slug, chapterSlug: chapterSlug },
+				} as unknown as GetServerSidePropsContext);
+
+				expect(result).toStrictEqual({
+					props: {
+						slug: slug,
+						product: expect.objectContaining({ id: "IND1001" }),
+						chapterContent: expect.objectContaining({
+							chapterSlug: "indicator-nm181",
+						}),
+					},
+				});
+			});
+		});
 	});
 });

@@ -68,8 +68,6 @@ export default function IndicatorChapterPage({
 	product,
 	slug,
 }: IndicatorChapterPageProps): JSX.Element {
-	// console.log({ chapterContent });
-
 	const router = useRouter();
 
 	//TODO check if this is acting as a typeguard and is working properly
@@ -152,6 +150,7 @@ export default function IndicatorChapterPage({
 	return (
 		<>
 			<NextSeo
+				//TODO change document title to include chapter content title?
 				title={product.title + " | Indicators | Standards and Indicators"}
 				description={product.metaDescription}
 				additionalLinkTags={[
@@ -259,10 +258,7 @@ export const getServerSideProps: GetServerSideProps<
 		return { notFound: true };
 	}
 
-	//TODO redirect to chapter slug when slug is incorrect or chapterSlug is incorrect?
-	// console.log(chapter?.links.self[0].href as string);
-	// console.log(params.slug);
-	// console.log(params.chapterSlug);
+	//TODO redirects to chapter slug when slug is incorrect or chapterSlug is incorrect?
 
 	const chapterContent = await getChapterContent(
 		chapter?.links.self[0].href as string
