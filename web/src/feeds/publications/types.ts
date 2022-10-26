@@ -237,6 +237,7 @@ export type HTMLChapterContentInfo = {
 };
 
 export type HTMLChapterContent = {
+	links: { self: [Link] };
 	eTag: string;
 	content: string;
 	title: string;
