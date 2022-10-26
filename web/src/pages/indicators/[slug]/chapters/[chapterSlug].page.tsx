@@ -1,15 +1,26 @@
 import slugify from "@sindresorhus/slugify";
+import dayjs from "dayjs";
 import { GetServerSideProps } from "next";
+import { NextSeo } from "next-seo";
 import React from "react";
 
+import { Breadcrumbs, Breadcrumb } from "@nice-digital/nds-breadcrumbs";
+import { Grid, GridItem } from "@nice-digital/nds-grid";
+import { PageHeader } from "@nice-digital/nds-page-header";
+
+import { PublicationsChapterMenu } from "@/components/PublicationsChapterMenu/PublicationsChapterMenu";
 import {
-	getAllProductTypes,
 	getChapterContent,
 	getProductDetail,
 	HTMLChapterContent,
 	isErrorResponse,
+	ProductChapter,
 	ProductDetail,
+	ProductGroup,
 } from "@/feeds/publications/publications";
+import { formatDateStr, getProductPath } from "@/utils";
+
+import styles from "./[chapterSlug].page.module.scss";
 
 export const slugifyFunction = slugify;
 
@@ -19,12 +30,122 @@ export type IndicatorChapterPageProps = {
 	chapterContent: HTMLChapterContent;
 };
 
+const chaptersAndLinks = (
+	summary: string | null,
+	chapters: ProductChapter[],
+	slug: string
+): ProductChapter[] => {
+	const chaptersAndLinksArray: Array<ProductChapter> = [];
+
+	if (summary) {
+		chaptersAndLinksArray.push({
+			title: "Overview",
+			url: `/indicators/${slug}`,
+		});
+	}
+
+	chapters.forEach((chapter) => {
+		if (summary && chapter.title == "Overview") {
+			return;
+		}
+		return chaptersAndLinksArray.push({
+			title: chapter.title,
+			url: `/indicators/${slug}/chapters/${chapter.url
+				.split("/")
+				.pop()
+				?.toLowerCase()}`,
+		});
+	});
+
+	return chaptersAndLinksArray;
+};
+
 export default function IndicatorChapterPage({
 	chapterContent,
+	product,
+	slug,
 }: IndicatorChapterPageProps): JSX.Element {
+	console.log({ chapterContent });
+
+	const metaData = [
+		product.productTypeName,
+		product.id,
+		product.publishedDate ? (
+			<>
+				Published:
+				<time dateTime={dayjs(product.publishedDate).format("YYYY-MM-DD")}>
+					&nbsp;{formatDateStr(product.publishedDate)}
+				</time>
+			</>
+		) : null,
+		product.lastMajorModificationDate != product.publishedDate ? (
+			<>
+				Last updated:
+				<time dateTime={dayjs(product.lastModified).format("YYYY-MM-DD")}>
+					&nbsp;{formatDateStr(product.lastModified)}
+				</time>
+			</>
+		) : null,
+	].filter(Boolean);
+
+	let chapters;
+
+	if (product.chapterHeadings) {
+		chapters = chaptersAndLinks(product.summary, product.chapterHeadings, slug);
+	}
+
 	return (
 		<>
-			<span dangerouslySetInnerHTML={{ __html: chapterContent.content }} />
+			<NextSeo
+				title={product.title + " | Indicators | Standards and Indicators"}
+				description={product.metaDescription}
+				additionalLinkTags={[
+					{
+						rel: "sitemap",
+						type: "application/xml",
+						href: "/indicators/sitemap.xml",
+					},
+				]}
+			/>
+
+			<Breadcrumbs>
+				<Breadcrumb to="/">Home</Breadcrumb>
+				<Breadcrumb to="/standards-and-indicators">
+					Standards and Indicators
+				</Breadcrumb>
+				<Breadcrumb to="/standards-and-indicators/indicators">
+					Indicators
+				</Breadcrumb>
+				<Breadcrumb>{product.id}</Breadcrumb>
+			</Breadcrumbs>
+			<PageHeader
+				heading={product.title}
+				useAltHeading
+				id="content-start"
+				metadata={metaData}
+			/>
+			<Grid gutter="loose">
+				{chapters ? (
+					<GridItem
+						cols={12}
+						md={4}
+						lg={3}
+						elementType="section"
+						aria-label="Chapters"
+					>
+						<PublicationsChapterMenu
+							ariaLabel="Chapter pages"
+							chapters={chapters}
+						/>
+					</GridItem>
+				) : null}
+				<GridItem cols={12} md={8} lg={9} elementType="section">
+					<span
+						dangerouslySetInnerHTML={{ __html: chapterContent.content }}
+						className={styles.chapterContent}
+					/>
+				</GridItem>
+			</Grid>
 		</>
 	);
 }
@@ -43,13 +164,6 @@ export const getServerSideProps: GetServerSideProps<
 		return { notFound: true };
 	}
 
-	const productTypes = await getAllProductTypes();
-	const productType = productTypes.find((p) => p.identifierPrefix === "IND");
-
-	if (!productType) {
-		throw Error("Indicator product type could not be found");
-	}
-
 	const [id, ...rest] = params.slug.split("-");
 
 	const product = await getProductDetail(id);
@@ -63,12 +177,12 @@ export const getServerSideProps: GetServerSideProps<
 
 	const titleExtractedFromSlug = rest.join("-").toLowerCase();
 
-	//TODO consider early return when there is no product;
-
-	//TODO redirect to chapter slug
 	const slugifiedProductTitle = slugify(product.title);
 	if (titleExtractedFromSlug !== slugifiedProductTitle) {
-		const redirectUrl = "/indicators/" + id + "-" + slugifiedProductTitle;
+		const redirectUrl = getProductPath({
+			...product,
+			productGroup: ProductGroup.Other,
+		});
 
 		return {
 			redirect: {
@@ -86,6 +200,11 @@ export const getServerSideProps: GetServerSideProps<
 	if (!chapter) {
 		return { notFound: true };
 	}
+
+	//TODO redirect to chapter slug when slug is incorrect or chapterSlug is incorrect?
+	// console.log(chapter?.links.self[0].href as string);
+	// console.log(params.slug);
+	// console.log(params.chapterSlug);
 
 	const chapterContent = await getChapterContent(
 		chapter?.links.self[0].href as string
