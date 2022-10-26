@@ -7,7 +7,9 @@ import React from "react";
 import { Breadcrumbs, Breadcrumb } from "@nice-digital/nds-breadcrumbs";
 import { Grid, GridItem } from "@nice-digital/nds-grid";
 import { PageHeader } from "@nice-digital/nds-page-header";
+import { PrevNext } from "@nice-digital/nds-prev-next";
 
+import { ScrollToLink } from "@/components/Link/Link";
 import { PublicationsChapterMenu } from "@/components/PublicationsChapterMenu/PublicationsChapterMenu";
 import {
 	getChapterContent,
@@ -67,6 +69,14 @@ export default function IndicatorChapterPage({
 }: IndicatorChapterPageProps): JSX.Element {
 	console.log({ chapterContent });
 
+	let chapters;
+
+	if (product.chapterHeadings) {
+		chapters = chaptersAndLinks(product.summary, product.chapterHeadings, slug);
+	}
+
+	const nextPageLink = chapters?.[1];
+
 	const metaData = [
 		product.productTypeName,
 		product.id,
@@ -87,12 +97,6 @@ export default function IndicatorChapterPage({
 			</>
 		) : null,
 	].filter(Boolean);
-
-	let chapters;
-
-	if (product.chapterHeadings) {
-		chapters = chaptersAndLinks(product.summary, product.chapterHeadings, slug);
-	}
 
 	return (
 		<>
@@ -144,6 +148,19 @@ export default function IndicatorChapterPage({
 						dangerouslySetInnerHTML={{ __html: chapterContent.content }}
 						className={styles.chapterContent}
 					/>
+					{nextPageLink ? (
+						<PrevNext
+							nextPageLink={{
+								text: nextPageLink.title,
+								destination: nextPageLink.url,
+								elementType: ({ children, ...props }) => (
+									<ScrollToLink {...props} scrollTargetId="content-start">
+										{children}
+									</ScrollToLink>
+								),
+							}}
+						/>
+					) : null}
 				</GridItem>
 			</Grid>
 		</>
