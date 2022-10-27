@@ -141,7 +141,7 @@ export default function IndicatorChapterPage({
 					</GridItem>
 				) : null}
 				<GridItem cols={12} md={8} lg={9} elementType="section">
-					<span
+					<div
 						dangerouslySetInnerHTML={{ __html: chapterContent.content }}
 						className={styles.chapterContent}
 					/>
