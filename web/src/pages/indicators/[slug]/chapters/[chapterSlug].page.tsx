@@ -181,10 +181,13 @@ export const getServerSideProps: GetServerSideProps<
 
 	const slugifiedProductTitle = slugify(product.title);
 	if (titleExtractedFromSlug !== slugifiedProductTitle) {
-		const redirectUrl = getProductPath({
-			...product,
-			productGroup: ProductGroup.Other,
-		});
+		const redirectUrl =
+			getProductPath({
+				...product,
+				productGroup: ProductGroup.Other,
+			}) +
+			"/chapters/" +
+			params.chapterSlug;
 
 		return {
 			redirect: {
@@ -202,10 +205,6 @@ export const getServerSideProps: GetServerSideProps<
 	if (!chapter) {
 		return { notFound: true };
 	}
-
-	//TODO A chapter slug that doesn’t exist should return a 404
-
-	//TODO incorrect title perm 301 redirect e.g. /indicators/ind10-invalid-title/chapter/some-chapter-slug should 301 redirect to /indicators/ind10-valid-title/chapter/some-chapter-slug where the indicator title for IND10 is Valid title
 
 	const chapterContent = await getChapterContent(
 		chapter?.links.self[0].href as string

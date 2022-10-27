@@ -3,6 +3,7 @@ import {
 	screen,
 	waitFor,
 	getDefaultNormalizer,
+	within,
 } from "@testing-library/react";
 import MockAdapter from "axios-mock-adapter";
 import { useRouter } from "next/router";
@@ -202,7 +203,45 @@ describe("/indicators/[slug].page", () => {
 		});
 
 		describe("Chapter menu", () => {
-			it.todo("should render overview chapter link when summary provided");
+			it("should render overview chapter link when summary provided", () => {
+				render(
+					<IndicatorsDetailsPage
+						{...props}
+						product={{
+							...props.product,
+							summary: mockProduct.Summary,
+						}}
+					/>
+				);
+
+				const publicationsChapterMenu = screen.getByRole("region", {
+					name: "Chapters",
+				});
+
+				expect(
+					within(publicationsChapterMenu).getByText("Overview")
+				).toBeInTheDocument();
+			});
+
+			it("should not render overview chapter link when no summary provided", () => {
+				render(
+					<IndicatorsDetailsPage
+						{...props}
+						product={{
+							...props.product,
+							summary: null,
+						}}
+					/>
+				);
+
+				const publicationsChapterMenu = screen.getByRole("region", {
+					name: "Chapters",
+				});
+
+				expect(
+					within(publicationsChapterMenu).queryByText("Overview")
+				).not.toBeInTheDocument();
+			});
 			it.todo(
 				"should render correct chapter url based on producttype and slug"
 			);

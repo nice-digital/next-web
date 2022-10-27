@@ -20,7 +20,6 @@ describe("/indicators/[slug]/chapters/[chapterSlug].page", () => {
 	const slug =
 		"ind1001-test-indicator-ind-1001-the-percentage-of-patients-with-one-or-more-of-the-following-conditions-chd-atrial-fibrillation-chronic-heart-failure-stroke-or-tia-diabetes-or-dementia-with-a-fast-score-of-3-or-more-or-audit-c-score-of-5-or-more-in-the-preceding-2-years-who-have-received-brief-intervention-to-help-them-reduce-their-alcohol-related-risk-within-3-months-of-the-score-being-recorded";
 
-	// TODO retrieve chapter slug from mockdata?
 	const chapterSlug = "indicator-nm181";
 
 	beforeEach(() => {
@@ -71,61 +70,6 @@ describe("/indicators/[slug]/chapters/[chapterSlug].page", () => {
 			);
 		});
 
-		describe("pagination", () => {
-			it("should render the next chapter page pagination link", () => {
-				render(<IndicatorChapterPage {...props} />);
-
-				const nextPageLink = screen.getByText("Next page");
-
-				expect(nextPageLink).toBeInTheDocument();
-
-				// eslint-disable-next-line testing-library/no-node-access
-				expect(nextPageLink.parentElement).toHaveAttribute(
-					"href",
-					"/indicators/ind1001-test-indicator-ind-1001-the-percentage-of-patients-with-one-or-more-of-the-following-conditions-chd-atrial-fibrillation-chronic-heart-failure-stroke-or-tia-diabetes-or-dementia-with-a-fast-score-of-3-or-more-or-audit-c-score-of-5-or-more-in-the-preceding-2-years-who-have-received-brief-intervention-to-help-them-reduce-their-alcohol-related-risk-within-3-months-of-the-score-being-recorded/chapters/indicator-type"
-				);
-
-				// eslint-disable-next-line testing-library/no-node-access
-				expect(nextPageLink.parentElement).toHaveTextContent(
-					"Next pageIndicator type"
-				);
-			});
-
-			it("should render the previous chapter page pagination link", () => {
-				render(<IndicatorChapterPage {...props} />);
-
-				const previousPageLink = screen.getByText("Previous page");
-
-				expect(previousPageLink).toBeInTheDocument();
-
-				// eslint-disable-next-line testing-library/no-node-access
-				expect(previousPageLink.parentElement).toHaveAttribute(
-					"href",
-					"/indicators/ind1001-test-indicator-ind-1001-the-percentage-of-patients-with-one-or-more-of-the-following-conditions-chd-atrial-fibrillation-chronic-heart-failure-stroke-or-tia-diabetes-or-dementia-with-a-fast-score-of-3-or-more-or-audit-c-score-of-5-or-more-in-the-preceding-2-years-who-have-received-brief-intervention-to-help-them-reduce-their-alcohol-related-risk-within-3-months-of-the-score-being-recorded"
-				);
-				// eslint-disable-next-line testing-library/no-node-access
-				expect(previousPageLink.parentElement).toHaveTextContent(
-					"Previous pageOverview"
-				);
-			});
-
-			it("should not render a next page link on last chapter", () => {
-				(useRouter as jest.Mock).mockImplementation(() => ({
-					asPath: `/indicators/${slug}/chapters/further-information`,
-				}));
-				render(<IndicatorChapterPage {...props} />);
-				expect(screen.queryByText("Next page")).not.toBeInTheDocument();
-			});
-
-			it("should not render a previous page link on first chapter", () => {
-				(useRouter as jest.Mock).mockImplementation(() => ({
-					asPath: `/indicators/${slug}/chapters/overview`,
-				}));
-				render(<IndicatorChapterPage {...props} />);
-				expect(screen.queryByText("Previous page")).not.toBeInTheDocument();
-			});
-		});
-
 		describe("getServerSidePropsFunc", () => {
 			it("should return a correct props when supplied with an id", async () => {
 				const result = await getServerSideProps({
@@ -150,7 +94,7 @@ describe("/indicators/[slug]/chapters/[chapterSlug].page", () => {
 
 				expect(redirectResult).toStrictEqual({
 					redirect: {
-						destination: `/indicators/${slug}/chapter/${chapterSlug}`,
+						destination: `/indicators/${slug}/chapters/${chapterSlug}`,
 						permanent: true,
 					},
 				});
