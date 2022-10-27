@@ -264,7 +264,7 @@ exports[`/indicators/[slug]/chapters/[chapterSlug].page IndicatorChapterPage sho
       <section
         data-g="12 md:8 lg:9"
       >
-        <span
+        <div
           class="chapterContent"
         >
           <div
@@ -297,7 +297,7 @@ exports[`/indicators/[slug]/chapters/[chapterSlug].page IndicatorChapterPage sho
             
 
           </div>
-        </span>
+        </div>
         <div
           class="prev-next"
         >

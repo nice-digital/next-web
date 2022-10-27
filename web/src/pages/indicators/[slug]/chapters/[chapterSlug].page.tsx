@@ -97,7 +97,6 @@ export default function IndicatorChapterPage({
 	return (
 		<>
 			<NextSeo
-				//TODO change document title to include chapter content title?
 				title={product.title + " | Indicators | Standards and Indicators"}
 				description={product.metaDescription}
 				additionalLinkTags={[

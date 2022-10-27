@@ -8,9 +8,8 @@ import {
 import MockAdapter from "axios-mock-adapter";
 import { useRouter } from "next/router";
 
+import { client } from "@/feeds/index";
 import mockProduct from "@/mockData/publications/feeds/products/indicator.json";
-
-import { client } from "../../feeds/";
 
 import IndicatorsDetailsPage, {
 	getServerSideProps,
