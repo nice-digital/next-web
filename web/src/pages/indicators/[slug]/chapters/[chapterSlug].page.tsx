@@ -2,20 +2,14 @@ import slugify from "@sindresorhus/slugify";
 import dayjs from "dayjs";
 import { GetServerSideProps } from "next";
 import { NextSeo } from "next-seo";
-import { useRouter } from "next/router";
 import React from "react";
 
 import { Breadcrumbs, Breadcrumb } from "@nice-digital/nds-breadcrumbs";
 import { Grid, GridItem } from "@nice-digital/nds-grid";
 import { PageHeader } from "@nice-digital/nds-page-header";
-import {
-	PrevNext,
-	PrevNextLink,
-	PrevNextProps,
-} from "@nice-digital/nds-prev-next";
 
-import { ScrollToLink } from "@/components/Link/Link";
 import { PublicationsChapterMenu } from "@/components/PublicationsChapterMenu/PublicationsChapterMenu";
+import PublicationsPrevNext from "@/components/PublicationsPrevNext/PublicationsPrevNext";
 import {
 	getChapterContent,
 	getProductDetail,
@@ -67,37 +61,16 @@ const chaptersAndLinks = (
 	return chaptersAndLinksArray;
 };
 
-const getPageLink = (
-	chapter: ProductChapter | undefined
-): PrevNextLink | undefined =>
-	chapter
-		? {
-				text: chapter.title,
-				destination: chapter.url,
-				elementType: ({ children, ...props }) => (
-					<ScrollToLink {...props} scrollTargetId="content-start">
-						{children}
-					</ScrollToLink>
-				),
-		  }
-		: undefined;
-
 export default function IndicatorChapterPage({
 	chapterContent,
 	product,
 	slug,
 }: IndicatorChapterPageProps): JSX.Element {
-	const { asPath } = useRouter();
-
-	//TODO check if this is acting as a typeguard and is working properly
-	const chapters: ProductChapter[] =
-		product.chapterHeadings !== undefined
-			? chaptersAndLinks(product.summary, product.chapterHeadings, slug)
-			: [];
-
-	const currentIndex = chapters.findIndex(({ url }) => url === asPath),
-		nextPageLink = chapters[currentIndex + 1],
-		previousPageLink = chapters[currentIndex - 1];
+	const chapters: ProductChapter[] = chaptersAndLinks(
+		product.summary,
+		product.chapterHeadings,
+		slug
+	);
 
 	const metaData = [
 		product.productTypeName,
@@ -114,6 +87,7 @@ export default function IndicatorChapterPage({
 			<>
 				Last updated:
 				<time dateTime={dayjs(product.lastModified).format("YYYY-MM-DD")}>
+					{" "}
 					&nbsp;{formatDateStr(product.lastModified)}
 				</time>
 			</>
@@ -171,12 +145,7 @@ export default function IndicatorChapterPage({
 						dangerouslySetInnerHTML={{ __html: chapterContent.content }}
 						className={styles.chapterContent}
 					/>
-					{nextPageLink || previousPageLink ? (
-						<PrevNext
-							nextPageLink={getPageLink(nextPageLink)}
-							previousPageLink={getPageLink(previousPageLink)}
-						/>
-					) : null}
+					<PublicationsPrevNext chapters={chapters} />
 				</GridItem>
 			</Grid>
 		</>
