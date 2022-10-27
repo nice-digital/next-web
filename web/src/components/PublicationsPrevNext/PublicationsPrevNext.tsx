@@ -26,7 +26,9 @@ const getPageLink = (
 		  }
 		: undefined;
 
-const PublicationsPrevNext: FC<PublicationsPrevNextProps> = ({ chapters }) => {
+export const PublicationsPrevNext: FC<PublicationsPrevNextProps> = ({
+	chapters,
+}) => {
 	const { asPath } = useRouter();
 	const currentIndex = chapters.findIndex(({ url }) => url === asPath),
 		nextPageLink = chapters[currentIndex + 1],
@@ -39,5 +41,3 @@ const PublicationsPrevNext: FC<PublicationsPrevNextProps> = ({ chapters }) => {
 		/>
 	);
 };
-
-export default PublicationsPrevNext;

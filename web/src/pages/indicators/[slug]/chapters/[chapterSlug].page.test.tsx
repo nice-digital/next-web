@@ -49,14 +49,6 @@ describe("/indicators/[slug]/chapters/[chapterSlug].page", () => {
 			).props;
 		});
 
-		// it("axios response sanity check", async () => {
-		// 	const res = await getChapterContent(
-		// 		"/feeds/product/IND1001/part/1/chapter/overview"
-		// 	);
-
-		// 	expect(res).toStrictEqual({});
-		// });
-
 		it("should match snapshot for main content", () => {
 			render(<IndicatorChapterPage {...props} />);
 			expect(document.body).toMatchSnapshot();
