@@ -142,6 +142,27 @@ describe("/indicators/[slug]/chapters/[chapterSlug].page", () => {
 					},
 				});
 			});
+
+			it("should return permanent redirect object URL with incorrect title and correct chapter slug", async () => {
+				const redirectResult = await getServerSideProps({
+					params: { slug: "ind1001-incorrect-slug-title", chapterSlug },
+				} as unknown as GetServerSidePropsContext);
+
+				expect(redirectResult).toStrictEqual({
+					redirect: {
+						destination: `/indicators/${slug}/chapter/${chapterSlug}`,
+						permanent: true,
+					},
+				});
+			});
+
+			it("should return notFound if chapter slug doesn't exist", async () => {
+				const redirectResult = await getServerSideProps({
+					params: { slug: slug, chapterSlug: "this-does-not-exist" },
+				} as unknown as GetServerSidePropsContext);
+
+				expect(redirectResult).toStrictEqual({ notFound: true });
+			});
 		});
 	});
 });

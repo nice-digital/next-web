@@ -8,7 +8,11 @@ import React from "react";
 import { Breadcrumbs, Breadcrumb } from "@nice-digital/nds-breadcrumbs";
 import { Grid, GridItem } from "@nice-digital/nds-grid";
 import { PageHeader } from "@nice-digital/nds-page-header";
-import { PrevNext, PrevNextProps } from "@nice-digital/nds-prev-next";
+import {
+	PrevNext,
+	PrevNextLink,
+	PrevNextProps,
+} from "@nice-digital/nds-prev-next";
 
 import { ScrollToLink } from "@/components/Link/Link";
 import { PublicationsChapterMenu } from "@/components/PublicationsChapterMenu/PublicationsChapterMenu";
@@ -63,12 +67,27 @@ const chaptersAndLinks = (
 	return chaptersAndLinksArray;
 };
 
+const getPageLink = (
+	chapter: ProductChapter | undefined
+): PrevNextLink | undefined =>
+	chapter
+		? {
+				text: chapter.title,
+				destination: chapter.url,
+				elementType: ({ children, ...props }) => (
+					<ScrollToLink {...props} scrollTargetId="content-start">
+						{children}
+					</ScrollToLink>
+				),
+		  }
+		: undefined;
+
 export default function IndicatorChapterPage({
 	chapterContent,
 	product,
 	slug,
 }: IndicatorChapterPageProps): JSX.Element {
-	const router = useRouter();
+	const { asPath } = useRouter();
 
 	//TODO check if this is acting as a typeguard and is working properly
 	const chapters: ProductChapter[] =
@@ -76,55 +95,9 @@ export default function IndicatorChapterPage({
 			? chaptersAndLinks(product.summary, product.chapterHeadings, slug)
 			: [];
 
-	const calculatePreviousAndNextLinks = (chapters: ProductChapter[]) => {
-		const currentIndex = chapters.findIndex(
-			(element: { url: string }) => element.url === router.asPath
-		);
-
-		const nextPageLink =
-			currentIndex < chapters.length - 1 &&
-			chapters[(currentIndex + 1) % chapters.length];
-
-		const previousPageLink =
-			currentIndex > 0 && chapters[(currentIndex - 1) % chapters.length];
-
-		return { nextPageLink, previousPageLink };
-	};
-
-	const { nextPageLink, previousPageLink } =
-		calculatePreviousAndNextLinks(chapters);
-
-	const generatePrevNextProps = (): PrevNextProps => {
-		const prevNextObj: PrevNextProps = {};
-
-		if (nextPageLink) {
-			prevNextObj.nextPageLink = {
-				text: nextPageLink.title,
-				destination: nextPageLink.url,
-				elementType: ({ children, ...props }) => (
-					<ScrollToLink {...props} scrollTargetId="content-start">
-						{children}
-					</ScrollToLink>
-				),
-			};
-		}
-
-		if (previousPageLink) {
-			prevNextObj.previousPageLink = {
-				text: previousPageLink.title,
-				destination: previousPageLink.url,
-				elementType: ({ children, ...props }) => (
-					<ScrollToLink {...props} scrollTargetId="content-start">
-						{children}
-					</ScrollToLink>
-				),
-			};
-		}
-
-		return prevNextObj;
-	};
-
-	const prevNextProps = generatePrevNextProps();
+	const currentIndex = chapters.findIndex(({ url }) => url === asPath),
+		nextPageLink = chapters[currentIndex + 1],
+		previousPageLink = chapters[currentIndex - 1];
 
 	const metaData = [
 		product.productTypeName,
@@ -199,7 +172,10 @@ export default function IndicatorChapterPage({
 						className={styles.chapterContent}
 					/>
 					{nextPageLink || previousPageLink ? (
-						<PrevNext {...prevNextProps} />
+						<PrevNext
+							nextPageLink={getPageLink(nextPageLink)}
+							previousPageLink={getPageLink(previousPageLink)}
+						/>
 					) : null}
 				</GridItem>
 			</Grid>
@@ -258,7 +234,9 @@ export const getServerSideProps: GetServerSideProps<
 		return { notFound: true };
 	}
 
-	//TODO redirects to chapter slug when slug is incorrect or chapterSlug is incorrect?
+	//TODO A chapter slug that doesn’t exist should return a 404
+
+	//TODO incorrect title perm 301 redirect e.g. /indicators/ind10-invalid-title/chapter/some-chapter-slug should 301 redirect to /indicators/ind10-valid-title/chapter/some-chapter-slug where the indicator title for IND10 is Valid title
 
 	const chapterContent = await getChapterContent(
 		chapter?.links.self[0].href as string
