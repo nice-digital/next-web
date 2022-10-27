@@ -2,7 +2,7 @@ import { render, screen } from "@testing-library/react";
 import MockAdapter from "axios-mock-adapter";
 import { useRouter } from "next/router";
 
-import mockChapter from "@/mockData/publications/feeds/products/chapter/chapterDetail.json";
+import mockChapter from "@/mockData/publications/feeds/products/chapter/IndicatorChapterDetail.json";
 import mockProduct from "@/mockData/publications/feeds/products/indicator.json";
 
 import { client } from "../../../../feeds/";
