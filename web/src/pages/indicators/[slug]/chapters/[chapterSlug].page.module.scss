@@ -5,7 +5,7 @@
   margin-bottom: utils.rem(spacing.$large);
 
 
-  div > :first-child {
+  > div > :first-child {
     margin-top: 0;
   }
 }
