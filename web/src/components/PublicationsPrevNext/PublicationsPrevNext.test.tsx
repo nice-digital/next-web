@@ -3,86 +3,72 @@ import { useRouter } from "next/router";
 
 import { PublicationsPrevNext } from "./PublicationsPrevNext";
 
+const useRouterMock = useRouter as jest.Mock;
+
 const slug =
 	"ind1001-test-indicator-ind-1001-the-percentage-of-patients-with-one-or-more-of-the-following-conditions-chd-atrial-fibrillation-chronic-heart-failure-stroke-or-tia-diabetes-or-dementia-with-a-fast-score-of-3-or-more-or-audit-c-score-of-5-or-more-in-the-preceding-2-years-who-have-received-brief-intervention-to-help-them-reduce-their-alcohol-related-risk-within-3-months-of-the-score-being-recorded";
 
-const chapterSlug = "indicator-nm181";
+const firstChapterPath = `/indicators/${slug}`,
+	secondChapterPath = `/indicators/${slug}/chapters/indicator-nm181`,
+	thirdAndLastChapterPath = `/indicators/${slug}/chapters/further-information`;
 
 const mockChapters = [
 	{
-		title: "Overview",
-		url: `/indicators/${slug}`,
+		title: "First chapter",
+		url: firstChapterPath,
 	},
 	{
-		title: "Indicator NM181",
-		url: `/indicators/${slug}/chapters/indicator-nm181`,
+		title: "Second chapter",
+		url: secondChapterPath,
 	},
 	{
-		title: "Further information",
-		url: `/indicators/${slug}/chapters/further-information`,
+		title: "Third and last chapter",
+		url: thirdAndLastChapterPath,
 	},
 ];
 
 describe("PublicationsPrevNext", () => {
-	beforeEach(() => {
-		(useRouter as jest.Mock).mockImplementation(() => ({
-			asPath: `/indicators/${slug}/chapters/${chapterSlug}`,
-		}));
-		jest.resetModules();
+	it("should render the next chapter page pagination link", () => {
+		useRouterMock.mockReturnValue({
+			asPath: secondChapterPath,
+		});
+
+		render(<PublicationsPrevNext chapters={mockChapters} />);
+
+		expect(
+			screen.getByRole("link", {
+				name: "Next page Third and last chapter",
+			})
+		).toHaveAttribute("href", thirdAndLastChapterPath);
 	});
 
-	describe("pagination", () => {
-		it("should render the next chapter page pagination link", () => {
-			render(<PublicationsPrevNext chapters={mockChapters} />);
-
-			const nextPageLink = screen.getByText("Next page");
-
-			expect(nextPageLink).toBeInTheDocument();
-
-			// eslint-disable-next-line testing-library/no-node-access
-			expect(nextPageLink.parentElement).toHaveAttribute(
-				"href",
-				`/indicators/${slug}/chapters/further-information`
-			);
-
-			// eslint-disable-next-line testing-library/no-node-access
-			expect(nextPageLink.parentElement).toHaveAccessibleName(
-				"Next page Further information"
-			);
+	it("should render the previous chapter page pagination link", () => {
+		useRouterMock.mockReturnValue({
+			asPath: secondChapterPath,
 		});
 
-		it("should render the previous chapter page pagination link", () => {
-			render(<PublicationsPrevNext chapters={mockChapters} />);
+		render(<PublicationsPrevNext chapters={mockChapters} />);
 
-			const previousPageLink = screen.getByText("Previous page");
+		expect(
+			screen.getByRole("link", {
+				name: "Previous page First chapter",
+			})
+		).toHaveAttribute("href", firstChapterPath);
+	});
 
-			expect(previousPageLink).toBeInTheDocument();
-
-			// eslint-disable-next-line testing-library/no-node-access
-			expect(previousPageLink.parentElement).toHaveAttribute(
-				"href",
-				`/indicators/${slug}`
-			);
-			// eslint-disable-next-line testing-library/no-node-access
-			expect(previousPageLink.parentElement).toHaveAccessibleName(
-				"Previous page Overview"
-			);
+	it("should not render a next page link on last chapter", () => {
+		useRouterMock.mockReturnValue({
+			asPath: thirdAndLastChapterPath,
 		});
+		render(<PublicationsPrevNext chapters={mockChapters} />);
+		expect(screen.queryByText("Next page")).not.toBeInTheDocument();
+	});
 
-		it("should not render a next page link on last chapter", () => {
-			(useRouter as jest.Mock).mockImplementation(() => ({
-				asPath: `/indicators/${slug}/chapters/further-information`,
-			}));
-			render(<PublicationsPrevNext chapters={mockChapters} />);
-			expect(screen.queryByText("Next page")).not.toBeInTheDocument();
+	it("should not render a previous page link on first chapter", () => {
+		useRouterMock.mockReturnValue({
+			asPath: firstChapterPath,
 		});
-
-		it("should not render a previous page link on first chapter", () => {
-			(useRouter as jest.Mock).mockImplementation(() => ({
-				asPath: `/indicators/${slug}/chapters/overview`,
-			}));
-			render(<PublicationsPrevNext chapters={mockChapters} />);
-			expect(screen.queryByText("Previous page")).not.toBeInTheDocument();
-		});
+		render(<PublicationsPrevNext chapters={mockChapters} />);
+		expect(screen.queryByText("Previous page")).not.toBeInTheDocument();
 	});
 });

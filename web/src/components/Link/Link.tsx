@@ -96,3 +96,7 @@ export const ScrollToLink: FC<
 		/>
 	);
 };
+
+export const ScrollToContentStartLink: FC<
+	LinkProps & { scrollTargetId: never; onClick?: never; scroll?: never }
+> = (props) => <ScrollToLink {...props} scrollTargetId="content-start" />;

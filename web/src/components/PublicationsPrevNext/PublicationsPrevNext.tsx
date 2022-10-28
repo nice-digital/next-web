@@ -1,11 +1,10 @@
 import { useRouter } from "next/router";
-import React, { FC } from "react";
+import React, { type FC } from "react";
 
-import { PrevNext, PrevNextLink } from "@nice-digital/nds-prev-next";
+import { PrevNext, type PrevNextLink } from "@nice-digital/nds-prev-next";
 
-import { ProductChapter } from "@/feeds/publications/types";
-
-import { ScrollToLink } from "../Link/Link";
+import { ScrollToContentStartLink } from "@/components/Link/Link";
+import { type ProductChapter } from "@/feeds/publications/types";
 
 export type PublicationsPrevNextProps = {
 	chapters: ProductChapter[];
@@ -18,11 +17,7 @@ const getPageLink = (
 		? {
 				text: chapter.title,
 				destination: chapter.url,
-				elementType: ({ children, ...props }) => (
-					<ScrollToLink {...props} scrollTargetId="content-start">
-						{children}
-					</ScrollToLink>
-				),
+				elementType: ScrollToContentStartLink,
 		  }
 		: undefined;
 
