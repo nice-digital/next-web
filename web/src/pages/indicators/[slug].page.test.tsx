@@ -241,13 +241,10 @@ describe("/indicators/[slug].page", () => {
 					within(publicationsChapterMenu).queryByText("Overview")
 				).not.toBeInTheDocument();
 			});
-			it.todo(
-				"should render correct chapter url based on producttype and slug"
-			);
 		});
 	});
 
-	describe("getServerSidePropsFunc", () => {
+	describe("getServerSideProps", () => {
 		it("should return a correct props when supplied with an id", async () => {
 			const result = await getServerSideProps({
 				params: { slug },

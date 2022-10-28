@@ -3,11 +3,12 @@ import MockAdapter from "axios-mock-adapter";
 import { useRouter } from "next/router";
 
 import { client } from "@/feeds/index";
+import { FeedPath } from "@/feeds/publications/types";
 import mockChapter from "@/mockData/publications/feeds/products/chapter/IndicatorChapterDetail.json";
 import mockProduct from "@/mockData/publications/feeds/products/indicator.json";
 
 import IndicatorChapterPage, {
-	IndicatorChapterPageProps,
+	type IndicatorChapterPageProps,
 	getServerSideProps,
 } from "./[chapterSlug].page";
 
@@ -17,28 +18,27 @@ const axiosMock = new MockAdapter(client, { onNoMatch: "throwException" });
 
 describe("/indicators/[slug]/chapters/[chapterSlug].page", () => {
 	const slug =
-		"ind1001-test-indicator-ind-1001-the-percentage-of-patients-with-one-or-more-of-the-following-conditions-chd-atrial-fibrillation-chronic-heart-failure-stroke-or-tia-diabetes-or-dementia-with-a-fast-score-of-3-or-more-or-audit-c-score-of-5-or-more-in-the-preceding-2-years-who-have-received-brief-intervention-to-help-them-reduce-their-alcohol-related-risk-within-3-months-of-the-score-being-recorded";
-
-	const chapterSlug = "indicator-nm181";
+			"ind1001-test-indicator-ind-1001-the-percentage-of-patients-with-one-or-more-of-the-following-conditions-chd-atrial-fibrillation-chronic-heart-failure-stroke-or-tia-diabetes-or-dementia-with-a-fast-score-of-3-or-more-or-audit-c-score-of-5-or-more-in-the-preceding-2-years-who-have-received-brief-intervention-to-help-them-reduce-their-alcohol-related-risk-within-3-months-of-the-score-being-recorded",
+		chapterSlug = "indicator-nm181";
 
 	beforeEach(() => {
-		(useRouter as jest.Mock).mockImplementation(() => ({
+		jest.mocked(useRouter).mockReturnValue({
 			asPath: `/indicators/${slug}/chapters/${chapterSlug}`,
-		}));
-		axiosMock.reset();
-		axiosMock
-			.onGet(/\/feeds\/product\/(.*)\/part\/1\/chapter\/(.*)/)
-			.reply(200, mockChapter);
-		axiosMock.onGet(/\/feeds\/product\//).reply(200, mockProduct);
+		} as ReturnType<typeof useRouter>);
 
-		jest.resetModules();
+		axiosMock
+			.onGet(new RegExp(mockChapter._links.self[0].href))
+			.reply(200, mockChapter)
+			.onGet(new RegExp(FeedPath.ProductDetail))
+			.reply(200, mockProduct);
 	});
 
 	describe("IndicatorChapterPage", () => {
 		let props: IndicatorChapterPageProps;
+
 		beforeEach(async () => {
 			const context = {
-				params: { slug: slug, chapterSlug: chapterSlug },
+				params: { slug, chapterSlug },
 			} as unknown as GetServerSidePropsContext;
 
 			props = (

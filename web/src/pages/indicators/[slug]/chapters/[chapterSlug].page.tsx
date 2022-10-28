@@ -118,12 +118,14 @@ export default function IndicatorChapterPage({
 				</Breadcrumb>
 				<Breadcrumb>{product.id}</Breadcrumb>
 			</Breadcrumbs>
+
 			<PageHeader
 				heading={product.title}
 				useAltHeading
 				id="content-start"
 				metadata={metaData}
 			/>
+
 			<Grid gutter="loose">
 				{chapters ? (
 					<GridItem
