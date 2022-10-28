@@ -1,37 +1,39 @@
 import { render, screen } from "@testing-library/react";
-import { useRouter } from "next/router";
+import { NextRouter, useRouter } from "next/router";
 
-import { PublicationsPrevNext } from "./PublicationsPrevNext";
+import {
+	PublicationsPrevNext,
+	type PublicationsPrevNextProps,
+} from "./PublicationsPrevNext";
 
-const useRouterMock = useRouter as jest.Mock;
+const indicatorSlug = "ind123-some-title",
+	firstOverviewChapterPath = `/indicators/${indicatorSlug}`,
+	secondChapterPath = `/indicators/${indicatorSlug}/chapters/indicator-nm181`,
+	thirdAndLastChapterPath = `/indicators/${indicatorSlug}/chapters/further-information`,
+	mockChapters: PublicationsPrevNextProps["chapters"] = [
+		{
+			title: "First chapter",
+			url: firstOverviewChapterPath,
+		},
+		{
+			title: "Second chapter",
+			url: secondChapterPath,
+		},
+		{
+			title: "Third and last chapter",
+			url: thirdAndLastChapterPath,
+		},
+	];
 
-const slug =
-	"ind1001-test-indicator-ind-1001-the-percentage-of-patients-with-one-or-more-of-the-following-conditions-chd-atrial-fibrillation-chronic-heart-failure-stroke-or-tia-diabetes-or-dementia-with-a-fast-score-of-3-or-more-or-audit-c-score-of-5-or-more-in-the-preceding-2-years-who-have-received-brief-intervention-to-help-them-reduce-their-alcohol-related-risk-within-3-months-of-the-score-being-recorded";
-
-const firstChapterPath = `/indicators/${slug}`,
-	secondChapterPath = `/indicators/${slug}/chapters/indicator-nm181`,
-	thirdAndLastChapterPath = `/indicators/${slug}/chapters/further-information`;
-
-const mockChapters = [
-	{
-		title: "First chapter",
-		url: firstChapterPath,
-	},
-	{
-		title: "Second chapter",
-		url: secondChapterPath,
-	},
-	{
-		title: "Third and last chapter",
-		url: thirdAndLastChapterPath,
-	},
-];
+const mockRouterPath = (asPath: string) => {
+	jest.mocked(useRouter).mockReturnValue({
+		asPath,
+	} as NextRouter);
+};
 
 describe("PublicationsPrevNext", () => {
 	it("should render the next chapter page pagination link", () => {
-		useRouterMock.mockReturnValue({
-			asPath: secondChapterPath,
-		});
+		mockRouterPath(secondChapterPath);
 
 		render(<PublicationsPrevNext chapters={mockChapters} />);
 
@@ -43,9 +45,7 @@ describe("PublicationsPrevNext", () => {
 	});
 
 	it("should render the previous chapter page pagination link", () => {
-		useRouterMock.mockReturnValue({
-			asPath: secondChapterPath,
-		});
+		mockRouterPath(secondChapterPath);
 
 		render(<PublicationsPrevNext chapters={mockChapters} />);
 
@@ -53,21 +53,17 @@ describe("PublicationsPrevNext", () => {
 			screen.getByRole("link", {
 				name: "Previous page First chapter",
 			})
-		).toHaveAttribute("href", firstChapterPath);
+		).toHaveAttribute("href", firstOverviewChapterPath);
 	});
 
 	it("should not render a next page link on last chapter", () => {
-		useRouterMock.mockReturnValue({
-			asPath: thirdAndLastChapterPath,
-		});
+		mockRouterPath(thirdAndLastChapterPath);
 		render(<PublicationsPrevNext chapters={mockChapters} />);
 		expect(screen.queryByText("Next page")).not.toBeInTheDocument();
 	});
 
 	it("should not render a previous page link on first chapter", () => {
-		useRouterMock.mockReturnValue({
-			asPath: firstChapterPath,
-		});
+		mockRouterPath(firstOverviewChapterPath);
 		render(<PublicationsPrevNext chapters={mockChapters} />);
 		expect(screen.queryByText("Previous page")).not.toBeInTheDocument();
 	});
