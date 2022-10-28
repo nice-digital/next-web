@@ -7,10 +7,9 @@ import React from "react";
 import { Breadcrumbs, Breadcrumb } from "@nice-digital/nds-breadcrumbs";
 import { Grid, GridItem } from "@nice-digital/nds-grid";
 import { PageHeader } from "@nice-digital/nds-page-header";
-import { PrevNext } from "@nice-digital/nds-prev-next";
 
-import { ScrollToLink } from "@/components/Link/Link";
 import { PublicationsChapterMenu } from "@/components/PublicationsChapterMenu/PublicationsChapterMenu";
+import { PublicationsPrevNext } from "@/components/PublicationsPrevNext/PublicationsPrevNext";
 import {
 	getProductDetail,
 	isErrorResponse,
@@ -68,8 +67,6 @@ export default function IndicatorsDetailsPage({
 	if (product.chapterHeadings) {
 		chapters = chaptersAndLinks(product.summary, product.chapterHeadings, slug);
 	}
-
-	const nextPageLink = chapters?.[1];
 
 	const metaData = [
 		product.productTypeName,
@@ -146,19 +143,7 @@ export default function IndicatorsDetailsPage({
 							className={styles.summary}
 						/>
 					) : null}
-					{nextPageLink ? (
-						<PrevNext
-							nextPageLink={{
-								text: nextPageLink.title,
-								destination: nextPageLink.url,
-								elementType: ({ children, ...props }) => (
-									<ScrollToLink {...props} scrollTargetId="content-start">
-										{children}
-									</ScrollToLink>
-								),
-							}}
-						/>
-					) : null}
+					{chapters && <PublicationsPrevNext chapters={chapters} />}
 				</GridItem>
 			</Grid>
 		</>
