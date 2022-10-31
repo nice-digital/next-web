@@ -17,6 +17,7 @@ import {
 	ProductDetail,
 	ProductGroup,
 } from "@/feeds/publications/publications";
+import { IndicatorSubTypeName } from "@/feeds/publications/types";
 import { formatDateStr, getProductPath } from "@/utils";
 
 import styles from "./index.page.module.scss";
@@ -52,13 +53,6 @@ const chaptersAndLinks = (
 
 	return chaptersAndLinksArray;
 };
-
-enum IndicatorSubTypeName {
-	CCG = "Clinical commissioning group indicator",
-	GPIQ = "General practice indicator suitable for use in QOF",
-	GPINQ = "General practice indicator suitable for use outside of QOF",
-	NLQ = "National library of quality indicators",
-}
 
 export type IndicatorsDetailsPageProps = {
 	slug: string;

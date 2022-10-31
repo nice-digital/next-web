@@ -22,6 +22,13 @@ export enum ProductGroup {
 	Other = "Other",
 }
 
+export enum IndicatorSubTypeName {
+	CCG = "Clinical commissioning group indicator",
+	GPIQ = "General practice indicator suitable for use in QOF",
+	GPINQ = "General practice indicator suitable for use outside of QOF",
+	NLQ = "National library of quality indicators",
+}
+
 export const enum ProductTypeAcronym {
 	/** Antimicrobial prescribing evidence summaries */
 	"APA" = "APA",
