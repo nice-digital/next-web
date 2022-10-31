@@ -196,7 +196,11 @@ export const getServerSideProps: GetServerSideProps<
 
 	const [id, ...rest] = params.slug.split("-");
 
-	const product = await getProductDetail(id);
+	const getProduct = getProductDetail(id);
+
+	const getSubTypes = getAllIndicatorSubTypes();
+
+	const [product, indicatorSubTypes] = [await getProduct, await getSubTypes];
 
 	if (
 		isErrorResponse(product) ||
@@ -222,13 +226,9 @@ export const getServerSideProps: GetServerSideProps<
 		};
 	}
 
-	const indicatorSubTypes = await getAllIndicatorSubTypes();
-
 	if (!indicatorSubTypes) {
-		throw new Error("problem with indicator subtypes");
+		throw new Error("There was a problem retrieving indicator subtypes");
 	}
-
-	// console.log({ indicatorSubTypes });
 
 	return {
 		props: {
