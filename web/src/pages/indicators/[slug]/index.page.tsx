@@ -230,6 +230,16 @@ export const getServerSideProps: GetServerSideProps<
 		throw new Error("There was a problem retrieving indicator subtypes");
 	}
 
+	const theProps = {
+		props: {
+			slug: params.slug,
+			product,
+			indicatorSubTypes,
+		},
+	};
+
+	console.log(JSON.stringify(theProps.props.indicatorSubTypes));
+
 	return {
 		props: {
 			slug: params.slug,
