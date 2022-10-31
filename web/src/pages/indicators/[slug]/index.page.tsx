@@ -1,7 +1,7 @@
 import slugify from "@sindresorhus/slugify";
 import dayjs from "dayjs";
-import { GetServerSideProps } from "next";
 import { NextSeo } from "next-seo";
+import { GetServerSideProps } from "next/types";
 import React from "react";
 
 import { Breadcrumbs, Breadcrumb } from "@nice-digital/nds-breadcrumbs";
@@ -9,6 +9,7 @@ import { Grid, GridItem } from "@nice-digital/nds-grid";
 import { PageHeader } from "@nice-digital/nds-page-header";
 
 import { PublicationsChapterMenu } from "@/components/PublicationsChapterMenu/PublicationsChapterMenu";
+import { PublicationsDownloadLink } from "@/components/PublicationsDownloadLink/PublicationsDownloadLink";
 import { PublicationsPrevNext } from "@/components/PublicationsPrevNext/PublicationsPrevNext";
 import {
 	getProductDetail,
@@ -19,7 +20,7 @@ import {
 } from "@/feeds/publications/publications";
 import { formatDateStr, getProductPath } from "@/utils";
 
-import styles from "./[slug].page.module.scss";
+import styles from "./index.page.module.scss";
 
 export const slugifyFunction = slugify;
 
@@ -122,20 +123,26 @@ export default function IndicatorsDetailsPage({
 			/>
 
 			<Grid gutter="loose">
-				{chapters ? (
-					<GridItem
-						cols={12}
-						md={4}
-						lg={3}
-						elementType="section"
-						aria-label="Chapters"
-					>
+				<GridItem
+					cols={12}
+					md={4}
+					lg={3}
+					elementType="section"
+					aria-label="Chapters"
+				>
+					<PublicationsDownloadLink
+						ariaLabel="Download indicator file"
+						downloadLink="/TODO"
+						fileType="TODO"
+					/>
+					{chapters ? (
 						<PublicationsChapterMenu
 							ariaLabel="Chapter pages"
 							chapters={chapters}
 						/>
-					</GridItem>
-				) : null}
+					) : null}
+				</GridItem>
+
 				<GridItem cols={12} md={8} lg={9} elementType="section">
 					{product.summary ? (
 						<div
