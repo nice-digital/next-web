@@ -132,9 +132,12 @@ export default function IndicatorsDetailsPage({
 				>
 					<div className={styles.download}>
 						<PublicationsDownloadLink
-							ariaLabel="Download indicator file"
-							downloadLink="/TODO"
-							fileType="TODO"
+							ariaLabel="Download indicator PDF file"
+							downloadLink={
+								product.embedded.nicePublicationsContentPartList.embedded
+									.nicePublicationsUploadAndConvertContentPart.embedded
+									.nicePublicationsPdfFile.fileName
+							}
 						/>
 					</div>
 					{chapters ? (
