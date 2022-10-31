@@ -131,10 +131,7 @@ export default function IndicatorsDetailsPage({
 					},
 					...product.indicatorSubTypeList.map((subType) => ({
 						name: "DCTERMS.type",
-						content:
-							IndicatorSubTypeName[
-								subType as keyof typeof IndicatorSubTypeName
-							],
+						content: Object(IndicatorSubTypeName)[subType],
 					})),
 				]}
 			/>

@@ -83,6 +83,53 @@ describe("/indicators/[slug].page", () => {
 					).toHaveAttribute("content", mockProduct.MetaDescription);
 				});
 			});
+
+			it("should render the correct page meta tags for DCTERMS.issued", async () => {
+				render(<IndicatorsDetailsPage {...props} />);
+
+				await waitFor(() => {
+					expect(
+						// eslint-disable-next-line testing-library/no-node-access
+						document.querySelector(`meta[name="DCTERMS.issued"]`)
+					).toHaveAttribute("content", mockProduct.PublishedDate);
+				});
+			});
+
+			it("should render the correct page meta tags for DCTERMS.modified", async () => {
+				render(<IndicatorsDetailsPage {...props} />);
+
+				await waitFor(() => {
+					expect(
+						// eslint-disable-next-line testing-library/no-node-access
+						document.querySelector(`meta[name="DCTERMS.modified"]`)
+					).toHaveAttribute("content", mockProduct.LastMajorModificationDate);
+				});
+			});
+
+			it("should render the correct page meta tags for DCTERMS.type", async () => {
+				render(<IndicatorsDetailsPage {...props} />);
+
+				await waitFor(() => {
+					expect(
+						// eslint-disable-next-line testing-library/no-node-access
+						document.querySelector(`meta[name="DCTERMS.type"]`)
+					).toHaveAttribute(
+						"content",
+						"General practice indicator suitable for use in QOF"
+					);
+				});
+			});
+
+			it("should render the correct page meta tags for DCTERMS.identifier", async () => {
+				render(<IndicatorsDetailsPage {...props} />);
+
+				await waitFor(() => {
+					expect(
+						// eslint-disable-next-line testing-library/no-node-access
+						document.querySelector(`meta[name="DCTERMS.identifier"]`)
+					).toHaveAttribute("content", mockProduct.Id);
+				});
+			});
 		});
 
 		describe("PageHeader", () => {
