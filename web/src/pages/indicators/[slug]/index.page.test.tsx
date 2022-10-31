@@ -311,43 +311,18 @@ describe("/indicators/[slug].page", () => {
 					slug: slug,
 					product: expect.objectContaining({ id: "IND1001" }),
 					indicatorSubTypes: [
-						{
-							links: { self: [{}] },
-							eTag: null,
-							lastModified: "2022-07-12T00:00:00",
-							enabled: true,
+						expect.objectContaining({
 							name: "Clinical commissioning group indicator",
-							pluralName: "Clinical commissioning group indicators",
-							identifierPrefix: "CCG",
-						},
-						{
-							links: { self: [{}] },
-							eTag: null,
-							lastModified: "2022-07-12T00:00:00",
-							enabled: true,
+						}),
+						expect.objectContaining({
 							name: "General practice indicator suitable for use in QOF",
-							pluralName: "General practice indicators suitable for use in QOF",
-							identifierPrefix: "GPIQ",
-						},
-						{
-							links: { self: [{}] },
-							eTag: null,
-							lastModified: "2022-07-12T00:00:00",
-							enabled: true,
+						}),
+						expect.objectContaining({
 							name: "General practice indicator suitable for use outside of QOF",
-							pluralName:
-								"General practice indicators suitable for use outside of QOF",
-							identifierPrefix: "GPINQ",
-						},
-						{
-							links: { self: [{}] },
-							eTag: null,
-							lastModified: "2022-07-12T00:00:00",
-							enabled: true,
+						}),
+						expect.objectContaining({
 							name: "National library of quality indicators",
-							pluralName: "National library of quality indicators",
-							identifierPrefix: "NLQ",
-						},
+						}),
 					],
 				},
 			});
