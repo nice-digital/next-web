@@ -130,11 +130,13 @@ export default function IndicatorsDetailsPage({
 					elementType="section"
 					aria-label="Chapters"
 				>
-					<PublicationsDownloadLink
-						ariaLabel="Download indicator file"
-						downloadLink="/TODO"
-						fileType="TODO"
-					/>
+					<div className={styles.download}>
+						<PublicationsDownloadLink
+							ariaLabel="Download indicator file"
+							downloadLink="/TODO"
+							fileType="TODO"
+						/>
+					</div>
 					{chapters ? (
 						<PublicationsChapterMenu
 							ariaLabel="Chapter pages"
