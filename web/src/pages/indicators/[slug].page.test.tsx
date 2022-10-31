@@ -61,25 +61,27 @@ describe("/indicators/[slug].page", () => {
 			});
 		});
 
-		it("should render the correct page meta tags for robots", async () => {
-			render(<IndicatorsDetailsPage {...props} />);
+		describe("Meta tags", () => {
+			it("should render the correct page meta tags for robots", async () => {
+				render(<IndicatorsDetailsPage {...props} />);
 
-			await waitFor(() => {
-				expect(
-					// eslint-disable-next-line testing-library/no-node-access
-					document.querySelector(`meta[name="robots"]`)
-				).toHaveAttribute("content", "index,follow");
+				await waitFor(() => {
+					expect(
+						// eslint-disable-next-line testing-library/no-node-access
+						document.querySelector(`meta[name="robots"]`)
+					).toHaveAttribute("content", "index,follow");
+				});
 			});
-		});
 
-		it("should render the correct page meta tags for description", async () => {
-			render(<IndicatorsDetailsPage {...props} />);
+			it("should render the correct page meta tags for description", async () => {
+				render(<IndicatorsDetailsPage {...props} />);
 
-			await waitFor(() => {
-				expect(
-					// eslint-disable-next-line testing-library/no-node-access
-					document.querySelector(`meta[name="description"]`)
-				).toHaveAttribute("content", mockProduct.MetaDescription);
+				await waitFor(() => {
+					expect(
+						// eslint-disable-next-line testing-library/no-node-access
+						document.querySelector(`meta[name="description"]`)
+					).toHaveAttribute("content", mockProduct.MetaDescription);
+				});
 			});
 		});
 

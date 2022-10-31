@@ -103,6 +103,32 @@ export default function IndicatorsDetailsPage({
 						type: "application/xml",
 						href: "/indicators/sitemap.xml",
 					},
+					{
+						rel: "schema.DCTERMS",
+						href: "http://purl.org/dc/terms/",
+					},
+				]}
+				additionalMetaTags={[
+					{
+						name: "DCTERMS.subject",
+						content: "TODO",
+					},
+					{
+						name: "DCTERMS.issued",
+						content: product.publishedDate,
+					},
+					{
+						name: "DCTERMS.modified",
+						content: product.lastMajorModificationDate,
+					},
+					{
+						name: "DCTERMS.identifier",
+						content: product.id,
+					},
+					...product.indicatorSubTypeList.map((subType) => ({
+						name: "DCTERMS.type",
+						content: "TODO",
+					})),
 				]}
 			/>
 
