@@ -19,7 +19,7 @@ import {
 } from "@/feeds/publications/publications";
 import { formatDateStr, getProductPath } from "@/utils";
 
-import styles from "./[slug].page.module.scss";
+import styles from "./index.page.module.scss";
 
 export const slugifyFunction = slugify;
 
@@ -52,6 +52,13 @@ const chaptersAndLinks = (
 
 	return chaptersAndLinksArray;
 };
+
+enum IndicatorSubTypeName {
+	CCG = "Clinical commissioning group indicator",
+	GPIQ = "General practice indicator suitable for use in QOF",
+	GPINQ = "General practice indicator suitable for use outside of QOF",
+	NLQ = "National library of quality indicators",
+}
 
 export type IndicatorsDetailsPageProps = {
 	slug: string;
@@ -124,7 +131,10 @@ export default function IndicatorsDetailsPage({
 					},
 					...product.indicatorSubTypeList.map((subType) => ({
 						name: "DCTERMS.type",
-						content: "TODO",
+						content:
+							IndicatorSubTypeName[
+								subType as keyof typeof IndicatorSubTypeName
+							],
 					})),
 				]}
 			/>
