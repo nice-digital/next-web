@@ -133,11 +133,7 @@ export default function IndicatorsDetailsPage({
 					<div className={styles.download}>
 						<PublicationsDownloadLink
 							ariaLabel="Download indicator PDF file"
-							downloadLink={
-								product.embedded.nicePublicationsContentPartList.embedded
-									.nicePublicationsUploadAndConvertContentPart.embedded
-									.nicePublicationsPdfFile.fileName
-							}
+							downloadLink={`${product.embedded.nicePublicationsContentPartList.embedded.nicePublicationsUploadAndConvertContentPart.embedded.nicePublicationsPdfFile.links.self[0].href}`}
 						/>
 					</div>
 					{chapters ? (
