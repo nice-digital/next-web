@@ -1,0 +1,51 @@
+{
+  "_links": { "self": [{ "href": "/feeds/indicatorsubtypes" }] },
+  "_embedded": {
+    "nice.publications:indicator-sub-type-list": {
+      "_links": { "self": [{}] },
+      "_embedded": {
+        "nice.publications:indicator-sub-type": [
+          {
+            "_links": { "self": [{}] },
+            "ETag": null,
+            "LastModified": "2022-07-12T00:00:00",
+            "Enabled": true,
+            "Name": "Clinical commissioning group indicator",
+            "PluralName": "Clinical commissioning group indicators",
+            "IdentifierPrefix": "CCG"
+          },
+          {
+            "_links": { "self": [{}] },
+            "ETag": null,
+            "LastModified": "2022-07-12T00:00:00",
+            "Enabled": true,
+            "Name": "General practice indicator suitable for use in QOF",
+            "PluralName": "General practice indicators suitable for use in QOF",
+            "IdentifierPrefix": "GPIQ"
+          },
+          {
+            "_links": { "self": [{}] },
+            "ETag": null,
+            "LastModified": "2022-07-12T00:00:00",
+            "Enabled": true,
+            "Name": "General practice indicator suitable for use outside of QOF",
+            "PluralName": "General practice indicators suitable for use outside of QOF",
+            "IdentifierPrefix": "GPINQ"
+          },
+          {
+            "_links": { "self": [{}] },
+            "ETag": null,
+            "LastModified": "2022-07-12T00:00:00",
+            "Enabled": true,
+            "Name": "National library of quality indicators",
+            "PluralName": "National library of quality indicators",
+            "IdentifierPrefix": "NLQ"
+          }
+        ]
+      },
+      "ETag": null
+    }
+  },
+  "ETag": null,
+  "LastModified": "2022-07-12T00:00:00"
+}

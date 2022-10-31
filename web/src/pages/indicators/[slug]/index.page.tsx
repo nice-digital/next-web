@@ -11,13 +11,14 @@ import { PageHeader } from "@nice-digital/nds-page-header";
 import { PublicationsChapterMenu } from "@/components/PublicationsChapterMenu/PublicationsChapterMenu";
 import { PublicationsPrevNext } from "@/components/PublicationsPrevNext/PublicationsPrevNext";
 import {
+	getAllIndicatorSubTypes,
 	getProductDetail,
 	isErrorResponse,
 	ProductChapter,
 	ProductDetail,
 	ProductGroup,
 } from "@/feeds/publications/publications";
-import { IndicatorSubTypeName } from "@/feeds/publications/types";
+import { IndicatorSubType } from "@/feeds/publications/types";
 import { formatDateStr, getProductPath } from "@/utils";
 
 import styles from "./index.page.module.scss";
@@ -57,11 +58,13 @@ const chaptersAndLinks = (
 export type IndicatorsDetailsPageProps = {
 	slug: string;
 	product: ProductDetail;
+	indicatorSubTypes: IndicatorSubType[];
 };
 
 export default function IndicatorsDetailsPage({
 	product,
 	slug,
+	indicatorSubTypes,
 }: IndicatorsDetailsPageProps): JSX.Element {
 	let chapters;
 
@@ -125,7 +128,9 @@ export default function IndicatorsDetailsPage({
 					},
 					...product.indicatorSubTypeList.map((subType) => ({
 						name: "DCTERMS.type",
-						content: Object(IndicatorSubTypeName)[subType],
+						content: indicatorSubTypes.filter(
+							(i) => i.identifierPrefix == subType
+						)[0]["name"],
 					})),
 				]}
 			/>
@@ -217,10 +222,19 @@ export const getServerSideProps: GetServerSideProps<
 		};
 	}
 
+	const indicatorSubTypes = await getAllIndicatorSubTypes();
+
+	if (!indicatorSubTypes) {
+		throw new Error("problem with indicator subtypes");
+	}
+
+	// console.log({ indicatorSubTypes });
+
 	return {
 		props: {
 			slug: params.slug,
 			product,
+			indicatorSubTypes,
 		},
 	};
 };

@@ -9,6 +9,7 @@ import MockAdapter from "axios-mock-adapter";
 import { useRouter } from "next/router";
 
 import { client } from "@/feeds/index";
+import mockIndicatorSubTypes from "@/mockData/publications/feeds/products/indicator-sub-types.json";
 import mockProduct from "@/mockData/publications/feeds/products/indicator.json";
 
 import IndicatorsDetailsPage, {
@@ -18,7 +19,9 @@ import IndicatorsDetailsPage, {
 
 import type { GetServerSidePropsContext } from "next";
 
-const axiosMock = new MockAdapter(client, { onNoMatch: "throwException" });
+const axiosMock = new MockAdapter(client, {
+	onNoMatch: "throwException",
+});
 
 describe("/indicators/[slug].page", () => {
 	const slug =
@@ -29,6 +32,10 @@ describe("/indicators/[slug].page", () => {
 		axiosMock.reset();
 
 		axiosMock.onGet(/\/feeds\/product\//).reply(200, mockProduct);
+
+		axiosMock
+			.onGet(/\/feeds\/indicatorsubtypes/)
+			.reply(200, mockIndicatorSubTypes);
 
 		jest.resetModules();
 	});
@@ -303,6 +310,7 @@ describe("/indicators/[slug].page", () => {
 				props: {
 					slug: slug,
 					product: expect.objectContaining({ id: "IND1001" }),
+					indicatorSubTypes: mockIndicatorSubTypes,
 				},
 			});
 		});
