@@ -1,4 +1,9 @@
+import { waitFor } from "@testing-library/react";
+import MockAdapter from "axios-mock-adapter";
+
 import { Project, ProjectStatus } from "@/feeds/inDev/types";
+import { client } from "@/feeds/index";
+import { getProductDetail } from "@/feeds/publications/publications";
 import {
 	ProductGroup,
 	ProductLite,
@@ -14,6 +19,11 @@ import {
 	getProductPath,
 	getPublicationDownloadPath,
 } from "./";
+
+const axiosMock = new MockAdapter(client, { onNoMatch: "throwException" });
+
+const slug =
+	"ind-1001-test-indicator-ind-1001-the-percentage-of-patients-with-one-or-more-of-the-following-conditions-chd-atrial-fibrillation-chronic-heart-failure-stroke-or-tia-diabetes-or-dementia-with-a-fast-score-of-3-or-more-or-audit-c-score-of-5-or-more-in-the-preceding-2-years-who-have-received-brief-intervention-to-help-them-reduce-their-alcohol-related-risk-within-3-months-of-the-score-being-recorded";
 
 describe("utils", () => {
 	describe("stripTime", () => {
@@ -94,17 +104,16 @@ describe("utils", () => {
 	});
 
 	describe("getPublicationDownloadPath", () => {
-		it.only("should return a publication download path", () => {
+		it("should return a publication download path", async () => {
 			// product.embedded.nicePublicationsContentPartList.embedded.nicePublicationsUploadAndConvertContentPart.embedded.nicePublicationsPdfFile.uid ="12345";
-			expect(
-				getPublicationDownloadPath({
-					id: "ind-1001",
-					title: "test-title",
-					productType: "IND",
-				} as unknown as ProductDetail)
-			).toBe("/test");
+			axiosMock.onGet(/\/feeds\/product/).reply(200, mockProduct);
+			const product = await getProductDetail("ind-1001");
 
-			console.log({ mockProduct });
+			await waitFor(() => {
+				expect(
+					getPublicationDownloadPath(product as unknown as ProductDetail)
+				).toBe(`indicators/${slug}/${slug}-68183483719102410.pdf`);
+			});
 		});
 	});
 });
