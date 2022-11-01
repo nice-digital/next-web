@@ -69,6 +69,17 @@ describe("/indicators/[slug].page", () => {
 		});
 
 		describe("Meta tags", () => {
+			it("should have a link to the schema", async () => {
+				render(<IndicatorsDetailsPage {...props} />);
+				// eslint-disable-next-line testing-library/no-node-access
+				const schemaLink = document.querySelector(`link[rel="schema.DCTERMS"]`);
+				await waitFor(() => {
+					expect(schemaLink).toBeInTheDocument();
+				});
+
+				expect(schemaLink).toHaveAttribute("href", "http://purl.org/dc/terms/");
+			});
+
 			it("should render the correct page meta tags for robots", async () => {
 				render(<IndicatorsDetailsPage {...props} />);
 
