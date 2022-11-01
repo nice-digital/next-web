@@ -9,6 +9,7 @@ import { Grid, GridItem } from "@nice-digital/nds-grid";
 import { PageHeader } from "@nice-digital/nds-page-header";
 
 import { PublicationsChapterMenu } from "@/components/PublicationsChapterMenu/PublicationsChapterMenu";
+import { PublicationsDownloadLink } from "@/components/PublicationsDownloadLink/PublicationsDownloadLink";
 import { PublicationsPrevNext } from "@/components/PublicationsPrevNext/PublicationsPrevNext";
 import {
 	getChapterContent,
@@ -127,20 +128,25 @@ export default function IndicatorChapterPage({
 			/>
 
 			<Grid gutter="loose">
-				{chapters ? (
-					<GridItem
-						cols={12}
-						md={4}
-						lg={3}
-						elementType="section"
-						aria-label="Chapters"
-					>
+				<GridItem
+					cols={12}
+					md={4}
+					lg={3}
+					elementType="section"
+					aria-label="Chapters"
+				>
+					<PublicationsDownloadLink
+						ariaLabel="Download indicator PDF file"
+						downloadLink={`${product.embedded.nicePublicationsContentPartList.embedded.nicePublicationsUploadAndConvertContentPart.embedded.nicePublicationsPdfFile.links.self[0].href}`}
+					/>
+					{chapters ? (
 						<PublicationsChapterMenu
 							ariaLabel="Chapter pages"
 							chapters={chapters}
 						/>
-					</GridItem>
-				) : null}
+					) : null}
+				</GridItem>
+
 				<GridItem cols={12} md={8} lg={9} elementType="section">
 					<div
 						dangerouslySetInnerHTML={{ __html: chapterContent.content }}
