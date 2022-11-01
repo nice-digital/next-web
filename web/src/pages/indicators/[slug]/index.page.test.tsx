@@ -113,21 +113,24 @@ describe("/indicators/[slug].page", () => {
 				});
 			});
 
-			it("should render the correct page meta tags for DCTERMS.type", async () => {
+			it("should render multiple meta tags for DCTERMS.type", async () => {
 				render(<IndicatorsDetailsPage {...props} />);
-
+				// eslint-disable-next-line testing-library/no-node-access
+				const typeMetaTags = document.querySelectorAll(
+					`meta[name="DCTERMS.type"]`
+				);
 				await waitFor(() => {
-					expect(
-						// eslint-disable-next-line testing-library/no-node-access
-						document.querySelector(`meta[name="DCTERMS.type"]`)
-					).toHaveAttribute(
-						"content",
-						"General practice indicator suitable for use in QOF"
-					);
+					expect(typeMetaTags).toHaveLength(2);
 				});
+				expect(typeMetaTags[0]).toHaveAttribute(
+					"content",
+					"Clinical commissioning group indicator"
+				);
+				expect(typeMetaTags[1]).toHaveAttribute(
+					"content",
+					"General practice indicator suitable for use in QOF"
+				);
 			});
-
-			it.todo("should render multiple meta tags for DCTERMS.type");
 
 			it("should render the correct page meta tags for DCTERMS.identifier", async () => {
 				render(<IndicatorsDetailsPage {...props} />);

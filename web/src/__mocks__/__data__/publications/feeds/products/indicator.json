@@ -254,7 +254,7 @@
   "RelevantTo": [],
   "TerminatedAppraisal": null,
   "AreasOfInterestList": [],
-  "IndicatorSubTypeList": ["GPIQ"],
+  "IndicatorSubTypeList": ["CCG", "GPIQ"],
   "IndicatorOldCode": "NM181",
   "IndicatorOldUrl": "https://www.nice.org.uk/standards-and-indicators/qofindicators/the-percentage-of-patients-with-one-or-more-of-the-following-conditions-chd-atrial-fibrillation-chronic-heart-failure-stroke-or-tia-diabetes-or-dementia-with-a-fast-score-of-3-or-audit-c-score-of-5-in-the-preceding-2-years-who-have-received-brief-interven",
   "IPSV": "Health, well-being and care",
