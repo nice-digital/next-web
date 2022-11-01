@@ -17,9 +17,8 @@ import {
 	isErrorResponse,
 	ProductChapter,
 	ProductDetail,
-	ProductGroup,
 } from "@/feeds/publications/publications";
-import { IndicatorSubType } from "@/feeds/publications/types";
+import { IndicatorSubType, ProductGroup } from "@/feeds/publications/types";
 import {
 	formatDateStr,
 	getProductPath,
@@ -170,7 +169,10 @@ export default function IndicatorsDetailsPage({
 				>
 					<PublicationsDownloadLink
 						ariaLabel="Download indicator PDF file"
-						downloadLink={getPublicationDownloadPath(product)}
+						downloadLink={getPublicationDownloadPath(
+							product,
+							ProductGroup.Other
+						)}
 					/>
 
 					{chapters ? (

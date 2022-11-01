@@ -91,20 +91,21 @@ export const getProductPath = (
 	return `/${rootPath}/${productSlug}`;
 };
 
-export const getPublicationDownloadPath = (product: ProductDetail): string => {
-	// let rootPath;
+export const getPublicationDownloadPath = (
+	product: ProductDetail,
+	productGroup: ProductGroup
+): string => {
 	const fileExtension = "pdf";
 
 	const rootPath = getProductPath({
-		...(product as unknown as ProductLite),
-		productGroup: ProductGroup.Other,
+		...product,
+		productGroup,
 	});
 
-	const idAndTitleSlug = slugify(`${product.id}-${product.title}`);
 	const uiD =
 		product.embedded.nicePublicationsContentPartList.embedded
 			.nicePublicationsUploadAndConvertContentPart.embedded
 			.nicePublicationsPdfFile.uid;
 
-	return `${rootPath}/${idAndTitleSlug}/${idAndTitleSlug}-${uiD}.${fileExtension}`;
+	return `${rootPath}-${uiD}.${fileExtension}`;
 };

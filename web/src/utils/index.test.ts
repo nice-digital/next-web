@@ -23,7 +23,7 @@ import {
 const axiosMock = new MockAdapter(client, { onNoMatch: "throwException" });
 
 const slug =
-	"ind-1001-test-indicator-ind-1001-the-percentage-of-patients-with-one-or-more-of-the-following-conditions-chd-atrial-fibrillation-chronic-heart-failure-stroke-or-tia-diabetes-or-dementia-with-a-fast-score-of-3-or-more-or-audit-c-score-of-5-or-more-in-the-preceding-2-years-who-have-received-brief-intervention-to-help-them-reduce-their-alcohol-related-risk-within-3-months-of-the-score-being-recorded";
+	"ind1001-test-indicator-ind-1001-the-percentage-of-patients-with-one-or-more-of-the-following-conditions-chd-atrial-fibrillation-chronic-heart-failure-stroke-or-tia-diabetes-or-dementia-with-a-fast-score-of-3-or-more-or-audit-c-score-of-5-or-more-in-the-preceding-2-years-who-have-received-brief-intervention-to-help-them-reduce-their-alcohol-related-risk-within-3-months-of-the-score-being-recorded";
 
 describe("utils", () => {
 	describe("stripTime", () => {
@@ -110,8 +110,11 @@ describe("utils", () => {
 
 			await waitFor(() => {
 				expect(
-					getPublicationDownloadPath(product as unknown as ProductDetail)
-				).toBe(`indicators/${slug}/${slug}-68183483719102410.pdf`);
+					getPublicationDownloadPath(
+						product as unknown as ProductDetail,
+						ProductGroup.Other
+					)
+				).toBe(`/indicators/${slug}-68183483719102410.pdf`);
 			});
 		});
 	});
