@@ -3,6 +3,7 @@ import dayjs from "dayjs";
 
 import { Project, ProjectStatus } from "@/feeds/inDev/types";
 import {
+	ProductDetail,
 	ProductGroup,
 	ProductLite,
 	ProductTypeAcronym,
@@ -88,4 +89,27 @@ export const getProductPath = (
 	}
 
 	return `/${rootPath}/${productSlug}`;
+};
+
+export const getPublicationDownloadPath = (product: ProductDetail): string => {
+	let rootPath;
+	const fileExtension = "pdf";
+
+	switch (product.productType) {
+		case ProductTypeAcronym.IND:
+			rootPath = "indicators";
+			break;
+		default:
+			throw `Unsupported product type ${product.productType} ${JSON.stringify(
+				product
+			)}`;
+	}
+
+	const idAndTitleSlug = slugify(`${product.id}-${product.title}`);
+	const uiD =
+		product.embedded.nicePublicationsContentPartList.embedded
+			.nicePublicationsUploadAndConvertContentPart.embedded
+			.nicePublicationsPdfFile.uid;
+
+	return `${rootPath}/${idAndTitleSlug}/${idAndTitleSlug}-${uiD}.${fileExtension}`;
 };

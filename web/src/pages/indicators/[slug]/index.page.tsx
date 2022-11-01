@@ -20,7 +20,11 @@ import {
 	ProductGroup,
 } from "@/feeds/publications/publications";
 import { IndicatorSubType } from "@/feeds/publications/types";
-import { formatDateStr, getProductPath } from "@/utils";
+import {
+	formatDateStr,
+	getProductPath,
+	getPublicationDownloadPath,
+} from "@/utils";
 
 import styles from "./index.page.module.scss";
 
@@ -166,7 +170,7 @@ export default function IndicatorsDetailsPage({
 				>
 					<PublicationsDownloadLink
 						ariaLabel="Download indicator PDF file"
-						downloadLink={`${product.embedded.nicePublicationsContentPartList.embedded.nicePublicationsUploadAndConvertContentPart.embedded.nicePublicationsPdfFile.links.self[0].href}`}
+						downloadLink={getPublicationDownloadPath(product)}
 					/>
 
 					{chapters ? (
