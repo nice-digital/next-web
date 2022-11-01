@@ -1,8 +1,18 @@
 import { render, screen } from "@testing-library/react";
 
-// import mockProduct from "@/mockData/publications/feeds/products/indicator.json";
+import mockProduct from "@/mockData/publications/feeds/products/indicator.json";
 
 import { PublicationsDownloadLink } from "./PublicationsDownloadLink";
+
+// `${product.embedded.nicePublicationsContentPartList.embedded.nicePublicationsUploadAndConvertContentPart.embedded.nicePublicationsPdfFile.links.self[0].href}`
+
+// const downloadLink = mockProduct._embedded["nice.publications:content-part-list"]._embedded["nice.publications:upload-and-convert-content-part"]._embedded["nice.publications:pdf-file"]
+
+// axios mock /feeds/product/
+// const product = getProductDetails from publications
+// getDownloadPath(product)
+// expect..
+//
 
 describe("PublicationsDownloadLink", () => {
 	it("should render a download link button", () => {
@@ -31,7 +41,7 @@ describe("PublicationsDownloadLink", () => {
 		);
 	});
 
-	it("should have ([filetype]) appended to the button text", () => {
+	it("should have '(file extension)' appended to the button text", () => {
 		render(
 			<PublicationsDownloadLink
 				downloadLink="/test"
