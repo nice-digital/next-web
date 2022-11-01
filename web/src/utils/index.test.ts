@@ -3,9 +3,17 @@ import {
 	ProductGroup,
 	ProductLite,
 	ProductTypeAcronym,
+	ProductDetail,
 } from "@/feeds/publications/types";
+import mockProduct from "@/mockData/publications/feeds/products/indicator.json";
 
-import { stripTime, formatDateStr, getProjectPath, getProductPath } from "./";
+import {
+	stripTime,
+	formatDateStr,
+	getProjectPath,
+	getProductPath,
+	getPublicationDownloadPath,
+} from "./";
 
 describe("utils", () => {
 	describe("stripTime", () => {
@@ -83,5 +91,20 @@ describe("utils", () => {
 				).toBe(expectedPath);
 			}
 		);
+	});
+
+	describe("getPublicationDownloadPath", () => {
+		it.only("should return a publication download path", () => {
+			// product.embedded.nicePublicationsContentPartList.embedded.nicePublicationsUploadAndConvertContentPart.embedded.nicePublicationsPdfFile.uid ="12345";
+			expect(
+				getPublicationDownloadPath({
+					id: "ind-1001",
+					title: "test-title",
+					productType: "IND",
+				} as unknown as ProductDetail)
+			).toBe("/test");
+
+			console.log({ mockProduct });
+		});
 	});
 });

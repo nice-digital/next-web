@@ -126,15 +126,10 @@ exports[`/indicators/[slug].page IndicatorDetailPage should match snapshot for m
         <button
           aria-label="Download indicator PDF file"
           class="btn btn--cta download"
+          href="indicators/ind-1001-test-indicator-ind-1001-the-percentage-of-patients-with-one-or-more-of-the-following-conditions-chd-atrial-fibrillation-chronic-heart-failure-stroke-or-tia-diabetes-or-dementia-with-a-fast-score-of-3-or-more-or-audit-c-score-of-5-or-more-in-the-preceding-2-years-who-have-received-brief-intervention-to-help-them-reduce-their-alcohol-related-risk-within-3-months-of-the-score-being-recorded/ind-1001-test-indicator-ind-1001-the-percentage-of-patients-with-one-or-more-of-the-following-conditions-chd-atrial-fibrillation-chronic-heart-failure-stroke-or-tia-diabetes-or-dementia-with-a-fast-score-of-3-or-more-or-audit-c-score-of-5-or-more-in-the-preceding-2-years-who-have-received-brief-intervention-to-help-them-reduce-their-alcohol-related-risk-within-3-months-of-the-score-being-recorded-68183483719102410.pdf"
           type="button"
         >
-          <a
-            href="/feeds/downloads/737585a0-dad7-4a37-875b-b30b09c3fdc3"
-          >
-            <a>
-              Download indicator (PDF)
-            </a>
-          </a>
+          Download indicator (PDF)
         </button>
         <nav
           aria-label="Chapter pages"
