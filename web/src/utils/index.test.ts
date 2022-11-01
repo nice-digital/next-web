@@ -105,7 +105,6 @@ describe("utils", () => {
 
 	describe("getPublicationDownloadPath", () => {
 		it("should return a publication download path", async () => {
-			// product.embedded.nicePublicationsContentPartList.embedded.nicePublicationsUploadAndConvertContentPart.embedded.nicePublicationsPdfFile.uid ="12345";
 			axiosMock.onGet(/\/feeds\/product/).reply(200, mockProduct);
 			const product = await getProductDetail("ind-1001");
 
