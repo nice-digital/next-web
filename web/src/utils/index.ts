@@ -92,18 +92,13 @@ export const getProductPath = (
 };
 
 export const getPublicationDownloadPath = (product: ProductDetail): string => {
-	let rootPath;
+	// let rootPath;
 	const fileExtension = "pdf";
 
-	switch (product.productType) {
-		case ProductTypeAcronym.IND:
-			rootPath = "indicators";
-			break;
-		default:
-			throw `Unsupported product type ${product.productType} ${JSON.stringify(
-				product
-			)}`;
-	}
+	const rootPath = getProductPath({
+		...(product as unknown as ProductLite),
+		productGroup: ProductGroup.Other,
+	});
 
 	const idAndTitleSlug = slugify(`${product.id}-${product.title}`);
 	const uiD =
