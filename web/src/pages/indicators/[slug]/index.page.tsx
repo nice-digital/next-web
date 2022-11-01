@@ -126,12 +126,14 @@ export default function IndicatorsDetailsPage({
 						name: "DCTERMS.identifier",
 						content: product.id,
 					},
-					...product.indicatorSubTypeList.map((subType) => ({
-						name: "DCTERMS.type",
-						content: indicatorSubTypes.filter(
-							(i) => i.identifierPrefix == subType
-						)[0]["name"],
-					})),
+					...product.indicatorSubTypeList
+						.map((subType) => ({
+							name: "DCTERMS.type",
+							content: indicatorSubTypes.find(
+								(i) => i.identifierPrefix == subType
+							)?.name as string,
+						}))
+						.filter((item) => Boolean(item.content)),
 				]}
 			/>
 
@@ -224,10 +226,6 @@ export const getServerSideProps: GetServerSideProps<
 				permanent: true,
 			},
 		};
-	}
-
-	if (!indicatorSubTypes) {
-		throw new Error("There was a problem retrieving indicator subtypes");
 	}
 
 	return {

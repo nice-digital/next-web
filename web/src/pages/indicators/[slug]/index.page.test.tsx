@@ -127,6 +127,8 @@ describe("/indicators/[slug].page", () => {
 				});
 			});
 
+			it.todo("should render multiple meta tags for DCTERMS.type");
+
 			it("should render the correct page meta tags for DCTERMS.identifier", async () => {
 				render(<IndicatorsDetailsPage {...props} />);
 
