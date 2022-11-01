@@ -4,7 +4,7 @@ import { Button } from "@nice-digital/nds-button";
 
 import { Link } from "@/components/Link/Link";
 
-import styles from "./publicationsDownloadLink.module.scss";
+import styles from "./PublicationsDownloadLink.module.scss";
 
 export type PublicationsDownloadLinkProps = {
 	ariaLabel: string;
