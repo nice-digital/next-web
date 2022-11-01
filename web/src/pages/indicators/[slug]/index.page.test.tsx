@@ -14,7 +14,7 @@ import mockProduct from "@/mockData/publications/feeds/products/indicator.json";
 import IndicatorsDetailsPage, {
 	getServerSideProps,
 	IndicatorsDetailsPageProps,
-} from "./[slug].page";
+} from "./index.page";
 
 import type { GetServerSidePropsContext } from "next";
 
