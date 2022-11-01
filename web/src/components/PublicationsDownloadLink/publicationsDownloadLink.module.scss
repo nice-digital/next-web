@@ -1,12 +1,6 @@
 @use '@nice-digital/nds-core/scss/spacing';
 @use '@nice-digital/nds-core/scss/utils';
 
-.summary {
+.download {
   margin-bottom: utils.rem(spacing.$large);
-
-  > :first-child {
-    margin-top: 0;
-  }
 }
-
-

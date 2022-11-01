@@ -130,12 +130,11 @@ export default function IndicatorsDetailsPage({
 					elementType="section"
 					aria-label="Chapters"
 				>
-					<div className={styles.download}>
-						<PublicationsDownloadLink
-							ariaLabel="Download indicator PDF file"
-							downloadLink={`${product.embedded.nicePublicationsContentPartList.embedded.nicePublicationsUploadAndConvertContentPart.embedded.nicePublicationsPdfFile.links.self[0].href}`}
-						/>
-					</div>
+					<PublicationsDownloadLink
+						ariaLabel="Download indicator PDF file"
+						downloadLink={`${product.embedded.nicePublicationsContentPartList.embedded.nicePublicationsUploadAndConvertContentPart.embedded.nicePublicationsPdfFile.links.self[0].href}`}
+					/>
+
 					{chapters ? (
 						<PublicationsChapterMenu
 							ariaLabel="Chapter pages"

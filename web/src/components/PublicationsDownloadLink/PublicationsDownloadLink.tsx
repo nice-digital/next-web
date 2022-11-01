@@ -4,6 +4,8 @@ import { Button } from "@nice-digital/nds-button";
 
 import { Link } from "@/components/Link/Link";
 
+import styles from "./publicationsDownloadLink.module.scss";
+
 export type PublicationsDownloadLinkProps = {
 	ariaLabel: string;
 	downloadLink: string;
@@ -14,7 +16,7 @@ export const PublicationsDownloadLink: FC<PublicationsDownloadLinkProps> = ({
 	downloadLink,
 }) => {
 	return (
-		<Button aria-label={ariaLabel} variant="cta">
+		<Button aria-label={ariaLabel} variant="cta" className={styles.download}>
 			<Link href={downloadLink}>
 				<a>Download indicator (PDF)</a>
 			</Link>
