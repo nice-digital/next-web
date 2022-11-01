@@ -12,12 +12,14 @@ import { PublicationsChapterMenu } from "@/components/PublicationsChapterMenu/Pu
 import { PublicationsDownloadLink } from "@/components/PublicationsDownloadLink/PublicationsDownloadLink";
 import { PublicationsPrevNext } from "@/components/PublicationsPrevNext/PublicationsPrevNext";
 import {
+	getAllIndicatorSubTypes,
 	getProductDetail,
 	isErrorResponse,
 	ProductChapter,
 	ProductDetail,
 	ProductGroup,
 } from "@/feeds/publications/publications";
+import { IndicatorSubType } from "@/feeds/publications/types";
 import { formatDateStr, getProductPath } from "@/utils";
 
 import styles from "./index.page.module.scss";
@@ -57,11 +59,13 @@ const chaptersAndLinks = (
 export type IndicatorsDetailsPageProps = {
 	slug: string;
 	product: ProductDetail;
+	indicatorSubTypes: IndicatorSubType[];
 };
 
 export default function IndicatorsDetailsPage({
 	product,
 	slug,
+	indicatorSubTypes,
 }: IndicatorsDetailsPageProps): JSX.Element {
 	let chapters;
 
@@ -101,6 +105,36 @@ export default function IndicatorsDetailsPage({
 						type: "application/xml",
 						href: "/indicators/sitemap.xml",
 					},
+					{
+						rel: "schema.DCTERMS",
+						href: "http://purl.org/dc/terms/",
+					},
+				]}
+				additionalMetaTags={[
+					{
+						name: "DCTERMS.subject",
+						content: "TODO",
+					},
+					{
+						name: "DCTERMS.issued",
+						content: product.publishedDate,
+					},
+					{
+						name: "DCTERMS.modified",
+						content: product.lastMajorModificationDate,
+					},
+					{
+						name: "DCTERMS.identifier",
+						content: product.id,
+					},
+					...product.indicatorSubTypeList
+						.map((subType) => ({
+							name: "DCTERMS.type",
+							content: indicatorSubTypes.find(
+								(i) => i.identifierPrefix == subType
+							)?.name as string,
+						}))
+						.filter((item) => Boolean(item.content)),
 				]}
 			/>
 
@@ -171,7 +205,11 @@ export const getServerSideProps: GetServerSideProps<
 
 	const [id, ...rest] = params.slug.split("-");
 
-	const product = await getProductDetail(id);
+	const getProduct = getProductDetail(id);
+
+	const getSubTypes = getAllIndicatorSubTypes();
+
+	const [product, indicatorSubTypes] = [await getProduct, await getSubTypes];
 
 	if (
 		isErrorResponse(product) ||
@@ -201,6 +239,7 @@ export const getServerSideProps: GetServerSideProps<
 		props: {
 			slug: params.slug,
 			product,
+			indicatorSubTypes,
 		},
 	};
 };
