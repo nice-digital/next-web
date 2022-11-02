@@ -1,3 +1,5 @@
+import { type Readable } from "stream";
+
 import axios, { type AxiosInstance } from "axios";
 import applyCaseMiddleware from "axios-case-converter";
 
@@ -40,3 +42,26 @@ export const getFeedBodyCached = async <T>(
 	getUncachedAction: () => Promise<T>
 ): Promise<T> =>
 	cache.wrap<T>(getCacheKey(groupCacheKey, path), getUncachedAction, { ttl });
+
+/**
+ * Gets a response stream from a remote API endpoint, usually used for binary files e.g. PDFs (or mobi/epub etc).
+ *
+ * @param origin The base URL of the endpoint
+ * @param path The path to the endpoint e.g. `/feeds/downloads/737585a0-dad7-4a37-875b-b30b09c3fdc3`
+ * @param apiKey The API key for authentication against the API
+ * @returns A readable response stream
+ */
+export const getResponseStream = async (
+	origin: string,
+	path: string,
+	apiKey: string
+): Promise<Readable> => {
+	const { data } = await axios.get<Readable>(origin + path, {
+		headers: {
+			"Api-Key": apiKey,
+		},
+		responseType: "stream",
+		maxBodyLength: Infinity,
+	});
+	return data;
+};

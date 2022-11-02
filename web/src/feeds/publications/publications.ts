@@ -1,6 +1,6 @@
 import { serverRuntimeConfig } from "@/config";
 
-import { getFeedBodyCached, getFeedBodyUnCached } from "../";
+import { getFeedBodyCached, getFeedBodyUnCached, getResponseStream } from "../";
 
 import {
 	AreaOfInterest,
@@ -123,6 +123,17 @@ export const getChapterContent = async (
 		apiKey
 	);
 };
+
+/**
+ * Gets a stream of a file from publications.
+ *
+ * @param filePath The relative path of the endpoint that serves file content, e.g. `/feeds/downloads/737585a0-dad7-4a37-875b-b30b09c3fdc3`
+ * @returns A readable stream of the file contents
+ */
+export const getFileStream = async (
+	filePath: string
+): Promise<ReturnType<typeof getResponseStream>> =>
+	getResponseStream(origin, filePath, apiKey);
 
 export function isErrorResponse<TValidResponse>(
 	response: TValidResponse | ErrorResponse
