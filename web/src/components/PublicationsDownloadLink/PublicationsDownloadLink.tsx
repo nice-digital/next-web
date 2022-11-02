@@ -2,7 +2,7 @@ import React, { FC } from "react";
 
 import { Button } from "@nice-digital/nds-button";
 
-import styles from "./PublicationsDownloadLink.module.scss";
+import styles from "./publicationsDownloadLink.module.scss";
 
 export type PublicationsDownloadLinkProps = {
 	ariaLabel: string;

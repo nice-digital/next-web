@@ -100,10 +100,5 @@ export const getPublicationPdfDownloadPath = (
 		productGroup,
 	});
 
-	const uiD =
-		product.embedded.nicePublicationsContentPartList.embedded
-			.nicePublicationsUploadAndConvertContentPart.embedded
-			.nicePublicationsPdfFile.uid;
-
 	return `${rootPath}/${product.id}.pdf`;
 };
