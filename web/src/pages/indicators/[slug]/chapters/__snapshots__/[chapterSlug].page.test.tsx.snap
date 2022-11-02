@@ -123,14 +123,13 @@ exports[`/indicators/[slug]/chapters/[chapterSlug].page IndicatorChapterPage sho
         aria-label="Chapters"
         data-g="12 md:4 lg:3"
       >
-        <button
+        <a
           aria-label="Download indicator PDF file"
           class="btn btn--cta download"
           href="/feeds/downloads/737585a0-dad7-4a37-875b-b30b09c3fdc3"
-          type="button"
         >
           Download indicator (PDF)
-        </button>
+        </a>
         <nav
           aria-label="Chapter pages"
           class="stacked-nav"

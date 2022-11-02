@@ -22,7 +22,7 @@ import { IndicatorSubType, ProductGroup } from "@/feeds/publications/types";
 import {
 	formatDateStr,
 	getProductPath,
-	getPublicationDownloadPath,
+	getPublicationPdfDownloadPath,
 } from "@/utils";
 
 import styles from "./index.page.module.scss";
@@ -63,12 +63,14 @@ export type IndicatorsDetailsPageProps = {
 	slug: string;
 	product: ProductDetail;
 	indicatorSubTypes: IndicatorSubType[];
+	pdfDownloadPath: string;
 };
 
 export default function IndicatorsDetailsPage({
 	product,
 	slug,
 	indicatorSubTypes,
+	pdfDownloadPath,
 }: IndicatorsDetailsPageProps): JSX.Element {
 	let chapters;
 
@@ -169,10 +171,7 @@ export default function IndicatorsDetailsPage({
 				>
 					<PublicationsDownloadLink
 						ariaLabel="Download indicator PDF file"
-						downloadLink={getPublicationDownloadPath(
-							product,
-							ProductGroup.Other
-						)}
+						downloadLink={pdfDownloadPath}
 					/>
 
 					{chapters ? (
@@ -241,11 +240,17 @@ export const getServerSideProps: GetServerSideProps<
 		};
 	}
 
+	const pdfDownloadPath = getPublicationPdfDownloadPath(
+		product,
+		ProductGroup.Other
+	);
+
 	return {
 		props: {
 			slug: params.slug,
 			product,
 			indicatorSubTypes,
+			pdfDownloadPath,
 		},
 	};
 };
