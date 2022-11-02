@@ -340,6 +340,7 @@ describe("/indicators/[slug].page", () => {
 							name: "National library of quality indicators",
 						}),
 					],
+					pdfDownloadPath: `/indicators/${slug}/IND1001.pdf`,
 				},
 			});
 		});

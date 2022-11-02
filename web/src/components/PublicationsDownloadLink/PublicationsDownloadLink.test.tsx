@@ -25,7 +25,7 @@ describe("PublicationsDownloadLink", () => {
 		);
 
 		expect(
-			screen.getByRole("button", { name: "Download indicator PDF file" })
+			screen.getByRole("link", { name: "Download indicator PDF file" })
 		).toBeInTheDocument();
 	});
 
@@ -36,7 +36,7 @@ describe("PublicationsDownloadLink", () => {
 				ariaLabel="Download indicator PDF file"
 			/>
 		);
-		expect(screen.getByRole("button")).toHaveAttribute(
+		expect(screen.getByRole("link")).toHaveAttribute(
 			"aria-label",
 			"Download indicator PDF file"
 		);
@@ -49,7 +49,7 @@ describe("PublicationsDownloadLink", () => {
 				ariaLabel="Download indicator PDF file"
 			/>
 		);
-		expect(screen.getByRole("button")).toHaveTextContent(
+		expect(screen.getByRole("link")).toHaveTextContent(
 			"Download indicator (PDF)"
 		);
 	});
