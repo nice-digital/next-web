@@ -91,12 +91,10 @@ export const getProductPath = (
 	return `/${rootPath}/${productSlug}`;
 };
 
-export const getPublicationDownloadPath = (
+export const getPublicationPdfDownloadPath = (
 	product: ProductDetail,
 	productGroup: ProductGroup
 ): string => {
-	const fileExtension = "pdf";
-
 	const rootPath = getProductPath({
 		...product,
 		productGroup,
@@ -107,5 +105,5 @@ export const getPublicationDownloadPath = (
 			.nicePublicationsUploadAndConvertContentPart.embedded
 			.nicePublicationsPdfFile.uid;
 
-	return `${rootPath}-${uiD}.${fileExtension}`;
+	return `${rootPath}/${product.id}.pdf`;
 };

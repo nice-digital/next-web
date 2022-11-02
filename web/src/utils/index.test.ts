@@ -17,7 +17,7 @@ import {
 	formatDateStr,
 	getProjectPath,
 	getProductPath,
-	getPublicationDownloadPath,
+	getPublicationPdfDownloadPath,
 } from "./";
 
 const axiosMock = new MockAdapter(client, { onNoMatch: "throwException" });
@@ -103,18 +103,18 @@ describe("utils", () => {
 		);
 	});
 
-	describe("getPublicationDownloadPath", () => {
+	describe("getPublicationPdfDownloadPath", () => {
 		it("should return a publication download path", async () => {
 			axiosMock.onGet(/\/feeds\/product/).reply(200, mockProduct);
 			const product = await getProductDetail("ind-1001");
 
 			await waitFor(() => {
 				expect(
-					getPublicationDownloadPath(
+					getPublicationPdfDownloadPath(
 						product as unknown as ProductDetail,
 						ProductGroup.Other
 					)
-				).toBe(`/indicators/${slug}-68183483719102410.pdf`);
+				).toBe(`/indicators/${slug}/IND1001.pdf`);
 			});
 		});
 	});
