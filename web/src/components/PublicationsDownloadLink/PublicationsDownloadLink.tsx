@@ -18,7 +18,7 @@ export const PublicationsDownloadLink: FC<PublicationsDownloadLinkProps> = ({
 			aria-label={ariaLabel}
 			variant="cta"
 			className={styles.download}
-			href={downloadLink}
+			to={downloadLink}
 		>
 			Download indicator (PDF)
 		</Button>
