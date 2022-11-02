@@ -3,6 +3,7 @@ import dayjs from "dayjs";
 
 import { Project, ProjectStatus } from "@/feeds/inDev/types";
 import {
+	ProductDetail,
 	ProductGroup,
 	ProductLite,
 	ProductTypeAcronym,
@@ -88,4 +89,23 @@ export const getProductPath = (
 	}
 
 	return `/${rootPath}/${productSlug}`;
+};
+
+export const getPublicationDownloadPath = (
+	product: ProductDetail,
+	productGroup: ProductGroup
+): string => {
+	const fileExtension = "pdf";
+
+	const rootPath = getProductPath({
+		...product,
+		productGroup,
+	});
+
+	const uiD =
+		product.embedded.nicePublicationsContentPartList.embedded
+			.nicePublicationsUploadAndConvertContentPart.embedded
+			.nicePublicationsPdfFile.uid;
+
+	return `${rootPath}-${uiD}.${fileExtension}`;
 };

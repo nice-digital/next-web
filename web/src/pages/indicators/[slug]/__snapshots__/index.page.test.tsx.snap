@@ -123,19 +123,13 @@ exports[`/indicators/[slug].page IndicatorDetailPage should match snapshot for m
         aria-label="Chapters"
         data-g="12 md:4 lg:3"
       >
-        <button
+        <a
           aria-label="Download indicator PDF file"
           class="btn btn--cta download"
-          type="button"
+          href="/indicators/ind1001-test-indicator-ind-1001-the-percentage-of-patients-with-one-or-more-of-the-following-conditions-chd-atrial-fibrillation-chronic-heart-failure-stroke-or-tia-diabetes-or-dementia-with-a-fast-score-of-3-or-more-or-audit-c-score-of-5-or-more-in-the-preceding-2-years-who-have-received-brief-intervention-to-help-them-reduce-their-alcohol-related-risk-within-3-months-of-the-score-being-recorded-68183483719102410.pdf"
         >
-          <a
-            href="/feeds/downloads/737585a0-dad7-4a37-875b-b30b09c3fdc3"
-          >
-            <a>
-              Download indicator (PDF)
-            </a>
-          </a>
-        </button>
+          Download indicator (PDF)
+        </a>
         <nav
           aria-label="Chapter pages"
           class="stacked-nav"
