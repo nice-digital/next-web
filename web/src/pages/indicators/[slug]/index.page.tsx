@@ -18,7 +18,10 @@ import {
 	ProductDetail,
 	ProductGroup,
 } from "@/feeds/publications/publications";
-import { IndicatorSubType } from "@/feeds/publications/types";
+import {
+	HTMLChapterContentInfo,
+	IndicatorSubType,
+} from "@/feeds/publications/types";
 import { formatDateStr, getProductPath } from "@/utils";
 
 import styles from "./index.page.module.scss";
@@ -27,7 +30,7 @@ export const slugifyFunction = slugify;
 
 const chaptersAndLinks = (
 	summary: string | null,
-	chapters: ProductChapter[],
+	chapters: HTMLChapterContentInfo[],
 	slug: string
 ): ProductChapter[] => {
 	const chaptersAndLinksArray: Array<ProductChapter> = [];
@@ -45,10 +48,7 @@ const chaptersAndLinks = (
 		}
 		return chaptersAndLinksArray.push({
 			title: chapter.title,
-			url: `/indicators/${slug}/chapters/${chapter.url
-				.split("/")
-				.pop()
-				?.toLowerCase()}`,
+			url: `/indicators/${slug}/chapters/${chapter.chapterSlug}`,
 		});
 	});
 
@@ -68,8 +68,14 @@ export default function IndicatorsDetailsPage({
 }: IndicatorsDetailsPageProps): JSX.Element {
 	let chapters;
 
-	if (product.chapterHeadings) {
-		chapters = chaptersAndLinks(product.summary, product.chapterHeadings, slug);
+	const chapterContentInfo =
+		product.embedded.nicePublicationsContentPartList.embedded
+			.nicePublicationsUploadAndConvertContentPart.embedded
+			.nicePublicationsHtmlContent.embedded
+			.nicePublicationsHtmlChapterContentInfo;
+
+	if (chapterContentInfo) {
+		chapters = chaptersAndLinks(product.summary, chapterContentInfo, slug);
 	}
 
 	const metaData = [

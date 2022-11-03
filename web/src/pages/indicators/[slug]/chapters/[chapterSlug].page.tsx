@@ -14,6 +14,7 @@ import {
 	getChapterContent,
 	getProductDetail,
 	HTMLChapterContent,
+	HTMLChapterContentInfo,
 	isErrorResponse,
 	ProductChapter,
 	ProductDetail,
@@ -33,7 +34,7 @@ export type IndicatorChapterPageProps = {
 
 const chaptersAndLinks = (
 	summary: string | null,
-	chapters: ProductChapter[],
+	chapters: HTMLChapterContentInfo[],
 	slug: string
 ): ProductChapter[] => {
 	const chaptersAndLinksArray: Array<ProductChapter> = [];
@@ -51,10 +52,7 @@ const chaptersAndLinks = (
 		}
 		return chaptersAndLinksArray.push({
 			title: chapter.title,
-			url: `/indicators/${slug}/chapters/${chapter.url
-				.split("/")
-				.pop()
-				?.toLowerCase()}`,
+			url: `/indicators/${slug}/chapters/${chapter.chapterSlug}`,
 		});
 	});
 
@@ -66,9 +64,15 @@ export default function IndicatorChapterPage({
 	product,
 	slug,
 }: IndicatorChapterPageProps): JSX.Element {
+	const chapterContentInfo =
+		product.embedded.nicePublicationsContentPartList.embedded
+			.nicePublicationsUploadAndConvertContentPart.embedded
+			.nicePublicationsHtmlContent.embedded
+			.nicePublicationsHtmlChapterContentInfo;
+
 	const chapters: ProductChapter[] = chaptersAndLinks(
 		product.summary,
-		product.chapterHeadings,
+		chapterContentInfo,
 		slug
 	);
 
