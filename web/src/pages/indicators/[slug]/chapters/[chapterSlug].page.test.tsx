@@ -74,6 +74,7 @@ describe("/indicators/[slug]/chapters/[chapterSlug].page", () => {
 						chapterContent: expect.objectContaining({
 							chapterSlug: "indicator-nm181",
 						}),
+						pdfDownloadPath: `/indicators/${slug}/IND1001.pdf`,
 					},
 				});
 			});

@@ -21,7 +21,11 @@ import {
 	ProductDetail,
 	ProductGroup,
 } from "@/feeds/publications/publications";
-import { formatDateStr, getProductPath } from "@/utils";
+import {
+	formatDateStr,
+	getProductPath,
+	getPublicationPdfDownloadPath,
+} from "@/utils";
 
 import styles from "./[chapterSlug].page.module.scss";
 
@@ -31,6 +35,7 @@ export type IndicatorChapterPageProps = {
 	slug: string;
 	product: ProductDetail;
 	chapterContent: HTMLChapterContent;
+	pdfDownloadPath: string;
 };
 
 const chaptersAndLinks = (
@@ -64,6 +69,7 @@ export default function IndicatorChapterPage({
 	chapterContent,
 	product,
 	slug,
+	pdfDownloadPath,
 }: IndicatorChapterPageProps): JSX.Element {
 	const chapterContentInfo =
 		product.embedded.nicePublicationsContentPartList.embedded
@@ -141,7 +147,7 @@ export default function IndicatorChapterPage({
 				>
 					<PublicationsDownloadLink
 						ariaLabel="Download indicator PDF file"
-						downloadLink={`${product.embedded.nicePublicationsContentPartList.embedded.nicePublicationsUploadAndConvertContentPart.embedded.nicePublicationsPdfFile.links.self[0].href}`}
+						downloadLink={pdfDownloadPath}
 					/>
 					{chapters ? (
 						<PublicationsChapterMenu
@@ -225,11 +231,17 @@ export const getServerSideProps: GetServerSideProps<
 		return { notFound: true };
 	}
 
+	const pdfDownloadPath = getPublicationPdfDownloadPath(
+		product,
+		ProductGroup.Other
+	);
+
 	return {
 		props: {
 			slug: params.slug,
 			product,
 			chapterContent,
+			pdfDownloadPath,
 		},
 	};
 };
