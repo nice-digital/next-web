@@ -138,6 +138,7 @@ export default function IndicatorsDetailsPage({
 							content: indicatorSubTypes.find(
 								(i) => i.identifierPrefix == subType
 							)?.name as string,
+							keyOverride: subType,
 						}))
 						.filter((item) => Boolean(item.content)),
 				]}
