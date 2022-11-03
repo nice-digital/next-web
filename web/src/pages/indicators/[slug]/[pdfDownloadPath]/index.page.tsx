@@ -1,69 +1,46 @@
-import { pipeline } from "stream";
-import { promisify } from "util";
-
 import { GetServerSideProps } from "next/types";
 
-import {
-	getFileStream,
-	getProductDetail,
-	isErrorResponse,
-	ProductGroup,
-} from "@/feeds/publications/publications";
+import { getFileStream, ProductGroup } from "@/feeds/publications/publications";
 import { getPublicationPdfDownloadPath } from "@/utils/index";
+import { getServerSidePDF } from "@/utils/response-utils";
 
-export const getServerSideProps: GetServerSideProps = async ({
-	req,
-	res,
-	params,
-}) => {
-	if (
-		!params ||
-		!params.slug ||
-		Array.isArray(params.slug) ||
-		!params.slug.includes("-") ||
-		!params.pdfDownloadPath ||
-		Array.isArray(params.pdfDownloadPath)
-	) {
-		return { notFound: true };
+import { validateRouteParams } from "../indicator-utils";
+
+export const getServerSideProps: GetServerSideProps<
+	Record<string, never>,
+	{
+		slug: string;
+		pdfDownloadPath: string;
 	}
+> = async ({ res, params, resolvedUrl }) => {
+	const result = await validateRouteParams(params, resolvedUrl);
 
-	const id = params.slug.split("-")[0],
-		product = await getProductDetail(id);
+	if ("notFound" in result || "redirect" in result) return result;
 
-	if (isErrorResponse(product) || product.id.toLowerCase() !== id.toLowerCase())
-		return { notFound: true };
+	const { product } = result,
+		expectedPath = getPublicationPdfDownloadPath(product, ProductGroup.Other),
+		actualPath = new URL(
+			resolvedUrl,
+			`https://anything.com`
+		).pathname.toLowerCase();
 
-	const pdfDownloadPath = getPublicationPdfDownloadPath(
-		product,
-		ProductGroup.Other
-	);
-	if (
-		pdfDownloadPath.toLowerCase() !==
-		new URL(req.url?.toLowerCase() as string, `https://${req.headers.host}`)
-			.pathname
-	) {
+	if (actualPath.localeCompare(expectedPath, "en", { sensitivity: "base" }))
 		return {
 			redirect: {
-				destination: pdfDownloadPath,
+				destination: expectedPath,
 				permanent: true,
 			},
 		};
-	}
 
-	const pdfHref =
-		product.embedded.nicePublicationsContentPartList.embedded
-			.nicePublicationsUploadAndConvertContentPart.embedded
-			.nicePublicationsPdfFile.links.self[0].href;
+	const { nicePublicationsUploadAndConvertContentPart: partOrParts } =
+			product.embedded.nicePublicationsContentPartList.embedded,
+		part = Array.isArray(partOrParts) ? partOrParts[0] : partOrParts;
 
-	const stream = await getFileStream(pdfHref),
-		promisePipeline = promisify(pipeline);
+	if (!part) return { notFound: true };
 
-	res.setHeader("Content-Type", "application/pdf");
-	await promisePipeline(stream, res);
+	const pdfHref = part.embedded.nicePublicationsPdfFile.links.self[0].href;
 
-	res.end();
-
-	return { props: {} };
+	return await getServerSidePDF(await getFileStream(pdfHref), res);
 };
 
 export default function PDFDownload(): void {

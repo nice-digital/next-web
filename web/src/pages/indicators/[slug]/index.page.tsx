@@ -1,5 +1,3 @@
-import slugify from "@sindresorhus/slugify";
-import dayjs from "dayjs";
 import { NextSeo } from "next-seo";
 import { GetServerSideProps } from "next/types";
 import React from "react";
@@ -13,94 +11,60 @@ import { PublicationsDownloadLink } from "@/components/PublicationsDownloadLink/
 import { PublicationsPrevNext } from "@/components/PublicationsPrevNext/PublicationsPrevNext";
 import {
 	getAllIndicatorSubTypes,
-	getProductDetail,
-	isErrorResponse,
 	ProductChapter,
 	ProductDetail,
 } from "@/feeds/publications/publications";
 import {
 	ProductGroup,
-	HTMLChapterContentInfo,
-	IndicatorSubType,
+	type IndicatorSubType,
 } from "@/feeds/publications/types";
 import {
 	formatDateStr,
-	getProductPath,
 	getPublicationPdfDownloadPath,
+	stripTime,
 } from "@/utils";
 
 import styles from "./index.page.module.scss";
-
-export const slugifyFunction = slugify;
-
-const chaptersAndLinks = (
-	summary: string | null,
-	chapters: HTMLChapterContentInfo[],
-	slug: string
-): ProductChapter[] => {
-	const chaptersAndLinksArray: Array<ProductChapter> = [];
-
-	if (summary) {
-		chaptersAndLinksArray.push({
-			title: "Overview",
-			url: `/indicators/${slug}`,
-		});
-	}
-
-	chapters.forEach((chapter) => {
-		if (summary && chapter.title == "Overview") {
-			return;
-		}
-		return chaptersAndLinksArray.push({
-			title: chapter.title,
-			url: `/indicators/${slug}/chapters/${chapter.chapterSlug}`,
-		});
-	});
-
-	return chaptersAndLinksArray;
-};
+import { getChapterLinks, validateRouteParams } from "./indicator-utils";
 
 export type IndicatorsDetailsPageProps = {
-	slug: string;
 	product: ProductDetail;
 	indicatorSubTypes: IndicatorSubType[];
 	pdfDownloadPath: string;
+	chapters: ProductChapter[];
 };
 
 export default function IndicatorsDetailsPage({
-	product,
-	slug,
+	product: {
+		id,
+		summary,
+		productTypeName,
+		publishedDate,
+		lastMajorModificationDate,
+		title,
+		metaDescription,
+		indicatorSubTypeList,
+	},
 	indicatorSubTypes,
 	pdfDownloadPath,
+	chapters,
 }: IndicatorsDetailsPageProps): JSX.Element {
-	let chapters;
-
-	const chapterContentInfo =
-		product.embedded.nicePublicationsContentPartList.embedded
-			.nicePublicationsUploadAndConvertContentPart.embedded
-			.nicePublicationsHtmlContent.embedded
-			.nicePublicationsHtmlChapterContentInfo;
-
-	if (chapterContentInfo) {
-		chapters = chaptersAndLinks(product.summary, chapterContentInfo, slug);
-	}
-
 	const metaData = [
-		product.productTypeName,
-		product.id,
-		product.publishedDate ? (
+		productTypeName,
+		id,
+		publishedDate ? (
 			<>
 				Published:
-				<time dateTime={dayjs(product.publishedDate).format("YYYY-MM-DD")}>
-					&nbsp;{formatDateStr(product.publishedDate)}
+				<time dateTime={stripTime(publishedDate)}>
+					&nbsp;{formatDateStr(publishedDate)}
 				</time>
 			</>
 		) : null,
-		product.lastMajorModificationDate != product.publishedDate ? (
+		lastMajorModificationDate != publishedDate ? (
 			<>
 				Last updated:
-				<time dateTime={dayjs(product.lastModified).format("YYYY-MM-DD")}>
-					&nbsp;{formatDateStr(product.lastModified)}
+				<time dateTime={stripTime(lastMajorModificationDate)}>
+					&nbsp;{formatDateStr(lastMajorModificationDate)}
 				</time>
 			</>
 		) : null,
@@ -109,8 +73,8 @@ export default function IndicatorsDetailsPage({
 	return (
 		<>
 			<NextSeo
-				title={product.title + " | Indicators | Standards and Indicators"}
-				description={product.metaDescription}
+				title={title + " | Indicators | Standards and Indicators"}
+				description={metaDescription}
 				additionalLinkTags={[
 					{
 						rel: "sitemap",
@@ -129,17 +93,17 @@ export default function IndicatorsDetailsPage({
 					},
 					{
 						name: "DCTERMS.issued",
-						content: product.publishedDate,
+						content: publishedDate,
 					},
 					{
 						name: "DCTERMS.modified",
-						content: product.lastMajorModificationDate,
+						content: lastMajorModificationDate,
 					},
 					{
 						name: "DCTERMS.identifier",
-						content: product.id,
+						content: id,
 					},
-					...product.indicatorSubTypeList
+					...indicatorSubTypeList
 						.map((subType) => ({
 							name: "DCTERMS.type",
 							content: indicatorSubTypes.find(
@@ -158,11 +122,11 @@ export default function IndicatorsDetailsPage({
 				<Breadcrumb to="/standards-and-indicators/indicators">
 					Indicators
 				</Breadcrumb>
-				<Breadcrumb>{product.id}</Breadcrumb>
+				<Breadcrumb>{id}</Breadcrumb>
 			</Breadcrumbs>
 
 			<PageHeader
-				heading={product.title}
+				heading={title}
 				useAltHeading
 				id="content-start"
 				metadata={metaData}
@@ -181,22 +145,20 @@ export default function IndicatorsDetailsPage({
 						downloadLink={pdfDownloadPath}
 					/>
 
-					{chapters ? (
-						<PublicationsChapterMenu
-							ariaLabel="Chapter pages"
-							chapters={chapters}
-						/>
-					) : null}
+					<PublicationsChapterMenu
+						ariaLabel="Chapter pages"
+						chapters={chapters}
+					/>
 				</GridItem>
 
 				<GridItem cols={12} md={8} lg={9} elementType="section">
-					{product.summary ? (
+					{summary ? (
 						<div
-							dangerouslySetInnerHTML={{ __html: product.summary }}
+							dangerouslySetInnerHTML={{ __html: summary }}
 							className={styles.summary}
 						/>
 					) : null}
-					{chapters && <PublicationsPrevNext chapters={chapters} />}
+					<PublicationsPrevNext chapters={chapters} />
 				</GridItem>
 			</Grid>
 		</>
@@ -204,60 +166,27 @@ export default function IndicatorsDetailsPage({
 }
 
 export const getServerSideProps: GetServerSideProps<
-	IndicatorsDetailsPageProps
-> = async ({ params }) => {
-	if (
-		!params ||
-		!params.slug ||
-		Array.isArray(params.slug) ||
-		!params.slug.includes("-")
-	) {
-		return { notFound: true };
-	}
+	IndicatorsDetailsPageProps,
+	{ slug: string }
+> = async ({ params, resolvedUrl }) => {
+	const result = await validateRouteParams(params, resolvedUrl);
 
-	const [id, ...rest] = params.slug.split("-");
+	if ("notFound" in result || "redirect" in result) return result;
 
-	const getProduct = getProductDetail(id);
-
-	const getSubTypes = getAllIndicatorSubTypes();
-
-	const [product, indicatorSubTypes] = [await getProduct, await getSubTypes];
-
-	if (
-		isErrorResponse(product) ||
-		product.id.toLowerCase() !== id.toLowerCase()
-	) {
-		return { notFound: true };
-	}
-
-	const titleExtractedFromSlug = rest.join("-").toLowerCase();
-
-	const slugifiedProductTitle = slugify(product.title);
-	if (titleExtractedFromSlug !== slugifiedProductTitle) {
-		const redirectUrl = getProductPath({
-			...product,
-			productGroup: ProductGroup.Other,
-		});
-
-		return {
-			redirect: {
-				destination: redirectUrl,
-				permanent: true,
-			},
-		};
-	}
-
-	const pdfDownloadPath = getPublicationPdfDownloadPath(
-		product,
-		ProductGroup.Other
-	);
+	const { product } = result,
+		indicatorSubTypes = await getAllIndicatorSubTypes(),
+		chapters = getChapterLinks(product),
+		pdfDownloadPath = getPublicationPdfDownloadPath(
+			product,
+			ProductGroup.Other
+		);
 
 	return {
 		props: {
-			slug: params.slug,
 			product,
 			indicatorSubTypes,
 			pdfDownloadPath,
+			chapters,
 		},
 	};
 };

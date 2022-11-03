@@ -283,7 +283,7 @@ export type UploadAndConvertContentPart = {
 
 export type ContentPartList = Embedded<
 	"nicePublicationsUploadAndConvertContentPart",
-	UploadAndConvertContentPart
+	UploadAndConvertContentPart | UploadAndConvertContentPart[] | undefined
 >;
 
 export type ProductDetail = {

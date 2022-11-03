@@ -46,6 +46,13 @@ export const getProjectPath = (project: Project): string | null =>
 		? `/guidance/awaiting-development/${project.reference.toLowerCase()}`
 		: `/guidance/indevelopment/${project.reference.toLowerCase()}`;
 
+export const getProductSlug = (
+	product: Pick<ProductLite, "id" | "productType" | "title">
+): string =>
+	product.productType === ProductTypeAcronym.IND
+		? `${product.id.toLowerCase()}-${slugify(product.title)}`
+		: product.id.toLowerCase();
+
 /**
  * Gets the path, relative to the root, of an published product overview page.
  *
@@ -55,8 +62,7 @@ export const getProjectPath = (project: Project): string | null =>
 export const getProductPath = (
 	product: Pick<ProductLite, "productGroup" | "id" | "productType" | "title">
 ): string => {
-	let rootPath: string,
-		productSlug = product.id.toLowerCase();
+	let rootPath: string;
 
 	switch (product.productGroup) {
 		case ProductGroup.Guideline:
@@ -80,7 +86,6 @@ export const getProductPath = (
 					`Unsupported 'other' product type of ${product.productType}`
 				);
 			rootPath = "indicators";
-			productSlug += `-${slugify(product.title)}`;
 			break;
 		default:
 			throw `Unsupported product group ${product.productGroup} ${JSON.stringify(
@@ -88,7 +93,7 @@ export const getProductPath = (
 			)}`;
 	}
 
-	return `/${rootPath}/${productSlug}`;
+	return `/${rootPath}/${getProductSlug(product)}`;
 };
 
 export const getPublicationPdfDownloadPath = (

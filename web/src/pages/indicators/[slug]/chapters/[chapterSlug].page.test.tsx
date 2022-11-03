@@ -1,5 +1,6 @@
 import { render, screen } from "@testing-library/react";
 import MockAdapter from "axios-mock-adapter";
+import { type GetServerSidePropsContext } from "next";
 import { useRouter } from "next/router";
 
 import { client } from "@/feeds/index";
@@ -12,7 +13,10 @@ import IndicatorChapterPage, {
 	getServerSideProps,
 } from "./[chapterSlug].page";
 
-import type { GetServerSidePropsContext } from "next";
+type IndicatorChapterPageGetServerSidePropsContext = GetServerSidePropsContext<{
+	slug: string;
+	chapterSlug: string;
+}>;
 
 const axiosMock = new MockAdapter(client, { onNoMatch: "throwException" });
 
@@ -39,7 +43,8 @@ describe("/indicators/[slug]/chapters/[chapterSlug].page", () => {
 		beforeEach(async () => {
 			const context = {
 				params: { slug, chapterSlug },
-			} as unknown as GetServerSidePropsContext;
+				resolvedUrl: `/indicators/${slug}/chapters/${chapterSlug}`,
+			} as IndicatorChapterPageGetServerSidePropsContext;
 
 			props = (
 				(await getServerSideProps(context)) as {
@@ -65,24 +70,19 @@ describe("/indicators/[slug]/chapters/[chapterSlug].page", () => {
 			it("should return a correct props when supplied with an id", async () => {
 				const result = await getServerSideProps({
 					params: { slug, chapterSlug: chapterSlug },
-				} as unknown as GetServerSidePropsContext);
+					resolvedUrl: `/indicators/${slug}/chapters/${chapterSlug}`,
+				} as IndicatorChapterPageGetServerSidePropsContext);
 
-				expect(result).toStrictEqual({
-					props: {
-						slug: slug,
-						product: expect.objectContaining({ id: "IND1001" }),
-						chapterContent: expect.objectContaining({
-							chapterSlug: "indicator-nm181",
-						}),
-						pdfDownloadPath: `/indicators/${slug}/IND1001.pdf`,
-					},
-				});
+				expect(result).toMatchSnapshot();
 			});
 
 			it("should return permanent redirect object URL with incorrect title and correct chapter slug", async () => {
+				const incorrectTitleSlug = "ind1001-incorrect-slug-title";
+
 				const redirectResult = await getServerSideProps({
-					params: { slug: "ind1001-incorrect-slug-title", chapterSlug },
-				} as unknown as GetServerSidePropsContext);
+					params: { slug: incorrectTitleSlug, chapterSlug },
+					resolvedUrl: `/indicators/${incorrectTitleSlug}/chapters/${chapterSlug}`,
+				} as IndicatorChapterPageGetServerSidePropsContext);
 
 				expect(redirectResult).toStrictEqual({
 					redirect: {
@@ -95,7 +95,7 @@ describe("/indicators/[slug]/chapters/[chapterSlug].page", () => {
 			it("should return notFound if chapter slug doesn't exist", async () => {
 				const redirectResult = await getServerSideProps({
 					params: { slug: slug, chapterSlug: "this-does-not-exist" },
-				} as unknown as GetServerSidePropsContext);
+				} as IndicatorChapterPageGetServerSidePropsContext);
 
 				expect(redirectResult).toStrictEqual({ notFound: true });
 			});

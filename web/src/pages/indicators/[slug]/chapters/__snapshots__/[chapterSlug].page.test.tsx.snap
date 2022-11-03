@@ -1,5 +1,417 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
+exports[`/indicators/[slug]/chapters/[chapterSlug].page IndicatorChapterPage getServerSidePropsFunc should return a correct props when supplied with an id 1`] = `
+Object {
+  "props": Object {
+    "chapterContent": Object {
+      "chapterSlug": "indicator-nm181",
+      "content": "<div class=\\"chapter\\" title=\\"Indicator NM181\\" id=\\"ind1001_indicator-nm181\\" xmlns=\\"http://www.w3.org/1999/xhtml\\">
+  <h2 class=\\"title\\">
+    <a id=\\"indicator-nm181\\"></a>Indicator NM181</h2>
+  <p>The percentage of patients with one or more of the following conditions: CHD, atrial fibrillation, chronic heart failure, stroke or TIA, diabetes or dementia with a FAST score of 3 or more or AUDIT-C score of 5 or more <a id=\\"_Hlk13836593\\"></a>in the preceding 2 years who have received brief intervention to help them reduce their alcohol related risk within 3 months of the score being recorded.</p>
+</div>",
+      "eTag": "01000000-0000-003E-0000-000000000010",
+      "links": Object {
+        "self": Array [
+          Object {
+            "href": "/feeds/product/IND1001/part/1/chapter/indicator-nm181",
+          },
+        ],
+      },
+      "partId": 1,
+      "reference": "IND1001",
+      "title": "Test indicator IND1001: The percentage of patients with one or more of the following conditions: CHD, atrial fibrillation, chronic heart failure, stroke or TIA, diabetes or dementia with a FAST score of 3 or more or AUDIT-C score of 5 or more in the preceding 2 years who have received brief intervention to help them reduce their alcohol related risk within 3 months of the score being recorded",
+    },
+    "chapters": Array [
+      Object {
+        "title": "Overview",
+        "url": "/indicators/ind1001-test-indicator-ind-1001-the-percentage-of-patients-with-one-or-more-of-the-following-conditions-chd-atrial-fibrillation-chronic-heart-failure-stroke-or-tia-diabetes-or-dementia-with-a-fast-score-of-3-or-more-or-audit-c-score-of-5-or-more-in-the-preceding-2-years-who-have-received-brief-intervention-to-help-them-reduce-their-alcohol-related-risk-within-3-months-of-the-score-being-recorded",
+      },
+      Object {
+        "title": "Indicator NM181",
+        "url": "/indicators/ind1001-test-indicator-ind-1001-the-percentage-of-patients-with-one-or-more-of-the-following-conditions-chd-atrial-fibrillation-chronic-heart-failure-stroke-or-tia-diabetes-or-dementia-with-a-fast-score-of-3-or-more-or-audit-c-score-of-5-or-more-in-the-preceding-2-years-who-have-received-brief-intervention-to-help-them-reduce-their-alcohol-related-risk-within-3-months-of-the-score-being-recorded/chapters/indicator-nm181",
+      },
+      Object {
+        "title": "Indicator type",
+        "url": "/indicators/ind1001-test-indicator-ind-1001-the-percentage-of-patients-with-one-or-more-of-the-following-conditions-chd-atrial-fibrillation-chronic-heart-failure-stroke-or-tia-diabetes-or-dementia-with-a-fast-score-of-3-or-more-or-audit-c-score-of-5-or-more-in-the-preceding-2-years-who-have-received-brief-intervention-to-help-them-reduce-their-alcohol-related-risk-within-3-months-of-the-score-being-recorded/chapters/indicator-type",
+      },
+      Object {
+        "title": "Introduction",
+        "url": "/indicators/ind1001-test-indicator-ind-1001-the-percentage-of-patients-with-one-or-more-of-the-following-conditions-chd-atrial-fibrillation-chronic-heart-failure-stroke-or-tia-diabetes-or-dementia-with-a-fast-score-of-3-or-more-or-audit-c-score-of-5-or-more-in-the-preceding-2-years-who-have-received-brief-intervention-to-help-them-reduce-their-alcohol-related-risk-within-3-months-of-the-score-being-recorded/chapters/introduction",
+      },
+      Object {
+        "title": "Rationale",
+        "url": "/indicators/ind1001-test-indicator-ind-1001-the-percentage-of-patients-with-one-or-more-of-the-following-conditions-chd-atrial-fibrillation-chronic-heart-failure-stroke-or-tia-diabetes-or-dementia-with-a-fast-score-of-3-or-more-or-audit-c-score-of-5-or-more-in-the-preceding-2-years-who-have-received-brief-intervention-to-help-them-reduce-their-alcohol-related-risk-within-3-months-of-the-score-being-recorded/chapters/rationale",
+      },
+      Object {
+        "title": "Source guidance",
+        "url": "/indicators/ind1001-test-indicator-ind-1001-the-percentage-of-patients-with-one-or-more-of-the-following-conditions-chd-atrial-fibrillation-chronic-heart-failure-stroke-or-tia-diabetes-or-dementia-with-a-fast-score-of-3-or-more-or-audit-c-score-of-5-or-more-in-the-preceding-2-years-who-have-received-brief-intervention-to-help-them-reduce-their-alcohol-related-risk-within-3-months-of-the-score-being-recorded/chapters/source-guidance",
+      },
+      Object {
+        "title": "Specification",
+        "url": "/indicators/ind1001-test-indicator-ind-1001-the-percentage-of-patients-with-one-or-more-of-the-following-conditions-chd-atrial-fibrillation-chronic-heart-failure-stroke-or-tia-diabetes-or-dementia-with-a-fast-score-of-3-or-more-or-audit-c-score-of-5-or-more-in-the-preceding-2-years-who-have-received-brief-intervention-to-help-them-reduce-their-alcohol-related-risk-within-3-months-of-the-score-being-recorded/chapters/specification",
+      },
+      Object {
+        "title": "Further information",
+        "url": "/indicators/ind1001-test-indicator-ind-1001-the-percentage-of-patients-with-one-or-more-of-the-following-conditions-chd-atrial-fibrillation-chronic-heart-failure-stroke-or-tia-diabetes-or-dementia-with-a-fast-score-of-3-or-more-or-audit-c-score-of-5-or-more-in-the-preceding-2-years-who-have-received-brief-intervention-to-help-them-reduce-their-alcohol-related-risk-within-3-months-of-the-score-being-recorded/chapters/further-information",
+      },
+    ],
+    "pdfDownloadPath": "/indicators/ind1001-test-indicator-ind-1001-the-percentage-of-patients-with-one-or-more-of-the-following-conditions-chd-atrial-fibrillation-chronic-heart-failure-stroke-or-tia-diabetes-or-dementia-with-a-fast-score-of-3-or-more-or-audit-c-score-of-5-or-more-in-the-preceding-2-years-who-have-received-brief-intervention-to-help-them-reduce-their-alcohol-related-risk-within-3-months-of-the-score-being-recorded/IND1001.pdf",
+    "product": Object {
+      "areasOfInterestList": Array [],
+      "audienceList": Array [],
+      "authorList": Array [
+        "National Institute for Health and Care Excellence (NICE)",
+      ],
+      "chapterHeadings": Array [
+        Object {
+          "title": "Indicator NM181",
+          "url": "/IND1001/chapter/Indicator-NM181",
+        },
+        Object {
+          "title": "Indicator type",
+          "url": "/IND1001/chapter/Indicator-type",
+        },
+        Object {
+          "title": "Introduction",
+          "url": "/IND1001/chapter/Introduction",
+        },
+        Object {
+          "title": "Rationale",
+          "url": "/IND1001/chapter/Rationale",
+        },
+        Object {
+          "title": "Source guidance",
+          "url": "/IND1001/chapter/Source-guidance",
+        },
+        Object {
+          "title": "Specification",
+          "url": "/IND1001/chapter/Specification",
+        },
+        Object {
+          "title": "Further information",
+          "url": "/IND1001/chapter/Further-information",
+        },
+      ],
+      "collectionTypesList": Array [],
+      "developedAs": null,
+      "eTag": "01000000-0000-003E-0000-000000000010",
+      "embedded": Object {
+        "nicePublicationsAccreditationList": Object {
+          "eTag": null,
+          "links": Object {
+            "self": Array [
+              Object {},
+            ],
+          },
+        },
+        "nicePublicationsContentPartList": Object {
+          "eTag": null,
+          "embedded": Object {
+            "nicePublicationsUploadAndConvertContentPart": Object {
+              "eTag": null,
+              "embedded": Object {
+                "nicePublicationsEpubFile": Object {
+                  "eTag": null,
+                  "fileName": "NM181-indicator-guidance.epub",
+                  "hash": "286396D9EF9CFAA604320E1BB6630936132138AA",
+                  "id": "1c76cf69-69f0-47f9-aeba-f49286c26dbf",
+                  "length": 131087,
+                  "links": Object {
+                    "self": Array [
+                      Object {
+                        "href": "/feeds/downloads/1c76cf69-69f0-47f9-aeba-f49286c26dbf",
+                      },
+                    ],
+                  },
+                  "mimeType": "application/epub+zip",
+                  "name": "default",
+                  "uid": 68183483719102390,
+                },
+                "nicePublicationsHtmlContent": Object {
+                  "eTag": null,
+                  "embedded": Object {
+                    "nicePublicationsHtmlChapterContentInfo": Array [
+                      Object {
+                        "chapterSlug": "indicator-nm181",
+                        "eTag": null,
+                        "links": Object {
+                          "self": Array [
+                            Object {
+                              "href": "/feeds/product/IND1001/part/1/chapter/indicator-nm181",
+                            },
+                          ],
+                        },
+                        "partId": 1,
+                        "reference": "IND1001",
+                        "title": "Indicator NM181",
+                      },
+                      Object {
+                        "chapterSlug": "indicator-type",
+                        "eTag": null,
+                        "links": Object {
+                          "self": Array [
+                            Object {
+                              "href": "/feeds/product/IND1001/part/1/chapter/indicator-type",
+                            },
+                          ],
+                        },
+                        "partId": 1,
+                        "reference": "IND1001",
+                        "title": "Indicator type",
+                      },
+                      Object {
+                        "chapterSlug": "introduction",
+                        "eTag": null,
+                        "links": Object {
+                          "self": Array [
+                            Object {
+                              "href": "/feeds/product/IND1001/part/1/chapter/introduction",
+                            },
+                          ],
+                        },
+                        "partId": 1,
+                        "reference": "IND1001",
+                        "title": "Introduction",
+                      },
+                      Object {
+                        "chapterSlug": "rationale",
+                        "eTag": null,
+                        "links": Object {
+                          "self": Array [
+                            Object {
+                              "href": "/feeds/product/IND1001/part/1/chapter/rationale",
+                            },
+                          ],
+                        },
+                        "partId": 1,
+                        "reference": "IND1001",
+                        "title": "Rationale",
+                      },
+                      Object {
+                        "chapterSlug": "source-guidance",
+                        "eTag": null,
+                        "links": Object {
+                          "self": Array [
+                            Object {
+                              "href": "/feeds/product/IND1001/part/1/chapter/source-guidance",
+                            },
+                          ],
+                        },
+                        "partId": 1,
+                        "reference": "IND1001",
+                        "title": "Source guidance",
+                      },
+                      Object {
+                        "chapterSlug": "specification",
+                        "eTag": null,
+                        "links": Object {
+                          "self": Array [
+                            Object {
+                              "href": "/feeds/product/IND1001/part/1/chapter/specification",
+                            },
+                          ],
+                        },
+                        "partId": 1,
+                        "reference": "IND1001",
+                        "title": "Specification",
+                      },
+                      Object {
+                        "chapterSlug": "further-information",
+                        "eTag": null,
+                        "links": Object {
+                          "self": Array [
+                            Object {
+                              "href": "/feeds/product/IND1001/part/1/chapter/further-information",
+                            },
+                          ],
+                        },
+                        "partId": 1,
+                        "reference": "IND1001",
+                        "title": "Further information",
+                      },
+                    ],
+                  },
+                  "links": Object {
+                    "self": Array [
+                      Object {
+                        "href": "/feeds/product/IND1001/content/1/html",
+                      },
+                    ],
+                  },
+                  "partId": 1,
+                  "reference": "IND1001",
+                },
+                "nicePublicationsMobiFile": Object {
+                  "eTag": null,
+                  "fileName": "NM181-indicator-guidance.mobi",
+                  "hash": "5D745926DFB8E719A0F6EF321C84ACF25958A402",
+                  "id": "32fc492a-03d1-4af9-9dd6-76c24e434d9a",
+                  "length": 208531,
+                  "links": Object {
+                    "self": Array [
+                      Object {
+                        "href": "/feeds/downloads/32fc492a-03d1-4af9-9dd6-76c24e434d9a",
+                      },
+                    ],
+                  },
+                  "mimeType": "application/x-mobipocket-ebook",
+                  "name": "default",
+                  "uid": 68183483719102400,
+                },
+                "nicePublicationsPdfFile": Object {
+                  "eTag": null,
+                  "fileName": "NM181-indicator-guidance.pdf",
+                  "hash": "12068B7F3BC68E44C03311FEA89DC1F614E46305",
+                  "id": "737585a0-dad7-4a37-875b-b30b09c3fdc3",
+                  "length": 62820,
+                  "links": Object {
+                    "self": Array [
+                      Object {
+                        "href": "/feeds/downloads/737585a0-dad7-4a37-875b-b30b09c3fdc3",
+                      },
+                    ],
+                  },
+                  "mimeType": "application/pdf",
+                  "name": "default",
+                  "uid": 68183483719102410,
+                },
+              },
+              "legacyId": null,
+              "links": Object {
+                "self": Array [
+                  Object {},
+                ],
+              },
+              "title": "Test indicator IND1001: The percentage of patients with one or more of the following conditions: CHD, atrial fibrillation, chronic heart failure, stroke or TIA, diabetes or dementia with a FAST score of 3 or more or AUDIT-C score of 5 or more in the preceding 2 years who have received brief intervention to help them reduce their alcohol related risk within 3 months of the score being recorded",
+              "type": "UploadAndConvertContentPart",
+              "uid": 52610712746221,
+            },
+          },
+          "links": Object {
+            "self": Array [
+              Object {},
+            ],
+          },
+        },
+        "nicePublicationsEndorsementList": Object {
+          "eTag": null,
+          "links": Object {
+            "self": Array [
+              Object {},
+            ],
+          },
+        },
+        "nicePublicationsRelatedProductList": Object {
+          "eTag": null,
+          "links": Object {
+            "self": Array [
+              Object {},
+            ],
+          },
+        },
+        "nicePublicationsRelatedResourceList": Object {
+          "eTag": null,
+          "embedded": Object {
+            "nicePublicationsRelatedResource": Object {
+              "eTag": null,
+              "embedded": Object {
+                "nicePublicationsResourceGroupList": Object {
+                  "eTag": null,
+                  "embedded": Object {
+                    "nicePublicationsResourceGroup": Object {
+                      "eTag": null,
+                      "links": Object {
+                        "self": Array [
+                          Object {},
+                        ],
+                      },
+                      "name": "Evidence",
+                    },
+                  },
+                  "links": Object {
+                    "self": Array [
+                      Object {},
+                    ],
+                  },
+                },
+              },
+              "language": "English",
+              "links": Object {
+                "nicePublicationsRelatedResourceUri": Array [
+                  Object {
+                    "href": "/feeds/resource/55393",
+                  },
+                ],
+                "self": Array [
+                  Object {
+                    "href": "/feeds/resource/55393",
+                  },
+                  Object {},
+                ],
+              },
+              "resourceType": "EvidenceStatement",
+              "status": "Published",
+              "title": "Test resource for front end",
+              "uid": 8635575,
+            },
+          },
+          "links": Object {
+            "self": Array [
+              Object {},
+            ],
+          },
+        },
+        "nicePublicationsSupportingList": Object {
+          "eTag": null,
+          "links": Object {
+            "self": Array [
+              Object {},
+            ],
+          },
+        },
+      },
+      "estimatedSavings": "",
+      "estimatedSavingsDescription": "",
+      "estimatedSavingsImpact": null,
+      "id": "IND1001",
+      "inDevReference": "NA",
+      "indicatorOldCode": "NM181",
+      "indicatorOldUrl": "https://www.nice.org.uk/standards-and-indicators/qofindicators/the-percentage-of-patients-with-one-or-more-of-the-following-conditions-chd-atrial-fibrillation-chronic-heart-failure-stroke-or-tia-diabetes-or-dementia-with-a-fast-score-of-3-or-audit-c-score-of-5-in-the-preceding-2-years-who-have-received-brief-interven",
+      "indicatorSubTypeList": Array [
+        "CCG",
+        "GPIQ",
+      ],
+      "ipsv": "Health, well-being and care",
+      "lastMajorModificationDate": "2022-09-08T14:19:12.8893126",
+      "lastModified": "2022-10-12T07:57:45.0879965Z",
+      "links": Object {
+        "self": Array [
+          Object {},
+        ],
+      },
+      "majorChangeDate": null,
+      "metaDescription": "The percentage of patients with one or more of the following conditions: CHD, atrial fibrillation, chronic heart failure, stroke or TIA, diabetes or dementia with a FAST score of 3 or more or AUDIT-C score of 5 or more in the preceding 2 years who have received brief intervention to help them reduce their alcohol related risk within 3 months of the score being recorded",
+      "nextReviewDate": null,
+      "productStatus": "Published",
+      "productType": "IND",
+      "productTypeName": "NICE indicator",
+      "productTypeNamePlural": "NICE indicators",
+      "publishedDate": "2022-09-08T14:19:12.8893126",
+      "publisherList": Array [
+        "National Institute for Health and Care Excellence (NICE)",
+      ],
+      "relevantTo": Array [],
+      "shortTitle": null,
+      "summary": "<p class=\\"lead\\">The percentage of patients with one or more of the following conditions: CHD, atrial fibrillation, chronic heart failure, stroke or TIA, diabetes or dementia with a FAST score of 3 or more or AUDIT-C score of 5 or more in the preceding 2 years who have received brief intervention to help them reduce their alcohol related risk within 3 months of the score being recorded.</p>",
+      "terminatedAppraisal": null,
+      "title": "Test indicator IND1001: The percentage of patients with one or more of the following conditions: CHD, atrial fibrillation, chronic heart failure, stroke or TIA, diabetes or dementia with a FAST score of 3 or more or AUDIT-C score of 5 or more in the preceding 2 years who have received brief intervention to help them reduce their alcohol related risk within 3 months of the score being recorded",
+      "versionNumber": 2,
+    },
+  },
+}
+`;
+
 exports[`/indicators/[slug]/chapters/[chapterSlug].page IndicatorChapterPage should match snapshot for main content 1`] = `
 <body>
   <div>

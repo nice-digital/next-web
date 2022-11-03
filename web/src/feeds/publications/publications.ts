@@ -171,6 +171,12 @@ export const getFileStream = async (
 ): Promise<ReturnType<typeof getResponseStream>> =>
 	getResponseStream(origin, filePath, apiKey);
 
+/**
+ * A user-defined type guard for checking whether a given response is an error or not
+ *
+ * @param response The response
+ * @returns True if this is an error response otherwise false
+ */
 export function isErrorResponse<TValidResponse>(
 	response: TValidResponse | ErrorResponse
 ): response is ErrorResponse {

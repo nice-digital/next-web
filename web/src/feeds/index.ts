@@ -22,6 +22,9 @@ export const getFeedBodyUnCached = async <TResponse>(
 		headers: {
 			"Api-Key": apiKey,
 		},
+		validateStatus: (status: number) => {
+			return (status >= 200 && status < 300) || status == 404;
+		},
 	});
 	return data;
 };
