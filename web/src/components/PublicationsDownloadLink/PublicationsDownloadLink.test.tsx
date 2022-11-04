@@ -17,6 +17,14 @@ describe("PublicationsDownloadLink", () => {
 		).toBeInTheDocument();
 	});
 
+	it("should open in a new tab/window", () => {
+		render(<PublicationsDownloadLink downloadLink="/test" />);
+
+		expect(
+			screen.getByRole("link", { name: "Download (PDF)" })
+		).toHaveAttribute("target", "_blank");
+	});
+
 	it("should have a populated aria-label attribute", () => {
 		render(
 			<PublicationsDownloadLink

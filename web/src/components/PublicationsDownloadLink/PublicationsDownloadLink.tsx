@@ -20,6 +20,7 @@ export const PublicationsDownloadLink: FC<PublicationsDownloadLinkProps> = ({
 			variant="cta"
 			className={styles.download}
 			to={downloadLink}
+			target="_blank"
 		>
 			{children || "Download"} (PDF)
 		</Button>
