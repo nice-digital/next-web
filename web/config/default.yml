@@ -33,13 +33,13 @@ server:
     # The folder into which the feed cache is stored
     filePath: ./.cache/
     # The default TTL (time to live) (aka expiry duration), in seconds, for the object cache
-    defaultTTL: 86400
+    defaultTTL: 300
     # A longer TTL, in seconds, than the default, used for 'long-lived' cache entries that very rarely change.
-    longTTL: 604800
+    longTTL: 86400
     # Threshold for TTL, in seconds, below which object caches are refreshed in the background as per https://edibleco.de/3hyfpGG
     # Should be lower than defaultTTL.
     # Example: to check for fresh data every 5 minutes, it should be 300 seconds (5 * 60) lower than defaultTTL.
-    refreshThreshold: 86100
+    refreshThreshold: 150
   feeds:
     publications:
       origin: SECRET
