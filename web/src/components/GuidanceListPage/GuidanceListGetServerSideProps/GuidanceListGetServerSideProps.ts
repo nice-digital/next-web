@@ -15,7 +15,7 @@ import {
 import { getRedirectUrl } from "@/components/GuidanceListPage/redirects";
 import { publicRuntimeConfig } from "@/config";
 import { logger } from "@/logger";
-import { dateFormatShort } from "@/utils/constants";
+import { dateFormatShort } from "@/utils/datetime";
 
 import {
 	GuidanceListPageProps,

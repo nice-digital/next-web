@@ -3,7 +3,8 @@ import { FC } from "react";
 import { Card, CardMetaDataProps } from "@nice-digital/nds-card";
 
 import { ProductLite } from "@/feeds/publications/types";
-import { formatDateStr, getProductPath } from "@/utils";
+import { formatDateStr } from "@/utils/datetime";
+import { getProductPath } from "@/utils/url";
 
 export interface ProductCardProps {
 	product: ProductLite;

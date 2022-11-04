@@ -2,10 +2,18 @@ import { type Readable } from "stream";
 
 import axios, { type AxiosInstance } from "axios";
 import applyCaseMiddleware from "axios-case-converter";
+import { camelCase } from "camel-case";
 
 import { cache, getCacheKey } from "@/cache";
 
-export const client: AxiosInstance = applyCaseMiddleware(axios.create());
+export const client: AxiosInstance = applyCaseMiddleware(axios.create(), {
+	caseFunctions: {
+		camel: (input, _options) => {
+			// Strip out the prefix from all the embedded keys as it creates so much noise
+			return camelCase(input.replace("nice.publications:", ""));
+		},
+	},
+});
 
 /**
  * Gets the body of a feed directly from the back end system

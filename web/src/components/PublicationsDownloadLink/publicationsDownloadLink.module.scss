@@ -2,5 +2,8 @@
 @use '@nice-digital/nds-core/scss/utils';
 
 .download {
-  margin-bottom: utils.rem(spacing.$large);
+  display: block;
+  margin-bottom: utils.rem(spacing.$medium);
+  margin-right: 0;
+  text-align: center;
 }

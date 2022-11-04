@@ -4,7 +4,7 @@ import { Card } from "@nice-digital/nds-card";
 import { Document } from "@nice-digital/search-client";
 
 import { SearchSections } from "@/components/SearchSections/SearchSections";
-import { formatDateStr } from "@/utils/index";
+import { formatDateStr } from "@/utils/datetime";
 
 import styles from "./SearchCardList.module.scss";
 

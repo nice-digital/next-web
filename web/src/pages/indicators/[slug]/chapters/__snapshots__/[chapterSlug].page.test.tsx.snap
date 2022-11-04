@@ -97,7 +97,7 @@ Object {
       "developedAs": null,
       "eTag": "01000000-0000-003E-0000-000000000010",
       "embedded": Object {
-        "nicePublicationsAccreditationList": Object {
+        "accreditationList": Object {
           "eTag": null,
           "links": Object {
             "self": Array [
@@ -105,13 +105,13 @@ Object {
             ],
           },
         },
-        "nicePublicationsContentPartList": Object {
+        "contentPartList": Object {
           "eTag": null,
           "embedded": Object {
-            "nicePublicationsUploadAndConvertContentPart": Object {
+            "uploadAndConvertContentPart": Object {
               "eTag": null,
               "embedded": Object {
-                "nicePublicationsEpubFile": Object {
+                "epubFile": Object {
                   "eTag": null,
                   "fileName": "NM181-indicator-guidance.epub",
                   "hash": "286396D9EF9CFAA604320E1BB6630936132138AA",
@@ -128,10 +128,10 @@ Object {
                   "name": "default",
                   "uid": 68183483719102390,
                 },
-                "nicePublicationsHtmlContent": Object {
+                "htmlContent": Object {
                   "eTag": null,
                   "embedded": Object {
-                    "nicePublicationsHtmlChapterContentInfo": Array [
+                    "htmlChapterContentInfo": Array [
                       Object {
                         "chapterSlug": "indicator-nm181",
                         "eTag": null,
@@ -242,7 +242,7 @@ Object {
                   "partId": 1,
                   "reference": "IND1001",
                 },
-                "nicePublicationsMobiFile": Object {
+                "mobiFile": Object {
                   "eTag": null,
                   "fileName": "NM181-indicator-guidance.mobi",
                   "hash": "5D745926DFB8E719A0F6EF321C84ACF25958A402",
@@ -259,7 +259,7 @@ Object {
                   "name": "default",
                   "uid": 68183483719102400,
                 },
-                "nicePublicationsPdfFile": Object {
+                "pdfFile": Object {
                   "eTag": null,
                   "fileName": "NM181-indicator-guidance.pdf",
                   "hash": "12068B7F3BC68E44C03311FEA89DC1F614E46305",
@@ -294,7 +294,7 @@ Object {
             ],
           },
         },
-        "nicePublicationsEndorsementList": Object {
+        "endorsementList": Object {
           "eTag": null,
           "links": Object {
             "self": Array [
@@ -302,7 +302,7 @@ Object {
             ],
           },
         },
-        "nicePublicationsRelatedProductList": Object {
+        "relatedProductList": Object {
           "eTag": null,
           "links": Object {
             "self": Array [
@@ -310,16 +310,16 @@ Object {
             ],
           },
         },
-        "nicePublicationsRelatedResourceList": Object {
+        "relatedResourceList": Object {
           "eTag": null,
           "embedded": Object {
-            "nicePublicationsRelatedResource": Object {
+            "relatedResource": Object {
               "eTag": null,
               "embedded": Object {
-                "nicePublicationsResourceGroupList": Object {
+                "resourceGroupList": Object {
                   "eTag": null,
                   "embedded": Object {
-                    "nicePublicationsResourceGroup": Object {
+                    "resourceGroup": Object {
                       "eTag": null,
                       "links": Object {
                         "self": Array [
@@ -338,7 +338,7 @@ Object {
               },
               "language": "English",
               "links": Object {
-                "nicePublicationsRelatedResourceUri": Array [
+                "relatedResourceUri": Array [
                   Object {
                     "href": "/feeds/resource/55393",
                   },
@@ -362,7 +362,7 @@ Object {
             ],
           },
         },
-        "nicePublicationsSupportingList": Object {
+        "supportingList": Object {
           "eTag": null,
           "links": Object {
             "self": Array [

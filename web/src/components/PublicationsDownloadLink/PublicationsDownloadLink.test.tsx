@@ -30,15 +30,19 @@ describe("PublicationsDownloadLink", () => {
 		);
 	});
 
+	it("should have '(file extension)' appended to the default button text", () => {
+		render(<PublicationsDownloadLink downloadLink="/test" />);
+		expect(screen.getByRole("link")).toHaveTextContent("Download (PDF)");
+	});
+
 	it("should have '(file extension)' appended to the button text", () => {
 		render(
-			<PublicationsDownloadLink
-				downloadLink="/test"
-				ariaLabel="Download indicator PDF file"
-			/>
+			<PublicationsDownloadLink downloadLink="/test">
+				Download guidance
+			</PublicationsDownloadLink>
 		);
 		expect(screen.getByRole("link")).toHaveTextContent(
-			"Download indicator (PDF)"
+			"Download guidance (PDF)"
 		);
 	});
 });

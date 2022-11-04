@@ -12,23 +12,23 @@ import { PublicationsDownloadLink } from "@/components/PublicationsDownloadLink/
 import { PublicationsPrevNext } from "@/components/PublicationsPrevNext/PublicationsPrevNext";
 import {
 	getChapterContent,
-	HTMLChapterContent,
+	ChapterHTMLContent,
 	isErrorResponse,
-	ProductChapter,
+	ChapterHeading,
 	ProductDetail,
 	ProductGroup,
 } from "@/feeds/publications/publications";
-import { formatDateStr, getPublicationPdfDownloadPath } from "@/utils";
-
-import { getChapterLinks, validateRouteParams } from "../indicator-utils";
+import { formatDateStr } from "@/utils/datetime";
+import { getChapterLinks, validateRouteParams } from "@/utils/product";
+import { getPublicationPdfDownloadPath } from "@/utils/url";
 
 import styles from "./[chapterSlug].page.module.scss";
 
 export type IndicatorChapterPageProps = {
 	product: ProductDetail;
-	chapterContent: HTMLChapterContent;
+	chapterContent: ChapterHTMLContent;
 	pdfDownloadPath: string;
-	chapters: ProductChapter[];
+	chapters: ChapterHeading[];
 };
 
 export default function IndicatorChapterPage({
@@ -102,7 +102,10 @@ export default function IndicatorChapterPage({
 					<PublicationsDownloadLink
 						ariaLabel="Download indicator PDF file"
 						downloadLink={pdfDownloadPath}
-					/>
+					>
+						Download indicator
+					</PublicationsDownloadLink>
+
 					<PublicationsChapterMenu
 						ariaLabel="Chapter pages"
 						chapters={chapters}
@@ -136,16 +139,18 @@ export const getServerSideProps: GetServerSideProps<
 			ProductGroup.Other
 		);
 
-	if (!params || !params.chapterSlug) return { notFound: true };
+	if (!params || !product.embedded.contentPartList) return { notFound: true };
 
-	const { nicePublicationsUploadAndConvertContentPart: partOrParts } =
-			product.embedded.nicePublicationsContentPartList.embedded,
-		part = Array.isArray(partOrParts) ? partOrParts[0] : partOrParts;
+	const { uploadAndConvertContentPart } =
+			product.embedded.contentPartList.embedded,
+		part = Array.isArray(uploadAndConvertContentPart)
+			? uploadAndConvertContentPart[0]
+			: uploadAndConvertContentPart;
 
 	if (!part) return { notFound: true };
 
 	const chapter =
-		part.embedded.nicePublicationsHtmlContent.embedded.nicePublicationsHtmlChapterContentInfo.find(
+		part.embedded.htmlContent.embedded.htmlChapterContentInfo.find(
 			(c) => c.chapterSlug === params.chapterSlug
 		);
 

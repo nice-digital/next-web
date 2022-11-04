@@ -1,10 +1,9 @@
 import { GetServerSideProps } from "next/types";
 
 import { getFileStream, ProductGroup } from "@/feeds/publications/publications";
-import { getPublicationPdfDownloadPath } from "@/utils/index";
-import { getServerSidePDF } from "@/utils/response-utils";
-
-import { validateRouteParams } from "../indicator-utils";
+import { validateRouteParams } from "@/utils/product";
+import { getServerSidePDF } from "@/utils/response";
+import { getPublicationPdfDownloadPath } from "@/utils/url";
 
 export const getServerSideProps: GetServerSideProps<
 	Record<string, never>,
@@ -17,8 +16,14 @@ export const getServerSideProps: GetServerSideProps<
 
 	if ("notFound" in result || "redirect" in result) return result;
 
-	const { product } = result,
-		expectedPath = getPublicationPdfDownloadPath(product, ProductGroup.Other),
+	const { product } = result;
+
+	if (!product.embedded.contentPartList) return { notFound: true };
+
+	const expectedPath = getPublicationPdfDownloadPath(
+			product,
+			ProductGroup.Other
+		),
 		actualPath = new URL(
 			resolvedUrl,
 			`https://anything.com`
@@ -32,15 +37,17 @@ export const getServerSideProps: GetServerSideProps<
 			},
 		};
 
-	const { nicePublicationsUploadAndConvertContentPart: partOrParts } =
-			product.embedded.nicePublicationsContentPartList.embedded,
-		part = Array.isArray(partOrParts) ? partOrParts[0] : partOrParts;
+	const { uploadAndConvertContentPart } =
+			product.embedded.contentPartList.embedded,
+		part = Array.isArray(uploadAndConvertContentPart)
+			? uploadAndConvertContentPart[0]
+			: uploadAndConvertContentPart;
 
 	if (!part) return { notFound: true };
 
-	const pdfHref = part.embedded.nicePublicationsPdfFile.links.self[0].href;
+	const pdfHref = part.embedded.pdfFile.links.self[0].href;
 
-	return await getServerSidePDF(await getFileStream(pdfHref), res);
+	return getServerSidePDF(await getFileStream(pdfHref), res);
 };
 
 export default function PDFDownload(): void {

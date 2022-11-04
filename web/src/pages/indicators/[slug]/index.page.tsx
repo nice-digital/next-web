@@ -11,27 +11,24 @@ import { PublicationsDownloadLink } from "@/components/PublicationsDownloadLink/
 import { PublicationsPrevNext } from "@/components/PublicationsPrevNext/PublicationsPrevNext";
 import {
 	getAllIndicatorSubTypes,
-	ProductChapter,
+	ChapterHeading,
 	ProductDetail,
 } from "@/feeds/publications/publications";
 import {
 	ProductGroup,
 	type IndicatorSubType,
 } from "@/feeds/publications/types";
-import {
-	formatDateStr,
-	getPublicationPdfDownloadPath,
-	stripTime,
-} from "@/utils";
+import { formatDateStr, stripTime } from "@/utils/datetime";
+import { getChapterLinks, validateRouteParams } from "@/utils/product";
+import { getPublicationPdfDownloadPath } from "@/utils/url";
 
 import styles from "./index.page.module.scss";
-import { getChapterLinks, validateRouteParams } from "./indicator-utils";
 
 export type IndicatorsDetailsPageProps = {
 	product: ProductDetail;
 	indicatorSubTypes: IndicatorSubType[];
 	pdfDownloadPath: string;
-	chapters: ProductChapter[];
+	chapters: ChapterHeading[];
 };
 
 export default function IndicatorsDetailsPage({
@@ -143,7 +140,9 @@ export default function IndicatorsDetailsPage({
 					<PublicationsDownloadLink
 						ariaLabel="Download indicator PDF file"
 						downloadLink={pdfDownloadPath}
-					/>
+					>
+						Download indicator
+					</PublicationsDownloadLink>
 
 					<PublicationsChapterMenu
 						ariaLabel="Chapter pages"

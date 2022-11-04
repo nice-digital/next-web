@@ -7,7 +7,7 @@ import {
 	AreasOfInterestList,
 	ErrorResponse,
 	FeedPath,
-	HTMLChapterContent,
+	ChapterHTMLContent,
 	IndicatorSubType,
 	IndicatorSubTypesList,
 	ProductDetail,
@@ -38,16 +38,14 @@ export const getAllProducts = async (): Promise<ProductLite[]> =>
 					FeedPath.ProductsLite,
 					apiKey
 				)
-			).embedded.nicePublicationsProductListLite.embedded.nicePublicationsProductLite.map(
-				(product) => {
-					// Discard unneeded properties on products to make what we're storing in cache a lot smaller.
-					// This means we're essentially storing a ProductLite in cache rather than a ProductLiteRaw.
-					// In perf tests this saved ~30% off the cache load time from the file system (once you factor in deserialization, file access times etc).
-					delete (product as Partial<typeof product>).eTag;
-					delete (product as Partial<typeof product>).links;
-					return product;
-				}
-			)
+			).embedded.productListLite.embedded.productLite.map((product) => {
+				// Discard unneeded properties on products to make what we're storing in cache a lot smaller.
+				// This means we're essentially storing a ProductLite in cache rather than a ProductLiteRaw.
+				// In perf tests this saved ~30% off the cache load time from the file system (once you factor in deserialization, file access times etc).
+				delete (product as Partial<typeof product>).eTag;
+				delete (product as Partial<typeof product>).links;
+				return product;
+			})
 	);
 
 /**
@@ -67,8 +65,7 @@ export const getAllProductTypes = async (): Promise<ProductType[]> =>
 					FeedPath.ProductTypes,
 					apiKey
 				)
-			).embedded.nicePublicationsProductTypeList.embedded
-				.nicePublicationsProductType
+			).embedded.productTypeList.embedded.productType
 	);
 
 /**
@@ -88,8 +85,7 @@ export const getAllAreasOfInterest = async (): Promise<AreaOfInterest[]> =>
 					FeedPath.AreasOfInterest,
 					apiKey
 				)
-			).embedded.nicePublicationsAreaOfInterestTypeList.embedded
-				.nicePublicationsAreaOfInterestType
+			).embedded.areaOfInterestTypeList.embedded.areaOfInterestType
 	);
 
 /**
@@ -109,8 +105,7 @@ export const getAllIndicatorSubTypes = async (): Promise<IndicatorSubType[]> =>
 					FeedPath.IndicatorSubTypes,
 					apiKey
 				)
-			).embedded.nicePublicationsIndicatorSubTypeList.embedded
-				.nicePublicationsIndicatorSubType
+			).embedded.indicatorSubTypeList.embedded.indicatorSubType
 	);
 
 /**
@@ -152,8 +147,8 @@ export const getProductDetail = async (
  */
 export const getChapterContent = async (
 	chapterHref: string
-): Promise<HTMLChapterContent | ErrorResponse> => {
-	return getFeedBodyUnCached<HTMLChapterContent | ErrorResponse>(
+): Promise<ChapterHTMLContent | ErrorResponse> => {
+	return getFeedBodyUnCached<ChapterHTMLContent | ErrorResponse>(
 		origin,
 		chapterHref,
 		apiKey
