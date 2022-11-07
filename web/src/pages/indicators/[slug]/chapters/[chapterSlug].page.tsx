@@ -162,6 +162,14 @@ export const getServerSideProps: GetServerSideProps<
 
 	if (isErrorResponse(chapterContent)) return { notFound: true };
 
+	//TODO retrieve in page link titles
+
+	// console.log(
+	// 	chapterContent.embedded?.htmlChapterSectionInfo.map((section) => {
+	// 		return section.title;
+	// 	})
+	// );
+
 	return {
 		props: {
 			product,

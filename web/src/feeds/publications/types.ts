@@ -388,6 +388,18 @@ export type ChapterHTMLContent = {
 	eTag: ETag;
 	/** The HTML content of this chapter */
 	content: string;
+	embedded?: {
+		htmlChapterSectionInfo: HTMLChapterSectionInfo | HTMLChapterSectionInfo[];
+	};
+};
+
+export type HTMLChapterSectionInfo = {
+	links: EmptySelfLinks;
+	eTag: string;
+	reference: string;
+	partId: number;
+	chapterSlug: string;
+	title: string;
 };
 
 export type ErrorResponse = {
