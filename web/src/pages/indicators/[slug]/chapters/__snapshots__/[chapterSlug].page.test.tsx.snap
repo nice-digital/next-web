@@ -22,6 +22,7 @@ Object {
       "reference": "IND1001",
       "title": "Test indicator IND1001: The percentage of patients with one or more of the following conditions: CHD, atrial fibrillation, chronic heart failure, stroke or TIA, diabetes or dementia with a FAST score of 3 or more or AUDIT-C score of 5 or more in the preceding 2 years who have received brief intervention to help them reduce their alcohol related risk within 3 months of the score being recorded",
     },
+    "chapterSections": undefined,
     "chapters": Array [
       Object {
         "title": "Overview",
