@@ -1,4 +1,3 @@
-import slugify from "@sindresorhus/slugify";
 import dayjs from "dayjs";
 import { GetServerSideProps } from "next";
 import { NextSeo } from "next-seo";
@@ -9,73 +8,35 @@ import { Grid, GridItem } from "@nice-digital/nds-grid";
 import { PageHeader } from "@nice-digital/nds-page-header";
 
 import { PublicationsChapterMenu } from "@/components/PublicationsChapterMenu/PublicationsChapterMenu";
+import { PublicationsDownloadLink } from "@/components/PublicationsDownloadLink/PublicationsDownloadLink";
 import { PublicationsPrevNext } from "@/components/PublicationsPrevNext/PublicationsPrevNext";
 import {
 	getChapterContent,
-	getProductDetail,
-	HTMLChapterContent,
-	HTMLChapterContentInfo,
+	ChapterHTMLContent,
 	isErrorResponse,
-	ProductChapter,
+	ChapterHeading,
 	ProductDetail,
 	ProductGroup,
 } from "@/feeds/publications/publications";
-import { formatDateStr, getProductPath } from "@/utils";
+import { formatDateStr } from "@/utils/datetime";
+import { getChapterLinks, validateRouteParams } from "@/utils/product";
+import { getPublicationPdfDownloadPath } from "@/utils/url";
 
 import styles from "./[chapterSlug].page.module.scss";
 
-export const slugifyFunction = slugify;
-
 export type IndicatorChapterPageProps = {
-	slug: string;
 	product: ProductDetail;
-	chapterContent: HTMLChapterContent;
-};
-
-const chaptersAndLinks = (
-	summary: string | null,
-	chapters: HTMLChapterContentInfo[],
-	slug: string
-): ProductChapter[] => {
-	const chaptersAndLinksArray: Array<ProductChapter> = [];
-
-	if (summary) {
-		chaptersAndLinksArray.push({
-			title: "Overview",
-			url: `/indicators/${slug}`,
-		});
-	}
-
-	chapters.forEach((chapter) => {
-		if (summary && chapter.title == "Overview") {
-			return;
-		}
-		return chaptersAndLinksArray.push({
-			title: chapter.title,
-			url: `/indicators/${slug}/chapters/${chapter.chapterSlug}`,
-		});
-	});
-
-	return chaptersAndLinksArray;
+	chapterContent: ChapterHTMLContent;
+	pdfDownloadPath: string;
+	chapters: ChapterHeading[];
 };
 
 export default function IndicatorChapterPage({
 	chapterContent,
 	product,
-	slug,
+	pdfDownloadPath,
+	chapters,
 }: IndicatorChapterPageProps): JSX.Element {
-	const chapterContentInfo =
-		product.embedded.nicePublicationsContentPartList.embedded
-			.nicePublicationsUploadAndConvertContentPart.embedded
-			.nicePublicationsHtmlContent.embedded
-			.nicePublicationsHtmlChapterContentInfo;
-
-	const chapters: ProductChapter[] = chaptersAndLinks(
-		product.summary,
-		chapterContentInfo,
-		slug
-	);
-
 	const metaData = [
 		product.productTypeName,
 		product.id,
@@ -131,20 +92,26 @@ export default function IndicatorChapterPage({
 			/>
 
 			<Grid gutter="loose">
-				{chapters ? (
-					<GridItem
-						cols={12}
-						md={4}
-						lg={3}
-						elementType="section"
-						aria-label="Chapters"
+				<GridItem
+					cols={12}
+					md={4}
+					lg={3}
+					elementType="section"
+					aria-label="Chapters"
+				>
+					<PublicationsDownloadLink
+						ariaLabel="Download indicator PDF file"
+						downloadLink={pdfDownloadPath}
 					>
-						<PublicationsChapterMenu
-							ariaLabel="Chapter pages"
-							chapters={chapters}
-						/>
-					</GridItem>
-				) : null}
+						Download indicator
+					</PublicationsDownloadLink>
+
+					<PublicationsChapterMenu
+						ariaLabel="Chapter pages"
+						chapters={chapters}
+					/>
+				</GridItem>
+
 				<GridItem cols={12} md={8} lg={9} elementType="section">
 					<div
 						dangerouslySetInnerHTML={{ __html: chapterContent.content }}
@@ -158,72 +125,49 @@ export default function IndicatorChapterPage({
 }
 
 export const getServerSideProps: GetServerSideProps<
-	IndicatorChapterPageProps
-> = async ({ params }) => {
-	if (
-		!params ||
-		!params.slug ||
-		Array.isArray(params.slug) ||
-		!params.slug.includes("-") ||
-		!params.chapterSlug ||
-		Array.isArray(params.chapterSlug)
-	) {
-		return { notFound: true };
-	}
+	IndicatorChapterPageProps,
+	{ slug: string; chapterSlug: string }
+> = async ({ params, resolvedUrl }) => {
+	const result = await validateRouteParams(params, resolvedUrl);
 
-	const [id, ...rest] = params.slug.split("-");
+	if ("notFound" in result || "redirect" in result) return result;
 
-	const product = await getProductDetail(id);
+	const { product } = result,
+		chapters = getChapterLinks(product),
+		pdfDownloadPath = getPublicationPdfDownloadPath(
+			product,
+			ProductGroup.Other
+		);
 
-	if (
-		isErrorResponse(product) ||
-		product.id.toLowerCase() !== id.toLowerCase()
-	) {
-		return { notFound: true };
-	}
+	if (!params || !product.embedded.contentPartList) return { notFound: true };
 
-	const titleExtractedFromSlug = rest.join("-").toLowerCase();
+	const { uploadAndConvertContentPart } =
+			product.embedded.contentPartList.embedded,
+		part = Array.isArray(uploadAndConvertContentPart)
+			? uploadAndConvertContentPart[0]
+			: uploadAndConvertContentPart;
 
-	const slugifiedProductTitle = slugify(product.title);
-	if (titleExtractedFromSlug !== slugifiedProductTitle) {
-		const redirectUrl =
-			getProductPath({
-				...product,
-				productGroup: ProductGroup.Other,
-			}) +
-			"/chapters/" +
-			params.chapterSlug;
-
-		return {
-			redirect: {
-				destination: redirectUrl,
-				permanent: true,
-			},
-		};
-	}
+	if (!part) return { notFound: true };
 
 	const chapter =
-		product.embedded.nicePublicationsContentPartList.embedded.nicePublicationsUploadAndConvertContentPart.embedded.nicePublicationsHtmlContent.embedded.nicePublicationsHtmlChapterContentInfo.find(
+		part.embedded.htmlContent.embedded.htmlChapterContentInfo.find(
 			(c) => c.chapterSlug === params.chapterSlug
 		);
 
-	if (!chapter) {
-		return { notFound: true };
-	}
+	if (!chapter) return { notFound: true };
 
 	const chapterContent = await getChapterContent(
 		chapter?.links.self[0].href as string
 	);
 
-	if (isErrorResponse(chapterContent)) {
-		return { notFound: true };
-	}
+	if (isErrorResponse(chapterContent)) return { notFound: true };
 
 	return {
 		props: {
-			slug: params.slug,
 			product,
+			chapters,
 			chapterContent,
+			pdfDownloadPath,
 		},
 	};
 };

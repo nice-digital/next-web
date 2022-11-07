@@ -1,9 +1,19 @@
+import { type Readable } from "stream";
+
 import axios, { type AxiosInstance } from "axios";
 import applyCaseMiddleware from "axios-case-converter";
+import { camelCase } from "camel-case";
 
 import { cache, getCacheKey } from "@/cache";
 
-export const client: AxiosInstance = applyCaseMiddleware(axios.create());
+export const client: AxiosInstance = applyCaseMiddleware(axios.create(), {
+	caseFunctions: {
+		camel: (input, _options) => {
+			// Strip out the prefix from all the embedded keys as it creates so much noise
+			return camelCase(input.replace("nice.publications:", ""));
+		},
+	},
+});
 
 /**
  * Gets the body of a feed directly from the back end system
@@ -19,6 +29,9 @@ export const getFeedBodyUnCached = async <TResponse>(
 	const { data } = await client.get<TResponse>(origin + path, {
 		headers: {
 			"Api-Key": apiKey,
+		},
+		validateStatus: (status: number) => {
+			return (status >= 200 && status < 300) || status == 404;
 		},
 	});
 	return data;
@@ -40,3 +53,26 @@ export const getFeedBodyCached = async <T>(
 	getUncachedAction: () => Promise<T>
 ): Promise<T> =>
 	cache.wrap<T>(getCacheKey(groupCacheKey, path), getUncachedAction, { ttl });
+
+/**
+ * Gets a response stream from a remote API endpoint, usually used for binary files e.g. PDFs (or mobi/epub etc).
+ *
+ * @param origin The base URL of the endpoint
+ * @param path The path to the endpoint e.g. `/feeds/downloads/737585a0-dad7-4a37-875b-b30b09c3fdc3`
+ * @param apiKey The API key for authentication against the API
+ * @returns A readable response stream
+ */
+export const getResponseStream = async (
+	origin: string,
+	path: string,
+	apiKey: string
+): Promise<Readable> => {
+	const { data } = await axios.get<Readable>(origin + path, {
+		headers: {
+			"Api-Key": apiKey,
+		},
+		responseType: "stream",
+		maxBodyLength: Infinity,
+	});
+	return data;
+};

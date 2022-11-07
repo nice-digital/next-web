@@ -4,14 +4,14 @@ import React, { type FC } from "react";
 import { PrevNext, type PrevNextLink } from "@nice-digital/nds-prev-next";
 
 import { ScrollToContentStartLink } from "@/components/Link/Link";
-import { type ProductChapter } from "@/feeds/publications/types";
+import { type ChapterHeading } from "@/feeds/publications/types";
 
 export type PublicationsPrevNextProps = {
-	chapters: ProductChapter[];
+	chapters: ChapterHeading[];
 };
 
 const getPageLink = (
-	chapter: ProductChapter | undefined
+	chapter: ChapterHeading | undefined
 ): PrevNextLink | undefined =>
 	chapter
 		? {
