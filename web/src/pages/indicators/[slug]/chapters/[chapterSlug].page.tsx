@@ -206,7 +206,7 @@ export const getServerSideProps: GetServerSideProps<
 		chapterContent.embedded?.htmlChapterSectionInfo
 	)
 		? chapterContent.embedded?.htmlChapterSectionInfo
-		: undefined;
+		: null;
 
 	return {
 		props: {
