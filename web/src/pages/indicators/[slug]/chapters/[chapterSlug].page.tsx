@@ -104,33 +104,70 @@ export default function IndicatorChapterPage({
 			/>
 
 			<Grid gutter="loose">
-				<GridItem
-					cols={12}
-					md={4}
-					lg={3}
-					elementType="section"
-					aria-label="Chapters"
-				>
-					<OnThisPage sections={chapterSections} />
-					<PublicationsDownloadLink
-						ariaLabel="Download indicator PDF file"
-						downloadLink={pdfDownloadPath}
-					>
-						Download indicator
-					</PublicationsDownloadLink>
+				<GridItem cols={12} md={12} lg={12}>
+					{chapterSections ? (
+						<Grid reverse gutter="loose">
+							<GridItem cols={12} lg={3}>
+								<OnThisPage sections={chapterSections} />
+							</GridItem>
+							<GridItem cols={12} md={6} lg={6}>
+								<div
+									dangerouslySetInnerHTML={{ __html: chapterHTML }}
+									className={styles.chapterContent}
+								/>
+								<PublicationsPrevNext chapters={chapters} />
+							</GridItem>
+							<GridItem
+								cols={12}
+								md={4}
+								lg={3}
+								elementType="section"
+								aria-label="Chapters"
+							>
+								<PublicationsDownloadLink
+									ariaLabel="Download indicator PDF file"
+									downloadLink={pdfDownloadPath}
+								>
+									Download indicator
+								</PublicationsDownloadLink>
 
-					<PublicationsChapterMenu
-						ariaLabel="Chapter pages"
-						chapters={chapters}
-					/>
-				</GridItem>
+								<PublicationsChapterMenu
+									ariaLabel="Chapter pages"
+									chapters={chapters}
+								/>
+							</GridItem>
+						</Grid>
+					) : (
+						<Grid gutter="loose">
+							<GridItem
+								cols={12}
+								md={4}
+								lg={3}
+								elementType="section"
+								aria-label="Chapters"
+							>
+								<PublicationsDownloadLink
+									ariaLabel="Download indicator PDF file"
+									downloadLink={pdfDownloadPath}
+								>
+									Download indicator
+								</PublicationsDownloadLink>
 
-				<GridItem cols={12} md={8} lg={9} elementType="section">
-					<div
-						dangerouslySetInnerHTML={{ __html: chapterHTML }}
-						className={styles.chapterContent}
-					/>
-					<PublicationsPrevNext chapters={chapters} />
+								<PublicationsChapterMenu
+									ariaLabel="Chapter pages"
+									chapters={chapters}
+								/>
+							</GridItem>
+
+							<GridItem cols={12} md={8} lg={9} elementType="section">
+								<div
+									dangerouslySetInnerHTML={{ __html: chapterHTML }}
+									className={styles.chapterContent}
+								/>
+								<PublicationsPrevNext chapters={chapters} />
+							</GridItem>
+						</Grid>
+					)}
 				</GridItem>
 			</Grid>
 		</>

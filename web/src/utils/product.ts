@@ -10,8 +10,6 @@ import {
 	type ChapterHeading,
 	UploadAndConvertContentPart,
 	HTMLChapterContentInfo,
-	ChapterHTMLContent,
-	HTMLChapterSectionInfo,
 } from "@/feeds/publications/types";
 import { getProductPath, getProductSlug } from "@/utils/url";
 
