@@ -7,9 +7,11 @@ import { Breadcrumbs, Breadcrumb } from "@nice-digital/nds-breadcrumbs";
 import { Grid, GridItem } from "@nice-digital/nds-grid";
 import { PageHeader } from "@nice-digital/nds-page-header";
 
-import { OnThisPage } from "@/components/OnThisPage/OnThisPage";
+import {
+	OnThisPage,
+	OnThisPageSection,
+} from "@/components/OnThisPage/OnThisPage";
 import { PublicationsChapterMenu } from "@/components/PublicationsChapterMenu/PublicationsChapterMenu";
-// import { PublicationsChapterSectionsList } from "@/components/PublicationsChapterSectionList/PublicationsChapterSectionList";
 import { PublicationsDownloadLink } from "@/components/PublicationsDownloadLink/PublicationsDownloadLink";
 import { PublicationsPrevNext } from "@/components/PublicationsPrevNext/PublicationsPrevNext";
 import {
@@ -18,7 +20,6 @@ import {
 	ChapterHeading,
 	ProductDetail,
 	ProductGroup,
-	HTMLChapterSectionInfo,
 } from "@/feeds/publications/publications";
 import { formatDateStr } from "@/utils/datetime";
 import { getChapterLinks, validateRouteParams } from "@/utils/product";
@@ -32,7 +33,7 @@ export type IndicatorChapterPageProps = {
 	chapterTitle: string;
 	pdfDownloadPath: string;
 	chapters: ChapterHeading[];
-	chapterSections: HTMLChapterSectionInfo[];
+	chapterSections: OnThisPageSection[];
 };
 
 export default function IndicatorChapterPage({
@@ -64,11 +65,6 @@ export default function IndicatorChapterPage({
 			</>
 		) : null,
 	].filter(Boolean);
-
-	const sections = chapterSections.map(({ chapterSlug, title }) => ({
-		id: chapterSlug,
-		title: title,
-	}));
 
 	return (
 		<>
@@ -115,8 +111,7 @@ export default function IndicatorChapterPage({
 					elementType="section"
 					aria-label="Chapters"
 				>
-					{/* <PublicationsChapterSectionsList sections={chapterSections} /> */}
-					<OnThisPage sections={sections} />
+					<OnThisPage sections={chapterSections} />
 					<PublicationsDownloadLink
 						ariaLabel="Download indicator PDF file"
 						downloadLink={pdfDownloadPath}
@@ -186,6 +181,13 @@ export const getServerSideProps: GetServerSideProps<
 			? chapterContent.embedded.htmlChapterSectionInfo
 			: [];
 
+	const OnThisPageFormattedChapterSections = chapterSections.map(
+		({ chapterSlug, title }) => ({
+			id: chapterSlug,
+			title: title,
+		})
+	) as unknown as OnThisPageSection[];
+
 	const chapterTitle = chapter.title;
 
 	return {
@@ -194,7 +196,7 @@ export const getServerSideProps: GetServerSideProps<
 			chapters,
 			chapterHTML: chapterContent.content,
 			chapterTitle,
-			chapterSections,
+			chapterSections: OnThisPageFormattedChapterSections,
 			pdfDownloadPath,
 		},
 	};

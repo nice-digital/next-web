@@ -6,11 +6,8 @@
 @use '@nice-digital/nds-core/scss/utils';
 @use '@nice-digital/nds-core/scss/visibility';
 
-//TODO remove these clearance vars as BNF specific
-$brand-banner-clearance: utils.rem(spacing.$xx-large);
 $back-to-top-clearance: utils.rem(spacing.$xx-large);
 
-// OnThisPage
 $on-this-page-scrollbar-background: global.$nice-cream-3;
 $on-this-page-scrollbar-thumb: global.$custom-grey-1;
 
@@ -18,11 +15,10 @@ $on-this-page-scrollbar-thumb: global.$custom-grey-1;
   @include visibility.hide-print;
   display: flex;
   flex-direction: column;
-  top: $brand-banner-clearance;
+  top: 0;
 
   @include media-queries.mq($from: lg) {
-    $height-reduction: $brand-banner-clearance + $back-to-top-clearance;
-    max-height: calc(100vh - #{$height-reduction});
+    max-height: calc(100vh - #{$back-to-top-clearance});
     position: sticky;
   }
 }
@@ -41,6 +37,21 @@ $on-this-page-scrollbar-thumb: global.$custom-grey-1;
   list-style: none;
   margin: 0 0 utils.rem(spacing.$medium);
 
+  li {
+    margin-bottom: utils.rem(spacing.$small);
+  }
+
+  a {
+    display: block;
+    line-height: 1.3;
+    text-decoration: none;
+
+    &:hover {
+      text-decoration: underline;
+      text-decoration-thickness: 0.15rem;
+    }
+  }
+
   @include media-queries.mq($from: lg) {
     margin-bottom: 0;
     overflow: auto;
@@ -56,21 +67,6 @@ $on-this-page-scrollbar-thumb: global.$custom-grey-1;
 
     &::-webkit-scrollbar-thumb {
       background-color: $on-this-page-scrollbar-thumb;
-    }
-  }
-
-  li {
-    margin-bottom: utils.rem(spacing.$small);
-  }
-
-  a {
-    display: block;
-    line-height: 1.3;
-    text-decoration: none;
-
-    &:hover {
-      text-decoration: underline;
-      text-decoration-thickness: 0.15rem;
     }
   }
 }
