@@ -1,4 +1,4 @@
-import { render, screen } from "@testing-library/react";
+import { render, screen, waitFor } from "@testing-library/react";
 import MockAdapter from "axios-mock-adapter";
 import { type GetServerSidePropsContext } from "next";
 import { useRouter } from "next/router";
@@ -56,6 +56,15 @@ describe("/indicators/[slug]/chapters/[chapterSlug].page", () => {
 		it("should match snapshot for main content", () => {
 			render(<IndicatorChapterPage {...props} />);
 			expect(document.body).toMatchSnapshot();
+		});
+
+		it("should render the page title with reversed breadcrumbs for SEO", async () => {
+			render(<IndicatorChapterPage {...props} />);
+			await waitFor(() => {
+				expect(document.title).toEqual(
+					`Indicator NM181 | ${mockChapter.Title} | Indicators | Standards and Indicators`
+				);
+			});
 		});
 
 		it("should render a chapter heading h2", () => {

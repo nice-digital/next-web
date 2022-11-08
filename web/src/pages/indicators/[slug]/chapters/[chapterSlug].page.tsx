@@ -28,6 +28,7 @@ import styles from "./[chapterSlug].page.module.scss";
 export type IndicatorChapterPageProps = {
 	product: ProductDetail;
 	chapterHTML: string;
+	chapterTitle: string;
 	pdfDownloadPath: string;
 	chapters: ChapterHeading[];
 	chapterSections: HTMLChapterSectionInfo[];
@@ -35,6 +36,7 @@ export type IndicatorChapterPageProps = {
 
 export default function IndicatorChapterPage({
 	chapterHTML,
+	chapterTitle,
 	product,
 	pdfDownloadPath,
 	chapters,
@@ -65,7 +67,12 @@ export default function IndicatorChapterPage({
 	return (
 		<>
 			<NextSeo
-				title={product.title + " | Indicators | Standards and Indicators"}
+				title={
+					chapterTitle +
+					" | " +
+					product.title +
+					" | Indicators | Standards and Indicators"
+				}
 				description={product.metaDescription}
 				additionalLinkTags={[
 					{
@@ -172,11 +179,14 @@ export const getServerSideProps: GetServerSideProps<
 			? chapterContent.embedded.htmlChapterSectionInfo
 			: [];
 
+	const chapterTitle = chapter.title;
+
 	return {
 		props: {
 			product,
 			chapters,
 			chapterHTML: chapterContent.content,
+			chapterTitle,
 			chapterSections,
 			pdfDownloadPath,
 		},
