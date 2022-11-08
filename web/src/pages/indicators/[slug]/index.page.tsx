@@ -131,34 +131,38 @@ export default function IndicatorsDetailsPage({
 			/>
 
 			<Grid gutter="loose">
-				<GridItem
-					cols={12}
-					md={4}
-					lg={3}
-					elementType="section"
-					aria-label="Chapters"
-				>
-					<PublicationsDownloadLink
-						ariaLabel="Download indicator PDF file"
-						downloadLink={pdfDownloadPath}
-					>
-						Download indicator
-					</PublicationsDownloadLink>
+				<GridItem cols={12} md={12} lg={12}>
+					<Grid gutter="loose">
+						<GridItem
+							cols={12}
+							md={4}
+							lg={3}
+							elementType="section"
+							aria-label="Chapters"
+						>
+							<PublicationsDownloadLink
+								ariaLabel="Download indicator PDF file"
+								downloadLink={pdfDownloadPath}
+							>
+								Download indicator
+							</PublicationsDownloadLink>
 
-					<PublicationsChapterMenu
-						ariaLabel="Chapter pages"
-						chapters={chapters}
-					/>
-				</GridItem>
+							<PublicationsChapterMenu
+								ariaLabel="Chapter pages"
+								chapters={chapters}
+							/>
+						</GridItem>
 
-				<GridItem cols={12} md={8} lg={9} elementType="section">
-					{summary ? (
-						<div
-							dangerouslySetInnerHTML={{ __html: summary }}
-							className={styles.summary}
-						/>
-					) : null}
-					<PublicationsPrevNext chapters={chapters} />
+						<GridItem cols={12} md={8} lg={9} elementType="section">
+							{summary ? (
+								<div
+									dangerouslySetInnerHTML={{ __html: summary }}
+									className={styles.summary}
+								/>
+							) : null}
+							<PublicationsPrevNext chapters={chapters} />
+						</GridItem>
+					</Grid>
 				</GridItem>
 			</Grid>
 		</>
