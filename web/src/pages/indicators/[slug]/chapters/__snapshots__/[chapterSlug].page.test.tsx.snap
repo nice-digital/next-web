@@ -3,26 +3,12 @@
 exports[`/indicators/[slug]/chapters/[chapterSlug].page IndicatorChapterPage getServerSidePropsFunc should return a correct props when supplied with an id 1`] = `
 Object {
   "props": Object {
-    "chapterContent": Object {
-      "chapterSlug": "indicator-nm181",
-      "content": "<div class=\\"chapter\\" title=\\"Indicator NM181\\" id=\\"ind1001_indicator-nm181\\" xmlns=\\"http://www.w3.org/1999/xhtml\\">
+    "chapterHTML": "<div class=\\"chapter\\" title=\\"Indicator NM181\\" id=\\"ind1001_indicator-nm181\\" xmlns=\\"http://www.w3.org/1999/xhtml\\">
   <h2 class=\\"title\\">
     <a id=\\"indicator-nm181\\"></a>Indicator NM181</h2>
   <p>The percentage of patients with one or more of the following conditions: CHD, atrial fibrillation, chronic heart failure, stroke or TIA, diabetes or dementia with a FAST score of 3 or more or AUDIT-C score of 5 or more <a id=\\"_Hlk13836593\\"></a>in the preceding 2 years who have received brief intervention to help them reduce their alcohol related risk within 3 months of the score being recorded.</p>
 </div>",
-      "eTag": "01000000-0000-003E-0000-000000000010",
-      "links": Object {
-        "self": Array [
-          Object {
-            "href": "/feeds/product/IND1001/part/1/chapter/indicator-nm181",
-          },
-        ],
-      },
-      "partId": 1,
-      "reference": "IND1001",
-      "title": "Test indicator IND1001: The percentage of patients with one or more of the following conditions: CHD, atrial fibrillation, chronic heart failure, stroke or TIA, diabetes or dementia with a FAST score of 3 or more or AUDIT-C score of 5 or more in the preceding 2 years who have received brief intervention to help them reduce their alcohol related risk within 3 months of the score being recorded",
-    },
-    "chapterSections": undefined,
+    "chapterSections": Array [],
     "chapters": Array [
       Object {
         "title": "Overview",

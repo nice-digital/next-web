@@ -1,7 +1,6 @@
 import dayjs from "dayjs";
 import { GetServerSideProps } from "next";
 import { NextSeo } from "next-seo";
-import Link from "next/link";
 import React from "react";
 
 import { Breadcrumbs, Breadcrumb } from "@nice-digital/nds-breadcrumbs";
@@ -9,11 +8,11 @@ import { Grid, GridItem } from "@nice-digital/nds-grid";
 import { PageHeader } from "@nice-digital/nds-page-header";
 
 import { PublicationsChapterMenu } from "@/components/PublicationsChapterMenu/PublicationsChapterMenu";
+import { PublicationsChapterSectionsList } from "@/components/PublicationsChapterSectionList/PublicationsChapterSectionList";
 import { PublicationsDownloadLink } from "@/components/PublicationsDownloadLink/PublicationsDownloadLink";
 import { PublicationsPrevNext } from "@/components/PublicationsPrevNext/PublicationsPrevNext";
 import {
 	getChapterContent,
-	ChapterHTMLContent,
 	isErrorResponse,
 	ChapterHeading,
 	ProductDetail,
@@ -21,38 +20,10 @@ import {
 	HTMLChapterSectionInfo,
 } from "@/feeds/publications/publications";
 import { formatDateStr } from "@/utils/datetime";
-import {
-	getChapterLinks,
-	getChapterSections,
-	validateRouteParams,
-} from "@/utils/product";
+import { getChapterLinks, validateRouteParams } from "@/utils/product";
 import { getPublicationPdfDownloadPath } from "@/utils/url";
 
 import styles from "./[chapterSlug].page.module.scss";
-
-export type ChapterSectionsListProps = {
-	sections: HTMLChapterSectionInfo[];
-};
-
-export const ChapterSectionsList: React.FC<ChapterSectionsListProps> = ({
-	sections,
-}) => {
-	return sections.length > 1 ? (
-		<nav aria-labelledby="inpagenav-title">
-			<h2 id="inpagenav-title">On this page</h2>
-			<ul aria-label="Jump to sections on this page">
-				{sections.map((section) => {
-					const path = `#${section.chapterSlug}`;
-					return (
-						<li key={section.title}>
-							<a href={path}>{section.title}</a>
-						</li>
-					);
-				})}
-			</ul>
-		</nav>
-	) : null;
-};
 
 export type IndicatorChapterPageProps = {
 	product: ProductDetail;
@@ -131,10 +102,7 @@ export default function IndicatorChapterPage({
 					elementType="section"
 					aria-label="Chapters"
 				>
-					<ChapterSectionsList
-						sections={chapterSections}
-						productId={product.id}
-					/>
+					<PublicationsChapterSectionsList sections={chapterSections} />
 					<PublicationsDownloadLink
 						ariaLabel="Download indicator PDF file"
 						downloadLink={pdfDownloadPath}
@@ -198,11 +166,11 @@ export const getServerSideProps: GetServerSideProps<
 
 	if (isErrorResponse(chapterContent)) return { notFound: true };
 
-	const chapterSections = Array.isArray(
-		chapterContent.embedded?.htmlChapterSectionInfo
-	)
-		? chapterContent.embedded?.htmlChapterSectionInfo
-		: [];
+	const chapterSections =
+		chapterContent.embedded?.htmlChapterSectionInfo &&
+		Array.isArray(chapterContent.embedded.htmlChapterSectionInfo)
+			? chapterContent.embedded.htmlChapterSectionInfo
+			: [];
 
 	return {
 		props: {
