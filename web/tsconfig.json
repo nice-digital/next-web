@@ -13,6 +13,7 @@
       "@/test-utils": ["src/test-utils"],
       "@/cache": ["src/cache/cache"],
       "@/config": ["src/config/config"],
+      "@/hooks/*": ["src/hooks/*"],
       "@/logger": ["src/logging/logger"],
       "@/components/*": ["src/components/*"],
       "@/feeds/*": ["src/feeds/*"],

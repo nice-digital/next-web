@@ -7,8 +7,9 @@ import { Breadcrumbs, Breadcrumb } from "@nice-digital/nds-breadcrumbs";
 import { Grid, GridItem } from "@nice-digital/nds-grid";
 import { PageHeader } from "@nice-digital/nds-page-header";
 
+import { OnThisPage } from "@/components/OnThisPage/OnThisPage";
 import { PublicationsChapterMenu } from "@/components/PublicationsChapterMenu/PublicationsChapterMenu";
-import { PublicationsChapterSectionsList } from "@/components/PublicationsChapterSectionList/PublicationsChapterSectionList";
+// import { PublicationsChapterSectionsList } from "@/components/PublicationsChapterSectionList/PublicationsChapterSectionList";
 import { PublicationsDownloadLink } from "@/components/PublicationsDownloadLink/PublicationsDownloadLink";
 import { PublicationsPrevNext } from "@/components/PublicationsPrevNext/PublicationsPrevNext";
 import {
@@ -64,6 +65,11 @@ export default function IndicatorChapterPage({
 		) : null,
 	].filter(Boolean);
 
+	const sections = chapterSections.map(({ chapterSlug, title }) => ({
+		id: chapterSlug,
+		title: title,
+	}));
+
 	return (
 		<>
 			<NextSeo
@@ -109,7 +115,8 @@ export default function IndicatorChapterPage({
 					elementType="section"
 					aria-label="Chapters"
 				>
-					<PublicationsChapterSectionsList sections={chapterSections} />
+					{/* <PublicationsChapterSectionsList sections={chapterSections} /> */}
+					<OnThisPage sections={sections} />
 					<PublicationsDownloadLink
 						ariaLabel="Download indicator PDF file"
 						downloadLink={pdfDownloadPath}
