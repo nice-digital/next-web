@@ -21,53 +21,49 @@ import {
 	HTMLChapterSectionInfo,
 } from "@/feeds/publications/publications";
 import { formatDateStr } from "@/utils/datetime";
-import { getChapterLinks, validateRouteParams } from "@/utils/product";
+import {
+	getChapterLinks,
+	getChapterSections,
+	validateRouteParams,
+} from "@/utils/product";
 import { getPublicationPdfDownloadPath } from "@/utils/url";
 
 import styles from "./[chapterSlug].page.module.scss";
 
 export type ChapterSectionsListProps = {
-	sections?: HTMLChapterSectionInfo[];
-	productId: string;
+	sections: HTMLChapterSectionInfo[];
 };
 
 export const ChapterSectionsList: React.FC<ChapterSectionsListProps> = ({
 	sections,
-	productId,
 }) => {
-	return sections ? (
-		<>
-			<nav aria-labelledby="inpagenav-title">
-				<h2 id="inpagenav-title">On this page</h2>
-				<ul aria-label="Jump to sections on this page">
-					{sections.map((section: HTMLChapterSectionInfo) => {
-						const path = `#${productId}_${section.title}`
-							.toLowerCase()
-							.replace(/\s/g, "-");
-						return (
-							<li key={section.title}>
-								<Link href={path} scroll={false}>
-									{section.title}
-								</Link>
-							</li>
-						);
-					})}
-				</ul>
-			</nav>
-		</>
+	return sections.length > 1 ? (
+		<nav aria-labelledby="inpagenav-title">
+			<h2 id="inpagenav-title">On this page</h2>
+			<ul aria-label="Jump to sections on this page">
+				{sections.map((section) => {
+					const path = `#${section.chapterSlug}`;
+					return (
+						<li key={section.title}>
+							<a href={path}>{section.title}</a>
+						</li>
+					);
+				})}
+			</ul>
+		</nav>
 	) : null;
 };
 
 export type IndicatorChapterPageProps = {
 	product: ProductDetail;
-	chapterContent: ChapterHTMLContent;
+	chapterHTML: string;
 	pdfDownloadPath: string;
 	chapters: ChapterHeading[];
-	chapterSections?: HTMLChapterSectionInfo[];
+	chapterSections: HTMLChapterSectionInfo[];
 };
 
 export default function IndicatorChapterPage({
-	chapterContent,
+	chapterHTML,
 	product,
 	pdfDownloadPath,
 	chapters,
@@ -154,7 +150,7 @@ export default function IndicatorChapterPage({
 
 				<GridItem cols={12} md={8} lg={9} elementType="section">
 					<div
-						dangerouslySetInnerHTML={{ __html: chapterContent.content }}
+						dangerouslySetInnerHTML={{ __html: chapterHTML }}
 						className={styles.chapterContent}
 					/>
 					<PublicationsPrevNext chapters={chapters} />
@@ -206,13 +202,13 @@ export const getServerSideProps: GetServerSideProps<
 		chapterContent.embedded?.htmlChapterSectionInfo
 	)
 		? chapterContent.embedded?.htmlChapterSectionInfo
-		: null;
+		: [];
 
 	return {
 		props: {
 			product,
 			chapters,
-			chapterContent,
+			chapterHTML: chapterContent.content,
 			chapterSections,
 			pdfDownloadPath,
 		},
