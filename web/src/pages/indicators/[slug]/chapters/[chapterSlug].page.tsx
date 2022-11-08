@@ -223,7 +223,7 @@ export const getServerSideProps: GetServerSideProps<
 			id: chapterSlug,
 			title: title,
 		})
-	) as unknown as OnThisPageSection[];
+	) as OnThisPageSection[];
 
 	const chapterTitle = chapter.title;
 
