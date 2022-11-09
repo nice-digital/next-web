@@ -1,15 +1,14 @@
 @use '@nice-digital/nds-core/scss/colours/tokens/global';
-@use '@nice-digital/nds-core/scss/colours';
 @use '@nice-digital/nds-core/scss/media-queries';
 @use '@nice-digital/nds-core/scss/spacing';
 @use '@nice-digital/nds-core/scss/typography';
 @use '@nice-digital/nds-core/scss/utils';
 @use '@nice-digital/nds-core/scss/visibility';
 
-$back-to-top-clearance: utils.rem(spacing.$xx-large);
+$-back-to-top-clearance: utils.rem(spacing.$xx-large);
 
-$on-this-page-scrollbar-background: global.$nice-cream-3;
-$on-this-page-scrollbar-thumb: global.$custom-grey-1;
+$-on-this-page-scrollbar-background: global.$nice-cream-3;
+$-on-this-page-scrollbar-thumb: global.$custom-grey-1;
 
 .wrapper {
   @include visibility.hide-print;
@@ -18,7 +17,7 @@ $on-this-page-scrollbar-thumb: global.$custom-grey-1;
   top: 0;
 
   @include media-queries.mq($from: lg) {
-    max-height: calc(100vh - #{$back-to-top-clearance});
+    max-height: calc(100vh - #{$-back-to-top-clearance});
     position: sticky;
   }
 }
@@ -60,13 +59,13 @@ $on-this-page-scrollbar-thumb: global.$custom-grey-1;
     scrollbar-width: utils.rem(spacing.$small);
 
     &::-webkit-scrollbar {
-      background-color: $on-this-page-scrollbar-background;
+      background-color: $-on-this-page-scrollbar-background;
       display: block;
       width: utils.rem(spacing.$small);
     }
 
     &::-webkit-scrollbar-thumb {
-      background-color: $on-this-page-scrollbar-thumb;
+      background-color: $-on-this-page-scrollbar-thumb;
     }
   }
 }

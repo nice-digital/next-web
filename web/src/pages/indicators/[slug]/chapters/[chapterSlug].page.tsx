@@ -66,6 +66,8 @@ export default function IndicatorChapterPage({
 		) : null,
 	].filter(Boolean);
 
+	const hasOnThisPageMenu = chapterSections.length > 1;
+
 	return (
 		<>
 			<NextSeo
@@ -104,70 +106,45 @@ export default function IndicatorChapterPage({
 			/>
 
 			<Grid gutter="loose">
-				<GridItem cols={12} md={12} lg={12}>
-					{chapterSections ? (
-						<Grid reverse gutter="loose">
-							<GridItem cols={12} lg={3}>
+				<GridItem
+					cols={12}
+					md={4}
+					lg={3}
+					elementType="section"
+					aria-label="Chapters"
+				>
+					<PublicationsDownloadLink
+						ariaLabel="Download indicator PDF file"
+						downloadLink={pdfDownloadPath}
+					>
+						Download indicator
+					</PublicationsDownloadLink>
+
+					<PublicationsChapterMenu
+						ariaLabel="Chapter pages"
+						chapters={chapters}
+					/>
+				</GridItem>
+
+				<GridItem cols={12} md={8} lg={9} elementType="section">
+					<Grid reverse gutter="loose">
+						{hasOnThisPageMenu ? (
+							<GridItem cols={12} md={4} lg={3}>
 								<OnThisPage sections={chapterSections} />
 							</GridItem>
-							<GridItem cols={12} md={6} lg={6}>
-								<div
-									dangerouslySetInnerHTML={{ __html: chapterHTML }}
-									className={styles.chapterContent}
-								/>
-								<PublicationsPrevNext chapters={chapters} />
-							</GridItem>
-							<GridItem
-								cols={12}
-								md={4}
-								lg={3}
-								elementType="section"
-								aria-label="Chapters"
-							>
-								<PublicationsDownloadLink
-									ariaLabel="Download indicator PDF file"
-									downloadLink={pdfDownloadPath}
-								>
-									Download indicator
-								</PublicationsDownloadLink>
-
-								<PublicationsChapterMenu
-									ariaLabel="Chapter pages"
-									chapters={chapters}
-								/>
-							</GridItem>
-						</Grid>
-					) : (
-						<Grid gutter="loose">
-							<GridItem
-								cols={12}
-								md={4}
-								lg={3}
-								elementType="section"
-								aria-label="Chapters"
-							>
-								<PublicationsDownloadLink
-									ariaLabel="Download indicator PDF file"
-									downloadLink={pdfDownloadPath}
-								>
-									Download indicator
-								</PublicationsDownloadLink>
-
-								<PublicationsChapterMenu
-									ariaLabel="Chapter pages"
-									chapters={chapters}
-								/>
-							</GridItem>
-
-							<GridItem cols={12} md={8} lg={9} elementType="section">
-								<div
-									dangerouslySetInnerHTML={{ __html: chapterHTML }}
-									className={styles.chapterContent}
-								/>
-								<PublicationsPrevNext chapters={chapters} />
-							</GridItem>
-						</Grid>
-					)}
+						) : null}
+						<GridItem
+							cols={12}
+							md={hasOnThisPageMenu ? 8 : 12}
+							lg={hasOnThisPageMenu ? 9 : 12}
+						>
+							<div
+								dangerouslySetInnerHTML={{ __html: chapterHTML }}
+								className={styles.chapterContent}
+							/>
+							<PublicationsPrevNext chapters={chapters} />
+						</GridItem>
+					</Grid>
 				</GridItem>
 			</Grid>
 		</>
@@ -218,22 +195,16 @@ export const getServerSideProps: GetServerSideProps<
 			? chapterContent.embedded.htmlChapterSectionInfo
 			: [];
 
-	const OnThisPageFormattedChapterSections = chapterSections.map(
-		({ chapterSlug, title }) => ({
-			id: chapterSlug,
-			title: title,
-		})
-	) as OnThisPageSection[];
-
-	const chapterTitle = chapter.title;
-
 	return {
 		props: {
 			product,
 			chapters,
 			chapterHTML: chapterContent.content,
-			chapterTitle,
-			chapterSections: OnThisPageFormattedChapterSections,
+			chapterTitle: chapter.title,
+			chapterSections: chapterSections.map(({ chapterSlug, title }) => ({
+				id: chapterSlug,
+				title,
+			})),
 			pdfDownloadPath,
 		},
 	};
