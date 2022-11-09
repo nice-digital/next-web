@@ -59,6 +59,11 @@ const tableBodyRender = (documents: Document[]) => (
 
 export default getGuidanceListPage({
 	metaDescription: "TODO",
+	navItems: [
+		{ path: "/indicators/published", text: "Published" },
+		{ path: "/indicators/inconsultation", text: "In consultation" },
+		{ path: "/indicators/indevelopment", text: "In development" },
+	],
 	breadcrumbsTrail: [
 		{ path: "/", text: "Home" },
 		{ path: "/standards-and-indicators", text: "Standards and Indicators" },

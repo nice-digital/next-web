@@ -35,14 +35,24 @@ const NavLink: FC<NavLinkProps> = ({ children, href }) => {
 	);
 };
 
-export const GuidanceListNav: FC = () => (
-	<HorizontalNav aria-label="Stages of guidance development">
-		<NavLink href="/guidance/published">Published</NavLink>
-		<NavLink href="/guidance/inconsultation">In consultation</NavLink>
-		<NavLink href="/guidance/indevelopment">In development</NavLink>
-		<NavLink href="/guidance/awaiting-development">
-			Awaiting development
-		</NavLink>
-		<NavLink href="/guidance/topic-selection">Topic selection</NavLink>
-	</HorizontalNav>
-);
+interface GuidanceListNavProps {
+	ariaLabel: string;
+	navItems: { path: string; text: string }[];
+}
+
+export const GuidanceListNav: FC<GuidanceListNavProps> = ({
+	ariaLabel,
+	navItems,
+}) => {
+	return (
+		<HorizontalNav aria-label={ariaLabel}>
+			{navItems.map((navItem) => {
+				return (
+					<NavLink href={navItem.path} key={navItem.text}>
+						{navItem.text}
+					</NavLink>
+				);
+			})}
+		</HorizontalNav>
+	);
+};

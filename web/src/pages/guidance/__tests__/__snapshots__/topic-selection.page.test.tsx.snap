@@ -35,9 +35,11 @@ exports[`/guidance/topic-selection should match the snapshot 1`] = `
           <li
             class="breadcrumbs__crumb"
           >
-            <span>
+            <a
+              href="/guidance/topic-selection"
+            >
               Topic selection
-            </span>
+            </a>
           </li>
         </ol>
       </nav>
@@ -68,6 +70,7 @@ exports[`/guidance/topic-selection should match the snapshot 1`] = `
       "@type": "ListItem",
       "position": 3,
       "item": {
+        "@id": "/guidance/topic-selection",
         "name": "Topic selection"
       }
     }

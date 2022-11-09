@@ -46,6 +46,16 @@ const tableBodyRender = (documents: Document[]) => (
 
 export default getGuidanceListPage({
 	metaDescription: "Find out what guidance is being considered for development",
+	navItems: [
+		{ path: "/guidance/published", text: "Published" },
+		{ path: "/guidance/inconsultation", text: "In consultation" },
+		{ path: "/guidance/indevelopment", text: "In development" },
+		{
+			path: "/guidance/awaiting-development",
+			text: "Awaiting development",
+		},
+		{ path: "/guidance/topic-selection", text: "Topic selection" },
+	],
 	breadcrumbsTrail: [
 		{ path: "/", text: "Home" },
 		{ path: "/guidance", text: "NICE guidance" },

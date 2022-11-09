@@ -40,6 +40,7 @@ const resultsPerPage = [
 
 export type GetGuidanceListPageOptions = {
 	metaDescription: string;
+	navItems: { path: string; text: string }[];
 	breadcrumbsTrail: { path: string; text: string }[];
 	preheading: ReactChild;
 	heading: ReactChild;
@@ -76,6 +77,7 @@ export type GetGuidanceListPageOptions = {
 export const getGuidanceListPage =
 	({
 		metaDescription,
+		navItems,
 		breadcrumbsTrail,
 		preheading,
 		heading,
@@ -171,7 +173,10 @@ export const getGuidanceListPage =
 					}
 				/>
 
-				<GuidanceListNav />
+				<GuidanceListNav
+					ariaLabel="Stages of guidance development"
+					navItems={navItems}
+				/>
 
 				<Grid gutter="loose" className={styles.sectionWrapper}>
 					<GridItem

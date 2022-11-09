@@ -35,9 +35,11 @@ exports[`/guidance/awaiting-development should match the snapshot 1`] = `
           <li
             class="breadcrumbs__crumb"
           >
-            <span>
+            <a
+              href="/guidance/awaiting-development"
+            >
               Awaiting development
-            </span>
+            </a>
           </li>
         </ol>
       </nav>
@@ -68,6 +70,7 @@ exports[`/guidance/awaiting-development should match the snapshot 1`] = `
       "@type": "ListItem",
       "position": 3,
       "item": {
+        "@id": "/guidance/awaiting-development",
         "name": "Awaiting development"
       }
     }

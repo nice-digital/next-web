@@ -3,13 +3,27 @@ import { useRouter } from "next/router";
 
 import { GuidanceListNav } from "./GuidanceListNav";
 
+const props = {
+	ariaLabel: "Stages of guidance development",
+	navItems: [
+		{ path: "/guidance/published", text: "Published" },
+		{ path: "/guidance/inconsultation", text: "In consultation" },
+		{ path: "/guidance/indevelopment", text: "In development" },
+		{
+			path: "/guidance/awaiting-development",
+			text: "Awaiting development",
+		},
+		{ path: "/guidance/topic-selection", text: "Topic selection" },
+	],
+};
+
 describe("GuidanceListNav", () => {
 	beforeEach(() => {
 		(useRouter as jest.Mock).mockImplementation(() => ({}));
 	});
 
 	it("should render ARIA label on wrapping nav element", () => {
-		render(<GuidanceListNav />);
+		render(<GuidanceListNav {...props} />);
 		expect(screen.getByRole("navigation")).toHaveAccessibleName(
 			"Stages of guidance development"
 		);
@@ -21,7 +35,7 @@ describe("GuidanceListNav", () => {
 		["In development"],
 		["Awaiting development"],
 	])("should render link for %s", (linkText) => {
-		render(<GuidanceListNav />);
+		render(<GuidanceListNav {...props} />);
 		const link = screen.getByText(linkText);
 		expect(link).toBeInTheDocument();
 		expect(link).toHaveAttribute("aria-current", "false");
@@ -34,7 +48,7 @@ describe("GuidanceListNav", () => {
 		["Awaiting development", "/guidance/awaiting-development"],
 	])("should highlight %s when current path is %s", (linkText, pathname) => {
 		(useRouter as jest.Mock).mockImplementation(() => ({ pathname }));
-		render(<GuidanceListNav />);
+		render(<GuidanceListNav {...props} />);
 		expect(screen.getByText(linkText)).toHaveAttribute("aria-current", "true");
 	});
 
@@ -48,7 +62,7 @@ describe("GuidanceListNav", () => {
 				pa: "2",
 			},
 		}));
-		render(<GuidanceListNav />);
+		render(<GuidanceListNav {...props} />);
 		expect(screen.getByText("Awaiting development")).toHaveAttribute(
 			"href",
 			"/guidance/awaiting-development?ndt=Guidance&nai=Antimicrobial%20prescribing"
@@ -62,7 +76,7 @@ describe("GuidanceListNav", () => {
 				ndt: "Guidance",
 			},
 		}));
-		render(<GuidanceListNav />);
+		render(<GuidanceListNav {...props} />);
 		expect(screen.getByText("Published")).toHaveAttribute(
 			"href",
 			"/guidance/published"
