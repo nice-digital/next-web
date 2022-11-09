@@ -1,4 +1,9 @@
-import { render, screen, waitFor } from "@testing-library/react";
+import {
+	getDefaultNormalizer,
+	render,
+	screen,
+	waitFor,
+} from "@testing-library/react";
 import MockAdapter from "axios-mock-adapter";
 import { type GetServerSidePropsContext } from "next";
 import { useRouter } from "next/router";
@@ -6,6 +11,7 @@ import { useRouter } from "next/router";
 import { client } from "@/feeds/index";
 import { FeedPath } from "@/feeds/publications/types";
 import mockChapter from "@/mockData/publications/feeds/products/chapter/IndicatorChapterDetail.json";
+import mockChapterMultipleChapterSections from "@/mockData/publications/feeds/products/chapter/IndicatorChapterDetailMultipleChapterSections.json";
 import mockProduct from "@/mockData/publications/feeds/products/indicator.json";
 
 import IndicatorChapterPage, {
@@ -73,6 +79,130 @@ describe("/indicators/[slug]/chapters/[chapterSlug].page", () => {
 			expect(screen.getByRole("heading", { level: 2 })).toHaveTextContent(
 				"Indicator NM181"
 			);
+		});
+
+		describe("PageHeader", () => {
+			it("should render meta data id in uppercase", () => {
+				render(<IndicatorChapterPage {...props} />);
+				expect(
+					screen.getByText(mockProduct.Id, {
+						selector: ".page-header__metadata li",
+					})
+				).toBeInTheDocument();
+			});
+
+			it.each([
+				["NICE indicator"],
+				["IND1001"],
+				["Published: 8 September 2022"],
+				["Last updated: 12 October 2022"],
+			])("should render a %s page header meta element", (metaContent) => {
+				render(
+					<IndicatorChapterPage
+						{...props}
+						product={{
+							...props.product,
+							lastMajorModificationDate: "2022-10-12",
+						}}
+					/>
+				);
+
+				expect(
+					screen.getByText(
+						(content, element) => {
+							return (
+								getDefaultNormalizer()(element?.textContent as string) ==
+								metaContent
+							);
+						},
+						{
+							selector: ".page-header__metadata li",
+						}
+					)
+				);
+			});
+
+			it("should not render last updated date if published date == lastModified date", () => {
+				render(
+					<IndicatorChapterPage
+						{...props}
+						product={{
+							...props.product,
+							lastMajorModificationDate: props.product.publishedDate,
+						}}
+					/>
+				);
+
+				expect(screen.queryByText("Last updated:")).not.toBeInTheDocument();
+			});
+
+			it("should render last updated date if published date !== lastModified date", () => {
+				render(
+					<IndicatorChapterPage
+						{...props}
+						product={{
+							...props.product,
+							lastMajorModificationDate: "2022-10-12",
+						}}
+					/>
+				);
+
+				expect(screen.getByText("Last updated:")).toBeInTheDocument();
+			});
+
+			it("should render 'Published' date page header lead meta element in the correct format", () => {
+				render(<IndicatorChapterPage {...props} />);
+				const publishedDateEl = screen.getByText("8 September 2022", {
+					selector: "time",
+				});
+				expect(publishedDateEl).toBeInTheDocument();
+			});
+
+			it("should render 'Published' date page header lead meta element with correctly formatted datetime attribute", () => {
+				render(<IndicatorChapterPage {...props} />);
+				const publishedDateEl = screen.getByText("8 September 2022", {
+					selector: "time",
+				});
+				expect(publishedDateEl).toHaveAttribute("datetime", "2022-09-08");
+			});
+
+			it("should not render 'Published' date page header lead meta element if no published date supplied", () => {
+				render(
+					<IndicatorChapterPage
+						{...props}
+						product={{
+							...props.product,
+							publishedDate: "",
+						}}
+					/>
+				);
+
+				expect(screen.queryByText("Published:")).not.toBeInTheDocument();
+			});
+
+			it("should render 'Last updated' date page header lead meta element in the correct format", () => {
+				render(
+					<IndicatorChapterPage
+						{...props}
+						product={{
+							...props.product,
+							lastMajorModificationDate: "2022-10-12",
+						}}
+					/>
+				);
+				const publishedDateEl = screen.getByText("12 October 2022", {
+					selector: "time",
+				});
+				expect(publishedDateEl).toBeInTheDocument();
+			});
+
+			it("should render 'Last updated' date page header lead meta element with correctly formatted datetime attribute", () => {
+				render(<IndicatorChapterPage {...props} />);
+				const publishedDateEl = screen.getByText("8 September 2022", {
+					selector: "time",
+				});
+				expect(publishedDateEl).toHaveAttribute("datetime", "2022-09-08");
+			});
 		});
 
 		describe("Chapter sections", () => {
@@ -174,6 +304,23 @@ describe("/indicators/[slug]/chapters/[chapterSlug].page", () => {
 				} as IndicatorChapterPageGetServerSidePropsContext);
 
 				expect(redirectResult).toStrictEqual({ notFound: true });
+			});
+
+			it("should return an empty array for chapter sections prop when chapter section info is an object", async () => {
+				axiosMock
+					.onGet(new RegExp(mockChapter._links.self[0].href))
+					.replyOnce(200, {
+						...mockChapter,
+						// Mock a response with a single chapter section object
+						_embedded: { "nice.publications:html-chapter-section-info": {} },
+					});
+
+				const result = await getServerSideProps({
+					params: { slug, chapterSlug: chapterSlug },
+					resolvedUrl: `/indicators/${slug}/chapters/${chapterSlug}`,
+				} as IndicatorChapterPageGetServerSidePropsContext);
+
+				expect(result).toHaveProperty("props.chapterSections", []);
 			});
 		});
 	});
