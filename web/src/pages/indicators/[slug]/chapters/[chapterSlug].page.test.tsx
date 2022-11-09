@@ -11,7 +11,6 @@ import { useRouter } from "next/router";
 import { client } from "@/feeds/index";
 import { FeedPath } from "@/feeds/publications/types";
 import mockChapter from "@/mockData/publications/feeds/products/chapter/IndicatorChapterDetail.json";
-import mockChapterMultipleChapterSections from "@/mockData/publications/feeds/products/chapter/IndicatorChapterDetailMultipleChapterSections.json";
 import mockProduct from "@/mockData/publications/feeds/products/indicator.json";
 
 import IndicatorChapterPage, {
