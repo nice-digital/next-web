@@ -54,4 +54,5 @@ export default getGuidanceListPage({
 export const getServerSideProps = getGetServerSidePropsFunc({
 	gstPreFilter: "Awaiting development",
 	defaultSortOrder,
+	index: "guidance",
 });

@@ -84,4 +84,5 @@ export const getServerSideProps = getGetServerSidePropsFunc({
 	gstPreFilter: "In development",
 	defaultSortOrder,
 	dateFilterLabel,
+	index: "guidance",
 });

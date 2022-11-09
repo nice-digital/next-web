@@ -80,4 +80,5 @@ export const getServerSideProps = getGetServerSidePropsFunc({
 	gstPreFilter: "Published",
 	defaultSortOrder,
 	dateFilterLabel,
+	index: "guidance",
 });

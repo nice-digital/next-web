@@ -34,6 +34,7 @@ export interface GetGetServerSidePropsOptions {
 		| "Topic selection";
 	defaultSortOrder: SortOrder;
 	dateFilterLabel?: string;
+	index: string;
 }
 
 export const getGetServerSidePropsFunc =
@@ -41,6 +42,7 @@ export const getGetServerSidePropsFunc =
 		gstPreFilter,
 		defaultSortOrder,
 		dateFilterLabel,
+		index,
 	}: GetGetServerSidePropsOptions) =>
 	async (
 		context: GetServerSidePropsContext
@@ -52,7 +54,7 @@ export const getGetServerSidePropsFunc =
 
 		initSearchClient({
 			baseURL: publicRuntimeConfig.search.baseURL,
-			index: "guidance",
+			index: index,
 		});
 
 		const searchUrl = getSearchUrl(context.resolvedUrl);

@@ -78,4 +78,5 @@ export const getServerSideProps = getGetServerSidePropsFunc({
 	gstPreFilter: "In consultation",
 	defaultSortOrder,
 	dateFilterLabel,
+	index: "guidance",
 });
