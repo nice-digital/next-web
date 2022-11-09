@@ -39,7 +39,11 @@ const tableBodyRender = (documents: Document[]) => (
 export default getGuidanceListPage({
 	metaDescription:
 		"Find out which guidance and quality standards are awaiting development",
-	breadcrumb: "Awaiting development",
+	breadcrumbsTrail: [
+		{ path: "/", text: "Home" },
+		{ path: "/guidance", text: "NICE guidance" },
+		{ path: "/guidance/awaiting-development", text: "Awaiting development" },
+	],
 	preheading: "Guidance and quality standards ",
 	heading: "Awaiting development",
 	title: "Guidance and quality standards awaiting development",

@@ -58,12 +58,19 @@ const tableBodyRender = (documents: Document[]) => (
 );
 
 export default getGuidanceListPage({
-	metaDescription:
-		"Browse the complete list of all our published health and social care guidance, including guidelines, NICE advice and quality standards",
-	breadcrumb: "Published",
-	preheading: "Published ",
-	heading: <>Guidance, NICE advice and quality&nbsp;standards</>,
-	title: "Published guidance, NICE advice and quality standards",
+	metaDescription: "TODO",
+	breadcrumbsTrail: [
+		{ path: "/", text: "Home" },
+		{ path: "/standards-and-indicators", text: "Standards and Indicators" },
+		{ path: "/standards-and-indicators/indicators", text: "Indicators" },
+		{
+			path: "/standards-and-indicators/indicators/published",
+			text: "Published",
+		},
+	],
+	preheading: "",
+	heading: <>Indicators</>,
+	title: "Indicators",
 	defaultSort: {
 		order: defaultSortOrder,
 		label: "Date",
@@ -84,11 +91,3 @@ export const getServerSideProps = getGetServerSidePropsFunc({
 	dateFilterLabel,
 	index: "indicators",
 });
-
-// export default function PublishedPage(): JSX.Element {
-// 	return (
-// 		<>
-// 			<p>Indicators published page</p>
-// 		</>
-// 	);
-// }

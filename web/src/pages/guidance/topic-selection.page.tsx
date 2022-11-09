@@ -46,7 +46,11 @@ const tableBodyRender = (documents: Document[]) => (
 
 export default getGuidanceListPage({
 	metaDescription: "Find out what guidance is being considered for development",
-	breadcrumb: "Topic selection",
+	breadcrumbsTrail: [
+		{ path: "/", text: "Home" },
+		{ path: "/guidance", text: "NICE guidance" },
+		{ path: "/guidance/topic-selection", text: "Topic selection" },
+	],
 	preheading: "Guidance in ",
 	heading: "Topic selection",
 	title: "Guidance in topic selection",
@@ -61,4 +65,5 @@ export default getGuidanceListPage({
 export const getServerSideProps = getGetServerSidePropsFunc({
 	gstPreFilter: "Topic selection",
 	defaultSortOrder,
+	index: "guidance",
 });

@@ -10,6 +10,7 @@ import {
 	SortOrder,
 	Modifier,
 	Navigator,
+	SearchIndex,
 } from "@nice-digital/search-client";
 
 import { getRedirectUrl } from "@/components/GuidanceListPage/redirects";
@@ -34,7 +35,7 @@ export interface GetGetServerSidePropsOptions {
 		| "Topic selection";
 	defaultSortOrder: SortOrder;
 	dateFilterLabel?: string;
-	index: string;
+	index: SearchIndex;
 }
 
 export const getGetServerSidePropsFunc =

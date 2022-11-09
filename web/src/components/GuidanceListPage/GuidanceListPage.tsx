@@ -40,7 +40,7 @@ const resultsPerPage = [
 
 export type GetGuidanceListPageOptions = {
 	metaDescription: string;
-	breadcrumb: ReactChild;
+	breadcrumbsTrail: { path: string; text: string }[];
 	preheading: ReactChild;
 	heading: ReactChild;
 	title: string;
@@ -76,7 +76,7 @@ export type GetGuidanceListPageOptions = {
 export const getGuidanceListPage =
 	({
 		metaDescription,
-		breadcrumb,
+		breadcrumbsTrail,
 		preheading,
 		heading,
 		title,
@@ -96,16 +96,19 @@ export const getGuidanceListPage =
 		// Announcement text, used for giving audible notifications to screen readers when results have changed
 		const [announcement, setAnnouncement] = useState(""),
 			// Cache the breadcrumbs as they're static and it means we can use them on both the error view and success view
-			breadcrumbs = useMemo(
-				() => (
+			breadcrumbs = useMemo(() => {
+				return (
 					<Breadcrumbs>
-						<Breadcrumb to="/">Home</Breadcrumb>
-						<Breadcrumb to="/guidance">NICE guidance</Breadcrumb>
-						<Breadcrumb>{breadcrumb}</Breadcrumb>
+						{breadcrumbsTrail.map((breadcrumb) => {
+							return (
+								<Breadcrumb to={breadcrumb.path} key={breadcrumb.text}>
+									{breadcrumb.text}
+								</Breadcrumb>
+							);
+						})}
 					</Breadcrumbs>
-				),
-				[]
-			),
+				);
+			}, []),
 			{ failed } = results,
 			{
 				documents,
