@@ -75,6 +75,73 @@ describe("/indicators/[slug]/chapters/[chapterSlug].page", () => {
 			);
 		});
 
+		describe("Chapter sections", () => {
+			it("should not render On This Page nav when there are no chapter sections", () => {
+				const propsChapterSectionsEmpty = {
+					...props,
+					chapterSections: [],
+				};
+				render(<IndicatorChapterPage {...propsChapterSectionsEmpty} />);
+				expect(
+					screen.queryByRole("heading", { level: 2, name: "On this page" })
+				).not.toBeInTheDocument();
+
+				expect(
+					screen.queryByRole("list", {
+						name: "Jump links to sections on this page",
+					})
+				).not.toBeInTheDocument();
+			});
+
+			it("should not render On This Page nav when there is one chapter section", () => {
+				const propsChapterSectionsEmpty = {
+					...props,
+					chapterSections: [
+						{
+							id: "test-section-title-1",
+							title: "test section title 1",
+						},
+					],
+				};
+				render(<IndicatorChapterPage {...propsChapterSectionsEmpty} />);
+				expect(
+					screen.queryByRole("heading", { level: 2, name: "On this page" })
+				).not.toBeInTheDocument();
+
+				expect(
+					screen.queryByRole("list", {
+						name: "Jump links to sections on this page",
+					})
+				).not.toBeInTheDocument();
+			});
+
+			it("should render On This Page nav when there is more than one chapterSection", () => {
+				const propsChapterSectionsPopulated = {
+					...props,
+					chapterSections: [
+						{
+							id: "test-section-title-1",
+							title: "test section title 1",
+						},
+						{
+							id: "test-section-title-2",
+							title: "test section title 2",
+						},
+					],
+				};
+				render(<IndicatorChapterPage {...propsChapterSectionsPopulated} />);
+				expect(
+					screen.getByRole("heading", { level: 2, name: "On this page" })
+				).toBeInTheDocument();
+
+				expect(
+					screen.getByRole("list", {
+						name: "Jump links to sections on this page",
+					})
+				).toBeInTheDocument();
+			});
+		});
+
 		describe("getServerSidePropsFunc", () => {
 			it("should return a correct props when supplied with an id", async () => {
 				const result = await getServerSideProps({
