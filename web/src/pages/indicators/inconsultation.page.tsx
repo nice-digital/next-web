@@ -1,4 +1,3 @@
-import Link from "next/link";
 import React from "react";
 
 import { Breadcrumb } from "@nice-digital/nds-breadcrumbs";
@@ -61,7 +60,8 @@ const tableBodyRender = (documents: Document[]) => (
 );
 
 export default getProductListPage({
-	metaDescription: "TODO",
+	metaDescription:
+		"See a complete list of indicators currently in consultation. Our indicators measure outcomes that reflect the quality of care or processes.",
 	listNavType: IndicatorListNav,
 	breadcrumbTrail: [
 		<Breadcrumb to="/standards-and-indicators" key="standards-and-indicators">

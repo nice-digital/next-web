@@ -61,7 +61,8 @@ const tableBodyRender = (documents: Document[]) => (
 );
 
 export default getProductListPage({
-	metaDescription: "TODO",
+	metaDescription:
+		"The complete list of all our published indicators, for measuring outcomes that reflect the quality of care or processes, linked by evidence to improved outcomes.",
 	listNavType: IndicatorListNav,
 	breadcrumbTrail: [
 		<Breadcrumb to="/standards-and-indicators" key="standards-and-indicators">
