@@ -3,7 +3,7 @@ import { useRouter } from "next/router";
 
 import { IndicatorListNav } from "./IndicatorListNav";
 
-describe("GuidanceListNav", () => {
+describe("IndicatorListNav", () => {
 	beforeEach(() => {
 		(useRouter as jest.Mock).mockImplementation(() => ({}));
 	});

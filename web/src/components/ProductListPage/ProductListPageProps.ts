@@ -5,7 +5,7 @@ export interface ActiveModifier {
 	toggleUrl: string;
 }
 
-export interface GuidanceListPageProps {
+export interface ProductListPageProps {
 	results: SearchResults;
 	activeModifiers: ActiveModifier[];
 	searchUrl: SearchUrl;

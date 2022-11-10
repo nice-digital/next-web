@@ -1,11 +1,11 @@
 import { Breadcrumb } from "@nice-digital/nds-breadcrumbs";
 import { SortOrder, Document } from "@nice-digital/search-client";
 
-import { GuidanceListNav } from "@/components/GuidanceListPage/GuidanceListNav/GuidanceListNav";
+import { GuidanceListNav } from "@/components/ProductListNav/GuidanceListNav";
 import {
-	getGuidanceListPage,
+	getProductListPage,
 	getGetServerSidePropsFunc,
-} from "@/components/GuidanceListPage/GuidanceListPage";
+} from "@/components/ProductListPage/ProductListPage";
 import { ResponsiveDate } from "@/components/ResponsiveDate/ResponsiveDate";
 
 const defaultSortOrder = SortOrder.titleAscending,
@@ -61,7 +61,7 @@ const tableBodyRender = (documents: Document[]) => (
 	</>
 );
 
-export default getGuidanceListPage({
+export default getProductListPage({
 	metaDescription:
 		"View a complete list of all our guidance, NICE advice and quality standards currently in development",
 	listNavType: GuidanceListNav,

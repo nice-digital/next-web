@@ -10,8 +10,9 @@ import {
 import sampleData from "@/mockData/search/guidance-published.json";
 import { render, screen, cleanup } from "@/test-utils";
 
-import { GuidanceListNav } from "./GuidanceListNav/GuidanceListNav";
-import { getGuidanceListPage } from "./GuidanceListPage";
+import { GuidanceListNav } from "../ProductListNav/GuidanceListNav";
+
+import { getProductListPage } from "./ProductListPage";
 
 jest.mock("@/logger", () => ({
 	logger: { error: jest.fn() },
@@ -19,7 +20,7 @@ jest.mock("@/logger", () => ({
 }));
 
 describe("/guidance/published", () => {
-	const GuidanceListPage = getGuidanceListPage({
+	const ProductListPage = getProductListPage({
 		metaDescription: "A list of all published guidance",
 		listNavType: GuidanceListNav,
 		breadcrumbTrail: [
@@ -65,7 +66,7 @@ describe("/guidance/published", () => {
 
 		// eslint-disable-next-line testing-library/no-render-in-setup
 		render(
-			<GuidanceListPage
+			<ProductListPage
 				activeModifiers={[]}
 				results={sampleData as unknown as SearchResultsSuccess}
 				searchUrl={{ route: "/guidance/published" } as SearchUrl}
@@ -102,7 +103,7 @@ describe("/guidance/published", () => {
 			cleanup();
 
 			render(
-				<GuidanceListPage
+				<ProductListPage
 					activeModifiers={[]}
 					results={
 						{ ...sampleData, documents: [] } as unknown as SearchResultsSuccess

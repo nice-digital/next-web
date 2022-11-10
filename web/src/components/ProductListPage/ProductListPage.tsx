@@ -15,7 +15,6 @@ import {
 	Breadcrumbs,
 	Breadcrumb,
 	type BreadcrumbProps,
-	type ValidBreadcrumbProp,
 } from "@nice-digital/nds-breadcrumbs";
 import { Grid, GridItem } from "@nice-digital/nds-grid";
 import { PageHeader } from "@nice-digital/nds-page-header";
@@ -31,17 +30,17 @@ import {
 import { Announcer } from "@/components/Announcer/Announcer";
 import { CopyToClipboard } from "@/components/CopyToClipboard/CopyToClipboard";
 import { ErrorPageContent } from "@/components/ErrorPageContent/ErrorPageContent";
-import { GuidanceListFilterSummary } from "@/components/GuidanceListPage/GuidanceListFilterSummary/GuidanceListFilterSummary";
 import { Link, ScrollToLink } from "@/components/Link/Link";
 import { SearchListFilters } from "@/components/SearchListFilters/SearchListFilters";
 import { SearchPagination } from "@/components/SearchPagination/SearchPagination";
 import { SkipLink } from "@/components/SkipLink/SkipLink";
 
-import { defaultPageSize } from "./GuidanceListGetServerSideProps/GuidanceListGetServerSideProps";
-import styles from "./GuidanceListPage.module.scss";
-import { GuidanceListPageProps } from "./GuidanceListPageProps";
+import { GuidanceListFilterSummary } from "./ProductListFilterSummary/ProductListFilterSummary";
+import { defaultPageSize } from "./ProductListGetServerSideProps/ProductListGetServerSideProps";
+import styles from "./ProductListPage.module.scss";
+import { ProductListPageProps } from "./ProductListPageProps";
 
-export { getGetServerSidePropsFunc } from "./GuidanceListGetServerSideProps/GuidanceListGetServerSideProps";
+export { getGetServerSidePropsFunc } from "./ProductListGetServerSideProps/ProductListGetServerSideProps";
 
 const resultsPerPage = [
 	{ count: 10, label: "10" },
@@ -50,7 +49,7 @@ const resultsPerPage = [
 	{ count: 9999, label: "All" },
 ];
 
-export type GetGuidanceListPageOptions = {
+export type GetProductListPageOptions = {
 	metaDescription: string;
 	listNavType: ElementType;
 	breadcrumbTrail: ReactElement<BreadcrumbProps>[];
@@ -88,7 +87,7 @@ export type GetGuidanceListPageOptions = {
  *
  * @returns A guidance list page component
  */
-export const getGuidanceListPage =
+export const getProductListPage =
 	({
 		metaDescription,
 		listNavType: ListNavType,
@@ -104,7 +103,7 @@ export const getGuidanceListPage =
 		dateFilterLabel,
 		useFutureDates,
 		tableBodyRender,
-	}: GetGuidanceListPageOptions): FC<GuidanceListPageProps> =>
+	}: GetProductListPageOptions): FC<ProductListPageProps> =>
 	({
 		results,
 		searchUrl: { q, s, from, to, ps = defaultPageSize },

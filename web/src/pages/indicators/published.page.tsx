@@ -4,11 +4,11 @@ import React from "react";
 import { Breadcrumb } from "@nice-digital/nds-breadcrumbs";
 import { Document, SortOrder } from "@nice-digital/search-client";
 
-import { IndicatorListNav } from "@/components/GuidanceListPage/GuidanceListNav/IndicatorListNav";
+import { IndicatorListNav } from "@/components/ProductListNav/IndicatorListNav";
 import {
-	getGuidanceListPage,
+	getProductListPage,
 	getGetServerSidePropsFunc,
-} from "@/components/GuidanceListPage/GuidanceListPage";
+} from "@/components/ProductListPage/ProductListPage";
 import { ResponsiveDate } from "@/components/ResponsiveDate/ResponsiveDate";
 
 const defaultSortOrder = SortOrder.dateDescending,
@@ -60,7 +60,7 @@ const tableBodyRender = (documents: Document[]) => (
 	</>
 );
 
-export default getGuidanceListPage({
+export default getProductListPage({
 	metaDescription: "TODO",
 	listNavType: IndicatorListNav,
 	breadcrumbTrail: [
