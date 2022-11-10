@@ -56,7 +56,7 @@ export type GetProductListPageOptions = {
 	currentBreadcrumb: string;
 	preheading: ReactChild;
 	heading: ReactChild;
-	lead?: ReactChild;
+	intro?: ReactChild;
 	title: string;
 	defaultSort: {
 		order: SortOrder;
@@ -95,7 +95,7 @@ export const getProductListPage =
 		currentBreadcrumb,
 		preheading,
 		heading,
-		lead,
+		intro,
 		title,
 		defaultSort,
 		secondarySort,
@@ -182,12 +182,13 @@ export const getProductListPage =
 					id="content-start"
 					lead={
 						<>
-							{lead}
 							<SkipLink targetId="filters">Skip to filters</SkipLink>
 							<SkipLink targetId="results">Skip to results</SkipLink>
 						</>
 					}
 				/>
+
+				{intro}
 
 				<ListNavType />
 

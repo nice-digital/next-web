@@ -1,4 +1,3 @@
-import Link from "next/link";
 import React from "react";
 
 import { Breadcrumb } from "@nice-digital/nds-breadcrumbs";
@@ -78,7 +77,7 @@ export default getProductListPage({
 	currentBreadcrumb: "Published indicators",
 	preheading: "Published",
 	heading: <>Indicators</>,
-	lead: (
+	intro: (
 		<>
 			<p>
 				The NICE indicator menu includes general practice and CCG level
@@ -86,7 +85,7 @@ export default getProductListPage({
 				type or subject - or filter by both, for more specific results.
 			</p>
 			<p>
-				<Link href="/standards-and-indicators">About NICE Indicators</Link>
+				<a href="/standards-and-indicators">About NICE Indicators</a>
 			</p>
 		</>
 	),
