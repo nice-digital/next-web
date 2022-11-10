@@ -5,10 +5,10 @@
 @use '@nice-digital/nds-core/scss/utils';
 @use '@nice-digital/nds-core/scss/visibility';
 
-$-back-to-top-clearance: utils.rem(spacing.$xx-large);
+$back-to-top-clearance: utils.rem(spacing.$xx-large);
 
-$-on-this-page-scrollbar-background: global.$nice-cream-3;
-$-on-this-page-scrollbar-thumb: global.$custom-grey-1;
+$on-this-page-scrollbar-background: global.$nice-cream-3;
+$on-this-page-scrollbar-thumb: global.$custom-grey-1;
 
 .wrapper {
   @include visibility.hide-print;
