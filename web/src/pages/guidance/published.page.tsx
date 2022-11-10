@@ -1,3 +1,4 @@
+import { Breadcrumb } from "@nice-digital/nds-breadcrumbs";
 import { Document, SortOrder } from "@nice-digital/search-client";
 
 import { GuidanceListNav } from "@/components/GuidanceListPage/GuidanceListNav/GuidanceListNav";
@@ -60,11 +61,12 @@ export default getGuidanceListPage({
 	metaDescription:
 		"Browse the complete list of all our published health and social care guidance, including guidelines, NICE advice and quality standards",
 	listNavType: GuidanceListNav,
-	breadcrumbsTrail: [
-		{ path: "/", text: "Home" },
-		{ path: "/guidance", text: "NICE guidance" },
-		{ path: "/guidance/published", text: "Published" },
+	breadcrumbTrail: [
+		<Breadcrumb to="/guidance" key="NICE guidance">
+			NICE guidance
+		</Breadcrumb>,
 	],
+	currentBreadcrumb: "Published",
 	preheading: "Published ",
 	heading: <>Guidance, NICE advice and quality&nbsp;standards</>,
 	title: "Published guidance, NICE advice and quality standards",

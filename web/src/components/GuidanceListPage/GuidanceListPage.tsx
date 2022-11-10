@@ -57,6 +57,7 @@ export type GetGuidanceListPageOptions = {
 	currentBreadcrumb: string;
 	preheading: ReactChild;
 	heading: ReactChild;
+	lead?: ReactChild;
 	title: string;
 	defaultSort: {
 		order: SortOrder;
@@ -95,6 +96,7 @@ export const getGuidanceListPage =
 		currentBreadcrumb,
 		preheading,
 		heading,
+		lead,
 		title,
 		defaultSort,
 		secondarySort,
@@ -181,6 +183,7 @@ export const getGuidanceListPage =
 					id="content-start"
 					lead={
 						<>
+							{lead}
 							<SkipLink targetId="filters">Skip to filters</SkipLink>
 							<SkipLink targetId="results">Skip to results</SkipLink>
 						</>
@@ -188,8 +191,6 @@ export const getGuidanceListPage =
 				/>
 
 				<ListNavType />
-
-				{/* {ListNavType} */}
 
 				<Grid gutter="loose" className={styles.sectionWrapper}>
 					<GridItem

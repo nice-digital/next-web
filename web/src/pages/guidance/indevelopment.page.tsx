@@ -1,5 +1,7 @@
+import { Breadcrumb } from "@nice-digital/nds-breadcrumbs";
 import { SortOrder, Document } from "@nice-digital/search-client";
 
+import { GuidanceListNav } from "@/components/GuidanceListPage/GuidanceListNav/GuidanceListNav";
 import {
 	getGuidanceListPage,
 	getGetServerSidePropsFunc,
@@ -62,21 +64,13 @@ const tableBodyRender = (documents: Document[]) => (
 export default getGuidanceListPage({
 	metaDescription:
 		"View a complete list of all our guidance, NICE advice and quality standards currently in development",
-	navItems: [
-		{ path: "/guidance/published", text: "Published" },
-		{ path: "/guidance/inconsultation", text: "In consultation" },
-		{ path: "/guidance/indevelopment", text: "In development" },
-		{
-			path: "/guidance/awaiting-development",
-			text: "Awaiting development",
-		},
-		{ path: "/guidance/topic-selection", text: "Topic selection" },
+	listNavType: GuidanceListNav,
+	breadcrumbTrail: [
+		<Breadcrumb to="/guidance" key="NICE guidance">
+			NICE guidance
+		</Breadcrumb>,
 	],
-	breadcrumbsTrail: [
-		{ path: "/", text: "Home" },
-		{ path: "/guidance", text: "NICE guidance" },
-		{ path: "/guidance/indevelopment", text: "In development" },
-	],
+	currentBreadcrumb: "In development",
 	preheading: "Guidance, NICE advice and quality standards ",
 	heading: "In development",
 	title: "Guidance, NICE advice and quality standards in development",
