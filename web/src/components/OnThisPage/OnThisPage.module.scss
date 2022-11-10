@@ -5,10 +5,10 @@
 @use '@nice-digital/nds-core/scss/utils';
 @use '@nice-digital/nds-core/scss/visibility';
 
-$_back-to-top-clearance: utils.rem(spacing.$xx-large);
+$back-to-top-clearance: utils.rem(spacing.$xx-large);
 
-$_on-this-page-scrollbar-background: global.$nice-cream-3;
-$_on-this-page-scrollbar-thumb: global.$custom-grey-1;
+$on-this-page-scrollbar-background: global.$nice-cream-3;
+$on-this-page-scrollbar-thumb: global.$custom-grey-1;
 
 .wrapper {
   @include visibility.hide-print;
@@ -17,7 +17,7 @@ $_on-this-page-scrollbar-thumb: global.$custom-grey-1;
   top: 0;
 
   @include media-queries.mq($from: lg) {
-    max-height: calc(100vh - #{$_back-to-top-clearance});
+    max-height: calc(100vh - #{$back-to-top-clearance});
     position: sticky;
   }
 }
@@ -59,13 +59,13 @@ $_on-this-page-scrollbar-thumb: global.$custom-grey-1;
     scrollbar-width: utils.rem(spacing.$small);
 
     &::-webkit-scrollbar {
-      background-color: $_on-this-page-scrollbar-background;
+      background-color: $on-this-page-scrollbar-background;
       display: block;
       width: utils.rem(spacing.$small);
     }
 
     &::-webkit-scrollbar-thumb {
-      background-color: $_on-this-page-scrollbar-thumb;
+      background-color: $on-this-page-scrollbar-thumb;
     }
   }
 }
