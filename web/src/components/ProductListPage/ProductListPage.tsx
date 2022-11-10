@@ -35,7 +35,7 @@ import { SearchListFilters } from "@/components/SearchListFilters/SearchListFilt
 import { SearchPagination } from "@/components/SearchPagination/SearchPagination";
 import { SkipLink } from "@/components/SkipLink/SkipLink";
 
-import { GuidanceListFilterSummary } from "./ProductListFilterSummary/ProductListFilterSummary";
+import { ProductListFilterSummary } from "./ProductListFilterSummary/ProductListFilterSummary";
 import { defaultPageSize } from "./ProductListGetServerSideProps/ProductListGetServerSideProps";
 import styles from "./ProductListPage.module.scss";
 import { ProductListPageProps } from "./ProductListPageProps";
@@ -233,7 +233,7 @@ export const getProductListPage =
 						elementType="section"
 						aria-labelledby="filter-summary"
 					>
-						<GuidanceListFilterSummary
+						<ProductListFilterSummary
 							results={results as SearchResultsSuccess}
 							activeModifiers={activeModifiers}
 							currentSortOrder={s}
