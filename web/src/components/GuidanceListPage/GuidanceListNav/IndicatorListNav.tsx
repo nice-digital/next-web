@@ -35,14 +35,10 @@ const NavLink: FC<NavLinkProps> = ({ children, href }) => {
 	);
 };
 
-export const GuidanceListNav: FC = () => (
-	<HorizontalNav aria-label="Stages of guidance development">
-		<NavLink href="/guidance/published">Published</NavLink>
-		<NavLink href="/guidance/inconsultation">In consultation</NavLink>
-		<NavLink href="/guidance/indevelopment">In development</NavLink>
-		<NavLink href="/guidance/awaiting-development">
-			Awaiting development
-		</NavLink>
-		<NavLink href="/guidance/topic-selection">Topic selection</NavLink>
+export const IndicatorListNav: FC = () => (
+	<HorizontalNav aria-label="Stages of indicator development">
+		<NavLink href="/indicators/published">Published</NavLink>
+		<NavLink href="/indicators/inconsultation">In consultation</NavLink>
+		<NavLink href="/indicators/indevelopment">In development</NavLink>
 	</HorizontalNav>
 );

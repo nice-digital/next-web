@@ -1,9 +1,22 @@
 import { NextSeo } from "next-seo";
 import { useRouter } from "next/router";
 import pluralize from "pluralize";
-import React, { FC, ReactChild, useEffect, useMemo, useState } from "react";
+import React, {
+	ElementType,
+	FC,
+	ReactChild,
+	ReactElement,
+	useEffect,
+	useMemo,
+	useState,
+} from "react";
 
-import { Breadcrumbs, Breadcrumb } from "@nice-digital/nds-breadcrumbs";
+import {
+	Breadcrumbs,
+	Breadcrumb,
+	type BreadcrumbProps,
+	type ValidBreadcrumbProp,
+} from "@nice-digital/nds-breadcrumbs";
 import { Grid, GridItem } from "@nice-digital/nds-grid";
 import { PageHeader } from "@nice-digital/nds-page-header";
 import { Table } from "@nice-digital/nds-table";
@@ -19,7 +32,6 @@ import { Announcer } from "@/components/Announcer/Announcer";
 import { CopyToClipboard } from "@/components/CopyToClipboard/CopyToClipboard";
 import { ErrorPageContent } from "@/components/ErrorPageContent/ErrorPageContent";
 import { GuidanceListFilterSummary } from "@/components/GuidanceListPage/GuidanceListFilterSummary/GuidanceListFilterSummary";
-import { GuidanceListNav } from "@/components/GuidanceListPage/GuidanceListNav/GuidanceListNav";
 import { Link, ScrollToLink } from "@/components/Link/Link";
 import { SearchListFilters } from "@/components/SearchListFilters/SearchListFilters";
 import { SearchPagination } from "@/components/SearchPagination/SearchPagination";
@@ -40,8 +52,9 @@ const resultsPerPage = [
 
 export type GetGuidanceListPageOptions = {
 	metaDescription: string;
-	navItems: { path: string; text: string }[];
-	breadcrumbsTrail: { path: string; text: string }[];
+	listNavType: ElementType;
+	breadcrumbTrail: ReactElement<BreadcrumbProps>[];
+	currentBreadcrumb: string;
 	preheading: ReactChild;
 	heading: ReactChild;
 	title: string;
@@ -77,8 +90,9 @@ export type GetGuidanceListPageOptions = {
 export const getGuidanceListPage =
 	({
 		metaDescription,
-		navItems,
-		breadcrumbsTrail,
+		listNavType: ListNavType,
+		breadcrumbTrail,
+		currentBreadcrumb,
 		preheading,
 		heading,
 		title,
@@ -101,13 +115,13 @@ export const getGuidanceListPage =
 			breadcrumbs = useMemo(() => {
 				return (
 					<Breadcrumbs>
-						{breadcrumbsTrail.map((breadcrumb) => {
-							return (
-								<Breadcrumb to={breadcrumb.path} key={breadcrumb.text}>
-									{breadcrumb.text}
-								</Breadcrumb>
-							);
-						})}
+						{[
+							<Breadcrumb to="/" key="home">
+								Home
+							</Breadcrumb>,
+							...breadcrumbTrail,
+							<Breadcrumb key="current page">{currentBreadcrumb}</Breadcrumb>,
+						]}
 					</Breadcrumbs>
 				);
 			}, []),
@@ -173,10 +187,9 @@ export const getGuidanceListPage =
 					}
 				/>
 
-				<GuidanceListNav
-					ariaLabel="Stages of guidance development"
-					navItems={navItems}
-				/>
+				<ListNavType />
+
+				{/* {ListNavType} */}
 
 				<Grid gutter="loose" className={styles.sectionWrapper}>
 					<GridItem
@@ -200,7 +213,16 @@ export const getGuidanceListPage =
 							showTextFilter={true}
 							dateFilterLabel={dateFilterLabel}
 							useFutureDates={useFutureDates}
-							navigatorsOrder={["nai", "tt", "tsd", "ndt", "ngt", "nat"]}
+							navigatorsOrder={[
+								"nai",
+								"tt",
+								"tsd",
+								"ndt",
+								"ngt",
+								"nat",
+								"rty",
+								"sub",
+							]}
 						/>
 					</GridItem>
 

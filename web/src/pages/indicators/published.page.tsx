@@ -1,7 +1,9 @@
 import React from "react";
 
+import { Breadcrumb } from "@nice-digital/nds-breadcrumbs";
 import { Document, SortOrder } from "@nice-digital/search-client";
 
+import { IndicatorListNav } from "@/components/GuidanceListPage/GuidanceListNav/IndicatorListNav";
 import {
 	getGuidanceListPage,
 	getGetServerSidePropsFunc,
@@ -59,20 +61,19 @@ const tableBodyRender = (documents: Document[]) => (
 
 export default getGuidanceListPage({
 	metaDescription: "TODO",
-	navItems: [
-		{ path: "/indicators/published", text: "Published" },
-		{ path: "/indicators/inconsultation", text: "In consultation" },
-		{ path: "/indicators/indevelopment", text: "In development" },
+	listNavType: IndicatorListNav,
+	breadcrumbTrail: [
+		<Breadcrumb to="/standards-and-indicators" key="standards-and-indicators">
+			Standards and Indicators
+		</Breadcrumb>,
+		<Breadcrumb
+			to="/standards-and-indicators/indicators"
+			key="/standards-and-indicators/indicators"
+		>
+			Indicators
+		</Breadcrumb>,
 	],
-	breadcrumbsTrail: [
-		{ path: "/", text: "Home" },
-		{ path: "/standards-and-indicators", text: "Standards and Indicators" },
-		{ path: "/standards-and-indicators/indicators", text: "Indicators" },
-		{
-			path: "/standards-and-indicators/indicators/published",
-			text: "Published",
-		},
-	],
+	currentBreadcrumb: "Published indicators",
 	preheading: "",
 	heading: <>Indicators</>,
 	title: "Indicators",
