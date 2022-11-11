@@ -1,34 +1,15 @@
-import slugify from "@sindresorhus/slugify";
-import dayjs from "dayjs";
+import libSlugify from "@sindresorhus/slugify";
 
-import { Project, ProjectStatus } from "@/feeds/inDev/types";
+import { type Project, ProjectStatus } from "@/feeds/inDev/types";
 import {
 	ProductGroup,
-	ProductLite,
 	ProductTypeAcronym,
+	type ProductDetail,
+	type ProductLite,
 } from "@/feeds/publications/types";
 
-import { dateFormat, dateFormatShort } from "./constants";
-
-/**
- * Returns a a sortable date with just year, month and date (without time).
- * We never expose times to users so it makes sense to just sort by date instead.
- *
- * @param isoDateStr The full date string with timezone e.g. `2021-05-21T10:54:52.4655487`
- * @returns The sortable date, without the timezone e.g. `2021-05-21`
- */
-export const stripTime = (isoDateStr: string): string =>
-	isoDateStr.substring(0, isoDateStr.indexOf("T"));
-
-/**
- * Formats the given ISO date string into a standard NICE string format
- *
- * @param isoDateStr the ISO date string for format
- * @param short whether to format the date in the standard short format
- * @returns The formatted date
- */
-export const formatDateStr = (isoDateStr: string, short = false): string =>
-	dayjs(isoDateStr).format(short ? dateFormatShort : dateFormat);
+/** A custom exported version of @sindresorhus/slugify we use everywhere in case we introduce custom replacement */
+export const slugify = libSlugify;
 
 /**
  * Gets the path, relative to the root, of an indevelopment project overview page.
@@ -45,6 +26,13 @@ export const getProjectPath = (project: Project): string | null =>
 		? `/guidance/awaiting-development/${project.reference.toLowerCase()}`
 		: `/guidance/indevelopment/${project.reference.toLowerCase()}`;
 
+export const getProductSlug = (
+	product: Pick<ProductLite, "id" | "productType" | "title">
+): string =>
+	product.productType === ProductTypeAcronym.IND
+		? `${product.id.toLowerCase()}-${slugify(product.title)}`
+		: product.id.toLowerCase();
+
 /**
  * Gets the path, relative to the root, of an published product overview page.
  *
@@ -54,8 +42,7 @@ export const getProjectPath = (project: Project): string | null =>
 export const getProductPath = (
 	product: Pick<ProductLite, "productGroup" | "id" | "productType" | "title">
 ): string => {
-	let rootPath: string,
-		productSlug = product.id.toLowerCase();
+	let rootPath: string;
 
 	switch (product.productGroup) {
 		case ProductGroup.Guideline:
@@ -79,7 +66,6 @@ export const getProductPath = (
 					`Unsupported 'other' product type of ${product.productType}`
 				);
 			rootPath = "indicators";
-			productSlug += `-${slugify(product.title)}`;
 			break;
 		default:
 			throw `Unsupported product group ${product.productGroup} ${JSON.stringify(
@@ -87,5 +73,17 @@ export const getProductPath = (
 			)}`;
 	}
 
-	return `/${rootPath}/${productSlug}`;
+	return `/${rootPath}/${getProductSlug(product)}`;
+};
+
+export const getPublicationPdfDownloadPath = (
+	product: ProductDetail,
+	productGroup: ProductGroup
+): string => {
+	const rootPath = getProductPath({
+		...product,
+		productGroup,
+	});
+
+	return `${rootPath}/${product.id}.pdf`;
 };

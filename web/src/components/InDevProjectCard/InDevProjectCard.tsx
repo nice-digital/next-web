@@ -3,7 +3,8 @@ import { FC } from "react";
 import { Card, CardMetaDataProps } from "@nice-digital/nds-card";
 
 import { Project, ProjectStatus } from "@/feeds/inDev/types";
-import { formatDateStr, getProjectPath } from "@/utils";
+import { formatDateStr } from "@/utils/datetime";
+import { getProjectPath } from "@/utils/url";
 
 export interface InDevProjectCardProps {
 	project: Project;

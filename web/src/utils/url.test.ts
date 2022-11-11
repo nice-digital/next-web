@@ -1,32 +1,29 @@
-import { Project, ProjectStatus } from "@/feeds/inDev/types";
+import { waitFor } from "@testing-library/react";
+import MockAdapter from "axios-mock-adapter";
+
+import { ProjectStatus, type Project } from "@/feeds/inDev/types";
+import { client } from "@/feeds/index";
 import {
+	getProductDetail,
 	ProductGroup,
-	ProductLite,
 	ProductTypeAcronym,
-} from "@/feeds/publications/types";
+	type ProductLite,
+	type ProductDetail,
+} from "@/feeds/publications/publications";
+import mockProduct from "@/mockData/publications/feeds/products/indicator.json";
 
-import { stripTime, formatDateStr, getProjectPath, getProductPath } from "./";
+import {
+	getProjectPath,
+	getProductPath,
+	getPublicationPdfDownloadPath,
+} from "./url";
 
-describe("utils", () => {
-	describe("stripTime", () => {
-		it("should strip time from ISO formatted string", () => {
-			expect(stripTime("2020-10-05T12:27:21.5437767")).toBe("2020-10-05");
-		});
-	});
+const axiosMock = new MockAdapter(client, { onNoMatch: "throwException" });
 
-	describe("formatDateStr", () => {
-		it("should format ISO date string as NICE formatted date string", () => {
-			expect(formatDateStr("2020-10-05T12:27:21.5437767")).toBe(
-				"5 October 2020"
-			);
-		});
-		it("should format ISO date string as NICE formatted date string (short version)", () => {
-			expect(formatDateStr("2020-10-05T12:27:21.5437767", true)).toBe(
-				"5/10/2020"
-			);
-		});
-	});
+const slug =
+	"ind1001-test-indicator-ind-1001-the-percentage-of-patients-with-one-or-more-of-the-following-conditions-chd-atrial-fibrillation-chronic-heart-failure-stroke-or-tia-diabetes-or-dementia-with-a-fast-score-of-3-or-more-or-audit-c-score-of-5-or-more-in-the-preceding-2-years-who-have-received-brief-intervention-to-help-them-reduce-their-alcohol-related-risk-within-3-months-of-the-score-being-recorded";
 
+describe("URL utils", () => {
 	describe("getProjectPath", () => {
 		it("should return null for advice projects", () => {
 			expect(
@@ -79,9 +76,25 @@ describe("utils", () => {
 						productType: productTypeAcronym,
 						productGroup: groupName,
 						title: "Product",
-					} as unknown as ProductLite)
+					} as ProductLite)
 				).toBe(expectedPath);
 			}
 		);
+	});
+
+	describe("getPublicationPdfDownloadPath", () => {
+		it("should return a publication download path", async () => {
+			axiosMock.onGet(/\/feeds\/product/).reply(200, mockProduct);
+			const product = await getProductDetail("ind-1001");
+
+			await waitFor(() => {
+				expect(
+					getPublicationPdfDownloadPath(
+						product as unknown as ProductDetail,
+						ProductGroup.Other
+					)
+				).toBe(`/indicators/${slug}/IND1001.pdf`);
+			});
+		});
 	});
 });

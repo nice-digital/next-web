@@ -8,7 +8,7 @@ import {
 	ProductStatus,
 	ProductTypeAcronym,
 } from "@/feeds/publications/publications";
-import { getProductPath } from "@/utils/index";
+import { getProductPath } from "@/utils/url";
 
 const isPublishedIndicator = ({ productStatus, productType }: ProductLite) =>
 	productStatus === ProductStatus.Published &&

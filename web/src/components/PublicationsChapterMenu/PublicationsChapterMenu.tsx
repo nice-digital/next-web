@@ -4,11 +4,11 @@ import React, { FC } from "react";
 import { StackedNav, StackedNavLink } from "@nice-digital/nds-stacked-nav";
 
 import { Link } from "@/components/Link/Link";
-import { ProductChapter } from "@/feeds/publications/types";
+import { ChapterHeading } from "@/feeds/publications/types";
 
 export type PublicationsChapterMenuProps = {
 	ariaLabel: string;
-	chapters: ProductChapter[];
+	chapters: ChapterHeading[];
 };
 
 export const PublicationsChapterMenu: FC<PublicationsChapterMenuProps> = ({

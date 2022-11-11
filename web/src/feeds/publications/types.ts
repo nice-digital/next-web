@@ -4,6 +4,7 @@ export enum FeedPath {
 	ProductsLite = "/feeds/products-lite",
 	ProductTypes = "/feeds/producttypes",
 	AreasOfInterest = "/feeds/areaofinteresttypes",
+	IndicatorSubTypes = "/feeds/indicatorsubtypes",
 	ProductDetail = "/feeds/product/",
 }
 
@@ -126,15 +127,16 @@ export type Link = {
 	href: string;
 };
 
-interface EmptyLinks {
+type ETag = string | null;
+
+interface EmptySelfLinks {
 	/** Empty object that's never used but in here for completeness */
 	self: [Record<string, never>];
 }
 
 export type BaseFeedItem = {
-	links: EmptyLinks;
-	/** ETag is always null so kind of pointless but kept here for completeness */
-	eTag: null;
+	links: EmptySelfLinks;
+	eTag: ETag;
 	/** Full ISO date string like `2021-04-15T08:18:13.7945978Z` */
 	lastModified: string;
 };
@@ -143,10 +145,10 @@ export type BaseFeedItem = {
  * The raw object that comes back from the feed
  */
 export type ProductLiteRaw = BaseFeedItem & {
-	links: EmptyLinks & {
-		nicePublicationsProductFeed: Link[];
+	links: EmptySelfLinks & {
+		productFeed: Link[];
 	};
-	eTag: null;
+	eTag: ETag;
 	id: string;
 	title: string;
 	productStatus: ProductStatus;
@@ -174,15 +176,16 @@ export type ProductType = BaseFeedItem & {
 };
 
 export type AreaOfInterest = BaseFeedItem & {
-	Enabled: boolean;
-	Name: string;
-	PluralName: string;
+	enabled: boolean;
+	name: string;
+	pluralName: string;
+	identifierPrefix: string;
 };
 
-type ETag = string | null;
+export type IndicatorSubType = AreaOfInterest;
 
-// axios-case-converter maps key property names like nice.publications:area-of-interest-type-list to nicePublicationsAreaOfInterestTypeList
-type EmbeddedKey = `nicePublications${string}`;
+// axios-case-converter maps key property names like nice.publications:area-of-interest-type-list to areaOfInterestTypeList
+type EmbeddedKey = `${string}`;
 
 type Embedded<TKey extends EmbeddedKey, TInner> = {
 	embedded: { [key in TKey]: TInner };
@@ -208,48 +211,47 @@ type FeedContent<
 } & Embedded<TEmbeddedOuter, FeedContentInner<TEmbeddedInner, TItemType>>;
 
 export type AreasOfInterestList = FeedContent<
-	"nicePublicationsAreaOfInterestTypeList",
-	"nicePublicationsAreaOfInterestType",
+	"areaOfInterestTypeList",
+	"areaOfInterestType",
 	AreaOfInterest
 >;
 
 export type ProductTypeList = FeedContent<
-	"nicePublicationsProductTypeList",
-	"nicePublicationsProductType",
+	"productTypeList",
+	"productType",
 	ProductType
 >;
 
 export type ProductListLite = FeedContent<
-	"nicePublicationsProductListLite",
-	"nicePublicationsProductLite",
+	"productListLite",
+	"productLite",
 	ProductLiteRaw
 >;
 
-export type ProductChapter = {
+export type IndicatorSubTypesList = FeedContent<
+	"indicatorSubTypeList",
+	"indicatorSubType",
+	IndicatorSubType
+>;
+
+export type ChapterHeading = {
 	title: string;
 	url: string;
 };
 
-export type HTMLChapterContentInfo = {
-	title: string;
-	chapterSlug: string;
-	links: { self: [Link] };
-};
+export type HTMLContent = Embedded<
+	"htmlChapterContentInfo",
+	HTMLChapterContentInfo[]
+>;
 
-export type HTMLChapterContent = {
+export type HTMLChapterContentInfo = {
 	links: { self: [Link] };
-	eTag: string;
-	content: string;
+	eTag: ETag;
 	title: string;
 	reference: string;
 	partId: number;
 	chapterSlug: string;
 };
-
-export type HTMLContent = Embedded<
-	"nicePublicationsHtmlChapterContentInfo",
-	HTMLChapterContentInfo[]
->;
 
 export type FileContent<TFileExtension extends "pdf" | "mobi" | "epub"> = {
 	fileName: `${string}.${TFileExtension}`;
@@ -265,30 +267,88 @@ export type FileContent<TFileExtension extends "pdf" | "mobi" | "epub"> = {
 
 export type UploadAndConvertContentPart = {
 	embedded: {
-		nicePublicationsHtmlContent: HTMLContent;
-		nicePublicationsPdfFile: FileContent<"pdf">;
-		nicePublicationsMobiFile: FileContent<"mobi">;
-		nicePublicationsEpubFile: FileContent<"epub">;
+		htmlContent: HTMLContent;
+		pdfFile: FileContent<"pdf">;
+		mobiFile: FileContent<"mobi">;
+		epubFile: FileContent<"epub">;
 	};
 };
 
-export type ContentPartList = Embedded<
-	"nicePublicationsUploadAndConvertContentPart",
-	UploadAndConvertContentPart
->;
+export type ContentPartList = {
+	embedded: {
+		uploadAndConvertContentPart?:
+			| UploadAndConvertContentPart
+			| UploadAndConvertContentPart[];
+	};
+};
+
+export type RelatedProductList = {
+	links: EmptySelfLinks;
+	embedded: {
+		relatedProduct: RelatedProduct | RelatedProduct[];
+	};
+	eTag: ETag;
+};
+
+export type RelatedProduct = {
+	links: EmptySelfLinks & {
+		relatedProductUri: [Link];
+	};
+	embedded: ProductRelationshipList;
+	eTag: ETag;
+	title: string;
+	shortTitle: string;
+	id: string;
+};
+
+export type ProductRelationshipList = {
+	links: EmptySelfLinks;
+	embedded: ProductRelationship;
+	eTag: ETag;
+};
+
+export type ProductRelationship = {
+	links: EmptySelfLinks;
+	eTag: ETag;
+	relation: RelationshipType;
+};
+
+/** Describes how one product might be related to another */
+export enum RelationshipType {
+	Replaces = "Replaces",
+	IsReplacedBy = "IsReplacedBy",
+	PartiallyReplaces = "PartiallyReplaces",
+	IsPartiallyReplacedBy = "IsPartiallyReplacedBy",
+	ReadInConjunctionWith = "ReadInConjunctionWith",
+	IsBasedOn = "IsBasedOn",
+	IsTheBasisOf = "IsTheBasisOf",
+}
 
 export type ProductDetail = {
 	links: { self: [Link] };
-	eTag: string | null;
+	embedded: {
+		contentPartList?: ContentPartList;
+		relatedProductList?: RelatedProductList;
+	};
+	eTag: ETag;
+	/** The product id e.g. `CG124` */
 	id: string;
+	/**
+	 * An ISO date string of the time the record was last modified, e.g. `2022-05-05T08:58:37.5476922Z`.
+	 *
+	 * This date will change for minor edits, e.g. spelling mistakes.
+	 * Not to be confused with `lastMajorModificationDate` which represents a 'version' of the product.
+	 */
 	lastModified: string;
+	/** The capitalised acronym for the product type e.g. `CG` or `IND` etc */
 	productType: ProductTypeAcronym;
 	title: string;
 	shortTitle: string | null;
+	/** E.g. `CG/Wave18/51` */
 	inDevReference: string;
 	metaDescription: string;
 	summary: string | null;
-	productStatus: string;
+	productStatus: ProductStatus;
 	versionNumber: number;
 	publishedDate: string;
 	lastMajorModificationDate: string;
@@ -308,13 +368,42 @@ export type ProductDetail = {
 	indicatorSubTypeList: string[];
 	indicatorOldCode: string;
 	indicatorOldUrl: string;
-	ipsv: string;
-	chapterHeadings: ProductChapter[];
+	/** The name of the Integrated Public Sector Vocabulary concept e.g. "Health, well-being and care" */
+	iPSV: string;
+	/**
+	 * The list of chapter titles and URLs.
+	 *
+	 * @deprecated The URLs in the `chapterHeadings` array are wrong and slugified incorrectly. Use the HTML chapter content info inside upload and convert parts instead
+	 */
+	chapterHeadings: ChapterHeading[];
+	/** The singular name of the product type e.g. "NICE indicator" */
 	productTypeName: string;
+	/** The plural name of the product type e.g. "NICE indicators" */
 	productTypeNamePlural: string;
-} & Embedded<"nicePublicationsContentPartList", ContentPartList>;
+};
+
+/** The type of the response from a chapter endpoint e.g. /feeds/product/ind69/part/1/chapter/overview */
+export type ChapterHTMLContent = {
+	links: EmptySelfLinks;
+	eTag: ETag;
+	/** The HTML content of this chapter */
+	content: string;
+	embedded?: {
+		/** Publications returns either a single object or an array of objects */
+		htmlChapterSectionInfo: HTMLChapterSectionInfo | HTMLChapterSectionInfo[];
+	};
+};
+
+export type HTMLChapterSectionInfo = {
+	links: EmptySelfLinks;
+	eTag: string;
+	reference: string;
+	partId: number;
+	chapterSlug: string;
+	title: string;
+};
 
 export type ErrorResponse = {
-	StatusCode: string;
-	Message: string;
+	statusCode: string;
+	message: string;
 };

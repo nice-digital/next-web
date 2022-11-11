@@ -1,4 +1,3 @@
-import slugify from "@sindresorhus/slugify";
 import dayjs from "dayjs";
 import { GetServerSideProps } from "next";
 import { NextSeo } from "next-seo";
@@ -8,27 +7,33 @@ import { Breadcrumbs, Breadcrumb } from "@nice-digital/nds-breadcrumbs";
 import { Grid, GridItem } from "@nice-digital/nds-grid";
 import { PageHeader } from "@nice-digital/nds-page-header";
 
+import {
+	OnThisPage,
+	OnThisPageSection,
+} from "@/components/OnThisPage/OnThisPage";
 import { PublicationsChapterMenu } from "@/components/PublicationsChapterMenu/PublicationsChapterMenu";
+import { PublicationsDownloadLink } from "@/components/PublicationsDownloadLink/PublicationsDownloadLink";
 import { PublicationsPrevNext } from "@/components/PublicationsPrevNext/PublicationsPrevNext";
 import {
 	getChapterContent,
-	getProductDetail,
-	HTMLChapterContent,
 	isErrorResponse,
-	ProductChapter,
+	ChapterHeading,
 	ProductDetail,
 	ProductGroup,
 } from "@/feeds/publications/publications";
-import { formatDateStr, getProductPath } from "@/utils";
+import { formatDateStr } from "@/utils/datetime";
+import { getChapterLinks, validateRouteParams } from "@/utils/product";
+import { getPublicationPdfDownloadPath } from "@/utils/url";
 
 import styles from "./[chapterSlug].page.module.scss";
 
-export const slugifyFunction = slugify;
-
 export type IndicatorChapterPageProps = {
-	slug: string;
 	product: ProductDetail;
-	chapterContent: HTMLChapterContent;
+	chapterHTML: string;
+	chapterTitle: string;
+	pdfDownloadPath: string;
+	chapters: ChapterHeading[];
+	chapterSections: OnThisPageSection[];
 };
 
 const chaptersAndLinks = (
@@ -62,16 +67,13 @@ const chaptersAndLinks = (
 };
 
 export default function IndicatorChapterPage({
-	chapterContent,
+	chapterHTML,
+	chapterTitle,
 	product,
-	slug,
+	pdfDownloadPath,
+	chapters,
+	chapterSections,
 }: IndicatorChapterPageProps): JSX.Element {
-	const chapters: ProductChapter[] = chaptersAndLinks(
-		product.summary,
-		product.chapterHeadings,
-		slug
-	);
-
 	const metaData = [
 		product.productTypeName,
 		product.id,
@@ -94,10 +96,17 @@ export default function IndicatorChapterPage({
 		) : null,
 	].filter(Boolean);
 
+	const hasOnThisPageMenu = chapterSections.length > 1;
+
 	return (
 		<>
 			<NextSeo
-				title={product.title + " | Indicators | Standards and Indicators"}
+				title={
+					chapterTitle +
+					" | " +
+					product.title +
+					" | Indicators | Standards and Indicators"
+				}
 				description={product.metaDescription}
 				additionalLinkTags={[
 					{
@@ -127,26 +136,45 @@ export default function IndicatorChapterPage({
 			/>
 
 			<Grid gutter="loose">
-				{chapters ? (
-					<GridItem
-						cols={12}
-						md={4}
-						lg={3}
-						elementType="section"
-						aria-label="Chapters"
+				<GridItem
+					cols={12}
+					md={4}
+					lg={3}
+					elementType="section"
+					aria-label="Chapters"
+				>
+					<PublicationsDownloadLink
+						ariaLabel="Download indicator PDF file"
+						downloadLink={pdfDownloadPath}
 					>
-						<PublicationsChapterMenu
-							ariaLabel="Chapter pages"
-							chapters={chapters}
-						/>
-					</GridItem>
-				) : null}
-				<GridItem cols={12} md={8} lg={9} elementType="section">
-					<div
-						dangerouslySetInnerHTML={{ __html: chapterContent.content }}
-						className={styles.chapterContent}
+						Download indicator
+					</PublicationsDownloadLink>
+
+					<PublicationsChapterMenu
+						ariaLabel="Chapter pages"
+						chapters={chapters}
 					/>
-					<PublicationsPrevNext chapters={chapters} />
+				</GridItem>
+
+				<GridItem cols={12} md={8} lg={9} elementType="section">
+					<Grid reverse gutter="loose">
+						{hasOnThisPageMenu ? (
+							<GridItem cols={12} md={4} lg={3}>
+								<OnThisPage sections={chapterSections} />
+							</GridItem>
+						) : null}
+						<GridItem
+							cols={12}
+							md={hasOnThisPageMenu ? 8 : 12}
+							lg={hasOnThisPageMenu ? 9 : 12}
+						>
+							<div
+								dangerouslySetInnerHTML={{ __html: chapterHTML }}
+								className={styles.chapterContent}
+							/>
+							<PublicationsPrevNext chapters={chapters} />
+						</GridItem>
+					</Grid>
 				</GridItem>
 			</Grid>
 		</>
@@ -154,72 +182,60 @@ export default function IndicatorChapterPage({
 }
 
 export const getServerSideProps: GetServerSideProps<
-	IndicatorChapterPageProps
-> = async ({ params }) => {
-	if (
-		!params ||
-		!params.slug ||
-		Array.isArray(params.slug) ||
-		!params.slug.includes("-") ||
-		!params.chapterSlug ||
-		Array.isArray(params.chapterSlug)
-	) {
-		return { notFound: true };
-	}
+	IndicatorChapterPageProps,
+	{ slug: string; chapterSlug: string }
+> = async ({ params, resolvedUrl }) => {
+	const result = await validateRouteParams(params, resolvedUrl);
 
-	const [id, ...rest] = params.slug.split("-");
+	if ("notFound" in result || "redirect" in result) return result;
 
-	const product = await getProductDetail(id);
+	const { product } = result,
+		chapters = getChapterLinks(product),
+		pdfDownloadPath = getPublicationPdfDownloadPath(
+			product,
+			ProductGroup.Other
+		);
 
-	if (
-		isErrorResponse(product) ||
-		product.id.toLowerCase() !== id.toLowerCase()
-	) {
-		return { notFound: true };
-	}
+	if (!params || !product.embedded.contentPartList) return { notFound: true };
 
-	const titleExtractedFromSlug = rest.join("-").toLowerCase();
+	const { uploadAndConvertContentPart } =
+			product.embedded.contentPartList.embedded,
+		part = Array.isArray(uploadAndConvertContentPart)
+			? uploadAndConvertContentPart[0]
+			: uploadAndConvertContentPart;
 
-	const slugifiedProductTitle = slugify(product.title);
-	if (titleExtractedFromSlug !== slugifiedProductTitle) {
-		const redirectUrl =
-			getProductPath({
-				...product,
-				productGroup: ProductGroup.Other,
-			}) +
-			"/chapters/" +
-			params.chapterSlug;
-
-		return {
-			redirect: {
-				destination: redirectUrl,
-				permanent: true,
-			},
-		};
-	}
+	if (!part) return { notFound: true };
 
 	const chapter =
-		product.embedded.nicePublicationsContentPartList.embedded.nicePublicationsUploadAndConvertContentPart.embedded.nicePublicationsHtmlContent.embedded.nicePublicationsHtmlChapterContentInfo.find(
+		part.embedded.htmlContent.embedded.htmlChapterContentInfo.find(
 			(c) => c.chapterSlug === params.chapterSlug
 		);
 
-	if (!chapter) {
-		return { notFound: true };
-	}
+	if (!chapter) return { notFound: true };
 
 	const chapterContent = await getChapterContent(
 		chapter?.links.self[0].href as string
 	);
 
-	if (isErrorResponse(chapterContent)) {
-		return { notFound: true };
-	}
+	if (isErrorResponse(chapterContent)) return { notFound: true };
+
+	const chapterSections =
+		chapterContent.embedded?.htmlChapterSectionInfo &&
+		Array.isArray(chapterContent.embedded.htmlChapterSectionInfo)
+			? chapterContent.embedded.htmlChapterSectionInfo
+			: [];
 
 	return {
 		props: {
-			slug: params.slug,
 			product,
-			chapterContent,
+			chapters,
+			chapterHTML: chapterContent.content,
+			chapterTitle: chapter.title,
+			chapterSections: chapterSections.map(({ chapterSlug, title }) => ({
+				id: chapterSlug,
+				title,
+			})),
+			pdfDownloadPath,
 		},
 	};
 };

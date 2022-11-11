@@ -14,6 +14,9 @@ import { logger } from "@/logger";
 import { getDefaultSeoConfig } from "./next-seo.config";
 import { publicRuntimeConfig } from "@/config";
 
+import "@nice-digital/nds-table/scss/table.scss";
+import "@nice-digital/nds-panel/scss/panel.scss";
+
 interface AppState {
 	/**
 	 * Whether an error has been caught in componentDidCatch.

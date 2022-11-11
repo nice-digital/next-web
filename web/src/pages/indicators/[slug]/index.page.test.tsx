@@ -6,19 +6,26 @@ import {
 	within,
 } from "@testing-library/react";
 import MockAdapter from "axios-mock-adapter";
+import { type GetServerSidePropsContext } from "next";
 import { useRouter } from "next/router";
 
 import { client } from "@/feeds/index";
+import { FeedPath } from "@/feeds/publications/types";
+import mockIndicatorSubTypes from "@/mockData/publications/feeds/products/indicator-sub-types.json";
 import mockProduct from "@/mockData/publications/feeds/products/indicator.json";
 
 import IndicatorsDetailsPage, {
 	getServerSideProps,
 	IndicatorsDetailsPageProps,
-} from "./[slug].page";
+} from "./index.page";
 
-import type { GetServerSidePropsContext } from "next";
+type IndicatorDetailsPageGetServerSidePropsContext = GetServerSidePropsContext<{
+	slug: string;
+}>;
 
-const axiosMock = new MockAdapter(client, { onNoMatch: "throwException" });
+const axiosMock = new MockAdapter(client, {
+	onNoMatch: "throwException",
+});
 
 describe("/indicators/[slug].page", () => {
 	const slug =
@@ -28,7 +35,11 @@ describe("/indicators/[slug].page", () => {
 		(useRouter as jest.Mock).mockImplementation(() => ({}));
 		axiosMock.reset();
 
-		axiosMock.onGet(/\/feeds\/product\//).reply(200, mockProduct);
+		axiosMock.onGet(new RegExp(FeedPath.ProductDetail)).reply(200, mockProduct);
+
+		axiosMock
+			.onGet(new RegExp(FeedPath.IndicatorSubTypes))
+			.reply(200, mockIndicatorSubTypes);
 
 		jest.resetModules();
 	});
@@ -38,7 +49,7 @@ describe("/indicators/[slug].page", () => {
 		beforeEach(async () => {
 			const context = {
 				params: { slug: slug },
-			} as unknown as GetServerSidePropsContext;
+			} as IndicatorDetailsPageGetServerSidePropsContext;
 
 			props = (
 				(await getServerSideProps(context)) as {
@@ -61,25 +72,90 @@ describe("/indicators/[slug].page", () => {
 			});
 		});
 
-		it("should render the correct page meta tags for robots", async () => {
-			render(<IndicatorsDetailsPage {...props} />);
+		describe("Meta tags", () => {
+			it("should have a link to the schema", async () => {
+				render(<IndicatorsDetailsPage {...props} />);
+				// eslint-disable-next-line testing-library/no-node-access
+				const schemaLink = document.querySelector(`link[rel="schema.DCTERMS"]`);
+				await waitFor(() => {
+					expect(schemaLink).toBeInTheDocument();
+				});
 
-			await waitFor(() => {
-				expect(
-					// eslint-disable-next-line testing-library/no-node-access
-					document.querySelector(`meta[name="robots"]`)
-				).toHaveAttribute("content", "index,follow");
+				expect(schemaLink).toHaveAttribute("href", "http://purl.org/dc/terms/");
 			});
-		});
 
-		it("should render the correct page meta tags for description", async () => {
-			render(<IndicatorsDetailsPage {...props} />);
+			it("should render the correct page meta tags for robots", async () => {
+				render(<IndicatorsDetailsPage {...props} />);
 
-			await waitFor(() => {
-				expect(
-					// eslint-disable-next-line testing-library/no-node-access
-					document.querySelector(`meta[name="description"]`)
-				).toHaveAttribute("content", mockProduct.MetaDescription);
+				await waitFor(() => {
+					expect(
+						// eslint-disable-next-line testing-library/no-node-access
+						document.querySelector(`meta[name="robots"]`)
+					).toHaveAttribute("content", "index,follow");
+				});
+			});
+
+			it("should render the correct page meta tags for description", async () => {
+				render(<IndicatorsDetailsPage {...props} />);
+
+				await waitFor(() => {
+					expect(
+						// eslint-disable-next-line testing-library/no-node-access
+						document.querySelector(`meta[name="description"]`)
+					).toHaveAttribute("content", mockProduct.MetaDescription);
+				});
+			});
+
+			it("should render the correct page meta tags for DCTERMS.issued", async () => {
+				render(<IndicatorsDetailsPage {...props} />);
+
+				await waitFor(() => {
+					expect(
+						// eslint-disable-next-line testing-library/no-node-access
+						document.querySelector(`meta[name="DCTERMS.issued"]`)
+					).toHaveAttribute("content", mockProduct.PublishedDate);
+				});
+			});
+
+			it("should render the correct page meta tags for DCTERMS.modified", async () => {
+				render(<IndicatorsDetailsPage {...props} />);
+
+				await waitFor(() => {
+					expect(
+						// eslint-disable-next-line testing-library/no-node-access
+						document.querySelector(`meta[name="DCTERMS.modified"]`)
+					).toHaveAttribute("content", mockProduct.LastMajorModificationDate);
+				});
+			});
+
+			it("should render multiple meta tags for DCTERMS.type", async () => {
+				render(<IndicatorsDetailsPage {...props} />);
+				// eslint-disable-next-line testing-library/no-node-access
+				const typeMetaTags = document.querySelectorAll(
+					`meta[name="DCTERMS.type"]`
+				);
+				await waitFor(() => {
+					expect(typeMetaTags).toHaveLength(2);
+				});
+				expect(typeMetaTags[0]).toHaveAttribute(
+					"content",
+					"Clinical commissioning group indicator"
+				);
+				expect(typeMetaTags[1]).toHaveAttribute(
+					"content",
+					"General practice indicator suitable for use in QOF"
+				);
+			});
+
+			it("should render the correct page meta tags for DCTERMS.identifier", async () => {
+				render(<IndicatorsDetailsPage {...props} />);
+
+				await waitFor(() => {
+					expect(
+						// eslint-disable-next-line testing-library/no-node-access
+						document.querySelector(`meta[name="DCTERMS.identifier"]`)
+					).toHaveAttribute("content", mockProduct.Id);
+				});
 			});
 		});
 
@@ -190,14 +266,14 @@ describe("/indicators/[slug].page", () => {
 						{...props}
 						product={{
 							...props.product,
-							lastMajorModificationDate: "2022-10-12",
+							lastMajorModificationDate: "2022-11-11T11:17:45.442351",
 						}}
 					/>
 				);
-				const publishedDateEl = screen.getByText("12 October 2022", {
+				const publishedDateEl = screen.getByText("11 November 2022", {
 					selector: "time",
 				});
-				expect(publishedDateEl).toHaveAttribute("datetime", "2022-10-12");
+				expect(publishedDateEl).toHaveAttribute("datetime", "2022-11-11");
 			});
 		});
 
@@ -221,48 +297,27 @@ describe("/indicators/[slug].page", () => {
 					within(publicationsChapterMenu).getByText("Overview")
 				).toBeInTheDocument();
 			});
-
-			it("should not render overview chapter link when no summary provided", () => {
-				render(
-					<IndicatorsDetailsPage
-						{...props}
-						product={{
-							...props.product,
-							summary: null,
-						}}
-					/>
-				);
-
-				const publicationsChapterMenu = screen.getByRole("region", {
-					name: "Chapters",
-				});
-
-				expect(
-					within(publicationsChapterMenu).queryByText("Overview")
-				).not.toBeInTheDocument();
-			});
 		});
 	});
 
 	describe("getServerSideProps", () => {
-		it("should return a correct props when supplied with an id", async () => {
+		it("should return a correct props when supplied with a valid slug", async () => {
 			const result = await getServerSideProps({
 				params: { slug },
-			} as unknown as GetServerSidePropsContext);
+				resolvedUrl: `/indicators/${slug}`,
+			} as IndicatorDetailsPageGetServerSidePropsContext);
 
-			expect(result).toStrictEqual({
-				props: {
-					slug: slug,
-					product: expect.objectContaining({ id: "IND1001" }),
-				},
-			});
+			expect(result).toMatchSnapshot();
 		});
 
 		describe("Redirects", () => {
 			it("should return permanent redirect object URL with incorrect title", async () => {
+				const incorrectSlug = "ind1001-incorrect-slug-title";
+
 				const redirectResult = await getServerSideProps({
-					params: { slug: "ind1001-incorrect-slug-title" },
-				} as unknown as GetServerSidePropsContext);
+					params: { slug: incorrectSlug },
+					resolvedUrl: `/indicators/${incorrectSlug}`,
+				} as IndicatorDetailsPageGetServerSidePropsContext);
 
 				expect(redirectResult).toStrictEqual({
 					redirect: {
@@ -271,20 +326,20 @@ describe("/indicators/[slug].page", () => {
 					},
 				});
 			});
-			it("should return notFound if Id doesn't exist", async () => {
-				const redirectResult = await getServerSideProps({
-					params: { slug: "nonExistingId99-test-title-1" },
-				} as unknown as GetServerSidePropsContext);
+			it("should return not found if product doesn't exist", async () => {
+				const notFoundIdSlug = "nonExistingId99-test-title-1";
 
-				expect(redirectResult).toStrictEqual({ notFound: true });
-			});
+				axiosMock.onGet(new RegExp(FeedPath.ProductDetail)).reply(404, {
+					Message: "Not found",
+					StatusCode: "NotFound",
+				});
 
-			it("should return notFound if an unhyphenated slug is used", async () => {
-				const redirectResult = await getServerSideProps({
-					params: { slug: "slugwithouthyphenation" },
-				} as unknown as GetServerSidePropsContext);
+				const notFoundResult = await getServerSideProps({
+					params: { slug: notFoundIdSlug },
+					resolvedUrl: `/indicators/${notFoundIdSlug}`,
+				} as IndicatorDetailsPageGetServerSidePropsContext);
 
-				expect(redirectResult).toStrictEqual({ notFound: true });
+				expect(notFoundResult).toStrictEqual({ notFound: true });
 			});
 		});
 	});
