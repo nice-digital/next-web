@@ -96,5 +96,26 @@ describe("URL utils", () => {
 				).toBe(`/indicators/${slug}/IND1001.pdf`);
 			});
 		});
+
+		it("should return null when there's no upload and convert part", async () => {
+			axiosMock.onGet(/\/feeds\/product/).reply(200, {
+				...mockProduct,
+				_embedded: {
+					"nice.publications:content-part-list": {
+						_embedded: [],
+					},
+				},
+			});
+			const product = await getProductDetail("ind-1001");
+
+			await waitFor(() => {
+				expect(
+					getPublicationPdfDownloadPath(
+						product as unknown as ProductDetail,
+						ProductGroup.Other
+					)
+				).toBeNull();
+			});
+		});
 	});
 });

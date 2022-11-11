@@ -1,0 +1,87 @@
+@use '@nice-digital/nds-core/scss/colours/tokens/global';
+@use '@nice-digital/nds-core/scss/media-queries';
+@use '@nice-digital/nds-core/scss/spacing';
+@use '@nice-digital/nds-core/scss/typography';
+@use '@nice-digital/nds-core/scss/utils';
+@use '@nice-digital/nds-core/scss/visibility';
+
+$_back-to-top-clearance: utils.rem(spacing.$xx-large);
+
+$_on-this-page-scrollbar-background: global.$nice-cream-3;
+$_on-this-page-scrollbar-thumb: global.$custom-grey-1;
+
+.wrapper {
+  @include visibility.hide-print;
+  display: flex;
+  flex-direction: column;
+  top: 0;
+
+  @include media-queries.mq($from: lg) {
+    max-height: calc(100vh - #{$_back-to-top-clearance});
+    position: sticky;
+  }
+}
+
+.heading {
+  @include typography.h4;
+  font-family: typography.get-font-family(sans);
+  margin-top: utils.rem(spacing.$small);
+
+  @include media-queries.mq($from: lg) {
+    padding-left: utils.rem(spacing.$x-small);
+  }
+}
+
+.list {
+  list-style: none;
+  margin: 0 0 utils.rem(spacing.$medium);
+
+  li {
+    margin-bottom: utils.rem(spacing.$small);
+  }
+
+  a {
+    display: block;
+    line-height: 1.3;
+    text-decoration: none;
+
+    &:hover {
+      text-decoration: underline;
+      text-decoration-thickness: 0.15rem;
+    }
+  }
+
+  @include media-queries.mq($from: lg) {
+    margin-bottom: 0;
+    overflow: auto;
+    padding: utils.rem(spacing.$x-small); // To make room for focus ring
+    padding-right: utils.rem(spacing.$small);
+    scrollbar-width: utils.rem(spacing.$small);
+
+    &::-webkit-scrollbar {
+      background-color: $_on-this-page-scrollbar-background;
+      display: block;
+      width: utils.rem(spacing.$small);
+    }
+
+    &::-webkit-scrollbar-thumb {
+      background-color: $_on-this-page-scrollbar-thumb;
+    }
+  }
+}
+
+.moreLinksButton {
+  background: transparent;
+  border: 0;
+  cursor: pointer;
+  margin: 0 0 utils.rem(spacing.$medium);
+  padding-left: 0;
+
+  @include media-queries.mq($from: lg) {
+    padding-left: utils.rem(spacing.$x-small);
+  }
+}
+
+.activeHeading {
+  font-weight: bold;
+}
