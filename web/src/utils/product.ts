@@ -10,6 +10,7 @@ import {
 	type ChapterHeading,
 	UploadAndConvertContentPart,
 	HTMLChapterContentInfo,
+	ProductTypeAcronym,
 } from "@/feeds/publications/types";
 import { getProductPath, getProductSlug } from "@/utils/url";
 
@@ -81,9 +82,11 @@ export const validateRouteParams = async (
 	if (!params || !params.slug) return { notFound: true };
 
 	const productId = params.slug.split("-")[0],
-		product = await getProductDetail(productId);
+		product = await getProductDetail("NG100");
 
 	if (isErrorResponse(product)) return { notFound: true };
+
+	product.productType = ProductTypeAcronym.IND;
 
 	const expectedSlug = getProductSlug(product);
 

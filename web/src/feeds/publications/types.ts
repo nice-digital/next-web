@@ -8,7 +8,7 @@ export enum FeedPath {
 	ProductDetail = "/feeds/product/",
 }
 
-export enum ProductStatus {
+export enum Status {
 	Published = "Published",
 	Withdrawn = "Withdrawn",
 }
@@ -151,7 +151,7 @@ export type ProductLiteRaw = BaseFeedItem & {
 	eTag: ETag;
 	id: string;
 	title: string;
-	productStatus: ProductStatus;
+	productStatus: Status;
 	productType: ProductTypeAcronym;
 	/** ISO date string like `2017-07-06T00:00:00`. Notice it's a rounded time because it's set manually by an editor. */
 	publishedDate: string;
@@ -282,6 +282,141 @@ export type ContentPartList = {
 	};
 };
 
+export type RelatedResourceList = {
+	links: EmptySelfLinks;
+	embedded: {
+		relatedResource: RelatedResource | RelatedResource[];
+	};
+	eTag: ETag;
+};
+
+export type RelatedResource = {
+	links: {
+		self: [Link, Record<string, never>];
+		relatedResourceUri: [Link];
+	};
+	embedded: {
+		resourceGroupList: ResourceGroupList;
+	};
+	eTag: ETag;
+	title: string;
+	resourceType: ResourceType;
+	status: Status;
+	language: "English" | "Welsh";
+	uid: number;
+};
+
+export type ResourceGroupList = {
+	links: EmptySelfLinks;
+	embedded: {
+		resourceGroup: ResourceGroup;
+	};
+	eTag: ETag;
+};
+
+export type ResourceGroup = {
+	links: EmptySelfLinks;
+	name: ResourceGroupType;
+	eTag: ETag;
+};
+
+export enum ResourceGroupType {
+	AuditAndServiceImprovement = "AuditAndServiceImprovement",
+	ClinicalClassification = "ClinicalClassification",
+	CommissioningSupport = "CommissioningSupport",
+	DecisionAids = "DecisionAids",
+	Education = "Education",
+	Evidence = "Evidence",
+	ImplementationSupport = "ImplementationSupport",
+	InformationForThePublic = "InformationForThePublic",
+	ResourceImpact = "ResourceImpact",
+	SummaryVersions = "SummaryVersions",
+	Unknown = "Unknown",
+	ServiceImprovementAndAudit = "ServiceImprovementAndAudit",
+	ResourceImpactAssessment = "ResourceImpactAssessment",
+	EducationAndLearning = "EducationAndLearning",
+	Commissioning = "Commissioning",
+	LocalGovernmentBriefing = "LocalGovernmentBriefing",
+}
+
+export enum ResourceType {
+	AuditAndServiceImprovement = "AuditAndServiceImprovement",
+	CaseStudies = "CaseStudies",
+	ClinicalClassification = "ClinicalClassification",
+	CommissionedResearchAndReports = "CommissionedResearchAndReports",
+	CommissioningSupport = "CommissioningSupport",
+	DecisionAids = "DecisionAids",
+	EconomicAnalysis = "EconomicAnalysis",
+	Education = "Education",
+	EpidemiologyReview = "EpidemiologyReview",
+	EqualityImpactAssessment = "EqualityImpactAssessment",
+	EvaluationReport = "EvaluationReport",
+	EvidenceReview = "EvidenceReview",
+	EvidenceStatement = "EvidenceStatement",
+	EvidenceUpdate = "EvidenceUpdate",
+	ExpertReports = "ExpertReports",
+	Fieldwork = "Fieldwork",
+	FullGuidance = "FullGuidance",
+	ImplementationSupport = "ImplementationSupport",
+	InformationForThePublic = "InformationForThePublic",
+	InformationForThePublicLargePrint = "InformationForThePublicLargePrint",
+	OtherSupportingEvidence = "OtherSupportingEvidence",
+	Overview = "Overview",
+	ResourceImpact = "ResourceImpact",
+	ReviewDecision = "ReviewDecision",
+	SpecialistAdviserQuestionnaires = "SpecialistAdviserQuestionnaires",
+	SummaryOfPatientCommentary = "SummaryOfPatientCommentary",
+	SummaryVersions = "SummaryVersions",
+	SurveillanceReport = "SurveillanceReport",
+	Unknown = "Unknown",
+	BusinessCase = "BusinessCase",
+	LocalGovernmentBriefing = "LocalGovernmentBriefing",
+	NewsPodcast = "NewsPodcast",
+	SearchStrategies = "SearchStrategies",
+	ServiceSpecification = "ServiceSpecification",
+	HealthEconomicPlan = "HealthEconomicPlan",
+	AssessmentReport = "AssessmentReport",
+	AcademicDetailingAid = "AcademicDetailingAid",
+	ActionPlanningTool = "ActionPlanningTool",
+	AdoptionPack = "AdoptionPack",
+	BaselineAssessment = "BaselineAssessment",
+	CarePathway = "CarePathway",
+	CarePlan = "CarePlan",
+	CaseScenario = "CaseScenario",
+	Checklist = "Checklist",
+	ClinicalAudit = "ClinicalAudit",
+	CommissioningFactsheet = "CommissioningFactsheet",
+	CommissioningGuide = "CommissioningGuide",
+	CostingReport = "CostingReport",
+	CostingStatement = "CostingStatement",
+	CostingTemplate = "CostingTemplate",
+	DataCollectionTool = "DataCollectionTool",
+	EducationalResource = "EducationalResource",
+	EffectiveInterventionsLibrary = "EffectiveInterventionsLibrary",
+	ELearningModules = "ELearningModules",
+	Factsheet = "Factsheet",
+	FAQs = "FAQs",
+	HealthTechnologyAdoptionProgramme = "HealthTechnologyAdoptionProgramme",
+	ImplementationAdvice = "ImplementationAdvice",
+	ImplementationBriefing = "ImplementationBriefing",
+	ImplementationPack = "ImplementationPack",
+	ImplementationPodcast = "ImplementationPodcast",
+	InformationTemplate = "InformationTemplate",
+	LearningPodcast = "LearningPodcast",
+	QandADocument = "QandADocument",
+	Questionnaire = "Questionnaire",
+	ResearchInProgress = "ResearchInProgress",
+	ResourceImpactTool = "ResourceImpactTool",
+	ROITool = "ROITool",
+	SiteDemonstratorPack = "SiteDemonstratorPack",
+	SlideSet = "SlideSet",
+	SupportForCommissioning = "SupportForCommissioning",
+	TailoredCommissioningSupport = "TailoredCommissioningSupport",
+	TailoredEducationSupport = "TailoredEducationSupport",
+	TailoredServiceImprovementSupport = "TailoredServiceImprovementSupport",
+	GuideToResources = "GuideToResources",
+}
+
 export type RelatedProductList = {
 	links: EmptySelfLinks;
 	embedded: {
@@ -328,6 +463,7 @@ export type ProductDetail = {
 	links: { self: [Link] };
 	embedded: {
 		contentPartList?: ContentPartList;
+		relatedResourceList?: RelatedResourceList;
 		relatedProductList?: RelatedProductList;
 	};
 	eTag: ETag;
@@ -348,7 +484,7 @@ export type ProductDetail = {
 	inDevReference: string;
 	metaDescription: string;
 	summary: string | null;
-	productStatus: ProductStatus;
+	productStatus: Status;
 	versionNumber: number;
 	publishedDate: string;
 	lastMajorModificationDate: string;

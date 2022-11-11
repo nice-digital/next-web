@@ -29,6 +29,11 @@ export const getServerSideProps: GetServerSideProps<
 			`https://anything.com`
 		).pathname.toLowerCase();
 
+	if (!expectedPath)
+		return {
+			notFound: true,
+		};
+
 	if (actualPath.localeCompare(expectedPath, "en", { sensitivity: "base" }))
 		return {
 			redirect: {
