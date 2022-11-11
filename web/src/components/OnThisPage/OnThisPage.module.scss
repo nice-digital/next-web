@@ -25,7 +25,7 @@ $_on-this-page-scrollbar-thumb: global.$custom-grey-1;
 .heading {
   @include typography.h4;
   font-family: typography.get-font-family(sans);
-  margin-top: 0;
+  margin-top: utils.rem(spacing.$small);
 
   @include media-queries.mq($from: lg) {
     padding-left: utils.rem(spacing.$x-small);

@@ -16,7 +16,7 @@ const getActiveHeadingId = (
 	scrollTolerance: number
 ): string => {
 	const headingsAboveViewport = linkTree
-		.map(({ id }) => {
+		.map(({ slug: id }) => {
 			const heading = document.querySelector(`#${id}`);
 			return { heading, y: heading?.getBoundingClientRect().top || 0 };
 		})
@@ -32,7 +32,7 @@ const getActiveHeadingId = (
 };
 
 export type OnThisPageSection = {
-	id: string;
+	slug: string;
 	title: string;
 };
 
@@ -74,12 +74,12 @@ export const OnThisPage: FC<OnThisPageProps> = ({ sections }) => {
 				className={styles.list}
 				aria-label="Jump links to sections on this page"
 			>
-				{sections.map(({ id, title }, i) => {
+				{sections.map(({ slug, title }, i) => {
 					return i < shortenedListSize || !isHidingMoreLinks ? (
-						<li key={id}>
+						<li key={slug}>
 							<a
-								className={activeHeadingId === id ? styles.activeHeading : ""}
-								href={`#${id}`}
+								className={activeHeadingId === slug ? styles.activeHeading : ""}
+								href={`#${slug}`}
 								dangerouslySetInnerHTML={{ __html: striptags(title) }}
 							/>
 						</li>

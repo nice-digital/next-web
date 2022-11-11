@@ -1,4 +1,3 @@
-import dayjs from "dayjs";
 import { GetServerSideProps } from "next";
 import { NextSeo } from "next-seo";
 import React from "react";
@@ -11,6 +10,10 @@ import {
 	OnThisPage,
 	OnThisPageSection,
 } from "@/components/OnThisPage/OnThisPage";
+import {
+	ProductPageHeading,
+	type ProductPageHeadingProps,
+} from "@/components/ProductPageHeading/ProductPageHeading";
 import { PublicationsChapterMenu } from "@/components/PublicationsChapterMenu/PublicationsChapterMenu";
 import { PublicationsDownloadLink } from "@/components/PublicationsDownloadLink/PublicationsDownloadLink";
 import { PublicationsPrevNext } from "@/components/PublicationsPrevNext/PublicationsPrevNext";
@@ -18,52 +21,20 @@ import {
 	getChapterContent,
 	isErrorResponse,
 	ChapterHeading,
-	ProductDetail,
 	ProductGroup,
 } from "@/feeds/publications/publications";
-import { formatDateStr } from "@/utils/datetime";
 import { getChapterLinks, validateRouteParams } from "@/utils/product";
 import { getPublicationPdfDownloadPath } from "@/utils/url";
 
 import styles from "./[chapterSlug].page.module.scss";
 
 export type IndicatorChapterPageProps = {
-	product: ProductDetail;
+	product: ProductPageHeadingProps["product"];
 	chapterHTML: string;
 	chapterTitle: string;
-	pdfDownloadPath: string;
+	pdfDownloadPath: string | null;
 	chapters: ChapterHeading[];
 	chapterSections: OnThisPageSection[];
-};
-
-const chaptersAndLinks = (
-	summary: string | null,
-	chapters: ProductChapter[],
-	slug: string
-): ProductChapter[] => {
-	const chaptersAndLinksArray: Array<ProductChapter> = [];
-
-	if (summary) {
-		chaptersAndLinksArray.push({
-			title: "Overview",
-			url: `/indicators/${slug}`,
-		});
-	}
-
-	chapters.forEach((chapter) => {
-		if (summary && chapter.title == "Overview") {
-			return;
-		}
-		return chaptersAndLinksArray.push({
-			title: chapter.title,
-			url: `/indicators/${slug}/chapters/${chapter.url
-				.split("/")
-				.pop()
-				?.toLowerCase()}`,
-		});
-	});
-
-	return chaptersAndLinksArray;
 };
 
 export default function IndicatorChapterPage({
@@ -74,47 +45,12 @@ export default function IndicatorChapterPage({
 	chapters,
 	chapterSections,
 }: IndicatorChapterPageProps): JSX.Element {
-	const metaData = [
-		product.productTypeName,
-		product.id,
-		product.publishedDate ? (
-			<>
-				Published:
-				<time dateTime={dayjs(product.publishedDate).format("YYYY-MM-DD")}>
-					&nbsp;{formatDateStr(product.publishedDate)}
-				</time>
-			</>
-		) : null,
-		product.lastMajorModificationDate != product.publishedDate ? (
-			<>
-				Last updated:
-				<time dateTime={dayjs(product.lastModified).format("YYYY-MM-DD")}>
-					{" "}
-					&nbsp;{formatDateStr(product.lastModified)}
-				</time>
-			</>
-		) : null,
-	].filter(Boolean);
-
 	const hasOnThisPageMenu = chapterSections.length > 1;
 
 	return (
 		<>
 			<NextSeo
-				title={
-					chapterTitle +
-					" | " +
-					product.title +
-					" | Indicators | Standards and Indicators"
-				}
-				description={product.metaDescription}
-				additionalLinkTags={[
-					{
-						rel: "sitemap",
-						type: "application/xml",
-						href: "/indicators/sitemap.xml",
-					},
-				]}
+				title={`${chapterTitle} | ${product.id} | Indicators | Standards and Indicators`}
 			/>
 
 			<Breadcrumbs>
@@ -128,12 +64,7 @@ export default function IndicatorChapterPage({
 				<Breadcrumb>{product.id}</Breadcrumb>
 			</Breadcrumbs>
 
-			<PageHeader
-				heading={product.title}
-				useAltHeading
-				id="content-start"
-				metadata={metaData}
-			/>
+			<ProductPageHeading product={product} />
 
 			<Grid gutter="loose">
 				<GridItem
@@ -225,14 +156,31 @@ export const getServerSideProps: GetServerSideProps<
 			? chapterContent.embedded.htmlChapterSectionInfo
 			: [];
 
+	const {
+		id,
+		indicatorSubTypeList,
+		lastMajorModificationDate,
+		productTypeName,
+		publishedDate,
+		title,
+	} = product;
+
 	return {
 		props: {
-			product,
+			product: {
+				// Don't bloat the serialized JSON with all the response data: just pick the fields we need
+				id,
+				indicatorSubTypeList,
+				lastMajorModificationDate,
+				productTypeName,
+				publishedDate,
+				title,
+			},
 			chapters,
 			chapterHTML: chapterContent.content,
 			chapterTitle: chapter.title,
 			chapterSections: chapterSections.map(({ chapterSlug, title }) => ({
-				id: chapterSlug,
+				slug: chapterSlug,
 				title,
 			})),
 			pdfDownloadPath,

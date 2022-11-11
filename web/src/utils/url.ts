@@ -79,7 +79,10 @@ export const getProductPath = (
 export const getPublicationPdfDownloadPath = (
 	product: ProductDetail,
 	productGroup: ProductGroup
-): string => {
+): string | null => {
+	if (!product.embedded.contentPartList?.embedded.uploadAndConvertContentPart)
+		return null;
+
 	const rootPath = getProductPath({
 		...product,
 		productGroup,

@@ -6,11 +6,11 @@ describe("OnThisPage", () => {
 	const props: OnThisPageProps = {
 		sections: [
 			{
-				id: "test-1",
+				slug: "test-1",
 				title: "Test 1",
 			},
 			{
-				id: "test-2",
+				slug: "test-2",
 				title: "Test 2",
 			},
 		],
