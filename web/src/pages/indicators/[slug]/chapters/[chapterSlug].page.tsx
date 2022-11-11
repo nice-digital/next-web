@@ -4,7 +4,6 @@ import React from "react";
 
 import { Breadcrumbs, Breadcrumb } from "@nice-digital/nds-breadcrumbs";
 import { Grid, GridItem } from "@nice-digital/nds-grid";
-import { PageHeader } from "@nice-digital/nds-page-header";
 
 import {
 	OnThisPage,

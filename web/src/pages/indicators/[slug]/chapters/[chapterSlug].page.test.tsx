@@ -67,7 +67,7 @@ describe("/indicators/[slug]/chapters/[chapterSlug].page", () => {
 			render(<IndicatorChapterPage {...props} />);
 			await waitFor(() => {
 				expect(document.title).toEqual(
-					`Indicator NM181 | ${mockChapter.Title} | Indicators | Standards and Indicators`
+					`Indicator NM181 | IND1001 | Indicators | Standards and Indicators`
 				);
 			});
 		});
@@ -227,7 +227,7 @@ describe("/indicators/[slug]/chapters/[chapterSlug].page", () => {
 					...props,
 					chapterSections: [
 						{
-							id: "test-section-title-1",
+							slug: "test-section-title-1",
 							title: "test section title 1",
 						},
 					],
@@ -249,11 +249,11 @@ describe("/indicators/[slug]/chapters/[chapterSlug].page", () => {
 					...props,
 					chapterSections: [
 						{
-							id: "test-section-title-1",
+							slug: "test-section-title-1",
 							title: "test section title 1",
 						},
 						{
-							id: "test-section-title-2",
+							slug: "test-section-title-2",
 							title: "test section title 2",
 						},
 					],
