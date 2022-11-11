@@ -3,7 +3,7 @@ import React, { FC } from "react";
 
 import { StackedNav, StackedNavLink } from "@nice-digital/nds-stacked-nav";
 
-import { Link } from "@/components/Link/Link";
+import { ScrollToContentStartLink } from "@/components/Link/Link";
 import { ChapterHeading } from "@/feeds/publications/types";
 
 export type PublicationsChapterMenuProps = {
@@ -25,7 +25,7 @@ export const PublicationsChapterMenu: FC<PublicationsChapterMenuProps> = ({
 					<StackedNavLink
 						key={item.url}
 						destination={destination}
-						elementType={Link}
+						elementType={ScrollToContentStartLink}
 						isCurrent={destination === router.asPath}
 					>
 						<span dangerouslySetInnerHTML={{ __html: item.title }} />

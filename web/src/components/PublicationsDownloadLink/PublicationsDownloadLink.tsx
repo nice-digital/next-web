@@ -6,7 +6,7 @@ import styles from "./publicationsDownloadLink.module.scss";
 
 export type PublicationsDownloadLinkProps = PropsWithChildren<{
 	ariaLabel?: string;
-	downloadLink: string;
+	downloadLink: string | null;
 }>;
 
 export const PublicationsDownloadLink: FC<PublicationsDownloadLinkProps> = ({
@@ -14,7 +14,7 @@ export const PublicationsDownloadLink: FC<PublicationsDownloadLinkProps> = ({
 	downloadLink,
 	children,
 }) => {
-	return (
+	return downloadLink ? (
 		<Button
 			aria-label={ariaLabel}
 			variant="cta"
@@ -24,5 +24,5 @@ export const PublicationsDownloadLink: FC<PublicationsDownloadLinkProps> = ({
 		>
 			{children || "Download"} (PDF)
 		</Button>
-	);
+	) : null;
 };

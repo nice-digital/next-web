@@ -382,12 +382,25 @@ export type ProductDetail = {
 	productTypeNamePlural: string;
 };
 
-/** The type of the response from a chapter endpoint e.g. /feeds/product/CG124/content/1/html */
+/** The type of the response from a chapter endpoint e.g. /feeds/product/ind69/part/1/chapter/overview */
 export type ChapterHTMLContent = {
 	links: EmptySelfLinks;
 	eTag: ETag;
 	/** The HTML content of this chapter */
 	content: string;
+	embedded?: {
+		/** Publications returns either a single object or an array of objects */
+		htmlChapterSectionInfo: HTMLChapterSectionInfo | HTMLChapterSectionInfo[];
+	};
+};
+
+export type HTMLChapterSectionInfo = {
+	links: EmptySelfLinks;
+	eTag: string;
+	reference: string;
+	partId: number;
+	chapterSlug: string;
+	title: string;
 };
 
 export type ErrorResponse = {
