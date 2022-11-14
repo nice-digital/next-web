@@ -4,7 +4,12 @@ import { DefaultSeo } from "next-seo";
 import App, { AppProps, NextWebVitalsMetric } from "next/app";
 
 import "@nice-digital/design-system/scss/base.scss";
-import { Header, HeaderProps, Footer } from "@nice-digital/global-nav";
+import {
+	Header,
+	HeaderProps,
+	Footer,
+	type Service,
+} from "@nice-digital/global-nav";
 import { Container } from "@nice-digital/nds-container";
 
 import { ErrorPageContent } from "@/components/ErrorPageContent/ErrorPageContent";
@@ -16,6 +21,24 @@ import { publicRuntimeConfig } from "@/config";
 
 import "@nice-digital/nds-table/scss/table.scss";
 import "@nice-digital/nds-panel/scss/panel.scss";
+
+const getServiceFromPathname = (pathname: string) => {
+	let service: Service;
+
+	switch (true) {
+		case pathname.indexOf("/guidance") != -1:
+			service = "guidance";
+			break;
+		case pathname.indexOf("/indicators") != -1:
+			service = "standards-and-indicators";
+			break;
+		default:
+			service = "guidance";
+			break;
+	}
+
+	return service;
+};
 
 interface AppState {
 	/**
@@ -125,18 +148,20 @@ class NextWebApp extends App<{}, {}, AppState> {
 		};
 
 		const {
-				Component,
-				pageProps,
-				router: { pathname },
-			} = this.props,
-			service = pathname.indexOf("/guidance") === 0 ? "guidance" : undefined;
+			Component,
+			pageProps,
+			router: { pathname },
+		} = this.props;
 
 		if (this.state.hasError)
 			return (
 				<>
 					<DefaultSeo {...getDefaultSeoConfig(pathname)} />
 					<div ref={this.globalNavWrapperRef}>
-						<Header {...headerProps} service={service} />
+						<Header
+							{...headerProps}
+							service={getServiceFromPathname(pathname)}
+						/>
 					</div>
 					<main>
 						<Container>
@@ -151,7 +176,7 @@ class NextWebApp extends App<{}, {}, AppState> {
 			<>
 				<DefaultSeo {...getDefaultSeoConfig(pathname)} />
 				<div ref={this.globalNavWrapperRef}>
-					<Header {...headerProps} service={service} />
+					<Header {...headerProps} service={getServiceFromPathname(pathname)} />
 				</div>
 				<main>
 					<Container>
