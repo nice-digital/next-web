@@ -28,14 +28,7 @@ const tableBodyRender = (documents: Document[]) => (
 		</thead>
 		<tbody>
 			{documents.map(
-				({
-					id,
-					title,
-					guidanceRef,
-					publicationDate,
-					lastUpdated,
-					pathAndQuery,
-				}) => {
+				({ id, title, guidanceRef, lastUpdated, pathAndQuery }) => {
 					return (
 						<tr key={id}>
 							<td>
@@ -45,9 +38,7 @@ const tableBodyRender = (documents: Document[]) => (
 								/>
 							</td>
 							<td>{guidanceRef}</td>
-							<td>
-								<ResponsiveDate isoDateTime={String(publicationDate)} />
-							</td>
+							<td>TODO</td>
 							<td>
 								<ResponsiveDate isoDateTime={String(lastUpdated)} />
 							</td>

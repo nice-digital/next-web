@@ -21,21 +21,13 @@ const tableBodyRender = (documents: Document[]) => (
 		<thead>
 			<tr>
 				<th scope="col">Title</th>
-				<th scope="col">Reference number</th>
-				<th scope="col">Published</th>
-				<th scope="col">Last updated</th>
+				<th scope="col">Type</th>
+				<th scope="col">Expected publication date</th>
 			</tr>
 		</thead>
 		<tbody>
 			{documents.map(
-				({
-					id,
-					title,
-					guidanceRef,
-					publicationDate,
-					lastUpdated,
-					pathAndQuery,
-				}) => {
+				({ id, title, guidanceRef, publicationDate, pathAndQuery }) => {
 					return (
 						<tr key={id}>
 							<td>
@@ -46,10 +38,8 @@ const tableBodyRender = (documents: Document[]) => (
 							</td>
 							<td>{guidanceRef}</td>
 							<td>
-								<ResponsiveDate isoDateTime={String(publicationDate)} />
-							</td>
-							<td>
-								<ResponsiveDate isoDateTime={String(lastUpdated)} />
+								{/* <ResponsiveDate isoDateTime={String(publicationDate)} /> */}
+								TODO
 							</td>
 						</tr>
 					);
