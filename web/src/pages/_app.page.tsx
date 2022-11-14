@@ -22,24 +22,6 @@ import { publicRuntimeConfig } from "@/config";
 import "@nice-digital/nds-table/scss/table.scss";
 import "@nice-digital/nds-panel/scss/panel.scss";
 
-const getServiceFromPathname = (pathname: string) => {
-	let service: Service;
-
-	switch (true) {
-		case pathname.indexOf("/guidance") != -1:
-			service = "guidance";
-			break;
-		case pathname.indexOf("/indicators") != -1:
-			service = "standards-and-indicators";
-			break;
-		default:
-			service = "guidance";
-			break;
-	}
-
-	return service;
-};
-
 interface AppState {
 	/**
 	 * Whether an error has been caught in componentDidCatch.
@@ -153,15 +135,26 @@ class NextWebApp extends App<{}, {}, AppState> {
 			router: { pathname },
 		} = this.props;
 
+		let service: Service;
+
+		switch (true) {
+			case pathname.indexOf("/guidance") != -1:
+				service = "guidance";
+				break;
+			case pathname.indexOf("/indicators") != -1:
+				service = "standards-and-indicators";
+				break;
+			default:
+				service = "guidance";
+				break;
+		}
+
 		if (this.state.hasError)
 			return (
 				<>
 					<DefaultSeo {...getDefaultSeoConfig(pathname)} />
 					<div ref={this.globalNavWrapperRef}>
-						<Header
-							{...headerProps}
-							service={getServiceFromPathname(pathname)}
-						/>
+						<Header {...headerProps} service={service} />
 					</div>
 					<main>
 						<Container>
@@ -176,7 +169,7 @@ class NextWebApp extends App<{}, {}, AppState> {
 			<>
 				<DefaultSeo {...getDefaultSeoConfig(pathname)} />
 				<div ref={this.globalNavWrapperRef}>
-					<Header {...headerProps} service={getServiceFromPathname(pathname)} />
+					<Header {...headerProps} service={service} />
 				</div>
 				<main>
 					<Container>
