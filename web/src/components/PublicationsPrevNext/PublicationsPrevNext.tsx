@@ -5,6 +5,7 @@ import { PrevNext, type PrevNextLink } from "@nice-digital/nds-prev-next";
 
 import { ScrollToContentStartLink } from "@/components/Link/Link";
 import { type ChapterHeading } from "@/feeds/publications/types";
+import { useIsClient } from "@/hooks/useIsClient";
 
 export type PublicationsPrevNextProps = {
 	chapters: ChapterHeading[];
@@ -25,14 +26,19 @@ export const PublicationsPrevNext: FC<PublicationsPrevNextProps> = ({
 	chapters,
 }) => {
 	const { asPath } = useRouter();
+	const isClient = useIsClient();
 	const currentIndex = chapters.findIndex(({ url }) => url === asPath),
 		nextPageLink = chapters[currentIndex + 1],
 		previousPageLink = chapters[currentIndex - 1];
 
 	return (
-		<PrevNext
-			nextPageLink={getPageLink(nextPageLink)}
-			previousPageLink={getPageLink(previousPageLink)}
-		/>
+		<>
+			{isClient && (
+				<PrevNext
+					nextPageLink={getPageLink(nextPageLink)}
+					previousPageLink={getPageLink(previousPageLink)}
+				/>
+			)}
+		</>
 	);
 };
