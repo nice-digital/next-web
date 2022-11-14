@@ -4,7 +4,7 @@ import { DefaultSeo } from "next-seo";
 import App, { AppProps, NextWebVitalsMetric } from "next/app";
 
 import "@nice-digital/design-system/scss/base.scss";
-import { Header, HeaderProps, Footer } from "@nice-digital/global-nav";
+import { Header, HeaderProps, Main, Footer } from "@nice-digital/global-nav";
 import { Container } from "@nice-digital/nds-container";
 
 import { ErrorPageContent } from "@/components/ErrorPageContent/ErrorPageContent";
@@ -138,11 +138,11 @@ class NextWebApp extends App<{}, {}, AppState> {
 					<div ref={this.globalNavWrapperRef}>
 						<Header {...headerProps} service={service} />
 					</div>
-					<main>
+					<Main withPadding={true}>
 						<Container>
 							<ErrorPageContent />
 						</Container>
-					</main>
+					</Main>
 					<AppFooter />
 				</>
 			);
@@ -153,11 +153,11 @@ class NextWebApp extends App<{}, {}, AppState> {
 				<div ref={this.globalNavWrapperRef}>
 					<Header {...headerProps} service={service} />
 				</div>
-				<main>
+				<Main withPadding={true}>
 					<Container>
 						<Component {...pageProps} />
 					</Container>
-				</main>
+				</Main>
 				<AppFooter />
 			</>
 		);
