@@ -32,7 +32,9 @@ describe("/indicators/[slug].page", () => {
 		"ind1001-test-indicator-ind-1001-the-percentage-of-patients-with-one-or-more-of-the-following-conditions-chd-atrial-fibrillation-chronic-heart-failure-stroke-or-tia-diabetes-or-dementia-with-a-fast-score-of-3-or-more-or-audit-c-score-of-5-or-more-in-the-preceding-2-years-who-have-received-brief-intervention-to-help-them-reduce-their-alcohol-related-risk-within-3-months-of-the-score-being-recorded";
 
 	beforeEach(() => {
-		(useRouter as jest.Mock).mockImplementation(() => ({}));
+		(useRouter as jest.Mock).mockImplementation(() => ({
+			asPath: "/somewhere#somewhere",
+		}));
 		axiosMock.reset();
 
 		axiosMock.onGet(new RegExp(FeedPath.ProductDetail)).reply(200, mockProduct);

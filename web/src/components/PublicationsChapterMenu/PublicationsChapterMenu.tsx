@@ -15,7 +15,7 @@ export const PublicationsChapterMenu: FC<PublicationsChapterMenuProps> = ({
 	ariaLabel,
 	chapters,
 }) => {
-	const router = useRouter();
+	const { asPath } = useRouter();
 
 	return (
 		<>
@@ -29,7 +29,7 @@ export const PublicationsChapterMenu: FC<PublicationsChapterMenuProps> = ({
 							destination={destination}
 							elementType={Link}
 							// strip hash from asPath due to difference between client and ssr https://github.com/vercel/next.js/issues/25202
-							isCurrent={destination === router.asPath.replace(/#.*/, "")}
+							isCurrent={destination === asPath.replace(/#.*/, "")}
 						>
 							<span dangerouslySetInnerHTML={{ __html: item.title }} />
 						</StackedNavLink>
