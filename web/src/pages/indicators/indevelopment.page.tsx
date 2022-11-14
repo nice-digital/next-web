@@ -27,7 +27,14 @@ const tableBodyRender = (documents: Document[]) => (
 		</thead>
 		<tbody>
 			{documents.map(
-				({ id, title, guidanceRef, publicationDate, pathAndQuery }) => {
+				({
+					id,
+					title,
+					niceResultType,
+					expectedPublicationDate,
+					pathAndQuery,
+				}) => {
+					console.log({ document });
 					return (
 						<tr key={id}>
 							<td>
@@ -36,10 +43,13 @@ const tableBodyRender = (documents: Document[]) => (
 									dangerouslySetInnerHTML={{ __html: title }}
 								/>
 							</td>
-							<td>{guidanceRef}</td>
+							<td>{niceResultType}</td>
 							<td>
-								{/* <ResponsiveDate isoDateTime={String(publicationDate)} /> */}
-								TODO
+								{expectedPublicationDate ? (
+									<ResponsiveDate isoDateTime={expectedPublicationDate} />
+								) : (
+									<abbr title="To be confirmed">TBC</abbr>
+								)}
 							</td>
 						</tr>
 					);

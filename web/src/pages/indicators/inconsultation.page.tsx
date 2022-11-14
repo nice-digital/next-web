@@ -11,7 +11,7 @@ import {
 import { ResponsiveDate } from "@/components/ResponsiveDate/ResponsiveDate";
 
 const defaultSortOrder = SortOrder.dateDescending,
-	dateFilterLabel = "Last updated date";
+	dateFilterLabel = "Consultation end date";
 
 const tableBodyRender = (documents: Document[]) => (
 	<>
@@ -28,7 +28,14 @@ const tableBodyRender = (documents: Document[]) => (
 		</thead>
 		<tbody>
 			{documents.map(
-				({ id, title, guidanceRef, lastUpdated, pathAndQuery }) => {
+				({
+					id,
+					title,
+					consultationType,
+					niceResultType,
+					consultationEndDate,
+					pathAndQuery,
+				}) => {
 					return (
 						<tr key={id}>
 							<td>
@@ -37,10 +44,10 @@ const tableBodyRender = (documents: Document[]) => (
 									dangerouslySetInnerHTML={{ __html: title }}
 								/>
 							</td>
-							<td>{guidanceRef}</td>
-							<td>TODO</td>
+							<td>{consultationType}</td>
+							<td>{niceResultType}</td>
 							<td>
-								<ResponsiveDate isoDateTime={String(lastUpdated)} />
+								<ResponsiveDate isoDateTime={String(consultationEndDate)} />
 							</td>
 						</tr>
 					);
