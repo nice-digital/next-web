@@ -16,14 +16,14 @@ const defaultSortOrder = SortOrder.dateDescending,
 const tableBodyRender = (documents: Document[]) => (
 	<>
 		<caption className="visually-hidden">
-			Published guidance, NICE advice and quality standards
+			List of indicators that are currently in consultation
 		</caption>
 		<thead>
 			<tr>
 				<th scope="col">Title</th>
-				<th scope="col">Reference number</th>
-				<th scope="col">Published</th>
-				<th scope="col">Last updated</th>
+				<th scope="col">Consultation</th>
+				<th scope="col">Type</th>
+				<th scope="col">{dateFilterLabel}</th>
 			</tr>
 		</thead>
 		<tbody>
@@ -77,7 +77,7 @@ export default getProductListPage({
 	currentBreadcrumb: "In consultation",
 	preheading: "In consultation",
 	heading: <>Indicators</>,
-	title: "In development | Indicators | Standards and indicators | NICE",
+	title: "In consultation | Indicators | Standards and indicators | NICE",
 	defaultSort: {
 		order: defaultSortOrder,
 		label: "Date",

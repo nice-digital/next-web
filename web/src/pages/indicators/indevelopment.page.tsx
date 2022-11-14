@@ -16,7 +16,7 @@ const defaultSortOrder = SortOrder.dateDescending,
 const tableBodyRender = (documents: Document[]) => (
 	<>
 		<caption className="visually-hidden">
-			Published guidance, NICE advice and quality standards
+			List of indicators that are in development
 		</caption>
 		<thead>
 			<tr>
