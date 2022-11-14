@@ -16,7 +16,6 @@ export const PublicationsChapterMenu: FC<PublicationsChapterMenuProps> = ({
 	chapters,
 }) => {
 	const router = useRouter();
-	// const isClient = useIsClient();
 
 	return (
 		<>
