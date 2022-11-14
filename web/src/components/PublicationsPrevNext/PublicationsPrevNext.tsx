@@ -5,7 +5,6 @@ import { PrevNext, type PrevNextLink } from "@nice-digital/nds-prev-next";
 
 import { ScrollToContentStartLink } from "@/components/Link/Link";
 import { type ChapterHeading } from "@/feeds/publications/types";
-import { useIsClient } from "@/hooks/useIsClient";
 
 export type PublicationsPrevNextProps = {
 	chapters: ChapterHeading[];
@@ -26,19 +25,17 @@ export const PublicationsPrevNext: FC<PublicationsPrevNextProps> = ({
 	chapters,
 }) => {
 	const { asPath } = useRouter();
-	const isClient = useIsClient();
-	const currentIndex = chapters.findIndex(({ url }) => url === asPath),
+	// strip hash from asPath due to difference between client and ssr https://github.com/vercel/next.js/issues/25202
+	const currentIndex = chapters.findIndex(
+			({ url }) => url === asPath.replace(/#.*/, "")
+		),
 		nextPageLink = chapters[currentIndex + 1],
 		previousPageLink = chapters[currentIndex - 1];
 
 	return (
-		<>
-			{isClient && (
-				<PrevNext
-					nextPageLink={getPageLink(nextPageLink)}
-					previousPageLink={getPageLink(previousPageLink)}
-				/>
-			)}
-		</>
+		<PrevNext
+			nextPageLink={getPageLink(nextPageLink)}
+			previousPageLink={getPageLink(previousPageLink)}
+		/>
 	);
 };
