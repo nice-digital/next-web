@@ -1,76 +1,55 @@
-import dayjs from "dayjs";
 import { GetServerSideProps } from "next";
 import { NextSeo } from "next-seo";
 import React from "react";
 
 import { Breadcrumbs, Breadcrumb } from "@nice-digital/nds-breadcrumbs";
 import { Grid, GridItem } from "@nice-digital/nds-grid";
-import { PageHeader } from "@nice-digital/nds-page-header";
 
+import {
+	OnThisPage,
+	OnThisPageSection,
+} from "@/components/OnThisPage/OnThisPage";
+import {
+	ProductPageHeading,
+	type ProductPageHeadingProps,
+} from "@/components/ProductPageHeading/ProductPageHeading";
 import { PublicationsChapterMenu } from "@/components/PublicationsChapterMenu/PublicationsChapterMenu";
 import { PublicationsDownloadLink } from "@/components/PublicationsDownloadLink/PublicationsDownloadLink";
 import { PublicationsPrevNext } from "@/components/PublicationsPrevNext/PublicationsPrevNext";
 import {
 	getChapterContent,
-	ChapterHTMLContent,
 	isErrorResponse,
 	ChapterHeading,
-	ProductDetail,
 	ProductGroup,
 } from "@/feeds/publications/publications";
-import { formatDateStr } from "@/utils/datetime";
 import { getChapterLinks, validateRouteParams } from "@/utils/product";
 import { getPublicationPdfDownloadPath } from "@/utils/url";
 
 import styles from "./[chapterSlug].page.module.scss";
 
 export type IndicatorChapterPageProps = {
-	product: ProductDetail;
-	chapterContent: ChapterHTMLContent;
-	pdfDownloadPath: string;
+	product: ProductPageHeadingProps["product"];
+	chapterHTML: string;
+	chapterTitle: string;
+	pdfDownloadPath: string | null;
 	chapters: ChapterHeading[];
+	chapterSections: OnThisPageSection[];
 };
 
 export default function IndicatorChapterPage({
-	chapterContent,
+	chapterHTML,
+	chapterTitle,
 	product,
 	pdfDownloadPath,
 	chapters,
+	chapterSections,
 }: IndicatorChapterPageProps): JSX.Element {
-	const metaData = [
-		product.productTypeName,
-		product.id,
-		product.publishedDate ? (
-			<>
-				Published:
-				<time dateTime={dayjs(product.publishedDate).format("YYYY-MM-DD")}>
-					&nbsp;{formatDateStr(product.publishedDate)}
-				</time>
-			</>
-		) : null,
-		product.lastMajorModificationDate != product.publishedDate ? (
-			<>
-				Last updated:
-				<time dateTime={dayjs(product.lastModified).format("YYYY-MM-DD")}>
-					{" "}
-					&nbsp;{formatDateStr(product.lastModified)}
-				</time>
-			</>
-		) : null,
-	].filter(Boolean);
+	const hasOnThisPageMenu = chapterSections.length > 1;
 
 	return (
 		<>
 			<NextSeo
-				title={product.title + " | Indicators | Standards and Indicators"}
-				description={product.metaDescription}
-				additionalLinkTags={[
-					{
-						rel: "sitemap",
-						type: "application/xml",
-						href: "/indicators/sitemap.xml",
-					},
-				]}
+				title={`${chapterTitle} | ${product.id} | Indicators | Standards and Indicators`}
 			/>
 
 			<Breadcrumbs>
@@ -84,12 +63,7 @@ export default function IndicatorChapterPage({
 				<Breadcrumb>{product.id}</Breadcrumb>
 			</Breadcrumbs>
 
-			<PageHeader
-				heading={product.title}
-				useAltHeading
-				id="content-start"
-				metadata={metaData}
-			/>
+			<ProductPageHeading product={product} />
 
 			<Grid gutter="loose">
 				<GridItem
@@ -113,11 +87,24 @@ export default function IndicatorChapterPage({
 				</GridItem>
 
 				<GridItem cols={12} md={8} lg={9} elementType="section">
-					<div
-						dangerouslySetInnerHTML={{ __html: chapterContent.content }}
-						className={styles.chapterContent}
-					/>
-					<PublicationsPrevNext chapters={chapters} />
+					<Grid reverse gutter="loose">
+						{hasOnThisPageMenu ? (
+							<GridItem cols={12} md={4} lg={3}>
+								<OnThisPage sections={chapterSections} />
+							</GridItem>
+						) : null}
+						<GridItem
+							cols={12}
+							md={hasOnThisPageMenu ? 8 : 12}
+							lg={hasOnThisPageMenu ? 9 : 12}
+						>
+							<div
+								dangerouslySetInnerHTML={{ __html: chapterHTML }}
+								className={styles.chapterContent}
+							/>
+							<PublicationsPrevNext chapters={chapters} />
+						</GridItem>
+					</Grid>
 				</GridItem>
 			</Grid>
 		</>
@@ -162,11 +149,39 @@ export const getServerSideProps: GetServerSideProps<
 
 	if (isErrorResponse(chapterContent)) return { notFound: true };
 
+	const chapterSections =
+		chapterContent.embedded?.htmlChapterSectionInfo &&
+		Array.isArray(chapterContent.embedded.htmlChapterSectionInfo)
+			? chapterContent.embedded.htmlChapterSectionInfo
+			: [];
+
+	const {
+		id,
+		indicatorSubTypeList,
+		lastMajorModificationDate,
+		productTypeName,
+		publishedDate,
+		title,
+	} = product;
+
 	return {
 		props: {
-			product,
+			product: {
+				// Don't bloat the serialized JSON with all the response data: just pick the fields we need
+				id,
+				indicatorSubTypeList,
+				lastMajorModificationDate,
+				productTypeName,
+				publishedDate,
+				title,
+			},
 			chapters,
-			chapterContent,
+			chapterHTML: chapterContent.content,
+			chapterTitle: chapter.title,
+			chapterSections: chapterSections.map(({ chapterSlug, title }) => ({
+				slug: chapterSlug,
+				title,
+			})),
 			pdfDownloadPath,
 		},
 	};

@@ -1,77 +1,51 @@
 import { NextSeo } from "next-seo";
-import { GetServerSideProps } from "next/types";
-import React from "react";
+import { type GetServerSideProps } from "next/types";
 
 import { Breadcrumbs, Breadcrumb } from "@nice-digital/nds-breadcrumbs";
 import { Grid, GridItem } from "@nice-digital/nds-grid";
-import { PageHeader } from "@nice-digital/nds-page-header";
 
+import {
+	ProductPageHeading,
+	type ProductPageHeadingProps,
+} from "@/components/ProductPageHeading/ProductPageHeading";
 import { PublicationsChapterMenu } from "@/components/PublicationsChapterMenu/PublicationsChapterMenu";
 import { PublicationsDownloadLink } from "@/components/PublicationsDownloadLink/PublicationsDownloadLink";
 import { PublicationsPrevNext } from "@/components/PublicationsPrevNext/PublicationsPrevNext";
 import {
 	getAllIndicatorSubTypes,
 	ChapterHeading,
-	ProductDetail,
 } from "@/feeds/publications/publications";
 import {
+	ProductDetail,
 	ProductGroup,
 	type IndicatorSubType,
 } from "@/feeds/publications/types";
-import { formatDateStr, stripTime } from "@/utils/datetime";
 import { getChapterLinks, validateRouteParams } from "@/utils/product";
 import { getPublicationPdfDownloadPath } from "@/utils/url";
 
 import styles from "./index.page.module.scss";
 
 export type IndicatorsDetailsPageProps = {
-	product: ProductDetail;
+	product: ProductPageHeadingProps["product"] &
+		Pick<ProductDetail, "metaDescription" | "indicatorSubTypeList" | "summary">;
 	indicatorSubTypes: IndicatorSubType[];
-	pdfDownloadPath: string;
+	pdfDownloadPath: string | null;
 	chapters: ChapterHeading[];
 };
 
 export default function IndicatorsDetailsPage({
-	product: {
-		id,
-		summary,
-		productTypeName,
-		publishedDate,
-		lastMajorModificationDate,
-		title,
-		metaDescription,
-		indicatorSubTypeList,
-	},
+	product,
 	indicatorSubTypes,
 	pdfDownloadPath,
 	chapters,
 }: IndicatorsDetailsPageProps): JSX.Element {
-	const metaData = [
-		productTypeName,
-		id,
-		publishedDate ? (
-			<>
-				Published:
-				<time dateTime={stripTime(publishedDate)}>
-					&nbsp;{formatDateStr(publishedDate)}
-				</time>
-			</>
-		) : null,
-		lastMajorModificationDate != publishedDate ? (
-			<>
-				Last updated:
-				<time dateTime={stripTime(lastMajorModificationDate)}>
-					&nbsp;{formatDateStr(lastMajorModificationDate)}
-				</time>
-			</>
-		) : null,
-	].filter(Boolean);
+	const hasLeftColumn = pdfDownloadPath || chapters.length > 0;
 
 	return (
 		<>
 			<NextSeo
-				title={title + " | Indicators | Standards and Indicators"}
-				description={metaDescription}
+				title={product.title + " | Indicators | Standards and Indicators"}
+				description={product.metaDescription}
 				additionalLinkTags={[
 					{
 						rel: "sitemap",
@@ -90,17 +64,17 @@ export default function IndicatorsDetailsPage({
 					},
 					{
 						name: "DCTERMS.issued",
-						content: publishedDate,
+						content: product.publishedDate,
 					},
 					{
 						name: "DCTERMS.modified",
-						content: lastMajorModificationDate,
+						content: product.lastMajorModificationDate,
 					},
 					{
 						name: "DCTERMS.identifier",
-						content: id,
+						content: product.id,
 					},
-					...indicatorSubTypeList
+					...product.indicatorSubTypeList
 						.map((subType) => ({
 							name: "DCTERMS.type",
 							content: indicatorSubTypes.find(
@@ -120,41 +94,43 @@ export default function IndicatorsDetailsPage({
 				<Breadcrumb to="/standards-and-indicators/indicators">
 					Indicators
 				</Breadcrumb>
-				<Breadcrumb>{id}</Breadcrumb>
+				<Breadcrumb>{product.id}</Breadcrumb>
 			</Breadcrumbs>
 
-			<PageHeader
-				heading={title}
-				useAltHeading
-				id="content-start"
-				metadata={metaData}
-			/>
+			<ProductPageHeading product={product} />
 
 			<Grid gutter="loose">
+				{hasLeftColumn ? (
+					<GridItem
+						cols={12}
+						md={4}
+						lg={3}
+						elementType="section"
+						aria-label="Chapters"
+					>
+						<PublicationsDownloadLink
+							ariaLabel="Download indicator PDF file"
+							downloadLink={pdfDownloadPath}
+						>
+							Download indicator
+						</PublicationsDownloadLink>
+
+						<PublicationsChapterMenu
+							ariaLabel="Chapter pages"
+							chapters={chapters}
+						/>
+					</GridItem>
+				) : null}
+
 				<GridItem
 					cols={12}
-					md={4}
-					lg={3}
+					md={hasLeftColumn ? 8 : 12}
+					lg={hasLeftColumn ? 9 : 12}
 					elementType="section"
-					aria-label="Chapters"
 				>
-					<PublicationsDownloadLink
-						ariaLabel="Download indicator PDF file"
-						downloadLink={pdfDownloadPath}
-					>
-						Download indicator
-					</PublicationsDownloadLink>
-
-					<PublicationsChapterMenu
-						ariaLabel="Chapter pages"
-						chapters={chapters}
-					/>
-				</GridItem>
-
-				<GridItem cols={12} md={8} lg={9} elementType="section">
-					{summary ? (
+					{product.summary ? (
 						<div
-							dangerouslySetInnerHTML={{ __html: summary }}
+							dangerouslySetInnerHTML={{ __html: product.summary }}
 							className={styles.summary}
 						/>
 					) : null}
@@ -181,9 +157,30 @@ export const getServerSideProps: GetServerSideProps<
 			ProductGroup.Other
 		);
 
+	const {
+		id,
+		indicatorSubTypeList,
+		lastMajorModificationDate,
+		metaDescription,
+		productTypeName,
+		publishedDate,
+		summary,
+		title,
+	} = product;
+
 	return {
 		props: {
-			product,
+			product: {
+				// Don't bloat the serialized JSON with all the response data: just pick the fields we need
+				id,
+				indicatorSubTypeList,
+				lastMajorModificationDate,
+				metaDescription,
+				productTypeName,
+				publishedDate,
+				summary,
+				title,
+			},
 			indicatorSubTypes,
 			pdfDownloadPath,
 			chapters,
