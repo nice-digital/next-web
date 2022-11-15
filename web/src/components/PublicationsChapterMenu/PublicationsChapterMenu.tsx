@@ -18,24 +18,22 @@ export const PublicationsChapterMenu: FC<PublicationsChapterMenuProps> = ({
 	const { asPath } = useRouter();
 
 	return (
-		<>
-			<StackedNav aria-label={ariaLabel}>
-				{chapters.map((item) => {
-					const destination = item.url;
+		<StackedNav aria-label={ariaLabel}>
+			{chapters.map((item) => {
+				const destination = item.url;
 
-					return (
-						<StackedNavLink
-							key={item.url}
-							destination={destination}
-							elementType={Link}
-							// strip hash from asPath due to difference between client and ssr https://github.com/vercel/next.js/issues/25202
-							isCurrent={destination === asPath.replace(/#.*/, "")}
-						>
-							<span dangerouslySetInnerHTML={{ __html: item.title }} />
-						</StackedNavLink>
-					);
-				})}
-			</StackedNav>
-		</>
+				return (
+					<StackedNavLink
+						key={item.url}
+						destination={destination}
+						elementType={Link}
+						// strip hash from asPath due to difference between client and ssr https://github.com/vercel/next.js/issues/25202
+						isCurrent={destination === asPath.replace(/#.*/, "")}
+					>
+						<span dangerouslySetInnerHTML={{ __html: item.title }} />
+					</StackedNavLink>
+				);
+			})}
+		</StackedNav>
 	);
 };
