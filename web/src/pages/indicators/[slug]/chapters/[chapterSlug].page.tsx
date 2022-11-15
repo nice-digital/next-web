@@ -37,9 +37,9 @@ export type IndicatorChapterPageProps = {
 	pdfDownloadPath: string | null;
 	chapters: ChapterHeading[];
 	chapterSections: OnThisPageSection[];
-	hasEvidenceResources: boolean;
-	hasInfoForPublicResources: boolean;
 	hasToolsAndResources: boolean;
+	hasInfoForPublicResources: boolean;
+	hasEvidenceResources: boolean;
 	hasHistory: boolean;
 };
 
@@ -51,9 +51,9 @@ export default function IndicatorChapterPage({
 	pdfDownloadPath,
 	chapters,
 	chapterSections,
-	hasEvidenceResources,
-	hasInfoForPublicResources,
 	hasToolsAndResources,
+	hasInfoForPublicResources,
+	hasEvidenceResources,
 	hasHistory,
 }: IndicatorChapterPageProps): JSX.Element {
 	const hasOnThisPageMenu = chapterSections.length > 1;
@@ -80,9 +80,9 @@ export default function IndicatorChapterPage({
 			<ProductHorizontalNav
 				productTypeName="Indicator"
 				productPath={productPath}
-				hasEvidenceResources={hasEvidenceResources}
 				hasToolsAndResources={hasToolsAndResources}
 				hasInfoForPublicResources={hasInfoForPublicResources}
+				hasEvidenceResources={hasEvidenceResources}
 				hasHistory={hasHistory}
 			/>
 
@@ -142,9 +142,9 @@ export const getServerSideProps: GetServerSideProps<
 
 	const {
 			product,
-			evidenceResources,
-			infoForPublicResources,
 			toolsAndResources,
+			infoForPublicResources,
+			evidenceResources,
 		} = result,
 		chapters = getChapterLinks(product),
 		productPath = getProductPath({
@@ -196,9 +196,9 @@ export const getServerSideProps: GetServerSideProps<
 	return {
 		props: {
 			productPath,
-			hasEvidenceResources: evidenceResources.length > 0,
-			hasInfoForPublicResources: infoForPublicResources.length > 0,
 			hasToolsAndResources: toolsAndResources.length > 0,
+			hasInfoForPublicResources: infoForPublicResources.length > 0,
+			hasEvidenceResources: evidenceResources.length > 0,
 			hasHistory: false,
 			product: {
 				// Don't bloat the serialized JSON with all the response data: just pick the fields we need

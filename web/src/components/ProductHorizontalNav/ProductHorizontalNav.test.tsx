@@ -46,10 +46,10 @@ describe("ProductHorizontalNav", () => {
 		render(
 			<ProductHorizontalNav
 				{...props}
+				hasToolsAndResources={false}
+				hasInfoForPublicResources={false}
 				hasEvidenceResources={false}
 				hasHistory={false}
-				hasInfoForPublicResources={false}
-				hasToolsAndResources={false}
 			/>
 		);
 
@@ -57,10 +57,10 @@ describe("ProductHorizontalNav", () => {
 	});
 
 	it.each([
+		["Tools and resources", "hasToolsAndResources"],
+		["Information for the public", "hasInfoForPublicResources"],
 		["Evidence", "hasEvidenceResources"],
 		["History", "hasHistory"],
-		["Information for the public", "hasInfoForPublicResources"],
-		["Tools and resources", "hasToolsAndResources"],
 	])("should hide %s link when no content", (text, propName) => {
 		const newProps = { ...props, [propName]: false };
 
@@ -70,10 +70,10 @@ describe("ProductHorizontalNav", () => {
 	});
 
 	it.each([
+		["Tools and resources", "resources"],
+		["Information for the public", "informationforpublic"],
 		["Evidence", "evidence"],
 		["History", "history"],
-		["Information for the public", "informationforpublic"],
-		["Tools and resources", "resources"],
 	])("should highlight %s link when exact match on path", (name, pathSlug) => {
 		useRouterMock.mockReturnValue({
 			asPath: `${props.productPath}/${pathSlug}`,
@@ -88,10 +88,10 @@ describe("ProductHorizontalNav", () => {
 	});
 
 	it.each([
+		["Tools and resources", "resources"],
+		["Information for the public", "informationforpublic"],
 		["Evidence", "evidence"],
 		["History", "history"],
-		["Information for the public", "informationforpublic"],
-		["Tools and resources", "resources"],
 	])("should highlight %s link for sub pages", (name, pathSlug) => {
 		useRouterMock.mockReturnValue({
 			asPath: `${props.productPath}/${pathSlug}/sub-page`,

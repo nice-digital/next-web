@@ -28,9 +28,9 @@ export type IndicatorEvidencePageProps = {
 	resourceGroups: ResourceGroupViewModel[];
 	productPath: string;
 	product: ProductPageHeadingProps["product"];
-	hasEvidenceResources: boolean;
-	hasInfoForPublicResources: boolean;
 	hasToolsAndResources: boolean;
+	hasInfoForPublicResources: boolean;
+	hasEvidenceResources: boolean;
 	hasHistory: boolean;
 };
 
@@ -38,9 +38,9 @@ export default function ({
 	resourceGroups,
 	productPath,
 	product,
-	hasEvidenceResources,
-	hasInfoForPublicResources,
 	hasToolsAndResources,
+	hasInfoForPublicResources,
+	hasEvidenceResources,
 	hasHistory,
 }: IndicatorEvidencePageProps): JSX.Element {
 	return (
@@ -68,9 +68,9 @@ export default function ({
 			<ProductHorizontalNav
 				productTypeName="Indicator"
 				productPath={productPath}
-				hasEvidenceResources={hasEvidenceResources}
 				hasToolsAndResources={hasToolsAndResources}
 				hasInfoForPublicResources={hasInfoForPublicResources}
+				hasEvidenceResources={hasEvidenceResources}
 				hasHistory={hasHistory}
 			/>
 
@@ -91,9 +91,9 @@ export const getServerSideProps: GetServerSideProps<
 
 	const {
 			product,
-			evidenceResources,
-			infoForPublicResources,
 			toolsAndResources,
+			infoForPublicResources,
+			evidenceResources,
 		} = result,
 		productPath = getProductPath({
 			...product,
@@ -126,9 +126,9 @@ export const getServerSideProps: GetServerSideProps<
 	return {
 		props: {
 			resourceGroups,
-			hasEvidenceResources: evidenceResources.length > 0,
-			hasInfoForPublicResources: infoForPublicResources.length > 0,
 			hasToolsAndResources: toolsAndResources.length > 0,
+			hasInfoForPublicResources: infoForPublicResources.length > 0,
+			hasEvidenceResources: evidenceResources.length > 0,
 			hasHistory: false,
 			productPath,
 			product: {
