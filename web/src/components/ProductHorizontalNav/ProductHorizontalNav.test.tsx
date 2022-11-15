@@ -61,12 +61,12 @@ describe("ProductHorizontalNav", () => {
 		["Information for the public", "hasInfoForPublicResources"],
 		["Evidence", "hasEvidenceResources"],
 		["History", "hasHistory"],
-	])("should hide %s link when no content", (text, propName) => {
+	])("should hide %s link when no content", (name, propName) => {
 		const newProps = { ...props, [propName]: false };
 
 		render(<ProductHorizontalNav {...newProps} />);
 
-		expect(screen.queryByRole("link", { name: text })).toBeNull();
+		expect(screen.queryByRole("link", { name })).toBeNull();
 	});
 
 	it.each([

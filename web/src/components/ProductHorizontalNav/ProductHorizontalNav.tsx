@@ -37,7 +37,8 @@ export const ProductHorizontalNav: FC<ProductHorizontalNavProps> = ({
 		historyPath = `${productPath}/history`,
 		isUnderHistory = path.indexOf(historyPath) === 0;
 
-	// Some product types e.g. corporate don't have any resources, and therefore doesn't need a nav at all
+	// Some product types e.g. corporate or process don't have any resources or history,
+	// and therefore don't need a nav at all
 	if (
 		!hasEvidenceResources &&
 		!hasInfoForPublicResources &&
