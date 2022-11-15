@@ -23,7 +23,7 @@ import { publicRuntimeConfig } from "@/config";
 import "@nice-digital/nds-table/scss/table.scss";
 import "@nice-digital/nds-panel/scss/panel.scss";
 
-import "./global.scss";
+import "./_app.page.scss";
 
 interface AppState {
 	/**
