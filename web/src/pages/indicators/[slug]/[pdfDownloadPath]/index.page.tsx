@@ -12,6 +12,9 @@ export const getServerSideProps: GetServerSideProps<
 		pdfDownloadPath: string;
 	}
 > = async ({ res, params, resolvedUrl }) => {
+	if ((params?.pdfDownloadPath || "").indexOf(".pdf") === -1)
+		return { notFound: true };
+
 	const result = await validateRouteParams(params, resolvedUrl);
 
 	if ("notFound" in result || "redirect" in result) return result;

@@ -26,12 +26,16 @@ export const ProductHorizontalNav: FC<ProductHorizontalNavProps> = ({
 	hasToolsAndResources,
 	hasHistory,
 }) => {
-	const { pathname } = useRouter(),
-		path = pathname.replace(/#.*/, ""),
+	const { asPath } = useRouter(),
+		path = asPath.replace(/#.*/, ""),
 		toolsAndResourcesPath = `${productPath}/resources`,
+		isUnderResources = path.indexOf(toolsAndResourcesPath) === 0,
 		ifpPath = `${productPath}/informationforpublic`,
+		isUnderIFP = path.indexOf(ifpPath) === 0,
 		evidencePath = `${productPath}/evidence`,
-		historyPath = `${productPath}/history`;
+		isUnderEvidence = path.indexOf(evidencePath) === 0,
+		historyPath = `${productPath}/history`,
+		isUnderHistory = path.indexOf(historyPath) === 0;
 
 	// Some product types e.g. corporate don't have any resources, and therefore doesn't need a nav at all
 	if (
@@ -47,7 +51,12 @@ export const ProductHorizontalNav: FC<ProductHorizontalNavProps> = ({
 			<HorizontalNavLink
 				destination={productPath}
 				elementType={ScrollToContentStartLink}
-				isCurrent={path === productPath}
+				isCurrent={
+					!isUnderResources &&
+					!isUnderIFP &&
+					!isUnderEvidence &&
+					!isUnderHistory
+				}
 			>
 				{productTypeName}
 			</HorizontalNavLink>
@@ -55,7 +64,7 @@ export const ProductHorizontalNav: FC<ProductHorizontalNavProps> = ({
 				<HorizontalNavLink
 					destination={toolsAndResourcesPath}
 					elementType={ScrollToContentStartLink}
-					isCurrent={path.indexOf(toolsAndResourcesPath) === 0}
+					isCurrent={isUnderResources}
 				>
 					Tools and resources
 				</HorizontalNavLink>
@@ -64,7 +73,7 @@ export const ProductHorizontalNav: FC<ProductHorizontalNavProps> = ({
 				<HorizontalNavLink
 					destination={ifpPath}
 					elementType={ScrollToContentStartLink}
-					isCurrent={path.indexOf(ifpPath) === 0}
+					isCurrent={isUnderIFP}
 				>
 					Information for the public
 				</HorizontalNavLink>
@@ -73,7 +82,7 @@ export const ProductHorizontalNav: FC<ProductHorizontalNavProps> = ({
 				<HorizontalNavLink
 					destination={evidencePath}
 					elementType={ScrollToContentStartLink}
-					isCurrent={path.indexOf(evidencePath) === 0}
+					isCurrent={isUnderEvidence}
 				>
 					Evidence
 				</HorizontalNavLink>
@@ -82,7 +91,7 @@ export const ProductHorizontalNav: FC<ProductHorizontalNavProps> = ({
 				<HorizontalNavLink
 					destination={historyPath}
 					elementType={ScrollToContentStartLink}
-					isCurrent={path.indexOf(historyPath) === 0}
+					isCurrent={isUnderHistory}
 				>
 					History
 				</HorizontalNavLink>

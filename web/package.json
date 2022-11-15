@@ -38,6 +38,7 @@
     "config": "^3.3.6",
     "dayjs": "^1.11.4",
     "fast-sort": "^3.0.2",
+    "filesize": "^10.0.5",
     "form-serialize": "^0.7.2",
     "glob": "^8.0.3",
     "js-yaml": "^4.1.0",

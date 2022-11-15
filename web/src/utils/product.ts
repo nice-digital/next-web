@@ -11,8 +11,13 @@ import {
 	UploadAndConvertContentPart,
 	HTMLChapterContentInfo,
 	ProductTypeAcronym,
+	Status,
+	ResourceGroupType,
+	RelatedResource,
 } from "@/feeds/publications/types";
 import { getProductPath, getProductSlug } from "@/utils/url";
+
+import { arrayify } from "./array";
 
 /** The product group for indicators. Needed because product details responses don't include the group. */
 const productGroup = ProductGroup.Other;
@@ -61,7 +66,7 @@ export const getChapterLinks = (product: ProductDetail): ChapterHeading[] => {
 					},
 			  ]
 			: []),
-		...part.embedded.htmlContent.embedded.htmlChapterContentInfo
+		...arrayify(part.embedded.htmlContent.embedded?.htmlChapterContentInfo)
 			.filter(shouldIncludeChapter)
 			.map(({ title, chapterSlug }) => ({
 				title,
@@ -73,7 +78,12 @@ export const getChapterLinks = (product: ProductDetail): ChapterHeading[] => {
 export type ValidateRouteParamsResult =
 	| { notFound: true }
 	| { redirect: Redirect }
-	| { product: ProductDetail };
+	| {
+			product: ProductDetail;
+			toolsAndResources: RelatedResource[];
+			evidenceResources: RelatedResource[];
+			infoForPublicResources: RelatedResource[];
+	  };
 
 export const validateRouteParams = async (
 	params: { slug: string } | undefined,
@@ -82,7 +92,7 @@ export const validateRouteParams = async (
 	if (!params || !params.slug) return { notFound: true };
 
 	const productId = params.slug.split("-")[0],
-		product = await getProductDetail("NG100");
+		product = await getProductDetail("ng100");
 
 	if (isErrorResponse(product)) return { notFound: true };
 
@@ -93,6 +103,9 @@ export const validateRouteParams = async (
 	if (params.slug === expectedSlug)
 		return {
 			product,
+			toolsAndResources: getPublishedToolsAndResources(product),
+			evidenceResources: getPublishedEvidenceResources(product),
+			infoForPublicResources: getPublishedIFPResources(product),
 		};
 
 	const absoluteURL = new URL(resolvedUrl, `https://anything.com`),
@@ -107,3 +120,54 @@ export const validateRouteParams = async (
 		},
 	};
 };
+
+/**
+ * Extracts the related resources from a product, if there are any
+ *
+ * @param product The full product response from publicaitons
+ * @returns An array of related resources
+ */
+export const getPublishedRelatedResources = (
+	product: ProductDetail
+): RelatedResource[] =>
+	arrayify(
+		product.embedded.relatedResourceList?.embedded.relatedResource
+	).filter((resource) => resource.status === Status.Published);
+
+export const getPublishedToolsAndResources = (
+	product: ProductDetail
+): RelatedResource[] =>
+	getPublishedRelatedResources(product).filter(
+		getResourceExcludeFilter(
+			ResourceGroupType.Evidence,
+			ResourceGroupType.InformationForThePublic
+		)
+	);
+
+export const getPublishedEvidenceResources = (
+	product: ProductDetail
+): RelatedResource[] =>
+	getPublishedRelatedResources(product).filter(
+		getResourcesIncludeFilter(ResourceGroupType.Evidence)
+	);
+
+export const getPublishedIFPResources = (
+	product: ProductDetail
+): RelatedResource[] =>
+	getPublishedRelatedResources(product).filter(
+		getResourcesIncludeFilter(ResourceGroupType.InformationForThePublic)
+	);
+
+const getResourceExcludeFilter =
+	(...resourceGroupTypes: ResourceGroupType[]) =>
+	(resource: RelatedResource) =>
+		!resourceGroupTypes.includes(
+			resource.embedded.resourceGroupList.embedded.resourceGroup.name
+		);
+
+const getResourcesIncludeFilter =
+	(...resourceGroupTypes: ResourceGroupType[]) =>
+	(resource: RelatedResource) =>
+		resourceGroupTypes.includes(
+			resource.embedded.resourceGroupList.embedded.resourceGroup.name
+		);

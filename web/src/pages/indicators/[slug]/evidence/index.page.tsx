@@ -13,17 +13,18 @@ import { ResourceList } from "@/components/ResourceList/ResourceList";
 import {
 	getResourceDetail,
 	isErrorResponse,
-	isSuccessResponse,
 } from "@/feeds/publications/publications";
-import { ProductGroup } from "@/feeds/publications/types";
+import { ProductGroup, ResourceDetail } from "@/feeds/publications/types";
+import { validateRouteParams } from "@/utils/product";
 import {
-	getPublishedToolsAndResources,
-	validateRouteParams,
-} from "@/utils/product";
-import { getResourceGroups, ResourceGroupViewModel } from "@/utils/resource";
+	getResourceSubGroups,
+	isEvidenceUpdate,
+	isSupportingEvidence,
+	ResourceGroupViewModel,
+} from "@/utils/resource";
 import { getProductPath } from "@/utils/url";
 
-export type IndicatorToolsAndResourcesPageProps = {
+export type IndicatorEvidencePageProps = {
 	resourceGroups: ResourceGroupViewModel[];
 	productPath: string;
 	product: ProductPageHeadingProps["product"];
@@ -41,11 +42,11 @@ export default function ({
 	hasInfoForPublicResources,
 	hasToolsAndResources,
 	hasHistory,
-}: IndicatorToolsAndResourcesPageProps): JSX.Element {
+}: IndicatorEvidencePageProps): JSX.Element {
 	return (
 		<>
 			<NextSeo
-				title={`Tools and resources | ${product.id} | Indicators | Standards and Indicators`}
+				title={`Evidence | ${product.id} | Indicators | Standards and Indicators`}
 			/>
 
 			<Breadcrumbs>
@@ -59,7 +60,7 @@ export default function ({
 				<Breadcrumb to={productPath} elementType={Link}>
 					{product.id}
 				</Breadcrumb>
-				<Breadcrumb>Tools and resources</Breadcrumb>
+				<Breadcrumb>Evidence</Breadcrumb>
 			</Breadcrumbs>
 
 			<ProductPageHeading product={product} />
@@ -73,7 +74,7 @@ export default function ({
 				hasHistory={hasHistory}
 			/>
 
-			<h2>Tools and resources</h2>
+			<h2>Evidence</h2>
 
 			<ResourceList groups={resourceGroups} />
 		</>
@@ -81,7 +82,7 @@ export default function ({
 }
 
 export const getServerSideProps: GetServerSideProps<
-	IndicatorToolsAndResourcesPageProps,
+	IndicatorEvidencePageProps,
 	{ slug: string }
 > = async ({ params, resolvedUrl }) => {
 	const result = await validateRouteParams(params, resolvedUrl);
@@ -98,15 +99,29 @@ export const getServerSideProps: GetServerSideProps<
 			...product,
 			productGroup: ProductGroup.Other,
 		}),
-		resources = await Promise.all(
-			getPublishedToolsAndResources(product).map(getResourceDetail)
-		),
-		resourceGroups = getResourceGroups(resources.filter(isSuccessResponse));
+		resources = await Promise.all(evidenceResources.map(getResourceDetail));
 
 	if (resources.filter(isErrorResponse).length > 0)
 		throw Error(
 			`Failed to retrieve some resources from product ${product.id} at ${resolvedUrl}`
 		);
+
+	const resourceGroups: ResourceGroupViewModel[] = [
+		{
+			title: "Evidence updates",
+			subGroups: getResourceSubGroups(
+				(resources as ResourceDetail[]).filter(isEvidenceUpdate)
+			),
+		},
+		{
+			title: "Supporting evidence",
+			subGroups: getResourceSubGroups(
+				(resources as ResourceDetail[]).filter(isSupportingEvidence)
+			),
+		},
+	].filter((group) =>
+		group.subGroups.some((subGroup) => subGroup.resourceLinks.length > 0)
+	);
 
 	return {
 		props: {

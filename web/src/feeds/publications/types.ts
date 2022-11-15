@@ -22,6 +22,8 @@ export enum ProductGroup {
 	Other = "Other",
 }
 
+export type Language = "English" | "Welsh";
+
 export const enum ProductTypeAcronym {
 	/** Antimicrobial prescribing evidence summaries */
 	"APA" = "APA",
@@ -239,10 +241,15 @@ export type ChapterHeading = {
 	url: string;
 };
 
-export type HTMLContent = Embedded<
-	"htmlChapterContentInfo",
-	HTMLChapterContentInfo[]
->;
+export type HTMLContent = {
+	links: { self: [Link] };
+	eTag: ETag;
+	embedded?: {
+		htmlChapterContentInfo: HTMLChapterContentInfo | HTMLChapterContentInfo[];
+	};
+	reference: string;
+	partId: number;
+};
 
 export type HTMLChapterContentInfo = {
 	links: { self: [Link] };
@@ -253,8 +260,8 @@ export type HTMLChapterContentInfo = {
 	chapterSlug: string;
 };
 
-export type FileContent<TFileExtension extends "pdf" | "mobi" | "epub"> = {
-	fileName: `${string}.${TFileExtension}`;
+export type FileContent = {
+	fileName: string;
 	length: number;
 	links: { self: [Link] };
 	eTag: string | null;
@@ -265,13 +272,69 @@ export type FileContent<TFileExtension extends "pdf" | "mobi" | "epub"> = {
 	name: string;
 };
 
+export type PDFFile = FileContent & {
+	fileName: `${string}.pdf`;
+	mimeType: "application/pdf";
+};
+
+export type MobiFile = FileContent & {
+	fileName: `${string}.mobi`;
+	mimeType: "application/x-mobipocket-ebook";
+};
+
+export type EpubFile = FileContent & {
+	fileName: `${string}.epub`;
+	mimeType: "application/epub+zip";
+};
+
 export type UploadAndConvertContentPart = {
+	links: EmptySelfLinks;
 	embedded: {
 		htmlContent: HTMLContent;
-		pdfFile: FileContent<"pdf">;
-		mobiFile: FileContent<"mobi">;
-		epubFile: FileContent<"epub">;
+		pdfFile: PDFFile;
+		mobiFile?: MobiFile;
+		epubFile?: EpubFile;
 	};
+	eTag: ETag;
+	title: string;
+	type: "UploadAndConvertContentPart";
+	uid: number;
+	legacyId: string | null;
+};
+
+export type EditableContentPart = {
+	links: EmptySelfLinks;
+	embedded: {
+		htmlContent: HTMLContent;
+		pdfFile?: PDFFile;
+	};
+	eTag: ETag;
+	title: string;
+	type: "EditableContentPart";
+	uid: number;
+	legacyId: string | null;
+};
+
+export type UploadContentPart = {
+	links: EmptySelfLinks;
+	embedded: {
+		file: FileContent;
+	};
+	eTag: ETag;
+	title: string;
+	type: "UploadContentPart";
+	uid: number;
+	legacyId: string | null;
+};
+
+export type ExternalUrlContentPart = {
+	links: EmptySelfLinks;
+	eTag: ETag;
+	url: string;
+	title: string;
+	type: "ExternalUrlContentPart";
+	uid: number;
+	legacyId: string | null;
 };
 
 export type ContentPartList = {
@@ -279,6 +342,9 @@ export type ContentPartList = {
 		uploadAndConvertContentPart?:
 			| UploadAndConvertContentPart
 			| UploadAndConvertContentPart[];
+		editableContentPart?: EditableContentPart | EditableContentPart[];
+		uploadContentPart?: UploadContentPart | UploadContentPart[];
+		externalUrlContentPart?: ExternalUrlContentPart | ExternalUrlContentPart[];
 	};
 };
 
@@ -302,7 +368,7 @@ export type RelatedResource = {
 	title: string;
 	resourceType: ResourceType;
 	status: Status;
-	language: "English" | "Welsh";
+	language: Language;
 	uid: number;
 };
 
@@ -459,16 +525,14 @@ export enum RelationshipType {
 	IsTheBasisOf = "IsTheBasisOf",
 }
 
-export type ProductDetail = {
+export type ProductAndResourceBase = {
 	links: { self: [Link] };
+	eTag: ETag;
 	embedded: {
 		contentPartList?: ContentPartList;
 		relatedResourceList?: RelatedResourceList;
 		relatedProductList?: RelatedProductList;
 	};
-	eTag: ETag;
-	/** The product id e.g. `CG124` */
-	id: string;
 	/**
 	 * An ISO date string of the time the record was last modified, e.g. `2022-05-05T08:58:37.5476922Z`.
 	 *
@@ -476,27 +540,60 @@ export type ProductDetail = {
 	 * Not to be confused with `lastMajorModificationDate` which represents a 'version' of the product.
 	 */
 	lastModified: string;
+	publishedDate: string;
+	lastMajorModificationDate: string;
+	versionNumber: number;
+	title: string;
+	summary: string | null;
+	estimatedSavings: string;
+	estimatedSavingsDescription: string | null;
+	estimatedSavingsImpact: null;
+	/** The name of the Integrated Public Sector Vocabulary concept e.g. "Health, well-being and care" */
+	iPSV: string;
+};
+
+export type ResourceDetail = ProductAndResourceBase & {
+	uid: number;
+	legacyId: string | null;
+	language: Language;
+	status: Status;
+	resourceType: ResourceType;
+	resourceTypeName: string;
+	/**
+	 * @deprecated Use `lastMajorModificationDate` instead
+	 */
+	majorChangeDate: string | null;
+	reference: `${number}`;
+	/**
+	 * @deprecated Unused
+	 */
+	isPrimary: boolean;
+	/**
+	 * @deprecated Unused
+	 */
+	isDetailedView: boolean;
+	/**
+	 * @deprecated Unused
+	 */
+	hideBinarys: boolean;
+};
+
+export type ProductDetail = ProductAndResourceBase & {
+	/** The product id e.g. `CG124` */
+	id: string;
 	/** The capitalised acronym for the product type e.g. `CG` or `IND` etc */
 	productType: ProductTypeAcronym;
-	title: string;
 	shortTitle: string | null;
 	/** E.g. `CG/Wave18/51` */
 	inDevReference: string;
 	metaDescription: string;
-	summary: string | null;
 	productStatus: Status;
-	versionNumber: number;
-	publishedDate: string;
-	lastMajorModificationDate: string;
 	majorChangeDate: string | null;
 	nextReviewDate: string | null;
 	collectionTypesList: [];
 	authorList: string[];
 	publisherList: string[];
 	audienceList: string[];
-	estimatedSavings: string;
-	estimatedSavingsDescription: string | null;
-	estimatedSavingsImpact: null;
 	developedAs: string | null;
 	relevantTo: string[];
 	terminatedAppraisal: null;
@@ -504,8 +601,6 @@ export type ProductDetail = {
 	indicatorSubTypeList: string[];
 	indicatorOldCode: string;
 	indicatorOldUrl: string;
-	/** The name of the Integrated Public Sector Vocabulary concept e.g. "Health, well-being and care" */
-	iPSV: string;
 	/**
 	 * The list of chapter titles and URLs.
 	 *

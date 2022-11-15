@@ -15,6 +15,8 @@ import {
 	ProductLite,
 	ProductType,
 	ProductTypeList,
+	ResourceDetail,
+	RelatedResource,
 } from "./types";
 
 export * from "./types";
@@ -156,6 +158,21 @@ export const getChapterContent = async (
 };
 
 /**
+ * Fetches a full resource response from publications
+ *
+ * @param resource The related resource
+ */
+export const getResourceDetail = async (
+	resource: RelatedResource
+): Promise<ResourceDetail | ErrorResponse> => {
+	return getFeedBodyUnCached<ResourceDetail | ErrorResponse>(
+		origin,
+		resource.links.relatedResourceUri[0].href,
+		apiKey
+	);
+};
+
+/**
  * Gets a stream of a file from publications.
  *
  * @param filePath The relative path of the endpoint that serves file content, e.g. `/feeds/downloads/737585a0-dad7-4a37-875b-b30b09c3fdc3`
@@ -176,4 +193,17 @@ export function isErrorResponse<TValidResponse>(
 	response: TValidResponse | ErrorResponse
 ): response is ErrorResponse {
 	return (response as ErrorResponse).statusCode !== undefined;
+}
+
+/**
+ * A user-defined type guard for checking whether a given response is not an error.
+ * The opposite of `isErrorResponse`
+ *
+ * @param response The response
+ * @returns True if this is an error response otherwise false
+ */
+export function isSuccessResponse<TValidResponse>(
+	response: TValidResponse | ErrorResponse
+): response is TValidResponse {
+	return (response as ErrorResponse).statusCode === undefined;
 }

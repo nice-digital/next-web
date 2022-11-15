@@ -4,6 +4,7 @@ import { type GetServerSideProps } from "next/types";
 import { Breadcrumbs, Breadcrumb } from "@nice-digital/nds-breadcrumbs";
 import { Grid, GridItem } from "@nice-digital/nds-grid";
 
+import { ProductHorizontalNav } from "@/components/ProductHorizontalNav/ProductHorizontalNav";
 import {
 	ProductPageHeading,
 	type ProductPageHeadingProps,
@@ -21,23 +22,33 @@ import {
 	type IndicatorSubType,
 } from "@/feeds/publications/types";
 import { getChapterLinks, validateRouteParams } from "@/utils/product";
-import { getPublicationPdfDownloadPath } from "@/utils/url";
+import { getProductPath, getPublicationPdfDownloadPath } from "@/utils/url";
 
 import styles from "./index.page.module.scss";
 
 export type IndicatorsDetailsPageProps = {
+	productPath: string;
 	product: ProductPageHeadingProps["product"] &
 		Pick<ProductDetail, "metaDescription" | "indicatorSubTypeList" | "summary">;
 	indicatorSubTypes: IndicatorSubType[];
 	pdfDownloadPath: string | null;
 	chapters: ChapterHeading[];
+	hasEvidenceResources: boolean;
+	hasInfoForPublicResources: boolean;
+	hasToolsAndResources: boolean;
+	hasHistory: boolean;
 };
 
 export default function IndicatorsDetailsPage({
+	productPath,
 	product,
 	indicatorSubTypes,
 	pdfDownloadPath,
 	chapters,
+	hasEvidenceResources,
+	hasInfoForPublicResources,
+	hasToolsAndResources,
+	hasHistory,
 }: IndicatorsDetailsPageProps): JSX.Element {
 	const hasLeftColumn = pdfDownloadPath || chapters.length > 0;
 
@@ -99,6 +110,15 @@ export default function IndicatorsDetailsPage({
 
 			<ProductPageHeading product={product} />
 
+			<ProductHorizontalNav
+				productTypeName="Indicator"
+				productPath={productPath}
+				hasEvidenceResources={hasEvidenceResources}
+				hasToolsAndResources={hasToolsAndResources}
+				hasInfoForPublicResources={hasInfoForPublicResources}
+				hasHistory={hasHistory}
+			/>
+
 			<Grid gutter="loose">
 				{hasLeftColumn ? (
 					<GridItem
@@ -149,37 +169,39 @@ export const getServerSideProps: GetServerSideProps<
 
 	if ("notFound" in result || "redirect" in result) return result;
 
-	const { product } = result,
+	const {
+			product,
+			evidenceResources,
+			infoForPublicResources,
+			toolsAndResources,
+		} = result,
 		indicatorSubTypes = await getAllIndicatorSubTypes(),
 		chapters = getChapterLinks(product),
+		productPath = getProductPath({
+			...product,
+			productGroup: ProductGroup.Other,
+		}),
 		pdfDownloadPath = getPublicationPdfDownloadPath(
 			product,
 			ProductGroup.Other
 		);
 
-	const {
-		id,
-		indicatorSubTypeList,
-		lastMajorModificationDate,
-		metaDescription,
-		productTypeName,
-		publishedDate,
-		summary,
-		title,
-	} = product;
-
 	return {
 		props: {
+			productPath,
+			hasEvidenceResources: evidenceResources.length > 0,
+			hasInfoForPublicResources: infoForPublicResources.length > 0,
+			hasToolsAndResources: toolsAndResources.length > 0,
+			hasHistory: false,
 			product: {
-				// Don't bloat the serialized JSON with all the response data: just pick the fields we need
-				id,
-				indicatorSubTypeList,
-				lastMajorModificationDate,
-				metaDescription,
-				productTypeName,
-				publishedDate,
-				summary,
-				title,
+				id: product.id,
+				lastMajorModificationDate: product.lastMajorModificationDate,
+				productTypeName: product.productTypeName,
+				publishedDate: product.publishedDate,
+				title: product.title,
+				indicatorSubTypeList: product.indicatorSubTypeList,
+				metaDescription: product.metaDescription,
+				summary: product.summary,
 			},
 			indicatorSubTypes,
 			pdfDownloadPath,

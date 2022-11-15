@@ -20,7 +20,7 @@ const useRouterMock = jest.mocked(useRouter);
 describe("ProductHorizontalNav", () => {
 	beforeEach(() => {
 		useRouterMock.mockReturnValue({
-			pathname: props.productPath,
+			asPath: props.productPath,
 		} as ReturnType<typeof useRouter>);
 	});
 
@@ -76,7 +76,7 @@ describe("ProductHorizontalNav", () => {
 		["Tools and resources", "resources"],
 	])("should highlight %s link when exact match on path", (name, pathSlug) => {
 		useRouterMock.mockReturnValue({
-			pathname: `${props.productPath}/${pathSlug}`,
+			asPath: `${props.productPath}/${pathSlug}`,
 		} as ReturnType<typeof useRouter>);
 
 		render(<ProductHorizontalNav {...props} />);
@@ -94,7 +94,7 @@ describe("ProductHorizontalNav", () => {
 		["Tools and resources", "resources"],
 	])("should highlight %s link for sub pages", (name, pathSlug) => {
 		useRouterMock.mockReturnValue({
-			pathname: `${props.productPath}/${pathSlug}/sub-page`,
+			asPath: `${props.productPath}/${pathSlug}/sub-page`,
 		} as ReturnType<typeof useRouter>);
 
 		render(<ProductHorizontalNav {...props} />);
