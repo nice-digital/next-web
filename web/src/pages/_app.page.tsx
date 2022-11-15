@@ -8,6 +8,7 @@ import {
 	Header,
 	HeaderProps,
 	Footer,
+	Main,
 	type Service,
 } from "@nice-digital/global-nav";
 import { Container } from "@nice-digital/nds-container";
@@ -135,18 +136,15 @@ class NextWebApp extends App<{}, {}, AppState> {
 			router: { pathname },
 		} = this.props;
 
-		let service: Service;
+		let service: Service | undefined = undefined;
 
-		switch (true) {
-			case pathname.indexOf("/guidance") != -1:
-				service = "guidance";
-				break;
-			case pathname.indexOf("/indicators") != -1:
-				service = "standards-and-indicators";
-				break;
-			default:
-				service = "guidance";
-				break;
+		if (pathname.indexOf("/guidance") == 0) {
+			service = "guidance";
+		} else if (
+			pathname.indexOf("/standards-indicators") == 0 ||
+			pathname.indexOf("/indicators") == 0
+		) {
+			service = "standards-and-indicators";
 		}
 
 		if (this.state.hasError)
@@ -156,11 +154,11 @@ class NextWebApp extends App<{}, {}, AppState> {
 					<div ref={this.globalNavWrapperRef}>
 						<Header {...headerProps} service={service} />
 					</div>
-					<main>
+					<Main>
 						<Container>
 							<ErrorPageContent />
 						</Container>
-					</main>
+					</Main>
 					<AppFooter />
 				</>
 			);
@@ -171,11 +169,11 @@ class NextWebApp extends App<{}, {}, AppState> {
 				<div ref={this.globalNavWrapperRef}>
 					<Header {...headerProps} service={service} />
 				</div>
-				<main>
+				<Main>
 					<Container>
 						<Component {...pageProps} />
 					</Container>
-				</main>
+				</Main>
 				<AppFooter />
 			</>
 		);
