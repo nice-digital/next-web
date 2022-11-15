@@ -3,6 +3,7 @@ import { ProductGroup, ProductTypeAcronym } from "@/feeds/publications/types";
 export enum FeedPath {
 	AllProjects = "/gidprojects/all",
 	InConsultationProjects = "/inconsultationprojects",
+	ProjectDetail = "/project/",
 }
 
 export enum ProjectStatus {
@@ -171,3 +172,7 @@ export interface Consultation {
 	origProjectReference: null;
 	areasOfInterestList: [];
 }
+
+export type ProjectDetail = {
+	reference: string;
+};

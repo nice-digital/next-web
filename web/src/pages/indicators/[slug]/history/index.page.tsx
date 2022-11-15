@@ -1,16 +1,20 @@
 import { type GetServerSideProps } from "next/types";
 import React from "react";
 
+import { getProjectDetail } from "@/feeds/inDev/inDev";
+import { isErrorResponse } from "@/feeds/publications/publications";
 import { validateRouteParams } from "@/utils/product";
 
 export type HistoryPageProps = {
-	id: string;
+	inDevReference: string;
 };
 
-export default function HistoryPage({ id }: HistoryPageProps): JSX.Element {
+export default function HistoryPage({
+	inDevReference,
+}: HistoryPageProps): JSX.Element {
 	return (
 		<>
-			<p>Indicators history tab {id}</p>
+			<p>Indicators history tab {inDevReference}</p>
 		</>
 	);
 }
@@ -19,20 +23,19 @@ export const getServerSideProps: GetServerSideProps<
 	HistoryPageProps,
 	{ slug: string }
 > = async ({ params, resolvedUrl }) => {
-	console.log(params);
-	console.log(resolvedUrl);
-
 	const result = await validateRouteParams(params, resolvedUrl);
 
 	if ("notFound" in result || "redirect" in result) return result;
 
-	const inDevReference = result.product.inDevReference;
+	const project = await getProjectDetail("GID-NG10014");
 
-	const id = inDevReference;
+	if (isErrorResponse(project)) throw new Error("project not found");
+
+	console.log(project);
 
 	return {
 		props: {
-			id,
+			inDevReference: result.product.inDevReference,
 		},
 	};
 };

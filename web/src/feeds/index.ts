@@ -26,6 +26,7 @@ export const getFeedBodyUnCached = async <TResponse>(
 	path: string,
 	apiKey: string
 ): Promise<TResponse> => {
+	console.log("origin, path, apiKey ", origin, " ", path, " ", apiKey);
 	const { data } = await client.get<TResponse>(origin + path, {
 		headers: {
 			"Api-Key": apiKey,
@@ -34,6 +35,7 @@ export const getFeedBodyUnCached = async <TResponse>(
 			return (status >= 200 && status < 300) || status == 404;
 		},
 	});
+
 	return data;
 };
 
