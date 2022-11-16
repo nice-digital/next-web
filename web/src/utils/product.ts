@@ -49,13 +49,13 @@ export const getChapterLinks = (product: ProductDetail): ChapterHeading[] => {
 
 	if (!part) return [];
 
-	const productPath = getProductPath({
-		...product,
-		productGroup,
-	});
-
-	const shouldIncludeChapter = ({ title }: HTMLChapterContentInfo) =>
-		title !== overviewTitle || !product.summary;
+	const chapterInfos = arrayify(
+			part.embedded.htmlContent.embedded?.htmlChapterContentInfo
+		),
+		productPath = getProductPath({
+			...product,
+			productGroup,
+		});
 
 	return [
 		...(product.summary
@@ -66,8 +66,8 @@ export const getChapterLinks = (product: ProductDetail): ChapterHeading[] => {
 					},
 			  ]
 			: []),
-		...arrayify(part.embedded.htmlContent.embedded?.htmlChapterContentInfo)
-			.filter(shouldIncludeChapter)
+		...chapterInfos
+			.filter(({ title }) => title !== overviewTitle || !product.summary)
 			.map(({ title, chapterSlug }) => ({
 				title,
 				url: `${productPath}/chapters/${chapterSlug}`,
@@ -94,11 +94,13 @@ export const validateRouteParams = async (
 ): Promise<ValidateRouteParamsResult> => {
 	if (!params || !params.slug) return { notFound: true };
 
+	// Slug is something like "NG100" or "IND123-a-slugified-title"
 	const productId = params.slug.split("-")[0],
-		product = await getProductDetail("ng100");
+		product = await getProductDetail(productId);
 
 	if (isErrorResponse(product)) return { notFound: true };
 
+	// TODO: Make this more general when we migrate guidance to Next Web
 	product.productType = ProductTypeAcronym.IND;
 
 	const expectedSlug = getProductSlug(product),
@@ -143,40 +145,52 @@ export const getPublishedRelatedResources = (
 		product.embedded.relatedResourceList?.embedded.relatedResource
 	).filter((resource) => resource.status === Status.Published);
 
+/**
+ * Extracts a list of published related resources for the 'tools and resources' section of a product.
+ * That is, resources that aren't evidence and aren't information for the public (evidence and IFP have their own tabs).
+ *
+ * @param product The product on which to find resources
+ * @returns A list of published tools and resources
+ */
 export const getPublishedToolsAndResources = (
 	product: ProductDetail
 ): RelatedResource[] =>
-	getPublishedRelatedResources(product).filter(
-		getResourceExcludeFilter(
-			ResourceGroupType.Evidence,
-			ResourceGroupType.InformationForThePublic
-		)
-	);
+	getPublishedRelatedResources(product).filter((resource) => {
+		const groupName =
+			resource.embedded.resourceGroupList.embedded.resourceGroup.name;
 
+		return (
+			groupName !== ResourceGroupType.Evidence &&
+			groupName !== ResourceGroupType.InformationForThePublic
+		);
+	});
+
+/**
+ *	Extracts a list of published related resources for the 'evidence' section of a product. That is, resources with a group of 'Evidence'.
+ *
+ * @param product The product on which which to find evidence resources
+ * @returns A list of published evidence resources
+ */
 export const getPublishedEvidenceResources = (
 	product: ProductDetail
 ): RelatedResource[] =>
 	getPublishedRelatedResources(product).filter(
-		getResourcesIncludeFilter(ResourceGroupType.Evidence)
+		(resource) =>
+			resource.embedded.resourceGroupList.embedded.resourceGroup.name ===
+			ResourceGroupType.Evidence
 	);
 
+/**
+ *	Extracts a list of published related resources for the 'IFP' section of a product. That is, resources with a group of 'InformationForThePublic'.
+ *
+ * @param product The product on which which to find IFP resources
+ * @returns A list of published IFP resources
+ */
 export const getPublishedIFPResources = (
 	product: ProductDetail
 ): RelatedResource[] =>
 	getPublishedRelatedResources(product).filter(
-		getResourcesIncludeFilter(ResourceGroupType.InformationForThePublic)
+		(resource) =>
+			resource.embedded.resourceGroupList.embedded.resourceGroup.name ===
+			ResourceGroupType.InformationForThePublic
 	);
-
-const getResourceExcludeFilter =
-	(...resourceGroupTypes: ResourceGroupType[]) =>
-	(resource: RelatedResource) =>
-		!resourceGroupTypes.includes(
-			resource.embedded.resourceGroupList.embedded.resourceGroup.name
-		);
-
-const getResourcesIncludeFilter =
-	(...resourceGroupTypes: ResourceGroupType[]) =>
-	(resource: RelatedResource) =>
-		resourceGroupTypes.includes(
-			resource.embedded.resourceGroupList.embedded.resourceGroup.name
-		);
