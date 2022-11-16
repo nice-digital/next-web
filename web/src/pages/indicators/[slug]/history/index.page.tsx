@@ -1,4 +1,3 @@
-import Link from "next/link";
 import { type GetServerSideProps } from "next/types";
 import React from "react";
 
@@ -6,59 +5,37 @@ import { getProjectDetail, ProjectDetail } from "@/feeds/inDev/inDev";
 import { isErrorResponse } from "@/feeds/publications/publications";
 import { validateRouteParams } from "@/utils/product";
 
-export type ProjectDetailProps = {
-	project: Pick<ProjectDetail, "reference" | "title" | "embedded">;
-};
-
 export type HistoryPageProps = {
 	inDevReference: string;
-	project: ProjectDetailProps["project"];
+	project: Pick<ProjectDetail, "reference" | "title"> & {
+		panels: Record<string, unknown>[];
+	};
 };
 
 export default function HistoryPage({
 	inDevReference,
 	project,
 }: HistoryPageProps): JSX.Element {
-	// console.log(project.embedded.niceIndevPanelList);
-	// console.log(project.embedded.niceIndevPanelList.embedded.niceIndevPanel);
-
-	const panels = project.embedded.niceIndevPanelList.embedded.niceIndevPanel;
-
-	const shownPanels = panels.filter((item) => item.showPanel);
-
-	console.log({ shownPanels });
-
 	return (
 		<>
 			<h2>Indicators history</h2>
 			<p>inDevReference: {inDevReference}</p>
 			<p>title: {project.title}</p>
 			<h3>Panels</h3>
-			{shownPanels.map((panel, index) => {
+			{project.panels.map((panel, index) => {
+				console.log("this panel ", panel);
+
 				return (
-					<ul key={`panel_${index}`}>
-						<li key={`${panel.title}_${index}`}>{panel.title}</li>
-						{panel.embedded.niceIndevResourceList.hasResources ? (
-							<>
-								<hr />
-								<ul>
-									<li>
-										{
-											panel.embedded.niceIndevResourceList.embedded
-												.niceIndevResource.title
-										}
-										<br />
-										<a>
-											{
-												panel.embedded.niceIndevResourceList.embedded
-													.niceIndevResource.embedded?.niceIndevFile?.fileName
-											}
-										</a>
-									</li>
-								</ul>
-							</>
-						) : null}
-					</ul>
+					<>
+						<hr />
+						<ul key={`panel_${index}`}>
+							<li key={`${panel.title}_${index}`}>{panel.title}</li>
+							<li>filename:{panel.filename}</li>
+							<li>fileType: {panel.fileType}</li>
+							<li>date: {panel.date}</li>
+							<li>fileSize: {panel.fileSize} </li>
+						</ul>
+					</>
 				);
 			})}
 		</>
@@ -77,16 +54,36 @@ export const getServerSideProps: GetServerSideProps<
 
 	if (isErrorResponse(project)) throw new Error("project not found");
 
-	// console.log(project);
-	// const { reference, title } = project;
+	const { reference, title } = project;
 
-	if (!params || !project.embedded.niceIndevPanelList)
-		return { notFound: true };
+	if (!project.embedded.niceIndevPanelList) return { notFound: true };
+
+	const panels = project.embedded.niceIndevPanelList.embedded.niceIndevPanel
+		.filter((panel) => panel.showPanel && panel.panelType == "History")
+		.map((panel) => {
+			const indevResource =
+				panel.embedded.niceIndevResourceList.embedded.niceIndevResource;
+			return {
+				title: panel.title,
+				date: indevResource.publishedDate,
+				filename: indevResource.embedded?.niceIndevFile?.fileName,
+				fileType: indevResource.embedded?.niceIndevFile?.mimeType,
+				fileSize: indevResource.embedded?.niceIndevFile?.length,
+				link: indevResource.embedded?.niceIndevFile?.links?.self[0]?.href,
+				reference: indevResource.embedded?.niceIndevFile?.reference,
+				resourceTitleId: indevResource.embedded?.niceIndevFile.resourceTitleId,
+			};
+		});
+	// .map((panel) => ({ ...panel }));
 
 	return {
 		props: {
 			inDevReference: result.product.inDevReference,
-			project,
+			project: {
+				reference,
+				title,
+				panels: JSON.parse(JSON.stringify(panels)),
+			},
 		},
 	};
 };
