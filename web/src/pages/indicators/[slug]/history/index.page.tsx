@@ -1,3 +1,4 @@
+import Link from "next/link";
 import { type GetServerSideProps } from "next/types";
 import React from "react";
 
@@ -26,9 +27,34 @@ export default function HistoryPage({
 			<h2>Indicators history</h2>
 			<p>inDevReference: {inDevReference}</p>
 			<p>title: {project.title}</p>
+			<h3>Panels</h3>
 			{project.embedded.niceIndevPanelList.embedded.niceIndevPanel.map(
-				(panel) => {
-					return <p key={panel.title}>{panel.title}</p>;
+				(panel, index) => {
+					return (
+						<ul key={`panel_${index}`}>
+							<li key={`${panel.title}_${index}`}>{panel.title}</li>
+							{panel.embedded.niceIndevResourceList.hasResources ? (
+								<>
+									<hr />
+									<ul>
+										<li>
+											{
+												panel.embedded.niceIndevResourceList.embedded
+													.niceIndevResource.title
+											}
+											<br />
+											<a>
+												{
+													panel.embedded.niceIndevResourceList.embedded
+														.niceIndevResource.embedded?.niceIndevFile?.fileName
+												}
+											</a>
+										</li>
+									</ul>
+								</>
+							) : null}
+						</ul>
+					);
 				}
 			)}
 		</>
@@ -48,7 +74,6 @@ export const getServerSideProps: GetServerSideProps<
 	if (isErrorResponse(project)) throw new Error("project not found");
 
 	// console.log(project);
-
 	// const { reference, title } = project;
 
 	if (!params || !project.embedded.niceIndevPanelList)
