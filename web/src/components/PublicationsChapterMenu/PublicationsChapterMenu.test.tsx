@@ -20,7 +20,9 @@ const defaultProps = {
 
 describe("PublicationsChapterMenu", () => {
 	beforeEach(() => {
-		(useRouter as jest.Mock).mockImplementation(() => ({}));
+		(useRouter as jest.Mock).mockImplementation(() => ({
+			asPath: "/somewhere#somewhere",
+		}));
 	});
 
 	it("should match the snapshot", () => {
