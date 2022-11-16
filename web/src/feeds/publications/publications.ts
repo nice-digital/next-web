@@ -164,13 +164,18 @@ export const getChapterContent = async (
  */
 export const getResourceDetail = async (
 	resource: RelatedResource
-): Promise<ResourceDetail | ErrorResponse> => {
-	return getFeedBodyUnCached<ResourceDetail | ErrorResponse>(
-		origin,
+): Promise<ResourceDetail | ErrorResponse> =>
+	await getFeedBodyCached<ResourceDetail | ErrorResponse>(
+		cacheKeyPrefix,
 		resource.links.relatedResourceUri[0].href,
-		apiKey
+		defaultTTL,
+		async () =>
+			await getFeedBodyUnCached<ResourceDetail | ErrorResponse>(
+				origin,
+				resource.links.relatedResourceUri[0].href,
+				apiKey
+			)
 	);
-};
 
 /**
  * Gets a stream of a file from publications.
