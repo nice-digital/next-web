@@ -173,6 +173,66 @@ export interface Consultation {
 	areasOfInterestList: [];
 }
 
+export type Link = {
+	href: string;
+};
+
+type ETag = string | null;
+
+// axios-case-converter maps key property names like nice.publications:area-of-interest-type-list to areaOfInterestTypeList
+type EmbeddedKey = `${string}`;
+
+type Embedded<TKey extends EmbeddedKey, TInner> = {
+	embedded: { [key in TKey]: TInner };
+};
+
+type FeedContentInner<TEmbeddedInner extends EmbeddedKey, TItemType> = {
+	links: {
+		self: [Link];
+	};
+	eTag: ETag;
+} & Embedded<TEmbeddedInner, TItemType[]>;
+
 export type ProjectDetail = {
+	links: {
+		niceIndevStakeholderRegistration: Record<string, unknown>[];
+		self: [Link];
+	};
+	embedded: {
+		niceIndevPanelList: {
+			links: Record<string, unknown>[];
+			embedded: Record<string, unknown>[];
+		};
+	};
+	eTag: ETag;
+	summary: string | null;
+	description: string | null;
+	referralDate: string | null;
+	suspendDiscontinuedReason: string | null;
+	suspendDiscontinuedUrl: string | null;
+	suspendDiscontinuedUrlText: string | null;
+	legacyModel: boolean;
+	productReference: string | null;
+	evidenceAssessmentGroup: string | null;
 	reference: string;
+	projectType: string | null;
+	technologyType: string | null;
+	productTypeName: string | null;
+	process: string;
+	title: string;
+	status: string;
+	projectGroup: string;
+	publishedDate: string;
+	lastModifiedDate: string;
+	firstGoLiveDate: string;
+	createdDate: string;
+	developedAs: string;
+	relevantTo: string | null;
+	idNumber: string | null;
+	areasOfInterestList: [];
+	topicSelectionDecision: string;
+	topicSelectionReason: string | null;
+	topicSelectionDecisionDate: string | null;
+	topicSelectionFurtherInfo: string | null;
+	indicatorSubTypes: [];
 };

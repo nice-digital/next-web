@@ -7,14 +7,21 @@ import { validateRouteParams } from "@/utils/product";
 
 export type HistoryPageProps = {
 	inDevReference: string;
+	project: {
+		reference: string;
+		title: string;
+	};
 };
 
 export default function HistoryPage({
 	inDevReference,
+	project,
 }: HistoryPageProps): JSX.Element {
 	return (
 		<>
-			<p>Indicators history tab {inDevReference}</p>
+			<h2>Indicators history</h2>
+			<p>inDevReference {inDevReference}</p>
+			<p>title {project.title}</p>
 		</>
 	);
 }
@@ -33,9 +40,15 @@ export const getServerSideProps: GetServerSideProps<
 
 	console.log(project);
 
+	const { reference, title } = project;
+
 	return {
 		props: {
 			inDevReference: result.product.inDevReference,
+			project: {
+				reference,
+				title,
+			},
 		},
 	};
 };
