@@ -171,9 +171,9 @@ export const getServerSideProps: GetServerSideProps<
 
 	const {
 			product,
-			evidenceResources,
-			infoForPublicResources,
-			toolsAndResources,
+			hasEvidenceResources,
+			hasInfoForPublicResources,
+			hasToolsAndResources,
 		} = result,
 		indicatorSubTypes = await getAllIndicatorSubTypes(),
 		chapters = getChapterLinks(product),
@@ -189,9 +189,9 @@ export const getServerSideProps: GetServerSideProps<
 	return {
 		props: {
 			productPath,
-			hasEvidenceResources: evidenceResources.length > 0,
-			hasInfoForPublicResources: infoForPublicResources.length > 0,
-			hasToolsAndResources: toolsAndResources.length > 0,
+			hasEvidenceResources,
+			hasInfoForPublicResources,
+			hasToolsAndResources,
 			hasHistory: false,
 			product: {
 				id: product.id,

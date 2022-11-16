@@ -91,8 +91,9 @@ export const getServerSideProps: GetServerSideProps<
 
 	const {
 			product,
-			toolsAndResources,
-			infoForPublicResources,
+			hasEvidenceResources,
+			hasInfoForPublicResources,
+			hasToolsAndResources,
 			evidenceResources,
 		} = result,
 		productPath = getProductPath({
@@ -126,9 +127,9 @@ export const getServerSideProps: GetServerSideProps<
 	return {
 		props: {
 			resourceGroups,
-			hasToolsAndResources: toolsAndResources.length > 0,
-			hasInfoForPublicResources: infoForPublicResources.length > 0,
-			hasEvidenceResources: evidenceResources.length > 0,
+			hasEvidenceResources,
+			hasInfoForPublicResources,
+			hasToolsAndResources,
 			hasHistory: false,
 			productPath,
 			product: {

@@ -81,8 +81,11 @@ export type ValidateRouteParamsResult =
 	| {
 			product: ProductDetail;
 			toolsAndResources: RelatedResource[];
+			hasToolsAndResources: boolean;
 			evidenceResources: RelatedResource[];
+			hasEvidenceResources: boolean;
 			infoForPublicResources: RelatedResource[];
+			hasInfoForPublicResources: boolean;
 	  };
 
 export const validateRouteParams = async (
@@ -98,14 +101,20 @@ export const validateRouteParams = async (
 
 	product.productType = ProductTypeAcronym.IND;
 
-	const expectedSlug = getProductSlug(product);
+	const expectedSlug = getProductSlug(product),
+		toolsAndResources = getPublishedToolsAndResources(product),
+		evidenceResources = getPublishedEvidenceResources(product),
+		infoForPublicResources = getPublishedIFPResources(product);
 
 	if (params.slug === expectedSlug)
 		return {
 			product,
-			toolsAndResources: getPublishedToolsAndResources(product),
-			evidenceResources: getPublishedEvidenceResources(product),
-			infoForPublicResources: getPublishedIFPResources(product),
+			toolsAndResources,
+			hasToolsAndResources: toolsAndResources.length > 1,
+			evidenceResources,
+			hasEvidenceResources: evidenceResources.length > 1,
+			infoForPublicResources,
+			hasInfoForPublicResources: infoForPublicResources.length > 1,
 		};
 
 	const absoluteURL = new URL(resolvedUrl, `https://anything.com`),

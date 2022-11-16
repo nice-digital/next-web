@@ -142,9 +142,9 @@ export const getServerSideProps: GetServerSideProps<
 
 	const {
 			product,
-			toolsAndResources,
-			infoForPublicResources,
-			evidenceResources,
+			hasEvidenceResources,
+			hasInfoForPublicResources,
+			hasToolsAndResources,
 		} = result,
 		chapters = getChapterLinks(product),
 		productPath = getProductPath({
@@ -196,9 +196,9 @@ export const getServerSideProps: GetServerSideProps<
 	return {
 		props: {
 			productPath,
-			hasToolsAndResources: toolsAndResources.length > 0,
-			hasInfoForPublicResources: infoForPublicResources.length > 0,
-			hasEvidenceResources: evidenceResources.length > 0,
+			hasEvidenceResources,
+			hasInfoForPublicResources,
+			hasToolsAndResources,
 			hasHistory: false,
 			product: {
 				// Don't bloat the serialized JSON with all the response data: just pick the fields we need
