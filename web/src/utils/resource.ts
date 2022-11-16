@@ -83,7 +83,7 @@ export const findContentPartLinks = (
 	return [
 		...arrayify(uploadAndConvertContentPart).map((part) => ({
 			title: part.title,
-			href: `todo`,
+			href: `resources/${slugify(part.title)}-${part.uid}`,
 		})),
 		...arrayify(editableContentPart).map((part) => ({
 			title: part.title,
