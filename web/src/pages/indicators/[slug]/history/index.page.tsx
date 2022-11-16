@@ -20,8 +20,8 @@ export default function HistoryPage({
 	return (
 		<>
 			<h2>Indicators history</h2>
-			<p>inDevReference {inDevReference}</p>
-			<p>title {project.title}</p>
+			<p>inDevReference: {inDevReference}</p>
+			<p>title: {project.title}</p>
 		</>
 	);
 }

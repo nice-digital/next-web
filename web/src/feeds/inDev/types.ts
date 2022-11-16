@@ -193,6 +193,66 @@ type FeedContentInner<TEmbeddedInner extends EmbeddedKey, TItemType> = {
 	eTag: ETag;
 } & Embedded<TEmbeddedInner, TItemType[]>;
 
+export type IndevFile = {
+	links: {
+		self: [Link];
+	};
+	eTag: ETag;
+	id: string;
+	mimeType: string;
+	fileName: string;
+	length: number;
+	hash: string;
+	name: string;
+	reference: string;
+	resourceTitleId: string;
+	consultationDocumentId: number;
+};
+
+export type IndevPanel = {
+	links: {
+		self: [Link];
+	};
+	embedded: {
+		niceIndevResourceList: {
+			links: {
+				self: [Link];
+			};
+			embedded: {
+				niceIndevResource: {
+					links: {
+						self: [Link];
+					};
+					embedded: {
+						niceIndevFile: IndevFile;
+					};
+					eTag: ETag;
+					title: string;
+					level: number;
+					publishedDate: string;
+					externalUrl: string | null;
+					showInDocList: boolean;
+					textOnly: boolean;
+					consultationId: number;
+					consultationDocumentId: number;
+					isCurrentViewableConsultationMarkup: boolean;
+					convertedDocument: boolean;
+					supportsComments: boolean;
+				};
+			};
+			eTag: ETag;
+			hasResources: boolean;
+		};
+	};
+	eTag: ETag;
+	title: string;
+	panelType: string;
+	legacyPanel: boolean;
+	originalReference: string | null;
+	updateReference: string | null;
+	showPanel: boolean;
+};
+
 export type ProjectDetail = {
 	links: {
 		niceIndevStakeholderRegistration: Record<string, unknown>[];
@@ -200,8 +260,12 @@ export type ProjectDetail = {
 	};
 	embedded: {
 		niceIndevPanelList: {
-			links: Record<string, unknown>[];
-			embedded: Record<string, unknown>[];
+			links: {
+				self: [Link];
+			};
+			embedded: {
+				niceIndevPanel: IndevPanel[];
+			};
 		};
 	};
 	eTag: ETag;
