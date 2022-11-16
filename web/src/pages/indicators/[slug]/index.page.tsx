@@ -174,6 +174,7 @@ export const getServerSideProps: GetServerSideProps<
 			hasEvidenceResources,
 			hasInfoForPublicResources,
 			hasToolsAndResources,
+			hasHistory,
 		} = result,
 		indicatorSubTypes = await getAllIndicatorSubTypes(),
 		chapters = getChapterLinks(product),
@@ -192,7 +193,7 @@ export const getServerSideProps: GetServerSideProps<
 			hasEvidenceResources,
 			hasInfoForPublicResources,
 			hasToolsAndResources,
-			hasHistory: false,
+			hasHistory,
 			product: {
 				id: product.id,
 				lastMajorModificationDate: product.lastMajorModificationDate,

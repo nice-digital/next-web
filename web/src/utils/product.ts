@@ -86,6 +86,7 @@ export type ValidateRouteParamsResult =
 			hasEvidenceResources: boolean;
 			infoForPublicResources: RelatedResource[];
 			hasInfoForPublicResources: boolean;
+			hasHistory: boolean;
 	  };
 
 export const validateRouteParams = async (
@@ -112,11 +113,13 @@ export const validateRouteParams = async (
 		return {
 			product,
 			toolsAndResources,
-			hasToolsAndResources: toolsAndResources.length > 1,
+			hasToolsAndResources: toolsAndResources.length > 0,
 			evidenceResources,
-			hasEvidenceResources: evidenceResources.length > 1,
+			hasEvidenceResources: evidenceResources.length > 0,
 			infoForPublicResources,
-			hasInfoForPublicResources: infoForPublicResources.length > 1,
+			hasInfoForPublicResources: infoForPublicResources.length > 0,
+			// TODO: Load the indev project to determine whether we have history or not
+			hasHistory: false,
 		};
 
 	const absoluteURL = new URL(resolvedUrl, `https://anything.com`),

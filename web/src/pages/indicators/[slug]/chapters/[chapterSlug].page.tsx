@@ -145,6 +145,7 @@ export const getServerSideProps: GetServerSideProps<
 			hasEvidenceResources,
 			hasInfoForPublicResources,
 			hasToolsAndResources,
+			hasHistory,
 		} = result,
 		chapters = getChapterLinks(product),
 		productPath = getProductPath({
@@ -199,7 +200,7 @@ export const getServerSideProps: GetServerSideProps<
 			hasEvidenceResources,
 			hasInfoForPublicResources,
 			hasToolsAndResources,
-			hasHistory: false,
+			hasHistory,
 			product: {
 				// Don't bloat the serialized JSON with all the response data: just pick the fields we need
 				id,

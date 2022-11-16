@@ -95,6 +95,7 @@ export const getServerSideProps: GetServerSideProps<
 			hasInfoForPublicResources,
 			hasToolsAndResources,
 			evidenceResources,
+			hasHistory,
 		} = result,
 		productPath = getProductPath({
 			...product,
@@ -130,7 +131,7 @@ export const getServerSideProps: GetServerSideProps<
 			hasEvidenceResources,
 			hasInfoForPublicResources,
 			hasToolsAndResources,
-			hasHistory: false,
+			hasHistory,
 			productPath,
 			product: {
 				id: product.id,

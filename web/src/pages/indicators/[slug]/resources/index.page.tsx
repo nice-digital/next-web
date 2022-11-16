@@ -90,17 +90,17 @@ export const getServerSideProps: GetServerSideProps<
 
 	const {
 			product,
+			hasToolsAndResources,
 			toolsAndResources,
-			infoForPublicResources,
-			evidenceResources,
+			hasInfoForPublicResources,
+			hasEvidenceResources,
+			hasHistory,
 		} = result,
 		productPath = getProductPath({
 			...product,
 			productGroup: ProductGroup.Other,
 		}),
-		resources = await Promise.all(
-			getPublishedToolsAndResources(product).map(getResourceDetail)
-		),
+		resources = await Promise.all(toolsAndResources.map(getResourceDetail)),
 		resourceGroups = getResourceGroups(resources.filter(isSuccessResponse));
 
 	if (resources.filter(isErrorResponse).length > 0)
@@ -111,10 +111,10 @@ export const getServerSideProps: GetServerSideProps<
 	return {
 		props: {
 			resourceGroups,
-			hasToolsAndResources: toolsAndResources.length > 0,
-			hasInfoForPublicResources: infoForPublicResources.length > 0,
-			hasEvidenceResources: evidenceResources.length > 0,
-			hasHistory: false,
+			hasToolsAndResources,
+			hasInfoForPublicResources,
+			hasEvidenceResources,
+			hasHistory,
 			productPath,
 			product: {
 				id: product.id,
