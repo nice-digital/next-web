@@ -25,7 +25,11 @@ export const PublicationsPrevNext: FC<PublicationsPrevNextProps> = ({
 	chapters,
 }) => {
 	const { asPath } = useRouter();
-	const currentIndex = chapters.findIndex(({ url }) => url === asPath),
+
+	// strip hash from asPath due to difference between client and ssr https://github.com/vercel/next.js/issues/25202
+	const currentIndex = chapters.findIndex(
+			({ url }) => url === asPath.replace(/#.*/, "")
+		),
 		nextPageLink = chapters[currentIndex + 1],
 		previousPageLink = chapters[currentIndex - 1];
 

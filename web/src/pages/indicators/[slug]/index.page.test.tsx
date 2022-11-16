@@ -33,7 +33,7 @@ describe("/indicators/[slug].page", () => {
 
 	beforeEach(() => {
 		(useRouter as jest.Mock).mockImplementation(() => ({
-			asPath: `/indicators/${slug}`,
+			asPath: `/indicators/${slug}#somewhere`,
 		}));
 		axiosMock.reset();
 
