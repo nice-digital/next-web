@@ -19,8 +19,14 @@ export default function HistoryPage({
 	inDevReference,
 	project,
 }: HistoryPageProps): JSX.Element {
-	console.log(project.embedded.niceIndevPanelList);
-	console.log(project.embedded.niceIndevPanelList.embedded.niceIndevPanel);
+	// console.log(project.embedded.niceIndevPanelList);
+	// console.log(project.embedded.niceIndevPanelList.embedded.niceIndevPanel);
+
+	const panels = project.embedded.niceIndevPanelList.embedded.niceIndevPanel;
+
+	const shownPanels = panels.filter((item) => item.showPanel);
+
+	console.log({ shownPanels });
 
 	return (
 		<>
@@ -28,35 +34,33 @@ export default function HistoryPage({
 			<p>inDevReference: {inDevReference}</p>
 			<p>title: {project.title}</p>
 			<h3>Panels</h3>
-			{project.embedded.niceIndevPanelList.embedded.niceIndevPanel.map(
-				(panel, index) => {
-					return (
-						<ul key={`panel_${index}`}>
-							<li key={`${panel.title}_${index}`}>{panel.title}</li>
-							{panel.embedded.niceIndevResourceList.hasResources ? (
-								<>
-									<hr />
-									<ul>
-										<li>
+			{shownPanels.map((panel, index) => {
+				return (
+					<ul key={`panel_${index}`}>
+						<li key={`${panel.title}_${index}`}>{panel.title}</li>
+						{panel.embedded.niceIndevResourceList.hasResources ? (
+							<>
+								<hr />
+								<ul>
+									<li>
+										{
+											panel.embedded.niceIndevResourceList.embedded
+												.niceIndevResource.title
+										}
+										<br />
+										<a>
 											{
 												panel.embedded.niceIndevResourceList.embedded
-													.niceIndevResource.title
+													.niceIndevResource.embedded?.niceIndevFile?.fileName
 											}
-											<br />
-											<a>
-												{
-													panel.embedded.niceIndevResourceList.embedded
-														.niceIndevResource.embedded?.niceIndevFile?.fileName
-												}
-											</a>
-										</li>
-									</ul>
-								</>
-							) : null}
-						</ul>
-					);
-				}
-			)}
+										</a>
+									</li>
+								</ul>
+							</>
+						) : null}
+					</ul>
+				);
+			})}
 		</>
 	);
 }
