@@ -10,6 +10,7 @@ import {
 	Consultation,
 	InConsultationProjects,
 	ProjectDetail,
+	IndevPanel,
 } from "./types";
 
 export * from "./types";

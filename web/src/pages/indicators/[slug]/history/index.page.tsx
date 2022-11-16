@@ -1,27 +1,36 @@
 import { type GetServerSideProps } from "next/types";
 import React from "react";
 
-import { getProjectDetail } from "@/feeds/inDev/inDev";
+import { getProjectDetail, ProjectDetail } from "@/feeds/inDev/inDev";
 import { isErrorResponse } from "@/feeds/publications/publications";
 import { validateRouteParams } from "@/utils/product";
 
+export type ProjectDetailProps = {
+	project: Pick<ProjectDetail, "reference" | "title" | "embedded">;
+};
+
 export type HistoryPageProps = {
 	inDevReference: string;
-	project: {
-		reference: string;
-		title: string;
-	};
+	project: ProjectDetailProps["project"];
 };
 
 export default function HistoryPage({
 	inDevReference,
 	project,
 }: HistoryPageProps): JSX.Element {
+	console.log(project.embedded.niceIndevPanelList);
+	console.log(project.embedded.niceIndevPanelList.embedded.niceIndevPanel);
+
 	return (
 		<>
 			<h2>Indicators history</h2>
 			<p>inDevReference: {inDevReference}</p>
 			<p>title: {project.title}</p>
+			{project.embedded.niceIndevPanelList.embedded.niceIndevPanel.map(
+				(panel) => {
+					return <p key={panel.title}>{panel.title}</p>;
+				}
+			)}
 		</>
 	);
 }
@@ -38,17 +47,17 @@ export const getServerSideProps: GetServerSideProps<
 
 	if (isErrorResponse(project)) throw new Error("project not found");
 
-	console.log(project);
+	// console.log(project);
 
-	const { reference, title } = project;
+	// const { reference, title } = project;
+
+	if (!params || !project.embedded.niceIndevPanelList)
+		return { notFound: true };
 
 	return {
 		props: {
 			inDevReference: result.product.inDevReference,
-			project: {
-				reference,
-				title,
-			},
+			project,
 		},
 	};
 };
