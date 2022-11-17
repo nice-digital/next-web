@@ -32,7 +32,15 @@ export default function HistoryPage({
 							<li>fileType: {panel.fileType}</li>
 							<li>date: {panel.date}</li>
 							<li>fileSize: {panel.fileSize} </li>
-							<li>hrefs: {panel.hrefs} </li>
+							{Array.isArray(panel.resources)
+								? panel.resources?.map((item, index) => {
+										return (
+											<li key={`${item.title}_${index}`}>
+												{item.title} {item.href}
+											</li>
+										);
+								  })
+								: null}
 						</ul>
 					</>
 				);
@@ -67,16 +75,18 @@ export const getServerSideProps: GetServerSideProps<
 			const indevResource =
 				panel.embedded.niceIndevResourceList.embedded.niceIndevResource;
 
-			const hrefs = Array.isArray(
+			const resources = Array.isArray(
 				panel.embedded.niceIndevResourceList.embedded.niceIndevResource
 			)
 				? panel.embedded.niceIndevResourceList.embedded.niceIndevResource.map(
-						(resource) =>
-							resource?.embedded?.niceIndevFile?.links?.self[0]?.href
+						(resource) => ({
+							title: resource?.title,
+							href: resource?.embedded?.niceIndevFile?.links?.self[0]?.href,
+						})
 				  )
-				: "";
+				: null;
 
-			console.log({ hrefs });
+			console.log({ resources });
 
 			return {
 				title: panel.title,
@@ -87,7 +97,7 @@ export const getServerSideProps: GetServerSideProps<
 				link: indevResource.embedded?.niceIndevFile?.links?.self[0]?.href,
 				reference: indevResource.embedded?.niceIndevFile?.reference,
 				resourceTitleId: indevResource.embedded?.niceIndevFile.resourceTitleId,
-				hrefs,
+				resources,
 			};
 		});
 	// .map((panel) => ({ ...panel }));
