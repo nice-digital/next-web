@@ -6,11 +6,9 @@ import {
 } from "@/feeds/publications/publications";
 import {
 	type ProductDetail,
-	ProductGroup,
 	type ChapterHeading,
-	UploadAndConvertContentPart,
-	HTMLChapterContentInfo,
-	ProductTypeAcronym,
+	type UploadAndConvertContentPart,
+	ProductGroup,
 	Status,
 	ResourceGroupType,
 	RelatedResource,
@@ -101,9 +99,6 @@ export const validateRouteParams = async (
 
 	if (isErrorResponse(product)) return { notFound: true };
 
-	// TODO: Make this more general when we migrate guidance to Next Web
-	product.productType = ProductTypeAcronym.IND;
-
 	const expectedSlug = getProductSlug(product),
 		toolsAndResources = getPublishedToolsAndResources(product),
 		evidenceResources = getPublishedEvidenceResources(product),
@@ -123,13 +118,17 @@ export const validateRouteParams = async (
 		};
 
 	const absoluteURL = new URL(resolvedUrl, `https://anything.com`),
-		pathParts = absoluteURL.pathname.split("/");
+		pathSegments = absoluteURL.pathname.split("/");
 
-	pathParts[2] = expectedSlug;
+	// All 'product' URLs follow a format like "/indicators/ind1-some-title/anything/here"
+	// So by replacing the slug (2nd) segment we can support redirects to pages at any level
+	// For example from "/indicators/ind1-wrong-title/anything/here" to /indicators/ind1-correct-title/anything/here
+	pathSegments[2] = expectedSlug;
 
 	return {
 		redirect: {
-			destination: pathParts.join("/") + absoluteURL.search,
+			// Retain the 'search' (querystring) part of the URL to retain things like utm params
+			destination: pathSegments.join("/") + absoluteURL.search,
 			permanent: true,
 		},
 	};
@@ -145,8 +144,8 @@ export const getPublishedRelatedResources = (
 	product: ProductDetail
 ): RelatedResource[] =>
 	arrayify(
-		product.embedded.relatedResourceList?.embedded.relatedResource
-	).filter((resource) => resource.status === Status.Published);
+		product.embedded.relatedResourceList?.embedded?.relatedResource
+	).filter(({ status }) => status === Status.Published);
 
 /**
  * Extracts a list of published related resources for the 'tools and resources' section of a product.

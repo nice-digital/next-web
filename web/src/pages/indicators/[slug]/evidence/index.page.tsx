@@ -12,12 +12,13 @@ import {
 import { ResourceList } from "@/components/ResourceList/ResourceList";
 import {
 	getResourceDetail,
+	getResourceDetails,
 	isErrorResponse,
 } from "@/feeds/publications/publications";
 import { ProductGroup, ResourceDetail } from "@/feeds/publications/types";
 import { validateRouteParams } from "@/utils/product";
 import {
-	getResourceSubGroups,
+	getResourceGroup,
 	isEvidenceUpdate,
 	isSupportingEvidence,
 	ResourceGroupViewModel,
@@ -100,30 +101,25 @@ export const getServerSideProps: GetServerSideProps<
 		productPath = getProductPath({
 			...product,
 			productGroup: ProductGroup.Other,
-		}),
-		resources = await Promise.all(evidenceResources.map(getResourceDetail));
+		});
 
-	if (resources.filter(isErrorResponse).length > 0)
-		throw Error(
-			`Failed to retrieve some resources from product ${product.id} at ${resolvedUrl}`
+	if (!hasEvidenceResources) return { notFound: true };
+
+	const resources = await getResourceDetails(evidenceResources),
+		evidenceUpdates = resources.filter(isEvidenceUpdate),
+		supportingEvidence = resources.filter(isSupportingEvidence);
+
+	const resourceGroups: ResourceGroupViewModel[] = [];
+
+	if (evidenceUpdates.length)
+		resourceGroups.push(getResourceGroup("Evidence updates", evidenceUpdates));
+
+	if (supportingEvidence.length)
+		resourceGroups.push(
+			getResourceGroup("Supporting evidence", supportingEvidence)
 		);
 
-	const resourceGroups: ResourceGroupViewModel[] = [
-		{
-			title: "Evidence updates",
-			subGroups: getResourceSubGroups(
-				(resources as ResourceDetail[]).filter(isEvidenceUpdate)
-			),
-		},
-		{
-			title: "Supporting evidence",
-			subGroups: getResourceSubGroups(
-				(resources as ResourceDetail[]).filter(isSupportingEvidence)
-			),
-		},
-	].filter((group) =>
-		group.subGroups.some((subGroup) => subGroup.resourceLinks.length > 0)
-	);
+	if (!resourceGroups.length) return { notFound: true };
 
 	return {
 		props: {

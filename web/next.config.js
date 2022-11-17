@@ -104,6 +104,15 @@ const nextConfig = {
 	pageExtensions: ["page.tsx", "api.tsx"],
 	// Don't send the x-powered-by header: we don't want to expose things like that. See https://edibleco.de/2TpDVAK
 	poweredByHeader: false,
+	async rewrites() {
+		return [
+			{
+				// TODO: Use single root folder with rewrites to root guidance, advice, corporate, process and indicators to the same code
+				source: "/:productRoot(guidance|advice|process|corporate)/:path*",
+				destination: "/indicators/:path*",
+			},
+		];
+	},
 	async redirects() {
 		return [
 			{

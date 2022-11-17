@@ -12,6 +12,7 @@ import {
 import { ResourceList } from "@/components/ResourceList/ResourceList";
 import {
 	getResourceDetail,
+	getResourceDetails,
 	isErrorResponse,
 	isSuccessResponse,
 } from "@/feeds/publications/publications";
@@ -88,6 +89,8 @@ export const getServerSideProps: GetServerSideProps<
 
 	if ("notFound" in result || "redirect" in result) return result;
 
+	if (!result.hasToolsAndResources) return { notFound: true };
+
 	const {
 			product,
 			hasToolsAndResources,
@@ -99,18 +102,13 @@ export const getServerSideProps: GetServerSideProps<
 		productPath = getProductPath({
 			...product,
 			productGroup: ProductGroup.Other,
-		}),
-		resources = await Promise.all(toolsAndResources.map(getResourceDetail)),
-		resourceGroups = getResourceGroups(resources.filter(isSuccessResponse));
-
-	if (resources.filter(isErrorResponse).length > 0)
-		throw Error(
-			`Failed to retrieve some resources from product ${product.id} at ${resolvedUrl}`
-		);
+		});
 
 	return {
 		props: {
-			resourceGroups,
+			resourceGroups: getResourceGroups(
+				await getResourceDetails(toolsAndResources)
+			),
 			hasToolsAndResources,
 			hasInfoForPublicResources,
 			hasEvidenceResources,

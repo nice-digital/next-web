@@ -4,6 +4,8 @@ import {
 	isEvidenceUpdate,
 	isSupportingEvidence,
 	findContentPartLinks,
+	getResourceGroup,
+	getResourceGroups,
 } from "./resource";
 
 describe("resource utils", () => {
@@ -269,6 +271,189 @@ describe("resource utils", () => {
 					resourceType: ResourceType.EvidenceUpdate,
 				} as ResourceDetail)
 			).toBe(false);
+		});
+	});
+
+	describe("getResourceGroup", () => {
+		it("should group resources by resource type", () => {
+			expect(
+				getResourceGroup("Some group", [
+					{
+						resourceTypeName: "First group",
+						embedded: {
+							contentPartList: {
+								embedded: {
+									externalUrlContentPart: [
+										{
+											title: "First group link 1",
+											url: "https://firstgrouplink1.com",
+										},
+										{
+											title: "First group link 2",
+											url: "https://firstgrouplink2.com",
+										},
+									],
+								},
+							},
+						},
+					} as ResourceDetail,
+					{
+						resourceTypeName: "Second group",
+						embedded: {
+							contentPartList: {
+								embedded: {
+									externalUrlContentPart: [
+										{
+											title: "Second group link 1",
+											url: "https://secondgrouplink1.com",
+										},
+									],
+								},
+							},
+						},
+					} as ResourceDetail,
+					{
+						resourceTypeName: "First group",
+						embedded: {
+							contentPartList: {
+								embedded: {
+									externalUrlContentPart: [
+										{
+											title: "First group link 3",
+											url: "https://firstgrouplink3.com",
+										},
+									],
+								},
+							},
+						},
+					} as ResourceDetail,
+				])
+			).toStrictEqual({
+				title: "Some group",
+				subGroups: [
+					{
+						title: "First group",
+						resourceLinks: [
+							{
+								title: "First group link 1",
+								href: "https://firstgrouplink1.com",
+							},
+							{
+								title: "First group link 2",
+								href: "https://firstgrouplink2.com",
+							},
+							{
+								title: "First group link 3",
+								href: "https://firstgrouplink3.com",
+							},
+						],
+					},
+					{
+						title: "Second group",
+						resourceLinks: [
+							{
+								title: "Second group link 1",
+								href: "https://secondgrouplink1.com",
+							},
+						],
+					},
+				],
+			});
+		});
+	});
+
+	describe("getResourceGroups", () => {
+		it("should group resources by resource type", () => {
+			expect(
+				getResourceGroups([
+					{
+						resourceTypeName: "First group",
+						embedded: {
+							contentPartList: {
+								embedded: {
+									externalUrlContentPart: [
+										{
+											title: "First group link 1",
+											url: "https://firstgrouplink1.com",
+										},
+										{
+											title: "First group link 2",
+											url: "https://firstgrouplink2.com",
+										},
+									],
+								},
+							},
+						},
+					} as ResourceDetail,
+					{
+						resourceTypeName: "Second group",
+						embedded: {
+							contentPartList: {
+								embedded: {
+									externalUrlContentPart: [
+										{
+											title: "Second group link 1",
+											url: "https://secondgrouplink1.com",
+										},
+									],
+								},
+							},
+						},
+					} as ResourceDetail,
+					{
+						resourceTypeName: "First group",
+						embedded: {
+							contentPartList: {
+								embedded: {
+									externalUrlContentPart: [
+										{
+											title: "First group link 3",
+											url: "https://firstgrouplink3.com",
+										},
+									],
+								},
+							},
+						},
+					} as ResourceDetail,
+				])
+			).toStrictEqual([
+				{
+					title: "First group",
+					subGroups: [
+						{
+							title: "First group",
+							resourceLinks: [
+								{
+									title: "First group link 1",
+									href: "https://firstgrouplink1.com",
+								},
+								{
+									title: "First group link 2",
+									href: "https://firstgrouplink2.com",
+								},
+								{
+									title: "First group link 3",
+									href: "https://firstgrouplink3.com",
+								},
+							],
+						},
+					],
+				},
+				{
+					title: "Second group",
+					subGroups: [
+						{
+							title: "Second group",
+							resourceLinks: [
+								{
+									title: "Second group link 1",
+									href: "https://secondgrouplink1.com",
+								},
+							],
+						},
+					],
+				},
+			]);
 		});
 	});
 });

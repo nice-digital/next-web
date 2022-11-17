@@ -24,47 +24,115 @@ export type ResourceGroupViewModel = {
 	subGroups: ResourceSubGroupViewModel[];
 };
 
-export const getResourceSubGroups = (
+export const getResourceGroup = (
+	title: string,
 	resources: ResourceDetail[]
-): ResourceSubGroupViewModel[] =>
-	resources
-		.reduce((groups, current) => {
-			const group = groups.find((g) => g.title === current.resourceTypeName);
-			if (!group) {
-				groups.push({
+): ResourceGroupViewModel => ({
+	title,
+	subGroups: resources
+		.reduce((subGroups, current) => {
+			let subGroup = subGroups.find(
+				({ title }) => title === current.resourceTypeName
+			);
+
+			if (!subGroup) {
+				subGroup = {
 					title: current.resourceTypeName,
-					resourceLinks: findContentPartLinks(current),
-				});
-			} else {
-				group.resourceLinks.push(...findContentPartLinks(current));
+					resourceLinks: [],
+				};
+
+				subGroups.push(subGroup);
 			}
-			return groups;
+
+			subGroup.resourceLinks = [
+				...subGroup.resourceLinks,
+				...findContentPartLinks(current),
+			].sort(byTitleAlphabetically);
+
+			return subGroups;
 		}, [] as ResourceSubGroupViewModel[])
-		.sort(byTitleAlphabetically);
+		.sort(byTitleAlphabetically),
+});
 
 export const getResourceGroups = (
 	resources: ResourceDetail[]
-): ResourceGroupViewModel[] => {
-	return resources
+): ResourceGroupViewModel[] =>
+	resources
 		.reduce((groups, current) => {
-			const group = groups.find((g) => g.title === current.resourceTypeName);
+			let group = groups.find(
+				({ title }) => title === current.resourceTypeName
+			);
+
 			if (!group) {
-				groups.push({
-					title: current.resourceTypeName,
-					subGroups: [
-						{
-							title: current.resourceTypeName,
-							resourceLinks: findContentPartLinks(current),
-						},
-					],
-				});
-			} else {
-				group.subGroups[0].resourceLinks.push(...findContentPartLinks(current));
+				group = getResourceGroup(
+					current.resourceTypeName,
+					resources.filter(
+						(r) => r.resourceTypeName === current.resourceTypeName
+					)
+				);
+
+				groups.push(group);
 			}
+
 			return groups;
 		}, [] as ResourceGroupViewModel[])
 		.sort(byTitleAlphabetically);
-};
+
+//{
+// 	return resources
+// 		.reduce((groups, current) => {
+// 			let group = groups.find(({ title }) => title === groupTitle);
+// 			if (!group) {
+// 				group = {
+// 					title: groupTitle,
+// 					subGroups: [],
+// 				};
+
+// 				groups.push(group);
+// 			}
+
+// 			let subGroup = group.subGroups.find(
+// 				({ title }) => title === current.resourceTypeName
+// 			);
+
+// 			if (!subGroup) {
+// 				subGroup = {
+// 					title: current.resourceTypeName,
+// 					resourceLinks: [],
+// 				};
+// 			}
+
+// 			subGroup.resourceLinks.push(...findContentPartLinks(current));
+
+// 			return groups;
+// 		}, [] as ResourceGroupViewModel[])
+// 		.sort(byTitleAlphabetically);
+// };
+
+// export const getResourceGroups = (
+// 	resources: ResourceDetail[],
+// 	groupTitle?: string
+// ): ResourceGroupViewModel[] => {
+// 	return resources
+// 		.reduce((groups, current) => {
+// 			const group = groups.find((g) => g.title === current.resourceTypeName);
+// 			if (!group) {
+// 				groups.push({
+// 					title: groupTitle || current.resourceTypeName,
+// 					subGroups: [
+// 						{
+// 							title: current.resourceTypeName,
+// 							resourceLinks: findContentPartLinks(current),
+// 						},
+// 					],
+// 				});
+// 			} else {
+// 				group.subGroups[0].resourceLinks.push(...findContentPartLinks(current));
+// 			}
+// 			return groups;
+// 		}, [] as ResourceGroupViewModel[])
+// 		.sort(byTitleAlphabetically);
+// };
 
 export const findContentPartLinks = (
 	resource: ResourceDetail

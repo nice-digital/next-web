@@ -158,24 +158,69 @@ export const getChapterContent = async (
 };
 
 /**
- * Fetches a full resource response from publications
+ * Fetches a full resource response from publications.
  *
- * @param resource The related resource
+ * Returns null if the resource can't be found.
+ *
+ * @param resource The related resource, or null if the resource can't be found
  */
 export const getResourceDetail = async (
 	resource: RelatedResource
-): Promise<ResourceDetail | ErrorResponse> =>
-	await getFeedBodyCached<ResourceDetail | ErrorResponse>(
+): Promise<ResourceDetail | null> => {
+	const { href } = resource.links.relatedResourceUri[0];
+
+	return getFeedBodyCached<ResourceDetail | null>(
 		cacheKeyPrefix,
-		resource.links.relatedResourceUri[0].href,
+		href,
 		defaultTTL,
-		async () =>
-			await getFeedBodyUnCached<ResourceDetail | ErrorResponse>(
-				origin,
-				resource.links.relatedResourceUri[0].href,
-				apiKey
-			)
+		async () => {
+			const response = await getFeedBodyUnCached<
+				ResourceDetail | ErrorResponse
+			>(origin, href, apiKey);
+
+			return isSuccessResponse(response) ? response : null;
+		}
 	);
+};
+
+/**
+ * Fetches full resources responses from publications for each of the given resources.
+ *
+ * It will throw an error if any of the resources can't be found
+ */
+export const getResourceDetails = async (
+	resources: RelatedResource[]
+): Promise<ResourceDetail[]> => {
+	const fullResources = await Promise.all(
+		resources.map(
+			(relatedResource) =>
+				new Promise<{
+					relatedResource: RelatedResource;
+					resourceDetail: ResourceDetail | null;
+				}>((resolve) => {
+					getResourceDetail(relatedResource).then((resourceDetail) => {
+						resolve({
+							relatedResource,
+							resourceDetail,
+						});
+					});
+				})
+		)
+	);
+
+	const failedResources = fullResources
+		.filter((r) => r.resourceDetail === null)
+		.map((r) => r.relatedResource);
+
+	if (failedResources.length)
+		throw Error(
+			`Could not load resources ${failedResources.map((r) => r.uid)}`
+		);
+
+	return fullResources
+		.map((r) => r.resourceDetail)
+		.filter((r): r is ResourceDetail => r !== null);
+};
 
 /**
  * Gets a stream of a file from publications.
