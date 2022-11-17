@@ -10,7 +10,7 @@ export type HistoryResource = {
 	textOnly?: boolean;
 	fileType?: string;
 	fileName?: string;
-	fileSize?: string;
+	fileSize?: number;
 	href: string;
 	reference?: string;
 	resourceTitleId?: string;
