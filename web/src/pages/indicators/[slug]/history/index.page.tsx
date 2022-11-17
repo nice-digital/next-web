@@ -12,6 +12,7 @@ export type HistoryHtml = {
 
 export type HistoryResource = {
 	title: string;
+	textOnly: boolean;
 	fileType: string;
 	fileName: string;
 	fileSize: string;
@@ -57,14 +58,19 @@ export default function HistoryPage({
 										<p key={index}>
 											<strong>{item.title}</strong>
 											<br />
-											{item.href && `href: ${item.href}`}
-											<br />
-											{item.fileName && `fileName: ${item.fileName}`}
-											<br />
-											{item.fileSize && `fileSize: ${item.fileSize}`}
-											<br />
-											{item.fileType && `fileType: ${item.fileType}`}
-											<br />
+
+											{item.href
+												? //Render link
+												  `href: ${item.href}`
+												: //Render file if not text only
+												  !item.textOnly && (
+														<>
+															filename: {item.fileName} <br />
+															fileType: {item.fileType} <br />
+															fileSize: {item.fileSize}
+															<br />
+														</>
+												  )}
 											{item.publishedDate &&
 												`publishedDate: ${item.publishedDate}`}
 											<br />
@@ -74,17 +80,19 @@ export default function HistoryPage({
 							) : (
 								<>
 									<p>{panel.title}</p>
-									{panel.resources.href && `href: ${panel.resources.href}`}
-									<br />
-									{panel.resources.fileName &&
-										`fileName: ${panel.resources.fileName}`}
-									<br />
-									{panel.resources.fileType &&
-										`fileType: ${panel.resources.fileType}`}
-									<br />
-									{panel.resources.fileSize &&
-										`fileSize: ${panel.resources.fileSize}`}
-									<br />
+									{panel.resources.href ? (
+										//Render link
+										`href: ${panel.resources.href}`
+									) : (
+										//Render file
+										<>
+											filename: {panel.resources.fileName} <br />
+											fileType: {panel.resources.fileType} <br />
+											fileSize: {panel.resources.fileSize}
+											<br />
+										</>
+									)}
+
 									{panel.resources.publishedDate &&
 										`publishedDate: ${panel.resources.publishedDate}`}
 								</>
@@ -126,7 +134,7 @@ export const getServerSideProps: GetServerSideProps<
 
 			const resources = Array.isArray(indevResource)
 				? indevResource.map((resource) => {
-						console.log({ resource });
+						// console.log({ resource });
 						const indevFile = resource.embedded?.niceIndevFile;
 
 						if (indevFile?.mimeType == "text/html") {
@@ -137,6 +145,7 @@ export const getServerSideProps: GetServerSideProps<
 						} else {
 							return {
 								title: resource.title,
+								textOnly: resource.textOnly,
 								fileName: indevFile?.fileName,
 								fileType: indevFile?.mimeType,
 								fileSize: indevFile?.length,
@@ -149,6 +158,7 @@ export const getServerSideProps: GetServerSideProps<
 				  })
 				: {
 						title: indevResource.title,
+						textOnly: indevResource.textOnly,
 						fileName: indevResource.embedded.niceIndevFile.fileName,
 						fileType: indevResource.embedded.niceIndevFile.mimeType,
 						fileSize: indevResource.embedded.niceIndevFile.length,
