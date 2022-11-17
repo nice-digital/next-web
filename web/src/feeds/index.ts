@@ -31,7 +31,7 @@ export const getFeedBodyUnCached = async <TResponse>(
 			"Api-Key": apiKey,
 		},
 		validateStatus: (status: number) => {
-			// We don't want feed 404 responses to throw an error, so that users see a not found page rather than server error..
+			// We don't want feed 404 responses to throw an error, so that we can show users a not found page rather than a server error.
 			return (status >= 200 && status < 300) || status == 404;
 		},
 	});
