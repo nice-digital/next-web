@@ -1,9 +1,21 @@
 import { NextSeo } from "next-seo";
 import { useRouter } from "next/router";
 import pluralize from "pluralize";
-import React, { FC, ReactChild, useEffect, useMemo, useState } from "react";
+import React, {
+	ElementType,
+	FC,
+	ReactChild,
+	ReactElement,
+	useEffect,
+	useMemo,
+	useState,
+} from "react";
 
-import { Breadcrumbs, Breadcrumb } from "@nice-digital/nds-breadcrumbs";
+import {
+	Breadcrumbs,
+	Breadcrumb,
+	type BreadcrumbProps,
+} from "@nice-digital/nds-breadcrumbs";
 import { Grid, GridItem } from "@nice-digital/nds-grid";
 import { PageHeader } from "@nice-digital/nds-page-header";
 import { Table } from "@nice-digital/nds-table";
@@ -18,18 +30,17 @@ import {
 import { Announcer } from "@/components/Announcer/Announcer";
 import { CopyToClipboard } from "@/components/CopyToClipboard/CopyToClipboard";
 import { ErrorPageContent } from "@/components/ErrorPageContent/ErrorPageContent";
-import { GuidanceListFilterSummary } from "@/components/GuidanceListPage/GuidanceListFilterSummary/GuidanceListFilterSummary";
-import { GuidanceListNav } from "@/components/GuidanceListPage/GuidanceListNav/GuidanceListNav";
 import { Link, ScrollToLink } from "@/components/Link/Link";
 import { SearchListFilters } from "@/components/SearchListFilters/SearchListFilters";
 import { SearchPagination } from "@/components/SearchPagination/SearchPagination";
 import { SkipLink } from "@/components/SkipLink/SkipLink";
 
-import { defaultPageSize } from "./GuidanceListGetServerSideProps/GuidanceListGetServerSideProps";
-import styles from "./GuidanceListPage.module.scss";
-import { GuidanceListPageProps } from "./GuidanceListPageProps";
+import { ProductListFilterSummary } from "./ProductListFilterSummary/ProductListFilterSummary";
+import { defaultPageSize } from "./ProductListGetServerSideProps/ProductListGetServerSideProps";
+import styles from "./ProductListPage.module.scss";
+import { ProductListPageProps } from "./ProductListPageProps";
 
-export { getGetServerSidePropsFunc } from "./GuidanceListGetServerSideProps/GuidanceListGetServerSideProps";
+export { getGetServerSidePropsFunc } from "./ProductListGetServerSideProps/ProductListGetServerSideProps";
 
 const resultsPerPage = [
 	{ count: 10, label: "10" },
@@ -38,11 +49,14 @@ const resultsPerPage = [
 	{ count: 9999, label: "All" },
 ];
 
-export type GetGuidanceListPageOptions = {
+export type GetProductListPageOptions = {
 	metaDescription: string;
-	breadcrumb: ReactChild;
+	listNavType: ElementType;
+	breadcrumbTrail: ReactElement<BreadcrumbProps>[];
+	currentBreadcrumb: string;
 	preheading: ReactChild;
 	heading: ReactChild;
+	intro?: ReactChild;
 	title: string;
 	defaultSort: {
 		order: SortOrder;
@@ -73,12 +87,15 @@ export type GetGuidanceListPageOptions = {
  *
  * @returns A guidance list page component
  */
-export const getGuidanceListPage =
+export const getProductListPage =
 	({
 		metaDescription,
-		breadcrumb,
+		listNavType: ListNavType,
+		breadcrumbTrail,
+		currentBreadcrumb,
 		preheading,
 		heading,
+		intro,
 		title,
 		defaultSort,
 		secondarySort,
@@ -86,7 +103,7 @@ export const getGuidanceListPage =
 		dateFilterLabel,
 		useFutureDates,
 		tableBodyRender,
-	}: GetGuidanceListPageOptions): FC<GuidanceListPageProps> =>
+	}: GetProductListPageOptions): FC<ProductListPageProps> =>
 	({
 		results,
 		searchUrl: { q, s, from, to, ps = defaultPageSize },
@@ -96,16 +113,19 @@ export const getGuidanceListPage =
 		// Announcement text, used for giving audible notifications to screen readers when results have changed
 		const [announcement, setAnnouncement] = useState(""),
 			// Cache the breadcrumbs as they're static and it means we can use them on both the error view and success view
-			breadcrumbs = useMemo(
-				() => (
+			breadcrumbs = useMemo(() => {
+				return (
 					<Breadcrumbs>
-						<Breadcrumb to="/">Home</Breadcrumb>
-						<Breadcrumb to="/guidance">NICE guidance</Breadcrumb>
-						<Breadcrumb>{breadcrumb}</Breadcrumb>
+						{[
+							<Breadcrumb to="/" key="home">
+								Home
+							</Breadcrumb>,
+							...breadcrumbTrail,
+							<Breadcrumb key="current page">{currentBreadcrumb}</Breadcrumb>,
+						]}
 					</Breadcrumbs>
-				),
-				[]
-			),
+				);
+			}, []),
 			{ failed } = results,
 			{
 				documents,
@@ -168,7 +188,9 @@ export const getGuidanceListPage =
 					}
 				/>
 
-				<GuidanceListNav />
+				{intro}
+
+				<ListNavType />
 
 				<Grid gutter="loose" className={styles.sectionWrapper}>
 					<GridItem
@@ -192,7 +214,16 @@ export const getGuidanceListPage =
 							showTextFilter={true}
 							dateFilterLabel={dateFilterLabel}
 							useFutureDates={useFutureDates}
-							navigatorsOrder={["nai", "tt", "tsd", "ndt", "ngt", "nat"]}
+							navigatorsOrder={[
+								"nai",
+								"tt",
+								"tsd",
+								"ndt",
+								"ngt",
+								"nat",
+								"rty",
+								"sub",
+							]}
 						/>
 					</GridItem>
 
@@ -203,7 +234,7 @@ export const getGuidanceListPage =
 						elementType="section"
 						aria-labelledby="filter-summary"
 					>
-						<GuidanceListFilterSummary
+						<ProductListFilterSummary
 							results={results as SearchResultsSuccess}
 							activeModifiers={activeModifiers}
 							currentSortOrder={s}
