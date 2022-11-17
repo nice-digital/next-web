@@ -78,62 +78,6 @@ export const getResourceGroups = (
 		}, [] as ResourceGroupViewModel[])
 		.sort(byTitleAlphabetically);
 
-//{
-// 	return resources
-// 		.reduce((groups, current) => {
-// 			let group = groups.find(({ title }) => title === groupTitle);
-// 			if (!group) {
-// 				group = {
-// 					title: groupTitle,
-// 					subGroups: [],
-// 				};
-
-// 				groups.push(group);
-// 			}
-
-// 			let subGroup = group.subGroups.find(
-// 				({ title }) => title === current.resourceTypeName
-// 			);
-
-// 			if (!subGroup) {
-// 				subGroup = {
-// 					title: current.resourceTypeName,
-// 					resourceLinks: [],
-// 				};
-// 			}
-
-// 			subGroup.resourceLinks.push(...findContentPartLinks(current));
-
-// 			return groups;
-// 		}, [] as ResourceGroupViewModel[])
-// 		.sort(byTitleAlphabetically);
-// };
-
-// export const getResourceGroups = (
-// 	resources: ResourceDetail[],
-// 	groupTitle?: string
-// ): ResourceGroupViewModel[] => {
-// 	return resources
-// 		.reduce((groups, current) => {
-// 			const group = groups.find((g) => g.title === current.resourceTypeName);
-// 			if (!group) {
-// 				groups.push({
-// 					title: groupTitle || current.resourceTypeName,
-// 					subGroups: [
-// 						{
-// 							title: current.resourceTypeName,
-// 							resourceLinks: findContentPartLinks(current),
-// 						},
-// 					],
-// 				});
-// 			} else {
-// 				group.subGroups[0].resourceLinks.push(...findContentPartLinks(current));
-// 			}
-// 			return groups;
-// 		}, [] as ResourceGroupViewModel[])
-// 		.sort(byTitleAlphabetically);
-// };
-
 export const findContentPartLinks = (
 	resource: ResourceDetail
 ): ResourceLinkViewModel[] => {
