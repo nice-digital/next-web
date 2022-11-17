@@ -209,6 +209,27 @@ export type IndevFile = {
 	consultationDocumentId: number;
 };
 
+export type IndevResource = {
+	links: {
+		self: [Link];
+	};
+	embedded: {
+		niceIndevFile: IndevFile;
+	};
+	eTag: ETag;
+	title: string;
+	level: number;
+	publishedDate: string;
+	externalUrl: string | null;
+	showInDocList: boolean;
+	textOnly: boolean;
+	consultationId: number;
+	consultationDocumentId: number;
+	isCurrentViewableConsultationMarkup: boolean;
+	convertedDocument: boolean;
+	supportsComments: boolean;
+};
+
 export type IndevPanel = {
 	links: {
 		self: [Link];
@@ -219,26 +240,7 @@ export type IndevPanel = {
 				self: [Link];
 			};
 			embedded: {
-				niceIndevResource: {
-					links: {
-						self: [Link];
-					};
-					embedded: {
-						niceIndevFile: IndevFile;
-					};
-					eTag: ETag;
-					title: string;
-					level: number;
-					publishedDate: string;
-					externalUrl: string | null;
-					showInDocList: boolean;
-					textOnly: boolean;
-					consultationId: number;
-					consultationDocumentId: number;
-					isCurrentViewableConsultationMarkup: boolean;
-					convertedDocument: boolean;
-					supportsComments: boolean;
-				};
+				niceIndevResource: IndevResource;
 			};
 			eTag: ETag;
 			hasResources: boolean;
