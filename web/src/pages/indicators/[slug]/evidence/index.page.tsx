@@ -91,19 +91,14 @@ export const getServerSideProps: GetServerSideProps<
 	if ("notFound" in result || "redirect" in result) return result;
 
 	const {
-			product,
-			hasEvidenceResources,
-			hasInfoForPublicResources,
-			hasToolsAndResources,
-			evidenceResources,
-			hasHistory,
-		} = result,
-		productPath = getProductPath({
-			...product,
-			productGroup: ProductGroup.Other,
-		});
-
-	if (!hasEvidenceResources) return { notFound: true };
+		product,
+		productPath,
+		hasEvidenceResources,
+		hasInfoForPublicResources,
+		hasToolsAndResources,
+		evidenceResources,
+		hasHistory,
+	} = result;
 
 	const resources = await getResourceDetails(evidenceResources),
 		evidenceUpdates = resources.filter(isEvidenceUpdate),

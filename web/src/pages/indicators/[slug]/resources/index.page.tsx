@@ -10,19 +10,9 @@ import {
 	type ProductPageHeadingProps,
 } from "@/components/ProductPageHeading/ProductPageHeading";
 import { ResourceList } from "@/components/ResourceList/ResourceList";
-import {
-	getResourceDetail,
-	getResourceDetails,
-	isErrorResponse,
-	isSuccessResponse,
-} from "@/feeds/publications/publications";
-import { ProductGroup } from "@/feeds/publications/types";
-import {
-	getPublishedToolsAndResources,
-	validateRouteParams,
-} from "@/utils/product";
+import { getResourceDetails } from "@/feeds/publications/publications";
+import { validateRouteParams } from "@/utils/product";
 import { getResourceGroups, ResourceGroupViewModel } from "@/utils/resource";
-import { getProductPath } from "@/utils/url";
 
 export type IndicatorToolsAndResourcesPageProps = {
 	resourceGroups: ResourceGroupViewModel[];
@@ -92,17 +82,14 @@ export const getServerSideProps: GetServerSideProps<
 	if (!result.hasToolsAndResources) return { notFound: true };
 
 	const {
-			product,
-			hasToolsAndResources,
-			toolsAndResources,
-			hasInfoForPublicResources,
-			hasEvidenceResources,
-			hasHistory,
-		} = result,
-		productPath = getProductPath({
-			...product,
-			productGroup: ProductGroup.Other,
-		});
+		product,
+		productPath,
+		hasToolsAndResources,
+		toolsAndResources,
+		hasInfoForPublicResources,
+		hasEvidenceResources,
+		hasHistory,
+	} = result;
 
 	return {
 		props: {

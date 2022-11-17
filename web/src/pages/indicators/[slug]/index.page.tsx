@@ -171,6 +171,7 @@ export const getServerSideProps: GetServerSideProps<
 
 	const {
 			product,
+			productPath,
 			hasEvidenceResources,
 			hasInfoForPublicResources,
 			hasToolsAndResources,
@@ -178,10 +179,6 @@ export const getServerSideProps: GetServerSideProps<
 		} = result,
 		indicatorSubTypes = await getAllIndicatorSubTypes(),
 		chapters = getChapterLinks(product),
-		productPath = getProductPath({
-			...product,
-			productGroup: ProductGroup.Other,
-		}),
 		pdfDownloadPath = getPublicationPdfDownloadPath(
 			product,
 			ProductGroup.Other

@@ -124,23 +124,26 @@ export const getIndicatorSubType = async (
 	) || null;
 
 /**
- * Gets a product detail.
+ * Gets a full product detail response from publications from the given product id.
  *
+ * @returns The full product details, or `null` if the product can't be found
  */
 export const getProductDetail = async (
 	productId: string
-): Promise<ProductDetail | ErrorResponse> =>
-	//TODO don't cache error response
-	await getFeedBodyCached<ProductDetail | ErrorResponse>(
+): Promise<ProductDetail | null> =>
+	await getFeedBodyCached<ProductDetail | null>(
 		cacheKeyPrefix,
 		FeedPath.ProductDetail + productId,
 		longTTL,
-		async () =>
-			await getFeedBodyUnCached<ProductDetail | ErrorResponse>(
+		async () => {
+			const response = await getFeedBodyUnCached<ProductDetail | ErrorResponse>(
 				origin,
 				FeedPath.ProductDetail + productId,
 				apiKey
-			)
+			);
+
+			return isSuccessResponse(response) ? response : null;
+		}
 	);
 
 /**
@@ -208,6 +211,7 @@ export const getResourceDetails = async (
 		)
 	);
 
+	// We can't 100% guarantee all related resources always still exist so handle if some can't be found
 	const failedResources = fullResources
 		.filter((r) => r.resourceDetail === null)
 		.map((r) => r.relatedResource);

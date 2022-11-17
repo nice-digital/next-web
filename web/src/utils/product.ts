@@ -78,6 +78,7 @@ export type ValidateRouteParamsResult =
 	| { redirect: Redirect }
 	| {
 			product: ProductDetail;
+			productPath: string;
 			toolsAndResources: RelatedResource[];
 			hasToolsAndResources: boolean;
 			evidenceResources: RelatedResource[];
@@ -97,7 +98,7 @@ export const validateRouteParams = async (
 	const productId = params.slug.split("-")[0],
 		product = await getProductDetail(productId);
 
-	if (isErrorResponse(product)) return { notFound: true };
+	if (!product) return { notFound: true };
 
 	const expectedSlug = getProductSlug(product),
 		toolsAndResources = getPublishedToolsAndResources(product),
@@ -107,6 +108,10 @@ export const validateRouteParams = async (
 	if (params.slug === expectedSlug)
 		return {
 			product,
+			productPath: getProductPath({
+				...product,
+				productGroup: ProductGroup.Other,
+			}),
 			toolsAndResources,
 			hasToolsAndResources: toolsAndResources.length > 0,
 			evidenceResources,
