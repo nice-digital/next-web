@@ -36,7 +36,7 @@ export default function HistoryPage({
 								? panel.resources?.map((item, index) => {
 										return (
 											<li key={`${item.title}_${index}`}>
-												{item.title} {item.href}
+												<strong>{item.title}</strong> {item.href}
 											</li>
 										);
 								  })
