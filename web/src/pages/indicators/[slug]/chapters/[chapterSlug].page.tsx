@@ -9,6 +9,7 @@ import {
 	OnThisPage,
 	OnThisPageSection,
 } from "@/components/OnThisPage/OnThisPage";
+import { ProductHorizontalNav } from "@/components/ProductHorizontalNav/ProductHorizontalNav";
 import {
 	ProductPageHeading,
 	type ProductPageHeadingProps,
@@ -22,27 +23,38 @@ import {
 	ChapterHeading,
 	ProductGroup,
 } from "@/feeds/publications/publications";
+import { arrayify } from "@/utils/array";
 import { getChapterLinks, validateRouteParams } from "@/utils/product";
-import { getPublicationPdfDownloadPath } from "@/utils/url";
+import { getProductPath, getPublicationPdfDownloadPath } from "@/utils/url";
 
 import styles from "./[chapterSlug].page.module.scss";
 
 export type IndicatorChapterPageProps = {
+	productPath: string;
 	product: ProductPageHeadingProps["product"];
 	chapterHTML: string;
 	chapterTitle: string;
 	pdfDownloadPath: string | null;
 	chapters: ChapterHeading[];
 	chapterSections: OnThisPageSection[];
+	hasToolsAndResources: boolean;
+	hasInfoForPublicResources: boolean;
+	hasEvidenceResources: boolean;
+	hasHistory: boolean;
 };
 
 export default function IndicatorChapterPage({
+	productPath,
 	chapterHTML,
 	chapterTitle,
 	product,
 	pdfDownloadPath,
 	chapters,
 	chapterSections,
+	hasToolsAndResources,
+	hasInfoForPublicResources,
+	hasEvidenceResources,
+	hasHistory,
 }: IndicatorChapterPageProps): JSX.Element {
 	const hasOnThisPageMenu = chapterSections.length > 1;
 
@@ -64,6 +76,15 @@ export default function IndicatorChapterPage({
 			</Breadcrumbs>
 
 			<ProductPageHeading product={product} />
+
+			<ProductHorizontalNav
+				productTypeName="Indicator"
+				productPath={productPath}
+				hasToolsAndResources={hasToolsAndResources}
+				hasInfoForPublicResources={hasInfoForPublicResources}
+				hasEvidenceResources={hasEvidenceResources}
+				hasHistory={hasHistory}
+			/>
 
 			<Grid gutter="loose">
 				<GridItem
@@ -119,8 +140,18 @@ export const getServerSideProps: GetServerSideProps<
 
 	if ("notFound" in result || "redirect" in result) return result;
 
-	const { product } = result,
+	const {
+			product,
+			hasEvidenceResources,
+			hasInfoForPublicResources,
+			hasToolsAndResources,
+			hasHistory,
+		} = result,
 		chapters = getChapterLinks(product),
+		productPath = getProductPath({
+			...product,
+			productGroup: ProductGroup.Other,
+		}),
 		pdfDownloadPath = getPublicationPdfDownloadPath(
 			product,
 			ProductGroup.Other
@@ -136,10 +167,9 @@ export const getServerSideProps: GetServerSideProps<
 
 	if (!part) return { notFound: true };
 
-	const chapter =
-		part.embedded.htmlContent.embedded.htmlChapterContentInfo.find(
-			(c) => c.chapterSlug === params.chapterSlug
-		);
+	const chapter = arrayify(
+		part.embedded.htmlContent.embedded?.htmlChapterContentInfo
+	).find((c) => c.chapterSlug === params.chapterSlug);
 
 	if (!chapter) return { notFound: true };
 
@@ -166,6 +196,11 @@ export const getServerSideProps: GetServerSideProps<
 
 	return {
 		props: {
+			productPath,
+			hasEvidenceResources,
+			hasInfoForPublicResources,
+			hasToolsAndResources,
+			hasHistory,
 			product: {
 				// Don't bloat the serialized JSON with all the response data: just pick the fields we need
 				id,
