@@ -23,8 +23,6 @@ export default function HistoryPage({
 			<p>title: {project.title}</p>
 			<h3>Panels</h3>
 			{project.panels.map((panel, index) => {
-				console.log("this panel ", panel);
-
 				return (
 					<>
 						<hr />
@@ -34,6 +32,7 @@ export default function HistoryPage({
 							<li>fileType: {panel.fileType}</li>
 							<li>date: {panel.date}</li>
 							<li>fileSize: {panel.fileSize} </li>
+							<li>hrefs: {panel.hrefs} </li>
 						</ul>
 					</>
 				);
@@ -59,10 +58,26 @@ export const getServerSideProps: GetServerSideProps<
 	if (!project.embedded.niceIndevPanelList) return { notFound: true };
 
 	const panels = project.embedded.niceIndevPanelList.embedded.niceIndevPanel
-		.filter((panel) => panel.showPanel && panel.panelType == "History")
+		.filter(
+			(panel) => panel.showPanel && panel.panelType == "History"
+			//  &&
+			// panel.title == "Draft guidance consultation"
+		)
 		.map((panel) => {
 			const indevResource =
 				panel.embedded.niceIndevResourceList.embedded.niceIndevResource;
+
+			const hrefs = Array.isArray(
+				panel.embedded.niceIndevResourceList.embedded.niceIndevResource
+			)
+				? panel.embedded.niceIndevResourceList.embedded.niceIndevResource.map(
+						(resource) =>
+							resource?.embedded?.niceIndevFile?.links?.self[0]?.href
+				  )
+				: "";
+
+			console.log({ hrefs });
+
 			return {
 				title: panel.title,
 				date: indevResource.publishedDate,
@@ -72,6 +87,7 @@ export const getServerSideProps: GetServerSideProps<
 				link: indevResource.embedded?.niceIndevFile?.links?.self[0]?.href,
 				reference: indevResource.embedded?.niceIndevFile?.reference,
 				resourceTitleId: indevResource.embedded?.niceIndevFile.resourceTitleId,
+				hrefs,
 			};
 		});
 	// .map((panel) => ({ ...panel }));
