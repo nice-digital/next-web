@@ -1,9 +1,11 @@
+import { Breadcrumb } from "@nice-digital/nds-breadcrumbs";
 import { SortOrder, Document } from "@nice-digital/search-client";
 
+import { GuidanceListNav } from "@/components/ProductListNav/GuidanceListNav";
 import {
-	getGuidanceListPage,
+	getProductListPage,
 	getGetServerSidePropsFunc,
-} from "@/components/GuidanceListPage/GuidanceListPage";
+} from "@/components/ProductListPage/ProductListPage";
 
 const defaultSortOrder = SortOrder.titleAscending;
 
@@ -36,10 +38,16 @@ const tableBodyRender = (documents: Document[]) => (
 	</>
 );
 
-export default getGuidanceListPage({
+export default getProductListPage({
 	metaDescription:
 		"Find out which guidance and quality standards are awaiting development",
-	breadcrumb: "Awaiting development",
+	listNavType: GuidanceListNav,
+	breadcrumbTrail: [
+		<Breadcrumb to="/guidance" key="NICE guidance">
+			NICE guidance
+		</Breadcrumb>,
+	],
+	currentBreadcrumb: "Awaiting development",
 	preheading: "Guidance and quality standards ",
 	heading: "Awaiting development",
 	title: "Guidance and quality standards awaiting development",
@@ -54,4 +62,5 @@ export default getGuidanceListPage({
 export const getServerSideProps = getGetServerSidePropsFunc({
 	gstPreFilter: "Awaiting development",
 	defaultSortOrder,
+	index: "guidance",
 });

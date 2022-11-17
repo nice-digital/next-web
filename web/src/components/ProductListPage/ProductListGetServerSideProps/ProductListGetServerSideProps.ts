@@ -10,17 +10,15 @@ import {
 	SortOrder,
 	Modifier,
 	Navigator,
+	SearchIndex,
 } from "@nice-digital/search-client";
 
-import { getRedirectUrl } from "@/components/GuidanceListPage/redirects";
+import { getRedirectUrl } from "@/components/ProductListPage/redirects";
 import { publicRuntimeConfig } from "@/config";
 import { logger } from "@/logger";
 import { dateFormatShort } from "@/utils/datetime";
 
-import {
-	GuidanceListPageProps,
-	ActiveModifier,
-} from "../GuidanceListPageProps";
+import { ProductListPageProps, ActiveModifier } from "../ProductListPageProps";
 
 export const defaultPageSize = 10;
 
@@ -34,6 +32,7 @@ export interface GetGetServerSidePropsOptions {
 		| "Topic selection";
 	defaultSortOrder: SortOrder;
 	dateFilterLabel?: string;
+	index: SearchIndex;
 }
 
 export const getGetServerSidePropsFunc =
@@ -41,10 +40,11 @@ export const getGetServerSidePropsFunc =
 		gstPreFilter,
 		defaultSortOrder,
 		dateFilterLabel,
+		index,
 	}: GetGetServerSidePropsOptions) =>
 	async (
 		context: GetServerSidePropsContext
-	): Promise<GetServerSidePropsResult<GuidanceListPageProps>> => {
+	): Promise<GetServerSidePropsResult<ProductListPageProps>> => {
 		const redirectUrl = getRedirectUrl(context);
 
 		if (redirectUrl)
@@ -52,7 +52,7 @@ export const getGetServerSidePropsFunc =
 
 		initSearchClient({
 			baseURL: publicRuntimeConfig.search.baseURL,
-			index: "guidance",
+			index: index,
 		});
 
 		const searchUrl = getSearchUrl(context.resolvedUrl);
