@@ -1,23 +1,37 @@
 import { type GetServerSideProps } from "next/types";
 import React from "react";
 
-import {
-	getProjectDetail,
-	IndevFile,
-	IndevResource,
-	ProjectDetail,
-} from "@/feeds/inDev/inDev";
+import { getProjectDetail, ProjectDetail } from "@/feeds/inDev/inDev";
 import { isErrorResponse } from "@/feeds/publications/publications";
 import { validateRouteParams } from "@/utils/product";
+
+export type HistoryHtml = {
+	title: string;
+	href: string;
+};
+
+export type HistoryResource = {
+	title: string;
+	fileType: string;
+	fileName: string;
+	fileSize: string;
+	link: string;
+	reference: string;
+	resourceTitleId: string;
+	publishedDate: string;
+};
+
+export type History = HistoryHtml | HistoryResource;
 
 export type HistoryPageProps = {
 	inDevReference: string;
 	project: Pick<ProjectDetail, "reference" | "title"> & {
-		panels: Record<string, unknown>[];
+		// panels: Record<string, unknown>[];
 		// panels: {
 		// 	title: string;
 		// 	resources: IndevResource[] | IndevResource;
 		// }[];
+		panels: { title: string; resources: History[] | HistoryResource };
 	};
 };
 
@@ -32,23 +46,47 @@ export default function HistoryPage({
 			<p>title: {project.title}</p>
 			<h3>Panels</h3>
 			{project.panels.map((panel, index) => {
-				// console.log("RESOURCES ", panel.resources);
 				return (
 					<>
 						<hr />
 						<div>
 							<h3>{panel.title}</h3>
 							{Array.isArray(panel.resources) ? (
-								panel.resources?.map((item, index) => {
+								panel.resources.map((item, index) => {
 									return (
 										<p key={index}>
 											<strong>{item.title}</strong>
+											<br />
+											{item.href && `href: ${item.href}`}
+											<br />
+											{item.fileName && `fileName: ${item.fileName}`}
+											<br />
+											{item.fileSize && `fileSize: ${item.fileSize}`}
+											<br />
+											{item.fileType && `fileType: ${item.fileType}`}
+											<br />
+											{item.publishedDate &&
+												`publishedDate: ${item.publishedDate}`}
+											<br />
 										</p>
 									);
 								})
 							) : (
 								<>
-									<p>SINGLE OBJECT {panel.title}</p>
+									<p>{panel.title}</p>
+									{panel.resources.href && `href: ${panel.resources.href}`}
+									<br />
+									{panel.resources.fileName &&
+										`fileName: ${panel.resources.fileName}`}
+									<br />
+									{panel.resources.fileType &&
+										`fileType: ${panel.resources.fileType}`}
+									<br />
+									{panel.resources.fileSize &&
+										`fileSize: ${panel.resources.fileSize}`}
+									<br />
+									{panel.resources.publishedDate &&
+										`publishedDate: ${panel.resources.publishedDate}`}
 								</>
 							)}
 						</div>
@@ -80,6 +118,7 @@ export const getServerSideProps: GetServerSideProps<
 			(panel) => panel.showPanel && panel.panelType == "History"
 			// &&
 			// panel.title == "Draft guidance consultation"
+			// panel.title == "Consultation comments published"
 		)
 		.map((panel) => {
 			const indevResource =
@@ -87,6 +126,7 @@ export const getServerSideProps: GetServerSideProps<
 
 			const resources = Array.isArray(indevResource)
 				? indevResource.map((resource) => {
+						console.log({ resource });
 						const indevFile = resource.embedded?.niceIndevFile;
 
 						if (indevFile?.mimeType == "text/html") {
@@ -97,27 +137,29 @@ export const getServerSideProps: GetServerSideProps<
 						} else {
 							return {
 								title: resource.title,
-								filename: indevFile?.fileName,
+								fileName: indevFile?.fileName,
 								fileType: indevFile?.mimeType,
 								fileSize: indevFile?.length,
 								link: indevFile?.links?.self[0]?.href,
 								reference: indevFile?.reference,
 								resourceTitleId: indevFile?.resourceTitleId,
+								publishedDate: resource.publishedDate,
 							};
 						}
 				  })
 				: {
 						title: indevResource.title,
+						fileName: indevResource.embedded.niceIndevFile.fileName,
 						fileType: indevResource.embedded.niceIndevFile.mimeType,
-						filename: indevResource.embedded.niceIndevFile.fileName,
 						fileSize: indevResource.embedded.niceIndevFile.length,
 						link: indevResource.embedded.niceIndevFile.links.self[0]?.href,
 						reference: indevResource.embedded.niceIndevFile.reference,
 						resourceTitleId:
 							indevResource.embedded.niceIndevFile.resourceTitleId,
+						publishedDate: indevResource.publishedDate,
 				  };
 
-			console.log({ resources });
+			// console.log({ resources });
 
 			return {
 				title: panel.title,
