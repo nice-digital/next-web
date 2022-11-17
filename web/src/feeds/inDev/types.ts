@@ -240,7 +240,7 @@ export type IndevPanel = {
 				self: [Link];
 			};
 			embedded: {
-				niceIndevResource: IndevResource;
+				niceIndevResource: IndevResource | IndevResource[];
 			};
 			eTag: ETag;
 			hasResources: boolean;

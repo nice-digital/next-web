@@ -5,34 +5,24 @@ import { getProjectDetail, ProjectDetail } from "@/feeds/inDev/inDev";
 import { isErrorResponse } from "@/feeds/publications/publications";
 import { validateRouteParams } from "@/utils/product";
 
-export type HistoryHtml = {
-	title: string;
-	href: string;
-};
-
 export type HistoryResource = {
 	title: string;
-	textOnly: boolean;
-	fileType: string;
-	fileName: string;
-	fileSize: string;
-	link: string;
-	reference: string;
-	resourceTitleId: string;
-	publishedDate: string;
+	textOnly?: boolean;
+	fileType?: string;
+	fileName?: string;
+	fileSize?: string;
+	href: string;
+	reference?: string;
+	resourceTitleId?: string;
+	publishedDate?: string;
 };
 
-export type History = HistoryHtml | HistoryResource;
+export type HistoryPanel = { title: string; resources: HistoryResource[] };
 
 export type HistoryPageProps = {
 	inDevReference: string;
 	project: Pick<ProjectDetail, "reference" | "title"> & {
-		// panels: Record<string, unknown>[];
-		// panels: {
-		// 	title: string;
-		// 	resources: IndevResource[] | IndevResource;
-		// }[];
-		panels: { title: string; resources: History[] | HistoryResource };
+		panels: HistoryPanel[];
 	};
 };
 
@@ -52,51 +42,27 @@ export default function HistoryPage({
 						<hr />
 						<div>
 							<h3>{panel.title}</h3>
-							{Array.isArray(panel.resources) ? (
-								panel.resources.map((item, index) => {
-									return (
-										<p key={index}>
-											<strong>{item.title}</strong>
-											<br />
-
-											{item.href
-												? //Render link
-												  `href: ${item.href}`
-												: //Render file if not text only
-												  !item.textOnly && (
-														<>
-															filename: {item.fileName} <br />
-															fileType: {item.fileType} <br />
-															fileSize: {item.fileSize}
-															<br />
-														</>
-												  )}
-											{item.publishedDate &&
-												`publishedDate: ${item.publishedDate}`}
-											<br />
-										</p>
-									);
-								})
-							) : (
-								<>
-									<p>{panel.title}</p>
-									{panel.resources.href ? (
-										//Render link
-										`href: ${panel.resources.href}`
-									) : (
-										//Render file
-										<>
-											filename: {panel.resources.fileName} <br />
-											fileType: {panel.resources.fileType} <br />
-											fileSize: {panel.resources.fileSize}
-											<br />
-										</>
-									)}
-
-									{panel.resources.publishedDate &&
-										`publishedDate: ${panel.resources.publishedDate}`}
-								</>
-							)}
+							{panel.resources.map((item, index) => {
+								return (
+									<p key={index}>
+										<strong>{item.title}</strong>
+										<br />
+										href: {item.href}
+										{!item.textOnly && (
+											<>
+												<br />
+												filename: {item.fileName} <br />
+												fileType: {item.fileType} <br />
+												fileSize: {item.fileSize}
+												<br />
+											</>
+										)}
+										{item.publishedDate &&
+											`publishedDate: ${item.publishedDate}`}
+										<br />
+									</p>
+								);
+							})}
 						</div>
 					</>
 				);
@@ -122,54 +88,38 @@ export const getServerSideProps: GetServerSideProps<
 	if (!project.embedded.niceIndevPanelList) return { notFound: true };
 
 	const panels = project.embedded.niceIndevPanelList.embedded.niceIndevPanel
-		.filter(
-			(panel) => panel.showPanel && panel.panelType == "History"
-			// &&
-			// panel.title == "Draft guidance consultation"
-			// panel.title == "Consultation comments published"
-		)
+		.filter((panel) => panel.showPanel && panel.panelType == "History")
 		.map((panel) => {
 			const indevResource =
 				panel.embedded.niceIndevResourceList.embedded.niceIndevResource;
 
-			const resources = Array.isArray(indevResource)
-				? indevResource.map((resource) => {
-						// console.log({ resource });
-						const indevFile = resource.embedded?.niceIndevFile;
+			const indevResources = Array.isArray(indevResource)
+				? indevResource
+				: [indevResource];
+			const resources = indevResources.map((resource) => {
+				const indevFile = resource.embedded?.niceIndevFile;
 
-						if (indevFile?.mimeType == "text/html") {
-							return {
-								title: resource?.title,
-								href: indevFile?.links?.self[0]?.href,
-							};
-						} else {
-							return {
-								title: resource.title,
-								textOnly: resource.textOnly,
-								fileName: indevFile?.fileName,
-								fileType: indevFile?.mimeType,
-								fileSize: indevFile?.length,
-								link: indevFile?.links?.self[0]?.href,
-								reference: indevFile?.reference,
-								resourceTitleId: indevFile?.resourceTitleId,
-								publishedDate: resource.publishedDate,
-							};
-						}
-				  })
-				: {
-						title: indevResource.title,
-						textOnly: indevResource.textOnly,
-						fileName: indevResource.embedded.niceIndevFile.fileName,
-						fileType: indevResource.embedded.niceIndevFile.mimeType,
-						fileSize: indevResource.embedded.niceIndevFile.length,
-						link: indevResource.embedded.niceIndevFile.links.self[0]?.href,
-						reference: indevResource.embedded.niceIndevFile.reference,
-						resourceTitleId:
-							indevResource.embedded.niceIndevFile.resourceTitleId,
-						publishedDate: indevResource.publishedDate,
-				  };
+				if (!indevFile) {
+					return {
+						title: resource.title,
+						textOnly: resource.textOnly,
+						publishedDate: resource.publishedDate,
+						href: "",
+					};
+				}
 
-			// console.log({ resources });
+				return {
+					title: resource.title,
+					textOnly: resource.textOnly,
+					fileName: indevFile.fileName,
+					fileType: indevFile.mimeType,
+					fileSize: indevFile.length,
+					href: indevFile.links.self[0].href,
+					reference: indevFile.reference,
+					resourceTitleId: indevFile.resourceTitleId,
+					publishedDate: resource.publishedDate,
+				};
+			});
 
 			return {
 				title: panel.title,
@@ -183,7 +133,7 @@ export const getServerSideProps: GetServerSideProps<
 			project: {
 				reference,
 				title,
-				panels: JSON.parse(JSON.stringify(panels)),
+				panels,
 			},
 		},
 	};
