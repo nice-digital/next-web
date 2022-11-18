@@ -1,4 +1,8 @@
-import { ResourceType, type ResourceDetail } from "@/feeds/publications/types";
+import {
+	FileContent,
+	ResourceType,
+	type ResourceDetail,
+} from "@/feeds/publications/types";
 
 import { arrayify, byTitleAlphabetically } from "./array";
 import { getFileTypeNameFromMime } from "./file";
@@ -95,17 +99,17 @@ export const findContentPartLinks = (
 	return [
 		...arrayify(uploadAndConvertContentPart).map((part) => ({
 			title: part.title,
-			href: `resources/${slugify(part.title)}-${part.uid}`,
+			href: `resources/${slugify(part.title)}-${resource.uid}-${part.uid}`,
 		})),
 		...arrayify(editableContentPart).map((part) => ({
 			title: part.title,
-			href: `resources/${slugify(part.title)}-${part.uid}`,
+			href: `resources/${slugify(part.title)}-${resource.uid}-${part.uid}`,
 		})),
 		...arrayify(uploadContentPart).map((part) => ({
 			title: part.title,
-			href: `resources/downloads/${slugify(part.title)}-${part.uid}.${
-				part.embedded.file.fileName.split(".")[1]
-			}`,
+			href: `resources/downloads/${slugify(part.title)}-${resource.uid}-${
+				part.uid
+			}.${part.embedded.file.fileName.split(".")[1]}`,
 			fileSize: part.embedded.file.length,
 			fileTypeName: getFileTypeNameFromMime(part.embedded.file.mimeType),
 			date: resource.lastMajorModificationDate,
@@ -122,3 +126,32 @@ export const isEvidenceUpdate = (resource: ResourceDetail): boolean =>
 
 export const isSupportingEvidence = (resource: ResourceDetail): boolean =>
 	resource.resourceType !== ResourceType.EvidenceUpdate;
+
+export const findDownloadable = (
+	resource: ResourceDetail,
+	partUID: number
+): FileContent | null => {
+	if (!resource.embedded.contentPartList) return null;
+
+	const {
+		uploadAndConvertContentPart,
+		uploadContentPart,
+		editableContentPart,
+	} = resource.embedded.contentPartList.embedded;
+
+	const uploadPart = arrayify(uploadContentPart).find(
+		(p) => p.uid === Number(partUID)
+	);
+
+	if (uploadPart) return uploadPart.embedded.file;
+
+	const editablePart = arrayify(editableContentPart).find(
+		(p) => p.uid === Number(partUID)
+	);
+
+	if (editablePart) return editablePart.embedded.pdfFile || null;
+
+	// TODO: Look through upload and convert parts
+
+	return null;
+};

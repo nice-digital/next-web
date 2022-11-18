@@ -135,27 +135,22 @@ export default function IndicatorChapterPage({
 export const getServerSideProps: GetServerSideProps<
 	IndicatorChapterPageProps,
 	{ slug: string; chapterSlug: string }
-> = async ({ params, resolvedUrl }) => {
-	const result = await validateRouteParams(params, resolvedUrl);
+> = async ({ params, resolvedUrl, query }) => {
+	const result = await validateRouteParams({ params, resolvedUrl, query });
 
 	if ("notFound" in result || "redirect" in result) return result;
 
 	const {
 			product,
+			productPath,
+			pdfDownloadPath,
+			productType,
 			hasEvidenceResources,
 			hasInfoForPublicResources,
 			hasToolsAndResources,
 			hasHistory,
 		} = result,
-		chapters = getChapterLinks(product),
-		productPath = getProductPath({
-			...product,
-			productGroup: ProductGroup.Other,
-		}),
-		pdfDownloadPath = getPublicationPdfDownloadPath(
-			product,
-			ProductGroup.Other
-		);
+		chapters = getChapterLinks(product, productType.group);
 
 	if (!params || !product.embedded.contentPartList) return { notFound: true };
 
