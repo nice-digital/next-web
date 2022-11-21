@@ -1,74 +1,38 @@
 import { type GetServerSideProps } from "next/types";
 import React from "react";
 
+import { ResourceList } from "@/components/ResourceList/ResourceList";
 import { getProjectDetail, ProjectDetail } from "@/feeds/inDev/inDev";
 import { isErrorResponse } from "@/feeds/publications/publications";
 import { validateRouteParams } from "@/utils/product";
+import { ResourceGroupViewModel } from "@/utils/resource";
 
-export type HistoryResource = {
-	title: string;
-	textOnly?: boolean;
-	fileType?: string;
-	fileName?: string;
-	fileSize?: number;
-	href: string;
-	reference?: string;
-	resourceTitleId?: string;
-	publishedDate?: string;
-};
+// export type HistoryResource = {
+// 	title: string;
+// 	textOnly?: boolean;
+// 	fileType?: string;
+// 	fileName?: string;
+// 	fileSize?: number;
+// 	href: string;
+// 	reference?: string;
+// 	resourceTitleId?: string;
+// 	publishedDate?: string;
+// };
 
-export type HistoryPanel = { title: string; resources: HistoryResource[] };
+// export type HistoryPanel = { title: string; resources: HistoryResource[] };
 
 export type HistoryPageProps = {
-	inDevReference: string;
 	project: Pick<ProjectDetail, "reference" | "title"> & {
-		panels: HistoryPanel[];
+		// panels: HistoryPanel[];
+		groups: ResourceGroupViewModel[];
 	};
 };
 
 export default function HistoryPage({
-	inDevReference,
 	project,
-}: HistoryPageProps): JSX.Element {
-	return (
-		<>
-			<h2>Indicators history</h2>
-			<p>inDevReference: {inDevReference}</p>
-			<p>title: {project.title}</p>
-			<h3>Panels</h3>
-			{project.panels.map((panel, index) => {
-				return (
-					<>
-						<hr />
-						<div>
-							<h3>{panel.title}</h3>
-							{panel.resources.map((item, index) => {
-								return (
-									<p key={index}>
-										<strong>{item.title}</strong>
-										<br />
-										href: {item.href}
-										{!item.textOnly && (
-											<>
-												<br />
-												filename: {item.fileName} <br />
-												fileType: {item.fileType} <br />
-												fileSize: {item.fileSize}
-												<br />
-											</>
-										)}
-										{item.publishedDate &&
-											`publishedDate: ${item.publishedDate}`}
-										<br />
-									</p>
-								);
-							})}
-						</div>
-					</>
-				);
-			})}
-		</>
-	);
+}: // groups,
+HistoryPageProps): JSX.Element {
+	return <ResourceList groups={project.groups} />;
 }
 
 export const getServerSideProps: GetServerSideProps<
@@ -87,7 +51,7 @@ export const getServerSideProps: GetServerSideProps<
 
 	if (!project.embedded.niceIndevPanelList) return { notFound: true };
 
-	const panels = project.embedded.niceIndevPanelList.embedded.niceIndevPanel
+	const groups = project.embedded.niceIndevPanelList.embedded.niceIndevPanel
 		.filter((panel) => panel.showPanel && panel.panelType == "History")
 		.map((panel) => {
 			const indevResource =
@@ -96,34 +60,30 @@ export const getServerSideProps: GetServerSideProps<
 			const indevResources = Array.isArray(indevResource)
 				? indevResource
 				: [indevResource];
-			const resources = indevResources.map((resource) => {
-				const indevFile = resource.embedded?.niceIndevFile;
 
-				if (!indevFile) {
+			const subGroups = indevResources.map((resource) => {
+				const resourceLinks = resource.embedded;
+
+				if (resourceLinks) {
 					return {
 						title: resource.title,
-						textOnly: resource.textOnly,
-						publishedDate: resource.publishedDate,
-						href: "",
+						resourceLinks: [
+							{
+								title: resource.title,
+								href: resourceLinks.niceIndevFile.links.self[0].href,
+								fileTypeName: resourceLinks.niceIndevFile.mimeType,
+								fileSize: resourceLinks.niceIndevFile.length,
+								date: resource.publishedDate,
+							},
+						],
 					};
 				}
-
-				return {
-					title: resource.title,
-					textOnly: resource.textOnly,
-					fileName: indevFile.fileName,
-					fileType: indevFile.mimeType,
-					fileSize: indevFile.length,
-					href: indevFile.links.self[0].href,
-					reference: indevFile.reference,
-					resourceTitleId: indevFile.resourceTitleId,
-					publishedDate: resource.publishedDate,
-				};
+				return { title: resource.title, resourceLinks: [] };
 			});
 
 			return {
 				title: panel.title,
-				resources,
+				subGroups,
 			};
 		});
 
@@ -133,7 +93,8 @@ export const getServerSideProps: GetServerSideProps<
 			project: {
 				reference,
 				title,
-				panels,
+				// panels,
+				groups,
 			},
 		},
 	};
