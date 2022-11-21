@@ -23,7 +23,6 @@ import { ResourceGroupViewModel } from "@/utils/resource";
 
 export type HistoryPageProps = {
 	project: Pick<ProjectDetail, "reference" | "title"> & {
-		// panels: HistoryPanel[];
 		groups: ResourceGroupViewModel[];
 	};
 };
@@ -93,7 +92,6 @@ export const getServerSideProps: GetServerSideProps<
 			project: {
 				reference,
 				title,
-				// panels,
 				groups,
 			},
 		},
