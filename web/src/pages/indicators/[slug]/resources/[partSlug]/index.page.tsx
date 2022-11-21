@@ -1,4 +1,4 @@
-import { GetServerSideProps } from "next";
+import { type GetServerSideProps } from "next";
 import { NextSeo } from "next-seo";
 
 import { Breadcrumbs, Breadcrumb } from "@nice-digital/nds-breadcrumbs";
@@ -9,18 +9,13 @@ import {
 	ProductPageHeading,
 	type ProductPageHeadingProps,
 } from "@/components/ProductPageHeading/ProductPageHeading";
-import { ResourceList } from "@/components/ResourceList/ResourceList";
-import { getResourceDetails } from "@/feeds/publications/publications";
 import { validateRouteParams } from "@/utils/product";
-import {
-	getResourceGroup,
-	isEvidenceUpdate,
-	isSupportingEvidence,
-	ResourceGroupViewModel,
-} from "@/utils/resource";
 
-export type IndicatorEvidencePageProps = {
-	resourceGroups: ResourceGroupViewModel[];
+// Resource download links are in the form "IND123-some-title-123-456.xls"
+const resourcePathRegex =
+	/^(?<partTitleSlug>.*)-(?<resourceUID>\d+)-(?<partUID>\d+)$/;
+
+export type ResourcePartPageProps = {
 	productPath: string;
 	product: ProductPageHeadingProps["product"];
 	hasToolsAndResources: boolean;
@@ -30,18 +25,17 @@ export type IndicatorEvidencePageProps = {
 };
 
 export default function ({
-	resourceGroups,
 	productPath,
 	product,
 	hasToolsAndResources,
 	hasInfoForPublicResources,
 	hasEvidenceResources,
 	hasHistory,
-}: IndicatorEvidencePageProps): JSX.Element {
+}: ResourcePartPageProps): JSX.Element {
 	return (
 		<>
 			<NextSeo
-				title={`Evidence | ${product.id} | Indicators | Standards and Indicators`}
+				title={`Tools and resources | ${product.id} | Indicators | Standards and Indicators`}
 			/>
 
 			<Breadcrumbs>
@@ -55,7 +49,10 @@ export default function ({
 				<Breadcrumb to={productPath} elementType={Link}>
 					{product.id}
 				</Breadcrumb>
-				<Breadcrumb>Evidence</Breadcrumb>
+				<Breadcrumb to={productPath + "/resources"} elementType={Link}>
+					Tools and resources
+				</Breadcrumb>
+				<Breadcrumb>TODO</Breadcrumb>
 			</Breadcrumbs>
 
 			<ProductPageHeading product={product} />
@@ -69,53 +66,38 @@ export default function ({
 				hasHistory={hasHistory}
 			/>
 
-			<h2>Evidence</h2>
-
-			<ResourceList groups={resourceGroups} />
+			<h2>TODO</h2>
 		</>
 	);
 }
 
 export const getServerSideProps: GetServerSideProps<
-	IndicatorEvidencePageProps,
+	ResourcePartPageProps,
 	{ slug: string }
 > = async ({ params, resolvedUrl, query }) => {
 	const result = await validateRouteParams({ params, resolvedUrl, query });
 
 	if ("notFound" in result || "redirect" in result) return result;
 
+	if (!result.hasToolsAndResources) return { notFound: true };
+
 	const {
 		product,
 		productPath,
-		hasEvidenceResources,
-		hasInfoForPublicResources,
 		hasToolsAndResources,
-		evidenceResources,
+		toolsAndResources,
+		hasInfoForPublicResources,
+		hasEvidenceResources,
 		hasHistory,
 	} = result;
 
-	const resources = await getResourceDetails(evidenceResources),
-		evidenceUpdates = resources.filter(isEvidenceUpdate),
-		supportingEvidence = resources.filter(isSupportingEvidence);
-
-	const resourceGroups: ResourceGroupViewModel[] = [];
-
-	if (evidenceUpdates.length)
-		resourceGroups.push(getResourceGroup("Evidence updates", evidenceUpdates));
-
-	if (supportingEvidence.length)
-		resourceGroups.push(
-			getResourceGroup("Supporting evidence", supportingEvidence)
-		);
-
-	if (!resourceGroups.length) return { notFound: true };
+	// TODO: parse path, find resources (editable/upload and convert)
 
 	return {
 		props: {
-			resourceGroups,
-			hasEvidenceResources,
-			hasInfoForPublicResources,
 			hasToolsAndResources,
+			hasInfoForPublicResources,
+			hasEvidenceResources,
 			hasHistory,
 			productPath,
 			product: {

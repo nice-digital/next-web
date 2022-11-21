@@ -75,8 +75,6 @@ export const getServerSideProps: GetServerSideProps<
 	IndicatorToolsAndResourcesPageProps,
 	{ slug: string }
 > = async ({ params, resolvedUrl, query }) => {
-	//console.log({ url: req.url });
-
 	const result = await validateRouteParams({ params, resolvedUrl, query });
 
 	if ("notFound" in result || "redirect" in result) return result;

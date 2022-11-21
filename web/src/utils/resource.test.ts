@@ -1,4 +1,10 @@
-import { type ResourceDetail, ResourceType } from "@/feeds/publications/types";
+import {
+	type ResourceDetail,
+	ResourceType,
+	ProductAndResourceBase,
+	FileContent,
+	UploadAndConvertContentPart,
+} from "@/feeds/publications/types";
 
 import {
 	isEvidenceUpdate,
@@ -6,6 +12,7 @@ import {
 	findContentPartLinks,
 	getResourceGroup,
 	getResourceGroups,
+	findDownloadable,
 } from "./resource";
 
 describe("resource utils", () => {
@@ -24,9 +31,10 @@ describe("resource utils", () => {
 								},
 							},
 						},
+						uid: 99,
 					} as ResourceDetail)
 				).toStrictEqual([
-					{ href: "resources/test-title-123", title: "Test title" },
+					{ href: "resources/test-title-99-123", title: "Test title" },
 				]);
 			});
 
@@ -49,10 +57,11 @@ describe("resource utils", () => {
 								},
 							},
 						},
+						uid: 99,
 					} as ResourceDetail)
 				).toStrictEqual([
-					{ href: "resources/part-1-123", title: "Part 1" },
-					{ href: "resources/part-2-456", title: "Part 2" },
+					{ href: "resources/part-1-99-123", title: "Part 1" },
+					{ href: "resources/part-2-99-456", title: "Part 2" },
 				]);
 			});
 		});
@@ -116,9 +125,10 @@ describe("resource utils", () => {
 								},
 							},
 						},
+						uid: 99,
 					} as ResourceDetail)
 				).toStrictEqual([
-					{ href: "resources/test-title-123", title: "Test title" },
+					{ href: "resources/test-title-99-123", title: "Test title" },
 				]);
 			});
 
@@ -141,10 +151,11 @@ describe("resource utils", () => {
 								},
 							},
 						},
+						uid: 99,
 					} as ResourceDetail)
 				).toStrictEqual([
-					{ href: "resources/part-1-123", title: "Part 1" },
-					{ href: "resources/part-2-456", title: "Part 2" },
+					{ href: "resources/part-1-99-123", title: "Part 1" },
+					{ href: "resources/part-2-99-456", title: "Part 2" },
 				]);
 			});
 		});
@@ -171,10 +182,11 @@ describe("resource utils", () => {
 							},
 						},
 						lastMajorModificationDate: "2017-05-10T00:00:00",
+						uid: 99,
 					} as ResourceDetail)
 				).toStrictEqual([
 					{
-						href: "resources/downloads/test-title-123.xls",
+						href: "resources/downloads/test-title-99-123.xls",
 						title: "Test title",
 						date: "2017-05-10T00:00:00",
 						fileTypeName: "Excel",
@@ -217,17 +229,18 @@ describe("resource utils", () => {
 							},
 						},
 						lastMajorModificationDate: "2017-05-10T00:00:00",
+						uid: 99,
 					} as ResourceDetail)
 				).toStrictEqual([
 					{
-						href: "resources/downloads/part-1-123.xls",
+						href: "resources/downloads/part-1-99-123.xls",
 						title: "Part 1",
 						date: "2017-05-10T00:00:00",
 						fileTypeName: "Excel",
 						fileSize: 1357,
 					},
 					{
-						href: "resources/downloads/part-2-456.pdf",
+						href: "resources/downloads/part-2-99-456.pdf",
 						title: "Part 2",
 						date: "2017-05-10T00:00:00",
 						fileTypeName: "PDF",
@@ -454,6 +467,184 @@ describe("resource utils", () => {
 					],
 				},
 			]);
+		});
+	});
+
+	describe("findDownloadable", () => {
+		describe("no content parts", () => {
+			it("should return null when there are is no content part list", () => {
+				expect(
+					findDownloadable(
+						{
+							embedded: {},
+						} as ProductAndResourceBase,
+						123
+					)
+				).toBeNull();
+			});
+
+			it("should return null when there are no content parts", () => {
+				expect(
+					findDownloadable(
+						{
+							embedded: {
+								contentPartList: {
+									embedded: {},
+								},
+							},
+						} as ProductAndResourceBase,
+						123
+					)
+				).toBeNull();
+			});
+		});
+
+		describe("upload part", () => {
+			it("should return null when no matching upload part", () => {
+				expect(
+					findDownloadable(
+						{
+							embedded: {
+								contentPartList: {
+									embedded: {
+										uploadContentPart: {
+											uid: 987,
+										},
+									},
+								},
+							},
+						} as ProductAndResourceBase,
+						123
+					)
+				).toBeNull();
+			});
+
+			it("should return upload part file with matching part id", () => {
+				const file = {
+					fileName: "test.pdf",
+				} as FileContent;
+				const part = {
+					embedded: {
+						file,
+					},
+					uid: 123,
+				};
+				expect(
+					findDownloadable(
+						{
+							embedded: {
+								contentPartList: {
+									embedded: {
+										uploadContentPart: part,
+									},
+								},
+							},
+						} as ProductAndResourceBase,
+						123
+					)
+				).toStrictEqual({ file, part });
+			});
+		});
+
+		describe("editable content part", () => {
+			it("should return null when no matching editable part", () => {
+				expect(
+					findDownloadable(
+						{
+							embedded: {
+								contentPartList: {
+									embedded: {
+										editableContentPart: {
+											uid: 987,
+										},
+									},
+								},
+							},
+						} as ProductAndResourceBase,
+						123
+					)
+				).toBeNull();
+			});
+
+			it("should return editable part file with matching part id", () => {
+				const pdfFile = {
+					fileName: "test.pdf",
+				} as FileContent;
+				const part = {
+					embedded: {
+						pdfFile,
+					},
+					uid: 123,
+				};
+				expect(
+					findDownloadable(
+						{
+							embedded: {
+								contentPartList: {
+									embedded: {
+										editableContentPart: part,
+									},
+								},
+							},
+						} as ProductAndResourceBase,
+						123
+					)
+				).toStrictEqual({ file: pdfFile, part });
+			});
+		});
+
+		describe("upload and convert content part", () => {
+			it("should return null when no matching convert part", () => {
+				expect(
+					findDownloadable(
+						{
+							embedded: {
+								contentPartList: {
+									embedded: {
+										uploadAndConvertContentPart: {
+											uid: 987,
+										},
+									},
+								},
+							},
+						} as ProductAndResourceBase,
+						123
+					)
+				).toBeNull();
+			});
+
+			it.each<[string, "pdfFile" | "mobiFile" | "epubFile"]>([
+				["pdf", "pdfFile"],
+				["mobi", "mobiFile"],
+				["epub", "epubFile"],
+			])(
+				"should return convert part %file file with matching part id",
+				(extension, filePropertyName) => {
+					const file = {
+						fileName: `test.${extension}`,
+					} as FileContent;
+					const part = {
+						embedded: {
+							[filePropertyName]: file,
+						} as unknown as UploadAndConvertContentPart["embedded"],
+						uid: 123,
+					};
+					expect(
+						findDownloadable(
+							{
+								embedded: {
+									contentPartList: {
+										embedded: {
+											uploadAndConvertContentPart: part,
+										},
+									},
+								},
+							} as ProductAndResourceBase,
+							123
+						)
+					).toStrictEqual({ file, part });
+				}
+			);
 		});
 	});
 });

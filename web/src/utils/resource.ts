@@ -1,5 +1,7 @@
 import {
+	BaseContentPart,
 	FileContent,
+	ProductAndResourceBase,
 	ResourceType,
 	type ResourceDetail,
 } from "@/feeds/publications/types";
@@ -109,7 +111,7 @@ export const findContentPartLinks = (
 			title: part.title,
 			href: `resources/downloads/${slugify(part.title)}-${resource.uid}-${
 				part.uid
-			}.${part.embedded.file.fileName.split(".")[1]}`,
+			}.${part.embedded.file.fileName.split(".").slice(-1)[0]}`,
 			fileSize: part.embedded.file.length,
 			fileTypeName: getFileTypeNameFromMime(part.embedded.file.mimeType),
 			date: resource.lastMajorModificationDate,
@@ -127,10 +129,23 @@ export const isEvidenceUpdate = (resource: ResourceDetail): boolean =>
 export const isSupportingEvidence = (resource: ResourceDetail): boolean =>
 	resource.resourceType !== ResourceType.EvidenceUpdate;
 
+/**
+ * Looks for a 'downloadable' with the given extension within the content part list of the given resource.
+ *
+ * A 'downlable' being either:
+ * - an upload part
+ * - PDF version of an editable content part
+ * - PDF (or mobi/epub) from an upload and convert content part
+ *
+ * @param resource The resource in which to look for downloadables
+ * @param partUID The numeric UID of the content part part
+ *
+ * @returns The file to download, if there is one, otherwise null
+ */
 export const findDownloadable = (
-	resource: ResourceDetail,
+	resource: ProductAndResourceBase,
 	partUID: number
-): FileContent | null => {
+): { file: FileContent; part: BaseContentPart } | null => {
 	if (!resource.embedded.contentPartList) return null;
 
 	const {
@@ -139,19 +154,35 @@ export const findDownloadable = (
 		editableContentPart,
 	} = resource.embedded.contentPartList.embedded;
 
+	const checkFile = (
+		file: FileContent | undefined | null,
+		part: BaseContentPart
+	): { file: FileContent; part: BaseContentPart } | null =>
+		file ? { file, part } : null;
+
 	const uploadPart = arrayify(uploadContentPart).find(
 		(p) => p.uid === Number(partUID)
 	);
-
-	if (uploadPart) return uploadPart.embedded.file;
+	if (uploadPart) return checkFile(uploadPart.embedded.file, uploadPart);
 
 	const editablePart = arrayify(editableContentPart).find(
 		(p) => p.uid === Number(partUID)
 	);
+	if (editablePart)
+		return checkFile(editablePart.embedded.pdfFile, editablePart);
 
-	if (editablePart) return editablePart.embedded.pdfFile || null;
+	const convertPart = arrayify(uploadAndConvertContentPart).find(
+		(p) => p.uid === Number(partUID)
+	);
+	if (!convertPart) return null;
 
-	// TODO: Look through upload and convert parts
+	const { pdfFile, epubFile, mobiFile } = convertPart.embedded;
+
+	if (pdfFile) return checkFile(pdfFile, convertPart);
+
+	if (epubFile) return checkFile(epubFile, convertPart);
+
+	if (mobiFile) return checkFile(mobiFile, convertPart);
 
 	return null;
 };

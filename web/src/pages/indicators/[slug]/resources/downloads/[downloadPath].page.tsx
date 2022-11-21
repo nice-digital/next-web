@@ -8,17 +8,20 @@ import { logger } from "@/logger";
 import { validateRouteParams } from "@/utils/product";
 import { findDownloadable } from "@/utils/resource";
 import { getServerSideFile } from "@/utils/response";
+import { slugify } from "@/utils/url";
 
-// Resource download links are in the form "some-title-123-456.xls"
+// Resource download links are in the form "IND123-some-title-123-456.xls"
 const resourceDownloadPathRegex =
-	/^(?<titleSlug>.*)-(?<resourceUID>\d+)-(?<partUID>\d+).(?<extension>.*)$/;
+	/^(?<productID>[A-Za-z]+\d+)-(?<partTitleSlug>.*)-(?<resourceUID>\d+)-(?<partUID>\d+)\.(?<extension>[^.]+)$/;
+
+export type Params = {
+	slug: string;
+	downloadPath: string;
+};
 
 export const getServerSideProps: GetServerSideProps<
 	Record<string, never>,
-	{
-		slug: string;
-		downloadPath: string;
-	}
+	Params
 > = async ({ res, params, resolvedUrl, query }) => {
 	if (!params || !params.downloadPath) return { notFound: true };
 
@@ -44,8 +47,16 @@ export const getServerSideProps: GetServerSideProps<
 		return { notFound: true };
 	}
 
-	const { titleSlug, resourceUID, partUID, extension } = match.groups,
+	const { productID, partTitleSlug, resourceUID, partUID, extension } =
+			match.groups,
 		resource = toolsAndResources.find(({ uid }) => uid === Number(resourceUID));
+
+	if (productID.toLowerCase() !== product.id.toLowerCase()) {
+		logger.info(
+			`Resource with UID ${resourceUID} belongs to product ${product.id} but URL was for product ${productID}`
+		);
+		return { notFound: true };
+	}
 
 	if (!resource) {
 		logger.info(
@@ -58,21 +69,51 @@ export const getServerSideProps: GetServerSideProps<
 
 	if (!fullResource) return { notFound: true };
 
-	const file = findDownloadable(fullResource, Number(partUID));
+	const downloadable = findDownloadable(fullResource, Number(partUID));
 
-	if (file) {
-		const { mimeType, links } = file;
-
-		// TODO redirects, check extension and title
-
-		return getServerSideFile(
-			await getFileStream(links.self[0].href),
-			res,
-			mimeType
+	if (!downloadable) {
+		logger.info(
+			`Could not find downloadable part with id ${partUID} in resource ${fullResource.uid} and product ${product.id}`
 		);
+		return { notFound: true };
 	}
 
-	return { notFound: true };
+	const {
+		part,
+		file: { mimeType, links, fileName },
+	} = downloadable;
+
+	// Check the file extension matches
+	const expectedExtension = fileName.split(".").slice(-1)[0].toLowerCase();
+	if (expectedExtension.toLowerCase() !== extension.toLowerCase()) {
+		logger.info(
+			`Found incorrect extension of ${extension} in part ${part.title} (${part.uid}) in product ${product.id}. Expected extension of ${expectedExtension}`
+		);
+		return { notFound: true };
+	}
+
+	// Check the title matches. If it doesn't, we know enough to be able to redirect to the correct place
+	const expectedPartTitleSlug = slugify(part.title);
+	if (partTitleSlug !== expectedPartTitleSlug) {
+		logger.info(
+			`Redirecting from title slug of ${partTitleSlug} to ${expectedPartTitleSlug}`
+		);
+
+		return {
+			redirect: {
+				destination: resolvedUrl.replace(partTitleSlug, expectedPartTitleSlug),
+				permanent: true,
+			},
+		};
+	}
+
+	console.log(links.self[0].href);
+
+	return getServerSideFile(
+		await getFileStream(links.self[0].href),
+		res,
+		mimeType
+	);
 };
 
 export default function ResourceDownload(): void {
