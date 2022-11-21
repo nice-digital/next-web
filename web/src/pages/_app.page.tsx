@@ -4,7 +4,13 @@ import { DefaultSeo } from "next-seo";
 import App, { AppProps, NextWebVitalsMetric } from "next/app";
 
 import "@nice-digital/design-system/scss/base.scss";
-import { Header, HeaderProps, Footer } from "@nice-digital/global-nav";
+import {
+	Header,
+	HeaderProps,
+	Footer,
+	Main,
+	type Service,
+} from "@nice-digital/global-nav";
 import { Container } from "@nice-digital/nds-container";
 
 import { ErrorPageContent } from "@/components/ErrorPageContent/ErrorPageContent";
@@ -16,6 +22,8 @@ import { publicRuntimeConfig } from "@/config";
 
 import "@nice-digital/nds-table/scss/table.scss";
 import "@nice-digital/nds-panel/scss/panel.scss";
+
+import "./_app.page.scss";
 
 interface AppState {
 	/**
@@ -125,11 +133,21 @@ class NextWebApp extends App<{}, {}, AppState> {
 		};
 
 		const {
-				Component,
-				pageProps,
-				router: { pathname },
-			} = this.props,
-			service = pathname.indexOf("/guidance") === 0 ? "guidance" : undefined;
+			Component,
+			pageProps,
+			router: { pathname },
+		} = this.props;
+
+		let service: Service | undefined = undefined;
+
+		if (pathname.indexOf("/guidance") == 0) {
+			service = "guidance";
+		} else if (
+			pathname.indexOf("/standards-indicators") == 0 ||
+			pathname.indexOf("/indicators") == 0
+		) {
+			service = "standards-and-indicators";
+		}
 
 		if (this.state.hasError)
 			return (
@@ -138,11 +156,11 @@ class NextWebApp extends App<{}, {}, AppState> {
 					<div ref={this.globalNavWrapperRef}>
 						<Header {...headerProps} service={service} />
 					</div>
-					<main>
+					<Main>
 						<Container>
 							<ErrorPageContent />
 						</Container>
-					</main>
+					</Main>
 					<AppFooter />
 				</>
 			);
@@ -153,11 +171,11 @@ class NextWebApp extends App<{}, {}, AppState> {
 				<div ref={this.globalNavWrapperRef}>
 					<Header {...headerProps} service={service} />
 				</div>
-				<main>
+				<Main>
 					<Container>
 						<Component {...pageProps} />
 					</Container>
-				</main>
+				</Main>
 				<AppFooter />
 			</>
 		);
