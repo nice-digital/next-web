@@ -15,6 +15,8 @@ import {
 	ProductLite,
 	ProductType,
 	ProductTypeList,
+	ResourceDetail,
+	RelatedResource,
 } from "./types";
 
 export * from "./types";
@@ -122,23 +124,26 @@ export const getIndicatorSubType = async (
 	) || null;
 
 /**
- * Gets a product detail.
+ * Gets a full product detail response from publications from the given product id.
  *
+ * @returns The full product details, or `null` if the product can't be found
  */
 export const getProductDetail = async (
 	productId: string
-): Promise<ProductDetail | ErrorResponse> =>
-	//TODO don't cache error response
-	await getFeedBodyCached<ProductDetail | ErrorResponse>(
+): Promise<ProductDetail | null> =>
+	await getFeedBodyCached<ProductDetail | null>(
 		cacheKeyPrefix,
 		FeedPath.ProductDetail + productId,
 		longTTL,
-		async () =>
-			await getFeedBodyUnCached<ProductDetail | ErrorResponse>(
+		async () => {
+			const response = await getFeedBodyUnCached<ProductDetail | ErrorResponse>(
 				origin,
 				FeedPath.ProductDetail + productId,
 				apiKey
-			)
+			);
+
+			return isSuccessResponse(response) ? response : null;
+		}
 	);
 
 /**
@@ -153,6 +158,72 @@ export const getChapterContent = async (
 		chapterHref,
 		apiKey
 	);
+};
+
+/**
+ * Fetches a full resource response from publications.
+ *
+ * Returns null if the resource can't be found.
+ *
+ * @param resource The related resource, or null if the resource can't be found
+ */
+export const getResourceDetail = async (
+	resource: RelatedResource
+): Promise<ResourceDetail | null> => {
+	const { href } = resource.links.relatedResourceUri[0];
+
+	return getFeedBodyCached<ResourceDetail | null>(
+		cacheKeyPrefix,
+		href,
+		defaultTTL,
+		async () => {
+			const response = await getFeedBodyUnCached<
+				ResourceDetail | ErrorResponse
+			>(origin, href, apiKey);
+
+			return isSuccessResponse(response) ? response : null;
+		}
+	);
+};
+
+/**
+ * Fetches full resources responses from publications for each of the given resources.
+ *
+ * It will throw an error if any of the resources can't be found
+ */
+export const getResourceDetails = async (
+	resources: RelatedResource[]
+): Promise<ResourceDetail[]> => {
+	const fullResources = await Promise.all(
+		resources.map(
+			(relatedResource) =>
+				new Promise<{
+					relatedResource: RelatedResource;
+					resourceDetail: ResourceDetail | null;
+				}>((resolve) => {
+					getResourceDetail(relatedResource).then((resourceDetail) => {
+						resolve({
+							relatedResource,
+							resourceDetail,
+						});
+					});
+				})
+		)
+	);
+
+	// We can't 100% guarantee all related resources always still exist so handle if some can't be found
+	const failedResources = fullResources
+		.filter((r) => r.resourceDetail === null)
+		.map((r) => r.relatedResource);
+
+	if (failedResources.length)
+		throw Error(
+			`Could not load resources ${failedResources.map((r) => r.uid)}`
+		);
+
+	return fullResources
+		.map((r) => r.resourceDetail)
+		.filter((r): r is ResourceDetail => r !== null);
 };
 
 /**
@@ -176,4 +247,17 @@ export function isErrorResponse<TValidResponse>(
 	response: TValidResponse | ErrorResponse
 ): response is ErrorResponse {
 	return (response as ErrorResponse).statusCode !== undefined;
+}
+
+/**
+ * A user-defined type guard for checking whether a given response is not an error.
+ * The opposite of `isErrorResponse`
+ *
+ * @param response The response
+ * @returns True if this is an error response otherwise false
+ */
+export function isSuccessResponse<TValidResponse>(
+	response: TValidResponse | ErrorResponse
+): response is TValidResponse {
+	return (response as ErrorResponse).statusCode === undefined;
 }

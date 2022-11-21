@@ -11,7 +11,7 @@ export interface ActiveModifier {
 	toggleUrl: string;
 }
 
-export interface GuidanceListFilterSummaryProps {
+export interface ProductListFilterSummaryProps {
 	results: SearchResultsSuccess;
 	activeModifiers: ActiveModifier[];
 	currentSortOrder?: string;
@@ -25,7 +25,7 @@ export interface GuidanceListFilterSummaryProps {
 	};
 }
 
-export const GuidanceListFilterSummary: FC<GuidanceListFilterSummaryProps> = ({
+export const ProductListFilterSummary: FC<ProductListFilterSummaryProps> = ({
 	results: { firstResult, lastResult, resultCount },
 	activeModifiers,
 	currentSortOrder,

@@ -1,9 +1,11 @@
+import { Breadcrumb } from "@nice-digital/nds-breadcrumbs";
 import { SortOrder, Document } from "@nice-digital/search-client";
 
+import { GuidanceListNav } from "@/components/ProductListNav/GuidanceListNav";
 import {
-	getGuidanceListPage,
+	getProductListPage,
 	getGetServerSidePropsFunc,
-} from "@/components/GuidanceListPage/GuidanceListPage";
+} from "@/components/ProductListPage/ProductListPage";
 import { ResponsiveDate } from "@/components/ResponsiveDate/ResponsiveDate";
 
 const defaultSortOrder = SortOrder.dateAscending,
@@ -53,10 +55,16 @@ const tableBodyRender = (documents: Document[]) => (
 	</>
 );
 
-export default getGuidanceListPage({
+export default getProductListPage({
 	metaDescription:
 		"See a complete list of all our guidance and quality standards currently open for consultation",
-	breadcrumb: "In consultation",
+	listNavType: GuidanceListNav,
+	breadcrumbTrail: [
+		<Breadcrumb to="/guidance" key="NICE guidance">
+			NICE guidance
+		</Breadcrumb>,
+	],
+	currentBreadcrumb: "In consultation",
 	preheading: "Guidance and quality standards ",
 	heading: "In consultation",
 	title: "Guidance and quality standards in consultation",
@@ -78,4 +86,5 @@ export const getServerSideProps = getGetServerSidePropsFunc({
 	gstPreFilter: "In consultation",
 	defaultSortOrder,
 	dateFilterLabel,
+	index: "guidance",
 });

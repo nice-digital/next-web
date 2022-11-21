@@ -1,5 +1,6 @@
 import { useRouter } from "next/router";
 
+import { Breadcrumb } from "@nice-digital/nds-breadcrumbs";
 import {
 	SearchResultsSuccess,
 	SearchUrl,
@@ -9,7 +10,9 @@ import {
 import sampleData from "@/mockData/search/guidance-published.json";
 import { render, screen, cleanup } from "@/test-utils";
 
-import { getGuidanceListPage } from "./GuidanceListPage";
+import { GuidanceListNav } from "../ProductListNav/GuidanceListNav";
+
+import { getProductListPage } from "./ProductListPage";
 
 jest.mock("@/logger", () => ({
 	logger: { error: jest.fn() },
@@ -17,9 +20,15 @@ jest.mock("@/logger", () => ({
 }));
 
 describe("/guidance/published", () => {
-	const GuidanceListPage = getGuidanceListPage({
+	const ProductListPage = getProductListPage({
 		metaDescription: "A list of all published guidance",
-		breadcrumb: "Published",
+		listNavType: GuidanceListNav,
+		breadcrumbTrail: [
+			<Breadcrumb to="/guidance" key="NICE guidance">
+				NICE guidance
+			</Breadcrumb>,
+		],
+		currentBreadcrumb: "Published",
 		preheading: "Published ",
 		heading: <>Guidance, NICE advice and quality&nbsp;standards</>,
 		title: "Published guidance, NICE advice and quality standards",
@@ -57,7 +66,7 @@ describe("/guidance/published", () => {
 
 		// eslint-disable-next-line testing-library/no-render-in-setup
 		render(
-			<GuidanceListPage
+			<ProductListPage
 				activeModifiers={[]}
 				results={sampleData as unknown as SearchResultsSuccess}
 				searchUrl={{ route: "/guidance/published" } as SearchUrl}
@@ -94,7 +103,7 @@ describe("/guidance/published", () => {
 			cleanup();
 
 			render(
-				<GuidanceListPage
+				<ProductListPage
 					activeModifiers={[]}
 					results={
 						{ ...sampleData, documents: [] } as unknown as SearchResultsSuccess

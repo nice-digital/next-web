@@ -18,11 +18,6 @@ jest.mock("clipboard-polyfill", () => ({
 	write: jest.fn(),
 }));
 
-jest.mock("@nice-digital/global-nav", () => ({
-	Header: () => null,
-	Footer: () => null,
-}));
-
 describe("CopyToClipboard", () => {
 	afterEach(() => {
 		// We create a target element outside the rendered component so make sure it's cleaned up

@@ -1,9 +1,11 @@
+import { Breadcrumb } from "@nice-digital/nds-breadcrumbs";
 import { SortOrder, Document } from "@nice-digital/search-client";
 
+import { GuidanceListNav } from "@/components/ProductListNav/GuidanceListNav";
 import {
-	getGuidanceListPage,
+	getProductListPage,
 	getGetServerSidePropsFunc,
-} from "@/components/GuidanceListPage/GuidanceListPage";
+} from "@/components/ProductListPage/ProductListPage";
 
 const defaultSortOrder = SortOrder.titleAscending;
 
@@ -44,9 +46,15 @@ const tableBodyRender = (documents: Document[]) => (
 	</>
 );
 
-export default getGuidanceListPage({
+export default getProductListPage({
 	metaDescription: "Find out what guidance is being considered for development",
-	breadcrumb: "Topic selection",
+	listNavType: GuidanceListNav,
+	breadcrumbTrail: [
+		<Breadcrumb to="/guidance" key="NICE guidance">
+			NICE guidance
+		</Breadcrumb>,
+	],
+	currentBreadcrumb: "Topic selection",
 	preheading: "Guidance in ",
 	heading: "Topic selection",
 	title: "Guidance in topic selection",
@@ -61,4 +69,5 @@ export default getGuidanceListPage({
 export const getServerSideProps = getGetServerSidePropsFunc({
 	gstPreFilter: "Topic selection",
 	defaultSortOrder,
+	index: "guidance",
 });

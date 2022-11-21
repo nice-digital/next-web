@@ -25,10 +25,10 @@
     "extends @nice-digital/browserslist-config"
   ],
   "dependencies": {
-    "@nice-digital/design-system": "^4.0.4",
+    "@nice-digital/design-system": "^4.0.0",
     "@nice-digital/global-nav": "^5.0.910",
     "@nice-digital/nds-prev-next": "^3.0.2",
-    "@nice-digital/search-client": "^2.0.1470",
+    "@nice-digital/search-client": "^2.0.1501-SRCH-726-create-navi",
     "@sindresorhus/slugify": "^1.1.2",
     "axios": "^1.1.2",
     "axios-case-converter": "^0.9.0",
@@ -38,6 +38,7 @@
     "config": "^3.3.6",
     "dayjs": "^1.11.4",
     "fast-sort": "^3.0.2",
+    "filesize": "^10.0.5",
     "form-serialize": "^0.7.2",
     "glob": "^8.0.3",
     "js-yaml": "^4.1.0",

@@ -5,14 +5,13 @@ import { publicRuntimeConfig } from "@/config";
 import {
 	getAllProducts,
 	type ProductLite,
-	ProductStatus,
+	Status,
 	ProductTypeAcronym,
 } from "@/feeds/publications/publications";
 import { getProductPath } from "@/utils/url";
 
 const isPublishedIndicator = ({ productStatus, productType }: ProductLite) =>
-	productStatus === ProductStatus.Published &&
-	productType === ProductTypeAcronym.IND;
+	productStatus === Status.Published && productType === ProductTypeAcronym.IND;
 
 const toSitemapURL = (product: ProductLite): ISitemapField => ({
 	loc: publicRuntimeConfig.baseURL + getProductPath(product),
