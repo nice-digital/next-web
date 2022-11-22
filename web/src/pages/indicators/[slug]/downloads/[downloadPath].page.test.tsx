@@ -9,7 +9,7 @@ import { FeedPath } from "@/feeds/publications/types";
 import { logger } from "@/logger";
 import mockProductRaw from "@/mockData/publications/feeds/products/indicator.json";
 import mockProductTypes from "@/mockData/publications/feeds/producttypes.json";
-import mockEditableContentResource from "@/mockData/publications/feeds/resources/editable-content.json";
+import mockEditableContentResource from "@/mockData/publications/feeds/resource/29409.json";
 
 import { getServerSideProps, type Params } from "./[downloadPath].page";
 
@@ -172,7 +172,7 @@ describe("getServerSideProps", () => {
 		);
 	});
 
-	it("should return to correct slugified title when incorrect", async () => {
+	it("should return redierct to correct slugified title when incorrect", async () => {
 		expect(
 			await getServerSideProps({
 				...getServerSidePropsContext,

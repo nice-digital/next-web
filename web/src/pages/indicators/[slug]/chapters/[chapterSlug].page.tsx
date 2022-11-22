@@ -172,7 +172,7 @@ export const getServerSideProps: GetServerSideProps<
 		chapter?.links.self[0].href as string
 	);
 
-	if (isErrorResponse(chapterContent)) return { notFound: true };
+	if (!chapterContent) return { notFound: true };
 
 	const chapterSections =
 		chapterContent.embedded?.htmlChapterSectionInfo &&
