@@ -1,6 +1,6 @@
 import { ParsedUrlQuery } from "querystring";
 
-import { GetServerSidePropsContext, type Redirect } from "next";
+import { type Redirect } from "next";
 
 import {
 	getProductDetail,
@@ -17,11 +17,7 @@ import {
 	ProductType,
 } from "@/feeds/publications/types";
 import { logger } from "@/logger";
-import {
-	getProductPath,
-	getProductSlug,
-	getPublicationPdfDownloadPath,
-} from "@/utils/url";
+import { getProductPath, getPublicationPdfDownloadPath } from "@/utils/url";
 
 import { arrayify } from "./array";
 

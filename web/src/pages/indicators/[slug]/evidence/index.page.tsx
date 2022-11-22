@@ -101,11 +101,23 @@ export const getServerSideProps: GetServerSideProps<
 	const resourceGroups: ResourceGroupViewModel[] = [];
 
 	if (evidenceUpdates.length)
-		resourceGroups.push(getResourceGroup("Evidence updates", evidenceUpdates));
+		resourceGroups.push(
+			getResourceGroup(
+				product.id,
+				productPath,
+				"Evidence updates",
+				evidenceUpdates
+			)
+		);
 
 	if (supportingEvidence.length)
 		resourceGroups.push(
-			getResourceGroup("Supporting evidence", supportingEvidence)
+			getResourceGroup(
+				product.id,
+				productPath,
+				"Supporting evidence",
+				supportingEvidence
+			)
 		);
 
 	if (!resourceGroups.length) return { notFound: true };

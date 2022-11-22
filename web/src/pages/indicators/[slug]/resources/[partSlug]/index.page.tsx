@@ -85,7 +85,6 @@ export const getServerSideProps: GetServerSideProps<
 		product,
 		productPath,
 		hasToolsAndResources,
-		toolsAndResources,
 		hasInfoForPublicResources,
 		hasEvidenceResources,
 		hasHistory,

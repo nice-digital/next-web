@@ -31,6 +31,8 @@ export type ResourceGroupViewModel = {
 };
 
 export const getResourceGroup = (
+	productID: string,
+	productPath: string,
 	title: string,
 	resources: ResourceDetail[]
 ): ResourceGroupViewModel => ({
@@ -52,7 +54,7 @@ export const getResourceGroup = (
 
 			subGroup.resourceLinks = [
 				...subGroup.resourceLinks,
-				...findContentPartLinks(current),
+				...findContentPartLinks(productID, productPath, current),
 			].sort(byTitleAlphabetically);
 
 			return subGroups;
@@ -61,6 +63,8 @@ export const getResourceGroup = (
 });
 
 export const getResourceGroups = (
+	productID: string,
+	productPath: string,
 	resources: ResourceDetail[]
 ): ResourceGroupViewModel[] =>
 	resources
@@ -71,6 +75,8 @@ export const getResourceGroups = (
 
 			if (!group) {
 				group = getResourceGroup(
+					productID,
+					productPath,
 					current.resourceTypeName,
 					resources.filter(
 						(r) => r.resourceTypeName === current.resourceTypeName
@@ -85,6 +91,8 @@ export const getResourceGroups = (
 		.sort(byTitleAlphabetically);
 
 export const findContentPartLinks = (
+	productID: string,
+	productPath: string,
 	resource: ResourceDetail
 ): ResourceLinkViewModel[] => {
 	const { contentPartList } = resource.embedded;
@@ -101,17 +109,23 @@ export const findContentPartLinks = (
 	return [
 		...arrayify(uploadAndConvertContentPart).map((part) => ({
 			title: part.title,
-			href: `resources/${slugify(part.title)}-${resource.uid}-${part.uid}`,
+			href: `${productPath}/resources/${slugify(part.title)}-${resource.uid}-${
+				part.uid
+			}`,
 		})),
 		...arrayify(editableContentPart).map((part) => ({
 			title: part.title,
-			href: `resources/${slugify(part.title)}-${resource.uid}-${part.uid}`,
+			href: `${productPath}/resources/${slugify(part.title)}-${resource.uid}-${
+				part.uid
+			}`,
 		})),
 		...arrayify(uploadContentPart).map((part) => ({
 			title: part.title,
-			href: `resources/downloads/${slugify(part.title)}-${resource.uid}-${
-				part.uid
-			}.${part.embedded.file.fileName.split(".").slice(-1)[0]}`,
+			href: `${productPath}/downloads/${productID.toUpperCase()}-${slugify(
+				part.title
+			)}-${resource.uid}-${part.uid}.${
+				part.embedded.file.fileName.split(".").slice(-1)[0]
+			}`,
 			fileSize: part.embedded.file.length,
 			fileTypeName: getFileTypeNameFromMime(part.embedded.file.mimeType),
 			date: resource.lastMajorModificationDate,

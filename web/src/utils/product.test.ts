@@ -2,7 +2,6 @@ import MockAdapter from "axios-mock-adapter";
 
 import { client } from "@/feeds/index";
 import {
-	ErrorResponse,
 	FeedPath,
 	ProductDetail,
 	ProductGroup,

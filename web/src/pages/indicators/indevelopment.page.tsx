@@ -34,7 +34,6 @@ const tableBodyRender = (documents: Document[]) => (
 					expectedPublicationDate,
 					pathAndQuery,
 				}) => {
-					console.log({ document });
 					return (
 						<tr key={id}>
 							<td>

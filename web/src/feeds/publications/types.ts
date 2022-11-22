@@ -540,6 +540,9 @@ export type ProductAndResourceBase = {
 };
 
 export type ResourceDetail = ProductAndResourceBase & {
+	embedded: {
+		resourceGroupList: ResourceGroupList;
+	};
 	uid: number;
 	legacyId: string | null;
 	language: Language;

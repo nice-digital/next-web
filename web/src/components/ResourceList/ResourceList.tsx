@@ -7,6 +7,8 @@ import { isTruthy } from "@/utils/array";
 import { formatDateStr, stripTime } from "@/utils/datetime";
 import { type ResourceGroupViewModel } from "@/utils/resource";
 
+import { ScrollToContentStartLink } from "../Link/Link";
+
 export type ResourceListProps = {
 	groups: ResourceGroupViewModel[];
 };
@@ -79,6 +81,9 @@ export const ResourceList: FC<ResourceListProps> = ({ groups }) => {
 												}`}
 												link={{
 													destination: resource.href,
+													elementType: resource.fileTypeName
+														? "a"
+														: ScrollToContentStartLink,
 												}}
 												metadata={cardMeta}
 											/>

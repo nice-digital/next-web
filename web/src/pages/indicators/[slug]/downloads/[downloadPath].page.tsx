@@ -29,18 +29,29 @@ export const getServerSideProps: GetServerSideProps<
 
 	if ("notFound" in result || "redirect" in result) return result;
 
-	const { product, toolsAndResources } = result;
+	const {
+		product,
+		toolsAndResources,
+		evidenceResources,
+		infoForPublicResources,
+	} = result;
 
-	if (!toolsAndResources.length) {
+	const allResources = [
+		...toolsAndResources,
+		...evidenceResources,
+		...infoForPublicResources,
+	];
+
+	if (!allResources.length) {
 		logger.info(
-			`Can't download resource with path ${params.downloadPath} in product ${product.id}: no tools and resources`
+			`Can't download resource with path ${params.downloadPath} in product ${product.id}: no resources`
 		);
 		return { notFound: true };
 	}
 
-	const match = params.downloadPath.match(resourceDownloadPathRegex);
+	const pathRegexMatch = params.downloadPath.match(resourceDownloadPathRegex);
 
-	if (!match || !match.groups) {
+	if (!pathRegexMatch || !pathRegexMatch.groups) {
 		logger.info(
 			`Download path of ${params.downloadPath} in product ${product.id} doesn't match expected format`
 		);
@@ -48,8 +59,8 @@ export const getServerSideProps: GetServerSideProps<
 	}
 
 	const { productID, partTitleSlug, resourceUID, partUID, extension } =
-			match.groups,
-		resource = toolsAndResources.find(({ uid }) => uid === Number(resourceUID));
+			pathRegexMatch.groups,
+		resource = allResources.find(({ uid }) => uid === Number(resourceUID));
 
 	if (productID.toLowerCase() !== product.id.toLowerCase()) {
 		logger.info(
@@ -106,8 +117,6 @@ export const getServerSideProps: GetServerSideProps<
 			},
 		};
 	}
-
-	console.log(links.self[0].href);
 
 	return getServerSideFile(
 		await getFileStream(links.self[0].href),

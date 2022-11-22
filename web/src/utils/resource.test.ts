@@ -20,7 +20,7 @@ describe("resource utils", () => {
 		describe("editable content", () => {
 			it("should find single editable content part", () => {
 				expect(
-					findContentPartLinks({
+					findContentPartLinks("NG100", "/guidance/ng100", {
 						embedded: {
 							contentPartList: {
 								embedded: {
@@ -34,13 +34,16 @@ describe("resource utils", () => {
 						uid: 99,
 					} as ResourceDetail)
 				).toStrictEqual([
-					{ href: "resources/test-title-99-123", title: "Test title" },
+					{
+						href: "/guidance/ng100/resources/test-title-99-123",
+						title: "Test title",
+					},
 				]);
 			});
 
 			it("should find multiple editable content parts", () => {
 				expect(
-					findContentPartLinks({
+					findContentPartLinks("NG100", "/guidance/ng100", {
 						embedded: {
 							contentPartList: {
 								embedded: {
@@ -60,8 +63,8 @@ describe("resource utils", () => {
 						uid: 99,
 					} as ResourceDetail)
 				).toStrictEqual([
-					{ href: "resources/part-1-99-123", title: "Part 1" },
-					{ href: "resources/part-2-99-456", title: "Part 2" },
+					{ href: "/guidance/ng100/resources/part-1-99-123", title: "Part 1" },
+					{ href: "/guidance/ng100/resources/part-2-99-456", title: "Part 2" },
 				]);
 			});
 		});
@@ -69,7 +72,7 @@ describe("resource utils", () => {
 		describe("external URL", () => {
 			it("should find single external url part", () => {
 				expect(
-					findContentPartLinks({
+					findContentPartLinks("NG100", "/guidance/ng100", {
 						embedded: {
 							contentPartList: {
 								embedded: {
@@ -86,7 +89,7 @@ describe("resource utils", () => {
 
 			it("should find multiple external url parts", () => {
 				expect(
-					findContentPartLinks({
+					findContentPartLinks("NG100", "/guidance/ng100", {
 						embedded: {
 							contentPartList: {
 								embedded: {
@@ -114,7 +117,7 @@ describe("resource utils", () => {
 		describe("upload and convert", () => {
 			it("should find single upload and convert url part", () => {
 				expect(
-					findContentPartLinks({
+					findContentPartLinks("NG100", "/guidance/ng100", {
 						embedded: {
 							contentPartList: {
 								embedded: {
@@ -128,13 +131,16 @@ describe("resource utils", () => {
 						uid: 99,
 					} as ResourceDetail)
 				).toStrictEqual([
-					{ href: "resources/test-title-99-123", title: "Test title" },
+					{
+						href: "/guidance/ng100/resources/test-title-99-123",
+						title: "Test title",
+					},
 				]);
 			});
 
 			it("should find multiple upload and convert url parts", () => {
 				expect(
-					findContentPartLinks({
+					findContentPartLinks("NG100", "/guidance/ng100", {
 						embedded: {
 							contentPartList: {
 								embedded: {
@@ -154,8 +160,8 @@ describe("resource utils", () => {
 						uid: 99,
 					} as ResourceDetail)
 				).toStrictEqual([
-					{ href: "resources/part-1-99-123", title: "Part 1" },
-					{ href: "resources/part-2-99-456", title: "Part 2" },
+					{ href: "/guidance/ng100/resources/part-1-99-123", title: "Part 1" },
+					{ href: "/guidance/ng100/resources/part-2-99-456", title: "Part 2" },
 				]);
 			});
 		});
@@ -163,7 +169,7 @@ describe("resource utils", () => {
 		describe("upload", () => {
 			it("should find single upload part", () => {
 				expect(
-					findContentPartLinks({
+					findContentPartLinks("NG100", "/guidance/ng100", {
 						embedded: {
 							contentPartList: {
 								embedded: {
@@ -186,7 +192,7 @@ describe("resource utils", () => {
 					} as ResourceDetail)
 				).toStrictEqual([
 					{
-						href: "resources/downloads/test-title-99-123.xls",
+						href: "/guidance/ng100/resources/downloads/NG100-test-title-99-123.xls",
 						title: "Test title",
 						date: "2017-05-10T00:00:00",
 						fileTypeName: "Excel",
@@ -197,7 +203,7 @@ describe("resource utils", () => {
 
 			it("should find multiple upload parts", () => {
 				expect(
-					findContentPartLinks({
+					findContentPartLinks("NG100", "/guidance/ng100", {
 						embedded: {
 							contentPartList: {
 								embedded: {
@@ -233,14 +239,14 @@ describe("resource utils", () => {
 					} as ResourceDetail)
 				).toStrictEqual([
 					{
-						href: "resources/downloads/part-1-99-123.xls",
+						href: "/guidance/ng100/resources/downloads/NG100-part-1-99-123.xls",
 						title: "Part 1",
 						date: "2017-05-10T00:00:00",
 						fileTypeName: "Excel",
 						fileSize: 1357,
 					},
 					{
-						href: "resources/downloads/part-2-99-456.pdf",
+						href: "/guidance/ng100/resources/downloads/NG100-part-2-99-456.pdf",
 						title: "Part 2",
 						date: "2017-05-10T00:00:00",
 						fileTypeName: "PDF",
@@ -290,7 +296,7 @@ describe("resource utils", () => {
 	describe("getResourceGroup", () => {
 		it("should group resources by resource type", () => {
 			expect(
-				getResourceGroup("Some group", [
+				getResourceGroup("NG100", "/guidance/ng100", "Some group", [
 					{
 						resourceTypeName: "First group",
 						embedded: {
@@ -378,7 +384,7 @@ describe("resource utils", () => {
 	describe("getResourceGroups", () => {
 		it("should group resources by resource type", () => {
 			expect(
-				getResourceGroups([
+				getResourceGroups("NG100", "/guidance/ng100", [
 					{
 						resourceTypeName: "First group",
 						embedded: {

@@ -94,6 +94,8 @@ export const getServerSideProps: GetServerSideProps<
 	return {
 		props: {
 			resourceGroups: getResourceGroups(
+				product.id,
+				productPath,
 				await getResourceDetails(toolsAndResources)
 			),
 			hasToolsAndResources,
