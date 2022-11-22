@@ -28,7 +28,7 @@ export const getServerSideProps: GetServerSideProps<
 
 	const { project } = result;
 
-	if (!project.embedded.niceIndevPanelList) return { notFound: true };
+	if (!project) return { notFound: true };
 
 	const groups = project.embedded.niceIndevPanelList.embedded.niceIndevPanel
 		.filter((panel) => panel.showPanel && panel.panelType == "History")
