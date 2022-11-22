@@ -1,5 +1,6 @@
 import { type Redirect } from "next";
 
+import { getProjectDetail, ProjectDetail } from "@/feeds/inDev/inDev";
 import {
 	getProductDetail,
 	isErrorResponse,
@@ -85,6 +86,7 @@ export type ValidateRouteParamsResult =
 			hasEvidenceResources: boolean;
 			infoForPublicResources: RelatedResource[];
 			hasInfoForPublicResources: boolean;
+			project: ProjectDetail;
 			hasHistory: boolean;
 	  };
 
@@ -105,6 +107,11 @@ export const validateRouteParams = async (
 		evidenceResources = getPublishedEvidenceResources(product),
 		infoForPublicResources = getPublishedIFPResources(product);
 
+	//TODO make hardcoded project reference dynamic
+	const project = await getProjectDetail("GID-NG10014");
+
+	if (isErrorResponse(project)) throw new Error("project not found");
+
 	if (params.slug === expectedSlug)
 		return {
 			product,
@@ -118,6 +125,7 @@ export const validateRouteParams = async (
 			hasEvidenceResources: evidenceResources.length > 0,
 			infoForPublicResources,
 			hasInfoForPublicResources: infoForPublicResources.length > 0,
+			project,
 			// TODO: Load the indev project to determine whether we have history or not
 			hasHistory: false,
 		};

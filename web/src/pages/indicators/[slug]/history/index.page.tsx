@@ -2,24 +2,9 @@ import { type GetServerSideProps } from "next/types";
 import React from "react";
 
 import { ResourceList } from "@/components/ResourceList/ResourceList";
-import { getProjectDetail, ProjectDetail } from "@/feeds/inDev/inDev";
-import { isErrorResponse } from "@/feeds/publications/publications";
+import { ProjectDetail } from "@/feeds/inDev/inDev";
 import { validateRouteParams } from "@/utils/product";
 import { ResourceGroupViewModel } from "@/utils/resource";
-
-// export type HistoryResource = {
-// 	title: string;
-// 	textOnly?: boolean;
-// 	fileType?: string;
-// 	fileName?: string;
-// 	fileSize?: number;
-// 	href: string;
-// 	reference?: string;
-// 	resourceTitleId?: string;
-// 	publishedDate?: string;
-// };
-
-// export type HistoryPanel = { title: string; resources: HistoryResource[] };
 
 export type HistoryPageProps = {
 	project: Pick<ProjectDetail, "reference" | "title"> & {
@@ -29,8 +14,7 @@ export type HistoryPageProps = {
 
 export default function HistoryPage({
 	project,
-}: // groups,
-HistoryPageProps): JSX.Element {
+}: HistoryPageProps): JSX.Element {
 	return <ResourceList groups={project.groups} />;
 }
 
@@ -42,11 +26,7 @@ export const getServerSideProps: GetServerSideProps<
 
 	if ("notFound" in result || "redirect" in result) return result;
 
-	const project = await getProjectDetail("GID-NG10014");
-
-	if (isErrorResponse(project)) throw new Error("project not found");
-
-	const { reference, title } = project;
+	const { project } = result;
 
 	if (!project.embedded.niceIndevPanelList) return { notFound: true };
 
@@ -90,8 +70,8 @@ export const getServerSideProps: GetServerSideProps<
 		props: {
 			inDevReference: result.product.inDevReference,
 			project: {
-				reference,
-				title,
+				reference: project.reference,
+				title: project.title,
 				groups,
 			},
 		},
