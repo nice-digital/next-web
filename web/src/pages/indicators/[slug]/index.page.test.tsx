@@ -13,6 +13,7 @@ import { client } from "@/feeds/index";
 import { FeedPath } from "@/feeds/publications/types";
 import mockIndicatorSubTypes from "@/mockData/publications/feeds/products/indicator-sub-types.json";
 import mockProduct from "@/mockData/publications/feeds/products/indicator.json";
+import mockProductTypes from "@/mockData/publications/feeds/producttypes.json";
 
 import IndicatorsDetailsPage, {
 	getServerSideProps,
@@ -37,9 +38,11 @@ describe("/indicators/[slug].page", () => {
 		}));
 		axiosMock.reset();
 
-		axiosMock.onGet(new RegExp(FeedPath.ProductDetail)).reply(200, mockProduct);
-
 		axiosMock
+			.onGet(new RegExp(FeedPath.ProductDetail))
+			.reply(200, mockProduct)
+			.onGet(new RegExp(FeedPath.ProductTypes))
+			.reply(200, mockProductTypes)
 			.onGet(new RegExp(FeedPath.IndicatorSubTypes))
 			.reply(200, mockIndicatorSubTypes);
 
@@ -50,8 +53,10 @@ describe("/indicators/[slug].page", () => {
 		let props: IndicatorsDetailsPageProps;
 		beforeEach(async () => {
 			const context = {
-				params: { slug: slug },
-			} as IndicatorDetailsPageGetServerSidePropsContext;
+				params: { slug },
+				query: { productRoot: "indicators" },
+				resolvedUrl: `/indicators/${slug}`,
+			} as unknown as IndicatorDetailsPageGetServerSidePropsContext;
 
 			props = (
 				(await getServerSideProps(context)) as {
@@ -306,8 +311,9 @@ describe("/indicators/[slug].page", () => {
 		it("should return a correct props when supplied with a valid slug", async () => {
 			const result = await getServerSideProps({
 				params: { slug },
+				query: { productRoot: "indicators" },
 				resolvedUrl: `/indicators/${slug}`,
-			} as IndicatorDetailsPageGetServerSidePropsContext);
+			} as unknown as IndicatorDetailsPageGetServerSidePropsContext);
 
 			expect(result).toMatchSnapshot();
 		});
@@ -318,8 +324,9 @@ describe("/indicators/[slug].page", () => {
 
 				const redirectResult = await getServerSideProps({
 					params: { slug: incorrectSlug },
+					query: { productRoot: "indicators" },
 					resolvedUrl: `/indicators/${incorrectSlug}`,
-				} as IndicatorDetailsPageGetServerSidePropsContext);
+				} as unknown as IndicatorDetailsPageGetServerSidePropsContext);
 
 				expect(redirectResult).toStrictEqual({
 					redirect: {
