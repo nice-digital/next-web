@@ -22,7 +22,7 @@ import {
 	type IndicatorSubType,
 } from "@/feeds/publications/types";
 import { getChapterLinks, validateRouteParams } from "@/utils/product";
-import { getProductPath, getPublicationPdfDownloadPath } from "@/utils/url";
+import { getPublicationPdfDownloadPath } from "@/utils/url";
 
 import styles from "./index.page.module.scss";
 

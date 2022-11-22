@@ -179,20 +179,6 @@ export type Link = {
 
 type ETag = string | null;
 
-// axios-case-converter maps key property names like nice.publications:area-of-interest-type-list to areaOfInterestTypeList
-type EmbeddedKey = `${string}`;
-
-type Embedded<TKey extends EmbeddedKey, TInner> = {
-	embedded: { [key in TKey]: TInner };
-};
-
-type FeedContentInner<TEmbeddedInner extends EmbeddedKey, TItemType> = {
-	links: {
-		self: [Link];
-	};
-	eTag: ETag;
-} & Embedded<TEmbeddedInner, TItemType[]>;
-
 export type IndevFile = {
 	links: {
 		self: [Link];

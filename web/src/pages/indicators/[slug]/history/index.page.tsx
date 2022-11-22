@@ -1,8 +1,13 @@
 import { type GetServerSideProps } from "next/types";
 import React from "react";
 
+import { Breadcrumbs, Breadcrumb } from "@nice-digital/nds-breadcrumbs";
+
+import { ProductHorizontalNav } from "@/components/ProductHorizontalNav/ProductHorizontalNav";
+import { ProductPageHeading } from "@/components/ProductPageHeading/ProductPageHeading";
 import { ResourceList } from "@/components/ResourceList/ResourceList";
 import { ProjectDetail } from "@/feeds/inDev/inDev";
+import { ProductDetail } from "@/feeds/publications/types";
 import { byTitleAlphabetically } from "@/utils/array";
 import { getFileTypeNameFromMime } from "@/utils/file";
 import { validateRouteParams } from "@/utils/product";
@@ -12,15 +17,58 @@ import {
 } from "@/utils/resource";
 
 export type HistoryPageProps = {
+	productPath: string;
+	product: Pick<
+		ProductDetail,
+		| "id"
+		| "title"
+		| "productTypeName"
+		| "publishedDate"
+		| "lastMajorModificationDate"
+	>;
 	project: Pick<ProjectDetail, "reference" | "title"> & {
 		groups: ResourceGroupViewModel[];
 	};
+	hasEvidenceResources: boolean;
+	hasInfoForPublicResources: boolean;
+	hasToolsAndResources: boolean;
+	hasHistory: boolean;
 };
 
 export default function HistoryPage({
+	productPath,
+	product,
 	project,
+	hasEvidenceResources,
+	hasInfoForPublicResources,
+	hasToolsAndResources,
+	hasHistory,
 }: HistoryPageProps): JSX.Element {
-	return <ResourceList groups={project.groups} />;
+	return (
+		<>
+			<Breadcrumbs>
+				<Breadcrumb to="/">Home</Breadcrumb>
+				<Breadcrumb to="/standards-and-indicators">
+					Standards and Indicators
+				</Breadcrumb>
+				<Breadcrumb to="/standards-and-indicators/indicators">
+					Indicators
+				</Breadcrumb>
+				<Breadcrumb>{product.id}</Breadcrumb>
+			</Breadcrumbs>
+			<ProductPageHeading product={product} />
+
+			<ProductHorizontalNav
+				productTypeName="Indicator"
+				productPath={productPath}
+				hasEvidenceResources={hasEvidenceResources}
+				hasToolsAndResources={hasToolsAndResources}
+				hasInfoForPublicResources={hasInfoForPublicResources}
+				hasHistory={hasHistory}
+			/>
+			<ResourceList groups={project.groups} />
+		</>
+	);
 }
 
 export const getServerSideProps: GetServerSideProps<
@@ -31,7 +79,16 @@ export const getServerSideProps: GetServerSideProps<
 
 	if ("notFound" in result || "redirect" in result) return result;
 
-	const { project, historyPanels } = result;
+	const {
+		project,
+		historyPanels,
+		product,
+		productPath,
+		hasEvidenceResources,
+		hasInfoForPublicResources,
+		hasToolsAndResources,
+		hasHistory,
+	} = result;
 
 	if (!project) return { notFound: true };
 
@@ -72,26 +129,6 @@ export const getServerSideProps: GetServerSideProps<
 			}
 		});
 
-		// const subGroups = indevResources.map((resource) => {
-		// 	const resourceLinks = resource.embedded;
-
-		// 	if (resourceLinks) {
-		// 		return {
-		// 			title: resource.title,
-		// 			resourceLinks: [
-		// 				{
-		// 					title: resource.title,
-		// 					href: resourceLinks.niceIndevFile.links.self[0].href,
-		// 					fileTypeName: resourceLinks.niceIndevFile.mimeType,
-		// 					fileSize: resourceLinks.niceIndevFile.length,
-		// 					date: resource.publishedDate,
-		// 				},
-		// 			],
-		// 		};
-		// 	}
-		// 	return { title: resource.title, resourceLinks: [] };
-		// });
-
 		return {
 			title: panel.title,
 			subGroups,
@@ -100,7 +137,19 @@ export const getServerSideProps: GetServerSideProps<
 
 	return {
 		props: {
-			inDevReference: result.product.inDevReference,
+			productPath,
+			hasEvidenceResources,
+			hasInfoForPublicResources,
+			hasToolsAndResources,
+			hasHistory,
+			inDevReference: product.inDevReference,
+			product: {
+				id: product.id,
+				title: product.title,
+				productTypeName: product.productTypeName,
+				publishedDate: product.publishedDate,
+				lastMajorModificationDate: product.lastMajorModificationDate,
+			},
 			project: {
 				reference: project.reference,
 				title: project.title,
