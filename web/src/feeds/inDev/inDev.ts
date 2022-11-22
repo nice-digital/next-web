@@ -11,7 +11,6 @@ import {
 	Consultation,
 	InConsultationProjects,
 	ProjectDetail,
-	IndevPanel,
 } from "./types";
 
 export * from "./types";
@@ -54,22 +53,6 @@ export const getAllConsultations = async (): Promise<Consultation[]> =>
  * Gets a project detail.
  *
  */
-
-// export const getProjectDetail = async (
-// 	inDevReference: string
-// ): Promise<ProjectDetail | ErrorResponse> =>
-// 	//TODO don't cache error response
-// 	await getFeedBodyCached<ProjectDetail | ErrorResponse>(
-// 		cacheKeyPrefix,
-// 		FeedPath.ProjectDetail + inDevReference,
-// 		longTTL,
-// 		async () =>
-// 			await getFeedBodyUnCached<ProjectDetail | ErrorResponse>(
-// 				origin,
-// 				FeedPath.ProjectDetail + inDevReference,
-// 				apiKey
-// 			)
-// 	);
 
 export const getProjectDetail = async (
 	inDevReference: string
