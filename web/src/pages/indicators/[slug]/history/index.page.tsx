@@ -26,45 +26,43 @@ export const getServerSideProps: GetServerSideProps<
 
 	if ("notFound" in result || "redirect" in result) return result;
 
-	const { project } = result;
+	const { project, historyPanels } = result;
 
 	if (!project) return { notFound: true };
 
-	const groups = project.embedded.niceIndevPanelList.embedded.niceIndevPanel
-		.filter((panel) => panel.showPanel && panel.panelType == "History")
-		.map((panel) => {
-			const indevResource =
-				panel.embedded.niceIndevResourceList.embedded.niceIndevResource;
+	const groups = historyPanels.map((panel) => {
+		const indevResource =
+			panel.embedded.niceIndevResourceList.embedded.niceIndevResource;
 
-			const indevResources = Array.isArray(indevResource)
-				? indevResource
-				: [indevResource];
+		const indevResources = Array.isArray(indevResource)
+			? indevResource
+			: [indevResource];
 
-			const subGroups = indevResources.map((resource) => {
-				const resourceLinks = resource.embedded;
+		const subGroups = indevResources.map((resource) => {
+			const resourceLinks = resource.embedded;
 
-				if (resourceLinks) {
-					return {
-						title: resource.title,
-						resourceLinks: [
-							{
-								title: resource.title,
-								href: resourceLinks.niceIndevFile.links.self[0].href,
-								fileTypeName: resourceLinks.niceIndevFile.mimeType,
-								fileSize: resourceLinks.niceIndevFile.length,
-								date: resource.publishedDate,
-							},
-						],
-					};
-				}
-				return { title: resource.title, resourceLinks: [] };
-			});
-
-			return {
-				title: panel.title,
-				subGroups,
-			};
+			if (resourceLinks) {
+				return {
+					title: resource.title,
+					resourceLinks: [
+						{
+							title: resource.title,
+							href: resourceLinks.niceIndevFile.links.self[0].href,
+							fileTypeName: resourceLinks.niceIndevFile.mimeType,
+							fileSize: resourceLinks.niceIndevFile.length,
+							date: resource.publishedDate,
+						},
+					],
+				};
+			}
+			return { title: resource.title, resourceLinks: [] };
 		});
+
+		return {
+			title: panel.title,
+			subGroups,
+		};
+	});
 
 	return {
 		props: {

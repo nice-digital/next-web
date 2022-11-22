@@ -1,6 +1,7 @@
 import { serverRuntimeConfig } from "@/config";
 
 import { getFeedBodyCached, getFeedBodyUnCached } from "..";
+import { isSuccessResponse } from "../publications/publications";
 import { ErrorResponse } from "../publications/types";
 
 import {
@@ -54,18 +55,36 @@ export const getAllConsultations = async (): Promise<Consultation[]> =>
  *
  */
 
+// export const getProjectDetail = async (
+// 	inDevReference: string
+// ): Promise<ProjectDetail | ErrorResponse> =>
+// 	//TODO don't cache error response
+// 	await getFeedBodyCached<ProjectDetail | ErrorResponse>(
+// 		cacheKeyPrefix,
+// 		FeedPath.ProjectDetail + inDevReference,
+// 		longTTL,
+// 		async () =>
+// 			await getFeedBodyUnCached<ProjectDetail | ErrorResponse>(
+// 				origin,
+// 				FeedPath.ProjectDetail + inDevReference,
+// 				apiKey
+// 			)
+// 	);
+
 export const getProjectDetail = async (
 	inDevReference: string
-): Promise<ProjectDetail | ErrorResponse> =>
-	//TODO don't cache error response
-	await getFeedBodyCached<ProjectDetail | ErrorResponse>(
+): Promise<ProjectDetail | null> =>
+	await getFeedBodyCached<ProjectDetail | null>(
 		cacheKeyPrefix,
 		FeedPath.ProjectDetail + inDevReference,
 		longTTL,
-		async () =>
-			await getFeedBodyUnCached<ProjectDetail | ErrorResponse>(
+		async () => {
+			const response = await getFeedBodyUnCached<ProjectDetail | ErrorResponse>(
 				origin,
 				FeedPath.ProjectDetail + inDevReference,
 				apiKey
-			)
+			);
+
+			return isSuccessResponse(response) ? response : null;
+		}
 	);

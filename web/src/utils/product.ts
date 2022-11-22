@@ -1,10 +1,11 @@
 import { type Redirect } from "next";
 
-import { getProjectDetail, ProjectDetail } from "@/feeds/inDev/inDev";
 import {
-	getProductDetail,
-	isErrorResponse,
-} from "@/feeds/publications/publications";
+	getProjectDetail,
+	IndevPanel,
+	ProjectDetail,
+} from "@/feeds/inDev/inDev";
+import { getProductDetail } from "@/feeds/publications/publications";
 import {
 	type ProductDetail,
 	type ChapterHeading,
@@ -86,7 +87,8 @@ export type ValidateRouteParamsResult =
 			hasEvidenceResources: boolean;
 			infoForPublicResources: RelatedResource[];
 			hasInfoForPublicResources: boolean;
-			project: ProjectDetail;
+			project: ProjectDetail | null;
+			historyPanels: IndevPanel[];
 			hasHistory: boolean;
 	  };
 
@@ -108,10 +110,20 @@ export const validateRouteParams = async (
 		infoForPublicResources = getPublishedIFPResources(product);
 
 	//TODO make hardcoded project reference dynamic
-	// const project = await getProjectDetail("GID-NG10014");
-	const project = await getProjectDetail(product.inDevReference);
+	const project = await getProjectDetail("GID-NG10014");
+	// const project = await getProjectDetail(product.inDevReference);
 
-	if (isErrorResponse(project)) throw new Error("project not found");
+	if (!project) return { notFound: true };
+
+	const hasHistory =
+		project.embedded.niceIndevPanelList.embedded.niceIndevPanel.some(
+			(panel) => panel.panelType == "History"
+		);
+
+	const historyPanels =
+		project.embedded.niceIndevPanelList.embedded.niceIndevPanel.filter(
+			(panel) => panel.showPanel && panel.panelType == "History"
+		);
 
 	if (params.slug === expectedSlug)
 		return {
@@ -127,8 +139,9 @@ export const validateRouteParams = async (
 			infoForPublicResources,
 			hasInfoForPublicResources: infoForPublicResources.length > 0,
 			project,
+			historyPanels,
 			// TODO: Load the indev project to determine whether we have history or not
-			hasHistory: false,
+			hasHistory: hasHistory,
 		};
 
 	const absoluteURL = new URL(resolvedUrl, `https://anything.com`),
