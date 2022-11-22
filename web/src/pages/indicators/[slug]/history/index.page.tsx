@@ -4,7 +4,10 @@ import React from "react";
 import { ResourceList } from "@/components/ResourceList/ResourceList";
 import { ProjectDetail } from "@/feeds/inDev/inDev";
 import { validateRouteParams } from "@/utils/product";
-import { ResourceGroupViewModel } from "@/utils/resource";
+import {
+	ResourceGroupViewModel,
+	ResourceSubGroupViewModel,
+} from "@/utils/resource";
 
 export type HistoryPageProps = {
 	project: Pick<ProjectDetail, "reference" | "title"> & {
@@ -38,25 +41,49 @@ export const getServerSideProps: GetServerSideProps<
 			? indevResource
 			: [indevResource];
 
-		const subGroups = indevResources.map((resource) => {
-			const resourceLinks = resource.embedded;
+		const subGroups: ResourceSubGroupViewModel[] = [];
 
-			if (resourceLinks) {
-				return {
+		let currentSubGroup: ResourceSubGroupViewModel;
+
+		indevResources.forEach((resource) => {
+			if (resource.textOnly) {
+				currentSubGroup = { title: resource.title, resourceLinks: [] };
+				subGroups.push(currentSubGroup);
+			} else {
+				if (!currentSubGroup) {
+					currentSubGroup = { title: panel.title, resourceLinks: [] };
+					subGroups.push(currentSubGroup);
+				}
+
+				currentSubGroup.resourceLinks.push({
 					title: resource.title,
-					resourceLinks: [
-						{
-							title: resource.title,
-							href: resourceLinks.niceIndevFile.links.self[0].href,
-							fileTypeName: resourceLinks.niceIndevFile.mimeType,
-							fileSize: resourceLinks.niceIndevFile.length,
-							date: resource.publishedDate,
-						},
-					],
-				};
+					href: resource.embedded.niceIndevFile.links.self[0].href,
+					fileTypeName: resource.embedded.niceIndevFile.mimeType,
+					fileSize: resource.embedded.niceIndevFile.length,
+					date: resource.publishedDate,
+				});
 			}
-			return { title: resource.title, resourceLinks: [] };
 		});
+
+		// const subGroups = indevResources.map((resource) => {
+		// 	const resourceLinks = resource.embedded;
+
+		// 	if (resourceLinks) {
+		// 		return {
+		// 			title: resource.title,
+		// 			resourceLinks: [
+		// 				{
+		// 					title: resource.title,
+		// 					href: resourceLinks.niceIndevFile.links.self[0].href,
+		// 					fileTypeName: resourceLinks.niceIndevFile.mimeType,
+		// 					fileSize: resourceLinks.niceIndevFile.length,
+		// 					date: resource.publishedDate,
+		// 				},
+		// 			],
+		// 		};
+		// 	}
+		// 	return { title: resource.title, resourceLinks: [] };
+		// });
 
 		return {
 			title: panel.title,

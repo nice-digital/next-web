@@ -25,7 +25,7 @@ export const ResourceList: FC<ResourceListProps> = ({ groups }) => {
 					<h3>{group.title}</h3>
 
 					{group.subGroups.map((subGroup) => (
-						<section key={subGroup.title}>
+						<section key={`${group.title} ${subGroup.title}`}>
 							<h4
 								className={
 									subGroup.title === group.title ? "visually-hidden" : ""
@@ -70,7 +70,7 @@ export const ResourceList: FC<ResourceListProps> = ({ groups }) => {
 									].filter(isTruthy);
 
 									return (
-										<li key={resource.title}>
+										<li key={resource.href}>
 											<Card
 												headingText={`${resource.title}${
 													resource.fileTypeName
