@@ -3,6 +3,8 @@ import React from "react";
 
 import { ResourceList } from "@/components/ResourceList/ResourceList";
 import { ProjectDetail } from "@/feeds/inDev/inDev";
+import { byTitleAlphabetically } from "@/utils/array";
+import { getFileTypeNameFromMime } from "@/utils/file";
 import { validateRouteParams } from "@/utils/product";
 import {
 	ResourceGroupViewModel,
@@ -33,7 +35,7 @@ export const getServerSideProps: GetServerSideProps<
 
 	if (!project) return { notFound: true };
 
-	const groups = historyPanels.map((panel) => {
+	const groups = historyPanels.sort(byTitleAlphabetically).map((panel) => {
 		const indevResource =
 			panel.embedded.niceIndevResourceList.embedded.niceIndevResource;
 
@@ -55,11 +57,16 @@ export const getServerSideProps: GetServerSideProps<
 					subGroups.push(currentSubGroup);
 				}
 
+				const { mimeType, length, links } = resource.embedded.niceIndevFile,
+					isHTML = mimeType === "text/html",
+					fileSize = isHTML ? null : length,
+					fileTypeName = isHTML ? null : getFileTypeNameFromMime(mimeType);
+
 				currentSubGroup.resourceLinks.push({
 					title: resource.title,
-					href: resource.embedded.niceIndevFile.links.self[0].href,
-					fileTypeName: resource.embedded.niceIndevFile.mimeType,
-					fileSize: resource.embedded.niceIndevFile.length,
+					href: links.self[0].href,
+					fileTypeName,
+					fileSize,
 					date: resource.publishedDate,
 				});
 			}

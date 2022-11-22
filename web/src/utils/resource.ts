@@ -7,9 +7,9 @@ import { slugify } from "./url";
 export type ResourceLinkViewModel = {
 	title: string;
 	href: string;
-	fileTypeName?: string;
+	fileTypeName?: string | null;
 	/** In bytes */
-	fileSize?: number;
+	fileSize?: number | null;
 	/** ISO formatted date string */
 	date?: string;
 };
