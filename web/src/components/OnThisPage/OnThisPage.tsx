@@ -74,7 +74,7 @@ export const OnThisPage: FC<OnThisPageProps> = ({ sections }) => {
 				className={styles.list}
 				aria-label="Jump links to sections on this page"
 			>
-				{sections.map(({ slug, title }, i) => {
+				{sections.map(({ slug, title }) => {
 					return i < shortenedListSize || !isHidingMoreLinks ? (
 						<li key={slug}>
 							<a
