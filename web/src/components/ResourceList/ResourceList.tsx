@@ -22,7 +22,10 @@ export const ResourceList: FC<ResourceListProps> = ({ groups }) => {
 		<>
 			{groupsToShow.map((group) => (
 				<section key={group.title}>
-					<h3>{group.title}</h3>
+					<h3>
+						<a id={group.title.replace(/ /g, "-").toLowerCase()}></a>
+						{group.title}
+					</h3>
 
 					{group.subGroups.map((subGroup) => (
 						<section key={`${group.title} ${subGroup.title}`}>
@@ -31,6 +34,7 @@ export const ResourceList: FC<ResourceListProps> = ({ groups }) => {
 									subGroup.title === group.title ? "visually-hidden" : ""
 								}
 							>
+								<a id={subGroup.title.replace(/ /g, "-").toLowerCase()}></a>
 								{subGroup.title}
 							</h4>
 							<ul className="list list--unstyled">
