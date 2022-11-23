@@ -2,6 +2,7 @@ import { type GetServerSideProps } from "next/types";
 import React from "react";
 
 import { Breadcrumbs, Breadcrumb } from "@nice-digital/nds-breadcrumbs";
+import { Grid, GridItem } from "@nice-digital/nds-grid";
 
 import {
 	OnThisPage,
@@ -54,7 +55,6 @@ export default function HistoryPage({
 
 	return (
 		<>
-			{hasOnThisPageMenu ? <OnThisPage sections={groupSections} /> : null}
 			<Breadcrumbs>
 				<Breadcrumb to="/">Home</Breadcrumb>
 				<Breadcrumb to="/standards-and-indicators">
@@ -75,7 +75,24 @@ export default function HistoryPage({
 				hasHistory={hasHistory}
 			/>
 
-			<ResourceList groups={project.groups} />
+			<Grid gutter="loose">
+				<GridItem cols={12} md={12} lg={12} elementType="section">
+					<Grid reverse gutter="loose">
+						{hasOnThisPageMenu ? (
+							<GridItem cols={12} md={4} lg={3}>
+								<OnThisPage sections={groupSections} />
+							</GridItem>
+						) : null}
+						<GridItem
+							cols={12}
+							md={hasOnThisPageMenu ? 8 : 12}
+							lg={hasOnThisPageMenu ? 9 : 12}
+						>
+							<ResourceList groups={project.groups} />
+						</GridItem>
+					</Grid>
+				</GridItem>
+			</Grid>
 		</>
 	);
 }
