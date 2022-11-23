@@ -1,3 +1,5 @@
+import { groupEnd } from "console";
+
 import { type GetServerSideProps } from "next/types";
 import React from "react";
 
@@ -181,8 +183,8 @@ export const getServerSideProps: GetServerSideProps<
 				title: project.title,
 				groups,
 			},
-			groupSections: groups.map(({ title }) => ({
-				slug: title.replace(/ /g, "-").toLowerCase(),
+			groupSections: groups.map(({ title }, i) => ({
+				slug: title.replace(/ /g, "-").toLowerCase() + i,
 				title,
 			})),
 		},

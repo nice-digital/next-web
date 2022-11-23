@@ -20,10 +20,10 @@ export const ResourceList: FC<ResourceListProps> = ({ groups }) => {
 
 	return (
 		<>
-			{groupsToShow.map((group) => (
-				<section key={group.title}>
+			{groupsToShow.map((group, i) => (
+				<section key={`${group.title}${i}`}>
 					<h3>
-						<a id={group.title.replace(/ /g, "-").toLowerCase()}></a>
+						<a id={`${group.title.replace(/ /g, "-").toLowerCase()}${i}`}></a>
 						{group.title}
 					</h3>
 
