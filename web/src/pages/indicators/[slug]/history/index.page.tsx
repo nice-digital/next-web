@@ -1,3 +1,4 @@
+import { NextSeo } from "next-seo";
 import { type GetServerSideProps } from "next/types";
 import React from "react";
 
@@ -55,6 +56,11 @@ export default function HistoryPage({
 
 	return (
 		<>
+			<NextSeo
+				title={
+					product.title + " | History | Indicators | Standards and Indicators"
+				}
+			/>
 			<Breadcrumbs>
 				<Breadcrumb to="/">Home</Breadcrumb>
 				<Breadcrumb to="/standards-and-indicators">

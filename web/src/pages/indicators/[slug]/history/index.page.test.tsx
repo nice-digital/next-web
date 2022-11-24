@@ -61,6 +61,8 @@ describe("/history/index.page", () => {
 		it("should match snapshot for main content", () => {
 			render(<HistoryPage {...props} />);
 			expect(document.body).toMatchSnapshot();
+			// eslint-disable-next-line testing-library/no-debugging-utils
+			screen.debug();
 		});
 	});
 });
