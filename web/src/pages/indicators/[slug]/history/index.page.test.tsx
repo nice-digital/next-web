@@ -1,4 +1,4 @@
-import { render, screen } from "@testing-library/react";
+import { render, screen, waitFor } from "@testing-library/react";
 import MockAdapter from "axios-mock-adapter";
 import { type GetServerSidePropsContext } from "next";
 import { useRouter } from "next/router";
@@ -62,7 +62,16 @@ describe("/history/index.page", () => {
 			render(<HistoryPage {...props} />);
 			expect(document.body).toMatchSnapshot();
 			// eslint-disable-next-line testing-library/no-debugging-utils
-			screen.debug();
+			// screen.debug();
+		});
+
+		it("should render the page title with reversed breadcrumbs for SEO", async () => {
+			render(<HistoryPage {...props} />);
+			await waitFor(() => {
+				expect(document.title).toEqual(
+					`${mockProduct.Title} | History | Indicators | Standards and Indicators`
+				);
+			});
 		});
 	});
 });
