@@ -56,7 +56,6 @@ describe("/history/index.page", () => {
 					props: HistoryPageProps;
 				}
 			).props;
-			console.log("testing!!!");
 		});
 
 		it("should match snapshot for main content", () => {
