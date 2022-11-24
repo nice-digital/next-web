@@ -85,15 +85,45 @@ describe("/history/index.page", () => {
 			expect(result).toMatchSnapshot();
 		});
 
-		// it("should return correct groupSections", async () => {
-		// 	const result = await getServerSideProps({
-		// 		params: { slug },
-		// 		resolvedUrl: `/indicators/${slug}/history`,
-		// 	} as HistoryPageGetServerSidePropsContext);
+		it("should return correct groupSections", async () => {
+			const result = (await getServerSideProps({
+				params: { slug },
+				resolvedUrl: `/indicators/${slug}/history`,
+			} as HistoryPageGetServerSidePropsContext)) as {
+				props: HistoryPageProps;
+			};
 
-		// 	const { groupSections } = result.props as HistoryPageProps;
+			const { groupSections } = result.props as HistoryPageProps;
 
-		// 	expect(groupSections).toHaveLength(11);
-		// });
+			expect(groupSections).toHaveLength(11);
+		});
+
+		it("should return hasHistory false when there are no history panels", async () => {
+			const nonHistoryPanels = mockProject._embedded[
+				"nice.indev:panel-list"
+			]._embedded["nice.indev:panel"].filter(
+				(panel) => panel.PanelType != "History"
+			);
+
+			axiosMock.onGet(new RegExp(IndevFeedPath.ProjectDetail)).reply(200, {
+				...mockProject,
+				_embedded: {
+					"nice.indev:panel-list": {
+						_embedded: {
+							"nice.indev:panel": nonHistoryPanels,
+						},
+					},
+				},
+			});
+
+			const result = (await getServerSideProps({
+				params: { slug },
+				resolvedUrl: `/indicators/${slug}/history`,
+			} as HistoryPageGetServerSidePropsContext)) as {
+				props: HistoryPageProps;
+			};
+
+			expect(result.props.hasHistory).toBe(false);
+		});
 	});
 });
