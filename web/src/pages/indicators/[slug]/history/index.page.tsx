@@ -174,7 +174,6 @@ export const getServerSideProps: GetServerSideProps<
 			hasInfoForPublicResources,
 			hasToolsAndResources,
 			hasHistory,
-			inDevReference: product.inDevReference,
 			product: {
 				id: product.id,
 				title: product.title,

@@ -126,7 +126,7 @@ exports[`/history/index.page IndicatorDetailPage should match snapshot for main 
           class="horizontal-nav__item"
         >
           <a
-            aria-current="true"
+            aria-current="false"
             class="horizontal-nav__link"
             href="/indicators/ind6-new-indicator-product-1"
           >
@@ -137,7 +137,7 @@ exports[`/history/index.page IndicatorDetailPage should match snapshot for main 
           class="horizontal-nav__item"
         >
           <a
-            aria-current="false"
+            aria-current="true"
             class="horizontal-nav__link"
             href="/indicators/ind6-new-indicator-product-1/history"
           >
@@ -3705,4 +3705,519 @@ exports[`/history/index.page IndicatorDetailPage should match snapshot for main 
     </div>
   </div>
 </body>
+`;
+
+exports[`/history/index.page getServerSideProps should return a correct props 1`] = `
+Object {
+  "props": Object {
+    "groupSections": Array [
+      Object {
+        "slug": "committee-list-updated0",
+        "title": "Committee list updated",
+      },
+      Object {
+        "slug": "committee-meetings1",
+        "title": "Committee meetings",
+      },
+      Object {
+        "slug": "consultation-comments-published2",
+        "title": "Consultation comments published",
+      },
+      Object {
+        "slug": "draft-guidance-consultation3",
+        "title": "Draft guidance consultation",
+      },
+      Object {
+        "slug": "draft-scope-consultation4",
+        "title": "Draft scope consultation",
+      },
+      Object {
+        "slug": "equality-impact-assessment-published5",
+        "title": "Equality impact assessment published",
+      },
+      Object {
+        "slug": "equality-impact-assessment-published6",
+        "title": "Equality impact assessment published",
+      },
+      Object {
+        "slug": "pre-consultation-documents-released7",
+        "title": "Pre-consultation documents released",
+      },
+      Object {
+        "slug": "scope-published8",
+        "title": "Scope published",
+      },
+      Object {
+        "slug": "scoping-workshop9",
+        "title": "Scoping workshop",
+      },
+      Object {
+        "slug": "stakeholder-list-updated10",
+        "title": "Stakeholder list updated",
+      },
+    ],
+    "hasEvidenceResources": false,
+    "hasHistory": true,
+    "hasInfoForPublicResources": false,
+    "hasToolsAndResources": false,
+    "product": Object {
+      "id": "IND6",
+      "lastMajorModificationDate": "2022-09-08T14:07:12.0336296",
+      "productTypeName": "NICE indicator",
+      "publishedDate": "2022-09-08T14:07:12.0336296",
+      "title": "New Indicator product-1",
+    },
+    "productPath": "/indicators/ind6-new-indicator-product-1",
+    "project": Object {
+      "groups": Array [
+        Object {
+          "subGroups": Array [
+            Object {
+              "resourceLinks": Array [
+                Object {
+                  "date": "2016-09-13T00:01:00",
+                  "fileSize": 90627,
+                  "fileTypeName": "PDF",
+                  "href": "/guidance/NG100/documents/committee-member-list",
+                  "title": "Committee member list",
+                },
+              ],
+              "title": "Committee list updated",
+            },
+          ],
+          "title": "Committee list updated",
+        },
+        Object {
+          "subGroups": Array [
+            Object {
+              "resourceLinks": Array [
+                Object {
+                  "date": "2016-11-15T10:38:00",
+                  "fileSize": 412072,
+                  "fileTypeName": "PDF",
+                  "href": "/guidance/NG100/documents/minutes",
+                  "title": "Minutes",
+                },
+              ],
+              "title": "Committee meeting: 1",
+            },
+            Object {
+              "resourceLinks": Array [
+                Object {
+                  "date": "2017-01-04T08:43:00",
+                  "fileSize": 326553,
+                  "fileTypeName": "PDF",
+                  "href": "/guidance/NG100/documents/minutes-2",
+                  "title": "Minutes",
+                },
+              ],
+              "title": "Committee meeting: 2",
+            },
+            Object {
+              "resourceLinks": Array [
+                Object {
+                  "date": "2017-02-01T13:38:00",
+                  "fileSize": 185098,
+                  "fileTypeName": "PDF",
+                  "href": "/guidance/NG100/documents/minutes-3",
+                  "title": "Minutes",
+                },
+              ],
+              "title": "Committee meeting: 3",
+            },
+            Object {
+              "resourceLinks": Array [
+                Object {
+                  "date": "2017-01-30T00:00:00",
+                  "fileSize": 195130,
+                  "fileTypeName": "PDF",
+                  "href": "/guidance/NG100/documents/minutes-4",
+                  "title": "Minutes",
+                },
+              ],
+              "title": "Committee meeting: 4",
+            },
+            Object {
+              "resourceLinks": Array [
+                Object {
+                  "date": "2017-03-07T00:00:00",
+                  "fileSize": 182480,
+                  "fileTypeName": "PDF",
+                  "href": "/guidance/NG100/documents/minutes-5",
+                  "title": "Minutes",
+                },
+              ],
+              "title": "Committee meeting: 5",
+            },
+            Object {
+              "resourceLinks": Array [
+                Object {
+                  "date": "2017-06-01T15:26:00",
+                  "fileSize": 104174,
+                  "fileTypeName": "PDF",
+                  "href": "/guidance/NG100/documents/minutes-6",
+                  "title": "Minutes 21 April 2017",
+                },
+              ],
+              "title": "Committee meeting: 6",
+            },
+            Object {
+              "resourceLinks": Array [
+                Object {
+                  "date": "2017-07-12T11:52:00",
+                  "fileSize": 106774,
+                  "fileTypeName": "PDF",
+                  "href": "/guidance/NG100/documents/minutes-7",
+                  "title": "Minutes 30 May 2017",
+                },
+              ],
+              "title": "Committee meeting: 7",
+            },
+            Object {
+              "resourceLinks": Array [
+                Object {
+                  "date": "2017-09-20T10:47:00",
+                  "fileSize": 97567,
+                  "fileTypeName": "PDF",
+                  "href": "/guidance/NG100/documents/minutes-8",
+                  "title": "Minutes 05 July 2017",
+                },
+              ],
+              "title": "Committee meeting: 8",
+            },
+            Object {
+              "resourceLinks": Array [
+                Object {
+                  "date": "2017-10-17T09:49:00",
+                  "fileSize": 96307,
+                  "fileTypeName": "PDF",
+                  "href": "/guidance/NG100/documents/minutes-9",
+                  "title": "Minutes",
+                },
+              ],
+              "title": "Committee meeting: 9",
+            },
+          ],
+          "title": "Committee meetings",
+        },
+        Object {
+          "subGroups": Array [
+            Object {
+              "resourceLinks": Array [
+                Object {
+                  "date": "2018-07-18T13:29:00",
+                  "fileSize": 1365552,
+                  "fileTypeName": "PDF",
+                  "href": "/guidance/NG100/documents/consultation-comments-and-responses-3",
+                  "title": "Consultation comments and responses",
+                },
+              ],
+              "title": "Consultation comments published",
+            },
+          ],
+          "title": "Consultation comments published",
+        },
+        Object {
+          "subGroups": Array [
+            Object {
+              "resourceLinks": Array [
+                Object {
+                  "date": "2018-01-25T11:09:00",
+                  "fileSize": null,
+                  "fileTypeName": null,
+                  "href": "/guidance/NG100/documents/html-content-2",
+                  "title": "Draft guidance consultation",
+                },
+                Object {
+                  "date": "2018-01-18T01:01:00",
+                  "fileSize": 61952,
+                  "fileTypeName": "Word",
+                  "href": "/guidance/NG100/documents/comments-form-2",
+                  "title": "Comments form",
+                },
+                Object {
+                  "date": "2018-01-18T01:01:00",
+                  "fileSize": 637464,
+                  "fileTypeName": "PDF",
+                  "href": "/guidance/NG100/documents/draft-guideline",
+                  "title": "Draft guideline",
+                },
+                Object {
+                  "date": "2018-01-18T01:01:00",
+                  "fileSize": 827885,
+                  "fileTypeName": "PDF",
+                  "href": "/guidance/NG100/documents/committee-member-list-2",
+                  "title": "Committee member list",
+                },
+                Object {
+                  "date": "2018-01-18T01:01:00",
+                  "fileSize": 1296412,
+                  "fileTypeName": "PDF",
+                  "href": "/guidance/NG100/documents/evidence-review",
+                  "title": "Evidence review A",
+                },
+                Object {
+                  "date": "2018-01-18T01:01:00",
+                  "fileSize": 1947525,
+                  "fileTypeName": "PDF",
+                  "href": "/guidance/NG100/documents/evidence-review-2",
+                  "title": "Evidence review B",
+                },
+                Object {
+                  "date": "2018-01-18T01:01:00",
+                  "fileSize": 1828475,
+                  "fileTypeName": "PDF",
+                  "href": "/guidance/NG100/documents/evidence-review-3",
+                  "title": "Evidence review C",
+                },
+                Object {
+                  "date": "2018-01-18T01:01:00",
+                  "fileSize": 955372,
+                  "fileTypeName": "PDF",
+                  "href": "/guidance/NG100/documents/evidence-review-4",
+                  "title": "Evidence review D",
+                },
+                Object {
+                  "date": "2018-01-18T01:01:00",
+                  "fileSize": 1248863,
+                  "fileTypeName": "PDF",
+                  "href": "/guidance/NG100/documents/evidence-review-5",
+                  "title": "Evidence review E",
+                },
+                Object {
+                  "date": "2018-01-18T01:01:00",
+                  "fileSize": 5973637,
+                  "fileTypeName": "PDF",
+                  "href": "/guidance/NG100/documents/evidence-review-6",
+                  "title": "Evidence review F",
+                },
+                Object {
+                  "date": "2018-01-18T01:01:00",
+                  "fileSize": 3951659,
+                  "fileTypeName": "PDF",
+                  "href": "/guidance/NG100/documents/evidence-review-7",
+                  "title": "Evidence review G",
+                },
+                Object {
+                  "date": "2018-01-18T01:01:00",
+                  "fileSize": 1883531,
+                  "fileTypeName": "PDF",
+                  "href": "/guidance/NG100/documents/evidence-review-8",
+                  "title": "Evidence review H",
+                },
+                Object {
+                  "date": "2018-01-18T01:01:00",
+                  "fileSize": 1805583,
+                  "fileTypeName": "PDF",
+                  "href": "/guidance/NG100/documents/evidence-review-9",
+                  "title": "Evidence review I",
+                },
+                Object {
+                  "date": "2018-01-18T01:01:00",
+                  "fileSize": 273316,
+                  "fileTypeName": "PDF",
+                  "href": "/guidance/NG100/documents/supporting-documentation",
+                  "title": "Supporting documentation Acknowledgements",
+                },
+                Object {
+                  "date": "2018-01-18T01:01:00",
+                  "fileSize": 186979,
+                  "fileTypeName": "PDF",
+                  "href": "/guidance/NG100/documents/supporting-documentation-2",
+                  "title": "Supporting documentation Algorithm Assessment",
+                },
+                Object {
+                  "date": "2018-01-18T01:01:00",
+                  "fileSize": 284634,
+                  "fileTypeName": "PDF",
+                  "href": "/guidance/NG100/documents/supporting-documentation-3",
+                  "title": "Supporting documentation Algorithm Management&Monitoring",
+                },
+                Object {
+                  "date": "2018-01-18T01:01:00",
+                  "fileSize": 1355301,
+                  "fileTypeName": "PDF",
+                  "href": "/guidance/NG100/documents/supporting-documentation-4",
+                  "title": "Supporting documentation Methodology",
+                },
+                Object {
+                  "date": "2020-03-31T16:01:00",
+                  "fileSize": 233482,
+                  "fileTypeName": "PDF",
+                  "href": "/guidance/NG100/documents/equality-impact-assessment-6",
+                  "title": "Equality impact assessment",
+                },
+              ],
+              "title": "Draft guidance consultation",
+            },
+          ],
+          "title": "Draft guidance consultation",
+        },
+        Object {
+          "subGroups": Array [
+            Object {
+              "resourceLinks": Array [
+                Object {
+                  "date": "2016-07-19T08:56:00",
+                  "fileSize": null,
+                  "fileTypeName": null,
+                  "href": "/guidance/NG100/documents/html-content",
+                  "title": "Draft scope consultation",
+                },
+                Object {
+                  "date": "2016-06-14T08:06:00",
+                  "fileSize": 64512,
+                  "fileTypeName": "Word",
+                  "href": "/guidance/NG100/documents/comments-form",
+                  "title": "Comments form",
+                },
+                Object {
+                  "date": "2016-06-17T01:01:00",
+                  "fileSize": 123626,
+                  "fileTypeName": "PDF",
+                  "href": "/guidance/NG100/documents/draft-scope",
+                  "title": "Draft scope",
+                },
+                Object {
+                  "date": "2020-03-31T16:01:00",
+                  "fileSize": 233482,
+                  "fileTypeName": "PDF",
+                  "href": "/guidance/NG100/documents/equality-impact-assessment-8",
+                  "title": "Equality impact assessment",
+                },
+              ],
+              "title": "Draft scope consultation",
+            },
+          ],
+          "title": "Draft scope consultation",
+        },
+        Object {
+          "subGroups": Array [
+            Object {
+              "resourceLinks": Array [
+                Object {
+                  "date": "2020-03-31T16:01:00",
+                  "fileSize": 233482,
+                  "fileTypeName": "PDF",
+                  "href": "/guidance/NG100/documents/equality-impact-assessment-5",
+                  "title": "Equality impact assessment",
+                },
+              ],
+              "title": "Equality impact assessment published",
+            },
+          ],
+          "title": "Equality impact assessment published",
+        },
+        Object {
+          "subGroups": Array [
+            Object {
+              "resourceLinks": Array [
+                Object {
+                  "date": "2020-03-31T16:01:00",
+                  "fileSize": 233482,
+                  "fileTypeName": "PDF",
+                  "href": "/guidance/NG100/documents/equality-impact-assessment-7",
+                  "title": "Equality impact assessment",
+                },
+              ],
+              "title": "Equality impact assessment published",
+            },
+          ],
+          "title": "Equality impact assessment published",
+        },
+        Object {
+          "subGroups": Array [
+            Object {
+              "resourceLinks": Array [
+                Object {
+                  "date": "2017-11-30T13:15:00",
+                  "fileSize": 110744,
+                  "fileTypeName": "PDF",
+                  "href": "/guidance/NG100/documents/review-questions",
+                  "title": "Review questions",
+                },
+                Object {
+                  "date": "2017-11-30T13:15:00",
+                  "fileSize": 2328531,
+                  "fileTypeName": "PDF",
+                  "href": "/guidance/NG100/documents/search-strategies",
+                  "title": "Search strategies",
+                },
+                Object {
+                  "date": "2018-02-21T13:55:00",
+                  "fileSize": 114584,
+                  "fileTypeName": "PDF",
+                  "href": "/guidance/NG100/documents/economic-plan-2",
+                  "title": "Economic plan",
+                },
+              ],
+              "title": "Pre-consultation documents released",
+            },
+          ],
+          "title": "Pre-consultation documents released",
+        },
+        Object {
+          "subGroups": Array [
+            Object {
+              "resourceLinks": Array [
+                Object {
+                  "date": "2016-09-13T00:01:00",
+                  "fileSize": 132806,
+                  "fileTypeName": "PDF",
+                  "href": "/guidance/NG100/documents/final-scope",
+                  "title": "Final scope",
+                },
+                Object {
+                  "date": "2016-09-13T00:01:00",
+                  "fileSize": 414152,
+                  "fileTypeName": "PDF",
+                  "href": "/guidance/NG100/documents/consultation-comments-and-responses",
+                  "title": "Consultation comments and responses",
+                },
+              ],
+              "title": "Scope published",
+            },
+          ],
+          "title": "Scope published",
+        },
+        Object {
+          "subGroups": Array [
+            Object {
+              "resourceLinks": Array [
+                Object {
+                  "date": "2016-06-14T08:06:00",
+                  "fileSize": 495708,
+                  "fileTypeName": "PDF",
+                  "href": "/guidance/NG100/documents/workshop-notes",
+                  "title": "Workshop notes",
+                },
+              ],
+              "title": "Scoping workshop",
+            },
+          ],
+          "title": "Scoping workshop",
+        },
+        Object {
+          "subGroups": Array [
+            Object {
+              "resourceLinks": Array [
+                Object {
+                  "date": "2017-11-23T14:45:00",
+                  "fileSize": 175170,
+                  "fileTypeName": "PDF",
+                  "href": "/guidance/NG100/documents/stakeholder-list-2",
+                  "title": "Stakeholder list",
+                },
+              ],
+              "title": "Stakeholder list updated",
+            },
+          ],
+          "title": "Stakeholder list updated",
+        },
+      ],
+      "reference": "NG100",
+      "title": "Rheumatoid arthritis (update)",
+    },
+  },
+}
 `;

@@ -28,7 +28,7 @@ describe("/history/index.page", () => {
 
 	beforeEach(() => {
 		(useRouter as jest.Mock).mockImplementation(() => ({
-			asPath: `/indicators/history/${slug}#somewhere`,
+			asPath: `/indicators/${slug}/history`,
 		}));
 		axiosMock.reset();
 
@@ -73,5 +73,27 @@ describe("/history/index.page", () => {
 				);
 			});
 		});
+	});
+
+	describe("getServerSideProps", () => {
+		it("should return a correct props", async () => {
+			const result = await getServerSideProps({
+				params: { slug },
+				resolvedUrl: `/indicators/${slug}/history`,
+			} as HistoryPageGetServerSidePropsContext);
+
+			expect(result).toMatchSnapshot();
+		});
+
+		// it("should return correct groupSections", async () => {
+		// 	const result = await getServerSideProps({
+		// 		params: { slug },
+		// 		resolvedUrl: `/indicators/${slug}/history`,
+		// 	} as HistoryPageGetServerSidePropsContext);
+
+		// 	const { groupSections } = result.props as HistoryPageProps;
+
+		// 	expect(groupSections).toHaveLength(11);
+		// });
 	});
 });
