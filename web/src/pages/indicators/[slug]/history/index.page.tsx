@@ -1,5 +1,3 @@
-import { groupEnd } from "console";
-
 import { type GetServerSideProps } from "next/types";
 import React from "react";
 
@@ -54,6 +52,17 @@ export default function HistoryPage({
 	groupSections,
 }: HistoryPageProps): JSX.Element {
 	const hasOnThisPageMenu = groupSections.length > 1;
+
+	console.log(
+		{ productPath },
+		{ product },
+		{ project },
+		{ hasEvidenceResources },
+		{ hasInfoForPublicResources },
+		{ hasToolsAndResources },
+		{ hasHistory },
+		{ groupSections }
+	);
 
 	return (
 		<>
