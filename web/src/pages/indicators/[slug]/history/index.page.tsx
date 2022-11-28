@@ -69,7 +69,8 @@ export default function HistoryPage({
 				<Breadcrumb to="/standards-and-indicators/indicators">
 					Indicators
 				</Breadcrumb>
-				<Breadcrumb>{product.id}</Breadcrumb>
+				<Breadcrumb to={`/indicators/${product.id}`}>{product.id}</Breadcrumb>
+				<Breadcrumb>History</Breadcrumb>
 			</Breadcrumbs>
 			<ProductPageHeading product={product} />
 			<ProductHorizontalNav
@@ -146,7 +147,7 @@ export const getServerSideProps: GetServerSideProps<
 					subGroups.push(currentSubGroup);
 				}
 
-				const { mimeType, length, links, resourceTitleId, fileName } =
+				const { mimeType, length, resourceTitleId, fileName } =
 						resource.embedded.niceIndevFile,
 					isHTML = mimeType === "text/html",
 					fileSize = isHTML ? null : length,

@@ -26,7 +26,10 @@ export type HistoryHTMLPageProps = {
 	hasInfoForPublicResources: boolean;
 	hasToolsAndResources: boolean;
 	hasHistory: boolean;
-	resourceFileHTML: string;
+	resource: {
+		resourceFileHTML: string;
+		title: string;
+	};
 	lastUpdated: string;
 };
 
@@ -37,7 +40,7 @@ export default function HistoryHTMLPage({
 	hasInfoForPublicResources,
 	hasToolsAndResources,
 	hasHistory,
-	resourceFileHTML,
+	resource,
 	lastUpdated,
 }: HistoryHTMLPageProps): JSX.Element {
 	return (
@@ -55,7 +58,11 @@ export default function HistoryHTMLPage({
 				<Breadcrumb to="/standards-and-indicators/indicators">
 					Indicators
 				</Breadcrumb>
-				<Breadcrumb>{product.id}</Breadcrumb>
+				<Breadcrumb to={`/indicators/${product.id}`}>{product.id}</Breadcrumb>
+				<Breadcrumb to={`/indicators/${product.id}/history`}>
+					History
+				</Breadcrumb>
+				<Breadcrumb>{resource.title}</Breadcrumb>
 			</Breadcrumbs>
 			<ProductPageHeading product={product} />
 			<ProductHorizontalNav
@@ -66,7 +73,9 @@ export default function HistoryHTMLPage({
 				hasInfoForPublicResources={hasInfoForPublicResources}
 				hasHistory={hasHistory}
 			/>
-			<div dangerouslySetInnerHTML={{ __html: resourceFileHTML }}></div>
+			<div
+				dangerouslySetInnerHTML={{ __html: resource.resourceFileHTML }}
+			></div>
 			{lastUpdated ? (
 				<p>
 					This page was last updated on{" "}
@@ -129,7 +138,7 @@ export const getServerSideProps: GetServerSideProps<
 				publishedDate: product.publishedDate,
 				lastMajorModificationDate: product.lastMajorModificationDate,
 			},
-			resourceFileHTML,
+			resource: { resourceFileHTML, title: resource.title },
 			lastUpdated: resource.publishedDate,
 		},
 	};
