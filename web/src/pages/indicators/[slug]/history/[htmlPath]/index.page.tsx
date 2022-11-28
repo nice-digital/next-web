@@ -3,24 +3,14 @@ import { type GetServerSideProps } from "next/types";
 import React from "react";
 
 import { Breadcrumbs, Breadcrumb } from "@nice-digital/nds-breadcrumbs";
-import { Grid, GridItem } from "@nice-digital/nds-grid";
 
-import {
-	OnThisPage,
-	OnThisPageSection,
-} from "@/components/OnThisPage/OnThisPage";
 import { ProductHorizontalNav } from "@/components/ProductHorizontalNav/ProductHorizontalNav";
 import { ProductPageHeading } from "@/components/ProductPageHeading/ProductPageHeading";
-import { ResourceList } from "@/components/ResourceList/ResourceList";
-import { getResourceFileHTML, ProjectDetail } from "@/feeds/inDev/inDev";
+import { getResourceFileHTML } from "@/feeds/inDev/inDev";
 import { ProductDetail } from "@/feeds/publications/types";
-import { arrayify, byTitleAlphabetically } from "@/utils/array";
-import { getFileTypeNameFromMime } from "@/utils/file";
+import { arrayify } from "@/utils/array";
+import { formatDateStr, stripTime } from "@/utils/datetime";
 import { validateRouteParams } from "@/utils/product";
-import {
-	ResourceGroupViewModel,
-	ResourceSubGroupViewModel,
-} from "@/utils/resource";
 
 export type HistoryHTMLPageProps = {
 	productPath: string;
@@ -32,23 +22,23 @@ export type HistoryHTMLPageProps = {
 		| "publishedDate"
 		| "lastMajorModificationDate"
 	>;
-	project: Pick<ProjectDetail, "reference" | "title">;
 	hasEvidenceResources: boolean;
 	hasInfoForPublicResources: boolean;
 	hasToolsAndResources: boolean;
 	hasHistory: boolean;
 	resourceFileHTML: string;
+	lastUpdated: string;
 };
 
 export default function HistoryHTMLPage({
 	productPath,
 	product,
-	project,
 	hasEvidenceResources,
 	hasInfoForPublicResources,
 	hasToolsAndResources,
 	hasHistory,
 	resourceFileHTML,
+	lastUpdated,
 }: HistoryHTMLPageProps): JSX.Element {
 	return (
 		<>
@@ -77,6 +67,14 @@ export default function HistoryHTMLPage({
 				hasHistory={hasHistory}
 			/>
 			<div dangerouslySetInnerHTML={{ __html: resourceFileHTML }}></div>
+			{lastUpdated ? (
+				<p>
+					This page was last updated on{" "}
+					<time dateTime={stripTime(lastUpdated)}>
+						{formatDateStr(lastUpdated)}
+					</time>
+				</p>
+			) : null}
 		</>
 	);
 }
@@ -90,7 +88,6 @@ export const getServerSideProps: GetServerSideProps<
 	if ("notFound" in result || "redirect" in result) return result;
 
 	const {
-		project,
 		product,
 		productPath,
 		hasEvidenceResources,
@@ -99,8 +96,6 @@ export const getServerSideProps: GetServerSideProps<
 		hasHistory,
 		historyPanels,
 	} = result;
-
-	if (!project) return { notFound: true };
 
 	const resource = historyPanels
 		.flatMap((panel) =>
@@ -133,11 +128,8 @@ export const getServerSideProps: GetServerSideProps<
 				publishedDate: product.publishedDate,
 				lastMajorModificationDate: product.lastMajorModificationDate,
 			},
-			project: {
-				reference: project.reference,
-				title: project.title,
-			},
 			resourceFileHTML,
+			lastUpdated: resource.publishedDate,
 		},
 	};
 };
