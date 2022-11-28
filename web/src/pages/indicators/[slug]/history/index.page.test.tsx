@@ -122,7 +122,7 @@ describe("/history/index.page", () => {
 			} as HistoryPageGetServerSidePropsContext)) as {
 				props: HistoryPageProps;
 			};
-
+			//TODO should be a 404
 			expect(result.props.hasHistory).toBe(false);
 		});
 	});

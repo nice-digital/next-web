@@ -146,14 +146,20 @@ export const getServerSideProps: GetServerSideProps<
 					subGroups.push(currentSubGroup);
 				}
 
-				const { mimeType, length, links } = resource.embedded.niceIndevFile,
+				const { mimeType, length, links, resourceTitleId, fileName } =
+						resource.embedded.niceIndevFile,
 					isHTML = mimeType === "text/html",
 					fileSize = isHTML ? null : length,
-					fileTypeName = isHTML ? null : getFileTypeNameFromMime(mimeType);
+					fileTypeName = isHTML ? null : getFileTypeNameFromMime(mimeType),
+					href = isHTML
+						? `${productPath}/history/${resourceTitleId}`
+						: `${productPath}/history/downloads/${
+								product.id
+						  }-${resourceTitleId}.${fileName.split(".").slice(-1)[0]}`;
 
 				currentSubGroup.resourceLinks.push({
 					title: resource.title,
-					href: links.self[0].href,
+					href,
 					fileTypeName,
 					fileSize,
 					date: resource.publishedDate,

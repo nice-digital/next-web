@@ -1,6 +1,6 @@
 import { serverRuntimeConfig } from "@/config";
 
-import { getFeedBodyCached, getFeedBodyUnCached } from "..";
+import { getFeedBodyCached, getFeedBodyUnCached, getResponseStream } from "..";
 import { isSuccessResponse } from "../publications/publications";
 import { ErrorResponse } from "../publications/types";
 
@@ -71,3 +71,30 @@ export const getProjectDetail = async (
 			return isSuccessResponse(response) ? response : null;
 		}
 	);
+
+/**
+ * Streams readable HTML stream.
+ *
+ */
+export const getResourceFileHTML = async (
+	resourcePath: string
+): Promise<string | null> => {
+	const body = await getFeedBodyUnCached<string | ErrorResponse>(
+		origin,
+		resourcePath,
+		apiKey
+	);
+
+	return isSuccessResponse(body) ? body : null;
+};
+
+/**
+ * Gets a stream of a file from indev.
+ *
+ * @param filePath The relative path of the endpoint that serves file content, e.g. `/guidance/NG100/documents/draft-guideline`
+ * @returns A readable stream of the file contents
+ */
+export const getFileStream = async (
+	filePath: string
+): Promise<ReturnType<typeof getResponseStream>> =>
+	getResponseStream(origin, filePath, apiKey);
