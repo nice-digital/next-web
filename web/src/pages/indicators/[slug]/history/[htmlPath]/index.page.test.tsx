@@ -15,7 +15,7 @@ import HistoryHTMLPage, {
 	HistoryHTMLPageProps,
 } from "./index.page";
 
-type HistoryPageGetServerSidePropsContext = GetServerSidePropsContext<{
+type HistoryHTMLPageGetServerSidePropsContext = GetServerSidePropsContext<{
 	slug: string;
 	htmlPath: string;
 }>;
@@ -61,7 +61,7 @@ describe("/indicators/[slug]/history.page", () => {
 		beforeEach(async () => {
 			const context = {
 				params: { slug: slug, htmlPath: htmlPath },
-			} as HistoryPageGetServerSidePropsContext;
+			} as HistoryHTMLPageGetServerSidePropsContext;
 
 			props = (
 				(await getServerSideProps(context)) as {
@@ -91,6 +91,27 @@ describe("/indicators/[slug]/history.page", () => {
 			render(<HistoryHTMLPage {...props} />);
 			const link = screen.getByText(linkText, { selector: "dd" });
 			expect(link).toBeInTheDocument();
+		});
+	});
+
+	describe("getServerSideProps", () => {
+		it("should return a correct props", async () => {
+			const result = await getServerSideProps({
+				params: { slug, htmlPath },
+				resolvedUrl: `/indicators/${slug}/history/${htmlPath}`,
+			} as HistoryHTMLPageGetServerSidePropsContext);
+
+			expect(result).toMatchSnapshot();
+		});
+
+		it("should return a not found if resource title id doesn't match the htmlPath", async () => {
+			const wrongHtmlPath = "non-existent-html-1";
+			const notFoundResult = await getServerSideProps({
+				params: { slug, htmlPath: wrongHtmlPath },
+				resolvedUrl: `/indicators/${slug}/history/${htmlPath}`,
+			} as HistoryHTMLPageGetServerSidePropsContext);
+
+			expect(notFoundResult).toStrictEqual({ notFound: true });
 		});
 	});
 });

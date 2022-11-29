@@ -53,7 +53,6 @@ export default function HistoryHTMLPage({
 }: HistoryHTMLPageProps): JSX.Element {
 	const resourceLinks = resource.groups[0].subGroups[0].resourceLinks;
 
-	console.log("PRODUCT ##### ", product);
 	return (
 		<>
 			<NextSeo

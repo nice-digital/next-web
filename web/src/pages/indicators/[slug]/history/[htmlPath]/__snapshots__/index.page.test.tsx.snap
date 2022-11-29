@@ -427,3 +427,60 @@ exports[`/indicators/[slug]/history.page HistoryPage should match snapshot for m
   </div>
 </body>
 `;
+
+exports[`/indicators/[slug]/history.page getServerSideProps should return a correct props 1`] = `
+Object {
+  "props": Object {
+    "hasEvidenceResources": false,
+    "hasHistory": true,
+    "hasInfoForPublicResources": false,
+    "hasToolsAndResources": false,
+    "lastUpdated": "2016-07-19T08:56:00",
+    "product": Object {
+      "id": "IND6",
+      "lastMajorModificationDate": "2022-09-08T14:07:12.0336296",
+      "productTypeName": "NICE indicator",
+      "publishedDate": "2022-09-08T14:07:12.0336296",
+      "title": "New Indicator product-1",
+    },
+    "productPath": "/indicators/ind6-new-indicator-product-1",
+    "resource": Object {
+      "groups": Array [
+        Object {
+          "subGroups": Array [
+            Object {
+              "resourceLinks": Array [
+                Object {
+                  "date": "2016-06-14T08:06:00",
+                  "fileSize": 64512,
+                  "fileTypeName": "Word",
+                  "href": "/indicators/ind6-new-indicator-product-1/history/downloads/IND6-comments-form.doc",
+                  "title": "Comments form",
+                },
+                Object {
+                  "date": "2016-06-17T01:01:00",
+                  "fileSize": 123626,
+                  "fileTypeName": "PDF",
+                  "href": "/indicators/ind6-new-indicator-product-1/history/downloads/IND6-draft-scope.pdf",
+                  "title": "Draft scope",
+                },
+                Object {
+                  "date": "2020-03-31T16:01:00",
+                  "fileSize": 233482,
+                  "fileTypeName": "PDF",
+                  "href": "/indicators/ind6-new-indicator-product-1/history/downloads/IND6-equality-impact-assessment-8.pdf",
+                  "title": "Equality impact assessment",
+                },
+              ],
+              "title": "Draft scope consultation",
+            },
+          ],
+          "title": "Draft scope consultation",
+        },
+      ],
+      "resourceFileHTML": "<p>some test html content</p>",
+      "title": "Draft scope consultation",
+    },
+  },
+}
+`;
