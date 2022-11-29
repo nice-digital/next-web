@@ -201,17 +201,19 @@ exports[`ProductResourcePage should match snapshot 1`] = `
       </li>
     </ul>
   </nav>
-  <a
-    href="/some-download-url.pdf"
-  >
-    Download (PDF
-    , 
-    1 kB
-    )
-  </a>
   <h2>
     Resource title
   </h2>
+  <p>
+    <a
+      href="/some-download-url.pdf"
+    >
+      Download (PDF
+      , 
+      1 kB
+      )
+    </a>
+  </p>
   <div>
     <p>
       Some body text

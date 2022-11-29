@@ -76,6 +76,14 @@ describe("ProductResourcePage", () => {
 		);
 	});
 
+	it("should render link to resource PDF", () => {
+		render(<ProductResourcePage {...props} />);
+
+		expect(
+			screen.getByRole("link", { name: "Download (PDF, 1 kB)" })
+		).toHaveAttribute("href", props.resourceDownloadPath);
+	});
+
 	it("should render resource body", () => {
 		render(<ProductResourcePage {...props} />);
 

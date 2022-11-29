@@ -4,7 +4,10 @@ import { type ProductPageHeadingProps } from "@/components/ProductPageHeading/Pr
 import { getResourceDetails } from "@/feeds/publications/publications";
 import { validateRouteParams } from "@/utils/product";
 import {
+	getResourceGroup,
 	getResourceGroups,
+	isEvidenceUpdate,
+	isSupportingEvidence,
 	ResourceTypeSlug,
 	type ResourceGroupViewModel,
 } from "@/utils/resource";
@@ -53,15 +56,45 @@ export const getGetServerSidePropsFunc =
 
 		if (resources.length === 0) return { notFound: true };
 
+		const fullResources = await getResourceDetails(resources);
+
+		const resourceGroups =
+			resourceTypeSlug === "evidence"
+				? [
+						...(fullResources.some(isEvidenceUpdate)
+							? [
+									getResourceGroup(
+										product.id,
+										productPath,
+										"Evidence updates",
+										fullResources.filter(isEvidenceUpdate),
+										resourceTypeSlug
+									),
+							  ]
+							: []),
+						...(fullResources.some(isSupportingEvidence)
+							? [
+									getResourceGroup(
+										product.id,
+										productPath,
+										"Supporting evidence",
+										fullResources.filter(isSupportingEvidence),
+										resourceTypeSlug
+									),
+							  ]
+							: []),
+				  ]
+				: getResourceGroups(
+						product.id,
+						productPath,
+						fullResources,
+						resourceTypeSlug
+				  );
+
 		return {
 			props: {
 				resourceTypeSlug,
-				resourceGroups: getResourceGroups(
-					product.id,
-					productPath,
-					await getResourceDetails(resources),
-					resourceTypeSlug
-				),
+				resourceGroups,
 				hasToolsAndResources,
 				hasInfoForPublicResources,
 				hasEvidenceResources,

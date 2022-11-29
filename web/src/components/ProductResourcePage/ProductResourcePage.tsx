@@ -73,19 +73,21 @@ export const ProductResourcePage: FC<ProductResourcePageProps> = ({
 				hasHistory={hasHistory}
 			/>
 
-			{resourceDownloadPath ? (
-				<a href={resourceDownloadPath}>
-					Download (PDF
-					{resourceDownloadSizeBytes ? (
-						<>
-							, <FileSize fileSizeBytes={resourceDownloadSizeBytes} />
-						</>
-					) : null}
-					)
-				</a>
-			) : null}
-
 			<h2>{title}</h2>
+
+			{resourceDownloadPath ? (
+				<p>
+					<a href={resourceDownloadPath}>
+						Download (PDF
+						{resourceDownloadSizeBytes ? (
+							<>
+								, <FileSize fileSizeBytes={resourceDownloadSizeBytes} />
+							</>
+						) : null}
+						)
+					</a>
+				</p>
+			) : null}
 
 			<div dangerouslySetInnerHTML={{ __html: htmlBody }} />
 

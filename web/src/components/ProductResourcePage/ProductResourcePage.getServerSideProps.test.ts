@@ -10,10 +10,7 @@ import mockEditableContentResource from "@/mockData/publications/feeds/resource/
 import mockEditableHTML from "@/mockData/publications/feeds/supportingresource/29409/content/1/html.json";
 import { ResourceTypeSlug } from "@/utils/resource";
 
-import {
-	getGetServerSidePropsFunc,
-	type ProductResourcePageProps,
-} from "./ProductResourcePage.getServerSideProps";
+import { getGetServerSidePropsFunc } from "./ProductResourcePage.getServerSideProps";
 
 const axiosJSONMock = new MockAdapter(client, {
 	onNoMatch: "throwException",
