@@ -1,4 +1,4 @@
-import { render, screen } from "@testing-library/react";
+import { getDefaultNormalizer, render, screen } from "@testing-library/react";
 import MockAdapter from "axios-mock-adapter";
 import { type GetServerSidePropsContext } from "next";
 import { useRouter } from "next/router";
@@ -28,7 +28,8 @@ const axiosMock = new MockAdapter(client, {
 
 describe("/indicators/[slug]/history.page", () => {
 	const slug = "ind6-new-indicator-product-1";
-	const htmlPath = "html-content-2";
+	const htmlPath = "html-content";
+	const mockEditableHTML = "<p>some test html content</p>";
 
 	beforeEach(() => {
 		(useRouter as jest.Mock).mockImplementation(() => ({
@@ -45,6 +46,12 @@ describe("/indicators/[slug]/history.page", () => {
 		axiosMock
 			.onGet(new RegExp(FeedPath.IndicatorSubTypes))
 			.reply(200, mockIndicatorSubTypes);
+
+		axiosMock
+			.onGet(
+				`https://next-web-tests-indev.nice.org.uk/guidance/NG100/documents/${htmlPath}`
+			)
+			.reply(200, mockEditableHTML);
 
 		jest.resetModules();
 	});
@@ -67,8 +74,23 @@ describe("/indicators/[slug]/history.page", () => {
 			render(<HistoryHTMLPage {...props} />);
 
 			// eslint-disable-next-line testing-library/no-debugging-utils
-			screen.debug();
+			// screen.debug();
 			expect(document.body).toMatchSnapshot();
+		});
+
+		it("should render html content from the endpoint", () => {
+			render(<HistoryHTMLPage {...props} />);
+			expect(screen.getByText("some test html content")).toBeInTheDocument();
+		});
+
+		it.each([
+			["Comments form"],
+			["Draft scope"],
+			["Equality impact assessment"],
+		])("should render resource for %s", (linkText) => {
+			render(<HistoryHTMLPage {...props} />);
+			const link = screen.getByText(linkText, { selector: "dd" });
+			expect(link).toBeInTheDocument();
 		});
 	});
 });

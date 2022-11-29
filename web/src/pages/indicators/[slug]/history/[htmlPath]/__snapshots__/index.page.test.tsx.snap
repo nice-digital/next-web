@@ -1,0 +1,429 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`/indicators/[slug]/history.page HistoryPage should match snapshot for main content 1`] = `
+<body>
+  <div>
+    <nav
+      aria-label="Breadcrumbs"
+      role="navigation"
+    >
+      <ol
+        class="breadcrumbs"
+      >
+        <li
+          class="breadcrumbs__crumb"
+        >
+          <a
+            href="/"
+          >
+            Home
+          </a>
+        </li>
+        <li
+          class="breadcrumbs__crumb"
+        >
+          <a
+            href="/standards-and-indicators"
+          >
+            Standards and Indicators
+          </a>
+        </li>
+        <li
+          class="breadcrumbs__crumb"
+        >
+          <a
+            href="/standards-and-indicators/indicators"
+          >
+            Indicators
+          </a>
+        </li>
+        <li
+          class="breadcrumbs__crumb"
+        >
+          <a
+            href="/indicators/IND6"
+          >
+            IND6
+          </a>
+        </li>
+        <li
+          class="breadcrumbs__crumb"
+        >
+          <a
+            href="/indicators/IND6/history"
+          >
+            History
+          </a>
+        </li>
+        <li
+          class="breadcrumbs__crumb"
+        >
+          <span>
+            Draft scope consultation
+          </span>
+        </li>
+      </ol>
+    </nav>
+    <script
+      type="application/ld+json"
+    >
+      {
+  "@context": "http://schema.org",
+  "@type": "BreadcrumbList",
+  "itemListElement": [
+    {
+      "@type": "ListItem",
+      "position": 1,
+      "item": {
+        "@id": "/",
+        "name": "Home"
+      }
+    },
+    {
+      "@type": "ListItem",
+      "position": 2,
+      "item": {
+        "@id": "/standards-and-indicators",
+        "name": "Standards and Indicators"
+      }
+    },
+    {
+      "@type": "ListItem",
+      "position": 3,
+      "item": {
+        "@id": "/standards-and-indicators/indicators",
+        "name": "Indicators"
+      }
+    },
+    {
+      "@type": "ListItem",
+      "position": 4,
+      "item": {
+        "@id": "/indicators/IND6",
+        "name": "IND6"
+      }
+    },
+    {
+      "@type": "ListItem",
+      "position": 5,
+      "item": {
+        "@id": "/indicators/IND6/history",
+        "name": "History"
+      }
+    },
+    {
+      "@type": "ListItem",
+      "position": 6,
+      "item": {
+        "name": "Draft scope consultation"
+      }
+    }
+  ]
+}
+    </script>
+    <div
+      class="page-header"
+      id="content-start"
+    >
+      <h1
+        class="page-header__heading page-header__heading--alt"
+      >
+        New Indicator product-1
+      </h1>
+      <ul
+        class="page-header__metadata"
+      >
+        <li>
+          NICE indicator
+        </li>
+        <li>
+          IND6
+        </li>
+        <li>
+          Published:
+          <time
+            datetime="2022-09-08"
+          >
+             
+            8 September 2022
+          </time>
+        </li>
+      </ul>
+    </div>
+    <nav
+      class="horizontal-nav"
+    >
+      <ul
+        class="horizontal-nav__list"
+      >
+        <li
+          class="horizontal-nav__item"
+        >
+          <a
+            aria-current="false"
+            class="horizontal-nav__link"
+            href="/indicators/ind6-new-indicator-product-1"
+          >
+            Indicator
+          </a>
+        </li>
+        <li
+          class="horizontal-nav__item"
+        >
+          <a
+            aria-current="true"
+            class="horizontal-nav__link"
+            href="/indicators/ind6-new-indicator-product-1/history"
+          >
+            History
+          </a>
+        </li>
+      </ul>
+    </nav>
+    <div>
+      <p>
+        some test html content
+      </p>
+    </div>
+    <hr />
+    <ul
+      class="list list--unstyled"
+    >
+      <li>
+        <article
+          class="card"
+        >
+          <header
+            class="card__header"
+          >
+            <p
+              class="card__heading"
+            >
+              <a
+                href="/indicators/ind6-new-indicator-product-1/history/downloads/IND6-comments-form.doc"
+              >
+                Comments form (Word, 65 kB)
+              </a>
+            </p>
+          </header>
+          <dl
+            class="card__metadata"
+          >
+            <div
+              class="card__metadatum"
+            >
+              <dt
+                class="visually-hidden"
+              >
+                Type
+              </dt>
+              <dd>
+                Comments form
+              </dd>
+            </div>
+            <div
+              class="card__metadatum"
+            >
+              <dt
+                class="visually-hidden"
+              >
+                Date
+              </dt>
+              <dd>
+                <time
+                  datetime="2016-06-14"
+                >
+                  14 June 2016
+                </time>
+              </dd>
+            </div>
+            <div
+              class="card__metadatum"
+            >
+              <dt
+                class="visually-hidden"
+              >
+                File type
+              </dt>
+              <dd>
+                Word
+              </dd>
+            </div>
+            <div
+              class="card__metadatum"
+            >
+              <dt
+                class="visually-hidden"
+              >
+                File size
+              </dt>
+              <dd>
+                65 kB
+              </dd>
+            </div>
+          </dl>
+        </article>
+      </li>
+      <li>
+        <article
+          class="card"
+        >
+          <header
+            class="card__header"
+          >
+            <p
+              class="card__heading"
+            >
+              <a
+                href="/indicators/ind6-new-indicator-product-1/history/downloads/IND6-draft-scope.pdf"
+              >
+                Draft scope (PDF, 124 kB)
+              </a>
+            </p>
+          </header>
+          <dl
+            class="card__metadata"
+          >
+            <div
+              class="card__metadatum"
+            >
+              <dt
+                class="visually-hidden"
+              >
+                Type
+              </dt>
+              <dd>
+                Draft scope
+              </dd>
+            </div>
+            <div
+              class="card__metadatum"
+            >
+              <dt
+                class="visually-hidden"
+              >
+                Date
+              </dt>
+              <dd>
+                <time
+                  datetime="2016-06-17"
+                >
+                  17 June 2016
+                </time>
+              </dd>
+            </div>
+            <div
+              class="card__metadatum"
+            >
+              <dt
+                class="visually-hidden"
+              >
+                File type
+              </dt>
+              <dd>
+                PDF
+              </dd>
+            </div>
+            <div
+              class="card__metadatum"
+            >
+              <dt
+                class="visually-hidden"
+              >
+                File size
+              </dt>
+              <dd>
+                124 kB
+              </dd>
+            </div>
+          </dl>
+        </article>
+      </li>
+      <li>
+        <article
+          class="card"
+        >
+          <header
+            class="card__header"
+          >
+            <p
+              class="card__heading"
+            >
+              <a
+                href="/indicators/ind6-new-indicator-product-1/history/downloads/IND6-equality-impact-assessment-8.pdf"
+              >
+                Equality impact assessment (PDF, 233 kB)
+              </a>
+            </p>
+          </header>
+          <dl
+            class="card__metadata"
+          >
+            <div
+              class="card__metadatum"
+            >
+              <dt
+                class="visually-hidden"
+              >
+                Type
+              </dt>
+              <dd>
+                Equality impact assessment
+              </dd>
+            </div>
+            <div
+              class="card__metadatum"
+            >
+              <dt
+                class="visually-hidden"
+              >
+                Date
+              </dt>
+              <dd>
+                <time
+                  datetime="2020-03-31"
+                >
+                  31 March 2020
+                </time>
+              </dd>
+            </div>
+            <div
+              class="card__metadatum"
+            >
+              <dt
+                class="visually-hidden"
+              >
+                File type
+              </dt>
+              <dd>
+                PDF
+              </dd>
+            </div>
+            <div
+              class="card__metadatum"
+            >
+              <dt
+                class="visually-hidden"
+              >
+                File size
+              </dt>
+              <dd>
+                233 kB
+              </dd>
+            </div>
+          </dl>
+        </article>
+      </li>
+    </ul>
+    <p>
+      This page was last updated on
+       
+      <time
+        datetime="2016-07-19"
+      >
+        19 July 2016
+      </time>
+    </p>
+  </div>
+</body>
+`;

@@ -51,7 +51,7 @@ export default function HistoryHTMLPage({
 	resource,
 	lastUpdated,
 }: HistoryHTMLPageProps): JSX.Element {
-	const resourceLinks = resource?.groups[0]?.subGroups[0]?.resourceLinks;
+	const resourceLinks = resource.groups[0].subGroups[0].resourceLinks;
 
 	console.log("PRODUCT ##### ", product);
 	return (
