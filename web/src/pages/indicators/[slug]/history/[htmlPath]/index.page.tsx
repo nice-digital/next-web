@@ -1,16 +1,23 @@
+import { filesize } from "filesize";
 import { NextSeo } from "next-seo";
 import { type GetServerSideProps } from "next/types";
 import React from "react";
 
 import { Breadcrumbs, Breadcrumb } from "@nice-digital/nds-breadcrumbs";
+import { Card, type CardMetaDataProps } from "@nice-digital/nds-card";
 
 import { ProductHorizontalNav } from "@/components/ProductHorizontalNav/ProductHorizontalNav";
 import { ProductPageHeading } from "@/components/ProductPageHeading/ProductPageHeading";
 import { getResourceFileHTML } from "@/feeds/inDev/inDev";
 import { ProductDetail } from "@/feeds/publications/types";
-import { arrayify } from "@/utils/array";
+import { arrayify, isTruthy } from "@/utils/array";
 import { formatDateStr, stripTime } from "@/utils/datetime";
+import { getFileTypeNameFromMime } from "@/utils/file";
 import { validateRouteParams } from "@/utils/product";
+import {
+	ResourceGroupViewModel,
+	ResourceSubGroupViewModel,
+} from "@/utils/resource";
 
 export type HistoryHTMLPageProps = {
 	productPath: string;
@@ -29,6 +36,7 @@ export type HistoryHTMLPageProps = {
 	resource: {
 		resourceFileHTML: string;
 		title: string;
+		groups: ResourceGroupViewModel[];
 	};
 	lastUpdated: string;
 };
@@ -43,6 +51,9 @@ export default function HistoryHTMLPage({
 	resource,
 	lastUpdated,
 }: HistoryHTMLPageProps): JSX.Element {
+	const resourceLinks = resource?.groups[0]?.subGroups[0]?.resourceLinks;
+
+	console.log("PRODUCT ##### ", product);
 	return (
 		<>
 			<NextSeo
@@ -76,6 +87,64 @@ export default function HistoryHTMLPage({
 			<div
 				dangerouslySetInnerHTML={{ __html: resource.resourceFileHTML }}
 			></div>
+			{resourceLinks.length > 0 ? (
+				<>
+					<hr />
+					<ul className="list list--unstyled">
+						{resourceLinks.map((resource) => {
+							const fileSize =
+								resource.fileSize && resource.fileSize > 0
+									? filesize(resource.fileSize, {
+											round: resource.fileSize > 999999 ? 2 : 0,
+									  })
+									: null;
+
+							const cardMeta: CardMetaDataProps[] = [
+								{
+									// Hack because of a bug with the card component rendering a 0 when no metadata
+									label: "Type",
+									value: resource.title,
+									// value: subGroup.title,
+								},
+								resource.date
+									? {
+											label: "Date",
+											value: (
+												<time dateTime={stripTime(resource.date)}>
+													{formatDateStr(resource.date)}
+												</time>
+											),
+									  }
+									: undefined,
+								resource.fileTypeName
+									? { label: "File type", value: resource.fileTypeName }
+									: undefined,
+								resource.fileSize && resource.fileSize > 0
+									? {
+											label: "File size",
+											value: fileSize,
+									  }
+									: undefined,
+							].filter(isTruthy);
+							return (
+								<li key={resource.href}>
+									<Card
+										headingText={`${resource.title}${
+											resource.fileTypeName
+												? ` (${resource.fileTypeName}, ${fileSize})`
+												: ""
+										}`}
+										link={{
+											destination: resource.href,
+										}}
+										metadata={cardMeta}
+									/>
+								</li>
+							);
+						})}
+					</ul>
+				</>
+			) : null}
 			{lastUpdated ? (
 				<p>
 					This page was last updated on{" "}
@@ -124,6 +193,56 @@ export const getServerSideProps: GetServerSideProps<
 
 	if (resourceFileHTML == null) return { notFound: true };
 
+	const groups = historyPanels
+		.filter((panel) => panel.title === resource.title)
+		.map((panel) => {
+			const indevResource =
+				panel.embedded.niceIndevResourceList.embedded.niceIndevResource;
+
+			const indevResources = Array.isArray(indevResource)
+				? indevResource
+				: [indevResource];
+
+			const subGroups: ResourceSubGroupViewModel[] = [];
+
+			let currentSubGroup: ResourceSubGroupViewModel;
+
+			indevResources
+				.filter(
+					(resource) => !resource.textOnly && resource.title !== panel.title
+				)
+				.forEach((resource) => {
+					if (!currentSubGroup) {
+						currentSubGroup = { title: panel.title, resourceLinks: [] };
+						subGroups.push(currentSubGroup);
+					}
+
+					const { mimeType, length, resourceTitleId, fileName } =
+							resource.embedded.niceIndevFile,
+						isHTML = mimeType === "text/html",
+						fileSize = isHTML ? null : length,
+						fileTypeName = isHTML ? null : getFileTypeNameFromMime(mimeType),
+						href = isHTML
+							? `${productPath}/history/${resourceTitleId}`
+							: `${productPath}/history/downloads/${
+									product.id
+							  }-${resourceTitleId}.${fileName.split(".").slice(-1)[0]}`;
+
+					currentSubGroup.resourceLinks.push({
+						title: resource.title,
+						href,
+						fileTypeName,
+						fileSize,
+						date: resource.publishedDate,
+					});
+				});
+
+			return {
+				title: panel.title,
+				subGroups,
+			};
+		});
+
 	return {
 		props: {
 			productPath,
@@ -138,7 +257,11 @@ export const getServerSideProps: GetServerSideProps<
 				publishedDate: product.publishedDate,
 				lastMajorModificationDate: product.lastMajorModificationDate,
 			},
-			resource: { resourceFileHTML, title: resource.title },
+			resource: {
+				resourceFileHTML,
+				title: resource.title,
+				groups,
+			},
 			lastUpdated: resource.publishedDate,
 		},
 	};
