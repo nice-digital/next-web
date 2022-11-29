@@ -30,7 +30,7 @@ export const ProductHorizontalNav: FC<ProductHorizontalNavProps> = ({
 		path = asPath.replace(/#.*/, ""),
 		toolsAndResourcesPath = `${productPath}/resources`,
 		isUnderResources = path.indexOf(toolsAndResourcesPath) === 0,
-		ifpPath = `${productPath}/informationforpublic`,
+		ifpPath = `${productPath}/information-for-the-public`,
 		isUnderIFP = path.indexOf(ifpPath) === 0,
 		evidencePath = `${productPath}/evidence`,
 		isUnderEvidence = path.indexOf(evidencePath) === 0,

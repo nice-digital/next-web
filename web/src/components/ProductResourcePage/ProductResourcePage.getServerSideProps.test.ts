@@ -8,8 +8,12 @@ import mockProductRaw from "@/mockData/publications/feeds/products/indicator.jso
 import mockProductTypes from "@/mockData/publications/feeds/producttypes.json";
 import mockEditableContentResource from "@/mockData/publications/feeds/resource/29409.json";
 import mockEditableHTML from "@/mockData/publications/feeds/supportingresource/29409/content/1/html.json";
+import { ResourceTypeSlug } from "@/utils/resource";
 
-import { getServerSideProps } from "./index.page";
+import {
+	getGetServerSidePropsFunc,
+	type ProductResourcePageProps,
+} from "./ProductResourcePage.getServerSideProps";
 
 const axiosJSONMock = new MockAdapter(client, {
 	onNoMatch: "throwException",
@@ -88,7 +92,11 @@ const getServerSidePropsContext = {
 	resolvedUrl: `/indicators/${slug}/resources/${partSlug}`,
 } as unknown as GetServerSidePropsContext<Params>;
 
-describe("/indicators/resources/[partSlug]", () => {
+describe("getServerSideProps", () => {
+	const getServerSideProps = getGetServerSidePropsFunc(
+		ResourceTypeSlug.ToolsAndResources
+	);
+
 	beforeEach(() => {
 		axiosJSONMock.reset();
 
@@ -115,61 +123,115 @@ describe("/indicators/resources/[partSlug]", () => {
 		jest.resetModules();
 	});
 
-	describe("getServerSideProps", () => {
-		it("should return not found when product has no resources", async () => {
-			axiosJSONMock.onGet(new RegExp(FeedPath.ProductDetail)).reply(200, {
-				...mockProduct,
-				_embedded: {
-					// no related resources
+	it("should return not found when product has no resources", async () => {
+		axiosJSONMock.onGet(new RegExp(FeedPath.ProductDetail)).reply(200, {
+			...mockProduct,
+			_embedded: {
+				// no related resources
+			},
+		});
+
+		expect(await getServerSideProps(getServerSidePropsContext)).toStrictEqual({
+			notFound: true,
+		});
+
+		expect(loggerInfoMock.mock.calls[0][0]).toBe(
+			`Can't serve resource with url /indicators/ind1001-product-title/resources/resource-impact-statement-3784329-4904490349 in product IND1001: no tools and resources`
+		);
+	});
+
+	it("should return not found when part slug is in the correct format", async () => {
+		expect(
+			await getServerSideProps({
+				...getServerSidePropsContext,
+				params: { slug, partSlug: "incorrect" },
+			})
+		).toStrictEqual({
+			notFound: true,
+		});
+
+		expect(loggerInfoMock.mock.calls[0][0]).toBe(
+			`Resource part slug of incorrect in product IND1001 doesn't match expected format`
+		);
+	});
+
+	it("should return not found when resource doesn't exist on product", async () => {
+		expect(
+			await getServerSideProps({
+				...getServerSidePropsContext,
+				params: { slug, partSlug: "doesnt-exist-123-456" },
+			})
+		).toStrictEqual({
+			notFound: true,
+		});
+
+		expect(loggerInfoMock.mock.calls[0][0]).toBe(
+			`Could not find resource with UID 123 in product IND1001`
+		);
+	});
+
+	it("should return not found when full resource returns 404", async () => {
+		axiosJSONMock.onGet(new RegExp(resourceHref)).reply(404, {
+			Message: "Not found",
+			StatusCode: "NotFound",
+		});
+
+		expect(await getServerSideProps(getServerSidePropsContext)).toStrictEqual({
+			notFound: true,
+		});
+
+		expect(loggerWarnMock.mock.calls[0][0]).toBe(
+			`Full resource with id 3784329 in product IND1001 can't be found`
+		);
+	});
+
+	describe("editable content part", () => {
+		beforeEach(() => {
+			axiosJSONMock
+				.onGet(new RegExp(resourceHref))
+				.reply(200, mockEditableContentResource);
+		});
+
+		it("should redirect to correct title slug from incorrect title slug", async () => {
+			expect(
+				await getServerSideProps({
+					...getServerSidePropsContext,
+					params: {
+						slug,
+						partSlug: partSlug.replace(
+							"resource-impact-statement",
+							"incorrect-part-title"
+						),
+					},
+				})
+			).toStrictEqual({
+				redirect: {
+					destination:
+						"/indicators/ind1001-product-title/resources/resource-impact-statement-3784329-4904490349",
+					permanent: true,
 				},
 			});
 
-			expect(await getServerSideProps(getServerSidePropsContext)).toStrictEqual(
-				{
-					notFound: true,
-				}
-			);
-
 			expect(loggerInfoMock.mock.calls[0][0]).toBe(
-				`Can't serve resource with url /indicators/ind1001-product-title/resources/resource-impact-statement-3784329-4904490349 in product IND1001: no tools and resources`
+				"Redirecting from title slug of incorrect-part-title to resource-impact-statement"
 			);
 		});
 
-		it("should return not found when part slug is in the correct format", async () => {
-			expect(
-				await getServerSideProps({
-					...getServerSidePropsContext,
-					params: { slug, partSlug: "incorrect" },
-				})
-			).toStrictEqual({
-				notFound: true,
-			});
-
-			expect(loggerInfoMock.mock.calls[0][0]).toBe(
-				`Resource part slug of incorrect in product IND1001 doesn't match expected format`
-			);
-		});
-
-		it("should return not found when resource doesn't exist on product", async () => {
-			expect(
-				await getServerSideProps({
-					...getServerSidePropsContext,
-					params: { slug, partSlug: "doesnt-exist-123-456" },
-				})
-			).toStrictEqual({
-				notFound: true,
-			});
-
-			expect(loggerInfoMock.mock.calls[0][0]).toBe(
-				`Could not find resource with UID 123 in product IND1001`
-			);
-		});
-
-		it("should return not found when full resource returns 404", async () => {
-			axiosJSONMock.onGet(new RegExp(resourceHref)).reply(404, {
-				Message: "Not found",
-				StatusCode: "NotFound",
-			});
+		it("should return not found when editable content HTML not found", async () => {
+			axiosJSONMock
+				.onGet(
+					new RegExp(
+						mockEditableContentResource._embedded[
+							"nice.publications:content-part-list"
+						]._embedded["nice.publications:editable-content-part"]._embedded[
+							"nice.publications:html-content"
+						]._links.self[0].href
+					)
+				)
+				.reply(404, {
+					Message: "Not found",
+					StatusCode: "NotFound",
+				});
 
 			expect(await getServerSideProps(getServerSidePropsContext)).toStrictEqual(
 				{
@@ -178,72 +240,13 @@ describe("/indicators/resources/[partSlug]", () => {
 			);
 
 			expect(loggerWarnMock.mock.calls[0][0]).toBe(
-				`Full resource with id 3784329 in product IND1001 can't be found`
+				`Could not find editable part HTML for part ${partUID} in product IND1001`
 			);
 		});
 
-		describe("editable content part", () => {
-			beforeEach(() => {
-				axiosJSONMock
-					.onGet(new RegExp(resourceHref))
-					.reply(200, mockEditableContentResource);
-			});
-
-			it("should redirect to correct title slug from incorrect title slug", async () => {
-				expect(
-					await getServerSideProps({
-						...getServerSidePropsContext,
-						params: {
-							slug,
-							partSlug: partSlug.replace(
-								"resource-impact-statement",
-								"incorrect-part-title"
-							),
-						},
-					})
-				).toStrictEqual({
-					redirect: {
-						destination:
-							"/indicators/ind1001-product-title/resources/resource-impact-statement-3784329-4904490349",
-						permanent: true,
-					},
-				});
-
-				expect(loggerInfoMock.mock.calls[0][0]).toBe(
-					"Redirecting from title slug of incorrect-part-title to resource-impact-statement"
-				);
-			});
-
-			it("should return not found when editable content HTML not found", async () => {
-				axiosJSONMock
-					.onGet(
-						new RegExp(
-							mockEditableContentResource._embedded[
-								"nice.publications:content-part-list"
-							]._embedded["nice.publications:editable-content-part"]._embedded[
-								"nice.publications:html-content"
-							]._links.self[0].href
-						)
-					)
-					.reply(404, {
-						Message: "Not found",
-						StatusCode: "NotFound",
-					});
-
-				expect(
-					await getServerSideProps(getServerSidePropsContext)
-				).toStrictEqual({
-					notFound: true,
-				});
-
-				expect(loggerWarnMock.mock.calls[0][0]).toBe(
-					`Could not find editable part HTML for part ${partUID} in product IND1001`
-				);
-			});
-
-			it("should return props when resource and part HTML exist", async () => {
-				expect(await getServerSideProps(getServerSidePropsContext))
-					.toMatchInlineSnapshot(`
+		it("should return props when resource and part HTML exist", async () => {
+			expect(await getServerSideProps(getServerSidePropsContext))
+				.toMatchInlineSnapshot(`
 			Object {
 			  "props": Object {
 			    "chapters": Array [],
@@ -268,11 +271,10 @@ describe("/indicators/resources/[partSlug]", () => {
 			  },
 			}
 		`);
-			});
 		});
+	});
 
-		describe("upload and convert content part", () => {
-			// TODO
-		});
+	describe("upload and convert content part", () => {
+		// TODO
 	});
 });

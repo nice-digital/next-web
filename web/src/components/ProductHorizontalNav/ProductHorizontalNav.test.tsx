@@ -71,7 +71,7 @@ describe("ProductHorizontalNav", () => {
 
 	it.each([
 		["Tools and resources", "resources"],
-		["Information for the public", "informationforpublic"],
+		["Information for the public", "information-for-the-public"],
 		["Evidence", "evidence"],
 		["History", "history"],
 	])("should highlight %s link when exact match on path", (name, pathSlug) => {
@@ -89,7 +89,7 @@ describe("ProductHorizontalNav", () => {
 
 	it.each([
 		["Tools and resources", "resources"],
-		["Information for the public", "informationforpublic"],
+		["Information for the public", "information-for-the-public"],
 		["Evidence", "evidence"],
 		["History", "history"],
 	])("should highlight %s link for sub pages", (name, pathSlug) => {

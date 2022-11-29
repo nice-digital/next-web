@@ -12,6 +12,7 @@ import { client } from "@/feeds/index";
 import { FeedPath } from "@/feeds/publications/types";
 import mockChapter from "@/mockData/publications/feeds/products/chapter/IndicatorChapterDetail.json";
 import mockProduct from "@/mockData/publications/feeds/products/indicator.json";
+import mockProductTypes from "@/mockData/publications/feeds/producttypes.json";
 
 import IndicatorChapterPage, {
 	type IndicatorChapterPageProps,
@@ -33,13 +34,18 @@ describe("/indicators/[slug]/chapters/[chapterSlug].page", () => {
 	beforeEach(() => {
 		jest.mocked(useRouter).mockReturnValue({
 			asPath: `/indicators/${slug}/chapters/${chapterSlug}`,
-		} as ReturnType<typeof useRouter>);
+			query: {
+				productRoot: "indicators",
+			},
+		} as unknown as ReturnType<typeof useRouter>);
 
 		axiosMock
 			.onGet(new RegExp(mockChapter._links.self[0].href))
 			.reply(200, mockChapter)
 			.onGet(new RegExp(FeedPath.ProductDetail))
-			.reply(200, mockProduct);
+			.reply(200, mockProduct)
+			.onGet(new RegExp(FeedPath.ProductTypes))
+			.reply(200, mockProductTypes);
 	});
 
 	describe("IndicatorChapterPage", () => {
@@ -49,7 +55,10 @@ describe("/indicators/[slug]/chapters/[chapterSlug].page", () => {
 			const context = {
 				params: { slug, chapterSlug },
 				resolvedUrl: `/indicators/${slug}/chapters/${chapterSlug}`,
-			} as IndicatorChapterPageGetServerSidePropsContext;
+				query: {
+					productRoot: "indicators",
+				},
+			} as unknown as IndicatorChapterPageGetServerSidePropsContext;
 
 			props = (
 				(await getServerSideProps(context)) as {
@@ -276,7 +285,10 @@ describe("/indicators/[slug]/chapters/[chapterSlug].page", () => {
 				const result = await getServerSideProps({
 					params: { slug, chapterSlug: chapterSlug },
 					resolvedUrl: `/indicators/${slug}/chapters/${chapterSlug}`,
-				} as IndicatorChapterPageGetServerSidePropsContext);
+					query: {
+						productRoot: "indicators",
+					},
+				} as unknown as IndicatorChapterPageGetServerSidePropsContext);
 
 				expect(result).toMatchSnapshot();
 			});
@@ -287,7 +299,10 @@ describe("/indicators/[slug]/chapters/[chapterSlug].page", () => {
 				const redirectResult = await getServerSideProps({
 					params: { slug: incorrectTitleSlug, chapterSlug },
 					resolvedUrl: `/indicators/${incorrectTitleSlug}/chapters/${chapterSlug}`,
-				} as IndicatorChapterPageGetServerSidePropsContext);
+					query: {
+						productRoot: "indicators",
+					},
+				} as unknown as IndicatorChapterPageGetServerSidePropsContext);
 
 				expect(redirectResult).toStrictEqual({
 					redirect: {
@@ -299,8 +314,12 @@ describe("/indicators/[slug]/chapters/[chapterSlug].page", () => {
 
 			it("should return notFound if chapter slug doesn't exist", async () => {
 				const redirectResult = await getServerSideProps({
+					resolvedUrl: `/indicators/${slug}/chapters/this-does-not-exist`,
 					params: { slug: slug, chapterSlug: "this-does-not-exist" },
-				} as IndicatorChapterPageGetServerSidePropsContext);
+					query: {
+						productRoot: "indicators",
+					},
+				} as unknown as IndicatorChapterPageGetServerSidePropsContext);
 
 				expect(redirectResult).toStrictEqual({ notFound: true });
 			});
@@ -317,7 +336,10 @@ describe("/indicators/[slug]/chapters/[chapterSlug].page", () => {
 				const result = await getServerSideProps({
 					params: { slug, chapterSlug: chapterSlug },
 					resolvedUrl: `/indicators/${slug}/chapters/${chapterSlug}`,
-				} as IndicatorChapterPageGetServerSidePropsContext);
+					query: {
+						productRoot: "indicators",
+					},
+				} as unknown as IndicatorChapterPageGetServerSidePropsContext);
 
 				expect(result).toHaveProperty("props.chapterSections", []);
 			});

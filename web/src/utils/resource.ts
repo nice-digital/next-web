@@ -10,6 +10,12 @@ import { arrayify, byTitleAlphabetically } from "./array";
 import { getFileTypeNameFromMime } from "./file";
 import { slugify } from "./url";
 
+export enum ResourceTypeSlug {
+	ToolsAndResources = "resources",
+	Evidence = "evidence",
+	InformationForThePublic = "information-for-the-public",
+}
+
 export type ResourceLinkViewModel = {
 	title: string;
 	href: string;
@@ -34,7 +40,8 @@ export const getResourceGroup = (
 	productID: string,
 	productPath: string,
 	title: string,
-	resources: ResourceDetail[]
+	resources: ResourceDetail[],
+	resourceTypeSlug: ResourceTypeSlug
 ): ResourceGroupViewModel => ({
 	title,
 	subGroups: resources
@@ -54,8 +61,13 @@ export const getResourceGroup = (
 
 			subGroup.resourceLinks = [
 				...subGroup.resourceLinks,
-				...findContentPartLinks(productID, productPath, current),
-			].sort(byTitleAlphabetically);
+				...findContentPartLinks(
+					productID,
+					productPath,
+					current,
+					resourceTypeSlug
+				),
+			];
 
 			return subGroups;
 		}, [] as ResourceSubGroupViewModel[])
@@ -65,7 +77,8 @@ export const getResourceGroup = (
 export const getResourceGroups = (
 	productID: string,
 	productPath: string,
-	resources: ResourceDetail[]
+	resources: ResourceDetail[],
+	resourceTypeSlug: ResourceTypeSlug
 ): ResourceGroupViewModel[] =>
 	resources
 		.reduce((groups, current) => {
@@ -80,7 +93,8 @@ export const getResourceGroups = (
 					current.resourceTypeName,
 					resources.filter(
 						(r) => r.resourceTypeName === current.resourceTypeName
-					)
+					),
+					resourceTypeSlug
 				);
 
 				groups.push(group);
@@ -93,7 +107,8 @@ export const getResourceGroups = (
 export const findContentPartLinks = (
 	productID: string,
 	productPath: string,
-	resource: ResourceDetail
+	resource: ResourceDetail,
+	resourceTypeSlug: ResourceTypeSlug
 ): ResourceLinkViewModel[] => {
 	const { contentPartList } = resource.embedded;
 
@@ -109,15 +124,15 @@ export const findContentPartLinks = (
 	return [
 		...arrayify(uploadAndConvertContentPart).map((part) => ({
 			title: part.title,
-			href: `${productPath}/resources/${slugify(part.title)}-${resource.uid}-${
-				part.uid
-			}`,
+			href: `${productPath}/${resourceTypeSlug}/${slugify(part.title)}-${
+				resource.uid
+			}-${part.uid}`,
 		})),
 		...arrayify(editableContentPart).map((part) => ({
 			title: part.title,
-			href: `${productPath}/resources/${slugify(part.title)}-${resource.uid}-${
-				part.uid
-			}`,
+			href: `${productPath}/${resourceTypeSlug}/${slugify(part.title)}-${
+				resource.uid
+			}-${part.uid}`,
 		})),
 		...arrayify(uploadContentPart).map((part) => ({
 			title: part.title,
@@ -134,7 +149,7 @@ export const findContentPartLinks = (
 			title: part.title,
 			href: part.url,
 		})),
-	].sort(byTitleAlphabetically);
+	];
 };
 
 export const isEvidenceUpdate = (resource: ResourceDetail): boolean =>
