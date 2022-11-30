@@ -5,7 +5,6 @@ import {
 	getChapterContent,
 	getResourceDetail,
 	BaseContentPart,
-	PDFFile,
 } from "@/feeds/publications/publications";
 import { logger } from "@/logger";
 import { arrayify } from "@/utils/array";
@@ -20,7 +19,7 @@ import { type ProductPageHeadingProps } from "../ProductPageHeading/ProductPageH
 const resourcePathRegex =
 	/^(?<partTitleSlug>.*)-(?<resourceUID>\d+)-(?<partUID>\d+)$/;
 
-export type ProductResourcePageProps = {
+export type ProductResourceChapterPageProps = {
 	productPath: string;
 	product: ProductPageHeadingProps["product"];
 	hasToolsAndResources: boolean;
@@ -33,19 +32,22 @@ export type ProductResourcePageProps = {
 	title: string;
 	lastUpdated: string | null;
 	resourceTypeSlug: ResourceTypeSlug;
+	resourceTypeName: string;
 	resourceDownloadPath: string | null;
 	resourceDownloadSizeBytes: number | null;
 };
 
 export const getGetServerSidePropsFunc =
 	(
-		resourceTypeSlug: ResourceTypeSlug
+		resourceTypeSlug: ResourceTypeSlug,
+		resourceTypeName: string
 	): GetServerSideProps<
-		ProductResourcePageProps,
-		{ slug: string; partSlug: string }
+		ProductResourceChapterPageProps,
+		{ slug: string; partSlug: string; chapterSlug: string }
 	> =>
 	async ({ params, resolvedUrl, query }) => {
-		if (!params || !params.partSlug) return { notFound: true };
+		if (!params || !params.partSlug || !params.chapterSlug)
+			return { notFound: true };
 
 		const result = await validateRouteParams({ params, resolvedUrl, query });
 
@@ -96,16 +98,15 @@ export const getGetServerSidePropsFunc =
 			return { notFound: true };
 		}
 
-		const { editableContentPart, uploadAndConvertContentPart } =
+		const { uploadAndConvertContentPart } =
 				fullResource.embedded.contentPartList.embedded,
 			byPartUID = ({ uid }: BaseContentPart) => uid === Number(partUID);
 
-		const editablePart = arrayify(editableContentPart).find(byPartUID),
-			convertPart = arrayify(uploadAndConvertContentPart).find(byPartUID);
+		const convertPart = arrayify(uploadAndConvertContentPart).find(byPartUID);
 
-		if (!editablePart && !convertPart) {
+		if (!convertPart) {
 			logger.warn(
-				`Couldn't find either an editable part or an upload and convert part with id ${partUID}`
+				`Couldn't find either an upload and convert part with id ${partUID}`
 			);
 
 			return {
@@ -113,10 +114,8 @@ export const getGetServerSidePropsFunc =
 			};
 		}
 
-		const title = editablePart?.title || convertPart?.title || "",
-			expectedPartTitleSlug = slugify(
-				editablePart?.title || convertPart?.title || ""
-			);
+		const title = convertPart?.title || "",
+			expectedPartTitleSlug = slugify(convertPart?.title || "");
 
 		if (partTitleSlug !== expectedPartTitleSlug) {
 			logger.info(
@@ -134,51 +133,57 @@ export const getGetServerSidePropsFunc =
 			};
 		}
 
-		let htmlBody = "",
-			pdfFile: PDFFile | null = null,
-			chapters: ChapterHeading[] = [],
-			chapterSections: OnThisPageSection[] = [];
-
-		if (editablePart) {
-			const fullEditablePartContent = await getChapterContent(
-				editablePart.embedded.htmlContent.links.self[0].href
+		const chapterInfos = arrayify(
+				convertPart.embedded.htmlContent.embedded?.htmlChapterContentInfo
+			),
+			currentChapter = chapterInfos.find(
+				(c) => c.chapterSlug === params.chapterSlug
 			);
 
-			if (!fullEditablePartContent)
-				throw Error(
-					`Could not find editable part HTML for part ${editablePart.uid} in product ${product.id}`
-				);
-			htmlBody = fullEditablePartContent.content;
-			pdfFile = editablePart.embedded.pdfFile || null;
-		} else if (convertPart) {
-			const chapterInfos = arrayify(
-					convertPart.embedded.htmlContent.embedded?.htmlChapterContentInfo
-				),
-				firstChapter = chapterInfos[0],
-				firstChapterContent = await getChapterContent(
-					firstChapter.links.self[0].href
-				);
+		if (!currentChapter) {
+			logger.info(
+				`Could not find chapter with slug ${params.chapterSlug} in part ${partUID}`
+			);
 
-			if (!firstChapterContent)
-				throw Error(
-					`Could not find chapter part HTML for upload and convert part ${convertPart.uid} in product ${product.id}`
-				);
-
-			htmlBody = firstChapterContent.content;
-			pdfFile = convertPart.embedded.pdfFile;
-			chapters = chapterInfos.map(({ title, chapterSlug }, i) => ({
-				title,
-				url:
-					`${productPath}/${resourceTypeSlug}/${params.partSlug}` +
-					(i === 0 ? "" : `/chapters/${chapterSlug}`),
-			}));
-			chapterSections = arrayify(
-				firstChapterContent.embedded?.htmlChapterSectionInfo
-			).map((s) => ({
-				slug: s.chapterSlug,
-				title: s.title,
-			}));
+			return {
+				notFound: true,
+			};
+		} else if (currentChapter === chapterInfos[0]) {
+			logger.info(
+				`Redirecting ${params.chapterSlug} to resource root for ${partUID}`
+			);
+			return {
+				redirect: {
+					destination: `${productPath}/${resourceTypeSlug}/${params.partSlug}`,
+					permanent: true,
+				},
+			};
 		}
+
+		const currentChapterContent = await getChapterContent(
+			currentChapter.links.self[0].href
+		);
+
+		if (!currentChapterContent)
+			throw Error(
+				`Could not find chapter part HTML for upload and convert part ${convertPart.uid} in product ${product.id}`
+			);
+
+		const htmlBody = currentChapterContent.content;
+		const resourceDownloadPath = `${productPath}/downloads/${product.id}-${params.partSlug}.pdf`;
+		const resourceDownloadSizeBytes = convertPart.embedded.pdfFile.length;
+		const chapters = chapterInfos.map(({ title, chapterSlug }, i) => ({
+			title,
+			url:
+				`${productPath}/${resourceTypeSlug}/${params.partSlug}` +
+				(i === 0 ? "" : `/chapters/${chapterSlug}`),
+		}));
+		const chapterSections = arrayify(
+			currentChapterContent.embedded?.htmlChapterSectionInfo
+		).map((s) => ({
+			slug: s.chapterSlug,
+			title: s.title,
+		}));
 
 		return {
 			props: {
@@ -200,10 +205,9 @@ export const getGetServerSidePropsFunc =
 				chapterSections,
 				lastUpdated: fullResource.lastMajorModificationDate,
 				resourceTypeSlug,
-				resourceDownloadPath: pdfFile
-					? `${productPath}/downloads/${product.id}-${params.partSlug}.pdf`
-					: null,
-				resourceDownloadSizeBytes: pdfFile ? pdfFile.length : null,
+				resourceTypeName,
+				resourceDownloadPath,
+				resourceDownloadSizeBytes,
 			},
 		};
 	};

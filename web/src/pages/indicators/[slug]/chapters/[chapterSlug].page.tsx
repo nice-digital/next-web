@@ -19,13 +19,10 @@ import { PublicationsDownloadLink } from "@/components/PublicationsDownloadLink/
 import { PublicationsPrevNext } from "@/components/PublicationsPrevNext/PublicationsPrevNext";
 import {
 	getChapterContent,
-	isErrorResponse,
 	ChapterHeading,
-	ProductGroup,
 } from "@/feeds/publications/publications";
 import { arrayify } from "@/utils/array";
 import { getChapterLinks, validateRouteParams } from "@/utils/product";
-import { getProductPath, getPublicationPdfDownloadPath } from "@/utils/url";
 
 import styles from "./[chapterSlug].page.module.scss";
 

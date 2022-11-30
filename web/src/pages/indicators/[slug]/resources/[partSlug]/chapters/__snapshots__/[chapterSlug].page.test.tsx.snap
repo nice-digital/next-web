@@ -1,0 +1,540 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`/product/[slug]/resources/[partSlug]/chapters/[chapterSlug].page ProductResourceChapterPage should match snapshot 1`] = `
+<div>
+  <nav
+    aria-label="Breadcrumbs"
+    role="navigation"
+  >
+    <ol
+      class="breadcrumbs"
+    >
+      <li
+        class="breadcrumbs__crumb"
+      >
+        <a
+          href="/"
+        >
+          Home
+        </a>
+      </li>
+      <li
+        class="breadcrumbs__crumb"
+      >
+        <a
+          href="/standards-and-indicators"
+        >
+          Standards and Indicators
+        </a>
+      </li>
+      <li
+        class="breadcrumbs__crumb"
+      >
+        <a
+          href="/standards-and-indicators/indicators"
+        >
+          Indicators
+        </a>
+      </li>
+      <li
+        class="breadcrumbs__crumb"
+      >
+        <a
+          href="/process/pmg20"
+        >
+          PMG20
+        </a>
+      </li>
+      <li
+        class="breadcrumbs__crumb"
+      >
+        <a
+          href="/process/pmg20/resources"
+        >
+          Tools and resources
+        </a>
+      </li>
+      <li
+        class="breadcrumbs__crumb"
+      >
+        <span>
+          Developing NICE guidelines: the manual – appendices
+        </span>
+      </li>
+    </ol>
+  </nav>
+  <script
+    type="application/ld+json"
+  >
+    {
+  "@context": "http://schema.org",
+  "@type": "BreadcrumbList",
+  "itemListElement": [
+    {
+      "@type": "ListItem",
+      "position": 1,
+      "item": {
+        "@id": "/",
+        "name": "Home"
+      }
+    },
+    {
+      "@type": "ListItem",
+      "position": 2,
+      "item": {
+        "@id": "/standards-and-indicators",
+        "name": "Standards and Indicators"
+      }
+    },
+    {
+      "@type": "ListItem",
+      "position": 3,
+      "item": {
+        "@id": "/standards-and-indicators/indicators",
+        "name": "Indicators"
+      }
+    },
+    {
+      "@type": "ListItem",
+      "position": 4,
+      "item": {
+        "@id": "/process/pmg20",
+        "name": "PMG20"
+      }
+    },
+    {
+      "@type": "ListItem",
+      "position": 5,
+      "item": {
+        "@id": "/process/pmg20/resources",
+        "name": "Tools and resources"
+      }
+    },
+    {
+      "@type": "ListItem",
+      "position": 6,
+      "item": {
+        "name": "Developing NICE guidelines: the manual – appendices"
+      }
+    }
+  ]
+}
+  </script>
+  <div
+    class="page-header"
+    id="content-start"
+  >
+    <h1
+      class="page-header__heading page-header__heading--alt"
+    >
+      Developing NICE guidelines: the manual 
+    </h1>
+    <ul
+      class="page-header__metadata"
+    >
+      <li>
+        Process and methods
+      </li>
+      <li>
+        PMG20
+      </li>
+      <li>
+        Published:
+        <time
+          datetime="2014-10-31"
+        >
+           
+          31 October 2014
+        </time>
+      </li>
+      <li>
+        Last updated:
+        <time
+          datetime="2022-01-18"
+        >
+           
+           
+          18 January 2022
+        </time>
+      </li>
+    </ul>
+  </div>
+  <nav
+    class="horizontal-nav"
+  >
+    <ul
+      class="horizontal-nav__list"
+    >
+      <li
+        class="horizontal-nav__item"
+      >
+        <a
+          aria-current="true"
+          class="horizontal-nav__link"
+          href="/process/pmg20"
+        >
+          Indicator
+        </a>
+      </li>
+      <li
+        class="horizontal-nav__item"
+      >
+        <a
+          aria-current="false"
+          class="horizontal-nav__link"
+          href="/process/pmg20/resources"
+        >
+          Tools and resources
+        </a>
+      </li>
+    </ul>
+  </nav>
+  <div
+    class="grid grid--loose"
+  >
+    <section
+      aria-label="Chapters"
+      data-g="12 md:4 lg:3"
+    >
+      <nav
+        aria-label="Chapter pages"
+        class="stacked-nav"
+      >
+        <ul
+          class="stacked-nav__list"
+        >
+          <li
+            class="stacked-nav__list-item"
+          >
+            <a
+              aria-current="false"
+              href="/process/pmg20/resources/developing-nice-guidelines-the-manual-appendices-1967369-2549710189"
+            >
+              <span
+                class="stacked-nav__content-wrapper"
+              >
+                <span>
+                  Appendix A: Service delivery – developing review questions, evidence reviews and synthesis
+                </span>
+              </span>
+            </a>
+          </li>
+          <li
+            class="stacked-nav__list-item"
+          >
+            <a
+              aria-current="false"
+              href="/process/pmg20/resources/developing-nice-guidelines-the-manual-appendices-1967369-2549710189/chapters/appendix-b-approaches-to-additional-consultation-and-commissioned-primary-research"
+            >
+              <span
+                class="stacked-nav__content-wrapper"
+              >
+                <span>
+                  Appendix B: Approaches to additional consultation and commissioned primary research
+                </span>
+              </span>
+            </a>
+          </li>
+          <li
+            class="stacked-nav__list-item"
+          >
+            <a
+              aria-current="false"
+              href="/process/pmg20/resources/developing-nice-guidelines-the-manual-appendices-1967369-2549710189/chapters/appendix-c-key-roles-and-responsibilities-of-committee-members"
+            >
+              <span
+                class="stacked-nav__content-wrapper"
+              >
+                <span>
+                  Appendix C: Key roles and responsibilities of committee members
+                </span>
+              </span>
+            </a>
+          </li>
+          <li
+            class="stacked-nav__list-item"
+          >
+            <a
+              aria-current="false"
+              href="/process/pmg20/resources/developing-nice-guidelines-the-manual-appendices-1967369-2549710189/chapters/appendix-d-guideline-committee-terms-of-reference-and-standing-orders"
+            >
+              <span
+                class="stacked-nav__content-wrapper"
+              >
+                <span>
+                  Appendix D: Guideline committee Terms of Reference and Standing Orders
+                </span>
+              </span>
+            </a>
+          </li>
+          <li
+            class="stacked-nav__list-item"
+          >
+            <a
+              aria-current="false"
+              href="/process/pmg20/resources/developing-nice-guidelines-the-manual-appendices-1967369-2549710189/chapters/appendix-e-code-of-conduct-for-committee-members"
+            >
+              <span
+                class="stacked-nav__content-wrapper"
+              >
+                <span>
+                  Appendix E: Code of conduct for committee members
+                </span>
+              </span>
+            </a>
+          </li>
+          <li
+            class="stacked-nav__list-item"
+          >
+            <a
+              aria-current="false"
+              href="/process/pmg20/resources/developing-nice-guidelines-the-manual-appendices-1967369-2549710189/chapters/appendix-f-suggested-sources-for-scoping"
+            >
+              <span
+                class="stacked-nav__content-wrapper"
+              >
+                <span>
+                  Appendix F: Suggested sources for scoping
+                </span>
+              </span>
+            </a>
+          </li>
+          <li
+            class="stacked-nav__list-item"
+          >
+            <a
+              aria-current="false"
+              href="/process/pmg20/resources/developing-nice-guidelines-the-manual-appendices-1967369-2549710189/chapters/appendix-g-sources-for-evidence-reviews"
+            >
+              <span
+                class="stacked-nav__content-wrapper"
+              >
+                <span>
+                  Appendix G: Sources for evidence reviews
+                </span>
+              </span>
+            </a>
+          </li>
+          <li
+            class="stacked-nav__list-item"
+          >
+            <a
+              aria-current="false"
+              href="/process/pmg20/resources/developing-nice-guidelines-the-manual-appendices-1967369-2549710189/chapters/appendix-h-appraisal-checklists-evidence-tables-grade-and-economic-profiles"
+            >
+              <span
+                class="stacked-nav__content-wrapper"
+              >
+                <span>
+                  Appendix H: Appraisal checklists, evidence tables, GRADE and economic profiles
+                </span>
+              </span>
+            </a>
+          </li>
+          <li
+            class="stacked-nav__list-item"
+          >
+            <a
+              aria-current="false"
+              href="/process/pmg20/resources/developing-nice-guidelines-the-manual-appendices-1967369-2549710189/chapters/appendix-i-review-protocol-for-add-key-area-for-example-unplanned-hospital-admission-flu"
+            >
+              <span
+                class="stacked-nav__content-wrapper"
+              >
+                <span>
+                  Appendix I: Review protocol for [add key area, for example, unplanned hospital admission / Flu vaccination]
+                </span>
+              </span>
+            </a>
+          </li>
+          <li
+            class="stacked-nav__list-item"
+          >
+            <a
+              aria-current="false"
+              href="/process/pmg20/resources/developing-nice-guidelines-the-manual-appendices-1967369-2549710189/chapters/appendix-j-call-for-evidence-and-expert-witnesses"
+            >
+              <span
+                class="stacked-nav__content-wrapper"
+              >
+                <span>
+                  Appendix J: Call for evidence and expert witnesses
+                </span>
+              </span>
+            </a>
+          </li>
+          <li
+            class="stacked-nav__list-item"
+          >
+            <a
+              aria-current="false"
+              href="/process/pmg20/resources/developing-nice-guidelines-the-manual-appendices-1967369-2549710189/chapters/appendix-k-network-meta-analysis-reporting-standards"
+            >
+              <span
+                class="stacked-nav__content-wrapper"
+              >
+                <span>
+                  Appendix K: Network meta-analysis reporting standards
+                </span>
+              </span>
+            </a>
+          </li>
+          <li
+            class="stacked-nav__list-item"
+          >
+            <a
+              aria-current="false"
+              href="/process/pmg20/resources/developing-nice-guidelines-the-manual-appendices-1967369-2549710189/chapters/appendix-l-interim-process-and-methods-for-guidelines-developed-in-response-to-health-and-social"
+            >
+              <span
+                class="stacked-nav__content-wrapper"
+              >
+                <span>
+                  Appendix L: Interim process and methods for guidelines developed in response to health and social care emergencies
+                </span>
+              </span>
+            </a>
+          </li>
+        </ul>
+      </nav>
+    </section>
+    <section
+      data-g="12 md:8 lg:9"
+    >
+      <div
+        class="grid grid--rev grid--loose"
+      >
+        <div
+          data-g="12 md:12 lg:12"
+        >
+          <h2
+            class="heading"
+          >
+            Developing NICE guidelines: the manual – appendices
+          </h2>
+          <p>
+            <a
+              href="/process/pmg20/downloads/PMG20-developing-nice-guidelines-the-manual-appendices-1967369-2549710189.pdf"
+            >
+              Download (PDF
+              , 
+              395 kB
+              )
+            </a>
+          </p>
+          <div />
+          <p>
+            This page was last updated on
+             
+            <time
+              datetime="2022-01-18"
+            >
+              18 January 2022
+            </time>
+          </p>
+          <div
+            class="prev-next"
+          >
+            <nav
+              aria-label="Previous and next pages"
+            >
+              <a
+                class="prev-next__link"
+                href="/process/pmg20/resources/developing-nice-guidelines-the-manual-appendices-1967369-2549710189"
+              >
+                <span
+                  class="prev-next__link-intro"
+                >
+                  Next page
+                </span>
+                <span
+                  class="prev-next__link-text"
+                >
+                  Appendix A: Service delivery – developing review questions, evidence reviews and synthesis
+                </span>
+              </a>
+            </nav>
+          </div>
+        </div>
+      </div>
+    </section>
+  </div>
+</div>
+`;
+
+exports[`/product/[slug]/resources/[partSlug]/chapters/[chapterSlug].page getServerSideProps should return props for valid product, resource and part 1`] = `
+Object {
+  "props": Object {
+    "chapterSections": Array [],
+    "chapters": Array [
+      Object {
+        "title": "Appendix A: Service delivery – developing review questions, evidence reviews and synthesis",
+        "url": "/process/pmg20/resources/developing-nice-guidelines-the-manual-appendices-1967369-2549710189",
+      },
+      Object {
+        "title": "Appendix B: Approaches to additional consultation and commissioned primary research",
+        "url": "/process/pmg20/resources/developing-nice-guidelines-the-manual-appendices-1967369-2549710189/chapters/appendix-b-approaches-to-additional-consultation-and-commissioned-primary-research",
+      },
+      Object {
+        "title": "Appendix C: Key roles and responsibilities of committee members",
+        "url": "/process/pmg20/resources/developing-nice-guidelines-the-manual-appendices-1967369-2549710189/chapters/appendix-c-key-roles-and-responsibilities-of-committee-members",
+      },
+      Object {
+        "title": "Appendix D: Guideline committee Terms of Reference and Standing Orders",
+        "url": "/process/pmg20/resources/developing-nice-guidelines-the-manual-appendices-1967369-2549710189/chapters/appendix-d-guideline-committee-terms-of-reference-and-standing-orders",
+      },
+      Object {
+        "title": "Appendix E: Code of conduct for committee members",
+        "url": "/process/pmg20/resources/developing-nice-guidelines-the-manual-appendices-1967369-2549710189/chapters/appendix-e-code-of-conduct-for-committee-members",
+      },
+      Object {
+        "title": "Appendix F: Suggested sources for scoping",
+        "url": "/process/pmg20/resources/developing-nice-guidelines-the-manual-appendices-1967369-2549710189/chapters/appendix-f-suggested-sources-for-scoping",
+      },
+      Object {
+        "title": "Appendix G: Sources for evidence reviews",
+        "url": "/process/pmg20/resources/developing-nice-guidelines-the-manual-appendices-1967369-2549710189/chapters/appendix-g-sources-for-evidence-reviews",
+      },
+      Object {
+        "title": "Appendix H: Appraisal checklists, evidence tables, GRADE and economic profiles",
+        "url": "/process/pmg20/resources/developing-nice-guidelines-the-manual-appendices-1967369-2549710189/chapters/appendix-h-appraisal-checklists-evidence-tables-grade-and-economic-profiles",
+      },
+      Object {
+        "title": "Appendix I: Review protocol for [add key area, for example, unplanned hospital admission / Flu vaccination]",
+        "url": "/process/pmg20/resources/developing-nice-guidelines-the-manual-appendices-1967369-2549710189/chapters/appendix-i-review-protocol-for-add-key-area-for-example-unplanned-hospital-admission-flu",
+      },
+      Object {
+        "title": "Appendix J: Call for evidence and expert witnesses",
+        "url": "/process/pmg20/resources/developing-nice-guidelines-the-manual-appendices-1967369-2549710189/chapters/appendix-j-call-for-evidence-and-expert-witnesses",
+      },
+      Object {
+        "title": "Appendix K: Network meta-analysis reporting standards",
+        "url": "/process/pmg20/resources/developing-nice-guidelines-the-manual-appendices-1967369-2549710189/chapters/appendix-k-network-meta-analysis-reporting-standards",
+      },
+      Object {
+        "title": "Appendix L: Interim process and methods for guidelines developed in response to health and social care emergencies",
+        "url": "/process/pmg20/resources/developing-nice-guidelines-the-manual-appendices-1967369-2549710189/chapters/appendix-l-interim-process-and-methods-for-guidelines-developed-in-response-to-health-and-social",
+      },
+    ],
+    "hasEvidenceResources": false,
+    "hasHistory": false,
+    "hasInfoForPublicResources": false,
+    "hasToolsAndResources": true,
+    "htmlBody": undefined,
+    "lastUpdated": "2022-01-18T00:00:00",
+    "product": Object {
+      "id": "PMG20",
+      "lastMajorModificationDate": "2022-01-18T00:00:00",
+      "productTypeName": "Process and methods",
+      "publishedDate": "2014-10-31T00:00:00",
+      "title": "Developing NICE guidelines: the manual ",
+    },
+    "productPath": "/process/pmg20",
+    "resourceDownloadPath": "/process/pmg20/downloads/PMG20-developing-nice-guidelines-the-manual-appendices-1967369-2549710189.pdf",
+    "resourceDownloadSizeBytes": 394577,
+    "resourceTypeName": "Tools and resources",
+    "resourceTypeSlug": "resources",
+    "title": "Developing NICE guidelines: the manual – appendices",
+  },
+}
+`;

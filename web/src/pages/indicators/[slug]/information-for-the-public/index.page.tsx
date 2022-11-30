@@ -12,4 +12,4 @@ export default ProductResourcesListPage;
 export const getServerSideProps: GetServerSideProps<
 	ProductResourcesListPageProps,
 	{ slug: string; partSlug: string }
-> = getGetServerSidePropsFunc(ResourceTypeSlug.ToolsAndResources);
+> = getGetServerSidePropsFunc(ResourceTypeSlug.InformationForThePublic);
