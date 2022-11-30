@@ -43,6 +43,7 @@ describe("ProductResourcePage", () => {
 		title: "Resource title",
 		resourceDownloadPath: "/some-download-url.pdf",
 		resourceDownloadSizeBytes: 1234,
+		chapterSections: [],
 	};
 
 	it("should match snapshot", () => {

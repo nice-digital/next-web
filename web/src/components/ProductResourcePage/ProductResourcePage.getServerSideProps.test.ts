@@ -4,7 +4,7 @@ import { type GetServerSidePropsContext } from "next";
 import { client } from "@/feeds/index";
 import { FeedPath } from "@/feeds/publications/types";
 import { logger } from "@/logger";
-import mockProductRaw from "@/mockData/publications/feeds/products/indicator.json";
+import mockProduct from "@/mockData/publications/feeds/products/ng100.json";
 import mockProductTypes from "@/mockData/publications/feeds/producttypes.json";
 import mockEditableContentResource from "@/mockData/publications/feeds/resource/29409.json";
 import mockEditableHTML from "@/mockData/publications/feeds/supportingresource/29409/content/1/html.json";
@@ -31,52 +31,9 @@ export type Params = {
 const resourceUID = 3784329,
 	partUID = 4904490349,
 	partSlug = `resource-impact-statement-${resourceUID}-${partUID}`,
-	title = "Product title",
-	slug = `${mockProductRaw.Id.toLowerCase()}-product-title`,
-	resourceHref = "/feeds/resource/1234";
-
-const mockProduct: typeof mockProductRaw = {
-	...mockProductRaw,
-	Title: title,
-	_embedded: {
-		...mockProductRaw._embedded,
-		"nice.publications:related-resource-list": {
-			_links: { self: [{}] },
-			ETag: null,
-			_embedded: {
-				"nice.publications:related-resource": {
-					_links: {
-						self: [{}],
-						"nice.publications:related-resource-uri": [
-							{
-								href: resourceHref,
-							},
-						],
-					},
-					ETag: null,
-					Status: "Published",
-					Language: "English",
-					ResourceType: "AnythingThatIsntEvidence",
-					Title: "Resource title",
-					Uid: resourceUID,
-					_embedded: {
-						"nice.publications:resource-group-list": {
-							_links: { self: [{}] },
-							ETag: null,
-							_embedded: {
-								"nice.publications:resource-group": {
-									_links: { self: [{}] },
-									ETag: null,
-									Name: "Anything",
-								},
-							},
-						},
-					},
-				},
-			},
-		},
-	},
-};
+	slug = `${mockProduct.Id.toLowerCase()}`,
+	resourceHref = `/feeds/resource/29409`,
+	partHTMLHref = "/feeds/supportingresource/29409/content/1/html";
 
 const getServerSidePropsContext = {
 	params: {
@@ -84,9 +41,9 @@ const getServerSidePropsContext = {
 		partSlug,
 	},
 	query: {
-		productRoot: "indicators",
+		productRoot: "guidance",
 	},
-	resolvedUrl: `/indicators/${slug}/resources/${partSlug}`,
+	resolvedUrl: `/guidance/${slug}/resources/${partSlug}`,
 } as unknown as GetServerSidePropsContext<Params>;
 
 describe("getServerSideProps", () => {
@@ -106,15 +63,7 @@ describe("getServerSideProps", () => {
 			.reply(200, mockProductTypes)
 			.onGet(new RegExp(FeedPath.ProductTypes))
 			.reply(200, mockProductTypes)
-			.onGet(
-				new RegExp(
-					mockEditableContentResource._embedded[
-						"nice.publications:content-part-list"
-					]._embedded["nice.publications:editable-content-part"]._embedded[
-						"nice.publications:html-content"
-					]._links.self[0].href
-				)
-			)
+			.onGet(new RegExp(partHTMLHref))
 			.reply(200, mockEditableHTML);
 
 		jest.resetModules();
@@ -133,7 +82,7 @@ describe("getServerSideProps", () => {
 		});
 
 		expect(loggerInfoMock.mock.calls[0][0]).toBe(
-			`Can't serve resource with url /indicators/ind1001-product-title/resources/resource-impact-statement-3784329-4904490349 in product IND1001: no tools and resources`
+			`Can't serve resource with url /guidance/ng100/resources/resource-impact-statement-3784329-4904490349 in product NG100: no tools and resources`
 		);
 	});
 
@@ -148,7 +97,7 @@ describe("getServerSideProps", () => {
 		});
 
 		expect(loggerInfoMock.mock.calls[0][0]).toBe(
-			`Resource part slug of incorrect in product IND1001 doesn't match expected format`
+			`Resource part slug of incorrect in product NG100 doesn't match expected format`
 		);
 	});
 
@@ -163,7 +112,7 @@ describe("getServerSideProps", () => {
 		});
 
 		expect(loggerInfoMock.mock.calls[0][0]).toBe(
-			`Could not find resource with UID 123 in product IND1001`
+			`Could not find resource with UID 123 in product NG100`
 		);
 	});
 
@@ -178,7 +127,7 @@ describe("getServerSideProps", () => {
 		});
 
 		expect(loggerWarnMock.mock.calls[0][0]).toBe(
-			`Full resource with id 3784329 in product IND1001 can't be found`
+			`Full resource with id 3784329 in product NG100 can't be found`
 		);
 	});
 
@@ -204,7 +153,7 @@ describe("getServerSideProps", () => {
 			).toStrictEqual({
 				redirect: {
 					destination:
-						"/indicators/ind1001-product-title/resources/resource-impact-statement-3784329-4904490349",
+						"/guidance/ng100/resources/resource-impact-statement-3784329-4904490349",
 					permanent: true,
 				},
 			});
@@ -214,30 +163,14 @@ describe("getServerSideProps", () => {
 			);
 		});
 
-		it("should return not found when editable content HTML not found", async () => {
-			axiosJSONMock
-				.onGet(
-					new RegExp(
-						mockEditableContentResource._embedded[
-							"nice.publications:content-part-list"
-						]._embedded["nice.publications:editable-content-part"]._embedded[
-							"nice.publications:html-content"
-						]._links.self[0].href
-					)
-				)
-				.reply(404, {
-					Message: "Not found",
-					StatusCode: "NotFound",
-				});
+		it("should throw when editable content HTML not found", async () => {
+			axiosJSONMock.onGet(new RegExp(partHTMLHref)).reply(404, {
+				Message: "Not found",
+				StatusCode: "NotFound",
+			});
 
-			expect(await getServerSideProps(getServerSidePropsContext)).toStrictEqual(
-				{
-					notFound: true,
-				}
-			);
-
-			expect(loggerWarnMock.mock.calls[0][0]).toBe(
-				`Could not find editable part HTML for part ${partUID} in product IND1001`
+			expect(getServerSideProps(getServerSidePropsContext)).rejects.toBe(
+				`Could not find editable part HTML for part ${partUID} in product ${mockProduct.Id}`
 			);
 		});
 
@@ -246,22 +179,23 @@ describe("getServerSideProps", () => {
 				.toMatchInlineSnapshot(`
 			Object {
 			  "props": Object {
+			    "chapterSections": Array [],
 			    "chapters": Array [],
-			    "hasEvidenceResources": false,
+			    "hasEvidenceResources": true,
 			    "hasHistory": false,
-			    "hasInfoForPublicResources": false,
+			    "hasInfoForPublicResources": true,
 			    "hasToolsAndResources": true,
 			    "htmlBody": "<p>Some body content</p>",
 			    "lastUpdated": "2018-07-11T00:05:07.4294909",
 			    "product": Object {
-			      "id": "IND1001",
-			      "lastMajorModificationDate": "2022-09-08T14:19:12.8893126",
-			      "productTypeName": "NICE indicator",
-			      "publishedDate": "2022-09-08T14:19:12.8893126",
-			      "title": "Product title",
+			      "id": "NG100",
+			      "lastMajorModificationDate": "2020-10-12T00:00:00",
+			      "productTypeName": "NICE guideline",
+			      "publishedDate": "2018-07-11T00:00:00",
+			      "title": "Rheumatoid arthritis in adults: management",
 			    },
-			    "productPath": "/indicators/ind1001-product-title",
-			    "resourceDownloadPath": "/indicators/ind1001-product-title/downloads/IND1001-resource-impact-statement-3784329-4904490349.pdf",
+			    "productPath": "/guidance/ng100",
+			    "resourceDownloadPath": "/guidance/ng100/downloads/NG100-resource-impact-statement-3784329-4904490349.pdf",
 			    "resourceDownloadSizeBytes": 40258,
 			    "resourceTypeSlug": "resources",
 			    "title": "Resource impact statement",

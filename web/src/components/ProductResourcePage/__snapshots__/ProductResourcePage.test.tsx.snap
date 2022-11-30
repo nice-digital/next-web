@@ -201,32 +201,53 @@ exports[`ProductResourcePage should match snapshot 1`] = `
       </li>
     </ul>
   </nav>
-  <h2>
-    Resource title
-  </h2>
-  <p>
-    <a
-      href="/some-download-url.pdf"
+  <div
+    class="grid grid--loose"
+  >
+    <section
+      data-g="12 md:12 lg:12"
     >
-      Download (PDF
-      , 
-      1 kB
-      )
-    </a>
-  </p>
-  <div>
-    <p>
-      Some body text
-    </p>
+      <div
+        class="grid grid--rev grid--loose"
+      >
+        <div
+          data-g="12 md:12 lg:12"
+        >
+          <h2
+            class="heading"
+          >
+            Resource title
+          </h2>
+          <p>
+            <a
+              href="/some-download-url.pdf"
+            >
+              Download (PDF
+              , 
+              1 kB
+              )
+            </a>
+          </p>
+          <div>
+            <p>
+              Some body text
+            </p>
+          </div>
+          <p>
+            This page was last updated on
+             
+            <time
+              datetime="2022-03-30"
+            >
+              30 March 2022
+            </time>
+          </p>
+          <div
+            class="prev-next"
+          />
+        </div>
+      </div>
+    </section>
   </div>
-  <p>
-    This page was last updated on
-     
-    <time
-      datetime="2022-03-30"
-    >
-      30 March 2022
-    </time>
-  </p>
 </div>
 `;

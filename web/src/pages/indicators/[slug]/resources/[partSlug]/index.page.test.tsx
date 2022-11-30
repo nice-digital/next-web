@@ -32,7 +32,8 @@ const resourceUID = 3784329,
 	partSlug = `resource-impact-statement-${resourceUID}-${partUID}`,
 	title = "Product title",
 	slug = `${mockProductRaw.Id.toLowerCase()}-product-title`,
-	resourceHref = "/feeds/resource/1234";
+	resourceHref = "/feeds/resource/1234",
+	partHTMLHref = "/feeds/supportingresource/29409/content/1/html";
 
 const mockProduct: typeof mockProductRaw = {
 	...mockProductRaw,
@@ -101,15 +102,7 @@ describe("/indicators/resources/[partSlug]", () => {
 			.reply(200, mockProductTypes)
 			.onGet(new RegExp(FeedPath.ProductTypes))
 			.reply(200, mockProductTypes)
-			.onGet(
-				new RegExp(
-					mockEditableContentResource._embedded[
-						"nice.publications:content-part-list"
-					]._embedded["nice.publications:editable-content-part"]._embedded[
-						"nice.publications:html-content"
-					]._links.self[0].href
-				)
-			)
+			.onGet(new RegExp(partHTMLHref))
 			.reply(200, mockEditableHTML);
 
 		jest.resetModules();
@@ -214,29 +207,13 @@ describe("/indicators/resources/[partSlug]", () => {
 				);
 			});
 
-			it("should return not found when editable content HTML not found", async () => {
-				axiosJSONMock
-					.onGet(
-						new RegExp(
-							mockEditableContentResource._embedded[
-								"nice.publications:content-part-list"
-							]._embedded["nice.publications:editable-content-part"]._embedded[
-								"nice.publications:html-content"
-							]._links.self[0].href
-						)
-					)
-					.reply(404, {
-						Message: "Not found",
-						StatusCode: "NotFound",
-					});
-
-				expect(
-					await getServerSideProps(getServerSidePropsContext)
-				).toStrictEqual({
-					notFound: true,
+			it("should throw error when editable content HTML not found", async () => {
+				axiosJSONMock.onGet(new RegExp(partHTMLHref)).reply(404, {
+					Message: "Not found",
+					StatusCode: "NotFound",
 				});
 
-				expect(loggerWarnMock.mock.calls[0][0]).toBe(
+				expect(getServerSideProps(getServerSidePropsContext)).rejects.toBe(
 					`Could not find editable part HTML for part ${partUID} in product IND1001`
 				);
 			});
@@ -246,6 +223,7 @@ describe("/indicators/resources/[partSlug]", () => {
 					.toMatchInlineSnapshot(`
 			Object {
 			  "props": Object {
+			    "chapterSections": Array [],
 			    "chapters": Array [],
 			    "hasEvidenceResources": false,
 			    "hasHistory": false,

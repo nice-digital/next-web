@@ -4,6 +4,8 @@ import {
 	type ChapterHeading,
 	getChapterContent,
 	getResourceDetail,
+	BaseContentPart,
+	PDFFile,
 } from "@/feeds/publications/publications";
 import { logger } from "@/logger";
 import { arrayify } from "@/utils/array";
@@ -11,6 +13,7 @@ import { validateRouteParams } from "@/utils/product";
 import { ResourceTypeSlug } from "@/utils/resource";
 import { slugify } from "@/utils/url";
 
+import { OnThisPageSection } from "../OnThisPage/OnThisPage";
 import { type ProductPageHeadingProps } from "../ProductPageHeading/ProductPageHeading";
 
 // Resource download links are in the form "IND123-some-title-123-456.xls"
@@ -25,6 +28,7 @@ export type ProductResourcePageProps = {
 	hasEvidenceResources: boolean;
 	hasHistory: boolean;
 	chapters: ChapterHeading[];
+	chapterSections: OnThisPageSection[];
 	htmlBody: string;
 	title: string;
 	lastUpdated: string | null;
@@ -95,78 +99,95 @@ export const getGetServerSidePropsFunc =
 
 		const fullResource = await getResourceDetail(resource);
 
-		if (!fullResource) {
+		if (!fullResource || !fullResource.embedded.contentPartList) {
 			logger.warn(
 				`Full resource with id ${resourceUID} in product ${product.id} can't be found`
 			);
 			return { notFound: true };
 		}
 
-		let title = "",
-			htmlBody = "",
-			chapters: ChapterHeading[] = [],
-			lastUpdated: string | null = "",
-			resourceDownloadPath: string | null = null,
-			resourceDownloadSizeBytes: number | null = null;
+		const { editableContentPart, uploadAndConvertContentPart } =
+				fullResource.embedded.contentPartList.embedded,
+			byPartUID = ({ uid }: BaseContentPart) => uid === Number(partUID);
 
-		const editablePart = arrayify(
-			fullResource.embedded.contentPartList?.embedded.editableContentPart
-		).find(({ uid }) => uid === Number(partUID));
+		const editablePart = arrayify(editableContentPart).find(byPartUID),
+			convertPart = arrayify(uploadAndConvertContentPart).find(byPartUID);
+
+		if (!editablePart && !convertPart) {
+			logger.warn(
+				`Couldn't find either an editable part or an upload and convert part with id ${partUID}`
+			);
+
+			return {
+				notFound: true,
+			};
+		}
+
+		const title = editablePart?.title || convertPart?.title || "",
+			expectedPartTitleSlug = slugify(
+				editablePart?.title || convertPart?.title || ""
+			);
+
+		if (partTitleSlug !== expectedPartTitleSlug) {
+			logger.info(
+				`Redirecting from title slug of ${partTitleSlug} to ${expectedPartTitleSlug}`
+			);
+
+			return {
+				redirect: {
+					destination: resolvedUrl.replace(
+						partTitleSlug,
+						expectedPartTitleSlug
+					),
+					permanent: true,
+				},
+			};
+		}
+
+		let htmlBody = "",
+			pdfFile: PDFFile | null = null,
+			chapters: ChapterHeading[] = [],
+			chapterSections: OnThisPageSection[] = [];
 
 		if (editablePart) {
-			const expectedPartTitleSlug = slugify(editablePart.title);
-			if (partTitleSlug !== expectedPartTitleSlug) {
-				logger.info(
-					`Redirecting from title slug of ${partTitleSlug} to ${expectedPartTitleSlug}`
-				);
-
-				return {
-					redirect: {
-						destination: resolvedUrl.replace(
-							partTitleSlug,
-							expectedPartTitleSlug
-						),
-						permanent: true,
-					},
-				};
-			}
-
 			const fullEditablePartContent = await getChapterContent(
 				editablePart.embedded.htmlContent.links.self[0].href
 			);
 
-			if (!fullEditablePartContent) {
-				logger.warn(
+			if (!fullEditablePartContent)
+				throw Error(
 					`Could not find editable part HTML for part ${editablePart.uid} in product ${product.id}`
 				);
-				return { notFound: true };
-			}
-
-			title = editablePart.title;
 			htmlBody = fullEditablePartContent.content;
-			lastUpdated = fullResource.lastMajorModificationDate;
-			chapters = []; // Editable content parts are just a single HTML page so don't have chapters
-			resourceDownloadPath = editablePart.embedded.pdfFile
-				? `${productPath}/downloads/${product.id}-${slugify(
-						editablePart.title
-				  )}-${fullResource.uid}-${editablePart.uid}.pdf`
-				: null;
-			resourceDownloadSizeBytes = editablePart.embedded.pdfFile
-				? editablePart.embedded.pdfFile.length
-				: null;
-		} else {
-			const convertPart = arrayify(
-				fullResource.embedded.contentPartList?.embedded
-					.uploadAndConvertContentPart
-			).find(({ uid }) => uid === Number(partUID));
+			pdfFile = editablePart.embedded.pdfFile || null;
+		} else if (convertPart) {
+			const chapterInfos = arrayify(
+					convertPart.embedded.htmlContent.embedded?.htmlChapterContentInfo
+				),
+				firstChapter = chapterInfos[0],
+				firstChapterContent = await getChapterContent(
+					firstChapter.links.self[0].href
+				);
 
-			throw Error("Upload and convert resources are not implemented yet");
+			if (!firstChapterContent)
+				throw Error(
+					`Could not find chapter part HTML for upload and convert part ${convertPart.uid} in product ${product.id}`
+				);
 
-			// const chapterSections =
-			// 	chapterContent.embedded?.htmlChapterSectionInfo &&
-			// 	Array.isArray(chapterContent.embedded.htmlChapterSectionInfo)
-			// 		? chapterContent.embedded.htmlChapterSectionInfo
-			// 		: [];
+			htmlBody = firstChapterContent.content;
+			pdfFile = convertPart.embedded.pdfFile;
+			chapters = chapterInfos.map(({ title, chapterSlug }, i) => ({
+				title,
+				url:
+					`${productPath}/${resourceTypeSlug}/${params.partSlug}` +
+					(i === 0 ? "" : `/chapters/${chapterSlug}`),
+			}));
+			chapterSections = arrayify(
+				firstChapterContent.embedded?.htmlChapterSectionInfo
+			).map((s) => ({
+				slug: s.chapterSlug,
+				title: s.title,
+			}));
 		}
 
 		return {
@@ -186,10 +207,13 @@ export const getGetServerSidePropsFunc =
 				title,
 				htmlBody,
 				chapters,
-				lastUpdated,
+				chapterSections,
+				lastUpdated: fullResource.lastMajorModificationDate,
 				resourceTypeSlug,
-				resourceDownloadPath,
-				resourceDownloadSizeBytes,
+				resourceDownloadPath: pdfFile
+					? `${productPath}/downloads/${product.id}-${params.partSlug}.pdf`
+					: null,
+				resourceDownloadSizeBytes: pdfFile ? pdfFile.length : null,
 			},
 		};
 	};
