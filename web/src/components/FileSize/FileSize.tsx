@@ -8,7 +8,7 @@ export type FileSizeProps = {
 export const FileSize: FC<FileSizeProps> = ({ fileSizeBytes }) => (
 	<>
 		{filesize(fileSizeBytes, {
-			round: fileSizeBytes > 999999 ? 2 : 0,
+			round: fileSizeBytes > 999999 ? 1 : 0,
 		})}
 	</>
 );
