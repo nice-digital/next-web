@@ -14,13 +14,14 @@ import { ProductPageHeading } from "@/components/ProductPageHeading/ProductPageH
 import { ResourceList } from "@/components/ResourceList/ResourceList";
 import { ProjectDetail } from "@/feeds/inDev/inDev";
 import { ProductDetail } from "@/feeds/publications/types";
-import { byTitleAlphabetically } from "@/utils/array";
+import { arrayify, byTitleAlphabetically } from "@/utils/array";
 import { getFileTypeNameFromMime } from "@/utils/file";
 import { validateRouteParams } from "@/utils/product";
 import {
 	ResourceGroupViewModel,
 	ResourceSubGroupViewModel,
 } from "@/utils/resource";
+import { slugify } from "@/utils/url";
 
 export type HistoryPageProps = {
 	productPath: string;
@@ -129,9 +130,7 @@ export const getServerSideProps: GetServerSideProps<
 		const indevResource =
 			panel.embedded.niceIndevResourceList.embedded.niceIndevResource;
 
-		const indevResources = Array.isArray(indevResource)
-			? indevResource
-			: [indevResource];
+		const indevResources = arrayify(indevResource);
 
 		const subGroups: ResourceSubGroupViewModel[] = [];
 
@@ -195,7 +194,7 @@ export const getServerSideProps: GetServerSideProps<
 				groups,
 			},
 			groupSections: groups.map(({ title }, i) => ({
-				slug: title.replace(/ /g, "-").toLowerCase() + i,
+				slug: slugify(title) + i,
 				title,
 			})),
 		},
