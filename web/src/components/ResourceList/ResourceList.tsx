@@ -2,7 +2,7 @@ import { type FC } from "react";
 
 import { type ResourceGroupViewModel } from "@/utils/resource";
 
-import { ResourceLink } from "../ResourceLink/ResourceLink";
+import { ResourceLinkCard } from "../ResourceLinkCard/ResourceLinkCard";
 
 export type ResourceListProps = {
 	groups: ResourceGroupViewModel[];
@@ -36,10 +36,9 @@ export const ResourceList: FC<ResourceListProps> = ({ groups }) => {
 							</h4>
 							<ul className="list list--unstyled">
 								{subGroup.resourceLinks.map((resourceLink) => (
-									<ResourceLink
-										key={resourceLink.href}
-										resourceLink={resourceLink}
-									/>
+									<li key={resourceLink.href}>
+										<ResourceLinkCard resourceLink={resourceLink} />
+									</li>
 								))}
 							</ul>
 						</section>
