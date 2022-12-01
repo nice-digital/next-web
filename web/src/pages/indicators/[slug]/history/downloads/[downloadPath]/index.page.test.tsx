@@ -7,6 +7,7 @@ import { FeedPath } from "@/feeds/publications/types";
 import { logger } from "@/logger";
 import mockProject from "@/mockData/inDev/feeds/projects/ProjectDetail.json";
 import mockProductWithInDevReference from "@/mockData/publications/feeds/products/indicator-with-indev-reference.json";
+import mockProductTypes from "@/mockData/publications/feeds/producttypes.json";
 
 import { getServerSideProps } from "./index.page";
 
@@ -26,16 +27,18 @@ jest.mock("@/logger", () => ({
 const loggerInfoMock = jest.mocked(logger.info);
 
 describe("/indicators/[slug]/history/downloads/[downloadPath]", () => {
-	const slug = "ind6-new-indicator-product-1";
-	const resourceTitleId = "comments-form";
-
-	const downloadPath = `IND6-${resourceTitleId}.doc`;
-
-	const resolvedUrl = `/indicators/${slug}/history/downloads/${downloadPath}`;
-	const context = {
-		params: { slug, downloadPath },
-		resolvedUrl: resolvedUrl,
-	} as FileDownloadnGetServerSidePropsContext;
+	const slug = "ind6-new-indicator-product-1",
+		resourceTitleId = "comments-form",
+		downloadPath = `IND6-${resourceTitleId}.doc`,
+		productRoot = "indicators",
+		resolvedUrl = `/${productRoot}/${slug}/history/downloads/${downloadPath}`,
+		context = {
+			params: { slug, downloadPath },
+			query: {
+				productRoot,
+			},
+			resolvedUrl,
+		} as unknown as FileDownloadnGetServerSidePropsContext;
 
 	beforeEach(() => {
 		axiosMock.reset();
@@ -44,7 +47,9 @@ describe("/indicators/[slug]/history/downloads/[downloadPath]", () => {
 			.onGet(new RegExp(FeedPath.ProductDetail))
 			.reply(200, mockProductWithInDevReference)
 			.onGet(new RegExp(IndevFeedPath.ProjectDetail))
-			.reply(200, mockProject);
+			.reply(200, mockProject)
+			.onGet(new RegExp(FeedPath.ProductTypes))
+			.reply(200, mockProductTypes);
 
 		jest.resetModules();
 	});

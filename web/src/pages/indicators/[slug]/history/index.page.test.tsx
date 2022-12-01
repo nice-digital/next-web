@@ -1,4 +1,4 @@
-import { render, screen, waitFor } from "@testing-library/react";
+import { render, waitFor } from "@testing-library/react";
 import MockAdapter from "axios-mock-adapter";
 import { type GetServerSidePropsContext } from "next";
 import { useRouter } from "next/router";
@@ -9,6 +9,7 @@ import { FeedPath } from "@/feeds/publications/types";
 import mockProject from "@/mockData/inDev/feeds/projects/ProjectDetail.json";
 import mockIndicatorSubTypes from "@/mockData/publications/feeds/products/indicator-sub-types.json";
 import mockProduct from "@/mockData/publications/feeds/products/indicator-with-indev-reference.json";
+import mockProductTypes from "@/mockData/publications/feeds/producttypes.json";
 
 import HistoryPage, {
 	getServerSideProps,
@@ -23,23 +24,31 @@ const axiosMock = new MockAdapter(client, {
 	onNoMatch: "throwException",
 });
 
-describe("/history/index.page", () => {
-	const slug = "ind6-new-indicator-product-1";
+describe("/indicators/[slug]/history", () => {
+	const slug = "ind6-new-indicator-product-1",
+		productRoot = "indicators",
+		resolvedUrl = `/${productRoot}/${slug}/history`,
+		context: HistoryPageGetServerSidePropsContext = {
+			params: { slug },
+			query: {
+				productRoot,
+			},
+			resolvedUrl,
+		} as unknown as HistoryPageGetServerSidePropsContext;
 
 	beforeEach(() => {
-		(useRouter as jest.Mock).mockImplementation(() => ({
-			asPath: `/indicators/${slug}/history`,
-		}));
+		(useRouter as jest.Mock).mockReturnValue({ asPath: resolvedUrl });
 		axiosMock.reset();
 
-		axiosMock.onGet(new RegExp(FeedPath.ProductDetail)).reply(200, mockProduct);
 		axiosMock
+			.onGet(new RegExp(FeedPath.ProductDetail))
+			.reply(200, mockProduct)
 			.onGet(new RegExp(IndevFeedPath.ProjectDetail))
-			.reply(200, mockProject);
-
-		axiosMock
+			.reply(200, mockProject)
 			.onGet(new RegExp(FeedPath.IndicatorSubTypes))
-			.reply(200, mockIndicatorSubTypes);
+			.reply(200, mockIndicatorSubTypes)
+			.onGet(new RegExp(FeedPath.ProductTypes))
+			.reply(200, mockProductTypes);
 
 		jest.resetModules();
 	});
@@ -47,10 +56,6 @@ describe("/history/index.page", () => {
 	describe("HistoryPage", () => {
 		let props: HistoryPageProps;
 		beforeEach(async () => {
-			const context = {
-				params: { slug: slug },
-			} as HistoryPageGetServerSidePropsContext;
-
 			props = (
 				(await getServerSideProps(context)) as {
 					props: HistoryPageProps;
@@ -75,19 +80,13 @@ describe("/history/index.page", () => {
 
 	describe("getServerSideProps", () => {
 		it("should return a correct props", async () => {
-			const result = await getServerSideProps({
-				params: { slug },
-				resolvedUrl: `/indicators/${slug}/history`,
-			} as HistoryPageGetServerSidePropsContext);
+			const result = await getServerSideProps(context);
 
 			expect(result).toMatchSnapshot();
 		});
 
 		it("should return correct groupSections", async () => {
-			const result = (await getServerSideProps({
-				params: { slug },
-				resolvedUrl: `/indicators/${slug}/history`,
-			} as HistoryPageGetServerSidePropsContext)) as {
+			const result = (await getServerSideProps(context)) as {
 				props: HistoryPageProps;
 			};
 
@@ -114,10 +113,7 @@ describe("/history/index.page", () => {
 				},
 			});
 
-			const notFoundResult = (await getServerSideProps({
-				params: { slug },
-				resolvedUrl: `/indicators/${slug}/history`,
-			} as HistoryPageGetServerSidePropsContext)) as {
+			const notFoundResult = (await getServerSideProps(context)) as {
 				props: HistoryPageProps;
 			};
 

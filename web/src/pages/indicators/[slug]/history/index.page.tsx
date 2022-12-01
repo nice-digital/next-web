@@ -106,8 +106,8 @@ export default function HistoryPage({
 export const getServerSideProps: GetServerSideProps<
 	HistoryPageProps,
 	{ slug: string }
-> = async ({ params, resolvedUrl }) => {
-	const result = await validateRouteParams(params, resolvedUrl);
+> = async ({ params, resolvedUrl, query }) => {
+	const result = await validateRouteParams({ params, query, resolvedUrl });
 
 	if ("notFound" in result || "redirect" in result) return result;
 

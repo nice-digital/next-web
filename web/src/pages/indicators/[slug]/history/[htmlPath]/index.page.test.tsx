@@ -9,6 +9,7 @@ import { FeedPath } from "@/feeds/publications/types";
 import mockProject from "@/mockData/inDev/feeds/projects/ProjectDetail.json";
 import mockIndicatorSubTypes from "@/mockData/publications/feeds/products/indicator-sub-types.json";
 import mockProductWithInDevReference from "@/mockData/publications/feeds/products/indicator-with-indev-reference.json";
+import mockProductTypes from "@/mockData/publications/feeds/producttypes.json";
 
 import HistoryHTMLPage, {
 	getServerSideProps,
@@ -25,14 +26,21 @@ const axiosMock = new MockAdapter(client, {
 });
 
 describe("/indicators/[slug]/history.page", () => {
-	const slug = "ind6-new-indicator-product-1";
-	const htmlPath = "html-content";
-	const mockEditableHTML = "<p>some test html content</p>";
+	const slug = "ind6-new-indicator-product-1",
+		htmlPath = "html-content",
+		mockEditableHTML = "<p>some test html content</p>",
+		productRoot = "indicators",
+		resolvedUrl = `/${productRoot}/${slug}/history/${htmlPath}`,
+		context = {
+			params: { slug: slug, htmlPath: htmlPath },
+			resolvedUrl,
+			query: { productRoot },
+		} as unknown as HistoryHTMLPageGetServerSidePropsContext;
 
 	beforeEach(() => {
-		(useRouter as jest.Mock).mockImplementation(() => ({
-			asPath: `/indicators/${slug}/history/${htmlPath}`,
-		}));
+		(useRouter as jest.Mock).mockReturnValue({
+			asPath: resolvedUrl,
+		});
 		axiosMock.reset();
 
 		axiosMock
@@ -43,7 +51,9 @@ describe("/indicators/[slug]/history.page", () => {
 			.onGet(new RegExp(FeedPath.IndicatorSubTypes))
 			.reply(200, mockIndicatorSubTypes)
 			.onGet(new RegExp(`/guidance/NG100/documents/${htmlPath}`))
-			.reply(200, mockEditableHTML);
+			.reply(200, mockEditableHTML)
+			.onGet(new RegExp(FeedPath.ProductTypes))
+			.reply(200, mockProductTypes);
 
 		jest.resetModules();
 	});
@@ -51,10 +61,6 @@ describe("/indicators/[slug]/history.page", () => {
 	describe("HistoryPage", () => {
 		let props: HistoryHTMLPageProps;
 		beforeEach(async () => {
-			const context = {
-				params: { slug: slug, htmlPath: htmlPath },
-			} as HistoryHTMLPageGetServerSidePropsContext;
-
 			props = (
 				(await getServerSideProps(context)) as {
 					props: HistoryHTMLPageProps;
@@ -142,10 +148,7 @@ describe("/indicators/[slug]/history.page", () => {
 
 	describe("getServerSideProps", () => {
 		it("should return a correct props", async () => {
-			const result = await getServerSideProps({
-				params: { slug, htmlPath },
-				resolvedUrl: `/indicators/${slug}/history/${htmlPath}`,
-			} as HistoryHTMLPageGetServerSidePropsContext);
+			const result = await getServerSideProps(context);
 
 			expect(result).toMatchSnapshot();
 		});
@@ -154,8 +157,9 @@ describe("/indicators/[slug]/history.page", () => {
 			const wrongHtmlPath = "non-existent-html-1";
 
 			const notFoundResult = await getServerSideProps({
+				...context,
 				params: { slug, htmlPath: wrongHtmlPath },
-				resolvedUrl: `/indicators/${slug}/history/${htmlPath}`,
+				resolvedUrl: `/indicators/${slug}/history/${wrongHtmlPath}`,
 			} as HistoryHTMLPageGetServerSidePropsContext);
 
 			expect(notFoundResult).toStrictEqual({ notFound: true });
@@ -179,10 +183,7 @@ describe("/indicators/[slug]/history.page", () => {
 				},
 			});
 
-			const notFoundResult = await getServerSideProps({
-				params: { slug, htmlPath },
-				resolvedUrl: `/indicators/${slug}/history/${htmlPath}`,
-			} as HistoryHTMLPageGetServerSidePropsContext);
+			const notFoundResult = await getServerSideProps(context);
 
 			expect(notFoundResult).toStrictEqual({ notFound: true });
 		});
@@ -195,12 +196,7 @@ describe("/indicators/[slug]/history.page", () => {
 					StatusCode: "NotFound",
 				});
 
-			const notFoundResult = (await getServerSideProps({
-				params: { slug, htmlPath },
-				resolvedUrl: `/indicators/${slug}/history/${htmlPath}`,
-			} as HistoryHTMLPageGetServerSidePropsContext)) as {
-				props: HistoryHTMLPageProps;
-			};
+			const notFoundResult = await getServerSideProps(context);
 
 			expect(notFoundResult).toStrictEqual({ notFound: true });
 		});

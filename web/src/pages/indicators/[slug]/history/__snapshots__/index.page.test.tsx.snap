@@ -1,6 +1,6 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`/history/index.page HistoryPage should match snapshot for main content 1`] = `
+exports[`/indicators/[slug]/history HistoryPage should match snapshot for main content 1`] = `
 <body>
   <div>
     <nav
@@ -3724,7 +3724,7 @@ exports[`/history/index.page HistoryPage should match snapshot for main content 
 </body>
 `;
 
-exports[`/history/index.page getServerSideProps should return a correct props 1`] = `
+exports[`/indicators/[slug]/history getServerSideProps should return a correct props 1`] = `
 Object {
   "props": Object {
     "groupSections": Array [

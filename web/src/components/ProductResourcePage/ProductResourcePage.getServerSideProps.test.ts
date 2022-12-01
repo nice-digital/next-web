@@ -1,9 +1,11 @@
 import MockAdapter from "axios-mock-adapter";
 import { type GetServerSidePropsContext } from "next";
 
+import { FeedPath as InDevFeedPath } from "@/feeds/inDev/types";
 import { client } from "@/feeds/index";
 import { FeedPath } from "@/feeds/publications/types";
 import { logger } from "@/logger";
+import mockProject from "@/mockData/inDev/feeds/projects/ProjectDetail.json";
 import mockProduct from "@/mockData/publications/feeds/products/ng100.json";
 import mockProductTypes from "@/mockData/publications/feeds/producttypes.json";
 import mockEditableContentResource from "@/mockData/publications/feeds/resource/29409.json";
@@ -33,18 +35,18 @@ const resourceUID = 3784329,
 	partSlug = `resource-impact-statement-${resourceUID}-${partUID}`,
 	slug = `${mockProduct.Id.toLowerCase()}`,
 	resourceHref = `/feeds/resource/29409`,
-	partHTMLHref = "/feeds/supportingresource/29409/content/1/html";
-
-const getServerSidePropsContext = {
-	params: {
-		slug,
-		partSlug,
-	},
-	query: {
-		productRoot: "guidance",
-	},
-	resolvedUrl: `/guidance/${slug}/resources/${partSlug}`,
-} as unknown as GetServerSidePropsContext<Params>;
+	partHTMLHref = "/feeds/supportingresource/29409/content/1/html",
+	productRoot = "guidance",
+	getServerSidePropsContext = {
+		params: {
+			slug,
+			partSlug,
+		},
+		query: {
+			productRoot,
+		},
+		resolvedUrl: `/${productRoot}/${slug}/resources/${partSlug}`,
+	} as unknown as GetServerSidePropsContext<Params>;
 
 describe("getServerSideProps", () => {
 	const getServerSideProps = getGetServerSidePropsFunc(
@@ -64,7 +66,9 @@ describe("getServerSideProps", () => {
 			.onGet(new RegExp(FeedPath.ProductTypes))
 			.reply(200, mockProductTypes)
 			.onGet(new RegExp(partHTMLHref))
-			.reply(200, mockEditableHTML);
+			.reply(200, mockEditableHTML)
+			.onGet(new RegExp(InDevFeedPath.ProjectDetail))
+			.reply(200, mockProject);
 
 		jest.resetModules();
 	});
@@ -82,7 +86,7 @@ describe("getServerSideProps", () => {
 		});
 
 		expect(loggerInfoMock.mock.calls[0][0]).toBe(
-			`Can't serve resource with url /guidance/ng100/resources/resource-impact-statement-3784329-4904490349 in product NG100: no tools and resources`
+			`Could not find resource with UID ${resourceUID} in product ${mockProduct.Id}`
 		);
 	});
 
@@ -182,7 +186,7 @@ describe("getServerSideProps", () => {
 			    "chapterSections": Array [],
 			    "chapters": Array [],
 			    "hasEvidenceResources": true,
-			    "hasHistory": false,
+			    "hasHistory": true,
 			    "hasInfoForPublicResources": true,
 			    "hasToolsAndResources": true,
 			    "htmlBody": "<p>Some body content</p>",
