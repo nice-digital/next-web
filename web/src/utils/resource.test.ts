@@ -26,7 +26,11 @@ describe("resource utils", () => {
 						},
 					} as ResourceDetail)
 				).toStrictEqual([
-					{ href: "resources/test-title-123", title: "Test title" },
+					{
+						href: "resources/test-title-123",
+						title: "Test title",
+						type: undefined,
+					},
 				]);
 			});
 
@@ -51,8 +55,8 @@ describe("resource utils", () => {
 						},
 					} as ResourceDetail)
 				).toStrictEqual([
-					{ href: "resources/part-1-123", title: "Part 1" },
-					{ href: "resources/part-2-456", title: "Part 2" },
+					{ href: "resources/part-1-123", title: "Part 1", type: undefined },
+					{ href: "resources/part-2-456", title: "Part 2", type: undefined },
 				]);
 			});
 		});
@@ -72,7 +76,9 @@ describe("resource utils", () => {
 							},
 						},
 					} as ResourceDetail)
-				).toStrictEqual([{ href: "https://someurl.com", title: "Test title" }]);
+				).toStrictEqual([
+					{ href: "https://someurl.com", title: "Test title", type: undefined },
+				]);
 			});
 
 			it("should find multiple external url parts", () => {
@@ -96,8 +102,8 @@ describe("resource utils", () => {
 						},
 					} as ResourceDetail)
 				).toStrictEqual([
-					{ href: "https://link1.com", title: "Link 1" },
-					{ href: "https://link2.com", title: "Link 2" },
+					{ href: "https://link1.com", title: "Link 1", type: undefined },
+					{ href: "https://link2.com", title: "Link 2", type: undefined },
 				]);
 			});
 		});
@@ -118,7 +124,11 @@ describe("resource utils", () => {
 						},
 					} as ResourceDetail)
 				).toStrictEqual([
-					{ href: "resources/test-title-123", title: "Test title" },
+					{
+						href: "resources/test-title-123",
+						title: "Test title",
+						type: undefined,
+					},
 				]);
 			});
 
@@ -143,8 +153,8 @@ describe("resource utils", () => {
 						},
 					} as ResourceDetail)
 				).toStrictEqual([
-					{ href: "resources/part-1-123", title: "Part 1" },
-					{ href: "resources/part-2-456", title: "Part 2" },
+					{ href: "resources/part-1-123", title: "Part 1", type: undefined },
+					{ href: "resources/part-2-456", title: "Part 2", type: undefined },
 				]);
 			});
 		});
@@ -179,6 +189,7 @@ describe("resource utils", () => {
 						date: "2017-05-10T00:00:00",
 						fileTypeName: "Excel",
 						fileSize: 12345,
+						type: undefined,
 					},
 				]);
 			});
@@ -225,6 +236,7 @@ describe("resource utils", () => {
 						date: "2017-05-10T00:00:00",
 						fileTypeName: "Excel",
 						fileSize: 1357,
+						type: undefined,
 					},
 					{
 						href: "resources/downloads/part-2-456.pdf",
@@ -232,6 +244,7 @@ describe("resource utils", () => {
 						date: "2017-05-10T00:00:00",
 						fileTypeName: "PDF",
 						fileSize: 2468,
+						type: undefined,
 					},
 				]);
 			});
@@ -337,14 +350,17 @@ describe("resource utils", () => {
 							{
 								title: "First group link 1",
 								href: "https://firstgrouplink1.com",
+								type: "First group",
 							},
 							{
 								title: "First group link 2",
 								href: "https://firstgrouplink2.com",
+								type: "First group",
 							},
 							{
 								title: "First group link 3",
 								href: "https://firstgrouplink3.com",
+								type: "First group",
 							},
 						],
 					},
@@ -354,6 +370,7 @@ describe("resource utils", () => {
 							{
 								title: "Second group link 1",
 								href: "https://secondgrouplink1.com",
+								type: "Second group",
 							},
 						],
 					},
@@ -426,14 +443,17 @@ describe("resource utils", () => {
 								{
 									title: "First group link 1",
 									href: "https://firstgrouplink1.com",
+									type: "First group",
 								},
 								{
 									title: "First group link 2",
 									href: "https://firstgrouplink2.com",
+									type: "First group",
 								},
 								{
 									title: "First group link 3",
 									href: "https://firstgrouplink3.com",
+									type: "First group",
 								},
 							],
 						},
@@ -448,6 +468,7 @@ describe("resource utils", () => {
 								{
 									title: "Second group link 1",
 									href: "https://secondgrouplink1.com",
+									type: "Second group",
 								},
 							],
 						},

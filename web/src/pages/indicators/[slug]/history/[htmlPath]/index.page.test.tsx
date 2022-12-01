@@ -9,8 +9,6 @@ import { FeedPath } from "@/feeds/publications/types";
 import mockProject from "@/mockData/inDev/feeds/projects/ProjectDetail.json";
 import mockIndicatorSubTypes from "@/mockData/publications/feeds/products/indicator-sub-types.json";
 import mockProductWithInDevReference from "@/mockData/publications/feeds/products/indicator-with-indev-reference.json";
-import { arrayify } from "@/utils/array";
-import { formatDateStr, stripTime } from "@/utils/datetime";
 
 import HistoryHTMLPage, {
 	getServerSideProps,
@@ -102,30 +100,43 @@ describe("/indicators/[slug]/history.page", () => {
 		it("should display the lastUpdated date", () => {
 			render(<HistoryHTMLPage {...props} />);
 
-			const resource = arrayify(
-				mockProject._embedded["nice.indev:panel-list"]._embedded[
-					"nice.indev:panel"
-				][13]._embedded["nice.indev:resource-list"]._embedded[
-					"nice.indev:resource"
-				]
-			);
-
-			const resourcePublishedDate = resource[0].PublishedDate;
-
 			expect(
 				screen.getByText("This page was last updated on")
 			).toBeInTheDocument();
 
-			const time = screen.getByText(
-				formatDateStr(resourcePublishedDate as string),
-				{
-					selector: "time",
-				}
-			);
-			expect(time).toHaveAttribute(
-				"dateTime",
-				stripTime(resourcePublishedDate as string)
-			);
+			const time = screen.getByText("19 July 2016", {
+				selector: "time",
+			});
+			expect(time).toHaveAttribute("dateTime", "2016-07-19");
+		});
+
+		describe("Breadcrumbs", () => {
+			it("should render home breadcrumb linking to the homepage", () => {
+				render(<HistoryHTMLPage {...props} />);
+				expect(
+					screen.queryByText("Home", {
+						selector: ".breadcrumbs a",
+					})
+				).toHaveAttribute("href", "/");
+			});
+
+			it("should render history breadcrumb linking to the product history page", () => {
+				render(<HistoryHTMLPage {...props} />);
+				expect(
+					screen.queryByText("History", {
+						selector: ".breadcrumbs a",
+					})
+				).toHaveAttribute("href", `/indicators/${slug}/history`);
+			});
+
+			it("should render given title as current page breadcrumb without link", () => {
+				render(<HistoryHTMLPage {...props} />);
+				expect(
+					screen.getByText("Draft scope consultation", {
+						selector: ".breadcrumbs span",
+					})
+				).toBeInTheDocument();
+			});
 		});
 	});
 

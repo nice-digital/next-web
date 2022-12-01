@@ -109,8 +109,6 @@ export const validateRouteParams = async (
 		evidenceResources = getPublishedEvidenceResources(product),
 		infoForPublicResources = getPublishedIFPResources(product);
 
-	//TODO make hardcoded project reference dynamic
-	product.inDevReference = "GID-NG10014";
 	const project = product.inDevReference
 		? await getProjectDetail(product.inDevReference)
 		: null;
