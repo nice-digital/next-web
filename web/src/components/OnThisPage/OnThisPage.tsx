@@ -17,7 +17,7 @@ const getActiveHeadingId = (
 ): string => {
 	const headingsAboveViewport = linkTree
 		.map(({ slug: id }) => {
-			const heading = document.querySelector(`#${id}`);
+			const heading = document.getElementById(id);
 			return { heading, y: heading?.getBoundingClientRect().top || 0 };
 		})
 		.filter(({ y }) => y - scrollTolerance <= 0);
