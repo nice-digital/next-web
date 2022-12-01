@@ -62,13 +62,13 @@ export const getProjectDetail = async (
 		FeedPath.ProjectDetail + inDevReference,
 		longTTL,
 		async () => {
-			const response = await getFeedBodyUnCached<ProjectDetail | ErrorResponse>(
+			const response = await getFeedBodyUnCached<ProjectDetail | "">(
 				origin,
 				FeedPath.ProjectDetail + inDevReference,
 				apiKey
 			);
 
-			return isSuccessResponse(response) ? response : null;
+			return response === "" ? null : response;
 		}
 	);
 

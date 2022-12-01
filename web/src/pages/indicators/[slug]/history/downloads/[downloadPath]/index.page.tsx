@@ -25,13 +25,16 @@ export const getServerSideProps: GetServerSideProps<
 
 	const { project, product, historyPanels } = result;
 
-	if (!project) return { notFound: true };
+	if (!project) {
+		logger.info(`Project could not be found for product ${product.id}`);
+		return { notFound: true };
+	}
 
 	const pathRegexMatch = params.downloadPath.match(downloadPathRegex);
 
 	if (!pathRegexMatch || !pathRegexMatch.groups) {
 		logger.info(
-			`Download path of ${params.downloadPath} in product ${product.id} doesn't match expected format`
+			`Download path of ${params.downloadPath} in product ${product.id} doesn't match expected format of [productId]-[resourceTitleId].[extension]`
 		);
 
 		return { notFound: true };

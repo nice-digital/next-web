@@ -1,4 +1,4 @@
-import { getDefaultNormalizer, render, screen } from "@testing-library/react";
+import { render, screen } from "@testing-library/react";
 import MockAdapter from "axios-mock-adapter";
 import { type GetServerSidePropsContext } from "next";
 import { useRouter } from "next/router";
@@ -9,6 +9,8 @@ import { FeedPath } from "@/feeds/publications/types";
 import mockProject from "@/mockData/inDev/feeds/projects/ProjectDetail.json";
 import mockIndicatorSubTypes from "@/mockData/publications/feeds/products/indicator-sub-types.json";
 import mockProductWithInDevReference from "@/mockData/publications/feeds/products/indicator-with-indev-reference.json";
+import { arrayify } from "@/utils/array";
+import { formatDateStr, stripTime } from "@/utils/datetime";
 
 import HistoryHTMLPage, {
 	getServerSideProps,
@@ -24,8 +26,6 @@ const axiosMock = new MockAdapter(client, {
 	onNoMatch: "throwException",
 });
 
-// /indicators/ind6-new-indicator-product-1/history/html-content
-
 describe("/indicators/[slug]/history.page", () => {
 	const slug = "ind6-new-indicator-product-1";
 	const htmlPath = "html-content";
@@ -39,18 +39,12 @@ describe("/indicators/[slug]/history.page", () => {
 
 		axiosMock
 			.onGet(new RegExp(FeedPath.ProductDetail))
-			.reply(200, mockProductWithInDevReference);
-		axiosMock
+			.reply(200, mockProductWithInDevReference)
 			.onGet(new RegExp(IndevFeedPath.ProjectDetail))
-			.reply(200, mockProject);
-		axiosMock
+			.reply(200, mockProject)
 			.onGet(new RegExp(FeedPath.IndicatorSubTypes))
-			.reply(200, mockIndicatorSubTypes);
-
-		axiosMock
-			.onGet(
-				`https://next-web-tests-indev.nice.org.uk/guidance/NG100/documents/${htmlPath}`
-			)
+			.reply(200, mockIndicatorSubTypes)
+			.onGet(new RegExp(`/guidance/NG100/documents/${htmlPath}`))
 			.reply(200, mockEditableHTML);
 
 		jest.resetModules();
@@ -72,9 +66,6 @@ describe("/indicators/[slug]/history.page", () => {
 
 		it("should match snapshot for main content", () => {
 			render(<HistoryHTMLPage {...props} />);
-
-			// eslint-disable-next-line testing-library/no-debugging-utils
-			// screen.debug();
 			expect(document.body).toMatchSnapshot();
 		});
 
@@ -84,13 +75,57 @@ describe("/indicators/[slug]/history.page", () => {
 		});
 
 		it.each([
-			["Comments form"],
-			["Draft scope"],
-			["Equality impact assessment"],
-		])("should render resource for %s", (linkText) => {
+			[
+				"Comments form (Word, 65 kB)",
+				"/indicators/ind6-new-indicator-product-1/history/downloads/IND6-comments-form.doc",
+			],
+			[
+				"Draft scope (PDF, 124 kB)",
+				"/indicators/ind6-new-indicator-product-1/history/downloads/IND6-draft-scope.pdf",
+			],
+			[
+				"Equality impact assessment (PDF, 233 kB)",
+				"/indicators/ind6-new-indicator-product-1/history/downloads/IND6-equality-impact-assessment-8.pdf",
+			],
+		])(
+			"should render resource links for %s with correct %s link and file info",
+			(linkText, href) => {
+				render(<HistoryHTMLPage {...props} />);
+
+				const resourceLink = screen.getByText(linkText);
+
+				expect(resourceLink).toBeInTheDocument();
+				expect(resourceLink).toHaveAttribute("href", href);
+			}
+		);
+
+		it("should display the lastUpdated date", () => {
 			render(<HistoryHTMLPage {...props} />);
-			const link = screen.getByText(linkText, { selector: "dd" });
-			expect(link).toBeInTheDocument();
+
+			const resource = arrayify(
+				mockProject._embedded["nice.indev:panel-list"]._embedded[
+					"nice.indev:panel"
+				][13]._embedded["nice.indev:resource-list"]._embedded[
+					"nice.indev:resource"
+				]
+			);
+
+			const resourcePublishedDate = resource[0].PublishedDate;
+
+			expect(
+				screen.getByText("This page was last updated on")
+			).toBeInTheDocument();
+
+			const time = screen.getByText(
+				formatDateStr(resourcePublishedDate as string),
+				{
+					selector: "time",
+				}
+			);
+			expect(time).toHaveAttribute(
+				"dateTime",
+				stripTime(resourcePublishedDate as string)
+			);
 		});
 	});
 
@@ -104,12 +139,57 @@ describe("/indicators/[slug]/history.page", () => {
 			expect(result).toMatchSnapshot();
 		});
 
-		it("should return a not found if resource title id doesn't match the htmlPath", async () => {
+		it("should return a not found if resource title id doesn't match the htmlPath param", async () => {
 			const wrongHtmlPath = "non-existent-html-1";
+
 			const notFoundResult = await getServerSideProps({
 				params: { slug, htmlPath: wrongHtmlPath },
 				resolvedUrl: `/indicators/${slug}/history/${htmlPath}`,
 			} as HistoryHTMLPageGetServerSidePropsContext);
+
+			expect(notFoundResult).toStrictEqual({ notFound: true });
+		});
+
+		it("should return a not found if there are panels of type 'History'", async () => {
+			const nonHistoryPanels = mockProject._embedded[
+				"nice.indev:panel-list"
+			]._embedded["nice.indev:panel"].filter(
+				(panel) => panel.PanelType != "History"
+			);
+
+			axiosMock.onGet(new RegExp(IndevFeedPath.ProjectDetail)).reply(200, {
+				...mockProject,
+				_embedded: {
+					"nice.indev:panel-list": {
+						_embedded: {
+							"nice.indev:panel": nonHistoryPanels,
+						},
+					},
+				},
+			});
+
+			const notFoundResult = await getServerSideProps({
+				params: { slug, htmlPath },
+				resolvedUrl: `/indicators/${slug}/history/${htmlPath}`,
+			} as HistoryHTMLPageGetServerSidePropsContext);
+
+			expect(notFoundResult).toStrictEqual({ notFound: true });
+		});
+
+		it("should return not found if the resource html is null", async () => {
+			axiosMock
+				.onGet(new RegExp("/guidance/NG100/documents/html-content"))
+				.reply(404, {
+					Message: "Not found",
+					StatusCode: "NotFound",
+				});
+
+			const notFoundResult = (await getServerSideProps({
+				params: { slug, htmlPath },
+				resolvedUrl: `/indicators/${slug}/history/${htmlPath}`,
+			} as HistoryHTMLPageGetServerSidePropsContext)) as {
+				props: HistoryHTMLPageProps;
+			};
 
 			expect(notFoundResult).toStrictEqual({ notFound: true });
 		});

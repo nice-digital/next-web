@@ -57,9 +57,7 @@ export default function HistoryPage({
 	return (
 		<>
 			<NextSeo
-				title={
-					product.title + " | History | Indicators | Standards and Indicators"
-				}
+				title={`History | ${product.id} | Indicators | Standards and Indicators`}
 			/>
 			<Breadcrumbs>
 				<Breadcrumb to="/">Home</Breadcrumb>
@@ -125,6 +123,8 @@ export const getServerSideProps: GetServerSideProps<
 
 	if (!project) return { notFound: true };
 
+	if (!hasHistory) return { notFound: true };
+
 	const groups = historyPanels.sort(byTitleAlphabetically).map((panel) => {
 		const indevResource =
 			panel.embedded.niceIndevResourceList.embedded.niceIndevResource;
@@ -164,6 +164,7 @@ export const getServerSideProps: GetServerSideProps<
 					fileTypeName,
 					fileSize,
 					date: resource.publishedDate,
+					type: panel.title,
 				});
 			}
 		});

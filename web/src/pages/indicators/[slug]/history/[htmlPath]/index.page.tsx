@@ -1,23 +1,21 @@
-import { filesize } from "filesize";
 import { NextSeo } from "next-seo";
 import { type GetServerSideProps } from "next/types";
 import React from "react";
 
 import { Breadcrumbs, Breadcrumb } from "@nice-digital/nds-breadcrumbs";
-import { Card, type CardMetaDataProps } from "@nice-digital/nds-card";
 
 import { ProductHorizontalNav } from "@/components/ProductHorizontalNav/ProductHorizontalNav";
 import { ProductPageHeading } from "@/components/ProductPageHeading/ProductPageHeading";
+import { ResourceLink } from "@/components/ResourceLink/ResourceLink";
 import { getResourceFileHTML } from "@/feeds/inDev/inDev";
 import { ProductDetail } from "@/feeds/publications/types";
-import { arrayify, isTruthy } from "@/utils/array";
+import { arrayify } from "@/utils/array";
 import { formatDateStr, stripTime } from "@/utils/datetime";
 import { getFileTypeNameFromMime } from "@/utils/file";
 import { validateRouteParams } from "@/utils/product";
-import {
-	ResourceGroupViewModel,
-	ResourceSubGroupViewModel,
-} from "@/utils/resource";
+import { ResourceLinkViewModel } from "@/utils/resource";
+
+import styles from "./index.page.module.scss";
 
 export type HistoryHTMLPageProps = {
 	productPath: string;
@@ -36,8 +34,8 @@ export type HistoryHTMLPageProps = {
 	resource: {
 		resourceFileHTML: string;
 		title: string;
-		groups: ResourceGroupViewModel[];
 	};
+	resourceLinks: ResourceLinkViewModel[];
 	lastUpdated: string;
 };
 
@@ -50,15 +48,12 @@ export default function HistoryHTMLPage({
 	hasHistory,
 	resource,
 	lastUpdated,
+	resourceLinks,
 }: HistoryHTMLPageProps): JSX.Element {
-	const resourceLinks = resource.groups[0].subGroups[0].resourceLinks;
-
 	return (
 		<>
 			<NextSeo
-				title={
-					product.title + " | History | Indicators | Standards and Indicators"
-				}
+				title={`${resource.title} | History | ${product.id} | Indicators | Standards and Indicators`}
 			/>
 			<Breadcrumbs>
 				<Breadcrumb to="/">Home</Breadcrumb>
@@ -68,10 +63,8 @@ export default function HistoryHTMLPage({
 				<Breadcrumb to="/standards-and-indicators/indicators">
 					Indicators
 				</Breadcrumb>
-				<Breadcrumb to={`/indicators/${product.id}`}>{product.id}</Breadcrumb>
-				<Breadcrumb to={`/indicators/${product.id}/history`}>
-					History
-				</Breadcrumb>
+				<Breadcrumb to={productPath}>{product.id}</Breadcrumb>
+				<Breadcrumb to={`${productPath}/history`}>History</Breadcrumb>
 				<Breadcrumb>{resource.title}</Breadcrumb>
 			</Breadcrumbs>
 			<ProductPageHeading product={product} />
@@ -87,62 +80,17 @@ export default function HistoryHTMLPage({
 				dangerouslySetInnerHTML={{ __html: resource.resourceFileHTML }}
 			></div>
 			{resourceLinks.length > 0 ? (
-				<>
-					<hr />
+				<div className={styles.resourceLinks}>
+					<hr className="mb--d" />
 					<ul className="list list--unstyled">
-						{resourceLinks.map((resource) => {
-							const fileSize =
-								resource.fileSize && resource.fileSize > 0
-									? filesize(resource.fileSize, {
-											round: resource.fileSize > 999999 ? 2 : 0,
-									  })
-									: null;
-
-							const cardMeta: CardMetaDataProps[] = [
-								{
-									// Hack because of a bug with the card component rendering a 0 when no metadata
-									label: "Type",
-									value: resource.title,
-									// value: subGroup.title,
-								},
-								resource.date
-									? {
-											label: "Date",
-											value: (
-												<time dateTime={stripTime(resource.date)}>
-													{formatDateStr(resource.date)}
-												</time>
-											),
-									  }
-									: undefined,
-								resource.fileTypeName
-									? { label: "File type", value: resource.fileTypeName }
-									: undefined,
-								resource.fileSize && resource.fileSize > 0
-									? {
-											label: "File size",
-											value: fileSize,
-									  }
-									: undefined,
-							].filter(isTruthy);
-							return (
-								<li key={resource.href}>
-									<Card
-										headingText={`${resource.title}${
-											resource.fileTypeName
-												? ` (${resource.fileTypeName}, ${fileSize})`
-												: ""
-										}`}
-										link={{
-											destination: resource.href,
-										}}
-										metadata={cardMeta}
-									/>
-								</li>
-							);
-						})}
+						{resourceLinks.map((resourceLink) => (
+							<ResourceLink
+								key={resourceLink.href}
+								resourceLink={resourceLink}
+							/>
+						))}
 					</ul>
-				</>
+				</div>
 			) : null}
 			{lastUpdated ? (
 				<p>
@@ -192,30 +140,14 @@ export const getServerSideProps: GetServerSideProps<
 
 	if (resourceFileHTML == null) return { notFound: true };
 
-	const groups = historyPanels
-		.filter((panel) => panel.title === resource.title)
-		.map((panel) => {
-			const indevResource =
-				panel.embedded.niceIndevResourceList.embedded.niceIndevResource;
+	const panel = historyPanels.find((panel) => panel.title === resource.title);
 
-			const indevResources = Array.isArray(indevResource)
-				? indevResource
-				: [indevResource];
-
-			const subGroups: ResourceSubGroupViewModel[] = [];
-
-			let currentSubGroup: ResourceSubGroupViewModel;
-
-			indevResources
+	const resourceLinks: ResourceLinkViewModel[] = panel
+		? arrayify(panel.embedded.niceIndevResourceList.embedded.niceIndevResource)
 				.filter(
 					(resource) => !resource.textOnly && resource.title !== panel.title
 				)
-				.forEach((resource) => {
-					if (!currentSubGroup) {
-						currentSubGroup = { title: panel.title, resourceLinks: [] };
-						subGroups.push(currentSubGroup);
-					}
-
+				.map((resource) => {
 					const { mimeType, length, resourceTitleId, fileName } =
 							resource.embedded.niceIndevFile,
 						isHTML = mimeType === "text/html",
@@ -227,20 +159,16 @@ export const getServerSideProps: GetServerSideProps<
 									product.id
 							  }-${resourceTitleId}.${fileName.split(".").slice(-1)[0]}`;
 
-					currentSubGroup.resourceLinks.push({
+					return {
 						title: resource.title,
 						href,
 						fileTypeName,
 						fileSize,
 						date: resource.publishedDate,
-					});
-				});
-
-			return {
-				title: panel.title,
-				subGroups,
-			};
-		});
+						type: panel.title,
+					};
+				})
+		: [];
 
 	return {
 		props: {
@@ -259,8 +187,8 @@ export const getServerSideProps: GetServerSideProps<
 			resource: {
 				resourceFileHTML,
 				title: resource.title,
-				groups,
 			},
+			resourceLinks,
 			lastUpdated: resource.publishedDate,
 		},
 	};

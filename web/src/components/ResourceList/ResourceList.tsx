@@ -7,6 +7,8 @@ import { isTruthy } from "@/utils/array";
 import { formatDateStr, stripTime } from "@/utils/datetime";
 import { type ResourceGroupViewModel } from "@/utils/resource";
 
+import { ResourceLink } from "../ResourceLink/ResourceLink";
+
 export type ResourceListProps = {
 	groups: ResourceGroupViewModel[];
 };
@@ -38,57 +40,12 @@ export const ResourceList: FC<ResourceListProps> = ({ groups }) => {
 								{subGroup.title}
 							</h4>
 							<ul className="list list--unstyled">
-								{subGroup.resourceLinks.map((resource) => {
-									const fileSize =
-										resource.fileSize && resource.fileSize > 0
-											? filesize(resource.fileSize, {
-													round: resource.fileSize > 999999 ? 2 : 0,
-											  })
-											: null;
-
-									const cardMeta: CardMetaDataProps[] = [
-										{
-											// Hack because of a bug with the card component rendering a 0 when no metadata
-											label: "Type",
-											value: subGroup.title,
-										},
-										resource.date
-											? {
-													label: "Date",
-													value: (
-														<time dateTime={stripTime(resource.date)}>
-															{formatDateStr(resource.date)}
-														</time>
-													),
-											  }
-											: undefined,
-										resource.fileTypeName
-											? { label: "File type", value: resource.fileTypeName }
-											: undefined,
-										resource.fileSize && resource.fileSize > 0
-											? {
-													label: "File size",
-													value: fileSize,
-											  }
-											: undefined,
-									].filter(isTruthy);
-
-									return (
-										<li key={resource.href}>
-											<Card
-												headingText={`${resource.title}${
-													resource.fileTypeName
-														? ` (${resource.fileTypeName}, ${fileSize})`
-														: ""
-												}`}
-												link={{
-													destination: resource.href,
-												}}
-												metadata={cardMeta}
-											/>
-										</li>
-									);
-								})}
+								{subGroup.resourceLinks.map((resourceLink) => (
+									<ResourceLink
+										key={resourceLink.href}
+										resourceLink={resourceLink}
+									/>
+								))}
 							</ul>
 						</section>
 					))}

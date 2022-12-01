@@ -44,7 +44,7 @@ describe("/history/index.page", () => {
 		jest.resetModules();
 	});
 
-	describe("IndicatorDetailPage", () => {
+	describe("HistoryPage", () => {
 		let props: HistoryPageProps;
 		beforeEach(async () => {
 			const context = {
@@ -69,7 +69,7 @@ describe("/history/index.page", () => {
 			render(<HistoryPage {...props} />);
 			await waitFor(() => {
 				expect(document.title).toEqual(
-					`${mockProduct.Title} | History | Indicators | Standards and Indicators`
+					`History | ${mockProduct.Id} | Indicators | Standards and Indicators`
 				);
 			});
 		});
@@ -98,7 +98,7 @@ describe("/history/index.page", () => {
 			expect(groupSections).toHaveLength(11);
 		});
 
-		it("should return hasHistory false when there are no history panels", async () => {
+		it("should return notFound when there are no history panels", async () => {
 			const nonHistoryPanels = mockProject._embedded[
 				"nice.indev:panel-list"
 			]._embedded["nice.indev:panel"].filter(
@@ -116,14 +116,14 @@ describe("/history/index.page", () => {
 				},
 			});
 
-			const result = (await getServerSideProps({
+			const notFoundResult = (await getServerSideProps({
 				params: { slug },
 				resolvedUrl: `/indicators/${slug}/history`,
 			} as HistoryPageGetServerSidePropsContext)) as {
 				props: HistoryPageProps;
 			};
-			//TODO should be a 404
-			expect(result.props.hasHistory).toBe(false);
+
+			expect(notFoundResult).toStrictEqual({ notFound: true });
 		});
 	});
 });

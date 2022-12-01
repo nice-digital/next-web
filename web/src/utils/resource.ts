@@ -12,6 +12,7 @@ export type ResourceLinkViewModel = {
 	fileSize?: number | null;
 	/** ISO formatted date string */
 	date?: string;
+	type: string;
 };
 
 export type ResourceSubGroupViewModel = {
@@ -96,10 +97,12 @@ export const findContentPartLinks = (
 		...arrayify(uploadAndConvertContentPart).map((part) => ({
 			title: part.title,
 			href: `resources/${slugify(part.title)}-${part.uid}`,
+			type: resource.resourceTypeName,
 		})),
 		...arrayify(editableContentPart).map((part) => ({
 			title: part.title,
 			href: `resources/${slugify(part.title)}-${part.uid}`,
+			type: resource.resourceTypeName,
 		})),
 		...arrayify(uploadContentPart).map((part) => ({
 			title: part.title,
@@ -109,10 +112,12 @@ export const findContentPartLinks = (
 			fileSize: part.embedded.file.length,
 			fileTypeName: getFileTypeNameFromMime(part.embedded.file.mimeType),
 			date: resource.lastMajorModificationDate,
+			type: resource.resourceTypeName,
 		})),
 		...arrayify(externalUrlContentPart).map((part) => ({
 			title: part.title,
 			href: part.url,
+			type: resource.resourceTypeName,
 		})),
 	].sort(byTitleAlphabetically);
 };
