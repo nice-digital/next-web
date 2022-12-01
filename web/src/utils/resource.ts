@@ -19,11 +19,12 @@ export enum ResourceTypeSlug {
 export type ResourceLinkViewModel = {
 	title: string;
 	href: string;
-	fileTypeName?: string;
+	fileTypeName?: string | null;
 	/** In bytes */
-	fileSize?: number;
+	fileSize?: number | null;
 	/** ISO formatted date string */
 	date?: string;
+	type: string;
 };
 
 export type ResourceSubGroupViewModel = {
@@ -127,12 +128,14 @@ export const findContentPartLinks = (
 			href: `${productPath}/${resourceTypeSlug}/${slugify(part.title)}-${
 				resource.uid
 			}-${part.uid}`,
+			type: resource.resourceTypeName,
 		})),
 		...arrayify(editableContentPart).map((part) => ({
 			title: part.title,
 			href: `${productPath}/${resourceTypeSlug}/${slugify(part.title)}-${
 				resource.uid
 			}-${part.uid}`,
+			type: resource.resourceTypeName,
 		})),
 		...arrayify(uploadContentPart).map((part) => ({
 			title: part.title,
@@ -144,10 +147,12 @@ export const findContentPartLinks = (
 			fileSize: part.embedded.file.length,
 			fileTypeName: getFileTypeNameFromMime(part.embedded.file.mimeType),
 			date: resource.lastMajorModificationDate,
+			type: resource.resourceTypeName,
 		})),
 		...arrayify(externalUrlContentPart).map((part) => ({
 			title: part.title,
 			href: part.url,
+			type: resource.resourceTypeName,
 		})),
 	];
 };

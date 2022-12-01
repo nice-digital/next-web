@@ -3,6 +3,7 @@ import { ProductGroup, ProductTypeAcronym } from "@/feeds/publications/types";
 export enum FeedPath {
 	AllProjects = "/gidprojects/all",
 	InConsultationProjects = "/inconsultationprojects",
+	ProjectDetail = "/project/",
 }
 
 export enum ProjectStatus {
@@ -171,3 +172,119 @@ export interface Consultation {
 	origProjectReference: null;
 	areasOfInterestList: [];
 }
+
+export type Link = {
+	href: string;
+};
+
+type ETag = string | null;
+
+export type IndevFile = {
+	links: {
+		self: [Link];
+	};
+	eTag: ETag;
+	id: string;
+	mimeType: string;
+	fileName: string;
+	length: number;
+	hash: string;
+	name: string;
+	reference: string;
+	resourceTitleId: string;
+	consultationDocumentId: number;
+};
+
+export type IndevResource = {
+	links: {
+		self: [Link];
+	};
+	embedded: {
+		niceIndevFile: IndevFile;
+	};
+	eTag: ETag;
+	title: string;
+	level: number;
+	publishedDate: string;
+	externalUrl: string | null;
+	showInDocList: boolean;
+	textOnly: boolean;
+	consultationId: number;
+	consultationDocumentId: number;
+	isCurrentViewableConsultationMarkup: boolean;
+	convertedDocument: boolean;
+	supportsComments: boolean;
+};
+
+export type IndevPanel = {
+	links: {
+		self: [Link];
+	};
+	embedded: {
+		niceIndevResourceList: {
+			links: {
+				self: [Link];
+			};
+			embedded: {
+				niceIndevResource: IndevResource | IndevResource[];
+			};
+			eTag: ETag;
+			hasResources: boolean;
+		};
+	};
+	eTag: ETag;
+	title: string;
+	panelType: string;
+	legacyPanel: boolean;
+	originalReference: string | null;
+	updateReference: string | null;
+	showPanel: boolean;
+};
+
+export type ProjectDetail = {
+	links: {
+		niceIndevStakeholderRegistration: Record<string, unknown>[];
+		self: [Link];
+	};
+	embedded: {
+		niceIndevPanelList: {
+			links: {
+				self: [Link];
+			};
+			embedded: {
+				niceIndevPanel: IndevPanel[];
+			};
+		};
+	};
+	eTag: ETag;
+	summary: string | null;
+	description: string | null;
+	referralDate: string | null;
+	suspendDiscontinuedReason: string | null;
+	suspendDiscontinuedUrl: string | null;
+	suspendDiscontinuedUrlText: string | null;
+	legacyModel: boolean;
+	productReference: string | null;
+	evidenceAssessmentGroup: string | null;
+	reference: string;
+	projectType: string | null;
+	technologyType: string | null;
+	productTypeName: string | null;
+	process: string;
+	title: string;
+	status: string;
+	projectGroup: string;
+	publishedDate: string;
+	lastModifiedDate: string;
+	firstGoLiveDate: string;
+	createdDate: string;
+	developedAs: string;
+	relevantTo: string | null;
+	idNumber: string | null;
+	areasOfInterestList: [];
+	topicSelectionDecision: string;
+	topicSelectionReason: string | null;
+	topicSelectionDecisionDate: string | null;
+	topicSelectionFurtherInfo: string | null;
+	indicatorSubTypes: [];
+};

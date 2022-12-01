@@ -575,7 +575,7 @@ export type ProductDetail = ProductAndResourceBase & {
 	productType: ProductTypeAcronym;
 	shortTitle: string | null;
 	/** E.g. `CG/Wave18/51` */
-	inDevReference: string;
+	inDevReference: string | null;
 	metaDescription: string;
 	productStatus: Status;
 	majorChangeDate: string | null;

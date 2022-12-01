@@ -3,6 +3,11 @@ import { ParsedUrlQuery } from "querystring";
 import { type Redirect } from "next";
 
 import {
+	getProjectDetail,
+	IndevPanel,
+	ProjectDetail,
+} from "@/feeds/inDev/inDev";
+import {
 	getProductDetail,
 	getAllProductTypes,
 } from "@/feeds/publications/publications";
@@ -97,6 +102,8 @@ export type ValidateRouteParamsResult =
 			hasEvidenceResources: boolean;
 			infoForPublicResources: RelatedResource[];
 			hasInfoForPublicResources: boolean;
+			project: ProjectDetail | null;
+			historyPanels: IndevPanel[];
 			hasHistory: boolean;
 	  };
 
@@ -136,6 +143,16 @@ export const validateRouteParams = async ({
 		toolsAndResources = getPublishedToolsAndResources(product),
 		evidenceResources = getPublishedEvidenceResources(product),
 		infoForPublicResources = getPublishedIFPResources(product);
+
+	const project = product.inDevReference
+		? await getProjectDetail(product.inDevReference)
+		: null;
+
+	const historyPanels = project
+		? project.embedded.niceIndevPanelList.embedded.niceIndevPanel.filter(
+				(panel) => panel.showPanel && panel.panelType == "History"
+		  )
+		: [];
 
 	const absoluteURL = new URL(resolvedUrl, `https://anything.com`),
 		actualPathSegments = absoluteURL.pathname.split("/"),
@@ -177,8 +194,9 @@ export const validateRouteParams = async ({
 			hasEvidenceResources: evidenceResources.length > 0,
 			infoForPublicResources,
 			hasInfoForPublicResources: infoForPublicResources.length > 0,
-			// TODO: Load the indev project to determine whether we have history or not
-			hasHistory: false,
+			project,
+			historyPanels,
+			hasHistory: historyPanels.length > 0,
 		};
 
 	// All 'product' URLs follow a format like "/indicators/ind1-some-title/anything/here"
