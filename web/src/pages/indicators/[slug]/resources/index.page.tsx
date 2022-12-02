@@ -1,34 +1,123 @@
 import { type GetServerSideProps } from "next";
+import { NextSeo } from "next-seo";
 
-import { ProductResourcesListPage } from "@/components/ProductResourcesListPage/ProductResourcesListPage";
+import { Breadcrumbs, Breadcrumb } from "@nice-digital/nds-breadcrumbs";
+
+import { Link } from "@/components/Link/Link";
+import { ProductHorizontalNav } from "@/components/ProductHorizontalNav/ProductHorizontalNav";
 import {
-	getGetServerSidePropsFunc,
-	type ProductResourcesListPageProps,
-} from "@/components/ProductResourcesListPage/ProductResourcesListPage.getServerSideProps";
+	ProductPageHeading,
+	type ProductPageHeadingProps,
+} from "@/components/ProductPageHeading/ProductPageHeading";
+import { ResourceList } from "@/components/ResourceList/ResourceList";
 import { getResourceDetails } from "@/feeds/publications/publications";
-import { getResourceGroups, ResourceTypeSlug } from "@/utils/resource";
+import { validateRouteParams } from "@/utils/product";
+import {
+	getResourceGroups,
+	type ResourceGroupViewModel,
+	ResourceTypeSlug,
+} from "@/utils/resource";
 
-const resourceTypeSlug = ResourceTypeSlug.ToolsAndResources,
-	resourceTypeName = "Tools and resources";
+export type ToolsAndResourcesListPageProps = {
+	resourceGroups: ResourceGroupViewModel[];
+	productPath: string;
+	product: ProductPageHeadingProps["product"];
+	hasToolsAndResources: boolean;
+	hasInfoForPublicResources: boolean;
+	hasEvidenceResources: boolean;
+	hasHistory: boolean;
+};
 
-export default ProductResourcesListPage;
+export default function ToolsAndResourcesListPage({
+	resourceGroups,
+	productPath,
+	product,
+	hasToolsAndResources,
+	hasInfoForPublicResources,
+	hasEvidenceResources,
+	hasHistory,
+}: ToolsAndResourcesListPageProps): JSX.Element {
+	return (
+		<>
+			<NextSeo
+				title={`Tools and resources | ${product.id} | Indicators | Standards and Indicators`}
+			/>
+
+			<Breadcrumbs>
+				<Breadcrumb to="/">Home</Breadcrumb>
+				<Breadcrumb to="/standards-and-indicators">
+					Standards and Indicators
+				</Breadcrumb>
+				<Breadcrumb to="/standards-and-indicators/indicators">
+					Indicators
+				</Breadcrumb>
+				<Breadcrumb to={productPath} elementType={Link}>
+					{product.id}
+				</Breadcrumb>
+				<Breadcrumb>Tools and resources</Breadcrumb>
+			</Breadcrumbs>
+
+			<ProductPageHeading product={product} />
+
+			<ProductHorizontalNav
+				productTypeName="Indicator"
+				productPath={productPath}
+				hasToolsAndResources={hasToolsAndResources}
+				hasInfoForPublicResources={hasInfoForPublicResources}
+				hasEvidenceResources={hasEvidenceResources}
+				hasHistory={hasHistory}
+			/>
+
+			<ResourceList title="Tools and resources" groups={resourceGroups} />
+		</>
+	);
+}
 
 export const getServerSideProps: GetServerSideProps<
-	ProductResourcesListPageProps,
-	{ slug: string; partSlug: string }
-> = getGetServerSidePropsFunc({
-	resourceTypeSlug,
-	resourceTypeName,
-	getResourceGroups: async ({ toolsAndResources, product, productPath }) => {
-		if (!toolsAndResources.length) return [];
+	ToolsAndResourcesListPageProps,
+	{ slug: string }
+> = async ({ params, query, resolvedUrl }) => {
+	const result = await validateRouteParams({ params, resolvedUrl, query });
 
-		const fullResources = await getResourceDetails(toolsAndResources);
+	if ("notFound" in result || "redirect" in result) return result;
 
-		return getResourceGroups(
+	const {
+		product,
+		productPath,
+		hasToolsAndResources,
+		toolsAndResources,
+		hasInfoForPublicResources,
+		hasEvidenceResources,
+		hasHistory,
+	} = result;
+
+	if (!toolsAndResources.length) return { notFound: true };
+
+	const fullResources = await getResourceDetails(toolsAndResources),
+		resourceGroups = getResourceGroups(
 			product.id,
 			productPath,
 			fullResources,
-			resourceTypeSlug
+			ResourceTypeSlug.ToolsAndResources
 		);
-	},
-});
+
+	if (resourceGroups.length === 0) return { notFound: true };
+
+	return {
+		props: {
+			resourceGroups,
+			hasToolsAndResources,
+			hasInfoForPublicResources,
+			hasEvidenceResources,
+			hasHistory,
+			productPath,
+			product: {
+				id: product.id,
+				lastMajorModificationDate: product.lastMajorModificationDate,
+				productTypeName: product.productTypeName,
+				publishedDate: product.publishedDate,
+				title: product.title,
+			},
+		},
+	};
+};

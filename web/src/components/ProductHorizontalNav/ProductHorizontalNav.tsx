@@ -70,7 +70,7 @@ export const ProductHorizontalNav: FC<ProductHorizontalNavProps> = ({
 					Tools and resources
 				</HorizontalNavLink>
 			) : null}
-			{hasInfoForPublicResources ? (
+			{/* {hasInfoForPublicResources ? (
 				<HorizontalNavLink
 					destination={ifpPath}
 					elementType={ScrollToContentStartLink}
@@ -78,7 +78,7 @@ export const ProductHorizontalNav: FC<ProductHorizontalNavProps> = ({
 				>
 					Information for the public
 				</HorizontalNavLink>
-			) : null}
+			) : null} */}
 			{hasEvidenceResources ? (
 				<HorizontalNavLink
 					destination={evidencePath}
