@@ -59,9 +59,7 @@ export const ProductResourcesListPage: FC<ProductResourcesListPageProps> = ({
 				hasHistory={hasHistory}
 			/>
 
-			<h2>{pageTitle}</h2>
-
-			<ResourceList groups={resourceGroups} />
+			<ResourceList title={pageTitle} groups={resourceGroups} />
 		</>
 	);
 };

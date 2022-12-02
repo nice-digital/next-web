@@ -81,24 +81,7 @@ export default function HistoryPage({
 				hasHistory={hasHistory}
 			/>
 
-			<Grid gutter="loose">
-				<GridItem cols={12} md={12} lg={12} elementType="section">
-					<Grid reverse gutter="loose">
-						{hasOnThisPageMenu ? (
-							<GridItem cols={12} md={4} lg={3}>
-								<OnThisPage sections={groupSections} />
-							</GridItem>
-						) : null}
-						<GridItem
-							cols={12}
-							md={hasOnThisPageMenu ? 8 : 12}
-							lg={hasOnThisPageMenu ? 9 : 12}
-						>
-							<ResourceList groups={project.groups} />
-						</GridItem>
-					</Grid>
-				</GridItem>
-			</Grid>
+			<ResourceList title="History" groups={project.groups} />
 		</>
 	);
 }
