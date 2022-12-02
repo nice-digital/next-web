@@ -88,24 +88,26 @@ export type ValidateRouteParamsArgs = {
 	query: ParsedUrlQuery;
 };
 
+export type ValidateRouteParamsSuccess = {
+	product: ProductDetail;
+	productType: ProductType;
+	productPath: string;
+	pdfDownloadPath: string | null;
+	toolsAndResources: RelatedResource[];
+	hasToolsAndResources: boolean;
+	evidenceResources: RelatedResource[];
+	hasEvidenceResources: boolean;
+	infoForPublicResources: RelatedResource[];
+	hasInfoForPublicResources: boolean;
+	project: ProjectDetail | null;
+	historyPanels: IndevPanel[];
+	hasHistory: boolean;
+};
+
 export type ValidateRouteParamsResult =
 	| { notFound: true }
 	| { redirect: Redirect }
-	| {
-			product: ProductDetail;
-			productType: ProductType;
-			productPath: string;
-			pdfDownloadPath: string | null;
-			toolsAndResources: RelatedResource[];
-			hasToolsAndResources: boolean;
-			evidenceResources: RelatedResource[];
-			hasEvidenceResources: boolean;
-			infoForPublicResources: RelatedResource[];
-			hasInfoForPublicResources: boolean;
-			project: ProjectDetail | null;
-			historyPanels: IndevPanel[];
-			hasHistory: boolean;
-	  };
+	| ValidateRouteParamsSuccess;
 
 export const validateRouteParams = async ({
 	params,

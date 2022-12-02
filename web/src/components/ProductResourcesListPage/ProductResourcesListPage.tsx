@@ -7,12 +7,11 @@ import { Link } from "@/components/Link/Link";
 import { ProductHorizontalNav } from "@/components/ProductHorizontalNav/ProductHorizontalNav";
 import { ProductPageHeading } from "@/components/ProductPageHeading/ProductPageHeading";
 import { ResourceList } from "@/components/ResourceList/ResourceList";
-import { ResourceTypeSlug } from "@/utils/resource";
 
 import { type ProductResourcesListPageProps } from "./ProductResourcesListPage.getServerSideProps";
 
 export const ProductResourcesListPage: FC<ProductResourcesListPageProps> = ({
-	resourceTypeSlug,
+	resourceTypeName,
 	resourceGroups,
 	productPath,
 	product,
@@ -21,17 +20,10 @@ export const ProductResourcesListPage: FC<ProductResourcesListPageProps> = ({
 	hasEvidenceResources,
 	hasHistory,
 }) => {
-	const pageTitle =
-		resourceTypeSlug === ResourceTypeSlug.ToolsAndResources
-			? "Tools and resources"
-			: resourceTypeSlug === ResourceTypeSlug.Evidence
-			? "Evidence"
-			: "Information for the public";
-
 	return (
 		<>
 			<NextSeo
-				title={`${pageTitle} | ${product.id} | Indicators | Standards and Indicators`}
+				title={`${resourceTypeName} | ${product.id} | Indicators | Standards and Indicators`}
 			/>
 
 			<Breadcrumbs>
@@ -45,7 +37,7 @@ export const ProductResourcesListPage: FC<ProductResourcesListPageProps> = ({
 				<Breadcrumb to={productPath} elementType={Link}>
 					{product.id}
 				</Breadcrumb>
-				<Breadcrumb>{pageTitle}</Breadcrumb>
+				<Breadcrumb>{resourceTypeName}</Breadcrumb>
 			</Breadcrumbs>
 
 			<ProductPageHeading product={product} />
@@ -59,7 +51,7 @@ export const ProductResourcesListPage: FC<ProductResourcesListPageProps> = ({
 				hasHistory={hasHistory}
 			/>
 
-			<ResourceList title={pageTitle} groups={resourceGroups} />
+			<ResourceList title={resourceTypeName} groups={resourceGroups} />
 		</>
 	);
 };

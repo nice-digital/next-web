@@ -192,7 +192,7 @@ exports[`/indicators/[slug]/history HistoryPage should match snapshot for main c
                 <li>
                   <a
                     class=""
-                    href="#committee-list-updated0"
+                    href="#committee-list-updated"
                   >
                     Committee list updated
                   </a>
@@ -200,7 +200,7 @@ exports[`/indicators/[slug]/history HistoryPage should match snapshot for main c
                 <li>
                   <a
                     class=""
-                    href="#committee-meetings1"
+                    href="#committee-meetings"
                   >
                     Committee meetings
                   </a>
@@ -208,7 +208,7 @@ exports[`/indicators/[slug]/history HistoryPage should match snapshot for main c
                 <li>
                   <a
                     class=""
-                    href="#consultation-comments-published2"
+                    href="#consultation-comments-published"
                   >
                     Consultation comments published
                   </a>
@@ -216,7 +216,7 @@ exports[`/indicators/[slug]/history HistoryPage should match snapshot for main c
                 <li>
                   <a
                     class=""
-                    href="#draft-guidance-consultation3"
+                    href="#draft-guidance-consultation"
                   >
                     Draft guidance consultation
                   </a>
@@ -224,7 +224,7 @@ exports[`/indicators/[slug]/history HistoryPage should match snapshot for main c
                 <li>
                   <a
                     class=""
-                    href="#draft-scope-consultation4"
+                    href="#draft-scope-consultation"
                   >
                     Draft scope consultation
                   </a>
@@ -260,20 +260,23 @@ exports[`/indicators/[slug]/history HistoryPage should match snapshot for main c
           <div
             data-g="12 md:8 lg:9"
           >
-            <section>
-              <h3>
-                <a
-                  id="committee-list-updated0"
-                />
+            <h2
+              class="title"
+            >
+              History
+            </h2>
+            <section
+              aria-labelledby="committee-list-updated"
+            >
+              <h3
+                id="committee-list-updated"
+              >
                 Committee list updated
               </h3>
               <section>
                 <h4
                   class="visually-hidden"
                 >
-                  <a
-                    id="committee-list-updated"
-                  />
                   Committee list updated
                 </h4>
                 <ul
@@ -292,7 +295,14 @@ exports[`/indicators/[slug]/history HistoryPage should match snapshot for main c
                           <a
                             href="/indicators/ind6-new-indicator-product-1/history/downloads/IND6-committee-member-list.pdf"
                           >
-                            Committee member list (PDF, 91 kB)
+                            Committee member list
+                             
+                            (
+                            PDF
+                            ,
+                             
+                            91 kB
+                            )
                           </a>
                         </p>
                       </header>
@@ -357,20 +367,18 @@ exports[`/indicators/[slug]/history HistoryPage should match snapshot for main c
                 </ul>
               </section>
             </section>
-            <section>
-              <h3>
-                <a
-                  id="committee-meetings1"
-                />
+            <section
+              aria-labelledby="committee-meetings"
+            >
+              <h3
+                id="committee-meetings"
+              >
                 Committee meetings
               </h3>
               <section>
                 <h4
                   class=""
                 >
-                  <a
-                    id="committee-meeting:-1"
-                  />
                   Committee meeting: 1
                 </h4>
                 <ul
@@ -389,7 +397,14 @@ exports[`/indicators/[slug]/history HistoryPage should match snapshot for main c
                           <a
                             href="/indicators/ind6-new-indicator-product-1/history/downloads/IND6-minutes.pdf"
                           >
-                            Minutes (PDF, 412 kB)
+                            Minutes
+                             
+                            (
+                            PDF
+                            ,
+                             
+                            412 kB
+                            )
                           </a>
                         </p>
                       </header>
@@ -457,9 +472,6 @@ exports[`/indicators/[slug]/history HistoryPage should match snapshot for main c
                 <h4
                   class=""
                 >
-                  <a
-                    id="committee-meeting:-2"
-                  />
                   Committee meeting: 2
                 </h4>
                 <ul
@@ -478,7 +490,14 @@ exports[`/indicators/[slug]/history HistoryPage should match snapshot for main c
                           <a
                             href="/indicators/ind6-new-indicator-product-1/history/downloads/IND6-minutes-2.pdf"
                           >
-                            Minutes (PDF, 327 kB)
+                            Minutes
+                             
+                            (
+                            PDF
+                            ,
+                             
+                            327 kB
+                            )
                           </a>
                         </p>
                       </header>
@@ -546,9 +565,6 @@ exports[`/indicators/[slug]/history HistoryPage should match snapshot for main c
                 <h4
                   class=""
                 >
-                  <a
-                    id="committee-meeting:-3"
-                  />
                   Committee meeting: 3
                 </h4>
                 <ul
@@ -567,7 +583,14 @@ exports[`/indicators/[slug]/history HistoryPage should match snapshot for main c
                           <a
                             href="/indicators/ind6-new-indicator-product-1/history/downloads/IND6-minutes-3.pdf"
                           >
-                            Minutes (PDF, 185 kB)
+                            Minutes
+                             
+                            (
+                            PDF
+                            ,
+                             
+                            185 kB
+                            )
                           </a>
                         </p>
                       </header>
@@ -635,9 +658,6 @@ exports[`/indicators/[slug]/history HistoryPage should match snapshot for main c
                 <h4
                   class=""
                 >
-                  <a
-                    id="committee-meeting:-4"
-                  />
                   Committee meeting: 4
                 </h4>
                 <ul
@@ -656,7 +676,14 @@ exports[`/indicators/[slug]/history HistoryPage should match snapshot for main c
                           <a
                             href="/indicators/ind6-new-indicator-product-1/history/downloads/IND6-minutes-4.pdf"
                           >
-                            Minutes (PDF, 195 kB)
+                            Minutes
+                             
+                            (
+                            PDF
+                            ,
+                             
+                            195 kB
+                            )
                           </a>
                         </p>
                       </header>
@@ -724,9 +751,6 @@ exports[`/indicators/[slug]/history HistoryPage should match snapshot for main c
                 <h4
                   class=""
                 >
-                  <a
-                    id="committee-meeting:-5"
-                  />
                   Committee meeting: 5
                 </h4>
                 <ul
@@ -745,7 +769,14 @@ exports[`/indicators/[slug]/history HistoryPage should match snapshot for main c
                           <a
                             href="/indicators/ind6-new-indicator-product-1/history/downloads/IND6-minutes-5.pdf"
                           >
-                            Minutes (PDF, 182 kB)
+                            Minutes
+                             
+                            (
+                            PDF
+                            ,
+                             
+                            182 kB
+                            )
                           </a>
                         </p>
                       </header>
@@ -813,9 +844,6 @@ exports[`/indicators/[slug]/history HistoryPage should match snapshot for main c
                 <h4
                   class=""
                 >
-                  <a
-                    id="committee-meeting:-6"
-                  />
                   Committee meeting: 6
                 </h4>
                 <ul
@@ -834,7 +862,14 @@ exports[`/indicators/[slug]/history HistoryPage should match snapshot for main c
                           <a
                             href="/indicators/ind6-new-indicator-product-1/history/downloads/IND6-minutes-6.pdf"
                           >
-                            Minutes 21 April 2017 (PDF, 104 kB)
+                            Minutes 21 April 2017
+                             
+                            (
+                            PDF
+                            ,
+                             
+                            104 kB
+                            )
                           </a>
                         </p>
                       </header>
@@ -902,9 +937,6 @@ exports[`/indicators/[slug]/history HistoryPage should match snapshot for main c
                 <h4
                   class=""
                 >
-                  <a
-                    id="committee-meeting:-7"
-                  />
                   Committee meeting: 7
                 </h4>
                 <ul
@@ -923,7 +955,14 @@ exports[`/indicators/[slug]/history HistoryPage should match snapshot for main c
                           <a
                             href="/indicators/ind6-new-indicator-product-1/history/downloads/IND6-minutes-7.pdf"
                           >
-                            Minutes 30 May 2017 (PDF, 107 kB)
+                            Minutes 30 May 2017
+                             
+                            (
+                            PDF
+                            ,
+                             
+                            107 kB
+                            )
                           </a>
                         </p>
                       </header>
@@ -991,9 +1030,6 @@ exports[`/indicators/[slug]/history HistoryPage should match snapshot for main c
                 <h4
                   class=""
                 >
-                  <a
-                    id="committee-meeting:-8"
-                  />
                   Committee meeting: 8
                 </h4>
                 <ul
@@ -1012,7 +1048,14 @@ exports[`/indicators/[slug]/history HistoryPage should match snapshot for main c
                           <a
                             href="/indicators/ind6-new-indicator-product-1/history/downloads/IND6-minutes-8.pdf"
                           >
-                            Minutes 05 July 2017 (PDF, 98 kB)
+                            Minutes 05 July 2017
+                             
+                            (
+                            PDF
+                            ,
+                             
+                            98 kB
+                            )
                           </a>
                         </p>
                       </header>
@@ -1080,9 +1123,6 @@ exports[`/indicators/[slug]/history HistoryPage should match snapshot for main c
                 <h4
                   class=""
                 >
-                  <a
-                    id="committee-meeting:-9"
-                  />
                   Committee meeting: 9
                 </h4>
                 <ul
@@ -1101,7 +1141,14 @@ exports[`/indicators/[slug]/history HistoryPage should match snapshot for main c
                           <a
                             href="/indicators/ind6-new-indicator-product-1/history/downloads/IND6-minutes-9.pdf"
                           >
-                            Minutes (PDF, 96 kB)
+                            Minutes
+                             
+                            (
+                            PDF
+                            ,
+                             
+                            96 kB
+                            )
                           </a>
                         </p>
                       </header>
@@ -1166,20 +1213,18 @@ exports[`/indicators/[slug]/history HistoryPage should match snapshot for main c
                 </ul>
               </section>
             </section>
-            <section>
-              <h3>
-                <a
-                  id="consultation-comments-published2"
-                />
+            <section
+              aria-labelledby="consultation-comments-published"
+            >
+              <h3
+                id="consultation-comments-published"
+              >
                 Consultation comments published
               </h3>
               <section>
                 <h4
                   class="visually-hidden"
                 >
-                  <a
-                    id="consultation-comments-published"
-                  />
                   Consultation comments published
                 </h4>
                 <ul
@@ -1198,7 +1243,14 @@ exports[`/indicators/[slug]/history HistoryPage should match snapshot for main c
                           <a
                             href="/indicators/ind6-new-indicator-product-1/history/downloads/IND6-consultation-comments-and-responses-3.pdf"
                           >
-                            Consultation comments and responses (PDF, 1.37 MB)
+                            Consultation comments and responses
+                             
+                            (
+                            PDF
+                            ,
+                             
+                            1.4 MB
+                            )
                           </a>
                         </p>
                       </header>
@@ -1254,7 +1306,7 @@ exports[`/indicators/[slug]/history HistoryPage should match snapshot for main c
                             File size
                           </dt>
                           <dd>
-                            1.37 MB
+                            1.4 MB
                           </dd>
                         </div>
                       </dl>
@@ -1263,20 +1315,18 @@ exports[`/indicators/[slug]/history HistoryPage should match snapshot for main c
                 </ul>
               </section>
             </section>
-            <section>
-              <h3>
-                <a
-                  id="draft-guidance-consultation3"
-                />
+            <section
+              aria-labelledby="draft-guidance-consultation"
+            >
+              <h3
+                id="draft-guidance-consultation"
+              >
                 Draft guidance consultation
               </h3>
               <section>
                 <h4
                   class="visually-hidden"
                 >
-                  <a
-                    id="draft-guidance-consultation"
-                  />
                   Draft guidance consultation
                 </h4>
                 <ul
@@ -1346,7 +1396,14 @@ exports[`/indicators/[slug]/history HistoryPage should match snapshot for main c
                           <a
                             href="/indicators/ind6-new-indicator-product-1/history/downloads/IND6-comments-form-2.doc"
                           >
-                            Comments form (Word, 62 kB)
+                            Comments form
+                             
+                            (
+                            Word
+                            ,
+                             
+                            62 kB
+                            )
                           </a>
                         </p>
                       </header>
@@ -1421,7 +1478,14 @@ exports[`/indicators/[slug]/history HistoryPage should match snapshot for main c
                           <a
                             href="/indicators/ind6-new-indicator-product-1/history/downloads/IND6-draft-guideline.pdf"
                           >
-                            Draft guideline (PDF, 637 kB)
+                            Draft guideline
+                             
+                            (
+                            PDF
+                            ,
+                             
+                            637 kB
+                            )
                           </a>
                         </p>
                       </header>
@@ -1496,7 +1560,14 @@ exports[`/indicators/[slug]/history HistoryPage should match snapshot for main c
                           <a
                             href="/indicators/ind6-new-indicator-product-1/history/downloads/IND6-committee-member-list-2.pdf"
                           >
-                            Committee member list (PDF, 828 kB)
+                            Committee member list
+                             
+                            (
+                            PDF
+                            ,
+                             
+                            828 kB
+                            )
                           </a>
                         </p>
                       </header>
@@ -1571,7 +1642,14 @@ exports[`/indicators/[slug]/history HistoryPage should match snapshot for main c
                           <a
                             href="/indicators/ind6-new-indicator-product-1/history/downloads/IND6-evidence-review.pdf"
                           >
-                            Evidence review A (PDF, 1.3 MB)
+                            Evidence review A
+                             
+                            (
+                            PDF
+                            ,
+                             
+                            1.3 MB
+                            )
                           </a>
                         </p>
                       </header>
@@ -1646,7 +1724,14 @@ exports[`/indicators/[slug]/history HistoryPage should match snapshot for main c
                           <a
                             href="/indicators/ind6-new-indicator-product-1/history/downloads/IND6-evidence-review-2.pdf"
                           >
-                            Evidence review B (PDF, 1.95 MB)
+                            Evidence review B
+                             
+                            (
+                            PDF
+                            ,
+                             
+                            1.9 MB
+                            )
                           </a>
                         </p>
                       </header>
@@ -1702,7 +1787,7 @@ exports[`/indicators/[slug]/history HistoryPage should match snapshot for main c
                             File size
                           </dt>
                           <dd>
-                            1.95 MB
+                            1.9 MB
                           </dd>
                         </div>
                       </dl>
@@ -1721,7 +1806,14 @@ exports[`/indicators/[slug]/history HistoryPage should match snapshot for main c
                           <a
                             href="/indicators/ind6-new-indicator-product-1/history/downloads/IND6-evidence-review-3.pdf"
                           >
-                            Evidence review C (PDF, 1.83 MB)
+                            Evidence review C
+                             
+                            (
+                            PDF
+                            ,
+                             
+                            1.8 MB
+                            )
                           </a>
                         </p>
                       </header>
@@ -1777,7 +1869,7 @@ exports[`/indicators/[slug]/history HistoryPage should match snapshot for main c
                             File size
                           </dt>
                           <dd>
-                            1.83 MB
+                            1.8 MB
                           </dd>
                         </div>
                       </dl>
@@ -1796,7 +1888,14 @@ exports[`/indicators/[slug]/history HistoryPage should match snapshot for main c
                           <a
                             href="/indicators/ind6-new-indicator-product-1/history/downloads/IND6-evidence-review-4.pdf"
                           >
-                            Evidence review D (PDF, 955 kB)
+                            Evidence review D
+                             
+                            (
+                            PDF
+                            ,
+                             
+                            955 kB
+                            )
                           </a>
                         </p>
                       </header>
@@ -1871,7 +1970,14 @@ exports[`/indicators/[slug]/history HistoryPage should match snapshot for main c
                           <a
                             href="/indicators/ind6-new-indicator-product-1/history/downloads/IND6-evidence-review-5.pdf"
                           >
-                            Evidence review E (PDF, 1.25 MB)
+                            Evidence review E
+                             
+                            (
+                            PDF
+                            ,
+                             
+                            1.2 MB
+                            )
                           </a>
                         </p>
                       </header>
@@ -1927,7 +2033,7 @@ exports[`/indicators/[slug]/history HistoryPage should match snapshot for main c
                             File size
                           </dt>
                           <dd>
-                            1.25 MB
+                            1.2 MB
                           </dd>
                         </div>
                       </dl>
@@ -1946,7 +2052,14 @@ exports[`/indicators/[slug]/history HistoryPage should match snapshot for main c
                           <a
                             href="/indicators/ind6-new-indicator-product-1/history/downloads/IND6-evidence-review-6.pdf"
                           >
-                            Evidence review F (PDF, 5.97 MB)
+                            Evidence review F
+                             
+                            (
+                            PDF
+                            ,
+                             
+                            6 MB
+                            )
                           </a>
                         </p>
                       </header>
@@ -2002,7 +2115,7 @@ exports[`/indicators/[slug]/history HistoryPage should match snapshot for main c
                             File size
                           </dt>
                           <dd>
-                            5.97 MB
+                            6 MB
                           </dd>
                         </div>
                       </dl>
@@ -2021,7 +2134,14 @@ exports[`/indicators/[slug]/history HistoryPage should match snapshot for main c
                           <a
                             href="/indicators/ind6-new-indicator-product-1/history/downloads/IND6-evidence-review-7.pdf"
                           >
-                            Evidence review G (PDF, 3.95 MB)
+                            Evidence review G
+                             
+                            (
+                            PDF
+                            ,
+                             
+                            4 MB
+                            )
                           </a>
                         </p>
                       </header>
@@ -2077,7 +2197,7 @@ exports[`/indicators/[slug]/history HistoryPage should match snapshot for main c
                             File size
                           </dt>
                           <dd>
-                            3.95 MB
+                            4 MB
                           </dd>
                         </div>
                       </dl>
@@ -2096,7 +2216,14 @@ exports[`/indicators/[slug]/history HistoryPage should match snapshot for main c
                           <a
                             href="/indicators/ind6-new-indicator-product-1/history/downloads/IND6-evidence-review-8.pdf"
                           >
-                            Evidence review H (PDF, 1.88 MB)
+                            Evidence review H
+                             
+                            (
+                            PDF
+                            ,
+                             
+                            1.9 MB
+                            )
                           </a>
                         </p>
                       </header>
@@ -2152,7 +2279,7 @@ exports[`/indicators/[slug]/history HistoryPage should match snapshot for main c
                             File size
                           </dt>
                           <dd>
-                            1.88 MB
+                            1.9 MB
                           </dd>
                         </div>
                       </dl>
@@ -2171,7 +2298,14 @@ exports[`/indicators/[slug]/history HistoryPage should match snapshot for main c
                           <a
                             href="/indicators/ind6-new-indicator-product-1/history/downloads/IND6-evidence-review-9.pdf"
                           >
-                            Evidence review I (PDF, 1.81 MB)
+                            Evidence review I
+                             
+                            (
+                            PDF
+                            ,
+                             
+                            1.8 MB
+                            )
                           </a>
                         </p>
                       </header>
@@ -2227,7 +2361,7 @@ exports[`/indicators/[slug]/history HistoryPage should match snapshot for main c
                             File size
                           </dt>
                           <dd>
-                            1.81 MB
+                            1.8 MB
                           </dd>
                         </div>
                       </dl>
@@ -2246,7 +2380,14 @@ exports[`/indicators/[slug]/history HistoryPage should match snapshot for main c
                           <a
                             href="/indicators/ind6-new-indicator-product-1/history/downloads/IND6-supporting-documentation.pdf"
                           >
-                            Supporting documentation Acknowledgements (PDF, 273 kB)
+                            Supporting documentation Acknowledgements
+                             
+                            (
+                            PDF
+                            ,
+                             
+                            273 kB
+                            )
                           </a>
                         </p>
                       </header>
@@ -2321,7 +2462,14 @@ exports[`/indicators/[slug]/history HistoryPage should match snapshot for main c
                           <a
                             href="/indicators/ind6-new-indicator-product-1/history/downloads/IND6-supporting-documentation-2.pdf"
                           >
-                            Supporting documentation Algorithm Assessment (PDF, 187 kB)
+                            Supporting documentation Algorithm Assessment
+                             
+                            (
+                            PDF
+                            ,
+                             
+                            187 kB
+                            )
                           </a>
                         </p>
                       </header>
@@ -2396,7 +2544,14 @@ exports[`/indicators/[slug]/history HistoryPage should match snapshot for main c
                           <a
                             href="/indicators/ind6-new-indicator-product-1/history/downloads/IND6-supporting-documentation-3.pdf"
                           >
-                            Supporting documentation Algorithm Management&Monitoring (PDF, 285 kB)
+                            Supporting documentation Algorithm Management&Monitoring
+                             
+                            (
+                            PDF
+                            ,
+                             
+                            285 kB
+                            )
                           </a>
                         </p>
                       </header>
@@ -2471,7 +2626,14 @@ exports[`/indicators/[slug]/history HistoryPage should match snapshot for main c
                           <a
                             href="/indicators/ind6-new-indicator-product-1/history/downloads/IND6-supporting-documentation-4.pdf"
                           >
-                            Supporting documentation Methodology (PDF, 1.36 MB)
+                            Supporting documentation Methodology
+                             
+                            (
+                            PDF
+                            ,
+                             
+                            1.4 MB
+                            )
                           </a>
                         </p>
                       </header>
@@ -2527,7 +2689,7 @@ exports[`/indicators/[slug]/history HistoryPage should match snapshot for main c
                             File size
                           </dt>
                           <dd>
-                            1.36 MB
+                            1.4 MB
                           </dd>
                         </div>
                       </dl>
@@ -2546,7 +2708,14 @@ exports[`/indicators/[slug]/history HistoryPage should match snapshot for main c
                           <a
                             href="/indicators/ind6-new-indicator-product-1/history/downloads/IND6-equality-impact-assessment-6.pdf"
                           >
-                            Equality impact assessment (PDF, 233 kB)
+                            Equality impact assessment
+                             
+                            (
+                            PDF
+                            ,
+                             
+                            233 kB
+                            )
                           </a>
                         </p>
                       </header>
@@ -2611,20 +2780,18 @@ exports[`/indicators/[slug]/history HistoryPage should match snapshot for main c
                 </ul>
               </section>
             </section>
-            <section>
-              <h3>
-                <a
-                  id="draft-scope-consultation4"
-                />
+            <section
+              aria-labelledby="draft-scope-consultation"
+            >
+              <h3
+                id="draft-scope-consultation"
+              >
                 Draft scope consultation
               </h3>
               <section>
                 <h4
                   class="visually-hidden"
                 >
-                  <a
-                    id="draft-scope-consultation"
-                  />
                   Draft scope consultation
                 </h4>
                 <ul
@@ -2694,7 +2861,14 @@ exports[`/indicators/[slug]/history HistoryPage should match snapshot for main c
                           <a
                             href="/indicators/ind6-new-indicator-product-1/history/downloads/IND6-comments-form.doc"
                           >
-                            Comments form (Word, 65 kB)
+                            Comments form
+                             
+                            (
+                            Word
+                            ,
+                             
+                            65 kB
+                            )
                           </a>
                         </p>
                       </header>
@@ -2769,7 +2943,14 @@ exports[`/indicators/[slug]/history HistoryPage should match snapshot for main c
                           <a
                             href="/indicators/ind6-new-indicator-product-1/history/downloads/IND6-draft-scope.pdf"
                           >
-                            Draft scope (PDF, 124 kB)
+                            Draft scope
+                             
+                            (
+                            PDF
+                            ,
+                             
+                            124 kB
+                            )
                           </a>
                         </p>
                       </header>
@@ -2844,7 +3025,14 @@ exports[`/indicators/[slug]/history HistoryPage should match snapshot for main c
                           <a
                             href="/indicators/ind6-new-indicator-product-1/history/downloads/IND6-equality-impact-assessment-8.pdf"
                           >
-                            Equality impact assessment (PDF, 233 kB)
+                            Equality impact assessment
+                             
+                            (
+                            PDF
+                            ,
+                             
+                            233 kB
+                            )
                           </a>
                         </p>
                       </header>
@@ -2909,20 +3097,18 @@ exports[`/indicators/[slug]/history HistoryPage should match snapshot for main c
                 </ul>
               </section>
             </section>
-            <section>
-              <h3>
-                <a
-                  id="equality-impact-assessment-published5"
-                />
+            <section
+              aria-labelledby="equality-impact-assessment-published"
+            >
+              <h3
+                id="equality-impact-assessment-published"
+              >
                 Equality impact assessment published
               </h3>
               <section>
                 <h4
                   class="visually-hidden"
                 >
-                  <a
-                    id="equality-impact-assessment-published"
-                  />
                   Equality impact assessment published
                 </h4>
                 <ul
@@ -2941,7 +3127,14 @@ exports[`/indicators/[slug]/history HistoryPage should match snapshot for main c
                           <a
                             href="/indicators/ind6-new-indicator-product-1/history/downloads/IND6-equality-impact-assessment-5.pdf"
                           >
-                            Equality impact assessment (PDF, 233 kB)
+                            Equality impact assessment
+                             
+                            (
+                            PDF
+                            ,
+                             
+                            233 kB
+                            )
                           </a>
                         </p>
                       </header>
@@ -3006,20 +3199,18 @@ exports[`/indicators/[slug]/history HistoryPage should match snapshot for main c
                 </ul>
               </section>
             </section>
-            <section>
-              <h3>
-                <a
-                  id="equality-impact-assessment-published6"
-                />
+            <section
+              aria-labelledby="equality-impact-assessment-published-2"
+            >
+              <h3
+                id="equality-impact-assessment-published-2"
+              >
                 Equality impact assessment published
               </h3>
               <section>
                 <h4
                   class="visually-hidden"
                 >
-                  <a
-                    id="equality-impact-assessment-published"
-                  />
                   Equality impact assessment published
                 </h4>
                 <ul
@@ -3038,7 +3229,14 @@ exports[`/indicators/[slug]/history HistoryPage should match snapshot for main c
                           <a
                             href="/indicators/ind6-new-indicator-product-1/history/downloads/IND6-equality-impact-assessment-7.pdf"
                           >
-                            Equality impact assessment (PDF, 233 kB)
+                            Equality impact assessment
+                             
+                            (
+                            PDF
+                            ,
+                             
+                            233 kB
+                            )
                           </a>
                         </p>
                       </header>
@@ -3103,20 +3301,18 @@ exports[`/indicators/[slug]/history HistoryPage should match snapshot for main c
                 </ul>
               </section>
             </section>
-            <section>
-              <h3>
-                <a
-                  id="pre-consultation-documents-released7"
-                />
+            <section
+              aria-labelledby="pre-consultation-documents-released"
+            >
+              <h3
+                id="pre-consultation-documents-released"
+              >
                 Pre-consultation documents released
               </h3>
               <section>
                 <h4
                   class="visually-hidden"
                 >
-                  <a
-                    id="pre-consultation-documents-released"
-                  />
                   Pre-consultation documents released
                 </h4>
                 <ul
@@ -3135,7 +3331,14 @@ exports[`/indicators/[slug]/history HistoryPage should match snapshot for main c
                           <a
                             href="/indicators/ind6-new-indicator-product-1/history/downloads/IND6-review-questions.pdf"
                           >
-                            Review questions (PDF, 111 kB)
+                            Review questions
+                             
+                            (
+                            PDF
+                            ,
+                             
+                            111 kB
+                            )
                           </a>
                         </p>
                       </header>
@@ -3210,7 +3413,14 @@ exports[`/indicators/[slug]/history HistoryPage should match snapshot for main c
                           <a
                             href="/indicators/ind6-new-indicator-product-1/history/downloads/IND6-search-strategies.pdf"
                           >
-                            Search strategies (PDF, 2.33 MB)
+                            Search strategies
+                             
+                            (
+                            PDF
+                            ,
+                             
+                            2.3 MB
+                            )
                           </a>
                         </p>
                       </header>
@@ -3266,7 +3476,7 @@ exports[`/indicators/[slug]/history HistoryPage should match snapshot for main c
                             File size
                           </dt>
                           <dd>
-                            2.33 MB
+                            2.3 MB
                           </dd>
                         </div>
                       </dl>
@@ -3285,7 +3495,14 @@ exports[`/indicators/[slug]/history HistoryPage should match snapshot for main c
                           <a
                             href="/indicators/ind6-new-indicator-product-1/history/downloads/IND6-economic-plan-2.pdf"
                           >
-                            Economic plan (PDF, 115 kB)
+                            Economic plan
+                             
+                            (
+                            PDF
+                            ,
+                             
+                            115 kB
+                            )
                           </a>
                         </p>
                       </header>
@@ -3350,20 +3567,18 @@ exports[`/indicators/[slug]/history HistoryPage should match snapshot for main c
                 </ul>
               </section>
             </section>
-            <section>
-              <h3>
-                <a
-                  id="scope-published8"
-                />
+            <section
+              aria-labelledby="scope-published"
+            >
+              <h3
+                id="scope-published"
+              >
                 Scope published
               </h3>
               <section>
                 <h4
                   class="visually-hidden"
                 >
-                  <a
-                    id="scope-published"
-                  />
                   Scope published
                 </h4>
                 <ul
@@ -3382,7 +3597,14 @@ exports[`/indicators/[slug]/history HistoryPage should match snapshot for main c
                           <a
                             href="/indicators/ind6-new-indicator-product-1/history/downloads/IND6-final-scope.pdf"
                           >
-                            Final scope (PDF, 133 kB)
+                            Final scope
+                             
+                            (
+                            PDF
+                            ,
+                             
+                            133 kB
+                            )
                           </a>
                         </p>
                       </header>
@@ -3457,7 +3679,14 @@ exports[`/indicators/[slug]/history HistoryPage should match snapshot for main c
                           <a
                             href="/indicators/ind6-new-indicator-product-1/history/downloads/IND6-consultation-comments-and-responses.pdf"
                           >
-                            Consultation comments and responses (PDF, 414 kB)
+                            Consultation comments and responses
+                             
+                            (
+                            PDF
+                            ,
+                             
+                            414 kB
+                            )
                           </a>
                         </p>
                       </header>
@@ -3522,20 +3751,18 @@ exports[`/indicators/[slug]/history HistoryPage should match snapshot for main c
                 </ul>
               </section>
             </section>
-            <section>
-              <h3>
-                <a
-                  id="scoping-workshop9"
-                />
+            <section
+              aria-labelledby="scoping-workshop"
+            >
+              <h3
+                id="scoping-workshop"
+              >
                 Scoping workshop
               </h3>
               <section>
                 <h4
                   class="visually-hidden"
                 >
-                  <a
-                    id="scoping-workshop"
-                  />
                   Scoping workshop
                 </h4>
                 <ul
@@ -3554,7 +3781,14 @@ exports[`/indicators/[slug]/history HistoryPage should match snapshot for main c
                           <a
                             href="/indicators/ind6-new-indicator-product-1/history/downloads/IND6-workshop-notes.pdf"
                           >
-                            Workshop notes (PDF, 496 kB)
+                            Workshop notes
+                             
+                            (
+                            PDF
+                            ,
+                             
+                            496 kB
+                            )
                           </a>
                         </p>
                       </header>
@@ -3619,20 +3853,18 @@ exports[`/indicators/[slug]/history HistoryPage should match snapshot for main c
                 </ul>
               </section>
             </section>
-            <section>
-              <h3>
-                <a
-                  id="stakeholder-list-updated10"
-                />
+            <section
+              aria-labelledby="stakeholder-list-updated"
+            >
+              <h3
+                id="stakeholder-list-updated"
+              >
                 Stakeholder list updated
               </h3>
               <section>
                 <h4
                   class="visually-hidden"
                 >
-                  <a
-                    id="stakeholder-list-updated"
-                  />
                   Stakeholder list updated
                 </h4>
                 <ul
@@ -3651,7 +3883,14 @@ exports[`/indicators/[slug]/history HistoryPage should match snapshot for main c
                           <a
                             href="/indicators/ind6-new-indicator-product-1/history/downloads/IND6-stakeholder-list-2.pdf"
                           >
-                            Stakeholder list (PDF, 175 kB)
+                            Stakeholder list
+                             
+                            (
+                            PDF
+                            ,
+                             
+                            175 kB
+                            )
                           </a>
                         </p>
                       </header>
@@ -3727,52 +3966,6 @@ exports[`/indicators/[slug]/history HistoryPage should match snapshot for main c
 exports[`/indicators/[slug]/history getServerSideProps should return a correct props 1`] = `
 Object {
   "props": Object {
-    "groupSections": Array [
-      Object {
-        "slug": "committee-list-updated0",
-        "title": "Committee list updated",
-      },
-      Object {
-        "slug": "committee-meetings1",
-        "title": "Committee meetings",
-      },
-      Object {
-        "slug": "consultation-comments-published2",
-        "title": "Consultation comments published",
-      },
-      Object {
-        "slug": "draft-guidance-consultation3",
-        "title": "Draft guidance consultation",
-      },
-      Object {
-        "slug": "draft-scope-consultation4",
-        "title": "Draft scope consultation",
-      },
-      Object {
-        "slug": "equality-impact-assessment-published5",
-        "title": "Equality impact assessment published",
-      },
-      Object {
-        "slug": "equality-impact-assessment-published6",
-        "title": "Equality impact assessment published",
-      },
-      Object {
-        "slug": "pre-consultation-documents-released7",
-        "title": "Pre-consultation documents released",
-      },
-      Object {
-        "slug": "scope-published8",
-        "title": "Scope published",
-      },
-      Object {
-        "slug": "scoping-workshop9",
-        "title": "Scoping workshop",
-      },
-      Object {
-        "slug": "stakeholder-list-updated10",
-        "title": "Stakeholder list updated",
-      },
-    ],
     "hasEvidenceResources": false,
     "hasHistory": true,
     "hasInfoForPublicResources": false,

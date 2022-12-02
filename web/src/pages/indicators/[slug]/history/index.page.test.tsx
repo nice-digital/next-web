@@ -85,16 +85,6 @@ describe("/indicators/[slug]/history", () => {
 			expect(result).toMatchSnapshot();
 		});
 
-		it("should return correct groupSections", async () => {
-			const result = (await getServerSideProps(context)) as {
-				props: HistoryPageProps;
-			};
-
-			const { groupSections } = result.props as HistoryPageProps;
-
-			expect(groupSections).toHaveLength(11);
-		});
-
 		it("should return notFound when there are no history panels", async () => {
 			const nonHistoryPanels = mockProject._embedded[
 				"nice.indev:panel-list"

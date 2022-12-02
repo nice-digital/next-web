@@ -207,7 +207,14 @@ exports[`/indicators/[slug]/history.page HistoryPage should match snapshot for m
                 <a
                   href="/indicators/ind6-new-indicator-product-1/history/downloads/IND6-comments-form.doc"
                 >
-                  Comments form (Word, 65 kB)
+                  Comments form
+                   
+                  (
+                  Word
+                  ,
+                   
+                  65 kB
+                  )
                 </a>
               </p>
             </header>
@@ -282,7 +289,14 @@ exports[`/indicators/[slug]/history.page HistoryPage should match snapshot for m
                 <a
                   href="/indicators/ind6-new-indicator-product-1/history/downloads/IND6-draft-scope.pdf"
                 >
-                  Draft scope (PDF, 124 kB)
+                  Draft scope
+                   
+                  (
+                  PDF
+                  ,
+                   
+                  124 kB
+                  )
                 </a>
               </p>
             </header>
@@ -357,7 +371,14 @@ exports[`/indicators/[slug]/history.page HistoryPage should match snapshot for m
                 <a
                   href="/indicators/ind6-new-indicator-product-1/history/downloads/IND6-equality-impact-assessment-8.pdf"
                 >
-                  Equality impact assessment (PDF, 233 kB)
+                  Equality impact assessment
+                   
+                  (
+                  PDF
+                  ,
+                   
+                  233 kB
+                  )
                 </a>
               </p>
             </header>

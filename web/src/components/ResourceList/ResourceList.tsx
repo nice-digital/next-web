@@ -49,7 +49,7 @@ export const ResourceList: FC<ResourceListProps> = ({ title, groups }) => {
 						lg={hasOnThisPageMenu ? 9 : 12}
 					>
 						<h2 className={styles.title}>{title}</h2>
-						{groupsWithSlugs.map(({ group, slug }, i) => (
+						{groupsWithSlugs.map(({ group, slug }) => (
 							<section key={slug} aria-labelledby={slug}>
 								<h3 id={slug}>{group.title}</h3>
 
