@@ -7,11 +7,13 @@ export enum FeedPath {
 }
 
 export enum ProjectStatus {
+	"Complete" = "Complete",
 	"Discontinued" = "Discontinued",
 	"Suspended" = "Suspended",
 	"Referred" = "Referred",
 	"InProgress" = "InProgress",
 	"Proposed" = "Proposed",
+	"TopicSelection" = "TopicSelection",
 	"ImpactedByCOVID19" = "ImpactedByCOVID19",
 }
 
