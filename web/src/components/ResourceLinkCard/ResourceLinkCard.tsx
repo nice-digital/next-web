@@ -1,4 +1,3 @@
-import { filesize } from "filesize";
 import { type FC } from "react";
 
 import { Card, type CardMetaDataProps } from "@nice-digital/nds-card";
@@ -7,18 +6,16 @@ import { isTruthy } from "@/utils/array";
 import { formatDateStr, stripTime } from "@/utils/datetime";
 import { type ResourceLinkViewModel } from "@/utils/resource";
 
-export type ResourceLinkProps = {
+import { FileSize } from "../FileSize/FileSize";
+import { ScrollToContentStartLink } from "../Link/Link";
+
+export type ResourceLinkCardProps = {
 	resourceLink: ResourceLinkViewModel;
 };
 
-export const ResourceLink: FC<ResourceLinkProps> = ({ resourceLink }) => {
-	const fileSize =
-		resourceLink.fileSize && resourceLink.fileSize > 0
-			? filesize(resourceLink.fileSize, {
-					round: resourceLink.fileSize > 999999 ? 2 : 0,
-			  })
-			: null;
-
+export const ResourceLinkCard: FC<ResourceLinkCardProps> = ({
+	resourceLink,
+}) => {
 	const cardMeta: CardMetaDataProps[] = [
 		{
 			// Hack because of a bug with the card component rendering a 0 when no metadata
@@ -41,24 +38,33 @@ export const ResourceLink: FC<ResourceLinkProps> = ({ resourceLink }) => {
 		resourceLink.fileSize && resourceLink.fileSize > 0
 			? {
 					label: "File size",
-					value: fileSize,
+					value: <FileSize fileSizeBytes={resourceLink.fileSize} />,
 			  }
 			: undefined,
 	].filter(isTruthy);
 
 	return (
-		<li key={resourceLink.href}>
-			<Card
-				headingText={`${resourceLink.title}${
-					resourceLink.fileTypeName
-						? ` (${resourceLink.fileTypeName}, ${fileSize})`
-						: ""
-				}`}
-				link={{
-					destination: resourceLink.href,
-				}}
-				metadata={cardMeta}
-			/>
-		</li>
+		<Card
+			headingText={
+				<>
+					{resourceLink.title}
+					{resourceLink.fileSize && resourceLink.fileTypeName ? (
+						<>
+							{" "}
+							({resourceLink.fileTypeName},{" "}
+							<FileSize fileSizeBytes={resourceLink.fileSize} />)
+						</>
+					) : null}
+				</>
+			}
+			link={{
+				destination: resourceLink.href,
+				elementType:
+					resourceLink.fileSize || resourceLink.href[0] !== "/"
+						? "a"
+						: ScrollToContentStartLink,
+			}}
+			metadata={cardMeta}
+		/>
 	);
 };

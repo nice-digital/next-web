@@ -1,14 +1,8 @@
 /**
  * @jest-environment node
  */
-import MockAdapter from "axios-mock-adapter";
-
 import { cache } from "@/cache";
 import { serverRuntimeConfig } from "@/config";
-import { client } from "@/feeds/index";
-import areaOfInterestTypesMock from "@/mockData/publications/feeds/areaofinteresttypes.json";
-import productsLiteMock from "@/mockData/publications/feeds/products-lite.json";
-import productTypesMock from "@/mockData/publications/feeds/producttypes.json";
 
 import {
 	getAllAreasOfInterest,
@@ -16,7 +10,6 @@ import {
 	getAllProducts,
 } from "./publications";
 
-const axiosMock = new MockAdapter(client, { onNoMatch: "throwException" });
 const cacheWrapMock = cache.wrap as jest.Mock;
 
 describe("publications", () => {
@@ -42,9 +35,6 @@ describe("publications", () => {
 		});
 
 		it("should load raw feed data with empty cache", async () => {
-			axiosMock
-				.onGet(/\/feeds\/areaofinteresttypes/)
-				.reply(200, areaOfInterestTypesMock);
 			await getAllAreasOfInterest();
 			const data: Awaited<ReturnType<typeof getAllAreasOfInterest>> =
 				await cacheWrapMock.mock.calls[0][1]();
@@ -76,7 +66,6 @@ describe("publications", () => {
 		});
 
 		it("should load raw feed data with empty cache", async () => {
-			axiosMock.onGet(/\/feeds\/producttypes/).reply(200, productTypesMock);
 			await getAllProductTypes();
 			const data: Awaited<ReturnType<typeof getAllProductTypes>> =
 				await cacheWrapMock.mock.calls[0][1]();
@@ -108,8 +97,6 @@ describe("publications", () => {
 		});
 
 		it("should load raw feed data with empty cache", async () => {
-			axiosMock.onGet(/\/feeds\/products-lite/).reply(200, productsLiteMock);
-
 			await getAllProducts();
 			const data: Awaited<ReturnType<typeof getAllProducts>> =
 				await cacheWrapMock.mock.calls[0][1]();

@@ -30,7 +30,7 @@ export const ProductHorizontalNav: FC<ProductHorizontalNavProps> = ({
 		path = asPath.replace(/#.*/, ""),
 		toolsAndResourcesPath = `${productPath}/resources`,
 		isUnderResources = path.indexOf(toolsAndResourcesPath) === 0,
-		ifpPath = `${productPath}/informationforpublic`,
+		ifpPath = `${productPath}/information-for-the-public`,
 		isUnderIFP = path.indexOf(ifpPath) === 0,
 		evidencePath = `${productPath}/evidence`,
 		isUnderEvidence = path.indexOf(evidencePath) === 0,
@@ -70,7 +70,7 @@ export const ProductHorizontalNav: FC<ProductHorizontalNavProps> = ({
 					Tools and resources
 				</HorizontalNavLink>
 			) : null}
-			{hasInfoForPublicResources ? (
+			{/* {hasInfoForPublicResources ? (
 				<HorizontalNavLink
 					destination={ifpPath}
 					elementType={ScrollToContentStartLink}
@@ -78,7 +78,7 @@ export const ProductHorizontalNav: FC<ProductHorizontalNavProps> = ({
 				>
 					Information for the public
 				</HorizontalNavLink>
-			) : null}
+			) : null} */}
 			{hasEvidenceResources ? (
 				<HorizontalNavLink
 					destination={evidencePath}

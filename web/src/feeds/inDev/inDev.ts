@@ -76,7 +76,9 @@ export const getProjectDetail = async (
 	);
 
 /**
- * Streams readable HTML stream.
+ * Gets HTML of a resource from InDev,
+ *
+ * E.g. from /guidance/NG100/documents/html-content
  *
  */
 export const getResourceFileHTML = async (
@@ -85,7 +87,8 @@ export const getResourceFileHTML = async (
 	const body = await getFeedBodyUnCached<string | ErrorResponse>(
 		origin,
 		resourcePath,
-		apiKey
+		apiKey,
+		"text/html"
 	);
 
 	return isSuccessResponse(body) ? body : null;

@@ -287,55 +287,42 @@ export type EpubFile = FileContent & {
 	mimeType: "application/epub+zip";
 };
 
-export type UploadAndConvertContentPart = {
+export type BaseContentPart<T extends string = string> = {
 	links: EmptySelfLinks;
-	embedded: {
-		htmlContent: HTMLContent;
-		pdfFile: PDFFile;
-		mobiFile?: MobiFile;
-		epubFile?: EpubFile;
-	};
 	eTag: ETag;
 	title: string;
-	type: "UploadAndConvertContentPart";
+	type: T;
 	uid: number;
 	legacyId: string | null;
 };
 
-export type EditableContentPart = {
-	links: EmptySelfLinks;
+export type UploadAndConvertContentPart =
+	BaseContentPart<"UploadAndConvertContentPart"> & {
+		embedded: {
+			htmlContent: HTMLContent;
+			pdfFile: PDFFile;
+			mobiFile?: MobiFile;
+			epubFile?: EpubFile;
+		};
+	};
+
+export type EditableContentPart = BaseContentPart<"EditableContentPart"> & {
 	embedded: {
 		htmlContent: HTMLContent;
 		pdfFile?: PDFFile;
 	};
-	eTag: ETag;
-	title: string;
-	type: "EditableContentPart";
-	uid: number;
-	legacyId: string | null;
 };
 
-export type UploadContentPart = {
-	links: EmptySelfLinks;
+export type UploadContentPart = BaseContentPart<"UploadContentPart"> & {
 	embedded: {
 		file: FileContent;
 	};
-	eTag: ETag;
-	title: string;
-	type: "UploadContentPart";
-	uid: number;
-	legacyId: string | null;
 };
 
-export type ExternalUrlContentPart = {
-	links: EmptySelfLinks;
-	eTag: ETag;
-	url: string;
-	title: string;
-	type: "ExternalUrlContentPart";
-	uid: number;
-	legacyId: string | null;
-};
+export type ExternalUrlContentPart =
+	BaseContentPart<"ExternalUrlContentPart"> & {
+		url: string;
+	};
 
 export type ContentPartList = {
 	embedded: {
@@ -553,6 +540,9 @@ export type ProductAndResourceBase = {
 };
 
 export type ResourceDetail = ProductAndResourceBase & {
+	embedded: {
+		resourceGroupList: ResourceGroupList;
+	};
 	uid: number;
 	legacyId: string | null;
 	language: Language;

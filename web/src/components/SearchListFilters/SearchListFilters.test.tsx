@@ -8,7 +8,7 @@ import {
 } from "@nice-digital/search-client/types";
 
 import sampleData from "@/mockData/search/guidance-published.json";
-import { render, screen, within } from "@/test-utils";
+import { render, screen, within } from "@/test-utils/rendering";
 
 import { SearchListFilters } from "./SearchListFilters";
 

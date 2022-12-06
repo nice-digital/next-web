@@ -9,7 +9,7 @@ import { NextRouter } from "next/router";
 import { ReactElement, useEffect } from "react";
 import { renderToString } from "react-dom/server";
 
-import NextWebApp from "./pages/_app.page";
+import NextWebApp from "../pages/_app.page";
 
 import type { AppProps } from "next/app";
 

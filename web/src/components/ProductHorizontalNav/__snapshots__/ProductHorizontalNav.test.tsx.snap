@@ -36,17 +36,6 @@ exports[`ProductHorizontalNav should match snapshot for all nav items 1`] = `
         <a
           aria-current="false"
           class="horizontal-nav__link"
-          href="/indicators/ind1-test/informationforpublic"
-        >
-          Information for the public
-        </a>
-      </li>
-      <li
-        class="horizontal-nav__item"
-      >
-        <a
-          aria-current="false"
-          class="horizontal-nav__link"
           href="/indicators/ind1-test/evidence"
         >
           Evidence

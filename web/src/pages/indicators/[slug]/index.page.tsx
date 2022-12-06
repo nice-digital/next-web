@@ -18,11 +18,9 @@ import {
 } from "@/feeds/publications/publications";
 import {
 	ProductDetail,
-	ProductGroup,
 	type IndicatorSubType,
 } from "@/feeds/publications/types";
 import { getChapterLinks, validateRouteParams } from "@/utils/product";
-import { getPublicationPdfDownloadPath } from "@/utils/url";
 
 import styles from "./index.page.module.scss";
 
@@ -164,25 +162,23 @@ export default function IndicatorsDetailsPage({
 export const getServerSideProps: GetServerSideProps<
 	IndicatorsDetailsPageProps,
 	{ slug: string }
-> = async ({ params, resolvedUrl }) => {
-	const result = await validateRouteParams(params, resolvedUrl);
+> = async ({ params, resolvedUrl, query }) => {
+	const result = await validateRouteParams({ params, resolvedUrl, query });
 
 	if ("notFound" in result || "redirect" in result) return result;
 
 	const {
 			product,
+			productType,
 			productPath,
+			pdfDownloadPath,
 			hasEvidenceResources,
 			hasInfoForPublicResources,
 			hasToolsAndResources,
 			hasHistory,
 		} = result,
 		indicatorSubTypes = await getAllIndicatorSubTypes(),
-		chapters = getChapterLinks(product),
-		pdfDownloadPath = getPublicationPdfDownloadPath(
-			product,
-			ProductGroup.Other
-		);
+		chapters = getChapterLinks(product, productType.group);
 
 	return {
 		props: {

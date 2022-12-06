@@ -1,0 +1,704 @@
+{
+  "_links": { "self": [{}] },
+  "_embedded": {
+    "nice.publications:chapter-heading-list": {
+      "_links": { "self": [{}] },
+      "_embedded": {
+        "nice.publications:chapter-heading": [
+          {
+            "_links": { "self": [{}] },
+            "ETag": null,
+            "Title": "Overview",
+            "Url": "/NG100"
+          },
+          {
+            "_links": { "self": [{}] },
+            "ETag": null,
+            "Title": "Recommendations",
+            "Url": "/NG100/chapter/Recommendations"
+          },
+          {
+            "_links": { "self": [{}] },
+            "ETag": null,
+            "Title": "Recommendations for research",
+            "Url": "/NG100/chapter/Recommendations-for-research"
+          },
+          {
+            "_links": { "self": [{}] },
+            "ETag": null,
+            "Title": "Rationale and impact",
+            "Url": "/NG100/chapter/Rationale-and-impact"
+          },
+          {
+            "_links": { "self": [{}] },
+            "ETag": null,
+            "Title": "Context",
+            "Url": "/NG100/chapter/Context"
+          },
+          {
+            "_links": { "self": [{}] },
+            "ETag": null,
+            "Title": "Finding more information and committee details",
+            "Url": "/NG100/chapter/Finding-more-information-and-committee-details"
+          },
+          {
+            "_links": { "self": [{}] },
+            "ETag": null,
+            "Title": "Update information",
+            "Url": "/NG100/chapter/Update-information"
+          }
+        ]
+      },
+      "ETag": null
+    },
+    "nice.publications:accreditation-list": {
+      "_links": { "self": [{}] },
+      "_embedded": {
+        "nice.publications:accreditation": {
+          "_links": {
+            "nice.publications:logo": [
+              { "href": "/organisation/NICEORG018/AccreditLogo/Normal" }
+            ],
+            "self": [{}]
+          },
+          "ETag": null,
+          "Name": "National Institute for Health and Care Excellence (NICE)",
+          "Url": "https://www.nice.org.uk"
+        }
+      },
+      "ETag": null
+    },
+    "nice.publications:endorsement-list": {
+      "_links": { "self": [{}] },
+      "ETag": null
+    },
+    "nice.publications:supporting-list": {
+      "_links": { "self": [{}] },
+      "ETag": null
+    },
+    "nice.publications:content-part-list": {
+      "_links": { "self": [{}] },
+      "_embedded": {
+        "nice.publications:upload-and-convert-content-part": {
+          "_links": { "self": [{}] },
+          "_embedded": {
+            "nice.publications:html-content": {
+              "_links": {
+                "self": [{ "href": "/feeds/product/NG100/content/1/html" }]
+              },
+              "_embedded": {
+                "nice.publications:html-chapter-content-info": [
+                  {
+                    "_links": {
+                      "self": [
+                        {
+                          "href": "/feeds/product/NG100/part/1/chapter/overview"
+                        }
+                      ]
+                    },
+                    "ETag": null,
+                    "Reference": "NG100",
+                    "PartId": 1,
+                    "ChapterSlug": "overview",
+                    "Title": "Overview"
+                  },
+                  {
+                    "_links": {
+                      "self": [
+                        {
+                          "href": "/feeds/product/NG100/part/1/chapter/recommendations"
+                        }
+                      ]
+                    },
+                    "ETag": null,
+                    "Reference": "NG100",
+                    "PartId": 1,
+                    "ChapterSlug": "recommendations",
+                    "Title": "Recommendations"
+                  },
+                  {
+                    "_links": {
+                      "self": [
+                        {
+                          "href": "/feeds/product/NG100/part/1/chapter/recommendations-for-research"
+                        }
+                      ]
+                    },
+                    "ETag": null,
+                    "Reference": "NG100",
+                    "PartId": 1,
+                    "ChapterSlug": "recommendations-for-research",
+                    "Title": "Recommendations for research"
+                  },
+                  {
+                    "_links": {
+                      "self": [
+                        {
+                          "href": "/feeds/product/NG100/part/1/chapter/rationale-and-impact"
+                        }
+                      ]
+                    },
+                    "ETag": null,
+                    "Reference": "NG100",
+                    "PartId": 1,
+                    "ChapterSlug": "rationale-and-impact",
+                    "Title": "Rationale and impact"
+                  },
+                  {
+                    "_links": {
+                      "self": [
+                        {
+                          "href": "/feeds/product/NG100/part/1/chapter/context"
+                        }
+                      ]
+                    },
+                    "ETag": null,
+                    "Reference": "NG100",
+                    "PartId": 1,
+                    "ChapterSlug": "context",
+                    "Title": "Context"
+                  },
+                  {
+                    "_links": {
+                      "self": [
+                        {
+                          "href": "/feeds/product/NG100/part/1/chapter/finding-more-information-and-committee-details"
+                        }
+                      ]
+                    },
+                    "ETag": null,
+                    "Reference": "NG100",
+                    "PartId": 1,
+                    "ChapterSlug": "finding-more-information-and-committee-details",
+                    "Title": "Finding more information and committee details"
+                  },
+                  {
+                    "_links": {
+                      "self": [
+                        {
+                          "href": "/feeds/product/NG100/part/1/chapter/update-information"
+                        }
+                      ]
+                    },
+                    "ETag": null,
+                    "Reference": "NG100",
+                    "PartId": 1,
+                    "ChapterSlug": "update-information",
+                    "Title": "Update information"
+                  }
+                ]
+              },
+              "ETag": null,
+              "Reference": "NG100",
+              "PartId": 1
+            },
+            "nice.publications:pdf-file": {
+              "_links": {
+                "self": [
+                  {
+                    "href": "/feeds/downloads/9095116f-5c06-43b5-bedc-1aa98b3af693"
+                  }
+                ]
+              },
+              "ETag": null,
+              "Id": "9095116f-5c06-43b5-bedc-1aa98b3af693",
+              "MimeType": "application/pdf",
+              "FileName": "NG100 Guidance 20220113.pdf",
+              "Length": 190002,
+              "Hash": "809F5E72EEA5822E958A42EB2C69CA50C3FA36FE",
+              "Name": "default",
+              "Uid": 66141531233989
+            },
+            "nice.publications:mobi-file": {
+              "_links": {
+                "self": [
+                  {
+                    "href": "/feeds/downloads/53ab748c-fd02-4ddb-a9d2-702bd2ea15a6"
+                  }
+                ]
+              },
+              "ETag": null,
+              "Id": "53ab748c-fd02-4ddb-a9d2-702bd2ea15a6",
+              "MimeType": "application/x-mobipocket-ebook",
+              "FileName": "NG100 Guidance 20220113.mobi",
+              "Length": 400334,
+              "Hash": "7B93C88E25FBBB16D901AC4C428A249BF8C2A597",
+              "Name": "default",
+              "Uid": 66141531233986
+            },
+            "nice.publications:epub-file": {
+              "_links": {
+                "self": [
+                  {
+                    "href": "/feeds/downloads/c767efb7-ba52-41ee-87a9-8845a633447c"
+                  }
+                ]
+              },
+              "ETag": null,
+              "Id": "c767efb7-ba52-41ee-87a9-8845a633447c",
+              "MimeType": "application/epub+zip",
+              "FileName": "NG100 Guidance 20220113.epub",
+              "Length": 227122,
+              "Hash": "82F150B6501F6FBD555CAA46B0705C5A9DB01EFB",
+              "Name": "default",
+              "Uid": 66141531233978
+            }
+          },
+          "ETag": null,
+          "Title": "Rheumatoid arthritis in adults: management",
+          "Type": "UploadAndConvertContentPart",
+          "Uid": 51035132125,
+          "LegacyId": null
+        }
+      },
+      "ETag": null
+    },
+    "nice.publications:related-resource-list": {
+      "_links": { "self": [{}] },
+      "_embedded": {
+        "nice.publications:related-resource": [
+          {
+            "_links": {
+              "self": [{ "href": "/feeds/resource/29348" }, {}],
+              "nice.publications:related-resource-uri": [
+                { "href": "/feeds/resource/29348" }
+              ]
+            },
+            "_embedded": {
+              "nice.publications:resource-group-list": {
+                "_links": { "self": [{}] },
+                "_embedded": {
+                  "nice.publications:resource-group": {
+                    "_links": { "self": [{}] },
+                    "ETag": null,
+                    "Name": "InformationForThePublic"
+                  }
+                },
+                "ETag": null
+              }
+            },
+            "ETag": null,
+            "Title": "Rheumatoid arthritis in adults: management",
+            "ResourceType": "InformationForThePublic",
+            "Status": "Published",
+            "Language": "English",
+            "Uid": 3783176
+          },
+          {
+            "_links": {
+              "self": [{ "href": "/feeds/resource/29349" }, {}],
+              "nice.publications:related-resource-uri": [
+                { "href": "/feeds/resource/29349" }
+              ]
+            },
+            "_embedded": {
+              "nice.publications:resource-group-list": {
+                "_links": { "self": [{}] },
+                "_embedded": {
+                  "nice.publications:resource-group": {
+                    "_links": { "self": [{}] },
+                    "ETag": null,
+                    "Name": "Evidence"
+                  }
+                },
+                "ETag": null
+              }
+            },
+            "ETag": null,
+            "Title": "Full guideline – April 2009",
+            "ResourceType": "FullGuidance",
+            "Status": "Published",
+            "Language": "English",
+            "Uid": 3783177
+          },
+          {
+            "_links": {
+              "self": [{ "href": "/feeds/resource/29380" }, {}],
+              "nice.publications:related-resource-uri": [
+                { "href": "/feeds/resource/29380" }
+              ]
+            },
+            "_embedded": {
+              "nice.publications:resource-group-list": {
+                "_links": { "self": [{}] },
+                "_embedded": {
+                  "nice.publications:resource-group": {
+                    "_links": { "self": [{}] },
+                    "ETag": null,
+                    "Name": "Evidence"
+                  }
+                },
+                "ETag": null
+              }
+            },
+            "ETag": null,
+            "Title": "Evidence reviews – July 2018",
+            "ResourceType": "EvidenceReview",
+            "Status": "Published",
+            "Language": "English",
+            "Uid": 3783312
+          },
+          {
+            "_links": {
+              "self": [{ "href": "/feeds/resource/29381" }, {}],
+              "nice.publications:related-resource-uri": [
+                { "href": "/feeds/resource/29381" }
+              ]
+            },
+            "_embedded": {
+              "nice.publications:resource-group-list": {
+                "_links": { "self": [{}] },
+                "_embedded": {
+                  "nice.publications:resource-group": {
+                    "_links": { "self": [{}] },
+                    "ETag": null,
+                    "Name": "SummaryVersions"
+                  }
+                },
+                "ETag": null
+              }
+            },
+            "ETag": null,
+            "Title": "Rheumatoid arthritis: management and monitoring algorithm",
+            "ResourceType": "SummaryVersions",
+            "Status": "Published",
+            "Language": "English",
+            "Uid": 3783313
+          },
+          {
+            "_links": {
+              "self": [{ "href": "/feeds/resource/29382" }, {}],
+              "nice.publications:related-resource-uri": [
+                { "href": "/feeds/resource/29382" }
+              ]
+            },
+            "_embedded": {
+              "nice.publications:resource-group-list": {
+                "_links": { "self": [{}] },
+                "_embedded": {
+                  "nice.publications:resource-group": {
+                    "_links": { "self": [{}] },
+                    "ETag": null,
+                    "Name": "SummaryVersions"
+                  }
+                },
+                "ETag": null
+              }
+            },
+            "ETag": null,
+            "Title": "Rheumatoid arthritis: referral, diagnosis and investigations algorithm",
+            "ResourceType": "SummaryVersions",
+            "Status": "Published",
+            "Language": "English",
+            "Uid": 3783314
+          },
+          {
+            "_links": {
+              "self": [{ "href": "/feeds/resource/29383" }, {}],
+              "nice.publications:related-resource-uri": [
+                { "href": "/feeds/resource/29383" }
+              ]
+            },
+            "_embedded": {
+              "nice.publications:resource-group-list": {
+                "_links": { "self": [{}] },
+                "_embedded": {
+                  "nice.publications:resource-group": {
+                    "_links": { "self": [{}] },
+                    "ETag": null,
+                    "Name": "AuditAndServiceImprovement"
+                  }
+                },
+                "ETag": null
+              }
+            },
+            "ETag": null,
+            "Title": "Baseline assessment tool",
+            "ResourceType": "AuditAndServiceImprovement",
+            "Status": "Published",
+            "Language": "English",
+            "Uid": 3783315
+          },
+          {
+            "_links": {
+              "self": [{ "href": "/feeds/resource/29409" }, {}],
+              "nice.publications:related-resource-uri": [
+                { "href": "/feeds/resource/29409" }
+              ]
+            },
+            "_embedded": {
+              "nice.publications:resource-group-list": {
+                "_links": { "self": [{}] },
+                "_embedded": {
+                  "nice.publications:resource-group": {
+                    "_links": { "self": [{}] },
+                    "ETag": null,
+                    "Name": "ResourceImpact"
+                  }
+                },
+                "ETag": null
+              }
+            },
+            "ETag": null,
+            "Title": "Resource impact statement",
+            "ResourceType": "ResourceImpact",
+            "Status": "Published",
+            "Language": "English",
+            "Uid": 3784329
+          },
+          {
+            "_links": {
+              "self": [{ "href": "/feeds/resource/29411" }, {}],
+              "nice.publications:related-resource-uri": [
+                { "href": "/feeds/resource/29411" }
+              ]
+            },
+            "_embedded": {
+              "nice.publications:resource-group-list": {
+                "_links": { "self": [{}] },
+                "_embedded": {
+                  "nice.publications:resource-group": {
+                    "_links": { "self": [{}] },
+                    "ETag": null,
+                    "Name": "Evidence"
+                  }
+                },
+                "ETag": null
+              }
+            },
+            "ETag": null,
+            "Title": "Acknowledgements ",
+            "ResourceType": "OtherSupportingEvidence",
+            "Status": "Published",
+            "Language": "English",
+            "Uid": 3784357
+          },
+          {
+            "_links": {
+              "self": [{ "href": "/feeds/resource/29446" }, {}],
+              "nice.publications:related-resource-uri": [
+                { "href": "/feeds/resource/29446" }
+              ]
+            },
+            "_embedded": {
+              "nice.publications:resource-group-list": {
+                "_links": { "self": [{}] },
+                "_embedded": {
+                  "nice.publications:resource-group": {
+                    "_links": { "self": [{}] },
+                    "ETag": null,
+                    "Name": "Evidence"
+                  }
+                },
+                "ETag": null
+              }
+            },
+            "ETag": null,
+            "Title": "Methods",
+            "ResourceType": "OtherSupportingEvidence",
+            "Status": "Published",
+            "Language": "English",
+            "Uid": 3784470
+          },
+          {
+            "_links": {
+              "self": [{ "href": "/feeds/resource/33571" }, {}],
+              "nice.publications:related-resource-uri": [
+                { "href": "/feeds/resource/33571" }
+              ]
+            },
+            "_embedded": {
+              "nice.publications:resource-group-list": {
+                "_links": { "self": [{}] },
+                "_embedded": {
+                  "nice.publications:resource-group": {
+                    "_links": { "self": [{}] },
+                    "ETag": null,
+                    "Name": "ImplementationSupport"
+                  }
+                },
+                "ETag": null
+              }
+            },
+            "ETag": null,
+            "Title": "Endorsed resource – Non-pharmacological management of rheumatoid arthritis in adults – a visual guide for allied health professionals",
+            "ResourceType": "ImplementationSupport",
+            "Status": "Published",
+            "Language": "English",
+            "Uid": 5185549
+          },
+          {
+            "_links": {
+              "self": [{ "href": "/feeds/resource/36489" }, {}],
+              "nice.publications:related-resource-uri": [
+                { "href": "/feeds/resource/36489" }
+              ]
+            },
+            "_embedded": {
+              "nice.publications:resource-group-list": {
+                "_links": { "self": [{}] },
+                "_embedded": {
+                  "nice.publications:resource-group": {
+                    "_links": { "self": [{}] },
+                    "ETag": null,
+                    "Name": "ImplementationSupport"
+                  }
+                },
+                "ETag": null
+              }
+            },
+            "ETag": null,
+            "Title": "Endorsed resource - Core skills in musculoskeletal care",
+            "ResourceType": "ImplementationSupport",
+            "Status": "Published",
+            "Language": "English",
+            "Uid": 5324265
+          },
+          {
+            "_links": {
+              "self": [{ "href": "/feeds/resource/36961" }, {}],
+              "nice.publications:related-resource-uri": [
+                { "href": "/feeds/resource/36961" }
+              ]
+            },
+            "_embedded": {
+              "nice.publications:resource-group-list": {
+                "_links": { "self": [{}] },
+                "_embedded": {
+                  "nice.publications:resource-group": {
+                    "_links": { "self": [{}] },
+                    "ETag": null,
+                    "Name": "ImplementationSupport"
+                  }
+                },
+                "ETag": null
+              }
+            },
+            "ETag": null,
+            "Title": "Endorsed resource – Core Skills in Musculoskeletal Care e-learning Module 2 Osteoarthritis, Inflammatory arthritis and Spine (back and neck pain) ",
+            "ResourceType": "ImplementationSupport",
+            "Status": "Published",
+            "Language": "English",
+            "Uid": 5330665
+          }
+        ]
+      },
+      "ETag": null
+    },
+    "nice.publications:related-product-list": {
+      "_links": { "self": [{}] },
+      "_embedded": {
+        "nice.publications:related-product": [
+          {
+            "_links": {
+              "nice.publications:related-product-uri": [
+                { "href": "/feeds/product/CG79" }
+              ],
+              "self": [{}]
+            },
+            "_embedded": {
+              "nice.publications:product-relationship-list": {
+                "_links": { "self": [{}] },
+                "_embedded": {
+                  "nice.publications:product-relationship": {
+                    "_links": { "self": [{}] },
+                    "ETag": null,
+                    "Relation": "Replaces"
+                  }
+                },
+                "ETag": null
+              }
+            },
+            "ETag": null,
+            "Title": "Rheumatoid arthritis in adults: management",
+            "ShortTitle": null,
+            "Id": "CG79"
+          },
+          {
+            "_links": {
+              "nice.publications:related-product-uri": [
+                { "href": "/feeds/product/QS33" }
+              ],
+              "self": [{}]
+            },
+            "_embedded": {
+              "nice.publications:product-relationship-list": {
+                "_links": { "self": [{}] },
+                "_embedded": {
+                  "nice.publications:product-relationship": {
+                    "_links": { "self": [{}] },
+                    "ETag": null,
+                    "Relation": "IsTheBasisOf"
+                  }
+                },
+                "ETag": null
+              }
+            },
+            "ETag": null,
+            "Title": "Rheumatoid arthritis in over 16s",
+            "ShortTitle": null,
+            "Id": "QS33"
+          },
+          {
+            "_links": {
+              "nice.publications:related-product-uri": [
+                { "href": "/feeds/product/NG193" }
+              ],
+              "self": [{}]
+            },
+            "_embedded": {
+              "nice.publications:product-relationship-list": {
+                "_links": { "self": [{}] },
+                "_embedded": {
+                  "nice.publications:product-relationship": {
+                    "_links": { "self": [{}] },
+                    "ETag": null,
+                    "Relation": "ReadInConjunctionWith"
+                  }
+                },
+                "ETag": null
+              }
+            },
+            "ETag": null,
+            "Title": "Chronic pain (primary and secondary) in over 16s: assessment of all chronic pain and management of chronic primary pain",
+            "ShortTitle": null,
+            "Id": "NG193"
+          }
+        ]
+      },
+      "ETag": null
+    }
+  },
+  "ETag": "01000000-0000-0001-0000-00000000EB8F",
+  "Id": "NG100",
+  "LastModified": "2022-05-30T07:35:22.1349529Z",
+  "ProductType": "NG",
+  "Title": "Rheumatoid arthritis in adults: management",
+  "ShortTitle": null,
+  "InDevReference": "GID-NG10014",
+  "MetaDescription": "This guideline covers diagnosing and managing rheumatoid arthritis. It aims to improve quality of life by ensuring that people with rheumatoid arthritis have the right treatment to slow the progression of their condition and control their symptoms. People should also have rapid access to specialist care if their condition suddenly worsens",
+  "Summary": "<p class=\"lead\">This guideline covers diagnosing and managing rheumatoid arthritis. It aims to improve quality of life by ensuring that people with rheumatoid arthritis have the right treatment to slow the progression of their condition and control their symptoms. People should also have rapid access to specialist care if their condition suddenly worsens.</p>\n<p>NICE has also produced technology appraisal guidance on drug treatment for rheumatoid arthritis.</p>\n<p>In <strong>October 2020</strong>, we amended the &lsquo;treat to target&rsquo; recommendations to clarify that multiple disease-modifying anti-rheumatic drugs can be offered one after the other to achieve treatment targets.</p>\n<h2>Recommendations</h2>\n<p>This guideline includes new and updated recommendations on:</p>\n<ul>\n<li><a href=\"https://www.nice.org.uk/guidance/ng100/chapter/Recommendations#investigations-following-diagnosis\">investigations following diagnosis</a></li>\n<li><a href=\"https://www.nice.org.uk/guidance/ng100/chapter/Recommendations#treat-to-target-strategy\">treat-to-target strategy</a>&nbsp;and&nbsp;<a href=\"http://www.nice.org.uk/guidance/ng100/chapter/Recommendations#initial-pharmacological-management\">initial pharmacological management</a></li>\n<li><a href=\"https://www.nice.org.uk/guidance/ng100/chapter/Recommendations#symptom-control\">symptom control</a>&nbsp;and&nbsp;<a href=\"http://www.nice.org.uk/guidance/ng100/chapter/Recommendations#monitoring\">monitoring</a></li>\n</ul>\n<p>It also includes recommendations on:</p>\n<ul>\n<li><a href=\"http://www.nice.org.uk/guidance/ng100/chapter/Recommendations#investigations\">investigations for diagnosis</a> and&nbsp;<a href=\"http://www.nice.org.uk/guidance/ng100/chapter/Recommendations#referral-from-primary-care\">referral from primary care</a></li>\n<li><a href=\"http://www.nice.org.uk/guidance/ng100/chapter/Recommendations#non-pharmacological-management\">non-pharmacological management</a> and&nbsp;<a href=\"http://www.nice.org.uk/guidance/ng100/chapter/Recommendations#the-multidisciplinary-team\">the multidisciplinary team</a></li>\n<li><a href=\"http://www.nice.org.uk/guidance/ng100/chapter/Recommendations#communication-and-education\">communication and education</a></li>\n<li><a href=\"http://www.nice.org.uk/guidance/ng100/chapter/Recommendations#timing-and-referral-for-surgery\">timing and referral for surgery</a></li>\n</ul>\n<h2>Who is it for?</h2>\n<ul>\n<li>Healthcare professionals</li>\n<li>Commissioners and providers</li>\n<li>People with rheumatoid arthritis and their families and carers</li>\n</ul>\n<h2>Guideline development process</h2>\n<p><a href=\"https://www.nice.org.uk/about/what-we-do/our-programmes/nice-guidance/nice-guidelines/how-we-develop-nice-guidelines\">How we develop NICE guidelines</a></p>\n<p>This guideline updates and replaces NICE guideline CG79 (February 2009).</p>",
+  "ProductStatus": "Published",
+  "VersionNumber": 26,
+  "PublishedDate": "2018-07-11T00:00:00",
+  "LastMajorModificationDate": "2020-10-12T00:00:00",
+  "MajorChangeDate": "2020-10-12T00:00:00",
+  "NextReviewDate": null,
+  "CollectionTypesList": [],
+  "AuthorList": ["National Institute for Health and Care Excellence (NICE)"],
+  "PublisherList": ["National Institute for Health and Care Excellence (NICE)"],
+  "AudienceList": [],
+  "EstimatedSavings": "",
+  "EstimatedSavingsDescription": "",
+  "EstimatedSavingsImpact": null,
+  "DevelopedAs": "CG",
+  "RelevantTo": [],
+  "TerminatedAppraisal": null,
+  "AreasOfInterestList": [],
+  "IndicatorSubTypeList": [],
+  "IndicatorOldCode": null,
+  "IndicatorOldUrl": null,
+  "IPSV": "Health, well-being and care",
+  "ProductTypeName": "NICE guideline",
+  "ProductTypeNamePlural": "NICE guidelines"
+}

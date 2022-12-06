@@ -1,4 +1,4 @@
-import { GetServerSideProps } from "next";
+import { type GetServerSideProps } from "next";
 import { NextSeo } from "next-seo";
 
 import { Breadcrumbs, Breadcrumb } from "@nice-digital/nds-breadcrumbs";
@@ -11,10 +11,15 @@ import {
 } from "@/components/ProductPageHeading/ProductPageHeading";
 import { ResourceList } from "@/components/ResourceList/ResourceList";
 import { getResourceDetails } from "@/feeds/publications/publications";
+import { logger } from "@/logger";
 import { validateRouteParams } from "@/utils/product";
-import { getResourceGroups, ResourceGroupViewModel } from "@/utils/resource";
+import {
+	getResourceGroups,
+	type ResourceGroupViewModel,
+	ResourceTypeSlug,
+} from "@/utils/resource";
 
-export type IndicatorToolsAndResourcesPageProps = {
+export type ToolsAndResourcesListPageProps = {
 	resourceGroups: ResourceGroupViewModel[];
 	productPath: string;
 	product: ProductPageHeadingProps["product"];
@@ -24,7 +29,7 @@ export type IndicatorToolsAndResourcesPageProps = {
 	hasHistory: boolean;
 };
 
-export default function ({
+export default function ToolsAndResourcesListPage({
 	resourceGroups,
 	productPath,
 	product,
@@ -32,7 +37,7 @@ export default function ({
 	hasInfoForPublicResources,
 	hasEvidenceResources,
 	hasHistory,
-}: IndicatorToolsAndResourcesPageProps): JSX.Element {
+}: ToolsAndResourcesListPageProps): JSX.Element {
 	return (
 		<>
 			<NextSeo
@@ -64,22 +69,18 @@ export default function ({
 				hasHistory={hasHistory}
 			/>
 
-			<h2>Tools and resources</h2>
-
-			<ResourceList groups={resourceGroups} />
+			<ResourceList title="Tools and resources" groups={resourceGroups} />
 		</>
 	);
 }
 
 export const getServerSideProps: GetServerSideProps<
-	IndicatorToolsAndResourcesPageProps,
+	ToolsAndResourcesListPageProps,
 	{ slug: string }
-> = async ({ params, resolvedUrl }) => {
-	const result = await validateRouteParams(params, resolvedUrl);
+> = async ({ params, query, resolvedUrl }) => {
+	const result = await validateRouteParams({ params, resolvedUrl, query });
 
 	if ("notFound" in result || "redirect" in result) return result;
-
-	if (!result.hasToolsAndResources) return { notFound: true };
 
 	const {
 		product,
@@ -91,11 +92,27 @@ export const getServerSideProps: GetServerSideProps<
 		hasHistory,
 	} = result;
 
+	if (!toolsAndResources.length) {
+		logger.info(`No tools and resources found for product ${product.id}`);
+		return { notFound: true };
+	}
+
+	const fullResources = await getResourceDetails(toolsAndResources),
+		resourceGroups = getResourceGroups(
+			product.id,
+			productPath,
+			fullResources,
+			ResourceTypeSlug.ToolsAndResources
+		);
+
+	if (resourceGroups.length === 0) {
+		logger.info(`No tools and resource groups found for product ${product.id}`);
+		return { notFound: true };
+	}
+
 	return {
 		props: {
-			resourceGroups: getResourceGroups(
-				await getResourceDetails(toolsAndResources)
-			),
+			resourceGroups,
 			hasToolsAndResources,
 			hasInfoForPublicResources,
 			hasEvidenceResources,

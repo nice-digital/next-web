@@ -4,7 +4,7 @@ import { useRouter } from "next/router";
 import { SearchResultsSuccess, SearchUrl } from "@nice-digital/search-client";
 
 import sampleData from "@/mockData/search/guidance-published.json";
-import { render, screen, within } from "@/test-utils";
+import { render, screen, within } from "@/test-utils/rendering";
 import { formatDateStr } from "@/utils/datetime";
 
 import PublishedPage from "./../published.page";

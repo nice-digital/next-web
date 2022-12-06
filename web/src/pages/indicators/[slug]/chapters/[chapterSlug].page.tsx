@@ -19,13 +19,10 @@ import { PublicationsDownloadLink } from "@/components/PublicationsDownloadLink/
 import { PublicationsPrevNext } from "@/components/PublicationsPrevNext/PublicationsPrevNext";
 import {
 	getChapterContent,
-	isErrorResponse,
 	ChapterHeading,
-	ProductGroup,
 } from "@/feeds/publications/publications";
 import { arrayify } from "@/utils/array";
 import { getChapterLinks, validateRouteParams } from "@/utils/product";
-import { getProductPath, getPublicationPdfDownloadPath } from "@/utils/url";
 
 import styles from "./[chapterSlug].page.module.scss";
 
@@ -135,27 +132,22 @@ export default function IndicatorChapterPage({
 export const getServerSideProps: GetServerSideProps<
 	IndicatorChapterPageProps,
 	{ slug: string; chapterSlug: string }
-> = async ({ params, resolvedUrl }) => {
-	const result = await validateRouteParams(params, resolvedUrl);
+> = async ({ params, resolvedUrl, query }) => {
+	const result = await validateRouteParams({ params, resolvedUrl, query });
 
 	if ("notFound" in result || "redirect" in result) return result;
 
 	const {
 			product,
+			productPath,
+			pdfDownloadPath,
+			productType,
 			hasEvidenceResources,
 			hasInfoForPublicResources,
 			hasToolsAndResources,
 			hasHistory,
 		} = result,
-		chapters = getChapterLinks(product),
-		productPath = getProductPath({
-			...product,
-			productGroup: ProductGroup.Other,
-		}),
-		pdfDownloadPath = getPublicationPdfDownloadPath(
-			product,
-			ProductGroup.Other
-		);
+		chapters = getChapterLinks(product, productType.group);
 
 	if (!params || !product.embedded.contentPartList) return { notFound: true };
 
@@ -177,7 +169,7 @@ export const getServerSideProps: GetServerSideProps<
 		chapter?.links.self[0].href as string
 	);
 
-	if (isErrorResponse(chapterContent)) return { notFound: true };
+	if (!chapterContent) return { notFound: true };
 
 	const chapterSections =
 		chapterContent.embedded?.htmlChapterSectionInfo &&
