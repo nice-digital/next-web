@@ -1,4 +1,5 @@
-import { render, screen } from "@testing-library/react";
+import { render, screen, within } from "@testing-library/react";
+import { GetServerSidePropsContext } from "next";
 import { useRouter } from "next/router";
 
 import { ResourceTypeSlug } from "@/utils/resource";
@@ -7,6 +8,8 @@ import {
 	ProductResourcePage,
 	type ProductResourcePageProps,
 } from "./ProductResourcePage";
+import { getGetServerSidePropsFunc } from "./ProductResourcePage.getServerSideProps";
+import { type Params } from "./ProductResourcePage.getServerSideProps.test";
 
 (useRouter as jest.Mock).mockReturnValue({
 	route: "/",
@@ -22,29 +25,32 @@ import {
 	prefetch: jest.fn(() => null),
 });
 
-describe("ProductResourcePage", () => {
-	const props: ProductResourcePageProps = {
-		chapters: [],
-		hasEvidenceResources: true,
-		hasHistory: true,
-		hasInfoForPublicResources: false,
-		hasToolsAndResources: true,
-		htmlBody: "<p>Some body text</p>",
-		lastUpdated: "2022-03-30T08:31:00",
-		product: {
-			id: "IND101",
-			lastMajorModificationDate: "2022-04-30T08:31:00",
-			productTypeName: "Indicators",
-			publishedDate: "2022-04-30T08:31:00",
-			title: "Product title",
+const resourceUID = 3784329,
+	partUID = 4904490349,
+	partSlug = `resource-impact-statement-${resourceUID}-${partUID}`,
+	slug = `ng100`,
+	productRoot = "guidance",
+	getServerSidePropsContext = {
+		params: {
+			slug,
+			partSlug,
 		},
-		productPath: "/indicators/ind101-product-title",
-		resourceTypeSlug: ResourceTypeSlug.ToolsAndResources,
-		title: "Resource title",
-		resourceDownloadPath: "/some-download-url.pdf",
-		resourceDownloadSizeBytes: 1234,
-		chapterSections: [],
-	};
+		query: {
+			productRoot,
+		},
+		resolvedUrl: `/${productRoot}/${slug}/resources/${partSlug}`,
+	} as unknown as GetServerSidePropsContext<Params>;
+
+describe("ProductResourcePage", () => {
+	let props: ProductResourcePageProps;
+
+	beforeEach(async () => {
+		props = (
+			(await getGetServerSidePropsFunc(ResourceTypeSlug.ToolsAndResources)(
+				getServerSidePropsContext
+			)) as { props: ProductResourcePageProps }
+		).props;
+	});
 
 	it("should match snapshot", () => {
 		const { container } = render(<ProductResourcePage {...props} />);
@@ -64,7 +70,7 @@ describe("ProductResourcePage", () => {
 			);
 
 			expect(document.title).toBe(
-				`Resource title | ${expectedTitleSegment} | IND101 | Indicators | Standards and Indicators`
+				`Resource impact statement | ${expectedTitleSegment} | NG100 | Indicators | Standards and Indicators`
 			);
 		}
 	);
@@ -73,7 +79,7 @@ describe("ProductResourcePage", () => {
 		render(<ProductResourcePage {...props} />);
 
 		expect(screen.getByRole("heading", { level: 2 })).toHaveTextContent(
-			"Resource title"
+			"Resource impact statement"
 		);
 	});
 
@@ -81,14 +87,14 @@ describe("ProductResourcePage", () => {
 		render(<ProductResourcePage {...props} />);
 
 		expect(
-			screen.getByRole("link", { name: "Download (PDF, 1 kB)" })
+			screen.getByRole("link", { name: "Download (PDF, 40 kB)" })
 		).toHaveAttribute("href", props.resourceDownloadPath);
 	});
 
 	it("should render resource body", () => {
 		render(<ProductResourcePage {...props} />);
 
-		expect(screen.getByText("Some body text")).toBeInTheDocument();
+		expect(screen.getByText("Some body content")).toBeInTheDocument();
 	});
 
 	it("should render last updated date", () => {
@@ -97,7 +103,7 @@ describe("ProductResourcePage", () => {
 		expect(
 			screen.getByText(
 				(_c, el) =>
-					el?.textContent === "This page was last updated on 30 March 2022"
+					el?.textContent === "This page was last updated on 11 July 2018"
 			)
 		).toBeInTheDocument();
 	});
@@ -108,7 +114,7 @@ describe("ProductResourcePage", () => {
 		expect(
 			screen.getByText(
 				(_c, el) =>
-					el?.textContent === "This page was last updated on 30 March 2022"
+					el?.textContent === "This page was last updated on 11 July 2018"
 			)
 		).toBeInTheDocument();
 	});
@@ -116,9 +122,14 @@ describe("ProductResourcePage", () => {
 	it("should render last updated date in time tag with ISO date time attribute", () => {
 		render(<ProductResourcePage {...props} />);
 
-		const time = screen.getByText("30 March 2022");
+		const updatedMsg = screen.getByText(
+			(_c, el) =>
+				el?.textContent === "This page was last updated on 11 July 2018"
+		);
+
+		const time = within(updatedMsg).getByText("11 July 2018");
 
 		expect(time).toHaveProperty("tagName", "TIME");
-		expect(time).toHaveAttribute("datetime", "2022-03-30");
+		expect(time).toHaveAttribute("datetime", "2018-07-11");
 	});
 });

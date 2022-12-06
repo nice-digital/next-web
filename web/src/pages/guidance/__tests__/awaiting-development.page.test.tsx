@@ -4,7 +4,7 @@ import { useRouter } from "next/router";
 import { SearchResultsSuccess, SearchUrl } from "@nice-digital/search-client";
 
 import sampleData from "@/mockData/search/guidance-proposed.json";
-import { render } from "@/test-utils";
+import { render } from "@/test-utils/rendering";
 
 import AwaitingDevelopmentPage from "../awaiting-development.page";
 

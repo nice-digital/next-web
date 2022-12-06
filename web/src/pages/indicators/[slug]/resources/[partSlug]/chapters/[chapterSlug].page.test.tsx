@@ -1,21 +1,10 @@
 import { render } from "@testing-library/react";
-import MockAdapter from "axios-mock-adapter";
 import { GetServerSidePropsContext } from "next";
 import { useRouter } from "next/router";
-
-import { client } from "@/feeds/index";
-import { FeedPath } from "@/feeds/publications/types";
-import mockProduct from "@/mockData/publications/feeds/products/pmg20.json";
-import mockProductTypes from "@/mockData/publications/feeds/producttypes.json";
-import mockResource from "@/mockData/publications/feeds/resource/16615.json";
 
 import ProductResourceChapterPage, {
 	getServerSideProps,
 } from "./[chapterSlug].page";
-
-const axiosJSONMock = new MockAdapter(client, {
-	onNoMatch: "throwException",
-});
 
 const productRoot = "process",
 	slug = "pmg20",
@@ -43,18 +32,6 @@ const productRoot = "process",
 
 describe("/product/[slug]/resources/[partSlug]/chapters/[chapterSlug].page", () => {
 	beforeEach(() => {
-		axiosJSONMock.reset();
-
-		axiosJSONMock
-			.onGet(new RegExp(FeedPath.ProductDetail))
-			.reply(200, mockProduct)
-			.onGet(new RegExp(FeedPath.ProductTypes))
-			.reply(200, mockProductTypes)
-			.onGet(new RegExp(FeedPath.ProductTypes))
-			.reply(200, mockProductTypes)
-			.onGet(new RegExp("/feeds/resource/16615"))
-			.reply(200, mockResource);
-
 		(useRouter as jest.Mock).mockReturnValue({
 			asPath: resolvedUrl,
 		});

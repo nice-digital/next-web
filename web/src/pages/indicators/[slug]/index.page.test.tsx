@@ -1,19 +1,8 @@
-import {
-	render,
-	screen,
-	waitFor,
-	getDefaultNormalizer,
-	within,
-} from "@testing-library/react";
-import MockAdapter from "axios-mock-adapter";
+import { render, screen, waitFor, within } from "@testing-library/react";
 import { type GetServerSidePropsContext } from "next";
 import { useRouter } from "next/router";
 
-import { client } from "@/feeds/index";
-import { FeedPath } from "@/feeds/publications/types";
-import mockIndicatorSubTypes from "@/mockData/publications/feeds/products/indicator-sub-types.json";
-import mockProduct from "@/mockData/publications/feeds/products/indicator.json";
-import mockProductTypes from "@/mockData/publications/feeds/producttypes.json";
+import ng100 from "@/mockData/publications/feeds/product/ng100.json";
 
 import IndicatorsDetailsPage, {
 	getServerSideProps,
@@ -24,42 +13,29 @@ type IndicatorDetailsPageGetServerSidePropsContext = GetServerSidePropsContext<{
 	slug: string;
 }>;
 
-const axiosMock = new MockAdapter(client, {
-	onNoMatch: "throwException",
-});
+const productRoot = "guidance",
+	slug = "ng100",
+	resolvedUrl = `/${productRoot}/${slug}`,
+	getServerSidePropsContext = {
+		params: {
+			slug,
+		},
+		resolvedUrl,
+		query: { productRoot },
+	} as unknown as GetServerSidePropsContext<{ slug: string }>;
 
 describe("/indicators/[slug].page", () => {
-	const slug =
-		"ind1001-test-indicator-ind-1001-the-percentage-of-patients-with-one-or-more-of-the-following-conditions-chd-atrial-fibrillation-chronic-heart-failure-stroke-or-tia-diabetes-or-dementia-with-a-fast-score-of-3-or-more-or-audit-c-score-of-5-or-more-in-the-preceding-2-years-who-have-received-brief-intervention-to-help-them-reduce-their-alcohol-related-risk-within-3-months-of-the-score-being-recorded";
-
 	beforeEach(() => {
 		(useRouter as jest.Mock).mockImplementation(() => ({
-			asPath: `/indicators/${slug}#somewhere`,
+			asPath: `/guidance/ng100#somewhere`,
 		}));
-		axiosMock.reset();
-
-		axiosMock
-			.onGet(new RegExp(FeedPath.ProductDetail))
-			.reply(200, mockProduct)
-			.onGet(new RegExp(FeedPath.ProductTypes))
-			.reply(200, mockProductTypes)
-			.onGet(new RegExp(FeedPath.IndicatorSubTypes))
-			.reply(200, mockIndicatorSubTypes);
-
-		jest.resetModules();
 	});
 
 	describe("IndicatorDetailPage", () => {
 		let props: IndicatorsDetailsPageProps;
 		beforeEach(async () => {
-			const context = {
-				params: { slug },
-				query: { productRoot: "indicators" },
-				resolvedUrl: `/indicators/${slug}`,
-			} as unknown as IndicatorDetailsPageGetServerSidePropsContext;
-
 			props = (
-				(await getServerSideProps(context)) as {
+				(await getServerSideProps(getServerSidePropsContext)) as {
 					props: IndicatorsDetailsPageProps;
 				}
 			).props;
@@ -74,7 +50,7 @@ describe("/indicators/[slug].page", () => {
 			render(<IndicatorsDetailsPage {...props} />);
 			await waitFor(() => {
 				expect(document.title).toEqual(
-					`${mockProduct.Title} | Indicators | Standards and Indicators`
+					`${ng100.Title} | Indicators | Standards and Indicators`
 				);
 			});
 		});
@@ -109,7 +85,7 @@ describe("/indicators/[slug].page", () => {
 					expect(
 						// eslint-disable-next-line testing-library/no-node-access
 						document.querySelector(`meta[name="description"]`)
-					).toHaveAttribute("content", mockProduct.MetaDescription);
+					).toHaveAttribute("content", ng100.MetaDescription);
 				});
 			});
 
@@ -120,7 +96,7 @@ describe("/indicators/[slug].page", () => {
 					expect(
 						// eslint-disable-next-line testing-library/no-node-access
 						document.querySelector(`meta[name="DCTERMS.issued"]`)
-					).toHaveAttribute("content", mockProduct.PublishedDate);
+					).toHaveAttribute("content", ng100.PublishedDate);
 				});
 			});
 
@@ -131,12 +107,45 @@ describe("/indicators/[slug].page", () => {
 					expect(
 						// eslint-disable-next-line testing-library/no-node-access
 						document.querySelector(`meta[name="DCTERMS.modified"]`)
-					).toHaveAttribute("content", mockProduct.LastMajorModificationDate);
+					).toHaveAttribute("content", ng100.LastMajorModificationDate);
 				});
 			});
 
 			it("should render multiple meta tags for DCTERMS.type", async () => {
-				render(<IndicatorsDetailsPage {...props} />);
+				render(
+					<IndicatorsDetailsPage
+						{...props}
+						product={{
+							...props.product,
+							indicatorSubTypeList: ["CCG", "GPIQ"],
+						}}
+						indicatorSubTypes={[
+							{
+								links: {
+									self: [{}],
+								},
+								eTag: null,
+								lastModified: "2022-07-12T00:00:00",
+								enabled: true,
+								name: "Clinical commissioning group indicator",
+								pluralName: "Clinical commissioning group indicators",
+								identifierPrefix: "CCG",
+							},
+							{
+								links: {
+									self: [{}],
+								},
+								eTag: null,
+								lastModified: "2022-07-12T00:00:00",
+								enabled: true,
+								name: "General practice indicator suitable for use in QOF",
+								pluralName:
+									"General practice indicators suitable for use in QOF",
+								identifierPrefix: "GPIQ",
+							},
+						]}
+					/>
+				);
 				// eslint-disable-next-line testing-library/no-node-access
 				const typeMetaTags = document.querySelectorAll(
 					`meta[name="DCTERMS.type"]`
@@ -161,126 +170,8 @@ describe("/indicators/[slug].page", () => {
 					expect(
 						// eslint-disable-next-line testing-library/no-node-access
 						document.querySelector(`meta[name="DCTERMS.identifier"]`)
-					).toHaveAttribute("content", mockProduct.Id);
+					).toHaveAttribute("content", ng100.Id);
 				});
-			});
-		});
-
-		describe("PageHeader", () => {
-			it("should render meta data id in uppercase", () => {
-				render(<IndicatorsDetailsPage {...props} />);
-				expect(
-					screen.getByText(mockProduct.Id, {
-						selector: ".page-header__metadata li",
-					})
-				).toBeInTheDocument();
-			});
-
-			it.each([
-				["NICE indicator"],
-				["IND1001"],
-				["Published: 8 September 2022"],
-				["Last updated: 12 October 2022"],
-			])("should render a %s page header meta element", (metaContent) => {
-				render(
-					<IndicatorsDetailsPage
-						{...props}
-						product={{
-							...props.product,
-							lastMajorModificationDate: "2022-10-12",
-						}}
-					/>
-				);
-
-				expect(
-					screen.getByText(
-						(content, element) => {
-							return (
-								getDefaultNormalizer()(element?.textContent as string) ==
-								metaContent
-							);
-						},
-						{
-							selector: ".page-header__metadata li",
-						}
-					)
-				);
-			});
-
-			it("should not render last updated date if published date == lastModified date", () => {
-				render(
-					<IndicatorsDetailsPage
-						{...props}
-						product={{
-							...props.product,
-							lastMajorModificationDate: props.product.publishedDate,
-						}}
-					/>
-				);
-
-				expect(screen.queryByText("Last updated:")).not.toBeInTheDocument();
-			});
-
-			it("should render last updated date if published date !== lastModified date", () => {
-				render(
-					<IndicatorsDetailsPage
-						{...props}
-						product={{
-							...props.product,
-							lastMajorModificationDate: "2022-10-12",
-						}}
-					/>
-				);
-
-				expect(screen.getByText("Last updated:")).toBeInTheDocument();
-			});
-
-			it("should render 'Published' date page header lead meta element in the correct format", () => {
-				render(<IndicatorsDetailsPage {...props} />);
-				const publishedDateEl = screen.getByText("8 September 2022", {
-					selector: "time",
-				});
-				expect(publishedDateEl).toBeInTheDocument();
-			});
-
-			it("should render 'Published' date page header lead meta element with correctly formatted datetime attribute", () => {
-				render(<IndicatorsDetailsPage {...props} />);
-				const publishedDateEl = screen.getByText("8 September 2022", {
-					selector: "time",
-				});
-				expect(publishedDateEl).toHaveAttribute("datetime", "2022-09-08");
-			});
-
-			it("should render 'Last updated' date page header lead meta element in the correct format", () => {
-				render(
-					<IndicatorsDetailsPage
-						{...props}
-						product={{
-							...props.product,
-							lastMajorModificationDate: "2022-10-12",
-						}}
-					/>
-				);
-				const publishedDateEl = screen.getByText("12 October 2022", {
-					selector: "time",
-				});
-				expect(publishedDateEl).toBeInTheDocument();
-			});
-
-			it("should render 'Last updated' date page header lead meta element with correctly formatted datetime attribute", () => {
-				render(
-					<IndicatorsDetailsPage
-						{...props}
-						product={{
-							...props.product,
-							lastMajorModificationDate: "2022-11-11T11:17:45.442351",
-						}}
-					/>
-				);
-				const publishedDateEl = screen.getByText("11 November 2022", {
-					selector: "time",
-				});
-				expect(publishedDateEl).toHaveAttribute("datetime", "2022-11-11");
 			});
 		});
 
@@ -291,7 +182,7 @@ describe("/indicators/[slug].page", () => {
 						{...props}
 						product={{
 							...props.product,
-							summary: mockProduct.Summary,
+							summary: ng100.Summary,
 						}}
 					/>
 				);
@@ -319,7 +210,7 @@ describe("/indicators/[slug].page", () => {
 		});
 
 		describe("Redirects", () => {
-			it("should return permanent redirect object URL with incorrect title", async () => {
+			it("should return permanent redirect object URL with incorrect title for indicators", async () => {
 				const incorrectSlug = "ind1001-incorrect-slug-title";
 
 				const redirectResult = await getServerSideProps({
@@ -330,22 +221,17 @@ describe("/indicators/[slug].page", () => {
 
 				expect(redirectResult).toStrictEqual({
 					redirect: {
-						destination: `/indicators/${slug}`,
+						destination: `/indicators/ind1001-test-indicator-ind-1001-the-percentage-of-patients-with-one-or-more-of-the-following-conditions-chd-atrial-fibrillation-chronic-heart-failure-stroke-or-tia-diabetes-or-dementia-with-a-fast-score-of-3-or-more-or-audit-c-score-of-5-or-more-in-the-preceding-2-years-who-have-received-brief-intervention-to-help-them-reduce-their-alcohol-related-risk-within-3-months-of-the-score-being-recorded`,
 						permanent: true,
 					},
 				});
 			});
 			it("should return not found if product doesn't exist", async () => {
-				const notFoundIdSlug = "nonExistingId99-test-title-1";
-
-				axiosMock.onGet(new RegExp(FeedPath.ProductDetail)).reply(404, {
-					Message: "Not found",
-					StatusCode: "NotFound",
-				});
+				const notFoundIdSlug = "abc123";
 
 				const notFoundResult = await getServerSideProps({
 					params: { slug: notFoundIdSlug },
-					resolvedUrl: `/indicators/${notFoundIdSlug}`,
+					resolvedUrl: `/${productRoot}/${notFoundIdSlug}`,
 				} as IndicatorDetailsPageGetServerSidePropsContext);
 
 				expect(notFoundResult).toStrictEqual({ notFound: true });

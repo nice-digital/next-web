@@ -9,7 +9,7 @@ import {
 
 import sampleDataFailed from "@/mockData/search/search-results-failed.json";
 import sampleData from "@/mockData/search/search-results.json";
-import { render, screen, waitFor } from "@/test-utils";
+import { render, screen, waitFor } from "@/test-utils/rendering";
 
 import SearchPage from "./search.page";
 

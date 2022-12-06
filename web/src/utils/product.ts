@@ -89,6 +89,7 @@ export type ValidateRouteParamsArgs = {
 };
 
 export type ValidateRouteParamsSuccess = {
+	actualPath: string;
 	product: ProductDetail;
 	productType: ProductType;
 	productPath: string;
@@ -183,6 +184,7 @@ export const validateRouteParams = async ({
 		)
 	)
 		return {
+			actualPath: actualPathSegments.join("/"),
 			product,
 			productType,
 			productPath,

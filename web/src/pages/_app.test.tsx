@@ -1,10 +1,10 @@
 /* eslint-disable testing-library/no-node-access */
-import { render, screen } from "@testing-library/react";
+import { render, screen, waitFor } from "@testing-library/react";
 import { NextSeo } from "next-seo";
 import { useEffect } from "react";
 
 import { logger } from "@/logger";
-import { getMockRouter } from "@/test-utils";
+import { getMockRouter } from "@/test-utils/rendering";
 
 import NextWebApp, { reportWebVitals } from "./_app.page";
 
@@ -112,6 +112,7 @@ describe("NextWebApp", () => {
 				/>
 			);
 
+			expect(logger.error as jest.Mock).toHaveBeenCalled();
 			expect(logger.error as jest.Mock).toHaveBeenCalledWith(
 				error,
 				// errorInfo:

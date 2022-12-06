@@ -1,21 +1,11 @@
-import MockAdapter from "axios-mock-adapter";
 import { type GetServerSidePropsContext } from "next";
 
-import { FeedPath as InDevFeedPath } from "@/feeds/inDev/types";
-import { client } from "@/feeds/index";
 import { FeedPath } from "@/feeds/publications/types";
 import { logger } from "@/logger";
-import mockProject from "@/mockData/inDev/feeds/projects/GID-NG10014.json";
-import mockProduct from "@/mockData/publications/feeds/products/ng100.json";
-import mockProductTypes from "@/mockData/publications/feeds/producttypes.json";
-import mockEditableContentResource from "@/mockData/publications/feeds/resource/29409.json";
-import mockEditableHTML from "@/mockData/publications/feeds/supportingresource/29409/content/1/html.json";
+import ng100 from "@/mockData/publications/feeds/product/ng100.json";
+import { addDefaultJSONFeedMocks, axiosJSONMock } from "@/test-utils/feeds";
 
 import { getServerSideProps } from "./index.page";
-
-const axiosJSONMock = new MockAdapter(client, {
-	onNoMatch: "throwException",
-});
 
 jest.mock("@/logger", () => ({
 	logger: { info: jest.fn(), warn: jest.fn() },
@@ -32,7 +22,7 @@ export type Params = {
 const resourceUID = 3784329,
 	partUID = 4904490349,
 	partSlug = `resource-impact-statement-${resourceUID}-${partUID}`,
-	slug = `${mockProduct.Id.toLowerCase()}`,
+	slug = `ng100`,
 	resourceHref = "/feeds/resource/29409",
 	partHTMLHref = "/feeds/supportingresource/29409/content/1/html",
 	productRoot = "guidance",
@@ -50,34 +40,16 @@ const getServerSidePropsContext = {
 } as unknown as GetServerSidePropsContext<Params>;
 
 describe("/indicators/resources/[partSlug]", () => {
-	beforeEach(() => {
-		axiosJSONMock.reset();
-
-		axiosJSONMock
-			.onGet(new RegExp(FeedPath.ProductDetail))
-			.reply(200, mockProduct)
-			.onGet(new RegExp(resourceHref))
-			.reply(200, mockEditableContentResource)
-			.onGet(new RegExp(FeedPath.ProductTypes))
-			.reply(200, mockProductTypes)
-			.onGet(new RegExp(FeedPath.ProductTypes))
-			.reply(200, mockProductTypes)
-			.onGet(new RegExp(partHTMLHref))
-			.reply(200, mockEditableHTML)
-			.onGet(new RegExp(InDevFeedPath.ProjectDetail))
-			.reply(200, mockProject);
-
-		jest.resetModules();
-	});
-
 	describe("getServerSideProps", () => {
 		it("should return not found when product has no resources", async () => {
+			axiosJSONMock.reset();
 			axiosJSONMock.onGet(new RegExp(FeedPath.ProductDetail)).reply(200, {
-				...mockProduct,
+				...ng100,
 				_embedded: {
 					// no related resources
 				},
 			});
+			addDefaultJSONFeedMocks();
 
 			expect(await getServerSideProps(getServerSidePropsContext)).toStrictEqual(
 				{
@@ -86,7 +58,7 @@ describe("/indicators/resources/[partSlug]", () => {
 			);
 
 			expect(loggerInfoMock.mock.calls[0][0]).toBe(
-				`Could not find resource with UID ${resourceUID} in product ${mockProduct.Id}`
+				`Could not find resource with UID ${resourceUID} in product NG100`
 			);
 		});
 
@@ -101,7 +73,7 @@ describe("/indicators/resources/[partSlug]", () => {
 			});
 
 			expect(loggerInfoMock.mock.calls[0][0]).toBe(
-				`Resource part slug of incorrect in product ${mockProduct.Id} doesn't match expected format`
+				`Resource part slug of incorrect in product NG100 doesn't match expected format`
 			);
 		});
 
@@ -116,15 +88,17 @@ describe("/indicators/resources/[partSlug]", () => {
 			});
 
 			expect(loggerInfoMock.mock.calls[0][0]).toBe(
-				`Could not find resource with UID 123 in product ${mockProduct.Id}`
+				`Could not find resource with UID 123 in product NG100`
 			);
 		});
 
 		it("should return not found when full resource returns 404", async () => {
+			axiosJSONMock.reset();
 			axiosJSONMock.onGet(new RegExp(resourceHref)).reply(404, {
 				Message: "Not found",
 				StatusCode: "NotFound",
 			});
+			addDefaultJSONFeedMocks();
 
 			expect(await getServerSideProps(getServerSidePropsContext)).toStrictEqual(
 				{
@@ -133,17 +107,11 @@ describe("/indicators/resources/[partSlug]", () => {
 			);
 
 			expect(loggerWarnMock.mock.calls[0][0]).toBe(
-				`Full resource with id ${resourceUID} in product ${mockProduct.Id} can't be found`
+				`Full resource with id ${resourceUID} in product NG100 can't be found`
 			);
 		});
 
 		describe("editable content part", () => {
-			beforeEach(() => {
-				axiosJSONMock
-					.onGet(new RegExp(resourceHref))
-					.reply(200, mockEditableContentResource);
-			});
-
 			it("should redirect to correct title slug from incorrect title slug", async () => {
 				expect(
 					await getServerSideProps({
@@ -174,13 +142,19 @@ describe("/indicators/resources/[partSlug]", () => {
 			});
 
 			it("should throw error when editable content HTML not found", async () => {
+				axiosJSONMock.reset();
 				axiosJSONMock.onGet(new RegExp(partHTMLHref)).reply(404, {
 					Message: "Not found",
 					StatusCode: "NotFound",
 				});
+				addDefaultJSONFeedMocks();
 
-				expect(getServerSideProps(getServerSidePropsContext)).rejects.toBe(
-					`Could not find editable part HTML for part ${partUID} in product ${mockProduct.Id}`
+				await expect(
+					getServerSideProps(getServerSidePropsContext)
+				).rejects.toStrictEqual(
+					Error(
+						`Could not find editable part HTML for part ${partUID} in product NG100`
+					)
 				);
 			});
 

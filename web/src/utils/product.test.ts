@@ -1,38 +1,11 @@
-import MockAdapter from "axios-mock-adapter";
-
-import { client } from "@/feeds/index";
-import {
-	FeedPath,
-	ProductDetail,
-	ProductGroup,
-} from "@/feeds/publications/types";
-import mockIndicatorSubTypes from "@/mockData/publications/feeds/products/indicator-sub-types.json";
-import mockProduct from "@/mockData/publications/feeds/products/indicator.json";
-import mockProductTypes from "@/mockData/publications/feeds/producttypes.json";
+import { ProductDetail, ProductGroup } from "@/feeds/publications/types";
 
 import { validateRouteParams, getChapterLinks } from "./product";
-
-const axiosMock = new MockAdapter(client, {
-	onNoMatch: "throwException",
-});
 
 describe("product utils", () => {
 	const slug =
 		"ind1001-test-indicator-ind-1001-the-percentage-of-patients-with-one-or-more-of-the-following-conditions-chd-atrial-fibrillation-chronic-heart-failure-stroke-or-tia-diabetes-or-dementia-with-a-fast-score-of-3-or-more-or-audit-c-score-of-5-or-more-in-the-preceding-2-years-who-have-received-brief-intervention-to-help-them-reduce-their-alcohol-related-risk-within-3-months-of-the-score-being-recorded";
 
-	beforeEach(() => {
-		axiosMock.reset();
-
-		axiosMock.onGet(new RegExp(FeedPath.ProductDetail)).reply(200, mockProduct);
-
-		axiosMock
-			.onGet(new RegExp(FeedPath.ProductTypes))
-			.reply(200, mockProductTypes);
-
-		axiosMock
-			.onGet(new RegExp(FeedPath.IndicatorSubTypes))
-			.reply(200, mockIndicatorSubTypes);
-	});
 	describe("getChapterLinks", () => {
 		it("should have no chapters when there's no upload and convert parts", () => {
 			const chapterLinks = getChapterLinks(
@@ -198,14 +171,9 @@ describe("product utils", () => {
 
 	describe("validateRouteParams", () => {
 		it("should return not found when product is not found", async () => {
-			axiosMock.onGet(new RegExp(FeedPath.ProductDetail)).reply(404, {
-				Message: "Not found",
-				StatusCode: "NotFound",
-			});
-
 			const result = await validateRouteParams({
 				params: {
-					slug,
+					slug: "abc123",
 				},
 				resolvedUrl: `/anything`,
 				query: {
@@ -219,22 +187,20 @@ describe("product utils", () => {
 		});
 
 		it.each([
-			["indicators", "IND", "IND456", "ind456-some-title"],
-			["guidance", "NG", "NG123", "ng123"],
-			["guidance", "QS", "QS987", "qs987"],
-			["advice", "ES", "ES456", "es456"],
-			["process", "PMG", "PMG99", "pmg99"],
+			[
+				"indicators",
+				"IND",
+				"IND102",
+				"ind102-the-contractor-establishes-and-maintains-a-register-of-all-patients-on-the-autistic-spectrum",
+			],
+			["guidance", "NG", "NG100", "ng100"],
+			["guidance", "QS", "QS21", "qs21"],
+			["advice", "ES", "ES10", "es10"],
+			["process", "PMG", "PMG20", "pmg20"],
 			["corporate", "ECD", "ECD1", "ecd1"],
 		])(
 			"should redirect to correct url path for %s and %s when using wrong prefix",
 			async (productRoot, productType, productId, expectedSlug) => {
-				axiosMock.onGet(new RegExp(FeedPath.ProductDetail)).reply(200, {
-					...mockProduct,
-					Id: productId,
-					Title: "Some title",
-					ProductType: productType,
-				});
-
 				const slug = `${productId.toLowerCase()}-incorrect`;
 
 				const result = await validateRouteParams({

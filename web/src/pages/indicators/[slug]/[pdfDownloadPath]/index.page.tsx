@@ -16,16 +16,13 @@ export const getServerSideProps: GetServerSideProps<
 
 	const result = await validateRouteParams({ params, resolvedUrl, query });
 
+	console.log({ resolvedUrl });
+
 	if ("notFound" in result || "redirect" in result) return result;
 
-	const { product, pdfDownloadPath } = result;
+	const { product, pdfDownloadPath, actualPath } = result;
 
 	if (!product.embedded.contentPartList) return { notFound: true };
-
-	const actualPath = new URL(
-		resolvedUrl,
-		`https://anything.com`
-	).pathname.toLowerCase();
 
 	if (!pdfDownloadPath)
 		return {

@@ -11,6 +11,7 @@ import {
 } from "@/components/ProductPageHeading/ProductPageHeading";
 import { ResourceList } from "@/components/ResourceList/ResourceList";
 import { getResourceDetails } from "@/feeds/publications/publications";
+import { logger } from "@/logger";
 import { validateRouteParams } from "@/utils/product";
 import {
 	getResourceGroups,
@@ -91,7 +92,10 @@ export const getServerSideProps: GetServerSideProps<
 		hasHistory,
 	} = result;
 
-	if (!toolsAndResources.length) return { notFound: true };
+	if (!toolsAndResources.length) {
+		logger.info(`No tools and resources found for product ${product.id}`);
+		return { notFound: true };
+	}
 
 	const fullResources = await getResourceDetails(toolsAndResources),
 		resourceGroups = getResourceGroups(
@@ -101,7 +105,10 @@ export const getServerSideProps: GetServerSideProps<
 			ResourceTypeSlug.ToolsAndResources
 		);
 
-	if (resourceGroups.length === 0) return { notFound: true };
+	if (resourceGroups.length === 0) {
+		logger.info(`No tools and resource groups found for product ${product.id}`);
+		return { notFound: true };
+	}
 
 	return {
 		props: {
