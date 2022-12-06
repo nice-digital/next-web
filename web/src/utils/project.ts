@@ -5,6 +5,9 @@ import {
 	ProjectDetail,
 	ProjectStatus,
 } from "@/feeds/inDev/inDev";
+import { ProductGroup, ProductTypeAcronym } from "@/feeds/publications/types";
+
+import { getProductPath } from "./url";
 
 export type ValidateRouteParamsResult =
 	| { notFound: true }
@@ -14,8 +17,7 @@ export type ValidateRouteParamsResult =
 	  };
 
 export const validateRouteParams = async (
-	params: { slug: string } | undefined,
-	resolvedUrl: string
+	params: { slug: string } | undefined
 ): Promise<ValidateRouteParamsResult> => {
 	if (!params || !params.slug) return { notFound: true };
 
@@ -25,12 +27,18 @@ export const validateRouteParams = async (
 
 	if (!project) return { notFound: true };
 
+	const productPath = getProductPath({
+		productGroup: ProductGroup.Other,
+		id: project.reference,
+		productType: ProductTypeAcronym.IND,
+		title: "",
+	});
+
 	// if project status is complete it is not in development and should redirect to the published product
-	//TODO getProduct path to make this re-useable for other product types
 	if (project.status == ProjectStatus.Complete) {
 		return {
 			redirect: {
-				destination: `/indicators/${project.reference}`,
+				destination: `${productPath}`,
 				permanent: true,
 			},
 		};
