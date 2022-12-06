@@ -1,7 +1,10 @@
 import { serverRuntimeConfig } from "@/config";
 
 import { getFeedBodyCached, getFeedBodyUnCached, getResponseStream } from "..";
-import { isSuccessResponse } from "../publications/publications";
+import {
+	isErrorResponse,
+	isSuccessResponse,
+} from "../publications/publications";
 import { ErrorResponse } from "../publications/types";
 
 import {
@@ -68,7 +71,7 @@ export const getProjectDetail = async (
 				apiKey
 			);
 
-			return response === "" ? null : response;
+			return response === "" || isErrorResponse(response) ? null : response;
 		}
 	);
 
