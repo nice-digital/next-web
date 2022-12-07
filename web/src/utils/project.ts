@@ -17,7 +17,8 @@ export type ValidateRouteParamsResult =
 	  };
 
 export const validateRouteParams = async (
-	params: { slug: string } | undefined
+	params: { slug: string } | undefined,
+	_resolvedUrl: string
 ): Promise<ValidateRouteParamsResult> => {
 	if (!params || !params.slug) return { notFound: true };
 

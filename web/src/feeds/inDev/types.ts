@@ -243,6 +243,18 @@ export type IndevPanel = {
 	showPanel: boolean;
 };
 
+export type IndevTimeline = {
+	links: {
+		self: [Link];
+	};
+	eTag: ETag;
+	column1: string;
+	column2: string;
+	additionalInfoLabel: string;
+	additionalInfo: string;
+	hidden: boolean;
+};
+
 export type ProjectDetail = {
 	links: {
 		niceIndevStakeholderRegistration: Record<string, unknown>[];
@@ -255,6 +267,14 @@ export type ProjectDetail = {
 			};
 			embedded: {
 				niceIndevPanel: IndevPanel[];
+			};
+		};
+		niceIndevTimelineList: {
+			links: {
+				self: [Link];
+			};
+			embedded: {
+				niceIndevTimeline: IndevTimeline | IndevTimeline[];
 			};
 		};
 	};
