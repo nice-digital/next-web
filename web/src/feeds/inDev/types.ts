@@ -279,6 +279,55 @@ export type IndevProcessHomepage = {
 	etag: ETag;
 	description: string;
 	linkText: string;
+} | null;
+
+export type IndevSchedule = {
+	links: {
+		self: [Link];
+	};
+	etag: ETag;
+	column1: string;
+	column2: string;
+	additionalInfoLabel: string;
+	additionalInfo: string;
+	hidden: boolean;
+};
+
+export type NiceIndevProvisionalScheduleList = {
+	links: {
+		self: [Link];
+	};
+	embedded: {
+		niceIndevProvisionalSchedule: IndevSchedule | IndevSchedule[];
+	};
+	etag: ETag;
+};
+
+export type NiceIndevTimelineList = {
+	links: {
+		self: [Link];
+	};
+	embedded: {
+		niceIndevTimeline: IndevTimeline | IndevTimeline[];
+	};
+};
+
+export type NiceIndevProjectTeamList = {
+	links: {
+		self: [Link];
+	};
+	embedded: {
+		niceIndevProjectTeam: IndevProjectTeam | IndevProjectTeam[];
+	};
+};
+
+export type NiceIndevEmailEnquiryList = {
+	links: {
+		self: [Link];
+	};
+	embedded: {
+		niceIndevEmailEnquiry: IndevEmailEnquiry | IndevEmailEnquiry[];
+	};
 };
 
 export type ProjectDetail = {
@@ -295,31 +344,11 @@ export type ProjectDetail = {
 				niceIndevPanel: IndevPanel[];
 			};
 		};
-		niceIndevTimelineList: {
-			links: {
-				self: [Link];
-			};
-			embedded: {
-				niceIndevTimeline: IndevTimeline | IndevTimeline[];
-			};
-		};
-		niceIndevProcessHomepage: IndevProcessHomepage;
-		niceIndevProjectTeamList: {
-			links: {
-				self: [Link];
-			};
-			embedded: {
-				niceIndevProjectTeam: IndevProjectTeam | IndevProjectTeam[];
-			};
-		};
-		niceIndevEmailEnquiryList: {
-			links: {
-				self: [Link];
-			};
-			embedded: {
-				niceIndevEmailEnquiry: IndevEmailEnquiry | IndevEmailEnquiry[];
-			};
-		};
+		niceIndevProvisionalScheduleList?: NiceIndevProvisionalScheduleList;
+		niceIndevTimelineList?: NiceIndevTimelineList;
+		niceIndevProcessHomepage?: IndevProcessHomepage;
+		niceIndevProjectTeamList?: NiceIndevProjectTeamList;
+		niceIndevEmailEnquiryList?: NiceIndevEmailEnquiryList;
 	};
 	eTag: ETag;
 	summary: string | null;
