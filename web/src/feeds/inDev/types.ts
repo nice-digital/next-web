@@ -255,6 +255,32 @@ export type IndevTimeline = {
 	hidden: boolean;
 };
 
+export type IndevProjectTeam = {
+	links: {
+		self: [Link];
+	};
+	eTag: ETag;
+	column1: string;
+	column2: string;
+};
+
+export type IndevEmailEnquiry = {
+	links: {
+		self: [Link];
+	};
+	eTag: ETag;
+	item: string;
+};
+
+export type IndevProcessHomepage = {
+	links: {
+		self: [Link];
+	};
+	etag: ETag;
+	description: string;
+	linkText: string;
+};
+
 export type ProjectDetail = {
 	links: {
 		niceIndevStakeholderRegistration: Record<string, unknown>[];
@@ -275,6 +301,23 @@ export type ProjectDetail = {
 			};
 			embedded: {
 				niceIndevTimeline: IndevTimeline | IndevTimeline[];
+			};
+		};
+		niceIndevProcessHomepage: IndevProcessHomepage;
+		niceIndevProjectTeamList: {
+			links: {
+				self: [Link];
+			};
+			embedded: {
+				niceIndevProjectTeam: IndevProjectTeam | IndevProjectTeam[];
+			};
+		};
+		niceIndevEmailEnquiryList: {
+			links: {
+				self: [Link];
+			};
+			embedded: {
+				niceIndevEmailEnquiry: IndevEmailEnquiry | IndevEmailEnquiry[];
 			};
 		};
 	};
