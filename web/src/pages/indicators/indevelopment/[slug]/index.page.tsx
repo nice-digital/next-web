@@ -24,6 +24,7 @@ export type InDevelopmentPageProps = {
 	technologyType: string | null;
 	topicSelectionDecision: string;
 	process: string;
+	developedAs: string;
 	idNumber: string | null;
 	reference: string;
 };
@@ -40,6 +41,7 @@ export default function InDevelopmentPage({
 	technologyType,
 	topicSelectionDecision,
 	process,
+	developedAs,
 	idNumber,
 	reference,
 }: InDevelopmentPageProps): JSX.Element {
@@ -54,6 +56,7 @@ export default function InDevelopmentPage({
 			<p>Decision: {topicSelectionDecision} </p>
 			<p>Reason for decision: TODO</p>
 			<p>Process: {process}</p>
+			<p>Developed as: {developedAs}</p>
 			<p>ID number: {idNumber}</p>
 			{indevProjectTeamMembers && indevProjectTeamMembers?.length > 0 ? (
 				<>
@@ -137,6 +140,7 @@ export const getServerSideProps: GetServerSideProps<
 		technologyType,
 		topicSelectionDecision,
 		process,
+		developedAs,
 		idNumber,
 		reference,
 	} = project;
@@ -175,6 +179,7 @@ export const getServerSideProps: GetServerSideProps<
 			technologyType,
 			topicSelectionDecision,
 			process,
+			developedAs,
 			idNumber,
 			reference,
 		},
