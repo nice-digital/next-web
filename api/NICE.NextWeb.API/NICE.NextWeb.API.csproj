@@ -1,7 +1,7 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk.Web">
 
   <PropertyGroup>
-    <TargetFramework>netcoreapp3.1</TargetFramework>
+    <TargetFramework>net6.0</TargetFramework>
     <UserSecretsId>b5d07038-31e1-4d34-9f6c-5c29afce8651</UserSecretsId>
     <EnvironmentName>Production</EnvironmentName>
   </PropertyGroup>
@@ -14,7 +14,7 @@
     <PackageReference Include="CacheManager.StackExchange.Redis" Version="1.2.0" />
     <PackageReference Include="Cronos" Version="0.7.1" />
     <PackageReference Include="NICE.Logging" Version="6.0.27" />
-    <PackageReference Include="Ocelot" Version="16.0.1" />
+    <PackageReference Include="Ocelot" Version="18.0.0" />
     <PackageReference Include="Serilog" Version="2.10.0" />
     <PackageReference Include="Serilog.Sinks.Console" Version="4.0.0" />
   </ItemGroup>
