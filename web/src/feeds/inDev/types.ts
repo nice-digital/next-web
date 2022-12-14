@@ -6,6 +6,13 @@ export enum FeedPath {
 	ProjectDetail = "/project/",
 }
 
+export enum TopicSelectionReason {
+	"Monitor" = "Monitor - awaiting publication of further literature or evidence",
+	"Anticipate" = "Anticipate the topic will be of importance to patients, carers, professionals, commissioners and the health of the public to ensure clinical benefit is realised, inequalities in use addressed, and help them make the best use of NHS resources",
+	"NotEligible" = "Not eligible for Health Technology Evaluation guidance",
+	"FurtherDiscussion" = "Further discussion required at the Topic Selection Oversight Panel (TSOP)",
+}
+
 export enum ProjectStatus {
 	"Complete" = "Complete",
 	"Discontinued" = "Discontinued",
@@ -264,6 +271,24 @@ export type IndevProjectTeam = {
 	column2: string;
 };
 
+export type IndevConsultee = {
+	links: {
+		self: [Link];
+	};
+	eTag: ETag;
+	column1: string;
+	column2: string;
+};
+
+export type IndevCommentator = {
+	links: {
+		self: [Link];
+	};
+	eTag: ETag;
+	column1: string;
+	column2: string;
+};
+
 export type IndevEmailEnquiry = {
 	links: {
 		self: [Link];
@@ -321,6 +346,24 @@ export type NiceIndevProjectTeamList = {
 	};
 };
 
+export type NiceIndevConsulteeList = {
+	links: {
+		self: [Link];
+	};
+	embedded: {
+		niceIndevConsultee: IndevConsultee | IndevConsultee[];
+	};
+};
+
+export type NiceIndevCommentatorList = {
+	links: {
+		self: [Link];
+	};
+	embedded: {
+		niceIndevCommentator: IndevCommentator | IndevCommentator[];
+	};
+};
+
 export type NiceIndevEmailEnquiryList = {
 	links: {
 		self: [Link];
@@ -330,12 +373,61 @@ export type NiceIndevEmailEnquiryList = {
 	};
 };
 
+export type IndevUpdate = {
+	links: {
+		self: [Link];
+	};
+	eTag: ETag;
+	updateReference: string;
+};
+
+export type NiceIndevFullUpdateList = {
+	links: {
+		self: [Link];
+	};
+	embedded: {
+		niceIndevFullUpdate: IndevUpdate | IndevUpdate[];
+	};
+	eTag: ETag;
+};
+
+export type NiceIndevPartialUpdateList = {
+	links: {
+		self: [Link];
+	};
+	embedded: {
+		niceIndevPartialUpdate: IndevUpdate | IndevUpdate[];
+	};
+	eTag: ETag;
+};
+
+export type IndevTopic = {
+	links: {
+		self: [Link];
+	};
+	eTag: ETag;
+	item: string;
+};
+
+export type NiceIndevTopicList = {
+	links: {
+		self: [Link];
+	};
+	embedded: {
+		niceIndevTopic: IndevTopic | IndevTopic[];
+	};
+	eTag: ETag;
+};
+
 export type ProjectDetail = {
 	links: {
 		niceIndevStakeholderRegistration: Record<string, unknown>[];
 		self: [Link];
 	};
 	embedded: {
+		niceIndevFullUpdateList?: NiceIndevFullUpdateList;
+		niceIndevPartialUpdateList?: NiceIndevPartialUpdateList;
+		niceIndevTopicList?: NiceIndevTopicList;
 		niceIndevPanelList: {
 			links: {
 				self: [Link];
@@ -348,6 +440,8 @@ export type ProjectDetail = {
 		niceIndevTimelineList?: NiceIndevTimelineList;
 		niceIndevProcessHomepage?: IndevProcessHomepage;
 		niceIndevProjectTeamList?: NiceIndevProjectTeamList;
+		niceIndevConsulteeList?: NiceIndevConsulteeList;
+		niceIndevCommentatorList?: NiceIndevCommentatorList;
 		niceIndevEmailEnquiryList?: NiceIndevEmailEnquiryList;
 	};
 	eTag: ETag;
