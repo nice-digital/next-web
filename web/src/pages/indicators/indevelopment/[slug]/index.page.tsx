@@ -8,6 +8,7 @@ import {
 	IndevConsultee,
 	IndevTopic,
 	ProjectStatus,
+	TopicSelectionReason,
 	type IndevEmailEnquiry,
 	type IndevProcessHomepage,
 	type IndevProjectTeam,
@@ -40,13 +41,14 @@ export type InDevelopmentPageProps = {
 	technologyType: string | null;
 	projectType: string | null;
 	topicSelectionDecision: string;
+	topicSelectionReasonText?: string | null;
+	topicSelectionFurtherInfo?: string | null;
 	process: string;
 	developedAs: string;
 	idNumber: string | null;
 	evidenceAssessmentGroup: string | null;
 	reference: string;
 	indevStakeholderRegistration: Record<string, unknown>[];
-	topicSelectionFurtherInfo?: string;
 };
 
 export default function InDevelopmentPage({
@@ -67,13 +69,14 @@ export default function InDevelopmentPage({
 	technologyType,
 	projectType,
 	topicSelectionDecision,
+	topicSelectionReasonText,
+	topicSelectionFurtherInfo,
 	process,
 	developedAs,
 	idNumber,
 	evidenceAssessmentGroup,
 	reference,
 	indevStakeholderRegistration,
-	topicSelectionFurtherInfo,
 }: InDevelopmentPageProps): JSX.Element {
 	const project = {
 		reference,
@@ -90,7 +93,9 @@ export default function InDevelopmentPage({
 			{status && <p>Status: {status}</p>}
 			{technologyType && <p>Technology type: {technologyType}</p>}
 			{topicSelectionDecision && <p>Decision: {topicSelectionDecision} </p>}
-			<p>Reason for decision: TODO</p>
+			{topicSelectionReasonText && (
+				<p>Reason for decision: {topicSelectionReasonText} </p>
+			)}
 			{topicSelectionFurtherInfo && (
 				<p>Further information: {topicSelectionFurtherInfo} </p>
 			)}
@@ -271,6 +276,7 @@ export const getServerSideProps: GetServerSideProps<
 		technologyType,
 		projectType,
 		topicSelectionDecision,
+		topicSelectionReason,
 		process,
 		developedAs,
 		idNumber,
@@ -353,6 +359,25 @@ export const getServerSideProps: GetServerSideProps<
 				};
 			});
 
+	let topicSelectionReasonText;
+
+	switch (topicSelectionReason) {
+		case "Monitor":
+			topicSelectionReasonText = TopicSelectionReason.Monitor;
+			break;
+		case "Anticipate":
+			topicSelectionReasonText = TopicSelectionReason.Anticipate;
+			break;
+		case "NotEligible":
+			topicSelectionReasonText = TopicSelectionReason.NotEligible;
+			break;
+		case "FurtherDiscussion":
+			topicSelectionReasonText = TopicSelectionReason.FurtherDiscussion;
+			break;
+		default:
+			break;
+	}
+
 	return {
 		props: {
 			partialUpdates,
@@ -372,13 +397,14 @@ export const getServerSideProps: GetServerSideProps<
 			technologyType,
 			projectType,
 			topicSelectionDecision,
+			topicSelectionReasonText,
+			topicSelectionFurtherInfo,
 			process,
 			developedAs,
 			idNumber,
 			evidenceAssessmentGroup,
 			reference,
 			indevStakeholderRegistration,
-			topicSelectionFurtherInfo,
 		},
 	};
 };
