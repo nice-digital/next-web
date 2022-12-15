@@ -16,10 +16,10 @@ export const getServerSideProps: GetServerSideProps<
 		slug: string;
 		downloadPath: string;
 	}
-> = async ({ res, params, resolvedUrl }) => {
+> = async ({ res, params, resolvedUrl, query }) => {
 	if (!params || !params.downloadPath) return { notFound: true };
 
-	const result = await validateRouteParams(params, resolvedUrl);
+	const result = await validateRouteParams({ params, resolvedUrl, query });
 
 	if ("notFound" in result || "redirect" in result) return result;
 

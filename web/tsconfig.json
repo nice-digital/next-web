@@ -10,7 +10,7 @@
     "rootDir": "../",
     "baseUrl": ".",
     "paths": {
-      "@/test-utils": ["src/test-utils"],
+      "@/test-utils/*": ["src/test-utils/*"],
       "@/cache": ["src/cache/cache"],
       "@/config": ["src/config/config"],
       "@/hooks/*": ["src/hooks/*"],

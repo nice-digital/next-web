@@ -1,4 +1,4 @@
-import { GetServerSideProps } from "next";
+import { type GetServerSideProps } from "next";
 import { NextSeo } from "next-seo";
 
 import { Breadcrumbs, Breadcrumb } from "@nice-digital/nds-breadcrumbs";
@@ -10,22 +10,17 @@ import {
 	type ProductPageHeadingProps,
 } from "@/components/ProductPageHeading/ProductPageHeading";
 import { ResourceList } from "@/components/ResourceList/ResourceList";
-import {
-	getResourceDetail,
-	getResourceDetails,
-	isErrorResponse,
-} from "@/feeds/publications/publications";
-import { ProductGroup, ResourceDetail } from "@/feeds/publications/types";
+import { getResourceDetails } from "@/feeds/publications/publications";
 import { validateRouteParams } from "@/utils/product";
 import {
 	getResourceGroup,
 	isEvidenceUpdate,
 	isSupportingEvidence,
-	ResourceGroupViewModel,
+	type ResourceGroupViewModel,
+	ResourceTypeSlug,
 } from "@/utils/resource";
-import { getProductPath } from "@/utils/url";
 
-export type IndicatorEvidencePageProps = {
+export type EvidenceResourcesListPageProps = {
 	resourceGroups: ResourceGroupViewModel[];
 	productPath: string;
 	product: ProductPageHeadingProps["product"];
@@ -35,7 +30,7 @@ export type IndicatorEvidencePageProps = {
 	hasHistory: boolean;
 };
 
-export default function ({
+export default function EvidenceResourcesListPage({
 	resourceGroups,
 	productPath,
 	product,
@@ -43,7 +38,7 @@ export default function ({
 	hasInfoForPublicResources,
 	hasEvidenceResources,
 	hasHistory,
-}: IndicatorEvidencePageProps): JSX.Element {
+}: EvidenceResourcesListPageProps): JSX.Element {
 	return (
 		<>
 			<NextSeo
@@ -75,53 +70,65 @@ export default function ({
 				hasHistory={hasHistory}
 			/>
 
-			<h2>Evidence</h2>
-
-			<ResourceList groups={resourceGroups} />
+			<ResourceList title="Evidence" groups={resourceGroups} />
 		</>
 	);
 }
 
 export const getServerSideProps: GetServerSideProps<
-	IndicatorEvidencePageProps,
+	EvidenceResourcesListPageProps,
 	{ slug: string }
-> = async ({ params, resolvedUrl }) => {
-	const result = await validateRouteParams(params, resolvedUrl);
+> = async ({ params, query, resolvedUrl }) => {
+	const result = await validateRouteParams({ params, resolvedUrl, query });
 
 	if ("notFound" in result || "redirect" in result) return result;
 
 	const {
 		product,
 		productPath,
-		hasEvidenceResources,
-		hasInfoForPublicResources,
 		hasToolsAndResources,
 		evidenceResources,
+		hasInfoForPublicResources,
+		hasEvidenceResources,
 		hasHistory,
 	} = result;
 
-	const resources = await getResourceDetails(evidenceResources),
-		evidenceUpdates = resources.filter(isEvidenceUpdate),
-		supportingEvidence = resources.filter(isSupportingEvidence);
+	if (!evidenceResources.length) return { notFound: true };
 
-	const resourceGroups: ResourceGroupViewModel[] = [];
+	const fullResources = await getResourceDetails(evidenceResources),
+		resourceGroups = [
+			...(fullResources.some(isEvidenceUpdate)
+				? [
+						getResourceGroup(
+							product.id,
+							productPath,
+							"Evidence updates",
+							fullResources.filter(isEvidenceUpdate),
+							ResourceTypeSlug.Evidence
+						),
+				  ]
+				: []),
+			...(fullResources.some(isSupportingEvidence)
+				? [
+						getResourceGroup(
+							product.id,
+							productPath,
+							"Supporting evidence",
+							fullResources.filter(isSupportingEvidence),
+							ResourceTypeSlug.Evidence
+						),
+				  ]
+				: []),
+		];
 
-	if (evidenceUpdates.length)
-		resourceGroups.push(getResourceGroup("Evidence updates", evidenceUpdates));
-
-	if (supportingEvidence.length)
-		resourceGroups.push(
-			getResourceGroup("Supporting evidence", supportingEvidence)
-		);
-
-	if (!resourceGroups.length) return { notFound: true };
+	if (resourceGroups.length === 0) return { notFound: true };
 
 	return {
 		props: {
 			resourceGroups,
-			hasEvidenceResources,
-			hasInfoForPublicResources,
 			hasToolsAndResources,
+			hasInfoForPublicResources,
+			hasEvidenceResources,
 			hasHistory,
 			productPath,
 			product: {

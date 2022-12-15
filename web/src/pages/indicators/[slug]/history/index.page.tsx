@@ -3,12 +3,7 @@ import { type GetServerSideProps } from "next/types";
 import React from "react";
 
 import { Breadcrumbs, Breadcrumb } from "@nice-digital/nds-breadcrumbs";
-import { Grid, GridItem } from "@nice-digital/nds-grid";
 
-import {
-	OnThisPage,
-	OnThisPageSection,
-} from "@/components/OnThisPage/OnThisPage";
 import { ProductHorizontalNav } from "@/components/ProductHorizontalNav/ProductHorizontalNav";
 import { ProductPageHeading } from "@/components/ProductPageHeading/ProductPageHeading";
 import { ResourceList } from "@/components/ResourceList/ResourceList";
@@ -21,7 +16,6 @@ import {
 	ResourceGroupViewModel,
 	ResourceSubGroupViewModel,
 } from "@/utils/resource";
-import { slugify } from "@/utils/url";
 
 export type HistoryPageProps = {
 	productPath: string;
@@ -40,7 +34,6 @@ export type HistoryPageProps = {
 	hasInfoForPublicResources: boolean;
 	hasToolsAndResources: boolean;
 	hasHistory: boolean;
-	groupSections: OnThisPageSection[];
 };
 
 export default function HistoryPage({
@@ -51,15 +44,13 @@ export default function HistoryPage({
 	hasInfoForPublicResources,
 	hasToolsAndResources,
 	hasHistory,
-	groupSections,
 }: HistoryPageProps): JSX.Element {
-	const hasOnThisPageMenu = groupSections.length > 1;
-
 	return (
 		<>
 			<NextSeo
 				title={`History | ${product.id} | Indicators | Standards and Indicators`}
 			/>
+
 			<Breadcrumbs>
 				<Breadcrumb to="/">Home</Breadcrumb>
 				<Breadcrumb to="/standards-and-indicators">
@@ -71,7 +62,9 @@ export default function HistoryPage({
 				<Breadcrumb to={`/indicators/${product.id}`}>{product.id}</Breadcrumb>
 				<Breadcrumb>History</Breadcrumb>
 			</Breadcrumbs>
+
 			<ProductPageHeading product={product} />
+
 			<ProductHorizontalNav
 				productTypeName="Indicator"
 				productPath={productPath}
@@ -81,24 +74,7 @@ export default function HistoryPage({
 				hasHistory={hasHistory}
 			/>
 
-			<Grid gutter="loose">
-				<GridItem cols={12} md={12} lg={12} elementType="section">
-					<Grid reverse gutter="loose">
-						{hasOnThisPageMenu ? (
-							<GridItem cols={12} md={4} lg={3}>
-								<OnThisPage sections={groupSections} />
-							</GridItem>
-						) : null}
-						<GridItem
-							cols={12}
-							md={hasOnThisPageMenu ? 8 : 12}
-							lg={hasOnThisPageMenu ? 9 : 12}
-						>
-							<ResourceList groups={project.groups} />
-						</GridItem>
-					</Grid>
-				</GridItem>
-			</Grid>
+			<ResourceList title="History" groups={project.groups} />
 		</>
 	);
 }
@@ -106,8 +82,8 @@ export default function HistoryPage({
 export const getServerSideProps: GetServerSideProps<
 	HistoryPageProps,
 	{ slug: string }
-> = async ({ params, resolvedUrl }) => {
-	const result = await validateRouteParams(params, resolvedUrl);
+> = async ({ params, resolvedUrl, query }) => {
+	const result = await validateRouteParams({ params, query, resolvedUrl });
 
 	if ("notFound" in result || "redirect" in result) return result;
 
@@ -193,10 +169,6 @@ export const getServerSideProps: GetServerSideProps<
 				title: project.title,
 				groups,
 			},
-			groupSections: groups.map(({ title }, i) => ({
-				slug: slugify(title) + i,
-				title,
-			})),
 		},
 	};
 };

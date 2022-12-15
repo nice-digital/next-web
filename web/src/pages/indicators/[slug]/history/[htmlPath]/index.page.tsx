@@ -6,7 +6,7 @@ import { Breadcrumbs, Breadcrumb } from "@nice-digital/nds-breadcrumbs";
 
 import { ProductHorizontalNav } from "@/components/ProductHorizontalNav/ProductHorizontalNav";
 import { ProductPageHeading } from "@/components/ProductPageHeading/ProductPageHeading";
-import { ResourceLink } from "@/components/ResourceLink/ResourceLink";
+import { ResourceLinkCard } from "@/components/ResourceLinkCard/ResourceLinkCard";
 import { getResourceFileHTML } from "@/feeds/inDev/inDev";
 import { ProductDetail } from "@/feeds/publications/types";
 import { arrayify } from "@/utils/array";
@@ -84,10 +84,9 @@ export default function HistoryHTMLPage({
 					<hr className="mb--d" />
 					<ul className="list list--unstyled">
 						{resourceLinks.map((resourceLink) => (
-							<ResourceLink
-								key={resourceLink.href}
-								resourceLink={resourceLink}
-							/>
+							<li key={resourceLink.href}>
+								<ResourceLinkCard resourceLink={resourceLink} />
+							</li>
 						))}
 					</ul>
 				</div>
@@ -107,8 +106,8 @@ export default function HistoryHTMLPage({
 export const getServerSideProps: GetServerSideProps<
 	HistoryHTMLPageProps,
 	{ slug: string; htmlPath: string }
-> = async ({ params, resolvedUrl }) => {
-	const result = await validateRouteParams(params, resolvedUrl);
+> = async ({ params, resolvedUrl, query }) => {
+	const result = await validateRouteParams({ params, resolvedUrl, query });
 
 	if ("notFound" in result || "redirect" in result) return result;
 

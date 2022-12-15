@@ -152,11 +152,18 @@ export const getProductDetail = async (
  */
 export const getChapterContent = async (
 	chapterHref: string
-): Promise<ChapterHTMLContent | ErrorResponse> => {
-	return getFeedBodyUnCached<ChapterHTMLContent | ErrorResponse>(
-		origin,
+): Promise<ChapterHTMLContent | null> => {
+	return getFeedBodyCached<ChapterHTMLContent | null>(
+		cacheKeyPrefix,
 		chapterHref,
-		apiKey
+		defaultTTL,
+		async () => {
+			const response = await getFeedBodyUnCached<
+				ChapterHTMLContent | ErrorResponse
+			>(origin, chapterHref, apiKey);
+
+			return isSuccessResponse(response) ? response : null;
+		}
 	);
 };
 

@@ -3,64 +3,671 @@
 exports[`/indicators/[slug]/chapters/[chapterSlug].page IndicatorChapterPage getServerSidePropsFunc should return a correct props when supplied with an id 1`] = `
 Object {
   "props": Object {
-    "chapterHTML": "<div class=\\"chapter\\" title=\\"Indicator NM181\\" id=\\"ind1001_indicator-nm181\\" xmlns=\\"http://www.w3.org/1999/xhtml\\">
+    "chapterHTML": "<div class=\\"chapter\\" title=\\"Recommendations\\" id=\\"ng100_recommendations\\" xmlns=\\"http://www.w3.org/1999/xhtml\\">
   <h2 class=\\"title\\">
-    <a id=\\"indicator-nm181\\"></a>Indicator NM181</h2>
-  <p>The percentage of patients with one or more of the following conditions: CHD, atrial fibrillation, chronic heart failure, stroke or TIA, diabetes or dementia with a FAST score of 3 or more or AUDIT-C score of 5 or more <a id=\\"_Hlk13836593\\"></a>in the preceding 2 years who have received brief intervention to help them reduce their alcohol related risk within 3 months of the score being recorded.</p>
+    <a id=\\"recommendations\\"></a>Recommendations</h2>
+  <div class=\\"panel panel--primary\\">
+    <p>
+      <a id=\\"_Hlk41463321\\"></a>People have the right to be involved in discussions and make informed decisions about their care, as described in <a class=\\"link\\" href=\\"https://www.nice.org.uk/about/nice-communities/nice-and-the-public/making-decisions-about-your-care\\" target=\\"_top\\">making decisions about your care</a>.</p>
+    <p>
+      <a class=\\"link\\" href=\\"https://www.nice.org.uk/about/what-we-do/our-programmes/nice-guidance/nice-guidelines/making-decisions-using-nice-guidelines\\" target=\\"_top\\">Making decisions using NICE guidelines</a> explains how we use words to show the strength (or certainty) of our recommendations, and has information about prescribing medicines (including off-label use), professional guidelines, standards and laws (including on consent and mental capacity), and safeguarding.</p>
+  </div>
+  <div class=\\"section\\" title=\\"1.1 Referral, diagnosis and investigations\\" id=\\"ng100_1.1-referral-diagnosis-and-investigations\\">
+    <h3 class=\\"title\\">
+      <a id=\\"referral-diagnosis-and-investigations\\"></a>1.1 Referral, diagnosis and investigations</h3>
+    <div class=\\"section\\" title=\\"Referral from primary care\\" id=\\"ng100_referral-from-primary-care\\">
+      <h4 class=\\"title\\">
+        <a id=\\"referral-from-primary-care\\"></a>Referral from primary care</h4>
+      <div id=\\"ng100_1_1_1\\" class=\\"recommendation_text\\">
+        <p class=\\"numbered-paragraph\\">
+          <span class=\\"paragraph-number\\">1.1.1 </span>Refer for specialist opinion any adult with suspected persistent <a class=\\"link\\" href=\\"recommendations#synovitis\\" target=\\"_top\\" rel=\\"internal\\" data-chapter=\\"recommendations\\" data-original-url=\\"#synovitis\\">synovitis</a> of undetermined cause. Refer urgently (even with a normal acute-phase response, negative anti-cyclic citrullinated peptide [CCP] antibodies or rheumatoid factor) if any of the following apply:</p>
+        <div class=\\"itemizedlist indented\\">
+          <ul class=\\"itemizedlist\\">
+            <li class=\\"listitem\\">
+              <p>the small joints of the hands or feet are affected</p>
+            </li>
+            <li class=\\"listitem\\">
+              <p>more than one joint is affected</p>
+            </li>
+            <li class=\\"listitem\\">
+              <p>there has been a delay of 3 months or longer between onset of symptoms and seeking medical advice. <strong>[2009, amended 2018]</strong></p>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </div>
+    <div class=\\"section\\" title=\\"Investigations\\" id=\\"ng100_investigations\\">
+      <h4 class=\\"title\\">
+        <a id=\\"investigations\\"></a>Investigations</h4>
+      <p>If the following investigations are ordered in primary care, they should not delay referral for specialist opinion (see recommendation 1.1.1).</p>
+      <div class=\\"section\\" title=\\"Investigations for diagnosis\\" id=\\"ng100_investigations-for-diagnosis\\">
+        <h5 class=\\"title\\">
+          <a id=\\"investigations-for-diagnosis\\"></a>Investigations for diagnosis</h5>
+        <div id=\\"ng100_1_1_2\\" class=\\"recommendation_text\\">
+          <p class=\\"numbered-paragraph\\">
+            <span class=\\"paragraph-number\\">1.1.2 </span>Offer to carry out a blood test for rheumatoid factor in adults with suspected rheumatoid arthritis (RA) who are found to have synovitis on clinical examination. <strong>[2009]</strong></p>
+        </div>
+        <div id=\\"ng100_1_1_3\\" class=\\"recommendation_text\\">
+          <p class=\\"numbered-paragraph\\">
+            <span class=\\"paragraph-number\\">1.1.3 </span>Consider measuring anti-CCP antibodies in adults with suspected RA if they are negative for rheumatoid factor. <strong>[2009, amended 2018]</strong></p>
+        </div>
+        <div id=\\"ng100_1_1_4\\" class=\\"recommendation_text\\">
+          <p class=\\"numbered-paragraph\\">
+            <span class=\\"paragraph-number\\">1.1.4 </span>X-ray the hands and feet in adults with suspected RA and persistent synovitis. <strong>[2009, amended 2018]</strong></p>
+        </div>
+      </div>
+      <div class=\\"section\\" title=\\"Investigations following diagnosis\\" id=\\"ng100_investigations-following-diagnosis\\">
+        <h5 class=\\"title\\">
+          <a id=\\"investigations-following-diagnosis\\"></a>Investigations following diagnosis</h5>
+        <div id=\\"ng100_1_1_5\\" class=\\"recommendation_text\\">
+          <p class=\\"numbered-paragraph\\">
+            <span class=\\"paragraph-number\\">1.1.5 </span>As soon as possible after establishing a diagnosis of RA:</p>
+          <div class=\\"itemizedlist indented\\">
+            <ul class=\\"itemizedlist\\">
+              <li class=\\"listitem\\">
+                <p>measure anti-CCP antibodies, unless already measured to inform diagnosis </p>
+              </li>
+              <li class=\\"listitem\\">
+                <p>X-ray the hands and feet to establish whether erosions are present, unless X-rays were performed to inform diagnosis </p>
+              </li>
+              <li class=\\"listitem\\">
+                <p>measure functional ability using, for example, the Health Assessment Questionnaire (HAQ), to provide a baseline for assessing the functional response to treatment. <strong>[2018]</strong></p>
+              </li>
+            </ul>
+          </div>
+        </div>
+        <div id=\\"ng100_1_1_6\\" class=\\"recommendation_text\\">
+          <p class=\\"numbered-paragraph\\">
+            <span class=\\"paragraph-number\\">1.1.6 </span>If anti-CCP antibodies are present or there are erosions on X-ray: </p>
+          <div class=\\"itemizedlist indented\\">
+            <ul class=\\"itemizedlist\\">
+              <li class=\\"listitem\\">
+                <p>advise the person that they have an increased risk of radiological progression but not necessarily an increased risk of poor function, <strong>and</strong></p>
+              </li>
+              <li class=\\"listitem\\">
+                <p>emphasise the importance of monitoring their condition, and seeking rapid access to specialist care if disease worsens or they have a flare. <strong>[2018]</strong></p>
+              </li>
+            </ul>
+          </div>
+          <div class=\\"panel indented\\">
+            <p>
+              <a id=\\"_Hlk44061057\\"></a>For a short explanation of why the committee made the 2018 recommendations and how they might affect practice, see the <a class=\\"link\\" href=\\"rationale-and-impact#investigations-following-diagnosis-2\\" target=\\"_top\\" rel=\\"internal\\" data-chapter=\\"rationale-and-impact\\" data-original-url=\\"#investigations-following-diagnosis-2\\">rationale and impact section on investigations following diagnosis</a>.</p>
+            <p>Full details of the evidence and the committee's discussion are in <a class=\\"link\\" href=\\"https://www.nice.org.uk/guidance/ng100/evidence/evidence-review-b-risk-factors-pdf-4903172319\\" target=\\"_top\\">evidence review B: Risk factors</a>.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class=\\"section\\" title=\\"1.2 Treat-to-target strategy\\" id=\\"ng100_1.2-treattotarget-strategy\\">
+    <h3 class=\\"title\\">
+      <a id=\\"treat-to-target-strategy\\"></a>1.2 Treat-to-target strategy</h3>
+    <div id=\\"ng100_1_2_1\\" class=\\"recommendation_text\\">
+      <p class=\\"numbered-paragraph\\">
+        <span class=\\"paragraph-number\\">1.2.1 </span>Treat active RA in adults with the aim of achieving a target of remission or low disease activity if remission cannot be achieved (<a class=\\"link\\" href=\\"recommendations#treat-to-target\\" target=\\"_top\\" rel=\\"internal\\" data-chapter=\\"recommendations\\" data-original-url=\\"#treat-to-target\\">treat-to-target</a>). Achieving the target may involve trying multiple <a class=\\"link\\" href=\\"recommendations#conventional-disease-modifying-anti-rheumatic-drugs-cdmards\\" target=\\"_top\\" rel=\\"internal\\" data-chapter=\\"recommendations\\" data-original-url=\\"#conventional-disease-modifying-anti-rheumatic-drugs-cdmards\\">conventional disease-modifying anti-rheumatic drugs</a> (cDMARDs) and biological DMARDs with different mechanisms of action, one after the other. <strong>[2018, amended 2020]</strong></p>
+    </div>
+    <div id=\\"ng100_1_2_2\\" class=\\"recommendation_text\\">
+      <p class=\\"numbered-paragraph\\">
+        <span class=\\"paragraph-number\\">1.2.2 </span>Consider making the target remission rather than low disease activity for people with an increased risk of radiological progression (presence of anti-CCP antibodies or erosions on X-ray at baseline assessment). <strong>[2018]</strong></p>
+    </div>
+    <div id=\\"ng100_1_2_3\\" class=\\"recommendation_text\\">
+      <p class=\\"numbered-paragraph\\">
+        <span class=\\"paragraph-number\\">1.2.3 </span>In adults with active RA, measure C-reactive protein (CRP) and disease activity (using a composite score such as DAS28) monthly in specialist care until the target of remission or low disease activity is achieved. <strong>[2018]</strong></p>
+      <div class=\\"panel indented\\">
+        <p>For a short explanation of why the committee made the 2018 recommendations and how they might affect practice, see the <a class=\\"link\\" href=\\"rationale-and-impact#treat-to-target-strategy-2\\" target=\\"_top\\" rel=\\"internal\\" data-chapter=\\"rationale-and-impact\\" data-original-url=\\"#treat-to-target-strategy-2\\">rationale and impact section on treat-to-target strategy</a>.</p>
+        <p>Full details of the evidence and the committee's discussion are in <a class=\\"link\\" href=\\"https://www.nice.org.uk/guidance/ng100/evidence/evidence-review-c-treattotarget-pdf-4903172320\\" target=\\"_top\\">evidence review C: Treat-to-target</a>.</p>
+      </div>
+    </div>
+  </div>
+  <div class=\\"section\\" title=\\"1.3 Communication and education\\" id=\\"ng100_1.3-communication-and-education\\">
+    <h3 class=\\"title\\">
+      <a id=\\"communication-and-education\\"></a>1.3 Communication and education</h3>
+    <div id=\\"ng100_1_3_1\\" class=\\"recommendation_text\\">
+      <p class=\\"numbered-paragraph\\">
+        <span class=\\"paragraph-number\\">1.3.1 </span>Explain the risks and benefits of treatment options to adults with RA in ways that can be easily understood. Throughout the course of their disease, offer them the opportunity to talk about and agree all aspects of their care, and respect the decisions they make. <strong>[2009]</strong></p>
+    </div>
+    <div id=\\"ng100_1_3_2\\" class=\\"recommendation_text\\">
+      <p class=\\"numbered-paragraph\\">
+        <span class=\\"paragraph-number\\">1.3.2 </span>Offer verbal and written information to adults with RA to:</p>
+      <div class=\\"itemizedlist indented\\">
+        <ul class=\\"itemizedlist\\">
+          <li class=\\"listitem\\">
+            <p>improve their understanding of the condition and its management, <strong>and</strong></p>
+          </li>
+          <li class=\\"listitem\\">
+            <p>counter any misconceptions they may have. <strong>[2009</strong>]</p>
+          </li>
+        </ul>
+      </div>
+    </div>
+    <div id=\\"ng100_1_3_3\\" class=\\"recommendation_text\\">
+      <p class=\\"numbered-paragraph\\">
+        <span class=\\"paragraph-number\\">1.3.3 </span>Adults with RA who wish to know more about their disease and its management should be offered the opportunity to take part in existing educational activities, including self-management programmes. <strong>[2009]</strong></p>
+    </div>
+  </div>
+  <div class=\\"section\\" title=\\"1.4 Initial pharmacological management\\" id=\\"ng100_1.4-initial-pharmacological-management\\">
+    <h3 class=\\"title\\">
+      <a id=\\"initial-pharmacological-management\\"></a>1.4 Initial pharmacological management</h3>
+    <div class=\\"section\\" title=\\"Conventional disease-modifying anti-rheumatic drugs\\" id=\\"ng100_conventional-diseasemodifying-antirheumatic-drugs\\">
+      <h4 class=\\"title\\">
+        <a id=\\"conventional-disease-modifying-anti-rheumatic-drugs\\"></a>Conventional disease-modifying anti-rheumatic drugs</h4>
+      <div id=\\"ng100_1_4_1\\" class=\\"recommendation_text\\">
+        <p class=\\"numbered-paragraph\\">
+          <span class=\\"paragraph-number\\">1.4.1 </span>For adults with newly diagnosed active RA:</p>
+        <div class=\\"itemizedlist indented\\">
+          <ul class=\\"itemizedlist\\">
+            <li class=\\"listitem\\">
+              <p>Offer first-line treatment with cDMARD monotherapy using oral methotrexate, leflunomide or sulfasalazine as soon as possible and ideally within 3 months of onset of persistent symptoms.</p>
+            </li>
+            <li class=\\"listitem\\">
+              <p>Consider hydroxychloroquine for first-line treatment as an alternative to oral methotrexate, leflunomide or sulfasalazine for mild or <a class=\\"link\\" href=\\"recommendations#palindromic\\" target=\\"_top\\" rel=\\"internal\\" data-chapter=\\"recommendations\\" data-original-url=\\"#palindromic\\">palindromic</a> disease.</p>
+            </li>
+            <li class=\\"listitem\\">
+              <p>Escalate dose as tolerated. <strong>[2018]</strong></p>
+            </li>
+          </ul>
+        </div>
+      </div>
+      <div id=\\"ng100_1_4_2\\" class=\\"recommendation_text\\">
+        <p class=\\"numbered-paragraph\\">
+          <span class=\\"paragraph-number\\">1.4.2 </span>
+          <a id=\\"Short_term_bridging\\"></a>Consider short-term <a class=\\"link\\" href=\\"recommendations#bridging-treatment\\" target=\\"_top\\" rel=\\"internal\\" data-chapter=\\"recommendations\\" data-original-url=\\"#bridging-treatment\\">bridging treatment</a> with glucocorticoids (oral, intramuscular or intra-articular) when starting a new cDMARD. <strong>[2018]</strong></p>
+        <div class=\\"panel indented\\">
+          <p>
+            <a id=\\"_Hlk83853224\\"></a>For a short explanation of why the committee made the 2018 recommendations and how they might affect practice, see the <a class=\\"link\\" href=\\"rationale-and-impact#short-term-bridging-treatment-with-glucocorticoids\\" target=\\"_top\\" rel=\\"internal\\" data-chapter=\\"rationale-and-impact\\" data-original-url=\\"#short-term-bridging-treatment-with-glucocorticoids\\">rationale and impact section on short-term bridging treatment with glucocorticoids</a>.</p>
+          <p>Full details of the evidence and the committee's discussion are in <a class=\\"link\\" href=\\"https://www.nice.org.uk/guidance/ng100/evidence/evidence-review-h-glucocorticoids-pdf-4903172325\\" target=\\"_top\\">evidence review H: Glucocorticoids</a>.</p>
+        </div>
+      </div>
+      <div id=\\"ng100_1_4_3\\" class=\\"recommendation_text\\">
+        <p class=\\"numbered-paragraph\\">
+          <span class=\\"paragraph-number\\">1.4.3 </span>Offer additional cDMARDs (oral methotrexate, leflunomide, sulfasalazine or hydroxychloroquine) in combination in a <a class=\\"link\\" href=\\"recommendations#step-up-strategy\\" target=\\"_top\\" rel=\\"internal\\" data-chapter=\\"recommendations\\" data-original-url=\\"#step-up-strategy\\">step-up strategy</a> when the treatment target (remission or low disease activity) has not been achieved despite dose escalation. <strong>[2018]</strong></p>
+        <div class=\\"panel indented\\">
+          <p>For a short explanation of why the committee made the 2018 recommendations and how they might affect practice, see the <a class=\\"link\\" href=\\"rationale-and-impact#dmards\\" target=\\"_top\\" rel=\\"internal\\" data-chapter=\\"rationale-and-impact\\" data-original-url=\\"#dmards\\">rationale and impact section on DMARDs</a>.</p>
+          <p>Full details of the evidence and the committee's discussion are in <a class=\\"link\\" href=\\"https://www.nice.org.uk/guidance/ng100/evidence/evidence-review-f-dmards-pdf-4903172323\\" target=\\"_top\\">evidence review F: DMARDs</a>.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class=\\"section\\" title=\\"1.5 Further pharmacological management\\" id=\\"ng100_1.5-further-pharmacological-management\\">
+    <h3 class=\\"title\\">
+      <a id=\\"further-pharmacological-management\\"></a>1.5 Further pharmacological management</h3>
+    <div class=\\"section\\" title=\\"Biological and targeted synthetic DMARDs\\" id=\\"ng100_biological-and-targeted-synthetic-dmards\\">
+      <h4 class=\\"title\\">
+        <a id=\\"biological-and-targeted-synthetic-dmards\\"></a>Biological and targeted synthetic DMARDs</h4>
+      <p>NICE has published technology appraisal guidance on biological and targeted synthetic DMARDs for RA. For full details, see <a class=\\"link\\" href=\\"https://www.nice.org.uk/guidance/conditions-and-diseases/musculoskeletal-conditions/arthritis/products?GuidanceProgramme=TA\\" target=\\"_top\\">our topic page on arthritis</a>. For guidance on using DMARDs to achieve treatment targets, see <a class=\\"link\\" href=\\"recommendations#treat-to-target-strategy\\" target=\\"_top\\" rel=\\"internal\\" data-chapter=\\"recommendations\\" data-original-url=\\"#treat-to-target-strategy\\">recommendation 1.2.1</a>.</p>
+      <p>The recommendations below are from NICE technology appraisal guidance 72. The 2009 guideline committee reviewed the evidence on anakinra and incorporated the recommendations into the guideline. The technology appraisal was then withdrawn.</p>
+      <div id=\\"ng100_1_5_1\\" class=\\"recommendation_text\\">
+        <p class=\\"numbered-paragraph\\">
+          <span class=\\"paragraph-number\\">1.5.1 </span>On the balance of its clinical benefits and cost effectiveness, anakinra is not recommended for the treatment of RA, except in the context of a controlled, long-term clinical study. <strong>[2009]</strong></p>
+      </div>
+      <div id=\\"ng100_1_5_2\\" class=\\"recommendation_text\\">
+        <p class=\\"numbered-paragraph\\">
+          <span class=\\"paragraph-number\\">1.5.2 </span>Patients currently receiving anakinra for RA may suffer loss of wellbeing if their treatment were discontinued at a time they did not anticipate. Therefore, patients should continue therapy with anakinra until they and their consultant consider it is appropriate to stop. <strong>[2009]</strong></p>
+      </div>
+      <div id=\\"ng100_1_5_3\\" class=\\"recommendation_text\\">
+        <p class=\\"numbered-paragraph\\">
+          <span class=\\"paragraph-number\\">1.5.3 </span>Do not offer the combination of tumour necrosis factor-α (TNF-α) inhibitor therapy and anakinra for RA. <strong>[2009]</strong></p>
+      </div>
+    </div>
+    <div class=\\"section\\" title=\\"Glucocorticoids\\" id=\\"ng100_glucocorticoids\\">
+      <h4 class=\\"title\\">
+        <a id=\\"glucocorticoids\\"></a>Glucocorticoids</h4>
+      <div id=\\"ng100_1_5_4\\" class=\\"recommendation_text\\">
+        <p class=\\"numbered-paragraph\\">
+          <span class=\\"paragraph-number\\">1.5.4 </span>Offer short-term treatment with glucocorticoids for managing flares in adults with recent-onset or established disease to rapidly decrease inflammation. <strong>[2009]</strong></p>
+      </div>
+      <div id=\\"ng100_1_5_5\\" class=\\"recommendation_text\\">
+        <p class=\\"numbered-paragraph\\">
+          <span class=\\"paragraph-number\\">1.5.5 </span>In adults with established RA, only continue long-term treatment with glucocorticoids when:</p>
+        <div class=\\"itemizedlist indented\\">
+          <ul class=\\"itemizedlist\\">
+            <li class=\\"listitem\\">
+              <p>the long-term complications of glucocorticoid therapy have been fully discussed, <strong>and</strong></p>
+            </li>
+            <li class=\\"listitem\\">
+              <p>all other treatment options (including biological and targeted synthetic DMARDs) have been offered. <strong>[2009, amended 2018]</strong></p>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class=\\"section\\" title=\\"1.6 Symptom control\\" id=\\"ng100_1.6-symptom-control\\">
+    <h3 class=\\"title\\">
+      <a id=\\"symptom-control\\"></a>1.6 Symptom control</h3>
+    <div id=\\"ng100_1_6_1\\" class=\\"recommendation_text\\">
+      <p class=\\"numbered-paragraph\\">
+        <span class=\\"paragraph-number\\">1.6.1 </span>Consider oral non-steroidal anti-inflammatory drugs (NSAIDs, including traditional NSAIDs and cox II selective inhibitors), when control of pain or stiffness is inadequate. Take account of potential gastrointestinal, liver and cardio-renal toxicity, and the person's risk factors, including age and pregnancy. <strong>[2018]</strong></p>
+    </div>
+    <div id=\\"ng100_1_6_2\\" class=\\"recommendation_text\\">
+      <p class=\\"numbered-paragraph\\">
+        <span class=\\"paragraph-number\\">1.6.2 </span>When treating symptoms of RA with oral NSAIDs:</p>
+      <div class=\\"itemizedlist indented\\">
+        <ul class=\\"itemizedlist\\">
+          <li class=\\"listitem\\">
+            <p>offer the lowest effective dose for the shortest possible time</p>
+          </li>
+          <li class=\\"listitem\\">
+            <p>offer a proton pump inhibitor (PPI), <strong>and</strong></p>
+          </li>
+          <li class=\\"listitem\\">
+            <p>review risk factors for adverse events regularly. <strong>[2018]</strong></p>
+          </li>
+        </ul>
+      </div>
+    </div>
+    <div id=\\"ng100_1_6_3\\" class=\\"recommendation_text\\">
+      <p class=\\"numbered-paragraph\\">
+        <span class=\\"paragraph-number\\">1.6.3 </span>If a person with RA needs to take low-dose aspirin, healthcare professionals should consider other treatments before adding an NSAID (with a PPI) if pain relief is ineffective or insufficient. <strong>[2009, amended 2018]</strong></p>
+      <div class=\\"panel indented\\">
+        <p>For a short explanation of why the committee made the 2018 recommendations and how they might affect practice, see the <a class=\\"link\\" href=\\"rationale-and-impact#symptom-control-2\\" target=\\"_top\\" rel=\\"internal\\" data-chapter=\\"rationale-and-impact\\" data-original-url=\\"#symptom-control-2\\">rationale and impact section on symptom control</a>.</p>
+        <p>Full details of the evidence and the committee's discussion are in <a class=\\"link\\" href=\\"https://www.nice.org.uk/guidance/ng100/evidence/evidence-review-g-analgesics-pdf-4903172324\\" target=\\"_top\\">evidence review G: Analgesics</a>.</p>
+      </div>
+    </div>
+  </div>
+  <div class=\\"section\\" title=\\"1.7 The multidisciplinary team\\" id=\\"ng100_1.7-the-multidisciplinary-team\\">
+    <h3 class=\\"title\\">
+      <a id=\\"the-multidisciplinary-team\\"></a>1.7 The multidisciplinary team</h3>
+    <div id=\\"ng100_1_7_1\\" class=\\"recommendation_text\\">
+      <p class=\\"numbered-paragraph\\">
+        <span class=\\"paragraph-number\\">1.7.1 </span>Adults with RA should have ongoing access to a multidisciplinary team. This should provide the opportunity for periodic assessments (see 1.9.2 and 1.9.3) of the effect of the disease on their lives (such as pain, fatigue, everyday activities, mobility, ability to work or take part in social or leisure activities, quality of life, mood, impact on sexual relationships) and help to manage the condition. <strong>[2009]</strong></p>
+    </div>
+    <div id=\\"ng100_1_7_2\\" class=\\"recommendation_text\\">
+      <p class=\\"numbered-paragraph\\">
+        <span class=\\"paragraph-number\\">1.7.2 </span>Adults with RA should have access to a named member of the multidisciplinary team (for example, the specialist nurse) who is responsible for coordinating their care. <strong>[2009]</strong></p>
+    </div>
+  </div>
+  <div class=\\"section\\" title=\\"1.8 Non-pharmacological management\\" id=\\"ng100_1.8-nonpharmacological-management\\">
+    <h3 class=\\"title\\">
+      <a id=\\"non-pharmacological-management\\"></a>1.8 Non-pharmacological management</h3>
+    <div class=\\"section\\" title=\\"Physiotherapy\\" id=\\"ng100_physiotherapy\\">
+      <h4 class=\\"title\\">
+        <a id=\\"physiotherapy\\"></a>Physiotherapy</h4>
+      <div id=\\"ng100_1_8_1\\" class=\\"recommendation_text\\">
+        <p class=\\"numbered-paragraph\\">
+          <span class=\\"paragraph-number\\">1.8.1 </span>Adults with RA should have access to specialist physiotherapy, with periodic review (see 1.9.2 and 1.9.3), to:</p>
+        <div class=\\"itemizedlist indented\\">
+          <ul class=\\"itemizedlist\\">
+            <li class=\\"listitem\\">
+              <p>improve general fitness and encourage regular exercise</p>
+            </li>
+            <li class=\\"listitem\\">
+              <p>learn exercises for enhancing joint flexibility, muscle strength and managing other functional impairments</p>
+            </li>
+            <li class=\\"listitem\\">
+              <p>learn about the short-term pain relief provided by methods such as transcutaneous electrical nerve stimulators (TENS) and wax baths. <strong>[2009]</strong></p>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </div>
+    <div class=\\"section\\" title=\\"Occupational therapy\\" id=\\"ng100_occupational-therapy\\">
+      <h4 class=\\"title\\">
+        <a id=\\"occupational-therapy\\"></a>Occupational therapy</h4>
+      <div id=\\"ng100_1_8_2\\" class=\\"recommendation_text\\">
+        <p class=\\"numbered-paragraph\\">
+          <span class=\\"paragraph-number\\">1.8.2 </span>Adults with RA should have access to specialist occupational therapy, with periodic review (see 1.9.2 and 1.9.3), if they have:</p>
+        <div class=\\"itemizedlist indented\\">
+          <ul class=\\"itemizedlist\\">
+            <li class=\\"listitem\\">
+              <p>difficulties with any of their everyday activities, <strong>or</strong></p>
+            </li>
+            <li class=\\"listitem\\">
+              <p>problems with hand function. <strong>[2009]</strong></p>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </div>
+    <div class=\\"section\\" title=\\"Hand exercise programmes\\" id=\\"ng100_hand-exercise-programmes\\">
+      <h4 class=\\"title\\">
+        <a id=\\"hand-exercise-programmes\\"></a>Hand exercise programmes</h4>
+      <div id=\\"ng100_1_8_3\\" class=\\"recommendation_text\\">
+        <p class=\\"numbered-paragraph\\">
+          <span class=\\"paragraph-number\\">1.8.3 </span>Consider a tailored strengthening and stretching hand exercise programme for adults with RA with pain and dysfunction of the hands or wrists if:</p>
+        <div class=\\"itemizedlist indented\\">
+          <ul class=\\"itemizedlist\\">
+            <li class=\\"listitem\\">
+              <p>they are not on a drug regimen for RA, <strong>or</strong></p>
+            </li>
+            <li class=\\"listitem\\">
+              <p>they have been on a stable drug regimen for RA for at least 3 months. <strong>[2015]</strong></p>
+            </li>
+          </ul>
+        </div>
+      </div>
+      <div id=\\"ng100_1_8_4\\" class=\\"recommendation_text\\">
+        <p class=\\"numbered-paragraph\\">
+          <span class=\\"paragraph-number\\">1.8.4 </span>The tailored hand exercise programme for adults with RA should be delivered by a practitioner with training and skills in this area. <strong>[2015]</strong></p>
+      </div>
+    </div>
+    <div class=\\"section\\" title=\\"Podiatry\\" id=\\"ng100_podiatry\\">
+      <h4 class=\\"title\\">
+        <a id=\\"podiatry\\"></a>Podiatry</h4>
+      <div id=\\"ng100_1_8_5\\" class=\\"recommendation_text\\">
+        <p class=\\"numbered-paragraph\\">
+          <span class=\\"paragraph-number\\">1.8.5 </span>All adults with RA and foot problems should have access to a podiatrist for assessment and periodic review of their foot health needs (see 1.9.2 and 1.9.3). <strong>[2009]</strong></p>
+      </div>
+      <div id=\\"ng100_1_8_6\\" class=\\"recommendation_text\\">
+        <p class=\\"numbered-paragraph\\">
+          <span class=\\"paragraph-number\\">1.8.6 </span>Functional insoles and therapeutic footwear should be available for all adults with RA if indicated. <strong>[2009]</strong></p>
+      </div>
+    </div>
+    <div class=\\"section\\" title=\\"Psychological interventions\\" id=\\"ng100_psychological-interventions\\">
+      <h4 class=\\"title\\">
+        <a id=\\"psychological-interventions\\"></a>Psychological interventions</h4>
+      <div id=\\"ng100_1_8_7\\" class=\\"recommendation_text\\">
+        <p class=\\"numbered-paragraph\\">
+          <span class=\\"paragraph-number\\">1.8.7 </span>Offer psychological interventions (for example, relaxation, stress management and cognitive coping skills [such as managing negative thinking]) to help adults with RA adjust to living with their condition. <strong>[2009]</strong></p>
+        <p>NICE has published a <a class=\\"link\\" href=\\"https://www.nice.org.uk/guidance/cg91\\" target=\\"_top\\" data-original-url=\\"https://www.nice.org.uk/guidance/cg91\\">guideline on depression in adults with a chronic physical health problem</a>.</p>
+      </div>
+    </div>
+    <div class=\\"section\\" title=\\"Diet and complementary therapies\\" id=\\"ng100_diet-and-complementary-therapies\\">
+      <h4 class=\\"title\\">
+        <a id=\\"diet-and-complementary-therapies\\"></a>Diet and complementary therapies</h4>
+      <div id=\\"ng100_1_8_8\\" class=\\"recommendation_text\\">
+        <p class=\\"numbered-paragraph\\">
+          <span class=\\"paragraph-number\\">1.8.8 </span>Inform adults with RA who wish to experiment with their diet that there is no strong evidence that their arthritis will benefit. However, they could be encouraged to follow the principles of a Mediterranean diet (more bread, fruit, vegetables and fish; less meat; and replace butter and cheese with products based on vegetable and plant oils). <strong>[2009]</strong></p>
+      </div>
+      <div id=\\"ng100_1_8_9\\" class=\\"recommendation_text\\">
+        <p class=\\"numbered-paragraph\\">
+          <span class=\\"paragraph-number\\">1.8.9 </span>Inform adults with RA who wish to try complementary therapies that although some may provide short-term symptomatic benefit, there is little or no evidence for their long-term efficacy. <strong>[2009]</strong></p>
+      </div>
+      <div id=\\"ng100_1_8_10\\" class=\\"recommendation_text\\">
+        <p class=\\"numbered-paragraph\\">
+          <span class=\\"paragraph-number\\">1.8.10 </span>If an adult with RA decides to try complementary therapies, advise them:</p>
+        <div class=\\"itemizedlist indented\\">
+          <ul class=\\"itemizedlist\\">
+            <li class=\\"listitem\\">
+              <p>these approaches should not replace conventional treatment</p>
+            </li>
+            <li class=\\"listitem\\">
+              <p>this should not prejudice the attitudes of members of the multidisciplinary team, or affect the care offered. <strong>[2009]</strong></p>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class=\\"section\\" title=\\"1.9 Monitoring\\" id=\\"ng100_1.9-monitoring\\">
+    <h3 class=\\"title\\">
+      <a id=\\"monitoring\\"></a>1.9 Monitoring</h3>
+    <div id=\\"ng100_1_9_1\\" class=\\"recommendation_text\\">
+      <p class=\\"numbered-paragraph\\">
+        <span class=\\"paragraph-number\\">1.9.1 </span>Ensure that all adults with RA have:</p>
+      <div class=\\"itemizedlist indented\\">
+        <ul class=\\"itemizedlist\\">
+          <li class=\\"listitem\\">
+            <p>rapid access to specialist care for flares</p>
+          </li>
+          <li class=\\"listitem\\">
+            <p>information about when and how to access specialist care, <strong>and</strong></p>
+          </li>
+          <li class=\\"listitem\\">
+            <p>ongoing drug monitoring. <strong>[2018]</strong></p>
+          </li>
+        </ul>
+      </div>
+    </div>
+    <div id=\\"ng100_1_9_2\\" class=\\"recommendation_text\\">
+      <p class=\\"numbered-paragraph\\">
+        <span class=\\"paragraph-number\\">1.9.2 </span>Consider a review appointment to take place 6 months after achieving treatment target (remission or low disease activity) to ensure that the target has been maintained. <strong>[2018]</strong></p>
+    </div>
+    <div id=\\"ng100_1_9_3\\" class=\\"recommendation_text\\">
+      <p class=\\"numbered-paragraph\\">
+        <span class=\\"paragraph-number\\">1.9.3 </span>Offer all adults with RA, including those who have achieved the treatment target, an annual review to:</p>
+      <div class=\\"itemizedlist indented\\">
+        <ul class=\\"itemizedlist\\">
+          <li class=\\"listitem\\">
+            <p>assess disease activity and damage, and measure functional ability (using, for example, the Health Assessment Questionnaire [HAQ])</p>
+          </li>
+          <li class=\\"listitem\\">
+            <p>check for the development of comorbidities, such as hypertension, ischaemic heart disease, osteoporosis and depression</p>
+          </li>
+          <li class=\\"listitem\\">
+            <p>assess symptoms that suggest complications, such as vasculitis and disease of the cervical spine, lung or eyes</p>
+          </li>
+          <li class=\\"listitem\\">
+            <p>organise appropriate cross referral within the multidisciplinary team</p>
+          </li>
+          <li class=\\"listitem\\">
+            <p>assess the need for referral for surgery (see section 1.10)</p>
+          </li>
+          <li class=\\"listitem\\">
+            <p>assess the effect the disease is having on a person's life.<br /><br />Follow <a class=\\"link\\" href=\\"recommendations#treat-to-target-strategy\\" target=\\"_top\\" rel=\\"internal\\" data-chapter=\\"recommendations\\" data-original-url=\\"#treat-to-target-strategy\\">recommendation 1.2.1</a> if the target is not maintained. <strong>[2009, amended 2020]</strong></p>
+          </li>
+        </ul>
+      </div>
+    </div>
+    <div id=\\"ng100_1_9_4\\" class=\\"recommendation_text\\">
+      <p class=\\"numbered-paragraph\\">
+        <span class=\\"paragraph-number\\">1.9.4 </span>For adults who have maintained the treatment target (remission or low disease activity) for at least 1 year without glucocorticoids, consider cautiously reducing drug doses or stopping drugs in a <a class=\\"link\\" href=\\"recommendations#step-down-strategy\\" target=\\"_top\\" rel=\\"internal\\" data-chapter=\\"recommendations\\" data-original-url=\\"#step-down-strategy\\">step-down strategy</a>. Return promptly to the previous DMARD regimen if the treatment target is no longer met. <strong>[2018]</strong></p>
+    </div>
+    <div id=\\"ng100_1_9_5\\" class=\\"recommendation_text\\">
+      <p class=\\"numbered-paragraph\\">
+        <span class=\\"paragraph-number\\">1.9.5 </span>Do not use ultrasound for routine monitoring of disease activity in adults with RA. <strong>[2018]</strong></p>
+      <div class=\\"panel indented\\">
+        <p>
+          <a id=\\"_Hlk83853309\\"></a>For a short explanation of why the committee made the 2018 recommendations and how they might affect practice, see <a class=\\"link\\" href=\\"rationale-and-impact#monitoring-2\\" target=\\"_top\\" rel=\\"internal\\" data-chapter=\\"rationale-and-impact\\" data-original-url=\\"#monitoring-2\\">rationale and impact section on monitoring</a>. </p>
+        <p>Full details of the evidence and the committee's discussion are in <a class=\\"link\\" href=\\"https://www.nice.org.uk/guidance/ng100/evidence/evidence-review-e-frequency-of-monitoring-pdf-4903172322\\" target=\\"_top\\">evidence review E: Frequency of monitoring</a>.</p>
+      </div>
+    </div>
+  </div>
+  <div class=\\"section\\" title=\\"1.10 Timing and referral for surgery\\" id=\\"ng100_1.10-timing-and-referral-for-surgery\\">
+    <h3 class=\\"title\\">
+      <a id=\\"timing-and-referral-for-surgery\\"></a>1.10 Timing and referral for surgery</h3>
+    <div id=\\"ng100_1_10_1\\" class=\\"recommendation_text\\">
+      <p class=\\"numbered-paragraph\\">
+        <span class=\\"paragraph-number\\">1.10.1 </span>Offer to refer adults with RA for an early specialist surgical opinion if any of the following do not respond to optimal non-surgical management:</p>
+      <div class=\\"itemizedlist indented\\">
+        <ul class=\\"itemizedlist\\">
+          <li class=\\"listitem\\">
+            <p>persistent pain due to joint damage or other identifiable soft tissue cause</p>
+          </li>
+          <li class=\\"listitem\\">
+            <p>worsening joint function</p>
+          </li>
+          <li class=\\"listitem\\">
+            <p>progressive deformity</p>
+          </li>
+          <li class=\\"listitem\\">
+            <p>persistent localised synovitis. <strong>[2009]</strong></p>
+          </li>
+        </ul>
+      </div>
+    </div>
+    <div id=\\"ng100_1_10_2\\" class=\\"recommendation_text\\">
+      <p class=\\"numbered-paragraph\\">
+        <span class=\\"paragraph-number\\">1.10.2 </span>Offer to refer adults with any of the following complications for a specialist surgical opinion before damage or deformity becomes irreversible:</p>
+      <div class=\\"itemizedlist indented\\">
+        <ul class=\\"itemizedlist\\">
+          <li class=\\"listitem\\">
+            <p>imminent or actual tendon rupture</p>
+          </li>
+          <li class=\\"listitem\\">
+            <p>nerve compression (for example, carpal tunnel syndrome)</p>
+          </li>
+          <li class=\\"listitem\\">
+            <p>stress fracture. <strong>[2009]</strong></p>
+          </li>
+        </ul>
+      </div>
+    </div>
+    <div id=\\"ng100_1_10_3\\" class=\\"recommendation_text\\">
+      <p class=\\"numbered-paragraph\\">
+        <span class=\\"paragraph-number\\">1.10.3 </span>When surgery is offered to adults with RA, explain that the main expected benefits are:</p>
+      <div class=\\"itemizedlist indented\\">
+        <ul class=\\"itemizedlist\\">
+          <li class=\\"listitem\\">
+            <p>pain relief</p>
+          </li>
+          <li class=\\"listitem\\">
+            <p>improvement, or prevention of further deterioration, of joint function, <strong>and</strong></p>
+          </li>
+          <li class=\\"listitem\\">
+            <p>prevention of deformity.<br /><br />Cosmetic improvements should not be the dominant concern. <strong>[2009]</strong></p>
+          </li>
+        </ul>
+      </div>
+    </div>
+    <div id=\\"ng100_1_10_4\\" class=\\"recommendation_text\\">
+      <p class=\\"numbered-paragraph\\">
+        <span class=\\"paragraph-number\\">1.10.4 </span>Offer urgent combined medical and surgical management to adults with RA who have suspected or proven septic arthritis (especially in a prosthetic joint). <strong>[2009]</strong></p>
+    </div>
+    <div id=\\"ng100_1_10_5\\" class=\\"recommendation_text\\">
+      <p class=\\"numbered-paragraph\\">
+        <span class=\\"paragraph-number\\">1.10.5 </span>If an adult with RA develops any symptoms or signs that suggest cervical myelopathy (for example, paraesthesia, weakness, unsteadiness, reduced power, extensor plantars):</p>
+      <div class=\\"itemizedlist indented\\">
+        <ul class=\\"itemizedlist\\">
+          <li class=\\"listitem\\">
+            <p>request an urgent MRI scan, <strong>and</strong></p>
+          </li>
+          <li class=\\"listitem\\">
+            <p>refer for a specialist surgical opinion. <strong>[2009]</strong></p>
+          </li>
+        </ul>
+      </div>
+    </div>
+    <div id=\\"ng100_1_10_6\\" class=\\"recommendation_text\\">
+      <p class=\\"numbered-paragraph\\">
+        <span class=\\"paragraph-number\\">1.10.6 </span>Do not let concerns about the long-term durability of prosthetic joints influence decisions to offer joint replacements to younger adults with RA. <strong>[2009]</strong></p>
+    </div>
+  </div>
+  <div class=\\"section\\" title=\\"Terms used in this guideline\\" id=\\"ng100_terms-used-in-this-guideline\\">
+    <h3 class=\\"title\\">
+      <a id=\\"terms-used-in-this-guideline\\"></a>Terms used in this guideline</h3>
+    <div class=\\"section\\" title=\\"Bridging treatment\\" id=\\"ng100_bridging-treatment\\">
+      <h4 class=\\"title\\">
+        <a id=\\"bridging-treatment\\"></a>Bridging treatment</h4>
+      <p>Glucocorticoids used for a short period of time when a person is starting a new DMARD, intended to improve symptoms while waiting for the new DMARD to take effect (which can take 2 to 3 months). </p>
+    </div>
+    <div class=\\"section\\" title=\\"Conventional disease-modifying anti-rheumatic drugs (cDMARDs)\\" id=\\"ng100_conventional-diseasemodifying-antirheumatic-drugs-cdmards\\">
+      <h4 class=\\"title\\">
+        <a id=\\"conventional-disease-modifying-anti-rheumatic-drugs-cdmards\\"></a>
+        <a id=\\"_Conventional_disease_modifying\\"></a>Conventional disease-modifying anti-rheumatic drugs (cDMARDs)</h4>
+      <p>Conventional disease-modifying anti-rheumatic drugs are synthetic drugs that modify disease rather than just alleviating symptoms. They include methotrexate, sulfasalazine, leflunomide and hydroxychloroquine, but do not include biological DMARDs and targeted synthetic DMARDs. </p>
+    </div>
+    <div class=\\"section\\" title=\\"Palindromic\\" id=\\"ng100_palindromic\\">
+      <h4 class=\\"title\\">
+        <a id=\\"palindromic\\"></a>
+        <a id=\\"_Recommendation_1\\"></a>
+        <a id=\\"_Who_should_do\\"></a>
+        <a id=\\"_Step-down_strategy\\"></a>
+        <a id=\\"_Step-up_strategy\\"></a>Palindromic</h4>
+      <p>Palindromic rheumatism is an inflammatory arthritis that causes attacks of joint pain and swelling similar to RA. Between attacks the joints return to normal.</p>
+    </div>
+    <div class=\\"section\\" title=\\"Step-up strategy\\" id=\\"ng100_stepup-strategy\\">
+      <h4 class=\\"title\\">
+        <a id=\\"step-up-strategy\\"></a>Step-up strategy</h4>
+      <p>Additional DMARDs are added to DMARD monotherapy when disease is not adequately controlled.</p>
+    </div>
+    <div class=\\"section\\" title=\\"Step-down strategy\\" id=\\"ng100_stepdown-strategy\\">
+      <h4 class=\\"title\\">
+        <a id=\\"step-down-strategy\\"></a>Step-down strategy</h4>
+      <p>During treatment with 2 or more DMARDs, tapering and stopping at least 1 drug once disease is adequately controlled.</p>
+    </div>
+    <div class=\\"section\\" title=\\"Synovitis\\" id=\\"ng100_synovitis\\">
+      <h4 class=\\"title\\">
+        <a id=\\"synovitis\\"></a>Synovitis</h4>
+      <p>Soft tissue joint swelling.</p>
+    </div>
+    <div class=\\"section\\" title=\\"Treat-to-target\\" id=\\"ng100_treattotarget\\">
+      <h4 class=\\"title\\">
+        <a id=\\"treat-to-target\\"></a>Treat-to-target</h4>
+      <p>A treat-to-target strategy is a strategy that defines a treatment target (such as remission or low disease activity) and applies tight control (for example, monthly visits and respective treatment adjustment) to reach this target. The treatment strategy often follows a protocol for treatment adaptations depending on the disease activity level and degree of response to treatment.</p>
+    </div>
+  </div>
 </div>",
-    "chapterSections": Array [],
-    "chapterTitle": "Indicator NM181",
+    "chapterSections": Array [
+      Object {
+        "slug": "referral-diagnosis-and-investigations",
+        "title": "1.1 Referral, diagnosis and investigations",
+      },
+      Object {
+        "slug": "treat-to-target-strategy",
+        "title": "1.2 Treat-to-target strategy",
+      },
+      Object {
+        "slug": "communication-and-education",
+        "title": "1.3 Communication and education",
+      },
+      Object {
+        "slug": "initial-pharmacological-management",
+        "title": "1.4 Initial pharmacological management",
+      },
+      Object {
+        "slug": "further-pharmacological-management",
+        "title": "1.5 Further pharmacological management",
+      },
+      Object {
+        "slug": "symptom-control",
+        "title": "1.6 Symptom control",
+      },
+      Object {
+        "slug": "the-multidisciplinary-team",
+        "title": "1.7 The multidisciplinary team",
+      },
+      Object {
+        "slug": "non-pharmacological-management",
+        "title": "1.8 Non-pharmacological management",
+      },
+      Object {
+        "slug": "monitoring",
+        "title": "1.9 Monitoring",
+      },
+      Object {
+        "slug": "timing-and-referral-for-surgery",
+        "title": "1.10 Timing and referral for surgery",
+      },
+      Object {
+        "slug": "terms-used-in-this-guideline",
+        "title": "Terms used in this guideline",
+      },
+    ],
+    "chapterTitle": "Recommendations",
     "chapters": Array [
       Object {
         "title": "Overview",
-        "url": "/indicators/ind1001-test-indicator-ind-1001-the-percentage-of-patients-with-one-or-more-of-the-following-conditions-chd-atrial-fibrillation-chronic-heart-failure-stroke-or-tia-diabetes-or-dementia-with-a-fast-score-of-3-or-more-or-audit-c-score-of-5-or-more-in-the-preceding-2-years-who-have-received-brief-intervention-to-help-them-reduce-their-alcohol-related-risk-within-3-months-of-the-score-being-recorded",
+        "url": "/guidance/ng100",
       },
       Object {
-        "title": "Indicator NM181",
-        "url": "/indicators/ind1001-test-indicator-ind-1001-the-percentage-of-patients-with-one-or-more-of-the-following-conditions-chd-atrial-fibrillation-chronic-heart-failure-stroke-or-tia-diabetes-or-dementia-with-a-fast-score-of-3-or-more-or-audit-c-score-of-5-or-more-in-the-preceding-2-years-who-have-received-brief-intervention-to-help-them-reduce-their-alcohol-related-risk-within-3-months-of-the-score-being-recorded/chapters/indicator-nm181",
+        "title": "Recommendations",
+        "url": "/guidance/ng100/chapters/recommendations",
       },
       Object {
-        "title": "Indicator type",
-        "url": "/indicators/ind1001-test-indicator-ind-1001-the-percentage-of-patients-with-one-or-more-of-the-following-conditions-chd-atrial-fibrillation-chronic-heart-failure-stroke-or-tia-diabetes-or-dementia-with-a-fast-score-of-3-or-more-or-audit-c-score-of-5-or-more-in-the-preceding-2-years-who-have-received-brief-intervention-to-help-them-reduce-their-alcohol-related-risk-within-3-months-of-the-score-being-recorded/chapters/indicator-type",
+        "title": "Recommendations for research",
+        "url": "/guidance/ng100/chapters/recommendations-for-research",
       },
       Object {
-        "title": "Introduction",
-        "url": "/indicators/ind1001-test-indicator-ind-1001-the-percentage-of-patients-with-one-or-more-of-the-following-conditions-chd-atrial-fibrillation-chronic-heart-failure-stroke-or-tia-diabetes-or-dementia-with-a-fast-score-of-3-or-more-or-audit-c-score-of-5-or-more-in-the-preceding-2-years-who-have-received-brief-intervention-to-help-them-reduce-their-alcohol-related-risk-within-3-months-of-the-score-being-recorded/chapters/introduction",
+        "title": "Rationale and impact",
+        "url": "/guidance/ng100/chapters/rationale-and-impact",
       },
       Object {
-        "title": "Rationale",
-        "url": "/indicators/ind1001-test-indicator-ind-1001-the-percentage-of-patients-with-one-or-more-of-the-following-conditions-chd-atrial-fibrillation-chronic-heart-failure-stroke-or-tia-diabetes-or-dementia-with-a-fast-score-of-3-or-more-or-audit-c-score-of-5-or-more-in-the-preceding-2-years-who-have-received-brief-intervention-to-help-them-reduce-their-alcohol-related-risk-within-3-months-of-the-score-being-recorded/chapters/rationale",
+        "title": "Context",
+        "url": "/guidance/ng100/chapters/context",
       },
       Object {
-        "title": "Source guidance",
-        "url": "/indicators/ind1001-test-indicator-ind-1001-the-percentage-of-patients-with-one-or-more-of-the-following-conditions-chd-atrial-fibrillation-chronic-heart-failure-stroke-or-tia-diabetes-or-dementia-with-a-fast-score-of-3-or-more-or-audit-c-score-of-5-or-more-in-the-preceding-2-years-who-have-received-brief-intervention-to-help-them-reduce-their-alcohol-related-risk-within-3-months-of-the-score-being-recorded/chapters/source-guidance",
+        "title": "Finding more information and committee details",
+        "url": "/guidance/ng100/chapters/finding-more-information-and-committee-details",
       },
       Object {
-        "title": "Specification",
-        "url": "/indicators/ind1001-test-indicator-ind-1001-the-percentage-of-patients-with-one-or-more-of-the-following-conditions-chd-atrial-fibrillation-chronic-heart-failure-stroke-or-tia-diabetes-or-dementia-with-a-fast-score-of-3-or-more-or-audit-c-score-of-5-or-more-in-the-preceding-2-years-who-have-received-brief-intervention-to-help-them-reduce-their-alcohol-related-risk-within-3-months-of-the-score-being-recorded/chapters/specification",
-      },
-      Object {
-        "title": "Further information",
-        "url": "/indicators/ind1001-test-indicator-ind-1001-the-percentage-of-patients-with-one-or-more-of-the-following-conditions-chd-atrial-fibrillation-chronic-heart-failure-stroke-or-tia-diabetes-or-dementia-with-a-fast-score-of-3-or-more-or-audit-c-score-of-5-or-more-in-the-preceding-2-years-who-have-received-brief-intervention-to-help-them-reduce-their-alcohol-related-risk-within-3-months-of-the-score-being-recorded/chapters/further-information",
+        "title": "Update information",
+        "url": "/guidance/ng100/chapters/update-information",
       },
     ],
     "hasEvidenceResources": true,
-    "hasHistory": false,
-    "hasInfoForPublicResources": false,
-    "hasToolsAndResources": false,
-    "pdfDownloadPath": "/indicators/ind1001-test-indicator-ind-1001-the-percentage-of-patients-with-one-or-more-of-the-following-conditions-chd-atrial-fibrillation-chronic-heart-failure-stroke-or-tia-diabetes-or-dementia-with-a-fast-score-of-3-or-more-or-audit-c-score-of-5-or-more-in-the-preceding-2-years-who-have-received-brief-intervention-to-help-them-reduce-their-alcohol-related-risk-within-3-months-of-the-score-being-recorded/IND1001.pdf",
+    "hasHistory": true,
+    "hasInfoForPublicResources": true,
+    "hasToolsAndResources": true,
+    "pdfDownloadPath": "/guidance/ng100/NG100.pdf",
     "product": Object {
-      "id": "IND1001",
-      "indicatorSubTypeList": Array [
-        "CCG",
-        "GPIQ",
-      ],
-      "lastMajorModificationDate": "2022-09-08T14:19:12.8893126",
-      "productTypeName": "NICE indicator",
-      "publishedDate": "2022-09-08T14:19:12.8893126",
-      "title": "Test indicator IND1001: The percentage of patients with one or more of the following conditions: CHD, atrial fibrillation, chronic heart failure, stroke or TIA, diabetes or dementia with a FAST score of 3 or more or AUDIT-C score of 5 or more in the preceding 2 years who have received brief intervention to help them reduce their alcohol related risk within 3 months of the score being recorded",
+      "id": "NG100",
+      "indicatorSubTypeList": Array [],
+      "lastMajorModificationDate": "2020-10-12T00:00:00",
+      "productTypeName": "NICE guideline",
+      "publishedDate": "2018-07-11T00:00:00",
+      "title": "Rheumatoid arthritis in adults: management",
     },
-    "productPath": "/indicators/ind1001-test-indicator-ind-1001-the-percentage-of-patients-with-one-or-more-of-the-following-conditions-chd-atrial-fibrillation-chronic-heart-failure-stroke-or-tia-diabetes-or-dementia-with-a-fast-score-of-3-or-more-or-audit-c-score-of-5-or-more-in-the-preceding-2-years-who-have-received-brief-intervention-to-help-them-reduce-their-alcohol-related-risk-within-3-months-of-the-score-being-recorded",
+    "productPath": "/guidance/ng100",
   },
 }
 `;
@@ -106,7 +713,7 @@ exports[`/indicators/[slug]/chapters/[chapterSlug].page IndicatorChapterPage sho
           class="breadcrumbs__crumb"
         >
           <span>
-            IND1001
+            NG100
           </span>
         </li>
       </ol>
@@ -146,7 +753,7 @@ exports[`/indicators/[slug]/chapters/[chapterSlug].page IndicatorChapterPage sho
       "@type": "ListItem",
       "position": 4,
       "item": {
-        "name": "IND1001"
+        "name": "NG100"
       }
     }
   ]
@@ -159,24 +766,34 @@ exports[`/indicators/[slug]/chapters/[chapterSlug].page IndicatorChapterPage sho
       <h1
         class="page-header__heading page-header__heading--alt"
       >
-        Test indicator IND1001: The percentage of patients with one or more of the following conditions: CHD, atrial fibrillation, chronic heart failure, stroke or TIA, diabetes or dementia with a FAST score of 3 or more or AUDIT-C score of 5 or more in the preceding 2 years who have received brief intervention to help them reduce their alcohol related risk within 3 months of the score being recorded
+        Rheumatoid arthritis in adults: management
       </h1>
       <ul
         class="page-header__metadata"
       >
         <li>
-          NICE indicator
+          NICE guideline
         </li>
         <li>
-          IND1001
+          NG100
         </li>
         <li>
           Published:
           <time
-            datetime="2022-09-08"
+            datetime="2018-07-11"
           >
              
-            8 September 2022
+            11 July 2018
+          </time>
+        </li>
+        <li>
+          Last updated:
+          <time
+            datetime="2020-10-12"
+          >
+             
+             
+            12 October 2020
           </time>
         </li>
       </ul>
@@ -193,7 +810,7 @@ exports[`/indicators/[slug]/chapters/[chapterSlug].page IndicatorChapterPage sho
           <a
             aria-current="true"
             class="horizontal-nav__link"
-            href="/indicators/ind1001-test-indicator-ind-1001-the-percentage-of-patients-with-one-or-more-of-the-following-conditions-chd-atrial-fibrillation-chronic-heart-failure-stroke-or-tia-diabetes-or-dementia-with-a-fast-score-of-3-or-more-or-audit-c-score-of-5-or-more-in-the-preceding-2-years-who-have-received-brief-intervention-to-help-them-reduce-their-alcohol-related-risk-within-3-months-of-the-score-being-recorded"
+            href="/guidance/ng100"
           >
             Indicator
           </a>
@@ -204,9 +821,31 @@ exports[`/indicators/[slug]/chapters/[chapterSlug].page IndicatorChapterPage sho
           <a
             aria-current="false"
             class="horizontal-nav__link"
-            href="/indicators/ind1001-test-indicator-ind-1001-the-percentage-of-patients-with-one-or-more-of-the-following-conditions-chd-atrial-fibrillation-chronic-heart-failure-stroke-or-tia-diabetes-or-dementia-with-a-fast-score-of-3-or-more-or-audit-c-score-of-5-or-more-in-the-preceding-2-years-who-have-received-brief-intervention-to-help-them-reduce-their-alcohol-related-risk-within-3-months-of-the-score-being-recorded/evidence"
+            href="/guidance/ng100/resources"
+          >
+            Tools and resources
+          </a>
+        </li>
+        <li
+          class="horizontal-nav__item"
+        >
+          <a
+            aria-current="false"
+            class="horizontal-nav__link"
+            href="/guidance/ng100/evidence"
           >
             Evidence
+          </a>
+        </li>
+        <li
+          class="horizontal-nav__item"
+        >
+          <a
+            aria-current="false"
+            class="horizontal-nav__link"
+            href="/guidance/ng100/history"
+          >
+            History
           </a>
         </li>
       </ul>
@@ -221,7 +860,7 @@ exports[`/indicators/[slug]/chapters/[chapterSlug].page IndicatorChapterPage sho
         <a
           aria-label="Download indicator PDF file"
           class="btn btn--cta download"
-          href="/indicators/ind1001-test-indicator-ind-1001-the-percentage-of-patients-with-one-or-more-of-the-following-conditions-chd-atrial-fibrillation-chronic-heart-failure-stroke-or-tia-diabetes-or-dementia-with-a-fast-score-of-3-or-more-or-audit-c-score-of-5-or-more-in-the-preceding-2-years-who-have-received-brief-intervention-to-help-them-reduce-their-alcohol-related-risk-within-3-months-of-the-score-being-recorded/IND1001.pdf"
+          href="/guidance/ng100/NG100.pdf"
           target="_blank"
         >
           Download indicator
@@ -239,7 +878,7 @@ exports[`/indicators/[slug]/chapters/[chapterSlug].page IndicatorChapterPage sho
             >
               <a
                 aria-current="false"
-                href="/indicators/ind1001-test-indicator-ind-1001-the-percentage-of-patients-with-one-or-more-of-the-following-conditions-chd-atrial-fibrillation-chronic-heart-failure-stroke-or-tia-diabetes-or-dementia-with-a-fast-score-of-3-or-more-or-audit-c-score-of-5-or-more-in-the-preceding-2-years-who-have-received-brief-intervention-to-help-them-reduce-their-alcohol-related-risk-within-3-months-of-the-score-being-recorded"
+                href="/guidance/ng100"
               >
                 <span
                   class="stacked-nav__content-wrapper"
@@ -255,13 +894,13 @@ exports[`/indicators/[slug]/chapters/[chapterSlug].page IndicatorChapterPage sho
             >
               <a
                 aria-current="true"
-                href="/indicators/ind1001-test-indicator-ind-1001-the-percentage-of-patients-with-one-or-more-of-the-following-conditions-chd-atrial-fibrillation-chronic-heart-failure-stroke-or-tia-diabetes-or-dementia-with-a-fast-score-of-3-or-more-or-audit-c-score-of-5-or-more-in-the-preceding-2-years-who-have-received-brief-intervention-to-help-them-reduce-their-alcohol-related-risk-within-3-months-of-the-score-being-recorded/chapters/indicator-nm181"
+                href="/guidance/ng100/chapters/recommendations"
               >
                 <span
                   class="stacked-nav__content-wrapper"
                 >
                   <span>
-                    Indicator NM181
+                    Recommendations
                   </span>
                 </span>
               </a>
@@ -271,13 +910,13 @@ exports[`/indicators/[slug]/chapters/[chapterSlug].page IndicatorChapterPage sho
             >
               <a
                 aria-current="false"
-                href="/indicators/ind1001-test-indicator-ind-1001-the-percentage-of-patients-with-one-or-more-of-the-following-conditions-chd-atrial-fibrillation-chronic-heart-failure-stroke-or-tia-diabetes-or-dementia-with-a-fast-score-of-3-or-more-or-audit-c-score-of-5-or-more-in-the-preceding-2-years-who-have-received-brief-intervention-to-help-them-reduce-their-alcohol-related-risk-within-3-months-of-the-score-being-recorded/chapters/indicator-type"
+                href="/guidance/ng100/chapters/recommendations-for-research"
               >
                 <span
                   class="stacked-nav__content-wrapper"
                 >
                   <span>
-                    Indicator type
+                    Recommendations for research
                   </span>
                 </span>
               </a>
@@ -287,13 +926,13 @@ exports[`/indicators/[slug]/chapters/[chapterSlug].page IndicatorChapterPage sho
             >
               <a
                 aria-current="false"
-                href="/indicators/ind1001-test-indicator-ind-1001-the-percentage-of-patients-with-one-or-more-of-the-following-conditions-chd-atrial-fibrillation-chronic-heart-failure-stroke-or-tia-diabetes-or-dementia-with-a-fast-score-of-3-or-more-or-audit-c-score-of-5-or-more-in-the-preceding-2-years-who-have-received-brief-intervention-to-help-them-reduce-their-alcohol-related-risk-within-3-months-of-the-score-being-recorded/chapters/introduction"
+                href="/guidance/ng100/chapters/rationale-and-impact"
               >
                 <span
                   class="stacked-nav__content-wrapper"
                 >
                   <span>
-                    Introduction
+                    Rationale and impact
                   </span>
                 </span>
               </a>
@@ -303,13 +942,13 @@ exports[`/indicators/[slug]/chapters/[chapterSlug].page IndicatorChapterPage sho
             >
               <a
                 aria-current="false"
-                href="/indicators/ind1001-test-indicator-ind-1001-the-percentage-of-patients-with-one-or-more-of-the-following-conditions-chd-atrial-fibrillation-chronic-heart-failure-stroke-or-tia-diabetes-or-dementia-with-a-fast-score-of-3-or-more-or-audit-c-score-of-5-or-more-in-the-preceding-2-years-who-have-received-brief-intervention-to-help-them-reduce-their-alcohol-related-risk-within-3-months-of-the-score-being-recorded/chapters/rationale"
+                href="/guidance/ng100/chapters/context"
               >
                 <span
                   class="stacked-nav__content-wrapper"
                 >
                   <span>
-                    Rationale
+                    Context
                   </span>
                 </span>
               </a>
@@ -319,13 +958,13 @@ exports[`/indicators/[slug]/chapters/[chapterSlug].page IndicatorChapterPage sho
             >
               <a
                 aria-current="false"
-                href="/indicators/ind1001-test-indicator-ind-1001-the-percentage-of-patients-with-one-or-more-of-the-following-conditions-chd-atrial-fibrillation-chronic-heart-failure-stroke-or-tia-diabetes-or-dementia-with-a-fast-score-of-3-or-more-or-audit-c-score-of-5-or-more-in-the-preceding-2-years-who-have-received-brief-intervention-to-help-them-reduce-their-alcohol-related-risk-within-3-months-of-the-score-being-recorded/chapters/source-guidance"
+                href="/guidance/ng100/chapters/finding-more-information-and-committee-details"
               >
                 <span
                   class="stacked-nav__content-wrapper"
                 >
                   <span>
-                    Source guidance
+                    Finding more information and committee details
                   </span>
                 </span>
               </a>
@@ -335,29 +974,13 @@ exports[`/indicators/[slug]/chapters/[chapterSlug].page IndicatorChapterPage sho
             >
               <a
                 aria-current="false"
-                href="/indicators/ind1001-test-indicator-ind-1001-the-percentage-of-patients-with-one-or-more-of-the-following-conditions-chd-atrial-fibrillation-chronic-heart-failure-stroke-or-tia-diabetes-or-dementia-with-a-fast-score-of-3-or-more-or-audit-c-score-of-5-or-more-in-the-preceding-2-years-who-have-received-brief-intervention-to-help-them-reduce-their-alcohol-related-risk-within-3-months-of-the-score-being-recorded/chapters/specification"
+                href="/guidance/ng100/chapters/update-information"
               >
                 <span
                   class="stacked-nav__content-wrapper"
                 >
                   <span>
-                    Specification
-                  </span>
-                </span>
-              </a>
-            </li>
-            <li
-              class="stacked-nav__list-item"
-            >
-              <a
-                aria-current="false"
-                href="/indicators/ind1001-test-indicator-ind-1001-the-percentage-of-patients-with-one-or-more-of-the-following-conditions-chd-atrial-fibrillation-chronic-heart-failure-stroke-or-tia-diabetes-or-dementia-with-a-fast-score-of-3-or-more-or-audit-c-score-of-5-or-more-in-the-preceding-2-years-who-have-received-brief-intervention-to-help-them-reduce-their-alcohol-related-risk-within-3-months-of-the-score-being-recorded/chapters/further-information"
-              >
-                <span
-                  class="stacked-nav__content-wrapper"
-                >
-                  <span>
-                    Further information
+                    Update information
                   </span>
                 </span>
               </a>
@@ -372,15 +995,100 @@ exports[`/indicators/[slug]/chapters/[chapterSlug].page IndicatorChapterPage sho
           class="grid grid--rev grid--loose"
         >
           <div
-            data-g="12 md:12 lg:12"
+            data-g="12 md:4 lg:3"
+          >
+            <nav
+              aria-labelledby="on-this-page"
+              class="wrapper"
+            >
+              <h2
+                class="heading"
+                id="on-this-page"
+              >
+                On this page
+              </h2>
+              <ol
+                aria-label="Jump links to sections on this page"
+                class="list"
+              >
+                <li>
+                  <a
+                    class=""
+                    href="#referral-diagnosis-and-investigations"
+                  >
+                    1.1 Referral, diagnosis and investigations
+                  </a>
+                </li>
+                <li>
+                  <a
+                    class=""
+                    href="#treat-to-target-strategy"
+                  >
+                    1.2 Treat-to-target strategy
+                  </a>
+                </li>
+                <li>
+                  <a
+                    class=""
+                    href="#communication-and-education"
+                  >
+                    1.3 Communication and education
+                  </a>
+                </li>
+                <li>
+                  <a
+                    class=""
+                    href="#initial-pharmacological-management"
+                  >
+                    1.4 Initial pharmacological management
+                  </a>
+                </li>
+                <li>
+                  <a
+                    class=""
+                    href="#further-pharmacological-management"
+                  >
+                    1.5 Further pharmacological management
+                  </a>
+                </li>
+              </ol>
+              <button
+                class="moreLinksButton"
+                type="button"
+              >
+                <span
+                  class="label"
+                >
+                  <svg
+                    aria-hidden="true"
+                    class="icon"
+                    fill="none"
+                    focusable="false"
+                    height="1em"
+                    viewBox="0 0 512 512"
+                    width="1em"
+                    xmlns="http://www.w3.org/2000/svg"
+                  >
+                    <path
+                      d="M478.152 174c0 10.091-3.525 18.661-10.576 25.712l-186 186c-7.243 7.243-15.909 10.864-26 10.864-10.283 0-18.853-3.621-25.712-10.864l-186-186C36.621 192.853 33 184.283 33 174c0-10.091 3.621-18.757 10.864-26L65 126.576C72.424 119.525 81.09 116 91 116c10.091 0 18.661 3.525 25.712 10.576L255.576 265.44 394.44 126.576c7.051-7.051 15.621-10.576 25.712-10.576 9.909 0 18.576 3.525 26 10.576L467.576 148c7.051 7.424 10.576 16.091 10.576 26Z"
+                      fill="currentColor"
+                    />
+                  </svg>
+                  Show all sections
+                </span>
+              </button>
+            </nav>
+          </div>
+          <div
+            data-g="12 md:8 lg:9"
           >
             <div
               class="chapterContent"
             >
               <div
                 class="chapter"
-                id="ind1001_indicator-nm181"
-                title="Indicator NM181"
+                id="ng100_recommendations"
+                title="Recommendations"
                 xmlns="http://www.w3.org/1999/xhtml"
               >
                 
@@ -391,19 +1099,3296 @@ exports[`/indicators/[slug]/chapters/[chapterSlug].page IndicatorChapterPage sho
                   
     
                   <a
-                    id="indicator-nm181"
+                    id="recommendations"
                   />
-                  Indicator NM181
+                  Recommendations
                 </h2>
                 
   
-                <p>
-                  The percentage of patients with one or more of the following conditions: CHD, atrial fibrillation, chronic heart failure, stroke or TIA, diabetes or dementia with a FAST score of 3 or more or AUDIT-C score of 5 or more 
-                  <a
-                    id="_Hlk13836593"
-                  />
-                  in the preceding 2 years who have received brief intervention to help them reduce their alcohol related risk within 3 months of the score being recorded.
-                </p>
+                <div
+                  class="panel panel--primary"
+                >
+                  
+    
+                  <p>
+                    
+      
+                    <a
+                      id="_Hlk41463321"
+                    />
+                    People have the right to be involved in discussions and make informed decisions about their care, as described in 
+                    <a
+                      class="link"
+                      href="https://www.nice.org.uk/about/nice-communities/nice-and-the-public/making-decisions-about-your-care"
+                      target="_top"
+                    >
+                      making decisions about your care
+                    </a>
+                    .
+                  </p>
+                  
+    
+                  <p>
+                    
+      
+                    <a
+                      class="link"
+                      href="https://www.nice.org.uk/about/what-we-do/our-programmes/nice-guidance/nice-guidelines/making-decisions-using-nice-guidelines"
+                      target="_top"
+                    >
+                      Making decisions using NICE guidelines
+                    </a>
+                     explains how we use words to show the strength (or certainty) of our recommendations, and has information about prescribing medicines (including off-label use), professional guidelines, standards and laws (including on consent and mental capacity), and safeguarding.
+                  </p>
+                  
+  
+                </div>
+                
+  
+                <div
+                  class="section"
+                  id="ng100_1.1-referral-diagnosis-and-investigations"
+                  title="1.1 Referral, diagnosis and investigations"
+                >
+                  
+    
+                  <h3
+                    class="title"
+                  >
+                    
+      
+                    <a
+                      id="referral-diagnosis-and-investigations"
+                    />
+                    1.1 Referral, diagnosis and investigations
+                  </h3>
+                  
+    
+                  <div
+                    class="section"
+                    id="ng100_referral-from-primary-care"
+                    title="Referral from primary care"
+                  >
+                    
+      
+                    <h4
+                      class="title"
+                    >
+                      
+        
+                      <a
+                        id="referral-from-primary-care"
+                      />
+                      Referral from primary care
+                    </h4>
+                    
+      
+                    <div
+                      class="recommendation_text"
+                      id="ng100_1_1_1"
+                    >
+                      
+        
+                      <p
+                        class="numbered-paragraph"
+                      >
+                        
+          
+                        <span
+                          class="paragraph-number"
+                        >
+                          1.1.1 
+                        </span>
+                        Refer for specialist opinion any adult with suspected persistent 
+                        <a
+                          class="link"
+                          data-chapter="recommendations"
+                          data-original-url="#synovitis"
+                          href="recommendations#synovitis"
+                          rel="internal"
+                          target="_top"
+                        >
+                          synovitis
+                        </a>
+                         of undetermined cause. Refer urgently (even with a normal acute-phase response, negative anti-cyclic citrullinated peptide [CCP] antibodies or rheumatoid factor) if any of the following apply:
+                      </p>
+                      
+        
+                      <div
+                        class="itemizedlist indented"
+                      >
+                        
+          
+                        <ul
+                          class="itemizedlist"
+                        >
+                          
+            
+                          <li
+                            class="listitem"
+                          >
+                            
+              
+                            <p>
+                              the small joints of the hands or feet are affected
+                            </p>
+                            
+            
+                          </li>
+                          
+            
+                          <li
+                            class="listitem"
+                          >
+                            
+              
+                            <p>
+                              more than one joint is affected
+                            </p>
+                            
+            
+                          </li>
+                          
+            
+                          <li
+                            class="listitem"
+                          >
+                            
+              
+                            <p>
+                              there has been a delay of 3 months or longer between onset of symptoms and seeking medical advice. 
+                              <strong>
+                                [2009, amended 2018]
+                              </strong>
+                            </p>
+                            
+            
+                          </li>
+                          
+          
+                        </ul>
+                        
+        
+                      </div>
+                      
+      
+                    </div>
+                    
+    
+                  </div>
+                  
+    
+                  <div
+                    class="section"
+                    id="ng100_investigations"
+                    title="Investigations"
+                  >
+                    
+      
+                    <h4
+                      class="title"
+                    >
+                      
+        
+                      <a
+                        id="investigations"
+                      />
+                      Investigations
+                    </h4>
+                    
+      
+                    <p>
+                      If the following investigations are ordered in primary care, they should not delay referral for specialist opinion (see recommendation 1.1.1).
+                    </p>
+                    
+      
+                    <div
+                      class="section"
+                      id="ng100_investigations-for-diagnosis"
+                      title="Investigations for diagnosis"
+                    >
+                      
+        
+                      <h5
+                        class="title"
+                      >
+                        
+          
+                        <a
+                          id="investigations-for-diagnosis"
+                        />
+                        Investigations for diagnosis
+                      </h5>
+                      
+        
+                      <div
+                        class="recommendation_text"
+                        id="ng100_1_1_2"
+                      >
+                        
+          
+                        <p
+                          class="numbered-paragraph"
+                        >
+                          
+            
+                          <span
+                            class="paragraph-number"
+                          >
+                            1.1.2 
+                          </span>
+                          Offer to carry out a blood test for rheumatoid factor in adults with suspected rheumatoid arthritis (RA) who are found to have synovitis on clinical examination. 
+                          <strong>
+                            [2009]
+                          </strong>
+                        </p>
+                        
+        
+                      </div>
+                      
+        
+                      <div
+                        class="recommendation_text"
+                        id="ng100_1_1_3"
+                      >
+                        
+          
+                        <p
+                          class="numbered-paragraph"
+                        >
+                          
+            
+                          <span
+                            class="paragraph-number"
+                          >
+                            1.1.3 
+                          </span>
+                          Consider measuring anti-CCP antibodies in adults with suspected RA if they are negative for rheumatoid factor. 
+                          <strong>
+                            [2009, amended 2018]
+                          </strong>
+                        </p>
+                        
+        
+                      </div>
+                      
+        
+                      <div
+                        class="recommendation_text"
+                        id="ng100_1_1_4"
+                      >
+                        
+          
+                        <p
+                          class="numbered-paragraph"
+                        >
+                          
+            
+                          <span
+                            class="paragraph-number"
+                          >
+                            1.1.4 
+                          </span>
+                          X-ray the hands and feet in adults with suspected RA and persistent synovitis. 
+                          <strong>
+                            [2009, amended 2018]
+                          </strong>
+                        </p>
+                        
+        
+                      </div>
+                      
+      
+                    </div>
+                    
+      
+                    <div
+                      class="section"
+                      id="ng100_investigations-following-diagnosis"
+                      title="Investigations following diagnosis"
+                    >
+                      
+        
+                      <h5
+                        class="title"
+                      >
+                        
+          
+                        <a
+                          id="investigations-following-diagnosis"
+                        />
+                        Investigations following diagnosis
+                      </h5>
+                      
+        
+                      <div
+                        class="recommendation_text"
+                        id="ng100_1_1_5"
+                      >
+                        
+          
+                        <p
+                          class="numbered-paragraph"
+                        >
+                          
+            
+                          <span
+                            class="paragraph-number"
+                          >
+                            1.1.5 
+                          </span>
+                          As soon as possible after establishing a diagnosis of RA:
+                        </p>
+                        
+          
+                        <div
+                          class="itemizedlist indented"
+                        >
+                          
+            
+                          <ul
+                            class="itemizedlist"
+                          >
+                            
+              
+                            <li
+                              class="listitem"
+                            >
+                              
+                
+                              <p>
+                                measure anti-CCP antibodies, unless already measured to inform diagnosis 
+                              </p>
+                              
+              
+                            </li>
+                            
+              
+                            <li
+                              class="listitem"
+                            >
+                              
+                
+                              <p>
+                                X-ray the hands and feet to establish whether erosions are present, unless X-rays were performed to inform diagnosis 
+                              </p>
+                              
+              
+                            </li>
+                            
+              
+                            <li
+                              class="listitem"
+                            >
+                              
+                
+                              <p>
+                                measure functional ability using, for example, the Health Assessment Questionnaire (HAQ), to provide a baseline for assessing the functional response to treatment. 
+                                <strong>
+                                  [2018]
+                                </strong>
+                              </p>
+                              
+              
+                            </li>
+                            
+            
+                          </ul>
+                          
+          
+                        </div>
+                        
+        
+                      </div>
+                      
+        
+                      <div
+                        class="recommendation_text"
+                        id="ng100_1_1_6"
+                      >
+                        
+          
+                        <p
+                          class="numbered-paragraph"
+                        >
+                          
+            
+                          <span
+                            class="paragraph-number"
+                          >
+                            1.1.6 
+                          </span>
+                          If anti-CCP antibodies are present or there are erosions on X-ray: 
+                        </p>
+                        
+          
+                        <div
+                          class="itemizedlist indented"
+                        >
+                          
+            
+                          <ul
+                            class="itemizedlist"
+                          >
+                            
+              
+                            <li
+                              class="listitem"
+                            >
+                              
+                
+                              <p>
+                                advise the person that they have an increased risk of radiological progression but not necessarily an increased risk of poor function, 
+                                <strong>
+                                  and
+                                </strong>
+                              </p>
+                              
+              
+                            </li>
+                            
+              
+                            <li
+                              class="listitem"
+                            >
+                              
+                
+                              <p>
+                                emphasise the importance of monitoring their condition, and seeking rapid access to specialist care if disease worsens or they have a flare. 
+                                <strong>
+                                  [2018]
+                                </strong>
+                              </p>
+                              
+              
+                            </li>
+                            
+            
+                          </ul>
+                          
+          
+                        </div>
+                        
+          
+                        <div
+                          class="panel indented"
+                        >
+                          
+            
+                          <p>
+                            
+              
+                            <a
+                              id="_Hlk44061057"
+                            />
+                            For a short explanation of why the committee made the 2018 recommendations and how they might affect practice, see the 
+                            <a
+                              class="link"
+                              data-chapter="rationale-and-impact"
+                              data-original-url="#investigations-following-diagnosis-2"
+                              href="rationale-and-impact#investigations-following-diagnosis-2"
+                              rel="internal"
+                              target="_top"
+                            >
+                              rationale and impact section on investigations following diagnosis
+                            </a>
+                            .
+                          </p>
+                          
+            
+                          <p>
+                            Full details of the evidence and the committee's discussion are in 
+                            <a
+                              class="link"
+                              href="https://www.nice.org.uk/guidance/ng100/evidence/evidence-review-b-risk-factors-pdf-4903172319"
+                              target="_top"
+                            >
+                              evidence review B: Risk factors
+                            </a>
+                            .
+                          </p>
+                          
+          
+                        </div>
+                        
+        
+                      </div>
+                      
+      
+                    </div>
+                    
+    
+                  </div>
+                  
+  
+                </div>
+                
+  
+                <div
+                  class="section"
+                  id="ng100_1.2-treattotarget-strategy"
+                  title="1.2 Treat-to-target strategy"
+                >
+                  
+    
+                  <h3
+                    class="title"
+                  >
+                    
+      
+                    <a
+                      id="treat-to-target-strategy"
+                    />
+                    1.2 Treat-to-target strategy
+                  </h3>
+                  
+    
+                  <div
+                    class="recommendation_text"
+                    id="ng100_1_2_1"
+                  >
+                    
+      
+                    <p
+                      class="numbered-paragraph"
+                    >
+                      
+        
+                      <span
+                        class="paragraph-number"
+                      >
+                        1.2.1 
+                      </span>
+                      Treat active RA in adults with the aim of achieving a target of remission or low disease activity if remission cannot be achieved (
+                      <a
+                        class="link"
+                        data-chapter="recommendations"
+                        data-original-url="#treat-to-target"
+                        href="recommendations#treat-to-target"
+                        rel="internal"
+                        target="_top"
+                      >
+                        treat-to-target
+                      </a>
+                      ). Achieving the target may involve trying multiple 
+                      <a
+                        class="link"
+                        data-chapter="recommendations"
+                        data-original-url="#conventional-disease-modifying-anti-rheumatic-drugs-cdmards"
+                        href="recommendations#conventional-disease-modifying-anti-rheumatic-drugs-cdmards"
+                        rel="internal"
+                        target="_top"
+                      >
+                        conventional disease-modifying anti-rheumatic drugs
+                      </a>
+                       (cDMARDs) and biological DMARDs with different mechanisms of action, one after the other. 
+                      <strong>
+                        [2018, amended 2020]
+                      </strong>
+                    </p>
+                    
+    
+                  </div>
+                  
+    
+                  <div
+                    class="recommendation_text"
+                    id="ng100_1_2_2"
+                  >
+                    
+      
+                    <p
+                      class="numbered-paragraph"
+                    >
+                      
+        
+                      <span
+                        class="paragraph-number"
+                      >
+                        1.2.2 
+                      </span>
+                      Consider making the target remission rather than low disease activity for people with an increased risk of radiological progression (presence of anti-CCP antibodies or erosions on X-ray at baseline assessment). 
+                      <strong>
+                        [2018]
+                      </strong>
+                    </p>
+                    
+    
+                  </div>
+                  
+    
+                  <div
+                    class="recommendation_text"
+                    id="ng100_1_2_3"
+                  >
+                    
+      
+                    <p
+                      class="numbered-paragraph"
+                    >
+                      
+        
+                      <span
+                        class="paragraph-number"
+                      >
+                        1.2.3 
+                      </span>
+                      In adults with active RA, measure C-reactive protein (CRP) and disease activity (using a composite score such as DAS28) monthly in specialist care until the target of remission or low disease activity is achieved. 
+                      <strong>
+                        [2018]
+                      </strong>
+                    </p>
+                    
+      
+                    <div
+                      class="panel indented"
+                    >
+                      
+        
+                      <p>
+                        For a short explanation of why the committee made the 2018 recommendations and how they might affect practice, see the 
+                        <a
+                          class="link"
+                          data-chapter="rationale-and-impact"
+                          data-original-url="#treat-to-target-strategy-2"
+                          href="rationale-and-impact#treat-to-target-strategy-2"
+                          rel="internal"
+                          target="_top"
+                        >
+                          rationale and impact section on treat-to-target strategy
+                        </a>
+                        .
+                      </p>
+                      
+        
+                      <p>
+                        Full details of the evidence and the committee's discussion are in 
+                        <a
+                          class="link"
+                          href="https://www.nice.org.uk/guidance/ng100/evidence/evidence-review-c-treattotarget-pdf-4903172320"
+                          target="_top"
+                        >
+                          evidence review C: Treat-to-target
+                        </a>
+                        .
+                      </p>
+                      
+      
+                    </div>
+                    
+    
+                  </div>
+                  
+  
+                </div>
+                
+  
+                <div
+                  class="section"
+                  id="ng100_1.3-communication-and-education"
+                  title="1.3 Communication and education"
+                >
+                  
+    
+                  <h3
+                    class="title"
+                  >
+                    
+      
+                    <a
+                      id="communication-and-education"
+                    />
+                    1.3 Communication and education
+                  </h3>
+                  
+    
+                  <div
+                    class="recommendation_text"
+                    id="ng100_1_3_1"
+                  >
+                    
+      
+                    <p
+                      class="numbered-paragraph"
+                    >
+                      
+        
+                      <span
+                        class="paragraph-number"
+                      >
+                        1.3.1 
+                      </span>
+                      Explain the risks and benefits of treatment options to adults with RA in ways that can be easily understood. Throughout the course of their disease, offer them the opportunity to talk about and agree all aspects of their care, and respect the decisions they make. 
+                      <strong>
+                        [2009]
+                      </strong>
+                    </p>
+                    
+    
+                  </div>
+                  
+    
+                  <div
+                    class="recommendation_text"
+                    id="ng100_1_3_2"
+                  >
+                    
+      
+                    <p
+                      class="numbered-paragraph"
+                    >
+                      
+        
+                      <span
+                        class="paragraph-number"
+                      >
+                        1.3.2 
+                      </span>
+                      Offer verbal and written information to adults with RA to:
+                    </p>
+                    
+      
+                    <div
+                      class="itemizedlist indented"
+                    >
+                      
+        
+                      <ul
+                        class="itemizedlist"
+                      >
+                        
+          
+                        <li
+                          class="listitem"
+                        >
+                          
+            
+                          <p>
+                            improve their understanding of the condition and its management, 
+                            <strong>
+                              and
+                            </strong>
+                          </p>
+                          
+          
+                        </li>
+                        
+          
+                        <li
+                          class="listitem"
+                        >
+                          
+            
+                          <p>
+                            counter any misconceptions they may have. 
+                            <strong>
+                              [2009
+                            </strong>
+                            ]
+                          </p>
+                          
+          
+                        </li>
+                        
+        
+                      </ul>
+                      
+      
+                    </div>
+                    
+    
+                  </div>
+                  
+    
+                  <div
+                    class="recommendation_text"
+                    id="ng100_1_3_3"
+                  >
+                    
+      
+                    <p
+                      class="numbered-paragraph"
+                    >
+                      
+        
+                      <span
+                        class="paragraph-number"
+                      >
+                        1.3.3 
+                      </span>
+                      Adults with RA who wish to know more about their disease and its management should be offered the opportunity to take part in existing educational activities, including self-management programmes. 
+                      <strong>
+                        [2009]
+                      </strong>
+                    </p>
+                    
+    
+                  </div>
+                  
+  
+                </div>
+                
+  
+                <div
+                  class="section"
+                  id="ng100_1.4-initial-pharmacological-management"
+                  title="1.4 Initial pharmacological management"
+                >
+                  
+    
+                  <h3
+                    class="title"
+                  >
+                    
+      
+                    <a
+                      id="initial-pharmacological-management"
+                    />
+                    1.4 Initial pharmacological management
+                  </h3>
+                  
+    
+                  <div
+                    class="section"
+                    id="ng100_conventional-diseasemodifying-antirheumatic-drugs"
+                    title="Conventional disease-modifying anti-rheumatic drugs"
+                  >
+                    
+      
+                    <h4
+                      class="title"
+                    >
+                      
+        
+                      <a
+                        id="conventional-disease-modifying-anti-rheumatic-drugs"
+                      />
+                      Conventional disease-modifying anti-rheumatic drugs
+                    </h4>
+                    
+      
+                    <div
+                      class="recommendation_text"
+                      id="ng100_1_4_1"
+                    >
+                      
+        
+                      <p
+                        class="numbered-paragraph"
+                      >
+                        
+          
+                        <span
+                          class="paragraph-number"
+                        >
+                          1.4.1 
+                        </span>
+                        For adults with newly diagnosed active RA:
+                      </p>
+                      
+        
+                      <div
+                        class="itemizedlist indented"
+                      >
+                        
+          
+                        <ul
+                          class="itemizedlist"
+                        >
+                          
+            
+                          <li
+                            class="listitem"
+                          >
+                            
+              
+                            <p>
+                              Offer first-line treatment with cDMARD monotherapy using oral methotrexate, leflunomide or sulfasalazine as soon as possible and ideally within 3 months of onset of persistent symptoms.
+                            </p>
+                            
+            
+                          </li>
+                          
+            
+                          <li
+                            class="listitem"
+                          >
+                            
+              
+                            <p>
+                              Consider hydroxychloroquine for first-line treatment as an alternative to oral methotrexate, leflunomide or sulfasalazine for mild or 
+                              <a
+                                class="link"
+                                data-chapter="recommendations"
+                                data-original-url="#palindromic"
+                                href="recommendations#palindromic"
+                                rel="internal"
+                                target="_top"
+                              >
+                                palindromic
+                              </a>
+                               disease.
+                            </p>
+                            
+            
+                          </li>
+                          
+            
+                          <li
+                            class="listitem"
+                          >
+                            
+              
+                            <p>
+                              Escalate dose as tolerated. 
+                              <strong>
+                                [2018]
+                              </strong>
+                            </p>
+                            
+            
+                          </li>
+                          
+          
+                        </ul>
+                        
+        
+                      </div>
+                      
+      
+                    </div>
+                    
+      
+                    <div
+                      class="recommendation_text"
+                      id="ng100_1_4_2"
+                    >
+                      
+        
+                      <p
+                        class="numbered-paragraph"
+                      >
+                        
+          
+                        <span
+                          class="paragraph-number"
+                        >
+                          1.4.2 
+                        </span>
+                        
+          
+                        <a
+                          id="Short_term_bridging"
+                        />
+                        Consider short-term 
+                        <a
+                          class="link"
+                          data-chapter="recommendations"
+                          data-original-url="#bridging-treatment"
+                          href="recommendations#bridging-treatment"
+                          rel="internal"
+                          target="_top"
+                        >
+                          bridging treatment
+                        </a>
+                         with glucocorticoids (oral, intramuscular or intra-articular) when starting a new cDMARD. 
+                        <strong>
+                          [2018]
+                        </strong>
+                      </p>
+                      
+        
+                      <div
+                        class="panel indented"
+                      >
+                        
+          
+                        <p>
+                          
+            
+                          <a
+                            id="_Hlk83853224"
+                          />
+                          For a short explanation of why the committee made the 2018 recommendations and how they might affect practice, see the 
+                          <a
+                            class="link"
+                            data-chapter="rationale-and-impact"
+                            data-original-url="#short-term-bridging-treatment-with-glucocorticoids"
+                            href="rationale-and-impact#short-term-bridging-treatment-with-glucocorticoids"
+                            rel="internal"
+                            target="_top"
+                          >
+                            rationale and impact section on short-term bridging treatment with glucocorticoids
+                          </a>
+                          .
+                        </p>
+                        
+          
+                        <p>
+                          Full details of the evidence and the committee's discussion are in 
+                          <a
+                            class="link"
+                            href="https://www.nice.org.uk/guidance/ng100/evidence/evidence-review-h-glucocorticoids-pdf-4903172325"
+                            target="_top"
+                          >
+                            evidence review H: Glucocorticoids
+                          </a>
+                          .
+                        </p>
+                        
+        
+                      </div>
+                      
+      
+                    </div>
+                    
+      
+                    <div
+                      class="recommendation_text"
+                      id="ng100_1_4_3"
+                    >
+                      
+        
+                      <p
+                        class="numbered-paragraph"
+                      >
+                        
+          
+                        <span
+                          class="paragraph-number"
+                        >
+                          1.4.3 
+                        </span>
+                        Offer additional cDMARDs (oral methotrexate, leflunomide, sulfasalazine or hydroxychloroquine) in combination in a 
+                        <a
+                          class="link"
+                          data-chapter="recommendations"
+                          data-original-url="#step-up-strategy"
+                          href="recommendations#step-up-strategy"
+                          rel="internal"
+                          target="_top"
+                        >
+                          step-up strategy
+                        </a>
+                         when the treatment target (remission or low disease activity) has not been achieved despite dose escalation. 
+                        <strong>
+                          [2018]
+                        </strong>
+                      </p>
+                      
+        
+                      <div
+                        class="panel indented"
+                      >
+                        
+          
+                        <p>
+                          For a short explanation of why the committee made the 2018 recommendations and how they might affect practice, see the 
+                          <a
+                            class="link"
+                            data-chapter="rationale-and-impact"
+                            data-original-url="#dmards"
+                            href="rationale-and-impact#dmards"
+                            rel="internal"
+                            target="_top"
+                          >
+                            rationale and impact section on DMARDs
+                          </a>
+                          .
+                        </p>
+                        
+          
+                        <p>
+                          Full details of the evidence and the committee's discussion are in 
+                          <a
+                            class="link"
+                            href="https://www.nice.org.uk/guidance/ng100/evidence/evidence-review-f-dmards-pdf-4903172323"
+                            target="_top"
+                          >
+                            evidence review F: DMARDs
+                          </a>
+                          .
+                        </p>
+                        
+        
+                      </div>
+                      
+      
+                    </div>
+                    
+    
+                  </div>
+                  
+  
+                </div>
+                
+  
+                <div
+                  class="section"
+                  id="ng100_1.5-further-pharmacological-management"
+                  title="1.5 Further pharmacological management"
+                >
+                  
+    
+                  <h3
+                    class="title"
+                  >
+                    
+      
+                    <a
+                      id="further-pharmacological-management"
+                    />
+                    1.5 Further pharmacological management
+                  </h3>
+                  
+    
+                  <div
+                    class="section"
+                    id="ng100_biological-and-targeted-synthetic-dmards"
+                    title="Biological and targeted synthetic DMARDs"
+                  >
+                    
+      
+                    <h4
+                      class="title"
+                    >
+                      
+        
+                      <a
+                        id="biological-and-targeted-synthetic-dmards"
+                      />
+                      Biological and targeted synthetic DMARDs
+                    </h4>
+                    
+      
+                    <p>
+                      NICE has published technology appraisal guidance on biological and targeted synthetic DMARDs for RA. For full details, see 
+                      <a
+                        class="link"
+                        href="https://www.nice.org.uk/guidance/conditions-and-diseases/musculoskeletal-conditions/arthritis/products?GuidanceProgramme=TA"
+                        target="_top"
+                      >
+                        our topic page on arthritis
+                      </a>
+                      . For guidance on using DMARDs to achieve treatment targets, see 
+                      <a
+                        class="link"
+                        data-chapter="recommendations"
+                        data-original-url="#treat-to-target-strategy"
+                        href="recommendations#treat-to-target-strategy"
+                        rel="internal"
+                        target="_top"
+                      >
+                        recommendation 1.2.1
+                      </a>
+                      .
+                    </p>
+                    
+      
+                    <p>
+                      The recommendations below are from NICE technology appraisal guidance 72. The 2009 guideline committee reviewed the evidence on anakinra and incorporated the recommendations into the guideline. The technology appraisal was then withdrawn.
+                    </p>
+                    
+      
+                    <div
+                      class="recommendation_text"
+                      id="ng100_1_5_1"
+                    >
+                      
+        
+                      <p
+                        class="numbered-paragraph"
+                      >
+                        
+          
+                        <span
+                          class="paragraph-number"
+                        >
+                          1.5.1 
+                        </span>
+                        On the balance of its clinical benefits and cost effectiveness, anakinra is not recommended for the treatment of RA, except in the context of a controlled, long-term clinical study. 
+                        <strong>
+                          [2009]
+                        </strong>
+                      </p>
+                      
+      
+                    </div>
+                    
+      
+                    <div
+                      class="recommendation_text"
+                      id="ng100_1_5_2"
+                    >
+                      
+        
+                      <p
+                        class="numbered-paragraph"
+                      >
+                        
+          
+                        <span
+                          class="paragraph-number"
+                        >
+                          1.5.2 
+                        </span>
+                        Patients currently receiving anakinra for RA may suffer loss of wellbeing if their treatment were discontinued at a time they did not anticipate. Therefore, patients should continue therapy with anakinra until they and their consultant consider it is appropriate to stop. 
+                        <strong>
+                          [2009]
+                        </strong>
+                      </p>
+                      
+      
+                    </div>
+                    
+      
+                    <div
+                      class="recommendation_text"
+                      id="ng100_1_5_3"
+                    >
+                      
+        
+                      <p
+                        class="numbered-paragraph"
+                      >
+                        
+          
+                        <span
+                          class="paragraph-number"
+                        >
+                          1.5.3 
+                        </span>
+                        Do not offer the combination of tumour necrosis factor-α (TNF-α) inhibitor therapy and anakinra for RA. 
+                        <strong>
+                          [2009]
+                        </strong>
+                      </p>
+                      
+      
+                    </div>
+                    
+    
+                  </div>
+                  
+    
+                  <div
+                    class="section"
+                    id="ng100_glucocorticoids"
+                    title="Glucocorticoids"
+                  >
+                    
+      
+                    <h4
+                      class="title"
+                    >
+                      
+        
+                      <a
+                        id="glucocorticoids"
+                      />
+                      Glucocorticoids
+                    </h4>
+                    
+      
+                    <div
+                      class="recommendation_text"
+                      id="ng100_1_5_4"
+                    >
+                      
+        
+                      <p
+                        class="numbered-paragraph"
+                      >
+                        
+          
+                        <span
+                          class="paragraph-number"
+                        >
+                          1.5.4 
+                        </span>
+                        Offer short-term treatment with glucocorticoids for managing flares in adults with recent-onset or established disease to rapidly decrease inflammation. 
+                        <strong>
+                          [2009]
+                        </strong>
+                      </p>
+                      
+      
+                    </div>
+                    
+      
+                    <div
+                      class="recommendation_text"
+                      id="ng100_1_5_5"
+                    >
+                      
+        
+                      <p
+                        class="numbered-paragraph"
+                      >
+                        
+          
+                        <span
+                          class="paragraph-number"
+                        >
+                          1.5.5 
+                        </span>
+                        In adults with established RA, only continue long-term treatment with glucocorticoids when:
+                      </p>
+                      
+        
+                      <div
+                        class="itemizedlist indented"
+                      >
+                        
+          
+                        <ul
+                          class="itemizedlist"
+                        >
+                          
+            
+                          <li
+                            class="listitem"
+                          >
+                            
+              
+                            <p>
+                              the long-term complications of glucocorticoid therapy have been fully discussed, 
+                              <strong>
+                                and
+                              </strong>
+                            </p>
+                            
+            
+                          </li>
+                          
+            
+                          <li
+                            class="listitem"
+                          >
+                            
+              
+                            <p>
+                              all other treatment options (including biological and targeted synthetic DMARDs) have been offered. 
+                              <strong>
+                                [2009, amended 2018]
+                              </strong>
+                            </p>
+                            
+            
+                          </li>
+                          
+          
+                        </ul>
+                        
+        
+                      </div>
+                      
+      
+                    </div>
+                    
+    
+                  </div>
+                  
+  
+                </div>
+                
+  
+                <div
+                  class="section"
+                  id="ng100_1.6-symptom-control"
+                  title="1.6 Symptom control"
+                >
+                  
+    
+                  <h3
+                    class="title"
+                  >
+                    
+      
+                    <a
+                      id="symptom-control"
+                    />
+                    1.6 Symptom control
+                  </h3>
+                  
+    
+                  <div
+                    class="recommendation_text"
+                    id="ng100_1_6_1"
+                  >
+                    
+      
+                    <p
+                      class="numbered-paragraph"
+                    >
+                      
+        
+                      <span
+                        class="paragraph-number"
+                      >
+                        1.6.1 
+                      </span>
+                      Consider oral non-steroidal anti-inflammatory drugs (NSAIDs, including traditional NSAIDs and cox II selective inhibitors), when control of pain or stiffness is inadequate. Take account of potential gastrointestinal, liver and cardio-renal toxicity, and the person's risk factors, including age and pregnancy. 
+                      <strong>
+                        [2018]
+                      </strong>
+                    </p>
+                    
+    
+                  </div>
+                  
+    
+                  <div
+                    class="recommendation_text"
+                    id="ng100_1_6_2"
+                  >
+                    
+      
+                    <p
+                      class="numbered-paragraph"
+                    >
+                      
+        
+                      <span
+                        class="paragraph-number"
+                      >
+                        1.6.2 
+                      </span>
+                      When treating symptoms of RA with oral NSAIDs:
+                    </p>
+                    
+      
+                    <div
+                      class="itemizedlist indented"
+                    >
+                      
+        
+                      <ul
+                        class="itemizedlist"
+                      >
+                        
+          
+                        <li
+                          class="listitem"
+                        >
+                          
+            
+                          <p>
+                            offer the lowest effective dose for the shortest possible time
+                          </p>
+                          
+          
+                        </li>
+                        
+          
+                        <li
+                          class="listitem"
+                        >
+                          
+            
+                          <p>
+                            offer a proton pump inhibitor (PPI), 
+                            <strong>
+                              and
+                            </strong>
+                          </p>
+                          
+          
+                        </li>
+                        
+          
+                        <li
+                          class="listitem"
+                        >
+                          
+            
+                          <p>
+                            review risk factors for adverse events regularly. 
+                            <strong>
+                              [2018]
+                            </strong>
+                          </p>
+                          
+          
+                        </li>
+                        
+        
+                      </ul>
+                      
+      
+                    </div>
+                    
+    
+                  </div>
+                  
+    
+                  <div
+                    class="recommendation_text"
+                    id="ng100_1_6_3"
+                  >
+                    
+      
+                    <p
+                      class="numbered-paragraph"
+                    >
+                      
+        
+                      <span
+                        class="paragraph-number"
+                      >
+                        1.6.3 
+                      </span>
+                      If a person with RA needs to take low-dose aspirin, healthcare professionals should consider other treatments before adding an NSAID (with a PPI) if pain relief is ineffective or insufficient. 
+                      <strong>
+                        [2009, amended 2018]
+                      </strong>
+                    </p>
+                    
+      
+                    <div
+                      class="panel indented"
+                    >
+                      
+        
+                      <p>
+                        For a short explanation of why the committee made the 2018 recommendations and how they might affect practice, see the 
+                        <a
+                          class="link"
+                          data-chapter="rationale-and-impact"
+                          data-original-url="#symptom-control-2"
+                          href="rationale-and-impact#symptom-control-2"
+                          rel="internal"
+                          target="_top"
+                        >
+                          rationale and impact section on symptom control
+                        </a>
+                        .
+                      </p>
+                      
+        
+                      <p>
+                        Full details of the evidence and the committee's discussion are in 
+                        <a
+                          class="link"
+                          href="https://www.nice.org.uk/guidance/ng100/evidence/evidence-review-g-analgesics-pdf-4903172324"
+                          target="_top"
+                        >
+                          evidence review G: Analgesics
+                        </a>
+                        .
+                      </p>
+                      
+      
+                    </div>
+                    
+    
+                  </div>
+                  
+  
+                </div>
+                
+  
+                <div
+                  class="section"
+                  id="ng100_1.7-the-multidisciplinary-team"
+                  title="1.7 The multidisciplinary team"
+                >
+                  
+    
+                  <h3
+                    class="title"
+                  >
+                    
+      
+                    <a
+                      id="the-multidisciplinary-team"
+                    />
+                    1.7 The multidisciplinary team
+                  </h3>
+                  
+    
+                  <div
+                    class="recommendation_text"
+                    id="ng100_1_7_1"
+                  >
+                    
+      
+                    <p
+                      class="numbered-paragraph"
+                    >
+                      
+        
+                      <span
+                        class="paragraph-number"
+                      >
+                        1.7.1 
+                      </span>
+                      Adults with RA should have ongoing access to a multidisciplinary team. This should provide the opportunity for periodic assessments (see 1.9.2 and 1.9.3) of the effect of the disease on their lives (such as pain, fatigue, everyday activities, mobility, ability to work or take part in social or leisure activities, quality of life, mood, impact on sexual relationships) and help to manage the condition. 
+                      <strong>
+                        [2009]
+                      </strong>
+                    </p>
+                    
+    
+                  </div>
+                  
+    
+                  <div
+                    class="recommendation_text"
+                    id="ng100_1_7_2"
+                  >
+                    
+      
+                    <p
+                      class="numbered-paragraph"
+                    >
+                      
+        
+                      <span
+                        class="paragraph-number"
+                      >
+                        1.7.2 
+                      </span>
+                      Adults with RA should have access to a named member of the multidisciplinary team (for example, the specialist nurse) who is responsible for coordinating their care. 
+                      <strong>
+                        [2009]
+                      </strong>
+                    </p>
+                    
+    
+                  </div>
+                  
+  
+                </div>
+                
+  
+                <div
+                  class="section"
+                  id="ng100_1.8-nonpharmacological-management"
+                  title="1.8 Non-pharmacological management"
+                >
+                  
+    
+                  <h3
+                    class="title"
+                  >
+                    
+      
+                    <a
+                      id="non-pharmacological-management"
+                    />
+                    1.8 Non-pharmacological management
+                  </h3>
+                  
+    
+                  <div
+                    class="section"
+                    id="ng100_physiotherapy"
+                    title="Physiotherapy"
+                  >
+                    
+      
+                    <h4
+                      class="title"
+                    >
+                      
+        
+                      <a
+                        id="physiotherapy"
+                      />
+                      Physiotherapy
+                    </h4>
+                    
+      
+                    <div
+                      class="recommendation_text"
+                      id="ng100_1_8_1"
+                    >
+                      
+        
+                      <p
+                        class="numbered-paragraph"
+                      >
+                        
+          
+                        <span
+                          class="paragraph-number"
+                        >
+                          1.8.1 
+                        </span>
+                        Adults with RA should have access to specialist physiotherapy, with periodic review (see 1.9.2 and 1.9.3), to:
+                      </p>
+                      
+        
+                      <div
+                        class="itemizedlist indented"
+                      >
+                        
+          
+                        <ul
+                          class="itemizedlist"
+                        >
+                          
+            
+                          <li
+                            class="listitem"
+                          >
+                            
+              
+                            <p>
+                              improve general fitness and encourage regular exercise
+                            </p>
+                            
+            
+                          </li>
+                          
+            
+                          <li
+                            class="listitem"
+                          >
+                            
+              
+                            <p>
+                              learn exercises for enhancing joint flexibility, muscle strength and managing other functional impairments
+                            </p>
+                            
+            
+                          </li>
+                          
+            
+                          <li
+                            class="listitem"
+                          >
+                            
+              
+                            <p>
+                              learn about the short-term pain relief provided by methods such as transcutaneous electrical nerve stimulators (TENS) and wax baths. 
+                              <strong>
+                                [2009]
+                              </strong>
+                            </p>
+                            
+            
+                          </li>
+                          
+          
+                        </ul>
+                        
+        
+                      </div>
+                      
+      
+                    </div>
+                    
+    
+                  </div>
+                  
+    
+                  <div
+                    class="section"
+                    id="ng100_occupational-therapy"
+                    title="Occupational therapy"
+                  >
+                    
+      
+                    <h4
+                      class="title"
+                    >
+                      
+        
+                      <a
+                        id="occupational-therapy"
+                      />
+                      Occupational therapy
+                    </h4>
+                    
+      
+                    <div
+                      class="recommendation_text"
+                      id="ng100_1_8_2"
+                    >
+                      
+        
+                      <p
+                        class="numbered-paragraph"
+                      >
+                        
+          
+                        <span
+                          class="paragraph-number"
+                        >
+                          1.8.2 
+                        </span>
+                        Adults with RA should have access to specialist occupational therapy, with periodic review (see 1.9.2 and 1.9.3), if they have:
+                      </p>
+                      
+        
+                      <div
+                        class="itemizedlist indented"
+                      >
+                        
+          
+                        <ul
+                          class="itemizedlist"
+                        >
+                          
+            
+                          <li
+                            class="listitem"
+                          >
+                            
+              
+                            <p>
+                              difficulties with any of their everyday activities, 
+                              <strong>
+                                or
+                              </strong>
+                            </p>
+                            
+            
+                          </li>
+                          
+            
+                          <li
+                            class="listitem"
+                          >
+                            
+              
+                            <p>
+                              problems with hand function. 
+                              <strong>
+                                [2009]
+                              </strong>
+                            </p>
+                            
+            
+                          </li>
+                          
+          
+                        </ul>
+                        
+        
+                      </div>
+                      
+      
+                    </div>
+                    
+    
+                  </div>
+                  
+    
+                  <div
+                    class="section"
+                    id="ng100_hand-exercise-programmes"
+                    title="Hand exercise programmes"
+                  >
+                    
+      
+                    <h4
+                      class="title"
+                    >
+                      
+        
+                      <a
+                        id="hand-exercise-programmes"
+                      />
+                      Hand exercise programmes
+                    </h4>
+                    
+      
+                    <div
+                      class="recommendation_text"
+                      id="ng100_1_8_3"
+                    >
+                      
+        
+                      <p
+                        class="numbered-paragraph"
+                      >
+                        
+          
+                        <span
+                          class="paragraph-number"
+                        >
+                          1.8.3 
+                        </span>
+                        Consider a tailored strengthening and stretching hand exercise programme for adults with RA with pain and dysfunction of the hands or wrists if:
+                      </p>
+                      
+        
+                      <div
+                        class="itemizedlist indented"
+                      >
+                        
+          
+                        <ul
+                          class="itemizedlist"
+                        >
+                          
+            
+                          <li
+                            class="listitem"
+                          >
+                            
+              
+                            <p>
+                              they are not on a drug regimen for RA, 
+                              <strong>
+                                or
+                              </strong>
+                            </p>
+                            
+            
+                          </li>
+                          
+            
+                          <li
+                            class="listitem"
+                          >
+                            
+              
+                            <p>
+                              they have been on a stable drug regimen for RA for at least 3 months. 
+                              <strong>
+                                [2015]
+                              </strong>
+                            </p>
+                            
+            
+                          </li>
+                          
+          
+                        </ul>
+                        
+        
+                      </div>
+                      
+      
+                    </div>
+                    
+      
+                    <div
+                      class="recommendation_text"
+                      id="ng100_1_8_4"
+                    >
+                      
+        
+                      <p
+                        class="numbered-paragraph"
+                      >
+                        
+          
+                        <span
+                          class="paragraph-number"
+                        >
+                          1.8.4 
+                        </span>
+                        The tailored hand exercise programme for adults with RA should be delivered by a practitioner with training and skills in this area. 
+                        <strong>
+                          [2015]
+                        </strong>
+                      </p>
+                      
+      
+                    </div>
+                    
+    
+                  </div>
+                  
+    
+                  <div
+                    class="section"
+                    id="ng100_podiatry"
+                    title="Podiatry"
+                  >
+                    
+      
+                    <h4
+                      class="title"
+                    >
+                      
+        
+                      <a
+                        id="podiatry"
+                      />
+                      Podiatry
+                    </h4>
+                    
+      
+                    <div
+                      class="recommendation_text"
+                      id="ng100_1_8_5"
+                    >
+                      
+        
+                      <p
+                        class="numbered-paragraph"
+                      >
+                        
+          
+                        <span
+                          class="paragraph-number"
+                        >
+                          1.8.5 
+                        </span>
+                        All adults with RA and foot problems should have access to a podiatrist for assessment and periodic review of their foot health needs (see 1.9.2 and 1.9.3). 
+                        <strong>
+                          [2009]
+                        </strong>
+                      </p>
+                      
+      
+                    </div>
+                    
+      
+                    <div
+                      class="recommendation_text"
+                      id="ng100_1_8_6"
+                    >
+                      
+        
+                      <p
+                        class="numbered-paragraph"
+                      >
+                        
+          
+                        <span
+                          class="paragraph-number"
+                        >
+                          1.8.6 
+                        </span>
+                        Functional insoles and therapeutic footwear should be available for all adults with RA if indicated. 
+                        <strong>
+                          [2009]
+                        </strong>
+                      </p>
+                      
+      
+                    </div>
+                    
+    
+                  </div>
+                  
+    
+                  <div
+                    class="section"
+                    id="ng100_psychological-interventions"
+                    title="Psychological interventions"
+                  >
+                    
+      
+                    <h4
+                      class="title"
+                    >
+                      
+        
+                      <a
+                        id="psychological-interventions"
+                      />
+                      Psychological interventions
+                    </h4>
+                    
+      
+                    <div
+                      class="recommendation_text"
+                      id="ng100_1_8_7"
+                    >
+                      
+        
+                      <p
+                        class="numbered-paragraph"
+                      >
+                        
+          
+                        <span
+                          class="paragraph-number"
+                        >
+                          1.8.7 
+                        </span>
+                        Offer psychological interventions (for example, relaxation, stress management and cognitive coping skills [such as managing negative thinking]) to help adults with RA adjust to living with their condition. 
+                        <strong>
+                          [2009]
+                        </strong>
+                      </p>
+                      
+        
+                      <p>
+                        NICE has published a 
+                        <a
+                          class="link"
+                          data-original-url="https://www.nice.org.uk/guidance/cg91"
+                          href="https://www.nice.org.uk/guidance/cg91"
+                          target="_top"
+                        >
+                          guideline on depression in adults with a chronic physical health problem
+                        </a>
+                        .
+                      </p>
+                      
+      
+                    </div>
+                    
+    
+                  </div>
+                  
+    
+                  <div
+                    class="section"
+                    id="ng100_diet-and-complementary-therapies"
+                    title="Diet and complementary therapies"
+                  >
+                    
+      
+                    <h4
+                      class="title"
+                    >
+                      
+        
+                      <a
+                        id="diet-and-complementary-therapies"
+                      />
+                      Diet and complementary therapies
+                    </h4>
+                    
+      
+                    <div
+                      class="recommendation_text"
+                      id="ng100_1_8_8"
+                    >
+                      
+        
+                      <p
+                        class="numbered-paragraph"
+                      >
+                        
+          
+                        <span
+                          class="paragraph-number"
+                        >
+                          1.8.8 
+                        </span>
+                        Inform adults with RA who wish to experiment with their diet that there is no strong evidence that their arthritis will benefit. However, they could be encouraged to follow the principles of a Mediterranean diet (more bread, fruit, vegetables and fish; less meat; and replace butter and cheese with products based on vegetable and plant oils). 
+                        <strong>
+                          [2009]
+                        </strong>
+                      </p>
+                      
+      
+                    </div>
+                    
+      
+                    <div
+                      class="recommendation_text"
+                      id="ng100_1_8_9"
+                    >
+                      
+        
+                      <p
+                        class="numbered-paragraph"
+                      >
+                        
+          
+                        <span
+                          class="paragraph-number"
+                        >
+                          1.8.9 
+                        </span>
+                        Inform adults with RA who wish to try complementary therapies that although some may provide short-term symptomatic benefit, there is little or no evidence for their long-term efficacy. 
+                        <strong>
+                          [2009]
+                        </strong>
+                      </p>
+                      
+      
+                    </div>
+                    
+      
+                    <div
+                      class="recommendation_text"
+                      id="ng100_1_8_10"
+                    >
+                      
+        
+                      <p
+                        class="numbered-paragraph"
+                      >
+                        
+          
+                        <span
+                          class="paragraph-number"
+                        >
+                          1.8.10 
+                        </span>
+                        If an adult with RA decides to try complementary therapies, advise them:
+                      </p>
+                      
+        
+                      <div
+                        class="itemizedlist indented"
+                      >
+                        
+          
+                        <ul
+                          class="itemizedlist"
+                        >
+                          
+            
+                          <li
+                            class="listitem"
+                          >
+                            
+              
+                            <p>
+                              these approaches should not replace conventional treatment
+                            </p>
+                            
+            
+                          </li>
+                          
+            
+                          <li
+                            class="listitem"
+                          >
+                            
+              
+                            <p>
+                              this should not prejudice the attitudes of members of the multidisciplinary team, or affect the care offered. 
+                              <strong>
+                                [2009]
+                              </strong>
+                            </p>
+                            
+            
+                          </li>
+                          
+          
+                        </ul>
+                        
+        
+                      </div>
+                      
+      
+                    </div>
+                    
+    
+                  </div>
+                  
+  
+                </div>
+                
+  
+                <div
+                  class="section"
+                  id="ng100_1.9-monitoring"
+                  title="1.9 Monitoring"
+                >
+                  
+    
+                  <h3
+                    class="title"
+                  >
+                    
+      
+                    <a
+                      id="monitoring"
+                    />
+                    1.9 Monitoring
+                  </h3>
+                  
+    
+                  <div
+                    class="recommendation_text"
+                    id="ng100_1_9_1"
+                  >
+                    
+      
+                    <p
+                      class="numbered-paragraph"
+                    >
+                      
+        
+                      <span
+                        class="paragraph-number"
+                      >
+                        1.9.1 
+                      </span>
+                      Ensure that all adults with RA have:
+                    </p>
+                    
+      
+                    <div
+                      class="itemizedlist indented"
+                    >
+                      
+        
+                      <ul
+                        class="itemizedlist"
+                      >
+                        
+          
+                        <li
+                          class="listitem"
+                        >
+                          
+            
+                          <p>
+                            rapid access to specialist care for flares
+                          </p>
+                          
+          
+                        </li>
+                        
+          
+                        <li
+                          class="listitem"
+                        >
+                          
+            
+                          <p>
+                            information about when and how to access specialist care, 
+                            <strong>
+                              and
+                            </strong>
+                          </p>
+                          
+          
+                        </li>
+                        
+          
+                        <li
+                          class="listitem"
+                        >
+                          
+            
+                          <p>
+                            ongoing drug monitoring. 
+                            <strong>
+                              [2018]
+                            </strong>
+                          </p>
+                          
+          
+                        </li>
+                        
+        
+                      </ul>
+                      
+      
+                    </div>
+                    
+    
+                  </div>
+                  
+    
+                  <div
+                    class="recommendation_text"
+                    id="ng100_1_9_2"
+                  >
+                    
+      
+                    <p
+                      class="numbered-paragraph"
+                    >
+                      
+        
+                      <span
+                        class="paragraph-number"
+                      >
+                        1.9.2 
+                      </span>
+                      Consider a review appointment to take place 6 months after achieving treatment target (remission or low disease activity) to ensure that the target has been maintained. 
+                      <strong>
+                        [2018]
+                      </strong>
+                    </p>
+                    
+    
+                  </div>
+                  
+    
+                  <div
+                    class="recommendation_text"
+                    id="ng100_1_9_3"
+                  >
+                    
+      
+                    <p
+                      class="numbered-paragraph"
+                    >
+                      
+        
+                      <span
+                        class="paragraph-number"
+                      >
+                        1.9.3 
+                      </span>
+                      Offer all adults with RA, including those who have achieved the treatment target, an annual review to:
+                    </p>
+                    
+      
+                    <div
+                      class="itemizedlist indented"
+                    >
+                      
+        
+                      <ul
+                        class="itemizedlist"
+                      >
+                        
+          
+                        <li
+                          class="listitem"
+                        >
+                          
+            
+                          <p>
+                            assess disease activity and damage, and measure functional ability (using, for example, the Health Assessment Questionnaire [HAQ])
+                          </p>
+                          
+          
+                        </li>
+                        
+          
+                        <li
+                          class="listitem"
+                        >
+                          
+            
+                          <p>
+                            check for the development of comorbidities, such as hypertension, ischaemic heart disease, osteoporosis and depression
+                          </p>
+                          
+          
+                        </li>
+                        
+          
+                        <li
+                          class="listitem"
+                        >
+                          
+            
+                          <p>
+                            assess symptoms that suggest complications, such as vasculitis and disease of the cervical spine, lung or eyes
+                          </p>
+                          
+          
+                        </li>
+                        
+          
+                        <li
+                          class="listitem"
+                        >
+                          
+            
+                          <p>
+                            organise appropriate cross referral within the multidisciplinary team
+                          </p>
+                          
+          
+                        </li>
+                        
+          
+                        <li
+                          class="listitem"
+                        >
+                          
+            
+                          <p>
+                            assess the need for referral for surgery (see section 1.10)
+                          </p>
+                          
+          
+                        </li>
+                        
+          
+                        <li
+                          class="listitem"
+                        >
+                          
+            
+                          <p>
+                            assess the effect the disease is having on a person's life.
+                            <br />
+                            <br />
+                            Follow 
+                            <a
+                              class="link"
+                              data-chapter="recommendations"
+                              data-original-url="#treat-to-target-strategy"
+                              href="recommendations#treat-to-target-strategy"
+                              rel="internal"
+                              target="_top"
+                            >
+                              recommendation 1.2.1
+                            </a>
+                             if the target is not maintained. 
+                            <strong>
+                              [2009, amended 2020]
+                            </strong>
+                          </p>
+                          
+          
+                        </li>
+                        
+        
+                      </ul>
+                      
+      
+                    </div>
+                    
+    
+                  </div>
+                  
+    
+                  <div
+                    class="recommendation_text"
+                    id="ng100_1_9_4"
+                  >
+                    
+      
+                    <p
+                      class="numbered-paragraph"
+                    >
+                      
+        
+                      <span
+                        class="paragraph-number"
+                      >
+                        1.9.4 
+                      </span>
+                      For adults who have maintained the treatment target (remission or low disease activity) for at least 1 year without glucocorticoids, consider cautiously reducing drug doses or stopping drugs in a 
+                      <a
+                        class="link"
+                        data-chapter="recommendations"
+                        data-original-url="#step-down-strategy"
+                        href="recommendations#step-down-strategy"
+                        rel="internal"
+                        target="_top"
+                      >
+                        step-down strategy
+                      </a>
+                      . Return promptly to the previous DMARD regimen if the treatment target is no longer met. 
+                      <strong>
+                        [2018]
+                      </strong>
+                    </p>
+                    
+    
+                  </div>
+                  
+    
+                  <div
+                    class="recommendation_text"
+                    id="ng100_1_9_5"
+                  >
+                    
+      
+                    <p
+                      class="numbered-paragraph"
+                    >
+                      
+        
+                      <span
+                        class="paragraph-number"
+                      >
+                        1.9.5 
+                      </span>
+                      Do not use ultrasound for routine monitoring of disease activity in adults with RA. 
+                      <strong>
+                        [2018]
+                      </strong>
+                    </p>
+                    
+      
+                    <div
+                      class="panel indented"
+                    >
+                      
+        
+                      <p>
+                        
+          
+                        <a
+                          id="_Hlk83853309"
+                        />
+                        For a short explanation of why the committee made the 2018 recommendations and how they might affect practice, see 
+                        <a
+                          class="link"
+                          data-chapter="rationale-and-impact"
+                          data-original-url="#monitoring-2"
+                          href="rationale-and-impact#monitoring-2"
+                          rel="internal"
+                          target="_top"
+                        >
+                          rationale and impact section on monitoring
+                        </a>
+                        . 
+                      </p>
+                      
+        
+                      <p>
+                        Full details of the evidence and the committee's discussion are in 
+                        <a
+                          class="link"
+                          href="https://www.nice.org.uk/guidance/ng100/evidence/evidence-review-e-frequency-of-monitoring-pdf-4903172322"
+                          target="_top"
+                        >
+                          evidence review E: Frequency of monitoring
+                        </a>
+                        .
+                      </p>
+                      
+      
+                    </div>
+                    
+    
+                  </div>
+                  
+  
+                </div>
+                
+  
+                <div
+                  class="section"
+                  id="ng100_1.10-timing-and-referral-for-surgery"
+                  title="1.10 Timing and referral for surgery"
+                >
+                  
+    
+                  <h3
+                    class="title"
+                  >
+                    
+      
+                    <a
+                      id="timing-and-referral-for-surgery"
+                    />
+                    1.10 Timing and referral for surgery
+                  </h3>
+                  
+    
+                  <div
+                    class="recommendation_text"
+                    id="ng100_1_10_1"
+                  >
+                    
+      
+                    <p
+                      class="numbered-paragraph"
+                    >
+                      
+        
+                      <span
+                        class="paragraph-number"
+                      >
+                        1.10.1 
+                      </span>
+                      Offer to refer adults with RA for an early specialist surgical opinion if any of the following do not respond to optimal non-surgical management:
+                    </p>
+                    
+      
+                    <div
+                      class="itemizedlist indented"
+                    >
+                      
+        
+                      <ul
+                        class="itemizedlist"
+                      >
+                        
+          
+                        <li
+                          class="listitem"
+                        >
+                          
+            
+                          <p>
+                            persistent pain due to joint damage or other identifiable soft tissue cause
+                          </p>
+                          
+          
+                        </li>
+                        
+          
+                        <li
+                          class="listitem"
+                        >
+                          
+            
+                          <p>
+                            worsening joint function
+                          </p>
+                          
+          
+                        </li>
+                        
+          
+                        <li
+                          class="listitem"
+                        >
+                          
+            
+                          <p>
+                            progressive deformity
+                          </p>
+                          
+          
+                        </li>
+                        
+          
+                        <li
+                          class="listitem"
+                        >
+                          
+            
+                          <p>
+                            persistent localised synovitis. 
+                            <strong>
+                              [2009]
+                            </strong>
+                          </p>
+                          
+          
+                        </li>
+                        
+        
+                      </ul>
+                      
+      
+                    </div>
+                    
+    
+                  </div>
+                  
+    
+                  <div
+                    class="recommendation_text"
+                    id="ng100_1_10_2"
+                  >
+                    
+      
+                    <p
+                      class="numbered-paragraph"
+                    >
+                      
+        
+                      <span
+                        class="paragraph-number"
+                      >
+                        1.10.2 
+                      </span>
+                      Offer to refer adults with any of the following complications for a specialist surgical opinion before damage or deformity becomes irreversible:
+                    </p>
+                    
+      
+                    <div
+                      class="itemizedlist indented"
+                    >
+                      
+        
+                      <ul
+                        class="itemizedlist"
+                      >
+                        
+          
+                        <li
+                          class="listitem"
+                        >
+                          
+            
+                          <p>
+                            imminent or actual tendon rupture
+                          </p>
+                          
+          
+                        </li>
+                        
+          
+                        <li
+                          class="listitem"
+                        >
+                          
+            
+                          <p>
+                            nerve compression (for example, carpal tunnel syndrome)
+                          </p>
+                          
+          
+                        </li>
+                        
+          
+                        <li
+                          class="listitem"
+                        >
+                          
+            
+                          <p>
+                            stress fracture. 
+                            <strong>
+                              [2009]
+                            </strong>
+                          </p>
+                          
+          
+                        </li>
+                        
+        
+                      </ul>
+                      
+      
+                    </div>
+                    
+    
+                  </div>
+                  
+    
+                  <div
+                    class="recommendation_text"
+                    id="ng100_1_10_3"
+                  >
+                    
+      
+                    <p
+                      class="numbered-paragraph"
+                    >
+                      
+        
+                      <span
+                        class="paragraph-number"
+                      >
+                        1.10.3 
+                      </span>
+                      When surgery is offered to adults with RA, explain that the main expected benefits are:
+                    </p>
+                    
+      
+                    <div
+                      class="itemizedlist indented"
+                    >
+                      
+        
+                      <ul
+                        class="itemizedlist"
+                      >
+                        
+          
+                        <li
+                          class="listitem"
+                        >
+                          
+            
+                          <p>
+                            pain relief
+                          </p>
+                          
+          
+                        </li>
+                        
+          
+                        <li
+                          class="listitem"
+                        >
+                          
+            
+                          <p>
+                            improvement, or prevention of further deterioration, of joint function, 
+                            <strong>
+                              and
+                            </strong>
+                          </p>
+                          
+          
+                        </li>
+                        
+          
+                        <li
+                          class="listitem"
+                        >
+                          
+            
+                          <p>
+                            prevention of deformity.
+                            <br />
+                            <br />
+                            Cosmetic improvements should not be the dominant concern. 
+                            <strong>
+                              [2009]
+                            </strong>
+                          </p>
+                          
+          
+                        </li>
+                        
+        
+                      </ul>
+                      
+      
+                    </div>
+                    
+    
+                  </div>
+                  
+    
+                  <div
+                    class="recommendation_text"
+                    id="ng100_1_10_4"
+                  >
+                    
+      
+                    <p
+                      class="numbered-paragraph"
+                    >
+                      
+        
+                      <span
+                        class="paragraph-number"
+                      >
+                        1.10.4 
+                      </span>
+                      Offer urgent combined medical and surgical management to adults with RA who have suspected or proven septic arthritis (especially in a prosthetic joint). 
+                      <strong>
+                        [2009]
+                      </strong>
+                    </p>
+                    
+    
+                  </div>
+                  
+    
+                  <div
+                    class="recommendation_text"
+                    id="ng100_1_10_5"
+                  >
+                    
+      
+                    <p
+                      class="numbered-paragraph"
+                    >
+                      
+        
+                      <span
+                        class="paragraph-number"
+                      >
+                        1.10.5 
+                      </span>
+                      If an adult with RA develops any symptoms or signs that suggest cervical myelopathy (for example, paraesthesia, weakness, unsteadiness, reduced power, extensor plantars):
+                    </p>
+                    
+      
+                    <div
+                      class="itemizedlist indented"
+                    >
+                      
+        
+                      <ul
+                        class="itemizedlist"
+                      >
+                        
+          
+                        <li
+                          class="listitem"
+                        >
+                          
+            
+                          <p>
+                            request an urgent MRI scan, 
+                            <strong>
+                              and
+                            </strong>
+                          </p>
+                          
+          
+                        </li>
+                        
+          
+                        <li
+                          class="listitem"
+                        >
+                          
+            
+                          <p>
+                            refer for a specialist surgical opinion. 
+                            <strong>
+                              [2009]
+                            </strong>
+                          </p>
+                          
+          
+                        </li>
+                        
+        
+                      </ul>
+                      
+      
+                    </div>
+                    
+    
+                  </div>
+                  
+    
+                  <div
+                    class="recommendation_text"
+                    id="ng100_1_10_6"
+                  >
+                    
+      
+                    <p
+                      class="numbered-paragraph"
+                    >
+                      
+        
+                      <span
+                        class="paragraph-number"
+                      >
+                        1.10.6 
+                      </span>
+                      Do not let concerns about the long-term durability of prosthetic joints influence decisions to offer joint replacements to younger adults with RA. 
+                      <strong>
+                        [2009]
+                      </strong>
+                    </p>
+                    
+    
+                  </div>
+                  
+  
+                </div>
+                
+  
+                <div
+                  class="section"
+                  id="ng100_terms-used-in-this-guideline"
+                  title="Terms used in this guideline"
+                >
+                  
+    
+                  <h3
+                    class="title"
+                  >
+                    
+      
+                    <a
+                      id="terms-used-in-this-guideline"
+                    />
+                    Terms used in this guideline
+                  </h3>
+                  
+    
+                  <div
+                    class="section"
+                    id="ng100_bridging-treatment"
+                    title="Bridging treatment"
+                  >
+                    
+      
+                    <h4
+                      class="title"
+                    >
+                      
+        
+                      <a
+                        id="bridging-treatment"
+                      />
+                      Bridging treatment
+                    </h4>
+                    
+      
+                    <p>
+                      Glucocorticoids used for a short period of time when a person is starting a new DMARD, intended to improve symptoms while waiting for the new DMARD to take effect (which can take 2 to 3 months). 
+                    </p>
+                    
+    
+                  </div>
+                  
+    
+                  <div
+                    class="section"
+                    id="ng100_conventional-diseasemodifying-antirheumatic-drugs-cdmards"
+                    title="Conventional disease-modifying anti-rheumatic drugs (cDMARDs)"
+                  >
+                    
+      
+                    <h4
+                      class="title"
+                    >
+                      
+        
+                      <a
+                        id="conventional-disease-modifying-anti-rheumatic-drugs-cdmards"
+                      />
+                      
+        
+                      <a
+                        id="_Conventional_disease_modifying"
+                      />
+                      Conventional disease-modifying anti-rheumatic drugs (cDMARDs)
+                    </h4>
+                    
+      
+                    <p>
+                      Conventional disease-modifying anti-rheumatic drugs are synthetic drugs that modify disease rather than just alleviating symptoms. They include methotrexate, sulfasalazine, leflunomide and hydroxychloroquine, but do not include biological DMARDs and targeted synthetic DMARDs. 
+                    </p>
+                    
+    
+                  </div>
+                  
+    
+                  <div
+                    class="section"
+                    id="ng100_palindromic"
+                    title="Palindromic"
+                  >
+                    
+      
+                    <h4
+                      class="title"
+                    >
+                      
+        
+                      <a
+                        id="palindromic"
+                      />
+                      
+        
+                      <a
+                        id="_Recommendation_1"
+                      />
+                      
+        
+                      <a
+                        id="_Who_should_do"
+                      />
+                      
+        
+                      <a
+                        id="_Step-down_strategy"
+                      />
+                      
+        
+                      <a
+                        id="_Step-up_strategy"
+                      />
+                      Palindromic
+                    </h4>
+                    
+      
+                    <p>
+                      Palindromic rheumatism is an inflammatory arthritis that causes attacks of joint pain and swelling similar to RA. Between attacks the joints return to normal.
+                    </p>
+                    
+    
+                  </div>
+                  
+    
+                  <div
+                    class="section"
+                    id="ng100_stepup-strategy"
+                    title="Step-up strategy"
+                  >
+                    
+      
+                    <h4
+                      class="title"
+                    >
+                      
+        
+                      <a
+                        id="step-up-strategy"
+                      />
+                      Step-up strategy
+                    </h4>
+                    
+      
+                    <p>
+                      Additional DMARDs are added to DMARD monotherapy when disease is not adequately controlled.
+                    </p>
+                    
+    
+                  </div>
+                  
+    
+                  <div
+                    class="section"
+                    id="ng100_stepdown-strategy"
+                    title="Step-down strategy"
+                  >
+                    
+      
+                    <h4
+                      class="title"
+                    >
+                      
+        
+                      <a
+                        id="step-down-strategy"
+                      />
+                      Step-down strategy
+                    </h4>
+                    
+      
+                    <p>
+                      During treatment with 2 or more DMARDs, tapering and stopping at least 1 drug once disease is adequately controlled.
+                    </p>
+                    
+    
+                  </div>
+                  
+    
+                  <div
+                    class="section"
+                    id="ng100_synovitis"
+                    title="Synovitis"
+                  >
+                    
+      
+                    <h4
+                      class="title"
+                    >
+                      
+        
+                      <a
+                        id="synovitis"
+                      />
+                      Synovitis
+                    </h4>
+                    
+      
+                    <p>
+                      Soft tissue joint swelling.
+                    </p>
+                    
+    
+                  </div>
+                  
+    
+                  <div
+                    class="section"
+                    id="ng100_treattotarget"
+                    title="Treat-to-target"
+                  >
+                    
+      
+                    <h4
+                      class="title"
+                    >
+                      
+        
+                      <a
+                        id="treat-to-target"
+                      />
+                      Treat-to-target
+                    </h4>
+                    
+      
+                    <p>
+                      A treat-to-target strategy is a strategy that defines a treatment target (such as remission or low disease activity) and applies tight control (for example, monthly visits and respective treatment adjustment) to reach this target. The treatment strategy often follows a protocol for treatment adaptations depending on the disease activity level and degree of response to treatment.
+                    </p>
+                    
+    
+                  </div>
+                  
+  
+                </div>
                 
 
               </div>
@@ -416,7 +4401,7 @@ exports[`/indicators/[slug]/chapters/[chapterSlug].page IndicatorChapterPage sho
               >
                 <a
                   class="prev-next__link"
-                  href="/indicators/ind1001-test-indicator-ind-1001-the-percentage-of-patients-with-one-or-more-of-the-following-conditions-chd-atrial-fibrillation-chronic-heart-failure-stroke-or-tia-diabetes-or-dementia-with-a-fast-score-of-3-or-more-or-audit-c-score-of-5-or-more-in-the-preceding-2-years-who-have-received-brief-intervention-to-help-them-reduce-their-alcohol-related-risk-within-3-months-of-the-score-being-recorded/chapters/indicator-type"
+                  href="/guidance/ng100/chapters/recommendations-for-research"
                 >
                   <span
                     class="prev-next__link-intro"
@@ -426,12 +4411,12 @@ exports[`/indicators/[slug]/chapters/[chapterSlug].page IndicatorChapterPage sho
                   <span
                     class="prev-next__link-text"
                   >
-                    Indicator type
+                    Recommendations for research
                   </span>
                 </a>
                 <a
                   class="prev-next__link"
-                  href="/indicators/ind1001-test-indicator-ind-1001-the-percentage-of-patients-with-one-or-more-of-the-following-conditions-chd-atrial-fibrillation-chronic-heart-failure-stroke-or-tia-diabetes-or-dementia-with-a-fast-score-of-3-or-more-or-audit-c-score-of-5-or-more-in-the-preceding-2-years-who-have-received-brief-intervention-to-help-them-reduce-their-alcohol-related-risk-within-3-months-of-the-score-being-recorded"
+                  href="/guidance/ng100"
                 >
                   <span
                     class="prev-next__link-intro"

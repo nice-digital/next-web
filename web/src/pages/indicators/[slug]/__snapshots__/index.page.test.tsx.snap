@@ -41,7 +41,7 @@ exports[`/indicators/[slug].page IndicatorDetailPage should match snapshot for m
           class="breadcrumbs__crumb"
         >
           <span>
-            IND1001
+            NG100
           </span>
         </li>
       </ol>
@@ -81,7 +81,7 @@ exports[`/indicators/[slug].page IndicatorDetailPage should match snapshot for m
       "@type": "ListItem",
       "position": 4,
       "item": {
-        "name": "IND1001"
+        "name": "NG100"
       }
     }
   ]
@@ -94,24 +94,34 @@ exports[`/indicators/[slug].page IndicatorDetailPage should match snapshot for m
       <h1
         class="page-header__heading page-header__heading--alt"
       >
-        Test indicator IND1001: The percentage of patients with one or more of the following conditions: CHD, atrial fibrillation, chronic heart failure, stroke or TIA, diabetes or dementia with a FAST score of 3 or more or AUDIT-C score of 5 or more in the preceding 2 years who have received brief intervention to help them reduce their alcohol related risk within 3 months of the score being recorded
+        Rheumatoid arthritis in adults: management
       </h1>
       <ul
         class="page-header__metadata"
       >
         <li>
-          NICE indicator
+          NICE guideline
         </li>
         <li>
-          IND1001
+          NG100
         </li>
         <li>
           Published:
           <time
-            datetime="2022-09-08"
+            datetime="2018-07-11"
           >
              
-            8 September 2022
+            11 July 2018
+          </time>
+        </li>
+        <li>
+          Last updated:
+          <time
+            datetime="2020-10-12"
+          >
+             
+             
+            12 October 2020
           </time>
         </li>
       </ul>
@@ -128,7 +138,7 @@ exports[`/indicators/[slug].page IndicatorDetailPage should match snapshot for m
           <a
             aria-current="true"
             class="horizontal-nav__link"
-            href="/indicators/ind1001-test-indicator-ind-1001-the-percentage-of-patients-with-one-or-more-of-the-following-conditions-chd-atrial-fibrillation-chronic-heart-failure-stroke-or-tia-diabetes-or-dementia-with-a-fast-score-of-3-or-more-or-audit-c-score-of-5-or-more-in-the-preceding-2-years-who-have-received-brief-intervention-to-help-them-reduce-their-alcohol-related-risk-within-3-months-of-the-score-being-recorded"
+            href="/guidance/ng100"
           >
             Indicator
           </a>
@@ -139,9 +149,31 @@ exports[`/indicators/[slug].page IndicatorDetailPage should match snapshot for m
           <a
             aria-current="false"
             class="horizontal-nav__link"
-            href="/indicators/ind1001-test-indicator-ind-1001-the-percentage-of-patients-with-one-or-more-of-the-following-conditions-chd-atrial-fibrillation-chronic-heart-failure-stroke-or-tia-diabetes-or-dementia-with-a-fast-score-of-3-or-more-or-audit-c-score-of-5-or-more-in-the-preceding-2-years-who-have-received-brief-intervention-to-help-them-reduce-their-alcohol-related-risk-within-3-months-of-the-score-being-recorded/evidence"
+            href="/guidance/ng100/resources"
+          >
+            Tools and resources
+          </a>
+        </li>
+        <li
+          class="horizontal-nav__item"
+        >
+          <a
+            aria-current="false"
+            class="horizontal-nav__link"
+            href="/guidance/ng100/evidence"
           >
             Evidence
+          </a>
+        </li>
+        <li
+          class="horizontal-nav__item"
+        >
+          <a
+            aria-current="false"
+            class="horizontal-nav__link"
+            href="/guidance/ng100/history"
+          >
+            History
           </a>
         </li>
       </ul>
@@ -156,7 +188,7 @@ exports[`/indicators/[slug].page IndicatorDetailPage should match snapshot for m
         <a
           aria-label="Download indicator PDF file"
           class="btn btn--cta download"
-          href="/indicators/ind1001-test-indicator-ind-1001-the-percentage-of-patients-with-one-or-more-of-the-following-conditions-chd-atrial-fibrillation-chronic-heart-failure-stroke-or-tia-diabetes-or-dementia-with-a-fast-score-of-3-or-more-or-audit-c-score-of-5-or-more-in-the-preceding-2-years-who-have-received-brief-intervention-to-help-them-reduce-their-alcohol-related-risk-within-3-months-of-the-score-being-recorded/IND1001.pdf"
+          href="/guidance/ng100/NG100.pdf"
           target="_blank"
         >
           Download indicator
@@ -174,7 +206,7 @@ exports[`/indicators/[slug].page IndicatorDetailPage should match snapshot for m
             >
               <a
                 aria-current="true"
-                href="/indicators/ind1001-test-indicator-ind-1001-the-percentage-of-patients-with-one-or-more-of-the-following-conditions-chd-atrial-fibrillation-chronic-heart-failure-stroke-or-tia-diabetes-or-dementia-with-a-fast-score-of-3-or-more-or-audit-c-score-of-5-or-more-in-the-preceding-2-years-who-have-received-brief-intervention-to-help-them-reduce-their-alcohol-related-risk-within-3-months-of-the-score-being-recorded"
+                href="/guidance/ng100"
               >
                 <span
                   class="stacked-nav__content-wrapper"
@@ -190,13 +222,13 @@ exports[`/indicators/[slug].page IndicatorDetailPage should match snapshot for m
             >
               <a
                 aria-current="false"
-                href="/indicators/ind1001-test-indicator-ind-1001-the-percentage-of-patients-with-one-or-more-of-the-following-conditions-chd-atrial-fibrillation-chronic-heart-failure-stroke-or-tia-diabetes-or-dementia-with-a-fast-score-of-3-or-more-or-audit-c-score-of-5-or-more-in-the-preceding-2-years-who-have-received-brief-intervention-to-help-them-reduce-their-alcohol-related-risk-within-3-months-of-the-score-being-recorded/chapters/indicator-nm181"
+                href="/guidance/ng100/chapters/recommendations"
               >
                 <span
                   class="stacked-nav__content-wrapper"
                 >
                   <span>
-                    Indicator NM181
+                    Recommendations
                   </span>
                 </span>
               </a>
@@ -206,13 +238,13 @@ exports[`/indicators/[slug].page IndicatorDetailPage should match snapshot for m
             >
               <a
                 aria-current="false"
-                href="/indicators/ind1001-test-indicator-ind-1001-the-percentage-of-patients-with-one-or-more-of-the-following-conditions-chd-atrial-fibrillation-chronic-heart-failure-stroke-or-tia-diabetes-or-dementia-with-a-fast-score-of-3-or-more-or-audit-c-score-of-5-or-more-in-the-preceding-2-years-who-have-received-brief-intervention-to-help-them-reduce-their-alcohol-related-risk-within-3-months-of-the-score-being-recorded/chapters/indicator-type"
+                href="/guidance/ng100/chapters/recommendations-for-research"
               >
                 <span
                   class="stacked-nav__content-wrapper"
                 >
                   <span>
-                    Indicator type
+                    Recommendations for research
                   </span>
                 </span>
               </a>
@@ -222,13 +254,13 @@ exports[`/indicators/[slug].page IndicatorDetailPage should match snapshot for m
             >
               <a
                 aria-current="false"
-                href="/indicators/ind1001-test-indicator-ind-1001-the-percentage-of-patients-with-one-or-more-of-the-following-conditions-chd-atrial-fibrillation-chronic-heart-failure-stroke-or-tia-diabetes-or-dementia-with-a-fast-score-of-3-or-more-or-audit-c-score-of-5-or-more-in-the-preceding-2-years-who-have-received-brief-intervention-to-help-them-reduce-their-alcohol-related-risk-within-3-months-of-the-score-being-recorded/chapters/introduction"
+                href="/guidance/ng100/chapters/rationale-and-impact"
               >
                 <span
                   class="stacked-nav__content-wrapper"
                 >
                   <span>
-                    Introduction
+                    Rationale and impact
                   </span>
                 </span>
               </a>
@@ -238,13 +270,13 @@ exports[`/indicators/[slug].page IndicatorDetailPage should match snapshot for m
             >
               <a
                 aria-current="false"
-                href="/indicators/ind1001-test-indicator-ind-1001-the-percentage-of-patients-with-one-or-more-of-the-following-conditions-chd-atrial-fibrillation-chronic-heart-failure-stroke-or-tia-diabetes-or-dementia-with-a-fast-score-of-3-or-more-or-audit-c-score-of-5-or-more-in-the-preceding-2-years-who-have-received-brief-intervention-to-help-them-reduce-their-alcohol-related-risk-within-3-months-of-the-score-being-recorded/chapters/rationale"
+                href="/guidance/ng100/chapters/context"
               >
                 <span
                   class="stacked-nav__content-wrapper"
                 >
                   <span>
-                    Rationale
+                    Context
                   </span>
                 </span>
               </a>
@@ -254,13 +286,13 @@ exports[`/indicators/[slug].page IndicatorDetailPage should match snapshot for m
             >
               <a
                 aria-current="false"
-                href="/indicators/ind1001-test-indicator-ind-1001-the-percentage-of-patients-with-one-or-more-of-the-following-conditions-chd-atrial-fibrillation-chronic-heart-failure-stroke-or-tia-diabetes-or-dementia-with-a-fast-score-of-3-or-more-or-audit-c-score-of-5-or-more-in-the-preceding-2-years-who-have-received-brief-intervention-to-help-them-reduce-their-alcohol-related-risk-within-3-months-of-the-score-being-recorded/chapters/source-guidance"
+                href="/guidance/ng100/chapters/finding-more-information-and-committee-details"
               >
                 <span
                   class="stacked-nav__content-wrapper"
                 >
                   <span>
-                    Source guidance
+                    Finding more information and committee details
                   </span>
                 </span>
               </a>
@@ -270,29 +302,13 @@ exports[`/indicators/[slug].page IndicatorDetailPage should match snapshot for m
             >
               <a
                 aria-current="false"
-                href="/indicators/ind1001-test-indicator-ind-1001-the-percentage-of-patients-with-one-or-more-of-the-following-conditions-chd-atrial-fibrillation-chronic-heart-failure-stroke-or-tia-diabetes-or-dementia-with-a-fast-score-of-3-or-more-or-audit-c-score-of-5-or-more-in-the-preceding-2-years-who-have-received-brief-intervention-to-help-them-reduce-their-alcohol-related-risk-within-3-months-of-the-score-being-recorded/chapters/specification"
+                href="/guidance/ng100/chapters/update-information"
               >
                 <span
                   class="stacked-nav__content-wrapper"
                 >
                   <span>
-                    Specification
-                  </span>
-                </span>
-              </a>
-            </li>
-            <li
-              class="stacked-nav__list-item"
-            >
-              <a
-                aria-current="false"
-                href="/indicators/ind1001-test-indicator-ind-1001-the-percentage-of-patients-with-one-or-more-of-the-following-conditions-chd-atrial-fibrillation-chronic-heart-failure-stroke-or-tia-diabetes-or-dementia-with-a-fast-score-of-3-or-more-or-audit-c-score-of-5-or-more-in-the-preceding-2-years-who-have-received-brief-intervention-to-help-them-reduce-their-alcohol-related-risk-within-3-months-of-the-score-being-recorded/chapters/further-information"
-              >
-                <span
-                  class="stacked-nav__content-wrapper"
-                >
-                  <span>
-                    Further information
+                    Update information
                   </span>
                 </span>
               </a>
@@ -309,7 +325,180 @@ exports[`/indicators/[slug].page IndicatorDetailPage should match snapshot for m
           <p
             class="lead"
           >
-            The percentage of patients with one or more of the following conditions: CHD, atrial fibrillation, chronic heart failure, stroke or TIA, diabetes or dementia with a FAST score of 3 or more or AUDIT-C score of 5 or more in the preceding 2 years who have received brief intervention to help them reduce their alcohol related risk within 3 months of the score being recorded.
+            This guideline covers diagnosing and managing rheumatoid arthritis. It aims to improve quality of life by ensuring that people with rheumatoid arthritis have the right treatment to slow the progression of their condition and control their symptoms. People should also have rapid access to specialist care if their condition suddenly worsens.
+          </p>
+          
+
+          <p>
+            NICE has also produced technology appraisal guidance on drug treatment for rheumatoid arthritis.
+          </p>
+          
+
+          <p>
+            In 
+            <strong>
+              October 2020
+            </strong>
+            , we amended the ‘treat to target’ recommendations to clarify that multiple disease-modifying anti-rheumatic drugs can be offered one after the other to achieve treatment targets.
+          </p>
+          
+
+          <h2>
+            Recommendations
+          </h2>
+          
+
+          <p>
+            This guideline includes new and updated recommendations on:
+          </p>
+          
+
+          <ul>
+            
+
+            <li>
+              <a
+                href="https://www.nice.org.uk/guidance/ng100/chapter/Recommendations#investigations-following-diagnosis"
+              >
+                investigations following diagnosis
+              </a>
+            </li>
+            
+
+            <li>
+              <a
+                href="https://www.nice.org.uk/guidance/ng100/chapter/Recommendations#treat-to-target-strategy"
+              >
+                treat-to-target strategy
+              </a>
+               and 
+              <a
+                href="http://www.nice.org.uk/guidance/ng100/chapter/Recommendations#initial-pharmacological-management"
+              >
+                initial pharmacological management
+              </a>
+            </li>
+            
+
+            <li>
+              <a
+                href="https://www.nice.org.uk/guidance/ng100/chapter/Recommendations#symptom-control"
+              >
+                symptom control
+              </a>
+               and 
+              <a
+                href="http://www.nice.org.uk/guidance/ng100/chapter/Recommendations#monitoring"
+              >
+                monitoring
+              </a>
+            </li>
+            
+
+          </ul>
+          
+
+          <p>
+            It also includes recommendations on:
+          </p>
+          
+
+          <ul>
+            
+
+            <li>
+              <a
+                href="http://www.nice.org.uk/guidance/ng100/chapter/Recommendations#investigations"
+              >
+                investigations for diagnosis
+              </a>
+               and 
+              <a
+                href="http://www.nice.org.uk/guidance/ng100/chapter/Recommendations#referral-from-primary-care"
+              >
+                referral from primary care
+              </a>
+            </li>
+            
+
+            <li>
+              <a
+                href="http://www.nice.org.uk/guidance/ng100/chapter/Recommendations#non-pharmacological-management"
+              >
+                non-pharmacological management
+              </a>
+               and 
+              <a
+                href="http://www.nice.org.uk/guidance/ng100/chapter/Recommendations#the-multidisciplinary-team"
+              >
+                the multidisciplinary team
+              </a>
+            </li>
+            
+
+            <li>
+              <a
+                href="http://www.nice.org.uk/guidance/ng100/chapter/Recommendations#communication-and-education"
+              >
+                communication and education
+              </a>
+            </li>
+            
+
+            <li>
+              <a
+                href="http://www.nice.org.uk/guidance/ng100/chapter/Recommendations#timing-and-referral-for-surgery"
+              >
+                timing and referral for surgery
+              </a>
+            </li>
+            
+
+          </ul>
+          
+
+          <h2>
+            Who is it for?
+          </h2>
+          
+
+          <ul>
+            
+
+            <li>
+              Healthcare professionals
+            </li>
+            
+
+            <li>
+              Commissioners and providers
+            </li>
+            
+
+            <li>
+              People with rheumatoid arthritis and their families and carers
+            </li>
+            
+
+          </ul>
+          
+
+          <h2>
+            Guideline development process
+          </h2>
+          
+
+          <p>
+            <a
+              href="https://www.nice.org.uk/about/what-we-do/our-programmes/nice-guidance/nice-guidelines/how-we-develop-nice-guidelines"
+            >
+              How we develop NICE guidelines
+            </a>
+          </p>
+          
+
+          <p>
+            This guideline updates and replaces NICE guideline CG79 (February 2009).
           </p>
         </div>
         <div
@@ -320,7 +509,7 @@ exports[`/indicators/[slug].page IndicatorDetailPage should match snapshot for m
           >
             <a
               class="prev-next__link"
-              href="/indicators/ind1001-test-indicator-ind-1001-the-percentage-of-patients-with-one-or-more-of-the-following-conditions-chd-atrial-fibrillation-chronic-heart-failure-stroke-or-tia-diabetes-or-dementia-with-a-fast-score-of-3-or-more-or-audit-c-score-of-5-or-more-in-the-preceding-2-years-who-have-received-brief-intervention-to-help-them-reduce-their-alcohol-related-risk-within-3-months-of-the-score-being-recorded/chapters/indicator-nm181"
+              href="/guidance/ng100/chapters/recommendations"
             >
               <span
                 class="prev-next__link-intro"
@@ -330,7 +519,7 @@ exports[`/indicators/[slug].page IndicatorDetailPage should match snapshot for m
               <span
                 class="prev-next__link-text"
               >
-                Indicator NM181
+                Recommendations
               </span>
             </a>
           </nav>
@@ -343,114 +532,9 @@ exports[`/indicators/[slug].page IndicatorDetailPage should match snapshot for m
 
 exports[`/indicators/[slug].page getServerSideProps should return a correct props when supplied with a valid slug 1`] = `
 Object {
-  "props": Object {
-    "chapters": Array [
-      Object {
-        "title": "Overview",
-        "url": "/indicators/ind1001-test-indicator-ind-1001-the-percentage-of-patients-with-one-or-more-of-the-following-conditions-chd-atrial-fibrillation-chronic-heart-failure-stroke-or-tia-diabetes-or-dementia-with-a-fast-score-of-3-or-more-or-audit-c-score-of-5-or-more-in-the-preceding-2-years-who-have-received-brief-intervention-to-help-them-reduce-their-alcohol-related-risk-within-3-months-of-the-score-being-recorded",
-      },
-      Object {
-        "title": "Indicator NM181",
-        "url": "/indicators/ind1001-test-indicator-ind-1001-the-percentage-of-patients-with-one-or-more-of-the-following-conditions-chd-atrial-fibrillation-chronic-heart-failure-stroke-or-tia-diabetes-or-dementia-with-a-fast-score-of-3-or-more-or-audit-c-score-of-5-or-more-in-the-preceding-2-years-who-have-received-brief-intervention-to-help-them-reduce-their-alcohol-related-risk-within-3-months-of-the-score-being-recorded/chapters/indicator-nm181",
-      },
-      Object {
-        "title": "Indicator type",
-        "url": "/indicators/ind1001-test-indicator-ind-1001-the-percentage-of-patients-with-one-or-more-of-the-following-conditions-chd-atrial-fibrillation-chronic-heart-failure-stroke-or-tia-diabetes-or-dementia-with-a-fast-score-of-3-or-more-or-audit-c-score-of-5-or-more-in-the-preceding-2-years-who-have-received-brief-intervention-to-help-them-reduce-their-alcohol-related-risk-within-3-months-of-the-score-being-recorded/chapters/indicator-type",
-      },
-      Object {
-        "title": "Introduction",
-        "url": "/indicators/ind1001-test-indicator-ind-1001-the-percentage-of-patients-with-one-or-more-of-the-following-conditions-chd-atrial-fibrillation-chronic-heart-failure-stroke-or-tia-diabetes-or-dementia-with-a-fast-score-of-3-or-more-or-audit-c-score-of-5-or-more-in-the-preceding-2-years-who-have-received-brief-intervention-to-help-them-reduce-their-alcohol-related-risk-within-3-months-of-the-score-being-recorded/chapters/introduction",
-      },
-      Object {
-        "title": "Rationale",
-        "url": "/indicators/ind1001-test-indicator-ind-1001-the-percentage-of-patients-with-one-or-more-of-the-following-conditions-chd-atrial-fibrillation-chronic-heart-failure-stroke-or-tia-diabetes-or-dementia-with-a-fast-score-of-3-or-more-or-audit-c-score-of-5-or-more-in-the-preceding-2-years-who-have-received-brief-intervention-to-help-them-reduce-their-alcohol-related-risk-within-3-months-of-the-score-being-recorded/chapters/rationale",
-      },
-      Object {
-        "title": "Source guidance",
-        "url": "/indicators/ind1001-test-indicator-ind-1001-the-percentage-of-patients-with-one-or-more-of-the-following-conditions-chd-atrial-fibrillation-chronic-heart-failure-stroke-or-tia-diabetes-or-dementia-with-a-fast-score-of-3-or-more-or-audit-c-score-of-5-or-more-in-the-preceding-2-years-who-have-received-brief-intervention-to-help-them-reduce-their-alcohol-related-risk-within-3-months-of-the-score-being-recorded/chapters/source-guidance",
-      },
-      Object {
-        "title": "Specification",
-        "url": "/indicators/ind1001-test-indicator-ind-1001-the-percentage-of-patients-with-one-or-more-of-the-following-conditions-chd-atrial-fibrillation-chronic-heart-failure-stroke-or-tia-diabetes-or-dementia-with-a-fast-score-of-3-or-more-or-audit-c-score-of-5-or-more-in-the-preceding-2-years-who-have-received-brief-intervention-to-help-them-reduce-their-alcohol-related-risk-within-3-months-of-the-score-being-recorded/chapters/specification",
-      },
-      Object {
-        "title": "Further information",
-        "url": "/indicators/ind1001-test-indicator-ind-1001-the-percentage-of-patients-with-one-or-more-of-the-following-conditions-chd-atrial-fibrillation-chronic-heart-failure-stroke-or-tia-diabetes-or-dementia-with-a-fast-score-of-3-or-more-or-audit-c-score-of-5-or-more-in-the-preceding-2-years-who-have-received-brief-intervention-to-help-them-reduce-their-alcohol-related-risk-within-3-months-of-the-score-being-recorded/chapters/further-information",
-      },
-    ],
-    "hasEvidenceResources": true,
-    "hasHistory": false,
-    "hasInfoForPublicResources": false,
-    "hasToolsAndResources": false,
-    "indicatorSubTypes": Array [
-      Object {
-        "eTag": null,
-        "enabled": true,
-        "identifierPrefix": "CCG",
-        "lastModified": "2022-07-12T00:00:00",
-        "links": Object {
-          "self": Array [
-            Object {},
-          ],
-        },
-        "name": "Clinical commissioning group indicator",
-        "pluralName": "Clinical commissioning group indicators",
-      },
-      Object {
-        "eTag": null,
-        "enabled": true,
-        "identifierPrefix": "GPIQ",
-        "lastModified": "2022-07-12T00:00:00",
-        "links": Object {
-          "self": Array [
-            Object {},
-          ],
-        },
-        "name": "General practice indicator suitable for use in QOF",
-        "pluralName": "General practice indicators suitable for use in QOF",
-      },
-      Object {
-        "eTag": null,
-        "enabled": true,
-        "identifierPrefix": "GPINQ",
-        "lastModified": "2022-07-12T00:00:00",
-        "links": Object {
-          "self": Array [
-            Object {},
-          ],
-        },
-        "name": "General practice indicator suitable for use outside of QOF",
-        "pluralName": "General practice indicators suitable for use outside of QOF",
-      },
-      Object {
-        "eTag": null,
-        "enabled": true,
-        "identifierPrefix": "NLQ",
-        "lastModified": "2022-07-12T00:00:00",
-        "links": Object {
-          "self": Array [
-            Object {},
-          ],
-        },
-        "name": "National library of quality indicators",
-        "pluralName": "National library of quality indicators",
-      },
-    ],
-    "pdfDownloadPath": "/indicators/ind1001-test-indicator-ind-1001-the-percentage-of-patients-with-one-or-more-of-the-following-conditions-chd-atrial-fibrillation-chronic-heart-failure-stroke-or-tia-diabetes-or-dementia-with-a-fast-score-of-3-or-more-or-audit-c-score-of-5-or-more-in-the-preceding-2-years-who-have-received-brief-intervention-to-help-them-reduce-their-alcohol-related-risk-within-3-months-of-the-score-being-recorded/IND1001.pdf",
-    "product": Object {
-      "id": "IND1001",
-      "indicatorSubTypeList": Array [
-        "CCG",
-        "GPIQ",
-      ],
-      "lastMajorModificationDate": "2022-09-08T14:19:12.8893126",
-      "metaDescription": "The percentage of patients with one or more of the following conditions: CHD, atrial fibrillation, chronic heart failure, stroke or TIA, diabetes or dementia with a FAST score of 3 or more or AUDIT-C score of 5 or more in the preceding 2 years who have received brief intervention to help them reduce their alcohol related risk within 3 months of the score being recorded",
-      "productTypeName": "NICE indicator",
-      "publishedDate": "2022-09-08T14:19:12.8893126",
-      "summary": "<p class=\\"lead\\">The percentage of patients with one or more of the following conditions: CHD, atrial fibrillation, chronic heart failure, stroke or TIA, diabetes or dementia with a FAST score of 3 or more or AUDIT-C score of 5 or more in the preceding 2 years who have received brief intervention to help them reduce their alcohol related risk within 3 months of the score being recorded.</p>",
-      "title": "Test indicator IND1001: The percentage of patients with one or more of the following conditions: CHD, atrial fibrillation, chronic heart failure, stroke or TIA, diabetes or dementia with a FAST score of 3 or more or AUDIT-C score of 5 or more in the preceding 2 years who have received brief intervention to help them reduce their alcohol related risk within 3 months of the score being recorded",
-    },
-    "productPath": "/indicators/ind1001-test-indicator-ind-1001-the-percentage-of-patients-with-one-or-more-of-the-following-conditions-chd-atrial-fibrillation-chronic-heart-failure-stroke-or-tia-diabetes-or-dementia-with-a-fast-score-of-3-or-more-or-audit-c-score-of-5-or-more-in-the-preceding-2-years-who-have-received-brief-intervention-to-help-them-reduce-their-alcohol-related-risk-within-3-months-of-the-score-being-recorded",
+  "redirect": Object {
+    "destination": "/guidance/ng100",
+    "permanent": true,
   },
 }
 `;

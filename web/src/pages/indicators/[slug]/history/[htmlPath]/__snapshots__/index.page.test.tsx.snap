@@ -1,6 +1,6 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`/indicators/[slug]/history.page HistoryPage should match snapshot for main content 1`] = `
+exports[`/indicators/[slug]/history/[htmlPath]/index.page HistoryHTMLPage should match snapshot for main content 1`] = `
 <body>
   <div>
     <nav
@@ -41,16 +41,16 @@ exports[`/indicators/[slug]/history.page HistoryPage should match snapshot for m
           class="breadcrumbs__crumb"
         >
           <a
-            href="/indicators/ind6-new-indicator-product-1"
+            href="/guidance/ng100"
           >
-            IND6
+            NG100
           </a>
         </li>
         <li
           class="breadcrumbs__crumb"
         >
           <a
-            href="/indicators/ind6-new-indicator-product-1/history"
+            href="/guidance/ng100/history"
           >
             History
           </a>
@@ -99,15 +99,15 @@ exports[`/indicators/[slug]/history.page HistoryPage should match snapshot for m
       "@type": "ListItem",
       "position": 4,
       "item": {
-        "@id": "/indicators/ind6-new-indicator-product-1",
-        "name": "IND6"
+        "@id": "/guidance/ng100",
+        "name": "NG100"
       }
     },
     {
       "@type": "ListItem",
       "position": 5,
       "item": {
-        "@id": "/indicators/ind6-new-indicator-product-1/history",
+        "@id": "/guidance/ng100/history",
         "name": "History"
       }
     },
@@ -128,24 +128,34 @@ exports[`/indicators/[slug]/history.page HistoryPage should match snapshot for m
       <h1
         class="page-header__heading page-header__heading--alt"
       >
-        New Indicator product-1
+        Rheumatoid arthritis in adults: management
       </h1>
       <ul
         class="page-header__metadata"
       >
         <li>
-          NICE indicator
+          NICE guideline
         </li>
         <li>
-          IND6
+          NG100
         </li>
         <li>
           Published:
           <time
-            datetime="2022-09-08"
+            datetime="2018-07-11"
           >
              
-            8 September 2022
+            11 July 2018
+          </time>
+        </li>
+        <li>
+          Last updated:
+          <time
+            datetime="2020-10-12"
+          >
+             
+             
+            12 October 2020
           </time>
         </li>
       </ul>
@@ -162,7 +172,7 @@ exports[`/indicators/[slug]/history.page HistoryPage should match snapshot for m
           <a
             aria-current="false"
             class="horizontal-nav__link"
-            href="/indicators/ind6-new-indicator-product-1"
+            href="/guidance/ng100"
           >
             Indicator
           </a>
@@ -171,9 +181,31 @@ exports[`/indicators/[slug]/history.page HistoryPage should match snapshot for m
           class="horizontal-nav__item"
         >
           <a
+            aria-current="false"
+            class="horizontal-nav__link"
+            href="/guidance/ng100/resources"
+          >
+            Tools and resources
+          </a>
+        </li>
+        <li
+          class="horizontal-nav__item"
+        >
+          <a
+            aria-current="false"
+            class="horizontal-nav__link"
+            href="/guidance/ng100/evidence"
+          >
+            Evidence
+          </a>
+        </li>
+        <li
+          class="horizontal-nav__item"
+        >
+          <a
             aria-current="true"
             class="horizontal-nav__link"
-            href="/indicators/ind6-new-indicator-product-1/history"
+            href="/guidance/ng100/history"
           >
             History
           </a>
@@ -182,7 +214,167 @@ exports[`/indicators/[slug]/history.page HistoryPage should match snapshot for m
     </nav>
     <div>
       <p>
-        some test html content
+        You can now comment on this draft scope. The scope defines what the guideline will (and will not) cover.
+      </p>
+      
+
+      <p>
+        <strong>
+          The consultation closes on 
+        </strong>
+        <strong>
+          15 July 2016
+        </strong>
+         
+        <strong>
+          at 5pm
+        </strong>
+      </p>
+      
+
+      <h3>
+        How to comment
+      </h3>
+      
+
+      <h2>
+        1. Register your organisation
+      </h2>
+      
+
+      <p>
+        Your organisation needs to be 
+        <a
+          href="https://www.nice.org.uk/get-involved/stakeholder-registration"
+        >
+          registered as a stakeholder
+        </a>
+         before we can accept comments.
+      </p>
+      
+
+      <p>
+        Not eligible? Contact the 
+        <a
+          href="https://www.nice.org.uk/guidance/GID-NG10014/documents/stakeholder-list"
+        >
+          stakeholder organisation
+        </a>
+         that most closely represents your interests and pass your comments to them.
+      </p>
+      
+
+      <h2>
+        2. Read the consultation documents
+      </h2>
+      
+
+      <ul>
+        
+
+        <li>
+          <a
+            href="/guidance/GID-NG10014/documents/draft-scope"
+          >
+            Draft scope
+          </a>
+        </li>
+        
+
+      </ul>
+      
+
+      <p>
+        <strong>
+          Background documents
+        </strong>
+      </p>
+      
+
+      <ul>
+        
+
+        <li>
+          <a
+            href="/guidance/GID-NG10014/documents/equality-impact-assessment"
+          >
+            Equality impact assessment
+          </a>
+        </li>
+        
+
+        <li>
+          <a
+            href="http://www.nice.org.uk/article/pmg22/chapter/3-how-you-can-get-involved"
+          >
+            Developing NICE guidelines: how to get involved
+          </a>
+          <strong>
+             
+          </strong>
+        </li>
+        
+
+      </ul>
+      
+
+      <h2>
+        3. Make your comments
+      </h2>
+      
+
+      <ul>
+        
+
+        <li>
+          You must use the 
+          <a
+            href="/guidance/GID-NG10014/documents/comments-form"
+          >
+            Comments form
+          </a>
+        </li>
+        
+
+        <li>
+          You must declare any links with, or funding from, the tobacco industry
+        </li>
+        
+
+      </ul>
+      
+
+      <p>
+        If you share similar views with another registered organisation, send a joint response.
+      </p>
+      
+
+      <h2>
+        4. Email the form to us
+      </h2>
+      
+
+      <p>
+        Email: 
+        <a
+          href="mailto:RAupdate@nice.org.uk"
+        >
+          RAupdate@nice.org.uk
+        </a>
+      </p>
+      
+
+      <p>
+        <strong>
+          Deadline:
+        </strong>
+        <strong>
+          15 July 2016
+        </strong>
+        , 
+        <strong>
+          5pm
+        </strong>
       </p>
     </div>
     <div
@@ -205,9 +397,16 @@ exports[`/indicators/[slug]/history.page HistoryPage should match snapshot for m
                 class="card__heading"
               >
                 <a
-                  href="/indicators/ind6-new-indicator-product-1/history/downloads/IND6-comments-form.doc"
+                  href="/guidance/ng100/history/downloads/NG100-comments-form.doc"
                 >
-                  Comments form (Word, 65 kB)
+                  Comments form
+                   
+                  (
+                  Word
+                  ,
+                   
+                  65 kB
+                  )
                 </a>
               </p>
             </header>
@@ -280,9 +479,16 @@ exports[`/indicators/[slug]/history.page HistoryPage should match snapshot for m
                 class="card__heading"
               >
                 <a
-                  href="/indicators/ind6-new-indicator-product-1/history/downloads/IND6-draft-scope.pdf"
+                  href="/guidance/ng100/history/downloads/NG100-draft-scope.pdf"
                 >
-                  Draft scope (PDF, 124 kB)
+                  Draft scope
+                   
+                  (
+                  PDF
+                  ,
+                   
+                  124 kB
+                  )
                 </a>
               </p>
             </header>
@@ -355,9 +561,16 @@ exports[`/indicators/[slug]/history.page HistoryPage should match snapshot for m
                 class="card__heading"
               >
                 <a
-                  href="/indicators/ind6-new-indicator-product-1/history/downloads/IND6-equality-impact-assessment-8.pdf"
+                  href="/guidance/ng100/history/downloads/NG100-equality-impact-assessment-8.pdf"
                 >
-                  Equality impact assessment (PDF, 233 kB)
+                  Equality impact assessment
+                   
+                  (
+                  PDF
+                  ,
+                   
+                  233 kB
+                  )
                 </a>
               </p>
             </header>
@@ -434,24 +647,47 @@ exports[`/indicators/[slug]/history.page HistoryPage should match snapshot for m
 </body>
 `;
 
-exports[`/indicators/[slug]/history.page getServerSideProps should return a correct props 1`] = `
+exports[`/indicators/[slug]/history/[htmlPath]/index.page getServerSideProps should return a correct props 1`] = `
 Object {
   "props": Object {
-    "hasEvidenceResources": false,
+    "hasEvidenceResources": true,
     "hasHistory": true,
-    "hasInfoForPublicResources": false,
-    "hasToolsAndResources": false,
+    "hasInfoForPublicResources": true,
+    "hasToolsAndResources": true,
     "lastUpdated": "2016-07-19T08:56:00",
     "product": Object {
-      "id": "IND6",
-      "lastMajorModificationDate": "2022-09-08T14:07:12.0336296",
-      "productTypeName": "NICE indicator",
-      "publishedDate": "2022-09-08T14:07:12.0336296",
-      "title": "New Indicator product-1",
+      "id": "NG100",
+      "lastMajorModificationDate": "2020-10-12T00:00:00",
+      "productTypeName": "NICE guideline",
+      "publishedDate": "2018-07-11T00:00:00",
+      "title": "Rheumatoid arthritis in adults: management",
     },
-    "productPath": "/indicators/ind6-new-indicator-product-1",
+    "productPath": "/guidance/ng100",
     "resource": Object {
-      "resourceFileHTML": "<p>some test html content</p>",
+      "resourceFileHTML": "<p>You can now comment on this draft scope. The scope defines what the guideline will (and will not) cover.</p>
+<p><strong>The consultation closes on </strong><strong>15 July 2016</strong> <strong>at 5pm</strong></p>
+<h3>How to comment</h3>
+<h2>1. Register your organisation</h2>
+<p>Your organisation needs to be <a href=\\"https://www.nice.org.uk/get-involved/stakeholder-registration\\">registered as a stakeholder</a> before we can accept comments.</p>
+<p>Not eligible? Contact the <a href=\\"https://www.nice.org.uk/guidance/GID-NG10014/documents/stakeholder-list\\">stakeholder organisation</a> that most closely represents your interests and pass your comments to them.</p>
+<h2>2. Read the consultation documents</h2>
+<ul>
+<li><a href=\\"/guidance/GID-NG10014/documents/draft-scope\\">Draft scope</a></li>
+</ul>
+<p><strong>Background documents</strong></p>
+<ul>
+<li><a href=\\"/guidance/GID-NG10014/documents/equality-impact-assessment\\">Equality impact assessment</a></li>
+<li><a href=\\"http://www.nice.org.uk/article/pmg22/chapter/3-how-you-can-get-involved\\">Developing NICE guidelines: how to get involved</a><strong>&nbsp;</strong></li>
+</ul>
+<h2>3. Make your comments</h2>
+<ul>
+<li>You must use the <a href=\\"/guidance/GID-NG10014/documents/comments-form\\">Comments form</a></li>
+<li>You must declare any links with, or funding from, the tobacco industry</li>
+</ul>
+<p>If you share similar views with another registered organisation, send a joint response.</p>
+<h2>4. Email the form to us</h2>
+<p>Email: <a href=\\"mailto:RAupdate@nice.org.uk\\">RAupdate@nice.org.uk</a></p>
+<p><strong>Deadline:</strong><strong>15 July 2016</strong>, <strong>5pm</strong></p>",
       "title": "Draft scope consultation",
     },
     "resourceLinks": Array [
@@ -459,7 +695,7 @@ Object {
         "date": "2016-06-14T08:06:00",
         "fileSize": 64512,
         "fileTypeName": "Word",
-        "href": "/indicators/ind6-new-indicator-product-1/history/downloads/IND6-comments-form.doc",
+        "href": "/guidance/ng100/history/downloads/NG100-comments-form.doc",
         "title": "Comments form",
         "type": "Draft scope consultation",
       },
@@ -467,7 +703,7 @@ Object {
         "date": "2016-06-17T01:01:00",
         "fileSize": 123626,
         "fileTypeName": "PDF",
-        "href": "/indicators/ind6-new-indicator-product-1/history/downloads/IND6-draft-scope.pdf",
+        "href": "/guidance/ng100/history/downloads/NG100-draft-scope.pdf",
         "title": "Draft scope",
         "type": "Draft scope consultation",
       },
@@ -475,7 +711,7 @@ Object {
         "date": "2020-03-31T16:01:00",
         "fileSize": 233482,
         "fileTypeName": "PDF",
-        "href": "/indicators/ind6-new-indicator-product-1/history/downloads/IND6-equality-impact-assessment-8.pdf",
+        "href": "/guidance/ng100/history/downloads/NG100-equality-impact-assessment-8.pdf",
         "title": "Equality impact assessment",
         "type": "Draft scope consultation",
       },

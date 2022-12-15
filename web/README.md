@@ -56,7 +56,7 @@ These resources area a great place to start learning NextJS:
 
 We use [TypeScript path mapping](https://www.typescriptlang.org/docs/handbook/module-resolution.html#path-mapping) in various places. This allows us to avoid references like _../../../../logging/logger_ in nested files. So for example, use:
 
-- `import { render, getMockRouter } from "@/test-utils";` to get utils/helpers for unit testing with Jest
+- `import { render, getMockRouter } from "@/test-utils/rendering";` to get utils/helpers for unit testing with Jest
 - `import { logger, useLogger } from "@/logger";` for quick access to logging functions
 - `import { settings, SettingsConfig } from "@/config";` for quick access to configuration values.
 - `import { Test } from "@/components/Test/Test";` for quick access to components.
