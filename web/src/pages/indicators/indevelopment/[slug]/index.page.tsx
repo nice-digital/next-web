@@ -116,6 +116,8 @@ export default function InDevelopmentPage({
 				<Breadcrumb>{reference}</Breadcrumb>
 			</Breadcrumbs>
 			<ProjectPageHeading project={project} />
+			{/* TODO Register an interest in this interventional procedure, Please see: https://www.nice.org.uk/guidance/indevelopment/gid-ipg10149
+			e.g. https://www.nice.org.uk/guidance/indevelopment/gid-ip1046 */}
 			{summary && <p>{summary}</p>}
 			{status && <p>Status: {status}</p>}
 			{technologyType && <p>Technology type: {technologyType}</p>}
@@ -137,13 +139,35 @@ export default function InDevelopmentPage({
 			{/* TODO remove 'Process' and 'Developed as' if the logic above covers it */}
 			{/* <p>Process: {process}</p> */}
 			{/* <p>Developed as: {developedAs}</p> */}
-			{/* TODO check formatting of referral date */}
-			{referralDate && <p>Referral date: {referralDate}</p>}
+
+			{/* {referralDate && <p>Referral date: {referralDate}</p>} */}
+
 			{indevTopicItems && indevTopicItems.length > 0 ? (
 				<p>Topic area: {indevTopicItems[0].item}</p>
 			) : null}
 
 			{idNumber && <p>ID number: {idNumber}</p>}
+			{/* TODO check formatting of referral date */}
+			{process == "MT" && referralDate ? (
+				<p>Notification date: {referralDate}</p>
+			) : (
+				referralDate && <p>Referral date: {referralDate}</p>
+			)}
+
+			{/* @if (Model.ReferralDate.HasValue)
+            {
+                    <tr>
+                        @if (Model.Process == "MT")
+                        {
+                            <td><strong>Notification date</strong></td>
+                        }
+                        else
+                        {
+                            <td><strong>Referral date</strong></td>
+                        }
+                        <td>@Model.ReferralDate.Value.ToNICELongDateString()</td>
+                    </tr>
+                } */}
 
 			<Updates fullUpdates={fullUpdates} partialUpdates={partialUpdates} />
 
