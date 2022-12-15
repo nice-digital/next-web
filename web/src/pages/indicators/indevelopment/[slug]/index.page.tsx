@@ -30,6 +30,7 @@ import { validateRouteParams } from "@/utils/project";
 import { getProductPath } from "@/utils/url";
 
 export type InDevelopmentPageProps = {
+	description: string;
 	developedAs: string;
 	evidenceAssessmentGroup: string | null;
 	fullUpdates: Update[];
@@ -61,6 +62,7 @@ export type InDevelopmentPageProps = {
 };
 
 export default function InDevelopmentPage({
+	description,
 	developedAs,
 	evidenceAssessmentGroup,
 	fullUpdates,
@@ -160,6 +162,8 @@ export default function InDevelopmentPage({
 				</>
 			) : null}
 
+			{description && <p>Description: {description}</p>}
+
 			{idNumber && <p>ID number: {idNumber}</p>}
 			{/* TODO check formatting of referral date */}
 			{process == "MT" && referralDate ? (
@@ -231,6 +235,23 @@ export default function InDevelopmentPage({
 				</dl>
 			)}
 
+			{/* TODO Legacy stakeholders */}
+
+			{/* @if (Model.LegacyStakeholders.Any())
+                        {
+                            <h3>Stakeholders</h3>
+                            <ul class="unstyled">
+                                @foreach (var item in Model.LegacyStakeholders)
+                {
+                                    <li>@Html.Raw(item.Item)</li>
+                                }
+                            </ul>
+                            if (Model.StakeHolderRegistrationLinkViewModel != null && !string.IsNullOrEmpty(Model.StakeHolderRegistrationLinkViewModel.Link))
+                            {
+                                <p><a href="@Model.StakeHolderRegistrationLinkViewModel.Link">Stakeholder Registration Form</a></p>
+                            }
+                        } */}
+
 			<Stakeholders
 				consultees={indevConsultees}
 				commentators={indevCommentators}
@@ -266,6 +287,7 @@ export const getServerSideProps: GetServerSideProps<
 	const { project } = result;
 
 	const {
+		description,
 		developedAs,
 		evidenceAssessmentGroup,
 		idNumber,
@@ -381,6 +403,7 @@ export const getServerSideProps: GetServerSideProps<
 
 	return {
 		props: {
+			description,
 			developedAs,
 			evidenceAssessmentGroup,
 			partialUpdates,
