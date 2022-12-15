@@ -30,7 +30,7 @@ import { validateRouteParams } from "@/utils/project";
 import { getProductPath } from "@/utils/url";
 
 export type InDevelopmentPageProps = {
-	description: string;
+	description: string | null;
 	developedAs: string;
 	evidenceAssessmentGroup: string | null;
 	fullUpdates: Update[];
