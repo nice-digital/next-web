@@ -1,6 +1,10 @@
+import { NextSeo } from "next-seo";
 import { type GetServerSideProps } from "next/types";
 
+import { Breadcrumbs, Breadcrumb } from "@nice-digital/nds-breadcrumbs";
+
 import { ProjectPageHeading } from "@/components/ProjectPageHeading/ProjectPageHeading";
+import { Stakeholders } from "@/components/ProjectStakeholders/ProjectStakeholders";
 import { TimelineTable } from "@/components/ProjectTimelineTable/ProjectTimelineTable";
 import {
 	type Update,
@@ -89,6 +93,27 @@ export default function InDevelopmentPage({
 
 	return (
 		<>
+			{/* TODO Add title e.g. Project information | Macitentan for treating pulmonary arterial hypertension in people 1 month to 17 years TS ID 11805 | Guidance | NICE */}
+			<NextSeo
+				title={
+					"Project information | " +
+					title +
+					" | Indicators | Standards and Indicators"
+				}
+			/>
+			<Breadcrumbs>
+				<Breadcrumb to="/">Home</Breadcrumb>
+				<Breadcrumb to="/standards-and-indicators">
+					Standards and Indicators
+				</Breadcrumb>
+				<Breadcrumb to="/standards-and-indicators/indicators">
+					Indicators
+				</Breadcrumb>
+				<Breadcrumb to="/standards-and-indicators/indicators/indevelopment">
+					In development
+				</Breadcrumb>
+				<Breadcrumb>{reference}</Breadcrumb>
+			</Breadcrumbs>
 			<ProjectPageHeading project={project} />
 			{summary && <p>{summary}</p>}
 			{status && <p>Status: {status}</p>}
@@ -175,33 +200,10 @@ export default function InDevelopmentPage({
 				</dl>
 			)}
 
-			{indevConsultees && indevConsultees?.length > 0 ? (
-				<>
-					<h3>Stakeholders</h3>
-					<dl>
-						{indevConsultees?.map((consultee) => {
-							return (
-								<>
-									<dt>{consultee.column1}</dt>
-									<dd>{consultee.column2}</dd>
-								</>
-							);
-						})}
-					</dl>
-				</>
-			) : null}
-			{indevCommentators && indevCommentators.length > 0 ? (
-				<dl>
-					{indevCommentators?.map((commentator) => {
-						return (
-							<>
-								<dt>{commentator.column1}</dt>
-								<dd>{commentator.column2}</dd>
-							</>
-						);
-					})}
-				</dl>
-			) : null}
+			<Stakeholders
+				consultees={indevConsultees}
+				commentators={indevCommentators}
+			/>
 
 			{indevTimelineItems && indevTimelineItems.length > 0 ? (
 				<>
