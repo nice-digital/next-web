@@ -3,6 +3,7 @@ import { type GetServerSideProps } from "next/types";
 
 import { Breadcrumbs, Breadcrumb } from "@nice-digital/nds-breadcrumbs";
 
+import { Link } from "@/components/Link/Link";
 import { ProjectPageHeading } from "@/components/ProjectPageHeading/ProjectPageHeading";
 import { Stakeholders } from "@/components/ProjectStakeholders/ProjectStakeholders";
 import { TimelineTable } from "@/components/ProjectTimelineTable/ProjectTimelineTable";
@@ -47,6 +48,9 @@ export type InDevelopmentPageProps = {
 	projectType: string | null;
 	reference: string;
 	referralDate: string | null;
+	suspendDiscontinuedReason: string | null;
+	suspendDiscontinuedUrl: string | null;
+	suspendDiscontinuedUrlText: string | null;
 	status: string;
 	summary: string | null;
 	technologyType: string | null;
@@ -75,6 +79,9 @@ export default function InDevelopmentPage({
 	projectType,
 	reference,
 	referralDate,
+	suspendDiscontinuedReason,
+	suspendDiscontinuedUrl,
+	suspendDiscontinuedUrlText,
 	status,
 	summary,
 	technologyType,
@@ -162,6 +169,13 @@ export default function InDevelopmentPage({
 			)}
 
 			<Updates fullUpdates={fullUpdates} partialUpdates={partialUpdates} />
+
+			{suspendDiscontinuedReason && <p>suspendDiscontinuedReason</p>}
+			{suspendDiscontinuedUrl && suspendDiscontinuedUrlText && (
+				<Link to={suspendDiscontinuedUrl}>
+					<a>{suspendDiscontinuedUrlText}</a>
+				</Link>
+			)}
 
 			{indevScheduleItems && indevScheduleItems.length > 0 ? (
 				<>
@@ -259,6 +273,9 @@ export const getServerSideProps: GetServerSideProps<
 		projectType,
 		reference,
 		referralDate,
+		suspendDiscontinuedReason,
+		suspendDiscontinuedUrl,
+		suspendDiscontinuedUrlText,
 		summary,
 		status,
 		technologyType,
@@ -382,6 +399,9 @@ export const getServerSideProps: GetServerSideProps<
 			projectType,
 			reference,
 			referralDate,
+			suspendDiscontinuedReason,
+			suspendDiscontinuedUrl,
+			suspendDiscontinuedUrlText,
 			status,
 			summary,
 			technologyType,
