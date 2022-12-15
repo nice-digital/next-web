@@ -1,8 +1,11 @@
 import { type GetServerSideProps } from "next/types";
 
-import { Link } from "@/components/Link/Link";
 import { ProjectPageHeading } from "@/components/ProjectPageHeading/ProjectPageHeading";
 import { TimelineTable } from "@/components/ProjectTimelineTable/ProjectTimelineTable";
+import {
+	type Update,
+	Updates,
+} from "@/components/ProjectUpdates/ProjectUpdates";
 import {
 	IndevCommentator,
 	IndevConsultee,
@@ -20,8 +23,6 @@ import { ProductGroup, ProductTypeAcronym } from "@/feeds/publications/types";
 import { arrayify } from "@/utils/array";
 import { validateRouteParams } from "@/utils/project";
 import { getProductPath } from "@/utils/url";
-
-export type Update = { title: string; id: string; productPath: string };
 
 export type InDevelopmentPageProps = {
 	fullUpdates: Update[];
@@ -118,43 +119,7 @@ export default function InDevelopmentPage({
 
 			{idNumber && <p>ID number: {idNumber}</p>}
 
-			{fullUpdates && fullUpdates.length > 0 ? (
-				<>
-					<p>This guidance will fully update the following:</p>
-					<ul>
-						{fullUpdates?.map((product, index) => {
-							return (
-								<li key={`${product.title}_${index}`}>
-									<Link to={product.productPath}>
-										<a>
-											{product.title} ({product.id})
-										</a>
-									</Link>
-								</li>
-							);
-						})}
-					</ul>
-				</>
-			) : null}
-
-			{partialUpdates && partialUpdates.length > 0 ? (
-				<>
-					<p>This guidance will partially update the following:</p>
-					<ul>
-						{partialUpdates?.map((product, index) => {
-							return (
-								<li key={`${product.title}_${index}`}>
-									<Link to={product.productPath}>
-										<a>
-											{product.title} ({product.id})
-										</a>
-									</Link>
-								</li>
-							);
-						})}
-					</ul>
-				</>
-			) : null}
+			<Updates fullUpdates={fullUpdates} partialUpdates={partialUpdates} />
 
 			{indevScheduleItems && indevScheduleItems.length > 0 ? (
 				<>
@@ -210,7 +175,6 @@ export default function InDevelopmentPage({
 				</dl>
 			)}
 
-			{/* TODO stakeholders list */}
 			{indevConsultees && indevConsultees?.length > 0 ? (
 				<>
 					<h3>Stakeholders</h3>
@@ -375,6 +339,7 @@ export const getServerSideProps: GetServerSideProps<
 			topicSelectionReasonText = TopicSelectionReason.FurtherDiscussion;
 			break;
 		default:
+			topicSelectionReasonText = null;
 			break;
 	}
 
