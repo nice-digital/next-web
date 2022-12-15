@@ -29,71 +29,72 @@ import { validateRouteParams } from "@/utils/project";
 import { getProductPath } from "@/utils/url";
 
 export type InDevelopmentPageProps = {
+	developedAs: string;
+	evidenceAssessmentGroup: string | null;
 	fullUpdates: Update[];
 	partialUpdates: Update[];
-	indevTopicItems?: IndevTopic[];
-	indevScheduleItems?: IndevSchedule[];
-	indevTimelineItems?: IndevTimeline[];
-	indevProjectTeamMembers?: IndevProjectTeam[];
-	indevConsultees?: IndevConsultee[];
+	idNumber: string | null;
 	indevCommentators?: IndevCommentator[];
+	indevConsultees?: IndevConsultee[];
 	indevEmailEnquiries?: IndevEmailEnquiry[];
 	indevProcessHomepage?: IndevProcessHomepage;
-	title: string;
-	summary: string | null;
+	indevProjectTeamMembers?: IndevProjectTeam[];
+	indevScheduleItems?: IndevSchedule[];
+	indevStakeholderRegistration: Record<string, unknown>[];
+	indevTimelineItems?: IndevTimeline[];
+	indevTopicItems?: IndevTopic[];
+	process: string;
+	projectType: string | null;
+	reference: string;
 	referralDate: string | null;
 	status: string;
+	summary: string | null;
 	technologyType: string | null;
-	projectType: string | null;
+	title: string;
 	topicSelectionDecision: string;
-	topicSelectionReasonText?: string | null;
 	topicSelectionFurtherInfo?: string | null;
-	process: string;
-	developedAs: string;
-	idNumber: string | null;
-	evidenceAssessmentGroup: string | null;
-	reference: string;
-	indevStakeholderRegistration: Record<string, unknown>[];
+	topicSelectionReasonText?: string | null;
 };
 
 export default function InDevelopmentPage({
+	developedAs,
+	evidenceAssessmentGroup,
 	fullUpdates,
-	partialUpdates,
-	indevTopicItems,
-	indevScheduleItems,
-	indevTimelineItems,
-	indevProjectTeamMembers,
-	indevConsultees,
+	idNumber,
 	indevCommentators,
+	indevConsultees,
 	indevEmailEnquiries,
 	indevProcessHomepage,
-	title,
-	summary,
+	indevProjectTeamMembers,
+	indevScheduleItems,
+	indevStakeholderRegistration,
+	indevTimelineItems,
+	indevTopicItems,
+	partialUpdates,
+	process,
+	projectType,
+	reference,
 	referralDate,
 	status,
+	summary,
 	technologyType,
-	projectType,
+	title,
 	topicSelectionDecision,
-	topicSelectionReasonText,
 	topicSelectionFurtherInfo,
-	process,
-	developedAs,
-	idNumber,
-	evidenceAssessmentGroup,
-	reference,
-	indevStakeholderRegistration,
+	topicSelectionReasonText,
 }: InDevelopmentPageProps): JSX.Element {
 	const project = {
-		reference,
-		title,
-		status,
 		indevScheduleItems,
 		indevStakeholderRegistration,
+		reference,
+		status,
+		title,
 	};
 
 	return (
 		<>
 			{/* TODO Add title e.g. Project information | Macitentan for treating pulmonary arterial hypertension in people 1 month to 17 years TS ID 11805 | Guidance | NICE */}
+			{/* TODO Add additional meta data - indevelopment, gid, expected publication date */}
 			<NextSeo
 				title={
 					"Project information | " +
@@ -235,20 +236,20 @@ export const getServerSideProps: GetServerSideProps<
 	const { project } = result;
 
 	const {
-		title,
-		summary,
+		developedAs,
+		evidenceAssessmentGroup,
+		idNumber,
+		process,
+		projectType,
+		reference,
 		referralDate,
+		summary,
 		status,
 		technologyType,
-		projectType,
+		title,
 		topicSelectionDecision,
-		topicSelectionReason,
-		process,
-		developedAs,
-		idNumber,
-		evidenceAssessmentGroup,
-		reference,
 		topicSelectionFurtherInfo,
+		topicSelectionReason,
 	} = project;
 
 	const indevStakeholderRegistration = arrayify(
@@ -347,31 +348,31 @@ export const getServerSideProps: GetServerSideProps<
 
 	return {
 		props: {
+			developedAs,
+			evidenceAssessmentGroup,
 			partialUpdates,
 			fullUpdates,
-			indevTopicItems,
-			indevScheduleItems,
-			indevTimelineItems,
-			indevProjectTeamMembers,
-			indevConsultees,
+			idNumber,
 			indevCommentators,
+			indevConsultees,
 			indevEmailEnquiries,
 			indevProcessHomepage,
-			title,
-			summary,
+			indevProjectTeamMembers,
+			indevScheduleItems,
+			indevStakeholderRegistration,
+			indevTimelineItems,
+			indevTopicItems,
+			process,
+			projectType,
+			reference,
 			referralDate,
 			status,
+			summary,
 			technologyType,
-			projectType,
+			title,
 			topicSelectionDecision,
-			topicSelectionReasonText,
 			topicSelectionFurtherInfo,
-			process,
-			developedAs,
-			idNumber,
-			evidenceAssessmentGroup,
-			reference,
-			indevStakeholderRegistration,
+			topicSelectionReasonText,
 		},
 	};
 };
