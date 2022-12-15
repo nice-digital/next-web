@@ -143,7 +143,14 @@ export default function InDevelopmentPage({
 			{/* {referralDate && <p>Referral date: {referralDate}</p>} */}
 
 			{indevTopicItems && indevTopicItems.length > 0 ? (
-				<p>Topic area: {indevTopicItems[0].item}</p>
+				<>
+					<p>Topic area:</p>
+					<ul>
+						{indevTopicItems.map((topicItem, index) => (
+							<li key={`${topicItem.item}_${index}`}>{topicItem.item}</li>
+						))}
+					</ul>
+				</>
 			) : null}
 
 			{idNumber && <p>ID number: {idNumber}</p>}
@@ -153,21 +160,6 @@ export default function InDevelopmentPage({
 			) : (
 				referralDate && <p>Referral date: {referralDate}</p>
 			)}
-
-			{/* @if (Model.ReferralDate.HasValue)
-            {
-                    <tr>
-                        @if (Model.Process == "MT")
-                        {
-                            <td><strong>Notification date</strong></td>
-                        }
-                        else
-                        {
-                            <td><strong>Referral date</strong></td>
-                        }
-                        <td>@Model.ReferralDate.Value.ToNICELongDateString()</td>
-                    </tr>
-                } */}
 
 			<Updates fullUpdates={fullUpdates} partialUpdates={partialUpdates} />
 
