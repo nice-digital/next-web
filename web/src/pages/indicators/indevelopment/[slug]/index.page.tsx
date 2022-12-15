@@ -102,8 +102,6 @@ export default function InDevelopmentPage({
 
 	return (
 		<>
-			{/* TODO Add title e.g. Project information | Macitentan for treating pulmonary arterial hypertension in people 1 month to 17 years TS ID 11805 | Guidance | NICE */}
-			{/* TODO Add additional meta data - indevelopment, gid, expected publication date */}
 			<NextSeo
 				title={
 					"Project information | " +
