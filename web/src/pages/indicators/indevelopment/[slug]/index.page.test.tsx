@@ -1,10 +1,18 @@
-import { render, screen, waitFor, within } from "@testing-library/react";
+import {
+	queryByRole,
+	render,
+	screen,
+	waitFor,
+	within,
+} from "@testing-library/react";
 import { type GetServerSidePropsContext } from "next";
 import { useRouter } from "next/router";
 
 import { FeedPath } from "@/feeds/inDev/types";
 import gidng10237 from "@/mockData/inDev/project/gid-ng10237.json";
 import { addDefaultJSONFeedMocks, axiosJSONMock } from "@/test-utils/feeds";
+
+import IndevelopmentPage from "../../indevelopment.page";
 
 import InDevelopmentPage, {
 	getServerSideProps,
@@ -54,6 +62,30 @@ describe("/indevelopment/[slug].page", () => {
 				);
 			});
 		});
+
+		it("should render a non-linked breadcrumb for the project id", () => {
+			render(<InDevelopmentPage {...props} />);
+			const navigation = screen.getByRole("navigation", {
+				name: "Breadcrumbs",
+			});
+			const idBreadcrumb = within(navigation).getByText("GID-NG10237");
+			expect(idBreadcrumb).toBeInTheDocument();
+
+			expect(
+				screen.queryByRole("link", { name: "GID-NG10237" })
+			).not.toBeInTheDocument();
+		});
+
+		it("should render a project information overview heading h1", () => {
+			render(<InDevelopmentPage {...props} />);
+
+			expect(
+				screen.getByRole("heading", {
+					level: 1,
+					name: "Adrenal insufficiency: acute and long-term management",
+				})
+			).toBeInTheDocument();
+		});
 	});
 
 	describe("getServerSideProps", () => {
@@ -64,7 +96,7 @@ describe("/indevelopment/[slug].page", () => {
 		});
 
 		describe("Redirects", () => {
-			it("should return permanent redirect object URL when project status is 'Complete'", async () => {
+			it("should return permanent redirect object to the published product URL when project status is 'Complete'", async () => {
 				axiosJSONMock.reset();
 				axiosJSONMock
 					.onGet(new RegExp(FeedPath.ProjectDetail))
@@ -100,6 +132,7 @@ describe("/indevelopment/[slug].page", () => {
 					notFound: true,
 				});
 			});
+			it.todo("should reject when request is incorrect");
 		});
 	});
 });
