@@ -25,15 +25,8 @@ const productRoot = "indicators",
 describe("/indevelopment/[slug].page", () => {
 	beforeEach(() => {
 		(useRouter as jest.Mock).mockImplementation(() => ({
-			// asPath: `/guidance/ng100#somewhere`,
 			asPath: resolvedUrl,
 		}));
-
-		// axiosJSONMock.reset();
-		// axiosJSONMock
-		// 	.onGet(new RegExp(FeedPath.ProjectDetail))
-		// 	.reply(200, gidng10014);
-		// addDefaultJSONFeedMocks();
 	});
 
 	describe("IndevelopmentPage", () => {
@@ -85,6 +78,26 @@ describe("/indevelopment/[slug].page", () => {
 						destination: "/indicators/gid-ng10237-",
 						permanent: true,
 					},
+				});
+			});
+
+			it("should return not found if project doesn't exist", async () => {
+				const notFoundIdSlug = "abc123";
+
+				axiosJSONMock.reset();
+				axiosJSONMock.onGet(new RegExp(FeedPath.ProjectDetail)).reply(404, {
+					Message: "Not found",
+					StatusCode: "NotFound",
+				});
+				addDefaultJSONFeedMocks();
+
+				expect(
+					await getServerSideProps({
+						...getServerSidePropsContext,
+						params: { slug: notFoundIdSlug },
+					})
+				).toStrictEqual({
+					notFound: true,
 				});
 			});
 		});
