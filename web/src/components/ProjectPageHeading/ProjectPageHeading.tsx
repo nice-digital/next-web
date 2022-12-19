@@ -31,13 +31,16 @@ export const ProjectPageHeading: FC<ProjectPageHeadingProps> = ({
 		(item) => item.column1 === "Expected publication"
 	);
 
-	const publicationMeta = expectedPublicationInfo
-		? `Expected publication date ${expectedPublicationInfo.column2}`
-		: status != "Discontinued"
-		? "Expected publication date: TBC"
-		: null;
-
-	console.log();
+	const publicationMeta = expectedPublicationInfo ? (
+		<>
+			<span>Expected publication date</span>{" "}
+			<time dateTime={expectedPublicationInfo.column2}>
+				{formatDateStr(expectedPublicationInfo.column2)}
+			</time>
+		</>
+	) : status != "Discontinued" ? (
+		"Expected publication date: TBC"
+	) : null;
 
 	return (
 		<PageHeader

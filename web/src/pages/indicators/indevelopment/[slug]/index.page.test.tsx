@@ -8,11 +8,10 @@ import {
 import { type GetServerSidePropsContext } from "next";
 import { useRouter } from "next/router";
 
-import { FeedPath } from "@/feeds/inDev/types";
+import { FeedPath, TopicSelectionReason } from "@/feeds/inDev/types";
 import gidng10237 from "@/mockData/inDev/project/gid-ng10237.json";
+import gidta10992 from "@/mockData/inDev/project/gid-ta10992.json";
 import { addDefaultJSONFeedMocks, axiosJSONMock } from "@/test-utils/feeds";
-
-import IndevelopmentPage from "../../indevelopment.page";
 
 import InDevelopmentPage, {
 	getServerSideProps,
@@ -54,8 +53,7 @@ describe("/indevelopment/[slug].page", () => {
 
 		it("should render the page title with reversed breadcrumbs for SEO", async () => {
 			render(<InDevelopmentPage {...props} />);
-			// eslint-disable-next-line testing-library/no-debugging-utils
-			// console.log(screen.debug());
+
 			await waitFor(() => {
 				expect(document.title).toEqual(
 					`Project information | Adrenal insufficiency: acute and long-term management | Indicators | Standards and Indicators`
@@ -85,6 +83,62 @@ describe("/indevelopment/[slug].page", () => {
 					name: "Adrenal insufficiency: acute and long-term management",
 				})
 			).toBeInTheDocument();
+		});
+
+		it.skip.each([
+			["Monitor", TopicSelectionReason.Monitor],
+			["Anticipate", TopicSelectionReason.Anticipate],
+			["NotEligible", TopicSelectionReason.NotEligible],
+			["FurtherDiscussion", TopicSelectionReason.FurtherDiscussion],
+		])(
+			"should render text when a topic selection reason %s exists, topic reason text: %s",
+			async (topicSelectionReason, topicSelectionReasonText) => {
+				axiosJSONMock.reset();
+				axiosJSONMock.onGet(new RegExp(FeedPath.ProjectDetail)).reply(200, {
+					...gidta10992,
+					topicSelectionReason: topicSelectionReason,
+				});
+				addDefaultJSONFeedMocks();
+
+				await getServerSideProps({
+					...getServerSidePropsContext,
+					params: { slug: "gid-ta10992" },
+					resolvedUrl: `/${productRoot}/indevelopment/gid-ta10992`,
+				});
+
+				render(<InDevelopmentPage {...props} />);
+
+				expect(screen.getByText(topicSelectionReasonText)).toBeInTheDocument();
+			}
+		);
+
+		it.todo(
+			"should render 'Developed as:' when status != TopicSelection and ProjectType='NG' "
+		);
+
+		it.todo(
+			"should render 'Process:' when status != TopicSelection and ProjectType != 'NG'"
+		);
+
+		it.todo("should reder 'Notification date' when Process=='MT' ");
+
+		it.todo("should render 'Referral date' when Process != 'MT ");
+
+		it.todo("should render email enquiries mailto link");
+
+		describe("ProjectHeading", () => {
+			it("should render expected publication date metadata as time tag with correct formatted date", () => {
+				render(<InDevelopmentPage {...props} />);
+
+				expect(screen.getByText("Expected publication date").tagName).toBe(
+					"SPAN"
+				);
+
+				const dates = screen.getAllByText("11 April 2024")[0] as HTMLElement;
+
+				expect(dates.tagName).toBe("TIME");
+				// expect(dates).toHaveAttribute("datetime", "2020-05-11");
+			});
 		});
 	});
 

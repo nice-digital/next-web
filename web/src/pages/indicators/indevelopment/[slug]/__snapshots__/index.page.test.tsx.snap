@@ -120,7 +120,15 @@ exports[`/indevelopment/[slug].page IndevelopmentPage should match snapshot for 
           In development GID-NG10237
         </li>
         <li>
-          Expected publication date 11 April 2024
+          <span>
+            Expected publication date
+          </span>
+           
+          <time
+            datetime="11 April 2024"
+          >
+            11 April 2024
+          </time>
         </li>
         <li>
           <a
