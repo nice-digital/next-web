@@ -26,6 +26,7 @@ import {
 import { getProductDetail } from "@/feeds/publications/publications";
 import { ProductGroup, ProductTypeAcronym } from "@/feeds/publications/types";
 import { arrayify } from "@/utils/array";
+import { formatDateStr, stripTime } from "@/utils/datetime";
 import { validateRouteParams } from "@/utils/project";
 import { getProductPath } from "@/utils/url";
 
@@ -63,7 +64,7 @@ export type InDevelopmentPageProps = {
 
 export default function InDevelopmentPage({
 	description,
-	developedAs,
+	// developedAs,
 	evidenceAssessmentGroup,
 	fullUpdates,
 	idNumber,
@@ -167,7 +168,14 @@ export default function InDevelopmentPage({
 			{process == "MT" && referralDate ? (
 				<p>Notification date: {referralDate}</p>
 			) : (
-				referralDate && <p>Referral date: {referralDate}</p>
+				referralDate && (
+					<p>
+						Referral date:
+						<time dateTime={stripTime(referralDate)}>
+							&nbsp;{formatDateStr(referralDate)}
+						</time>
+					</p>
+				)
 			)}
 
 			<Updates fullUpdates={fullUpdates} partialUpdates={partialUpdates} />
