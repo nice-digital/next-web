@@ -224,6 +224,52 @@ describe("/indevelopment/[slug].page", () => {
 			).toBeInTheDocument();
 		});
 
+		it("should render full update information links", async () => {
+			props = (
+				(await getServerSideProps({
+					...getServerSidePropsContext,
+					params: {
+						slug: "gid-qs10170",
+					},
+					resolvedUrl: "/indicators/indevelopment/gid-qs10170",
+				})) as {
+					props: InDevelopmentPageProps;
+				}
+			).props;
+			render(<InDevelopmentPage {...props} />);
+			expect(
+				screen.getByText("This guidance will fully update the following:")
+			).toBeInTheDocument();
+			const updateLink = screen.getByRole("link", {
+				name: "Acute kidney injury (QS76)",
+			});
+			expect(updateLink).toBeInTheDocument();
+			expect(updateLink).toHaveAttribute("href", "/guidance/qs76");
+		});
+
+		it("should render partial update information links", async () => {
+			props = (
+				(await getServerSideProps({
+					...getServerSidePropsContext,
+					params: {
+						slug: "gid-ng10364",
+					},
+					resolvedUrl: "/indicators/indevelopment/gid-ng10364",
+				})) as {
+					props: InDevelopmentPageProps;
+				}
+			).props;
+			render(<InDevelopmentPage {...props} />);
+			const updateLink = screen.getByRole("link", {
+				name: "Atopic eczema in under 12s: diagnosis and management (CG57)",
+			});
+			expect(
+				screen.getByText("This guidance will partially update the following:")
+			).toBeInTheDocument();
+			expect(updateLink).toBeInTheDocument();
+			expect(updateLink).toHaveAttribute("href", "/guidance/cg57");
+		});
+
 		describe("ProjectHeading", () => {
 			it("should render expected publication date metadata as time tag with correct formatted date", () => {
 				render(<InDevelopmentPage {...props} />);
