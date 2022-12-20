@@ -68,6 +68,22 @@ describe("/indevelopment/[slug].page", () => {
 			).not.toBeInTheDocument();
 		});
 
+		it("should render the project id number", async () => {
+			props = (
+				(await getServerSideProps({
+					...getServerSidePropsContext,
+					params: {
+						slug: "gid-hst10009",
+					},
+					resolvedUrl: "/indicators/indevelopment/gid-hst10009",
+				})) as {
+					props: InDevelopmentPageProps;
+				}
+			).props;
+			render(<InDevelopmentPage {...props} />);
+			expect(screen.getByText("ID number: 927")).toBeInTheDocument();
+		});
+
 		it("should render a project information overview heading h1", () => {
 			render(<InDevelopmentPage {...props} />);
 
