@@ -189,6 +189,37 @@ describe("/indevelopment/[slug].page", () => {
 			// expect(dates).toHaveAttribute("datetime", "2020-05-11");
 		});
 
+		it("should render further information links", async () => {
+			props = (
+				(await getServerSideProps({
+					...getServerSidePropsContext,
+					params: {
+						slug: "gid-tag383",
+					},
+					resolvedUrl: "/indicators/indevelopment/gid-tag383",
+				})) as {
+					props: InDevelopmentPageProps;
+				}
+			).props;
+			render(<InDevelopmentPage {...props} />);
+
+			const furtherInfoLink = screen.getByRole("link", {
+				name: "CHTE processes and methods manual default",
+			});
+
+			expect(
+				screen.getByText(
+					"For further information on our processes and methods, please see our"
+				)
+			).toBeInTheDocument();
+
+			expect(furtherInfoLink).toBeInTheDocument();
+			expect(furtherInfoLink).toHaveAttribute(
+				"href",
+				"https://www.nice.org.uk/process/pmg20/chapter/introduction"
+			);
+		});
+
 		it("should render email enquiries mailto link", () => {
 			render(<InDevelopmentPage {...props} />);
 
