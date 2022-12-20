@@ -85,7 +85,7 @@ describe("/indevelopment/[slug].page", () => {
 			).toBeInTheDocument();
 		});
 
-		it.skip.each([
+		it.each([
 			["Monitor", TopicSelectionReason.Monitor],
 			["Anticipate", TopicSelectionReason.Anticipate],
 			["NotEligible", TopicSelectionReason.NotEligible],
@@ -100,25 +100,60 @@ describe("/indevelopment/[slug].page", () => {
 				});
 				addDefaultJSONFeedMocks();
 
-				await getServerSideProps({
-					...getServerSidePropsContext,
-					params: { slug: "gid-ta10992" },
-					resolvedUrl: `/${productRoot}/indevelopment/gid-ta10992`,
-				});
+				props = (
+					(await getServerSideProps({
+						...getServerSidePropsContext,
+						params: {
+							slug: "gid-ta10992",
+						},
+						resolvedUrl: "/indicators/indevelopment/gid-ta10992",
+					})) as {
+						props: InDevelopmentPageProps;
+					}
+				).props;
 
 				render(<InDevelopmentPage {...props} />);
 
-				expect(screen.getByText(topicSelectionReasonText)).toBeInTheDocument();
+				expect(screen.getByTestId("reason")).toBeInTheDocument();
+
+				expect(screen.getByTestId("reason")).toHaveTextContent(
+					`Reason for decision: ${topicSelectionReasonText}`
+				);
 			}
 		);
 
-		it.todo(
-			"should render 'Developed as:' when status != TopicSelection and ProjectType='NG' "
-		);
+		it("should render 'Developed as: [Process]' when status != TopicSelection and ProjectType='NG' ", async () => {
+			props = (
+				(await getServerSideProps({
+					...getServerSidePropsContext,
+					params: {
+						slug: "gid-ng10163",
+					},
+					resolvedUrl: "/indicators/indevelopment/gid-ng10163",
+				})) as {
+					props: InDevelopmentPageProps;
+				}
+			).props;
+			render(<InDevelopmentPage {...props} />);
 
-		it.todo(
-			"should render 'Process:' when status != TopicSelection and ProjectType != 'NG'"
-		);
+			expect(screen.getByText("Developed as: APG")).toBeInTheDocument();
+		});
+
+		it("should render 'Process: [Process]' when status != TopicSelection and ProjectType != 'NG'", async () => {
+			props = (
+				(await getServerSideProps({
+					...getServerSidePropsContext,
+					params: {
+						slug: "gid-hst10044",
+					},
+					resolvedUrl: "/indicators/indevelopment/gid-hst10044",
+				})) as {
+					props: InDevelopmentPageProps;
+				}
+			).props;
+			render(<InDevelopmentPage {...props} />);
+			expect(screen.getByText("Process: HST")).toBeInTheDocument();
+		});
 
 		it.todo("should reder 'Notification date' when Process=='MT' ");
 
@@ -139,6 +174,26 @@ describe("/indevelopment/[slug].page", () => {
 				expect(dates.tagName).toBe("TIME");
 				// expect(dates).toHaveAttribute("datetime", "2020-05-11");
 			});
+
+			it("should render pageheader meta expected publication date TBC", async () => {
+				props = (
+					(await getServerSideProps({
+						...getServerSidePropsContext,
+						params: {
+							slug: "gid-ta11036",
+						},
+						resolvedUrl: "/indicators/indevelopment/gid-ta11036",
+					})) as {
+						props: InDevelopmentPageProps;
+					}
+				).props;
+				render(<InDevelopmentPage {...props} />);
+				expect(
+					screen.getByText("Expected publication date: TBC")
+				).toBeInTheDocument();
+			});
+
+			it.todo("should render a 'register as a stakeholder' link");
 		});
 	});
 

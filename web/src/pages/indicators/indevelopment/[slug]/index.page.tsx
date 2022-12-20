@@ -131,7 +131,9 @@ export default function InDevelopmentPage({
 			{technologyType && <p>Technology type: {technologyType}</p>}
 			{topicSelectionDecision && <p>Decision: {topicSelectionDecision} </p>}
 			{topicSelectionReasonText && (
-				<p>Reason for decision: {topicSelectionReasonText} </p>
+				<p data-testid="reason">
+					Reason for decision: {topicSelectionReasonText}{" "}
+				</p>
 			)}
 			{topicSelectionFurtherInfo && (
 				<p>Further information: {topicSelectionFurtherInfo} </p>
