@@ -201,6 +201,29 @@ describe("/indevelopment/[slug].page", () => {
 			expect(link).toHaveAttribute("href", "mailto:hypoadrenalism@nice.org.uk");
 		});
 
+		it("should render topic areas", async () => {
+			props = (
+				(await getServerSideProps({
+					...getServerSidePropsContext,
+					params: {
+						slug: "gid-tag360",
+					},
+					resolvedUrl: "/indicators/indevelopment/gid-tag360",
+				})) as {
+					props: InDevelopmentPageProps;
+				}
+			).props;
+			render(<InDevelopmentPage {...props} />);
+
+			expect(screen.getByText("Topic area:")).toBeInTheDocument();
+
+			const topicAreaList = screen.getByRole("list", { name: "Topic areas" });
+			expect(within(topicAreaList).getByText("Cancer")).toBeInTheDocument();
+			expect(
+				within(topicAreaList).getByText("Digestive system")
+			).toBeInTheDocument();
+		});
+
 		describe("ProjectHeading", () => {
 			it("should render expected publication date metadata as time tag with correct formatted date", () => {
 				render(<InDevelopmentPage {...props} />);

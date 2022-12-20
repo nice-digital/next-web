@@ -150,12 +150,10 @@ export default function InDevelopmentPage({
 			{/* <p>Process: {process}</p> */}
 			{/* <p>Developed as: {developedAs}</p> */}
 
-			{/* {referralDate && <p>Referral date: {referralDate}</p>} */}
-
 			{indevTopicItems && indevTopicItems.length > 0 ? (
 				<>
 					<p>Topic area:</p>
-					<ul>
+					<ul aria-label="Topic areas">
 						{indevTopicItems.map((topicItem, index) => (
 							<li key={`${topicItem.item}_${index}`}>{topicItem.item}</li>
 						))}
