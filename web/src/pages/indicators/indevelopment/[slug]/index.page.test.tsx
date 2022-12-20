@@ -189,6 +189,34 @@ describe("/indevelopment/[slug].page", () => {
 			// expect(dates).toHaveAttribute("datetime", "2020-05-11");
 		});
 
+		it("should render related links", async () => {
+			//TODO check formatting and location of related links
+			props = (
+				(await getServerSideProps({
+					...getServerSidePropsContext,
+					params: {
+						slug: "cg189-update-1",
+					},
+					resolvedUrl: "/indicators/indevelopment/cg189-update-1",
+				})) as {
+					props: InDevelopmentPageProps;
+				}
+			).props;
+			render(<InDevelopmentPage {...props} />);
+
+			expect(
+				screen.getByText(
+					"Weight Management: preventing, assessing and managing overweight and obesity (update)"
+				)
+			).toBeInTheDocument();
+
+			expect(
+				screen.getByText(
+					"https://www.nice.org.uk/guidance/indevelopment/gid-ng10182/documents"
+				)
+			).toBeInTheDocument();
+		});
+
 		it("should render further information links", async () => {
 			props = (
 				(await getServerSideProps({

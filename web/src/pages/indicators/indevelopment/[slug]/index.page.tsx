@@ -14,6 +14,7 @@ import {
 import {
 	IndevCommentator,
 	IndevConsultee,
+	IndevProjectRelatedLink,
 	IndevTopic,
 	ProjectStatus,
 	TopicSelectionReason,
@@ -42,6 +43,7 @@ export type InDevelopmentPageProps = {
 	indevEmailEnquiries?: IndevEmailEnquiry[];
 	indevProcessHomepage?: IndevProcessHomepage;
 	indevProjectTeamMembers?: IndevProjectTeam[];
+	indevProjectRelatedLinks?: IndevProjectRelatedLink[];
 	indevScheduleItems?: IndevSchedule[];
 	indevStakeholderRegistration: Record<string, unknown>[];
 	indevTimelineItems?: IndevTimeline[];
@@ -73,6 +75,7 @@ export default function InDevelopmentPage({
 	indevEmailEnquiries,
 	indevProcessHomepage,
 	indevProjectTeamMembers,
+	indevProjectRelatedLinks,
 	indevScheduleItems,
 	indevStakeholderRegistration,
 	indevTimelineItems,
@@ -149,7 +152,6 @@ export default function InDevelopmentPage({
 			{/* TODO remove 'Process' and 'Developed as' if the logic above covers it */}
 			{/* <p>Process: {process}</p> */}
 			{/* <p>Developed as: {developedAs}</p> */}
-
 			{indevTopicItems && indevTopicItems.length > 0 ? (
 				<>
 					<p>Topic area:</p>
@@ -160,9 +162,7 @@ export default function InDevelopmentPage({
 					</ul>
 				</>
 			) : null}
-
 			{description && <p>Description: {description}</p>}
-
 			{idNumber && <p>ID number: {idNumber}</p>}
 			{/* TODO check formatting of referral date */}
 			{process == "MT" && referralDate ? (
@@ -177,16 +177,13 @@ export default function InDevelopmentPage({
 					</p>
 				)
 			)}
-
 			<Updates fullUpdates={fullUpdates} partialUpdates={partialUpdates} />
-
 			{suspendDiscontinuedReason && <p>suspendDiscontinuedReason</p>}
 			{suspendDiscontinuedUrl && suspendDiscontinuedUrlText && (
 				<Link to={suspendDiscontinuedUrl}>
 					<a>{suspendDiscontinuedUrlText}</a>
 				</Link>
 			)}
-
 			{indevScheduleItems && indevScheduleItems.length > 0 ? (
 				<>
 					<h3>Provisional Schedule</h3>
@@ -217,6 +214,22 @@ export default function InDevelopmentPage({
 					</dl>
 				</>
 			) : null}
+			{/* TODO check formatting and location of related links */}
+			{indevProjectRelatedLinks && indevProjectRelatedLinks?.length > 0 ? (
+				<>
+					<h3>Related Links</h3>
+					<dl>
+						{indevProjectRelatedLinks?.map((link) => {
+							return (
+								<>
+									<dt>{link.column1}</dt>
+									<dd>{link.column2}</dd>
+								</>
+							);
+						})}
+					</dl>
+				</>
+			) : null}
 			{indevEmailEnquiries && indevEmailEnquiries.length > 0 ? (
 				<>
 					<h3>Email enquiries</h3>
@@ -233,16 +246,13 @@ export default function InDevelopmentPage({
 					</ul>
 				</>
 			) : null}
-
 			{evidenceAssessmentGroup && (
 				<dl>
 					<dd>External Assessment Group</dd>
 					<dt>{evidenceAssessmentGroup}</dt>
 				</dl>
 			)}
-
 			{/* TODO Legacy stakeholders */}
-
 			{/* @if (Model.LegacyStakeholders.Any())
                         {
                             <h3>Stakeholders</h3>
@@ -257,12 +267,10 @@ export default function InDevelopmentPage({
                                 <p><a href="@Model.StakeHolderRegistrationLinkViewModel.Link">Stakeholder Registration Form</a></p>
                             }
                         } */}
-
 			<Stakeholders
 				consultees={indevConsultees}
 				commentators={indevCommentators}
 			/>
-
 			{indevTimelineItems && indevTimelineItems.length > 0 ? (
 				<>
 					<h3>Timeline</h3>
@@ -336,6 +344,10 @@ export const getServerSideProps: GetServerSideProps<
 		indevProjectTeam =
 			project.embedded.niceIndevProjectTeamList?.embedded.niceIndevProjectTeam,
 		indevProjectTeamMembers = arrayify(indevProjectTeam),
+		indevProjectRelatedLinkList =
+			project.embedded.niceIndevProjectRelatedLinkList?.embedded
+				.niceIndevProjectRelatedLink,
+		indevProjectRelatedLinks = arrayify(indevProjectRelatedLinkList),
 		indevConsulteeList =
 			project.embedded.niceIndevConsulteeList?.embedded.niceIndevConsultee,
 		indevConsultees = arrayify(indevConsulteeList),
@@ -420,6 +432,7 @@ export const getServerSideProps: GetServerSideProps<
 			indevEmailEnquiries,
 			indevProcessHomepage,
 			indevProjectTeamMembers,
+			indevProjectRelatedLinks,
 			indevScheduleItems,
 			indevStakeholderRegistration,
 			indevTimelineItems,

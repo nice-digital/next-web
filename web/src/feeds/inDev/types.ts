@@ -306,6 +306,27 @@ export type IndevProcessHomepage = {
 	linkText: string;
 } | null;
 
+export type IndevProjectRelatedLink = {
+	links: {
+		self: [Link];
+	};
+	etag: ETag;
+	column1: string;
+	column2: string;
+};
+
+export type NiceIndevProjectRelatedLinkList = {
+	links: {
+		self: [Link];
+	};
+	embedded: {
+		niceIndevProjectRelatedLink:
+			| IndevProjectRelatedLink
+			| IndevProjectRelatedLink[];
+	};
+	etag: ETag;
+};
+
 export type IndevSchedule = {
 	links: {
 		self: [Link];
@@ -440,6 +461,7 @@ export type ProjectDetail = {
 		niceIndevTimelineList?: NiceIndevTimelineList;
 		niceIndevProcessHomepage?: IndevProcessHomepage;
 		niceIndevProjectTeamList?: NiceIndevProjectTeamList;
+		niceIndevProjectRelatedLinkList?: NiceIndevProjectRelatedLinkList;
 		niceIndevConsulteeList?: NiceIndevConsulteeList;
 		niceIndevCommentatorList?: NiceIndevCommentatorList;
 		niceIndevEmailEnquiryList?: NiceIndevEmailEnquiryList;
