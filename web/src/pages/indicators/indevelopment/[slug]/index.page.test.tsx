@@ -1,10 +1,4 @@
-import {
-	queryByRole,
-	render,
-	screen,
-	waitFor,
-	within,
-} from "@testing-library/react";
+import { render, screen, waitFor, within } from "@testing-library/react";
 import { type GetServerSidePropsContext } from "next";
 import { useRouter } from "next/router";
 
@@ -155,11 +149,57 @@ describe("/indevelopment/[slug].page", () => {
 			expect(screen.getByText("Process: HST")).toBeInTheDocument();
 		});
 
-		it.todo("should reder 'Notification date' when Process=='MT' ");
+		it("should reder 'Notification date' when Process =='MT' ", async () => {
+			props = (
+				(await getServerSideProps({
+					...getServerSidePropsContext,
+					params: {
+						slug: "gid-mt130",
+					},
+					resolvedUrl: "/indicators/indevelopment/gid-mt130",
+				})) as {
+					props: InDevelopmentPageProps;
+				}
+			).props;
+			render(<InDevelopmentPage {...props} />);
+			expect(screen.getByText("Process: MT")).toBeInTheDocument();
+			expect(
+				screen.getByText("Notification date: February 2010")
+			).toBeInTheDocument();
+		});
 
-		it.todo("should render 'Referral date' when Process != 'MT ");
+		it("should render 'Referral date' when Process != 'MT ", async () => {
+			props = (
+				(await getServerSideProps({
+					...getServerSidePropsContext,
+					params: {
+						slug: "gid-tag383",
+					},
+					resolvedUrl: "/indicators/indevelopment/gid-tag383",
+				})) as {
+					props: InDevelopmentPageProps;
+				}
+			).props;
+			render(<InDevelopmentPage {...props} />);
 
-		it.todo("should render email enquiries mailto link");
+			expect(screen.getByText("Referral date:").tagName).toBe("P");
+			const dates = screen.getAllByText("1 November 2005")[0] as HTMLElement;
+			expect(dates.tagName).toBe("TIME");
+			//TODO Check datetime attribute format
+			// expect(dates).toHaveAttribute("datetime", "2020-05-11");
+		});
+
+		it("should render email enquiries mailto link", () => {
+			render(<InDevelopmentPage {...props} />);
+
+			const link = screen.getByRole("link", {
+				name: "hypoadrenalism@nice.org.uk",
+			});
+
+			expect(link).toBeInTheDocument();
+
+			expect(link).toHaveAttribute("href", "mailto:hypoadrenalism@nice.org.uk");
+		});
 
 		describe("ProjectHeading", () => {
 			it("should render expected publication date metadata as time tag with correct formatted date", () => {
@@ -172,6 +212,7 @@ describe("/indevelopment/[slug].page", () => {
 				const dates = screen.getAllByText("11 April 2024")[0] as HTMLElement;
 
 				expect(dates.tagName).toBe("TIME");
+				//TODO Check datetime attribute format
 				// expect(dates).toHaveAttribute("datetime", "2020-05-11");
 			});
 
@@ -193,7 +234,65 @@ describe("/indevelopment/[slug].page", () => {
 				).toBeInTheDocument();
 			});
 
-			it.todo("should render a 'register as a stakeholder' link");
+			it("should not render pageheader meta expected publication date if status = discontinued", async () => {
+				props = (
+					(await getServerSideProps({
+						...getServerSidePropsContext,
+						params: {
+							slug: "gid-mt130",
+						},
+						resolvedUrl: "/indicators/indevelopment/gid-mt130",
+					})) as {
+						props: InDevelopmentPageProps;
+					}
+				).props;
+				render(<InDevelopmentPage {...props} />);
+
+				expect(
+					screen.queryByText("Expected publication date: TBC")
+				).not.toBeInTheDocument();
+
+				expect(
+					screen.queryByText("GID-MT130 ", {
+						selector: ".page-header__metadata li",
+					})
+				).not.toBeInTheDocument();
+			});
+
+			it("should render pageheader meta discontinued if status = discontinued", async () => {
+				props = (
+					(await getServerSideProps({
+						...getServerSidePropsContext,
+						params: {
+							slug: "gid-mt130",
+						},
+						resolvedUrl: "/indicators/indevelopment/gid-mt130",
+					})) as {
+						props: InDevelopmentPageProps;
+					}
+				).props;
+				render(<InDevelopmentPage {...props} />);
+
+				expect(
+					screen.getByText("Discontinued GID-MT130", {
+						selector: ".page-header__metadata li",
+					})
+				).toBeInTheDocument();
+
+				expect(screen.getByText("Status: Discontinued")).toBeInTheDocument();
+			});
+
+			it("should render a 'register as a stakeholder' link", async () => {
+				render(<InDevelopmentPage {...props} />);
+				const stakeholderLink = screen.getByRole("link", {
+					name: "Register as a stakeholder",
+				});
+				expect(stakeholderLink).toBeInTheDocument();
+				expect(stakeholderLink).toHaveAttribute(
+					"href",
+					"https://alpha.nice.org.uk/get-involved/stakeholder-registration/register"
+				);
+			});
 		});
 	});
 

@@ -2,8 +2,8 @@ import { type FC } from "react";
 
 import { PageHeader } from "@nice-digital/nds-page-header";
 
-import { IndevSchedule, ProjectDetail } from "@/feeds/inDev/types";
-import { formatDateStr, stripTime } from "@/utils/datetime";
+import { IndevSchedule } from "@/feeds/inDev/types";
+import { formatDateStr } from "@/utils/datetime";
 
 import { Link } from "../Link/Link";
 
