@@ -165,16 +165,7 @@ export default function InDevelopmentPage({
 			{/* TODO remove 'Process' and 'Developed as' if the logic above covers it */}
 			{/* <p>Process: {process}</p> */}
 			{/* <p>Developed as: {developedAs}</p> */}
-			{indevTopicItems && indevTopicItems.length > 0 ? (
-				<>
-					<p>Topic area:</p>
-					<ul aria-label="Topic areas">
-						{indevTopicItems.map((topicItem, index) => (
-							<li key={`${topicItem.item}_${index}`}>{topicItem.item}</li>
-						))}
-					</ul>
-				</>
-			) : null}
+
 			{description && <p>Description: {description}</p>}
 			{idNumber && <p>ID number: {idNumber}</p>}
 			{/* TODO check formatting of referral date */}
@@ -190,6 +181,18 @@ export default function InDevelopmentPage({
 					</p>
 				)
 			)}
+
+			{indevTopicItems && indevTopicItems.length > 0 ? (
+				<>
+					<p>Topic area:</p>
+					<ul aria-label="Topic areas">
+						{indevTopicItems.map((topicItem, index) => (
+							<li key={`${topicItem.item}_${index}`}>{topicItem.item}</li>
+						))}
+					</ul>
+				</>
+			) : null}
+
 			<Updates fullUpdates={fullUpdates} partialUpdates={partialUpdates} />
 
 			{indevScheduleItems && indevScheduleItems.length > 0 ? (
