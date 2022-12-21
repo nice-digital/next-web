@@ -138,6 +138,12 @@ export default function InDevelopmentPage({
 			) : null}
 
 			{summary && <p>{summary}</p>}
+			{suspendDiscontinuedReason && <p>{suspendDiscontinuedReason}</p>}
+			{suspendDiscontinuedUrl && suspendDiscontinuedUrlText && (
+				<Link to={suspendDiscontinuedUrl}>
+					<a>{suspendDiscontinuedUrlText}</a>
+				</Link>
+			)}
 			{status && <p>Status: {status}</p>}
 			{technologyType && <p>Technology type: {technologyType}</p>}
 			{topicSelectionDecision && <p>Decision: {topicSelectionDecision} </p>}
@@ -185,12 +191,7 @@ export default function InDevelopmentPage({
 				)
 			)}
 			<Updates fullUpdates={fullUpdates} partialUpdates={partialUpdates} />
-			{suspendDiscontinuedReason && <p>suspendDiscontinuedReason</p>}
-			{suspendDiscontinuedUrl && suspendDiscontinuedUrlText && (
-				<Link to={suspendDiscontinuedUrl}>
-					<a>{suspendDiscontinuedUrlText}</a>
-				</Link>
-			)}
+
 			{indevScheduleItems && indevScheduleItems.length > 0 ? (
 				<>
 					<h3>Provisional Schedule</h3>

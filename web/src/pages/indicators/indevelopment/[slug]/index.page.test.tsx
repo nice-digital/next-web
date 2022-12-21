@@ -447,6 +447,7 @@ describe("/indevelopment/[slug].page", () => {
 		it.todo("should render project team");
 		it.todo("should render timeline");
 		it.todo("should render provisional schedule");
+		it.todo("should render suspend discontinued reason");
 
 		describe("ProjectHeading", () => {
 			it("should render expected publication date metadata as time tag with correct formatted date", () => {
