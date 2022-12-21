@@ -14,6 +14,7 @@ import {
 import {
 	IndevCommentator,
 	IndevConsultee,
+	IndevLegacyStakeholder,
 	IndevProjectRelatedLink,
 	IndevTopic,
 	ProjectStatus,
@@ -41,6 +42,7 @@ export type InDevelopmentPageProps = {
 	indevCommentators?: IndevCommentator[];
 	indevConsultees?: IndevConsultee[];
 	indevEmailEnquiries?: IndevEmailEnquiry[];
+	indevLegacyStakeholders?: IndevLegacyStakeholder[];
 	indevProcessHomepage?: IndevProcessHomepage;
 	indevProjectTeamMembers?: IndevProjectTeam[];
 	indevProjectRelatedLinks?: IndevProjectRelatedLink[];
@@ -73,6 +75,7 @@ export default function InDevelopmentPage({
 	indevCommentators,
 	indevConsultees,
 	indevEmailEnquiries,
+	indevLegacyStakeholders,
 	indevProcessHomepage,
 	indevProjectTeamMembers,
 	indevProjectRelatedLinks,
@@ -146,7 +149,6 @@ export default function InDevelopmentPage({
 			{topicSelectionFurtherInfo && (
 				<p>Further information: {topicSelectionFurtherInfo} </p>
 			)}
-			{/* TODO Check this logic from guidance web is still ok to use */}
 			{process && status !== ProjectStatus.TopicSelection ? (
 				projectType == ProductTypeAcronym.NG ? (
 					<p>Developed as: {process}</p>
@@ -192,12 +194,12 @@ export default function InDevelopmentPage({
 			{indevScheduleItems && indevScheduleItems.length > 0 ? (
 				<>
 					<h3>Provisional Schedule</h3>
-					<dl>
-						{indevScheduleItems?.map((item) => {
+					<dl aria-label="Provisional schedule">
+						{indevScheduleItems?.map((item, index) => {
 							return (
 								<>
-									<dt>{item.column1}</dt>
-									<dd>{item.column2}</dd>
+									<dt key={`sched_dt_${index}`}>{item.column1}</dt>
+									<dd key={`sched_dd_${index}`}>{item.column2}</dd>
 								</>
 							);
 						})}
@@ -207,12 +209,12 @@ export default function InDevelopmentPage({
 			{indevProjectTeamMembers && indevProjectTeamMembers?.length > 0 ? (
 				<>
 					<h3>Project Team</h3>
-					<dl>
-						{indevProjectTeamMembers?.map((member) => {
+					<dl aria-label="Project team">
+						{indevProjectTeamMembers?.map((member, index) => {
 							return (
 								<>
-									<dt>{member.column1}</dt>
-									<dd>{member.column2}</dd>
+									<dt key={`member_dt_${index}`}>{member.column1}</dt>
+									<dd key={`member_dd_${index}`}>{member.column2}</dd>
 								</>
 							);
 						})}
@@ -223,12 +225,12 @@ export default function InDevelopmentPage({
 			{indevProjectRelatedLinks && indevProjectRelatedLinks?.length > 0 ? (
 				<>
 					<h3>Related Links</h3>
-					<dl>
-						{indevProjectRelatedLinks?.map((link) => {
+					<dl aria-label="Related links">
+						{indevProjectRelatedLinks?.map((link, index) => {
 							return (
 								<>
-									<dt>{link.column1}</dt>
-									<dd>{link.column2}</dd>
+									<dt key={`link_dt_${index}`}>{link.column1}</dt>
+									<dd key={`link_dd_${index}`}>{link.column2}</dd>
 								</>
 							);
 						})}
@@ -273,7 +275,7 @@ export default function InDevelopmentPage({
                             }
                         } */}
 			<Stakeholders
-				// legacyStakeholders={indevLegacyStakeholders}
+				legacyStakeholders={indevLegacyStakeholders}
 				consultees={indevConsultees}
 				commentators={indevCommentators}
 			/>
@@ -354,6 +356,10 @@ export const getServerSideProps: GetServerSideProps<
 			project.embedded.niceIndevProjectRelatedLinkList?.embedded
 				.niceIndevProjectRelatedLink,
 		indevProjectRelatedLinks = arrayify(indevProjectRelatedLinkList),
+		indevLegacyStakeholdersList =
+			project.embedded.niceIndevLegacyStakeholderList?.embedded
+				.niceIndevLegacyStakeholder,
+		indevLegacyStakeholders = arrayify(indevLegacyStakeholdersList),
 		indevConsulteeList =
 			project.embedded.niceIndevConsulteeList?.embedded.niceIndevConsultee,
 		indevConsultees = arrayify(indevConsulteeList),
@@ -436,6 +442,7 @@ export const getServerSideProps: GetServerSideProps<
 			indevCommentators,
 			indevConsultees,
 			indevEmailEnquiries,
+			indevLegacyStakeholders,
 			indevProcessHomepage,
 			indevProjectTeamMembers,
 			indevProjectRelatedLinks,

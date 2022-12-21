@@ -155,7 +155,9 @@ exports[`/indevelopment/[slug].page IndevelopmentPage should match snapshot for 
     <h3>
       Provisional Schedule
     </h3>
-    <dl>
+    <dl
+      aria-label="Provisional schedule"
+    >
       <dt>
         Expected publication
       </dt>
@@ -166,7 +168,9 @@ exports[`/indevelopment/[slug].page IndevelopmentPage should match snapshot for 
     <h3>
       Project Team
     </h3>
-    <dl>
+    <dl
+      aria-label="Project team"
+    >
       <dt>
         Developer
       </dt>
@@ -294,6 +298,28 @@ exports[`/indevelopment/[slug].page IndevelopmentPage should match snapshot for 
 </body>
 `;
 
+exports[`/indevelopment/[slug].page IndevelopmentPage should render legacy stakeholder items 1`] = `
+Array [
+  <ul
+    aria-label="Legacy stakeholders"
+  >
+    <li>
+      &lt;p&gt;
+                    	
+                    		
+                        	
+                        		&lt;p&gt;NICE is developing guidance on this technology. If you would like to become a registered stakeholder in the development of guidance on this technology, please complete a &lt;a href="http://www.nice.org.uk/media/default/about/what-we-do/nice-guidance/nice-medical-technologies/mtep-notification-form.docx" nice-original-href="http://www4.nice.org.uk/Media/Default/About/what-we-do/NICE-guidance/NICE-medical-technologies/MTEP-notification-form.docx"&gt;stakeholder registration and confidentiality form&lt;/a&gt; (Word), and return to us at &lt;a href="mailto:medtech@nice.org.uk"&gt;medtech@nice.org.uk&lt;/a&gt;.&lt;/p&gt;
+&lt;p&gt;Registered stakeholders will be informed of key stages in the development of guidance including when documents go out to consultation or comment.&lt;/p&gt;
+
+                        	
+                        	
+                        
+                    &lt;/p&gt;
+    </li>
+  </ul>,
+]
+`;
+
 exports[`/indevelopment/[slug].page getServerSideProps should return a correct props when supplied with a valid slug 1`] = `
 Object {
   "props": Object {
@@ -315,6 +341,7 @@ Object {
         },
       },
     ],
+    "indevLegacyStakeholders": Array [],
     "indevProcessHomepage": Object {
       "description": "For further information on the guideline development process, please read",
       "eTag": null,

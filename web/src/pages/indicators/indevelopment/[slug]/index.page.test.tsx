@@ -371,6 +371,79 @@ describe("/indevelopment/[slug].page", () => {
 			expect(updateLink).toHaveAttribute("href", "/guidance/cg57");
 		});
 
+		it("should render consultee stakeholder items", async () => {
+			props = (
+				(await getServerSideProps({
+					...getServerSidePropsContext,
+					params: {
+						slug: "gid-hst10037",
+					},
+					resolvedUrl: "/indicators/indevelopment/gid-hst10037",
+				})) as {
+					props: InDevelopmentPageProps;
+				}
+			).props;
+			render(<InDevelopmentPage {...props} />);
+
+			expect(
+				screen.getByRole("heading", { level: 3, name: "Stakeholders" })
+			).toBeInTheDocument();
+
+			const consulteeList = screen.getByLabelText("Consultee stakeholders");
+			const { getAllByRole } = within(consulteeList);
+			const consulteeListItems = getAllByRole("definition");
+			expect(consulteeListItems.length).toBe(44);
+		});
+
+		it("should render commentator stakeholder items", async () => {
+			props = (
+				(await getServerSideProps({
+					...getServerSidePropsContext,
+					params: {
+						slug: "gid-hst10037",
+					},
+					resolvedUrl: "/indicators/indevelopment/gid-hst10037",
+				})) as {
+					props: InDevelopmentPageProps;
+				}
+			).props;
+			render(<InDevelopmentPage {...props} />);
+
+			expect(
+				screen.getByRole("heading", { level: 3, name: "Stakeholders" })
+			).toBeInTheDocument();
+
+			const commentatorList = screen.getByLabelText("Commentator stakeholders");
+			const { getAllByRole } = within(commentatorList);
+			const commentatorListItems = getAllByRole("definition");
+			expect(commentatorListItems.length).toBe(30);
+		});
+
+		it("should render legacy stakeholder items", async () => {
+			props = (
+				(await getServerSideProps({
+					...getServerSidePropsContext,
+					params: {
+						slug: "gid-mt130",
+					},
+					resolvedUrl: "/indicators/indevelopment/gid-mt130",
+				})) as {
+					props: InDevelopmentPageProps;
+				}
+			).props;
+			render(<InDevelopmentPage {...props} />);
+
+			const legacyStakeholderList = screen.getAllByRole("list", {
+				name: "Legacy stakeholders",
+			});
+
+			expect(legacyStakeholderList).toMatchSnapshot();
+
+			expect(
+				screen.getByRole("heading", { level: 3, name: "Stakeholders" })
+			).toBeInTheDocument();
+		});
+
 		describe("ProjectHeading", () => {
 			it("should render expected publication date metadata as time tag with correct formatted date", () => {
 				render(<InDevelopmentPage {...props} />);
