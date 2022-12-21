@@ -465,7 +465,6 @@ describe("/indevelopment/[slug].page", () => {
 		});
 
 		it("should render suspend discontinued reason", async () => {
-			// gid-ip1153
 			props = (
 				(await getServerSideProps({
 					...getServerSidePropsContext,
@@ -483,7 +482,20 @@ describe("/indevelopment/[slug].page", () => {
 			);
 		});
 
-		it.todo("should render project team");
+		it("should render project team", () => {
+			render(<InDevelopmentPage {...props} />);
+			expect(
+				screen.getByRole("heading", { level: 3, name: "Project Team" })
+			).toBeInTheDocument();
+
+			const projectTeamList = screen.getByLabelText("Project team");
+			const { getAllByRole, getByText } = within(projectTeamList);
+			const projectTeamItems = getAllByRole("definition");
+			expect(projectTeamItems.length).toBe(1);
+			expect(getByText("Developer").tagName).toBe("DT");
+			expect(getByText("National Guideline Centre").tagName).toBe("DD");
+		});
+
 		it.todo("should render timeline");
 		it.todo("should render provisional schedule");
 
