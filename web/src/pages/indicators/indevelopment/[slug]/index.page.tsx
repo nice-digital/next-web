@@ -385,13 +385,13 @@ export const getServerSideProps: GetServerSideProps<
 				.niceIndevEmailEnquiry,
 		indevEmailEnquiries = arrayify(indevEmailEnquiry);
 
-	const indevPanels = arrayify(
-		project.embedded.niceIndevPanelList.embedded.niceIndevPanel.filter(
-			(panel) => panel.showPanel
-		)
-	);
+	// const indevPanels = arrayify(
+	// 	project.embedded.niceIndevPanelList.embedded.niceIndevPanel.filter(
+	// 		(panel) => panel.showPanel
+	// 	)
+	// );
 
-	console.log(indevPanels);
+	// console.log(indevPanels);
 
 	let indevProcessHomepage = null;
 

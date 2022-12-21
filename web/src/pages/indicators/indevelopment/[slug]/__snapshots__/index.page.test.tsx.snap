@@ -139,6 +139,9 @@ exports[`/indevelopment/[slug].page IndevelopmentPage should match snapshot for 
         </li>
       </ul>
     </div>
+    <button>
+      Read the consultation documents
+    </button>
     <p>
       Status: 
       InProgress
