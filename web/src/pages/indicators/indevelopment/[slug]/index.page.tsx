@@ -127,8 +127,13 @@ export default function InDevelopmentPage({
 				<Breadcrumb>{reference}</Breadcrumb>
 			</Breadcrumbs>
 			<ProjectPageHeading project={project} />
-			{/* TODO Register an interest in this interventional procedure, Please see: https://www.nice.org.uk/guidance/indevelopment/gid-ipg10149
-			e.g. https://www.nice.org.uk/guidance/indevelopment/gid-ip1046 */}
+
+			{projectType?.toLowerCase().startsWith("ipg") ? (
+				<Link to="/about/what-we-do/our-Programmes/NICE-guidance/NICE-interventional-procedures-guidance/IP-register-an-interest">
+					<a>Register an interest in this interventional procedure</a>
+				</Link>
+			) : null}
+
 			{summary && <p>{summary}</p>}
 			{status && <p>Status: {status}</p>}
 			{technologyType && <p>Technology type: {technologyType}</p>}
@@ -268,6 +273,7 @@ export default function InDevelopmentPage({
                             }
                         } */}
 			<Stakeholders
+				// legacyStakeholders={indevLegacyStakeholders}
 				consultees={indevConsultees}
 				commentators={indevCommentators}
 			/>

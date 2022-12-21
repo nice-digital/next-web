@@ -233,6 +233,32 @@ describe("/indevelopment/[slug].page", () => {
 			).toBeInTheDocument();
 		});
 
+		it("should render 'register an interest in this interventional procedure' link when projectType starts 'IPG' ", async () => {
+			// gid-ip1046
+			props = (
+				(await getServerSideProps({
+					...getServerSidePropsContext,
+					params: {
+						slug: "gid-ip1046",
+					},
+					resolvedUrl: "/indicators/indevelopment/gid-ip1046",
+				})) as {
+					props: InDevelopmentPageProps;
+				}
+			).props;
+			render(<InDevelopmentPage {...props} />);
+
+			const interventionLink = screen.getByRole("link", {
+				name: "Register an interest in this interventional procedure",
+			});
+
+			expect(interventionLink).toBeInTheDocument();
+			expect(interventionLink).toHaveAttribute(
+				"href",
+				"/about/what-we-do/our-Programmes/NICE-guidance/NICE-interventional-procedures-guidance/IP-register-an-interest"
+			);
+		});
+
 		it("should render further information links", async () => {
 			props = (
 				(await getServerSideProps({

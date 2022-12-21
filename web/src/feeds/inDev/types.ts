@@ -271,6 +271,14 @@ export type IndevProjectTeam = {
 	column2: string;
 };
 
+export type IndevLegacyStakeholder = {
+	links: {
+		self: [Link];
+	};
+	eTag: ETag;
+	item: string;
+};
+
 export type IndevConsultee = {
 	links: {
 		self: [Link];
@@ -364,6 +372,17 @@ export type NiceIndevProjectTeamList = {
 	};
 	embedded: {
 		niceIndevProjectTeam: IndevProjectTeam | IndevProjectTeam[];
+	};
+};
+
+export type NiceIndevLegacyStakeholderList = {
+	links: {
+		self: [Link];
+	};
+	embedded: {
+		niceIndevLegacyStakeholder:
+			| IndevLegacyStakeholder
+			| IndevLegacyStakeholder[];
 	};
 };
 
@@ -462,6 +481,7 @@ export type ProjectDetail = {
 		niceIndevProcessHomepage?: IndevProcessHomepage;
 		niceIndevProjectTeamList?: NiceIndevProjectTeamList;
 		niceIndevProjectRelatedLinkList?: NiceIndevProjectRelatedLinkList;
+		niceIndevLegacyStakeholderList?: NiceIndevLegacyStakeholderList;
 		niceIndevConsulteeList?: NiceIndevConsulteeList;
 		niceIndevCommentatorList?: NiceIndevCommentatorList;
 		niceIndevEmailEnquiryList?: NiceIndevEmailEnquiryList;
