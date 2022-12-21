@@ -144,6 +144,30 @@ export default function InDevelopmentPage({
 					<a>{suspendDiscontinuedUrlText}</a>
 				</Link>
 			)}
+			{/* TODO Read the consultation documents - link to https://www.nice.org.uk/guidance/indevelopment/gid-dg10049/consultation/html-content
+			individual documents :-
+			Diagnostics consultation document (Online commenting) - https://www.nice.org.uk/consultations/1567/1/dap63-dcd-automated-abpi-for-consultation-webdocx
+			Diagnostics consultation document (PDF) - https://www.nice.org.uk/guidance/GID-DG10049/documents/514
+			Committee papers – Diagnostics assessment report, Overview, DAR Comments table and EAG response, DAR Addendum, DAR Erratum -https://www.nice.org.uk/guidance/GID-DG10049/documents/diagnostics-assessment-report
+			  foreach (var consultation in Model.ConsultationUrls)
+        {
+            consultationIndex++;
+            <div>
+                @if (Model.ConsultationUrls.Count > 1)
+                {
+                    <a class="btn btn-primary" href="@consultation">Read consultation @consultationIndex documents</a>
+                    if (consultationIndex < Model.ConsultationUrls.Count)
+                    {
+                        <br /><br />
+                    }
+                }
+                else
+                {
+                    <a class="btn btn-primary" href="@consultation">Read the consultation documents</a>
+                }
+            </div>
+        } */}
+			<button>Read the consultation documents</button>
 			{status && <p>Status: {status}</p>}
 			{technologyType && <p>Technology type: {technologyType}</p>}
 			{topicSelectionDecision && <p>Decision: {topicSelectionDecision} </p>}
@@ -263,21 +287,7 @@ export default function InDevelopmentPage({
 					<dt>{evidenceAssessmentGroup}</dt>
 				</dl>
 			)}
-			{/* TODO Legacy stakeholders */}
-			{/* @if (Model.LegacyStakeholders.Any())
-                        {
-                            <h3>Stakeholders</h3>
-                            <ul class="unstyled">
-                                @foreach (var item in Model.LegacyStakeholders)
-                {
-                                    <li>@Html.Raw(item.Item)</li>
-                                }
-                            </ul>
-                            if (Model.StakeHolderRegistrationLinkViewModel != null && !string.IsNullOrEmpty(Model.StakeHolderRegistrationLinkViewModel.Link))
-                            {
-                                <p><a href="@Model.StakeHolderRegistrationLinkViewModel.Link">Stakeholder Registration Form</a></p>
-                            }
-                        } */}
+
 			<Stakeholders
 				legacyStakeholders={indevLegacyStakeholders}
 				consultees={indevConsultees}
@@ -374,6 +384,14 @@ export const getServerSideProps: GetServerSideProps<
 			project.embedded.niceIndevEmailEnquiryList?.embedded
 				.niceIndevEmailEnquiry,
 		indevEmailEnquiries = arrayify(indevEmailEnquiry);
+
+	const indevPanels = arrayify(
+		project.embedded.niceIndevPanelList.embedded.niceIndevPanel.filter(
+			(panel) => panel.showPanel
+		)
+	);
+
+	console.log(indevPanels);
 
 	let indevProcessHomepage = null;
 

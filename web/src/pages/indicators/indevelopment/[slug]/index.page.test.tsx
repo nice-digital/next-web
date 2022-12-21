@@ -68,6 +68,13 @@ describe("/indevelopment/[slug].page", () => {
 			).not.toBeInTheDocument();
 		});
 
+		it("should render the project description", () => {
+			render(<InDevelopmentPage {...props} />);
+			// eslint-disable-next-line testing-library/no-debugging-utils
+			screen.debug();
+			expect(true).toBe(false);
+		});
+
 		it("should render the project id number", async () => {
 			props = (
 				(await getServerSideProps({

@@ -66,3 +66,23 @@ export const Stakeholders: FC<StakeholdersProps> = ({
 		</>
 	) : null;
 };
+
+{
+	/* TODO Legacy stakeholders */
+}
+{
+	/* @if (Model.LegacyStakeholders.Any())
+                        {
+                            <h3>Stakeholders</h3>
+                            <ul class="unstyled">
+                                @foreach (var item in Model.LegacyStakeholders)
+                {
+                                    <li>@Html.Raw(item.Item)</li>
+                                }
+                            </ul>
+                            if (Model.StakeHolderRegistrationLinkViewModel != null && !string.IsNullOrEmpty(Model.StakeHolderRegistrationLinkViewModel.Link))
+                            {
+                                <p><a href="@Model.StakeHolderRegistrationLinkViewModel.Link">Stakeholder Registration Form</a></p>
+                            }
+                        } */
+}
