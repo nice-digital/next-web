@@ -138,7 +138,11 @@ export default function InDevelopmentPage({
 			) : null}
 
 			{summary && <p>{summary}</p>}
-			{suspendDiscontinuedReason && <p>{suspendDiscontinuedReason}</p>}
+			{suspendDiscontinuedReason && (
+				<p data-testid="suspendDiscontinuedReason">
+					{suspendDiscontinuedReason}
+				</p>
+			)}
 			{suspendDiscontinuedUrl && suspendDiscontinuedUrlText && (
 				<Link to={suspendDiscontinuedUrl}>
 					<a>{suspendDiscontinuedUrlText}</a>

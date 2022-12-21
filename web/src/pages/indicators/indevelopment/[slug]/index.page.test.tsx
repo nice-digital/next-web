@@ -83,7 +83,7 @@ describe("/indevelopment/[slug].page", () => {
 			render(<InDevelopmentPage {...props} />);
 			expect(
 				screen.getByText(
-					/description: the aim of intramuscular diaphragm stimulation is to make the diaphragm contract, strengthening it and allowing full or partial weaning from mechanical ventilation\. this procedure needs intact phrenic nerve function and avoids the need to access the phrenic nerve through the neck or thorax, as well as reducing the risk of phrenic nerve damage\. the procedure is done laparoscopically with the patient under general anaesthesia\. a probe is used to identify areas of the diaphragm where minimal electrical stimulation causes maximal diaphragm contraction \(known as the 'motor points'\)\. two intramuscular electrodes are implanted on the abdominal surface of each hemi\-diaphragm at the motor points\. the electrode leads are tunnelled subcutaneously to an exit site in the chest where they are connected to an external battery\-powered pulse generator\. a reference electrode \(anode\) is also implanted and the leads tunnelled with the other electrodes\. intraoperative stimulation and voltage calibration tests are done to confirm adequate contraction of the diaphragm\. after implantation the patient has a diaphragm conditioning programme, which involves progressive use of the system for increasing periods of time with gradual weaning from the ventilator\./i
+					/description: the aim of intramuscular diaphragm stimulation is to make the diaphragm contract, strengthening it and allowing full or partial weaning from mechanical ventilation\. this procedure needs intact phrenic nerve function and avoids the need to access the phrenic nerve through the neck or thorax, as well as reducing the risk of phrenic nerve damage\. the procedure is done laparoscopically with the patient under general anaesthesia\. a probe is used to identify areas of the diaphragm where minimal electrical stimulation causes maximal diaphragm contraction \(known as the 'motor points'\)\. two intramuscular electrodes are implanted on the abdominal surface of each hemi-diaphragm at the motor points\. the electrode leads are tunnelled subcutaneously to an exit site in the chest where they are connected to an external battery-powered pulse generator\. a reference electrode \(anode\) is also implanted and the leads tunnelled with the other electrodes\. intraoperative stimulation and voltage calibration tests are done to confirm adequate contraction of the diaphragm\. after implantation the patient has a diaphragm conditioning programme, which involves progressive use of the system for increasing periods of time with gradual weaning from the ventilator\./i
 				)
 			).toBeInTheDocument();
 		});
@@ -464,10 +464,28 @@ describe("/indevelopment/[slug].page", () => {
 			).toBeInTheDocument();
 		});
 
+		it("should render suspend discontinued reason", async () => {
+			// gid-ip1153
+			props = (
+				(await getServerSideProps({
+					...getServerSidePropsContext,
+					params: {
+						slug: "gid-ip1153",
+					},
+					resolvedUrl: "/indicators/indevelopment/gid-ip1153",
+				})) as {
+					props: InDevelopmentPageProps;
+				}
+			).props;
+			render(<InDevelopmentPage {...props} />);
+			expect(screen.getByTestId("suspendDiscontinuedReason")).toHaveTextContent(
+				"Discontinued"
+			);
+		});
+
 		it.todo("should render project team");
 		it.todo("should render timeline");
 		it.todo("should render provisional schedule");
-		it.todo("should render suspend discontinued reason");
 
 		describe("ProjectHeading", () => {
 			it("should render expected publication date metadata as time tag with correct formatted date", () => {
