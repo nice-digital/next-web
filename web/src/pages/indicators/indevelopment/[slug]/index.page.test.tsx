@@ -254,7 +254,6 @@ describe("/indevelopment/[slug].page", () => {
 		});
 
 		it("should render 'register an interest in this interventional procedure' link when projectType starts 'IPG' ", async () => {
-			// gid-ip1046
 			props = (
 				(await getServerSideProps({
 					...getServerSidePropsContext,
