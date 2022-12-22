@@ -496,8 +496,35 @@ describe("/indevelopment/[slug].page", () => {
 			expect(getByText("National Guideline Centre").tagName).toBe("DD");
 		});
 
+		it("should render provisional schedule", async () => {
+			props = (
+				(await getServerSideProps({
+					...getServerSidePropsContext,
+					params: {
+						slug: "gid-dg10049",
+					},
+					resolvedUrl: "/indicators/indevelopment/gid-dg10049",
+				})) as {
+					props: InDevelopmentPageProps;
+				}
+			).props;
+			render(<InDevelopmentPage {...props} />);
+
+			expect(
+				screen.getByRole("heading", { level: 3, name: "Provisional Schedule" })
+			).toBeInTheDocument();
+
+			const provisionalScheduleList = screen.getByLabelText(
+				"Provisional schedule"
+			);
+			const { getAllByRole, getByText } = within(provisionalScheduleList);
+			const provisionalScheduleItems = getAllByRole("definition");
+			expect(provisionalScheduleItems.length).toBe(2);
+			expect(getByText("Committee meeting: 2").tagName).toBe("DT");
+			expect(getByText("18 January 2023").tagName).toBe("DD");
+		});
+
 		it.todo("should render timeline");
-		it.todo("should render provisional schedule");
 
 		describe("ProjectHeading", () => {
 			it("should render expected publication date metadata as time tag with correct formatted date", () => {
