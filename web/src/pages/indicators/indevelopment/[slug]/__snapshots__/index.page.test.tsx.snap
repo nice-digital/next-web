@@ -203,6 +203,7 @@ exports[`/indevelopment/[slug].page IndevelopmentPage should match snapshot for 
       Key events during the development of the guidance:
     </p>
     <table
+      aria-label="Timeline"
       class="table table-condensed"
     >
       <tbody>

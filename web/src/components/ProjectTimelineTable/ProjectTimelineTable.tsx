@@ -7,7 +7,7 @@ export const TimelineTable = ({
 	const tableBodyData = arrayify(data);
 
 	return (
-		<table className="table table-condensed">
+		<table className="table table-condensed" aria-label="Timeline">
 			<tbody>
 				<tr>
 					<th>Date</th>

@@ -524,7 +524,23 @@ describe("/indevelopment/[slug].page", () => {
 			expect(getByText("18 January 2023").tagName).toBe("DD");
 		});
 
-		it.todo("should render timeline");
+		it("should render timeline", () => {
+			render(<InDevelopmentPage {...props} />);
+
+			expect(
+				screen.getByRole("heading", { level: 3, name: "Timeline" })
+			).toBeInTheDocument();
+
+			expect(
+				screen.getByText("Key events during the development of the guidance:")
+			).toBeInTheDocument();
+
+			const timelineTable = screen.getByLabelText("Timeline");
+			expect(timelineTable).toBeInTheDocument();
+			const { getByText } = within(timelineTable);
+			expect(getByText("Date").tagName).toBe("TH");
+			expect(getByText("Draft scope consultation").tagName).toBe("TD");
+		});
 
 		describe("ProjectHeading", () => {
 			it("should render expected publication date metadata as time tag with correct formatted date", () => {
