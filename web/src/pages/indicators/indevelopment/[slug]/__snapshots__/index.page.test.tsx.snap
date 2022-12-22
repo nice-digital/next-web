@@ -144,7 +144,7 @@ exports[`/indevelopment/[slug].page IndevelopmentPage should match snapshot for 
     </button>
     <p>
       Status: 
-      InProgress
+      In Progress
     </p>
     <p>
       Decision: 
@@ -517,7 +517,7 @@ Object {
     "projectType": "NG",
     "reference": "GID-NG10237",
     "referralDate": null,
-    "status": "InProgress",
+    "status": "In Progress",
     "summary": null,
     "suspendDiscontinuedReason": null,
     "suspendDiscontinuedUrl": null,

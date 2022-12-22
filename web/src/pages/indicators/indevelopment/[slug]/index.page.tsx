@@ -387,7 +387,13 @@ export const getServerSideProps: GetServerSideProps<
 		indevEmailEnquiry =
 			project.embedded.niceIndevEmailEnquiryList?.embedded
 				.niceIndevEmailEnquiry,
-		indevEmailEnquiries = arrayify(indevEmailEnquiry);
+		indevEmailEnquiries = arrayify(indevEmailEnquiry),
+		projectStatusDisplayName = (status: ProjectStatus) => {
+			if (status == "InProgress") return "In Progress";
+			if (status == "TopicSelection") return "Topic Selection";
+			if (status == "ImpactedByCOVID19") return "Impacted by Covid 19";
+			else return status;
+		};
 
 	// const indevPanels = arrayify(
 	// 	project.embedded.niceIndevPanelList.embedded.niceIndevPanel.filter(
@@ -483,7 +489,7 @@ export const getServerSideProps: GetServerSideProps<
 			suspendDiscontinuedReason,
 			suspendDiscontinuedUrl,
 			suspendDiscontinuedUrlText,
-			status,
+			status: projectStatusDisplayName(status as ProjectStatus),
 			summary,
 			technologyType,
 			title,

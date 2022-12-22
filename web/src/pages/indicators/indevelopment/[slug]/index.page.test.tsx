@@ -542,6 +542,11 @@ describe("/indevelopment/[slug].page", () => {
 			expect(getByText("Draft scope consultation").tagName).toBe("TD");
 		});
 
+		it("should render project status formatted display name", () => {
+			render(<InDevelopmentPage {...props} />);
+			expect(screen.getByText("Status: In Progress")).toBeInTheDocument();
+		});
+
 		describe("ProjectHeading", () => {
 			it("should render expected publication date metadata as time tag with correct formatted date", () => {
 				render(<InDevelopmentPage {...props} />);
