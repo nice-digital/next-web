@@ -543,7 +543,7 @@ describe("/indevelopment/[slug].page", () => {
 
 		it("should render project status formatted display name", () => {
 			render(<InDevelopmentPage {...props} />);
-			expect(screen.getByText("Status: In Progress")).toBeInTheDocument();
+			expect(screen.getByText("Status: In progress")).toBeInTheDocument();
 		});
 
 		describe("ProjectHeading", () => {

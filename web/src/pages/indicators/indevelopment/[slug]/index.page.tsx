@@ -389,9 +389,9 @@ export const getServerSideProps: GetServerSideProps<
 				.niceIndevEmailEnquiry,
 		indevEmailEnquiries = arrayify(indevEmailEnquiry),
 		projectStatusDisplayName = (status: ProjectStatus) => {
-			if (status == "InProgress") return "In Progress";
-			if (status == "TopicSelection") return "Topic Selection";
-			if (status == "ImpactedByCOVID19") return "Impacted by Covid 19";
+			if (status == "InProgress") return "In progress";
+			if (status == "TopicSelection") return "Topic selection";
+			if (status == "ImpactedByCOVID19") return "Impacted by COVID 19";
 			else return status;
 		};
 
