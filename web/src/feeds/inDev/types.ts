@@ -14,6 +14,7 @@ export enum TopicSelectionReason {
 }
 
 export enum ProjectStatus {
+	"AwaitingDevelopment" = "AwaitingDevelopment",
 	"Complete" = "Complete",
 	"Discontinued" = "Discontinued",
 	"Suspended" = "Suspended",

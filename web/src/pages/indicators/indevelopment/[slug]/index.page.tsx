@@ -46,6 +46,7 @@ export type InDevelopmentPageProps = {
 	indevProcessHomepage?: IndevProcessHomepage;
 	indevProjectTeamMembers?: IndevProjectTeam[];
 	indevProjectRelatedLinks?: IndevProjectRelatedLink[];
+	indevRegisterAnInterestLink: string | null;
 	indevScheduleItems?: IndevSchedule[];
 	indevStakeholderRegistration: Record<string, unknown>[];
 	indevTimelineItems?: IndevTimeline[];
@@ -79,6 +80,7 @@ export default function InDevelopmentPage({
 	indevProcessHomepage,
 	indevProjectTeamMembers,
 	indevProjectRelatedLinks,
+	indevRegisterAnInterestLink,
 	indevScheduleItems,
 	indevStakeholderRegistration,
 	indevTimelineItems,
@@ -100,8 +102,10 @@ export default function InDevelopmentPage({
 	topicSelectionReasonText,
 }: InDevelopmentPageProps): JSX.Element {
 	const project = {
+		indevRegisterAnInterestLink,
 		indevScheduleItems,
 		indevStakeholderRegistration,
+		projectType,
 		reference,
 		status,
 		title,
@@ -332,6 +336,7 @@ export const getServerSideProps: GetServerSideProps<
 		evidenceAssessmentGroup,
 		idNumber,
 		process,
+		productTypeName,
 		projectType,
 		reference,
 		referralDate,
@@ -389,19 +394,12 @@ export const getServerSideProps: GetServerSideProps<
 				.niceIndevEmailEnquiry,
 		indevEmailEnquiries = arrayify(indevEmailEnquiry),
 		projectStatusDisplayName = (status: ProjectStatus) => {
+			if (status == "AwaitingDevelopment") return "Awaiting development";
 			if (status == "InProgress") return "In progress";
 			if (status == "TopicSelection") return "Topic selection";
-			if (status == "ImpactedByCOVID19") return "Impacted by COVID 19";
+			if (status == "ImpactedByCOVID19") return "Impacted by COVID-19";
 			else return status;
 		};
-
-	// const indevPanels = arrayify(
-	// 	project.embedded.niceIndevPanelList.embedded.niceIndevPanel.filter(
-	// 		(panel) => panel.showPanel
-	// 	)
-	// );
-
-	// console.log(indevPanels);
 
 	let indevProcessHomepage = null;
 
@@ -463,6 +461,16 @@ export const getServerSideProps: GetServerSideProps<
 			break;
 	}
 
+	let indevRegisterAnInterestLink = null;
+
+	// TODO: if projectIsNull OR project.productType NOT "IPG" OR project.Status == isDiscontinued() THEN show the register an interest link with querystring ?t=0&p=[project.Reference]&returnUrl[returnUrl]
+	// Example from guidance-web "https://alpha.nice.org.uk/about/what-we-do/our-programmes/nice-guidance/nice-interventional-procedures-guidance/ip-register-an-interest?t=0&p=GID-IPG10305&returnUrl=/guidance/indevelopment/gid-ipg10305"
+	//TODO: is there a better way of constructing the returnUrl param?
+	if (!project || project.status?.toLowerCase() == "discontinued") {
+		indevRegisterAnInterestLink = `/about/what-we-do/our-programmes/nice-guidance/nice-interventional-procedures-guidance/ip-register-an-interest?t=0&p=${project.reference}&returnUrl=/indicators/indevelopment/${project.reference}`;
+	} else {
+		console.log("don't display 'Register an interest' link");
+	}
 	return {
 		props: {
 			description,
@@ -478,6 +486,7 @@ export const getServerSideProps: GetServerSideProps<
 			indevProcessHomepage,
 			indevProjectTeamMembers,
 			indevProjectRelatedLinks,
+			indevRegisterAnInterestLink,
 			indevScheduleItems,
 			indevStakeholderRegistration,
 			indevTimelineItems,

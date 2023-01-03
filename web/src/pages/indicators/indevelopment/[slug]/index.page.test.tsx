@@ -635,7 +635,7 @@ describe("/indevelopment/[slug].page", () => {
 				expect(stakeholderLink).toBeInTheDocument();
 				expect(stakeholderLink).toHaveAttribute(
 					"href",
-					"https://alpha.nice.org.uk/get-involved/stakeholder-registration/register"
+					"https://alpha.nice.org.uk/get-involved/stakeholder-registration/register?t=&p=GID-NG10237&returnUrl=/indicators/indevelopment/GID-NG10237"
 				);
 			});
 		});
