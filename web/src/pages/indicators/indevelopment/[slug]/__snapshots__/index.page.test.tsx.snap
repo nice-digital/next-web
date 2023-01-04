@@ -332,17 +332,41 @@ Array [
     aria-label="Legacy stakeholders"
   >
     <li>
-      &lt;p&gt;
+      <p>
+        
                     	
                     		
                         	
-                        		&lt;p&gt;NICE is developing guidance on this technology. If you would like to become a registered stakeholder in the development of guidance on this technology, please complete a &lt;a href="http://www.nice.org.uk/media/default/about/what-we-do/nice-guidance/nice-medical-technologies/mtep-notification-form.docx" nice-original-href="http://www4.nice.org.uk/Media/Default/About/what-we-do/NICE-guidance/NICE-medical-technologies/MTEP-notification-form.docx"&gt;stakeholder registration and confidentiality form&lt;/a&gt; (Word), and return to us at &lt;a href="mailto:medtech@nice.org.uk"&gt;medtech@nice.org.uk&lt;/a&gt;.&lt;/p&gt;
-&lt;p&gt;Registered stakeholders will be informed of key stages in the development of guidance including when documents go out to consultation or comment.&lt;/p&gt;
+                        		
+      </p>
+      <p>
+        NICE is developing guidance on this technology. If you would like to become a registered stakeholder in the development of guidance on this technology, please complete a 
+        <a
+          href="http://www.nice.org.uk/media/default/about/what-we-do/nice-guidance/nice-medical-technologies/mtep-notification-form.docx"
+          nice-original-href="http://www4.nice.org.uk/Media/Default/About/what-we-do/NICE-guidance/NICE-medical-technologies/MTEP-notification-form.docx"
+        >
+          stakeholder registration and confidentiality form
+        </a>
+         (Word), and return to us at 
+        <a
+          href="mailto:medtech@nice.org.uk"
+        >
+          medtech@nice.org.uk
+        </a>
+        .
+      </p>
+      
+
+      <p>
+        Registered stakeholders will be informed of key stages in the development of guidance including when documents go out to consultation or comment.
+      </p>
+      
 
                         	
                         	
                         
-                    &lt;/p&gt;
+                    
+      <p />
     </li>
   </ul>,
 ]

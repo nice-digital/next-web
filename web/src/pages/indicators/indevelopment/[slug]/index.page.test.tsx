@@ -739,6 +739,26 @@ describe("/indevelopment/[slug].page", () => {
 					"/about/what-we-do/our-programmes/nice-guidance/nice-interventional-procedures-guidance/ip-register-an-interest?t=0&p=GID-IPG10305&returnUrl=/guidance/indevelopment/GID-IPG10305"
 				);
 			});
+
+			it("should not render a 'Register an interest' link if project status is discontinued or project type is not 'IPG'", async () => {
+				props = (
+					(await getServerSideProps({
+						...getServerSidePropsContext,
+						params: {
+							slug: "gid-tag377",
+						},
+						resolvedUrl: "/indicators/indevelopment/gid-tag377",
+					})) as {
+						props: InDevelopmentPageProps;
+					}
+				).props;
+				render(<InDevelopmentPage {...props} />);
+				const registerAnInterestLink = screen.queryByRole("link", {
+					name: "Register an interest",
+				});
+
+				expect(registerAnInterestLink).toBeFalsy();
+			});
 		});
 	});
 
