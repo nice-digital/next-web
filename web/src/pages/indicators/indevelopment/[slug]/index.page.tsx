@@ -139,10 +139,16 @@ export default function InDevelopmentPage({
 			<ProjectPageHeading project={project} />
 			{projectType?.toLowerCase().startsWith("ipg") ? (
 				<Link to="/about/what-we-do/our-Programmes/NICE-guidance/NICE-interventional-procedures-guidance/IP-register-an-interest">
-					<a>Register an interest in this interventional procedure</a>
+					Register an interest in this interventional procedure
 				</Link>
 			) : null}
-			{summary && <p>{summary}</p>}
+			{summary && (
+				<div
+					dangerouslySetInnerHTML={{
+						__html: `<p>${summary}</p>`,
+					}}
+				></div>
+			)}
 			{suspendDiscontinuedReason && (
 				<p data-testid="suspendDiscontinuedReason">
 					{suspendDiscontinuedReason}
@@ -227,7 +233,8 @@ export default function InDevelopmentPage({
 			{/* <p>Developed as: {developedAs}</p> */}
 			{description && (
 				<dl aria-label="Description">
-					<dt>Description:</dt> <dd>{description}</dd>
+					<dt>Description:</dt>
+					<dd dangerouslySetInnerHTML={{ __html: description }} />
 				</dl>
 			)}
 			{idNumber && (
