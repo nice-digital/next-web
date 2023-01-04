@@ -17,7 +17,11 @@ export const TimelineTable = ({
 					return (
 						<tr key={index}>
 							<td>{item.column1}</td>
-							<td>{item.column2}</td>
+							{/* <td>{item.column2}</td> */}
+							<td
+								key={`timelinecell_${index}`}
+								dangerouslySetInnerHTML={{ __html: item.column2 }}
+							/>
 						</tr>
 					);
 				})}

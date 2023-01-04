@@ -43,39 +43,6 @@ export const ProjectPageHeading: FC<ProjectPageHeadingProps> = ({
 			"Expected publication date: TBC"
 		) : null;
 
-	//TODO stakeholder reg link e.g. https://alpha.nice.org.uk/get-involved/stakeholder-registration/register?t=&p=GID-IPG10305&returnUrl=/guidance/indevelopment/gid-ipg10305
-	//TODO hardcoded 'Register an interest' link logic and querystring params - e.g. https://alpha.nice.org.uk/about/what-we-do/our-programmes/nice-guidance/nice-interventional-procedures-guidance/ip-register-an-interest?t=0&p=GID-IPG10305&returnUrl=/guidance/indevelopment/gid-ipg10305
-
-	// .NET example:-
-	// 	private static string REGISTER_AN_INTEREST_LINK_FORMAT =
-	// 	"/about/what-we-do/our-programmes/nice-guidance/nice-interventional-procedures-guidance/ip-register-an-interest?t={0}&p={1}&returnUrl={2}";
-
-	// public string Link { get; set; }
-
-	// private RegisterAnInterestLinkViewModel(ProductFeed product, string returnUrl)
-	// {
-	// 	if (product == null || !product.ProductType.Is(ProductTypeExtension.IPG) || product.ProductStatus.IsWithdrawn())
-	// 		return;
-	// 	Link = string.Format(REGISTER_AN_INTEREST_LINK_FORMAT, 0, product.Id, returnUrl);
-	// }
-
-	// public RegisterAnInterestLinkViewModel(InDevProduct project, string returnUrl)
-	// {
-	// 	if (project == null || !project.ProductType.Is(ProductTypeExtension.IPG) || project.Status.IsDiscontinued())
-	// 		return;
-	// 	Link = string.Format(REGISTER_AN_INTEREST_LINK_FORMAT, 0, project.Reference, returnUrl);
-	// }
-
-	// public static RegisterAnInterestLinkViewModel Build(ProductFeed product, string returnUrl)
-	//     {
-	//         return new RegisterAnInterestLinkViewModel(product, returnUrl);
-	//     }
-
-	//     public static RegisterAnInterestLinkViewModel BuildForIndev(InDevProduct product, string returnUrl)
-	//     {
-	//         return new RegisterAnInterestLinkViewModel(product, returnUrl);
-	//     }
-
 	//TODO does it need to be aware of the productFeed? product status?
 	//TODO Martin says discontinued/suspended means isWithdrawn().
 	//TODO link should always start with this hardcoded "/about/what-we-do/our-programmes/nice-guidance/nice-interventional-procedures-guidance/ip-register-an-interest"
@@ -91,7 +58,7 @@ export const ProjectPageHeading: FC<ProjectPageHeadingProps> = ({
 	// {
 	// 	return string.Equals(status, GuidanceConstants.IndevDiscontinuedStatus, StringComparison.OrdinalIgnoreCase);
 	// }
-	// TODO: if projectIsNull OR project.productType NOT "IPG" OR project.Status == isDiscontinued() THEN show the register an interest link with querystring ?t=0&p=[project.Reference]&returnUrl[returnUrl]
+	// TODO: if projectIsNull OR project.productType NOT "IPG" OR project.Status == isDiscontinued() DONT show the register an interest link with querystring ?t=0&p=[project.Reference]&returnUrl[returnUrl]
 
 	return (
 		<PageHeader
@@ -104,7 +71,11 @@ export const ProjectPageHeading: FC<ProjectPageHeadingProps> = ({
 					: `Discontinued ${reference}`,
 				publicationMeta,
 				indevRegisterAnInterestLink ? (
-					<Link to="/indevRegLink">Register an interest</Link>
+					<Link
+						to={`/about/what-we-do/our-programmes/nice-guidance/nice-interventional-procedures-guidance/ip-register-an-interest?t=0&p=${reference}&returnUrl=/guidance/indevelopment/${reference}`}
+					>
+						Register an interest
+					</Link>
 				) : null,
 				//TODO stakeholder link query string ? e.g. http://www.nice.org.uk/get-involved/stakeholder-registration/register?t=&p=GID-QS10164&returnUrl=/guidance/indevelopment/gid-qs10164
 				//TODO is there a better way of constructing the returnUrl param?

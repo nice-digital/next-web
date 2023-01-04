@@ -1,4 +1,8 @@
-import { ProductGroup, ProductTypeAcronym } from "@/feeds/publications/types";
+import {
+	AreaOfInterest,
+	ProductGroup,
+	ProductTypeAcronym,
+} from "@/feeds/publications/types";
 
 export enum FeedPath {
 	AllProjects = "/gidprojects/all",
@@ -226,6 +230,37 @@ export type IndevResource = {
 	supportsComments: boolean;
 };
 
+export type IndevConsultation = {
+	links: {
+		self: [Link];
+	};
+	eTag: ETag;
+	reference: string;
+	title: string;
+	consultationName: string;
+	startDate: string;
+	endDate: string;
+	consultationType: string;
+	resourceTitleId: string;
+	projectType: string;
+	technologyType: string;
+	productTypeName: string;
+	showExpressionOfInterestSubmissionQuestion: boolean;
+	developedAs: string | null;
+	relevantTo: string | null;
+	consultationId: number;
+	process: string;
+	hasDocumentsWhichAllowConsultationComments: boolean;
+	isCHTE: boolean;
+	allowedRole: string;
+	firstConvertedDocumentId: string | null;
+	firstChapterSlugOfFirstConvertedDocument: string | null;
+	partiallyUpdatedProjectReference: string | null;
+	origProjectReference: string | null;
+	areasOfInterestList: AreaOfInterest[];
+	hidden: boolean;
+};
+
 export type IndevPanel = {
 	links: {
 		self: [Link];
@@ -241,6 +276,7 @@ export type IndevPanel = {
 			eTag: ETag;
 			hasResources: boolean;
 		};
+		niceIndevConsultation: IndevConsultation | IndevConsultation[];
 	};
 	eTag: ETag;
 	title: string;

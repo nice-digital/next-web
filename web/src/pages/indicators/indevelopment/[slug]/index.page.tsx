@@ -4,6 +4,7 @@ import { type GetServerSideProps } from "next/types";
 import { Breadcrumbs, Breadcrumb } from "@nice-digital/nds-breadcrumbs";
 
 import { Link } from "@/components/Link/Link";
+import { ProjectConsultationDocumentsLink } from "@/components/ProjectConsultationDocumentsLink/ProjectConsultationDocuments";
 import { ProjectPageHeading } from "@/components/ProjectPageHeading/ProjectPageHeading";
 import { Stakeholders } from "@/components/ProjectStakeholders/ProjectStakeholders";
 import { TimelineTable } from "@/components/ProjectTimelineTable/ProjectTimelineTable";
@@ -33,6 +34,7 @@ import { validateRouteParams } from "@/utils/project";
 import { getProductPath } from "@/utils/url";
 
 export type InDevelopmentPageProps = {
+	consultationLink: string | null;
 	description: string | null;
 	developedAs: string;
 	evidenceAssessmentGroup: string | null;
@@ -68,6 +70,7 @@ export type InDevelopmentPageProps = {
 };
 
 export default function InDevelopmentPage({
+	consultationLink,
 	description,
 	// developedAs,
 	evidenceAssessmentGroup,
@@ -134,13 +137,11 @@ export default function InDevelopmentPage({
 				<Breadcrumb>{reference}</Breadcrumb>
 			</Breadcrumbs>
 			<ProjectPageHeading project={project} />
-
 			{projectType?.toLowerCase().startsWith("ipg") ? (
 				<Link to="/about/what-we-do/our-Programmes/NICE-guidance/NICE-interventional-procedures-guidance/IP-register-an-interest">
 					<a>Register an interest in this interventional procedure</a>
 				</Link>
 			) : null}
-
 			{summary && <p>{summary}</p>}
 			{suspendDiscontinuedReason && (
 				<p data-testid="suspendDiscontinuedReason">
@@ -152,7 +153,7 @@ export default function InDevelopmentPage({
 					<a>{suspendDiscontinuedUrlText}</a>
 				</Link>
 			)}
-			{/* TODO Read the consultation documents - link to https://www.nice.org.uk/guidance/indevelopment/gid-dg10049/consultation/html-content
+			{/*
 			individual documents :-
 			Diagnostics consultation document (Online commenting) - https://www.nice.org.uk/consultations/1567/1/dap63-dcd-automated-abpi-for-consultation-webdocx
 			Diagnostics consultation document (PDF) - https://www.nice.org.uk/guidance/GID-DG10049/documents/514
@@ -175,42 +176,80 @@ export default function InDevelopmentPage({
                 }
             </div>
         } */}
-			<button>Read the consultation documents</button>
-			{status && <p>Status: {status}</p>}
-			{technologyType && <p>Technology type: {technologyType}</p>}
-			{topicSelectionDecision && <p>Decision: {topicSelectionDecision} </p>}
+			{consultationLink && (
+				<ProjectConsultationDocumentsLink
+					ariaLabel="Read the consultation documents"
+					// TODO Read the consultation documents link example - https://alpha.nice.org.uk/guidance/indevelopment/gid-ipg10308/consultation/html-content
+					downloadLink={`/indicators/indevelopment${consultationLink}`}
+				>
+					Read the consultation documents
+				</ProjectConsultationDocumentsLink>
+			)}
+
+			{status && (
+				<dl aria-label="Status">
+					<dt>Status:</dt> <dd>{status}</dd>
+				</dl>
+			)}
+			{technologyType && (
+				<dl aria-label="Technology type">
+					<dt>Technology type:</dt> <dd>{technologyType}</dd>
+				</dl>
+			)}
+			{topicSelectionDecision && (
+				<dl aria-label="Decision">
+					<dt>Decision:</dt> <dd>{topicSelectionDecision}</dd>
+				</dl>
+			)}
 			{topicSelectionReasonText && (
-				<p data-testid="reason">
-					Reason for decision: {topicSelectionReasonText}{" "}
-				</p>
+				<dl aria-label="Reason for decision">
+					<dt>Reason for decision:</dt> <dd>{topicSelectionReasonText}</dd>
+				</dl>
 			)}
 			{topicSelectionFurtherInfo && (
-				<p>Further information: {topicSelectionFurtherInfo} </p>
+				<dl aria-label="Further information">
+					<dt>Further information:</dt> <dd>{topicSelectionFurtherInfo}</dd>
+				</dl>
 			)}
 			{process && status !== ProjectStatus.TopicSelection ? (
 				projectType == ProductTypeAcronym.NG ? (
-					<p>Developed as: {process}</p>
+					<dl aria-label="Developed as">
+						<dt>Developed as:</dt> <dd>{process}</dd>
+					</dl>
 				) : (
-					<p>Process: {process}</p>
+					<dl aria-label="Process">
+						<dt>Process:</dt> <dd>{process}</dd>
+					</dl>
 				)
 			) : null}
 			{/* TODO remove 'Process' and 'Developed as' if the logic above covers it */}
 			{/* <p>Process: {process}</p> */}
 			{/* <p>Developed as: {developedAs}</p> */}
-
-			{description && <p>Description: {description}</p>}
-			{idNumber && <p>ID number: {idNumber}</p>}
+			{description && (
+				<dl aria-label="Description">
+					<dt>Description:</dt> <dd>{description}</dd>
+				</dl>
+			)}
+			{idNumber && (
+				<dl aria-label="ID number">
+					<dt>ID number:</dt> <dd>{idNumber}</dd>
+				</dl>
+			)}
 			{/* TODO check formatting of referral date */}
 			{process == "MT" && referralDate ? (
-				<p>Notification date: {referralDate}</p>
+				<dl aria-label="Notification date">
+					<dt>Notification date:</dt> <dd>{referralDate}</dd>
+				</dl>
 			) : (
 				referralDate && (
-					<p>
-						Referral date:
-						<time dateTime={stripTime(referralDate)}>
-							&nbsp;{formatDateStr(referralDate)}
-						</time>
-					</p>
+					<dl aria-label="Referral date">
+						<dt>Referral date:</dt>
+						<dd>
+							<time dateTime={stripTime(referralDate)}>
+								&nbsp;{formatDateStr(referralDate)}
+							</time>
+						</dd>
+					</dl>
 				)
 			)}
 
@@ -224,9 +263,7 @@ export default function InDevelopmentPage({
 					</ul>
 				</>
 			) : null}
-
 			<Updates fullUpdates={fullUpdates} partialUpdates={partialUpdates} />
-
 			{indevScheduleItems && indevScheduleItems.length > 0 ? (
 				<>
 					<h3>Provisional Schedule</h3>
@@ -235,7 +272,10 @@ export default function InDevelopmentPage({
 							return (
 								<>
 									<dt key={`sched_dt_${index}`}>{item.column1}</dt>
-									<dd key={`sched_dd_${index}`}>{item.column2}</dd>
+									<dd
+										key={`sched_dd_${index}`}
+										dangerouslySetInnerHTML={{ __html: item.column2 }}
+									/>
 								</>
 							);
 						})}
@@ -295,7 +335,6 @@ export default function InDevelopmentPage({
 					<dt>{evidenceAssessmentGroup}</dt>
 				</dl>
 			)}
-
 			<Stakeholders
 				legacyStakeholders={indevLegacyStakeholders}
 				consultees={indevConsultees}
@@ -336,7 +375,6 @@ export const getServerSideProps: GetServerSideProps<
 		evidenceAssessmentGroup,
 		idNumber,
 		process,
-		productTypeName,
 		projectType,
 		reference,
 		referralDate,
@@ -351,6 +389,23 @@ export const getServerSideProps: GetServerSideProps<
 		topicSelectionFurtherInfo,
 		topicSelectionReason,
 	} = project;
+
+	const consultationPanels = arrayify(
+		project.embedded.niceIndevPanelList?.embedded?.niceIndevPanel
+	).filter(
+		(panel) =>
+			panel.showPanel &&
+			panel.embedded.niceIndevConsultation &&
+			panel.panelType == "History"
+	);
+
+	const consultation = consultationPanels
+		.flatMap((panel) => arrayify(panel.embedded.niceIndevConsultation))
+		.find((consultation) => consultation.reference === project.reference);
+
+	const consultationLink = consultation
+		? consultation.links.self[0].href
+		: null;
 
 	const indevStakeholderRegistration = arrayify(
 			project.links.niceIndevStakeholderRegistration
@@ -463,16 +518,20 @@ export const getServerSideProps: GetServerSideProps<
 
 	let indevRegisterAnInterestLink = null;
 
-	// TODO: if projectIsNull OR project.productType NOT "IPG" OR project.Status == isDiscontinued() THEN show the register an interest link with querystring ?t=0&p=[project.Reference]&returnUrl[returnUrl]
+	// TODO: if projectIsNull OR project.productType NOT "IPG" OR project.Status == isDiscontinued() DONT show the register an interest link with querystring ?t=0&p=[project.Reference]&returnUrl[returnUrl]
 	// Example from guidance-web "https://alpha.nice.org.uk/about/what-we-do/our-programmes/nice-guidance/nice-interventional-procedures-guidance/ip-register-an-interest?t=0&p=GID-IPG10305&returnUrl=/guidance/indevelopment/gid-ipg10305"
 	//TODO: is there a better way of constructing the returnUrl param?
-	if (!project || project.status?.toLowerCase() == "discontinued") {
+	//TODO: more robust way of representing discontinued?
+
+	if (
+		project.projectType == "IPG" ||
+		project.status?.toLowerCase() != "discontinued"
+	) {
 		indevRegisterAnInterestLink = `/about/what-we-do/our-programmes/nice-guidance/nice-interventional-procedures-guidance/ip-register-an-interest?t=0&p=${project.reference}&returnUrl=/indicators/indevelopment/${project.reference}`;
-	} else {
-		console.log("don't display 'Register an interest' link");
 	}
 	return {
 		props: {
+			consultationLink,
 			description,
 			developedAs,
 			evidenceAssessmentGroup,

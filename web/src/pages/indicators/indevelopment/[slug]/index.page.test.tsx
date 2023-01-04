@@ -81,11 +81,15 @@ describe("/indevelopment/[slug].page", () => {
 				}
 			).props;
 			render(<InDevelopmentPage {...props} />);
+
+			const descriptionList = screen.getByLabelText("Description");
+			const { getByText } = within(descriptionList);
+			expect(getByText("Description:").tagName).toBe("DT");
 			expect(
-				screen.getByText(
-					/description: the aim of intramuscular diaphragm stimulation is to make the diaphragm contract, strengthening it and allowing full or partial weaning from mechanical ventilation\. this procedure needs intact phrenic nerve function and avoids the need to access the phrenic nerve through the neck or thorax, as well as reducing the risk of phrenic nerve damage\. the procedure is done laparoscopically with the patient under general anaesthesia\. a probe is used to identify areas of the diaphragm where minimal electrical stimulation causes maximal diaphragm contraction \(known as the 'motor points'\)\. two intramuscular electrodes are implanted on the abdominal surface of each hemi-diaphragm at the motor points\. the electrode leads are tunnelled subcutaneously to an exit site in the chest where they are connected to an external battery-powered pulse generator\. a reference electrode \(anode\) is also implanted and the leads tunnelled with the other electrodes\. intraoperative stimulation and voltage calibration tests are done to confirm adequate contraction of the diaphragm\. after implantation the patient has a diaphragm conditioning programme, which involves progressive use of the system for increasing periods of time with gradual weaning from the ventilator\./i
-				)
-			).toBeInTheDocument();
+				getByText(
+					/the aim of intramuscular diaphragm stimulation is to make the diaphragm contract, strengthening it and allowing full or partial weaning from mechanical ventilation\. this procedure needs intact phrenic nerve function and avoids the need to access the phrenic nerve through the neck or thorax, as well as reducing the risk of phrenic nerve damage\. the procedure is done laparoscopically with the patient under general anaesthesia\. a probe is used to identify areas of the diaphragm where minimal electrical stimulation causes maximal diaphragm contraction \(known as the 'motor points'\)\. two intramuscular electrodes are implanted on the abdominal surface of each hemi-diaphragm at the motor points\. the electrode leads are tunnelled subcutaneously to an exit site in the chest where they are connected to an external battery-powered pulse generator\. a reference electrode \(anode\) is also implanted and the leads tunnelled with the other electrodes\. intraoperative stimulation and voltage calibration tests are done to confirm adequate contraction of the diaphragm\. after implantation the patient has a diaphragm conditioning programme, which involves progressive use of the system for increasing periods of time with gradual weaning from the ventilator\./i
+				).tagName
+			).toBe("DD");
 		});
 
 		it("should render the project id number", async () => {
@@ -101,7 +105,11 @@ describe("/indevelopment/[slug].page", () => {
 				}
 			).props;
 			render(<InDevelopmentPage {...props} />);
-			expect(screen.getByText("ID number: 927")).toBeInTheDocument();
+
+			const projectIdList = screen.getByLabelText("ID number");
+			const { getByText } = within(projectIdList);
+			expect(getByText("ID number:").tagName).toBe("DT");
+			expect(getByText("927").tagName).toBe("DD");
 		});
 
 		it("should render a project information overview heading h1", () => {
@@ -144,11 +152,10 @@ describe("/indevelopment/[slug].page", () => {
 
 				render(<InDevelopmentPage {...props} />);
 
-				expect(screen.getByTestId("reason")).toBeInTheDocument();
-
-				expect(screen.getByTestId("reason")).toHaveTextContent(
-					`Reason for decision: ${topicSelectionReasonText}`
-				);
+				const list = screen.getByLabelText("Reason for decision");
+				const { getByText } = within(list);
+				expect(getByText("Reason for decision:").tagName).toBe("DT");
+				expect(getByText(`${topicSelectionReasonText}`).tagName).toBe("DD");
 			}
 		);
 
@@ -166,7 +173,10 @@ describe("/indevelopment/[slug].page", () => {
 			).props;
 			render(<InDevelopmentPage {...props} />);
 
-			expect(screen.getByText("Developed as: APG")).toBeInTheDocument();
+			const list = screen.getByLabelText("Developed as");
+			const { getByText } = within(list);
+			expect(getByText("Developed as:").tagName).toBe("DT");
+			expect(getByText("APG").tagName).toBe("DD");
 		});
 
 		it("should render 'Process: [Process]' when status != TopicSelection and ProjectType != 'NG'", async () => {
@@ -182,7 +192,11 @@ describe("/indevelopment/[slug].page", () => {
 				}
 			).props;
 			render(<InDevelopmentPage {...props} />);
-			expect(screen.getByText("Process: HST")).toBeInTheDocument();
+
+			const list = screen.getByLabelText("Process");
+			const { getByText } = within(list);
+			expect(getByText("Process:").tagName).toBe("DT");
+			expect(getByText("HST").tagName).toBe("DD");
 		});
 
 		it("should reder 'Notification date' when Process =='MT' ", async () => {
@@ -198,10 +212,16 @@ describe("/indevelopment/[slug].page", () => {
 				}
 			).props;
 			render(<InDevelopmentPage {...props} />);
-			expect(screen.getByText("Process: MT")).toBeInTheDocument();
-			expect(
-				screen.getByText("Notification date: February 2010")
-			).toBeInTheDocument();
+
+			const list = screen.getByLabelText("Process");
+			const { getByText } = within(list);
+			expect(getByText("Process:").tagName).toBe("DT");
+			expect(getByText("MT").tagName).toBe("DD");
+
+			const list2 = screen.getByLabelText("Notification date");
+			const { getByText: getByText2 } = within(list2);
+			expect(getByText2("Notification date:").tagName).toBe("DT");
+			expect(getByText2("February 2010").tagName).toBe("DD");
 		});
 
 		it("should render 'Referral date' when Process != 'MT ", async () => {
@@ -217,8 +237,10 @@ describe("/indevelopment/[slug].page", () => {
 				}
 			).props;
 			render(<InDevelopmentPage {...props} />);
+			const list = screen.getByLabelText("Referral date");
+			const { getByText } = within(list);
+			expect(getByText("Referral date:").tagName).toBe("DT");
 
-			expect(screen.getByText("Referral date:").tagName).toBe("P");
 			const dates = screen.getAllByText("1 November 2005")[0] as HTMLElement;
 			expect(dates.tagName).toBe("TIME");
 			//TODO Check datetime attribute format
@@ -543,7 +565,10 @@ describe("/indevelopment/[slug].page", () => {
 
 		it("should render project status formatted display name", () => {
 			render(<InDevelopmentPage {...props} />);
-			expect(screen.getByText("Status: In progress")).toBeInTheDocument();
+			const list = screen.getByLabelText("Status");
+			const { getByText } = within(list);
+			expect(getByText("Status:").tagName).toBe("DT");
+			expect(getByText("In progress").tagName).toBe("DD");
 		});
 
 		describe("ProjectHeading", () => {
@@ -624,7 +649,57 @@ describe("/indevelopment/[slug].page", () => {
 					})
 				).toBeInTheDocument();
 
-				expect(screen.getByText("Status: Discontinued")).toBeInTheDocument();
+				const list = screen.getByLabelText("Status");
+				const { getByText } = within(list);
+				expect(getByText("Status:").tagName).toBe("DT");
+				expect(getByText("Discontinued").tagName).toBe("DD");
+			});
+
+			it("should render a link to the consultation overview page", async () => {
+				props = (
+					(await getServerSideProps({
+						...getServerSidePropsContext,
+						params: {
+							slug: "gid-ipg10305",
+						},
+						resolvedUrl: "/indicators/indevelopment/gid-ipg10305",
+					})) as {
+						props: InDevelopmentPageProps;
+					}
+				).props;
+				render(<InDevelopmentPage {...props} />);
+
+				const consultationLink = screen.getByRole("link", {
+					name: "Read the consultation documents",
+				});
+
+				expect(consultationLink).toBeInTheDocument();
+
+				expect(consultationLink).toHaveAttribute(
+					"href",
+					"/indicators/indevelopment/guidance/GID-IPG10305/consultation/html-content"
+				);
+			});
+
+			it("should not render a link to the consultation overview page when consultation content summary exists and there is no online commenting available (just PDF draft for commenting)", async () => {
+				props = (
+					(await getServerSideProps({
+						...getServerSidePropsContext,
+						params: {
+							slug: "gid-ipg10307",
+						},
+						resolvedUrl: "/indicators/indevelopment/gid-ipg10307",
+					})) as {
+						props: InDevelopmentPageProps;
+					}
+				).props;
+				render(<InDevelopmentPage {...props} />);
+
+				const consultationLink = screen.queryByRole("link", {
+					name: "Read the consultation documents",
+				});
+
+				expect(consultationLink).not.toBeInTheDocument();
 			});
 
 			it("should render a 'register as a stakeholder' link", async () => {
@@ -636,6 +711,32 @@ describe("/indevelopment/[slug].page", () => {
 				expect(stakeholderLink).toHaveAttribute(
 					"href",
 					"https://alpha.nice.org.uk/get-involved/stakeholder-registration/register?t=&p=GID-NG10237&returnUrl=/indicators/indevelopment/GID-NG10237"
+				);
+			});
+
+			it("should render a 'Register an interest' link if the project type is 'IPG' or project status is not 'Discontinued'", async () => {
+				props = (
+					(await getServerSideProps({
+						...getServerSidePropsContext,
+						params: {
+							slug: "gid-ipg10305",
+						},
+						resolvedUrl: "/indicators/indevelopment/gid-ipg10305",
+					})) as {
+						props: InDevelopmentPageProps;
+					}
+				).props;
+				render(<InDevelopmentPage {...props} />);
+
+				const registerAnInterestLink = screen.getByRole("link", {
+					name: "Register an interest",
+				});
+
+				expect(registerAnInterestLink).toBeInTheDocument();
+
+				expect(registerAnInterestLink).toHaveAttribute(
+					"href",
+					"/about/what-we-do/our-programmes/nice-guidance/nice-interventional-procedures-guidance/ip-register-an-interest?t=0&p=GID-IPG10305&returnUrl=/guidance/indevelopment/GID-IPG10305"
 				);
 			});
 		});

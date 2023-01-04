@@ -30,9 +30,10 @@ export const Stakeholders: FC<StakeholdersProps> = ({
 				<ul aria-label="Legacy stakeholders">
 					{legacyStakeholders.map((legacyStakeholder, index) => {
 						return (
-							<li key={`legacyStakeholder_${index}`}>
-								{legacyStakeholder.item}
-							</li>
+							<li
+								key={`legacyStakeholder_${index}`}
+								dangerouslySetInnerHTML={{ __html: legacyStakeholder.item }}
+							/>
 						);
 					})}
 				</ul>

@@ -132,6 +132,13 @@ exports[`/indevelopment/[slug].page IndevelopmentPage should match snapshot for 
         </li>
         <li>
           <a
+            href="/about/what-we-do/our-programmes/nice-guidance/nice-interventional-procedures-guidance/ip-register-an-interest?t=0&p=GID-NG10237&returnUrl=/guidance/indevelopment/GID-NG10237"
+          >
+            Register an interest
+          </a>
+        </li>
+        <li>
+          <a
             href="https://alpha.nice.org.uk/get-involved/stakeholder-registration/register?t=&p=GID-NG10237&returnUrl=/indicators/indevelopment/GID-NG10237"
           >
             Register as a stakeholder
@@ -139,22 +146,39 @@ exports[`/indevelopment/[slug].page IndevelopmentPage should match snapshot for 
         </li>
       </ul>
     </div>
-    <button>
-      Read the consultation documents
-    </button>
-    <p>
-      Status: 
-      In progress
-    </p>
-    <p>
-      Decision: 
-      Selected
+    <dl
+      aria-label="Status"
+    >
+      <dt>
+        Status:
+      </dt>
        
-    </p>
-    <p>
-      Developed as: 
-      CG
-    </p>
+      <dd>
+        In progress
+      </dd>
+    </dl>
+    <dl
+      aria-label="Decision"
+    >
+      <dt>
+        Decision:
+      </dt>
+       
+      <dd>
+        Selected
+      </dd>
+    </dl>
+    <dl
+      aria-label="Developed as"
+    >
+      <dt>
+        Developed as:
+      </dt>
+       
+      <dd>
+        CG
+      </dd>
+    </dl>
     <h3>
       Provisional Schedule
     </h3>
@@ -327,6 +351,7 @@ Array [
 exports[`/indevelopment/[slug].page getServerSideProps should return a correct props when supplied with a valid slug 1`] = `
 Object {
   "props": Object {
+    "consultationLink": null,
     "description": null,
     "developedAs": "CG",
     "evidenceAssessmentGroup": null,
@@ -372,7 +397,7 @@ Object {
         },
       },
     ],
-    "indevRegisterAnInterestLink": null,
+    "indevRegisterAnInterestLink": "/about/what-we-do/our-programmes/nice-guidance/nice-interventional-procedures-guidance/ip-register-an-interest?t=0&p=GID-NG10237&returnUrl=/indicators/indevelopment/GID-NG10237",
     "indevScheduleItems": Array [
       Object {
         "additionalInfo": null,
