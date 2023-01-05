@@ -185,12 +185,14 @@ exports[`/indevelopment/[slug].page IndevelopmentPage should match snapshot for 
     <dl
       aria-label="Provisional schedule"
     >
-      <dt>
-        Expected publication
-      </dt>
-      <dd>
-        11 April 2024
-      </dd>
+      <div>
+        <dt>
+          Expected publication
+        </dt>
+        <dd>
+          11 April 2024
+        </dd>
+      </div>
     </dl>
     <h3>
       Project Team
@@ -198,12 +200,14 @@ exports[`/indevelopment/[slug].page IndevelopmentPage should match snapshot for 
     <dl
       aria-label="Project team"
     >
-      <dt>
-        Developer
-      </dt>
-      <dd>
-        National Guideline Centre
-      </dd>
+      <div>
+        <dt>
+          Developer
+        </dt>
+        <dd>
+          National Guideline Centre
+        </dd>
+      </div>
     </dl>
     <h3>
       Email enquiries
@@ -576,7 +580,7 @@ Object {
     "title": "Adrenal insufficiency: acute and long-term management",
     "topicSelectionDecision": "Selected",
     "topicSelectionFurtherInfo": null,
-    "topicSelectionReasonText": null,
+    "topicSelectionReason": null,
   },
 }
 `;
