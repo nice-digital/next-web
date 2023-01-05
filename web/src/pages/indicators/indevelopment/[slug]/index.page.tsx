@@ -3,8 +3,7 @@ import { type GetServerSideProps } from "next/types";
 
 import { Breadcrumbs, Breadcrumb } from "@nice-digital/nds-breadcrumbs";
 
-import { Link } from "@/components/Link/Link";
-import { ProjectConsultationDocumentsLink } from "@/components/ProjectConsultationDocumentsLink/ProjectConsultationDocuments";
+import { ProjectInformation } from "@/components/ProjectInformation/ProjectInformation";
 import { ProjectPageHeading } from "@/components/ProjectPageHeading/ProjectPageHeading";
 import { Stakeholders } from "@/components/ProjectStakeholders/ProjectStakeholders";
 import { TimelineTable } from "@/components/ProjectTimelineTable/ProjectTimelineTable";
@@ -19,7 +18,6 @@ import {
 	IndevProjectRelatedLink,
 	IndevTopic,
 	ProjectStatus,
-	TopicSelectionReason,
 	type IndevEmailEnquiry,
 	type IndevProcessHomepage,
 	type IndevProjectTeam,
@@ -27,9 +25,8 @@ import {
 	type IndevTimeline,
 } from "@/feeds/inDev/types";
 import { getProductDetail } from "@/feeds/publications/publications";
-import { ProductGroup, ProductTypeAcronym } from "@/feeds/publications/types";
+import { ProductGroup } from "@/feeds/publications/types";
 import { arrayify } from "@/utils/array";
-import { formatDateStr, stripTime } from "@/utils/datetime";
 import { validateRouteParams } from "@/utils/project";
 import { getProductPath } from "@/utils/url";
 
@@ -65,14 +62,13 @@ export type InDevelopmentPageProps = {
 	technologyType: string | null;
 	title: string;
 	topicSelectionDecision: string;
+	topicSelectionReason: string | null;
 	topicSelectionFurtherInfo?: string | null;
-	topicSelectionReasonText?: string | null;
 };
 
 export default function InDevelopmentPage({
 	consultationLink,
 	description,
-	// developedAs,
 	evidenceAssessmentGroup,
 	fullUpdates,
 	idNumber,
@@ -101,8 +97,8 @@ export default function InDevelopmentPage({
 	technologyType,
 	title,
 	topicSelectionDecision,
+	topicSelectionReason,
 	topicSelectionFurtherInfo,
-	topicSelectionReasonText,
 }: InDevelopmentPageProps): JSX.Element {
 	const project = {
 		indevRegisterAnInterestLink,
@@ -110,8 +106,21 @@ export default function InDevelopmentPage({
 		indevStakeholderRegistration,
 		projectType,
 		reference,
+		referralDate,
 		status,
 		title,
+		consultationLink,
+		description,
+		idNumber,
+		process,
+		summary,
+		suspendDiscontinuedReason,
+		suspendDiscontinuedUrl,
+		suspendDiscontinuedUrlText,
+		technologyType,
+		topicSelectionDecision,
+		topicSelectionReason,
+		topicSelectionFurtherInfo,
 	};
 
 	return (
@@ -137,128 +146,8 @@ export default function InDevelopmentPage({
 				<Breadcrumb>{reference}</Breadcrumb>
 			</Breadcrumbs>
 			<ProjectPageHeading project={project} />
-			{projectType?.toLowerCase().startsWith("ipg") ? (
-				<Link to="/about/what-we-do/our-Programmes/NICE-guidance/NICE-interventional-procedures-guidance/IP-register-an-interest">
-					Register an interest in this interventional procedure
-				</Link>
-			) : null}
-			{summary && (
-				<div
-					dangerouslySetInnerHTML={{
-						__html: `<p>${summary}</p>`,
-					}}
-				></div>
-			)}
-			{suspendDiscontinuedReason && (
-				<p data-testid="suspendDiscontinuedReason">
-					{suspendDiscontinuedReason}
-				</p>
-			)}
-			{suspendDiscontinuedUrl && suspendDiscontinuedUrlText && (
-				<Link to={suspendDiscontinuedUrl}>
-					<a>{suspendDiscontinuedUrlText}</a>
-				</Link>
-			)}
-			{/*
-			individual documents :-
-			Diagnostics consultation document (Online commenting) - https://www.nice.org.uk/consultations/1567/1/dap63-dcd-automated-abpi-for-consultation-webdocx
-			Diagnostics consultation document (PDF) - https://www.nice.org.uk/guidance/GID-DG10049/documents/514
-			Committee papers – Diagnostics assessment report, Overview, DAR Comments table and EAG response, DAR Addendum, DAR Erratum -https://www.nice.org.uk/guidance/GID-DG10049/documents/diagnostics-assessment-report
-			  foreach (var consultation in Model.ConsultationUrls)
-        {
-            consultationIndex++;
-            <div>
-                @if (Model.ConsultationUrls.Count > 1)
-                {
-                    <a class="btn btn-primary" href="@consultation">Read consultation @consultationIndex documents</a>
-                    if (consultationIndex < Model.ConsultationUrls.Count)
-                    {
-                        <br /><br />
-                    }
-                }
-                else
-                {
-                    <a class="btn btn-primary" href="@consultation">Read the consultation documents</a>
-                }
-            </div>
-        } */}
-			{consultationLink && (
-				<ProjectConsultationDocumentsLink
-					ariaLabel="Read the consultation documents"
-					// TODO Read the consultation documents link example - https://alpha.nice.org.uk/guidance/indevelopment/gid-ipg10308/consultation/html-content
-					downloadLink={`/indicators/indevelopment${consultationLink}`}
-				>
-					Read the consultation documents
-				</ProjectConsultationDocumentsLink>
-			)}
 
-			{status && (
-				<dl aria-label="Status">
-					<dt>Status:</dt> <dd>{status}</dd>
-				</dl>
-			)}
-			{technologyType && (
-				<dl aria-label="Technology type">
-					<dt>Technology type:</dt> <dd>{technologyType}</dd>
-				</dl>
-			)}
-			{topicSelectionDecision && (
-				<dl aria-label="Decision">
-					<dt>Decision:</dt> <dd>{topicSelectionDecision}</dd>
-				</dl>
-			)}
-			{topicSelectionReasonText && (
-				<dl aria-label="Reason for decision">
-					<dt>Reason for decision:</dt> <dd>{topicSelectionReasonText}</dd>
-				</dl>
-			)}
-			{topicSelectionFurtherInfo && (
-				<dl aria-label="Further information">
-					<dt>Further information:</dt> <dd>{topicSelectionFurtherInfo}</dd>
-				</dl>
-			)}
-			{process && status !== ProjectStatus.TopicSelection ? (
-				projectType == ProductTypeAcronym.NG ? (
-					<dl aria-label="Developed as">
-						<dt>Developed as:</dt> <dd>{process}</dd>
-					</dl>
-				) : (
-					<dl aria-label="Process">
-						<dt>Process:</dt> <dd>{process}</dd>
-					</dl>
-				)
-			) : null}
-			{/* TODO remove 'Process' and 'Developed as' if the logic above covers it */}
-			{/* <p>Process: {process}</p> */}
-			{/* <p>Developed as: {developedAs}</p> */}
-			{description && (
-				<dl aria-label="Description">
-					<dt>Description:</dt>
-					<dd dangerouslySetInnerHTML={{ __html: description }} />
-				</dl>
-			)}
-			{idNumber && (
-				<dl aria-label="ID number">
-					<dt>ID number:</dt> <dd>{idNumber}</dd>
-				</dl>
-			)}
-			{/* TODO check formatting of referral date */}
-			{process == "MT" && referralDate ? (
-				<dl aria-label="Notification date">
-					<dt>Notification date:</dt> <dd>{referralDate}</dd>
-				</dl>
-			) : (
-				referralDate && (
-					<dl aria-label="Referral date">
-						<dt>Referral date:</dt>
-						<dd>
-							<time dateTime={stripTime(referralDate)}>
-								&nbsp;{formatDateStr(referralDate)}
-							</time>
-						</dd>
-					</dl>
-				)
-			)}
+			<ProjectInformation project={project} />
 
 			{indevTopicItems && indevTopicItems.length > 0 ? (
 				<>
@@ -277,13 +166,13 @@ export default function InDevelopmentPage({
 					<dl aria-label="Provisional schedule">
 						{indevScheduleItems?.map((item, index) => {
 							return (
-								<>
+								<div key={`provisionalschedulelist_${index}`}>
 									<dt key={`sched_dt_${index}`}>{item.column1}</dt>
 									<dd
 										key={`sched_dd_${index}`}
 										dangerouslySetInnerHTML={{ __html: item.column2 }}
 									/>
-								</>
+								</div>
 							);
 						})}
 					</dl>
@@ -295,10 +184,10 @@ export default function InDevelopmentPage({
 					<dl aria-label="Project team">
 						{indevProjectTeamMembers?.map((member, index) => {
 							return (
-								<>
+								<div key={`teamlist_${index}`}>
 									<dt key={`member_dt_${index}`}>{member.column1}</dt>
 									<dd key={`member_dd_${index}`}>{member.column2}</dd>
-								</>
+								</div>
 							);
 						})}
 					</dl>
@@ -311,10 +200,10 @@ export default function InDevelopmentPage({
 					<dl aria-label="Related links">
 						{indevProjectRelatedLinks?.map((link, index) => {
 							return (
-								<>
+								<div key={`relatedlinkslist_${index}`}>
 									<dt key={`link_dt_${index}`}>{link.column1}</dt>
 									<dd key={`link_dd_${index}`}>{link.column2}</dd>
-								</>
+								</div>
 							);
 						})}
 					</dl>
@@ -398,23 +287,18 @@ export const getServerSideProps: GetServerSideProps<
 	} = project;
 
 	const consultationPanels = arrayify(
-		project.embedded.niceIndevPanelList?.embedded?.niceIndevPanel
-	).filter(
-		(panel) =>
-			panel.showPanel &&
-			panel.embedded.niceIndevConsultation &&
-			panel.panelType == "History"
-	);
-
-	const consultation = consultationPanels
-		.flatMap((panel) => arrayify(panel.embedded.niceIndevConsultation))
-		.find((consultation) => consultation.reference === project.reference);
-
-	const consultationLink = consultation
-		? consultation.links.self[0].href
-		: null;
-
-	const indevStakeholderRegistration = arrayify(
+			project.embedded.niceIndevPanelList?.embedded?.niceIndevPanel
+		).filter(
+			(panel) =>
+				panel.showPanel &&
+				panel.embedded.niceIndevConsultation &&
+				panel.panelType == "History"
+		),
+		consultation = consultationPanels
+			.flatMap((panel) => arrayify(panel.embedded.niceIndevConsultation))
+			.find((consultation) => consultation.reference === project.reference),
+		consultationLink = consultation ? consultation.links.self[0].href : null,
+		indevStakeholderRegistration = arrayify(
 			project.links.niceIndevStakeholderRegistration
 		),
 		indevFullUpdate =
@@ -503,30 +387,8 @@ export const getServerSideProps: GetServerSideProps<
 				};
 			});
 
-	let topicSelectionReasonText;
-
-	switch (topicSelectionReason) {
-		case "Monitor":
-			topicSelectionReasonText = TopicSelectionReason.Monitor;
-			break;
-		case "Anticipate":
-			topicSelectionReasonText = TopicSelectionReason.Anticipate;
-			break;
-		case "NotEligible":
-			topicSelectionReasonText = TopicSelectionReason.NotEligible;
-			break;
-		case "FurtherDiscussion":
-			topicSelectionReasonText = TopicSelectionReason.FurtherDiscussion;
-			break;
-		default:
-			topicSelectionReasonText = null;
-			break;
-	}
-
 	let indevRegisterAnInterestLink = null;
 
-	// TODO: if projectIsNull OR project.productType NOT "IPG" OR project.Status == isDiscontinued() DONT show the register an interest link with querystring ?t=0&p=[project.Reference]&returnUrl[returnUrl]
-	// Example from guidance-web "https://alpha.nice.org.uk/about/what-we-do/our-programmes/nice-guidance/nice-interventional-procedures-guidance/ip-register-an-interest?t=0&p=GID-IPG10305&returnUrl=/guidance/indevelopment/gid-ipg10305"
 	//TODO: is there a better way of constructing the returnUrl param?
 	//TODO: more robust way of representing discontinued?
 
@@ -570,7 +432,7 @@ export const getServerSideProps: GetServerSideProps<
 			title,
 			topicSelectionDecision,
 			topicSelectionFurtherInfo,
-			topicSelectionReasonText,
+			topicSelectionReason,
 		},
 	};
 };

@@ -43,10 +43,10 @@ export const Stakeholders: FC<StakeholdersProps> = ({
 					<dl aria-label="Consultee stakeholders">
 						{consultees.map((consultee, index) => {
 							return (
-								<>
+								<div key={`consulteelist_${index}`}>
 									<dt key={`consulteedt_${index}`}>{consultee.column1}</dt>
 									<dd key={`consulteedd_${index}`}>{consultee.column2}</dd>
-								</>
+								</div>
 							);
 						})}
 					</dl>
@@ -56,10 +56,10 @@ export const Stakeholders: FC<StakeholdersProps> = ({
 				<dl aria-label="Commentator stakeholders">
 					{commentators.map((commentator, index) => {
 						return (
-							<>
+							<div key={`commentatorlist_${index}`}>
 								<dt key={`commentatordt_${index}`}>{commentator.column1}</dt>
 								<dd key={`commentatordd_${index}`}>{commentator.column2}</dd>
-							</>
+							</div>
 						);
 					})}
 				</dl>
