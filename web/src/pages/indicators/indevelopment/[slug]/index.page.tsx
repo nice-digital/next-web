@@ -193,7 +193,7 @@ export default function InDevelopmentPage({
 					</dl>
 				</>
 			) : null}
-			{/* TODO check formatting and location of related links */}
+			{/* TODO check formatting and location of related links TURN into link */}
 			{indevProjectRelatedLinks && indevProjectRelatedLinks?.length > 0 ? (
 				<>
 					<h3>Related Links</h3>
@@ -340,10 +340,12 @@ export const getServerSideProps: GetServerSideProps<
 				.niceIndevEmailEnquiry,
 		indevEmailEnquiries = arrayify(indevEmailEnquiry),
 		projectStatusDisplayName = (status: ProjectStatus) => {
-			if (status == "AwaitingDevelopment") return "Awaiting development";
-			if (status == "InProgress") return "In progress";
-			if (status == "TopicSelection") return "Topic selection";
-			if (status == "ImpactedByCOVID19") return "Impacted by COVID-19";
+			if (status == ProjectStatus.AwaitingDevelopment)
+				return "Awaiting development";
+			if (status == ProjectStatus.InProgress) return "In progress";
+			if (status == ProjectStatus.TopicSelection) return "Topic selection";
+			if (status == ProjectStatus.ImpactedByCOVID19)
+				return "Impacted by COVID-19";
 			else return status;
 		};
 
@@ -389,14 +391,9 @@ export const getServerSideProps: GetServerSideProps<
 
 	let indevRegisterAnInterestLink = null;
 
-	//TODO: is there a better way of constructing the returnUrl param?
-	//TODO: more robust way of representing discontinued?
-
-	if (
-		project.projectType == "IPG" ||
-		project.status?.toLowerCase() != "discontinued"
-	) {
-		indevRegisterAnInterestLink = `/about/what-we-do/our-programmes/nice-guidance/nice-interventional-procedures-guidance/ip-register-an-interest?t=0&p=${project.reference}&returnUrl=/indicators/indevelopment/${project.reference}`;
+	// TODO move into render phase
+	if (projectType == "IPG" || status != ProjectStatus.Discontinued) {
+		indevRegisterAnInterestLink = `/about/what-we-do/our-programmes/nice-guidance/nice-interventional-procedures-guidance/ip-register-an-interest?t=0&p=${reference}&returnUrl=/guidance/indevelopment/${reference}`;
 	}
 	return {
 		props: {
@@ -426,7 +423,7 @@ export const getServerSideProps: GetServerSideProps<
 			suspendDiscontinuedReason,
 			suspendDiscontinuedUrl,
 			suspendDiscontinuedUrlText,
-			status: projectStatusDisplayName(status as ProjectStatus),
+			status: projectStatusDisplayName(status),
 			summary,
 			technologyType,
 			title,
