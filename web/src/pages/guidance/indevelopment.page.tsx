@@ -5,6 +5,7 @@ import {
 	getGetServerSidePropsFunc,
 } from "@/components/GuidanceListPage/GuidanceListPage";
 import { ResponsiveDate } from "@/components/ResponsiveDate/ResponsiveDate";
+import { publicRuntimeConfig } from "@/config";
 
 const defaultSortOrder = SortOrder.titleAscending,
 	dateFilterLabel = "Expected publication date";
@@ -38,7 +39,7 @@ const tableBodyRender = (documents: Document[]) => (
 									<span dangerouslySetInnerHTML={{ __html: title }} />
 								) : (
 									<a
-										href={pathAndQuery}
+										href={publicRuntimeConfig.baseURL + pathAndQuery}
 										dangerouslySetInnerHTML={{ __html: title }}
 									/>
 								)}
