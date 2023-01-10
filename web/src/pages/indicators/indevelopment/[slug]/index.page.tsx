@@ -3,6 +3,7 @@ import { type GetServerSideProps } from "next/types";
 
 import { Breadcrumbs, Breadcrumb } from "@nice-digital/nds-breadcrumbs";
 
+import { DefinitionList } from "@/components/DefinitionList/DefinitionList";
 import { ProjectInformation } from "@/components/ProjectInformation/ProjectInformation";
 import { ProjectPageHeading } from "@/components/ProjectPageHeading/ProjectPageHeading";
 import { Stakeholders } from "@/components/ProjectStakeholders/ProjectStakeholders";
@@ -163,7 +164,7 @@ export default function InDevelopmentPage({
 			{indevScheduleItems && indevScheduleItems.length > 0 ? (
 				<>
 					<h3>Provisional Schedule</h3>
-					<dl aria-label="Provisional schedule">
+					<DefinitionList ariaLabel="Provisional schedule">
 						{indevScheduleItems?.map((item, index) => {
 							return (
 								<div key={`provisionalschedulelist_${index}`}>
@@ -175,13 +176,13 @@ export default function InDevelopmentPage({
 								</div>
 							);
 						})}
-					</dl>
+					</DefinitionList>
 				</>
 			) : null}
 			{indevProjectTeamMembers && indevProjectTeamMembers?.length > 0 ? (
 				<>
 					<h3>Project Team</h3>
-					<dl aria-label="Project team">
+					<DefinitionList ariaLabel="Project team">
 						{indevProjectTeamMembers?.map((member, index) => {
 							return (
 								<div key={`teamlist_${index}`}>
@@ -190,14 +191,14 @@ export default function InDevelopmentPage({
 								</div>
 							);
 						})}
-					</dl>
+					</DefinitionList>
 				</>
 			) : null}
 			{/* TODO check formatting and location of related links TURN into link */}
 			{indevProjectRelatedLinks && indevProjectRelatedLinks?.length > 0 ? (
 				<>
 					<h3>Related Links</h3>
-					<dl aria-label="Related links">
+					<DefinitionList ariaLabel="Related links">
 						{indevProjectRelatedLinks?.map((link, index) => {
 							return (
 								<div key={`relatedlinkslist_${index}`}>
@@ -206,7 +207,7 @@ export default function InDevelopmentPage({
 								</div>
 							);
 						})}
-					</dl>
+					</DefinitionList>
 				</>
 			) : null}
 			{indevEmailEnquiries && indevEmailEnquiries.length > 0 ? (
@@ -226,10 +227,10 @@ export default function InDevelopmentPage({
 				</>
 			) : null}
 			{evidenceAssessmentGroup && (
-				<dl>
+				<DefinitionList ariaLabel="External assessment group">
 					<dd>External Assessment Group</dd>
 					<dt>{evidenceAssessmentGroup}</dt>
-				</dl>
+				</DefinitionList>
 			)}
 			<Stakeholders
 				legacyStakeholders={indevLegacyStakeholders}

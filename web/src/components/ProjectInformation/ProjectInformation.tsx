@@ -4,6 +4,7 @@ import { ProjectStatus, TopicSelectionReason } from "@/feeds/inDev/types";
 import { ProductTypeAcronym } from "@/feeds/publications/types";
 import { formatDateStr, stripTime } from "@/utils/datetime";
 
+import { DefinitionList } from "../DefinitionList/DefinitionList";
 import { Link } from "../Link/Link";
 import { ProjectConsultationDocumentsLink } from "../ProjectConsultationDocumentsLink/ProjectConsultationDocuments";
 
@@ -102,70 +103,67 @@ export const ProjectInformation: FC<ProjectInformationProps> = ({
 				Read the consultation documents
 			</ProjectConsultationDocumentsLink>
 			{status && (
-				<dl aria-label="Status">
+				<DefinitionList ariaLabel="Status">
 					<dt>Status:</dt> <dd>{status}</dd>
-				</dl>
+				</DefinitionList>
 			)}
 			{technologyType && (
-				<dl aria-label="Technology type">
+				<DefinitionList ariaLabel="Technology type">
 					<dt>Technology type:</dt> <dd>{technologyType}</dd>
-				</dl>
+				</DefinitionList>
 			)}
 			{topicSelectionDecision && (
-				<dl aria-label="Decision">
+				<DefinitionList ariaLabel="Decision">
 					<dt>Decision:</dt> <dd>{topicSelectionDecision}</dd>
-				</dl>
+				</DefinitionList>
 			)}
 			{topicSelectionReasonText && (
-				<dl aria-label="Reason for decision">
+				<DefinitionList ariaLabel="Reason for decision">
 					<dt>Reason for decision:</dt> <dd>{topicSelectionReasonText}</dd>
-				</dl>
+				</DefinitionList>
 			)}
 			{topicSelectionFurtherInfo && (
-				<dl aria-label="Further information">
+				<DefinitionList ariaLabel="Further information">
 					<dt>Further information:</dt> <dd>{topicSelectionFurtherInfo}</dd>
-				</dl>
+				</DefinitionList>
 			)}
 			{process && status !== ProjectStatus.TopicSelection ? (
 				projectType == ProductTypeAcronym.NG ? (
-					<dl aria-label="Developed as">
+					<DefinitionList ariaLabel="Developed as">
 						<dt>Developed as:</dt> <dd>{process}</dd>
-					</dl>
+					</DefinitionList>
 				) : (
-					<dl aria-label="Process">
+					<DefinitionList ariaLabel="Process">
 						<dt>Process:</dt> <dd>{process}</dd>
-					</dl>
+					</DefinitionList>
 				)
 			) : null}
-			{/* TODO remove 'Process' and 'Developed as' if the logic above covers it */}
-			{/* <p>Process: {process}</p> */}
-			{/* <p>Developed as: {developedAs}</p> */}
 			{description && (
-				<dl aria-label="Description">
+				<DefinitionList ariaLabel="Description">
 					<dt>Description:</dt>
 					<dd dangerouslySetInnerHTML={{ __html: description }} />
-				</dl>
+				</DefinitionList>
 			)}
 			{idNumber && (
-				<dl aria-label="ID number">
+				<DefinitionList ariaLabel="ID number">
 					<dt>ID number:</dt> <dd>{idNumber}</dd>
-				</dl>
+				</DefinitionList>
 			)}
 			{/* TODO check formatting of referral date */}
 			{process == "MT" && referralDate ? (
-				<dl aria-label="Notification date">
+				<DefinitionList ariaLabel="Notification date">
 					<dt>Notification date:</dt> <dd>{referralDate}</dd>
-				</dl>
+				</DefinitionList>
 			) : (
 				referralDate && (
-					<dl aria-label="Referral date">
+					<DefinitionList ariaLabel="Referral date">
 						<dt>Referral date:</dt>
 						<dd>
 							<time dateTime={stripTime(referralDate)}>
 								&nbsp;{formatDateStr(referralDate)}
 							</time>
 						</dd>
-					</dl>
+					</DefinitionList>
 				)
 			)}
 		</>

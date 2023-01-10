@@ -148,6 +148,7 @@ exports[`/indevelopment/[slug].page IndevelopmentPage should match snapshot for 
     </div>
     <dl
       aria-label="Status"
+      class="definitionList"
     >
       <dt>
         Status:
@@ -159,6 +160,7 @@ exports[`/indevelopment/[slug].page IndevelopmentPage should match snapshot for 
     </dl>
     <dl
       aria-label="Decision"
+      class="definitionList"
     >
       <dt>
         Decision:
@@ -170,6 +172,7 @@ exports[`/indevelopment/[slug].page IndevelopmentPage should match snapshot for 
     </dl>
     <dl
       aria-label="Developed as"
+      class="definitionList"
     >
       <dt>
         Developed as:
@@ -184,6 +187,7 @@ exports[`/indevelopment/[slug].page IndevelopmentPage should match snapshot for 
     </h3>
     <dl
       aria-label="Provisional schedule"
+      class="definitionList"
     >
       <div>
         <dt>
@@ -199,6 +203,7 @@ exports[`/indevelopment/[slug].page IndevelopmentPage should match snapshot for 
     </h3>
     <dl
       aria-label="Project team"
+      class="definitionList"
     >
       <div>
         <dt>
@@ -425,7 +430,7 @@ Object {
         },
       },
     ],
-    "indevRegisterAnInterestLink": "/about/what-we-do/our-programmes/nice-guidance/nice-interventional-procedures-guidance/ip-register-an-interest?t=0&p=GID-NG10237&returnUrl=/indicators/indevelopment/GID-NG10237",
+    "indevRegisterAnInterestLink": "/about/what-we-do/our-programmes/nice-guidance/nice-interventional-procedures-guidance/ip-register-an-interest?t=0&p=GID-NG10237&returnUrl=/guidance/indevelopment/GID-NG10237",
     "indevScheduleItems": Array [
       Object {
         "additionalInfo": null,

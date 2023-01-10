@@ -6,6 +6,8 @@ import {
 	IndevLegacyStakeholder,
 } from "@/feeds/inDev/types";
 
+import { DefinitionList } from "../DefinitionList/DefinitionList";
+
 export type StakeholdersProps = {
 	consultees?: IndevConsultee[];
 	commentators?: IndevCommentator[];
@@ -40,7 +42,7 @@ export const Stakeholders: FC<StakeholdersProps> = ({
 			) : null}
 			{consultees && consultees?.length > 0 ? (
 				<>
-					<dl aria-label="Consultee stakeholders">
+					<DefinitionList ariaLabel="Consultee stakeholders">
 						{consultees.map((consultee, index) => {
 							return (
 								<div key={`consulteelist_${index}`}>
@@ -49,11 +51,11 @@ export const Stakeholders: FC<StakeholdersProps> = ({
 								</div>
 							);
 						})}
-					</dl>
+					</DefinitionList>
 				</>
 			) : null}
 			{commentators && commentators.length > 0 ? (
-				<dl aria-label="Commentator stakeholders">
+				<DefinitionList ariaLabel="Commentator stakeholders">
 					{commentators.map((commentator, index) => {
 						return (
 							<div key={`commentatorlist_${index}`}>
@@ -62,7 +64,7 @@ export const Stakeholders: FC<StakeholdersProps> = ({
 							</div>
 						);
 					})}
-				</dl>
+				</DefinitionList>
 			) : null}
 		</>
 	) : null;
