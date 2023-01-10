@@ -2,14 +2,10 @@
 @use '@nice-digital/nds-core/scss/utils';
 
 .definitionList {
-
-  dl {
   margin: 0;
   display: flex;
   flex-flow: row wrap;
   max-width: utils.rem(650);
-  }
-
 
   dt,
   dd {
