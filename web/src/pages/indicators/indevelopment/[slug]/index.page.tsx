@@ -29,7 +29,7 @@ import {
 } from "@/feeds/inDev/types";
 import { getProductDetail } from "@/feeds/publications/publications";
 import { ProductGroup } from "@/feeds/publications/types";
-import { arrayify } from "@/utils/array";
+import { arrayify, isTruthy } from "@/utils/array";
 import { validateRouteParams } from "@/utils/project";
 import { getProductPath } from "@/utils/url";
 
@@ -356,9 +356,6 @@ export const getServerSideProps: GetServerSideProps<
 		indevProcessHomepage = project.embedded.niceIndevProcessHomepage;
 	}
 
-	function notEmpty<TValue>(value: TValue | null | undefined): value is TValue {
-		return value !== null && value !== undefined;
-	}
 	const getPartiallyUpdatedProducts = indevPartialUpdateItems
 			.map((item) => item.updateReference)
 			.map(getProductDetail),
@@ -367,7 +364,7 @@ export const getServerSideProps: GetServerSideProps<
 			.map((item) => item.updateReference)
 			.map(getProductDetail),
 		fullyUpdatedProducts = await Promise.all(getFullyUpdatedProducts),
-		fullUpdates = fullyUpdatedProducts.filter(notEmpty).map((product) => {
+		fullUpdates = fullyUpdatedProducts.filter(isTruthy).map((product) => {
 			return {
 				title: product.title,
 				id: product.id,
@@ -378,7 +375,7 @@ export const getServerSideProps: GetServerSideProps<
 			};
 		}),
 		partialUpdates = partiallyUpdatedProducts
-			.filter(notEmpty)
+			.filter(isTruthy)
 			.map((product) => {
 				return {
 					title: product.title,
