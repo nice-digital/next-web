@@ -46,7 +46,6 @@ export type InDevelopmentPageProps = {
 	indevProcessHomepage?: IndevProcessHomepage;
 	indevProjectTeamMembers?: IndevProjectTeam[];
 	indevProjectRelatedLinks?: IndevProjectRelatedLink[];
-	indevRegisterAnInterestLink: string | null;
 	indevScheduleItems?: IndevSchedule[];
 	indevStakeholderRegistration: Record<string, unknown>[];
 	indevTimelineItems?: IndevTimeline[];
@@ -80,7 +79,6 @@ export default function InDevelopmentPage({
 	indevProcessHomepage,
 	indevProjectTeamMembers,
 	indevProjectRelatedLinks,
-	indevRegisterAnInterestLink,
 	indevScheduleItems,
 	indevStakeholderRegistration,
 	indevTimelineItems,
@@ -102,18 +100,17 @@ export default function InDevelopmentPage({
 	topicSelectionFurtherInfo,
 }: InDevelopmentPageProps): JSX.Element {
 	const project = {
-		indevRegisterAnInterestLink,
+		consultationLink,
+		description,
+		idNumber,
 		indevScheduleItems,
 		indevStakeholderRegistration,
+		process,
 		projectType,
 		reference,
 		referralDate,
 		status,
 		title,
-		consultationLink,
-		description,
-		idNumber,
-		process,
 		summary,
 		suspendDiscontinuedReason,
 		suspendDiscontinuedUrl,
@@ -390,12 +387,6 @@ export const getServerSideProps: GetServerSideProps<
 				};
 			});
 
-	let indevRegisterAnInterestLink = null;
-
-	// TODO move into render phase
-	if (projectType == "IPG" || status != ProjectStatus.Discontinued) {
-		indevRegisterAnInterestLink = `/about/what-we-do/our-programmes/nice-guidance/nice-interventional-procedures-guidance/ip-register-an-interest?t=0&p=${reference}&returnUrl=/guidance/indevelopment/${reference}`;
-	}
 	return {
 		props: {
 			consultationLink,
@@ -412,7 +403,6 @@ export const getServerSideProps: GetServerSideProps<
 			indevProcessHomepage,
 			indevProjectTeamMembers,
 			indevProjectRelatedLinks,
-			indevRegisterAnInterestLink,
 			indevScheduleItems,
 			indevStakeholderRegistration,
 			indevTimelineItems,
