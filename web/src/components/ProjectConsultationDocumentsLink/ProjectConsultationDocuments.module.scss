@@ -1,0 +1,14 @@
+@use '@nice-digital/nds-core/scss/spacing';
+@use '@nice-digital/nds-core/scss/utils';
+
+.consultationDocumentsLinkContainer {
+    align-items: flex-start;
+    display: flex;
+    flex-direction: column;
+    padding-bottom: utils.rem(spacing.$medium);
+}
+
+.consultationDocumentsLinkButton {
+    display: flex;
+    margin-bottom: utils.rem(spacing.$medium);
+}

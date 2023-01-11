@@ -15,6 +15,7 @@ import {
 } from "@/components/ProjectUpdates/ProjectUpdates";
 import {
 	IndevCommentator,
+	IndevConsultation,
 	IndevConsultee,
 	IndevLegacyStakeholder,
 	IndevProjectRelatedLink,
@@ -33,7 +34,7 @@ import { validateRouteParams } from "@/utils/project";
 import { getProductPath } from "@/utils/url";
 
 export type InDevelopmentPageProps = {
-	consultationLink: string | null;
+	consultationPanels: IndevConsultation[] | [];
 	description: string | null;
 	developedAs: string;
 	evidenceAssessmentGroup: string | null;
@@ -68,7 +69,7 @@ export type InDevelopmentPageProps = {
 };
 
 export default function InDevelopmentPage({
-	consultationLink,
+	consultationPanels,
 	description,
 	evidenceAssessmentGroup,
 	fullUpdates,
@@ -101,7 +102,7 @@ export default function InDevelopmentPage({
 	topicSelectionFurtherInfo,
 }: InDevelopmentPageProps): JSX.Element {
 	const project = {
-		consultationLink,
+		consultationPanels,
 		description,
 		idNumber,
 		indevScheduleItems,
@@ -151,7 +152,7 @@ export default function InDevelopmentPage({
 			{indevTopicItems && indevTopicItems.length > 0 ? (
 				<>
 					<p>Topic area:</p>
-					<ul aria-label="Topic areas">
+					<ul aria-label="Topic areas" className="list list--unstyled">
 						{indevTopicItems.map((topicItem, index) => (
 							<li key={`${topicItem.item}_${index}`}>{topicItem.item}</li>
 						))}
@@ -196,7 +197,7 @@ export default function InDevelopmentPage({
 			{indevProjectRelatedLinks && indevProjectRelatedLinks?.length > 0 ? (
 				<>
 					<h3>Related Links</h3>
-					<ul aria-label="Related links">
+					<ul aria-label="Related links" className="list list--unstyled">
 						{indevProjectRelatedLinks?.map((link, index) => {
 							return (
 								<li key={`link_dd_${index}`}>
@@ -211,7 +212,7 @@ export default function InDevelopmentPage({
 				<>
 					<h3>Email enquiries</h3>
 					<span>If you have any queries please email</span>
-					<ul>
+					<ul className="list list--unstyled">
 						{indevEmailEnquiries &&
 							indevEmailEnquiries.map((enquiry) => {
 								return (
@@ -284,7 +285,7 @@ export const getServerSideProps: GetServerSideProps<
 		topicSelectionReason,
 	} = project;
 
-	const consultationPanels = arrayify(
+	const consultationHistoryPanels = arrayify(
 			project.embedded.niceIndevPanelList?.embedded?.niceIndevPanel
 		).filter(
 			(panel) =>
@@ -292,10 +293,12 @@ export const getServerSideProps: GetServerSideProps<
 				panel.embedded.niceIndevConsultation &&
 				panel.panelType == "History"
 		),
-		consultation = consultationPanels
-			.flatMap((panel) => arrayify(panel.embedded.niceIndevConsultation))
-			.find((consultation) => consultation.reference === project.reference),
-		consultationLink = consultation ? consultation.links.self[0].href : null,
+		consultationPanels = consultationHistoryPanels.flatMap(
+			(panel) =>
+				arrayify(panel.embedded.niceIndevConsultation).find(
+					(consultation) => consultation.reference === project.reference
+				) || []
+		),
 		indevStakeholderRegistration = arrayify(
 			project.links.niceIndevStakeholderRegistration
 		),
@@ -389,7 +392,7 @@ export const getServerSideProps: GetServerSideProps<
 
 	return {
 		props: {
-			consultationLink,
+			consultationPanels,
 			description,
 			developedAs,
 			evidenceAssessmentGroup,

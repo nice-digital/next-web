@@ -1,55 +1,55 @@
-import React, { type PropsWithChildren, type FC } from "react";
+import classnames from "classnames";
+import React, { type FC } from "react";
 
 import { Button } from "@nice-digital/nds-button";
 
-export type ProjectConsultationDocumentsLinkProps = PropsWithChildren<{
-	ariaLabel?: string;
-	consultationLink: string | null;
-}>;
+import { IndevConsultation } from "@/feeds/inDev/types";
 
-{
-	/*
-			individual documents :-
-			Diagnostics consultation document (Online commenting) - https://www.nice.org.uk/consultations/1567/1/dap63-dcd-automated-abpi-for-consultation-webdocx
-			Diagnostics consultation document (PDF) - https://www.nice.org.uk/guidance/GID-DG10049/documents/514
-			Committee papers – Diagnostics assessment report, Overview, DAR Comments table and EAG response, DAR Addendum, DAR Erratum -https://www.nice.org.uk/guidance/GID-DG10049/documents/diagnostics-assessment-report
-			  foreach (var consultation in Model.ConsultationUrls)
-        {
-            consultationIndex++;
-            <div>
-                @if (Model.ConsultationUrls.Count > 1)
-                {
-                    <a class="btn btn-primary" href="@consultation">Read consultation @consultationIndex documents</a>
-                    if (consultationIndex < Model.ConsultationUrls.Count)
-                    {
-                        <br /><br />
-                    }
-                }
-                else
-                {
-                    <a class="btn btn-primary" href="@consultation">Read the consultation documents</a>
-                }
-            </div>
-        } */
-}
+import styles from "./ProjectConsultationDocuments.module.scss";
 
-{
-	// TODO Read the consultation documents link example - https://alpha.nice.org.uk/guidance/indevelopment/gid-ipg10308/consultation/html-content
-	// TODO direct link to online commenting document vs overview page url
-	/* TODO what happens with multiple consultation urls? */
-}
+export type ProjectConsultationDocumentsLinkProps = {
+	consultationPanels: IndevConsultation[] | [];
+};
 
 export const ProjectConsultationDocumentsLink: FC<
 	ProjectConsultationDocumentsLinkProps
-> = ({ ariaLabel, consultationLink, children }) => {
-	return consultationLink ? (
-		<Button
-			aria-label={ariaLabel}
-			variant="cta"
-			to={`/indicators/indevelopment${consultationLink}`}
-			target="_blank"
+> = ({ consultationPanels }) => {
+	if (consultationPanels.length == 0) return null;
+
+	const hasMultipleConsultations =
+		consultationPanels && consultationPanels?.length > 1;
+
+	return hasMultipleConsultations ? (
+		<ul
+			className={classnames([
+				"list list--unstyled",
+				styles.consultationDocumentsLinkContainer,
+			])}
 		>
-			{children}
-		</Button>
-	) : null;
+			{consultationPanels.map((consultation, index) => (
+				<li key={`Read consultation ${index + 1} documents`}>
+					<Button
+						variant="cta"
+						target="_blank"
+						to={`/indicators/indevelopment${consultation.links.self[0].href}`}
+						className={styles.consultationDocumentsLinkButton}
+					>
+						Read consultation {index + 1} documents
+					</Button>
+				</li>
+			))}
+		</ul>
+	) : (
+		<div className={styles.consultationDocumentsLinkContainer}>
+			<Button
+				key={`Read consultation documents`}
+				variant="cta"
+				target="_blank"
+				to={`/indicators/indevelopment${consultationPanels[0].links.self[0].href}`}
+				className={styles.consultationDocumentsLinkButton}
+			>
+				Read the consultation documents
+			</Button>
+		</div>
+	);
 };

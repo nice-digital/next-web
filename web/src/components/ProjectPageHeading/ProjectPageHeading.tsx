@@ -34,7 +34,7 @@ export const ProjectPageHeading: FC<ProjectPageHeadingProps> = ({
 		),
 		publicationMeta = expectedPublicationInfo ? (
 			<>
-				<span>Expected publication date</span>{" "}
+				<span>Expected publication date:&nbsp;</span>
 				<time dateTime={expectedPublicationInfo.column2}>
 					{formatDateStr(expectedPublicationInfo.column2)}
 				</time>

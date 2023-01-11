@@ -121,9 +121,8 @@ exports[`/indevelopment/[slug].page IndevelopmentPage should match snapshot for 
         </li>
         <li>
           <span>
-            Expected publication date
+            Expected publication date: 
           </span>
-           
           <time
             datetime="11 April 2024"
           >
@@ -220,7 +219,9 @@ exports[`/indevelopment/[slug].page IndevelopmentPage should match snapshot for 
     <span>
       If you have any queries please email
     </span>
-    <ul>
+    <ul
+      class="list list--unstyled"
+    >
       <li>
         <a
           href="mailto:hypoadrenalism@nice.org.uk"
@@ -384,7 +385,7 @@ Array [
 exports[`/indevelopment/[slug].page getServerSideProps should return a correct props when supplied with a valid slug 1`] = `
 Object {
   "props": Object {
-    "consultationLink": null,
+    "consultationPanels": Array [],
     "description": null,
     "developedAs": "CG",
     "evidenceAssessmentGroup": null,

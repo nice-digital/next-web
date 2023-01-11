@@ -577,7 +577,7 @@ describe("/indevelopment/[slug].page", () => {
 			it("should render expected publication date metadata as time tag with correct formatted date", () => {
 				render(<InDevelopmentPage {...props} />);
 
-				expect(screen.getByText("Expected publication date").tagName).toBe(
+				expect(screen.getByText("Expected publication date:").tagName).toBe(
 					"SPAN"
 				);
 
@@ -760,6 +760,52 @@ describe("/indevelopment/[slug].page", () => {
 				});
 
 				expect(registerAnInterestLink).toBeFalsy();
+			});
+		});
+
+		describe("ConsultationDocumentsLink", () => {
+			it("should render a single document link when there is one consultations active", async () => {
+				props = (
+					(await getServerSideProps({
+						...getServerSidePropsContext,
+						params: {
+							slug: "gid-ipg10317",
+						},
+						resolvedUrl: "/indicators/indevelopment/gid-ipg10317",
+					})) as {
+						props: InDevelopmentPageProps;
+					}
+				).props;
+				render(<InDevelopmentPage {...props} />);
+
+				expect(
+					screen.getByText("Read the consultation documents")
+				).toBeInTheDocument();
+			});
+
+			it("should render indexed document links when there are multiple consultations active", async () => {
+				props = (
+					(await getServerSideProps({
+						...getServerSidePropsContext,
+						params: {
+							slug: "gid-ipg10316",
+						},
+						resolvedUrl: "/indicators/indevelopment/gid-ipg10316",
+					})) as {
+						props: InDevelopmentPageProps;
+					}
+				).props;
+				render(<InDevelopmentPage {...props} />);
+
+				expect(
+					screen.getByText("Read consultation 1 documents")
+				).toBeInTheDocument();
+				expect(
+					screen.getByText("Read consultation 2 documents")
+				).toBeInTheDocument();
+				expect(
+					screen.getByText("Read consultation 3 documents")
+				).toBeInTheDocument();
 			});
 		});
 	});

@@ -1,6 +1,10 @@
 import React, { type FC } from "react";
 
-import { ProjectStatus, TopicSelectionReason } from "@/feeds/inDev/types";
+import {
+	IndevConsultation,
+	ProjectStatus,
+	TopicSelectionReason,
+} from "@/feeds/inDev/types";
 import { ProductTypeAcronym } from "@/feeds/publications/types";
 import { formatDateStr, stripTime } from "@/utils/datetime";
 
@@ -10,7 +14,7 @@ import { ProjectConsultationDocumentsLink } from "../ProjectConsultationDocument
 
 export type ProjectInformationProps = {
 	project: {
-		consultationLink: string | null;
+		consultationPanels: IndevConsultation[] | [];
 		description: string | null;
 		idNumber: string | null;
 		process: string | null;
@@ -35,7 +39,8 @@ export const ProjectInformation: FC<ProjectInformationProps> = ({
 	project,
 }) => {
 	const {
-		consultationLink,
+		// consultationLinks,
+		consultationPanels,
 		description,
 		idNumber,
 		process,
@@ -75,9 +80,11 @@ export const ProjectInformation: FC<ProjectInformationProps> = ({
 	return (
 		<>
 			{projectType?.toLowerCase().startsWith("ipg") ? (
-				<Link to="/about/what-we-do/our-Programmes/NICE-guidance/NICE-interventional-procedures-guidance/IP-register-an-interest">
-					Register an interest in this interventional procedure
-				</Link>
+				<p>
+					<Link to="/about/what-we-do/our-Programmes/NICE-guidance/NICE-interventional-procedures-guidance/IP-register-an-interest">
+						Register an interest in this interventional procedure
+					</Link>
+				</p>
 			) : null}
 			{summary && (
 				<div
@@ -97,11 +104,8 @@ export const ProjectInformation: FC<ProjectInformationProps> = ({
 				</Link>
 			)}
 			<ProjectConsultationDocumentsLink
-				ariaLabel="Read the consultation documents"
-				consultationLink={consultationLink}
-			>
-				Read the consultation documents
-			</ProjectConsultationDocumentsLink>
+				consultationPanels={consultationPanels}
+			/>
 			{status && (
 				<DefinitionList ariaLabel="Status">
 					<dt>Status:</dt> <dd>{status}</dd>
