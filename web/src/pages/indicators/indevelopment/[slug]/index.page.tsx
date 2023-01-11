@@ -4,6 +4,7 @@ import { type GetServerSideProps } from "next/types";
 import { Breadcrumbs, Breadcrumb } from "@nice-digital/nds-breadcrumbs";
 
 import { DefinitionList } from "@/components/DefinitionList/DefinitionList";
+import { Link } from "@/components/Link/Link";
 import { ProjectInformation } from "@/components/ProjectInformation/ProjectInformation";
 import { ProjectPageHeading } from "@/components/ProjectPageHeading/ProjectPageHeading";
 import { Stakeholders } from "@/components/ProjectStakeholders/ProjectStakeholders";
@@ -191,20 +192,19 @@ export default function InDevelopmentPage({
 					</DefinitionList>
 				</>
 			) : null}
-			{/* TODO check formatting and location of related links TURN into link */}
+			{/* TODO check formatting and location of related links - turn into a link */}
 			{indevProjectRelatedLinks && indevProjectRelatedLinks?.length > 0 ? (
 				<>
 					<h3>Related Links</h3>
-					<DefinitionList ariaLabel="Related links">
+					<ul aria-label="Related links">
 						{indevProjectRelatedLinks?.map((link, index) => {
 							return (
-								<div key={`relatedlinkslist_${index}`}>
-									<dt key={`link_dt_${index}`}>{link.column1}</dt>
-									<dd key={`link_dd_${index}`}>{link.column2}</dd>
-								</div>
+								<li key={`link_dd_${index}`}>
+									<Link to={link.column2}>{link.column1}</Link>
+								</li>
 							);
 						})}
-					</DefinitionList>
+					</ul>
 				</>
 			) : null}
 			{indevEmailEnquiries && indevEmailEnquiries.length > 0 ? (

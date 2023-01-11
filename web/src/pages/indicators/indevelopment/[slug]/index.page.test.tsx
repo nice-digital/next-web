@@ -248,7 +248,6 @@ describe("/indevelopment/[slug].page", () => {
 		});
 
 		it("should render related links", async () => {
-			//TODO check formatting and location of related links
 			props = (
 				(await getServerSideProps({
 					...getServerSidePropsContext,
@@ -262,17 +261,16 @@ describe("/indevelopment/[slug].page", () => {
 			).props;
 			render(<InDevelopmentPage {...props} />);
 
-			expect(
-				screen.getByText(
-					"Weight Management: preventing, assessing and managing overweight and obesity (update)"
-				)
-			).toBeInTheDocument();
+			const relatedLink = screen.getByText(
+				"Weight Management: preventing, assessing and managing overweight and obesity (update)"
+			);
 
-			expect(
-				screen.getByText(
-					"https://www.nice.org.uk/guidance/indevelopment/gid-ng10182/documents"
-				)
-			).toBeInTheDocument();
+			expect(relatedLink).toBeInTheDocument();
+
+			expect(relatedLink).toHaveAttribute(
+				"href",
+				"https://www.nice.org.uk/guidance/indevelopment/gid-ng10182/documents"
+			);
 		});
 
 		it("should render 'register an interest in this interventional procedure' link when projectType starts 'IPG' ", async () => {
