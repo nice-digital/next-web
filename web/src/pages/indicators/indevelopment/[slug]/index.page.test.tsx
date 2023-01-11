@@ -261,6 +261,10 @@ describe("/indevelopment/[slug].page", () => {
 			).props;
 			render(<InDevelopmentPage {...props} />);
 
+			expect(
+				screen.getByRole("heading", { name: "Related Links", level: 3 })
+			).toBeInTheDocument();
+
 			const relatedLink = screen.getByText(
 				"Weight Management: preventing, assessing and managing overweight and obesity (update)"
 			);
