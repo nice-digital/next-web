@@ -5,7 +5,11 @@
   margin: 0;
   display: flex;
   flex-flow: row wrap;
-  max-width: utils.rem(650);
+  // max-width: utils.rem(650);
+
+  dt {
+    padding-right: utils.rem(spacing.$small);
+  }
 
   dt,
   dd {
@@ -13,11 +17,11 @@
   }
 
   dt {
-    flex: 0 0 25%;
+    flex: 0 0 30%;
     font-weight: bold;
   }
 
   dd {
-    flex: 0 0 75%;
+    flex: 0 0 70%;
   }
 }

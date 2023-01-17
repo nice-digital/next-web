@@ -33,6 +33,8 @@ import { arrayify, isTruthy } from "@/utils/array";
 import { validateRouteParams } from "@/utils/project";
 import { getProductPath } from "@/utils/url";
 
+import styles from "./index.module.scss";
+
 export type InDevelopmentPageProps = {
 	consultationPanels: IndevConsultation[] | [];
 	description: string | null;
@@ -124,7 +126,7 @@ export default function InDevelopmentPage({
 	};
 
 	return (
-		<>
+		<div className={styles.projectInformation}>
 			<NextSeo
 				title={
 					"Project information | " +
@@ -250,7 +252,7 @@ export default function InDevelopmentPage({
 					</a>
 				</p>
 			) : null}
-		</>
+		</div>
 	);
 }
 
