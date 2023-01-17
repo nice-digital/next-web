@@ -3,62 +3,65 @@
 exports[`/indevelopment/[slug].page IndevelopmentPage should match snapshot for main content 1`] = `
 <body>
   <div>
-    <nav
-      aria-label="Breadcrumbs"
-      role="navigation"
+    <div
+      class="projectInformation"
     >
-      <ol
-        class="breadcrumbs"
+      <nav
+        aria-label="Breadcrumbs"
+        role="navigation"
       >
-        <li
-          class="breadcrumbs__crumb"
+        <ol
+          class="breadcrumbs"
         >
-          <a
-            href="/"
+          <li
+            class="breadcrumbs__crumb"
           >
-            Home
-          </a>
-        </li>
-        <li
-          class="breadcrumbs__crumb"
-        >
-          <a
-            href="/standards-and-indicators"
+            <a
+              href="/"
+            >
+              Home
+            </a>
+          </li>
+          <li
+            class="breadcrumbs__crumb"
           >
-            Standards and Indicators
-          </a>
-        </li>
-        <li
-          class="breadcrumbs__crumb"
-        >
-          <a
-            href="/standards-and-indicators/indicators"
+            <a
+              href="/standards-and-indicators"
+            >
+              Standards and Indicators
+            </a>
+          </li>
+          <li
+            class="breadcrumbs__crumb"
           >
-            Indicators
-          </a>
-        </li>
-        <li
-          class="breadcrumbs__crumb"
-        >
-          <a
-            href="/standards-and-indicators/indicators/indevelopment"
+            <a
+              href="/standards-and-indicators/indicators"
+            >
+              Indicators
+            </a>
+          </li>
+          <li
+            class="breadcrumbs__crumb"
           >
-            In development
-          </a>
-        </li>
-        <li
-          class="breadcrumbs__crumb"
-        >
-          <span>
-            GID-NG10237
-          </span>
-        </li>
-      </ol>
-    </nav>
-    <script
-      type="application/ld+json"
-    >
-      {
+            <a
+              href="/standards-and-indicators/indicators/indevelopment"
+            >
+              In development
+            </a>
+          </li>
+          <li
+            class="breadcrumbs__crumb"
+          >
+            <span>
+              GID-NG10237
+            </span>
+          </li>
+        </ol>
+      </nav>
+      <script
+        type="application/ld+json"
+      >
+        {
   "@context": "http://schema.org",
   "@type": "BreadcrumbList",
   "itemListElement": [
@@ -103,235 +106,236 @@ exports[`/indevelopment/[slug].page IndevelopmentPage should match snapshot for 
     }
   ]
 }
-    </script>
-    <div
-      class="page-header"
-      id="content-start"
-    >
-      <h1
-        class="page-header__heading page-header__heading--alt"
+      </script>
+      <div
+        class="page-header"
+        id="content-start"
       >
-        Adrenal insufficiency: acute and long-term management
-      </h1>
-      <ul
-        class="page-header__metadata"
+        <h1
+          class="page-header__heading page-header__heading--alt"
+        >
+          Adrenal insufficiency: acute and long-term management
+        </h1>
+        <ul
+          class="page-header__metadata"
+        >
+          <li>
+            In development GID-NG10237
+          </li>
+          <li>
+            <span>
+              Expected publication date: 
+            </span>
+            <time
+              datetime="11 April 2024"
+            >
+              11 April 2024
+            </time>
+          </li>
+          <li>
+            <a
+              href="/about/what-we-do/our-programmes/nice-guidance/nice-interventional-procedures-guidance/ip-register-an-interest?t=0&p=GID-NG10237&returnUrl=/guidance/indevelopment/GID-NG10237"
+            >
+              Register an interest
+            </a>
+          </li>
+          <li>
+            <a
+              href="https://alpha.nice.org.uk/get-involved/stakeholder-registration/register?t=&p=GID-NG10237&returnUrl=/guidance/indevelopment/GID-NG10237"
+            >
+              Register as a stakeholder
+            </a>
+          </li>
+        </ul>
+      </div>
+      <dl
+        aria-label="Status"
+        class="definitionList"
       >
-        <li>
-          In development GID-NG10237
-        </li>
-        <li>
-          <span>
-            Expected publication date: 
-          </span>
-          <time
-            datetime="11 April 2024"
-          >
+        <dt>
+          Status:
+        </dt>
+         
+        <dd>
+          In progress
+        </dd>
+      </dl>
+      <dl
+        aria-label="Decision"
+        class="definitionList"
+      >
+        <dt>
+          Decision:
+        </dt>
+         
+        <dd>
+          Selected
+        </dd>
+      </dl>
+      <dl
+        aria-label="Developed as"
+        class="definitionList"
+      >
+        <dt>
+          Developed as:
+        </dt>
+         
+        <dd>
+          CG
+        </dd>
+      </dl>
+      <h3>
+        Provisional Schedule
+      </h3>
+      <dl
+        aria-label="Provisional schedule"
+        class="definitionList"
+      >
+        <div>
+          <dt>
+            Expected publication
+          </dt>
+          <dd>
             11 April 2024
-          </time>
-        </li>
+          </dd>
+        </div>
+      </dl>
+      <h3>
+        Project Team
+      </h3>
+      <dl
+        aria-label="Project team"
+        class="definitionList"
+      >
+        <div>
+          <dt>
+            Developer
+          </dt>
+          <dd>
+            National Guideline Centre
+          </dd>
+        </div>
+      </dl>
+      <h3>
+        Email enquiries
+      </h3>
+      <span>
+        If you have any queries please email
+      </span>
+      <ul
+        class="list list--unstyled"
+      >
         <li>
           <a
-            href="/about/what-we-do/our-programmes/nice-guidance/nice-interventional-procedures-guidance/ip-register-an-interest?t=0&p=GID-NG10237&returnUrl=/guidance/indevelopment/GID-NG10237"
+            href="mailto:hypoadrenalism@nice.org.uk"
           >
-            Register an interest
-          </a>
-        </li>
-        <li>
-          <a
-            href="https://alpha.nice.org.uk/get-involved/stakeholder-registration/register?t=&p=GID-NG10237&returnUrl=/guidance/indevelopment/GID-NG10237"
-          >
-            Register as a stakeholder
+            hypoadrenalism@nice.org.uk
           </a>
         </li>
       </ul>
-    </div>
-    <dl
-      aria-label="Status"
-      class="definitionList"
-    >
-      <dt>
-        Status:
-      </dt>
-       
-      <dd>
-        In progress
-      </dd>
-    </dl>
-    <dl
-      aria-label="Decision"
-      class="definitionList"
-    >
-      <dt>
-        Decision:
-      </dt>
-       
-      <dd>
-        Selected
-      </dd>
-    </dl>
-    <dl
-      aria-label="Developed as"
-      class="definitionList"
-    >
-      <dt>
-        Developed as:
-      </dt>
-       
-      <dd>
-        CG
-      </dd>
-    </dl>
-    <h3>
-      Provisional Schedule
-    </h3>
-    <dl
-      aria-label="Provisional schedule"
-      class="definitionList"
-    >
-      <div>
-        <dt>
-          Expected publication
-        </dt>
-        <dd>
-          11 April 2024
-        </dd>
-      </div>
-    </dl>
-    <h3>
-      Project Team
-    </h3>
-    <dl
-      aria-label="Project team"
-      class="definitionList"
-    >
-      <div>
-        <dt>
-          Developer
-        </dt>
-        <dd>
-          National Guideline Centre
-        </dd>
-      </div>
-    </dl>
-    <h3>
-      Email enquiries
-    </h3>
-    <span>
-      If you have any queries please email
-    </span>
-    <ul
-      class="list list--unstyled"
-    >
-      <li>
-        <a
-          href="mailto:hypoadrenalism@nice.org.uk"
-        >
-          hypoadrenalism@nice.org.uk
-        </a>
-      </li>
-    </ul>
-    <h3>
-      Timeline
-    </h3>
-    <p>
-      Key events during the development of the guidance:
-    </p>
-    <table
-      aria-label="Timeline"
-      class="table table-condensed"
-    >
-      <tbody>
-        <tr>
-          <th>
-            Date
-          </th>
-          <th>
-            Update
-          </th>
-        </tr>
-        <tr>
-          <td>
-            13 September 2022
-          </td>
-          <td>
-            Stakeholder list updated
-          </td>
-        </tr>
-        <tr>
-          <td>
-            07 July 2022
-          </td>
-          <td>
-            Committee list updated
-          </td>
-        </tr>
-        <tr>
-          <td>
-            25 May 2022
-          </td>
-          <td>
-            Committee meeting
-          </td>
-        </tr>
-        <tr>
-          <td>
-            14 April 2022
-          </td>
-          <td>
-            Scope published
-          </td>
-        </tr>
-        <tr>
-          <td>
-            01 February 2022 - 01 March 2022
-          </td>
-          <td>
-            Draft scope consultation
-          </td>
-        </tr>
-        <tr>
-          <td>
-            01 February 2022 - 01 March 2022
-          </td>
-          <td>
-            Committee member recruitment
-          </td>
-        </tr>
-        <tr>
-          <td>
-            01 February 2022
-          </td>
-          <td>
-            Guideline title changed from Hypoadrenalism: acute and long-term management to Adrenal insufficiency: acute and long-term management.
-          </td>
-        </tr>
-        <tr>
-          <td>
-            05 January 2022
-          </td>
-          <td>
-            Scoping workshop
-          </td>
-        </tr>
-        <tr>
-          <td>
-            18 October 2021 - 25 October 2021
-          </td>
-          <td>
-            Topic expert committee member recruitment
-          </td>
-        </tr>
-      </tbody>
-    </table>
-    <p>
-      For further information on the guideline development process, please read
-       
-      <a
-        href="https://www.nice.org.uk/about/what-we-do/our-programmes/nice-guidance/nice-guidelines/how-we-develop-nice-guidelines"
+      <h3>
+        Timeline
+      </h3>
+      <p>
+        Key events during the development of the guidance:
+      </p>
+      <table
+        aria-label="Timeline"
+        class="table table-condensed"
       >
-        how we develop NICE guidelines
-      </a>
-    </p>
+        <tbody>
+          <tr>
+            <th>
+              Date
+            </th>
+            <th>
+              Update
+            </th>
+          </tr>
+          <tr>
+            <td>
+              13 September 2022
+            </td>
+            <td>
+              Stakeholder list updated
+            </td>
+          </tr>
+          <tr>
+            <td>
+              07 July 2022
+            </td>
+            <td>
+              Committee list updated
+            </td>
+          </tr>
+          <tr>
+            <td>
+              25 May 2022
+            </td>
+            <td>
+              Committee meeting
+            </td>
+          </tr>
+          <tr>
+            <td>
+              14 April 2022
+            </td>
+            <td>
+              Scope published
+            </td>
+          </tr>
+          <tr>
+            <td>
+              01 February 2022 - 01 March 2022
+            </td>
+            <td>
+              Draft scope consultation
+            </td>
+          </tr>
+          <tr>
+            <td>
+              01 February 2022 - 01 March 2022
+            </td>
+            <td>
+              Committee member recruitment
+            </td>
+          </tr>
+          <tr>
+            <td>
+              01 February 2022
+            </td>
+            <td>
+              Guideline title changed from Hypoadrenalism: acute and long-term management to Adrenal insufficiency: acute and long-term management.
+            </td>
+          </tr>
+          <tr>
+            <td>
+              05 January 2022
+            </td>
+            <td>
+              Scoping workshop
+            </td>
+          </tr>
+          <tr>
+            <td>
+              18 October 2021 - 25 October 2021
+            </td>
+            <td>
+              Topic expert committee member recruitment
+            </td>
+          </tr>
+        </tbody>
+      </table>
+      <p>
+        For further information on the guideline development process, please read
+         
+        <a
+          href="https://www.nice.org.uk/about/what-we-do/our-programmes/nice-guidance/nice-guidelines/how-we-develop-nice-guidelines"
+        >
+          how we develop NICE guidelines
+        </a>
+      </p>
+    </div>
   </div>
 </body>
 `;
