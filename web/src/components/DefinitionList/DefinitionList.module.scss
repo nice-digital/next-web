@@ -2,10 +2,9 @@
 @use '@nice-digital/nds-core/scss/utils';
 
 .definitionList {
-  margin: 0;
   display: flex;
   flex-flow: row wrap;
-  // max-width: utils.rem(650);
+  margin: 0;
 
   dt {
     padding-right: utils.rem(spacing.$small);
