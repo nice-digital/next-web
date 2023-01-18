@@ -106,70 +106,72 @@ export const ProjectInformation: FC<ProjectInformationProps> = ({
 			<ProjectConsultationDocumentsLink
 				consultationPanels={consultationPanels}
 			/>
-			{status && (
-				<DefinitionList ariaLabel="Status">
-					<dt>Status:</dt> <dd>{status}</dd>
-				</DefinitionList>
-			)}
-			{technologyType && (
-				<DefinitionList ariaLabel="Technology type">
-					<dt>Technology type:</dt> <dd>{technologyType}</dd>
-				</DefinitionList>
-			)}
-			{topicSelectionDecision && (
-				<DefinitionList ariaLabel="Decision">
-					<dt>Decision:</dt> <dd>{topicSelectionDecision}</dd>
-				</DefinitionList>
-			)}
-			{topicSelectionReasonText && (
-				<DefinitionList ariaLabel="Reason for decision">
-					<dt>Reason for decision:</dt> <dd>{topicSelectionReasonText}</dd>
-				</DefinitionList>
-			)}
-			{topicSelectionFurtherInfo && (
-				<DefinitionList ariaLabel="Further information">
-					<dt>Further information:</dt> <dd>{topicSelectionFurtherInfo}</dd>
-				</DefinitionList>
-			)}
-			{process && status !== ProjectStatus.TopicSelection ? (
-				projectType == ProductTypeAcronym.NG ? (
-					<DefinitionList ariaLabel="Developed as">
-						<dt>Developed as:</dt> <dd>{process}</dd>
-					</DefinitionList>
+			<DefinitionList ariaLabel="Project information">
+				{status && (
+					<>
+						<dt>Status:</dt> <dd>{status}</dd>
+					</>
+				)}
+				{technologyType && (
+					<>
+						<dt>Technology type:</dt> <dd>{technologyType}</dd>
+					</>
+				)}
+				{topicSelectionDecision && (
+					<>
+						<dt>Decision:</dt> <dd>{topicSelectionDecision}</dd>
+					</>
+				)}
+				{topicSelectionReasonText && (
+					<>
+						<dt>Reason for decision:</dt> <dd>{topicSelectionReasonText}</dd>
+					</>
+				)}
+				{topicSelectionFurtherInfo && (
+					<>
+						<dt>Further information:</dt> <dd>{topicSelectionFurtherInfo}</dd>
+					</>
+				)}
+				{process && status !== ProjectStatus.TopicSelection ? (
+					projectType == ProductTypeAcronym.NG ? (
+						<>
+							<dt>Developed as:</dt> <dd>{process}</dd>
+						</>
+					) : (
+						<>
+							<dt>Process:</dt> <dd>{process}</dd>
+						</>
+					)
+				) : null}
+				{description && (
+					<>
+						<dt>Description:</dt>
+						<dd dangerouslySetInnerHTML={{ __html: description }} />
+					</>
+				)}
+				{idNumber && (
+					<>
+						<dt>ID number:</dt> <dd>{idNumber}</dd>
+					</>
+				)}
+				{/* TODO check formatting of referral date */}
+				{process == "MT" && referralDate ? (
+					<>
+						<dt>Notification date:</dt> <dd>{referralDate}</dd>
+					</>
 				) : (
-					<DefinitionList ariaLabel="Process">
-						<dt>Process:</dt> <dd>{process}</dd>
-					</DefinitionList>
-				)
-			) : null}
-			{description && (
-				<DefinitionList ariaLabel="Description">
-					<dt>Description:</dt>
-					<dd dangerouslySetInnerHTML={{ __html: description }} />
-				</DefinitionList>
-			)}
-			{idNumber && (
-				<DefinitionList ariaLabel="ID number">
-					<dt>ID number:</dt> <dd>{idNumber}</dd>
-				</DefinitionList>
-			)}
-			{/* TODO check formatting of referral date */}
-			{process == "MT" && referralDate ? (
-				<DefinitionList ariaLabel="Notification date">
-					<dt>Notification date:</dt> <dd>{referralDate}</dd>
-				</DefinitionList>
-			) : (
-				referralDate && (
-					<DefinitionList ariaLabel="Referral date">
-						<dt>Referral date:</dt>
-						<dd>
-							<time dateTime={stripTime(referralDate)}>
-								&nbsp;{formatDateStr(referralDate)}
-							</time>
-						</dd>
-					</DefinitionList>
-				)
-			)}
+					referralDate && (
+						<>
+							<dt>Referral date:</dt>
+							<dd>
+								<time dateTime={stripTime(referralDate)}>
+									&nbsp;{formatDateStr(referralDate)}
+								</time>
+							</dd>
+						</>
+					)
+				)}
+			</DefinitionList>
 		</>
 	);
 };

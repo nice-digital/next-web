@@ -82,7 +82,7 @@ describe("/indevelopment/[slug].page", () => {
 			).props;
 			render(<InDevelopmentPage {...props} />);
 
-			const descriptionList = screen.getByLabelText("Description");
+			const descriptionList = screen.getByLabelText("Project information");
 			const { getByText } = within(descriptionList);
 			expect(getByText("Description:").tagName).toBe("DT");
 			expect(
@@ -106,7 +106,7 @@ describe("/indevelopment/[slug].page", () => {
 			).props;
 			render(<InDevelopmentPage {...props} />);
 
-			const projectIdList = screen.getByLabelText("ID number");
+			const projectIdList = screen.getByLabelText("Project information");
 			const { getByText } = within(projectIdList);
 			expect(getByText("ID number:").tagName).toBe("DT");
 			expect(getByText("927").tagName).toBe("DD");
@@ -152,7 +152,7 @@ describe("/indevelopment/[slug].page", () => {
 
 				render(<InDevelopmentPage {...props} />);
 
-				const list = screen.getByLabelText("Reason for decision");
+				const list = screen.getByLabelText("Project information");
 				const { getByText } = within(list);
 				expect(getByText("Reason for decision:").tagName).toBe("DT");
 				expect(getByText(`${topicSelectionReasonText}`).tagName).toBe("DD");
@@ -173,7 +173,7 @@ describe("/indevelopment/[slug].page", () => {
 			).props;
 			render(<InDevelopmentPage {...props} />);
 
-			const list = screen.getByLabelText("Developed as");
+			const list = screen.getByLabelText("Project information");
 			const { getByText } = within(list);
 			expect(getByText("Developed as:").tagName).toBe("DT");
 			expect(getByText("APG").tagName).toBe("DD");
@@ -193,7 +193,7 @@ describe("/indevelopment/[slug].page", () => {
 			).props;
 			render(<InDevelopmentPage {...props} />);
 
-			const list = screen.getByLabelText("Process");
+			const list = screen.getByLabelText("Project information");
 			const { getByText } = within(list);
 			expect(getByText("Process:").tagName).toBe("DT");
 			expect(getByText("HST").tagName).toBe("DD");
@@ -213,12 +213,12 @@ describe("/indevelopment/[slug].page", () => {
 			).props;
 			render(<InDevelopmentPage {...props} />);
 
-			const list = screen.getByLabelText("Process");
+			const list = screen.getByLabelText("Project information");
 			const { getByText } = within(list);
 			expect(getByText("Process:").tagName).toBe("DT");
 			expect(getByText("MT").tagName).toBe("DD");
 
-			const list2 = screen.getByLabelText("Notification date");
+			const list2 = screen.getByLabelText("Project information");
 			const { getByText: getByText2 } = within(list2);
 			expect(getByText2("Notification date:").tagName).toBe("DT");
 			expect(getByText2("February 2010").tagName).toBe("DD");
@@ -237,7 +237,7 @@ describe("/indevelopment/[slug].page", () => {
 				}
 			).props;
 			render(<InDevelopmentPage {...props} />);
-			const list = screen.getByLabelText("Referral date");
+			const list = screen.getByLabelText("Project information");
 			const { getByText } = within(list);
 			expect(getByText("Referral date:").tagName).toBe("DT");
 
@@ -567,7 +567,7 @@ describe("/indevelopment/[slug].page", () => {
 
 		it("should render project status formatted display name", () => {
 			render(<InDevelopmentPage {...props} />);
-			const list = screen.getByLabelText("Status");
+			const list = screen.getByLabelText("Project information");
 			const { getByText } = within(list);
 			expect(getByText("Status:").tagName).toBe("DT");
 			expect(getByText("In progress").tagName).toBe("DD");
@@ -651,7 +651,7 @@ describe("/indevelopment/[slug].page", () => {
 					})
 				).toBeInTheDocument();
 
-				const list = screen.getByLabelText("Status");
+				const list = screen.getByLabelText("Project information");
 				const { getByText } = within(list);
 				expect(getByText("Status:").tagName).toBe("DT");
 				expect(getByText("Discontinued").tagName).toBe("DD");

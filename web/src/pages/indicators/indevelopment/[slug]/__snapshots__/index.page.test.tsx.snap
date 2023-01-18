@@ -149,7 +149,7 @@ exports[`/indevelopment/[slug].page IndevelopmentPage should match snapshot for 
         </ul>
       </div>
       <dl
-        aria-label="Status"
+        aria-label="Project information"
         class="definitionList"
       >
         <dt>
@@ -159,11 +159,6 @@ exports[`/indevelopment/[slug].page IndevelopmentPage should match snapshot for 
         <dd>
           In progress
         </dd>
-      </dl>
-      <dl
-        aria-label="Decision"
-        class="definitionList"
-      >
         <dt>
           Decision:
         </dt>
@@ -171,11 +166,6 @@ exports[`/indevelopment/[slug].page IndevelopmentPage should match snapshot for 
         <dd>
           Selected
         </dd>
-      </dl>
-      <dl
-        aria-label="Developed as"
-        class="definitionList"
-      >
         <dt>
           Developed as:
         </dt>
