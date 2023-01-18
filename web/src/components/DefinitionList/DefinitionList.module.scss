@@ -6,6 +6,11 @@
   flex-flow: row wrap;
   margin: 0;
 
+  div {
+    display: flex;
+    flex-basis: 100%;
+  }
+
   dt {
     padding-right: utils.rem(spacing.$small);
   }
