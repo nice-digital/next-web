@@ -8,26 +8,23 @@ import { formatDateStr } from "@/utils/datetime";
 import { Link } from "../Link/Link";
 
 export type ProjectPageHeadingProps = {
-	project: {
-		projectType: string | null;
-		reference: string;
-		title: string;
-		status: string;
-		indevScheduleItems?: IndevSchedule[];
-		indevStakeholderRegistration?: Record<string, unknown>[];
-	};
+	projectType: string | null;
+	reference: string;
+	title: string;
+	status: string;
+	indevScheduleItems?: IndevSchedule[];
+	indevStakeholderRegistration?: Record<string, unknown>[];
+
 	children?: never;
 };
 
 export const ProjectPageHeading: FC<ProjectPageHeadingProps> = ({
-	project: {
-		projectType,
-		reference,
-		title,
-		status,
-		indevScheduleItems,
-		indevStakeholderRegistration,
-	},
+	projectType,
+	reference,
+	title,
+	status,
+	indevScheduleItems,
+	indevStakeholderRegistration,
 }) => {
 	const expectedPublicationInfo = indevScheduleItems?.find(
 			(item) => item.column1 === "Expected publication"

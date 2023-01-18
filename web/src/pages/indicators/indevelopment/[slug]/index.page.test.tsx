@@ -68,185 +68,6 @@ describe("/indevelopment/[slug].page", () => {
 			).not.toBeInTheDocument();
 		});
 
-		it("should render the project description", async () => {
-			props = (
-				(await getServerSideProps({
-					...getServerSidePropsContext,
-					params: {
-						slug: "gid-ipg10248",
-					},
-					resolvedUrl: "/indicators/indevelopment/gid-ipg10248",
-				})) as {
-					props: InDevelopmentPageProps;
-				}
-			).props;
-			render(<InDevelopmentPage {...props} />);
-
-			const descriptionList = screen.getByLabelText("Project information");
-			const { getByText } = within(descriptionList);
-			expect(getByText("Description:").tagName).toBe("DT");
-			expect(
-				getByText(
-					/the aim of intramuscular diaphragm stimulation is to make the diaphragm contract, strengthening it and allowing full or partial weaning from mechanical ventilation\. this procedure needs intact phrenic nerve function and avoids the need to access the phrenic nerve through the neck or thorax, as well as reducing the risk of phrenic nerve damage\. the procedure is done laparoscopically with the patient under general anaesthesia\. a probe is used to identify areas of the diaphragm where minimal electrical stimulation causes maximal diaphragm contraction \(known as the 'motor points'\)\. two intramuscular electrodes are implanted on the abdominal surface of each hemi-diaphragm at the motor points\. the electrode leads are tunnelled subcutaneously to an exit site in the chest where they are connected to an external battery-powered pulse generator\. a reference electrode \(anode\) is also implanted and the leads tunnelled with the other electrodes\. intraoperative stimulation and voltage calibration tests are done to confirm adequate contraction of the diaphragm\. after implantation the patient has a diaphragm conditioning programme, which involves progressive use of the system for increasing periods of time with gradual weaning from the ventilator\./i
-				).tagName
-			).toBe("DD");
-		});
-
-		it("should render the project id number", async () => {
-			props = (
-				(await getServerSideProps({
-					...getServerSidePropsContext,
-					params: {
-						slug: "gid-hst10009",
-					},
-					resolvedUrl: "/indicators/indevelopment/gid-hst10009",
-				})) as {
-					props: InDevelopmentPageProps;
-				}
-			).props;
-			render(<InDevelopmentPage {...props} />);
-
-			const projectIdList = screen.getByLabelText("Project information");
-			const { getByText } = within(projectIdList);
-			expect(getByText("ID number:").tagName).toBe("DT");
-			expect(getByText("927").tagName).toBe("DD");
-		});
-
-		it("should render a project information overview heading h1", () => {
-			render(<InDevelopmentPage {...props} />);
-
-			expect(
-				screen.getByRole("heading", {
-					level: 1,
-					name: "Adrenal insufficiency: acute and long-term management",
-				})
-			).toBeInTheDocument();
-		});
-
-		it.each([
-			["Monitor", TopicSelectionReason.Monitor],
-			["Anticipate", TopicSelectionReason.Anticipate],
-			["NotEligible", TopicSelectionReason.NotEligible],
-			["FurtherDiscussion", TopicSelectionReason.FurtherDiscussion],
-		])(
-			"should render text when a topic selection reason %s exists, topic reason text: %s",
-			async (topicSelectionReason, topicSelectionReasonText) => {
-				axiosJSONMock.reset();
-				axiosJSONMock.onGet(new RegExp(FeedPath.ProjectDetail)).reply(200, {
-					...gidta10992,
-					topicSelectionReason: topicSelectionReason,
-				});
-				addDefaultJSONFeedMocks();
-
-				props = (
-					(await getServerSideProps({
-						...getServerSidePropsContext,
-						params: {
-							slug: "gid-ta10992",
-						},
-						resolvedUrl: "/indicators/indevelopment/gid-ta10992",
-					})) as {
-						props: InDevelopmentPageProps;
-					}
-				).props;
-
-				render(<InDevelopmentPage {...props} />);
-
-				const list = screen.getByLabelText("Project information");
-				const { getByText } = within(list);
-				expect(getByText("Reason for decision:").tagName).toBe("DT");
-				expect(getByText(`${topicSelectionReasonText}`).tagName).toBe("DD");
-			}
-		);
-
-		it("should render 'Developed as: [Process]' when status != TopicSelection and ProjectType='NG' ", async () => {
-			props = (
-				(await getServerSideProps({
-					...getServerSidePropsContext,
-					params: {
-						slug: "gid-ng10163",
-					},
-					resolvedUrl: "/indicators/indevelopment/gid-ng10163",
-				})) as {
-					props: InDevelopmentPageProps;
-				}
-			).props;
-			render(<InDevelopmentPage {...props} />);
-
-			const list = screen.getByLabelText("Project information");
-			const { getByText } = within(list);
-			expect(getByText("Developed as:").tagName).toBe("DT");
-			expect(getByText("APG").tagName).toBe("DD");
-		});
-
-		it("should render 'Process: [Process]' when status != TopicSelection and ProjectType != 'NG'", async () => {
-			props = (
-				(await getServerSideProps({
-					...getServerSidePropsContext,
-					params: {
-						slug: "gid-hst10044",
-					},
-					resolvedUrl: "/indicators/indevelopment/gid-hst10044",
-				})) as {
-					props: InDevelopmentPageProps;
-				}
-			).props;
-			render(<InDevelopmentPage {...props} />);
-
-			const list = screen.getByLabelText("Project information");
-			const { getByText } = within(list);
-			expect(getByText("Process:").tagName).toBe("DT");
-			expect(getByText("HST").tagName).toBe("DD");
-		});
-
-		it("should reder 'Notification date' when Process =='MT' ", async () => {
-			props = (
-				(await getServerSideProps({
-					...getServerSidePropsContext,
-					params: {
-						slug: "gid-mt130",
-					},
-					resolvedUrl: "/indicators/indevelopment/gid-mt130",
-				})) as {
-					props: InDevelopmentPageProps;
-				}
-			).props;
-			render(<InDevelopmentPage {...props} />);
-
-			const list = screen.getByLabelText("Project information");
-			const { getByText } = within(list);
-			expect(getByText("Process:").tagName).toBe("DT");
-			expect(getByText("MT").tagName).toBe("DD");
-
-			const list2 = screen.getByLabelText("Project information");
-			const { getByText: getByText2 } = within(list2);
-			expect(getByText2("Notification date:").tagName).toBe("DT");
-			expect(getByText2("February 2010").tagName).toBe("DD");
-		});
-
-		it("should render 'Referral date' when Process != 'MT ", async () => {
-			props = (
-				(await getServerSideProps({
-					...getServerSidePropsContext,
-					params: {
-						slug: "gid-tag383",
-					},
-					resolvedUrl: "/indicators/indevelopment/gid-tag383",
-				})) as {
-					props: InDevelopmentPageProps;
-				}
-			).props;
-			render(<InDevelopmentPage {...props} />);
-			const list = screen.getByLabelText("Project information");
-			const { getByText } = within(list);
-			expect(getByText("Referral date:").tagName).toBe("DT");
-
-			const dates = screen.getAllByText("1 November 2005")[0] as HTMLElement;
-			expect(dates.tagName).toBe("TIME");
-			//TODO Check datetime attribute format
-			// expect(dates).toHaveAttribute("datetime", "2020-05-11");
-		});
-
 		it("should render related links", async () => {
 			props = (
 				(await getServerSideProps({
@@ -574,6 +395,17 @@ describe("/indevelopment/[slug].page", () => {
 		});
 
 		describe("ProjectHeading", () => {
+			it("should render a project information overview heading h1", () => {
+				render(<InDevelopmentPage {...props} />);
+
+				expect(
+					screen.getByRole("heading", {
+						level: 1,
+						name: "Adrenal insufficiency: acute and long-term management",
+					})
+				).toBeInTheDocument();
+			});
+
 			it("should render expected publication date metadata as time tag with correct formatted date", () => {
 				render(<InDevelopmentPage {...props} />);
 

@@ -67,63 +67,45 @@ export type InDevelopmentPageProps = {
 	title: string;
 	topicSelectionDecision: string;
 	topicSelectionReason: string | null;
-	topicSelectionFurtherInfo?: string | null;
+	topicSelectionFurtherInfo: string | null;
 };
 
-export default function InDevelopmentPage({
-	consultationPanels,
-	description,
-	evidenceAssessmentGroup,
-	fullUpdates,
-	idNumber,
-	indevCommentators,
-	indevConsultees,
-	indevEmailEnquiries,
-	indevLegacyStakeholders,
-	indevProcessHomepage,
-	indevProjectTeamMembers,
-	indevProjectRelatedLinks,
-	indevScheduleItems,
-	indevStakeholderRegistration,
-	indevTimelineItems,
-	indevTopicItems,
-	partialUpdates,
-	process,
-	projectType,
-	reference,
-	referralDate,
-	suspendDiscontinuedReason,
-	suspendDiscontinuedUrl,
-	suspendDiscontinuedUrlText,
-	status,
-	summary,
-	technologyType,
-	title,
-	topicSelectionDecision,
-	topicSelectionReason,
-	topicSelectionFurtherInfo,
-}: InDevelopmentPageProps): JSX.Element {
-	const project = {
+export default function InDevelopmentPage(
+	props: InDevelopmentPageProps
+): JSX.Element {
+	const {
 		consultationPanels,
 		description,
+		evidenceAssessmentGroup,
+		fullUpdates,
 		idNumber,
+		indevCommentators,
+		indevConsultees,
+		indevEmailEnquiries,
+		indevLegacyStakeholders,
+		indevProcessHomepage,
+		indevProjectTeamMembers,
+		indevProjectRelatedLinks,
 		indevScheduleItems,
 		indevStakeholderRegistration,
+		indevTimelineItems,
+		indevTopicItems,
+		partialUpdates,
 		process,
 		projectType,
 		reference,
 		referralDate,
-		status,
-		title,
-		summary,
 		suspendDiscontinuedReason,
 		suspendDiscontinuedUrl,
 		suspendDiscontinuedUrlText,
+		status,
+		summary,
 		technologyType,
+		title,
 		topicSelectionDecision,
 		topicSelectionReason,
 		topicSelectionFurtherInfo,
-	};
+	} = props;
 
 	return (
 		<div className={styles.projectInformation}>
@@ -147,9 +129,9 @@ export default function InDevelopmentPage({
 				</Breadcrumb>
 				<Breadcrumb>{reference}</Breadcrumb>
 			</Breadcrumbs>
-			<ProjectPageHeading project={project} />
+			<ProjectPageHeading {...props} />
 
-			<ProjectInformation project={project} />
+			<ProjectInformation {...props} />
 
 			{indevTopicItems && indevTopicItems.length > 0 ? (
 				<>

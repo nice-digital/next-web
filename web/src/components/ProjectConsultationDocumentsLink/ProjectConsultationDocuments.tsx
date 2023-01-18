@@ -8,7 +8,7 @@ import { IndevConsultation } from "@/feeds/inDev/types";
 import styles from "./ProjectConsultationDocuments.module.scss";
 
 export type ProjectConsultationDocumentsLinkProps = {
-	consultationPanels: IndevConsultation[] | [];
+	consultationPanels: IndevConsultation[];
 };
 
 export const ProjectConsultationDocumentsLink: FC<

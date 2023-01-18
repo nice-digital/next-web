@@ -13,50 +13,44 @@ import { Link } from "../Link/Link";
 import { ProjectConsultationDocumentsLink } from "../ProjectConsultationDocumentsLink/ProjectConsultationDocuments";
 
 export type ProjectInformationProps = {
-	project: {
-		consultationPanels: IndevConsultation[] | [];
-		description: string | null;
-		idNumber: string | null;
-		process: string | null;
-		projectType: string | null;
-		reference: string;
-		referralDate: string | null;
-		status: string;
-		summary: string | null;
-		suspendDiscontinuedReason: string | null;
-		suspendDiscontinuedUrl: string | null;
-		suspendDiscontinuedUrlText: string | null;
-		technologyType: string | null;
-		title: string;
-		topicSelectionDecision: string | null;
-		topicSelectionReason: string | null;
-		topicSelectionFurtherInfo: string | null | undefined;
-	};
+	consultationPanels: IndevConsultation[];
+	description: string | null;
+	idNumber: string | null;
+	process: string | null;
+	projectType: string | null;
+	reference: string;
+	referralDate: string | null;
+	status: string;
+	summary: string | null;
+	suspendDiscontinuedReason: string | null;
+	suspendDiscontinuedUrl: string | null;
+	suspendDiscontinuedUrlText: string | null;
+	technologyType: string | null;
+	title: string;
+	topicSelectionDecision: string | null;
+	topicSelectionReason: string | null;
+	topicSelectionFurtherInfo: string | null;
+
 	children?: never;
 };
 
 export const ProjectInformation: FC<ProjectInformationProps> = ({
-	project,
+	consultationPanels,
+	description,
+	idNumber,
+	process,
+	projectType,
+	referralDate,
+	status,
+	summary,
+	suspendDiscontinuedReason,
+	suspendDiscontinuedUrl,
+	suspendDiscontinuedUrlText,
+	technologyType,
+	topicSelectionDecision,
+	topicSelectionReason,
+	topicSelectionFurtherInfo,
 }) => {
-	const {
-		// consultationLinks,
-		consultationPanels,
-		description,
-		idNumber,
-		process,
-		projectType,
-		referralDate,
-		status,
-		summary,
-		suspendDiscontinuedReason,
-		suspendDiscontinuedUrl,
-		suspendDiscontinuedUrlText,
-		technologyType,
-		topicSelectionDecision,
-		topicSelectionReason,
-		topicSelectionFurtherInfo,
-	} = project;
-
 	let topicSelectionReasonText;
 
 	switch (topicSelectionReason) {
