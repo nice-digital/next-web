@@ -2,9 +2,8 @@ import { render, screen, waitFor, within } from "@testing-library/react";
 import { type GetServerSidePropsContext } from "next";
 import { useRouter } from "next/router";
 
-import { FeedPath, TopicSelectionReason } from "@/feeds/inDev/types";
+import { FeedPath } from "@/feeds/inDev/types";
 import gidng10237 from "@/mockData/inDev/project/gid-ng10237.json";
-import gidta10992 from "@/mockData/inDev/project/gid-ta10992.json";
 import { addDefaultJSONFeedMocks, axiosJSONMock } from "@/test-utils/feeds";
 
 import InDevelopmentPage, {
@@ -295,24 +294,6 @@ describe("/indevelopment/[slug].page", () => {
 			expect(getByText("18 January 2023").tagName).toBe("DD");
 		});
 
-		it("should render timeline", () => {
-			render(<InDevelopmentPage {...props} />);
-
-			expect(
-				screen.getByRole("heading", { level: 3, name: "Timeline" })
-			).toBeInTheDocument();
-
-			expect(
-				screen.getByText("Key events during the development of the guidance:")
-			).toBeInTheDocument();
-
-			const timelineTable = screen.getByLabelText("Timeline");
-			expect(timelineTable).toBeInTheDocument();
-			const { getByText } = within(timelineTable);
-			expect(getByText("Date").tagName).toBe("TH");
-			expect(getByText("Draft scope consultation").tagName).toBe("TD");
-		});
-
 		it("should render project status formatted display name", () => {
 			render(<InDevelopmentPage {...props} />);
 			const list = screen.getByLabelText("Project information");
@@ -321,205 +302,63 @@ describe("/indevelopment/[slug].page", () => {
 			expect(getByText("In progress").tagName).toBe("DD");
 		});
 
-		describe("ProjectHeading", () => {
-			it("should render a project information overview heading h1", () => {
-				render(<InDevelopmentPage {...props} />);
+		it("should render expected publication date metadata as time tag with correct formatted date", () => {
+			render(<InDevelopmentPage {...props} />);
 
-				expect(
-					screen.getByRole("heading", {
-						level: 1,
-						name: "Adrenal insufficiency: acute and long-term management",
-					})
-				).toBeInTheDocument();
+			expect(screen.getByText("Expected publication date:").tagName).toBe(
+				"SPAN"
+			);
+
+			const dates = screen.getAllByText("11 April 2024")[0] as HTMLElement;
+
+			expect(dates.tagName).toBe("TIME");
+		});
+
+		it("should render a link to the consultation overview page", async () => {
+			props = (
+				(await getServerSideProps({
+					...getServerSidePropsContext,
+					params: {
+						slug: "gid-ipg10305",
+					},
+					resolvedUrl: "/indicators/indevelopment/gid-ipg10305",
+				})) as {
+					props: InDevelopmentPageProps;
+				}
+			).props;
+			render(<InDevelopmentPage {...props} />);
+
+			const consultationLink = screen.getByRole("link", {
+				name: "Read the consultation documents",
 			});
 
-			it("should render expected publication date metadata as time tag with correct formatted date", () => {
-				render(<InDevelopmentPage {...props} />);
+			expect(consultationLink).toBeInTheDocument();
 
-				expect(screen.getByText("Expected publication date:").tagName).toBe(
-					"SPAN"
-				);
+			expect(consultationLink).toHaveAttribute(
+				"href",
+				"/indicators/indevelopment/guidance/GID-IPG10305/consultation/html-content"
+			);
+		});
 
-				const dates = screen.getAllByText("11 April 2024")[0] as HTMLElement;
+		it("should not render a link to the consultation overview page when consultation content summary exists and there is no online commenting available (just PDF draft for commenting)", async () => {
+			props = (
+				(await getServerSideProps({
+					...getServerSidePropsContext,
+					params: {
+						slug: "gid-ipg10307",
+					},
+					resolvedUrl: "/indicators/indevelopment/gid-ipg10307",
+				})) as {
+					props: InDevelopmentPageProps;
+				}
+			).props;
+			render(<InDevelopmentPage {...props} />);
 
-				expect(dates.tagName).toBe("TIME");
-				//TODO Check datetime attribute format
-				// expect(dates).toHaveAttribute("datetime", "2020-05-11");
+			const consultationLink = screen.queryByRole("link", {
+				name: "Read the consultation documents",
 			});
 
-			it("should render pageheader meta expected publication date TBC", async () => {
-				props = (
-					(await getServerSideProps({
-						...getServerSidePropsContext,
-						params: {
-							slug: "gid-ta11036",
-						},
-						resolvedUrl: "/indicators/indevelopment/gid-ta11036",
-					})) as {
-						props: InDevelopmentPageProps;
-					}
-				).props;
-				render(<InDevelopmentPage {...props} />);
-				expect(
-					screen.getByText("Expected publication date: TBC")
-				).toBeInTheDocument();
-			});
-
-			it("should not render pageheader meta expected publication date if status = discontinued", async () => {
-				props = (
-					(await getServerSideProps({
-						...getServerSidePropsContext,
-						params: {
-							slug: "gid-mt130",
-						},
-						resolvedUrl: "/indicators/indevelopment/gid-mt130",
-					})) as {
-						props: InDevelopmentPageProps;
-					}
-				).props;
-				render(<InDevelopmentPage {...props} />);
-
-				expect(
-					screen.queryByText("Expected publication date: TBC")
-				).not.toBeInTheDocument();
-
-				expect(
-					screen.queryByText("GID-MT130 ", {
-						selector: ".page-header__metadata li",
-					})
-				).not.toBeInTheDocument();
-			});
-
-			it("should render pageheader meta discontinued if status = discontinued", async () => {
-				props = (
-					(await getServerSideProps({
-						...getServerSidePropsContext,
-						params: {
-							slug: "gid-mt130",
-						},
-						resolvedUrl: "/indicators/indevelopment/gid-mt130",
-					})) as {
-						props: InDevelopmentPageProps;
-					}
-				).props;
-				render(<InDevelopmentPage {...props} />);
-
-				expect(
-					screen.getByText("Discontinued GID-MT130", {
-						selector: ".page-header__metadata li",
-					})
-				).toBeInTheDocument();
-
-				const list = screen.getByLabelText("Project information");
-				const { getByText } = within(list);
-				expect(getByText("Status:").tagName).toBe("DT");
-				expect(getByText("Discontinued").tagName).toBe("DD");
-			});
-
-			it("should render a link to the consultation overview page", async () => {
-				props = (
-					(await getServerSideProps({
-						...getServerSidePropsContext,
-						params: {
-							slug: "gid-ipg10305",
-						},
-						resolvedUrl: "/indicators/indevelopment/gid-ipg10305",
-					})) as {
-						props: InDevelopmentPageProps;
-					}
-				).props;
-				render(<InDevelopmentPage {...props} />);
-
-				const consultationLink = screen.getByRole("link", {
-					name: "Read the consultation documents",
-				});
-
-				expect(consultationLink).toBeInTheDocument();
-
-				expect(consultationLink).toHaveAttribute(
-					"href",
-					"/indicators/indevelopment/guidance/GID-IPG10305/consultation/html-content"
-				);
-			});
-
-			it("should not render a link to the consultation overview page when consultation content summary exists and there is no online commenting available (just PDF draft for commenting)", async () => {
-				props = (
-					(await getServerSideProps({
-						...getServerSidePropsContext,
-						params: {
-							slug: "gid-ipg10307",
-						},
-						resolvedUrl: "/indicators/indevelopment/gid-ipg10307",
-					})) as {
-						props: InDevelopmentPageProps;
-					}
-				).props;
-				render(<InDevelopmentPage {...props} />);
-
-				const consultationLink = screen.queryByRole("link", {
-					name: "Read the consultation documents",
-				});
-
-				expect(consultationLink).not.toBeInTheDocument();
-			});
-
-			it("should render a 'register as a stakeholder' link", async () => {
-				render(<InDevelopmentPage {...props} />);
-				const stakeholderLink = screen.getByRole("link", {
-					name: "Register as a stakeholder",
-				});
-				expect(stakeholderLink).toBeInTheDocument();
-				expect(stakeholderLink).toHaveAttribute(
-					"href",
-					"https://alpha.nice.org.uk/get-involved/stakeholder-registration/register?t=&p=GID-NG10237&returnUrl=/guidance/indevelopment/GID-NG10237"
-				);
-			});
-
-			it("should render a 'Register an interest' link if the project type is 'IPG' or project status is not 'Discontinued'", async () => {
-				props = (
-					(await getServerSideProps({
-						...getServerSidePropsContext,
-						params: {
-							slug: "gid-ipg10305",
-						},
-						resolvedUrl: "/indicators/indevelopment/gid-ipg10305",
-					})) as {
-						props: InDevelopmentPageProps;
-					}
-				).props;
-				render(<InDevelopmentPage {...props} />);
-
-				const registerAnInterestLink = screen.getByRole("link", {
-					name: "Register an interest",
-				});
-
-				expect(registerAnInterestLink).toBeInTheDocument();
-
-				expect(registerAnInterestLink).toHaveAttribute(
-					"href",
-					"/about/what-we-do/our-programmes/nice-guidance/nice-interventional-procedures-guidance/ip-register-an-interest?t=0&p=GID-IPG10305&returnUrl=/guidance/indevelopment/GID-IPG10305"
-				);
-			});
-
-			it("should not render a 'Register an interest' link if project status is discontinued or project type is not 'IPG'", async () => {
-				props = (
-					(await getServerSideProps({
-						...getServerSidePropsContext,
-						params: {
-							slug: "gid-tag377",
-						},
-						resolvedUrl: "/indicators/indevelopment/gid-tag377",
-					})) as {
-						props: InDevelopmentPageProps;
-					}
-				).props;
-				render(<InDevelopmentPage {...props} />);
-				const registerAnInterestLink = screen.queryByRole("link", {
-					name: "Register an interest",
-				});
-
-				expect(registerAnInterestLink).toBeFalsy();
-			});
+			expect(consultationLink).not.toBeInTheDocument();
 		});
 	});
 

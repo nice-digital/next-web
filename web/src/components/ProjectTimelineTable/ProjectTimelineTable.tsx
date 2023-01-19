@@ -1,31 +1,34 @@
 import { IndevTimeline } from "@/feeds/inDev/types";
 import { arrayify } from "@/utils/array";
 
-export const TimelineTable = ({
+export const Timeline = ({
 	data,
 }: Record<string, IndevTimeline | IndevTimeline[]>): JSX.Element => {
 	const tableBodyData = arrayify(data);
 
 	return (
-		<table className="table table-condensed" aria-label="Timeline">
-			<tbody>
-				<tr>
-					<th>Date</th>
-					<th>Update</th>
-				</tr>
-				{tableBodyData.map((item, index) => {
-					return (
-						<tr key={index}>
-							<td>{item.column1}</td>
-							{/* <td>{item.column2}</td> */}
-							<td
-								key={`timelinecell_${index}`}
-								dangerouslySetInnerHTML={{ __html: item.column2 }}
-							/>
-						</tr>
-					);
-				})}
-			</tbody>
-		</table>
+		<>
+			<h3>Timeline</h3>
+			<p>Key events during the development of the guidance:</p>
+			<table className="table table-condensed" aria-label="Timeline">
+				<tbody>
+					<tr>
+						<th>Date</th>
+						<th>Update</th>
+					</tr>
+					{tableBodyData.map((item, index) => {
+						return (
+							<tr key={index}>
+								<td>{item.column1}</td>
+								<td
+									key={`timelinecell_${index}`}
+									dangerouslySetInnerHTML={{ __html: item.column2 }}
+								/>
+							</tr>
+						);
+					})}
+				</tbody>
+			</table>
+		</>
 	);
 };

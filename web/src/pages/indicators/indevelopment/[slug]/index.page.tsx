@@ -8,7 +8,7 @@ import { Link } from "@/components/Link/Link";
 import { ProjectInformation } from "@/components/ProjectInformation/ProjectInformation";
 import { ProjectPageHeading } from "@/components/ProjectPageHeading/ProjectPageHeading";
 import { Stakeholders } from "@/components/ProjectStakeholders/ProjectStakeholders";
-import { TimelineTable } from "@/components/ProjectTimelineTable/ProjectTimelineTable";
+import { Timeline } from "@/components/ProjectTimelineTable/ProjectTimelineTable";
 import {
 	type Update,
 	Updates,
@@ -177,7 +177,7 @@ export default function InDevelopmentPage(
 					</DefinitionList>
 				</>
 			) : null}
-			{/* TODO check formatting and location of related links - turn into a link */}
+
 			{indevProjectRelatedLinks && indevProjectRelatedLinks?.length > 0 ? (
 				<>
 					<h3>Related Links</h3>
@@ -220,11 +220,7 @@ export default function InDevelopmentPage(
 				commentators={indevCommentators}
 			/>
 			{indevTimelineItems && indevTimelineItems.length > 0 ? (
-				<>
-					<h3>Timeline</h3>
-					<p>Key events during the development of the guidance:</p>
-					<TimelineTable data={indevTimelineItems} />
-				</>
+				<Timeline data={indevTimelineItems} />
 			) : null}
 			{indevProcessHomepage ? (
 				<p>

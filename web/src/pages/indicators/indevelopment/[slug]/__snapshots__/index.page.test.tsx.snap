@@ -330,52 +330,6 @@ exports[`/indevelopment/[slug].page IndevelopmentPage should match snapshot for 
 </body>
 `;
 
-exports[`/indevelopment/[slug].page IndevelopmentPage should render legacy stakeholder items 1`] = `
-Array [
-  <ul
-    aria-label="Legacy stakeholders"
-  >
-    <li>
-      <p>
-        
-                    	
-                    		
-                        	
-                        		
-      </p>
-      <p>
-        NICE is developing guidance on this technology. If you would like to become a registered stakeholder in the development of guidance on this technology, please complete a 
-        <a
-          href="http://www.nice.org.uk/media/default/about/what-we-do/nice-guidance/nice-medical-technologies/mtep-notification-form.docx"
-          nice-original-href="http://www4.nice.org.uk/Media/Default/About/what-we-do/NICE-guidance/NICE-medical-technologies/MTEP-notification-form.docx"
-        >
-          stakeholder registration and confidentiality form
-        </a>
-         (Word), and return to us at 
-        <a
-          href="mailto:medtech@nice.org.uk"
-        >
-          medtech@nice.org.uk
-        </a>
-        .
-      </p>
-      
-
-      <p>
-        Registered stakeholders will be informed of key stages in the development of guidance including when documents go out to consultation or comment.
-      </p>
-      
-
-                        	
-                        	
-                        
-                    
-      <p />
-    </li>
-  </ul>,
-]
-`;
-
 exports[`/indevelopment/[slug].page getServerSideProps should return a correct props when supplied with a valid slug 1`] = `
 Object {
   "props": Object {

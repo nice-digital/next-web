@@ -211,7 +211,18 @@ describe("ProjectInformation", () => {
 
 		const dates = screen.getAllByText("1 November 2005")[0] as HTMLElement;
 		expect(dates.tagName).toBe("TIME");
-		//TODO Check datetime attribute format
-		// expect(dates).toHaveAttribute("datetime", "2020-05-11");
+	});
+
+	it("should render discontinued if status = discontinued", async () => {
+		const mockProps = {
+			...props,
+			status: "Discontinued",
+		};
+		render(<ProjectInformation {...mockProps} />);
+
+		const list = screen.getByLabelText("Project information");
+		const { getByText } = within(list);
+		expect(getByText("Status:").tagName).toBe("DT");
+		expect(getByText("Discontinued").tagName).toBe("DD");
 	});
 });

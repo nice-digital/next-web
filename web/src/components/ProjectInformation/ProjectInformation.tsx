@@ -148,7 +148,7 @@ export const ProjectInformation: FC<ProjectInformationProps> = ({
 						<dt>ID number:</dt> <dd>{idNumber}</dd>
 					</>
 				)}
-				{/* TODO check formatting of referral date */}
+
 				{process == "MT" && referralDate ? (
 					<>
 						<dt>Notification date:</dt> <dd>{referralDate}</dd>
