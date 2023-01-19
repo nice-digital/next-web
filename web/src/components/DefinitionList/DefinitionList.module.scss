@@ -1,3 +1,4 @@
+@use '@nice-digital/nds-core/scss/layout';
 @use '@nice-digital/nds-core/scss/spacing';
 @use '@nice-digital/nds-core/scss/utils';
 
@@ -27,5 +28,6 @@
 
   dd {
     flex: 0 0 70%;
+    max-width: layout.$readable-width;
   }
 }
