@@ -1,0 +1,33 @@
+@use '@nice-digital/nds-core/scss/layout';
+@use '@nice-digital/nds-core/scss/spacing';
+@use '@nice-digital/nds-core/scss/utils';
+
+.definitionList {
+  display: flex;
+  flex-flow: row wrap;
+  margin: 0;
+
+  div {
+    display: flex;
+    flex-basis: 100%;
+  }
+
+  dt {
+    padding-right: utils.rem(spacing.$small);
+  }
+
+  dt,
+  dd {
+    margin: utils.rem(0 0 spacing.$small 0);
+  }
+
+  dt {
+    flex: 0 0 30%;
+    font-weight: bold;
+  }
+
+  dd {
+    flex: 0 0 70%;
+    max-width: layout.$readable-width;
+  }
+}
