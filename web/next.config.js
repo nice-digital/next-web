@@ -121,6 +121,11 @@ const nextConfig = {
 				destination: "/guidance/awaiting-development",
 				permanent: true,
 			},
+			{
+				source: "/standards-and-indicators/index",
+				destination: "/indicators/published",
+				permanent: true,
+			},
 		];
 	},
 	async headers() {

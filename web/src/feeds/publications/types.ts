@@ -5,6 +5,7 @@ export enum FeedPath {
 	ProductTypes = "/feeds/producttypes",
 	AreasOfInterest = "/feeds/areaofinteresttypes",
 	IndicatorSubTypes = "/feeds/indicatorsubtypes",
+	IndicatorMappings = "/feeds/indicatormappings",
 	ProductDetail = "/feeds/product/",
 }
 
@@ -627,4 +628,14 @@ export type HTMLChapterSectionInfo = {
 export type ErrorResponse = {
 	statusCode: string;
 	message: string;
+};
+
+export type IndicatorMappings = {
+	lastModified: string;
+	mappings: IndicatorMapping[];
+};
+
+export type IndicatorMapping = {
+	url: string;
+	id: string;
 };
