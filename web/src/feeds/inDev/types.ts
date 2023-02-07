@@ -13,6 +13,7 @@ export enum ProjectStatus {
 	"InProgress" = "InProgress",
 	"Proposed" = "Proposed",
 	"ImpactedByCOVID19" = "ImpactedByCOVID19",
+	"Complete" = "Complete",
 }
 
 /** Not a definitive list - this may change over time */

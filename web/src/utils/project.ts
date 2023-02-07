@@ -2,6 +2,7 @@ import { type Redirect } from "next";
 
 import {
 	getProjectDetail,
+	IndevPanel,
 	ProjectDetail,
 	ProjectStatus,
 } from "@/feeds/inDev/inDev";
@@ -14,6 +15,8 @@ export type ValidateRouteParamsResult =
 	| { redirect: Redirect }
 	| {
 			project: ProjectDetail;
+			panels: IndevPanel[];
+			hasPanels: boolean;
 	  };
 
 export const validateRouteParams = async (
@@ -27,6 +30,12 @@ export const validateRouteParams = async (
 		project = await getProjectDetail(projectId);
 
 	if (!project) return { notFound: true };
+
+	const panels = project
+		? project.embedded.niceIndevPanelList.embedded.niceIndevPanel.filter(
+				(panel) => panel.showPanel
+		  )
+		: [];
 
 	const productPath = getProductPath({
 		productGroup: ProductGroup.Other,
@@ -47,5 +56,7 @@ export const validateRouteParams = async (
 
 	return {
 		project,
+		panels,
+		hasPanels: panels.length > 0,
 	};
 };
