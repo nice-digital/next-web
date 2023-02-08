@@ -1,6 +1,8 @@
 import { NextSeo } from "next-seo";
 import { type GetServerSideProps } from "next/types";
 
+import { Breadcrumbs, Breadcrumb } from "@nice-digital/nds-breadcrumbs";
+
 import { ProjectPageHeading } from "@/components/ProjectPageHeading/ProjectPageHeading";
 import { ResourceList } from "@/components/ResourceList/ResourceList";
 import { IndevSchedule, ProjectDetail } from "@/feeds/inDev/types";
@@ -29,6 +31,20 @@ export default function DocumentsPage(props: DocumentsPageProps): JSX.Element {
 			<NextSeo
 				title={`Project documents | ${props.project.title} | Indicators | Standards and Indicators`}
 			/>
+
+			<Breadcrumbs>
+				<Breadcrumb to="/">Home</Breadcrumb>
+				<Breadcrumb to="/standards-and-indicators">
+					Standards and Indicators
+				</Breadcrumb>
+				<Breadcrumb to="/standards-and-indicators/indicators">
+					Indicators
+				</Breadcrumb>
+				<Breadcrumb to="/standards-and-indicators/indicators/indevelopment">
+					In development
+				</Breadcrumb>
+				<Breadcrumb>{props.project.reference}</Breadcrumb>
+			</Breadcrumbs>
 
 			<ProjectPageHeading
 				projectType={props.project.projectType}
