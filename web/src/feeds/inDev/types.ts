@@ -27,7 +27,6 @@ export enum ProjectStatus {
 	"Proposed" = "Proposed",
 	"TopicSelection" = "TopicSelection",
 	"ImpactedByCOVID19" = "ImpactedByCOVID19",
-	"Complete" = "Complete",
 }
 
 /** Not a definitive list - this may change over time */
