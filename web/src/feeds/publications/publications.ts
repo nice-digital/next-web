@@ -17,6 +17,8 @@ import {
 	ProductTypeList,
 	ResourceDetail,
 	RelatedResource,
+	IndicatorMappings,
+	IndicatorMapping,
 } from "./types";
 
 export * from "./types";
@@ -122,6 +124,24 @@ export const getIndicatorSubType = async (
 	(await getAllIndicatorSubTypes()).find(
 		(subType) => subType.identifierPrefix === identifierPrefix
 	) || null;
+
+/**
+ * Gets _all_ indicator mappings (redirects).
+ */
+export const getIndicatorMappings = async (): Promise<IndicatorMapping[]> =>
+	await getFeedBodyCached<IndicatorMapping[]>(
+		cacheKeyPrefix,
+		FeedPath.IndicatorMappings,
+		defaultTTL,
+		async () =>
+			(
+				await getFeedBodyUnCached<IndicatorMappings>(
+					origin,
+					FeedPath.IndicatorMappings,
+					apiKey
+				)
+			).mappings
+	);
 
 /**
  * Gets a full product detail response from publications from the given product id.
