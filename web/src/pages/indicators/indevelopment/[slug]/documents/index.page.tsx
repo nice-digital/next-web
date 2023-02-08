@@ -1,8 +1,9 @@
 import { NextSeo } from "next-seo";
 import { type GetServerSideProps } from "next/types";
 
+import { ProjectPageHeading } from "@/components/ProjectPageHeading/ProjectPageHeading";
 import { ResourceList } from "@/components/ResourceList/ResourceList";
-import { ProjectDetail } from "@/feeds/inDev/types";
+import { IndevSchedule, ProjectDetail } from "@/feeds/inDev/types";
 import { arrayify, byTitleAlphabetically } from "@/utils/array";
 import { getFileTypeNameFromMime } from "@/utils/file";
 import { validateRouteParams } from "@/utils/project";
@@ -12,25 +13,34 @@ import {
 } from "@/utils/resource";
 
 export type DocumentsPageProps = {
-	project: Pick<ProjectDetail, "reference" | "title"> & {
+	indevScheduleItems?: IndevSchedule[];
+	project: Pick<
+		ProjectDetail,
+		"projectType" | "reference" | "title" | "status"
+	> & {
 		groups: ResourceGroupViewModel[];
 	};
 };
 
-export default function DocumentsPage({
-	project,
-}: DocumentsPageProps): JSX.Element {
+export default function DocumentsPage(props: DocumentsPageProps): JSX.Element {
 	return (
 		<>
-			<p>--- TODO Documents page title and project heading ---</p>
 			<NextSeo
-				title={`Project documents | ${project.title} | Indicators | Standards and Indicators`}
+				title={`Project documents | ${props.project.title} | Indicators | Standards and Indicators`}
+			/>
+
+			<ProjectPageHeading
+				projectType={props.project.projectType}
+				reference={props.project.reference}
+				title={props.project.title}
+				status={props.project.status}
+				indevScheduleItems={props.indevScheduleItems}
 			/>
 
 			<ResourceList
 				title="Documents"
 				lead="A list of downloadable documents created during development."
-				groups={project.groups}
+				groups={props.project.groups}
 			/>
 		</>
 	);
@@ -49,6 +59,13 @@ export const getServerSideProps: GetServerSideProps<
 	if (!project) return { notFound: true };
 
 	if (!hasPanels) return { notFound: true };
+
+	const { projectType, reference, status, title } = project;
+
+	const indevSchedule =
+			project.embedded.niceIndevProvisionalScheduleList?.embedded
+				.niceIndevProvisionalSchedule,
+		indevScheduleItems = arrayify(indevSchedule);
 
 	const groups = panels.sort(byTitleAlphabetically).map((panel) => {
 		const indevResource =
@@ -94,13 +111,14 @@ export const getServerSideProps: GetServerSideProps<
 		};
 	});
 
-	console.log({ groups });
-
 	return {
 		props: {
+			indevScheduleItems,
 			project: {
-				reference: project.reference,
-				title: project.title,
+				projectType,
+				reference,
+				status,
+				title,
 				groups,
 			},
 		},
