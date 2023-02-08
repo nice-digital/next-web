@@ -33,7 +33,7 @@ export const validateRouteParams = async (
 
 	const panels = project
 		? project.embedded.niceIndevPanelList.embedded.niceIndevPanel.filter(
-				(panel) => panel.showPanel
+				(panel) => panel.showPanel && panel.panelType == "History"
 		  )
 		: [];
 
