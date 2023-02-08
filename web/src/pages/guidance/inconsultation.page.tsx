@@ -7,6 +7,7 @@ import {
 	getGetServerSidePropsFunc,
 } from "@/components/ProductListPage/ProductListPage";
 import { ResponsiveDate } from "@/components/ResponsiveDate/ResponsiveDate";
+import { publicRuntimeConfig } from "@/config";
 
 const defaultSortOrder = SortOrder.dateAscending,
 	dateFilterLabel = "Consultation end date";
@@ -38,7 +39,7 @@ const tableBodyRender = (documents: Document[]) => (
 						<tr key={id}>
 							<td>
 								<a
-									href={pathAndQuery}
+									href={publicRuntimeConfig.baseURL + pathAndQuery}
 									dangerouslySetInnerHTML={{ __html: title }}
 								/>
 							</td>
