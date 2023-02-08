@@ -1,3 +1,4 @@
+import { NextSeo } from "next-seo";
 import { type GetServerSideProps } from "next/types";
 
 import { ResourceList } from "@/components/ResourceList/ResourceList";
@@ -22,7 +23,15 @@ export default function DocumentsPage({
 	return (
 		<>
 			<p>--- TODO Documents page title and project heading ---</p>
-			<ResourceList title="Documents" groups={project.groups} />
+			<NextSeo
+				title={`Project documents | ${project.title} | Indicators | Standards and Indicators`}
+			/>
+
+			<ResourceList
+				title="Documents"
+				lead="A list of downloadable documents created during development."
+				groups={project.groups}
+			/>
 		</>
 	);
 }
@@ -38,6 +47,8 @@ export const getServerSideProps: GetServerSideProps<
 	const { project, panels, hasPanels } = result;
 
 	if (!project) return { notFound: true };
+
+	if (!hasPanels) return { notFound: true };
 
 	const groups = panels.sort(byTitleAlphabetically).map((panel) => {
 		const indevResource =
