@@ -16,8 +16,6 @@ export const getServerSideProps: GetServerSideProps<
 
 	const result = await validateRouteParams({ params, resolvedUrl, query });
 
-	console.log({ resolvedUrl });
-
 	if ("notFound" in result || "redirect" in result) return result;
 
 	const { product, pdfDownloadPath, actualPath } = result;
