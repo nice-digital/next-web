@@ -14,6 +14,7 @@ import {
 
 export type DocumentsPageProps = {
 	indevScheduleItems?: IndevSchedule[];
+	indevStakeholderRegistration: Record<string, unknown>[];
 	project: Pick<
 		ProjectDetail,
 		"projectType" | "reference" | "title" | "status"
@@ -35,6 +36,7 @@ export default function DocumentsPage(props: DocumentsPageProps): JSX.Element {
 				title={props.project.title}
 				status={props.project.status}
 				indevScheduleItems={props.indevScheduleItems}
+				indevStakeholderRegistration={props.indevStakeholderRegistration}
 			/>
 
 			<ResourceList
@@ -65,7 +67,10 @@ export const getServerSideProps: GetServerSideProps<
 	const indevSchedule =
 			project.embedded.niceIndevProvisionalScheduleList?.embedded
 				.niceIndevProvisionalSchedule,
-		indevScheduleItems = arrayify(indevSchedule);
+		indevScheduleItems = arrayify(indevSchedule),
+		indevStakeholderRegistration = arrayify(
+			project.links.niceIndevStakeholderRegistration
+		);
 
 	const groups = panels.sort(byTitleAlphabetically).map((panel) => {
 		const indevResource =
@@ -114,6 +119,7 @@ export const getServerSideProps: GetServerSideProps<
 	return {
 		props: {
 			indevScheduleItems,
+			indevStakeholderRegistration,
 			project: {
 				projectType,
 				reference,
