@@ -3,18 +3,19 @@ import { type Redirect } from "next";
 import {
 	getProjectDetail,
 	IndevPanel,
+	Project,
 	ProjectDetail,
 	ProjectStatus,
 } from "@/feeds/inDev/inDev";
 import { ProductGroup, ProductTypeAcronym } from "@/feeds/publications/types";
-
-import { getProductPath } from "./url";
+import { getProjectPath } from "@/utils/url";
 
 export type ValidateRouteParamsResult =
 	| { notFound: true }
 	| { redirect: Redirect }
 	| {
 			project: ProjectDetail;
+			projectPath: string | null;
 			panels: IndevPanel[];
 			hasPanels: boolean;
 	  };
@@ -37,24 +38,20 @@ export const validateRouteParams = async (
 		  )
 		: [];
 
-	const productPath = getProductPath({
-		productGroup: ProductGroup.Other,
-		id: project.reference,
-		productType: ProductTypeAcronym.IND,
-		title: "",
-	});
+	const projectPath = getProjectPath(project as Project);
 
 	// if project status is complete it is not in development and should redirect to the published product
 	if (project.status == ProjectStatus.Complete) {
 		return {
 			redirect: {
-				destination: `${productPath}`,
+				destination: `${projectPath}`,
 				permanent: true,
 			},
 		};
 	}
 
 	return {
+		projectPath,
 		project,
 		panels,
 		hasPanels: panels.length > 0,
