@@ -321,7 +321,7 @@ exports[`/indicators/indevelopment/[slug]/documents DocumentsPage should match s
                           class="card__heading"
                         >
                           <a
-                            href="/guidance/indevelopment/gid-dg10049/documents/downloads/null-514.pdf"
+                            href="/guidance/indevelopment/gid-dg10049/documents/downloads/gid-dg10049-514.pdf"
                           >
                             Diagnostics consultation document (PDF)
                              
@@ -403,7 +403,7 @@ exports[`/indicators/indevelopment/[slug]/documents DocumentsPage should match s
                           class="card__heading"
                         >
                           <a
-                            href="/guidance/indevelopment/gid-dg10049/documents/downloads/null-513.docx"
+                            href="/guidance/indevelopment/gid-dg10049/documents/downloads/gid-dg10049-513.docx"
                           >
                             Diagnostics consultation document (Online commenting)
                              
@@ -485,7 +485,7 @@ exports[`/indicators/indevelopment/[slug]/documents DocumentsPage should match s
                           class="card__heading"
                         >
                           <a
-                            href="/guidance/indevelopment/gid-dg10049/documents/downloads/null-diagnostics-assessment-report.pdf"
+                            href="/guidance/indevelopment/gid-dg10049/documents/downloads/gid-dg10049-diagnostics-assessment-report.pdf"
                           >
                             Diagnostics assessment report
                              
@@ -567,7 +567,7 @@ exports[`/indicators/indevelopment/[slug]/documents DocumentsPage should match s
                           class="card__heading"
                         >
                           <a
-                            href="/guidance/indevelopment/gid-dg10049/documents/downloads/null-overview.pdf"
+                            href="/guidance/indevelopment/gid-dg10049/documents/downloads/gid-dg10049-overview.pdf"
                           >
                             Overview
                              
@@ -649,7 +649,7 @@ exports[`/indicators/indevelopment/[slug]/documents DocumentsPage should match s
                           class="card__heading"
                         >
                           <a
-                            href="/guidance/indevelopment/gid-dg10049/documents/downloads/null-d-a-r-comments-table-and-e-a-g-response.pdf"
+                            href="/guidance/indevelopment/gid-dg10049/documents/downloads/gid-dg10049-d-a-r-comments-table-and-e-a-g-response.pdf"
                           >
                             DAR Comments table and EAG response
                              
@@ -731,7 +731,7 @@ exports[`/indicators/indevelopment/[slug]/documents DocumentsPage should match s
                           class="card__heading"
                         >
                           <a
-                            href="/guidance/indevelopment/gid-dg10049/documents/downloads/null-d-a-r-addendum.pdf"
+                            href="/guidance/indevelopment/gid-dg10049/documents/downloads/gid-dg10049-d-a-r-addendum.pdf"
                           >
                             DAR Addendum
                              
@@ -813,7 +813,7 @@ exports[`/indicators/indevelopment/[slug]/documents DocumentsPage should match s
                           class="card__heading"
                         >
                           <a
-                            href="/guidance/indevelopment/gid-dg10049/documents/downloads/null-d-a-r-erratum.pdf"
+                            href="/guidance/indevelopment/gid-dg10049/documents/downloads/gid-dg10049-d-a-r-erratum.pdf"
                           >
                             DAR Erratum
                              
@@ -1005,7 +1005,7 @@ exports[`/indicators/indevelopment/[slug]/documents DocumentsPage should match s
                           class="card__heading"
                         >
                           <a
-                            href="/guidance/indevelopment/gid-dg10049/documents/downloads/null-topic-description.pdf"
+                            href="/guidance/indevelopment/gid-dg10049/documents/downloads/gid-dg10049-topic-description.pdf"
                           >
                             Topic description
                              
@@ -1142,7 +1142,7 @@ exports[`/indicators/indevelopment/[slug]/documents DocumentsPage should match s
                           class="card__heading"
                         >
                           <a
-                            href="/guidance/indevelopment/gid-dg10049/documents/downloads/null-final-scope.pdf"
+                            href="/guidance/indevelopment/gid-dg10049/documents/downloads/gid-dg10049-final-scope.pdf"
                           >
                             Final scope
                              
@@ -1224,7 +1224,7 @@ exports[`/indicators/indevelopment/[slug]/documents DocumentsPage should match s
                           class="card__heading"
                         >
                           <a
-                            href="/guidance/indevelopment/gid-dg10049/documents/downloads/null-final-protocol.pdf"
+                            href="/guidance/indevelopment/gid-dg10049/documents/downloads/gid-dg10049-final-protocol.pdf"
                           >
                             Final protocol
                              
@@ -1306,7 +1306,7 @@ exports[`/indicators/indevelopment/[slug]/documents DocumentsPage should match s
                           class="card__heading"
                         >
                           <a
-                            href="/guidance/indevelopment/gid-dg10049/documents/downloads/null-equality-impact-assessment.pdf"
+                            href="/guidance/indevelopment/gid-dg10049/documents/downloads/gid-dg10049-equality-impact-assessment.pdf"
                           >
                             Equality impact assessment
                              
@@ -1388,7 +1388,7 @@ exports[`/indicators/indevelopment/[slug]/documents DocumentsPage should match s
                           class="card__heading"
                         >
                           <a
-                            href="/guidance/indevelopment/gid-dg10049/documents/downloads/null-specialist-committee-members.pdf"
+                            href="/guidance/indevelopment/gid-dg10049/documents/downloads/gid-dg10049-specialist-committee-members.pdf"
                           >
                             Specialist committee members
                              
@@ -1470,7 +1470,7 @@ exports[`/indicators/indevelopment/[slug]/documents DocumentsPage should match s
                           class="card__heading"
                         >
                           <a
-                            href="/guidance/indevelopment/gid-dg10049/documents/downloads/null-stakeholder-list.pdf"
+                            href="/guidance/indevelopment/gid-dg10049/documents/downloads/gid-dg10049-stakeholder-list.pdf"
                           >
                             Stakeholder list
                              
@@ -1661,7 +1661,7 @@ Object {
                   "date": "2022-12-09T00:00:00",
                   "fileSize": 282746,
                   "fileTypeName": "PDF",
-                  "href": "/guidance/indevelopment/gid-dg10049/documents/downloads/null-514.pdf",
+                  "href": "/guidance/indevelopment/gid-dg10049/documents/downloads/gid-dg10049-514.pdf",
                   "title": "Diagnostics consultation document (PDF)",
                   "type": "Diagnostics consultation",
                 },
@@ -1669,7 +1669,7 @@ Object {
                   "date": "2022-12-09T00:00:00",
                   "fileSize": 62456,
                   "fileTypeName": "Word",
-                  "href": "/guidance/indevelopment/gid-dg10049/documents/downloads/null-513.docx",
+                  "href": "/guidance/indevelopment/gid-dg10049/documents/downloads/gid-dg10049-513.docx",
                   "title": "Diagnostics consultation document (Online commenting)",
                   "type": "Diagnostics consultation",
                 },
@@ -1677,7 +1677,7 @@ Object {
                   "date": "2022-12-09T00:00:00",
                   "fileSize": 3693733,
                   "fileTypeName": "PDF",
-                  "href": "/guidance/indevelopment/gid-dg10049/documents/downloads/null-diagnostics-assessment-report.pdf",
+                  "href": "/guidance/indevelopment/gid-dg10049/documents/downloads/gid-dg10049-diagnostics-assessment-report.pdf",
                   "title": "Diagnostics assessment report",
                   "type": "Diagnostics consultation",
                 },
@@ -1685,7 +1685,7 @@ Object {
                   "date": "2022-12-09T00:00:00",
                   "fileSize": 602181,
                   "fileTypeName": "PDF",
-                  "href": "/guidance/indevelopment/gid-dg10049/documents/downloads/null-overview.pdf",
+                  "href": "/guidance/indevelopment/gid-dg10049/documents/downloads/gid-dg10049-overview.pdf",
                   "title": "Overview",
                   "type": "Diagnostics consultation",
                 },
@@ -1693,7 +1693,7 @@ Object {
                   "date": "2022-12-09T00:00:00",
                   "fileSize": 483618,
                   "fileTypeName": "PDF",
-                  "href": "/guidance/indevelopment/gid-dg10049/documents/downloads/null-d-a-r-comments-table-and-e-a-g-response.pdf",
+                  "href": "/guidance/indevelopment/gid-dg10049/documents/downloads/gid-dg10049-d-a-r-comments-table-and-e-a-g-response.pdf",
                   "title": "DAR Comments table and EAG response",
                   "type": "Diagnostics consultation",
                 },
@@ -1701,7 +1701,7 @@ Object {
                   "date": "2022-12-09T00:00:00",
                   "fileSize": 573126,
                   "fileTypeName": "PDF",
-                  "href": "/guidance/indevelopment/gid-dg10049/documents/downloads/null-d-a-r-addendum.pdf",
+                  "href": "/guidance/indevelopment/gid-dg10049/documents/downloads/gid-dg10049-d-a-r-addendum.pdf",
                   "title": "DAR Addendum",
                   "type": "Diagnostics consultation",
                 },
@@ -1709,7 +1709,7 @@ Object {
                   "date": "2022-12-09T00:00:00",
                   "fileSize": 259803,
                   "fileTypeName": "PDF",
-                  "href": "/guidance/indevelopment/gid-dg10049/documents/downloads/null-d-a-r-erratum.pdf",
+                  "href": "/guidance/indevelopment/gid-dg10049/documents/downloads/gid-dg10049-d-a-r-erratum.pdf",
                   "title": "DAR Erratum",
                   "type": "Diagnostics consultation",
                 },
@@ -1753,7 +1753,7 @@ Object {
                   "date": "2021-12-20T00:00:00",
                   "fileSize": 87561,
                   "fileTypeName": "PDF",
-                  "href": "/guidance/indevelopment/gid-dg10049/documents/downloads/null-topic-description.pdf",
+                  "href": "/guidance/indevelopment/gid-dg10049/documents/downloads/gid-dg10049-topic-description.pdf",
                   "title": "Topic description",
                   "type": "Launch",
                 },
@@ -1779,7 +1779,7 @@ Object {
                   "date": "2022-04-13T00:00:00",
                   "fileSize": 414199,
                   "fileTypeName": "PDF",
-                  "href": "/guidance/indevelopment/gid-dg10049/documents/downloads/null-final-scope.pdf",
+                  "href": "/guidance/indevelopment/gid-dg10049/documents/downloads/gid-dg10049-final-scope.pdf",
                   "title": "Final scope",
                   "type": "Scope published",
                 },
@@ -1787,7 +1787,7 @@ Object {
                   "date": "2022-04-13T00:00:00",
                   "fileSize": 523323,
                   "fileTypeName": "PDF",
-                  "href": "/guidance/indevelopment/gid-dg10049/documents/downloads/null-final-protocol.pdf",
+                  "href": "/guidance/indevelopment/gid-dg10049/documents/downloads/gid-dg10049-final-protocol.pdf",
                   "title": "Final protocol",
                   "type": "Scope published",
                 },
@@ -1795,7 +1795,7 @@ Object {
                   "date": "2022-04-13T00:00:00",
                   "fileSize": 150397,
                   "fileTypeName": "PDF",
-                  "href": "/guidance/indevelopment/gid-dg10049/documents/downloads/null-equality-impact-assessment.pdf",
+                  "href": "/guidance/indevelopment/gid-dg10049/documents/downloads/gid-dg10049-equality-impact-assessment.pdf",
                   "title": "Equality impact assessment",
                   "type": "Scope published",
                 },
@@ -1803,7 +1803,7 @@ Object {
                   "date": "2022-04-13T00:00:00",
                   "fileSize": 116494,
                   "fileTypeName": "PDF",
-                  "href": "/guidance/indevelopment/gid-dg10049/documents/downloads/null-specialist-committee-members.pdf",
+                  "href": "/guidance/indevelopment/gid-dg10049/documents/downloads/gid-dg10049-specialist-committee-members.pdf",
                   "title": "Specialist committee members",
                   "type": "Scope published",
                 },
@@ -1811,7 +1811,7 @@ Object {
                   "date": "2022-10-13T00:00:00",
                   "fileSize": 114419,
                   "fileTypeName": "PDF",
-                  "href": "/guidance/indevelopment/gid-dg10049/documents/downloads/null-stakeholder-list.pdf",
+                  "href": "/guidance/indevelopment/gid-dg10049/documents/downloads/gid-dg10049-stakeholder-list.pdf",
                   "title": "Stakeholder list",
                   "type": "Scope published",
                 },

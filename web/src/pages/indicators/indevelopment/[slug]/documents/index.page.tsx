@@ -26,7 +26,6 @@ export type DocumentsPageProps = {
 };
 
 export default function DocumentsPage(props: DocumentsPageProps): JSX.Element {
-	console.log({ props });
 	return (
 		<>
 			<NextSeo
@@ -114,9 +113,6 @@ export const getServerSideProps: GetServerSideProps<
 					subGroups.push(currentSubGroup);
 				}
 
-				//html ${projectPath}/${resourceTitleId}
-				// file ${projectPath}/downloads/${project.id}-${resourceTitleId}.${fileName.split(".").slice(-1)[0]}
-
 				const { mimeType, length, resourceTitleId, fileName } =
 						resource.embedded.niceIndevFile,
 					isHTML = mimeType === "text/html",
@@ -124,9 +120,9 @@ export const getServerSideProps: GetServerSideProps<
 					fileTypeName = isHTML ? null : getFileTypeNameFromMime(mimeType),
 					href = isHTML
 						? `${projectPath}/documents/${resourceTitleId}`
-						: `${projectPath}/documents/downloads/${
-								project.idNumber
-						  }-${resourceTitleId}.${fileName.split(".").slice(-1)[0]}`;
+						: `${projectPath}/documents/downloads/${project.reference.toLowerCase()}-${resourceTitleId}.${
+								fileName.split(".").slice(-1)[0]
+						  }`;
 
 				currentSubGroup.resourceLinks.push({
 					title: resource.title,
