@@ -7,7 +7,6 @@ import {
 	ProjectDetail,
 	ProjectStatus,
 } from "@/feeds/inDev/inDev";
-import { ProductGroup, ProductTypeAcronym } from "@/feeds/publications/types";
 import { getProjectPath } from "@/utils/url";
 
 export type ValidateRouteParamsResult =
