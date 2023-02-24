@@ -23,7 +23,7 @@ export const config: WebdriverIO.Config = {
 
 	logLevel: "error",
 
-	baseUrl: "http://localhost:3000/",
+	baseUrl: "http://localhost:4000/",
 	reporters: [
 		"spec",
 		isTeamCity && "teamcity",
@@ -41,7 +41,7 @@ export const config: WebdriverIO.Config = {
 	cucumberOpts: {
 		require: [
 			"./steps/**/*.ts",
-			"./node_modules/@nice-digital/wdio-cucumber-steps/lib",
+			"./node_modules/@nice-digital/wdio-cucumber-steps/lib/index.js",
 		],
 		tagExpression: "not @pending", // See https://docs.cucumber.io/tag-expressions/
 		timeout: 15000,
