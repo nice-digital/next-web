@@ -7,7 +7,7 @@ describe("project utils", () => {
 				params: {
 					slug: "abc123",
 				},
-				resolvedUrl: "/anything",
+				_resolvedUrl: "/anything",
 			});
 
 			expect(result).toStrictEqual({
@@ -19,7 +19,7 @@ describe("project utils", () => {
 				params: {
 					slug: "ind60",
 				},
-				resolvedUrl: "/anything",
+				_resolvedUrl: "/anything",
 			});
 
 			expect(result).toStrictEqual({
