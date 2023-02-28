@@ -3,7 +3,7 @@ import { type GetServerSideProps } from "next/types";
 
 import { Breadcrumbs, Breadcrumb } from "@nice-digital/nds-breadcrumbs";
 
-import { ProductHorizontalNav } from "@/components/ProductHorizontalNav/ProductHorizontalNav";
+import { ProjectHorizontalNav } from "@/components/ProjectHorizontalNav/ProjectHorizontalNav";
 import { ProjectPageHeading } from "@/components/ProjectPageHeading/ProjectPageHeading";
 import { ResourceList } from "@/components/ResourceList/ResourceList";
 import { IndevSchedule, ProjectDetail } from "@/feeds/inDev/types";
@@ -62,13 +62,10 @@ export default function DocumentsPage(props: DocumentsPageProps): JSX.Element {
 				indevStakeholderRegistration={props.indevStakeholderRegistration}
 			/>
 
-			<ProductHorizontalNav
-				productTypeName="Indicator"
-				productPath={props.projectPath}
-				hasToolsAndResources={true} /*TODO*/
-				hasInfoForPublicResources={true} /*TODO*/
-				hasEvidenceResources={true} /*TODO*/
-				hasHistory={true} /*TODO*/
+			<ProjectHorizontalNav
+				projectPath={props.projectPath}
+				hasDocuments={true}
+				consultations={[{ title: "Consultation 1" }]}
 			/>
 
 			<ResourceList
