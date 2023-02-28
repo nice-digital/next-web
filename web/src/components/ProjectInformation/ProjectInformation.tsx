@@ -27,7 +27,6 @@ export type ProjectInformationProps = {
 	suspendDiscontinuedUrlText: string | null;
 	technologyType: string | null;
 	title: string;
-	topicSelectionDecision: string | null;
 	topicSelectionReason: string | null;
 	topicSelectionFurtherInfo: string | null;
 
@@ -47,7 +46,6 @@ export const ProjectInformation: FC<ProjectInformationProps> = ({
 	suspendDiscontinuedUrl,
 	suspendDiscontinuedUrlText,
 	technologyType,
-	topicSelectionDecision,
 	topicSelectionReason,
 	topicSelectionFurtherInfo,
 }) => {
@@ -109,11 +107,6 @@ export const ProjectInformation: FC<ProjectInformationProps> = ({
 				{technologyType && (
 					<>
 						<dt>Technology type:</dt> <dd>{technologyType}</dd>
-					</>
-				)}
-				{topicSelectionDecision && (
-					<>
-						<dt>Decision:</dt> <dd>{topicSelectionDecision}</dd>
 					</>
 				)}
 				{topicSelectionReasonText && (

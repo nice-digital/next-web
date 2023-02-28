@@ -160,13 +160,6 @@ exports[`/indevelopment/[slug].page IndevelopmentPage should match snapshot for 
           In progress
         </dd>
         <dt>
-          Decision:
-        </dt>
-         
-        <dd>
-          Selected
-        </dd>
-        <dt>
           Developed as:
         </dt>
          
