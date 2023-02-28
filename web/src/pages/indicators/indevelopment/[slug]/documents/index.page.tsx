@@ -3,6 +3,7 @@ import { type GetServerSideProps } from "next/types";
 
 import { Breadcrumbs, Breadcrumb } from "@nice-digital/nds-breadcrumbs";
 
+import { ProductHorizontalNav } from "@/components/ProductHorizontalNav/ProductHorizontalNav";
 import { ProjectPageHeading } from "@/components/ProjectPageHeading/ProjectPageHeading";
 import { ResourceList } from "@/components/ResourceList/ResourceList";
 import { IndevSchedule, ProjectDetail } from "@/feeds/inDev/types";
@@ -17,6 +18,7 @@ import {
 export type DocumentsPageProps = {
 	indevScheduleItems?: IndevSchedule[];
 	indevStakeholderRegistration: Record<string, unknown>[];
+	projectPath: string;
 	project: Pick<
 		ProjectDetail,
 		"projectType" | "reference" | "title" | "status"
@@ -58,6 +60,15 @@ export default function DocumentsPage(props: DocumentsPageProps): JSX.Element {
 				status={props.project.status}
 				indevScheduleItems={props.indevScheduleItems}
 				indevStakeholderRegistration={props.indevStakeholderRegistration}
+			/>
+
+			<ProductHorizontalNav
+				productTypeName="Indicator"
+				productPath={props.projectPath}
+				hasToolsAndResources={true} /*TODO*/
+				hasInfoForPublicResources={true} /*TODO*/
+				hasEvidenceResources={true} /*TODO*/
+				hasHistory={true} /*TODO*/
 			/>
 
 			<ResourceList
@@ -145,6 +156,7 @@ export const getServerSideProps: GetServerSideProps<
 		props: {
 			indevScheduleItems,
 			indevStakeholderRegistration,
+			projectPath,
 			project: {
 				projectType,
 				reference,

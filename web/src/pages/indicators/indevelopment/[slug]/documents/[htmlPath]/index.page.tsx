@@ -5,6 +5,7 @@ import React from "react";
 import { Breadcrumbs, Breadcrumb } from "@nice-digital/nds-breadcrumbs";
 
 import { ProjectPageHeading } from "@/components/ProjectPageHeading/ProjectPageHeading";
+import { getResourceFileHTML } from "@/feeds/inDev/inDev";
 import { IndevSchedule, ProjectDetail } from "@/feeds/inDev/types";
 import { arrayify } from "@/utils/array";
 import { validateRouteParams } from "@/utils/project";
@@ -16,6 +17,10 @@ export type DocumentHTMLPageProps = {
 		ProjectDetail,
 		"projectType" | "reference" | "title" | "status"
 	>;
+	resource: {
+		resourceFileHTML: string;
+		title: string;
+	};
 };
 
 export default function HistoryHTMLPage(
@@ -59,7 +64,10 @@ export default function HistoryHTMLPage(
 				indevScheduleItems={props.indevScheduleItems}
 				indevStakeholderRegistration={props.indevStakeholderRegistration}
 			/>
-			<p>html page content here</p>
+
+			<div
+				dangerouslySetInnerHTML={{ __html: props.resource.resourceFileHTML }}
+			></div>
 		</>
 	);
 }
@@ -72,7 +80,25 @@ export const getServerSideProps: GetServerSideProps<
 
 	if ("notFound" in result || "redirect" in result) return result;
 
-	const { project } = result;
+	const { project, panels, hasPanels } = result;
+
+	const resource = panels
+		.flatMap((panel) =>
+			arrayify(panel.embedded.niceIndevResourceList.embedded.niceIndevResource)
+		)
+		.find(
+			(resource) =>
+				resource.embedded?.niceIndevFile.resourceTitleId === params?.htmlPath &&
+				resource.showInDocList
+		);
+
+	if (!resource) return { notFound: true };
+
+	const resourceFilePath = resource.embedded.niceIndevFile.links.self[0].href;
+
+	const resourceFileHTML = await getResourceFileHTML(resourceFilePath);
+
+	if (resourceFileHTML == null) return { notFound: true };
 
 	if (!project) return { notFound: true };
 
@@ -95,6 +121,10 @@ export const getServerSideProps: GetServerSideProps<
 				reference,
 				status,
 				title,
+			},
+			resource: {
+				resourceFileHTML,
+				title: resource.title,
 			},
 		},
 	};
