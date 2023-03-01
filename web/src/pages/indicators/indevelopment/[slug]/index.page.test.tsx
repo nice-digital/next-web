@@ -381,10 +381,7 @@ describe("/indevelopment/[slug].page", () => {
 					getServerSideProps(getServerSidePropsContext)
 				).resolves.toStrictEqual({
 					redirect: {
-						destination:
-							//TODO Check that this destination is as expected
-							// "/indicators/gid-ng10237-adrenal-insufficiency-acute-and-long-term-management",
-							"/guidance/gid-ng10237",
+						destination: "/guidance/gid-ng10237",
 						permanent: true,
 					},
 				});
