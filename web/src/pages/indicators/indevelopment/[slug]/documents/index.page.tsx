@@ -6,7 +6,11 @@ import { Breadcrumbs, Breadcrumb } from "@nice-digital/nds-breadcrumbs";
 import { ProjectHorizontalNav } from "@/components/ProjectHorizontalNav/ProjectHorizontalNav";
 import { ProjectPageHeading } from "@/components/ProjectPageHeading/ProjectPageHeading";
 import { ResourceList } from "@/components/ResourceList/ResourceList";
-import { IndevSchedule, ProjectDetail } from "@/feeds/inDev/types";
+import {
+	IndevConsultation,
+	IndevSchedule,
+	ProjectDetail,
+} from "@/feeds/inDev/types";
 import { arrayify, byTitleAlphabetically } from "@/utils/array";
 import { getFileTypeNameFromMime } from "@/utils/file";
 import { validateRouteParams } from "@/utils/project";
@@ -65,7 +69,7 @@ export default function DocumentsPage(props: DocumentsPageProps): JSX.Element {
 			<ProjectHorizontalNav
 				projectPath={props.projectPath}
 				hasDocuments={true}
-				consultations={[{ title: "Consultation 1" }]}
+				consultations={[{}]}
 			/>
 
 			<ResourceList
@@ -100,6 +104,12 @@ export const getServerSideProps: GetServerSideProps<
 		indevStakeholderRegistration = arrayify(
 			project.links.niceIndevStakeholderRegistration
 		);
+
+	// const consultationPanels = panels.filter(
+	// 	(panel) => panel.embedded.niceIndevConsultation
+	// );
+
+	// console.log(consultationPanels);
 
 	const groups = panels.sort(byTitleAlphabetically).map((panel) => {
 		const indevResource =

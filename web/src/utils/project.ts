@@ -9,6 +9,8 @@ import {
 } from "@/feeds/inDev/inDev";
 import { getProjectPath } from "@/utils/url";
 
+import { arrayify } from "./array";
+
 export type ValidateRouteParamsResult =
 	| { notFound: true }
 	| { redirect: Redirect }
@@ -32,9 +34,9 @@ export const validateRouteParams = async (
 	if (!project) return { notFound: true };
 
 	const panels = project
-		? project.embedded.niceIndevPanelList.embedded.niceIndevPanel.filter(
-				(panel) => panel.showPanel && panel.panelType == "History"
-		  )
+		? arrayify(
+				project.embedded.niceIndevPanelList.embedded.niceIndevPanel
+		  ).filter((panel) => panel.showPanel && panel.panelType == "History")
 		: [];
 
 	const projectPath = getProjectPath(project as Project);
