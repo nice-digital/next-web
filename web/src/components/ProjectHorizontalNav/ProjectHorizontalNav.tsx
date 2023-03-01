@@ -25,9 +25,7 @@ export const ProjectHorizontalNav: FC<ProjectHorizontalNavProps> = ({
 		documentsPath = `${projectPath}/documents`,
 		isUnderDocuments = path.indexOf(documentsPath) === 0,
 		consultationsPath = `${projectPath}/consultations`,
-		isUnderConsultations = path.indexOf(consultationsPath) === 0,
-		slug = path.split("/").pop(),
-		isUnderSlug = path.indexOf(slug as string) === 0;
+		isUnderConsultations = path.indexOf(consultationsPath) === 0;
 
 	return (
 		<>
