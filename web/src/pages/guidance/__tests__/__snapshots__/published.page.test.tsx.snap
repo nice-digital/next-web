@@ -906,7 +906,7 @@ exports[`/guidance/published should match the snapshot 1`] = `
                 <tr>
                   <td>
                     <a
-                      href="/guidance/cg181"
+                      href="https://next-web-tests.nice.org.uk/guidance/cg181"
                     >
                       Cardiovascular disease: risk assessment and reduction, including lipid modification
                     </a>
@@ -940,7 +940,7 @@ exports[`/guidance/published should match the snapshot 1`] = `
                 <tr>
                   <td>
                     <a
-                      href="/guidance/ng191"
+                      href="https://next-web-tests.nice.org.uk/guidance/ng191"
                     >
                       COVID-19 rapid guideline: managing COVID-19
                     </a>
@@ -974,7 +974,7 @@ exports[`/guidance/published should match the snapshot 1`] = `
                 <tr>
                   <td>
                     <a
-                      href="/guidance/ng203"
+                      href="https://next-web-tests.nice.org.uk/guidance/ng203"
                     >
                       Chronic kidney disease: assessment and management
                     </a>
@@ -1008,7 +1008,7 @@ exports[`/guidance/published should match the snapshot 1`] = `
                 <tr>
                   <td>
                     <a
-                      href="/guidance/ng204"
+                      href="https://next-web-tests.nice.org.uk/guidance/ng204"
                     >
                       Babies, children and young people's experience of healthcare
                     </a>
@@ -1042,7 +1042,7 @@ exports[`/guidance/published should match the snapshot 1`] = `
                 <tr>
                   <td>
                     <a
-                      href="/guidance/ng202"
+                      href="https://next-web-tests.nice.org.uk/guidance/ng202"
                     >
                       Obstructive sleep apnoea/hypopnoea syndrome and obesity hypoventilation syndrome in over 16s
                     </a>
@@ -1076,7 +1076,7 @@ exports[`/guidance/published should match the snapshot 1`] = `
                 <tr>
                   <td>
                     <a
-                      href="/guidance/ng201"
+                      href="https://next-web-tests.nice.org.uk/guidance/ng201"
                     >
                       Antenatal care
                     </a>
@@ -1110,7 +1110,7 @@ exports[`/guidance/published should match the snapshot 1`] = `
                 <tr>
                   <td>
                     <a
-                      href="/guidance/ng9"
+                      href="https://next-web-tests.nice.org.uk/guidance/ng9"
                     >
                       Bronchiolitis in children: diagnosis and management
                     </a>
@@ -1144,7 +1144,7 @@ exports[`/guidance/published should match the snapshot 1`] = `
                 <tr>
                   <td>
                     <a
-                      href="/guidance/ng200"
+                      href="https://next-web-tests.nice.org.uk/guidance/ng200"
                     >
                       COVID-19 rapid guideline: vaccine-induced immune thrombocytopenia and thrombosis (VITT)
                     </a>
@@ -1178,7 +1178,7 @@ exports[`/guidance/published should match the snapshot 1`] = `
                 <tr>
                   <td>
                     <a
-                      href="/guidance/ng199"
+                      href="https://next-web-tests.nice.org.uk/guidance/ng199"
                     >
                       Clostridioides difficile infection: antimicrobial prescribing
                     </a>
@@ -1212,7 +1212,7 @@ exports[`/guidance/published should match the snapshot 1`] = `
                 <tr>
                   <td>
                     <a
-                      href="/guidance/ng164"
+                      href="https://next-web-tests.nice.org.uk/guidance/ng164"
                     >
                       COVID-19 rapid guideline: haematopoietic stem cell transplantation
                     </a>
