@@ -372,16 +372,18 @@ describe("/indevelopment/[slug].page", () => {
 		describe("Redirects", () => {
 			it("should return permanent redirect object to the published product URL when project status is 'Complete'", async () => {
 				axiosJSONMock.reset();
-				axiosJSONMock
-					.onGet(new RegExp(FeedPath.ProjectDetail))
-					.reply(200, { ...gidng10237, status: "Complete" });
+				axiosJSONMock.onGet(new RegExp(FeedPath.ProjectDetail)).reply(200, {
+					...gidng10237,
+					status: "Complete",
+					reference: "NG10237",
+				});
 				addDefaultJSONFeedMocks();
 
 				await expect(
 					getServerSideProps(getServerSidePropsContext)
 				).resolves.toStrictEqual({
 					redirect: {
-						destination: "/guidance/gid-ng10237",
+						destination: "/guidance/ng10237",
 						permanent: true,
 					},
 				});

@@ -235,8 +235,8 @@ export default function InDevelopmentPage(
 export const getServerSideProps: GetServerSideProps<
 	InDevelopmentPageProps,
 	{ slug: string }
-> = async ({ params }) => {
-	const result = await validateRouteParams(params);
+> = async ({ params, resolvedUrl }) => {
+	const result = await validateRouteParams({ params, resolvedUrl });
 
 	if ("notFound" in result || "redirect" in result) return result;
 

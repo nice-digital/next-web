@@ -9,6 +9,10 @@ import { ProductTypeAcronym } from "@/feeds/publications/types";
 
 import { getProductPath } from "./url";
 
+export type ValidateRouteParamsArgs = {
+	params: { slug: string } | undefined;
+	resolvedUrl: string;
+};
 export type ValidateRouteParamsResult =
 	| { notFound: true }
 	| { redirect: Redirect }
@@ -16,9 +20,10 @@ export type ValidateRouteParamsResult =
 			project: ProjectDetail;
 	  };
 
-export const validateRouteParams = async (
-	params: { slug: string } | undefined
-): Promise<ValidateRouteParamsResult> => {
+export const validateRouteParams = async ({
+	params,
+	resolvedUrl,
+}: ValidateRouteParamsArgs): Promise<ValidateRouteParamsResult> => {
 	if (!params || !params.slug) return { notFound: true };
 
 	// Slug is project reference - something like "GID-TA11036"

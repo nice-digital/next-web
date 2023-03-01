@@ -2,9 +2,12 @@ import { validateRouteParams } from "./project";
 
 describe("project utils", () => {
 	describe("validateRouteParams", () => {
-		it.skip("should return not found when project is not found", async () => {
+		it("should return not found when project is not found", async () => {
 			const result = await validateRouteParams({
-				slug: "abc123",
+				params: {
+					slug: "gid-abc123",
+				},
+				resolvedUrl: "/anything",
 			});
 
 			expect(result).toStrictEqual({
@@ -13,7 +16,10 @@ describe("project utils", () => {
 		});
 		it("should return a permanent redirect object to the published product URL when project status = 'Complete'", async () => {
 			const result = await validateRouteParams({
-				slug: "ind60",
+				params: {
+					slug: "ind60",
+				},
+				resolvedUrl: "/anything",
 			});
 
 			expect(result).toStrictEqual({
