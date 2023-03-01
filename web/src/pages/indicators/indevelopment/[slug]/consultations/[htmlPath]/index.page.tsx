@@ -4,6 +4,7 @@ import React from "react";
 
 import { Breadcrumbs, Breadcrumb } from "@nice-digital/nds-breadcrumbs";
 
+import { ProjectHorizontalNav } from "@/components/ProjectHorizontalNav/ProjectHorizontalNav";
 import { ProjectPageHeading } from "@/components/ProjectPageHeading/ProjectPageHeading";
 import { getResourceFileHTML } from "@/feeds/inDev/inDev";
 import { IndevSchedule, ProjectDetail } from "@/feeds/inDev/types";
@@ -11,12 +12,14 @@ import { arrayify } from "@/utils/array";
 import { validateRouteParams } from "@/utils/project";
 
 export type DocumentHTMLPageProps = {
+	consultationUrls: string[];
 	indevScheduleItems?: IndevSchedule[];
 	indevStakeholderRegistration: Record<string, unknown>[];
 	project: Pick<
 		ProjectDetail,
 		"projectType" | "reference" | "title" | "status"
 	>;
+	projectPath: string;
 	resource: {
 		resourceFileHTML: string;
 		title: string;
@@ -65,6 +68,12 @@ export default function HistoryHTMLPage(
 				indevStakeholderRegistration={props.indevStakeholderRegistration}
 			/>
 
+			<ProjectHorizontalNav
+				projectPath={props.projectPath}
+				hasDocuments={true}
+				consultationUrls={props.consultationUrls}
+			/>
+
 			<div
 				dangerouslySetInnerHTML={{ __html: props.resource.resourceFileHTML }}
 			></div>
@@ -80,7 +89,7 @@ export const getServerSideProps: GetServerSideProps<
 
 	if ("notFound" in result || "redirect" in result) return result;
 
-	const { project, panels, hasPanels } = result;
+	const { project, projectPath, panels, hasPanels, consultationUrls } = result;
 
 	const resource = panels
 		.flatMap((panel) =>
@@ -114,6 +123,7 @@ export const getServerSideProps: GetServerSideProps<
 
 	return {
 		props: {
+			consultationUrls,
 			indevScheduleItems,
 			indevStakeholderRegistration,
 			project: {
@@ -122,6 +132,7 @@ export const getServerSideProps: GetServerSideProps<
 				status,
 				title,
 			},
+			projectPath,
 			resource: {
 				resourceFileHTML,
 				title: resource.title,

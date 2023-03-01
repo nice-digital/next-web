@@ -5,6 +5,7 @@ import { Breadcrumbs, Breadcrumb } from "@nice-digital/nds-breadcrumbs";
 
 import { DefinitionList } from "@/components/DefinitionList/DefinitionList";
 import { Link } from "@/components/Link/Link";
+import { ProjectHorizontalNav } from "@/components/ProjectHorizontalNav/ProjectHorizontalNav";
 import { ProjectInformation } from "@/components/ProjectInformation/ProjectInformation";
 import { ProjectPageHeading } from "@/components/ProjectPageHeading/ProjectPageHeading";
 import { Stakeholders } from "@/components/ProjectStakeholders/ProjectStakeholders";
@@ -55,6 +56,7 @@ export type InDevelopmentPageProps = {
 	indevTimelineItems?: IndevTimeline[];
 	indevTopicItems?: IndevTopic[];
 	process: string;
+	projectPath: string;
 	projectType: string | null;
 	reference: string;
 	referralDate: string | null;
@@ -92,6 +94,7 @@ export default function InDevelopmentPage(
 		indevTopicItems,
 		partialUpdates,
 		process,
+		projectPath,
 		projectType,
 		reference,
 		referralDate,
@@ -130,6 +133,12 @@ export default function InDevelopmentPage(
 				<Breadcrumb>{reference}</Breadcrumb>
 			</Breadcrumbs>
 			<ProjectPageHeading {...props} />
+
+			<ProjectHorizontalNav
+				projectPath={projectPath}
+				hasDocuments={true}
+				consultationUrls={props.consultationUrls}
+			/>
 
 			<ProjectInformation {...props} />
 
@@ -242,7 +251,7 @@ export const getServerSideProps: GetServerSideProps<
 
 	if ("notFound" in result || "redirect" in result) return result;
 
-	const { project, consultationUrls } = result;
+	const { project, projectPath, consultationUrls } = result;
 
 	const {
 		description,
@@ -374,6 +383,7 @@ export const getServerSideProps: GetServerSideProps<
 			indevTimelineItems,
 			indevTopicItems,
 			process,
+			projectPath,
 			projectType,
 			reference,
 			referralDate,
