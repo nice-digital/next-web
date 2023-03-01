@@ -13,7 +13,7 @@ import { Link } from "../Link/Link";
 import { ProjectConsultationDocumentsLink } from "../ProjectConsultationDocumentsLink/ProjectConsultationDocuments";
 
 export type ProjectInformationProps = {
-	consultationPanels: IndevConsultation[];
+	consultationUrls: string[];
 	description: string | null;
 	idNumber: string | null;
 	process: string | null;
@@ -35,7 +35,7 @@ export type ProjectInformationProps = {
 };
 
 export const ProjectInformation: FC<ProjectInformationProps> = ({
-	consultationPanels,
+	consultationUrls,
 	description,
 	idNumber,
 	process,
@@ -97,9 +97,7 @@ export const ProjectInformation: FC<ProjectInformationProps> = ({
 					<>{suspendDiscontinuedUrlText}</>
 				</Link>
 			)}
-			<ProjectConsultationDocumentsLink
-				consultationPanels={consultationPanels}
-			/>
+			<ProjectConsultationDocumentsLink consultationUrls={consultationUrls} />
 			<DefinitionList ariaLabel="Project information">
 				{status && (
 					<>

@@ -15,8 +15,9 @@ export type ValidateRouteParamsResult =
 	| { notFound: true }
 	| { redirect: Redirect }
 	| {
+			consultationUrls: string[];
 			project: ProjectDetail;
-			projectPath: string | null;
+			projectPath: string;
 			panels: IndevPanel[];
 			hasPanels: boolean;
 	  };
@@ -33,13 +34,9 @@ export const validateRouteParams = async (
 
 	if (!project) return { notFound: true };
 
-	const panels = project
-		? arrayify(
-				project.embedded.niceIndevPanelList.embedded.niceIndevPanel
-		  ).filter((panel) => panel.showPanel && panel.panelType == "History")
-		: [];
-
 	const projectPath = getProjectPath(project as Project);
+
+	if (!projectPath) return { notFound: true };
 
 	// if project status is complete it is not in development and should redirect to the published product
 	if (project.status == ProjectStatus.Complete) {
@@ -51,7 +48,22 @@ export const validateRouteParams = async (
 		};
 	}
 
+	const panels = project
+		? arrayify(
+				project.embedded.niceIndevPanelList.embedded.niceIndevPanel
+		  ).filter((panel) => panel.showPanel && panel.panelType == "History")
+		: [];
+
+	const consultationUrls = panels
+		.filter((panel) => panel.embedded.niceIndevConsultation)
+		.flatMap((panel) => arrayify(panel.embedded.niceIndevConsultation))
+		.map(
+			(consultation) =>
+				`${projectPath}/consultations/${consultation.resourceTitleId}`
+		);
+
 	return {
+		consultationUrls,
 		projectPath,
 		project,
 		panels,

@@ -23,8 +23,8 @@ export const getProjectPath = (project: Project): string | null =>
 	project.projectGroup == ProductGroup.Advice
 		? null
 		: project.status === ProjectStatus.Proposed
-		? `/guidance/awaiting-development/${project.reference.toLowerCase()}`
-		: `/guidance/indevelopment/${project.reference.toLowerCase()}`;
+		? `/indicators/awaiting-development/${project.reference.toLowerCase()}`
+		: `/indicators/indevelopment/${project.reference.toLowerCase()}`;
 
 export const getProductSlug = (
 	product: Pick<ProductLite, "id" | "productType" | "title">

@@ -6,11 +6,7 @@ import { Breadcrumbs, Breadcrumb } from "@nice-digital/nds-breadcrumbs";
 import { ProjectHorizontalNav } from "@/components/ProjectHorizontalNav/ProjectHorizontalNav";
 import { ProjectPageHeading } from "@/components/ProjectPageHeading/ProjectPageHeading";
 import { ResourceList } from "@/components/ResourceList/ResourceList";
-import {
-	IndevConsultation,
-	IndevSchedule,
-	ProjectDetail,
-} from "@/feeds/inDev/types";
+import { IndevSchedule, ProjectDetail } from "@/feeds/inDev/types";
 import { arrayify, byTitleAlphabetically } from "@/utils/array";
 import { getFileTypeNameFromMime } from "@/utils/file";
 import { validateRouteParams } from "@/utils/project";
@@ -20,6 +16,7 @@ import {
 } from "@/utils/resource";
 
 export type DocumentsPageProps = {
+	consultationUrls: string[];
 	indevScheduleItems?: IndevSchedule[];
 	indevStakeholderRegistration: Record<string, unknown>[];
 	projectPath: string;
@@ -69,7 +66,7 @@ export default function DocumentsPage(props: DocumentsPageProps): JSX.Element {
 			<ProjectHorizontalNav
 				projectPath={props.projectPath}
 				hasDocuments={true}
-				consultations={[{}]}
+				consultationUrls={props.consultationUrls}
 			/>
 
 			<ResourceList
@@ -89,7 +86,7 @@ export const getServerSideProps: GetServerSideProps<
 
 	if ("notFound" in result || "redirect" in result) return result;
 
-	const { project, projectPath, panels, hasPanels } = result;
+	const { project, projectPath, panels, hasPanels, consultationUrls } = result;
 
 	if (!project) return { notFound: true };
 
@@ -104,12 +101,6 @@ export const getServerSideProps: GetServerSideProps<
 		indevStakeholderRegistration = arrayify(
 			project.links.niceIndevStakeholderRegistration
 		);
-
-	// const consultationPanels = panels.filter(
-	// 	(panel) => panel.embedded.niceIndevConsultation
-	// );
-
-	// console.log(consultationPanels);
 
 	const groups = panels.sort(byTitleAlphabetically).map((panel) => {
 		const indevResource =
@@ -161,6 +152,7 @@ export const getServerSideProps: GetServerSideProps<
 
 	return {
 		props: {
+			consultationUrls,
 			indevScheduleItems,
 			indevStakeholderRegistration,
 			projectPath,

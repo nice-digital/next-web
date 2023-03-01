@@ -6,21 +6,19 @@ import {
 	HorizontalNavLink,
 } from "@nice-digital/nds-horizontal-nav";
 
-import { type Consultation } from "@/feeds/inDev/types";
-
 import { ScrollToContentStartLink } from "../Link/Link";
 
 export type ProjectHorizontalNavProps = {
 	/** The nav label for the project overview */
 	projectPath: string;
 	hasDocuments: boolean;
-	consultations: Consultation[];
+	consultationUrls?: string[];
 };
 
 export const ProjectHorizontalNav: FC<ProjectHorizontalNavProps> = ({
 	projectPath,
 	hasDocuments,
-	consultations,
+	consultationUrls,
 }) => {
 	const { asPath } = useRouter(),
 		path = asPath.replace(/#.*/, ""),
@@ -30,33 +28,40 @@ export const ProjectHorizontalNav: FC<ProjectHorizontalNavProps> = ({
 		isUnderConsultations = path.indexOf(consultationsPath) === 0;
 
 	return (
-		<HorizontalNav>
-			<HorizontalNavLink
-				destination={projectPath}
-				elementType={ScrollToContentStartLink}
-				isCurrent={!isUnderDocuments && !isUnderConsultations}
-			>
-				Project Information
-			</HorizontalNavLink>
-			{hasDocuments ? (
+		<>
+			<HorizontalNav>
 				<HorizontalNavLink
-					destination={`${projectPath}/documents`}
+					destination={projectPath}
 					elementType={ScrollToContentStartLink}
-					isCurrent={isUnderDocuments}
+					isCurrent={!isUnderDocuments && !isUnderConsultations}
 				>
-					Project Documents
+					Project Information
 				</HorizontalNavLink>
-			) : null}
+				{hasDocuments ? (
+					<HorizontalNavLink
+						destination={`${projectPath}/documents`}
+						elementType={ScrollToContentStartLink}
+						isCurrent={isUnderDocuments}
+					>
+						Project Documents
+					</HorizontalNavLink>
+				) : null}
 
-			{consultations.length >= 1 ? (
-				<HorizontalNavLink
-					destination={`${projectPath}/consultations`}
-					elementType={ScrollToContentStartLink}
-					isCurrent={false}
-				>
-					Consultation - TODO
-				</HorizontalNavLink>
-			) : null}
-		</HorizontalNav>
+				{consultationUrls && consultationUrls.length >= 1
+					? consultationUrls.map((url, index) => (
+							<HorizontalNavLink
+								destination={url}
+								elementType={ScrollToContentStartLink}
+								isCurrent={false}
+								key={`consultationLink_${index}`}
+							>
+								{consultationUrls.length > 1
+									? `Consultation ${index + 1}`
+									: "Consulation"}
+							</HorizontalNavLink>
+					  ))
+					: null}
+			</HorizontalNav>
+		</>
 	);
 };

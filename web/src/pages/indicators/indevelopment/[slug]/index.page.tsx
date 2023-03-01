@@ -36,7 +36,7 @@ import { getProductPath } from "@/utils/url";
 import styles from "./index.module.scss";
 
 export type InDevelopmentPageProps = {
-	consultationPanels: IndevConsultation[] | [];
+	consultationUrls: string[];
 	description: string | null;
 	developedAs: string;
 	evidenceAssessmentGroup: string | null;
@@ -74,7 +74,7 @@ export default function InDevelopmentPage(
 	props: InDevelopmentPageProps
 ): JSX.Element {
 	const {
-		consultationPanels,
+		consultationUrls,
 		description,
 		evidenceAssessmentGroup,
 		fullUpdates,
@@ -242,7 +242,7 @@ export const getServerSideProps: GetServerSideProps<
 
 	if ("notFound" in result || "redirect" in result) return result;
 
-	const { project } = result;
+	const { project, consultationUrls } = result;
 
 	const {
 		description,
@@ -265,21 +265,7 @@ export const getServerSideProps: GetServerSideProps<
 		topicSelectionReason,
 	} = project;
 
-	const consultationHistoryPanels = arrayify(
-			project.embedded.niceIndevPanelList?.embedded?.niceIndevPanel
-		).filter(
-			(panel) =>
-				panel.showPanel &&
-				panel.embedded.niceIndevConsultation &&
-				panel.panelType == "History"
-		),
-		consultationPanels = consultationHistoryPanels.flatMap(
-			(panel) =>
-				arrayify(panel.embedded.niceIndevConsultation).find(
-					(consultation) => consultation.reference === project.reference
-				) || []
-		),
-		indevStakeholderRegistration = arrayify(
+	const indevStakeholderRegistration = arrayify(
 			project.links.niceIndevStakeholderRegistration
 		),
 		indevFullUpdate =
@@ -369,7 +355,7 @@ export const getServerSideProps: GetServerSideProps<
 
 	return {
 		props: {
-			consultationPanels,
+			consultationUrls,
 			description,
 			developedAs,
 			evidenceAssessmentGroup,
