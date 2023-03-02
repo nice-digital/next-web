@@ -1,10 +1,6 @@
 import React, { type FC } from "react";
 
-import {
-	IndevConsultation,
-	ProjectStatus,
-	TopicSelectionReason,
-} from "@/feeds/inDev/types";
+import { ProjectStatus, TopicSelectionReason } from "@/feeds/inDev/types";
 import { ProductTypeAcronym } from "@/feeds/publications/types";
 import { formatDateStr, stripTime } from "@/utils/datetime";
 
@@ -52,8 +48,6 @@ export const ProjectInformation: FC<ProjectInformationProps> = ({
 	topicSelectionFurtherInfo,
 }) => {
 	let topicSelectionReasonText;
-
-	console.log(consultationUrls);
 
 	switch (topicSelectionReason) {
 		case "Monitor":
