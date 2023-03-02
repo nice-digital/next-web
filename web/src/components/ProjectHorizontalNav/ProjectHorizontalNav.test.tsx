@@ -9,7 +9,11 @@ import {
 const props: ProjectHorizontalNavProps = {
 	projectPath: "/indicators/ind1-test",
 	hasDocuments: true,
-	consultations: [{ title: "consultation 1" }],
+	consultationUrls: [
+		"/indicators/indevelopment/gid-ipg10316/consultations/html-content-4",
+		"/indicators/indevelopment/gid-ipg10316/consultations/html-content-2",
+		"/indicators/indevelopment/gid-ipg10316/consultations/html-content",
+	],
 };
 
 const useRouterMock = jest.mocked(useRouter);

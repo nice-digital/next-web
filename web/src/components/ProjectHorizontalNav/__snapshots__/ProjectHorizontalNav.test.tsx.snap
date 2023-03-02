@@ -30,6 +30,39 @@ exports[`ProjectHorizontalNav should match snapshot for all nav items 1`] = `
           Project Documents
         </a>
       </li>
+      <li
+        class="horizontal-nav__item"
+      >
+        <a
+          aria-current="false"
+          class="horizontal-nav__link"
+          href="/indicators/indevelopment/gid-ipg10316/consultations/html-content-4"
+        >
+          Consultation 1
+        </a>
+      </li>
+      <li
+        class="horizontal-nav__item"
+      >
+        <a
+          aria-current="false"
+          class="horizontal-nav__link"
+          href="/indicators/indevelopment/gid-ipg10316/consultations/html-content-2"
+        >
+          Consultation 2
+        </a>
+      </li>
+      <li
+        class="horizontal-nav__item"
+      >
+        <a
+          aria-current="false"
+          class="horizontal-nav__link"
+          href="/indicators/indevelopment/gid-ipg10316/consultations/html-content"
+        >
+          Consultation 3
+        </a>
+      </li>
     </ul>
   </nav>
 </div>

@@ -16,7 +16,6 @@ import {
 } from "@/components/ProjectUpdates/ProjectUpdates";
 import {
 	IndevCommentator,
-	IndevConsultation,
 	IndevConsultee,
 	IndevLegacyStakeholder,
 	IndevProjectRelatedLink,

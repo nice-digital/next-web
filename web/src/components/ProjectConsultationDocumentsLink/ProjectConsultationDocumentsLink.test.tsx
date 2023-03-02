@@ -16,7 +16,7 @@ const props: ProjectConsultationDocumentsLinkProps = {
 };
 
 describe("ProjectConsultationDocumentsLink", () => {
-	it.only("should render a single document link when there is one consultations active", async () => {
+	it("should render a single document link when there is one consultations active", async () => {
 		const singleConsultation = [...consultationUrls];
 		singleConsultation.length = 1;
 

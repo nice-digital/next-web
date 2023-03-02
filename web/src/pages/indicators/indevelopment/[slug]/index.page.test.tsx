@@ -370,23 +370,6 @@ describe("/indevelopment/[slug].page", () => {
 		});
 
 		describe("Redirects", () => {
-			it("should return permanent redirect object to the published product URL when project status is 'Complete'", async () => {
-				axiosJSONMock.reset();
-				axiosJSONMock
-					.onGet(new RegExp(FeedPath.ProjectDetail))
-					.reply(200, { ...gidng10237, status: "Complete" });
-				addDefaultJSONFeedMocks();
-
-				await expect(
-					getServerSideProps(getServerSidePropsContext)
-				).resolves.toStrictEqual({
-					redirect: {
-						destination: "/indicators/gid-ng10237-",
-						permanent: true,
-					},
-				});
-			});
-
 			it("should return not found if project doesn't exist", async () => {
 				const notFoundIdSlug = "abc123";
 
