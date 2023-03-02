@@ -14,7 +14,7 @@ exports[`ProjectHorizontalNav should match snapshot for all nav items 1`] = `
         <a
           aria-current="true"
           class="horizontal-nav__link"
-          href="/indicators/ind1-test"
+          href="/indicators/indevelopment/ind1-test"
         >
           Project Information
         </a>
@@ -25,7 +25,7 @@ exports[`ProjectHorizontalNav should match snapshot for all nav items 1`] = `
         <a
           aria-current="false"
           class="horizontal-nav__link"
-          href="/indicators/ind1-test/documents"
+          href="/indicators/indevelopment/ind1-test/documents"
         >
           Project Documents
         </a>
@@ -36,7 +36,7 @@ exports[`ProjectHorizontalNav should match snapshot for all nav items 1`] = `
         <a
           aria-current="false"
           class="horizontal-nav__link"
-          href="/indicators/indevelopment/gid-ipg10316/consultations/html-content-4"
+          href="/indicators/indevelopment/gid-ind1-test/consultations/html-content-4"
         >
           Consultation 1
         </a>
@@ -47,7 +47,7 @@ exports[`ProjectHorizontalNav should match snapshot for all nav items 1`] = `
         <a
           aria-current="false"
           class="horizontal-nav__link"
-          href="/indicators/indevelopment/gid-ipg10316/consultations/html-content-2"
+          href="/indicators/indevelopment/gid-ind1-test/consultations/html-content-2"
         >
           Consultation 2
         </a>
@@ -58,7 +58,7 @@ exports[`ProjectHorizontalNav should match snapshot for all nav items 1`] = `
         <a
           aria-current="false"
           class="horizontal-nav__link"
-          href="/indicators/indevelopment/gid-ipg10316/consultations/html-content"
+          href="/indicators/indevelopment/gid-ind1-test/consultations/html-content"
         >
           Consultation 3
         </a>

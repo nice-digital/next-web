@@ -57,7 +57,7 @@ export const ProjectHorizontalNav: FC<ProjectHorizontalNavProps> = ({
 							>
 								{consultationUrls.length > 1
 									? `Consultation ${index + 1}`
-									: "Consulation"}
+									: "Consultation"}
 							</HorizontalNavLink>
 					  ))
 					: null}
