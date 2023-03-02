@@ -53,6 +53,8 @@ export const ProjectInformation: FC<ProjectInformationProps> = ({
 }) => {
 	let topicSelectionReasonText;
 
+	console.log(consultationUrls);
+
 	switch (topicSelectionReason) {
 		case "Monitor":
 			topicSelectionReasonText = TopicSelectionReason.Monitor;

@@ -30,17 +30,6 @@ exports[`ProjectHorizontalNav should match snapshot for all nav items 1`] = `
           Project Documents
         </a>
       </li>
-      <li
-        class="horizontal-nav__item"
-      >
-        <a
-          aria-current="false"
-          class="horizontal-nav__link"
-          href="/indicators/ind1-test/consultations"
-        >
-          Consultation - TODO
-        </a>
-      </li>
     </ul>
   </nav>
 </div>

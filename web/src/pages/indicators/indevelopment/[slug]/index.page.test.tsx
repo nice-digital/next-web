@@ -291,7 +291,7 @@ describe("/indevelopment/[slug].page", () => {
 			const provisionalScheduleItems = getAllByRole("definition");
 			expect(provisionalScheduleItems.length).toBe(2);
 			expect(getByText("Committee meeting: 2").tagName).toBe("DT");
-			expect(getByText("18 January 2023").tagName).toBe("DD");
+			expect(getByText("16 February 2023").tagName).toBe("DD");
 		});
 
 		it("should render project status formatted display name", () => {
@@ -336,7 +336,7 @@ describe("/indevelopment/[slug].page", () => {
 
 			expect(consultationLink).toHaveAttribute(
 				"href",
-				"/indicators/indevelopment/guidance/GID-IPG10305/consultation/html-content"
+				"/indicators/indevelopment/gid-ipg10305/consultations/html-content"
 			);
 		});
 

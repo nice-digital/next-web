@@ -50,7 +50,7 @@ export const validateRouteParams = async (
 
 	const panels = project
 		? arrayify(
-				project.embedded.niceIndevPanelList.embedded.niceIndevPanel
+				project.embedded?.niceIndevPanelList?.embedded?.niceIndevPanel
 		  ).filter((panel) => panel.showPanel && panel.panelType == "History")
 		: [];
 

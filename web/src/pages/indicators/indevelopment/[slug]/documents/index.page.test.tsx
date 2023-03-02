@@ -68,12 +68,12 @@ describe("/indicators/indevelopment/[slug]/documents", () => {
 
 			expect(
 				result.props.project.groups[0].subGroups[0].resourceLinks[0].href
-			).toEqual("/guidance/indevelopment/gid-dg10049/documents/html-content");
+			).toEqual("/indicators/indevelopment/gid-dg10049/documents/html-content");
 
 			expect(
 				result.props.project.groups[3].subGroups[0].resourceLinks[1].href
 			).toEqual(
-				"/guidance/indevelopment/gid-dg10049/documents/downloads/gid-dg10049-final-scope.pdf"
+				"/indicators/indevelopment/gid-dg10049/documents/downloads/gid-dg10049-final-scope.pdf"
 			);
 		});
 	});
