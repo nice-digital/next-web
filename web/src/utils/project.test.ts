@@ -1,3 +1,7 @@
+import { FeedPath } from "@/feeds/inDev/types";
+import ind60 from "@/mockData/inDev/project/ind60.json";
+import { addDefaultJSONFeedMocks, axiosJSONMock } from "@/test-utils/feeds";
+
 import { validateRouteParams } from "./project";
 
 describe("project utils", () => {
@@ -14,12 +18,21 @@ describe("project utils", () => {
 				notFound: true,
 			});
 		});
-		it("should return a permanent redirect object to the published product URL when project status = 'Complete'", async () => {
+
+		it("should return a permanent redirect object to the published product URL when project status is 'Complete'", async () => {
+			axiosJSONMock.reset();
+			axiosJSONMock.onGet(new RegExp(FeedPath.ProjectDetail)).reply(200, {
+				...ind60,
+				status: "Complete",
+				reference: "IND60",
+			});
+			addDefaultJSONFeedMocks();
+
 			const result = await validateRouteParams({
 				params: {
-					slug: "ind60",
+					slug: "IND60",
 				},
-				resolvedUrl: "/anything",
+				resolvedUrl: "/indicators/indevelopment/ind60-resource-products",
 			});
 
 			expect(result).toStrictEqual({
