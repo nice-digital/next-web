@@ -31,8 +31,9 @@ export default function HistoryHTMLPage(
 ): JSX.Element {
 	return (
 		<>
+			{/* TODO - make consultation title dynamic */}
 			<NextSeo
-				title={`TODO-HTMLpagetitle | Consultations | ${props.project.title} | Indicators | Standards and Indicators`}
+				title={`Consultation | Consultations | ${props.project.title} | Indicators | Standards and Indicators`}
 			/>
 
 			<Breadcrumbs>
@@ -56,7 +57,8 @@ export default function HistoryHTMLPage(
 				>
 					Consultations
 				</Breadcrumb>
-				<Breadcrumb>TODO-htmldoc title</Breadcrumb>
+				{/* TODO - make consultation title dynamic */}
+				<Breadcrumb>Consultation</Breadcrumb>
 			</Breadcrumbs>
 
 			<ProjectPageHeading
