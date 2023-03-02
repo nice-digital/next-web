@@ -26,7 +26,7 @@ export type DocumentHTMLPageProps = {
 	};
 };
 
-export default function HistoryHTMLPage(
+export default function ConsultationHTMLPage(
 	props: DocumentHTMLPageProps
 ): JSX.Element {
 	return (
