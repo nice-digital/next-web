@@ -1,4 +1,5 @@
 import { NextSeo } from "next-seo";
+import { useRouter } from "next/router";
 import { type GetServerSideProps } from "next/types";
 import React from "react";
 
@@ -29,11 +30,23 @@ export type DocumentHTMLPageProps = {
 export default function ConsultationHTMLPage(
 	props: DocumentHTMLPageProps
 ): JSX.Element {
+	const { asPath } = useRouter(),
+		path = asPath.replace(/#.*/, "");
+
+	const calculateConsultationTitle = () => {
+		if (props.consultationUrls.length > 1) {
+			return `Consultation ${props.consultationUrls.indexOf(path) + 1}`;
+		} else {
+			return "Consultation";
+		}
+	};
+
 	return (
 		<>
-			{/* TODO - make consultation title dynamic */}
 			<NextSeo
-				title={`Consultation | Consultations | ${props.project.title} | Indicators | Standards and Indicators`}
+				title={`${calculateConsultationTitle()} | Consultations | ${
+					props.project.title
+				} | Indicators | Standards and Indicators`}
 			/>
 
 			<Breadcrumbs>
@@ -57,8 +70,7 @@ export default function ConsultationHTMLPage(
 				>
 					Consultations
 				</Breadcrumb>
-				{/* TODO - make consultation title dynamic */}
-				<Breadcrumb>Consultation</Breadcrumb>
+				<Breadcrumb>{calculateConsultationTitle()}</Breadcrumb>
 			</Breadcrumbs>
 
 			<ProjectPageHeading
