@@ -3,7 +3,6 @@ import { type Redirect } from "next";
 import {
 	getProjectDetail,
 	IndevPanel,
-	Project,
 	ProjectDetail,
 	ProjectStatus,
 } from "@/feeds/inDev/inDev";

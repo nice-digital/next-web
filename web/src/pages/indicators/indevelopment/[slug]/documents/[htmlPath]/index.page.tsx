@@ -71,12 +71,12 @@ export default function HistoryHTMLPage(
 export const getServerSideProps: GetServerSideProps<
 	DocumentHTMLPageProps,
 	{ slug: string; htmlPath: string }
-> = async ({ params, resolvedUrl, query }) => {
+> = async ({ params, resolvedUrl }) => {
 	const result = await validateRouteParams({ params, resolvedUrl });
 
 	if ("notFound" in result || "redirect" in result) return result;
 
-	const { project, panels, hasPanels } = result;
+	const { project, panels } = result;
 
 	const resource = panels
 		.flatMap((panel) =>

@@ -74,11 +74,8 @@ export default function InDevelopmentPage(
 	props: InDevelopmentPageProps
 ): JSX.Element {
 	const {
-		consultationUrls,
-		description,
 		evidenceAssessmentGroup,
 		fullUpdates,
-		idNumber,
 		indevCommentators,
 		indevConsultees,
 		indevEmailEnquiries,
@@ -87,24 +84,12 @@ export default function InDevelopmentPage(
 		indevProjectTeamMembers,
 		indevProjectRelatedLinks,
 		indevScheduleItems,
-		indevStakeholderRegistration,
 		indevTimelineItems,
 		indevTopicItems,
 		partialUpdates,
-		process,
 		projectPath,
-		projectType,
 		reference,
-		referralDate,
-		suspendDiscontinuedReason,
-		suspendDiscontinuedUrl,
-		suspendDiscontinuedUrlText,
-		status,
-		summary,
-		technologyType,
 		title,
-		topicSelectionReason,
-		topicSelectionFurtherInfo,
 	} = props;
 
 	return (

@@ -57,12 +57,8 @@ export default function ConsultationHTMLPage(
 				<Breadcrumb to="/standards-and-indicators/indicators">
 					Indicators
 				</Breadcrumb>
-				<Breadcrumb to="/indicators/indevelopment">
-					In development
-				</Breadcrumb>
-				<Breadcrumb
-					to={`/indicators/indevelopment/${props.project.reference}`}
-				>
+				<Breadcrumb to="/indicators/indevelopment">In development</Breadcrumb>
+				<Breadcrumb to={`/indicators/indevelopment/${props.project.reference}`}>
 					{props.project.reference}
 				</Breadcrumb>
 				<Breadcrumb
@@ -98,12 +94,12 @@ export default function ConsultationHTMLPage(
 export const getServerSideProps: GetServerSideProps<
 	DocumentHTMLPageProps,
 	{ slug: string; htmlPath: string }
-> = async ({ params, resolvedUrl, query }) => {
-	const result = await validateRouteParams(params, resolvedUrl);
+> = async ({ params, resolvedUrl }) => {
+	const result = await validateRouteParams({ params, resolvedUrl });
 
 	if ("notFound" in result || "redirect" in result) return result;
 
-	const { project, projectPath, panels, hasPanels, consultationUrls } = result;
+	const { project, projectPath, panels, consultationUrls } = result;
 
 	const resource = panels
 		.flatMap((panel) =>
