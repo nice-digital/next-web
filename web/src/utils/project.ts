@@ -7,10 +7,15 @@ import {
 	ProjectDetail,
 	ProjectStatus,
 } from "@/feeds/inDev/inDev";
-import { getProjectPath } from "@/utils/url";
+import { ProductTypeAcronym } from "@/feeds/publications/types";
+import { getProjectPath, getProductPath } from "@/utils/url";
 
 import { arrayify } from "./array";
 
+export type ValidateRouteParamsArgs = {
+	params: { slug: string } | undefined;
+	resolvedUrl: string;
+};
 export type ValidateRouteParamsResult =
 	| { notFound: true }
 	| { redirect: Redirect }
@@ -22,10 +27,10 @@ export type ValidateRouteParamsResult =
 			hasPanels: boolean;
 	  };
 
-export const validateRouteParams = async (
-	params: { slug: string } | undefined,
-	_resolvedUrl: string
-): Promise<ValidateRouteParamsResult> => {
+export const validateRouteParams = async ({
+	params,
+	resolvedUrl,
+}: ValidateRouteParamsArgs): Promise<ValidateRouteParamsResult> => {
 	if (!params || !params.slug) return { notFound: true };
 
 	// Slug is project reference - something like "GID-TA11036"
@@ -34,15 +39,22 @@ export const validateRouteParams = async (
 
 	if (!project) return { notFound: true };
 
-	const projectPath = getProjectPath(project as Project);
+	const projectPath = getProjectPath(project);
 
 	if (!projectPath) return { notFound: true };
 
 	// if project status is complete it is not in development and should redirect to the published product
 	if (project.status == ProjectStatus.Complete) {
+		const productPath = getProductPath({
+			productGroup: project.projectGroup,
+			id: project.reference,
+			productType: project.projectType as unknown as ProductTypeAcronym,
+			title: project.title,
+		});
+
 		return {
 			redirect: {
-				destination: `${projectPath}`,
+				destination: `${productPath}`,
 				permanent: true,
 			},
 		};

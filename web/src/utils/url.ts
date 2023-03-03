@@ -1,6 +1,6 @@
 import libSlugify from "@sindresorhus/slugify";
 
-import { type Project, ProjectStatus } from "@/feeds/inDev/types";
+import { ProjectStatus, type ProjectDetail } from "@/feeds/inDev/types";
 import {
 	ProductGroup,
 	ProductTypeAcronym,
@@ -19,7 +19,9 @@ export const slugify = libSlugify;
  * @param project The indev project for which to get the URL
  * @returns The path of the project, relative to the root
  */
-export const getProjectPath = (project: Project): string | null =>
+export const getProjectPath = (
+	project: Pick<ProjectDetail, "projectGroup" | "status" | "reference">
+): string | null =>
 	project.projectGroup == ProductGroup.Advice
 		? null
 		: project.status === ProjectStatus.Proposed

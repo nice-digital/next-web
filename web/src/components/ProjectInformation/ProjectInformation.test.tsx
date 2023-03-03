@@ -24,7 +24,6 @@ const props: ProjectInformationProps = {
 	suspendDiscontinuedUrl: "suspend url",
 	suspendDiscontinuedUrlText: "suspend disontinued text",
 	technologyType: "tech type",
-	topicSelectionDecision: "topic selection decision",
 	topicSelectionReason: "topic selection reason",
 	topicSelectionFurtherInfo: "top selection further info",
 	reference: "",
