@@ -57,16 +57,16 @@ export default function ConsultationHTMLPage(
 				<Breadcrumb to="/standards-and-indicators/indicators">
 					Indicators
 				</Breadcrumb>
-				<Breadcrumb to="/standards-and-indicators/indicators/indevelopment">
+				<Breadcrumb to="/indicators/indevelopment">
 					In development
 				</Breadcrumb>
 				<Breadcrumb
-					to={`/standards-and-indicators/indicators/indevelopment/${props.project.reference}`}
+					to={`/indicators/indevelopment/${props.project.reference}`}
 				>
 					{props.project.reference}
 				</Breadcrumb>
 				<Breadcrumb
-					to={`/standards-and-indicators/indicators/indevelopment/${props.project.reference}/consultations/`}
+					to={`/indicators/indevelopment/${props.project.reference}/consultations/`}
 				>
 					Consultations
 				</Breadcrumb>

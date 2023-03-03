@@ -33,21 +33,21 @@ describe("ProjectHorizontalNav", () => {
 	it("should have Project information nav link", () => {
 		render(<ProjectHorizontalNav {...props} />);
 		expect(
-			screen.getByRole("link", { name: "Project Information" })
+			screen.getByRole("link", { name: "Project information" })
 		).toBeInTheDocument();
 	});
 
 	it("should highlight project overview nav link when on the project overview page", () => {
 		render(<ProjectHorizontalNav {...props} />);
 		expect(
-			screen.getByRole("link", { name: "Project Information" })
+			screen.getByRole("link", { name: "Project information" })
 		).toHaveAttribute("aria-current", "true");
 	});
 
 	it("should have Project Documents link when there are documents", () => {
 		render(<ProjectHorizontalNav {...props} />);
 		expect(
-			screen.getByRole("link", { name: "Project Documents" })
+			screen.getByRole("link", { name: "Project documents" })
 		).toBeInTheDocument();
 	});
 
@@ -59,7 +59,7 @@ describe("ProjectHorizontalNav", () => {
 		render(<ProjectHorizontalNav {...mockProps} />);
 
 		expect(
-			screen.queryByRole("link", { name: "Project Documents" })
+			screen.queryByRole("link", { name: "Project documents" })
 		).toBeNull();
 	});
 
@@ -71,7 +71,7 @@ describe("ProjectHorizontalNav", () => {
 		render(<ProjectHorizontalNav {...props} />);
 
 		expect(
-			screen.getByRole("link", { name: "Project Documents" })
+			screen.getByRole("link", { name: "Project documents" })
 		).toHaveAttribute("aria-current", "true");
 	});
 

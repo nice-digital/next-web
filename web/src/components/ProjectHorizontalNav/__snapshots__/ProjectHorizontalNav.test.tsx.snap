@@ -16,7 +16,7 @@ exports[`ProjectHorizontalNav should match snapshot for all nav items 1`] = `
           class="horizontal-nav__link"
           href="/indicators/indevelopment/ind1-test"
         >
-          Project Information
+          Project information
         </a>
       </li>
       <li
@@ -27,7 +27,7 @@ exports[`ProjectHorizontalNav should match snapshot for all nav items 1`] = `
           class="horizontal-nav__link"
           href="/indicators/indevelopment/ind1-test/documents"
         >
-          Project Documents
+          Project documents
         </a>
       </li>
       <li

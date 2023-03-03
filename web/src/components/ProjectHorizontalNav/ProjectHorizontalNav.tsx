@@ -9,7 +9,6 @@ import {
 import { ScrollToContentStartLink } from "../Link/Link";
 
 export type ProjectHorizontalNavProps = {
-	/** The nav label for the project overview */
 	projectPath: string;
 	hasDocuments: boolean;
 	consultationUrls?: string[];
@@ -35,7 +34,7 @@ export const ProjectHorizontalNav: FC<ProjectHorizontalNavProps> = ({
 					elementType={ScrollToContentStartLink}
 					isCurrent={!isUnderDocuments && !isUnderConsultations}
 				>
-					Project Information
+					Project information
 				</HorizontalNavLink>
 				{hasDocuments ? (
 					<HorizontalNavLink
@@ -43,7 +42,7 @@ export const ProjectHorizontalNav: FC<ProjectHorizontalNavProps> = ({
 						elementType={ScrollToContentStartLink}
 						isCurrent={isUnderDocuments}
 					>
-						Project Documents
+						Project documents
 					</HorizontalNavLink>
 				) : null}
 

@@ -44,7 +44,7 @@ exports[`/indevelopment/[slug].page IndevelopmentPage should match snapshot for 
             class="breadcrumbs__crumb"
           >
             <a
-              href="/standards-and-indicators/indicators/indevelopment"
+              href="/indicators/indevelopment"
             >
               In development
             </a>
@@ -93,7 +93,7 @@ exports[`/indevelopment/[slug].page IndevelopmentPage should match snapshot for 
       "@type": "ListItem",
       "position": 4,
       "item": {
-        "@id": "/standards-and-indicators/indicators/indevelopment",
+        "@id": "/indicators/indevelopment",
         "name": "In development"
       }
     },
@@ -162,7 +162,7 @@ exports[`/indevelopment/[slug].page IndevelopmentPage should match snapshot for 
               class="horizontal-nav__link"
               href="/indicators/indevelopment/gid-ng10237"
             >
-              Project Information
+              Project information
             </a>
           </li>
           <li
@@ -173,7 +173,7 @@ exports[`/indevelopment/[slug].page IndevelopmentPage should match snapshot for 
               class="horizontal-nav__link"
               href="/indicators/indevelopment/gid-ng10237/documents"
             >
-              Project Documents
+              Project documents
             </a>
           </li>
         </ul>

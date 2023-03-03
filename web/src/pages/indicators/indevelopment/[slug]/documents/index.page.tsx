@@ -43,11 +43,9 @@ export default function DocumentsPage(props: DocumentsPageProps): JSX.Element {
 				<Breadcrumb to="/standards-and-indicators/indicators">
 					Indicators
 				</Breadcrumb>
-				<Breadcrumb to="/standards-and-indicators/indicators/indevelopment">
-					In development
-				</Breadcrumb>
+				<Breadcrumb to="/indicators/indevelopment">In development</Breadcrumb>
 				<Breadcrumb
-					to={`/standards-and-indicators/indicators/indevelopment/${props.project.reference}`}
+					to={`/indicators/indevelopment/${props.project.reference.toLowerCase()}`}
 				>
 					{props.project.reference}
 				</Breadcrumb>

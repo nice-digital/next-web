@@ -40,16 +40,12 @@ export default function HistoryHTMLPage(
 				<Breadcrumb to="/standards-and-indicators/indicators">
 					Indicators
 				</Breadcrumb>
-				<Breadcrumb to="/standards-and-indicators/indicators/indevelopment">
-					In development
-				</Breadcrumb>
-				<Breadcrumb
-					to={`/standards-and-indicators/indicators/indevelopment/${props.project.reference}`}
-				>
+				<Breadcrumb to="/indicators/indevelopment">In development</Breadcrumb>
+				<Breadcrumb to={`/indicators/indevelopment/${props.project.reference}`}>
 					{props.project.reference}
 				</Breadcrumb>
 				<Breadcrumb
-					to={`/standards-and-indicators/indicators/indevelopment/${props.project.reference}/documents/`}
+					to={`/indicators/indevelopment/${props.project.reference}/documents/`}
 				>
 					Project documents
 				</Breadcrumb>

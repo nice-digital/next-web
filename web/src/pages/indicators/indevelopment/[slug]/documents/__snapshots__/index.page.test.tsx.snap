@@ -41,7 +41,7 @@ exports[`/indicators/indevelopment/[slug]/documents DocumentsPage should match s
           class="breadcrumbs__crumb"
         >
           <a
-            href="/standards-and-indicators/indicators/indevelopment"
+            href="/indicators/indevelopment"
           >
             In development
           </a>
@@ -50,7 +50,7 @@ exports[`/indicators/indevelopment/[slug]/documents DocumentsPage should match s
           class="breadcrumbs__crumb"
         >
           <a
-            href="/standards-and-indicators/indicators/indevelopment/GID-DG10049"
+            href="/indicators/indevelopment/gid-dg10049"
           >
             GID-DG10049
           </a>
@@ -99,7 +99,7 @@ exports[`/indicators/indevelopment/[slug]/documents DocumentsPage should match s
       "@type": "ListItem",
       "position": 4,
       "item": {
-        "@id": "/standards-and-indicators/indicators/indevelopment",
+        "@id": "/indicators/indevelopment",
         "name": "In development"
       }
     },
@@ -107,7 +107,7 @@ exports[`/indicators/indevelopment/[slug]/documents DocumentsPage should match s
       "@type": "ListItem",
       "position": 5,
       "item": {
-        "@id": "/standards-and-indicators/indicators/indevelopment/GID-DG10049",
+        "@id": "/indicators/indevelopment/gid-dg10049",
         "name": "GID-DG10049"
       }
     },
@@ -176,7 +176,7 @@ exports[`/indicators/indevelopment/[slug]/documents DocumentsPage should match s
             class="horizontal-nav__link"
             href="/indicators/indevelopment/gid-dg10049"
           >
-            Project Information
+            Project information
           </a>
         </li>
         <li
@@ -187,7 +187,7 @@ exports[`/indicators/indevelopment/[slug]/documents DocumentsPage should match s
             class="horizontal-nav__link"
             href="/indicators/indevelopment/gid-dg10049/documents"
           >
-            Project Documents
+            Project documents
           </a>
         </li>
       </ul>
