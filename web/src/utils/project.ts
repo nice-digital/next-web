@@ -2,6 +2,7 @@ import { type Redirect } from "next";
 
 import {
 	getProjectDetail,
+	IndevConsultation,
 	IndevPanel,
 	ProjectDetail,
 	ProjectStatus,
@@ -19,6 +20,7 @@ export type ValidateRouteParamsResult =
 	| { notFound: true }
 	| { redirect: Redirect }
 	| {
+			consultations: IndevConsultation[];
 			consultationUrls: string[];
 			project: ProjectDetail;
 			projectPath: string;
@@ -60,21 +62,22 @@ export const validateRouteParams = async ({
 	}
 
 	const panels = project
-		? arrayify(
-				project.embedded?.niceIndevPanelList?.embedded?.niceIndevPanel
-		  ).filter((panel) => panel.showPanel && panel.panelType == "History")
-		: [];
+			? arrayify(
+					project.embedded?.niceIndevPanelList?.embedded?.niceIndevPanel
+			  ).filter((panel) => panel.showPanel && panel.panelType == "History")
+			: [],
+		consultations = panels
+			.flatMap((panel) => arrayify(panel.embedded.niceIndevConsultation))
+			.filter((consultation) => !consultation.hidden);
 
-	const consultationUrls = panels
-		.filter((panel) => panel.embedded.niceIndevConsultation)
-		.flatMap((panel) => arrayify(panel.embedded.niceIndevConsultation))
-		.map(
-			(consultation) =>
-				`${projectPath}/consultations/${consultation.resourceTitleId}`
-		);
+	const consultationUrls = consultations.map(
+		(consultation) =>
+			`${projectPath}/consultations/${consultation.resourceTitleId}`
+	);
 
 	return {
 		consultationUrls,
+		consultations,
 		projectPath,
 		project,
 		panels,

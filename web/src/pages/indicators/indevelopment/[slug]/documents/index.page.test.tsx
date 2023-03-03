@@ -46,7 +46,7 @@ describe("/indicators/indevelopment/[slug]/documents", () => {
 			render(<DocumentsPage {...props} />);
 			await waitFor(() => {
 				expect(document.title).toEqual(
-					`Project documents | Automated ankle brachial pressure index measurement devices to detect peripheral arterial disease in people with leg ulcers | Indicators | Standards and Indicators`
+					`Project documents | GID-DG10049 | Indicators | Standards and Indicators`
 				);
 			});
 		});
@@ -68,7 +68,9 @@ describe("/indicators/indevelopment/[slug]/documents", () => {
 
 			expect(
 				result.props.project.groups[0].subGroups[0].resourceLinks[0].href
-			).toEqual("/indicators/indevelopment/gid-dg10049/documents/html-content");
+			).toEqual(
+				"/indicators/indevelopment/gid-dg10049/consultations/html-content"
+			);
 
 			expect(
 				result.props.project.groups[3].subGroups[0].resourceLinks[1].href

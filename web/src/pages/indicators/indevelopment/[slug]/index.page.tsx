@@ -36,6 +36,7 @@ import { getProductPath } from "@/utils/url";
 import styles from "./index.module.scss";
 
 export type InDevelopmentPageProps = {
+	hasPanels: boolean;
 	consultationUrls: string[];
 	description: string | null;
 	developedAs: string;
@@ -112,7 +113,7 @@ export default function InDevelopmentPage(
 
 			<ProjectHorizontalNav
 				projectPath={projectPath}
-				hasDocuments={true}
+				hasDocuments={props.hasPanels}
 				consultationUrls={props.consultationUrls}
 			/>
 
@@ -227,7 +228,7 @@ export const getServerSideProps: GetServerSideProps<
 
 	if ("notFound" in result || "redirect" in result) return result;
 
-	const { project, projectPath, consultationUrls } = result;
+	const { project, projectPath, consultationUrls, hasPanels } = result;
 
 	const {
 		description,
@@ -339,6 +340,7 @@ export const getServerSideProps: GetServerSideProps<
 
 	return {
 		props: {
+			hasPanels,
 			consultationUrls,
 			description,
 			developedAs,

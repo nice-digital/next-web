@@ -63,7 +63,7 @@ export default function DocumentsPage(props: DocumentsPageProps): JSX.Element {
 
 			<ProjectHorizontalNav
 				projectPath={props.projectPath}
-				hasDocuments={true}
+				hasDocuments
 				consultationUrls={props.consultationUrls}
 			/>
 
@@ -125,11 +125,14 @@ export const getServerSideProps: GetServerSideProps<
 					isHTML = mimeType === "text/html",
 					fileSize = isHTML ? null : length,
 					fileTypeName = isHTML ? null : getFileTypeNameFromMime(mimeType),
-					href = isHTML
-						? `${projectPath}/documents/${resourceTitleId}`
-						: `${projectPath}/documents/downloads/${project.reference.toLowerCase()}-${resourceTitleId}.${
-								fileName.split(".").slice(-1)[0]
-						  }`;
+					href =
+						resource.consultationId > 0
+							? `${projectPath}/consultations/${resourceTitleId}`
+							: isHTML
+							? `${projectPath}/documents/${resourceTitleId}`
+							: `${projectPath}/documents/downloads/${project.reference.toLowerCase()}-${resourceTitleId}.${
+									fileName.split(".").slice(-1)[0]
+							  }`;
 
 				currentSubGroup.resourceLinks.push({
 					title: resource.title,

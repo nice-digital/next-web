@@ -134,13 +134,6 @@ exports[`/indevelopment/[slug].page IndevelopmentPage should match snapshot for 
           </li>
           <li>
             <a
-              href="/about/what-we-do/our-programmes/nice-guidance/nice-interventional-procedures-guidance/ip-register-an-interest?t=0&p=GID-NG10237&returnUrl=/guidance/indevelopment/GID-NG10237"
-            >
-              Register an interest
-            </a>
-          </li>
-          <li>
-            <a
               href="https://alpha.nice.org.uk/get-involved/stakeholder-registration/register?t=&p=GID-NG10237&returnUrl=/guidance/indevelopment/GID-NG10237"
             >
               Register as a stakeholder
@@ -361,6 +354,7 @@ Object {
     "developedAs": "CG",
     "evidenceAssessmentGroup": null,
     "fullUpdates": Array [],
+    "hasPanels": true,
     "idNumber": null,
     "indevCommentators": Array [],
     "indevConsultees": Array [],

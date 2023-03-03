@@ -148,13 +148,6 @@ exports[`/indicators/indevelopment/[slug]/documents DocumentsPage should match s
         </li>
         <li>
           <a
-            href="/about/what-we-do/our-programmes/nice-guidance/nice-interventional-procedures-guidance/ip-register-an-interest?t=0&p=GID-DG10049&returnUrl=/guidance/indevelopment/GID-DG10049"
-          >
-            Register an interest
-          </a>
-        </li>
-        <li>
-          <a
             href="https://www.nice.org.uk/about/what-we-do/our-programmes/nice-guidance/nice-diagnostics-guidance/dt-stakeholder-registration?t=&p=GID-DG10049&returnUrl=/guidance/indevelopment/GID-DG10049"
           >
             Register as a stakeholder
@@ -300,7 +293,7 @@ exports[`/indicators/indevelopment/[slug]/documents DocumentsPage should match s
                           class="card__heading"
                         >
                           <a
-                            href="/indicators/indevelopment/gid-dg10049/documents/html-content"
+                            href="/indicators/indevelopment/gid-dg10049/consultations/html-content"
                           >
                             Diagnostics consultation
                           </a>
@@ -351,7 +344,7 @@ exports[`/indicators/indevelopment/[slug]/documents DocumentsPage should match s
                           class="card__heading"
                         >
                           <a
-                            href="/indicators/indevelopment/gid-dg10049/documents/downloads/gid-dg10049-514.pdf"
+                            href="/indicators/indevelopment/gid-dg10049/consultations/514"
                           >
                             Diagnostics consultation document (PDF)
                              
@@ -433,7 +426,7 @@ exports[`/indicators/indevelopment/[slug]/documents DocumentsPage should match s
                           class="card__heading"
                         >
                           <a
-                            href="/indicators/indevelopment/gid-dg10049/documents/downloads/gid-dg10049-513.docx"
+                            href="/indicators/indevelopment/gid-dg10049/consultations/513"
                           >
                             Diagnostics consultation document (Online commenting)
                              
@@ -515,7 +508,7 @@ exports[`/indicators/indevelopment/[slug]/documents DocumentsPage should match s
                           class="card__heading"
                         >
                           <a
-                            href="/indicators/indevelopment/gid-dg10049/documents/downloads/gid-dg10049-diagnostics-assessment-report.pdf"
+                            href="/indicators/indevelopment/gid-dg10049/consultations/diagnostics-assessment-report"
                           >
                             Diagnostics assessment report
                              
@@ -597,7 +590,7 @@ exports[`/indicators/indevelopment/[slug]/documents DocumentsPage should match s
                           class="card__heading"
                         >
                           <a
-                            href="/indicators/indevelopment/gid-dg10049/documents/downloads/gid-dg10049-overview.pdf"
+                            href="/indicators/indevelopment/gid-dg10049/consultations/overview"
                           >
                             Overview
                              
@@ -679,7 +672,7 @@ exports[`/indicators/indevelopment/[slug]/documents DocumentsPage should match s
                           class="card__heading"
                         >
                           <a
-                            href="/indicators/indevelopment/gid-dg10049/documents/downloads/gid-dg10049-d-a-r-comments-table-and-e-a-g-response.pdf"
+                            href="/indicators/indevelopment/gid-dg10049/consultations/d-a-r-comments-table-and-e-a-g-response"
                           >
                             DAR Comments table and EAG response
                              
@@ -761,7 +754,7 @@ exports[`/indicators/indevelopment/[slug]/documents DocumentsPage should match s
                           class="card__heading"
                         >
                           <a
-                            href="/indicators/indevelopment/gid-dg10049/documents/downloads/gid-dg10049-d-a-r-addendum.pdf"
+                            href="/indicators/indevelopment/gid-dg10049/consultations/d-a-r-addendum"
                           >
                             DAR Addendum
                              
@@ -843,7 +836,7 @@ exports[`/indicators/indevelopment/[slug]/documents DocumentsPage should match s
                           class="card__heading"
                         >
                           <a
-                            href="/indicators/indevelopment/gid-dg10049/documents/downloads/gid-dg10049-d-a-r-erratum.pdf"
+                            href="/indicators/indevelopment/gid-dg10049/consultations/d-a-r-erratum"
                           >
                             DAR Erratum
                              
@@ -1684,7 +1677,7 @@ Object {
                   "date": "2022-12-09T08:00:00",
                   "fileSize": null,
                   "fileTypeName": null,
-                  "href": "/indicators/indevelopment/gid-dg10049/documents/html-content",
+                  "href": "/indicators/indevelopment/gid-dg10049/consultations/html-content",
                   "title": "Diagnostics consultation",
                   "type": "Diagnostics consultation",
                 },
@@ -1692,7 +1685,7 @@ Object {
                   "date": "2022-12-09T00:00:00",
                   "fileSize": 282746,
                   "fileTypeName": "PDF",
-                  "href": "/indicators/indevelopment/gid-dg10049/documents/downloads/gid-dg10049-514.pdf",
+                  "href": "/indicators/indevelopment/gid-dg10049/consultations/514",
                   "title": "Diagnostics consultation document (PDF)",
                   "type": "Diagnostics consultation",
                 },
@@ -1700,7 +1693,7 @@ Object {
                   "date": "2022-12-09T00:00:00",
                   "fileSize": 62456,
                   "fileTypeName": "Word",
-                  "href": "/indicators/indevelopment/gid-dg10049/documents/downloads/gid-dg10049-513.docx",
+                  "href": "/indicators/indevelopment/gid-dg10049/consultations/513",
                   "title": "Diagnostics consultation document (Online commenting)",
                   "type": "Diagnostics consultation",
                 },
@@ -1708,7 +1701,7 @@ Object {
                   "date": "2022-12-09T00:00:00",
                   "fileSize": 3693733,
                   "fileTypeName": "PDF",
-                  "href": "/indicators/indevelopment/gid-dg10049/documents/downloads/gid-dg10049-diagnostics-assessment-report.pdf",
+                  "href": "/indicators/indevelopment/gid-dg10049/consultations/diagnostics-assessment-report",
                   "title": "Diagnostics assessment report",
                   "type": "Diagnostics consultation",
                 },
@@ -1716,7 +1709,7 @@ Object {
                   "date": "2022-12-09T00:00:00",
                   "fileSize": 602181,
                   "fileTypeName": "PDF",
-                  "href": "/indicators/indevelopment/gid-dg10049/documents/downloads/gid-dg10049-overview.pdf",
+                  "href": "/indicators/indevelopment/gid-dg10049/consultations/overview",
                   "title": "Overview",
                   "type": "Diagnostics consultation",
                 },
@@ -1724,7 +1717,7 @@ Object {
                   "date": "2022-12-09T00:00:00",
                   "fileSize": 483618,
                   "fileTypeName": "PDF",
-                  "href": "/indicators/indevelopment/gid-dg10049/documents/downloads/gid-dg10049-d-a-r-comments-table-and-e-a-g-response.pdf",
+                  "href": "/indicators/indevelopment/gid-dg10049/consultations/d-a-r-comments-table-and-e-a-g-response",
                   "title": "DAR Comments table and EAG response",
                   "type": "Diagnostics consultation",
                 },
@@ -1732,7 +1725,7 @@ Object {
                   "date": "2022-12-09T00:00:00",
                   "fileSize": 573126,
                   "fileTypeName": "PDF",
-                  "href": "/indicators/indevelopment/gid-dg10049/documents/downloads/gid-dg10049-d-a-r-addendum.pdf",
+                  "href": "/indicators/indevelopment/gid-dg10049/consultations/d-a-r-addendum",
                   "title": "DAR Addendum",
                   "type": "Diagnostics consultation",
                 },
@@ -1740,7 +1733,7 @@ Object {
                   "date": "2022-12-09T00:00:00",
                   "fileSize": 259803,
                   "fileTypeName": "PDF",
-                  "href": "/indicators/indevelopment/gid-dg10049/documents/downloads/gid-dg10049-d-a-r-erratum.pdf",
+                  "href": "/indicators/indevelopment/gid-dg10049/consultations/d-a-r-erratum",
                   "title": "DAR Erratum",
                   "type": "Diagnostics consultation",
                 },

@@ -21,32 +21,24 @@ export type DocumentHTMLPageProps = {
 		"projectType" | "reference" | "title" | "status"
 	>;
 	projectPath: string;
-	resource: {
-		resourceFileHTML: string;
+	consultation: {
+		html: string;
 		title: string;
 	};
 };
 
-export default function ConsultationHTMLPage(
-	props: DocumentHTMLPageProps
-): JSX.Element {
-	const { asPath } = useRouter(),
-		path = asPath.replace(/#.*/, "");
-
-	const calculateConsultationTitle = () => {
-		if (props.consultationUrls.length > 1) {
-			return `Consultation ${props.consultationUrls.indexOf(path) + 1}`;
-		} else {
-			return "Consultation";
-		}
-	};
-
+export default function ConsultationHTMLPage({
+	consultation,
+	consultationUrls,
+	indevStakeholderRegistration,
+	project,
+	projectPath,
+	indevScheduleItems,
+}: DocumentHTMLPageProps): JSX.Element {
 	return (
 		<>
 			<NextSeo
-				title={`${calculateConsultationTitle()} | Consultations | ${
-					props.project.reference
-				} | Indicators | Standards and Indicators`}
+				title={`${consultation.title} | ${project.reference} | Indicators | Standards and Indicators`}
 			/>
 
 			<Breadcrumbs>
@@ -59,64 +51,53 @@ export default function ConsultationHTMLPage(
 				</Breadcrumb>
 				<Breadcrumb to="/indicators/indevelopment">In development</Breadcrumb>
 				<Breadcrumb
-					to={`/indicators/indevelopment/${props.project.reference.toLowerCase()}`}
+					to={`/indicators/indevelopment/${project.reference.toLowerCase()}`}
 				>
-					{props.project.reference}
+					{project.reference}
 				</Breadcrumb>
-				<Breadcrumb>{calculateConsultationTitle()}</Breadcrumb>
+				<Breadcrumb>{consultation.title}</Breadcrumb>
 			</Breadcrumbs>
 
 			<ProjectPageHeading
-				projectType={props.project.projectType}
-				reference={props.project.reference}
-				title={props.project.title}
-				status={props.project.status}
-				indevScheduleItems={props.indevScheduleItems}
-				indevStakeholderRegistration={props.indevStakeholderRegistration}
+				projectType={project.projectType}
+				reference={project.reference}
+				title={project.title}
+				status={project.status}
+				indevScheduleItems={indevScheduleItems}
+				indevStakeholderRegistration={indevStakeholderRegistration}
 			/>
 
 			<ProjectHorizontalNav
-				projectPath={props.projectPath}
-				hasDocuments={true}
-				consultationUrls={props.consultationUrls}
+				projectPath={projectPath}
+				hasDocuments
+				consultationUrls={consultationUrls}
 			/>
 
-			<div
-				dangerouslySetInnerHTML={{ __html: props.resource.resourceFileHTML }}
-			></div>
+			<div dangerouslySetInnerHTML={{ __html: consultation.html }}></div>
 		</>
 	);
 }
 
 export const getServerSideProps: GetServerSideProps<
 	DocumentHTMLPageProps,
-	{ slug: string; htmlPath: string }
+	{ slug: string; resourceTitleId: string }
 > = async ({ params, resolvedUrl }) => {
 	const result = await validateRouteParams({ params, resolvedUrl });
 
 	if ("notFound" in result || "redirect" in result) return result;
 
-	const { project, projectPath, panels, consultationUrls } = result;
+	const { project, projectPath, consultations, consultationUrls } = result;
 
-	const resource = panels
-		.flatMap((panel) =>
-			arrayify(panel.embedded.niceIndevResourceList.embedded.niceIndevResource)
-		)
-		.find(
-			(resource) =>
-				resource.embedded?.niceIndevFile.resourceTitleId === params?.htmlPath &&
-				resource.showInDocList
-		);
+	const consultation = consultations.find(
+		(c) => c.resourceTitleId === params?.resourceTitleId
+	);
 
-	if (!resource) return { notFound: true };
+	if (!consultation) return { notFound: true };
 
-	const resourceFilePath = resource.embedded.niceIndevFile.links.self[0].href;
+	const consultationFilePath = consultation.links.self[0].href,
+		consultationHTML = await getResourceFileHTML(consultationFilePath);
 
-	const resourceFileHTML = await getResourceFileHTML(resourceFilePath);
-
-	if (resourceFileHTML == null) return { notFound: true };
-
-	if (!project) return { notFound: true };
+	if (consultationHTML == null) return { notFound: true };
 
 	const { projectType, reference, status, title } = project;
 
@@ -140,9 +121,9 @@ export const getServerSideProps: GetServerSideProps<
 				title,
 			},
 			projectPath,
-			resource: {
-				resourceFileHTML,
-				title: resource.title,
+			consultation: {
+				html: consultationHTML,
+				title: consultation.consultationName,
 			},
 		},
 	};

@@ -73,7 +73,7 @@ export default function HistoryHTMLPage({
 
 			<ProjectHorizontalNav
 				projectPath={projectPath}
-				hasDocuments={true}
+				hasDocuments
 				consultationUrls={consultationUrls}
 			/>
 

@@ -25,11 +25,6 @@ export const getServerSideProps: GetServerSideProps<
 
 	const { project, panels } = result;
 
-	if (!project) {
-		logger.info(`Project could not be found for project ${params.slug}`);
-		return { notFound: true };
-	}
-
 	const pathRegexMatch = params.downloadPath.match(downloadPathRegex);
 
 	if (!pathRegexMatch || !pathRegexMatch.groups) {
