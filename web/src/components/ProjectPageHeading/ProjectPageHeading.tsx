@@ -8,6 +8,7 @@ import { formatDateStr } from "@/utils/datetime";
 import { Link } from "../Link/Link";
 
 export type ProjectPageHeadingProps = {
+	projectPath: string;
 	projectType: string | null;
 	reference: string;
 	title: string;
@@ -19,6 +20,7 @@ export type ProjectPageHeadingProps = {
 };
 
 export const ProjectPageHeading: FC<ProjectPageHeadingProps> = ({
+	projectPath,
 	projectType,
 	reference,
 	title,
@@ -42,7 +44,7 @@ export const ProjectPageHeading: FC<ProjectPageHeadingProps> = ({
 
 	let indevRegisterAnInterestLink = null;
 	if (projectType == "IPG" && status != ProjectStatus.Discontinued) {
-		indevRegisterAnInterestLink = `/about/what-we-do/our-programmes/nice-guidance/nice-interventional-procedures-guidance/ip-register-an-interest?t=0&p=${reference}&returnUrl=/guidance/indevelopment/${reference}`;
+		indevRegisterAnInterestLink = `/about/what-we-do/our-programmes/nice-guidance/nice-interventional-procedures-guidance/ip-register-an-interest?t=0&p=${reference}&returnUrl=${projectPath}`;
 	}
 
 	return (
@@ -57,7 +59,7 @@ export const ProjectPageHeading: FC<ProjectPageHeadingProps> = ({
 				publicationMeta,
 				indevRegisterAnInterestLink ? (
 					<Link
-						to={`/about/what-we-do/our-programmes/nice-guidance/nice-interventional-procedures-guidance/ip-register-an-interest?t=0&p=${reference}&returnUrl=/guidance/indevelopment/${reference}`}
+						to={`/about/what-we-do/our-programmes/nice-guidance/nice-interventional-procedures-guidance/ip-register-an-interest?t=0&p=${reference}&returnUrl=${projectPath}`}
 					>
 						Register an interest
 					</Link>
@@ -67,7 +69,7 @@ export const ProjectPageHeading: FC<ProjectPageHeadingProps> = ({
 					<Link
 						to={
 							(indevStakeholderRegistration[0].href +
-								`?t=&p=${reference}&returnUrl=/guidance/indevelopment/${reference}`) as string
+								`?t=&p=${reference}&returnUrl=${projectPath}`) as string
 						}
 					>
 						Register as a stakeholder

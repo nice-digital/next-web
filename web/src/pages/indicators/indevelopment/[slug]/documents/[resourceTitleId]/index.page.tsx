@@ -63,6 +63,7 @@ export default function HistoryHTMLPage({
 			</Breadcrumbs>
 
 			<ProjectPageHeading
+				projectPath={projectPath}
 				projectType={project.projectType}
 				reference={project.reference}
 				title={project.title}

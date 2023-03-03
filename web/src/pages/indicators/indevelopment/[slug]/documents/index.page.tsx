@@ -53,6 +53,7 @@ export default function DocumentsPage(props: DocumentsPageProps): JSX.Element {
 			</Breadcrumbs>
 
 			<ProjectPageHeading
+				projectPath={props.projectPath}
 				projectType={props.project.projectType}
 				reference={props.project.reference}
 				title={props.project.title}

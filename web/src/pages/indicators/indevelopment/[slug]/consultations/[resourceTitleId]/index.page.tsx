@@ -59,6 +59,7 @@ export default function ConsultationHTMLPage({
 			</Breadcrumbs>
 
 			<ProjectPageHeading
+				projectPath={projectPath}
 				projectType={project.projectType}
 				reference={project.reference}
 				title={project.title}
