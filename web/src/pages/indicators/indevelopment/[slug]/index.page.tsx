@@ -65,7 +65,6 @@ export type InDevelopmentPageProps = {
 	summary: string | null;
 	technologyType: string | null;
 	title: string;
-	topicSelectionDecision: string;
 	topicSelectionReason: string | null;
 	topicSelectionFurtherInfo: string | null;
 };
@@ -102,7 +101,6 @@ export default function InDevelopmentPage(
 		summary,
 		technologyType,
 		title,
-		topicSelectionDecision,
 		topicSelectionReason,
 		topicSelectionFurtherInfo,
 	} = props;
@@ -238,7 +236,7 @@ export const getServerSideProps: GetServerSideProps<
 	InDevelopmentPageProps,
 	{ slug: string }
 > = async ({ params, resolvedUrl }) => {
-	const result = await validateRouteParams(params, resolvedUrl);
+	const result = await validateRouteParams({ params, resolvedUrl });
 
 	if ("notFound" in result || "redirect" in result) return result;
 
@@ -260,7 +258,6 @@ export const getServerSideProps: GetServerSideProps<
 		status,
 		technologyType,
 		title,
-		topicSelectionDecision,
 		topicSelectionFurtherInfo,
 		topicSelectionReason,
 	} = project;
@@ -398,7 +395,6 @@ export const getServerSideProps: GetServerSideProps<
 			summary,
 			technologyType,
 			title,
-			topicSelectionDecision,
 			topicSelectionFurtherInfo,
 			topicSelectionReason,
 		},

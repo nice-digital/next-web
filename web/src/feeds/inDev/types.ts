@@ -55,7 +55,12 @@ export enum ProjectProcess {
 	"COVID19RapidGuideline" = "COVID-19 rapid guideline",
 }
 
-export type ProjectGroup = ProductGroup.Guidance | ProductGroup.Advice;
+export type ProjectGroup =
+	| ProductGroup.Guidance
+	| ProductGroup.Standard
+	| ProductGroup.Advice
+	| ProductGroup.Guideline
+	| ProductGroup.Other;
 
 export type GIDReference = `GID-${Uppercase<string>}${number}`;
 
@@ -496,6 +501,37 @@ export type NiceIndevTopicList = {
 	eTag: ETag;
 };
 
+export enum ProjectType {
+	"NG" = "NG",
+	"CSG" = "CSG",
+	"CG" = "CG",
+	"DG" = "DG",
+	"MPG" = "MPG",
+	"ES" = "ES",
+	"HST" = "HST",
+	"IPG" = "IPG",
+	"KTT" = "KTT",
+	"LGB" = "LGB",
+	"MIB" = "MIB",
+	"MTG" = "MTG",
+	"PH" = "PH",
+	"QS" = "QS",
+	"TA" = "TA",
+	"PSG" = "PSG",
+	"SC" = "SC",
+	"SG" = "SG",
+	"PIP" = "PIP",
+	"APG" = "APG",
+	"APA" = "APA",
+	"COV" = "COV",
+	"COVM" = "COVM",
+	"COVT" = "COVT",
+	"COA" = "COA",
+	"NGC" = "NGC",
+	"IND" = "IND",
+	"HTE" = "HTE",
+}
+
 export type ProjectDetail = {
 	links: {
 		niceIndevStakeholderRegistration: Record<string, unknown>[];
@@ -534,13 +570,13 @@ export type ProjectDetail = {
 	productReference: string | null;
 	evidenceAssessmentGroup: string | null;
 	reference: string;
-	projectType: string | null;
+	projectType: ProjectType | null;
 	technologyType: string | null;
 	productTypeName: string | null;
 	process: string;
 	title: string;
 	status: ProjectStatus;
-	projectGroup: string;
+	projectGroup: ProjectGroup;
 	publishedDate: string;
 	lastModifiedDate: string;
 	firstGoLiveDate: string;
