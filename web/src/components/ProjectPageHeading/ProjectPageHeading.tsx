@@ -41,7 +41,7 @@ export const ProjectPageHeading: FC<ProjectPageHeadingProps> = ({
 		) : null;
 
 	let indevRegisterAnInterestLink = null;
-	if (projectType == "IPG" || status != ProjectStatus.Discontinued) {
+	if (projectType == "IPG" && status != ProjectStatus.Discontinued) {
 		indevRegisterAnInterestLink = `/about/what-we-do/our-programmes/nice-guidance/nice-interventional-procedures-guidance/ip-register-an-interest?t=0&p=${reference}&returnUrl=/guidance/indevelopment/${reference}`;
 	}
 
