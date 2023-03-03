@@ -58,7 +58,9 @@ export default function ConsultationHTMLPage(
 					Indicators
 				</Breadcrumb>
 				<Breadcrumb to="/indicators/indevelopment">In development</Breadcrumb>
-				<Breadcrumb to={`/indicators/indevelopment/${props.project.reference}`}>
+				<Breadcrumb
+					to={`/indicators/indevelopment/${props.project.reference.toLowerCase()}`}
+				>
 					{props.project.reference}
 				</Breadcrumb>
 				<Breadcrumb>{calculateConsultationTitle()}</Breadcrumb>

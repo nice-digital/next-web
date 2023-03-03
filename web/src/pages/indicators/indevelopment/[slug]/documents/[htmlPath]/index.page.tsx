@@ -41,11 +41,13 @@ export default function HistoryHTMLPage(
 					Indicators
 				</Breadcrumb>
 				<Breadcrumb to="/indicators/indevelopment">In development</Breadcrumb>
-				<Breadcrumb to={`/indicators/indevelopment/${props.project.reference}`}>
+				<Breadcrumb
+					to={`/indicators/indevelopment/${props.project.reference.toLowerCase()}`}
+				>
 					{props.project.reference}
 				</Breadcrumb>
 				<Breadcrumb
-					to={`/indicators/indevelopment/${props.project.reference}/documents/`}
+					to={`/indicators/indevelopment/${props.project.reference.toLowerCase()}/documents/`}
 				>
 					Project documents
 				</Breadcrumb>
