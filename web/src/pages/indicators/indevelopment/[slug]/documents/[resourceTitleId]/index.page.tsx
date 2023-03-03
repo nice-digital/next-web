@@ -26,13 +26,18 @@ export type DocumentHTMLPageProps = {
 	};
 };
 
-export default function HistoryHTMLPage(
-	props: DocumentHTMLPageProps
-): JSX.Element {
+export default function HistoryHTMLPage({
+	consultationUrls,
+	project,
+	indevStakeholderRegistration,
+	projectPath,
+	resource,
+	indevScheduleItems,
+}: DocumentHTMLPageProps): JSX.Element {
 	return (
 		<>
 			<NextSeo
-				title={`TODO-HTMLpagetitle | Project documents | ${props.project.title} | Indicators | Standards and Indicators`}
+				title={`${resource.title} | Project documents | ${project.reference} | Indicators | Standards and Indicators`}
 			/>
 
 			<Breadcrumbs>
@@ -45,35 +50,35 @@ export default function HistoryHTMLPage(
 				</Breadcrumb>
 				<Breadcrumb to="/indicators/indevelopment">In development</Breadcrumb>
 				<Breadcrumb
-					to={`/indicators/indevelopment/${props.project.reference.toLowerCase()}`}
+					to={`/indicators/indevelopment/${project.reference.toLowerCase()}`}
 				>
-					{props.project.reference}
+					{project.reference}
 				</Breadcrumb>
 				<Breadcrumb
-					to={`/indicators/indevelopment/${props.project.reference.toLowerCase()}/documents/`}
+					to={`/indicators/indevelopment/${project.reference.toLowerCase()}/documents/`}
 				>
 					Project documents
 				</Breadcrumb>
-				<Breadcrumb>TODO-htmldoc title</Breadcrumb>
+				<Breadcrumb>{resource.title}</Breadcrumb>
 			</Breadcrumbs>
 
 			<ProjectPageHeading
-				projectType={props.project.projectType}
-				reference={props.project.reference}
-				title={props.project.title}
-				status={props.project.status}
-				indevScheduleItems={props.indevScheduleItems}
-				indevStakeholderRegistration={props.indevStakeholderRegistration}
+				projectType={project.projectType}
+				reference={project.reference}
+				title={project.title}
+				status={project.status}
+				indevScheduleItems={indevScheduleItems}
+				indevStakeholderRegistration={indevStakeholderRegistration}
 			/>
 
 			<ProjectHorizontalNav
-				projectPath={props.projectPath}
+				projectPath={projectPath}
 				hasDocuments={true}
-				consultationUrls={props.consultationUrls}
+				consultationUrls={consultationUrls}
 			/>
 
 			<div
-				dangerouslySetInnerHTML={{ __html: props.resource.resourceFileHTML }}
+				dangerouslySetInnerHTML={{ __html: resource.resourceFileHTML }}
 			></div>
 		</>
 	);
@@ -81,7 +86,7 @@ export default function HistoryHTMLPage(
 
 export const getServerSideProps: GetServerSideProps<
 	DocumentHTMLPageProps,
-	{ slug: string; htmlPath: string }
+	{ slug: string; resourceTitleId: string }
 > = async ({ params, resolvedUrl }) => {
 	const result = await validateRouteParams({ params, resolvedUrl });
 
@@ -95,19 +100,16 @@ export const getServerSideProps: GetServerSideProps<
 		)
 		.find(
 			(resource) =>
-				resource.embedded?.niceIndevFile.resourceTitleId === params?.htmlPath &&
-				resource.showInDocList
+				resource.embedded?.niceIndevFile.resourceTitleId ===
+					params?.resourceTitleId && resource.showInDocList
 		);
 
 	if (!resource) return { notFound: true };
 
-	const resourceFilePath = resource.embedded.niceIndevFile.links.self[0].href;
-
-	const resourceFileHTML = await getResourceFileHTML(resourceFilePath);
+	const resourceFilePath = resource.embedded.niceIndevFile.links.self[0].href,
+		resourceFileHTML = await getResourceFileHTML(resourceFilePath);
 
 	if (resourceFileHTML == null) return { notFound: true };
-
-	if (!project) return { notFound: true };
 
 	const { projectType, reference, status, title } = project;
 

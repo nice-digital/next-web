@@ -94,13 +94,8 @@ export default function InDevelopmentPage(
 
 	return (
 		<div className={styles.projectInformation}>
-			<NextSeo
-				title={
-					"Project information | " +
-					title +
-					" | Indicators | Standards and Indicators"
-				}
-			/>
+			<NextSeo title={`${title} | Indicators | Standards and Indicators`} />
+
 			<Breadcrumbs>
 				<Breadcrumb to="/">Home</Breadcrumb>
 				<Breadcrumb to="/standards-and-indicators">
@@ -112,6 +107,7 @@ export default function InDevelopmentPage(
 				<Breadcrumb to="/indicators/indevelopment">In development</Breadcrumb>
 				<Breadcrumb>{reference}</Breadcrumb>
 			</Breadcrumbs>
+
 			<ProjectPageHeading {...props} />
 
 			<ProjectHorizontalNav

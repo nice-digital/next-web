@@ -48,7 +48,7 @@ describe("/indevelopment/[slug].page", () => {
 
 			await waitFor(() => {
 				expect(document.title).toEqual(
-					`Project information | Adrenal insufficiency: acute and long-term management | Indicators | Standards and Indicators`
+					`Adrenal insufficiency: acute and long-term management | Indicators | Standards and Indicators`
 				);
 			});
 		});

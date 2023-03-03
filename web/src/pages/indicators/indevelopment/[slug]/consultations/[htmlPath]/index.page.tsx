@@ -45,7 +45,7 @@ export default function ConsultationHTMLPage(
 		<>
 			<NextSeo
 				title={`${calculateConsultationTitle()} | Consultations | ${
-					props.project.title
+					props.project.reference
 				} | Indicators | Standards and Indicators`}
 			/>
 
