@@ -76,7 +76,7 @@ export const getServerSideProps: GetServerSideProps<
 	DocumentHTMLPageProps,
 	{ slug: string; htmlPath: string }
 > = async ({ params, resolvedUrl, query }) => {
-	const result = await validateRouteParams(params, resolvedUrl);
+	const result = await validateRouteParams({ params, resolvedUrl });
 
 	if ("notFound" in result || "redirect" in result) return result;
 

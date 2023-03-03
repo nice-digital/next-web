@@ -13,8 +13,8 @@ type DocumentsPageGetServerSidePropsContext = GetServerSidePropsContext<{
 
 describe("/indicators/indevelopment/[slug]/documents", () => {
 	const slug = "gid-dg10049",
-		productRoot = "guidance/indevelopment/",
-		resolvedUrl = `/${productRoot}/${slug}/documents`,
+		productRoot = "guidance",
+		resolvedUrl = `/${productRoot}/indevelopment/${slug}/documents`,
 		context: DocumentsPageGetServerSidePropsContext = {
 			params: { slug },
 			query: {
