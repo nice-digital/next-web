@@ -79,9 +79,14 @@ export default function ConsultationHTMLPage({
 	);
 }
 
+export type Params = {
+	slug: string;
+	resourceTitleId: string;
+};
+
 export const getServerSideProps: GetServerSideProps<
 	DocumentHTMLPageProps,
-	{ slug: string; resourceTitleId: string }
+	Params
 > = async ({ params, resolvedUrl }) => {
 	const result = await validateRouteParams({ params, resolvedUrl });
 
