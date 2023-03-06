@@ -85,31 +85,31 @@ export const getServerSideProps: GetServerSideProps<
 
 	if ("notFound" in result || "redirect" in result) return result;
 
-	const { project, projectPath, panels, hasPanels, consultationUrls } = result;
-
-	if (!project) return { notFound: true };
+	const {
+		project: { projectType, reference, status, title, embedded, links },
+		projectPath,
+		panels,
+		hasPanels,
+		consultationUrls,
+	} = result;
 
 	if (!hasPanels) return { notFound: true };
 
-	const { projectType, reference, status, title } = project;
-
 	const indevSchedule =
-			project.embedded.niceIndevProvisionalScheduleList?.embedded
+			embedded.niceIndevProvisionalScheduleList?.embedded
 				.niceIndevProvisionalSchedule,
 		indevScheduleItems = arrayify(indevSchedule),
 		indevStakeholderRegistration = arrayify(
-			project.links.niceIndevStakeholderRegistration
+			links.niceIndevStakeholderRegistration
 		);
 
 	const groups = panels.sort(byTitleAlphabetically).map((panel) => {
 		const indevResource =
-			panel.embedded.niceIndevResourceList.embedded.niceIndevResource;
-
-		const indevResources = arrayify(indevResource).filter(
-			(r) => r.showInDocList
-		);
-
-		const subGroups: ResourceSubGroupViewModel[] = [];
+				panel.embedded.niceIndevResourceList.embedded.niceIndevResource,
+			indevResources = arrayify(indevResource).filter(
+				(resource) => resource.showInDocList
+			),
+			subGroups: ResourceSubGroupViewModel[] = [];
 
 		let currentSubGroup: ResourceSubGroupViewModel;
 
@@ -136,7 +136,7 @@ export const getServerSideProps: GetServerSideProps<
 					href = shouldUseNewConsultationComments
 						? `/consultations/${resource.consultationId}/${resource.consultationDocumentId}`
 						: !isHTML
-						? `${projectPath}/downloads/${project.reference.toLowerCase()}-${resourceTitleId}.${
+						? `${projectPath}/downloads/${reference.toLowerCase()}-${resourceTitleId}.${
 								fileName.split(".").slice(-1)[0]
 						  }`
 						: isConsultation
