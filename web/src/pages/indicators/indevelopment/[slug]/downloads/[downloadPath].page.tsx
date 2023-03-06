@@ -10,12 +10,11 @@ import { getServerSideFile } from "@/utils/response";
 const downloadPathRegex =
 	/^(?<projectReference>[A-Za-z]+-[A-Za-z0-9]+\d+)-(?<resourceTitleId>.*)\.(?<extension>[^.]+)$/;
 
+export type Params = { slug: string; downloadPath: string };
+
 export const getServerSideProps: GetServerSideProps<
 	Record<string, never>,
-	{
-		slug: string;
-		downloadPath: string;
-	}
+	Params
 > = async ({ res, params, resolvedUrl }) => {
 	if (!params || !params.downloadPath) return { notFound: true };
 
@@ -23,7 +22,7 @@ export const getServerSideProps: GetServerSideProps<
 
 	if ("notFound" in result || "redirect" in result) return result;
 
-	const { project, panels } = result;
+	const { project, panels, projectPath } = result;
 
 	const pathRegexMatch = params.downloadPath.match(downloadPathRegex);
 
@@ -50,7 +49,7 @@ export const getServerSideProps: GetServerSideProps<
 
 	if (projectReference.toLowerCase() !== project.reference.toLowerCase()) {
 		logger.info(
-			`Resource with ID ${resourceTitleId} belongs to project ${project.reference} but URL was for project ${projectReference}`
+			`Resource with ID '${resourceTitleId}' belongs to project ${project.reference} but URL was for project ${projectReference}`
 		);
 
 		return { notFound: true };
@@ -58,18 +57,33 @@ export const getServerSideProps: GetServerSideProps<
 
 	if (!resource) {
 		logger.info(
-			`Could not find resource with ID ${resourceTitleId} in project ${project.reference}`
+			`Could not find resource with ID '${resourceTitleId}' in project ${project.reference}`
 		);
 
 		return { notFound: true };
 	}
 
-	const { fileName, links, mimeType } = resource.embedded.niceIndevFile,
-		expectedExtension = fileName.split(".").slice(-1)[0].toLowerCase();
+	const { fileName, links, mimeType } = resource.embedded.niceIndevFile;
+
+	// It doesn't make sense to download an HTML file, so redirect to the correct document URL instead
+	if (mimeType === "text/html") {
+		logger.info(
+			`Redirecting HTML resource with id '${resourceTitleId}' in project ${project.reference}`
+		);
+
+		return {
+			redirect: {
+				permanent: true,
+				destination: `${projectPath}/documents/${resourceTitleId}`,
+			},
+		};
+	}
+
+	const expectedExtension = fileName.split(".").slice(-1)[0].toLowerCase();
 
 	if (expectedExtension.toLowerCase() !== extension.toLowerCase()) {
 		logger.info(
-			`Found incorrect extension of ${extension} in resource ${resourceTitleId} in project ${project.reference}. Expected extension of ${expectedExtension}`
+			`Found incorrect extension of ${extension} in resource '${resourceTitleId}' in project ${project.reference}. Expected extension of ${expectedExtension}`
 		);
 
 		return { notFound: true };
@@ -82,6 +96,7 @@ export const getServerSideProps: GetServerSideProps<
 	);
 };
 
+/* istanbul ignore next */
 export default function FileDownload(): void {
 	// Default export to prevent next.js errors: we don't need an actual component
 	// because the work is done in getServerSideProps to write directly to the response
