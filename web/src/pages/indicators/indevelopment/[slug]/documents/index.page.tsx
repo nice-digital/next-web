@@ -105,7 +105,9 @@ export const getServerSideProps: GetServerSideProps<
 		const indevResource =
 			panel.embedded.niceIndevResourceList.embedded.niceIndevResource;
 
-		const indevResources = arrayify(indevResource);
+		const indevResources = arrayify(indevResource).filter(
+			(r) => r.showInDocList
+		);
 
 		const subGroups: ResourceSubGroupViewModel[] = [];
 
@@ -123,17 +125,23 @@ export const getServerSideProps: GetServerSideProps<
 
 				const { mimeType, length, resourceTitleId, fileName } =
 						resource.embedded.niceIndevFile,
+					shouldUseNewConsultationComments =
+						resource.convertedDocument ||
+						resource.supportsComments ||
+						resource.supportsQuestions,
 					isHTML = mimeType === "text/html",
+					isConsultation = resource.consultationId > 0,
 					fileSize = isHTML ? null : length,
 					fileTypeName = isHTML ? null : getFileTypeNameFromMime(mimeType),
-					href =
-						resource.consultationId > 0
-							? `${projectPath}/consultations/${resourceTitleId}`
-							: isHTML
-							? `${projectPath}/documents/${resourceTitleId}`
-							: `${projectPath}/documents/downloads/${project.reference.toLowerCase()}-${resourceTitleId}.${
-									fileName.split(".").slice(-1)[0]
-							  }`;
+					href = shouldUseNewConsultationComments
+						? `/consultations/${resource.consultationId}/${resource.consultationDocumentId}`
+						: !isHTML
+						? `${projectPath}/downloads/${project.reference.toLowerCase()}-${resourceTitleId}.${
+								fileName.split(".").slice(-1)[0]
+						  }`
+						: isConsultation
+						? `${projectPath}/consultations/${resourceTitleId}`
+						: `${projectPath}/documents/${resourceTitleId}`;
 
 				currentSubGroup.resourceLinks.push({
 					title: resource.title,

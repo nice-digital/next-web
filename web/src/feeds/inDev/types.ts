@@ -233,6 +233,7 @@ export type IndevResource = {
 	isCurrentViewableConsultationMarkup: boolean;
 	convertedDocument: boolean;
 	supportsComments: boolean;
+	supportsQuestions?: boolean;
 };
 
 export type IndevConsultation = {

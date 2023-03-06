@@ -134,7 +134,7 @@ exports[`/indevelopment/[slug].page IndevelopmentPage should match snapshot for 
           </li>
           <li>
             <a
-              href="https://alpha.nice.org.uk/get-involved/stakeholder-registration/register?t=&p=GID-NG10237&returnUrl=/guidance/indevelopment/GID-NG10237"
+              href="https://alpha.nice.org.uk/get-involved/stakeholder-registration/register?t=&p=GID-NG10237&returnUrl=/indicators/indevelopment/gid-ng10237"
             >
               Register as a stakeholder
             </a>
