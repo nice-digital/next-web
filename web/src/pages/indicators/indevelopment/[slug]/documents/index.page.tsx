@@ -35,7 +35,6 @@ export default function DocumentsPage(props: DocumentsPageProps): JSX.Element {
 			<NextSeo
 				title={`Project documents | ${props.project.reference} | Indicators | Standards and Indicators`}
 			/>
-
 			<Breadcrumbs>
 				<Breadcrumb to="/">Home</Breadcrumb>
 				<Breadcrumb to="/standards-and-indicators">
@@ -55,7 +54,6 @@ export default function DocumentsPage(props: DocumentsPageProps): JSX.Element {
 				</Breadcrumb>
 				<Breadcrumb>Project documents</Breadcrumb>
 			</Breadcrumbs>
-
 			<ProjectPageHeading
 				projectPath={props.projectPath}
 				projectType={props.project.projectType}
@@ -65,13 +63,11 @@ export default function DocumentsPage(props: DocumentsPageProps): JSX.Element {
 				indevScheduleItems={props.indevScheduleItems}
 				indevStakeholderRegistration={props.indevStakeholderRegistration}
 			/>
-
 			<ProjectHorizontalNav
 				projectPath={props.projectPath}
 				hasDocuments
 				consultationUrls={props.consultationUrls}
 			/>
-
 			<ResourceList
 				title="Project documents"
 				lead="A list of downloadable documents created during development."

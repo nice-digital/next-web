@@ -7,10 +7,16 @@ import { Breadcrumbs, Breadcrumb } from "@nice-digital/nds-breadcrumbs";
 import { Link } from "@/components/Link/Link";
 import { ProjectHorizontalNav } from "@/components/ProjectHorizontalNav/ProjectHorizontalNav";
 import { ProjectPageHeading } from "@/components/ProjectPageHeading/ProjectPageHeading";
+import { ResourceList } from "@/components/ResourceList/ResourceList";
 import { getResourceFileHTML } from "@/feeds/inDev/inDev";
 import { IndevSchedule, ProjectDetail } from "@/feeds/inDev/types";
 import { arrayify } from "@/utils/array";
+import { getFileTypeNameFromMime } from "@/utils/file";
 import { validateRouteParams } from "@/utils/project";
+import {
+	ResourceGroupViewModel,
+	ResourceSubGroupViewModel,
+} from "@/utils/resource";
 
 export type DocumentHTMLPageProps = {
 	consultationUrls: string[];
@@ -20,7 +26,9 @@ export type DocumentHTMLPageProps = {
 	project: Pick<
 		ProjectDetail,
 		"projectType" | "reference" | "title" | "status"
-	>;
+	> & {
+		groups: ResourceGroupViewModel[];
+	};
 	resource: {
 		resourceFileHTML: string;
 		title: string;
@@ -40,7 +48,6 @@ export default function HistoryHTMLPage({
 			<NextSeo
 				title={`${resource.title} | Project documents | ${project.reference} | Indicators | Standards and Indicators`}
 			/>
-
 			<Breadcrumbs>
 				<Breadcrumb to="/">Home</Breadcrumb>
 				<Breadcrumb to="/standards-and-indicators">
@@ -66,7 +73,6 @@ export default function HistoryHTMLPage({
 				</Breadcrumb>
 				<Breadcrumb>{resource.title}</Breadcrumb>
 			</Breadcrumbs>
-
 			<ProjectPageHeading
 				projectPath={projectPath}
 				projectType={project.projectType}
@@ -76,16 +82,18 @@ export default function HistoryHTMLPage({
 				indevScheduleItems={indevScheduleItems}
 				indevStakeholderRegistration={indevStakeholderRegistration}
 			/>
-
 			<ProjectHorizontalNav
 				projectPath={projectPath}
 				hasDocuments
 				consultationUrls={consultationUrls}
 			/>
 
-			<div
-				dangerouslySetInnerHTML={{ __html: resource.resourceFileHTML }}
-			></div>
+			<ResourceList title="Project documents" groups={project.groups} />
+			{resource.resourceFileHTML == "" ? null : (
+				<div
+					dangerouslySetInnerHTML={{ __html: resource.resourceFileHTML }}
+				></div>
+			)}
 		</>
 	);
 }
@@ -128,6 +136,91 @@ export const getServerSideProps: GetServerSideProps<
 			project.links.niceIndevStakeholderRegistration
 		);
 
+	const groups = panels
+		.filter((panel) => !panel.legacyPanel && panel.title === resource.title)
+		.map((panel) => {
+			const indevResource =
+					panel.embedded.niceIndevResourceList.embedded.niceIndevResource,
+				indevResources = arrayify(indevResource).filter(
+					(resource) => resource.showInDocList
+				),
+				subGroups: ResourceSubGroupViewModel[] = [];
+
+			let currentSubGroup: ResourceSubGroupViewModel;
+
+			indevResources.forEach((resource) => {
+				//TODO check if this is reliable enough not to result in document linking to itself
+				// if (resource.title === panel.title) return;
+				if (
+					resource.embedded?.niceIndevFile.resourceTitleId ===
+					params?.resourceTitleId
+				)
+					return;
+
+				if (resource.textOnly) {
+					currentSubGroup = { title: resource.title, resourceLinks: [] };
+					subGroups.push(currentSubGroup);
+				} else {
+					if (!currentSubGroup) {
+						currentSubGroup = { title: panel.title, resourceLinks: [] };
+						subGroups.push(currentSubGroup);
+					}
+
+					if (!resource.embedded) {
+						if (!resource.externalUrl)
+							throw Error(
+								`Found resource (${resource.title}) with nothing embedded and no external URL`
+							);
+
+						currentSubGroup.resourceLinks.push({
+							title: resource.title,
+							href: resource.externalUrl,
+							fileTypeName: null,
+							fileSize: null,
+							date: resource.publishedDate,
+							type: panel.title,
+						});
+					} else {
+						const { mimeType, length, resourceTitleId, fileName } =
+								resource.embedded.niceIndevFile,
+							shouldUseNewConsultationComments =
+								resource.convertedDocument ||
+								resource.supportsComments ||
+								resource.supportsQuestions,
+							isHTML = mimeType === "text/html",
+							isConsultation =
+								resource.consultationId > 0 &&
+								panel.embedded.niceIndevConsultation,
+							fileSize = isHTML ? null : length,
+							fileTypeName = isHTML ? null : getFileTypeNameFromMime(mimeType),
+							href = shouldUseNewConsultationComments
+								? `/consultations/${resource.consultationId}/${resource.consultationDocumentId}`
+								: !isHTML
+								? `${projectPath}/downloads/${reference.toLowerCase()}-${resourceTitleId}.${
+										fileName.split(".").slice(-1)[0]
+								  }`
+								: isConsultation
+								? `${projectPath}/consultations/${resourceTitleId}`
+								: `${projectPath}/documents/${resourceTitleId}`;
+
+						currentSubGroup.resourceLinks.push({
+							title: resource.title,
+							href,
+							fileTypeName,
+							fileSize,
+							date: resource.publishedDate,
+							type: panel.title,
+						});
+					}
+				}
+			});
+
+			return {
+				title: panel.title,
+				subGroups,
+			};
+		});
+
 	return {
 		props: {
 			projectPath,
@@ -139,6 +232,7 @@ export const getServerSideProps: GetServerSideProps<
 				reference,
 				status,
 				title,
+				groups,
 			},
 			resource: {
 				resourceFileHTML,
