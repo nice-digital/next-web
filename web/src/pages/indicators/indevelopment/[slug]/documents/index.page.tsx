@@ -127,34 +127,50 @@ export const getServerSideProps: GetServerSideProps<
 					subGroups.push(currentSubGroup);
 				}
 
-				const { mimeType, length, resourceTitleId, fileName } =
-						resource.embedded.niceIndevFile,
-					shouldUseNewConsultationComments =
-						resource.convertedDocument ||
-						resource.supportsComments ||
-						resource.supportsQuestions,
-					isHTML = mimeType === "text/html",
-					isConsultation = resource.consultationId > 0,
-					fileSize = isHTML ? null : length,
-					fileTypeName = isHTML ? null : getFileTypeNameFromMime(mimeType),
-					href = shouldUseNewConsultationComments
-						? `/consultations/${resource.consultationId}/${resource.consultationDocumentId}`
-						: !isHTML
-						? `${projectPath}/downloads/${reference.toLowerCase()}-${resourceTitleId}.${
-								fileName.split(".").slice(-1)[0]
-						  }`
-						: isConsultation
-						? `${projectPath}/consultations/${resourceTitleId}`
-						: `${projectPath}/documents/${resourceTitleId}`;
+				if (!resource.embedded) {
+					if (!resource.externalUrl)
+						throw Error(
+							`Found resource (${resource.title}) with nothing embedded and no external URL`
+						);
 
-				currentSubGroup.resourceLinks.push({
-					title: resource.title,
-					href,
-					fileTypeName,
-					fileSize,
-					date: resource.publishedDate,
-					type: panel.title,
-				});
+					currentSubGroup.resourceLinks.push({
+						title: resource.title,
+						href: resource.externalUrl,
+						fileTypeName: null,
+						fileSize: null,
+						date: resource.publishedDate,
+						type: panel.title,
+					});
+				} else {
+					const { mimeType, length, resourceTitleId, fileName } =
+							resource.embedded.niceIndevFile,
+						shouldUseNewConsultationComments =
+							resource.convertedDocument ||
+							resource.supportsComments ||
+							resource.supportsQuestions,
+						isHTML = mimeType === "text/html",
+						isConsultation = resource.consultationId > 0,
+						fileSize = isHTML ? null : length,
+						fileTypeName = isHTML ? null : getFileTypeNameFromMime(mimeType),
+						href = shouldUseNewConsultationComments
+							? `/consultations/${resource.consultationId}/${resource.consultationDocumentId}`
+							: !isHTML
+							? `${projectPath}/downloads/${reference.toLowerCase()}-${resourceTitleId}.${
+									fileName.split(".").slice(-1)[0]
+							  }`
+							: isConsultation
+							? `${projectPath}/consultations/${resourceTitleId}`
+							: `${projectPath}/documents/${resourceTitleId}`;
+
+					currentSubGroup.resourceLinks.push({
+						title: resource.title,
+						href,
+						fileTypeName,
+						fileSize,
+						date: resource.publishedDate,
+						type: panel.title,
+					});
+				}
 			}
 		});
 

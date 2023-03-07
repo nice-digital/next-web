@@ -41,7 +41,6 @@ export default function ConsultationHTMLPage({
 			<NextSeo
 				title={`${consultation.title} | ${project.reference} | Indicators | Standards and Indicators`}
 			/>
-
 			<Breadcrumbs>
 				<Breadcrumb to="/">Home</Breadcrumb>
 				<Breadcrumb to="/standards-and-indicators">
@@ -61,7 +60,6 @@ export default function ConsultationHTMLPage({
 				</Breadcrumb>
 				<Breadcrumb>{consultation.title}</Breadcrumb>
 			</Breadcrumbs>
-
 			<ProjectPageHeading
 				projectPath={projectPath}
 				projectType={project.projectType}
@@ -71,14 +69,13 @@ export default function ConsultationHTMLPage({
 				indevScheduleItems={indevScheduleItems}
 				indevStakeholderRegistration={indevStakeholderRegistration}
 			/>
-
 			<ProjectHorizontalNav
 				projectPath={projectPath}
 				hasDocuments
 				consultationUrls={consultationUrls}
 			/>
-
-			<div dangerouslySetInnerHTML={{ __html: consultation.html }}></div>
+			##
+			<div dangerouslySetInnerHTML={{ __html: consultation.html }}></div>##
 		</>
 	);
 }

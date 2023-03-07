@@ -112,7 +112,7 @@ export const getServerSideProps: GetServerSideProps<
 				resource.showInDocList
 		);
 
-	if (!resource) return { notFound: true };
+	if (!resource || !resource.embedded) return { notFound: true };
 
 	const resourceFilePath = resource.embedded.niceIndevFile.links.self[0].href,
 		resourceFileHTML = await getResourceFileHTML(resourceFilePath);
