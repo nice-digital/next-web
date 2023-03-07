@@ -105,7 +105,9 @@ export default function InDevelopmentPage(
 				<Breadcrumb to="/standards-and-indicators/indicators">
 					Indicators
 				</Breadcrumb>
-				<Breadcrumb to="/indicators/indevelopment">In development</Breadcrumb>
+				<Breadcrumb to="/indicators/indevelopment" elementType={Link}>
+					In development
+				</Breadcrumb>
 				<Breadcrumb>{reference}</Breadcrumb>
 			</Breadcrumbs>
 

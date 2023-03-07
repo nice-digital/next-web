@@ -5,6 +5,7 @@ import React from "react";
 
 import { Breadcrumbs, Breadcrumb } from "@nice-digital/nds-breadcrumbs";
 
+import { Link } from "@/components/Link/Link";
 import { ProjectHorizontalNav } from "@/components/ProjectHorizontalNav/ProjectHorizontalNav";
 import { ProjectPageHeading } from "@/components/ProjectPageHeading/ProjectPageHeading";
 import { getResourceFileHTML } from "@/feeds/inDev/inDev";
@@ -49,9 +50,12 @@ export default function ConsultationHTMLPage({
 				<Breadcrumb to="/standards-and-indicators/indicators">
 					Indicators
 				</Breadcrumb>
-				<Breadcrumb to="/indicators/indevelopment">In development</Breadcrumb>
+				<Breadcrumb to="/indicators/indevelopment" elementType={Link}>
+					In development
+				</Breadcrumb>
 				<Breadcrumb
 					to={`/indicators/indevelopment/${project.reference.toLowerCase()}`}
+					elementType={Link}
 				>
 					{project.reference}
 				</Breadcrumb>

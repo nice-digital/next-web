@@ -3,6 +3,7 @@ import { type GetServerSideProps } from "next/types";
 
 import { Breadcrumbs, Breadcrumb } from "@nice-digital/nds-breadcrumbs";
 
+import { Link } from "@/components/Link/Link";
 import { ProjectHorizontalNav } from "@/components/ProjectHorizontalNav/ProjectHorizontalNav";
 import { ProjectPageHeading } from "@/components/ProjectPageHeading/ProjectPageHeading";
 import { ResourceList } from "@/components/ResourceList/ResourceList";
@@ -43,9 +44,12 @@ export default function DocumentsPage(props: DocumentsPageProps): JSX.Element {
 				<Breadcrumb to="/standards-and-indicators/indicators">
 					Indicators
 				</Breadcrumb>
-				<Breadcrumb to="/indicators/indevelopment">In development</Breadcrumb>
+				<Breadcrumb to="/indicators/indevelopment" elementType={Link}>
+					In development
+				</Breadcrumb>
 				<Breadcrumb
 					to={`/indicators/indevelopment/${props.project.reference.toLowerCase()}`}
+					elementType={Link}
 				>
 					{props.project.reference}
 				</Breadcrumb>
