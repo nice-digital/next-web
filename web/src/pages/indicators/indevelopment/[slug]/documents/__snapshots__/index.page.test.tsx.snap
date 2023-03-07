@@ -293,7 +293,7 @@ exports[`/indicators/indevelopment/[slug]/documents DocumentsPage should match s
                           class="card__heading"
                         >
                           <a
-                            href="/indicators/indevelopment/gid-dg10049/consultations/html-content"
+                            href="/indicators/indevelopment/gid-dg10049/documents/html-content"
                           >
                             Diagnostics consultation
                           </a>
@@ -1677,7 +1677,7 @@ Object {
                   "date": "2022-12-09T08:00:00",
                   "fileSize": null,
                   "fileTypeName": null,
-                  "href": "/indicators/indevelopment/gid-dg10049/consultations/html-content",
+                  "href": "/indicators/indevelopment/gid-dg10049/documents/html-content",
                   "title": "Diagnostics consultation",
                   "type": "Diagnostics consultation",
                 },
