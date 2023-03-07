@@ -149,7 +149,9 @@ export const getServerSideProps: GetServerSideProps<
 							resource.supportsComments ||
 							resource.supportsQuestions,
 						isHTML = mimeType === "text/html",
-						isConsultation = resource.consultationId > 0,
+						isConsultation =
+							resource.consultationId > 0 &&
+							panel.embedded.niceIndevConsultation,
 						fileSize = isHTML ? null : length,
 						fileTypeName = isHTML ? null : getFileTypeNameFromMime(mimeType),
 						href = shouldUseNewConsultationComments

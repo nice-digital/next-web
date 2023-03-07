@@ -74,8 +74,8 @@ export default function ConsultationHTMLPage({
 				hasDocuments
 				consultationUrls={consultationUrls}
 			/>
-			##
-			<div dangerouslySetInnerHTML={{ __html: consultation.html }}></div>##
+
+			<div dangerouslySetInnerHTML={{ __html: consultation.html }}></div>
 		</>
 	);
 }

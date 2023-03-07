@@ -107,9 +107,8 @@ export const getServerSideProps: GetServerSideProps<
 		.find(
 			(resource) =>
 				resource.embedded?.niceIndevFile.resourceTitleId ===
-					params?.resourceTitleId &&
-				resource.consultationId === 0 &&
-				resource.showInDocList
+					params?.resourceTitleId && resource.showInDocList
+			// TODO: We probably want to exclude consultations here: we don't want them to render on the /documents URL
 		);
 
 	if (!resource || !resource.embedded) return { notFound: true };
