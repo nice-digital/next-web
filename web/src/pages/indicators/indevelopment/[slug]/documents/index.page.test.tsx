@@ -78,5 +78,9 @@ describe("/indicators/indevelopment/[slug]/documents", () => {
 				"/indicators/indevelopment/gid-dg10049/downloads/gid-dg10049-final-scope.pdf"
 			);
 		});
+
+		it.todo(
+			"should generate correct anchor for each of consultation comments, normal consultation, download and HTML document"
+		);
 	});
 });
