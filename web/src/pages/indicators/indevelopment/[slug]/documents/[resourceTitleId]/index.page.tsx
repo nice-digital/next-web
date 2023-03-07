@@ -107,7 +107,9 @@ export const getServerSideProps: GetServerSideProps<
 		.find(
 			(resource) =>
 				resource.embedded?.niceIndevFile.resourceTitleId ===
-					params?.resourceTitleId && resource.showInDocList
+					params?.resourceTitleId &&
+				resource.consultationId === 0 &&
+				resource.showInDocList
 		);
 
 	if (!resource) return { notFound: true };
