@@ -10,6 +10,7 @@ import { ProjectHorizontalNav } from "@/components/ProjectHorizontalNav/ProjectH
 import { ProjectPageHeading } from "@/components/ProjectPageHeading/ProjectPageHeading";
 import { getResourceFileHTML } from "@/feeds/inDev/inDev";
 import { IndevSchedule, ProjectDetail } from "@/feeds/inDev/types";
+import { logger } from "@/logger";
 import { arrayify } from "@/utils/array";
 import { validateRouteParams } from "@/utils/project";
 
@@ -104,7 +105,10 @@ export const getServerSideProps: GetServerSideProps<
 	const consultationFilePath = consultation.links.self[0].href,
 		consultationHTML = await getResourceFileHTML(consultationFilePath);
 
-	if (consultationHTML == null) return { notFound: true };
+	if (consultationHTML == null) {
+		logger.warn(`Consultation HTML not found at ${consultationFilePath}`);
+		return { notFound: true };
+	}
 
 	const { projectType, reference, status, title } = project;
 
