@@ -1,0 +1,393 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`[resourceTitleId].page ConsultationHTMLPage should match snapshot for main content 1`] = `
+<body>
+  <div>
+    <nav
+      aria-label="Breadcrumbs"
+      role="navigation"
+    >
+      <ol
+        class="breadcrumbs"
+      >
+        <li
+          class="breadcrumbs__crumb"
+        >
+          <a
+            href="/"
+          >
+            Home
+          </a>
+        </li>
+        <li
+          class="breadcrumbs__crumb"
+        >
+          <a
+            href="/standards-and-indicators"
+          >
+            Standards and Indicators
+          </a>
+        </li>
+        <li
+          class="breadcrumbs__crumb"
+        >
+          <a
+            href="/standards-and-indicators/indicators"
+          >
+            Indicators
+          </a>
+        </li>
+        <li
+          class="breadcrumbs__crumb"
+        >
+          <a
+            href="/indicators/indevelopment"
+          >
+            In development
+          </a>
+        </li>
+        <li
+          class="breadcrumbs__crumb"
+        >
+          <a
+            href="/indicators/indevelopment/gid-ta10914"
+          >
+            GID-TA10914
+          </a>
+        </li>
+        <li
+          class="breadcrumbs__crumb"
+        >
+          <span>
+            Draft guidance: 1
+          </span>
+        </li>
+      </ol>
+    </nav>
+    <script
+      type="application/ld+json"
+    >
+      {
+  "@context": "http://schema.org",
+  "@type": "BreadcrumbList",
+  "itemListElement": [
+    {
+      "@type": "ListItem",
+      "position": 1,
+      "item": {
+        "@id": "/",
+        "name": "Home"
+      }
+    },
+    {
+      "@type": "ListItem",
+      "position": 2,
+      "item": {
+        "@id": "/standards-and-indicators",
+        "name": "Standards and Indicators"
+      }
+    },
+    {
+      "@type": "ListItem",
+      "position": 3,
+      "item": {
+        "@id": "/standards-and-indicators/indicators",
+        "name": "Indicators"
+      }
+    },
+    {
+      "@type": "ListItem",
+      "position": 4,
+      "item": {
+        "@id": "/indicators/indevelopment",
+        "name": "In development"
+      }
+    },
+    {
+      "@type": "ListItem",
+      "position": 5,
+      "item": {
+        "@id": "/indicators/indevelopment/gid-ta10914",
+        "name": "GID-TA10914"
+      }
+    },
+    {
+      "@type": "ListItem",
+      "position": 6,
+      "item": {
+        "name": "Draft guidance: 1"
+      }
+    }
+  ]
+}
+    </script>
+    <div
+      class="page-header"
+      id="content-start"
+    >
+      <h1
+        class="page-header__heading page-header__heading--alt"
+      >
+        Daratumumab with lenalidomide and dexamethasone for untreated multiple myeloma when stem cell transplant is unsuitable  [ID4014]
+      </h1>
+      <ul
+        class="page-header__metadata"
+      >
+        <li>
+          In development GID-TA10914
+        </li>
+        <li>
+          <span>
+            Expected publication date: 
+          </span>
+          <time
+            datetime="23 August 2023"
+          >
+            23 August 2023
+          </time>
+        </li>
+      </ul>
+    </div>
+    <a
+      href="/consultations/leadinformation"
+    >
+      Request commenting lead permission
+    </a>
+    <nav
+      class="horizontal-nav"
+    >
+      <ul
+        class="horizontal-nav__list"
+      >
+        <li
+          class="horizontal-nav__item"
+        >
+          <a
+            aria-current="false"
+            class="horizontal-nav__link"
+            href="/indicators/indevelopment/gid-ta10914"
+          >
+            Project information
+          </a>
+        </li>
+        <li
+          class="horizontal-nav__item"
+        >
+          <a
+            aria-current="false"
+            class="horizontal-nav__link"
+            href="/indicators/indevelopment/gid-ta10914/documents"
+          >
+            Project documents
+          </a>
+        </li>
+        <li
+          class="horizontal-nav__item"
+        >
+          <a
+            aria-current="true"
+            class="horizontal-nav__link"
+            href="/indicators/indevelopment/gid-ta10914/consultations/html-content-5"
+          >
+            Consultation
+          </a>
+        </li>
+      </ul>
+    </nav>
+    <h2>
+      Draft guidance: 1
+    </h2>
+    <div>
+      <div>
+        <p>
+          You can now comment on this draft guidance.
+        </p>
+        
+	
+        <p>
+          <strong>
+            How to comment
+          </strong>
+        </p>
+        
+	
+        <p>
+          You should read both the consultation document and the accompanying evidence (see the committee papers) before making any comments.
+        </p>
+        
+	
+        <p>
+          You must make your comments directly onto the online version of the consultation document. When you go into the document you will find instructions on how to use the commenting software. You can also review and edit your comments before you submit them. 
+        </p>
+        
+	
+        <p>
+          You can download a PDF version of the consultation document, but 
+          <strong>
+            you can only make comments on the online version
+          </strong>
+          .
+        </p>
+        
+	
+        <p>
+          <strong>
+            Consultation document
+          </strong>
+        </p>
+        
+	
+        <ul>
+          
+	
+          <li>
+            <a
+              href="https://www.nice.org.uk/consultations/2095/1/recommendations"
+            >
+              Appraisal consultation document (online commenting)
+            </a>
+          </li>
+          
+	
+          <li>
+            <a
+              href="/guidance/GID-TA10914/documents/129"
+            >
+              Appraisal consultation document (PDF version)
+            </a>
+          </li>
+          
+	
+        </ul>
+        
+	
+        <p>
+          <strong>
+            Closing date for comments: 5pm, 14 March 2023.
+          </strong>
+        </p>
+        
+	
+        <p>
+          <strong>
+            About the consultation
+          </strong>
+        </p>
+        
+	
+        <p>
+          We have asked some questions about the consultation that we would like you to answer. You will be able to see the questions when you go into the online consultation document. 
+        </p>
+        
+	
+        <p>
+          We would also like you to think about whether there are any aspects of the recommendations that need particular consideration to make sure we avoid unlawful discrimination against any group of people. For example, on the grounds of:
+        </p>
+        
+	
+        <ul>
+          
+	
+          <li>
+            race
+          </li>
+          
+	
+          <li>
+            sex
+          </li>
+          
+	
+          <li>
+            disability
+          </li>
+          
+	
+          <li>
+            religion or belief
+          </li>
+          
+	
+          <li>
+            sexual orientation
+          </li>
+          
+	
+          <li>
+            age
+          </li>
+          
+	
+          <li>
+            gender reassignment
+          </li>
+          
+	
+          <li>
+            pregnancy and maternity.
+          </li>
+          
+	
+        </ul>
+        
+	
+        <p>
+          <strong>
+            Note that this document is not NICE's final guidance on this technology. The recommendations in section 1 may change after consultation.
+          </strong>
+        </p>
+        
+	
+        <p>
+          After the consultation has closed the appraisal committee will meet again to consider the responses received and prepare the final draft guidance.
+        </p>
+        
+	
+        <p>
+          <strong>
+            Find out more
+          </strong>
+        </p>
+        
+	
+        <ul>
+          
+	
+          <li>
+            <u>
+              About this topic
+            </u>
+          </li>
+          
+	
+          <li>
+            <a
+              href="https://www.nice.org.uk/process/pmg36/chapter/introduction-to-health-technology-evaluation"
+            >
+              The appraisal process
+            </a>
+          </li>
+          
+	
+        </ul>
+        
+	
+        <p>
+           
+        </p>
+      </div>
+      
+
+    </div>
+    <p>
+      This page was last updated on
+       
+      <time
+        datetime="2023-02-22"
+      >
+        22 February 2023
+      </time>
+    </p>
+  </div>
+</body>
+`;

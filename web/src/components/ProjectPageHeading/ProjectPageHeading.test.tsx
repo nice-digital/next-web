@@ -112,4 +112,20 @@ describe("ProjectPageHeading", () => {
 			"https://alpha.nice.org.uk/get-involved/stakeholder-registration/register?t=&p=GID-TAG377&returnUrl=/guidance/indevelopment/gid-tag377"
 		);
 	});
+
+	it("should render a 'request commenting lead permission' link when consultation should use new consultation comments", async () => {
+		const mockProps = {
+			...props,
+			shouldUseNewConsultationComments: true,
+		};
+		render(<ProjectPageHeading {...mockProps} />);
+		const consultationsRequestLead = screen.getByRole("link", {
+			name: "Request commenting lead permission",
+		});
+		expect(consultationsRequestLead).toBeInTheDocument();
+		expect(consultationsRequestLead).toHaveAttribute(
+			"href",
+			"/consultations/leadinformation"
+		);
+	});
 });

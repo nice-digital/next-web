@@ -1,5 +1,4 @@
 import { NextSeo } from "next-seo";
-import { useRouter } from "next/router";
 import { type GetServerSideProps } from "next/types";
 import React from "react";
 
@@ -12,21 +11,23 @@ import { getResourceFileHTML } from "@/feeds/inDev/inDev";
 import { IndevSchedule, ProjectDetail } from "@/feeds/inDev/types";
 import { logger } from "@/logger";
 import { arrayify } from "@/utils/array";
+import { formatDateStr, stripTime } from "@/utils/datetime";
 import { validateRouteParams } from "@/utils/project";
 
-export type DocumentHTMLPageProps = {
+export type ConsultationHTMLPageProps = {
 	consultationUrls: string[];
 	indevScheduleItems?: IndevSchedule[];
 	indevStakeholderRegistration: Record<string, unknown>[];
 	project: Pick<
 		ProjectDetail,
-		"projectType" | "reference" | "title" | "status"
+		"projectType" | "reference" | "title" | "status" | "lastModifiedDate"
 	>;
 	projectPath: string;
 	consultation: {
 		html: string;
 		title: string;
 	};
+	shouldUseNewConsultationComments: boolean | null;
 };
 
 export default function ConsultationHTMLPage({
@@ -36,7 +37,8 @@ export default function ConsultationHTMLPage({
 	project,
 	projectPath,
 	indevScheduleItems,
-}: DocumentHTMLPageProps): JSX.Element {
+	shouldUseNewConsultationComments,
+}: ConsultationHTMLPageProps): JSX.Element {
 	return (
 		<>
 			<NextSeo
@@ -69,14 +71,23 @@ export default function ConsultationHTMLPage({
 				status={project.status}
 				indevScheduleItems={indevScheduleItems}
 				indevStakeholderRegistration={indevStakeholderRegistration}
+				shouldUseNewConsultationComments={shouldUseNewConsultationComments}
 			/>
 			<ProjectHorizontalNav
 				projectPath={projectPath}
 				hasDocuments
 				consultationUrls={consultationUrls}
 			/>
-
+			<h2>{consultation.title}</h2>
 			<div dangerouslySetInnerHTML={{ __html: consultation.html }}></div>
+			{project.lastModifiedDate ? (
+				<p>
+					This page was last updated on{" "}
+					<time dateTime={stripTime(project.lastModifiedDate)}>
+						{formatDateStr(project.lastModifiedDate)}
+					</time>
+				</p>
+			) : null}
 		</>
 	);
 }
@@ -87,14 +98,20 @@ export type Params = {
 };
 
 export const getServerSideProps: GetServerSideProps<
-	DocumentHTMLPageProps,
+	ConsultationHTMLPageProps,
 	Params
 > = async ({ params, resolvedUrl }) => {
 	const result = await validateRouteParams({ params, resolvedUrl });
 
 	if ("notFound" in result || "redirect" in result) return result;
 
-	const { project, projectPath, consultations, consultationUrls } = result;
+	const {
+		project,
+		projectPath,
+		consultations,
+		consultationUrls,
+		shouldUseNewConsultationComments,
+	} = result;
 
 	const consultation = consultations.find(
 		(c) => c.resourceTitleId === params?.resourceTitleId
@@ -110,15 +127,15 @@ export const getServerSideProps: GetServerSideProps<
 		return { notFound: true };
 	}
 
-	const { projectType, reference, status, title } = project;
-
-	const indevSchedule =
+	const { projectType, reference, status, title } = project,
+		indevSchedule =
 			project.embedded.niceIndevProvisionalScheduleList?.embedded
 				.niceIndevProvisionalSchedule,
 		indevScheduleItems = arrayify(indevSchedule),
 		indevStakeholderRegistration = arrayify(
 			project.links.niceIndevStakeholderRegistration
-		);
+		),
+		lastModifiedDate = project.lastModifiedDate;
 
 	return {
 		props: {
@@ -130,12 +147,14 @@ export const getServerSideProps: GetServerSideProps<
 				reference,
 				status,
 				title,
+				lastModifiedDate,
 			},
 			projectPath,
 			consultation: {
 				html: consultationHTML,
 				title: consultation.consultationName,
 			},
+			shouldUseNewConsultationComments,
 		},
 	};
 };

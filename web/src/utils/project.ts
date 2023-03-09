@@ -21,6 +21,7 @@ export type ValidateRouteParamsResult =
 	| { redirect: Redirect }
 	| {
 			consultations: IndevConsultation[];
+			shouldUseNewConsultationComments: boolean;
 			consultationUrls: string[];
 			project: ProjectDetail;
 			projectPath: string;
@@ -75,7 +76,26 @@ export const validateRouteParams = async ({
 			`${projectPath}/consultations/${consultation.resourceTitleId}`
 	);
 
+	let shouldUseNewConsultationComments = false;
+
+	panels.map((panel) => {
+		const indevResource =
+				panel.embedded.niceIndevResourceList.embedded.niceIndevResource,
+			indevResources = arrayify(indevResource).filter(
+				(resource) => resource.showInDocList
+			);
+
+		indevResources.forEach((resource) => {
+			shouldUseNewConsultationComments =
+				resource.convertedDocument ||
+				resource.supportsComments ||
+				resource.supportsQuestions ||
+				false;
+		});
+	});
+
 	return {
+		shouldUseNewConsultationComments: true,
 		consultationUrls,
 		consultations,
 		projectPath,
