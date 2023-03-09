@@ -86,16 +86,18 @@ export const validateRouteParams = async ({
 			);
 
 		indevResources.forEach((resource) => {
-			shouldUseNewConsultationComments =
+			if (
 				resource.convertedDocument ||
 				resource.supportsComments ||
-				resource.supportsQuestions ||
-				false;
+				resource.supportsQuestions
+			) {
+				shouldUseNewConsultationComments = true;
+			}
 		});
 	});
 
 	return {
-		shouldUseNewConsultationComments: true,
+		shouldUseNewConsultationComments,
 		consultationUrls,
 		consultations,
 		projectPath,
