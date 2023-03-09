@@ -1,9 +1,6 @@
 import { render, screen, within } from "@testing-library/react";
-import {
-	GetServerSidePropsContext,
-	type GetServerSidePropsContext,
-} from "next";
 import { useRouter } from "next/router";
+import { type GetServerSidePropsContext } from "next/types";
 
 import { FeedPath } from "@/feeds/inDev/types";
 import { logger } from "@/logger";
