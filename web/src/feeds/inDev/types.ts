@@ -267,6 +267,12 @@ export type IndevConsultation = {
 	hidden: boolean;
 };
 
+export type IndevConsultationPanel = IndevPanel & {
+	embedded: {
+		niceIndevConsultation: IndevConsultation;
+	};
+};
+
 export type IndevPanel = {
 	links: {
 		self: [Link];
@@ -282,7 +288,7 @@ export type IndevPanel = {
 			eTag: ETag;
 			hasResources: boolean;
 		};
-		niceIndevConsultation: IndevConsultation | IndevConsultation[];
+		niceIndevConsultation?: IndevConsultation;
 	};
 	eTag: ETag;
 	title: string;

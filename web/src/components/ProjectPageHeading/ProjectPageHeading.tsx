@@ -49,41 +49,41 @@ export const ProjectPageHeading: FC<ProjectPageHeadingProps> = ({
 	}
 
 	return (
-		<>
-			<PageHeader
-				heading={title}
-				useAltHeading
-				id="content-start"
-				metadata={[
-					status != "Discontinued"
-						? `In development ${reference}`
-						: `Discontinued ${reference}`,
-					publicationMeta,
-					indevRegisterAnInterestLink ? (
-						<Link
-							to={`/about/what-we-do/our-programmes/nice-guidance/nice-interventional-procedures-guidance/ip-register-an-interest?t=0&p=${reference}&returnUrl=${projectPath}`}
-						>
-							Register an interest
-						</Link>
-					) : null,
-					indevStakeholderRegistration &&
-					indevStakeholderRegistration.length > 0 ? (
-						<Link
-							to={
-								(indevStakeholderRegistration[0].href +
-									`?t=&p=${reference}&returnUrl=${projectPath}`) as string
-							}
-						>
-							Register as a stakeholder
-						</Link>
-					) : null,
-				].filter(Boolean)}
-			/>
-			{shouldUseNewConsultationComments && (
-				<Link to="/consultations/leadinformation">
-					Request commenting lead permission
-				</Link>
-			)}
-		</>
+		<PageHeader
+			heading={title}
+			useAltHeading
+			id="content-start"
+			metadata={[
+				status != "Discontinued"
+					? `In development ${reference}`
+					: `Discontinued ${reference}`,
+				publicationMeta,
+				indevRegisterAnInterestLink ? (
+					<Link
+						to={`/about/what-we-do/our-programmes/nice-guidance/nice-interventional-procedures-guidance/ip-register-an-interest?t=0&p=${reference}&returnUrl=${projectPath}`}
+					>
+						Register an interest
+					</Link>
+				) : null,
+				indevStakeholderRegistration &&
+				indevStakeholderRegistration.length > 0 ? (
+					<Link
+						to={
+							(indevStakeholderRegistration[0].href +
+								`?t=&p=${reference}&returnUrl=${projectPath}`) as string
+						}
+					>
+						Register as a stakeholder
+					</Link>
+				) : null,
+			].filter(Boolean)}
+			cta={
+				shouldUseNewConsultationComments ? (
+					<Link to="/consultations/leadinformation">
+						Request commenting lead permission
+					</Link>
+				) : null
+			}
+		/>
 	);
 };

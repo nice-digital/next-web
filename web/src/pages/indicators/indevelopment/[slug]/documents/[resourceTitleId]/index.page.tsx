@@ -136,6 +136,8 @@ export const getServerSideProps: GetServerSideProps<
 			project.links.niceIndevStakeholderRegistration
 		);
 
+	//TODO remove unnecessary mapping below as we already have resource above
+
 	const groups = panels
 		.filter((panel) => !panel.legacyPanel && panel.title === resource.title)
 		.map((panel) => {
@@ -149,8 +151,6 @@ export const getServerSideProps: GetServerSideProps<
 			let currentSubGroup: ResourceSubGroupViewModel;
 
 			indevResources.forEach((resource) => {
-				//TODO check if this is reliable enough not to result in document linking to itself
-				// if (resource.title === panel.title) return;
 				if (
 					resource.embedded?.niceIndevFile.resourceTitleId ===
 					params?.resourceTitleId

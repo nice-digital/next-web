@@ -27,7 +27,7 @@ export type ConsultationHTMLPageProps = {
 		html: string;
 		title: string;
 	};
-	shouldUseNewConsultationComments: boolean | null;
+	shouldUseNewConsultationComments: boolean;
 };
 
 export default function ConsultationHTMLPage({
@@ -105,21 +105,19 @@ export const getServerSideProps: GetServerSideProps<
 
 	if ("notFound" in result || "redirect" in result) return result;
 
-	const {
-		project,
-		projectPath,
-		consultations,
-		consultationUrls,
-		shouldUseNewConsultationComments,
-	} = result;
+	const { project, projectPath, consultationPanels, consultationUrls, panels } =
+		result;
 
-	const consultation = consultations.find(
-		(c) => c.resourceTitleId === params?.resourceTitleId
+	const consultationPanel = consultationPanels.find(
+		(panel) =>
+			panel.embedded.niceIndevConsultation.resourceTitleId ===
+			params?.resourceTitleId
 	);
 
-	if (!consultation) return { notFound: true };
+	if (!consultationPanel) return { notFound: true };
 
-	const consultationFilePath = consultation.links.self[0].href,
+	const consultationFilePath =
+			consultationPanel.embedded.niceIndevConsultation.links.self[0].href,
 		consultationHTML = await getResourceFileHTML(consultationFilePath);
 
 	if (consultationHTML == null) {
@@ -137,6 +135,17 @@ export const getServerSideProps: GetServerSideProps<
 		),
 		lastModifiedDate = project.lastModifiedDate;
 
+	const consultationResources = arrayify(
+		consultationPanel.embedded.niceIndevResourceList.embedded.niceIndevResource
+	);
+
+	const shouldUseNewConsultationComments = consultationResources.some(
+		(resource) =>
+			resource.convertedDocument ||
+			resource.supportsComments ||
+			!!resource.supportsQuestions
+	);
+
 	return {
 		props: {
 			consultationUrls,
@@ -152,7 +161,8 @@ export const getServerSideProps: GetServerSideProps<
 			projectPath,
 			consultation: {
 				html: consultationHTML,
-				title: consultation.consultationName,
+				title:
+					consultationPanel.embedded.niceIndevConsultation.consultationName,
 			},
 			shouldUseNewConsultationComments,
 		},

@@ -159,11 +159,17 @@ describe("[resourceTitleId].page", () => {
 			expect(time).toHaveAttribute("datetime", "2023-02-22");
 		});
 
-		it("should render consultation HTML", () => {
-			render(<ConsultationHTMLPage {...props} />);
-			expect(
-				screen.getByText("You can now comment on this draft guidance.")
-			).toBeInTheDocument();
+		it("should render consultation HTML string as HTML", () => {
+			render(
+				<ConsultationHTMLPage
+					{...props}
+					consultation={{
+						html: "<p>hello</p>",
+						title: "anything",
+					}}
+				/>
+			);
+			expect(screen.getByText("hello")).toHaveProperty("tagName", "P");
 		});
 	});
 });

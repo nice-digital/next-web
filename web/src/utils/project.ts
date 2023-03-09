@@ -3,6 +3,7 @@ import { type Redirect } from "next";
 import {
 	getProjectDetail,
 	IndevConsultation,
+	IndevConsultationPanel,
 	IndevPanel,
 	ProjectDetail,
 	ProjectStatus,
@@ -20,8 +21,7 @@ export type ValidateRouteParamsResult =
 	| { notFound: true }
 	| { redirect: Redirect }
 	| {
-			consultations: IndevConsultation[];
-			shouldUseNewConsultationComments: boolean;
+			consultationPanels: IndevConsultationPanel[];
 			consultationUrls: string[];
 			project: ProjectDetail;
 			projectPath: string;
@@ -67,39 +67,22 @@ export const validateRouteParams = async ({
 					project.embedded?.niceIndevPanelList?.embedded?.niceIndevPanel
 			  ).filter((panel) => panel.showPanel && panel.panelType == "History")
 			: [],
-		consultations = panels
-			.flatMap((panel) => arrayify(panel.embedded.niceIndevConsultation))
-			.filter((consultation) => !consultation.hidden);
+		consultationPanels = panels.filter(
+			(panel) =>
+				panel.embedded.niceIndevConsultation &&
+				!panel.embedded.niceIndevConsultation.hidden
+		) as IndevConsultationPanel[];
+	// .flatMap((panel) => arrayify(panel.embedded.niceIndevConsultation))
+	// .filter((consultation) => !consultation.hidden);
 
-	const consultationUrls = consultations.map(
-		(consultation) =>
-			`${projectPath}/consultations/${consultation.resourceTitleId}`
+	const consultationUrls = consultationPanels.map(
+		(panel) =>
+			`${projectPath}/consultations/${panel.embedded.niceIndevConsultation.resourceTitleId}`
 	);
 
-	let shouldUseNewConsultationComments = false;
-
-	panels.map((panel) => {
-		const indevResource =
-				panel.embedded.niceIndevResourceList.embedded.niceIndevResource,
-			indevResources = arrayify(indevResource).filter(
-				(resource) => resource.showInDocList
-			);
-
-		indevResources.forEach((resource) => {
-			if (
-				resource.convertedDocument ||
-				resource.supportsComments ||
-				resource.supportsQuestions
-			) {
-				shouldUseNewConsultationComments = true;
-			}
-		});
-	});
-
 	return {
-		shouldUseNewConsultationComments,
 		consultationUrls,
-		consultations,
+		consultationPanels,
 		projectPath,
 		project,
 		panels,
