@@ -7,16 +7,17 @@ import { Breadcrumbs, Breadcrumb } from "@nice-digital/nds-breadcrumbs";
 import { Link } from "@/components/Link/Link";
 import { ProjectHorizontalNav } from "@/components/ProjectHorizontalNav/ProjectHorizontalNav";
 import { ProjectPageHeading } from "@/components/ProjectPageHeading/ProjectPageHeading";
-import { ResourceList } from "@/components/ResourceList/ResourceList";
+import { ResourceLinkCard } from "@/components/ResourceLinkCard/ResourceLinkCard";
 import { getResourceFileHTML } from "@/feeds/inDev/inDev";
-import { IndevSchedule, ProjectDetail } from "@/feeds/inDev/types";
-import { arrayify } from "@/utils/array";
-import { getFileTypeNameFromMime } from "@/utils/file";
-import { validateRouteParams } from "@/utils/project";
 import {
-	ResourceGroupViewModel,
-	ResourceSubGroupViewModel,
-} from "@/utils/resource";
+	IndevFileResource,
+	IndevSchedule,
+	ProjectDetail,
+} from "@/feeds/inDev/types";
+import { logger } from "@/logger";
+import { arrayify } from "@/utils/array";
+import { validateRouteParams } from "@/utils/project";
+import { getInDevResourceLink, ResourceLinkViewModel } from "@/utils/resource";
 
 export type DocumentHTMLPageProps = {
 	consultationUrls: string[];
@@ -26,13 +27,12 @@ export type DocumentHTMLPageProps = {
 	project: Pick<
 		ProjectDetail,
 		"projectType" | "reference" | "title" | "status"
-	> & {
-		groups: ResourceGroupViewModel[];
-	};
+	>;
 	resource: {
 		resourceFileHTML: string;
 		title: string;
 	};
+	resourceLinks: ResourceLinkViewModel[];
 };
 
 export default function HistoryHTMLPage({
@@ -42,6 +42,7 @@ export default function HistoryHTMLPage({
 	projectPath,
 	resource,
 	indevScheduleItems,
+	resourceLinks,
 }: DocumentHTMLPageProps): JSX.Element {
 	return (
 		<>
@@ -66,13 +67,14 @@ export default function HistoryHTMLPage({
 					{project.reference}
 				</Breadcrumb>
 				<Breadcrumb
-					to={`/indicators/indevelopment/${project.reference.toLowerCase()}/documents/`}
+					to={`/indicators/indevelopment/${project.reference.toLowerCase()}/documents`}
 					elementType={Link}
 				>
 					Project documents
 				</Breadcrumb>
 				<Breadcrumb>{resource.title}</Breadcrumb>
 			</Breadcrumbs>
+
 			<ProjectPageHeading
 				projectPath={projectPath}
 				projectType={project.projectType}
@@ -82,14 +84,25 @@ export default function HistoryHTMLPage({
 				indevScheduleItems={indevScheduleItems}
 				indevStakeholderRegistration={indevStakeholderRegistration}
 			/>
+
 			<ProjectHorizontalNav
 				projectPath={projectPath}
 				hasDocuments
 				consultationUrls={consultationUrls}
 			/>
 
-			<ResourceList title="Project documents" groups={project.groups} />
-			{resource.resourceFileHTML == "" ? null : (
+			{resource.resourceFileHTML === "" ? (
+				<>
+					<h2>{resource.title}</h2>
+					<ul className="list list--unstyled">
+						{resourceLinks.map((resourceLink) => (
+							<li key={resourceLink.href}>
+								<ResourceLinkCard resourceLink={resourceLink} />
+							</li>
+						))}
+					</ul>
+				</>
+			) : (
 				<div
 					dangerouslySetInnerHTML={{ __html: resource.resourceFileHTML }}
 				></div>
@@ -102,29 +115,43 @@ export const getServerSideProps: GetServerSideProps<
 	DocumentHTMLPageProps,
 	{ slug: string; resourceTitleId: string }
 > = async ({ params, resolvedUrl }) => {
+	if (!params?.resourceTitleId) return { notFound: true };
+
 	const result = await validateRouteParams({ params, resolvedUrl });
 
 	if ("notFound" in result || "redirect" in result) return result;
 
 	const { project, panels, projectPath, consultationUrls } = result;
 
-	const resource = panels
+	const resourceAndPanel = panels
 		.flatMap((panel) =>
 			arrayify(panel.embedded.niceIndevResourceList.embedded.niceIndevResource)
+				.filter(
+					(resource): resource is IndevFileResource =>
+						!!resource.embedded?.niceIndevFile
+				)
+				.map((resource) => ({ panel, resource }))
 		)
 		.find(
-			(resource) =>
-				resource.embedded?.niceIndevFile.resourceTitleId ===
-					params?.resourceTitleId && resource.showInDocList
-			// TODO: We probably want to exclude consultations here: we don't want them to render on the /documents URL
+			({ resource }) =>
+				resource.showInDocList &&
+				resource.embedded.niceIndevFile.resourceTitleId ===
+					params.resourceTitleId
 		);
 
-	if (!resource || !resource.embedded) return { notFound: true };
+	if (!resourceAndPanel) {
+		logger.info(`Could not find resource with id ${params.resourceTitleId}`);
+		return { notFound: true };
+	}
 
-	const resourceFilePath = resource.embedded.niceIndevFile.links.self[0].href,
+	const { panel, resource } = resourceAndPanel,
+		resourceFilePath = resource.embedded.niceIndevFile.links.self[0].href,
 		resourceFileHTML = await getResourceFileHTML(resourceFilePath);
 
-	if (resourceFileHTML == null) return { notFound: true };
+	if (resourceFileHTML == null) {
+		logger.warn(`Could not find resource HTML at ${resourceFilePath}`);
+		return { notFound: true };
+	}
 
 	const { projectType, reference, status, title } = project;
 
@@ -134,92 +161,13 @@ export const getServerSideProps: GetServerSideProps<
 		indevScheduleItems = arrayify(indevSchedule),
 		indevStakeholderRegistration = arrayify(
 			project.links.niceIndevStakeholderRegistration
+		),
+		otherResources = arrayify(
+			panel.embedded.niceIndevResourceList.embedded.niceIndevResource
+		).filter((r) => r !== resource && !r.textOnly),
+		resourceLinks = otherResources.map((resource) =>
+			getInDevResourceLink({ resource, project, panel })
 		);
-
-	//TODO remove unnecessary mapping below as we already have resource above
-
-	const groups = panels
-		.filter((panel) => !panel.legacyPanel && panel.title === resource.title)
-		.map((panel) => {
-			const indevResource =
-					panel.embedded.niceIndevResourceList.embedded.niceIndevResource,
-				indevResources = arrayify(indevResource).filter(
-					(resource) => resource.showInDocList
-				),
-				subGroups: ResourceSubGroupViewModel[] = [];
-
-			let currentSubGroup: ResourceSubGroupViewModel;
-
-			indevResources.forEach((resource) => {
-				if (
-					resource.embedded?.niceIndevFile.resourceTitleId ===
-					params?.resourceTitleId
-				)
-					return;
-
-				if (resource.textOnly) {
-					currentSubGroup = { title: resource.title, resourceLinks: [] };
-					subGroups.push(currentSubGroup);
-				} else {
-					if (!currentSubGroup) {
-						currentSubGroup = { title: panel.title, resourceLinks: [] };
-						subGroups.push(currentSubGroup);
-					}
-
-					if (!resource.embedded) {
-						if (!resource.externalUrl)
-							throw Error(
-								`Found resource (${resource.title}) with nothing embedded and no external URL`
-							);
-
-						currentSubGroup.resourceLinks.push({
-							title: resource.title,
-							href: resource.externalUrl,
-							fileTypeName: null,
-							fileSize: null,
-							date: resource.publishedDate,
-							type: panel.title,
-						});
-					} else {
-						const { mimeType, length, resourceTitleId, fileName } =
-								resource.embedded.niceIndevFile,
-							shouldUseNewConsultationComments =
-								resource.convertedDocument ||
-								resource.supportsComments ||
-								resource.supportsQuestions,
-							isHTML = mimeType === "text/html",
-							isConsultation =
-								resource.consultationId > 0 &&
-								panel.embedded.niceIndevConsultation,
-							fileSize = isHTML ? null : length,
-							fileTypeName = isHTML ? null : getFileTypeNameFromMime(mimeType),
-							href = shouldUseNewConsultationComments
-								? `/consultations/${resource.consultationId}/${resource.consultationDocumentId}`
-								: !isHTML
-								? `${projectPath}/downloads/${reference.toLowerCase()}-${resourceTitleId}.${
-										fileName.split(".").slice(-1)[0]
-								  }`
-								: isConsultation
-								? `${projectPath}/consultations/${resourceTitleId}`
-								: `${projectPath}/documents/${resourceTitleId}`;
-
-						currentSubGroup.resourceLinks.push({
-							title: resource.title,
-							href,
-							fileTypeName,
-							fileSize,
-							date: resource.publishedDate,
-							type: panel.title,
-						});
-					}
-				}
-			});
-
-			return {
-				title: panel.title,
-				subGroups,
-			};
-		});
 
 	return {
 		props: {
@@ -232,12 +180,12 @@ export const getServerSideProps: GetServerSideProps<
 				reference,
 				status,
 				title,
-				groups,
 			},
 			resource: {
 				resourceFileHTML,
 				title: resource.title,
 			},
+			resourceLinks,
 		},
 	};
 };

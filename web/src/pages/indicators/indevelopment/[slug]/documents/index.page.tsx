@@ -9,9 +9,9 @@ import { ProjectPageHeading } from "@/components/ProjectPageHeading/ProjectPageH
 import { ResourceList } from "@/components/ResourceList/ResourceList";
 import { IndevSchedule, ProjectDetail } from "@/feeds/inDev/types";
 import { arrayify, byTitleAlphabetically } from "@/utils/array";
-import { getFileTypeNameFromMime } from "@/utils/file";
 import { validateRouteParams } from "@/utils/project";
 import {
+	getInDevResourceLink,
 	ResourceGroupViewModel,
 	ResourceSubGroupViewModel,
 } from "@/utils/resource";
@@ -85,13 +85,8 @@ export const getServerSideProps: GetServerSideProps<
 
 	if ("notFound" in result || "redirect" in result) return result;
 
-	const {
-		project: { projectType, reference, status, title, embedded, links },
-		projectPath,
-		panels,
-		hasPanels,
-		consultationUrls,
-	} = result;
+	const { project, projectPath, panels, hasPanels, consultationUrls } = result,
+		{ projectType, reference, status, title, embedded, links } = project;
 
 	if (!hasPanels) return { notFound: true };
 
@@ -104,16 +99,16 @@ export const getServerSideProps: GetServerSideProps<
 		);
 
 	const groups = panels.sort(byTitleAlphabetically).map((panel) => {
-		const indevResource =
+		const allPanelResources =
 				panel.embedded.niceIndevResourceList.embedded.niceIndevResource,
-			indevResources = arrayify(indevResource).filter(
+			resourcesToShow = arrayify(allPanelResources).filter(
 				(resource) => resource.showInDocList
 			),
 			subGroups: ResourceSubGroupViewModel[] = [];
 
 		let currentSubGroup: ResourceSubGroupViewModel;
 
-		indevResources.forEach((resource) => {
+		resourcesToShow.forEach((resource) => {
 			if (resource.textOnly) {
 				currentSubGroup = { title: resource.title, resourceLinks: [] };
 				subGroups.push(currentSubGroup);
@@ -123,52 +118,9 @@ export const getServerSideProps: GetServerSideProps<
 					subGroups.push(currentSubGroup);
 				}
 
-				if (!resource.embedded) {
-					if (!resource.externalUrl)
-						throw Error(
-							`Found resource (${resource.title}) with nothing embedded and no external URL`
-						);
-
-					currentSubGroup.resourceLinks.push({
-						title: resource.title,
-						href: resource.externalUrl,
-						fileTypeName: null,
-						fileSize: null,
-						date: resource.publishedDate,
-						type: panel.title,
-					});
-				} else {
-					const { mimeType, length, resourceTitleId, fileName } =
-							resource.embedded.niceIndevFile,
-						shouldUseNewConsultationComments =
-							resource.convertedDocument ||
-							resource.supportsComments ||
-							resource.supportsQuestions,
-						isHTML = mimeType === "text/html",
-						isConsultation =
-							resource.consultationId > 0 &&
-							panel.embedded.niceIndevConsultation,
-						fileSize = isHTML ? null : length,
-						fileTypeName = isHTML ? null : getFileTypeNameFromMime(mimeType),
-						href = shouldUseNewConsultationComments
-							? `/consultations/${resource.consultationId}/${resource.consultationDocumentId}`
-							: !isHTML
-							? `${projectPath}/downloads/${reference.toLowerCase()}-${resourceTitleId}.${
-									fileName.split(".").slice(-1)[0]
-							  }`
-							: isConsultation
-							? `${projectPath}/consultations/${resourceTitleId}`
-							: `${projectPath}/documents/${resourceTitleId}`;
-
-					currentSubGroup.resourceLinks.push({
-						title: resource.title,
-						href,
-						fileTypeName,
-						fileSize,
-						date: resource.publishedDate,
-						type: panel.title,
-					});
-				}
+				currentSubGroup.resourceLinks.push(
+					getInDevResourceLink({ resource, panel, project })
+				);
 			}
 		});
 

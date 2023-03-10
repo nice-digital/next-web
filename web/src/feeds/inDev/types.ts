@@ -236,6 +236,12 @@ export type IndevResource = {
 	supportsQuestions?: boolean;
 };
 
+export type IndevFileResource = IndevResource & {
+	embedded: {
+		niceIndevFile: IndevFile;
+	};
+};
+
 export type IndevConsultation = {
 	links: {
 		self: [Link];
