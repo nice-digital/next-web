@@ -91,9 +91,16 @@ export default function HistoryHTMLPage({
 				consultationUrls={consultationUrls}
 			/>
 
-			{resource.resourceFileHTML === "" ? (
+			<h2>{resource.title}</h2>
+
+			{resource.resourceFileHTML && (
+				<div
+					dangerouslySetInnerHTML={{ __html: resource.resourceFileHTML }}
+				></div>
+			)}
+
+			{resourceLinks.length > 0 ? (
 				<>
-					<h2>{resource.title}</h2>
 					<ul className="list list--unstyled">
 						{resourceLinks.map((resourceLink) => (
 							<li key={resourceLink.href}>
@@ -102,11 +109,7 @@ export default function HistoryHTMLPage({
 						))}
 					</ul>
 				</>
-			) : (
-				<div
-					dangerouslySetInnerHTML={{ __html: resource.resourceFileHTML }}
-				></div>
-			)}
+			) : null}
 		</>
 	);
 }
