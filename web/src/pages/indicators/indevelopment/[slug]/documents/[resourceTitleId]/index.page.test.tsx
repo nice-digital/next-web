@@ -6,12 +6,6 @@ import { FeedPath } from "@/feeds/inDev/types";
 import { logger } from "@/logger";
 import { addDefaultJSONFeedMocks, axiosJSONMock } from "@/test-utils/feeds";
 
-// import DocumentsHTMLPage, {
-// 	DocumentHTMLPageProps,
-// 	getServerSideProps,
-// 	type Params,
-// } from "./[resourceTitleId].page";
-
 import DocumentsHTMLPage, {
 	DocumentHTMLPageProps,
 	getServerSideProps,
