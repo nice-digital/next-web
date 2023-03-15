@@ -131,13 +131,46 @@ describe("[resourceTitleId].page", () => {
 			render(<ConsultationHTMLPage {...props} />);
 			expect(document.body).toMatchSnapshot();
 		});
+
 		describe("SEO", () => {
-			it.todo("should render page title with consultation name");
+			it("should render page title with document name", () => {
+				render(
+					<ConsultationHTMLPage
+						{...props}
+						consultation={{ title: "Test consultation title", html: "" }}
+					/>
+				);
+
+				expect(document.title).toBe(
+					"Test consultation title | GID-TA10914 | Indicators | Standards and Indicators"
+				);
+			});
 		});
 
 		describe("Breadcrumbs", () => {
-			it.todo("should render parent breadcrumb to project overview");
-			it.todo("should render consultation name as current breadcrumb");
+			it("should render parent breadcrumb linking to the project overview", () => {
+				render(<ConsultationHTMLPage {...props} />);
+				expect(
+					screen.queryByText("GID-TA10914", {
+						selector: ".breadcrumbs a",
+					})
+				).toHaveAttribute("href", "/indicators/indevelopment/gid-ta10914");
+			});
+
+			it("should render resource title as current breadcrumb", () => {
+				render(
+					<ConsultationHTMLPage
+						{...props}
+						consultation={{ title: "Test consultation title", html: "" }}
+					/>
+				);
+
+				expect(
+					screen.getByText("Test consultation title", {
+						selector: ".breadcrumbs .breadcrumbs__crumb span",
+					})
+				).toBeInTheDocument();
+			});
 		});
 
 		it("should render the consultation heading", () => {

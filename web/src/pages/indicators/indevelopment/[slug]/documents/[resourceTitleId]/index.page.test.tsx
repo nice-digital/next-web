@@ -171,13 +171,46 @@ describe("[resourceTitleId].page", () => {
 			render(<DocumentsHTMLPage {...props} />);
 			expect(document.body).toMatchSnapshot();
 		});
+
 		describe("SEO", () => {
-			it.todo("should render page title with document name");
+			it("should render page title with document name", () => {
+				render(
+					<DocumentsHTMLPage
+						{...props}
+						resource={{ title: "Test resource title", resourceFileHTML: "" }}
+					/>
+				);
+
+				expect(document.title).toBe(
+					"Test resource title | Project documents | GID-TA10730 | Indicators | Standards and Indicators"
+				);
+			});
 		});
 
 		describe("Breadcrumbs", () => {
-			it.todo("should render parent breadcrumb to project overview");
-			it.todo("should render document name as current breadcrumb");
+			it("should render parent breadcrumb linking to the project overview", () => {
+				render(<DocumentsHTMLPage {...props} />);
+				expect(
+					screen.queryByText("GID-TA10730", {
+						selector: ".breadcrumbs a",
+					})
+				).toHaveAttribute("href", "/indicators/indevelopment/gid-ta10730");
+			});
+
+			it("should render resource title as current breadcrumb", () => {
+				render(
+					<DocumentsHTMLPage
+						{...props}
+						resource={{ title: "Test resource title", resourceFileHTML: "" }}
+					/>
+				);
+
+				expect(
+					screen.getByText("Test resource title", {
+						selector: ".breadcrumbs .breadcrumbs__crumb span",
+					})
+				).toBeInTheDocument();
+			});
 		});
 
 		it("should render the resource title as a heading", () => {
