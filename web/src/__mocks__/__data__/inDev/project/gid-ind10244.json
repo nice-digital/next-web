@@ -1,1 +1,264 @@
-{"_links":{"nice.indev:stakeholder-registration":[{"href":"https://alpha.nice.org.uk/get-involved/stakeholder-registration/register"}],"self":[{"href":"/project/GID-IND10244"}]},"_embedded":{"nice.indev:provisional-schedule-list":{"_links":{"self":[{}]},"_embedded":{"nice.indev:provisional-schedule":{"_links":{"self":[{}]},"ETag":null,"Column1":"NICE indicator consultation","Column2":"07 March 2023 - 07 March 2073","AdditionalInfoLabel":null,"AdditionalInfo":null,"Hidden":false}},"ETag":null},"nice.indev:panel-list":{"_links":{"self":[{}]},"_embedded":{"nice.indev:panel":{"_links":{"self":[{}]},"_embedded":{"nice.indev:consultation":{"_links":{"self":[{"href":"/guidance/GID-IND10244/consultation/html-content"}]},"ETag":null,"Reference":"GID-IND10244","Title":"Single Inconsultation demo product","ConsultationName":"NICE indicator consultation","StartDate":"2023-03-07T00:00:00","EndDate":"2073-03-07T17:18:00","ConsultationType":"NICE indicator consultation","ResourceTitleId":"html-content","ProjectType":"IND","TechnologyType":null,"ProductTypeName":"NICE indicator","ShowExpressionOfInterestSubmissionQuestion":true,"DevelopedAs":null,"RelevantTo":null,"ConsultationId":2105,"Process":"IND","HasDocumentsWhichAllowConsultationComments":false,"IsCHTE":false,"AllowedRole":null,"FirstConvertedDocumentId":null,"FirstChapterSlugOfFirstConvertedDocument":null,"PartiallyUpdatedProjectReference":null,"OrigProjectReference":null,"AreasOfInterestList":[],"Hidden":false},"nice.indev:resource-list":{"_links":{"self":[{}]},"_embedded":{"nice.indev:resource":[{"_links":{"self":[{}]},"_embedded":{"nice.indev:file":{"_links":{"self":[{"href":"/guidance/GID-IND10244/consultation/html-content"},{"href":"/guidance/GID-IND10244/documents/html-content"}]},"ETag":null,"Id":"0a2565df-2ae7-47d8-a2f2-1bf542a6058e","MimeType":"text/html","FileName":"HtmlContent","Length":313,"Hash":"C4F69555BD2DE4EFF1767E6D1DD496C9EF86DEDA","Name":"default","Reference":"GID-IND10244","ResourceTitleId":"html-content","ConsultationDocumentId":0}},"ETag":null,"Title":"NICE indicator consultation","Level":1,"PublishedDate":"2023-03-07T17:19:00","ExternalUrl":null,"ShowInDocList":true,"TextOnly":false,"ConsultationId":2105,"ConsultationDocumentId":0,"IsCurrentViewableConsultationMarkup":true,"ConvertedDocument":false,"SupportsComments":false},{"_links":{"self":[{}]},"_embedded":{"nice.indev:file":{"_links":{"self":[{"href":"/guidance/GID-IND10244/documents/consultation-document"}]},"ETag":null,"Id":"219ed080-5667-481b-9162-02a0e8aaef68","MimeType":"application/vnd.openxmlformats-officedocument.wordprocessingml.document","FileName":"consultation-document-3 (2).docx","Length":89007,"Hash":"94A5EF1DAE95F6A6D54C2B2EB9A06E1436C3B6BF","Name":"default","Reference":"GID-IND10244","ResourceTitleId":"consultation-document","ConsultationDocumentId":0}},"ETag":null,"Title":"Consultation document","Level":1,"PublishedDate":"2023-03-07T17:19:00","ExternalUrl":null,"ShowInDocList":true,"TextOnly":false,"ConsultationId":2105,"ConsultationDocumentId":0,"IsCurrentViewableConsultationMarkup":false,"ConvertedDocument":false,"SupportsComments":false},{"_links":{"self":[{}]},"_embedded":{"nice.indev:file":{"_links":{"self":[{"href":"/guidance/GID-IND10244/documents/indicator-guidance-document"}]},"ETag":null,"Id":"291815c8-9d24-4752-85e5-23efc9a8b0d8","MimeType":"application/vnd.openxmlformats-officedocument.wordprocessingml.document","FileName":"consultation-document (3).docx","Length":89007,"Hash":"94A5EF1DAE95F6A6D54C2B2EB9A06E1436C3B6BF","Name":"default","Reference":"GID-IND10244","ResourceTitleId":"indicator-guidance-document","ConsultationDocumentId":0}},"ETag":null,"Title":"Indicator guidance document","Level":1,"PublishedDate":"2023-03-07T17:19:00","ExternalUrl":null,"ShowInDocList":true,"TextOnly":false,"ConsultationId":2105,"ConsultationDocumentId":0,"IsCurrentViewableConsultationMarkup":false,"ConvertedDocument":false,"SupportsComments":false},{"_links":{"self":[{}]},"_embedded":{"nice.indev:file":{"_links":{"self":[{"href":"/guidance/GID-IND10244/documents/declaration-of-interests"}]},"ETag":null,"Id":"d76d6a48-c80c-44bb-9a50-42244a935d39","MimeType":"application/pdf","FileName":"ID1488 mexiletine lead team slides for public [redacted].pdf","Length":378268,"Hash":"70600B32D96CA2E67F28370FD0829964E8513957","Name":"default","Reference":"GID-IND10244","ResourceTitleId":"declaration-of-interests","ConsultationDocumentId":0}},"ETag":null,"Title":"Declaration of interests","Level":1,"PublishedDate":"2023-03-07T17:19:00","ExternalUrl":null,"ShowInDocList":true,"TextOnly":false,"ConsultationId":2105,"ConsultationDocumentId":0,"IsCurrentViewableConsultationMarkup":false,"ConvertedDocument":false,"SupportsComments":false}]},"ETag":null,"HasResources":true}},"ETag":null,"Title":"NICE indicator consultation","PanelType":"History","LegacyPanel":false,"OriginalReference":null,"UpdateReference":null,"ShowPanel":true}},"ETag":null}},"ETag":"01000000-0000-0046-0000-0000000000AA","Summary":null,"Description":null,"ReferralDate":null,"SuspendDiscontinuedReason":null,"SuspendDiscontinuedUrl":null,"SuspendDiscontinuedUrlText":null,"LegacyModel":false,"ProductReference":null,"EvidenceAssessmentGroup":null,"Reference":"GID-IND10244","ProjectType":"IND","TechnologyType":null,"ProductTypeName":"NICE indicator","Process":"IND","Title":"Single Inconsultation demo product","Status":"InProgress","ProjectGroup":"Other","PublishedDate":null,"LastModifiedDate":"2023-03-07T17:26:27.3104321","FirstGoLiveDate":"2023-03-07T17:20:10.9515925","CreatedDate":"2023-03-07T17:17:45.6239825","DevelopedAs":null,"RelevantTo":null,"IdNumber":null,"AreasOfInterestList":[],"TopicSelectionDecision":"AwaitingDecision","TopicSelectionReason":null,"TopicSelectionDecisionDate":null,"TopicSelectionFurtherInfo":null,"IndicatorSubTypes":["CCG","GPIQ","GPINQ","NLQ"]}
+{
+  "_links": {
+    "nice.indev:stakeholder-registration": [
+      {
+        "href": "https://alpha.nice.org.uk/get-involved/stakeholder-registration/register"
+      }
+    ],
+    "self": [{ "href": "/project/GID-IND10244" }]
+  },
+  "_embedded": {
+    "nice.indev:provisional-schedule-list": {
+      "_links": { "self": [{}] },
+      "_embedded": {
+        "nice.indev:provisional-schedule": {
+          "_links": { "self": [{}] },
+          "ETag": null,
+          "Column1": "NICE indicator consultation",
+          "Column2": "07 March 2023 - 07 March 2073",
+          "AdditionalInfoLabel": null,
+          "AdditionalInfo": null,
+          "Hidden": false
+        }
+      },
+      "ETag": null
+    },
+    "nice.indev:panel-list": {
+      "_links": { "self": [{}] },
+      "_embedded": {
+        "nice.indev:panel": {
+          "_links": { "self": [{}] },
+          "_embedded": {
+            "nice.indev:consultation": {
+              "_links": {
+                "self": [
+                  { "href": "/guidance/GID-IND10244/consultation/html-content" }
+                ]
+              },
+              "ETag": null,
+              "Reference": "GID-IND10244",
+              "Title": "Single Inconsultation demo product",
+              "ConsultationName": "NICE indicator consultation",
+              "StartDate": "2023-03-07T00:00:00",
+              "EndDate": "2073-03-07T17:18:00",
+              "ConsultationType": "NICE indicator consultation",
+              "ResourceTitleId": "html-content",
+              "ProjectType": "IND",
+              "TechnologyType": null,
+              "ProductTypeName": "NICE indicator",
+              "ShowExpressionOfInterestSubmissionQuestion": true,
+              "DevelopedAs": null,
+              "RelevantTo": null,
+              "ConsultationId": 2105,
+              "Process": "IND",
+              "HasDocumentsWhichAllowConsultationComments": false,
+              "IsCHTE": false,
+              "AllowedRole": null,
+              "FirstConvertedDocumentId": null,
+              "FirstChapterSlugOfFirstConvertedDocument": null,
+              "PartiallyUpdatedProjectReference": null,
+              "OrigProjectReference": null,
+              "AreasOfInterestList": [],
+              "Hidden": false
+            },
+            "nice.indev:resource-list": {
+              "_links": { "self": [{}] },
+              "_embedded": {
+                "nice.indev:resource": [
+                  {
+                    "_links": { "self": [{}] },
+                    "_embedded": {
+                      "nice.indev:file": {
+                        "_links": {
+                          "self": [
+                            {
+                              "href": "/guidance/GID-IND10244/consultation/html-content"
+                            },
+                            {
+                              "href": "/guidance/GID-IND10244/documents/html-content"
+                            }
+                          ]
+                        },
+                        "ETag": null,
+                        "Id": "0a2565df-2ae7-47d8-a2f2-1bf542a6058e",
+                        "MimeType": "text/html",
+                        "FileName": "HtmlContent",
+                        "Length": 313,
+                        "Hash": "C4F69555BD2DE4EFF1767E6D1DD496C9EF86DEDA",
+                        "Name": "default",
+                        "Reference": "GID-IND10244",
+                        "ResourceTitleId": "html-content",
+                        "ConsultationDocumentId": 0
+                      }
+                    },
+                    "ETag": null,
+                    "Title": "NICE indicator consultation",
+                    "Level": 1,
+                    "PublishedDate": "2023-03-07T17:19:00",
+                    "ExternalUrl": null,
+                    "ShowInDocList": true,
+                    "TextOnly": false,
+                    "ConsultationId": 2105,
+                    "ConsultationDocumentId": 0,
+                    "IsCurrentViewableConsultationMarkup": true,
+                    "ConvertedDocument": false,
+                    "SupportsComments": false
+                  },
+                  {
+                    "_links": { "self": [{}] },
+                    "_embedded": {
+                      "nice.indev:file": {
+                        "_links": {
+                          "self": [
+                            {
+                              "href": "/guidance/GID-IND10244/documents/consultation-document"
+                            }
+                          ]
+                        },
+                        "ETag": null,
+                        "Id": "219ed080-5667-481b-9162-02a0e8aaef68",
+                        "MimeType": "application/vnd.openxmlformats-officedocument.wordprocessingml.document",
+                        "FileName": "consultation-document-3 (2).docx",
+                        "Length": 89007,
+                        "Hash": "94A5EF1DAE95F6A6D54C2B2EB9A06E1436C3B6BF",
+                        "Name": "default",
+                        "Reference": "GID-IND10244",
+                        "ResourceTitleId": "consultation-document",
+                        "ConsultationDocumentId": 0
+                      }
+                    },
+                    "ETag": null,
+                    "Title": "Consultation document",
+                    "Level": 1,
+                    "PublishedDate": "2023-03-07T17:19:00",
+                    "ExternalUrl": null,
+                    "ShowInDocList": true,
+                    "TextOnly": false,
+                    "ConsultationId": 2105,
+                    "ConsultationDocumentId": 0,
+                    "IsCurrentViewableConsultationMarkup": false,
+                    "ConvertedDocument": false,
+                    "SupportsComments": false
+                  },
+                  {
+                    "_links": { "self": [{}] },
+                    "_embedded": {
+                      "nice.indev:file": {
+                        "_links": {
+                          "self": [
+                            {
+                              "href": "/guidance/GID-IND10244/documents/indicator-guidance-document"
+                            }
+                          ]
+                        },
+                        "ETag": null,
+                        "Id": "291815c8-9d24-4752-85e5-23efc9a8b0d8",
+                        "MimeType": "application/vnd.openxmlformats-officedocument.wordprocessingml.document",
+                        "FileName": "consultation-document (3).docx",
+                        "Length": 89007,
+                        "Hash": "94A5EF1DAE95F6A6D54C2B2EB9A06E1436C3B6BF",
+                        "Name": "default",
+                        "Reference": "GID-IND10244",
+                        "ResourceTitleId": "indicator-guidance-document",
+                        "ConsultationDocumentId": 0
+                      }
+                    },
+                    "ETag": null,
+                    "Title": "Indicator guidance document",
+                    "Level": 1,
+                    "PublishedDate": "2023-03-07T17:19:00",
+                    "ExternalUrl": null,
+                    "ShowInDocList": true,
+                    "TextOnly": false,
+                    "ConsultationId": 2105,
+                    "ConsultationDocumentId": 0,
+                    "IsCurrentViewableConsultationMarkup": false,
+                    "ConvertedDocument": false,
+                    "SupportsComments": false
+                  },
+                  {
+                    "_links": { "self": [{}] },
+                    "_embedded": {
+                      "nice.indev:file": {
+                        "_links": {
+                          "self": [
+                            {
+                              "href": "/guidance/GID-IND10244/documents/declaration-of-interests"
+                            }
+                          ]
+                        },
+                        "ETag": null,
+                        "Id": "d76d6a48-c80c-44bb-9a50-42244a935d39",
+                        "MimeType": "application/pdf",
+                        "FileName": "ID1488 mexiletine lead team slides for public [redacted].pdf",
+                        "Length": 378268,
+                        "Hash": "70600B32D96CA2E67F28370FD0829964E8513957",
+                        "Name": "default",
+                        "Reference": "GID-IND10244",
+                        "ResourceTitleId": "declaration-of-interests",
+                        "ConsultationDocumentId": 0
+                      }
+                    },
+                    "ETag": null,
+                    "Title": "Declaration of interests",
+                    "Level": 1,
+                    "PublishedDate": "2023-03-07T17:19:00",
+                    "ExternalUrl": null,
+                    "ShowInDocList": true,
+                    "TextOnly": false,
+                    "ConsultationId": 2105,
+                    "ConsultationDocumentId": 0,
+                    "IsCurrentViewableConsultationMarkup": false,
+                    "ConvertedDocument": false,
+                    "SupportsComments": false
+                  }
+                ]
+              },
+              "ETag": null,
+              "HasResources": true
+            }
+          },
+          "ETag": null,
+          "Title": "NICE indicator consultation",
+          "PanelType": "History",
+          "LegacyPanel": false,
+          "OriginalReference": null,
+          "UpdateReference": null,
+          "ShowPanel": true
+        }
+      },
+      "ETag": null
+    }
+  },
+  "ETag": "01000000-0000-0046-0000-0000000000AA",
+  "Summary": null,
+  "Description": null,
+  "ReferralDate": null,
+  "SuspendDiscontinuedReason": null,
+  "SuspendDiscontinuedUrl": null,
+  "SuspendDiscontinuedUrlText": null,
+  "LegacyModel": false,
+  "ProductReference": null,
+  "EvidenceAssessmentGroup": null,
+  "Reference": "GID-IND10244",
+  "ProjectType": "IND",
+  "TechnologyType": null,
+  "ProductTypeName": "NICE indicator",
+  "Process": "IND",
+  "Title": "Single Inconsultation demo product",
+  "Status": "InProgress",
+  "ProjectGroup": "Other",
+  "PublishedDate": null,
+  "LastModifiedDate": "2023-03-07T17:26:27.3104321",
+  "FirstGoLiveDate": "2023-03-07T17:20:10.9515925",
+  "CreatedDate": "2023-03-07T17:17:45.6239825",
+  "DevelopedAs": null,
+  "RelevantTo": null,
+  "IdNumber": null,
+  "AreasOfInterestList": [],
+  "TopicSelectionDecision": "AwaitingDecision",
+  "TopicSelectionReason": null,
+  "TopicSelectionDecisionDate": null,
+  "TopicSelectionFurtherInfo": null,
+  "IndicatorSubTypes": ["CCG", "GPIQ", "GPINQ", "NLQ"]
+}

@@ -35,7 +35,7 @@ export type DocumentHTMLPageProps = {
 	resourceLinks: ResourceLinkViewModel[];
 };
 
-export default function HistoryHTMLPage({
+export default function DocumentsHTMLPage({
 	consultationUrls,
 	project,
 	indevStakeholderRegistration,
