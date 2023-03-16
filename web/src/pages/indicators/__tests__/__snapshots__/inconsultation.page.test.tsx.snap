@@ -243,7 +243,7 @@ exports[`/indicators/inconsultation should match the snapshot 1`] = `
                       class="input__input"
                       id="q"
                       name="q"
-                      placeholder="E.g. 'diabetes' or 'NG28'"
+                      placeholder="E.g. 'diabetes' or 'IND28'"
                       type="text"
                       value=""
                     />
