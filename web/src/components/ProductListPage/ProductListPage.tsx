@@ -108,6 +108,7 @@ export const getProductListPage =
 		results,
 		searchUrl: { q, s, from, to, ps = defaultPageSize },
 		activeModifiers,
+		index,
 	}) => {
 		const { asPath, pathname } = useRouter();
 		// Announcement text, used for giving audible notifications to screen readers when results have changed
@@ -224,6 +225,7 @@ export const getProductListPage =
 								"rty",
 								"sub",
 							]}
+							index={index}
 						/>
 					</GridItem>
 

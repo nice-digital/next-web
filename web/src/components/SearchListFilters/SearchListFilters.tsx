@@ -11,11 +11,13 @@ import {
 	Navigator,
 	KnownOrModifierKeys,
 	Modifier,
+	SearchIndex,
 } from "@nice-digital/search-client";
 
 import { InlineTextFilter } from "@/components/InlineTextFilter/InlineTextFilter";
 import { SkipLink } from "@/components/SkipLink/SkipLink";
 import { ToFromDateFilters } from "@/components/ToFromDateFilters/ToFromDateFilters";
+import { ProductTypeAcronym } from "@/feeds/publications/types";
 
 /** Search returns the order of navigators depending on what's selected but we want them in a consistent order */
 // const navigatorsOrder = ["nai", "tt", "tsd", "ndt", "ngt", "nat"];
@@ -37,6 +39,7 @@ export interface SearchListFiltersProps {
 	dateFilterLabel?: string;
 	useFutureDates?: boolean;
 	navigatorsOrder: KnownOrModifierKeys[];
+	index?: SearchIndex;
 }
 
 export const SearchListFilters: FC<SearchListFiltersProps> = ({
@@ -53,6 +56,7 @@ export const SearchListFilters: FC<SearchListFiltersProps> = ({
 	dateFilterLabel,
 	useFutureDates,
 	navigatorsOrder,
+	index,
 }) => {
 	const router = useRouter(),
 		formRef = createRef<HTMLFormElement>();
@@ -112,6 +116,20 @@ export const SearchListFilters: FC<SearchListFiltersProps> = ({
 		}
 	};
 
+	let productTypeAcronym;
+
+	switch (index) {
+		case "guidance":
+			productTypeAcronym = ProductTypeAcronym.NG;
+			break;
+		case "indicators":
+			productTypeAcronym = ProductTypeAcronym.IND;
+			break;
+		default:
+			productTypeAcronym = ProductTypeAcronym.NG;
+			break;
+	}
+
 	return (
 		<FilterPanel
 			id="filters"
@@ -130,7 +148,7 @@ export const SearchListFilters: FC<SearchListFiltersProps> = ({
 					label="Filter by title or keyword"
 					name="q"
 					defaultValue={queryText}
-					placeholder="E.g. 'diabetes' or 'NG28'"
+					placeholder={`E.g. 'diabetes' or '${productTypeAcronym}28'`}
 				/>
 			) : (
 				<input type="hidden" name="q" value={queryText} />
