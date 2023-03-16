@@ -5,6 +5,7 @@ import { Breadcrumbs, Breadcrumb } from "@nice-digital/nds-breadcrumbs";
 
 import { DefinitionList } from "@/components/DefinitionList/DefinitionList";
 import { Link } from "@/components/Link/Link";
+import { ProjectHorizontalNav } from "@/components/ProjectHorizontalNav/ProjectHorizontalNav";
 import { ProjectInformation } from "@/components/ProjectInformation/ProjectInformation";
 import { ProjectPageHeading } from "@/components/ProjectPageHeading/ProjectPageHeading";
 import { Stakeholders } from "@/components/ProjectStakeholders/ProjectStakeholders";
@@ -15,7 +16,6 @@ import {
 } from "@/components/ProjectUpdates/ProjectUpdates";
 import {
 	IndevCommentator,
-	IndevConsultation,
 	IndevConsultee,
 	IndevLegacyStakeholder,
 	IndevProjectRelatedLink,
@@ -36,7 +36,8 @@ import { getProductPath } from "@/utils/url";
 import styles from "./index.module.scss";
 
 export type InDevelopmentPageProps = {
-	consultationPanels: IndevConsultation[] | [];
+	hasPanels: boolean;
+	consultationUrls: string[];
 	description: string | null;
 	developedAs: string;
 	evidenceAssessmentGroup: string | null;
@@ -55,6 +56,7 @@ export type InDevelopmentPageProps = {
 	indevTimelineItems?: IndevTimeline[];
 	indevTopicItems?: IndevTopic[];
 	process: string;
+	projectPath: string;
 	projectType: string | null;
 	reference: string;
 	referralDate: string | null;
@@ -73,11 +75,8 @@ export default function InDevelopmentPage(
 	props: InDevelopmentPageProps
 ): JSX.Element {
 	const {
-		consultationPanels,
-		description,
 		evidenceAssessmentGroup,
 		fullUpdates,
-		idNumber,
 		indevCommentators,
 		indevConsultees,
 		indevEmailEnquiries,
@@ -86,34 +85,18 @@ export default function InDevelopmentPage(
 		indevProjectTeamMembers,
 		indevProjectRelatedLinks,
 		indevScheduleItems,
-		indevStakeholderRegistration,
 		indevTimelineItems,
 		indevTopicItems,
 		partialUpdates,
-		process,
-		projectType,
+		projectPath,
 		reference,
-		referralDate,
-		suspendDiscontinuedReason,
-		suspendDiscontinuedUrl,
-		suspendDiscontinuedUrlText,
-		status,
-		summary,
-		technologyType,
 		title,
-		topicSelectionReason,
-		topicSelectionFurtherInfo,
 	} = props;
 
 	return (
 		<div className={styles.projectInformation}>
-			<NextSeo
-				title={
-					"Project information | " +
-					title +
-					" | Indicators | Standards and Indicators"
-				}
-			/>
+			<NextSeo title={`${title} | Indicators | Standards and Indicators`} />
+
 			<Breadcrumbs>
 				<Breadcrumb to="/">Home</Breadcrumb>
 				<Breadcrumb to="/standards-and-indicators">
@@ -122,12 +105,19 @@ export default function InDevelopmentPage(
 				<Breadcrumb to="/standards-and-indicators/indicators">
 					Indicators
 				</Breadcrumb>
-				<Breadcrumb to="/standards-and-indicators/indicators/indevelopment">
+				<Breadcrumb to="/indicators/indevelopment" elementType={Link}>
 					In development
 				</Breadcrumb>
 				<Breadcrumb>{reference}</Breadcrumb>
 			</Breadcrumbs>
+
 			<ProjectPageHeading {...props} />
+
+			<ProjectHorizontalNav
+				projectPath={projectPath}
+				hasDocuments={props.hasPanels}
+				consultationUrls={props.consultationUrls}
+			/>
 
 			<ProjectInformation {...props} />
 
@@ -240,7 +230,7 @@ export const getServerSideProps: GetServerSideProps<
 
 	if ("notFound" in result || "redirect" in result) return result;
 
-	const { project } = result;
+	const { project, projectPath, consultationUrls, hasPanels } = result;
 
 	const {
 		description,
@@ -262,21 +252,7 @@ export const getServerSideProps: GetServerSideProps<
 		topicSelectionReason,
 	} = project;
 
-	const consultationHistoryPanels = arrayify(
-			project.embedded.niceIndevPanelList?.embedded?.niceIndevPanel
-		).filter(
-			(panel) =>
-				panel.showPanel &&
-				panel.embedded.niceIndevConsultation &&
-				panel.panelType == "History"
-		),
-		consultationPanels = consultationHistoryPanels.flatMap(
-			(panel) =>
-				arrayify(panel.embedded.niceIndevConsultation).find(
-					(consultation) => consultation.reference === project.reference
-				) || []
-		),
-		indevStakeholderRegistration = arrayify(
+	const indevStakeholderRegistration = arrayify(
 			project.links.niceIndevStakeholderRegistration
 		),
 		indevFullUpdate =
@@ -366,7 +342,8 @@ export const getServerSideProps: GetServerSideProps<
 
 	return {
 		props: {
-			consultationPanels,
+			hasPanels,
+			consultationUrls,
 			description,
 			developedAs,
 			evidenceAssessmentGroup,
@@ -385,6 +362,7 @@ export const getServerSideProps: GetServerSideProps<
 			indevTimelineItems,
 			indevTopicItems,
 			process,
+			projectPath,
 			projectType,
 			reference,
 			referralDate,

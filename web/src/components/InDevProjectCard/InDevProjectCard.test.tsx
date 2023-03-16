@@ -42,7 +42,7 @@ describe("InDevProjectCard", () => {
 
 		expect(screen.getByRole("link", { name: "Test title" })).toHaveAttribute(
 			"href",
-			"/guidance/indevelopment/gid-abc123"
+			"/indicators/indevelopment/gid-abc123"
 		);
 	});
 

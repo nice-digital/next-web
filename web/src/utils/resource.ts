@@ -1,3 +1,4 @@
+import { IndevPanel, IndevResource, ProjectDetail } from "@/feeds/inDev/inDev";
 import {
 	BaseContentPart,
 	FileContent,
@@ -8,7 +9,7 @@ import {
 
 import { arrayify, byTitleAlphabetically } from "./array";
 import { getFileTypeNameFromMime } from "./file";
-import { slugify } from "./url";
+import { getProjectPath, slugify } from "./url";
 
 export enum ResourceTypeSlug {
 	ToolsAndResources = "resources",
@@ -104,6 +105,66 @@ export const getResourceGroups = (
 			return groups;
 		}, [] as ResourceGroupViewModel[])
 		.sort(byTitleAlphabetically);
+
+export type GetInDevResourceLinkArgs = {
+	resource: IndevResource;
+	panel: IndevPanel;
+	project: ProjectDetail;
+};
+
+export const getInDevResourceLink = ({
+	resource,
+	panel,
+	project,
+}: GetInDevResourceLinkArgs): ResourceLinkViewModel => {
+	if (!resource.embedded) {
+		if (!resource.externalUrl)
+			throw Error(
+				`Found resource (${resource.title}) with nothing embedded and no external URL`
+			);
+
+		return {
+			title: resource.title,
+			href: resource.externalUrl,
+			fileTypeName: null,
+			fileSize: null,
+			date: resource.publishedDate,
+			type: panel.title,
+		};
+	} else {
+		const projectPath = getProjectPath(project);
+
+		const { mimeType, length, resourceTitleId, fileName } =
+				resource.embedded.niceIndevFile,
+			shouldUseNewConsultationComments =
+				resource.convertedDocument ||
+				resource.supportsComments ||
+				resource.supportsQuestions,
+			isHTML = mimeType === "text/html",
+			isConsultation =
+				resource.consultationId > 0 && panel.embedded.niceIndevConsultation,
+			fileSize = isHTML ? null : length,
+			fileTypeName = isHTML ? null : getFileTypeNameFromMime(mimeType),
+			href = shouldUseNewConsultationComments
+				? `/consultations/${resource.consultationId}/${resource.consultationDocumentId}`
+				: !isHTML
+				? `${projectPath}/downloads/${project.reference.toLowerCase()}-${resourceTitleId}.${
+						fileName.split(".").slice(-1)[0]
+				  }`
+				: isConsultation
+				? `${projectPath}/consultations/${resourceTitleId}`
+				: `${projectPath}/documents/${resourceTitleId}`;
+
+		return {
+			title: resource.title,
+			href,
+			fileTypeName,
+			fileSize,
+			date: resource.publishedDate,
+			type: panel.title,
+		};
+	}
+};
 
 export const findContentPartLinks = (
 	productID: string,

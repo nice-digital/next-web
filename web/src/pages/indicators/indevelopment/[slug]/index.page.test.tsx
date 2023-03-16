@@ -3,7 +3,6 @@ import { type GetServerSidePropsContext } from "next";
 import { useRouter } from "next/router";
 
 import { FeedPath } from "@/feeds/inDev/types";
-import gidng10237 from "@/mockData/inDev/project/gid-ng10237.json";
 import { addDefaultJSONFeedMocks, axiosJSONMock } from "@/test-utils/feeds";
 
 import InDevelopmentPage, {
@@ -49,7 +48,7 @@ describe("/indevelopment/[slug].page", () => {
 
 			await waitFor(() => {
 				expect(document.title).toEqual(
-					`Project information | Adrenal insufficiency: acute and long-term management | Indicators | Standards and Indicators`
+					`Adrenal insufficiency: acute and long-term management | Indicators | Standards and Indicators`
 				);
 			});
 		});
@@ -291,7 +290,7 @@ describe("/indevelopment/[slug].page", () => {
 			const provisionalScheduleItems = getAllByRole("definition");
 			expect(provisionalScheduleItems.length).toBe(2);
 			expect(getByText("Committee meeting: 2").tagName).toBe("DT");
-			expect(getByText("18 January 2023").tagName).toBe("DD");
+			expect(getByText("16 February 2023").tagName).toBe("DD");
 		});
 
 		it("should render project status formatted display name", () => {
@@ -336,7 +335,7 @@ describe("/indevelopment/[slug].page", () => {
 
 			expect(consultationLink).toHaveAttribute(
 				"href",
-				"/indicators/indevelopment/guidance/GID-IPG10305/consultation/html-content"
+				"/indicators/indevelopment/gid-ipg10305/consultations/html-content"
 			);
 		});
 
@@ -370,25 +369,6 @@ describe("/indevelopment/[slug].page", () => {
 		});
 
 		describe("Redirects", () => {
-			it("should return permanent redirect object to the published product URL when project status is 'Complete'", async () => {
-				axiosJSONMock.reset();
-				axiosJSONMock.onGet(new RegExp(FeedPath.ProjectDetail)).reply(200, {
-					...gidng10237,
-					status: "Complete",
-					reference: "NG10237",
-				});
-				addDefaultJSONFeedMocks();
-
-				await expect(
-					getServerSideProps(getServerSidePropsContext)
-				).resolves.toStrictEqual({
-					redirect: {
-						destination: "/guidance/ng10237",
-						permanent: true,
-					},
-				});
-			});
-
 			it("should return not found if project doesn't exist", async () => {
 				const notFoundIdSlug = "abc123";
 

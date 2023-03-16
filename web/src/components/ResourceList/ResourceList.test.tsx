@@ -14,6 +14,7 @@ import { ResourceList, type ResourceListProps } from "./ResourceList";
 describe("ResourceList", () => {
 	const props: ResourceListProps = {
 		title: "Some title",
+		lead: "Some lead text",
 		groups: [
 			{
 				title: "Group 1",
@@ -78,6 +79,12 @@ describe("ResourceList", () => {
 		expect(
 			screen.getByRole("heading", { level: 2, name: "Some title" })
 		).toBeInTheDocument();
+	});
+
+	it("should render given lead text", () => {
+		render(<ResourceList {...props} />);
+
+		expect(screen.getByText("Some lead text")).toBeInTheDocument();
 	});
 
 	it("should not render groups that have no resources", () => {

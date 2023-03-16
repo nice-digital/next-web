@@ -218,7 +218,7 @@ export type IndevResource = {
 	links: {
 		self: [Link];
 	};
-	embedded: {
+	embedded?: {
 		niceIndevFile: IndevFile;
 	};
 	eTag: ETag;
@@ -233,6 +233,13 @@ export type IndevResource = {
 	isCurrentViewableConsultationMarkup: boolean;
 	convertedDocument: boolean;
 	supportsComments: boolean;
+	supportsQuestions?: boolean;
+};
+
+export type IndevFileResource = IndevResource & {
+	embedded: {
+		niceIndevFile: IndevFile;
+	};
 };
 
 export type IndevConsultation = {
@@ -266,6 +273,12 @@ export type IndevConsultation = {
 	hidden: boolean;
 };
 
+export type IndevConsultationPanel = IndevPanel & {
+	embedded: {
+		niceIndevConsultation: IndevConsultation;
+	};
+};
+
 export type IndevPanel = {
 	links: {
 		self: [Link];
@@ -281,7 +294,7 @@ export type IndevPanel = {
 			eTag: ETag;
 			hasResources: boolean;
 		};
-		niceIndevConsultation: IndevConsultation | IndevConsultation[];
+		niceIndevConsultation?: IndevConsultation;
 	};
 	eTag: ETag;
 	title: string;

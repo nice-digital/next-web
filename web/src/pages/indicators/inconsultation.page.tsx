@@ -3,6 +3,7 @@ import React from "react";
 import { Breadcrumb } from "@nice-digital/nds-breadcrumbs";
 import { Document, SortOrder } from "@nice-digital/search-client";
 
+import { Link } from "@/components/Link/Link";
 import { IndicatorListNav } from "@/components/ProductListNav/IndicatorListNav";
 import {
 	getProductListPage,
@@ -39,10 +40,9 @@ const tableBodyRender = (documents: Document[]) => (
 					return (
 						<tr key={id}>
 							<td>
-								<a
-									href={pathAndQuery}
-									dangerouslySetInnerHTML={{ __html: title }}
-								/>
+								<Link href={pathAndQuery}>
+									<span dangerouslySetInnerHTML={{ __html: title }} />
+								</Link>
 							</td>
 							<td>{consultationType}</td>
 							<td>{niceResultType}</td>
