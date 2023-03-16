@@ -58,6 +58,7 @@ export default getProductListPage({
 	},
 	showDateFilter: false,
 	tableBodyRender,
+	searchInputPlaceholder: "E.g. 'diabetes' or 'NG28'",
 });
 
 export const getServerSideProps = getGetServerSidePropsFunc({

@@ -187,10 +187,37 @@ describe("SearchListFilters", () => {
 			).toBeInTheDocument();
 		});
 
-		it("should render placeholder attribute on title filter input", () => {
+		it("should render default placeholder attribute on title filter input when searchInputPlaceholder prop not supplied", () => {
+			rerender(
+				<SearchListFilters
+					numActiveModifiers={2}
+					navigators={sampleData.navigators as unknown as Navigator[]}
+					showDateFilter={false}
+					showTextFilter={true}
+					queryText="diabetes"
+					navigatorsOrder={guidanceNavigatorsOrder}
+				/>
+			);
 			expect(
 				screen.getByLabelText("Filter by title or keyword")
 			).toHaveAttribute("placeholder", "E.g. 'diabetes' or 'NG28'");
+		});
+
+		it("should render custom placeholder attribute on title filter input when searchInputPlaceholder prop supplied", () => {
+			rerender(
+				<SearchListFilters
+					numActiveModifiers={2}
+					navigators={sampleData.navigators as unknown as Navigator[]}
+					showDateFilter={false}
+					showTextFilter={true}
+					queryText="diabetes"
+					navigatorsOrder={guidanceNavigatorsOrder}
+					searchInputPlaceholder="Some placeholder text"
+				/>
+			);
+			expect(
+				screen.getByLabelText("Filter by title or keyword")
+			).toHaveAttribute("placeholder", "Some placeholder text");
 		});
 
 		it("should render search submit button", () => {
