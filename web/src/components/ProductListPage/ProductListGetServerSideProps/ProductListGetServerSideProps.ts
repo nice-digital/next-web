@@ -86,7 +86,6 @@ export const getGetServerSidePropsFunc =
 					results,
 					activeModifiers: [],
 					searchUrl,
-					index,
 				},
 			};
 		}
@@ -126,7 +125,6 @@ export const getGetServerSidePropsFunc =
 				results,
 				activeModifiers,
 				searchUrl,
-				index,
 			},
 		};
 	};

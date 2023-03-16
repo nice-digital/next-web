@@ -1,8 +1,4 @@
-import {
-	SearchIndex,
-	SearchResults,
-	SearchUrl,
-} from "@nice-digital/search-client";
+import { SearchResults, SearchUrl } from "@nice-digital/search-client";
 
 export interface ActiveModifier {
 	displayName: string;
@@ -13,5 +9,4 @@ export interface ProductListPageProps {
 	results: SearchResults;
 	activeModifiers: ActiveModifier[];
 	searchUrl: SearchUrl;
-	index: SearchIndex;
 }

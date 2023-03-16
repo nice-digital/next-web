@@ -188,16 +188,6 @@ describe("SearchListFilters", () => {
 		});
 
 		it("should render placeholder attribute on title filter input", () => {
-			rerender(
-				<SearchListFilters
-					numActiveModifiers={2}
-					navigators={sampleData.navigators as unknown as Navigator[]}
-					showDateFilter={false}
-					showTextFilter={false}
-					queryText="diabetes"
-					navigatorsOrder={guidanceNavigatorsOrder}
-				/>
-			);
 			expect(
 				screen.getByLabelText("Filter by title or keyword")
 			).toHaveAttribute("placeholder", "E.g. 'diabetes' or 'NG28'");
