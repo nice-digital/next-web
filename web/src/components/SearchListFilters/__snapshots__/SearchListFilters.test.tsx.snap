@@ -72,7 +72,7 @@ exports[`SearchListFilters should match snapshot for filter panel form 1`] = `
             class="input__input"
             id="q"
             name="q"
-            placeholder="E.g. 'diabetes' or 'NG123'"
+            placeholder="E.g. 'diabetes' or 'NG28'"
             type="text"
             value=""
           />
