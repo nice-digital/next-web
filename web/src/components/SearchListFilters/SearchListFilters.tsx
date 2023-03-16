@@ -148,7 +148,7 @@ export const SearchListFilters: FC<SearchListFiltersProps> = ({
 					label="Filter by title or keyword"
 					name="q"
 					defaultValue={queryText}
-					placeholder={`E.g. 'diabetes' or '${productTypeAcronym}28'`}
+					placeholder={`E.g. 'diabetes' or '${productTypeAcronym}123'`}
 				/>
 			) : (
 				<input type="hidden" name="q" value={queryText} />

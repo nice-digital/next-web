@@ -161,6 +161,7 @@ describe("SearchListFilters", () => {
 					showTextFilter={false}
 					queryText="diabetes"
 					navigatorsOrder={guidanceNavigatorsOrder}
+					index="guidance"
 				/>
 			);
 
@@ -187,20 +188,55 @@ describe("SearchListFilters", () => {
 			).toBeInTheDocument();
 		});
 
-		it("should render placeholder attribute on title filter input", () => {
+		it("should render default placeholder attribute on title filter input when index prop is not supplied", () => {
 			rerender(
 				<SearchListFilters
 					numActiveModifiers={2}
 					navigators={sampleData.navigators as unknown as Navigator[]}
 					showDateFilter={false}
-					showTextFilter={false}
+					showTextFilter={true}
 					queryText="diabetes"
 					navigatorsOrder={guidanceNavigatorsOrder}
 				/>
 			);
+
 			expect(
 				screen.getByLabelText("Filter by title or keyword")
-			).toHaveAttribute("placeholder", "E.g. 'diabetes' or 'NG28'");
+			).toHaveAttribute("placeholder", "E.g. 'diabetes' or 'NG123'");
+		});
+
+		it("should render placeholder attribute on title filter input based on search index value", () => {
+			rerender(
+				<SearchListFilters
+					numActiveModifiers={2}
+					navigators={sampleData.navigators as unknown as Navigator[]}
+					showDateFilter={false}
+					showTextFilter={true}
+					queryText="diabetes"
+					navigatorsOrder={guidanceNavigatorsOrder}
+					index="guidance"
+				/>
+			);
+
+			expect(
+				screen.getByLabelText("Filter by title or keyword")
+			).toHaveAttribute("placeholder", "E.g. 'diabetes' or 'NG123'");
+
+			rerender(
+				<SearchListFilters
+					numActiveModifiers={2}
+					navigators={sampleData.navigators as unknown as Navigator[]}
+					showDateFilter={false}
+					showTextFilter={true}
+					queryText="diabetes"
+					navigatorsOrder={guidanceNavigatorsOrder}
+					index="indicators"
+				/>
+			);
+
+			expect(
+				screen.getByLabelText("Filter by title or keyword")
+			).toHaveAttribute("placeholder", "E.g. 'diabetes' or 'IND123'");
 		});
 
 		it("should render search submit button", () => {
