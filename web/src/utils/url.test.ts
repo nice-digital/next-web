@@ -38,17 +38,18 @@ describe("URL utils", () => {
 					status: ProjectStatus.Proposed,
 					reference: "GID-TA123",
 				} as unknown as Project)
-			).toBe("/guidance/awaiting-development/gid-ta123");
+			).toBe("/indicators/awaiting-development/gid-ta123");
 		});
 
 		it("should return lowercase guidance gid url for non-proposed status projects", () => {
 			expect(
 				getProjectPath({
+					//TODO is this correct projectGroup for /indicators
 					projectGroup: ProductGroup.Guidance,
 					status: ProjectStatus.InProgress,
 					reference: "GID-TA123",
 				} as unknown as Project)
-			).toBe("/guidance/indevelopment/gid-ta123");
+			).toBe("/indicators/indevelopment/gid-ta123");
 		});
 	});
 

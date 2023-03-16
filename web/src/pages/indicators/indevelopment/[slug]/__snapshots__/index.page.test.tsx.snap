@@ -44,7 +44,7 @@ exports[`/indevelopment/[slug].page IndevelopmentPage should match snapshot for 
             class="breadcrumbs__crumb"
           >
             <a
-              href="/standards-and-indicators/indicators/indevelopment"
+              href="/indicators/indevelopment"
             >
               In development
             </a>
@@ -93,7 +93,7 @@ exports[`/indevelopment/[slug].page IndevelopmentPage should match snapshot for 
       "@type": "ListItem",
       "position": 4,
       "item": {
-        "@id": "/standards-and-indicators/indicators/indevelopment",
+        "@id": "/indicators/indevelopment",
         "name": "In development"
       }
     },
@@ -134,20 +134,43 @@ exports[`/indevelopment/[slug].page IndevelopmentPage should match snapshot for 
           </li>
           <li>
             <a
-              href="/about/what-we-do/our-programmes/nice-guidance/nice-interventional-procedures-guidance/ip-register-an-interest?t=0&p=GID-NG10237&returnUrl=/guidance/indevelopment/GID-NG10237"
-            >
-              Register an interest
-            </a>
-          </li>
-          <li>
-            <a
-              href="https://alpha.nice.org.uk/get-involved/stakeholder-registration/register?t=&p=GID-NG10237&returnUrl=/guidance/indevelopment/GID-NG10237"
+              href="https://alpha.nice.org.uk/get-involved/stakeholder-registration/register?t=&p=GID-NG10237&returnUrl=/indicators/indevelopment/gid-ng10237"
             >
               Register as a stakeholder
             </a>
           </li>
         </ul>
       </div>
+      <nav
+        class="horizontal-nav"
+      >
+        <ul
+          class="horizontal-nav__list"
+        >
+          <li
+            class="horizontal-nav__item"
+          >
+            <a
+              aria-current="true"
+              class="horizontal-nav__link"
+              href="/indicators/indevelopment/gid-ng10237"
+            >
+              Project information
+            </a>
+          </li>
+          <li
+            class="horizontal-nav__item"
+          >
+            <a
+              aria-current="false"
+              class="horizontal-nav__link"
+              href="/indicators/indevelopment/gid-ng10237/documents"
+            >
+              Project documents
+            </a>
+          </li>
+        </ul>
+      </nav>
       <dl
         aria-label="Project information"
         class="definitionList"
@@ -326,11 +349,12 @@ exports[`/indevelopment/[slug].page IndevelopmentPage should match snapshot for 
 exports[`/indevelopment/[slug].page getServerSideProps should return a correct props when supplied with a valid slug 1`] = `
 Object {
   "props": Object {
-    "consultationPanels": Array [],
+    "consultationUrls": Array [],
     "description": null,
     "developedAs": "CG",
     "evidenceAssessmentGroup": null,
     "fullUpdates": Array [],
+    "hasPanels": true,
     "idNumber": null,
     "indevCommentators": Array [],
     "indevConsultees": Array [],
@@ -514,6 +538,7 @@ Object {
     "indevTopicItems": Array [],
     "partialUpdates": Array [],
     "process": "CG",
+    "projectPath": "/indicators/indevelopment/gid-ng10237",
     "projectType": "NG",
     "reference": "GID-NG10237",
     "referralDate": null,

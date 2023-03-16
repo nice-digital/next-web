@@ -1,10 +1,6 @@
 import React, { type FC } from "react";
 
-import {
-	IndevConsultation,
-	ProjectStatus,
-	TopicSelectionReason,
-} from "@/feeds/inDev/types";
+import { ProjectStatus, TopicSelectionReason } from "@/feeds/inDev/types";
 import { ProductTypeAcronym } from "@/feeds/publications/types";
 import { formatDateStr, stripTime } from "@/utils/datetime";
 
@@ -13,7 +9,7 @@ import { Link } from "../Link/Link";
 import { ProjectConsultationDocumentsLink } from "../ProjectConsultationDocumentsLink/ProjectConsultationDocuments";
 
 export type ProjectInformationProps = {
-	consultationPanels: IndevConsultation[];
+	consultationUrls: string[];
 	description: string | null;
 	idNumber: string | null;
 	process: string | null;
@@ -34,7 +30,7 @@ export type ProjectInformationProps = {
 };
 
 export const ProjectInformation: FC<ProjectInformationProps> = ({
-	consultationPanels,
+	consultationUrls,
 	description,
 	idNumber,
 	process,
@@ -95,9 +91,7 @@ export const ProjectInformation: FC<ProjectInformationProps> = ({
 					<>{suspendDiscontinuedUrlText}</>
 				</Link>
 			)}
-			<ProjectConsultationDocumentsLink
-				consultationPanels={consultationPanels}
-			/>
+			<ProjectConsultationDocumentsLink consultationUrls={consultationUrls} />
 			<DefinitionList ariaLabel="Project information">
 				{status && (
 					<>

@@ -6,6 +6,7 @@ import {
 } from "./ProjectPageHeading";
 
 const props: ProjectPageHeadingProps = {
+	projectPath: "/guidance/indevelopment/gid-tag377",
 	projectType: "TA",
 	reference: "GID-TAG377",
 	status: "Discontinued",
@@ -81,6 +82,7 @@ describe("ProjectPageHeading", () => {
 	it("should render a 'Register an interest' link if the project type is 'IPG' or project status is not 'Discontinued'", async () => {
 		const mockProps = {
 			...props,
+			projectPath: "/guidance/indevelopment/gid-ipg10305",
 			projectType: "IPG",
 			reference: "GID-IPG10305",
 			status: "InProgress",
@@ -95,7 +97,7 @@ describe("ProjectPageHeading", () => {
 
 		expect(registerAnInterestLink).toHaveAttribute(
 			"href",
-			"/about/what-we-do/our-programmes/nice-guidance/nice-interventional-procedures-guidance/ip-register-an-interest?t=0&p=GID-IPG10305&returnUrl=/guidance/indevelopment/GID-IPG10305"
+			"/about/what-we-do/our-programmes/nice-guidance/nice-interventional-procedures-guidance/ip-register-an-interest?t=0&p=GID-IPG10305&returnUrl=/guidance/indevelopment/gid-ipg10305"
 		);
 	});
 
@@ -107,7 +109,23 @@ describe("ProjectPageHeading", () => {
 		expect(stakeholderLink).toBeInTheDocument();
 		expect(stakeholderLink).toHaveAttribute(
 			"href",
-			"https://alpha.nice.org.uk/get-involved/stakeholder-registration/register?t=&p=GID-TAG377&returnUrl=/guidance/indevelopment/GID-TAG377"
+			"https://alpha.nice.org.uk/get-involved/stakeholder-registration/register?t=&p=GID-TAG377&returnUrl=/guidance/indevelopment/gid-tag377"
+		);
+	});
+
+	it("should render a 'request commenting lead permission' link when consultation should use new consultation comments", async () => {
+		const mockProps = {
+			...props,
+			shouldUseNewConsultationComments: true,
+		};
+		render(<ProjectPageHeading {...mockProps} />);
+		const consultationsRequestLead = screen.getByRole("link", {
+			name: "Request commenting lead permission",
+		});
+		expect(consultationsRequestLead).toBeInTheDocument();
+		expect(consultationsRequestLead).toHaveAttribute(
+			"href",
+			"/consultations/leadinformation"
 		);
 	});
 });

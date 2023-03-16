@@ -12,13 +12,18 @@ import styles from "./ResourceList.module.scss";
 
 export type ResourceListProps = {
 	title: ReactNode;
+	lead?: ReactNode;
 	groups: ResourceGroupViewModel[];
 };
 
 const hasResources = ({ subGroups }: ResourceGroupViewModel) =>
 	subGroups.some(({ resourceLinks }) => resourceLinks.length);
 
-export const ResourceList: FC<ResourceListProps> = ({ title, groups }) => {
+export const ResourceList: FC<ResourceListProps> = ({
+	title,
+	lead,
+	groups,
+}) => {
 	const groupsToShow = groups.filter(hasResources),
 		hasOnThisPageMenu = groupsToShow.length > 1,
 		countingSlugify = slugify.counter(),
@@ -49,6 +54,7 @@ export const ResourceList: FC<ResourceListProps> = ({ title, groups }) => {
 						lg={hasOnThisPageMenu ? 9 : 12}
 					>
 						<h2 className={styles.title}>{title}</h2>
+						<p>{lead}</p>
 						{groupsWithSlugs.map(({ group, slug }) => (
 							<section key={slug} aria-labelledby={slug}>
 								<h3 id={slug}>{group.title}</h3>
