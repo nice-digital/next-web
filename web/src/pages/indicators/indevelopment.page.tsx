@@ -42,7 +42,7 @@ const tableBodyRender = (documents: Document[]) => (
 									<span dangerouslySetInnerHTML={{ __html: title }} />
 								</Link>
 							</td>
-							<td>{resourceType}</td>
+							<td>{resourceType.map((resource) => `${resource}. `)}</td>
 							<td>
 								{expectedPublicationDate ? (
 									<ResponsiveDate isoDateTime={expectedPublicationDate} />
