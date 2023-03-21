@@ -835,9 +835,7 @@ exports[`/indicators/indevelopment should match the snapshot 1`] = `
                       </span>
                     </a>
                   </td>
-                  <td>
-                    NICE guideline
-                  </td>
+                  <td />
                   <td>
                     <abbr
                       title="To be confirmed"
@@ -856,9 +854,7 @@ exports[`/indicators/indevelopment should match the snapshot 1`] = `
                       </span>
                     </a>
                   </td>
-                  <td>
-                    NICE guideline
-                  </td>
+                  <td />
                   <td>
                     <abbr
                       title="To be confirmed"
@@ -877,9 +873,7 @@ exports[`/indicators/indevelopment should match the snapshot 1`] = `
                       </span>
                     </a>
                   </td>
-                  <td>
-                    NICE guideline
-                  </td>
+                  <td />
                   <td>
                     <abbr
                       title="To be confirmed"
@@ -898,9 +892,7 @@ exports[`/indicators/indevelopment should match the snapshot 1`] = `
                       </span>
                     </a>
                   </td>
-                  <td>
-                    NICE guideline
-                  </td>
+                  <td />
                   <td>
                     <abbr
                       title="To be confirmed"
@@ -919,9 +911,7 @@ exports[`/indicators/indevelopment should match the snapshot 1`] = `
                       </span>
                     </a>
                   </td>
-                  <td>
-                    NICE guideline
-                  </td>
+                  <td />
                   <td>
                     <abbr
                       title="To be confirmed"
@@ -940,9 +930,7 @@ exports[`/indicators/indevelopment should match the snapshot 1`] = `
                       </span>
                     </a>
                   </td>
-                  <td>
-                    Antimicrobial prescribing guideline
-                  </td>
+                  <td />
                   <td>
                     <abbr
                       title="To be confirmed"
@@ -961,9 +949,7 @@ exports[`/indicators/indevelopment should match the snapshot 1`] = `
                       </span>
                     </a>
                   </td>
-                  <td>
-                    NICE guideline
-                  </td>
+                  <td />
                   <td>
                     <abbr
                       title="To be confirmed"
@@ -982,9 +968,7 @@ exports[`/indicators/indevelopment should match the snapshot 1`] = `
                       </span>
                     </a>
                   </td>
-                  <td>
-                    Antimicrobial prescribing guideline
-                  </td>
+                  <td />
                   <td>
                     <abbr
                       title="To be confirmed"
@@ -1003,9 +987,7 @@ exports[`/indicators/indevelopment should match the snapshot 1`] = `
                       </span>
                     </a>
                   </td>
-                  <td>
-                    NICE guideline
-                  </td>
+                  <td />
                   <td>
                     <abbr
                       title="To be confirmed"
@@ -1024,9 +1006,7 @@ exports[`/indicators/indevelopment should match the snapshot 1`] = `
                       </span>
                     </a>
                   </td>
-                  <td>
-                    NICE guideline
-                  </td>
+                  <td />
                   <td>
                     <time
                       class="date"

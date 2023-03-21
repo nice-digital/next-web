@@ -31,7 +31,7 @@ const tableBodyRender = (documents: Document[]) => (
 				({
 					id,
 					title,
-					niceResultType,
+					resourceType,
 					expectedPublicationDate,
 					pathAndQuery,
 				}) => {
@@ -42,7 +42,7 @@ const tableBodyRender = (documents: Document[]) => (
 									<span dangerouslySetInnerHTML={{ __html: title }} />
 								</Link>
 							</td>
-							<td>{niceResultType}</td>
+							<td>{resourceType}</td>
 							<td>
 								{expectedPublicationDate ? (
 									<ResponsiveDate isoDateTime={expectedPublicationDate} />

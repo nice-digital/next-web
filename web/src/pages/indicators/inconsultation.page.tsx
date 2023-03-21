@@ -33,7 +33,7 @@ const tableBodyRender = (documents: Document[]) => (
 					id,
 					title,
 					consultationType,
-					niceResultType,
+					resourceType,
 					consultationEndDate,
 					pathAndQuery,
 				}) => {
@@ -45,7 +45,7 @@ const tableBodyRender = (documents: Document[]) => (
 								</Link>
 							</td>
 							<td>{consultationType}</td>
-							<td>{niceResultType}</td>
+							<td>{resourceType}</td>
 							<td>
 								<ResponsiveDate isoDateTime={String(consultationEndDate)} />
 							</td>
