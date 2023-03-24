@@ -7,19 +7,25 @@ import React, {
 	useState,
 } from "react";
 
+import { publicRuntimeConfig } from "@/config";
+import type { FormID } from "@/feeds/jotform/jotform";
+import { logger } from "@/logger";
+
 import styles from "./JotFormEmbed.module.scss";
 
-type JotFormID = `${number}`;
+const jotFormBaseURL = publicRuntimeConfig.jotForm.baseURL;
 
 interface JotFormEmbedProps {
-	jotFormID: JotFormID;
+	jotFormID: FormID;
 	title: string;
+	/** An optional, initial height */
+	height?: number;
 	onSubmit?: () => void;
 }
 
 type JFMessageObject = {
 	action: "submission-completed";
-	formID: JotFormID;
+	formID: FormID;
 };
 
 type JFMessageName =
@@ -31,27 +37,26 @@ type JFMessageName =
 	| "loadScript"
 	| "exitFullscreen";
 
-type JFMessageString = `${JFMessageName}:${number | ""}:${JotFormID}`;
+type JFMessageString = `${JFMessageName}:${number | ""}:${FormID}`;
 
 type JFMessageEvent = MessageEvent<JFMessageObject | JFMessageString>;
-
-const JotFormBaseURL = "https://nice.jotform.com";
 
 export const JotFormEmbed: FC<JotFormEmbedProps> = ({
 	jotFormID,
 	title,
+	height,
 	onSubmit,
 }) => {
 	const iframeRef = useRef<HTMLIFrameElement>(null),
-		[styleOverrides, setStyleOverrides] = useState<CSSProperties>({}),
+		[styleOverrides, setStyleOverrides] = useState<CSSProperties>({
+			height: height ? `${height}px` : undefined,
+		}),
 		handleIFrameMessage = useCallback(
 			(content?: JFMessageEvent) => {
-				if (!iframeRef.current || !content || content.origin != JotFormBaseURL)
+				if (!iframeRef.current || !content || content.origin != jotFormBaseURL)
 					return;
 
 				const { data } = content;
-
-				console.log({ data });
 
 				// The form completion message is an object rather than a string like other messages so handle it first
 				if (
@@ -70,7 +75,12 @@ export const JotFormEmbed: FC<JotFormEmbedProps> = ({
 					[messageName, value, targetFormID] = messageParts,
 					iframe = iframeRef.current;
 
-				if (targetFormID !== jotFormID) return;
+				if (targetFormID !== jotFormID) {
+					logger.warn(
+						`Form with ID ${jotFormID} didn't match event with form ID ${targetFormID}`
+					);
+					return;
+				}
 
 				switch (messageName as JFMessageName) {
 					case "scrollIntoView":
@@ -79,12 +89,12 @@ export const JotFormEmbed: FC<JotFormEmbedProps> = ({
 						}
 						break;
 					case "setHeight": {
-						const minHeight = parseInt(value, 10);
-						setStyleOverrides((s) => ({ ...s, minHeight }));
+						const height = parseInt(value, 10) + "px";
+						setStyleOverrides((s) => ({ ...s, height }));
 						break;
 					}
 					case "setMinHeight": {
-						const minHeight = parseInt(value, 10);
+						const minHeight = parseInt(value, 10) + "px";
 						setStyleOverrides((s) => ({ ...s, minHeight }));
 						break;
 					}
@@ -152,7 +162,7 @@ export const JotFormEmbed: FC<JotFormEmbedProps> = ({
 		<iframe
 			id={`JotFormIFrame${jotFormID}`}
 			ref={iframeRef}
-			src={`${JotFormBaseURL}/${jotFormID}`}
+			src={`${jotFormBaseURL}/${jotFormID}`}
 			title={title}
 			allowFullScreen
 			allow="geolocation; microphone; camera"

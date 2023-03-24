@@ -15,6 +15,11 @@ export interface CacheControlConfig {
 	readonly defaultCacheHeader: string;
 }
 
+export interface JotFormPublicConfig {
+	/** The full base URL for NICE's JotForm instance, including protocol but excluding trailing slash */
+	readonly baseURL: string;
+}
+
 /**
  * Public run time config, available to both client and server
  */
@@ -42,6 +47,9 @@ export interface PublicConfig {
 
 	/** Config for cache-control response headers */
 	readonly cacheControl: CacheControlConfig;
+
+	/** Public config for JotForm. Note, there's also a server config object with the secret API key */
+	readonly jotForm: JotFormPublicConfig;
 }
 
 /**
@@ -78,6 +86,9 @@ export interface FeedsConfig {
 
 	/** Feed config for indev */
 	readonly inDev: FeedConfig;
+
+	/** Feed config for JotForm */
+	readonly jotForm: Pick<FeedConfig, "apiKey">;
 }
 
 /**
