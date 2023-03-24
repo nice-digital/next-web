@@ -17,6 +17,9 @@ module.exports = {
 			inDev: {
 				origin: "https://next-web-tests-indev.nice.org.uk",
 			},
+			jotForm: {
+				origin: "https://next-web-tests.jotform.com",
+			},
 		},
 	},
 };
