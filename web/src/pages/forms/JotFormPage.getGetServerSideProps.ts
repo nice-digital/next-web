@@ -39,7 +39,7 @@ export const getGetServerSideProps =
 			};
 		} catch (e) {
 			logger.error(
-				`Could not get form from JotForm API with id ${formID} at URL ${resolvedUrl}orm`,
+				`Could not get form from JotForm API with id ${formID} at URL ${resolvedUrl}`,
 				e
 			);
 			throw e;
