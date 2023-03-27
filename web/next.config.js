@@ -92,11 +92,6 @@ const commonHeaders = [
  * @type {import('next').NextConfig}
  **/
 const nextConfig = {
-	webpack: (config) => {
-		config.resolve.fallback = { fs: false };
-
-		return config;
-	},
 	nodeConfigServerKey: "server",
 	nodeConfigPublicKey: "public",
 	// Strict mode gives useful feedback in dev, see https://edibleco.de/3x9GXry
