@@ -162,7 +162,7 @@ export const JotFormEmbed: FC<JotFormEmbedProps> = ({
 		<iframe
 			id={`JotFormIFrame${jotFormID}`}
 			ref={iframeRef}
-			src={`${jotFormBaseURL}/${jotFormID}`}
+			src={`${jotFormBaseURL}/${jotFormID}?isIframeEmbed=1`}
 			title={title}
 			allowFullScreen
 			allow="geolocation; microphone; camera"
