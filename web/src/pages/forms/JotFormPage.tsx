@@ -8,13 +8,13 @@ import { JotFormEmbed } from "@/components/JotFormEmbed/JotFormEmbed";
 
 import { FormProps } from "./JotFormPage.getGetServerSideProps";
 
-export type FormPageProps = FormProps & {
+export type JotFormPageProps = FormProps & {
 	formName: string;
 	parentPages: { title: string; path?: string }[];
 	lead: string;
 };
 
-export const JotFormPage: FC<FormPageProps> = ({
+export const JotFormPage: FC<JotFormPageProps> = ({
 	height,
 	formID,
 	formName,
