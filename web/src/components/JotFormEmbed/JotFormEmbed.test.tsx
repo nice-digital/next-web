@@ -1,4 +1,4 @@
-import { render, screen, waitFor, fireEvent } from "@testing-library/react";
+import { render, screen, fireEvent } from "@testing-library/react";
 
 import { JotFormEmbed } from "./JotFormEmbed";
 
@@ -47,6 +47,15 @@ describe("JotFormEmbed", () => {
 		});
 	});
 
+	it("should add data attribute with form ID for GTM tracking", () => {
+		render(<JotFormEmbed jotFormID="1234" title="This is a title" />);
+
+		expect(screen.getByTitle("This is a title")).toHaveAttribute(
+			"data-jotform-id",
+			"1234"
+		);
+	});
+
 	it("should use given initial height", () => {
 		render(
 			<JotFormEmbed jotFormID="1234" title="This is a title" height={999} />
@@ -57,7 +66,7 @@ describe("JotFormEmbed", () => {
 		});
 	});
 
-	it("should set height from iframe post message", async () => {
+	it("should set height from iframe post message", () => {
 		render(<JotFormEmbed jotFormID="1234" title="This is a title" />);
 
 		fireEvent(
@@ -68,10 +77,101 @@ describe("JotFormEmbed", () => {
 			})
 		);
 
-		await waitFor(() => {
-			expect(screen.getByTitle("This is a title")).toHaveStyle({
-				height: "987px",
-			});
+		expect(screen.getByTitle("This is a title")).toHaveStyle({
+			height: "987px",
 		});
+	});
+
+	it("should call given onSubmit callback prop after form submission event", () => {
+		const onSubmit = jest.fn();
+
+		render(
+			<JotFormEmbed
+				jotFormID="1234"
+				title="This is a title"
+				onSubmit={onSubmit}
+			/>
+		);
+
+		fireEvent(
+			window,
+			new MessageEvent("message", {
+				data: {
+					action: "submission-completed",
+					formID: "1234",
+				},
+				origin: "https://next-web-tests.jotform.com",
+			})
+		);
+
+		expect(onSubmit).toHaveBeenCalled();
+	});
+
+	it("should push submit event to data layer after form submission message", () => {
+		const dataLayerPush = jest.spyOn(window.dataLayer, "push");
+
+		render(<JotFormEmbed jotFormID="1234" title="This is a title" />);
+
+		fireEvent(
+			window,
+			new MessageEvent("message", {
+				data: {
+					action: "submission-completed",
+					formID: "1234",
+				},
+				origin: "https://next-web-tests.jotform.com",
+			})
+		);
+
+		expect(dataLayerPush).toHaveBeenCalledWith({
+			event: "Jotform Message",
+			jf_id: "1234",
+			jf_title: "This is a title",
+			jf_type: "submit",
+		});
+
+		dataLayerPush.mockReset();
+	});
+
+	it("should push progress event to data layer after scroll into view message", () => {
+		const dataLayerPush = jest.spyOn(window.dataLayer, "push");
+
+		render(<JotFormEmbed jotFormID="1234" title="This is a title" />);
+
+		fireEvent(
+			window,
+			new MessageEvent("message", {
+				data: "scrollIntoView::1234",
+				origin: "https://next-web-tests.jotform.com",
+			})
+		);
+
+		expect(dataLayerPush).toHaveBeenCalledWith({
+			event: "Jotform Message",
+			jf_id: "1234",
+			jf_title: "This is a title",
+			jf_type: "progress",
+		});
+
+		dataLayerPush.mockReset();
+	});
+
+	it("should scroll iframe into view in response to scrollIntoView message", () => {
+		render(<JotFormEmbed jotFormID="1234" title="This is a title" />);
+
+		const iframe = screen.getByTitle("This is a title"),
+			scrollIntoView = jest.fn();
+
+		iframe.scrollIntoView = scrollIntoView;
+
+		fireEvent(
+			window,
+			new MessageEvent("message", {
+				data: "scrollIntoView::1234",
+				origin: "https://next-web-tests.jotform.com",
+			})
+		);
+
+		expect(scrollIntoView).toHaveBeenCalled();
 	});
 });
