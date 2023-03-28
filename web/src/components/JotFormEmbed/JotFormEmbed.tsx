@@ -61,10 +61,15 @@ export const JotFormEmbed: FC<JotFormEmbedProps> = ({
 				// The form completion message is an object rather than a string like other messages so handle it first
 				if (
 					typeof data === "object" &&
-					data.action === "submission-completed" &&
-					onSubmit
+					data.action === "submission-completed"
 				) {
-					onSubmit();
+					window.dataLayer.push({
+						event: "Jotform Message",
+						jf_type: "submit",
+						jf_id: jotFormID,
+						jf_title: title,
+					});
+					if (onSubmit) onSubmit();
 					return;
 				}
 
@@ -84,9 +89,16 @@ export const JotFormEmbed: FC<JotFormEmbedProps> = ({
 
 				switch (messageName as JFMessageName) {
 					case "scrollIntoView":
-						if (typeof iframe.scrollIntoView === "function") {
+						if (typeof iframe.scrollIntoView === "function")
 							iframe.scrollIntoView();
-						}
+						// There's no 'page event' sent from JotForm for multi page forms,
+						// but scrollIntoView is fired for pages so we use this as the closest thing to track pagination
+						window.dataLayer.push({
+							event: "Jotform Message",
+							jf_type: "progress",
+							jf_id: jotFormID,
+							jf_title: title,
+						});
 						break;
 					case "setHeight": {
 						const height = parseInt(value, 10) + "px";
@@ -143,7 +155,7 @@ export const JotFormEmbed: FC<JotFormEmbedProps> = ({
 					);
 				}
 			},
-			[jotFormID, onSubmit, iframeRef]
+			[jotFormID, onSubmit, iframeRef, title]
 		);
 
 	useEffect(() => {
@@ -160,7 +172,8 @@ export const JotFormEmbed: FC<JotFormEmbedProps> = ({
 
 	return (
 		<iframe
-			id={`JotFormIFrame${jotFormID}`}
+			id={`JotFormIFrame-${jotFormID}`}
+			data-jotform-id={jotFormID}
 			ref={iframeRef}
 			src={`${jotFormBaseURL}/${jotFormID}?isIframeEmbed=1`}
 			title={title}

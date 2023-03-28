@@ -6,7 +6,9 @@ import {
 
 export const getServerSideProps = getGetServerSideProps("230793530776059");
 
-export default function IPNotificationForm(props: FormProps): JSX.Element {
+export default function InterventionalProceduresNotificationForm(
+	props: FormProps
+): JSX.Element {
 	return (
 		<JotFormPage
 			{...props}
