@@ -1,8 +1,8 @@
-import { JotFormPage } from "./JotFormPage";
 import {
 	type FormProps,
 	getGetServerSideProps,
-} from "./JotFormPage.getGetServerSideProps";
+} from "@/components/JotFormPage/getGetServerSideProps";
+import { JotFormPage } from "@/components/JotFormPage/JotFormPage";
 
 export const getServerSideProps = getGetServerSideProps("230793530776059");
 

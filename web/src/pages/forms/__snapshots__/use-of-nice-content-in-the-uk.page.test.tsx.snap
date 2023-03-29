@@ -4,6 +4,7 @@ exports[`UseOfNICEContentInTheUKForm should match snapshot 1`] = `
 <div>
   <nav
     aria-label="Breadcrumbs"
+    data-component="breadcrumbs"
     role="navigation"
   >
     <ol
@@ -71,6 +72,7 @@ exports[`UseOfNICEContentInTheUKForm should match snapshot 1`] = `
   </script>
   <div
     class="page-header"
+    data-component="page-header"
     id="content-start"
   >
     <h1
@@ -78,7 +80,6 @@ exports[`UseOfNICEContentInTheUKForm should match snapshot 1`] = `
     >
       Use of NICE content in the UK form
     </h1>
-    
   </div>
   <iframe
     allow="geolocation; microphone; camera"

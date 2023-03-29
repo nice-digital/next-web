@@ -8,6 +8,7 @@ export type FormProps = {
 	formID: FormID;
 };
 
+// Note: this is a separate file rather than named export from the page component, because the NextJS tree shaking was trying to include needle client side, and causing a build error
 export const getGetServerSideProps =
 	(formID: FormID): GetServerSideProps<FormProps> =>
 	async ({ resolvedUrl }) => {
@@ -27,7 +28,7 @@ export const getGetServerSideProps =
 			const { height, status } = formResponse.content;
 
 			if (status === "DISABLED") {
-				logger.info(`Form with id ${formID} at URL ${resolvedUrl} is disabled`);
+				logger.warn(`Form with id ${formID} at URL ${resolvedUrl} is disabled`);
 				return { notFound: true };
 			}
 

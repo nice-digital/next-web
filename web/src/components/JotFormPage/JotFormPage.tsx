@@ -6,7 +6,7 @@ import { PageHeader } from "@nice-digital/nds-page-header";
 
 import { JotFormEmbed } from "@/components/JotFormEmbed/JotFormEmbed";
 
-import { FormProps } from "./JotFormPage.getGetServerSideProps";
+import { FormProps } from "./getGetServerSideProps";
 
 export type JotFormPageProps = FormProps & {
 	formName: string;

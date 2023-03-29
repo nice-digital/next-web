@@ -4,6 +4,7 @@ exports[`InterventionalProceduresNotificationForm should match snapshot 1`] = `
 <div>
   <nav
     aria-label="Breadcrumbs"
+    data-component="breadcrumbs"
     role="navigation"
   >
     <ol
@@ -156,6 +157,7 @@ exports[`InterventionalProceduresNotificationForm should match snapshot 1`] = `
   </script>
   <div
     class="page-header"
+    data-component="page-header"
     id="content-start"
   >
     <h1

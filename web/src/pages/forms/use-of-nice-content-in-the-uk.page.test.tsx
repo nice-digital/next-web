@@ -1,7 +1,8 @@
 import { render } from "@testing-library/react";
 import { GetServerSidePropsContext } from "next";
 
-import { FormProps } from "./JotFormPage.getGetServerSideProps";
+import { FormProps } from "@/components/JotFormPage/getGetServerSideProps";
+
 import UseOfNICEContentInTheUKForm, {
 	getServerSideProps,
 } from "./use-of-nice-content-in-the-uk.page";
