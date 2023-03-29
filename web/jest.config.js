@@ -32,7 +32,7 @@ module.exports = {
 		"./jest.setup.ts",
 		"jest-extended/all",
 	],
-	testPathIgnorePatterns: ["./config/"],
+	testPathIgnorePatterns: ["./config/", "./.next/"],
 	testEnvironmentOptions: {
 		url: "https://next-web-tests.nice.org.uk",
 	},

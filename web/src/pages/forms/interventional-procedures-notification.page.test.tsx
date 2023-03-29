@@ -1,10 +1,11 @@
 import { render } from "@testing-library/react";
 import { GetServerSidePropsContext } from "next";
 
+import { FormProps } from "@/components/JotFormPage/getGetServerSideProps";
+
 import InterventionalProceduresNotificationForm, {
 	getServerSideProps,
 } from "./interventional-procedures-notification.page";
-import { FormProps } from "./JotFormPage.getGetServerSideProps";
 
 jest.mock("@/feeds/jotform/jotform", () => ({
 	getForm: jest.fn().mockResolvedValue({
