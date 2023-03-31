@@ -23,7 +23,6 @@ const tableBodyRender = (documents: Document[]) => (
 			<tr>
 				<th scope="col">Title</th>
 				<th scope="col">Consultation</th>
-				<th scope="col">Type</th>
 				<th scope="col">{dateFilterLabel}</th>
 			</tr>
 		</thead>
@@ -33,7 +32,6 @@ const tableBodyRender = (documents: Document[]) => (
 					id,
 					title,
 					consultationType,
-					niceResultType,
 					consultationEndDate,
 					pathAndQuery,
 				}) => {
@@ -45,7 +43,6 @@ const tableBodyRender = (documents: Document[]) => (
 								</Link>
 							</td>
 							<td>{consultationType}</td>
-							<td>{niceResultType}</td>
 							<td>
 								<ResponsiveDate isoDateTime={String(consultationEndDate)} />
 							</td>
@@ -88,6 +85,7 @@ export default getProductListPage({
 	useFutureDates: false,
 	dateFilterLabel,
 	tableBodyRender,
+	searchInputPlaceholder: "E.g. 'diabetes' or 'IND28'",
 });
 
 export const getServerSideProps = getGetServerSidePropsFunc({

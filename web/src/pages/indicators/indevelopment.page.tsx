@@ -31,7 +31,7 @@ const tableBodyRender = (documents: Document[]) => (
 				({
 					id,
 					title,
-					niceResultType,
+					resourceType,
 					expectedPublicationDate,
 					pathAndQuery,
 				}) => {
@@ -42,7 +42,17 @@ const tableBodyRender = (documents: Document[]) => (
 									<span dangerouslySetInnerHTML={{ __html: title }} />
 								</Link>
 							</td>
-							<td>{niceResultType}</td>
+							<td>
+								{resourceType.length <= 1 ? (
+									resourceType[0]
+								) : (
+									<>
+										{resourceType.map((resource) => (
+											<>{resource}. </>
+										))}
+									</>
+								)}
+							</td>
 							<td>
 								{expectedPublicationDate ? (
 									<ResponsiveDate isoDateTime={expectedPublicationDate} />
@@ -89,6 +99,7 @@ export default getProductListPage({
 	useFutureDates: false,
 	dateFilterLabel,
 	tableBodyRender,
+	searchInputPlaceholder: "E.g. 'diabetes' or 'IND28'",
 });
 
 export const getServerSideProps = getGetServerSidePropsFunc({

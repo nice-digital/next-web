@@ -243,7 +243,7 @@ exports[`/indicators/inconsultation should match the snapshot 1`] = `
                       class="input__input"
                       id="q"
                       name="q"
-                      placeholder="E.g. 'diabetes' or 'NG28'"
+                      placeholder="E.g. 'diabetes' or 'IND28'"
                       type="text"
                       value=""
                     />
@@ -433,11 +433,6 @@ exports[`/indicators/inconsultation should match the snapshot 1`] = `
                   <th
                     scope="col"
                   >
-                    Type
-                  </th>
-                  <th
-                    scope="col"
-                  >
                     Consultation end date
                   </th>
                 </tr>
@@ -456,7 +451,6 @@ exports[`/indicators/inconsultation should match the snapshot 1`] = `
                   <td>
                     NICE indicator consultation
                   </td>
-                  <td />
                   <td>
                     <time
                       class="date"
@@ -482,7 +476,6 @@ exports[`/indicators/inconsultation should match the snapshot 1`] = `
                   <td>
                     NICE indicator consultation
                   </td>
-                  <td />
                   <td>
                     <time
                       class="date"
@@ -508,7 +501,6 @@ exports[`/indicators/inconsultation should match the snapshot 1`] = `
                   <td>
                     NICE indicator consultation
                   </td>
-                  <td />
                   <td>
                     <time
                       class="date"
@@ -534,7 +526,6 @@ exports[`/indicators/inconsultation should match the snapshot 1`] = `
                   <td>
                     NICE indicator consultation
                   </td>
-                  <td />
                   <td>
                     <time
                       class="date"
@@ -560,7 +551,6 @@ exports[`/indicators/inconsultation should match the snapshot 1`] = `
                   <td>
                     NICE indicator consultation
                   </td>
-                  <td />
                   <td>
                     <time
                       class="date"
@@ -586,7 +576,6 @@ exports[`/indicators/inconsultation should match the snapshot 1`] = `
                   <td>
                     NICE indicator consultation
                   </td>
-                  <td />
                   <td>
                     <time
                       class="date"
@@ -612,7 +601,6 @@ exports[`/indicators/inconsultation should match the snapshot 1`] = `
                   <td>
                     NICE indicator consultation
                   </td>
-                  <td />
                   <td>
                     <time
                       class="date"

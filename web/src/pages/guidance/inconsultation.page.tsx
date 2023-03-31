@@ -81,6 +81,7 @@ export default getProductListPage({
 	dateFilterLabel,
 	useFutureDates: true,
 	tableBodyRender,
+	searchInputPlaceholder: "E.g. 'diabetes' or 'NG28'",
 });
 
 export const getServerSideProps = getGetServerSidePropsFunc({
