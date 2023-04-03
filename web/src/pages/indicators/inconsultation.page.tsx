@@ -82,7 +82,7 @@ export default getProductListPage({
 		label: "Title",
 	},
 	showDateFilter: true,
-	useFutureDates: false,
+	useFutureDates: true,
 	dateFilterLabel,
 	tableBodyRender,
 	searchInputPlaceholder: "E.g. 'diabetes' or 'IND28'",
