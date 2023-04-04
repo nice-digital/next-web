@@ -2,13 +2,12 @@ import { type Redirect } from "next";
 
 import {
 	getProjectDetail,
-	IndevConsultation,
 	IndevConsultationPanel,
 	IndevPanel,
 	ProjectDetail,
 	ProjectStatus,
 } from "@/feeds/inDev/inDev";
-import { ProductTypeAcronym } from "@/feeds/publications/types";
+import { ProductGroup, ProductTypeAcronym } from "@/feeds/publications/types";
 import { getProjectPath, getProductPath } from "@/utils/url";
 
 import { arrayify } from "./array";
@@ -48,7 +47,7 @@ export const validateRouteParams = async ({
 	// if project status is complete it is not in development and should redirect to the published product
 	if (project.status == ProjectStatus.Complete) {
 		const productPath = getProductPath({
-			productGroup: project.projectGroup,
+			productGroup: project.projectGroup as unknown as ProductGroup,
 			id: project.reference,
 			productType: project.projectType as unknown as ProductTypeAcronym,
 			title: project.title,
@@ -72,8 +71,6 @@ export const validateRouteParams = async ({
 				panel.embedded.niceIndevConsultation &&
 				!panel.embedded.niceIndevConsultation.hidden
 		) as IndevConsultationPanel[];
-	// .flatMap((panel) => arrayify(panel.embedded.niceIndevConsultation))
-	// .filter((consultation) => !consultation.hidden);
 
 	const consultationUrls = consultationPanels.map(
 		(panel) =>

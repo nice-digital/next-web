@@ -294,8 +294,7 @@ export const getServerSideProps: GetServerSideProps<
 				.niceIndevEmailEnquiry,
 		indevEmailEnquiries = arrayify(indevEmailEnquiry),
 		projectStatusDisplayName = (status: ProjectStatus) => {
-			if (status == ProjectStatus.AwaitingDevelopment)
-				return "Awaiting development";
+			if (status == ProjectStatus.Proposed) return "Awaiting development";
 			if (status == ProjectStatus.InProgress) return "In progress";
 			if (status == ProjectStatus.TopicSelection) return "Topic selection";
 			if (status == ProjectStatus.ImpactedByCOVID19)

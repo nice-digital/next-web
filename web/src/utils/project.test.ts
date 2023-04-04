@@ -42,5 +42,30 @@ describe("project utils", () => {
 				},
 			});
 		});
+
+		it("should return a permanent redirect object to the published product URL from /documents when project status is 'Complete'", async () => {
+			axiosJSONMock.reset();
+			axiosJSONMock.onGet(new RegExp(FeedPath.ProjectDetail)).reply(200, {
+				...ind60,
+				status: "Complete",
+				reference: "IND60",
+			});
+			addDefaultJSONFeedMocks();
+
+			const result = await validateRouteParams({
+				params: {
+					slug: "IND60",
+				},
+				resolvedUrl:
+					"/indicators/indevelopment/ind60-resource-products/documents",
+			});
+
+			expect(result).toStrictEqual({
+				redirect: {
+					destination: "/indicators/ind60-nxt-129-complete-test",
+					permanent: true,
+				},
+			});
+		});
 	});
 });
