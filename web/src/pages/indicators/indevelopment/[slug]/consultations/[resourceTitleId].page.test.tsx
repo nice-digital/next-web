@@ -9,23 +9,23 @@ import { addDefaultJSONFeedMocks, axiosJSONMock } from "@/test-utils/feeds";
 import ConsultationHTMLPage, {
 	ConsultationHTMLPageProps,
 	getServerSideProps,
-	type Params,
 } from "./[resourceTitleId].page";
 
-const productRoot = "indicators",
+const productRoot = "guidance",
+	statusSlug = "indevelopment",
 	resourceTitleId = "html-content-2",
 	slug = "gid-ta11102",
-	resolvedUrl = `/${productRoot}/indevelopment/${slug}`,
+	resolvedUrl = `/${productRoot}/${statusSlug}/${slug}`,
 	getServerSidePropsContext = {
 		params: {
 			slug,
 		},
 		resolvedUrl,
-		query: { productRoot },
+		query: { productRoot, statusSlug },
 	} as unknown as GetServerSidePropsContext<{ slug: string }>;
 
 jest.mock("@/logger", () => ({
-	logger: { warn: jest.fn() },
+	logger: { info: jest.fn(), warn: jest.fn() },
 }));
 
 type ConsultationHTMLPagePropsContext = GetServerSidePropsContext<{
@@ -64,9 +64,11 @@ describe("[resourceTitleId].page", () => {
 				await getServerSideProps({
 					...getServerSidePropsContext,
 					params: {
-						slug: "gid-ind10244",
+						// slug: "gid-ind10244",
+						slug,
 						resourceTitleId: notFoundResourceTitleId,
 					},
+					query: { productRoot, statusSlug },
 				})
 			).toStrictEqual({
 				notFound: true,
@@ -90,6 +92,8 @@ describe("[resourceTitleId].page", () => {
 						slug: "gid-ind10243",
 						resourceTitleId: "html-content",
 					},
+					resolvedUrl: "/indicators/indevelopment/gid-ind10243",
+					query: { productRoot: "indicators", statusSlug },
 				})
 			).toStrictEqual({
 				notFound: true,
@@ -104,15 +108,16 @@ describe("[resourceTitleId].page", () => {
 	});
 
 	describe("ConsultationHTMLPage", () => {
-		// const slug = "gid-dg10049",
 		const slug = "gid-ta10914",
 			resourceTitleId = "html-content-5",
-			productRoot = "indicators",
-			resolvedUrl = `/${productRoot}/indevelopment/${slug}/consultations/${resourceTitleId}`,
+			productRoot = "guidance",
+			statusSlug = "indevelopment",
+			resolvedUrl = `/${productRoot}/${statusSlug}/${slug}/consultations/${resourceTitleId}`,
 			context: ConsultationHTMLPagePropsContext = {
 				params: { slug, resourceTitleId },
 				query: {
 					productRoot,
+					statusSlug,
 				},
 				resolvedUrl,
 			} as unknown as ConsultationHTMLPagePropsContext;

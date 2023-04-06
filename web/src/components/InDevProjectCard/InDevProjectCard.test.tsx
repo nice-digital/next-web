@@ -1,16 +1,29 @@
 import { render, screen } from "@testing-library/react";
 
-import { ProjectStatus } from "@/feeds/inDev/types";
+import {
+	ProjectDetail,
+	ProjectGroup,
+	ProjectStatus,
+	ProjectType,
+} from "@/feeds/inDev/types";
 
 import { InDevProjectCard } from "./InDevProjectCard";
-
-type Project = Parameters<typeof InDevProjectCard>[0]["project"];
 
 describe("InDevProjectCard", () => {
 	it("should render project title", () => {
 		render(
 			<InDevProjectCard
-				project={{ title: "Test title", reference: "" } as unknown as Project}
+				project={
+					{
+						title: "Test title",
+						reference: "",
+						projectType: ProjectType.NG,
+						projectGroup: ProjectGroup.Guideline,
+						productTypeName: "",
+						status: ProjectStatus.InProgress,
+						publishedDate: "",
+					} as ProjectDetail
+				}
 			/>
 		);
 
@@ -21,7 +34,15 @@ describe("InDevProjectCard", () => {
 		render(
 			<InDevProjectCard
 				project={
-					{ title: "Test title", reference: "GID-ABC123" } as unknown as Project
+					{
+						title: "Test title",
+						reference: "GID-ABC123",
+						projectType: ProjectType.NG,
+						projectGroup: ProjectGroup.Guideline,
+						productTypeName: "",
+						status: ProjectStatus.InProgress,
+						publishedDate: "",
+					} as ProjectDetail
 				}
 			/>
 		);
@@ -35,14 +56,22 @@ describe("InDevProjectCard", () => {
 		render(
 			<InDevProjectCard
 				project={
-					{ title: "Test title", reference: "GID-ABC123" } as unknown as Project
+					{
+						title: "Test title",
+						reference: "GID-ABC123",
+						projectType: ProjectType.NG,
+						projectGroup: ProjectGroup.Guideline,
+						productTypeName: "",
+						status: ProjectStatus.InProgress,
+						publishedDate: "",
+					} as ProjectDetail
 				}
 			/>
 		);
 
 		expect(screen.getByRole("link", { name: "Test title" })).toHaveAttribute(
 			"href",
-			"/indicators/indevelopment/gid-abc123"
+			"/guidance/indevelopment/gid-abc123"
 		);
 	});
 
@@ -54,7 +83,11 @@ describe("InDevProjectCard", () => {
 						title: "Test title",
 						reference: "GID-ABC123",
 						productTypeName: "Test product type",
-					} as unknown as Project
+						projectType: ProjectType.NG,
+						projectGroup: ProjectGroup.Guideline,
+						status: ProjectStatus.InProgress,
+						publishedDate: "",
+					} as ProjectDetail
 				}
 			/>
 		);
@@ -71,8 +104,11 @@ describe("InDevProjectCard", () => {
 						title: "Test title",
 						reference: "GID-ABC123",
 						productTypeName: "Test product type",
-						publishedDate: null,
-					} as unknown as Project
+						publishedDate: "",
+						projectType: ProjectType.NG,
+						projectGroup: ProjectGroup.Guideline,
+						status: ProjectStatus.InProgress,
+					} as ProjectDetail
 				}
 			/>
 		);
@@ -91,7 +127,10 @@ describe("InDevProjectCard", () => {
 						reference: "GID-ABC123",
 						productTypeName: "Test product type",
 						publishedDate: "2020-12-31",
-					} as unknown as Project
+						projectType: ProjectType.NG,
+						projectGroup: ProjectGroup.Guideline,
+						status: ProjectStatus.InProgress,
+					} as ProjectDetail
 				}
 			/>
 		);
@@ -111,7 +150,11 @@ describe("InDevProjectCard", () => {
 					{
 						reference: "GID-ABC123",
 						status: ProjectStatus.Proposed,
-					} as unknown as Project
+						projectType: ProjectType.NG,
+						projectGroup: ProjectGroup.Guideline,
+						productTypeName: "",
+						publishedDate: "",
+					} as ProjectDetail
 				}
 			/>
 		);

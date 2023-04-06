@@ -25,16 +25,19 @@ const downloadPath = `GID-DG10049-final-scope.pdf`,
 	slug = `gid-dg10049`,
 	resourcePDFHref = "/guidance/GID-DG10049/documents/final-scope";
 
-const getServerSidePropsContext = {
-	params: {
-		slug,
-		downloadPath,
-	},
-	query: {
-		productRoot: "guidance",
-	},
-	resolvedUrl: `/guidance/indevelopment/${slug}/downloads/${downloadPath}`,
-} as unknown as GetServerSidePropsContext<Params>;
+const productRoot = "guidance",
+	statusSlug = "indevelopment",
+	getServerSidePropsContext = {
+		params: {
+			slug,
+			downloadPath,
+		},
+		query: {
+			productRoot,
+			statusSlug,
+		},
+		resolvedUrl: `/guidance/indevelopment/${slug}/downloads/${downloadPath}`,
+	} as unknown as GetServerSidePropsContext<Params>;
 
 describe("getServerSideProps", () => {
 	it("should return 404 not found when project is not found", async () => {
@@ -42,6 +45,7 @@ describe("getServerSideProps", () => {
 			await getServerSideProps({
 				...getServerSidePropsContext,
 				params: { slug: "gid-abc123", downloadPath },
+				query: { productRoot, statusSlug },
 			})
 		).toStrictEqual({ notFound: true });
 	});
@@ -142,7 +146,7 @@ describe("getServerSideProps", () => {
 		).toStrictEqual({
 			redirect: {
 				destination:
-					"/indicators/indevelopment/gid-dg10049/documents/html-content",
+					"/guidance/indevelopment/gid-dg10049/documents/html-content",
 				permanent: true,
 			},
 		});

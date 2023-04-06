@@ -1,11 +1,6 @@
 import { waitFor } from "@testing-library/react";
 
-import {
-	ProjectStatus,
-	type Project,
-	ProjectGroup,
-	ProjectType,
-} from "@/feeds/inDev/types";
+import { ProjectStatus, ProjectGroup, ProjectType } from "@/feeds/inDev/types";
 import {
 	getProductDetail,
 	ProductGroup,

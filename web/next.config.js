@@ -107,7 +107,12 @@ const nextConfig = {
 	async rewrites() {
 		return [
 			{
-				// TODO: Use single root folder with rewrites to root guidance, advice, corporate, process and indicators to the same code
+				source:
+					"/:productRoot(indicators|guidance)/:statusSlug(indevelopment|discontinued|awaiting-development|topic-selection)/:path*",
+				destination:
+					"/indicators/indevelopment/:path*?productRoot=:productRoot&statusSlug=:statusSlug",
+			},
+			{
 				source:
 					"/:productRoot(indicators|guidance|advice|process|corporate)/:path*",
 				destination: "/indicators/:path*?productRoot=:productRoot",
