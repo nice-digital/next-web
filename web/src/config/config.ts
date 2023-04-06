@@ -19,6 +19,9 @@ export interface CacheControlConfig {
  * Public run time config, available to both client and server
  */
 export interface PublicConfig {
+	/** The version number of the current build (or Octopus.Release.Number in Octo) */
+	readonly buildNumber: string;
+
 	/** Name of the environment e.g. _dev_ or _test_ */
 	readonly environment: string;
 
