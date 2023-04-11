@@ -159,4 +159,8 @@ const finalConfig = withNodeConfig(
 	)(nextConfig)
 );
 
+// Delete the following properties now we are finished with them or next-js will warn 'root value has an unexpected property xxx - which is not in the list of allowed properties'
+delete finalConfig["nodeConfigServerKey"];
+delete finalConfig["nodeConfigPublicKey"];
+
 module.exports = finalConfig;
