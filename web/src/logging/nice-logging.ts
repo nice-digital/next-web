@@ -27,6 +27,8 @@ export const niceLoggingPinoOptions: LoggerOptions = {
 		NodeEnv: process.env.NODE_ENV,
 		Application: "Next Web",
 		Environment: publicRuntimeConfig.environment,
+		"Properties.NodeVersion": process.version,
+		"Properties.version": publicRuntimeConfig.buildNumber,
 	}),
 	formatters: {
 		level(label, _number) {

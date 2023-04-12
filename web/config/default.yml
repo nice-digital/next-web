@@ -5,6 +5,7 @@
 
 # Public config values are accessible to both client and server-side code:
 public:
+  buildNumber: PLACEHOLDER
   # Name of the environment e.g. dev,test etc, used for logging to ELK
   environment: local
   # The base part of the URL where the website it hosted e.g https://dev.nice.org.uk
