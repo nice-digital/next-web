@@ -71,6 +71,7 @@ export type GetProductListPageOptions = {
 	dateFilterLabel?: string;
 	useFutureDates?: boolean;
 	tableBodyRender: (documents: Document[]) => JSX.Element;
+	searchInputPlaceholder: string;
 } & (
 	| {
 			showDateFilter: true;
@@ -103,6 +104,7 @@ export const getProductListPage =
 		dateFilterLabel,
 		useFutureDates,
 		tableBodyRender,
+		searchInputPlaceholder,
 	}: GetProductListPageOptions): FC<ProductListPageProps> =>
 	({
 		results,
@@ -224,6 +226,7 @@ export const getProductListPage =
 								"rty",
 								"sub",
 							]}
+							searchInputPlaceholder={searchInputPlaceholder}
 						/>
 					</GridItem>
 

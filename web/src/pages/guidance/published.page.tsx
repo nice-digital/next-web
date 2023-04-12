@@ -7,6 +7,7 @@ import {
 	getGetServerSidePropsFunc,
 } from "@/components/ProductListPage/ProductListPage";
 import { ResponsiveDate } from "@/components/ResponsiveDate/ResponsiveDate";
+import { publicRuntimeConfig } from "@/config";
 
 const defaultSortOrder = SortOrder.dateDescending,
 	dateFilterLabel = "Last updated date";
@@ -38,7 +39,7 @@ const tableBodyRender = (documents: Document[]) => (
 						<tr key={id}>
 							<td>
 								<a
-									href={pathAndQuery}
+									href={publicRuntimeConfig.baseURL + pathAndQuery}
 									dangerouslySetInnerHTML={{ __html: title }}
 								/>
 							</td>
@@ -82,6 +83,7 @@ export default getProductListPage({
 	useFutureDates: false,
 	dateFilterLabel,
 	tableBodyRender,
+	searchInputPlaceholder: "E.g. 'diabetes' or 'NG28'",
 });
 
 export const getServerSideProps = getGetServerSidePropsFunc({

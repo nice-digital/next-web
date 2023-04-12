@@ -1,0 +1,1875 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`/indicators/indevelopment/[slug]/documents DocumentsPage should match snapshot for main content 1`] = `
+<body>
+  <div>
+    <nav
+      aria-label="Breadcrumbs"
+      role="navigation"
+    >
+      <ol
+        class="breadcrumbs"
+      >
+        <li
+          class="breadcrumbs__crumb"
+        >
+          <a
+            href="/"
+          >
+            Home
+          </a>
+        </li>
+        <li
+          class="breadcrumbs__crumb"
+        >
+          <a
+            href="/standards-and-indicators"
+          >
+            Standards and Indicators
+          </a>
+        </li>
+        <li
+          class="breadcrumbs__crumb"
+        >
+          <a
+            href="/standards-and-indicators/indicators"
+          >
+            Indicators
+          </a>
+        </li>
+        <li
+          class="breadcrumbs__crumb"
+        >
+          <a
+            href="/indicators/indevelopment"
+          >
+            In development
+          </a>
+        </li>
+        <li
+          class="breadcrumbs__crumb"
+        >
+          <a
+            href="/indicators/indevelopment/gid-dg10049"
+          >
+            GID-DG10049
+          </a>
+        </li>
+        <li
+          class="breadcrumbs__crumb"
+        >
+          <span>
+            Project documents
+          </span>
+        </li>
+      </ol>
+    </nav>
+    <script
+      type="application/ld+json"
+    >
+      {
+  "@context": "http://schema.org",
+  "@type": "BreadcrumbList",
+  "itemListElement": [
+    {
+      "@type": "ListItem",
+      "position": 1,
+      "item": {
+        "@id": "/",
+        "name": "Home"
+      }
+    },
+    {
+      "@type": "ListItem",
+      "position": 2,
+      "item": {
+        "@id": "/standards-and-indicators",
+        "name": "Standards and Indicators"
+      }
+    },
+    {
+      "@type": "ListItem",
+      "position": 3,
+      "item": {
+        "@id": "/standards-and-indicators/indicators",
+        "name": "Indicators"
+      }
+    },
+    {
+      "@type": "ListItem",
+      "position": 4,
+      "item": {
+        "@id": "/indicators/indevelopment",
+        "name": "In development"
+      }
+    },
+    {
+      "@type": "ListItem",
+      "position": 5,
+      "item": {
+        "@id": "/indicators/indevelopment/gid-dg10049",
+        "name": "GID-DG10049"
+      }
+    },
+    {
+      "@type": "ListItem",
+      "position": 6,
+      "item": {
+        "name": "Project documents"
+      }
+    }
+  ]
+}
+    </script>
+    <div
+      class="page-header"
+      id="content-start"
+    >
+      <h1
+        class="page-header__heading page-header__heading--alt"
+      >
+        Automated ankle brachial pressure index measurement devices to detect peripheral arterial disease in people with leg ulcers
+      </h1>
+      <ul
+        class="page-header__metadata"
+      >
+        <li>
+          In development GID-DG10049
+        </li>
+        <li>
+          <span>
+            Expected publication date: 
+          </span>
+          <time
+            datetime="17 May 2023"
+          >
+            17 May 2023
+          </time>
+        </li>
+        <li>
+          <a
+            href="https://www.nice.org.uk/about/what-we-do/our-programmes/nice-guidance/nice-diagnostics-guidance/dt-stakeholder-registration?t=&p=GID-DG10049&returnUrl=/indicators/indevelopment/gid-dg10049"
+          >
+            Register as a stakeholder
+          </a>
+        </li>
+      </ul>
+    </div>
+    <nav
+      class="horizontal-nav"
+    >
+      <ul
+        class="horizontal-nav__list"
+      >
+        <li
+          class="horizontal-nav__item"
+        >
+          <a
+            aria-current="true"
+            class="horizontal-nav__link"
+            href="/indicators/indevelopment/gid-dg10049"
+          >
+            Project information
+          </a>
+        </li>
+        <li
+          class="horizontal-nav__item"
+        >
+          <a
+            aria-current="false"
+            class="horizontal-nav__link"
+            href="/indicators/indevelopment/gid-dg10049/documents"
+          >
+            Project documents
+          </a>
+        </li>
+      </ul>
+    </nav>
+    <div
+      class="grid grid--loose"
+    >
+      <section
+        data-g="12 md:12 lg:12"
+      >
+        <div
+          class="grid grid--rev grid--loose"
+        >
+          <div
+            data-g="12 md:4 lg:3"
+          >
+            <nav
+              aria-labelledby="on-this-page"
+              class="wrapper"
+            >
+              <h2
+                class="heading"
+                id="on-this-page"
+              >
+                On this page
+              </h2>
+              <ol
+                aria-label="Jump links to sections on this page"
+                class="list"
+              >
+                <li>
+                  <a
+                    class=""
+                    href="#diagnostics-consultation"
+                  >
+                    Diagnostics consultation
+                  </a>
+                </li>
+                <li>
+                  <a
+                    class=""
+                    href="#expected-publication"
+                  >
+                    Expected publication
+                  </a>
+                </li>
+                <li>
+                  <a
+                    class=""
+                    href="#launch"
+                  >
+                    Launch
+                  </a>
+                </li>
+                <li>
+                  <a
+                    class=""
+                    href="#scope-published"
+                  >
+                    Scope published
+                  </a>
+                </li>
+                <li>
+                  <a
+                    class="activeHeading"
+                    href="#specialist-committee-member-recruitment"
+                  >
+                    Specialist committee member recruitment
+                  </a>
+                </li>
+              </ol>
+            </nav>
+          </div>
+          <div
+            data-g="12 md:8 lg:9"
+          >
+            <h2
+              class="title"
+            >
+              Project documents
+            </h2>
+            <p>
+              A list of downloadable documents created during development.
+            </p>
+            <section
+              aria-labelledby="diagnostics-consultation"
+            >
+              <h3
+                id="diagnostics-consultation"
+              >
+                Diagnostics consultation
+              </h3>
+              <section>
+                <h4
+                  class="visually-hidden"
+                >
+                  Diagnostics consultation
+                </h4>
+                <ul
+                  class="list list--unstyled"
+                >
+                  <li>
+                    <article
+                      class="card"
+                    >
+                      <header
+                        class="card__header"
+                      >
+                        <p
+                          class="card__heading"
+                        >
+                          <a
+                            href="/indicators/indevelopment/gid-dg10049/documents/html-content"
+                          >
+                            Diagnostics consultation
+                          </a>
+                        </p>
+                      </header>
+                      <dl
+                        class="card__metadata"
+                      >
+                        <div
+                          class="card__metadatum"
+                        >
+                          <dt
+                            class="visually-hidden"
+                          >
+                            Type
+                          </dt>
+                          <dd>
+                            Diagnostics consultation
+                          </dd>
+                        </div>
+                        <div
+                          class="card__metadatum"
+                        >
+                          <dt
+                            class="visually-hidden"
+                          >
+                            Date
+                          </dt>
+                          <dd>
+                            <time
+                              datetime="2022-12-09"
+                            >
+                              9 December 2022
+                            </time>
+                          </dd>
+                        </div>
+                      </dl>
+                    </article>
+                  </li>
+                  <li>
+                    <article
+                      class="card"
+                    >
+                      <header
+                        class="card__header"
+                      >
+                        <p
+                          class="card__heading"
+                        >
+                          <a
+                            href="/indicators/indevelopment/gid-dg10049/downloads/gid-dg10049-514.pdf"
+                          >
+                            Diagnostics consultation document (PDF)
+                             
+                            (
+                            PDF
+                            ,
+                             
+                            283 kB
+                            )
+                          </a>
+                        </p>
+                      </header>
+                      <dl
+                        class="card__metadata"
+                      >
+                        <div
+                          class="card__metadatum"
+                        >
+                          <dt
+                            class="visually-hidden"
+                          >
+                            Type
+                          </dt>
+                          <dd>
+                            Diagnostics consultation
+                          </dd>
+                        </div>
+                        <div
+                          class="card__metadatum"
+                        >
+                          <dt
+                            class="visually-hidden"
+                          >
+                            Date
+                          </dt>
+                          <dd>
+                            <time
+                              datetime="2022-12-09"
+                            >
+                              9 December 2022
+                            </time>
+                          </dd>
+                        </div>
+                        <div
+                          class="card__metadatum"
+                        >
+                          <dt
+                            class="visually-hidden"
+                          >
+                            File type
+                          </dt>
+                          <dd>
+                            PDF
+                          </dd>
+                        </div>
+                        <div
+                          class="card__metadatum"
+                        >
+                          <dt
+                            class="visually-hidden"
+                          >
+                            File size
+                          </dt>
+                          <dd>
+                            283 kB
+                          </dd>
+                        </div>
+                      </dl>
+                    </article>
+                  </li>
+                  <li>
+                    <article
+                      class="card"
+                    >
+                      <header
+                        class="card__header"
+                      >
+                        <p
+                          class="card__heading"
+                        >
+                          <a
+                            href="/consultations/1567/1"
+                          >
+                            Diagnostics consultation document (Online commenting)
+                             
+                            (
+                            Word
+                            ,
+                             
+                            62 kB
+                            )
+                          </a>
+                        </p>
+                      </header>
+                      <dl
+                        class="card__metadata"
+                      >
+                        <div
+                          class="card__metadatum"
+                        >
+                          <dt
+                            class="visually-hidden"
+                          >
+                            Type
+                          </dt>
+                          <dd>
+                            Diagnostics consultation
+                          </dd>
+                        </div>
+                        <div
+                          class="card__metadatum"
+                        >
+                          <dt
+                            class="visually-hidden"
+                          >
+                            Date
+                          </dt>
+                          <dd>
+                            <time
+                              datetime="2022-12-09"
+                            >
+                              9 December 2022
+                            </time>
+                          </dd>
+                        </div>
+                        <div
+                          class="card__metadatum"
+                        >
+                          <dt
+                            class="visually-hidden"
+                          >
+                            File type
+                          </dt>
+                          <dd>
+                            Word
+                          </dd>
+                        </div>
+                        <div
+                          class="card__metadatum"
+                        >
+                          <dt
+                            class="visually-hidden"
+                          >
+                            File size
+                          </dt>
+                          <dd>
+                            62 kB
+                          </dd>
+                        </div>
+                      </dl>
+                    </article>
+                  </li>
+                  <li>
+                    <article
+                      class="card"
+                    >
+                      <header
+                        class="card__header"
+                      >
+                        <p
+                          class="card__heading"
+                        >
+                          <a
+                            href="/indicators/indevelopment/gid-dg10049/downloads/gid-dg10049-diagnostics-assessment-report.pdf"
+                          >
+                            Diagnostics assessment report
+                             
+                            (
+                            PDF
+                            ,
+                             
+                            3.7 MB
+                            )
+                          </a>
+                        </p>
+                      </header>
+                      <dl
+                        class="card__metadata"
+                      >
+                        <div
+                          class="card__metadatum"
+                        >
+                          <dt
+                            class="visually-hidden"
+                          >
+                            Type
+                          </dt>
+                          <dd>
+                            Diagnostics consultation
+                          </dd>
+                        </div>
+                        <div
+                          class="card__metadatum"
+                        >
+                          <dt
+                            class="visually-hidden"
+                          >
+                            Date
+                          </dt>
+                          <dd>
+                            <time
+                              datetime="2022-12-09"
+                            >
+                              9 December 2022
+                            </time>
+                          </dd>
+                        </div>
+                        <div
+                          class="card__metadatum"
+                        >
+                          <dt
+                            class="visually-hidden"
+                          >
+                            File type
+                          </dt>
+                          <dd>
+                            PDF
+                          </dd>
+                        </div>
+                        <div
+                          class="card__metadatum"
+                        >
+                          <dt
+                            class="visually-hidden"
+                          >
+                            File size
+                          </dt>
+                          <dd>
+                            3.7 MB
+                          </dd>
+                        </div>
+                      </dl>
+                    </article>
+                  </li>
+                  <li>
+                    <article
+                      class="card"
+                    >
+                      <header
+                        class="card__header"
+                      >
+                        <p
+                          class="card__heading"
+                        >
+                          <a
+                            href="/indicators/indevelopment/gid-dg10049/downloads/gid-dg10049-overview.pdf"
+                          >
+                            Overview
+                             
+                            (
+                            PDF
+                            ,
+                             
+                            602 kB
+                            )
+                          </a>
+                        </p>
+                      </header>
+                      <dl
+                        class="card__metadata"
+                      >
+                        <div
+                          class="card__metadatum"
+                        >
+                          <dt
+                            class="visually-hidden"
+                          >
+                            Type
+                          </dt>
+                          <dd>
+                            Diagnostics consultation
+                          </dd>
+                        </div>
+                        <div
+                          class="card__metadatum"
+                        >
+                          <dt
+                            class="visually-hidden"
+                          >
+                            Date
+                          </dt>
+                          <dd>
+                            <time
+                              datetime="2022-12-09"
+                            >
+                              9 December 2022
+                            </time>
+                          </dd>
+                        </div>
+                        <div
+                          class="card__metadatum"
+                        >
+                          <dt
+                            class="visually-hidden"
+                          >
+                            File type
+                          </dt>
+                          <dd>
+                            PDF
+                          </dd>
+                        </div>
+                        <div
+                          class="card__metadatum"
+                        >
+                          <dt
+                            class="visually-hidden"
+                          >
+                            File size
+                          </dt>
+                          <dd>
+                            602 kB
+                          </dd>
+                        </div>
+                      </dl>
+                    </article>
+                  </li>
+                  <li>
+                    <article
+                      class="card"
+                    >
+                      <header
+                        class="card__header"
+                      >
+                        <p
+                          class="card__heading"
+                        >
+                          <a
+                            href="/indicators/indevelopment/gid-dg10049/downloads/gid-dg10049-d-a-r-comments-table-and-e-a-g-response.pdf"
+                          >
+                            DAR Comments table and EAG response
+                             
+                            (
+                            PDF
+                            ,
+                             
+                            484 kB
+                            )
+                          </a>
+                        </p>
+                      </header>
+                      <dl
+                        class="card__metadata"
+                      >
+                        <div
+                          class="card__metadatum"
+                        >
+                          <dt
+                            class="visually-hidden"
+                          >
+                            Type
+                          </dt>
+                          <dd>
+                            Diagnostics consultation
+                          </dd>
+                        </div>
+                        <div
+                          class="card__metadatum"
+                        >
+                          <dt
+                            class="visually-hidden"
+                          >
+                            Date
+                          </dt>
+                          <dd>
+                            <time
+                              datetime="2022-12-09"
+                            >
+                              9 December 2022
+                            </time>
+                          </dd>
+                        </div>
+                        <div
+                          class="card__metadatum"
+                        >
+                          <dt
+                            class="visually-hidden"
+                          >
+                            File type
+                          </dt>
+                          <dd>
+                            PDF
+                          </dd>
+                        </div>
+                        <div
+                          class="card__metadatum"
+                        >
+                          <dt
+                            class="visually-hidden"
+                          >
+                            File size
+                          </dt>
+                          <dd>
+                            484 kB
+                          </dd>
+                        </div>
+                      </dl>
+                    </article>
+                  </li>
+                  <li>
+                    <article
+                      class="card"
+                    >
+                      <header
+                        class="card__header"
+                      >
+                        <p
+                          class="card__heading"
+                        >
+                          <a
+                            href="/indicators/indevelopment/gid-dg10049/downloads/gid-dg10049-d-a-r-addendum.pdf"
+                          >
+                            DAR Addendum
+                             
+                            (
+                            PDF
+                            ,
+                             
+                            573 kB
+                            )
+                          </a>
+                        </p>
+                      </header>
+                      <dl
+                        class="card__metadata"
+                      >
+                        <div
+                          class="card__metadatum"
+                        >
+                          <dt
+                            class="visually-hidden"
+                          >
+                            Type
+                          </dt>
+                          <dd>
+                            Diagnostics consultation
+                          </dd>
+                        </div>
+                        <div
+                          class="card__metadatum"
+                        >
+                          <dt
+                            class="visually-hidden"
+                          >
+                            Date
+                          </dt>
+                          <dd>
+                            <time
+                              datetime="2022-12-09"
+                            >
+                              9 December 2022
+                            </time>
+                          </dd>
+                        </div>
+                        <div
+                          class="card__metadatum"
+                        >
+                          <dt
+                            class="visually-hidden"
+                          >
+                            File type
+                          </dt>
+                          <dd>
+                            PDF
+                          </dd>
+                        </div>
+                        <div
+                          class="card__metadatum"
+                        >
+                          <dt
+                            class="visually-hidden"
+                          >
+                            File size
+                          </dt>
+                          <dd>
+                            573 kB
+                          </dd>
+                        </div>
+                      </dl>
+                    </article>
+                  </li>
+                  <li>
+                    <article
+                      class="card"
+                    >
+                      <header
+                        class="card__header"
+                      >
+                        <p
+                          class="card__heading"
+                        >
+                          <a
+                            href="/indicators/indevelopment/gid-dg10049/downloads/gid-dg10049-d-a-r-erratum.pdf"
+                          >
+                            DAR Erratum
+                             
+                            (
+                            PDF
+                            ,
+                             
+                            260 kB
+                            )
+                          </a>
+                        </p>
+                      </header>
+                      <dl
+                        class="card__metadata"
+                      >
+                        <div
+                          class="card__metadatum"
+                        >
+                          <dt
+                            class="visually-hidden"
+                          >
+                            Type
+                          </dt>
+                          <dd>
+                            Diagnostics consultation
+                          </dd>
+                        </div>
+                        <div
+                          class="card__metadatum"
+                        >
+                          <dt
+                            class="visually-hidden"
+                          >
+                            Date
+                          </dt>
+                          <dd>
+                            <time
+                              datetime="2022-12-09"
+                            >
+                              9 December 2022
+                            </time>
+                          </dd>
+                        </div>
+                        <div
+                          class="card__metadatum"
+                        >
+                          <dt
+                            class="visually-hidden"
+                          >
+                            File type
+                          </dt>
+                          <dd>
+                            PDF
+                          </dd>
+                        </div>
+                        <div
+                          class="card__metadatum"
+                        >
+                          <dt
+                            class="visually-hidden"
+                          >
+                            File size
+                          </dt>
+                          <dd>
+                            260 kB
+                          </dd>
+                        </div>
+                      </dl>
+                    </article>
+                  </li>
+                </ul>
+              </section>
+            </section>
+            <section
+              aria-labelledby="expected-publication"
+            >
+              <h3
+                id="expected-publication"
+              >
+                Expected publication
+              </h3>
+              <section>
+                <h4
+                  class="visually-hidden"
+                >
+                  Expected publication
+                </h4>
+                <ul
+                  class="list list--unstyled"
+                >
+                  <li>
+                    <article
+                      class="card"
+                    >
+                      <header
+                        class="card__header"
+                      >
+                        <p
+                          class="card__heading"
+                        >
+                          <a
+                            href="/indicators/indevelopment/gid-dg10049/documents/html-content-5"
+                          >
+                            Expected publication
+                          </a>
+                        </p>
+                      </header>
+                      <dl
+                        class="card__metadata"
+                      >
+                        <div
+                          class="card__metadatum"
+                        >
+                          <dt
+                            class="visually-hidden"
+                          >
+                            Type
+                          </dt>
+                          <dd>
+                            Expected publication
+                          </dd>
+                        </div>
+                      </dl>
+                    </article>
+                  </li>
+                </ul>
+              </section>
+            </section>
+            <section
+              aria-labelledby="launch"
+            >
+              <h3
+                id="launch"
+              >
+                Launch
+              </h3>
+              <section>
+                <h4
+                  class="visually-hidden"
+                >
+                  Launch
+                </h4>
+                <ul
+                  class="list list--unstyled"
+                >
+                  <li>
+                    <article
+                      class="card"
+                    >
+                      <header
+                        class="card__header"
+                      >
+                        <p
+                          class="card__heading"
+                        >
+                          <a
+                            href="/indicators/indevelopment/gid-dg10049/documents/html-content-2"
+                          >
+                            Launch
+                          </a>
+                        </p>
+                      </header>
+                      <dl
+                        class="card__metadata"
+                      >
+                        <div
+                          class="card__metadatum"
+                        >
+                          <dt
+                            class="visually-hidden"
+                          >
+                            Type
+                          </dt>
+                          <dd>
+                            Launch
+                          </dd>
+                        </div>
+                      </dl>
+                    </article>
+                  </li>
+                  <li>
+                    <article
+                      class="card"
+                    >
+                      <header
+                        class="card__header"
+                      >
+                        <p
+                          class="card__heading"
+                        >
+                          <a
+                            href="/indicators/indevelopment/gid-dg10049/downloads/gid-dg10049-topic-description.pdf"
+                          >
+                            Topic description
+                             
+                            (
+                            PDF
+                            ,
+                             
+                            88 kB
+                            )
+                          </a>
+                        </p>
+                      </header>
+                      <dl
+                        class="card__metadata"
+                      >
+                        <div
+                          class="card__metadatum"
+                        >
+                          <dt
+                            class="visually-hidden"
+                          >
+                            Type
+                          </dt>
+                          <dd>
+                            Launch
+                          </dd>
+                        </div>
+                        <div
+                          class="card__metadatum"
+                        >
+                          <dt
+                            class="visually-hidden"
+                          >
+                            Date
+                          </dt>
+                          <dd>
+                            <time
+                              datetime="2021-12-20"
+                            >
+                              20 December 2021
+                            </time>
+                          </dd>
+                        </div>
+                        <div
+                          class="card__metadatum"
+                        >
+                          <dt
+                            class="visually-hidden"
+                          >
+                            File type
+                          </dt>
+                          <dd>
+                            PDF
+                          </dd>
+                        </div>
+                        <div
+                          class="card__metadatum"
+                        >
+                          <dt
+                            class="visually-hidden"
+                          >
+                            File size
+                          </dt>
+                          <dd>
+                            88 kB
+                          </dd>
+                        </div>
+                      </dl>
+                    </article>
+                  </li>
+                </ul>
+              </section>
+            </section>
+            <section
+              aria-labelledby="scope-published"
+            >
+              <h3
+                id="scope-published"
+              >
+                Scope published
+              </h3>
+              <section>
+                <h4
+                  class="visually-hidden"
+                >
+                  Scope published
+                </h4>
+                <ul
+                  class="list list--unstyled"
+                >
+                  <li>
+                    <article
+                      class="card"
+                    >
+                      <header
+                        class="card__header"
+                      >
+                        <p
+                          class="card__heading"
+                        >
+                          <a
+                            href="/indicators/indevelopment/gid-dg10049/documents/html-content-3"
+                          >
+                            Scope published
+                          </a>
+                        </p>
+                      </header>
+                      <dl
+                        class="card__metadata"
+                      >
+                        <div
+                          class="card__metadatum"
+                        >
+                          <dt
+                            class="visually-hidden"
+                          >
+                            Type
+                          </dt>
+                          <dd>
+                            Scope published
+                          </dd>
+                        </div>
+                      </dl>
+                    </article>
+                  </li>
+                  <li>
+                    <article
+                      class="card"
+                    >
+                      <header
+                        class="card__header"
+                      >
+                        <p
+                          class="card__heading"
+                        >
+                          <a
+                            href="/indicators/indevelopment/gid-dg10049/downloads/gid-dg10049-final-scope.pdf"
+                          >
+                            Final scope
+                             
+                            (
+                            PDF
+                            ,
+                             
+                            414 kB
+                            )
+                          </a>
+                        </p>
+                      </header>
+                      <dl
+                        class="card__metadata"
+                      >
+                        <div
+                          class="card__metadatum"
+                        >
+                          <dt
+                            class="visually-hidden"
+                          >
+                            Type
+                          </dt>
+                          <dd>
+                            Scope published
+                          </dd>
+                        </div>
+                        <div
+                          class="card__metadatum"
+                        >
+                          <dt
+                            class="visually-hidden"
+                          >
+                            Date
+                          </dt>
+                          <dd>
+                            <time
+                              datetime="2022-04-13"
+                            >
+                              13 April 2022
+                            </time>
+                          </dd>
+                        </div>
+                        <div
+                          class="card__metadatum"
+                        >
+                          <dt
+                            class="visually-hidden"
+                          >
+                            File type
+                          </dt>
+                          <dd>
+                            PDF
+                          </dd>
+                        </div>
+                        <div
+                          class="card__metadatum"
+                        >
+                          <dt
+                            class="visually-hidden"
+                          >
+                            File size
+                          </dt>
+                          <dd>
+                            414 kB
+                          </dd>
+                        </div>
+                      </dl>
+                    </article>
+                  </li>
+                  <li>
+                    <article
+                      class="card"
+                    >
+                      <header
+                        class="card__header"
+                      >
+                        <p
+                          class="card__heading"
+                        >
+                          <a
+                            href="/indicators/indevelopment/gid-dg10049/downloads/gid-dg10049-final-protocol.pdf"
+                          >
+                            Final protocol
+                             
+                            (
+                            PDF
+                            ,
+                             
+                            523 kB
+                            )
+                          </a>
+                        </p>
+                      </header>
+                      <dl
+                        class="card__metadata"
+                      >
+                        <div
+                          class="card__metadatum"
+                        >
+                          <dt
+                            class="visually-hidden"
+                          >
+                            Type
+                          </dt>
+                          <dd>
+                            Scope published
+                          </dd>
+                        </div>
+                        <div
+                          class="card__metadatum"
+                        >
+                          <dt
+                            class="visually-hidden"
+                          >
+                            Date
+                          </dt>
+                          <dd>
+                            <time
+                              datetime="2022-04-13"
+                            >
+                              13 April 2022
+                            </time>
+                          </dd>
+                        </div>
+                        <div
+                          class="card__metadatum"
+                        >
+                          <dt
+                            class="visually-hidden"
+                          >
+                            File type
+                          </dt>
+                          <dd>
+                            PDF
+                          </dd>
+                        </div>
+                        <div
+                          class="card__metadatum"
+                        >
+                          <dt
+                            class="visually-hidden"
+                          >
+                            File size
+                          </dt>
+                          <dd>
+                            523 kB
+                          </dd>
+                        </div>
+                      </dl>
+                    </article>
+                  </li>
+                  <li>
+                    <article
+                      class="card"
+                    >
+                      <header
+                        class="card__header"
+                      >
+                        <p
+                          class="card__heading"
+                        >
+                          <a
+                            href="/indicators/indevelopment/gid-dg10049/downloads/gid-dg10049-equality-impact-assessment.pdf"
+                          >
+                            Equality impact assessment
+                             
+                            (
+                            PDF
+                            ,
+                             
+                            150 kB
+                            )
+                          </a>
+                        </p>
+                      </header>
+                      <dl
+                        class="card__metadata"
+                      >
+                        <div
+                          class="card__metadatum"
+                        >
+                          <dt
+                            class="visually-hidden"
+                          >
+                            Type
+                          </dt>
+                          <dd>
+                            Scope published
+                          </dd>
+                        </div>
+                        <div
+                          class="card__metadatum"
+                        >
+                          <dt
+                            class="visually-hidden"
+                          >
+                            Date
+                          </dt>
+                          <dd>
+                            <time
+                              datetime="2022-04-13"
+                            >
+                              13 April 2022
+                            </time>
+                          </dd>
+                        </div>
+                        <div
+                          class="card__metadatum"
+                        >
+                          <dt
+                            class="visually-hidden"
+                          >
+                            File type
+                          </dt>
+                          <dd>
+                            PDF
+                          </dd>
+                        </div>
+                        <div
+                          class="card__metadatum"
+                        >
+                          <dt
+                            class="visually-hidden"
+                          >
+                            File size
+                          </dt>
+                          <dd>
+                            150 kB
+                          </dd>
+                        </div>
+                      </dl>
+                    </article>
+                  </li>
+                  <li>
+                    <article
+                      class="card"
+                    >
+                      <header
+                        class="card__header"
+                      >
+                        <p
+                          class="card__heading"
+                        >
+                          <a
+                            href="/indicators/indevelopment/gid-dg10049/downloads/gid-dg10049-specialist-committee-members.pdf"
+                          >
+                            Specialist committee members
+                             
+                            (
+                            PDF
+                            ,
+                             
+                            116 kB
+                            )
+                          </a>
+                        </p>
+                      </header>
+                      <dl
+                        class="card__metadata"
+                      >
+                        <div
+                          class="card__metadatum"
+                        >
+                          <dt
+                            class="visually-hidden"
+                          >
+                            Type
+                          </dt>
+                          <dd>
+                            Scope published
+                          </dd>
+                        </div>
+                        <div
+                          class="card__metadatum"
+                        >
+                          <dt
+                            class="visually-hidden"
+                          >
+                            Date
+                          </dt>
+                          <dd>
+                            <time
+                              datetime="2022-04-13"
+                            >
+                              13 April 2022
+                            </time>
+                          </dd>
+                        </div>
+                        <div
+                          class="card__metadatum"
+                        >
+                          <dt
+                            class="visually-hidden"
+                          >
+                            File type
+                          </dt>
+                          <dd>
+                            PDF
+                          </dd>
+                        </div>
+                        <div
+                          class="card__metadatum"
+                        >
+                          <dt
+                            class="visually-hidden"
+                          >
+                            File size
+                          </dt>
+                          <dd>
+                            116 kB
+                          </dd>
+                        </div>
+                      </dl>
+                    </article>
+                  </li>
+                  <li>
+                    <article
+                      class="card"
+                    >
+                      <header
+                        class="card__header"
+                      >
+                        <p
+                          class="card__heading"
+                        >
+                          <a
+                            href="/indicators/indevelopment/gid-dg10049/downloads/gid-dg10049-stakeholder-list.pdf"
+                          >
+                            Stakeholder list
+                             
+                            (
+                            PDF
+                            ,
+                             
+                            114 kB
+                            )
+                          </a>
+                        </p>
+                      </header>
+                      <dl
+                        class="card__metadata"
+                      >
+                        <div
+                          class="card__metadatum"
+                        >
+                          <dt
+                            class="visually-hidden"
+                          >
+                            Type
+                          </dt>
+                          <dd>
+                            Scope published
+                          </dd>
+                        </div>
+                        <div
+                          class="card__metadatum"
+                        >
+                          <dt
+                            class="visually-hidden"
+                          >
+                            Date
+                          </dt>
+                          <dd>
+                            <time
+                              datetime="2022-10-13"
+                            >
+                              13 October 2022
+                            </time>
+                          </dd>
+                        </div>
+                        <div
+                          class="card__metadatum"
+                        >
+                          <dt
+                            class="visually-hidden"
+                          >
+                            File type
+                          </dt>
+                          <dd>
+                            PDF
+                          </dd>
+                        </div>
+                        <div
+                          class="card__metadatum"
+                        >
+                          <dt
+                            class="visually-hidden"
+                          >
+                            File size
+                          </dt>
+                          <dd>
+                            114 kB
+                          </dd>
+                        </div>
+                      </dl>
+                    </article>
+                  </li>
+                </ul>
+              </section>
+            </section>
+            <section
+              aria-labelledby="specialist-committee-member-recruitment"
+            >
+              <h3
+                id="specialist-committee-member-recruitment"
+              >
+                Specialist committee member recruitment
+              </h3>
+              <section>
+                <h4
+                  class="visually-hidden"
+                >
+                  Specialist committee member recruitment
+                </h4>
+                <ul
+                  class="list list--unstyled"
+                >
+                  <li>
+                    <article
+                      class="card"
+                    >
+                      <header
+                        class="card__header"
+                      >
+                        <p
+                          class="card__heading"
+                        >
+                          <a
+                            href="/indicators/indevelopment/gid-dg10049/documents/html-content-4"
+                          >
+                            Specialist committee member recruitment
+                          </a>
+                        </p>
+                      </header>
+                      <dl
+                        class="card__metadata"
+                      >
+                        <div
+                          class="card__metadatum"
+                        >
+                          <dt
+                            class="visually-hidden"
+                          >
+                            Type
+                          </dt>
+                          <dd>
+                            Specialist committee member recruitment
+                          </dd>
+                        </div>
+                      </dl>
+                    </article>
+                  </li>
+                </ul>
+              </section>
+            </section>
+          </div>
+        </div>
+      </section>
+    </div>
+  </div>
+</body>
+`;
+
+exports[`/indicators/indevelopment/[slug]/documents getServerSideProps should return a correct props 1`] = `
+Object {
+  "props": Object {
+    "consultationUrls": Array [],
+    "indevScheduleItems": Array [
+      Object {
+        "additionalInfo": "2",
+        "additionalInfoLabel": "Meeting number",
+        "column1": "Committee meeting: 2",
+        "column2": "16 February 2023",
+        "eTag": null,
+        "hidden": false,
+        "links": Object {
+          "self": Array [
+            Object {},
+          ],
+        },
+      },
+      Object {
+        "additionalInfo": null,
+        "additionalInfoLabel": null,
+        "column1": "Expected publication",
+        "column2": "17 May 2023",
+        "eTag": null,
+        "hidden": false,
+        "links": Object {
+          "self": Array [
+            Object {},
+          ],
+        },
+      },
+    ],
+    "indevStakeholderRegistration": Array [
+      Object {
+        "href": "https://www.nice.org.uk/about/what-we-do/our-programmes/nice-guidance/nice-diagnostics-guidance/dt-stakeholder-registration",
+      },
+    ],
+    "project": Object {
+      "groups": Array [
+        Object {
+          "subGroups": Array [
+            Object {
+              "resourceLinks": Array [
+                Object {
+                  "date": "2022-12-09T08:00:00",
+                  "fileSize": null,
+                  "fileTypeName": null,
+                  "href": "/indicators/indevelopment/gid-dg10049/documents/html-content",
+                  "title": "Diagnostics consultation",
+                  "type": "Diagnostics consultation",
+                },
+                Object {
+                  "date": "2022-12-09T00:00:00",
+                  "fileSize": 282746,
+                  "fileTypeName": "PDF",
+                  "href": "/indicators/indevelopment/gid-dg10049/downloads/gid-dg10049-514.pdf",
+                  "title": "Diagnostics consultation document (PDF)",
+                  "type": "Diagnostics consultation",
+                },
+                Object {
+                  "date": "2022-12-09T00:00:00",
+                  "fileSize": 62456,
+                  "fileTypeName": "Word",
+                  "href": "/consultations/1567/1",
+                  "title": "Diagnostics consultation document (Online commenting)",
+                  "type": "Diagnostics consultation",
+                },
+                Object {
+                  "date": "2022-12-09T00:00:00",
+                  "fileSize": 3693733,
+                  "fileTypeName": "PDF",
+                  "href": "/indicators/indevelopment/gid-dg10049/downloads/gid-dg10049-diagnostics-assessment-report.pdf",
+                  "title": "Diagnostics assessment report",
+                  "type": "Diagnostics consultation",
+                },
+                Object {
+                  "date": "2022-12-09T00:00:00",
+                  "fileSize": 602181,
+                  "fileTypeName": "PDF",
+                  "href": "/indicators/indevelopment/gid-dg10049/downloads/gid-dg10049-overview.pdf",
+                  "title": "Overview",
+                  "type": "Diagnostics consultation",
+                },
+                Object {
+                  "date": "2022-12-09T00:00:00",
+                  "fileSize": 483618,
+                  "fileTypeName": "PDF",
+                  "href": "/indicators/indevelopment/gid-dg10049/downloads/gid-dg10049-d-a-r-comments-table-and-e-a-g-response.pdf",
+                  "title": "DAR Comments table and EAG response",
+                  "type": "Diagnostics consultation",
+                },
+                Object {
+                  "date": "2022-12-09T00:00:00",
+                  "fileSize": 573126,
+                  "fileTypeName": "PDF",
+                  "href": "/indicators/indevelopment/gid-dg10049/downloads/gid-dg10049-d-a-r-addendum.pdf",
+                  "title": "DAR Addendum",
+                  "type": "Diagnostics consultation",
+                },
+                Object {
+                  "date": "2022-12-09T00:00:00",
+                  "fileSize": 259803,
+                  "fileTypeName": "PDF",
+                  "href": "/indicators/indevelopment/gid-dg10049/downloads/gid-dg10049-d-a-r-erratum.pdf",
+                  "title": "DAR Erratum",
+                  "type": "Diagnostics consultation",
+                },
+              ],
+              "title": "Diagnostics consultation",
+            },
+          ],
+          "title": "Diagnostics consultation",
+        },
+        Object {
+          "subGroups": Array [
+            Object {
+              "resourceLinks": Array [
+                Object {
+                  "date": null,
+                  "fileSize": null,
+                  "fileTypeName": null,
+                  "href": "/indicators/indevelopment/gid-dg10049/documents/html-content-5",
+                  "title": "Expected publication",
+                  "type": "Expected publication",
+                },
+              ],
+              "title": "Expected publication",
+            },
+          ],
+          "title": "Expected publication",
+        },
+        Object {
+          "subGroups": Array [
+            Object {
+              "resourceLinks": Array [
+                Object {
+                  "date": null,
+                  "fileSize": null,
+                  "fileTypeName": null,
+                  "href": "/indicators/indevelopment/gid-dg10049/documents/html-content-2",
+                  "title": "Launch",
+                  "type": "Launch",
+                },
+                Object {
+                  "date": "2021-12-20T00:00:00",
+                  "fileSize": 87561,
+                  "fileTypeName": "PDF",
+                  "href": "/indicators/indevelopment/gid-dg10049/downloads/gid-dg10049-topic-description.pdf",
+                  "title": "Topic description",
+                  "type": "Launch",
+                },
+              ],
+              "title": "Launch",
+            },
+          ],
+          "title": "Launch",
+        },
+        Object {
+          "subGroups": Array [
+            Object {
+              "resourceLinks": Array [
+                Object {
+                  "date": null,
+                  "fileSize": null,
+                  "fileTypeName": null,
+                  "href": "/indicators/indevelopment/gid-dg10049/documents/html-content-3",
+                  "title": "Scope published",
+                  "type": "Scope published",
+                },
+                Object {
+                  "date": "2022-04-13T00:00:00",
+                  "fileSize": 414199,
+                  "fileTypeName": "PDF",
+                  "href": "/indicators/indevelopment/gid-dg10049/downloads/gid-dg10049-final-scope.pdf",
+                  "title": "Final scope",
+                  "type": "Scope published",
+                },
+                Object {
+                  "date": "2022-04-13T00:00:00",
+                  "fileSize": 523323,
+                  "fileTypeName": "PDF",
+                  "href": "/indicators/indevelopment/gid-dg10049/downloads/gid-dg10049-final-protocol.pdf",
+                  "title": "Final protocol",
+                  "type": "Scope published",
+                },
+                Object {
+                  "date": "2022-04-13T00:00:00",
+                  "fileSize": 150397,
+                  "fileTypeName": "PDF",
+                  "href": "/indicators/indevelopment/gid-dg10049/downloads/gid-dg10049-equality-impact-assessment.pdf",
+                  "title": "Equality impact assessment",
+                  "type": "Scope published",
+                },
+                Object {
+                  "date": "2022-04-13T00:00:00",
+                  "fileSize": 116494,
+                  "fileTypeName": "PDF",
+                  "href": "/indicators/indevelopment/gid-dg10049/downloads/gid-dg10049-specialist-committee-members.pdf",
+                  "title": "Specialist committee members",
+                  "type": "Scope published",
+                },
+                Object {
+                  "date": "2022-10-13T00:00:00",
+                  "fileSize": 114419,
+                  "fileTypeName": "PDF",
+                  "href": "/indicators/indevelopment/gid-dg10049/downloads/gid-dg10049-stakeholder-list.pdf",
+                  "title": "Stakeholder list",
+                  "type": "Scope published",
+                },
+              ],
+              "title": "Scope published",
+            },
+          ],
+          "title": "Scope published",
+        },
+        Object {
+          "subGroups": Array [
+            Object {
+              "resourceLinks": Array [
+                Object {
+                  "date": null,
+                  "fileSize": null,
+                  "fileTypeName": null,
+                  "href": "/indicators/indevelopment/gid-dg10049/documents/html-content-4",
+                  "title": "Specialist committee member recruitment",
+                  "type": "Specialist committee member recruitment",
+                },
+              ],
+              "title": "Specialist committee member recruitment",
+            },
+          ],
+          "title": "Specialist committee member recruitment",
+        },
+      ],
+      "projectType": "DG",
+      "reference": "GID-DG10049",
+      "status": "InProgress",
+      "title": "Automated ankle brachial pressure index measurement devices to detect peripheral arterial disease in people with leg ulcers",
+    },
+    "projectPath": "/indicators/indevelopment/gid-dg10049",
+  },
+}
+`;

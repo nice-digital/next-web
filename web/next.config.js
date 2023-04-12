@@ -108,8 +108,9 @@ const nextConfig = {
 		return [
 			{
 				// TODO: Use single root folder with rewrites to root guidance, advice, corporate, process and indicators to the same code
-				source: "/:productRoot(guidance|advice|process|corporate)/:path*",
-				destination: "/indicators/:path*",
+				source:
+					"/:productRoot(indicators|guidance|advice|process|corporate)/:path*",
+				destination: "/indicators/:path*?productRoot=:productRoot",
 			},
 		];
 	},
@@ -118,6 +119,11 @@ const nextConfig = {
 			{
 				source: "/guidance/proposed",
 				destination: "/guidance/awaiting-development",
+				permanent: true,
+			},
+			{
+				source: "/standards-and-indicators/index",
+				destination: "/indicators/published",
 				permanent: true,
 			},
 		];

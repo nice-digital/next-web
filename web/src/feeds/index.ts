@@ -6,14 +6,19 @@ import { camelCase } from "camel-case";
 
 import { cache, getCacheKey } from "@/cache";
 
-export const client: AxiosInstance = applyCaseMiddleware(axios.create(), {
-	caseFunctions: {
-		camel: (input, _options) => {
-			// Strip out the prefix from all the embedded keys as it creates so much noise
-			return camelCase(input.replace("nice.publications:", ""));
+export const client: AxiosInstance = applyCaseMiddleware(
+	axios.create({
+		headers: { accept: "application/json" },
+	}),
+	{
+		caseFunctions: {
+			camel: (input, _options) => {
+				// Strip out the prefix from all the embedded keys as it creates so much noise
+				return camelCase(input.replace("nice.publications:", ""));
+			},
 		},
-	},
-});
+	}
+);
 
 /**
  * Gets the body of a feed directly from the back end system
@@ -24,17 +29,20 @@ export const client: AxiosInstance = applyCaseMiddleware(axios.create(), {
 export const getFeedBodyUnCached = async <TResponse>(
 	origin: string,
 	path: string,
-	apiKey: string
+	apiKey: string,
+	acceptHeader = "application/json"
 ): Promise<TResponse> => {
 	const { data } = await client.get<TResponse>(origin + path, {
 		headers: {
 			"Api-Key": apiKey,
+			Accept: acceptHeader,
 		},
 		validateStatus: (status: number) => {
 			// We don't want feed 404 responses to throw an error, so that we can show users a not found page rather than a server error.
 			return (status >= 200 && status < 300) || status == 404;
 		},
 	});
+
 	return data;
 };
 

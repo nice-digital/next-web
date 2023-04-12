@@ -6,6 +6,7 @@ import {
 	getProductListPage,
 	getGetServerSidePropsFunc,
 } from "@/components/ProductListPage/ProductListPage";
+import { publicRuntimeConfig } from "@/config";
 
 const defaultSortOrder = SortOrder.titleAscending;
 
@@ -26,7 +27,7 @@ const tableBodyRender = (documents: Document[]) => (
 					<tr key={id}>
 						<td>
 							<a
-								href={pathAndQuery}
+								href={publicRuntimeConfig.baseURL + pathAndQuery}
 								dangerouslySetInnerHTML={{ __html: title }}
 							/>
 						</td>
@@ -57,6 +58,7 @@ export default getProductListPage({
 	},
 	showDateFilter: false,
 	tableBodyRender,
+	searchInputPlaceholder: "E.g. 'diabetes' or 'NG28'",
 });
 
 export const getServerSideProps = getGetServerSidePropsFunc({

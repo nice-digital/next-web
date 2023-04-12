@@ -1,9 +1,8 @@
 import { GetServerSideProps } from "next/types";
 
-import { getFileStream, ProductGroup } from "@/feeds/publications/publications";
+import { getFileStream } from "@/feeds/publications/publications";
 import { validateRouteParams } from "@/utils/product";
 import { getServerSidePDF } from "@/utils/response";
-import { getPublicationPdfDownloadPath } from "@/utils/url";
 
 export const getServerSideProps: GetServerSideProps<
 	Record<string, never>,
@@ -11,36 +10,27 @@ export const getServerSideProps: GetServerSideProps<
 		slug: string;
 		pdfDownloadPath: string;
 	}
-> = async ({ res, params, resolvedUrl }) => {
+> = async ({ res, params, resolvedUrl, query }) => {
 	if ((params?.pdfDownloadPath || "").indexOf(".pdf") === -1)
 		return { notFound: true };
 
-	const result = await validateRouteParams(params, resolvedUrl);
+	const result = await validateRouteParams({ params, resolvedUrl, query });
 
 	if ("notFound" in result || "redirect" in result) return result;
 
-	const { product } = result;
+	const { product, pdfDownloadPath, actualPath } = result;
 
 	if (!product.embedded.contentPartList) return { notFound: true };
 
-	const expectedPath = getPublicationPdfDownloadPath(
-			product,
-			ProductGroup.Other
-		),
-		actualPath = new URL(
-			resolvedUrl,
-			`https://anything.com`
-		).pathname.toLowerCase();
-
-	if (!expectedPath)
+	if (!pdfDownloadPath)
 		return {
 			notFound: true,
 		};
 
-	if (actualPath.localeCompare(expectedPath, "en", { sensitivity: "base" }))
+	if (actualPath.localeCompare(pdfDownloadPath, "en", { sensitivity: "base" }))
 		return {
 			redirect: {
-				destination: expectedPath,
+				destination: pdfDownloadPath,
 				permanent: true,
 			},
 		};

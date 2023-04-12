@@ -3,6 +3,7 @@ import React from "react";
 import { Breadcrumb } from "@nice-digital/nds-breadcrumbs";
 import { Document, SortOrder } from "@nice-digital/search-client";
 
+import { Link } from "@/components/Link/Link";
 import { IndicatorListNav } from "@/components/ProductListNav/IndicatorListNav";
 import {
 	getProductListPage,
@@ -30,20 +31,28 @@ const tableBodyRender = (documents: Document[]) => (
 				({
 					id,
 					title,
-					niceResultType,
+					resourceType,
 					expectedPublicationDate,
 					pathAndQuery,
 				}) => {
-					console.log({ document });
 					return (
 						<tr key={id}>
 							<td>
-								<a
-									href={pathAndQuery}
-									dangerouslySetInnerHTML={{ __html: title }}
-								/>
+								<Link href={pathAndQuery}>
+									<span dangerouslySetInnerHTML={{ __html: title }} />
+								</Link>
 							</td>
-							<td>{niceResultType}</td>
+							<td>
+								{resourceType.length <= 1 ? (
+									resourceType[0]
+								) : (
+									<>
+										{resourceType.map((resource) => (
+											<>{resource}. </>
+										))}
+									</>
+								)}
+							</td>
 							<td>
 								{expectedPublicationDate ? (
 									<ResponsiveDate isoDateTime={expectedPublicationDate} />
@@ -87,9 +96,10 @@ export default getProductListPage({
 		label: "Title",
 	},
 	showDateFilter: true,
-	useFutureDates: false,
+	useFutureDates: true,
 	dateFilterLabel,
 	tableBodyRender,
+	searchInputPlaceholder: "E.g. 'diabetes' or 'IND28'",
 });
 
 export const getServerSideProps = getGetServerSidePropsFunc({

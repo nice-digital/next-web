@@ -17,6 +17,8 @@ import {
 	ProductTypeList,
 	ResourceDetail,
 	RelatedResource,
+	IndicatorMappings,
+	IndicatorMapping,
 } from "./types";
 
 export * from "./types";
@@ -124,6 +126,24 @@ export const getIndicatorSubType = async (
 	) || null;
 
 /**
+ * Gets _all_ indicator mappings (redirects).
+ */
+export const getIndicatorMappings = async (): Promise<IndicatorMapping[]> =>
+	await getFeedBodyCached<IndicatorMapping[]>(
+		cacheKeyPrefix,
+		FeedPath.IndicatorMappings,
+		defaultTTL,
+		async () =>
+			(
+				await getFeedBodyUnCached<IndicatorMappings>(
+					origin,
+					FeedPath.IndicatorMappings,
+					apiKey
+				)
+			).mappings
+	);
+
+/**
  * Gets a full product detail response from publications from the given product id.
  *
  * @returns The full product details, or `null` if the product can't be found
@@ -152,11 +172,18 @@ export const getProductDetail = async (
  */
 export const getChapterContent = async (
 	chapterHref: string
-): Promise<ChapterHTMLContent | ErrorResponse> => {
-	return getFeedBodyUnCached<ChapterHTMLContent | ErrorResponse>(
-		origin,
+): Promise<ChapterHTMLContent | null> => {
+	return getFeedBodyCached<ChapterHTMLContent | null>(
+		cacheKeyPrefix,
 		chapterHref,
-		apiKey
+		defaultTTL,
+		async () => {
+			const response = await getFeedBodyUnCached<
+				ChapterHTMLContent | ErrorResponse
+			>(origin, chapterHref, apiKey);
+
+			return isSuccessResponse(response) ? response : null;
+		}
 	);
 };
 

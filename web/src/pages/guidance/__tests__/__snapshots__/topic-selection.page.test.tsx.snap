@@ -703,7 +703,7 @@ exports[`/guidance/topic-selection should match the snapshot 1`] = `
                 <tr>
                   <td>
                     <a
-                      href="/guidance/indevelopment/GID-DG10162"
+                      href="https://next-web-tests.nice.org.uk/guidance/indevelopment/GID-DG10162"
                     >
                       DG11
                     </a>
@@ -718,7 +718,7 @@ exports[`/guidance/topic-selection should match the snapshot 1`] = `
                 <tr>
                   <td>
                     <a
-                      href="/guidance/indevelopment/GID-DG10161"
+                      href="https://next-web-tests.nice.org.uk/guidance/indevelopment/GID-DG10161"
                     >
                       DG-ID322
                     </a>
@@ -733,7 +733,7 @@ exports[`/guidance/topic-selection should match the snapshot 1`] = `
                 <tr>
                   <td>
                     <a
-                      href="/guidance/indevelopment/GID-TA10409"
+                      href="https://next-web-tests.nice.org.uk/guidance/indevelopment/GID-TA10409"
                     >
                       TAID330
                     </a>
@@ -748,7 +748,7 @@ exports[`/guidance/topic-selection should match the snapshot 1`] = `
                 <tr>
                   <td>
                     <a
-                      href="/guidance/indevelopment/GID-IPG10126"
+                      href="https://next-web-tests.nice.org.uk/guidance/indevelopment/GID-IPG10126"
                     >
                       TEST Project IP
                     </a>
@@ -763,7 +763,7 @@ exports[`/guidance/topic-selection should match the snapshot 1`] = `
                 <tr>
                   <td>
                     <a
-                      href="/guidance/indevelopment/GID-DG10175"
+                      href="https://next-web-tests.nice.org.uk/guidance/indevelopment/GID-DG10175"
                     >
                       Idam476Nov112021a
                     </a>
@@ -778,7 +778,7 @@ exports[`/guidance/topic-selection should match the snapshot 1`] = `
                 <tr>
                   <td>
                     <a
-                      href="/guidance/indevelopment/GID-DG10167"
+                      href="https://next-web-tests.nice.org.uk/guidance/indevelopment/GID-DG10167"
                     >
                       DG321
                     </a>
@@ -793,7 +793,7 @@ exports[`/guidance/topic-selection should match the snapshot 1`] = `
                 <tr>
                   <td>
                     <a
-                      href="/guidance/indevelopment/GID-IPG10130"
+                      href="https://next-web-tests.nice.org.uk/guidance/indevelopment/GID-IPG10130"
                     >
                       TA321-2
                     </a>
@@ -808,7 +808,7 @@ exports[`/guidance/topic-selection should match the snapshot 1`] = `
                 <tr>
                   <td>
                     <a
-                      href="/guidance/indevelopment/GID-DG10177"
+                      href="https://next-web-tests.nice.org.uk/guidance/indevelopment/GID-DG10177"
                     >
                       DG329
                     </a>
@@ -823,7 +823,7 @@ exports[`/guidance/topic-selection should match the snapshot 1`] = `
                 <tr>
                   <td>
                     <a
-                      href="/guidance/indevelopment/GID-DG10172"
+                      href="https://next-web-tests.nice.org.uk/guidance/indevelopment/GID-DG10172"
                     >
                       DG323
                     </a>
@@ -838,7 +838,7 @@ exports[`/guidance/topic-selection should match the snapshot 1`] = `
                 <tr>
                   <td>
                     <a
-                      href="/guidance/indevelopment/GID-MT590"
+                      href="https://next-web-tests.nice.org.uk/guidance/indevelopment/GID-MT590"
                     >
                       MTG323
                     </a>

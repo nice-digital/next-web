@@ -5,6 +5,7 @@ export enum FeedPath {
 	ProductTypes = "/feeds/producttypes",
 	AreasOfInterest = "/feeds/areaofinteresttypes",
 	IndicatorSubTypes = "/feeds/indicatorsubtypes",
+	IndicatorMappings = "/feeds/indicatormappings",
 	ProductDetail = "/feeds/product/",
 }
 
@@ -287,55 +288,42 @@ export type EpubFile = FileContent & {
 	mimeType: "application/epub+zip";
 };
 
-export type UploadAndConvertContentPart = {
+export type BaseContentPart<T extends string = string> = {
 	links: EmptySelfLinks;
-	embedded: {
-		htmlContent: HTMLContent;
-		pdfFile: PDFFile;
-		mobiFile?: MobiFile;
-		epubFile?: EpubFile;
-	};
 	eTag: ETag;
 	title: string;
-	type: "UploadAndConvertContentPart";
+	type: T;
 	uid: number;
 	legacyId: string | null;
 };
 
-export type EditableContentPart = {
-	links: EmptySelfLinks;
+export type UploadAndConvertContentPart =
+	BaseContentPart<"UploadAndConvertContentPart"> & {
+		embedded: {
+			htmlContent: HTMLContent;
+			pdfFile: PDFFile;
+			mobiFile?: MobiFile;
+			epubFile?: EpubFile;
+		};
+	};
+
+export type EditableContentPart = BaseContentPart<"EditableContentPart"> & {
 	embedded: {
 		htmlContent: HTMLContent;
 		pdfFile?: PDFFile;
 	};
-	eTag: ETag;
-	title: string;
-	type: "EditableContentPart";
-	uid: number;
-	legacyId: string | null;
 };
 
-export type UploadContentPart = {
-	links: EmptySelfLinks;
+export type UploadContentPart = BaseContentPart<"UploadContentPart"> & {
 	embedded: {
 		file: FileContent;
 	};
-	eTag: ETag;
-	title: string;
-	type: "UploadContentPart";
-	uid: number;
-	legacyId: string | null;
 };
 
-export type ExternalUrlContentPart = {
-	links: EmptySelfLinks;
-	eTag: ETag;
-	url: string;
-	title: string;
-	type: "ExternalUrlContentPart";
-	uid: number;
-	legacyId: string | null;
-};
+export type ExternalUrlContentPart =
+	BaseContentPart<"ExternalUrlContentPart"> & {
+		url: string;
+	};
 
 export type ContentPartList = {
 	embedded: {
@@ -553,6 +541,9 @@ export type ProductAndResourceBase = {
 };
 
 export type ResourceDetail = ProductAndResourceBase & {
+	embedded: {
+		resourceGroupList: ResourceGroupList;
+	};
 	uid: number;
 	legacyId: string | null;
 	language: Language;
@@ -585,7 +576,7 @@ export type ProductDetail = ProductAndResourceBase & {
 	productType: ProductTypeAcronym;
 	shortTitle: string | null;
 	/** E.g. `CG/Wave18/51` */
-	inDevReference: string;
+	inDevReference: string | null;
 	metaDescription: string;
 	productStatus: Status;
 	majorChangeDate: string | null;
@@ -637,4 +628,14 @@ export type HTMLChapterSectionInfo = {
 export type ErrorResponse = {
 	statusCode: string;
 	message: string;
+};
+
+export type IndicatorMappings = {
+	lastModified: string;
+	mappings: IndicatorMapping[];
+};
+
+export type IndicatorMapping = {
+	url: string;
+	id: string;
 };

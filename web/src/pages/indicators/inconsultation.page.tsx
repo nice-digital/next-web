@@ -3,6 +3,7 @@ import React from "react";
 import { Breadcrumb } from "@nice-digital/nds-breadcrumbs";
 import { Document, SortOrder } from "@nice-digital/search-client";
 
+import { Link } from "@/components/Link/Link";
 import { IndicatorListNav } from "@/components/ProductListNav/IndicatorListNav";
 import {
 	getProductListPage,
@@ -22,7 +23,6 @@ const tableBodyRender = (documents: Document[]) => (
 			<tr>
 				<th scope="col">Title</th>
 				<th scope="col">Consultation</th>
-				<th scope="col">Type</th>
 				<th scope="col">{dateFilterLabel}</th>
 			</tr>
 		</thead>
@@ -32,20 +32,17 @@ const tableBodyRender = (documents: Document[]) => (
 					id,
 					title,
 					consultationType,
-					niceResultType,
 					consultationEndDate,
 					pathAndQuery,
 				}) => {
 					return (
 						<tr key={id}>
 							<td>
-								<a
-									href={pathAndQuery}
-									dangerouslySetInnerHTML={{ __html: title }}
-								/>
+								<Link href={pathAndQuery}>
+									<span dangerouslySetInnerHTML={{ __html: title }} />
+								</Link>
 							</td>
 							<td>{consultationType}</td>
-							<td>{niceResultType}</td>
 							<td>
 								<ResponsiveDate isoDateTime={String(consultationEndDate)} />
 							</td>
@@ -85,9 +82,10 @@ export default getProductListPage({
 		label: "Title",
 	},
 	showDateFilter: true,
-	useFutureDates: false,
+	useFutureDates: true,
 	dateFilterLabel,
 	tableBodyRender,
+	searchInputPlaceholder: "E.g. 'diabetes' or 'IND28'",
 });
 
 export const getServerSideProps = getGetServerSidePropsFunc({
