@@ -44,6 +44,23 @@ describe("search", () => {
 			});
 		});
 
+		it("should render noindex, follow robots meta tag", async () => {
+			render(
+				<SearchPage
+					activeModifiers={[]}
+					results={sampleData as unknown as SearchResultsSuccess}
+					searchUrl={{ route: "/search?q=liver+cancer" } as SearchUrl}
+				/>
+			);
+			await waitFor(() => {
+				// eslint-disable-next-line testing-library/no-node-access
+				expect(document.querySelector("meta[name='robots']")).toHaveProperty(
+					"content",
+					"noindex,follow"
+				);
+			});
+		});
+
 		it("should render search term in the page title when there's at least 1 result", async () => {
 			render(
 				<SearchPage

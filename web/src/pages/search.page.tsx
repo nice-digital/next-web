@@ -174,6 +174,7 @@ export function Search({
 						? `${q} | Search results`
 						: `Search results`
 				}
+				noindex
 			/>
 			<Announcer announcement={announcement} />
 			<h1 className="visually-hidden">Search results</h1>
