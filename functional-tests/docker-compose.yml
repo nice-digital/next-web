@@ -36,11 +36,21 @@ services:
       - '8092:8092'
     volumes:
       - ./../web:/web
+    environment:
+      - SEARCH_BASE_URL=http://mock-search-api.nice.org.uk
     networks:
       default:
         aliases:
           # Make sure the app uses a nice.org.uk domain so that the cookie banner license works
           - next-web-tests.nice.org.uk
+
+  mock-search-api:
+    build: https://github.com/nice-digital/mocks-apis.git#NXT-153-mock-indicators-apis:search-apis
+    container_name: mock-search-api
+    networks:
+      default:
+        aliases:
+          - mock-search-api.nice.org.uk
 
 networks:
   default:

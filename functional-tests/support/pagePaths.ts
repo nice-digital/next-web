@@ -4,6 +4,7 @@ export const pagePaths = {
 	"in development guidance list": "/guidance/indevelopment",
 	"awaiting development guidance list": "/guidance/awaiting-development",
 	status: "/status",
+	"published indicators list": "/indicators/published",
 } as const;
 
 export type PageName = keyof typeof pagePaths;
