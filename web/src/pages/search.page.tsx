@@ -134,13 +134,12 @@ export function Search({
 	};
 
 	const SummaryText = (data: SearchResultsSuccess) => {
-		const { originalSearch, finalSearchText, resultCount } = data;
+		const { originalSearch, resultCount } = data;
 
 		if (resultCount === 0 && !originalSearch) {
 			return (
 				<>
-					We couldn&apos;t find any results for{" "}
-					<strong>{finalSearchText}</strong>
+					We couldn&apos;t find any results for your search
 					<br />
 					Check for spelling mistakes or try another search term.
 				</>
@@ -165,13 +164,13 @@ export function Search({
 		return null;
 	};
 
-	// const window.dataLayer = window.dataLayer || [];
-
 	return (
 		<>
 			<NextSeo
 				title={
-					q !== "" && q !== undefined
+					data?.resultCount === 0
+						? "No results | Search results"
+						: q
 						? `${q} | Search results`
 						: `Search results`
 				}
@@ -179,10 +178,11 @@ export function Search({
 			/>
 			<Announcer announcement={announcement} />
 			<h1 className="visually-hidden">Search results</h1>
-
 			{data?.resultCount === 0 && activeModifiers.length === 0 ? (
 				<>
-					<h2 id="results-title">No results found</h2>
+					<h2 id="results-title" className="mt--e">
+						No results found
+					</h2>
 					<SearchNoResults
 						searchText={
 							data?.originalSearch?.searchText || data?.finalSearchText
