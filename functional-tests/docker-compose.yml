@@ -32,6 +32,8 @@ services:
   next-web:
     build: ../web-host
     container_name: next-web
+    depends_on:
+      - mock-search-api
     ports:
       - '8092:8092'
     volumes:
