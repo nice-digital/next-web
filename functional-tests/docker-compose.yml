@@ -34,6 +34,7 @@ services:
     container_name: next-web
     depends_on:
       - mock-search-api
+      - mock-publications
     ports:
       # Next Web runs on 8092 in PM2: see pm2.ecosystem.json in the web-host folder
       - '8092:8092'
@@ -41,6 +42,8 @@ services:
       - ./../web:/web
     environment:
       - SEARCH_BASE_URL=http://mock-search-api.nice.org.uk/api
+      - PUBLICATIONS_BASE_URL=http://mock-publications.nice.org.uk
+      - INDEV_BASE_URL=http://mock-indev.nice.org.uk
     networks:
       default:
         aliases:
@@ -54,6 +57,14 @@ services:
       default:
         aliases:
           - mock-search-api.nice.org.uk
+
+  mock-publications:
+    build: https://github.com/nice-digital/mocks-apis.git#NXT-153-mock-indicators-apis:publications
+    container_name: mock-publications
+    networks:
+      default:
+        aliases:
+          - mock-publications.nice.org.uk
 
 networks:
   default:
