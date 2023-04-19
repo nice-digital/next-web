@@ -559,7 +559,7 @@ export type ProjectDetail = {
 				self: [Link];
 			};
 			embedded: {
-				niceIndevPanel: IndevPanel[];
+				niceIndevPanel: IndevPanel | IndevPanel[];
 			};
 		};
 		niceIndevProvisionalScheduleList?: NiceIndevProvisionalScheduleList;
