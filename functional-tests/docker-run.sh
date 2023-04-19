@@ -31,9 +31,11 @@ function processTestOutput() {
 
   # Copy logs to use as a TeamCity artifact for debugging purposes
   mkdir -p docker-output
-  docker cp test-runner:/next-web/tests/allure-report ./docker-output
+  docker cp nxt-test-runner:/next-web/tests/allure-report ./docker-output
 
   docker-compose logs --no-color > ./docker-output/logs.txt
+
+  docker-compose run next-web pm2 logs --lines 1000 > ./docker-output/pm2-logs.txt
 }
 
 function cleanup() {

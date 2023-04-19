@@ -1,4 +1,4 @@
-version: '3.8'
+version: '2.2'
 services:
   selenium-hub:
     image: selenium/hub:3.141.59-20210713
@@ -35,11 +35,12 @@ services:
     depends_on:
       - mock-search-api
     ports:
+      # Next Web runs on 8092 in PM2: see pm2.ecosystem.json in the web-host folder
       - '8092:8092'
     volumes:
       - ./../web:/web
     environment:
-      - SEARCH_BASE_URL=http://mock-search-api.nice.org.uk
+      - SEARCH_BASE_URL=http://mock-search-api.nice.org.uk/api
     networks:
       default:
         aliases:
