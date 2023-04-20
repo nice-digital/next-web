@@ -32,11 +32,7 @@ exports[`SearchNoResults should match snapshot 1`] = `
         Check our other services
       </h3>
       <p>
-        See if there are search results for 
-        <b>
-          wxyzyxxxxyxxy
-        </b>
-         on our other services:
+        See if there are results for your search on our other services:
       </p>
       <ul
         aria-label="Search for \\"wxyzyxxxxyxxy\\" on our other services"

@@ -7,6 +7,7 @@ import {
 	SearchUrl,
 } from "@nice-digital/search-client";
 
+import sampleDataNoResults from "@/mockData/search/search-no-results.json";
 import sampleDataFailed from "@/mockData/search/search-results-failed.json";
 import sampleData from "@/mockData/search/search-results.json";
 import { render, screen, waitFor } from "@/test-utils/rendering";
@@ -29,12 +30,12 @@ import SearchPage from "./search.page";
 
 describe("search", () => {
 	describe("SEO", () => {
-		it("should render 'Search results' in the page title", async () => {
+		it("should render 'Search results' in the page title when there's no search term", async () => {
 			render(
 				<SearchPage
 					activeModifiers={[]}
 					results={sampleData as unknown as SearchResultsSuccess}
-					searchUrl={{ route: "/search?q=liver+cancer" } as SearchUrl}
+					searchUrl={{ q: "", route: "/search?q=" } as SearchUrl}
 				/>
 			);
 			await waitFor(() => {
@@ -56,6 +57,36 @@ describe("search", () => {
 					"content",
 					"noindex,follow"
 				);
+			});
+		});
+
+		it("should render search term in the page title when there's at least 1 result", async () => {
+			render(
+				<SearchPage
+					activeModifiers={[]}
+					results={sampleData as unknown as SearchResultsSuccess}
+					searchUrl={
+						{ q: "liver cancer", route: "/search?q=liver+cancer" } as SearchUrl
+					}
+				/>
+			);
+			await waitFor(() => {
+				expect(document.title).toStartWith("liver cancer | Search results");
+			});
+		});
+
+		it("should render 'No results' in the page title when there are no results", async () => {
+			render(
+				<SearchPage
+					activeModifiers={[]}
+					results={sampleDataNoResults as unknown as SearchResultsSuccess}
+					searchUrl={
+						{ q: "zzzzzzzzzzzz", route: "/search?q=zzzzzzzzzzzz" } as SearchUrl
+					}
+				/>
+			);
+			await waitFor(() => {
+				expect(document.title).toStartWith("No results | Search results");
 			});
 		});
 	});
