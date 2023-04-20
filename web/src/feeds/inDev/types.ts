@@ -18,7 +18,6 @@ export enum TopicSelectionReason {
 }
 
 export enum ProjectStatus {
-	"AwaitingDevelopment" = "AwaitingDevelopment",
 	"Complete" = "Complete",
 	"Discontinued" = "Discontinued",
 	"Suspended" = "Suspended",
@@ -55,12 +54,13 @@ export enum ProjectProcess {
 	"COVID19RapidGuideline" = "COVID-19 rapid guideline",
 }
 
-export type ProjectGroup =
-	| ProductGroup.Guidance
-	| ProductGroup.Standard
-	| ProductGroup.Advice
-	| ProductGroup.Guideline
-	| ProductGroup.Other;
+export enum ProjectGroup {
+	Guideline = ProductGroup.Guideline,
+	Guidance = ProductGroup.Guidance,
+	Advice = ProductGroup.Advice,
+	Standard = ProductGroup.Standard,
+	Other = ProductGroup.Other,
+}
 
 export type GIDReference = `GID-${Uppercase<string>}${number}`;
 
@@ -559,7 +559,7 @@ export type ProjectDetail = {
 				self: [Link];
 			};
 			embedded: {
-				niceIndevPanel: IndevPanel[];
+				niceIndevPanel: IndevPanel | IndevPanel[];
 			};
 		};
 		niceIndevProvisionalScheduleList?: NiceIndevProvisionalScheduleList;

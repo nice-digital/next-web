@@ -225,8 +225,8 @@ export default function InDevelopmentPage(
 export const getServerSideProps: GetServerSideProps<
 	InDevelopmentPageProps,
 	{ slug: string }
-> = async ({ params, resolvedUrl }) => {
-	const result = await validateRouteParams({ params, resolvedUrl });
+> = async ({ params, resolvedUrl, query }) => {
+	const result = await validateRouteParams({ params, resolvedUrl, query });
 
 	if ("notFound" in result || "redirect" in result) return result;
 
@@ -294,8 +294,7 @@ export const getServerSideProps: GetServerSideProps<
 				.niceIndevEmailEnquiry,
 		indevEmailEnquiries = arrayify(indevEmailEnquiry),
 		projectStatusDisplayName = (status: ProjectStatus) => {
-			if (status == ProjectStatus.AwaitingDevelopment)
-				return "Awaiting development";
+			if (status == ProjectStatus.Proposed) return "Awaiting development";
 			if (status == ProjectStatus.InProgress) return "In progress";
 			if (status == ProjectStatus.TopicSelection) return "Topic selection";
 			if (status == ProjectStatus.ImpactedByCOVID19)

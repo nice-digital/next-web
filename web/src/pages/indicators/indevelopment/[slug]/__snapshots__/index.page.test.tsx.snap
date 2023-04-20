@@ -134,7 +134,7 @@ exports[`/indevelopment/[slug].page IndevelopmentPage should match snapshot for 
           </li>
           <li>
             <a
-              href="https://alpha.nice.org.uk/get-involved/stakeholder-registration/register?t=&p=GID-NG10237&returnUrl=/indicators/indevelopment/gid-ng10237"
+              href="https://alpha.nice.org.uk/get-involved/stakeholder-registration/register?t=&p=GID-NG10237&returnUrl=/guidance/indevelopment/gid-ng10237"
             >
               Register as a stakeholder
             </a>
@@ -153,7 +153,7 @@ exports[`/indevelopment/[slug].page IndevelopmentPage should match snapshot for 
             <a
               aria-current="true"
               class="horizontal-nav__link"
-              href="/indicators/indevelopment/gid-ng10237"
+              href="/guidance/indevelopment/gid-ng10237"
             >
               Project information
             </a>
@@ -164,7 +164,7 @@ exports[`/indevelopment/[slug].page IndevelopmentPage should match snapshot for 
             <a
               aria-current="false"
               class="horizontal-nav__link"
-              href="/indicators/indevelopment/gid-ng10237/documents"
+              href="/guidance/indevelopment/gid-ng10237/documents"
             >
               Project documents
             </a>
@@ -538,7 +538,7 @@ Object {
     "indevTopicItems": Array [],
     "partialUpdates": Array [],
     "process": "CG",
-    "projectPath": "/indicators/indevelopment/gid-ng10237",
+    "projectPath": "/guidance/indevelopment/gid-ng10237",
     "projectType": "NG",
     "reference": "GID-NG10237",
     "referralDate": null,

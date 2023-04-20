@@ -1,6 +1,11 @@
 import libSlugify from "@sindresorhus/slugify";
 
-import { ProjectStatus, type ProjectDetail } from "@/feeds/inDev/types";
+import {
+	ProjectStatus,
+	type ProjectDetail,
+	ProjectGroup,
+	ProjectType,
+} from "@/feeds/inDev/types";
 import {
 	ProductGroup,
 	ProductTypeAcronym,
@@ -20,13 +25,42 @@ export const slugify = libSlugify;
  * @returns The path of the project, relative to the root
  */
 export const getProjectPath = (
-	project: Pick<ProjectDetail, "projectGroup" | "status" | "reference">
-): string | null =>
-	project.projectGroup == ProductGroup.Advice
-		? null
-		: project.status === ProjectStatus.Proposed
-		? `/indicators/awaiting-development/${project.reference.toLowerCase()}`
-		: `/indicators/indevelopment/${project.reference.toLowerCase()}`;
+	project: Pick<
+		ProjectDetail,
+		"projectGroup" | "status" | "reference" | "projectType"
+	>
+): string | null => {
+	let groupSlug: string | null;
+
+	switch (project.projectGroup) {
+		case ProjectGroup.Guideline:
+		case ProjectGroup.Guidance:
+		case ProjectGroup.Standard:
+			groupSlug = "guidance";
+			break;
+		case ProjectGroup.Advice:
+			return null;
+		case ProjectGroup.Other:
+			if (project.projectType == ProjectType.IND) groupSlug = "indicators";
+			else groupSlug = "guidance";
+			break;
+		default:
+			throw `Unsupported project type ${project.projectType} ${JSON.stringify(
+				project
+			)}`;
+	}
+
+	let statusSlug = "indevelopment";
+
+	if (project.status == ProjectStatus.Proposed)
+		statusSlug = "awaiting-development";
+	else if (project.status == ProjectStatus.TopicSelection)
+		statusSlug = "topic-selection";
+	else if (project.status == ProjectStatus.Discontinued)
+		statusSlug = "discontinued";
+
+	return `/${groupSlug}/${statusSlug}/${project.reference.toLowerCase()}`;
+};
 
 export const getProductSlug = (
 	product: Pick<ProductLite, "id" | "productType" | "title">
