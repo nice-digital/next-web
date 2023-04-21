@@ -30,15 +30,21 @@ function processTestOutput() {
   docker-compose run -T test-runner allure generate --clean
 
   # Copy logs to use as a TeamCity artifact for debugging purposes
+  echo "Making docker-output folder"
   mkdir -p docker-output
+
+  echo "Copying allure report out of nxt-test-runner"
   docker cp nxt-test-runner:/next-web/tests/allure-report ./docker-output
 
+  echo "Copying docker logs from docker to logs.txt"
   docker-compose logs --no-color > ./docker-output/logs.txt
 
-  docker-compose run next-web pm2 logs --lines 1000 > ./docker-output/pm2-logs.txt
+  echo "Copying PM2 logs out to pm2-logs.txt"
+  docker-compose exec next-web pm2 logs --nostream --lines 1000 > ./docker-output/pm2-logs.txt
 }
 
 function cleanup() {
+  echo "Cleaning up in the background"
   # Stop in the background so the script finishes quicker - we don't need to wait
   nohup docker-compose down --remove-orphans --volumes > /dev/null 2>&1 &
 }
