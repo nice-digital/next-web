@@ -51,7 +51,7 @@ services:
           - next-web-tests.nice.org.uk
 
   mock-search-api:
-    build: https://github.com/nice-digital/mocks-apis.git#NXT-153-mock-indicators-apis:search-apis
+    build: https://github.com/nice-digital/mocks-apis.git#main:search-apis
     container_name: mock-search-api
     networks:
       default:
@@ -59,7 +59,7 @@ services:
           - mock-search-api.nice.org.uk
 
   mock-publications:
-    build: https://github.com/nice-digital/mocks-apis.git#NXT-153-mock-indicators-apis:publications
+    build: https://github.com/nice-digital/mocks-apis.git#main:publications
     container_name: mock-publications
     networks:
       default:
