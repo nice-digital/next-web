@@ -1,0 +1,10 @@
+public:
+  search:
+    # The base URL of the Single Search Endpoint (SSE) e.g. https://beta-search-api.nice.org.uk/api/
+    baseURL: SEARCH_BASE_URL
+server:
+  feeds:
+    publications:
+      origin: PUBLICATIONS_BASE_URL
+    inDev:
+      origin: INDEV_BASE_URL
