@@ -169,7 +169,7 @@ exports[`[resourceTitleId].page ConsultationHTMLPage should match snapshot for m
           <a
             aria-current="false"
             class="horizontal-nav__link"
-            href="/indicators/indevelopment/gid-ta10914"
+            href="/guidance/indevelopment/gid-ta10914"
           >
             Project information
           </a>
@@ -180,7 +180,7 @@ exports[`[resourceTitleId].page ConsultationHTMLPage should match snapshot for m
           <a
             aria-current="false"
             class="horizontal-nav__link"
-            href="/indicators/indevelopment/gid-ta10914/documents"
+            href="/guidance/indevelopment/gid-ta10914/documents"
           >
             Project documents
           </a>
@@ -191,7 +191,7 @@ exports[`[resourceTitleId].page ConsultationHTMLPage should match snapshot for m
           <a
             aria-current="true"
             class="horizontal-nav__link"
-            href="/indicators/indevelopment/gid-ta10914/consultations/html-content-5"
+            href="/guidance/indevelopment/gid-ta10914/consultations/html-content-5"
           >
             Consultation
           </a>

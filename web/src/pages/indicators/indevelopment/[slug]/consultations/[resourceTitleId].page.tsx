@@ -100,13 +100,12 @@ export type Params = {
 export const getServerSideProps: GetServerSideProps<
 	ConsultationHTMLPageProps,
 	Params
-> = async ({ params, resolvedUrl }) => {
-	const result = await validateRouteParams({ params, resolvedUrl });
+> = async ({ params, resolvedUrl, query }) => {
+	const result = await validateRouteParams({ params, resolvedUrl, query });
 
 	if ("notFound" in result || "redirect" in result) return result;
 
-	const { project, projectPath, consultationPanels, consultationUrls, panels } =
-		result;
+	const { project, projectPath, consultationPanels, consultationUrls } = result;
 
 	const consultationPanel = consultationPanels.find(
 		(panel) =>

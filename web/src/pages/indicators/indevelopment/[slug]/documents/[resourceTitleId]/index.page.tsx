@@ -117,10 +117,10 @@ export default function DocumentsHTMLPage({
 export const getServerSideProps: GetServerSideProps<
 	DocumentHTMLPageProps,
 	{ slug: string; resourceTitleId: string }
-> = async ({ params, resolvedUrl }) => {
+> = async ({ params, resolvedUrl, query }) => {
 	if (!params?.resourceTitleId) return { notFound: true };
 
-	const result = await validateRouteParams({ params, resolvedUrl });
+	const result = await validateRouteParams({ params, resolvedUrl, query });
 
 	if ("notFound" in result || "redirect" in result) return result;
 

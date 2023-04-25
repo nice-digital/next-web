@@ -1,4 +1,4 @@
-import { render, screen, within } from "@testing-library/react";
+import { render, screen } from "@testing-library/react";
 import { useRouter } from "next/router";
 import { type GetServerSidePropsContext } from "next/types";
 
@@ -12,15 +12,16 @@ import DocumentsHTMLPage, {
 } from "./index.page";
 
 const productRoot = "indicators",
+	statusSlug = "indevelopment",
 	resourceTitleId = "html-content-2",
 	slug = "gid-ta10730",
-	resolvedUrl = `/${productRoot}/indevelopment/${slug}`,
+	resolvedUrl = `/${productRoot}/${statusSlug}/${slug}`,
 	getServerSidePropsContext = {
 		params: {
 			slug,
 		},
 		resolvedUrl,
-		query: { productRoot },
+		query: { productRoot, statusSlug },
 	} as unknown as GetServerSidePropsContext<{ slug: string }>;
 
 jest.mock("@/logger", () => ({
@@ -66,6 +67,7 @@ describe("[resourceTitleId].page", () => {
 						slug: "gid-ta10730",
 						resourceTitleId: notFoundResourceTitleId,
 					},
+					query: { productRoot: "guidance", statusSlug },
 				})
 			).toStrictEqual({
 				notFound: true,
@@ -93,6 +95,7 @@ describe("[resourceTitleId].page", () => {
 						slug: notFoundIdSlug,
 						resourceTitleId: resourceTitleId,
 					},
+					query: { productRoot, statusSlug },
 				})
 			).toStrictEqual({
 				notFound: true,
@@ -108,6 +111,7 @@ describe("[resourceTitleId].page", () => {
 						slug: "gid-ta10730",
 						resourceTitleId: notFoundResourceTitleId,
 					},
+					query: { productRoot: "guidance", statusSlug },
 				})
 			).toStrictEqual({
 				notFound: true,
@@ -131,6 +135,7 @@ describe("[resourceTitleId].page", () => {
 						slug: "gid-ta10730",
 						resourceTitleId: "html-content",
 					},
+					query: { productRoot: "guidance", statusSlug },
 				})
 			).toStrictEqual({
 				notFound: true,
@@ -147,12 +152,14 @@ describe("[resourceTitleId].page", () => {
 	describe("DocumentsHTMLPage", () => {
 		const slug = "gid-ta10730",
 			resourceTitleId = "html-content-5",
-			productRoot = "indicators",
-			resolvedUrl = `/${productRoot}/indevelopment/${slug}/documents/${resourceTitleId}`,
+			productRoot = "guidance",
+			statusSlug = "indevelopment",
+			resolvedUrl = `/${productRoot}/${statusSlug}/${slug}/documents/${resourceTitleId}`,
 			context: DocumentHTMLPagePropsContext = {
 				params: { slug, resourceTitleId },
 				query: {
 					productRoot,
+					statusSlug,
 				},
 				resolvedUrl,
 			} as unknown as DocumentHTMLPagePropsContext;

@@ -1,6 +1,6 @@
 import { GetServerSideProps } from "next/types";
 
-import { getFileStream } from "@/feeds/inDev/inDev";
+import { IndevFileResource, getFileStream } from "@/feeds/inDev/inDev";
 import { logger } from "@/logger";
 import { arrayify } from "@/utils/array";
 import { validateRouteParams } from "@/utils/project";
@@ -15,10 +15,10 @@ export type Params = { slug: string; downloadPath: string };
 export const getServerSideProps: GetServerSideProps<
 	Record<string, never>,
 	Params
-> = async ({ res, params, resolvedUrl }) => {
+> = async ({ res, params, resolvedUrl, query }) => {
 	if (!params || !params.downloadPath) return { notFound: true };
 
-	const result = await validateRouteParams({ params, resolvedUrl });
+	const result = await validateRouteParams({ params, resolvedUrl, query });
 
 	if ("notFound" in result || "redirect" in result) return result;
 
@@ -63,7 +63,14 @@ export const getServerSideProps: GetServerSideProps<
 		return { notFound: true };
 	}
 
-	const { fileName, links, mimeType } = resource.embedded.niceIndevFile;
+	if (!resource.embedded?.niceIndevFile) {
+		throw new Error(
+			`Could not find file resource for ID '${resourceTitleId}' in project ${project.reference}`
+		);
+	}
+
+	const { fileName, links, mimeType } = (resource as IndevFileResource).embedded
+		.niceIndevFile;
 
 	// It doesn't make sense to download an HTML file, so redirect to the correct document URL instead
 	if (mimeType === "text/html") {

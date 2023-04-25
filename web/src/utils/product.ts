@@ -152,9 +152,9 @@ export const validateRouteParams = async ({
 		: null;
 
 	const historyPanels = project
-		? project.embedded.niceIndevPanelList.embedded.niceIndevPanel.filter(
-				(panel) => panel.showPanel && panel.panelType == "History"
-		  )
+		? arrayify(
+				project.embedded.niceIndevPanelList.embedded.niceIndevPanel
+		  ).filter((panel) => panel.showPanel && panel.panelType == "History")
 		: [];
 
 	const absoluteURL = new URL(resolvedUrl, `https://anything.com`),

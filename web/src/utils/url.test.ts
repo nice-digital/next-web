@@ -1,6 +1,6 @@
 import { waitFor } from "@testing-library/react";
 
-import { ProjectStatus, type Project } from "@/feeds/inDev/types";
+import { ProjectStatus, ProjectGroup, ProjectType } from "@/feeds/inDev/types";
 import {
 	getProductDetail,
 	ProductGroup,
@@ -26,31 +26,47 @@ describe("URL utils", () => {
 		it("should return null for advice projects", () => {
 			expect(
 				getProjectPath({
-					projectGroup: ProductGroup.Advice,
-				} as unknown as Project)
+					projectGroup: ProjectGroup.Advice,
+					projectType: ProjectType.MIB,
+					reference: "GID-MIB123",
+					status: ProjectStatus.InProgress,
+				})
 			).toBeNull();
 		});
 
-		it("should return lowercase awaiting development gid url for proposed status projects", () => {
-			expect(
-				getProjectPath({
-					projectGroup: ProductGroup.Guidance,
-					status: ProjectStatus.Proposed,
-					reference: "GID-TA123",
-				} as unknown as Project)
-			).toBe("/indicators/awaiting-development/gid-ta123");
-		});
-
-		it("should return lowercase guidance gid url for non-proposed status projects", () => {
-			expect(
-				getProjectPath({
-					//TODO is this correct projectGroup for /indicators
-					projectGroup: ProductGroup.Guidance,
-					status: ProjectStatus.InProgress,
-					reference: "GID-TA123",
-				} as unknown as Project)
-			).toBe("/indicators/indevelopment/gid-ta123");
-		});
+		describe.each([
+			[ProjectGroup.Other, ProjectType.IND, "indicators"],
+			[ProjectGroup.Other, ProjectType.NGC, "guidance"],
+			[ProjectGroup.Guidance, ProjectType.NG, "guidance"],
+			[ProjectGroup.Standard, ProjectType.QS, "guidance"],
+		])(
+			"project group of %s and project type of %s should be %s",
+			(projectGroup, projectType, groupSlug) => {
+				it.each([
+					[ProjectStatus.Discontinued, "discontinued"],
+					[ProjectStatus.ImpactedByCOVID19, "indevelopment"],
+					[ProjectStatus.InProgress, "indevelopment"],
+					[ProjectStatus.Proposed, "awaiting-development"],
+					[ProjectStatus.Referred, "indevelopment"],
+					[ProjectStatus.Suspended, "indevelopment"],
+					[ProjectStatus.TopicSelection, "topic-selection"],
+				])(
+					"should return correct path for status %s of %s",
+					(status, expectedPathSegment) => {
+						expect(
+							getProjectPath({
+								projectGroup,
+								projectType,
+								status,
+								reference: `GID-${projectType}123`,
+							})
+						).toBe(
+							`/${groupSlug}/${expectedPathSegment}/gid-${projectType.toLowerCase()}123`
+						);
+					}
+				);
+			}
+		);
 	});
 
 	describe("getProductPath", () => {

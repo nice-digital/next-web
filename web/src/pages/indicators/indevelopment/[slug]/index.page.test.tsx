@@ -10,15 +10,16 @@ import InDevelopmentPage, {
 	InDevelopmentPageProps,
 } from "./index.page";
 
-const productRoot = "indicators",
+const productRoot = "guidance",
+	statusSlug = "indevelopment",
 	slug = "gid-ng10237",
-	resolvedUrl = `/${productRoot}/indevelopment/${slug}`,
+	resolvedUrl = `/${productRoot}/${statusSlug}/${slug}`,
 	getServerSidePropsContext = {
 		params: {
 			slug,
 		},
 		resolvedUrl,
-		query: { productRoot },
+		query: { productRoot, statusSlug },
 	} as unknown as GetServerSidePropsContext<{ slug: string }>;
 
 describe("/indevelopment/[slug].page", () => {
@@ -241,6 +242,7 @@ describe("/indevelopment/[slug].page", () => {
 						slug: "gid-ip1153",
 					},
 					resolvedUrl: "/indicators/indevelopment/gid-ip1153",
+					query: { productRoot, statusSlug: "discontinued" },
 				})) as {
 					props: InDevelopmentPageProps;
 				}
@@ -321,6 +323,7 @@ describe("/indevelopment/[slug].page", () => {
 						slug: "gid-ipg10305",
 					},
 					resolvedUrl: "/indicators/indevelopment/gid-ipg10305",
+					query: { productRoot, statusSlug },
 				})) as {
 					props: InDevelopmentPageProps;
 				}
@@ -335,7 +338,7 @@ describe("/indevelopment/[slug].page", () => {
 
 			expect(consultationLink).toHaveAttribute(
 				"href",
-				"/indicators/indevelopment/gid-ipg10305/consultations/html-content"
+				"/guidance/indevelopment/gid-ipg10305/consultations/html-content"
 			);
 		});
 
@@ -346,7 +349,11 @@ describe("/indevelopment/[slug].page", () => {
 					params: {
 						slug: "gid-ipg10307",
 					},
-					resolvedUrl: "/indicators/indevelopment/gid-ipg10307",
+					resolvedUrl: "/guidance/awaiting-development/gid-ipg10307",
+					query: {
+						productRoot: "guidance",
+						statusSlug: "awaiting-development",
+					},
 				})) as {
 					props: InDevelopmentPageProps;
 				}

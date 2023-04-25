@@ -170,7 +170,7 @@ exports[`[resourceTitleId].page DocumentsHTMLPage should match snapshot for main
           <a
             aria-current="false"
             class="horizontal-nav__link"
-            href="/indicators/indevelopment/gid-ta10730"
+            href="/guidance/indevelopment/gid-ta10730"
           >
             Project information
           </a>
@@ -181,7 +181,7 @@ exports[`[resourceTitleId].page DocumentsHTMLPage should match snapshot for main
           <a
             aria-current="true"
             class="horizontal-nav__link"
-            href="/indicators/indevelopment/gid-ta10730/documents"
+            href="/guidance/indevelopment/gid-ta10730/documents"
           >
             Project documents
           </a>
@@ -206,7 +206,7 @@ exports[`[resourceTitleId].page DocumentsHTMLPage should match snapshot for main
               class="card__heading"
             >
               <a
-                href="/indicators/indevelopment/gid-ta10730/downloads/gid-ta10730-final-matrix.pdf"
+                href="/guidance/indevelopment/gid-ta10730/downloads/gid-ta10730-final-matrix.pdf"
               >
                 Final stakeholder list
                  
@@ -288,7 +288,7 @@ exports[`[resourceTitleId].page DocumentsHTMLPage should match snapshot for main
               class="card__heading"
             >
               <a
-                href="/indicators/indevelopment/gid-ta10730/downloads/gid-ta10730-equality-impact-assessment-scoping.pdf"
+                href="/guidance/indevelopment/gid-ta10730/downloads/gid-ta10730-equality-impact-assessment-scoping.pdf"
               >
                 Equality impact assessment (Scoping)
                  
@@ -370,7 +370,7 @@ exports[`[resourceTitleId].page DocumentsHTMLPage should match snapshot for main
               class="card__heading"
             >
               <a
-                href="/indicators/indevelopment/gid-ta10730/downloads/gid-ta10730-scope-consultation-comments-and-responses.pdf"
+                href="/guidance/indevelopment/gid-ta10730/downloads/gid-ta10730-scope-consultation-comments-and-responses.pdf"
               >
                 NICE's response to comments on the draft scope and provisional stakeholder list
                  
@@ -452,7 +452,7 @@ exports[`[resourceTitleId].page DocumentsHTMLPage should match snapshot for main
               class="card__heading"
             >
               <a
-                href="/indicators/indevelopment/gid-ta10730/downloads/gid-ta10730-final-scope-2.pdf"
+                href="/guidance/indevelopment/gid-ta10730/downloads/gid-ta10730-final-scope-2.pdf"
               >
                 Final scope
                  
