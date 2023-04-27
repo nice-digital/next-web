@@ -3,8 +3,7 @@ const path = require("path");
 
 const config = require("config"),
 	glob = require("glob"),
-	withNodeConfig = require("next-plugin-node-config"),
-	withTranspiledModules = require("next-transpile-modules");
+	withNodeConfig = require("next-plugin-node-config");
 
 /**
  * A list of paths to node modules that should allow transpilation.
@@ -122,21 +121,22 @@ const nextConfig = {
 			},
 		];
 	},
+	transpilePackages: [
+		...niceDigitalModulesToTranspile,
+		...nonES5ModulesToTranspile,
+	],
 	typescript: {
 		// We run our own typechecking so no need to do it twice
 		ignoreBuildErrors: process.env.NODE_ENV === "production",
 	},
 	sassOptions: {
+		fiber: false,
 		includePaths: [path.join(__dirname, "node_modules/@nice-digital")],
 	},
 };
 
 // The weird comment syntax below is a JSDoc TypeScript cast: https://edibleco.de/2UMm8nx
 /** @type {import('next').NextConfig} */
-const finalConfig = withNodeConfig(
-	withTranspiledModules(
-		niceDigitalModulesToTranspile.concat(nonES5ModulesToTranspile)
-	)(nextConfig)
-);
+const finalConfig = withNodeConfig(nextConfig);
 
 module.exports = finalConfig;
