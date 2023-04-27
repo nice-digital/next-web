@@ -12,8 +12,7 @@ exports[`SearchNoResults should match snapshot 1`] = `
         Try browsing by topic
       </h3>
       <p>
-        Our
-         
+        Our 
         <a
           href="/guidance/conditions-and-diseases"
         >
