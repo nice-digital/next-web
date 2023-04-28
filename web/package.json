@@ -24,7 +24,7 @@
     "extends @nice-digital/browserslist-config"
   ],
   "dependencies": {
-    "@nice-digital/design-system": "^4.0.0",
+    "@nice-digital/design-system": "^5.0.5",
     "@nice-digital/global-nav": "^5.0.923",
     "@nice-digital/search-client": "^2.0.1470",
     "cache-manager": "^4.1.0",
@@ -65,6 +65,6 @@
     "type-fest": "^2.17.0"
   },
   "volta": {
-    "node": "14.21.3"
+    "node": "18.13.0"
   }
 }

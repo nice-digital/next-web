@@ -80,9 +80,6 @@ const commonHeaders = [
 			`<${config.get("public.cookieBannerScriptURL")}>; rel=preload; as=script`,
 			"<https://apikeys.civiccomputing.com>; rel=preconnect; crossorigin",
 			"<https://www.googletagmanager.com>; rel=preconnect",
-			// ANCHOR[id=font-preconnects] Speed up Google font loading with preconnects
-			"<https://fonts.googleapis.com>; rel=preconnect",
-			"<https://fonts.gstatic.com>; rel=preconnect; crossorigin",
 		].join(","),
 	},
 ];
