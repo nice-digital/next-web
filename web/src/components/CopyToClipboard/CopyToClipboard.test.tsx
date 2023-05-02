@@ -46,7 +46,7 @@ describe("CopyToClipboard", () => {
 	});
 
 	describe("Success", () => {
-		it("should write target element HTML and fallback TSV to the clipboard", () => {
+		it("should write target element HTML and fallback TSV to the clipboard", async () => {
 			const tableHtml = `<table id="test-table"><thead><tr><th>Header 1</th><th>Header 2</th></tr></thead><tbody><tr><td><a href="/test">Body 1a</a></td><td>Body 1b</td></tr><tr><td>Body 2a</td><td>Body 2b</td></tr></tbody></table>`;
 
 			document.body.innerHTML = tableHtml;
@@ -57,12 +57,17 @@ describe("CopyToClipboard", () => {
 				</CopyToClipboard>
 			);
 
-			userEvent.click(screen.getByText("Copy to clipboard"));
+			await userEvent.click(screen.getByText("Copy to clipboard"));
 
-			expect(clipboard.write).toHaveBeenCalledTimes(1);
-			expect(clipboard.write).toHaveBeenCalledWith([
-				expect.any(clipboard.ClipboardItem),
-			]);
+			await waitFor(() => {
+				expect(clipboard.write).toHaveBeenCalledTimes(1);
+			});
+
+			await waitFor(() => {
+				expect(clipboard.write).toHaveBeenCalledWith([
+					expect.any(clipboard.ClipboardItem),
+				]);
+			});
 
 			const clipBoardItemMock = clipboard.ClipboardItem as jest.Mock;
 

@@ -1,3 +1,4 @@
+import { waitFor } from "@testing-library/react";
 import userEvent from "@testing-library/user-event";
 import dayjs from "dayjs";
 
@@ -60,16 +61,18 @@ describe("ToFromDateFilters", () => {
 			expect(screen.getByLabelText("From date")).toHaveValue("1867-11-07");
 		});
 
-		it("should set empty 'to date' field to today when 'from date' is set", () => {
+		it("should set empty 'to date' field to today when 'from date' is set", async () => {
 			render(<ToFromDateFilters useFutureDates={false} />);
 
 			expect(screen.getByLabelText("To date")).toHaveValue("");
 
-			userEvent.type(screen.getByLabelText("From date"), "1912-06-23");
+			await userEvent.type(screen.getByLabelText("From date"), "1912-06-23");
 
-			expect(screen.getByLabelText("To date")).toHaveValue(
-				dayjs().format("YYYY-MM-DD")
-			);
+			await waitFor(() => {
+				expect(screen.getByLabelText("To date")).toHaveValue(
+					dayjs().format("YYYY-MM-DD")
+				);
+			});
 		});
 	});
 
@@ -175,20 +178,22 @@ describe("ToFromDateFilters", () => {
 			["To date", "From date"],
 		])(
 			"should make '%s' required when '%s' has a value",
-			(requiredDate, inputtedDate) => {
+			async (requiredDate, inputtedDate) => {
 				render(<ToFromDateFilters useFutureDates={false} />);
 
 				expect(screen.getByLabelText(requiredDate)).not.toHaveAttribute(
 					"required"
 				);
 
-				userEvent.type(screen.getByLabelText(inputtedDate), "1912-06-23");
-				userEvent.clear(screen.getByLabelText(requiredDate));
+				await userEvent.type(screen.getByLabelText(inputtedDate), "1912-06-23");
+				await userEvent.clear(screen.getByLabelText(requiredDate));
 
-				expect(screen.getByLabelText(requiredDate)).toHaveAttribute(
-					"required",
-					""
-				);
+				await waitFor(() => {
+					expect(screen.getByLabelText(requiredDate)).toHaveAttribute(
+						"required",
+						""
+					);
+				});
 			}
 		);
 	});

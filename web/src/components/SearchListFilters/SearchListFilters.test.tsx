@@ -59,7 +59,7 @@ describe("SearchListFilters", () => {
 	});
 
 	describe("Hidden fields", () => {
-		it("should serialize given page size and sort order in form submission", () => {
+		it("should serialize given page size and sort order in form submission", async () => {
 			rerender(
 				<SearchListFilters
 					numActiveModifiers={2}
@@ -74,13 +74,15 @@ describe("SearchListFilters", () => {
 
 			userEvent.click(screen.getByRole("button", { name: "Filter" }));
 
-			expect(routerPush).toHaveBeenCalledWith(
-				"?ps=20&s=Title&gst=Published&ndt=Guidance&ngt=NICE+guidelines",
-				undefined,
-				{
-					scroll: false,
-				}
-			);
+			await waitFor(() => {
+				expect(routerPush).toHaveBeenCalledWith(
+					"?ps=20&s=Title&gst=Published&ndt=Guidance&ngt=NICE+guidelines",
+					undefined,
+					{
+						scroll: false,
+					}
+				);
+			});
 		});
 	});
 
@@ -131,7 +133,7 @@ describe("SearchListFilters", () => {
 	});
 
 	describe("Title filter", () => {
-		it("should add query parameter when query text is supplied", () => {
+		it("should add query parameter when query text is supplied", async () => {
 			rerender(
 				<SearchListFilters
 					numActiveModifiers={2}
@@ -146,11 +148,13 @@ describe("SearchListFilters", () => {
 
 			userEvent.click(input);
 
-			expect(routerPush).toHaveBeenCalledWith(
-				"?q=diabetes&gst=Published&nai=Antimicrobial+prescribing&ndt=Guidance&ngt=NICE+guidelines",
-				undefined,
-				{ scroll: false }
-			);
+			await waitFor(() => {
+				expect(routerPush).toHaveBeenCalledWith(
+					"?q=diabetes&gst=Published&nai=Antimicrobial+prescribing&ndt=Guidance&ngt=NICE+guidelines",
+					undefined,
+					{ scroll: false }
+				);
+			});
 		});
 
 		it("should NOT render title filter input box and label when show text filter is false", () => {
@@ -200,20 +204,24 @@ describe("SearchListFilters", () => {
 			expect(screen.getByText("Filter")).toHaveAttribute("type", "submit");
 		});
 
-		it("should use NextJS router with serialized form on search button click", () => {
-			const input = screen.getByLabelText("Filter by title or keyword"),
+		it("should use NextJS router with serialized form on search button click", async () => {
+			const input = screen.getByRole("textbox", {
+					name: "Filter by title or keyword",
+				}),
 				button = screen.getByRole("button", { name: "Filter" });
 
-			userEvent.type(input, "diabetes");
-			userEvent.click(button);
+			await userEvent.type(input, "diabetes");
+			await userEvent.click(button);
 
-			expect(routerPush).toHaveBeenCalledWith(
-				"?q=diabetes&gst=Published&ndt=Guidance&ngt=NICE+guidelines",
-				undefined,
-				{
-					scroll: false,
-				}
-			);
+			await waitFor(() => {
+				expect(routerPush).toHaveBeenCalledWith(
+					"?q=diabetes&gst=Published&ndt=Guidance&ngt=NICE+guidelines",
+					undefined,
+					{
+						scroll: false,
+					}
+				);
+			});
 		});
 	});
 
@@ -251,7 +259,10 @@ describe("SearchListFilters", () => {
 			});
 
 			userEvent.click(checkbox);
-			expect(checkbox).toBeChecked();
+
+			await waitFor(() => {
+				expect(checkbox).toBeChecked();
+			});
 
 			expect(window.dataLayer[0]).toStrictEqual({
 				event: "search.filter-select",
@@ -273,16 +284,18 @@ describe("SearchListFilters", () => {
 			]);
 		});
 
-		it("should use NextJS router with serialized form on search checkbox tick", () => {
+		it("should use NextJS router with serialized form on search checkbox tick", async () => {
 			const input = screen.getByLabelText("Antimicrobial prescribing (21)");
 
 			userEvent.click(input);
 
-			expect(routerPush).toHaveBeenCalledWith(
-				"?gst=Published&nai=Antimicrobial+prescribing&ndt=Guidance&ngt=NICE+guidelines",
-				undefined,
-				{ scroll: false }
-			);
+			await waitFor(() => {
+				expect(routerPush).toHaveBeenCalledWith(
+					"?gst=Published&nai=Antimicrobial+prescribing&ndt=Guidance&ngt=NICE+guidelines",
+					undefined,
+					{ scroll: false }
+				);
+			});
 		});
 	});
 });
