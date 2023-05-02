@@ -2,13 +2,23 @@
 
 exports[`/guidance/inconsultation should match the snapshot 1`] = `
 <div>
+  <style>
+    
+		html {
+			--sans-font-family: Arial;
+			--serif-font-family: Arial;
+		}
+	
+  </style>
   <div />
   <main>
     <div
       class="container"
+      data-component="container"
     >
       <nav
         aria-label="Breadcrumbs"
+        data-component="breadcrumbs"
         role="navigation"
       >
         <ol
@@ -76,6 +86,7 @@ exports[`/guidance/inconsultation should match the snapshot 1`] = `
       </script>
       <div
         class="page-header"
+        data-component="page-header"
         id="content-start"
       >
         <h1
@@ -114,6 +125,7 @@ exports[`/guidance/inconsultation should match the snapshot 1`] = `
         >
           <li
             class="horizontal-nav__item"
+            data-component="horizontal-nav"
           >
             <a
               aria-current="false"
@@ -125,6 +137,7 @@ exports[`/guidance/inconsultation should match the snapshot 1`] = `
           </li>
           <li
             class="horizontal-nav__item"
+            data-component="horizontal-nav"
           >
             <a
               aria-current="false"
@@ -136,6 +149,7 @@ exports[`/guidance/inconsultation should match the snapshot 1`] = `
           </li>
           <li
             class="horizontal-nav__item"
+            data-component="horizontal-nav"
           >
             <a
               aria-current="false"
@@ -147,6 +161,7 @@ exports[`/guidance/inconsultation should match the snapshot 1`] = `
           </li>
           <li
             class="horizontal-nav__item"
+            data-component="horizontal-nav"
           >
             <a
               aria-current="false"
@@ -158,6 +173,7 @@ exports[`/guidance/inconsultation should match the snapshot 1`] = `
           </li>
           <li
             class="horizontal-nav__item"
+            data-component="horizontal-nav"
           >
             <a
               aria-current="false"
@@ -175,6 +191,7 @@ exports[`/guidance/inconsultation should match the snapshot 1`] = `
         <section
           aria-label="Filter results"
           class="panelWrapper"
+          data-component="grid-item"
           data-g="12 md:4 lg:3"
         >
           <form
@@ -183,6 +200,7 @@ exports[`/guidance/inconsultation should match the snapshot 1`] = `
           >
             <div
               class="filter-panel"
+              data-component="filter-panel"
             >
               <h2
                 class="filter-panel__heading"
@@ -242,6 +260,7 @@ exports[`/guidance/inconsultation should match the snapshot 1`] = `
                   </label>
                   <div
                     class="input"
+                    data-component="input"
                   >
                     <input
                       autocomplete="off"
@@ -255,6 +274,7 @@ exports[`/guidance/inconsultation should match the snapshot 1`] = `
                   </div>
                   <button
                     class="btn button"
+                    data-component="button--primary"
                     type="submit"
                   >
                     Filter
@@ -307,6 +327,7 @@ exports[`/guidance/inconsultation should match the snapshot 1`] = `
                     >
                       <div
                         class="input"
+                        data-component="input"
                       >
                         <label
                           class="input__label"
@@ -328,6 +349,7 @@ exports[`/guidance/inconsultation should match the snapshot 1`] = `
                       </div>
                       <div
                         class="input"
+                        data-component="input"
                       >
                         <label
                           class="input__label"
@@ -349,6 +371,7 @@ exports[`/guidance/inconsultation should match the snapshot 1`] = `
                       </div>
                       <button
                         class="btn btn--secondary ml--0"
+                        data-component="button--secondary"
                         type="submit"
                       >
                         Apply date filters
@@ -400,6 +423,7 @@ exports[`/guidance/inconsultation should match the snapshot 1`] = `
                     </legend>
                     <label
                       class="filter-option"
+                      data-component="filter-option"
                       for="filter_ndt_guidance"
                     >
                       <input
@@ -461,6 +485,7 @@ exports[`/guidance/inconsultation should match the snapshot 1`] = `
                     </legend>
                     <label
                       class="filter-option"
+                      data-component="filter-option"
                       for="filter_ngt_diagnostics-guidance"
                     >
                       <input
@@ -478,6 +503,7 @@ exports[`/guidance/inconsultation should match the snapshot 1`] = `
                     </label>
                     <label
                       class="filter-option"
+                      data-component="filter-option"
                       for="filter_ngt_interventional-procedures-guidance"
                     >
                       <input
@@ -495,6 +521,7 @@ exports[`/guidance/inconsultation should match the snapshot 1`] = `
                     </label>
                     <label
                       class="filter-option"
+                      data-component="filter-option"
                       for="filter_ngt_medical-technologies-guidance"
                     >
                       <input
@@ -512,6 +539,7 @@ exports[`/guidance/inconsultation should match the snapshot 1`] = `
                     </label>
                     <label
                       class="filter-option"
+                      data-component="filter-option"
                       for="filter_ngt_nice-guideline"
                     >
                       <input
@@ -529,6 +557,7 @@ exports[`/guidance/inconsultation should match the snapshot 1`] = `
                     </label>
                     <label
                       class="filter-option"
+                      data-component="filter-option"
                       for="filter_ngt_technology-appraisal-guidance"
                     >
                       <input
@@ -552,10 +581,12 @@ exports[`/guidance/inconsultation should match the snapshot 1`] = `
         </section>
         <section
           aria-labelledby="filter-summary"
+          data-component="grid-item"
           data-g="12 md:8 lg:9"
         >
           <div
             class="filter-summary"
+            data-component="filter-summary"
             id="filter-summary"
           >
             <div
@@ -584,7 +615,6 @@ exports[`/guidance/inconsultation should match the snapshot 1`] = `
               <select
                 class="filter-summary__select"
                 id="sorting-options"
-                name="s"
               >
                 <option
                   selected=""
@@ -606,6 +636,7 @@ exports[`/guidance/inconsultation should match the snapshot 1`] = `
             <table
               aria-describedby="filter-summary"
               class="table"
+              data-component="table"
               id="results"
             >
               <caption
@@ -904,6 +935,7 @@ exports[`/guidance/inconsultation should match the snapshot 1`] = `
           <nav
             aria-label="Pagination"
             class="pagination "
+            data-component="pagination"
             role="navigation"
           >
             <ol
@@ -966,10 +998,12 @@ exports[`/guidance/inconsultation should match the snapshot 1`] = `
           >
             <div
               class="mb--e mb--0-sm"
+              data-component="grid-item"
               data-g="12 sm:6"
             >
               <button
                 class="btn mv--0 mh--0"
+                data-component="button--primary"
                 type="button"
               >
                 Copy 
@@ -979,6 +1013,7 @@ exports[`/guidance/inconsultation should match the snapshot 1`] = `
             </div>
             <div
               class="text-right"
+              data-component="grid-item"
               data-g="12 sm:6"
             >
               <h3
