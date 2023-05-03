@@ -615,6 +615,7 @@ exports[`/guidance/inconsultation should match the snapshot 1`] = `
               <select
                 class="filter-summary__select"
                 id="sorting-options"
+                name="s"
               >
                 <option
                   selected=""

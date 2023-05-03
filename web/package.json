@@ -24,7 +24,7 @@
     "extends @nice-digital/browserslist-config"
   ],
   "dependencies": {
-    "@nice-digital/design-system": "^5.0.7",
+    "@nice-digital/design-system": "^5.0.9",
     "@nice-digital/global-nav": "^5.0.923",
     "@nice-digital/search-client": "^2.0.1470",
     "cache-manager": "^4.1.0",
