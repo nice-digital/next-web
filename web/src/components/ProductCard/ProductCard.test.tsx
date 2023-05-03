@@ -7,10 +7,10 @@ import { ProductCard } from "./ProductCard";
 type Product = Parameters<typeof ProductCard>[0]["product"];
 
 const mockProduct: Product = {
-	Title: "Test title",
-	Id: "NG123",
-	ProductGroup: ProductGroup.Guidance,
-	LastMajorModificationDate: "2020-12-31",
+	title: "Test title",
+	id: "NG123",
+	productGroup: ProductGroup.Guidance,
+	lastMajorModificationDate: "2020-12-31",
 } as Product;
 
 describe("ProductCard", () => {

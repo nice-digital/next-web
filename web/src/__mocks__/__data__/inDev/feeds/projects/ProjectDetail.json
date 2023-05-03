@@ -1,0 +1,2800 @@
+{
+  "_links": {
+    "nice.indev:stakeholder-registration": [
+      {
+        "href": "https://alpha.nice.org.uk/get-involved/stakeholder-registration/register"
+      }
+    ],
+    "self": [{ "href": "/project/NG100" }]
+  },
+  "_embedded": {
+    "nice.indev:timeline-list": {
+      "_links": { "self": [{}] },
+      "_embedded": {
+        "nice.indev:timeline": [
+          {
+            "_links": { "self": [{}] },
+            "ETag": null,
+            "Column1": "11 July 2018",
+            "Column2": "Expected publication",
+            "AdditionalInfoLabel": null,
+            "AdditionalInfo": null,
+            "Hidden": false
+          },
+          {
+            "_links": { "self": [{}] },
+            "ETag": null,
+            "Column1": "11 July 2018",
+            "Column2": "Equality impact assessment published",
+            "AdditionalInfoLabel": null,
+            "AdditionalInfo": null,
+            "Hidden": false
+          },
+          {
+            "_links": { "self": [{}] },
+            "ETag": null,
+            "Column1": "11 July 2018",
+            "Column2": "Consultation comments published",
+            "AdditionalInfoLabel": null,
+            "AdditionalInfo": null,
+            "Hidden": false
+          },
+          {
+            "_links": { "self": [{}] },
+            "ETag": null,
+            "Column1": "11 July 2018",
+            "Column2": "Guidance published",
+            "AdditionalInfoLabel": null,
+            "AdditionalInfo": null,
+            "Hidden": false
+          },
+          {
+            "_links": { "self": [{}] },
+            "ETag": null,
+            "Column1": "18 January 2018 - 01 March 2018",
+            "Column2": "Draft guidance consultation",
+            "AdditionalInfoLabel": null,
+            "AdditionalInfo": null,
+            "Hidden": false
+          },
+          {
+            "_links": { "self": [{}] },
+            "ETag": null,
+            "Column1": "30 November 2017",
+            "Column2": "Pre-consultation documents released",
+            "AdditionalInfoLabel": null,
+            "AdditionalInfo": null,
+            "Hidden": false
+          },
+          {
+            "_links": { "self": [{}] },
+            "ETag": null,
+            "Column1": "12 September 2017",
+            "Column2": "Committee meeting: 9",
+            "AdditionalInfoLabel": "Meeting number",
+            "AdditionalInfo": "9",
+            "Hidden": false
+          },
+          {
+            "_links": { "self": [{}] },
+            "ETag": null,
+            "Column1": "05 July 2017",
+            "Column2": "Committee meeting: 8",
+            "AdditionalInfoLabel": "Meeting number",
+            "AdditionalInfo": "8",
+            "Hidden": false
+          },
+          {
+            "_links": { "self": [{}] },
+            "ETag": null,
+            "Column1": "30 May 2017",
+            "Column2": "Committee meeting: 7",
+            "AdditionalInfoLabel": "Meeting number",
+            "AdditionalInfo": "7",
+            "Hidden": false
+          },
+          {
+            "_links": { "self": [{}] },
+            "ETag": null,
+            "Column1": "15 May 2017",
+            "Column2": "Stakeholder list updated",
+            "AdditionalInfoLabel": null,
+            "AdditionalInfo": null,
+            "Hidden": false
+          },
+          {
+            "_links": { "self": [{}] },
+            "ETag": null,
+            "Column1": "21 April 2017",
+            "Column2": "Committee meeting: 6",
+            "AdditionalInfoLabel": "Meeting number",
+            "AdditionalInfo": "6",
+            "Hidden": false
+          },
+          {
+            "_links": { "self": [{}] },
+            "ETag": null,
+            "Column1": "07 March 2017",
+            "Column2": "Committee meeting: 5",
+            "AdditionalInfoLabel": "Meeting number",
+            "AdditionalInfo": "5",
+            "Hidden": false
+          },
+          {
+            "_links": { "self": [{}] },
+            "ETag": null,
+            "Column1": "30 January 2017",
+            "Column2": "Committee meeting: 4",
+            "AdditionalInfoLabel": "Meeting number",
+            "AdditionalInfo": "4",
+            "Hidden": false
+          },
+          {
+            "_links": { "self": [{}] },
+            "ETag": null,
+            "Column1": "19 December 2016",
+            "Column2": "Committee meeting: 3",
+            "AdditionalInfoLabel": "Meeting number",
+            "AdditionalInfo": "3",
+            "Hidden": false
+          },
+          {
+            "_links": { "self": [{}] },
+            "ETag": null,
+            "Column1": "07 November 2016",
+            "Column2": "Committee meeting: 2",
+            "AdditionalInfoLabel": "Meeting number",
+            "AdditionalInfo": "2",
+            "Hidden": false
+          },
+          {
+            "_links": { "self": [{}] },
+            "ETag": null,
+            "Column1": "14 September 2016",
+            "Column2": "Committee meeting: 1",
+            "AdditionalInfoLabel": "Meeting number",
+            "AdditionalInfo": "1",
+            "Hidden": false
+          },
+          {
+            "_links": { "self": [{}] },
+            "ETag": null,
+            "Column1": "13 September 2016",
+            "Column2": "Scope published",
+            "AdditionalInfoLabel": null,
+            "AdditionalInfo": null,
+            "Hidden": false
+          },
+          {
+            "_links": { "self": [{}] },
+            "ETag": null,
+            "Column1": "13 September 2016",
+            "Column2": "Committee list updated",
+            "AdditionalInfoLabel": null,
+            "AdditionalInfo": null,
+            "Hidden": false
+          },
+          {
+            "_links": { "self": [{}] },
+            "ETag": null,
+            "Column1": "12 September 2016",
+            "Column2": "Equality impact assessment published",
+            "AdditionalInfoLabel": null,
+            "AdditionalInfo": null,
+            "Hidden": false
+          },
+          {
+            "_links": { "self": [{}] },
+            "ETag": null,
+            "Column1": "17 June 2016 - 15 July 2016",
+            "Column2": "Draft scope consultation",
+            "AdditionalInfoLabel": null,
+            "AdditionalInfo": null,
+            "Hidden": false
+          },
+          {
+            "_links": { "self": [{}] },
+            "ETag": null,
+            "Column1": "24 May 2016",
+            "Column2": "Scoping workshop",
+            "AdditionalInfoLabel": null,
+            "AdditionalInfo": null,
+            "Hidden": false
+          },
+          {
+            "_links": { "self": [{}] },
+            "ETag": null,
+            "Column1": "24 May 2016",
+            "Column2": "Scoping workshop",
+            "AdditionalInfoLabel": null,
+            "AdditionalInfo": null,
+            "Hidden": false
+          },
+          {
+            "_links": { "self": [{}] },
+            "ETag": null,
+            "Column1": "05 February 2016 - 19 February 2016",
+            "Column2": "Committee chair recruitment",
+            "AdditionalInfoLabel": null,
+            "AdditionalInfo": null,
+            "Hidden": false
+          }
+        ]
+      },
+      "ETag": null
+    },
+    "nice.indev:full-update-list": {
+      "_links": { "self": [{}] },
+      "_embedded": {
+        "nice.indev:full-update": {
+          "_links": { "self": [{}] },
+          "ETag": null,
+          "UpdateReference": "CG79"
+        }
+      },
+      "ETag": null
+    },
+    "nice.indev:process-homepage": {
+      "_links": {
+        "self": [
+          {
+            "href": "https://www.nice.org.uk/about/what-we-do/our-programmes/nice-guidance/nice-guidelines/how-we-develop-nice-guidelines"
+          },
+          {}
+        ]
+      },
+      "ETag": null,
+      "Description": "For further information on the guideline development process, please read",
+      "LinkText": "how we develop NICE guidelines"
+    },
+    "nice.indev:project-team-list": {
+      "_links": { "self": [{}] },
+      "_embedded": {
+        "nice.indev:project-team": {
+          "_links": { "self": [{}] },
+          "ETag": null,
+          "Column1": "Developer",
+          "Column2": "National Guideline Centre"
+        }
+      },
+      "ETag": null
+    },
+    "nice.indev:email-enquiry-list": {
+      "_links": { "self": [{}] },
+      "_embedded": {
+        "nice.indev:email-enquiry": {
+          "_links": { "self": [{}] },
+          "ETag": null,
+          "Item": "RheumatoidArthritisUpdate@nice.org.uk"
+        }
+      },
+      "ETag": null
+    },
+    "nice.indev:panel-list": {
+      "_links": { "self": [{}] },
+      "_embedded": {
+        "nice.indev:panel": [
+          {
+            "_links": { "self": [{}] },
+            "_embedded": {
+              "nice.indev:resource-list": {
+                "_links": { "self": [{}] },
+                "_embedded": {
+                  "nice.indev:resource": {
+                    "_links": { "self": [{}] },
+                    "_embedded": {
+                      "nice.indev:file": {
+                        "_links": {
+                          "self": [
+                            {
+                              "href": "/guidance/NG100/documents/equality-impact-assessment-5"
+                            }
+                          ]
+                        },
+                        "ETag": null,
+                        "Id": "ab586129-43ca-4d1f-aa54-2b4e6543d4a2",
+                        "MimeType": "application/pdf",
+                        "FileName": "RA_Equality impact assessment form.pdf",
+                        "Length": 233482,
+                        "Hash": "8ED6AC0D44838AB55A2F1AF5FC0B9B3C65B74093",
+                        "Name": "default",
+                        "Reference": "NG100",
+                        "ResourceTitleId": "equality-impact-assessment-5",
+                        "ConsultationDocumentId": 0
+                      }
+                    },
+                    "ETag": null,
+                    "Title": "Equality impact assessment",
+                    "Level": 1,
+                    "PublishedDate": "2020-03-31T16:01:00",
+                    "ExternalUrl": null,
+                    "ShowInDocList": true,
+                    "TextOnly": false,
+                    "ConsultationId": 0,
+                    "ConsultationDocumentId": 0,
+                    "IsCurrentViewableConsultationMarkup": false,
+                    "ConvertedDocument": false,
+                    "SupportsComments": false
+                  }
+                },
+                "ETag": null,
+                "HasResources": true
+              }
+            },
+            "ETag": null,
+            "Title": "Equality impact assessment published",
+            "PanelType": "History",
+            "LegacyPanel": false,
+            "OriginalReference": null,
+            "UpdateReference": null,
+            "ShowPanel": true
+          },
+          {
+            "_links": { "self": [{}] },
+            "_embedded": {
+              "nice.indev:resource-list": {
+                "_links": { "self": [{}] },
+                "_embedded": {
+                  "nice.indev:resource": {
+                    "_links": { "self": [{}] },
+                    "_embedded": {
+                      "nice.indev:file": {
+                        "_links": {
+                          "self": [
+                            {
+                              "href": "/guidance/NG100/documents/consultation-comments-and-responses-3"
+                            }
+                          ]
+                        },
+                        "ETag": null,
+                        "Id": "7991d9b7-8323-412b-95d0-08f5e0e0f0e9",
+                        "MimeType": "application/pdf",
+                        "FileName": "Rheumatoid arthritis (update) - SH comments table 170518.pdf",
+                        "Length": 1365552,
+                        "Hash": "73DD729317FACD0556DC12B462D0BD393256EF87",
+                        "Name": "default",
+                        "Reference": "NG100",
+                        "ResourceTitleId": "consultation-comments-and-responses-3",
+                        "ConsultationDocumentId": 0
+                      }
+                    },
+                    "ETag": null,
+                    "Title": "Consultation comments and responses",
+                    "Level": 1,
+                    "PublishedDate": "2018-07-18T13:29:00",
+                    "ExternalUrl": null,
+                    "ShowInDocList": true,
+                    "TextOnly": false,
+                    "ConsultationId": 0,
+                    "ConsultationDocumentId": 0,
+                    "IsCurrentViewableConsultationMarkup": false,
+                    "ConvertedDocument": false,
+                    "SupportsComments": false
+                  }
+                },
+                "ETag": null,
+                "HasResources": true
+              }
+            },
+            "ETag": null,
+            "Title": "Consultation comments published",
+            "PanelType": "History",
+            "LegacyPanel": false,
+            "OriginalReference": null,
+            "UpdateReference": null,
+            "ShowPanel": true
+          },
+          {
+            "_links": { "self": [{}] },
+            "_embedded": {
+              "nice.indev:resource-list": {
+                "_links": { "self": [{}] },
+                "_embedded": {
+                  "nice.indev:resource": {
+                    "_links": { "self": [{}] },
+                    "_embedded": {
+                      "nice.indev:file": {
+                        "_links": {
+                          "self": [
+                            {
+                              "href": "/guidance/NG100/documents/equality-impact-assessment-5"
+                            }
+                          ]
+                        },
+                        "ETag": null,
+                        "Id": "ab586129-43ca-4d1f-aa54-2b4e6543d4a2",
+                        "MimeType": "application/pdf",
+                        "FileName": "RA_Equality impact assessment form.pdf",
+                        "Length": 233482,
+                        "Hash": "8ED6AC0D44838AB55A2F1AF5FC0B9B3C65B74093",
+                        "Name": "default",
+                        "Reference": "NG100",
+                        "ResourceTitleId": "equality-impact-assessment-5",
+                        "ConsultationDocumentId": 0
+                      }
+                    },
+                    "ETag": null,
+                    "Title": "Equality impact assessment",
+                    "Level": 1,
+                    "PublishedDate": "2020-03-31T16:01:00",
+                    "ExternalUrl": null,
+                    "ShowInDocList": true,
+                    "TextOnly": false,
+                    "ConsultationId": 0,
+                    "ConsultationDocumentId": 0,
+                    "IsCurrentViewableConsultationMarkup": false,
+                    "ConvertedDocument": false,
+                    "SupportsComments": false
+                  }
+                },
+                "ETag": null,
+                "HasResources": true
+              }
+            },
+            "ETag": null,
+            "Title": "Equality impact assessment published",
+            "PanelType": "Evidence",
+            "LegacyPanel": false,
+            "OriginalReference": null,
+            "UpdateReference": null,
+            "ShowPanel": true
+          },
+          {
+            "_links": { "self": [{}] },
+            "_embedded": {
+              "nice.indev:resource-list": {
+                "_links": { "self": [{}] },
+                "_embedded": {
+                  "nice.indev:resource": [
+                    {
+                      "_links": { "self": [{}] },
+                      "_embedded": {
+                        "nice.indev:file": {
+                          "_links": {
+                            "self": [
+                              {
+                                "href": "/guidance/NG100/documents/html-content-2"
+                              }
+                            ]
+                          },
+                          "ETag": null,
+                          "Id": "f24b19f5-fdb5-4c59-8850-26e244b05a42",
+                          "MimeType": "text/html",
+                          "FileName": "HtmlContent",
+                          "Length": 3650,
+                          "Hash": "34E6DC36B82EC84E1E7F5DF9658E01EDC1E9065A",
+                          "Name": "default",
+                          "Reference": "NG100",
+                          "ResourceTitleId": "html-content-2",
+                          "ConsultationDocumentId": 0
+                        }
+                      },
+                      "ETag": null,
+                      "Title": "Draft guidance consultation",
+                      "Level": 1,
+                      "PublishedDate": "2018-01-25T11:09:00",
+                      "ExternalUrl": null,
+                      "ShowInDocList": true,
+                      "TextOnly": false,
+                      "ConsultationId": 0,
+                      "ConsultationDocumentId": 0,
+                      "IsCurrentViewableConsultationMarkup": false,
+                      "ConvertedDocument": false,
+                      "SupportsComments": false
+                    },
+                    {
+                      "_links": { "self": [{}] },
+                      "_embedded": {
+                        "nice.indev:file": {
+                          "_links": {
+                            "self": [
+                              {
+                                "href": "/guidance/NG100/documents/comments-form-2"
+                              }
+                            ]
+                          },
+                          "ETag": null,
+                          "Id": "4e3edc75-5425-4c0f-99e1-e561404d3518",
+                          "MimeType": "application/msword",
+                          "FileName": "4. FORM - SH comments form (April 2016).doc",
+                          "Length": 61952,
+                          "Hash": "BF18168065D2DB19AF5545BFE3BE539F9E60B759",
+                          "Name": "default",
+                          "Reference": "NG100",
+                          "ResourceTitleId": "comments-form-2",
+                          "ConsultationDocumentId": 0
+                        }
+                      },
+                      "ETag": null,
+                      "Title": "Comments form",
+                      "Level": 1,
+                      "PublishedDate": "2018-01-18T01:01:00",
+                      "ExternalUrl": null,
+                      "ShowInDocList": true,
+                      "TextOnly": false,
+                      "ConsultationId": 0,
+                      "ConsultationDocumentId": 0,
+                      "IsCurrentViewableConsultationMarkup": false,
+                      "ConvertedDocument": false,
+                      "SupportsComments": false
+                    },
+                    {
+                      "_links": { "self": [{}] },
+                      "_embedded": {
+                        "nice.indev:file": {
+                          "_links": {
+                            "self": [
+                              {
+                                "href": "/guidance/NG100/documents/draft-guideline"
+                              }
+                            ]
+                          },
+                          "ETag": null,
+                          "Id": "01d465fa-04ce-4ba8-8a0e-47cf9578ba78",
+                          "MimeType": "application/pdf",
+                          "FileName": "Rheumatoid arthritis NICE guideline for consultation 2018 01 18.pdf",
+                          "Length": 637464,
+                          "Hash": "1A5D5484B8E6C720176E871126486BC010C5609E",
+                          "Name": "default",
+                          "Reference": "NG100",
+                          "ResourceTitleId": "draft-guideline",
+                          "ConsultationDocumentId": 0
+                        }
+                      },
+                      "ETag": null,
+                      "Title": "Draft guideline",
+                      "Level": 1,
+                      "PublishedDate": "2018-01-18T01:01:00",
+                      "ExternalUrl": null,
+                      "ShowInDocList": true,
+                      "TextOnly": false,
+                      "ConsultationId": 0,
+                      "ConsultationDocumentId": 0,
+                      "IsCurrentViewableConsultationMarkup": false,
+                      "ConvertedDocument": false,
+                      "SupportsComments": false
+                    },
+                    {
+                      "_links": { "self": [{}] },
+                      "_embedded": {
+                        "nice.indev:file": {
+                          "_links": {
+                            "self": [
+                              {
+                                "href": "/guidance/NG100/documents/committee-member-list-2"
+                              }
+                            ]
+                          },
+                          "ETag": null,
+                          "Id": "697b23bb-fd13-4bd2-9d33-af1d1cd171df",
+                          "MimeType": "application/pdf",
+                          "FileName": "RA_DOI register.pdf",
+                          "Length": 827885,
+                          "Hash": "45AAA5DE088130CE5F9A72B72334E963EDA8EACF",
+                          "Name": "default",
+                          "Reference": "NG100",
+                          "ResourceTitleId": "committee-member-list-2",
+                          "ConsultationDocumentId": 0
+                        }
+                      },
+                      "ETag": null,
+                      "Title": "Committee member list",
+                      "Level": 1,
+                      "PublishedDate": "2018-01-18T01:01:00",
+                      "ExternalUrl": null,
+                      "ShowInDocList": true,
+                      "TextOnly": false,
+                      "ConsultationId": 0,
+                      "ConsultationDocumentId": 0,
+                      "IsCurrentViewableConsultationMarkup": false,
+                      "ConvertedDocument": false,
+                      "SupportsComments": false
+                    },
+                    {
+                      "_links": { "self": [{}] },
+                      "_embedded": {
+                        "nice.indev:file": {
+                          "_links": {
+                            "self": [
+                              {
+                                "href": "/guidance/NG100/documents/evidence-review"
+                              }
+                            ]
+                          },
+                          "ETag": null,
+                          "Id": "4747764f-eecb-42a7-81e8-1734e056ed74",
+                          "MimeType": "application/pdf",
+                          "FileName": "RA_Evidence review A_US for diagnosis_CLEAN.pdf",
+                          "Length": 1296412,
+                          "Hash": "7C0274AA682CEE931B50B92A7A4D96838F9B4B42",
+                          "Name": "default",
+                          "Reference": "NG100",
+                          "ResourceTitleId": "evidence-review",
+                          "ConsultationDocumentId": 0
+                        }
+                      },
+                      "ETag": null,
+                      "Title": "Evidence review A",
+                      "Level": 1,
+                      "PublishedDate": "2018-01-18T01:01:00",
+                      "ExternalUrl": null,
+                      "ShowInDocList": true,
+                      "TextOnly": false,
+                      "ConsultationId": 0,
+                      "ConsultationDocumentId": 0,
+                      "IsCurrentViewableConsultationMarkup": false,
+                      "ConvertedDocument": false,
+                      "SupportsComments": false
+                    },
+                    {
+                      "_links": { "self": [{}] },
+                      "_embedded": {
+                        "nice.indev:file": {
+                          "_links": {
+                            "self": [
+                              {
+                                "href": "/guidance/NG100/documents/evidence-review-2"
+                              }
+                            ]
+                          },
+                          "ETag": null,
+                          "Id": "f8eebe42-1c9b-4d40-868b-2e3fe3af27fb",
+                          "MimeType": "application/pdf",
+                          "FileName": "RA_Evidence review B_Risk factors_CLEAN.pdf",
+                          "Length": 1947525,
+                          "Hash": "41BA1EFD7EDC7676D721802D16FF6F1CD32E99C7",
+                          "Name": "default",
+                          "Reference": "NG100",
+                          "ResourceTitleId": "evidence-review-2",
+                          "ConsultationDocumentId": 0
+                        }
+                      },
+                      "ETag": null,
+                      "Title": "Evidence review B",
+                      "Level": 1,
+                      "PublishedDate": "2018-01-18T01:01:00",
+                      "ExternalUrl": null,
+                      "ShowInDocList": true,
+                      "TextOnly": false,
+                      "ConsultationId": 0,
+                      "ConsultationDocumentId": 0,
+                      "IsCurrentViewableConsultationMarkup": false,
+                      "ConvertedDocument": false,
+                      "SupportsComments": false
+                    },
+                    {
+                      "_links": { "self": [{}] },
+                      "_embedded": {
+                        "nice.indev:file": {
+                          "_links": {
+                            "self": [
+                              {
+                                "href": "/guidance/NG100/documents/evidence-review-3"
+                              }
+                            ]
+                          },
+                          "ETag": null,
+                          "Id": "3b509580-2122-4e51-bdc2-22df02741de7",
+                          "MimeType": "application/pdf",
+                          "FileName": "RA_Evidence review C_Treat to target_CLEAN.pdf",
+                          "Length": 1828475,
+                          "Hash": "351A26295CA2D0C5F1A40159133498F2053655D0",
+                          "Name": "default",
+                          "Reference": "NG100",
+                          "ResourceTitleId": "evidence-review-3",
+                          "ConsultationDocumentId": 0
+                        }
+                      },
+                      "ETag": null,
+                      "Title": "Evidence review C",
+                      "Level": 1,
+                      "PublishedDate": "2018-01-18T01:01:00",
+                      "ExternalUrl": null,
+                      "ShowInDocList": true,
+                      "TextOnly": false,
+                      "ConsultationId": 0,
+                      "ConsultationDocumentId": 0,
+                      "IsCurrentViewableConsultationMarkup": false,
+                      "ConvertedDocument": false,
+                      "SupportsComments": false
+                    },
+                    {
+                      "_links": { "self": [{}] },
+                      "_embedded": {
+                        "nice.indev:file": {
+                          "_links": {
+                            "self": [
+                              {
+                                "href": "/guidance/NG100/documents/evidence-review-4"
+                              }
+                            ]
+                          },
+                          "ETag": null,
+                          "Id": "4a289cd5-5722-4883-8c2a-c8a37286e597",
+                          "MimeType": "application/pdf",
+                          "FileName": "RA_Evidence review D_Which target_CLEAN.pdf",
+                          "Length": 955372,
+                          "Hash": "7821D93F16CD6B29EDB796CCCF9EB48F17ECC692",
+                          "Name": "default",
+                          "Reference": "NG100",
+                          "ResourceTitleId": "evidence-review-4",
+                          "ConsultationDocumentId": 0
+                        }
+                      },
+                      "ETag": null,
+                      "Title": "Evidence review D",
+                      "Level": 1,
+                      "PublishedDate": "2018-01-18T01:01:00",
+                      "ExternalUrl": null,
+                      "ShowInDocList": true,
+                      "TextOnly": false,
+                      "ConsultationId": 0,
+                      "ConsultationDocumentId": 0,
+                      "IsCurrentViewableConsultationMarkup": false,
+                      "ConvertedDocument": false,
+                      "SupportsComments": false
+                    },
+                    {
+                      "_links": { "self": [{}] },
+                      "_embedded": {
+                        "nice.indev:file": {
+                          "_links": {
+                            "self": [
+                              {
+                                "href": "/guidance/NG100/documents/evidence-review-5"
+                              }
+                            ]
+                          },
+                          "ETag": null,
+                          "Id": "88345797-a4c4-4fbd-8399-01ecb57073d6",
+                          "MimeType": "application/pdf",
+                          "FileName": "RA_Evidence review E_Frequency of monitoring_CLEAN.pdf",
+                          "Length": 1248863,
+                          "Hash": "A518983CFE3AAD9DDFFBA53DDD284574DF15ED2F",
+                          "Name": "default",
+                          "Reference": "NG100",
+                          "ResourceTitleId": "evidence-review-5",
+                          "ConsultationDocumentId": 0
+                        }
+                      },
+                      "ETag": null,
+                      "Title": "Evidence review E",
+                      "Level": 1,
+                      "PublishedDate": "2018-01-18T01:01:00",
+                      "ExternalUrl": null,
+                      "ShowInDocList": true,
+                      "TextOnly": false,
+                      "ConsultationId": 0,
+                      "ConsultationDocumentId": 0,
+                      "IsCurrentViewableConsultationMarkup": false,
+                      "ConvertedDocument": false,
+                      "SupportsComments": false
+                    },
+                    {
+                      "_links": { "self": [{}] },
+                      "_embedded": {
+                        "nice.indev:file": {
+                          "_links": {
+                            "self": [
+                              {
+                                "href": "/guidance/NG100/documents/evidence-review-6"
+                              }
+                            ]
+                          },
+                          "ETag": null,
+                          "Id": "ee615171-336e-4f91-b13c-48e9e24e95c7",
+                          "MimeType": "application/pdf",
+                          "FileName": "RA_Evidence review F_DMARDs_CLEAN.pdf",
+                          "Length": 5973637,
+                          "Hash": "BC989B80B181ABC72DD7882E97441E4F1FCBE8CA",
+                          "Name": "default",
+                          "Reference": "NG100",
+                          "ResourceTitleId": "evidence-review-6",
+                          "ConsultationDocumentId": 0
+                        }
+                      },
+                      "ETag": null,
+                      "Title": "Evidence review F",
+                      "Level": 1,
+                      "PublishedDate": "2018-01-18T01:01:00",
+                      "ExternalUrl": null,
+                      "ShowInDocList": true,
+                      "TextOnly": false,
+                      "ConsultationId": 0,
+                      "ConsultationDocumentId": 0,
+                      "IsCurrentViewableConsultationMarkup": false,
+                      "ConvertedDocument": false,
+                      "SupportsComments": false
+                    },
+                    {
+                      "_links": { "self": [{}] },
+                      "_embedded": {
+                        "nice.indev:file": {
+                          "_links": {
+                            "self": [
+                              {
+                                "href": "/guidance/NG100/documents/evidence-review-7"
+                              }
+                            ]
+                          },
+                          "ETag": null,
+                          "Id": "34d3617f-8be6-4849-b737-853390163a07",
+                          "MimeType": "application/pdf",
+                          "FileName": "RA_Evidence review G_Analgesics_CLEAN.pdf",
+                          "Length": 3951659,
+                          "Hash": "1F7D8553091A1C50EF512B7F45232827BC355D54",
+                          "Name": "default",
+                          "Reference": "NG100",
+                          "ResourceTitleId": "evidence-review-7",
+                          "ConsultationDocumentId": 0
+                        }
+                      },
+                      "ETag": null,
+                      "Title": "Evidence review G",
+                      "Level": 1,
+                      "PublishedDate": "2018-01-18T01:01:00",
+                      "ExternalUrl": null,
+                      "ShowInDocList": true,
+                      "TextOnly": false,
+                      "ConsultationId": 0,
+                      "ConsultationDocumentId": 0,
+                      "IsCurrentViewableConsultationMarkup": false,
+                      "ConvertedDocument": false,
+                      "SupportsComments": false
+                    },
+                    {
+                      "_links": { "self": [{}] },
+                      "_embedded": {
+                        "nice.indev:file": {
+                          "_links": {
+                            "self": [
+                              {
+                                "href": "/guidance/NG100/documents/evidence-review-8"
+                              }
+                            ]
+                          },
+                          "ETag": null,
+                          "Id": "68d42026-7280-4a59-9910-ad1d9545b7d8",
+                          "MimeType": "application/pdf",
+                          "FileName": "RA_Evidence review H_Steroids_CLEAN.pdf",
+                          "Length": 1883531,
+                          "Hash": "1D47E49CEB117BB15A271E33BC88278111978BC0",
+                          "Name": "default",
+                          "Reference": "NG100",
+                          "ResourceTitleId": "evidence-review-8",
+                          "ConsultationDocumentId": 0
+                        }
+                      },
+                      "ETag": null,
+                      "Title": "Evidence review H",
+                      "Level": 1,
+                      "PublishedDate": "2018-01-18T01:01:00",
+                      "ExternalUrl": null,
+                      "ShowInDocList": true,
+                      "TextOnly": false,
+                      "ConsultationId": 0,
+                      "ConsultationDocumentId": 0,
+                      "IsCurrentViewableConsultationMarkup": false,
+                      "ConvertedDocument": false,
+                      "SupportsComments": false
+                    },
+                    {
+                      "_links": { "self": [{}] },
+                      "_embedded": {
+                        "nice.indev:file": {
+                          "_links": {
+                            "self": [
+                              {
+                                "href": "/guidance/NG100/documents/evidence-review-9"
+                              }
+                            ]
+                          },
+                          "ETag": null,
+                          "Id": "6937cd9f-6904-4bd0-9197-e6b9967b7d31",
+                          "MimeType": "application/pdf",
+                          "FileName": "RA_Evidence review I_Ultrasound monitoring_CLEAN.pdf",
+                          "Length": 1805583,
+                          "Hash": "A27AEE52529C25DE8E869B17C67055FB51B7C5CD",
+                          "Name": "default",
+                          "Reference": "NG100",
+                          "ResourceTitleId": "evidence-review-9",
+                          "ConsultationDocumentId": 0
+                        }
+                      },
+                      "ETag": null,
+                      "Title": "Evidence review I",
+                      "Level": 1,
+                      "PublishedDate": "2018-01-18T01:01:00",
+                      "ExternalUrl": null,
+                      "ShowInDocList": true,
+                      "TextOnly": false,
+                      "ConsultationId": 0,
+                      "ConsultationDocumentId": 0,
+                      "IsCurrentViewableConsultationMarkup": false,
+                      "ConvertedDocument": false,
+                      "SupportsComments": false
+                    },
+                    {
+                      "_links": { "self": [{}] },
+                      "_embedded": {
+                        "nice.indev:file": {
+                          "_links": {
+                            "self": [
+                              {
+                                "href": "/guidance/NG100/documents/supporting-documentation"
+                              }
+                            ]
+                          },
+                          "ETag": null,
+                          "Id": "8c1ba291-3f90-4742-93d1-4188ba1f2484",
+                          "MimeType": "application/pdf",
+                          "FileName": "RA_Acknowledgements.pdf",
+                          "Length": 273316,
+                          "Hash": "672BD71CED5B35FA9E498454A8DE21412FF8A670",
+                          "Name": "default",
+                          "Reference": "NG100",
+                          "ResourceTitleId": "supporting-documentation",
+                          "ConsultationDocumentId": 0
+                        }
+                      },
+                      "ETag": null,
+                      "Title": "Supporting documentation Acknowledgements",
+                      "Level": 1,
+                      "PublishedDate": "2018-01-18T01:01:00",
+                      "ExternalUrl": null,
+                      "ShowInDocList": true,
+                      "TextOnly": false,
+                      "ConsultationId": 0,
+                      "ConsultationDocumentId": 0,
+                      "IsCurrentViewableConsultationMarkup": false,
+                      "ConvertedDocument": false,
+                      "SupportsComments": false
+                    },
+                    {
+                      "_links": { "self": [{}] },
+                      "_embedded": {
+                        "nice.indev:file": {
+                          "_links": {
+                            "self": [
+                              {
+                                "href": "/guidance/NG100/documents/supporting-documentation-2"
+                              }
+                            ]
+                          },
+                          "ETag": null,
+                          "Id": "2c72f690-f534-4d5a-8cbf-60fccd6c57f7",
+                          "MimeType": "application/pdf",
+                          "FileName": "RA_Algorithm_Assessment.pdf",
+                          "Length": 186979,
+                          "Hash": "0EE5C8F9027D25D94A71EB8E7EC30119BD3D37DD",
+                          "Name": "default",
+                          "Reference": "NG100",
+                          "ResourceTitleId": "supporting-documentation-2",
+                          "ConsultationDocumentId": 0
+                        }
+                      },
+                      "ETag": null,
+                      "Title": "Supporting documentation Algorithm Assessment",
+                      "Level": 1,
+                      "PublishedDate": "2018-01-18T01:01:00",
+                      "ExternalUrl": null,
+                      "ShowInDocList": true,
+                      "TextOnly": false,
+                      "ConsultationId": 0,
+                      "ConsultationDocumentId": 0,
+                      "IsCurrentViewableConsultationMarkup": false,
+                      "ConvertedDocument": false,
+                      "SupportsComments": false
+                    },
+                    {
+                      "_links": { "self": [{}] },
+                      "_embedded": {
+                        "nice.indev:file": {
+                          "_links": {
+                            "self": [
+                              {
+                                "href": "/guidance/NG100/documents/supporting-documentation-3"
+                              }
+                            ]
+                          },
+                          "ETag": null,
+                          "Id": "23bf48f0-c232-421b-b5ec-bfbc4f8e542a",
+                          "MimeType": "application/pdf",
+                          "FileName": "RA_Algorithm_Management and monitoring.pdf",
+                          "Length": 284634,
+                          "Hash": "FCC6941D459875E3752292546888190E2AD196D2",
+                          "Name": "default",
+                          "Reference": "NG100",
+                          "ResourceTitleId": "supporting-documentation-3",
+                          "ConsultationDocumentId": 0
+                        }
+                      },
+                      "ETag": null,
+                      "Title": "Supporting documentation Algorithm Management&Monitoring",
+                      "Level": 1,
+                      "PublishedDate": "2018-01-18T01:01:00",
+                      "ExternalUrl": null,
+                      "ShowInDocList": true,
+                      "TextOnly": false,
+                      "ConsultationId": 0,
+                      "ConsultationDocumentId": 0,
+                      "IsCurrentViewableConsultationMarkup": false,
+                      "ConvertedDocument": false,
+                      "SupportsComments": false
+                    },
+                    {
+                      "_links": { "self": [{}] },
+                      "_embedded": {
+                        "nice.indev:file": {
+                          "_links": {
+                            "self": [
+                              {
+                                "href": "/guidance/NG100/documents/supporting-documentation-4"
+                              }
+                            ]
+                          },
+                          "ETag": null,
+                          "Id": "6e6fe4c4-463d-4e9f-9a94-debf347d36b4",
+                          "MimeType": "application/pdf",
+                          "FileName": "RA_Methodology_CLEAN.pdf",
+                          "Length": 1355301,
+                          "Hash": "6CE36D0F2E1EAA74DFD3A9085143106928FFEF68",
+                          "Name": "default",
+                          "Reference": "NG100",
+                          "ResourceTitleId": "supporting-documentation-4",
+                          "ConsultationDocumentId": 0
+                        }
+                      },
+                      "ETag": null,
+                      "Title": "Supporting documentation Methodology",
+                      "Level": 1,
+                      "PublishedDate": "2018-01-18T01:01:00",
+                      "ExternalUrl": null,
+                      "ShowInDocList": true,
+                      "TextOnly": false,
+                      "ConsultationId": 0,
+                      "ConsultationDocumentId": 0,
+                      "IsCurrentViewableConsultationMarkup": false,
+                      "ConvertedDocument": false,
+                      "SupportsComments": false
+                    },
+                    {
+                      "_links": { "self": [{}] },
+                      "_embedded": {
+                        "nice.indev:file": {
+                          "_links": {
+                            "self": [
+                              {
+                                "href": "/guidance/NG100/documents/equality-impact-assessment-6"
+                              }
+                            ]
+                          },
+                          "ETag": null,
+                          "Id": "2bfd3e75-c823-4b21-87f4-844023c6e2b0",
+                          "MimeType": "application/pdf",
+                          "FileName": "RA_Equality impact assessment form.pdf",
+                          "Length": 233482,
+                          "Hash": "8ED6AC0D44838AB55A2F1AF5FC0B9B3C65B74093",
+                          "Name": "default",
+                          "Reference": "NG100",
+                          "ResourceTitleId": "equality-impact-assessment-6",
+                          "ConsultationDocumentId": 0
+                        }
+                      },
+                      "ETag": null,
+                      "Title": "Equality impact assessment",
+                      "Level": 1,
+                      "PublishedDate": "2020-03-31T16:01:00",
+                      "ExternalUrl": null,
+                      "ShowInDocList": true,
+                      "TextOnly": false,
+                      "ConsultationId": 0,
+                      "ConsultationDocumentId": 0,
+                      "IsCurrentViewableConsultationMarkup": false,
+                      "ConvertedDocument": false,
+                      "SupportsComments": false
+                    }
+                  ]
+                },
+                "ETag": null,
+                "HasResources": true
+              }
+            },
+            "ETag": null,
+            "Title": "Draft guidance consultation",
+            "PanelType": "History",
+            "LegacyPanel": false,
+            "OriginalReference": null,
+            "UpdateReference": null,
+            "ShowPanel": true
+          },
+          {
+            "_links": { "self": [{}] },
+            "_embedded": {
+              "nice.indev:resource-list": {
+                "_links": { "self": [{}] },
+                "_embedded": {
+                  "nice.indev:resource": [
+                    {
+                      "_links": { "self": [{}] },
+                      "_embedded": {
+                        "nice.indev:file": {
+                          "_links": {
+                            "self": [
+                              {
+                                "href": "/guidance/NG100/documents/evidence-review"
+                              }
+                            ]
+                          },
+                          "ETag": null,
+                          "Id": "4747764f-eecb-42a7-81e8-1734e056ed74",
+                          "MimeType": "application/pdf",
+                          "FileName": "RA_Evidence review A_US for diagnosis_CLEAN.pdf",
+                          "Length": 1296412,
+                          "Hash": "7C0274AA682CEE931B50B92A7A4D96838F9B4B42",
+                          "Name": "default",
+                          "Reference": "NG100",
+                          "ResourceTitleId": "evidence-review",
+                          "ConsultationDocumentId": 0
+                        }
+                      },
+                      "ETag": null,
+                      "Title": "Evidence review A",
+                      "Level": 1,
+                      "PublishedDate": "2018-01-18T01:01:00",
+                      "ExternalUrl": null,
+                      "ShowInDocList": true,
+                      "TextOnly": false,
+                      "ConsultationId": 0,
+                      "ConsultationDocumentId": 0,
+                      "IsCurrentViewableConsultationMarkup": false,
+                      "ConvertedDocument": false,
+                      "SupportsComments": false
+                    },
+                    {
+                      "_links": { "self": [{}] },
+                      "_embedded": {
+                        "nice.indev:file": {
+                          "_links": {
+                            "self": [
+                              {
+                                "href": "/guidance/NG100/documents/evidence-review-2"
+                              }
+                            ]
+                          },
+                          "ETag": null,
+                          "Id": "f8eebe42-1c9b-4d40-868b-2e3fe3af27fb",
+                          "MimeType": "application/pdf",
+                          "FileName": "RA_Evidence review B_Risk factors_CLEAN.pdf",
+                          "Length": 1947525,
+                          "Hash": "41BA1EFD7EDC7676D721802D16FF6F1CD32E99C7",
+                          "Name": "default",
+                          "Reference": "NG100",
+                          "ResourceTitleId": "evidence-review-2",
+                          "ConsultationDocumentId": 0
+                        }
+                      },
+                      "ETag": null,
+                      "Title": "Evidence review B",
+                      "Level": 1,
+                      "PublishedDate": "2018-01-18T01:01:00",
+                      "ExternalUrl": null,
+                      "ShowInDocList": true,
+                      "TextOnly": false,
+                      "ConsultationId": 0,
+                      "ConsultationDocumentId": 0,
+                      "IsCurrentViewableConsultationMarkup": false,
+                      "ConvertedDocument": false,
+                      "SupportsComments": false
+                    },
+                    {
+                      "_links": { "self": [{}] },
+                      "_embedded": {
+                        "nice.indev:file": {
+                          "_links": {
+                            "self": [
+                              {
+                                "href": "/guidance/NG100/documents/evidence-review-3"
+                              }
+                            ]
+                          },
+                          "ETag": null,
+                          "Id": "3b509580-2122-4e51-bdc2-22df02741de7",
+                          "MimeType": "application/pdf",
+                          "FileName": "RA_Evidence review C_Treat to target_CLEAN.pdf",
+                          "Length": 1828475,
+                          "Hash": "351A26295CA2D0C5F1A40159133498F2053655D0",
+                          "Name": "default",
+                          "Reference": "NG100",
+                          "ResourceTitleId": "evidence-review-3",
+                          "ConsultationDocumentId": 0
+                        }
+                      },
+                      "ETag": null,
+                      "Title": "Evidence review C",
+                      "Level": 1,
+                      "PublishedDate": "2018-01-18T01:01:00",
+                      "ExternalUrl": null,
+                      "ShowInDocList": true,
+                      "TextOnly": false,
+                      "ConsultationId": 0,
+                      "ConsultationDocumentId": 0,
+                      "IsCurrentViewableConsultationMarkup": false,
+                      "ConvertedDocument": false,
+                      "SupportsComments": false
+                    },
+                    {
+                      "_links": { "self": [{}] },
+                      "_embedded": {
+                        "nice.indev:file": {
+                          "_links": {
+                            "self": [
+                              {
+                                "href": "/guidance/NG100/documents/evidence-review-4"
+                              }
+                            ]
+                          },
+                          "ETag": null,
+                          "Id": "4a289cd5-5722-4883-8c2a-c8a37286e597",
+                          "MimeType": "application/pdf",
+                          "FileName": "RA_Evidence review D_Which target_CLEAN.pdf",
+                          "Length": 955372,
+                          "Hash": "7821D93F16CD6B29EDB796CCCF9EB48F17ECC692",
+                          "Name": "default",
+                          "Reference": "NG100",
+                          "ResourceTitleId": "evidence-review-4",
+                          "ConsultationDocumentId": 0
+                        }
+                      },
+                      "ETag": null,
+                      "Title": "Evidence review D",
+                      "Level": 1,
+                      "PublishedDate": "2018-01-18T01:01:00",
+                      "ExternalUrl": null,
+                      "ShowInDocList": true,
+                      "TextOnly": false,
+                      "ConsultationId": 0,
+                      "ConsultationDocumentId": 0,
+                      "IsCurrentViewableConsultationMarkup": false,
+                      "ConvertedDocument": false,
+                      "SupportsComments": false
+                    },
+                    {
+                      "_links": { "self": [{}] },
+                      "_embedded": {
+                        "nice.indev:file": {
+                          "_links": {
+                            "self": [
+                              {
+                                "href": "/guidance/NG100/documents/evidence-review-5"
+                              }
+                            ]
+                          },
+                          "ETag": null,
+                          "Id": "88345797-a4c4-4fbd-8399-01ecb57073d6",
+                          "MimeType": "application/pdf",
+                          "FileName": "RA_Evidence review E_Frequency of monitoring_CLEAN.pdf",
+                          "Length": 1248863,
+                          "Hash": "A518983CFE3AAD9DDFFBA53DDD284574DF15ED2F",
+                          "Name": "default",
+                          "Reference": "NG100",
+                          "ResourceTitleId": "evidence-review-5",
+                          "ConsultationDocumentId": 0
+                        }
+                      },
+                      "ETag": null,
+                      "Title": "Evidence review E",
+                      "Level": 1,
+                      "PublishedDate": "2018-01-18T01:01:00",
+                      "ExternalUrl": null,
+                      "ShowInDocList": true,
+                      "TextOnly": false,
+                      "ConsultationId": 0,
+                      "ConsultationDocumentId": 0,
+                      "IsCurrentViewableConsultationMarkup": false,
+                      "ConvertedDocument": false,
+                      "SupportsComments": false
+                    },
+                    {
+                      "_links": { "self": [{}] },
+                      "_embedded": {
+                        "nice.indev:file": {
+                          "_links": {
+                            "self": [
+                              {
+                                "href": "/guidance/NG100/documents/evidence-review-6"
+                              }
+                            ]
+                          },
+                          "ETag": null,
+                          "Id": "ee615171-336e-4f91-b13c-48e9e24e95c7",
+                          "MimeType": "application/pdf",
+                          "FileName": "RA_Evidence review F_DMARDs_CLEAN.pdf",
+                          "Length": 5973637,
+                          "Hash": "BC989B80B181ABC72DD7882E97441E4F1FCBE8CA",
+                          "Name": "default",
+                          "Reference": "NG100",
+                          "ResourceTitleId": "evidence-review-6",
+                          "ConsultationDocumentId": 0
+                        }
+                      },
+                      "ETag": null,
+                      "Title": "Evidence review F",
+                      "Level": 1,
+                      "PublishedDate": "2018-01-18T01:01:00",
+                      "ExternalUrl": null,
+                      "ShowInDocList": true,
+                      "TextOnly": false,
+                      "ConsultationId": 0,
+                      "ConsultationDocumentId": 0,
+                      "IsCurrentViewableConsultationMarkup": false,
+                      "ConvertedDocument": false,
+                      "SupportsComments": false
+                    },
+                    {
+                      "_links": { "self": [{}] },
+                      "_embedded": {
+                        "nice.indev:file": {
+                          "_links": {
+                            "self": [
+                              {
+                                "href": "/guidance/NG100/documents/evidence-review-7"
+                              }
+                            ]
+                          },
+                          "ETag": null,
+                          "Id": "34d3617f-8be6-4849-b737-853390163a07",
+                          "MimeType": "application/pdf",
+                          "FileName": "RA_Evidence review G_Analgesics_CLEAN.pdf",
+                          "Length": 3951659,
+                          "Hash": "1F7D8553091A1C50EF512B7F45232827BC355D54",
+                          "Name": "default",
+                          "Reference": "NG100",
+                          "ResourceTitleId": "evidence-review-7",
+                          "ConsultationDocumentId": 0
+                        }
+                      },
+                      "ETag": null,
+                      "Title": "Evidence review G",
+                      "Level": 1,
+                      "PublishedDate": "2018-01-18T01:01:00",
+                      "ExternalUrl": null,
+                      "ShowInDocList": true,
+                      "TextOnly": false,
+                      "ConsultationId": 0,
+                      "ConsultationDocumentId": 0,
+                      "IsCurrentViewableConsultationMarkup": false,
+                      "ConvertedDocument": false,
+                      "SupportsComments": false
+                    },
+                    {
+                      "_links": { "self": [{}] },
+                      "_embedded": {
+                        "nice.indev:file": {
+                          "_links": {
+                            "self": [
+                              {
+                                "href": "/guidance/NG100/documents/evidence-review-8"
+                              }
+                            ]
+                          },
+                          "ETag": null,
+                          "Id": "68d42026-7280-4a59-9910-ad1d9545b7d8",
+                          "MimeType": "application/pdf",
+                          "FileName": "RA_Evidence review H_Steroids_CLEAN.pdf",
+                          "Length": 1883531,
+                          "Hash": "1D47E49CEB117BB15A271E33BC88278111978BC0",
+                          "Name": "default",
+                          "Reference": "NG100",
+                          "ResourceTitleId": "evidence-review-8",
+                          "ConsultationDocumentId": 0
+                        }
+                      },
+                      "ETag": null,
+                      "Title": "Evidence review H",
+                      "Level": 1,
+                      "PublishedDate": "2018-01-18T01:01:00",
+                      "ExternalUrl": null,
+                      "ShowInDocList": true,
+                      "TextOnly": false,
+                      "ConsultationId": 0,
+                      "ConsultationDocumentId": 0,
+                      "IsCurrentViewableConsultationMarkup": false,
+                      "ConvertedDocument": false,
+                      "SupportsComments": false
+                    },
+                    {
+                      "_links": { "self": [{}] },
+                      "_embedded": {
+                        "nice.indev:file": {
+                          "_links": {
+                            "self": [
+                              {
+                                "href": "/guidance/NG100/documents/evidence-review-9"
+                              }
+                            ]
+                          },
+                          "ETag": null,
+                          "Id": "6937cd9f-6904-4bd0-9197-e6b9967b7d31",
+                          "MimeType": "application/pdf",
+                          "FileName": "RA_Evidence review I_Ultrasound monitoring_CLEAN.pdf",
+                          "Length": 1805583,
+                          "Hash": "A27AEE52529C25DE8E869B17C67055FB51B7C5CD",
+                          "Name": "default",
+                          "Reference": "NG100",
+                          "ResourceTitleId": "evidence-review-9",
+                          "ConsultationDocumentId": 0
+                        }
+                      },
+                      "ETag": null,
+                      "Title": "Evidence review I",
+                      "Level": 1,
+                      "PublishedDate": "2018-01-18T01:01:00",
+                      "ExternalUrl": null,
+                      "ShowInDocList": true,
+                      "TextOnly": false,
+                      "ConsultationId": 0,
+                      "ConsultationDocumentId": 0,
+                      "IsCurrentViewableConsultationMarkup": false,
+                      "ConvertedDocument": false,
+                      "SupportsComments": false
+                    },
+                    {
+                      "_links": { "self": [{}] },
+                      "_embedded": {
+                        "nice.indev:file": {
+                          "_links": {
+                            "self": [
+                              {
+                                "href": "/guidance/NG100/documents/equality-impact-assessment-6"
+                              }
+                            ]
+                          },
+                          "ETag": null,
+                          "Id": "2bfd3e75-c823-4b21-87f4-844023c6e2b0",
+                          "MimeType": "application/pdf",
+                          "FileName": "RA_Equality impact assessment form.pdf",
+                          "Length": 233482,
+                          "Hash": "8ED6AC0D44838AB55A2F1AF5FC0B9B3C65B74093",
+                          "Name": "default",
+                          "Reference": "NG100",
+                          "ResourceTitleId": "equality-impact-assessment-6",
+                          "ConsultationDocumentId": 0
+                        }
+                      },
+                      "ETag": null,
+                      "Title": "Equality impact assessment",
+                      "Level": 1,
+                      "PublishedDate": "2020-03-31T16:01:00",
+                      "ExternalUrl": null,
+                      "ShowInDocList": true,
+                      "TextOnly": false,
+                      "ConsultationId": 0,
+                      "ConsultationDocumentId": 0,
+                      "IsCurrentViewableConsultationMarkup": false,
+                      "ConvertedDocument": false,
+                      "SupportsComments": false
+                    }
+                  ]
+                },
+                "ETag": null,
+                "HasResources": true
+              }
+            },
+            "ETag": null,
+            "Title": "Draft guidance consultation",
+            "PanelType": "Evidence",
+            "LegacyPanel": false,
+            "OriginalReference": null,
+            "UpdateReference": null,
+            "ShowPanel": true
+          },
+          {
+            "_links": { "self": [{}] },
+            "_embedded": {
+              "nice.indev:resource-list": {
+                "_links": { "self": [{}] },
+                "_embedded": {
+                  "nice.indev:resource": [
+                    {
+                      "_links": { "self": [{}] },
+                      "_embedded": {
+                        "nice.indev:file": {
+                          "_links": {
+                            "self": [
+                              {
+                                "href": "/guidance/NG100/documents/review-questions"
+                              }
+                            ]
+                          },
+                          "ETag": null,
+                          "Id": "f39a403d-8b0d-48c0-91e0-292c63a3b5d4",
+                          "MimeType": "application/pdf",
+                          "FileName": "RA review questions.pdf",
+                          "Length": 110744,
+                          "Hash": "50966403DB8441592DD6AF93158770A1BCE24177",
+                          "Name": "default",
+                          "Reference": "NG100",
+                          "ResourceTitleId": "review-questions",
+                          "ConsultationDocumentId": 0
+                        }
+                      },
+                      "ETag": null,
+                      "Title": "Review questions",
+                      "Level": 1,
+                      "PublishedDate": "2017-11-30T13:15:00",
+                      "ExternalUrl": null,
+                      "ShowInDocList": true,
+                      "TextOnly": false,
+                      "ConsultationId": 0,
+                      "ConsultationDocumentId": 0,
+                      "IsCurrentViewableConsultationMarkup": false,
+                      "ConvertedDocument": false,
+                      "SupportsComments": false
+                    },
+                    {
+                      "_links": { "self": [{}] },
+                      "_embedded": {
+                        "nice.indev:file": {
+                          "_links": {
+                            "self": [
+                              {
+                                "href": "/guidance/NG100/documents/search-strategies"
+                              }
+                            ]
+                          },
+                          "ETag": null,
+                          "Id": "8b514fb2-2e54-40ca-9a59-d7d910fbb681",
+                          "MimeType": "application/pdf",
+                          "FileName": "RA search strategies combined.pdf",
+                          "Length": 2328531,
+                          "Hash": "9D164CF77AE0AAA5C9E77F2C612D4ADE6B51A6FE",
+                          "Name": "default",
+                          "Reference": "NG100",
+                          "ResourceTitleId": "search-strategies",
+                          "ConsultationDocumentId": 0
+                        }
+                      },
+                      "ETag": null,
+                      "Title": "Search strategies",
+                      "Level": 1,
+                      "PublishedDate": "2017-11-30T13:15:00",
+                      "ExternalUrl": null,
+                      "ShowInDocList": true,
+                      "TextOnly": false,
+                      "ConsultationId": 0,
+                      "ConsultationDocumentId": 0,
+                      "IsCurrentViewableConsultationMarkup": false,
+                      "ConvertedDocument": false,
+                      "SupportsComments": false
+                    },
+                    {
+                      "_links": { "self": [{}] },
+                      "_embedded": {
+                        "nice.indev:file": {
+                          "_links": {
+                            "self": [
+                              {
+                                "href": "/guidance/NG100/documents/economic-plan-2"
+                              }
+                            ]
+                          },
+                          "ETag": null,
+                          "Id": "10e4a943-b5dc-49ae-9db3-3134b22c9901",
+                          "MimeType": "application/pdf",
+                          "FileName": "Economic Plan template WEB_RA.pdf",
+                          "Length": 114584,
+                          "Hash": "03F1EDFE58BC70DDFADA09AD02AAF6A153E654D6",
+                          "Name": "default",
+                          "Reference": "NG100",
+                          "ResourceTitleId": "economic-plan-2",
+                          "ConsultationDocumentId": 0
+                        }
+                      },
+                      "ETag": null,
+                      "Title": "Economic plan",
+                      "Level": 1,
+                      "PublishedDate": "2018-02-21T13:55:00",
+                      "ExternalUrl": null,
+                      "ShowInDocList": true,
+                      "TextOnly": false,
+                      "ConsultationId": 0,
+                      "ConsultationDocumentId": 0,
+                      "IsCurrentViewableConsultationMarkup": false,
+                      "ConvertedDocument": false,
+                      "SupportsComments": false
+                    }
+                  ]
+                },
+                "ETag": null,
+                "HasResources": true
+              }
+            },
+            "ETag": null,
+            "Title": "Pre-consultation documents released",
+            "PanelType": "History",
+            "LegacyPanel": false,
+            "OriginalReference": null,
+            "UpdateReference": null,
+            "ShowPanel": true
+          },
+          {
+            "_links": { "self": [{}] },
+            "_embedded": {
+              "nice.indev:resource-list": {
+                "_links": { "self": [{}] },
+                "_embedded": {
+                  "nice.indev:resource": [
+                    {
+                      "_links": { "self": [{}] },
+                      "_embedded": {
+                        "nice.indev:file": {
+                          "_links": {
+                            "self": [
+                              {
+                                "href": "/guidance/NG100/documents/search-strategies"
+                              }
+                            ]
+                          },
+                          "ETag": null,
+                          "Id": "8b514fb2-2e54-40ca-9a59-d7d910fbb681",
+                          "MimeType": "application/pdf",
+                          "FileName": "RA search strategies combined.pdf",
+                          "Length": 2328531,
+                          "Hash": "9D164CF77AE0AAA5C9E77F2C612D4ADE6B51A6FE",
+                          "Name": "default",
+                          "Reference": "NG100",
+                          "ResourceTitleId": "search-strategies",
+                          "ConsultationDocumentId": 0
+                        }
+                      },
+                      "ETag": null,
+                      "Title": "Search strategies",
+                      "Level": 1,
+                      "PublishedDate": "2017-11-30T13:15:00",
+                      "ExternalUrl": null,
+                      "ShowInDocList": true,
+                      "TextOnly": false,
+                      "ConsultationId": 0,
+                      "ConsultationDocumentId": 0,
+                      "IsCurrentViewableConsultationMarkup": false,
+                      "ConvertedDocument": false,
+                      "SupportsComments": false
+                    },
+                    {
+                      "_links": { "self": [{}] },
+                      "_embedded": {
+                        "nice.indev:file": {
+                          "_links": {
+                            "self": [
+                              {
+                                "href": "/guidance/NG100/documents/economic-plan-2"
+                              }
+                            ]
+                          },
+                          "ETag": null,
+                          "Id": "10e4a943-b5dc-49ae-9db3-3134b22c9901",
+                          "MimeType": "application/pdf",
+                          "FileName": "Economic Plan template WEB_RA.pdf",
+                          "Length": 114584,
+                          "Hash": "03F1EDFE58BC70DDFADA09AD02AAF6A153E654D6",
+                          "Name": "default",
+                          "Reference": "NG100",
+                          "ResourceTitleId": "economic-plan-2",
+                          "ConsultationDocumentId": 0
+                        }
+                      },
+                      "ETag": null,
+                      "Title": "Economic plan",
+                      "Level": 1,
+                      "PublishedDate": "2018-02-21T13:55:00",
+                      "ExternalUrl": null,
+                      "ShowInDocList": true,
+                      "TextOnly": false,
+                      "ConsultationId": 0,
+                      "ConsultationDocumentId": 0,
+                      "IsCurrentViewableConsultationMarkup": false,
+                      "ConvertedDocument": false,
+                      "SupportsComments": false
+                    }
+                  ]
+                },
+                "ETag": null,
+                "HasResources": true
+              }
+            },
+            "ETag": null,
+            "Title": "Pre-consultation documents released",
+            "PanelType": "Evidence",
+            "LegacyPanel": false,
+            "OriginalReference": null,
+            "UpdateReference": null,
+            "ShowPanel": true
+          },
+          {
+            "_links": { "self": [{}] },
+            "_embedded": {
+              "nice.indev:resource-list": {
+                "_links": { "self": [{}] },
+                "_embedded": {
+                  "nice.indev:resource": {
+                    "_links": { "self": [{}] },
+                    "_embedded": {
+                      "nice.indev:file": {
+                        "_links": {
+                          "self": [
+                            {
+                              "href": "/guidance/NG100/documents/stakeholder-list-2"
+                            }
+                          ]
+                        },
+                        "ETag": null,
+                        "Id": "f4aaecb2-fb3e-4d39-919b-c914f77b69d6",
+                        "MimeType": "application/pdf",
+                        "FileName": "RA - SH List .pdf",
+                        "Length": 175170,
+                        "Hash": "306030F7C3DD2E16467FC90CC8A3D8EB103C4718",
+                        "Name": "default",
+                        "Reference": "NG100",
+                        "ResourceTitleId": "stakeholder-list-2",
+                        "ConsultationDocumentId": 0
+                      }
+                    },
+                    "ETag": null,
+                    "Title": "Stakeholder list",
+                    "Level": 1,
+                    "PublishedDate": "2017-11-23T14:45:00",
+                    "ExternalUrl": null,
+                    "ShowInDocList": true,
+                    "TextOnly": false,
+                    "ConsultationId": 0,
+                    "ConsultationDocumentId": 0,
+                    "IsCurrentViewableConsultationMarkup": false,
+                    "ConvertedDocument": false,
+                    "SupportsComments": false
+                  }
+                },
+                "ETag": null,
+                "HasResources": true
+              }
+            },
+            "ETag": null,
+            "Title": "Stakeholder list updated",
+            "PanelType": "History",
+            "LegacyPanel": false,
+            "OriginalReference": null,
+            "UpdateReference": null,
+            "ShowPanel": true
+          },
+          {
+            "_links": { "self": [{}] },
+            "_embedded": {
+              "nice.indev:resource-list": {
+                "_links": { "self": [{}] },
+                "_embedded": {
+                  "nice.indev:resource": [
+                    {
+                      "_links": { "self": [{}] },
+                      "ETag": null,
+                      "Title": "Committee meeting: 1",
+                      "Level": 1,
+                      "PublishedDate": null,
+                      "ExternalUrl": null,
+                      "ShowInDocList": true,
+                      "TextOnly": true,
+                      "ConsultationId": 0,
+                      "ConsultationDocumentId": 0,
+                      "IsCurrentViewableConsultationMarkup": false,
+                      "ConvertedDocument": false,
+                      "SupportsComments": false
+                    },
+                    {
+                      "_links": { "self": [{}] },
+                      "_embedded": {
+                        "nice.indev:file": {
+                          "_links": {
+                            "self": [
+                              { "href": "/guidance/NG100/documents/minutes" }
+                            ]
+                          },
+                          "ETag": null,
+                          "Id": "ba1e390e-1028-4792-b98d-bd1ec1fc0e9e",
+                          "MimeType": "application/pdf",
+                          "FileName": "NICE minutes_RA_GC1.pdf",
+                          "Length": 412072,
+                          "Hash": "F1874659E31A3781B3D3E81EF8FE441C5F8CFA70",
+                          "Name": "default",
+                          "Reference": "NG100",
+                          "ResourceTitleId": "minutes",
+                          "ConsultationDocumentId": 0
+                        }
+                      },
+                      "ETag": null,
+                      "Title": "Minutes",
+                      "Level": 2,
+                      "PublishedDate": "2016-11-15T10:38:00",
+                      "ExternalUrl": null,
+                      "ShowInDocList": true,
+                      "TextOnly": false,
+                      "ConsultationId": 0,
+                      "ConsultationDocumentId": 0,
+                      "IsCurrentViewableConsultationMarkup": false,
+                      "ConvertedDocument": false,
+                      "SupportsComments": false
+                    },
+                    {
+                      "_links": { "self": [{}] },
+                      "ETag": null,
+                      "Title": "Committee meeting: 2",
+                      "Level": 1,
+                      "PublishedDate": null,
+                      "ExternalUrl": null,
+                      "ShowInDocList": true,
+                      "TextOnly": true,
+                      "ConsultationId": 0,
+                      "ConsultationDocumentId": 0,
+                      "IsCurrentViewableConsultationMarkup": false,
+                      "ConvertedDocument": false,
+                      "SupportsComments": false
+                    },
+                    {
+                      "_links": { "self": [{}] },
+                      "_embedded": {
+                        "nice.indev:file": {
+                          "_links": {
+                            "self": [
+                              { "href": "/guidance/NG100/documents/minutes-2" }
+                            ]
+                          },
+                          "ETag": null,
+                          "Id": "fe218252-2e71-4663-8a21-b49457b2f7c8",
+                          "MimeType": "application/pdf",
+                          "FileName": "NICE minutes RA_GC2.pdf",
+                          "Length": 326553,
+                          "Hash": "9CA6B61E0BDEDF8144B038F86D1B3FE27FB9CB10",
+                          "Name": "default",
+                          "Reference": "NG100",
+                          "ResourceTitleId": "minutes-2",
+                          "ConsultationDocumentId": 0
+                        }
+                      },
+                      "ETag": null,
+                      "Title": "Minutes",
+                      "Level": 2,
+                      "PublishedDate": "2017-01-04T08:43:00",
+                      "ExternalUrl": null,
+                      "ShowInDocList": true,
+                      "TextOnly": false,
+                      "ConsultationId": 0,
+                      "ConsultationDocumentId": 0,
+                      "IsCurrentViewableConsultationMarkup": false,
+                      "ConvertedDocument": false,
+                      "SupportsComments": false
+                    },
+                    {
+                      "_links": { "self": [{}] },
+                      "ETag": null,
+                      "Title": "Committee meeting: 3",
+                      "Level": 1,
+                      "PublishedDate": null,
+                      "ExternalUrl": null,
+                      "ShowInDocList": true,
+                      "TextOnly": true,
+                      "ConsultationId": 0,
+                      "ConsultationDocumentId": 0,
+                      "IsCurrentViewableConsultationMarkup": false,
+                      "ConvertedDocument": false,
+                      "SupportsComments": false
+                    },
+                    {
+                      "_links": { "self": [{}] },
+                      "_embedded": {
+                        "nice.indev:file": {
+                          "_links": {
+                            "self": [
+                              { "href": "/guidance/NG100/documents/minutes-3" }
+                            ]
+                          },
+                          "ETag": null,
+                          "Id": "f169264b-7e48-4a51-95ae-57c225f2b582",
+                          "MimeType": "application/pdf",
+                          "FileName": "NICE minutes_RA_GC3.pdf",
+                          "Length": 185098,
+                          "Hash": "B7EC39F253CC58F0EFD753371AFC8945310D6102",
+                          "Name": "default",
+                          "Reference": "NG100",
+                          "ResourceTitleId": "minutes-3",
+                          "ConsultationDocumentId": 0
+                        }
+                      },
+                      "ETag": null,
+                      "Title": "Minutes",
+                      "Level": 2,
+                      "PublishedDate": "2017-02-01T13:38:00",
+                      "ExternalUrl": null,
+                      "ShowInDocList": true,
+                      "TextOnly": false,
+                      "ConsultationId": 0,
+                      "ConsultationDocumentId": 0,
+                      "IsCurrentViewableConsultationMarkup": false,
+                      "ConvertedDocument": false,
+                      "SupportsComments": false
+                    },
+                    {
+                      "_links": { "self": [{}] },
+                      "ETag": null,
+                      "Title": "Committee meeting: 4",
+                      "Level": 1,
+                      "PublishedDate": null,
+                      "ExternalUrl": null,
+                      "ShowInDocList": true,
+                      "TextOnly": true,
+                      "ConsultationId": 0,
+                      "ConsultationDocumentId": 0,
+                      "IsCurrentViewableConsultationMarkup": false,
+                      "ConvertedDocument": false,
+                      "SupportsComments": false
+                    },
+                    {
+                      "_links": { "self": [{}] },
+                      "_embedded": {
+                        "nice.indev:file": {
+                          "_links": {
+                            "self": [
+                              { "href": "/guidance/NG100/documents/minutes-4" }
+                            ]
+                          },
+                          "ETag": null,
+                          "Id": "4a07494a-1d3c-4d59-a9b0-8e4755b410f8",
+                          "MimeType": "application/pdf",
+                          "FileName": "RA_GC4_NICE minutes_confirmed.pdf",
+                          "Length": 195130,
+                          "Hash": "A9989DF59972192315FEDFBD88D272E7B29DB143",
+                          "Name": "default",
+                          "Reference": "NG100",
+                          "ResourceTitleId": "minutes-4",
+                          "ConsultationDocumentId": 0
+                        }
+                      },
+                      "ETag": null,
+                      "Title": "Minutes",
+                      "Level": 2,
+                      "PublishedDate": "2017-01-30T00:00:00",
+                      "ExternalUrl": null,
+                      "ShowInDocList": true,
+                      "TextOnly": false,
+                      "ConsultationId": 0,
+                      "ConsultationDocumentId": 0,
+                      "IsCurrentViewableConsultationMarkup": false,
+                      "ConvertedDocument": false,
+                      "SupportsComments": false
+                    },
+                    {
+                      "_links": { "self": [{}] },
+                      "ETag": null,
+                      "Title": "Committee meeting: 5",
+                      "Level": 1,
+                      "PublishedDate": null,
+                      "ExternalUrl": null,
+                      "ShowInDocList": true,
+                      "TextOnly": true,
+                      "ConsultationId": 0,
+                      "ConsultationDocumentId": 0,
+                      "IsCurrentViewableConsultationMarkup": false,
+                      "ConvertedDocument": false,
+                      "SupportsComments": false
+                    },
+                    {
+                      "_links": { "self": [{}] },
+                      "_embedded": {
+                        "nice.indev:file": {
+                          "_links": {
+                            "self": [
+                              { "href": "/guidance/NG100/documents/minutes-5" }
+                            ]
+                          },
+                          "ETag": null,
+                          "Id": "5e6d130d-1dcd-42df-9cd0-352f0b5caa58",
+                          "MimeType": "application/pdf",
+                          "FileName": "Confirmed_RA_GC5_NICE minutes.pdf",
+                          "Length": 182480,
+                          "Hash": "56532A35DCAD21C19D25FA12B07BF4A5952EF17F",
+                          "Name": "default",
+                          "Reference": "NG100",
+                          "ResourceTitleId": "minutes-5",
+                          "ConsultationDocumentId": 0
+                        }
+                      },
+                      "ETag": null,
+                      "Title": "Minutes",
+                      "Level": 2,
+                      "PublishedDate": "2017-03-07T00:00:00",
+                      "ExternalUrl": null,
+                      "ShowInDocList": true,
+                      "TextOnly": false,
+                      "ConsultationId": 0,
+                      "ConsultationDocumentId": 0,
+                      "IsCurrentViewableConsultationMarkup": false,
+                      "ConvertedDocument": false,
+                      "SupportsComments": false
+                    },
+                    {
+                      "_links": { "self": [{}] },
+                      "ETag": null,
+                      "Title": "Committee meeting: 6",
+                      "Level": 1,
+                      "PublishedDate": null,
+                      "ExternalUrl": null,
+                      "ShowInDocList": true,
+                      "TextOnly": true,
+                      "ConsultationId": 0,
+                      "ConsultationDocumentId": 0,
+                      "IsCurrentViewableConsultationMarkup": false,
+                      "ConvertedDocument": false,
+                      "SupportsComments": false
+                    },
+                    {
+                      "_links": { "self": [{}] },
+                      "_embedded": {
+                        "nice.indev:file": {
+                          "_links": {
+                            "self": [
+                              { "href": "/guidance/NG100/documents/minutes-6" }
+                            ]
+                          },
+                          "ETag": null,
+                          "Id": "71f6f9c3-f610-4ab5-b573-543505133c70",
+                          "MimeType": "application/pdf",
+                          "FileName": "Confirmed_RA_GC6_NICE minutes.pdf",
+                          "Length": 104174,
+                          "Hash": "8515692C86882FF2B016190CB773A0025DB0438E",
+                          "Name": "default",
+                          "Reference": "NG100",
+                          "ResourceTitleId": "minutes-6",
+                          "ConsultationDocumentId": 0
+                        }
+                      },
+                      "ETag": null,
+                      "Title": "Minutes 21 April 2017",
+                      "Level": 2,
+                      "PublishedDate": "2017-06-01T15:26:00",
+                      "ExternalUrl": null,
+                      "ShowInDocList": true,
+                      "TextOnly": false,
+                      "ConsultationId": 0,
+                      "ConsultationDocumentId": 0,
+                      "IsCurrentViewableConsultationMarkup": false,
+                      "ConvertedDocument": false,
+                      "SupportsComments": false
+                    },
+                    {
+                      "_links": { "self": [{}] },
+                      "ETag": null,
+                      "Title": "Committee meeting: 7",
+                      "Level": 1,
+                      "PublishedDate": null,
+                      "ExternalUrl": null,
+                      "ShowInDocList": true,
+                      "TextOnly": true,
+                      "ConsultationId": 0,
+                      "ConsultationDocumentId": 0,
+                      "IsCurrentViewableConsultationMarkup": false,
+                      "ConvertedDocument": false,
+                      "SupportsComments": false
+                    },
+                    {
+                      "_links": { "self": [{}] },
+                      "_embedded": {
+                        "nice.indev:file": {
+                          "_links": {
+                            "self": [
+                              { "href": "/guidance/NG100/documents/minutes-7" }
+                            ]
+                          },
+                          "ETag": null,
+                          "Id": "5e84624e-d202-47b8-ba37-7076f173432c",
+                          "MimeType": "application/pdf",
+                          "FileName": "RA_GC7_NICE minutes.pdf",
+                          "Length": 106774,
+                          "Hash": "7206164D85444B73F6DC42E151914ACF37D4064B",
+                          "Name": "default",
+                          "Reference": "NG100",
+                          "ResourceTitleId": "minutes-7",
+                          "ConsultationDocumentId": 0
+                        }
+                      },
+                      "ETag": null,
+                      "Title": "Minutes 30 May 2017",
+                      "Level": 2,
+                      "PublishedDate": "2017-07-12T11:52:00",
+                      "ExternalUrl": null,
+                      "ShowInDocList": true,
+                      "TextOnly": false,
+                      "ConsultationId": 0,
+                      "ConsultationDocumentId": 0,
+                      "IsCurrentViewableConsultationMarkup": false,
+                      "ConvertedDocument": false,
+                      "SupportsComments": false
+                    },
+                    {
+                      "_links": { "self": [{}] },
+                      "ETag": null,
+                      "Title": "Committee meeting: 8",
+                      "Level": 1,
+                      "PublishedDate": null,
+                      "ExternalUrl": null,
+                      "ShowInDocList": true,
+                      "TextOnly": true,
+                      "ConsultationId": 0,
+                      "ConsultationDocumentId": 0,
+                      "IsCurrentViewableConsultationMarkup": false,
+                      "ConvertedDocument": false,
+                      "SupportsComments": false
+                    },
+                    {
+                      "_links": { "self": [{}] },
+                      "_embedded": {
+                        "nice.indev:file": {
+                          "_links": {
+                            "self": [
+                              { "href": "/guidance/NG100/documents/minutes-8" }
+                            ]
+                          },
+                          "ETag": null,
+                          "Id": "d25f0921-88e0-4b7e-bae9-52118def5304",
+                          "MimeType": "application/pdf",
+                          "FileName": "Confirmed_RA_GC8_NICE minutes.pdf",
+                          "Length": 97567,
+                          "Hash": "0774A6D46E0E657BDBA494057F9693142DFA7D0A",
+                          "Name": "default",
+                          "Reference": "NG100",
+                          "ResourceTitleId": "minutes-8",
+                          "ConsultationDocumentId": 0
+                        }
+                      },
+                      "ETag": null,
+                      "Title": "Minutes 05 July 2017",
+                      "Level": 2,
+                      "PublishedDate": "2017-09-20T10:47:00",
+                      "ExternalUrl": null,
+                      "ShowInDocList": true,
+                      "TextOnly": false,
+                      "ConsultationId": 0,
+                      "ConsultationDocumentId": 0,
+                      "IsCurrentViewableConsultationMarkup": false,
+                      "ConvertedDocument": false,
+                      "SupportsComments": false
+                    },
+                    {
+                      "_links": { "self": [{}] },
+                      "ETag": null,
+                      "Title": "Committee meeting: 9",
+                      "Level": 1,
+                      "PublishedDate": null,
+                      "ExternalUrl": null,
+                      "ShowInDocList": true,
+                      "TextOnly": true,
+                      "ConsultationId": 0,
+                      "ConsultationDocumentId": 0,
+                      "IsCurrentViewableConsultationMarkup": false,
+                      "ConvertedDocument": false,
+                      "SupportsComments": false
+                    },
+                    {
+                      "_links": { "self": [{}] },
+                      "_embedded": {
+                        "nice.indev:file": {
+                          "_links": {
+                            "self": [
+                              { "href": "/guidance/NG100/documents/minutes-9" }
+                            ]
+                          },
+                          "ETag": null,
+                          "Id": "8ae87953-3a4f-4091-966a-9a6f8ab3d972",
+                          "MimeType": "application/pdf",
+                          "FileName": "Confirmed_RA_GC9_NICE minutes.pdf",
+                          "Length": 96307,
+                          "Hash": "4AFCAF237F2ED692DAB95AC5BEB6F111BE6A11A4",
+                          "Name": "default",
+                          "Reference": "NG100",
+                          "ResourceTitleId": "minutes-9",
+                          "ConsultationDocumentId": 0
+                        }
+                      },
+                      "ETag": null,
+                      "Title": "Minutes",
+                      "Level": 2,
+                      "PublishedDate": "2017-10-17T09:49:00",
+                      "ExternalUrl": null,
+                      "ShowInDocList": true,
+                      "TextOnly": false,
+                      "ConsultationId": 0,
+                      "ConsultationDocumentId": 0,
+                      "IsCurrentViewableConsultationMarkup": false,
+                      "ConvertedDocument": false,
+                      "SupportsComments": false
+                    }
+                  ]
+                },
+                "ETag": null,
+                "HasResources": true
+              }
+            },
+            "ETag": null,
+            "Title": "Committee meetings",
+            "PanelType": "History",
+            "LegacyPanel": false,
+            "OriginalReference": null,
+            "UpdateReference": null,
+            "ShowPanel": true
+          },
+          {
+            "_links": { "self": [{}] },
+            "_embedded": {
+              "nice.indev:resource-list": {
+                "_links": { "self": [{}] },
+                "_embedded": {
+                  "nice.indev:resource": [
+                    {
+                      "_links": { "self": [{}] },
+                      "_embedded": {
+                        "nice.indev:file": {
+                          "_links": {
+                            "self": [
+                              {
+                                "href": "/guidance/NG100/documents/final-scope"
+                              }
+                            ]
+                          },
+                          "ETag": null,
+                          "Id": "9da06129-dbad-4d03-91af-f6888ec2adf6",
+                          "MimeType": "application/pdf",
+                          "FileName": "RA Scope CLEAN for web.pdf",
+                          "Length": 132806,
+                          "Hash": "618E9F08334ECAF291F112613DF307428D5C165E",
+                          "Name": "default",
+                          "Reference": "NG100",
+                          "ResourceTitleId": "final-scope",
+                          "ConsultationDocumentId": 0
+                        }
+                      },
+                      "ETag": null,
+                      "Title": "Final scope",
+                      "Level": 1,
+                      "PublishedDate": "2016-09-13T00:01:00",
+                      "ExternalUrl": null,
+                      "ShowInDocList": true,
+                      "TextOnly": false,
+                      "ConsultationId": 0,
+                      "ConsultationDocumentId": 0,
+                      "IsCurrentViewableConsultationMarkup": false,
+                      "ConvertedDocument": false,
+                      "SupportsComments": false
+                    },
+                    {
+                      "_links": { "self": [{}] },
+                      "_embedded": {
+                        "nice.indev:file": {
+                          "_links": {
+                            "self": [
+                              {
+                                "href": "/guidance/NG100/documents/consultation-comments-and-responses"
+                              }
+                            ]
+                          },
+                          "ETag": null,
+                          "Id": "b66833cf-9dbc-4014-86a7-3b206d414a82",
+                          "MimeType": "application/pdf",
+                          "FileName": "RA SH comments table for web.pdf",
+                          "Length": 414152,
+                          "Hash": "4BCDBEE1E13E4719D0F6F6E72B59A2148CFBC898",
+                          "Name": "default",
+                          "Reference": "NG100",
+                          "ResourceTitleId": "consultation-comments-and-responses",
+                          "ConsultationDocumentId": 0
+                        }
+                      },
+                      "ETag": null,
+                      "Title": "Consultation comments and responses",
+                      "Level": 1,
+                      "PublishedDate": "2016-09-13T00:01:00",
+                      "ExternalUrl": null,
+                      "ShowInDocList": true,
+                      "TextOnly": false,
+                      "ConsultationId": 0,
+                      "ConsultationDocumentId": 0,
+                      "IsCurrentViewableConsultationMarkup": false,
+                      "ConvertedDocument": false,
+                      "SupportsComments": false
+                    }
+                  ]
+                },
+                "ETag": null,
+                "HasResources": true
+              }
+            },
+            "ETag": null,
+            "Title": "Scope published",
+            "PanelType": "History",
+            "LegacyPanel": false,
+            "OriginalReference": null,
+            "UpdateReference": null,
+            "ShowPanel": true
+          },
+          {
+            "_links": { "self": [{}] },
+            "_embedded": {
+              "nice.indev:resource-list": {
+                "_links": { "self": [{}] },
+                "_embedded": {
+                  "nice.indev:resource": {
+                    "_links": { "self": [{}] },
+                    "_embedded": {
+                      "nice.indev:file": {
+                        "_links": {
+                          "self": [
+                            {
+                              "href": "/guidance/NG100/documents/committee-member-list"
+                            }
+                          ]
+                        },
+                        "ETag": null,
+                        "Id": "b0c08694-227c-449e-9824-dea3e67a3eed",
+                        "MimeType": "application/pdf",
+                        "FileName": "RA - Committee membership for web.pdf",
+                        "Length": 90627,
+                        "Hash": "775DE7CD9CDD4773878AA4F9F8BD402B9EFE9EB1",
+                        "Name": "default",
+                        "Reference": "NG100",
+                        "ResourceTitleId": "committee-member-list",
+                        "ConsultationDocumentId": 0
+                      }
+                    },
+                    "ETag": null,
+                    "Title": "Committee member list",
+                    "Level": 1,
+                    "PublishedDate": "2016-09-13T00:01:00",
+                    "ExternalUrl": null,
+                    "ShowInDocList": true,
+                    "TextOnly": false,
+                    "ConsultationId": 0,
+                    "ConsultationDocumentId": 0,
+                    "IsCurrentViewableConsultationMarkup": false,
+                    "ConvertedDocument": false,
+                    "SupportsComments": false
+                  }
+                },
+                "ETag": null,
+                "HasResources": true
+              }
+            },
+            "ETag": null,
+            "Title": "Committee list updated",
+            "PanelType": "History",
+            "LegacyPanel": false,
+            "OriginalReference": null,
+            "UpdateReference": null,
+            "ShowPanel": true
+          },
+          {
+            "_links": { "self": [{}] },
+            "_embedded": {
+              "nice.indev:resource-list": {
+                "_links": { "self": [{}] },
+                "_embedded": {
+                  "nice.indev:resource": {
+                    "_links": { "self": [{}] },
+                    "_embedded": {
+                      "nice.indev:file": {
+                        "_links": {
+                          "self": [
+                            {
+                              "href": "/guidance/NG100/documents/equality-impact-assessment-7"
+                            }
+                          ]
+                        },
+                        "ETag": null,
+                        "Id": "223115db-b162-4cd2-a336-cc8b14c20971",
+                        "MimeType": "application/pdf",
+                        "FileName": "RA_Equality impact assessment form.pdf",
+                        "Length": 233482,
+                        "Hash": "8ED6AC0D44838AB55A2F1AF5FC0B9B3C65B74093",
+                        "Name": "default",
+                        "Reference": "NG100",
+                        "ResourceTitleId": "equality-impact-assessment-7",
+                        "ConsultationDocumentId": 0
+                      }
+                    },
+                    "ETag": null,
+                    "Title": "Equality impact assessment",
+                    "Level": 1,
+                    "PublishedDate": "2020-03-31T16:01:00",
+                    "ExternalUrl": null,
+                    "ShowInDocList": true,
+                    "TextOnly": false,
+                    "ConsultationId": 0,
+                    "ConsultationDocumentId": 0,
+                    "IsCurrentViewableConsultationMarkup": false,
+                    "ConvertedDocument": false,
+                    "SupportsComments": false
+                  }
+                },
+                "ETag": null,
+                "HasResources": true
+              }
+            },
+            "ETag": null,
+            "Title": "Equality impact assessment published",
+            "PanelType": "History",
+            "LegacyPanel": false,
+            "OriginalReference": null,
+            "UpdateReference": null,
+            "ShowPanel": true
+          },
+          {
+            "_links": { "self": [{}] },
+            "_embedded": {
+              "nice.indev:resource-list": {
+                "_links": { "self": [{}] },
+                "_embedded": {
+                  "nice.indev:resource": {
+                    "_links": { "self": [{}] },
+                    "_embedded": {
+                      "nice.indev:file": {
+                        "_links": {
+                          "self": [
+                            {
+                              "href": "/guidance/NG100/documents/equality-impact-assessment-7"
+                            }
+                          ]
+                        },
+                        "ETag": null,
+                        "Id": "223115db-b162-4cd2-a336-cc8b14c20971",
+                        "MimeType": "application/pdf",
+                        "FileName": "RA_Equality impact assessment form.pdf",
+                        "Length": 233482,
+                        "Hash": "8ED6AC0D44838AB55A2F1AF5FC0B9B3C65B74093",
+                        "Name": "default",
+                        "Reference": "NG100",
+                        "ResourceTitleId": "equality-impact-assessment-7",
+                        "ConsultationDocumentId": 0
+                      }
+                    },
+                    "ETag": null,
+                    "Title": "Equality impact assessment",
+                    "Level": 1,
+                    "PublishedDate": "2020-03-31T16:01:00",
+                    "ExternalUrl": null,
+                    "ShowInDocList": true,
+                    "TextOnly": false,
+                    "ConsultationId": 0,
+                    "ConsultationDocumentId": 0,
+                    "IsCurrentViewableConsultationMarkup": false,
+                    "ConvertedDocument": false,
+                    "SupportsComments": false
+                  }
+                },
+                "ETag": null,
+                "HasResources": true
+              }
+            },
+            "ETag": null,
+            "Title": "Equality impact assessment published",
+            "PanelType": "Evidence",
+            "LegacyPanel": false,
+            "OriginalReference": null,
+            "UpdateReference": null,
+            "ShowPanel": true
+          },
+          {
+            "_links": { "self": [{}] },
+            "_embedded": {
+              "nice.indev:resource-list": {
+                "_links": { "self": [{}] },
+                "_embedded": {
+                  "nice.indev:resource": [
+                    {
+                      "_links": { "self": [{}] },
+                      "_embedded": {
+                        "nice.indev:file": {
+                          "_links": {
+                            "self": [
+                              {
+                                "href": "/guidance/NG100/documents/html-content"
+                              }
+                            ]
+                          },
+                          "ETag": null,
+                          "Id": "4bd9b0a3-cee3-47a9-af2c-10e785bda9b7",
+                          "MimeType": "text/html",
+                          "FileName": "HtmlContent",
+                          "Length": 1671,
+                          "Hash": "5FF773E3283F76A5BD23E99C3377CBC8DB84C2A7",
+                          "Name": "default",
+                          "Reference": "NG100",
+                          "ResourceTitleId": "html-content",
+                          "ConsultationDocumentId": 0
+                        }
+                      },
+                      "ETag": null,
+                      "Title": "Draft scope consultation",
+                      "Level": 1,
+                      "PublishedDate": "2016-07-19T08:56:00",
+                      "ExternalUrl": null,
+                      "ShowInDocList": true,
+                      "TextOnly": false,
+                      "ConsultationId": 0,
+                      "ConsultationDocumentId": 0,
+                      "IsCurrentViewableConsultationMarkup": false,
+                      "ConvertedDocument": false,
+                      "SupportsComments": false
+                    },
+                    {
+                      "_links": { "self": [{}] },
+                      "_embedded": {
+                        "nice.indev:file": {
+                          "_links": {
+                            "self": [
+                              {
+                                "href": "/guidance/NG100/documents/comments-form"
+                              }
+                            ]
+                          },
+                          "ETag": null,
+                          "Id": "6388fe1b-b864-41b1-89f4-af2a4e85f9c6",
+                          "MimeType": "application/msword",
+                          "FileName": "RA SH comments form.doc",
+                          "Length": 64512,
+                          "Hash": "E2361A71A0E1CEB39182A6CE3EB1EFC46414D350",
+                          "Name": "default",
+                          "Reference": "NG100",
+                          "ResourceTitleId": "comments-form",
+                          "ConsultationDocumentId": 0
+                        }
+                      },
+                      "ETag": null,
+                      "Title": "Comments form",
+                      "Level": 1,
+                      "PublishedDate": "2016-06-14T08:06:00",
+                      "ExternalUrl": null,
+                      "ShowInDocList": true,
+                      "TextOnly": false,
+                      "ConsultationId": 0,
+                      "ConsultationDocumentId": 0,
+                      "IsCurrentViewableConsultationMarkup": false,
+                      "ConvertedDocument": false,
+                      "SupportsComments": false
+                    },
+                    {
+                      "_links": { "self": [{}] },
+                      "_embedded": {
+                        "nice.indev:file": {
+                          "_links": {
+                            "self": [
+                              {
+                                "href": "/guidance/NG100/documents/draft-scope"
+                              }
+                            ]
+                          },
+                          "ETag": null,
+                          "Id": "d7c4ff9d-e58f-483f-83ad-1567f453fb00",
+                          "MimeType": "application/pdf",
+                          "FileName": "RA Scope FINAL for cons.pdf",
+                          "Length": 123626,
+                          "Hash": "1F3E7615A5EFEF586DAF95BDE9A875CD018E82A5",
+                          "Name": "default",
+                          "Reference": "NG100",
+                          "ResourceTitleId": "draft-scope",
+                          "ConsultationDocumentId": 0
+                        }
+                      },
+                      "ETag": null,
+                      "Title": "Draft scope",
+                      "Level": 1,
+                      "PublishedDate": "2016-06-17T01:01:00",
+                      "ExternalUrl": null,
+                      "ShowInDocList": true,
+                      "TextOnly": false,
+                      "ConsultationId": 0,
+                      "ConsultationDocumentId": 0,
+                      "IsCurrentViewableConsultationMarkup": false,
+                      "ConvertedDocument": false,
+                      "SupportsComments": false
+                    },
+                    {
+                      "_links": { "self": [{}] },
+                      "_embedded": {
+                        "nice.indev:file": {
+                          "_links": {
+                            "self": [
+                              {
+                                "href": "/guidance/NG100/documents/equality-impact-assessment-8"
+                              }
+                            ]
+                          },
+                          "ETag": null,
+                          "Id": "a6214ae6-1815-483e-9dd9-105ce4327a65",
+                          "MimeType": "application/pdf",
+                          "FileName": "RA_Equality impact assessment form.pdf",
+                          "Length": 233482,
+                          "Hash": "8ED6AC0D44838AB55A2F1AF5FC0B9B3C65B74093",
+                          "Name": "default",
+                          "Reference": "NG100",
+                          "ResourceTitleId": "equality-impact-assessment-8",
+                          "ConsultationDocumentId": 0
+                        }
+                      },
+                      "ETag": null,
+                      "Title": "Equality impact assessment",
+                      "Level": 1,
+                      "PublishedDate": "2020-03-31T16:01:00",
+                      "ExternalUrl": null,
+                      "ShowInDocList": true,
+                      "TextOnly": false,
+                      "ConsultationId": 0,
+                      "ConsultationDocumentId": 0,
+                      "IsCurrentViewableConsultationMarkup": false,
+                      "ConvertedDocument": false,
+                      "SupportsComments": false
+                    }
+                  ]
+                },
+                "ETag": null,
+                "HasResources": true
+              }
+            },
+            "ETag": null,
+            "Title": "Draft scope consultation",
+            "PanelType": "History",
+            "LegacyPanel": false,
+            "OriginalReference": null,
+            "UpdateReference": null,
+            "ShowPanel": true
+          },
+          {
+            "_links": { "self": [{}] },
+            "_embedded": {
+              "nice.indev:resource-list": {
+                "_links": { "self": [{}] },
+                "_embedded": {
+                  "nice.indev:resource": {
+                    "_links": { "self": [{}] },
+                    "_embedded": {
+                      "nice.indev:file": {
+                        "_links": {
+                          "self": [
+                            {
+                              "href": "/guidance/NG100/documents/equality-impact-assessment-8"
+                            }
+                          ]
+                        },
+                        "ETag": null,
+                        "Id": "a6214ae6-1815-483e-9dd9-105ce4327a65",
+                        "MimeType": "application/pdf",
+                        "FileName": "RA_Equality impact assessment form.pdf",
+                        "Length": 233482,
+                        "Hash": "8ED6AC0D44838AB55A2F1AF5FC0B9B3C65B74093",
+                        "Name": "default",
+                        "Reference": "NG100",
+                        "ResourceTitleId": "equality-impact-assessment-8",
+                        "ConsultationDocumentId": 0
+                      }
+                    },
+                    "ETag": null,
+                    "Title": "Equality impact assessment",
+                    "Level": 1,
+                    "PublishedDate": "2020-03-31T16:01:00",
+                    "ExternalUrl": null,
+                    "ShowInDocList": true,
+                    "TextOnly": false,
+                    "ConsultationId": 0,
+                    "ConsultationDocumentId": 0,
+                    "IsCurrentViewableConsultationMarkup": false,
+                    "ConvertedDocument": false,
+                    "SupportsComments": false
+                  }
+                },
+                "ETag": null,
+                "HasResources": true
+              }
+            },
+            "ETag": null,
+            "Title": "Draft scope consultation",
+            "PanelType": "Evidence",
+            "LegacyPanel": false,
+            "OriginalReference": null,
+            "UpdateReference": null,
+            "ShowPanel": true
+          },
+          {
+            "_links": { "self": [{}] },
+            "_embedded": {
+              "nice.indev:resource-list": {
+                "_links": { "self": [{}] },
+                "_embedded": {
+                  "nice.indev:resource": {
+                    "_links": { "self": [{}] },
+                    "_embedded": {
+                      "nice.indev:file": {
+                        "_links": {
+                          "self": [
+                            {
+                              "href": "/guidance/NG100/documents/workshop-notes"
+                            }
+                          ]
+                        },
+                        "ETag": null,
+                        "Id": "38791417-6930-429c-9a30-4b09197676ba",
+                        "MimeType": "application/pdf",
+                        "FileName": "RA SHW Combined Notes.pdf",
+                        "Length": 495708,
+                        "Hash": "0C0CEDA921DD287B58ED7908831C6B759CB3F59F",
+                        "Name": "default",
+                        "Reference": "NG100",
+                        "ResourceTitleId": "workshop-notes",
+                        "ConsultationDocumentId": 0
+                      }
+                    },
+                    "ETag": null,
+                    "Title": "Workshop notes",
+                    "Level": 1,
+                    "PublishedDate": "2016-06-14T08:06:00",
+                    "ExternalUrl": null,
+                    "ShowInDocList": true,
+                    "TextOnly": false,
+                    "ConsultationId": 0,
+                    "ConsultationDocumentId": 0,
+                    "IsCurrentViewableConsultationMarkup": false,
+                    "ConvertedDocument": false,
+                    "SupportsComments": false
+                  }
+                },
+                "ETag": null,
+                "HasResources": true
+              }
+            },
+            "ETag": null,
+            "Title": "Scoping workshop",
+            "PanelType": "History",
+            "LegacyPanel": false,
+            "OriginalReference": null,
+            "UpdateReference": null,
+            "ShowPanel": true
+          }
+        ]
+      },
+      "ETag": null
+    }
+  },
+  "ETag": "01000000-0000-0029-0000-000000000035",
+  "Summary": null,
+  "Description": null,
+  "ReferralDate": null,
+  "SuspendDiscontinuedReason": null,
+  "SuspendDiscontinuedUrl": null,
+  "SuspendDiscontinuedUrlText": null,
+  "LegacyModel": false,
+  "ProductReference": null,
+  "EvidenceAssessmentGroup": null,
+  "Reference": "NG100",
+  "ProjectType": "NG",
+  "TechnologyType": null,
+  "ProductTypeName": "NICE guideline",
+  "Process": "CG",
+  "Title": "Rheumatoid arthritis (update)",
+  "Status": "Complete",
+  "ProjectGroup": "Guidance",
+  "PublishedDate": "2018-07-11T00:00:00",
+  "LastModifiedDate": "2022-07-26T18:36:26.3364957",
+  "FirstGoLiveDate": "2016-01-15T10:39:55.1405617",
+  "CreatedDate": "2016-01-15T10:33:57.7159517",
+  "DevelopedAs": "CG",
+  "RelevantTo": null,
+  "IdNumber": null,
+  "AreasOfInterestList": [],
+  "TopicSelectionDecision": "Selected",
+  "TopicSelectionReason": null,
+  "TopicSelectionDecisionDate": null,
+  "TopicSelectionFurtherInfo": null,
+  "IndicatorSubTypes": []
+}

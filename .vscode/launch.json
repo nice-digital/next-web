@@ -54,10 +54,11 @@
     {
       "id": "baseUrl",
       "description": "Base URL",
-      "default": "http://localhost:3000",
+      "default": "http://localhost:4000",
       "type": "pickString",
       "options": [
         "http://localhost:3000",
+        "http://localhost:4000",
         "http://localhost:8092",
         "https://dev.nice.org.uk",
         "https://test.nice.org.uk",

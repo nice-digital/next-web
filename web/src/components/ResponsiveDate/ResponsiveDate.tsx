@@ -1,6 +1,6 @@
 import { FC } from "react";
 
-import { formatDateStr } from "@/utils";
+import { formatDateStr } from "@/utils/datetime";
 
 import styles from "./ResponsiveDate.module.scss";
 

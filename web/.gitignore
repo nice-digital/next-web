@@ -37,3 +37,6 @@ yarn-error.log*
 config/local*
 
 .cache
+
+# Generated sitemap XML files
+public/sitemap*

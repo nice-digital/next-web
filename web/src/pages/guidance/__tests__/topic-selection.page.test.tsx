@@ -3,9 +3,9 @@ import { useRouter } from "next/router";
 
 import { SearchResultsSuccess, SearchUrl } from "@nice-digital/search-client";
 
-import { render } from "@/test-utils";
+import sampleData from "@/mockData/search/guidance-topic-selection.json";
+import { render } from "@/test-utils/rendering";
 
-import sampleData from "../../../__mocks__/__data__/search/guidance-topic-selection.json";
 import TopicSelectionPage from "../topic-selection.page";
 
 (useRouter as jest.Mock).mockImplementation(() => ({

@@ -1,4 +1,4 @@
-import mockPublishedJsonResponse from "../__data__/search/guidance-published.json";
+import mockPublishedJsonResponse from "@/mockData/search/guidance-published.json";
 
 const searchClient = jest.requireActual("@nice-digital/search-client");
 

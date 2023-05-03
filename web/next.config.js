@@ -104,11 +104,31 @@ const nextConfig = {
 	pageExtensions: ["page.tsx", "api.tsx"],
 	// Don't send the x-powered-by header: we don't want to expose things like that. See https://edibleco.de/2TpDVAK
 	poweredByHeader: false,
+	async rewrites() {
+		return [
+			{
+				source:
+					"/:productRoot(indicators|guidance)/:statusSlug(indevelopment|discontinued|awaiting-development|topic-selection)/:path*",
+				destination:
+					"/indicators/indevelopment/:path*?productRoot=:productRoot&statusSlug=:statusSlug",
+			},
+			{
+				source:
+					"/:productRoot(indicators|guidance|advice|process|corporate)/:path*",
+				destination: "/indicators/:path*?productRoot=:productRoot",
+			},
+		];
+	},
 	async redirects() {
 		return [
 			{
 				source: "/guidance/proposed",
 				destination: "/guidance/awaiting-development",
+				permanent: true,
+			},
+			{
+				source: "/standards-and-indicators/index",
+				destination: "/indicators/published",
 				permanent: true,
 			},
 		];
@@ -138,5 +158,9 @@ const finalConfig = withNodeConfig(
 		niceDigitalModulesToTranspile.concat(nonES5ModulesToTranspile)
 	)(nextConfig)
 );
+
+// Delete the following properties now we are finished with them or next-js will warn 'root value has an unexpected property xxx - which is not in the list of allowed properties'
+delete finalConfig["nodeConfigServerKey"];
+delete finalConfig["nodeConfigPublicKey"];
 
 module.exports = finalConfig;

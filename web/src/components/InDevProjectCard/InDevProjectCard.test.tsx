@@ -1,16 +1,29 @@
 import { render, screen } from "@testing-library/react";
 
-import { ProjectStatus } from "@/feeds/inDev/types";
+import {
+	ProjectDetail,
+	ProjectGroup,
+	ProjectStatus,
+	ProjectType,
+} from "@/feeds/inDev/types";
 
 import { InDevProjectCard } from "./InDevProjectCard";
-
-type Project = Parameters<typeof InDevProjectCard>[0]["project"];
 
 describe("InDevProjectCard", () => {
 	it("should render project title", () => {
 		render(
 			<InDevProjectCard
-				project={{ Title: "Test title", Reference: "" } as unknown as Project}
+				project={
+					{
+						title: "Test title",
+						reference: "",
+						projectType: ProjectType.NG,
+						projectGroup: ProjectGroup.Guideline,
+						productTypeName: "",
+						status: ProjectStatus.InProgress,
+						publishedDate: "",
+					} as ProjectDetail
+				}
 			/>
 		);
 
@@ -21,7 +34,15 @@ describe("InDevProjectCard", () => {
 		render(
 			<InDevProjectCard
 				project={
-					{ Title: "Test title", Reference: "GID-ABC123" } as unknown as Project
+					{
+						title: "Test title",
+						reference: "GID-ABC123",
+						projectType: ProjectType.NG,
+						projectGroup: ProjectGroup.Guideline,
+						productTypeName: "",
+						status: ProjectStatus.InProgress,
+						publishedDate: "",
+					} as ProjectDetail
 				}
 			/>
 		);
@@ -35,7 +56,15 @@ describe("InDevProjectCard", () => {
 		render(
 			<InDevProjectCard
 				project={
-					{ Title: "Test title", Reference: "GID-ABC123" } as unknown as Project
+					{
+						title: "Test title",
+						reference: "GID-ABC123",
+						projectType: ProjectType.NG,
+						projectGroup: ProjectGroup.Guideline,
+						productTypeName: "",
+						status: ProjectStatus.InProgress,
+						publishedDate: "",
+					} as ProjectDetail
 				}
 			/>
 		);
@@ -51,10 +80,14 @@ describe("InDevProjectCard", () => {
 			<InDevProjectCard
 				project={
 					{
-						Title: "Test title",
-						Reference: "GID-ABC123",
-						ProductTypeName: "Test product type",
-					} as unknown as Project
+						title: "Test title",
+						reference: "GID-ABC123",
+						productTypeName: "Test product type",
+						projectType: ProjectType.NG,
+						projectGroup: ProjectGroup.Guideline,
+						status: ProjectStatus.InProgress,
+						publishedDate: "",
+					} as ProjectDetail
 				}
 			/>
 		);
@@ -68,11 +101,14 @@ describe("InDevProjectCard", () => {
 			<InDevProjectCard
 				project={
 					{
-						Title: "Test title",
-						Reference: "GID-ABC123",
-						ProductTypeName: "Test product type",
-						PublishedDate: null,
-					} as unknown as Project
+						title: "Test title",
+						reference: "GID-ABC123",
+						productTypeName: "Test product type",
+						publishedDate: "",
+						projectType: ProjectType.NG,
+						projectGroup: ProjectGroup.Guideline,
+						status: ProjectStatus.InProgress,
+					} as ProjectDetail
 				}
 			/>
 		);
@@ -87,11 +123,14 @@ describe("InDevProjectCard", () => {
 			<InDevProjectCard
 				project={
 					{
-						Title: "Test title",
-						Reference: "GID-ABC123",
-						ProductTypeName: "Test product type",
-						PublishedDate: "2020-12-31",
-					} as unknown as Project
+						title: "Test title",
+						reference: "GID-ABC123",
+						productTypeName: "Test product type",
+						publishedDate: "2020-12-31",
+						projectType: ProjectType.NG,
+						projectGroup: ProjectGroup.Guideline,
+						status: ProjectStatus.InProgress,
+					} as ProjectDetail
 				}
 			/>
 		);
@@ -109,9 +148,13 @@ describe("InDevProjectCard", () => {
 			<InDevProjectCard
 				project={
 					{
-						Reference: "GID-ABC123",
-						Status: ProjectStatus.Proposed,
-					} as unknown as Project
+						reference: "GID-ABC123",
+						status: ProjectStatus.Proposed,
+						projectType: ProjectType.NG,
+						projectGroup: ProjectGroup.Guideline,
+						productTypeName: "",
+						publishedDate: "",
+					} as ProjectDetail
 				}
 			/>
 		);

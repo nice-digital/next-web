@@ -1,0 +1,9 @@
+@use '@nice-digital/nds-core/scss/spacing';
+@use '@nice-digital/nds-core/scss/utils';
+
+.download {
+  display: block;
+  margin-bottom: utils.rem(spacing.$medium);
+  margin-right: 0;
+  text-align: center;
+}

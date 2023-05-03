@@ -96,3 +96,8 @@ export const ScrollToLink: FC<
 		/>
 	);
 };
+
+/** Specific type of NextJS link that scrolls to the content start element after navigation */
+export const ScrollToContentStartLink: FC<
+	LinkProps & { scrollTargetId: never; onClick?: never; scroll?: never }
+> = (props) => <ScrollToLink {...props} scrollTargetId="content-start" />;

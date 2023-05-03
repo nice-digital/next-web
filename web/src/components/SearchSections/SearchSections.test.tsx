@@ -3,7 +3,7 @@ import { screen } from "@testing-library/react";
 import { Document } from "@nice-digital/search-client";
 
 import { SearchSections } from "@/components/SearchSections/SearchSections";
-import { render } from "@/test-utils";
+import { render } from "@/test-utils/rendering";
 
 const mockParsedLinks: Document["subSections"] = [
 	{ title: "Test subsection 1", url: "/testsubsection/1" },

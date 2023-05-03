@@ -1,0 +1,11 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Stakeholders should render legacy stakeholder items 1`] = `
+Array [
+  <ul
+    aria-label="Legacy stakeholders"
+  >
+    <li />
+  </ul>,
+]
+`;

@@ -40,6 +40,8 @@ export const cache: Readonly<Cache> = caching({
 		ttl: defaultTTL,
 		subdirs: true,
 	},
+	// Don't cache empty values
+	isCacheableValue: (value: unknown) => value !== null && value !== undefined,
 	// Using a sensible refreshThreshold allows use to almost follow a SWR (stale while relvalidate) approach.
 	// 'Almost' meaning we don't relvalidate on every cache access as we don't need to be that up-to-date but we
 	// revalidate regularly. We have enough traffic that this should mean a lot of the time things are always in cache.

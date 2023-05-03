@@ -37,6 +37,7 @@ export interface SearchListFiltersProps {
 	dateFilterLabel?: string;
 	useFutureDates?: boolean;
 	navigatorsOrder: KnownOrModifierKeys[];
+	searchInputPlaceholder?: string;
 }
 
 export const SearchListFilters: FC<SearchListFiltersProps> = ({
@@ -53,6 +54,7 @@ export const SearchListFilters: FC<SearchListFiltersProps> = ({
 	dateFilterLabel,
 	useFutureDates,
 	navigatorsOrder,
+	searchInputPlaceholder = "E.g. 'diabetes' or 'NG28'",
 }) => {
 	const router = useRouter(),
 		formRef = createRef<HTMLFormElement>();
@@ -130,7 +132,8 @@ export const SearchListFilters: FC<SearchListFiltersProps> = ({
 					label="Filter by title or keyword"
 					name="q"
 					defaultValue={queryText}
-					placeholder="E.g. 'diabetes' or 'NG28'"
+					placeholder={searchInputPlaceholder}
+					// placeholder="E.g. 'diabetes' or 'NG28'"
 				/>
 			) : (
 				<input type="hidden" name="q" value={queryText} />
