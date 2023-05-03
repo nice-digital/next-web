@@ -146,6 +146,7 @@ describe("/guidance/published", () => {
 			<table
 			  aria-describedby="filter-summary"
 			  class="table"
+			  data-component="table"
 			  id="results"
 			>
 			  <tbody>

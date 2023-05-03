@@ -55,7 +55,7 @@ describe("next.config.js", () => {
 		  },
 		  Object {
 		    "key": "Link",
-		    "value": "<https://cdn.nice.org.uk/cookie-banner/cookie-banner.min.js>; rel=preload; as=script,<https://apikeys.civiccomputing.com>; rel=preconnect; crossorigin,<https://www.googletagmanager.com>; rel=preconnect,<https://fonts.googleapis.com>; rel=preconnect,<https://fonts.gstatic.com>; rel=preconnect; crossorigin",
+		    "value": "<https://cdn.nice.org.uk/cookie-banner/cookie-banner.min.js>; rel=preload; as=script,<https://apikeys.civiccomputing.com>; rel=preconnect; crossorigin,<https://www.googletagmanager.com>; rel=preconnect",
 		  },
 		]
 	`);
