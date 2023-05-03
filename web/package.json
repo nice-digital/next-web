@@ -28,7 +28,7 @@
     "@nice-digital/design-system": "^4.0.0",
     "@nice-digital/global-nav": "^5.0.923",
     "@nice-digital/nds-prev-next": "^3.0.2",
-    "@nice-digital/search-client": "^2.0.1501-SRCH-726-create-navi",
+    "@nice-digital/search-client": "^2.1.1540-SRCH-780-Research-Re",
     "@sindresorhus/slugify": "^1.1.2",
     "axios": "^1.1.2",
     "axios-case-converter": "^0.9.0",
