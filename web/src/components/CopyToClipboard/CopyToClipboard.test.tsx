@@ -3,7 +3,7 @@ import userEvent from "@testing-library/user-event";
 import * as clipboard from "clipboard-polyfill";
 import { renderToString } from "react-dom/server";
 
-import { render, screen } from "@/test-utils";
+import { render, screen } from "@/test-utils/rendering";
 
 import { CopyToClipboard } from "./CopyToClipboard";
 
@@ -16,11 +16,6 @@ jest.mock("@/logger", () => ({
 jest.mock("clipboard-polyfill", () => ({
 	ClipboardItem: jest.fn(),
 	write: jest.fn(),
-}));
-
-jest.mock("@nice-digital/global-nav", () => ({
-	Header: () => null,
-	Footer: () => null,
 }));
 
 describe("CopyToClipboard", () => {

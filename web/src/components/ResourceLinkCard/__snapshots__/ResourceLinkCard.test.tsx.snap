@@ -1,0 +1,87 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`ResourceLinkCard should match snapshot for file download 1`] = `
+<div>
+  <article
+    class="card"
+    data-component="card"
+  >
+    <header
+      class="card__header"
+    >
+      <p
+        class="card__heading"
+      >
+        <a
+          href="/something.xls"
+        >
+          File link
+           
+          (
+          Excel
+          ,
+           
+          12 kB
+          )
+        </a>
+      </p>
+    </header>
+    <dl
+      class="card__metadata"
+    >
+      <div
+        class="card__metadatum"
+      >
+        <dt
+          class="visually-hidden"
+        >
+          Type
+        </dt>
+        <dd>
+          Implementation support
+        </dd>
+      </div>
+      <div
+        class="card__metadatum"
+      >
+        <dt
+          class="visually-hidden"
+        >
+          Date
+        </dt>
+        <dd>
+          <time
+            datetime="2022-07-26"
+          >
+            26 July 2022
+          </time>
+        </dd>
+      </div>
+      <div
+        class="card__metadatum"
+      >
+        <dt
+          class="visually-hidden"
+        >
+          File type
+        </dt>
+        <dd>
+          Excel
+        </dd>
+      </div>
+      <div
+        class="card__metadatum"
+      >
+        <dt
+          class="visually-hidden"
+        >
+          File size
+        </dt>
+        <dd>
+          12 kB
+        </dd>
+      </div>
+    </dl>
+  </article>
+</div>
+`;

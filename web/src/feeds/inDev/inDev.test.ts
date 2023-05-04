@@ -6,8 +6,6 @@ import { serverRuntimeConfig } from "@/config";
 
 import { getAllProjects, getAllConsultations } from "./inDev";
 
-import type { PromiseValue } from "type-fest";
-
 const cacheWrapMock = cache.wrap as jest.Mock;
 
 describe("feeds/inDev", () => {
@@ -34,7 +32,7 @@ describe("feeds/inDev", () => {
 
 		it("should load raw feed data with empty cache", async () => {
 			await getAllProjects();
-			const data: PromiseValue<ReturnType<typeof getAllProjects>> =
+			const data: Awaited<ReturnType<typeof getAllProjects>> =
 				await cacheWrapMock.mock.calls[0][1]();
 
 			expect(data).toHaveLength(887);
@@ -65,7 +63,7 @@ describe("feeds/inDev", () => {
 
 		it("should load raw feed data with empty cache", async () => {
 			await getAllConsultations();
-			const data: PromiseValue<ReturnType<typeof getAllConsultations>> =
+			const data: Awaited<ReturnType<typeof getAllConsultations>> =
 				await cacheWrapMock.mock.calls[0][1]();
 
 			expect(data).toHaveLength(20);

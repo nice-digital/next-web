@@ -1,0 +1,1118 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`/indicators/published should match the snapshot 1`] = `
+<div>
+  <style>
+    
+		html {
+			--sans-font-family: Arial;
+			--serif-font-family: Arial;
+		}
+	
+  </style>
+  <div />
+  <main>
+    <div
+      class="container"
+      data-component="container"
+    >
+      <nav
+        aria-label="Breadcrumbs"
+        data-component="breadcrumbs"
+        role="navigation"
+      >
+        <ol
+          class="breadcrumbs"
+        >
+          <li
+            class="breadcrumbs__crumb"
+          >
+            <a
+              href="/"
+            >
+              Home
+            </a>
+          </li>
+          <li
+            class="breadcrumbs__crumb"
+          >
+            <a
+              href="/standards-and-indicators"
+            >
+              Standards and Indicators
+            </a>
+          </li>
+          <li
+            class="breadcrumbs__crumb"
+          >
+            <a
+              href="/standards-and-indicators/indicators"
+            >
+              Indicators
+            </a>
+          </li>
+          <li
+            class="breadcrumbs__crumb"
+          >
+            <span>
+              Published indicators
+            </span>
+          </li>
+        </ol>
+      </nav>
+      <script
+        type="application/ld+json"
+      >
+        {
+  "@context": "http://schema.org",
+  "@type": "BreadcrumbList",
+  "itemListElement": [
+    {
+      "@type": "ListItem",
+      "position": 1,
+      "item": {
+        "@id": "/",
+        "name": "Home"
+      }
+    },
+    {
+      "@type": "ListItem",
+      "position": 2,
+      "item": {
+        "@id": "/standards-and-indicators",
+        "name": "Standards and Indicators"
+      }
+    },
+    {
+      "@type": "ListItem",
+      "position": 3,
+      "item": {
+        "@id": "/standards-and-indicators/indicators",
+        "name": "Indicators"
+      }
+    },
+    {
+      "@type": "ListItem",
+      "position": 4,
+      "item": {
+        "name": "Published indicators"
+      }
+    }
+  ]
+}
+      </script>
+      <div
+        class="page-header"
+        data-component="page-header"
+        id="content-start"
+      >
+        <h1
+          class="page-header__heading "
+        >
+          <span
+            class="page-header__pre-heading"
+          >
+            Published
+          </span>
+          Indicators
+        </h1>
+        <p
+          class="page-header__lead"
+        >
+          <a
+            class="skipLink"
+            href="#filters"
+          >
+            Skip to filters
+          </a>
+          <a
+            class="skipLink"
+            href="#results"
+          >
+            Skip to results
+          </a>
+        </p>
+      </div>
+      <p>
+        The NICE indicator menu includes general practice and CCG level indicators by clinical area. Use the filters to display indicators by type or subject - or filter by both, for more specific results.
+      </p>
+      <p>
+        <a
+          href="/standards-and-indicators"
+        >
+          About NICE Indicators
+        </a>
+      </p>
+      <nav
+        aria-label="Stages of indicator development"
+        class="horizontal-nav"
+      >
+        <ul
+          class="horizontal-nav__list"
+        >
+          <li
+            class="horizontal-nav__item"
+            data-component="horizontal-nav"
+          >
+            <a
+              aria-current="false"
+              class="horizontal-nav__link"
+              href="/indicators/published"
+            >
+              Published
+            </a>
+          </li>
+          <li
+            class="horizontal-nav__item"
+            data-component="horizontal-nav"
+          >
+            <a
+              aria-current="false"
+              class="horizontal-nav__link"
+              href="/indicators/inconsultation"
+            >
+              In consultation
+            </a>
+          </li>
+          <li
+            class="horizontal-nav__item"
+            data-component="horizontal-nav"
+          >
+            <a
+              aria-current="false"
+              class="horizontal-nav__link"
+              href="/indicators/indevelopment"
+            >
+              In development
+            </a>
+          </li>
+        </ul>
+      </nav>
+      <div
+        class="grid grid--loose sectionWrapper"
+      >
+        <section
+          aria-label="Filter results"
+          class="panelWrapper"
+          data-component="grid-item"
+          data-g="12 md:4 lg:3"
+        >
+          <form
+            aria-label="Filter results"
+            id="filters"
+          >
+            <div
+              class="filter-panel"
+              data-component="filter-panel"
+            >
+              <h2
+                class="filter-panel__heading"
+              >
+                <button
+                  aria-controls="filter-panel-body"
+                  aria-expanded="true"
+                  type="button"
+                >
+                  <svg
+                    aria-hidden="true"
+                    class="filter-panel__heading-icon filter-panel__heading-icon--expanded"
+                    fill="none"
+                    focusable="false"
+                    height="1em"
+                    viewBox="0 0 512 512"
+                    width="1em"
+                    xmlns="http://www.w3.org/2000/svg"
+                  >
+                    <path
+                      d="M478.152 174c0 10.091-3.525 18.661-10.576 25.712l-186 186c-7.243 7.243-15.909 10.864-26 10.864-10.283 0-18.853-3.621-25.712-10.864l-186-186C36.621 192.853 33 184.283 33 174c0-10.091 3.621-18.757 10.864-26L65 126.576C72.424 119.525 81.09 116 91 116c10.091 0 18.661 3.525 25.712 10.576L255.576 265.44 394.44 126.576c7.051-7.051 15.621-10.576 25.712-10.576 9.909 0 18.576 3.525 26 10.576L467.576 148c7.051 7.424 10.576 16.091 10.576 26Z"
+                      fill="currentColor"
+                    />
+                  </svg>
+                  Filter
+                </button>
+              </h2>
+              <div
+                aria-hidden="false"
+                class="filter-panel__body"
+                id="filter-panel-body"
+              >
+                <a
+                  class="skipLink"
+                  href="#results"
+                >
+                  Skip to results
+                </a>
+                <input
+                  name="ps"
+                  type="hidden"
+                  value=""
+                />
+                <input
+                  name="s"
+                  type="hidden"
+                  value=""
+                />
+                <div
+                  class="container"
+                >
+                  <label
+                    class="label"
+                    for="q"
+                  >
+                    Filter by title or keyword
+                  </label>
+                  <div
+                    class="input"
+                    data-component="input"
+                  >
+                    <input
+                      autocomplete="off"
+                      class="input__input"
+                      id="q"
+                      name="q"
+                      placeholder="E.g. 'diabetes' or 'IND28'"
+                      type="text"
+                      value=""
+                    />
+                  </div>
+                  <button
+                    class="btn button"
+                    data-component="button--primary"
+                    type="submit"
+                  >
+                    Filter
+                  </button>
+                </div>
+                <div
+                  class="filter-group"
+                >
+                  <h3
+                    class="filter-group__heading"
+                  >
+                    <button
+                      aria-controls="group-last-updated-date"
+                      aria-expanded="true"
+                      type="button"
+                    >
+                      <svg
+                        aria-hidden="true"
+                        class="filter-group__heading-icon filter-group__heading-icon--expanded"
+                        fill="none"
+                        focusable="false"
+                        height="1em"
+                        viewBox="0 0 512 512"
+                        width="1em"
+                        xmlns="http://www.w3.org/2000/svg"
+                      >
+                        <path
+                          d="M478.152 174c0 10.091-3.525 18.661-10.576 25.712l-186 186c-7.243 7.243-15.909 10.864-26 10.864-10.283 0-18.853-3.621-25.712-10.864l-186-186C36.621 192.853 33 184.283 33 174c0-10.091 3.621-18.757 10.864-26L65 126.576C72.424 119.525 81.09 116 91 116c10.091 0 18.661 3.525 25.712 10.576L255.576 265.44 394.44 126.576c7.051-7.051 15.621-10.576 25.712-10.576 9.909 0 18.576 3.525 26 10.576L467.576 148c7.051 7.424 10.576 16.091 10.576 26Z"
+                          fill="currentColor"
+                        />
+                      </svg>
+                      <span
+                        id="group-heading-last-updated-date"
+                      >
+                        Last updated date
+                         
+                      </span>
+                    </button>
+                  </h3>
+                  <fieldset
+                    aria-hidden="false"
+                    class="filter-group__options"
+                    id="group-last-updated-date"
+                  >
+                    <legend>
+                      Last updated date
+                    </legend>
+                    <div
+                      class="ph--c pt--c"
+                    >
+                      <div
+                        class="input"
+                        data-component="input"
+                      >
+                        <label
+                          class="input__label"
+                          for="from"
+                        >
+                          From date
+                        </label>
+                        <input
+                          class="input__input"
+                          id="from"
+                          max="2020-11-22"
+                          min="2000-01-01"
+                          name="from"
+                          pattern="[0-9]{4}-(0[1-9]|1[012])-(0[1-9]|1[0-9]|2[0-9]|3[01])"
+                          placeholder="yyyy-mm-dd"
+                          type="date"
+                          value=""
+                        />
+                      </div>
+                      <div
+                        class="input"
+                        data-component="input"
+                      >
+                        <label
+                          class="input__label"
+                          for="to"
+                        >
+                          To date
+                        </label>
+                        <input
+                          class="input__input"
+                          id="to"
+                          max="2020-11-22"
+                          min="2000-01-01"
+                          name="to"
+                          pattern="[0-9]{4}-(0[1-9]|1[012])-(0[1-9]|1[0-9]|2[0-9]|3[01])"
+                          placeholder="yyyy-mm-dd"
+                          type="date"
+                          value=""
+                        />
+                      </div>
+                      <button
+                        class="btn btn--secondary ml--0"
+                        data-component="button--secondary"
+                        type="submit"
+                      >
+                        Apply date filters
+                      </button>
+                    </div>
+                  </fieldset>
+                </div>
+                <div
+                  class="filter-group"
+                >
+                  <h3
+                    class="filter-group__heading"
+                  >
+                    <button
+                      aria-controls="group-rty"
+                      aria-expanded="true"
+                      type="button"
+                    >
+                      <svg
+                        aria-hidden="true"
+                        class="filter-group__heading-icon filter-group__heading-icon--expanded"
+                        fill="none"
+                        focusable="false"
+                        height="1em"
+                        viewBox="0 0 512 512"
+                        width="1em"
+                        xmlns="http://www.w3.org/2000/svg"
+                      >
+                        <path
+                          d="M478.152 174c0 10.091-3.525 18.661-10.576 25.712l-186 186c-7.243 7.243-15.909 10.864-26 10.864-10.283 0-18.853-3.621-25.712-10.864l-186-186C36.621 192.853 33 184.283 33 174c0-10.091 3.621-18.757 10.864-26L65 126.576C72.424 119.525 81.09 116 91 116c10.091 0 18.661 3.525 25.712 10.576L255.576 265.44 394.44 126.576c7.051-7.051 15.621-10.576 25.712-10.576 9.909 0 18.576 3.525 26 10.576L467.576 148c7.051 7.424 10.576 16.091 10.576 26Z"
+                          fill="currentColor"
+                        />
+                      </svg>
+                      <span
+                        id="group-heading-rty"
+                      >
+                        Indicator type
+                         
+                      </span>
+                    </button>
+                  </h3>
+                  <fieldset
+                    aria-hidden="false"
+                    class="filter-group__options"
+                    id="group-rty"
+                  >
+                    <legend>
+                      Indicator type
+                    </legend>
+                    <label
+                      class="filter-option"
+                      data-component="filter-option"
+                      for="filter_rty_clinical-commissioning-group-indicators"
+                    >
+                      <input
+                        id="filter_rty_clinical-commissioning-group-indicators"
+                        name="rty"
+                        title="Indicator type - Clinical commissioning group indicators (23)"
+                        type="checkbox"
+                        value="Clinical commissioning group indicators"
+                      />
+                      <span
+                        class="filter-option__text"
+                      >
+                        Clinical commissioning group indicators (23)
+                      </span>
+                    </label>
+                    <label
+                      class="filter-option"
+                      data-component="filter-option"
+                      for="filter_rty_general-practice-indicators-suitable-for-use-in-qof"
+                    >
+                      <input
+                        id="filter_rty_general-practice-indicators-suitable-for-use-in-qof"
+                        name="rty"
+                        title="Indicator type - General practice indicators suitable for use in QOF (13)"
+                        type="checkbox"
+                        value="General practice indicators suitable for use in QOF"
+                      />
+                      <span
+                        class="filter-option__text"
+                      >
+                        General practice indicators suitable for use in QOF (13)
+                      </span>
+                    </label>
+                    <label
+                      class="filter-option"
+                      data-component="filter-option"
+                      for="filter_rty_general-practice-indicators-suitable-for-use-outside-of-qof"
+                    >
+                      <input
+                        id="filter_rty_general-practice-indicators-suitable-for-use-outside-of-qof"
+                        name="rty"
+                        title="Indicator type - General practice indicators suitable for use outside of QOF (15)"
+                        type="checkbox"
+                        value="General practice indicators suitable for use outside of QOF"
+                      />
+                      <span
+                        class="filter-option__text"
+                      >
+                        General practice indicators suitable for use outside of QOF (15)
+                      </span>
+                    </label>
+                    <label
+                      class="filter-option"
+                      data-component="filter-option"
+                      for="filter_rty_national-library-of-quality-indicators"
+                    >
+                      <input
+                        id="filter_rty_national-library-of-quality-indicators"
+                        name="rty"
+                        title="Indicator type - National library of quality indicators (15)"
+                        type="checkbox"
+                        value="National library of quality indicators"
+                      />
+                      <span
+                        class="filter-option__text"
+                      >
+                        National library of quality indicators (15)
+                      </span>
+                    </label>
+                  </fieldset>
+                </div>
+              </div>
+            </div>
+          </form>
+        </section>
+        <section
+          aria-labelledby="filter-summary"
+          data-component="grid-item"
+          data-g="12 md:8 lg:9"
+        >
+          <div
+            class="filter-summary"
+            data-component="filter-summary"
+            id="filter-summary"
+          >
+            <div
+              class="filter-summary__count"
+            >
+              <h2
+                class="h5 mv--0"
+              >
+                Showing 
+                1
+                 to 
+                10
+                 of 
+                83
+              </h2>
+            </div>
+            <div
+              class="filter-summary__sorting"
+            >
+              <label
+                class="filter-summary__sort-label"
+                for="sorting-options"
+              >
+                Sort by
+              </label>
+              <select
+                class="filter-summary__select"
+                id="sorting-options"
+                name="s"
+              >
+                <option
+                  selected=""
+                  value="Date"
+                >
+                  Date
+                </option>
+                <option
+                  value="Title"
+                >
+                  Title
+                </option>
+              </select>
+            </div>
+          </div>
+          <div
+            class="tableWrapper"
+          >
+            <table
+              aria-describedby="filter-summary"
+              class="table"
+              data-component="table"
+              id="results"
+            >
+              <caption
+                class="visually-hidden"
+              >
+                List of published indicators
+              </caption>
+              <thead>
+                <tr>
+                  <th
+                    scope="col"
+                  >
+                    Title
+                  </th>
+                  <th
+                    scope="col"
+                  >
+                    Reference number
+                  </th>
+                  <th
+                    scope="col"
+                  >
+                    Published
+                  </th>
+                  <th
+                    scope="col"
+                  >
+                    Last updated
+                  </th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td>
+                    <a
+                      href="/indicators/ind85-old-demo-indicator"
+                    >
+                      <span>
+                        old demo indicator
+                      </span>
+                    </a>
+                  </td>
+                  <td>
+                    IND85
+                  </td>
+                  <td>
+                    <time
+                      class="date"
+                      data-shortdate="4/3/2023"
+                      datetime="2023-03-04T12:00:00"
+                    >
+                      <span>
+                        4 March 2023
+                      </span>
+                    </time>
+                  </td>
+                  <td>
+                    <time
+                      class="date"
+                      data-shortdate="8/3/2023"
+                      datetime="2023-03-08T12:00:00"
+                    >
+                      <span>
+                        8 March 2023
+                      </span>
+                    </time>
+                  </td>
+                </tr>
+                <tr>
+                  <td>
+                    <a
+                      href="/indicators/ind369-indicator-demo-product"
+                    >
+                      <span>
+                        Indicator demo product
+                      </span>
+                    </a>
+                  </td>
+                  <td>
+                    IND369
+                  </td>
+                  <td>
+                    <time
+                      class="date"
+                      data-shortdate="6/3/2023"
+                      datetime="2023-03-06T12:00:00"
+                    >
+                      <span>
+                        6 March 2023
+                      </span>
+                    </time>
+                  </td>
+                  <td>
+                    <time
+                      class="date"
+                      data-shortdate="6/3/2023"
+                      datetime="2023-03-06T12:00:00"
+                    >
+                      <span>
+                        6 March 2023
+                      </span>
+                    </time>
+                  </td>
+                </tr>
+                <tr>
+                  <td>
+                    <a
+                      href="/indicators/ind396-indicator-showcase-product"
+                    >
+                      <span>
+                        Indicator showcase product
+                      </span>
+                    </a>
+                  </td>
+                  <td>
+                    IND396
+                  </td>
+                  <td>
+                    <time
+                      class="date"
+                      data-shortdate="5/3/2023"
+                      datetime="2023-03-05T12:00:00"
+                    >
+                      <span>
+                        5 March 2023
+                      </span>
+                    </time>
+                  </td>
+                  <td>
+                    <time
+                      class="date"
+                      data-shortdate="6/3/2023"
+                      datetime="2023-03-06T12:00:00"
+                    >
+                      <span>
+                        6 March 2023
+                      </span>
+                    </time>
+                  </td>
+                </tr>
+                <tr>
+                  <td>
+                    <a
+                      href="/indicators/ind24-test-master"
+                    >
+                      <span>
+                        Test Master
+                      </span>
+                    </a>
+                  </td>
+                  <td>
+                    IND24
+                  </td>
+                  <td>
+                    <time
+                      class="date"
+                      data-shortdate="16/2/2023"
+                      datetime="2023-02-16T12:00:00"
+                    >
+                      <span>
+                        16 February 2023
+                      </span>
+                    </time>
+                  </td>
+                  <td>
+                    <time
+                      class="date"
+                      data-shortdate="16/2/2023"
+                      datetime="2023-02-16T12:00:00"
+                    >
+                      <span>
+                        16 February 2023
+                      </span>
+                    </time>
+                  </td>
+                </tr>
+                <tr>
+                  <td>
+                    <a
+                      href="/indicators/ind87-nxt-100-card-test"
+                    >
+                      <span>
+                        NXT-100 card test
+                      </span>
+                    </a>
+                  </td>
+                  <td>
+                    IND87
+                  </td>
+                  <td>
+                    <time
+                      class="date"
+                      data-shortdate="8/2/2023"
+                      datetime="2023-02-08T12:00:00"
+                    >
+                      <span>
+                        8 February 2023
+                      </span>
+                    </time>
+                  </td>
+                  <td>
+                    <time
+                      class="date"
+                      data-shortdate="8/2/2023"
+                      datetime="2023-02-08T12:00:00"
+                    >
+                      <span>
+                        8 February 2023
+                      </span>
+                    </time>
+                  </td>
+                </tr>
+                <tr>
+                  <td>
+                    <a
+                      href="/indicators/ind97-indicator-issue-fix-test"
+                    >
+                      <span>
+                        indicator issue fix test
+                      </span>
+                    </a>
+                  </td>
+                  <td>
+                    IND97
+                  </td>
+                  <td>
+                    <time
+                      class="date"
+                      data-shortdate="8/2/2023"
+                      datetime="2023-02-08T12:00:00"
+                    >
+                      <span>
+                        8 February 2023
+                      </span>
+                    </time>
+                  </td>
+                  <td>
+                    <time
+                      class="date"
+                      data-shortdate="8/2/2023"
+                      datetime="2023-02-08T12:00:00"
+                    >
+                      <span>
+                        8 February 2023
+                      </span>
+                    </time>
+                  </td>
+                </tr>
+                <tr>
+                  <td>
+                    <a
+                      href="/indicators/ind108-old-nil-indicator"
+                    >
+                      <span>
+                        old nil indicator
+                      </span>
+                    </a>
+                  </td>
+                  <td>
+                    IND108
+                  </td>
+                  <td>
+                    <time
+                      class="date"
+                      data-shortdate="23/1/2023"
+                      datetime="2023-01-23T12:00:00"
+                    >
+                      <span>
+                        23 January 2023
+                      </span>
+                    </time>
+                  </td>
+                  <td>
+                    <time
+                      class="date"
+                      data-shortdate="23/1/2023"
+                      datetime="2023-01-23T12:00:00"
+                    >
+                      <span>
+                        23 January 2023
+                      </span>
+                    </time>
+                  </td>
+                </tr>
+                <tr>
+                  <td>
+                    <a
+                      href="/indicators/ind109-old-gp-quality-improvement"
+                    >
+                      <span>
+                        Old GP quality improvement
+                      </span>
+                    </a>
+                  </td>
+                  <td>
+                    IND109
+                  </td>
+                  <td>
+                    <time
+                      class="date"
+                      data-shortdate="23/1/2023"
+                      datetime="2023-01-23T12:00:00"
+                    >
+                      <span>
+                        23 January 2023
+                      </span>
+                    </time>
+                  </td>
+                  <td>
+                    <time
+                      class="date"
+                      data-shortdate="23/1/2023"
+                      datetime="2023-01-23T12:00:00"
+                    >
+                      <span>
+                        23 January 2023
+                      </span>
+                    </time>
+                  </td>
+                </tr>
+                <tr>
+                  <td>
+                    <a
+                      href="/indicators/ind110-old-qof-indicator"
+                    >
+                      <span>
+                        old QOF indicator
+                      </span>
+                    </a>
+                  </td>
+                  <td>
+                    IND110
+                  </td>
+                  <td>
+                    <time
+                      class="date"
+                      data-shortdate="23/1/2023"
+                      datetime="2023-01-23T12:00:00"
+                    >
+                      <span>
+                        23 January 2023
+                      </span>
+                    </time>
+                  </td>
+                  <td>
+                    <time
+                      class="date"
+                      data-shortdate="23/1/2023"
+                      datetime="2023-01-23T12:00:00"
+                    >
+                      <span>
+                        23 January 2023
+                      </span>
+                    </time>
+                  </td>
+                </tr>
+                <tr>
+                  <td>
+                    <a
+                      href="/indicators/ind40-old-gp-indicator"
+                    >
+                      <span>
+                        OLD GP indicator
+                      </span>
+                    </a>
+                  </td>
+                  <td>
+                    IND40
+                  </td>
+                  <td>
+                    <time
+                      class="date"
+                      data-shortdate="23/1/2023"
+                      datetime="2023-01-23T12:00:00"
+                    >
+                      <span>
+                        23 January 2023
+                      </span>
+                    </time>
+                  </td>
+                  <td>
+                    <time
+                      class="date"
+                      data-shortdate="23/1/2023"
+                      datetime="2023-01-23T12:00:00"
+                    >
+                      <span>
+                        23 January 2023
+                      </span>
+                    </time>
+                  </td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+          <nav
+            aria-label="Pagination"
+            class="pagination "
+            data-component="pagination"
+            role="navigation"
+          >
+            <ol
+              class="pagination__list"
+            >
+              <li
+                aria-current="true"
+                class="pagination__item pagination__item--current"
+              >
+                <span
+                  class="pagination__inactive"
+                >
+                  <span
+                    class="visually-hidden"
+                  >
+                    Current page 
+                  </span>
+                  1
+                </span>
+              </li>
+              <li
+                class="pagination__item"
+              >
+                <a
+                  aria-label="Go to page 2"
+                  class="pagination__link"
+                  href="/?pa=2"
+                >
+                  2
+                </a>
+              </li>
+              <li
+                class="pagination__item"
+              >
+                <a
+                  aria-label="Go to page 3"
+                  class="pagination__link"
+                  href="/?pa=3"
+                >
+                  3
+                </a>
+              </li>
+              <li
+                class="pagination__item"
+              >
+                <span
+                  class="pagination__inactive"
+                >
+                  …
+                </span>
+              </li>
+              <li
+                class="pagination__item"
+              >
+                <a
+                  aria-label="Go to page 9"
+                  class="pagination__link"
+                  href="/?pa=9"
+                >
+                  9
+                </a>
+              </li>
+              <li
+                class="pagination__item pagination__item--count"
+              >
+                <span>
+                  Page 
+                  <strong>
+                    1
+                  </strong>
+                   of 
+                  <strong>
+                    9
+                  </strong>
+                </span>
+              </li>
+              <li
+                class="pagination__item pagination__item--bookend"
+              >
+                <a
+                  class="pagination__link"
+                  href="/?pa=2"
+                >
+                  Next page
+                </a>
+              </li>
+            </ol>
+          </nav>
+          <div
+            class="grid grid--middle mt--d"
+          >
+            <div
+              class="mb--e mb--0-sm"
+              data-component="grid-item"
+              data-g="12 sm:6"
+            >
+              <button
+                class="btn mv--0 mh--0"
+                data-component="button--primary"
+                type="button"
+              >
+                Copy 
+                10 results
+                 to clipboard
+              </button>
+            </div>
+            <div
+              class="text-right"
+              data-component="grid-item"
+              data-g="12 sm:6"
+            >
+              <h3
+                class="resultsPerPageHeading"
+              >
+                Results per page
+              </h3>
+              <ol
+                class="list list--piped resultsPerPageList"
+              >
+                <li>
+                  10
+                </li>
+                <li>
+                  <a
+                    aria-label="Show 25 results per page"
+                    href="/?ps=25"
+                  >
+                    25
+                  </a>
+                </li>
+                <li>
+                  <a
+                    aria-label="Show 50 results per page"
+                    href="/?ps=50"
+                  >
+                    50
+                  </a>
+                </li>
+                <li>
+                  <a
+                    aria-label="Show All results per page"
+                    href="/?ps=9999"
+                  >
+                    All
+                  </a>
+                </li>
+              </ol>
+            </div>
+          </div>
+        </section>
+      </div>
+    </div>
+  </main>
+  <noscript />
+</div>
+`;

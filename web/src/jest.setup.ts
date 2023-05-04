@@ -1,7 +1,14 @@
 import "@testing-library/jest-dom";
+
+import { addDefaultJSONFeedMocks, axiosJSONMock } from "@/test-utils/feeds";
 //import * as matchers from "jest-extended/all";
 
 //expect.extend(matchers);
+
+beforeEach(() => {
+	axiosJSONMock.reset();
+	addDefaultJSONFeedMocks();
+});
 
 // We run some tests (e.g. caching/feed logic) with a node environment (rather than JSDOM) so window isn't always available
 if (typeof window !== "undefined") {

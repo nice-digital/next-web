@@ -2,7 +2,7 @@ import { waitFor } from "@testing-library/react";
 import userEvent from "@testing-library/user-event";
 import dayjs from "dayjs";
 
-import { render, screen } from "@/test-utils";
+import { render, screen } from "@/test-utils/rendering";
 
 import {
 	ToFromDateFilters,
