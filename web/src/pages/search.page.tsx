@@ -27,7 +27,7 @@ import { SearchNoResults } from "@/components/SearchNoResults/SearchNoResults";
 import { SearchPagination } from "@/components/SearchPagination/SearchPagination";
 import { publicRuntimeConfig } from "@/config";
 import { logger } from "@/logger";
-import { dateFormatShort } from "@/utils/constants";
+import { dateFormatShort } from "@/utils/datetime";
 
 const searchUrlDefaults = {
 	ps: 15,

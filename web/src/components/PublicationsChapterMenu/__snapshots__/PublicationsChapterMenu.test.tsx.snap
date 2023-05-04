@@ -1,0 +1,47 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`PublicationsChapterMenu should match the snapshot 1`] = `
+<div>
+  <nav
+    aria-label="Chapter pages"
+    class="stacked-nav"
+  >
+    <ul
+      class="stacked-nav__list"
+    >
+      <li
+        class="stacked-nav__list-item"
+      >
+        <a
+          aria-current="false"
+          href="/ind1001/chapter/test-chapter-1"
+        >
+          <span
+            class="stacked-nav__content-wrapper"
+          >
+            <span>
+              Test Chapter 1
+            </span>
+          </span>
+        </a>
+      </li>
+      <li
+        class="stacked-nav__list-item"
+      >
+        <a
+          aria-current="false"
+          href="/ind1001/chapter/test-chapter-2"
+        >
+          <span
+            class="stacked-nav__content-wrapper"
+          >
+            <span>
+              Test Chapter 2
+            </span>
+          </span>
+        </a>
+      </li>
+    </ul>
+  </nav>
+</div>
+`;

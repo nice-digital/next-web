@@ -1,0 +1,135 @@
+{
+  "_links": { "self": [{ "href": "/feeds/resource/29409" }] },
+  "_embedded": {
+    "nice.publications:related-product-list": {
+      "_links": { "self": [{}] },
+      "_embedded": {
+        "nice.publications:related-product": {
+          "_links": {
+            "nice.publications:related-product-uri": [
+              { "href": "/feeds/product/NG100" }
+            ],
+            "self": [{}]
+          },
+          "ETag": null,
+          "Title": "Rheumatoid arthritis in adults: management",
+          "ShortTitle": null,
+          "Id": "NG100"
+        }
+      },
+      "ETag": null
+    },
+    "nice.publications:related-resource-list": {
+      "_links": { "self": [{}] },
+      "ETag": null
+    },
+    "nice.publications:resource-group-list": {
+      "_links": { "self": [{}] },
+      "_embedded": {
+        "nice.publications:resource-group": {
+          "_links": { "self": [{}] },
+          "ETag": null,
+          "Name": "ResourceImpact"
+        }
+      },
+      "ETag": null
+    },
+    "nice.publications:accreditation-list": {
+      "_links": { "self": [{}] },
+      "ETag": null
+    },
+    "nice.publications:endorsement-list": {
+      "_links": { "self": [{}] },
+      "ETag": null
+    },
+    "nice.publications:supporting-list": {
+      "_links": { "self": [{}] },
+      "ETag": null
+    },
+    "nice.publications:configurable-field-list": {
+      "_links": { "self": [{}] },
+      "_embedded": {
+        "nice.publications:configurable-field": [
+          {
+            "_links": { "self": [{}] },
+            "ETag": null,
+            "Name": "Author",
+            "Value": "National Institute for Health and Care Excellence (NICE)"
+          },
+          {
+            "_links": { "self": [{}] },
+            "ETag": null,
+            "Name": "Publisher",
+            "Value": "National Institute for Health and Care Excellence (NICE)"
+          }
+        ]
+      },
+      "ETag": null
+    },
+    "nice.publications:content-part-list": {
+      "_links": { "self": [{}] },
+      "_embedded": {
+        "nice.publications:editable-content-part": {
+          "_links": { "self": [{}] },
+          "_embedded": {
+            "nice.publications:html-content": {
+              "_links": {
+                "self": [
+                  { "href": "/feeds/supportingresource/29409/content/1/html" }
+                ]
+              },
+              "ETag": null,
+              "Reference": "29409",
+              "PartId": 1
+            },
+            "nice.publications:pdf-file": {
+              "_links": {
+                "self": [
+                  {
+                    "href": "/feeds/downloads/2d345860-3c0e-45f5-ac29-1acd6771a2fc"
+                  }
+                ]
+              },
+              "ETag": null,
+              "Id": "2d345860-3c0e-45f5-ac29-1acd6771a2fc",
+              "MimeType": "application/pdf",
+              "FileName": "resource-impact-statement.pdf",
+              "Length": 40258,
+              "Hash": "39A7A1BB2D285CED4D19A26BCAAB316334269039",
+              "Name": "default",
+              "Uid": 6356219492293
+            }
+          },
+          "ETag": null,
+          "Title": "Resource impact statement",
+          "Type": "EditableContentPart",
+          "Uid": 4904490349,
+          "LegacyId": null
+        }
+      },
+      "ETag": null
+    }
+  },
+  "ETag": "01000000-0000-0001-0000-00000000D665",
+  "Title": "Resource impact statement",
+  "VersionNumber": 1,
+  "Summary": null,
+  "Uid": 3784329,
+  "LegacyId": null,
+  "EstimatedSavings": "",
+  "EstimatedSavingsDescription": "",
+  "EstimatedSavingsImpact": null,
+  "Language": "English",
+  "IPSV": "Health, well-being and care",
+  "Status": "Published",
+  "ResourceType": "ResourceImpact",
+  "ResourceTypeName": "Resource impact",
+  "PublishedDate": "2018-07-11T00:05:07.4294909",
+  "LastMajorModificationDate": "2018-07-11T00:05:07.4294909",
+  "MajorChangeDate": null,
+  "Reference": "29409",
+  "IsPrimary": false,
+  "LastModified": "2021-11-22T13:52:21.597048Z",
+  "IsDetailedView": true,
+  "HideBinarys": false
+}

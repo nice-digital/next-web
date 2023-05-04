@@ -1,0 +1,58 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`ProductHorizontalNav should match snapshot for all nav items 1`] = `
+<div>
+  <nav
+    class="horizontal-nav"
+  >
+    <ul
+      class="horizontal-nav__list"
+    >
+      <li
+        class="horizontal-nav__item"
+      >
+        <a
+          aria-current="true"
+          class="horizontal-nav__link"
+          href="/indicators/ind1-test"
+        >
+          Indicator
+        </a>
+      </li>
+      <li
+        class="horizontal-nav__item"
+      >
+        <a
+          aria-current="false"
+          class="horizontal-nav__link"
+          href="/indicators/ind1-test/resources"
+        >
+          Tools and resources
+        </a>
+      </li>
+      <li
+        class="horizontal-nav__item"
+      >
+        <a
+          aria-current="false"
+          class="horizontal-nav__link"
+          href="/indicators/ind1-test/evidence"
+        >
+          Evidence
+        </a>
+      </li>
+      <li
+        class="horizontal-nav__item"
+      >
+        <a
+          aria-current="false"
+          class="horizontal-nav__link"
+          href="/indicators/ind1-test/history"
+        >
+          History
+        </a>
+      </li>
+    </ul>
+  </nav>
+</div>
+`;
