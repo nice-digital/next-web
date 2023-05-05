@@ -4,6 +4,7 @@ exports[`Publication tools and resources page ToolsAndResourcesListPage should m
 <div>
   <nav
     aria-label="Breadcrumbs"
+    data-component="breadcrumbs"
     role="navigation"
   >
     <ol
@@ -105,6 +106,7 @@ exports[`Publication tools and resources page ToolsAndResourcesListPage should m
   </script>
   <div
     class="page-header"
+    data-component="page-header"
     id="content-start"
   >
     <h1
@@ -150,6 +152,7 @@ exports[`Publication tools and resources page ToolsAndResourcesListPage should m
     >
       <li
         class="horizontal-nav__item"
+        data-component="horizontal-nav"
       >
         <a
           aria-current="false"
@@ -161,6 +164,7 @@ exports[`Publication tools and resources page ToolsAndResourcesListPage should m
       </li>
       <li
         class="horizontal-nav__item"
+        data-component="horizontal-nav"
       >
         <a
           aria-current="true"
@@ -172,6 +176,7 @@ exports[`Publication tools and resources page ToolsAndResourcesListPage should m
       </li>
       <li
         class="horizontal-nav__item"
+        data-component="horizontal-nav"
       >
         <a
           aria-current="false"
@@ -183,6 +188,7 @@ exports[`Publication tools and resources page ToolsAndResourcesListPage should m
       </li>
       <li
         class="horizontal-nav__item"
+        data-component="horizontal-nav"
       >
         <a
           aria-current="false"
@@ -198,12 +204,14 @@ exports[`Publication tools and resources page ToolsAndResourcesListPage should m
     class="grid grid--loose"
   >
     <section
+      data-component="grid-item"
       data-g="12 md:12 lg:12"
     >
       <div
         class="grid grid--rev grid--loose"
       >
         <div
+          data-component="grid-item"
           data-g="12 md:4 lg:3"
         >
           <nav
@@ -256,6 +264,7 @@ exports[`Publication tools and resources page ToolsAndResourcesListPage should m
           </nav>
         </div>
         <div
+          data-component="grid-item"
           data-g="12 md:8 lg:9"
         >
           <h2
@@ -284,6 +293,7 @@ exports[`Publication tools and resources page ToolsAndResourcesListPage should m
                 <li>
                   <article
                     class="card"
+                    data-component="card"
                   >
                     <header
                       class="card__header"
@@ -386,6 +396,7 @@ exports[`Publication tools and resources page ToolsAndResourcesListPage should m
                 <li>
                   <article
                     class="card"
+                    data-component="card"
                   >
                     <header
                       class="card__header"
@@ -421,6 +432,7 @@ exports[`Publication tools and resources page ToolsAndResourcesListPage should m
                 <li>
                   <article
                     class="card"
+                    data-component="card"
                   >
                     <header
                       class="card__header"
@@ -456,6 +468,7 @@ exports[`Publication tools and resources page ToolsAndResourcesListPage should m
                 <li>
                   <article
                     class="card"
+                    data-component="card"
                   >
                     <header
                       class="card__header"
@@ -511,6 +524,7 @@ exports[`Publication tools and resources page ToolsAndResourcesListPage should m
                 <li>
                   <article
                     class="card"
+                    data-component="card"
                   >
                     <header
                       class="card__header"
@@ -566,6 +580,7 @@ exports[`Publication tools and resources page ToolsAndResourcesListPage should m
                 <li>
                   <article
                     class="card"
+                    data-component="card"
                   >
                     <header
                       class="card__header"
@@ -648,6 +663,7 @@ exports[`Publication tools and resources page ToolsAndResourcesListPage should m
                 <li>
                   <article
                     class="card"
+                    data-component="card"
                   >
                     <header
                       class="card__header"

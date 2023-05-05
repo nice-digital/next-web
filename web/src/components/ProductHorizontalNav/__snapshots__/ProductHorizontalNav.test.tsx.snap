@@ -10,6 +10,7 @@ exports[`ProductHorizontalNav should match snapshot for all nav items 1`] = `
     >
       <li
         class="horizontal-nav__item"
+        data-component="horizontal-nav"
       >
         <a
           aria-current="true"
@@ -21,6 +22,7 @@ exports[`ProductHorizontalNav should match snapshot for all nav items 1`] = `
       </li>
       <li
         class="horizontal-nav__item"
+        data-component="horizontal-nav"
       >
         <a
           aria-current="false"
@@ -32,6 +34,7 @@ exports[`ProductHorizontalNav should match snapshot for all nav items 1`] = `
       </li>
       <li
         class="horizontal-nav__item"
+        data-component="horizontal-nav"
       >
         <a
           aria-current="false"
@@ -43,6 +46,7 @@ exports[`ProductHorizontalNav should match snapshot for all nav items 1`] = `
       </li>
       <li
         class="horizontal-nav__item"
+        data-component="horizontal-nav"
       >
         <a
           aria-current="false"

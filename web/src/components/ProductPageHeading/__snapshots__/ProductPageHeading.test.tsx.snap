@@ -4,6 +4,7 @@ exports[`ProductPageHeading should match snapshot 1`] = `
 <div>
   <div
     class="page-header"
+    data-component="page-header"
     id="content-start"
   >
     <h1

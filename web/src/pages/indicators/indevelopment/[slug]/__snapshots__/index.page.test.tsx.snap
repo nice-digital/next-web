@@ -8,6 +8,7 @@ exports[`/indevelopment/[slug].page IndevelopmentPage should match snapshot for 
     >
       <nav
         aria-label="Breadcrumbs"
+        data-component="breadcrumbs"
         role="navigation"
       >
         <ol
@@ -109,6 +110,7 @@ exports[`/indevelopment/[slug].page IndevelopmentPage should match snapshot for 
       </script>
       <div
         class="page-header"
+        data-component="page-header"
         id="content-start"
       >
         <h1
@@ -149,6 +151,7 @@ exports[`/indevelopment/[slug].page IndevelopmentPage should match snapshot for 
         >
           <li
             class="horizontal-nav__item"
+            data-component="horizontal-nav"
           >
             <a
               aria-current="true"
@@ -160,6 +163,7 @@ exports[`/indevelopment/[slug].page IndevelopmentPage should match snapshot for 
           </li>
           <li
             class="horizontal-nav__item"
+            data-component="horizontal-nav"
           >
             <a
               aria-current="false"

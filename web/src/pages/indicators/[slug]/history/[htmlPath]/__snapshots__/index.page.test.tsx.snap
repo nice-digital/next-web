@@ -5,6 +5,7 @@ exports[`/indicators/[slug]/history/[htmlPath]/index.page HistoryHTMLPage should
   <div>
     <nav
       aria-label="Breadcrumbs"
+      data-component="breadcrumbs"
       role="navigation"
     >
       <ol
@@ -123,6 +124,7 @@ exports[`/indicators/[slug]/history/[htmlPath]/index.page HistoryHTMLPage should
     </script>
     <div
       class="page-header"
+      data-component="page-header"
       id="content-start"
     >
       <h1
@@ -168,6 +170,7 @@ exports[`/indicators/[slug]/history/[htmlPath]/index.page HistoryHTMLPage should
       >
         <li
           class="horizontal-nav__item"
+          data-component="horizontal-nav"
         >
           <a
             aria-current="false"
@@ -179,6 +182,7 @@ exports[`/indicators/[slug]/history/[htmlPath]/index.page HistoryHTMLPage should
         </li>
         <li
           class="horizontal-nav__item"
+          data-component="horizontal-nav"
         >
           <a
             aria-current="false"
@@ -190,6 +194,7 @@ exports[`/indicators/[slug]/history/[htmlPath]/index.page HistoryHTMLPage should
         </li>
         <li
           class="horizontal-nav__item"
+          data-component="horizontal-nav"
         >
           <a
             aria-current="false"
@@ -201,6 +206,7 @@ exports[`/indicators/[slug]/history/[htmlPath]/index.page HistoryHTMLPage should
         </li>
         <li
           class="horizontal-nav__item"
+          data-component="horizontal-nav"
         >
           <a
             aria-current="true"
@@ -389,6 +395,7 @@ exports[`/indicators/[slug]/history/[htmlPath]/index.page HistoryHTMLPage should
         <li>
           <article
             class="card"
+            data-component="card"
           >
             <header
               class="card__header"
@@ -471,6 +478,7 @@ exports[`/indicators/[slug]/history/[htmlPath]/index.page HistoryHTMLPage should
         <li>
           <article
             class="card"
+            data-component="card"
           >
             <header
               class="card__header"
@@ -553,6 +561,7 @@ exports[`/indicators/[slug]/history/[htmlPath]/index.page HistoryHTMLPage should
         <li>
           <article
             class="card"
+            data-component="card"
           >
             <header
               class="card__header"

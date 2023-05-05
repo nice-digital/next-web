@@ -5,6 +5,7 @@ exports[`PublicationsChapterMenu should match the snapshot 1`] = `
   <nav
     aria-label="Chapter pages"
     class="stacked-nav"
+    data-component="stacked-nav"
   >
     <ul
       class="stacked-nav__list"

@@ -4,6 +4,7 @@ exports[`ProductResourcePage should match snapshot 1`] = `
 <div>
   <nav
     aria-label="Breadcrumbs"
+    data-component="breadcrumbs"
     role="navigation"
   >
     <ol
@@ -122,6 +123,7 @@ exports[`ProductResourcePage should match snapshot 1`] = `
   </script>
   <div
     class="page-header"
+    data-component="page-header"
     id="content-start"
   >
     <h1
@@ -167,6 +169,7 @@ exports[`ProductResourcePage should match snapshot 1`] = `
     >
       <li
         class="horizontal-nav__item"
+        data-component="horizontal-nav"
       >
         <a
           aria-current="true"
@@ -178,6 +181,7 @@ exports[`ProductResourcePage should match snapshot 1`] = `
       </li>
       <li
         class="horizontal-nav__item"
+        data-component="horizontal-nav"
       >
         <a
           aria-current="false"
@@ -189,6 +193,7 @@ exports[`ProductResourcePage should match snapshot 1`] = `
       </li>
       <li
         class="horizontal-nav__item"
+        data-component="horizontal-nav"
       >
         <a
           aria-current="false"
@@ -200,6 +205,7 @@ exports[`ProductResourcePage should match snapshot 1`] = `
       </li>
       <li
         class="horizontal-nav__item"
+        data-component="horizontal-nav"
       >
         <a
           aria-current="false"
@@ -215,12 +221,14 @@ exports[`ProductResourcePage should match snapshot 1`] = `
     class="grid grid--loose"
   >
     <section
+      data-component="grid-item"
       data-g="12 md:12 lg:12"
     >
       <div
         class="grid grid--rev grid--loose"
       >
         <div
+          data-component="grid-item"
           data-g="12 md:12 lg:12"
         >
           <h2

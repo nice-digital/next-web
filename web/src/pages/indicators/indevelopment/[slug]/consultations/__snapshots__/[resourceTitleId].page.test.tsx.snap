@@ -5,6 +5,7 @@ exports[`[resourceTitleId].page ConsultationHTMLPage should match snapshot for m
   <div>
     <nav
       aria-label="Breadcrumbs"
+      data-component="breadcrumbs"
       role="navigation"
     >
       <ol
@@ -123,6 +124,7 @@ exports[`[resourceTitleId].page ConsultationHTMLPage should match snapshot for m
     </script>
     <div
       class="page-header"
+      data-component="page-header"
       id="content-start"
     >
       <h1
@@ -165,6 +167,7 @@ exports[`[resourceTitleId].page ConsultationHTMLPage should match snapshot for m
       >
         <li
           class="horizontal-nav__item"
+          data-component="horizontal-nav"
         >
           <a
             aria-current="false"
@@ -176,6 +179,7 @@ exports[`[resourceTitleId].page ConsultationHTMLPage should match snapshot for m
         </li>
         <li
           class="horizontal-nav__item"
+          data-component="horizontal-nav"
         >
           <a
             aria-current="false"
@@ -187,6 +191,7 @@ exports[`[resourceTitleId].page ConsultationHTMLPage should match snapshot for m
         </li>
         <li
           class="horizontal-nav__item"
+          data-component="horizontal-nav"
         >
           <a
             aria-current="true"

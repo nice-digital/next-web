@@ -47,10 +47,10 @@ export const Link: FC<LinkProps> = ({
 			shallow={shallow}
 			passHref={passHref}
 			locale={locale}
+			className={className}
+			{...attrs}
 		>
-			<a className={className} {...attrs}>
-				{children}
-			</a>
+			{children}
 		</NextJSLink>
 	);
 };

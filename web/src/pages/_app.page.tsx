@@ -2,6 +2,7 @@
 import { ErrorInfo, FC } from "react";
 import { DefaultSeo } from "next-seo";
 import App, { AppProps, NextWebVitalsMetric } from "next/app";
+import { Inter, Lora } from "next/font/google";
 
 import "@nice-digital/design-system/scss/base.scss";
 import {
@@ -38,6 +39,23 @@ const AppFooter: FC = () => (
 		<GoogleTagManager />
 		<Footer />
 	</>
+);
+
+const inter = Inter({
+	subsets: ["latin"],
+});
+
+const lora = Lora({
+	subsets: ["latin"],
+});
+
+const FontStyles: FC = () => (
+	<style jsx global>{`
+		html {
+			--sans-font-family: ${inter.style.fontFamily};
+			--serif-font-family: ${lora.style.fontFamily};
+		}
+	`}</style>
 );
 
 // eslint-disable-next-line @typescript-eslint/ban-types
@@ -152,6 +170,7 @@ class NextWebApp extends App<{}, {}, AppState> {
 		if (this.state.hasError)
 			return (
 				<>
+					<FontStyles />
 					<DefaultSeo {...getDefaultSeoConfig(pathname)} />
 					<div ref={this.globalNavWrapperRef}>
 						<Header {...headerProps} service={service} />
@@ -167,6 +186,7 @@ class NextWebApp extends App<{}, {}, AppState> {
 
 		return (
 			<>
+				<FontStyles />
 				<DefaultSeo {...getDefaultSeoConfig(pathname)} />
 				<div ref={this.globalNavWrapperRef}>
 					<Header {...headerProps} service={service} />

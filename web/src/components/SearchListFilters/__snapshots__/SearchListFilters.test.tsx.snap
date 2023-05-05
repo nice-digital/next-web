@@ -7,6 +7,7 @@ exports[`SearchListFilters should match snapshot for filter panel form 1`] = `
 >
   <div
     class="filter-panel"
+    data-component="filter-panel"
   >
     <h2
       class="filter-panel__heading"
@@ -66,6 +67,7 @@ exports[`SearchListFilters should match snapshot for filter panel form 1`] = `
         </label>
         <div
           class="input"
+          data-component="input"
         >
           <input
             autocomplete="off"
@@ -79,6 +81,7 @@ exports[`SearchListFilters should match snapshot for filter panel form 1`] = `
         </div>
         <button
           class="btn button"
+          data-component="button--primary"
           type="submit"
         >
           Filter
@@ -131,6 +134,7 @@ exports[`SearchListFilters should match snapshot for filter panel form 1`] = `
           >
             <div
               class="input"
+              data-component="input"
             >
               <label
                 class="input__label"
@@ -152,6 +156,7 @@ exports[`SearchListFilters should match snapshot for filter panel form 1`] = `
             </div>
             <div
               class="input"
+              data-component="input"
             >
               <label
                 class="input__label"
@@ -173,6 +178,7 @@ exports[`SearchListFilters should match snapshot for filter panel form 1`] = `
             </div>
             <button
               class="btn btn--secondary ml--0"
+              data-component="button--secondary"
               type="submit"
             >
               Apply date filters
@@ -240,6 +246,7 @@ exports[`SearchListFilters should match snapshot for filter panel form 1`] = `
           </legend>
           <label
             class="filter-option"
+            data-component="filter-option"
             for="filter_gst_in-development"
           >
             <input
@@ -257,6 +264,7 @@ exports[`SearchListFilters should match snapshot for filter panel form 1`] = `
           </label>
           <label
             class="filter-option"
+            data-component="filter-option"
             for="filter_gst_published"
           >
             <input
@@ -319,6 +327,7 @@ exports[`SearchListFilters should match snapshot for filter panel form 1`] = `
           </legend>
           <label
             class="filter-option"
+            data-component="filter-option"
             for="filter_nai_antimicrobial-prescribing"
           >
             <input
@@ -336,6 +345,7 @@ exports[`SearchListFilters should match snapshot for filter panel form 1`] = `
           </label>
           <label
             class="filter-option"
+            data-component="filter-option"
             for="filter_nai_covid-19"
           >
             <input
@@ -413,6 +423,7 @@ exports[`SearchListFilters should match snapshot for filter panel form 1`] = `
           </legend>
           <label
             class="filter-option"
+            data-component="filter-option"
             for="filter_ndt_guidance"
           >
             <input
@@ -491,6 +502,7 @@ exports[`SearchListFilters should match snapshot for filter panel form 1`] = `
           </legend>
           <label
             class="filter-option"
+            data-component="filter-option"
             for="filter_ngt_antimicrobial-prescribing-guidelines"
           >
             <input
@@ -508,6 +520,7 @@ exports[`SearchListFilters should match snapshot for filter panel form 1`] = `
           </label>
           <label
             class="filter-option"
+            data-component="filter-option"
             for="filter_ngt_cancer-service-guidelines"
           >
             <input
@@ -525,6 +538,7 @@ exports[`SearchListFilters should match snapshot for filter panel form 1`] = `
           </label>
           <label
             class="filter-option"
+            data-component="filter-option"
             for="filter_ngt_clinical-guidelines"
           >
             <input
@@ -542,6 +556,7 @@ exports[`SearchListFilters should match snapshot for filter panel form 1`] = `
           </label>
           <label
             class="filter-option"
+            data-component="filter-option"
             for="filter_ngt_covid-19-rapid-guidelines"
           >
             <input
@@ -559,6 +574,7 @@ exports[`SearchListFilters should match snapshot for filter panel form 1`] = `
           </label>
           <label
             class="filter-option"
+            data-component="filter-option"
             for="filter_ngt_diagnostics-guidance"
           >
             <input
@@ -576,6 +592,7 @@ exports[`SearchListFilters should match snapshot for filter panel form 1`] = `
           </label>
           <label
             class="filter-option"
+            data-component="filter-option"
             for="filter_ngt_highly-specialised-technologies-guidance"
           >
             <input
@@ -593,6 +610,7 @@ exports[`SearchListFilters should match snapshot for filter panel form 1`] = `
           </label>
           <label
             class="filter-option"
+            data-component="filter-option"
             for="filter_ngt_interventional-procedures-guidance"
           >
             <input
@@ -610,6 +628,7 @@ exports[`SearchListFilters should match snapshot for filter panel form 1`] = `
           </label>
           <label
             class="filter-option"
+            data-component="filter-option"
             for="filter_ngt_medical-technologies-guidance"
           >
             <input
@@ -627,6 +646,7 @@ exports[`SearchListFilters should match snapshot for filter panel form 1`] = `
           </label>
           <label
             class="filter-option"
+            data-component="filter-option"
             for="filter_ngt_medicines-practice-guidelines"
           >
             <input
@@ -644,6 +664,7 @@ exports[`SearchListFilters should match snapshot for filter panel form 1`] = `
           </label>
           <label
             class="filter-option"
+            data-component="filter-option"
             for="filter_ngt_nice-guidelines"
           >
             <input
@@ -662,6 +683,7 @@ exports[`SearchListFilters should match snapshot for filter panel form 1`] = `
           </label>
           <label
             class="filter-option"
+            data-component="filter-option"
             for="filter_ngt_public-health-guidelines"
           >
             <input
@@ -679,6 +701,7 @@ exports[`SearchListFilters should match snapshot for filter panel form 1`] = `
           </label>
           <label
             class="filter-option"
+            data-component="filter-option"
             for="filter_ngt_safe-staffing-guidelines"
           >
             <input
@@ -696,6 +719,7 @@ exports[`SearchListFilters should match snapshot for filter panel form 1`] = `
           </label>
           <label
             class="filter-option"
+            data-component="filter-option"
             for="filter_ngt_social-care-guidelines"
           >
             <input
@@ -713,6 +737,7 @@ exports[`SearchListFilters should match snapshot for filter panel form 1`] = `
           </label>
           <label
             class="filter-option"
+            data-component="filter-option"
             for="filter_ngt_technology-appraisal-guidance"
           >
             <input

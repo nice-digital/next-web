@@ -25,36 +25,37 @@
     "extends @nice-digital/browserslist-config"
   ],
   "dependencies": {
-    "@nice-digital/design-system": "^4.0.0",
+    "@nice-digital/design-system": "^5.0.9",
     "@nice-digital/global-nav": "^5.0.923",
     "@nice-digital/nds-prev-next": "^3.0.2",
     "@nice-digital/search-client": "^2.0.1501-SRCH-726-create-navi",
     "@sindresorhus/slugify": "^1.1.2",
     "axios": "^1.1.2",
-    "axios-case-converter": "^0.9.0",
+    "axios-case-converter": "^1.1.0",
     "cache-manager": "^4.1.0",
     "cache-manager-fs-hash": "^1.0.0",
     "clipboard-polyfill": "^3.0.3",
     "config": "^3.3.6",
     "dayjs": "^1.11.4",
+    "eslint-config-next": "^13.3.1",
     "fast-sort": "^3.0.2",
     "filesize": "^10.0.5",
     "form-serialize": "^0.7.2",
     "glob": "^8.0.3",
     "js-yaml": "^4.1.0",
     "lodash.throttle": "^4.1.1",
-    "next": "^12.3.4",
+    "needle": "^2.8.0",
+    "next": "^13.3.1",
     "next-logger": "^3.0.1",
     "next-plugin-node-config": "^1.0.2",
     "next-seo": "^5.5.0",
     "next-sitemap": "^3.1.29",
-    "next-transpile-modules": "^9.0.0",
     "pino": "^6.14.0",
     "pino-mq": "^1.0.1",
     "pluralize": "^8.0.0",
     "qs": "^6.10.1",
-    "react": "^17.0.2",
-    "react-dom": "^17.0.2",
+    "react": "^18.2.0",
+    "react-dom": "^18.2.0",
     "serialize-error": "^8.1.0",
     "striptags": "^3.2.0"
   },
@@ -75,6 +76,6 @@
     "type-fest": "^2.17.0"
   },
   "volta": {
-    "node": "14.17.1"
+    "node": "18.16.0"
   }
 }

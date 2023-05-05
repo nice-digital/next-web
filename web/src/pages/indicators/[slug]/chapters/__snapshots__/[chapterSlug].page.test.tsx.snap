@@ -677,6 +677,7 @@ exports[`/indicators/[slug]/chapters/[chapterSlug].page IndicatorChapterPage sho
   <div>
     <nav
       aria-label="Breadcrumbs"
+      data-component="breadcrumbs"
       role="navigation"
     >
       <ol
@@ -761,6 +762,7 @@ exports[`/indicators/[slug]/chapters/[chapterSlug].page IndicatorChapterPage sho
     </script>
     <div
       class="page-header"
+      data-component="page-header"
       id="content-start"
     >
       <h1
@@ -806,6 +808,7 @@ exports[`/indicators/[slug]/chapters/[chapterSlug].page IndicatorChapterPage sho
       >
         <li
           class="horizontal-nav__item"
+          data-component="horizontal-nav"
         >
           <a
             aria-current="true"
@@ -817,6 +820,7 @@ exports[`/indicators/[slug]/chapters/[chapterSlug].page IndicatorChapterPage sho
         </li>
         <li
           class="horizontal-nav__item"
+          data-component="horizontal-nav"
         >
           <a
             aria-current="false"
@@ -828,6 +832,7 @@ exports[`/indicators/[slug]/chapters/[chapterSlug].page IndicatorChapterPage sho
         </li>
         <li
           class="horizontal-nav__item"
+          data-component="horizontal-nav"
         >
           <a
             aria-current="false"
@@ -839,6 +844,7 @@ exports[`/indicators/[slug]/chapters/[chapterSlug].page IndicatorChapterPage sho
         </li>
         <li
           class="horizontal-nav__item"
+          data-component="horizontal-nav"
         >
           <a
             aria-current="false"
@@ -855,11 +861,13 @@ exports[`/indicators/[slug]/chapters/[chapterSlug].page IndicatorChapterPage sho
     >
       <section
         aria-label="Chapters"
+        data-component="grid-item"
         data-g="12 md:4 lg:3"
       >
         <a
           aria-label="Download indicator PDF file"
           class="btn btn--cta download"
+          data-component="button--cta"
           href="/guidance/ng100/NG100.pdf"
           target="_blank"
         >
@@ -869,6 +877,7 @@ exports[`/indicators/[slug]/chapters/[chapterSlug].page IndicatorChapterPage sho
         <nav
           aria-label="Chapter pages"
           class="stacked-nav"
+          data-component="stacked-nav"
         >
           <ul
             class="stacked-nav__list"
@@ -989,12 +998,14 @@ exports[`/indicators/[slug]/chapters/[chapterSlug].page IndicatorChapterPage sho
         </nav>
       </section>
       <section
+        data-component="grid-item"
         data-g="12 md:8 lg:9"
       >
         <div
           class="grid grid--rev grid--loose"
         >
           <div
+            data-component="grid-item"
             data-g="12 md:4 lg:3"
           >
             <nav
@@ -1080,6 +1091,7 @@ exports[`/indicators/[slug]/chapters/[chapterSlug].page IndicatorChapterPage sho
             </nav>
           </div>
           <div
+            data-component="grid-item"
             data-g="12 md:8 lg:9"
           >
             <div

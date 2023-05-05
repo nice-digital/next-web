@@ -4,6 +4,7 @@ exports[`ResourceLinkCard should match snapshot for file download 1`] = `
 <div>
   <article
     class="card"
+    data-component="card"
   >
     <header
       class="card__header"

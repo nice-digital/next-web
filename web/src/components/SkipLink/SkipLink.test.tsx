@@ -1,4 +1,4 @@
-import { render, screen } from "@testing-library/react";
+import { render, screen, waitFor } from "@testing-library/react";
 import userEvent from "@testing-library/user-event";
 
 import { SkipLink } from "./SkipLink";
@@ -17,7 +17,7 @@ describe("SkipLink", () => {
 		expect(screen.getByRole("link")).toHaveAttribute("href", "#test");
 	});
 
-	it("should scroll the element into view with focus", () => {
+	it("should scroll the element into view with focus", async () => {
 		const skipTarget = document.createElement("div");
 		skipTarget.id = "test";
 		skipTarget.scrollIntoView = jest.fn();
@@ -26,10 +26,18 @@ describe("SkipLink", () => {
 
 		render(<SkipLink targetId="test">Test</SkipLink>);
 
-		userEvent.click(screen.getByRole("link"));
+		await userEvent.click(screen.getByRole("link"));
 
-		expect(skipTarget.scrollIntoView).toHaveBeenCalled();
-		expect(skipTarget.focus).toHaveBeenCalled();
-		expect(skipTarget).toHaveAttribute("tabIndex", "-1");
+		await waitFor(() => {
+			expect(skipTarget.scrollIntoView).toHaveBeenCalled();
+		});
+
+		await waitFor(() => {
+			expect(skipTarget.focus).toHaveBeenCalled();
+		});
+
+		await waitFor(() => {
+			expect(skipTarget).toHaveAttribute("tabIndex", "-1");
+		});
 	});
 });
