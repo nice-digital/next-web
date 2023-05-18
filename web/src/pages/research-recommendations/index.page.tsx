@@ -1,15 +1,12 @@
 import React from "react";
 
-import { Breadcrumb } from "@nice-digital/nds-breadcrumbs";
 import { Document, SortOrder } from "@nice-digital/search-client";
 
 import { Link } from "@/components/Link/Link";
-import { IndicatorListNav } from "@/components/ProductListNav/IndicatorListNav";
 import {
 	getProductListPage,
 	getGetServerSidePropsFunc,
 } from "@/components/ProductListPage/ProductListPage";
-import { ResponsiveDate } from "@/components/ResponsiveDate/ResponsiveDate";
 
 const defaultSortOrder = SortOrder.dateDescending,
 	dateFilterLabel = "Last updated date";
@@ -26,38 +23,28 @@ const tableBodyRender = (documents: Document[]) => (
 			</tr>
 		</thead>
 		<tbody>
-			{documents.map(
-				({
-					id,
-					title,
-					guidanceRef,
-					metaDescription,
-					publicationDate,
-					lastUpdated,
-					pathAndQuery,
-				}) => {
-					return (
-						<tr key={id}>
-							<td>
-								<Link href={pathAndQuery}>
-									<span dangerouslySetInnerHTML={{ __html: title }} />
-								</Link>
-							</td>
-							<td>{guidanceRef}</td>
+			{documents.map(({ id, title, guidanceRef, pathAndQuery }) => {
+				return (
+					<tr key={id}>
+						<td>
+							<Link href={pathAndQuery}>
+								<span dangerouslySetInnerHTML={{ __html: title }} />
+							</Link>
+						</td>
+						<td>{guidanceRef}</td>
 
-							{/* <td
+						{/* <td
 								dangerouslySetInnerHTML={{ __html: metaDescription || "" }}
 							></td> */}
-							{/* <td>
+						{/* <td>
 								<ResponsiveDate isoDateTime={String(publicationDate)} />
 							</td>
 							<td>
 								<ResponsiveDate isoDateTime={String(lastUpdated)} />
 							</td> */}
-						</tr>
-					);
-				}
-			)}
+					</tr>
+				);
+			})}
 		</tbody>
 	</>
 );
