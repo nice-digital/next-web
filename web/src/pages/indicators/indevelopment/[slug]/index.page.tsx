@@ -36,6 +36,7 @@ import { getProductPath } from "@/utils/url";
 import styles from "./index.module.scss";
 
 export type InDevelopmentPageProps = {
+	alert: string | null;
 	hasPanels: boolean;
 	consultationUrls: string[];
 	description: string | null;
@@ -75,6 +76,7 @@ export default function InDevelopmentPage(
 	props: InDevelopmentPageProps
 ): JSX.Element {
 	const {
+		alert,
 		evidenceAssessmentGroup,
 		fullUpdates,
 		indevCommentators,
@@ -112,6 +114,13 @@ export default function InDevelopmentPage(
 			</Breadcrumbs>
 
 			<ProjectPageHeading {...props} />
+
+			{alert && (
+				<div
+					className="alert-message"
+					dangerouslySetInnerHTML={{ __html: alert }}
+				/>
+			)}
 
 			<ProjectHorizontalNav
 				projectPath={projectPath}
@@ -233,6 +242,7 @@ export const getServerSideProps: GetServerSideProps<
 	const { project, projectPath, consultationUrls, hasPanels } = result;
 
 	const {
+		alert,
 		description,
 		developedAs,
 		evidenceAssessmentGroup,
@@ -341,6 +351,7 @@ export const getServerSideProps: GetServerSideProps<
 
 	return {
 		props: {
+			alert,
 			hasPanels,
 			consultationUrls,
 			description,
