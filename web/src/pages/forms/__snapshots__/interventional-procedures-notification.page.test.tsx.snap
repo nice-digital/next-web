@@ -177,6 +177,7 @@ exports[`InterventionalProceduresNotificationForm should match snapshot 1`] = `
     class="iframe"
     data-jotform-id="230793530776059"
     id="JotFormIFrame-230793530776059"
+    scrolling="no"
     src="https://next-web-tests.jotform.com/230793530776059?isIframeEmbed=1"
     style="height: 539px; overflow: hidden;"
     title="Interventional procedures notification form"

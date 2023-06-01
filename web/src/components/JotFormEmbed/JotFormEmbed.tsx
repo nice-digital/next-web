@@ -182,6 +182,7 @@ export const JotFormEmbed: FC<JotFormEmbedProps> = ({
 			className={styles.iframe}
 			style={styleOverrides}
 			//deprecated scrolling attr to prevent iframe scrollbar flickering on validation
+			// eslint-disable-next-line react/iframe-missing-sandbox
 			scrolling="no"
 		/>
 	);
