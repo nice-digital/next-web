@@ -3,7 +3,6 @@ import { render, screen } from "@testing-library/react";
 import { Document } from "@nice-digital/search-client";
 
 import { SearchCardList } from "@/components/SearchCard/SearchCardList";
-
 import {
 	guidanceDoc,
 	guidanceDocNonMatchingDates,
@@ -12,7 +11,7 @@ import {
 	guidanceDocMatchingDates,
 	unpublishedDoc,
 	pdf,
-} from "../../__mocks__/__data__/search/documents/";
+} from "@/mockData/search/documents/";
 
 const mockDocuments = [
 	guidanceDoc,

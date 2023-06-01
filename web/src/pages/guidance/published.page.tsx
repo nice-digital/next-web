@@ -1,9 +1,11 @@
+import { Breadcrumb } from "@nice-digital/nds-breadcrumbs";
 import { Document, SortOrder } from "@nice-digital/search-client";
 
+import { GuidanceListNav } from "@/components/ProductListNav/GuidanceListNav";
 import {
-	getGuidanceListPage,
+	getProductListPage,
 	getGetServerSidePropsFunc,
-} from "@/components/GuidanceListPage/GuidanceListPage";
+} from "@/components/ProductListPage/ProductListPage";
 import { ResponsiveDate } from "@/components/ResponsiveDate/ResponsiveDate";
 import { publicRuntimeConfig } from "@/config";
 
@@ -56,10 +58,16 @@ const tableBodyRender = (documents: Document[]) => (
 	</>
 );
 
-export default getGuidanceListPage({
+export default getProductListPage({
 	metaDescription:
 		"Browse the complete list of all our published health and social care guidance, including guidelines, NICE advice and quality standards",
-	breadcrumb: "Published",
+	listNavType: GuidanceListNav,
+	breadcrumbTrail: [
+		<Breadcrumb to="/guidance" key="NICE guidance">
+			NICE guidance
+		</Breadcrumb>,
+	],
+	currentBreadcrumb: "Published",
 	preheading: "Published ",
 	heading: <>Guidance, NICE advice and quality&nbsp;standards</>,
 	title: "Published guidance, NICE advice and quality standards",
@@ -75,10 +83,12 @@ export default getGuidanceListPage({
 	useFutureDates: false,
 	dateFilterLabel,
 	tableBodyRender,
+	searchInputPlaceholder: "E.g. 'diabetes' or 'NG28'",
 });
 
 export const getServerSideProps = getGetServerSidePropsFunc({
 	gstPreFilter: "Published",
 	defaultSortOrder,
 	dateFilterLabel,
+	index: "guidance",
 });

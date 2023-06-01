@@ -26,7 +26,7 @@ module.exports = {
 		...tsPathsModuleNameMappings,
 	},
 	coveragePathIgnorePatterns: ["<rootDir>/test-utils.tsx"],
-	transformIgnorePatterns: ["/node_modules/", "/dist/"],
+	transformIgnorePatterns: ["/node_modules/(?!(axios)/)", "/dist/"],
 	setupFilesAfterEnv: [
 		"./jest.presetup.js",
 		"./jest.setup.ts",
@@ -46,6 +46,7 @@ module.exports = {
 				// NextJS needs jsx=preserve but in Jest we need react-jsxdev:
 				jsx: "react-jsxdev",
 			},
+			isolatedModules: true,
 		},
 	},
 };

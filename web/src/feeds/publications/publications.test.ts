@@ -10,8 +10,6 @@ import {
 	getAllProducts,
 } from "./publications";
 
-import type { PromiseValue } from "type-fest";
-
 const cacheWrapMock = cache.wrap as jest.Mock;
 
 describe("publications", () => {
@@ -38,7 +36,7 @@ describe("publications", () => {
 
 		it("should load raw feed data with empty cache", async () => {
 			await getAllAreasOfInterest();
-			const data: PromiseValue<ReturnType<typeof getAllAreasOfInterest>> =
+			const data: Awaited<ReturnType<typeof getAllAreasOfInterest>> =
 				await cacheWrapMock.mock.calls[0][1]();
 
 			expect(data).toHaveLength(2);
@@ -69,10 +67,10 @@ describe("publications", () => {
 
 		it("should load raw feed data with empty cache", async () => {
 			await getAllProductTypes();
-			const data: PromiseValue<ReturnType<typeof getAllProductTypes>> =
+			const data: Awaited<ReturnType<typeof getAllProductTypes>> =
 				await cacheWrapMock.mock.calls[0][1]();
 
-			expect(data).toHaveLength(27);
+			expect(data).toHaveLength(29);
 			expect(data[0]).toMatchSnapshot();
 		});
 	});
@@ -100,10 +98,10 @@ describe("publications", () => {
 
 		it("should load raw feed data with empty cache", async () => {
 			await getAllProducts();
-			const data: PromiseValue<ReturnType<typeof getAllProducts>> =
+			const data: Awaited<ReturnType<typeof getAllProducts>> =
 				await cacheWrapMock.mock.calls[0][1]();
 
-			expect(data).toHaveLength(2717);
+			expect(data).toHaveLength(2963);
 			expect(data[0]).toMatchSnapshot();
 		});
 	});

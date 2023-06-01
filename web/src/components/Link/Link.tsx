@@ -47,10 +47,10 @@ export const Link: FC<LinkProps> = ({
 			shallow={shallow}
 			passHref={passHref}
 			locale={locale}
+			className={className}
+			{...attrs}
 		>
-			<a className={className} {...attrs}>
-				{children}
-			</a>
+			{children}
 		</NextJSLink>
 	);
 };
@@ -96,3 +96,8 @@ export const ScrollToLink: FC<
 		/>
 	);
 };
+
+/** Specific type of NextJS link that scrolls to the content start element after navigation */
+export const ScrollToContentStartLink: FC<
+	LinkProps & { scrollTargetId: never; onClick?: never; scroll?: never }
+> = (props) => <ScrollToLink {...props} scrollTargetId="content-start" />;

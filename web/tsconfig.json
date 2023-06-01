@@ -10,14 +10,16 @@
     "rootDir": "../",
     "baseUrl": ".",
     "paths": {
-      "@/test-utils": ["src/test-utils"],
+      "@/test-utils/*": ["src/test-utils/*"],
       "@/cache": ["src/cache/cache"],
       "@/config": ["src/config/config"],
+      "@/hooks/*": ["src/hooks/*"],
       "@/logger": ["src/logging/logger"],
       "@/components/*": ["src/components/*"],
       "@/feeds/*": ["src/feeds/*"],
+      "@/mocks/*": ["src/__mocks__/*"],
+      "@/mockData/*": ["src/__mocks__/__data__/*"],
       "@/utils/*": ["src/utils/*"],
-      "@/utils": ["src/utils"],
       "@/helpers/*": ["src/helpers/*"],
       "@/helpers": ["src/helpers"]
     },
