@@ -181,6 +181,8 @@ export const JotFormEmbed: FC<JotFormEmbedProps> = ({
 			allow="geolocation; microphone; camera"
 			className={styles.iframe}
 			style={styleOverrides}
+			//deprecated scrolling attr to prevent iframe scrollbar flickering on validation
+			scrolling="no"
 		/>
 	);
 };
