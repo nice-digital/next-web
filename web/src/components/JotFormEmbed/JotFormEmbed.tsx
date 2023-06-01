@@ -182,7 +182,7 @@ export const JotFormEmbed: FC<JotFormEmbedProps> = ({
 			className={styles.iframe}
 			style={styleOverrides}
 			//deprecated scrolling attr to prevent iframe scrollbar flickering on validation
-			scrolling="no"
+			// scrolling="no"
 		/>
 	);
 };
