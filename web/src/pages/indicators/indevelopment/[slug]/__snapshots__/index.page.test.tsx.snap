@@ -354,6 +354,7 @@ exports[`/indevelopment/[slug].page getServerSideProps should return a correct p
 Object {
   "props": Object {
     "consultationUrls": Array [],
+    "content": undefined,
     "description": null,
     "developedAs": "CG",
     "evidenceAssessmentGroup": null,
@@ -540,6 +541,7 @@ Object {
       },
     ],
     "indevTopicItems": Array [],
+    "isGuidanceHubPage": false,
     "partialUpdates": Array [],
     "process": "CG",
     "projectPath": "/guidance/indevelopment/gid-ng10237",
