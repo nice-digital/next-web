@@ -25,7 +25,8 @@ export type ProjectInformationProps = {
 	title: string;
 	topicSelectionReason: string | null;
 	topicSelectionFurtherInfo: string | null;
-
+	isGuidanceHubPage: boolean;
+	content: string | null;
 	children?: never;
 };
 
@@ -44,6 +45,8 @@ export const ProjectInformation: FC<ProjectInformationProps> = ({
 	technologyType,
 	topicSelectionReason,
 	topicSelectionFurtherInfo,
+	isGuidanceHubPage,
+	content,
 }) => {
 	let topicSelectionReasonText;
 
@@ -67,92 +70,102 @@ export const ProjectInformation: FC<ProjectInformationProps> = ({
 
 	return (
 		<>
-			{projectType?.toLowerCase().startsWith("ipg") ? (
-				<p>
-					<Link to="/about/what-we-do/our-Programmes/NICE-guidance/NICE-interventional-procedures-guidance/IP-register-an-interest">
-						Register an interest in this interventional procedure
-					</Link>
-				</p>
-			) : null}
-			{summary && (
-				<div
-					dangerouslySetInnerHTML={{
-						__html: `<p>${summary}</p>`,
-					}}
-				></div>
-			)}
-			{suspendDiscontinuedReason && (
-				<p data-testid="suspendDiscontinuedReason">
-					{suspendDiscontinuedReason}
-				</p>
-			)}
-			{suspendDiscontinuedUrl && suspendDiscontinuedUrlText && (
-				<Link to={suspendDiscontinuedUrl}>
-					<>{suspendDiscontinuedUrlText}</>
-				</Link>
-			)}
-			<ProjectConsultationDocumentsLink consultationUrls={consultationUrls} />
-			<DefinitionList ariaLabel="Project information">
-				{status && (
-					<>
-						<dt>Status:</dt> <dd>{status}</dd>
-					</>
-				)}
-				{technologyType && (
-					<>
-						<dt>Technology type:</dt> <dd>{technologyType}</dd>
-					</>
-				)}
-				{topicSelectionReasonText && (
-					<>
-						<dt>Reason for decision:</dt> <dd>{topicSelectionReasonText}</dd>
-					</>
-				)}
-				{topicSelectionFurtherInfo && (
-					<>
-						<dt>Further information:</dt> <dd>{topicSelectionFurtherInfo}</dd>
-					</>
-				)}
-				{process && status !== ProjectStatus.TopicSelection ? (
-					projectType == ProductTypeAcronym.NG ? (
-						<>
-							<dt>Developed as:</dt> <dd>{process}</dd>
-						</>
-					) : (
-						<>
-							<dt>Process:</dt> <dd>{process}</dd>
-						</>
-					)
-				) : null}
-				{description && (
-					<>
-						<dt>Description:</dt>
-						<dd dangerouslySetInnerHTML={{ __html: description }} />
-					</>
-				)}
-				{idNumber && (
-					<>
-						<dt>ID number:</dt> <dd>{idNumber}</dd>
-					</>
-				)}
+			{isGuidanceHubPage ? (
+				<>{content && <div dangerouslySetInnerHTML={{ __html: content }} />}</>
+			) : (
+				<>
+					{projectType?.toLowerCase().startsWith("ipg") ? (
+						<p>
+							<Link to="/about/what-we-do/our-Programmes/NICE-guidance/NICE-interventional-procedures-guidance/IP-register-an-interest">
+								Register an interest in this interventional procedure
+							</Link>
+						</p>
+					) : null}
+					{summary && (
+						<div
+							dangerouslySetInnerHTML={{
+								__html: `<p>${summary}</p>`,
+							}}
+						></div>
+					)}
+					{suspendDiscontinuedReason && (
+						<p data-testid="suspendDiscontinuedReason">
+							{suspendDiscontinuedReason}
+						</p>
+					)}
+					{suspendDiscontinuedUrl && suspendDiscontinuedUrlText && (
+						<Link to={suspendDiscontinuedUrl}>
+							<>{suspendDiscontinuedUrlText}</>
+						</Link>
+					)}
+					<ProjectConsultationDocumentsLink
+						consultationUrls={consultationUrls}
+					/>
+					<DefinitionList ariaLabel="Project information">
+						{status && (
+							<>
+								<dt>Status:</dt> <dd>{status}</dd>
+							</>
+						)}
+						{technologyType && (
+							<>
+								<dt>Technology type:</dt> <dd>{technologyType}</dd>
+							</>
+						)}
+						{topicSelectionReasonText && (
+							<>
+								<dt>Reason for decision:</dt>{" "}
+								<dd>{topicSelectionReasonText}</dd>
+							</>
+						)}
+						{topicSelectionFurtherInfo && (
+							<>
+								<dt>Further information:</dt>{" "}
+								<dd>{topicSelectionFurtherInfo}</dd>
+							</>
+						)}
+						{process && status !== ProjectStatus.TopicSelection ? (
+							projectType == ProductTypeAcronym.NG ? (
+								<>
+									<dt>Developed as:</dt> <dd>{process}</dd>
+								</>
+							) : (
+								<>
+									<dt>Process:</dt> <dd>{process}</dd>
+								</>
+							)
+						) : null}
+						{description && (
+							<>
+								<dt>Description:</dt>
+								<dd dangerouslySetInnerHTML={{ __html: description }} />
+							</>
+						)}
+						{idNumber && (
+							<>
+								<dt>ID number:</dt> <dd>{idNumber}</dd>
+							</>
+						)}
 
-				{process == "MT" && referralDate ? (
-					<>
-						<dt>Notification date:</dt> <dd>{referralDate}</dd>
-					</>
-				) : (
-					referralDate && (
-						<>
-							<dt>Referral date:</dt>
-							<dd>
-								<time dateTime={stripTime(referralDate)}>
-									&nbsp;{formatDateStr(referralDate)}
-								</time>
-							</dd>
-						</>
-					)
-				)}
-			</DefinitionList>
+						{process == "MT" && referralDate ? (
+							<>
+								<dt>Notification date:</dt> <dd>{referralDate}</dd>
+							</>
+						) : (
+							referralDate && (
+								<>
+									<dt>Referral date:</dt>
+									<dd>
+										<time dateTime={stripTime(referralDate)}>
+											&nbsp;{formatDateStr(referralDate)}
+										</time>
+									</dd>
+								</>
+							)
+						)}
+					</DefinitionList>
+				</>
+			)}
 		</>
 	);
 };
