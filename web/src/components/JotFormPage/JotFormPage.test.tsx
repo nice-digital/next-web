@@ -71,4 +71,15 @@ describe("JotFormPage", () => {
 			"https://next-web-tests.jotform.com/1234?isIframeEmbed=1"
 		);
 	});
+
+	it("displays information panel when provided", () => {
+		const informationPanel = <div>Information Panel Content</div>;
+
+		render(<JotFormPage {...props} informationPanel={informationPanel} />);
+
+		const informationPanelContent = screen.getByText(
+			"Information Panel Content"
+		);
+		expect(informationPanelContent).toBeInTheDocument();
+	});
 });
