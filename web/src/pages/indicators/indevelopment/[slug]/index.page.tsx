@@ -96,18 +96,28 @@ export default function InDevelopmentPage(
 		isGuidanceHubPage,
 	} = props;
 
-	return (
-		<div className={styles.projectInformation}>
-			<NextSeo title={`${title} | Indicators | Standards and Indicators`} />
-
-			<Breadcrumbs>
-				<Breadcrumb to="/">Home</Breadcrumb>
+	// If it's a hub page, the middle breadcrumbs need swapping out
+	const MiddleBreadcrumbs = () =>
+		isGuidanceHubPage ? (
+			<Breadcrumb>Hub</Breadcrumb>
+		) : (
+			<>
 				<Breadcrumb to="/standards-and-indicators">
 					Standards and Indicators
 				</Breadcrumb>
 				<Breadcrumb to="/standards-and-indicators/indicators">
 					Indicators
 				</Breadcrumb>
+			</>
+		);
+
+	return (
+		<div className={styles.projectInformation}>
+			<NextSeo title={`${title} | Indicators | Standards and Indicators`} />
+
+			<Breadcrumbs>
+				<Breadcrumb to="/">Home</Breadcrumb>
+				<MiddleBreadcrumbs />
 				<Breadcrumb to="/indicators/indevelopment" elementType={Link}>
 					In development
 				</Breadcrumb>
