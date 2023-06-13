@@ -104,13 +104,13 @@ const nextConfig = {
 		return [
 			{
 				source:
-					"/:productRoot(indicators|guidance)/:statusSlug(indevelopment|discontinued|awaiting-development|topic-selection)/:path*",
+					"/:productRoot(indicators|guidance|hub)/:statusSlug(indevelopment|discontinued|awaiting-development|topic-selection)/:path*",
 				destination:
 					"/indicators/indevelopment/:path*?productRoot=:productRoot&statusSlug=:statusSlug",
 			},
 			{
 				source:
-					"/:productRoot(indicators|guidance|advice|process|corporate)/:path*",
+					"/:productRoot(indicators|guidance|advice|process|corporate|hub)/:path*",
 				destination: "/indicators/:path*?productRoot=:productRoot",
 			},
 		];
