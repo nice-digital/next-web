@@ -77,30 +77,11 @@ exports[`/indevelopment/[slug].page IndevelopmentPage should match snapshot for 
     {
       "@type": "ListItem",
       "position": 2,
-      "item": {
-        "@id": "/standards-and-indicators",
-        "name": "Standards and Indicators"
-      }
+      "item": {}
     },
     {
       "@type": "ListItem",
       "position": 3,
-      "item": {
-        "@id": "/standards-and-indicators/indicators",
-        "name": "Indicators"
-      }
-    },
-    {
-      "@type": "ListItem",
-      "position": 4,
-      "item": {
-        "@id": "/indicators/indevelopment",
-        "name": "In development"
-      }
-    },
-    {
-      "@type": "ListItem",
-      "position": 5,
       "item": {
         "name": "GID-NG10237"
       }
