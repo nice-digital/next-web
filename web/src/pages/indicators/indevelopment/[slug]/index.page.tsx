@@ -99,7 +99,10 @@ export default function InDevelopmentPage(
 	// If it's a hub page, the middle breadcrumbs need swapping out
 	const MiddleBreadcrumbs = () =>
 		isGuidanceHubPage ? (
-			<Breadcrumb>Hub</Breadcrumb>
+			<>
+				<Breadcrumb>Hub</Breadcrumb>
+				<Breadcrumb>In development</Breadcrumb>
+			</>
 		) : (
 			<>
 				<Breadcrumb to="/standards-and-indicators">
@@ -107,6 +110,9 @@ export default function InDevelopmentPage(
 				</Breadcrumb>
 				<Breadcrumb to="/standards-and-indicators/indicators">
 					Indicators
+				</Breadcrumb>
+				<Breadcrumb to="/indicators/indevelopment" elementType={Link}>
+					In development
 				</Breadcrumb>
 			</>
 		);
@@ -118,9 +124,6 @@ export default function InDevelopmentPage(
 			<Breadcrumbs>
 				<Breadcrumb to="/">Home</Breadcrumb>
 				<MiddleBreadcrumbs />
-				<Breadcrumb to="/indicators/indevelopment" elementType={Link}>
-					In development
-				</Breadcrumb>
 				<Breadcrumb>{reference}</Breadcrumb>
 			</Breadcrumbs>
 
