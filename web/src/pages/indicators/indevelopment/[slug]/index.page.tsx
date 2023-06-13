@@ -124,7 +124,6 @@ export default function InDevelopmentPage(
 
 			<ProjectInformation {...props} />
 
-			{!isGuidanceHubPage && (
 				<>
 					{indevTopicItems && indevTopicItems.length > 0 ? (
 						<>
@@ -224,7 +223,6 @@ export default function InDevelopmentPage(
 						</p>
 					) : null}
 				</>
-			)}
 		</div>
 	);
 }
@@ -310,7 +308,7 @@ export const getServerSideProps: GetServerSideProps<
 			else return status;
 		};
 
-	const isGuidanceHubPage = projectType?.toString() === "HUB";
+	const isGuidanceHubPage = false;
 
 	let indevProcessHomepage = null;
 
