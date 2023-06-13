@@ -117,9 +117,13 @@ export default function InDevelopmentPage(
 			</>
 		);
 
+	const pageTitle = isGuidanceHubPage
+		? `${title} | Hub`
+		: `${title} | Indicators | Standards and Indicators`;
+
 	return (
 		<div className={styles.projectInformation}>
-			<NextSeo title={`${title} | Indicators | Standards and Indicators`} />
+			<NextSeo title={pageTitle} />
 
 			<Breadcrumbs>
 				<Breadcrumb to="/">Home</Breadcrumb>
