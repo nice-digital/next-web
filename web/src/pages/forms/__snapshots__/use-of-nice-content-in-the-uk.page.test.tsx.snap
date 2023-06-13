@@ -71,26 +71,35 @@ exports[`UseOfNICEContentInTheUKForm should match snapshot 1`] = `
 }
   </script>
   <div
-    class="page-header"
-    data-component="page-header"
-    id="content-start"
+    class="grid grid--loose"
   >
-    <h1
-      class="page-header__heading "
+    <div
+      data-component="grid-item"
+      data-g="12 md:12 lg:12"
     >
-      Use of NICE content in the UK form
-    </h1>
+      <div
+        class="page-header"
+        data-component="page-header"
+        id="content-start"
+      >
+        <h1
+          class="page-header__heading "
+        >
+          Use of NICE content in the UK form
+        </h1>
+      </div>
+      <iframe
+        allow="geolocation; microphone; camera"
+        allowfullscreen=""
+        class="iframe"
+        data-jotform-id="223412731228044"
+        id="JotFormIFrame-223412731228044"
+        scrolling="no"
+        src="https://next-web-tests.jotform.com/223412731228044?isIframeEmbed=1"
+        style="height: 539px; overflow: hidden;"
+        title="Use of NICE content in the UK form"
+      />
+    </div>
   </div>
-  <iframe
-    allow="geolocation; microphone; camera"
-    allowfullscreen=""
-    class="iframe"
-    data-jotform-id="223412731228044"
-    id="JotFormIFrame-223412731228044"
-    scrolling="no"
-    src="https://next-web-tests.jotform.com/223412731228044?isIframeEmbed=1"
-    style="height: 539px; overflow: hidden;"
-    title="Use of NICE content in the UK form"
-  />
 </div>
 `;
