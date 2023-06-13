@@ -35,6 +35,7 @@ describe("URL utils", () => {
 		});
 
 		describe.each([
+			[ProjectGroup.Other, ProjectType.HUB, "hub"],
 			[ProjectGroup.Other, ProjectType.IND, "indicators"],
 			[ProjectGroup.Other, ProjectType.NGC, "guidance"],
 			[ProjectGroup.Guidance, ProjectType.NG, "guidance"],

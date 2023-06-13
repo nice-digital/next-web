@@ -543,6 +543,7 @@ export enum ProjectType {
 	"NGC" = "NGC",
 	"IND" = "IND",
 	"HTE" = "HTE",
+	"HUB" = "HUB",
 }
 
 export type ProjectDetail = {
