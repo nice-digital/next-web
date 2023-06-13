@@ -1,0 +1,186 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`InterventionalProceduresNotificationForm should match snapshot 1`] = `
+<div>
+  <nav
+    aria-label="Breadcrumbs"
+    data-component="breadcrumbs"
+    role="navigation"
+  >
+    <ol
+      class="breadcrumbs"
+    >
+      <li
+        class="breadcrumbs__crumb"
+      >
+        <a
+          href="/"
+        >
+          Home
+        </a>
+      </li>
+      <li
+        class="breadcrumbs__crumb"
+      >
+        <a
+          href="/about"
+        >
+          About
+        </a>
+      </li>
+      <li
+        class="breadcrumbs__crumb"
+      >
+        <a
+          href="/about/what-we-do"
+        >
+          What we do
+        </a>
+      </li>
+      <li
+        class="breadcrumbs__crumb"
+      >
+        <a
+          href="/about/what-we-do/our-programmes"
+        >
+          Our programmes
+        </a>
+      </li>
+      <li
+        class="breadcrumbs__crumb"
+      >
+        <a
+          href="/about/what-we-do/our-programmes/nice-guidance"
+        >
+          NICE guidance
+        </a>
+      </li>
+      <li
+        class="breadcrumbs__crumb"
+      >
+        <a
+          href="/about/what-we-do/our-programmes/nice-guidance/nice-interventional-procedures-guidance"
+        >
+          NICE interventional procedures guidance
+        </a>
+      </li>
+      <li
+        class="breadcrumbs__crumb"
+      >
+        <a
+          href="/about/what-we-do/our-programmes/nice-guidance/nice-interventional-procedures-guidance/notify"
+        >
+          Notify a procedure
+        </a>
+      </li>
+      <li
+        class="breadcrumbs__crumb"
+      >
+        <span>
+          Interventional procedures notification form
+        </span>
+      </li>
+    </ol>
+  </nav>
+  <script
+    type="application/ld+json"
+  >
+    {
+  "@context": "http://schema.org",
+  "@type": "BreadcrumbList",
+  "itemListElement": [
+    {
+      "@type": "ListItem",
+      "position": 1,
+      "item": {
+        "@id": "/",
+        "name": "Home"
+      }
+    },
+    {
+      "@type": "ListItem",
+      "position": 2,
+      "item": {
+        "@id": "/about",
+        "name": "About"
+      }
+    },
+    {
+      "@type": "ListItem",
+      "position": 3,
+      "item": {
+        "@id": "/about/what-we-do",
+        "name": "What we do"
+      }
+    },
+    {
+      "@type": "ListItem",
+      "position": 4,
+      "item": {
+        "@id": "/about/what-we-do/our-programmes",
+        "name": "Our programmes"
+      }
+    },
+    {
+      "@type": "ListItem",
+      "position": 5,
+      "item": {
+        "@id": "/about/what-we-do/our-programmes/nice-guidance",
+        "name": "NICE guidance"
+      }
+    },
+    {
+      "@type": "ListItem",
+      "position": 6,
+      "item": {
+        "@id": "/about/what-we-do/our-programmes/nice-guidance/nice-interventional-procedures-guidance",
+        "name": "NICE interventional procedures guidance"
+      }
+    },
+    {
+      "@type": "ListItem",
+      "position": 7,
+      "item": {
+        "@id": "/about/what-we-do/our-programmes/nice-guidance/nice-interventional-procedures-guidance/notify",
+        "name": "Notify a procedure"
+      }
+    },
+    {
+      "@type": "ListItem",
+      "position": 8,
+      "item": {
+        "name": "Interventional procedures notification form"
+      }
+    }
+  ]
+}
+  </script>
+  <div
+    class="page-header"
+    data-component="page-header"
+    id="content-start"
+  >
+    <h1
+      class="page-header__heading "
+    >
+      Interventional procedures notification form
+    </h1>
+    <p
+      class="page-header__lead"
+    >
+      Tell us about an interventional procedure you think should be assessed by NICE. This can be a new procedure or a review of our existing guidance.
+    </p>
+  </div>
+  <iframe
+    allow="geolocation; microphone; camera"
+    allowfullscreen=""
+    class="iframe"
+    data-jotform-id="230793530776059"
+    id="JotFormIFrame-230793530776059"
+    scrolling="no"
+    src="https://next-web-tests.jotform.com/230793530776059?isIframeEmbed=1"
+    style="height: 539px; overflow: hidden;"
+    title="Interventional procedures notification form"
+  />
+</div>
+`;
