@@ -17,6 +17,7 @@ import {
 } from "@/utils/resource";
 
 export type DocumentsPageProps = {
+	alert: string | null;
 	consultationUrls: string[];
 	indevScheduleItems?: IndevSchedule[];
 	indevStakeholderRegistration: Record<string, unknown>[];
@@ -63,6 +64,12 @@ export default function DocumentsPage(props: DocumentsPageProps): JSX.Element {
 				indevScheduleItems={props.indevScheduleItems}
 				indevStakeholderRegistration={props.indevStakeholderRegistration}
 			/>
+			{props.alert && (
+				<div
+					className="alert-message"
+					dangerouslySetInnerHTML={{ __html: props.alert }}
+				/>
+			)}
 			<ProjectHorizontalNav
 				projectPath={props.projectPath}
 				hasDocuments
@@ -86,7 +93,7 @@ export const getServerSideProps: GetServerSideProps<
 	if ("notFound" in result || "redirect" in result) return result;
 
 	const { project, projectPath, panels, hasPanels, consultationUrls } = result,
-		{ projectType, reference, status, title, embedded, links } = project;
+		{ alert, projectType, reference, status, title, embedded, links } = project;
 
 	if (!hasPanels) return { notFound: true };
 
@@ -132,6 +139,7 @@ export const getServerSideProps: GetServerSideProps<
 
 	return {
 		props: {
+			alert,
 			consultationUrls,
 			indevScheduleItems,
 			indevStakeholderRegistration,
