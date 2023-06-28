@@ -1658,6 +1658,7 @@ exports[`/indicators/indevelopment/[slug]/documents DocumentsPage should match s
 exports[`/indicators/indevelopment/[slug]/documents getServerSideProps should return a correct props 1`] = `
 Object {
   "props": Object {
+    "alert": undefined,
     "consultationUrls": Array [],
     "indevScheduleItems": Array [
       Object {

@@ -587,6 +587,7 @@ export type ProjectDetail = {
 	technologyType: string | null;
 	productTypeName: string | null;
 	process: string;
+	alert: string | null;
 	title: string;
 	status: ProjectStatus;
 	projectGroup: ProjectGroup;

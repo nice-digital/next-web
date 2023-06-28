@@ -353,6 +353,7 @@ exports[`/indevelopment/[slug].page IndevelopmentPage should match snapshot for 
 exports[`/indevelopment/[slug].page getServerSideProps should return a correct props when supplied with a valid slug 1`] = `
 Object {
   "props": Object {
+    "alert": undefined,
     "consultationUrls": Array [],
     "description": null,
     "developedAs": "CG",

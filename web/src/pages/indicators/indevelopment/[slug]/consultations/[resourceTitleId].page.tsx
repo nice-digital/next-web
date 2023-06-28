@@ -15,6 +15,7 @@ import { formatDateStr, stripTime } from "@/utils/datetime";
 import { validateRouteParams } from "@/utils/project";
 
 export type ConsultationHTMLPageProps = {
+	alert: string | null;
 	consultationUrls: string[];
 	indevScheduleItems?: IndevSchedule[];
 	indevStakeholderRegistration: Record<string, unknown>[];
@@ -31,6 +32,7 @@ export type ConsultationHTMLPageProps = {
 };
 
 export default function ConsultationHTMLPage({
+	alert,
 	consultation,
 	consultationUrls,
 	indevStakeholderRegistration,
@@ -73,6 +75,12 @@ export default function ConsultationHTMLPage({
 				indevStakeholderRegistration={indevStakeholderRegistration}
 				shouldUseNewConsultationComments={shouldUseNewConsultationComments}
 			/>
+			{alert && (
+				<div
+					className="alert-message"
+					dangerouslySetInnerHTML={{ __html: alert }}
+				/>
+			)}
 			<ProjectHorizontalNav
 				projectPath={projectPath}
 				hasDocuments
@@ -124,7 +132,7 @@ export const getServerSideProps: GetServerSideProps<
 		return { notFound: true };
 	}
 
-	const { projectType, reference, status, title } = project,
+	const { alert, projectType, reference, status, title } = project,
 		indevSchedule =
 			project.embedded.niceIndevProvisionalScheduleList?.embedded
 				.niceIndevProvisionalSchedule,
@@ -147,6 +155,7 @@ export const getServerSideProps: GetServerSideProps<
 
 	return {
 		props: {
+			alert,
 			consultationUrls,
 			indevScheduleItems,
 			indevStakeholderRegistration,
