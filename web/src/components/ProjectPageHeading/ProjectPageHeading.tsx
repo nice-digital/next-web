@@ -15,6 +15,7 @@ export type ProjectPageHeadingProps = {
 	status: string;
 	indevScheduleItems?: IndevSchedule[];
 	indevStakeholderRegistration?: Record<string, unknown>[];
+	isGuidanceHubPage: boolean;
 	shouldUseNewConsultationComments?: boolean | null;
 	children?: never;
 };
@@ -27,21 +28,25 @@ export const ProjectPageHeading: FC<ProjectPageHeadingProps> = ({
 	status,
 	indevScheduleItems,
 	indevStakeholderRegistration,
+	isGuidanceHubPage,
 	shouldUseNewConsultationComments,
 }) => {
 	const expectedPublicationInfo = indevScheduleItems?.find(
-			(item) => item.column1 === "Expected publication"
-		),
-		publicationMeta = expectedPublicationInfo ? (
-			<>
-				<span>Expected publication date:&nbsp;</span>
-				<time dateTime={expectedPublicationInfo.column2}>
-					{formatDateStr(expectedPublicationInfo.column2)}
-				</time>
-			</>
-		) : status != "Discontinued" ? (
-			"Expected publication date: TBC"
-		) : null;
+		(item) => item.column1 === "Expected publication"
+	);
+
+	let publicationMeta = expectedPublicationInfo ? (
+		<>
+			<span>Expected publication date:&nbsp;</span>
+			<time dateTime={expectedPublicationInfo.column2}>
+				{formatDateStr(expectedPublicationInfo.column2)}
+			</time>
+		</>
+	) : status != "Discontinued" ? (
+		"Expected publication date: TBC"
+	) : null;
+
+	if (isGuidanceHubPage) publicationMeta = null;
 
 	let indevRegisterAnInterestLink = null;
 	if (projectType == "IPG" && status != ProjectStatus.Discontinued) {
@@ -65,6 +70,7 @@ export const ProjectPageHeading: FC<ProjectPageHeadingProps> = ({
 						Register an interest
 					</Link>
 				) : null,
+				!isGuidanceHubPage &&
 				indevStakeholderRegistration &&
 				indevStakeholderRegistration.length > 0 ? (
 					<Link
