@@ -25,8 +25,8 @@
     "extends @nice-digital/browserslist-config"
   ],
   "dependencies": {
-    "@nice-digital/design-system": "^5.0.9",
-    "@nice-digital/global-nav": "^7.0.957",
+    "@nice-digital/design-system": "^5.0.11",
+    "@nice-digital/global-nav": "^7.0.986",
     "@nice-digital/nds-prev-next": "^3.0.2",
     "@nice-digital/search-client": "^2.0.1501-SRCH-726-create-navi",
     "@sindresorhus/slugify": "^1.1.2",
