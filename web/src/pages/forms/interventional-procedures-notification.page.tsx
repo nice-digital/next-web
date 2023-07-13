@@ -18,7 +18,7 @@ const InformationPanel = () => {
 				</Link>
 			</p>
 			<Panel>
-				<h3>Supporting information</h3>
+				<h2 className="h3">Supporting information</h2>
 				<p>
 					Send any published data and evidence in support of your submission to:
 				</p>
