@@ -77,30 +77,11 @@ exports[`/indevelopment/[slug].page IndevelopmentPage should match snapshot for 
     {
       "@type": "ListItem",
       "position": 2,
-      "item": {
-        "@id": "/standards-and-indicators",
-        "name": "Standards and Indicators"
-      }
+      "item": {}
     },
     {
       "@type": "ListItem",
       "position": 3,
-      "item": {
-        "@id": "/standards-and-indicators/indicators",
-        "name": "Indicators"
-      }
-    },
-    {
-      "@type": "ListItem",
-      "position": 4,
-      "item": {
-        "@id": "/indicators/indevelopment",
-        "name": "In development"
-      }
-    },
-    {
-      "@type": "ListItem",
-      "position": 5,
       "item": {
         "name": "GID-NG10237"
       }
@@ -353,7 +334,9 @@ exports[`/indevelopment/[slug].page IndevelopmentPage should match snapshot for 
 exports[`/indevelopment/[slug].page getServerSideProps should return a correct props when supplied with a valid slug 1`] = `
 Object {
   "props": Object {
+    "alert": undefined,
     "consultationUrls": Array [],
+    "content": undefined,
     "description": null,
     "developedAs": "CG",
     "evidenceAssessmentGroup": null,
@@ -540,6 +523,7 @@ Object {
       },
     ],
     "indevTopicItems": Array [],
+    "isGuidanceHubPage": false,
     "partialUpdates": Array [],
     "process": "CG",
     "projectPath": "/guidance/indevelopment/gid-ng10237",

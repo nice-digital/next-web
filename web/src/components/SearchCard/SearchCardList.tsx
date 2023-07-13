@@ -46,7 +46,13 @@ const pushMetaItemToArray = (
 };
 
 function searchFormatMeta(item: Document): Array<FormattedMetaItem> {
-	const { publicationDate, lastUpdated, niceResultType, resourceType } = item;
+	const {
+		publicationDate,
+		lastUpdated,
+		niceResultType,
+		resourceType,
+		guidanceStatus,
+	} = item;
 
 	const items: FormattedMetaItem[] = [];
 
@@ -82,6 +88,14 @@ function searchFormatMeta(item: Document): Array<FormattedMetaItem> {
 			"Published",
 			formatDateStr(publicationDate)
 		);
+	}
+
+	if (
+		!isTopicPage(niceResultType) &&
+		guidanceStatus.length &&
+		!publicationDate
+	) {
+		pushMetaItemToArray(items, false, "Status", guidanceStatus[0]);
 	}
 
 	if (items.length > 0) {

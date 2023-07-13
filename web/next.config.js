@@ -6,6 +6,16 @@ const config = require("config"),
 	withNodeConfig = require("next-plugin-node-config");
 
 /**
+ * A list of paths to hooks used in global nav that should allow transpilation.
+ *
+ * Avoids the error "cannot use import outside a module"
+ */
+const globalNavHooksToTranspile = [
+	"@mantine/hooks/esm/use-debounced-value",
+	"@mantine/hooks/esm/use-focus-trap",
+];
+
+/**
  * A list of paths to node modules that should allow transpilation.
  * Most of our Design System components (and Global Nav) import SCSS.
  *
@@ -104,13 +114,13 @@ const nextConfig = {
 		return [
 			{
 				source:
-					"/:productRoot(indicators|guidance)/:statusSlug(indevelopment|discontinued|awaiting-development|topic-selection)/:path*",
+					"/:productRoot(indicators|guidance|hub)/:statusSlug(indevelopment|discontinued|awaiting-development|topic-selection)/:path*",
 				destination:
 					"/indicators/indevelopment/:path*?productRoot=:productRoot&statusSlug=:statusSlug",
 			},
 			{
 				source:
-					"/:productRoot(indicators|guidance|advice|process|corporate)/:path*",
+					"/:productRoot(indicators|guidance|advice|process|corporate|hub)/:path*",
 				destination: "/indicators/:path*?productRoot=:productRoot",
 			},
 		];
@@ -141,6 +151,7 @@ const nextConfig = {
 	transpilePackages: [
 		...niceDigitalModulesToTranspile,
 		...nonES5ModulesToTranspile,
+		...globalNavHooksToTranspile,
 	],
 	typescript: {
 		// We run our own typechecking so no need to do it twice

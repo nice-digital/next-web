@@ -543,6 +543,7 @@ export enum ProjectType {
 	"NGC" = "NGC",
 	"IND" = "IND",
 	"HTE" = "HTE",
+	"HUB" = "HUB",
 }
 
 export type ProjectDetail = {
@@ -587,7 +588,9 @@ export type ProjectDetail = {
 	technologyType: string | null;
 	productTypeName: string | null;
 	process: string;
+	alert: string | null;
 	title: string;
+	content: string | null;
 	status: ProjectStatus;
 	projectGroup: ProjectGroup;
 	publishedDate: string;
