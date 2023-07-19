@@ -125,14 +125,9 @@ const nextConfig = {
 			},
 			{
 				source:
-					"/forms/test-form",
+					"/forms/test-form-rewrite",
 				destination: "/html/form.html",
-			},
-			{
-				source:
-					"/forms/ip-form-test",
-				destination: "/html/interventional-procedures-notification/interventional-procedures-notification-form.html",
-			},
+			}
 		];
 	},
 	async redirects() {
