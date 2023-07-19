@@ -123,6 +123,16 @@ const nextConfig = {
 					"/:productRoot(indicators|guidance|advice|process|corporate|hub)/:path*",
 				destination: "/indicators/:path*?productRoot=:productRoot",
 			},
+			{
+				source:
+					"/forms/test-form",
+				destination: "/html/form.html",
+			},
+			{
+				source:
+					"/forms/ip-form-test",
+				destination: "/html/interventional-procedures-notification/interventional-procedures-notification-form.html",
+			},
 		];
 	},
 	async redirects() {
