@@ -1,0 +1,45 @@
+@use '@nice-digital/nds-core/scss/spacing';
+@use '@nice-digital/nds-core/scss/utils';
+
+/* stylelint-disable selector-no-qualifying-type, selector-class-pattern */
+// shouldn't be using tags before classes in selectors
+// shouldn't be using class names with hyphens
+// NB. Neither are generated in next-web
+
+.chapter {
+  div.itemizedlist.indented,
+  p.numbered-paragraph {
+    margin-left: utils.rem(spacing.$xx-large);
+  }
+
+  div.itemizedlist.indented .paragraph-number,
+  p.numbered-paragraph .paragraph-number {
+    float: left;
+    margin-left: utils.rem(-(spacing.$xx-large));
+  }
+
+  article.numbered-paragraph {
+    display: flex;
+
+    > {
+      h1,
+      h2,
+      h3,
+      h4,
+      h5,
+      h6 {
+        flex: 0 0 utils.rem(spacing.$xx-large);
+        font-family: inherit;
+        font-size: inherit;
+        font-weight: normal;
+        line-height: 1.6;
+        margin-top: 0;
+        padding-right: 10px;
+      }
+    }
+
+    p:first-child {
+      margin-top: 0;
+    }
+  }
+}
