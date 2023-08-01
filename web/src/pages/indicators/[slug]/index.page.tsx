@@ -22,7 +22,7 @@ import {
 } from "@/feeds/publications/types";
 import { getChapterLinks, validateRouteParams } from "@/utils/product";
 
-import styles from "./index.page.module.scss";
+import styles from "./index.module.scss";
 
 export type IndicatorsDetailsPageProps = {
 	productPath: string;
