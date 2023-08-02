@@ -1,11 +1,2 @@
-footer {
-  margin-top: 0 !important;
-}
-
-html {
-  scroll-behavior: smooth;
-
-  @media (prefers-reduced-motion) {
-    scroll-behavior: auto;
-  }
-}
+@use 'styles/global';
+@use 'styles/guidance-conversion';
