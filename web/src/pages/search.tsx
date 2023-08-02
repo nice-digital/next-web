@@ -1,7 +1,7 @@
 import dayjs from "dayjs";
 import { GetServerSidePropsContext, GetServerSidePropsResult } from "next";
 import { NextSeo } from "next-seo";
-import router from "next/router";
+import { useRouter } from "next/router";
 import React, { useEffect, useState } from "react";
 
 import { FilterSummary } from "@nice-digital/nds-filters";
@@ -63,7 +63,7 @@ export function Search({
 	const [loading, setLoading] = useState<boolean>();
 	const { failed } = data;
 
-	const { events, push, query } = router();
+	const { events, push, query } = useRouter();
 
 	const { documents, navigators, pageSize, unfilteredResultsUrl } =
 		data as SearchResultsSuccess;
