@@ -1,9 +1,10 @@
 import "@testing-library/jest-dom";
 
 import { addDefaultJSONFeedMocks, axiosJSONMock } from "@/test-utils/feeds";
-//import * as matchers from "jest-extended/all";
 
-//expect.extend(matchers);
+// Jest will complain about styled component attributes ("global" and "jsx") in the FontStyles component,
+// so let's stop these complaints from polluting the test output and mock the component output
+jest.mock("@/components/FontStyles/FontStyles");
 
 beforeEach(() => {
 	axiosJSONMock.reset();

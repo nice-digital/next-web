@@ -2,14 +2,7 @@
 
 exports[`/indicators/inconsultation should match the snapshot 1`] = `
 <div>
-  <style>
-    
-		html {
-			--sans-font-family: Arial;
-			--serif-font-family: Arial;
-		}
-	
-  </style>
+  <style />
   <div />
   <main>
     <div

@@ -2,7 +2,6 @@
 import { ErrorInfo, FC } from "react";
 import { DefaultSeo } from "next-seo";
 import App, { AppProps, NextWebVitalsMetric } from "next/app";
-import { Inter, Lora } from "next/font/google";
 
 import "@nice-digital/design-system/scss/base.scss";
 import {
@@ -15,6 +14,7 @@ import {
 import { Container } from "@nice-digital/nds-container";
 
 import { ErrorPageContent } from "@/components/ErrorPageContent/ErrorPageContent";
+import { FontStyles } from "@/components/FontStyles/FontStyles";
 import { GoogleTagManager } from "@/components/GoogleTagManager/GoogleTagManager";
 import { logger } from "@/logger";
 
@@ -39,23 +39,6 @@ const AppFooter: FC = () => (
 		<GoogleTagManager />
 		<Footer />
 	</>
-);
-
-const inter = Inter({
-	subsets: ["latin"],
-});
-
-const lora = Lora({
-	subsets: ["latin"],
-});
-
-const FontStyles: FC = () => (
-	<style jsx global>{`
-		html {
-			--sans-font-family: ${inter.style.fontFamily};
-			--serif-font-family: ${lora.style.fontFamily};
-		}
-	`}</style>
 );
 
 // eslint-disable-next-line @typescript-eslint/ban-types
@@ -167,23 +150,6 @@ class NextWebApp extends App<{}, {}, AppState> {
 			service = "standards-and-indicators";
 		}
 
-		if (this.state.hasError)
-			return (
-				<>
-					<FontStyles />
-					<DefaultSeo {...getDefaultSeoConfig(pathname)} />
-					<div ref={this.globalNavWrapperRef}>
-						<Header {...headerProps} service={service} />
-					</div>
-					<Main>
-						<Container>
-							<ErrorPageContent />
-						</Container>
-					</Main>
-					<AppFooter />
-				</>
-			);
-
 		return (
 			<>
 				<FontStyles />
@@ -193,7 +159,11 @@ class NextWebApp extends App<{}, {}, AppState> {
 				</div>
 				<Main>
 					<Container>
-						<Component {...pageProps} />
+						{this.state.hasError ? (
+							<ErrorPageContent />
+						) : (
+							<Component {...pageProps} />
+						)}
 					</Container>
 				</Main>
 				<AppFooter />
