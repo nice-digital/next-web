@@ -1,7 +1,11 @@
+@use '@nice-digital/nds-core/scss/spacing';
+@use '@nice-digital/nds-core/scss/utils';
+@use '@nice-digital/nds-core/scss/colours';
+
 .details {
-  border: 1pt solid #d6d6d6;
+  border: 1pt solid colours.$border;
   cursor: pointer;
-  margin-bottom: 0.5rem;
-  margin-top: 3rem;
-  padding: 1rem 1.5rem;
+  margin-bottom: utils.rem(spacing.$small);
+  margin-top: utils.rem(spacing.$large);
+  padding: utils.rem(spacing.$medium) utils.rem(spacing.$medium);
 }
