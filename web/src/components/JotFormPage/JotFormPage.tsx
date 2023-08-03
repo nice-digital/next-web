@@ -14,6 +14,8 @@ export type JotFormPageProps = FormProps & {
 	parentPages: { title: string; path?: string }[];
 	lead: string;
 	informationPanel?: JSX.Element;
+	formHeader?: JSX.Element;
+	formFooter?: JSX.Element;
 };
 
 export const JotFormPage: FC<JotFormPageProps> = ({
@@ -23,6 +25,8 @@ export const JotFormPage: FC<JotFormPageProps> = ({
 	parentPages,
 	lead,
 	informationPanel,
+	formHeader,
+	formFooter,
 }) => {
 	return (
 		<>
@@ -48,7 +52,9 @@ export const JotFormPage: FC<JotFormPageProps> = ({
 					lg={informationPanel ? 8 : 12}
 				>
 					<PageHeader heading={formName} lead={lead} id="content-start" />
+					{formHeader ? <>{formHeader}</> : null}
 					<JotFormEmbed jotFormID={formID} title={formName} height={height} />
+					{formFooter ? <>{formFooter}</> : null}
 				</GridItem>
 				{informationPanel ? (
 					<GridItem cols={12} md={4} lg={4}>
