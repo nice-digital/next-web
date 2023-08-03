@@ -38,7 +38,7 @@ module.exports = {
 		"jest-extended/all",
 	],
 	resetModules: true,
-	testPathIgnorePatterns: ["./config/"],
+	testPathIgnorePatterns: ["./config/", "./.next/"],
 	testEnvironmentOptions: {
 		url: "https://next-web-tests.nice.org.uk",
 	},
