@@ -2,7 +2,6 @@
 
 exports[`/indicators/published should match the snapshot 1`] = `
 <div>
-  <style />
   <div />
   <main>
     <div

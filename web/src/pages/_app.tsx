@@ -2,7 +2,7 @@
 import { ErrorInfo, FC } from "react";
 import { DefaultSeo } from "next-seo";
 import App, { AppProps, NextWebVitalsMetric } from "next/app";
-
+import { Inter, Lora } from "next/font/google";
 import "@nice-digital/design-system/scss/base.scss";
 import {
 	Header,
@@ -14,7 +14,6 @@ import {
 import { Container } from "@nice-digital/nds-container";
 
 import { ErrorPageContent } from "@/components/ErrorPageContent/ErrorPageContent";
-import { FontStyles } from "@/components/FontStyles/FontStyles";
 import { GoogleTagManager } from "@/components/GoogleTagManager/GoogleTagManager";
 import { logger } from "@/logger";
 
@@ -40,6 +39,16 @@ const AppFooter: FC = () => (
 		<Footer />
 	</>
 );
+
+const inter = Inter({
+	subsets: ["latin"],
+	variable: "--sans-font-family",
+});
+
+const lora = Lora({
+	subsets: ["latin"],
+	variable: "--serif-font-family",
+});
 
 // eslint-disable-next-line @typescript-eslint/ban-types
 class NextWebApp extends App<{}, {}, AppState> {
@@ -152,12 +161,11 @@ class NextWebApp extends App<{}, {}, AppState> {
 
 		return (
 			<>
-				<FontStyles />
 				<DefaultSeo {...getDefaultSeoConfig(pathname)} />
 				<div ref={this.globalNavWrapperRef}>
 					<Header {...headerProps} service={service} />
 				</div>
-				<Main>
+				<Main className={`${inter.variable} ${lora.variable}`}>
 					<Container>
 						{this.state.hasError ? (
 							<ErrorPageContent />

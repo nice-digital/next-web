@@ -1,3 +1,17 @@
+import { Inter, Lora } from "next/font/google";
+
+import "@nice-digital/design-system/scss/base.scss";
+
+const inter = Inter({
+	subsets: ["latin"],
+	variable: "--sans-font-family",
+});
+
+const lora = Lora({
+	subsets: ["latin"],
+	variable: "--serif-font-family",
+});
+
 export default function RootLayout({
 	children,
 }: {
@@ -5,7 +19,7 @@ export default function RootLayout({
 }): React.ReactElement {
 	return (
 		<html lang="en">
-			<body>
+			<body className={`${lora.variable} ${inter.variable}`}>
 				<p>Shared root layout..</p>
 				{children}
 			</body>

@@ -2,7 +2,6 @@
 
 exports[`/guidance/awaiting-development should match the snapshot 1`] = `
 <div>
-  <style />
   <div />
   <main>
     <div
