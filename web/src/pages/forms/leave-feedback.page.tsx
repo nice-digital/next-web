@@ -17,10 +17,6 @@ export default function LeaveFeedbackForm(props: FormProps): JSX.Element {
 			lead="Thank you for taking a look at our website, we'd like to hear your views."
 			parentPages={[
 				{
-					title: "Leave feedback",
-					path: "/leave-feedback",
-				},
-				{
 					title: "About",
 					path: "/about",
 				},

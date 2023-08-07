@@ -31,15 +31,6 @@ exports[`LeaveFeedbackForm should match snapshot 1`] = `
       <li
         class="breadcrumbs__crumb"
       >
-        <a
-          href="/leave-feedback"
-        >
-          Leave feedback
-        </a>
-      </li>
-      <li
-        class="breadcrumbs__crumb"
-      >
         <span>
           Leave feedback form
         </span>
@@ -72,14 +63,6 @@ exports[`LeaveFeedbackForm should match snapshot 1`] = `
     {
       "@type": "ListItem",
       "position": 3,
-      "item": {
-        "@id": "/leave-feedback",
-        "name": "Leave feedback"
-      }
-    },
-    {
-      "@type": "ListItem",
-      "position": 4,
       "item": {
         "name": "Leave feedback form"
       }
