@@ -23,6 +23,8 @@ public:
     # See https://nextjs.org/docs/going-to-production#caching for more details on cache headers with NextJS
     # Note the use of s-max-age to cache in varnish, max-age to cache on the client and SWR for background refreshes
     defaultCacheHeader: public, s-max-age=300, max-age=120, stale-while-revalidate=1800
+  jotForm:
+    baseURL: https://nice.jotform.com
 
 # ! This is a PUBLIC repo so please don't put any sensitive info or secrets in here
 # ! Use local-development.yml or local-development.json to override settings locally instead: https://edibleco.de/3dLJKiP
@@ -47,4 +49,7 @@ server:
       apiKey: SECRET
     inDev:
       origin: SECRET
+      apiKey: SECRET
+    jotForm:
+      # Notice how the JotForm base URL is public as it's used in iframes, unlike our internal services. But the API key is still secret as it's used server side
       apiKey: SECRET

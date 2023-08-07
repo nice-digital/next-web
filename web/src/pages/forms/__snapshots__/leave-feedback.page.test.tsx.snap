@@ -1,0 +1,157 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`LeaveFeedbackForm should match snapshot 1`] = `
+<div>
+  <nav
+    aria-label="Breadcrumbs"
+    data-component="breadcrumbs"
+    role="navigation"
+  >
+    <ol
+      class="breadcrumbs"
+    >
+      <li
+        class="breadcrumbs__crumb"
+      >
+        <a
+          href="/"
+        >
+          Home
+        </a>
+      </li>
+      <li
+        class="breadcrumbs__crumb"
+      >
+        <a
+          href="/about"
+        >
+          About
+        </a>
+      </li>
+      <li
+        class="breadcrumbs__crumb"
+      >
+        <span>
+          Leave feedback form
+        </span>
+      </li>
+    </ol>
+  </nav>
+  <script
+    type="application/ld+json"
+  >
+    {
+  "@context": "http://schema.org",
+  "@type": "BreadcrumbList",
+  "itemListElement": [
+    {
+      "@type": "ListItem",
+      "position": 1,
+      "item": {
+        "@id": "/",
+        "name": "Home"
+      }
+    },
+    {
+      "@type": "ListItem",
+      "position": 2,
+      "item": {
+        "@id": "/about",
+        "name": "About"
+      }
+    },
+    {
+      "@type": "ListItem",
+      "position": 3,
+      "item": {
+        "name": "Leave feedback form"
+      }
+    }
+  ]
+}
+  </script>
+  <div
+    class="grid grid--loose"
+  >
+    <div
+      data-component="grid-item"
+      data-g="12 md:12 lg:12"
+    >
+      <div
+        class="page-header"
+        data-component="page-header"
+        id="content-start"
+      >
+        <h1
+          class="page-header__heading "
+        >
+          Leave feedback form
+        </h1>
+        <p
+          class="page-header__lead"
+        >
+          Thank you for taking a look at our website, we'd like to hear your views.
+        </p>
+      </div>
+      This form is only for website feedback, for all other enquiries please
+       
+      <a
+        href="/get-involved/contact-us"
+      >
+        contact us
+      </a>
+      <iframe
+        allow="geolocation; microphone; camera"
+        allowfullscreen=""
+        class="iframe"
+        data-jotform-id="222773673466870"
+        id="JotFormIFrame-222773673466870"
+        scrolling="no"
+        src="https://next-web-tests.jotform.com/222773673466870?isIframeEmbed=1"
+        style="height: 539px; overflow: hidden;"
+        title="Leave feedback form"
+      />
+      <p>
+        We'll use the information you provide to monitor how our websites are performing and to see if there are ways we can improve them.
+      </p>
+      <p>
+        If you've provided your contact details we may contact you for further information about your feedback.
+      </p>
+      <p>
+        For more information about how we use your data view our
+         
+        <a
+          href="/privacy-notice"
+        >
+          privacy notice
+        </a>
+        .
+      </p>
+      <h2>
+        Take part in research to help us develop better products
+      </h2>
+      <p>
+        You can influence:
+      </p>
+      <ul>
+        <li>
+          how we display our guidance
+        </li>
+        <li>
+          changes to our websites and apps
+        </li>
+        <li>
+          our understanding of what our users need.
+        </li>
+      </ul>
+      <a
+        class="btn btn--cta"
+        data-component="button--cta"
+        href="/get-involved/help-us-improve"
+      >
+        Find out more
+      </a>
+    </div>
+  </div>
+</div>
+`;
