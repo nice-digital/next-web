@@ -1,0 +1,231 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`InterventionalProceduresRegisterAnInterestForm should match snapshot 1`] = `
+<div>
+  <nav
+    aria-label="Breadcrumbs"
+    data-component="breadcrumbs"
+    role="navigation"
+  >
+    <ol
+      class="breadcrumbs"
+    >
+      <li
+        class="breadcrumbs__crumb"
+      >
+        <a
+          href="/"
+        >
+          Home
+        </a>
+      </li>
+      <li
+        class="breadcrumbs__crumb"
+      >
+        <a
+          href="/about"
+        >
+          About
+        </a>
+      </li>
+      <li
+        class="breadcrumbs__crumb"
+      >
+        <a
+          href="/about/what-we-do"
+        >
+          What we do
+        </a>
+      </li>
+      <li
+        class="breadcrumbs__crumb"
+      >
+        <a
+          href="/about/what-we-do/our-programmes"
+        >
+          Our programmes
+        </a>
+      </li>
+      <li
+        class="breadcrumbs__crumb"
+      >
+        <a
+          href="/about/what-we-do/our-programmes/nice-guidance"
+        >
+          NICE guidance
+        </a>
+      </li>
+      <li
+        class="breadcrumbs__crumb"
+      >
+        <a
+          href="/about/what-we-do/our-programmes/nice-guidance/nice-interventional-procedures-guidance"
+        >
+          NICE interventional procedures guidance
+        </a>
+      </li>
+      <li
+        class="breadcrumbs__crumb"
+      >
+        <span>
+          Interventional procedures register an interest form
+        </span>
+      </li>
+    </ol>
+  </nav>
+  <script
+    type="application/ld+json"
+  >
+    {
+  "@context": "http://schema.org",
+  "@type": "BreadcrumbList",
+  "itemListElement": [
+    {
+      "@type": "ListItem",
+      "position": 1,
+      "item": {
+        "@id": "/",
+        "name": "Home"
+      }
+    },
+    {
+      "@type": "ListItem",
+      "position": 2,
+      "item": {
+        "@id": "/about",
+        "name": "About"
+      }
+    },
+    {
+      "@type": "ListItem",
+      "position": 3,
+      "item": {
+        "@id": "/about/what-we-do",
+        "name": "What we do"
+      }
+    },
+    {
+      "@type": "ListItem",
+      "position": 4,
+      "item": {
+        "@id": "/about/what-we-do/our-programmes",
+        "name": "Our programmes"
+      }
+    },
+    {
+      "@type": "ListItem",
+      "position": 5,
+      "item": {
+        "@id": "/about/what-we-do/our-programmes/nice-guidance",
+        "name": "NICE guidance"
+      }
+    },
+    {
+      "@type": "ListItem",
+      "position": 6,
+      "item": {
+        "@id": "/about/what-we-do/our-programmes/nice-guidance/nice-interventional-procedures-guidance",
+        "name": "NICE interventional procedures guidance"
+      }
+    },
+    {
+      "@type": "ListItem",
+      "position": 7,
+      "item": {
+        "name": "Interventional procedures register an interest form"
+      }
+    }
+  ]
+}
+  </script>
+  <div
+    class="grid grid--loose"
+  >
+    <div
+      data-component="grid-item"
+      data-g="12 md:8 lg:8"
+    >
+      <div
+        class="page-header"
+        data-component="page-header"
+        id="content-start"
+      >
+        <h1
+          class="page-header__heading "
+        >
+          Interventional procedures register an interest form
+        </h1>
+        <p
+          class="page-header__lead"
+        >
+          Sign up to receive email updates on interventional procedures guidance.
+        </p>
+      </div>
+      <p>
+        We'll let you know when:
+      </p>
+      <ul>
+        <li>
+          you can comment on draft recommendations
+        </li>
+        <li>
+          the final recommendations are published
+        </li>
+        <li>
+          published guidance is being reviewed.
+        </li>
+      </ul>
+      <iframe
+        allow="geolocation; microphone; camera"
+        allowfullscreen=""
+        class="iframe"
+        data-jotform-id="222271911976056"
+        id="JotFormIFrame-222271911976056"
+        scrolling="no"
+        src="https://next-web-tests.jotform.com/222271911976056?isIframeEmbed=1"
+        style="height: 539px; overflow: hidden;"
+        title="Interventional procedures register an interest form"
+      />
+      <p>
+        We'll use the information you provide on this form to contact you about the procedures you want to stay up to date with.
+      </p>
+      <p>
+        For more information about how we use your data, view our
+         
+        <a
+          href="/privacy-notice"
+        >
+          privacy notice
+        </a>
+        .
+      </p>
+    </div>
+    <div
+      data-component="grid-item"
+      data-g="12 md:4 lg:4"
+    >
+      <div
+        class="panel"
+        data-component="panel"
+      >
+        <h3
+          class="h4"
+        >
+          Suggest a procedure
+        </h3>
+        <p>
+          Tell us about a procedure that you think should be assessed by our interventional procedures programme.
+        </p>
+        <p>
+          <a
+            href="/about/what-we-do/our-programmes/nice-guidance/nice-interventional-procedures-guidance/ip-notification-form"
+          >
+            Notify a procedure to NICE
+          </a>
+          .
+        </p>
+      </div>
+    </div>
+  </div>
+</div>
+`;
