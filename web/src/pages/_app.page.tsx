@@ -4,6 +4,8 @@ import { DefaultSeo } from "next-seo";
 import App, { AppProps, NextWebVitalsMetric } from "next/app";
 import { Inter, Lora } from "next/font/google";
 
+import { storyblokInit, apiPlugin } from "@storyblok/react";
+
 import "@nice-digital/design-system/scss/base.scss";
 import {
 	Header,
@@ -49,6 +51,11 @@ const inter = Inter({
 const lora = Lora({
 	subsets: ["latin"],
 	variable: "--serif-font-family",
+});
+
+storyblokInit({
+	accessToken: publicRuntimeConfig.storyblok.previewAccessToken,
+	use: [apiPlugin],
 });
 
 // eslint-disable-next-line @typescript-eslint/ban-types

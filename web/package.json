@@ -30,6 +30,7 @@
     "@nice-digital/nds-prev-next": "^3.0.2",
     "@nice-digital/search-client": "^2.0.1501-SRCH-726-create-navi",
     "@sindresorhus/slugify": "^1.1.2",
+    "@storyblok/react": "^2.4.4",
     "axios": "^1.1.2",
     "axios-case-converter": "^1.1.0",
     "cache-manager": "^4.1.0",
