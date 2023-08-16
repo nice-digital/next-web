@@ -1,7 +1,16 @@
-import { getStoryblokApi } from "@storyblok/react";
+import {
+	type ISbStoriesParams,
+	type ISbStoryData,
+	getStoryblokApi,
+} from "@storyblok/react";
 import React from "react";
 
-export default function Home(props): React.ReactElement {
+interface HomeProps {
+	story: ISbStoryData;
+	key: string;
+}
+
+export default function Home(props: HomeProps): React.ReactElement {
 	return (
 		<>
 			<h1>Homepage</h1>
@@ -10,12 +19,12 @@ export default function Home(props): React.ReactElement {
 	);
 }
 
-export async function getStaticProps() {
+export async function getServerSideProps() {
 	// home is the default slug for the homepage in Storyblok
 	const slug = "home";
 
 	// load the draft version
-	const sbParams = {
+	const sbParams: ISbStoriesParams = {
 		version: "draft", // or 'published'
 	};
 
@@ -29,6 +38,5 @@ export async function getStaticProps() {
 			story: data ? data.story : false,
 			key: data ? data.story.id : false,
 		},
-		revalidate: 3600, // revalidate every hour
 	};
 }
