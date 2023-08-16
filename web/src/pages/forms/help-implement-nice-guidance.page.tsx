@@ -12,7 +12,7 @@ export default function HelpImplementNiceGuidanceForm(
 	return (
 		<JotFormPage
 			{...props}
-			formName="Application form"
+			formName="Adoption and impact reference panel membership form"
 			lead=""
 			parentPages={[
 				{
