@@ -1,9 +1,7 @@
-import {
-	type ISbStoriesParams,
-	type ISbStoryData,
-	getStoryblokApi,
-} from "@storyblok/react";
+import { type ISbStoryData } from "@storyblok/react";
 import React from "react";
+
+import { fetchStory } from "@/utils/storyblok";
 
 interface HomeProps {
 	story: ISbStoryData;
@@ -20,18 +18,10 @@ export default function Home(props: HomeProps): React.ReactElement {
 }
 
 export async function getServerSideProps() {
-	// home is the default slug for the homepage in Storyblok
 	const slug = "home";
+	const version = "draft";
 
-	// load the draft version
-	const sbParams: ISbStoriesParams = {
-		version: "draft", // or 'published'
-	};
-
-	const storyblokApi = getStoryblokApi();
-	const { data } = await storyblokApi.get(`cdn/stories/${slug}`, sbParams);
-
-	console.log("SB data:", data);
+	const { data } = await fetchStory(slug, version);
 
 	return {
 		props: {
