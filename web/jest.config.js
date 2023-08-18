@@ -22,6 +22,11 @@ module.exports = {
 		// Avoids errors like "multiple instances of React" with hooks
 		"^react(.*)$": "<rootDir>/../node_modules/react$1",
 		"^next(.*)$": "<rootDir>/../node_modules/next$1",
+		// Jest is complaining about ESM modules, so we'll use the CJS equivalents instead
+		"@mantine/hooks/esm/use-focus-trap/use-focus-trap":
+			"@mantine/hooks/cjs/use-focus-trap/use-focus-trap",
+		"@mantine/hooks/esm/use-debounced-value/use-debounced-value":
+			"@mantine/hooks/cjs/use-debounced-value/use-debounced-value",
 		// Aliases to match paths in tsconfig.json
 		...tsPathsModuleNameMappings,
 	},
@@ -33,7 +38,7 @@ module.exports = {
 		"jest-extended/all",
 	],
 	resetModules: true,
-	testPathIgnorePatterns: ["./config/"],
+	testPathIgnorePatterns: ["./config/", "./.next/"],
 	testEnvironmentOptions: {
 		url: "https://next-web-tests.nice.org.uk",
 	},

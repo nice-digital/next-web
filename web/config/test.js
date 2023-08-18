@@ -5,6 +5,9 @@ module.exports = {
 	public: {
 		environment: "test",
 		baseURL: jestConfig.testEnvironmentOptions.url,
+		jotForm: {
+			baseURL: "https://next-web-tests.jotform.com",
+		},
 	},
 	server: {
 		cache: {
