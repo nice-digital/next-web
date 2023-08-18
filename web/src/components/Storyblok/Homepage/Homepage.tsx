@@ -1,8 +1,8 @@
-import { ISbStoryData, StoryblokComponent } from "@storyblok/react";
+import { StoryblokComponent, StoryblokComponentType } from "@storyblok/react";
 
 interface HomepageBlokProps {
 	blok: {
-		body: ISbStoryData[];
+		body: StoryblokComponentType<"homepage">[];
 	};
 }
 
