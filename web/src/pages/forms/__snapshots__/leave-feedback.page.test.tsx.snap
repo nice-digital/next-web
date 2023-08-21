@@ -32,7 +32,7 @@ exports[`LeaveFeedbackForm should match snapshot 1`] = `
         class="breadcrumbs__crumb"
       >
         <span>
-          Leave feedback form
+          Website feedback form
         </span>
       </li>
     </ol>
@@ -64,7 +64,7 @@ exports[`LeaveFeedbackForm should match snapshot 1`] = `
       "@type": "ListItem",
       "position": 3,
       "item": {
-        "name": "Leave feedback form"
+        "name": "Website feedback form"
       }
     }
   ]
@@ -85,7 +85,7 @@ exports[`LeaveFeedbackForm should match snapshot 1`] = `
         <h1
           class="page-header__heading "
         >
-          Leave feedback form
+          Website feedback form
         </h1>
         <p
           class="page-header__lead"
@@ -109,7 +109,7 @@ exports[`LeaveFeedbackForm should match snapshot 1`] = `
         scrolling="no"
         src="https://next-web-tests.jotform.com/222773673466870?isIframeEmbed=1"
         style="height: 539px; overflow: hidden;"
-        title="Leave feedback form"
+        title="Website feedback form"
       />
       <p>
         We'll use the information you provide to monitor how our websites are performing and to see if there are ways we can improve them.
