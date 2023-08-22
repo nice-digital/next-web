@@ -21,7 +21,8 @@
       "@/mockData/*": ["src/__mocks__/__data__/*"],
       "@/utils/*": ["src/utils/*"],
       "@/helpers/*": ["src/helpers/*"],
-      "@/helpers": ["src/helpers"]
+      "@/helpers": ["src/helpers"],
+      "@/types/*": ["src/types/*"],
     },
     "incremental": true
   },

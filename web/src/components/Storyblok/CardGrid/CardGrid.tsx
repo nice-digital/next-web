@@ -1,31 +1,17 @@
-import { StoryblokComponentType } from "@storyblok/react";
-import { ISbLinkURLObject } from "storyblok-js-client";
-
 import { Card } from "@nice-digital/nds-card";
 import { Grid, GridItem, type Columns } from "@nice-digital/nds-grid";
 
-// TODO: check with SB about link type; there should be an internal type
-type CardBlokProps = StoryblokComponentType<"card"> & {
-	body: string;
-	heading: string;
-	link: {
-		linktype: string;
-		url: string;
-		story?: ISbLinkURLObject;
-	};
-};
+import { type CardGridStoryblok } from "@/types/storyblok";
 
 interface CardGridBlokProps {
-	blok: {
-		cards: CardBlokProps[];
-		columns: number;
-	};
+	blok: CardGridStoryblok;
 }
 
 export const CardGrid = ({ blok }: CardGridBlokProps): React.ReactElement => {
 	console.log("Card grid blok:", blok);
 	const { columns, cards } = blok;
-	const gridCols = Math.floor(12 / columns) as Columns;
+
+	const gridCols = Math.floor(12 / parseInt(columns)) as Columns;
 
 	return (
 		<Grid>

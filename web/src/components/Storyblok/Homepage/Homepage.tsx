@@ -1,9 +1,9 @@
-import { StoryblokComponent, StoryblokComponentType } from "@storyblok/react";
+import { StoryblokComponent } from "@storyblok/react";
+
+import { type HomepageStoryblok } from "@/types/storyblok";
 
 interface HomepageBlokProps {
-	blok: {
-		body: StoryblokComponentType<"homepage">[];
-	};
+	blok: HomepageStoryblok;
 }
 
 export const Homepage = ({ blok }: HomepageBlokProps): React.ReactElement => {
