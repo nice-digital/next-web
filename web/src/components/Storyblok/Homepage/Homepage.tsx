@@ -7,7 +7,6 @@ interface HomepageBlokProps {
 }
 
 export const Homepage = ({ blok }: HomepageBlokProps): React.ReactElement => {
-	console.log("Home blok:", blok);
 	return (
 		<>
 			{blok.body.map((nestedBlok) => (

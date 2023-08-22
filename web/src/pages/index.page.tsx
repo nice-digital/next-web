@@ -23,8 +23,6 @@ export async function getServerSideProps() {
 
 	const { data } = await fetchStory(slug, version);
 
-	console.log("Content:", data.story.content);
-
 	return {
 		props: {
 			story: data ? data.story : false,
