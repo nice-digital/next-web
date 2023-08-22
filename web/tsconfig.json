@@ -22,7 +22,7 @@
       "@/utils/*": ["src/utils/*"],
       "@/helpers/*": ["src/helpers/*"],
       "@/helpers": ["src/helpers"],
-      "@/types/*": ["src/types/*"],
+      "@/types/*": ["src/types/*"]
     },
     "incremental": true
   },

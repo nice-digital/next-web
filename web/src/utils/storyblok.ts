@@ -33,16 +33,16 @@ export const resolveStoryblokLink = ({
 	url,
 	email,
 	story,
-}: MultilinkStoryblok): string => {
+}: MultilinkStoryblok): string | undefined => {
 	switch (linktype) {
 		case "url":
 		case "asset":
-			return url;
+			return url.trim() || undefined;
 		case "email":
-			return `mailto:${email}`;
+			return email.trim() ? `mailto:${email.trim()}` : undefined;
 		case "story":
-			return `/${story.full_slug}`;
+			return story?.full_slug ? `/${story.full_slug}` : undefined;
 		default:
-			return url;
+			return undefined;
 	}
 };

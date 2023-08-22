@@ -1,4 +1,4 @@
-import { Card } from "@nice-digital/nds-card";
+import { Card, type CardHeadingLinkProps } from "@nice-digital/nds-card";
 import { Grid, GridItem, type Columns } from "@nice-digital/nds-grid";
 
 import { type CardGridStoryblok } from "@/types/storyblok";
@@ -17,15 +17,17 @@ export const CardGrid = ({ blok }: CardGridBlokProps): React.ReactElement => {
 	return (
 		<Grid>
 			{cards.map(({ heading, body, link, _uid }) => {
-				console.log("Link:", { link });
+				let cardLink: CardHeadingLinkProps | undefined = undefined;
+				const resolvedLink = link ? resolveStoryblokLink(link) : undefined;
+				if (resolvedLink) {
+					cardLink = {
+						destination: resolvedLink,
+					};
+				}
+
 				return (
 					<GridItem cols={gridCols} key={_uid}>
-						<Card
-							headingText={heading}
-							link={
-								link ? { destination: resolveStoryblokLink(link) } : undefined
-							}
-						>
+						<Card headingText={heading} link={cardLink || undefined}>
 							{body}
 						</Card>
 					</GridItem>
