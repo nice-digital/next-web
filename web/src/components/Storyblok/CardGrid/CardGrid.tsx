@@ -2,6 +2,7 @@ import { Card } from "@nice-digital/nds-card";
 import { Grid, GridItem, type Columns } from "@nice-digital/nds-grid";
 
 import { type CardGridStoryblok } from "@/types/storyblok";
+import { resolveStoryblokLink } from "@/utils/storyblok";
 
 interface CardGridBlokProps {
 	blok: CardGridStoryblok;
@@ -21,7 +22,9 @@ export const CardGrid = ({ blok }: CardGridBlokProps): React.ReactElement => {
 					<GridItem cols={gridCols} key={_uid}>
 						<Card
 							headingText={heading}
-							link={link ? { destination: link.url } : undefined}
+							link={
+								link ? { destination: resolveStoryblokLink(link) } : undefined
+							}
 						>
 							{body}
 						</Card>

@@ -3,7 +3,8 @@ import {
 	getStoryblokApi,
 	ISbResult,
 } from "@storyblok/react";
-import { ISbLinkURLObject } from "storyblok-js-client";
+
+import { type MultilinkStoryblok } from "@/types/storyblok";
 
 // Fetch a single story from the Storyblok API
 export const fetchStory = async (
@@ -29,9 +30,19 @@ export const fetchStory = async (
 // something that can be plugged straight into an href attribute
 export const resolveStoryblokLink = ({
 	linktype,
-}: ISbLinkURLObject): string => {
+	url,
+	email,
+	story,
+}: MultilinkStoryblok): string => {
 	switch (linktype) {
+		case "url":
+		case "asset":
+			return url;
+		case "email":
+			return `mailto:${email}`;
+		case "story":
+			return `/${story.full_slug}`;
 		default:
-			return "Hello";
+			return url;
 	}
 };
