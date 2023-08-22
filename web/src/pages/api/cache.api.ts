@@ -11,6 +11,8 @@ export default function handler(
 	switch (action) {
 		case "delete":
 			// Delete an entry in the fs cache
+			res.setHeader("Cache-Control", "no-store");
+
 			// The request must contain groupKey and itemKey params, which correspond to the values in cache.ts
 			if (req.query["groupKey"] && req.query["itemKey"]) {
 				const groupKey = req.query["groupKey"] as string; // e.g. "publications"
