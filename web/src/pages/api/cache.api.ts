@@ -19,7 +19,7 @@ export default function handler(
 			if (req.query["groupKey"] && req.query["itemKey"]) {
 				const groupKey = req.query["groupKey"] as string; // e.g. "publications"
 				const itemKey = req.query["itemKey"] as string; // e.g. "/feeds/product/ind63"
-				const cacheKey = getCacheKey(groupKey.toLowerCase(), itemKey.toLowerCase());
+				const cacheKey = getCacheKey(groupKey, itemKey);
 
 				if(expectedGroupKeys.includes(groupKey))
 				{

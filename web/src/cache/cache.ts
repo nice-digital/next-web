@@ -20,7 +20,7 @@ const { keyPrefix, defaultTTL, refreshThreshold, filePath } =
  * @returns The generated cache key, prefixed with the global cache key prefix.
  */
 export const getCacheKey = (groupKey: string, itemKey: string): string =>
-	`${keyPrefix}:${groupKey}:${itemKey}`;
+	`${keyPrefix.toLowerCase()}:${groupKey.toLowerCase()}:${itemKey.toLowerCase()}`;
 
 /**
  * A file-system/disk cache using cache-manager-fs-hash.
