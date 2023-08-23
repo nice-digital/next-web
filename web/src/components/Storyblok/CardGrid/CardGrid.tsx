@@ -26,7 +26,7 @@ export const CardGrid = ({ blok }: CardGridBlokProps): React.ReactElement => {
 				}
 
 				return (
-					<GridItem cols={gridCols} key={_uid}>
+					<GridItem cols={12} md={{ cols: gridCols }} key={_uid}>
 						<Card headingText={heading} link={cardLink || undefined}>
 							{body}
 						</Card>

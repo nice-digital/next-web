@@ -2,14 +2,6 @@
 
 exports[`/guidance/topic-selection should match the snapshot 1`] = `
 <div>
-  <style>
-    
-		html {
-			--sans-font-family: Arial;
-			--serif-font-family: Arial;
-		}
-	
-  </style>
   <div />
   <main>
     <div
