@@ -18,7 +18,7 @@ import {
 
 export * from "./types";
 
-const cacheKeyPrefix = "inDev",
+const cacheKeyPrefix = "indev",
 	{ defaultTTL, longTTL } = serverRuntimeConfig.cache,
 	{ origin, apiKey } = serverRuntimeConfig.feeds.inDev;
 
