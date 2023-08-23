@@ -61,7 +61,7 @@ export const getFeedBodyCached = async <T>(
 	ttl: number,
 	getUncachedAction: () => Promise<T>
 ): Promise<T> =>
-	cache.wrap<T>(getCacheKey(groupCacheKey, path), getUncachedAction, { ttl });
+	cache.wrap<T>(getCacheKey(groupCacheKey.toLowerCase(), path.toLowerCase()), getUncachedAction, { ttl });
 
 /**
  * Gets a response stream from a remote API endpoint, usually used for binary files e.g. PDFs (or mobi/epub etc).
