@@ -8,6 +8,8 @@ export default function handler(
 ): void {
 	const action = req.query["action"];
 
+    var expectedGroupKeys = ["publications", "indev" ];
+
 	switch (action) {
 		case "delete":
 			// Delete an entry in the fs cache
@@ -19,6 +21,8 @@ export default function handler(
 				const itemKey = req.query["itemKey"] as string; // e.g. "/feeds/product/ind63"
 				const cacheKey = getCacheKey(groupKey, itemKey);
 
+				if(expectedGroupKeys.includes(groupKey))
+				{
 				try {
 					cache.del(cacheKey);
 					res.status(200).json({
@@ -26,6 +30,12 @@ export default function handler(
 					});
 				} catch (err) {
 					res.status(500).json({ message: `Error deleting cache: ${err}` });
+				}
+				}else {
+					res.status(400).json({
+						message:
+							"Bad request! Did you supply the correct groupKey?",
+					});
 				}
 			} else {
 				res.status(400).json({
