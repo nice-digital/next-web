@@ -24,7 +24,7 @@ describe("feeds/inDev", () => {
 			await getAllProjects();
 
 			expect(cacheWrapMock).toHaveBeenCalledWith(
-				"next-web:tests:inDev:/gidprojects/all",
+				"next-web:tests:indev:/gidprojects/all",
 				expect.any(Function),
 				{ ttl: serverRuntimeConfig.cache.defaultTTL }
 			);
@@ -55,7 +55,7 @@ describe("feeds/inDev", () => {
 			await getAllConsultations();
 
 			expect(cacheWrapMock).toHaveBeenCalledWith(
-				"next-web:tests:inDev:/inconsultationprojects",
+				"next-web:tests:indev:/inconsultationprojects",
 				expect.any(Function),
 				{ ttl: serverRuntimeConfig.cache.defaultTTL }
 			);
