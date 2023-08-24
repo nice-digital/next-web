@@ -3,16 +3,18 @@ import { GetServerSidePropsContext } from "next";
 
 import { FormProps } from "@/components/JotFormPage/getGetServerSideProps";
 
-import LeaveFeedbackForm, { getServerSideProps } from "./leave-feedback.page";
+import RequestASpeakerForm, {
+	getServerSideProps,
+} from "./request-a-speaker.page";
 
 jest.mock("@/feeds/jotform/jotform", () => ({
 	getForm: jest.fn().mockResolvedValue({
 		responseCode: 200,
 		message: "success",
 		content: {
-			id: "222773673466870",
+			id: "232203800035035",
 			username: "nice_teams",
-			title: "Website feedback form",
+			title: "Speaker request form",
 			height: "539",
 			status: "ENABLED",
 			created_at: "2022-12-08 06:31:44",
@@ -23,19 +25,19 @@ jest.mock("@/feeds/jotform/jotform", () => ({
 			type: "LEGACY",
 			favorite: "0",
 			archived: "0",
-			url: "https://nice.jotform.com/222773673466870",
+			url: "https://nice.jotform.com/232203800035035",
 		},
 		duration: "14.98ms",
 	}),
 }));
 
-describe("LeaveFeedbackForm", () => {
+describe("RequestASpeakerForm", () => {
 	it("should match snapshot", async () => {
 		const props = (await getServerSideProps({
-			resolvedUrl: "/forms/leave-feedback",
+			resolvedUrl: "/forms/request-a-speaker",
 		} as GetServerSidePropsContext)) as { props: FormProps };
 
-		const { container } = render(<LeaveFeedbackForm {...props.props} />);
+		const { container } = render(<RequestASpeakerForm {...props.props} />);
 
 		expect(container).toMatchSnapshot();
 	});

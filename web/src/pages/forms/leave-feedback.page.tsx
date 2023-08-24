@@ -13,7 +13,7 @@ export default function LeaveFeedbackForm(props: FormProps): JSX.Element {
 	return (
 		<JotFormPage
 			{...props}
-			formName="Leave feedback form"
+			formName="Website feedback form"
 			lead="Thank you for taking a look at our website, we'd like to hear your views."
 			parentPages={[
 				{

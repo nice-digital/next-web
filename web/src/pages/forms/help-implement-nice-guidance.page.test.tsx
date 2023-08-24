@@ -3,16 +3,18 @@ import { GetServerSidePropsContext } from "next";
 
 import { FormProps } from "@/components/JotFormPage/getGetServerSideProps";
 
-import LeaveFeedbackForm, { getServerSideProps } from "./leave-feedback.page";
+import HelpImplementNiceGuidanceForm, {
+	getServerSideProps,
+} from "./help-implement-nice-guidance.page";
 
 jest.mock("@/feeds/jotform/jotform", () => ({
 	getForm: jest.fn().mockResolvedValue({
 		responseCode: 200,
 		message: "success",
 		content: {
-			id: "222773673466870",
+			id: "232203151110028",
 			username: "nice_teams",
-			title: "Website feedback form",
+			title: "Adoption and impact reference panel membership form",
 			height: "539",
 			status: "ENABLED",
 			created_at: "2022-12-08 06:31:44",
@@ -23,19 +25,21 @@ jest.mock("@/feeds/jotform/jotform", () => ({
 			type: "LEGACY",
 			favorite: "0",
 			archived: "0",
-			url: "https://nice.jotform.com/222773673466870",
+			url: "https://nice.jotform.com/232203151110028",
 		},
 		duration: "14.98ms",
 	}),
 }));
 
-describe("LeaveFeedbackForm", () => {
+describe("HelpImplementNiceGuidanceForm", () => {
 	it("should match snapshot", async () => {
 		const props = (await getServerSideProps({
-			resolvedUrl: "/forms/leave-feedback",
+			resolvedUrl: "/forms/help-implement-nice-guidance",
 		} as GetServerSidePropsContext)) as { props: FormProps };
 
-		const { container } = render(<LeaveFeedbackForm {...props.props} />);
+		const { container } = render(
+			<HelpImplementNiceGuidanceForm {...props.props} />
+		);
 
 		expect(container).toMatchSnapshot();
 	});
