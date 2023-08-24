@@ -9,9 +9,7 @@ interface CardGridBlokProps {
 }
 
 export const CardGrid = ({ blok }: CardGridBlokProps): React.ReactElement => {
-	console.log("Card grid blok:", blok);
 	const { columns, cards } = blok;
-
 	const gridCols = Math.floor(12 / parseInt(columns)) as Columns;
 
 	return (
