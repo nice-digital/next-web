@@ -19,6 +19,8 @@ import { Container } from "@nice-digital/nds-container";
 import { ErrorPageContent } from "@/components/ErrorPageContent/ErrorPageContent";
 import { GoogleTagManager } from "@/components/GoogleTagManager/GoogleTagManager";
 import { CardGrid } from "@/components/Storyblok/CardGrid/CardGrid";
+import { CategoryNavigation } from "@/components/Storyblok/CategoryNavigation/CategoryNavigation";
+import { StoryblokHero } from "@/components/Storyblok/StoryblokHero/StoryblokHero";
 import { Homepage } from "@/components/Storyblok/Homepage/Homepage";
 import { logger } from "@/logger";
 
@@ -57,7 +59,9 @@ const lora = Lora({
 
 const storyblokComponents = {
 	cardGrid: CardGrid,
+	categoryNavigation: CategoryNavigation,
 	homepage: Homepage,
+	hero: StoryblokHero,
 };
 
 storyblokInit({
