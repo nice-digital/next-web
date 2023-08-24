@@ -18,6 +18,8 @@ import { Container } from "@nice-digital/nds-container";
 
 import { ErrorPageContent } from "@/components/ErrorPageContent/ErrorPageContent";
 import { GoogleTagManager } from "@/components/GoogleTagManager/GoogleTagManager";
+import { CardGrid } from "@/components/Storyblok/CardGrid/CardGrid";
+import { Homepage } from "@/components/Storyblok/Homepage/Homepage";
 import { logger } from "@/logger";
 
 import { getDefaultSeoConfig } from "./next-seo.config";
@@ -53,9 +55,15 @@ const lora = Lora({
 	variable: "--serif-font-family",
 });
 
+const storyblokComponents = {
+	cardGrid: CardGrid,
+	homepage: Homepage,
+};
+
 storyblokInit({
 	accessToken: publicRuntimeConfig.storyblok.previewAccessToken,
 	use: [apiPlugin],
+	components: storyblokComponents,
 });
 
 // eslint-disable-next-line @typescript-eslint/ban-types
