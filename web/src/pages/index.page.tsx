@@ -5,7 +5,6 @@ import { fetchStory } from "@/utils/storyblok";
 
 interface HomeProps {
 	story: ISbStoryData;
-	key: string;
 }
 
 export default function Home({ story }: HomeProps): React.ReactElement {
@@ -18,7 +17,7 @@ export default function Home({ story }: HomeProps): React.ReactElement {
 }
 
 export async function getServerSideProps() {
-	const slug = "homepage";
+	const slug = "home";
 	const version = "draft";
 
 	const { data } = await fetchStory(slug, version);
@@ -26,7 +25,6 @@ export async function getServerSideProps() {
 	return {
 		props: {
 			story: data ? data.story : false,
-			key: data ? data.story.id : false,
 		},
 	};
 }

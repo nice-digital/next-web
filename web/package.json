@@ -9,7 +9,8 @@
     "start": "next start",
     "host": "npm start | pino-mq -c .pino-mqrc.json",
     "test": "cd .. && npm run test -- --selectProjects web",
-    "generate-sb-types": "storyblok pull-components --space {SPACE_ID} && storyblok-generate-ts source=./components.{SPACE_ID}.json target=./src/types/storyblok"
+    "generate-sb-types": "storyblok pull-components --space {SPACE_ID} && storyblok-generate-ts source=./components.{SPACE_ID}.json target=./src/types/storyblok",
+    "proxy": "mkcert -install && mkcert localhost && local-ssl-proxy --source 4010 --target 4000 --cert localhost.pem --key localhost-key.pem"
   },
   "repository": {
     "type": "git",
@@ -72,6 +73,7 @@
     "@types/qs": "^6.9.7",
     "axios-mock-adapter": "^1.21.2",
     "cross-env": "^7.0.3",
+    "local-ssl-proxy": "^2.0.5",
     "mockdate": "^3.0.5",
     "pino-pretty": "^5.1.3",
     "sass": "^1.35.1",
