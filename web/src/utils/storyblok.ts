@@ -6,10 +6,12 @@ import {
 
 import { type MultilinkStoryblok } from "@/types/storyblok";
 
+export type StoryVersion = "draft" | "published" | undefined;
+
 // Fetch a single story from the Storyblok API
 export const fetchStory = async (
 	slug: string,
-	version: "draft" | "published" | undefined
+	version: StoryVersion
 ): Promise<ISbResult> => {
 	const storyblokApi = getStoryblokApi();
 
@@ -45,4 +47,10 @@ export const resolveStoryblokLink = ({
 		default:
 			return undefined;
 	}
+};
+
+export const getStoryVersionFromQuery = (query: {
+	_storyblok?: string;
+}): StoryVersion => {
+	return query._storyblok === "" ? "draft" : "published";
 };
