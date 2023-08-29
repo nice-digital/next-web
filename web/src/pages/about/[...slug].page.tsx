@@ -1,7 +1,11 @@
 import { type ISbStoryData, StoryblokComponent } from "@storyblok/react";
 import React from "react";
 
-import { fetchStory, getStoryVersionFromQuery } from "@/utils/storyblok";
+import {
+	fetchStory,
+	getStoryVersionFromQuery,
+	getSlugFromParams,
+} from "@/utils/storyblok";
 
 import type { GetServerSidePropsContext } from "next";
 
@@ -18,8 +22,18 @@ export default function AboutIndex({ story }: AboutProps): React.ReactElement {
 }
 
 export async function getServerSideProps(context: GetServerSidePropsContext) {
-	const slug = "about";
-	const version = getStoryVersionFromQuery(context.query);
-	const result = await fetchStory(slug, version);
-	return result;
+	const { query, params } = context;
+
+	// Resolve slug from params
+	let slug = getSlugFromParams(params?.slug);
+	if (slug) {
+		slug = `about/${slug}`;
+		const version = getStoryVersionFromQuery(query);
+		const result = await fetchStory(slug, version);
+		return result;
+	} else {
+		return {
+			notFound: true,
+		};
+	}
 }

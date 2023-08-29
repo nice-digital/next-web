@@ -21,12 +21,6 @@ export default function Home({ story }: HomeProps): React.ReactElement {
 export async function getServerSideProps(context: GetServerSidePropsContext) {
 	const slug = "home";
 	const version = getStoryVersionFromQuery(context.query);
-
-	const { data } = await fetchStory(slug, version);
-
-	return {
-		props: {
-			story: data ? data.story : false,
-		},
-	};
+	const result = await fetchStory(slug, version);
+	return result;
 }
