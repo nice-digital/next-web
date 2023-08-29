@@ -107,7 +107,7 @@ const nextConfig = {
 		ignoreDuringBuilds: true,
 	},
 	// Add page.tsx for test co-location, see https://edibleco.de/3qCAkvg
-	pageExtensions: ["page.tsx", "api.tsx"],
+	pageExtensions: ["page.tsx", "api.ts"],
 	// Don't send the x-powered-by header: we don't want to expose things like that. See https://edibleco.de/2TpDVAK
 	poweredByHeader: false,
 	async rewrites() {
