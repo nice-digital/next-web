@@ -3,15 +3,18 @@ import {
 	getStoryblokApi,
 	ISbResult,
 	ISbStory,
+	ISbError,
 } from "@storyblok/react";
 
+import { logger } from "@/logger";
 import { type MultilinkStoryblok } from "@/types/storyblok";
 
 export type StoryVersion = "draft" | "published" | undefined;
-export type SBOKResponse = {
-	props: {
-		story: ISbStory;
-	};
+export type SBSingleResponse = {
+	story: ISbStory;
+};
+export type SBMultipleResponse = {
+	stories: ISbStory[];
 };
 export type SBNotFoundResponse = {
 	notFound: true;
@@ -21,7 +24,7 @@ export type SBNotFoundResponse = {
 export const fetchStory = async (
 	slug: string,
 	version: StoryVersion
-): Promise<SBOKResponse | SBNotFoundResponse> => {
+): Promise<SBSingleResponse | SBNotFoundResponse> => {
 	const storyblokApi = getStoryblokApi();
 
 	const sbParams: ISbStoriesParams = {
@@ -37,18 +40,55 @@ export const fetchStory = async (
 			sbParams
 		);
 		result = {
-			props: {
-				story: story.data.story,
-			},
+			story: story.data.story,
 		};
 	} catch (e) {
-		// TODO: Deal with other error types
-		// Currently we're just treating everything as a 404
-		// Leaving the line in to remember that the error obj needs parsing
-		// result = JSON.parse(e as string) as ISbError;
-		return {
-			notFound: true,
+		const result = JSON.parse(e as string) as ISbError;
+		logger.error(
+			`${result.status} error from Storyblok API: ${result.message}`,
+			e
+		);
+		if (result.status === 404) {
+			return {
+				notFound: true,
+			};
+		} else {
+			throw Error(
+				`${result.status} error from Storyblok API: ${result.message}`
+			);
+		}
+	}
+
+	return result;
+};
+
+// Fetch multiple stories from the Storyblok API
+export const fetchStories = async (
+	slugs: string[],
+	version: StoryVersion
+): Promise<SBMultipleResponse | SBNotFoundResponse> => {
+	const storyblokApi = getStoryblokApi();
+
+	const sbParams: ISbStoriesParams = {
+		version: version || "published",
+		resolve_links: "url",
+		by_slugs: slugs.join(","),
+	};
+
+	let result = null;
+
+	try {
+		const stories: ISbResult = await storyblokApi.get(`cdn/stories`, sbParams);
+		result = {
+			stories: stories.data.stories,
 		};
+	} catch (e) {
+		const result = JSON.parse(e as string) as ISbError;
+		logger.error(
+			`${result.status} error from Storyblok API: ${result.message}`,
+			e
+		);
+		throw Error(`${result.status} error from Storyblok API: ${result.message}`);
 	}
 
 	return result;
@@ -93,4 +133,31 @@ export const getSlugFromParams = (
 	}
 
 	return Array.isArray(slugParams) ? slugParams.join("/") : slugParams;
+};
+
+// Resolve the slug object from the NextJS query params into a list of full
+// slugs that we can use to build breadcrumbs, for example
+export const getSlugHierarchyFromParams = (
+	slugParams: string | string[] | undefined,
+	prefix: string
+): string[] => {
+	if (!slugParams) {
+		return [];
+	}
+
+	const hierarchy: string[] = [`${prefix}/`];
+
+	if (Array.isArray(slugParams)) {
+		for (let i = 0; i < slugParams.length - 1; i++) {
+			let newSlug = `${prefix}/`;
+			for (let j = 0; j <= i; j++) {
+				newSlug = `${newSlug}${slugParams[j]}/`;
+			}
+			hierarchy.push(newSlug);
+		}
+	} else {
+		hierarchy.push(`${prefix}/${slugParams}/`);
+	}
+
+	return hierarchy;
 };

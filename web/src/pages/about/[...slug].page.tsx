@@ -3,20 +3,28 @@ import React from "react";
 
 import {
 	fetchStory,
+	fetchStories,
 	getStoryVersionFromQuery,
 	getSlugFromParams,
+	getSlugHierarchyFromParams,
 } from "@/utils/storyblok";
 
 import type { GetServerSidePropsContext } from "next";
 
 interface AboutProps {
 	story: ISbStoryData;
+	breadcrumbs: {
+		stories: ISbStoryData[];
+	};
 }
 
-export default function AboutIndex({ story }: AboutProps): React.ReactElement {
+export default function AboutCatchAll({
+	story,
+	breadcrumbs,
+}: AboutProps): React.ReactElement {
 	return (
 		<>
-			<StoryblokComponent blok={story.content} />
+			<StoryblokComponent blok={story.content} breadcrumbs={breadcrumbs} />
 		</>
 	);
 }
@@ -28,8 +36,23 @@ export async function getServerSideProps(context: GetServerSidePropsContext) {
 	let slug = getSlugFromParams(params?.slug);
 	if (slug) {
 		slug = `about/${slug}`;
+
+		// Get breadcrumbs from params
+		const hierarchy = getSlugHierarchyFromParams(params?.slug, "about");
 		const version = getStoryVersionFromQuery(query);
-		const result = await fetchStory(slug, version);
+
+		const [storyResult, hierarchyResult] = await Promise.all([
+			fetchStory(slug, version),
+			fetchStories(hierarchy, version),
+		]);
+
+		const result = {
+			props: {
+				...storyResult,
+				breadcrumbs: { ...hierarchyResult },
+			},
+		};
+
 		return result;
 	} else {
 		return {

@@ -1,7 +1,12 @@
 import { type ISbStoryData, StoryblokComponent } from "@storyblok/react";
 import React from "react";
 
-import { fetchStory, getStoryVersionFromQuery } from "@/utils/storyblok";
+import {
+	fetchStory,
+	fetchStories,
+	getStoryVersionFromQuery,
+	getSlugHierarchyFromParams,
+} from "@/utils/storyblok";
 
 import type { GetServerSidePropsContext } from "next";
 
@@ -19,7 +24,22 @@ export default function AboutIndex({ story }: AboutProps): React.ReactElement {
 
 export async function getServerSideProps(context: GetServerSidePropsContext) {
 	const slug = "about";
-	const version = getStoryVersionFromQuery(context.query);
-	const result = await fetchStory(slug, version);
+	const { query, params } = context;
+	const hierarchy = getSlugHierarchyFromParams(params?.slug, "about");
+	const version = getStoryVersionFromQuery(query);
+
+	// TODO: Fix this, breadcrubms should be easier to hard-code
+	// Should be a utility function for transforming stories to breadcrumbs
+	const [storyResult, hierarchyResult] = await Promise.all([
+		fetchStory(slug, version),
+		fetchStories(hierarchy, version),
+	]);
+
+	const result = {
+		props: {
+			...storyResult,
+			breadcrumbs: { ...hierarchyResult },
+		},
+	};
 	return result;
 }
