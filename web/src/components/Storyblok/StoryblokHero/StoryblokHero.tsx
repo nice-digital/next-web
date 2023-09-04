@@ -1,39 +1,25 @@
-import { ISbStoryData } from "@storyblok/react";
-
 import { Breadcrumbs, Breadcrumb } from "@nice-digital/nds-breadcrumbs";
 import { Hero } from "@nice-digital/nds-hero";
 
+import { type Breadcrumb as TypeBreadcrumb } from "@/types/Breadcrumb";
 import { type HeroStoryblok } from "@/types/storyblok";
 
 interface HeroBlokProps {
 	blok: HeroStoryblok;
-	breadcrumbs: {
-		stories: ISbStoryData[];
-	};
+	breadcrumbs?: TypeBreadcrumb[];
 }
 
 export const StoryblokHero = ({
 	blok,
 	breadcrumbs,
 }: HeroBlokProps): React.ReactElement => {
-	// TODO: Refactor this breadcrumb code, it's awful
-	const crumbs: { title: string; path?: string }[] | undefined =
-		breadcrumbs?.stories?.map((story) => {
-			return {
-				title: story.name,
-				path: `/${story.full_slug}`,
-			};
-		});
-
-	const BreadcrumbComponent = breadcrumbs?.stories?.length ? (
+	const BreadcrumbComponent = breadcrumbs?.length ? (
 		<Breadcrumbs>
-			{[{ title: "Home", path: "/" }, ...crumbs, { title: blok.title }].map(
-				(breadcrumb) => (
-					<Breadcrumb key={breadcrumb.title} to={breadcrumb.path}>
-						{breadcrumb.title}
-					</Breadcrumb>
-				)
-			)}
+			{[{ title: "Home", path: "/" }, ...breadcrumbs].map((breadcrumb) => (
+				<Breadcrumb key={breadcrumb.title} to={breadcrumb.path}>
+					{breadcrumb.title}
+				</Breadcrumb>
+			))}
 		</Breadcrumbs>
 	) : undefined;
 
