@@ -17,14 +17,13 @@ export const StoryblokHero = ({
 	breadcrumbs,
 }: HeroBlokProps): React.ReactElement => {
 	// TODO: Refactor this breadcrumb code, it's awful
-	const crumbs: { title: string; path?: string }[] = breadcrumbs.stories.map(
-		(story) => {
+	const crumbs: { title: string; path?: string }[] | undefined =
+		breadcrumbs?.stories?.map((story) => {
 			return {
 				title: story.name,
 				path: `/${story.full_slug}`,
 			};
-		}
-	);
+		});
 
 	const BreadcrumbComponent = breadcrumbs?.stories?.length ? (
 		<Breadcrumbs>

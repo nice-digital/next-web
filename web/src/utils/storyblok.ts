@@ -105,9 +105,9 @@ export const resolveStoryblokLink = ({
 	switch (linktype) {
 		case "url":
 		case "asset":
-			return url.trim() || undefined;
+			return url?.trim() || undefined;
 		case "email":
-			return email.trim() ? `mailto:${email.trim()}` : undefined;
+			return email?.trim() ? `mailto:${email.trim()}` : undefined;
 		case "story":
 			return story?.full_slug ? `/${story.full_slug}` : undefined;
 		default:
@@ -117,10 +117,10 @@ export const resolveStoryblokLink = ({
 
 // Figure out whether we're requesting the draft or published version,
 // depending on the existence of the _storyblok query parameter
-export const getStoryVersionFromQuery = (query: {
+export const getStoryVersionFromQuery = (query?: {
 	_storyblok?: string;
 }): StoryVersion => {
-	return query._storyblok === "" ? "draft" : "published";
+	return (query && query._storyblok) === "" ? "draft" : "published";
 };
 
 // Resolve the slug object from the NextJS query params into a full slug that we
