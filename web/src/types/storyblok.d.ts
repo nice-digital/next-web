@@ -1,4 +1,5 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
+
 export type MultilinkStoryblok =
 	| {
 			cached_url?: string;
@@ -71,6 +72,14 @@ export interface CardGridStoryblok {
 	[k: string]: any;
 }
 
+export interface CategoryNavigationStoryblok {
+	hero: HeroStoryblok[];
+	cardGrid: CardGridStoryblok[];
+	_uid: string;
+	component: "categoryNavigation";
+	[k: string]: any;
+}
+
 export interface FeatureStoryblok {
 	name?: string;
 	_uid: string;
@@ -93,8 +102,16 @@ export interface GridItemStoryblok {
 	[k: string]: any;
 }
 
+export interface HeroStoryblok {
+	title: string;
+	intro?: string;
+	_uid: string;
+	component: "hero";
+	[k: string]: any;
+}
+
 export interface HomepageStoryblok {
-	body: CardGridStoryblok[];
+	body: (CardGridStoryblok | RichTextStoryblok)[];
 	_uid: string;
 	component: "homepage";
 	[k: string]: any;

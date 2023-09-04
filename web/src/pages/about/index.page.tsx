@@ -1,31 +1,45 @@
-import { type ISbStoryData } from "@storyblok/react";
+import { type ISbStoryData, StoryblokComponent } from "@storyblok/react";
 import React from "react";
 
-import { fetchStory } from "@/utils/storyblok";
+import {
+	fetchStory,
+	fetchStories,
+	getStoryVersionFromQuery,
+	getSlugHierarchyFromParams,
+} from "@/utils/storyblok";
+
+import type { GetServerSidePropsContext } from "next";
 
 interface AboutProps {
 	story: ISbStoryData;
-	key: string;
 }
 
-export default function AboutIndex(props: AboutProps): React.ReactElement {
+export default function AboutIndex({ story }: AboutProps): React.ReactElement {
 	return (
 		<>
-			<h1>About</h1>
-			<p>{props.story.content.body[0].name || "Didn't find anything"}</p>
+			<StoryblokComponent blok={story.content} />
 		</>
 	);
 }
 
-export async function getServerSideProps() {
+export async function getServerSideProps(context: GetServerSidePropsContext) {
 	const slug = "about";
-	const version = "draft";
-	const { data } = await fetchStory(slug, version);
+	const { query, params } = context;
+	const hierarchy = getSlugHierarchyFromParams(params?.slug, "about");
+	const version = getStoryVersionFromQuery(query);
 
-	return {
+	// TODO: Fix this, breadcrubms should be easier to hard-code
+	// Should be a utility function for transforming stories to breadcrumbs
+	const [storyResult, hierarchyResult] = await Promise.all([
+		fetchStory(slug, version),
+		fetchStories(hierarchy, version),
+	]);
+
+	const result = {
 		props: {
-			story: data ? data.story : false,
-			key: data ? data.story.id : false,
+			...storyResult,
+			breadcrumbs: { ...hierarchyResult },
 		},
 	};
+	return result;
 }

@@ -2,15 +2,29 @@ import {
 	type ISbStoriesParams,
 	getStoryblokApi,
 	ISbResult,
+	ISbStory,
+	ISbError,
 } from "@storyblok/react";
 
+import { logger } from "@/logger";
 import { type MultilinkStoryblok } from "@/types/storyblok";
+
+export type StoryVersion = "draft" | "published" | undefined;
+export type SBSingleResponse = {
+	story: ISbStory;
+};
+export type SBMultipleResponse = {
+	stories: ISbStory[];
+};
+export type SBNotFoundResponse = {
+	notFound: true;
+};
 
 // Fetch a single story from the Storyblok API
 export const fetchStory = async (
 	slug: string,
-	version: "draft" | "published" | undefined
-): Promise<ISbResult> => {
+	version: StoryVersion
+): Promise<SBSingleResponse | SBNotFoundResponse> => {
 	const storyblokApi = getStoryblokApi();
 
 	const sbParams: ISbStoriesParams = {
@@ -18,12 +32,66 @@ export const fetchStory = async (
 		resolve_links: "url",
 	};
 
-	const story: ISbResult = await storyblokApi.get(
-		`cdn/stories/${slug}`,
-		sbParams
-	);
+	let result = null;
 
-	return story;
+	try {
+		const story: ISbResult = await storyblokApi.get(
+			`cdn/stories/${slug}`,
+			sbParams
+		);
+		result = {
+			story: story.data.story,
+		};
+	} catch (e) {
+		const result = JSON.parse(e as string) as ISbError;
+		logger.error(
+			`${result.status} error from Storyblok API: ${result.message}`,
+			e
+		);
+		if (result.status === 404) {
+			return {
+				notFound: true,
+			};
+		} else {
+			throw Error(
+				`${result.status} error from Storyblok API: ${result.message}`
+			);
+		}
+	}
+
+	return result;
+};
+
+// Fetch multiple stories from the Storyblok API
+export const fetchStories = async (
+	slugs: string[],
+	version: StoryVersion
+): Promise<SBMultipleResponse | SBNotFoundResponse> => {
+	const storyblokApi = getStoryblokApi();
+
+	const sbParams: ISbStoriesParams = {
+		version: version || "published",
+		resolve_links: "url",
+		by_slugs: slugs.join(","),
+	};
+
+	let result = null;
+
+	try {
+		const stories: ISbResult = await storyblokApi.get(`cdn/stories`, sbParams);
+		result = {
+			stories: stories.data.stories,
+		};
+	} catch (e) {
+		const result = JSON.parse(e as string) as ISbError;
+		logger.error(
+			`${result.status} error from Storyblok API: ${result.message}`,
+			e
+		);
+		throw Error(`${result.status} error from Storyblok API: ${result.message}`);
+	}
+
+	return result;
 };
 
 // Resolve a link object returned from the Storyblok API, so that it returns
@@ -45,4 +113,51 @@ export const resolveStoryblokLink = ({
 		default:
 			return undefined;
 	}
+};
+
+// Figure out whether we're requesting the draft or published version,
+// depending on the existence of the _storyblok query parameter
+export const getStoryVersionFromQuery = (query: {
+	_storyblok?: string;
+}): StoryVersion => {
+	return query._storyblok === "" ? "draft" : "published";
+};
+
+// Resolve the slug object from the NextJS query params into a full slug that we
+// can use to request content from the Storyblok API
+export const getSlugFromParams = (
+	slugParams: string | string[] | undefined
+): string | undefined => {
+	if (!slugParams) {
+		return undefined;
+	}
+
+	return Array.isArray(slugParams) ? slugParams.join("/") : slugParams;
+};
+
+// Resolve the slug object from the NextJS query params into a list of full
+// slugs that we can use to build breadcrumbs, for example
+export const getSlugHierarchyFromParams = (
+	slugParams: string | string[] | undefined,
+	prefix: string
+): string[] => {
+	if (!slugParams) {
+		return [];
+	}
+
+	const hierarchy: string[] = [`${prefix}/`];
+
+	if (Array.isArray(slugParams)) {
+		for (let i = 0; i < slugParams.length - 1; i++) {
+			let newSlug = `${prefix}/`;
+			for (let j = 0; j <= i; j++) {
+				newSlug = `${newSlug}${slugParams[j]}/`;
+			}
+			hierarchy.push(newSlug);
+		}
+	} else {
+		hierarchy.push(`${prefix}/${slugParams}/`);
+	}
+
+	return hierarchy;
 };
