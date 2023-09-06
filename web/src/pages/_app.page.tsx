@@ -4,8 +4,6 @@ import { DefaultSeo } from "next-seo";
 import App, { AppProps, NextWebVitalsMetric } from "next/app";
 import { Inter, Lora } from "next/font/google";
 
-import { storyblokInit, apiPlugin } from "@storyblok/react";
-
 import "@nice-digital/design-system/scss/base.scss";
 import {
 	Header,
@@ -18,14 +16,11 @@ import { Container } from "@nice-digital/nds-container";
 
 import { ErrorPageContent } from "@/components/ErrorPageContent/ErrorPageContent";
 import { GoogleTagManager } from "@/components/GoogleTagManager/GoogleTagManager";
-import { CardGrid } from "@/components/Storyblok/CardGrid/CardGrid";
-import { CategoryNavigation } from "@/components/Storyblok/CategoryNavigation/CategoryNavigation";
-import { StoryblokHero } from "@/components/Storyblok/StoryblokHero/StoryblokHero";
-import { Homepage } from "@/components/Storyblok/Homepage/Homepage";
 import { logger } from "@/logger";
 
 import { getDefaultSeoConfig } from "./next-seo.config";
 import { publicRuntimeConfig } from "@/config";
+import { initStoryblok } from "@/utils/storyblok";
 
 import "@nice-digital/nds-table/scss/table.scss";
 import "@nice-digital/nds-panel/scss/panel.scss";
@@ -57,18 +52,8 @@ const lora = Lora({
 	variable: "--serif-font-family",
 });
 
-const storyblokComponents = {
-	cardGrid: CardGrid,
-	categoryNavigation: CategoryNavigation,
-	homepage: Homepage,
-	hero: StoryblokHero,
-};
-
-storyblokInit({
-	accessToken: publicRuntimeConfig.storyblok.previewAccessToken,
-	use: [apiPlugin],
-	components: storyblokComponents,
-});
+// Initialise Storyblok API handler
+initStoryblok();
 
 // eslint-disable-next-line @typescript-eslint/ban-types
 class NextWebApp extends App<{}, {}, AppState> {

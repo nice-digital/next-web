@@ -4,8 +4,15 @@ import {
 	ISbResult,
 	ISbStory,
 	ISbError,
+	storyblokInit,
+	apiPlugin,
 } from "@storyblok/react";
 
+import { CardGrid } from "@/components/Storyblok/CardGrid/CardGrid";
+import { CategoryNavigation } from "@/components/Storyblok/CategoryNavigation/CategoryNavigation";
+import { Homepage } from "@/components/Storyblok/Homepage/Homepage";
+import { StoryblokHero } from "@/components/Storyblok/StoryblokHero/StoryblokHero";
+import { publicRuntimeConfig } from "@/config";
 import { logger } from "@/logger";
 import { type MultilinkStoryblok } from "@/types/storyblok";
 
@@ -18,6 +25,22 @@ export type SBMultipleResponse = {
 };
 export type SBNotFoundResponse = {
 	notFound: true;
+};
+
+// Init connection to Storyblok
+export const initStoryblok = (): void => {
+	const storyblokComponents = {
+		cardGrid: CardGrid,
+		categoryNavigation: CategoryNavigation,
+		homepage: Homepage,
+		hero: StoryblokHero,
+	};
+
+	storyblokInit({
+		accessToken: publicRuntimeConfig.storyblok.previewAccessToken,
+		use: [apiPlugin],
+		components: storyblokComponents,
+	});
 };
 
 // Fetch a single story from the Storyblok API
