@@ -291,41 +291,41 @@ export const getServerSideProps: GetServerSideProps<
 			project.links.niceIndevStakeholderRegistration
 		),
 		indevFullUpdate =
-			project.embedded.niceIndevFullUpdateList?.embedded.niceIndevFullUpdate,
+			project.embedded?.niceIndevFullUpdateList?.embedded.niceIndevFullUpdate,
 		indevFullUpdateItems = arrayify(indevFullUpdate),
 		indevPartialUpdate =
-			project.embedded.niceIndevPartialUpdateList?.embedded
+			project.embedded?.niceIndevPartialUpdateList?.embedded
 				.niceIndevPartialUpdate,
 		indevPartialUpdateItems = arrayify(indevPartialUpdate),
 		indevTopicList =
-			project.embedded.niceIndevTopicList?.embedded.niceIndevTopic,
+			project.embedded?.niceIndevTopicList?.embedded.niceIndevTopic,
 		indevTopicItems = arrayify(indevTopicList),
 		indevSchedule =
-			project.embedded.niceIndevProvisionalScheduleList?.embedded
+			project.embedded?.niceIndevProvisionalScheduleList?.embedded
 				.niceIndevProvisionalSchedule,
 		indevScheduleItems = arrayify(indevSchedule),
 		indevTimeline =
-			project.embedded.niceIndevTimelineList?.embedded.niceIndevTimeline,
+			project.embedded?.niceIndevTimelineList?.embedded.niceIndevTimeline,
 		indevTimelineItems = arrayify(indevTimeline),
 		indevProjectTeam =
-			project.embedded.niceIndevProjectTeamList?.embedded.niceIndevProjectTeam,
+			project.embedded?.niceIndevProjectTeamList?.embedded.niceIndevProjectTeam,
 		indevProjectTeamMembers = arrayify(indevProjectTeam),
 		indevProjectRelatedLinkList =
-			project.embedded.niceIndevProjectRelatedLinkList?.embedded
+			project.embedded?.niceIndevProjectRelatedLinkList?.embedded
 				.niceIndevProjectRelatedLink,
 		indevProjectRelatedLinks = arrayify(indevProjectRelatedLinkList),
 		indevLegacyStakeholdersList =
-			project.embedded.niceIndevLegacyStakeholderList?.embedded
+			project.embedded?.niceIndevLegacyStakeholderList?.embedded
 				.niceIndevLegacyStakeholder,
 		indevLegacyStakeholders = arrayify(indevLegacyStakeholdersList),
 		indevConsulteeList =
-			project.embedded.niceIndevConsulteeList?.embedded.niceIndevConsultee,
+			project.embedded?.niceIndevConsulteeList?.embedded.niceIndevConsultee,
 		indevConsultees = arrayify(indevConsulteeList),
 		indevCommentatorList =
-			project.embedded.niceIndevCommentatorList?.embedded.niceIndevCommentator,
+			project.embedded?.niceIndevCommentatorList?.embedded.niceIndevCommentator,
 		indevCommentators = arrayify(indevCommentatorList),
 		indevEmailEnquiry =
-			project.embedded.niceIndevEmailEnquiryList?.embedded
+			project.embedded?.niceIndevEmailEnquiryList?.embedded
 				.niceIndevEmailEnquiry,
 		indevEmailEnquiries = arrayify(indevEmailEnquiry),
 		projectStatusDisplayName = (status: ProjectStatus) => {
@@ -341,7 +341,7 @@ export const getServerSideProps: GetServerSideProps<
 
 	let indevProcessHomepage = null;
 
-	if (project.embedded.niceIndevProcessHomepage) {
+	if (project.embedded?.niceIndevProcessHomepage) {
 		indevProcessHomepage = project.embedded.niceIndevProcessHomepage;
 	}
 
