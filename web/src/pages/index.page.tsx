@@ -1,7 +1,12 @@
 import { type ISbStoryData, StoryblokComponent } from "@storyblok/react";
-import React from "react";
+import { NextSeo } from "next-seo";
+import React, { useMemo } from "react";
 
-import { fetchStory, getStoryVersionFromQuery } from "@/utils/storyblok";
+import {
+	fetchStory,
+	getStoryVersionFromQuery,
+	getAdditionalMetaTags,
+} from "@/utils/storyblok";
 
 import type { GetServerSidePropsContext } from "next";
 
@@ -10,8 +15,18 @@ interface HomeProps {
 }
 
 export default function Home({ story }: HomeProps): React.ReactElement {
+	const additionalMetaTags = useMemo(
+		() => getAdditionalMetaTags(story),
+		[story]
+	);
+
 	return (
 		<>
+			<NextSeo
+				title="Homepage"
+				openGraph={{ title: "Homepage" }}
+				additionalMetaTags={additionalMetaTags}
+			></NextSeo>
 			<h1>Homepage</h1>
 			<StoryblokComponent blok={story.content} />
 		</>

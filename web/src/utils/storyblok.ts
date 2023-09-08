@@ -1,16 +1,19 @@
 import {
-	type ISbStoriesParams,
-	getStoryblokApi,
-	ISbResult,
-	ISbStory,
-	ISbError,
-	storyblokInit,
 	apiPlugin,
+	getStoryblokApi,
+	storyblokInit,
+	type ISbStoriesParams,
+	type ISbResult,
+	type ISbStory,
+	type ISbError,
+	type ISbStoryData,
 } from "@storyblok/react";
+import { type MetaTag } from "next-seo/lib/types";
 
 import { CardGrid } from "@/components/Storyblok/CardGrid/CardGrid";
 import { CategoryNavigation } from "@/components/Storyblok/CategoryNavigation/CategoryNavigation";
 import { Homepage } from "@/components/Storyblok/Homepage/Homepage";
+import { Metadata } from "@/components/Storyblok/Metadata/Metadata";
 import { StoryblokHero } from "@/components/Storyblok/StoryblokHero/StoryblokHero";
 import { publicRuntimeConfig } from "@/config";
 import { logger } from "@/logger";
@@ -34,6 +37,7 @@ export const initStoryblok = (): void => {
 		categoryNavigation: CategoryNavigation,
 		homepage: Homepage,
 		hero: StoryblokHero,
+		metadata: Metadata,
 	};
 
 	storyblokInit({
@@ -53,6 +57,7 @@ export const fetchStory = async (
 	const sbParams: ISbStoriesParams = {
 		version: version || "published",
 		resolve_links: "url",
+		// cv: Date.now(), // Useful for flushing the Storyblok cache
 	};
 
 	let result = null;
@@ -96,6 +101,7 @@ export const fetchStories = async (
 		version: version || "published",
 		resolve_links: "url",
 		by_slugs: slugs.join(","),
+		// cv: Date.now(), // Useful for flushing the Storyblok cache
 	};
 
 	let result = null;
@@ -183,4 +189,17 @@ export const getSlugHierarchyFromParams = (
 	}
 
 	return hierarchy;
+};
+
+// Get metadata that can be derived from the Storyblok response
+// e.g. DC.Issued, DC.Modified
+export const getAdditionalMetaTags = (story: ISbStoryData): MetaTag[] => {
+	const additionalMetaTags = [
+		{ name: "DC.Issued", content: story.created_at },
+		{
+			name: "DC.Modified",
+			content: story.published_at || story.created_at,
+		},
+	];
+	return additionalMetaTags;
 };

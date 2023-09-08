@@ -1,7 +1,10 @@
+import { ISbStoryData } from "@storyblok/react";
+
 import {
 	resolveStoryblokLink,
 	getStoryVersionFromQuery,
 	getSlugFromParams,
+	getAdditionalMetaTags,
 } from "./storyblok";
 
 describe("Storyblok utils", () => {
@@ -76,5 +79,36 @@ describe("Storyblok utils", () => {
 		it.todo(
 			"should get the correct slug hierarchy from the supplied NextJS params"
 		);
+	});
+
+	describe("Get additional meta tags", () => {
+		it("should return proper meta tags when created_at and published_at are present", () => {
+			const story = {
+				created_at: "1980",
+				published_at: "2023",
+			};
+
+			expect(getAdditionalMetaTags(story as ISbStoryData)).toStrictEqual([
+				{ name: "DC.Issued", content: "1980" },
+				{
+					name: "DC.Modified",
+					content: "2023",
+				},
+			]);
+		});
+
+		it("should return proper meta tags when only created_at is present", () => {
+			const story = {
+				created_at: "1980",
+			};
+
+			expect(getAdditionalMetaTags(story as ISbStoryData)).toStrictEqual([
+				{ name: "DC.Issued", content: "1980" },
+				{
+					name: "DC.Modified",
+					content: "1980",
+				},
+			]);
+		});
 	});
 });
