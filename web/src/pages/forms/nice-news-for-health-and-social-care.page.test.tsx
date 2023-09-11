@@ -3,7 +3,9 @@ import { GetServerSidePropsContext } from "next";
 
 import { FormProps } from "@/components/JotFormPage/getGetServerSideProps";
 
-import HealthAndSocialCareNewsletterForm, { getServerSideProps } from "./nice-news-for-health-and-social-care.page";
+import HealthAndSocialCareNewsletterForm, {
+	getServerSideProps,
+} from "./nice-news-for-health-and-social-care.page";
 
 jest.mock("@/feeds/jotform/jotform", () => ({
 	getForm: jest.fn().mockResolvedValue({
@@ -35,7 +37,9 @@ describe("LeaveFeedbackForm", () => {
 			resolvedUrl: "/forms/nice-news-for-health-and-social-care",
 		} as GetServerSidePropsContext)) as { props: FormProps };
 
-		const { container } = render(<HealthAndSocialCareNewsletterForm {...props.props} />);
+		const { container } = render(
+			<HealthAndSocialCareNewsletterForm {...props.props} />
+		);
 
 		expect(container).toMatchSnapshot();
 	});
