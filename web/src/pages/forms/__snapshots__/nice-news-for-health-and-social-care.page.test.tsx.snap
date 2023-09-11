@@ -41,7 +41,7 @@ exports[`LeaveFeedbackForm should match snapshot 1`] = `
         class="breadcrumbs__crumb"
       >
         <span>
-          NICE news for health and social care
+          Subscribe to NICE news for health and social care
         </span>
       </li>
     </ol>
@@ -81,7 +81,7 @@ exports[`LeaveFeedbackForm should match snapshot 1`] = `
       "@type": "ListItem",
       "position": 4,
       "item": {
-        "name": "NICE news for health and social care"
+        "name": "Subscribe to NICE news for health and social care"
       }
     }
   ]
@@ -102,7 +102,7 @@ exports[`LeaveFeedbackForm should match snapshot 1`] = `
         <h1
           class="page-header__heading "
         >
-          NICE news for health and social care
+          Subscribe to NICE news for health and social care
         </h1>
         <p
           class="page-header__lead"
@@ -119,7 +119,7 @@ exports[`LeaveFeedbackForm should match snapshot 1`] = `
         scrolling="no"
         src="https://next-web-tests.jotform.com/232422293687865?isIframeEmbed=1"
         style="height: 539px; overflow: hidden;"
-        title="NICE news for health and social care"
+        title="Subscribe to NICE news for health and social care"
       />
     </div>
   </div>

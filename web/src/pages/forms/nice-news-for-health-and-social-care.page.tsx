@@ -12,7 +12,7 @@ export default function HealthAndSocialCareNewsletterForm(
 	return (
 		<JotFormPage
 			{...props}
-			formName="NICE news for health and social care"
+			formName="Subscribe to NICE news for health and social care"
 			lead="Keeping you up-to-date with important developments."
 			parentPages={[
 				{
