@@ -31,7 +31,7 @@ jest.mock("@/feeds/jotform/jotform", () => ({
 	}),
 }));
 
-describe("LeaveFeedbackForm", () => {
+describe("HealthAndSocialCareNewsletterForm", () => {
 	it("should match snapshot", async () => {
 		const props = (await getServerSideProps({
 			resolvedUrl: "/forms/nice-news-for-health-and-social-care",
