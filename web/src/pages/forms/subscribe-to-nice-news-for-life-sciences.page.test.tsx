@@ -5,7 +5,7 @@ import { FormProps } from "@/components/JotFormPage/getGetServerSideProps";
 
 import LifeSciencesNewsletterForm, {
 	getServerSideProps,
-} from "./nice-news-for-life-sciences.page";
+} from "./subscribe-to-nice-news-for-life-sciences.page";
 
 jest.mock("@/feeds/jotform/jotform", () => ({
 	getForm: jest.fn().mockResolvedValue({
