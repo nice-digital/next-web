@@ -14,7 +14,7 @@ jest.mock("@/feeds/jotform/jotform", () => ({
 		content: {
 			id: "232422198305856",
 			username: "nice_teams",
-			title: "Website feedback form",
+			title: "Subscribe to NICE news for life sciences",
 			height: "539",
 			status: "ENABLED",
 			created_at: "2022-12-08 06:31:44",
@@ -34,7 +34,7 @@ jest.mock("@/feeds/jotform/jotform", () => ({
 describe("LifeSciencesNewsletterForm", () => {
 	it("should match snapshot", async () => {
 		const props = (await getServerSideProps({
-			resolvedUrl: "/forms/leave-feedback",
+			resolvedUrl: "/forms/nice-news-for-life-sciences",
 		} as GetServerSidePropsContext)) as { props: FormProps };
 
 		const { container } = render(

@@ -12,12 +12,16 @@ export default function LifeSciencesNewsletterForm(
 	return (
 		<JotFormPage
 			{...props}
-			formName="Website feedback form"
-			lead="Thank you for taking a look at our website, we'd like to hear your views."
+			formName="Subscribe to NICE news for life sciences"
+			lead="Keeping those working within the life sciences sector up-to-date with important developments."
 			parentPages={[
 				{
-					title: "About",
-					path: "/about",
+					title: "Newsletters and alerts",
+					path: "/home/news/newsletters-and-alerts",
+				},
+				{
+					title: "News",
+					path: "/home/news",
 				},
 			]}
 		/>
