@@ -1,8 +1,13 @@
 import { type ISbStoryData, StoryblokComponent } from "@storyblok/react";
-import React from "react";
+import { NextSeo } from "next-seo";
+import React, { useMemo } from "react";
 
 import { type Breadcrumb } from "@/types/Breadcrumb";
-import { fetchStory, getStoryVersionFromQuery } from "@/utils/storyblok";
+import {
+	fetchStory,
+	getStoryVersionFromQuery,
+	getAdditionalMetaTags,
+} from "@/utils/storyblok";
 
 import type { GetServerSidePropsContext } from "next";
 
@@ -15,8 +20,18 @@ export default function AboutIndex({
 	story,
 	breadcrumbs,
 }: AboutProps): React.ReactElement {
+	const additionalMetaTags = useMemo(
+		() => getAdditionalMetaTags(story),
+		[story]
+	);
+
 	return (
 		<>
+			<NextSeo
+				title="About"
+				openGraph={{ title: "About" }}
+				additionalMetaTags={additionalMetaTags}
+			></NextSeo>
 			<StoryblokComponent blok={story.content} breadcrumbs={breadcrumbs} />
 		</>
 	);

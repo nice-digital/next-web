@@ -1,4 +1,7 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
+import { StoryblokStory } from "storyblok-generate-ts";
+
+export type StoryblokStory = StoryblokStory;
 
 export type MultilinkStoryblok =
 	| {
@@ -75,15 +78,9 @@ export interface CardGridStoryblok {
 export interface CategoryNavigationStoryblok {
 	hero: HeroStoryblok[];
 	cardGrid: CardGridStoryblok[];
+	metadata?: MetadataStoryblok[];
 	_uid: string;
 	component: "categoryNavigation";
-	[k: string]: any;
-}
-
-export interface FeatureStoryblok {
-	name?: string;
-	_uid: string;
-	component: "feature";
 	[k: string]: any;
 }
 
@@ -112,22 +109,25 @@ export interface HeroStoryblok {
 
 export interface HomepageStoryblok {
 	body: (CardGridStoryblok | RichTextStoryblok)[];
+	metadata?: MetadataStoryblok[];
 	_uid: string;
 	component: "homepage";
 	[k: string]: any;
 }
 
-export interface PageStoryblok {
-	body?: any[];
+export interface MetadataStoryblok {
+	description?: string;
+	creator?: string;
 	_uid: string;
-	component: "page";
-	uuid?: string;
+	component: "metadata";
 	[k: string]: any;
 }
 
-export interface TeaserStoryblok {
-	headline?: string;
+export interface PageStoryblok {
+	body?: any[];
+	metadata?: MetadataStoryblok[];
 	_uid: string;
-	component: "teaser";
+	component: "page";
+	uuid?: string;
 	[k: string]: any;
 }
