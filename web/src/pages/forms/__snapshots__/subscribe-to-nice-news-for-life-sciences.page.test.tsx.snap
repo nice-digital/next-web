@@ -23,7 +23,7 @@ exports[`LifeSciencesNewsletterForm should match snapshot 1`] = `
         class="breadcrumbs__crumb"
       >
         <a
-          href="/home/news"
+          href="/news"
         >
           News
         </a>
@@ -32,7 +32,7 @@ exports[`LifeSciencesNewsletterForm should match snapshot 1`] = `
         class="breadcrumbs__crumb"
       >
         <a
-          href="/home/news/newsletters-and-alerts"
+          href="/news/newsletters-and-alerts"
         >
           Newsletters and alerts
         </a>
@@ -65,7 +65,7 @@ exports[`LifeSciencesNewsletterForm should match snapshot 1`] = `
       "@type": "ListItem",
       "position": 2,
       "item": {
-        "@id": "/home/news",
+        "@id": "/news",
         "name": "News"
       }
     },
@@ -73,7 +73,7 @@ exports[`LifeSciencesNewsletterForm should match snapshot 1`] = `
       "@type": "ListItem",
       "position": 3,
       "item": {
-        "@id": "/home/news/newsletters-and-alerts",
+        "@id": "/news/newsletters-and-alerts",
         "name": "Newsletters and alerts"
       }
     },
