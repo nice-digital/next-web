@@ -17,11 +17,11 @@ export default function PrimaryCareNewsletterForm(
 			parentPages={[
 				{
 					title: "Newsletters and alerts",
-					path: "/home/news/newsletters-and-alerts",
+					path: "/news/newsletters-and-alerts",
 				},
 				{
 					title: "News",
-					path: "/home/news",
+					path: "/news",
 				},
 			]}
 		/>
