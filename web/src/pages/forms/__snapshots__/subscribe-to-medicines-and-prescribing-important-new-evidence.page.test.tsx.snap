@@ -114,10 +114,10 @@ exports[`MedicinesAndPrescribingNewsletterForm should match snapshot 1`] = `
         allow="geolocation; microphone; camera"
         allowfullscreen=""
         class="iframe"
-        data-jotform-id="222773673466870"
-        id="JotFormIFrame-222773673466870"
+        data-jotform-id="232421834202848"
+        id="JotFormIFrame-232421834202848"
         scrolling="no"
-        src="https://next-web-tests.jotform.com/222773673466870?isIframeEmbed=1"
+        src="https://next-web-tests.jotform.com/232421834202848?isIframeEmbed=1"
         style="height: 539px; overflow: hidden;"
         title="Subscribe to medicines and prescribing - Important new evidence"
       />
