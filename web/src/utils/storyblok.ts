@@ -191,7 +191,7 @@ export const getSlugHierarchyFromParams = (
 	return hierarchy;
 };
 
-// Get metadata that can be automatically derived from the Storyblok response
+// Get metadata that can be derived from the Storyblok response
 // e.g. DC.Issued, DC.Modified
 export const getAdditionalMetaTags = (story: ISbStoryData): MetaTag[] => {
 	const additionalMetaTags = [
