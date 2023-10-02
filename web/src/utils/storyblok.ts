@@ -15,7 +15,7 @@ import { CategoryNavigation } from "@/components/Storyblok/CategoryNavigation/Ca
 import { Homepage } from "@/components/Storyblok/Homepage/Homepage";
 import { Metadata } from "@/components/Storyblok/Metadata/Metadata";
 import { StoryblokHero } from "@/components/Storyblok/StoryblokHero/StoryblokHero";
-import { publicRuntimeConfig } from "@/config";
+import { serverRuntimeConfig } from "@/config";
 import { logger } from "@/logger";
 import { type MultilinkStoryblok } from "@/types/storyblok";
 
@@ -41,7 +41,7 @@ export const initStoryblok = (): void => {
 	};
 
 	storyblokInit({
-		accessToken: publicRuntimeConfig.storyblok.previewAccessToken,
+		accessToken: serverRuntimeConfig.storyblok.previewAccessToken,
 		use: [apiPlugin],
 		components: storyblokComponents,
 	});
