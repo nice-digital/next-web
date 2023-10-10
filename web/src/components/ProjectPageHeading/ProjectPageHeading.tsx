@@ -15,7 +15,7 @@ export type ProjectPageHeadingProps = {
 	status: string;
 	indevScheduleItems?: IndevSchedule[];
 	indevStakeholderRegistration?: Record<string, unknown>[];
-	isGuidanceHubPage: boolean;
+	isGuidanceHubPage?: boolean | null;
 	shouldUseNewConsultationComments?: boolean | null;
 	children?: never;
 };
