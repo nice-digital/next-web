@@ -607,3 +607,22 @@ export type ProjectDetail = {
 	topicSelectionFurtherInfo: string | null;
 	indicatorSubTypes: [];
 };
+
+export type niceIndevConvertedDocumentSection = {
+	slug: string;
+	title: string;
+	href: string;
+};
+
+export type niceIndevConvertedDocument = {
+	_links?: {
+		self: [
+			{
+				href: string;
+			}
+		];
+	};
+	eTag?: string | null;
+	content: string;
+	sections: niceIndevConvertedDocumentSection[];
+};
