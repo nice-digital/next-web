@@ -14,6 +14,7 @@ import {
 	Consultation,
 	InConsultationProjects,
 	ProjectDetail,
+	niceIndevConvertedDocument,
 } from "./types";
 
 export * from "./types";
@@ -93,6 +94,28 @@ export const getResourceFileHTML = async (
 
 	return isSuccessResponse(body) ? body : null;
 };
+
+/**
+ * Gets word conversion html of a resource from InDev,
+ *
+ * E.g. from /guidance/NG100/converteddocument/final-scope-html-conversion
+ *
+ */
+export const getConvertedDocumentHTML = async (
+	convertedDocumentPath: string
+): Promise<niceIndevConvertedDocument | null> =>
+	await getFeedBodyCached<niceIndevConvertedDocument | null>(
+		cacheKeyPrefix,
+		convertedDocumentPath,
+		longTTL,
+		async () => {
+			const response = await getFeedBodyUnCached<
+				niceIndevConvertedDocument | ""
+			>(origin, convertedDocumentPath, apiKey);
+
+			return response === "" || isErrorResponse(response) ? null : response;
+		}
+	);
 
 /**
  * Gets a stream of a file from indev.
