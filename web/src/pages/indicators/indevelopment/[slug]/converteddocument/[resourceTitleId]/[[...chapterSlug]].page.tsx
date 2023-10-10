@@ -1,5 +1,4 @@
 import { NextSeo } from "next-seo";
-import { useRouter } from "next/router";
 import { type GetServerSideProps } from "next/types";
 
 import { Breadcrumbs, Breadcrumb } from "@nice-digital/nds-breadcrumbs";
@@ -8,7 +7,6 @@ import { Link } from "@/components/Link/Link";
 import { ProjectDisplayWordConversion } from "@/components/ProjectDisplayWordConversion/ProjectDisplayWordConversion";
 import { ProjectHorizontalNav } from "@/components/ProjectHorizontalNav/ProjectHorizontalNav";
 import { ProjectPageHeading } from "@/components/ProjectPageHeading/ProjectPageHeading";
-// import { ResourceList } from "@/components/ResourceList/ResourceList";
 import { getConvertedDocumentHTML } from "@/feeds/inDev/inDev";
 import {
 	IndevSchedule,
@@ -47,8 +45,7 @@ export default function ConvertedDocumentPage(
 	return (
 		<>
 			<NextSeo
-				// title={`Project documents | ${props.project.reference} | Indicators | Standards and Indicators`}
-				title={`REVISIT`}
+				title={`Project documents | ${props.project.reference} | Indicators | Standards and Indicators`}
 			/>
 			<Breadcrumbs>
 				<Breadcrumb to="/">Home</Breadcrumb>
@@ -94,13 +91,7 @@ export default function ConvertedDocumentPage(
 				sections={props.convertedDocumentHTML.sections}
 				currentChapter={props.convertedDocumentHTML.currentChapter}
 				currentUrl={props.convertedDocumentHTML.currentUrl}
-				//prop for isCurrent or active section?
 			/>
-			{/* <ResourceList
-				title="Project documents"
-				lead="A list of downloadable documents created during development."
-				groups={props.project.groups}
-			/> */}
 		</>
 	);
 }
@@ -123,10 +114,8 @@ export const getServerSideProps: GetServerSideProps<
 			? query.chapterSlug[0]
 			: query.chapterSlug) || "";
 
-	// GET SLUG FROM RESULT OR PROJECT INSTEAD
-	// USE query resourceTitleId instead of final scope string
 	const convertedDocumentHTML = await getConvertedDocumentHTML(
-		`/guidance/${query.slug}/converteddocument/final-scope-html-conversion${
+		`/guidance/${query.slug}/converteddocument/${query.resourceTitleId}${
 			chapterSlug ? `?slug=${chapterSlug}` : ""
 		}`
 	);

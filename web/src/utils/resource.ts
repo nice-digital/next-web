@@ -150,7 +150,7 @@ export const getInDevResourceLink = ({
 					: getFileTypeNameFromMime(mimeType),
 			href = shouldUseNewConsultationComments
 				? `/consultations/${resource.consultationId}/${resource.consultationDocumentId}`
-				: !isHTML
+				: !isHTML && !resource.convertedDocument
 				? `${projectPath}/downloads/${project.reference.toLowerCase()}-${resourceTitleId}.${
 						fileName.split(".").slice(-1)[0]
 				  }`
