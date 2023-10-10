@@ -22,7 +22,9 @@ export const ProjectHorizontalNav: FC<ProjectHorizontalNavProps> = ({
 	const { asPath } = useRouter(),
 		path = asPath.replace(/#.*/, ""),
 		documentsPath = `${projectPath}/documents`,
+		convertedDocumentPath = `${projectPath}/converteddocument`,
 		isUnderDocuments = path.indexOf(documentsPath) === 0,
+		isUnderConvertedDocument = path.indexOf(convertedDocumentPath) === 0,
 		consultationsPath = `${projectPath}/consultations`,
 		isUnderConsultations = path.indexOf(consultationsPath) === 0;
 
@@ -32,7 +34,11 @@ export const ProjectHorizontalNav: FC<ProjectHorizontalNavProps> = ({
 				<HorizontalNavLink
 					destination={projectPath}
 					elementType={ScrollToContentStartLink}
-					isCurrent={!isUnderDocuments && !isUnderConsultations}
+					isCurrent={
+						!isUnderDocuments &&
+						!isUnderConvertedDocument &&
+						!isUnderConsultations
+					}
 				>
 					Project information
 				</HorizontalNavLink>
@@ -40,7 +46,7 @@ export const ProjectHorizontalNav: FC<ProjectHorizontalNavProps> = ({
 					<HorizontalNavLink
 						destination={`${projectPath}/documents`}
 						elementType={ScrollToContentStartLink}
-						isCurrent={isUnderDocuments}
+						isCurrent={isUnderDocuments || isUnderConvertedDocument}
 					>
 						Project documents
 					</HorizontalNavLink>

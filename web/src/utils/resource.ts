@@ -137,14 +137,17 @@ export const getInDevResourceLink = ({
 		const { mimeType, length, resourceTitleId, fileName } =
 				resource.embedded.niceIndevFile,
 			shouldUseNewConsultationComments =
-				resource.convertedDocument ||
+				(resource.convertedDocument && resource.consultationId !== 0) ||
 				resource.supportsComments ||
 				resource.supportsQuestions,
 			isHTML = mimeType === "text/html",
 			isConsultation =
 				resource.consultationId > 0 && panel.embedded.niceIndevConsultation,
-			fileSize = isHTML ? null : length,
-			fileTypeName = isHTML ? null : getFileTypeNameFromMime(mimeType),
+			fileSize = isHTML || resource.convertedDocument ? null : length,
+			fileTypeName =
+				isHTML || resource.convertedDocument
+					? null
+					: getFileTypeNameFromMime(mimeType),
 			href = shouldUseNewConsultationComments
 				? `/consultations/${resource.consultationId}/${resource.consultationDocumentId}`
 				: !isHTML
@@ -153,6 +156,8 @@ export const getInDevResourceLink = ({
 				  }`
 				: isConsultation
 				? `${projectPath}/consultations/${resourceTitleId}`
+				: resource.convertedDocument
+				? `${projectPath}/converteddocument/${resourceTitleId}`
 				: `${projectPath}/documents/${resourceTitleId}`;
 
 		return {
