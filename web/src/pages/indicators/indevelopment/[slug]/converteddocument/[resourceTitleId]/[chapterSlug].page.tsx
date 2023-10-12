@@ -13,6 +13,7 @@ import {
 	ProjectDetail,
 	niceIndevConvertedDocument,
 } from "@/feeds/inDev/types";
+import { logger } from "@/logger";
 import { arrayify, byTitleAlphabetically } from "@/utils/array";
 import { validateRouteParams } from "@/utils/project";
 import {
@@ -98,8 +99,10 @@ export default function ConvertedDocumentPage(
 
 export const getServerSideProps: GetServerSideProps<
 	ConvertedDocumentPageProps,
-	{ slug: string }
+	{ slug: string; resourceTitleId: string; chapterSlug: string }
 > = async ({ params, resolvedUrl, query }) => {
+	if (!params?.resourceTitleId) return { notFound: true };
+
 	const result = await validateRouteParams({ params, resolvedUrl, query });
 
 	if ("notFound" in result || "redirect" in result) return result;
@@ -110,20 +113,25 @@ export const getServerSideProps: GetServerSideProps<
 	if (!hasPanels) return { notFound: true };
 
 	const chapterSlug =
-		(Array.isArray(query.chapterSlug)
-			? query.chapterSlug[0]
-			: query.chapterSlug) || "";
+		(Array.isArray(params.chapterSlug)
+			? params.chapterSlug[0]
+			: params.chapterSlug) || "";
 
 	const convertedDocumentHTML = await getConvertedDocumentHTML(
-		`/guidance/${query.slug}/converteddocument/${query.resourceTitleId}${
-			chapterSlug ? `?slug=${chapterSlug}` : ""
+		`/guidance/${params.slug}/converteddocument/${params.resourceTitleId}${
+			chapterSlug !== "index" ? `?slug=${chapterSlug}` : ""
 		}`
 	);
 
-	if (!convertedDocumentHTML) return { notFound: true };
+	if (!convertedDocumentHTML || convertedDocumentHTML.content === null) {
+		logger.warn(
+			`Could not find converted document with id ${params.resourceTitleId}`
+		);
+		return { notFound: true };
+	}
 
 	const currentUrl = `${projectPath}/converteddocument/${
-		query.resourceTitleId
+		params.resourceTitleId
 	}${chapterSlug ? `/${chapterSlug}` : ""}`;
 
 	const indevSchedule =

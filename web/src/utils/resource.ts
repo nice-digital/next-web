@@ -157,7 +157,7 @@ export const getInDevResourceLink = ({
 				: isConsultation
 				? `${projectPath}/consultations/${resourceTitleId}`
 				: resource.convertedDocument
-				? `${projectPath}/converteddocument/${resourceTitleId}`
+				? `${projectPath}/converteddocument/${resourceTitleId}/index`
 				: `${projectPath}/documents/${resourceTitleId}`;
 
 		return {

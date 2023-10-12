@@ -60,7 +60,7 @@ export const ProjectDisplayWordConversion: FC<
 						const destination = `${currentUrlNoChapter}/${section.slug}`;
 						const isCurrentChapter =
 							section.slug === currentChapter ||
-							(currentChapter === "" && index === 0);
+							(currentChapter === "index" && index === 0);
 
 						if (isCurrentChapter) currentChapterArrayIndex = index;
 
