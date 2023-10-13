@@ -118,5 +118,50 @@ describe("[chapterSlug].page", () => {
 			render(<ConvertedDocumentPage {...props} />);
 			expect(document.body).toMatchSnapshot();
 		});
+
+		describe("SEO", () => {
+			it("should render page title with document name", () => {
+				render(<ConvertedDocumentPage {...props} />);
+
+				expect(document.title).toBe(
+					"Project documents | GID-DG10086 | Indicators | Standards and Indicators"
+				);
+			});
+		});
+
+		describe("Breadcrumbs", () => {
+			it("should render parent breadcrumb linking to the project overview", () => {
+				render(<ConvertedDocumentPage {...props} />);
+				expect(
+					screen.queryByText("GID-DG10086", {
+						selector: ".breadcrumbs a",
+					})
+				).toHaveAttribute("href", "/indicators/indevelopment/gid-dg10086");
+			});
+
+			it("should render resource title as current breadcrumb", () => {
+				render(<ConvertedDocumentPage {...props} />);
+
+				expect(
+					screen.getByText("Project documents", {
+						selector: ".breadcrumbs .breadcrumbs__crumb span",
+					})
+				).toBeInTheDocument();
+			});
+		});
+
+		it("should render the converted document chapter title as a heading", () => {
+			render(<ConvertedDocumentPage {...props} />);
+			expect(screen.getByRole("heading", { level: 2 })).toHaveTextContent(
+				"Overview"
+			);
+		});
+
+		it("should render document HTML string as HTML", () => {
+			props.convertedDocumentHTML.content = "<p>Hello</p>";
+
+			render(<ConvertedDocumentPage {...props} />);
+			expect(screen.getByText("Hello")).toHaveProperty("tagName", "P");
+		});
 	});
 });
