@@ -14,13 +14,8 @@ import {
 	niceIndevConvertedDocument,
 } from "@/feeds/inDev/types";
 import { logger } from "@/logger";
-import { arrayify, byTitleAlphabetically } from "@/utils/array";
+import { arrayify } from "@/utils/array";
 import { validateRouteParams } from "@/utils/project";
-import {
-	getInDevResourceLink,
-	ResourceGroupViewModel,
-	ResourceSubGroupViewModel,
-} from "@/utils/resource";
 
 export type ConvertedDocumentPageProps = {
 	alert: string | null;
@@ -31,9 +26,7 @@ export type ConvertedDocumentPageProps = {
 	project: Pick<
 		ProjectDetail,
 		"projectType" | "reference" | "title" | "status"
-	> & {
-		groups: ResourceGroupViewModel[];
-	};
+	>;
 	convertedDocumentHTML: niceIndevConvertedDocument & {
 		currentChapter: string;
 		currentUrl: string;
@@ -107,10 +100,8 @@ export const getServerSideProps: GetServerSideProps<
 
 	if ("notFound" in result || "redirect" in result) return result;
 
-	const { project, projectPath, panels, hasPanels, consultationUrls } = result,
+	const { project, projectPath, consultationUrls } = result,
 		{ alert, projectType, reference, status, title, embedded, links } = project;
-
-	if (!hasPanels) return { notFound: true };
 
 	const chapterSlug =
 		(Array.isArray(params.chapterSlug)
@@ -142,38 +133,6 @@ export const getServerSideProps: GetServerSideProps<
 			links.niceIndevStakeholderRegistration
 		);
 
-	const groups = panels.sort(byTitleAlphabetically).map((panel) => {
-		const allPanelResources =
-				panel.embedded.niceIndevResourceList.embedded.niceIndevResource,
-			resourcesToShow = arrayify(allPanelResources).filter(
-				(resource) => resource.showInDocList
-			),
-			subGroups: ResourceSubGroupViewModel[] = [];
-
-		let currentSubGroup: ResourceSubGroupViewModel;
-
-		resourcesToShow.forEach((resource) => {
-			if (resource.textOnly) {
-				currentSubGroup = { title: resource.title, resourceLinks: [] };
-				subGroups.push(currentSubGroup);
-			} else {
-				if (!currentSubGroup) {
-					currentSubGroup = { title: panel.title, resourceLinks: [] };
-					subGroups.push(currentSubGroup);
-				}
-
-				currentSubGroup.resourceLinks.push(
-					getInDevResourceLink({ resource, panel, project })
-				);
-			}
-		});
-
-		return {
-			title: panel.title,
-			subGroups,
-		};
-	});
-
 	return {
 		props: {
 			alert,
@@ -186,7 +145,6 @@ export const getServerSideProps: GetServerSideProps<
 				reference,
 				status,
 				title,
-				groups,
 			},
 			convertedDocumentHTML: {
 				content: convertedDocumentHTML.content,
