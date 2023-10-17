@@ -190,6 +190,7 @@ exports[`[chapterSlug].page DocumentsHTMLPage should match snapshot for main con
         data-g="12 sm:3"
       >
         <nav
+          aria-label="chapters"
           class="stacked-nav"
           data-component="stacked-nav"
         >

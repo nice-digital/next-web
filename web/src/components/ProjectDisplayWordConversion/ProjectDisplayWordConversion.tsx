@@ -8,8 +8,6 @@ import { niceIndevConvertedDocument } from "@/feeds/inDev/types";
 
 import { Link } from "../Link/Link";
 
-// import styles from "./ResourceList.module.scss";
-
 export type ProjectDisplayWordConversionProps = niceIndevConvertedDocument & {
 	currentChapter: string;
 	currentUrl: string;
@@ -55,7 +53,7 @@ export const ProjectDisplayWordConversion: FC<
 	return (
 		<Grid gutter="loose">
 			<GridItem cols={12} sm={3} elementType="section">
-				<StackedNav>
+				<StackedNav aria-label="chapters">
 					{sections.map((section, index) => {
 						const destination = `${currentUrlNoChapter}/${section.slug}`;
 						const isCurrentChapter =
