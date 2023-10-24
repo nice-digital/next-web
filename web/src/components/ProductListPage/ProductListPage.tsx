@@ -14,7 +14,7 @@ import React, {
 import {
 	Breadcrumbs,
 	Breadcrumb,
-	type BreadcrumbProps,
+	type BreadcrumbsProps,
 } from "@nice-digital/nds-breadcrumbs";
 import { Grid, GridItem } from "@nice-digital/nds-grid";
 import { PageHeader } from "@nice-digital/nds-page-header";
@@ -52,7 +52,7 @@ const resultsPerPage = [
 export type GetProductListPageOptions = {
 	metaDescription: string;
 	listNavType: ElementType;
-	breadcrumbTrail: ReactElement<BreadcrumbProps>[];
+	breadcrumbTrail: ReactElement<BreadcrumbsProps>[];
 	currentBreadcrumb: string;
 	preheading: ReactChild;
 	heading: ReactChild;
