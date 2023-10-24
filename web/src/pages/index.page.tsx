@@ -38,6 +38,8 @@ export async function getServerSideProps(context: GetServerSidePropsContext) {
 	const version = getStoryVersionFromQuery(context.query);
 	const storyResult = await fetchStory(slug, version);
 
+	console.log("****************** Story result:", storyResult);
+
 	const result = {
 		props: {
 			...storyResult,

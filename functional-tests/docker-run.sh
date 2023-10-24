@@ -22,7 +22,7 @@ function runTests() {
   # Wait for the web app to be up before running the tests
   docker-compose run -T test-runner npm run wait-then-test
   # Or for dev mode, uncomment:
-  #winpty docker-compose exec test-runner bash
+  #winpty docker-compose exec test-runner sh
 }
 
 function processTestOutput() {

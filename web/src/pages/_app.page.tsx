@@ -17,10 +17,10 @@ import { Container } from "@nice-digital/nds-container";
 import { ErrorPageContent } from "@/components/ErrorPageContent/ErrorPageContent";
 import { GoogleTagManager } from "@/components/GoogleTagManager/GoogleTagManager";
 import { logger } from "@/logger";
+import { initStoryblok } from "@/utils/storyblok";
 
 import { getDefaultSeoConfig } from "./next-seo.config";
 import { publicRuntimeConfig } from "@/config";
-import { initStoryblok } from "@/utils/storyblok";
 
 import "@nice-digital/nds-table/scss/table.scss";
 import "@nice-digital/nds-panel/scss/panel.scss";
@@ -52,7 +52,6 @@ const lora = Lora({
 	variable: "--serif-font-family",
 });
 
-// Initialise Storyblok API handler
 initStoryblok();
 
 // eslint-disable-next-line @typescript-eslint/ban-types

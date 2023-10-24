@@ -53,6 +53,9 @@ export interface PublicConfig {
 
 	/** Public config for JotForm. Note, there's also a server config object with the secret API key */
 	readonly jotForm: JotFormPublicConfig;
+
+	/** Public config for Storyblok */
+	readonly storyblok: StoryblokConfig;
 }
 
 /**
@@ -104,8 +107,6 @@ export interface StoryblokConfig {
 export interface ServerConfig {
 	cache: CacheConfig;
 	feeds: FeedsConfig;
-	/** Public config for Storyblok */
-	readonly storyblok: StoryblokConfig;
 }
 
 export { publicRuntimeConfig, serverRuntimeConfig };

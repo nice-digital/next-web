@@ -8,20 +8,19 @@ import {
 	getStoryVersionFromQuery,
 	getSlugFromParams,
 	getAdditionalMetaTags,
-	initStoryblok,
 } from "@/utils/storyblok";
 
 import type { GetServerSidePropsContext } from "next";
 
-interface AboutProps {
+interface SlugCatchAllProps {
 	story: ISbStoryData;
 	breadcrumbs: Breadcrumb[];
 }
 
-export default function AboutCatchAll({
+export default function SlugCatchAll({
 	story,
 	breadcrumbs,
-}: AboutProps): React.ReactElement {
+}: SlugCatchAllProps): React.ReactElement {
 	const additionalMetaTags = useMemo(
 		() => getAdditionalMetaTags(story),
 		[story]
@@ -41,7 +40,6 @@ export default function AboutCatchAll({
 }
 
 export async function getServerSideProps(context: GetServerSidePropsContext) {
-	initStoryblok();
 	const { query, params } = context;
 
 	// Resolve slug from params
@@ -54,7 +52,7 @@ export async function getServerSideProps(context: GetServerSidePropsContext) {
 
 		// TODO: Wire up breadcrumbs
 		const breadcrumbs = [
-			{ title: "About", path: "/about" },
+			{ title: "Something", path: "/something" },
 			{ title: "To do: wire up breadcrumbs" },
 		];
 
