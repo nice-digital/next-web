@@ -1,4 +1,4 @@
-/* eslint-disable import/export -- We're deliberately overrind the default render from @testing-library with a custom render method */
+/* eslint-disable import/export, import/no-unresolved -- We're deliberately overrind the default render from @testing-library with a custom render method */
 import {
 	render as testingLibrRender,
 	RenderResult,
