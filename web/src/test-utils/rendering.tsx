@@ -3,8 +3,8 @@ import {
 	render as testingLibrRender,
 	RenderResult,
 } from "@testing-library/react";
-import { HeadManagerContext } from "next/dist/shared/lib/head-manager-context";
-import { RouterContext } from "next/dist/shared/lib/router-context";
+import { HeadManagerContext } from "next/dist/shared/lib/head-manager-context.shared-runtime";
+import { RouterContext } from "next/dist/shared/lib/router-context.shared-runtime";
 import { NextRouter } from "next/router";
 import { ReactElement, useEffect } from "react";
 import { renderToString } from "react-dom/server";
