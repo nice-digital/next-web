@@ -133,11 +133,6 @@ const nextConfig = {
 				permanent: true,
 			},
 			{
-				source: "/hub/published",
-				destination: "/guidance/indevelopment?ngt=NICE+guidelines",
-				permanent: true,
-			},
-			{
 				source: "/hub/inconsultation",
 				destination: "/guidance/indevelopment?ngt=NICE+guidelines",
 				permanent: true,
