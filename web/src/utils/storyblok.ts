@@ -40,13 +40,20 @@ export const initStoryblok = (): void => {
 		metadata: Metadata,
 	};
 
-	const accessToken = publicRuntimeConfig.storyblok.previewAccessToken;
+	try {
+		logger.warn("About to init Storyblok");
+		const accessToken = publicRuntimeConfig.storyblok.previewAccessToken;
 
-	storyblokInit({
-		accessToken,
-		use: [apiPlugin],
-		components,
-	});
+		storyblokInit({
+			accessToken,
+			use: [apiPlugin],
+			components,
+		});
+
+		logger.warn("Successfully initialised Storyblok");
+	} catch (e) {
+		logger.error("Error initialising Storyblok:", e);
+	}
 };
 
 // Fetch a single story from the Storyblok API

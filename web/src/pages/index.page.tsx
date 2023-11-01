@@ -2,6 +2,7 @@ import { type ISbStoryData, StoryblokComponent } from "@storyblok/react";
 import { NextSeo } from "next-seo";
 import React, { useMemo } from "react";
 
+import { logger } from "@/logger";
 import {
 	fetchStory,
 	getStoryVersionFromQuery,
@@ -34,11 +35,14 @@ export default function Home({ story }: HomeProps): React.ReactElement {
 }
 
 export async function getServerSideProps(context: GetServerSidePropsContext) {
+	logger.warn("Start server side props for homepage");
 	const slug = "home";
 	const version = getStoryVersionFromQuery(context.query);
 	const storyResult = await fetchStory(slug, version);
 
 	console.log("****************** Story result:", storyResult);
+
+	logger.warn("Finish server side props for homepage");
 
 	const result = {
 		props: {
