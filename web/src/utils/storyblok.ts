@@ -41,16 +41,19 @@ export const initStoryblok = (): void => {
 	};
 
 	try {
-		logger.warn("About to init Storyblok");
 		const accessToken = publicRuntimeConfig.storyblok.previewAccessToken;
 
 		storyblokInit({
 			accessToken,
 			use: [apiPlugin],
+			apiOptions: {
+				cache: {
+					clear: "auto",
+					type: "memory",
+				},
+			},
 			components,
 		});
-
-		logger.warn("Successfully initialised Storyblok");
 	} catch (e) {
 		logger.error("Error initialising Storyblok:", e);
 	}
