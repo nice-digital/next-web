@@ -1,4 +1,4 @@
-FROM keymetrics/pm2:14-alpine
+FROM keymetrics/pm2:18-alpine
 
 EXPOSE 8092
 

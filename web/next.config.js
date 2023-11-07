@@ -134,6 +134,31 @@ const nextConfig = {
 	async redirects() {
 		return [
 			{
+				source: "/hub/published",
+				destination: "/guidance/indevelopment?ngt=NICE+guidelines",
+				permanent: true,
+			},
+			{
+				source: "/hub/inconsultation",
+				destination: "/guidance/indevelopment?ngt=NICE+guidelines",
+				permanent: true,
+			},
+			{
+				source: "/hub/indevelopment",
+				destination: "/guidance/indevelopment?ngt=NICE+guidelines",
+				permanent: true,
+			},
+			{
+				source: "/hub/awaiting-development",
+				destination: "/guidance/indevelopment?ngt=NICE+guidelines",
+				permanent: true,
+			},
+			{
+				source: "/hub/topic-selection",
+				destination: "/guidance/indevelopment?ngt=NICE+guidelines",
+				permanent: true,
+			},
+			{
 				source: "/guidance/proposed",
 				destination: "/guidance/awaiting-development",
 				permanent: true,

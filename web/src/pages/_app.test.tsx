@@ -160,18 +160,20 @@ describe("NextWebApp", () => {
 	it("shouldn't highlight guidance on the menu for routes outside guidance", async () => {
 		renderApp({ pathname: "/not-guidance" });
 
-		expect(
-			screen.getByRole("button", { name: "Guidance" })
-		).not.toHaveAttribute("aria-current");
+		const guidanceLinks = screen.queryAllByRole("link", { name: "Guidance" });
+		expect(guidanceLinks).not.toBeNull();
+		expect(guidanceLinks).not.toHaveLength(0);
+		expect(guidanceLinks[0]).not.toHaveAttribute("aria-current", "true");
 	});
 
 	it("should highlight guidance on the menu for routes under guidance", () => {
 		renderApp({ pathname: "/guidance/published" });
 
-		expect(screen.getByRole("button", { name: "Guidance" })).toHaveAttribute(
-			"aria-current",
-			"true"
-		);
+		const guidanceLinks = screen.queryAllByRole("link", { name: "Guidance" });
+		expect(guidanceLinks).not.toBeNull();
+		expect(guidanceLinks).not.toHaveLength(0);
+
+		expect(guidanceLinks[0]).toHaveAttribute("aria-current", "true");
 	});
 
 	describe("reportWebVitals", () => {
