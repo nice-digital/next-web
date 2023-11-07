@@ -43,10 +43,8 @@ export async function getServerSideProps(context: GetServerSidePropsContext) {
 	const { query, params } = context;
 
 	// Resolve slug from params
-	let slug = getSlugFromParams(params?.slug);
+	const slug = getSlugFromParams(params?.slug);
 	if (slug) {
-		slug = `about/${slug}`;
-
 		const version = getStoryVersionFromQuery(query);
 		const storyResult = await fetchStory(slug, version);
 
