@@ -9,7 +9,8 @@ interface HomepageBlokProps {
 export const Homepage = ({ blok }: HomepageBlokProps): React.ReactElement => {
 	return (
 		<>
-			{blok.metadata?.length &&
+			{blok.metadata &&
+				blok.metadata.length > 0 &&
 				blok.metadata?.map((nestedBlok) => (
 					<StoryblokComponent blok={nestedBlok} key={nestedBlok._uid} />
 				))}
