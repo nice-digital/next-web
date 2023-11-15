@@ -25,7 +25,7 @@ import { arrayify } from "@/utils/array";
 import { validateRouteParams } from "@/utils/project";
 import { getInDevResourceLink, ResourceLinkViewModel } from "@/utils/resource";
 
-export type DocumentHTMLPageProps = {
+export type DocumentsChapterHTMLPageProps = {
 	consultationUrls: string[];
 	projectPath: string;
 	indevScheduleItems?: IndevSchedule[];
@@ -48,7 +48,7 @@ export type DocumentHTMLPageProps = {
 	resourceLinks: ResourceLinkViewModel[];
 };
 
-export default function DocumentsHTMLPage({
+export default function DocumentsChapterHTMLPage({
 	consultationUrls,
 	project,
 	indevStakeholderRegistration,
@@ -56,7 +56,7 @@ export default function DocumentsHTMLPage({
 	resource,
 	indevScheduleItems,
 	resourceLinks,
-}: DocumentHTMLPageProps): JSX.Element {
+}: DocumentsChapterHTMLPageProps): JSX.Element {
 	return (
 		<>
 			<NextSeo
@@ -108,13 +108,7 @@ export default function DocumentsHTMLPage({
 				<ProjectDisplayWordConversion
 					content={resource.resourceFileHTML}
 					sections={resource.resourceFileChapters.allChapters}
-					pdfLink={
-						resourceLinks.filter(
-							(resourceLink) =>
-								resourceLink.fileTypeName === "PDF" &&
-								resourceLink.title === resource.resourceFileTitle
-						)[0].href
-					}
+					pdfLink={resource.resourceFilePdfLink}
 					currentChapter={resource.resourceFileChapters.currentChapter}
 					currentUrl={resource.resourceFileChapters.currentUrl}
 				/>
@@ -146,8 +140,8 @@ export default function DocumentsHTMLPage({
 }
 
 export const getServerSideProps: GetServerSideProps<
-	DocumentHTMLPageProps,
-	{ slug: string; resourceTitleId: string }
+	DocumentsChapterHTMLPageProps,
+	{ slug: string; resourceTitleId: string; chapterSlug: string }
 > = async ({ params, resolvedUrl, query }) => {
 	if (!params?.resourceTitleId) return { notFound: true };
 
@@ -157,6 +151,11 @@ export const getServerSideProps: GetServerSideProps<
 
 	const { project, panels, projectPath, consultationUrls } = result;
 	const { projectType, reference, status, title } = project;
+
+	const chapterSlug =
+		(Array.isArray(params.chapterSlug)
+			? params.chapterSlug[0]
+			: params.chapterSlug) || "";
 
 	const resourceAndPanel = panels
 		.flatMap((panel) =>
@@ -188,19 +187,25 @@ export const getServerSideProps: GetServerSideProps<
 		indevFile = resource.embedded.niceIndevFile,
 		indevConvertedDocument = resource.embedded.niceIndevConvertedDocument;
 
-	let resourceFilePath, resourceFileHTML;
+	let resourceFilePath, resourceFilePathHTMLIndex, resourceFileHTML;
 
 	if (indevConvertedDocument) {
 		resourceFilePath = indevConvertedDocument.links.self[0].href;
-		resourceFileHTML = await getConvertedDocumentHTML(
-			indevConvertedDocument.links.self[0].href
-		);
+		resourceFilePathHTMLIndex = resourceFilePath.lastIndexOf("/html");
+		resourceFilePath =
+			resourceFilePathHTMLIndex > -1
+				? `${resourceFilePath.slice(
+						0,
+						resourceFilePathHTMLIndex
+				  )}/chapter/${chapterSlug}`
+				: resourceFilePath;
+		resourceFileHTML = await getConvertedDocumentHTML(resourceFilePath);
 	}
 
 	if (indevFile) {
 		resourceFilePath = indevFile.links.self[0].href;
 		resourceFileHTML = {
-			content: await getResourceFileHTML(indevFile.links.self[0].href),
+			content: await getResourceFileHTML(resourceFilePath),
 		};
 	}
 
@@ -211,7 +216,7 @@ export const getServerSideProps: GetServerSideProps<
 
 	const resourceFileChapters = {
 		allChapters: resourceFileHTML.sections || [],
-		currentChapter: "",
+		currentChapter: chapterSlug,
 		currentUrl: `${projectPath}/documents/${params.resourceTitleId}`,
 	};
 
@@ -227,9 +232,11 @@ export const getServerSideProps: GetServerSideProps<
 		otherResources = arrayify(
 			panel.embedded.niceIndevResourceList.embedded.niceIndevResource
 		).filter((r) => r !== resource && !r.textOnly),
-		resourceLinks = otherResources.map((resource) =>
-			getInDevResourceLink({ resource, project, panel })
-		);
+		resourceLinks = indevConvertedDocument
+			? []
+			: otherResources.map((resource) =>
+					getInDevResourceLink({ resource, project, panel })
+			  );
 
 	return {
 		props: {

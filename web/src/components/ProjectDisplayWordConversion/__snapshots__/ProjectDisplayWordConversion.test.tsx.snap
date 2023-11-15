@@ -7,8 +7,17 @@ exports[`ProjectDisplayWordConversion should match snapshot for all nav items 1`
   >
     <section
       data-component="grid-item"
-      data-g="12 sm:3"
+      data-g="12 md:4 lg:3"
     >
+      <a
+        aria-label="Download (PDF)"
+        class="btn btn--cta download"
+        data-component="button--cta"
+        href="/guidance/GID-DG10086/documents/final-scope-pdf"
+        target="_blank"
+      >
+        Download (PDF)
+      </a>
       <nav
         aria-label="chapters"
         class="stacked-nav"
@@ -22,7 +31,7 @@ exports[`ProjectDisplayWordConversion should match snapshot for all nav items 1`
           >
             <a
               aria-current="true"
-              href="/guidance/topic-selection/gid-dg10086/converteddocument/final-scope-html-conversion/overview"
+              href="/guidance/topic-selection/gid-dg10086/documents/final-scope-html-conversion"
             >
               <span
                 class="stacked-nav__content-wrapper"
@@ -36,7 +45,7 @@ exports[`ProjectDisplayWordConversion should match snapshot for all nav items 1`
           >
             <a
               aria-current="false"
-              href="/guidance/topic-selection/gid-dg10086/converteddocument/final-scope-html-conversion/recommendations"
+              href="/guidance/topic-selection/gid-dg10086/documents/final-scope-html-conversion/chapter/recommendations"
             >
               <span
                 class="stacked-nav__content-wrapper"
@@ -50,9 +59,11 @@ exports[`ProjectDisplayWordConversion should match snapshot for all nav items 1`
     </section>
     <section
       data-component="grid-item"
-      data-g="12 sm:9"
+      data-g="12 md:8 lg:9"
     >
-      <div>
+      <div
+        class="chapterContent"
+      >
         <div
           class="chapter"
           id="0-1-overview"
@@ -94,7 +105,7 @@ exports[`ProjectDisplayWordConversion should match snapshot for all nav items 1`
         >
           <a
             class="prev-next__link"
-            href="/guidance/topic-selection/gid-dg10086/converteddocument/final-scope-html-conversion/recommendations"
+            href="/guidance/topic-selection/gid-dg10086/documents/final-scope-html-conversion/chapter/recommendations"
           >
             <span
               class="prev-next__link-intro"

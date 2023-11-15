@@ -7,7 +7,7 @@ import { logger } from "@/logger";
 import { addDefaultJSONFeedMocks, axiosJSONMock } from "@/test-utils/feeds";
 
 import ConvertedDocumentPage, {
-	ConvertedDocumentPageProps,
+	DocumentsChapterHTMLPageProps,
 	getServerSideProps,
 } from "./[chapterSlug].page";
 
@@ -15,8 +15,8 @@ const productRoot = "guidance",
 	statusSlug = "topic-selection",
 	resourceTitleId = "final-scope-html-conversion",
 	slug = "gid-dg10086",
-	chapterSlug = "index",
-	resolvedUrl = `/${productRoot}/${statusSlug}/${slug}/converteddocument/${resourceTitleId}/${chapterSlug}`,
+	chapterSlug = "recommendations",
+	resolvedUrl = `/${productRoot}/${statusSlug}/${slug}/documents/${resourceTitleId}/chapter/${chapterSlug}`,
 	getServerSidePropsContext = {
 		params: {
 			slug,
@@ -31,7 +31,7 @@ jest.mock("@/logger", () => ({
 	logger: { warn: jest.fn(), info: jest.fn() },
 }));
 
-type ConvertedDocumentPagePropsContext = GetServerSidePropsContext<{
+type DocumentsChapterHTMLPagePropsContext = GetServerSidePropsContext<{
 	slug: string;
 	resourceTitleId: string;
 	chapterSlug: string;
@@ -82,10 +82,14 @@ describe("[chapterSlug].page", () => {
 				notFound: true,
 			});
 
-			expect(logger.warn as jest.Mock).toHaveBeenCalledWith(
-				`Could not find converted document with id empty-conversion`
+			expect(logger.info as jest.Mock).toHaveBeenCalledWith(
+				`Could not find resource with id empty-conversion`
 			);
 		});
+
+		it.todo(
+			"should return not found when no converted document chapter matches the chapterSlug in the URL"
+		);
 	});
 
 	describe("DocumentsHTMLPage", () => {
@@ -93,28 +97,28 @@ describe("[chapterSlug].page", () => {
 			resourceTitleId = "final-scope-html-conversion",
 			productRoot = "guidance",
 			statusSlug = "topic-selection",
-			chapterSlug = "index",
-			resolvedUrl = `/${productRoot}/${statusSlug}/${slug}/converteddocument/${resourceTitleId}/${slug}/`,
-			context: ConvertedDocumentPagePropsContext = {
+			chapterSlug = "recommendations",
+			resolvedUrl = `/${productRoot}/${statusSlug}/${slug}/documents/${resourceTitleId}/chapter/${slug}/`,
+			context: DocumentsChapterHTMLPagePropsContext = {
 				params: { slug, resourceTitleId, chapterSlug },
 				query: {
 					productRoot,
 					statusSlug,
 				},
 				resolvedUrl,
-			} as unknown as ConvertedDocumentPagePropsContext;
+			} as unknown as DocumentsChapterHTMLPagePropsContext;
 
-		let props: ConvertedDocumentPageProps;
+		let props: DocumentsChapterHTMLPageProps;
 		beforeEach(async () => {
 			props = (
 				(await getServerSideProps(context)) as {
-					props: ConvertedDocumentPageProps;
+					props: DocumentsChapterHTMLPageProps;
 				}
 			).props;
 			(useRouter as jest.Mock).mockReturnValue({ asPath: resolvedUrl });
 		});
 
-		it("should match snapshot for main content", () => {
+		it("should match the snapshot for main content", () => {
 			render(<ConvertedDocumentPage {...props} />);
 			expect(document.body).toMatchSnapshot();
 		});
@@ -124,7 +128,7 @@ describe("[chapterSlug].page", () => {
 				render(<ConvertedDocumentPage {...props} />);
 
 				expect(document.title).toBe(
-					"Project documents | GID-DG10086 | Indicators | Standards and Indicators"
+					"Final scope (html conversion) | Project documents | GID-DG10086 | Indicators | Standards and Indicators"
 				);
 			});
 		});
@@ -143,7 +147,7 @@ describe("[chapterSlug].page", () => {
 				render(<ConvertedDocumentPage {...props} />);
 
 				expect(
-					screen.getByText("Project documents", {
+					screen.getByText("Final scope (html conversion)", {
 						selector: ".breadcrumbs .breadcrumbs__crumb span",
 					})
 				).toBeInTheDocument();
@@ -153,12 +157,12 @@ describe("[chapterSlug].page", () => {
 		it("should render the converted document chapter title as a heading", () => {
 			render(<ConvertedDocumentPage {...props} />);
 			expect(screen.getByRole("heading", { level: 2 })).toHaveTextContent(
-				"Overview"
+				"Recommendations"
 			);
 		});
 
 		it("should render document HTML string as HTML", () => {
-			props.convertedDocumentHTML.content = "<p>Hello</p>";
+			props.resource.resourceFileHTML = "<p>Hello</p>";
 
 			render(<ConvertedDocumentPage {...props} />);
 			expect(screen.getByText("Hello")).toHaveProperty("tagName", "P");

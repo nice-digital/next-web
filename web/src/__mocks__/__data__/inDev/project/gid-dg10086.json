@@ -62,21 +62,6 @@
                       ]
                   },
                   "_embedded": {
-                      "nice.indev:converted-document": {
-                          "_links": {
-                              "self": [
-                                  {
-                                      "href": "/guidance/GID-DG10086/converteddocument/final-scope-html-conversion"
-                                  }
-                              ]
-                          },
-                          "ETag": null,
-                          "Reference": "GID-DG10086",
-                          "Title": "Final scope (html conversion)",
-                          "ResourceTitleId": "final-scope-html-conversion",
-                          "ProjectType": "NG",
-                          "ProductTypeName": "Diagnostics guidance"
-                      },
                       "nice.indev:resource-list": {
                           "_links": {
                               "self": [
@@ -92,24 +77,20 @@
                                           ]
                                       },
                                       "_embedded": {
-                                          "nice.indev:file": {
+                                          "nice.indev:converted-document": {
                                               "_links": {
                                                   "self": [
                                                       {
-                                                          "href": "/guidance/GID-DG10086/documents/final-scope-html-conversion"
+                                                          "href": "/guidance/GID-DG10086/documents/final-scope-html-conversion/html"
                                                       }
                                                   ]
                                               },
                                               "ETag": null,
-                                              "Id": "7f5e4aef-938b-4ad0-acc5-8225d6f91730",
-                                              "MimeType": "application/vnd.openxmlformats-officedocument.wordprocessingml.document",
-                                              "FileName": "NG140 (1).docx",
-                                              "Length": 32619,
-                                              "Hash": "09A5D852099D8D739D48B63D2261137819B03067",
-                                              "Name": "default",
                                               "Reference": "GID-DG10086",
+                                              "Title": "Final scope (html conversion)",
                                               "ResourceTitleId": "final-scope-html-conversion",
-                                              "ConsultationDocumentId": 0
+                                              "ProjectType": "DG",
+                                              "ProductTypeName": "Diagnostics guidance"
                                           }
                                       },
                                       "ETag": null,

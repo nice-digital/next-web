@@ -98,7 +98,7 @@ export const getResourceFileHTML = async (
 /**
  * Gets word conversion html of a resource from InDev,
  *
- * E.g. from /guidance/NG100/converteddocument/final-scope-html-conversion
+ * E.g. from /guidance/NG100/documents/final-scope-html-conversion/html
  *
  */
 export const getConvertedDocumentHTML = async (

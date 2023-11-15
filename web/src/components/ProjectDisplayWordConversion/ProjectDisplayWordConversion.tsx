@@ -1,5 +1,6 @@
 import { type FC } from "react";
 
+import { Button } from "@nice-digital/nds-button";
 import { Grid, GridItem } from "@nice-digital/nds-grid";
 import { PrevNext } from "@nice-digital/nds-prev-next";
 import { StackedNav, StackedNavLink } from "@nice-digital/nds-stacked-nav";
@@ -8,6 +9,8 @@ import { niceIndevConvertedDocument } from "@/feeds/inDev/types";
 
 import { Link } from "../Link/Link";
 
+import styles from "./ProjectDisplayWordConversion.module.scss";
+
 export type ProjectDisplayWordConversionProps = niceIndevConvertedDocument & {
 	currentChapter: string;
 	currentUrl: string;
@@ -15,7 +18,7 @@ export type ProjectDisplayWordConversionProps = niceIndevConvertedDocument & {
 
 export const ProjectDisplayWordConversion: FC<
 	ProjectDisplayWordConversionProps
-> = ({ content, sections, currentChapter, currentUrl }) => {
+> = ({ content, sections, pdfLink, currentChapter, currentUrl }) => {
 	// find chapter slug in url string
 	const currentUrlChapterSlugIndex = currentChapter
 		? currentUrl.lastIndexOf(`/${currentChapter}`)
@@ -36,9 +39,13 @@ export const ProjectDisplayWordConversion: FC<
 		previous: boolean
 	) => {
 		if (prevOrNextArrayIndex >= 0 && prevOrNextArrayIndex < totalChapterCount) {
+			const chapterSlug =
+				prevOrNextArrayIndex === 0
+					? ""
+					: `/chapter/${sections[prevOrNextArrayIndex].slug}`;
 			const prevOrNextObject = {
 				text: sections[prevOrNextArrayIndex].title,
-				destination: `${currentUrlNoChapter}/${sections[prevOrNextArrayIndex].slug}`,
+				destination: `${currentUrlNoChapter}${chapterSlug}`,
 				elementType: Link,
 			};
 
@@ -52,13 +59,25 @@ export const ProjectDisplayWordConversion: FC<
 
 	return (
 		<Grid gutter="loose">
-			<GridItem cols={12} sm={3} elementType="section">
+			<GridItem cols={12} md={4} lg={3} elementType="section">
+				{pdfLink && (
+					<Button
+						aria-label="Download (PDF)"
+						variant="cta"
+						className={styles.download}
+						to={pdfLink}
+						target="_blank"
+					>
+						Download (PDF)
+					</Button>
+				)}
 				<StackedNav aria-label="chapters">
 					{sections.map((section, index) => {
-						const destination = `${currentUrlNoChapter}/${section.slug}`;
+						const chapterSlug = index === 0 ? "" : `/chapter/${section.slug}`;
+						const destination = `${currentUrlNoChapter}${chapterSlug}`;
 						const isCurrentChapter =
 							section.slug === currentChapter ||
-							(currentChapter === "index" && index === 0);
+							(currentChapter === "" && index === 0);
 
 						if (isCurrentChapter) currentChapterArrayIndex = index;
 
@@ -75,8 +94,11 @@ export const ProjectDisplayWordConversion: FC<
 					})}
 				</StackedNav>
 			</GridItem>
-			<GridItem cols={12} sm={9} elementType="section">
-				<div dangerouslySetInnerHTML={{ __html: content }} />
+			<GridItem cols={12} md={8} lg={9} elementType="section">
+				<div
+					dangerouslySetInnerHTML={{ __html: content }}
+					className={styles.chapterContent}
+				/>
 				<PrevNext
 					{...generatePrevNextLinks(
 						currentChapterArrayIndex - 1,

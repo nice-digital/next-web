@@ -214,12 +214,25 @@ export type IndevFile = {
 	consultationDocumentId: number;
 };
 
+export type IndevConvertedDocument = {
+	links: {
+		self: [Link];
+	};
+	eTag: ETag;
+	reference: string;
+	title: string;
+	resourceTitleId: string;
+	projectType: string;
+	productTypeName: string;
+};
+
 export type IndevResource = {
 	links: {
 		self: [Link];
 	};
 	embedded?: {
-		niceIndevFile: IndevFile;
+		niceIndevFile?: IndevFile;
+		niceIndevConvertedDocument?: IndevConvertedDocument;
 	};
 	eTag: ETag;
 	title: string;
@@ -238,7 +251,8 @@ export type IndevResource = {
 
 export type IndevFileResource = IndevResource & {
 	embedded: {
-		niceIndevFile: IndevFile;
+		niceIndevFile?: IndevFile;
+		niceIndevConvertedDocument?: IndevConvertedDocument;
 	};
 };
 
@@ -622,6 +636,7 @@ export type niceIndevConvertedDocument = {
 			}
 		];
 	};
+	pdfLink: string | null;
 	eTag?: string | null;
 	content: string;
 	sections: niceIndevConvertedDocumentSection[];

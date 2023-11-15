@@ -1,6 +1,6 @@
 import { render, screen, within } from "@testing-library/react";
 
-import mockConvertedDocumentFeed from "./../../__mocks__/__data__/inDev/guidance/gid-dg10086/converteddocument/final-scope-html-conversion.json";
+import mockConvertedDocumentFeed from "./../../__mocks__/__data__/inDev/guidance/gid-dg10086/documents/final-scope-html-conversion/html.json";
 import {
 	ProjectDisplayWordConversion,
 	type ProjectDisplayWordConversionProps,
@@ -9,9 +9,10 @@ import {
 const props: ProjectDisplayWordConversionProps = {
 	content: mockConvertedDocumentFeed.content,
 	sections: mockConvertedDocumentFeed.sections,
-	currentChapter: "index",
+	pdfLink: "/guidance/GID-DG10086/documents/final-scope-pdf",
+	currentChapter: "",
 	currentUrl:
-		"/guidance/topic-selection/gid-dg10086/converteddocument/final-scope-html-conversion/index",
+		"/guidance/topic-selection/gid-dg10086/documents/final-scope-html-conversion",
 };
 
 describe("ProjectDisplayWordConversion", () => {
@@ -43,7 +44,7 @@ describe("ProjectDisplayWordConversion", () => {
 		const dupedProps = { ...props };
 		dupedProps.currentChapter = "recommendations";
 		dupedProps.currentUrl =
-			"/guidance/topic-selection/gid-dg10086/converteddocument/final-scope-html-conversion/recommendations";
+			"/guidance/topic-selection/gid-dg10086/documents/final-scope-html-conversion/chapter/recommendations";
 		render(<ProjectDisplayWordConversion {...dupedProps} />);
 		const chapterNavList = screen.getByRole("navigation", { name: "chapters" });
 		const { getByRole } = within(chapterNavList);
@@ -88,7 +89,7 @@ describe("ProjectDisplayWordConversion", () => {
 		const dupedProps = { ...props };
 		dupedProps.currentChapter = "recommendations";
 		dupedProps.currentUrl =
-			"/guidance/topic-selection/gid-dg10086/converteddocument/final-scope-html-conversion/recommendations";
+			"/guidance/topic-selection/gid-dg10086/documents/final-scope-html-conversion/chapter/recommendations";
 		render(<ProjectDisplayWordConversion {...dupedProps} />);
 		const prevAndNextLinksNav = screen.getByRole("navigation", {
 			name: "Previous and next pages",
@@ -97,5 +98,13 @@ describe("ProjectDisplayWordConversion", () => {
 		const prevAndNextLinks = getAllByRole("link");
 		expect(prevAndNextLinks.length).toEqual(1);
 		expect(prevAndNextLinks[0].textContent).toContain("Previous page");
+	});
+
+	it("should render pdf download button for converted document", () => {
+		render(<ProjectDisplayWordConversion {...props} />);
+		const downloadPDFButton = screen.getByRole("link", {
+			name: "Download (PDF)",
+		});
+		expect(downloadPDFButton).toBeInTheDocument();
 	});
 });

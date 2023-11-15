@@ -439,6 +439,13 @@ exports[`/indicators/indevelopment/[slug]/documents DocumentsPage should match s
                             href="/consultations/1567/1"
                           >
                             Diagnostics consultation document (Online commenting)
+                             
+                            (
+                            Word
+                            ,
+                             
+                            62 kB
+                            )
                           </a>
                         </p>
                       </header>
@@ -471,6 +478,30 @@ exports[`/indicators/indevelopment/[slug]/documents DocumentsPage should match s
                             >
                               9 December 2022
                             </time>
+                          </dd>
+                        </div>
+                        <div
+                          class="card__metadatum"
+                        >
+                          <dt
+                            class="visually-hidden"
+                          >
+                            File type
+                          </dt>
+                          <dd>
+                            Word
+                          </dd>
+                        </div>
+                        <div
+                          class="card__metadatum"
+                        >
+                          <dt
+                            class="visually-hidden"
+                          >
+                            File size
+                          </dt>
+                          <dd>
+                            62 kB
                           </dd>
                         </div>
                       </dl>
@@ -1686,8 +1717,8 @@ Object {
                 },
                 Object {
                   "date": "2022-12-09T00:00:00",
-                  "fileSize": null,
-                  "fileTypeName": null,
+                  "fileSize": 62456,
+                  "fileTypeName": "Word",
                   "href": "/consultations/1567/1",
                   "title": "Diagnostics consultation document (Online commenting)",
                   "type": "Diagnostics consultation",
