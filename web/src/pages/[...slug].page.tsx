@@ -5,9 +5,11 @@ import React, { useMemo } from "react";
 import { type Breadcrumb } from "@/types/Breadcrumb";
 import {
 	fetchStory,
+	fetchLinks,
 	getStoryVersionFromQuery,
 	getSlugFromParams,
 	getAdditionalMetaTags,
+	getBreadcrumbs,
 } from "@/utils/storyblok";
 
 import type { GetServerSidePropsContext } from "next";
@@ -46,13 +48,12 @@ export async function getServerSideProps(context: GetServerSidePropsContext) {
 	const slug = getSlugFromParams(params?.slug);
 	if (slug) {
 		const version = getStoryVersionFromQuery(query);
-		const storyResult = await fetchStory(slug, version);
 
-		// TODO: Wire up breadcrumbs
-		const breadcrumbs = [
-			{ title: "Something", path: "/something" },
-			{ title: "To do: wire up breadcrumbs" },
-		];
+		// Get the story and its breadcrumbs
+		const [storyResult, breadcrumbs] = await Promise.all([
+			fetchStory(slug, version),
+			getBreadcrumbs(slug, version),
+		]);
 
 		const result = {
 			props: {
