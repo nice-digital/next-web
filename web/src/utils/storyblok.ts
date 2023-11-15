@@ -17,6 +17,8 @@ import { Metadata } from "@/components/Storyblok/Metadata/Metadata";
 import { StoryblokHero } from "@/components/Storyblok/StoryblokHero/StoryblokHero";
 import { publicRuntimeConfig } from "@/config";
 import { logger } from "@/logger";
+import { type Breadcrumb } from "@/types/Breadcrumb";
+import { type SBLink } from "@/types/SBLink";
 import { type MultilinkStoryblok } from "@/types/storyblok";
 
 export type StoryVersion = "draft" | "published" | undefined;
@@ -125,6 +127,8 @@ export const fetchStories = async (
 		};
 	} catch (e) {
 		const result = JSON.parse(e as string) as ISbError;
+		Promise.reject(new Error(`${result.message}"`));
+
 		logger.error(
 			`${result.status} error from Storyblok API: ${result.message}`,
 			e
@@ -133,6 +137,84 @@ export const fetchStories = async (
 	}
 
 	return result;
+};
+
+// Fetch an array of links from the links endpoint
+export const fetchLinks = async (
+	version: StoryVersion,
+	startsWith?: string
+): Promise<SBLink[] | SBNotFoundResponse> => {
+	const storyblokApi = getStoryblokApi();
+
+	const sbParams: ISbStoriesParams = {
+		version: version || "published",
+		// cv: Date.now(), // Useful for flushing the Storyblok cache
+	};
+
+	if (startsWith) {
+		sbParams.starts_with = startsWith;
+	}
+
+	let result = null;
+
+	try {
+		const links: SBLink[] = await storyblokApi.getAll("cdn/links", sbParams);
+
+		result = links;
+	} catch (e) {
+		const result = JSON.parse(e as string) as ISbError;
+		logger.error(
+			`${result.status} error from Storyblok API: ${result.message}`,
+			e
+		);
+		throw Error(`${result.status} error from Storyblok API: ${result.message}`);
+	}
+
+	return result;
+};
+
+// Take a slug and generate breadcrumbs from it using the links API
+export const getBreadcrumbs = async (
+	slug: string,
+	version?: string
+): Promise<Breadcrumb[]> => {
+	const topSlug = slug.substring(0, slug.indexOf("/")); // Slug of highest level parent
+
+	const linksResult = await fetchLinks(
+		(version as StoryVersion) || "published",
+		topSlug
+	);
+
+	const breadcrumbs: Breadcrumb[] = [];
+
+	if (linksResult) {
+		const links = linksResult as SBLink[];
+
+		// Get item with current slug, add it to the array
+		let thisPage = links.find((l) => l.slug === slug);
+		breadcrumbs.push({
+			title: thisPage?.name as string,
+		});
+
+		// Get current item's parent_id
+		let parentId = thisPage?.parent_id;
+		if (parentId) {
+			// If it has a parent_id, get item with that ID & keep moving upwards
+			do {
+				thisPage = links.find((l) => l.id === parentId);
+				breadcrumbs.push({
+					title: thisPage?.name as string,
+					path: thisPage?.real_path,
+				});
+				parentId = thisPage?.parent_id;
+			} while (parentId);
+
+			// Flip the order so we've got the top page first
+			breadcrumbs.reverse();
+		}
+	}
+
+	return breadcrumbs;
 };
 
 // Resolve a link object returned from the Storyblok API, so that it returns
