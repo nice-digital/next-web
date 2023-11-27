@@ -2,23 +2,35 @@ import { type FC } from "react";
 
 import { Button } from "@nice-digital/nds-button";
 import { Grid, GridItem } from "@nice-digital/nds-grid";
+import "@nice-digital/nds-in-page-nav/scss/in-page-nav.scss";
 import { PrevNext } from "@nice-digital/nds-prev-next";
 import { StackedNav, StackedNavLink } from "@nice-digital/nds-stacked-nav";
 
-import { niceIndevConvertedDocument } from "@/feeds/inDev/types";
+import {
+	niceIndevConvertedDocument,
+	resourceInPageNavLink,
+} from "@/feeds/inDev/types";
 
 import { Link } from "../Link/Link";
 
 import styles from "./ProjectDisplayWordConversion.module.scss";
 
 export type ProjectDisplayWordConversionProps = niceIndevConvertedDocument & {
+	inPageNavLinks: resourceInPageNavLink[];
 	currentChapter: string;
 	currentUrl: string;
 };
 
 export const ProjectDisplayWordConversion: FC<
 	ProjectDisplayWordConversionProps
-> = ({ content, sections, pdfLink, currentChapter, currentUrl }) => {
+> = ({
+	content,
+	sections,
+	inPageNavLinks,
+	pdfLink,
+	currentChapter,
+	currentUrl,
+}) => {
 	// find chapter slug in url string
 	const currentUrlChapterSlugIndex = currentChapter
 		? currentUrl.lastIndexOf(`/${currentChapter}`)
@@ -95,6 +107,39 @@ export const ProjectDisplayWordConversion: FC<
 				</StackedNav>
 			</GridItem>
 			<GridItem cols={12} md={8} lg={9} elementType="section">
+				{/*
+					<InPageNav /> //headings contain numbers which aren't in the id, so doesn't work
+					<OnThisPage sections={inPageNavLinks} /> //component needs adapting to work here
+				*/}
+				{inPageNavLinks.length > 0 && (
+					<div className={styles.inPageNavNoScroll}>
+						<nav
+							className="in-page-nav in-page-nav--no-scroll"
+							aria-labelledby="on-this-page"
+						>
+							<h2 id="on-this-page" className="in-page-nav__title">
+								On this page
+							</h2>
+							<ol
+								className="in-page-nav__list"
+								aria-label="Jump to sections on this page"
+							>
+								{inPageNavLinks.map(
+									(inPageNavLink: resourceInPageNavLink, index: number) => (
+										<li className="in-page-nav__item" key={index}>
+											<a
+												href={`#${inPageNavLink.slug}`}
+												dangerouslySetInnerHTML={{
+													__html: inPageNavLink.title,
+												}}
+											/>
+										</li>
+									)
+								)}
+							</ol>
+						</nav>
+					</div>
+				)}
 				<div
 					dangerouslySetInnerHTML={{ __html: content }}
 					className={styles.chapterContent}

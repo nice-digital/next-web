@@ -156,9 +156,12 @@ describe("[chapterSlug].page", () => {
 
 		it("should render the converted document chapter title as a heading", () => {
 			render(<ConvertedDocumentPage {...props} />);
-			expect(screen.getByRole("heading", { level: 2 })).toHaveTextContent(
-				"Recommendations"
-			);
+			expect(
+				screen.getByRole("heading", {
+					level: 2,
+					name: "Recommendations",
+				})
+			).toHaveTextContent("Recommendations");
 		});
 
 		it("should render document HTML string as HTML", () => {

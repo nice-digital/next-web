@@ -210,7 +210,7 @@ exports[`[chapterSlug].page DocumentsHTMLPage should match the snapshot for main
           aria-label="Download (PDF)"
           class="btn btn--cta download"
           data-component="button--cta"
-          href="/guidance/GID-DG10086/documents/final-scope-pdf"
+          href="/guidance/topic-selection/gid-dg10086/downloads/gid-dg10086-final-scope-pdf.pdf"
           target="_blank"
         >
           Download (PDF)
@@ -258,6 +258,69 @@ exports[`[chapterSlug].page DocumentsHTMLPage should match the snapshot for main
         data-component="grid-item"
         data-g="12 md:8 lg:9"
       >
+        <div
+          class="inPageNavNoScroll"
+        >
+          <nav
+            aria-labelledby="on-this-page"
+            class="in-page-nav in-page-nav--no-scroll"
+          >
+            <h2
+              class="in-page-nav__title"
+              id="on-this-page"
+            >
+              On this page
+            </h2>
+            <ol
+              aria-label="Jump to sections on this page"
+              class="in-page-nav__list"
+            >
+              <li
+                class="in-page-nav__item"
+              >
+                <a
+                  href="#expulsion-at-home-for-medical-abortion-up-to-and-including-100-weeks"
+                >
+                  1.1 Expulsion at home for medical abortion up to and including 10
+                  <sup>
+                    +0
+                  </sup>
+                   weeks
+                </a>
+              </li>
+              <li
+                class="in-page-nav__item"
+              >
+                <a
+                  href="#medical-abortion-up-to-and-including-100-weeks"
+                >
+                  1.2 Medical abortion up to and including 10
+                  <sup>
+                    +0
+                  </sup>
+                   weeks
+                </a>
+              </li>
+              <li
+                class="in-page-nav__item"
+              >
+                <a
+                  href="#medical-abortion-between-101-and-236-weeks"
+                >
+                  1.3 Medical abortion between 10
+                  <sup>
+                    +1
+                  </sup>
+                   and 23
+                  <sup>
+                    +6
+                  </sup>
+                   weeks
+                </a>
+              </li>
+            </ol>
+          </nav>
+        </div>
         <div
           class="chapterContent"
         >

@@ -9,6 +9,7 @@ import {
 const props: ProjectDisplayWordConversionProps = {
 	content: mockConvertedDocumentFeed.content,
 	sections: mockConvertedDocumentFeed.sections,
+	inPageNavLinks: [],
 	pdfLink: "/guidance/GID-DG10086/documents/final-scope-pdf",
 	currentChapter: "",
 	currentUrl:

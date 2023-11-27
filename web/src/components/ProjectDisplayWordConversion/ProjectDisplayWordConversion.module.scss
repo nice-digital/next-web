@@ -17,3 +17,9 @@
   text-align: center;
 }
 
+.inPageNavNoScroll > nav {
+  margin: utils.rem(0 0 spacing.$large);
+  max-height: none;
+  position: relative;
+}
+

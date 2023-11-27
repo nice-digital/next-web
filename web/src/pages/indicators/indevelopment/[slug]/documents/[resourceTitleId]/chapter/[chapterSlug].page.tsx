@@ -1,5 +1,5 @@
-import { NextSeo } from "next-seo";
 import { type GetServerSideProps } from "next/types";
+import { NextSeo } from "next-seo";
 import React from "react";
 
 import { Breadcrumbs, Breadcrumb } from "@nice-digital/nds-breadcrumbs";
@@ -19,10 +19,11 @@ import {
 	niceIndevConvertedDocument,
 	niceIndevConvertedDocumentSection,
 	ProjectDetail,
+	resourceInPageNavLink,
 } from "@/feeds/inDev/types";
 import { logger } from "@/logger";
 import { arrayify } from "@/utils/array";
-import { validateRouteParams } from "@/utils/project";
+import { generateInPageNavArray, validateRouteParams } from "@/utils/project";
 import { getInDevResourceLink, ResourceLinkViewModel } from "@/utils/resource";
 
 export type DocumentsChapterHTMLPageProps = {
@@ -42,6 +43,7 @@ export type DocumentsChapterHTMLPageProps = {
 			currentChapter: string;
 			currentUrl: string;
 		};
+		resourceInPageNavLinks: resourceInPageNavLink[];
 		resourceFilePdfLink: string | null;
 		resourceFileTitle: string;
 	};
@@ -108,6 +110,7 @@ export default function DocumentsChapterHTMLPage({
 				<ProjectDisplayWordConversion
 					content={resource.resourceFileHTML}
 					sections={resource.resourceFileChapters.allChapters}
+					inPageNavLinks={resource.resourceInPageNavLinks}
 					pdfLink={resource.resourceFilePdfLink}
 					currentChapter={resource.resourceFileChapters.currentChapter}
 					currentUrl={resource.resourceFileChapters.currentUrl}
@@ -220,7 +223,11 @@ export const getServerSideProps: GetServerSideProps<
 		currentUrl: `${projectPath}/documents/${params.resourceTitleId}`,
 	};
 
-	const resourceFilePdfLink = resourceFileHTML.pdfLink || null;
+	const sectionHeadingRegex = /<h3(.*)class="title"(.*)>((.|\s)+?)<\/h3>/g;
+	const resourceInPageNavLinks = generateInPageNavArray(
+		resourceFileHTML.content,
+		sectionHeadingRegex
+	);
 
 	const indevSchedule =
 			project.embedded.niceIndevProvisionalScheduleList?.embedded
@@ -232,11 +239,18 @@ export const getServerSideProps: GetServerSideProps<
 		otherResources = arrayify(
 			panel.embedded.niceIndevResourceList.embedded.niceIndevResource
 		).filter((r) => r !== resource && !r.textOnly),
-		resourceLinks = indevConvertedDocument
-			? []
-			: otherResources.map((resource) =>
-					getInDevResourceLink({ resource, project, panel })
-			  );
+		resourceLinks = otherResources.map((resource) =>
+			getInDevResourceLink({ resource, project, panel })
+		);
+
+	const resourceFilePdf = resourceLinks.filter(
+		(resourceLink) =>
+			resourceLink.fileTypeName === "PDF" &&
+			resourceLink.title === resourceFileTitle
+	);
+
+	const resourceFilePdfLink =
+		resourceFilePdf.length > 0 ? resourceFilePdf[0].href : null;
 
 	return {
 		props: {
@@ -254,6 +268,7 @@ export const getServerSideProps: GetServerSideProps<
 				isConvertedDocument: !!indevConvertedDocument,
 				resourceFileHTML: resourceFileHTML.content,
 				resourceFileChapters,
+				resourceInPageNavLinks,
 				resourceFilePdfLink,
 				resourceFileTitle,
 			},
