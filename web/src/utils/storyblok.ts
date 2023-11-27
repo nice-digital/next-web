@@ -71,7 +71,7 @@ export const fetchStory = async (
 	const sbParams: ISbStoriesParams = {
 		version: version || "published",
 		resolve_links: "url",
-		// cv: Date.now(), // Useful for flushing the Storyblok cache
+		cv: Date.now(), // Useful for flushing the Storyblok cache
 	};
 
 	let result = null;
