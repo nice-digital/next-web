@@ -622,6 +622,11 @@ export type ProjectDetail = {
 	indicatorSubTypes: [];
 };
 
+export type resourceInPageNavLink = {
+	slug: string;
+	title: string;
+};
+
 export type niceIndevConvertedDocumentSection = {
 	slug: string;
 	title: string;
