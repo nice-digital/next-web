@@ -87,9 +87,27 @@ describe("[chapterSlug].page", () => {
 			);
 		});
 
-		it.todo(
-			"should return not found when no converted document chapter matches the chapterSlug in the URL"
-		);
+		it("should return not found when no converted document chapter matches the chapterSlug in the URL", async () => {
+			const notFoundChapterSlug = "not-a-real-chapter";
+
+			expect(
+				await getServerSideProps({
+					...getServerSidePropsContext,
+					params: {
+						slug: slug,
+						resourceTitleId: resourceTitleId,
+						chapterSlug: notFoundChapterSlug,
+					},
+					query: { productRoot, statusSlug },
+				})
+			).toStrictEqual({
+				notFound: true,
+			});
+
+			expect(logger.warn as jest.Mock).toHaveBeenCalledWith(
+				`Could not find resource HTML at /guidance/GID-DG10086/documents/final-scope-html-conversion/chapter/${notFoundChapterSlug}`
+			);
+		});
 	});
 
 	describe("DocumentsHTMLPage", () => {

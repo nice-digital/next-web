@@ -102,8 +102,6 @@ describe("[resourceTitleId].page", () => {
 				"Could not find resource HTML at /guidance/GID-TA10730/documents/html-content"
 			);
 		});
-
-		it.todo("should return props for valid documents");
 	});
 
 	describe("DocumentsHTMLPage", () => {
