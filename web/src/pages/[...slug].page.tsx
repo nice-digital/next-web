@@ -5,7 +5,6 @@ import React, { useMemo } from "react";
 import { type Breadcrumb } from "@/types/Breadcrumb";
 import {
 	fetchStory,
-	fetchLinks,
 	getStoryVersionFromQuery,
 	getSlugFromParams,
 	getAdditionalMetaTags,
