@@ -43,7 +43,7 @@ Linting, code style and unit testing are all handled at the root of this reposit
 
 If you're new to React, then start with the [official tutorial](https://reactjs.org/tutorial/tutorial.html) before you learn NextJS.
 
-These resources area a great place to start learning NextJS:
+These resources are a a great place to start learning NextJS:
 
 - [The official interactive Next.js tutorial](https://nextjs.org/learn)
 - YouTube videos like:
@@ -158,3 +158,17 @@ This is a good, quick way to verify the production build works properly but it's
 > Note: We've opted to use existing server infrastructure (hence use of PM2) in the short term for ease and speed. We ~might~ migrate to serverless infrastructure in the future at which point we'll remove PM2.
 
 See the [web-host](../web-host) folder for more information.
+
+## Storyblok
+
+Storyblok is the CMS we use for our corporate content.
+
+### Updating types
+
+We can get updated Typescript types automatically using the Storyblok CLI. Running `npm run generate-sb-types` in the web folder will connect to our Storyblok instance and replace all the types in `/web/src/types/storyblok.d.ts`.
+
+Two things to bear in mind before you do this:
+
+1. You'll need to log in via the CLI, otherwise you'll get an error that you're not authorised. [Docs for installing the CLI, logging in and so on are here](https://www.storyblok.com/docs/Guides/command-line-interface). Sometimes you need to log out and in again, which is a bit annoying. If you're asked for a region when logging in, it's `eu`.
+
+2. You'll need to replace the two instances of {SPACE_ID} in the script with our actual Storyblok space ID, which isn't added to package.json for security reasons. There may be a better way to do this by reading it from our env vars, but for now this'll do.

@@ -15,6 +15,7 @@ import { CategoryNavigation } from "@/components/Storyblok/CategoryNavigation/Ca
 import { Homepage } from "@/components/Storyblok/Homepage/Homepage";
 import { Metadata } from "@/components/Storyblok/Metadata/Metadata";
 import { StoryblokHero } from "@/components/Storyblok/StoryblokHero/StoryblokHero";
+import { StoryblokPageHeader } from "@/components/Storyblok/StoryblokPageHeader/StoryblokPageHeader";
 import { publicRuntimeConfig } from "@/config";
 import { logger } from "@/logger";
 import { type Breadcrumb } from "@/types/Breadcrumb";
@@ -39,6 +40,7 @@ export const initStoryblok = (): void => {
 		categoryNavigation: CategoryNavigation,
 		homepage: Homepage,
 		hero: StoryblokHero,
+		pageHeader: StoryblokPageHeader,
 		metadata: Metadata,
 	};
 
