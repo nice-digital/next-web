@@ -10,6 +10,7 @@ The repository is set up as a monorepo. That is, there are various sub folders p
 | --------------------------- | ---------------------------------- |
 | [web](web#readme)           | NextJS web app                     |
 | [web-host](web-host#readme) | PM2 hosting for the NextJS web app |
+| [api](api#readme)           | Ocelot Api Cache                   |
 
 ## Stack
 
