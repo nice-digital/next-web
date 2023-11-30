@@ -150,7 +150,8 @@ export interface PageHeaderStoryblok {
   title: string;
   summary?: string;
   description?: string;
-  cta?: Exclude<MultilinkStoryblok, {linktype?: "email"} | {linktype?: "asset"}>;
+  ctaText?: string;
+  ctaLink?: Exclude<MultilinkStoryblok, {linktype?: "email"} | {linktype?: "asset"}>;
   _uid: string;
   component: "pageHeader";
   [k: string]: any;
