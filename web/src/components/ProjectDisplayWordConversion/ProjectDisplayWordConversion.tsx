@@ -19,6 +19,7 @@ export type ProjectDisplayWordConversionProps = niceIndevConvertedDocument & {
 	inPageNavLinks: resourceInPageNavLink[];
 	currentChapter: string;
 	currentUrl: string;
+	resourceFileTitle: string;
 };
 
 export const ProjectDisplayWordConversion: FC<
@@ -30,6 +31,7 @@ export const ProjectDisplayWordConversion: FC<
 	pdfLink,
 	currentChapter,
 	currentUrl,
+	resourceFileTitle,
 }) => {
 	// find chapter slug in url string
 	const currentUrlChapterSlugIndex = currentChapter
@@ -107,6 +109,7 @@ export const ProjectDisplayWordConversion: FC<
 				</StackedNav>
 			</GridItem>
 			<GridItem cols={12} md={8} lg={9} elementType="section">
+				<h2 className="mt--0">{resourceFileTitle}</h2>
 				{/*
 					<InPageNav /> //headings contain numbers which aren't in the id, so doesn't work
 					<OnThisPage sections={inPageNavLinks} /> //component needs adapting to work here

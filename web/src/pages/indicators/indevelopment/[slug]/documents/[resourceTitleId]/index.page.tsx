@@ -1,5 +1,5 @@
-import { type GetServerSideProps } from "next/types";
 import { NextSeo } from "next-seo";
+import { type GetServerSideProps } from "next/types";
 import React from "react";
 
 import { Breadcrumbs, Breadcrumb } from "@nice-digital/nds-breadcrumbs";
@@ -114,6 +114,7 @@ export default function DocumentsHTMLPage({
 					pdfLink={resource.resourceFilePdfLink}
 					currentChapter={resource.resourceFileChapters.currentChapter}
 					currentUrl={resource.resourceFileChapters.currentUrl}
+					resourceFileTitle={resource.resourceFileTitle}
 				/>
 			) : (
 				<>
@@ -235,7 +236,7 @@ export const getServerSideProps: GetServerSideProps<
 	const resourceFilePdf = resourceLinks.filter(
 		(resourceLink) =>
 			resourceLink.fileTypeName === "PDF" &&
-			resourceLink.title === resourceFileTitle
+			resourceLink.title.replace("(pdf)", "").trim() === resourceFileTitle
 	);
 
 	const resourceFilePdfLink =
