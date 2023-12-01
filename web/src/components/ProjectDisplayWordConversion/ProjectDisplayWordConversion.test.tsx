@@ -14,6 +14,7 @@ const props: ProjectDisplayWordConversionProps = {
 	currentChapter: "",
 	currentUrl:
 		"/guidance/topic-selection/gid-dg10086/documents/final-scope-html-conversion",
+	resourceFileTitle: "Test converted document",
 };
 
 describe("ProjectDisplayWordConversion", () => {

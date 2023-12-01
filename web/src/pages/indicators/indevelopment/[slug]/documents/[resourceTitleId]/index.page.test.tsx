@@ -312,9 +312,9 @@ describe("[resourceTitleId].page", () => {
 
 			it("should render the converted document chapter title as a heading", () => {
 				render(<DocumentsHTMLPage {...props} />);
-				expect(screen.getByRole("heading", { level: 2 })).toHaveTextContent(
-					"Overview"
-				);
+				expect(
+					screen.getByRole("heading", { level: 2, name: "Overview" })
+				).toHaveTextContent("Overview");
 			});
 		});
 	});
