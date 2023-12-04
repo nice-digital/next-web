@@ -1,0 +1,152 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`LifeSciencesContactUsForm should match snapshot 1`] = `
+<div>
+  <nav
+    aria-label="Breadcrumbs"
+    data-component="breadcrumbs"
+    role="navigation"
+  >
+    <ol
+      class="breadcrumbs"
+    >
+      <li
+        class="breadcrumbs__crumb"
+      >
+        <a
+          href="/"
+        >
+          Home
+        </a>
+      </li>
+      <li
+        class="breadcrumbs__crumb"
+      >
+        <a
+          href="/about"
+        >
+          About
+        </a>
+      </li>
+      <li
+        class="breadcrumbs__crumb"
+      >
+        <a
+          href="/about/what-we-do"
+        >
+          What we do
+        </a>
+      </li>
+      <li
+        class="breadcrumbs__crumb"
+      >
+        <a
+          href="/about/what-we-do/life-sciences"
+        >
+          Life sciences: how to get your product to market
+        </a>
+      </li>
+      <li
+        class="breadcrumbs__crumb"
+      >
+        <span>
+          Life sciences contact us form
+        </span>
+      </li>
+    </ol>
+  </nav>
+  <script
+    type="application/ld+json"
+  >
+    {
+  "@context": "http://schema.org",
+  "@type": "BreadcrumbList",
+  "itemListElement": [
+    {
+      "@type": "ListItem",
+      "position": 1,
+      "item": {
+        "@id": "/",
+        "name": "Home"
+      }
+    },
+    {
+      "@type": "ListItem",
+      "position": 2,
+      "item": {
+        "@id": "/about",
+        "name": "About"
+      }
+    },
+    {
+      "@type": "ListItem",
+      "position": 3,
+      "item": {
+        "@id": "/about/what-we-do",
+        "name": "What we do"
+      }
+    },
+    {
+      "@type": "ListItem",
+      "position": 4,
+      "item": {
+        "@id": "/about/what-we-do/life-sciences",
+        "name": "Life sciences: how to get your product to market"
+      }
+    },
+    {
+      "@type": "ListItem",
+      "position": 5,
+      "item": {
+        "name": "Life sciences contact us form"
+      }
+    }
+  ]
+}
+  </script>
+  <div
+    class="grid grid--loose"
+  >
+    <div
+      data-component="grid-item"
+      data-g="12 md:12 lg:12"
+    >
+      <div
+        class="page-header"
+        data-component="page-header"
+        id="content-start"
+      >
+        <h1
+          class="page-header__heading "
+        >
+          Life sciences contact us form
+        </h1>
+        <p
+          class="page-header__lead"
+        >
+          This enquiry form is designed to help developers of pharmaceuticals and healthtech products access NICE Advice support services.
+        </p>
+      </div>
+      <p>
+        If your enquiry relates to other parts of NICE, please contact our general enquiries team on 
+        <a
+          href="mailto:nice@nice.org.uk"
+        >
+          nice@nice.org.uk
+        </a>
+      </p>
+      <iframe
+        allow="geolocation; microphone; camera"
+        allowfullscreen=""
+        class="iframe"
+        data-jotform-id="232991221799063"
+        id="JotFormIFrame-232991221799063"
+        scrolling="no"
+        src="https://next-web-tests.jotform.com/232991221799063?isIframeEmbed=1"
+        style="height: 539px; overflow: hidden;"
+        title="Life sciences contact us form"
+      />
+    </div>
+  </div>
+</div>
+`;
