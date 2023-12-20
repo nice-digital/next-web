@@ -1,4 +1,5 @@
-import { Given } from "@cucumber/cucumber";
+// import { Given } from "@cucumber/cucumber";
+import { Given } from "@wdio/cucumber-framework";
 
 // import { acceptCookieBanner } from "@nice-digital/wdio-cucumber-steps/lib/support/action/acceptCookieBanner";
 // import { openWebsite } from "@nice-digital/wdio-cucumber-steps/lib/support/action/openWebsite";
