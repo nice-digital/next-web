@@ -1,8 +1,11 @@
 {
-  "extends": "../tsconfig.json",
   "compilerOptions": {
     "target": "es5",
-    "lib": ["dom", "dom.iterable", "esnext"],
+    "lib": [
+      "dom",
+      "dom.iterable",
+      "esnext"
+    ],
     "composite": true,
     "noEmit": false,
     "jsx": "preserve",
@@ -10,21 +13,61 @@
     "rootDir": "../",
     "baseUrl": ".",
     "paths": {
-      "@/test-utils/*": ["src/test-utils/*"],
-      "@/cache": ["src/cache/cache"],
-      "@/config": ["src/config/config"],
-      "@/hooks/*": ["src/hooks/*"],
-      "@/logger": ["src/logging/logger"],
-      "@/components/*": ["src/components/*"],
-      "@/feeds/*": ["src/feeds/*"],
-      "@/mocks/*": ["src/__mocks__/*"],
-      "@/mockData/*": ["src/__mocks__/__data__/*"],
-      "@/utils/*": ["src/utils/*"],
-      "@/helpers/*": ["src/helpers/*"],
-      "@/helpers": ["src/helpers"]
+      "@/test-utils/*": [
+        "src/test-utils/*"
+      ],
+      "@/cache": [
+        "src/cache/cache"
+      ],
+      "@/config": [
+        "src/config/config"
+      ],
+      "@/hooks/*": [
+        "src/hooks/*"
+      ],
+      "@/logger": [
+        "src/logging/logger"
+      ],
+      "@/components/*": [
+        "src/components/*"
+      ],
+      "@/feeds/*": [
+        "src/feeds/*"
+      ],
+      "@/mocks/*": [
+        "src/__mocks__/*"
+      ],
+      "@/mockData/*": [
+        "src/__mocks__/__data__/*"
+      ],
+      "@/utils/*": [
+        "src/utils/*"
+      ],
+      "@/helpers/*": [
+        "src/helpers/*"
+      ],
+      "@/helpers": [
+        "src/helpers"
+      ]
     },
-    "incremental": true
+    "incremental": true,
+    "allowJs": true,
+    "skipLibCheck": true,
+    "strict": false,
+    "forceConsistentCasingInFileNames": true,
+    "esModuleInterop": true,
+    "module": "esnext",
+    "moduleResolution": "node",
+    "resolveJsonModule": true,
+    "isolatedModules": true
   },
-  "include": ["./**/*", "./**/*.json", "../jest.config.js"],
-  "exclude": ["dist", ".next"]
+  "include": [
+    "./**/*",
+    "./**/*.json",
+    "../jest.config.js"
+  ],
+  "exclude": [
+    "dist",
+    ".next"
+  ]
 }
