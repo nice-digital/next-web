@@ -1,8 +1,4 @@
-// import { Given } from "@cucumber/cucumber";
 import { Given } from "@wdio/cucumber-framework";
-
-// import { acceptCookieBanner } from "@nice-digital/wdio-cucumber-steps/lib/support/action/acceptCookieBanner";
-// import { openWebsite } from "@nice-digital/wdio-cucumber-steps/lib/support/action/openWebsite";
 
 /**
  * Accept all cookies using the NICE cookie banner.
@@ -39,28 +35,7 @@ export async function openWebsite(
 	await browser.url(url);
 }
 
-// import { getPath, PageName } from "../support/pagePaths";
-
-export const pagePaths = {
-	"published guidance list": "/guidance/published",
-	"in consultation guidance list": "/guidance/inconsultation",
-	"in development guidance list": "/guidance/indevelopment",
-	"awaiting development guidance list": "/guidance/awaiting-development",
-	status: "/status",
-	"published indicators list": "/indicators/published",
-	"IND63 overview":
-		"/indicators/ind63-pregnancy-and-neonates-mental-health-at-booking-appointment",
-} as const;
-
-export type PageName = keyof typeof pagePaths;
-
-export const getPath = (pageName: PageName): string => {
-	const path = pagePaths[pageName];
-
-	if (!path) throw `Path for page ${pageName} could not be resolved`;
-
-	return path;
-};
+import { getPath, PageName } from "../support/pagePaths.js";
 
 Given(/^I open the (.*) page$/, async (pageName: PageName) => {
 	await openWebsite("url", getPath(pageName));

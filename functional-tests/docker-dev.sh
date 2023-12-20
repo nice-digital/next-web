@@ -11,4 +11,4 @@ docker-compose build && docker-compose up -d --force-recreate
 
 # docker-compose exec tests waitforit -t 120 --strict comments:8080 -- bash
 # winpty docker-compose exec test-runner sh
-docker-compose exec test-runner sh
+docker-compose exec nxt-test-runner sh
