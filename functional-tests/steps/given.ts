@@ -1,5 +1,7 @@
 import { Given } from "@wdio/cucumber-framework";
 
+import { getPath, PageName } from "../support/pagePaths.js";
+
 /**
  * Accept all cookies using the NICE cookie banner.
  * We use this as the cookie banner blocks clicks.
@@ -34,8 +36,6 @@ export async function openWebsite(
 
 	await browser.url(url);
 }
-
-import { getPath, PageName } from "../support/pagePaths.js";
 
 Given(/^I open the (.*) page$/, async (pageName: PageName) => {
 	await openWebsite("url", getPath(pageName));

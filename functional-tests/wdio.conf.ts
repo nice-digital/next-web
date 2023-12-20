@@ -6,8 +6,8 @@ export const config: WebdriverIO.Config = {
 	// Avoids issues with having the wrong ChromeDriver installed via selenium-standalone when Chrome updates every 6 weeks.
 	// We need to use webdriver protocol in Docker because we use the selenium grid.
 	automationProtocol: isInDocker ? "webdriver" : "devtools",
-	runner:'local',
-	hostname: 'localhost',
+	runner: "local",
+	hostname: "localhost",
 	port: 4444,
 	maxInstances: isInDocker ? 5 : 1,
 	path: "/wd/hub",
@@ -43,7 +43,7 @@ export const config: WebdriverIO.Config = {
 	cucumberOpts: {
 		require: [
 			"./steps/**/*.ts",
-			'./steps/given.ts',
+			"./steps/given.ts",
 			"./support/pagePaths.ts",
 			// "./node_modules/@nice-digital/wdio-cucumber-steps/lib/index.js",
 		],
