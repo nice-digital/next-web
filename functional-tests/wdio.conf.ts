@@ -41,12 +41,7 @@ export const config: WebdriverIO.Config = {
 
 	framework: "cucumber",
 	cucumberOpts: {
-		require: [
-			"./steps/**/*.ts",
-			"./steps/given.ts",
-			"./support/pagePaths.ts",
-			// "./node_modules/@nice-digital/wdio-cucumber-steps/lib/index.js",
-		],
+		require: ["./steps/**/*.ts", "./support/pagePaths.ts"],
 		tagExpression: "not @pending", // See https://docs.cucumber.io/tag-expressions/
 		timeout: 1500000,
 	},
