@@ -1,5 +1,14 @@
 {
   "compilerOptions": {
+    "strictNullChecks": true,
+    "strictFunctionTypes": true,
+    "strictPropertyInitialization": true,
+    "strictBindCallApply": true,
+    "noImplicitAny": true,
+    "noImplicitReturns": true,
+    "alwaysStrict": true,
+    "sourceMap": true,
+    "checkJs": true,
     "target": "es5",
     "lib": [
       "dom",
@@ -69,5 +78,7 @@
   "exclude": [
     "dist",
     ".next"
-  ]
+  ],
+  "files": [],
+  "references": [{ "path": "../web" }, { "path": "../functional-tests" }]
 }
