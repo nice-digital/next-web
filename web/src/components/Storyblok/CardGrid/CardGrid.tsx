@@ -13,7 +13,7 @@ export const CardGrid = ({ blok }: CardGridBlokProps): React.ReactElement => {
 	const gridCols = Math.floor(12 / parseInt(columns)) as Columns;
 
 	return (
-		<Grid>
+		<Grid gutter="loose">
 			{cards.map(({ heading, body, link, _uid }) => {
 				let cardLink: CardHeadingLinkProps | undefined = undefined;
 				const resolvedLink = link ? resolveStoryblokLink(link) : undefined;
