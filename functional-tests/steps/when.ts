@@ -1,3 +1,3 @@
-import { When } from "@cucumber/cucumber";
+import { When } from "@wdio/cucumber-framework";
 
 // TODO
