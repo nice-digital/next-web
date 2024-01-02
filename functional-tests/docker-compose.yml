@@ -16,7 +16,7 @@ services:
       - HUB_HOST=selenium-hub
       - HUB_PORT=4444
 
-  test-runner:
+  nxt-test-runner:
     build: .
     container_name: nxt-test-runner
     depends_on:
