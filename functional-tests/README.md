@@ -113,7 +113,7 @@ Using _docker-run.sh_ is great for running the tests one off inside Docker, but 
 Instead, we can run the following command:
 
 ```sh
-docker-compose up -d && docker-compose run test-runner bash
+docker-compose up -d && docker-compose run nxt-test-runner bash
 ```
 
 This runs the docker network in 'detached' mode, which leaves the containers running. It then runs bash against the test runner container. This allows us to then run the tests from within the Docker network, but the NextJS web app runs on http://next-web-tests.nice.org.uk:8092 inside Docker so we have a simple npm alias command to run the tests within Docker:
@@ -124,9 +124,9 @@ npm run test:docker
 
 Examine the scripts within [package.json](package.json) to see how the URL is being overriden within this command.
 
-The whole functional-tests folder is mounted as a volume in the test-runner container. This means any screenshots generated in the case of an error are saved into the screenshots folder, and these are available on the host machine.
+The whole functional-tests folder is mounted as a volume in the nxt-test-runner container. This means any screenshots generated in the case of an error are saved into the screenshots folder, and these are available on the host machine.
 
-> Note: run `exit` to escape from bash inside the test-runner container, and run `docker-compose down` to stop the Docker network.
+> Note: run `exit` to escape from bash inside the nxt-test-runner container, and run `docker-compose down` to stop the Docker network.
 
 ## Excluding tests
 
