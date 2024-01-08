@@ -121,20 +121,7 @@ exports[`LifeSciencesContactUsForm should match snapshot 1`] = `
         >
           Life sciences contact us form
         </h1>
-        <p
-          class="page-header__lead"
-        >
-          This enquiry form is designed to help developers of pharmaceuticals and healthtech products access NICE Advice support services.
-        </p>
       </div>
-      <p>
-        If your enquiry relates to other parts of NICE, please contact our general enquiries team on 
-        <a
-          href="mailto:nice@nice.org.uk"
-        >
-          nice@nice.org.uk
-        </a>
-      </p>
       <iframe
         allow="geolocation; microphone; camera"
         allowfullscreen=""
