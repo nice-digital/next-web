@@ -73,7 +73,7 @@ const FormFooter = () => {
 			<p>
 				You can unsubscribe at any time using the link in the newsletters. For
 				more information about how we process your personal data, please see our{" "}
-				<Link to="/privace-notice">privacy notice</Link>.
+				<Link to="/privacy-notice">privacy notice</Link>.
 			</p>
 		</>
 	);

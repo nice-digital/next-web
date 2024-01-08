@@ -207,7 +207,7 @@ exports[`SubscribeToOurGPReferencePanelForm should match snapshot 1`] = `
         You can unsubscribe at any time using the link in the newsletters. For more information about how we process your personal data, please see our
          
         <a
-          href="/privace-notice"
+          href="/privacy-notice"
         >
           privacy notice
         </a>
