@@ -627,10 +627,15 @@ export type resourceInPageNavLink = {
 	title: string;
 };
 
-export type niceIndevConvertedDocumentSection = {
+export type niceIndevConvertedDocumentChapter = {
 	slug: string;
 	title: string;
 	href: string;
+};
+
+export type niceIndevConvertedDocumentSection = {
+	slug: string;
+	title: string;
 };
 
 export type niceIndevConvertedDocument = {
@@ -641,8 +646,11 @@ export type niceIndevConvertedDocument = {
 			}
 		];
 	};
-	pdfLink: string | null;
 	eTag?: string | null;
 	content: string;
-	sections: niceIndevConvertedDocumentSection[];
+	pdfLink: string | null;
+	title?: string;
+	chapterTitle?: string;
+	chapters: niceIndevConvertedDocumentChapter[];
+	sections?: niceIndevConvertedDocumentSection[];
 };

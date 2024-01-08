@@ -8,13 +8,14 @@ import {
 
 const props: ProjectDisplayWordConversionProps = {
 	content: mockConvertedDocumentFeed.content,
-	sections: mockConvertedDocumentFeed.sections,
+	chapters: mockConvertedDocumentFeed.chapters,
 	inPageNavLinks: [],
 	pdfLink: "/guidance/GID-DG10086/documents/final-scope-pdf",
 	currentChapter: "",
 	currentUrl:
 		"/guidance/topic-selection/gid-dg10086/documents/final-scope-html-conversion",
 	resourceFileTitle: "Test converted document",
+	sections: mockConvertedDocumentFeed.sections,
 };
 
 describe("ProjectDisplayWordConversion", () => {
@@ -29,7 +30,7 @@ describe("ProjectDisplayWordConversion", () => {
 		const { getAllByRole } = within(chapterNavList);
 		const chapterNavListItems = getAllByRole("listitem");
 		expect(chapterNavList).toBeInTheDocument();
-		expect(chapterNavListItems.length).toEqual(props.sections.length);
+		expect(chapterNavListItems.length).toEqual(props.chapters.length);
 	});
 
 	it("should render the first chapter menu item as active with index as slug", () => {

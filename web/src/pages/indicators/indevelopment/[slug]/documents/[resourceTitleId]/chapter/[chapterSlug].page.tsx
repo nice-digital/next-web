@@ -16,7 +16,7 @@ import {
 import {
 	IndevFileResource,
 	IndevSchedule,
-	niceIndevConvertedDocument,
+	niceIndevConvertedDocumentChapter,
 	niceIndevConvertedDocumentSection,
 	ProjectDetail,
 	resourceInPageNavLink,
@@ -39,8 +39,11 @@ export type DocumentsChapterHTMLPageProps = {
 		isConvertedDocument: boolean;
 		resourceFileHTML: string;
 		resourceFileChapters: {
-			allChapters: niceIndevConvertedDocumentSection[];
-			currentChapter: string;
+			allChapters: niceIndevConvertedDocumentChapter[];
+			currentChapter: {
+				title: string;
+				sections?: niceIndevConvertedDocumentSection[];
+			};
 			currentUrl: string;
 		};
 		resourceInPageNavLinks: resourceInPageNavLink[];
@@ -109,12 +112,13 @@ export default function DocumentsChapterHTMLPage({
 			{resource.isConvertedDocument ? (
 				<ProjectDisplayWordConversion
 					content={resource.resourceFileHTML}
-					sections={resource.resourceFileChapters.allChapters}
+					chapters={resource.resourceFileChapters.allChapters}
 					inPageNavLinks={resource.resourceInPageNavLinks}
 					pdfLink={resource.resourceFilePdfLink}
-					currentChapter={resource.resourceFileChapters.currentChapter}
+					currentChapter={resource.resourceFileChapters.currentChapter.title}
 					currentUrl={resource.resourceFileChapters.currentUrl}
 					resourceFileTitle={resource.resourceFileTitle}
+					sections={resource.resourceFileChapters.currentChapter.sections}
 				/>
 			) : (
 				<>
@@ -219,8 +223,11 @@ export const getServerSideProps: GetServerSideProps<
 	}
 
 	const resourceFileChapters = {
-		allChapters: resourceFileHTML.sections || [],
-		currentChapter: chapterSlug,
+		allChapters: resourceFileHTML.chapters || [],
+		currentChapter: {
+			title: chapterSlug,
+			sections: resourceFileHTML.sections,
+		},
 		currentUrl: `${projectPath}/documents/${params.resourceTitleId}`,
 	};
 

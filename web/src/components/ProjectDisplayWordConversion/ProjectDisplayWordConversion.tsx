@@ -26,12 +26,13 @@ export const ProjectDisplayWordConversion: FC<
 	ProjectDisplayWordConversionProps
 > = ({
 	content,
-	sections,
+	chapters,
 	inPageNavLinks,
 	pdfLink,
 	currentChapter,
 	currentUrl,
 	resourceFileTitle,
+	//sections,
 }) => {
 	// find chapter slug in url string
 	const currentUrlChapterSlugIndex = currentChapter
@@ -56,9 +57,9 @@ export const ProjectDisplayWordConversion: FC<
 			const chapterSlug =
 				prevOrNextArrayIndex === 0
 					? ""
-					: `/chapter/${sections[prevOrNextArrayIndex].slug}`;
+					: `/chapter/${chapters[prevOrNextArrayIndex].slug}`;
 			const prevOrNextObject = {
-				text: sections[prevOrNextArrayIndex].title,
+				text: chapters[prevOrNextArrayIndex].title,
 				destination: `${currentUrlNoChapter}${chapterSlug}`,
 				elementType: Link,
 			};
@@ -86,23 +87,23 @@ export const ProjectDisplayWordConversion: FC<
 					</Button>
 				)}
 				<StackedNav aria-label="chapters">
-					{sections.map((section, index) => {
-						const chapterSlug = index === 0 ? "" : `/chapter/${section.slug}`;
+					{chapters.map((chapter, index) => {
+						const chapterSlug = index === 0 ? "" : `/chapter/${chapter.slug}`;
 						const destination = `${currentUrlNoChapter}${chapterSlug}`;
 						const isCurrentChapter =
-							section.slug === currentChapter ||
+							chapter.slug === currentChapter ||
 							(currentChapter === "" && index === 0);
 
 						if (isCurrentChapter) currentChapterArrayIndex = index;
 
 						return (
 							<StackedNavLink
-								key={section.slug}
+								key={chapter.slug}
 								destination={destination}
 								elementType={Link}
 								isCurrent={isCurrentChapter}
 							>
-								{section.title}
+								{chapter.title}
 							</StackedNavLink>
 						);
 					})}
@@ -150,12 +151,12 @@ export const ProjectDisplayWordConversion: FC<
 				<PrevNext
 					{...generatePrevNextLinks(
 						currentChapterArrayIndex - 1,
-						sections.length,
+						chapters.length,
 						true
 					)}
 					{...generatePrevNextLinks(
 						currentChapterArrayIndex + 1,
-						sections.length,
+						chapters.length,
 						false
 					)}
 				/>
