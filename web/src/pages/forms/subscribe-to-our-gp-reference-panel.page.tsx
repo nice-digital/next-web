@@ -65,9 +65,9 @@ const FormFooter = () => {
 	return (
 		<>
 			<p>
-				The information provided on this form will be used to send you the
-				latest news, updates and information from NICE. To manage your
-				subscription, we need to share your data with{" "}
+				The information provided on this form will be used to send you questions
+				about our guidance for your feedback. To manage your subscription, we
+				need to share your data with{" "}
 				<a href="http://www.mailchimp.com">MailChimp</a>.
 			</p>
 			<p>
