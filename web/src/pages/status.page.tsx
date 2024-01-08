@@ -1,5 +1,7 @@
 import { NextSeo } from "next-seo";
 
+import { logger } from "@/logger";
+
 /**
  * Static status page, used for load balancer (e.g. Varnish) health checks ('probes' in Varnish speak).
  *
@@ -7,6 +9,9 @@ import { NextSeo } from "next-seo";
  * as fast as possible, hence being static.
  */
 export default function StatusPage(): JSX.Element {
+	logger.info("Status page check (info)");
+	logger.warn("Status page check (warn)");
+
 	return (
 		<>
 			<NextSeo title="Status" noindex />
