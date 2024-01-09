@@ -26,9 +26,9 @@
   ],
   "dependencies": {
     "@nice-digital/design-system": "^5.0.11",
-    "@nice-digital/global-nav": "^7.0.986",
+    "@nice-digital/global-nav": "^7.1.1048",
     "@nice-digital/nds-prev-next": "^3.0.2",
-    "@nice-digital/search-client": "^2.0.1501-SRCH-726-create-navi",
+    "@nice-digital/search-client": "^2.0.1571",
     "@sindresorhus/slugify": "^1.1.2",
     "axios": "^1.1.2",
     "axios-case-converter": "^1.1.0",
@@ -68,6 +68,7 @@
     "@types/lodash.throttle": "^4.1.7",
     "@types/pluralize": "0.0.29",
     "@types/qs": "^6.9.7",
+    "@types/react": "18.2.45",
     "axios-mock-adapter": "^1.21.2",
     "cross-env": "^7.0.3",
     "mockdate": "^3.0.5",
@@ -76,6 +77,6 @@
     "type-fest": "^2.17.0"
   },
   "volta": {
-    "node": "18.16.0"
+    "node": "18.18.2"
   }
 }
