@@ -17,7 +17,7 @@ export default function MedicinesAndPrescribingNewsletterForm(
 			parentPages={[
 				{
 					title: "Newsletters and alerts",
-					path: "/news/newsletters-and-alerts",
+					path: "/news/nice-newsletters-and-alerts",
 				},
 				{
 					title: "News",

@@ -17,7 +17,7 @@ export default function NewsInternationalNewsletterForm(
 			parentPages={[
 				{
 					title: "Newsletters and alerts",
-					path: "/news/newsletters-and-alerts",
+					path: "/news/nice-newsletters-and-alerts",
 				},
 				{
 					title: "News",
