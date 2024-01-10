@@ -1,6 +1,7 @@
 import { ParsedUrlQuery } from "querystring";
 
 import { type Redirect } from "next";
+import striptags from "striptags";
 
 import {
 	getProjectDetail,
@@ -8,6 +9,7 @@ import {
 	IndevPanel,
 	ProjectDetail,
 	ProjectStatus,
+	resourceInPageNavLink,
 } from "@/feeds/inDev/inDev";
 import { ProductGroup, ProductTypeAcronym } from "@/feeds/publications/types";
 import { logger } from "@/logger";
@@ -31,6 +33,26 @@ export type ValidateRouteParamsResult =
 			panels: IndevPanel[];
 			hasPanels: boolean;
 	  };
+
+export const generateInPageNavArray = (
+	htmlString: string,
+	regex: RegExp
+): resourceInPageNavLink[] => {
+	const resourceFileSectionsHeadings = htmlString.match(regex);
+
+	if (!resourceFileSectionsHeadings) return [];
+
+	const resourceFileSectionsArray = resourceFileSectionsHeadings.map(
+		(section) => {
+			const sectionAnchorIndex = section.indexOf("<a");
+			const title = striptags(section, ["sup", "sub"]).trim();
+			const slug = `${section.slice(sectionAnchorIndex).split('"')[1]}`;
+			return { slug, title };
+		}
+	);
+
+	return resourceFileSectionsArray;
+};
 
 export const validateRouteParams = async ({
 	params,

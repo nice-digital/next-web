@@ -117,52 +117,59 @@ export const getInDevResourceLink = ({
 	panel,
 	project,
 }: GetInDevResourceLinkArgs): ResourceLinkViewModel => {
+	const indevResourceLink = {
+		title: resource.title,
+		href: "",
+		fileTypeName: null,
+		fileSize: null,
+		date: resource.publishedDate,
+		type: panel.title,
+	};
+
 	if (!resource.embedded) {
 		if (!resource.externalUrl)
 			throw Error(
 				`Found resource (${resource.title}) with nothing embedded and no external URL`
 			);
 
-		return {
-			title: resource.title,
-			href: resource.externalUrl,
-			fileTypeName: null,
-			fileSize: null,
-			date: resource.publishedDate,
-			type: panel.title,
-		};
+		indevResourceLink.href = resource.externalUrl;
+
+		return indevResourceLink;
 	} else {
-		const projectPath = getProjectPath(project);
+		const projectPath = getProjectPath(project),
+			resourceEmbedded = resource.embedded;
 
-		const { mimeType, length, resourceTitleId, fileName } =
-				resource.embedded.niceIndevFile,
-			shouldUseNewConsultationComments =
-				resource.convertedDocument ||
-				resource.supportsComments ||
-				resource.supportsQuestions,
-			isHTML = mimeType === "text/html",
-			isConsultation =
-				resource.consultationId > 0 && panel.embedded.niceIndevConsultation,
-			fileSize = isHTML ? null : length,
-			fileTypeName = isHTML ? null : getFileTypeNameFromMime(mimeType),
-			href = shouldUseNewConsultationComments
-				? `/consultations/${resource.consultationId}/${resource.consultationDocumentId}`
-				: !isHTML
-				? `${projectPath}/downloads/${project.reference.toLowerCase()}-${resourceTitleId}.${
-						fileName.split(".").slice(-1)[0]
-				  }`
-				: isConsultation
-				? `${projectPath}/consultations/${resourceTitleId}`
-				: `${projectPath}/documents/${resourceTitleId}`;
+		if (resourceEmbedded.niceIndevConvertedDocument) {
+			indevResourceLink.href = `${projectPath}/documents/${resourceEmbedded.niceIndevConvertedDocument.resourceTitleId}`;
+		}
 
-		return {
-			title: resource.title,
-			href,
-			fileTypeName,
-			fileSize,
-			date: resource.publishedDate,
-			type: panel.title,
-		};
+		if (resourceEmbedded.niceIndevFile) {
+			const { mimeType, length, resourceTitleId, fileName } =
+					resourceEmbedded.niceIndevFile,
+				shouldUseNewConsultationComments =
+					resource.convertedDocument ||
+					resource.supportsComments ||
+					resource.supportsQuestions,
+				isHTML = mimeType === "text/html",
+				isConsultation =
+					resource.consultationId > 0 && panel.embedded.niceIndevConsultation;
+
+			Object.assign(indevResourceLink, {
+				fileSize: isHTML ? null : length,
+				fileTypeName: isHTML ? null : getFileTypeNameFromMime(mimeType),
+				href: shouldUseNewConsultationComments
+					? `/consultations/${resource.consultationId}/${resource.consultationDocumentId}`
+					: !isHTML
+					? `${projectPath}/downloads/${project.reference.toLowerCase()}-${resourceTitleId}.${
+							fileName.split(".").slice(-1)[0]
+					  }`
+					: isConsultation
+					? `${projectPath}/consultations/${resourceTitleId}`
+					: `${projectPath}/documents/${resourceTitleId}`,
+			});
+		}
+
+		return indevResourceLink;
 	}
 };
 

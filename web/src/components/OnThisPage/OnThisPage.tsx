@@ -80,7 +80,9 @@ export const OnThisPage: FC<OnThisPageProps> = ({ sections }) => {
 							<a
 								className={activeHeadingId === slug ? styles.activeHeading : ""}
 								href={`#${slug}`}
-								dangerouslySetInnerHTML={{ __html: striptags(title) }}
+								dangerouslySetInnerHTML={{
+									__html: striptags(title, ["sup", "sub"]).trim(),
+								}}
 							/>
 						</li>
 					) : null;

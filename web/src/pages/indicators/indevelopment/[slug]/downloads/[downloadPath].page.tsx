@@ -44,7 +44,7 @@ export const getServerSideProps: GetServerSideProps<
 			)
 			.find(
 				(resource) =>
-					resource.embedded?.niceIndevFile.resourceTitleId === resourceTitleId
+					resource.embedded?.niceIndevFile?.resourceTitleId === resourceTitleId
 			);
 
 	if (projectReference.toLowerCase() !== project.reference.toLowerCase()) {

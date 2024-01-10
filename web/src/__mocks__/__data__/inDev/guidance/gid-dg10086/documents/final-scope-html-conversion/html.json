@@ -1,0 +1,26 @@
+{
+  "_links": { "self": [{}] },
+  "eTag": "01000000-0000-0017-0000-000000000007",
+  "content": "<div class=\"chapter\" title=\"Overview\" id=\"0-1-overview\" xmlns=\"http://www.w3.org/1999/xhtml\">\r\n  <h2 class=\"title\">\r\n    <a id=\"overview\" style=\"position:relative\" class=\"annotator-chapter\" data-heading-type=\"chapter\"></a>Overview<span class=\"annotator-adder\"></span></h2>\r\n  <p>This guideline covers care for women of any age (including girls and young women under 18) who request an abortion. It aims to improve the organisation of services and make them easier for women to access. Detailed recommendations on conducting abortions at different gestational stages are also included, to ensure that women get the safest and most effective care possible. </p>\r\n</div>",
+  "pdfLink": "/guidance/GID-DG10086/documents/final-scope-pdf",
+  "title": "Some document title",
+  "chapterTitle": "Overview",
+  "chapters": [
+    {
+      "slug": "overview",
+      "title": "Overview",
+      "href": "/guidance/GID-DG10086/documents/final-scope-html-conversion/chapter/overview"
+    },
+    {
+      "slug": "recommendations",
+      "title": "Recommendations",
+      "href": "/guidance/GID-DG10086/documents/final-scope-html-conversion/chapter/recommendations"
+    }
+  ],
+  "sections": [
+    {
+      "slug": "0-1-who-is-it-for",
+      "title": "Who is it for?"
+    }
+  ]
+}

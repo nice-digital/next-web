@@ -1,0 +1,131 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`ProjectDisplayWordConversion should match snapshot for all nav items 1`] = `
+<div>
+  <div
+    class="grid grid--loose"
+  >
+    <section
+      data-component="grid-item"
+      data-g="12 md:4 lg:3"
+    >
+      <a
+        aria-label="Download (PDF)"
+        class="btn btn--cta download"
+        data-component="button--cta"
+        href="/guidance/GID-DG10086/documents/final-scope-pdf"
+        target="_blank"
+      >
+        Download (PDF)
+      </a>
+      <nav
+        aria-label="chapters"
+        class="stacked-nav"
+        data-component="stacked-nav"
+      >
+        <ul
+          class="stacked-nav__list"
+        >
+          <li
+            class="stacked-nav__list-item"
+          >
+            <a
+              aria-current="true"
+              href="/guidance/topic-selection/gid-dg10086/documents/final-scope-html-conversion"
+            >
+              <span
+                class="stacked-nav__content-wrapper"
+              >
+                Overview
+              </span>
+            </a>
+          </li>
+          <li
+            class="stacked-nav__list-item"
+          >
+            <a
+              aria-current="false"
+              href="/guidance/topic-selection/gid-dg10086/documents/final-scope-html-conversion/chapter/recommendations"
+            >
+              <span
+                class="stacked-nav__content-wrapper"
+              >
+                Recommendations
+              </span>
+            </a>
+          </li>
+        </ul>
+      </nav>
+    </section>
+    <section
+      data-component="grid-item"
+      data-g="12 md:8 lg:9"
+    >
+      <h2
+        class="mt--0"
+      >
+        Test converted document
+      </h2>
+      <div
+        class="chapterContent"
+      >
+        <div
+          class="chapter"
+          id="0-1-overview"
+          title="Overview"
+          xmlns="http://www.w3.org/1999/xhtml"
+        >
+          
+  
+          <h2
+            class="title"
+          >
+            
+    
+            <a
+              class="annotator-chapter"
+              data-heading-type="chapter"
+              id="overview"
+              style="position:relative"
+            />
+            Overview
+            <span
+              class="annotator-adder"
+            />
+          </h2>
+          
+  
+          <p>
+            This guideline covers care for women of any age (including girls and young women under 18) who request an abortion. It aims to improve the organisation of services and make them easier for women to access. Detailed recommendations on conducting abortions at different gestational stages are also included, to ensure that women get the safest and most effective care possible. 
+          </p>
+          
+
+        </div>
+      </div>
+      <div
+        class="prev-next"
+      >
+        <nav
+          aria-label="Previous and next pages"
+        >
+          <a
+            class="prev-next__link"
+            href="/guidance/topic-selection/gid-dg10086/documents/final-scope-html-conversion/chapter/recommendations"
+          >
+            <span
+              class="prev-next__link-intro"
+            >
+              Next page
+            </span>
+            <span
+              class="prev-next__link-text"
+            >
+              Recommendations
+            </span>
+          </a>
+        </nav>
+      </div>
+    </section>
+  </div>
+</div>
+`;
