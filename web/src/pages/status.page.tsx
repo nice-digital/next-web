@@ -9,7 +9,7 @@ import { logger } from "@/logger";
  * as fast as possible, hence being static.
  */
 export default function StatusPage(): JSX.Element {
-	logger.error("Test status page error (client side)");
+	logger.warn("Test status page warn (client side)");
 	logger.info("Test status page info (client side)");
 
 	return (
@@ -22,7 +22,7 @@ export default function StatusPage(): JSX.Element {
 }
 
 export const getServerSideProps = () => {
-	logger.error("Test status page error (server side)");
+	logger.warn("Test status page warn (server side)");
 	logger.info("Test status page info (server side)");
 	return { props: {} };
 };
