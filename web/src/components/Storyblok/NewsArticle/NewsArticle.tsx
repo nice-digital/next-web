@@ -7,6 +7,8 @@ import {
 	type NewsArticleStoryblok,
 } from "@/types/storyblok";
 
+import styles from "./NewsArticle.module.scss";
+
 interface HomepageBlokProps {
 	blok: NewsArticleStoryblok;
 }
@@ -28,26 +30,22 @@ export const NewsArticle = ({
 		<article>
 			<StoryblokPageHeader blok={pageHeaderBlok} />
 
-			<div className="article-container">
-				<div className="article-content">
-					{blok.image && <img src={`${blok.image.filename}/m/`} />}
+			<div className={styles.articleContainer}>
+				<div className={styles.articleContent}>
+					{blok.image && (
+						<img
+							style={{ aspectRatio: 16 / 9, width: "100%", objectFit: "cover" }}
+							src={`${blok.image.filename}/m/`}
+						/>
+					)}
 
 					{render(blok.content)}
 				</div>
-				<aside>
-					Related content
+				<aside className={styles.articleSidebar}>
+					<h2 className="h4">Related content</h2>
 					{/* <StoryblokComponent blok={blok.relatedContent} /> */}
 				</aside>
 			</div>
-			{/* {blok.metadata &&
-				blok.metadata.length > 0 &&
-				blok.metadata?.map((nestedBlok) => (
-					<StoryblokComponent blok={nestedBlok} key={nestedBlok._uid} />
-				))}
-
-			{blok.body.map((nestedBlok) => (
-				<StoryblokComponent blok={nestedBlok} key={nestedBlok._uid} />
-			))} */}
 		</article>
 	);
 };

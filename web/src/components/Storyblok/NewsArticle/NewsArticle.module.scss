@@ -1,0 +1,22 @@
+@use '@nice-digital/nds-core/scss/media-queries';
+
+.articleContainer {
+  display: grid;
+  @include media-queries.mq($from: md) {
+    display: grid;
+    gap: 1rem;
+    grid-template-columns: repeat(12, 1fr);
+  }
+ }
+
+.articleContent {
+  @include media-queries.mq($from: md) {
+    grid-column: span 6;
+  }
+}
+
+.articleSidebar {
+  @include media-queries.mq($from: md) {
+    grid-column: 8 / span 4;
+  }
+}
