@@ -34,8 +34,9 @@ export const NewsArticle = ({
 				<div className={styles.articleContent}>
 					{blok.image && (
 						<img
-							style={{ aspectRatio: 16 / 9, width: "100%", objectFit: "cover" }}
+							className={styles.featuredImage}
 							src={`${blok.image.filename}/m/`}
+							alt={blok.image.alt}
 						/>
 					)}
 
