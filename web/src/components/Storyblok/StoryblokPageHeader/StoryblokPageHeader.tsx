@@ -10,10 +10,19 @@ interface PageHeaderBlokProps {
 	breadcrumbs?: TypeBreadcrumb[];
 }
 
+function formatDate(date: string): string {
+	return new Intl.DateTimeFormat("en-GB", {
+		year: "numeric",
+		month: "long",
+		day: "numeric",
+	}).format(new Date(date));
+}
+
 export const StoryblokPageHeader = ({
 	blok,
 	breadcrumbs,
 }: PageHeaderBlokProps): React.ReactElement => {
+	console.log(breadcrumbs);
 	const BreadcrumbComponent = breadcrumbs?.length ? (
 		<Breadcrumbs>
 			{[{ title: "Home", path: "/" }, ...breadcrumbs].map((breadcrumb) => (
@@ -25,7 +34,6 @@ export const StoryblokPageHeader = ({
 	) : undefined;
 
 	console.log("Page header blok:", blok);
-
 	return (
 		<>
 			<Hero
@@ -47,6 +55,7 @@ export const StoryblokPageHeader = ({
 					</a>
 				</p>
 			)}
+			{blok.date && <time dateTime={blok.date}>{formatDate(blok.date)}</time>}
 		</>
 	);
 };

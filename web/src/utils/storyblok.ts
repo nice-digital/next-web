@@ -14,6 +14,7 @@ import { CardGrid } from "@/components/Storyblok/CardGrid/CardGrid";
 import { CategoryNavigation } from "@/components/Storyblok/CategoryNavigation/CategoryNavigation";
 import { Homepage } from "@/components/Storyblok/Homepage/Homepage";
 import { Metadata } from "@/components/Storyblok/Metadata/Metadata";
+import { NewsArticle } from "@/components/Storyblok/NewsArticle/NewsArticle";
 import { StoryblokHero } from "@/components/Storyblok/StoryblokHero/StoryblokHero";
 import { StoryblokPageHeader } from "@/components/Storyblok/StoryblokPageHeader/StoryblokPageHeader";
 import { publicRuntimeConfig } from "@/config";
@@ -42,6 +43,7 @@ export const initStoryblok = (): void => {
 		hero: StoryblokHero,
 		pageHeader: StoryblokPageHeader,
 		metadata: Metadata,
+		newsArticle: NewsArticle,
 	};
 
 	try {
