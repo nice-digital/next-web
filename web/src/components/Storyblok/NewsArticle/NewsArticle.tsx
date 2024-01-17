@@ -40,7 +40,12 @@ export const NewsArticle = ({
 						/>
 					)}
 
-					{render(blok.content)}
+					{render(blok.content, {
+						defaultBlokResolver: (name, props) => {
+							const blok = { ...props, component: name };
+							return <StoryblokComponent blok={blok} />;
+						},
+					})}
 				</div>
 				<aside className={styles.articleSidebar}>
 					<h2 className="h4">Related content</h2>

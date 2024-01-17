@@ -10,6 +10,7 @@ import {
 } from "@storyblok/react";
 import { type MetaTag } from "next-seo/lib/types";
 
+import { Blockquote } from "@/components/Storyblok/Blockquote/Blockquote";
 import { CardGrid } from "@/components/Storyblok/CardGrid/CardGrid";
 import { CategoryNavigation } from "@/components/Storyblok/CategoryNavigation/CategoryNavigation";
 import { Homepage } from "@/components/Storyblok/Homepage/Homepage";
@@ -21,7 +22,7 @@ import { publicRuntimeConfig } from "@/config";
 import { logger } from "@/logger";
 import { type Breadcrumb } from "@/types/Breadcrumb";
 import { type SBLink } from "@/types/SBLink";
-import { type MultilinkStoryblok } from "@/types/storyblok";
+import { CardGridStoryblok, type MultilinkStoryblok } from "@/types/storyblok";
 
 export type StoryVersion = "draft" | "published" | undefined;
 export type SBSingleResponse = {
@@ -44,6 +45,7 @@ export const initStoryblok = (): void => {
 		pageHeader: StoryblokPageHeader,
 		metadata: Metadata,
 		newsArticle: NewsArticle,
+		quote: Blockquote,
 	};
 
 	try {
