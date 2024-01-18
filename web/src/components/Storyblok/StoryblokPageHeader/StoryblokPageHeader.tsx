@@ -22,7 +22,6 @@ export const StoryblokPageHeader = ({
 	blok,
 	breadcrumbs,
 }: PageHeaderBlokProps): React.ReactElement => {
-	console.log(breadcrumbs);
 	const BreadcrumbComponent = breadcrumbs?.length ? (
 		<Breadcrumbs>
 			{[{ title: "Home", path: "/" }, ...breadcrumbs].map((breadcrumb) => (
