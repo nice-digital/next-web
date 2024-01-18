@@ -11,6 +11,7 @@ import {
 import { type MetaTag } from "next-seo/lib/types";
 
 import { Blockquote } from "@/components/Storyblok/Blockquote/Blockquote";
+import { BlogPost } from "@/components/Storyblok/BlogPost/BlogPost";
 import { CardGrid } from "@/components/Storyblok/CardGrid/CardGrid";
 import { CategoryNavigation } from "@/components/Storyblok/CategoryNavigation/CategoryNavigation";
 import { Homepage } from "@/components/Storyblok/Homepage/Homepage";
@@ -45,6 +46,7 @@ export const initStoryblok = (): void => {
 		pageHeader: StoryblokPageHeader,
 		metadata: Metadata,
 		newsArticle: NewsArticle,
+		blogPost: BlogPost,
 		quote: Blockquote,
 	};
 
@@ -87,6 +89,7 @@ export const fetchStory = async (
 			`cdn/stories/${slug}`,
 			sbParams
 		);
+
 		result = {
 			story: story.data.story,
 		};
