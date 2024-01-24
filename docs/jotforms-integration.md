@@ -88,7 +88,7 @@ To create a new form page:
 1. Copy and paste an existing page and associated snapshot test file.
 2. Rename it to match the desired final path under '/forms/'.
 3. Modify necessary items in the page component (e.g., formID, title, etc.).
-4. Modify the necessary items in the page test (update the id, title and url only. The rest of the attributes can be safely left as is (e.g. height, status, date of submission etc), unless you have specific testing requirements. 
+4. Modify the necessary items in the page test - update the id, title and url only. The rest of the attributes can be safely left as is (e.g. height, status, date of submission etc), unless you have specific testing requirements. 
 5. Update the snapshot and check it matches the desired form.
 
 Example: **leave-feedback.page.tsx, leave-feedback.page.test.tsx**
