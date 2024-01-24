@@ -32,7 +32,6 @@ export default function NewsArticlePage({
 				openGraph={{ title: title }}
 				additionalMetaTags={additionalMetaTags}
 			></NextSeo>
-			<h2></h2>
 			<StoryblokComponent blok={story.content} />
 		</>
 	);
