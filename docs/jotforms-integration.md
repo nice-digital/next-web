@@ -111,7 +111,7 @@ Whenever possible, template content should be hosted on Next Web rather than Jot
 
 **Debugging and Direct Form Submission**
 
-JotForms on Next Web are embedded via iframe from [nice.jotform.com](https://nice.jotform.com/), with the unique form ID completing the path, for example: [https://nice.jotform.com/220684821482963](https://nice.jotform.com/220684821482963). When debugging, it can help to submit a form directly from JotForm which can help to eliminate Next Web as a factor in failed mailchimp submissions for example.
+JotForms on Next Web are embedded via iframe from [nice.jotform.com](https://nice.jotform.com/), with the unique form ID completing the path, for example: [https://nice.jotform.com/220684821482963](https://nice.jotform.com/220684821482963). When debugging, it can help to submit a form directly from JotForm which can help to eliminate Next Web as a factor in failed mailchimp submissions, for example.
 
 
 # Next Web reusable components for form pages
