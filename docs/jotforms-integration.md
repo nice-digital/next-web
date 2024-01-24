@@ -145,7 +145,7 @@ The component employs the **Breadcrumbs** and **Breadcrumb** components from the
 
 **Page Layout**
 
-For layout, the component uses the **Grid** and **GridItem** components from the **@nice-digital/nds-grid** package. The grid has a loose gutter and contains two grid items if the **informationPanel** prop is provided, or one grid item otherwise. The first grid item includes the page header, the form header if provided, the **JotFormEmbed** component to display the form, and the form footer if provided. The second grid item, if present, contains the information panel.
+The component employs the **Grid** and **GridItem** components from the **@nice-digital/nds-grid** package. The grid has a loose gutter and contains two grid items if the **informationPanel** prop is provided, or one grid item otherwise. The first grid item includes the page header, the form header if provided, the **JotFormEmbed** component to display the form, and the form footer if provided. The second grid item, if present, contains the information panel.
 
 **Page Header**
 
