@@ -107,7 +107,7 @@ The **Page** component accepts the following properties:
 
 **Template Content Placement**
 
-Whenever possible, template content should be hosted on Next Web rather than JotForms for ease of eventual transition to the Storyblok CMS. In cases of multipage forms or content interspersed with form sections, due to iframe limitations, this content will remain on JotForms.
+Whenever possible, template content should be hosted on Next Web rather than JotForms for ease of eventual transition to the Storyblok CMS. In cases of multipage forms or content interspersed with form sections, this content will remain on JotForms as this is most practical given the iframe setup.
 
 **Debugging and Direct Form Submission**
 
