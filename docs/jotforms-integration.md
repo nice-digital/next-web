@@ -137,7 +137,7 @@ This component outputs a page that includes a NextSeo component for SEO optimiza
 
 **SEO Metadata**
 
-The **NextSeo** component from the **next-seo** package to set SEO metadata for the page. The title is set to the form name and the titles of the parent pages, joined with " | ". The description is set to the lead text.
+The **NextSeo** component from the **next-seo** package sets SEO metadata for the page. The title is set to the form name and the titles of the parent pages, joined with " | ". The description is set to the lead text.
 
 **Breadcrumb Navigation**
 
