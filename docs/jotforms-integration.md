@@ -101,7 +101,7 @@ The **Page** component accepts the following properties:
 - **informationPanel?: JSX.Element** ;
 - **formHeader?: JSX.Element** ;
 - **formFooter?: JSX.Element** ;
-- **InformationPanel?** : Renders HTML content in a panel to the right of the form, adjusting column widths accordingly.
+- **InformationPanel?** : Renders HTML content in a panel adjacent to the form, adjusting column widths accordingly.
 - **FormHeader?: JSX.Element** : Renders HTML content before the form.
 - **FormFooter?: JSX.Element** : Renders HTML content after the form.
 
