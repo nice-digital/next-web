@@ -15,12 +15,13 @@ interface BlogPostProps {
 }
 
 export const BlogPost = ({ blok }: BlogPostProps): React.ReactElement => {
-	console.log("BlogPost blok", blok);
+	// console.log("BlogPost blok", blok);
 
 	const pageHeaderBlok = {
 		title: blok.title,
 		summary: blok.introText,
 		date: blok.date,
+		pageType: blok.component,
 		_uid: blok._uid,
 		component: "pageHeader",
 	};

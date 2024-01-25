@@ -24,7 +24,7 @@ export default function NewsArticlePage({
 		[story]
 	);
 	const title = story.name;
-
+	console.log("additionalMetaTags", additionalMetaTags);
 	return (
 		<>
 			<NextSeo

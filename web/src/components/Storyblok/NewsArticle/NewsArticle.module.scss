@@ -1,28 +1,21 @@
 @use '@nice-digital/nds-core/scss/media-queries';
 
-.articleContainer {
-  display: grid;
-  @include media-queries.mq($from: md) {
-    display: grid;
-    gap: 1rem;
-    grid-template-columns: repeat(12, 1fr);
-  }
- }
+$featuredImageOffset: 20dvh;
+$featuredImageHeight: 530px;
 
-.articleContent {
-  @include media-queries.mq($from: md) {
-    grid-column: span 6;
-  }
-
-  .featuredImage {
-    aspect-ratio: 16 / 9;
-    width: 100%;
-    object-fit: cover;
+.article  {
+  &:has(.featuredImage) {
+    :global(.hero) {
+      padding-bottom: $featuredImageOffset;
+    }
   }
 }
 
-.articleSidebar {
-  @include media-queries.mq($from: md) {
-    grid-column: 8 / span 4;
-  }
+
+.featuredImage {
+  aspect-ratio: 16 / 9;
+  width: 100%;
+  object-fit: cover;
+  margin-top: -$featuredImageOffset;
 }
+

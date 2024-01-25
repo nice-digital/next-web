@@ -1,9 +1,13 @@
 import { Breadcrumbs, Breadcrumb } from "@nice-digital/nds-breadcrumbs";
+import { Grid, GridItem } from "@nice-digital/nds-grid";
 import { Hero } from "@nice-digital/nds-hero";
+import { Tag } from "@nice-digital/nds-tag";
 
 import { type Breadcrumb as TypeBreadcrumb } from "@/types/Breadcrumb";
 import { type PageHeaderStoryblok } from "@/types/storyblok";
 import { resolveStoryblokLink } from "@/utils/storyblok";
+
+import styles from "./StoryblokPageHeader.module.scss";
 
 interface PageHeaderBlokProps {
 	blok: PageHeaderStoryblok;
@@ -32,13 +36,31 @@ export const StoryblokPageHeader = ({
 		</Breadcrumbs>
 	) : undefined;
 
+	const Footer = () => {
+		const pageType =
+			blok.pageType === "newsArticle"
+				? "News"
+				: blok.pageType === "blogPost"
+				? "Blog"
+				: null;
+		return (
+			<div className={styles.footerMeta}>
+				{pageType && <Tag outline>{pageType}</Tag>}
+
+				{blok.date && <time dateTime={blok.date}>{formatDate(blok.date)}</time>}
+			</div>
+		);
+	};
+
 	console.log("Page header blok:", blok);
+
 	return (
 		<>
 			<Hero
 				title={blok.title}
 				intro={blok.summary || undefined}
 				header={BreadcrumbComponent}
+				footer={<Footer />}
 			/>
 			{blok.description && (
 				<p>
@@ -54,7 +76,6 @@ export const StoryblokPageHeader = ({
 					</a>
 				</p>
 			)}
-			{blok.date && <time dateTime={blok.date}>{formatDate(blok.date)}</time>}
 		</>
 	);
 };
