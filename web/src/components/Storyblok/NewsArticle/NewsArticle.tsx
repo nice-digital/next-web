@@ -10,8 +10,9 @@ import {
 	PageHeaderStoryblok,
 	type NewsArticleStoryblok,
 } from "@/types/storyblok";
+import { formatDateStr } from "@/utils/datetime";
 
-import StoryblokImage from "../StoryblokImage/StoryblokImage";
+import { StoryblokImage } from "../StoryblokImage/StoryblokImage";
 
 import styles from "./NewsArticle.module.scss";
 
@@ -70,22 +71,32 @@ export const NewsArticle = ({ blok }: NewsArticleProps): React.ReactElement => {
 						{blok.resources && blok.resources.length > 0 && (
 							<>
 								<Panel variant="primary">
-									<h2>related content</h2>
+									<h2 className="h5">Associated guidance and resources</h2>
+									{blok.resources.map((resource) => {
+										return (
+											<StoryblokComponent blok={resource} key={resource._uid} />
+										);
+									})}
 								</Panel>
-								<StoryblokComponent blok={blok.resources} />
 							</>
 						)}
 
 						{blok.relatedNews && blok.relatedNews.length > 0 && (
 							<>
 								<Panel>
-									<h2>Related news</h2>
+									<h2 className="h5">Related news stories</h2>
+									{blok.relatedNews?.map((news, index) => {
+										return (
+											<>
+												<StoryblokComponent blok={news} key={news._uid} />
+												{blok.relatedNews &&
+													index < blok.relatedNews.length - 1 && <hr />}
+											</>
+										);
+									})}
 								</Panel>
-								<StoryblokComponent blok={blok.relatedNews} />
 							</>
 						)}
-
-						{/* <StoryblokComponent blok={blok.relatedContent} /> */}
 					</GridItem>
 				</Grid>
 			</GridItem>

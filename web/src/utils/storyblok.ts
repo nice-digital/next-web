@@ -19,6 +19,8 @@ import { Metadata } from "@/components/Storyblok/Metadata/Metadata";
 import { NewsArticle } from "@/components/Storyblok/NewsArticle/NewsArticle";
 import { StoryblokHero } from "@/components/Storyblok/StoryblokHero/StoryblokHero";
 import { StoryblokPageHeader } from "@/components/Storyblok/StoryblokPageHeader/StoryblokPageHeader";
+import { StoryblokRelatedLink } from "@/components/Storyblok/StoryblokRelatedLink/StoryblokRelatedLink";
+import { StoryblokRelatedNewsLink } from "@/components/Storyblok/StoryblokRelatedNewsLink/StoryblokRelatedNewsLink";
 import { publicRuntimeConfig } from "@/config";
 import { logger } from "@/logger";
 import { type Breadcrumb } from "@/types/Breadcrumb";
@@ -48,6 +50,8 @@ export const initStoryblok = (): void => {
 		newsArticle: NewsArticle,
 		blogPost: BlogPost,
 		quote: Blockquote,
+		relatedLink: StoryblokRelatedLink,
+		relatedNewsLink: StoryblokRelatedNewsLink,
 	};
 
 	try {
