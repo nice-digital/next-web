@@ -1,5 +1,6 @@
 import React from "react";
 
+import { Link } from "@/components/Link/Link";
 import { RelatedNewsLinkStoryblok } from "@/types/storyblok";
 import { formatDateStr } from "@/utils/datetime";
 
@@ -12,11 +13,12 @@ export const StoryblokRelatedNewsLink = ({
 }: StoryblokRelatedNewsLinkProps): React.ReactElement => {
 	return (
 		<>
-			<a href={blok.link.url} target="_blank" rel="noreferrer">
+			<Link to={blok.link.url} target="_blank" rel="noreferrer">
 				{blok.title}
-			</a>
+			</Link>
 			<p className="">
-				{blok.publisher}, {formatDateStr(blok.date)}
+				{blok.publisher},{" "}
+				<time dateTime={blok.date}>{formatDateStr(blok.date)}</time>
 			</p>
 		</>
 	);

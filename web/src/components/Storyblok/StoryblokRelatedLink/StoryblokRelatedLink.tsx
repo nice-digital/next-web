@@ -1,5 +1,6 @@
 import React from "react";
 
+import { Link } from "@/components/Link/Link";
 import { RelatedLinkStoryblok } from "@/types/storyblok";
 
 export interface StoryblokRelatedLinkProps {
@@ -9,5 +10,5 @@ export interface StoryblokRelatedLinkProps {
 export const StoryblokRelatedLink = ({
 	blok,
 }: StoryblokRelatedLinkProps): React.ReactElement => {
-	return <a href={blok.link.url}>{blok.title}</a>;
+	return <Link to={blok.link.url}>{blok.title}</Link>;
 };
