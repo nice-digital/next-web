@@ -52,8 +52,6 @@ export const StoryblokPageHeader = ({
 		);
 	};
 
-	console.log("Page header blok:", blok);
-
 	return (
 		<>
 			<Hero

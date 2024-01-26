@@ -15,7 +15,6 @@ interface BlockquoteBlokProps {
 export const Blockquote = ({
 	blok,
 }: BlockquoteBlokProps): React.ReactElement => {
-	console.log("Blockquote blok", blok);
 	const { quoteText, quoteAuthor } = blok;
 
 	return (

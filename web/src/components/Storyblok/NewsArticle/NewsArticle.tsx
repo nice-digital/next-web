@@ -21,8 +21,6 @@ interface NewsArticleProps {
 }
 
 export const NewsArticle = ({ blok }: NewsArticleProps): React.ReactElement => {
-	console.log("NewsArticle blok", blok);
-
 	const pageHeaderBlok: PageHeaderStoryblok = {
 		title: blok.title,
 		summary: blok.introText,

@@ -13,14 +13,12 @@ export const StoryblokImage = ({
 	className,
 	serviceOptions,
 }: StoryblokImageProps): React.ReactElement => {
-	// console.log("StoryblokImage blok", blok);
 	const constructImageSrc = (baseUrl: string, serviceOptions?: string) => {
 		return serviceOptions ? `${baseUrl}/${serviceOptions}/` : `${baseUrl}/`;
 	};
 
 	const webpSrc = constructImageSrc(`${src}/m`, serviceOptions);
 	const jpgSrc = constructImageSrc(`${src}`, serviceOptions);
-	console.log(webpSrc, jpgSrc);
 	return (
 		<picture>
 			<source srcSet={webpSrc} type="image/webp" />

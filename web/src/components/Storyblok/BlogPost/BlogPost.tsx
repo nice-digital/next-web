@@ -15,8 +15,6 @@ interface BlogPostProps {
 }
 
 export const BlogPost = ({ blok }: BlogPostProps): React.ReactElement => {
-	// console.log("BlogPost blok", blok);
-
 	const pageHeaderBlok = {
 		title: blok.title,
 		summary: blok.introText,
