@@ -192,7 +192,6 @@ export const getBreadcrumbs = async (
 	version?: string
 ): Promise<Breadcrumb[]> => {
 	const topSlug = slug.substring(0, slug.indexOf("/")); // Slug of highest level parent
-
 	const linksResult = await fetchLinks(
 		(version as StoryVersion) || "published",
 		topSlug
@@ -227,7 +226,9 @@ export const getBreadcrumbs = async (
 		}
 	}
 
-	return breadcrumbs;
+	const updatedBreadcrumbs = breadcrumbs.slice(0, -1);
+
+	return updatedBreadcrumbs;
 };
 
 // Resolve a link object returned from the Storyblok API, so that it returns

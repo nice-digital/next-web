@@ -2,22 +2,25 @@ import { type ISbStoryData, StoryblokComponent } from "@storyblok/react";
 import { NextSeo } from "next-seo";
 import React, { useMemo } from "react";
 
-// import { type Breadcrumb } from "@/types/Breadcrumb";
+import { type Breadcrumb } from "@/types/Breadcrumb";
 import {
 	fetchStory,
 	getStoryVersionFromQuery,
 	getSlugFromParams,
 	getAdditionalMetaTags,
+	getBreadcrumbs,
 } from "@/utils/storyblok";
 
 import type { GetServerSidePropsContext } from "next";
 
 interface NewsArticlePageProps {
 	story: ISbStoryData;
+	breadcrumbs?: Breadcrumb[];
 }
 
 export default function NewsArticlePage({
 	story,
+	breadcrumbs,
 }: NewsArticlePageProps): React.ReactElement {
 	const additionalMetaTags = useMemo(
 		() => getAdditionalMetaTags(story),
@@ -32,7 +35,7 @@ export default function NewsArticlePage({
 				openGraph={{ title: title }}
 				additionalMetaTags={additionalMetaTags}
 			></NextSeo>
-			<StoryblokComponent blok={story.content} />
+			<StoryblokComponent blok={story.content} breadcrumbs={breadcrumbs} />
 		</>
 	);
 }
@@ -47,13 +50,15 @@ export async function getServerSideProps(context: GetServerSidePropsContext) {
 		const version = getStoryVersionFromQuery(query);
 
 		// Get the story and its breadcrumbs
-		const [storyResult] = await Promise.all([
-			fetchStory(`news-blogs-and-podcasts/news/${slug}`, version),
+		const [storyResult, breadcrumbs] = await Promise.all([
+			fetchStory(`news/articles/${slug}`, version),
+			getBreadcrumbs(`news/articles/${slug}`, version),
 		]);
 
 		const result = {
 			props: {
 				...storyResult,
+				breadcrumbs,
 			},
 		};
 
