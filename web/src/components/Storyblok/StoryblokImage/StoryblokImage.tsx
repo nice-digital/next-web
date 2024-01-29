@@ -15,16 +15,24 @@ export const StoryblokImage = ({
 	serviceOptions,
 	...rest
 }: StoryblokImageProps): React.ReactElement => {
+	const placeholderSrc = "/fallback-image.png";
+
 	const constructImageSrc = (baseUrl: string, serviceOptions?: string) => {
 		return serviceOptions ? `${baseUrl}${serviceOptions}` : `${baseUrl}`;
 	};
 
-	const webpSrc = constructImageSrc(`${src}/m/`, serviceOptions);
+	const webpSrc = constructImageSrc(`${src}`, serviceOptions);
 	const jpgSrc = constructImageSrc(`${src}`, serviceOptions);
+
 	return (
 		<picture>
-			<source srcSet={webpSrc} type="image/webp" />
-			<img className={className} src={jpgSrc} alt={alt} {...rest} />
+			{webpSrc && <source srcSet={webpSrc} type="image/webp" />}
+			<img
+				className={className}
+				src={jpgSrc ? jpgSrc : placeholderSrc}
+				alt={alt}
+				{...rest}
+			/>
 		</picture>
 	);
 };

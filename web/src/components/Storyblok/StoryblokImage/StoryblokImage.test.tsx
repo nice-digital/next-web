@@ -1,3 +1,5 @@
+import exp from "constants";
+
 import { render, screen } from "@testing-library/react";
 
 import StoryblokImage, { StoryblokImageProps } from "./StoryblokImage";
@@ -8,19 +10,23 @@ const mockImageResponse = {
 } as StoryblokImageProps;
 
 describe("StoryblokImage Component", () => {
-	xit("should render the image with webp and jpeg ", () => {
+	it("should render the image with webp and jpeg ", () => {
 		render(
 			<StoryblokImage src={mockImageResponse.src} alt={mockImageResponse.alt} />
 		);
 
-		expect(true).toBe(true);
+		const imageSrc = screen.getByRole("img").getAttribute("src");
+
+		expect(imageSrc).toContain(".jpg");
+		expect(imageSrc).toBe(mockImageResponse.src);
 	});
 
-	xit("should add the alt text of the image", () => {
+	it("should add the alt text of the image", () => {
 		render(
 			<StoryblokImage src={mockImageResponse.src} alt={mockImageResponse.alt} />
 		);
-		expect(true).toBe(true);
+		const altText = screen.getByRole("img").getAttribute("alt");
+		expect(altText).toBe(mockImageResponse.alt);
 	});
 
 	it("should append any service options for the Storyblok Image service", () => {
@@ -28,10 +34,66 @@ describe("StoryblokImage Component", () => {
 			<StoryblokImage
 				src={mockImageResponse.src}
 				alt={mockImageResponse.alt}
-				serviceOptions="smart/filters:quality(80)"
+				serviceOptions="smart/filters:quality(80):grayscale()"
 			/>
 		);
 
-		expect(true).toBe(true);
+		const imageSrc = screen.getByRole("img").getAttribute("src");
+		expect(imageSrc).toContain("smart/filters:quality(80):grayscale()");
+	});
+
+	it("should add the className to the image if className passed", () => {
+		render(
+			<StoryblokImage
+				src={mockImageResponse.src}
+				alt={mockImageResponse.alt}
+				className="test-class"
+			/>
+		);
+
+		const imageClass = screen.getByRole("img").getAttribute("class");
+		expect(imageClass).toContain("test-class");
+	});
+
+	it("should add the height and the width to the image if height and width passed", () => {
+		render(
+			<StoryblokImage
+				src={mockImageResponse.src}
+				alt={mockImageResponse.alt}
+				height="100px"
+				width="100px"
+			/>
+		);
+
+		const imageHeight = screen.getByRole("img").getAttribute("height");
+		const imageWidth = screen.getByRole("img").getAttribute("width");
+		expect(imageHeight).toBe("100px");
+		expect(imageWidth).toBe("100px");
+	});
+
+	it("should add other image attribute to the image if passed", () => {
+		render(
+			<StoryblokImage
+				src={mockImageResponse.src}
+				alt={mockImageResponse.alt}
+				loading="lazy"
+				fetchPriority="high"
+			/>
+		);
+
+		const imageLoading = screen.getByRole("img").getAttribute("loading");
+		const imageFetchPriority = screen
+			.getByRole("img")
+			.getAttribute("fetchPriority");
+		expect(imageLoading).toBe("lazy");
+		expect(imageFetchPriority).toBe("high");
+	});
+
+	it("should add the fallback image if image path is empty", () => {
+		render(<StoryblokImage src={""} alt={mockImageResponse.alt} />);
+
+		const imageSrc = screen.getByRole("img").getAttribute("src");
+
+		expect(imageSrc).toBe("/fallback-image.png");
 	});
 });
