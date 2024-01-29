@@ -1,6 +1,7 @@
 import { Breadcrumbs, Breadcrumb } from "@nice-digital/nds-breadcrumbs";
 import { Grid, GridItem } from "@nice-digital/nds-grid";
 import { Hero } from "@nice-digital/nds-hero";
+import { PageHeader, PageHeaderProps } from "@nice-digital/nds-page-header";
 import { Tag } from "@nice-digital/nds-tag";
 
 import { type Breadcrumb as TypeBreadcrumb } from "@/types/Breadcrumb";
@@ -54,7 +55,14 @@ export const StoryblokPageHeader = ({
 
 	return (
 		<>
-			<Hero
+			<PageHeader
+				isFullWidth={true}
+				heading={blok.title}
+				lead={blok.summary || undefined}
+				breadcrumbs={BreadcrumbComponent}
+				footer={<Footer />}
+			/>
+			{/* <Hero
 				title={blok.title}
 				intro={blok.summary || undefined}
 				header={BreadcrumbComponent}
@@ -73,7 +81,7 @@ export const StoryblokPageHeader = ({
 						new page header
 					</a>
 				</p>
-			)}
+			)} */}
 		</>
 	);
 };
