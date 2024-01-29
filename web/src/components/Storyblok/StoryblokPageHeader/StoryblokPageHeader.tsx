@@ -60,7 +60,6 @@ export const StoryblokPageHeader = ({
 				heading={blok.title}
 				lead={blok.summary || undefined}
 				breadcrumbs={BreadcrumbComponent}
-				footer={<Footer />}
 			/>
 			{/* <Hero
 				title={blok.title}

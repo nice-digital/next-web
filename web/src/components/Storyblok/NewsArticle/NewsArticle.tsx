@@ -42,8 +42,8 @@ export const NewsArticle = ({
 				{/* article page header */}
 				<StoryblokPageHeader blok={pageHeaderBlok} breadcrumbs={breadcrumbs} />
 
+				{/* article content */}
 				<Grid>
-					{/* article content */}
 					<GridItem cols={12} md={{ cols: 7 }}>
 						{blok.image && (
 							<StoryblokImage
@@ -52,17 +52,13 @@ export const NewsArticle = ({
 								alt={blok.image.alt}
 							/>
 						)}
-
-						<Grid>
-							<GridItem cols={12} md={{ cols: 10 }}>
-								{render(blok.content, {
-									defaultBlokResolver: (name, props) => {
-										const blok = { ...props, component: name };
-										return <StoryblokComponent blok={blok} key={blok._uid} />;
-									},
-								})}
-							</GridItem>
-						</Grid>
+						{/* renders content from newsAtricles richText field */}
+						{render(blok.content, {
+							defaultBlokResolver: (name, props) => {
+								const blok = { ...props, component: name };
+								return <StoryblokComponent blok={blok} key={blok._uid} />;
+							},
+						})}
 					</GridItem>
 
 					{/* article sidebar */}
