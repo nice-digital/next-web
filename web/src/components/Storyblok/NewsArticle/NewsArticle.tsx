@@ -15,6 +15,7 @@ import {
 } from "@/types/storyblok";
 
 import { StoryblokImage } from "../StoryblokImage/StoryblokImage";
+import { StoryblokRichText } from "../StoryblokRichText/StoryblokRichText";
 
 import styles from "./NewsArticle.module.scss";
 
@@ -66,12 +67,13 @@ export const NewsArticle = ({ blok }: NewsArticleProps): React.ReactElement => {
 							/>
 						)}
 						{/* renders content from newsAtricles richText field */}
-						{render(blok.content, {
+						{/* {render(blok.content, {
 							defaultBlokResolver: (name, props) => {
 								const blok = { ...props, component: name };
 								return <StoryblokComponent blok={blok} key={blok._uid} />;
 							},
-						})}
+						})} */}
+						<StoryblokRichText blok={blok.content} />
 					</GridItem>
 
 					{/* article sidebar */}
