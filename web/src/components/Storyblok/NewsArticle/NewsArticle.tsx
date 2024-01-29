@@ -2,17 +2,17 @@ import { StoryblokComponent } from "@storyblok/react";
 import React from "react";
 import { render } from "storyblok-rich-text-react-renderer";
 
+import { Breadcrumbs, Breadcrumb } from "@nice-digital/nds-breadcrumbs";
 import { Grid, GridItem } from "@nice-digital/nds-grid";
 import { Panel } from "@nice-digital/nds-panel";
 
 import { NewsLetterSignup } from "@/components/NewsLetterSignUp/NewsLetterSignup";
 import { StoryblokPageHeader } from "@/components/Storyblok/StoryblokPageHeader/StoryblokPageHeader";
-import { type Breadcrumb } from "@/types/Breadcrumb";
+import { type Breadcrumb as Breadcrumbtype } from "@/types/Breadcrumb";
 import {
 	PageHeaderStoryblok,
 	type NewsArticleStoryblok,
 } from "@/types/storyblok";
-import { formatDateStr } from "@/utils/datetime";
 
 import { StoryblokImage } from "../StoryblokImage/StoryblokImage";
 
@@ -20,13 +20,10 @@ import styles from "./NewsArticle.module.scss";
 
 interface NewsArticleProps {
 	blok: NewsArticleStoryblok;
-	breadcrumbs?: Breadcrumb[];
+	breadcrumbs?: Breadcrumbtype[];
 }
 
-export const NewsArticle = ({
-	blok,
-	breadcrumbs,
-}: NewsArticleProps): React.ReactElement => {
+export const NewsArticle = ({ blok }: NewsArticleProps): React.ReactElement => {
 	const pageHeaderBlok: PageHeaderStoryblok = {
 		title: blok.title,
 		summary: blok.introText,
@@ -36,11 +33,24 @@ export const NewsArticle = ({
 		component: "pageHeader",
 	};
 
+	const NewsArticleBreadCrumbs = () => {
+		return (
+			<Breadcrumbs>
+				<Breadcrumb to="/">Home</Breadcrumb>
+				<Breadcrumb to="/news">News</Breadcrumb>
+				<Breadcrumb to="/news/articles">Articles</Breadcrumb>
+			</Breadcrumbs>
+		);
+	};
+
 	return (
 		<Grid elementType="article" className={styles.article}>
 			<GridItem cols={12}>
 				{/* article page header */}
-				<StoryblokPageHeader blok={pageHeaderBlok} breadcrumbs={breadcrumbs} />
+				<StoryblokPageHeader
+					blok={pageHeaderBlok}
+					breadcrumbs={<NewsArticleBreadCrumbs />}
+				/>
 
 				{/* article content */}
 				<Grid>
@@ -48,10 +58,11 @@ export const NewsArticle = ({
 						{blok.image && (
 							<StoryblokImage
 								className={styles.featuredImage}
-								src={blok.image.filename}
+								src={blok?.image?.filename}
 								alt={blok.image.alt}
 								height="760px"
 								width="428px"
+								loading="eager"
 							/>
 						)}
 						{/* renders content from newsAtricles richText field */}

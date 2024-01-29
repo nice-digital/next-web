@@ -12,7 +12,7 @@ import styles from "./StoryblokPageHeader.module.scss";
 
 interface PageHeaderBlokProps {
 	blok: PageHeaderStoryblok;
-	breadcrumbs?: TypeBreadcrumb[];
+	breadcrumbs?: React.ReactNode;
 }
 
 function formatDate(date: string): string {
@@ -27,15 +27,15 @@ export const StoryblokPageHeader = ({
 	blok,
 	breadcrumbs,
 }: PageHeaderBlokProps): React.ReactElement => {
-	const BreadcrumbComponent = breadcrumbs?.length ? (
-		<Breadcrumbs>
-			{[{ title: "Home", path: "/" }, ...breadcrumbs].map((breadcrumb) => (
-				<Breadcrumb key={breadcrumb.title} to={breadcrumb.path}>
-					{breadcrumb.title}
-				</Breadcrumb>
-			))}
-		</Breadcrumbs>
-	) : undefined;
+	// const BreadcrumbComponent = breadcrumbs?.length ? (
+	// 	<Breadcrumbs>
+	// 		{[{ title: "Home", path: "/" }, ...breadcrumbs].map((breadcrumb) => (
+	// 			<Breadcrumb key={breadcrumb.title} to={breadcrumb.path}>
+	// 				{breadcrumb.title}
+	// 			</Breadcrumb>
+	// 		))}
+	// 	</Breadcrumbs>
+	// ) : undefined;
 
 	const Footer = () => {
 		const pageType =
@@ -59,7 +59,7 @@ export const StoryblokPageHeader = ({
 				isFullWidth={true}
 				heading={blok.title}
 				lead={blok.summary || undefined}
-				breadcrumbs={BreadcrumbComponent}
+				breadcrumbs={breadcrumbs}
 			/>
 			{/* <Hero
 				title={blok.title}

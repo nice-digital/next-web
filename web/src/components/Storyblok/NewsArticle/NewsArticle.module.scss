@@ -1,15 +1,18 @@
 @use '@nice-digital/nds-core/scss/media-queries';
+@use '@nice-digital/nds-core/scss/spacing';
+@use '@nice-digital/nds-core/scss/utils';
+
 
 .article  {
   // set up variables for the offset of the featured image across breakpoints
   --featuredImageOffset: 16dvh;
 
-  @include media-queries.mq($until: md, $and: '(orientation: landscape)' ){
+  @include media-queries.mq($until: md, $and: '(orientation: landscape)' ) {
     --featuredImageOffset: 45dvh;
   }
 
   @include media-queries.mq($from: lg) {
-    --featuredImageOffset: 28vh;
+    --featuredImageOffset: 28dvh;
   }
 
   // set padding on page-header based on the negat
@@ -17,6 +20,10 @@
     :global(.page-header) {
       padding-bottom: var(--featuredImageOffset);
     }
+  }
+
+  hr {
+    margin: utils.rem(spacing.$medium 0);
   }
 }
 
