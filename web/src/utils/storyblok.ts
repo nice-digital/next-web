@@ -226,9 +226,7 @@ export const getBreadcrumbs = async (
 		}
 	}
 
-	const updatedBreadcrumbs = breadcrumbs.slice(0, -1);
-
-	return updatedBreadcrumbs;
+	return breadcrumbs;
 };
 
 // Resolve a link object returned from the Storyblok API, so that it returns
