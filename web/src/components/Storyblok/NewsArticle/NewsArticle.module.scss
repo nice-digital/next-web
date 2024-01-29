@@ -12,7 +12,7 @@
     --featuredImageOffset: 28vh;
   }
 
-// set padding on page-header based on the negat
+  // set padding on page-header based on the negat
   &:has(.featuredImage) {
     :global(.page-header) {
       padding-bottom: var(--featuredImageOffset);
@@ -20,8 +20,10 @@
   }
 }
 
+// setting featured image styles here as we need to manage the offset between the image and the page header
 .featuredImage {
   aspect-ratio: 16 / 9;
+  height: auto;
   margin-top: calc(calc(var(--featuredImageOffset) * -1) - 1rem);
   object-fit: cover;
   width: 100%;

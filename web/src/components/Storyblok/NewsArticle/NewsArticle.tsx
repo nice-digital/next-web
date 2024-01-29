@@ -50,6 +50,8 @@ export const NewsArticle = ({
 								className={styles.featuredImage}
 								src={blok.image.filename}
 								alt={blok.image.alt}
+								height="760px"
+								width="428px"
 							/>
 						)}
 						{/* renders content from newsAtricles richText field */}
