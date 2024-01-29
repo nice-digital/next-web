@@ -1,6 +1,7 @@
-import React from "react";
+import React, { ImgHTMLAttributes } from "react";
 
-export interface StoryblokImageProps {
+export interface StoryblokImageProps
+	extends ImgHTMLAttributes<HTMLImageElement> {
 	src: string;
 	alt: string | undefined;
 	className?: string;
@@ -12,17 +13,18 @@ export const StoryblokImage = ({
 	alt,
 	className,
 	serviceOptions,
+	...rest
 }: StoryblokImageProps): React.ReactElement => {
 	const constructImageSrc = (baseUrl: string, serviceOptions?: string) => {
-		return serviceOptions ? `${baseUrl}/${serviceOptions}/` : `${baseUrl}/`;
+		return serviceOptions ? `${baseUrl}${serviceOptions}` : `${baseUrl}`;
 	};
 
-	const webpSrc = constructImageSrc(`${src}/m`, serviceOptions);
+	const webpSrc = constructImageSrc(`${src}/m/`, serviceOptions);
 	const jpgSrc = constructImageSrc(`${src}`, serviceOptions);
 	return (
 		<picture>
 			<source srcSet={webpSrc} type="image/webp" />
-			<img className={className} src={jpgSrc} alt={alt} />
+			<img className={className} src={jpgSrc} alt={alt} {...rest} />
 		</picture>
 	);
 };
