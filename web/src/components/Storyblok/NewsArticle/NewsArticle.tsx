@@ -1,56 +1,45 @@
 import { StoryblokComponent } from "@storyblok/react";
 import React from "react";
-import { render } from "storyblok-rich-text-react-renderer";
 
 import { Breadcrumbs, Breadcrumb } from "@nice-digital/nds-breadcrumbs";
 import { Grid, GridItem } from "@nice-digital/nds-grid";
 import { Panel } from "@nice-digital/nds-panel";
 
 import { NewsLetterSignup } from "@/components/NewsLetterSignUp/NewsLetterSignup";
-import { StoryblokPageHeader } from "@/components/Storyblok/StoryblokPageHeader/StoryblokPageHeader";
-import { type Breadcrumb as Breadcrumbtype } from "@/types/Breadcrumb";
-import {
-	PageHeaderStoryblok,
-	type NewsArticleStoryblok,
-} from "@/types/storyblok";
+import { type Breadcrumb as TypeBreadcrumb } from "@/types/Breadcrumb";
+import { type NewsArticleStoryblok } from "@/types/storyblok";
 
 import { StoryblokImage } from "../StoryblokImage/StoryblokImage";
 import { StoryblokRichText } from "../StoryblokRichText/StoryblokRichText";
 
 import styles from "./NewsArticle.module.scss";
+import { NewsPageHeader } from "./NewsPageHeader";
 
 interface NewsArticleProps {
 	blok: NewsArticleStoryblok;
-	breadcrumbs?: Breadcrumbtype[];
+	breadcrumbs?: TypeBreadcrumb[];
 }
 
 export const NewsArticle = ({ blok }: NewsArticleProps): React.ReactElement => {
-	const pageHeaderBlok: PageHeaderStoryblok = {
-		title: blok.title,
-		summary: blok.introText,
-		date: blok.date,
-		pageType: blok.component,
-		_uid: blok._uid,
-		component: "pageHeader",
-	};
-
-	const NewsArticleBreadCrumbs = () => {
-		return (
-			<Breadcrumbs>
-				<Breadcrumb to="/">Home</Breadcrumb>
-				<Breadcrumb to="/news">News</Breadcrumb>
-				<Breadcrumb to="/news/articles">Articles</Breadcrumb>
-			</Breadcrumbs>
-		);
-	};
+	const NewsArticleBreadCrumbs = (
+		<Breadcrumbs>
+			<Breadcrumb to="/">Home</Breadcrumb>
+			<Breadcrumb to="/news">News</Breadcrumb>
+			<Breadcrumb to="/news/articles">Articles</Breadcrumb>
+		</Breadcrumbs>
+	);
 
 	return (
 		<Grid elementType="article" className={styles.article}>
 			<GridItem cols={12}>
 				{/* article page header */}
-				<StoryblokPageHeader
-					blok={pageHeaderBlok}
-					breadcrumbs={<NewsArticleBreadCrumbs />}
+
+				<NewsPageHeader
+					heading={blok.title}
+					lead={blok.introText}
+					breadcrumbs={NewsArticleBreadCrumbs}
+					date={blok.date}
+					showFooter={true}
 				/>
 
 				{/* article content */}
@@ -66,14 +55,7 @@ export const NewsArticle = ({ blok }: NewsArticleProps): React.ReactElement => {
 								loading="eager"
 							/>
 						)}
-						{/* renders content from newsAtricles richText field */}
-						{/* {render(blok.content, {
-							defaultBlokResolver: (name, props) => {
-								const blok = { ...props, component: name };
-								return <StoryblokComponent blok={blok} key={blok._uid} />;
-							},
-						})} */}
-						<StoryblokRichText blok={blok.content} />
+						<StoryblokRichText content={blok.content} />
 					</GridItem>
 
 					{/* article sidebar */}
