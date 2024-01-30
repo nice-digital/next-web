@@ -32,8 +32,6 @@ export const NewsArticle = ({ blok }: NewsArticleProps): React.ReactElement => {
 	return (
 		<Grid elementType="article" className={styles.article}>
 			<GridItem cols={12}>
-				{/* article page header */}
-
 				<NewsPageHeader
 					heading={blok.title}
 					lead={blok.introText}

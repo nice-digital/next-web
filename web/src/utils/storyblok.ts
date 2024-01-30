@@ -21,6 +21,7 @@ import { StoryblokHero } from "@/components/Storyblok/StoryblokHero/StoryblokHer
 import { StoryblokPageHeader } from "@/components/Storyblok/StoryblokPageHeader/StoryblokPageHeader";
 import { StoryblokRelatedLink } from "@/components/Storyblok/StoryblokRelatedLink/StoryblokRelatedLink";
 import { StoryblokRelatedNewsLink } from "@/components/Storyblok/StoryblokRelatedNewsLink/StoryblokRelatedNewsLink";
+import { StoryblokYoutubeEmbed } from "@/components/Storyblok/StoryblokYoutubeEmbed/StoryblokYoutubeEmbed";
 import { publicRuntimeConfig } from "@/config";
 import { logger } from "@/logger";
 import { type Breadcrumb } from "@/types/Breadcrumb";
@@ -52,6 +53,7 @@ export const initStoryblok = (): void => {
 		quote: Blockquote,
 		relatedLink: StoryblokRelatedLink,
 		relatedNewsLink: StoryblokRelatedNewsLink,
+		youtubeEmbed: StoryblokYoutubeEmbed,
 	};
 
 	try {

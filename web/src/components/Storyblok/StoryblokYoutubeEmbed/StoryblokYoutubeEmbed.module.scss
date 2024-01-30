@@ -1,0 +1,10 @@
+@use '@nice-digital/nds-core/scss/spacing';
+@use '@nice-digital/nds-core/scss/utils';
+
+.youtubeEmbed {
+  aspect-ratio: 16/9;
+  height: auto;
+  margin: utils.rem(spacing.$medium 0 spacing.$x-large);
+  object-fit: cover;
+  width: 100%;
+}
