@@ -1,0 +1,16 @@
+@use '@nice-digital/nds-core/scss/spacing';
+@use '@nice-digital/nds-core/scss/utils';
+
+.storyblokRichTextWrapper {
+  p:has(img) {
+    margin: utils.rem(spacing.$large 0);
+    max-width: max-content;
+  }
+
+  img {
+    aspect-ratio: 16/9;
+    height: auto;
+    object-fit: cover;
+    width: 100%;
+  }
+}
