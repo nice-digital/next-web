@@ -7,6 +7,7 @@ import {
 	render,
 } from "storyblok-rich-text-react-renderer";
 
+import blockquoteStyles from "@/components/Storyblok/Blockquote/Blockquote.module.scss";
 import { RichtextStoryblok } from "@/types/storyblok";
 
 import { StoryblokImage } from "../StoryblokImage/StoryblokImage";
@@ -39,6 +40,15 @@ export const StoryblokRichText: React.FC<RichtextStoryblok> = ({ content }) => {
 						// renders inline images from the stories richText field to StoryblokImage component
 						return (
 							<StoryblokImage src={props.src} alt={props.alt} loading="lazy" />
+						);
+					},
+					[NODE_QUOTE]: (children) => {
+						// workaround: hardcoded blockquote component
+						//TODO: refactor this workaround to handle inline quotes in the richtext field of the storyblok editor
+						return (
+							<figure className={blockquoteStyles.quote}>
+								<blockquote>{children}</blockquote>
+							</figure>
 						);
 					},
 				},
