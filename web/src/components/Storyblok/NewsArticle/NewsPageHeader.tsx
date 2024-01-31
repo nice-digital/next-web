@@ -3,18 +3,12 @@ import React from "react";
 import { PageHeader, PageHeaderProps } from "@nice-digital/nds-page-header";
 import { Tag } from "@nice-digital/nds-tag";
 
+import { formatDateStr } from "@/utils/datetime";
+
 export interface NewsPageHeaderProps
 	extends Omit<PageHeaderProps, "isFullWidth"> {
 	date: string;
 	showFooter: boolean;
-}
-
-function formatDate(date: string): string {
-	return new Intl.DateTimeFormat("en-GB", {
-		year: "numeric",
-		month: "long",
-		day: "numeric",
-	}).format(new Date(date));
 }
 
 export const NewsPageHeader: React.FC<NewsPageHeaderProps> = ({
@@ -38,11 +32,12 @@ export const NewsPageHeader: React.FC<NewsPageHeaderProps> = ({
 		}
 
 		const pageType = "News";
+
 		return (
 			<p>
 				<Tag outline>{pageType}</Tag> &nbsp;
 				{typeof date === "string" && (
-					<time dateTime={date}>{formatDate(date)}</time>
+					<time dateTime={date}>{formatDateStr(date)}</time>
 				)}
 			</p>
 		);
