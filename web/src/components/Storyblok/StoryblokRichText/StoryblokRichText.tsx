@@ -14,7 +14,13 @@ import { StoryblokImage } from "../StoryblokImage/StoryblokImage";
 
 import styles from "./StoryblokRichText.module.scss";
 
-export const StoryblokRichText: React.FC<RichtextStoryblok> = ({ content }) => {
+export interface StoryblokRichTextProps {
+	content: RichtextStoryblok;
+}
+
+export const StoryblokRichText: React.FC<StoryblokRichTextProps> = ({
+	content,
+}) => {
 	return (
 		<div className={styles.storyblokRichTextWrapper}>
 			{render(content, {
