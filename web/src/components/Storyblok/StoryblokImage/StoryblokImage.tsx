@@ -2,10 +2,11 @@ import React, { ImgHTMLAttributes } from "react";
 
 export interface StoryblokImageProps
 	extends ImgHTMLAttributes<HTMLImageElement> {
-	src: string;
+	src: string | undefined;
 	alt: string | undefined;
 	className?: string;
 	serviceOptions?: string;
+	[key: `data-${string}`]: string;
 }
 
 export const StoryblokImage = ({
@@ -20,6 +21,11 @@ export const StoryblokImage = ({
 	const constructImageSrc = (baseUrl: string, serviceOptions?: string) => {
 		return serviceOptions ? `${baseUrl}${serviceOptions}` : `${baseUrl}`;
 	};
+
+	if (!src) {
+		src = placeholderSrc;
+		rest["data-testid"] = "storyblok-image-fallback";
+	}
 
 	const webpSrc = constructImageSrc(`${src}`, serviceOptions);
 	const jpgSrc = constructImageSrc(`${src}`, serviceOptions);
