@@ -6,9 +6,9 @@ import { Tag } from "@nice-digital/nds-tag";
 import { formatDateStr } from "@/utils/datetime";
 
 export interface NewsPageHeaderProps
-	extends Omit<PageHeaderProps, "isFullWidth"> {
-	date: string;
-	showFooter: boolean;
+	extends Omit<PageHeaderProps, "isFullWidth" | "metadata"> {
+	date?: string;
+	showFooter?: boolean;
 }
 
 export const NewsPageHeader: React.FC<NewsPageHeaderProps> = ({
@@ -20,22 +20,23 @@ export const NewsPageHeader: React.FC<NewsPageHeaderProps> = ({
 }) => {
 	const NewsPageHeaderMeta = () => {
 		{
+			/** NOTE: we could use the same component across listing pages and slug pages.*/
 			/** TODO: Move to own component to reuse across blog and news article pages?*/
+			/** TODO: Manage Tag content dynamically with a util function to grab the right part of the path to distinguish between news articles, in-depth, podcast, etc? */
 		}
 
 		if (!showFooter) {
 			return null;
 		}
 
-		{
-			/** TODO: Manage Tag content dynamically with a util funciton to grab the right part of the path to distinguish between news articles, in-depth, podcast, etc? */
-		}
-
 		const pageType = "News";
 
 		return (
 			<p>
-				<Tag outline>{pageType}</Tag> &nbsp;
+				<Tag outline data-testid="pageTag">
+					{pageType}
+				</Tag>{" "}
+				&nbsp;
 				{typeof date === "string" && (
 					<time dateTime={date}>{formatDateStr(date)}</time>
 				)}
@@ -49,7 +50,7 @@ export const NewsPageHeader: React.FC<NewsPageHeaderProps> = ({
 			breadcrumbs={breadcrumbs}
 			heading={heading}
 			lead={lead}
-			metadata={[<NewsPageHeaderMeta key="page-header-meta" />]}
+			description={[<NewsPageHeaderMeta key="page-header-meta" />]}
 		/>
 	);
 };
