@@ -11,9 +11,10 @@ export interface StoryblokRelatedNewsLinkProps {
 export const StoryblokRelatedNewsLink = ({
 	blok,
 }: StoryblokRelatedNewsLinkProps): React.ReactElement => {
+	// TODO: handle to and href props correctly for internal and external links
 	return (
 		<>
-			<Link to={blok.link.url} target="_blank" rel="noreferrer">
+			<Link href={blok.link.url} target="_blank" rel="noreferrer">
 				{blok.title}
 			</Link>
 			<p className="">
