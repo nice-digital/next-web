@@ -12,15 +12,21 @@ export const StoryblokYoutubeEmbed: React.FC<StoryblokYoutubeEmbedProps> = ({
 	blok,
 }) => {
 	const { _uid, source } = blok;
-
+	{
+		/** TODO: add title field to the youTubeEmbed blok so we can add a accessible title for screen reader users
+		 * https://accessibility.blog.gov.uk/2020/03/16/why-videos-on-gov-uk-use-the-youtube-video-player/
+		 *
+		 * TODO: check the allow attribute properties are correct
+		 */
+	}
 	return (
 		<iframe
+			title="(video)"
 			className={styles.youtubeEmbed}
-			id={_uid}
+			id={`youtube-embed-${_uid}`}
 			src={source}
-			allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+			allow="accelerometer; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
 			allowFullScreen
-			frameBorder="0"
 		></iframe>
 	);
 };
