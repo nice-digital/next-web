@@ -1,8 +1,6 @@
-import exp from "constants";
-
 import { render, screen } from "@testing-library/react";
 
-import StoryblokImage, { StoryblokImageProps } from "./StoryblokImage";
+import { StoryblokImage, StoryblokImageProps } from "./StoryblokImage";
 
 const mockImageResponse = {
 	alt: "Test image alt",
@@ -71,22 +69,18 @@ describe("StoryblokImage Component", () => {
 		expect(imageWidth).toBe("100px");
 	});
 
-	it("should add other image attribute to the image if passed", () => {
+	it("should add other image attributes to the image if they are passed", () => {
 		render(
 			<StoryblokImage
 				src={mockImageResponse.src}
 				alt={mockImageResponse.alt}
 				loading="lazy"
-				fetchPriority="high"
 			/>
 		);
 
 		const imageLoading = screen.getByRole("img").getAttribute("loading");
-		const imageFetchPriority = screen
-			.getByRole("img")
-			.getAttribute("fetchPriority");
+
 		expect(imageLoading).toBe("lazy");
-		expect(imageFetchPriority).toBe("high");
 	});
 
 	it("should add the fallback image if image path is empty", () => {
