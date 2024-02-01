@@ -25,7 +25,7 @@ export const NewsArticle = ({ blok }: NewsArticleProps): React.ReactElement => {
 		<Breadcrumbs>
 			<Breadcrumb to="/">Home</Breadcrumb>
 			<Breadcrumb to="/news">News</Breadcrumb>
-			<Breadcrumb to="/news/articles">Articles</Breadcrumb>
+			<Breadcrumb to="/news/articles">News articles</Breadcrumb>
 		</Breadcrumbs>
 	);
 
@@ -66,9 +66,14 @@ export const NewsArticle = ({ blok }: NewsArticleProps): React.ReactElement => {
 						{blok.resources && blok.resources.length > 0 && (
 							<Panel variant="primary" key="resources">
 								<h2 className="h5">Associated guidance and resources</h2>
-								{blok.resources.map((resource) => {
+								{blok.resources.map((resource, index) => {
 									return (
-										<StoryblokComponent blok={resource} key={resource._uid} />
+										<React.Fragment key={resource._uid}>
+											<StoryblokComponent blok={resource} key={resource._uid} />
+											{blok.resources && index < blok.resources.length - 1 && (
+												<hr />
+											)}
+										</React.Fragment>
 									);
 								})}
 							</Panel>
