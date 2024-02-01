@@ -18,7 +18,8 @@ export const StoryblokRelatedNewsLink = ({
 				{blok.title}
 			</Link>
 			<p className="">
-				{blok.publisher},{" "}
+				<span>{blok.publisher}</span>
+				{", "}
 				<time dateTime={blok.date}>{formatDateStr(blok.date)}</time>
 			</p>
 		</>
