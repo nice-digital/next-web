@@ -5,6 +5,7 @@ import {
 	NODE_PARAGRAPH,
 	NODE_QUOTE,
 	render,
+	StoryblokRichtext,
 } from "storyblok-rich-text-react-renderer";
 
 import blockquoteStyles from "@/components/Storyblok/Blockquote/Blockquote.module.scss";
@@ -15,14 +16,17 @@ import { StoryblokImage } from "../StoryblokImage/StoryblokImage";
 import styles from "./StoryblokRichText.module.scss";
 
 export interface StoryblokRichTextProps {
-	content: RichtextStoryblok;
+	content: StoryblokRichtext;
 }
 
 export const StoryblokRichText: React.FC<StoryblokRichTextProps> = ({
 	content,
 }) => {
 	return (
-		<div className={styles.storyblokRichTextWrapper}>
+		<div
+			className={styles.storyblokRichTextWrapper}
+			data-testid="storyblok-rich-text"
+		>
 			{render(content, {
 				nodeResolvers: {
 					[NODE_PARAGRAPH]: (children) => {

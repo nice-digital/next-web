@@ -10,6 +10,6 @@ export interface StoryblokRelatedLinkProps {
 export const StoryblokRelatedLink = ({
 	blok,
 }: StoryblokRelatedLinkProps): React.ReactElement => {
-	// TODO: handle to and href props correctly for internal and external links
+	// TODO: check if we are handling to href props of the link component correctly
 	return <Link href={blok.link.url}>{blok.title}</Link>;
 };
