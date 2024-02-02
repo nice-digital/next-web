@@ -7,7 +7,7 @@ import { Panel } from "@nice-digital/nds-panel";
 
 import { NewsLetterSignup } from "@/components/NewsLetterSignUp/NewsLetterSignup";
 import { type Breadcrumb as TypeBreadcrumb } from "@/types/Breadcrumb";
-import { type NewsArticleStoryblok } from "@/types/storyblok";
+import { SBNewsArticle } from "@/types/SBNews";
 
 import { StoryblokImage } from "../StoryblokImage/StoryblokImage";
 import { StoryblokRichText } from "../StoryblokRichText/StoryblokRichText";
@@ -16,7 +16,7 @@ import styles from "./NewsArticle.module.scss";
 import { NewsPageHeader } from "./NewsPageHeader";
 
 interface NewsArticleProps {
-	blok: NewsArticleStoryblok;
+	blok: SBNewsArticle;
 	breadcrumbs?: TypeBreadcrumb[];
 }
 

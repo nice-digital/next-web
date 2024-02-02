@@ -106,4 +106,11 @@ describe("NewsArticle", () => {
 		expect(screen.getByTestId("mock-relatedNewsLink")).toBeInTheDocument();
 		// expect(screen.getByText("Test related news link 1")).toBeInTheDocument();
 	});
+
+	it("should render the signup action panel", () => {
+		render(<NewsArticle blok={newsArticleProps} />);
+		expect(
+			screen.getByText(" Sign up for newsletters and alerts")
+		).toBeInTheDocument();
+	});
 });
