@@ -57,7 +57,10 @@
       ],
       "@/helpers": [
         "src/helpers"
-      ]
+      ],
+      "@/types": [
+        "src/types"
+      ],
     },
     "incremental": true,
     "allowJs": true,
@@ -79,6 +82,4 @@
     "dist",
     ".next"
   ],
-  "files": [],
-  "references": [{ "path": "../web" }, { "path": "../functional-tests" }]
 }
