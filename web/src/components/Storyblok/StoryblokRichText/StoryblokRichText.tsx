@@ -9,7 +9,6 @@ import {
 } from "storyblok-rich-text-react-renderer";
 
 import blockquoteStyles from "@/components/Storyblok/Blockquote/Blockquote.module.scss";
-import { RichtextStoryblok } from "@/types/storyblok";
 
 import { StoryblokImage } from "../StoryblokImage/StoryblokImage";
 

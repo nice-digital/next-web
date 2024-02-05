@@ -1,8 +1,5 @@
-import { SbBlokData, StoryblokComponentType } from "@storyblok/react";
 import { render, screen } from "@testing-library/react";
-import { StoryblokRichtext } from "storyblok-rich-text-react-renderer";
-
-import richtext from "@/mockData/storyblok/richtext.json";
+import { type StoryblokRichtext } from "storyblok-rich-text-react-renderer";
 
 import { StoryblokRichText } from "./StoryblokRichText";
 // Define the node types
