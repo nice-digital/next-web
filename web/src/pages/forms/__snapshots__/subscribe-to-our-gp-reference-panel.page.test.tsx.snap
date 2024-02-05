@@ -1,0 +1,219 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`SubscribeToOurGPReferencePanelForm should match snapshot 1`] = `
+<div>
+  <nav
+    aria-label="Breadcrumbs"
+    data-component="breadcrumbs"
+    role="navigation"
+  >
+    <ol
+      class="breadcrumbs"
+    >
+      <li
+        class="breadcrumbs__crumb"
+      >
+        <a
+          href="/"
+        >
+          Home
+        </a>
+      </li>
+      <li
+        class="breadcrumbs__crumb"
+      >
+        <a
+          href="/about"
+        >
+          About
+        </a>
+      </li>
+      <li
+        class="breadcrumbs__crumb"
+      >
+        <a
+          href="/about/nice-communities"
+        >
+          NICE Communities
+        </a>
+      </li>
+      <li
+        class="breadcrumbs__crumb"
+      >
+        <a
+          href="/about/nice-communities/generalpractice"
+        >
+          General practice
+        </a>
+      </li>
+      <li
+        class="breadcrumbs__crumb"
+      >
+        <span>
+          Subscribe to our GP reference panel
+        </span>
+      </li>
+    </ol>
+  </nav>
+  <script
+    type="application/ld+json"
+  >
+    {
+  "@context": "http://schema.org",
+  "@type": "BreadcrumbList",
+  "itemListElement": [
+    {
+      "@type": "ListItem",
+      "position": 1,
+      "item": {
+        "@id": "/",
+        "name": "Home"
+      }
+    },
+    {
+      "@type": "ListItem",
+      "position": 2,
+      "item": {
+        "@id": "/about",
+        "name": "About"
+      }
+    },
+    {
+      "@type": "ListItem",
+      "position": 3,
+      "item": {
+        "@id": "/about/nice-communities",
+        "name": "NICE Communities"
+      }
+    },
+    {
+      "@type": "ListItem",
+      "position": 4,
+      "item": {
+        "@id": "/about/nice-communities/generalpractice",
+        "name": "General practice"
+      }
+    },
+    {
+      "@type": "ListItem",
+      "position": 5,
+      "item": {
+        "name": "Subscribe to our GP reference panel"
+      }
+    }
+  ]
+}
+  </script>
+  <div
+    class="grid grid--loose"
+  >
+    <div
+      data-component="grid-item"
+      data-g="12 md:12 lg:12"
+    >
+      <div
+        class="page-header"
+        data-component="page-header"
+        id="content-start"
+      >
+        <h1
+          class="page-header__heading "
+        >
+          Subscribe to our GP reference panel
+        </h1>
+        <p
+          class="page-header__lead"
+        >
+          Contribute to the development of NICE guidance in a quick and easy way.
+        </p>
+      </div>
+      <p>
+        Our GP reference panel aims to gather the collective wisdom of GPs on the ground who might not otherwise be heard. We welcome registration by any GP currently on a performers list anywhere in the UK.
+      </p>
+      <h2>
+        What's involved?
+      </h2>
+      <p>
+        We will email relevant questions for your feedback. All you need to do is spare a few minutes every now and then to put your thoughts into an email.
+      </p>
+      <p>
+        You'll have the opportunity to tell us if:
+      </p>
+      <ul>
+        <li>
+          our guidelines need improving
+        </li>
+        <li>
+          we should produce guidance on a particular topic
+        </li>
+        <li>
+          a guideline doesn't answer the questions which really matter to you or your patients
+        </li>
+        <li>
+          our recommendations could be clearer.
+        </li>
+      </ul>
+      <p>
+        Our panel moderators, James Larcombe and Julian Treadwell are both practising GPs. They will help us to make the best use of your comments and keep you informed about their impact.
+      </p>
+      <h3>
+        Resources for panel members
+      </h3>
+      <ul>
+        <li>
+          <a
+            href="/Media/Default/Communities/GP/GP-reference-panel-confidentiality-form.docx"
+          >
+            confidentiality form (Word)
+          </a>
+        </li>
+        <li>
+          <a
+            href="/Media/Default/Communities/GP/Guide-to-commenting.pdf"
+          >
+            guide to commenting (PDF)
+          </a>
+        </li>
+        <li>
+          <a
+            href="/Media/Default/Communities/GP/examples-of-good-comments.pdf"
+          >
+            examples of good comments (PDF).
+          </a>
+        </li>
+      </ul>
+      <iframe
+        allow="geolocation; microphone; camera"
+        allowfullscreen=""
+        class="iframe"
+        data-jotform-id="232422582693863"
+        id="JotFormIFrame-232422582693863"
+        scrolling="no"
+        src="https://next-web-tests.jotform.com/232422582693863?isIframeEmbed=1"
+        style="height: 539px; overflow: hidden;"
+        title="Subscribe to our GP reference panel"
+      />
+      <p>
+        The information provided on this form will be used to send you questions about our guidance for your feedback. To manage your subscription, we need to share your data with
+         
+        <a
+          href="http://www.mailchimp.com"
+        >
+          MailChimp
+        </a>
+        .
+      </p>
+      <p>
+        You can unsubscribe at any time using the link in the newsletters. For more information about how we process your personal data, please see our
+         
+        <a
+          href="/privacy-notice"
+        >
+          privacy notice
+        </a>
+        .
+      </p>
+    </div>
+  </div>
+</div>
+`;

@@ -52,3 +52,6 @@ Use the command line instead if you neeed more granular control:
    2. Or, run `npm run test:coverage` to run the tests and output a _coverage_ folder with an lcov report.
 
 > Running tests in watch mode via `npm run test:watch` is most useful when developing locally.
+
+## JotForms Integration
+We use an enterprise edition of JotForms, [https://nice.jotform.com/myforms/](https://nice.jotform.com/myforms/) to host forms on the NICE Website. For further information, please see [docs/jotforms-integration.md](docs/jotforms-integration.md).

@@ -1,6 +1,10 @@
-// import { Then } from "@cucumber/cucumber";
-// TODO
+import { Then } from "@wdio/cucumber-framework";
 
-// Just adding an empty export for now to pass linting
-// We can remove this once the module is actually implemented
-export {};
+Then(
+	"I expect that element {string} contains the text {string}",
+	async (selector, expectedText) => {
+		const element = await browser.$(selector);
+		const actualText = await element.getText();
+		expect(actualText).toContain(expectedText);
+	}
+);
