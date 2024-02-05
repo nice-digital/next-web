@@ -42,7 +42,6 @@ export default function NewsArticlePage({
 
 export async function getServerSideProps(context: GetServerSidePropsContext) {
 	const { query, params } = context;
-
 	// Resolve slug from params
 	const slug = getSlugFromParams(params?.slug);
 
