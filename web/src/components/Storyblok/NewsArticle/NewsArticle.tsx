@@ -6,7 +6,6 @@ import { Grid, GridItem } from "@nice-digital/nds-grid";
 import { Panel } from "@nice-digital/nds-panel";
 
 import { NewsLetterSignup } from "@/components/NewsLetterSignUp/NewsLetterSignup";
-import { type Breadcrumb as TypeBreadcrumb } from "@/types/Breadcrumb";
 import { SBNewsArticle } from "@/types/SBNews";
 
 import { StoryblokImage } from "../StoryblokImage/StoryblokImage";
@@ -15,9 +14,9 @@ import { StoryblokRichText } from "../StoryblokRichText/StoryblokRichText";
 import styles from "./NewsArticle.module.scss";
 import { NewsPageHeader } from "./NewsPageHeader";
 
-interface NewsArticleProps {
+export interface NewsArticleProps {
 	blok: SBNewsArticle;
-	breadcrumbs?: TypeBreadcrumb[];
+	breadcrumbs?: React.ReactElement;
 }
 
 export const NewsArticle = ({ blok }: NewsArticleProps): React.ReactElement => {
@@ -45,12 +44,12 @@ export const NewsArticle = ({ blok }: NewsArticleProps): React.ReactElement => {
 					<GridItem cols={12} md={{ cols: 7 }}>
 						{blok.image && (
 							<StoryblokImage
-								className={styles.featuredImage}
-								src={blok?.image?.filename}
 								alt={blok.image.alt}
-								height="760px"
-								width="428px"
+								className={styles.featuredImage}
+								height="428px"
 								loading="eager"
+								src={blok?.image?.filename}
+								width="760px"
 							/>
 						)}
 						<StoryblokRichText content={blok.content} />
@@ -58,10 +57,10 @@ export const NewsArticle = ({ blok }: NewsArticleProps): React.ReactElement => {
 
 					{/* article sidebar */}
 					<GridItem
-						cols={12}
-						md={{ cols: 4, push: 1 }}
-						elementType="aside"
 						className={styles.articleSidebar}
+						cols={12}
+						elementType="aside"
+						md={{ cols: 4, push: 1 }}
 					>
 						{blok.resources && blok.resources.length > 0 && (
 							<Panel variant="primary" key="resources">
