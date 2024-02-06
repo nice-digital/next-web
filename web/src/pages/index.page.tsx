@@ -28,22 +28,15 @@ export default function Home({ story }: HomeProps): React.ReactElement {
 				openGraph={{ title: "Homepage" }}
 				additionalMetaTags={additionalMetaTags}
 			></NextSeo>
-			<h1>Homepage</h1>
 			<StoryblokComponent blok={story.content} />
 		</>
 	);
 }
 
 export async function getServerSideProps(context: GetServerSidePropsContext) {
-	logger.warn("Start server side props for homepage");
 	const slug = "home";
 	const version = getStoryVersionFromQuery(context.query);
 	const storyResult = await fetchStory(slug, version);
-
-	console.log("****************** Story result:", storyResult);
-
-	logger.warn("Finish server side props for homepage");
-
 	const result = {
 		props: {
 			...storyResult,

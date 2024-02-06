@@ -14,7 +14,7 @@ export const Homepage = ({ blok }: HomepageBlokProps): React.ReactElement => {
 				blok.metadata?.map((nestedBlok) => (
 					<StoryblokComponent blok={nestedBlok} key={nestedBlok._uid} />
 				))}
-			{blok.body.map((nestedBlok) => (
+			{blok.hero.map((nestedBlok) => (
 				<StoryblokComponent blok={nestedBlok} key={nestedBlok._uid} />
 			))}
 		</>

@@ -13,6 +13,7 @@ import { type MetaTag } from "next-seo/lib/types";
 import { CardGrid } from "@/components/Storyblok/CardGrid/CardGrid";
 import { CategoryNavigation } from "@/components/Storyblok/CategoryNavigation/CategoryNavigation";
 import { Homepage } from "@/components/Storyblok/Homepage/Homepage";
+import { HomepageHero } from "@/components/Storyblok/HomepageHero/HomepageHero";
 import { Metadata } from "@/components/Storyblok/Metadata/Metadata";
 import { StoryblokHero } from "@/components/Storyblok/StoryblokHero/StoryblokHero";
 import { StoryblokPageHeader } from "@/components/Storyblok/StoryblokPageHeader/StoryblokPageHeader";
@@ -39,6 +40,7 @@ export const initStoryblok = (): void => {
 		cardGrid: CardGrid,
 		categoryNavigation: CategoryNavigation,
 		homepage: Homepage,
+		homepageHero: HomepageHero,
 		hero: StoryblokHero,
 		pageHeader: StoryblokPageHeader,
 		metadata: Metadata,
