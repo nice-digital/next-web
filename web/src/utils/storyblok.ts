@@ -13,7 +13,9 @@ import { type MetaTag } from "next-seo/lib/types";
 import { CardGrid } from "@/components/Storyblok/CardGrid/CardGrid";
 import { CategoryNavigation } from "@/components/Storyblok/CategoryNavigation/CategoryNavigation";
 import { Homepage } from "@/components/Storyblok/Homepage/Homepage";
+import { InfoPage } from "@/components/Storyblok/InfoPage/InfoPage";
 import { Metadata } from "@/components/Storyblok/Metadata/Metadata";
+import { NestedRichText } from "@/components/Storyblok/NestedRichText/NestedRichText";
 import { StoryblokHero } from "@/components/Storyblok/StoryblokHero/StoryblokHero";
 import { StoryblokPageHeader } from "@/components/Storyblok/StoryblokPageHeader/StoryblokPageHeader";
 import { publicRuntimeConfig } from "@/config";
@@ -40,8 +42,10 @@ export const initStoryblok = (): void => {
 		categoryNavigation: CategoryNavigation,
 		homepage: Homepage,
 		hero: StoryblokHero,
-		pageHeader: StoryblokPageHeader,
+		infoPage: InfoPage,
 		metadata: Metadata,
+		nestedRichText: NestedRichText,
+		pageHeader: StoryblokPageHeader,
 	};
 
 	try {
