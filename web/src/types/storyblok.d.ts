@@ -1,5 +1,14 @@
 import {StoryblokStory} from 'storyblok-generate-ts'
 
+export interface RichtextStoryblok {
+  type: string;
+  content?: RichtextStoryblok[];
+  marks?: RichtextStoryblok[];
+  attrs?: any;
+  text?: string;
+  [k: string]: any;
+}
+
 export type MultilinkStoryblok =
   | {
       id?: string;
@@ -50,6 +59,49 @@ export type MultilinkStoryblok =
       [k: string]: any;
     };
 
+export interface AssetStoryblok {
+  alt?: string;
+  copyright?: string;
+  id: number;
+  filename: string;
+  name: string;
+  title?: string;
+  focus?: string;
+  [k: string]: any;
+}
+
+export interface ActionBannerStoryblok {
+  heading: string;
+  body?: RichtextStoryblok;
+  ctaText?: string;
+  ctaLink?: Exclude<MultilinkStoryblok, {linktype?: "email"} | {linktype?: "asset"}>;
+  image: AssetStoryblok;
+  _uid: string;
+  component: "actionBanner";
+  [k: string]: any;
+}
+
+export interface AuthorStoryblok {
+  name: string;
+  jobTitle?: string;
+  image?: AssetStoryblok;
+  _uid: string;
+  component: "author";
+  [k: string]: any;
+}
+
+export interface BlogPostStoryblok {
+  title: string;
+  date: string;
+  introText: string;
+  content: RichtextStoryblok;
+  author: (StoryblokStory<AuthorStoryblok> | string)[];
+  image: AssetStoryblok;
+  _uid: string;
+  component: "blogPost";
+  [k: string]: any;
+}
+
 export interface CardStoryblok {
   heading: string;
   body: string;
@@ -61,7 +113,6 @@ export interface CardStoryblok {
 
 export interface CardGridStoryblok {
   cards: CardStoryblok[];
-  columns: string;
   _uid: string;
   component: "cardGrid";
   [k: string]: any;
@@ -78,15 +129,32 @@ export interface CategoryNavigationStoryblok {
 
 export interface GridStoryblok {
   columns?: (
+    | ActionBannerStoryblok
+    | AuthorStoryblok
+    | BlogPostStoryblok
     | CardStoryblok
     | CardGridStoryblok
     | CategoryNavigationStoryblok
     | GridStoryblok
     | GridItemStoryblok
+    | HeroStoryblok
     | HomepageStoryblok
+    | HomepageHeroStoryblok
+    | IframeStoryblok
+    | ImageOrVideoStoryblok
+    | InfoPageStoryblok
     | MetadataStoryblok
+    | NestedRichTextStoryblok
+    | NestedTableStoryblok
+    | NewsArticleStoryblok
     | PageStoryblok
     | PageHeaderStoryblok
+    | PromoBoxStoryblok
+    | QuoteStoryblok
+    | RelatedLinkStoryblok
+    | RelatedNewsLinkStoryblok
+    | SpotlightStoryblok
+    | YoutubeEmbedStoryblok
   )[];
   _uid: string;
   component: "grid";
@@ -101,11 +169,72 @@ export interface GridItemStoryblok {
   [k: string]: any;
 }
 
+export interface HeroStoryblok {
+  title: string;
+  summary?: string;
+  description?: string;
+  image: AssetStoryblok;
+  ctaText?: string;
+  ctaLink?: Exclude<MultilinkStoryblok, {linktype?: "email"} | {linktype?: "asset"}>;
+  _uid: string;
+  component: "hero";
+  [k: string]: any;
+}
+
 export interface HomepageStoryblok {
-  body: (CardGridStoryblok | RichTextStoryblok)[];
+  hero: HomepageHeroStoryblok[];
+  featuredStory?: StoryblokStory<BlogPostStoryblok> | StoryblokStory<NewsArticleStoryblok> | string;
+  primaryActionBanner?: ActionBannerStoryblok[];
+  links: RichtextStoryblok;
+  promoBox1?: PromoBoxStoryblok[];
+  spotlight?: SpotlightStoryblok[];
+  promoBox2?: PromoBoxStoryblok[];
   metadata?: MetadataStoryblok[];
   _uid: string;
   component: "homepage";
+  [k: string]: any;
+}
+
+export type MultiassetStoryblok = {
+  alt?: string;
+  copyright?: string;
+  id: number;
+  filename: string;
+  name: string;
+  title?: string;
+  [k: string]: any;
+}[];
+
+export interface HomepageHeroStoryblok {
+  title: string;
+  description: string;
+  ctaText: string;
+  ctaLink: Exclude<MultilinkStoryblok, {linktype?: "email"} | {linktype?: "asset"}>;
+  images: MultiassetStoryblok;
+  _uid: string;
+  component: "homepageHero";
+  [k: string]: any;
+}
+
+export interface IframeStoryblok {
+  source: string;
+  _uid: string;
+  component: "iframe";
+  [k: string]: any;
+}
+
+export interface ImageOrVideoStoryblok {
+  _uid: string;
+  component: "imageOrVideo";
+  [k: string]: any;
+}
+
+export interface InfoPageStoryblok {
+  header: (HeroStoryblok | PageHeaderStoryblok)[];
+  content: RichtextStoryblok;
+  metadata?: MetadataStoryblok[];
+  _uid: string;
+  component: "infoPage";
   [k: string]: any;
 }
 
@@ -117,26 +246,82 @@ export interface MetadataStoryblok {
   [k: string]: any;
 }
 
-export interface RichtextStoryblok {
-  type: string;
-  content?: RichtextStoryblok[];
-  marks?: RichtextStoryblok[];
-  attrs?: any;
-  text?: string;
+export interface NestedRichTextStoryblok {
+  richText: RichtextStoryblok;
+  _uid: string;
+  component: "nestedRichText";
+  [k: string]: any;
+}
+
+export interface TableStoryblok {
+  thead: {
+    _uid: string;
+    value?: string;
+    component: number;
+    [k: string]: any;
+  }[];
+  tbody: {
+    _uid: string;
+    body: {
+      _uid?: string;
+      value?: string;
+      component?: number;
+      [k: string]: any;
+    }[];
+    component: number;
+    [k: string]: any;
+  }[];
+  [k: string]: any;
+}
+
+export interface NestedTableStoryblok {
+  table?: TableStoryblok;
+  _uid: string;
+  component: "nestedTable";
+  [k: string]: any;
+}
+
+export interface NewsArticleStoryblok {
+  title: string;
+  date: string;
+  introText: string;
+  content: RichtextStoryblok;
+  image: AssetStoryblok;
+  resources?: RelatedLinkStoryblok[];
+  relatedNews?: RelatedNewsLinkStoryblok[];
+  _uid: string;
+  component: "newsArticle";
   [k: string]: any;
 }
 
 export interface PageStoryblok {
   body?: (
+    | ActionBannerStoryblok
+    | AuthorStoryblok
+    | BlogPostStoryblok
     | CardStoryblok
     | CardGridStoryblok
     | CategoryNavigationStoryblok
     | GridStoryblok
     | GridItemStoryblok
+    | HeroStoryblok
     | HomepageStoryblok
+    | HomepageHeroStoryblok
+    | IframeStoryblok
+    | ImageOrVideoStoryblok
+    | InfoPageStoryblok
     | MetadataStoryblok
+    | NestedRichTextStoryblok
+    | NestedTableStoryblok
+    | NewsArticleStoryblok
     | PageStoryblok
     | PageHeaderStoryblok
+    | PromoBoxStoryblok
+    | QuoteStoryblok
+    | RelatedLinkStoryblok
+    | RelatedNewsLinkStoryblok
+    | SpotlightStoryblok
+    | YoutubeEmbedStoryblok
   )[];
   metadata?: MetadataStoryblok[];
   wysiwyg?: RichtextStoryblok;
@@ -154,5 +339,64 @@ export interface PageHeaderStoryblok {
   ctaLink?: Exclude<MultilinkStoryblok, {linktype?: "email"} | {linktype?: "asset"}>;
   _uid: string;
   component: "pageHeader";
+  [k: string]: any;
+}
+
+export interface PromoBoxStoryblok {
+  heading: string;
+  body?: RichtextStoryblok;
+  ctaText?: string;
+  ctaLink?: Exclude<MultilinkStoryblok, {linktype?: "email"} | {linktype?: "asset"}>;
+  useVideo?: boolean;
+  image?: AssetStoryblok;
+  youtubeEmbed?: YoutubeEmbedStoryblok[];
+  swapMediaSide?: boolean;
+  _uid: string;
+  component: "promoBox";
+  [k: string]: any;
+}
+
+export interface QuoteStoryblok {
+  quoteText: RichtextStoryblok;
+  quoteAuthor: string;
+  _uid: string;
+  component: "quote";
+  [k: string]: any;
+}
+
+export interface RelatedLinkStoryblok {
+  title: string;
+  link: Exclude<MultilinkStoryblok, {linktype?: "email"} | {linktype?: "asset"}>;
+  _uid: string;
+  component: "relatedLink";
+  [k: string]: any;
+}
+
+export interface RelatedNewsLinkStoryblok {
+  title: string;
+  link: Exclude<MultilinkStoryblok, {linktype?: "email"} | {linktype?: "asset"}>;
+  publisher: string;
+  date: string;
+  _uid: string;
+  component: "relatedNewsLink";
+  [k: string]: any;
+}
+
+export interface SpotlightStoryblok {
+  heading: string;
+  useVideo?: boolean;
+  image?: AssetStoryblok;
+  youtubeEmbed?: YoutubeEmbedStoryblok[];
+  mediaDescription?: string;
+  stories?: (StoryblokStory<BlogPostStoryblok> | StoryblokStory<NewsArticleStoryblok> | string)[];
+  _uid: string;
+  component: "spotlight";
+  [k: string]: any;
+}
+
+export interface YoutubeEmbedStoryblok {
+  source: string;
+  _uid: string;
+  component: "youtubeEmbed";
   [k: string]: any;
 }
