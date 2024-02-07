@@ -1,12 +1,26 @@
 import { StoryblokComponent } from "@storyblok/react";
+import { type StoryblokStory } from "storyblok-generate-ts";
 
-import { type HomepageStoryblok } from "@/types/storyblok";
+import {
+	type HomepageStoryblok,
+	type BlogPostStoryblok,
+	type NewsArticleStoryblok,
+} from "@/types/storyblok";
+
+import { HomepageLatestNews } from "../HomepageLatestNews/HomepageLatestNews";
 
 interface HomepageBlokProps {
 	blok: HomepageStoryblok;
+	latestNews: (
+		| StoryblokStory<BlogPostStoryblok>
+		| StoryblokStory<NewsArticleStoryblok>
+	)[];
 }
 
-export const Homepage = ({ blok }: HomepageBlokProps): React.ReactElement => {
+export const Homepage = ({
+	blok,
+	latestNews,
+}: HomepageBlokProps): React.ReactElement => {
 	return (
 		<>
 			{blok.metadata &&
@@ -17,6 +31,10 @@ export const Homepage = ({ blok }: HomepageBlokProps): React.ReactElement => {
 			{blok.hero.map((nestedBlok) => (
 				<StoryblokComponent blok={nestedBlok} key={nestedBlok._uid} />
 			))}
+			<HomepageLatestNews
+				featuredStory={blok.featuredStory}
+				latestNews={latestNews}
+			/>
 		</>
 	);
 };

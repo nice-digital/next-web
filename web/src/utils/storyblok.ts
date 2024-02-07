@@ -2,9 +2,9 @@ import {
 	apiPlugin,
 	getStoryblokApi,
 	storyblokInit,
+	type ISbStoryParams,
 	type ISbStoriesParams,
 	type ISbResult,
-	type ISbStory,
 	type ISbError,
 	type ISbStoryData,
 } from "@storyblok/react";
@@ -24,14 +24,12 @@ import { type SBLink } from "@/types/SBLink";
 import { type MultilinkStoryblok } from "@/types/storyblok";
 
 export type StoryVersion = "draft" | "published" | undefined;
-export type SBSingleResponse = {
-	story: ISbStory;
+export type SBSingleResponse<T> = {
+	story?: ISbStoryData<T>;
+	notFound?: boolean;
 };
 export type SBMultipleResponse = {
-	stories: ISbStory[];
-};
-export type SBNotFoundResponse = {
-	notFound: true;
+	stories: ISbStoryData[];
 };
 
 // Init connection to Storyblok
@@ -66,27 +64,30 @@ export const initStoryblok = (): void => {
 };
 
 // Fetch a single story from the Storyblok API
-export const fetchStory = async (
+// TODO: Fix the 404 response type
+export const fetchStory = async <T>(
 	slug: string,
-	version: StoryVersion
-): Promise<SBSingleResponse | SBNotFoundResponse> => {
+	version: StoryVersion = "published",
+	params: ISbStoryParams = {}
+): Promise<SBSingleResponse<T>> => {
 	const storyblokApi = getStoryblokApi();
 
 	const sbParams: ISbStoriesParams = {
-		version: version || "published",
+		version,
 		resolve_links: "url",
 		cv: Date.now(), // Useful for flushing the Storyblok cache
+		...params,
 	};
 
 	let result = null;
 
 	try {
-		const story: ISbResult = await storyblokApi.get(
+		const response: ISbResult = await storyblokApi.get(
 			`cdn/stories/${slug}`,
 			sbParams
 		);
 		result = {
-			story: story.data.story,
+			story: response.data.story,
 		};
 	} catch (e) {
 		const result = JSON.parse(e as string) as ISbError;
@@ -110,25 +111,23 @@ export const fetchStory = async (
 
 // Fetch multiple stories from the Storyblok API
 export const fetchStories = async (
-	slugs: string[],
-	version: StoryVersion
-): Promise<SBMultipleResponse | SBNotFoundResponse> => {
+	version: StoryVersion = "published",
+	params: ISbStoriesParams = {}
+): Promise<ISbStoryData[]> => {
 	const storyblokApi = getStoryblokApi();
 
 	const sbParams: ISbStoriesParams = {
-		version: version || "published",
+		version,
 		resolve_links: "url",
-		by_slugs: slugs.join(","),
-		// cv: Date.now(), // Useful for flushing the Storyblok cache
+		cv: Date.now(), // Useful for flushing the Storyblok cache
+		...params,
 	};
 
-	let result = null;
+	let result = [];
 
 	try {
-		const stories: ISbResult = await storyblokApi.get(`cdn/stories`, sbParams);
-		result = {
-			stories: stories.data.stories,
-		};
+		const response: ISbResult = await storyblokApi.get(`cdn/stories`, sbParams);
+		result = response.data.stories;
 	} catch (e) {
 		const result = JSON.parse(e as string) as ISbError;
 		Promise.reject(new Error(`${result.message}"`));
@@ -147,7 +146,7 @@ export const fetchStories = async (
 export const fetchLinks = async (
 	version: StoryVersion,
 	startsWith?: string
-): Promise<SBLink[] | SBNotFoundResponse> => {
+): Promise<SBLink[]> => {
 	const storyblokApi = getStoryblokApi();
 
 	const sbParams: ISbStoriesParams = {
@@ -163,7 +162,6 @@ export const fetchLinks = async (
 
 	try {
 		const links: SBLink[] = await storyblokApi.getAll("cdn/links", sbParams);
-
 		result = links;
 	} catch (e) {
 		const result = JSON.parse(e as string) as ISbError;
