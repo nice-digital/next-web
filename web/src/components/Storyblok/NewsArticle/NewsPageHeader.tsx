@@ -46,7 +46,7 @@ export const NewsPageHeader: React.FC<NewsPageHeaderProps> = ({
 
 	return (
 		<PageHeader
-			isFullWidth={true}
+			variant="fullWidthLight"
 			breadcrumbs={breadcrumbs}
 			heading={heading}
 			lead={lead}

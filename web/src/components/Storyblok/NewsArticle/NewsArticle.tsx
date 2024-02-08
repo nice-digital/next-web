@@ -36,7 +36,7 @@ export const NewsArticle = ({
 		</Breadcrumbs>
 	) : undefined;
 
-	const NewsPageHeaderMeta = () => {
+	const PageHeaderFooter = () => {
 		const pageType = "News";
 
 		return (
@@ -60,7 +60,7 @@ export const NewsArticle = ({
 					heading={blok.title}
 					lead={blok.introText}
 					breadcrumbs={BreadcrumbComponent}
-					description={[<NewsPageHeaderMeta key="page-header-meta" />]}
+					description={[<PageHeaderFooter key="page-header-meta" />]}
 				/>
 
 				{/* article content */}
@@ -68,7 +68,6 @@ export const NewsArticle = ({
 					<GridItem cols={12} md={{ cols: 7 }}>
 						{blok.image && (
 							<StoryblokImage
-								ref={imageRef}
 								alt={blok.image.alt}
 								className={styles.featuredImage}
 								height="428px"
