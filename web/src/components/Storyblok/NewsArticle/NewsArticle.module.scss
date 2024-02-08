@@ -7,7 +7,7 @@
   // set up variables for the offset of the featured image across breakpoints
   --featuredImageOffset: 16dvh;
 
-  @include media-queries.mq($until: md, $and: '(orientation: landscape)' ) {
+  @include media-queries.mq($until: 920px, $and: '(orientation: landscape)' ) {
     --featuredImageOffset: 45dvh;
   }
 
@@ -21,6 +21,19 @@
       padding-bottom: var(--featuredImageOffset);
     }
   }
+
+  :global(.page-header__heading) {
+    margin: 0 0 utils.rem(spacing.$large) 0;
+  }
+
+  :global(.page-header__lead) {
+    margin: 0 0 utils.rem(spacing.$large) 0;
+  }
+
+  :global(.page-header__description) {
+    margin: 0 0 utils.rem(spacing.$medium) 0;
+  }
+
 
   hr {
     margin: utils.rem(spacing.$medium 0);
@@ -36,3 +49,6 @@
   width: 100%;
 }
 
+.page-header {
+
+}

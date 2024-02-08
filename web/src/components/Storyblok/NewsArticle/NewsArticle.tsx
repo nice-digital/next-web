@@ -1,42 +1,66 @@
 import { StoryblokComponent } from "@storyblok/react";
-import React from "react";
+import React, { useEffect } from "react";
 
 import { Breadcrumbs, Breadcrumb } from "@nice-digital/nds-breadcrumbs";
 import { Grid, GridItem } from "@nice-digital/nds-grid";
+import { PageHeader } from "@nice-digital/nds-page-header";
 import { Panel } from "@nice-digital/nds-panel";
+import { Tag } from "@nice-digital/nds-tag";
 
 import { NewsLetterSignup } from "@/components/NewsLetterSignUp/NewsLetterSignup";
+import { type Breadcrumb as TypeBreadcrumb } from "@/types/Breadcrumb";
 import { SBNewsArticle } from "@/types/SBNews";
+import { formatDateStr } from "@/utils/datetime";
 
 import { StoryblokImage } from "../StoryblokImage/StoryblokImage";
 import { StoryblokRichText } from "../StoryblokRichText/StoryblokRichText";
 
 import styles from "./NewsArticle.module.scss";
-import { NewsPageHeader } from "./NewsPageHeader";
 
 export interface NewsArticleProps {
 	blok: SBNewsArticle;
-	breadcrumbs?: React.ReactElement;
+	breadcrumbs?: TypeBreadcrumb[];
 }
 
-export const NewsArticle = ({ blok }: NewsArticleProps): React.ReactElement => {
-	const NewsArticleBreadCrumbs = (
-		<Breadcrumbs>
-			<Breadcrumb to="/">Home</Breadcrumb>
-			<Breadcrumb to="/news">News</Breadcrumb>
-			<Breadcrumb to="/news/articles">News articles</Breadcrumb>
+export const NewsArticle = ({
+	blok,
+	breadcrumbs,
+}: NewsArticleProps): React.ReactElement => {
+	const BreadcrumbComponent = breadcrumbs?.length ? (
+		<Breadcrumbs className="">
+			{[{ title: "Home", path: "/" }, ...breadcrumbs].map((breadcrumb) => (
+				<Breadcrumb key={breadcrumb.title} to={breadcrumb.path}>
+					{breadcrumb.title}
+				</Breadcrumb>
+			))}
 		</Breadcrumbs>
-	);
+	) : undefined;
+
+	const NewsPageHeaderMeta = () => {
+		const pageType = "News";
+
+		return (
+			<div className="news-article__meta">
+				<Tag outline data-testid="pageTag">
+					{pageType}
+				</Tag>{" "}
+				&nbsp;
+				{typeof blok.date === "string" && (
+					<time dateTime={blok.date}>{formatDateStr(blok.date)}</time>
+				)}
+			</div>
+		);
+	};
 
 	return (
 		<Grid elementType="article" className={styles.article}>
 			<GridItem cols={12}>
-				<NewsPageHeader
+				<PageHeader
+					variant="fullWidthLight"
 					heading={blok.title}
 					lead={blok.introText}
-					breadcrumbs={NewsArticleBreadCrumbs}
-					date={blok.date}
-					showFooter={true}
+					breadcrumbs={BreadcrumbComponent}
+					description={[<NewsPageHeaderMeta key="page-header-meta" />]}
 				/>
 
 				{/* article content */}
@@ -44,6 +68,7 @@ export const NewsArticle = ({ blok }: NewsArticleProps): React.ReactElement => {
 					<GridItem cols={12} md={{ cols: 7 }}>
 						{blok.image && (
 							<StoryblokImage
+								ref={imageRef}
 								alt={blok.image.alt}
 								className={styles.featuredImage}
 								height="428px"

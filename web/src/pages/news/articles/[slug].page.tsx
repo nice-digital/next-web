@@ -49,10 +49,12 @@ export async function getServerSideProps(context: GetServerSidePropsContext) {
 		const version = getStoryVersionFromQuery(query);
 
 		// Get the story and its breadcrumbs
-		const [storyResult, breadcrumbs] = await Promise.all([
-			fetchStory(`news/articles/${slug}`, version),
-			getBreadcrumbs(`news/articles/${slug}`, version),
-		]);
+		const storyResult = await fetchStory(`news/articles/${slug}`, version);
+
+		const breadcrumbs = [
+			{ title: "News", path: "/news" },
+			{ title: "News articles", path: "/news/articles" },
+		];
 
 		const result = {
 			props: {
