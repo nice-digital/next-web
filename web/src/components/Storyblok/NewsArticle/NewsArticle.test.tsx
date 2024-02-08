@@ -70,6 +70,16 @@ const newsArticleProps: NewsArticleProps = {
 		],
 		component: "newsArticle",
 	},
+	breadcrumbs: [
+		{
+			title: "News",
+			path: "/news",
+		},
+		{
+			title: "News articles",
+			path: "/news/articles",
+		},
+	],
 };
 
 jest.mock("@storyblok/react", () => ({
@@ -112,5 +122,26 @@ describe("NewsArticle", () => {
 		expect(
 			screen.getByText("Sign up for newsletters and alerts")
 		).toBeInTheDocument();
+	});
+
+	it("should render the breadcrumbs", () => {
+		render(
+			<NewsArticle
+				blok={newsArticleProps.blok}
+				breadcrumbs={newsArticleProps.breadcrumbs}
+			/>
+		);
+		expect(screen.getByRole("link", { name: "Home" })).toBeInTheDocument();
+		expect(screen.getByRole("link", { name: "News" })).toBeInTheDocument();
+		expect(
+			screen.getByRole("link", { name: "News articles" })
+		).toBeInTheDocument();
+	});
+
+	it("should render the page meta", () => {
+		render(<NewsArticle blok={newsArticleProps.blok} />);
+		expect(screen.getByTestId("pageTag")).toBeInTheDocument();
+		expect(screen.getByText("News")).toBeInTheDocument();
+		expect(screen.getByText("31 January 2024")).toBeInTheDocument();
 	});
 });
