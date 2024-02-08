@@ -36,7 +36,7 @@ export const NewsArticle = ({
 			if (articleRef.current && imageRef.current) {
 				articleRef.current.style.setProperty(
 					"--featuredImageOffset",
-					`${imageRef.current.height / 1.75}px`
+					`${Math.floor(imageRef.current.height / 1.75)}px`
 				);
 			}
 		};
