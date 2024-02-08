@@ -7,13 +7,13 @@
   // set up variables for the offset of the featured image across breakpoints
   --featuredImageOffset: 16dvh;
 
-  @include media-queries.mq($until: 920px, $and: '(orientation: landscape)' ) {
-    --featuredImageOffset: 45dvh;
-  }
+  // @include media-queries.mq($until: 920px, $and: '(orientation: landscape)' ) {
+  //   --featuredImageOffset: 45dvh;
+  // }
 
-  @include media-queries.mq($from: lg) {
-    --featuredImageOffset: 28dvh;
-  }
+  // @include media-queries.mq($from: lg) {
+  //   --featuredImageOffset: 28dvh;
+  // }
 
   // set padding on page-header based on the negat
   &:has(.featuredImage) {
@@ -44,11 +44,7 @@
 .featuredImage {
   aspect-ratio: 16 / 9;
   height: auto;
-  margin-top: calc(calc(var(--featuredImageOffset) * -1) - 1rem);
+  margin-top: calc(calc(var(--featuredImageOffset) * -1) - 1.5rem);
   object-fit: cover;
   width: 100%;
-}
-
-.page-header {
-
 }

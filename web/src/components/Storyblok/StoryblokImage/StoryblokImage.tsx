@@ -9,13 +9,10 @@ export interface StoryblokImageProps
 	[key: `data-${string}`]: string;
 }
 
-export const StoryblokImage = ({
-	src,
-	alt,
-	className,
-	serviceOptions,
-	...rest
-}: StoryblokImageProps): React.ReactElement => {
+export const StoryblokImage = React.forwardRef<
+	HTMLImageElement,
+	StoryblokImageProps
+>(({ src, alt, className, serviceOptions, ...rest }, ref) => {
 	const placeholderSrc = "/fallback-image.png";
 
 	const constructImageSrc = (baseUrl: string, serviceOptions?: string) => {
@@ -34,6 +31,7 @@ export const StoryblokImage = ({
 		<picture>
 			{webpSrc && <source srcSet={webpSrc} type="image/webp" />}
 			<img
+				ref={ref}
 				className={className}
 				src={jpgSrc ? jpgSrc : placeholderSrc}
 				alt={alt}
@@ -41,6 +39,6 @@ export const StoryblokImage = ({
 			/>
 		</picture>
 	);
-};
+});
 
 export default StoryblokImage;
