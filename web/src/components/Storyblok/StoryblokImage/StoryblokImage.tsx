@@ -24,7 +24,7 @@ export const StoryblokImage = React.forwardRef<
 		rest["data-testid"] = "storyblok-image-fallback";
 	}
 
-	const webpSrc = constructImageSrc(`${src}`, serviceOptions);
+	const webpSrc = constructImageSrc(`${src}/m/`, serviceOptions);
 	const jpgSrc = constructImageSrc(`${src}`, serviceOptions);
 
 	return (
