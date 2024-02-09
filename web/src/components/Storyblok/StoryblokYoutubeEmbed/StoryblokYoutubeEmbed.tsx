@@ -24,7 +24,7 @@ export const StoryblokYoutubeEmbed: React.FC<StoryblokYoutubeEmbedProps> = ({
 			title={`(video) ${title}`}
 			className={styles.youtubeEmbed}
 			id={`youtube-embed-${_uid}`}
-			src={source}
+			src={`https://www.youtube.com/embed/${source}`}
 			allow="accelerometer; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
 			allowFullScreen
 		></iframe>

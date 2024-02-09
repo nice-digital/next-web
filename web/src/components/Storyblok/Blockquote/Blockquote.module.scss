@@ -4,12 +4,7 @@
 @use '@nice-digital/nds-core/scss/glyphs';
 @use '@nice-digital/nds-core/scss/colours';
 
-////
-/// @group Typography
-////
 
-/// Blockquote style
-/// @since 0.1.0
 .quote {
   @include typography.font-size(lead);
   border-left: utils.rem(spacing.$x-small) solid colours.$quote-left-border;

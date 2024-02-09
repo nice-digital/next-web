@@ -32,7 +32,6 @@ export const NewsArticle = ({
 	useEffect(() => {
 		const handleResize = () => {
 			// set the offset for the featured image
-			console.log();
 			if (articleRef.current && imageRef.current) {
 				articleRef.current.style.setProperty(
 					"--featuredImageOffset",
