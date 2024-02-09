@@ -395,6 +395,7 @@ export interface SpotlightStoryblok {
 }
 
 export interface YoutubeEmbedStoryblok {
+  title?: string;
   source: string;
   _uid: string;
   component: "youtubeEmbed";

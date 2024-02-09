@@ -10,19 +10,25 @@ import {
 } from "@storyblok/react";
 import { type MetaTag } from "next-seo/lib/types";
 
+import { Blockquote } from "@/components/Storyblok/Blockquote/Blockquote";
+import { BlogPost } from "@/components/Storyblok/BlogPost/BlogPost";
 import { CardGrid } from "@/components/Storyblok/CardGrid/CardGrid";
 import { CategoryNavigation } from "@/components/Storyblok/CategoryNavigation/CategoryNavigation";
 import { Homepage } from "@/components/Storyblok/Homepage/Homepage";
 import { InfoPage } from "@/components/Storyblok/InfoPage/InfoPage";
 import { Metadata } from "@/components/Storyblok/Metadata/Metadata";
 import { NestedRichText } from "@/components/Storyblok/NestedRichText/NestedRichText";
+import { NewsArticle } from "@/components/Storyblok/NewsArticle/NewsArticle";
 import { StoryblokHero } from "@/components/Storyblok/StoryblokHero/StoryblokHero";
 import { StoryblokPageHeader } from "@/components/Storyblok/StoryblokPageHeader/StoryblokPageHeader";
+import { StoryblokRelatedLink } from "@/components/Storyblok/StoryblokRelatedLink/StoryblokRelatedLink";
+import { StoryblokRelatedNewsLink } from "@/components/Storyblok/StoryblokRelatedNewsLink/StoryblokRelatedNewsLink";
+import { StoryblokYoutubeEmbed } from "@/components/Storyblok/StoryblokYoutubeEmbed/StoryblokYoutubeEmbed";
 import { publicRuntimeConfig } from "@/config";
 import { logger } from "@/logger";
 import { type Breadcrumb } from "@/types/Breadcrumb";
 import { type SBLink } from "@/types/SBLink";
-import { type MultilinkStoryblok } from "@/types/storyblok";
+import { CardGridStoryblok, type MultilinkStoryblok } from "@/types/storyblok";
 
 export type StoryVersion = "draft" | "published" | undefined;
 export type SBSingleResponse = {
@@ -44,6 +50,12 @@ export const initStoryblok = (): void => {
 		hero: StoryblokHero,
 		infoPage: InfoPage,
 		metadata: Metadata,
+		newsArticle: NewsArticle,
+		blogPost: BlogPost,
+		quote: Blockquote,
+		relatedLink: StoryblokRelatedLink,
+		relatedNewsLink: StoryblokRelatedNewsLink,
+		youtubeEmbed: StoryblokYoutubeEmbed,
 		nestedRichText: NestedRichText,
 		pageHeader: StoryblokPageHeader,
 	};
@@ -87,6 +99,7 @@ export const fetchStory = async (
 			`cdn/stories/${slug}`,
 			sbParams
 		);
+
 		result = {
 			story: story.data.story,
 		};
@@ -185,7 +198,6 @@ export const getBreadcrumbs = async (
 	version?: string
 ): Promise<Breadcrumb[]> => {
 	const topSlug = slug.substring(0, slug.indexOf("/")); // Slug of highest level parent
-
 	const linksResult = await fetchLinks(
 		(version as StoryVersion) || "published",
 		topSlug
