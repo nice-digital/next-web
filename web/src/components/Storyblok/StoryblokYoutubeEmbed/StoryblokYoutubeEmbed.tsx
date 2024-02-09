@@ -11,7 +11,7 @@ export interface StoryblokYoutubeEmbedProps
 export const StoryblokYoutubeEmbed: React.FC<StoryblokYoutubeEmbedProps> = ({
 	blok,
 }) => {
-	const { _uid, source } = blok;
+	const { _uid, source, title } = blok;
 	{
 		/** TODO: add title field to the youTubeEmbed blok so we can add a accessible title for screen reader users
 		 * https://accessibility.blog.gov.uk/2020/03/16/why-videos-on-gov-uk-use-the-youtube-video-player/
@@ -21,7 +21,7 @@ export const StoryblokYoutubeEmbed: React.FC<StoryblokYoutubeEmbedProps> = ({
 	}
 	return (
 		<iframe
-			title="(video)"
+			title={`(video) ${title}`}
 			className={styles.youtubeEmbed}
 			id={`youtube-embed-${_uid}`}
 			src={source}
