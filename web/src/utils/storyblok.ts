@@ -15,7 +15,9 @@ import { BlogPost } from "@/components/Storyblok/BlogPost/BlogPost";
 import { CardGrid } from "@/components/Storyblok/CardGrid/CardGrid";
 import { CategoryNavigation } from "@/components/Storyblok/CategoryNavigation/CategoryNavigation";
 import { Homepage } from "@/components/Storyblok/Homepage/Homepage";
+import { InfoPage } from "@/components/Storyblok/InfoPage/InfoPage";
 import { Metadata } from "@/components/Storyblok/Metadata/Metadata";
+import { NestedRichText } from "@/components/Storyblok/NestedRichText/NestedRichText";
 import { NewsArticle } from "@/components/Storyblok/NewsArticle/NewsArticle";
 import { StoryblokHero } from "@/components/Storyblok/StoryblokHero/StoryblokHero";
 import { StoryblokPageHeader } from "@/components/Storyblok/StoryblokPageHeader/StoryblokPageHeader";
@@ -46,7 +48,7 @@ export const initStoryblok = (): void => {
 		categoryNavigation: CategoryNavigation,
 		homepage: Homepage,
 		hero: StoryblokHero,
-		pageHeader: StoryblokPageHeader,
+		infoPage: InfoPage,
 		metadata: Metadata,
 		newsArticle: NewsArticle,
 		blogPost: BlogPost,
@@ -54,6 +56,8 @@ export const initStoryblok = (): void => {
 		relatedLink: StoryblokRelatedLink,
 		relatedNewsLink: StoryblokRelatedNewsLink,
 		youtubeEmbed: StoryblokYoutubeEmbed,
+		nestedRichText: NestedRichText,
+		pageHeader: StoryblokPageHeader,
 	};
 
 	try {

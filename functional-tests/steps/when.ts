@@ -1,4 +1,5 @@
-// import { When } from "@cucumber/cucumber";
+import { When } from "@wdio/cucumber-framework";
+
 // TODO
 
 // Just adding an empty export for now to pass linting

@@ -90,7 +90,7 @@ class NextWebApp extends App<{}, {}, AppState> {
 	 */
 	componentDidCatch(error: Error, errorInfo: ErrorInfo): void {
 		// Global error logging (client-side only)
-		logger.error(error, errorInfo.componentStack);
+		logger.error(error, errorInfo.componentStack as string);
 
 		this.setState({ hasError: true });
 	}

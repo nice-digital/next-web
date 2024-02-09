@@ -1,9 +1,9 @@
 {
   "editor.formatOnSave": false,
   "editor.codeActionsOnSave": {
-    "source.organizeImports": false,
-    "source.fixAll.eslint": true,
-    "source.fixAll": true
+    "source.organizeImports": "never",
+    "source.fixAll.eslint": "explicit",
+    "source.fixAll": "explicit"
   },
   "editor.codeActionsOnSaveTimeout": 20000,
   "editor.defaultFormatter": "esbenp.prettier-vscode",
@@ -31,7 +31,6 @@
   "eslint.codeActionsOnSave.mode": "problems",
   "eslint.lintTask.enable": true,
   "eslint.format.enable": true,
-  "eslint.packageManager": "npm",
   "debug.javascript.terminalOptions": {
     "skipFiles": ["<node_internals>/**"]
   },
@@ -43,9 +42,6 @@
     "editor.defaultFormatter": "alexkrechik.cucumberautocomplete"
   },
   "cucumberautocomplete.steps": [
-    "functional-tests/node_modules/@nice-digital/wdio-cucumber-steps/lib/given/definitions.js",
-    "functional-tests/node_modules/@nice-digital/wdio-cucumber-steps/lib/when/definitions.js",
-    "functional-tests/node_modules/@nice-digital/wdio-cucumber-steps/lib/then/definitions.js",
     "functional-tests/steps/given.ts",
     "functional-tests/steps/when.ts",
     "functional-tests/steps/then.ts"
