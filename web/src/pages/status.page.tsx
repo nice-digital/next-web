@@ -9,8 +9,8 @@ import { logger } from "@/logger";
  * as fast as possible, hence being static.
  */
 export default function StatusPage(): JSX.Element {
-	logger.info("Status page check (info)");
-	logger.warn("Status page check (warn)");
+	logger.warn("Test status page warn (client side)");
+	logger.info("Test status page info (client side)");
 
 	return (
 		<>
@@ -20,3 +20,9 @@ export default function StatusPage(): JSX.Element {
 		</>
 	);
 }
+
+export const getServerSideProps = () => {
+	logger.warn("Test status page warn (server side)");
+	logger.info("Test status page info (server side)");
+	return { props: {} };
+};
