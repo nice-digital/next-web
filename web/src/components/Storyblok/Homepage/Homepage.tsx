@@ -1,13 +1,14 @@
 import { StoryblokComponent } from "@storyblok/react";
 import { type StoryblokStory } from "storyblok-generate-ts";
 
+import { type NewsStory } from "@/types/News";
 import {
 	type HomepageStoryblok,
 	type BlogPostStoryblok,
 	type NewsArticleStoryblok,
 } from "@/types/storyblok";
 
-import { HomepageLatestNews } from "../HomepageLatestNews/HomepageLatestNews";
+import { HomepageLatestNews } from "./HomepageLatestNews/HomepageLatestNews";
 
 interface HomepageBlokProps {
 	blok: HomepageStoryblok;
@@ -32,7 +33,7 @@ export const Homepage = ({
 				<StoryblokComponent blok={nestedBlok} key={nestedBlok._uid} />
 			))}
 			<HomepageLatestNews
-				featuredStory={blok.featuredStory}
+				featuredStory={blok.featuredStory as NewsStory}
 				latestNews={latestNews}
 			/>
 		</>

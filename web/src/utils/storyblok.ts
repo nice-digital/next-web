@@ -13,7 +13,7 @@ import { type MetaTag } from "next-seo/lib/types";
 import { CardGrid } from "@/components/Storyblok/CardGrid/CardGrid";
 import { CategoryNavigation } from "@/components/Storyblok/CategoryNavigation/CategoryNavigation";
 import { Homepage } from "@/components/Storyblok/Homepage/Homepage";
-import { HomepageHero } from "@/components/Storyblok/HomepageHero/HomepageHero";
+import { HomepageHero } from "@/components/Storyblok/Homepage/HomepageHero/HomepageHero";
 import { Metadata } from "@/components/Storyblok/Metadata/Metadata";
 import { StoryblokHero } from "@/components/Storyblok/StoryblokHero/StoryblokHero";
 import { StoryblokPageHeader } from "@/components/Storyblok/StoryblokPageHeader/StoryblokPageHeader";
@@ -298,4 +298,13 @@ export const getAdditionalMetaTags = (story: ISbStoryData): MetaTag[] => {
 		},
 	];
 	return additionalMetaTags;
+};
+
+// Turn a Storyblok date string (yyyy-mm-dd hh:ss) into a friendly date
+export const friendlyDate = (date: string): string => {
+	return new Date(date).toLocaleDateString("en-gb", {
+		year: "numeric",
+		month: "long",
+		day: "2-digit",
+	});
 };
