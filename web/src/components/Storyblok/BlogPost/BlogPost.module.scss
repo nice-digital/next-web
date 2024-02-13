@@ -1,28 +1,52 @@
 @use '@nice-digital/nds-core/scss/media-queries';
+@use '@nice-digital/nds-core/scss/spacing';
+@use '@nice-digital/nds-core/scss/utils';
 
-.articleContainer {
-  display: grid;
-  @include media-queries.mq($from: md) {
-    display: grid;
-    gap: 1rem;
-    grid-template-columns: repeat(12, 1fr);
+
+.article  {
+  // set up variables for the offset of the featured image across breakpoints
+  --featuredImageOffset: 16dvh;
+
+  // set padding on page-header based on the negat
+  &:has(.featuredImage) {
+    :global(.page-header) {
+      padding-bottom: var(--featuredImageOffset);
+    }
   }
- }
 
-.articleContent {
-  @include media-queries.mq($from: md) {
-    grid-column: span 6;
+
+  :global(.page-header__heading) {
+    margin: 0 0 utils.rem(spacing.$large) 0;
+  }
+
+  :global(.page-header__lead) {
+    margin: 0 0 utils.rem(spacing.$large) 0;
+  }
+
+  :global(.page-header__description) {
+    margin: 0 0 utils.rem(spacing.$medium) 0;
+  }
+
+  :global(.breadcrumbs) {
+    margin-top: 0;
+  }
+
+  // setting featured image styles here as we need to manage the offset between the image and the page header
+  picture {
+    display: block;
   }
 
   .featuredImage {
     aspect-ratio: 16 / 9;
-    width: 100%;
+    display: block;
+    height: auto;
+    margin-top: calc(calc(var(--featuredImageOffset) * -1) - 1rem);
+    margin-bottom: utils.rem(spacing.$x-large);
     object-fit: cover;
+    width: 100%;
   }
+
+
+
 }
 
-.articleSidebar {
-  @include media-queries.mq($from: md) {
-    grid-column: 8 / span 4;
-  }
-}
