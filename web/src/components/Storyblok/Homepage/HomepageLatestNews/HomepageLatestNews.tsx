@@ -12,8 +12,6 @@ export const HomepageLatestNews: React.FC<LatestNewsProps> = ({
 	featuredStory,
 	latestNews,
 }: LatestNewsProps) => {
-	console.log("Latest news in the component:", latestNews);
-
 	return (
 		<>
 			<h2>Latest from NICE</h2>

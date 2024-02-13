@@ -14,8 +14,6 @@ interface FeaturedStoryProps {
 export const FeaturedStory: React.FC<FeaturedStoryProps> = ({
 	story,
 }: FeaturedStoryProps) => {
-	console.log("Featured story:", story);
-
 	const storyType = story.content.component === "blogPost" ? "Blog" : "News";
 
 	return (
