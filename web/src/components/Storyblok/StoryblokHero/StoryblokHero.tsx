@@ -1,4 +1,5 @@
 import { Breadcrumbs, Breadcrumb } from "@nice-digital/nds-breadcrumbs";
+import { Button } from "@nice-digital/nds-button";
 import { Hero } from "@nice-digital/nds-hero";
 
 import { type Breadcrumb as TypeBreadcrumb } from "@/types/Breadcrumb";
@@ -23,11 +24,23 @@ export const StoryblokHero = ({
 		</Breadcrumbs>
 	) : undefined;
 
+	//test using storyblok image service to serve webp images
+	const imageUrl = `${blok.image?.filename}/m/` || undefined;
+
+	const Action =
+		blok.ctaLink && blok.ctaText ? (
+			<Button to={blok.ctaLink.url} variant="secondary">
+				{blok.ctaText}
+			</Button>
+		) : undefined;
+
 	return (
 		<Hero
 			title={blok.title}
-			intro={blok.intro || undefined}
+			intro={blok.summary || undefined}
 			header={BreadcrumbComponent}
+			image={imageUrl}
+			actions={Action}
 		/>
 	);
 };
