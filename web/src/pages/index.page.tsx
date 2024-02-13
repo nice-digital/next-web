@@ -56,8 +56,6 @@ export async function getServerSideProps(context: GetServerSidePropsContext) {
 	const storyResult = await fetchStory<HomepageStoryblok>(slug, version, {
 		resolve_relations: "homepage.featuredStory",
 	});
-	console.log("Homepage story result:", storyResult);
-	console.log("Featured:", storyResult.story?.content.featuredStory);
 
 	// Fetch latest news stories
 	const latestNewsParams: ISbStoriesParams = {

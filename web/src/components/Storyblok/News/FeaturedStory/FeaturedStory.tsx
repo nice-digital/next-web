@@ -1,5 +1,7 @@
 import Link from "next/link";
 
+import { Tag } from "@nice-digital/nds-tag";
+
 import { type NewsStory } from "@/types/News";
 import { friendlyDate } from "@/utils/storyblok";
 
@@ -18,12 +20,15 @@ export const FeaturedStory: React.FC<FeaturedStoryProps> = ({
 
 	return (
 		<div className={styles.story}>
-			<h3>
-				{storyType}: <Link href={`/${story.full_slug}`}>{story.name}</Link>
+			<div className={styles.imageContainer}>
+				<img src={story.content.image.filename} alt={story.content.image.alt} />
+			</div>
+			<h3 className={styles.heading}>
+				<Link href={`/${story.full_slug}`}>{story.name}</Link>
 			</h3>
 			<p>{story.content.introText}</p>
 			<p>{friendlyDate(story.content.date)}</p>
-			<img src={story.content.image.filename} alt={story.content.image.alt} />
+			<Tag outline>{storyType}</Tag>
 		</div>
 	);
 };
