@@ -20,6 +20,7 @@ import { InfoPage } from "@/components/Storyblok/InfoPage/InfoPage";
 import { Metadata } from "@/components/Storyblok/Metadata/Metadata";
 import { NestedRichText } from "@/components/Storyblok/NestedRichText/NestedRichText";
 import { NewsArticle } from "@/components/Storyblok/NewsArticle/NewsArticle";
+import { StoryblokActionBanner } from "@/components/Storyblok/StoryblokActionBanner/StoryblokActionBanner";
 import { StoryblokHero } from "@/components/Storyblok/StoryblokHero/StoryblokHero";
 import { StoryblokPageHeader } from "@/components/Storyblok/StoryblokPageHeader/StoryblokPageHeader";
 import { StoryblokRelatedLink } from "@/components/Storyblok/StoryblokRelatedLink/StoryblokRelatedLink";
@@ -43,6 +44,7 @@ export type SBMultipleResponse = {
 // Init connection to Storyblok
 export const initStoryblok = (): void => {
 	const components = {
+		actionBanner: StoryblokActionBanner,
 		cardGrid: CardGrid,
 		categoryNavigation: CategoryNavigation,
 		homepage: Homepage,

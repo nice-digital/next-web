@@ -13,7 +13,6 @@ export const HomepageHero = ({
 	blok,
 }: HomepageHeroBlokProps): React.ReactNode => {
 	const { title, images, description, ctaLink, ctaText } = blok;
-	console.log("Hero props:", blok);
 
 	const [randomImage, setRandomImage] = useState("");
 

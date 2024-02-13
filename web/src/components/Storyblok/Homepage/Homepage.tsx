@@ -36,6 +36,10 @@ export const Homepage = ({
 				featuredStory={blok.featuredStory as NewsStory}
 				latestNews={latestNews}
 			/>
+			{blok.primaryActionBanner &&
+				blok.primaryActionBanner.map((nestedBlok) => (
+					<StoryblokComponent blok={nestedBlok} key={nestedBlok._uid} />
+				))}
 		</>
 	);
 };
