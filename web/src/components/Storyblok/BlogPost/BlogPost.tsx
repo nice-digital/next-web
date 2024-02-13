@@ -1,25 +1,31 @@
 import { StoryblokComponent } from "@storyblok/react";
 import React, { useEffect, useRef } from "react";
+import { StoryblokStory } from "storyblok-generate-ts";
+import { StoryblokRichtext } from "storyblok-rich-text-react-renderer";
 
 import { Breadcrumbs, Breadcrumb } from "@nice-digital/nds-breadcrumbs";
 import { Grid, GridItem } from "@nice-digital/nds-grid";
 import { PageHeader } from "@nice-digital/nds-page-header";
-import { Panel } from "@nice-digital/nds-panel";
 import { Tag } from "@nice-digital/nds-tag";
 
 import { NewsLetterSignup } from "@/components/NewsLetterSignUp/NewsLetterSignup";
 import { type Breadcrumb as TypeBreadcrumb } from "@/types/Breadcrumb";
-import { SBNewsArticle } from "@/types/SBNews";
-import { AuthorStoryblok } from "@/types/storyblok";
+import { AuthorStoryblok, BlogPostStoryblok } from "@/types/storyblok";
 import { formatDateStr } from "@/utils/datetime";
 
+import { AuthorList } from "../StoryblokAuthor/AuthorList";
 import { StoryblokImage } from "../StoryblokImage/StoryblokImage";
 import { StoryblokRichText } from "../StoryblokRichText/StoryblokRichText";
 
 import styles from "./BlogPost.module.scss";
 
+// overrride the default type to include the content to use the richtext renderer type
+export interface RichTextBlogPostStoryblok extends BlogPostStoryblok {
+	content: StoryblokRichtext;
+}
+
 export interface BlogPostProps {
-	blok: SBNewsArticle;
+	blok: RichTextBlogPostStoryblok;
 	breadcrumbs?: TypeBreadcrumb[];
 }
 
@@ -77,32 +83,15 @@ export const BlogPost = ({
 		);
 	};
 
-	const AuthorList = () => {
-		if (!blok.author) {
-			return null;
-		}
+	// filter out any strings from the author array
+	// const mixedArray: (string | StoryblokStory<AuthorStoryblok>)[] = blok.author;
+	// const filteredAuthorArray: StoryblokStory<AuthorStoryblok>[] =
+	// 	mixedArray.filter(
+	// 		(item) => typeof item !== "string"
+	// 	) as StoryblokStory<AuthorStoryblok>[];
 
-		if (blok.author && blok.author.length === 1) {
-			return <StoryblokComponent blok={blok.author[0].content} />;
-		} else {
-			return (
-				<>
-					{blok.author.map((author: AuthorStoryblok) => {
-						// strip the image property from the content for multiple authors
-						// eslint-disable-next-line @typescript-eslint/no-unused-vars
-						const { image, ...contentWithoutImage } = author.content;
-
-						return (
-							<StoryblokComponent
-								key={author._uid}
-								blok={contentWithoutImage}
-							/>
-						);
-					})}
-				</>
-			);
-		}
-	};
+	//TODO: remove this when the above is fixed, mob sanitycheck
+	const authors = blok.author as StoryblokStory<AuthorStoryblok>[];
 
 	return (
 		<article className={styles.article} ref={articleRef}>
@@ -114,10 +103,10 @@ export const BlogPost = ({
 						lead={blok.introText}
 						breadcrumbs={BreadcrumbComponent}
 						description={[<PageHeaderFooter key="page-header-meta" />]}
-						secondSection={<AuthorList />}
+						secondSection={<AuthorList authors={authors} />}
 					/>
 
-					{/* article content */}
+					{/* post content */}
 					<Grid>
 						<GridItem cols={12} md={{ cols: 7 }}>
 							{blok.image && (
