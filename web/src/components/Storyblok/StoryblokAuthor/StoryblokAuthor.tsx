@@ -9,6 +9,7 @@ import styles from "./StoryblokAuthor.module.scss";
 export const StoryblokAuthor = ({
 	blok,
 }: AuthorStoryblok): React.ReactElement | null => {
+	console.log("blok", { blok });
 	if (!blok) {
 		return null;
 	}
