@@ -7,6 +7,7 @@ import {
 	type ISbStory,
 	type ISbError,
 	type ISbStoryData,
+	ISbStoryParams,
 } from "@storyblok/react";
 import { type MetaTag } from "next-seo/lib/types";
 
@@ -19,6 +20,7 @@ import { InfoPage } from "@/components/Storyblok/InfoPage/InfoPage";
 import { Metadata } from "@/components/Storyblok/Metadata/Metadata";
 import { NestedRichText } from "@/components/Storyblok/NestedRichText/NestedRichText";
 import { NewsArticle } from "@/components/Storyblok/NewsArticle/NewsArticle";
+import { StoryblokAuthor } from "@/components/Storyblok/StoryblokAuthor/StoryblokAuthor";
 import { StoryblokHero } from "@/components/Storyblok/StoryblokHero/StoryblokHero";
 import { StoryblokPageHeader } from "@/components/Storyblok/StoryblokPageHeader/StoryblokPageHeader";
 import { StoryblokRelatedLink } from "@/components/Storyblok/StoryblokRelatedLink/StoryblokRelatedLink";
@@ -31,8 +33,9 @@ import { type SBLink } from "@/types/SBLink";
 import { CardGridStoryblok, type MultilinkStoryblok } from "@/types/storyblok";
 
 export type StoryVersion = "draft" | "published" | undefined;
-export type SBSingleResponse = {
-	story: ISbStory;
+export type SBSingleResponse<T> = {
+	story?: ISbStoryData<T>;
+	notFound?: boolean;
 };
 export type SBMultipleResponse = {
 	stories: ISbStory[];
@@ -58,6 +61,7 @@ export const initStoryblok = (): void => {
 		youtubeEmbed: StoryblokYoutubeEmbed,
 		nestedRichText: NestedRichText,
 		pageHeader: StoryblokPageHeader,
+		author: StoryblokAuthor,
 	};
 
 	try {
@@ -80,28 +84,30 @@ export const initStoryblok = (): void => {
 };
 
 // Fetch a single story from the Storyblok API
-export const fetchStory = async (
+export const fetchStory = async <T>(
 	slug: string,
-	version: StoryVersion
-): Promise<SBSingleResponse | SBNotFoundResponse> => {
+	version: StoryVersion = "published",
+	params: ISbStoryParams = {}
+): Promise<SBSingleResponse<T>> => {
 	const storyblokApi = getStoryblokApi();
 
 	const sbParams: ISbStoriesParams = {
-		version: version || "published",
+		version,
 		resolve_links: "url",
 		cv: Date.now(), // Useful for flushing the Storyblok cache
+		...params,
 	};
 
 	let result = null;
 
 	try {
-		const story: ISbResult = await storyblokApi.get(
+		const response: ISbResult = await storyblokApi.get(
 			`cdn/stories/${slug}`,
 			sbParams
 		);
 
 		result = {
-			story: story.data.story,
+			story: response.data.story,
 		};
 	} catch (e) {
 		const result = JSON.parse(e as string) as ISbError;
