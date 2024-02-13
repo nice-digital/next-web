@@ -49,7 +49,7 @@ export const NewsArticle = ({
 		return () => {
 			window.removeEventListener("resize", handleResize);
 		};
-	});
+	}, []);
 
 	const BreadcrumbComponent = breadcrumbs?.length ? (
 		<Breadcrumbs className="">
