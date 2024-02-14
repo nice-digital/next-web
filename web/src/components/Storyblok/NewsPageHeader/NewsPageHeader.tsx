@@ -3,12 +3,14 @@ import React from "react";
 import { PageHeader, PageHeaderProps } from "@nice-digital/nds-page-header";
 import { Tag } from "@nice-digital/nds-tag";
 
+import { AuthorStoryblok } from "@/types/storyblok";
 import { formatDateStr } from "@/utils/datetime";
 
 export interface NewsPageHeaderProps
 	extends Omit<PageHeaderProps, "isFullWidth" | "metadata"> {
 	date?: string;
 	showFooter?: boolean;
+	pageType?: string;
 }
 
 export const NewsPageHeader: React.FC<NewsPageHeaderProps> = ({
@@ -16,6 +18,7 @@ export const NewsPageHeader: React.FC<NewsPageHeaderProps> = ({
 	lead,
 	breadcrumbs,
 	date,
+	pageType,
 	showFooter = false,
 }) => {
 	const NewsPageHeaderMeta = () => {

@@ -13,6 +13,7 @@ import { type Breadcrumb as TypeBreadcrumb } from "@/types/Breadcrumb";
 import { AuthorStoryblok, BlogPostStoryblok } from "@/types/storyblok";
 import { formatDateStr } from "@/utils/datetime";
 
+import { NewsPageHeaderFooter } from "../NewsPageHeader/NewsPageHeaderFooter/NewsPageHeaderFooter";
 import { AuthorList } from "../StoryblokAuthor/AuthorList/AuthorList";
 import { StoryblokImage } from "../StoryblokImage/StoryblokImage";
 import { StoryblokRichText } from "../StoryblokRichText/StoryblokRichText";
@@ -67,22 +68,6 @@ export const BlogPost = ({
 		</Breadcrumbs>
 	) : undefined;
 
-	const PageHeaderFooter = () => {
-		const pageType = "Blog";
-
-		return (
-			<div className="news-article__meta">
-				<Tag outline data-testid="pageTag">
-					{pageType}
-				</Tag>{" "}
-				&nbsp;
-				{typeof blok.date === "string" && (
-					<time dateTime={blok.date}>{formatDateStr(blok.date)}</time>
-				)}
-			</div>
-		);
-	};
-
 	// filter out any strings from the author array
 	// const mixedArray: (string | StoryblokStory<AuthorStoryblok>)[] = blok.author;
 	// const filteredAuthorArray: StoryblokStory<AuthorStoryblok>[] =
@@ -102,7 +87,13 @@ export const BlogPost = ({
 						heading={blok.title}
 						lead={blok.introText}
 						breadcrumbs={BreadcrumbComponent}
-						description={[<PageHeaderFooter key="page-header-meta" />]}
+						description={[
+							<NewsPageHeaderFooter
+								key="page-header-meta"
+								date={blok.date}
+								pageType={blok.component}
+							/>,
+						]}
 						secondSection={<AuthorList authors={authors} />}
 					/>
 

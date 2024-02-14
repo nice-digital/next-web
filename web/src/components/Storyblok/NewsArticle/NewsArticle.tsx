@@ -12,6 +12,7 @@ import { type Breadcrumb as TypeBreadcrumb } from "@/types/Breadcrumb";
 import { SBNewsArticle } from "@/types/SBNews";
 import { formatDateStr } from "@/utils/datetime";
 
+import { NewsPageHeaderFooter } from "../NewsPageHeader/NewsPageHeaderFooter/NewsPageHeaderFooter";
 import { StoryblokImage } from "../StoryblokImage/StoryblokImage";
 import { StoryblokRichText } from "../StoryblokRichText/StoryblokRichText";
 
@@ -86,7 +87,13 @@ export const NewsArticle = ({
 						heading={blok.title}
 						lead={blok.introText}
 						breadcrumbs={BreadcrumbComponent}
-						description={[<PageHeaderFooter key="page-header-meta" />]}
+						description={[
+							<NewsPageHeaderFooter
+								key="page-header-meta"
+								date={blok.date}
+								pageType={blok.component}
+							/>,
+						]}
 					/>
 
 					{/* article content */}
