@@ -1,8 +1,37 @@
-.author-image {
-  aspect-ratio: 1 / 1;
-  border-radius: 50%;
-  display: block;
-  height: auto;
-  object-fit: cover;
-  width: 136px;
+@use '@nice-digital/nds-core/scss/spacing';
+@use '@nice-digital/nds-core/scss/typography';
+@use '@nice-digital/nds-core/scss/utils';
+
+.author {
+
+  &:first-of-type {
+    margin-top: utils.rem(spacing.$small);
+  }
+
+  margin-top: calc(utils.rem(spacing.$medium) + utils.rem(spacing.$x-small));
+
+  &:has(img) &__name {
+    margin-top: calc(utils.rem(spacing.$large) - utils.rem(spacing.$x-small));
+  }
+
+  &__image {
+    aspect-ratio: 1 / 1;
+    border-radius: 50%;
+    display: block;
+    height: auto;
+    object-fit: cover;
+    width: 136px;
+  }
+
+  &__name {
+    margin: 0;
+  }
+
+  &__job-title {
+    @include typography.h5;
+    font-weight: 400;
+    margin: 0;
+    margin-top: calc(utils.rem(spacing.$medium) - utils.rem(spacing.$x-small));
+  }
+
 }

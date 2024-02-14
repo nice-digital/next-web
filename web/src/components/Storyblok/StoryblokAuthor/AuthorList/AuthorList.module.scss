@@ -1,0 +1,14 @@
+@use '@nice-digital/nds-core/scss/spacing';
+@use '@nice-digital/nds-core/scss/typography';
+@use '@nice-digital/nds-core/scss/utils';
+
+
+.author-list {
+  padding-bottom: utils.rem(spacing.$x-large);
+
+  &__heading {
+    @include typography.h6;
+    margin: 0 0 utils.rem(spacing.$small);
+  }
+
+}

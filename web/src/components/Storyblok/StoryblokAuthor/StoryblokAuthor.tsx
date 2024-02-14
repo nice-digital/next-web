@@ -18,18 +18,23 @@ export const StoryblokAuthor = ({
 	}
 
 	return (
-		<div data-testid={`author-component-${blok._uid}`}>
+		<div
+			className={styles.author}
+			data-testid={`author-component-${blok._uid}`}
+		>
 			{blok.image && (
 				<StoryblokImage
 					src={blok.image.filename}
 					alt={blok.image.alt}
 					width={136}
 					height={136}
-					className={styles["author-image"]}
+					className={styles["author__image"]}
 				/>
 			)}
-			{blok.name && <h4>{blok.name}</h4>}
-			{blok.jobTitle && <p>{blok.jobTitle}</p>}
+			{blok.name && <h4 className={styles["author__name"]}>{blok.name}</h4>}
+			{blok.jobTitle && (
+				<p className={styles["author__job-title"]}>{blok.jobTitle}</p>
+			)}
 		</div>
 	);
 };
