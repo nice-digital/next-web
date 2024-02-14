@@ -6,16 +6,19 @@ import { StoryblokImage } from "../StoryblokImage/StoryblokImage";
 
 import styles from "./StoryblokAuthor.module.scss";
 
+export interface StoryblokAuthorProps {
+	blok: AuthorStoryblok;
+}
+
 export const StoryblokAuthor = ({
 	blok,
-}: AuthorStoryblok): React.ReactElement | null => {
-	console.log("blok", { blok });
+}: StoryblokAuthorProps): React.ReactElement | null => {
 	if (!blok) {
 		return null;
 	}
 
 	return (
-		<div>
+		<div data-testid={`author-component-${blok._uid}`}>
 			{blok.image && (
 				<StoryblokImage
 					src={blok.image.filename}

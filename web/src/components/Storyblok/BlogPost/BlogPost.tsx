@@ -13,7 +13,7 @@ import { type Breadcrumb as TypeBreadcrumb } from "@/types/Breadcrumb";
 import { AuthorStoryblok, BlogPostStoryblok } from "@/types/storyblok";
 import { formatDateStr } from "@/utils/datetime";
 
-import { AuthorList } from "../StoryblokAuthor/AuthorList";
+import { AuthorList } from "../StoryblokAuthor/AuthorList/AuthorList";
 import { StoryblokImage } from "../StoryblokImage/StoryblokImage";
 import { StoryblokRichText } from "../StoryblokRichText/StoryblokRichText";
 
