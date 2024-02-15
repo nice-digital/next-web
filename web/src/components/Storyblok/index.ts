@@ -1,35 +1,16 @@
-import { Blockquote } from "./Blockquote/Blockquote";
-import { BlogPost } from "./BlogPost/BlogPost";
-import { CardGrid } from "./CardGrid/CardGrid";
-import { CategoryNavigation } from "./CategoryNavigation/CategoryNavigation";
-import { Homepage } from "./Homepage/Homepage";
-import { InfoPage } from "./InfoPage/InfoPage";
-import { Metadata } from "./Metadata/Metadata";
-import { NestedRichText } from "./NestedRichText/NestedRichText";
-import { NewsArticle } from "./NewsArticle/NewsArticle";
-import { StoryblokHero } from "./StoryblokHero/StoryblokHero";
-import { StoryblokImage } from "./StoryblokImage/StoryblokImage";
-import { StoryblokPageHeader } from "./StoryblokPageHeader/StoryblokPageHeader";
-import { StoryblokRelatedLink } from "./StoryblokRelatedLink/StoryblokRelatedLink";
-import { StoryblokRelatedNewsLink } from "./StoryblokRelatedNewsLink/StoryblokRelatedNewsLink";
-import { StoryblokRichText } from "./StoryblokRichText/StoryblokRichText";
-import { StoryblokYoutubeEmbed } from "./StoryblokYoutubeEmbed/StoryblokYoutubeEmbed";
-
-export {
-	Blockquote,
-	BlogPost,
-	CardGrid,
-	CategoryNavigation,
-	Homepage,
-	InfoPage,
-	Metadata,
-	NestedRichText,
-	NewsArticle,
-	StoryblokHero,
-	StoryblokImage,
-	StoryblokPageHeader,
-	StoryblokRelatedLink,
-	StoryblokRelatedNewsLink,
-	StoryblokRichText,
-	StoryblokYoutubeEmbed,
-};
+export * from "./Blockquote/Blockquote";
+export * from "./BlogPost/BlogPost";
+export * from "./CardGrid/CardGrid";
+export * from "./CategoryNavigation/CategoryNavigation";
+export * from "./Homepage/Homepage";
+export * from "./InfoPage/InfoPage";
+export * from "./Metadata/Metadata";
+export * from "./NestedRichText/NestedRichText";
+export * from "./NewsArticle/NewsArticle";
+export * from "./StoryblokHero/StoryblokHero";
+export * from "./StoryblokImage/StoryblokImage";
+export * from "./StoryblokPageHeader/StoryblokPageHeader";
+export * from "./StoryblokRelatedLink/StoryblokRelatedLink";
+export * from "./StoryblokRelatedNewsLink/StoryblokRelatedNewsLink";
+export * from "./StoryblokRichText/StoryblokRichText";
+export * from "./StoryblokYoutubeEmbed/StoryblokYoutubeEmbed";
