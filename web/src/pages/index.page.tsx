@@ -7,13 +7,25 @@ import {
 	fetchStory,
 	getStoryVersionFromQuery,
 	getAdditionalMetaTags,
+	initStoryblok,
 } from "@/utils/storyblok";
+
+import * as StoryblokComponents from "../components/Storyblok/";
 
 import type { GetServerSidePropsContext } from "next";
 
 interface HomeProps {
 	story: ISbStoryData;
 }
+
+const requiredComponents = {
+	cardGrid: StoryblokComponents.CardGrid,
+	homepage: StoryblokComponents.Homepage,
+	hero: StoryblokComponents.StoryblokHero,
+	metadata: StoryblokComponents.Metadata,
+};
+
+initStoryblok(requiredComponents);
 
 export default function Home({ story }: HomeProps): React.ReactElement {
 	const additionalMetaTags = useMemo(

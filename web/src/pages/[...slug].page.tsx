@@ -9,7 +9,10 @@ import {
 	getSlugFromParams,
 	getAdditionalMetaTags,
 	getBreadcrumbs,
+	initStoryblok,
 } from "@/utils/storyblok";
+
+import * as StoryblokComponents from "../components/Storyblok/";
 
 import type { GetServerSidePropsContext } from "next";
 
@@ -17,6 +20,15 @@ interface SlugCatchAllProps {
 	story: ISbStoryData;
 	breadcrumbs: Breadcrumb[];
 }
+
+const requiredComponents = {
+	cardGrid: StoryblokComponents.CardGrid,
+	categoryNavigation: StoryblokComponents.CategoryNavigation,
+	metadata: StoryblokComponents.Metadata,
+	pageHeader: StoryblokComponents.StoryblokPageHeader,
+};
+
+initStoryblok(requiredComponents);
 
 export default function SlugCatchAll({
 	story,

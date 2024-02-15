@@ -52,7 +52,7 @@ const lora = Lora({
 	variable: "--serif-font-family",
 });
 
-initStoryblok();
+// initStoryblok();
 
 // eslint-disable-next-line @typescript-eslint/ban-types
 class NextWebApp extends App<{}, {}, AppState> {
