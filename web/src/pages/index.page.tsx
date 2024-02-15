@@ -25,7 +25,9 @@ const requiredComponents = {
 	metadata: StoryblokComponents.Metadata,
 };
 
-initStoryblok(requiredComponents);
+(async () => {
+	await initStoryblok(requiredComponents);
+})();
 
 export default function Home({ story }: HomeProps): React.ReactElement {
 	const additionalMetaTags = useMemo(
@@ -41,7 +43,7 @@ export default function Home({ story }: HomeProps): React.ReactElement {
 				additionalMetaTags={additionalMetaTags}
 			></NextSeo>
 			<h1>Homepage</h1>
-			<StoryblokComponent blok={story.content} suppressHydrationWarning />
+			<StoryblokComponent blok={story.content} />
 		</>
 	);
 }
