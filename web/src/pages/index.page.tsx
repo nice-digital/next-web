@@ -1,6 +1,6 @@
 import { type ISbStoryData, StoryblokComponent } from "@storyblok/react";
 import { NextSeo } from "next-seo";
-import React, { useMemo } from "react";
+import React, { useEffect, useMemo } from "react";
 
 import { logger } from "@/logger";
 import {
@@ -41,7 +41,7 @@ export default function Home({ story }: HomeProps): React.ReactElement {
 				additionalMetaTags={additionalMetaTags}
 			></NextSeo>
 			<h1>Homepage</h1>
-			<StoryblokComponent blok={story.content} />
+			<StoryblokComponent blok={story.content} suppressHydrationWarning />
 		</>
 	);
 }
