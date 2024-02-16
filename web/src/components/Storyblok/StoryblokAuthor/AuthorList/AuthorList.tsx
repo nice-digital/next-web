@@ -8,11 +8,11 @@ import { AuthorStoryblok } from "@/types/storyblok";
 import styles from "./AuthorList.module.scss";
 
 export interface AuthorListProps {
-	authors: StoryblokStory<AuthorStoryblok>[] | null;
+	authors: StoryblokStory<AuthorStoryblok>[];
 }
 
 export interface AuthorListRefactorProps {
-	children: React.ReactElement<>;
+	children: React.ReactElement;
 }
 
 export const AuthorListRefactor = ({
@@ -29,14 +29,11 @@ export const AuthorListRefactor = ({
 export const AuthorList = ({
 	authors,
 }: AuthorListProps): React.ReactElement | null => {
-	console.log({ authors });
-	if (!authors) {
+	if (!authors || authors.length === 0) {
 		return null;
 	}
 
-	if (authors.length === 1) {
-		return <StoryblokComponent blok={authors[0].content} />;
-	} else {
+	if (authors.length > 1) {
 		return (
 			<div className={styles["author-list"]}>
 				<h3 className={styles["author-list__heading"]}>List of authors</h3>
@@ -53,5 +50,7 @@ export const AuthorList = ({
 				})}
 			</div>
 		);
+	} else {
+		return <StoryblokComponent blok={authors[0].content} />;
 	}
 };
