@@ -12,16 +12,16 @@ import {
 import { type MetaTag } from "next-seo/lib/types";
 
 import { Blockquote } from "@/components/Storyblok/Blockquote/Blockquote";
-import { BlogPost } from "@/components/Storyblok/BlogPost/BlogPost";
 import { CardGrid } from "@/components/Storyblok/CardGrid/CardGrid";
 import { CategoryNavigation } from "@/components/Storyblok/CategoryNavigation/CategoryNavigation";
 import { Homepage } from "@/components/Storyblok/Homepage/Homepage";
 import { InfoPage } from "@/components/Storyblok/InfoPage/InfoPage";
 import { Metadata } from "@/components/Storyblok/Metadata/Metadata";
 import { NestedRichText } from "@/components/Storyblok/NestedRichText/NestedRichText";
-import { NewsArticle } from "@/components/Storyblok/NewsArticle/NewsArticle";
 import { StoryblokAuthor } from "@/components/Storyblok/StoryblokAuthor/StoryblokAuthor";
+import { StoryblokBlogPost } from "@/components/Storyblok/StoryblokBlogPost/StoryblokBlogPost";
 import { StoryblokHero } from "@/components/Storyblok/StoryblokHero/StoryblokHero";
+import { StoryblokNewsArticle } from "@/components/Storyblok/StoryblokNewsArticle/StoryblokNewsArticle";
 import { StoryblokPageHeader } from "@/components/Storyblok/StoryblokPageHeader/StoryblokPageHeader";
 import { StoryblokRelatedLink } from "@/components/Storyblok/StoryblokRelatedLink/StoryblokRelatedLink";
 import { StoryblokRelatedNewsLink } from "@/components/Storyblok/StoryblokRelatedNewsLink/StoryblokRelatedNewsLink";
@@ -53,8 +53,8 @@ export const initStoryblok = (): void => {
 		hero: StoryblokHero,
 		infoPage: InfoPage,
 		metadata: Metadata,
-		newsArticle: NewsArticle,
-		blogPost: BlogPost,
+		newsArticle: StoryblokNewsArticle,
+		blogPost: StoryblokBlogPost,
 		quote: Blockquote,
 		relatedLink: StoryblokRelatedLink,
 		relatedNewsLink: StoryblokRelatedNewsLink,

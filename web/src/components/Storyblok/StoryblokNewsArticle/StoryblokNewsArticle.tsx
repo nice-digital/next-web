@@ -1,39 +1,32 @@
 import { StoryblokComponent } from "@storyblok/react";
 import React, { useEffect, useRef } from "react";
-import { StoryblokStory } from "storyblok-generate-ts";
-import { StoryblokRichtext } from "storyblok-rich-text-react-renderer";
 
 import { Breadcrumbs, Breadcrumb } from "@nice-digital/nds-breadcrumbs";
 import { Grid, GridItem } from "@nice-digital/nds-grid";
 import { PageHeader } from "@nice-digital/nds-page-header";
+import { Panel } from "@nice-digital/nds-panel";
 import { Tag } from "@nice-digital/nds-tag";
 
 import { NewsLetterSignup } from "@/components/NewsLetterSignUp/NewsLetterSignup";
 import { type Breadcrumb as TypeBreadcrumb } from "@/types/Breadcrumb";
-import { AuthorStoryblok, BlogPostStoryblok } from "@/types/storyblok";
+import { SBNewsArticle } from "@/types/SBNews";
 import { formatDateStr } from "@/utils/datetime";
 
 import { NewsPageHeaderFooter } from "../NewsPageHeader/NewsPageHeaderFooter/NewsPageHeaderFooter";
-import { AuthorList } from "../StoryblokAuthor/AuthorList/AuthorList";
 import { StoryblokImage } from "../StoryblokImage/StoryblokImage";
 import { StoryblokRichText } from "../StoryblokRichText/StoryblokRichText";
 
-import styles from "./BlogPost.module.scss";
+import styles from "./StoryblokNewsArticle.module.scss";
 
-// overrride the default type to include the content to use the richtext renderer type
-export interface RichTextBlogPostStoryblok extends BlogPostStoryblok {
-	content: StoryblokRichtext;
-}
-
-export interface BlogPostProps {
-	blok: RichTextBlogPostStoryblok;
+export interface StoryblokNewsArticleProps {
+	blok: SBNewsArticle;
 	breadcrumbs?: TypeBreadcrumb[];
 }
 
-export const BlogPost = ({
+export const StoryblokNewsArticle = ({
 	blok,
 	breadcrumbs,
-}: BlogPostProps): React.ReactElement => {
+}: StoryblokNewsArticleProps): React.ReactElement => {
 	const imageRef = useRef<HTMLImageElement>(null);
 	const articleRef = useRef<HTMLDivElement>(null);
 
@@ -57,7 +50,8 @@ export const BlogPost = ({
 		return () => {
 			window.removeEventListener("resize", handleResize);
 		};
-	});
+	}, []);
+
 	const BreadcrumbComponent = breadcrumbs?.length ? (
 		<Breadcrumbs className="">
 			{[{ title: "Home", path: "/" }, ...breadcrumbs].map((breadcrumb) => (
@@ -67,16 +61,6 @@ export const BlogPost = ({
 			))}
 		</Breadcrumbs>
 	) : undefined;
-
-	// filter out any strings from the author array
-	// const mixedArray: (string | StoryblokStory<AuthorStoryblok>)[] = blok.author;
-	// const filteredAuthorArray: StoryblokStory<AuthorStoryblok>[] =
-	// 	mixedArray.filter(
-	// 		(item) => typeof item !== "string"
-	// 	) as StoryblokStory<AuthorStoryblok>[];
-
-	//TODO: remove this when the above is fixed, mob sanitycheck
-	const authors = blok.author as StoryblokStory<AuthorStoryblok>[];
 
 	return (
 		<article className={styles.article} ref={articleRef}>
@@ -94,10 +78,9 @@ export const BlogPost = ({
 								pageType={blok.component}
 							/>,
 						]}
-						secondSection={<AuthorList authors={authors} />}
 					/>
 
-					{/* post content */}
+					{/* article content */}
 					<Grid>
 						<GridItem cols={12} md={{ cols: 7 }}>
 							{blok.image && (
@@ -107,11 +90,52 @@ export const BlogPost = ({
 									className={styles.featuredImage}
 									height="428px"
 									loading="eager"
-									src={blok.image.filename}
+									src={blok?.image?.filename}
 									width="760px"
 								/>
 							)}
 							<StoryblokRichText content={blok.content} />
+						</GridItem>
+
+						{/* article sidebar */}
+						<GridItem
+							className={styles.articleSidebar}
+							cols={12}
+							elementType="aside"
+							md={{ cols: 4, push: 1 }}
+						>
+							{blok.resources && blok.resources.length > 0 && (
+								<Panel variant="primary" key="resources">
+									<h2 className="h5">Associated guidance and resources</h2>
+									{blok.resources.map((resource, index) => {
+										return (
+											<React.Fragment key={resource._uid}>
+												<StoryblokComponent
+													blok={resource}
+													key={resource._uid}
+												/>
+												{blok.resources &&
+													index < blok.resources.length - 1 && <hr />}
+											</React.Fragment>
+										);
+									})}
+								</Panel>
+							)}
+
+							{blok.relatedNews && blok.relatedNews.length > 0 && (
+								<Panel key="news">
+									<h2 className="h5">Related news stories</h2>
+									{blok.relatedNews?.map((news, index) => {
+										return (
+											<React.Fragment key={news._uid}>
+												<StoryblokComponent blok={news} />
+												{blok.relatedNews &&
+													index < blok.relatedNews.length - 1 && <hr />}
+											</React.Fragment>
+										);
+									})}
+								</Panel>
+							)}
 						</GridItem>
 					</Grid>
 				</GridItem>
