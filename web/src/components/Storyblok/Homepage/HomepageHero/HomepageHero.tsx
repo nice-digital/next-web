@@ -29,8 +29,8 @@ export const HomepageHero = ({
 			intro={description}
 			image={randomImage}
 			actions={
-				<Button variant="cta" to={ctaLink.url}>
-					{ctaText}
+				<Button variant="cta" to={`/${ctaLink.cached_url}`}>
+					{ctaText} WOW
 				</Button>
 			}
 		/>

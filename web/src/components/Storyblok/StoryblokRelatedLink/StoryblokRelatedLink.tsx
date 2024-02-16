@@ -12,7 +12,9 @@ export const StoryblokRelatedLink = ({
 	blok,
 }: StoryblokRelatedLinkProps): React.ReactElement => {
 	// TODO: check if we are handling to href props of the link component correctly
-	const resolvedLink = blok.link ? resolveStoryblokLink(blok.link) : undefined;
+	const resolvedLink = blok.link
+		? resolveStoryblokLink(blok.link).url
+		: undefined;
 
 	return (
 		<Link href={resolvedLink ? resolvedLink : blok.link.url}>{blok.title}</Link>

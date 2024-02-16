@@ -20,6 +20,8 @@ import { InfoPage } from "@/components/Storyblok/InfoPage/InfoPage";
 import { Metadata } from "@/components/Storyblok/Metadata/Metadata";
 import { NestedRichText } from "@/components/Storyblok/NestedRichText/NestedRichText";
 import { NewsArticle } from "@/components/Storyblok/NewsArticle/NewsArticle";
+import { PromoBox } from "@/components/Storyblok/PromoBox/PromoBox";
+import { Spotlight } from "@/components/Storyblok/Spotlight/Spotlight";
 import { StoryblokActionBanner } from "@/components/Storyblok/StoryblokActionBanner/StoryblokActionBanner";
 import { StoryblokHero } from "@/components/Storyblok/StoryblokHero/StoryblokHero";
 import { StoryblokPageHeader } from "@/components/Storyblok/StoryblokPageHeader/StoryblokPageHeader";
@@ -45,21 +47,23 @@ export type SBMultipleResponse = {
 export const initStoryblok = (): void => {
 	const components = {
 		actionBanner: StoryblokActionBanner,
+		blogPost: BlogPost,
 		cardGrid: CardGrid,
 		categoryNavigation: CategoryNavigation,
+		hero: StoryblokHero,
 		homepage: Homepage,
 		homepageHero: HomepageHero,
-		hero: StoryblokHero,
 		infoPage: InfoPage,
 		metadata: Metadata,
+		nestedRichText: NestedRichText,
 		newsArticle: NewsArticle,
-		blogPost: BlogPost,
+		pageHeader: StoryblokPageHeader,
+		promoBox: PromoBox,
 		quote: Blockquote,
 		relatedLink: StoryblokRelatedLink,
 		relatedNewsLink: StoryblokRelatedNewsLink,
+		spotlight: Spotlight,
 		youtubeEmbed: StoryblokYoutubeEmbed,
-		nestedRichText: NestedRichText,
-		pageHeader: StoryblokPageHeader,
 	};
 
 	try {
@@ -238,23 +242,34 @@ export const getBreadcrumbs = async (
 };
 
 // Resolve a link object returned from the Storyblok API, so that it returns
-// something that can be plugged straight into an href attribute
+// a) something that can be plugged straight into an href attribute, and
+// b) a boolean that indicates whether it's an internal link or not, so
+// we can use the NextJS Link component to render it
 export const resolveStoryblokLink = ({
 	linktype,
 	url,
 	email,
 	story,
-}: MultilinkStoryblok): string | undefined => {
+}: MultilinkStoryblok): { url: string | undefined; isInternal: boolean } => {
 	switch (linktype) {
 		case "url":
 		case "asset":
-			return url?.trim() || undefined;
+			return { url: url?.trim() || undefined, isInternal: false };
 		case "email":
-			return email?.trim() ? `mailto:${email.trim()}` : undefined;
+			return {
+				url: email?.trim() ? `mailto:${email.trim()}` : undefined,
+				isInternal: false,
+			};
 		case "story":
-			return story?.full_slug ? `/${story.full_slug}` : undefined;
+			return {
+				url: story?.full_slug ? `/${story.full_slug}` : undefined,
+				isInternal: true,
+			};
 		default:
-			return undefined;
+			return {
+				url: undefined,
+				isInternal: false,
+			};
 	}
 };
 
