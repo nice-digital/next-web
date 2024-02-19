@@ -125,25 +125,23 @@ export const fetchStory = async (
 
 // Fetch multiple stories from the Storyblok API
 export const fetchStories = async (
-	slugs: string[],
-	version: StoryVersion
-): Promise<SBMultipleResponse | SBNotFoundResponse> => {
+	version: StoryVersion = "published",
+	params: ISbStoriesParams = {}
+): Promise<ISbStoryData[]> => {
 	const storyblokApi = getStoryblokApi();
 
 	const sbParams: ISbStoriesParams = {
-		version: version || "published",
+		version,
 		resolve_links: "url",
-		by_slugs: slugs.join(","),
-		// cv: Date.now(), // Useful for flushing the Storyblok cache
+		cv: Date.now(), // Useful for flushing the Storyblok cache
+		...params,
 	};
 
-	let result = null;
+	let result = [];
 
 	try {
-		const stories: ISbResult = await storyblokApi.get(`cdn/stories`, sbParams);
-		result = {
-			stories: stories.data.stories,
-		};
+		const response: ISbResult = await storyblokApi.get(`cdn/stories`, sbParams);
+		result = response.data.stories;
 	} catch (e) {
 		const result = JSON.parse(e as string) as ISbError;
 		Promise.reject(new Error(`${result.message}"`));
