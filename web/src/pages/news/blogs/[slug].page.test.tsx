@@ -1,20 +1,20 @@
 import { render, screen } from "@testing-library/react";
 import { GetServerSidePropsContext } from "next";
 
-import { NewsArticleStoryblok } from "@/types/storyblok";
+import { BlogPostStoryblok } from "@/types/storyblok";
 import {
+	getSlugFromParams,
 	fetchStory,
 	getStoryVersionFromQuery,
-	getSlugFromParams,
-	getAdditionalMetaTags,
-	getBreadcrumbs,
-} from "@/utils/storyblok";
+} from "@/utils/storyblok"; // replace with actual path
 
-import NewsArticlePage, { getServerSideProps } from "./[slug].page";
+import BlogPostPage, { getServerSideProps } from "./[slug].page";
+
+jest.mock("@/utils/storyblok", () => jest.fn()); // replace with actual path
 
 const mockArticle = {
 	story: {
-		name: "Mock News Article",
+		name: "Mock Blog Post",
 		created_at: "2024-01-31T14:47:27.503Z",
 		published_at: "2024-01-31T15:16:15.194Z",
 		id: 435600482,
@@ -37,7 +37,7 @@ const mockArticle = {
 				is_private: "",
 				is_external_url: false,
 			},
-			title: "A mock news title",
+			title: "A mock blog title",
 			content: {
 				type: "doc",
 				content: [
@@ -303,77 +303,11 @@ const mockArticle = {
 					{ type: "paragraph" },
 				],
 			},
-			component: "newsArticle",
+			component: "blogPost",
 			introText: "Some mock intro text to be displayed in the page header",
-			resources: [
-				{
-					_uid: "8f019cf9-3743-4126-94cb-092898b43636",
-					link: {
-						id: "e9c6fedf-5d63-4468-b29f-8884d5300ad8",
-						url: "",
-						linktype: "story",
-						fieldtype: "multilink",
-						cached_url: "test-new-nc-2",
-					},
-					title: "Test related link 1",
-					component: "relatedLink",
-					_editable:
-						'\u003c!--#storyblok#{"name": "relatedLink", "space": "271255", "uid": "8f019cf9-3743-4126-94cb-092898b43636", "id": "435600482"}--\u003e',
-				},
-				{
-					_uid: "94714547-6acc-4055-aa01-3cf899be9fc4",
-					link: {
-						id: "",
-						url: "https://youtube.com/@niceorguk",
-						linktype: "url",
-						fieldtype: "multilink",
-						cached_url: "https://youtube.com/@niceorguk",
-					},
-					title: "Test related link 2",
-					component: "relatedLink",
-					_editable:
-						'\u003c!--#storyblok#{"name": "relatedLink", "space": "271255", "uid": "94714547-6acc-4055-aa01-3cf899be9fc4", "id": "435600482"}--\u003e',
-				},
-			],
-			relatedNews: [
-				{
-					_uid: "50c7601a-1f1f-48f1-96e9-4f16f688fd7a",
-					date: "2024-01-31 00:00",
-					link: {
-						id: "",
-						url: "https://youtube.com/@niceorguk",
-						linktype: "url",
-						fieldtype: "multilink",
-						cached_url: "https://youtube.com/@niceorguk",
-					},
-					title: "Test related news link 1",
-					component: "relatedNewsLink",
-					publisher: "NICE",
-					_editable:
-						'\u003c!--#storyblok#{"name": "relatedNewsLink", "space": "271255", "uid": "50c7601a-1f1f-48f1-96e9-4f16f688fd7a", "id": "435600482"}--\u003e',
-				},
-				{
-					_uid: "3cf9f2d3-cb7c-42e6-bf2e-ce72d7bc03ab",
-					date: "2024-01-30 00:00",
-					link: {
-						id: "e9c6fedf-5d63-4468-b29f-8884d5300ad8",
-						url: "",
-						linktype: "story",
-						fieldtype: "multilink",
-						cached_url: "test-new-nc-2",
-					},
-					title: "Test related news link 2",
-					component: "relatedNewsLink",
-					publisher: "NICE-2",
-					_editable:
-						'\u003c!--#storyblok#{"name": "relatedNewsLink", "space": "271255", "uid": "3cf9f2d3-cb7c-42e6-bf2e-ce72d7bc03ab", "id": "435600482"}--\u003e',
-				},
-			],
-			_editable:
-				'\u003c!--#storyblok#{"name": "newsArticle", "space": "271255", "uid": "87f22048-51e6-46d4-80af-ceeeb3505550", "id": "435600482"}--\u003e',
 		},
-		slug: "mock-news-article",
-		full_slug: "news/articles/mock-news-article",
+		slug: "mock-blog-post",
+		full_slug: "news/blogs/mock-blog-post",
 		sort_by_date: null,
 		position: -820,
 		tag_list: [],
@@ -391,6 +325,11 @@ const mockArticle = {
 	},
 };
 
+const mockBreadcrumbs = [
+	{ title: "News", path: "/news" },
+	{ title: "Blogs", path: "/news/blogs" },
+];
+
 jest.mock("@/utils/storyblok", () => ({
 	fetchStory: jest.fn(),
 	getStoryVersionFromQuery: jest.fn(),
@@ -400,67 +339,53 @@ jest.mock("@/utils/storyblok", () => ({
 }));
 
 jest.mock("@storyblok/react", () => ({
-	StoryblokComponent: ({ blok }: { blok: NewsArticleStoryblok }) => {
+	StoryblokComponent: ({ blok }: { blok: BlogPostStoryblok }) => {
 		return <div data-testid={`mock-${blok.component}`}>{blok.title}</div>;
 	},
 }));
 
-describe("NewsArticlePage", () => {
+describe("BlogPostPage", () => {
 	it("renders the page", () => {
-		render(<NewsArticlePage story={mockArticle.story} />);
-		expect(screen.getByText("A mock news title")).toBeInTheDocument();
+		render(<BlogPostPage story={mockArticle.story} />);
+		expect(screen.getByText("A mock blog title")).toBeInTheDocument();
 	});
 });
 
 describe("getServerSideProps", () => {
-	it("returns notFound if no slug is provided", async () => {
-		const context = { query: {}, params: {} } as GetServerSidePropsContext;
+	it("should return notFound when slug is not provided", async () => {
+		const context = {
+			query: {},
+			params: {},
+		} as GetServerSidePropsContext;
+
 		const result = await getServerSideProps(context);
+
 		expect(result).toEqual({ notFound: true });
 	});
 
-	it("calls the fetchStory function when a slug is provided", async () => {
+	it("should fetch story and return it with breadcrumbs when slug is provided", async () => {
 		const context = {
-			query: { version: "draft" },
-			params: { slug: "mock-news-article" },
+			query: { version: "published" },
+			params: { slug: "test-slug" },
 		} as unknown as GetServerSidePropsContext;
 
-		(getSlugFromParams as jest.Mock).mockReturnValueOnce("mock-news-article");
-		(getStoryVersionFromQuery as jest.Mock).mockReturnValueOnce("draft");
-		(fetchStory as jest.Mock).mockResolvedValueOnce([mockArticle.story, []]);
-		(getBreadcrumbs as jest.Mock).mockResolvedValueOnce([]);
-		await getServerSideProps(context);
+		(getSlugFromParams as jest.Mock).mockReturnValueOnce("mock-blog-post");
+		(getStoryVersionFromQuery as jest.Mock).mockReturnValueOnce("published");
+		(fetchStory as jest.Mock).mockResolvedValue(mockArticle);
+
+		const result = await getServerSideProps(context);
 
 		expect(fetchStory).toHaveBeenCalledWith(
-			"news/articles/mock-news-article",
-			"draft"
+			"news/blogs/mock-blog-post",
+			"published",
+			{
+				resolve_relations: "blogPost.author",
+			}
 		);
-	});
 
-	xit("returns the story and breadcrumbs", async () => {
-		const slug = "test-slug";
-		const version = "draft";
-		const mockStory = { name: "Mock News Article", content: {} };
-		const mockBreadcrumbs = [
-			{ title: "Home" },
-			{ title: "News" },
-			{ title: "Mock News Article" },
-		];
-
-		jest.mocked(getSlugFromParams).mockReturnValue(slug);
-		jest.mocked(getStoryVersionFromQuery).mockReturnValue(version);
-		jest.mocked(fetchStory).mockResolvedValue(mockStory);
-		jest.mocked(getBreadcrumbs).mockResolvedValue(mockBreadcrumbs);
-
-		const context = {
-			params: { slug: [slug] },
-			query: { version },
-		} as unknown as GetServerSidePropsContext;
-
-		const response = await getServerSideProps(context);
-		expect(response).toEqual({
+		expect(result).toEqual({
 			props: {
-				...mockStory,
+				...mockArticle,
 				breadcrumbs: mockBreadcrumbs,
 			},
 		});
