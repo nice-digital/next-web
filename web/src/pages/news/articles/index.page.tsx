@@ -53,12 +53,15 @@ export async function getServerSideProps(context: GetServerSidePropsContext) {
 	const page = context.query.page
 		? parseInt(context.query.page as string, 10)
 		: 1;
+	const resultsPerPage = 5;
 
 	const storiesResult = await fetchStories(version, {
 		starts_with: "news/articles/",
-		per_page: 5,
+		per_page: resultsPerPage,
 		page,
 	});
+
+	const totalPages = storiesResult.total / resultsPerPage;
 
 	// console.log("****************** Stories result:", storiesResult);
 
@@ -70,7 +73,7 @@ export async function getServerSideProps(context: GetServerSidePropsContext) {
 	const result = {
 		props: {
 			stories: [...storiesResult.stories],
-			totalPages: storiesResult.total,
+			totalPages,
 			currentPage: page,
 		},
 	};
