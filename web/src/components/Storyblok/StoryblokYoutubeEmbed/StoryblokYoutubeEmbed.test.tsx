@@ -9,7 +9,8 @@ const mockYoutubeEmbedProps: StoryblokYoutubeEmbedProps = {
 	blok: {
 		_uid: "123",
 		component: "youtubeEmbed",
-		source: "https://www.youtube.com/embed/123",
+		title: "test video title",
+		source: "12345678910",
 	},
 };
 
@@ -17,21 +18,27 @@ describe("StoryblokYoutubeEmbed", () => {
 	it("should render the StoryblokYoutubeEmbed component", () => {
 		render(<StoryblokYoutubeEmbed {...mockYoutubeEmbedProps} />);
 
-		expect(screen.getByTitle("(video)")).toHaveProperty("tagName", "IFRAME");
+		expect(
+			screen.getByTitle(`(video) ${mockYoutubeEmbedProps.blok.title}`)
+		).toHaveProperty("tagName", "IFRAME");
 	});
 
 	it("should render the StoryblokYoutubeEmbed component with the correct source", () => {
 		render(<StoryblokYoutubeEmbed {...mockYoutubeEmbedProps} />);
 
-		expect(screen.getByTitle("(video)")).toHaveAttribute(
+		expect(
+			screen.getByTitle(`(video) ${mockYoutubeEmbedProps.blok.title}`)
+		).toHaveAttribute(
 			"src",
-			mockYoutubeEmbedProps.blok.source
+			`https://www.youtube.com/embed/${mockYoutubeEmbedProps.blok.source}`
 		);
 	});
 
 	it("should allow full screen on iframe", () => {
 		render(<StoryblokYoutubeEmbed {...mockYoutubeEmbedProps} />);
 
-		expect(screen.getByTitle("(video)")).toHaveAttribute("allowfullscreen", "");
+		expect(
+			screen.getByTitle(`(video) ${mockYoutubeEmbedProps.blok.title}`)
+		).toHaveAttribute("allowfullscreen", "");
 	});
 });
