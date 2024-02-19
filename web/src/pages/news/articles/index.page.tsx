@@ -1,6 +1,8 @@
 import { type ISbStories, type ISbStory } from "@storyblok/react";
 import React from "react";
 
+import { SimplePagination } from "@nice-digital/nds-simple-pagination";
+
 import { logger } from "@/logger";
 import { fetchStories, getStoryVersionFromQuery } from "@/utils/storyblok";
 
@@ -20,6 +22,13 @@ export const ArticlesIndexPage = ({
 			{stories.map((story, index) => {
 				return <p key={`${story.name}_${index}`}>{story.name}</p>;
 			})}
+
+			<SimplePagination
+				totalPages={7}
+				currentPage={2}
+				nextPageLink={{ destination: "#", elementType: "a" }}
+				previousPageLink={{ destination: "#", elementType: "a" }}
+			/>
 		</>
 	);
 };
@@ -31,6 +40,7 @@ export async function getServerSideProps(context: GetServerSidePropsContext) {
 
 	const storiesResult = await fetchStories(version, {
 		starts_with: "news/articles/",
+		per_page: 5,
 	});
 
 	console.log("****************** Stories result:", storiesResult);
