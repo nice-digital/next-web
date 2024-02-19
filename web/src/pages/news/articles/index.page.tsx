@@ -33,14 +33,22 @@ export const ArticlesIndexPage = ({
 			<SimplePagination
 				totalPages={totalPages}
 				currentPage={currentPage}
-				nextPageLink={{
-					destination: `${router.pathname}?page=${currentPage + 1}`,
-					elementType: Link,
-				}}
-				previousPageLink={{
-					destination: `${router.pathname}?page=${currentPage - 1}`,
-					elementType: Link,
-				}}
+				nextPageLink={
+					currentPage < totalPages
+						? {
+								destination: `${router.pathname}?page=${currentPage + 1}`,
+								elementType: Link,
+						  }
+						: undefined
+				}
+				previousPageLink={
+					currentPage > 1
+						? {
+								destination: `${router.pathname}?page=${currentPage - 1}`,
+								elementType: Link,
+						  }
+						: undefined
+				}
 			/>
 		</>
 	);
@@ -61,12 +69,16 @@ export async function getServerSideProps(context: GetServerSidePropsContext) {
 		page,
 	});
 
-	const totalPages = storiesResult.total / resultsPerPage;
+	const totalPages = Math.ceil(storiesResult.total / resultsPerPage);
 
-	// console.log("****************** Stories result:", storiesResult);
-
-	//TODO handle empty list
-	// if (storiesResult.stories.length == 0) return { notFound: true };
+	if (page < 1 || page > totalPages || isNaN(page)) {
+		return {
+			redirect: {
+				destination: "/news/articles",
+				permanent: false,
+			},
+		};
+	}
 
 	logger.warn("Finish server side props for news articles list page");
 
