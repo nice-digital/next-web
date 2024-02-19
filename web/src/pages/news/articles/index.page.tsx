@@ -10,10 +10,12 @@ import type { GetServerSidePropsContext } from "next";
 
 type NewsArticlesProps = {
 	stories: ISbStories[];
+	totalPages: number;
 };
 
 export const ArticlesIndexPage = ({
 	stories,
+	totalPages,
 }: NewsArticlesProps): React.ReactElement => {
 	console.log({ stories });
 	return (
@@ -24,7 +26,7 @@ export const ArticlesIndexPage = ({
 			})}
 
 			<SimplePagination
-				totalPages={7}
+				totalPages={totalPages}
 				currentPage={2}
 				nextPageLink={{ destination: "#", elementType: "a" }}
 				previousPageLink={{ destination: "#", elementType: "a" }}
@@ -46,13 +48,14 @@ export async function getServerSideProps(context: GetServerSidePropsContext) {
 	console.log("****************** Stories result:", storiesResult);
 
 	//TODO handle empty list
-	if (storiesResult.length == 0) return { notFound: true };
+	if (storiesResult.stories.length == 0) return { notFound: true };
 
 	logger.warn("Finish server side props for news articles list page");
 
 	const result = {
 		props: {
-			stories: [...storiesResult],
+			stories: [...storiesResult.stories],
+			totalPages: storiesResult.total,
 		},
 	};
 	return result;

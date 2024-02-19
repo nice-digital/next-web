@@ -127,7 +127,7 @@ export const fetchStory = async (
 export const fetchStories = async (
 	version: StoryVersion = "published",
 	params: ISbStoriesParams = {}
-): Promise<ISbStoryData[]> => {
+): Promise<{ stories: ISbStoryData[]; total: number }> => {
 	const storyblokApi = getStoryblokApi();
 
 	const sbParams: ISbStoriesParams = {
@@ -137,11 +137,14 @@ export const fetchStories = async (
 		...params,
 	};
 
-	let result = [];
+	let stories = [];
+	let total;
 
 	try {
 		const response: ISbResult = await storyblokApi.get(`cdn/stories`, sbParams);
-		result = response.data.stories;
+		stories = response.data.stories;
+		total = response.total;
+		return { stories, total };
 	} catch (e) {
 		const result = JSON.parse(e as string) as ISbError;
 		Promise.reject(new Error(`${result.message}"`));
@@ -152,8 +155,6 @@ export const fetchStories = async (
 		);
 		throw Error(`${result.status} error from Storyblok API: ${result.message}`);
 	}
-
-	return result;
 };
 
 // Fetch an array of links from the links endpoint
