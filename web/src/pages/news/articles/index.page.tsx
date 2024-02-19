@@ -1,6 +1,6 @@
-import { type ISbStories, type ISbStory } from "@storyblok/react";
+import { type ISbStories } from "@storyblok/react";
 import { useRouter } from "next/router";
-import React, { useState } from "react";
+import React from "react";
 
 import { SimplePagination } from "@nice-digital/nds-simple-pagination";
 
@@ -26,9 +26,9 @@ export const ArticlesIndexPage = ({
 	return (
 		<>
 			<h1>Articles Index Page</h1>
-			{stories.map((story, index) => {
-				return <p key={`${story.name}_${index}`}>{story.name}</p>;
-			})}
+			{stories.map((story, index) => (
+				<p key={`${story.name}_${index}`}>{story.name}</p>
+			))}
 
 			<SimplePagination
 				totalPages={totalPages}
@@ -54,14 +54,12 @@ export const ArticlesIndexPage = ({
 	);
 };
 
-export async function getServerSideProps(context: GetServerSidePropsContext) {
-	logger.warn("Start server side props for /news/articles list page");
+export async function getServerSideProps({ query }: GetServerSidePropsContext) {
+	logger.info("Start server side props for /news/articles list page");
 
-	const version = getStoryVersionFromQuery(context.query);
-	const page = context.query.page
-		? parseInt(context.query.page as string, 10)
-		: 1;
-	const resultsPerPage = 5;
+	const version = getStoryVersionFromQuery(query);
+	const page = Number(query.page) || 1;
+	const resultsPerPage = 10;
 
 	const storiesResult = await fetchStories(version, {
 		starts_with: "news/articles/",
@@ -80,16 +78,15 @@ export async function getServerSideProps(context: GetServerSidePropsContext) {
 		};
 	}
 
-	logger.warn("Finish server side props for news articles list page");
+	logger.info("Finish server side props for news articles list page");
 
-	const result = {
+	return {
 		props: {
-			stories: [...storiesResult.stories],
+			stories: storiesResult.stories,
 			totalPages,
 			currentPage: page,
 		},
 	};
-	return result;
 }
 
 export default ArticlesIndexPage;
