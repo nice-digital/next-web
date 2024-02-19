@@ -9,7 +9,7 @@
   @include typography.font-size(lead);
   border-left: utils.rem(spacing.$x-small) solid colours.$quote-left-border;
   font-weight: normal;
-  margin: utils.rem(spacing.$large 0);
+  margin: calc(utils.rem(spacing.$large ) + utils.rem(spacing.$x-small)) 0;
   padding: utils.rem(0 0 0 spacing.$xx-large);
   position: relative;
 

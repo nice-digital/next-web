@@ -5,12 +5,10 @@ import { Breadcrumbs, Breadcrumb } from "@nice-digital/nds-breadcrumbs";
 import { Grid, GridItem } from "@nice-digital/nds-grid";
 import { PageHeader } from "@nice-digital/nds-page-header";
 import { Panel } from "@nice-digital/nds-panel";
-import { Tag } from "@nice-digital/nds-tag";
 
 import { NewsLetterSignup } from "@/components/NewsLetterSignUp/NewsLetterSignup";
 import { type Breadcrumb as TypeBreadcrumb } from "@/types/Breadcrumb";
 import { SBNewsArticle } from "@/types/SBNews";
-import { formatDateStr } from "@/utils/datetime";
 
 import { NewsPageHeaderFooter } from "../NewsPageHeader/NewsPageHeaderFooter/NewsPageHeaderFooter";
 import { StoryblokImage } from "../StoryblokImage/StoryblokImage";

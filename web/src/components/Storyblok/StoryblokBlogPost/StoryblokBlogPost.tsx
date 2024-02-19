@@ -6,12 +6,10 @@ import { StoryblokRichtext } from "storyblok-rich-text-react-renderer";
 import { Breadcrumbs, Breadcrumb } from "@nice-digital/nds-breadcrumbs";
 import { Grid, GridItem } from "@nice-digital/nds-grid";
 import { PageHeader } from "@nice-digital/nds-page-header";
-import { Tag } from "@nice-digital/nds-tag";
 
 import { NewsLetterSignup } from "@/components/NewsLetterSignUp/NewsLetterSignup";
 import { type Breadcrumb as TypeBreadcrumb } from "@/types/Breadcrumb";
 import { AuthorStoryblok, BlogPostStoryblok } from "@/types/storyblok";
-import { formatDateStr } from "@/utils/datetime";
 
 import { NewsPageHeaderFooter } from "../NewsPageHeader/NewsPageHeaderFooter/NewsPageHeaderFooter";
 import { AuthorList } from "../StoryblokAuthor/AuthorList/AuthorList";
@@ -96,25 +94,24 @@ export const StoryblokBlogPost = ({
 						]}
 						secondSection={<AuthorList authors={authors} />}
 					/>
-
-					{/* post content */}
-					<Grid>
-						<GridItem cols={12} md={{ cols: 7 }}>
-							{blok.image && (
-								<StoryblokImage
-									ref={imageRef}
-									alt={blok.image.alt}
-									className={styles.featuredImage}
-									height="428px"
-									loading="eager"
-									src={blok.image.filename}
-									width="760px"
-								/>
-							)}
-							<StoryblokRichText content={blok.content} />
-						</GridItem>
-					</Grid>
 				</GridItem>
+
+				{/* post content */}
+				<GridItem cols={12} md={{ cols: 7 }}>
+					{blok.image && (
+						<StoryblokImage
+							ref={imageRef}
+							alt={blok.image.alt}
+							className={styles.featuredImage}
+							height="428px"
+							loading="eager"
+							src={blok.image.filename}
+							width="760px"
+						/>
+					)}
+					<StoryblokRichText content={blok.content} />
+				</GridItem>
+
 				<GridItem cols={12}>
 					<NewsLetterSignup />
 				</GridItem>

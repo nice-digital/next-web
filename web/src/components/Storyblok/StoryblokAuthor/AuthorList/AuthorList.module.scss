@@ -1,10 +1,14 @@
 @use '@nice-digital/nds-core/scss/spacing';
 @use '@nice-digital/nds-core/scss/typography';
 @use '@nice-digital/nds-core/scss/utils';
+@use '@nice-digital/nds-core/scss/media-queries';
 
 
 .author-list {
-  padding-bottom: utils.rem(spacing.$x-large);
+
+  @include media-queries.mq($from: md) {
+    padding-bottom: utils.rem(spacing.$x-large);
+  }
 
   &__heading {
     @include typography.h6;
