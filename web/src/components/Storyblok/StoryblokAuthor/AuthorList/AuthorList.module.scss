@@ -1,12 +1,16 @@
+@use '@nice-digital/nds-core/scss/colours';
+@use '@nice-digital/nds-core/scss/media-queries';
 @use '@nice-digital/nds-core/scss/spacing';
 @use '@nice-digital/nds-core/scss/typography';
 @use '@nice-digital/nds-core/scss/utils';
-@use '@nice-digital/nds-core/scss/media-queries';
 
 
 .author-list {
 
+  //TODO: remove secondsection styles in NDS. Manage authorlist style in this component
   @include media-queries.mq($from: md) {
+    // border-left: 2px solid colours.$page-header-second-section-border-colour;
+    // padding-left: 1rem;
     padding-bottom: utils.rem(spacing.$x-large);
   }
 
