@@ -1,5 +1,6 @@
 @use '@nice-digital/nds-core/scss/spacing';
 @use '@nice-digital/nds-core/scss/utils';
+import
 
 .storyblokRichTextWrapper {
 
@@ -23,14 +24,5 @@
       width: 100%;
     }
   }
-
-  iframe[src*="youtube"] {
-    display: block;
-    max-width: 100%;
-    margin: calc(utils.rem(spacing.$large) + utils.rem(spacing.$x-small)) 0;
-    aspect-ratio: 16/9;
-    object-fit: cover;
-  }
-
-
 }
+

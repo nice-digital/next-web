@@ -1,4 +1,7 @@
+import { YouTubeEmbed } from "@next/third-parties/google";
 import React, { HTMLProps } from "react";
+import LiteYouTubeEmbed, { LiteYouTubeProps } from "react-lite-youtube-embed";
+// import "react-lite-youtube-embed/dist/LiteYouTubeEmbed.css";
 
 import { YoutubeEmbedStoryblok } from "@/types/storyblok";
 
@@ -20,13 +23,33 @@ export const StoryblokYoutubeEmbed: React.FC<StoryblokYoutubeEmbedProps> = ({
 		 */
 	}
 	return (
-		<iframe
+		//react-lite-youtube-embed
+		<LiteYouTubeEmbed
+			id={source}
 			title={`(video) ${title}`}
-			className={styles.youtubeEmbed}
-			id={`youtube-embed-${_uid}`}
-			src={`https://www.youtube.com/embed/${source}`}
-			allow="accelerometer; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
-			allowFullScreen
-		></iframe>
+			iframeClass={styles.youtubeIframe}
+			wrapperClass={styles.youtubeWrapper}
+			playerClass={styles.youtubePlayButton}
+			activatedClass={styles.youtubeActivated}
+			aspectHeight={9}
+			aspectWidth={16}
+			webp={true}
+			announce={`(video) ${title}`}
+			playlist={false}
+			params={"disablekb=0"}
+		/>
+
+		//NextJS YouTubeEmbed component
+		// <YouTubeEmbed videoid={source} playlabel={`(video) ${title}`} />
+
+		// standard iframe
+		// <iframe
+		// 	title={`(video) ${title}`}
+		// 	className={styles.youtubeEmbed}
+		// 	id={`youtube-embed-${_uid}`}
+		// 	src={`https://www.youtube.com/embed/${source}`}
+		// 	allow="accelerometer; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+		// 	allowFullScreen
+		// ></iframe>
 	);
 };
