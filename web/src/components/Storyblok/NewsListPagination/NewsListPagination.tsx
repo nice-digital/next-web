@@ -6,7 +6,7 @@ import { SimplePagination } from "@nice-digital/nds-simple-pagination";
 import { Link } from "@/components/Link/Link";
 
 type NewsListPaginationProps = {
-	options: {
+	configuration: {
 		currentPage: number;
 		totalResults: number;
 		resultsPerPage: number;
@@ -14,7 +14,7 @@ type NewsListPaginationProps = {
 };
 
 export const NewsListPagination = ({
-	options: { currentPage, totalResults, resultsPerPage },
+	configuration: { currentPage, totalResults, resultsPerPage },
 }: NewsListPaginationProps): React.ReactElement => {
 	const router = useRouter();
 	const { pathname, query } = router;

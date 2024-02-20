@@ -5,7 +5,6 @@ import { NewsListPagination } from "@/components/Storyblok/NewsListPagination/Ne
 import { logger } from "@/logger";
 import { fetchStories, getStoryVersionFromQuery } from "@/utils/storyblok";
 
-
 import type { GetServerSidePropsContext } from "next";
 
 type NewsArticlesProps = {
@@ -28,7 +27,7 @@ export const ArticlesIndexPage = ({
 				return <p key={`${story.name}_${index}`}>{story.name}</p>;
 			})}
 			<NewsListPagination
-				options={{
+				configuration={{
 					currentPage,
 					totalResults,
 					resultsPerPage,
