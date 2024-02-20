@@ -1,54 +1,38 @@
 import { type ISbStories } from "@storyblok/react";
-import { useRouter } from "next/router";
 import React from "react";
 
-import { SimplePagination } from "@nice-digital/nds-simple-pagination";
-
-import { Link } from "@/components/Link/Link";
+import { NewsListPagination } from "@/components/Storyblok/NewsListPagination/NewsListPagination";
 import { logger } from "@/logger";
 import { fetchStories, getStoryVersionFromQuery } from "@/utils/storyblok";
+
 
 import type { GetServerSidePropsContext } from "next";
 
 type NewsArticlesProps = {
 	stories: ISbStories[];
-	totalPages: number;
+	totalResults: number;
 	currentPage: number;
+	resultsPerPage: number;
 };
 
 export const ArticlesIndexPage = ({
 	stories,
-	totalPages,
 	currentPage,
+	totalResults,
+	resultsPerPage,
 }: NewsArticlesProps): React.ReactElement => {
-	const router = useRouter();
-
 	return (
 		<>
 			<h1>Articles Index Page</h1>
-			{stories.map((story, index) => (
-				<p key={`${story.name}_${index}`}>{story.name}</p>
-			))}
-
-			<SimplePagination
-				totalPages={totalPages}
-				currentPage={currentPage}
-				nextPageLink={
-					currentPage < totalPages
-						? {
-								destination: `${router.pathname}?page=${currentPage + 1}`,
-								elementType: Link,
-						  }
-						: undefined
-				}
-				previousPageLink={
-					currentPage > 1
-						? {
-								destination: `${router.pathname}?page=${currentPage - 1}`,
-								elementType: Link,
-						  }
-						: undefined
-				}
+			{stories.map((story, index) => {
+				return <p key={`${story.name}_${index}`}>{story.name}</p>;
+			})}
+			<NewsListPagination
+				options={{
+					currentPage,
+					totalResults,
+					resultsPerPage,
+				}}
 			/>
 		</>
 	);
@@ -67,26 +51,26 @@ export async function getServerSideProps({ query }: GetServerSidePropsContext) {
 		page,
 	});
 
-	const totalPages = Math.ceil(storiesResult.total / resultsPerPage);
-
-	if (page < 1 || page > totalPages || isNaN(page)) {
-		return {
-			redirect: {
-				destination: "/news/articles",
-				permanent: false,
-			},
-		};
-	}
-
 	logger.info("Finish server side props for news articles list page");
 
-	return {
-		props: {
-			stories: storiesResult.stories,
-			totalPages,
-			currentPage: page,
-		},
-	};
+	//TODO ternary redirect for invalid page is probably better handled elsewhere
+	return page < 1 ||
+		page > Math.ceil(storiesResult.total / resultsPerPage) ||
+		isNaN(page)
+		? {
+				redirect: {
+					destination: "/news/articles",
+					permanent: false,
+				},
+		  }
+		: {
+				props: {
+					stories: storiesResult.stories,
+					totalResults: storiesResult.total,
+					currentPage: page,
+					resultsPerPage,
+				},
+		  };
 }
 
 export default ArticlesIndexPage;
