@@ -29,8 +29,6 @@ export const PromoBox: React.FC<PromoBoxProps> = ({ blok }: PromoBoxProps) => {
 
 	const showCTA = ctaLink && ctaText;
 
-	console.log("CTA Link:", ctaLink);
-
 	return (
 		<div className={classes}>
 			<div className={styles.contentContainer}>

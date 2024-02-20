@@ -22,6 +22,7 @@ export const CardGrid = ({ blok }: CardGridBlokProps): React.ReactElement => {
 					cardLink = {
 						destination: resolvedLink.url,
 						elementType: resolvedLink.isInternal ? Link : "a",
+						method: "href",
 					};
 				}
 

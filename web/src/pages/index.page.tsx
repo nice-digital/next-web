@@ -54,6 +54,7 @@ export async function getServerSideProps(context: GetServerSidePropsContext) {
 	const slug = "home";
 	const version = getStoryVersionFromQuery(context.query);
 	const storyResult = await fetchStory<HomepageStoryblok>(slug, version, {
+		resolve_links: "url",
 		resolve_relations: "homepage.featuredStory",
 	});
 

@@ -248,13 +248,16 @@ export const getBreadcrumbs = async (
 export const resolveStoryblokLink = ({
 	linktype,
 	url,
+	cached_url,
 	email,
-	story,
 }: MultilinkStoryblok): { url: string | undefined; isInternal: boolean } => {
 	switch (linktype) {
 		case "url":
 		case "asset":
-			return { url: url?.trim() || undefined, isInternal: false };
+			return {
+				url: url?.trim() || cached_url?.trim() || undefined,
+				isInternal: false,
+			};
 		case "email":
 			return {
 				url: email?.trim() ? `mailto:${email.trim()}` : undefined,
@@ -262,7 +265,7 @@ export const resolveStoryblokLink = ({
 			};
 		case "story":
 			return {
-				url: story?.full_slug ? `/${story.full_slug}` : undefined,
+				url: url?.trim() || cached_url?.trim() || undefined,
 				isInternal: true,
 			};
 		default:
