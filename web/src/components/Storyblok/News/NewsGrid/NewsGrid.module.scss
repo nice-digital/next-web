@@ -12,11 +12,13 @@
   }
 
   li {
-    flex: 0 1 33%;
-    margin-right: utils.rem(spacing.$large);
+    @include media-queries.mq($from: md) {
+      flex: 0 1 33%;
+      margin-right: utils.rem(spacing.$large);
 
-    &:last-child {
-      margin-right: 0;
+      &:last-child {
+        margin-right: 0;
+      }
     }
   }
 }

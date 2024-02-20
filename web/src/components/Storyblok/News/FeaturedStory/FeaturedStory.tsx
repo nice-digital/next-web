@@ -18,15 +18,22 @@ export const FeaturedStory: React.FC<FeaturedStoryProps> = ({
 
 	return (
 		<div className={styles.story}>
-			<div className={styles.imageContainer}>
-				<img src={story.content.image.filename} alt={story.content.image.alt} />
+			<div
+				className={styles.imageContainer}
+				style={{ backgroundImage: `url(${story.content.image.filename})` }}
+			></div>
+			<div className={styles.content}>
+				<h3 className={styles.heading}>
+					<Link href={`/${story.full_slug}`}>{story.name}</Link>
+				</h3>
+				<p>{story.content.introText}</p>
+				<footer className={styles.footer}>
+					<Tag outline>{storyType}</Tag>
+					<span className={styles.date}>
+						{friendlyDate(story.content.date)}
+					</span>
+				</footer>
 			</div>
-			<h3 className={styles.heading}>
-				<Link href={`/${story.full_slug}`}>{story.name}</Link>
-			</h3>
-			<p>{story.content.introText}</p>
-			<p>{friendlyDate(story.content.date)}</p>
-			<Tag outline>{storyType}</Tag>
 		</div>
 	);
 };
