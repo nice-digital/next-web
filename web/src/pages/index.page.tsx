@@ -7,8 +7,8 @@ import { NextSeo } from "next-seo";
 import React, { useMemo } from "react";
 import { StoryblokStory } from "storyblok-generate-ts";
 
+import { type NewsStory } from "@/types/News";
 import {
-	type BlogPostStoryblok,
 	type HomepageStoryblok,
 	type NewsArticleStoryblok,
 } from "@/types/storyblok";
@@ -23,10 +23,7 @@ import type { GetServerSidePropsContext } from "next";
 
 interface HomeProps {
 	story: ISbStoryData<HomepageStoryblok>;
-	latestNews: (
-		| StoryblokStory<BlogPostStoryblok>
-		| StoryblokStory<NewsArticleStoryblok>
-	)[];
+	latestNews: NewsStory[];
 }
 
 export default function Home({

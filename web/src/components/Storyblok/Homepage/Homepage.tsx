@@ -1,22 +1,14 @@
 import { StoryblokComponent } from "@storyblok/react";
-import { type StoryblokStory } from "storyblok-generate-ts";
 
 import { StoryblokRichText } from "@/components/Storyblok/StoryblokRichText/StoryblokRichText";
 import { type NewsStory } from "@/types/News";
-import {
-	type HomepageStoryblok,
-	type BlogPostStoryblok,
-	type NewsArticleStoryblok,
-} from "@/types/storyblok";
+import { type HomepageStoryblok } from "@/types/storyblok";
 
 import { HomepageLatestNews } from "./HomepageLatestNews/HomepageLatestNews";
 
 interface HomepageBlokProps {
 	blok: HomepageStoryblok;
-	latestNews: (
-		| StoryblokStory<BlogPostStoryblok>
-		| StoryblokStory<NewsArticleStoryblok>
-	)[];
+	latestNews: NewsStory[];
 }
 
 export const Homepage = ({
