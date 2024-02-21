@@ -36,8 +36,9 @@ export const StoryblokYoutubeEmbed: React.FC<StoryblokYoutubeEmbedProps> = ({
 			webp={true}
 			announce={`(video) ${title}`}
 			playlist={false}
-			params={"disablekb=0&rel=0&enablejsapi=0"}
+			params={"disablekb=0&rel=0&enablejsapi=0&autoplay=1"}
 			rel="0"
+			cookie={true}
 		/>
 	);
 };
