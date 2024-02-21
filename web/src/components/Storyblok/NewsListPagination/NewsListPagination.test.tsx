@@ -1,8 +1,28 @@
-import { render, screen, waitFor } from "@testing-library/react";
-import userEvent from "@testing-library/user-event";
+import { render, screen } from "@testing-library/react";
 import { useRouter } from "next/router";
 
 import { NewsListPagination } from "./NewsListPagination";
+
+expect.extend({
+	toHaveTextContentIgnoreTags(received, expected) {
+		const strippedReceived = received.replace(/(<([^>]+)>)/gi, "");
+		const strippedExpected = expected.replace(/(<([^>]+)>)/gi, "");
+		const pass = strippedReceived.includes(strippedExpected);
+		if (pass) {
+			return {
+				message: () =>
+					`expected ${received} not to have text content ignoring tags ${expected}`,
+				pass: true,
+			};
+		} else {
+			return {
+				message: () =>
+					`expected ${received} to have text content ignoring tags ${expected}`,
+				pass: false,
+			};
+		}
+	},
+});
 
 describe("NewsListPagination", () => {
 	const configuration = {
@@ -20,7 +40,7 @@ describe("NewsListPagination", () => {
 	beforeEach(() => {
 		mockRouter = {
 			pathname: "/news",
-			query: {},
+			query: { page: "1" },
 			push: jest.fn(),
 		};
 
@@ -31,18 +51,17 @@ describe("NewsListPagination", () => {
 		jest.clearAllMocks(); // Reset all mock functions after each test
 	});
 
-	it.skip("should render the correct number of pages", () => {
-		render(<NewsListPagination configuration={configuration} />);
-		// const totalPages = Math.ceil(
-		// 	configuration.totalResults / configuration.resultsPerPage
-		// );
-		// expect(
-		// 	screen.getByText(`Page ${configuration.currentPage} of ${totalPages}`)
-		// ).toBeInTheDocument();
-		// expect(screen.getByText("Page")).toBeInTheDocument();
-		// expect(screen.getByText("1")).toBeInTheDocument();
-		// expect(screen.getByText("of")).toBeInTheDocument();
-		// expect(screen.getByText("10")).toBeInTheDocument();
+	it("should render the correct number of pages", () => {
+		const { container } = render(
+			<NewsListPagination configuration={configuration} />
+		);
+		const totalPages = Math.ceil(
+			configuration.totalResults / configuration.resultsPerPage
+		);
+
+		expect(container.textContent).toHaveTextContentIgnoreTags(
+			`Page ${configuration.currentPage} of ${totalPages}`
+		);
 	});
 
 	it("should render pagination links correctly", () => {
@@ -97,6 +116,20 @@ describe("NewsListPagination", () => {
 			/>
 		);
 		expect(screen.getByRole("link", { name: "Next page" })).toBeInTheDocument();
+	});
+
+	it("next and previous links have correct href attributes", () => {
+		render(
+			<NewsListPagination
+				configuration={{ ...configuration, currentPage: 5 }}
+			/>
+		);
+
+		const nextLink = screen.getByText("Next page");
+		const previousLink = screen.getByText("Previous page");
+
+		expect(nextLink).toHaveAttribute("href", "/news?page=6");
+		expect(previousLink).toHaveAttribute("href", "/news?page=4");
 	});
 
 	it.todo(
