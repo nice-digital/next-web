@@ -23,13 +23,13 @@ variable "docker_image_address" {
 variable "docker_image_build_number" {
     type = string
 }
-variable "nextweb-efs-config-volume" {
+variable "nextweb_efs_config_volume" {
     type = string
 }
-variable "nextweb-ecs-subnets" {
+variable "nextweb_ecs_subnets" {
   type    = list(string)
 }
-variable "nextweb-ecs-sg" {
+variable "nextweb_ecs_sg" {
   type    = list(string)
 }
 
@@ -122,7 +122,7 @@ resource "aws_ecs_task_definition" "nextweb-main-task" {
     name = "config"
 
     efs_volume_configuration {
-      file_system_id     = "${var.nextweb-efs-config-volume}"
+      file_system_id     = "${var.nextweb_efs_config_volume}"
       root_directory     = "/config/" # Adjust if your EFS has a specific root directory
       transit_encryption = "ENABLED"
     }
@@ -160,8 +160,8 @@ resource "aws_ecs_service" "nextweb-demo-service" {
   launch_type     = "FARGATE"
 
   network_configuration {
-    subnets = var.nextweb-ecs-subnets
-    security_groups = var.nextweb-ecs-sg
+    subnets = var.nextweb_ecs_subnets
+    security_groups = var.nextweb_ecs_sg
     assign_public_ip = true
   }
 }
