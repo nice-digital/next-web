@@ -45,5 +45,10 @@
   hr {
     margin: utils.rem(spacing.$medium 0);
   }
+
+  :global(.action-banner) {
+    margin: utils.rem(spacing.$xx-large) 0;
+  }
+
 }
 
