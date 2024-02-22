@@ -36,7 +36,7 @@ export const NewsCard: React.FC<NewsCardProps> = ({
 				className={styles.imageContainer}
 				style={{ backgroundImage: `url(${content.image.filename})` }}
 			>
-				{/* TODO refactor Tag component so that it can accept additional classNames, otherwise we have to nest as below */}
+				{/* TODO refactor NDS Tag component so that it can accept additional classNames, otherwise we have to nest as below */}
 				<span className={styles.storyType}>
 					<Tag outline>{storyType}</Tag>
 				</span>

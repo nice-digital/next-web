@@ -296,33 +296,6 @@ export const getSlugFromParams = (
 	return Array.isArray(slugParams) ? slugParams.join("/") : slugParams;
 };
 
-// Resolve the slug object from the NextJS query params into a list of full
-// slugs that we can use to build breadcrumbs, for example
-export const getSlugHierarchyFromParams = (
-	slugParams: string | string[] | undefined,
-	prefix: string
-): string[] => {
-	if (!slugParams) {
-		return [];
-	}
-
-	const hierarchy: string[] = [`${prefix}/`];
-
-	if (Array.isArray(slugParams)) {
-		for (let i = 0; i < slugParams.length - 1; i++) {
-			let newSlug = `${prefix}/`;
-			for (let j = 0; j <= i; j++) {
-				newSlug = `${newSlug}${slugParams[j]}/`;
-			}
-			hierarchy.push(newSlug);
-		}
-	} else {
-		hierarchy.push(`${prefix}/${slugParams}/`);
-	}
-
-	return hierarchy;
-};
-
 // Get metadata that can be derived from the Storyblok response
 // e.g. DC.Issued, DC.Modified
 export const getAdditionalMetaTags = (story: ISbStoryData): MetaTag[] => {

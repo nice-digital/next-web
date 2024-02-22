@@ -19,7 +19,7 @@ export const HomepageHero = ({
 	// Pick an image at random
 	useEffect(() => {
 		const randomIndex = Math.floor(Math.random() * images.length);
-		setRandomImage(images[randomIndex].filename);
+		setRandomImage(`${images[randomIndex].filename}/m/`);
 	}, [images]);
 
 	return (
@@ -30,7 +30,7 @@ export const HomepageHero = ({
 			image={randomImage}
 			actions={
 				<Button variant="cta" to={`/${ctaLink.cached_url}`}>
-					{ctaText} WOW
+					{ctaText}
 				</Button>
 			}
 		/>

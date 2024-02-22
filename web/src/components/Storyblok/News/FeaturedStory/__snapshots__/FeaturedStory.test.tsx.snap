@@ -1,0 +1,89 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Featured story component should match snapshot 1`] = `
+<div>
+  <div
+    class="story"
+  >
+    <div
+      class="imageContainer"
+      style="background-image: url(https://placekitten.com/200/286);"
+    />
+    <div
+      class="content"
+    >
+      <h3
+        class="heading"
+      >
+        <a
+          href="/i/am/a-very-full-slug"
+        >
+          Test news article title
+        </a>
+      </h3>
+      <p>
+        Test intro text
+      </p>
+      <footer
+        class="footer"
+      >
+        <span
+          class="tag tag--outline"
+          data-component="tag"
+        >
+          News
+        </span>
+        <span
+          class="date"
+        >
+          31 January 2024
+        </span>
+      </footer>
+    </div>
+  </div>
+</div>
+`;
+
+exports[`Homepage latest news component should match snapshot 1`] = `
+<div>
+  <div
+    class="story"
+  >
+    <div
+      class="imageContainer"
+      style="background-image: url(https://placekitten.com/200/286);"
+    />
+    <div
+      class="content"
+    >
+      <h3
+        class="heading"
+      >
+        <a
+          href="/i/am/a-very-full-slug"
+        >
+          Test news article title
+        </a>
+      </h3>
+      <p>
+        Test intro text
+      </p>
+      <footer
+        class="footer"
+      >
+        <span
+          class="tag tag--outline"
+          data-component="tag"
+        >
+          News
+        </span>
+        <span
+          class="date"
+        >
+          31 January 2024
+        </span>
+      </footer>
+    </div>
+  </div>
+</div>
+`;
