@@ -162,6 +162,6 @@ resource "aws_ecs_service" "nextweb-demo-service" {
   network_configuration {
     subnets = var.nextweb_ecs_subnets
     security_groups = var.nextweb_ecs_sg
-    assign_public_ip = true
+    assign_public_ip = false
   }
 }
