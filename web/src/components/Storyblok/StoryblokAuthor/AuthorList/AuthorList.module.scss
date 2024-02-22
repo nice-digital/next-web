@@ -9,8 +9,6 @@
 
   //TODO: remove secondsection styles in NDS. Manage authorlist style in this component
   @include media-queries.mq($from: md) {
-    // border-left: 2px solid colours.$page-header-second-section-border-colour;
-    // padding-left: 1rem;
     padding-bottom: utils.rem(spacing.$x-large);
   }
 

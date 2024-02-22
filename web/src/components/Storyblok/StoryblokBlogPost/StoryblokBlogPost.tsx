@@ -56,6 +56,7 @@ export const StoryblokBlogPost = ({
 			window.removeEventListener("resize", handleResize);
 		};
 	});
+
 	const BreadcrumbComponent = breadcrumbs?.length ? (
 		<Breadcrumbs className="">
 			{[{ title: "Home", path: "/" }, ...breadcrumbs].map((breadcrumb) => (
