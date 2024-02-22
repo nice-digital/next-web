@@ -2,7 +2,7 @@
 
 exports[`News card component should match snapshot for a blog post 1`] = `
 <div>
-  <div
+  <article
     class="newsCard"
   >
     <a
@@ -34,13 +34,13 @@ exports[`News card component should match snapshot for a blog post 1`] = `
     <p>
       Let's play Blockbusters!
     </p>
-  </div>
+  </article>
 </div>
 `;
 
 exports[`News card component should match snapshot for a news article 1`] = `
 <div>
-  <div
+  <article
     class="newsCard"
   >
     <a
@@ -72,6 +72,6 @@ exports[`News card component should match snapshot for a news article 1`] = `
     <p>
       Test intro text
     </p>
-  </div>
+  </article>
 </div>
 `;

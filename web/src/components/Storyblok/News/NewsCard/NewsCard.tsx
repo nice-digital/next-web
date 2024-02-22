@@ -30,7 +30,7 @@ export const NewsCard: React.FC<NewsCardProps> = ({
 	const HeadingElement = `h${headingLevel}` as keyof JSX.IntrinsicElements;
 
 	return (
-		<div className={styles.newsCard}>
+		<article className={styles.newsCard}>
 			<Link
 				className={styles.imageContainer}
 				href={full_slug}
@@ -46,6 +46,6 @@ export const NewsCard: React.FC<NewsCardProps> = ({
 				<Link href={full_slug}>{name}</Link>
 			</HeadingElement>
 			<p>{content.introText}</p>
-		</div>
+		</article>
 	);
 };

@@ -17,7 +17,7 @@ export const FeaturedStory: React.FC<FeaturedStoryProps> = ({
 	const storyType = story.content.component === "blogPost" ? "Blog" : "News";
 
 	return (
-		<div className={styles.story}>
+		<article className={styles.story}>
 			<div
 				className={styles.imageContainer}
 				style={{ backgroundImage: `url(${story.content.image.filename})` }}
@@ -34,6 +34,6 @@ export const FeaturedStory: React.FC<FeaturedStoryProps> = ({
 					</span>
 				</footer>
 			</div>
-		</div>
+		</article>
 	);
 };

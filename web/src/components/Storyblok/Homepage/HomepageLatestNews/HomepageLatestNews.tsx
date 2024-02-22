@@ -13,10 +13,10 @@ export const HomepageLatestNews: React.FC<LatestNewsProps> = ({
 	latestNews,
 }: LatestNewsProps) => {
 	return (
-		<>
+		<section>
 			<h2>Latest from NICE</h2>
 			{featuredStory && <FeaturedStory story={featuredStory} />}
 			<NewsGrid news={latestNews} />
-		</>
+		</section>
 	);
 };
