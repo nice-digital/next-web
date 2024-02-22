@@ -11,8 +11,10 @@ exports[`Homepage latest news component should match snapshot 1`] = `
       <div
         class="newsCard"
       >
-        <div
+        <a
+          aria-hidden="true"
           class="imageContainer"
+          href="i/am/a-very-full-slug"
           style="background-image: url(https://placekitten.com/200/286);"
         >
           <span
@@ -25,7 +27,7 @@ exports[`Homepage latest news component should match snapshot 1`] = `
               News
             </span>
           </span>
-        </div>
+        </a>
         <h3
           class="heading"
         >
@@ -46,8 +48,10 @@ exports[`Homepage latest news component should match snapshot 1`] = `
       <div
         class="newsCard"
       >
-        <div
+        <a
+          aria-hidden="true"
           class="imageContainer"
+          href="i/am/a-very-full-slug"
           style="background-image: url(https://placekitten.com/200/139);"
         >
           <span
@@ -60,7 +64,7 @@ exports[`Homepage latest news component should match snapshot 1`] = `
               Blog
             </span>
           </span>
-        </div>
+        </a>
         <h3
           class="heading"
         >
@@ -81,8 +85,10 @@ exports[`Homepage latest news component should match snapshot 1`] = `
       <div
         class="newsCard"
       >
-        <div
+        <a
+          aria-hidden="true"
           class="imageContainer"
+          href="i/am/a-very-full-slug"
           style="background-image: url(https://placekitten.com/200/286);"
         >
           <span
@@ -95,7 +101,7 @@ exports[`Homepage latest news component should match snapshot 1`] = `
               News
             </span>
           </span>
-        </div>
+        </a>
         <h3
           class="heading"
         >

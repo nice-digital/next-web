@@ -1,7 +1,6 @@
-import Link from "next/link";
-
 import { Tag } from "@nice-digital/nds-tag";
 
+import { Link } from "@/components/Link/Link";
 import { NewsStory } from "@/types/News";
 
 import styles from "./NewsCard.module.scss";
@@ -32,15 +31,17 @@ export const NewsCard: React.FC<NewsCardProps> = ({
 
 	return (
 		<div className={styles.newsCard}>
-			<div
+			<Link
 				className={styles.imageContainer}
+				href={full_slug}
 				style={{ backgroundImage: `url(${content.image.filename})` }}
+				aria-hidden="true"
 			>
 				{/* TODO refactor NDS Tag component so that it can accept additional classNames, otherwise we have to nest as below */}
 				<span className={styles.storyType}>
 					<Tag outline>{storyType}</Tag>
 				</span>
-			</div>
+			</Link>
 			<HeadingElement className={styles.heading}>
 				<Link href={full_slug}>{name}</Link>
 			</HeadingElement>

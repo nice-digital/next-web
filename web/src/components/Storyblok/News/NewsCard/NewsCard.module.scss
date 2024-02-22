@@ -10,15 +10,17 @@
   aspect-ratio: 16 / 9;
   background-position: center center;
   background-size: cover;
+  display: block;
   position: relative;
 }
 
 .storyType {
-  bottom: utils.rem(spacing.$small);;
-  left: utils.rem(spacing.$small);;
+  bottom: utils.rem(spacing.$small);
+  left: utils.rem(spacing.$small);
   position: absolute;
 }
 
 .heading {
   @include typography.h5();
+  margin-top: utils.rem(spacing.$medium);
 }
