@@ -1,0 +1,290 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Homepage latest news component should match snapshot with a featured story 1`] = `
+<div>
+  <section>
+    <h2>
+      Latest from NICE
+    </h2>
+    <article
+      class="story"
+    >
+      <div
+        class="imageContainer"
+        style="background-image: url(https://placebacon.net/300/210?image=1);"
+      />
+      <div
+        class="content"
+      >
+        <h3
+          class="heading"
+        >
+          <a
+            href="/i/am/a-very-full-slug"
+          >
+            Featured story title
+          </a>
+        </h3>
+        <p>
+          Featured story intro text
+        </p>
+        <footer
+          class="footer"
+        >
+          <span
+            class="tag tag--outline"
+            data-component="tag"
+          >
+            News
+          </span>
+          <span
+            class="date"
+          >
+            31 January 2024
+          </span>
+        </footer>
+      </div>
+    </article>
+    <ol
+      class="newsGrid"
+    >
+      <li
+        class="newsItem"
+      >
+        <article
+          class="newsCard"
+        >
+          <a
+            aria-hidden="true"
+            class="imageContainer"
+            href="i/am/a-very-full-slug"
+            style="background-image: url(https://placekitten.com/200/286);"
+          >
+            <span
+              class="storyType"
+            >
+              <span
+                class="tag tag--outline"
+                data-component="tag"
+              >
+                News
+              </span>
+            </span>
+          </a>
+          <h3
+            class="heading"
+          >
+            <a
+              href="i/am/a-very-full-slug"
+            >
+              Test news article title
+            </a>
+          </h3>
+          <p>
+            Test intro text
+          </p>
+        </article>
+      </li>
+      <li
+        class="newsItem"
+      >
+        <article
+          class="newsCard"
+        >
+          <a
+            aria-hidden="true"
+            class="imageContainer"
+            href="i/am/a-very-full-slug"
+            style="background-image: url(https://placekitten.com/200/139);"
+          >
+            <span
+              class="storyType"
+            >
+              <span
+                class="tag tag--outline"
+                data-component="tag"
+              >
+                Blog
+              </span>
+            </span>
+          </a>
+          <h3
+            class="heading"
+          >
+            <a
+              href="i/am/a-very-full-slug"
+            >
+              Test blog post title
+            </a>
+          </h3>
+          <p>
+            Let's play Blockbusters!
+          </p>
+        </article>
+      </li>
+      <li
+        class="newsItem"
+      >
+        <article
+          class="newsCard"
+        >
+          <a
+            aria-hidden="true"
+            class="imageContainer"
+            href="i/am/a-very-full-slug"
+            style="background-image: url(https://placekitten.com/200/286);"
+          >
+            <span
+              class="storyType"
+            >
+              <span
+                class="tag tag--outline"
+                data-component="tag"
+              >
+                News
+              </span>
+            </span>
+          </a>
+          <h3
+            class="heading"
+          >
+            <a
+              href="i/am/a-very-full-slug"
+            >
+              Test news article title
+            </a>
+          </h3>
+          <p>
+            Test intro text
+          </p>
+        </article>
+      </li>
+    </ol>
+  </section>
+</div>
+`;
+
+exports[`Homepage latest news component should match snapshot without a featured story 1`] = `
+<div>
+  <section>
+    <h2>
+      Latest from NICE
+    </h2>
+    <ol
+      class="newsGrid"
+    >
+      <li
+        class="newsItem"
+      >
+        <article
+          class="newsCard"
+        >
+          <a
+            aria-hidden="true"
+            class="imageContainer"
+            href="i/am/a-very-full-slug"
+            style="background-image: url(https://placekitten.com/200/286);"
+          >
+            <span
+              class="storyType"
+            >
+              <span
+                class="tag tag--outline"
+                data-component="tag"
+              >
+                News
+              </span>
+            </span>
+          </a>
+          <h3
+            class="heading"
+          >
+            <a
+              href="i/am/a-very-full-slug"
+            >
+              Test news article title
+            </a>
+          </h3>
+          <p>
+            Test intro text
+          </p>
+        </article>
+      </li>
+      <li
+        class="newsItem"
+      >
+        <article
+          class="newsCard"
+        >
+          <a
+            aria-hidden="true"
+            class="imageContainer"
+            href="i/am/a-very-full-slug"
+            style="background-image: url(https://placekitten.com/200/139);"
+          >
+            <span
+              class="storyType"
+            >
+              <span
+                class="tag tag--outline"
+                data-component="tag"
+              >
+                Blog
+              </span>
+            </span>
+          </a>
+          <h3
+            class="heading"
+          >
+            <a
+              href="i/am/a-very-full-slug"
+            >
+              Test blog post title
+            </a>
+          </h3>
+          <p>
+            Let's play Blockbusters!
+          </p>
+        </article>
+      </li>
+      <li
+        class="newsItem"
+      >
+        <article
+          class="newsCard"
+        >
+          <a
+            aria-hidden="true"
+            class="imageContainer"
+            href="i/am/a-very-full-slug"
+            style="background-image: url(https://placekitten.com/200/286);"
+          >
+            <span
+              class="storyType"
+            >
+              <span
+                class="tag tag--outline"
+                data-component="tag"
+              >
+                News
+              </span>
+            </span>
+          </a>
+          <h3
+            class="heading"
+          >
+            <a
+              href="i/am/a-very-full-slug"
+            >
+              Test news article title
+            </a>
+          </h3>
+          <p>
+            Test intro text
+          </p>
+        </article>
+      </li>
+    </ol>
+  </section>
+</div>
+`;

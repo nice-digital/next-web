@@ -1,0 +1,77 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`News card component should match snapshot for a blog post 1`] = `
+<div>
+  <article
+    class="newsCard"
+  >
+    <a
+      aria-hidden="true"
+      class="imageContainer"
+      href="i/am/a-very-full-slug"
+      style="background-image: url(https://placekitten.com/200/139);"
+    >
+      <span
+        class="storyType"
+      >
+        <span
+          class="tag tag--outline"
+          data-component="tag"
+        >
+          Blog
+        </span>
+      </span>
+    </a>
+    <h3
+      class="heading"
+    >
+      <a
+        href="i/am/a-very-full-slug"
+      >
+        Test blog post title
+      </a>
+    </h3>
+    <p>
+      Let's play Blockbusters!
+    </p>
+  </article>
+</div>
+`;
+
+exports[`News card component should match snapshot for a news article 1`] = `
+<div>
+  <article
+    class="newsCard"
+  >
+    <a
+      aria-hidden="true"
+      class="imageContainer"
+      href="i/am/a-very-full-slug"
+      style="background-image: url(https://placekitten.com/200/286);"
+    >
+      <span
+        class="storyType"
+      >
+        <span
+          class="tag tag--outline"
+          data-component="tag"
+        >
+          News
+        </span>
+      </span>
+    </a>
+    <h3
+      class="heading"
+    >
+      <a
+        href="i/am/a-very-full-slug"
+      >
+        Test news article title
+      </a>
+    </h3>
+    <p>
+      Test intro text
+    </p>
+  </article>
+</div>
+`;

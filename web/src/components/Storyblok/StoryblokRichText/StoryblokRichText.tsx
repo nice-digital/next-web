@@ -5,17 +5,17 @@ import {
 	NODE_PARAGRAPH,
 	NODE_QUOTE,
 	render,
-	StoryblokRichtext,
 } from "storyblok-rich-text-react-renderer";
 
 import blockquoteStyles from "@/components/Storyblok/Blockquote/Blockquote.module.scss";
+import { type RichtextStoryblok } from "@/types/storyblok";
 
 import { StoryblokImage } from "../StoryblokImage/StoryblokImage";
 
 import styles from "./StoryblokRichText.module.scss";
 
 export interface StoryblokRichTextProps {
-	content: StoryblokRichtext;
+	content: RichtextStoryblok;
 }
 
 export const StoryblokRichText: React.FC<StoryblokRichTextProps> = ({

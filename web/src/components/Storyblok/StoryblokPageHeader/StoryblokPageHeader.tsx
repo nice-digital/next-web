@@ -41,7 +41,7 @@ export const StoryblokPageHeader = ({
 			)}
 			{blok.ctaLink && blok.ctaText && (
 				<p>
-					<a href={resolveStoryblokLink(blok.ctaLink)}>
+					<a href={resolveStoryblokLink(blok.ctaLink).url}>
 						TO DO: CTA: {blok.ctaText} (not implemented yet - will arrive in the
 						new page header
 					</a>

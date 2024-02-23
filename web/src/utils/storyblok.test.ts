@@ -1,5 +1,7 @@
 import { ISbStoryData } from "@storyblok/react";
 
+import { type MultilinkStoryblok } from "@/types/storyblok";
+
 import {
 	resolveStoryblokLink,
 	getStoryVersionFromQuery,
@@ -12,43 +14,53 @@ describe("Storyblok utils", () => {
 		it.each([
 			[
 				{ linktype: "url", url: " https://example.com  " },
-				"https://example.com",
+				{ url: "https://example.com", isInternal: false },
 			],
 			[
 				{ linktype: "asset", url: " https://example.com/image.png  " },
-				"https://example.com/image.png",
+				{ url: "https://example.com/image.png", isInternal: false },
 			],
 			[
 				{ linktype: "email", email: "  somebody@example.com " },
-				"mailto:somebody@example.com",
+				{ url: "mailto:somebody@example.com", isInternal: false },
 			],
 			[
-				{ linktype: "story", story: { full_slug: "example/page/slug" } },
-				"/example/page/slug",
+				{ linktype: "story", url: "example/page/slug" },
+				{ url: "example/page/slug", isInternal: true },
 			],
 		])(
 			"should ensure that correct links are returned for each linktype",
 			(link, expectedOutput) => {
-				expect(resolveStoryblokLink(link)).toBe(expectedOutput);
+				expect(resolveStoryblokLink(link as MultilinkStoryblok)).toStrictEqual(
+					expectedOutput
+				);
 			}
 		);
 
 		it.each([
-			[{ linktype: "url", email: " https://example.com  " }, undefined],
+			[
+				{ linktype: "url", email: " https://example.com  " },
+				{ url: undefined, isInternal: false },
+			],
 			[
 				{ linktype: "asset", story: " https://example.com/image.png  " },
-				undefined,
+				{ url: undefined, isInternal: false },
 			],
-			[{ linktype: "email", url: "  somebody@example.com " }, undefined],
+			[
+				{ linktype: "email", url: "  somebody@example.com " },
+				{ url: undefined, isInternal: false },
+			],
 			[
 				{
 					linktype: "incorrect_linktype",
 					story: { full_slug: "example/page/slug" },
 				},
-				undefined,
+				{ url: undefined, isInternal: false },
 			],
 		])("should return undefined for invalid inputs", (link, expectedOutput) => {
-			expect(resolveStoryblokLink(link)).toBe(expectedOutput);
+			expect(resolveStoryblokLink(link as MultilinkStoryblok)).toStrictEqual(
+				expectedOutput
+			);
 		});
 	});
 
@@ -71,14 +83,6 @@ describe("Storyblok utils", () => {
 		it("should return a valid slug when supplied with a single param", () => {
 			expect(getSlugFromParams("some-slug")).toBe("some-slug");
 		});
-	});
-
-	// TODO: Evaluate whether we really need this once we figure out the best
-	// way to generate breadcrumbs
-	describe("Get slug hierarchy from params", () => {
-		it.todo(
-			"should get the correct slug hierarchy from the supplied NextJS params"
-		);
 	});
 
 	describe("Get additional meta tags", () => {
