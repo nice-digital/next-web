@@ -38,7 +38,7 @@ terraform {
   required_providers {
   }
   backend "s3" {
-    bucket = "nice-next-web-tf-demo"
+    bucket = "tfs3test"
     key    = "nextweb/terraform.tfstate"
     region = "eu-west-1"
   }
