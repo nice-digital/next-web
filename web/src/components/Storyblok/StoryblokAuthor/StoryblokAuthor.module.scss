@@ -8,11 +8,9 @@
     margin-top: utils.rem(spacing.$small);
   }
 
-  margin-top: calc(utils.rem(spacing.$medium) + utils.rem(spacing.$x-small));
   margin-top: utils.rem(spacing.$medium);
 
   &:has(img) &__name {
-    margin-top: calc(utils.rem(spacing.$large) - utils.rem(spacing.$x-small));
     margin-top: utils.rem(spacing.$large);
   }
 
@@ -33,7 +31,6 @@
     @include typography.h5;
     font-weight: 400;
     margin: 0;
-    margin-top: calc(utils.rem(spacing.$medium) - utils.rem(spacing.$x-small));
     margin-top: utils.rem(spacing.$medium);
   }
 

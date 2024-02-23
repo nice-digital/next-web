@@ -9,7 +9,6 @@
   }
 
   h2,h3,h4,h5,h6 {
-    // margin: calc(utils.rem(spacing.$large) + utils.rem(spacing.$x-small)) 0 calc(utils.rem(spacing.$medium) + utils.rem(spacing.$xx-small));
     margin: utils.rem(spacing.$large) 0 utils.rem(spacing.$medium);
   }
 
@@ -19,7 +18,6 @@
       aspect-ratio: 16/9;
       display: block;
       height: auto;
-      // margin: calc(utils.rem(spacing.$large) + utils.rem(spacing.$x-small)) 0;
       margin: utils.rem(spacing.$large) 0;
       object-fit: cover;
       width: 100%;
