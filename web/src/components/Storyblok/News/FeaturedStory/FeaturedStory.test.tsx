@@ -19,4 +19,11 @@ describe("Featured story component", () => {
 		render(<FeaturedStory story={mockBlogPost} />);
 		expect(screen.getByText("Blog")).toHaveClass("tag");
 	});
+
+	it("should render a custom heading level if one is supplied", () => {
+		render(<FeaturedStory story={mockNewsArticle} headingLevel={5} />);
+		expect(
+			screen.getByRole("heading", { level: 5, name: "Test news article title" })
+		).toBeInTheDocument();
+	});
 });

@@ -51,7 +51,7 @@ exports[`Homepage latest news component should match snapshot with a featured st
       <li
         class="newsItem"
       >
-        <div
+        <article
           class="newsCard"
         >
           <a
@@ -83,12 +83,12 @@ exports[`Homepage latest news component should match snapshot with a featured st
           <p>
             Test intro text
           </p>
-        </div>
+        </article>
       </li>
       <li
         class="newsItem"
       >
-        <div
+        <article
           class="newsCard"
         >
           <a
@@ -120,12 +120,12 @@ exports[`Homepage latest news component should match snapshot with a featured st
           <p>
             Let's play Blockbusters!
           </p>
-        </div>
+        </article>
       </li>
       <li
         class="newsItem"
       >
-        <div
+        <article
           class="newsCard"
         >
           <a
@@ -157,7 +157,7 @@ exports[`Homepage latest news component should match snapshot with a featured st
           <p>
             Test intro text
           </p>
-        </div>
+        </article>
       </li>
     </ol>
   </section>
@@ -176,7 +176,7 @@ exports[`Homepage latest news component should match snapshot without a featured
       <li
         class="newsItem"
       >
-        <div
+        <article
           class="newsCard"
         >
           <a
@@ -208,12 +208,12 @@ exports[`Homepage latest news component should match snapshot without a featured
           <p>
             Test intro text
           </p>
-        </div>
+        </article>
       </li>
       <li
         class="newsItem"
       >
-        <div
+        <article
           class="newsCard"
         >
           <a
@@ -245,12 +245,12 @@ exports[`Homepage latest news component should match snapshot without a featured
           <p>
             Let's play Blockbusters!
           </p>
-        </div>
+        </article>
       </li>
       <li
         class="newsItem"
       >
-        <div
+        <article
           class="newsCard"
         >
           <a
@@ -282,7 +282,7 @@ exports[`Homepage latest news component should match snapshot without a featured
           <p>
             Test intro text
           </p>
-        </div>
+        </article>
       </li>
     </ol>
   </section>

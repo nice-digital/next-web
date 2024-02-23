@@ -9,12 +9,16 @@ import styles from "./FeaturedStory.module.scss";
 
 interface FeaturedStoryProps {
 	story: NewsStory;
+	headingLevel?: number;
 }
 
 export const FeaturedStory: React.FC<FeaturedStoryProps> = ({
 	story,
+	headingLevel = 3,
 }: FeaturedStoryProps) => {
 	const storyType = story.content.component === "blogPost" ? "Blog" : "News";
+
+	const HeadingElement = `h${headingLevel}` as keyof JSX.IntrinsicElements;
 
 	return (
 		<article className={styles.story}>
@@ -23,9 +27,9 @@ export const FeaturedStory: React.FC<FeaturedStoryProps> = ({
 				style={{ backgroundImage: `url(${story.content.image.filename})` }}
 			></div>
 			<div className={styles.content}>
-				<h3 className={styles.heading}>
+				<HeadingElement className={styles.heading}>
 					<Link href={`/${story.full_slug}`}>{story.name}</Link>
-				</h3>
+				</HeadingElement>
 				<p>{story.content.introText}</p>
 				<footer className={styles.footer}>
 					<Tag outline>{storyType}</Tag>

@@ -8,7 +8,7 @@ exports[`Homepage latest news component should match snapshot 1`] = `
     <li
       class="newsItem"
     >
-      <div
+      <article
         class="newsCard"
       >
         <a
@@ -40,12 +40,12 @@ exports[`Homepage latest news component should match snapshot 1`] = `
         <p>
           Test intro text
         </p>
-      </div>
+      </article>
     </li>
     <li
       class="newsItem"
     >
-      <div
+      <article
         class="newsCard"
       >
         <a
@@ -77,12 +77,12 @@ exports[`Homepage latest news component should match snapshot 1`] = `
         <p>
           Let's play Blockbusters!
         </p>
-      </div>
+      </article>
     </li>
     <li
       class="newsItem"
     >
-      <div
+      <article
         class="newsCard"
       >
         <a
@@ -114,7 +114,7 @@ exports[`Homepage latest news component should match snapshot 1`] = `
         <p>
           Test intro text
         </p>
-      </div>
+      </article>
     </li>
   </ol>
 </div>
