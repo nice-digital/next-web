@@ -4,14 +4,16 @@ import React from "react";
 import { ActionBanner } from "@nice-digital/nds-action-banner";
 import { Button } from "@nice-digital/nds-button";
 
+import { NewsGrid } from "@/components/Storyblok/News/NewsGrid/NewsGrid";
 import { NewsListPagination } from "@/components/Storyblok/NewsListPagination/NewsListPagination";
 import { logger } from "@/logger";
+import { NewsStory } from "@/types/News";
 import { fetchStories, getStoryVersionFromQuery } from "@/utils/storyblok";
 
 import type { GetServerSidePropsContext } from "next";
 
 type NewsArticlesProps = {
-	stories: ISbStories[];
+	stories: NewsStory[];
 	totalResults: number;
 	currentPage: number;
 	resultsPerPage: number;
@@ -26,9 +28,7 @@ export const ArticlesIndexPage = ({
 	return (
 		<>
 			<h1>Articles Index Page</h1>
-			{stories.map((story, index) => {
-				return <p key={`${story.name}_${index}`}>{story.name}</p>;
-			})}
+			<NewsGrid news={stories} />
 			<ActionBanner
 				title="Sign up for our newsletters and alerts"
 				cta={<Button variant="cta">Sign up for newsletters and alerts</Button>}
