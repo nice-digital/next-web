@@ -11,16 +11,7 @@ exports[`News card component should match snapshot for a blog post 1`] = `
       href="i/am/a-very-full-slug"
       style="background-image: url(https://placekitten.com/200/139);"
     >
-      <span
-        class="storyType"
-      >
-        <span
-          class="tag tag--outline"
-          data-component="tag"
-        >
-          Blog
-        </span>
-      </span>
+       
     </a>
     <h3
       class="heading"
@@ -34,6 +25,19 @@ exports[`News card component should match snapshot for a blog post 1`] = `
     <p>
       Let's play Blockbusters!
     </p>
+    <footer>
+      <span
+        class="tag tag--outline"
+        data-component="tag"
+      >
+        Blog
+      </span>
+      <span
+        class="date"
+      >
+        20 February 2024
+      </span>
+    </footer>
   </article>
 </div>
 `;
@@ -49,16 +53,7 @@ exports[`News card component should match snapshot for a news article 1`] = `
       href="i/am/a-very-full-slug"
       style="background-image: url(https://placekitten.com/200/286);"
     >
-      <span
-        class="storyType"
-      >
-        <span
-          class="tag tag--outline"
-          data-component="tag"
-        >
-          News
-        </span>
-      </span>
+       
     </a>
     <h3
       class="heading"
@@ -72,6 +67,19 @@ exports[`News card component should match snapshot for a news article 1`] = `
     <p>
       Test intro text
     </p>
+    <footer>
+      <span
+        class="tag tag--outline"
+        data-component="tag"
+      >
+        News
+      </span>
+      <span
+        class="date"
+      >
+        31 January 2024
+      </span>
+    </footer>
   </article>
 </div>
 `;

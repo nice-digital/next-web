@@ -11,16 +11,13 @@
   background-position: center;
   background-size: cover;
   display: block;
-  position: relative;
-}
-
-.storyType {
-  bottom: utils.rem(spacing.$small);
-  left: utils.rem(spacing.$small);
-  position: absolute;
 }
 
 .heading {
   @include typography.h5();
   margin-top: utils.rem(spacing.$medium);
+}
+
+.date {
+  margin-left: utils.rem(spacing.$medium);
 }
