@@ -95,20 +95,29 @@ exports[`MedicinesAndPrescribingNewsletterForm should match snapshot 1`] = `
       data-g="12 md:12 lg:12"
     >
       <div
-        class="page-header"
+        class="page-header "
         data-component="page-header"
         id="content-start"
       >
-        <h1
-          class="page-header__heading "
+        <div
+          class="grid"
         >
-          Subscribe to medicines and prescribing - Important new evidence
-        </h1>
-        <p
-          class="page-header__lead"
-        >
-          Receive monthly updates on prescribing and medicines optimisation. Includes information from national bodies including NICE, SIGN and the MHRA.
-        </p>
+          <div
+            data-component="grid-item"
+            data-g="12 md:12"
+          >
+            <h1
+              class="page-header__heading "
+            >
+              Subscribe to medicines and prescribing - Important new evidence
+            </h1>
+            <p
+              class="page-header__lead"
+            >
+              Receive monthly updates on prescribing and medicines optimisation. Includes information from national bodies including NICE, SIGN and the MHRA.
+            </p>
+          </div>
+        </div>
       </div>
       <iframe
         allow="geolocation; microphone; camera"

@@ -95,15 +95,24 @@ exports[`RequestASpeakerForm should match snapshot 1`] = `
       data-g="12 md:12 lg:12"
     >
       <div
-        class="page-header"
+        class="page-header "
         data-component="page-header"
         id="content-start"
       >
-        <h1
-          class="page-header__heading "
+        <div
+          class="grid"
         >
-          Speaker request form
-        </h1>
+          <div
+            data-component="grid-item"
+            data-g="12 md:12"
+          >
+            <h1
+              class="page-header__heading "
+            >
+              Speaker request form
+            </h1>
+          </div>
+        </div>
       </div>
       <iframe
         allow="geolocation; microphone; camera"

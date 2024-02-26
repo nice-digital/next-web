@@ -1,36 +1,36 @@
 import { StoryblokComponent } from "@storyblok/react";
+import { debounce } from "lodash";
 import React, { useEffect, useRef } from "react";
 
 import { Breadcrumbs, Breadcrumb } from "@nice-digital/nds-breadcrumbs";
 import { Grid, GridItem } from "@nice-digital/nds-grid";
 import { PageHeader } from "@nice-digital/nds-page-header";
 import { Panel } from "@nice-digital/nds-panel";
-import { Tag } from "@nice-digital/nds-tag";
 
 import { NewsLetterSignup } from "@/components/NewsLetterSignUp/NewsLetterSignup";
 import { type Breadcrumb as TypeBreadcrumb } from "@/types/Breadcrumb";
 import { SBNewsArticle } from "@/types/SBNews";
-import { formatDateStr } from "@/utils/datetime";
 
+import { NewsPageHeaderFooter } from "../NewsPageHeader/NewsPageHeaderFooter/NewsPageHeaderFooter";
 import { StoryblokImage } from "../StoryblokImage/StoryblokImage";
 import { StoryblokRichText } from "../StoryblokRichText/StoryblokRichText";
 
-import styles from "./NewsArticle.module.scss";
+import styles from "./StoryblokNewsArticle.module.scss";
 
-export interface NewsArticleProps {
+export interface StoryblokNewsArticleProps {
 	blok: SBNewsArticle;
 	breadcrumbs?: TypeBreadcrumb[];
 }
 
-export const NewsArticle = ({
+export const StoryblokNewsArticle = ({
 	blok,
 	breadcrumbs,
-}: NewsArticleProps): React.ReactElement => {
+}: StoryblokNewsArticleProps): React.ReactElement => {
 	const imageRef = useRef<HTMLImageElement>(null);
 	const articleRef = useRef<HTMLDivElement>(null);
 
 	useEffect(() => {
-		const handleResize = () => {
+		const handleResize = debounce(() => {
 			// set the offset for the featured image
 			if (articleRef.current && imageRef.current) {
 				articleRef.current.style.setProperty(
@@ -38,7 +38,7 @@ export const NewsArticle = ({
 					`${Math.floor(imageRef.current.height / 1.75)}px`
 				);
 			}
-		};
+		}, 250);
 
 		window.addEventListener("resize", handleResize);
 
@@ -48,8 +48,9 @@ export const NewsArticle = ({
 		// clear the event listener when the component is unmounted
 		return () => {
 			window.removeEventListener("resize", handleResize);
+			handleResize.cancel();
 		};
-	});
+	}, []);
 
 	const BreadcrumbComponent = breadcrumbs?.length ? (
 		<Breadcrumbs className="">
@@ -61,22 +62,6 @@ export const NewsArticle = ({
 		</Breadcrumbs>
 	) : undefined;
 
-	const PageHeaderFooter = () => {
-		const pageType = "News";
-
-		return (
-			<div className="news-article__meta">
-				<Tag outline data-testid="pageTag">
-					{pageType}
-				</Tag>{" "}
-				&nbsp;
-				{typeof blok.date === "string" && (
-					<time dateTime={blok.date}>{formatDateStr(blok.date)}</time>
-				)}
-			</div>
-		);
-	};
-
 	return (
 		<article className={styles.article} ref={articleRef}>
 			<Grid>
@@ -86,7 +71,13 @@ export const NewsArticle = ({
 						heading={blok.title}
 						lead={blok.introText}
 						breadcrumbs={BreadcrumbComponent}
-						description={[<PageHeaderFooter key="page-header-meta" />]}
+						description={[
+							<NewsPageHeaderFooter
+								key="page-header-meta"
+								date={blok.date}
+								pageType={blok.component}
+							/>,
+						]}
 					/>
 
 					{/* article content */}

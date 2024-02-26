@@ -5,9 +5,12 @@ import {
 	RelatedNewsLinkStoryblok,
 } from "@/types/storyblok";
 
-import { NewsArticle, NewsArticleProps } from "./NewsArticle";
+import {
+	StoryblokNewsArticle,
+	StoryblokNewsArticleProps,
+} from "./StoryblokNewsArticle";
 
-const newsArticleProps: NewsArticleProps = {
+const newsArticleProps: StoryblokNewsArticleProps = {
 	blok: {
 		title: "Page title",
 		introText: "Page summary",
@@ -94,31 +97,31 @@ jest.mock("@storyblok/react", () => ({
 
 describe("NewsArticle", () => {
 	it("renders the news article", () => {
-		render(<NewsArticle blok={newsArticleProps.blok} />);
+		render(<StoryblokNewsArticle blok={newsArticleProps.blok} />);
 		expect(screen.getByText("Page title")).toBeInTheDocument();
 		expect(screen.getByText("Page summary")).toBeInTheDocument();
 		expect(screen.getByText("This is a mock news article")).toBeInTheDocument();
 	});
 
 	it("renders the news article with an image", () => {
-		render(<NewsArticle blok={newsArticleProps.blok} />);
+		render(<StoryblokNewsArticle blok={newsArticleProps.blok} />);
 		expect(screen.getByRole("img")).toBeInTheDocument();
 		expect(screen.getByAltText("Image alt text")).toBeInTheDocument();
 	});
 
 	it("renders the news article with related links", () => {
-		render(<NewsArticle blok={newsArticleProps.blok} />);
+		render(<StoryblokNewsArticle blok={newsArticleProps.blok} />);
 		expect(screen.getByTestId("mock-relatedLink")).toBeInTheDocument();
 	});
 
 	it("renders the news article with related news links", () => {
-		render(<NewsArticle blok={newsArticleProps.blok} />);
+		render(<StoryblokNewsArticle blok={newsArticleProps.blok} />);
 		expect(screen.getByTestId("mock-relatedNewsLink")).toBeInTheDocument();
 		expect(screen.getByText("Test related news link 1")).toBeInTheDocument();
 	});
 
 	it("should render the signup action panel", () => {
-		render(<NewsArticle blok={newsArticleProps.blok} />);
+		render(<StoryblokNewsArticle blok={newsArticleProps.blok} />);
 		expect(
 			screen.getByText("Sign up for newsletters and alerts")
 		).toBeInTheDocument();
@@ -126,7 +129,7 @@ describe("NewsArticle", () => {
 
 	it("should render the breadcrumbs", () => {
 		render(
-			<NewsArticle
+			<StoryblokNewsArticle
 				blok={newsArticleProps.blok}
 				breadcrumbs={newsArticleProps.breadcrumbs}
 			/>
@@ -139,7 +142,7 @@ describe("NewsArticle", () => {
 	});
 
 	it("should render the page meta", () => {
-		render(<NewsArticle blok={newsArticleProps.blok} />);
+		render(<StoryblokNewsArticle blok={newsArticleProps.blok} />);
 		expect(screen.getByTestId("pageTag")).toBeInTheDocument();
 		expect(screen.getByText("News")).toBeInTheDocument();
 		expect(screen.getByText("31 January 2024")).toBeInTheDocument();

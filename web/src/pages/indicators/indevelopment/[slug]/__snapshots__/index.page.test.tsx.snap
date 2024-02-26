@@ -90,39 +90,48 @@ exports[`/indevelopment/[slug].page IndevelopmentPage should match snapshot for 
 }
       </script>
       <div
-        class="page-header"
+        class="page-header "
         data-component="page-header"
         id="content-start"
       >
-        <h1
-          class="page-header__heading page-header__heading--alt"
+        <div
+          class="grid"
         >
-          Adrenal insufficiency: acute and long-term management
-        </h1>
-        <ul
-          class="page-header__metadata"
-        >
-          <li>
-            In development GID-NG10237
-          </li>
-          <li>
-            <span>
-              Expected publication date: 
-            </span>
-            <time
-              datetime="11 April 2024"
+          <div
+            data-component="grid-item"
+            data-g="12 md:12"
+          >
+            <h1
+              class="page-header__heading page-header__heading--alt"
             >
-              11 April 2024
-            </time>
-          </li>
-          <li>
-            <a
-              href="https://alpha.nice.org.uk/get-involved/stakeholder-registration/register?t=&p=GID-NG10237&returnUrl=/guidance/indevelopment/gid-ng10237"
+              Adrenal insufficiency: acute and long-term management
+            </h1>
+            <ul
+              class="page-header__metadata"
             >
-              Register as a stakeholder
-            </a>
-          </li>
-        </ul>
+              <li>
+                In development GID-NG10237
+              </li>
+              <li>
+                <span>
+                  Expected publication date: 
+                </span>
+                <time
+                  datetime="11 April 2024"
+                >
+                  11 April 2024
+                </time>
+              </li>
+              <li>
+                <a
+                  href="https://alpha.nice.org.uk/get-involved/stakeholder-registration/register?t=&p=GID-NG10237&returnUrl=/guidance/indevelopment/gid-ng10237"
+                >
+                  Register as a stakeholder
+                </a>
+              </li>
+            </ul>
+          </div>
+        </div>
       </div>
       <nav
         class="horizontal-nav"

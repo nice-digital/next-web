@@ -7,14 +7,30 @@
   // set up variables for the offset of the featured image across breakpoints
   --featuredImageOffset: 16dvh;
 
-  // set padding on page-header based on the negat
+  // set padding on page-header based on the image offset
+  //TODO: Fix issue with spacing, dependant on the number of authors. listed
   &:has(.featuredImage) {
     :global(.page-header) {
       padding-bottom: var(--featuredImageOffset);
     }
   }
 
+  .featuredImage {
+    aspect-ratio: 16 / 9;
+    display: block;
+    height: auto;
+    margin-top: calc(calc(var(--featuredImageOffset) * -1) - 1rem);
+    margin-bottom: utils.rem(spacing.$x-large);
+    object-fit: cover;
+    width: 100%;
+  }
 
+  :global(.action-banner) {
+    margin: utils.rem(spacing.$xx-large) 0;
+  }
+
+
+  //TODO: all news and blog header related. Move to NewsPageHeader
   :global(.page-header__heading) {
     margin: 0 0 utils.rem(spacing.$large) 0;
   }
@@ -31,19 +47,5 @@
     margin-top: 0;
   }
 
-  // setting featured image styles here as we need to manage the offset between the image and the page header
-  .featuredImage {
-    aspect-ratio: 16 / 9;
-    display: block;
-    height: auto;
-    margin-top: calc(calc(var(--featuredImageOffset) * -1) - 1rem);
-    margin-bottom: utils.rem(spacing.$x-large);
-    object-fit: cover;
-    width: 100%;
-  }
-
-  hr {
-    margin: utils.rem(spacing.$medium 0);
-  }
 }
 

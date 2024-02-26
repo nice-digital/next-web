@@ -25,7 +25,7 @@ export const StoryblokImage = React.forwardRef<
 	}
 
 	const webpSrc = constructImageSrc(`${src}/m/`, serviceOptions);
-	const jpgSrc = constructImageSrc(`${src}`, serviceOptions);
+	const jpgSrc = constructImageSrc(`${src}/`, serviceOptions);
 
 	return (
 		<picture>

@@ -2,24 +2,29 @@ import {
 	apiPlugin,
 	getStoryblokApi,
 	storyblokInit,
+	type ISbStoryParams,
 	type ISbStoriesParams,
 	type ISbResult,
-	type ISbStory,
 	type ISbError,
 	type ISbStoryData,
 } from "@storyblok/react";
 import { type MetaTag } from "next-seo/lib/types";
 
 import { Blockquote } from "@/components/Storyblok/Blockquote/Blockquote";
-import { BlogPost } from "@/components/Storyblok/BlogPost/BlogPost";
 import { CardGrid } from "@/components/Storyblok/CardGrid/CardGrid";
 import { CategoryNavigation } from "@/components/Storyblok/CategoryNavigation/CategoryNavigation";
 import { Homepage } from "@/components/Storyblok/Homepage/Homepage";
+import { HomepageHero } from "@/components/Storyblok/Homepage/HomepageHero/HomepageHero";
 import { InfoPage } from "@/components/Storyblok/InfoPage/InfoPage";
 import { Metadata } from "@/components/Storyblok/Metadata/Metadata";
 import { NestedRichText } from "@/components/Storyblok/NestedRichText/NestedRichText";
-import { NewsArticle } from "@/components/Storyblok/NewsArticle/NewsArticle";
+import { PromoBox } from "@/components/Storyblok/PromoBox/PromoBox";
+import { Spotlight } from "@/components/Storyblok/Spotlight/Spotlight";
+import { StoryblokActionBanner } from "@/components/Storyblok/StoryblokActionBanner/StoryblokActionBanner";
+import { StoryblokAuthor } from "@/components/Storyblok/StoryblokAuthor/StoryblokAuthor";
+import { StoryblokBlogPost } from "@/components/Storyblok/StoryblokBlogPost/StoryblokBlogPost";
 import { StoryblokHero } from "@/components/Storyblok/StoryblokHero/StoryblokHero";
+import { StoryblokNewsArticle } from "@/components/Storyblok/StoryblokNewsArticle/StoryblokNewsArticle";
 import { StoryblokPageHeader } from "@/components/Storyblok/StoryblokPageHeader/StoryblokPageHeader";
 import { StoryblokRelatedLink } from "@/components/Storyblok/StoryblokRelatedLink/StoryblokRelatedLink";
 import { StoryblokRelatedNewsLink } from "@/components/Storyblok/StoryblokRelatedNewsLink/StoryblokRelatedNewsLink";
@@ -28,36 +33,39 @@ import { publicRuntimeConfig } from "@/config";
 import { logger } from "@/logger";
 import { type Breadcrumb } from "@/types/Breadcrumb";
 import { type SBLink } from "@/types/SBLink";
-import { CardGridStoryblok, type MultilinkStoryblok } from "@/types/storyblok";
+import { type MultilinkStoryblok } from "@/types/storyblok";
 
 export type StoryVersion = "draft" | "published" | undefined;
-export type SBSingleResponse = {
-	story: ISbStory;
+export type SBSingleResponse<T> = {
+	story?: ISbStoryData<T>;
+	notFound?: boolean;
 };
 export type SBMultipleResponse = {
-	stories: ISbStory[];
-};
-export type SBNotFoundResponse = {
-	notFound: true;
+	stories: ISbStoryData[];
 };
 
 // Init connection to Storyblok
 export const initStoryblok = (): void => {
 	const components = {
+		actionBanner: StoryblokActionBanner,
+		author: StoryblokAuthor,
+		blogPost: StoryblokBlogPost,
 		cardGrid: CardGrid,
 		categoryNavigation: CategoryNavigation,
-		homepage: Homepage,
 		hero: StoryblokHero,
+		homepage: Homepage,
+		homepageHero: HomepageHero,
 		infoPage: InfoPage,
 		metadata: Metadata,
-		newsArticle: NewsArticle,
-		blogPost: BlogPost,
+		nestedRichText: NestedRichText,
+		newsArticle: StoryblokNewsArticle,
+		pageHeader: StoryblokPageHeader,
+		promoBox: PromoBox,
 		quote: Blockquote,
 		relatedLink: StoryblokRelatedLink,
 		relatedNewsLink: StoryblokRelatedNewsLink,
+		spotlight: Spotlight,
 		youtubeEmbed: StoryblokYoutubeEmbed,
-		nestedRichText: NestedRichText,
-		pageHeader: StoryblokPageHeader,
 	};
 
 	try {
@@ -80,28 +88,30 @@ export const initStoryblok = (): void => {
 };
 
 // Fetch a single story from the Storyblok API
-export const fetchStory = async (
+export const fetchStory = async <T>(
 	slug: string,
-	version: StoryVersion
-): Promise<SBSingleResponse | SBNotFoundResponse> => {
+	version: StoryVersion = "published",
+	params: ISbStoryParams = {}
+): Promise<SBSingleResponse<T>> => {
 	const storyblokApi = getStoryblokApi();
 
 	const sbParams: ISbStoriesParams = {
-		version: version || "published",
+		version,
 		resolve_links: "url",
 		cv: Date.now(), // Useful for flushing the Storyblok cache
+		...params,
 	};
 
 	let result = null;
 
 	try {
-		const story: ISbResult = await storyblokApi.get(
+		const response: ISbResult = await storyblokApi.get(
 			`cdn/stories/${slug}`,
 			sbParams
 		);
 
 		result = {
-			story: story.data.story,
+			story: response.data.story,
 		};
 	} catch (e) {
 		const result = JSON.parse(e as string) as ISbError;
@@ -161,7 +171,7 @@ export const fetchStories = async (
 export const fetchLinks = async (
 	version: StoryVersion,
 	startsWith?: string
-): Promise<SBLink[] | SBNotFoundResponse> => {
+): Promise<SBLink[]> => {
 	const storyblokApi = getStoryblokApi();
 
 	const sbParams: ISbStoriesParams = {
@@ -177,7 +187,6 @@ export const fetchLinks = async (
 
 	try {
 		const links: SBLink[] = await storyblokApi.getAll("cdn/links", sbParams);
-
 		result = links;
 	} catch (e) {
 		const result = JSON.parse(e as string) as ISbError;
@@ -235,23 +244,37 @@ export const getBreadcrumbs = async (
 };
 
 // Resolve a link object returned from the Storyblok API, so that it returns
-// something that can be plugged straight into an href attribute
+// a) something that can be plugged straight into an href attribute, and
+// b) a boolean that indicates whether it's an internal link or not, so
+// we can use the NextJS Link component to render it
 export const resolveStoryblokLink = ({
 	linktype,
 	url,
+	cached_url,
 	email,
-	story,
-}: MultilinkStoryblok): string | undefined => {
+}: MultilinkStoryblok): { url: string | undefined; isInternal: boolean } => {
 	switch (linktype) {
 		case "url":
 		case "asset":
-			return url?.trim() || undefined;
+			return {
+				url: url?.trim() || cached_url?.trim() || undefined,
+				isInternal: false,
+			};
 		case "email":
-			return email?.trim() ? `mailto:${email.trim()}` : undefined;
+			return {
+				url: email?.trim() ? `mailto:${email.trim()}` : undefined,
+				isInternal: false,
+			};
 		case "story":
-			return story?.full_slug ? `/${story.full_slug}` : undefined;
+			return {
+				url: url?.trim() || cached_url?.trim() || undefined,
+				isInternal: true,
+			};
 		default:
-			return undefined;
+			return {
+				url: undefined,
+				isInternal: false,
+			};
 	}
 };
 
@@ -275,33 +298,6 @@ export const getSlugFromParams = (
 	return Array.isArray(slugParams) ? slugParams.join("/") : slugParams;
 };
 
-// Resolve the slug object from the NextJS query params into a list of full
-// slugs that we can use to build breadcrumbs, for example
-export const getSlugHierarchyFromParams = (
-	slugParams: string | string[] | undefined,
-	prefix: string
-): string[] => {
-	if (!slugParams) {
-		return [];
-	}
-
-	const hierarchy: string[] = [`${prefix}/`];
-
-	if (Array.isArray(slugParams)) {
-		for (let i = 0; i < slugParams.length - 1; i++) {
-			let newSlug = `${prefix}/`;
-			for (let j = 0; j <= i; j++) {
-				newSlug = `${newSlug}${slugParams[j]}/`;
-			}
-			hierarchy.push(newSlug);
-		}
-	} else {
-		hierarchy.push(`${prefix}/${slugParams}/`);
-	}
-
-	return hierarchy;
-};
-
 // Get metadata that can be derived from the Storyblok response
 // e.g. DC.Issued, DC.Modified
 export const getAdditionalMetaTags = (story: ISbStoryData): MetaTag[] => {
@@ -313,4 +309,13 @@ export const getAdditionalMetaTags = (story: ISbStoryData): MetaTag[] => {
 		},
 	];
 	return additionalMetaTags;
+};
+
+// Turn a Storyblok date string (yyyy-mm-dd hh:ss) into a friendly date
+export const friendlyDate = (date: string): string => {
+	return new Date(date).toLocaleDateString("en-gb", {
+		year: "numeric",
+		month: "long",
+		day: "2-digit",
+	});
 };

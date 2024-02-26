@@ -163,20 +163,29 @@ exports[`InterventionalProceduresNotificationForm should match snapshot 1`] = `
       data-g="12 md:8 lg:8"
     >
       <div
-        class="page-header"
+        class="page-header "
         data-component="page-header"
         id="content-start"
       >
-        <h1
-          class="page-header__heading "
+        <div
+          class="grid"
         >
-          Interventional procedures notification form
-        </h1>
-        <p
-          class="page-header__lead"
-        >
-          Tell us about an interventional procedure you think should be assessed by NICE. This can be a new procedure or a review of our existing guidance.
-        </p>
+          <div
+            data-component="grid-item"
+            data-g="12 md:12"
+          >
+            <h1
+              class="page-header__heading "
+            >
+              Interventional procedures notification form
+            </h1>
+            <p
+              class="page-header__lead"
+            >
+              Tell us about an interventional procedure you think should be assessed by NICE. This can be a new procedure or a review of our existing guidance.
+            </p>
+          </div>
+        </div>
       </div>
       <iframe
         allow="geolocation; microphone; camera"

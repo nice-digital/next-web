@@ -16,7 +16,7 @@ describe("StoryblokImage Component", () => {
 		const imageSrc = screen.getByRole("img").getAttribute("src");
 
 		expect(imageSrc).toContain(".jpg");
-		expect(imageSrc).toBe(mockImageResponse.src);
+		expect(imageSrc).toBe(mockImageResponse.src + "/");
 	});
 
 	it("should add the alt text of the image", () => {
@@ -88,6 +88,6 @@ describe("StoryblokImage Component", () => {
 
 		const imageSrc = screen.getByRole("img").getAttribute("src");
 
-		expect(imageSrc).toBe("/fallback-image.png");
+		expect(imageSrc).toBe("/fallback-image.png/");
 	});
 });

@@ -6,7 +6,6 @@ import {
 	fetchStory,
 	getStoryVersionFromQuery,
 	getSlugFromParams,
-	getAdditionalMetaTags,
 	getBreadcrumbs,
 } from "@/utils/storyblok";
 
@@ -441,16 +440,10 @@ describe("getServerSideProps", () => {
 		const slug = "test-slug";
 		const version = "draft";
 		const mockStory = { name: "Mock News Article", content: {} };
-		const mockBreadcrumbs = [
-			{ title: "Home" },
-			{ title: "News" },
-			{ title: "Mock News Article" },
-		];
 
 		jest.mocked(getSlugFromParams).mockReturnValue(slug);
 		jest.mocked(getStoryVersionFromQuery).mockReturnValue(version);
 		jest.mocked(fetchStory).mockResolvedValue(mockStory);
-		jest.mocked(getBreadcrumbs).mockResolvedValue(mockBreadcrumbs);
 
 		const context = {
 			params: { slug: [slug] },
@@ -461,7 +454,10 @@ describe("getServerSideProps", () => {
 		expect(response).toEqual({
 			props: {
 				...mockStory,
-				breadcrumbs: mockBreadcrumbs,
+				breadcrumbs: [
+					{ title: "News", path: "/news" },
+					{ title: "News articles", path: "/news/articles" },
+				],
 			},
 		});
 	});
