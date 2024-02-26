@@ -4,7 +4,7 @@ import React from "react";
 import { ActionBanner } from "@nice-digital/nds-action-banner";
 import { Button } from "@nice-digital/nds-button";
 
-import { NewsGrid } from "@/components/Storyblok/News/NewsGrid/NewsGrid";
+import { NewsList } from "@/components/Storyblok/News/NewsList/NewsList";
 import { NewsListPagination } from "@/components/Storyblok/NewsListPagination/NewsListPagination";
 import { logger } from "@/logger";
 import { NewsStory } from "@/types/News";
@@ -28,7 +28,7 @@ export const ArticlesIndexPage = ({
 	return (
 		<>
 			<h1>Articles Index Page</h1>
-			<NewsGrid news={stories} />
+			<NewsList news={stories} />
 			<ActionBanner
 				title="Sign up for our newsletters and alerts"
 				cta={<Button variant="cta">Sign up for newsletters and alerts</Button>}
