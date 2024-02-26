@@ -1,6 +1,9 @@
 import { type ISbStories } from "@storyblok/react";
 import React from "react";
 
+import { ActionBanner } from "@nice-digital/nds-action-banner";
+import { Button } from "@nice-digital/nds-button";
+
 import { NewsListPagination } from "@/components/Storyblok/NewsListPagination/NewsListPagination";
 import { logger } from "@/logger";
 import { fetchStories, getStoryVersionFromQuery } from "@/utils/storyblok";
@@ -26,6 +29,12 @@ export const ArticlesIndexPage = ({
 			{stories.map((story, index) => {
 				return <p key={`${story.name}_${index}`}>{story.name}</p>;
 			})}
+			<ActionBanner
+				title="Sign up for our newsletters and alerts"
+				cta={<Button variant="cta">Sign up for newsletters and alerts</Button>}
+			>
+				Keeping you up to date with important developments at NICE
+			</ActionBanner>
 			<NewsListPagination
 				configuration={{
 					currentPage,
