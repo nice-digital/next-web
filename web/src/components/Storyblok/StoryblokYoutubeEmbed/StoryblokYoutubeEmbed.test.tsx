@@ -32,9 +32,6 @@ describe("StoryblokYoutubeEmbed", () => {
 		const button = screen.getByRole("button");
 		console.log(button);
 		expect(button).toBeInTheDocument();
-		// expect(
-		// 	screen.getByTitle(`(video) ${mockYoutubeEmbedProps.blok.title}`)
-		// ).toHaveProperty("tagName", "IFRAME");
 	});
 
 	it("should load the iframe on button click", async () => {
