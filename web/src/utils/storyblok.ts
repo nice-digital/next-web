@@ -36,12 +36,17 @@ import { type SBLink } from "@/types/SBLink";
 import { type MultilinkStoryblok } from "@/types/storyblok";
 
 export type StoryVersion = "draft" | "published" | undefined;
+
 export type SBSingleResponse<T> = {
 	story?: ISbStoryData<T>;
 	notFound?: boolean;
 };
-export type SBMultipleResponse = {
-	stories: ISbStoryData[];
+
+export type SBMultipleResponse<T> = {
+	stories: ISbStoryData<T>[];
+	perPage?: number;
+	total?: number;
+	error?: string;
 };
 
 // Init connection to Storyblok
@@ -134,10 +139,10 @@ export const fetchStory = async <T>(
 };
 
 // Fetch multiple stories from the Storyblok API
-export const fetchStories = async (
+export const fetchStories = async <T>(
 	version: StoryVersion = "published",
 	params: ISbStoriesParams = {}
-): Promise<ISbStoryData[]> => {
+): Promise<SBMultipleResponse<T>> => {
 	const storyblokApi = getStoryblokApi();
 
 	const sbParams: ISbStoriesParams = {
@@ -147,20 +152,25 @@ export const fetchStories = async (
 		...params,
 	};
 
-	let result = [];
+	const result: SBMultipleResponse<T> = { stories: [] };
 
 	try {
 		const response: ISbResult = await storyblokApi.get(`cdn/stories`, sbParams);
-		result = response.data.stories;
+		result.stories = response.data.stories;
+		result.perPage = response.perPage;
+		result.total = response.total;
 	} catch (e) {
-		const result = JSON.parse(e as string) as ISbError;
-		Promise.reject(new Error(`${result.message}"`));
+		const errorResponse = JSON.parse(e as string) as ISbError;
+		result.error = errorResponse.message?.message;
+		Promise.reject(new Error(`${errorResponse.message}"`));
 
 		logger.error(
-			`${result.status} error from Storyblok API: ${result.message}`,
+			`${errorResponse.status} error from Storyblok API: ${errorResponse.message}`,
 			e
 		);
-		throw Error(`${result.status} error from Storyblok API: ${result.message}`);
+		throw Error(
+			`${errorResponse.status} error from Storyblok API: ${errorResponse.message}`
+		);
 	}
 
 	return result;
