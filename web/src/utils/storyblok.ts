@@ -11,7 +11,6 @@ import {
 import { type MetaTag } from "next-seo/lib/types";
 
 import { Blockquote } from "@/components/Storyblok/Blockquote/Blockquote";
-import { BlogPost } from "@/components/Storyblok/BlogPost/BlogPost";
 import { CardGrid } from "@/components/Storyblok/CardGrid/CardGrid";
 import { CategoryNavigation } from "@/components/Storyblok/CategoryNavigation/CategoryNavigation";
 import { Homepage } from "@/components/Storyblok/Homepage/Homepage";
@@ -19,11 +18,13 @@ import { HomepageHero } from "@/components/Storyblok/Homepage/HomepageHero/Homep
 import { InfoPage } from "@/components/Storyblok/InfoPage/InfoPage";
 import { Metadata } from "@/components/Storyblok/Metadata/Metadata";
 import { NestedRichText } from "@/components/Storyblok/NestedRichText/NestedRichText";
-import { NewsArticle } from "@/components/Storyblok/NewsArticle/NewsArticle";
 import { PromoBox } from "@/components/Storyblok/PromoBox/PromoBox";
 import { Spotlight } from "@/components/Storyblok/Spotlight/Spotlight";
 import { StoryblokActionBanner } from "@/components/Storyblok/StoryblokActionBanner/StoryblokActionBanner";
+import { StoryblokAuthor } from "@/components/Storyblok/StoryblokAuthor/StoryblokAuthor";
+import { StoryblokBlogPost } from "@/components/Storyblok/StoryblokBlogPost/StoryblokBlogPost";
 import { StoryblokHero } from "@/components/Storyblok/StoryblokHero/StoryblokHero";
+import { StoryblokNewsArticle } from "@/components/Storyblok/StoryblokNewsArticle/StoryblokNewsArticle";
 import { StoryblokPageHeader } from "@/components/Storyblok/StoryblokPageHeader/StoryblokPageHeader";
 import { StoryblokRelatedLink } from "@/components/Storyblok/StoryblokRelatedLink/StoryblokRelatedLink";
 import { StoryblokRelatedNewsLink } from "@/components/Storyblok/StoryblokRelatedNewsLink/StoryblokRelatedNewsLink";
@@ -47,7 +48,8 @@ export type SBMultipleResponse = {
 export const initStoryblok = (): void => {
 	const components = {
 		actionBanner: StoryblokActionBanner,
-		blogPost: BlogPost,
+		author: StoryblokAuthor,
+		blogPost: StoryblokBlogPost,
 		cardGrid: CardGrid,
 		categoryNavigation: CategoryNavigation,
 		hero: StoryblokHero,
@@ -56,7 +58,7 @@ export const initStoryblok = (): void => {
 		infoPage: InfoPage,
 		metadata: Metadata,
 		nestedRichText: NestedRichText,
-		newsArticle: NewsArticle,
+		newsArticle: StoryblokNewsArticle,
 		pageHeader: StoryblokPageHeader,
 		promoBox: PromoBox,
 		quote: Blockquote,
@@ -86,7 +88,6 @@ export const initStoryblok = (): void => {
 };
 
 // Fetch a single story from the Storyblok API
-// TODO: Fix the 404 response type
 export const fetchStory = async <T>(
 	slug: string,
 	version: StoryVersion = "published",

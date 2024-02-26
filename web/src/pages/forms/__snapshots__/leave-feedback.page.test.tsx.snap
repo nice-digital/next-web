@@ -78,20 +78,29 @@ exports[`LeaveFeedbackForm should match snapshot 1`] = `
       data-g="12 md:12 lg:12"
     >
       <div
-        class="page-header"
+        class="page-header "
         data-component="page-header"
         id="content-start"
       >
-        <h1
-          class="page-header__heading "
+        <div
+          class="grid"
         >
-          Website feedback form
-        </h1>
-        <p
-          class="page-header__lead"
-        >
-          Thank you for taking a look at our website, we'd like to hear your views.
-        </p>
+          <div
+            data-component="grid-item"
+            data-g="12 md:12"
+          >
+            <h1
+              class="page-header__heading "
+            >
+              Website feedback form
+            </h1>
+            <p
+              class="page-header__lead"
+            >
+              Thank you for taking a look at our website, we'd like to hear your views.
+            </p>
+          </div>
+        </div>
       </div>
       This form is only for website feedback, for all other enquiries please
        
