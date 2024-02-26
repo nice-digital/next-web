@@ -1,20 +1,8 @@
 {
+  "extends": "../tsconfig.json",
   "compilerOptions": {
-    "strictNullChecks": true,
-    "strictFunctionTypes": true,
-    "strictPropertyInitialization": true,
-    "strictBindCallApply": true,
-    "noImplicitAny": true,
-    "noImplicitReturns": true,
-    "alwaysStrict": true,
-    "sourceMap": true,
-    "checkJs": true,
     "target": "es5",
-    "lib": [
-      "dom",
-      "dom.iterable",
-      "esnext"
-    ],
+    "lib": ["dom", "dom.iterable", "esnext"],
     "composite": true,
     "noEmit": false,
     "jsx": "preserve",
@@ -22,62 +10,22 @@
     "rootDir": "../",
     "baseUrl": ".",
     "paths": {
-      "@/test-utils/*": [
-        "src/test-utils/*"
-      ],
-      "@/cache": [
-        "src/cache/cache"
-      ],
-      "@/config": [
-        "src/config/config"
-      ],
-      "@/hooks/*": [
-        "src/hooks/*"
-      ],
-      "@/logger": [
-        "src/logging/logger"
-      ],
-      "@/components/*": [
-        "src/components/*"
-      ],
-      "@/feeds/*": [
-        "src/feeds/*"
-      ],
-      "@/mocks/*": [
-        "src/__mocks__/*"
-      ],
-      "@/mockData/*": [
-        "src/__mocks__/__data__/*"
-      ],
-      "@/utils/*": [
-        "src/utils/*"
-      ],
-      "@/helpers/*": [
-        "src/helpers/*"
-      ],
-      "@/helpers": [
-        "src/helpers"
-      ],
+      "@/test-utils/*": ["src/test-utils/*"],
+      "@/cache": ["src/cache/cache"],
+      "@/config": ["src/config/config"],
+      "@/hooks/*": ["src/hooks/*"],
+      "@/logger": ["src/logging/logger"],
+      "@/components/*": ["src/components/*"],
+      "@/feeds/*": ["src/feeds/*"],
+      "@/mocks/*": ["src/__mocks__/*"],
+      "@/mockData/*": ["src/__mocks__/__data__/*"],
+      "@/utils/*": ["src/utils/*"],
+      "@/helpers/*": ["src/helpers/*"],
+      "@/helpers": ["src/helpers"],
       "@/types/*": ["src/types/*"]
     },
-    "incremental": true,
-    "allowJs": true,
-    "skipLibCheck": true,
-    "strict": false,
-    "forceConsistentCasingInFileNames": true,
-    "esModuleInterop": true,
-    "module": "esnext",
-    "moduleResolution": "node",
-    "resolveJsonModule": true,
-    "isolatedModules": true
+    "incremental": true
   },
-  "include": [
-    "./**/*",
-    "./**/*.json",
-    "../jest.config.js"
-  ],
-  "exclude": [
-    "dist",
-    ".next"
-  ]
+  "include": ["./**/*", "./**/*.json", "../jest.config.js"],
+  "exclude": ["dist", ".next"]
 }
