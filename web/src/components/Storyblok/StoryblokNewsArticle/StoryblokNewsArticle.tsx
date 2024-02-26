@@ -1,4 +1,5 @@
 import { StoryblokComponent } from "@storyblok/react";
+import { debounce } from "lodash";
 import React, { useEffect, useRef } from "react";
 
 import { Breadcrumbs, Breadcrumb } from "@nice-digital/nds-breadcrumbs";
@@ -29,7 +30,7 @@ export const StoryblokNewsArticle = ({
 	const articleRef = useRef<HTMLDivElement>(null);
 
 	useEffect(() => {
-		const handleResize = () => {
+		const handleResize = debounce(() => {
 			// set the offset for the featured image
 			if (articleRef.current && imageRef.current) {
 				articleRef.current.style.setProperty(
@@ -37,7 +38,7 @@ export const StoryblokNewsArticle = ({
 					`${Math.floor(imageRef.current.height / 1.75)}px`
 				);
 			}
-		};
+		}, 250);
 
 		window.addEventListener("resize", handleResize);
 
@@ -47,6 +48,7 @@ export const StoryblokNewsArticle = ({
 		// clear the event listener when the component is unmounted
 		return () => {
 			window.removeEventListener("resize", handleResize);
+			handleResize.cancel();
 		};
 	}, []);
 

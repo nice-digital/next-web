@@ -1,4 +1,4 @@
-import { StoryblokComponent } from "@storyblok/react";
+import { debounce } from "lodash";
 import React, { useEffect, useRef } from "react";
 import { StoryblokStory } from "storyblok-generate-ts";
 import { StoryblokRichtext } from "storyblok-rich-text-react-renderer";
@@ -36,7 +36,7 @@ export const StoryblokBlogPost = ({
 	const articleRef = useRef<HTMLDivElement>(null);
 
 	useEffect(() => {
-		const handleResize = () => {
+		const handleResize = debounce(() => {
 			// set the offset for the featured image
 			if (articleRef.current && imageRef.current) {
 				articleRef.current.style.setProperty(
@@ -44,7 +44,7 @@ export const StoryblokBlogPost = ({
 					`${Math.floor(imageRef.current.height / 1.75)}px`
 				);
 			}
-		};
+		}, 250);
 
 		window.addEventListener("resize", handleResize);
 
@@ -54,6 +54,7 @@ export const StoryblokBlogPost = ({
 		// clear the event listener when the component is unmounted
 		return () => {
 			window.removeEventListener("resize", handleResize);
+			handleResize.cancel();
 		};
 	});
 
