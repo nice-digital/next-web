@@ -70,12 +70,15 @@ export async function getServerSideProps(context: GetServerSidePropsContext) {
 		latestNewsParams.excluding_ids = featuredStory.id.toString();
 	}
 
-	const latestNews = await fetchStories("published", latestNewsParams);
+	const latestNews = await fetchStories<NewsStory>(
+		"published",
+		latestNewsParams
+	);
 
 	const result = {
 		props: {
 			...storyResult,
-			latestNews,
+			latestNews: latestNews.stories,
 		},
 	};
 	return result;

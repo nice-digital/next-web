@@ -24,9 +24,7 @@ exports[`Featured story component should match snapshot 1`] = `
       <p>
         Test intro text
       </p>
-      <footer
-        class="footer"
-      >
+      <footer>
         <span
           class="tag tag--outline"
           data-component="tag"

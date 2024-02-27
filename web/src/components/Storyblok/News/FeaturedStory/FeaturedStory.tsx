@@ -1,4 +1,5 @@
 import Link from "next/link";
+import { StoryblokStory } from "storyblok-generate-ts";
 
 import { Tag } from "@nice-digital/nds-tag";
 
@@ -8,7 +9,7 @@ import { friendlyDate } from "@/utils/storyblok";
 import styles from "./FeaturedStory.module.scss";
 
 interface FeaturedStoryProps {
-	story: NewsStory;
+	story: StoryblokStory<NewsStory>;
 	headingLevel?: number;
 }
 
@@ -31,7 +32,7 @@ export const FeaturedStory: React.FC<FeaturedStoryProps> = ({
 					<Link href={`/${story.full_slug}`}>{story.name}</Link>
 				</HeadingElement>
 				<p>{story.content.introText}</p>
-				<footer className={styles.footer}>
+				<footer>
 					<Tag outline>{storyType}</Tag>
 					<span className={styles.date}>
 						{friendlyDate(story.content.date)}
