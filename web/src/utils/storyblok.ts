@@ -159,7 +159,6 @@ export const fetchStories = async <T>(
 		result.stories = response.data.stories;
 		result.perPage = response.perPage;
 		result.total = response.total;
-		return result;
 	} catch (e) {
 		const errorResponse = JSON.parse(e as string) as ISbError;
 		result.error = errorResponse.message?.message;
@@ -173,6 +172,8 @@ export const fetchStories = async <T>(
 			`${errorResponse.status} error from Storyblok API: ${errorResponse.message}`
 		);
 	}
+
+	return result;
 };
 
 // Fetch an array of links from the links endpoint
