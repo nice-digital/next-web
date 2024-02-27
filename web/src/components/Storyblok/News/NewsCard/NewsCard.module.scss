@@ -16,11 +16,7 @@
     padding-bottom: utils.rem(spacing.$large);
 
     .heading {
-      @include typography.font-size(1);
        margin-top: 0;
-       text-decoration: none;
-       font-weight: bold;
-
 
       & a {
         &:link,
@@ -37,7 +33,7 @@
     .imageContainer {
       min-width: 300px;
       flex: 0 0 auto;
-      margin-right: utils.rem(spacing.$medium)
+      margin-right: utils.rem(spacing.$large)
     }
   }
 }

@@ -9,7 +9,7 @@ import { friendlyDate } from "@/utils/storyblok";
 import styles from "./NewsCard.module.scss";
 
 interface NewsCardProps {
-	story: NewsStory;
+	story: StoryblokStory<NewsStory>;
 	headingLevel?: number;
 	variant?: "default" | "isListItem";
 }
