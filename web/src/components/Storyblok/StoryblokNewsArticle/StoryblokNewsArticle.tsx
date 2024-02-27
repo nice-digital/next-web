@@ -9,7 +9,7 @@ import { Panel } from "@nice-digital/nds-panel";
 
 import { NewsLetterSignup } from "@/components/NewsLetterSignUp/NewsLetterSignup";
 import { type Breadcrumb as TypeBreadcrumb } from "@/types/Breadcrumb";
-import { SBNewsArticle } from "@/types/SBNews";
+import { type NewsArticleStoryblok } from "@/types/storyblok";
 
 import { NewsPageHeaderFooter } from "../NewsPageHeader/NewsPageHeaderFooter/NewsPageHeaderFooter";
 import { StoryblokImage } from "../StoryblokImage/StoryblokImage";
@@ -18,7 +18,7 @@ import { StoryblokRichText } from "../StoryblokRichText/StoryblokRichText";
 import styles from "./StoryblokNewsArticle.module.scss";
 
 export interface StoryblokNewsArticleProps {
-	blok: SBNewsArticle;
+	blok: NewsArticleStoryblok;
 	breadcrumbs?: TypeBreadcrumb[];
 }
 
