@@ -58,12 +58,22 @@ describe("StoryblokBlogPost", () => {
 	});
 
 	//TODO: mob help: mock the author component?
-	xit("renders the author", () => {
+	it("renders the author name", () => {
 		const author = mockBlogPost.content
 			.author[0] as StoryblokStory<AuthorStoryblok>;
-		console.log(author.content);
+
 		render(<StoryblokBlogPost {...mockProps} />);
-		expect(screen.getByText("Author Name")).toBeInTheDocument();
-		expect(screen.getByText("Author Role")).toBeInTheDocument();
+		expect(screen.getByText(author.content.name)).toBeInTheDocument();
+	});
+
+	it("renders the author jobTitle", () => {
+		const author = mockBlogPost.content
+			.author[0] as StoryblokStory<AuthorStoryblok>;
+
+		render(<StoryblokBlogPost {...mockProps} />);
+
+		if (author.content.jobTitle) {
+			expect(screen.getByText(author.content.jobTitle)).toBeInTheDocument();
+		}
 	});
 });
