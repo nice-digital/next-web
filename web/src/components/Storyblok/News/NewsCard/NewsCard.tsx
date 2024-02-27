@@ -1,12 +1,15 @@
+import { StoryblokStory } from "storyblok-generate-ts";
+
 import { Tag } from "@nice-digital/nds-tag";
 
 import { Link } from "@/components/Link/Link";
 import { NewsStory } from "@/types/News";
+import { friendlyDate } from "@/utils/storyblok";
 
 import styles from "./NewsCard.module.scss";
 
 interface NewsCardProps {
-	story: NewsStory;
+	story: StoryblokStory<NewsStory>;
 	headingLevel?: number;
 }
 
@@ -37,15 +40,16 @@ export const NewsCard: React.FC<NewsCardProps> = ({
 				style={{ backgroundImage: `url(${content.image.filename})` }}
 				aria-hidden="true"
 			>
-				{/* TODO refactor NDS Tag component so that it can accept additional classNames, otherwise we have to nest as below */}
-				<span className={styles.storyType}>
-					<Tag outline>{storyType}</Tag>
-				</span>
+				{" "}
 			</Link>
 			<HeadingElement className={styles.heading}>
 				<Link href={full_slug}>{name}</Link>
 			</HeadingElement>
 			<p>{content.introText}</p>
+			<footer>
+				<Tag outline>{storyType}</Tag>
+				<span className={styles.date}>{friendlyDate(story.content.date)}</span>
+			</footer>
 		</article>
 	);
 };
