@@ -2,28 +2,34 @@
 @use '@nice-digital/nds-core/scss/spacing';
 @use '@nice-digital/nds-core/scss/utils';
 
-.newsGrid {
+.newsList {
     list-style: none;
     margin: 0;
     max-width: none;
-
-    li {
-        margin-bottom: utils.rem(spacing.$large);
-        display: flex; /* Ensures content and thumbnail are aligned */
-    }
-
-    .thumbnail {
-        flex: 0 0 auto; /* Ensures the thumbnail doesn't grow */
-        margin-right: utils.rem(spacing.$medium); /* Adds spacing between thumbnail and content */
-    }
-
-    img {
-        width: 100px; /* Adjust as needed */
-        height: auto;
-        float: left; /* Float the thumbnail to the left */
-    }
-
-    .content {
-        flex: 1; /* Allows the content to grow to fill remaining space */
-    }
 }
+
+
+// @use '@nice-digital/nds-core/scss/media-queries';
+// @use '@nice-digital/nds-core/scss/spacing';
+// @use '@nice-digital/nds-core/scss/utils';
+
+// .newsGrid {
+//   list-style: none;
+//   margin: 0;
+//   max-width: none;
+
+//   @include media-queries.mq($from: md) {
+//     display: flex;
+//   }
+
+//   li {
+//     @include media-queries.mq($from: md) {
+//       flex: 0 1 33%;
+//       margin-right: utils.rem(spacing.$large);
+
+//       &:last-child {
+//         margin-right: 0;
+//       }
+//     }
+//   }
+// }

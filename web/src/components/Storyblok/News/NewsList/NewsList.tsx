@@ -8,13 +8,11 @@ interface NewsListProps {
 }
 
 export const NewsList: React.FC<NewsListProps> = ({ news }: NewsListProps) => (
-	<ul className={styles.NewsList}>
-		{/* className={`${styles.newsCard} ${isListItem ? styles.listItem : ''}` */}
-
+	<ul className={styles.newsList}>
 		{news.map((story) => {
 			return (
 				<li className={styles.newsItem} key={story.id}>
-					<NewsCard story={story} />
+					<NewsCard story={story} variant="isListItem"/>
 				</li>
 			);
 		})}

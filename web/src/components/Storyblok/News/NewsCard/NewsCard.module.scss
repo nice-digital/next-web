@@ -1,9 +1,45 @@
 @use '@nice-digital/nds-core/scss/spacing';
-@use '@nice-digital/nds-core/scss/utils';
 @use '@nice-digital/nds-core/scss/typography';
+@use '@nice-digital/nds-core/scss/utils';
+@use "~/styles/colours";
+
 
 .newsCard {
   margin-bottom: utils.rem(spacing.$large);
+
+  &.listItem {
+
+    align-items: flex-start;
+    border-bottom: 2px solid colours.$newslist-border;
+    display: flex;
+    flex-direction: row;
+    padding-bottom: utils.rem(spacing.$large);
+
+    .heading {
+      @include typography.font-size(1);
+       margin-top: 0;
+       text-decoration: none;
+       font-weight: bold;
+
+
+      & a {
+        &:link,
+        &:visited,
+        &:hover,
+        &:active,
+        &:focus {
+          @include typography.links-default;
+          text-decoration: none;
+        }
+      }
+    }
+
+    .imageContainer {
+      min-width: 300px;
+      flex: 0 0 auto;
+      margin-right: utils.rem(spacing.$medium)
+    }
+  }
 }
 
 .imageContainer {
@@ -21,3 +57,5 @@
 .date {
   margin-left: utils.rem(spacing.$medium);
 }
+
+
