@@ -1,0 +1,42 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Promo box component should match snapshot 1`] = `
+<div>
+  <div
+    class="promoBox"
+  >
+    <div
+      class="container"
+    >
+      <div
+        class="grid"
+      >
+        <div
+          class="contentContainer"
+          data-component="grid-item"
+          data-g="12 sm:7"
+        >
+          <h2
+            class="heading"
+          >
+            Mock promo box title
+          </h2>
+          <div
+            class="storyblokRichTextWrapper"
+            data-testid="storyblok-rich-text"
+          />
+        </div>
+        <div
+          class="mediaContainer"
+          data-component="grid-item"
+          data-g="12 sm:5"
+        >
+          <img
+            src="undefined/m/"
+          />
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+`;

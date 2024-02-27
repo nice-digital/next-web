@@ -1,0 +1,31 @@
+@use "~/styles/colours";
+@use '@nice-digital/nds-core/scss/layout';
+@use '@nice-digital/nds-core/scss/media-queries';
+@use '@nice-digital/nds-core/scss/spacing';
+@use '@nice-digital/nds-core/scss/utils';
+
+.promoBox {
+  @include layout.fullWidth();
+  background: colours.$promo-box-background;
+  padding: utils.rem(spacing.$xx-large) 0;
+}
+
+.container {
+  @include layout.fullWidthContainer();
+
+  @include media-queries.mq($from: md) {
+    display: flex;
+  }
+}
+
+.heading {
+  margin-top: 0;
+}
+
+.contentContainer {
+  margin-bottom:utils.rem(spacing.$large) ;
+
+  @include media-queries.mq($from: md) {
+    margin-bottom: 0;
+  }
+}
