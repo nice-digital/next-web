@@ -1,47 +1,20 @@
 // FILEPATH: /c:/Users/DHudson/Development/next-web/web/src/components/Storyblok/StoryblokBlogPost/StoryblokBlogPost.test.tsx
 
 import { render, screen } from "@testing-library/react";
+import { StoryblokStory } from "storyblok-generate-ts";
 
-import { StoryblokBlogPost, StoryblokBlogPostProps } from "./StoryblokBlogPost";
+import { mockBlogPost } from "@/test-utils/storyblok-data";
+import { AuthorStoryblok } from "@/types/storyblok";
+
+import {
+	StoryblokBlogPost,
+	type StoryblokBlogPostProps,
+} from "./StoryblokBlogPost";
 
 describe("StoryblokBlogPost", () => {
+	const { content } = mockBlogPost;
 	const mockProps: StoryblokBlogPostProps = {
-		blok: {
-			title: "Test post title",
-			introText: "Post summary",
-			date: "2024-01-31",
-			author: [
-				{
-					component: "author",
-					name: "Author Name",
-					role: "Author Role",
-					uid: "123",
-				},
-			],
-			content: {
-				type: "doc",
-				content: [
-					{
-						type: "paragraph",
-						content: [
-							{
-								text: "This is a mock blog post paragraph",
-								type: "text",
-							},
-						],
-					},
-				],
-			},
-			image: {
-				id: 123,
-				name: "Image",
-				filename: "image.jpg",
-				alt: "Image alt text",
-			},
-			_uid: "123",
-
-			component: "blogPost",
-		},
+		blok: { ...content },
 		breadcrumbs: [
 			{
 				title: "News",
@@ -56,17 +29,18 @@ describe("StoryblokBlogPost", () => {
 
 	it("renders the title", () => {
 		render(<StoryblokBlogPost {...mockProps} />);
-		expect(screen.getByText("Test post title")).toBeInTheDocument();
+		expect(screen.getByText(mockProps.blok.title)).toBeInTheDocument();
 	});
 
 	it("renders the intro text", () => {
 		render(<StoryblokBlogPost {...mockProps} />);
-		expect(screen.getByText("Post summary")).toBeInTheDocument();
+		expect(screen.getByText(mockProps.blok.introText)).toBeInTheDocument();
 	});
 
 	it("renders the image", () => {
 		render(<StoryblokBlogPost {...mockProps} />);
-		expect(screen.getByAltText("Image alt text")).toBeInTheDocument();
+
+		expect(screen.getByAltText("A kitty cat")).toBeInTheDocument();
 	});
 
 	it("renders the content", () => {
@@ -85,6 +59,9 @@ describe("StoryblokBlogPost", () => {
 
 	//TODO: mob help: mock the author component?
 	xit("renders the author", () => {
+		const author = mockBlogPost.content
+			.author[0] as StoryblokStory<AuthorStoryblok>;
+		console.log(author.content);
 		render(<StoryblokBlogPost {...mockProps} />);
 		expect(screen.getByText("Author Name")).toBeInTheDocument();
 		expect(screen.getByText("Author Role")).toBeInTheDocument();
