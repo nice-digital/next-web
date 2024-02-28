@@ -9,7 +9,7 @@ import {
 	type NewsArticleStoryblok,
 } from "@/types/storyblok";
 
-const mockStoryblokStory = {
+export const mockStoryblokStory = {
 	id: 123456789,
 	uuid: "abc123",
 	name: "Title of the story",

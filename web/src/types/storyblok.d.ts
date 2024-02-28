@@ -102,6 +102,15 @@ export interface BlogPostStoryblok {
   [k: string]: any;
 }
 
+export interface ButtonLinkStoryblok {
+  text: string;
+  link: Exclude<MultilinkStoryblok, {linktype?: "email"} | {linktype?: "asset"}>;
+  variant: "" | "primary" | "secondary" | "cta";
+  _uid: string;
+  component: "buttonLink";
+  [k: string]: any;
+}
+
 export interface CardStoryblok {
   heading: string;
   body: string;
@@ -132,6 +141,7 @@ export interface GridStoryblok {
     | ActionBannerStoryblok
     | AuthorStoryblok
     | BlogPostStoryblok
+    | ButtonLinkStoryblok
     | CardStoryblok
     | CardGridStoryblok
     | CategoryNavigationStoryblok
@@ -275,6 +285,8 @@ export interface TableStoryblok {
 }
 
 export interface NestedTableStoryblok {
+  title?: string;
+  summary?: string;
   table?: TableStoryblok;
   _uid: string;
   component: "nestedTable";
@@ -299,6 +311,7 @@ export interface PageStoryblok {
     | ActionBannerStoryblok
     | AuthorStoryblok
     | BlogPostStoryblok
+    | ButtonLinkStoryblok
     | CardStoryblok
     | CardGridStoryblok
     | CategoryNavigationStoryblok
@@ -336,7 +349,7 @@ export interface PageHeaderStoryblok {
   summary?: string;
   description?: string;
   ctaText?: string;
-  ctaLink?: Exclude<MultilinkStoryblok, {linktype?: "email"} | {linktype?: "asset"}>;
+  ctaLink?: MultilinkStoryblok;
   _uid: string;
   component: "pageHeader";
   [k: string]: any;
@@ -345,8 +358,7 @@ export interface PageHeaderStoryblok {
 export interface PromoBoxStoryblok {
   heading: string;
   body?: RichtextStoryblok;
-  ctaText?: string;
-  ctaLink?: Exclude<MultilinkStoryblok, {linktype?: "email"} | {linktype?: "asset"}>;
+  cta?: ButtonLinkStoryblok[];
   useVideo?: boolean;
   image?: AssetStoryblok;
   youtubeEmbed?: YoutubeEmbedStoryblok[];
