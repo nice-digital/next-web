@@ -6,6 +6,7 @@ import { Button } from "@nice-digital/nds-button";
 
 import { FeaturedStory } from "@/components/Storyblok/News/FeaturedStory/FeaturedStory";
 import { NewsList } from "@/components/Storyblok/News/NewsList/NewsList";
+import { NewsListNav } from "@/components/Storyblok/NewsListNav/NewsListNav";
 import { NewsListPagination } from "@/components/Storyblok/NewsListPagination/NewsListPagination";
 import { logger } from "@/logger";
 import { NewsStory } from "@/types/News";
@@ -21,6 +22,14 @@ type NewsArticlesProps = {
 	resultsPerPage: number;
 };
 
+const destinations = [
+	{ url: "/news/news", title: "News" },
+	{ url: "/news/articles", title: "News Articles" },
+	{ url: "/news/in-depth", title: "In-depth" },
+	{ url: "/news/blogs", title: "Blogs" },
+	{ url: "/news/podcasts", title: "Podcasts" },
+];
+
 export const ArticlesIndexPage = ({
 	stories,
 	currentPage,
@@ -31,6 +40,7 @@ export const ArticlesIndexPage = ({
 	return (
 		<>
 			<h1>Articles Index Page</h1>
+			<NewsListNav destinations={destinations} />
 			<FeaturedStory story={featuredStory} />
 			<NewsList news={stories} />
 			<ActionBanner
