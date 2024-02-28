@@ -26,7 +26,7 @@ type NewsArticlesProps = {
 };
 
 const destinations = [
-	{ url: "/news/news", title: "News" },
+	{ url: "/news/", title: "News" },
 	{ url: "/news/articles", title: "News articles" },
 	{ url: "/news/in-depth", title: "In-depth" },
 	{ url: "/news/blogs", title: "Blogs" },

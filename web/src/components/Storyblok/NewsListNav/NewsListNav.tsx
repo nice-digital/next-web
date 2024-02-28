@@ -25,7 +25,7 @@ export const NewsListNav = ({
 
 	const getActiveLink = useCallback(
 		(pathname: string): Destination | undefined => {
-			return destinations.find((link) => pathname.startsWith(link.url));
+			return destinations.find((link) => pathname === link.url);
 		},
 		[destinations]
 	);
