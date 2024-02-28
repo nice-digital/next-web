@@ -1,4 +1,5 @@
-import React from "react";
+import { NextSeo } from "next-seo";
+import React, { useMemo } from "react";
 import { StoryblokStory } from "storyblok-generate-ts";
 
 import { ActionBanner } from "@nice-digital/nds-action-banner";
@@ -39,6 +40,10 @@ export const ArticlesIndexPage = ({
 }: NewsArticlesProps): React.ReactElement => {
 	return (
 		<>
+			<NextSeo
+				title="News Articles"
+				openGraph={{ title: "News Articles" }}
+			></NextSeo>
 			<h1>Articles Index Page</h1>
 			<NewsListNav destinations={destinations} />
 			<FeaturedStory story={featuredStory} />
