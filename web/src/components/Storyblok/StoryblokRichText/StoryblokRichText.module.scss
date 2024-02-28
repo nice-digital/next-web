@@ -1,7 +1,6 @@
 @use '@nice-digital/nds-core/scss/spacing';
 @use '@nice-digital/nds-core/scss/utils';
-// @value youtubeWrapper from '../StoryblokYoutubeEmbed/StoryblokYoutubeEmbed.module.scss'
-// import '../StoryblokYoutubeEmbed/StoryblokYoutubeEmbed.module.scss'
+
 
 .storyblokRichTextWrapper {
 
@@ -33,6 +32,10 @@
     &:last-child {
       margin: utils.rem(spacing.$large) 0 0;
     }
+  }
+
+  & :last-child {
+    margin-bottom: 0;
   }
 
 }

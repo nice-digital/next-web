@@ -14,6 +14,10 @@
     }
   }
 
+  :global(.page-header) {
+    margin-bottom: utils.rem(spacing.$large);
+  }
+
   //TODO: move to  news page header component
   :global(.page-header__heading) {
     margin: 0 0 utils.rem(spacing.$large) 0;
@@ -43,6 +47,23 @@
 
     @include media-queries.mq($from: sm, $until: md) {
       aspect-ratio: 21 / 9;
+    }
+  }
+
+  .articleSidebar {
+    margin: utils.rem(spacing.$large) 0 0;
+
+    @include media-queries.mq($from: md) {
+      margin: 0 0 utils.rem(spacing.$large);
+    }
+
+    //override child panel margins
+    & > * + * {
+      margin: 2rem 0 0;
+    }
+
+    & > :last-child {
+      margin-bottom: 0;
     }
   }
 
