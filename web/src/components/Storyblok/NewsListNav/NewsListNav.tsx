@@ -34,7 +34,6 @@ export const NewsListNav = ({
 	useEffect(() => {
 		setActiveLink(getActiveLink(router.pathname));
 		const handleRouteChange = (url: string) => {
-			console.log("handling route change!!!!!!!!!!!!!!!");
 			setActiveLink(getActiveLink(url));
 		};
 
