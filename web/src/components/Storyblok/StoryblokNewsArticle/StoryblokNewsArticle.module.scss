@@ -3,7 +3,7 @@
 @use '@nice-digital/nds-core/scss/utils';
 
 
-.article  {
+.newsSectionArticle  {
   // set up variables for the offset of the featured image across breakpoints
   --featuredImageOffset: 16dvh;
 
@@ -37,7 +37,7 @@
     display: block;
     height: auto;
     margin-top: calc(calc(var(--featuredImageOffset) * -1) - 1rem);
-    margin-bottom: utils.rem(spacing.$x-large);
+    margin-bottom: utils.rem(spacing.$large);
     object-fit: cover;
     width: 100%;
   }
