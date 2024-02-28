@@ -40,6 +40,10 @@
     margin-bottom: utils.rem(spacing.$large);
     object-fit: cover;
     width: 100%;
+
+    @include media-queries.mq($from: sm, $until: md) {
+      aspect-ratio: 21 / 9;
+    }
   }
 
   hr {

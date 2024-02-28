@@ -23,11 +23,16 @@
     margin-bottom: utils.rem(spacing.$large);
     object-fit: cover;
     width: 100%;
+
+    @include media-queries.mq($from: sm, $until: md) {
+      aspect-ratio: 21 / 9;
+    }
   }
 
-  :global(.page-header) {
-    margin-bottom: utils.rem(spacing.$large);
-  }
+  // :global(.page-header) {
+  //   margin-bottom: utils.rem(spacing.$large);
+  // }
+
   //TODO: all news and blog header related. Move to NewsPageHeader
   :global(.page-header__heading) {
     margin: 0 0 utils.rem(spacing.$large) 0;
