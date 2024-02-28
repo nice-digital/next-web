@@ -9,6 +9,48 @@ export interface RichtextStoryblok {
   [k: string]: any;
 }
 
+export interface AssetStoryblok {
+  alt?: string;
+  copyright?: string;
+  id: number;
+  filename: string;
+  name: string;
+  title?: string;
+  focus?: string;
+  [k: string]: any;
+}
+
+export interface ActionBannerStoryblok {
+  heading: string;
+  body?: RichtextStoryblok;
+  cta: ButtonLinkStoryblok[];
+  image: AssetStoryblok;
+  _uid: string;
+  component: "actionBanner";
+  [k: string]: any;
+}
+
+export interface AuthorStoryblok {
+  name: string;
+  jobTitle?: string;
+  image?: AssetStoryblok;
+  _uid: string;
+  component: "author";
+  [k: string]: any;
+}
+
+export interface BlogPostStoryblok {
+  title: string;
+  date: string;
+  introText: string;
+  content: RichtextStoryblok;
+  author: (StoryblokStory<AuthorStoryblok> | string)[];
+  image: AssetStoryblok;
+  _uid: string;
+  component: "blogPost";
+  [k: string]: any;
+}
+
 export type MultilinkStoryblok =
   | {
       id?: string;
@@ -59,53 +101,10 @@ export type MultilinkStoryblok =
       [k: string]: any;
     };
 
-export interface AssetStoryblok {
-  alt?: string;
-  copyright?: string;
-  id: number;
-  filename: string;
-  name: string;
-  title?: string;
-  focus?: string;
-  [k: string]: any;
-}
-
-export interface ActionBannerStoryblok {
-  heading: string;
-  body?: RichtextStoryblok;
-  ctaText?: string;
-  ctaLink?: Exclude<MultilinkStoryblok, {linktype?: "email"} | {linktype?: "asset"}>;
-  image: AssetStoryblok;
-  _uid: string;
-  component: "actionBanner";
-  [k: string]: any;
-}
-
-export interface AuthorStoryblok {
-  name: string;
-  jobTitle?: string;
-  image?: AssetStoryblok;
-  _uid: string;
-  component: "author";
-  [k: string]: any;
-}
-
-export interface BlogPostStoryblok {
-  title: string;
-  date: string;
-  introText: string;
-  content: RichtextStoryblok;
-  author: (StoryblokStory<AuthorStoryblok> | string)[];
-  image: AssetStoryblok;
-  _uid: string;
-  component: "blogPost";
-  [k: string]: any;
-}
-
 export interface ButtonLinkStoryblok {
   text: string;
   link: Exclude<MultilinkStoryblok, {linktype?: "email"} | {linktype?: "asset"}>;
-  variant: "" | "primary" | "secondary" | "cta";
+  variant: "" | "primary" | "secondary" | "cta" | "inverse";
   _uid: string;
   component: "buttonLink";
   [k: string]: any;
