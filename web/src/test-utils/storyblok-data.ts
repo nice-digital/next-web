@@ -3,7 +3,8 @@
 import { type StoryblokStory } from "storyblok-generate-ts";
 
 import {
-	AuthorStoryblok,
+	type AuthorStoryblok,
+	type RichtextStoryblok,
 	type BlogPostStoryblok,
 	type NewsArticleStoryblok,
 } from "@/types/storyblok";
@@ -55,6 +56,112 @@ export const mockAuthorBlok: StoryblokStory<AuthorStoryblok> = {
 	},
 };
 
+export const mockRichText: RichtextStoryblok = {
+	type: "doc",
+	content: [
+		{
+			type: "heading",
+			attrs: {
+				level: 2,
+			},
+			content: [
+				{
+					text: "A mock h2 heading in a rich text field",
+					type: "text",
+				},
+			],
+		},
+		{
+			type: "heading",
+			attrs: {
+				level: 3,
+			},
+			content: [
+				{
+					text: "A mock h3 heading",
+					type: "text",
+				},
+			],
+		},
+		{
+			type: "heading",
+			attrs: {
+				level: 4,
+			},
+			content: [
+				{
+					text: "A mock h4 heading",
+					type: "text",
+				},
+			],
+		},
+		{
+			type: "heading",
+			attrs: {
+				level: 5,
+			},
+			content: [
+				{
+					text: "A mock h5 heading",
+					type: "text",
+				},
+			],
+		},
+		{
+			type: "heading",
+			attrs: {
+				level: 6,
+			},
+			content: [
+				{
+					text: "A mock h6 heading",
+					type: "text",
+				},
+			],
+		},
+		{
+			type: "paragraph",
+			content: [
+				{
+					type: "text",
+					text: "Example text content.",
+				},
+			],
+		},
+		{
+			type: "paragraph",
+			content: [
+				{
+					type: "image",
+					attrs: {
+						id: "13894387",
+						alt: "Kitten wearing mittens",
+						src: "https://placekitten.com/200/286",
+						title: "",
+						source: "",
+						copyright: "",
+						meta_data: {},
+					},
+				},
+			],
+		},
+		{
+			type: "blockquote",
+			content: [
+				{
+					type: "paragraph",
+					content: [
+						{
+							text: "A inline quote in the rich text field of a news article. ",
+							type: "text",
+						},
+					],
+				},
+			],
+		},
+	],
+};
+
 export const mockNewsArticle: StoryblokStory<NewsArticleStoryblok> = {
 	...mockStoryblokStory,
 	name: "Test news article title",
@@ -71,20 +178,7 @@ export const mockNewsArticle: StoryblokStory<NewsArticleStoryblok> = {
 		},
 		_uid: "abc123",
 		component: "newsArticle",
-		content: {
-			type: "doc",
-			content: [
-				{
-					type: "paragraph",
-					content: [
-						{
-							text: "This is a mock news article paragraph",
-							type: "text",
-						},
-					],
-				},
-			],
-		},
+		content: { ...mockRichText },
 		resources: [
 			{
 				_uid: "8f019cf9-3743-4126-94cb-092898b43636",
@@ -138,19 +232,6 @@ export const mockBlogPost: StoryblokStory<BlogPostStoryblok> = {
 		},
 		_uid: "def456",
 		component: "blogPost",
-		content: {
-			type: "doc",
-			content: [
-				{
-					type: "paragraph",
-					content: [
-						{
-							text: "This is a mock blog post paragraph",
-							type: "text",
-						},
-					],
-				},
-			],
-		},
+		content: { ...mockRichText },
 	},
 };

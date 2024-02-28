@@ -46,13 +46,12 @@ describe("NewsArticle", () => {
 			screen.getByText(mockNewsArticle.content.introText)
 		).toBeInTheDocument();
 		expect(
-			screen.getByText("This is a mock news article paragraph")
+			screen.getByText("A mock h2 heading in a rich text field")
 		).toBeInTheDocument();
 	});
 
 	it("renders the news article with an image", () => {
 		render(<StoryblokNewsArticle blok={newsArticleProps.blok} />);
-		expect(screen.getByRole("img")).toBeInTheDocument();
 		expect(screen.getByAltText("Kitten mittens")).toBeInTheDocument();
 	});
 

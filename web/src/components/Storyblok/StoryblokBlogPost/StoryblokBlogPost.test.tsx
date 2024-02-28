@@ -46,7 +46,7 @@ describe("StoryblokBlogPost", () => {
 	it("renders the content", () => {
 		render(<StoryblokBlogPost {...mockProps} />);
 		expect(
-			screen.getByText("This is a mock blog post paragraph")
+			screen.getByText("A mock h2 heading in a rich text field")
 		).toBeInTheDocument();
 	});
 
