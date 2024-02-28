@@ -1,1 +1,3 @@
-export const Spotlight: React.FC = () => <p>SPOTLIGHT!</p>;
+export const Spotlight: React.FC = () => (
+	<p>TO DO: Implement Spotlight component</p>
+);
