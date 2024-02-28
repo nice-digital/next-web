@@ -1,0 +1,51 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`NewsListNav renders correctly 1`] = `
+<DocumentFragment>
+  <nav
+    aria-label="News section navigation"
+    class="horizontal-nav"
+  >
+    <ul
+      class="horizontal-nav__list"
+    >
+      <li
+        class="horizontal-nav__item"
+        data-component="horizontal-nav"
+      >
+        <a
+          aria-current="true"
+          class="horizontal-nav__link"
+          href="/news"
+        >
+          News
+        </a>
+      </li>
+      <li
+        class="horizontal-nav__item"
+        data-component="horizontal-nav"
+      >
+        <a
+          aria-current="false"
+          class="horizontal-nav__link"
+          href="/blog"
+        >
+          Blog
+        </a>
+      </li>
+      <li
+        class="horizontal-nav__item"
+        data-component="horizontal-nav"
+      >
+        <a
+          aria-current="false"
+          class="horizontal-nav__link"
+          href="/events"
+        >
+          Events
+        </a>
+      </li>
+    </ul>
+  </nav>
+</DocumentFragment>
+`;

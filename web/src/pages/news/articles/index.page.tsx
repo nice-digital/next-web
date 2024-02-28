@@ -27,7 +27,7 @@ type NewsArticlesProps = {
 
 const destinations = [
 	{ url: "/news/news", title: "News" },
-	{ url: "/news/articles", title: "News Articles" },
+	{ url: "/news/articles", title: "News articles" },
 	{ url: "/news/in-depth", title: "In-depth" },
 	{ url: "/news/blogs", title: "Blogs" },
 	{ url: "/news/podcasts", title: "Podcasts" },
@@ -62,7 +62,7 @@ export const ArticlesIndexPage = ({
 			<NewsList news={stories} />
 			<ActionBanner
 				title="Sign up for our newsletters and alerts"
-				cta={<Button variant="cta">Sign up for newsletters and alerts</Button>}
+				cta={<Button variant="cta" to="/news/nice-newsletters-and-alerts">Sign up for newsletters and alerts</Button>}
 			>
 				Keeping you up to date with important developments at NICE
 			</ActionBanner>

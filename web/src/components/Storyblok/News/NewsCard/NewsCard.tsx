@@ -11,7 +11,7 @@ import styles from "./NewsCard.module.scss";
 interface NewsCardProps {
 	story: StoryblokStory<NewsStory>;
 	headingLevel?: number;
-	variant?: "default" | "isListItem";
+	variant?: "default" | "isNewsListItem";
 }
 
 export const NewsCard: React.FC<NewsCardProps> = ({
@@ -37,7 +37,7 @@ export const NewsCard: React.FC<NewsCardProps> = ({
 	return (
 		<article
 			className={`${styles.newsCard} ${
-				variant === "isListItem" ? styles.listItem : ""
+				variant === "isNewsListItem" ? styles.listItem : ""
 			}`}
 		>
 			<Link
