@@ -77,8 +77,9 @@ export const StoryblokBlogPost = ({
 	const authors = blok.author as StoryblokStory<AuthorStoryblok>[];
 
 	return (
-		<article className={styles.article} ref={articleRef}>
+		<article className={styles.newsSectionArticle} ref={articleRef}>
 			<Grid>
+				{/* page header */}
 				<GridItem cols={12}>
 					<PageHeader
 						variant="fullWidthLight"
@@ -111,7 +112,7 @@ export const StoryblokBlogPost = ({
 					)}
 					<StoryblokRichText content={blok.content} />
 				</GridItem>
-
+				{/* action banner signup */}
 				<GridItem cols={12}>
 					<NewsLetterSignup />
 				</GridItem>
