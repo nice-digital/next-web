@@ -29,10 +29,6 @@
     }
   }
 
-  // :global(.page-header) {
-  //   margin-bottom: utils.rem(spacing.$large);
-  // }
-
   //TODO: all news and blog header related. Move to NewsPageHeader
   :global(.page-header__heading) {
     margin: 0 0 utils.rem(spacing.$large) 0;
