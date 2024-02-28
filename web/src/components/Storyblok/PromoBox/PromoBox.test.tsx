@@ -1,3 +1,4 @@
+/* eslint-disable testing-library/no-node-access */
 import { render, screen } from "@testing-library/react";
 
 import { PromoBox, type PromoBoxProps } from "./PromoBox";
@@ -29,10 +30,11 @@ describe("Promo box component", () => {
 						text: "Press me",
 						link: {
 							url: "https://www.example.com/some-test-url",
+							linktype: "url",
 						},
 						variant: "primary",
 						_uid: "123456789",
-						component: "button",
+						component: "buttonLink",
 					},
 				],
 			},
@@ -46,9 +48,52 @@ describe("Promo box component", () => {
 		);
 	});
 
-	it.todo("should switch the side of the media if specified");
+	it("should switch the side of the media if specified", () => {
+		const box: PromoBoxProps = {
+			...mockPromoBox,
+			blok: {
+				...mockPromoBox.blok,
+				swapMediaSide: true,
+			},
+		};
 
-	it.todo("should render video if specified");
+		render(<PromoBox {...box} />);
+		expect(
+			screen.getByRole("heading", { name: mockPromoBox.blok.heading })
+				.parentElement
+		).toHaveAttribute("data-g", "12 sm:7 sm:push:5");
+	});
 
-	it.todo("should render a heading at the correct level if one is specified");
+	it("should render video if specified", () => {
+		const box: PromoBoxProps = {
+			...mockPromoBox,
+			blok: {
+				...mockPromoBox.blok,
+				useVideo: true,
+				youtubeEmbed: [
+					{
+						title: "Test Youtube title",
+						source: "wwSzpaTHyS8",
+						_uid: "123456",
+						component: "youtubeEmbed",
+					},
+				],
+			},
+		};
+
+		render(<PromoBox {...box} />);
+		expect(screen.getByRole("button")).toHaveClass("youtubePlayButton");
+	});
+
+	it("should render a heading at the correct level if one is specified", () => {
+		const box: PromoBoxProps = {
+			...mockPromoBox,
+			headingLevel: 5,
+		};
+
+		render(<PromoBox {...box} />);
+		expect(
+			screen.getByRole("heading", { level: 5, name: "Mock promo box title" })
+		).toBeInTheDocument();
+	});
 });

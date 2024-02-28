@@ -2,14 +2,14 @@
 
 exports[`Promo box component should match snapshot 1`] = `
 <div>
-  <div
+  <article
     class="promoBox"
   >
     <div
       class="container"
     >
       <div
-        class="grid"
+        class="grid grid--loose"
       >
         <div
           class="contentContainer"
@@ -31,12 +31,19 @@ exports[`Promo box component should match snapshot 1`] = `
           data-component="grid-item"
           data-g="12 sm:5"
         >
-          <img
-            src="undefined/m/"
-          />
+          <picture>
+            <source
+              srcset="/fallback-image.png/m/"
+              type="image/webp"
+            />
+            <img
+              data-testid="storyblok-image-fallback"
+              src="/fallback-image.png/"
+            />
+          </picture>
         </div>
       </div>
     </div>
-  </div>
+  </article>
 </div>
 `;

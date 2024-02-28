@@ -1,16 +1,16 @@
 import { Button, buttonVariants } from "@nice-digital/nds-button";
 
 import { Link } from "@/components/Link/Link";
-import { ButtonStoryblok, MultilinkStoryblok } from "@/types/storyblok";
+import { ButtonLinkStoryblok, MultilinkStoryblok } from "@/types/storyblok";
 import { resolveStoryblokLink } from "@/utils/storyblok";
 
-interface StoryblokButtonProps {
-	button: ButtonStoryblok;
+interface StoryblokButtonLinkProps {
+	button: ButtonLinkStoryblok;
 }
 
-export const StoryblokButton: React.FC<StoryblokButtonProps> = ({
+export const StoryblokButtonLink: React.FC<StoryblokButtonLinkProps> = ({
 	button,
-}: StoryblokButtonProps) => {
+}: StoryblokButtonLinkProps) => {
 	const { text, link, variant } = button;
 
 	// Resolve CTA & link

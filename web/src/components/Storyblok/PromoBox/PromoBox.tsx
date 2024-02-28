@@ -5,7 +5,8 @@ import {
 	type PullOrPush,
 } from "@nice-digital/nds-grid";
 
-import { StoryblokButton } from "@/components/Storyblok/StoryblokButton/StoryblokButton";
+import { StoryblokButtonLink } from "@/components/Storyblok/StoryblokButtonLink/StoryblokButtonLink";
+import { StoryblokImage } from "@/components/Storyblok/StoryblokImage/StoryblokImage";
 import { StoryblokRichText } from "@/components/Storyblok/StoryblokRichText/StoryblokRichText";
 import { StoryblokYoutubeEmbed } from "@/components/Storyblok/StoryblokYoutubeEmbed/StoryblokYoutubeEmbed";
 import {
@@ -42,8 +43,7 @@ export const PromoBox: React.FC<PromoBoxProps> = ({
 	};
 
 	return (
-		// TODO: This should be an article tag, but the styles are weird
-		<div className={styles.promoBox}>
+		<article className={styles.promoBox}>
 			<div className={styles.container}>
 				<Grid gutter="loose">
 					<GridItem
@@ -55,7 +55,7 @@ export const PromoBox: React.FC<PromoBoxProps> = ({
 							{heading}
 						</HeadingElement>
 						{body && <StoryblokRichText content={body} />}
-						{cta?.length && <StoryblokButton button={cta[0]} />}
+						{cta?.length && <StoryblokButtonLink button={cta[0]} />}
 					</GridItem>
 					<GridItem
 						cols={12}
@@ -67,11 +67,11 @@ export const PromoBox: React.FC<PromoBoxProps> = ({
 								blok={youtubeEmbed[0] as YoutubeEmbedStoryblok}
 							/>
 						) : (
-							<img src={`${image?.filename}/m/`} alt={image?.alt} />
+							<StoryblokImage src={image?.filename} alt={image?.alt} />
 						)}
 					</GridItem>
 				</Grid>
 			</div>
-		</div>
+		</article>
 	);
 };
