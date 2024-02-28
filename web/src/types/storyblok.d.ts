@@ -102,12 +102,12 @@ export interface BlogPostStoryblok {
   [k: string]: any;
 }
 
-export interface ButtonStoryblok {
+export interface ButtonLinkStoryblok {
   text: string;
   link: Exclude<MultilinkStoryblok, {linktype?: "email"} | {linktype?: "asset"}>;
   variant: "" | "primary" | "secondary" | "cta";
   _uid: string;
-  component: "button";
+  component: "buttonLink";
   [k: string]: any;
 }
 
@@ -141,7 +141,7 @@ export interface GridStoryblok {
     | ActionBannerStoryblok
     | AuthorStoryblok
     | BlogPostStoryblok
-    | ButtonStoryblok
+    | ButtonLinkStoryblok
     | CardStoryblok
     | CardGridStoryblok
     | CategoryNavigationStoryblok
@@ -311,7 +311,7 @@ export interface PageStoryblok {
     | ActionBannerStoryblok
     | AuthorStoryblok
     | BlogPostStoryblok
-    | ButtonStoryblok
+    | ButtonLinkStoryblok
     | CardStoryblok
     | CardGridStoryblok
     | CategoryNavigationStoryblok
@@ -358,7 +358,7 @@ export interface PageHeaderStoryblok {
 export interface PromoBoxStoryblok {
   heading: string;
   body?: RichtextStoryblok;
-  cta?: ButtonStoryblok[];
+  cta?: ButtonLinkStoryblok[];
   useVideo?: boolean;
   image?: AssetStoryblok;
   youtubeEmbed?: YoutubeEmbedStoryblok[];

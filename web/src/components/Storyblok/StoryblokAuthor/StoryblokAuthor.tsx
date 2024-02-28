@@ -8,6 +8,7 @@ import styles from "./StoryblokAuthor.module.scss";
 
 export interface StoryblokAuthorProps {
 	blok: AuthorStoryblok;
+	className?: string;
 }
 
 export const StoryblokAuthor = ({
