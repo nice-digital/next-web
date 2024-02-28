@@ -3,7 +3,7 @@
 @use '@nice-digital/nds-core/scss/utils';
 
 
-.article  {
+.newsSectionArticle  {
   // set up variables for the offset of the featured image across breakpoints
   --featuredImageOffset: 16dvh;
 
@@ -20,15 +20,14 @@
     display: block;
     height: auto;
     margin-top: calc(calc(var(--featuredImageOffset) * -1) - 1rem);
-    margin-bottom: utils.rem(spacing.$x-large);
+    margin-bottom: utils.rem(spacing.$large);
     object-fit: cover;
     width: 100%;
-  }
 
-  :global(.action-banner) {
-    margin: utils.rem(spacing.$xx-large) 0;
+    @include media-queries.mq($from: sm, $until: md) {
+      aspect-ratio: 21 / 9;
+    }
   }
-
 
   //TODO: all news and blog header related. Move to NewsPageHeader
   :global(.page-header__heading) {
@@ -46,6 +45,11 @@
   :global(.breadcrumbs) {
     margin-top: 0;
   }
+
+  :global(.action-banner) {
+    margin: utils.rem(spacing.$xx-large) 0;
+  }
+
 
 }
 

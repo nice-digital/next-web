@@ -1,3 +1,4 @@
+@use '@nice-digital/nds-core/scss/media-queries';
 @use '@nice-digital/nds-core/scss/spacing';
 @use '@nice-digital/nds-core/scss/typography';
 @use '@nice-digital/nds-core/scss/utils';
@@ -11,7 +12,7 @@
   margin-top: utils.rem(spacing.$medium);
 
   &:has(img) &__name {
-    margin-top: utils.rem(spacing.$large);
+    margin-top: utils.rem(spacing.$medium);
   }
 
   &__image {
@@ -20,7 +21,15 @@
     display: block;
     height: auto;
     object-fit: cover;
-    width: 136px;
+    width: 82px;
+
+    @include media-queries.mq($from: md) {
+      width: 100px;
+    }
+
+    @include media-queries.mq($from: lg) {
+      width: 136px;
+    }
   }
 
   &__name {
@@ -31,7 +40,7 @@
     @include typography.h5;
     font-weight: 400;
     margin: 0;
-    margin-top: utils.rem(spacing.$medium);
+    margin-top: utils.rem(spacing.$small);
   }
 
 }
