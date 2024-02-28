@@ -4,20 +4,6 @@ import { NextRouter, useRouter } from "next/router";
 
 import { NewsListNav } from "./NewsListNav";
 
-// jest.mock("next/router", () => ({
-// 	useRouter: () => ({
-// 		route: "/news",
-// 		pathname: "/news",
-// 		query: {},
-// 		asPath: "/news",
-// 		events: {
-// 			on: jest.fn(),
-// 			off: jest.fn(),
-// 		},
-// 		push: jest.fn(),
-// 	}),
-// }));
-
 jest.mock("next/router", () => ({
 	useRouter: jest.fn(),
 }));
@@ -26,7 +12,7 @@ describe("NewsListNav", () => {
 	const destinations = [
 		{ url: "/news", title: "News" },
 		{ url: "/blog", title: "Blog" },
-		{ url: "/events", title: "Events" },
+		{ url: "/news/articles", title: "News articles" },
 	];
 
 	let useRouterMock: jest.MockedFunction<typeof useRouter>;
@@ -49,6 +35,7 @@ describe("NewsListNav", () => {
 		useRouterMock = useRouter as jest.MockedFunction<typeof useRouter>;
 		useRouterMock.mockReturnValue(router as unknown as NextRouter);
 	});
+	afterEach(() => jest.clearAllMocks());
 
 	it("renders correctly", () => {
 		const { asFragment } = render(<NewsListNav destinations={destinations} />);
@@ -81,6 +68,19 @@ describe("NewsListNav", () => {
 		render(<NewsListNav destinations={destinations} />);
 		const activeLink = screen.getByText("Blog");
 		expect(activeLink).toHaveAttribute("aria-current", "false");
+	});
+
+	it("sets aria-current attribute correctly for '/news/articles' when link is active", () => {
+		//TODO investigate whether router changes can be simulated
+		router.route = "/news/articles";
+		router.pathname = "/news/articles";
+		router.query = { page: "4" };
+		router.asPath = "/news/articles?page=4";
+
+		render(<NewsListNav destinations={destinations} />);
+
+		const activeLink = screen.getByText("News articles");
+		expect(activeLink).toHaveAttribute("aria-current", "true");
 	});
 
 	it("navigates to the correct destination when link is clicked", async () => {

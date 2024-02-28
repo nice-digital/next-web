@@ -40,9 +40,9 @@ exports[`NewsListNav renders correctly 1`] = `
         <a
           aria-current="false"
           class="horizontal-nav__link"
-          href="/events"
+          href="/news/articles"
         >
-          Events
+          News articles
         </a>
       </li>
     </ul>

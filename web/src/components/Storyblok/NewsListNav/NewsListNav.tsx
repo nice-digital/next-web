@@ -25,15 +25,16 @@ export const NewsListNav = ({
 
 	const getActiveLink = useCallback(
 		(pathname: string): Destination | undefined => {
-			return destinations.find((link) => pathname === link.url);
+			const baseURL = pathname.split("?")[0]; // Extract base URL without query string
+			return destinations.find((link) => baseURL === link.url);
 		},
 		[destinations]
 	);
 
 	useEffect(() => {
 		setActiveLink(getActiveLink(router.pathname));
-
 		const handleRouteChange = (url: string) => {
+			console.log("handling route change!!!!!!!!!!!!!!!");
 			setActiveLink(getActiveLink(url));
 		};
 
