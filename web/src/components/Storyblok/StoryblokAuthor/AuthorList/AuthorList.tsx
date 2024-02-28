@@ -5,6 +5,7 @@ import { StoryblokStory } from "storyblok-generate-ts";
 
 import { AuthorStoryblok } from "@/types/storyblok";
 
+import { StoryblokAuthor } from "../StoryblokAuthor";
 import styles from "./AuthorList.module.scss";
 
 export interface AuthorListProps {
@@ -41,7 +42,7 @@ export const AuthorList = ({
 					// eslint-disable-next-line @typescript-eslint/no-unused-vars
 					const { image, ...contentWithoutImage } = author.content;
 					return (
-						<StoryblokComponent
+						<StoryblokAuthor
 							key={contentWithoutImage._uid}
 							blok={contentWithoutImage}
 							className={styles["author-list__item"]}
@@ -51,6 +52,6 @@ export const AuthorList = ({
 			</div>
 		);
 	} else {
-		return <StoryblokComponent blok={authors[0].content} />;
+		return <StoryblokAuthor blok={authors[0].content} />;
 	}
 };

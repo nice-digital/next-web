@@ -1,5 +1,6 @@
 import { render, screen } from "@testing-library/react";
 
+import { mockNewsArticle } from "@/test-utils/storyblok-data";
 import {
 	RelatedLinkStoryblok,
 	RelatedNewsLinkStoryblok,
@@ -10,68 +11,10 @@ import {
 	StoryblokNewsArticleProps,
 } from "./StoryblokNewsArticle";
 
+const { content } = mockNewsArticle;
 const newsArticleProps: StoryblokNewsArticleProps = {
 	blok: {
-		title: "Page title",
-		introText: "Page summary",
-		date: "2024-01-31",
-		content: {
-			type: "doc",
-			content: [
-				{
-					type: "paragraph",
-					content: [
-						{
-							text: "This is a mock news article",
-							type: "text",
-						},
-					],
-				},
-			],
-		},
-		image: {
-			id: 123,
-			name: "Image",
-			filename: "image.jpg",
-			alt: "Image alt text",
-		},
-		_uid: "123",
-		resources: [
-			{
-				_uid: "8f019cf9-3743-4126-94cb-092898b43636",
-				link: {
-					id: "e9c6fedf-5d63-4468-b29f-8884d5300ad8",
-					url: "",
-					linktype: "story",
-					fieldtype: "multilink",
-					cached_url: "test-new-nc-2",
-				},
-				title: "Test related link 1",
-				component: "relatedLink",
-				_editable:
-					'<!--#storyblok#{"name": "relatedLink", "space": "271255", "uid": "8f019cf9-3743-4126-94cb-092898b43636", "id": "435600482"}-->',
-			},
-		],
-
-		relatedNews: [
-			{
-				_uid: "50c7601a-1f1f-48f1-96e9-4f16f688fd7a",
-				date: "2024-01-31 00:00",
-				link: {
-					id: "",
-					url: "https://youtube.com/@niceorguk",
-					linktype: "url",
-					fieldtype: "multilink",
-					cached_url: "https://youtube.com/@niceorguk",
-				},
-				title: "Test related news link 1",
-				component: "relatedNewsLink",
-				publisher: "NICE",
-				_editable:
-					'<!--#storyblok#{"name": "relatedNewsLink", "space": "271255", "uid": "50c7601a-1f1f-48f1-96e9-4f16f688fd7a", "id": "435600482"}-->',
-			},
-		],
-		component: "newsArticle",
+		...content,
 	},
 	breadcrumbs: [
 		{
@@ -98,15 +41,18 @@ jest.mock("@storyblok/react", () => ({
 describe("NewsArticle", () => {
 	it("renders the news article", () => {
 		render(<StoryblokNewsArticle blok={newsArticleProps.blok} />);
-		expect(screen.getByText("Page title")).toBeInTheDocument();
-		expect(screen.getByText("Page summary")).toBeInTheDocument();
-		expect(screen.getByText("This is a mock news article")).toBeInTheDocument();
+		expect(screen.getByText(mockNewsArticle.content.title)).toBeInTheDocument();
+		expect(
+			screen.getByText(mockNewsArticle.content.introText)
+		).toBeInTheDocument();
+		expect(
+			screen.getByText("A mock h2 heading in a rich text field")
+		).toBeInTheDocument();
 	});
 
 	it("renders the news article with an image", () => {
 		render(<StoryblokNewsArticle blok={newsArticleProps.blok} />);
-		expect(screen.getByRole("img")).toBeInTheDocument();
-		expect(screen.getByAltText("Image alt text")).toBeInTheDocument();
+		expect(screen.getByAltText("Kitten mittens")).toBeInTheDocument();
 	});
 
 	it("renders the news article with related links", () => {
@@ -117,7 +63,12 @@ describe("NewsArticle", () => {
 	it("renders the news article with related news links", () => {
 		render(<StoryblokNewsArticle blok={newsArticleProps.blok} />);
 		expect(screen.getByTestId("mock-relatedNewsLink")).toBeInTheDocument();
-		expect(screen.getByText("Test related news link 1")).toBeInTheDocument();
+
+		//TODO: sanity check in mob session
+		if (mockNewsArticle.content && mockNewsArticle.content.relatedNews) {
+			const relatedNewsTitle = mockNewsArticle.content?.relatedNews[0].title;
+			expect(screen.getByText(relatedNewsTitle)).toBeInTheDocument();
+		}
 	});
 
 	it("should render the signup action panel", () => {

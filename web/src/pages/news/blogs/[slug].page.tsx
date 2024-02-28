@@ -14,7 +14,7 @@ import {
 import type { GetServerSidePropsContext } from "next";
 
 interface BlogPageProps {
-	story: ISbStoryData;
+	story: ISbStoryData<BlogPostStoryblok>;
 	breadcrumbs?: Breadcrumb[];
 }
 

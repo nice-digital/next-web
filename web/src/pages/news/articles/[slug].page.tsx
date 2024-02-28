@@ -3,18 +3,18 @@ import { NextSeo } from "next-seo";
 import React, { useMemo } from "react";
 
 import { type Breadcrumb } from "@/types/Breadcrumb";
+import { NewsArticleStoryblok } from "@/types/storyblok";
 import {
 	fetchStory,
 	getStoryVersionFromQuery,
 	getSlugFromParams,
 	getAdditionalMetaTags,
-	getBreadcrumbs,
 } from "@/utils/storyblok";
 
 import type { GetServerSidePropsContext } from "next";
 
 interface NewsArticlePageProps {
-	story: ISbStoryData;
+	story: ISbStoryData<NewsArticleStoryblok>;
 	breadcrumbs?: Breadcrumb[];
 }
 

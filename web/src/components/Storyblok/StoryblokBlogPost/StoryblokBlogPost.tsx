@@ -9,7 +9,10 @@ import { PageHeader } from "@nice-digital/nds-page-header";
 
 import { NewsLetterSignup } from "@/components/NewsLetterSignUp/NewsLetterSignup";
 import { type Breadcrumb as TypeBreadcrumb } from "@/types/Breadcrumb";
-import { AuthorStoryblok, BlogPostStoryblok } from "@/types/storyblok";
+import {
+	type AuthorStoryblok,
+	type BlogPostStoryblok,
+} from "@/types/storyblok";
 
 import { NewsPageHeaderFooter } from "../NewsPageHeader/NewsPageHeaderFooter/NewsPageHeaderFooter";
 import { AuthorList } from "../StoryblokAuthor/AuthorList/AuthorList";
@@ -18,13 +21,8 @@ import { StoryblokRichText } from "../StoryblokRichText/StoryblokRichText";
 
 import styles from "./StoryblokBlogPost.module.scss";
 
-// overrride the default type to include the content to use the richtext renderer type from package
-export interface RichTextBlogPostStoryblok extends BlogPostStoryblok {
-	content: StoryblokRichtext;
-}
-
 export interface StoryblokBlogPostProps {
-	blok: RichTextBlogPostStoryblok;
+	blok: BlogPostStoryblok;
 	breadcrumbs?: TypeBreadcrumb[];
 }
 
