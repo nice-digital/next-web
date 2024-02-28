@@ -1,9 +1,11 @@
 import { NextSeo } from "next-seo";
-import React, { useMemo } from "react";
+import React from "react";
 import { StoryblokStory } from "storyblok-generate-ts";
 
 import { ActionBanner } from "@nice-digital/nds-action-banner";
+import { Breadcrumbs, Breadcrumb } from "@nice-digital/nds-breadcrumbs";
 import { Button } from "@nice-digital/nds-button";
+import { PageHeader } from "@nice-digital/nds-page-header";
 
 import { FeaturedStory } from "@/components/Storyblok/News/FeaturedStory/FeaturedStory";
 import { NewsList } from "@/components/Storyblok/News/NewsList/NewsList";
@@ -44,7 +46,17 @@ export const ArticlesIndexPage = ({
 				title="News Articles"
 				openGraph={{ title: "News Articles" }}
 			></NextSeo>
-			<h1>Articles Index Page</h1>
+			<PageHeader
+				heading="News articles"
+				variant="fullWidthDark"
+				breadcrumbs={
+					<Breadcrumbs>
+						<Breadcrumb to="https://www.nice.org.uk/">Home</Breadcrumb>
+						<Breadcrumb to="https://www.nice.org.uk/news">News</Breadcrumb>
+						<Breadcrumb>Articles</Breadcrumb>
+					</Breadcrumbs>
+				}
+			/>
 			<NewsListNav destinations={destinations} />
 			<FeaturedStory story={featuredStory} />
 			<NewsList news={stories} />

@@ -1,22 +1,22 @@
+// @use '@nice-digital/nds-core/scss/layout';
+@use '@nice-digital/nds-core/scss/media-queries';
 @use '@nice-digital/nds-core/scss/spacing';
 @use '@nice-digital/nds-core/scss/typography';
 @use '@nice-digital/nds-core/scss/utils';
-@use "~/styles/colours";
-
+@use '~/styles/colours';
 
 .newsCard {
   margin-bottom: utils.rem(spacing.$large);
 
   &.listItem {
-
     align-items: flex-start;
     border-bottom: 2px solid colours.$newslist-border;
     display: flex;
-    flex-direction: row;
+    flex-direction: column;
     padding-bottom: utils.rem(spacing.$large);
 
     .heading {
-       margin-top: 0;
+      margin-top: 0;
 
       & a {
         &:link,
@@ -31,18 +31,34 @@
     }
 
     .imageContainer {
-      min-width: 300px;
-      flex: 0 0 auto;
-      margin-right: utils.rem(spacing.$large)
+      aspect-ratio: 16 / 9;
+      background-position: center;
+      background-size: cover;
+      display: block;
+      margin-bottom: utils.rem(
+        spacing.$medium
+      );
+      min-width: 100%;
+    }
+
+    @include media-queries.mq($from: sm) {
+      .imageContainer {
+        aspect-ratio: 21 / 9;
+      }
+    }
+
+    @include media-queries.mq($from: md) {
+      flex-direction: row;
+
+      .imageContainer {
+        aspect-ratio: 16 / 9;
+        min-width: 300px;
+        flex: 0 0 auto;
+        margin-right: utils.rem(spacing.$large);
+        margin-bottom: 0;
+      }
     }
   }
-}
-
-.imageContainer {
-  aspect-ratio: 16 / 9;
-  background-position: center;
-  background-size: cover;
-  display: block;
 }
 
 .heading {
@@ -53,5 +69,3 @@
 .date {
   margin-left: utils.rem(spacing.$medium);
 }
-
-
