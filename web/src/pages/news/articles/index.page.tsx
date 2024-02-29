@@ -10,7 +10,7 @@ import { PageHeader } from "@nice-digital/nds-page-header";
 import { FeaturedStory } from "@/components/Storyblok/News/FeaturedStory/FeaturedStory";
 import { NewsList } from "@/components/Storyblok/News/NewsList/NewsList";
 import { NewsListNav } from "@/components/Storyblok/News/NewsListNav/NewsListNav";
-import { NewsListPagination } from "@/components/Storyblok/NewsListPagination/NewsListPagination";
+import { NewsListPagination } from "@/components/Storyblok/News/NewsListPagination/NewsListPagination";
 import { logger } from "@/logger";
 import { NewsStory } from "@/types/News";
 import { fetchStories, getStoryVersionFromQuery } from "@/utils/storyblok";
