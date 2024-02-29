@@ -76,5 +76,6 @@ export default getProductListPage({
 export const getServerSideProps = getGetServerSidePropsFunc({
 	defaultSortOrder,
 	dateFilterLabel,
-	index: "researchrecs",
+	index: "researchrecs", // TODO update this ?
+	gstPreFilter: "Published",
 });
