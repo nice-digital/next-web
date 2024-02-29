@@ -17,7 +17,7 @@ import { fetchStories, getStoryVersionFromQuery } from "@/utils/storyblok";
 
 import type { GetServerSidePropsContext } from "next";
 
-type NewsArticlesProps = {
+export type NewsArticlesProps = {
 	featuredStory: StoryblokStory<NewsStory>;
 	stories: StoryblokStory<NewsStory>[];
 	totalResults: number;
@@ -109,6 +109,17 @@ export async function getServerSideProps({ query }: GetServerSidePropsContext) {
 		return { notFound: true };
 	}
 
+	let stories = storiesResult.stories;
+
+	if (
+		page === 1 &&
+		stories.length > 0 &&
+		stories[0].uuid === latestStoryResult.stories[0].uuid
+	) {
+		// Skip first story on page 1 as it's featured
+		stories = stories.slice(1);
+	}
+
 	//TODO ternary redirect for invalid page is probably better handled elsewhere
 	return page < 1 ||
 		page > Math.ceil(storiesResult.total / resultsPerPage) ||
@@ -122,7 +133,7 @@ export async function getServerSideProps({ query }: GetServerSidePropsContext) {
 		: {
 				props: {
 					featuredStory: latestStoryResult.stories[0],
-					stories: storiesResult.stories,
+					stories,
 					totalResults: storiesResult.total,
 					currentPage: page,
 					resultsPerPage,
