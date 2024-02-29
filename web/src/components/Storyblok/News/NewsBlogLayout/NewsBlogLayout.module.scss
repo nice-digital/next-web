@@ -1,0 +1,79 @@
+@use '@nice-digital/nds-core/scss/media-queries';
+@use '@nice-digital/nds-core/scss/spacing';
+@use '@nice-digital/nds-core/scss/utils';
+
+
+.newsSectionArticle  {
+  // set up variables for the offset of the featured image across breakpoints
+  --featuredImageOffset: 16dvh;
+
+  // set padding on page-header based on the negat
+  &:has([data-featured-image]) {
+    :global(.page-header) {
+      padding-bottom: var(--featuredImageOffset);
+    }
+  }
+
+  :global(.page-header) {
+    margin-bottom: utils.rem(spacing.$large);
+  }
+
+  //TODO: move to  news page header component
+  :global(.page-header__heading) {
+    margin: 0 0 utils.rem(spacing.$large) 0;
+  }
+
+  :global(.page-header__lead) {
+    margin: 0 0 utils.rem(spacing.$large) 0;
+  }
+
+  :global(.page-header__description) {
+    margin: 0 0 utils.rem(spacing.$medium) 0;
+  }
+
+  :global(.breadcrumbs) {
+    margin-top: 0;
+  }
+
+  // setting featured image styles here as we need to manage the offset between the image and the page header
+  [data-featured-image] {
+    aspect-ratio: 16 / 9;
+    display: block;
+    height: auto;
+    // margin-top: calc(calc(var(--featuredImageOffset) * -1) - 1rem);
+    margin-bottom: utils.rem(spacing.$large);
+    object-fit: cover;
+    width: 100%;
+
+    @include media-queries.mq($from: sm, $until: md) {
+      aspect-ratio: 21 / 9;
+    }
+  }
+
+  .articleSidebar {
+    margin: utils.rem(spacing.$large) 0 0;
+
+    @include media-queries.mq($from: md) {
+      margin: 0 0 utils.rem(spacing.$large);
+    }
+
+    //override child panel margins
+    & > * + * {
+      margin: 2rem 0 0;
+    }
+
+    & > :last-child {
+      margin-bottom: 0;
+    }
+  }
+
+  hr {
+    margin: utils.rem(spacing.$medium 0);
+  }
+
+  :global(.action-banner) {
+    margin: utils.rem(spacing.$xx-large) 0;
+  }
+
+}
+
