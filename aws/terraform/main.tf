@@ -122,7 +122,7 @@ resource "aws_ecs_task_definition" "nextweb-main-task" {
     name = "config"
 
     efs_volume_configuration {
-      file_system_id     = "${var.nextweb_efs_config_volume}"
+      file_system_id     = var.nextweb_efs_config_volume
       root_directory     = "/config/" # Adjust if your EFS has a specific root directory
       transit_encryption = "ENABLED"
     }

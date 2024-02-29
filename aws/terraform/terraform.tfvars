@@ -1,4 +1,4 @@
-org_name = "#{org_name}"
+org_name = "nice"
 environment_name = "#{environment_name}"
 application_name = "#{application_name}"
 docker_image_address = "#{docker_image_address}"
