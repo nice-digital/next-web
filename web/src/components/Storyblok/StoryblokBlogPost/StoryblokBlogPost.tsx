@@ -8,6 +8,7 @@ import { Grid, GridItem } from "@nice-digital/nds-grid";
 import { PageHeader } from "@nice-digital/nds-page-header";
 
 import { NewsLetterSignup } from "@/components/NewsLetterSignUp/NewsLetterSignup";
+import { useFeaturedImageOffset } from "@/hooks/useFeaturedImageOffset";
 import { type Breadcrumb as TypeBreadcrumb } from "@/types/Breadcrumb";
 import {
 	type AuthorStoryblok,
@@ -33,28 +34,36 @@ export const StoryblokBlogPost = ({
 	const imageRef = useRef<HTMLImageElement>(null);
 	const articleRef = useRef<HTMLDivElement>(null);
 
-	useEffect(() => {
-		const handleResize = debounce(() => {
-			// set the offset for the featured image
-			if (articleRef.current && imageRef.current) {
-				articleRef.current.style.setProperty(
-					"--featuredImageOffset",
-					`${Math.floor(imageRef.current.height / 1.75)}px`
-				);
-			}
-		}, 250);
-
-		window.addEventListener("resize", handleResize);
-
-		//run once to set the initial value
-		handleResize();
-
-		// clear the event listener when the component is unmounted
-		return () => {
-			window.removeEventListener("resize", handleResize);
-			handleResize.cancel();
-		};
+	useFeaturedImageOffset({
+		cssVariable: "--featuredImageOffset",
+		debounceDelay: 150,
+		imageRef,
+		topOverlapElement: articleRef,
+		ratio: 1.75,
 	});
+
+	// useEffect(() => {
+	// 	const handleResize = debounce(() => {
+	// 		// set the offset for the featured image
+	// 		if (articleRef.current && imageRef.current) {
+	// 			articleRef.current.style.setProperty(
+	// 				"--featuredImageOffset",
+	// 				`${Math.floor(imageRef.current.height / 1.75)}px`
+	// 			);
+	// 		}
+	// 	}, 250);
+
+	// 	window.addEventListener("resize", handleResize);
+
+	// 	//run once to set the initial value
+	// 	handleResize();
+
+	// 	// clear the event listener when the component is unmounted
+	// 	return () => {
+	// 		window.removeEventListener("resize", handleResize);
+	// 		handleResize.cancel();
+	// 	};
+	// });
 
 	const BreadcrumbComponent = breadcrumbs?.length ? (
 		<Breadcrumbs className="">

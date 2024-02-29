@@ -8,6 +8,8 @@ import { PageHeader } from "@nice-digital/nds-page-header";
 import { Panel } from "@nice-digital/nds-panel";
 
 import { NewsLetterSignup } from "@/components/NewsLetterSignUp/NewsLetterSignup";
+import { useFeaturedImageOffset } from "@/hooks/useFeaturedImageOffset";
+import { useResize } from "@/hooks/useResize";
 import { type Breadcrumb as TypeBreadcrumb } from "@/types/Breadcrumb";
 import { type NewsArticleStoryblok } from "@/types/storyblok";
 
@@ -28,29 +30,56 @@ export const StoryblokNewsArticle = ({
 }: StoryblokNewsArticleProps): React.ReactElement => {
 	const imageRef = useRef<HTMLImageElement>(null);
 	const articleRef = useRef<HTMLDivElement>(null);
+	const debounceDelay = 150;
 
-	useEffect(() => {
-		const handleResize = debounce(() => {
-			// set the offset for the featured image
-			if (articleRef.current && imageRef.current) {
-				articleRef.current.style.setProperty(
-					"--featuredImageOffset",
-					`${Math.floor(imageRef.current.height / 1.75)}px`
-				);
-			}
-		}, 250);
+	useFeaturedImageOffset({
+		cssVariable: "--featuredImageOffset",
+		debounceDelay,
+		imageRef,
+		topOverlapElement: articleRef,
+		ratio: 1.75,
+	});
 
-		window.addEventListener("resize", handleResize);
+	// useResize({
+	// 	callback: () => {
+	// 		if (articleRef.current && imageRef.current) {
+	// 			const offset = Math.floor(imageRef.current.height / 1.75);
 
-		//run once to set the initial value
-		handleResize();
+	// 			articleRef.current.style.paddingBottom = `${offset}px`;
+	// 			//calc(calc(var(--featuredImageOffset) * -1) - 1rem);
+	// 			imageRef.current.style.marginTop = `calc(calc(${offset}px * -1))`;
+	// 			articleRef.current.style.setProperty(
+	// 				"--featuredImageOffset",
+	// 				`${offset}px`
+	// 			);
+	// 		}
+	// 		debounceDelay;
+	// 	},
+	// 	debounceDelay,
+	// });
 
-		// clear the event listener when the component is unmounted
-		return () => {
-			window.removeEventListener("resize", handleResize);
-			handleResize.cancel();
-		};
-	}, []);
+	// useEffect(() => {
+	// 	const handleResize = debounce(() => {
+	// 		// set the offset for the featured image
+	// 		if (articleRef.current && imageRef.current) {
+	// 			articleRef.current.style.setProperty(
+	// 				"--featuredImageOffset",
+	// 				`${Math.floor(imageRef.current.height / 1.75)}px`
+	// 			);
+	// 		}
+	// 	}, 250);
+
+	// 	window.addEventListener("resize", handleResize);
+
+	// 	//run once to set the initial value
+	// 	handleResize();
+
+	// 	// clear the event listener when the component is unmounted
+	// 	return () => {
+	// 		window.removeEventListener("resize", handleResize);
+	// 		handleResize.cancel();
+	// 	};
+	// }, []);
 
 	const BreadcrumbComponent = breadcrumbs?.length ? (
 		<Breadcrumbs className="">
