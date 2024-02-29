@@ -62,7 +62,11 @@ export const ArticlesIndexPage = ({
 			<NewsList news={stories} />
 			<ActionBanner
 				title="Sign up for our newsletters and alerts"
-				cta={<Button variant="cta" to="/news/nice-newsletters-and-alerts">Sign up for newsletters and alerts</Button>}
+				cta={
+					<Button variant="cta" to="/news/nice-newsletters-and-alerts">
+						Sign up for newsletters and alerts
+					</Button>
+				}
 			>
 				Keeping you up to date with important developments at NICE
 			</ActionBanner>
