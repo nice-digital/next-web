@@ -11,7 +11,6 @@ import { FeaturedStory } from "@/components/Storyblok/News/FeaturedStory/Feature
 import { NewsList } from "@/components/Storyblok/News/NewsList/NewsList";
 import { NewsListNav } from "@/components/Storyblok/News/NewsListNav/NewsListNav";
 import { NewsListPagination } from "@/components/Storyblok/News/NewsListPagination/NewsListPagination";
-import { logger } from "@/logger";
 import { NewsStory } from "@/types/News";
 import { fetchStories, getStoryVersionFromQuery } from "@/utils/storyblok";
 
@@ -82,7 +81,6 @@ export const ArticlesIndexPage = ({
 };
 
 export async function getServerSideProps({ query }: GetServerSidePropsContext) {
-	logger.info("Start server side props for /news/articles list page");
 
 	const version = getStoryVersionFromQuery(query);
 	const page = Number(query.page) || 1;
@@ -102,10 +100,7 @@ export async function getServerSideProps({ query }: GetServerSidePropsContext) {
 		sort_by: "content.date:desc",
 	});
 
-	logger.info("Finish server side props for news articles list page");
-
 	if (!storiesResult || storiesResult.total === undefined) {
-		logger.error("Failed to fetch stories");
 		return { notFound: true };
 	}
 
