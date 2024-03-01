@@ -1,9 +1,13 @@
 import { useState, useEffect } from "react";
 
-import { Button } from "@nice-digital/nds-button";
 import { Hero } from "@nice-digital/nds-hero";
 
-import { type HomepageHeroStoryblok } from "@/types/storyblok";
+import {
+	ButtonLinkStoryblok,
+	type HomepageHeroStoryblok,
+} from "@/types/storyblok";
+
+import { StoryblokButtonLink } from "../../StoryblokButtonLink/StoryblokButtonLink";
 
 interface HomepageHeroBlokProps {
 	blok: HomepageHeroStoryblok;
@@ -12,7 +16,7 @@ interface HomepageHeroBlokProps {
 export const HomepageHero = ({
 	blok,
 }: HomepageHeroBlokProps): React.ReactNode => {
-	const { title, images, description, ctaLink, ctaText } = blok;
+	const { title, images, description, cta } = blok;
 
 	const [randomImage, setRandomImage] = useState("");
 
@@ -22,17 +26,19 @@ export const HomepageHero = ({
 		setRandomImage(`${images[randomIndex].filename}/m/`);
 	}, [images]);
 
+	// Force button to CTA variant
+	const updatedCTA: ButtonLinkStoryblok = {
+		...cta[0],
+		variant: "cta",
+	};
+
 	return (
 		<Hero
 			isDark
 			title={title}
 			intro={description}
 			image={randomImage}
-			actions={
-				<Button variant="cta" to={`/${ctaLink.cached_url}`}>
-					{ctaText}
-				</Button>
-			}
+			actions={<StoryblokButtonLink button={updatedCTA} />}
 		/>
 	);
 };

@@ -1,0 +1,6 @@
+@use '@nice-digital/nds-core/scss/spacing';
+@use '@nice-digital/nds-core/scss/utils';
+
+.links {
+  margin-bottom: utils.rem(spacing.$x-large);
+}

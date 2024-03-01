@@ -41,11 +41,11 @@ export interface AuthorStoryblok {
 
 export interface BlogPostStoryblok {
   title: string;
+  image: AssetStoryblok;
   date: string;
   introText: string;
   content: RichtextStoryblok;
   author: (StoryblokStory<AuthorStoryblok> | string)[];
-  image: AssetStoryblok;
   _uid: string;
   component: "blogPost";
   [k: string]: any;
@@ -103,8 +103,8 @@ export type MultilinkStoryblok =
 
 export interface ButtonLinkStoryblok {
   text: string;
-  link: Exclude<MultilinkStoryblok, {linktype?: "email"} | {linktype?: "asset"}>;
-  variant: "" | "primary" | "secondary" | "cta" | "inverse";
+  link: MultilinkStoryblok;
+  variant: "" | "cta" | "primary" | "secondary" | "inverse";
   _uid: string;
   component: "buttonLink";
   [k: string]: any;
@@ -127,7 +127,7 @@ export interface CardGridStoryblok {
 }
 
 export interface CategoryNavigationStoryblok {
-  hero: PageHeaderStoryblok[];
+  pageHeader: PageHeaderStoryblok[];
   cardGrid: CardGridStoryblok[];
   metadata?: MetadataStoryblok[];
   _uid: string;
@@ -183,6 +183,7 @@ export interface HeroStoryblok {
   summary?: string;
   description?: string;
   image: AssetStoryblok;
+  cta?: ButtonLinkStoryblok[];
   ctaText?: string;
   ctaLink?: Exclude<MultilinkStoryblok, {linktype?: "email"} | {linktype?: "asset"}>;
   _uid: string;
@@ -217,9 +218,8 @@ export type MultiassetStoryblok = {
 export interface HomepageHeroStoryblok {
   title: string;
   description: string;
-  ctaText: string;
-  ctaLink: Exclude<MultilinkStoryblok, {linktype?: "email"} | {linktype?: "asset"}>;
   images: MultiassetStoryblok;
+  cta: ButtonLinkStoryblok[];
   _uid: string;
   component: "homepageHero";
   [k: string]: any;
@@ -294,12 +294,12 @@ export interface NestedTableStoryblok {
 
 export interface NewsArticleStoryblok {
   title: string;
+  resources?: RelatedLinkStoryblok[];
+  relatedNews?: RelatedNewsLinkStoryblok[];
   date: string;
   introText: string;
   content: RichtextStoryblok;
   image: AssetStoryblok;
-  resources?: RelatedLinkStoryblok[];
-  relatedNews?: RelatedNewsLinkStoryblok[];
   _uid: string;
   component: "newsArticle";
   [k: string]: any;
@@ -347,6 +347,7 @@ export interface PageHeaderStoryblok {
   title: string;
   summary?: string;
   description?: string;
+  cta?: ButtonLinkStoryblok[];
   ctaText?: string;
   ctaLink?: MultilinkStoryblok;
   _uid: string;

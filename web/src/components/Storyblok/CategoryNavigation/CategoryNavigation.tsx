@@ -12,21 +12,23 @@ export const CategoryNavigation = ({
 	blok,
 	breadcrumbs,
 }: CategoryNavigationBlokProps): React.ReactElement => {
+	const { metadata, pageHeader, cardGrid } = blok;
+
 	return (
 		<>
-			{blok.metadata &&
-				blok.metadata.length > 0 &&
-				blok.metadata?.map((nestedBlok) => (
+			{metadata &&
+				metadata.length > 0 &&
+				metadata?.map((nestedBlok) => (
 					<StoryblokComponent blok={nestedBlok} key={nestedBlok._uid} />
 				))}
-			{blok.hero.map((nestedBlok) => (
+			{pageHeader.map((nestedBlok) => (
 				<StoryblokComponent
 					blok={nestedBlok}
 					breadcrumbs={breadcrumbs}
 					key={nestedBlok._uid}
 				/>
 			))}
-			{blok.cardGrid.map((nestedBlok) => (
+			{cardGrid.map((nestedBlok) => (
 				<StoryblokComponent blok={nestedBlok} key={nestedBlok._uid} />
 			))}
 		</>
