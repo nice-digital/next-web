@@ -1,7 +1,5 @@
 import debounce from "lodash/debounce";
-import { useEffect, useState, useRef, RefObject } from "react";
-
-// import { useResize } from "./useResize";
+import { useEffect, useState, RefObject } from "react";
 
 interface StyleState {
 	paddingBottom: string;
@@ -26,7 +24,7 @@ export const useFeaturedImageOffset = ({
 	useEffect(() => {
 		if (!imageRef.current) return;
 
-		const handleResize = debounce((entries) => {
+		const handleResize = debounce((entries: ResizeObserverEntry[]) => {
 			for (const entry of entries) {
 				const { height } = entry.contentRect;
 				const paddingBottom = `${height / ratio}px`;
