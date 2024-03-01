@@ -104,25 +104,25 @@ export default function scenario_1() {
     }
   )
 
-//   group('page_2 - https://alpha.nice.org.uk/search?q=diabetes', function () {
-//     response = http.get('https://alpha.nice.org.uk/search?q=diabetes', {
-//       headers: {
-//         'upgrade-insecure-requests': '1',
-//         'sec-ch-ua': '"Not A(Brand";v="99", "Google Chrome";v="121", "Chromium";v="121"',
-//         'sec-ch-ua-mobile': '?0',
-//         'sec-ch-ua-platform': '"Windows"',
-//       },
-//     })
-//     sleep(0.5)
-//     response = http.get(
-//       'https://alpha-search-api.nice.org.uk/api/typeahead?index=nice&q=diabetes',
-//       {
-//         headers: {
-//           'sec-ch-ua': '"Not A(Brand";v="99", "Google Chrome";v="121", "Chromium";v="121"',
-//           'sec-ch-ua-mobile': '?0',
-//           'sec-ch-ua-platform': '"Windows"',
-//         },
-//       }
-//     )
-//   })
+  group('page_2 - https://alpha.nice.org.uk/search?q=diabetes', function () {
+    response = http.get('https://alpha.nice.org.uk/search?q=diabetes', {
+      headers: {
+        'upgrade-insecure-requests': '1',
+        'sec-ch-ua': '"Not A(Brand";v="99", "Google Chrome";v="121", "Chromium";v="121"',
+        'sec-ch-ua-mobile': '?0',
+        'sec-ch-ua-platform': '"Windows"',
+      },
+    })
+    sleep(0.5)
+    response = http.get(
+      'https://alpha-search-api.nice.org.uk/api/typeahead?index=nice&q=diabetes',
+      {
+        headers: {
+          'sec-ch-ua': '"Not A(Brand";v="99", "Google Chrome";v="121", "Chromium";v="121"',
+          'sec-ch-ua-mobile': '?0',
+          'sec-ch-ua-platform': '"Windows"',
+        },
+      }
+    )
+  })
 }

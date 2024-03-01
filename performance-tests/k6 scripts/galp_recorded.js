@@ -27,7 +27,7 @@ export default function main() {
         'sec-ch-ua-platform': '"Windows"',
       },
     })
-    // sleep(12.2)
+    sleep(12.2)
     response = http.get('https://alpha-search-api.nice.org.uk/api/typeahead?index=nice&q=hyp', {
       headers: {
         'sec-ch-ua': '"Not A(Brand";v="99", "Google Chrome";v="121", "Chromium";v="121"',
@@ -49,7 +49,7 @@ export default function main() {
         'sec-ch-ua-platform': '"Windows"',
       },
     })
-    // sleep(0.9)
+    sleep(0.9)
   })
 
   group('page_2 - https://alpha.nice.org.uk/search?q=hyper', function () {
@@ -61,7 +61,7 @@ export default function main() {
         'sec-ch-ua-platform': '"Windows"',
       },
     })
-    // sleep(2.5)
+    sleep(2.5)
     response = http.get('https://alpha-search-api.nice.org.uk/api/typeahead?index=nice&q=hyper', {
       headers: {
         'sec-ch-ua': '"Not A(Brand";v="99", "Google Chrome";v="121", "Chromium";v="121"',

@@ -2,18 +2,18 @@ import { sleep, group } from 'k6'
 import http from 'k6/http'
 
 // export const options = {
-//   stages: [
-//     { duration: '5m', target: 100 }, // simulate ramp-up of traffic from 1 to 100 users over 5 minutes.
-//     { duration: '10m', target: 100 }, // stay at 100 users for 10 minutes
-//     { duration: '5m', target: 0 }, // ramp-down to 0 users
-//   ],
-//   thresholds: {
-//     'http_req_duration': ['p(99)<120'], // 99% of requests must complete below 120ms
-//     'iteration_duration': ['p(95)<150'], // 95% of requests must complete below 150ms
-//     'http_req_waiting': ['p(99)<120'], // 99% of requests must complete below 120ms   
-//   },
-// };
-// export const options = {
+//   // stages: [
+//   //   { duration: '5m', target: 100 }, // simulate ramp-up of traffic from 1 to 100 users over 5 minutes.
+//   //   { duration: '10m', target: 100 }, // stay at 100 users for 10 minutes
+//   //   { duration: '5m', target: 0 }, // ramp-down to 0 users
+//   // ],
+//   // thresholds: {
+//   //   'http_req_duration': ['p(99)<120'], // 99% of requests must complete below 120ms
+//   //   'iteration_duration': ['p(95)<150'], // 95% of requests must complete below 150ms
+//   //   'http_req_waiting': ['p(99)<120'], // 99% of requests must complete below 120ms   
+//   // },
+// //};
+// // export const options = {
 //   stages: [
 //     { duration: '1m', target: 100 }, // below normal load
 //     { duration: '2m', target: 100 },
@@ -43,6 +43,21 @@ export default function scenario_1() {
         'sec-ch-ua-mobile': '?0',
         'sec-ch-ua-platform': '"Windows"',
       },
-    })        
+    })
+    sleep(0.9)
   })
+
+  group('page_2 - https://alpha.nice.org.uk/hub/indevelopment/gid-hub10003', function () {
+    response = http.get('https://alpha.nice.org.uk/hub/indevelopment/gid-hub10003', {
+      headers: {
+        'upgrade-insecure-requests': '1',
+        'sec-ch-ua': '"Not A(Brand";v="99", "Google Chrome";v="121", "Chromium";v="121"',
+        'sec-ch-ua-mobile': '?0',
+        'sec-ch-ua-platform': '"Windows"',
+      },
+    })
+  })
+
+
+
 }

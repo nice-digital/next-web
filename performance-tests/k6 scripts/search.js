@@ -14,6 +14,7 @@ export const options = {
     'http_req_waiting': ['p(99)<1000'], // 99% of requests must complete below 120ms   
   },
 };
+
 // export const options = {
 //   stages: [
 //     { duration: '1m', target: 100 }, // below normal load
@@ -33,8 +34,8 @@ export const options = {
 //   },
 // };
 
-const jotForms = new SharedArray("forms", function () {
-  const t = JSON.parse(open("./jotforms_pages.json"));
+const searchTerms = new SharedArray("terms", function () {
+  const t = JSON.parse(open("./search.json"));
   return t;
 });
 
@@ -43,15 +44,9 @@ let params = {
 };
 
 export default function () {
-  const jotForm = jotForms[Math.floor(Math.random() * jotForms.length)];
+  const searchTerm = searchTerms[Math.floor(Math.random() * searchTerms.length)];
 
-  http.get("https://alpha.nice.org.uk" + jotForm, params);
+  http.get("https://alpha.nice.org.uk/search?q=" + searchTerm, params);
 //   console.log(searchTerm); //This can slow the number of requests per second - only use for debugging
   sleep(Math.random() * 0.25);
 }
-
-
-
-
-
-
