@@ -1,9 +1,13 @@
 import { Breadcrumbs, Breadcrumb } from "@nice-digital/nds-breadcrumbs";
-import { Hero } from "@nice-digital/nds-hero";
+import { PageHeader } from "@nice-digital/nds-page-header";
 
 import { type Breadcrumb as TypeBreadcrumb } from "@/types/Breadcrumb";
-import { type PageHeaderStoryblok } from "@/types/storyblok";
-import { resolveStoryblokLink } from "@/utils/storyblok";
+import {
+	ButtonLinkStoryblok,
+	type PageHeaderStoryblok,
+} from "@/types/storyblok";
+
+import { StoryblokButtonLink } from "../StoryblokButtonLink/StoryblokButtonLink";
 
 interface PageHeaderBlokProps {
 	blok: PageHeaderStoryblok;
@@ -24,29 +28,29 @@ export const StoryblokPageHeader = ({
 		</Breadcrumbs>
 	) : undefined;
 
-	console.log("Page header blok:", blok);
+	const { title, summary, description, cta } = blok;
+	let updatedCTA: ButtonLinkStoryblok | undefined = undefined;
+
+	// Force button to CTA variant for this template
+	if (cta) {
+		updatedCTA = {
+			...cta[0],
+			variant: "cta",
+		};
+	}
 
 	return (
 		<>
-			<Hero
-				title={blok.title}
-				intro={blok.summary || undefined}
+			<PageHeader
+				heading={title}
+				lead={summary || undefined}
 				header={BreadcrumbComponent}
+				description={description}
+				variant="fullWidthLight"
+				cta={
+					updatedCTA ? <StoryblokButtonLink button={updatedCTA} /> : undefined
+				}
 			/>
-			{blok.description && (
-				<p>
-					TO DO: Description (this will eventually go into the new page header:){" "}
-					{blok.description}
-				</p>
-			)}
-			{blok.ctaLink && blok.ctaText && (
-				<p>
-					<a href={resolveStoryblokLink(blok.ctaLink).url}>
-						TO DO: CTA: {blok.ctaText} (not implemented yet - will arrive in the
-						new page header
-					</a>
-				</p>
-			)}
 		</>
 	);
 };

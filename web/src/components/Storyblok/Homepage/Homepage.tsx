@@ -5,6 +5,7 @@ import { StoryblokRichText } from "@/components/Storyblok/StoryblokRichText/Stor
 import { type NewsStory } from "@/types/News";
 import { type HomepageStoryblok } from "@/types/storyblok";
 
+import styles from "./Homepage.module.scss";
 import { HomepageLatestNews } from "./HomepageLatestNews/HomepageLatestNews";
 
 interface HomepageBlokProps {
@@ -54,7 +55,9 @@ export const Homepage = ({
 				))}
 
 			{/* Links */}
-			<StoryblokRichText content={links} />
+			<div className={styles.links}>
+				<StoryblokRichText content={links} />
+			</div>
 
 			{/* Promo box 1 */}
 			{promoBox1 &&
