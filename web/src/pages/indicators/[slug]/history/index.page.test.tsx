@@ -46,7 +46,7 @@ describe("/indicators/[slug]/history", () => {
 			render(<HistoryPage {...props} />);
 			await waitFor(() => {
 				expect(document.title).toEqual(
-					`History | NG100 | Indicators | Standards and Indicators`
+					`History | NG100 | Indicators`
 				);
 			});
 		});

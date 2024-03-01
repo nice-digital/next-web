@@ -50,7 +50,7 @@ describe("/indicators/[slug].page", () => {
 			render(<IndicatorsDetailsPage {...props} />);
 			await waitFor(() => {
 				expect(document.title).toEqual(
-					`${ng100.Title} | Indicators | Standards and Indicators`
+					`${ng100.Title} | Indicators`
 				);
 			});
 		});

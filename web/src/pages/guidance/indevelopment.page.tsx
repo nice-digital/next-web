@@ -74,7 +74,7 @@ export default getProductListPage({
 	currentBreadcrumb: "In development",
 	preheading: "Guidance, NICE advice and quality standards ",
 	heading: "In development",
-	title: "Guidance, NICE advice and quality standards in development",
+	title: "Guidance, NICE advice and quality standards in development | Guidance",
 	defaultSort: {
 		order: defaultSortOrder,
 		label: "Title",

@@ -58,14 +58,11 @@ export default function IndicatorChapterPage({
 	return (
 		<>
 			<NextSeo
-				title={`${chapterTitle} | ${product.id} | Indicators | Standards and Indicators`}
+				title={`${chapterTitle} | ${product.id} | Indicators`}
 			/>
 
 			<Breadcrumbs>
 				<Breadcrumb to="/">Home</Breadcrumb>
-				<Breadcrumb to="/standards-and-indicators">
-					Standards and Indicators
-				</Breadcrumb>
 				<Breadcrumb to="/standards-and-indicators/indicators">
 					Indicators
 				</Breadcrumb>

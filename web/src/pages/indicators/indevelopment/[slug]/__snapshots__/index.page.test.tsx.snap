@@ -27,15 +27,6 @@ exports[`/indevelopment/[slug].page IndevelopmentPage should match snapshot for 
             class="breadcrumbs__crumb"
           >
             <a
-              href="/standards-and-indicators"
-            >
-              Standards and Indicators
-            </a>
-          </li>
-          <li
-            class="breadcrumbs__crumb"
-          >
-            <a
               href="/standards-and-indicators/indicators"
             >
               Indicators

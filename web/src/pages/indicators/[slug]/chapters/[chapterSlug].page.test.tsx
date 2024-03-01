@@ -54,7 +54,7 @@ describe("/indicators/[slug]/chapters/[chapterSlug].page", () => {
 			render(<IndicatorChapterPage {...props} />);
 			await waitFor(() => {
 				expect(document.title).toEqual(
-					`Recommendations | NG100 | Indicators | Standards and Indicators`
+					`Recommendations | NG100 | Indicators`
 				);
 			});
 		});

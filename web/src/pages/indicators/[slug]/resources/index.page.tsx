@@ -41,14 +41,11 @@ export default function ToolsAndResourcesListPage({
 	return (
 		<>
 			<NextSeo
-				title={`Tools and resources | ${product.id} | Indicators | Standards and Indicators`}
+				title={`Tools and resources | ${product.id} | Indicators`}
 			/>
 
 			<Breadcrumbs>
 				<Breadcrumb to="/">Home</Breadcrumb>
-				<Breadcrumb to="/standards-and-indicators">
-					Standards and Indicators
-				</Breadcrumb>
 				<Breadcrumb to="/standards-and-indicators/indicators">
 					Indicators
 				</Breadcrumb>

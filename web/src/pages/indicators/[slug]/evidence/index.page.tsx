@@ -42,14 +42,11 @@ export default function EvidenceResourcesListPage({
 	return (
 		<>
 			<NextSeo
-				title={`Evidence | ${product.id} | Indicators | Standards and Indicators`}
+				title={`Evidence | ${product.id} | Indicators`}
 			/>
 
 			<Breadcrumbs>
 				<Breadcrumb to="/">Home</Breadcrumb>
-				<Breadcrumb to="/standards-and-indicators">
-					Standards and Indicators
-				</Breadcrumb>
 				<Breadcrumb to="/standards-and-indicators/indicators">
 					Indicators
 				</Breadcrumb>

@@ -62,9 +62,6 @@ export default getProductListPage({
 		"The complete list of all our published indicators, for measuring outcomes that reflect the quality of care or processes, linked by evidence to improved outcomes.",
 	listNavType: IndicatorListNav,
 	breadcrumbTrail: [
-		<Breadcrumb to="/standards-and-indicators" key="standards-and-indicators">
-			Standards and Indicators
-		</Breadcrumb>,
 		<Breadcrumb
 			to="/standards-and-indicators/indicators"
 			key="/standards-and-indicators/indicators"
@@ -75,19 +72,7 @@ export default getProductListPage({
 	currentBreadcrumb: "Published indicators",
 	preheading: "Published",
 	heading: <>Indicators</>,
-	intro: (
-		<>
-			<p>
-				The NICE indicator menu includes general practice and CCG level
-				indicators by clinical area. Use the filters to display indicators by
-				type or subject - or filter by both, for more specific results.
-			</p>
-			<p>
-				<a href="/standards-and-indicators">About NICE Indicators</a>
-			</p>
-		</>
-	),
-	title: "Published | Indicators | Standards and indicators | NICE",
+	title: "Published | Indicators",
 	defaultSort: {
 		order: defaultSortOrder,
 		label: "Date",
