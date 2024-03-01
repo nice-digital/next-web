@@ -17,7 +17,6 @@ export const InfoPage = ({
 	blok,
 	siblingPages,
 }: InfoPageBlokProps): React.ReactElement => {
-	console.log({ siblingPages });
 	return (
 		<>
 			{blok.metadata &&
