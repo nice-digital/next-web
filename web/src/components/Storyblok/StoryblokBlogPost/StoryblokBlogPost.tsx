@@ -34,11 +34,8 @@ export const StoryblokBlogPost = ({
 	const imageRef = useRef<HTMLImageElement>(null);
 	const articleRef = useRef<HTMLDivElement>(null);
 
-	useFeaturedImageOffset({
-		cssVariable: "--featuredImageOffset",
-		debounceDelay: 150,
+	const { paddingBottom, marginTop } = useFeaturedImageOffset({
 		imageRef,
-		topOverlapElement: articleRef,
 		ratio: 1.75,
 	});
 
@@ -75,13 +72,6 @@ export const StoryblokBlogPost = ({
 		</Breadcrumbs>
 	) : undefined;
 
-	// filter out any strings from the author array
-	// const mixedArray: (string | StoryblokStory<AuthorStoryblok>)[] = blok.author;
-	// const filteredAuthorArray: StoryblokStory<AuthorStoryblok>[] =
-	// 	mixedArray.filter(
-	// 		(item) => typeof item !== "string"
-	// 	) as StoryblokStory<AuthorStoryblok>[];
-
 	//TODO: remove this when the above is fixed, mob sanitycheck
 	const authors = blok.author as StoryblokStory<AuthorStoryblok>[];
 
@@ -103,6 +93,7 @@ export const StoryblokBlogPost = ({
 							/>,
 						]}
 						secondSection={<AuthorList authors={authors} />}
+						styles={{ paddingBottom }}
 					/>
 				</GridItem>
 
@@ -117,6 +108,7 @@ export const StoryblokBlogPost = ({
 							loading="eager"
 							src={blok.image.filename}
 							width="760px"
+							style={{ marginTop }}
 						/>
 					)}
 					<StoryblokRichText content={blok.content} />

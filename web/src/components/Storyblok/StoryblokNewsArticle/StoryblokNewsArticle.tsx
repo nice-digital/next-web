@@ -29,57 +29,12 @@ export const StoryblokNewsArticle = ({
 	breadcrumbs,
 }: StoryblokNewsArticleProps): React.ReactElement => {
 	const imageRef = useRef<HTMLImageElement>(null);
-	const articleRef = useRef<HTMLDivElement>(null);
-	const debounceDelay = 150;
 
-	useFeaturedImageOffset({
-		cssVariable: "--featuredImageOffset",
-		debounceDelay,
+	const { paddingBottom, marginTop } = useFeaturedImageOffset({
 		imageRef,
-		topOverlapElement: articleRef,
 		ratio: 1.75,
+		debounceDelay: 250,
 	});
-
-	// useResize({
-	// 	callback: () => {
-	// 		if (articleRef.current && imageRef.current) {
-	// 			const offset = Math.floor(imageRef.current.height / 1.75);
-
-	// 			articleRef.current.style.paddingBottom = `${offset}px`;
-	// 			//calc(calc(var(--featuredImageOffset) * -1) - 1rem);
-	// 			imageRef.current.style.marginTop = `calc(calc(${offset}px * -1))`;
-	// 			articleRef.current.style.setProperty(
-	// 				"--featuredImageOffset",
-	// 				`${offset}px`
-	// 			);
-	// 		}
-	// 		debounceDelay;
-	// 	},
-	// 	debounceDelay,
-	// });
-
-	// useEffect(() => {
-	// 	const handleResize = debounce(() => {
-	// 		// set the offset for the featured image
-	// 		if (articleRef.current && imageRef.current) {
-	// 			articleRef.current.style.setProperty(
-	// 				"--featuredImageOffset",
-	// 				`${Math.floor(imageRef.current.height / 1.75)}px`
-	// 			);
-	// 		}
-	// 	}, 250);
-
-	// 	window.addEventListener("resize", handleResize);
-
-	// 	//run once to set the initial value
-	// 	handleResize();
-
-	// 	// clear the event listener when the component is unmounted
-	// 	return () => {
-	// 		window.removeEventListener("resize", handleResize);
-	// 		handleResize.cancel();
-	// 	};
-	// }, []);
 
 	const BreadcrumbComponent = breadcrumbs?.length ? (
 		<Breadcrumbs className="">
@@ -92,7 +47,7 @@ export const StoryblokNewsArticle = ({
 	) : undefined;
 
 	return (
-		<article className={styles.newsSectionArticle} ref={articleRef}>
+		<article className={styles.newsSectionArticle}>
 			<Grid>
 				{/* page header */}
 				<GridItem cols={12}>
@@ -108,6 +63,7 @@ export const StoryblokNewsArticle = ({
 								pageType={blok.component}
 							/>,
 						]}
+						style={{ paddingBottom }}
 					/>
 				</GridItem>
 
@@ -122,6 +78,7 @@ export const StoryblokNewsArticle = ({
 							loading="eager"
 							src={blok?.image?.filename}
 							width="760px"
+							style={{ marginTop }}
 						/>
 					)}
 					<StoryblokRichText content={blok.content} />
