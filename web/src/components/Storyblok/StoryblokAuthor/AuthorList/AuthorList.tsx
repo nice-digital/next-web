@@ -1,11 +1,10 @@
-import { StoryblokComponent } from "@storyblok/react";
-import { P } from "pino";
 import React from "react";
 import { StoryblokStory } from "storyblok-generate-ts";
 
 import { AuthorStoryblok } from "@/types/storyblok";
 
 import { StoryblokAuthor } from "../StoryblokAuthor";
+
 import styles from "./AuthorList.module.scss";
 
 export interface AuthorListProps {
