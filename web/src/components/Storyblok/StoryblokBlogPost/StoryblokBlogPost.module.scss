@@ -4,29 +4,9 @@
 
 
 .newsSectionArticle  {
-  // set up variables for the offset of the featured image across breakpoints
-  --featuredImageOffset: 16dvh;
 
-  // set padding on page-header based on the image offset
-  //TODO: Fix issue with spacing, dependant on the number of authors. listed
-  &:has(.featuredImage) {
-    :global(.page-header) {
-      padding-bottom: var(--featuredImageOffset);
-    }
-  }
-
-  .featuredImage {
-    aspect-ratio: 16 / 9;
-    display: block;
-    height: auto;
-    margin-top: calc(calc(var(--featuredImageOffset) * -1) - 1rem);
+  :global(.page-header) {
     margin-bottom: utils.rem(spacing.$large);
-    object-fit: cover;
-    width: 100%;
-
-    @include media-queries.mq($from: sm, $until: md) {
-      aspect-ratio: 21 / 9;
-    }
   }
 
   //TODO: all news and blog header related. Move to NewsPageHeader
@@ -46,10 +26,21 @@
     margin-top: 0;
   }
 
+  .featuredImage {
+    aspect-ratio: 16 / 9;
+    display: block;
+    height: auto;
+    margin-bottom: utils.rem(spacing.$large);
+    object-fit: cover;
+    width: 100%;
+
+    @include media-queries.mq($from: sm, $until: md) {
+      aspect-ratio: 21 / 9;
+    }
+  }
+
   :global(.action-banner) {
     margin: utils.rem(spacing.$xx-large) 0;
   }
-
-
 }
 

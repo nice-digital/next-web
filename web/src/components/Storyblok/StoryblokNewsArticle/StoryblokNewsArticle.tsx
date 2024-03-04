@@ -8,6 +8,8 @@ import { PageHeader } from "@nice-digital/nds-page-header";
 import { Panel } from "@nice-digital/nds-panel";
 
 import { NewsLetterSignup } from "@/components/NewsLetterSignUp/NewsLetterSignup";
+import { useFeaturedImageOffset } from "@/hooks/useFeaturedImageOffset";
+import { useResize } from "@/hooks/useResize";
 import { type Breadcrumb as TypeBreadcrumb } from "@/types/Breadcrumb";
 import { type NewsArticleStoryblok } from "@/types/storyblok";
 
@@ -27,30 +29,12 @@ export const StoryblokNewsArticle = ({
 	breadcrumbs,
 }: StoryblokNewsArticleProps): React.ReactElement => {
 	const imageRef = useRef<HTMLImageElement>(null);
-	const articleRef = useRef<HTMLDivElement>(null);
 
-	useEffect(() => {
-		const handleResize = debounce(() => {
-			// set the offset for the featured image
-			if (articleRef.current && imageRef.current) {
-				articleRef.current.style.setProperty(
-					"--featuredImageOffset",
-					`${Math.floor(imageRef.current.height / 1.75)}px`
-				);
-			}
-		}, 250);
-
-		window.addEventListener("resize", handleResize);
-
-		//run once to set the initial value
-		handleResize();
-
-		// clear the event listener when the component is unmounted
-		return () => {
-			window.removeEventListener("resize", handleResize);
-			handleResize.cancel();
-		};
-	}, []);
+	const { paddingBottom, marginTop } = useFeaturedImageOffset({
+		imageRef,
+		ratio: 1.75,
+		debounceDelay: 200,
+	});
 
 	const BreadcrumbComponent = breadcrumbs?.length ? (
 		<Breadcrumbs className="">
@@ -63,7 +47,7 @@ export const StoryblokNewsArticle = ({
 	) : undefined;
 
 	return (
-		<article className={styles.newsSectionArticle} ref={articleRef}>
+		<article className={styles.newsSectionArticle}>
 			<Grid>
 				{/* page header */}
 				<GridItem cols={12}>
@@ -79,6 +63,7 @@ export const StoryblokNewsArticle = ({
 								pageType={blok.component}
 							/>,
 						]}
+						style={{ paddingBottom }}
 					/>
 				</GridItem>
 
@@ -93,6 +78,7 @@ export const StoryblokNewsArticle = ({
 							loading="eager"
 							src={blok?.image?.filename}
 							width="760px"
+							style={{ marginTop }}
 						/>
 					)}
 					<StoryblokRichText content={blok.content} />

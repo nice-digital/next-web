@@ -1,4 +1,3 @@
-import { debounce } from "lodash";
 import React, { useEffect, useRef } from "react";
 import { StoryblokStory } from "storyblok-generate-ts";
 import { StoryblokRichtext } from "storyblok-rich-text-react-renderer";
@@ -8,6 +7,7 @@ import { Grid, GridItem } from "@nice-digital/nds-grid";
 import { PageHeader } from "@nice-digital/nds-page-header";
 
 import { NewsLetterSignup } from "@/components/NewsLetterSignUp/NewsLetterSignup";
+import { useFeaturedImageOffset } from "@/hooks/useFeaturedImageOffset";
 import { type Breadcrumb as TypeBreadcrumb } from "@/types/Breadcrumb";
 import {
 	type AuthorStoryblok,
@@ -31,29 +31,11 @@ export const StoryblokBlogPost = ({
 	breadcrumbs,
 }: StoryblokBlogPostProps): React.ReactElement => {
 	const imageRef = useRef<HTMLImageElement>(null);
-	const articleRef = useRef<HTMLDivElement>(null);
 
-	useEffect(() => {
-		const handleResize = debounce(() => {
-			// set the offset for the featured image
-			if (articleRef.current && imageRef.current) {
-				articleRef.current.style.setProperty(
-					"--featuredImageOffset",
-					`${Math.floor(imageRef.current.height / 1.75)}px`
-				);
-			}
-		}, 250);
-
-		window.addEventListener("resize", handleResize);
-
-		//run once to set the initial value
-		handleResize();
-
-		// clear the event listener when the component is unmounted
-		return () => {
-			window.removeEventListener("resize", handleResize);
-			handleResize.cancel();
-		};
+	const { paddingBottom, marginTop } = useFeaturedImageOffset({
+		imageRef,
+		ratio: 1.75,
+		debounceDelay: 200,
 	});
 
 	const BreadcrumbComponent = breadcrumbs?.length ? (
@@ -66,18 +48,10 @@ export const StoryblokBlogPost = ({
 		</Breadcrumbs>
 	) : undefined;
 
-	// filter out any strings from the author array
-	// const mixedArray: (string | StoryblokStory<AuthorStoryblok>)[] = blok.author;
-	// const filteredAuthorArray: StoryblokStory<AuthorStoryblok>[] =
-	// 	mixedArray.filter(
-	// 		(item) => typeof item !== "string"
-	// 	) as StoryblokStory<AuthorStoryblok>[];
-
-	//TODO: remove this when the above is fixed, mob sanitycheck
 	const authors = blok.author as StoryblokStory<AuthorStoryblok>[];
 
 	return (
-		<article className={styles.newsSectionArticle} ref={articleRef}>
+		<article className={styles.newsSectionArticle}>
 			<Grid>
 				{/* page header */}
 				<GridItem cols={12}>
@@ -94,6 +68,7 @@ export const StoryblokBlogPost = ({
 							/>,
 						]}
 						secondSection={<AuthorList authors={authors} />}
+						style={{ paddingBottom }}
 					/>
 				</GridItem>
 
@@ -108,6 +83,7 @@ export const StoryblokBlogPost = ({
 							loading="eager"
 							src={blok.image.filename}
 							width="760px"
+							style={{ marginTop }}
 						/>
 					)}
 					<StoryblokRichText content={blok.content} />
