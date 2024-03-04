@@ -14,6 +14,10 @@ import {
 	type BlogPostStoryblok,
 } from "@/types/storyblok";
 
+import {
+	FeaturedImageProps,
+	NewsBlogLayout,
+} from "../News/NewsBlogLayout/NewsBlogLayout";
 import { NewsPageHeaderFooter } from "../NewsPageHeader/NewsPageHeaderFooter/NewsPageHeaderFooter";
 import { AuthorList } from "../StoryblokAuthor/AuthorList/AuthorList";
 import { StoryblokImage } from "../StoryblokImage/StoryblokImage";
@@ -34,6 +38,7 @@ export const StoryblokBlogPost = ({
 	const articleRef = useRef<HTMLDivElement>(null);
 
 	useEffect(() => {
+		console.log("BlogUseEffect");
 		const handleResize = debounce(() => {
 			// set the offset for the featured image
 			if (articleRef.current && imageRef.current) {
@@ -54,7 +59,9 @@ export const StoryblokBlogPost = ({
 			window.removeEventListener("resize", handleResize);
 			handleResize.cancel();
 		};
-	});
+	}, []);
+
+	const authors = blok.author as StoryblokStory<AuthorStoryblok>[];
 
 	const BreadcrumbComponent = breadcrumbs?.length ? (
 		<Breadcrumbs className="">
@@ -66,57 +73,44 @@ export const StoryblokBlogPost = ({
 		</Breadcrumbs>
 	) : undefined;
 
-	// filter out any strings from the author array
-	// const mixedArray: (string | StoryblokStory<AuthorStoryblok>)[] = blok.author;
-	// const filteredAuthorArray: StoryblokStory<AuthorStoryblok>[] =
-	// 	mixedArray.filter(
-	// 		(item) => typeof item !== "string"
-	// 	) as StoryblokStory<AuthorStoryblok>[];
+	const BlogPageHeader = (
+		<PageHeader
+			variant="fullWidthLight"
+			heading={blok.title}
+			lead={blok.introText}
+			breadcrumbs={BreadcrumbComponent}
+			description={[
+				<NewsPageHeaderFooter
+					key="page-header-meta"
+					date={blok.date}
+					pageType={blok.component}
+				/>,
+			]}
+			secondSection={<AuthorList authors={authors} />}
+		/>
+	);
 
-	//TODO: remove this when the above is fixed, mob sanitycheck
-	const authors = blok.author as StoryblokStory<AuthorStoryblok>[];
+	const featuredImageProps: FeaturedImageProps = {
+		fileName: blok?.image?.filename,
+		altText: blok?.image?.alt,
+	};
 
 	return (
-		<article className={styles.newsSectionArticle} ref={articleRef}>
-			<Grid>
-				{/* page header */}
-				<GridItem cols={12}>
-					<PageHeader
-						variant="fullWidthLight"
-						heading={blok.title}
-						lead={blok.introText}
-						breadcrumbs={BreadcrumbComponent}
-						description={[
-							<NewsPageHeaderFooter
-								key="page-header-meta"
-								date={blok.date}
-								pageType={blok.component}
-							/>,
-						]}
-						secondSection={<AuthorList authors={authors} />}
+		<NewsBlogLayout header={BlogPageHeader} ref={articleRef}>
+			<>
+				{blok.image && (
+					<StoryblokImage
+						ref={imageRef}
+						alt={blok.image.alt}
+						height="428px"
+						loading="eager"
+						src={blok.image.filename}
+						width="760px"
+						data-featured-image
 					/>
-				</GridItem>
-
-				{/* post content */}
-				<GridItem cols={12} md={{ cols: 7 }}>
-					{blok.image && (
-						<StoryblokImage
-							ref={imageRef}
-							alt={blok.image.alt}
-							className={styles.featuredImage}
-							height="428px"
-							loading="eager"
-							src={blok.image.filename}
-							width="760px"
-						/>
-					)}
-					<StoryblokRichText content={blok.content} />
-				</GridItem>
-				{/* action banner signup */}
-				<GridItem cols={12}>
-					<NewsLetterSignup />
-				</GridItem>
-			</Grid>
-		</article>
+				)}
+				<StoryblokRichText content={blok.content} />
+			</>
+		</NewsBlogLayout>
 	);
 };

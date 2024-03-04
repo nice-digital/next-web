@@ -5,37 +5,37 @@
 
 .newsSectionArticle  {
   // set up variables for the offset of the featured image across breakpoints
-  --featuredImageOffset: 16dvh;
+  // --featuredImageOffset: 16dvh;
 
-  // set padding on page-header based on the negat
-  &:has(.featuredImage) {
-    :global(.page-header) {
-      padding-bottom: var(--featuredImageOffset);
-    }
-  }
+  // // set padding on page-header based on the negat
+  // &:has(.featuredImage) {
+  //   :global(.page-header) {
+  //     padding-bottom: var(--featuredImageOffset);
+  //   }
+  // }
 
-  :global(.page-header) {
-    margin-bottom: utils.rem(spacing.$large);
-  }
+  // :global(.page-header) {
+  //   margin-bottom: utils.rem(spacing.$large);
+  // }
 
-  //TODO: move to  news page header component
-  :global(.page-header__heading) {
-    margin: 0 0 utils.rem(spacing.$large) 0;
-  }
+  // //TODO: move to  news page header component
+  // :global(.page-header__heading) {
+  //   margin: 0 0 utils.rem(spacing.$large) 0;
+  // }
 
-  :global(.page-header__lead) {
-    margin: 0 0 utils.rem(spacing.$large) 0;
-  }
+  // :global(.page-header__lead) {
+  //   margin: 0 0 utils.rem(spacing.$large) 0;
+  // }
 
-  :global(.page-header__description) {
-    margin: 0 0 utils.rem(spacing.$medium) 0;
-  }
+  // :global(.page-header__description) {
+  //   margin: 0 0 utils.rem(spacing.$medium) 0;
+  // }
 
-  :global(.breadcrumbs) {
-    margin-top: 0;
-  }
+  // :global(.breadcrumbs) {
+  //   margin-top: 0;
+  // }
 
-  // setting featured image styles here as we need to manage the offset between the image and the page header
+  // // setting featured image styles here as we need to manage the offset between the image and the page header
   .featuredImage {
     aspect-ratio: 16 / 9;
     display: block;
@@ -71,9 +71,9 @@
     margin: utils.rem(spacing.$medium 0);
   }
 
-  :global(.action-banner) {
-    margin: utils.rem(spacing.$xx-large) 0;
-  }
+  // :global(.action-banner) {
+  //   margin: utils.rem(spacing.$xx-large) 0;
+  // }
 
 }
 

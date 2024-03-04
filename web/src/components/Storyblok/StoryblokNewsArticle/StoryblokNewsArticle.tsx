@@ -3,15 +3,16 @@ import { debounce } from "lodash";
 import React, { useEffect, useRef } from "react";
 
 import { Breadcrumbs, Breadcrumb } from "@nice-digital/nds-breadcrumbs";
-import { Grid, GridItem } from "@nice-digital/nds-grid";
 import { PageHeader } from "@nice-digital/nds-page-header";
 import { Panel } from "@nice-digital/nds-panel";
 
-import { NewsLetterSignup } from "@/components/NewsLetterSignUp/NewsLetterSignup";
 import { type Breadcrumb as TypeBreadcrumb } from "@/types/Breadcrumb";
 import { type NewsArticleStoryblok } from "@/types/storyblok";
 
-import { NewsBlogLayout } from "../News/NewsBlogLayout/NewsBlogLayout";
+import {
+	FeaturedImageProps,
+	NewsBlogLayout,
+} from "../News/NewsBlogLayout/NewsBlogLayout";
 import { NewsPageHeaderFooter } from "../NewsPageHeader/NewsPageHeaderFooter/NewsPageHeaderFooter";
 import { StoryblokImage } from "../StoryblokImage/StoryblokImage";
 import { StoryblokRichText } from "../StoryblokRichText/StoryblokRichText";
@@ -116,6 +117,7 @@ export const StoryblokNewsArticle = ({
 			]}
 		/>
 	);
+
 	return (
 		<>
 			<NewsBlogLayout
@@ -128,7 +130,6 @@ export const StoryblokNewsArticle = ({
 						<StoryblokImage
 							ref={imageRef}
 							alt={blok.image.alt}
-							className={styles.featuredImage}
 							height="428px"
 							loading="eager"
 							src={blok?.image?.filename}
