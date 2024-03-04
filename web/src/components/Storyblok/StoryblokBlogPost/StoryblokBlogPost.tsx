@@ -39,29 +39,6 @@ export const StoryblokBlogPost = ({
 		debounceDelay: 200,
 	});
 
-	// useEffect(() => {
-	// 	const handleResize = debounce(() => {
-	// 		// set the offset for the featured image
-	// 		if (articleRef.current && imageRef.current) {
-	// 			articleRef.current.style.setProperty(
-	// 				"--featuredImageOffset",
-	// 				`${Math.floor(imageRef.current.height / 1.75)}px`
-	// 			);
-	// 		}
-	// 	}, 250);
-
-	// 	window.addEventListener("resize", handleResize);
-
-	// 	//run once to set the initial value
-	// 	handleResize();
-
-	// 	// clear the event listener when the component is unmounted
-	// 	return () => {
-	// 		window.removeEventListener("resize", handleResize);
-	// 		handleResize.cancel();
-	// 	};
-	// });
-
 	const BreadcrumbComponent = breadcrumbs?.length ? (
 		<Breadcrumbs className="">
 			{[{ title: "Home", path: "/" }, ...breadcrumbs].map((breadcrumb) => (
@@ -72,7 +49,6 @@ export const StoryblokBlogPost = ({
 		</Breadcrumbs>
 	) : undefined;
 
-	//TODO: remove this when the above is fixed, mob sanitycheck
 	const authors = blok.author as StoryblokStory<AuthorStoryblok>[];
 
 	return (
