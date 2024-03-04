@@ -31,7 +31,6 @@ export const StoryblokBlogPost = ({
 	breadcrumbs,
 }: StoryblokBlogPostProps): React.ReactElement => {
 	const imageRef = useRef<HTMLImageElement>(null);
-	const articleRef = useRef<HTMLDivElement>(null);
 
 	const { paddingBottom, marginTop } = useFeaturedImageOffset({
 		imageRef,
@@ -52,7 +51,7 @@ export const StoryblokBlogPost = ({
 	const authors = blok.author as StoryblokStory<AuthorStoryblok>[];
 
 	return (
-		<article className={styles.newsSectionArticle} ref={articleRef}>
+		<article className={styles.newsSectionArticle}>
 			<Grid>
 				{/* page header */}
 				<GridItem cols={12}>
