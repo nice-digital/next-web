@@ -10,7 +10,7 @@ export const NewsLetterSignup = (): React.ReactElement => {
 		<Button
 			elementType="a"
 			variant="cta"
-			className={styles["signup-cta"]}
+			className={styles.signupCta}
 			href="https://www.nice.org.uk/news/nice-newsletters-and-alerts"
 		>
 			Sign up for newsletters and alerts

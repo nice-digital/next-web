@@ -30,7 +30,7 @@
   }
 
   //target lite youtube embed wrapper - (video) is hardcoded at the start of every title
-  article[data-title^='(video)'] {
+  [data-title^='(video)'] {
     margin: utils.rem(spacing.$large) 0 utils.rem(spacing.$x-large);
     //remove bottom margin to avoid increased vertical spacing
     &:last-child {
@@ -38,7 +38,7 @@
     }
   }
 
-  & :last-child {
+  &:last-child {
     margin-bottom: 0;
   }
 

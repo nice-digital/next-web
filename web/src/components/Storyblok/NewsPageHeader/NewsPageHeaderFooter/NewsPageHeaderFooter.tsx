@@ -32,7 +32,7 @@ export const NewsPageHeaderFooter: React.FC<NewsPageHeaderFooterProps> = ({
 	}
 
 	return (
-		<div className={styles["page-header-footer"]}>
+		<div className={styles.footer}>
 			<Tag outline data-testid="pageTag">
 				{tagValue}
 			</Tag>
