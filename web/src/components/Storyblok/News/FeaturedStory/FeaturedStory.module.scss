@@ -2,7 +2,7 @@
 @use '@nice-digital/nds-core/scss/spacing';
 @use '@nice-digital/nds-core/scss/typography';
 @use '@nice-digital/nds-core/scss/utils';
-@use "~/styles/colours";
+@use '~/styles/colours';
 
 .story {
   background: colours.$featured-story-background;

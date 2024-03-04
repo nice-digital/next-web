@@ -14,7 +14,7 @@
   position: relative;
 
 
-  &:before {
+  &::before {
     color: colours.$icons;
     content: glyphs.get-glyph(left-double-quotation-mark);
     display: block;
@@ -48,7 +48,7 @@
   cite {
     @include typography.font-size($scale: 0);
     font-style: normal;
-    max-width: 66ch;
     font-weight: bold;
+    max-width: 66ch;
   }
 }
