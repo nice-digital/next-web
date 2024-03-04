@@ -35,8 +35,8 @@ export const AuthorList = ({
 
 	if (authors.length > 1) {
 		return (
-			<div className={styles["author-list"]}>
-				<h3 className={styles["author-list__heading"]}>List of authors</h3>
+			<div className={styles.authorList}>
+				<h3 className={styles.heading}>List of authors</h3>
 				{authors.map((author) => {
 					// eslint-disable-next-line @typescript-eslint/no-unused-vars
 					const { image, ...contentWithoutImage } = author.content;

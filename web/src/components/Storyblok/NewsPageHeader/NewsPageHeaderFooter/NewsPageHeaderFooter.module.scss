@@ -1,7 +1,7 @@
 @use '@nice-digital/nds-core/scss/spacing';
 @use '@nice-digital/nds-core/scss/utils';
 
-.page-header-footer {
+.footer {
   display: flex;
   gap: utils.rem(spacing.$medium);
 }
