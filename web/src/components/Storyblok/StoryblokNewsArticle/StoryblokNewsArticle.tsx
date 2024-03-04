@@ -33,7 +33,7 @@ export const StoryblokNewsArticle = ({
 	const { paddingBottom, marginTop } = useFeaturedImageOffset({
 		imageRef,
 		ratio: 1.75,
-		debounceDelay: 250,
+		debounceDelay: 200,
 	});
 
 	const BreadcrumbComponent = breadcrumbs?.length ? (
