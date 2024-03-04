@@ -2,6 +2,7 @@
 @use '@nice-digital/nds-core/scss/spacing';
 @use '@nice-digital/nds-core/scss/utils';
 
+/* stylelint-disable selector-class-pattern */
 
 .newsSectionArticle {
   // set up variables for the offset of the featured image across breakpoints
@@ -50,22 +51,7 @@
     }
   }
 
-  .articleSidebar {
-    margin: utils.rem(spacing.$large) 0 0;
 
-    @include media-queries.mq($from: md) {
-      margin: 0 0 utils.rem(spacing.$large);
-    }
-
-    //override child panel margins
-    & > * + * {
-      margin: 2rem 0 0;
-    }
-
-    & > :last-child {
-      margin-bottom: 0;
-    }
-  }
 
   hr {
     margin: utils.rem(spacing.$medium 0);
@@ -77,3 +63,15 @@
 
 }
 
+.articleSidebar {
+  margin: utils.rem(spacing.$large) 0 0;
+
+  @include media-queries.mq($from: md) {
+    margin: 0 0 utils.rem(spacing.$large);
+  }
+
+  //override child panel margins
+  > * + * {
+    margin: 2rem 0 0;
+  }
+}

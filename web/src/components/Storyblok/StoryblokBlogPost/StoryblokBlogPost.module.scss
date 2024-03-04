@@ -2,9 +2,10 @@
 @use '@nice-digital/nds-core/scss/spacing';
 @use '@nice-digital/nds-core/scss/utils';
 
+/* stylelint-disable selector-class-pattern */
 
 .newsSectionArticle {
-  // set up variables for the offset of the featured image across breakpoints
+
   --featuredImageOffset: 16dvh;
 
   // set padding on page-header based on the image offset
