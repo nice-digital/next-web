@@ -1,4 +1,3 @@
-import { debounce } from "lodash";
 import React, { useEffect, useRef } from "react";
 import { StoryblokStory } from "storyblok-generate-ts";
 import { StoryblokRichtext } from "storyblok-rich-text-react-renderer";
@@ -37,6 +36,7 @@ export const StoryblokBlogPost = ({
 	const { paddingBottom, marginTop } = useFeaturedImageOffset({
 		imageRef,
 		ratio: 1.75,
+		debounceDelay: 200,
 	});
 
 	// useEffect(() => {
@@ -93,7 +93,7 @@ export const StoryblokBlogPost = ({
 							/>,
 						]}
 						secondSection={<AuthorList authors={authors} />}
-						styles={{ paddingBottom }}
+						style={{ paddingBottom }}
 					/>
 				</GridItem>
 
