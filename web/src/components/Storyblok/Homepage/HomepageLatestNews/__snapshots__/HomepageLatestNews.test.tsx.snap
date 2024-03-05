@@ -50,7 +50,7 @@ exports[`Homepage latest news component should match snapshot with a featured st
         class="newsItem"
       >
         <article
-          class="newsCard "
+          class="newsCard"
         >
           <a
             aria-hidden="true"
@@ -60,40 +60,38 @@ exports[`Homepage latest news component should match snapshot with a featured st
           >
              
           </a>
-          <div>
-            <h3
-              class="heading"
+          <h3
+            class="heading"
+          >
+            <a
+              href="i/am/a-very-full-slug"
             >
-              <a
-                href="i/am/a-very-full-slug"
-              >
-                Test news article title
-              </a>
-            </h3>
-            <p>
-              Test intro text
-            </p>
-            <footer>
-              <span
-                class="tag tag--outline"
-                data-component="tag"
-              >
-                News
-              </span>
-              <span
-                class="date"
-              >
-                31 January 2024
-              </span>
-            </footer>
-          </div>
+              Test news article title
+            </a>
+          </h3>
+          <p>
+            Test intro text
+          </p>
+          <footer>
+            <span
+              class="tag tag--outline"
+              data-component="tag"
+            >
+              News
+            </span>
+            <span
+              class="date"
+            >
+              31 January 2024
+            </span>
+          </footer>
         </article>
       </li>
       <li
         class="newsItem"
       >
         <article
-          class="newsCard "
+          class="newsCard"
         >
           <a
             aria-hidden="true"
@@ -103,40 +101,38 @@ exports[`Homepage latest news component should match snapshot with a featured st
           >
              
           </a>
-          <div>
-            <h3
-              class="heading"
+          <h3
+            class="heading"
+          >
+            <a
+              href="i/am/a-very-full-slug"
             >
-              <a
-                href="i/am/a-very-full-slug"
-              >
-                Test blog post title
-              </a>
-            </h3>
-            <p>
-              Let's play Blockbusters!
-            </p>
-            <footer>
-              <span
-                class="tag tag--outline"
-                data-component="tag"
-              >
-                Blog
-              </span>
-              <span
-                class="date"
-              >
-                20 February 2024
-              </span>
-            </footer>
-          </div>
+              Test blog post title
+            </a>
+          </h3>
+          <p>
+            Let's play Blockbusters!
+          </p>
+          <footer>
+            <span
+              class="tag tag--outline"
+              data-component="tag"
+            >
+              Blog
+            </span>
+            <span
+              class="date"
+            >
+              20 February 2024
+            </span>
+          </footer>
         </article>
       </li>
       <li
         class="newsItem"
       >
         <article
-          class="newsCard "
+          class="newsCard"
         >
           <a
             aria-hidden="true"
@@ -146,33 +142,31 @@ exports[`Homepage latest news component should match snapshot with a featured st
           >
              
           </a>
-          <div>
-            <h3
-              class="heading"
+          <h3
+            class="heading"
+          >
+            <a
+              href="i/am/a-very-full-slug"
             >
-              <a
-                href="i/am/a-very-full-slug"
-              >
-                Test news article title
-              </a>
-            </h3>
-            <p>
-              Test intro text
-            </p>
-            <footer>
-              <span
-                class="tag tag--outline"
-                data-component="tag"
-              >
-                News
-              </span>
-              <span
-                class="date"
-              >
-                31 January 2024
-              </span>
-            </footer>
-          </div>
+              Test news article title
+            </a>
+          </h3>
+          <p>
+            Test intro text
+          </p>
+          <footer>
+            <span
+              class="tag tag--outline"
+              data-component="tag"
+            >
+              News
+            </span>
+            <span
+              class="date"
+            >
+              31 January 2024
+            </span>
+          </footer>
         </article>
       </li>
     </ol>
@@ -193,7 +187,7 @@ exports[`Homepage latest news component should match snapshot without a featured
         class="newsItem"
       >
         <article
-          class="newsCard "
+          class="newsCard"
         >
           <a
             aria-hidden="true"
@@ -203,40 +197,38 @@ exports[`Homepage latest news component should match snapshot without a featured
           >
              
           </a>
-          <div>
-            <h3
-              class="heading"
+          <h3
+            class="heading"
+          >
+            <a
+              href="i/am/a-very-full-slug"
             >
-              <a
-                href="i/am/a-very-full-slug"
-              >
-                Test news article title
-              </a>
-            </h3>
-            <p>
-              Test intro text
-            </p>
-            <footer>
-              <span
-                class="tag tag--outline"
-                data-component="tag"
-              >
-                News
-              </span>
-              <span
-                class="date"
-              >
-                31 January 2024
-              </span>
-            </footer>
-          </div>
+              Test news article title
+            </a>
+          </h3>
+          <p>
+            Test intro text
+          </p>
+          <footer>
+            <span
+              class="tag tag--outline"
+              data-component="tag"
+            >
+              News
+            </span>
+            <span
+              class="date"
+            >
+              31 January 2024
+            </span>
+          </footer>
         </article>
       </li>
       <li
         class="newsItem"
       >
         <article
-          class="newsCard "
+          class="newsCard"
         >
           <a
             aria-hidden="true"
@@ -246,40 +238,38 @@ exports[`Homepage latest news component should match snapshot without a featured
           >
              
           </a>
-          <div>
-            <h3
-              class="heading"
+          <h3
+            class="heading"
+          >
+            <a
+              href="i/am/a-very-full-slug"
             >
-              <a
-                href="i/am/a-very-full-slug"
-              >
-                Test blog post title
-              </a>
-            </h3>
-            <p>
-              Let's play Blockbusters!
-            </p>
-            <footer>
-              <span
-                class="tag tag--outline"
-                data-component="tag"
-              >
-                Blog
-              </span>
-              <span
-                class="date"
-              >
-                20 February 2024
-              </span>
-            </footer>
-          </div>
+              Test blog post title
+            </a>
+          </h3>
+          <p>
+            Let's play Blockbusters!
+          </p>
+          <footer>
+            <span
+              class="tag tag--outline"
+              data-component="tag"
+            >
+              Blog
+            </span>
+            <span
+              class="date"
+            >
+              20 February 2024
+            </span>
+          </footer>
         </article>
       </li>
       <li
         class="newsItem"
       >
         <article
-          class="newsCard "
+          class="newsCard"
         >
           <a
             aria-hidden="true"
@@ -289,33 +279,31 @@ exports[`Homepage latest news component should match snapshot without a featured
           >
              
           </a>
-          <div>
-            <h3
-              class="heading"
+          <h3
+            class="heading"
+          >
+            <a
+              href="i/am/a-very-full-slug"
             >
-              <a
-                href="i/am/a-very-full-slug"
-              >
-                Test news article title
-              </a>
-            </h3>
-            <p>
-              Test intro text
-            </p>
-            <footer>
-              <span
-                class="tag tag--outline"
-                data-component="tag"
-              >
-                News
-              </span>
-              <span
-                class="date"
-              >
-                31 January 2024
-              </span>
-            </footer>
-          </div>
+              Test news article title
+            </a>
+          </h3>
+          <p>
+            Test intro text
+          </p>
+          <footer>
+            <span
+              class="tag tag--outline"
+              data-component="tag"
+            >
+              News
+            </span>
+            <span
+              class="date"
+            >
+              31 January 2024
+            </span>
+          </footer>
         </article>
       </li>
     </ol>

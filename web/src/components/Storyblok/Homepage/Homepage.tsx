@@ -1,9 +1,11 @@
 import { StoryblokComponent } from "@storyblok/react";
+import { StoryblokStory } from "storyblok-generate-ts";
 
 import { StoryblokRichText } from "@/components/Storyblok/StoryblokRichText/StoryblokRichText";
 import { type NewsStory } from "@/types/News";
 import { type HomepageStoryblok } from "@/types/storyblok";
 
+import styles from "./Homepage.module.scss";
 import { HomepageLatestNews } from "./HomepageLatestNews/HomepageLatestNews";
 
 interface HomepageBlokProps {
@@ -41,12 +43,9 @@ export const Homepage = ({
 
 			{/* Latest news */}
 			<HomepageLatestNews
-				featuredStory={featuredStory as NewsStory}
+				featuredStory={featuredStory as StoryblokStory<NewsStory>}
 				latestNews={latestNews}
 			/>
-
-			{/* Links */}
-			<StoryblokRichText content={links} />
 
 			{/* Primary action banner */}
 			{primaryActionBanner &&
@@ -54,6 +53,11 @@ export const Homepage = ({
 				primaryActionBanner.map((nestedBlok) => (
 					<StoryblokComponent blok={nestedBlok} key={nestedBlok._uid} />
 				))}
+
+			{/* Links */}
+			<div className={styles.links}>
+				<StoryblokRichText content={links} />
+			</div>
 
 			{/* Promo box 1 */}
 			{promoBox1 &&

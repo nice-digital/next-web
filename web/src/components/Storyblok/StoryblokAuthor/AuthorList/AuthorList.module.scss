@@ -5,16 +5,14 @@
 @use '@nice-digital/nds-core/scss/utils';
 
 
-.author-list {
-
+.authorList {
   //TODO: remove secondsection styles in NDS. Manage authorlist style in this component
   @include media-queries.mq($from: md) {
     padding-bottom: utils.rem(spacing.$x-large);
   }
+}
 
-  &__heading {
-    @include typography.h6;
-    margin: 0 0 utils.rem(spacing.$small);
-  }
-
+.heading {
+  @include typography.h6;
+  margin: 0 0 utils.rem(spacing.$small);
 }

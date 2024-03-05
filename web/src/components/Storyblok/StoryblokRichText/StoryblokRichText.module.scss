@@ -1,19 +1,24 @@
 @use '@nice-digital/nds-core/scss/spacing';
 @use '@nice-digital/nds-core/scss/utils';
 
-.storyblokRichTextWrapper {
 
+.storyblokRichTextWrapper {
   p:has(img) {
     margin: utils.rem(spacing.$large 0);
     max-width: max-content;
   }
 
-  h2,h3,h4,h5,h6 {
+  h2,
+  h3,
+  h4,
+  h5,
+  h6 {
     margin: utils.rem(spacing.$large) 0 utils.rem(spacing.$medium);
   }
 
   picture {
     display: block;
+
     img {
       aspect-ratio: 16/9;
       display: block;
@@ -23,5 +28,19 @@
       width: 100%;
     }
   }
+
+  //target lite youtube embed wrapper - (video) is hardcoded at the start of every title
+  [data-title^='(video)'] {
+    margin: utils.rem(spacing.$large) 0 utils.rem(spacing.$x-large);
+    //remove bottom margin to avoid increased vertical spacing
+    &:last-child {
+      margin: utils.rem(spacing.$large) 0 0;
+    }
+  }
+
+  &:last-child {
+    margin-bottom: 0;
+  }
+
 }
 

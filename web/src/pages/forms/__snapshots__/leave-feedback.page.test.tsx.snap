@@ -80,6 +80,7 @@ exports[`LeaveFeedbackForm should match snapshot 1`] = `
       <div
         class="page-header "
         data-component="page-header"
+        data-testid="content-start"
         id="content-start"
       >
         <div

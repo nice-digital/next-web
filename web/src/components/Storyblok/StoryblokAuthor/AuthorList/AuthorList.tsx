@@ -1,11 +1,10 @@
-import { StoryblokComponent } from "@storyblok/react";
-import { P } from "pino";
 import React from "react";
 import { StoryblokStory } from "storyblok-generate-ts";
 
 import { AuthorStoryblok } from "@/types/storyblok";
 
 import { StoryblokAuthor } from "../StoryblokAuthor";
+
 import styles from "./AuthorList.module.scss";
 
 export interface AuthorListProps {
@@ -36,8 +35,8 @@ export const AuthorList = ({
 
 	if (authors.length > 1) {
 		return (
-			<div className={styles["author-list"]}>
-				<h3 className={styles["author-list__heading"]}>List of authors</h3>
+			<div className={styles.authorList}>
+				<h3 className={styles.heading}>List of authors</h3>
 				{authors.map((author) => {
 					// eslint-disable-next-line @typescript-eslint/no-unused-vars
 					const { image, ...contentWithoutImage } = author.content;

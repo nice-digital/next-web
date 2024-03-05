@@ -79,6 +79,7 @@ exports[`/guidance/inconsultation should match the snapshot 1`] = `
       <div
         class="page-header "
         data-component="page-header"
+        data-testid="content-start"
         id="content-start"
       >
         <div

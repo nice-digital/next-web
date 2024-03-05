@@ -2,9 +2,10 @@
 @use '@nice-digital/nds-core/scss/spacing';
 @use '@nice-digital/nds-core/scss/utils';
 
+/* stylelint-disable selector-class-pattern */
 
-.article  {
-  // set up variables for the offset of the featured image across breakpoints
+.newsSectionArticle {
+
   --featuredImageOffset: 16dvh;
 
   // set padding on page-header based on the image offset
@@ -19,16 +20,15 @@
     aspect-ratio: 16 / 9;
     display: block;
     height: auto;
+    margin-bottom: utils.rem(spacing.$large);
     margin-top: calc(calc(var(--featuredImageOffset) * -1) - 1rem);
-    margin-bottom: utils.rem(spacing.$x-large);
     object-fit: cover;
     width: 100%;
-  }
 
-  :global(.action-banner) {
-    margin: utils.rem(spacing.$xx-large) 0;
+    @include media-queries.mq($from: sm, $until: md) {
+      aspect-ratio: 21 / 9;
+    }
   }
-
 
   //TODO: all news and blog header related. Move to NewsPageHeader
   :global(.page-header__heading) {
@@ -46,6 +46,11 @@
   :global(.breadcrumbs) {
     margin-top: 0;
   }
+
+  :global(.action-banner) {
+    margin: utils.rem(spacing.$xx-large) 0;
+  }
+
 
 }
 

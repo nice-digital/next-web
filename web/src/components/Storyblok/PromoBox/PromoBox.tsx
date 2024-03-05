@@ -54,7 +54,11 @@ export const PromoBox: React.FC<PromoBoxProps> = ({
 						<HeadingElement className={styles.heading}>
 							{heading}
 						</HeadingElement>
-						{body && <StoryblokRichText content={body} />}
+						{body && (
+							<div className={styles.body}>
+								<StoryblokRichText content={body} />
+							</div>
+						)}
 						{cta?.length && <StoryblokButtonLink button={cta[0]} />}
 					</GridItem>
 					<GridItem

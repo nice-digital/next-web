@@ -1,7 +1,7 @@
 import { Breadcrumbs, Breadcrumb } from "@nice-digital/nds-breadcrumbs";
-import { Button } from "@nice-digital/nds-button";
 import { Hero } from "@nice-digital/nds-hero";
 
+import { StoryblokButtonLink } from "@/components/Storyblok/StoryblokButtonLink/StoryblokButtonLink";
 import { type Breadcrumb as TypeBreadcrumb } from "@/types/Breadcrumb";
 import { type HeroStoryblok } from "@/types/storyblok";
 
@@ -14,6 +14,8 @@ export const StoryblokHero = ({
 	blok,
 	breadcrumbs,
 }: HeroBlokProps): React.ReactElement => {
+	const { image, cta } = blok;
+
 	const BreadcrumbComponent = breadcrumbs?.length ? (
 		<Breadcrumbs>
 			{[{ title: "Home", path: "/" }, ...breadcrumbs].map((breadcrumb) => (
@@ -24,15 +26,11 @@ export const StoryblokHero = ({
 		</Breadcrumbs>
 	) : undefined;
 
-	//test using storyblok image service to serve webp images
-	const imageUrl = `${blok.image?.filename}/m/` || undefined;
+	const imageUrl = `${image?.filename}/m/` || undefined;
 
-	const Action =
-		blok.ctaLink && blok.ctaText ? (
-			<Button to={blok.ctaLink.url} variant="secondary">
-				{blok.ctaText}
-			</Button>
-		) : undefined;
+	const action = cta?.length ? (
+		<StoryblokButtonLink button={cta[0]} />
+	) : undefined;
 
 	return (
 		<Hero
@@ -40,7 +38,7 @@ export const StoryblokHero = ({
 			intro={blok.summary || undefined}
 			header={BreadcrumbComponent}
 			image={imageUrl}
-			actions={Action}
+			actions={action}
 		/>
 	);
 };
