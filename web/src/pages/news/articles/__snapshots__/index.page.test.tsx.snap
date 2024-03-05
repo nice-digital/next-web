@@ -167,43 +167,6 @@ exports[`/news/articles/index.page should match snapshot for main content 1`] = 
         </li>
       </ul>
     </nav>
-    <article
-      class="story"
-    >
-      <div
-        class="imageContainer"
-        style="background-image: url(https://a.storyblok.com/f/243782/2121x1414/dade5e41e7/gettyimages-1164685127.jpg);"
-      />
-      <div
-        class="content"
-      >
-        <h3
-          class="heading"
-        >
-          <a
-            href="/news/articles/nice-recommends-better-targeting-of-antibiotics-for-suspected-sepsis"
-          >
-            Featured story
-          </a>
-        </h3>
-        <p>
-          Our guidance recommends better targeting of antibiotics to those at the highest risk of suspected sepsis to ensure the right people receive treatment.
-        </p>
-        <footer>
-          <span
-            class="tag tag--outline"
-            data-component="tag"
-          >
-            News
-          </span>
-          <span
-            class="date"
-          >
-            10 January 2024
-          </span>
-        </footer>
-      </div>
-    </article>
     <ul
       class="newsList"
     >
@@ -244,7 +207,7 @@ exports[`/news/articles/index.page should match snapshot for main content 1`] = 
               <span
                 class="date"
               >
-                10 January 2024
+                01 January 1970
               </span>
             </footer>
           </div>
@@ -287,179 +250,7 @@ exports[`/news/articles/index.page should match snapshot for main content 1`] = 
               <span
                 class="date"
               >
-                10 January 2024
-              </span>
-            </footer>
-          </div>
-        </article>
-      </li>
-      <li
-        class="newsItem"
-      >
-        <article
-          class="newsCard listItem"
-        >
-          <a
-            aria-hidden="true"
-            class="imageContainer"
-            href="news/articles/nice-recommends-better-targeting-of-antibiotics-for-suspected-sepsis"
-            style="background-image: url(https://a.storyblok.com/f/243782/2121x1414/dade5e41e7/gettyimages-1164685127.jpg);"
-          >
-             
-          </a>
-          <div>
-            <h3
-              class="heading"
-            >
-              <a
-                href="news/articles/nice-recommends-better-targeting-of-antibiotics-for-suspected-sepsis"
-              >
-                Test story 3
-              </a>
-            </h3>
-            <p>
-              Our guidance recommends better targeting of antibiotics to those at the highest risk of suspected sepsis to ensure the right people receive treatment.
-            </p>
-            <footer>
-              <span
-                class="tag tag--outline"
-                data-component="tag"
-              >
-                News
-              </span>
-              <span
-                class="date"
-              >
-                10 January 2024
-              </span>
-            </footer>
-          </div>
-        </article>
-      </li>
-      <li
-        class="newsItem"
-      >
-        <article
-          class="newsCard listItem"
-        >
-          <a
-            aria-hidden="true"
-            class="imageContainer"
-            href="news/articles/nice-recommends-better-targeting-of-antibiotics-for-suspected-sepsis"
-            style="background-image: url(https://a.storyblok.com/f/243782/2121x1414/dade5e41e7/gettyimages-1164685127.jpg);"
-          >
-             
-          </a>
-          <div>
-            <h3
-              class="heading"
-            >
-              <a
-                href="news/articles/nice-recommends-better-targeting-of-antibiotics-for-suspected-sepsis"
-              >
-                Test story 4
-              </a>
-            </h3>
-            <p>
-              Our guidance recommends better targeting of antibiotics to those at the highest risk of suspected sepsis to ensure the right people receive treatment.
-            </p>
-            <footer>
-              <span
-                class="tag tag--outline"
-                data-component="tag"
-              >
-                News
-              </span>
-              <span
-                class="date"
-              >
-                10 January 2024
-              </span>
-            </footer>
-          </div>
-        </article>
-      </li>
-      <li
-        class="newsItem"
-      >
-        <article
-          class="newsCard listItem"
-        >
-          <a
-            aria-hidden="true"
-            class="imageContainer"
-            href="news/articles/nice-recommends-better-targeting-of-antibiotics-for-suspected-sepsis"
-            style="background-image: url(https://a.storyblok.com/f/243782/2121x1414/dade5e41e7/gettyimages-1164685127.jpg);"
-          >
-             
-          </a>
-          <div>
-            <h3
-              class="heading"
-            >
-              <a
-                href="news/articles/nice-recommends-better-targeting-of-antibiotics-for-suspected-sepsis"
-              >
-                Test story 5
-              </a>
-            </h3>
-            <p>
-              Our guidance recommends better targeting of antibiotics to those at the highest risk of suspected sepsis to ensure the right people receive treatment.
-            </p>
-            <footer>
-              <span
-                class="tag tag--outline"
-                data-component="tag"
-              >
-                News
-              </span>
-              <span
-                class="date"
-              >
-                10 January 2024
-              </span>
-            </footer>
-          </div>
-        </article>
-      </li>
-      <li
-        class="newsItem"
-      >
-        <article
-          class="newsCard listItem"
-        >
-          <a
-            aria-hidden="true"
-            class="imageContainer"
-            href="news/articles/nice-recommends-better-targeting-of-antibiotics-for-suspected-sepsis"
-            style="background-image: url(https://a.storyblok.com/f/243782/2121x1414/dade5e41e7/gettyimages-1164685127.jpg);"
-          >
-             
-          </a>
-          <div>
-            <h3
-              class="heading"
-            >
-              <a
-                href="news/articles/nice-recommends-better-targeting-of-antibiotics-for-suspected-sepsis"
-              >
-                Test story 6
-              </a>
-            </h3>
-            <p>
-              Our guidance recommends better targeting of antibiotics to those at the highest risk of suspected sepsis to ensure the right people receive treatment.
-            </p>
-            <footer>
-              <span
-                class="tag tag--outline"
-                data-component="tag"
-              >
-                News
-              </span>
-              <span
-                class="date"
-              >
-                10 January 2024
+                01 January 1970
               </span>
             </footer>
           </div>
@@ -511,7 +302,7 @@ exports[`/news/articles/index.page should match snapshot for main content 1`] = 
       <p>
         Page 
         <b>
-          1
+          2
         </b>
          
         of 
@@ -527,9 +318,9 @@ exports[`/news/articles/index.page should match snapshot for main content 1`] = 
         >
           <a
             class="simple-pagination__link"
-            href="/news/articles?page=2"
+            href="/news/articles?page=1"
           >
-            Next page
+            Previous page
           </a>
            
         </span>

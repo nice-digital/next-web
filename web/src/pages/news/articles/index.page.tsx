@@ -17,7 +17,7 @@ import { fetchStories, getStoryVersionFromQuery } from "@/utils/storyblok";
 import type { GetServerSidePropsContext } from "next";
 
 export type NewsArticlesProps = {
-	featuredStory: StoryblokStory<NewsStory> | null;
+	featuredStory?: StoryblokStory<NewsStory> | null;
 	stories: StoryblokStory<NewsStory>[];
 	totalResults: number;
 	currentPage: number;
@@ -109,13 +109,12 @@ export async function getServerSideProps({ query }: GetServerSidePropsContext) {
 	if (
 		page === 1 &&
 		stories.length > 0 &&
-		stories[0].uuid === latestStoryResult.stories[0].uuid
+		stories[0].uuid === latestStoryResult.stories[0].uuid // Check if the first story on page 1 is the same as the latest story
 	) {
 		featuredStory = latestStoryResult.stories[0]; // Set featured story on page 1
 		stories = stories.slice(1); // Skip first story on page 1 as it's featured
 	}
 
-	//TODO ternary redirect for invalid page is probably better handled elsewhere
 	return page < 1 ||
 		page > Math.ceil(storiesResult.total / resultsPerPage) ||
 		isNaN(page)

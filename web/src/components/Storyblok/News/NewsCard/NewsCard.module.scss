@@ -9,7 +9,7 @@
 
   &.listItem {
     align-items: flex-start;
-    border-bottom: 2px solid colours.$newslist-border;
+    border-bottom: 1px solid colours.$newslist-border;
     display: flex;
     flex-direction: column;
     padding-bottom: utils.rem(spacing.$large);

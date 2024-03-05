@@ -15,7 +15,7 @@ jest.mock("@storyblok/react", () => ({
 }));
 
 jest.mock("@/utils/storyblok", () => ({
-	friendlyDate: jest.fn().mockReturnValue("10 January 2024"),
+	friendlyDate: jest.fn().mockReturnValue("01 January 1970"),
 }));
 
 describe("/news/articles/index.page", () => {
@@ -23,8 +23,8 @@ describe("/news/articles/index.page", () => {
 		(useRouter as jest.Mock).mockReturnValue({
 			route: "/news/articles",
 			pathname: "/news/articles",
-			query: { page: "1" },
-			asPath: "/news/articles",
+			query: { page: "2" },
+			asPath: "/news/articles?page=2",
 			events: {
 				on: jest.fn(),
 				off: jest.fn(),
@@ -60,16 +60,15 @@ describe("/news/articles/index.page", () => {
 
 	const resultsPerPage = 6;
 	const totalResults = 8;
-	const currentPage = 1;
+	const currentPage = 2;
 	const mockProps: NewsArticlesProps = {
-		stories: mockStories.slice(
-			0,
-			resultsPerPage
-		) as unknown as StoryblokStory<NewsStory>[],
+		stories: Array.from(
+			{ length: 2 },
+			(_, i) => mockStories[i] as unknown as StoryblokStory<NewsStory>
+		), // limit number in array to mimic fetchStories resultsPerPage option in prop,
 		currentPage,
 		totalResults,
 		resultsPerPage,
-		featuredStory: mockFeaturedStory as unknown as StoryblokStory<NewsStory>,
 	};
 
 	it("should match snapshot for main content", () => {
@@ -78,8 +77,25 @@ describe("/news/articles/index.page", () => {
 	});
 
 	it("should render a featured story if the page is 1 and there is a featured story", () => {
-		render(<ArticlesIndexPage {...mockProps} />);
+		const props = {
+			...mockProps,
+			featuredStory: mockFeaturedStory as unknown as StoryblokStory<NewsStory>,
+		};
+		render(<ArticlesIndexPage {...props} />);
 		expect(screen.getByText("Featured story")).toBeInTheDocument();
+	});
+
+	it("should render the correct number of stories", () => {
+		render(<ArticlesIndexPage {...mockProps} />);
+		expect(screen.getAllByRole("article")).toHaveLength(2);
+	});
+
+	it("should render the action banner", () => {
+		render(<ArticlesIndexPage {...mockProps} />);
+		const actionBannerHeading = screen.queryByRole("heading", {
+			name: "Sign up for our newsletters and alerts",
+		});
+		expect(actionBannerHeading).toBeInTheDocument();
 	});
 
 	describe("getServerSideProps", () => {
@@ -159,6 +175,24 @@ describe("/news/articles/index.page", () => {
 			} as unknown as GetServerSidePropsContext<ParsedUrlQuery>);
 
 			expect(result.props?.featuredStory).toEqual(mockStories[0]);
+		});
+
+		it("should remove the first story from the stories if the page is 1 and there is a featured story", async () => {
+			const { getServerSideProps } = await import("./index.page");
+			jest.mock("@/utils/storyblok", () => ({
+				getStoryVersionFromQuery: jest.fn().mockReturnValue("published"),
+				fetchStories: jest.fn().mockResolvedValue({
+					stories: mockStories,
+					total: totalResults,
+				}),
+			}));
+
+			const result = await getServerSideProps({
+				query: { page: "1" },
+			} as unknown as GetServerSidePropsContext<ParsedUrlQuery>);
+
+			expect(result.props?.featuredStory).not.toBeNull();
+			expect(result.props?.stories).not.toContain(mockStories[0]);
 		});
 	});
 });
