@@ -157,11 +157,7 @@ export const getProductListPage =
 		if (failed)
 			return (
 				<>
-					<NextSeo
-						title={title}
-						noindex={true}
-						description={metaDescription}
-					/>
+					<NextSeo title={title} noindex={true} description={metaDescription} />
 					<ErrorPageContent breadcrumbs={breadcrumbs} />
 				</>
 			);

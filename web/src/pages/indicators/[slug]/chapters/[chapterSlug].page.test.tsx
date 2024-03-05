@@ -53,9 +53,7 @@ describe("/indicators/[slug]/chapters/[chapterSlug].page", () => {
 		it("should render the page title with reversed breadcrumbs for SEO", async () => {
 			render(<IndicatorChapterPage {...props} />);
 			await waitFor(() => {
-				expect(document.title).toEqual(
-					`Recommendations | NG100 | Indicators`
-				);
+				expect(document.title).toEqual(`Recommendations | NG100 | Indicators`);
 			});
 		});
 

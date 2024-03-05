@@ -49,9 +49,7 @@ describe("/indicators/[slug].page", () => {
 		it("should render the page title with reversed breadcrumbs for SEO", async () => {
 			render(<IndicatorsDetailsPage {...props} />);
 			await waitFor(() => {
-				expect(document.title).toEqual(
-					`${ng100.Title} | Indicators`
-				);
+				expect(document.title).toEqual(`${ng100.Title} | Indicators`);
 			});
 		});
 

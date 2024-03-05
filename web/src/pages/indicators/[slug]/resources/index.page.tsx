@@ -40,9 +40,7 @@ export default function ToolsAndResourcesListPage({
 }: ToolsAndResourcesListPageProps): JSX.Element {
 	return (
 		<>
-			<NextSeo
-				title={`Tools and resources | ${product.id} | Indicators`}
-			/>
+			<NextSeo title={`Tools and resources | ${product.id} | Indicators`} />
 
 			<Breadcrumbs>
 				<Breadcrumb to="/">Home</Breadcrumb>

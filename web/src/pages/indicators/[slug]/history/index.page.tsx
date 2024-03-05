@@ -47,9 +47,7 @@ export default function HistoryPage({
 }: HistoryPageProps): JSX.Element {
 	return (
 		<>
-			<NextSeo
-				title={`History | ${product.id} | Indicators`}
-			/>
+			<NextSeo title={`History | ${product.id} | Indicators`} />
 
 			<Breadcrumbs>
 				<Breadcrumb to="/">Home</Breadcrumb>
