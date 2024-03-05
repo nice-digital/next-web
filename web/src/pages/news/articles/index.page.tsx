@@ -17,7 +17,7 @@ import { fetchStories, getStoryVersionFromQuery } from "@/utils/storyblok";
 import type { GetServerSidePropsContext } from "next";
 
 export type NewsArticlesProps = {
-	featuredStory: StoryblokStory<NewsStory>;
+	featuredStory: StoryblokStory<NewsStory> | null;
 	stories: StoryblokStory<NewsStory>[];
 	totalResults: number;
 	currentPage: number;
@@ -57,7 +57,7 @@ export const ArticlesIndexPage = ({
 				}
 			/>
 			<NewsListNav destinations={destinations} />
-			<FeaturedStory story={featuredStory} />
+			{featuredStory && <FeaturedStory story={featuredStory} />}
 			<NewsList news={stories} />
 			<ActionBanner
 				title="Sign up for our newsletters and alerts"
@@ -81,10 +81,9 @@ export const ArticlesIndexPage = ({
 };
 
 export async function getServerSideProps({ query }: GetServerSidePropsContext) {
-
 	const version = getStoryVersionFromQuery(query);
 	const page = Number(query.page) || 1;
-	const resultsPerPage = 5;
+	const resultsPerPage = 6;
 
 	const storiesResult = await fetchStories(version, {
 		starts_with: "news/articles/",
@@ -127,7 +126,7 @@ export async function getServerSideProps({ query }: GetServerSidePropsContext) {
 		  }
 		: {
 				props: {
-					featuredStory: latestStoryResult.stories[0],
+					featuredStory: page === 1 ? latestStoryResult.stories[0] : null,
 					stories,
 					totalResults: storiesResult.total,
 					currentPage: page,
