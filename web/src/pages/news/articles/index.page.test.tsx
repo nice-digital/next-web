@@ -60,7 +60,7 @@ describe("/news/articles/index.page", () => {
 
 	const resultsPerPage = 6;
 	const totalResults = 8;
-	let currentPage = 1;
+	const currentPage = 1;
 	const mockProps: NewsArticlesProps = {
 		stories: mockStories.slice(
 			0,
@@ -80,31 +80,6 @@ describe("/news/articles/index.page", () => {
 	it("should render a featured story if the page is 1 and there is a featured story", () => {
 		render(<ArticlesIndexPage {...mockProps} />);
 		expect(screen.getByText("Featured story")).toBeInTheDocument();
-	});
-
-	//TODO this test probably isn't worthwhile if we are just mocking props and not providing a mock of fetchStories
-	it("should not render a featured story if the page is > 1", () => {
-		(useRouter as jest.Mock).mockReturnValue({
-			route: "/news/articles",
-			pathname: "/news/articles",
-			query: { page: "2" },
-			asPath: "/news/articles?page=2",
-			events: {
-				on: jest.fn(),
-				off: jest.fn(),
-				emit: jest.fn(),
-			},
-			push: jest.fn(),
-		});
-		currentPage = 2;
-		const props = {
-			...mockProps,
-			currentPage: 2,
-			featuredStory: null,
-		};
-
-		render(<ArticlesIndexPage {...props} />);
-		expect(screen.queryByText("Featured story")).toBeNull();
 	});
 
 	describe("getServerSideProps", () => {
