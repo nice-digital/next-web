@@ -228,7 +228,7 @@ exports[`/news/articles/index.page should match snapshot for main content 1`] = 
               <a
                 href="news/articles/nice-recommends-better-targeting-of-antibiotics-for-suspected-sepsis"
               >
-                Test featured story 1
+                Test story 1
               </a>
             </h3>
             <p>

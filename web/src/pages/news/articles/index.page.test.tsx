@@ -1,8 +1,10 @@
+import { ParsedUrlQuery } from "querystring";
+
 import { render, screen } from "@testing-library/react";
+import { GetServerSidePropsContext } from "next";
 import { useRouter } from "next/router";
 import { StoryblokStory } from "storyblok-generate-ts";
 
-import { FeaturedStory } from "@/components/Storyblok/News/FeaturedStory/FeaturedStory";
 import { NewsStory } from "@/types/News";
 
 import { ArticlesIndexPage, NewsArticlesProps } from "./index.page";
@@ -34,84 +36,27 @@ describe("/news/articles/index.page", () => {
 
 	afterEach(() => jest.clearAllMocks());
 
-	// const mockfetchStoriesResponse: SBMultipleResponse<T> = {
-	// 	stories: [],
-	// 	perPage: 3,
-	// 	total: 5,
-	// };
-
-	const mockStories = [
-		{
-			...mockStory,
-			name: "Test featured story 1",
-			id: 1,
-			content: {
-				...mockStory.content,
-				date: "2024-01-10",
-				component: "newsArticle",
-			},
-		},
-		{
-			...mockStory,
-			name: "Test story 2",
-			id: 2,
-			content: {
-				...mockStory.content,
-				date: "2023-12-25",
-				component: "newsArticle",
-			},
-		},
-		{
-			...mockStory,
-			name: "Test story 3",
-			id: 3,
-			content: {
-				...mockStory.content,
-				date: "2023-8-11",
-				component: "newsArticle",
-			},
-		},
-		{
-			...mockStory,
-			name: "Test story 4",
-			id: 4,
-			content: { ...mockStory.content, date: "2023-06-18" },
-		},
-		{
-			...mockStory,
-			name: "Test story 5",
-			id: 5,
-			content: { ...mockStory.content, date: "2023-02-07" },
-		},
-		{
-			...mockStory,
-			name: "Test story 6",
-			id: 6,
-			content: { ...mockStory.content, date: "2023-01-25" },
-		},
-		{
-			...mockStory,
-			name: "Test story 7",
-			id: 7,
-			content: { ...mockStory.content, date: "2023-01-15" },
-		},
-		{
-			...mockStory,
-			name: "Test story 8",
-			id: 8,
-			content: { ...mockStory.content, date: "2023-01-05" },
-		},
-	];
-
-	const mockFeaturedStory = {
-		...mockStories[0],
-		name: "Featured story",
+	const generateStory = (
+		id: number,
+		name: string,
+		date: string,
+		component = "newsArticle"
+	) => ({
+		...mockStory,
+		name,
+		id,
 		content: {
-			...mockStories[0].content,
-			date: "2024-01-10",
-			component: "newsArticle",
+			...mockStory.content,
+			date,
+			component,
 		},
-	};
+	});
+
+	const mockStories = Array.from({ length: 8 }, (_, i) =>
+		generateStory(i + 1, `Test story ${i + 1}`, `2023-0${i + 1}-10`)
+	);
+
+	const mockFeaturedStory = generateStory(0, "Featured story", "2024-01-10");
 
 	const resultsPerPage = 6;
 	const totalResults = 8;
@@ -132,8 +77,13 @@ describe("/news/articles/index.page", () => {
 		expect(document.body).toMatchSnapshot();
 	});
 
+	it("should render a featured story if the page is 1 and there is a featured story", () => {
+		render(<ArticlesIndexPage {...mockProps} />);
+		expect(screen.getByText("Featured story")).toBeInTheDocument();
+	});
+
+	//TODO this test probably isn't worthwhile if we are just mocking props and not providing a mock of fetchStories
 	it("should not render a featured story if the page is > 1", () => {
-		// useRouter mock to return page 2
 		(useRouter as jest.Mock).mockReturnValue({
 			route: "/news/articles",
 			pathname: "/news/articles",
@@ -155,5 +105,85 @@ describe("/news/articles/index.page", () => {
 
 		render(<ArticlesIndexPage {...props} />);
 		expect(screen.queryByText("Featured story")).toBeNull();
+	});
+
+	describe("getServerSideProps", () => {
+		it("should redirect to /news/articles if the page is less than 1", async () => {
+			const { getServerSideProps } = await import("./index.page");
+			jest.mock("@/utils/storyblok", () => ({
+				getStoryVersionFromQuery: jest.fn().mockReturnValue("published"),
+				fetchStories: jest.fn().mockResolvedValue({
+					stories: mockStories,
+					total: totalResults,
+				}),
+			}));
+
+			const result = await getServerSideProps({
+				query: { page: "-1" },
+			} as unknown as GetServerSidePropsContext<ParsedUrlQuery>);
+
+			expect(result).toEqual({
+				redirect: {
+					destination: "/news/articles",
+					permanent: false,
+				},
+			});
+		});
+
+		it("should redirect to /news/articles if the page is greater than the total number of pages", async () => {
+			const { getServerSideProps } = await import("./index.page");
+			jest.mock("@/utils/storyblok", () => ({
+				getStoryVersionFromQuery: jest.fn().mockReturnValue("published"),
+				fetchStories: jest.fn().mockResolvedValue({
+					stories: mockStories,
+					total: totalResults,
+				}),
+			}));
+
+			const result = await getServerSideProps({
+				query: { page: "3" },
+			} as unknown as GetServerSidePropsContext<ParsedUrlQuery>);
+
+			expect(result).toEqual({
+				redirect: {
+					destination: "/news/articles",
+					permanent: false,
+				},
+			});
+		});
+
+		it("should set featuredStory to null if the page is greater than 1", async () => {
+			const { getServerSideProps } = await import("./index.page");
+			jest.mock("@/utils/storyblok", () => ({
+				getStoryVersionFromQuery: jest.fn().mockReturnValue("published"),
+				fetchStories: jest.fn().mockResolvedValue({
+					stories: mockStories,
+					total: totalResults,
+				}),
+			}));
+
+			const result = await getServerSideProps({
+				query: { page: "2" },
+			} as unknown as GetServerSidePropsContext<ParsedUrlQuery>);
+
+			expect(result.props?.featuredStory).toBeNull();
+		});
+
+		it("should set the latest story as the featured story if the page is 1", async () => {
+			const { getServerSideProps } = await import("./index.page");
+			jest.mock("@/utils/storyblok", () => ({
+				getStoryVersionFromQuery: jest.fn().mockReturnValue("published"),
+				fetchStories: jest.fn().mockResolvedValue({
+					stories: mockStories,
+					total: totalResults,
+				}),
+			}));
+
+			const result = await getServerSideProps({
+				query: { page: "1" },
+			} as unknown as GetServerSidePropsContext<ParsedUrlQuery>);
+
+			expect(result.props?.featuredStory).toEqual(mockStories[0]);
+		});
 	});
 });

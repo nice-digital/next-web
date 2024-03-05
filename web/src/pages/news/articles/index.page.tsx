@@ -104,14 +104,15 @@ export async function getServerSideProps({ query }: GetServerSidePropsContext) {
 	}
 
 	let stories = storiesResult.stories;
+	let featuredStory = null;
 
 	if (
 		page === 1 &&
 		stories.length > 0 &&
 		stories[0].uuid === latestStoryResult.stories[0].uuid
 	) {
-		// Skip first story on page 1 as it's featured
-		stories = stories.slice(1);
+		featuredStory = latestStoryResult.stories[0]; // Set featured story on page 1
+		stories = stories.slice(1); // Skip first story on page 1 as it's featured
 	}
 
 	//TODO ternary redirect for invalid page is probably better handled elsewhere
@@ -126,7 +127,7 @@ export async function getServerSideProps({ query }: GetServerSidePropsContext) {
 		  }
 		: {
 				props: {
-					featuredStory: page === 1 ? latestStoryResult.stories[0] : null,
+					featuredStory,
 					stories,
 					totalResults: storiesResult.total,
 					currentPage: page,
