@@ -43,9 +43,10 @@ export const InfoPage = ({
 					)}
 				</GridItem>
 				<GridItem cols={12} sm={{ cols: 9 }}>
-					<div className={styles.content}>
-						<StoryblokRichText content={blok.content} />
-					</div>
+					<StoryblokRichText
+						className={styles.content}
+						content={blok.content}
+					/>
 				</GridItem>
 			</Grid>
 		</>

@@ -1,4 +1,8 @@
-/* stylelint-disable selector-max-compound-selectors */
-.content > div > div > h2 { // Bit ugly, but deals with rich text headings getting nudged down the page
+.content > div:first-of-type > h2:first-of-type {
   margin-top: 0;
 }
+/* Bit ugly, but deals with rich text headings getting nudged down the page */
+
+/*NOTE: Are we just looking to target the first h2 of the first div within content?
+   i'm probably assuming a h2 will always follow a page header or hero in an info page.
+*/
