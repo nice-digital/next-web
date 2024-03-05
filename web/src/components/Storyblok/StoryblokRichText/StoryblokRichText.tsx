@@ -1,6 +1,13 @@
 import { StoryblokComponent } from "@storyblok/react";
-import React, { Children, isValidElement } from "react";
+import classnames from "classnames";
+import React, {
+	Children,
+	type ReactNode,
+	createElement,
+	isValidElement,
+} from "react";
 import {
+	NODE_HEADING,
 	NODE_IMAGE,
 	NODE_PARAGRAPH,
 	NODE_QUOTE,
@@ -16,18 +23,34 @@ import styles from "./StoryblokRichText.module.scss";
 
 export interface StoryblokRichTextProps {
 	content: RichtextStoryblok;
+	className?: string;
 }
 
 export const StoryblokRichText: React.FC<StoryblokRichTextProps> = ({
 	content,
+	className,
 }) => {
+	const richTextWrapperClasses = classnames(
+		styles.storyblokRichTextWrapper,
+		className
+	);
+
 	return (
-		<div
-			className={styles.storyblokRichTextWrapper}
-			data-testid="storyblok-rich-text"
-		>
+		<div className={richTextWrapperClasses} data-testid="storyblok-rich-text">
 			{render(content, {
 				nodeResolvers: {
+					[NODE_HEADING]: (
+						children: ReactNode,
+						props: { level: 1 | 2 | 3 | 4 | 5 | 6 }
+					) => {
+						const { level } = props;
+						console.log(level);
+						return createElement(
+							`h${level}`,
+							{ className: `sbRichtextHeading${level}` },
+							children
+						);
+					},
 					[NODE_PARAGRAPH]: (children) => {
 						// stops images being wrapped in a paragraph tag
 						if (Children.count(children) === 1) {
