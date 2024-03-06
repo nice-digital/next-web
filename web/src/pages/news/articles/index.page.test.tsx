@@ -126,7 +126,7 @@ describe("/news/articles/index.page", () => {
 			const { getServerSideProps } = await import("./index.page");
 
 			const result = await getServerSideProps({
-				query: { page: "3" },
+				query: { page: (totalResults / resultsPerPage + 1).toString() },
 			} as unknown as GetServerSidePropsContext<ParsedUrlQuery>);
 
 			expect(result).toEqual({
