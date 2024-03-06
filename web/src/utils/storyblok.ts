@@ -75,6 +75,7 @@ export const initStoryblok = (): void => {
 
 	try {
 		const accessToken = publicRuntimeConfig.storyblok.previewAccessToken;
+		const endpoint = publicRuntimeConfig.storyblok.endpoint;
 
 		storyblokInit({
 			accessToken,
@@ -84,6 +85,7 @@ export const initStoryblok = (): void => {
 					clear: "auto",
 					type: "memory",
 				},
+				endpoint,
 			},
 			components,
 		});
