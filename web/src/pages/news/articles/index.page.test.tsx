@@ -32,6 +32,14 @@ describe("/news/articles/index.page", () => {
 			},
 			push: jest.fn(),
 		});
+
+		jest.mock("@/utils/storyblok", () => ({
+			getStoryVersionFromQuery: jest.fn().mockReturnValue("published"),
+			fetchStories: jest.fn().mockResolvedValue({
+				stories: mockStories,
+				total: totalResults,
+			}),
+		}));
 	});
 
 	afterEach(() => jest.clearAllMocks());
@@ -101,13 +109,6 @@ describe("/news/articles/index.page", () => {
 	describe("getServerSideProps", () => {
 		it("should redirect to /news/articles if the page is less than 1", async () => {
 			const { getServerSideProps } = await import("./index.page");
-			jest.mock("@/utils/storyblok", () => ({
-				getStoryVersionFromQuery: jest.fn().mockReturnValue("published"),
-				fetchStories: jest.fn().mockResolvedValue({
-					stories: mockStories,
-					total: totalResults,
-				}),
-			}));
 
 			const result = await getServerSideProps({
 				query: { page: "-1" },
@@ -123,13 +124,6 @@ describe("/news/articles/index.page", () => {
 
 		it("should redirect to /news/articles if the page is greater than the total number of pages", async () => {
 			const { getServerSideProps } = await import("./index.page");
-			jest.mock("@/utils/storyblok", () => ({
-				getStoryVersionFromQuery: jest.fn().mockReturnValue("published"),
-				fetchStories: jest.fn().mockResolvedValue({
-					stories: mockStories,
-					total: totalResults,
-				}),
-			}));
 
 			const result = await getServerSideProps({
 				query: { page: "3" },
@@ -145,14 +139,6 @@ describe("/news/articles/index.page", () => {
 
 		it("should set featuredStory to null if the page is greater than 1", async () => {
 			const { getServerSideProps } = await import("./index.page");
-			jest.mock("@/utils/storyblok", () => ({
-				getStoryVersionFromQuery: jest.fn().mockReturnValue("published"),
-				fetchStories: jest.fn().mockResolvedValue({
-					stories: mockStories,
-					total: totalResults,
-				}),
-			}));
-
 			const result = await getServerSideProps({
 				query: { page: "2" },
 			} as unknown as GetServerSidePropsContext<ParsedUrlQuery>);
@@ -162,13 +148,6 @@ describe("/news/articles/index.page", () => {
 
 		it("should set the latest story as the featured story if the page is 1", async () => {
 			const { getServerSideProps } = await import("./index.page");
-			jest.mock("@/utils/storyblok", () => ({
-				getStoryVersionFromQuery: jest.fn().mockReturnValue("published"),
-				fetchStories: jest.fn().mockResolvedValue({
-					stories: mockStories,
-					total: totalResults,
-				}),
-			}));
 
 			const result = await getServerSideProps({
 				query: { page: "1" },
@@ -179,13 +158,6 @@ describe("/news/articles/index.page", () => {
 
 		it("should remove the first story from the stories if the page is 1 and there is a featured story", async () => {
 			const { getServerSideProps } = await import("./index.page");
-			jest.mock("@/utils/storyblok", () => ({
-				getStoryVersionFromQuery: jest.fn().mockReturnValue("published"),
-				fetchStories: jest.fn().mockResolvedValue({
-					stories: mockStories,
-					total: totalResults,
-				}),
-			}));
 
 			const result = await getServerSideProps({
 				query: { page: "1" },
