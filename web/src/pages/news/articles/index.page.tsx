@@ -7,10 +7,12 @@ import { Breadcrumbs, Breadcrumb } from "@nice-digital/nds-breadcrumbs";
 import { Button } from "@nice-digital/nds-button";
 import { PageHeader } from "@nice-digital/nds-page-header";
 
+import { ErrorPageContent } from "@/components/ErrorPageContent/ErrorPageContent";
 import { FeaturedStory } from "@/components/Storyblok/News/FeaturedStory/FeaturedStory";
 import { NewsList } from "@/components/Storyblok/News/NewsList/NewsList";
 import { NewsListNav } from "@/components/Storyblok/News/NewsListNav/NewsListNav";
 import { NewsListPagination } from "@/components/Storyblok/News/NewsListPagination/NewsListPagination";
+import { logger } from "@/logger";
 import { NewsStory } from "@/types/News";
 import { fetchStories, getStoryVersionFromQuery } from "@/utils/storyblok";
 
@@ -22,6 +24,7 @@ export type NewsArticlesProps = {
 	totalResults: number;
 	currentPage: number;
 	resultsPerPage: number;
+	error?: string | undefined;
 };
 
 const destinations = [
@@ -38,7 +41,11 @@ export const ArticlesIndexPage = ({
 	totalResults,
 	resultsPerPage,
 	featuredStory,
+	error,
 }: NewsArticlesProps): React.ReactElement => {
+	if (error) {
+		return <ErrorPageContent title="Error" heading={error} />;
+	}
 	return (
 		<>
 			<NextSeo
@@ -100,7 +107,12 @@ export async function getServerSideProps({ query }: GetServerSidePropsContext) {
 	});
 
 	if (!storiesResult || storiesResult.total === undefined) {
-		return { notFound: true };
+		logger.error("Error fetching stories: ", storiesResult);
+		return {
+			props: {
+				error: "Error fetching stories",
+			},
+		};
 	}
 
 	let stories = storiesResult.stories;

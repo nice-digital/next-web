@@ -106,6 +106,15 @@ describe("/news/articles/index.page", () => {
 		expect(actionBannerHeading).toBeInTheDocument();
 	});
 
+	it("should render an error page when error prop is true", () => {
+		const props = {
+			...mockProps,
+			error: "Something's gone wrong",
+		};
+		render(<ArticlesIndexPage {...props} />);
+		expect(screen.getByText("Something's gone wrong")).toBeInTheDocument();
+	});
+
 	describe("getServerSideProps", () => {
 		it("should redirect to /news/articles if the page is less than 1", async () => {
 			const { getServerSideProps } = await import("./index.page");
@@ -165,6 +174,21 @@ describe("/news/articles/index.page", () => {
 
 			expect(result.props?.featuredStory).not.toBeNull();
 			expect(result.props?.stories).not.toContain(mockStories[0]);
+		});
+
+		it("should return an error prop if there is an error fetching stories", async () => {
+			jest.mock("@/utils/storyblok", () => ({
+				getStoryVersionFromQuery: jest.fn().mockReturnValue("published"),
+				fetchStories: jest.fn().mockResolvedValue(null),
+			}));
+
+			const { getServerSideProps } = await import("./index.page");
+
+			const result = await getServerSideProps({
+				query: { page: "1" },
+			} as unknown as GetServerSidePropsContext<ParsedUrlQuery>);
+
+			expect(result.props?.error).toBe("Error fetching stories");
 		});
 	});
 });
