@@ -110,7 +110,8 @@ export async function getServerSideProps({ query }: GetServerSidePropsContext) {
 		logger.error("Error fetching stories: ", storiesResult);
 		return {
 			props: {
-				error: "Error fetching stories",
+				error:
+					"There are no stories to display at the moment. Please try again later.",
 			},
 		};
 	}

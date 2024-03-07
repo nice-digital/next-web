@@ -109,10 +109,15 @@ describe("/news/articles/index.page", () => {
 	it("should render an error page when error prop is true", () => {
 		const props = {
 			...mockProps,
-			error: "Something's gone wrong",
+			error:
+				"There are no stories to display at the moment. Please try again later.",
 		};
 		render(<ArticlesIndexPage {...props} />);
-		expect(screen.getByText("Something's gone wrong")).toBeInTheDocument();
+		expect(
+			screen.getByText(
+				"There are no stories to display at the moment. Please try again later."
+			)
+		).toBeInTheDocument();
 	});
 
 	describe("getServerSideProps", () => {
@@ -188,7 +193,9 @@ describe("/news/articles/index.page", () => {
 				query: { page: "1" },
 			} as unknown as GetServerSidePropsContext<ParsedUrlQuery>);
 
-			expect(result.props?.error).toBe("Error fetching stories");
+			expect(result.props?.error).toBe(
+				"There are no stories to display at the moment. Please try again later."
+			);
 		});
 	});
 });
