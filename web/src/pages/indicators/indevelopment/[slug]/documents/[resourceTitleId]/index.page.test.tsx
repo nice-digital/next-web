@@ -189,7 +189,7 @@ describe("[resourceTitleId].page", () => {
 				);
 
 				expect(document.title).toBe(
-					"Test resource title | Project documents | GID-TA10730 | Indicators | Standards and Indicators"
+					"Test resource title | Project documents | GID-TA10730 | Indicators"
 				);
 			});
 		});
