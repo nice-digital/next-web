@@ -1,7 +1,8 @@
 import { NextResponse } from "next/server";
+
 import type { NextRequest } from "next/server";
 
-export const middleware = (req: NextRequest) => {
+export const middleware = (req: NextRequest): NextResponse => {
 	const url = req.nextUrl;
 	if (url.pathname === url.pathname.toLowerCase()) {
 		return NextResponse.next();
