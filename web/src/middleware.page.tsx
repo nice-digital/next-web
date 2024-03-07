@@ -1,6 +1,4 @@
-import { NextResponse } from "next/server";
-
-import type { NextRequest } from "next/server";
+import { NextResponse, type NextRequest } from "next/server";
 
 export const middleware = (req: NextRequest): NextResponse => {
 	const url = req.nextUrl;
@@ -12,5 +10,3 @@ export const middleware = (req: NextRequest): NextResponse => {
 		new URL(url.origin + url.pathname.toLowerCase())
 	);
 };
-
-export default middleware;
