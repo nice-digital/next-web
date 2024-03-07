@@ -1,3 +1,5 @@
+import classnames from "classnames";
+
 import {
 	Grid,
 	GridItem,
@@ -19,14 +21,24 @@ import styles from "./PromoBox.module.scss";
 export interface PromoBoxProps {
 	blok: PromoBoxStoryblok;
 	headingLevel?: number;
+	className?: string;
 }
 
 export const PromoBox: React.FC<PromoBoxProps> = ({
 	blok,
 	headingLevel = 2,
+	className = undefined,
 }: PromoBoxProps) => {
-	const { heading, body, cta, image, swapMediaSide, useVideo, youtubeEmbed } =
-		blok;
+	const {
+		heading,
+		body,
+		cta,
+		image,
+		swapMediaSide,
+		useVideo,
+		youtubeEmbed,
+		isTransparent,
+	} = blok;
 
 	// Resolve heading type
 	const HeadingElement = `h${headingLevel}` as keyof JSX.IntrinsicElements;
@@ -42,8 +54,13 @@ export const PromoBox: React.FC<PromoBoxProps> = ({
 		pull: swapMediaSide ? (7 as PullOrPush) : undefined,
 	};
 
+	// Resolve transparency
+	const transparentClass = isTransparent ? styles.transparent : undefined;
+
 	return (
-		<article className={styles.promoBox}>
+		<article
+			className={classnames(styles.promoBox, transparentClass, className)}
+		>
 			<div className={styles.container}>
 				<Grid gutter="loose">
 					<GridItem

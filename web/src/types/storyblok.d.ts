@@ -363,6 +363,7 @@ export interface PromoBoxStoryblok {
   image?: AssetStoryblok;
   youtubeEmbed?: YoutubeEmbedStoryblok[];
   swapMediaSide?: boolean;
+  isTransparent?: boolean;
   _uid: string;
   component: "promoBox";
   [k: string]: any;

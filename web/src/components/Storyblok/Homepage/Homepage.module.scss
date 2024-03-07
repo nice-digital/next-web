@@ -1,6 +1,21 @@
 @use '@nice-digital/nds-core/scss/spacing';
 @use '@nice-digital/nds-core/scss/utils';
+@use '~/styles/spacing' as *;
+
+.content {
+  > :last-child {
+    margin-bottom: 0;
+  }
+}
 
 .links {
-  margin-bottom: utils.rem(spacing.$x-large);
+  margin-bottom: $homepage-large-spacing;
+}
+
+.actionBanner.actionBanner { // Disgusting but better than !important for upping specificity
+  margin-bottom: $homepage-large-spacing;
+}
+
+.promoBox {
+  margin-bottom: $homepage-large-spacing;
 }
