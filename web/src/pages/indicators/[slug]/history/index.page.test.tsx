@@ -45,9 +45,7 @@ describe("/indicators/[slug]/history", () => {
 		it("should render the page title with reversed breadcrumbs for SEO", async () => {
 			render(<HistoryPage {...props} />);
 			await waitFor(() => {
-				expect(document.title).toEqual(
-					`History | NG100 | Indicators | Standards and Indicators`
-				);
+				expect(document.title).toEqual(`History | NG100 | Indicators`);
 			});
 		});
 	});

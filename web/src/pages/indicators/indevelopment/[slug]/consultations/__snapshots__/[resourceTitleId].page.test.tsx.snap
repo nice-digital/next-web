@@ -24,15 +24,6 @@ exports[`[resourceTitleId].page ConsultationHTMLPage should match snapshot for m
           class="breadcrumbs__crumb"
         >
           <a
-            href="/standards-and-indicators"
-          >
-            Standards and Indicators
-          </a>
-        </li>
-        <li
-          class="breadcrumbs__crumb"
-        >
-          <a
             href="/standards-and-indicators/indicators"
           >
             Indicators
@@ -84,21 +75,13 @@ exports[`[resourceTitleId].page ConsultationHTMLPage should match snapshot for m
       "@type": "ListItem",
       "position": 2,
       "item": {
-        "@id": "/standards-and-indicators",
-        "name": "Standards and Indicators"
-      }
-    },
-    {
-      "@type": "ListItem",
-      "position": 3,
-      "item": {
         "@id": "/standards-and-indicators/indicators",
         "name": "Indicators"
       }
     },
     {
       "@type": "ListItem",
-      "position": 4,
+      "position": 3,
       "item": {
         "@id": "/indicators/indevelopment",
         "name": "In development"
@@ -106,7 +89,7 @@ exports[`[resourceTitleId].page ConsultationHTMLPage should match snapshot for m
     },
     {
       "@type": "ListItem",
-      "position": 5,
+      "position": 4,
       "item": {
         "@id": "/indicators/indevelopment/gid-ta10914",
         "name": "GID-TA10914"
@@ -114,7 +97,7 @@ exports[`[resourceTitleId].page ConsultationHTMLPage should match snapshot for m
     },
     {
       "@type": "ListItem",
-      "position": 6,
+      "position": 5,
       "item": {
         "name": "Draft guidance: 1"
       }

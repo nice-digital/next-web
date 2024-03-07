@@ -59,9 +59,6 @@ export default getProductListPage({
 		"See a complete list of indicators currently in consultation. Our indicators measure outcomes that reflect the quality of care or processes.",
 	listNavType: IndicatorListNav,
 	breadcrumbTrail: [
-		<Breadcrumb to="/standards-and-indicators" key="standards-and-indicators">
-			Standards and Indicators
-		</Breadcrumb>,
 		<Breadcrumb
 			to="/standards-and-indicators/indicators"
 			key="/standards-and-indicators/indicators"
@@ -72,7 +69,7 @@ export default getProductListPage({
 	currentBreadcrumb: "In consultation",
 	preheading: "In consultation",
 	heading: <>Indicators</>,
-	title: "In consultation | Indicators | Standards and indicators | NICE",
+	title: "In consultation | Indicators",
 	defaultSort: {
 		order: defaultSortOrder,
 		label: "Date",

@@ -70,7 +70,7 @@ export default getProductListPage({
 	currentBreadcrumb: "Published",
 	preheading: "Published ",
 	heading: <>Guidance, NICE advice and quality&nbsp;standards</>,
-	title: "Published guidance, NICE advice and quality standards",
+	title: "Published guidance, NICE advice and quality standards | Guidance",
 	defaultSort: {
 		order: defaultSortOrder,
 		label: "Date",

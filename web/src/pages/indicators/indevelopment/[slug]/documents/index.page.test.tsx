@@ -48,7 +48,7 @@ describe("/indicators/indevelopment/[slug]/documents", () => {
 			render(<DocumentsPage {...props} />);
 			await waitFor(() => {
 				expect(document.title).toEqual(
-					`Project documents | GID-DG10049 | Indicators | Standards and Indicators`
+					`Project documents | GID-DG10049 | Indicators`
 				);
 			});
 		});

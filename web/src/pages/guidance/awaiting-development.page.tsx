@@ -51,7 +51,7 @@ export default getProductListPage({
 	currentBreadcrumb: "Awaiting development",
 	preheading: "Guidance and quality standards ",
 	heading: "Awaiting development",
-	title: "Guidance and quality standards awaiting development",
+	title: "Guidance and quality standards awaiting development | Guidance",
 	defaultSort: {
 		order: defaultSortOrder,
 		label: "Title",

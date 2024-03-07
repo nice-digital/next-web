@@ -53,13 +53,10 @@ export default function HistoryHTMLPage({
 	return (
 		<>
 			<NextSeo
-				title={`${resource.title} | History | ${product.id} | Indicators | Standards and Indicators`}
+				title={`${resource.title} | History | ${product.id} | Indicators`}
 			/>
 			<Breadcrumbs>
 				<Breadcrumb to="/">Home</Breadcrumb>
-				<Breadcrumb to="/standards-and-indicators">
-					Standards and Indicators
-				</Breadcrumb>
 				<Breadcrumb to="/standards-and-indicators/indicators">
 					Indicators
 				</Breadcrumb>
