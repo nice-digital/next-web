@@ -48,14 +48,11 @@ export const ProductResourcePage: FC<ProductResourcePageProps> = ({
 	return (
 		<>
 			<NextSeo
-				title={`${title} | ${parentPageTitle} | ${product.id} | Indicators | Standards and Indicators`}
+				title={`${title} | ${parentPageTitle} | ${product.id} | Indicators`}
 			/>
 
 			<Breadcrumbs>
 				<Breadcrumb to="/">Home</Breadcrumb>
-				<Breadcrumb to="/standards-and-indicators">
-					Standards and Indicators
-				</Breadcrumb>
 				<Breadcrumb to="/standards-and-indicators/indicators">
 					Indicators
 				</Breadcrumb>

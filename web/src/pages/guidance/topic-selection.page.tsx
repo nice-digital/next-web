@@ -58,7 +58,7 @@ export default getProductListPage({
 	currentBreadcrumb: "Topic selection",
 	preheading: "Guidance in ",
 	heading: "Topic selection",
-	title: "Guidance in topic selection",
+	title: "Guidance in topic selection | Guidance",
 	defaultSort: {
 		order: defaultSortOrder,
 		label: "Title",

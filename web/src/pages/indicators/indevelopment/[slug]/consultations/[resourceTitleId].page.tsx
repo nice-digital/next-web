@@ -44,13 +44,10 @@ export default function ConsultationHTMLPage({
 	return (
 		<>
 			<NextSeo
-				title={`${consultation.title} | ${project.reference} | Indicators | Standards and Indicators`}
+				title={`${consultation.title} | ${project.reference} | Indicators`}
 			/>
 			<Breadcrumbs>
 				<Breadcrumb to="/">Home</Breadcrumb>
-				<Breadcrumb to="/standards-and-indicators">
-					Standards and Indicators
-				</Breadcrumb>
 				<Breadcrumb to="/standards-and-indicators/indicators">
 					Indicators
 				</Breadcrumb>
