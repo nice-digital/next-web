@@ -11,11 +11,13 @@ import styles from "./NewsCard.module.scss";
 interface NewsCardProps {
 	story: StoryblokStory<NewsStory>;
 	headingLevel?: number;
+	variant?: "default" | "isNewsListItem";
 }
 
 export const NewsCard: React.FC<NewsCardProps> = ({
 	story,
 	headingLevel = 3,
+	variant,
 }: NewsCardProps) => {
 	const { name, content, full_slug } = story;
 
@@ -33,7 +35,11 @@ export const NewsCard: React.FC<NewsCardProps> = ({
 	const HeadingElement = `h${headingLevel}` as keyof JSX.IntrinsicElements;
 
 	return (
-		<article className={styles.newsCard}>
+		<article
+			className={`${styles.newsCard} ${
+				variant === "isNewsListItem" ? styles.listItem : ""
+			}`}
+		>
 			<Link
 				className={styles.imageContainer}
 				href={full_slug}
@@ -42,14 +48,18 @@ export const NewsCard: React.FC<NewsCardProps> = ({
 			>
 				{" "}
 			</Link>
-			<HeadingElement className={styles.heading}>
-				<Link href={full_slug}>{name}</Link>
-			</HeadingElement>
-			<p>{content.introText}</p>
-			<footer>
-				<Tag outline>{storyType}</Tag>
-				<span className={styles.date}>{friendlyDate(story.content.date)}</span>
-			</footer>
+			<div>
+				<HeadingElement className={styles.heading}>
+					<Link href={full_slug}>{name}</Link>
+				</HeadingElement>
+				<p>{content.introText}</p>
+				<footer>
+					<Tag outline>{storyType}</Tag>
+					<span className={styles.date}>
+						{friendlyDate(story.content.date)}
+					</span>
+				</footer>
+			</div>
 		</article>
 	);
 };
