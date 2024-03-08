@@ -80,7 +80,11 @@ export const Homepage = ({
 				{spotlight &&
 					spotlight.length > 0 &&
 					spotlight.map((nestedBlok) => (
-						<StoryblokComponent blok={nestedBlok} key={nestedBlok._uid} />
+						<StoryblokComponent
+							blok={nestedBlok}
+							className={styles.spotlight}
+							key={nestedBlok._uid}
+						/>
 					))}
 
 				{/* Promo box 2 */}

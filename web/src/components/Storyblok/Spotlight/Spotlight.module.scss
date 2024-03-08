@@ -1,0 +1,42 @@
+@use '@nice-digital/nds-core/scss/layout';
+@use '@nice-digital/nds-core/scss/media-queries';
+@use '@nice-digital/nds-core/scss/spacing';
+@use '@nice-digital/nds-core/scss/utils';
+
+.heading {
+  margin-bottom: utils.rem(spacing.$large);
+}
+
+.content {
+  @include media-queries.mq($from: md) {
+    display: flex;
+  }
+}
+
+.media {
+  margin-bottom: utils.rem(spacing.$medium);
+
+  @include media-queries.mq($from: md) {
+    flex: 0 1 45%;
+    margin-right: utils.rem(spacing.$large);
+  }
+}
+
+.figure {
+  margin: 0;
+}
+
+.caption {
+  padding-top: utils.rem(spacing.$medium);
+}
+
+.storyList {
+  list-style: none;
+  margin: 0;
+}
+
+.stories {
+  @include media-queries.mq($from: md) {
+    flex: 0 1 55%;
+  }
+}

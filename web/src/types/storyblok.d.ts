@@ -397,11 +397,9 @@ export interface RelatedNewsLinkStoryblok {
 
 export interface SpotlightStoryblok {
   heading: string;
-  useVideo?: boolean;
-  image?: AssetStoryblok;
-  youtubeEmbed?: YoutubeEmbedStoryblok[];
   mediaDescription?: string;
-  stories?: (StoryblokStory<BlogPostStoryblok> | StoryblokStory<NewsArticleStoryblok> | string)[];
+  stories: (StoryblokStory<BlogPostStoryblok> | StoryblokStory<NewsArticleStoryblok> | string)[];
+  youtubeEmbed: YoutubeEmbedStoryblok[];
   _uid: string;
   component: "spotlight";
   [k: string]: any;

@@ -52,7 +52,7 @@ export async function getServerSideProps(context: GetServerSidePropsContext) {
 	const version = getStoryVersionFromQuery(context.query);
 	const storyResult = await fetchStory<HomepageStoryblok>(slug, version, {
 		resolve_links: "url",
-		resolve_relations: "homepage.featuredStory",
+		resolve_relations: "homepage.featuredStory,spotlight.stories",
 	});
 
 	// Fetch latest news stories
