@@ -72,10 +72,8 @@ export default getProductListPage({
 	searchInputPlaceholder: "E.g. 'diabetes' or 'IND28'",
 });
 
-//TODO add gstPrefilter prop as it is now mandatory
 export const getServerSideProps = getGetServerSidePropsFunc({
 	defaultSortOrder,
 	dateFilterLabel,
-	index: "researchrecs", // TODO update this ?
-	gstPreFilter: "Published",
+	index: "researchrecs",
 });
