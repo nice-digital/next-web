@@ -6,3 +6,4 @@ docker_image_build_number = "#{Octopus.Action[Extract Variables].Output.Extracte
 nextweb_efs_config_volume = "#{nextweb_efs_config_volume}"
 nextweb_ecs_subnets = [#{nextweb_ecs_subnets}]
 nextweb_ecs_sg = [#{nextweb_ecs_sg}]
+load_balancer_tg = "#{terraform_load_balancer_tg}"

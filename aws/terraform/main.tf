@@ -32,6 +32,9 @@ variable "nextweb_ecs_subnets" {
 variable "nextweb_ecs_sg" {
   type    = list(string)
 }
+variable "load_balancer_tg" {
+  type    = string
+}
 
 terraform {
   required_version = ">= 0.14"
@@ -152,7 +155,7 @@ resource "aws_iam_role_policy_attachment" "ecs_task_execution_role_policy" {
   policy_arn = "arn:aws:iam::aws:policy/service-role/AmazonECSTaskExecutionRolePolicy"
 }
 
-resource "aws_ecs_service" "nextweb-demo-service" {
+resource "aws_ecs_service" "nextweb-ecs-service" {
   name            = "${local.name}-service"
   cluster         = aws_ecs_cluster.nextweb-cluster.id
   task_definition = aws_ecs_task_definition.nextweb-main-task.arn
@@ -163,5 +166,11 @@ resource "aws_ecs_service" "nextweb-demo-service" {
     subnets = var.nextweb_ecs_subnets
     security_groups = var.nextweb_ecs_sg
     assign_public_ip = false
+  }
+
+    load_balancer {
+    target_group_arn = var.load_balancer_tg
+    container_name   = "nextweb-container"
+    container_port   = 3000
   }
 }
