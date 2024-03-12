@@ -4,7 +4,11 @@ import { Tag } from "@nice-digital/nds-tag";
 
 import { Link } from "@/components/Link/Link";
 import { NewsStory } from "@/types/News";
-import { friendlyDate } from "@/utils/storyblok";
+import {
+	friendlyDate,
+	getNewsType,
+	defaultPodcastImage,
+} from "@/utils/storyblok";
 
 import styles from "./NewsCard.module.scss";
 
@@ -19,26 +23,21 @@ export const NewsCard: React.FC<NewsCardProps> = ({
 }: NewsCardProps) => {
 	const { name, content, full_slug } = story;
 
-	let storyType = "";
-	switch (content.component) {
-		case "blogPost":
-			storyType = "Blog";
-			break;
-		case "newsArticle":
-		default:
-			storyType = "News";
-			break;
-	}
+	const storyType = getNewsType(content.component);
 
 	const HeadingElement = `h${headingLevel}` as keyof JSX.IntrinsicElements;
+
+	// Fall back to podcast placeholder image if none is supplied
+	const image = content.image?.filename || defaultPodcastImage;
 
 	return (
 		<article className={styles.newsCard}>
 			<Link
 				className={styles.imageContainer}
 				href={full_slug}
-				style={{ backgroundImage: `url(${content.image.filename})` }}
+				style={{ backgroundImage: `url(${image})` }}
 				aria-hidden="true"
+				tabindex="-1"
 			>
 				{" "}
 			</Link>

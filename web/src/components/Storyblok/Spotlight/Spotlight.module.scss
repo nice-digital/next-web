@@ -14,11 +14,11 @@
 }
 
 .media {
-  margin-bottom: utils.rem(spacing.$medium);
+  margin-bottom: utils.rem(spacing.$large);
 
   @include media-queries.mq($from: md) {
     flex: 0 1 45%;
-    margin-right: utils.rem(spacing.$large);
+    margin: 0 utils.rem(spacing.$large) 0 0;
   }
 }
 
@@ -33,6 +33,7 @@
 .storyList {
   list-style: none;
   margin: 0;
+  max-width: none;
 }
 
 .stories {

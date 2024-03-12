@@ -4,7 +4,11 @@ import { StoryblokStory } from "storyblok-generate-ts";
 import { Tag } from "@nice-digital/nds-tag";
 
 import { type NewsStory } from "@/types/News";
-import { friendlyDate } from "@/utils/storyblok";
+import {
+	friendlyDate,
+	getNewsType,
+	defaultPodcastImage,
+} from "@/utils/storyblok";
 
 import styles from "./FeaturedStory.module.scss";
 
@@ -17,26 +21,29 @@ export const FeaturedStory: React.FC<FeaturedStoryProps> = ({
 	story,
 	headingLevel = 3,
 }: FeaturedStoryProps) => {
-	const storyType = story.content.component === "blogPost" ? "Blog" : "News";
+	const { content, full_slug, name } = story;
+
+	const storyType = getNewsType(content.component);
 
 	const HeadingElement = `h${headingLevel}` as keyof JSX.IntrinsicElements;
+
+	// Fall back to podcast placeholder image if none is supplied
+	const image = content.image?.filename || defaultPodcastImage;
 
 	return (
 		<article className={styles.story}>
 			<div
 				className={styles.imageContainer}
-				style={{ backgroundImage: `url(${story.content.image.filename})` }}
+				style={{ backgroundImage: `url(${image})` }}
 			></div>
 			<div className={styles.content}>
 				<HeadingElement className={styles.heading}>
-					<Link href={`/${story.full_slug}`}>{story.name}</Link>
+					<Link href={`/${full_slug}`}>{name}</Link>
 				</HeadingElement>
-				<p>{story.content.introText}</p>
+				<p>{content.introText}</p>
 				<footer>
 					<Tag outline>{storyType}</Tag>
-					<span className={styles.date}>
-						{friendlyDate(story.content.date)}
-					</span>
+					<span className={styles.date}>{friendlyDate(content.date)}</span>
 				</footer>
 			</div>
 		</article>

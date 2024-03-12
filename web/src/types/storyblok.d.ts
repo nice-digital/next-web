@@ -151,6 +151,7 @@ export interface GridStoryblok {
     | HomepageHeroStoryblok
     | IframeStoryblok
     | ImageOrVideoStoryblok
+    | InDepthArticleStoryblok
     | InfoPageStoryblok
     | MetadataStoryblok
     | NestedRichTextStoryblok
@@ -158,6 +159,7 @@ export interface GridStoryblok {
     | NewsArticleStoryblok
     | PageStoryblok
     | PageHeaderStoryblok
+    | PodcastStoryblok
     | PromoBoxStoryblok
     | QuoteStoryblok
     | RelatedLinkStoryblok
@@ -235,6 +237,17 @@ export interface IframeStoryblok {
 export interface ImageOrVideoStoryblok {
   _uid: string;
   component: "imageOrVideo";
+  [k: string]: any;
+}
+
+export interface InDepthArticleStoryblok {
+  title: string;
+  link: Exclude<MultilinkStoryblok, {linktype?: "email"} | {linktype?: "asset"}>;
+  image: AssetStoryblok;
+  introText: string;
+  date: string;
+  _uid: string;
+  component: "inDepthArticle";
   [k: string]: any;
 }
 
@@ -321,6 +334,7 @@ export interface PageStoryblok {
     | HomepageHeroStoryblok
     | IframeStoryblok
     | ImageOrVideoStoryblok
+    | InDepthArticleStoryblok
     | InfoPageStoryblok
     | MetadataStoryblok
     | NestedRichTextStoryblok
@@ -328,6 +342,7 @@ export interface PageStoryblok {
     | NewsArticleStoryblok
     | PageStoryblok
     | PageHeaderStoryblok
+    | PodcastStoryblok
     | PromoBoxStoryblok
     | QuoteStoryblok
     | RelatedLinkStoryblok
@@ -352,6 +367,18 @@ export interface PageHeaderStoryblok {
   ctaLink?: MultilinkStoryblok;
   _uid: string;
   component: "pageHeader";
+  [k: string]: any;
+}
+
+export interface PodcastStoryblok {
+  hero: HeroStoryblok[];
+  date: string;
+  soundcloudEmbedID: string;
+  introText: string;
+  description: RichtextStoryblok;
+  image?: AssetStoryblok;
+  _uid: string;
+  component: "podcast";
   [k: string]: any;
 }
 

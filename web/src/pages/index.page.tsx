@@ -59,7 +59,7 @@ export async function getServerSideProps(context: GetServerSidePropsContext) {
 	const latestNewsParams: ISbStoriesParams = {
 		starts_with: "news",
 		sort_by: "content.date:desc",
-		excluding_slugs: "news/blogs/authors/*,news/in-depth/*",
+		excluding_slugs: "news/blogs/authors/*",
 		per_page: 3,
 	};
 
