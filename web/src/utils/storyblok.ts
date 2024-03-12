@@ -144,30 +144,30 @@ export const fetchStory = async <T>(
 
 export type ValidateRouteParamsArgs = {
 	query: ParsedUrlQuery;
-	newsListParams?: ISbStoriesParams;
+	params?: ISbStoriesParams;
 };
 
-export type ValidateRouteParamsSuccess = {
-	featuredStory: ISbStoryData<NewsStory> | null;
-	stories: ISbStoryData[];
+export type ValidateRouteParamsSuccess<T> = {
+	featuredStory: ISbStoryData<T> | null;
+	stories: ISbStoryData<T>[];
 	totalResults: number;
 	currentPage: number;
 	resultsPerPage: number;
 };
 
-export type ValidateRouteParamsResult =
+export type ValidateRouteParamsResult<T> =
 	| { notFound: true }
 	| { redirect: Redirect }
 	| { error: string }
-	| ValidateRouteParamsSuccess;
+	| ValidateRouteParamsSuccess<T>;
 
-export const validateRouteParams = async ({
+export const validateRouteParams = async <T>({
 	query,
-	newsListParams,
-}: ValidateRouteParamsArgs): Promise<ValidateRouteParamsResult> => {
+	params,
+}: ValidateRouteParamsArgs): Promise<ValidateRouteParamsResult<T>> => {
 	const version = getStoryVersionFromQuery(query);
 	const page = Number(query.page) || 1;
-	const result = await fetchStories<NewsStory>(version, newsListParams);
+	const result = await fetchStories<T>(version, params);
 
 	if (!result || result.total === undefined) {
 		logger.error("Error fetching stories: ", result);

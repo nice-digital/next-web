@@ -99,7 +99,7 @@ export const getServerSideProps = async ({
 	const page = Number(query.page) || 1;
 	const resultsPerPage = 6;
 
-	const newsListParams: ISbStoriesParams = {
+	const params: ISbStoriesParams = {
 		starts_with: "news/articles/",
 		per_page: resultsPerPage,
 		page,
@@ -111,7 +111,10 @@ export const getServerSideProps = async ({
 		},
 	};
 
-	const result = await validateRouteParams({ query, newsListParams });
+	const result = await validateRouteParams<NewsStory>({
+		query,
+		params,
+	});
 
 	if ("notFound" in result || "redirect" in result) return result;
 
