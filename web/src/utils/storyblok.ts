@@ -142,31 +142,55 @@ export const fetchStory = async <T>(
 	return result;
 };
 
+export type ValidateRouteParamsOptions = {
+	starts_with?: string;
+	per_page?: number;
+};
+
 export type ValidateRouteParamsArgs = {
 	query: ParsedUrlQuery;
 	params?: ISbStoriesParams;
+	options: ValidateRouteParamsOptions;
 };
 
 export type ValidateRouteParamsSuccess<T> = {
 	featuredStory: ISbStoryData<T> | null;
 	stories: ISbStoryData<T>[];
-	totalResults: number;
+	total: number;
 	currentPage: number;
-	resultsPerPage: number;
+	perPage: number | undefined;
+};
+
+export type ValidateRouteParamsError = {
+	error: string;
 };
 
 export type ValidateRouteParamsResult<T> =
 	| { notFound: true }
 	| { redirect: Redirect }
-	| { error: string }
-	| ValidateRouteParamsSuccess<T>;
+	| ValidateRouteParamsSuccess<T>
+	| ValidateRouteParamsError;
 
 export const validateRouteParams = async <T>({
 	query,
-	params,
+	options,
 }: ValidateRouteParamsArgs): Promise<ValidateRouteParamsResult<T>> => {
 	const version = getStoryVersionFromQuery(query);
 	const page = Number(query.page) || 1;
+
+	const { starts_with, per_page } = options;
+	const params: ISbStoriesParams = {
+		starts_with,
+		per_page,
+		page,
+		sort_by: "content.date:desc",
+		filter_query: {
+			date: {
+				lt_date: new Date().toISOString(),
+			},
+		},
+	};
+
 	const result = await fetchStories<T>(version, params);
 
 	if (!result || result.total === undefined) {
@@ -180,7 +204,7 @@ export const validateRouteParams = async <T>({
 	let featuredStory = null;
 	let stories = result.stories;
 
-	const { total: totalResults, perPage: resultsPerPage = 6 } = result;
+	const { total, perPage } = result;
 
 	if (
 		page === 1 &&
@@ -192,21 +216,21 @@ export const validateRouteParams = async <T>({
 	}
 
 	// redirect to page 1 if page is out of range
-	if (page > Math.ceil(totalResults / resultsPerPage)) {
-		return {
-			redirect: {
-				destination: "/news/articles",
-				permanent: false,
-			},
-		};
-	}
+	// if (page && perPage && page > Math.ceil(total / perPage)) {
+	// 	return {
+	// 		redirect: {
+	// 			destination: "/news/articles",
+	// 			permanent: false,
+	// 		},
+	// 	};
+	// }
 
 	return {
 		featuredStory,
 		stories,
-		totalResults,
+		total,
 		currentPage: page,
-		resultsPerPage,
+		perPage,
 	};
 };
 

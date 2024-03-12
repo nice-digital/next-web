@@ -26,11 +26,13 @@ import type { GetServerSidePropsContext } from "next";
 export type NewsArticlesProps = {
 	featuredStory?: StoryblokStory<NewsStory> | null;
 	stories: StoryblokStory<NewsStory>[];
-	totalResults: number;
+	total: number;
 	currentPage: number;
-	resultsPerPage: number;
+	perPage: number;
 	error?: string | undefined;
 };
+
+// export type
 
 const destinations = [
 	{ url: "/news/", title: "News" },
@@ -43,8 +45,8 @@ const destinations = [
 export const ArticlesIndexPage = ({
 	stories,
 	currentPage,
-	totalResults,
-	resultsPerPage,
+	total,
+	perPage,
 	featuredStory,
 	error,
 }: NewsArticlesProps): React.ReactElement => {
@@ -69,8 +71,16 @@ export const ArticlesIndexPage = ({
 				}
 			/>
 			<NewsListNav destinations={destinations} />
-			{featuredStory && <FeaturedStory story={featuredStory} />}
-			<NewsList news={stories} />
+
+			{stories.length === 0 ? (
+				<p>Sorry there are no news articles available</p>
+			) : (
+				<>
+					{featuredStory && <FeaturedStory story={featuredStory} />}
+					<NewsList news={stories} />
+				</>
+			)}
+
 			<ActionBanner
 				title="Sign up for our newsletters and alerts"
 				cta={
@@ -84,8 +94,8 @@ export const ArticlesIndexPage = ({
 			<NewsListPagination
 				configuration={{
 					currentPage,
-					totalResults,
-					resultsPerPage,
+					total,
+					perPage,
 				}}
 			/>
 		</>
@@ -95,63 +105,33 @@ export const ArticlesIndexPage = ({
 export const getServerSideProps = async ({
 	query,
 }: GetServerSidePropsContext) => {
-	// const version = getStoryVersionFromQuery(query);
-	const page = Number(query.page) || 1;
-	const resultsPerPage = 6;
-
-	const params: ISbStoriesParams = {
-		starts_with: "news/articles/",
-		per_page: resultsPerPage,
-		page,
-		sort_by: "content.date:desc",
-		filter_query: {
-			date: {
-				lt_date: new Date().toISOString(),
-			},
-		},
-	};
-
-	const result = await validateRouteParams<NewsStory>({
+	const result = await validateRouteParams<NewsArticlesProps>({
 		query,
-		params,
+		options: {
+			starts_with: "news/hjkhjk/",
+			per_page: 6,
+		},
 	});
 
 	if ("notFound" in result || "redirect" in result) return result;
 
-	// OLD STUFF STARTS HERE
-	// const storiesResult = await fetchStories<NewsStory>(version, newsListParams);
+	if ("error" in result) {
+		return {
+			props: {
+				...result,
+			},
+		};
+	}
 
-	// if (!storiesResult || storiesResult.total === undefined) {
-	// 	logger.error("Error fetching stories: ", storiesResult);
-	// 	return {
-	// 		props: {
-	// 			error:
-	// 				"There are no stories to display at the moment. Please try again later.",
-	// 		},
-	// 	};
-	// }
-
-	// let stories = storiesResult.stories;
-	// let featuredStory = null;
-
-	// if (
-	// 	page === 1 &&
-	// 	stories.length > 0
-	// 	// Check if the first story on page 1 is the same as the latest story
-	// ) {
-	// 	featuredStory = storiesResult.stories[0]; // Set featured story on page 1
-	// 	stories = stories.slice(1); // Skip first story on page 1 as it's featured
-	// }
-
-	const { featuredStory, stories, totalResults, currentPage } = result;
+	const { featuredStory, stories, total, perPage, currentPage } = result;
 
 	return {
 		props: {
 			featuredStory,
 			stories,
-			totalResults,
-			currentPage: page,
-			resultsPerPage,
+			total,
+			currentPage,
+			perPage,
 		},
 	};
 };
