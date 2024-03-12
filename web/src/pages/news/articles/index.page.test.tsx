@@ -5,10 +5,10 @@ import { GetServerSidePropsContext } from "next";
 import { useRouter } from "next/router";
 import { StoryblokStory } from "storyblok-generate-ts";
 
+import { mockNewsArticle as mockStory } from "@/test-utils/storyblok-data";
 import { NewsStory } from "@/types/News";
 
 import { ArticlesIndexPage, NewsArticlesProps } from "./index.page";
-import mockStory from "./mockStory.json";
 
 jest.mock("@storyblok/react", () => ({
 	getStoryblokApi: jest.fn(),

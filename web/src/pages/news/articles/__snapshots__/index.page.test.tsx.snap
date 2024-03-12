@@ -179,8 +179,8 @@ exports[`/news/articles/index.page should match snapshot for main content 1`] = 
           <a
             aria-hidden="true"
             class="imageContainer"
-            href="news/articles/nice-recommends-better-targeting-of-antibiotics-for-suspected-sepsis"
-            style="background-image: url(https://a.storyblok.com/f/243782/2121x1414/dade5e41e7/gettyimages-1164685127.jpg);"
+            href="i/am/a-very-full-slug"
+            style="background-image: url(https://placekitten.com/200/286);"
           >
              
           </a>
@@ -189,13 +189,13 @@ exports[`/news/articles/index.page should match snapshot for main content 1`] = 
               class="heading"
             >
               <a
-                href="news/articles/nice-recommends-better-targeting-of-antibiotics-for-suspected-sepsis"
+                href="i/am/a-very-full-slug"
               >
                 Test story 1
               </a>
             </h3>
             <p>
-              Our guidance recommends better targeting of antibiotics to those at the highest risk of suspected sepsis to ensure the right people receive treatment.
+              Test intro text
             </p>
             <footer>
               <span
@@ -222,8 +222,8 @@ exports[`/news/articles/index.page should match snapshot for main content 1`] = 
           <a
             aria-hidden="true"
             class="imageContainer"
-            href="news/articles/nice-recommends-better-targeting-of-antibiotics-for-suspected-sepsis"
-            style="background-image: url(https://a.storyblok.com/f/243782/2121x1414/dade5e41e7/gettyimages-1164685127.jpg);"
+            href="i/am/a-very-full-slug"
+            style="background-image: url(https://placekitten.com/200/286);"
           >
              
           </a>
@@ -232,13 +232,13 @@ exports[`/news/articles/index.page should match snapshot for main content 1`] = 
               class="heading"
             >
               <a
-                href="news/articles/nice-recommends-better-targeting-of-antibiotics-for-suspected-sepsis"
+                href="i/am/a-very-full-slug"
               >
                 Test story 2
               </a>
             </h3>
             <p>
-              Our guidance recommends better targeting of antibiotics to those at the highest risk of suspected sepsis to ensure the right people receive treatment.
+              Test intro text
             </p>
             <footer>
               <span
