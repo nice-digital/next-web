@@ -193,11 +193,7 @@ export const validateRouteParams = async <T>({
 		},
 	};
 
-	console.log({ resolvedUrl });
-
 	const redirectUrl = new URL(resolvedUrl || "", "http://localhost");
-
-	console.log("redirectUrl", redirectUrl.pathname);
 
 	const result = await fetchStories<T>(version, params);
 
@@ -214,11 +210,7 @@ export const validateRouteParams = async <T>({
 
 	const { total, perPage } = result;
 
-	if (
-		page === 1 &&
-		stories.length > 0
-		// Check if the first story on page 1 is the same as the latest story
-	) {
+	if (page === 1 && stories.length > 0) {
 		featuredStory = result.stories[0]; // Set featured story on page 1
 		stories = stories.slice(1); // Skip first story on page 1 as it's featured
 	}

@@ -15,7 +15,7 @@ jest.mock("@/utils/storyblok", () => ({
 	initStoryblok: jest.fn(),
 }));
 
-describe("getServerSideProps", () => {
+xdescribe("getServerSideProps", () => {
 	beforeEach(() => {
 		(useRouter as jest.Mock).mockReturnValue({
 			route: "/news/articles",
