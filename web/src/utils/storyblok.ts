@@ -138,6 +138,31 @@ export const fetchStory = async <T>(
 	return result;
 };
 
+export const validateRouteParams = async <T>(query, requestParams) => {
+	const page = Number(query.page) || 1;
+
+	const storiesResult = await fetchStories<T>(version, requestParams);
+	// return {
+	// 	props: {
+	// 		featuredStory,
+	// 		stories,
+	// 		totalResults: storiesResult.total,
+	// 		currentPage: page,
+	// 		resultsPerPage,
+	// 	},
+	// };
+};
+
+//NOTE: should we return null if not a valid number and then redirect from gssp to an error page, or set the current page to 1?
+// export const validatePageNumber = (page: unknown, defaultValue = 1): number => {
+// 	const pageNumber = Number(page);
+// 	if (!Number.isInteger(pageNumber) || pageNumber < 1) {
+// 		return defaultValue;
+// 	}
+
+// 	return pageNumber;
+// };
+
 // Fetch multiple stories from the Storyblok API
 export const fetchStories = async <T>(
 	version: StoryVersion = "published",
