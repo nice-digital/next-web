@@ -1,4 +1,3 @@
-import { ISbStoriesParams } from "@storyblok/react";
 import { NextSeo } from "next-seo";
 import React from "react";
 import { StoryblokStory } from "storyblok-generate-ts";
@@ -13,13 +12,8 @@ import { FeaturedStory } from "@/components/Storyblok/News/FeaturedStory/Feature
 import { NewsList } from "@/components/Storyblok/News/NewsList/NewsList";
 import { NewsListNav } from "@/components/Storyblok/News/NewsListNav/NewsListNav";
 import { NewsListPagination } from "@/components/Storyblok/News/NewsListPagination/NewsListPagination";
-import { logger } from "@/logger";
 import { NewsStory } from "@/types/News";
-import {
-	fetchStories,
-	getStoryVersionFromQuery,
-	validateRouteParams,
-} from "@/utils/storyblok";
+import { validateRouteParams } from "@/utils/storyblok";
 
 import type { GetServerSidePropsContext } from "next";
 
@@ -31,8 +25,6 @@ export type NewsArticlesProps = {
 	perPage: number;
 	error?: string | undefined;
 };
-
-// export type
 
 const destinations = [
 	{ url: "/news/", title: "News" },
@@ -104,6 +96,7 @@ export const ArticlesIndexPage = ({
 
 export const getServerSideProps = async ({
 	query,
+	resolvedUrl,
 }: GetServerSidePropsContext) => {
 	const result = await validateRouteParams<NewsArticlesProps>({
 		query,
@@ -111,6 +104,7 @@ export const getServerSideProps = async ({
 			starts_with: "news/articles/",
 			per_page: 6,
 		},
+		resolvedUrl,
 	});
 
 	if ("notFound" in result || "redirect" in result) return result;

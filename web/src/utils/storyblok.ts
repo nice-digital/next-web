@@ -151,6 +151,7 @@ export type ValidateRouteParamsArgs = {
 	query: ParsedUrlQuery;
 	params?: ISbStoriesParams;
 	options: ValidateRouteParamsOptions;
+	resolvedUrl?: string;
 };
 
 export type ValidateRouteParamsSuccess<T> = {
@@ -174,6 +175,7 @@ export type ValidateRouteParamsResult<T> =
 export const validateRouteParams = async <T>({
 	query,
 	options,
+	resolvedUrl,
 }: ValidateRouteParamsArgs): Promise<ValidateRouteParamsResult<T>> => {
 	const version = getStoryVersionFromQuery(query);
 	const page = Number(query.page) || 1;
@@ -190,6 +192,12 @@ export const validateRouteParams = async <T>({
 			},
 		},
 	};
+
+	console.log({ resolvedUrl });
+
+	const redirectUrl = new URL(resolvedUrl || "", "http://localhost");
+
+	console.log("redirectUrl", redirectUrl.pathname);
 
 	const result = await fetchStories<T>(version, params);
 
@@ -216,14 +224,14 @@ export const validateRouteParams = async <T>({
 	}
 
 	// redirect to page 1 if page is out of range
-	// if (page && perPage && page > Math.ceil(total / perPage)) {
-	// 	return {
-	// 		redirect: {
-	// 			destination: "/news/articles",
-	// 			permanent: false,
-	// 		},
-	// 	};
-	// }
+	if (page && perPage && page > Math.ceil(total / perPage)) {
+		return {
+			redirect: {
+				destination: redirectUrl.pathname,
+				permanent: false,
+			},
+		};
+	}
 
 	return {
 		featuredStory,
@@ -249,6 +257,7 @@ export const fetchStories = async <T>(
 	version: StoryVersion = "published",
 	params: ISbStoriesParams = {}
 ): Promise<SBMultipleResponse<T>> => {
+	console.log("fetchStories");
 	const storyblokApi = getStoryblokApi();
 
 	const sbParams: ISbStoriesParams = {
