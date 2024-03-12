@@ -1,3 +1,5 @@
+import { ParsedUrlQuery } from "querystring";
+
 import {
 	apiPlugin,
 	getStoryblokApi,
@@ -9,6 +11,7 @@ import {
 	type ISbStoryData,
 } from "@storyblok/react";
 import { type MetaTag } from "next-seo/lib/types";
+import { Redirect } from "next/types";
 
 import { Blockquote } from "@/components/Storyblok/Blockquote/Blockquote";
 import { CardGrid } from "@/components/Storyblok/CardGrid/CardGrid";
@@ -32,6 +35,7 @@ import { StoryblokYoutubeEmbed } from "@/components/Storyblok/StoryblokYoutubeEm
 import { publicRuntimeConfig } from "@/config";
 import { logger } from "@/logger";
 import { type Breadcrumb } from "@/types/Breadcrumb";
+import { NewsStory } from "@/types/News";
 import { type SBLink } from "@/types/SBLink";
 import { type MultilinkStoryblok } from "@/types/storyblok";
 
@@ -138,19 +142,72 @@ export const fetchStory = async <T>(
 	return result;
 };
 
-export const validateRouteParams = async <T>(query, requestParams) => {
-	const page = Number(query.page) || 1;
+export type ValidateRouteParamsArgs = {
+	query: ParsedUrlQuery;
+	newsListParams?: ISbStoriesParams;
+};
 
-	const storiesResult = await fetchStories<T>(version, requestParams);
-	// return {
-	// 	props: {
-	// 		featuredStory,
-	// 		stories,
-	// 		totalResults: storiesResult.total,
-	// 		currentPage: page,
-	// 		resultsPerPage,
-	// 	},
-	// };
+export type ValidateRouteParamsSuccess = {
+	featuredStory: ISbStoryData<NewsStory> | null;
+	stories: ISbStoryData[];
+	totalResults: number;
+	currentPage: number;
+	resultsPerPage: number;
+};
+
+export type ValidateRouteParamsResult =
+	| { notFound: true }
+	| { redirect: Redirect }
+	| { error: string }
+	| ValidateRouteParamsSuccess;
+
+export const validateRouteParams = async ({
+	query,
+	newsListParams,
+}: ValidateRouteParamsArgs): Promise<ValidateRouteParamsResult> => {
+	const version = getStoryVersionFromQuery(query);
+	const page = Number(query.page) || 1;
+	const result = await fetchStories<NewsStory>(version, newsListParams);
+
+	if (!result || result.total === undefined) {
+		logger.error("Error fetching stories: ", result);
+		return {
+			error:
+				"There are no stories to display at the moment. Please try again later.",
+		};
+	}
+
+	let featuredStory = null;
+	let stories = result.stories;
+
+	const { total: totalResults, perPage: resultsPerPage = 6 } = result;
+
+	if (
+		page === 1 &&
+		stories.length > 0
+		// Check if the first story on page 1 is the same as the latest story
+	) {
+		featuredStory = result.stories[0]; // Set featured story on page 1
+		stories = stories.slice(1); // Skip first story on page 1 as it's featured
+	}
+
+	// redirect to page 1 if page is out of range
+	if (page > Math.ceil(totalResults / resultsPerPage)) {
+		return {
+			redirect: {
+				destination: "/news/articles",
+				permanent: false,
+			},
+		};
+	}
+
+	return {
+		featuredStory,
+		stories,
+		totalResults,
+		currentPage: page,
+		resultsPerPage,
+	};
 };
 
 //NOTE: should we return null if not a valid number and then redirect from gssp to an error page, or set the current page to 1?

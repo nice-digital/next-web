@@ -18,7 +18,6 @@ import { NewsStory } from "@/types/News";
 import {
 	fetchStories,
 	getStoryVersionFromQuery,
-	validatePageNumber,
 	validateRouteParams,
 } from "@/utils/storyblok";
 
@@ -93,8 +92,10 @@ export const ArticlesIndexPage = ({
 	);
 };
 
-export async function getServerSideProps({ query }: GetServerSidePropsContext) {
-	const version = getStoryVersionFromQuery(query);
+export const getServerSideProps = async ({
+	query,
+}: GetServerSidePropsContext) => {
+	// const version = getStoryVersionFromQuery(query);
 	const page = Number(query.page) || 1;
 	const resultsPerPage = 6;
 
@@ -110,39 +111,46 @@ export async function getServerSideProps({ query }: GetServerSidePropsContext) {
 		},
 	};
 
-	const storiesResult = await fetchStories<NewsStory>(version, newsListParams);
+	const result = await validateRouteParams({ query, newsListParams });
 
-	if (!storiesResult || storiesResult.total === undefined) {
-		logger.error("Error fetching stories: ", storiesResult);
-		return {
-			props: {
-				error:
-					"There are no stories to display at the moment. Please try again later.",
-			},
-		};
-	}
+	if ("notFound" in result || "redirect" in result) return result;
 
-	let stories = storiesResult.stories;
-	let featuredStory = null;
+	// OLD STUFF STARTS HERE
+	// const storiesResult = await fetchStories<NewsStory>(version, newsListParams);
 
-	if (
-		page === 1 &&
-		stories.length > 0
-		// Check if the first story on page 1 is the same as the latest story
-	) {
-		featuredStory = storiesResult.stories[0]; // Set featured story on page 1
-		stories = stories.slice(1); // Skip first story on page 1 as it's featured
-	}
+	// if (!storiesResult || storiesResult.total === undefined) {
+	// 	logger.error("Error fetching stories: ", storiesResult);
+	// 	return {
+	// 		props: {
+	// 			error:
+	// 				"There are no stories to display at the moment. Please try again later.",
+	// 		},
+	// 	};
+	// }
+
+	// let stories = storiesResult.stories;
+	// let featuredStory = null;
+
+	// if (
+	// 	page === 1 &&
+	// 	stories.length > 0
+	// 	// Check if the first story on page 1 is the same as the latest story
+	// ) {
+	// 	featuredStory = storiesResult.stories[0]; // Set featured story on page 1
+	// 	stories = stories.slice(1); // Skip first story on page 1 as it's featured
+	// }
+
+	const { featuredStory, stories, totalResults, currentPage } = result;
 
 	return {
 		props: {
 			featuredStory,
 			stories,
-			totalResults: storiesResult.total,
+			totalResults,
 			currentPage: page,
 			resultsPerPage,
 		},
 	};
-}
+};
 
 export default ArticlesIndexPage;
