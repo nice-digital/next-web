@@ -16,11 +16,13 @@ import styles from "./NewsCard.module.scss";
 interface NewsCardProps {
 	story: StoryblokStory<NewsStory>;
 	headingLevel?: number;
+	variant?: "default" | "isNewsListItem";
 }
 
 export const NewsCard: React.FC<NewsCardProps> = ({
 	story,
 	headingLevel = 3,
+	variant,
 }: NewsCardProps) => {
 	const { name, content, full_slug } = story;
 
@@ -62,14 +64,24 @@ export const NewsCard: React.FC<NewsCardProps> = ({
 		);
 
 	return (
-		<article className={styles.newsCard}>
+		<article
+			className={`${styles.newsCard} ${
+				variant === "isNewsListItem" ? styles.listItem : ""
+			}`}
+		>
 			{imageLink}
-			<HeadingElement className={styles.heading}>{headingLink}</HeadingElement>
-			<p>{content.introText}</p>
-			<footer>
-				<Tag outline>{storyType}</Tag>
-				<span className={styles.date}>{friendlyDate(story.content.date)}</span>
-			</footer>
+			<div>
+				<HeadingElement className={styles.heading}>
+					{headingLink}
+				</HeadingElement>
+				<p>{content.introText}</p>
+				<footer>
+					<Tag outline>{storyType}</Tag>
+					<span className={styles.date}>
+						{friendlyDate(story.content.date)}
+					</span>
+				</footer>
+			</div>
 		</article>
 	);
 };
