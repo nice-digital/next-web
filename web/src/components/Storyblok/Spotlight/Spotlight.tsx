@@ -9,6 +9,7 @@ import { StoryblokImage } from "@/components/Storyblok/StoryblokImage/StoryblokI
 import { StoryblokYoutubeEmbed } from "@/components/Storyblok/StoryblokYoutubeEmbed/StoryblokYoutubeEmbed";
 import { NewsStory } from "@/types/News";
 import { SpotlightStoryblok, YoutubeEmbedStoryblok } from "@/types/storyblok";
+import { defaultPodcastImage, getNewsType } from "@/utils/storyblok";
 
 import styles from "./Spotlight.module.scss";
 
@@ -23,13 +24,15 @@ export const Spotlight: React.FC<SpotlightProps> = ({
 	headingLevel = 2,
 	className,
 }: SpotlightProps) => {
-	const { heading, mediaDescription, youtubeEmbed } = blok;
+	const { heading, mediaDescription, youtubeEmbed, component } = blok;
 
 	// Resolve heading type
 	const HeadingElement = `h${headingLevel}` as keyof JSX.IntrinsicElements;
 
 	// Resolve stories
 	const stories = blok.stories as StoryblokStory<NewsStory>[];
+
+	const storyType = getNewsType(component);
 
 	return (
 		<section className={classnames(styles.spotlight, className)}>
@@ -52,22 +55,13 @@ export const Spotlight: React.FC<SpotlightProps> = ({
 						{stories.map((story) => {
 							const { content, full_slug, id, name } = story;
 
-							// TODO: Move to utils, logic is repeated in NewsCard etc
-							let storyType = "";
-							switch (content.component) {
-								case "blogPost":
-									storyType = "Blog";
-									break;
-								case "newsArticle":
-								default:
-									storyType = "News";
-									break;
-							}
-
 							const headingLink: CardHeadingLinkProps = {
 								destination: full_slug,
 								elementType: Link,
 							};
+
+							// Fall back to podcast placeholder image if none is supplied
+							const image = content.image?.filename || defaultPodcastImage;
 
 							return (
 								<Card
@@ -77,8 +71,8 @@ export const Spotlight: React.FC<SpotlightProps> = ({
 									link={headingLink}
 									image={
 										<StoryblokImage
-											src={content.image.filename}
-											alt={content.image.alt}
+											src={image}
+											alt={content.image?.alt || ""}
 										/>
 									}
 								>
