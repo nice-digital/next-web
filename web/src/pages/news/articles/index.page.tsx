@@ -1,3 +1,4 @@
+import { ISbStoriesParams } from "@storyblok/react";
 import { NextSeo } from "next-seo";
 import React from "react";
 import { StoryblokStory } from "storyblok-generate-ts";
@@ -14,7 +15,12 @@ import { NewsListNav } from "@/components/Storyblok/News/NewsListNav/NewsListNav
 import { NewsListPagination } from "@/components/Storyblok/News/NewsListPagination/NewsListPagination";
 import { logger } from "@/logger";
 import { NewsStory } from "@/types/News";
-import { fetchStories, getStoryVersionFromQuery } from "@/utils/storyblok";
+import {
+	fetchStories,
+	getStoryVersionFromQuery,
+	validatePageNumber,
+	validateRouteParams,
+} from "@/utils/storyblok";
 
 import type { GetServerSidePropsContext } from "next";
 
@@ -92,19 +98,19 @@ export async function getServerSideProps({ query }: GetServerSidePropsContext) {
 	const page = Number(query.page) || 1;
 	const resultsPerPage = 6;
 
-	const storiesResult = await fetchStories(version, {
+	const newsListParams: ISbStoriesParams = {
 		starts_with: "news/articles/",
 		per_page: resultsPerPage,
 		page,
 		sort_by: "content.date:desc",
-	});
+		filter_query: {
+			date: {
+				lt_date: new Date().toISOString(),
+			},
+		},
+	};
 
-	const latestStoryResult = await fetchStories(version, {
-		starts_with: "news/articles/",
-		per_page: 1,
-		page: 1,
-		sort_by: "content.date:desc",
-	});
+	const storiesResult = await fetchStories<NewsStory>(version, newsListParams);
 
 	if (!storiesResult || storiesResult.total === undefined) {
 		logger.error("Error fetching stories: ", storiesResult);
@@ -121,31 +127,22 @@ export async function getServerSideProps({ query }: GetServerSidePropsContext) {
 
 	if (
 		page === 1 &&
-		stories.length > 0 &&
-		stories[0].uuid === latestStoryResult.stories[0].uuid // Check if the first story on page 1 is the same as the latest story
+		stories.length > 0
+		// Check if the first story on page 1 is the same as the latest story
 	) {
-		featuredStory = latestStoryResult.stories[0]; // Set featured story on page 1
+		featuredStory = storiesResult.stories[0]; // Set featured story on page 1
 		stories = stories.slice(1); // Skip first story on page 1 as it's featured
 	}
 
-	return page < 1 ||
-		page > Math.ceil(storiesResult.total / resultsPerPage) ||
-		isNaN(page)
-		? {
-				redirect: {
-					destination: "/news/articles",
-					permanent: false,
-				},
-		  }
-		: {
-				props: {
-					featuredStory,
-					stories,
-					totalResults: storiesResult.total,
-					currentPage: page,
-					resultsPerPage,
-				},
-		  };
+	return {
+		props: {
+			featuredStory,
+			stories,
+			totalResults: storiesResult.total,
+			currentPage: page,
+			resultsPerPage,
+		},
+	};
 }
 
 export default ArticlesIndexPage;
