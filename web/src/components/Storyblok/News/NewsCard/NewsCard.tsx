@@ -8,6 +8,7 @@ import {
 	friendlyDate,
 	getNewsType,
 	defaultPodcastImage,
+	newsTypes,
 } from "@/utils/storyblok";
 
 import styles from "./NewsCard.module.scss";
@@ -30,20 +31,40 @@ export const NewsCard: React.FC<NewsCardProps> = ({
 	// Fall back to podcast placeholder image if none is supplied
 	const image = content.image?.filename || defaultPodcastImage;
 
-	return (
-		<article className={styles.newsCard}>
+	const imageLink =
+		storyType === newsTypes.inDepthArticle ? (
+			<a
+				href={content.link.url || content.link.cached_url}
+				className={styles.imageContainer}
+				style={{ backgroundImage: `url(${image})` }}
+				aria-hidden="true"
+				tabIndex={-1}
+			>
+				{" "}
+			</a>
+		) : (
 			<Link
 				className={styles.imageContainer}
 				href={full_slug}
 				style={{ backgroundImage: `url(${image})` }}
 				aria-hidden="true"
-				tabindex="-1"
+				tabindex={-1}
 			>
 				{" "}
 			</Link>
-			<HeadingElement className={styles.heading}>
-				<Link href={full_slug}>{name}</Link>
-			</HeadingElement>
+		);
+
+	const headingLink =
+		storyType === newsTypes.inDepthArticle ? (
+			<a href={content.link.url || content.link.cached_url}>{name}</a>
+		) : (
+			<Link href={full_slug}>{name}</Link>
+		);
+
+	return (
+		<article className={styles.newsCard}>
+			{imageLink}
+			<HeadingElement className={styles.heading}>{headingLink}</HeadingElement>
 			<p>{content.introText}</p>
 			<footer>
 				<Tag outline>{storyType}</Tag>

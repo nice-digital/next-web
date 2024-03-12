@@ -8,6 +8,7 @@ import {
 	friendlyDate,
 	getNewsType,
 	defaultPodcastImage,
+	newsTypes,
 } from "@/utils/storyblok";
 
 import styles from "./FeaturedStory.module.scss";
@@ -27,6 +28,13 @@ export const FeaturedStory: React.FC<FeaturedStoryProps> = ({
 
 	const HeadingElement = `h${headingLevel}` as keyof JSX.IntrinsicElements;
 
+	const headingLink =
+		storyType === newsTypes.inDepthArticle ? (
+			<a href={content.link.url || content.link.cached_url}>{name}</a>
+		) : (
+			<Link href={full_slug}>{name}</Link>
+		);
+
 	// Fall back to podcast placeholder image if none is supplied
 	const image = content.image?.filename || defaultPodcastImage;
 
@@ -38,7 +46,7 @@ export const FeaturedStory: React.FC<FeaturedStoryProps> = ({
 			></div>
 			<div className={styles.content}>
 				<HeadingElement className={styles.heading}>
-					<Link href={`/${full_slug}`}>{name}</Link>
+					{headingLink}
 				</HeadingElement>
 				<p>{content.introText}</p>
 				<footer>
