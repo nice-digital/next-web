@@ -7,7 +7,7 @@ import { type NewsStory } from "@/types/News";
 import { type AuthorStoryblok } from "@/types/storyblok";
 import { friendlyDate } from "@/utils/storyblok";
 
-import StoryblokImage from "../../StoryblokImage/StoryblokImage";
+import { StoryblokImage } from "../../StoryblokImage/StoryblokImage";
 
 import styles from "./FeaturedStory.module.scss";
 
@@ -48,23 +48,28 @@ export const FeaturedStory: React.FC<FeaturedStoryProps> = ({
 					<div className={styles.author}>
 						{story.content.author.map(
 							(author: AuthorStoryblok, index: number) => {
+								const { name, jobTitle, image } = author.content;
 								return (
-									<>
-										<StoryblokImage
-											src={author.content.image.filename}
-											alt={author.content.image.alt}
-											className={styles.authorImage}
-										/>
+									<div key={author._uid}>
+										{image && (
+											<StoryblokImage
+												src={author.content.image.filename}
+												alt={author.content.image.alt}
+												className={styles.authorImage}
+											/>
+										)}
 										<div className={styles.authorContent}>
-											<AuthorHeadingElement
-												className={styles.authorName}
-												key={index}
-											>
-												{author.content.name}
-											</AuthorHeadingElement>
-											<p>{author.content.jobTitle}</p>
+											{name && (
+												<AuthorHeadingElement
+													className={styles.authorName}
+													key={index}
+												>
+													{author.content.name}
+												</AuthorHeadingElement>
+											)}
+											{jobTitle && <p>{author.content.jobTitle}</p>}
 										</div>
-									</>
+									</div>
 								);
 							}
 						)}
