@@ -89,9 +89,10 @@ export const getServerSideProps = async ({
 }: GetServerSidePropsContext) => {
 	const result = await validateRouteParams<BlogPostsProps>({
 		query,
-		options: {
+		sbParams: {
 			starts_with: "news/blogs/",
-			per_page: 1,
+			per_page: 6,
+			resolve_relations: "blogPost.author",
 		},
 		resolvedUrl,
 	});

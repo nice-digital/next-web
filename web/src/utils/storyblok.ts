@@ -142,15 +142,9 @@ export const fetchStory = async <T>(
 	return result;
 };
 
-export type ValidateRouteParamsOptions = {
-	starts_with?: string;
-	per_page?: number;
-};
-
 export type ValidateRouteParamsArgs = {
 	query: ParsedUrlQuery;
-	params?: ISbStoriesParams;
-	options: ValidateRouteParamsOptions;
+	sbParams?: ISbStoriesParams;
 	resolvedUrl?: string;
 };
 
@@ -174,16 +168,15 @@ export type ValidateRouteParamsResult<T> =
 
 export const validateRouteParams = async <T>({
 	query,
-	options,
+	sbParams,
 	resolvedUrl,
 }: ValidateRouteParamsArgs): Promise<ValidateRouteParamsResult<T>> => {
 	const version = getStoryVersionFromQuery(query);
 	const page = Number(query.page) || 1;
 
-	const { starts_with, per_page } = options;
-	const params: ISbStoriesParams = {
-		starts_with,
-		per_page,
+	// const { starts_with, per_page } = options;
+	const requestParams: ISbStoriesParams = {
+		...sbParams,
 		page,
 		sort_by: "content.date:desc",
 		filter_query: {
@@ -195,7 +188,7 @@ export const validateRouteParams = async <T>({
 
 	const redirectUrl = new URL(resolvedUrl || "", "http://localhost");
 
-	const result = await fetchStories<T>(version, params);
+	const result = await fetchStories<T>(version, requestParams);
 
 	if (!result || result.total === undefined) {
 		logger.error("Error fetching stories: ", result);

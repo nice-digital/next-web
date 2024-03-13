@@ -100,7 +100,7 @@ export const getServerSideProps = async ({
 }: GetServerSidePropsContext) => {
 	const result = await validateRouteParams<NewsArticlesProps>({
 		query,
-		options: {
+		sbParams: {
 			starts_with: "news/articles/",
 			per_page: 6,
 		},
