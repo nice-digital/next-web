@@ -1,4 +1,5 @@
 import { render, screen } from "@testing-library/react";
+import { StoryblokStory } from "storyblok-generate-ts";
 
 import { mockNewsArticle, mockBlogPost } from "@/test-utils/storyblok-data";
 import type { NewsStory } from "@/types/News";
@@ -6,7 +7,7 @@ import type { NewsStory } from "@/types/News";
 import { HomepageLatestNews } from "./HomepageLatestNews";
 
 // Mock a featured story
-const featuredStory: NewsStory = {
+const featuredStory: StoryblokStory<NewsStory> = {
 	...mockNewsArticle,
 	id: 333333,
 	name: "Featured story title",
@@ -27,7 +28,11 @@ const secondNewsArticle = {
 	id: 987654321,
 };
 
-const latestNews = [mockNewsArticle, mockBlogPost, secondNewsArticle];
+const latestNews: StoryblokStory<NewsStory>[] = [
+	mockNewsArticle,
+	mockBlogPost,
+	secondNewsArticle,
+];
 
 describe("Homepage latest news component", () => {
 	it("should match snapshot without a featured story", () => {

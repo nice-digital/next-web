@@ -21,7 +21,7 @@ import {
 
 import type { GetServerSidePropsContext } from "next";
 
-interface HomeProps {
+export interface HomeProps {
 	story: ISbStoryData<HomepageStoryblok>;
 	latestNews: NewsStory[];
 }

@@ -8,7 +8,7 @@ import styles from "./HomepageLatestNews.module.scss";
 
 interface LatestNewsProps {
 	featuredStory?: StoryblokStory<NewsStory>;
-	latestNews: NewsStory[];
+	latestNews: StoryblokStory<NewsStory>[];
 }
 
 export const HomepageLatestNews: React.FC<LatestNewsProps> = ({
