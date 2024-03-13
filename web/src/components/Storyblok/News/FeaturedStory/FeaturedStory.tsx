@@ -23,9 +23,6 @@ export const FeaturedStory: React.FC<FeaturedStoryProps> = ({
 	const storyType = story.content.component === "blogPost" ? "Blog" : "News";
 
 	const HeadingElement = `h${headingLevel}` as keyof JSX.IntrinsicElements;
-	const AuthorHeadingElement = `h${
-		headingLevel + 1
-	}` as keyof JSX.IntrinsicElements;
 
 	return (
 		<article className={styles.story}>
@@ -49,6 +46,9 @@ export const FeaturedStory: React.FC<FeaturedStoryProps> = ({
 						{story.content.author.map(
 							(author: AuthorStoryblok, index: number) => {
 								const { name, jobTitle, image } = author.content;
+								const AuthorHeadingElement = `h${
+									headingLevel + 1
+								}` as keyof JSX.IntrinsicElements;
 								return (
 									<div key={author._uid}>
 										{image && (
