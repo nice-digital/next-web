@@ -4,7 +4,10 @@ import { StoryblokStory } from "storyblok-generate-ts";
 import { Tag } from "@nice-digital/nds-tag";
 
 import { type NewsStory } from "@/types/News";
+import { type AuthorStoryblok } from "@/types/storyblok";
 import { friendlyDate } from "@/utils/storyblok";
+
+import StoryblokImage from "../../StoryblokImage/StoryblokImage";
 
 import styles from "./FeaturedStory.module.scss";
 
@@ -20,6 +23,9 @@ export const FeaturedStory: React.FC<FeaturedStoryProps> = ({
 	const storyType = story.content.component === "blogPost" ? "Blog" : "News";
 
 	const HeadingElement = `h${headingLevel}` as keyof JSX.IntrinsicElements;
+	const AuthorHeadingElement = `h${
+		headingLevel + 1
+	}` as keyof JSX.IntrinsicElements;
 
 	return (
 		<article className={styles.story}>
@@ -32,12 +38,38 @@ export const FeaturedStory: React.FC<FeaturedStoryProps> = ({
 					<Link href={`/${story.full_slug}`}>{story.name}</Link>
 				</HeadingElement>
 				<p>{story.content.introText}</p>
-				<footer>
+				<div>
 					<Tag outline>{storyType}</Tag>
 					<span className={styles.date}>
 						{friendlyDate(story.content.date)}
 					</span>
-				</footer>
+				</div>
+				{story.content.author && (
+					<div className={styles.author}>
+						{story.content.author.map(
+							(author: AuthorStoryblok, index: number) => {
+								return (
+									<>
+										<StoryblokImage
+											src={author.content.image.filename}
+											alt={author.content.image.alt}
+											className={styles.authorImage}
+										/>
+										<div className={styles.authorContent}>
+											<AuthorHeadingElement
+												className={styles.authorName}
+												key={index}
+											>
+												{author.content.name}
+											</AuthorHeadingElement>
+											<p>{author.content.jobTitle}</p>
+										</div>
+									</>
+								);
+							}
+						)}
+					</div>
+				)}
 			</div>
 		</article>
 	);

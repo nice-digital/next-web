@@ -60,3 +60,30 @@
 .date {
   margin-left: utils.rem(spacing.$medium);
 }
+
+.author {
+  display: flex;
+  gap: utils.rem(spacing.$medium);
+  margin-top: utils.rem(spacing.$medium);
+}
+
+
+.authorContent {
+  > p {
+    margin: 0;
+  }
+}
+
+.authorName {
+  @include typography.h6();
+  margin: 0;
+}
+
+.authorImage {
+  aspect-ratio: 1 / 1;
+  border-radius: 50%;
+  display: block;
+  height: auto;
+  object-fit: cover;
+  width: 72px;
+}
