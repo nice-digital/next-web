@@ -4,6 +4,7 @@ import { Tag } from "@nice-digital/nds-tag";
 
 import { Link } from "@/components/Link/Link";
 import { NewsStory } from "@/types/News";
+import { AuthorStoryblok } from "@/types/storyblok";
 import { friendlyDate } from "@/utils/storyblok";
 
 import styles from "./NewsCard.module.scss";
@@ -42,7 +43,7 @@ export const NewsCard: React.FC<NewsCardProps> = ({
 		>
 			<Link
 				className={styles.imageContainer}
-				href={full_slug}
+				href={`/${full_slug}`}
 				style={{ backgroundImage: `url(${content.image.filename})` }}
 				aria-hidden="true"
 			>
@@ -50,9 +51,24 @@ export const NewsCard: React.FC<NewsCardProps> = ({
 			</Link>
 			<div>
 				<HeadingElement className={styles.heading}>
-					<Link href={full_slug}>{name}</Link>
+					<Link href={`/${full_slug}`}>{name}</Link>
 				</HeadingElement>
 				<p>{content.introText}</p>
+				{content.author && (
+					<div>
+						{content.author.map((author: AuthorStoryblok) => {
+							const {
+								content: { name, jobTitle },
+								_uid,
+							} = author;
+							return (
+								<p key={_uid} className={styles.author}>
+									{name}, {jobTitle}
+								</p>
+							);
+						})}
+					</div>
+				)}
 				<footer>
 					<Tag outline>{storyType}</Tag>
 					<span className={styles.date}>
