@@ -102,7 +102,7 @@ resource "aws_ecs_task_definition" "nextweb-main-task" {
 	  mountPoints = [
         {
           sourceVolume  = "config",
-          containerPath = "/nextweb/config"
+          containerPath = "/next-web/config"
           readOnly      = false
         }
       ],
