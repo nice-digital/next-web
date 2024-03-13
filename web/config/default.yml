@@ -5,7 +5,7 @@
 
 # Public config values are accessible to both client and server-side code:
 public:
-  buildNumber: PLACEHOLDER
+  buildNumber: SOURCE-TEST-PLACEHOLDER
   # Name of the environment e.g. dev,test etc, used for logging to ELK
   environment: local
   # The base part of the URL where the website it hosted e.g https://dev.nice.org.uk
@@ -17,7 +17,8 @@ public:
   publicBaseURL: ''
   search:
     # The base URL of the Single Search Endpoint (SSE) e.g. https://beta-search-api.nice.org.uk/api/
-    baseURL: http://localhost:19332/api
+    baseURL: http://source-test:19332/api
+
   cacheControl:
     # The default cache-control header used for 'dynamic' responses - apis/pages with getServerSideProps
     # See https://nextjs.org/docs/going-to-production#caching for more details on cache headers with NextJS
