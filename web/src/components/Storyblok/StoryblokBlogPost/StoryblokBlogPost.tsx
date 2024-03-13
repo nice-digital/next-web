@@ -75,6 +75,8 @@ export const StoryblokBlogPost = ({
 
 	//TODO: remove this when the above is fixed, mob sanitycheck
 	const authors = blok.author as StoryblokStory<AuthorStoryblok>[];
+	const PageHeaderAuthorsList =
+		authors.length !== 0 ? <AuthorList authors={authors} /> : undefined;
 
 	return (
 		<article className={styles.newsSectionArticle} ref={articleRef}>
@@ -93,7 +95,7 @@ export const StoryblokBlogPost = ({
 								pageType={blok.component}
 							/>,
 						]}
-						secondSection={<AuthorList authors={authors} />}
+						secondSection={PageHeaderAuthorsList}
 					/>
 				</GridItem>
 
