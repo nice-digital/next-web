@@ -42,7 +42,7 @@ export const FeaturedStory: React.FC<FeaturedStoryProps> = ({
 					</span>
 				</div>
 				{story.content.author && (
-					<div className={styles.author}>
+					<>
 						{story.content.author.map(
 							(author: AuthorStoryblok, index: number) => {
 								const { name, jobTitle, image } = author.content;
@@ -50,7 +50,7 @@ export const FeaturedStory: React.FC<FeaturedStoryProps> = ({
 									headingLevel + 1
 								}` as keyof JSX.IntrinsicElements;
 								return (
-									<div key={author._uid}>
+									<div className={styles.author} key={author._uid}>
 										{image && (
 											<StoryblokImage
 												src={author.content.image.filename}
@@ -73,7 +73,7 @@ export const FeaturedStory: React.FC<FeaturedStoryProps> = ({
 								);
 							}
 						)}
-					</div>
+					</>
 				)}
 			</div>
 		</article>
