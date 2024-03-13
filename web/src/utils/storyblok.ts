@@ -422,9 +422,10 @@ export const getAdditionalMetaTags = (story: ISbStoryData): MetaTag[] => {
 
 // Turn a Storyblok date string (yyyy-mm-dd hh:ss) into a friendly date
 export const friendlyDate = (date: string): string => {
-	return new Date(date).toLocaleDateString("en-gb", {
-		year: "numeric",
-		month: "long",
+	const formatter = new Intl.DateTimeFormat("en-GB", {
 		day: "2-digit",
+		month: "long",
+		year: "numeric",
 	});
+	return formatter.format(new Date(date));
 };
