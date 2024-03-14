@@ -16,6 +16,7 @@ import {
 
 import { NewsPageHeaderFooter } from "../NewsPageHeader/NewsPageHeaderFooter/NewsPageHeaderFooter";
 import { AuthorList } from "../StoryblokAuthor/AuthorList/AuthorList";
+import { StoryblokAuthor } from "../StoryblokAuthor/StoryblokAuthor";
 import { StoryblokImage } from "../StoryblokImage/StoryblokImage";
 import { StoryblokRichText } from "../StoryblokRichText/StoryblokRichText";
 
@@ -66,17 +67,14 @@ export const StoryblokBlogPost = ({
 		</Breadcrumbs>
 	) : undefined;
 
-	// filter out any strings from the author array
-	// const mixedArray: (string | StoryblokStory<AuthorStoryblok>)[] = blok.author;
-	// const filteredAuthorArray: StoryblokStory<AuthorStoryblok>[] =
-	// 	mixedArray.filter(
-	// 		(item) => typeof item !== "string"
-	// 	) as StoryblokStory<AuthorStoryblok>[];
-
-	//TODO: remove this when the above is fixed, mob sanitycheck
 	const authors = blok.author as StoryblokStory<AuthorStoryblok>[];
+
 	const PageHeaderAuthorsList =
-		authors.length !== 0 ? <AuthorList authors={authors} /> : undefined;
+		authors.length > 1 ? (
+			<AuthorList authors={authors} />
+		) : typeof blok.author[0] !== "string" ? (
+			<StoryblokAuthor blok={blok.author[0].content} />
+		) : undefined;
 
 	return (
 		<article className={styles.newsSectionArticle} ref={articleRef}>
@@ -109,6 +107,7 @@ export const StoryblokBlogPost = ({
 							height="428px"
 							loading="eager"
 							src={blok.image.filename}
+							serviceOptions="/760x428/filters:quality(60)"
 							width="760px"
 						/>
 					)}
