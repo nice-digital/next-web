@@ -227,22 +227,11 @@ export const validateRouteParams = async <T>({
 	};
 };
 
-//NOTE: should we return null if not a valid number and then redirect from gssp to an error page, or set the current page to 1?
-// export const validatePageNumber = (page: unknown, defaultValue = 1): number => {
-// 	const pageNumber = Number(page);
-// 	if (!Number.isInteger(pageNumber) || pageNumber < 1) {
-// 		return defaultValue;
-// 	}
-
-// 	return pageNumber;
-// };
-
 // Fetch multiple stories from the Storyblok API
 export const fetchStories = async <T>(
 	version: StoryVersion = "published",
 	params: ISbStoriesParams = {}
 ): Promise<SBMultipleResponse<T>> => {
-	console.log("fetchStories");
 	const storyblokApi = getStoryblokApi();
 
 	const sbParams: ISbStoriesParams = {
