@@ -35,6 +35,9 @@ variable "nextweb_ecs_sg" {
 variable "load_balancer_tg" {
   type    = string
 }
+variable "node_env" {
+  type    = string
+}
 
 terraform {
   required_version = ">= 0.14"
@@ -99,6 +102,12 @@ resource "aws_ecs_task_definition" "nextweb-main-task" {
       cpu       = 256,
       memory    = 512,
       essential = true,
+      environment = [
+        {
+          name  = "NODE_ENV"
+          value = var.node_env
+        }
+      ]
 	  mountPoints = [
         {
           sourceVolume  = "config",

@@ -7,3 +7,4 @@ nextweb_efs_config_volume = "#{terraform_nextweb_efs_config_volume}"
 nextweb_ecs_subnets = [#{terraform_nextweb_ecs_subnets}]
 nextweb_ecs_sg = [#{terraform_nextweb_ecs_sg}]
 load_balancer_tg = "#{terraform_load_balancer_tg}"
+node_env = "#{terraform_node_env}"
