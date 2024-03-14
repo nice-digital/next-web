@@ -70,24 +70,3 @@
     flex: 0 0 72px;
   }
 }
-
-
-.authorContent {
-  > p {
-    margin: 0;
-  }
-}
-
-.authorName {
-  @include typography.h6();
-  margin: 0;
-}
-
-.authorImage {
-  aspect-ratio: 1 / 1;
-  border-radius: 50%;
-  display: block;
-  height: auto;
-  object-fit: cover;
-  width: 72px;
-}

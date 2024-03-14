@@ -3,6 +3,7 @@ import { StoryblokStory } from "storyblok-generate-ts";
 
 import { Tag } from "@nice-digital/nds-tag";
 
+import { StoryblokAuthor } from "@/components/Storyblok/StoryblokAuthor/StoryblokAuthor";
 import { type NewsStory } from "@/types/News";
 import { type AuthorStoryblok } from "@/types/storyblok";
 import { friendlyDate } from "@/utils/storyblok";
@@ -42,38 +43,18 @@ export const FeaturedStory: React.FC<FeaturedStoryProps> = ({
 					</span>
 				</div>
 				{story.content.author && (
-					<>
-						{story.content.author.map(
-							(author: AuthorStoryblok, index: number) => {
-								const { name, jobTitle, image } = author.content;
-								const AuthorHeadingElement = `h${
-									headingLevel + 1
-								}` as keyof JSX.IntrinsicElements;
-								return (
-									<div className={styles.author} key={author._uid}>
-										{image && (
-											<StoryblokImage
-												src={author.content.image.filename}
-												alt={author.content.image.alt}
-												className={styles.authorImage}
-											/>
-										)}
-										<div className={styles.authorContent}>
-											{name && (
-												<AuthorHeadingElement
-													className={styles.authorName}
-													key={index}
-												>
-													{author.content.name}
-												</AuthorHeadingElement>
-											)}
-											{jobTitle && <p>{author.content.jobTitle}</p>}
-										</div>
-									</div>
-								);
-							}
-						)}
-					</>
+					<div>
+						{story.content.author.map((author: AuthorStoryblok) => {
+							return (
+								<StoryblokAuthor
+									key={author._uid}
+									blok={author.content}
+									isCardAuthor={true}
+									headingLevel={headingLevel + 1}
+								/>
+							);
+						})}
+					</div>
 				)}
 			</div>
 		</article>
