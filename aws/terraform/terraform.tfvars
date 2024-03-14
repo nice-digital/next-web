@@ -1,9 +1,9 @@
 org_name = "nice"
-environment_name = "#{environment_name}"
-application_name = "#{application_name}"
-docker_image_address = "#{docker_image_address}"
+environment_name = "#{terraform_environment_name}"
+application_name = "#{terraform_application_name}"
+docker_image_address = "#{terraform_docker_image_address}"
 docker_image_build_number = "#{Octopus.Action[Extract Variables].Output.ExtractedBuildNumber}"
-nextweb_efs_config_volume = "#{nextweb_efs_config_volume}"
-nextweb_ecs_subnets = [#{nextweb_ecs_subnets}]
-nextweb_ecs_sg = [#{nextweb_ecs_sg}]
+nextweb_efs_config_volume = "#{terraform_nextweb_efs_config_volume}"
+nextweb_ecs_subnets = [#{terraform_nextweb_ecs_subnets}]
+nextweb_ecs_sg = [#{terraform_nextweb_ecs_sg}]
 load_balancer_tg = "#{terraform_load_balancer_tg}"
