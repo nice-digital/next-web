@@ -16,7 +16,7 @@ exports[`Featured story component should match snapshot 1`] = `
         class="heading"
       >
         <a
-          href="/i/am/a-very-full-slug"
+          href="i/am/a-very-full-slug"
         >
           Test news article title
         </a>

@@ -49,6 +49,19 @@ export type SBMultipleResponse<T> = {
 	error?: string;
 };
 
+// News type enum
+export const newsTypes = {
+	newsArticle: "News",
+	blogPost: "Blog",
+	podcast: "Podcast",
+	inDepthArticle: "In-depth",
+};
+
+// TODO: Replace this with an actual thing
+// Default podcast image
+export const defaultPodcastImage =
+	"https://media.istockphoto.com/id/1218042637/photo/portrait-of-a-funny-cat-in-a-police-hat-and-tie.jpg?s=2048x2048&w=is&k=20&c=WMIpQiNnWWzi1Yuel3mAlRBmk1RTRHb9mebZGA6FbWE=";
+
 // Init connection to Storyblok
 export const initStoryblok = (): void => {
 	const components = {
@@ -327,4 +340,19 @@ export const friendlyDate = (date: string): string => {
 		month: "long",
 		day: "2-digit",
 	});
+};
+
+// Get the news type from a Storyblok story's component prop
+export const getNewsType = (component: string): string => {
+	switch (component) {
+		case "blogPost":
+			return newsTypes.blogPost;
+		case "podcast":
+			return newsTypes.podcast;
+		case "inDepthArticle":
+			return newsTypes.inDepthArticle;
+		case "newsArticle":
+		default:
+			return newsTypes.newsArticle;
+	}
 };

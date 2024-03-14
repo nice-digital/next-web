@@ -5,7 +5,7 @@ import { StoryblokButtonLink } from "@/components/Storyblok/StoryblokButtonLink/
 import { type Breadcrumb as TypeBreadcrumb } from "@/types/Breadcrumb";
 import { type HeroStoryblok } from "@/types/storyblok";
 
-interface HeroBlokProps {
+export interface HeroBlokProps {
 	blok: HeroStoryblok;
 	breadcrumbs?: TypeBreadcrumb[];
 }

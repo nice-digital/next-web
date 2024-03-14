@@ -7,6 +7,7 @@ import {
 	type RichtextStoryblok,
 	type BlogPostStoryblok,
 	type NewsArticleStoryblok,
+	AssetStoryblok,
 } from "@/types/storyblok";
 
 export const mockStoryblokStory = {
@@ -234,4 +235,10 @@ export const mockBlogPost: StoryblokStory<BlogPostStoryblok> = {
 		component: "blogPost",
 		content: { ...mockRichText },
 	},
+};
+
+export const mockImageAsset: AssetStoryblok = {
+	filename: "https://placebacon.net/300/210?image=1",
+	id: 654654654,
+	name: "Delicious bacon",
 };

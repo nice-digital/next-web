@@ -49,9 +49,6 @@
 		"activityBar.foreground": "#222"
   },
   "jest.jestCommandLine": "npm test --",
-  "jest.autoRun": {
-    "watch": false,
-    "onSave": "test-file"
- },
- "stylelint.validate": ["css", "scss"]
+  "jest.runMode": {"type": "on-save", "testFileOnly": true},
+  "stylelint.validate": ["css", "scss"]
 }

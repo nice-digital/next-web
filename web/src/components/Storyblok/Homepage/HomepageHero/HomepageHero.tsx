@@ -9,7 +9,9 @@ import {
 
 import { StoryblokButtonLink } from "../../StoryblokButtonLink/StoryblokButtonLink";
 
-interface HomepageHeroBlokProps {
+import styles from "./HomepageHero.module.scss";
+
+export interface HomepageHeroBlokProps {
 	blok: HomepageHeroStoryblok;
 }
 
@@ -39,6 +41,7 @@ export const HomepageHero = ({
 			intro={description}
 			image={randomImage}
 			actions={<StoryblokButtonLink button={updatedCTA} />}
+			className={styles.hero}
 		/>
 	);
 };

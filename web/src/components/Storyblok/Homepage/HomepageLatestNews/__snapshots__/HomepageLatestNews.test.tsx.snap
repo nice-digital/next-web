@@ -2,8 +2,12 @@
 
 exports[`Homepage latest news component should match snapshot with a featured story 1`] = `
 <div>
-  <section>
-    <h2>
+  <section
+    class="latestNews"
+  >
+    <h2
+      class="title"
+    >
       Latest from NICE
     </h2>
     <article
@@ -20,7 +24,7 @@ exports[`Homepage latest news component should match snapshot with a featured st
           class="heading"
         >
           <a
-            href="/i/am/a-very-full-slug"
+            href="i/am/a-very-full-slug"
           >
             Featured story title
           </a>
@@ -50,123 +54,132 @@ exports[`Homepage latest news component should match snapshot with a featured st
         class="newsItem"
       >
         <article
-          class="newsCard"
+          class="newsCard "
         >
           <a
             aria-hidden="true"
             class="imageContainer"
             href="i/am/a-very-full-slug"
             style="background-image: url(https://placekitten.com/200/286);"
+            tabindex="-1"
           >
              
           </a>
-          <h3
-            class="heading"
-          >
-            <a
-              href="i/am/a-very-full-slug"
+          <div>
+            <h3
+              class="heading"
             >
-              Test news article title
-            </a>
-          </h3>
-          <p>
-            Test intro text
-          </p>
-          <footer>
-            <span
-              class="tag tag--outline"
-              data-component="tag"
-            >
-              News
-            </span>
-            <span
-              class="date"
-            >
-              31 January 2024
-            </span>
-          </footer>
+              <a
+                href="i/am/a-very-full-slug"
+              >
+                Test news article title
+              </a>
+            </h3>
+            <p>
+              Test intro text
+            </p>
+            <footer>
+              <span
+                class="tag tag--outline"
+                data-component="tag"
+              >
+                News
+              </span>
+              <span
+                class="date"
+              >
+                31 January 2024
+              </span>
+            </footer>
+          </div>
         </article>
       </li>
       <li
         class="newsItem"
       >
         <article
-          class="newsCard"
+          class="newsCard "
         >
           <a
             aria-hidden="true"
             class="imageContainer"
             href="i/am/a-very-full-slug"
             style="background-image: url(https://placekitten.com/200/139);"
+            tabindex="-1"
           >
              
           </a>
-          <h3
-            class="heading"
-          >
-            <a
-              href="i/am/a-very-full-slug"
+          <div>
+            <h3
+              class="heading"
             >
-              Test blog post title
-            </a>
-          </h3>
-          <p>
-            Let's play Blockbusters!
-          </p>
-          <footer>
-            <span
-              class="tag tag--outline"
-              data-component="tag"
-            >
-              Blog
-            </span>
-            <span
-              class="date"
-            >
-              20 February 2024
-            </span>
-          </footer>
+              <a
+                href="i/am/a-very-full-slug"
+              >
+                Test blog post title
+              </a>
+            </h3>
+            <p>
+              Let's play Blockbusters!
+            </p>
+            <footer>
+              <span
+                class="tag tag--outline"
+                data-component="tag"
+              >
+                Blog
+              </span>
+              <span
+                class="date"
+              >
+                20 February 2024
+              </span>
+            </footer>
+          </div>
         </article>
       </li>
       <li
         class="newsItem"
       >
         <article
-          class="newsCard"
+          class="newsCard "
         >
           <a
             aria-hidden="true"
             class="imageContainer"
             href="i/am/a-very-full-slug"
             style="background-image: url(https://placekitten.com/200/286);"
+            tabindex="-1"
           >
              
           </a>
-          <h3
-            class="heading"
-          >
-            <a
-              href="i/am/a-very-full-slug"
+          <div>
+            <h3
+              class="heading"
             >
-              Test news article title
-            </a>
-          </h3>
-          <p>
-            Test intro text
-          </p>
-          <footer>
-            <span
-              class="tag tag--outline"
-              data-component="tag"
-            >
-              News
-            </span>
-            <span
-              class="date"
-            >
-              31 January 2024
-            </span>
-          </footer>
+              <a
+                href="i/am/a-very-full-slug"
+              >
+                Test news article title
+              </a>
+            </h3>
+            <p>
+              Test intro text
+            </p>
+            <footer>
+              <span
+                class="tag tag--outline"
+                data-component="tag"
+              >
+                News
+              </span>
+              <span
+                class="date"
+              >
+                31 January 2024
+              </span>
+            </footer>
+          </div>
         </article>
       </li>
     </ol>
@@ -176,8 +189,12 @@ exports[`Homepage latest news component should match snapshot with a featured st
 
 exports[`Homepage latest news component should match snapshot without a featured story 1`] = `
 <div>
-  <section>
-    <h2>
+  <section
+    class="latestNews"
+  >
+    <h2
+      class="title"
+    >
       Latest from NICE
     </h2>
     <ol
@@ -187,123 +204,132 @@ exports[`Homepage latest news component should match snapshot without a featured
         class="newsItem"
       >
         <article
-          class="newsCard"
+          class="newsCard "
         >
           <a
             aria-hidden="true"
             class="imageContainer"
             href="i/am/a-very-full-slug"
             style="background-image: url(https://placekitten.com/200/286);"
+            tabindex="-1"
           >
              
           </a>
-          <h3
-            class="heading"
-          >
-            <a
-              href="i/am/a-very-full-slug"
+          <div>
+            <h3
+              class="heading"
             >
-              Test news article title
-            </a>
-          </h3>
-          <p>
-            Test intro text
-          </p>
-          <footer>
-            <span
-              class="tag tag--outline"
-              data-component="tag"
-            >
-              News
-            </span>
-            <span
-              class="date"
-            >
-              31 January 2024
-            </span>
-          </footer>
+              <a
+                href="i/am/a-very-full-slug"
+              >
+                Test news article title
+              </a>
+            </h3>
+            <p>
+              Test intro text
+            </p>
+            <footer>
+              <span
+                class="tag tag--outline"
+                data-component="tag"
+              >
+                News
+              </span>
+              <span
+                class="date"
+              >
+                31 January 2024
+              </span>
+            </footer>
+          </div>
         </article>
       </li>
       <li
         class="newsItem"
       >
         <article
-          class="newsCard"
+          class="newsCard "
         >
           <a
             aria-hidden="true"
             class="imageContainer"
             href="i/am/a-very-full-slug"
             style="background-image: url(https://placekitten.com/200/139);"
+            tabindex="-1"
           >
              
           </a>
-          <h3
-            class="heading"
-          >
-            <a
-              href="i/am/a-very-full-slug"
+          <div>
+            <h3
+              class="heading"
             >
-              Test blog post title
-            </a>
-          </h3>
-          <p>
-            Let's play Blockbusters!
-          </p>
-          <footer>
-            <span
-              class="tag tag--outline"
-              data-component="tag"
-            >
-              Blog
-            </span>
-            <span
-              class="date"
-            >
-              20 February 2024
-            </span>
-          </footer>
+              <a
+                href="i/am/a-very-full-slug"
+              >
+                Test blog post title
+              </a>
+            </h3>
+            <p>
+              Let's play Blockbusters!
+            </p>
+            <footer>
+              <span
+                class="tag tag--outline"
+                data-component="tag"
+              >
+                Blog
+              </span>
+              <span
+                class="date"
+              >
+                20 February 2024
+              </span>
+            </footer>
+          </div>
         </article>
       </li>
       <li
         class="newsItem"
       >
         <article
-          class="newsCard"
+          class="newsCard "
         >
           <a
             aria-hidden="true"
             class="imageContainer"
             href="i/am/a-very-full-slug"
             style="background-image: url(https://placekitten.com/200/286);"
+            tabindex="-1"
           >
              
           </a>
-          <h3
-            class="heading"
-          >
-            <a
-              href="i/am/a-very-full-slug"
+          <div>
+            <h3
+              class="heading"
             >
-              Test news article title
-            </a>
-          </h3>
-          <p>
-            Test intro text
-          </p>
-          <footer>
-            <span
-              class="tag tag--outline"
-              data-component="tag"
-            >
-              News
-            </span>
-            <span
-              class="date"
-            >
-              31 January 2024
-            </span>
-          </footer>
+              <a
+                href="i/am/a-very-full-slug"
+              >
+                Test news article title
+              </a>
+            </h3>
+            <p>
+              Test intro text
+            </p>
+            <footer>
+              <span
+                class="tag tag--outline"
+                data-component="tag"
+              >
+                News
+              </span>
+              <span
+                class="date"
+              >
+                31 January 2024
+              </span>
+            </footer>
+          </div>
         </article>
       </li>
     </ol>
