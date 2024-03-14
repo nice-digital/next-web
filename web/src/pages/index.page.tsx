@@ -1,8 +1,4 @@
-import {
-	type ISbStoryData,
-	type ISbStoriesParams,
-	StoryblokComponent,
-} from "@storyblok/react";
+import { type ISbStoriesParams, StoryblokComponent } from "@storyblok/react";
 import { NextSeo } from "next-seo";
 import React, { useMemo } from "react";
 import { StoryblokStory } from "storyblok-generate-ts";
@@ -22,8 +18,8 @@ import {
 import type { GetServerSidePropsContext } from "next";
 
 export interface HomeProps {
-	story: ISbStoryData<HomepageStoryblok>;
-	latestNews: NewsStory[];
+	story: StoryblokStory<HomepageStoryblok>;
+	latestNews: StoryblokStory<NewsStory>[];
 }
 
 export default function Home({

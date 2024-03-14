@@ -11,7 +11,7 @@ import { StoryblokButtonLink } from "../../StoryblokButtonLink/StoryblokButtonLi
 
 import styles from "./HomepageHero.module.scss";
 
-interface HomepageHeroBlokProps {
+export interface HomepageHeroBlokProps {
 	blok: HomepageHeroStoryblok;
 }
 

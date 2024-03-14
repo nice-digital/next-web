@@ -1,25 +1,25 @@
+@use '@nice-digital/nds-core/scss/layout';
 @use '@nice-digital/nds-core/scss/spacing';
 @use '@nice-digital/nds-core/scss/utils';
+@use '~/styles/colours';
 @use '~/styles/spacing' as *;
 
-.content {
-  > :last-child {
+.links {
+  @include layout.fullWidth();
+  background-color: colours.$links-background;
+  padding: $homepage-large-spacing 0;
+}
+
+.linksTransparent {
+  background-color: transparent;
+}
+
+.linksContainer {
+  @include layout.fullWidthContainer();
+}
+
+.actionBannerWrapper {
+  .actionBanner {
     margin-bottom: 0;
   }
-}
-
-.links {
-  margin-bottom: $homepage-large-spacing;
-}
-
-.actionBanner.actionBanner { // Disgusting but better than !important for upping specificity
-  margin-bottom: $homepage-large-spacing;
-}
-
-.promoBox {
-  margin-bottom: $homepage-large-spacing;
-}
-
-.spotlight {
-  margin-bottom: $homepage-large-spacing;
 }

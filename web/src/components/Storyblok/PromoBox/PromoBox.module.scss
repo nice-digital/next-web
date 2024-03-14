@@ -3,11 +3,12 @@
 @use '@nice-digital/nds-core/scss/media-queries';
 @use '@nice-digital/nds-core/scss/spacing';
 @use '@nice-digital/nds-core/scss/utils';
+@use '~/styles/spacing' as *;
 
 .promoBox {
   @include layout.fullWidth();
   background: colours.$promo-box-background;
-  padding: utils.rem(spacing.$xx-large) 0;
+  padding: $homepage-large-spacing 0;
 }
 
 .transparent {

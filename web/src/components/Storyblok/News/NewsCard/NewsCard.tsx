@@ -50,7 +50,7 @@ export const NewsCard: React.FC<NewsCardProps> = ({
 				href={full_slug}
 				style={{ backgroundImage: `url(${image})` }}
 				aria-hidden="true"
-				tabindex={-1}
+				tabIndex={-1}
 			>
 				{" "}
 			</Link>

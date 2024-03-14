@@ -10,7 +10,7 @@ import { HomepageLatestNews } from "./HomepageLatestNews/HomepageLatestNews";
 
 interface HomepageBlokProps {
 	blok: HomepageStoryblok;
-	latestNews: NewsStory[];
+	latestNews: StoryblokStory<NewsStory>[];
 }
 
 export const Homepage = ({
@@ -22,11 +22,16 @@ export const Homepage = ({
 		hero,
 		featuredStory,
 		links,
+		linksAreTransparent,
 		primaryActionBanner,
 		promoBox1,
 		promoBox2,
 		spotlight,
 	} = blok;
+
+	const linksClassName = linksAreTransparent
+		? `${styles.links} ${styles.linksTransparent}`
+		: styles.links;
 
 	return (
 		<>
@@ -41,63 +46,51 @@ export const Homepage = ({
 				<StoryblokComponent blok={nestedBlok} key={nestedBlok._uid} />
 			))}
 
-			<div className={styles.content}>
-				{/* Latest news */}
-				<HomepageLatestNews
-					featuredStory={featuredStory as StoryblokStory<NewsStory>}
-					latestNews={latestNews}
-				/>
+			{/* Latest news */}
+			<HomepageLatestNews
+				featuredStory={featuredStory as StoryblokStory<NewsStory>}
+				latestNews={latestNews}
+			/>
 
-				{/* Primary action banner */}
-				{primaryActionBanner &&
-					primaryActionBanner.length > 0 &&
-					primaryActionBanner.map((nestedBlok) => (
-						<div className={styles.actionBannerWrapper} key={nestedBlok._uid}>
-							<StoryblokComponent
-								blok={nestedBlok}
-								className={styles.actionBanner}
-							/>
-						</div>
-					))}
+			{/* Primary action banner */}
+			{primaryActionBanner &&
+				primaryActionBanner.length > 0 &&
+				primaryActionBanner.map((nestedBlok) => (
+					<div className={styles.actionBannerWrapper} key={nestedBlok._uid}>
+						<StoryblokComponent
+							blok={nestedBlok}
+							className={styles.actionBanner}
+						/>
+					</div>
+				))}
 
-				{/* Links */}
-				<div className={styles.links}>
+			{/* Links */}
+			<div className={linksClassName}>
+				<div className={styles.linksContainer}>
 					<StoryblokRichText content={links} />
 				</div>
-
-				{/* Promo box 1 */}
-				{promoBox1 &&
-					promoBox1.length > 0 &&
-					promoBox1.map((nestedBlok) => (
-						<StoryblokComponent
-							blok={nestedBlok}
-							className={styles.promoBox}
-							key={nestedBlok._uid}
-						/>
-					))}
-
-				{/* Spotlight */}
-				{spotlight &&
-					spotlight.length > 0 &&
-					spotlight.map((nestedBlok) => (
-						<StoryblokComponent
-							blok={nestedBlok}
-							className={styles.spotlight}
-							key={nestedBlok._uid}
-						/>
-					))}
-
-				{/* Promo box 2 */}
-				{promoBox2 &&
-					promoBox2.length > 0 &&
-					promoBox2.map((nestedBlok) => (
-						<StoryblokComponent
-							blok={nestedBlok}
-							className={styles.promoBox}
-							key={nestedBlok._uid}
-						/>
-					))}
 			</div>
+
+			{/* Promo box 1 */}
+			{promoBox1 &&
+				promoBox1.length > 0 &&
+				promoBox1.map((nestedBlok) => (
+					<StoryblokComponent blok={nestedBlok} key={nestedBlok._uid} />
+				))}
+
+			{/* Spotlight */}
+			{spotlight &&
+				spotlight.length > 0 &&
+				spotlight.map((nestedBlok) => (
+					<StoryblokComponent blok={nestedBlok} key={nestedBlok._uid} />
+				))}
+
+			{/* Promo box 2 */}
+			{promoBox2 &&
+				promoBox2.length > 0 &&
+				promoBox2.map((nestedBlok) => (
+					<StoryblokComponent blok={nestedBlok} key={nestedBlok._uid} />
+				))}
 		</>
 	);
 };

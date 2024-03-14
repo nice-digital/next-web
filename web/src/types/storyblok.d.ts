@@ -195,9 +195,15 @@ export interface HeroStoryblok {
 
 export interface HomepageStoryblok {
   hero: HomepageHeroStoryblok[];
-  featuredStory?: StoryblokStory<BlogPostStoryblok> | StoryblokStory<NewsArticleStoryblok> | string;
+  featuredStory?:
+    | StoryblokStory<BlogPostStoryblok>
+    | StoryblokStory<NewsArticleStoryblok>
+    | StoryblokStory<PodcastStoryblok>
+    | StoryblokStory<InDepthArticleStoryblok>
+    | string;
   primaryActionBanner?: ActionBannerStoryblok[];
   links: RichtextStoryblok;
+  linksAreTransparent?: boolean;
   promoBox1?: PromoBoxStoryblok[];
   spotlight?: SpotlightStoryblok[];
   promoBox2?: PromoBoxStoryblok[];
@@ -427,6 +433,7 @@ export interface SpotlightStoryblok {
   mediaDescription?: string;
   stories: (StoryblokStory<BlogPostStoryblok> | StoryblokStory<NewsArticleStoryblok> | string)[];
   youtubeEmbed: YoutubeEmbedStoryblok[];
+  isTransparent?: boolean;
   _uid: string;
   component: "spotlight";
   [k: string]: any;
