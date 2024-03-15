@@ -27,6 +27,7 @@ import { StoryblokActionBanner } from "@/components/Storyblok/StoryblokActionBan
 import { StoryblokAuthor } from "@/components/Storyblok/StoryblokAuthor/StoryblokAuthor";
 import { StoryblokBlogPost } from "@/components/Storyblok/StoryblokBlogPost/StoryblokBlogPost";
 import { StoryblokHero } from "@/components/Storyblok/StoryblokHero/StoryblokHero";
+import { StoryblokIframe } from "@/components/Storyblok/StoryblokIframe/StoryblokIframe";
 import { StoryblokNewsArticle } from "@/components/Storyblok/StoryblokNewsArticle/StoryblokNewsArticle";
 import { StoryblokPageHeader } from "@/components/Storyblok/StoryblokPageHeader/StoryblokPageHeader";
 import { StoryblokRelatedLink } from "@/components/Storyblok/StoryblokRelatedLink/StoryblokRelatedLink";
@@ -88,6 +89,7 @@ export const initStoryblok = (): void => {
 		relatedNewsLink: StoryblokRelatedNewsLink,
 		spotlight: Spotlight,
 		youtubeEmbed: StoryblokYoutubeEmbed,
+		iframe: StoryblokIframe,
 	};
 
 	try {
