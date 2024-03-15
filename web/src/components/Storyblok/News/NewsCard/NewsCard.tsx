@@ -32,9 +32,11 @@ export const NewsCard: React.FC<NewsCardProps> = ({
 	const HeadingElement = `h${headingLevel}` as keyof JSX.IntrinsicElements;
 
 	// Fall back to podcast placeholder image if none is supplied
-	const image =
-		`"${content.image?.filename}/m/868x0/filters:quality(80)"` ||
-		defaultPodcastImage;
+	// Updated the content image to use the new image service for optimised loading
+	const image = content.image?.filename
+		? `"${content.image?.filename}/m/868x0/filters:quality(80)"`
+		: defaultPodcastImage;
+
 	const absolute_full_slug = `/${full_slug}`;
 
 	const imageLink =
