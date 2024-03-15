@@ -377,7 +377,6 @@ export interface PageHeaderStoryblok {
 }
 
 export interface PodcastStoryblok {
-  hero: HeroStoryblok[];
   date: string;
   soundcloudEmbedID: string;
   introText: string;
