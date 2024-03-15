@@ -29,12 +29,13 @@ export const FeaturedStory: React.FC<FeaturedStoryProps> = ({
 	const storyType = getNewsType(content.component);
 
 	const HeadingElement = `h${headingLevel}` as keyof JSX.IntrinsicElements;
+	const absolute_full_slug = `/${full_slug}`;
 
 	const headingLink =
 		storyType === newsTypes.inDepthArticle ? (
 			<a href={content.link.url || content.link.cached_url}>{name}</a>
 		) : (
-			<Link href={full_slug}>{name}</Link>
+			<Link href={absolute_full_slug}>{name}</Link>
 		);
 
 	// Fall back to podcast placeholder image if none is supplied

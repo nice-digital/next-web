@@ -33,6 +33,7 @@ export const NewsCard: React.FC<NewsCardProps> = ({
 
 	// Fall back to podcast placeholder image if none is supplied
 	const image = content.image?.filename || defaultPodcastImage;
+	const absolute_full_slug = `/${full_slug}`;
 
 	const imageLink =
 		storyType === newsTypes.inDepthArticle ? (
@@ -48,7 +49,7 @@ export const NewsCard: React.FC<NewsCardProps> = ({
 		) : (
 			<Link
 				className={styles.imageContainer}
-				href={full_slug}
+				href={absolute_full_slug}
 				style={{ backgroundImage: `url(${image})` }}
 				aria-hidden="true"
 				tabIndex={-1}
@@ -61,7 +62,7 @@ export const NewsCard: React.FC<NewsCardProps> = ({
 		storyType === newsTypes.inDepthArticle ? (
 			<a href={content.link.url || content.link.cached_url}>{name}</a>
 		) : (
-			<Link href={full_slug}>{name}</Link>
+			<Link href={absolute_full_slug}>{name}</Link>
 		);
 
 	return (
