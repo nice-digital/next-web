@@ -9,6 +9,9 @@ export interface StoryblokImageProps
 	[key: `data-${string}`]: string;
 }
 
+//TODO: refactor this component to handle Storyblok image service options including all filters and fallback image
+// according to new docs released it's now possible to add avif formats.https://www.storyblok.com/docs/image-service/#changing-the-format
+
 export const StoryblokImage = React.forwardRef<
 	HTMLImageElement,
 	StoryblokImageProps
@@ -40,7 +43,7 @@ export const StoryblokImage = React.forwardRef<
 		} else if (useWebP) {
 			return `${baseUrl}/m/`;
 		} else {
-			return serviceOptions ? `${baseUrl}/${serviceOptions}` : `${baseUrl}`;
+			return `${baseUrl}`;
 		}
 	};
 
@@ -54,7 +57,7 @@ export const StoryblokImage = React.forwardRef<
 			<img
 				ref={ref}
 				className={className}
-				src={jpgSrc ? jpgSrc : placeholderSrc}
+				src={src ? src : placeholderSrc}
 				alt={alt}
 				{...rest}
 			/>
