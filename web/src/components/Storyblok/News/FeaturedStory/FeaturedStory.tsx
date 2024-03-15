@@ -39,13 +39,17 @@ export const FeaturedStory: React.FC<FeaturedStoryProps> = ({
 		);
 
 	// Fall back to podcast placeholder image if none is supplied
-	const image = content.image?.filename || defaultPodcastImage;
+	const image =
+		`"${content.image?.filename}/m/868x0/filters:quality(80)"` ||
+		defaultPodcastImage;
 
 	return (
 		<article className={styles.story}>
 			<div
 				className={styles.imageContainer}
-				style={{ backgroundImage: `url(${image})` }}
+				style={{
+					backgroundImage: `url(${image})`,
+				}}
 			></div>
 			<div className={styles.content}>
 				<HeadingElement className={styles.heading}>
@@ -60,7 +64,7 @@ export const FeaturedStory: React.FC<FeaturedStoryProps> = ({
 							{story.content.author.map((author: AuthorStoryblok) => {
 								return (
 									<StoryblokAuthor
-										key={author._uid}
+										key={author.id}
 										blok={author.content}
 										isCardAuthor={true}
 										headingLevel={headingLevel + 1}

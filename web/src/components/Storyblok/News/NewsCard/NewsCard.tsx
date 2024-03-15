@@ -32,7 +32,9 @@ export const NewsCard: React.FC<NewsCardProps> = ({
 	const HeadingElement = `h${headingLevel}` as keyof JSX.IntrinsicElements;
 
 	// Fall back to podcast placeholder image if none is supplied
-	const image = content.image?.filename || defaultPodcastImage;
+	const image =
+		`"${content.image?.filename}/m/868x0/filters:quality(80)"` ||
+		defaultPodcastImage;
 	const absolute_full_slug = `/${full_slug}`;
 
 	const imageLink =
@@ -40,7 +42,9 @@ export const NewsCard: React.FC<NewsCardProps> = ({
 			<a
 				href={content.link.url || content.link.cached_url}
 				className={styles.imageContainer}
-				style={{ backgroundImage: `url(${image})` }}
+				style={{
+					backgroundImage: `url(${image})`,
+				}}
 				aria-hidden="true"
 				tabIndex={-1}
 			>
@@ -50,7 +54,9 @@ export const NewsCard: React.FC<NewsCardProps> = ({
 			<Link
 				className={styles.imageContainer}
 				href={absolute_full_slug}
-				style={{ backgroundImage: `url(${image})` }}
+				style={{
+					backgroundImage: `url(${image})`,
+				}}
 				aria-hidden="true"
 				tabIndex={-1}
 			>
@@ -90,10 +96,11 @@ export const NewsCard: React.FC<NewsCardProps> = ({
 							{content.author.map((author: AuthorStoryblok) => {
 								const {
 									content: { name, jobTitle },
-									_uid,
+									id,
 								} = author;
+
 								return (
-									<p key={_uid} className={styles.author}>
+									<p key={id} className={styles.author}>
 										{name}, {jobTitle}
 									</p>
 								);
