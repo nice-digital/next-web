@@ -5,7 +5,12 @@ import { Tag } from "@nice-digital/nds-tag";
 import { Link } from "@/components/Link/Link";
 import { NewsStory } from "@/types/News";
 import { AuthorStoryblok } from "@/types/storyblok";
-import { friendlyDate } from "@/utils/storyblok";
+import {
+	friendlyDate,
+	getNewsType,
+	defaultPodcastImage,
+	newsTypes,
+} from "@/utils/storyblok";
 
 import styles from "./NewsCard.module.scss";
 
@@ -22,18 +27,42 @@ export const NewsCard: React.FC<NewsCardProps> = ({
 }: NewsCardProps) => {
 	const { name, content, full_slug } = story;
 
-	let storyType = "";
-	switch (content.component) {
-		case "blogPost":
-			storyType = "Blog";
-			break;
-		case "newsArticle":
-		default:
-			storyType = "News";
-			break;
-	}
+	const storyType = getNewsType(content.component);
 
 	const HeadingElement = `h${headingLevel}` as keyof JSX.IntrinsicElements;
+
+	// Fall back to podcast placeholder image if none is supplied
+	const image = content.image?.filename || defaultPodcastImage;
+
+	const imageLink =
+		storyType === newsTypes.inDepthArticle ? (
+			<a
+				href={content.link.url || content.link.cached_url}
+				className={styles.imageContainer}
+				style={{ backgroundImage: `url(${image})` }}
+				aria-hidden="true"
+				tabIndex={-1}
+			>
+				{" "}
+			</a>
+		) : (
+			<Link
+				className={styles.imageContainer}
+				href={full_slug}
+				style={{ backgroundImage: `url(${image})` }}
+				aria-hidden="true"
+				tabIndex={-1}
+			>
+				{" "}
+			</Link>
+		);
+
+	const headingLink =
+		storyType === newsTypes.inDepthArticle ? (
+			<a href={content.link.url || content.link.cached_url}>{name}</a>
+		) : (
+			<Link href={full_slug}>{name}</Link>
+		);
 
 	return (
 		<article
@@ -41,39 +70,35 @@ export const NewsCard: React.FC<NewsCardProps> = ({
 				variant === "isNewsListItem" ? styles.listItem : ""
 			}`}
 		>
-			<Link
-				className={styles.imageContainer}
-				href={`/${full_slug}`}
-				style={{ backgroundImage: `url(${content.image.filename})` }}
-				aria-hidden="true"
-			>
-				{" "}
-			</Link>
+			{imageLink}
 			<div>
 				<HeadingElement className={styles.heading}>
-					<Link href={`/${full_slug}`}>{name}</Link>
+					{headingLink}
 				</HeadingElement>
 				<p>{content.introText}</p>
-				{content.author && (
-					<div>
-						{content.author.map((author: AuthorStoryblok) => {
-							const {
-								content: { name, jobTitle },
-								_uid,
-							} = author;
-							return (
-								<p key={_uid} className={styles.author}>
-									{name}, {jobTitle}
-								</p>
-							);
-						})}
-					</div>
-				)}
+
 				<footer>
-					<Tag outline>{storyType}</Tag>
-					<span className={styles.date}>
-						{friendlyDate(story.content.date)}
-					</span>
+					<div>
+						<Tag outline>{storyType}</Tag>
+						<span className={styles.date}>
+							{friendlyDate(story.content.date)}
+						</span>
+					</div>
+					{content.author && (
+						<div className={styles.author}>
+							{content.author.map((author: AuthorStoryblok) => {
+								const {
+									content: { name, jobTitle },
+									_uid,
+								} = author;
+								return (
+									<p key={_uid} className={styles.author}>
+										{name}, {jobTitle}
+									</p>
+								);
+							})}
+						</div>
+					)}
 				</footer>
 			</div>
 		</article>

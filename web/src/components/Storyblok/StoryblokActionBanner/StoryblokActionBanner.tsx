@@ -7,10 +7,12 @@ import { StoryblokRichText } from "../StoryblokRichText/StoryblokRichText";
 
 export interface StoryblokActionBannerProps {
 	blok: ActionBannerStoryblok;
+	className?: string;
 }
 
 export const StoryblokActionBanner: React.FC<StoryblokActionBannerProps> = ({
 	blok,
+	className = undefined,
 }: StoryblokActionBannerProps) => {
 	const { heading, body, cta, image } = blok;
 
@@ -20,6 +22,7 @@ export const StoryblokActionBanner: React.FC<StoryblokActionBannerProps> = ({
 			variant="fullWidth"
 			cta={<StoryblokButtonLink button={cta[0]} />}
 			image={image.filename}
+			className={className}
 		>
 			<StoryblokRichText content={body as RichtextStoryblok} />
 		</ActionBanner>

@@ -1,8 +1,4 @@
-import {
-	type ISbStoryData,
-	type ISbStoriesParams,
-	StoryblokComponent,
-} from "@storyblok/react";
+import { type ISbStoriesParams, StoryblokComponent } from "@storyblok/react";
 import { NextSeo } from "next-seo";
 import React, { useMemo } from "react";
 import { StoryblokStory } from "storyblok-generate-ts";
@@ -21,9 +17,9 @@ import {
 
 import type { GetServerSidePropsContext } from "next";
 
-interface HomeProps {
-	story: ISbStoryData<HomepageStoryblok>;
-	latestNews: NewsStory[];
+export interface HomeProps {
+	story: StoryblokStory<HomepageStoryblok>;
+	latestNews: StoryblokStory<NewsStory>[];
 }
 
 export default function Home({
@@ -52,14 +48,14 @@ export async function getServerSideProps(context: GetServerSidePropsContext) {
 	const version = getStoryVersionFromQuery(context.query);
 	const storyResult = await fetchStory<HomepageStoryblok>(slug, version, {
 		resolve_links: "url",
-		resolve_relations: "homepage.featuredStory",
+		resolve_relations: "homepage.featuredStory,spotlight.stories",
 	});
 
 	// Fetch latest news stories
 	const latestNewsParams: ISbStoriesParams = {
 		starts_with: "news",
 		sort_by: "content.date:desc",
-		excluding_slugs: "news/blogs/authors/*,news/in-depth/*",
+		excluding_slugs: "news/blogs/authors/*",
 		per_page: 3,
 	};
 

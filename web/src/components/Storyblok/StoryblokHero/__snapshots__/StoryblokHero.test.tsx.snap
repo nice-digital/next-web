@@ -1,0 +1,144 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Storyblok Hero should match snapshot with breadcrumbs 1`] = `
+<div>
+  <div />
+  <main>
+    <div
+      class="container"
+      data-component="container"
+    >
+      <div
+        class="hero"
+        data-component="hero"
+      >
+        <div
+          class="hero__container"
+        >
+          <nav
+            aria-label="Breadcrumbs"
+            data-component="breadcrumbs"
+            role="navigation"
+          >
+            <ol
+              class="breadcrumbs"
+            >
+              <li
+                class="breadcrumbs__crumb"
+              >
+                <a
+                  href="/"
+                >
+                  Home
+                </a>
+              </li>
+              <li
+                class="breadcrumbs__crumb"
+              >
+                <a
+                  href="/bacon"
+                >
+                  All about bacon
+                </a>
+              </li>
+              <li
+                class="breadcrumbs__crumb"
+              >
+                <a
+                  href="/bacon/maple-syrup"
+                >
+                  Wonderful bacon additive
+                </a>
+              </li>
+            </ol>
+          </nav>
+          <script
+            type="application/ld+json"
+          >
+            {
+  "@context": "http://schema.org",
+  "@type": "BreadcrumbList",
+  "itemListElement": [
+    {
+      "@type": "ListItem",
+      "position": 1,
+      "item": {
+        "@id": "/",
+        "name": "Home"
+      }
+    },
+    {
+      "@type": "ListItem",
+      "position": 2,
+      "item": {
+        "@id": "/bacon",
+        "name": "All about bacon"
+      }
+    },
+    {
+      "@type": "ListItem",
+      "position": 3,
+      "item": {
+        "@id": "/bacon/maple-syrup",
+        "name": "Wonderful bacon additive"
+      }
+    }
+  ]
+}
+          </script>
+          <div
+            class="hero__body"
+          >
+            <h1
+              class="hero__title"
+            >
+              Holding out for a hero
+            </h1>
+          </div>
+        </div>
+        <div
+          class="hero__image-container"
+          style="background-image: url(https://placebacon.net/300/210?image=1/m/);"
+        />
+      </div>
+    </div>
+  </main>
+  <noscript />
+</div>
+`;
+
+exports[`Storyblok Hero should match snapshot without breadcrumbs 1`] = `
+<div>
+  <div />
+  <main>
+    <div
+      class="container"
+      data-component="container"
+    >
+      <div
+        class="hero"
+        data-component="hero"
+      >
+        <div
+          class="hero__container"
+        >
+          <div
+            class="hero__body"
+          >
+            <h1
+              class="hero__title"
+            >
+              Holding out for a hero
+            </h1>
+          </div>
+        </div>
+        <div
+          class="hero__image-container"
+          style="background-image: url(https://placebacon.net/300/210?image=1/m/);"
+        />
+      </div>
+    </div>
+  </main>
+  <noscript />
+</div>
+`;

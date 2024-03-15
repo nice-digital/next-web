@@ -1,5 +1,6 @@
-import { NewsListNav } from "@/components/Storyblok/News/NewsListNav/NewsListNav";
 import React from "react";
+
+import { NewsListNav } from "@/components/Storyblok/News/NewsListNav/NewsListNav";
 
 export const NewsIndexPage = (): React.ReactElement => {
 	const destinations = [

@@ -6,9 +6,12 @@ import { Tag } from "@nice-digital/nds-tag";
 import { StoryblokAuthor } from "@/components/Storyblok/StoryblokAuthor/StoryblokAuthor";
 import { type NewsStory } from "@/types/News";
 import { type AuthorStoryblok } from "@/types/storyblok";
-import { friendlyDate } from "@/utils/storyblok";
-
-import { StoryblokImage } from "../../StoryblokImage/StoryblokImage";
+import {
+	friendlyDate,
+	getNewsType,
+	defaultPodcastImage,
+	newsTypes,
+} from "@/utils/storyblok";
 
 import styles from "./FeaturedStory.module.scss";
 
@@ -21,41 +24,51 @@ export const FeaturedStory: React.FC<FeaturedStoryProps> = ({
 	story,
 	headingLevel = 3,
 }: FeaturedStoryProps) => {
-	const storyType = story.content.component === "blogPost" ? "Blog" : "News";
+	const { content, full_slug, name } = story;
+
+	const storyType = getNewsType(content.component);
 
 	const HeadingElement = `h${headingLevel}` as keyof JSX.IntrinsicElements;
+
+	const headingLink =
+		storyType === newsTypes.inDepthArticle ? (
+			<a href={content.link.url || content.link.cached_url}>{name}</a>
+		) : (
+			<Link href={full_slug}>{name}</Link>
+		);
+
+	// Fall back to podcast placeholder image if none is supplied
+	const image = content.image?.filename || defaultPodcastImage;
 
 	return (
 		<article className={styles.story}>
 			<div
 				className={styles.imageContainer}
-				style={{ backgroundImage: `url(${story.content.image.filename})` }}
+				style={{ backgroundImage: `url(${image})` }}
 			></div>
 			<div className={styles.content}>
 				<HeadingElement className={styles.heading}>
-					<Link href={`/${story.full_slug}`}>{story.name}</Link>
+					{headingLink}
 				</HeadingElement>
-				<p>{story.content.introText}</p>
-				<div>
+				<p>{content.introText}</p>
+				<footer>
 					<Tag outline>{storyType}</Tag>
-					<span className={styles.date}>
-						{friendlyDate(story.content.date)}
-					</span>
-				</div>
-				{story.content.author && (
-					<div>
-						{story.content.author.map((author: AuthorStoryblok) => {
-							return (
-								<StoryblokAuthor
-									key={author._uid}
-									blok={author.content}
-									isCardAuthor={true}
-									headingLevel={headingLevel + 1}
-								/>
-							);
-						})}
-					</div>
-				)}
+					<span className={styles.date}>{friendlyDate(content.date)}</span>
+					{story.content.author && (
+						<div className={styles.author}>
+							{story.content.author.map((author: AuthorStoryblok) => {
+								return (
+									<StoryblokAuthor
+										key={author._uid}
+										blok={author.content}
+										isCardAuthor={true}
+										headingLevel={headingLevel + 1}
+									/>
+								);
+							})}
+						</div>
+					)}
+				</footer>
 			</div>
 		</article>
 	);

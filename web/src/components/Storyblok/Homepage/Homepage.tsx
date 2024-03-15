@@ -10,7 +10,7 @@ import { HomepageLatestNews } from "./HomepageLatestNews/HomepageLatestNews";
 
 interface HomepageBlokProps {
 	blok: HomepageStoryblok;
-	latestNews: NewsStory[];
+	latestNews: StoryblokStory<NewsStory>[];
 }
 
 export const Homepage = ({
@@ -22,11 +22,16 @@ export const Homepage = ({
 		hero,
 		featuredStory,
 		links,
+		linksAreTransparent,
 		primaryActionBanner,
 		promoBox1,
 		promoBox2,
 		spotlight,
 	} = blok;
+
+	const linksClassName = linksAreTransparent
+		? `${styles.links} ${styles.linksTransparent}`
+		: styles.links;
 
 	return (
 		<>
@@ -51,12 +56,19 @@ export const Homepage = ({
 			{primaryActionBanner &&
 				primaryActionBanner.length > 0 &&
 				primaryActionBanner.map((nestedBlok) => (
-					<StoryblokComponent blok={nestedBlok} key={nestedBlok._uid} />
+					<div className={styles.actionBannerWrapper} key={nestedBlok._uid}>
+						<StoryblokComponent
+							blok={nestedBlok}
+							className={styles.actionBanner}
+						/>
+					</div>
 				))}
 
 			{/* Links */}
-			<div className={styles.links}>
-				<StoryblokRichText content={links} />
+			<div className={linksClassName}>
+				<div className={styles.linksContainer}>
+					<StoryblokRichText content={links} />
+				</div>
 			</div>
 
 			{/* Promo box 1 */}

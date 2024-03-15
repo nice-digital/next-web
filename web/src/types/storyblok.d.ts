@@ -151,6 +151,7 @@ export interface GridStoryblok {
     | HomepageHeroStoryblok
     | IframeStoryblok
     | ImageOrVideoStoryblok
+    | InDepthArticleStoryblok
     | InfoPageStoryblok
     | MetadataStoryblok
     | NestedRichTextStoryblok
@@ -158,6 +159,7 @@ export interface GridStoryblok {
     | NewsArticleStoryblok
     | PageStoryblok
     | PageHeaderStoryblok
+    | PodcastStoryblok
     | PromoBoxStoryblok
     | QuoteStoryblok
     | RelatedLinkStoryblok
@@ -193,9 +195,15 @@ export interface HeroStoryblok {
 
 export interface HomepageStoryblok {
   hero: HomepageHeroStoryblok[];
-  featuredStory?: StoryblokStory<BlogPostStoryblok> | StoryblokStory<NewsArticleStoryblok> | string;
+  featuredStory?:
+    | StoryblokStory<BlogPostStoryblok>
+    | StoryblokStory<NewsArticleStoryblok>
+    | StoryblokStory<PodcastStoryblok>
+    | StoryblokStory<InDepthArticleStoryblok>
+    | string;
   primaryActionBanner?: ActionBannerStoryblok[];
   links: RichtextStoryblok;
+  linksAreTransparent?: boolean;
   promoBox1?: PromoBoxStoryblok[];
   spotlight?: SpotlightStoryblok[];
   promoBox2?: PromoBoxStoryblok[];
@@ -235,6 +243,17 @@ export interface IframeStoryblok {
 export interface ImageOrVideoStoryblok {
   _uid: string;
   component: "imageOrVideo";
+  [k: string]: any;
+}
+
+export interface InDepthArticleStoryblok {
+  title: string;
+  link: Exclude<MultilinkStoryblok, {linktype?: "email"} | {linktype?: "asset"}>;
+  image: AssetStoryblok;
+  introText: string;
+  date: string;
+  _uid: string;
+  component: "inDepthArticle";
   [k: string]: any;
 }
 
@@ -321,6 +340,7 @@ export interface PageStoryblok {
     | HomepageHeroStoryblok
     | IframeStoryblok
     | ImageOrVideoStoryblok
+    | InDepthArticleStoryblok
     | InfoPageStoryblok
     | MetadataStoryblok
     | NestedRichTextStoryblok
@@ -328,6 +348,7 @@ export interface PageStoryblok {
     | NewsArticleStoryblok
     | PageStoryblok
     | PageHeaderStoryblok
+    | PodcastStoryblok
     | PromoBoxStoryblok
     | QuoteStoryblok
     | RelatedLinkStoryblok
@@ -355,6 +376,18 @@ export interface PageHeaderStoryblok {
   [k: string]: any;
 }
 
+export interface PodcastStoryblok {
+  hero: HeroStoryblok[];
+  date: string;
+  soundcloudEmbedID: string;
+  introText: string;
+  description: RichtextStoryblok;
+  image?: AssetStoryblok;
+  _uid: string;
+  component: "podcast";
+  [k: string]: any;
+}
+
 export interface PromoBoxStoryblok {
   heading: string;
   body?: RichtextStoryblok;
@@ -363,6 +396,7 @@ export interface PromoBoxStoryblok {
   image?: AssetStoryblok;
   youtubeEmbed?: YoutubeEmbedStoryblok[];
   swapMediaSide?: boolean;
+  isTransparent?: boolean;
   _uid: string;
   component: "promoBox";
   [k: string]: any;
@@ -396,11 +430,10 @@ export interface RelatedNewsLinkStoryblok {
 
 export interface SpotlightStoryblok {
   heading: string;
-  useVideo?: boolean;
-  image?: AssetStoryblok;
-  youtubeEmbed?: YoutubeEmbedStoryblok[];
   mediaDescription?: string;
-  stories?: (StoryblokStory<BlogPostStoryblok> | StoryblokStory<NewsArticleStoryblok> | string)[];
+  stories: (StoryblokStory<BlogPostStoryblok> | StoryblokStory<NewsArticleStoryblok> | string)[];
+  youtubeEmbed: YoutubeEmbedStoryblok[];
+  isTransparent?: boolean;
   _uid: string;
   component: "spotlight";
   [k: string]: any;

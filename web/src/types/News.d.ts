@@ -1,3 +1,12 @@
-import { type BlogPostStoryblok, type NewsArticleStoryblok } from "./storyblok";
+import {
+	type PodcastStoryblok,
+	type BlogPostStoryblok,
+	type NewsArticleStoryblok,
+	type InDepthArticleStoryblok,
+} from "./storyblok";
 
-export type NewsStory = BlogPostStoryblok | NewsArticleStoryblok;
+export type NewsStory =
+	| BlogPostStoryblok
+	| NewsArticleStoryblok
+	| PodcastStoryblok
+	| InDepthArticleStoryblok;

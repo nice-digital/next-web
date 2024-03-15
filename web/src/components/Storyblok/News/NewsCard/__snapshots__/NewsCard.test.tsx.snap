@@ -10,6 +10,7 @@ exports[`News card component should match snapshot for a blog post 1`] = `
       class="imageContainer"
       href="i/am/a-very-full-slug"
       style="background-image: url(https://placekitten.com/200/139);"
+      tabindex="-1"
     >
        
     </a>
@@ -54,6 +55,7 @@ exports[`News card component should match snapshot for a news article 1`] = `
       class="imageContainer"
       href="i/am/a-very-full-slug"
       style="background-image: url(https://placekitten.com/200/286);"
+      tabindex="-1"
     >
        
     </a>
