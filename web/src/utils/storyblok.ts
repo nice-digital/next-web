@@ -36,7 +36,6 @@ import { StoryblokYoutubeEmbed } from "@/components/Storyblok/StoryblokYoutubeEm
 import { publicRuntimeConfig } from "@/config";
 import { logger } from "@/logger";
 import { type Breadcrumb } from "@/types/Breadcrumb";
-import { NewsStory } from "@/types/News";
 import { type SBLink } from "@/types/SBLink";
 import { type MultilinkStoryblok } from "@/types/storyblok";
 
@@ -205,7 +204,11 @@ export const validateRouteParams = async <T>({
 
 	const result = await fetchStories<T>(version, requestParams);
 
-	if (!result || result.total === undefined) {
+	if (
+		!result ||
+		result.total === undefined ||
+		(result.total === 0 && result.stories.length === 0)
+	) {
 		logger.error("Error fetching stories: ", result);
 		return {
 			error:
@@ -265,6 +268,7 @@ export const fetchStories = async <T>(
 		result.total = response.total;
 	} catch (e) {
 		const errorResponse = JSON.parse(e as string) as ISbError;
+
 		result.error = errorResponse.message?.message;
 		Promise.reject(new Error(`${errorResponse.message}"`));
 

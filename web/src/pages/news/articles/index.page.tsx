@@ -107,8 +107,10 @@ export const getServerSideProps = async ({
 		resolvedUrl,
 	});
 
+	// will return a 404 or redirect if the route is not valid
 	if ("notFound" in result || "redirect" in result) return result;
 
+	//
 	if ("error" in result) {
 		return {
 			props: {
