@@ -18,6 +18,7 @@ export interface StoryblokRichTextProps {
 	content: RichtextStoryblok;
 }
 
+//TODO: should we handle the the parent component in props so we can render the image with the correct size?
 export const StoryblokRichText: React.FC<StoryblokRichTextProps> = ({
 	content,
 }) => {
@@ -47,8 +48,20 @@ export const StoryblokRichText: React.FC<StoryblokRichTextProps> = ({
 					},
 					[NODE_IMAGE]: (children, props) => {
 						// renders inline images from the stories richText field to StoryblokImage component
+						// Assumes the image will fall below the fold and uses lazy loading
+						// Assumes we're currently in the context of main body content so will use the main image max size in 7 column layout max width: 867px
+
 						return (
-							<StoryblokImage src={props.src} alt={props.alt} loading="lazy" />
+							<StoryblokImage
+								src={props.src}
+								alt={props.alt}
+								loading="lazy"
+								serviceOptions={{
+									height: 0,
+									width: 867,
+									quality: 80,
+								}}
+							/>
 						);
 					},
 					[NODE_QUOTE]: (children) => {
@@ -62,7 +75,7 @@ export const StoryblokRichText: React.FC<StoryblokRichTextProps> = ({
 					},
 				},
 				defaultBlokResolver: (name, props) => {
-					// resolves all other storyblok components to permissoned components
+					// resolves all other storyblok components to permissable components
 					const blok = { ...props, component: name };
 					return <StoryblokComponent blok={blok} key={blok._uid} />;
 				},

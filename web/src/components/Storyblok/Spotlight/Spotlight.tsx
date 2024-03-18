@@ -81,6 +81,7 @@ export const Spotlight: React.FC<SpotlightProps> = ({
 											<StoryblokImage
 												src={image}
 												alt={content.image?.alt || ""}
+												serviceOptions={{ height: 0, quality: 80, width: 708 }}
 											/>
 										}
 									>
