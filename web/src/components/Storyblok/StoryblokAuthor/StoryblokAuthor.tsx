@@ -25,10 +25,12 @@ export const StoryblokAuthor = ({
 		return null;
 	}
 
+	// Resolve the classnames, and add the isCardAuthor class if the prop is true
 	const authorClasses = classNames(styles.author, className, {
 		[styles["author--is-card-author"]]: isCardAuthor,
 	});
 
+	// Resolve the heading level
 	const HeadingLevelElement = `h${headingLevel}` as keyof JSX.IntrinsicElements;
 
 	return (
@@ -40,10 +42,15 @@ export const StoryblokAuthor = ({
 				<StoryblokImage
 					src={blok.image.filename}
 					alt={blok.image.alt}
-					width={136}
-					height={136}
+					width={`136px`}
+					height={`136px`}
 					className={styles.author__image}
-					serviceOptions="/270x270/smart/filters:quality(80)"
+					serviceOptions={{
+						height: 270,
+						width: 270,
+						quality: 80,
+						smart: true,
+					}}
 				/>
 			)}
 			<div className={styles.author__content}>
