@@ -88,7 +88,11 @@ export const PromoBox: React.FC<PromoBoxProps> = ({
 								blok={youtubeEmbed[0] as YoutubeEmbedStoryblok}
 							/>
 						) : (
-							<StoryblokImage src={image?.filename} alt={image?.alt} />
+							<StoryblokImage
+								src={image?.filename}
+								alt={image?.alt}
+								serviceOptions={{ quality: 80 }}
+							/>
 						)}
 					</GridItem>
 				</Grid>

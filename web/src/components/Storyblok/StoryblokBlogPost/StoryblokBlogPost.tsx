@@ -107,7 +107,11 @@ export const StoryblokBlogPost = ({
 							height="428px"
 							loading="eager"
 							src={blok.image.filename}
-							serviceOptions="/860x0/filters:quality(80)"
+							serviceOptions={{
+								height: 0,
+								quality: 80,
+								width: 867,
+							}}
 							width="760px"
 						/>
 					)}
