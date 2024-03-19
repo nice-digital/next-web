@@ -56,6 +56,7 @@ export async function getServerSideProps(context: GetServerSidePropsContext) {
 		starts_with: "news",
 		sort_by: "content.date:desc",
 		excluding_slugs: "news/blogs/authors/*",
+		resolve_relations: "blogPost.author",
 		per_page: 3,
 	};
 

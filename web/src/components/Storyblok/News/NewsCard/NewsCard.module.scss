@@ -16,6 +16,14 @@
   flex: 0 0 auto;
   margin-bottom: utils.rem(spacing.$medium);
   min-width: 100%;
+
+  @include media-queries.mq($from: sm) {
+    aspect-ratio: 21 / 9;
+  }
+
+  @include media-queries.mq($from: md) {
+    aspect-ratio: 16 / 9;
+  }
 }
 
 .heading {
@@ -25,6 +33,10 @@
 
 .date {
   margin-left: utils.rem(spacing.$medium);
+}
+
+.author {
+  @include typography.font-size(-2);
 }
 
 .listItem {

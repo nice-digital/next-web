@@ -85,14 +85,7 @@ export const NewsCard: React.FC<NewsCardProps> = ({
 					{headingLink}
 				</HeadingElement>
 				<p>{content.introText}</p>
-
 				<footer>
-					<div>
-						<Tag outline>{storyType}</Tag>
-						<span className={styles.date}>
-							{friendlyDate(story.content.date)}
-						</span>
-					</div>
 					{content.author && (
 						<div className={styles.author}>
 							{content.author.map((author: AuthorStoryblok) => {
@@ -113,6 +106,12 @@ export const NewsCard: React.FC<NewsCardProps> = ({
 							})}
 						</div>
 					)}
+					<div>
+						<Tag outline>{storyType}</Tag>
+						<span className={styles.date}>
+							{friendlyDate(story.content.date)}
+						</span>
+					</div>
 				</footer>
 			</div>
 		</article>

@@ -43,6 +43,8 @@ export const FeaturedStory: React.FC<FeaturedStoryProps> = ({
 			<Link href={absolute_full_slug}>{name}</Link>
 		);
 
+	console.log("Featured story author:", story.content.author);
+
 	return (
 		<article className={styles.story}>
 			<div
@@ -57,8 +59,6 @@ export const FeaturedStory: React.FC<FeaturedStoryProps> = ({
 				</HeadingElement>
 				<p>{content.introText}</p>
 				<footer>
-					<Tag outline>{storyType}</Tag>
-					<span className={styles.date}>{friendlyDate(content.date)}</span>
 					{story.content.author && (
 						<div className={styles.author}>
 							{story.content.author.map((author: AuthorStoryblok) => {
@@ -73,6 +73,8 @@ export const FeaturedStory: React.FC<FeaturedStoryProps> = ({
 							})}
 						</div>
 					)}
+					<Tag outline>{storyType}</Tag>
+					<span className={styles.date}>{friendlyDate(content.date)}</span>
 				</footer>
 			</div>
 		</article>
