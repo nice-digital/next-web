@@ -96,6 +96,10 @@ export const NewsCard: React.FC<NewsCardProps> = ({
 					{content.author && (
 						<div className={styles.author}>
 							{content.author.map((author: AuthorStoryblok) => {
+								if (typeof author === "string") {
+									return null;
+								}
+
 								const {
 									content: { name, jobTitle },
 									id,
