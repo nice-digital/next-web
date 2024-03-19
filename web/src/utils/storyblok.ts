@@ -1,3 +1,5 @@
+import { ParsedUrlQuery } from "querystring";
+
 import {
 	apiPlugin,
 	getStoryblokApi,
@@ -9,6 +11,7 @@ import {
 	type ISbStoryData,
 } from "@storyblok/react";
 import { type MetaTag } from "next-seo/lib/types";
+import { Redirect } from "next/types";
 
 import { Blockquote } from "@/components/Storyblok/Blockquote/Blockquote";
 import { CardGrid } from "@/components/Storyblok/CardGrid/CardGrid";
@@ -24,6 +27,7 @@ import { StoryblokActionBanner } from "@/components/Storyblok/StoryblokActionBan
 import { StoryblokAuthor } from "@/components/Storyblok/StoryblokAuthor/StoryblokAuthor";
 import { StoryblokBlogPost } from "@/components/Storyblok/StoryblokBlogPost/StoryblokBlogPost";
 import { StoryblokHero } from "@/components/Storyblok/StoryblokHero/StoryblokHero";
+import { StoryblokIframe } from "@/components/Storyblok/StoryblokIframe/StoryblokIframe";
 import { StoryblokNewsArticle } from "@/components/Storyblok/StoryblokNewsArticle/StoryblokNewsArticle";
 import { StoryblokPageHeader } from "@/components/Storyblok/StoryblokPageHeader/StoryblokPageHeader";
 import { StoryblokRelatedLink } from "@/components/Storyblok/StoryblokRelatedLink/StoryblokRelatedLink";
@@ -84,6 +88,7 @@ export const initStoryblok = (): void => {
 		relatedNewsLink: StoryblokRelatedNewsLink,
 		spotlight: Spotlight,
 		youtubeEmbed: StoryblokYoutubeEmbed,
+		iframe: StoryblokIframe,
 	};
 
 	try {
@@ -151,6 +156,95 @@ export const fetchStory = async <T>(
 	return result;
 };
 
+export type ValidateRouteParamsArgs = {
+	query: ParsedUrlQuery;
+	sbParams?: ISbStoriesParams;
+	resolvedUrl?: string;
+};
+
+export type ValidateRouteParamsSuccess<T> = {
+	featuredStory: ISbStoryData<T> | null;
+	stories: ISbStoryData<T>[];
+	total: number;
+	currentPage: number;
+	perPage: number | undefined;
+};
+
+export type ValidateRouteParamsError = {
+	error: string;
+};
+
+export type ValidateRouteParamsResult<T> =
+	| { notFound: true }
+	| { redirect: Redirect }
+	| ValidateRouteParamsSuccess<T>
+	| ValidateRouteParamsError;
+
+export const validateRouteParams = async <T>({
+	query,
+	sbParams,
+	resolvedUrl,
+}: ValidateRouteParamsArgs): Promise<ValidateRouteParamsResult<T>> => {
+	const version = getStoryVersionFromQuery(query);
+	const page = Number(query.page) || 1;
+
+	// const { starts_with, per_page } = options;
+	const requestParams: ISbStoriesParams = {
+		...sbParams,
+		page,
+		sort_by: "content.date:desc",
+		filter_query: {
+			date: {
+				lt_date: new Date().toISOString(),
+			},
+		},
+	};
+
+	const redirectUrl = new URL(resolvedUrl || "", "http://localhost");
+
+	const result = await fetchStories<T>(version, requestParams);
+
+	if (
+		!result ||
+		result.total === undefined ||
+		(result.total === 0 && result.stories.length === 0)
+	) {
+		logger.error("Error fetching stories: ", result);
+		return {
+			error:
+				"There are no stories to display at the moment. Please try again later.",
+		};
+	}
+
+	let featuredStory = null;
+	let stories = result.stories;
+
+	const { total, perPage } = result;
+
+	if (page === 1 && stories.length > 0) {
+		featuredStory = result.stories[0]; // Set featured story on page 1
+		stories = stories.slice(1); // Skip first story on page 1 as it's featured
+	}
+
+	// redirect to page 1 if page is out of range
+	if (page && perPage && page > Math.ceil(total / perPage)) {
+		return {
+			redirect: {
+				destination: redirectUrl.pathname,
+				permanent: false,
+			},
+		};
+	}
+
+	return {
+		featuredStory,
+		stories,
+		total,
+		currentPage: page,
+		perPage,
+	};
+};
+
 // Fetch multiple stories from the Storyblok API
 export const fetchStories = async <T>(
 	version: StoryVersion = "published",
@@ -174,6 +268,7 @@ export const fetchStories = async <T>(
 		result.total = response.total;
 	} catch (e) {
 		const errorResponse = JSON.parse(e as string) as ISbError;
+
 		result.error = errorResponse.message?.message;
 		Promise.reject(new Error(`${errorResponse.message}"`));
 
@@ -335,11 +430,27 @@ export const getAdditionalMetaTags = (story: ISbStoryData): MetaTag[] => {
 
 // Turn a Storyblok date string (yyyy-mm-dd hh:ss) into a friendly date
 export const friendlyDate = (date: string): string => {
-	return new Date(date).toLocaleDateString("en-gb", {
-		year: "numeric",
-		month: "long",
+	const formatter = new Intl.DateTimeFormat("en-GB", {
 		day: "2-digit",
+		month: "long",
+		year: "numeric",
 	});
+	return formatter.format(new Date(date));
+};
+
+// Get the news type from a Storyblok story's component prop
+export const getNewsType = (component: string): string => {
+	switch (component) {
+		case "blogPost":
+			return newsTypes.blogPost;
+		case "podcast":
+			return newsTypes.podcast;
+		case "inDepthArticle":
+			return newsTypes.inDepthArticle;
+		case "newsArticle":
+		default:
+			return newsTypes.newsArticle;
+	}
 };
 
 // Get the news type from a Storyblok story's component prop

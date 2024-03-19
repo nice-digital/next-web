@@ -49,6 +49,11 @@
     }
   }
 
+  .author {
+    > p {
+      margin-bottom: 0;
+    }
+  }
 
   @include media-queries.mq($from: sm) {
     .imageContainer {

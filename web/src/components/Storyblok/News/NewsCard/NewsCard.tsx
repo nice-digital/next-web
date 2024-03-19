@@ -4,6 +4,7 @@ import { Tag } from "@nice-digital/nds-tag";
 
 import { Link } from "@/components/Link/Link";
 import { NewsStory } from "@/types/News";
+import { AuthorStoryblok } from "@/types/storyblok";
 import {
 	friendlyDate,
 	getNewsType,
@@ -31,14 +32,21 @@ export const NewsCard: React.FC<NewsCardProps> = ({
 	const HeadingElement = `h${headingLevel}` as keyof JSX.IntrinsicElements;
 
 	// Fall back to podcast placeholder image if none is supplied
-	const image = content.image?.filename || defaultPodcastImage;
+	// Updated the content image to use the new image service for optimised loading
+	const image = content.image?.filename
+		? `"${content.image?.filename}/m/868x0/filters:quality(80)"`
+		: defaultPodcastImage;
+
+	const absolute_full_slug = `/${full_slug}`;
 
 	const imageLink =
 		storyType === newsTypes.inDepthArticle ? (
 			<a
 				href={content.link.url || content.link.cached_url}
 				className={styles.imageContainer}
-				style={{ backgroundImage: `url(${image})` }}
+				style={{
+					backgroundImage: `url(${image})`,
+				}}
 				aria-hidden="true"
 				tabIndex={-1}
 			>
@@ -47,8 +55,10 @@ export const NewsCard: React.FC<NewsCardProps> = ({
 		) : (
 			<Link
 				className={styles.imageContainer}
-				href={full_slug}
-				style={{ backgroundImage: `url(${image})` }}
+				href={absolute_full_slug}
+				style={{
+					backgroundImage: `url(${image})`,
+				}}
 				aria-hidden="true"
 				tabIndex={-1}
 			>
@@ -60,7 +70,7 @@ export const NewsCard: React.FC<NewsCardProps> = ({
 		storyType === newsTypes.inDepthArticle ? (
 			<a href={content.link.url || content.link.cached_url}>{name}</a>
 		) : (
-			<Link href={full_slug}>{name}</Link>
+			<Link href={absolute_full_slug}>{name}</Link>
 		);
 
 	return (
@@ -75,11 +85,34 @@ export const NewsCard: React.FC<NewsCardProps> = ({
 					{headingLink}
 				</HeadingElement>
 				<p>{content.introText}</p>
+
 				<footer>
-					<Tag outline>{storyType}</Tag>
-					<span className={styles.date}>
-						{friendlyDate(story.content.date)}
-					</span>
+					<div>
+						<Tag outline>{storyType}</Tag>
+						<span className={styles.date}>
+							{friendlyDate(story.content.date)}
+						</span>
+					</div>
+					{content.author && (
+						<div className={styles.author}>
+							{content.author.map((author: AuthorStoryblok) => {
+								if (typeof author === "string") {
+									return null;
+								}
+
+								const {
+									content: { name, jobTitle },
+									id,
+								} = author;
+
+								return (
+									<p key={id} className={styles.author}>
+										{name}, {jobTitle}
+									</p>
+								);
+							})}
+						</div>
+					)}
 				</footer>
 			</div>
 		</article>
