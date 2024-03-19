@@ -31,13 +31,6 @@ export const FeaturedStory: React.FC<FeaturedStoryProps> = ({
 	const HeadingElement = `h${headingLevel}` as keyof JSX.IntrinsicElements;
 	const absolute_full_slug = `/${full_slug}`;
 
-	const headingLink =
-		storyType === newsTypes.inDepthArticle ? (
-			<a href={content.link.url || content.link.cached_url}>{name}</a>
-		) : (
-			<Link href={absolute_full_slug}>{name}</Link>
-		);
-
 	// Fall back to podcast placeholder image if none is supplied
 	const image =
 		`"${content.image?.filename}/m/868x0/filters:quality(80)"` ||
@@ -47,11 +40,8 @@ export const FeaturedStory: React.FC<FeaturedStoryProps> = ({
 		storyType === newsTypes.inDepthArticle ? (
 			<a href={content.link.url || content.link.cached_url}>{name}</a>
 		) : (
-			<Link href={full_slug}>{name}</Link>
+			<Link href={absolute_full_slug}>{name}</Link>
 		);
-
-	// Fall back to podcast placeholder image if none is supplied
-	const image = content.image?.filename || defaultPodcastImage;
 
 	return (
 		<article className={styles.story}>

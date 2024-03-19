@@ -452,18 +452,3 @@ export const getNewsType = (component: string): string => {
 			return newsTypes.newsArticle;
 	}
 };
-
-// Get the news type from a Storyblok story's component prop
-export const getNewsType = (component: string): string => {
-	switch (component) {
-		case "blogPost":
-			return newsTypes.blogPost;
-		case "podcast":
-			return newsTypes.podcast;
-		case "inDepthArticle":
-			return newsTypes.inDepthArticle;
-		case "newsArticle":
-		default:
-			return newsTypes.newsArticle;
-	}
-};
