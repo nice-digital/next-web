@@ -35,16 +35,10 @@ exports[`Promo box component should match snapshot 1`] = `
           data-component="grid-item"
           data-g="12 sm:5"
         >
-          <picture>
-            <source
-              srcset="/fallback-image.png/m/"
-              type="image/webp"
-            />
-            <img
-              data-testid="storyblok-image-fallback"
-              src="/fallback-image.png/"
-            />
-          </picture>
+          <img
+            alt=""
+            src="/fallback-image.png"
+          />
         </div>
       </div>
     </div>
