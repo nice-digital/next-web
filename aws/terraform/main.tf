@@ -5,40 +5,6 @@
 # nice-nextweb-alpha-ecs-hosting
 ################################################################################
 
-##################################################################################
-# VARIABLES
-##################################################################################
-variable "org_name" {
-    type = string
-}
-variable "environment_name" {
-    type = string
-}
-variable "application_name" {
-    type = string
-}
-variable "docker_image_address" {
-    type = string
-}
-variable "docker_image_build_number" {
-    type = string
-}
-variable "nextweb_efs_config_volume" {
-    type = string
-}
-variable "nextweb_ecs_subnets" {
-  type    = list(string)
-}
-variable "nextweb_ecs_sg" {
-  type    = list(string)
-}
-variable "load_balancer_tg" {
-  type    = string
-}
-variable "node_env" {
-  type    = string
-}
-
 terraform {
   required_version = ">= 0.14"
   required_providers {
@@ -61,8 +27,6 @@ provider "aws" {
   skip_metadata_api_check     = true
   skip_region_validation      = true
   skip_credentials_validation = true
-
-  # skip_requesting_account_id should be disabled to generate valid ARN in apigatewayv2_api_execution_arn
   skip_requesting_account_id = false
 }
 
@@ -80,7 +44,7 @@ locals {
 }
 
 ##################################################################################
-# MODULES
+# Resources
 ##################################################################################
 
 resource "aws_ecs_cluster" "nextweb-cluster" {
