@@ -57,10 +57,8 @@ export const newsTypes = {
 	inDepthArticle: "In-depth",
 };
 
-// TODO: Replace this with an actual thing
 // Default podcast image
-export const defaultPodcastImage =
-	"https://media.istockphoto.com/id/1218042637/photo/portrait-of-a-funny-cat-in-a-police-hat-and-tie.jpg?s=2048x2048&w=is&k=20&c=WMIpQiNnWWzi1Yuel3mAlRBmk1RTRHb9mebZGA6FbWE=";
+export const defaultPodcastImage = "/img/nice-talks.png";
 
 // Init connection to Storyblok
 export const initStoryblok = (): void => {

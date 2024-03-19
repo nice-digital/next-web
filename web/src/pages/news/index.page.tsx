@@ -8,6 +8,7 @@ import { PageHeader } from "@nice-digital/nds-page-header";
 
 import { Link } from "@/components/Link/Link";
 import { FeaturedStory } from "@/components/Storyblok/News/FeaturedStory/FeaturedStory";
+import { NewsCard } from "@/components/Storyblok/News/NewsCard/NewsCard";
 import { NewsGrid } from "@/components/Storyblok/News/NewsGrid/NewsGrid";
 import { NewsListNav } from "@/components/Storyblok/News/NewsListNav/NewsListNav";
 import {
@@ -17,6 +18,8 @@ import {
 	PodcastStoryblok,
 } from "@/types/storyblok";
 import { getStoryVersionFromQuery, fetchStories } from "@/utils/storyblok";
+
+import styles from "./index.module.scss";
 
 interface NewsIndexProps {
 	newsArticles: StoryblokStory<NewsArticleStoryblok>[];
@@ -58,19 +61,64 @@ export default function NewsIndexPage({
 			/>
 			<NewsListNav destinations={destinations} />
 
-			<h2>Latest articles</h2>
-			<FeaturedStory story={newsArticles[0]} />
-			<NewsGrid news={newsArticles.slice(1, 4)} />
-			<p>
-				<Link href="/news/articles">View all news articles</Link>
-			</p>
+			<section className={styles.section}>
+				<div className={styles.sectionContainer}>
+					<h2>Latest articles</h2>
+					<FeaturedStory story={newsArticles[0]} />
+					<NewsGrid news={newsArticles.slice(1, 4)} />
+					<p>
+						<Link href="/news/articles">View all news articles</Link>
+					</p>
+				</div>
+			</section>
 
-			<h2>Latest in-depth</h2>
-			{inDepthArticles.length}
-			<h2>Latest blogs</h2>
-			{blogPosts.length}
-			<h2>Latest podcasts</h2>
-			{podcasts.length}
+			<section className={`${styles.section} ${styles.darkSection}`}>
+				<div className={styles.sectionContainer}>
+					<h2>Latest in-depth</h2>
+					<ul className={styles.newsCardList}>
+						{inDepthArticles.map((article) => (
+							<li key={article.id}>
+								<NewsCard story={article} />
+							</li>
+						))}
+					</ul>
+					<p>
+						<Link href="/news/in-depth">View all in-depth</Link>
+					</p>
+				</div>
+			</section>
+
+			<section className={styles.section}>
+				<div className={styles.sectionContainer}>
+					<h2>Latest blogs</h2>
+					<ul className={styles.newsCardList}>
+						{blogPosts.map((post) => (
+							<li key={post.id}>
+								<NewsCard story={post} />
+							</li>
+						))}
+					</ul>
+					<p>
+						<Link href="/news/blogs">View all blogs</Link>
+					</p>
+				</div>
+			</section>
+
+			<section className={`${styles.section} ${styles.darkSection}`}>
+				<div className={styles.sectionContainer}>
+					<h2>Latest podcasts</h2>
+					<ul className={styles.newsCardList}>
+						{podcasts.map((podcast) => (
+							<li key={podcast.id}>
+								<NewsCard story={podcast} />
+							</li>
+						))}
+					</ul>
+					<p>
+						<Link href="/news/podcasts">View all podcasts</Link>
+					</p>
+				</div>
+			</section>
 		</>
 	);
 }
@@ -105,7 +153,7 @@ export async function getServerSideProps(context: GetServerSidePropsContext) {
 
 	const podcastParams = {
 		...commonParams,
-		starts_with: "news/in-depth",
+		starts_with: "news/podcasts",
 		per_page: 2,
 	};
 

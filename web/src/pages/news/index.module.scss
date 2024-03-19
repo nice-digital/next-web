@@ -1,0 +1,25 @@
+@use '@nice-digital/nds-core/scss/layout';
+@use '@nice-digital/nds-core/scss/spacing';
+@use '@nice-digital/nds-core/scss/utils';
+@use '~/styles/colours';
+
+.section {
+  @include layout.fullWidth();
+  padding: utils.rem(spacing.$xx-large) 0;
+
+  &:first-of-type {
+    padding-top: utils.rem(spacing.$medium);
+  }
+
+  h2 {
+    margin: 0 0 utils.rem(spacing.$large);
+  }
+}
+
+.darkSection {
+  background: colours.$news-section-background;
+}
+
+.sectionContainer {
+  @include layout.fullWidthContainer();
+}
