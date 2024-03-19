@@ -10,6 +10,7 @@ import {
 	getNewsType,
 	defaultPodcastImage,
 	newsTypes,
+	encodeParens,
 } from "@/utils/storyblok";
 
 import styles from "./NewsCard.module.scss";
@@ -34,7 +35,7 @@ export const NewsCard: React.FC<NewsCardProps> = ({
 	// Fall back to podcast placeholder image if none is supplied
 	// Updated the content image to use the new image service for optimised loading
 	const image = content.image?.filename
-		? `"${content.image?.filename}/m/868x0/filters:quality(80)"`
+		? encodeParens(`${content.image?.filename}/m/868x0/filters:quality(80)`)
 		: defaultPodcastImage;
 
 	const absolute_full_slug = `/${full_slug}`;
@@ -96,6 +97,10 @@ export const NewsCard: React.FC<NewsCardProps> = ({
 					{content.author && (
 						<div className={styles.author}>
 							{content.author.map((author: AuthorStoryblok) => {
+								if (typeof author === "string") {
+									return null;
+								}
+
 								const {
 									content: { name, jobTitle },
 									id,
