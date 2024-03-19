@@ -18,12 +18,14 @@ interface NewsCardProps {
 	story: StoryblokStory<NewsStory>;
 	headingLevel?: number;
 	variant?: "default" | "isNewsListItem";
+	showImage?: boolean;
 }
 
 export const NewsCard: React.FC<NewsCardProps> = ({
 	story,
 	headingLevel = 3,
 	variant,
+	showImage = true,
 }: NewsCardProps) => {
 	const { name, content, full_slug } = story;
 
@@ -79,7 +81,7 @@ export const NewsCard: React.FC<NewsCardProps> = ({
 				variant === "isNewsListItem" ? styles.listItem : ""
 			}`}
 		>
-			{imageLink}
+			{showImage ? imageLink : null}
 			<div>
 				<HeadingElement className={styles.heading}>
 					{headingLink}
@@ -96,6 +98,10 @@ export const NewsCard: React.FC<NewsCardProps> = ({
 					{content.author && (
 						<div className={styles.author}>
 							{content.author.map((author: AuthorStoryblok) => {
+								if (typeof author === "string") {
+									return null;
+								}
+
 								const {
 									content: { name, jobTitle },
 									id,
