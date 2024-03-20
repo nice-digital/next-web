@@ -26,14 +26,6 @@ export type NewsArticlesProps = {
 	error?: string | undefined;
 };
 
-const destinations = [
-	{ url: "/news/", title: "News" },
-	{ url: "/news/articles", title: "News articles" },
-	{ url: "/news/in-depth", title: "In-depth" },
-	{ url: "/news/blogs", title: "Blogs" },
-	{ url: "/news/podcasts", title: "Podcasts" },
-];
-
 export const ArticlesIndexPage = ({
 	stories,
 	currentPage,
@@ -62,7 +54,7 @@ export const ArticlesIndexPage = ({
 					</Breadcrumbs>
 				}
 			/>
-			<NewsListNav destinations={destinations} />
+			<NewsListNav />
 
 			{stories.length === 0 ? (
 				<p>Sorry there are no news articles available</p>

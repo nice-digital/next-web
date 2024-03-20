@@ -19,12 +19,14 @@ interface NewsCardProps {
 	story: StoryblokStory<NewsStory>;
 	headingLevel?: number;
 	variant?: "default" | "isNewsListItem";
+	showImage?: boolean;
 }
 
 export const NewsCard: React.FC<NewsCardProps> = ({
 	story,
 	headingLevel = 3,
 	variant,
+	showImage = true,
 }: NewsCardProps) => {
 	const { name, content, full_slug } = story;
 
@@ -80,7 +82,7 @@ export const NewsCard: React.FC<NewsCardProps> = ({
 				variant === "isNewsListItem" ? styles.listItem : ""
 			}`}
 		>
-			{imageLink}
+			{showImage ? imageLink : null}
 			<div>
 				<HeadingElement className={styles.heading}>
 					{headingLink}

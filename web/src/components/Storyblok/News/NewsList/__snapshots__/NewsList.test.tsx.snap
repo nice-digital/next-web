@@ -140,3 +140,117 @@ exports[`NewsList matches snapshot 1`] = `
   </ul>
 </DocumentFragment>
 `;
+
+exports[`NewsList should match the snapshot if showImage is false 1`] = `
+<DocumentFragment>
+  <ul
+    class="newsList"
+  >
+    <li
+      class="newsItem"
+    >
+      <article
+        class="newsCard listItem"
+      >
+        <div>
+          <h3
+            class="heading"
+          >
+            <a
+              href="/news/articles/mock-news-article"
+            >
+              Article 1 name
+            </a>
+          </h3>
+          <p />
+          <footer>
+            <div>
+              <span
+                class="tag tag--outline"
+                data-component="tag"
+              >
+                News
+              </span>
+              <span
+                class="date"
+              >
+                16 June 2022
+              </span>
+            </div>
+          </footer>
+        </div>
+      </article>
+    </li>
+    <li
+      class="newsItem"
+    >
+      <article
+        class="newsCard listItem"
+      >
+        <div>
+          <h3
+            class="heading"
+          >
+            <a
+              href="/news/articles/mock-news-article"
+            >
+              Article 2 name
+            </a>
+          </h3>
+          <p />
+          <footer>
+            <div>
+              <span
+                class="tag tag--outline"
+                data-component="tag"
+              >
+                News
+              </span>
+              <span
+                class="date"
+              >
+                16 June 2022
+              </span>
+            </div>
+          </footer>
+        </div>
+      </article>
+    </li>
+    <li
+      class="newsItem"
+    >
+      <article
+        class="newsCard listItem"
+      >
+        <div>
+          <h3
+            class="heading"
+          >
+            <a
+              href="/news/articles/mock-news-article"
+            >
+              Article 3 name
+            </a>
+          </h3>
+          <p />
+          <footer>
+            <div>
+              <span
+                class="tag tag--outline"
+                data-component="tag"
+              >
+                News
+              </span>
+              <span
+                class="date"
+              >
+                16 June 2022
+              </span>
+            </div>
+          </footer>
+        </div>
+      </article>
+    </li>
+  </ul>
+</DocumentFragment>
+`;
