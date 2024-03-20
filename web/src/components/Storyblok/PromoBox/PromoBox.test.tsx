@@ -61,7 +61,7 @@ describe("Promo box component", () => {
 		expect(
 			screen.getByRole("heading", { name: mockPromoBox.blok.heading })
 				.parentElement
-		).toHaveAttribute("data-g", "12 sm:7 sm:push:5");
+		).toHaveAttribute("data-g", "12 md:7 md:push:5");
 	});
 
 	it("should render video if specified", () => {
