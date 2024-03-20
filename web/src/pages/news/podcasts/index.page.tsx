@@ -42,6 +42,7 @@ export const PodcastIndexPage = ({
 			<PageHeader
 				heading="Podcasts"
 				variant="fullWidthDark"
+				lead="Our NICE talks podcasts bring you the real life experience of people working within NHS, public health and social care."
 				breadcrumbs={
 					<Breadcrumbs>
 						<Breadcrumb to="https://www.nice.org.uk/">Home</Breadcrumb>
