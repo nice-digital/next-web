@@ -70,11 +70,11 @@ export const StoryblokBlogPost = ({
 	const authors = blok.author as StoryblokStory<AuthorStoryblok>[];
 
 	const PageHeaderAuthorsList =
-		authors.length > 1 ? (
+		authors.length === 0 ? null : authors.length > 1 ? (
 			<AuthorList authors={authors} />
 		) : typeof blok.author[0] !== "string" ? (
 			<StoryblokAuthor blok={blok.author[0].content} />
-		) : undefined;
+		) : null;
 
 	return (
 		<article className={styles.newsSectionArticle} ref={articleRef}>

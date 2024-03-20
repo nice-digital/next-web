@@ -452,3 +452,8 @@ export const getNewsType = (component: string): string => {
 			return newsTypes.newsArticle;
 	}
 };
+
+// this is a helper function to encode parens in the image url in background-image
+// this is a workaround for a bug for how we handle storyblok image service in the frontend
+export const encodeParens = (str: string): string =>
+	str.replace(/\(/g, "%28").replace(/\)/g, "%29");
