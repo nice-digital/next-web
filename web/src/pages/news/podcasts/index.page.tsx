@@ -45,8 +45,8 @@ export const PodcastIndexPage = ({
 				lead="Our NICE talks podcasts bring you the real life experience of people working within NHS, public health and social care."
 				breadcrumbs={
 					<Breadcrumbs>
-						<Breadcrumb to="https://www.nice.org.uk/">Home</Breadcrumb>
-						<Breadcrumb to="https://www.nice.org.uk/news">News</Breadcrumb>
+						<Breadcrumb to="/">Home</Breadcrumb>
+						<Breadcrumb to="/news">News</Breadcrumb>
 						<Breadcrumb>Podcasts</Breadcrumb>
 					</Breadcrumbs>
 				}
