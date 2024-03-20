@@ -105,3 +105,41 @@ exports[`News card component should match snapshot for a news article 1`] = `
   </article>
 </div>
 `;
+
+exports[`News card component should not render an image if showImage is false 1`] = `
+<DocumentFragment>
+  <article
+    class="newsCard listItem"
+  >
+    <div>
+      <h3
+        class="heading"
+      >
+        <a
+          href="/i/am/a-very-full-slug"
+        >
+          Test news article title
+        </a>
+      </h3>
+      <p>
+        Test intro text
+      </p>
+      <footer>
+        <div>
+          <span
+            class="tag tag--outline"
+            data-component="tag"
+          >
+            News
+          </span>
+          <span
+            class="date"
+          >
+            31 January 2024
+          </span>
+        </div>
+      </footer>
+    </div>
+  </article>
+</DocumentFragment>
+`;
