@@ -125,6 +125,18 @@ exports[`Homepage latest news component should match snapshot with a featured st
               Let's play Blockbusters!
             </p>
             <footer>
+              <div
+                class="author"
+              >
+                <p
+                  class="author"
+                >
+                  by 
+                  Bob Holness
+                  , 
+                  Blockbusters host
+                </p>
+              </div>
               <div>
                 <span
                   class="tag tag--outline"
@@ -137,17 +149,6 @@ exports[`Homepage latest news component should match snapshot with a featured st
                 >
                   20 February 2024
                 </span>
-              </div>
-              <div
-                class="author"
-              >
-                <p
-                  class="author"
-                >
-                  Bob Holness
-                  , 
-                  Blockbusters host
-                </p>
               </div>
             </footer>
           </div>
@@ -292,6 +293,18 @@ exports[`Homepage latest news component should match snapshot without a featured
               Let's play Blockbusters!
             </p>
             <footer>
+              <div
+                class="author"
+              >
+                <p
+                  class="author"
+                >
+                  by 
+                  Bob Holness
+                  , 
+                  Blockbusters host
+                </p>
+              </div>
               <div>
                 <span
                   class="tag tag--outline"
@@ -304,17 +317,6 @@ exports[`Homepage latest news component should match snapshot without a featured
                 >
                   20 February 2024
                 </span>
-              </div>
-              <div
-                class="author"
-              >
-                <p
-                  class="author"
-                >
-                  Bob Holness
-                  , 
-                  Blockbusters host
-                </p>
               </div>
             </footer>
           </div>

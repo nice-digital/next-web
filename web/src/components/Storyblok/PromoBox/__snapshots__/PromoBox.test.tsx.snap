@@ -14,7 +14,7 @@ exports[`Promo box component should match snapshot 1`] = `
         <div
           class="contentContainer"
           data-component="grid-item"
-          data-g="12 sm:7"
+          data-g="12 md:7"
         >
           <h2
             class="heading"
@@ -33,11 +33,11 @@ exports[`Promo box component should match snapshot 1`] = `
         <div
           class="mediaContainer"
           data-component="grid-item"
-          data-g="12 sm:5"
+          data-g="12 md:5"
         >
-          <img
-            alt=""
-            src="/fallback-image.png"
+          <div
+            class="imageContainer"
+            style="background-image: url(https://placebacon.net/130/210?image=4);"
           />
         </div>
       </div>
