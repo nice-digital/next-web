@@ -33,7 +33,7 @@ exports[`Spotlight component should match snapshot 1`] = `
               style="background-image: url(https://i.ytimg.com/vi_webp/wwSzpaTHyS8/hqdefault.webp); --aspect-ratio: 56.25%;"
             >
               <button
-                aria-label="(video) Test Youtube title (video) Test Youtube title"
+                aria-label="Watch (video) Test Youtube title"
                 class="youtubePlayButton"
                 type="button"
               />
@@ -60,12 +60,16 @@ exports[`Spotlight component should match snapshot 1`] = `
               >
                 <picture>
                   <source
-                    srcset="https://placekitten.com/200/286/m/"
+                    srcset="https://placekitten.com/200/286/m/708x0/filters:format(avif):quality(80)/"
+                    type="image/avif"
+                  />
+                  <source
+                    srcset="https://placekitten.com/200/286/m/708x0/filters:format(webp):quality(80)/"
                     type="image/webp"
                   />
                   <img
                     alt="Kitten mittens"
-                    src="https://placekitten.com/200/286/"
+                    src="https://placekitten.com/200/286/m/708x0/filters:format(jpeg):quality(80)/"
                   />
                 </picture>
               </div>
@@ -102,12 +106,16 @@ exports[`Spotlight component should match snapshot 1`] = `
               >
                 <picture>
                   <source
-                    srcset="https://placekitten.com/200/139/m/"
+                    srcset="https://placekitten.com/200/139/m/708x0/filters:format(avif):quality(80)/"
+                    type="image/avif"
+                  />
+                  <source
+                    srcset="https://placekitten.com/200/139/m/708x0/filters:format(webp):quality(80)/"
                     type="image/webp"
                   />
                   <img
                     alt="A kitty cat"
-                    src="https://placekitten.com/200/139/"
+                    src="https://placekitten.com/200/139/m/708x0/filters:format(jpeg):quality(80)/"
                   />
                 </picture>
               </div>

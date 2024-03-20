@@ -11,6 +11,7 @@ import {
 	getNewsType,
 	defaultPodcastImage,
 	newsTypes,
+	encodeParens,
 } from "@/utils/storyblok";
 
 import styles from "./FeaturedStory.module.scss";
@@ -31,11 +32,6 @@ export const FeaturedStory: React.FC<FeaturedStoryProps> = ({
 	const HeadingElement = `h${headingLevel}` as keyof JSX.IntrinsicElements;
 	const absolute_full_slug = `/${full_slug}`;
 
-	// Fall back to podcast placeholder image if none is supplied
-	const image =
-		`"${content.image?.filename}/m/868x0/filters:quality(80)"` ||
-		defaultPodcastImage;
-
 	const headingLink =
 		storyType === newsTypes.inDepthArticle ? (
 			<a href={content.link.url || content.link.cached_url}>{name}</a>
@@ -43,7 +39,10 @@ export const FeaturedStory: React.FC<FeaturedStoryProps> = ({
 			<Link href={absolute_full_slug}>{name}</Link>
 		);
 
-	console.log("Featured story author:", story.content.author);
+	// Fall back to podcast placeholder image if none is supplied
+	const image =
+		encodeParens(`"${content.image?.filename}/m/868x0/filters:quality(80)"`) ||
+		defaultPodcastImage;
 
 	return (
 		<article className={styles.story}>

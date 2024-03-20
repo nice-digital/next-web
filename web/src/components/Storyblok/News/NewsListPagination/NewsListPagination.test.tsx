@@ -27,8 +27,8 @@ expect.extend({
 describe("NewsListPagination", () => {
 	const configuration = {
 		currentPage: 1,
-		totalResults: 100,
-		resultsPerPage: 10,
+		total: 100,
+		perPage: 10,
 	};
 
 	let mockRouter: {
@@ -55,9 +55,7 @@ describe("NewsListPagination", () => {
 		const { container } = render(
 			<NewsListPagination configuration={configuration} />
 		);
-		const totalPages = Math.ceil(
-			configuration.totalResults / configuration.resultsPerPage
-		);
+		const totalPages = Math.ceil(configuration.total / configuration.perPage);
 
 		expect(container.textContent).toHaveTextContentIgnoreTags(
 			`Page ${configuration.currentPage} of ${totalPages}`

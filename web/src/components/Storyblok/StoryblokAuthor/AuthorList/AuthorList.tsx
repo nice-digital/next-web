@@ -15,17 +15,6 @@ export interface AuthorListRefactorProps {
 	children: React.ReactElement;
 }
 
-export const AuthorListRefactor = ({
-	children,
-}: AuthorListRefactorProps): React.ReactElement => {
-	return (
-		<div className={styles["author-list"]}>
-			<h3 className={styles["author-list__heading"]}>List of authors</h3>
-			{children}
-		</div>
-	);
-};
-
 export const AuthorList = ({
 	authors,
 }: AuthorListProps): React.ReactElement | null => {

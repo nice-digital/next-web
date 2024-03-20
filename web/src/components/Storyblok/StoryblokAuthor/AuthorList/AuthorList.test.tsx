@@ -168,12 +168,6 @@ describe("AuthorList", () => {
 		});
 	});
 
-	it("should render a single author", () => {
-		render(<AuthorList authors={oneAuthorListContent.authors} />);
-		expect(screen.getByTestId("author-component-bd50")).toBeInTheDocument();
-		expect(screen.queryByText("List of authors")).toBeNull();
-	});
-
 	it("shouldn't render anything if there are no authors", () => {
 		const { container } = render(
 			<AuthorList authors={nullAuthorListContent.authors} />

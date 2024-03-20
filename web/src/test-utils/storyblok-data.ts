@@ -170,7 +170,6 @@ export const mockNewsArticle: StoryblokStory<NewsArticleStoryblok> = {
 		title: "Test news article title",
 		date: "2024-01-31T15:16:15.194Z",
 		introText: "Test intro text",
-		author: "Noel Edmonds",
 		image: {
 			id: 123,
 			filename: "https://placekitten.com/200/286",
