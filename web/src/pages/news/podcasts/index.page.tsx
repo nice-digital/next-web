@@ -10,7 +10,6 @@ import { PageHeader } from "@nice-digital/nds-page-header";
 import { Panel } from "@nice-digital/nds-panel";
 
 import { ErrorPageContent } from "@/components/ErrorPageContent/ErrorPageContent";
-import { FeaturedStory } from "@/components/Storyblok/News/FeaturedStory/FeaturedStory";
 import { NewsList } from "@/components/Storyblok/News/NewsList/NewsList";
 import { NewsListNav } from "@/components/Storyblok/News/NewsListNav/NewsListNav";
 import { NewsListPagination } from "@/components/Storyblok/News/NewsListPagination/NewsListPagination";
@@ -20,7 +19,6 @@ import { validateRouteParams } from "@/utils/storyblok";
 import type { GetServerSidePropsContext } from "next";
 
 export type PodcastPostsProps = {
-	featuredStory?: StoryblokStory<NewsStory> | null;
 	stories: StoryblokStory<NewsStory>[];
 	total: number;
 	currentPage: number;
@@ -28,20 +26,11 @@ export type PodcastPostsProps = {
 	error?: string | undefined;
 };
 
-const destinations = [
-	{ url: "/news/", title: "News" },
-	{ url: "/news/articles", title: "News articles" },
-	{ url: "/news/in-depth", title: "In-depth" },
-	{ url: "/news/blogs", title: "Blogs" },
-	{ url: "/news/podcasts", title: "Podcasts" },
-];
-
 export const PodcastIndexPage = ({
 	stories,
 	currentPage,
 	total,
 	perPage,
-	featuredStory,
 	error,
 }: PodcastPostsProps): React.ReactElement => {
 	if (error) {
@@ -61,7 +50,7 @@ export const PodcastIndexPage = ({
 					</Breadcrumbs>
 				}
 			/>
-			<NewsListNav destinations={destinations} />
+			<NewsListNav />
 			<Grid gutter="loose">
 				<GridItem cols={12} md={{ cols: 7 }}>
 					<NewsList news={stories} showImage={false} />

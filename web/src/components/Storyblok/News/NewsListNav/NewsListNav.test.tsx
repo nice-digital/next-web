@@ -8,13 +8,15 @@ jest.mock("next/router", () => ({
 	useRouter: jest.fn(),
 }));
 
-describe("NewsListNav", () => {
-	const destinations = [
-		{ url: "/news", title: "News" },
-		{ url: "/blog", title: "Blog" },
-		{ url: "/news/articles", title: "News articles" },
-	];
+const destinations = [
+	{ url: "/news", title: "News" },
+	{ url: "/news/articles", title: "News articles" },
+	{ url: "/news/in-depth", title: "In-depth" },
+	{ url: "/news/blogs", title: "Blogs" },
+	{ url: "/news/podcasts", title: "Podcasts" },
+];
 
+describe("NewsListNav", () => {
 	let useRouterMock: jest.MockedFunction<typeof useRouter>;
 	let router: Partial<NextRouter>;
 
@@ -38,19 +40,19 @@ describe("NewsListNav", () => {
 	afterEach(() => jest.clearAllMocks());
 
 	it("renders correctly", () => {
-		const { asFragment } = render(<NewsListNav destinations={destinations} />);
+		const { asFragment } = render(<NewsListNav />);
 		expect(asFragment()).toMatchSnapshot();
 	});
 
 	it("renders navigation lnks with correct titles", () => {
-		render(<NewsListNav destinations={destinations} />);
+		render(<NewsListNav />);
 		destinations.forEach((destination) => {
 			expect(screen.getByText(destination.title)).toBeInTheDocument();
 		});
 	});
 
 	it("renders navigation links with correct href attributes", () => {
-		render(<NewsListNav destinations={destinations} />);
+		render(<NewsListNav />);
 		destinations.forEach((destination) => {
 			const link = screen.getByText(destination.title);
 			expect(link).toBeInTheDocument();
@@ -59,14 +61,14 @@ describe("NewsListNav", () => {
 	});
 
 	it("sets aria-current attribute correctly when link is active", () => {
-		render(<NewsListNav destinations={destinations} />);
+		render(<NewsListNav />);
 		const activeLink = screen.getByText("News");
 		expect(activeLink).toHaveAttribute("aria-current", "true");
 	});
 
 	it("sets does not set aria-current attribute when link is inactive", () => {
-		render(<NewsListNav destinations={destinations} />);
-		const activeLink = screen.getByText("Blog");
+		render(<NewsListNav />);
+		const activeLink = screen.getByText("Blogs");
 		expect(activeLink).toHaveAttribute("aria-current", "false");
 	});
 
@@ -77,7 +79,7 @@ describe("NewsListNav", () => {
 		router.query = { page: "4" };
 		router.asPath = "/news/articles?page=4";
 
-		render(<NewsListNav destinations={destinations} />);
+		render(<NewsListNav />);
 
 		const activeLink = screen.getByText("News articles");
 		expect(activeLink).toHaveAttribute("aria-current", "true");
@@ -85,7 +87,7 @@ describe("NewsListNav", () => {
 
 	//TODO investigate why following test causes navigation console errors
 	xit("navigates to the correct destination when link is clicked", async () => {
-		render(<NewsListNav destinations={destinations} />);
+		render(<NewsListNav />);
 		const blogLink = screen.getByText("Blog") as HTMLAnchorElement;
 		await userEvent.click(blogLink);
 		await waitFor(() => {

@@ -45,4 +45,6 @@ describe("News card component", () => {
 		expect(newsCardElement).toBeInTheDocument();
 		expect(newsCardElement).toHaveClass("listItem");
 	});
+
+	it.todo("should render an image if showImage is true");
 });

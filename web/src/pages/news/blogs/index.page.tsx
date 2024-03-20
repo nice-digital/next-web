@@ -26,14 +26,6 @@ export type BlogPostsProps = {
 	error?: string | undefined;
 };
 
-const destinations = [
-	{ url: "/news/", title: "News" },
-	{ url: "/news/articles", title: "News articles" },
-	{ url: "/news/in-depth", title: "In-depth" },
-	{ url: "/news/blogs", title: "Blogs" },
-	{ url: "/news/podcasts", title: "Podcasts" },
-];
-
 export const BlogIndexPage = ({
 	stories,
 	currentPage,
@@ -59,7 +51,7 @@ export const BlogIndexPage = ({
 					</Breadcrumbs>
 				}
 			/>
-			<NewsListNav destinations={destinations} />
+			<NewsListNav />
 			{featuredStory && <FeaturedStory story={featuredStory} />}
 			<NewsList news={stories} />
 			<ActionBanner
