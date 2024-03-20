@@ -7,6 +7,7 @@ import {
 	getStoryVersionFromQuery,
 	getSlugFromParams,
 	getAdditionalMetaTags,
+	encodeParens,
 } from "./storyblok";
 
 describe("Storyblok utils", () => {
@@ -113,6 +114,20 @@ describe("Storyblok utils", () => {
 					content: "1980",
 				},
 			]);
+		});
+	});
+
+	describe("Encode parens", () => {
+		it("should return an encoded string when given a string with parens", () => {
+			expect(encodeParens("some string (with parens)")).toBe(
+				"some string %28with parens%29"
+			);
+		});
+
+		it("should return the original string when given a string without parens", () => {
+			expect(encodeParens("some string without parens")).toBe(
+				"some string without parens"
+			);
 		});
 	});
 });
