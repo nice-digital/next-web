@@ -59,22 +59,24 @@ export const FeaturedStory: React.FC<FeaturedStoryProps> = ({
 				</HeadingElement>
 				<p>{content.introText}</p>
 				<footer>
-					{story.content.author && (
-						<div className={styles.author}>
-							{story.content.author.map((author: AuthorStoryblok) => {
-								return (
-									<StoryblokAuthor
-										key={author.id}
-										blok={author.content}
-										isCardAuthor={true}
-										headingLevel={headingLevel + 1}
-									/>
-								);
-							})}
-						</div>
-					)}
 					<Tag outline>{storyType}</Tag>
 					<span className={styles.date}>{friendlyDate(content.date)}</span>
+					{story.content.author && (
+						<div className={styles.author}>
+							{story.content.author
+								.slice(0, 1)
+								.map((author: AuthorStoryblok) => {
+									return (
+										<StoryblokAuthor
+											key={author.id}
+											blok={author.content}
+											isCardAuthor={true}
+											headingLevel={headingLevel + 1}
+										/>
+									);
+								})}
+						</div>
+					)}
 				</footer>
 			</div>
 		</article>

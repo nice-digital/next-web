@@ -8,7 +8,6 @@ import {
 } from "@nice-digital/nds-grid";
 
 import { StoryblokButtonLink } from "@/components/Storyblok/StoryblokButtonLink/StoryblokButtonLink";
-import { StoryblokImage } from "@/components/Storyblok/StoryblokImage/StoryblokImage";
 import { StoryblokRichText } from "@/components/Storyblok/StoryblokRichText/StoryblokRichText";
 import { StoryblokYoutubeEmbed } from "@/components/Storyblok/StoryblokYoutubeEmbed/StoryblokYoutubeEmbed";
 import {
