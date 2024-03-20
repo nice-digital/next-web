@@ -53,8 +53,8 @@ export const BlogIndexPage = ({
 				variant="fullWidthDark"
 				breadcrumbs={
 					<Breadcrumbs>
-						<Breadcrumb to="https://www.nice.org.uk/">Home</Breadcrumb>
-						<Breadcrumb to="https://www.nice.org.uk/news">News</Breadcrumb>
+						<Breadcrumb to="/">Home</Breadcrumb>
+						<Breadcrumb to="/news">News</Breadcrumb>
 						<Breadcrumb>Blogs</Breadcrumb>
 					</Breadcrumbs>
 				}

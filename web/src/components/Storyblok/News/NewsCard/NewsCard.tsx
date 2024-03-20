@@ -86,17 +86,10 @@ export const NewsCard: React.FC<NewsCardProps> = ({
 					{headingLink}
 				</HeadingElement>
 				<p>{content.introText}</p>
-
 				<footer>
-					<div>
-						<Tag outline>{storyType}</Tag>
-						<span className={styles.date}>
-							{friendlyDate(story.content.date)}
-						</span>
-					</div>
 					{content.author && (
 						<div className={styles.author}>
-							{content.author.map((author: AuthorStoryblok) => {
+							{content.author.slice(0, 1).map((author: AuthorStoryblok) => {
 								if (typeof author === "string") {
 									return null;
 								}
@@ -108,12 +101,18 @@ export const NewsCard: React.FC<NewsCardProps> = ({
 
 								return (
 									<p key={id} className={styles.author}>
-										{name}, {jobTitle}
+										by {name}, {jobTitle}
 									</p>
 								);
 							})}
 						</div>
 					)}
+					<div>
+						<Tag outline>{storyType}</Tag>
+						<span className={styles.date}>
+							{friendlyDate(story.content.date)}
+						</span>
+					</div>
 				</footer>
 			</div>
 		</article>

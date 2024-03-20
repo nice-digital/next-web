@@ -9,7 +9,7 @@ import { StoryblokImage } from "@/components/Storyblok/StoryblokImage/StoryblokI
 import { StoryblokYoutubeEmbed } from "@/components/Storyblok/StoryblokYoutubeEmbed/StoryblokYoutubeEmbed";
 import { NewsStory } from "@/types/News";
 import { SpotlightStoryblok, YoutubeEmbedStoryblok } from "@/types/storyblok";
-import { defaultPodcastImage, getNewsType } from "@/utils/storyblok";
+import { defaultPodcastImage, getNewsType, newsTypes } from "@/utils/storyblok";
 
 import styles from "./Spotlight.module.scss";
 
@@ -24,8 +24,7 @@ export const Spotlight: React.FC<SpotlightProps> = ({
 	headingLevel = 2,
 	className,
 }: SpotlightProps) => {
-	const { heading, mediaDescription, youtubeEmbed, component, isTransparent } =
-		blok;
+	const { heading, mediaDescription, youtubeEmbed, isTransparent } = blok;
 
 	// Resolve heading type
 	const HeadingElement = `h${headingLevel}` as keyof JSX.IntrinsicElements;
@@ -35,9 +34,6 @@ export const Spotlight: React.FC<SpotlightProps> = ({
 
 	// Resolve transparency
 	const transparentClass = isTransparent ? styles.transparent : undefined;
-
-	// Resolve story type
-	const storyType = getNewsType(component);
 
 	return (
 		<section
@@ -63,10 +59,20 @@ export const Spotlight: React.FC<SpotlightProps> = ({
 							{stories.map((story) => {
 								const { content, full_slug, id, name } = story;
 
-								const headingLink: CardHeadingLinkProps = {
-									destination: full_slug,
-									elementType: Link,
-								};
+								// Resolve story type
+								const storyType = getNewsType(content.component);
+
+								const headingLink: CardHeadingLinkProps =
+									storyType === newsTypes.inDepthArticle
+										? {
+												destination:
+													content.link.url || content.link.cached_url,
+												elementType: "a",
+										  }
+										: {
+												destination: full_slug,
+												elementType: Link,
+										  };
 
 								// Fall back to podcast placeholder image if none is supplied
 								const image = content.image?.filename || defaultPodcastImage;
