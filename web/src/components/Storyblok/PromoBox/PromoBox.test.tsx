@@ -6,6 +6,12 @@ import { PromoBox, type PromoBoxProps } from "./PromoBox";
 const mockPromoBox: PromoBoxProps = {
 	blok: {
 		heading: "Mock promo box title",
+		image: {
+			filename: "https://placebacon.net/130/210?image=4",
+			id: 123456789,
+			name: "Delicious bacon",
+		},
+		useVideo: false,
 		body: {
 			type: "Mock rich text",
 		},
