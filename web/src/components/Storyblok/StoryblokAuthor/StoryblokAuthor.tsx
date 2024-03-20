@@ -27,7 +27,7 @@ export const StoryblokAuthor = ({
 
 	// Resolve the classnames, and add the isCardAuthor class if the prop is true
 	const authorClasses = classNames(styles.author, className, {
-		[styles["author--is-card-author"]]: isCardAuthor,
+		[styles.isCardAuthor]: isCardAuthor,
 	});
 
 	// Resolve the heading level
@@ -44,7 +44,7 @@ export const StoryblokAuthor = ({
 					alt={blok.image.alt}
 					width={`136px`}
 					height={`136px`}
-					className={styles.author__image}
+					className={styles.image}
 					serviceOptions={{
 						height: 270,
 						width: 270,
@@ -55,13 +55,11 @@ export const StoryblokAuthor = ({
 			)}
 			<div className={styles.author__content}>
 				{blok.name && (
-					<HeadingLevelElement className={styles.author__name}>
+					<HeadingLevelElement className={styles.name}>
 						{blok.name}
 					</HeadingLevelElement>
 				)}
-				{blok.jobTitle && (
-					<p className={styles["author__job-title"]}>{blok.jobTitle}</p>
-				)}
+				{blok.jobTitle && <p className={styles.jobTitle}>{blok.jobTitle}</p>}
 			</div>
 		</div>
 	);
