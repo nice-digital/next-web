@@ -1,0 +1,34 @@
+
+    [
+        "/guidance/indevelopment?ndt=Guidance&ngt=Antimicrobial%20prescribing%20guidelines&ngt=Cancer%20service%20guidelines&ngt=Diagnostics%20guidance&ngt=Highly%20specialised%20technologies%20guidance&ngt=Interventional%20procedures%20guidance",
+        "/guidance/indevelopment?pa=7&ps=50&sp=on&ndt=Guidance&ngt=Antimicrobial%20prescribing%20guidelines&ngt=Cancer%20service%20guidelines&ngt=Diagnostics%20guidance&ngt=Highly%20specialised%20technologies%20guidance&ngt=Interventional%20procedures%20guidance",
+        "/guidance/published?ndt=Guidance&ndt=Quality%20standard&ngt=Antimicrobial%20prescribing%20guidelines&ngt=Interventional%20procedures%20guidance&ngt=Medical%20technologies%20guidance&ngt=Social%20care%20guidelines&ngt=Technology%20appraisal%20guidance&pa=4",
+        "/guidance/published?ndt=Guidance&ndt=Quality%20standard&ngt=Antimicrobial%20prescribing%20guidelines&ngt=Cancer%20service%20guidelines&ngt=Highly%20specialised%20technologies%20guidance&ngt=Interventional%20procedures%20guidance",
+        "/guidance/published?pa=32&ps=50&sp=on&ndt=Guidance&ngt=Antimicrobial%20prescribing%20guidelines&ngt=Clinical%20guidelines&ngt=Diagnostics%20guidance&ngt=Interventional%20procedures%20guidance&ngt=Technology%20appraisal%20guidance",
+        "/_next/data/Qrnd7RWy8tJ-BqcXnK7DJ/guidance/published.json?ngt=Clinical+guidelines",
+        "/_next/data/Qrnd7RWy8tJ-BqcXnK7DJ/guidance/published.json?ngt=Clinical+guidelines&q=%27acupunture%27",
+        "/guidance/published?from=2018-04-01&ndt=Guidance&ndt=Quality%20standard&ngt=Cancer%20service%20guidelines&ngt=Interventional%20procedures%20guidance&ngt=Medical%20technologies%20guidance&ngt=Medicines%20practice%20guidelines",
+        "/guidance/inconsultation?ndt=Guidance&ndt=Quality%20standard&ngt=Antimicrobial%20prescribing%20guidelines&ngt=Highly%20specialised%20technologies%20guidance&ngt=Interventional%20procedures%20guidance&ngt=Medical%20technologies%20guidance",
+        "/guidance/inconsultation?ndt=Guidance&ngt=Clinical%20guidelines&ngt=Diagnostics%20guidance&ngt=Medicines%20practice%20guidelines&ps=25&sp=on",
+        "/guidance/inconsultation?ngt=COVID-19%20rapid%20guidelines&ngt=Cancer%20service%20guidelines&ngt=Clinical%20guidelines&ngt=Public%20health%20guidelines&ps=25&sp=on",
+        "/guidance/awaiting-development?ndt=Guidance&ndt=Quality%20standard&ngt=Antimicrobial%20prescribing%20guidelines&ngt=Highly%20specialised%20technologies%20guidance&ngt=Medicines%20practice%20guidelines&ngt=Safe%20staffing%20guidelines",
+        "/guidance/awaiting-development?pa=4&ps=50&sp=on&ndt=Guidance&ndt=Quality%20standard&ngt=Antimicrobial%20prescribing%20guidelines&ngt=Highly%20specialised%20technologies%20guidance&ngt=Medicines%20practice%20guidelines&ngt=Safe%20staffing%20guidelines",
+        "/_next/static/chunks/pages/guidance/topic-selection-182cd9f0e0da0d3a.js",
+        "/guidance/topic-selection?ndt=NICE%20advice&ngt=Interventional%20procedures%20guidance&ngt=Medical%20technologies%20guidance&sp=on",
+        "/_next/data/Qrnd7RWy8tJ-BqcXnK7DJ/guidance/topic-selection.json?q=validating+prescriptions",
+        "/guidance/topic-selection?nat=Medtech%20innovation%20briefings&ndt=Guidance&ndt=NICE%20advice&ndt=Quality%20standard&ngt=Antimicrobial%20prescribing%20guidelines&ngt=Cancer%20service%20guidelines&ngt=Clinical%20guidelines&ngt=Diagnostics%20guidance",
+        "/api/cache?action=delete&itemKey=/project/gid-ta11036&groupKey=indev",
+        "/api/cache?action=delete&itemKey=/project/gid-hst10033&groupKey=indev",
+        "/api/cache?action=delete&itemKey=/project/gid-ta10505&groupKey=indev",
+        "/api/cache?action=delete&itemKey=/project/gid-dg10080&groupKey=indev",
+        "/api/cache?action=delete&itemKey=/project/gid-ta10071&groupKey=indev",
+        "/guidance/published",
+        "/guidance/published?ps=25",
+        "/guidance/published?ps=50",        
+        "/guidance/inconsultation",
+        "/guidance/indevelopment",
+        "/guidance/awaiting-development",
+        "/guidance/topic-selection"
+
+    ]
+
