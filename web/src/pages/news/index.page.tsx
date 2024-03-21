@@ -43,7 +43,6 @@ export default function NewsIndexPage({
 	blogPosts,
 	podcasts,
 }: NewsIndexProps): React.ReactElement {
-
 	const breadcrumbs = (
 		<Breadcrumbs>
 			<Breadcrumb to="/">Home</Breadcrumb>
