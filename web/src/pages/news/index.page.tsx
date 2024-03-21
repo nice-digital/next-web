@@ -1,12 +1,16 @@
 import { ISbStoriesParams } from "@storyblok/react";
 import { GetServerSidePropsContext } from "next";
 import { NextSeo } from "next-seo";
+import Image from "next/image";
 import { StoryblokStory } from "storyblok-generate-ts";
 
 import { Breadcrumbs, Breadcrumb } from "@nice-digital/nds-breadcrumbs";
+import { Card } from "@nice-digital/nds-card";
 import { PageHeader } from "@nice-digital/nds-page-header";
+import { Tag } from "@nice-digital/nds-tag";
 
 import { Link } from "@/components/Link/Link";
+import { NewsLetterSignup } from "@/components/NewsLetterSignUp/NewsLetterSignup";
 import { FeaturedStory } from "@/components/Storyblok/News/FeaturedStory/FeaturedStory";
 import { NewsCard } from "@/components/Storyblok/News/NewsCard/NewsCard";
 import { NewsGrid } from "@/components/Storyblok/News/NewsGrid/NewsGrid";
@@ -17,7 +21,12 @@ import {
 	NewsArticleStoryblok,
 	PodcastStoryblok,
 } from "@/types/storyblok";
-import { getStoryVersionFromQuery, fetchStories } from "@/utils/storyblok";
+import {
+	getStoryVersionFromQuery,
+	fetchStories,
+	defaultPodcastImage,
+	friendlyDate,
+} from "@/utils/storyblok";
 
 import styles from "./index.module.scss";
 
@@ -107,18 +116,50 @@ export default function NewsIndexPage({
 			<section className={`${styles.section} ${styles.darkSection}`}>
 				<div className={styles.sectionContainer}>
 					<h2>Latest podcasts</h2>
-					<ul className={styles.newsCardList}>
-						{podcasts.map((podcast) => (
-							<li key={podcast.id}>
-								<NewsCard story={podcast} />
-							</li>
-						))}
-					</ul>
+					<div className={styles.podcastWrapper}>
+						<ul className={`list--unstyled ${styles.podcastList}`}>
+							{podcasts.map((podcast) => {
+								const { name, full_slug, content } = podcast;
+								return (
+									<li key={podcast.id}>
+										<Card
+											headingText={name}
+											headingElementType="h3"
+											link={{
+												destination: full_slug,
+												elementType: Link,
+											}}
+										>
+											{content.introText}
+											<footer className={styles.podcastFooter}>
+												<Tag outline>Podcast</Tag>
+												<span className={styles.podcastDate}>
+													{friendlyDate(content.date)}
+												</span>
+											</footer>
+										</Card>
+									</li>
+								);
+							})}
+						</ul>
+						<Image
+							src={defaultPodcastImage}
+							className={styles.podcastImage}
+							alt=""
+							role="presentation"
+							width={400}
+							height={400}
+						/>
+					</div>
 					<p>
 						<Link href="/news/podcasts">View all podcasts</Link>
 					</p>
 				</div>
 			</section>
+
+			<div className={styles.newsletterSignup}>
+				<NewsLetterSignup />
+			</div>
 		</>
 	);
 }
@@ -164,8 +205,6 @@ export async function getServerSideProps(context: GetServerSidePropsContext) {
 			fetchStories<BlogPostStoryblok>(version, blogParams),
 			fetchStories<PodcastStoryblok>(version, podcastParams),
 		]);
-
-	console.log({ newsArticles });
 
 	const result = {
 		props: {

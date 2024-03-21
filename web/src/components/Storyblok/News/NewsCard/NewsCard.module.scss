@@ -16,6 +16,14 @@
   flex: 0 0 auto;
   margin-bottom: utils.rem(spacing.$medium);
   min-width: 100%;
+
+  @include media-queries.mq($from: sm) {
+    aspect-ratio: 21 / 9;
+  }
+
+  @include media-queries.mq($from: md) {
+    aspect-ratio: 16 / 9;
+  }
 }
 
 .heading {
@@ -50,17 +58,12 @@
   }
 
 
-  @include media-queries.mq($from: sm) {
-    .imageContainer {
-      aspect-ratio: 21 / 9;
-    }
-  }
+
 
   @include media-queries.mq($from: md) {
     flex-direction: row;
 
     .imageContainer {
-      aspect-ratio: 16 / 9;
       margin-bottom: 0;
       margin-right: utils.rem(spacing.$large);
       min-width: 300px;
