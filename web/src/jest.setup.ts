@@ -11,9 +11,7 @@ jest.mock("@/utils/storyblok", () => ({
 }));
 
 jest.mock("@/utils/initStoryblok", () => ({
-	...jest.requireActual("@/utils/initStoryblok"),
 	initStoryblok: jest.fn(),
-	getMeBanjo: jest.fn(() => "I don't have your banjo!"),
 }));
 
 beforeEach(() => {
