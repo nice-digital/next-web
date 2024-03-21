@@ -14,8 +14,8 @@ exports[`Homepage latest news component should match snapshot 1`] = `
         <a
           aria-hidden="true"
           class="imageContainer"
-          href="i/am/a-very-full-slug"
-          style="background-image: url(https://placekitten.com/200/286);"
+          href="/i/am/a-very-full-slug"
+          style="background-image: url(https://placekitten.com/200/286/m/868x0/filters:quality%2880%29);"
           tabindex="-1"
         >
            
@@ -25,7 +25,7 @@ exports[`Homepage latest news component should match snapshot 1`] = `
             class="heading"
           >
             <a
-              href="i/am/a-very-full-slug"
+              href="/i/am/a-very-full-slug"
             >
               Test news article title
             </a>
@@ -34,17 +34,19 @@ exports[`Homepage latest news component should match snapshot 1`] = `
             Test intro text
           </p>
           <footer>
-            <span
-              class="tag tag--outline"
-              data-component="tag"
-            >
-              News
-            </span>
-            <span
-              class="date"
-            >
-              31 January 2024
-            </span>
+            <div>
+              <span
+                class="tag tag--outline"
+                data-component="tag"
+              >
+                News
+              </span>
+              <span
+                class="date"
+              >
+                31 January 2024
+              </span>
+            </div>
           </footer>
         </div>
       </article>
@@ -58,8 +60,8 @@ exports[`Homepage latest news component should match snapshot 1`] = `
         <a
           aria-hidden="true"
           class="imageContainer"
-          href="i/am/a-very-full-slug"
-          style="background-image: url(https://placekitten.com/200/139);"
+          href="/i/am/a-very-full-slug"
+          style="background-image: url(https://placekitten.com/200/139/m/868x0/filters:quality%2880%29);"
           tabindex="-1"
         >
            
@@ -69,7 +71,7 @@ exports[`Homepage latest news component should match snapshot 1`] = `
             class="heading"
           >
             <a
-              href="i/am/a-very-full-slug"
+              href="/i/am/a-very-full-slug"
             >
               Test blog post title
             </a>
@@ -78,17 +80,31 @@ exports[`Homepage latest news component should match snapshot 1`] = `
             Let's play Blockbusters!
           </p>
           <footer>
-            <span
-              class="tag tag--outline"
-              data-component="tag"
+            <div
+              class="author"
             >
-              Blog
-            </span>
-            <span
-              class="date"
-            >
-              20 February 2024
-            </span>
+              <p
+                class="author"
+              >
+                by 
+                Bob Holness
+                , 
+                Blockbusters host
+              </p>
+            </div>
+            <div>
+              <span
+                class="tag tag--outline"
+                data-component="tag"
+              >
+                Blog
+              </span>
+              <span
+                class="date"
+              >
+                20 February 2024
+              </span>
+            </div>
           </footer>
         </div>
       </article>
@@ -102,8 +118,8 @@ exports[`Homepage latest news component should match snapshot 1`] = `
         <a
           aria-hidden="true"
           class="imageContainer"
-          href="i/am/a-very-full-slug"
-          style="background-image: url(https://placekitten.com/200/286);"
+          href="/i/am/a-very-full-slug"
+          style="background-image: url(https://placekitten.com/200/286/m/868x0/filters:quality%2880%29);"
           tabindex="-1"
         >
            
@@ -113,7 +129,7 @@ exports[`Homepage latest news component should match snapshot 1`] = `
             class="heading"
           >
             <a
-              href="i/am/a-very-full-slug"
+              href="/i/am/a-very-full-slug"
             >
               Test news article title
             </a>
@@ -122,17 +138,19 @@ exports[`Homepage latest news component should match snapshot 1`] = `
             Test intro text
           </p>
           <footer>
-            <span
-              class="tag tag--outline"
-              data-component="tag"
-            >
-              News
-            </span>
-            <span
-              class="date"
-            >
-              31 January 2024
-            </span>
+            <div>
+              <span
+                class="tag tag--outline"
+                data-component="tag"
+              >
+                News
+              </span>
+              <span
+                class="date"
+              >
+                31 January 2024
+              </span>
+            </div>
           </footer>
         </div>
       </article>

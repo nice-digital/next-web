@@ -7,14 +7,22 @@ import styles from "./NewsList.module.scss";
 
 interface NewsListProps {
 	news: StoryblokStory<NewsStory>[];
+	showImage?: boolean;
 }
 
-export const NewsList: React.FC<NewsListProps> = ({ news }: NewsListProps) => (
+export const NewsList: React.FC<NewsListProps> = ({
+	news,
+	showImage,
+}: NewsListProps) => (
 	<ul className={styles.newsList}>
 		{news.map((story) => {
 			return (
 				<li className={styles.newsItem} key={story.id}>
-					<NewsCard story={story} variant="isNewsListItem" />
+					<NewsCard
+						story={story}
+						variant="isNewsListItem"
+						showImage={showImage}
+					/>
 				</li>
 			);
 		})}

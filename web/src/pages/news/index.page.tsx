@@ -43,13 +43,6 @@ export default function NewsIndexPage({
 	blogPosts,
 	podcasts,
 }: NewsIndexProps): React.ReactElement {
-	const destinations = [
-		{ url: "/news", title: "News" },
-		{ url: "/news/articles", title: "News articles" },
-		{ url: "/news/in-depth", title: "In-depth" },
-		{ url: "/news/blogs", title: "Blogs" },
-		{ url: "/news/podcasts", title: "Podcasts" },
-	];
 
 	const breadcrumbs = (
 		<Breadcrumbs>
@@ -68,7 +61,7 @@ export default function NewsIndexPage({
 				heading={pageTitle}
 				variant="fullWidthDark"
 			/>
-			<NewsListNav destinations={destinations} />
+			<NewsListNav />
 
 			<section className={styles.section}>
 				<div className={styles.sectionContainer}>

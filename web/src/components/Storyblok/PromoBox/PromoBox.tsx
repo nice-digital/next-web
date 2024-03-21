@@ -8,7 +8,6 @@ import {
 } from "@nice-digital/nds-grid";
 
 import { StoryblokButtonLink } from "@/components/Storyblok/StoryblokButtonLink/StoryblokButtonLink";
-import { StoryblokImage } from "@/components/Storyblok/StoryblokImage/StoryblokImage";
 import { StoryblokRichText } from "@/components/Storyblok/StoryblokRichText/StoryblokRichText";
 import { StoryblokYoutubeEmbed } from "@/components/Storyblok/StoryblokYoutubeEmbed/StoryblokYoutubeEmbed";
 import {
@@ -65,7 +64,7 @@ export const PromoBox: React.FC<PromoBoxProps> = ({
 				<Grid gutter="loose">
 					<GridItem
 						cols={12}
-						sm={contentGridConfig}
+						md={contentGridConfig}
 						className={styles.contentContainer}
 					>
 						<HeadingElement className={styles.heading}>
@@ -80,7 +79,7 @@ export const PromoBox: React.FC<PromoBoxProps> = ({
 					</GridItem>
 					<GridItem
 						cols={12}
-						sm={mediaGridConfig}
+						md={mediaGridConfig}
 						className={styles.mediaContainer}
 					>
 						{useVideo && youtubeEmbed?.length ? (
@@ -88,7 +87,10 @@ export const PromoBox: React.FC<PromoBoxProps> = ({
 								blok={youtubeEmbed[0] as YoutubeEmbedStoryblok}
 							/>
 						) : (
-							<StoryblokImage src={image?.filename} alt={image?.alt} />
+							<div
+								className={styles.imageContainer}
+								style={{ backgroundImage: `url(${image?.filename})` }}
+							></div>
 						)}
 					</GridItem>
 				</Grid>

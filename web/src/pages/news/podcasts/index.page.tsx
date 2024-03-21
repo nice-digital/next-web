@@ -5,10 +5,11 @@ import { StoryblokStory } from "storyblok-generate-ts";
 import { ActionBanner } from "@nice-digital/nds-action-banner";
 import { Breadcrumbs, Breadcrumb } from "@nice-digital/nds-breadcrumbs";
 import { Button } from "@nice-digital/nds-button";
+import { Grid, GridItem } from "@nice-digital/nds-grid";
 import { PageHeader } from "@nice-digital/nds-page-header";
+import { Panel } from "@nice-digital/nds-panel";
 
 import { ErrorPageContent } from "@/components/ErrorPageContent/ErrorPageContent";
-import { FeaturedStory } from "@/components/Storyblok/News/FeaturedStory/FeaturedStory";
 import { NewsList } from "@/components/Storyblok/News/NewsList/NewsList";
 import { NewsListNav } from "@/components/Storyblok/News/NewsListNav/NewsListNav";
 import { NewsListPagination } from "@/components/Storyblok/News/NewsListPagination/NewsListPagination";
@@ -17,8 +18,7 @@ import { validateRouteParams } from "@/utils/storyblok";
 
 import type { GetServerSidePropsContext } from "next";
 
-export type BlogPostsProps = {
-	featuredStory?: StoryblokStory<NewsStory> | null;
+export type PodcastPostsProps = {
 	stories: StoryblokStory<NewsStory>[];
 	total: number;
 	currentPage: number;
@@ -26,34 +26,49 @@ export type BlogPostsProps = {
 	error?: string | undefined;
 };
 
-export const BlogIndexPage = ({
+export const PodcastIndexPage = ({
 	stories,
 	currentPage,
 	total,
 	perPage,
-	featuredStory,
 	error,
-}: BlogPostsProps): React.ReactElement => {
+}: PodcastPostsProps): React.ReactElement => {
 	if (error) {
 		return <ErrorPageContent title="Error" heading={error} />;
 	}
 	return (
 		<>
-			<NextSeo title="Blog posts" openGraph={{ title: "Blog posts" }}></NextSeo>
+			<NextSeo title="Podcasts" openGraph={{ title: "Podcasts" }}></NextSeo>
 			<PageHeader
-				heading="Blog posts"
+				heading="Podcasts"
 				variant="fullWidthDark"
+				lead="Our NICE talks podcasts bring you the real life experience of people working within NHS, public health and social care."
 				breadcrumbs={
 					<Breadcrumbs>
 						<Breadcrumb to="/">Home</Breadcrumb>
 						<Breadcrumb to="/news">News</Breadcrumb>
-						<Breadcrumb>Blogs</Breadcrumb>
+						<Breadcrumb>Podcasts</Breadcrumb>
 					</Breadcrumbs>
 				}
 			/>
 			<NewsListNav />
-			{featuredStory && <FeaturedStory story={featuredStory} />}
-			<NewsList news={stories} />
+			<Grid gutter="loose">
+				<GridItem cols={12} md={{ cols: 7 }}>
+					<NewsList news={stories} showImage={false} />
+				</GridItem>
+				<GridItem cols={12} md={{ cols: 4, push: 1 }}>
+					<Panel>
+						<h2 className="h3">Other ways to listen</h2>
+						<p>
+							Our NICE talks podcasts are available{" "}
+							<a href="https://linktr.ee/nicetalks">
+								on a variety of different platforms.
+							</a>
+						</p>
+					</Panel>
+				</GridItem>
+			</Grid>
+
 			<ActionBanner
 				title="Sign up for our newsletters and alerts"
 				cta={
@@ -79,12 +94,11 @@ export const getServerSideProps = async ({
 	query,
 	resolvedUrl,
 }: GetServerSidePropsContext) => {
-	const result = await validateRouteParams<BlogPostsProps>({
+	const result = await validateRouteParams<PodcastPostsProps>({
 		query,
 		sbParams: {
-			starts_with: "news/blogs/",
-			per_page: 6,
-			resolve_relations: "blogPost.author",
+			starts_with: "news/podcasts/",
+			per_page: 3,
 		},
 		resolvedUrl,
 	});
@@ -101,10 +115,13 @@ export const getServerSideProps = async ({
 
 	const { featuredStory, stories, total, perPage, currentPage } = result;
 
+	/* because there's no featuredStory in podcasts we need to include the returned featuredStory in the stories array on page 1 */
+	const podcastStories =
+		currentPage === 1 ? [featuredStory, ...stories] : stories;
+
 	return {
 		props: {
-			featuredStory,
-			stories,
+			stories: podcastStories,
 			total,
 			currentPage,
 			perPage,
@@ -112,4 +129,4 @@ export const getServerSideProps = async ({
 	};
 };
 
-export default BlogIndexPage;
+export default PodcastIndexPage;

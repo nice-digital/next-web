@@ -48,7 +48,8 @@ export async function getServerSideProps(context: GetServerSidePropsContext) {
 	const version = getStoryVersionFromQuery(context.query);
 	const storyResult = await fetchStory<HomepageStoryblok>(slug, version, {
 		resolve_links: "url",
-		resolve_relations: "homepage.featuredStory,spotlight.stories",
+		resolve_relations:
+			"homepage.featuredStory,homepage.featuredStory,blogPost.author,spotlight.stories",
 	});
 
 	// Fetch latest news stories
@@ -56,6 +57,7 @@ export async function getServerSideProps(context: GetServerSidePropsContext) {
 		starts_with: "news",
 		sort_by: "content.date:desc",
 		excluding_slugs: "news/blogs/authors/*",
+		resolve_relations: "blogPost.author",
 		per_page: 3,
 	};
 

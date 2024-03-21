@@ -12,34 +12,25 @@ import { FeaturedStory } from "@/components/Storyblok/News/FeaturedStory/Feature
 import { NewsList } from "@/components/Storyblok/News/NewsList/NewsList";
 import { NewsListNav } from "@/components/Storyblok/News/NewsListNav/NewsListNav";
 import { NewsListPagination } from "@/components/Storyblok/News/NewsListPagination/NewsListPagination";
-import { logger } from "@/logger";
 import { NewsStory } from "@/types/News";
-import { fetchStories, getStoryVersionFromQuery } from "@/utils/storyblok";
+import { validateRouteParams } from "@/utils/storyblok";
 
 import type { GetServerSidePropsContext } from "next";
 
 export type NewsArticlesProps = {
 	featuredStory?: StoryblokStory<NewsStory> | null;
 	stories: StoryblokStory<NewsStory>[];
-	totalResults: number;
+	total: number;
 	currentPage: number;
-	resultsPerPage: number;
+	perPage: number;
 	error?: string | undefined;
 };
-
-const destinations = [
-	{ url: "/news/", title: "News" },
-	{ url: "/news/articles", title: "News articles" },
-	{ url: "/news/in-depth", title: "In-depth" },
-	{ url: "/news/blogs", title: "Blogs" },
-	{ url: "/news/podcasts", title: "Podcasts" },
-];
 
 export const ArticlesIndexPage = ({
 	stories,
 	currentPage,
-	totalResults,
-	resultsPerPage,
+	total,
+	perPage,
 	featuredStory,
 	error,
 }: NewsArticlesProps): React.ReactElement => {
@@ -57,15 +48,23 @@ export const ArticlesIndexPage = ({
 				variant="fullWidthDark"
 				breadcrumbs={
 					<Breadcrumbs>
-						<Breadcrumb to="https://www.nice.org.uk/">Home</Breadcrumb>
-						<Breadcrumb to="https://www.nice.org.uk/news">News</Breadcrumb>
+						<Breadcrumb to="/">Home</Breadcrumb>
+						<Breadcrumb to="/news">News</Breadcrumb>
 						<Breadcrumb>Articles</Breadcrumb>
 					</Breadcrumbs>
 				}
 			/>
-			<NewsListNav destinations={destinations} />
-			{featuredStory && <FeaturedStory story={featuredStory} />}
-			<NewsList news={stories} />
+			<NewsListNav />
+
+			{stories.length === 0 ? (
+				<p>Sorry there are no news articles available</p>
+			) : (
+				<>
+					{featuredStory && <FeaturedStory story={featuredStory} />}
+					<NewsList news={stories} />
+				</>
+			)}
+
 			<ActionBanner
 				title="Sign up for our newsletters and alerts"
 				cta={
@@ -79,73 +78,50 @@ export const ArticlesIndexPage = ({
 			<NewsListPagination
 				configuration={{
 					currentPage,
-					totalResults,
-					resultsPerPage,
+					total,
+					perPage,
 				}}
 			/>
 		</>
 	);
 };
 
-export async function getServerSideProps({ query }: GetServerSidePropsContext) {
-	const version = getStoryVersionFromQuery(query);
-	const page = Number(query.page) || 1;
-	const resultsPerPage = 6;
-
-	const storiesResult = await fetchStories(version, {
-		starts_with: "news/articles/",
-		per_page: resultsPerPage,
-		page,
-		sort_by: "content.date:desc",
+export const getServerSideProps = async ({
+	query,
+	resolvedUrl,
+}: GetServerSidePropsContext) => {
+	const result = await validateRouteParams<NewsArticlesProps>({
+		query,
+		sbParams: {
+			starts_with: "news/articles/",
+			per_page: 6,
+		},
+		resolvedUrl,
 	});
 
-	const latestStoryResult = await fetchStories(version, {
-		starts_with: "news/articles/",
-		per_page: 1,
-		page: 1,
-		sort_by: "content.date:desc",
-	});
+	// will return a 404 or redirect if the route is not valid
+	if ("notFound" in result || "redirect" in result) return result;
 
-	if (!storiesResult || storiesResult.total === undefined) {
-		logger.error("Error fetching stories: ", storiesResult);
+	//
+	if ("error" in result) {
 		return {
 			props: {
-				error:
-					"There are no stories to display at the moment. Please try again later.",
+				...result,
 			},
 		};
 	}
 
-	let stories = storiesResult.stories;
-	let featuredStory = null;
+	const { featuredStory, stories, total, perPage, currentPage } = result;
 
-	if (
-		page === 1 &&
-		stories.length > 0 &&
-		stories[0].uuid === latestStoryResult.stories[0].uuid // Check if the first story on page 1 is the same as the latest story
-	) {
-		featuredStory = latestStoryResult.stories[0]; // Set featured story on page 1
-		stories = stories.slice(1); // Skip first story on page 1 as it's featured
-	}
-
-	return page < 1 ||
-		page > Math.ceil(storiesResult.total / resultsPerPage) ||
-		isNaN(page)
-		? {
-				redirect: {
-					destination: "/news/articles",
-					permanent: false,
-				},
-		  }
-		: {
-				props: {
-					featuredStory,
-					stories,
-					totalResults: storiesResult.total,
-					currentPage: page,
-					resultsPerPage,
-				},
-		  };
-}
+	return {
+		props: {
+			featuredStory,
+			stories,
+			total,
+			currentPage,
+			perPage,
+		},
+	};
+};
 
 export default ArticlesIndexPage;

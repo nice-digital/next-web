@@ -28,9 +28,9 @@ exports[`NewsListNav renders correctly 1`] = `
         <a
           aria-current="false"
           class="horizontal-nav__link"
-          href="/blog"
+          href="/news/articles"
         >
-          Blog
+          News articles
         </a>
       </li>
       <li
@@ -40,9 +40,33 @@ exports[`NewsListNav renders correctly 1`] = `
         <a
           aria-current="false"
           class="horizontal-nav__link"
-          href="/news/articles"
+          href="/news/in-depth"
         >
-          News articles
+          In-depth
+        </a>
+      </li>
+      <li
+        class="horizontal-nav__item"
+        data-component="horizontal-nav"
+      >
+        <a
+          aria-current="false"
+          class="horizontal-nav__link"
+          href="/news/blogs"
+        >
+          Blogs
+        </a>
+      </li>
+      <li
+        class="horizontal-nav__item"
+        data-component="horizontal-nav"
+      >
+        <a
+          aria-current="false"
+          class="horizontal-nav__link"
+          href="/news/podcasts"
+        >
+          Podcasts
         </a>
       </li>
     </ul>

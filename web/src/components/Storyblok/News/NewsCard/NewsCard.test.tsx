@@ -45,4 +45,15 @@ describe("News card component", () => {
 		expect(newsCardElement).toBeInTheDocument();
 		expect(newsCardElement).toHaveClass("listItem");
 	});
+
+	it("should not render an image if showImage is false", () => {
+		const { asFragment } = render(
+			<NewsCard
+				story={mockNewsArticle}
+				variant="isNewsListItem"
+				showImage={false}
+			/>
+		);
+		expect(asFragment()).toMatchSnapshot();
+	});
 });

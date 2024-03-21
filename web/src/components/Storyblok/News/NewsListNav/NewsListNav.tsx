@@ -1,5 +1,5 @@
 import { useRouter } from "next/router";
-import React, { useState, useEffect, useCallback } from "react";
+import React, { useState, useEffect, useCallback, useMemo } from "react";
 
 import {
 	HorizontalNav,
@@ -13,15 +13,20 @@ type Destination = {
 	title: string;
 };
 
-type DestinationProps = {
-	destinations: Destination[];
-};
-
-export const NewsListNav = ({
-	destinations,
-}: DestinationProps): React.ReactElement => {
+export const NewsListNav = (): React.ReactElement => {
 	const router = useRouter();
 	const [activeLink, setActiveLink] = useState<Destination>();
+
+	const destinations = useMemo(
+		() => [
+			{ url: "/news", title: "News" },
+			{ url: "/news/articles", title: "News articles" },
+			{ url: "/news/in-depth", title: "In-depth" },
+			{ url: "/news/blogs", title: "Blogs" },
+			{ url: "/news/podcasts", title: "Podcasts" },
+		],
+		[]
+	);
 
 	const getActiveLink = useCallback(
 		(pathname: string): Destination | undefined => {

@@ -136,4 +136,11 @@ describe("NewsList", () => {
 		const { asFragment } = render(<NewsList news={mockNews} />);
 		expect(asFragment()).toMatchSnapshot();
 	});
+
+	it("should match the snapshot if showImage is false", () => {
+		const { asFragment } = render(
+			<NewsList news={mockNews} showImage={false} />
+		);
+		expect(asFragment()).toMatchSnapshot();
+	});
 });
