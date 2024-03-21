@@ -13,6 +13,7 @@ import { NewsList } from "@/components/Storyblok/News/NewsList/NewsList";
 import { NewsListNav } from "@/components/Storyblok/News/NewsListNav/NewsListNav";
 import { NewsListPagination } from "@/components/Storyblok/News/NewsListPagination/NewsListPagination";
 import { NewsStory } from "@/types/News";
+import { getMeBanjo } from "@/utils/initStoryblok";
 import { validateRouteParams } from "@/utils/storyblok";
 
 import type { GetServerSidePropsContext } from "next";
@@ -55,7 +56,7 @@ export const ArticlesIndexPage = ({
 				}
 			/>
 			<NewsListNav />
-
+			<p>{getMeBanjo()}</p>
 			{stories.length === 0 ? (
 				<p>Sorry there are no news articles available</p>
 			) : (

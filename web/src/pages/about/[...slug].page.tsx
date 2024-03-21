@@ -3,12 +3,12 @@ import { NextSeo } from "next-seo";
 import React, { useMemo } from "react";
 
 import { type Breadcrumb } from "@/types/Breadcrumb";
+import { initStoryblok } from "@/utils/initStoryblok";
 import {
 	fetchStory,
 	getStoryVersionFromQuery,
 	getSlugFromParams,
 	getAdditionalMetaTags,
-	initStoryblok,
 } from "@/utils/storyblok";
 
 import type { GetServerSidePropsContext } from "next";
