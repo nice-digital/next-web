@@ -696,15 +696,6 @@ exports[`/indicators/[slug]/chapters/[chapterSlug].page IndicatorChapterPage sho
           class="breadcrumbs__crumb"
         >
           <a
-            href="/standards-and-indicators"
-          >
-            Standards and Indicators
-          </a>
-        </li>
-        <li
-          class="breadcrumbs__crumb"
-        >
-          <a
             href="/standards-and-indicators/indicators"
           >
             Indicators
@@ -738,21 +729,13 @@ exports[`/indicators/[slug]/chapters/[chapterSlug].page IndicatorChapterPage sho
       "@type": "ListItem",
       "position": 2,
       "item": {
-        "@id": "/standards-and-indicators",
-        "name": "Standards and Indicators"
-      }
-    },
-    {
-      "@type": "ListItem",
-      "position": 3,
-      "item": {
         "@id": "/standards-and-indicators/indicators",
         "name": "Indicators"
       }
     },
     {
       "@type": "ListItem",
-      "position": 4,
+      "position": 3,
       "item": {
         "name": "NG100"
       }

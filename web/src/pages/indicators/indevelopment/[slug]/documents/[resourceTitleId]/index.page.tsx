@@ -47,13 +47,10 @@ export default function DocumentsHTMLPage({
 	return (
 		<>
 			<NextSeo
-				title={`${resource.title} | Project documents | ${project.reference} | Indicators | Standards and Indicators`}
+				title={`${resource.title} | Project documents | ${project.reference} | Indicators`}
 			/>
 			<Breadcrumbs>
 				<Breadcrumb to="/">Home</Breadcrumb>
-				<Breadcrumb to="/standards-and-indicators">
-					Standards and Indicators
-				</Breadcrumb>
 				<Breadcrumb to="/standards-and-indicators/indicators">
 					Indicators
 				</Breadcrumb>

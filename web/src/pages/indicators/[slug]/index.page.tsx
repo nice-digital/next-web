@@ -53,7 +53,7 @@ export default function IndicatorsDetailsPage({
 	return (
 		<>
 			<NextSeo
-				title={product.title + " | Indicators | Standards and Indicators"}
+				title={product.title + " | Indicators"}
 				description={product.metaDescription}
 				additionalLinkTags={[
 					{
@@ -97,9 +97,6 @@ export default function IndicatorsDetailsPage({
 
 			<Breadcrumbs>
 				<Breadcrumb to="/">Home</Breadcrumb>
-				<Breadcrumb to="/standards-and-indicators">
-					Standards and Indicators
-				</Breadcrumb>
 				<Breadcrumb to="/standards-and-indicators/indicators">
 					Indicators
 				</Breadcrumb>

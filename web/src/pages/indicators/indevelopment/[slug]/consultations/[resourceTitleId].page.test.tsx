@@ -147,7 +147,7 @@ describe("[resourceTitleId].page", () => {
 				);
 
 				expect(document.title).toBe(
-					"Test consultation title | GID-TA10914 | Indicators | Standards and Indicators"
+					"Test consultation title | GID-TA10914 | Indicators"
 				);
 			});
 		});

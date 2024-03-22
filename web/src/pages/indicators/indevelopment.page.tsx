@@ -73,9 +73,6 @@ export default getProductListPage({
 		"View a complete list of indicators currently being developed. Our indicators measure outcomes that reflect the quality of care or processes.",
 	listNavType: IndicatorListNav,
 	breadcrumbTrail: [
-		<Breadcrumb to="/standards-and-indicators" key="standards-and-indicators">
-			Standards and Indicators
-		</Breadcrumb>,
 		<Breadcrumb
 			to="/standards-and-indicators/indicators"
 			key="/standards-and-indicators/indicators"
@@ -86,7 +83,7 @@ export default getProductListPage({
 	currentBreadcrumb: "In development",
 	preheading: "In development",
 	heading: <>Indicators</>,
-	title: "In development | Indicators | Standards and indicators | NICE",
+	title: "In development | Indicators",
 	defaultSort: {
 		order: defaultSortOrder,
 		label: "Date",

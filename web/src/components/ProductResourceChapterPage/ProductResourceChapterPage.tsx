@@ -42,14 +42,11 @@ export const ProductResourceChapterPage: FC<
 	return (
 		<>
 			<NextSeo
-				title={`${title} | ${resourceTypeName} | ${product.id} | Indicators | Standards and Indicators`}
+				title={`${title} | ${resourceTypeName} | ${product.id} | Indicators`}
 			/>
 
 			<Breadcrumbs>
 				<Breadcrumb to="/">Home</Breadcrumb>
-				<Breadcrumb to="/standards-and-indicators">
-					Standards and Indicators
-				</Breadcrumb>
 				<Breadcrumb to="/standards-and-indicators/indicators">
 					Indicators
 				</Breadcrumb>
