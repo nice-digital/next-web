@@ -63,8 +63,8 @@ resource "aws_ecs_task_definition" "nextweb-main-task" {
     {
       name      = "nextweb-container",
       image     = "${var.docker_image_address}${var.docker_image_build_number}",
-      cpu       = "${var.resource_cpu}",
-      memory    = "${var.resource_mem}",
+      cpu       = var.resource_cpu,
+      memory    = var.resource_mem,
       essential = true,
       environment = [
         {
