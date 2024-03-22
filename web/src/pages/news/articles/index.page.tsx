@@ -34,9 +34,20 @@ export const ArticlesIndexPage = ({
 	featuredStory,
 	error,
 }: NewsArticlesProps): React.ReactElement => {
+	const focusPagination = React.useRef<HTMLDivElement>(null);
+
+	React.useEffect(() => {
+		if (focusPagination.current) {
+			focusPagination.current?.focus();
+		}
+	}, [currentPage]);
+
+	const totalPages = Math.ceil(total / perPage);
+
 	if (error) {
 		return <ErrorPageContent title="Error" heading={error} />;
 	}
+
 	return (
 		<>
 			<NextSeo
@@ -55,16 +66,22 @@ export const ArticlesIndexPage = ({
 				}
 			/>
 			<NewsListNav />
-
 			{stories.length === 0 ? (
 				<p>Sorry there are no news articles available</p>
 			) : (
 				<>
+					<div
+						role="status"
+						ref={focusPagination}
+						tabIndex={-1}
+						className="visually-hidden"
+					>
+						News article listing page, {currentPage} of {totalPages}
+					</div>
 					{featuredStory && <FeaturedStory story={featuredStory} />}
 					<NewsList news={stories} />
 				</>
 			)}
-
 			<ActionBanner
 				title="Sign up for our newsletters and alerts"
 				cta={
