@@ -56,6 +56,10 @@ export async function getServerSideProps(context: GetServerSidePropsContext) {
 			{ resolve_relations: "blogPost.author" }
 		);
 
+		if (storyResult.notFound) {
+			return storyResult;
+		}
+
 		const breadcrumbs = [
 			{ title: "News", path: "/news" },
 			{ title: "Blogs", path: "/news/blogs" },

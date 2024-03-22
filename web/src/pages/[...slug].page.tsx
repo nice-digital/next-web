@@ -67,6 +67,10 @@ export async function getServerSideProps(context: GetServerSidePropsContext) {
 			getBreadcrumbs(slug, version),
 		]);
 
+		if (storyResult.notFound) {
+			return storyResult;
+		}
+
 		const siblingPages = [];
 
 		const component = storyResult.story?.content?.component;

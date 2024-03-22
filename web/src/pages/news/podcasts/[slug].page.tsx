@@ -109,6 +109,10 @@ export async function getServerSideProps(context: GetServerSidePropsContext) {
 			version
 		);
 
+		if (storyResult.notFound) {
+			return storyResult;
+		}
+
 		const breadcrumbs = [
 			{ title: "News", path: "/news" },
 			{ title: "Podcasts", path: "/news/podcasts" },

@@ -51,6 +51,10 @@ export async function getServerSideProps(context: GetServerSidePropsContext) {
 		// Get the story and its breadcrumbs
 		const storyResult = await fetchStory(`news/articles/${slug}`, version);
 
+		if (storyResult.notFound) {
+			return storyResult;
+		}
+
 		const breadcrumbs = [
 			{ title: "News", path: "/news" },
 			{ title: "News articles", path: "/news/articles" },
