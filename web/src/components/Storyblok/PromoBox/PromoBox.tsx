@@ -14,6 +14,7 @@ import {
 	YoutubeEmbedStoryblok,
 	type PromoBoxStoryblok,
 } from "@/types/storyblok";
+import { encodeParens } from "@/utils/storyblok";
 
 import styles from "./PromoBox.module.scss";
 
@@ -56,6 +57,10 @@ export const PromoBox: React.FC<PromoBoxProps> = ({
 	// Resolve transparency
 	const transparentClass = isTransparent ? styles.transparent : undefined;
 
+	const optimisedImage = encodeParens(
+		`${image?.filename}/m/filters:quality(80)`
+	);
+
 	return (
 		<article
 			className={classnames(styles.promoBox, transparentClass, className)}
@@ -89,7 +94,7 @@ export const PromoBox: React.FC<PromoBoxProps> = ({
 						) : (
 							<div
 								className={styles.imageContainer}
-								style={{ backgroundImage: `url(${image?.filename})` }}
+								style={{ backgroundImage: `url(${optimisedImage})` }}
 							></div>
 						)}
 					</GridItem>
