@@ -192,6 +192,16 @@ const nextConfig = {
 		fiber: false,
 		includePaths: [path.join(__dirname, "node_modules/@nice-digital")],
 	},
+	images: {
+		// https://nextjs.org/docs/app/api-reference/components/image#remotepatterns
+		remotePatterns: [
+			{
+				protocol: "https",
+				hostname: "**.nice.org.uk",
+				port: "",
+			},
+		],
+	},
 };
 
 // The weird comment syntax below is a JSDoc TypeScript cast: https://edibleco.de/2UMm8nx
