@@ -1,5 +1,5 @@
 import { NextSeo } from "next-seo";
-import React from "react";
+import React, { useEffect, useRef, useState } from "react";
 import { StoryblokStory } from "storyblok-generate-ts";
 
 import { ActionBanner } from "@nice-digital/nds-action-banner";
@@ -7,6 +7,7 @@ import { Breadcrumbs, Breadcrumb } from "@nice-digital/nds-breadcrumbs";
 import { Button } from "@nice-digital/nds-button";
 import { PageHeader } from "@nice-digital/nds-page-header";
 
+import { Announcer } from "@/components/Announcer/Announcer";
 import { ErrorPageContent } from "@/components/ErrorPageContent/ErrorPageContent";
 import { FeaturedStory } from "@/components/Storyblok/News/FeaturedStory/FeaturedStory";
 import { NewsList } from "@/components/Storyblok/News/NewsList/NewsList";
@@ -34,15 +35,21 @@ export const ArticlesIndexPage = ({
 	featuredStory,
 	error,
 }: NewsArticlesProps): React.ReactElement => {
-	const focusPagination = React.useRef<HTMLDivElement>(null);
+	const focusPagination = useRef<HTMLDivElement>(null);
 
-	React.useEffect(() => {
+	const [announcement, setAnnouncement] = useState("");
+	const totalPages = Math.ceil(total / perPage);
+	useEffect(() => {
+		setAnnouncement(
+			`News article listing page, ${currentPage} of ${totalPages}`
+		);
+	}, [currentPage, totalPages]);
+
+	useEffect(() => {
 		if (focusPagination.current) {
-			focusPagination.current?.focus();
+			focusPagination.current.focus();
 		}
 	}, [currentPage]);
-
-	const totalPages = Math.ceil(total / perPage);
 
 	if (error) {
 		return <ErrorPageContent title="Error" heading={error} />;
@@ -70,14 +77,14 @@ export const ArticlesIndexPage = ({
 				<p>Sorry there are no news articles available</p>
 			) : (
 				<>
-					<div
+					{/* <div
 						role="status"
 						ref={focusPagination}
 						tabIndex={-1}
 						className="visually-hidden"
-					>
-						News article listing page, {currentPage} of {totalPages}
-					</div>
+					> */}
+					<Announcer announcement={announcement} />
+					{/* </div> */}
 					{featuredStory && <FeaturedStory story={featuredStory} />}
 					<NewsList news={stories} />
 				</>
