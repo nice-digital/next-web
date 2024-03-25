@@ -37,7 +37,7 @@ exports[`Promo box component should match snapshot 1`] = `
         >
           <div
             class="imageContainer"
-            style="background-image: url(https://placebacon.net/130/210?image=4);"
+            style="background-image: url(https://placebacon.net/130/210?image=4/m/filters:quality%2880%29);"
           />
         </div>
       </div>
