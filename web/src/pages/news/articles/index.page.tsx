@@ -40,16 +40,23 @@ export const ArticlesIndexPage = ({
 	const [announcement, setAnnouncement] = useState("");
 	const totalPages = Math.ceil(total / perPage);
 	useEffect(() => {
-		setAnnouncement(
-			`News article listing page, ${currentPage} of ${totalPages}`
-		);
-	}, [currentPage, totalPages]);
+		const announcementText = `News article listing page, ${currentPage} of ${totalPages}`;
+		setAnnouncement(announcementText);
 
-	useEffect(() => {
 		if (focusPagination.current) {
 			focusPagination.current.focus();
 		}
-	}, [currentPage]);
+
+		return () => {
+			setAnnouncement("");
+		};
+	}, [currentPage, totalPages]);
+
+	// useEffect(() => {
+	// 	if (focusPagination.current) {
+	// 		focusPagination.current.focus();
+	// 	}
+	// }, [currentPage]);
 
 	if (error) {
 		return <ErrorPageContent title="Error" heading={error} />;
@@ -77,14 +84,16 @@ export const ArticlesIndexPage = ({
 				<p>Sorry there are no news articles available</p>
 			) : (
 				<>
-					{/* <div
+					<div
 						role="status"
 						ref={focusPagination}
 						tabIndex={-1}
 						className="visually-hidden"
-					> */}
-					<Announcer announcement={announcement} />
-					{/* </div> */}
+						aria-hidden="true"
+					>
+						<Announcer announcement={announcement} />
+					</div>
+
 					{featuredStory && <FeaturedStory story={featuredStory} />}
 					<NewsList news={stories} />
 				</>
