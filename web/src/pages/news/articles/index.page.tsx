@@ -55,7 +55,6 @@ export const ArticlesIndexPage = ({
 				}
 			/>
 			<NewsListNav />
-
 			{stories.length === 0 ? (
 				<p>Sorry there are no news articles available</p>
 			) : (
