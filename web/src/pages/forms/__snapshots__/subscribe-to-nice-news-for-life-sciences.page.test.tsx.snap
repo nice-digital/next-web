@@ -95,20 +95,30 @@ exports[`LifeSciencesNewsletterForm should match snapshot 1`] = `
       data-g="12 md:12 lg:12"
     >
       <div
-        class="page-header"
+        class="page-header "
         data-component="page-header"
+        data-testid="content-start"
         id="content-start"
       >
-        <h1
-          class="page-header__heading "
+        <div
+          class="grid"
         >
-          Subscribe to NICE news for life sciences
-        </h1>
-        <p
-          class="page-header__lead"
-        >
-          Keeping those working within the life sciences sector up-to-date with important developments.
-        </p>
+          <div
+            data-component="grid-item"
+            data-g="12 md:12"
+          >
+            <h1
+              class="page-header__heading "
+            >
+              Subscribe to NICE news for life sciences
+            </h1>
+            <p
+              class="page-header__lead"
+            >
+              Keeping those working within the life sciences sector up-to-date with important developments.
+            </p>
+          </div>
+        </div>
       </div>
       <iframe
         allow="geolocation; microphone; camera"

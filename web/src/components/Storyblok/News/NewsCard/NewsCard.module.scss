@@ -1,0 +1,23 @@
+@use '@nice-digital/nds-core/scss/spacing';
+@use '@nice-digital/nds-core/scss/utils';
+@use '@nice-digital/nds-core/scss/typography';
+
+.newsCard {
+  margin-bottom: utils.rem(spacing.$large);
+}
+
+.imageContainer {
+  aspect-ratio: 16 / 9;
+  background-position: center;
+  background-size: cover;
+  display: block;
+}
+
+.heading {
+  @include typography.h5();
+  margin-top: utils.rem(spacing.$medium);
+}
+
+.date {
+  margin-left: utils.rem(spacing.$medium);
+}

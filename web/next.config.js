@@ -57,10 +57,6 @@ const commonHeaders = [
 		value: "max-age=31536000; includeSubDomains; preload",
 	},
 	{
-		key: "X-Frame-Options",
-		value: "DENY",
-	},
-	{
 		key: "X-XSS-Protection",
 		value: "1; mode=block",
 	},
@@ -76,10 +72,6 @@ const commonHeaders = [
 		key: "Referrer-Policy",
 		value: "strict-origin-when-cross-origin",
 	},
-	{
-		key: "Content-Security-Policy",
-		value: "frame-ancestors 'none'", // TODO: Add a strong CSP
-	},
 	/**
 	 * Preload external assets and preconnecting external domains via Link header
 	 */
@@ -93,6 +85,20 @@ const commonHeaders = [
 		].join(","),
 	},
 ];
+
+// Prevent emebdding this site in frames in production, but allow it in dev so we can use the Storyblok preview editor
+if (process.env.NODE_ENV === "production") {
+	commonHeaders.push(
+		{
+			key: "X-Frame-Options",
+			value: "DENY",
+		},
+		{
+			key: "Content-Security-Policy",
+			value: "frame-ancestors 'none'",
+		}
+	);
+}
 
 /**
  * @type {import('next').NextConfig}

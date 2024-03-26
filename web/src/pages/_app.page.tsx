@@ -17,6 +17,7 @@ import { Container } from "@nice-digital/nds-container";
 import { ErrorPageContent } from "@/components/ErrorPageContent/ErrorPageContent";
 import { GoogleTagManager } from "@/components/GoogleTagManager/GoogleTagManager";
 import { logger } from "@/logger";
+import { initStoryblok } from "@/utils/storyblok";
 
 import { getDefaultSeoConfig } from "./next-seo.config";
 import { publicRuntimeConfig } from "@/config";
@@ -43,20 +44,15 @@ const AppFooter: FC = () => (
 
 const inter = Inter({
 	subsets: ["latin"],
+	variable: "--sans-font-family",
 });
 
 const lora = Lora({
 	subsets: ["latin"],
+	variable: "--serif-font-family",
 });
 
-const FontStyles: FC = () => (
-	<style jsx global>{`
-		html {
-			--sans-font-family: ${inter.style.fontFamily};
-			--serif-font-family: ${lora.style.fontFamily};
-		}
-	`}</style>
-);
+initStoryblok();
 
 // eslint-disable-next-line @typescript-eslint/ban-types
 class NextWebApp extends App<{}, {}, AppState> {
@@ -94,7 +90,7 @@ class NextWebApp extends App<{}, {}, AppState> {
 	 */
 	componentDidCatch(error: Error, errorInfo: ErrorInfo): void {
 		// Global error logging (client-side only)
-		logger.error(error, errorInfo.componentStack);
+		logger.error(error, errorInfo.componentStack as string);
 
 		this.setState({ hasError: true });
 	}
@@ -167,33 +163,19 @@ class NextWebApp extends App<{}, {}, AppState> {
 			service = "standards-and-indicators";
 		}
 
-		if (this.state.hasError)
-			return (
-				<>
-					<FontStyles />
-					<DefaultSeo {...getDefaultSeoConfig(pathname)} />
-					<div ref={this.globalNavWrapperRef}>
-						<Header {...headerProps} service={service} />
-					</div>
-					<Main>
-						<Container>
-							<ErrorPageContent />
-						</Container>
-					</Main>
-					<AppFooter />
-				</>
-			);
-
 		return (
 			<>
-				<FontStyles />
 				<DefaultSeo {...getDefaultSeoConfig(pathname)} />
 				<div ref={this.globalNavWrapperRef}>
 					<Header {...headerProps} service={service} />
 				</div>
-				<Main>
+				<Main className={`${lora.variable} ${inter.variable}`}>
 					<Container>
-						<Component {...pageProps} />
+						{this.state.hasError ? (
+							<ErrorPageContent />
+						) : (
+							<Component {...pageProps} />
+						)}
 					</Container>
 				</Main>
 				<AppFooter />

@@ -1,9 +1,15 @@
 import "@testing-library/jest-dom";
 
 import { addDefaultJSONFeedMocks, axiosJSONMock } from "@/test-utils/feeds";
-//import * as matchers from "jest-extended/all";
 
+//import * as matchers from "jest-extended/all";
 //expect.extend(matchers);
+
+// Mock the storyblok connection function (but leave all other Storyblok functions in place)
+jest.mock("@/utils/storyblok", () => ({
+	...jest.requireActual("@/utils/storyblok"),
+	initStoryblok: jest.fn(),
+}));
 
 beforeEach(() => {
 	axiosJSONMock.reset();

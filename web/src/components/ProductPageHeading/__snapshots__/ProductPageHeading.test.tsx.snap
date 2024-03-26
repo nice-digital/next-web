@@ -3,44 +3,53 @@
 exports[`ProductPageHeading should match snapshot 1`] = `
 <div>
   <div
-    class="page-header"
+    class="page-header "
     data-component="page-header"
     id="content-start"
   >
-    <h1
-      class="page-header__heading page-header__heading--alt"
+    <div
+      class="grid"
     >
-      Product title
-    </h1>
-    <ul
-      class="page-header__metadata"
-    >
-      <li>
-        NICE product
-      </li>
-      <li>
-        ABC123
-      </li>
-      <li>
-        Published:
-        <time
-          datetime="2018-07-11"
+      <div
+        data-component="grid-item"
+        data-g="12 md:12"
+      >
+        <h1
+          class="page-header__heading page-header__heading--alt"
         >
-           
-          11 July 2018
-        </time>
-      </li>
-      <li>
-        Last updated:
-        <time
-          datetime="2020-10-12"
+          Product title
+        </h1>
+        <ul
+          class="page-header__metadata"
         >
-           
-           
-          12 October 2020
-        </time>
-      </li>
-    </ul>
+          <li>
+            NICE product
+          </li>
+          <li>
+            ABC123
+          </li>
+          <li>
+            Published:
+            <time
+              datetime="2018-07-11"
+            >
+               
+              11 July 2018
+            </time>
+          </li>
+          <li>
+            Last updated:
+            <time
+              datetime="2020-10-12"
+            >
+               
+               
+              12 October 2020
+            </time>
+          </li>
+        </ul>
+      </div>
+    </div>
   </div>
 </div>
 `;
