@@ -24,7 +24,7 @@ export const AuthorList = ({
 
 	return (
 		<div className={styles.authorList}>
-			<h3 className={styles.heading}>List of authors</h3>
+			<h2 className={styles.heading}>List of authors</h2>
 			{authors.map((author) => {
 				// eslint-disable-next-line @typescript-eslint/no-unused-vars
 				const { image, ...contentWithoutImage } = author.content;
@@ -33,6 +33,7 @@ export const AuthorList = ({
 						key={contentWithoutImage._uid}
 						blok={contentWithoutImage}
 						className={styles["author-list__item"]}
+						headingLevel={3}
 					/>
 				);
 			})}

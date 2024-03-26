@@ -47,7 +47,9 @@
 }
 
 .name {
+  @include typography.h4;
   margin: 0;
+  margin-top: utils.rem(spacing.$x-small);
 
   .isCardAuthor & {
     @include typography.h6;

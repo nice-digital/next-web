@@ -73,7 +73,7 @@ export const StoryblokBlogPost = ({
 		authors.length === 0 ? null : authors.length > 1 ? (
 			<AuthorList authors={authors} />
 		) : typeof blok.author[0] !== "string" ? (
-			<StoryblokAuthor blok={blok.author[0].content} />
+			<StoryblokAuthor blok={blok.author[0].content} headingLevel={2} />
 		) : null;
 
 	return (
