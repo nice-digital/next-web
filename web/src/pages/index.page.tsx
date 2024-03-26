@@ -84,6 +84,11 @@ export async function getServerSideProps(context: GetServerSidePropsContext) {
 		excluding_slugs: "news/blogs/authors/*",
 		resolve_relations: "blogPost.author",
 		per_page: 3,
+		filter_query: {
+			date: {
+				lt_date: new Date().toISOString(),
+			},
+		},
 	};
 
 	// Check if we've got a featured story - if so, we need to exclude it
