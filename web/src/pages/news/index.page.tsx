@@ -56,6 +56,7 @@ export default function NewsIndexPage({
 		<>
 			<NextSeo title={pageTitle} openGraph={{ title: pageTitle }}></NextSeo>
 			<PageHeader
+				id="content-start"
 				breadcrumbs={breadcrumbs}
 				heading={pageTitle}
 				variant="fullWidthDark"

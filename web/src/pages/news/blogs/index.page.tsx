@@ -1,5 +1,5 @@
 import { NextSeo } from "next-seo";
-import React from "react";
+import React, { useEffect, useState } from "react";
 import { StoryblokStory } from "storyblok-generate-ts";
 
 import { ActionBanner } from "@nice-digital/nds-action-banner";
@@ -7,11 +7,13 @@ import { Breadcrumbs, Breadcrumb } from "@nice-digital/nds-breadcrumbs";
 import { Button } from "@nice-digital/nds-button";
 import { PageHeader } from "@nice-digital/nds-page-header";
 
+import { Announcer } from "@/components/Announcer/Announcer";
 import { ErrorPageContent } from "@/components/ErrorPageContent/ErrorPageContent";
 import { FeaturedStory } from "@/components/Storyblok/News/FeaturedStory/FeaturedStory";
 import { NewsList } from "@/components/Storyblok/News/NewsList/NewsList";
 import { NewsListNav } from "@/components/Storyblok/News/NewsListNav/NewsListNav";
 import { NewsListPagination } from "@/components/Storyblok/News/NewsListPagination/NewsListPagination";
+import { usePaginationFocus } from "@/hooks/usePaginationFocus";
 import { NewsStory } from "@/types/News";
 import { validateRouteParams } from "@/utils/storyblok";
 
@@ -34,13 +36,34 @@ export const BlogIndexPage = ({
 	featuredStory,
 	error,
 }: BlogPostsProps): React.ReactElement => {
+	const focusPagination = usePaginationFocus();
+	const [announcement, setAnnouncement] = useState("");
+	const totalPages = Math.ceil(total / perPage);
+
+	useEffect(() => {
+		const announcementText = `Blog post listing page, ${currentPage} of ${totalPages}`;
+		setAnnouncement(announcementText);
+
+		return () => {
+			setAnnouncement("");
+		};
+	}, [currentPage, totalPages]);
+
 	if (error) {
 		return <ErrorPageContent title="Error" heading={error} />;
 	}
+
+	const PaginationFocusedElement = () => (
+		<h2 className="visually-hidden" tabIndex={-1} ref={focusPagination}>
+			Blog posts
+		</h2>
+	);
+
 	return (
 		<>
 			<NextSeo title="Blog posts" openGraph={{ title: "Blog posts" }}></NextSeo>
 			<PageHeader
+				id="content-start"
 				heading="Blog posts"
 				variant="fullWidthDark"
 				breadcrumbs={
@@ -52,6 +75,10 @@ export const BlogIndexPage = ({
 				}
 			/>
 			<NewsListNav />
+			<>
+				<Announcer announcement={announcement} />
+				<PaginationFocusedElement />
+			</>
 			{featuredStory && <FeaturedStory story={featuredStory} />}
 			<NewsList news={stories} />
 			<ActionBanner

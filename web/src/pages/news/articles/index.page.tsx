@@ -52,12 +52,6 @@ export const ArticlesIndexPage = ({
 		};
 	}, [currentPage, totalPages]);
 
-	// useEffect(() => {
-	// 	if (focusPagination.current) {
-	// 		focusPagination.current.focus();
-	// 	}
-	// }, [currentPage]);
-
 	if (error) {
 		return <ErrorPageContent title="Error" heading={error} />;
 	}
@@ -69,6 +63,7 @@ export const ArticlesIndexPage = ({
 				openGraph={{ title: "News Articles" }}
 			></NextSeo>
 			<PageHeader
+				id="content-start"
 				heading="News articles"
 				variant="fullWidthDark"
 				breadcrumbs={
@@ -84,15 +79,15 @@ export const ArticlesIndexPage = ({
 				<p>Sorry there are no news articles available</p>
 			) : (
 				<>
-					<div
-						role="status"
+					<Announcer announcement={announcement} />
+					<h2
 						ref={focusPagination}
 						tabIndex={-1}
 						className="visually-hidden"
-						aria-hidden="true"
+						aria-live="polite"
 					>
-						<Announcer announcement={announcement} />
-					</div>
+						News articles list
+					</h2>
 
 					{featuredStory && <FeaturedStory story={featuredStory} />}
 					<NewsList news={stories} />

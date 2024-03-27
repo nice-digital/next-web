@@ -41,6 +41,7 @@ export const InDepthArticleIndexPage = ({
 		<>
 			<NextSeo title="In-depth" openGraph={{ title: "In-depth" }}></NextSeo>
 			<PageHeader
+				id="content-start"
 				heading="In-depth"
 				variant="fullWidthDark"
 				lead="Our in-depth articles explore how our work is making a real difference to people's lives."
