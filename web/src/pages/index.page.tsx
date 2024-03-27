@@ -15,6 +15,7 @@ import { NestedRichText } from "@/components/Storyblok/NestedRichText/NestedRich
 import { PromoBox } from "@/components/Storyblok/PromoBox/PromoBox";
 import { Spotlight } from "@/components/Storyblok/Spotlight/Spotlight";
 import { StoryblokActionBanner } from "@/components/Storyblok/StoryblokActionBanner/StoryblokActionBanner";
+import { StoryblokHero } from "@/components/Storyblok/StoryblokHero/StoryblokHero";
 import { type NewsStory } from "@/types/News";
 import {
 	type HomepageStoryblok,
@@ -45,6 +46,7 @@ export default function Home({
 
 	setComponents({
 		actionBanner: StoryblokActionBanner,
+		hero: StoryblokHero,
 		homepage: Homepage,
 		homepageHero: HomepageHero,
 		metadata: Metadata,
