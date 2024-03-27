@@ -1,5 +1,5 @@
 import { NextSeo } from "next-seo";
-import React from "react";
+import React, { useEffect, useState } from "react";
 import { StoryblokStory } from "storyblok-generate-ts";
 
 import { ActionBanner } from "@nice-digital/nds-action-banner";
@@ -9,10 +9,12 @@ import { Grid, GridItem } from "@nice-digital/nds-grid";
 import { PageHeader } from "@nice-digital/nds-page-header";
 import { Panel } from "@nice-digital/nds-panel";
 
+import { Announcer } from "@/components/Announcer/Announcer";
 import { ErrorPageContent } from "@/components/ErrorPageContent/ErrorPageContent";
 import { NewsList } from "@/components/Storyblok/News/NewsList/NewsList";
 import { NewsListNav } from "@/components/Storyblok/News/NewsListNav/NewsListNav";
 import { NewsListPagination } from "@/components/Storyblok/News/NewsListPagination/NewsListPagination";
+import { PaginationFocusedElement } from "@/components/Storyblok/News/NewsListPaginationFocus/NewsListPaginationFocus";
 import { NewsStory } from "@/types/News";
 import { validateRouteParams } from "@/utils/storyblok";
 
@@ -33,6 +35,18 @@ export const PodcastIndexPage = ({
 	perPage,
 	error,
 }: PodcastPostsProps): React.ReactElement => {
+	const [announcement, setAnnouncement] = useState("");
+	const totalPages = Math.ceil(total / perPage);
+
+	useEffect(() => {
+		const announcementText = `Podcast listing page, ${currentPage} of ${totalPages}`;
+		setAnnouncement(announcementText);
+
+		return () => {
+			setAnnouncement("");
+		};
+	}, [currentPage, totalPages]);
+
 	if (error) {
 		return <ErrorPageContent title="Error" heading={error} />;
 	}
@@ -40,6 +54,7 @@ export const PodcastIndexPage = ({
 		<>
 			<NextSeo title="Podcasts" openGraph={{ title: "Podcasts" }}></NextSeo>
 			<PageHeader
+				id="content-start"
 				heading="Podcasts"
 				variant="fullWidthDark"
 				lead="Our NICE talks podcasts bring you the real life experience of people working within NHS, public health and social care."
@@ -54,6 +69,8 @@ export const PodcastIndexPage = ({
 			<NewsListNav />
 			<Grid gutter="loose">
 				<GridItem cols={12} md={{ cols: 7 }}>
+					<Announcer announcement={announcement} />
+					<PaginationFocusedElement innerText="Podcast list" />
 					<NewsList news={stories} showImage={false} />
 				</GridItem>
 				<GridItem cols={12} md={{ cols: 4, push: 1 }}>

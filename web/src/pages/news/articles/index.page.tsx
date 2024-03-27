@@ -1,5 +1,5 @@
 import { NextSeo } from "next-seo";
-import React, { useEffect, useRef, useState } from "react";
+import React, { useEffect, useState } from "react";
 import { StoryblokStory } from "storyblok-generate-ts";
 
 import { ActionBanner } from "@nice-digital/nds-action-banner";
@@ -13,6 +13,7 @@ import { FeaturedStory } from "@/components/Storyblok/News/FeaturedStory/Feature
 import { NewsList } from "@/components/Storyblok/News/NewsList/NewsList";
 import { NewsListNav } from "@/components/Storyblok/News/NewsListNav/NewsListNav";
 import { NewsListPagination } from "@/components/Storyblok/News/NewsListPagination/NewsListPagination";
+import { PaginationFocusedElement } from "@/components/Storyblok/News/NewsListPaginationFocus/NewsListPaginationFocus";
 import { NewsStory } from "@/types/News";
 import { validateRouteParams } from "@/utils/storyblok";
 
@@ -35,17 +36,11 @@ export const ArticlesIndexPage = ({
 	featuredStory,
 	error,
 }: NewsArticlesProps): React.ReactElement => {
-	const focusPagination = useRef<HTMLDivElement>(null);
-
 	const [announcement, setAnnouncement] = useState("");
 	const totalPages = Math.ceil(total / perPage);
 	useEffect(() => {
 		const announcementText = `News article listing page, ${currentPage} of ${totalPages}`;
 		setAnnouncement(announcementText);
-
-		if (focusPagination.current) {
-			focusPagination.current.focus();
-		}
 
 		return () => {
 			setAnnouncement("");
@@ -80,14 +75,7 @@ export const ArticlesIndexPage = ({
 			) : (
 				<>
 					<Announcer announcement={announcement} />
-					<h2
-						ref={focusPagination}
-						tabIndex={-1}
-						className="visually-hidden"
-						aria-live="polite"
-					>
-						News articles list
-					</h2>
+					<PaginationFocusedElement innerText="News article list" />
 
 					{featuredStory && <FeaturedStory story={featuredStory} />}
 					<NewsList news={stories} />

@@ -13,7 +13,7 @@ import { FeaturedStory } from "@/components/Storyblok/News/FeaturedStory/Feature
 import { NewsList } from "@/components/Storyblok/News/NewsList/NewsList";
 import { NewsListNav } from "@/components/Storyblok/News/NewsListNav/NewsListNav";
 import { NewsListPagination } from "@/components/Storyblok/News/NewsListPagination/NewsListPagination";
-import { usePaginationFocus } from "@/hooks/usePaginationFocus";
+import { PaginationFocusedElement } from "@/components/Storyblok/News/NewsListPaginationFocus/NewsListPaginationFocus";
 import { NewsStory } from "@/types/News";
 import { validateRouteParams } from "@/utils/storyblok";
 
@@ -36,7 +36,6 @@ export const BlogIndexPage = ({
 	featuredStory,
 	error,
 }: BlogPostsProps): React.ReactElement => {
-	const focusPagination = usePaginationFocus();
 	const [announcement, setAnnouncement] = useState("");
 	const totalPages = Math.ceil(total / perPage);
 
@@ -52,12 +51,6 @@ export const BlogIndexPage = ({
 	if (error) {
 		return <ErrorPageContent title="Error" heading={error} />;
 	}
-
-	const PaginationFocusedElement = () => (
-		<h2 className="visually-hidden" tabIndex={-1} ref={focusPagination}>
-			Blog posts
-		</h2>
-	);
 
 	return (
 		<>
@@ -77,7 +70,7 @@ export const BlogIndexPage = ({
 			<NewsListNav />
 			<>
 				<Announcer announcement={announcement} />
-				<PaginationFocusedElement />
+				<PaginationFocusedElement innerText="Blog post list" />
 			</>
 			{featuredStory && <FeaturedStory story={featuredStory} />}
 			<NewsList news={stories} />
