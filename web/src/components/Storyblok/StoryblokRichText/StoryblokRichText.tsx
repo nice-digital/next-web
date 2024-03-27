@@ -1,6 +1,12 @@
 import { StoryblokComponent } from "@storyblok/react";
-import React, { Children, isValidElement } from "react";
+import React, {
+	createElement,
+	ReactNode,
+	Children,
+	isValidElement,
+} from "react";
 import {
+	NODE_HEADING,
 	NODE_IMAGE,
 	NODE_PARAGRAPH,
 	NODE_QUOTE,
@@ -29,6 +35,22 @@ export const StoryblokRichText: React.FC<StoryblokRichTextProps> = ({
 		>
 			{render(content, {
 				nodeResolvers: {
+					[NODE_HEADING]: (
+						children: ReactNode,
+						props: { level: 1 | 2 | 3 | 4 | 5 | 6 }
+					) => {
+						// if the heading is empty, don't render it
+						if (children === null) {
+							return null;
+						}
+						const { level } = props;
+
+						return createElement(
+							`h${level}`,
+							{ className: `sbRichtextHeading${level}` },
+							children
+						);
+					},
 					[NODE_PARAGRAPH]: (children) => {
 						// stops images being wrapped in a paragraph tag
 						if (Children.count(children) === 1) {
