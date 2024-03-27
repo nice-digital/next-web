@@ -14,7 +14,7 @@ import {
 	YoutubeEmbedStoryblok,
 	type PromoBoxStoryblok,
 } from "@/types/storyblok";
-import { encodeParens } from "@/utils/storyblok";
+import { optimiseImage } from "@/utils/storyblok";
 
 import styles from "./PromoBox.module.scss";
 
@@ -57,8 +57,8 @@ export const PromoBox: React.FC<PromoBoxProps> = ({
 	// Resolve transparency
 	const transparentClass = isTransparent ? styles.transparent : undefined;
 
-	const optimisedImage = encodeParens(
-		`${image?.filename}/m/filters:quality(80)`
+	const optimisedImage = optimiseImage(
+		{filename:image?.filename}
 	);
 
 	return (

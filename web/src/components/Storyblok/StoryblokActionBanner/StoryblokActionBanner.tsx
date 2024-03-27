@@ -2,7 +2,7 @@ import { ActionBanner } from "@nice-digital/nds-action-banner";
 
 import { StoryblokButtonLink } from "@/components/Storyblok/StoryblokButtonLink/StoryblokButtonLink";
 import { ActionBannerStoryblok, RichtextStoryblok } from "@/types/storyblok";
-import { encodeParens } from "@/utils/storyblok";
+import { optimiseImage } from "@/utils/storyblok";
 
 import { StoryblokRichText } from "../StoryblokRichText/StoryblokRichText";
 
@@ -22,7 +22,7 @@ export const StoryblokActionBanner: React.FC<StoryblokActionBannerProps> = ({
 			title={heading}
 			variant="fullWidth"
 			cta={<StoryblokButtonLink button={cta[0]} />}
-			image={encodeParens(`"${image.filename}/m/899x0/filters:quality(80)"`)}
+			image={optimiseImage({filename:image.filename,size: "899x0"})}
 			className={className}
 		>
 			<StoryblokRichText content={body as RichtextStoryblok} />

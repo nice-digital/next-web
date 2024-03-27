@@ -388,3 +388,23 @@ export const getNewsType = (component: string): string => {
 // this is a workaround for a bug for how we handle storyblok image service in the frontend
 export const encodeParens = (str: string): string =>
 	str.replace(/\(/g, "%28").replace(/\)/g, "%29");
+
+type OptimiseImageParams = {
+	filename: string | undefined;
+	size?: string | undefined;
+	quality?: number;
+};
+
+export const optimiseImage = ({
+	filename,
+	size,
+	quality = 80,
+}: OptimiseImageParams): string => {
+	const prefix = "/m/";
+	const sizeSegment = size ? `${size}/` : "";
+	const filtersSegment = quality ? `filters:quality(${quality})` : "";
+	const assembledString = `${filename}${prefix}${sizeSegment}${filtersSegment}`;
+
+	console.log("expectedPath: ", encodeParens(assembledString));
+	return encodeParens(assembledString);
+};

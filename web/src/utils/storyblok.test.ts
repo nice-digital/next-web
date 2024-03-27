@@ -8,6 +8,7 @@ import {
 	getSlugFromParams,
 	getAdditionalMetaTags,
 	encodeParens,
+	optimiseImage,
 } from "./storyblok";
 
 describe("Storyblok utils", () => {
@@ -128,6 +129,40 @@ describe("Storyblok utils", () => {
 			expect(encodeParens("some string without parens")).toBe(
 				"some string without parens"
 			);
+		});
+	});
+
+	describe("optimiseImage", () => {
+		it("generates correct path with default quality", () => {
+			const filename = "imagefilename.jpg";
+			const expectedPath = "imagefilename.jpg/m/filters:quality%2880%29";
+			const result = optimiseImage({ filename });
+			expect(result).toEqual(expectedPath);
+		});
+
+		it("generates correct path with specified size and default quality", () => {
+			const filename = "imagefilename.jpg";
+			const size = "400x0";
+			const expectedPath = "imagefilename.jpg/m/400x0/filters:quality%2880%29";
+			const result = optimiseImage({ filename, size });
+			expect(result).toEqual(expectedPath);
+		});
+
+		it("generates correct path with specified quality", () => {
+			const filename = "imagefilename.jpg";
+			const quality = 60;
+			const expectedPath = "imagefilename.jpg/m/filters:quality%2860%29";
+			const result = optimiseImage({ filename, quality });
+			expect(result).toEqual(expectedPath);
+		});
+
+		it("generates correct path with specified size and quality", () => {
+			const filename = "imagefilename.jpg";
+			const size = "400x0";
+			const quality = 60;
+			const expectedPath = "imagefilename.jpg/m/400x0/filters:quality%2860%29";
+			const result = optimiseImage({ filename, size, quality });
+			expect(result).toEqual(expectedPath);
 		});
 	});
 });
