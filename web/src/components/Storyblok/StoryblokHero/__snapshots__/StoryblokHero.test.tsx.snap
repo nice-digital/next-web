@@ -98,7 +98,7 @@ exports[`Storyblok Hero should match snapshot with breadcrumbs 1`] = `
         </div>
         <div
           class="hero__image-container"
-          style="background-image: url(https://placebacon.net/300/210?image=1/m/);"
+          style="background-image: url(https://placebacon.net/300/210?image=1/m/filters:quality%2880%29);"
         />
       </div>
     </div>
@@ -134,7 +134,7 @@ exports[`Storyblok Hero should match snapshot without breadcrumbs 1`] = `
         </div>
         <div
           class="hero__image-container"
-          style="background-image: url(https://placebacon.net/300/210?image=1/m/);"
+          style="background-image: url(https://placebacon.net/300/210?image=1/m/filters:quality%2880%29);"
         />
       </div>
     </div>
