@@ -1,0 +1,7 @@
+@use '@nice-digital/nds-core/scss/spacing';
+@use '@nice-digital/nds-core/scss/utils';
+
+.footer {
+  display: flex;
+  gap: utils.rem(spacing.$medium);
+}

@@ -1,0 +1,13 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`SoundCloud embed component should match snapshot 1`] = `
+<div>
+  <iframe
+    frameborder="no"
+    height="200"
+    scrolling="no"
+    src="https://w.soundcloud.com/player/?url=https%3A//api.soundcloud.com/tracks/787280485&color=%23ff5500&auto_play=false&hide_related=true&show_comments=false&show_user=true&show_reposts=false&show_teaser=true&visual=true"
+    width="100%"
+  />
+</div>
+`;

@@ -30,10 +30,6 @@ describe("next.config.js", () => {
 		    "value": "max-age=31536000; includeSubDomains; preload",
 		  },
 		  Object {
-		    "key": "X-Frame-Options",
-		    "value": "DENY",
-		  },
-		  Object {
 		    "key": "X-XSS-Protection",
 		    "value": "1; mode=block",
 		  },
@@ -48,10 +44,6 @@ describe("next.config.js", () => {
 		  Object {
 		    "key": "Referrer-Policy",
 		    "value": "strict-origin-when-cross-origin",
-		  },
-		  Object {
-		    "key": "Content-Security-Policy",
-		    "value": "frame-ancestors 'none'",
 		  },
 		  Object {
 		    "key": "Link",

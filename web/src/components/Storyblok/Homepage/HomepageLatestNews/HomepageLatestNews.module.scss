@@ -1,0 +1,11 @@
+@use '@nice-digital/nds-core/scss/spacing';
+@use '@nice-digital/nds-core/scss/utils';
+@use '~/styles/spacing' as *;
+
+.latestNews {
+  margin-bottom: $homepage-large-spacing;
+}
+
+.title {
+  margin: 0 0 utils.rem(spacing.$x-large);
+}

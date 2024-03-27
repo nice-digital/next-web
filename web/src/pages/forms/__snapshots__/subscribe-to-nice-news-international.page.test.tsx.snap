@@ -95,20 +95,30 @@ exports[`NewsInternationalNewsletterForm should match snapshot 1`] = `
       data-g="12 md:12 lg:12"
     >
       <div
-        class="page-header"
+        class="page-header "
         data-component="page-header"
+        data-testid="content-start"
         id="content-start"
       >
-        <h1
-          class="page-header__heading "
+        <div
+          class="grid"
         >
-          Subscribe to NICE news international
-        </h1>
-        <p
-          class="page-header__lead"
-        >
-          Keeping you up-to-date with our worldwide collaborations, opportunities and developments.
-        </p>
+          <div
+            data-component="grid-item"
+            data-g="12 md:12"
+          >
+            <h1
+              class="page-header__heading "
+            >
+              Subscribe to NICE news international
+            </h1>
+            <p
+              class="page-header__lead"
+            >
+              Keeping you up-to-date with our worldwide collaborations, opportunities and developments.
+            </p>
+          </div>
+        </div>
       </div>
       <iframe
         allow="geolocation; microphone; camera"
