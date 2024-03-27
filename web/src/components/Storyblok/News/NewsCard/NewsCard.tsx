@@ -37,7 +37,7 @@ export const NewsCard: React.FC<NewsCardProps> = ({
 	// Fall back to podcast placeholder image if none is supplied
 	// Updated the content image to use the new image service for optimised loading
 	const image = content.image?.filename
-		? optimiseImage({filename:content.image?.filename, size:"868x0"})
+		? optimiseImage({ filename: content.image?.filename, size: "868x0" })
 		: defaultPodcastImage;
 
 	const absolute_full_slug = `/${full_slug}`;
