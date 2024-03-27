@@ -181,6 +181,7 @@ resource "aws_ecs_service" "nextweb-ecs-service" {
     container_name   = "nextweb-container"
     container_port   = 3000
   }
+}
 
 resource "aws_cloudwatch_log_group" "ecs_logs" {
   name = "/ecs/my-application-logs"
