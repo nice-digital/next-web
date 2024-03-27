@@ -1,7 +1,21 @@
-import { type ISbStoryData, StoryblokComponent } from "@storyblok/react";
+import {
+	type ISbStoryData,
+	StoryblokComponent,
+	setComponents,
+} from "@storyblok/react";
 import { NextSeo } from "next-seo";
 import React, { useMemo } from "react";
 
+import { Blockquote } from "@/components/Storyblok/Blockquote/Blockquote";
+import { CardGrid } from "@/components/Storyblok/CardGrid/CardGrid";
+import { CategoryNavigation } from "@/components/Storyblok/CategoryNavigation/CategoryNavigation";
+import { InfoPage } from "@/components/Storyblok/InfoPage/InfoPage";
+import { Metadata } from "@/components/Storyblok/Metadata/Metadata";
+import { NestedRichText } from "@/components/Storyblok/NestedRichText/NestedRichText";
+import { StoryblokHero } from "@/components/Storyblok/StoryblokHero/StoryblokHero";
+import { StoryblokIframe } from "@/components/Storyblok/StoryblokIframe/StoryblokIframe";
+import { StoryblokPageHeader } from "@/components/Storyblok/StoryblokPageHeader/StoryblokPageHeader";
+import { StoryblokYoutubeEmbed } from "@/components/Storyblok/StoryblokYoutubeEmbed/StoryblokYoutubeEmbed";
 import { type Breadcrumb } from "@/types/Breadcrumb";
 import {
 	CategoryNavigationStoryblok,
@@ -21,17 +35,44 @@ interface SlugCatchAllProps {
 	story: ISbStoryData;
 	breadcrumbs: Breadcrumb[];
 	siblingPages?: string[]; // Eventually this will be an array of pages
+	component: string;
 }
 
 export default function SlugCatchAll({
 	story,
 	breadcrumbs,
 	siblingPages,
+	component,
 }: SlugCatchAllProps): React.ReactElement {
 	const additionalMetaTags = useMemo(
 		() => getAdditionalMetaTags(story),
 		[story]
 	);
+
+	const commonComponents = {
+		cardGrid: CardGrid,
+		metadata: Metadata,
+		pageHeader: StoryblokPageHeader,
+	};
+
+	const infoPageComponents = {
+		hero: StoryblokHero,
+		iframe: StoryblokIframe,
+		infoPage: InfoPage,
+		nestedRichText: NestedRichText,
+		quote: Blockquote,
+		youtubeEmbed: StoryblokYoutubeEmbed,
+	};
+
+	const components = {
+		...commonComponents,
+		...(component === "infoPage"
+			? infoPageComponents
+			: { categoryNavigation: CategoryNavigation }),
+	};
+
+	setComponents(components);
+
 	const title = story.name;
 
 	return (
@@ -67,6 +108,9 @@ export async function getServerSideProps(context: GetServerSidePropsContext) {
 			getBreadcrumbs(slug, version),
 		]);
 
+		// will return a 404 if the story is not found
+		if ("notFound" in storyResult) return storyResult;
+
 		const siblingPages = [];
 
 		const component = storyResult.story?.content?.component;
@@ -80,6 +124,7 @@ export async function getServerSideProps(context: GetServerSidePropsContext) {
 				...storyResult,
 				breadcrumbs,
 				siblingPages,
+				component,
 			},
 		};
 
