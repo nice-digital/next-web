@@ -271,19 +271,29 @@ exports[`Homepage should match snapshot 1`] = `
             class="storyblokRichTextWrapper"
             data-testid="storyblok-rich-text"
           >
-            <h2>
+            <h2
+              class="sbRichtextHeading2"
+            >
               A mock h2 heading in a rich text field
             </h2>
-            <h3>
+            <h3
+              class="sbRichtextHeading3"
+            >
               A mock h3 heading
             </h3>
-            <h4>
+            <h4
+              class="sbRichtextHeading4"
+            >
               A mock h4 heading
             </h4>
-            <h5>
+            <h5
+              class="sbRichtextHeading5"
+            >
               A mock h5 heading
             </h5>
-            <h6>
+            <h6
+              class="sbRichtextHeading6"
+            >
               A mock h6 heading
             </h6>
             <p>
