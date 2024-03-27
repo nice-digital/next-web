@@ -29,7 +29,7 @@ export const StoryblokYoutubeEmbed: React.FC<StoryblokYoutubeEmbedProps> = ({
 			aspectWidth={16}
 			webp={true}
 			playlist={false}
-			params={"disablekb=0&rel=0&enablejsapi=0&autoplay=1"}
+			params={"disablekb=0&rel=0&enablejsapi=1&autoplay=1"}
 			rel="0"
 			cookie={true}
 		/>

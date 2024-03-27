@@ -1,6 +1,4 @@
-import { StoryblokComponent } from "@storyblok/react";
 import { render, screen } from "@testing-library/react";
-import { StoryblokStory } from "storyblok-generate-ts";
 
 import { AuthorStoryblok } from "@/types/storyblok";
 

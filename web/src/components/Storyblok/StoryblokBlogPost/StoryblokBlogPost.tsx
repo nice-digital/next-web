@@ -1,7 +1,6 @@
 import { debounce } from "lodash";
 import React, { useEffect, useRef } from "react";
 import { StoryblokStory } from "storyblok-generate-ts";
-import { StoryblokRichtext } from "storyblok-rich-text-react-renderer";
 
 import { Breadcrumbs, Breadcrumb } from "@nice-digital/nds-breadcrumbs";
 import { Grid, GridItem } from "@nice-digital/nds-grid";
