@@ -57,9 +57,7 @@ export const PromoBox: React.FC<PromoBoxProps> = ({
 	// Resolve transparency
 	const transparentClass = isTransparent ? styles.transparent : undefined;
 
-	const optimisedImage = optimiseImage(
-		{filename:image?.filename}
-	);
+	const optimisedImage = optimiseImage({ filename: image?.filename });
 
 	return (
 		<article

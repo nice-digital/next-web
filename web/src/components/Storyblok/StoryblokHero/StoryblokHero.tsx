@@ -27,7 +27,7 @@ export const StoryblokHero = ({
 		</Breadcrumbs>
 	) : undefined;
 
-	const optimisedImage = optimiseImage({filename:image?.filename});
+	const optimisedImage = optimiseImage({ filename: image?.filename });
 	const imageUrl = optimisedImage || undefined;
 
 	const action = cta?.length ? (

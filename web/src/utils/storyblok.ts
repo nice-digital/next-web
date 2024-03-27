@@ -8,8 +8,8 @@ import {
 	type ISbError,
 	type ISbStoryData,
 } from "@storyblok/react";
-import { type MetaTag } from "next-seo/lib/types";
 import { Redirect } from "next/types";
+import { type MetaTag } from "next-seo/lib/types";
 
 import { logger } from "@/logger";
 import { type Breadcrumb } from "@/types/Breadcrumb";
@@ -405,6 +405,5 @@ export const optimiseImage = ({
 	const filtersSegment = quality ? `filters:quality(${quality})` : "";
 	const assembledString = `${filename}${prefix}${sizeSegment}${filtersSegment}`;
 
-	console.log("expectedPath: ", encodeParens(assembledString));
 	return encodeParens(assembledString);
 };

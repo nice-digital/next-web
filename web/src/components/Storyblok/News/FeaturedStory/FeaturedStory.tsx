@@ -41,7 +41,7 @@ export const FeaturedStory: React.FC<FeaturedStoryProps> = ({
 
 	// Fall back to podcast placeholder image if none is supplied
 	const image =
-		optimiseImage({filename:content.image?.filename, size:"868x0"}) ||
+		optimiseImage({ filename: content.image?.filename, size: "868x0" }) ||
 		defaultPodcastImage;
 
 	return (

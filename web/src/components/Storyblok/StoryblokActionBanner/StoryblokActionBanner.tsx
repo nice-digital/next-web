@@ -22,7 +22,7 @@ export const StoryblokActionBanner: React.FC<StoryblokActionBannerProps> = ({
 			title={heading}
 			variant="fullWidth"
 			cta={<StoryblokButtonLink button={cta[0]} />}
-			image={optimiseImage({filename:image.filename,size: "899x0"})}
+			image={optimiseImage({ filename: image.filename, size: "899x0" })}
 			className={className}
 		>
 			<StoryblokRichText content={body as RichtextStoryblok} />
