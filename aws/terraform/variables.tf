@@ -31,3 +31,9 @@ variable "load_balancer_tg" {
 variable "node_env" {
   type    = string
 }
+variable "resource_cpu" {
+  type    = number
+}
+variable "resource_mem" {
+  type    = number
+}

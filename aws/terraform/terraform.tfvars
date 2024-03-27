@@ -8,3 +8,5 @@ nextweb_ecs_subnets = [#{terraform_nextweb_ecs_subnets}]
 nextweb_ecs_sg = [#{terraform_nextweb_ecs_sg}]
 load_balancer_tg = "#{terraform_load_balancer_tg}"
 node_env = "#{terraform_node_env}"
+resource_cpu = "#{terraform_resource_cpu}"
+resource_mem = "#{terraform_resource_mem}"
