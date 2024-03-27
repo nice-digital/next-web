@@ -6,8 +6,8 @@
     "dev": "cross-env NODE_OPTIONS=\"-r next-logger/presets/next-only --inspect\" next dev -p 4000 | pino-pretty",
     "build": "next build",
     "postbuild": "next-sitemap",
-    "start": "next start",
-    "host": "npm start | pino-mq -c .pino-mqrc.json",
+    "start": "next start | pino-mq -c ./config/pino-mqrc.json",
+    "host": "npm start | pino-mq -c ./config/pino-mqrc.json",
     "test": "cd .. && npm run test -- --selectProjects web"
   },
   "repository": {
