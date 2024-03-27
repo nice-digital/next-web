@@ -37,3 +37,6 @@ variable "resource_cpu" {
 variable "resource_mem" {
   type    = number
 }
+variable "cloudwatchlog_policy" {
+	type   = string
+}

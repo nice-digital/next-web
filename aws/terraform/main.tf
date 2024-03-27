@@ -89,7 +89,7 @@ resource "aws_ecs_task_definition" "nextweb-main-task" {
       logConfiguration = {
         logDriver = "awslogs"
         options = {
-          awslogs-group         = aws_cloudwatch_log_group.ecs_logs.name
+          awslogs-group         = "/ecs/${local.name}-logs"
           awslogs-region        = "eu-west-1"
           awslogs-stream-prefix = "ecs"
         }
@@ -131,32 +131,10 @@ resource "aws_iam_role" "ecs_task_execution_role" {
   })
 }
 
-resource "aws_iam_policy" "cloudwatch_logs_policy" {
-  name        = "cloudwatch_logs_policy"
-  path        = "/"
-  description = "Allow ECS tasks to write logs to CloudWatch"
-
-  policy = jsonencode({
-    Version = "2012-10-17"
-    Statement = [
-      {
-        Action = [
-          "logs:CreateLogStream",
-          "logs:PutLogEvents",
-        ],
-        Resource = "arn:aws:logs:*:*:*",
-        Effect   = "Allow"
-      },
-    ]
-  })
-}
-
 resource "aws_iam_role_policy_attachment" "ecs_logs" {
   role       = aws_iam_role.ecs_task_execution_role.name
-  policy_arn = aws_iam_policy.cloudwatch_logs_policy.arn
+  policy_arn = var.cloudwatchlog_policy
 }
-
-
 
 resource "aws_iam_role_policy_attachment" "ecs_task_execution_role_policy" {
   role       = aws_iam_role.ecs_task_execution_role.name
@@ -184,6 +162,6 @@ resource "aws_ecs_service" "nextweb-ecs-service" {
 }
 
 resource "aws_cloudwatch_log_group" "ecs_logs" {
-  name = "/ecs/my-application-logs"
+  name = "/ecs/${local.name}-logs"
   retention_in_days = 30
 }
