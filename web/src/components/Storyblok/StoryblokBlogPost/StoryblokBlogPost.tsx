@@ -1,7 +1,6 @@
 import { debounce } from "lodash";
 import React, { useEffect, useRef } from "react";
 import { StoryblokStory } from "storyblok-generate-ts";
-import { StoryblokRichtext } from "storyblok-rich-text-react-renderer";
 
 import { Breadcrumbs, Breadcrumb } from "@nice-digital/nds-breadcrumbs";
 import { Grid, GridItem } from "@nice-digital/nds-grid";
@@ -73,7 +72,7 @@ export const StoryblokBlogPost = ({
 		authors.length === 0 ? null : authors.length > 1 ? (
 			<AuthorList authors={authors} />
 		) : typeof blok.author[0] !== "string" ? (
-			<StoryblokAuthor blok={blok.author[0].content} />
+			<StoryblokAuthor blok={blok.author[0].content} headingLevel={2} />
 		) : null;
 
 	return (

@@ -8,6 +8,9 @@ import { addDefaultJSONFeedMocks, axiosJSONMock } from "@/test-utils/feeds";
 // Mock the storyblok connection function (but leave all other Storyblok functions in place)
 jest.mock("@/utils/storyblok", () => ({
 	...jest.requireActual("@/utils/storyblok"),
+}));
+
+jest.mock("@/utils/initStoryblok", () => ({
 	initStoryblok: jest.fn(),
 }));
 

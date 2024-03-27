@@ -1,8 +1,21 @@
-import { type ISbStoriesParams, StoryblokComponent } from "@storyblok/react";
+import {
+	type ISbStoriesParams,
+	StoryblokComponent,
+	setComponents,
+} from "@storyblok/react";
 import { NextSeo } from "next-seo";
 import React, { useMemo } from "react";
 import { StoryblokStory } from "storyblok-generate-ts";
 
+import { CardGrid } from "@/components/Storyblok/CardGrid/CardGrid";
+import { Homepage } from "@/components/Storyblok/Homepage/Homepage";
+import { HomepageHero } from "@/components/Storyblok/Homepage/HomepageHero/HomepageHero";
+import { Metadata } from "@/components/Storyblok/Metadata/Metadata";
+import { NestedRichText } from "@/components/Storyblok/NestedRichText/NestedRichText";
+import { PromoBox } from "@/components/Storyblok/PromoBox/PromoBox";
+import { Spotlight } from "@/components/Storyblok/Spotlight/Spotlight";
+import { StoryblokActionBanner } from "@/components/Storyblok/StoryblokActionBanner/StoryblokActionBanner";
+import { StoryblokHero } from "@/components/Storyblok/StoryblokHero/StoryblokHero";
 import { type NewsStory } from "@/types/News";
 import {
 	type HomepageStoryblok,
@@ -30,6 +43,18 @@ export default function Home({
 		() => getAdditionalMetaTags(story),
 		[story]
 	);
+
+	setComponents({
+		actionBanner: StoryblokActionBanner,
+		hero: StoryblokHero,
+		homepage: Homepage,
+		homepageHero: HomepageHero,
+		metadata: Metadata,
+		nestedRichText: NestedRichText,
+		promoBox: PromoBox,
+		spotlight: Spotlight,
+		cardGrid: CardGrid,
+	});
 
 	return (
 		<>
@@ -59,6 +84,11 @@ export async function getServerSideProps(context: GetServerSidePropsContext) {
 		excluding_slugs: "news/blogs/authors/*",
 		resolve_relations: "blogPost.author",
 		per_page: 3,
+		filter_query: {
+			date: {
+				lt_date: new Date().toISOString(),
+			},
+		},
 	};
 
 	// Check if we've got a featured story - if so, we need to exclude it

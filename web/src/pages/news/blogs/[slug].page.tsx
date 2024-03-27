@@ -1,7 +1,15 @@
-import { type ISbStoryData, StoryblokComponent } from "@storyblok/react";
+import {
+	type ISbStoryData,
+	StoryblokComponent,
+	setComponents,
+} from "@storyblok/react";
 import { NextSeo } from "next-seo";
 import React, { useMemo } from "react";
 
+import { Blockquote } from "@/components/Storyblok/Blockquote/Blockquote";
+import { StoryblokBlogPost } from "@/components/Storyblok/StoryblokBlogPost/StoryblokBlogPost";
+import { StoryblokIframe } from "@/components/Storyblok/StoryblokIframe/StoryblokIframe";
+import { StoryblokYoutubeEmbed } from "@/components/Storyblok/StoryblokYoutubeEmbed/StoryblokYoutubeEmbed";
 import { type Breadcrumb } from "@/types/Breadcrumb";
 import { BlogPostStoryblok } from "@/types/storyblok";
 import {
@@ -26,6 +34,13 @@ export default function BlogPostPage({
 		() => getAdditionalMetaTags(story),
 		[story]
 	);
+
+	setComponents({
+		blogPost: StoryblokBlogPost,
+		quote: Blockquote,
+		youtubeEmbed: StoryblokYoutubeEmbed,
+		iframe: StoryblokIframe,
+	});
 
 	const title = story.name;
 

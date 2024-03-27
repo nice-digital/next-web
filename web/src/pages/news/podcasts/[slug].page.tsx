@@ -17,6 +17,7 @@ import {
 	getSlugFromParams,
 	getAdditionalMetaTags,
 	defaultPodcastImage,
+	optimiseImage,
 } from "@/utils/storyblok";
 
 import styles from "./podcast.module.scss";
@@ -40,8 +41,9 @@ export default function PodcastPage({
 	const { name, content } = story;
 	const { date, description, soundcloudEmbedID } = content;
 
+	const optimisedImage = optimiseImage({ filename: content.image?.filename });
 	// Fall back to podcast placeholder image if none is supplied
-	const image = content.image?.filename || defaultPodcastImage;
+	const image = optimisedImage || defaultPodcastImage;
 
 	const BreadcrumbComponent = breadcrumbs?.length ? (
 		<Breadcrumbs>
