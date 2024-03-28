@@ -12,6 +12,8 @@ import { FeaturedStory } from "@/components/Storyblok/News/FeaturedStory/Feature
 import { NewsList } from "@/components/Storyblok/News/NewsList/NewsList";
 import { NewsListNav } from "@/components/Storyblok/News/NewsListNav/NewsListNav";
 import { NewsListPagination } from "@/components/Storyblok/News/NewsListPagination/NewsListPagination";
+import { NewsListPaginationAnnouncer } from "@/components/Storyblok/News/NewsListPaginationAnnouncer/NewsListPaginationAnnouncer";
+import { PaginationFocusedElement } from "@/components/Storyblok/News/NewsListPaginationFocus/NewsListPaginationFocus";
 import { NewsStory } from "@/types/News";
 import { validateRouteParams } from "@/utils/storyblok";
 
@@ -41,6 +43,7 @@ export const InDepthArticleIndexPage = ({
 		<>
 			<NextSeo title="In-depth" openGraph={{ title: "In-depth" }}></NextSeo>
 			<PageHeader
+				id="content-start"
 				heading="In-depth"
 				variant="fullWidthDark"
 				lead="Our in-depth articles explore how our work is making a real difference to people's lives."
@@ -59,6 +62,13 @@ export const InDepthArticleIndexPage = ({
 				<p>Sorry there are no news articles available</p>
 			) : (
 				<>
+					<NewsListPaginationAnnouncer
+						currentPage={currentPage}
+						total={total}
+						perPage={perPage}
+						announcementPrefix="In-depth article listing page"
+					/>
+					<PaginationFocusedElement innerText="In-depth articles list" />
 					{featuredStory && <FeaturedStory story={featuredStory} />}
 					<NewsList news={stories} />
 				</>
