@@ -1,5 +1,5 @@
 import { NextSeo } from "next-seo";
-import React, { useEffect, useState } from "react";
+import React from "react";
 import { StoryblokStory } from "storyblok-generate-ts";
 
 import { ActionBanner } from "@nice-digital/nds-action-banner";
@@ -7,7 +7,6 @@ import { Breadcrumbs, Breadcrumb } from "@nice-digital/nds-breadcrumbs";
 import { Button } from "@nice-digital/nds-button";
 import { PageHeader } from "@nice-digital/nds-page-header";
 
-import { Announcer } from "@/components/Announcer/Announcer";
 import { ErrorPageContent } from "@/components/ErrorPageContent/ErrorPageContent";
 import { FeaturedStory } from "@/components/Storyblok/News/FeaturedStory/FeaturedStory";
 import { NewsList } from "@/components/Storyblok/News/NewsList/NewsList";
@@ -37,18 +36,6 @@ export const BlogIndexPage = ({
 	featuredStory,
 	error,
 }: BlogPostsProps): React.ReactElement => {
-	// const [announcement, setAnnouncement] = useState("");
-	// const totalPages = Math.ceil(total / perPage);
-
-	// useEffect(() => {
-	// 	const announcementText = `Blog post listing page, ${currentPage} of ${totalPages}`;
-	// 	setAnnouncement(announcementText);
-
-	// 	return () => {
-	// 		setAnnouncement("");
-	// 	};
-	// }, [currentPage, totalPages]);
-
 	if (error) {
 		return <ErrorPageContent title="Error" heading={error} />;
 	}
@@ -70,7 +57,6 @@ export const BlogIndexPage = ({
 			/>
 			<NewsListNav />
 			<>
-				{/* <Announcer announcement={announcement} /> */}
 				<NewsListPaginationAnnouncer
 					currentPage={currentPage}
 					total={total}

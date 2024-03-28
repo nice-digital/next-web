@@ -1,5 +1,5 @@
 import { NextSeo } from "next-seo";
-import React, { useEffect, useState } from "react";
+import React from "react";
 import { StoryblokStory } from "storyblok-generate-ts";
 
 import { ActionBanner } from "@nice-digital/nds-action-banner";
@@ -9,7 +9,6 @@ import { Grid, GridItem } from "@nice-digital/nds-grid";
 import { PageHeader } from "@nice-digital/nds-page-header";
 import { Panel } from "@nice-digital/nds-panel";
 
-import { Announcer } from "@/components/Announcer/Announcer";
 import { ErrorPageContent } from "@/components/ErrorPageContent/ErrorPageContent";
 import { NewsList } from "@/components/Storyblok/News/NewsList/NewsList";
 import { NewsListNav } from "@/components/Storyblok/News/NewsListNav/NewsListNav";
@@ -36,18 +35,6 @@ export const PodcastIndexPage = ({
 	perPage,
 	error,
 }: PodcastPostsProps): React.ReactElement => {
-	// const [announcement, setAnnouncement] = useState("");
-	// const totalPages = Math.ceil(total / perPage);
-
-	// useEffect(() => {
-	// 	const announcementText = `Podcast listing page, ${currentPage} of ${totalPages}`;
-	// 	setAnnouncement(announcementText);
-
-	// 	return () => {
-	// 		setAnnouncement("");
-	// 	};
-	// }, [currentPage, totalPages]);
-
 	if (error) {
 		return <ErrorPageContent title="Error" heading={error} />;
 	}
@@ -70,7 +57,6 @@ export const PodcastIndexPage = ({
 			<NewsListNav />
 			<Grid gutter="loose">
 				<GridItem cols={12} md={{ cols: 7 }}>
-					{/* <Announcer announcement={announcement} /> */}
 					<NewsListPaginationAnnouncer
 						currentPage={currentPage}
 						total={total}
