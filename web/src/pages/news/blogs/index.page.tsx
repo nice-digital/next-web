@@ -13,6 +13,7 @@ import { FeaturedStory } from "@/components/Storyblok/News/FeaturedStory/Feature
 import { NewsList } from "@/components/Storyblok/News/NewsList/NewsList";
 import { NewsListNav } from "@/components/Storyblok/News/NewsListNav/NewsListNav";
 import { NewsListPagination } from "@/components/Storyblok/News/NewsListPagination/NewsListPagination";
+import { NewsListPaginationAnnouncer } from "@/components/Storyblok/News/NewsListPaginationAnnouncer/NewsListPaginationAnnouncer";
 import { PaginationFocusedElement } from "@/components/Storyblok/News/NewsListPaginationFocus/NewsListPaginationFocus";
 import { NewsStory } from "@/types/News";
 import { validateRouteParams } from "@/utils/storyblok";
@@ -36,17 +37,17 @@ export const BlogIndexPage = ({
 	featuredStory,
 	error,
 }: BlogPostsProps): React.ReactElement => {
-	const [announcement, setAnnouncement] = useState("");
-	const totalPages = Math.ceil(total / perPage);
+	// const [announcement, setAnnouncement] = useState("");
+	// const totalPages = Math.ceil(total / perPage);
 
-	useEffect(() => {
-		const announcementText = `Blog post listing page, ${currentPage} of ${totalPages}`;
-		setAnnouncement(announcementText);
+	// useEffect(() => {
+	// 	const announcementText = `Blog post listing page, ${currentPage} of ${totalPages}`;
+	// 	setAnnouncement(announcementText);
 
-		return () => {
-			setAnnouncement("");
-		};
-	}, [currentPage, totalPages]);
+	// 	return () => {
+	// 		setAnnouncement("");
+	// 	};
+	// }, [currentPage, totalPages]);
 
 	if (error) {
 		return <ErrorPageContent title="Error" heading={error} />;
@@ -69,7 +70,13 @@ export const BlogIndexPage = ({
 			/>
 			<NewsListNav />
 			<>
-				<Announcer announcement={announcement} />
+				{/* <Announcer announcement={announcement} /> */}
+				<NewsListPaginationAnnouncer
+					currentPage={currentPage}
+					total={total}
+					perPage={perPage}
+					announcementPrefix="Blog post listing page"
+				/>
 				<PaginationFocusedElement innerText="Blog post list" />
 			</>
 			{featuredStory && <FeaturedStory story={featuredStory} />}

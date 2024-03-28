@@ -13,6 +13,7 @@ import { FeaturedStory } from "@/components/Storyblok/News/FeaturedStory/Feature
 import { NewsList } from "@/components/Storyblok/News/NewsList/NewsList";
 import { NewsListNav } from "@/components/Storyblok/News/NewsListNav/NewsListNav";
 import { NewsListPagination } from "@/components/Storyblok/News/NewsListPagination/NewsListPagination";
+import { NewsListPaginationAnnouncer } from "@/components/Storyblok/News/NewsListPaginationAnnouncer/NewsListPaginationAnnouncer";
 import { PaginationFocusedElement } from "@/components/Storyblok/News/NewsListPaginationFocus/NewsListPaginationFocus";
 import { NewsStory } from "@/types/News";
 import { validateRouteParams } from "@/utils/storyblok";
@@ -36,16 +37,16 @@ export const ArticlesIndexPage = ({
 	featuredStory,
 	error,
 }: NewsArticlesProps): React.ReactElement => {
-	const [announcement, setAnnouncement] = useState("");
-	const totalPages = Math.ceil(total / perPage);
-	useEffect(() => {
-		const announcementText = `News article listing page, ${currentPage} of ${totalPages}`;
-		setAnnouncement(announcementText);
+	// const [announcement, setAnnouncement] = useState("");
+	// const totalPages = Math.ceil(total / perPage);
+	// useEffect(() => {
+	// 	const announcementText = `News article listing page, ${currentPage} of ${totalPages}`;
+	// 	setAnnouncement(announcementText);
 
-		return () => {
-			setAnnouncement("");
-		};
-	}, [currentPage, totalPages]);
+	// 	return () => {
+	// 		setAnnouncement("");
+	// 	};
+	// }, [currentPage, totalPages]);
 
 	if (error) {
 		return <ErrorPageContent title="Error" heading={error} />;
@@ -74,9 +75,14 @@ export const ArticlesIndexPage = ({
 				<p>Sorry there are no news articles available</p>
 			) : (
 				<>
-					<Announcer announcement={announcement} />
+					<NewsListPaginationAnnouncer
+						currentPage={currentPage}
+						total={total}
+						perPage={perPage}
+						announcementPrefix="News article listing page"
+					/>
+					{/* <Announcer announcement={announcement} /> */}
 					<PaginationFocusedElement innerText="News article list" />
-
 					{featuredStory && <FeaturedStory story={featuredStory} />}
 					<NewsList news={stories} />
 				</>

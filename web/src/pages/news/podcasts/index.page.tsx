@@ -14,6 +14,7 @@ import { ErrorPageContent } from "@/components/ErrorPageContent/ErrorPageContent
 import { NewsList } from "@/components/Storyblok/News/NewsList/NewsList";
 import { NewsListNav } from "@/components/Storyblok/News/NewsListNav/NewsListNav";
 import { NewsListPagination } from "@/components/Storyblok/News/NewsListPagination/NewsListPagination";
+import { NewsListPaginationAnnouncer } from "@/components/Storyblok/News/NewsListPaginationAnnouncer/NewsListPaginationAnnouncer";
 import { PaginationFocusedElement } from "@/components/Storyblok/News/NewsListPaginationFocus/NewsListPaginationFocus";
 import { NewsStory } from "@/types/News";
 import { validateRouteParams } from "@/utils/storyblok";
@@ -35,17 +36,17 @@ export const PodcastIndexPage = ({
 	perPage,
 	error,
 }: PodcastPostsProps): React.ReactElement => {
-	const [announcement, setAnnouncement] = useState("");
-	const totalPages = Math.ceil(total / perPage);
+	// const [announcement, setAnnouncement] = useState("");
+	// const totalPages = Math.ceil(total / perPage);
 
-	useEffect(() => {
-		const announcementText = `Podcast listing page, ${currentPage} of ${totalPages}`;
-		setAnnouncement(announcementText);
+	// useEffect(() => {
+	// 	const announcementText = `Podcast listing page, ${currentPage} of ${totalPages}`;
+	// 	setAnnouncement(announcementText);
 
-		return () => {
-			setAnnouncement("");
-		};
-	}, [currentPage, totalPages]);
+	// 	return () => {
+	// 		setAnnouncement("");
+	// 	};
+	// }, [currentPage, totalPages]);
 
 	if (error) {
 		return <ErrorPageContent title="Error" heading={error} />;
@@ -69,7 +70,13 @@ export const PodcastIndexPage = ({
 			<NewsListNav />
 			<Grid gutter="loose">
 				<GridItem cols={12} md={{ cols: 7 }}>
-					<Announcer announcement={announcement} />
+					{/* <Announcer announcement={announcement} /> */}
+					<NewsListPaginationAnnouncer
+						currentPage={currentPage}
+						total={total}
+						perPage={perPage}
+						announcementPrefix="Podcast listing page"
+					/>
 					<PaginationFocusedElement innerText="Podcast list" />
 					<NewsList news={stories} showImage={false} />
 				</GridItem>
