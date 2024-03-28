@@ -85,7 +85,15 @@ resource "aws_ecs_task_definition" "nextweb-main-task" {
           hostPort      = 3000,
           protocol      = "tcp"
         }
-      ]
+      ],
+      logConfiguration = {
+        logDriver = "awslogs"
+        options = {
+          awslogs-group         = "/ecs/${local.name}-logs"
+          awslogs-region        = "eu-west-1"
+          awslogs-stream-prefix = "ecs"
+        }
+      }
     }
   ])
 
@@ -123,6 +131,11 @@ resource "aws_iam_role" "ecs_task_execution_role" {
   })
 }
 
+resource "aws_iam_role_policy_attachment" "ecs_logs" {
+  role       = aws_iam_role.ecs_task_execution_role.name
+  policy_arn = var.cloudwatchlog_policy
+}
+
 resource "aws_iam_role_policy_attachment" "ecs_task_execution_role_policy" {
   role       = aws_iam_role.ecs_task_execution_role.name
   policy_arn = "arn:aws:iam::aws:policy/service-role/AmazonECSTaskExecutionRolePolicy"
@@ -146,4 +159,9 @@ resource "aws_ecs_service" "nextweb-ecs-service" {
     container_name   = "nextweb-container"
     container_port   = 3000
   }
+}
+
+resource "aws_cloudwatch_log_group" "ecs_logs" {
+  name = "/ecs/${local.name}-logs"
+  retention_in_days = 30
 }
