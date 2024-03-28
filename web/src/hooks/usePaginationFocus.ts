@@ -6,7 +6,6 @@ export const usePaginationFocus = (): React.RefObject<HTMLHeadingElement> => {
 	const focusPagination = useRef<HTMLHeadingElement>(null);
 	useEffect(() => {
 		if (query && query.page && focusPagination.current) {
-			console.log(query.page);
 			focusPagination.current.focus();
 		}
 	}, [query]);
