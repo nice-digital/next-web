@@ -57,6 +57,7 @@ resource "aws_ecs_task_definition" "nextweb-main-task" {
   requires_compatibilities = ["FARGATE"]
   cpu                      = var.resource_cpu
   memory                   = var.resource_mem
+	task_role_arn            = var.ecs_task_role
   execution_role_arn       = aws_iam_role.ecs_task_execution_role.arn
 
   container_definitions = jsonencode([
@@ -134,6 +135,7 @@ resource "aws_ecs_service" "nextweb-ecs-service" {
   task_definition = aws_ecs_task_definition.nextweb-main-task.arn
   desired_count   = 2
   launch_type     = "FARGATE"
+	enable_execute_command = true
 
   network_configuration {
     subnets = var.nextweb_ecs_subnets
