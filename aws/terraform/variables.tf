@@ -40,3 +40,6 @@ variable "resource_mem" {
 variable "cloudwatchlog_policy" {
 	type   = string
 }
+variable "ecs_task_role" {
+	type   = string
+}
