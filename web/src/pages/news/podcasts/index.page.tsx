@@ -13,6 +13,8 @@ import { ErrorPageContent } from "@/components/ErrorPageContent/ErrorPageContent
 import { NewsList } from "@/components/Storyblok/News/NewsList/NewsList";
 import { NewsListNav } from "@/components/Storyblok/News/NewsListNav/NewsListNav";
 import { NewsListPagination } from "@/components/Storyblok/News/NewsListPagination/NewsListPagination";
+import { NewsListPaginationAnnouncer } from "@/components/Storyblok/News/NewsListPaginationAnnouncer/NewsListPaginationAnnouncer";
+import { PaginationFocusedElement } from "@/components/Storyblok/News/NewsListPaginationFocus/NewsListPaginationFocus";
 import { NewsStory } from "@/types/News";
 import { validateRouteParams } from "@/utils/storyblok";
 
@@ -40,6 +42,7 @@ export const PodcastIndexPage = ({
 		<>
 			<NextSeo title="Podcasts" openGraph={{ title: "Podcasts" }}></NextSeo>
 			<PageHeader
+				id="content-start"
 				heading="Podcasts"
 				variant="fullWidthDark"
 				lead="Our NICE talks podcasts bring you the real life experience of people working within NHS, public health and social care."
@@ -54,6 +57,13 @@ export const PodcastIndexPage = ({
 			<NewsListNav />
 			<Grid gutter="loose">
 				<GridItem cols={12} md={{ cols: 7 }}>
+					<NewsListPaginationAnnouncer
+						currentPage={currentPage}
+						total={total}
+						perPage={perPage}
+						announcementPrefix="Podcast listing page"
+					/>
+					<PaginationFocusedElement innerText="Podcast list" />
 					<NewsList news={stories} showImage={false} />
 				</GridItem>
 				<GridItem cols={12} md={{ cols: 4, push: 1 }}>
