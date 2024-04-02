@@ -12,6 +12,8 @@ import { FeaturedStory } from "@/components/Storyblok/News/FeaturedStory/Feature
 import { NewsList } from "@/components/Storyblok/News/NewsList/NewsList";
 import { NewsListNav } from "@/components/Storyblok/News/NewsListNav/NewsListNav";
 import { NewsListPagination } from "@/components/Storyblok/News/NewsListPagination/NewsListPagination";
+import { NewsListPaginationAnnouncer } from "@/components/Storyblok/News/NewsListPaginationAnnouncer/NewsListPaginationAnnouncer";
+import { PaginationFocusedElement } from "@/components/Storyblok/News/NewsListPaginationFocus/NewsListPaginationFocus";
 import { NewsStory } from "@/types/News";
 import { validateRouteParams } from "@/utils/storyblok";
 
@@ -37,10 +39,12 @@ export const BlogIndexPage = ({
 	if (error) {
 		return <ErrorPageContent title="Error" heading={error} />;
 	}
+
 	return (
 		<>
 			<NextSeo title="Blog posts" openGraph={{ title: "Blog posts" }}></NextSeo>
 			<PageHeader
+				id="content-start"
 				heading="Blog posts"
 				variant="fullWidthDark"
 				breadcrumbs={
@@ -52,6 +56,15 @@ export const BlogIndexPage = ({
 				}
 			/>
 			<NewsListNav />
+			<>
+				<NewsListPaginationAnnouncer
+					currentPage={currentPage}
+					total={total}
+					perPage={perPage}
+					announcementPrefix="Blog post listing page"
+				/>
+				<PaginationFocusedElement innerText="Blog post list" />
+			</>
 			{featuredStory && <FeaturedStory story={featuredStory} />}
 			<NewsList news={stories} />
 			<ActionBanner
