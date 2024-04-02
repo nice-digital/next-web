@@ -1,11 +1,12 @@
 @use '@nice-digital/nds-core/scss/media-queries';
 @use '@nice-digital/nds-core/scss/spacing';
+@use '@nice-digital/nds-core/scss/typography';
 @use '@nice-digital/nds-core/scss/utils';
 
 /* stylelint-disable selector-class-pattern */
 
 .newsSectionArticle {
-  // set up variables for the offset of the featured image across breakpoints
+  // set up variable for the offset of the featured image across breakpoints
   --featuredImageOffset: 16dvh;
 
   // set padding on page-header based on the negat
@@ -21,6 +22,11 @@
 
   //TODO: move to  news page header component
   :global(.page-header__heading) {
+
+    @include media-queries.mq($until: md) {
+      @include typography.font-size(5);
+    }
+
     margin: 0 0 utils.rem(spacing.$large) 0;
   }
 

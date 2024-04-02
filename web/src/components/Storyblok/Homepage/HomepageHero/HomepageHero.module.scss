@@ -1,5 +1,14 @@
 @use '~/styles/spacing' as *;
+@use '@nice-digital/nds-core/scss/media-queries';
+@use '@nice-digital/nds-core/scss/typography';
 
 .hero {
   margin-bottom: $homepage-large-spacing;
+
+
+  @include media-queries.mq($until: md) {
+    h1 {
+      @include typography.font-size(5);
+    }
+  }
 }
