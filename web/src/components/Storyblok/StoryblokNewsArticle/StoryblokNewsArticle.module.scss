@@ -23,7 +23,13 @@
   //TODO: move to  news page header component
   :global(.page-header__heading) {
 
-    @include media-queries.mq($until: md) {
+    /* best compromise between legibility vs words being chopped off on narrow viewports*/
+    @include media-queries.mq($until: 360px) {
+      hyphens: auto;
+      word-break: break-word;
+    }
+
+    @include media-queries.mq($until: xs) {
       @include typography.font-size(5);
     }
 

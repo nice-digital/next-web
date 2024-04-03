@@ -5,10 +5,18 @@
 .hero {
   margin-bottom: $homepage-large-spacing;
 
+  /* best compromise between legibility vs words being chopped off on narrow viewports*/
+  @include media-queries.mq($until: 360px) {
+    h1 {
+      hyphens: auto;
+      word-break: break-word;
+    }
+  }
 
-  @include media-queries.mq($until: md) {
+  @include media-queries.mq($until: xs) {
     h1 {
       @include typography.font-size(5);
     }
   }
+
 }
