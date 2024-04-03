@@ -3,7 +3,6 @@ import { ErrorInfo, FC } from "react";
 import { DefaultSeo } from "next-seo";
 import App, { AppProps, NextWebVitalsMetric } from "next/app";
 import { Inter, Lora } from "next/font/google";
-
 import "@nice-digital/design-system/scss/base.scss";
 import {
 	Header,
@@ -163,9 +162,13 @@ class NextWebApp extends App<{}, {}, AppState> {
 			service = "standards-and-indicators";
 		}
 
+		const canonicalPathname = pathname.includes("[slug]")
+			? this.props.router.asPath.split("?")[0]
+			: pathname;
+
 		return (
 			<>
-				<DefaultSeo {...getDefaultSeoConfig(pathname)} />
+				<DefaultSeo {...getDefaultSeoConfig(canonicalPathname)} />
 				<div ref={this.globalNavWrapperRef}>
 					<Header {...headerProps} service={service} />
 				</div>
