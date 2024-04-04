@@ -24,7 +24,6 @@ export interface StoryblokRichTextProps {
 	content: RichtextStoryblok;
 }
 
-//TODO: should we handle the the parent component in props so we can render the image with the correct size?
 export const StoryblokRichText: React.FC<StoryblokRichTextProps> = ({
 	content,
 }) => {

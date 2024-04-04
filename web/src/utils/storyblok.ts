@@ -389,8 +389,6 @@ export const getNewsType = (component: string): string => {
 export const encodeParens = (str: string): string =>
 	str.replace(/\(/g, "%28").replace(/\)/g, "%29");
 
-// TODO: extend the ImageServiceOptions to include filters and options as and when needed?
-
 export type ImageServiceOptions = {
 	width?: number;
 	height?: number;
