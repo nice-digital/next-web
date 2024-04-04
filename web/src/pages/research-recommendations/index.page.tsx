@@ -18,20 +18,22 @@ const tableBodyRender = (documents: Document[]) => (
 		</caption>
 		<thead>
 			<tr>
-				<th scope="col">Recommendation question</th>
 				<th scope="col">Guidance Id</th>
+				<th scope="col">Recommendation question</th>
 			</tr>
 		</thead>
 		<tbody>
 			{documents.map(({ id, title, guidanceRef, pathAndQuery }) => {
+				const testObject = { id, title, guidanceRef, pathAndQuery };
+				console.log(testObject);
 				return (
 					<tr key={id}>
+						<td>{guidanceRef}</td>
 						<td>
 							<Link href={pathAndQuery}>
 								<span dangerouslySetInnerHTML={{ __html: title }} />
 							</Link>
 						</td>
-						<td>{guidanceRef}</td>
 
 						{/* <td
 								dangerouslySetInnerHTML={{ __html: metaDescription || "" }}
