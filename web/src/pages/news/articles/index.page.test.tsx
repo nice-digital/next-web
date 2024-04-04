@@ -1,12 +1,20 @@
+import { ParsedUrlQuery } from "querystring";
+
 import { render } from "@testing-library/react";
 import { useRouter } from "next/router";
+import { GetServerSidePropsContext } from "next/types";
 import { StoryblokStory } from "storyblok-generate-ts";
 
-import { mockNewsArticle as mockStory } from "@/test-utils/storyblok-data";
 import MockStoryblokResponse from "@/test-utils/storyblok-news-articles-listing.json";
 import { NewsStory } from "@/types/News";
 
 import { ArticlesIndexPage, NewsArticlesProps } from "./index.page";
+
+const mockStories = MockStoryblokResponse.stories;
+
+jest.mock("@storyblok/react", () => ({
+	getStoryblokApi: jest.fn(),
+}));
 
 describe("/news/articles/index.page", () => {
 	(useRouter as jest.Mock).mockReturnValue({
@@ -22,8 +30,6 @@ describe("/news/articles/index.page", () => {
 		push: jest.fn(),
 	});
 
-	const mockStories = MockStoryblokResponse.stories;
-
 	const resultsPerPage = 6;
 	const totalResults = 8;
 	const currentPage = 1;
@@ -37,5 +43,35 @@ describe("/news/articles/index.page", () => {
 	it("should match snapshot for main content", () => {
 		render(<ArticlesIndexPage {...mockProps} />);
 		expect(document.body).toMatchSnapshot();
+	});
+
+	describe("getServerSideProps", () => {
+		beforeEach(() => {
+			jest.mock("@/utils/storyblok", () => ({
+				getStoryVersionFromQuery: jest.fn().mockReturnValue("published"),
+				fetchStories: jest.fn().mockResolvedValue({
+					stories: mockStories,
+					total: mockStories.length,
+				}),
+				validateRouteParams: jest
+					.fn()
+					.mockReturnValue({ someprop: "somevalue" }),
+			}));
+		});
+
+		it("should redirect to /news/articles if the page is less than 1", async () => {
+			const { getServerSideProps } = await import("./index.page");
+
+			const result = await getServerSideProps({
+				query: { page: "-1" },
+			} as unknown as GetServerSidePropsContext<ParsedUrlQuery>);
+
+			expect(result).toEqual({
+				redirect: {
+					destination: "/news/articles",
+					permanent: false,
+				},
+			});
+		});
 	});
 });
