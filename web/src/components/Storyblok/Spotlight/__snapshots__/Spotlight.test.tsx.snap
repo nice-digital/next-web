@@ -60,16 +60,16 @@ exports[`Spotlight component should match snapshot 1`] = `
               >
                 <picture>
                   <source
-                    srcset="https://placekitten.com/200/286/m/708x0/filters:format(avif):quality(80)/"
+                    srcset="https://placekitten.com/200/286/m/708x0/filters:format%28avif%29:quality%2880%29"
                     type="image/avif"
                   />
                   <source
-                    srcset="https://placekitten.com/200/286/m/708x0/filters:format(webp):quality(80)/"
+                    srcset="https://placekitten.com/200/286/m/708x0/filters:format%28webp%29:quality%2880%29"
                     type="image/webp"
                   />
                   <img
                     alt="Kitten mittens"
-                    src="https://placekitten.com/200/286/m/708x0/filters:format(jpeg):quality(80)/"
+                    src="https://placekitten.com/200/286/m/708x0/filters:format%28jpeg%29:quality%2880%29"
                   />
                 </picture>
               </div>
@@ -106,16 +106,16 @@ exports[`Spotlight component should match snapshot 1`] = `
               >
                 <picture>
                   <source
-                    srcset="https://placekitten.com/200/139/m/708x0/filters:format(avif):quality(80)/"
+                    srcset="https://placekitten.com/200/139/m/708x0/filters:format%28avif%29:quality%2880%29"
                     type="image/avif"
                   />
                   <source
-                    srcset="https://placekitten.com/200/139/m/708x0/filters:format(webp):quality(80)/"
+                    srcset="https://placekitten.com/200/139/m/708x0/filters:format%28webp%29:quality%2880%29"
                     type="image/webp"
                   />
                   <img
                     alt="A kitty cat"
-                    src="https://placekitten.com/200/139/m/708x0/filters:format(jpeg):quality(80)/"
+                    src="https://placekitten.com/200/139/m/708x0/filters:format%28jpeg%29:quality%2880%29"
                   />
                 </picture>
               </div>

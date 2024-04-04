@@ -11,7 +11,7 @@ import {
 	getNewsType,
 	defaultPodcastImage,
 	newsTypes,
-	optimiseImage,
+	constructStoryblokImageSrc,
 } from "@/utils/storyblok";
 
 import styles from "./FeaturedStory.module.scss";
@@ -40,9 +40,9 @@ export const FeaturedStory: React.FC<FeaturedStoryProps> = ({
 		);
 
 	// Fall back to podcast placeholder image if none is supplied
-	const image =
-		optimiseImage({ filename: content.image?.filename, size: "868x0" }) ||
-		defaultPodcastImage;
+	const image = content.image?.filename
+		? constructStoryblokImageSrc(content.image?.filename, { width: 868 })
+		: defaultPodcastImage;
 
 	return (
 		<article className={styles.story}>
