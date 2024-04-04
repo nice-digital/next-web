@@ -3,7 +3,6 @@
 @use '@nice-digital/nds-core/scss/typography';
 @use '@nice-digital/nds-core/scss/utils';
 
-/* stylelint-disable selector-class-pattern */
 
 .newsSectionArticle {
 
@@ -65,6 +64,9 @@
   .authorSection {
     border-left: 2px solid #808080;
     padding-left: 1rem;
+    @include media-queries.mq($from: md) {
+      padding-bottom: utils.rem(spacing.$x-large);
+    }
   }
 
 
