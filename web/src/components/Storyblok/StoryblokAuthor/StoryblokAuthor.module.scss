@@ -10,7 +10,7 @@
 
   margin-top: utils.rem(spacing.$medium);
 
-  &:has(img) &__name {
+  &:has(img) .name {
     margin-top: utils.rem(spacing.$medium);
   }
 }
