@@ -41,7 +41,9 @@ export default function PodcastPage({
 	const { name, content } = story;
 	const { date, description, soundcloudEmbedID } = content;
 
-	const optimisedImage = constructStoryblokImageSrc(content.image?.filename);
+	const optimisedImage = content.image?.filename
+		? constructStoryblokImageSrc(content.image?.filename)
+		: undefined;
 	// Fall back to podcast placeholder image if none is supplied
 	const image = optimisedImage || defaultPodcastImage;
 
