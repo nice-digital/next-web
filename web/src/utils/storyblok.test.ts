@@ -8,7 +8,6 @@ import {
 	getSlugFromParams,
 	getAdditionalMetaTags,
 	encodeParens,
-	optimiseImage,
 	constructStoryblokImageSrc,
 } from "./storyblok";
 
