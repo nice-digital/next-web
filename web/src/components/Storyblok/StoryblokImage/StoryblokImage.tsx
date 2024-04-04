@@ -27,6 +27,10 @@ export const StoryblokImage = React.forwardRef<
 		return <img {...rest} ref={ref} src={placeholderSrc} alt={alt} />;
 	}
 
+	if (alt.length === 0) {
+		console.warn("No alt text provided for image");
+		rest.role = "presentation";
+	}
 	// construct the source urls for webp, avif and jpeg for the picture element
 	const webPSrc = constructStoryblokImageSrc(src, serviceOptions, "webp");
 	const avifSrc = constructStoryblokImageSrc(src, serviceOptions, "avif");
