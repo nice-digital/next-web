@@ -45,6 +45,10 @@
     }
   }
 
+  :global(.page-header__full-width-container) {
+    width: calc(100% - utils.rem(spacing.$large));
+  }
+
   :global(.page-header__lead) {
     margin: 0 0 utils.rem(spacing.$large) 0;
   }

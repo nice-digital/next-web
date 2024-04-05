@@ -20,6 +20,10 @@
     margin-bottom: utils.rem(spacing.$large);
   }
 
+  :global(.page-header__full-width-container) {
+    width: calc(100% - utils.rem(spacing.$large));
+  }
+
   //TODO: move to  news page header component
   :global(.page-header__heading) {
 
