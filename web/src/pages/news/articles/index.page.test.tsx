@@ -8,7 +8,11 @@ import { StoryblokStory } from "storyblok-generate-ts";
 import MockStoryblokResponse from "@/test-utils/storyblok-news-articles-listing.json";
 import { NewsStory } from "@/types/News";
 
-import { ArticlesIndexPage, NewsArticlesProps } from "./index.page";
+import {
+	getServerSideProps,
+	ArticlesIndexPage,
+	NewsArticlesProps,
+} from "./index.page";
 
 const mockStories = MockStoryblokResponse.stories;
 
@@ -52,18 +56,15 @@ describe("/news/articles/index.page", () => {
 				fetchStories: jest.fn().mockResolvedValue({
 					stories: mockStories,
 					total: mockStories.length,
+					perPage: resultsPerPage,
 				}),
-				validateRouteParams: jest
-					.fn()
-					.mockReturnValue({ someprop: "somevalue" }),
 			}));
 		});
 
 		it("should redirect to /news/articles if the page is less than 1", async () => {
-			const { getServerSideProps } = await import("./index.page");
-
 			const result = await getServerSideProps({
 				query: { page: "-1" },
+				resolvedUrl: "/news/articles?page=-1",
 			} as unknown as GetServerSidePropsContext<ParsedUrlQuery>);
 
 			expect(result).toEqual({

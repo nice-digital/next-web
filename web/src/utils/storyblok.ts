@@ -117,8 +117,21 @@ export const validateRouteParams = async <T>({
 	resolvedUrl,
 }: ValidateRouteParamsArgs): Promise<ValidateRouteParamsResult<T>> => {
 	const version = getStoryVersionFromQuery(query);
-	const page = Number(query.page) || 1;
 
+	const redirectUrl = new URL(resolvedUrl || "", "http://localhost");
+	const page = Number(query.page) || 1;
+	// set page to at least 1 or 1 if it's not a number
+	// const page = Math.max(Number(query.page) || 1, 1);
+
+	//TODO: if page is < 1, NaN, or not a number, should we redirect to page 1 or assign page to 1?
+	if (page < 1) {
+		return {
+			redirect: {
+				destination: redirectUrl.pathname,
+				permanent: false,
+			},
+		};
+	}
 	// const { starts_with, per_page } = options;
 	const requestParams: ISbStoriesParams = {
 		...sbParams,
@@ -130,11 +143,7 @@ export const validateRouteParams = async <T>({
 			},
 		},
 	};
-
-	const redirectUrl = new URL(resolvedUrl || "", "http://localhost");
-
 	const result = await fetchStories<T>(version, requestParams);
-
 	if (
 		!result ||
 		result.total === undefined ||
@@ -191,7 +200,6 @@ export const fetchStories = async <T>(
 	};
 
 	const result: SBMultipleResponse<T> = { stories: [] };
-
 	try {
 		const response: ISbResult = await storyblokApi.get(`cdn/stories`, sbParams);
 		result.stories = response.data.stories;
