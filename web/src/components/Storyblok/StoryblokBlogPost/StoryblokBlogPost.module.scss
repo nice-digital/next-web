@@ -2,6 +2,8 @@
 @use '@nice-digital/nds-core/scss/spacing';
 @use '@nice-digital/nds-core/scss/typography';
 @use '@nice-digital/nds-core/scss/utils';
+@use '~/styles/colours';
+
 
 /* stylelint-disable selector-class-pattern */
 
@@ -67,7 +69,7 @@
   }
 
   .authorSection {
-    border-left: 2px solid #808080;
+    border-left: 2px solid colours.$author-section-border;
     padding-left: 1rem;
     @include media-queries.mq($from: md) {
       padding-bottom: utils.rem(spacing.$x-large);
