@@ -7,6 +7,7 @@ import { StoryblokStory } from "storyblok-generate-ts";
 
 import MockStoryblokResponse from "@/test-utils/storyblok-news-articles-listing.json";
 import { NewsStory } from "@/types/News";
+import * as storyblokUtils from "@/utils/storyblok";
 
 import {
 	getServerSideProps,
@@ -14,10 +15,12 @@ import {
 	NewsArticlesProps,
 } from "./index.page";
 
-const mockStories = MockStoryblokResponse.stories;
+const mockStories = MockStoryblokResponse.data.stories;
 
 jest.mock("@storyblok/react", () => ({
-	getStoryblokApi: jest.fn(),
+	getStoryblokApi: jest.fn().mockReturnValue({
+		get: jest.fn().mockResolvedValue(MockStoryblokResponse),
+	}),
 }));
 
 describe("/news/articles/index.page", () => {
@@ -53,11 +56,6 @@ describe("/news/articles/index.page", () => {
 		beforeEach(() => {
 			jest.mock("@/utils/storyblok", () => ({
 				getStoryVersionFromQuery: jest.fn().mockReturnValue("published"),
-				fetchStories: jest.fn().mockResolvedValue({
-					stories: mockStories,
-					total: mockStories.length,
-					perPage: resultsPerPage,
-				}),
 			}));
 		});
 
@@ -65,6 +63,20 @@ describe("/news/articles/index.page", () => {
 			const result = await getServerSideProps({
 				query: { page: "-1" },
 				resolvedUrl: "/news/articles?page=-1",
+			} as unknown as GetServerSidePropsContext<ParsedUrlQuery>);
+
+			expect(result).toEqual({
+				redirect: {
+					destination: "/news/articles",
+					permanent: false,
+				},
+			});
+		});
+
+		it("should redirect to /news/articles if the page is not a number", async () => {
+			const result = await getServerSideProps({
+				query: { page: "30" },
+				resolvedUrl: "/news/articles?page=30",
 			} as unknown as GetServerSidePropsContext<ParsedUrlQuery>);
 
 			expect(result).toEqual({
