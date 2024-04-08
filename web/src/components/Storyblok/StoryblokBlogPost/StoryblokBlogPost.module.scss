@@ -65,10 +65,11 @@
   }
 
   .authorSection {
-    border-left: 2px solid colours.$author-section-border;
-    padding-left: 1rem;
+
     @include media-queries.mq($from: md) {
+      border-left: 2px solid colours.$author-section-border;
       padding-bottom: utils.rem(spacing.$x-large);
+      padding-left: 1rem;
     }
   }
 
