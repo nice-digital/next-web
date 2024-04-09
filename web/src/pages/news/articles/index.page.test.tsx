@@ -1,5 +1,6 @@
 import { ParsedUrlQuery } from "querystring";
 
+import { getStoryblokApi } from "@storyblok/react";
 import { render } from "@testing-library/react";
 import { useRouter } from "next/router";
 import { GetServerSidePropsContext } from "next/types";
@@ -7,7 +8,6 @@ import { StoryblokStory } from "storyblok-generate-ts";
 
 import MockStoryblokResponse from "@/test-utils/storyblok-news-articles-listing.json";
 import { NewsStory } from "@/types/News";
-import * as storyblokUtils from "@/utils/storyblok";
 
 import {
 	getServerSideProps,
@@ -16,12 +16,6 @@ import {
 } from "./index.page";
 
 const mockStories = MockStoryblokResponse.data.stories;
-
-jest.mock("@storyblok/react", () => ({
-	getStoryblokApi: jest.fn().mockReturnValue({
-		get: jest.fn().mockResolvedValue(MockStoryblokResponse),
-	}),
-}));
 
 describe("/news/articles/index.page", () => {
 	(useRouter as jest.Mock).mockReturnValue({
@@ -73,7 +67,11 @@ describe("/news/articles/index.page", () => {
 			});
 		});
 
-		it("should redirect to /news/articles if the page is not a number", async () => {
+		it("should redirect to /news/articles if the page is out of range", async () => {
+			getStoryblokApi().get = jest
+				.fn()
+				.mockResolvedValue(MockStoryblokResponse);
+
 			const result = await getServerSideProps({
 				query: { page: "30" },
 				resolvedUrl: "/news/articles?page=30",

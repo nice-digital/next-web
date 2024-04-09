@@ -1,6 +1,7 @@
 import "@testing-library/jest-dom";
 
 import { addDefaultJSONFeedMocks, axiosJSONMock } from "@/test-utils/feeds";
+import MockStoryblokResponse from "@/test-utils/storyblok-news-articles-listing.json";
 
 //import * as matchers from "jest-extended/all";
 //expect.extend(matchers);
@@ -12,6 +13,12 @@ jest.mock("@/utils/storyblok", () => ({
 
 jest.mock("@/utils/initStoryblok", () => ({
 	initStoryblok: jest.fn(),
+}));
+
+jest.mock("@storyblok/react", () => ({
+	getStoryblokApi: jest.fn().mockReturnValue({
+		get: jest.fn(),
+	}),
 }));
 
 beforeEach(() => {
