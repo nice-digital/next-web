@@ -1,4 +1,4 @@
-import { render, screen, waitFor } from "@testing-library/react";
+import { fireEvent, render, screen, waitFor } from "@testing-library/react";
 
 import {
 	StoryblokYoutubeEmbed,
@@ -30,7 +30,6 @@ describe("StoryblokYoutubeEmbed", () => {
 		expect(wrapper).toBeInTheDocument();
 
 		const button = screen.getByRole("button");
-		console.log(button);
 		expect(button).toBeInTheDocument();
 	});
 
@@ -38,7 +37,7 @@ describe("StoryblokYoutubeEmbed", () => {
 		render(<StoryblokYoutubeEmbed blok={mockYoutubeEmbedProps.blok} />);
 
 		const button = screen.getByRole("button");
-		button.click();
+		fireEvent.click(button);
 
 		await waitFor(() => {
 			const embedIframe = screen.getByTitle(

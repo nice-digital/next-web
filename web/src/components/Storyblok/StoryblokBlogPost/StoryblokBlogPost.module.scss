@@ -1,5 +1,6 @@
 @use '@nice-digital/nds-core/scss/media-queries';
 @use '@nice-digital/nds-core/scss/spacing';
+@use '@nice-digital/nds-core/scss/typography';
 @use '@nice-digital/nds-core/scss/utils';
 
 /* stylelint-disable selector-class-pattern */
@@ -33,6 +34,16 @@
   //TODO: all news and blog header related. Move to NewsPageHeader
   :global(.page-header__heading) {
     margin: 0 0 utils.rem(spacing.$large) 0;
+
+    /* best compromise between legibility vs words being chopped off on narrow viewports*/
+    @include media-queries.mq($until: 360px) {
+      hyphens: auto;
+      word-break: break-word;
+    }
+
+    @include media-queries.mq($until: xs) {
+      @include typography.font-size(5);
+    }
   }
 
   :global(.page-header__lead) {

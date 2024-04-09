@@ -14,7 +14,7 @@ exports[`Promo box component should match snapshot 1`] = `
         <div
           class="contentContainer"
           data-component="grid-item"
-          data-g="12 sm:7"
+          data-g="12 md:7"
         >
           <h2
             class="heading"
@@ -33,18 +33,12 @@ exports[`Promo box component should match snapshot 1`] = `
         <div
           class="mediaContainer"
           data-component="grid-item"
-          data-g="12 sm:5"
+          data-g="12 md:5"
         >
-          <picture>
-            <source
-              srcset="/fallback-image.png/m/"
-              type="image/webp"
-            />
-            <img
-              data-testid="storyblok-image-fallback"
-              src="/fallback-image.png/"
-            />
-          </picture>
+          <div
+            class="imageContainer"
+            style="background-image: url(https://placebacon.net/130/210?image=4/m/filters:quality%2880%29);"
+          />
         </div>
       </div>
     </div>

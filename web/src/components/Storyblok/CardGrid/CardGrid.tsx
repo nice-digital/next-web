@@ -18,7 +18,7 @@ export const CardGrid = ({ blok }: CardGridBlokProps): React.ReactElement => {
 			{cards.map(({ heading, body, link, _uid }) => {
 				let cardLink: CardHeadingLinkProps | undefined = undefined;
 				const resolvedLink = link ? resolveStoryblokLink(link) : undefined;
-				if (resolvedLink) {
+				if (resolvedLink?.url) {
 					cardLink = {
 						destination: resolvedLink.url,
 						elementType: resolvedLink.isInternal ? Link : "a",

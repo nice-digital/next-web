@@ -32,7 +32,7 @@ export const StoryblokPageHeader = ({
 	let updatedCTA: ButtonLinkStoryblok | undefined = undefined;
 
 	// Force button to CTA variant for this template
-	if (cta) {
+	if (cta?.length) {
 		updatedCTA = {
 			...cta[0],
 			variant: "cta",

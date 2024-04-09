@@ -1,7 +1,6 @@
 import { debounce } from "lodash";
 import React, { useEffect, useRef } from "react";
 import { StoryblokStory } from "storyblok-generate-ts";
-import { StoryblokRichtext } from "storyblok-rich-text-react-renderer";
 
 import { Breadcrumbs, Breadcrumb } from "@nice-digital/nds-breadcrumbs";
 import { Grid, GridItem } from "@nice-digital/nds-grid";
@@ -16,6 +15,7 @@ import {
 
 import { NewsPageHeaderFooter } from "../NewsPageHeader/NewsPageHeaderFooter/NewsPageHeaderFooter";
 import { AuthorList } from "../StoryblokAuthor/AuthorList/AuthorList";
+import { StoryblokAuthor } from "../StoryblokAuthor/StoryblokAuthor";
 import { StoryblokImage } from "../StoryblokImage/StoryblokImage";
 import { StoryblokRichText } from "../StoryblokRichText/StoryblokRichText";
 
@@ -66,15 +66,14 @@ export const StoryblokBlogPost = ({
 		</Breadcrumbs>
 	) : undefined;
 
-	// filter out any strings from the author array
-	// const mixedArray: (string | StoryblokStory<AuthorStoryblok>)[] = blok.author;
-	// const filteredAuthorArray: StoryblokStory<AuthorStoryblok>[] =
-	// 	mixedArray.filter(
-	// 		(item) => typeof item !== "string"
-	// 	) as StoryblokStory<AuthorStoryblok>[];
-
-	//TODO: remove this when the above is fixed, mob sanitycheck
 	const authors = blok.author as StoryblokStory<AuthorStoryblok>[];
+
+	const PageHeaderAuthorsList =
+		authors.length === 0 ? null : authors.length > 1 ? (
+			<AuthorList authors={authors} />
+		) : typeof blok.author[0] !== "string" ? (
+			<StoryblokAuthor blok={blok.author[0].content} headingLevel={2} />
+		) : null;
 
 	return (
 		<article className={styles.newsSectionArticle} ref={articleRef}>
@@ -93,7 +92,7 @@ export const StoryblokBlogPost = ({
 								pageType={blok.component}
 							/>,
 						]}
-						secondSection={<AuthorList authors={authors} />}
+						secondSection={PageHeaderAuthorsList}
 					/>
 				</GridItem>
 
@@ -107,6 +106,11 @@ export const StoryblokBlogPost = ({
 							height="428px"
 							loading="eager"
 							src={blok.image.filename}
+							serviceOptions={{
+								height: 0,
+								quality: 80,
+								width: 867,
+							}}
 							width="760px"
 						/>
 					)}

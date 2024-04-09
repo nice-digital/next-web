@@ -10,6 +10,7 @@
     "host": "npm start | pino-mq -c .pino-mqrc.json",
     "test": "cd .. && npm run test -- --selectProjects web",
     "generate-sb-types": "storyblok pull-components --space {SPACE_ID} && storyblok-generate-ts source=./components.{SPACE_ID}.json target=./src/types/storyblok",
+    "generate-sb-types-dynamic": "sh -c 'storyblok pull-components --space $SPACE_ID; storyblok-generate-ts source=./components.$SPACE_ID.json target=./src/types/storyblok'",
     "proxy": "mkcert -install && mkcert localhost && local-ssl-proxy --source 4010 --target 4000 --cert localhost.pem --key localhost-key.pem"
   },
   "repository": {
@@ -27,7 +28,7 @@
     "extends @nice-digital/browserslist-config"
   ],
   "dependencies": {
-    "@nice-digital/design-system": "^5.0.21",
+    "@nice-digital/design-system": "^5.0.24",
     "@nice-digital/global-nav": "^7.1.1048",
     "@nice-digital/nds-prev-next": "^3.0.2",
     "@nice-digital/search-client": "^2.0.1571",

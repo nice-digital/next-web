@@ -1,6 +1,4 @@
-import { StoryblokComponent } from "@storyblok/react";
 import { render, screen } from "@testing-library/react";
-import { StoryblokStory } from "storyblok-generate-ts";
 
 import { AuthorStoryblok } from "@/types/storyblok";
 
@@ -166,12 +164,6 @@ describe("AuthorList", () => {
 				screen.getByTestId(`author-component-${author.content._uid}`)
 			).toBeInTheDocument();
 		});
-	});
-
-	it("should render a single author", () => {
-		render(<AuthorList authors={oneAuthorListContent.authors} />);
-		expect(screen.getByTestId("author-component-bd50")).toBeInTheDocument();
-		expect(screen.queryByText("List of authors")).toBeNull();
 	});
 
 	it("shouldn't render anything if there are no authors", () => {

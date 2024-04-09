@@ -3,7 +3,6 @@ import { ErrorInfo, FC } from "react";
 import { DefaultSeo } from "next-seo";
 import App, { AppProps, NextWebVitalsMetric } from "next/app";
 import { Inter, Lora } from "next/font/google";
-
 import "@nice-digital/design-system/scss/base.scss";
 import {
 	Header,
@@ -17,7 +16,7 @@ import { Container } from "@nice-digital/nds-container";
 import { ErrorPageContent } from "@/components/ErrorPageContent/ErrorPageContent";
 import { GoogleTagManager } from "@/components/GoogleTagManager/GoogleTagManager";
 import { logger } from "@/logger";
-import { initStoryblok } from "@/utils/storyblok";
+import { initStoryblok } from "@/utils/initStoryblok";
 
 import { getDefaultSeoConfig } from "./next-seo.config";
 import { publicRuntimeConfig } from "@/config";
@@ -163,9 +162,13 @@ class NextWebApp extends App<{}, {}, AppState> {
 			service = "standards-and-indicators";
 		}
 
+		const canonicalPathname = pathname.includes("[slug]")
+			? this.props.router.asPath.split("?")[0]
+			: pathname;
+
 		return (
 			<>
-				<DefaultSeo {...getDefaultSeoConfig(pathname)} />
+				<DefaultSeo {...getDefaultSeoConfig(canonicalPathname)} />
 				<div ref={this.globalNavWrapperRef}>
 					<Header {...headerProps} service={service} />
 				</div>

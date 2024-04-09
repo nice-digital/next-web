@@ -4,8 +4,9 @@ import { Hero } from "@nice-digital/nds-hero";
 import { StoryblokButtonLink } from "@/components/Storyblok/StoryblokButtonLink/StoryblokButtonLink";
 import { type Breadcrumb as TypeBreadcrumb } from "@/types/Breadcrumb";
 import { type HeroStoryblok } from "@/types/storyblok";
+import { constructStoryblokImageSrc } from "@/utils/storyblok";
 
-interface HeroBlokProps {
+export interface HeroBlokProps {
 	blok: HeroStoryblok;
 	breadcrumbs?: TypeBreadcrumb[];
 }
@@ -26,7 +27,9 @@ export const StoryblokHero = ({
 		</Breadcrumbs>
 	) : undefined;
 
-	const imageUrl = `${image?.filename}/m/` || undefined;
+	const optimisedImage = image?.filename
+		? constructStoryblokImageSrc(image?.filename)
+		: undefined;
 
 	const action = cta?.length ? (
 		<StoryblokButtonLink button={cta[0]} />
@@ -37,7 +40,7 @@ export const StoryblokHero = ({
 			title={blok.title}
 			intro={blok.summary || undefined}
 			header={BreadcrumbComponent}
-			image={imageUrl}
+			image={optimisedImage}
 			actions={action}
 		/>
 	);

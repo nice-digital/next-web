@@ -1,6 +1,8 @@
+@use '@nice-digital/nds-core/scss/media-queries';
 @use '@nice-digital/nds-core/scss/spacing';
-@use '@nice-digital/nds-core/scss/utils';
 @use '@nice-digital/nds-core/scss/typography';
+@use '@nice-digital/nds-core/scss/utils';
+@use '~/styles/colours';
 
 .newsCard {
   margin-bottom: utils.rem(spacing.$large);
@@ -11,6 +13,17 @@
   background-position: center;
   background-size: cover;
   display: block;
+  flex: 0 0 auto;
+  margin-bottom: utils.rem(spacing.$medium);
+  min-width: 100%;
+
+  @include media-queries.mq($from: sm) {
+    aspect-ratio: 21 / 9;
+  }
+
+  @include media-queries.mq($from: md) {
+    aspect-ratio: 16 / 9;
+  }
 }
 
 .heading {
@@ -20,4 +33,50 @@
 
 .date {
   margin-left: utils.rem(spacing.$medium);
+}
+
+.author {
+  @include typography.font-size(-2);
+  margin-bottom: utils.rem(spacing.$small);
+}
+
+.listItem {
+  align-items: flex-start;
+  border-bottom: 1px solid colours.$newslist-border;
+  display: flex;
+  flex-direction: column;
+  padding-bottom: utils.rem(spacing.$large);
+
+  .heading {
+    margin-top: 0;
+  }
+
+  .heading a {
+    &:link,
+    &:visited,
+    &:hover,
+    &:active,
+    &:focus {
+      @include typography.links-default;
+      text-decoration: none;
+    }
+  }
+
+  .author {
+    > p {
+      margin-bottom: 0;
+    }
+  }
+
+
+
+  @include media-queries.mq($from: md) {
+    flex-direction: row;
+
+    .imageContainer {
+      margin-bottom: 0;
+      margin-right: utils.rem(spacing.$large);
+      min-width: 300px;
+    }
+  }
 }

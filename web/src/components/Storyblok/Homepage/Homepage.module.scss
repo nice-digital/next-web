@@ -1,6 +1,25 @@
+@use '@nice-digital/nds-core/scss/layout';
 @use '@nice-digital/nds-core/scss/spacing';
 @use '@nice-digital/nds-core/scss/utils';
+@use '~/styles/colours';
+@use '~/styles/spacing' as *;
 
 .links {
-  margin-bottom: utils.rem(spacing.$x-large);
+  @include layout.fullWidth();
+  background-color: colours.$links-background;
+  padding: $homepage-large-spacing 0;
+}
+
+.linksTransparent {
+  background-color: transparent;
+}
+
+.linksContainer {
+  @include layout.fullWidthContainer();
+}
+
+.actionBannerWrapper {
+  .actionBanner {
+    margin-bottom: 0;
+  }
 }

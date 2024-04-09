@@ -1,44 +1,42 @@
 import React, { ImgHTMLAttributes } from "react";
 
+import {
+	ImageServiceOptions,
+	constructStoryblokImageSrc,
+} from "@/utils/storyblok";
+
+// extend the ImgHTMLAttributes so we can image attributes and storyblok service options
 export interface StoryblokImageProps
 	extends ImgHTMLAttributes<HTMLImageElement> {
 	src: string | undefined;
 	alt: string | undefined;
-	className?: string;
-	serviceOptions?: string;
-	[key: `data-${string}`]: string;
+	serviceOptions?: ImageServiceOptions;
 }
 
+//TODO: do we pass a fallback image as a prop or just use a default fallback image?
+// We set the alt to an empty string as it's required for accessibility.
+// If no alt is provided, it will be an empty string and treated as a decorative image
 export const StoryblokImage = React.forwardRef<
 	HTMLImageElement,
 	StoryblokImageProps
->(({ src, alt, className, serviceOptions, ...rest }, ref) => {
+>(({ src, alt = "", serviceOptions, ...rest }, ref) => {
 	const placeholderSrc = "/fallback-image.png";
 
-	const constructImageSrc = (baseUrl: string, serviceOptions?: string) => {
-		return serviceOptions ? `${baseUrl}${serviceOptions}` : `${baseUrl}`;
-	};
-
-	if (!src) {
-		src = placeholderSrc;
-		rest["data-testid"] = "storyblok-image-fallback";
+	// if no src is provided, use a placeholder image.  See TODO above
+	if (!src || src === "") {
+		return <img {...rest} ref={ref} src={placeholderSrc} alt={alt} />;
 	}
 
-	const webpSrc = constructImageSrc(`${src}/m/`, serviceOptions);
-	const jpgSrc = constructImageSrc(`${src}/`, serviceOptions);
+	// construct the source urls for webp, avif and jpeg for the picture element
+	const webPSrc = constructStoryblokImageSrc(src, serviceOptions, "webp");
+	const avifSrc = constructStoryblokImageSrc(src, serviceOptions, "avif");
+	const jpgSrc = constructStoryblokImageSrc(src, serviceOptions, "jpeg");
 
 	return (
 		<picture>
-			{webpSrc && <source srcSet={webpSrc} type="image/webp" />}
-			<img
-				ref={ref}
-				className={className}
-				src={jpgSrc ? jpgSrc : placeholderSrc}
-				alt={alt}
-				{...rest}
-			/>
+			<source srcSet={avifSrc || src} type="image/avif" />
+			<source srcSet={webPSrc || src} type="image/webp" />
+			<img {...rest} ref={ref} src={jpgSrc || src} alt={alt} />
 		</picture>
 	);
 });
-
-export default StoryblokImage;

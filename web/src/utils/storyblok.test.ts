@@ -7,6 +7,8 @@ import {
 	getStoryVersionFromQuery,
 	getSlugFromParams,
 	getAdditionalMetaTags,
+	encodeParens,
+	constructStoryblokImageSrc,
 } from "./storyblok";
 
 describe("Storyblok utils", () => {
@@ -113,6 +115,82 @@ describe("Storyblok utils", () => {
 					content: "1980",
 				},
 			]);
+		});
+	});
+
+	describe("Encode parens", () => {
+		it("should return an encoded string when given a string with parens", () => {
+			expect(encodeParens("some string (with parens)")).toBe(
+				"some string %28with parens%29"
+			);
+		});
+
+		it("should return the original string when given a string without parens", () => {
+			expect(encodeParens("some string without parens")).toBe(
+				"some string without parens"
+			);
+		});
+	});
+
+	describe("constructStoryblokImageSrc", () => {
+		it("generates correct path with default quality", () => {
+			const filename = "imagefilename.jpg";
+			const expectedPath = "imagefilename.jpg/m/filters:quality%2880%29";
+			const result = constructStoryblokImageSrc(filename);
+			expect(result).toEqual(expectedPath);
+		});
+
+		it("generates correct path with specified width and default quality", () => {
+			const filename = "imagefilename.jpg";
+			const width = 400;
+			const expectedPath = "imagefilename.jpg/m/400x0/filters:quality%2880%29";
+			const result = constructStoryblokImageSrc(filename, { width });
+			expect(result).toEqual(expectedPath);
+		});
+
+		it("generates correct path with specified quality", () => {
+			const filename = "imagefilename.jpg";
+			const quality = 60;
+			const expectedPath = "imagefilename.jpg/m/filters:quality%2860%29";
+			const result = constructStoryblokImageSrc(filename, { quality });
+			expect(result).toEqual(expectedPath);
+		});
+
+		it("generates correct path with specified width and quality", () => {
+			const filename = "imagefilename.jpg";
+			const width = 400;
+			const quality = 60;
+			const expectedPath = "imagefilename.jpg/m/400x0/filters:quality%2860%29";
+			const result = constructStoryblokImageSrc(filename, { width, quality });
+			expect(result).toEqual(expectedPath);
+		});
+
+		it("generates correct path with specified height and quality", () => {
+			const filename = "imagefilename.jpg";
+			const height = 400;
+			const quality = 60;
+			const expectedPath = "imagefilename.jpg/m/0x400/filters:quality%2860%29";
+			const result = constructStoryblokImageSrc(filename, { height, quality });
+			expect(result).toEqual(expectedPath);
+		});
+
+		it("generates correct path with specified width, height ", () => {
+			const filename = "imagefilename.jpg";
+			const width = 400;
+			const height = 600;
+			const expectedPath =
+				"imagefilename.jpg/m/400x600/filters:quality%2880%29";
+			const result = constructStoryblokImageSrc(filename, { width, height });
+			expect(result).toEqual(expectedPath);
+		});
+
+		it("generates correct path with specified format", () => {
+			const filename = "imagefilename.jpg";
+			const format = "avif";
+			const expectedPath =
+				"imagefilename.jpg/m/filters:format%28avif%29:quality%2880%29";
+			const result = constructStoryblokImageSrc(filename, {}, format);
+			expect(result).toEqual(expectedPath);
 		});
 	});
 });

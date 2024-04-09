@@ -6,6 +6,12 @@ import { PromoBox, type PromoBoxProps } from "./PromoBox";
 const mockPromoBox: PromoBoxProps = {
 	blok: {
 		heading: "Mock promo box title",
+		image: {
+			filename: "https://placebacon.net/130/210?image=4",
+			id: 123456789,
+			name: "Delicious bacon",
+		},
+		useVideo: false,
 		body: {
 			type: "Mock rich text",
 		},
@@ -61,7 +67,7 @@ describe("Promo box component", () => {
 		expect(
 			screen.getByRole("heading", { name: mockPromoBox.blok.heading })
 				.parentElement
-		).toHaveAttribute("data-g", "12 sm:7 sm:push:5");
+		).toHaveAttribute("data-g", "12 md:7 md:push:5");
 	});
 
 	it("should render video if specified", () => {

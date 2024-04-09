@@ -14,16 +14,10 @@ export interface StoryblokYoutubeEmbedProps
 export const StoryblokYoutubeEmbed: React.FC<StoryblokYoutubeEmbedProps> = ({
 	blok,
 }) => {
-	const { _uid, source, title } = blok;
-	{
-		/** TODO: add title field to the youTubeEmbed blok so we can add a accessible title for screen reader users
-		 * https://accessibility.blog.gov.uk/2020/03/16/why-videos-on-gov-uk-use-the-youtube-video-player/
-		 *
-		 * TODO: check the allow attribute properties are correct
-		 */
-	}
+	const { source, title } = blok;
+
 	return (
-		//react-lite-youtube-embed
+		//using react-lite-youtube-embed
 		<LiteYouTubeEmbed
 			id={source}
 			title={`(video) ${title}`}
@@ -34,9 +28,8 @@ export const StoryblokYoutubeEmbed: React.FC<StoryblokYoutubeEmbedProps> = ({
 			aspectHeight={9}
 			aspectWidth={16}
 			webp={true}
-			announce={`(video) ${title}`}
 			playlist={false}
-			params={"disablekb=0&rel=0&enablejsapi=0&autoplay=1"}
+			params={"disablekb=0&rel=0&enablejsapi=1&autoplay=1"}
 			rel="0"
 			cookie={true}
 		/>

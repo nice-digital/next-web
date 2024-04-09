@@ -1,7 +1,17 @@
-import { type ISbStoryData, StoryblokComponent } from "@storyblok/react";
+import {
+	type ISbStoryData,
+	StoryblokComponent,
+	setComponents,
+} from "@storyblok/react";
 import { NextSeo } from "next-seo";
 import React, { useMemo } from "react";
 
+import { Blockquote } from "@/components/Storyblok/Blockquote/Blockquote";
+import { StoryblokIframe } from "@/components/Storyblok/StoryblokIframe/StoryblokIframe";
+import { StoryblokNewsArticle } from "@/components/Storyblok/StoryblokNewsArticle/StoryblokNewsArticle";
+import { StoryblokRelatedLink } from "@/components/Storyblok/StoryblokRelatedLink/StoryblokRelatedLink";
+import { StoryblokRelatedNewsLink } from "@/components/Storyblok/StoryblokRelatedNewsLink/StoryblokRelatedNewsLink";
+import { StoryblokYoutubeEmbed } from "@/components/Storyblok/StoryblokYoutubeEmbed/StoryblokYoutubeEmbed";
 import { type Breadcrumb } from "@/types/Breadcrumb";
 import { NewsArticleStoryblok } from "@/types/storyblok";
 import {
@@ -26,6 +36,15 @@ export default function NewsArticlePage({
 		() => getAdditionalMetaTags(story),
 		[story]
 	);
+
+	setComponents({
+		newsArticle: StoryblokNewsArticle,
+		quote: Blockquote,
+		relatedLink: StoryblokRelatedLink,
+		relatedNewsLink: StoryblokRelatedNewsLink,
+		youtubeEmbed: StoryblokYoutubeEmbed,
+		iframe: StoryblokIframe,
+	});
 	const title = story.name;
 
 	return (

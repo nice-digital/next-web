@@ -31,4 +31,29 @@ describe("News card component", () => {
 			screen.getByRole("heading", { level: 5, name: "Test news article title" })
 		).toBeInTheDocument();
 	});
+
+	it("renders with default variant", () => {
+		render(<NewsCard story={mockNewsArticle} />);
+		const newsCardElement = screen.getByRole("article");
+		expect(newsCardElement).toBeInTheDocument();
+		expect(newsCardElement).not.toHaveClass("listItem");
+	});
+
+	it("renders with listItem class when 'isNewsListItem' variant is set", () => {
+		render(<NewsCard story={mockNewsArticle} variant="isNewsListItem" />);
+		const newsCardElement = screen.getByRole("article");
+		expect(newsCardElement).toBeInTheDocument();
+		expect(newsCardElement).toHaveClass("listItem");
+	});
+
+	it("should not render an image if showImage is false", () => {
+		const { asFragment } = render(
+			<NewsCard
+				story={mockNewsArticle}
+				variant="isNewsListItem"
+				showImage={false}
+			/>
+		);
+		expect(asFragment()).toMatchSnapshot();
+	});
 });

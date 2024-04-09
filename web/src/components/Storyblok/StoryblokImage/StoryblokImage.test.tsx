@@ -16,7 +16,9 @@ describe("StoryblokImage Component", () => {
 		const imageSrc = screen.getByRole("img").getAttribute("src");
 
 		expect(imageSrc).toContain(".jpg");
-		expect(imageSrc).toBe(mockImageResponse.src + "/");
+		expect(imageSrc).toBe(
+			mockImageResponse.src + "/m/filters:format%28jpeg%29:quality%2880%29"
+		);
 	});
 
 	it("should add the alt text of the image", () => {
@@ -32,12 +34,19 @@ describe("StoryblokImage Component", () => {
 			<StoryblokImage
 				src={mockImageResponse.src}
 				alt={mockImageResponse.alt}
-				serviceOptions="smart/filters:quality(80):grayscale()"
+				serviceOptions={{
+					height: 428,
+					quality: 80,
+					smart: true,
+					width: 760,
+				}}
 			/>
 		);
 
 		const imageSrc = screen.getByRole("img").getAttribute("src");
-		expect(imageSrc).toContain("smart/filters:quality(80):grayscale()");
+		expect(imageSrc).toContain(
+			"/m/760x428/smart/filters:format%28jpeg%29:quality%2880%29"
+		);
 	});
 
 	it("should add the className to the image if className passed", () => {
@@ -88,6 +97,6 @@ describe("StoryblokImage Component", () => {
 
 		const imageSrc = screen.getByRole("img").getAttribute("src");
 
-		expect(imageSrc).toBe("/fallback-image.png/");
+		expect(imageSrc).toBe("/fallback-image.png");
 	});
 });

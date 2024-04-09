@@ -93,6 +93,11 @@ export const StoryblokNewsArticle = ({
 							loading="eager"
 							src={blok?.image?.filename}
 							width="760px"
+							serviceOptions={{
+								height: 0,
+								quality: 80,
+								width: 760,
+							}}
 						/>
 					)}
 					<StoryblokRichText content={blok.content} />

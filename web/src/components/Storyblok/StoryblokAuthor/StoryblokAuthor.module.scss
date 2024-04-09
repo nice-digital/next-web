@@ -13,33 +13,60 @@
   &:has(img) &__name {
     margin-top: utils.rem(spacing.$medium);
   }
+}
 
-  &__image {
-    aspect-ratio: 1 / 1;
-    border-radius: 50%;
-    display: block;
-    height: auto;
-    object-fit: cover;
-    width: 82px;
+.isCardAuthor {
+  display: flex;
+  gap: utils.rem(spacing.$medium);
+  margin-top: utils.rem(spacing.$medium);
 
-    @include media-queries.mq($from: md) {
-      width: 100px;
-    }
-
-    @include media-queries.mq($from: lg) {
-      width: 136px;
-    }
+  > picture {
+    flex: 0 0 72px;
   }
 
-  &__name {
+  &:has(img) .name {
+    margin-top: 0;
+  }
+}
+
+.image {
+  aspect-ratio: 1 / 1;
+  border-radius: 50%;
+  display: block;
+  height: auto;
+  object-fit: cover;
+  width: 82px;
+
+  @include media-queries.mq($from: md) {
+    width: 100px;
+  }
+
+  @include media-queries.mq($from: lg) {
+    width: 136px;
+  }
+}
+
+.name {
+  @include typography.h4;
+  margin: 0;
+  margin-top: utils.rem(spacing.$x-small);
+
+  .isCardAuthor & {
+    @include typography.h6;
+    font-family: var(--sans-font-family);
     margin: 0;
   }
+}
 
-  &__job-title {
-    @include typography.h5;
-    font-weight: 400;
+.jobTitle {
+  @include typography.h5;
+  font-weight: 400;
+  margin: utils.rem(spacing.$small) 0 0;
+
+  .isCardAuthor & {
+    @include typography.p;
     margin: 0;
-    margin-top: utils.rem(spacing.$small);
-  }
+    text-wrap: pretty;
 
+  }
 }
