@@ -1,5 +1,8 @@
-import { ISbStoryData } from "@storyblok/react";
+import { ISbStoryData, getStoryblokApi } from "@storyblok/react";
+import * as matchers from "jest-extended";
 
+import Mock404FromStoryblokApi from "@/test-utils/storyblok-not-found-response.json";
+import MockSingleStorySuccessResponse from "@/test-utils/storyblok-single-story-response.json";
 import { type MultilinkStoryblok } from "@/types/storyblok";
 
 import {
@@ -9,6 +12,7 @@ import {
 	getAdditionalMetaTags,
 	encodeParens,
 	optimiseImage,
+	fetchStory,
 } from "./storyblok";
 
 describe("Storyblok utils", () => {
@@ -163,6 +167,48 @@ describe("Storyblok utils", () => {
 			const expectedPath = "imagefilename.jpg/m/400x0/filters:quality%2860%29";
 			const result = optimiseImage({ filename, size, quality });
 			expect(result).toEqual(expectedPath);
+		});
+	});
+
+	describe("fetchStory", () => {
+		it("should call the storyblokApi.get method with the correct params", async () => {
+			getStoryblokApi().get = jest
+				.fn()
+				.mockResolvedValue(MockSingleStorySuccessResponse);
+
+			await fetchStory("news/articles/test-page", "draft");
+
+			expect(getStoryblokApi().get).toHaveBeenCalled();
+			expect(getStoryblokApi().get).toHaveBeenCalledOnce();
+
+			expect(getStoryblokApi().get).toHaveBeenCalledWith(
+				"cdn/stories/news/articles/test-page",
+				{
+					cv: expect.any(Number),
+					resolve_links: "url",
+					version: "draft",
+				}
+			);
+		});
+
+		it("should fetch a story from Storyblok", async () => {
+			getStoryblokApi().get = jest
+				.fn()
+				.mockResolvedValue(MockSingleStorySuccessResponse);
+
+			const result = await fetchStory("news/articles/test-page", "published");
+
+			expect(result.story).toEqual(MockSingleStorySuccessResponse.data.story);
+		});
+
+		it("should handle a 404", async () => {
+			getStoryblokApi().get = jest
+				.fn()
+				.mockRejectedValue(JSON.stringify(Mock404FromStoryblokApi));
+
+			const response = await fetchStory("non/existent/slug", "published");
+
+			expect(response).toEqual({ notFound: true });
 		});
 	});
 });
