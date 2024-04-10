@@ -16,7 +16,7 @@ export const HomepageLatestNews: React.FC<LatestNewsProps> = ({
 	latestNews,
 }: LatestNewsProps) => {
 	return (
-		<section className={styles.latestNews}>
+		<section className={styles.latestNews} data-tracking="latest-news">
 			<h2 className={styles.title}>Latest from NICE</h2>
 			{featuredStory && <FeaturedStory story={featuredStory} />}
 			<NewsGrid news={latestNews} />

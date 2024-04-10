@@ -33,8 +33,8 @@ export type SBMultipleResponse<T> = {
 // News type enum
 export const newsTypes = {
 	newsArticle: "News",
-	blogPost: "Blog",
-	podcast: "Podcast",
+	blogPost: "Blogs",
+	podcast: "Podcasts",
 	inDepthArticle: "In-depth",
 };
 

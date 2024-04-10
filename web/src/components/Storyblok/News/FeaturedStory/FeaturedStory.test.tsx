@@ -17,7 +17,7 @@ describe("Featured story component", () => {
 
 	it("should render a 'Blog' tag if showing a blog post", () => {
 		render(<FeaturedStory story={mockBlogPost} />);
-		expect(screen.getByText("Blog")).toHaveClass("tag");
+		expect(screen.getByText("Blogs")).toHaveClass("tag");
 	});
 
 	it("should render a custom heading level if one is supplied", () => {

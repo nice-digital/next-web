@@ -64,6 +64,7 @@ export const PromoBox: React.FC<PromoBoxProps> = ({
 	return (
 		<article
 			className={classnames(styles.promoBox, transparentClass, className)}
+			data-tracking="promo-box"
 		>
 			<div className={styles.container}>
 				<Grid gutter="loose">

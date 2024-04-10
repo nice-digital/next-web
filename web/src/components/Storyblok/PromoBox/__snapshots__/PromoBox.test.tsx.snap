@@ -4,6 +4,7 @@ exports[`Promo box component should match snapshot 1`] = `
 <div>
   <article
     class="promoBox"
+    data-tracking="promo-box"
   >
     <div
       class="container"
