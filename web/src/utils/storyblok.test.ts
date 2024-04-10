@@ -1,7 +1,7 @@
 import { ISbStoryData, getStoryblokApi } from "@storyblok/react";
-import * as matchers from "jest-extended";
 
 import Mock404FromStoryblokApi from "@/test-utils/storyblok-not-found-response.json";
+import MockServerErrorResponse from "@/test-utils/storyblok-server-error-response.json";
 import MockSingleStorySuccessResponse from "@/test-utils/storyblok-single-story-response.json";
 import { type MultilinkStoryblok } from "@/types/storyblok";
 
@@ -209,6 +209,20 @@ describe("Storyblok utils", () => {
 			const response = await fetchStory("non/existent/slug", "published");
 
 			expect(response).toEqual({ notFound: true });
+		});
+
+		it("should handle server errors", async () => {
+			getStoryblokApi().get = jest
+				.fn()
+				.mockRejectedValueOnce(JSON.stringify(MockServerErrorResponse));
+
+			const throwErrorFetchStory = async () => {
+				await fetchStory("news/articles/test-page", "published");
+			};
+
+			expect(throwErrorFetchStory).rejects.toThrow(
+				"503 error from Storyblok API: Service Unavailable"
+			);
 		});
 	});
 });
