@@ -209,7 +209,7 @@ export const fetchStories = async <T>(
 		const errorResponse = JSON.parse(e as string) as ISbError;
 
 		result.error = errorResponse.message?.message;
-		Promise.reject(new Error(`${errorResponse.message}"`));
+		// Promise.reject(new Error(`${errorResponse.message}"`));
 
 		logger.error(
 			`${errorResponse.status} error from Storyblok API: ${errorResponse.message}`,

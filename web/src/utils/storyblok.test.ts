@@ -1,6 +1,5 @@
 import { ISbStoryData, getStoryblokApi } from "@storyblok/react";
 import { waitFor } from "@testing-library/react";
-import { before } from "lodash";
 
 import { logger } from "@/logger";
 import MockLinksSuccessResponse from "@/test-utils/storyblok-links-success-response.json";
@@ -11,7 +10,6 @@ import MockSingleStorySuccessResponse from "@/test-utils/storyblok-single-story-
 import { type MultilinkStoryblok } from "@/types/storyblok";
 import * as storyblokUtils from "@/utils/storyblok";
 
-import { fetchLinks } from "./fetchLinks";
 import {
 	resolveStoryblokLink,
 	getStoryVersionFromQuery,
@@ -22,6 +20,7 @@ import {
 	fetchStory,
 	fetchStories,
 	getBreadcrumbs,
+	fetchLinks,
 } from "./storyblok";
 
 describe("Storyblok utils", () => {
