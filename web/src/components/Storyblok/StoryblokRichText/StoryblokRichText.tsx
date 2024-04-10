@@ -71,7 +71,11 @@ export const StoryblokRichText: React.FC<StoryblokRichTextProps> = ({
 						// renders inline images from the stories richText field to StoryblokImage component
 						// Assumes the image will fall below the fold and uses lazy loading
 						// Assumes we're currently in the context of main body content so will use the main image max size in 7 column layout max width: 867px
-
+						const dimensions = {
+							width: props.src ? props.src.split("/")[5].split("x")[0] : 16,
+							height: props.src ? props.src.split("/")[5].split("x")[1] : 9,
+						};
+						// style={{ aspectRatio: `${dimensions.width}/${dimensions.height}` }}
 						return (
 							<StoryblokImage
 								src={props.src}
@@ -81,6 +85,9 @@ export const StoryblokRichText: React.FC<StoryblokRichTextProps> = ({
 									height: 0,
 									width: 867,
 									quality: 80,
+								}}
+								style={{
+									aspectRatio: `${dimensions.width}/${dimensions.height}`,
 								}}
 							/>
 						);
