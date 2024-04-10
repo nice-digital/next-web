@@ -1,5 +1,8 @@
 import { ISbStoryData, getStoryblokApi } from "@storyblok/react";
+import { waitFor } from "@testing-library/react";
 
+import { logger } from "@/logger";
+import MockMultipleStorySuccessResponse from "@/test-utils/storyblok-news-articles-listing.json";
 import Mock404FromStoryblokApi from "@/test-utils/storyblok-not-found-response.json";
 import MockServerErrorResponse from "@/test-utils/storyblok-server-error-response.json";
 import MockSingleStorySuccessResponse from "@/test-utils/storyblok-single-story-response.json";
@@ -13,6 +16,7 @@ import {
 	encodeParens,
 	optimiseImage,
 	fetchStory,
+	fetchStories,
 } from "./storyblok";
 
 describe("Storyblok utils", () => {
@@ -223,6 +227,103 @@ describe("Storyblok utils", () => {
 			expect(throwErrorFetchStory).rejects.toThrow(
 				"503 error from Storyblok API: Service Unavailable"
 			);
+		});
+	});
+
+	describe("fetchStories", () => {
+		it("should call the Storyblok.get method with the correct params", async () => {
+			getStoryblokApi().get = jest
+				.fn()
+				.mockResolvedValue(MockMultipleStorySuccessResponse);
+
+			await fetchStories("published", {
+				starts_with: "news/articles",
+				per_page: 6,
+			});
+
+			expect(getStoryblokApi().get).toHaveBeenCalled();
+			expect(getStoryblokApi().get).toHaveBeenCalledOnce();
+
+			expect(getStoryblokApi().get).toHaveBeenCalledWith("cdn/stories", {
+				cv: expect.any(Number),
+				resolve_links: "url",
+				version: "published",
+				starts_with: "news/articles",
+				per_page: 6,
+			});
+		});
+
+		it("should fetch a list of stories from Storyblok", async () => {
+			getStoryblokApi().get = jest
+				.fn()
+				.mockResolvedValue(MockMultipleStorySuccessResponse);
+
+			const result = await fetchStories("published", {
+				starts_with: "news/articles",
+				per_page: 8,
+			});
+
+			const expectedResult = {
+				stories: MockMultipleStorySuccessResponse.data.stories,
+				perPage: MockMultipleStorySuccessResponse.perPage,
+				total: MockMultipleStorySuccessResponse.total,
+			};
+
+			expect(result).toEqual(expectedResult);
+		});
+
+		it("should return a 404 error and log error message to logger when there is an error from storyblok", async () => {
+			const loggerErrorSpy = jest.spyOn(logger, "error");
+			getStoryblokApi().get = jest
+				.fn()
+				.mockRejectedValue(JSON.stringify(Mock404FromStoryblokApi));
+
+			const throwErrorFetchStories = async () => {
+				await fetchStories("published", {
+					starts_with: "news/articles",
+					per_page: 8,
+				});
+			};
+
+			expect(throwErrorFetchStories).rejects.toThrow(
+				"404 error from Storyblok API: Not Found"
+			);
+
+			await waitFor(() => {
+				expect(loggerErrorSpy).toHaveBeenCalled();
+				// eslint-disable-next-line testing-library/no-wait-for-multiple-assertions
+				expect(loggerErrorSpy).toHaveBeenCalledWith(
+					"404 error from Storyblok API: Not Found",
+					'{"message":"Not Found","status":404,"response":"This record could not be found"}'
+				);
+			});
+		});
+
+		it("should return a 503 error and log error message to logger when there is an error from storyblok", async () => {
+			const loggerErrorSpy = jest.spyOn(logger, "error");
+			getStoryblokApi().get = jest
+				.fn()
+				.mockRejectedValue(JSON.stringify(MockServerErrorResponse));
+
+			const throwErrorFetchStories = async () => {
+				await fetchStories("published", {
+					starts_with: "news/articles",
+					per_page: 8,
+				});
+			};
+
+			expect(throwErrorFetchStories).rejects.toThrow(
+				"503 error from Storyblok API: Service Unavailable"
+			);
+
+			await waitFor(() => {
+				expect(loggerErrorSpy).toHaveBeenCalled();
+				// eslint-disable-next-line testing-library/no-wait-for-multiple-assertions
+				expect(loggerErrorSpy).toHaveBeenCalledWith(
+					"503 error from Storyblok API: Service Unavailable",
+					'{"status":503,"message":"Service Unavailable"}'
+				);
+			});
 		});
 	});
 });
