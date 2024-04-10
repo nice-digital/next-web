@@ -1,13 +1,17 @@
 import { ISbStoryData, getStoryblokApi } from "@storyblok/react";
 import { waitFor } from "@testing-library/react";
+import { before } from "lodash";
 
 import { logger } from "@/logger";
+import MockLinksSuccessResponse from "@/test-utils/storyblok-links-success-response.json";
 import MockMultipleStorySuccessResponse from "@/test-utils/storyblok-news-articles-listing.json";
 import Mock404FromStoryblokApi from "@/test-utils/storyblok-not-found-response.json";
 import MockServerErrorResponse from "@/test-utils/storyblok-server-error-response.json";
 import MockSingleStorySuccessResponse from "@/test-utils/storyblok-single-story-response.json";
 import { type MultilinkStoryblok } from "@/types/storyblok";
+import * as storyblokUtils from "@/utils/storyblok";
 
+import { fetchLinks } from "./fetchLinks";
 import {
 	resolveStoryblokLink,
 	getStoryVersionFromQuery,
@@ -17,6 +21,7 @@ import {
 	optimiseImage,
 	fetchStory,
 	fetchStories,
+	getBreadcrumbs,
 } from "./storyblok";
 
 describe("Storyblok utils", () => {
@@ -313,6 +318,82 @@ describe("Storyblok utils", () => {
 			};
 
 			expect(throwErrorFetchStories).rejects.toThrow(
+				"503 error from Storyblok API: Service Unavailable"
+			);
+
+			await waitFor(() => {
+				expect(loggerErrorSpy).toHaveBeenCalled();
+				// eslint-disable-next-line testing-library/no-wait-for-multiple-assertions
+				expect(loggerErrorSpy).toHaveBeenCalledWith(
+					"503 error from Storyblok API: Service Unavailable",
+					'{"status":503,"message":"Service Unavailable"}'
+				);
+			});
+		});
+	});
+
+	describe("fetchLinks", () => {
+		it("should call the storyblokApi.getAll method with the correct params", async () => {
+			getStoryblokApi().getAll = jest
+				.fn()
+				.mockResolvedValue(MockLinksSuccessResponse);
+
+			await fetchLinks("published", "news/podcasts");
+
+			expect(getStoryblokApi().getAll).toHaveBeenCalled();
+			expect(getStoryblokApi().getAll).toHaveBeenCalledOnce();
+
+			expect(getStoryblokApi().getAll).toHaveBeenCalledWith("cdn/links", {
+				version: "published",
+				starts_with: "news/podcasts",
+			});
+		});
+
+		it("should fetch links from Storyblok", async () => {
+			getStoryblokApi().getAll = jest
+				.fn()
+				.mockResolvedValue(MockLinksSuccessResponse);
+
+			const result = await fetchLinks("published", "news/podcasts");
+
+			expect(result).toEqual(MockLinksSuccessResponse);
+		});
+
+		it("should return a 404 error and log error message to logger when there is an error from storyblok", async () => {
+			const loggerErrorSpy = jest.spyOn(logger, "error");
+			getStoryblokApi().getAll = jest
+				.fn()
+				.mockRejectedValue(JSON.stringify(Mock404FromStoryblokApi));
+
+			const throwErrorFetchLinks = async () => {
+				await fetchLinks("published", "news/podcasts");
+			};
+
+			expect(throwErrorFetchLinks).rejects.toThrow(
+				"404 error from Storyblok API: Not Found"
+			);
+
+			await waitFor(() => {
+				expect(loggerErrorSpy).toHaveBeenCalled();
+				// eslint-disable-next-line testing-library/no-wait-for-multiple-assertions
+				expect(loggerErrorSpy).toHaveBeenCalledWith(
+					"404 error from Storyblok API: Not Found",
+					'{"message":"Not Found","status":404,"response":"This record could not be found"}'
+				);
+			});
+		});
+
+		it("should return a 503 error and log error message to logger when there is an error from storyblok", async () => {
+			const loggerErrorSpy = jest.spyOn(logger, "error");
+			getStoryblokApi().getAll = jest
+				.fn()
+				.mockRejectedValue(JSON.stringify(MockServerErrorResponse));
+
+			const throwErrorFetchLinks = async () => {
+				await fetchLinks("published", "news/podcasts");
+			};
+
+			expect(throwErrorFetchLinks).rejects.toThrow(
 				"503 error from Storyblok API: Service Unavailable"
 			);
 
