@@ -23,6 +23,7 @@ import {
 	fetchLinks,
 	getNewsType,
 	newsTypes,
+	friendlyDate,
 } from "./storyblok";
 
 describe("Storyblok utils", () => {
@@ -444,6 +445,29 @@ describe("Storyblok utils", () => {
 				{ path: "/news/podcasts", title: "Podcasts" },
 				{ title: "Test podcast 4" },
 			]);
+		});
+
+		it.todo("no links found?");
+		it.todo("no parent id?");
+		it.todo("reverse ordering");
+		it.todo("fetchLinks error");
+		it.todo("fetchLinks 404?");
+	});
+
+	describe("friendlyDate", () => {
+		it("should format date string into expected format", () => {
+			const formattedDate = friendlyDate("2022-04-02");
+			expect(formattedDate).toBe("02 April 2022");
+		});
+
+		it("should handle invalid input gracefully", () => {
+			expect(() => {
+				friendlyDate("");
+			}).toThrow("Invalid date format");
+
+			expect(() => {
+				friendlyDate("not_a_date");
+			}).toThrow("Invalid date format");
 		});
 	});
 
