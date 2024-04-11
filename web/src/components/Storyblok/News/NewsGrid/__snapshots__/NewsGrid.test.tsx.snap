@@ -76,28 +76,26 @@ exports[`Homepage latest news component should match snapshot 1`] = `
               Test blog post title
             </a>
           </h3>
-          <p>
+          <p
+            class="blogIntroText"
+          >
             Let's play Blockbusters!
           </p>
           <footer>
             <div
               class="author"
             >
-              <p
-                class="author"
-              >
-                by 
-                Bob Holness
-                , 
-                Blockbusters host
-              </p>
+              by 
+              Bob Holness
+              , 
+              Blockbusters host
             </div>
             <div>
               <span
                 class="tag tag--outline"
                 data-component="tag"
               >
-                Blog
+                Blogs
               </span>
               <span
                 class="date"

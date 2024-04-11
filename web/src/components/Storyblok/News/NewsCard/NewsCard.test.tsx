@@ -20,9 +20,9 @@ describe("News card component", () => {
 		expect(screen.getByText("News")).toHaveClass("tag");
 	});
 
-	it("should render a 'Blog' tag if showing a blog post", () => {
+	it("should render a 'Blogs' tag if showing a blog post", () => {
 		render(<NewsCard story={mockBlogPost} />);
-		expect(screen.getByText("Blog")).toHaveClass("tag");
+		expect(screen.getByText("Blogs")).toHaveClass("tag");
 	});
 
 	it("should render a custom heading level if one is supplied", () => {

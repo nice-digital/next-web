@@ -35,9 +35,13 @@
   margin-left: utils.rem(spacing.$medium);
 }
 
+.blogIntroText {
+  margin-bottom: 0;
+}
+
 .author {
   @include typography.font-size(-2);
-  margin-bottom: utils.rem(spacing.$small);
+  margin: utils.rem(spacing.$small) 0;
 }
 
 .listItem {

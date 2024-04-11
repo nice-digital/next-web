@@ -1,11 +1,16 @@
+@use '@nice-digital/nds-core/scss/media-queries';
 @use '@nice-digital/nds-core/scss/spacing';
 @use '@nice-digital/nds-core/scss/utils';
 @use '~/styles/spacing' as *;
 
 .latestNews {
-  margin-bottom: $homepage-large-spacing;
+  margin-bottom: $homepage-large-spacing-mobile;
+
+  @include media-queries.mq($from: md) {
+    margin-bottom: $homepage-large-spacing;
+  }
 }
 
 .title {
-  margin: 0 0 utils.rem(spacing.$x-large);
+  margin: 0 0 utils.rem(spacing.$large);
 }

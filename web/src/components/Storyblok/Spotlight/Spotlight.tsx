@@ -38,6 +38,7 @@ export const Spotlight: React.FC<SpotlightProps> = ({
 	return (
 		<section
 			className={classnames(styles.spotlight, transparentClass, className)}
+			data-tracking="spotlight"
 		>
 			<div className={styles.container}>
 				<HeadingElement className={styles.heading}>{heading}</HeadingElement>

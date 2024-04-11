@@ -142,6 +142,7 @@ export default function NewsIndexPage({
 							role="presentation"
 							width={400}
 							height={400}
+							unoptimized
 						/>
 					</div>
 					<p>
@@ -164,6 +165,11 @@ export async function getServerSideProps(context: GetServerSidePropsContext) {
 	const commonParams: ISbStoriesParams = {
 		resolve_links: "url",
 		sort_by: "content.date:desc",
+		filter_query: {
+			date: {
+				lt_date: new Date().toISOString(),
+			},
+		},
 	};
 
 	const articleParams = {
@@ -182,6 +188,7 @@ export async function getServerSideProps(context: GetServerSidePropsContext) {
 		starts_with: "news/blogs",
 		...commonParams,
 		excluding_slugs: "news/blogs/authors/*",
+		resolve_relations: "blogPost.author",
 		per_page: 2,
 	};
 
