@@ -6,18 +6,21 @@ import MockStoryblokResponse from "@/test-utils/storyblok-news-articles-listing.
 //import * as matchers from "jest-extended/all";
 //expect.extend(matchers);
 
+//TODO - investigate why this global mock causes module undefined errors in tests
 // Mock the storyblok connection function (but leave all other Storyblok functions in place)
-jest.mock("@/utils/storyblok", () => ({
-	...jest.requireActual("@/utils/storyblok"),
-}));
+// jest.mock("@/utils/storyblok", () => ({
+// 	...jest.requireActual("@/utils/storyblok"),
+// }));
 
 jest.mock("@/utils/initStoryblok", () => ({
 	initStoryblok: jest.fn(),
 }));
 
 jest.mock("@storyblok/react", () => ({
+	...jest.requireActual("@storyblok/react"),
 	getStoryblokApi: jest.fn().mockReturnValue({
 		get: jest.fn(),
+		getAll: jest.fn(),
 	}),
 }));
 
