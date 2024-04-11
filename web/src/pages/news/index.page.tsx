@@ -125,7 +125,7 @@ export default function NewsIndexPage({
 										>
 											{content.introText}
 											<footer className={styles.podcastFooter}>
-												<Tag outline>Podcast</Tag>
+												<Tag outline>Podcasts</Tag>
 												<span className={styles.podcastDate}>
 													{friendlyDate(content.date)}
 												</span>
