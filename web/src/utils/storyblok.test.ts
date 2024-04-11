@@ -21,6 +21,8 @@ import {
 	fetchStories,
 	getBreadcrumbs,
 	fetchLinks,
+	getNewsType,
+	newsTypes,
 } from "./storyblok";
 
 describe("Storyblok utils", () => {
@@ -442,6 +444,32 @@ describe("Storyblok utils", () => {
 				{ path: "/news/podcasts", title: "Podcasts" },
 				{ title: "Test podcast 4" },
 			]);
+		});
+	});
+
+	describe("getNewsType", () => {
+		for (const type in newsTypes) {
+			it(`should return the correct category type for ${type}`, () => {
+				const story = {
+					content: {
+						component: type,
+					},
+				};
+
+				expect(getNewsType(story.content.component)).toBe(
+					newsTypes[type as keyof typeof newsTypes]
+				);
+			});
+		}
+
+		it("should return the default category type of News when an invalid type is passed", () => {
+			const story = {
+				content: {
+					component: "invalidType",
+				},
+			};
+
+			expect(getNewsType(story.content.component)).toBe(newsTypes.newsArticle);
 		});
 	});
 });
