@@ -17,6 +17,13 @@ import {
 
 const mockStories = MockStoryblokSuccessResponse.data.stories;
 
+jest.mock("@storyblok/react", () => ({
+	getStoryblokApi: jest.fn().mockReturnValue({
+		get: jest.fn(),
+		getAll: jest.fn(),
+	}),
+}));
+
 describe("/news/articles/index.page", () => {
 	(useRouter as jest.Mock).mockReturnValue({
 		route: "/news/articles",

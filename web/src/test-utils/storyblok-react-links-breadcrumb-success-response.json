@@ -1,6 +1,6 @@
 {
-  "links": {
-    "6f0942ce-0593-43ef-888e-9237a1eddde8": {
+  "links": [
+    {
       "id": 476083736,
       "uuid": "6f0942ce-0593-43ef-888e-9237a1eddde8",
       "slug": "news/podcasts/highlights-of-2023-our-directors-look-back-on-a-busy-year",
@@ -13,7 +13,7 @@
       "position": -30,
       "real_path": "/news/podcasts/highlights-of-2023-our-directors-look-back-on-a-busy-year"
     },
-    "5e3df582-ae78-496b-8035-12f96bda9cdd": {
+    {
       "id": 420933347,
       "uuid": "5e3df582-ae78-496b-8035-12f96bda9cdd",
       "slug": "news/podcasts",
@@ -26,7 +26,7 @@
       "position": -30,
       "real_path": "/news/podcasts"
     },
-    "de4f175f-5c80-44f4-b133-346d8387b7c0": {
+    {
       "id": 476079045,
       "uuid": "de4f175f-5c80-44f4-b133-346d8387b7c0",
       "slug": "news/podcasts/new-patient-decision-aid-on-asthma-inhalers-and-climate-change",
@@ -39,7 +39,7 @@
       "position": -20,
       "real_path": "/news/podcasts/new-patient-decision-aid-on-asthma-inhalers-and-climate-change"
     },
-    "74f25d93-875e-4781-9b69-a3a812712e15": {
+    {
       "id": 465262548,
       "uuid": "74f25d93-875e-4781-9b69-a3a812712e15",
       "slug": "news/podcasts/learning-more-about-the-nice-advice-service-test",
@@ -52,7 +52,7 @@
       "position": -10,
       "real_path": "/news/podcasts/learning-more-about-the-nice-advice-service-test"
     },
-    "f3fbf5db-e084-4ef8-9518-292d7fd01d83": {
+    {
       "id": 463576482,
       "uuid": "f3fbf5db-e084-4ef8-9518-292d7fd01d83",
       "slug": "news/podcasts/test-podcast-4",
@@ -65,7 +65,7 @@
       "position": 0,
       "real_path": "/news/podcasts/test-podcast-4"
     },
-    "cf69ff81-3743-483b-967e-23bd0dfccfdc": {
+    {
       "id": 463576508,
       "uuid": "cf69ff81-3743-483b-967e-23bd0dfccfdc",
       "slug": "news/podcasts/test-podcast-5",
@@ -78,7 +78,7 @@
       "position": 0,
       "real_path": "/news/podcasts/test-podcast-5"
     },
-    "edc3c199-faee-446f-be67-6329af1b117e": {
+    {
       "id": 463576510,
       "uuid": "edc3c199-faee-446f-be67-6329af1b117e",
       "slug": "news/podcasts/test-podcast-6",
@@ -91,7 +91,7 @@
       "position": 0,
       "real_path": "/news/podcasts/test-podcast-6"
     },
-    "1d296563-2969-4336-987a-a41129a19b65": {
+    {
       "id": 460133192,
       "uuid": "1d296563-2969-4336-987a-a41129a19b65",
       "slug": "news/podcasts/test-podcast-1",
@@ -104,7 +104,7 @@
       "position": 0,
       "real_path": "/news/podcasts/test-podcast-1"
     },
-    "573cb07e-c95f-4042-8696-1f8dceba8275": {
+    {
       "id": 462979793,
       "uuid": "573cb07e-c95f-4042-8696-1f8dceba8275",
       "slug": "news/podcasts/test-podcast-2",
@@ -117,7 +117,7 @@
       "position": 0,
       "real_path": "/news/podcasts/test-podcast-2"
     },
-    "d69d06b7-d325-4e87-8594-3be795a406db": {
+    {
       "id": 463576455,
       "uuid": "d69d06b7-d325-4e87-8594-3be795a406db",
       "slug": "news/podcasts/test-podcast-3",
@@ -129,6 +129,19 @@
       "is_startpage": false,
       "position": 0,
       "real_path": "/news/podcasts/test-podcast-3"
+    },
+    {
+      "id": 416560296,
+      "uuid": "8edd6338-dfe5-4a2b-922e-77241a5ced0b",
+      "slug": "news",
+      "path": null,
+      "parent_id": null,
+      "name": "News",
+      "is_folder": true,
+      "published": false,
+      "is_startpage": false,
+      "position": 90,
+      "real_path": "/news"
     }
-  }
+  ]
 }
