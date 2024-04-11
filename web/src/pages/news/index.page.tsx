@@ -142,6 +142,7 @@ export default function NewsIndexPage({
 							role="presentation"
 							width={400}
 							height={400}
+							unoptimized
 						/>
 					</div>
 					<p>
