@@ -165,6 +165,11 @@ export async function getServerSideProps(context: GetServerSidePropsContext) {
 	const commonParams: ISbStoriesParams = {
 		resolve_links: "url",
 		sort_by: "content.date:desc",
+		filter_query: {
+			date: {
+				lt_date: new Date().toISOString(),
+			},
+		},
 	};
 
 	const articleParams = {
