@@ -119,20 +119,10 @@ export const validateRouteParams = async <T>({
 	const version = getStoryVersionFromQuery(query);
 
 	const redirectUrl = new URL(resolvedUrl || "", "http://localhost");
-	const page = Number(query.page) || 1;
-	// set page to at least 1 or 1 if it's not a number
-	// const page = Math.max(Number(query.page) || 1, 1);
 
-	//TODO: if page is < 1, NaN, or not a number, should we redirect to page 1 or assign page to 1?
-	if (page < 1) {
-		return {
-			redirect: {
-				destination: redirectUrl.pathname,
-				permanent: false,
-			},
-		};
-	}
-	// const { starts_with, per_page } = options;
+	// set page to at least 1, or 1 if it's not a number
+	const page = Math.max(Number(query.page) || 1, 1);
+
 	const requestParams: ISbStoriesParams = {
 		...sbParams,
 		page,
@@ -143,7 +133,9 @@ export const validateRouteParams = async <T>({
 			},
 		},
 	};
+
 	const result = await fetchStories<T>(version, requestParams);
+
 	if (
 		!result ||
 		result.total === undefined ||
