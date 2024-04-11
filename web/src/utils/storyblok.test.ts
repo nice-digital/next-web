@@ -1,5 +1,6 @@
 import { ISbStoryData, getStoryblokApi } from "@storyblok/react";
 import { waitFor } from "@testing-library/react";
+import { sort } from "fast-sort";
 
 import { logger } from "@/logger";
 import MockMultipleStorySuccessResponse from "@/test-utils/storyblok-news-articles-listing.json";
@@ -24,6 +25,7 @@ import {
 	getNewsType,
 	newsTypes,
 	friendlyDate,
+	validateRouteParams,
 } from "./storyblok";
 
 describe("Storyblok utils", () => {
@@ -494,6 +496,96 @@ describe("Storyblok utils", () => {
 			};
 
 			expect(getNewsType(story.content.component)).toBe(newsTypes.newsArticle);
+		});
+	});
+
+	describe("validateRouteParams", () => {
+		const mockRequestParams = {
+			query: {},
+			resolvedUrl: "/news/podcasts",
+			sbParams: {
+				starts_with: "news/podcasts/",
+				per_page: 3,
+			},
+		};
+
+		const expectedParams = {
+			filter_query: {
+				date: {
+					lt_date: "2024-04-08T00:00:00.000Z",
+				},
+			},
+			page: 1,
+			sort_by: "content.date:desc",
+			...mockRequestParams.sbParams,
+		};
+
+		const fetchStoriesSpy = jest.spyOn(storyblokUtils, "fetchStories");
+
+		beforeEach(() => {
+			getStoryblokApi().get = jest
+				.fn()
+				.mockResolvedValue(MockMultipleStorySuccessResponse);
+
+			jest.useFakeTimers();
+			jest.setSystemTime(new Date("2024-04-08"));
+		});
+
+		afterEach(() => {
+			// Clean up and restore original timers after each test
+			jest.useRealTimers();
+			jest.clearAllMocks();
+		});
+
+		it("should call fetchStories with the correct params with page being set to 1 when query object is empty", async () => {
+			await validateRouteParams(mockRequestParams);
+
+			expect(fetchStoriesSpy).toHaveBeenCalled();
+			expect(fetchStoriesSpy).toHaveBeenCalledWith("published", expectedParams);
+		});
+
+		it("should call fetchStories with the correct params when the query.page is set to 2", async () => {
+			const mockRequestParamsAtPage2 = {
+				...mockRequestParams,
+				query: {
+					page: "2",
+				},
+			};
+
+			const expectedParamsAtPage2 = {
+				...expectedParams,
+				page: 2,
+			};
+
+			await validateRouteParams(mockRequestParamsAtPage2);
+
+			expect(fetchStoriesSpy).toHaveBeenCalled();
+			expect(fetchStoriesSpy).toHaveBeenCalledWith(
+				"published",
+				expectedParamsAtPage2
+			);
+		});
+
+		it("should call fetchStories with the correct params when the query.page is not a number", async () => {
+			const mockRequestParamsPageNaN = {
+				...mockRequestParams,
+				query: {
+					page: "NaN",
+				},
+			};
+
+			const expectedParamsPageNaN = {
+				...expectedParams,
+				page: 1,
+			};
+
+			await validateRouteParams(mockRequestParamsPageNaN);
+
+			expect(fetchStoriesSpy).toHaveBeenCalled();
+			expect(fetchStoriesSpy).toHaveBeenCalledWith(
+				"published",
+				expectedParamsPageNaN
+			);
 		});
 	});
 });
