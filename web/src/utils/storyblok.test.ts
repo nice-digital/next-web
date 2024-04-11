@@ -2,9 +2,9 @@ import { ISbStoryData, getStoryblokApi } from "@storyblok/react";
 import { waitFor } from "@testing-library/react";
 
 import { logger } from "@/logger";
-import MockLinksSuccessResponse from "@/test-utils/storyblok-links-success-response.json";
 import MockMultipleStorySuccessResponse from "@/test-utils/storyblok-news-articles-listing.json";
 import Mock404FromStoryblokApi from "@/test-utils/storyblok-not-found-response.json";
+import MockLinksSuccessResponse from "@/test-utils/storyblok-react-links-success-response.json";
 import MockServerErrorResponse from "@/test-utils/storyblok-server-error-response.json";
 import MockSingleStorySuccessResponse from "@/test-utils/storyblok-single-story-response.json";
 import { type MultilinkStoryblok } from "@/types/storyblok";
@@ -404,6 +404,44 @@ describe("Storyblok utils", () => {
 					'{"status":503,"message":"Service Unavailable"}'
 				);
 			});
+		});
+	});
+
+	describe("getBreadcrumbs", () => {
+		it("should fetch links with correct params", async () => {
+			const fetchLinksSpy = jest.spyOn(storyblokUtils, "fetchLinks");
+
+			getStoryblokApi().getAll = jest
+				.fn()
+				.mockResolvedValue([MockLinksSuccessResponse.links]);
+
+			await getBreadcrumbs("news/podcasts/test-podcast-4", "published");
+
+			expect(fetchLinksSpy).toHaveBeenCalled();
+			expect(fetchLinksSpy).toHaveBeenCalledWith("published", "news");
+
+			expect(getStoryblokApi().getAll).toHaveBeenCalled();
+			expect(getStoryblokApi().getAll).toHaveBeenCalledWith("cdn/links", {
+				version: "published",
+				starts_with: "news",
+			});
+		});
+
+		it("should return valid breadcrumbs", async () => {
+			getStoryblokApi().getAll = jest
+				.fn()
+				.mockResolvedValue(MockLinksSuccessResponse.links);
+
+			const result = await getBreadcrumbs(
+				"news/podcasts/test-podcast-4",
+				"published"
+			);
+
+			expect(result).toEqual([
+				{ path: "/news", title: "News" },
+				{ path: "/news/podcasts", title: "Podcasts" },
+				{ title: "Test podcast 4" },
+			]);
 		});
 	});
 });
