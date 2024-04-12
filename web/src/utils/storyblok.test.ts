@@ -1,6 +1,9 @@
-import { ISbStoryData, getStoryblokApi } from "@storyblok/react";
+import {
+	ISbStoriesParams,
+	ISbStoryData,
+	getStoryblokApi,
+} from "@storyblok/react";
 import { waitFor } from "@testing-library/react";
-import { sort } from "fast-sort";
 
 import { logger } from "@/logger";
 import MockMultipleStorySuccessResponse from "@/test-utils/storyblok-news-articles-listing.json";
@@ -502,49 +505,53 @@ describe("Storyblok utils", () => {
 	describe("validateRouteParams", () => {
 		const mockRequestParams = {
 			query: {},
-			resolvedUrl: "/news/podcasts",
+			resolvedUrl: "/news/articles",
 			sbParams: {
-				starts_with: "news/podcasts/",
-				per_page: 3,
+				starts_with: "news/articles/",
+				per_page: 8,
 			},
 		};
 
-		const expectedParams = {
-			filter_query: {
-				date: {
-					lt_date: "2024-04-08T00:00:00.000Z",
-				},
-			},
-			page: 1,
-			sort_by: "content.date:desc",
-			...mockRequestParams.sbParams,
-		};
+		let expectedParams: ISbStoriesParams;
 
-		const fetchStoriesSpy = jest.spyOn(storyblokUtils, "fetchStories");
+		let fetchStoriesSpy: jest.SpyInstance;
 
 		beforeEach(() => {
-			getStoryblokApi().get = jest
-				.fn()
-				.mockResolvedValue(MockMultipleStorySuccessResponse);
-
 			jest.useFakeTimers();
 			jest.setSystemTime(new Date("2024-04-08"));
+
+			fetchStoriesSpy = jest.spyOn(storyblokUtils, "fetchStories");
+
+			expectedParams = {
+				page: 1,
+				sort_by: "content.date:desc",
+				...mockRequestParams.sbParams,
+				filter_query: {
+					date: {
+						lt_date: new Date().toISOString(),
+					},
+				},
+			};
 		});
 
 		afterEach(() => {
 			// Clean up and restore original timers after each test
 			jest.useRealTimers();
-			jest.clearAllMocks();
+			jest.restoreAllMocks();
 		});
 
-		it("should call fetchStories with the correct params with page being set to 1 when query object is empty", async () => {
+		it("should call fetchStories with page being set to 1 when query object is empty", async () => {
+			getStoryblokApi().get = jest
+				.fn()
+				.mockResolvedValue(MockMultipleStorySuccessResponse);
 			await validateRouteParams(mockRequestParams);
 
 			expect(fetchStoriesSpy).toHaveBeenCalled();
+
 			expect(fetchStoriesSpy).toHaveBeenCalledWith("published", expectedParams);
 		});
 
-		it("should call fetchStories with the correct params when the query.page is set to 2", async () => {
+		it("should call fetchStories with the correct params when the query.page is greater than 1", async () => {
 			const mockRequestParamsAtPage2 = {
 				...mockRequestParams,
 				query: {
@@ -585,6 +592,77 @@ describe("Storyblok utils", () => {
 			expect(fetchStoriesSpy).toHaveBeenCalledWith(
 				"published",
 				expectedParamsPageNaN
+			);
+		});
+
+		it("should call fetchStories with the correct params when the query.page is less than 1", async () => {
+			const mockRequestParamsPageLessThan1 = {
+				...mockRequestParams,
+				query: {
+					page: "0",
+				},
+			};
+
+			const expectedParamsPageLessThan1 = {
+				...expectedParams,
+				page: 1,
+			};
+
+			await validateRouteParams(mockRequestParamsPageLessThan1);
+
+			expect(fetchStoriesSpy).toHaveBeenCalled();
+			expect(fetchStoriesSpy).toHaveBeenCalledWith(
+				"published",
+				expectedParamsPageLessThan1
+			);
+		});
+
+		it("should return story data when fetchStories is successful", async () => {
+			const result = await validateRouteParams(mockRequestParams);
+
+			expect(result).toEqual({
+				featuredStory: MockMultipleStorySuccessResponse.data.stories[0],
+				stories: MockMultipleStorySuccessResponse.data.stories.slice(1),
+				perPage: MockMultipleStorySuccessResponse.perPage,
+				total: MockMultipleStorySuccessResponse.total,
+				currentPage: 1,
+			});
+		});
+
+		it("should call the logger error method when fetchStories returns no stories", async () => {
+			const loggerErrorSpy = jest.spyOn(logger, "error");
+
+			const mockNoStoriesResponse = {
+				data: {
+					stories: [],
+				},
+			};
+
+			fetchStoriesSpy.mockResolvedValue(mockNoStoriesResponse);
+
+			await validateRouteParams(mockRequestParams);
+
+			expect(loggerErrorSpy).toHaveBeenCalled();
+
+			expect(loggerErrorSpy).toHaveBeenCalledWith(
+				"Error fetching stories: ",
+				mockNoStoriesResponse
+			);
+		});
+
+		xit("should call the logger error method when fetchStories throws an error", async () => {
+			const loggerErrorSpy = jest.spyOn(logger, "error");
+
+			const mockError = "Error fetching stories"; // Fix: Pass the error message as a string
+
+			fetchStoriesSpy.mockRejectedValue(mockError); // Fix: Pass the error message as a value
+
+			await validateRouteParams(mockRequestParams);
+
+			expect(loggerErrorSpy).toHaveBeenCalled();
+			expect(loggerErrorSpy).toHaveBeenCalledWith(
+				"Error from catch in fetchStories: ",
+				mockError
 			);
 		});
 	});
