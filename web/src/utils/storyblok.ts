@@ -110,7 +110,6 @@ export type ValidateRouteParamsResult<T> =
 	| { redirect: Redirect }
 	| ValidateRouteParamsSuccess<T>
 	| ValidateRouteParamsError;
-
 export const validateRouteParams = async <T>({
 	query,
 	sbParams,
@@ -134,47 +133,56 @@ export const validateRouteParams = async <T>({
 		},
 	};
 
-	const result = await fetchStories<T>(version, requestParams);
+	try {
+		const result = await fetchStories<T>(version, requestParams);
 
-	if (
-		!result ||
-		result.total === undefined ||
-		(result.total === 0 && result.stories.length === 0)
-	) {
-		logger.error("Error fetching stories: ", result);
+		if (
+			!result ||
+			result.total === undefined ||
+			(result.total === 0 && result.stories.length === 0)
+		) {
+			logger.error("Error fetching stories: ", result);
+			return {
+				error:
+					"There are no stories to display at the moment. Please try again later.",
+			};
+		}
+
+		let featuredStory = null;
+		let stories = result.stories;
+
+		const { total, perPage } = result;
+
+		if (page === 1 && stories.length > 0) {
+			featuredStory = result.stories[0]; // Set featured story on page 1
+			stories = stories.slice(1); // Skip first story on page 1 as it's featured
+		}
+
+		// redirect to page 1 if page is out of range
+		if (page && perPage && page > Math.ceil(total / perPage)) {
+			return {
+				redirect: {
+					destination: redirectUrl.pathname,
+					permanent: false,
+				},
+			};
+		}
+
 		return {
-			error:
-				"There are no stories to display at the moment. Please try again later.",
+			featuredStory,
+			stories,
+			total,
+			currentPage: page,
+			perPage,
+		};
+	} catch (error) {
+		console.log("ERROR VALIDATING ROUTE PARAMS:");
+		console.log("error", error);
+		logger.error("Error from catch in fetchStories: ", error);
+		return {
+			error: "There was an error fetching stories. Please try again later.",
 		};
 	}
-
-	let featuredStory = null;
-	let stories = result.stories;
-
-	const { total, perPage } = result;
-
-	if (page === 1 && stories.length > 0) {
-		featuredStory = result.stories[0]; // Set featured story on page 1
-		stories = stories.slice(1); // Skip first story on page 1 as it's featured
-	}
-
-	// redirect to page 1 if page is out of range
-	if (page && perPage && page > Math.ceil(total / perPage)) {
-		return {
-			redirect: {
-				destination: redirectUrl.pathname,
-				permanent: false,
-			},
-		};
-	}
-
-	return {
-		featuredStory,
-		stories,
-		total,
-		currentPage: page,
-		perPage,
-	};
 };
 
 // Fetch multiple stories from the Storyblok API
@@ -182,6 +190,7 @@ export const fetchStories = async <T>(
 	version: StoryVersion = "published",
 	params: ISbStoriesParams = {}
 ): Promise<SBMultipleResponse<T>> => {
+	console.log("<<<<< FETCHING STORIES >>>>");
 	const storyblokApi = getStoryblokApi();
 
 	const sbParams: ISbStoriesParams = {
@@ -194,10 +203,16 @@ export const fetchStories = async <T>(
 	const result: SBMultipleResponse<T> = { stories: [] };
 	try {
 		const response: ISbResult = await storyblokApi.get(`cdn/stories`, sbParams);
+		console.log("<<<<< FETCHED STORIES RETURN >>>>");
+		console.log(response);
+		console.log("<<<<< FETCHED STORIES RETURN >>>>");
 		result.stories = response.data.stories;
 		result.perPage = response.perPage;
 		result.total = response.total;
 	} catch (e) {
+		console.log("<<<<< FETCHED STORIES ERROR >>>>");
+		console.log(e);
+		console.log("<<<<< FETCHED STORIES ERROR >>>>");
 		const errorResponse = JSON.parse(e as string) as ISbError;
 
 		result.error = errorResponse.message?.message;
@@ -207,11 +222,17 @@ export const fetchStories = async <T>(
 			`${errorResponse.status} error from Storyblok API: ${errorResponse.message}`,
 			e
 		);
+
+		// Promise.reject(
+		// 	new Error(
+		// 		`${errorResponse.status} error from Storyblok API: ${errorResponse.message}`
+		// 	)
+		// );
 		throw Error(
 			`${errorResponse.status} error from Storyblok API: ${errorResponse.message}`
 		);
 	}
-
+	console.log("WE HIT RETURNING A RESULT");
 	return result;
 };
 

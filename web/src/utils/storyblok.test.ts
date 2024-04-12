@@ -650,12 +650,12 @@ describe("Storyblok utils", () => {
 			);
 		});
 
-		xit("should call the logger error method when fetchStories throws an error", async () => {
+		it("should call the logger error method when fetchStories throws an error", async () => {
 			const loggerErrorSpy = jest.spyOn(logger, "error");
 
-			const mockError = "Error fetching stories"; // Fix: Pass the error message as a string
+			const mockError = "Error fetching stories";
 
-			fetchStoriesSpy.mockRejectedValue(mockError); // Fix: Pass the error message as a value
+			fetchStoriesSpy.mockRejectedValue(mockError);
 
 			await validateRouteParams(mockRequestParams);
 
