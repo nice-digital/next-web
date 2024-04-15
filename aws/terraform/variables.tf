@@ -37,9 +37,9 @@ variable "resource_cpu" {
 variable "resource_mem" {
   type    = number
 }
-variable "cloudwatchlog_policy" {
-	type   = string
-}
 variable "ecs_task_role" {
 	type   = string
+}
+variable "server_count" {
+  type    = number
 }

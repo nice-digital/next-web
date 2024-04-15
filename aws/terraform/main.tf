@@ -133,7 +133,7 @@ resource "aws_ecs_service" "nextweb-ecs-service" {
   name            = "${local.name}-service"
   cluster         = aws_ecs_cluster.nextweb-cluster.id
   task_definition = aws_ecs_task_definition.nextweb-main-task.arn
-  desired_count   = 2
+  desired_count   = var.server_count
   launch_type     = "FARGATE"
 	enable_execute_command = true
 
