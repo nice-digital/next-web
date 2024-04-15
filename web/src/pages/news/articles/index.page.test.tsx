@@ -67,37 +67,25 @@ describe("/news/articles/index.page", () => {
 			jest.clearAllMocks();
 		});
 
-		it("should call fetchStories at page 1 when less than 1 passed as query.page", async () => {
-			await getServerSideProps({
+		it("should return notFound when page is less than 1", async () => {
+			const result = await getServerSideProps({
 				query: { page: "-1" },
 				resolvedUrl: "/news/articles?page=-1",
 			} as unknown as GetServerSidePropsContext<ParsedUrlQuery>);
 
-			expect(fetchStoriesSpy).toHaveBeenCalled();
-			expect(fetchStoriesSpy).toHaveBeenCalledWith("published", {
-				filter_query: {
-					date: {
-						lt_date: new Date().toISOString(),
-					},
-				},
-				page: 1,
-				per_page: 6,
-				sort_by: "content.date:desc",
-				starts_with: "news/articles/",
+			expect(result).toEqual({
+				notFound: true,
 			});
 		});
 
-		it("should redirect to /news/articles if the page is out of range", async () => {
+		it("should return notFound if pagination page is out of range", async () => {
 			const result = await getServerSideProps({
 				query: { page: "30" },
 				resolvedUrl: "/news/articles?page=30",
 			} as unknown as GetServerSidePropsContext<ParsedUrlQuery>);
 
 			expect(result).toEqual({
-				redirect: {
-					destination: "/news/articles",
-					permanent: false,
-				},
+				notFound: true,
 			});
 		});
 	});

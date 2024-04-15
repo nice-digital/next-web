@@ -56,17 +56,22 @@ export const BlogIndexPage = ({
 				}
 			/>
 			<NewsListNav />
-			<>
-				<NewsListPaginationAnnouncer
-					currentPage={currentPage}
-					total={total}
-					perPage={perPage}
-					announcementPrefix="Blog post listing page"
-				/>
-				<PaginationFocusedElement innerText="Blog post list" />
-			</>
-			{featuredStory && <FeaturedStory story={featuredStory} />}
-			<NewsList news={stories} />
+			{stories.length === 0 ? (
+				<p>Sorry there are no blog posts available</p>
+			) : (
+				<>
+					<NewsListPaginationAnnouncer
+						currentPage={currentPage}
+						total={total}
+						perPage={perPage}
+						announcementPrefix="Blog post listing page"
+					/>
+					<PaginationFocusedElement innerText="Blog post list" />
+
+					{featuredStory && <FeaturedStory story={featuredStory} />}
+					<NewsList news={stories} />
+				</>
+			)}
 			<ActionBanner
 				title="Sign up for our newsletters and alerts"
 				cta={

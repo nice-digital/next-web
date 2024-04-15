@@ -23,11 +23,16 @@ export type SBSingleResponse<T> = {
 	notFound?: boolean;
 };
 
+//TODO: check whether the optional total is correct
 export type SBMultipleResponse<T> = {
 	stories: ISbStoryData<T>[];
 	perPage?: number;
 	total?: number;
 	error?: string;
+};
+
+export type SBListingResponse<T> = SBMultipleResponse<T> & {
+	total: number;
 };
 
 // News type enum
@@ -87,6 +92,13 @@ export const fetchStory = async <T>(
 	return result;
 };
 
+const isValidPageParam = (
+	queryPage: string | string[] | undefined
+): boolean => {
+	const page = Number(queryPage);
+	return !isNaN(page) && page >= 1;
+};
+
 export type ValidateRouteParamsArgs = {
 	query: ParsedUrlQuery;
 	sbParams?: ISbStoriesParams;
@@ -98,7 +110,7 @@ export type ValidateRouteParamsSuccess<T> = {
 	stories: ISbStoryData<T>[];
 	total: number;
 	currentPage: number;
-	perPage: number | undefined;
+	perPage?: number;
 };
 
 export type ValidateRouteParamsError = {
@@ -113,14 +125,18 @@ export type ValidateRouteParamsResult<T> =
 export const validateRouteParams = async <T>({
 	query,
 	sbParams,
-	resolvedUrl,
 }: ValidateRouteParamsArgs): Promise<ValidateRouteParamsResult<T>> => {
 	const version = getStoryVersionFromQuery(query);
 
-	const redirectUrl = new URL(resolvedUrl || "", "http://localhost");
+	let page;
 
-	// set page to at least 1, or 1 if it's not a number
-	const page = Math.max(Number(query.page) || 1, 1);
+	if (!isValidPageParam(query.page) && query.page !== undefined) {
+		return {
+			notFound: true,
+		};
+	} else {
+		page = Number(query.page) || 1;
+	}
 
 	const requestParams: ISbStoriesParams = {
 		...sbParams,
@@ -134,18 +150,14 @@ export const validateRouteParams = async <T>({
 	};
 
 	try {
-		const result = await fetchStories<T>(version, requestParams);
+		//TODO: revisit once we've confirmed total is accurately typed
+		const result = (await fetchStories<T>(
+			version,
+			requestParams
+		)) as SBListingResponse<T>;
 
-		if (
-			!result ||
-			result.total === undefined ||
-			(result.total === 0 && result.stories.length === 0)
-		) {
-			logger.error("Error fetching stories: ", result);
-			return {
-				error:
-					"There are no stories to display at the moment. Please try again later.",
-			};
+		if (result.stories.length === 0) {
+			logger.info("No stories in result");
 		}
 
 		let featuredStory = null;
@@ -159,12 +171,9 @@ export const validateRouteParams = async <T>({
 		}
 
 		// redirect to page 1 if page is out of range
-		if (page && perPage && page > Math.ceil(total / perPage)) {
+		if (perPage && total && page > Math.ceil(total / perPage)) {
 			return {
-				redirect: {
-					destination: redirectUrl.pathname,
-					permanent: false,
-				},
+				notFound: true,
 			};
 		}
 
@@ -176,9 +185,8 @@ export const validateRouteParams = async <T>({
 			perPage,
 		};
 	} catch (error) {
-		console.log("ERROR VALIDATING ROUTE PARAMS:");
-		console.log("error", error);
-		logger.error("Error from catch in fetchStories: ", error);
+		logger.error("Error from catch in validateRouteParams: ", error);
+
 		return {
 			error: "There was an error fetching stories. Please try again later.",
 		};
@@ -190,49 +198,35 @@ export const fetchStories = async <T>(
 	version: StoryVersion = "published",
 	params: ISbStoriesParams = {}
 ): Promise<SBMultipleResponse<T>> => {
-	console.log("<<<<< FETCHING STORIES >>>>");
 	const storyblokApi = getStoryblokApi();
-
 	const sbParams: ISbStoriesParams = {
 		version,
 		resolve_links: "url",
 		cv: Date.now(), // Useful for flushing the Storyblok cache
 		...params,
 	};
-
 	const result: SBMultipleResponse<T> = { stories: [] };
 	try {
 		const response: ISbResult = await storyblokApi.get(`cdn/stories`, sbParams);
-		console.log("<<<<< FETCHED STORIES RETURN >>>>");
-		console.log(response);
-		console.log("<<<<< FETCHED STORIES RETURN >>>>");
+
 		result.stories = response.data.stories;
 		result.perPage = response.perPage;
 		result.total = response.total;
 	} catch (e) {
-		console.log("<<<<< FETCHED STORIES ERROR >>>>");
-		console.log(e);
-		console.log("<<<<< FETCHED STORIES ERROR >>>>");
 		const errorResponse = JSON.parse(e as string) as ISbError;
 
 		result.error = errorResponse.message?.message;
-		// Promise.reject(new Error(`${errorResponse.message}"`));
 
 		logger.error(
 			`${errorResponse.status} error from Storyblok API: ${errorResponse.message}`,
 			e
 		);
 
-		// Promise.reject(
-		// 	new Error(
-		// 		`${errorResponse.status} error from Storyblok API: ${errorResponse.message}`
-		// 	)
-		// );
 		throw Error(
 			`${errorResponse.status} error from Storyblok API: ${errorResponse.message}`
 		);
 	}
-	console.log("WE HIT RETURNING A RESULT");
+
 	return result;
 };
 

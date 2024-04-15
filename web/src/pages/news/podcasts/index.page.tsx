@@ -55,29 +55,33 @@ export const PodcastIndexPage = ({
 				}
 			/>
 			<NewsListNav />
-			<Grid gutter="loose">
-				<GridItem cols={12} md={{ cols: 7 }}>
-					<NewsListPaginationAnnouncer
-						currentPage={currentPage}
-						total={total}
-						perPage={perPage}
-						announcementPrefix="Podcast listing page"
-					/>
-					<PaginationFocusedElement innerText="Podcast list" />
-					<NewsList news={stories} showImage={false} />
-				</GridItem>
-				<GridItem cols={12} md={{ cols: 4, push: 1 }}>
-					<Panel>
-						<h2 className="h3">Other ways to listen</h2>
-						<p>
-							Our NICE talks podcasts are available{" "}
-							<a href="https://linktr.ee/nicetalks">
-								on a variety of different platforms.
-							</a>
-						</p>
-					</Panel>
-				</GridItem>
-			</Grid>
+			{stories.length === 0 ? (
+				<p>Sorry there are no podcasts available</p>
+			) : (
+				<Grid gutter="loose">
+					<GridItem cols={12} md={{ cols: 7 }}>
+						<NewsListPaginationAnnouncer
+							currentPage={currentPage}
+							total={total}
+							perPage={perPage}
+							announcementPrefix="Podcast listing page"
+						/>
+						<PaginationFocusedElement innerText="Podcast list" />
+						<NewsList news={stories} showImage={false} />
+					</GridItem>
+					<GridItem cols={12} md={{ cols: 4, push: 1 }}>
+						<Panel>
+							<h2 className="h3">Other ways to listen</h2>
+							<p>
+								Our NICE talks podcasts are available{" "}
+								<a href="https://linktr.ee/nicetalks">
+									on a variety of different platforms.
+								</a>
+							</p>
+						</Panel>
+					</GridItem>
+				</Grid>
+			)}
 
 			<ActionBanner
 				title="Sign up for our newsletters and alerts"

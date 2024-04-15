@@ -120,8 +120,6 @@ export const getServerSideProps = async ({
 		};
 	}
 
-	console.log({ result });
-
 	const { featuredStory, stories, total, perPage, currentPage } = result;
 
 	return {

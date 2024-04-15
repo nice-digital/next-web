@@ -573,7 +573,7 @@ describe("Storyblok utils", () => {
 			);
 		});
 
-		it("should call fetchStories with the correct params when the query.page is not a number", async () => {
+		it("should return notFound when the query.page is not a number", async () => {
 			const mockRequestParamsPageNaN = {
 				...mockRequestParams,
 				query: {
@@ -581,21 +581,14 @@ describe("Storyblok utils", () => {
 				},
 			};
 
-			const expectedParamsPageNaN = {
-				...expectedParams,
-				page: 1,
-			};
+			const result = await validateRouteParams(mockRequestParamsPageNaN);
 
-			await validateRouteParams(mockRequestParamsPageNaN);
-
-			expect(fetchStoriesSpy).toHaveBeenCalled();
-			expect(fetchStoriesSpy).toHaveBeenCalledWith(
-				"published",
-				expectedParamsPageNaN
-			);
+			expect(result).toEqual({
+				notFound: true,
+			});
 		});
 
-		it("should call fetchStories with the correct params when the query.page is less than 1", async () => {
+		it("should return notFound when the query.page is less than 1", async () => {
 			const mockRequestParamsPageLessThan1 = {
 				...mockRequestParams,
 				query: {
@@ -603,18 +596,10 @@ describe("Storyblok utils", () => {
 				},
 			};
 
-			const expectedParamsPageLessThan1 = {
-				...expectedParams,
-				page: 1,
-			};
-
-			await validateRouteParams(mockRequestParamsPageLessThan1);
-
-			expect(fetchStoriesSpy).toHaveBeenCalled();
-			expect(fetchStoriesSpy).toHaveBeenCalledWith(
-				"published",
-				expectedParamsPageLessThan1
-			);
+			const result = await validateRouteParams(mockRequestParamsPageLessThan1);
+			expect(result).toEqual({
+				notFound: true,
+			});
 		});
 
 		it("should return story data when fetchStories is successful", async () => {
@@ -629,25 +614,20 @@ describe("Storyblok utils", () => {
 			});
 		});
 
-		it("should call the logger error method when fetchStories returns no stories", async () => {
-			const loggerErrorSpy = jest.spyOn(logger, "error");
+		it("should call the logger info method when fetchStories returns no stories", async () => {
+			const loggerInfoSpy = jest.spyOn(logger, "info");
 
 			const mockNoStoriesResponse = {
-				data: {
-					stories: [],
-				},
+				stories: [],
 			};
 
 			fetchStoriesSpy.mockResolvedValue(mockNoStoriesResponse);
 
 			await validateRouteParams(mockRequestParams);
 
-			expect(loggerErrorSpy).toHaveBeenCalled();
+			expect(loggerInfoSpy).toHaveBeenCalled();
 
-			expect(loggerErrorSpy).toHaveBeenCalledWith(
-				"Error fetching stories: ",
-				mockNoStoriesResponse
-			);
+			expect(loggerInfoSpy).toHaveBeenCalledWith("No stories in result");
 		});
 
 		it("should call the logger error method when fetchStories throws an error", async () => {
@@ -661,7 +641,7 @@ describe("Storyblok utils", () => {
 
 			expect(loggerErrorSpy).toHaveBeenCalled();
 			expect(loggerErrorSpy).toHaveBeenCalledWith(
-				"Error from catch in fetchStories: ",
+				"Error from catch in validateRouteParams: ",
 				mockError
 			);
 		});
