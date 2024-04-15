@@ -8,7 +8,11 @@
 .spotlight {
   @include layout.fullWidth();
   background: colours.$spotlight-background;
-  padding: $homepage-large-spacing 0;
+  padding: $homepage-large-spacing-mobile 0;
+
+  @include media-queries.mq($from: md) {
+    padding: $homepage-large-spacing 0;
+  }
 }
 
 .container {

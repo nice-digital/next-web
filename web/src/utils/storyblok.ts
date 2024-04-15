@@ -11,6 +11,7 @@ import {
 import { type MetaTag } from "next-seo/lib/types";
 import { Redirect } from "next/types";
 
+import { publicRuntimeConfig } from "@/config";
 import { logger } from "@/logger";
 import { type Breadcrumb } from "@/types/Breadcrumb";
 import { type SBLink } from "@/types/SBLink";
@@ -33,13 +34,14 @@ export type SBMultipleResponse<T> = {
 // News type enum
 export const newsTypes = {
 	newsArticle: "News",
-	blogPost: "Blog",
-	podcast: "Podcast",
+	blogPost: "Blogs",
+	podcast: "Podcasts",
 	inDepthArticle: "In-depth",
 };
 
 // Default podcast image
-export const defaultPodcastImage = "/img/nice-talks.png";
+export const defaultPodcastImage =
+	publicRuntimeConfig.publicBaseURL + "/img/nice-talks.png";
 
 // Fetch a single story from the Storyblok API
 export const fetchStory = async <T>(
