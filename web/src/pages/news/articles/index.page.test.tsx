@@ -1,7 +1,7 @@
 import { ParsedUrlQuery } from "querystring";
 
 import { getStoryblokApi } from "@storyblok/react";
-import { render } from "@testing-library/react";
+import { render, screen } from "@testing-library/react";
 import { useRouter } from "next/router";
 import { GetServerSidePropsContext } from "next/types";
 import { StoryblokStory } from "storyblok-generate-ts";
@@ -39,6 +39,7 @@ describe("/news/articles/index.page", () => {
 		query: {
 			upperOutOfBoundPagination: "30",
 			lowerOutOfBoundPagination: "-1",
+			pageAt1: "1",
 		},
 		totalResults: 8,
 	};
@@ -55,9 +56,28 @@ describe("/news/articles/index.page", () => {
 			render(<ArticlesIndexPage {...mockProps} />);
 			expect(document.body).toMatchSnapshot();
 		});
-		it.todo("should render error page if validateRouteParams returns error");
-		it.todo("should render a page header");
-		it.todo("should render breadcrumbs");
+
+		it("should render error page if validateRouteParams returns error", async () => {
+			const errorMessage = "An error returned from getserversideprops";
+			const { asFragment } = render(<ArticlesIndexPage error={errorMessage} />);
+
+			expect(screen.getByText(errorMessage)).toBeInTheDocument();
+			expect(asFragment()).toMatchSnapshot();
+		});
+
+		it("should render a page header", async () => {
+			render(<ArticlesIndexPage {...mockProps} />);
+
+			expect(
+				screen.getByRole("heading", { level: 1, name: "News articles" })
+			).toBeInTheDocument();
+		});
+
+		it.todo("should render breadcrumbs", () => {
+			render(<ArticlesIndexPage {...mockProps} />);
+			expect(screen.getByText("Home")).toBeInTheDocument();
+			// <ol class="breadcrumbs"><li class="breadcrumbs__crumb"><a href="/">Home</a></li><li class="breadcrumbs__crumb"><a href="/news">News</a></li><li class="breadcrumbs__crumb"><span>Articles</span></li></ol>
+		});
 		it.todo("should render a list of stories");
 		it.todo("should render news navigation");
 		it.todo("should render a hidden heading for screen readers");
@@ -180,8 +200,32 @@ describe("/news/articles/index.page", () => {
 			});
 		});
 
-		it.todo(
-			"should return a correct props object if validateRouteParams returns success"
-		);
+		it("should return a correct props object if validateRouteParams returns success", async () => {
+			const mockValidatedRouteParamsSuccessResponse = {
+				featuredStory: mockStories[0],
+				stories: mockStories.slice(1),
+				total: MockStoryblokSuccessResponse.total,
+				currentPage: mockConfig.currentPage,
+				perPage: MockStoryblokSuccessResponse.perPage,
+			};
+			// MockStoryblokSuccessResponse
+			validateRouteParamsSpy.mockResolvedValue(
+				mockValidatedRouteParamsSuccessResponse
+			);
+
+			const result = await getServerSideProps({
+				query: { page: mockConfig.query.pageAt1 },
+			} as unknown as GetServerSidePropsContext<ParsedUrlQuery>);
+
+			expect(result).toEqual({
+				props: {
+					featuredStory: MockStoryblokSuccessResponse.data.stories[0],
+					stories: MockStoryblokSuccessResponse.data.stories.slice(1),
+					perPage: MockStoryblokSuccessResponse.perPage,
+					total: MockStoryblokSuccessResponse.total,
+					currentPage: 1,
+				},
+			});
+		});
 	});
 });

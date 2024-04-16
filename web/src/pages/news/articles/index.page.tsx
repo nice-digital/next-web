@@ -19,27 +19,31 @@ import { validateRouteParams } from "@/utils/storyblok";
 
 import type { GetServerSidePropsContext } from "next";
 
-export type NewsArticlesProps = {
+export type NewsArticleErrorProps = {
+	error: string;
+};
+
+export type NewsArticlesSuccessProps = {
 	featuredStory?: StoryblokStory<NewsStory> | null;
 	stories: StoryblokStory<NewsStory>[];
 	total: number;
 	currentPage: number;
 	perPage: number;
-	error?: string | undefined;
 };
 
-export const ArticlesIndexPage = ({
-	stories,
-	currentPage,
-	total,
-	perPage,
-	featuredStory,
-	error,
-}: NewsArticlesProps): React.ReactElement => {
-	if (error) {
+export type NewsArticlesProps =
+	| NewsArticlesSuccessProps
+	| NewsArticleErrorProps;
+
+export const ArticlesIndexPage = (
+	props: NewsArticlesProps
+): React.ReactElement => {
+	if ("error" in props) {
+		const { error } = props;
 		return <ErrorPageContent title="Error" heading={error} />;
 	}
 
+	const { featuredStory, stories, total, currentPage, perPage } = props;
 	return (
 		<>
 			<NextSeo
