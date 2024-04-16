@@ -1,7 +1,6 @@
 import "@testing-library/jest-dom";
 
 import { addDefaultJSONFeedMocks, axiosJSONMock } from "@/test-utils/feeds";
-import MockStoryblokResponse from "@/test-utils/storyblok-news-articles-listing.json";
 
 //import * as matchers from "jest-extended/all";
 //expect.extend(matchers);

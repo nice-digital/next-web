@@ -1,7 +1,7 @@
 import { ParsedUrlQuery } from "querystring";
 
 import { getStoryblokApi } from "@storyblok/react";
-import { render, screen } from "@testing-library/react";
+import { render, screen, within } from "@testing-library/react";
 import { useRouter } from "next/router";
 import { GetServerSidePropsContext } from "next/types";
 import { StoryblokStory } from "storyblok-generate-ts";
@@ -73,19 +73,50 @@ describe("/news/articles/index.page", () => {
 			).toBeInTheDocument();
 		});
 
-		it.todo("should render breadcrumbs", () => {
+		it("should render breadcrumbs", () => {
 			render(<ArticlesIndexPage {...mockProps} />);
-			expect(screen.getByText("Home")).toBeInTheDocument();
-			// <ol class="breadcrumbs"><li class="breadcrumbs__crumb"><a href="/">Home</a></li><li class="breadcrumbs__crumb"><a href="/news">News</a></li><li class="breadcrumbs__crumb"><span>Articles</span></li></ol>
+			const navElement = screen.getByRole("navigation", {
+				name: "Breadcrumbs",
+			});
+			const breadcrumbLinks = within(navElement).getAllByRole("link");
+			expect(navElement).toBeInTheDocument();
+			expect(breadcrumbLinks.length).toBe(2);
 		});
-		it.todo("should render a list of stories");
+
+		it("should render no content message if no stories are returned", () => {
+			const mockPropsNoStories = {
+				...mockProps,
+				stories: [],
+			};
+
+			render(<ArticlesIndexPage {...mockPropsNoStories} />);
+
+			expect(
+				screen.getByText("Sorry there are no news articles available")
+			).toBeInTheDocument();
+		});
+
+		it("should render a featured story if one is returned", () => {
+			const mockPropsWithFeaturedStory = {
+				...mockProps,
+				featuredStory: mockProps.stories[0],
+				stories: mockProps.stories.slice(1),
+			};
+			mockPropsWithFeaturedStory.featuredStory.name = "Featured story";
+
+			render(<ArticlesIndexPage {...mockPropsWithFeaturedStory} />);
+
+			expect(screen.getByText("Featured story")).toBeInTheDocument();
+		});
+
 		it.todo("should render news navigation");
+		it.todo("should render an action banner");
+		it.todo("should render a list of stories");
 		it.todo("should render a hidden heading for screen readers");
 		it.todo("should have an announcer for screen readers");
-		it.todo("should render no content message if no stories are returned");
-		it.todo("should render a featured story if one is returned");
+
 		it.todo("should not render a featured story if one is not returned");
-		it.todo("should render an action banner");
+
 		it.todo("should render a news list pagination component");
 	});
 
