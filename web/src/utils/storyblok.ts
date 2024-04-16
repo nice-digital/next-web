@@ -54,7 +54,7 @@ export const fetchStory = async <T>(
 	const sbParams: ISbStoriesParams = {
 		version,
 		resolve_links: "url",
-		cv: Date.now(), // Useful for flushing the Storyblok cache
+		// cv: Date.now(), // Useful for flushing the Storyblok cache
 		...params,
 	};
 
@@ -188,7 +188,7 @@ export const fetchStories = async <T>(
 	const sbParams: ISbStoriesParams = {
 		version,
 		resolve_links: "url",
-		cv: Date.now(), // Useful for flushing the Storyblok cache
+		// cv: Date.now(), // Useful for flushing the Storyblok cache
 		...params,
 	};
 
