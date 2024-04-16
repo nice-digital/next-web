@@ -48,8 +48,6 @@ describe("/news/articles/index.page", () => {
 	});
 
 	describe("getServerSideProps", () => {
-		const fetchStoriesSpy = jest.spyOn(storyblokUtils, "fetchStories");
-
 		beforeEach(() => {
 			jest.mock("@/utils/storyblok", () => ({
 				getStoryVersionFromQuery: jest.fn().mockReturnValue("published"),
@@ -88,5 +86,25 @@ describe("/news/articles/index.page", () => {
 				notFound: true,
 			});
 		});
+
+		it.todo("should call validateRouteParams with correct params");
+		it.todo("should return notFound if validateRouteParams returns notFound");
+		it.todo("should return redirect if validateRouteParams returns redirect");
+		it.todo("should return error if validateRouteParams returns error");
+		it.todo(
+			"should return a correct props object if validateRouteParams returns success"
+		);
+		it.todo("should render error page if validateRouteParams returns error");
+		it.todo("should render a page header");
+		it.todo("should render breadcrumbs");
+		it.todo("should render a list of stories");
+		it.todo("should render news navigation");
+		it.todo("should render a hidden heading for screen readers");
+		it.todo("should have an announcer for screen readers");
+		it.todo("should render no content message if no stories are returned");
+		it.todo("should render a featured story if one is returned");
+		it.todo("should not render a featured story if one is not returned");
+		it.todo("should render an action banner");
+		it.todo("should render a news list pagination component");
 	});
 });
