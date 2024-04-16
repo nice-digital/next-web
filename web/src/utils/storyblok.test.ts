@@ -105,6 +105,12 @@ describe("Storyblok utils", () => {
 		it("should return a valid slug when supplied with a single param", () => {
 			expect(getSlugFromParams("some-slug")).toBe("some-slug");
 		});
+		it("should return undefined if slugParams is undefined", () => {
+			expect(getSlugFromParams(undefined)).toBeUndefined();
+		});
+		it("should return undefined if slugParams is an empty string", () => {
+			expect(getSlugFromParams("")).toBeUndefined();
+		});
 	});
 
 	describe("Get additional meta tags", () => {

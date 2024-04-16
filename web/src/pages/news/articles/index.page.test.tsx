@@ -8,7 +8,6 @@ import { StoryblokStory } from "storyblok-generate-ts";
 
 import MockStoryblokSuccessResponse from "@/test-utils/storyblok-news-articles-listing.json";
 import { NewsStory } from "@/types/News";
-import * as storyblokUtils from "@/utils/storyblok";
 
 import {
 	getServerSideProps,
@@ -22,8 +21,8 @@ describe("/news/articles/index.page", () => {
 	(useRouter as jest.Mock).mockReturnValue({
 		route: "/news/articles",
 		pathname: "/news/articles",
-		query: { page: "2" },
-		asPath: "/news/articles?page=2",
+		query: { page: "1" },
+		asPath: "/news/articles?page=1",
 		events: {
 			on: jest.fn(),
 			off: jest.fn(),
