@@ -100,6 +100,7 @@ exports[`Homepage should match snapshot 1`] = `
       </div>
       <section
         class="latestNews"
+        data-tracking="latest-news"
       >
         <h2
           class="title"
@@ -180,28 +181,26 @@ exports[`Homepage should match snapshot 1`] = `
                     Test blog post title
                   </a>
                 </h3>
-                <p>
+                <p
+                  class="blogIntroText"
+                >
                   Let's play Blockbusters!
                 </p>
                 <footer>
                   <div
                     class="author"
                   >
-                    <p
-                      class="author"
-                    >
-                      by 
-                      Bob Holness
-                      , 
-                      Blockbusters host
-                    </p>
+                    by 
+                    Bob Holness
+                    , 
+                    Blockbusters host
                   </div>
                   <div>
                     <span
                       class="tag tag--outline"
                       data-component="tag"
                     >
-                      Blog
+                      Blogs
                     </span>
                     <span
                       class="date"
@@ -263,6 +262,7 @@ exports[`Homepage should match snapshot 1`] = `
       </section>
       <div
         class="links"
+        data-tracking="homepage-links"
       >
         <div
           class="linksContainer"
@@ -301,17 +301,17 @@ exports[`Homepage should match snapshot 1`] = `
             </p>
             <picture>
               <source
-                srcset="https://placekitten.com/200/286/m/867x0/filters:format(avif):quality(80)/"
+                srcset="https://placekitten.com/200/286/m/867x0/filters:format%28avif%29:quality%2880%29"
                 type="image/avif"
               />
               <source
-                srcset="https://placekitten.com/200/286/m/867x0/filters:format(webp):quality(80)/"
+                srcset="https://placekitten.com/200/286/m/867x0/filters:format%28webp%29:quality%2880%29"
                 type="image/webp"
               />
               <img
                 alt="Kitten wearing mittens"
                 loading="lazy"
-                src="https://placekitten.com/200/286/m/867x0/filters:format(jpeg):quality(80)/"
+                src="https://placekitten.com/200/286/m/867x0/filters:format%28jpeg%29:quality%2880%29"
               />
             </picture>
             <figure

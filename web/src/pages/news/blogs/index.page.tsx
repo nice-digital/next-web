@@ -40,12 +40,14 @@ export const BlogIndexPage = ({
 		return <ErrorPageContent title="Error" heading={error} />;
 	}
 
+	const pageTitle = "Blogs";
+
 	return (
 		<>
-			<NextSeo title="Blog posts" openGraph={{ title: "Blog posts" }}></NextSeo>
+			<NextSeo title={pageTitle} openGraph={{ title: pageTitle }}></NextSeo>
 			<PageHeader
 				id="content-start"
-				heading="Blog posts"
+				heading={pageTitle}
 				variant="fullWidthDark"
 				breadcrumbs={
 					<Breadcrumbs>

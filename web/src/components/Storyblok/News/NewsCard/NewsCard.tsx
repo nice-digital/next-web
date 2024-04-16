@@ -10,7 +10,7 @@ import {
 	getNewsType,
 	defaultPodcastImage,
 	newsTypes,
-	optimiseImage,
+	constructStoryblokImageSrc,
 } from "@/utils/storyblok";
 
 import styles from "./NewsCard.module.scss";
@@ -37,7 +37,7 @@ export const NewsCard: React.FC<NewsCardProps> = ({
 	// Fall back to podcast placeholder image if none is supplied
 	// Updated the content image to use the new image service for optimised loading
 	const image = content.image?.filename
-		? optimiseImage({ filename: content.image?.filename, size: "868x0" })
+		? constructStoryblokImageSrc(content.image?.filename, { width: 868 })
 		: defaultPodcastImage;
 
 	const absolute_full_slug = `/${full_slug}`;
@@ -87,28 +87,31 @@ export const NewsCard: React.FC<NewsCardProps> = ({
 				<HeadingElement className={styles.heading}>
 					{headingLink}
 				</HeadingElement>
-				<p>{content.introText}</p>
+				<p
+					className={
+						storyType === newsTypes.blogPost ? styles.blogIntroText : undefined
+					}
+				>
+					{content.introText}
+				</p>
 				<footer>
-					{content.author && (
-						<div className={styles.author}>
-							{content.author.slice(0, 1).map((author: AuthorStoryblok) => {
-								if (typeof author === "string") {
-									return null;
-								}
+					{content.author &&
+						content.author.slice(0, 1).map((author: AuthorStoryblok) => {
+							if (typeof author === "string") {
+								return null;
+							}
 
-								const {
-									content: { name, jobTitle },
-									id,
-								} = author;
+							const {
+								content: { name, jobTitle },
+								id,
+							} = author;
 
-								return (
-									<p key={id} className={styles.author}>
-										by {name}, {jobTitle}
-									</p>
-								);
-							})}
-						</div>
-					)}
+							return (
+								<div className={styles.author} key={id}>
+									by {name}, {jobTitle}
+								</div>
+							);
+						})}
 					<div>
 						<Tag outline>{storyType}</Tag>
 						<span className={styles.date}>

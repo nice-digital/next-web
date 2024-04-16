@@ -11,6 +11,7 @@ import {
 import { type MetaTag } from "next-seo/lib/types";
 import { Redirect } from "next/types";
 
+import { publicRuntimeConfig } from "@/config";
 import { logger } from "@/logger";
 import { type Breadcrumb } from "@/types/Breadcrumb";
 import { type SBLink } from "@/types/SBLink";
@@ -38,13 +39,14 @@ export type SBListingResponse<T> = SBMultipleResponse<T> & {
 // News type enum
 export const newsTypes = {
 	newsArticle: "News",
-	blogPost: "Blog",
-	podcast: "Podcast",
+	blogPost: "Blogs",
+	podcast: "Podcasts",
 	inDepthArticle: "In-depth",
 };
 
 // Default podcast image
-export const defaultPodcastImage = "/img/nice-talks.png";
+export const defaultPodcastImage =
+	publicRuntimeConfig.publicBaseURL + "/img/nice-talks.png";
 
 // Fetch a single story from the Storyblok API
 export const fetchStory = async <T>(
@@ -407,21 +409,58 @@ export const getNewsType = (component: string): string => {
 export const encodeParens = (str: string): string =>
 	str.replace(/\(/g, "%28").replace(/\)/g, "%29");
 
-type OptimiseImageParams = {
-	filename: string | undefined;
-	size?: string | undefined;
+// TODO: extend the ImageServiceOptions to include filters and options as and when needed?
+
+export type ImageServiceOptions = {
+	width?: number;
+	height?: number;
 	quality?: number;
+	smart?: boolean;
 };
 
-export const optimiseImage = ({
-	filename,
-	size,
-	quality = 80,
-}: OptimiseImageParams): string => {
-	const prefix = "/m/";
-	const sizeSegment = size ? `${size}/` : "";
-	const filtersSegment = quality ? `filters:quality(${quality})` : "";
-	const assembledString = `${filename}${prefix}${sizeSegment}${filtersSegment}`;
+// Construct the image src for the Storyblok image service with limited options.
+// We can extend this to include more options as and when needed
+export const constructStoryblokImageSrc = (
+	src: string,
+	serviceOptions?: ImageServiceOptions | undefined,
+	format?: "webp" | "avif" | "jpeg"
+): string => {
+	// append /m/ to use automatic webp detection.
+	// If the browser supports webp, it will use webp
+	// /m/ is also required for the Storyblok image service to work.
+	let url = `${src}/m/`;
 
-	return encodeParens(assembledString);
+	/* the width and height can be set to static {width}x{height}
+	   or proportional to width or height{width}x0 or 0x{height}
+	   setting width 0 and height 0 has no effect and will serve the image at it's original size*/
+	if (serviceOptions?.width || serviceOptions?.height) {
+		url += `${serviceOptions.width || 0}x${serviceOptions.height || 0}/`;
+	}
+
+	/* smart provides a facial detection when cropping or resizing an image
+	   this is useful for bio and author images qwhen we want to focus on a face */
+	if (serviceOptions?.smart) {
+		url += `smart/`;
+	}
+
+	const filters = [];
+
+	// format can be webp, avif or jpeg
+	if (format) {
+		filters.push(`format(${format})`);
+	}
+
+	// lets us set the quality of the image for optimisation
+	if (serviceOptions?.quality) {
+		filters.push(`quality(${serviceOptions.quality})`);
+	} else {
+		filters.push(`quality(80)`);
+	}
+
+	// if filters are set, add them to the url and separate them with a colon which is required
+	if (filters.length) {
+		url += `filters:${filters.join(":")}`;
+	}
+
+	return encodeParens(url);
 };
