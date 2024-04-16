@@ -643,13 +643,22 @@ describe("Storyblok utils", () => {
 
 			fetchStoriesSpy.mockRejectedValue(mockError);
 
-			await validateRouteParams(mockRequestParams);
+			const throwErrorValiadateRouteParams = async () => {
+				await validateRouteParams(mockRequestParams);
+			};
 
-			expect(loggerErrorSpy).toHaveBeenCalled();
-			expect(loggerErrorSpy).toHaveBeenCalledWith(
-				"Error from catch in validateRouteParams: ",
-				mockError
+			expect(throwErrorValiadateRouteParams).rejects.toThrow(
+				"There was an error fetching stories. Please try again later."
 			);
+
+			await waitFor(() => {
+				expect(loggerErrorSpy).toHaveBeenCalled();
+				// eslint-disable-next-line testing-library/no-wait-for-multiple-assertions
+				expect(loggerErrorSpy).toHaveBeenCalledWith(
+					"Error from catch in validateRouteParams: ",
+					mockError
+				);
+			});
 		});
 	});
 });

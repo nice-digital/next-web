@@ -97,40 +97,42 @@ export const ArticlesIndexPage = ({
 
 export const getServerSideProps = async ({
 	query,
-	resolvedUrl,
 }: GetServerSidePropsContext) => {
-	const result = await validateRouteParams<NewsArticlesProps>({
-		query,
-		sbParams: {
-			starts_with: "news/articles/",
-			per_page: 6,
-		},
-		resolvedUrl,
-	});
+	try {
+		const result = await validateRouteParams<NewsArticlesProps>({
+			query,
+			sbParams: {
+				starts_with: "news/articles/",
+				per_page: 6,
+			},
+		});
 
-	// will return a 404 or redirect if the route is not valid
-	if ("notFound" in result || "redirect" in result) return result;
+		// will return a 404 or redirect if the route is not valid
+		if ("notFound" in result || "redirect" in result) return result;
 
-	//
-	if ("error" in result) {
+		const { featuredStory, stories, total, perPage, currentPage } = result;
+
 		return {
 			props: {
-				...result,
+				featuredStory,
+				stories,
+				total,
+				currentPage,
+				perPage,
+			},
+		};
+
+		// eslint-disable-next-line @typescript-eslint/no-explicit-any
+	} catch (error) {
+		const isError = (obj: unknown): obj is Error => {
+			return obj instanceof Error;
+		};
+		return {
+			props: {
+				error: isError(error) ? error.message : "an unspecified error occurred",
 			},
 		};
 	}
-
-	const { featuredStory, stories, total, perPage, currentPage } = result;
-
-	return {
-		props: {
-			featuredStory,
-			stories,
-			total,
-			currentPage,
-			perPage,
-		},
-	};
 };
 
 export default ArticlesIndexPage;

@@ -113,15 +113,15 @@ export type ValidateRouteParamsSuccess<T> = {
 	perPage?: number;
 };
 
-export type ValidateRouteParamsError = {
-	error: string;
-};
+// export type ValidateRouteParamsError = {
+// 	error: string;
+// };
 
 export type ValidateRouteParamsResult<T> =
 	| { notFound: true }
 	| { redirect: Redirect }
-	| ValidateRouteParamsSuccess<T>
-	| ValidateRouteParamsError;
+	| ValidateRouteParamsSuccess<T>;
+
 export const validateRouteParams = async <T>({
 	query,
 	sbParams,
@@ -187,9 +187,9 @@ export const validateRouteParams = async <T>({
 	} catch (error) {
 		logger.error("Error from catch in validateRouteParams: ", error);
 
-		return {
-			error: "There was an error fetching stories. Please try again later.",
-		};
+		throw new Error(
+			"There was an error fetching stories. Please try again later."
+		);
 	}
 };
 
