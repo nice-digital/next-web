@@ -98,7 +98,6 @@ export const BlogIndexPage = (props: BlogPostsProps): React.ReactElement => {
 
 export const getServerSideProps = async ({
 	query,
-	resolvedUrl,
 }: GetServerSidePropsContext) => {
 	try {
 		const result = await validateRouteParams<BlogPostsProps>({
@@ -108,7 +107,6 @@ export const getServerSideProps = async ({
 				per_page: 6,
 				resolve_relations: "blogPost.author",
 			},
-			resolvedUrl,
 		});
 
 		if ("notFound" in result || "redirect" in result) return result;

@@ -102,7 +102,6 @@ export const InDepthArticleIndexPage = (
 
 export const getServerSideProps = async ({
 	query,
-	resolvedUrl,
 }: GetServerSidePropsContext) => {
 	try {
 		const result = await validateRouteParams<InDepthArticleProps>({
@@ -111,7 +110,6 @@ export const getServerSideProps = async ({
 				starts_with: "news/in-depth/",
 				per_page: 6,
 			},
-			resolvedUrl,
 		});
 
 		// will return a 404 or redirect if the route is not valid

@@ -333,7 +333,8 @@ describe("Storyblok utils", () => {
 			};
 
 			expect(throwErrorFetchStories).rejects.toThrow(
-				"404 error from Storyblok API: Not Found"
+				// "404 error from Storyblok API: Not Found"
+				"Something went wrong, please try again later."
 			);
 
 			await waitFor(() => {
@@ -360,7 +361,8 @@ describe("Storyblok utils", () => {
 			};
 
 			expect(throwErrorFetchStories).rejects.toThrow(
-				"503 error from Storyblok API: Service Unavailable"
+				// "503 error from Storyblok API: Service Unavailable"
+				"Something went wrong, please try again later."
 			);
 
 			await waitFor(() => {
