@@ -76,10 +76,12 @@ export const fetchStory = async <T>(
 		};
 	} catch (e) {
 		const result = JSON.parse(e as string) as ISbError;
+
 		logger.error(
 			`${result.status} error from Storyblok API: ${result.message}`,
 			e
 		);
+
 		if (result.status === 404) {
 			return {
 				notFound: true,
@@ -226,7 +228,7 @@ export const fetchStories = async <T>(
 
 		throw Error(
 			//TODO we probably don't want to reveal details of API error to the user
-			`${errorResponse.status} error from Storyblok API: ${errorResponse.message}`
+			`Something went wrong, please try again later.`
 		);
 	}
 
