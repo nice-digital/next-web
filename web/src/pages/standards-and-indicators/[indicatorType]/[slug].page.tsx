@@ -10,9 +10,9 @@ import { getProductPath } from "@/utils/url";
 export const getServerSideProps: GetServerSideProps = async ({
 	resolvedUrl,
 }) => {
-	const mapping = (await getIndicatorMappings()).find(
-		({ url }) => new URL(url).pathname === resolvedUrl
-	);
+	const mapping = (await getIndicatorMappings()).find(({ url }) => {
+		return new URL(url).pathname.toLowerCase() === resolvedUrl;
+	});
 
 	if (!mapping) return { notFound: true };
 

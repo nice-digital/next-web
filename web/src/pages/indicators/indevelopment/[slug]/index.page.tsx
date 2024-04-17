@@ -107,9 +107,6 @@ export default function InDevelopmentPage(
 			</>
 		) : (
 			<>
-				<Breadcrumb to="/standards-and-indicators">
-					Standards and Indicators
-				</Breadcrumb>
 				<Breadcrumb to="/standards-and-indicators/indicators">
 					Indicators
 				</Breadcrumb>
@@ -121,7 +118,7 @@ export default function InDevelopmentPage(
 
 	const pageTitle = isGuidanceHubPage
 		? `${title} | Hub`
-		: `${title} | Indicators | Standards and Indicators`;
+		: `${title} | Indicators`;
 
 	return (
 		<div className={styles.projectInformation}>

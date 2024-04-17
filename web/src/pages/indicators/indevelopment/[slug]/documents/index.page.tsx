@@ -34,13 +34,10 @@ export default function DocumentsPage(props: DocumentsPageProps): JSX.Element {
 	return (
 		<>
 			<NextSeo
-				title={`Project documents | ${props.project.reference} | Indicators | Standards and Indicators`}
+				title={`Project documents | ${props.project.reference} | Indicators`}
 			/>
 			<Breadcrumbs>
 				<Breadcrumb to="/">Home</Breadcrumb>
-				<Breadcrumb to="/standards-and-indicators">
-					Standards and Indicators
-				</Breadcrumb>
 				<Breadcrumb to="/standards-and-indicators/indicators">
 					Indicators
 				</Breadcrumb>
