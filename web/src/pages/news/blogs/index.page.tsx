@@ -70,7 +70,6 @@ export const BlogIndexPage = (props: BlogPostsProps): React.ReactElement => {
 						announcementPrefix="Blog post listing page"
 					/>
 					<PaginationFocusedElement innerText="Blog post list" />
-
 					{featuredStory && <FeaturedStory story={featuredStory} />}
 					<NewsList news={stories} />
 				</>

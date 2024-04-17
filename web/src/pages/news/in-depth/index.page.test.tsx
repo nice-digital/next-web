@@ -12,18 +12,18 @@ import * as storyblokUtils from "@/utils/storyblok";
 
 import {
 	getServerSideProps,
-	ArticlesIndexPage,
-	NewsArticlesProps,
+	InDepthArticleIndexPage,
+	InDepthArticleProps,
 } from "./index.page";
 
 const mockStories = MockStoryblokSuccessResponse.data.stories;
 
-describe("/news/articles/index.page", () => {
+describe("/news/in-depth/index.page", () => {
 	(useRouter as jest.Mock).mockReturnValue({
-		route: "/news/articles",
-		pathname: "/news/articles",
+		route: "/news/in-depth",
+		pathname: "/news/in-depth",
 		query: { page: "1" },
-		asPath: "/news/articles?page=1",
+		asPath: "/news/in-depth?page=1",
 		events: {
 			on: jest.fn(),
 			off: jest.fn(),
@@ -35,7 +35,7 @@ describe("/news/articles/index.page", () => {
 	const mockConfig = {
 		currentPage: 1,
 		resultsPerPage: 6,
-		startsWith: "news/articles/",
+		startsWith: "news/in-depth/",
 		query: {
 			upperOutOfBoundPagination: "30",
 			lowerOutOfBoundPagination: "-1",
@@ -44,37 +44,39 @@ describe("/news/articles/index.page", () => {
 		totalResults: 8,
 	};
 
-	const mockProps: NewsArticlesProps = {
+	const mockProps: InDepthArticleProps = {
 		stories: mockStories as unknown as StoryblokStory<NewsStory>[],
 		currentPage: mockConfig.currentPage,
 		total: mockConfig.totalResults,
 		perPage: mockConfig.resultsPerPage,
 	};
 
-	describe("ArticlesIndexPage", () => {
+	describe("InDepthArticleIndexPage", () => {
 		it("should match snapshot for main content", () => {
-			render(<ArticlesIndexPage {...mockProps} />);
+			render(<InDepthArticleIndexPage {...mockProps} />);
 			expect(document.body).toMatchSnapshot();
 		});
 
 		it("should render error page if validateRouteParams returns error", async () => {
 			const errorMessage = "An error returned from getserversideprops";
-			const { asFragment } = render(<ArticlesIndexPage error={errorMessage} />);
+			const { asFragment } = render(
+				<InDepthArticleIndexPage error={errorMessage} />
+			);
 
 			expect(screen.getByText(errorMessage)).toBeInTheDocument();
 			expect(asFragment()).toMatchSnapshot();
 		});
 
 		it("should render a page header", async () => {
-			render(<ArticlesIndexPage {...mockProps} />);
+			render(<InDepthArticleIndexPage {...mockProps} />);
 
 			expect(
-				screen.getByRole("heading", { level: 1, name: "News articles" })
+				screen.getByRole("heading", { level: 1, name: "In-depth" })
 			).toBeInTheDocument();
 		});
 
 		it("should render breadcrumbs", () => {
-			render(<ArticlesIndexPage {...mockProps} />);
+			render(<InDepthArticleIndexPage {...mockProps} />);
 			const navElement = screen.getByRole("navigation", {
 				name: "Breadcrumbs",
 			});
@@ -89,7 +91,7 @@ describe("/news/articles/index.page", () => {
 				stories: [],
 			};
 
-			render(<ArticlesIndexPage {...mockPropsNoStories} />);
+			render(<InDepthArticleIndexPage {...mockPropsNoStories} />);
 
 			expect(
 				screen.getByText("Sorry there are no news articles available")
@@ -104,13 +106,13 @@ describe("/news/articles/index.page", () => {
 			};
 			mockPropsWithFeaturedStory.featuredStory.name = "Featured story";
 
-			render(<ArticlesIndexPage {...mockPropsWithFeaturedStory} />);
+			render(<InDepthArticleIndexPage {...mockPropsWithFeaturedStory} />);
 
 			expect(screen.getByText("Featured story")).toBeInTheDocument();
 		});
 
 		it("should render news navigation", () => {
-			render(<ArticlesIndexPage {...mockProps} />);
+			render(<InDepthArticleIndexPage {...mockProps} />);
 			const navElement = screen.getByRole("navigation", {
 				name: "News section navigation",
 			});
@@ -118,15 +120,16 @@ describe("/news/articles/index.page", () => {
 			expect(navElement).toBeInTheDocument();
 			expect(newsNaviagtionLinks.length).toBe(5);
 		});
+
 		it("should render an action banner for newsletters and alerts", () => {
-			render(<ArticlesIndexPage {...mockProps} />);
+			render(<InDepthArticleIndexPage {...mockProps} />);
 			expect(
 				screen.getByText("Sign up for our newsletters and alerts")
 			).toBeInTheDocument();
 		});
 
 		it("should render a news list pagination component", () => {
-			const { container } = render(<ArticlesIndexPage {...mockProps} />);
+			const { container } = render(<InDepthArticleIndexPage {...mockProps} />);
 			const totalPages = Math.ceil(
 				mockConfig.totalResults / mockConfig.resultsPerPage
 			);
@@ -134,17 +137,15 @@ describe("/news/articles/index.page", () => {
 				`Page ${mockConfig.currentPage} of ${totalPages}`
 			);
 		});
-
 		it.todo("should render a list of stories");
-
 		it.todo("should not render a featured story if one is not returned");
 
 		describe("Accessibility features", () => {
 			it("should render a hidden focusable heading for screen readers", () => {
-				render(<ArticlesIndexPage {...mockProps} />);
+				render(<InDepthArticleIndexPage {...mockProps} />);
 				const hiddenFocusableHeading = screen.getByRole("heading", {
 					level: 2,
-					name: "News article list",
+					name: "In-depth articles list",
 				});
 				expect(hiddenFocusableHeading).toBeInTheDocument();
 				expect(hiddenFocusableHeading).toHaveClass("visually-hidden");
@@ -155,11 +156,11 @@ describe("/news/articles/index.page", () => {
 				announcer.setAttribute("aria-live", "assertive");
 				announcer.setAttribute("role", "alert");
 				document.body.appendChild(announcer);
-				render(<ArticlesIndexPage {...mockProps} />);
+				render(<InDepthArticleIndexPage {...mockProps} />);
 
 				await waitFor(() =>
 					expect(screen.getByRole("alert")).toHaveTextContent(
-						"News article listing page, 1 of 2"
+						"In-depth article listing page, 1 of 2"
 					)
 				);
 

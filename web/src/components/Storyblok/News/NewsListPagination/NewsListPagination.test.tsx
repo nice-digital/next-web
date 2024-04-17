@@ -3,27 +3,6 @@ import { useRouter } from "next/router";
 
 import { NewsListPagination } from "./NewsListPagination";
 
-expect.extend({
-	toHaveTextContentIgnoreTags(received, expected) {
-		const strippedReceived = received.replace(/(<([^>]+)>)/gi, "");
-		const strippedExpected = expected.replace(/(<([^>]+)>)/gi, "");
-		const pass = strippedReceived.includes(strippedExpected);
-		if (pass) {
-			return {
-				message: () =>
-					`expected ${received} not to have text content ignoring tags ${expected}`,
-				pass: true,
-			};
-		} else {
-			return {
-				message: () =>
-					`expected ${received} to have text content ignoring tags ${expected}`,
-				pass: false,
-			};
-		}
-	},
-});
-
 describe("NewsListPagination", () => {
 	const configuration = {
 		currentPage: 1,

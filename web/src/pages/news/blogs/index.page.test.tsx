@@ -6,24 +6,25 @@ import { useRouter } from "next/router";
 import { GetServerSidePropsContext } from "next/types";
 import { StoryblokStory } from "storyblok-generate-ts";
 
-import MockStoryblokSuccessResponse from "@/test-utils/storyblok-news-articles-listing.json";
+//TODO is separate mock data necessary? Authors aren't coming through - how to handle this?
+import MockStoryblokSuccessResponse from "@/test-utils/storyblok-blog-posts-listing.json";
 import { NewsStory } from "@/types/News";
 import * as storyblokUtils from "@/utils/storyblok";
 
 import {
 	getServerSideProps,
-	ArticlesIndexPage,
-	NewsArticlesProps,
+	BlogIndexPage,
+	BlogPostsProps,
 } from "./index.page";
 
 const mockStories = MockStoryblokSuccessResponse.data.stories;
 
-describe("/news/articles/index.page", () => {
+describe("/news/in-depth/index.page", () => {
 	(useRouter as jest.Mock).mockReturnValue({
-		route: "/news/articles",
-		pathname: "/news/articles",
+		route: "/news/blogs",
+		pathname: "/news/blogs",
 		query: { page: "1" },
-		asPath: "/news/articles?page=1",
+		asPath: "/news/blogs?page=1",
 		events: {
 			on: jest.fn(),
 			off: jest.fn(),
@@ -35,7 +36,8 @@ describe("/news/articles/index.page", () => {
 	const mockConfig = {
 		currentPage: 1,
 		resultsPerPage: 6,
-		startsWith: "news/articles/",
+		startsWith: "news/blogs/",
+		resolve_relations: "blogPost.author",
 		query: {
 			upperOutOfBoundPagination: "30",
 			lowerOutOfBoundPagination: "-1",
@@ -44,37 +46,37 @@ describe("/news/articles/index.page", () => {
 		totalResults: 8,
 	};
 
-	const mockProps: NewsArticlesProps = {
+	const mockProps: BlogPostsProps = {
 		stories: mockStories as unknown as StoryblokStory<NewsStory>[],
 		currentPage: mockConfig.currentPage,
 		total: mockConfig.totalResults,
 		perPage: mockConfig.resultsPerPage,
 	};
 
-	describe("ArticlesIndexPage", () => {
+	describe("BlogIndexPage", () => {
 		it("should match snapshot for main content", () => {
-			render(<ArticlesIndexPage {...mockProps} />);
+			render(<BlogIndexPage {...mockProps} />);
 			expect(document.body).toMatchSnapshot();
 		});
 
 		it("should render error page if validateRouteParams returns error", async () => {
 			const errorMessage = "An error returned from getserversideprops";
-			const { asFragment } = render(<ArticlesIndexPage error={errorMessage} />);
+			const { asFragment } = render(<BlogIndexPage error={errorMessage} />);
 
 			expect(screen.getByText(errorMessage)).toBeInTheDocument();
 			expect(asFragment()).toMatchSnapshot();
 		});
 
 		it("should render a page header", async () => {
-			render(<ArticlesIndexPage {...mockProps} />);
+			render(<BlogIndexPage {...mockProps} />);
 
 			expect(
-				screen.getByRole("heading", { level: 1, name: "News articles" })
+				screen.getByRole("heading", { level: 1, name: "Blogs" })
 			).toBeInTheDocument();
 		});
 
 		it("should render breadcrumbs", () => {
-			render(<ArticlesIndexPage {...mockProps} />);
+			render(<BlogIndexPage {...mockProps} />);
 			const navElement = screen.getByRole("navigation", {
 				name: "Breadcrumbs",
 			});
@@ -83,34 +85,34 @@ describe("/news/articles/index.page", () => {
 			expect(breadcrumbLinks.length).toBe(2);
 		});
 
-		it("should render no content message if no stories are returned", () => {
+		it("should render no content message if no posts are returned", () => {
 			const mockPropsNoStories = {
 				...mockProps,
 				stories: [],
 			};
 
-			render(<ArticlesIndexPage {...mockPropsNoStories} />);
+			render(<BlogIndexPage {...mockPropsNoStories} />);
 
 			expect(
-				screen.getByText("Sorry there are no news articles available")
+				screen.getByText("Sorry there are no blog posts available")
 			).toBeInTheDocument();
 		});
 
-		it("should render a featured story if one is returned", () => {
+		it("should render a featured post if one is returned", () => {
 			const mockPropsWithFeaturedStory = {
 				...mockProps,
 				featuredStory: mockProps.stories[0],
 				stories: mockProps.stories.slice(1),
 			};
-			mockPropsWithFeaturedStory.featuredStory.name = "Featured story";
+			mockPropsWithFeaturedStory.featuredStory.name = "Featured blog";
 
-			render(<ArticlesIndexPage {...mockPropsWithFeaturedStory} />);
+			render(<BlogIndexPage {...mockPropsWithFeaturedStory} />);
 
-			expect(screen.getByText("Featured story")).toBeInTheDocument();
+			expect(screen.getByText("Featured blog")).toBeInTheDocument();
 		});
 
 		it("should render news navigation", () => {
-			render(<ArticlesIndexPage {...mockProps} />);
+			render(<BlogIndexPage {...mockProps} />);
 			const navElement = screen.getByRole("navigation", {
 				name: "News section navigation",
 			});
@@ -118,15 +120,16 @@ describe("/news/articles/index.page", () => {
 			expect(navElement).toBeInTheDocument();
 			expect(newsNaviagtionLinks.length).toBe(5);
 		});
+
 		it("should render an action banner for newsletters and alerts", () => {
-			render(<ArticlesIndexPage {...mockProps} />);
+			render(<BlogIndexPage {...mockProps} />);
 			expect(
 				screen.getByText("Sign up for our newsletters and alerts")
 			).toBeInTheDocument();
 		});
 
 		it("should render a news list pagination component", () => {
-			const { container } = render(<ArticlesIndexPage {...mockProps} />);
+			const { container } = render(<BlogIndexPage {...mockProps} />);
 			const totalPages = Math.ceil(
 				mockConfig.totalResults / mockConfig.resultsPerPage
 			);
@@ -135,16 +138,15 @@ describe("/news/articles/index.page", () => {
 			);
 		});
 
-		it.todo("should render a list of stories");
-
+		it.todo("should render a list of blog posts");
 		it.todo("should not render a featured story if one is not returned");
 
 		describe("Accessibility features", () => {
 			it("should render a hidden focusable heading for screen readers", () => {
-				render(<ArticlesIndexPage {...mockProps} />);
+				render(<BlogIndexPage {...mockProps} />);
 				const hiddenFocusableHeading = screen.getByRole("heading", {
 					level: 2,
-					name: "News article list",
+					name: "Blog post list",
 				});
 				expect(hiddenFocusableHeading).toBeInTheDocument();
 				expect(hiddenFocusableHeading).toHaveClass("visually-hidden");
@@ -155,11 +157,11 @@ describe("/news/articles/index.page", () => {
 				announcer.setAttribute("aria-live", "assertive");
 				announcer.setAttribute("role", "alert");
 				document.body.appendChild(announcer);
-				render(<ArticlesIndexPage {...mockProps} />);
+				render(<BlogIndexPage {...mockProps} />);
 
 				await waitFor(() =>
 					expect(screen.getByRole("alert")).toHaveTextContent(
-						"News article listing page, 1 of 2"
+						"Blog post listing page, 1 of 2"
 					)
 				);
 
@@ -224,6 +226,7 @@ describe("/news/articles/index.page", () => {
 				sbParams: {
 					starts_with: mockConfig.startsWith,
 					per_page: mockConfig.resultsPerPage,
+					resolve_relations: mockConfig.resolve_relations,
 				},
 			});
 		});
