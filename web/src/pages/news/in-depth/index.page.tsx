@@ -19,26 +19,31 @@ import { validateRouteParams } from "@/utils/storyblok";
 
 import type { GetServerSidePropsContext } from "next";
 
-export type InDepthArticleProps = {
+export type InDepthArticleErrorProps = {
+	error: string;
+};
+
+export type InDepthArticleSuccessProps = {
 	featuredStory?: StoryblokStory<NewsStory> | null;
 	stories: StoryblokStory<NewsStory>[];
 	total: number;
 	currentPage: number;
 	perPage: number;
-	error?: string | undefined;
 };
 
-export const InDepthArticleIndexPage = ({
-	stories,
-	currentPage,
-	total,
-	perPage,
-	featuredStory,
-	error,
-}: InDepthArticleProps): React.ReactElement => {
-	if (error) {
+export type InDepthArticleProps =
+	| InDepthArticleSuccessProps
+	| InDepthArticleErrorProps;
+
+export const InDepthArticleIndexPage = (
+	props: InDepthArticleProps
+): React.ReactElement => {
+	if ("error" in props) {
+		const { error } = props;
 		return <ErrorPageContent title="Error" heading={error} />;
 	}
+
+	const { stories, currentPage, total, perPage, featuredStory } = props;
 	return (
 		<>
 			<NextSeo title="In-depth" openGraph={{ title: "In-depth" }}></NextSeo>
@@ -99,38 +104,40 @@ export const getServerSideProps = async ({
 	query,
 	resolvedUrl,
 }: GetServerSidePropsContext) => {
-	const result = await validateRouteParams<InDepthArticleProps>({
-		query,
-		sbParams: {
-			starts_with: "news/in-depth/",
-			per_page: 6,
-		},
-		resolvedUrl,
-	});
+	try {
+		const result = await validateRouteParams<InDepthArticleProps>({
+			query,
+			sbParams: {
+				starts_with: "news/in-depth/",
+				per_page: 6,
+			},
+			resolvedUrl,
+		});
 
-	// will return a 404 or redirect if the route is not valid
-	if ("notFound" in result || "redirect" in result) return result;
+		// will return a 404 or redirect if the route is not valid
+		if ("notFound" in result || "redirect" in result) return result;
 
-	//
-	if ("error" in result) {
+		const { featuredStory, stories, total, perPage, currentPage } = result;
+
 		return {
 			props: {
-				...result,
+				featuredStory,
+				stories,
+				total,
+				currentPage,
+				perPage,
+			},
+		};
+	} catch (error) {
+		const isError = (obj: unknown): obj is Error => {
+			return obj instanceof Error;
+		};
+		return {
+			props: {
+				error: isError(error) ? error.message : "an unspecified error occurred",
 			},
 		};
 	}
-
-	const { featuredStory, stories, total, perPage, currentPage } = result;
-
-	return {
-		props: {
-			featuredStory,
-			stories,
-			total,
-			currentPage,
-			perPage,
-		},
-	};
 };
 
 export default InDepthArticleIndexPage;
