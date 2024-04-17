@@ -7,43 +7,36 @@ import {
 	getProductListPage,
 	getGetServerSidePropsFunc,
 } from "@/components/ProductListPage/ProductListPage";
+import { ResponsiveDate } from "@/components/ResponsiveDate/ResponsiveDate";
 
-const defaultSortOrder = SortOrder.dateDescending,
-	dateFilterLabel = "Last updated date";
+const defaultSortOrder = SortOrder.guidanceRefAscending,
+	dateFilterLabel = "Last updated date",
+	textFilterLabel = "Filter by Guidance Id or keyword";
 
-const tableBodyRender = (documents: Document[]) => (
+const tableBodyRender = (documents: (Document & { sectionNumber?: string })[]) => (
 	<>
 		<caption className="visually-hidden">
 			List of research recommendations
 		</caption>
 		<thead>
 			<tr>
-				<th scope="col">Guidance Id</th>
-				<th scope="col">Recommendation question</th>
+				<th scope="col">Recommendation Id</th>
+				<th scope="col">Recommendation for research</th>
+				<th scope="col">Published date</th>
 			</tr>
 		</thead>
 		<tbody>
-			{documents.map(({ id, title, guidanceRef, pathAndQuery }) => {
-				const testObject = { id, title, guidanceRef, pathAndQuery };
-				console.log(testObject);
+			{documents.map(({ id, title, guidanceRef, sectionNumber, pathAndQuery, publicationDate }) => {
+				const recommendationId = `${guidanceRef}${sectionNumber ? `/${sectionNumber.padStart(2,"0")}` : ""}`;
 				return (
 					<tr key={id}>
-						<td>{guidanceRef}</td>
+						<td>{recommendationId}</td>
 						<td>
 							<Link href={pathAndQuery}>
 								<span dangerouslySetInnerHTML={{ __html: title }} />
 							</Link>
 						</td>
-
-						{/* <td
-								dangerouslySetInnerHTML={{ __html: metaDescription || "" }}
-							></td> */}
-						{/* <td>
-								<ResponsiveDate isoDateTime={String(publicationDate)} />
-							</td>
-							<td>
-								<ResponsiveDate isoDateTime={String(lastUpdated)} />
-							</td> */}
+						<td><ResponsiveDate isoDateTime={String(publicationDate)} /></td>
 					</tr>
 				);
 			})}
@@ -56,22 +49,23 @@ export default getProductListPage({
 	listNavType: () => null,
 	breadcrumbTrail: [],
 	currentBreadcrumb: "Research recommendations",
-	preheading: "",
+	preheading: "Published",
 	heading: <>Research recommendations</>,
 	title: "Research recommendations | NICE",
 	defaultSort: {
 		order: defaultSortOrder,
-		label: "Date",
+		label: "Recommendation Id",
 	},
 	secondarySort: {
-		order: SortOrder.titleAscending,
-		label: "Title",
+		order: SortOrder.dateDescending,
+		label: "Published date",
 	},
 	showDateFilter: true,
 	useFutureDates: false,
 	dateFilterLabel,
+	textFilterLabel,
 	tableBodyRender,
-	searchInputPlaceholder: "E.g. 'diabetes' or 'IND28'",
+	searchInputPlaceholder: "E.g. 'IND28' or 'diabetes'",
 });
 
 export const getServerSideProps = getGetServerSidePropsFunc({

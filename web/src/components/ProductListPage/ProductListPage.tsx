@@ -69,6 +69,7 @@ export type GetProductListPageOptions = {
 	showDateFilter: boolean;
 	showTextFilter?: boolean;
 	dateFilterLabel?: string;
+	textFilterLabel?: string;
 	useFutureDates?: boolean;
 	tableBodyRender: (documents: Document[]) => JSX.Element;
 	searchInputPlaceholder: string;
@@ -76,6 +77,7 @@ export type GetProductListPageOptions = {
 	| {
 			showDateFilter: true;
 			dateFilterLabel: string;
+			textFilterLabel: string;
 			useFutureDates: boolean;
 	  }
 	| {
@@ -102,6 +104,7 @@ export const getProductListPage =
 		secondarySort,
 		showDateFilter,
 		dateFilterLabel,
+		textFilterLabel,
 		useFutureDates,
 		tableBodyRender,
 		searchInputPlaceholder,
@@ -215,6 +218,7 @@ export const getProductListPage =
 							showDateFilter={showDateFilter}
 							showTextFilter={true}
 							dateFilterLabel={dateFilterLabel}
+							textFilterLabel={textFilterLabel}
 							useFutureDates={useFutureDates}
 							navigatorsOrder={[
 								"nai",
