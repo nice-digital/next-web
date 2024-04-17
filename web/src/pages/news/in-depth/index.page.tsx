@@ -15,7 +15,7 @@ import { NewsListPagination } from "@/components/Storyblok/News/NewsListPaginati
 import { NewsListPaginationAnnouncer } from "@/components/Storyblok/News/NewsListPaginationAnnouncer/NewsListPaginationAnnouncer";
 import { PaginationFocusedElement } from "@/components/Storyblok/News/NewsListPaginationFocus/NewsListPaginationFocus";
 import { NewsStory } from "@/types/News";
-import { validateRouteParams } from "@/utils/storyblok";
+import { isError, validateRouteParams } from "@/utils/storyblok";
 
 import type { GetServerSidePropsContext } from "next";
 
@@ -129,12 +129,11 @@ export const getServerSideProps = async ({
 			},
 		};
 	} catch (error) {
-		const isError = (obj: unknown): obj is Error => {
-			return obj instanceof Error;
-		};
 		return {
 			props: {
-				error: isError(error) ? error.message : "an unspecified error occurred",
+				error: isError(error)
+					? error.message
+					: "Oops! Something went wrong and we're working to fix it. Please try again later.",
 			},
 		};
 	}

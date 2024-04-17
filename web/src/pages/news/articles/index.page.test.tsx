@@ -227,7 +227,10 @@ describe("/news/articles/index.page", () => {
 			} as unknown as GetServerSidePropsContext<ParsedUrlQuery>);
 
 			expect(result).toEqual({
-				props: { error: "an unspecified error occurred" },
+				props: {
+					error:
+						"Oops! Something went wrong and we're working to fix it. Please try again later.",
+				},
 			});
 		});
 

@@ -29,6 +29,7 @@ import {
 	friendlyDate,
 	validateRouteParams,
 	constructStoryblokImageSrc,
+	isError,
 } from "./storyblok";
 
 describe("Storyblok utils", () => {
@@ -676,7 +677,7 @@ describe("Storyblok utils", () => {
 			};
 
 			expect(throwErrorValiadateRouteParams).rejects.toThrow(
-				"There was an error fetching stories. Please try again later."
+				"There was an error fetching this content. Please try again later."
 			);
 
 			await waitFor(() => {
@@ -687,6 +688,29 @@ describe("Storyblok utils", () => {
 					mockError
 				);
 			});
+		});
+	});
+
+	describe("isError function", () => {
+		it("returns true when passed an Error object", () => {
+			const error = new Error("Test error");
+			expect(isError(error)).toBe(true);
+		});
+
+		it("returns false when passed a non-Error object", () => {
+			expect(isError("")).toBe(false);
+			expect(isError(123)).toBe(false);
+			expect(isError({})).toBe(false);
+			expect(isError([])).toBe(false);
+			expect(isError(null)).toBe(false);
+			expect(isError(undefined)).toBe(false);
+		});
+
+		it("returns false when passed non-object values", () => {
+			expect(isError("")).toBe(false);
+			expect(isError(123)).toBe(false);
+			expect(isError(null)).toBe(false);
+			expect(isError(undefined)).toBe(false);
 		});
 	});
 });
