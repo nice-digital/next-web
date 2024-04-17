@@ -15,30 +15,31 @@ import { NewsListPagination } from "@/components/Storyblok/News/NewsListPaginati
 import { NewsListPaginationAnnouncer } from "@/components/Storyblok/News/NewsListPaginationAnnouncer/NewsListPaginationAnnouncer";
 import { PaginationFocusedElement } from "@/components/Storyblok/News/NewsListPaginationFocus/NewsListPaginationFocus";
 import { NewsStory } from "@/types/News";
-import { validateRouteParams } from "@/utils/storyblok";
+import { isError, validateRouteParams } from "@/utils/storyblok";
 
 import type { GetServerSidePropsContext } from "next";
 
-export type BlogPostsProps = {
+export type BlogPostsErrorProps = {
+	error: string;
+};
+
+export type BlogPostsSuccessProps = {
 	featuredStory?: StoryblokStory<NewsStory> | null;
 	stories: StoryblokStory<NewsStory>[];
 	total: number;
 	currentPage: number;
 	perPage: number;
-	error?: string | undefined;
 };
 
-export const BlogIndexPage = ({
-	stories,
-	currentPage,
-	total,
-	perPage,
-	featuredStory,
-	error,
-}: BlogPostsProps): React.ReactElement => {
-	if (error) {
+export type BlogPostsProps = BlogPostsSuccessProps | BlogPostsErrorProps;
+
+export const BlogIndexPage = (props: BlogPostsProps): React.ReactElement => {
+	if ("error" in props) {
+		const { error } = props;
 		return <ErrorPageContent title="Error" heading={error} />;
 	}
+
+	const { featuredStory, stories, total, currentPage, perPage } = props;
 
 	const pageTitle = "Blogs";
 
@@ -99,37 +100,39 @@ export const getServerSideProps = async ({
 	query,
 	resolvedUrl,
 }: GetServerSidePropsContext) => {
-	const result = await validateRouteParams<BlogPostsProps>({
-		query,
-		sbParams: {
-			starts_with: "news/blogs/",
-			per_page: 6,
-			resolve_relations: "blogPost.author",
-		},
-		resolvedUrl,
-	});
+	try {
+		const result = await validateRouteParams<BlogPostsProps>({
+			query,
+			sbParams: {
+				starts_with: "news/blogs/",
+				per_page: 6,
+				resolve_relations: "blogPost.author",
+			},
+			resolvedUrl,
+		});
 
-	if ("notFound" in result || "redirect" in result) return result;
+		if ("notFound" in result || "redirect" in result) return result;
 
-	if ("error" in result) {
+		const { featuredStory, stories, total, perPage, currentPage } = result;
+
 		return {
 			props: {
-				...result,
+				featuredStory,
+				stories,
+				total,
+				currentPage,
+				perPage,
+			},
+		};
+	} catch (error) {
+		return {
+			props: {
+				error: isError(error)
+					? error.message
+					: "Oops! Something went wrong and we're working to fix it. Please try again later.",
 			},
 		};
 	}
-
-	const { featuredStory, stories, total, perPage, currentPage } = result;
-
-	return {
-		props: {
-			featuredStory,
-			stories,
-			total,
-			currentPage,
-			perPage,
-		},
-	};
 };
 
 export default BlogIndexPage;
