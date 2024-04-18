@@ -13,7 +13,9 @@ const defaultSortOrder = SortOrder.guidanceRefAscending,
 	dateFilterLabel = "Published date",
 	textFilterLabel = "Filter by reference number or keyword";
 
-const tableBodyRender = (documents: (Document & { sectionNumber?: string })[]) => (
+const tableBodyRender = (
+	documents: (Document & { sectionNumber?: string })[]
+) => (
 	<>
 		<caption className="visually-hidden">
 			List of research recommendations
@@ -26,20 +28,33 @@ const tableBodyRender = (documents: (Document & { sectionNumber?: string })[]) =
 			</tr>
 		</thead>
 		<tbody>
-			{documents.map(({ id, title, guidanceRef, sectionNumber, pathAndQuery, publicationDate }) => {
-				const recommendationId = `${guidanceRef}${sectionNumber ? `/${sectionNumber.padStart(2,"0")}` : ""}`;
-				return (
-					<tr key={id}>
-						<td>{recommendationId}</td>
-						<td>
-							<Link href={pathAndQuery}>
-								<span dangerouslySetInnerHTML={{ __html: title }} />
-							</Link>
-						</td>
-						<td><ResponsiveDate isoDateTime={String(publicationDate)} /></td>
-					</tr>
-				);
-			})}
+			{documents.map(
+				({
+					id,
+					title,
+					guidanceRef,
+					sectionNumber,
+					pathAndQuery,
+					publicationDate,
+				}) => {
+					const recommendationId = `${guidanceRef}${
+						sectionNumber ? `/${sectionNumber.padStart(2, "0")}` : ""
+					}`;
+					return (
+						<tr key={id}>
+							<td>{recommendationId}</td>
+							<td>
+								<Link href={pathAndQuery}>
+									<span dangerouslySetInnerHTML={{ __html: title }} />
+								</Link>
+							</td>
+							<td>
+								<ResponsiveDate isoDateTime={String(publicationDate)} />
+							</td>
+						</tr>
+					);
+				}
+			)}
 		</tbody>
 	</>
 );

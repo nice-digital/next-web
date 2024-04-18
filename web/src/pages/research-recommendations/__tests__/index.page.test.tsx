@@ -55,12 +55,9 @@ describe("/research-recommendations/index", () => {
 		});
 
 		it("should have a visually hidden caption describing the content of the table", () => {
-			const caption = screen.getByText(
-				"List of research recommendations",
-				{
-					selector: "caption",
-				}
-			);
+			const caption = screen.getByText("List of research recommendations", {
+				selector: "caption",
+			});
 			expect(caption).toBeInTheDocument();
 			expect(caption).toHaveClass("visually-hidden");
 		});
@@ -73,7 +70,7 @@ describe("/research-recommendations/index", () => {
 			const { guidanceRef, title, publicationDate, sectionNumber } =
 				sampleData.documents[0];
 			it.each([
-				[`${guidanceRef}/${sectionNumber.padStart(2,"0")}`],
+				[`${guidanceRef}/${sectionNumber.padStart(2, "0")}`],
 				[title],
 				[formatDateStr(String(publicationDate))],
 			])("should set data cell to '%s'", (text) => {
