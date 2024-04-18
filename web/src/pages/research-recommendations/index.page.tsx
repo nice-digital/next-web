@@ -10,8 +10,8 @@ import {
 import { ResponsiveDate } from "@/components/ResponsiveDate/ResponsiveDate";
 
 const defaultSortOrder = SortOrder.guidanceRefAscending,
-	dateFilterLabel = "Last updated date",
-	textFilterLabel = "Filter by Guidance Id or keyword";
+	dateFilterLabel = "Published date",
+	textFilterLabel = "Filter by reference number or keyword";
 
 const tableBodyRender = (documents: (Document & { sectionNumber?: string })[]) => (
 	<>
@@ -20,9 +20,9 @@ const tableBodyRender = (documents: (Document & { sectionNumber?: string })[]) =
 		</caption>
 		<thead>
 			<tr>
-				<th scope="col">Recommendation Id</th>
+				<th scope="col">Reference number</th>
 				<th scope="col">Recommendation for research</th>
-				<th scope="col">Published date</th>
+				<th scope="col">Published</th>
 			</tr>
 		</thead>
 		<tbody>
@@ -54,11 +54,11 @@ export default getProductListPage({
 	title: "Research recommendations | NICE",
 	defaultSort: {
 		order: defaultSortOrder,
-		label: "Recommendation Id",
+		label: "Reference number",
 	},
 	secondarySort: {
 		order: SortOrder.dateDescending,
-		label: "Published date",
+		label: "Published",
 	},
 	showDateFilter: true,
 	useFutureDates: false,
