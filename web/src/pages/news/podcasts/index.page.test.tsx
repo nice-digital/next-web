@@ -6,24 +6,25 @@ import { useRouter } from "next/router";
 import { GetServerSidePropsContext } from "next/types";
 import { StoryblokStory } from "storyblok-generate-ts";
 
+//TODO check shape of podcast mock response - can news stories still be used?
 import MockStoryblokSuccessResponse from "@/test-utils/storyblok-news-articles-listing.json";
 import { NewsStory } from "@/types/News";
 import * as storyblokUtils from "@/utils/storyblok";
 
 import {
 	getServerSideProps,
-	ArticlesIndexPage,
-	NewsArticlesProps,
+	PodcastIndexPage,
+	PodcastPostsProps,
 } from "./index.page";
 
 const mockStories = MockStoryblokSuccessResponse.data.stories;
 
-describe("/news/articles/index.page", () => {
+describe("/news/podcasts/index.page", () => {
 	(useRouter as jest.Mock).mockReturnValue({
-		route: "/news/articles",
-		pathname: "/news/articles",
+		route: "/news/podcasts",
+		pathname: "/news/podcasts",
 		query: { page: "1" },
-		asPath: "/news/articles?page=1",
+		asPath: "/news/podcasts?page=1",
 		events: {
 			on: jest.fn(),
 			off: jest.fn(),
@@ -34,8 +35,9 @@ describe("/news/articles/index.page", () => {
 
 	const mockConfig = {
 		currentPage: 1,
-		resultsPerPage: 6,
-		startsWith: "news/articles/",
+		//TODO check why podcasts are 3 per page
+		resultsPerPage: 3,
+		startsWith: "news/podcasts/",
 		query: {
 			upperOutOfBoundPagination: "30",
 			lowerOutOfBoundPagination: "-1",
@@ -44,37 +46,37 @@ describe("/news/articles/index.page", () => {
 		totalResults: 8,
 	};
 
-	const mockProps: NewsArticlesProps = {
+	const mockProps: PodcastPostsProps = {
 		stories: mockStories as unknown as StoryblokStory<NewsStory>[],
 		currentPage: mockConfig.currentPage,
 		total: mockConfig.totalResults,
 		perPage: mockConfig.resultsPerPage,
 	};
 
-	describe("ArticlesIndexPage", () => {
+	describe("PodcastsIndexPage", () => {
 		it("should match snapshot for main content", () => {
-			render(<ArticlesIndexPage {...mockProps} />);
+			render(<PodcastIndexPage {...mockProps} />);
 			expect(document.body).toMatchSnapshot();
 		});
 
 		it("should render error page if validateRouteParams returns error", async () => {
 			const errorMessage = "An error returned from getserversideprops";
-			const { asFragment } = render(<ArticlesIndexPage error={errorMessage} />);
+			const { asFragment } = render(<PodcastIndexPage error={errorMessage} />);
 
 			expect(screen.getByText(errorMessage)).toBeInTheDocument();
 			expect(asFragment()).toMatchSnapshot();
 		});
 
 		it("should render a page header", async () => {
-			render(<ArticlesIndexPage {...mockProps} />);
+			render(<PodcastIndexPage {...mockProps} />);
 
 			expect(
-				screen.getByRole("heading", { level: 1, name: "News articles" })
+				screen.getByRole("heading", { level: 1, name: "Podcasts" })
 			).toBeInTheDocument();
 		});
 
 		it("should render breadcrumbs", () => {
-			render(<ArticlesIndexPage {...mockProps} />);
+			render(<PodcastIndexPage {...mockProps} />);
 			const navElement = screen.getByRole("navigation", {
 				name: "Breadcrumbs",
 			});
@@ -83,34 +85,21 @@ describe("/news/articles/index.page", () => {
 			expect(breadcrumbLinks.length).toBe(2);
 		});
 
-		it("should render no content message if no stories are returned", () => {
+		it("should render no content message if no podcasts are returned", () => {
 			const mockPropsNoStories = {
 				...mockProps,
 				stories: [],
 			};
 
-			render(<ArticlesIndexPage {...mockPropsNoStories} />);
+			render(<PodcastIndexPage {...mockPropsNoStories} />);
 
 			expect(
-				screen.getByText("Sorry there are no news articles available")
+				screen.getByText("Sorry there are no podcasts available")
 			).toBeInTheDocument();
 		});
 
-		it("should render a featured story if one is returned", () => {
-			const mockPropsWithFeaturedStory = {
-				...mockProps,
-				featuredStory: mockProps.stories[0],
-				stories: mockProps.stories.slice(1),
-			};
-			mockPropsWithFeaturedStory.featuredStory.name = "Featured story";
-
-			render(<ArticlesIndexPage {...mockPropsWithFeaturedStory} />);
-
-			expect(screen.getByText("Featured story")).toBeInTheDocument();
-		});
-
 		it("should render news navigation", () => {
-			render(<ArticlesIndexPage {...mockProps} />);
+			render(<PodcastIndexPage {...mockProps} />);
 			const navElement = screen.getByRole("navigation", {
 				name: "News section navigation",
 			});
@@ -120,14 +109,14 @@ describe("/news/articles/index.page", () => {
 		});
 
 		it("should render an action banner for newsletters and alerts", () => {
-			render(<ArticlesIndexPage {...mockProps} />);
+			render(<PodcastIndexPage {...mockProps} />);
 			expect(
 				screen.getByText("Sign up for our newsletters and alerts")
 			).toBeInTheDocument();
 		});
 
 		it("should render a news list pagination component", () => {
-			const { container } = render(<ArticlesIndexPage {...mockProps} />);
+			const { container } = render(<PodcastIndexPage {...mockProps} />);
 			const totalPages = Math.ceil(
 				mockConfig.totalResults / mockConfig.resultsPerPage
 			);
@@ -136,12 +125,25 @@ describe("/news/articles/index.page", () => {
 			);
 		});
 
+		it("should render an 'other ways to listen' panel", () => {
+			render(<PodcastIndexPage {...mockProps} />);
+			const panelHeading = screen.getByRole("heading", {
+				level: 2,
+				name: "Other ways to listen",
+			});
+			expect(panelHeading).toBeInTheDocument();
+
+			// eslint-disable-next-line testing-library/no-node-access
+			const panel = panelHeading.closest(".panel");
+			expect(panel).toBeInTheDocument();
+		});
+
 		describe("Accessibility features", () => {
 			it("should render a hidden focusable heading for screen readers", () => {
-				render(<ArticlesIndexPage {...mockProps} />);
+				render(<PodcastIndexPage {...mockProps} />);
 				const hiddenFocusableHeading = screen.getByRole("heading", {
 					level: 2,
-					name: "News article list",
+					name: "Podcast list",
 				});
 				expect(hiddenFocusableHeading).toBeInTheDocument();
 				expect(hiddenFocusableHeading).toHaveClass("visually-hidden");
@@ -152,11 +154,11 @@ describe("/news/articles/index.page", () => {
 				announcer.setAttribute("aria-live", "assertive");
 				announcer.setAttribute("role", "alert");
 				document.body.appendChild(announcer);
-				render(<ArticlesIndexPage {...mockProps} />);
+				render(<PodcastIndexPage {...mockProps} />);
 
 				await waitFor(() =>
 					expect(screen.getByRole("alert")).toHaveTextContent(
-						"News article listing page, 1 of 2"
+						"Podcast listing page, 1 of 3"
 					)
 				);
 
@@ -298,11 +300,47 @@ describe("/news/articles/index.page", () => {
 
 			expect(result).toEqual({
 				props: {
-					featuredStory: MockStoryblokSuccessResponse.data.stories[0],
-					stories: MockStoryblokSuccessResponse.data.stories.slice(1),
+					//TODO check functionality around featuredStory merging - does this suffice?
+					stories: MockStoryblokSuccessResponse.data.stories,
 					perPage: MockStoryblokSuccessResponse.perPage,
 					total: MockStoryblokSuccessResponse.total,
 					currentPage: 1,
+				},
+			});
+		});
+
+		//TODO check if this test is accurate
+		it("should return a correct props object if validateRouteParams returns success and page is not equal to 1", async () => {
+			const notPageOne = "2";
+			const mockValidatedRouteParamsSuccessResponse = {
+				featuredStory: mockStories[0],
+				stories: mockStories.slice(1),
+				total: MockStoryblokSuccessResponse.total,
+				currentPage: 2,
+				perPage: MockStoryblokSuccessResponse.perPage,
+			};
+			// MockStoryblokSuccessResponse
+			validateRouteParamsSpy.mockResolvedValue(
+				mockValidatedRouteParamsSuccessResponse
+			);
+
+			const result = await getServerSideProps({
+				query: { page: notPageOne },
+			} as unknown as GetServerSidePropsContext<ParsedUrlQuery>);
+
+			//TODO check functionality around featuredStory merging - does this suffice to cover:
+			// const podcastStories =
+			// currentPage === 1 ? [featuredStory, ...stories] : stories;
+
+			const mockStoriesWithoutFeaturedStory =
+				MockStoryblokSuccessResponse.data.stories.slice(1);
+
+			expect(result).toEqual({
+				props: {
+					stories: mockStoriesWithoutFeaturedStory,
+					perPage: MockStoryblokSuccessResponse.perPage,
+					total: MockStoryblokSuccessResponse.total,
+					currentPage: 2,
 				},
 			});
 		});

@@ -137,8 +137,6 @@ describe("/news/in-depth/index.page", () => {
 				`Page ${mockConfig.currentPage} of ${totalPages}`
 			);
 		});
-		it.todo("should render a list of stories");
-		it.todo("should not render a featured story if one is not returned");
 
 		describe("Accessibility features", () => {
 			it("should render a hidden focusable heading for screen readers", () => {

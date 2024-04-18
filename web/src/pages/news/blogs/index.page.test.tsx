@@ -19,7 +19,7 @@ import {
 
 const mockStories = MockStoryblokSuccessResponse.data.stories;
 
-describe("/news/in-depth/index.page", () => {
+describe("/news/blogs/index.page", () => {
 	(useRouter as jest.Mock).mockReturnValue({
 		route: "/news/blogs",
 		pathname: "/news/blogs",
@@ -137,9 +137,6 @@ describe("/news/in-depth/index.page", () => {
 				`Page ${mockConfig.currentPage} of ${totalPages}`
 			);
 		});
-
-		it.todo("should render a list of blog posts");
-		it.todo("should not render a featured story if one is not returned");
 
 		describe("Accessibility features", () => {
 			it("should render a hidden focusable heading for screen readers", () => {

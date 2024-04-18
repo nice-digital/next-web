@@ -20,24 +20,31 @@ import { isError, validateRouteParams } from "@/utils/storyblok";
 
 import type { GetServerSidePropsContext } from "next";
 
-export type PodcastPostsProps = {
+export type PodcastPostsErrorProps = {
+	error: string;
+};
+
+export type PodcastPostsSuccessProps = {
 	stories: StoryblokStory<NewsStory>[];
 	total: number;
 	currentPage: number;
 	perPage: number;
-	error?: string | undefined;
 };
 
-export const PodcastIndexPage = ({
-	stories,
-	currentPage,
-	total,
-	perPage,
-	error,
-}: PodcastPostsProps): React.ReactElement => {
-	if (error) {
+export type PodcastPostsProps =
+	| PodcastPostsSuccessProps
+	| PodcastPostsErrorProps;
+
+export const PodcastIndexPage = (
+	props: PodcastPostsProps
+): React.ReactElement => {
+	if ("error" in props) {
+		const { error } = props;
 		return <ErrorPageContent title="Error" heading={error} />;
 	}
+
+	const { stories, total, currentPage, perPage } = props;
+
 	return (
 		<>
 			<NextSeo title="Podcasts" openGraph={{ title: "Podcasts" }}></NextSeo>

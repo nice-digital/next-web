@@ -1,6 +1,6 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`/news/blogs/index.page BlogIndexPage should match snapshot for main content 1`] = `
+exports[`/news/podcasts/index.page PodcastsIndexPage should match snapshot for main content 1`] = `
 <body>
   <div>
     <div
@@ -51,7 +51,7 @@ exports[`/news/blogs/index.page BlogIndexPage should match snapshot for main con
                     class="breadcrumbs__crumb"
                   >
                     <span>
-                      Blogs
+                      Podcasts
                     </span>
                   </li>
                 </ol>
@@ -83,7 +83,7 @@ exports[`/news/blogs/index.page BlogIndexPage should match snapshot for main con
       "@type": "ListItem",
       "position": 3,
       "item": {
-        "name": "Blogs"
+        "name": "Podcasts"
       }
     }
   ]
@@ -93,8 +93,13 @@ exports[`/news/blogs/index.page BlogIndexPage should match snapshot for main con
             <h1
               class="page-header__heading "
             >
-              Blogs
+              Podcasts
             </h1>
+            <p
+              class="page-header__lead"
+            >
+              Our NICE talks podcasts bring you the real life experience of people working within NHS, public health and social care.
+            </p>
           </div>
         </div>
       </div>
@@ -147,7 +152,7 @@ exports[`/news/blogs/index.page BlogIndexPage should match snapshot for main con
           data-component="horizontal-nav"
         >
           <a
-            aria-current="true"
+            aria-current="false"
             class="horizontal-nav__link"
             href="/news/blogs"
           >
@@ -159,7 +164,7 @@ exports[`/news/blogs/index.page BlogIndexPage should match snapshot for main con
           data-component="horizontal-nav"
         >
           <a
-            aria-current="false"
+            aria-current="true"
             class="horizontal-nav__link"
             href="/news/podcasts"
           >
@@ -168,112 +173,271 @@ exports[`/news/blogs/index.page BlogIndexPage should match snapshot for main con
         </li>
       </ul>
     </nav>
-    <h2
-      class="visually-hidden"
-      tabindex="-1"
+    <div
+      class="grid grid--loose"
     >
-      Blog post list
-    </h2>
-    <ul
-      class="newsList"
-    >
-      <li
-        class="newsItem"
+      <div
+        data-component="grid-item"
+        data-g="12 md:7"
       >
-        <article
-          class="newsCard listItem"
+        <h2
+          class="visually-hidden"
+          tabindex="-1"
         >
-          <a
-            aria-hidden="true"
-            class="imageContainer"
-            href="/news/blogs/test-blog-post-in-dev"
-            style="background-image: url(https://a.storyblok.com/f/271255/788x443/b2d6d3a601/doctor-showing-results-on-tablet-computer-to-male-patient.jpg/m/868x0/filters:quality%2880%29);"
-            tabindex="-1"
+          Podcast list
+        </h2>
+        <ul
+          class="newsList"
+        >
+          <li
+            class="newsItem"
           >
-             
-          </a>
-          <div>
-            <h3
-              class="heading"
+            <article
+              class="newsCard listItem"
             >
-              <a
-                href="/news/blogs/test-blog-post-in-dev"
-              >
-                test blog post in dev
-              </a>
-            </h3>
-            <p
-              class="blogIntroText"
-            >
-              Melanie explains how the update to NICE’s quality standard on the transition from children’s to adults’ services will benefit young people, their families and carers
-            </p>
-            <footer>
               <div>
-                <span
-                  class="tag tag--outline"
-                  data-component="tag"
+                <h3
+                  class="heading"
                 >
-                  Blogs
-                </span>
-                <span
-                  class="date"
-                >
-                  02 February 2024
-                </span>
+                  <a
+                    href="/news/articles/test-news-tomorrow"
+                  >
+                    test news tomorrow
+                  </a>
+                </h3>
+                <p>
+                  intro
+                </p>
+                <footer>
+                  <div>
+                    <span
+                      class="tag tag--outline"
+                      data-component="tag"
+                    >
+                      News
+                    </span>
+                    <span
+                      class="date"
+                    >
+                      13 March 2024
+                    </span>
+                  </div>
+                </footer>
               </div>
-            </footer>
-          </div>
-        </article>
-      </li>
-      <li
-        class="newsItem"
+            </article>
+          </li>
+          <li
+            class="newsItem"
+          >
+            <article
+              class="newsCard listItem"
+            >
+              <div>
+                <h3
+                  class="heading"
+                >
+                  <a
+                    href="/news/articles/test-news-today"
+                  >
+                    test news today
+                  </a>
+                </h3>
+                <p>
+                  intro
+                </p>
+                <footer>
+                  <div>
+                    <span
+                      class="tag tag--outline"
+                      data-component="tag"
+                    >
+                      News
+                    </span>
+                    <span
+                      class="date"
+                    >
+                      11 March 2024
+                    </span>
+                  </div>
+                </footer>
+              </div>
+            </article>
+          </li>
+          <li
+            class="newsItem"
+          >
+            <article
+              class="newsCard listItem"
+            >
+              <div>
+                <h3
+                  class="heading"
+                >
+                  <a
+                    href="/news/articles/test-news-yesterday"
+                  >
+                    test news yesterday
+                  </a>
+                </h3>
+                <p>
+                  intro
+                </p>
+                <footer>
+                  <div>
+                    <span
+                      class="tag tag--outline"
+                      data-component="tag"
+                    >
+                      News
+                    </span>
+                    <span
+                      class="date"
+                    >
+                      10 March 2024
+                    </span>
+                  </div>
+                </footer>
+              </div>
+            </article>
+          </li>
+          <li
+            class="newsItem"
+          >
+            <article
+              class="newsCard listItem"
+            >
+              <div>
+                <h3
+                  class="heading"
+                >
+                  <a
+                    href="/news/articles/mock-news-article"
+                  >
+                    Mock News Article
+                  </a>
+                </h3>
+                <p>
+                  Some mock intro text to be displayed in the page header
+                </p>
+                <footer>
+                  <div>
+                    <span
+                      class="tag tag--outline"
+                      data-component="tag"
+                    >
+                      News
+                    </span>
+                    <span
+                      class="date"
+                    >
+                      31 January 2024
+                    </span>
+                  </div>
+                </footer>
+              </div>
+            </article>
+          </li>
+          <li
+            class="newsItem"
+          >
+            <article
+              class="newsCard listItem"
+            >
+              <div>
+                <h3
+                  class="heading"
+                >
+                  <a
+                    href="/news/articles/sample-test-article"
+                  >
+                    Sample test article 
+                  </a>
+                </h3>
+                <p>
+                  Test content and purpose of functionality fields 
+                </p>
+                <footer>
+                  <div>
+                    <span
+                      class="tag tag--outline"
+                      data-component="tag"
+                    >
+                      News
+                    </span>
+                    <span
+                      class="date"
+                    >
+                      11 January 2024
+                    </span>
+                  </div>
+                </footer>
+              </div>
+            </article>
+          </li>
+          <li
+            class="newsItem"
+          >
+            <article
+              class="newsCard listItem"
+            >
+              <div>
+                <h3
+                  class="heading"
+                >
+                  <a
+                    href="/news/articles/millions-of-people-with-cardiovascular-disease-could-benefit-from-a-new-cholesterol-treatment-target-recommendation"
+                  >
+                    Millions of people with cardiovascular disease could benefit from a new cholesterol treatment target recommendation
+                  </a>
+                </h3>
+                <p>
+                  Some text
+                </p>
+                <footer>
+                  <div>
+                    <span
+                      class="tag tag--outline"
+                      data-component="tag"
+                    >
+                      News
+                    </span>
+                    <span
+                      class="date"
+                    >
+                      14 December 2023
+                    </span>
+                  </div>
+                </footer>
+              </div>
+            </article>
+          </li>
+        </ul>
+      </div>
+      <div
+        data-component="grid-item"
+        data-g="12 md:4 md:push:1"
       >
-        <article
-          class="newsCard listItem"
+        <div
+          class="panel"
+          data-component="panel"
         >
-          <a
-            aria-hidden="true"
-            class="imageContainer"
-            href="/news/blogs/listening-to-patients-and-organisations-to-update-nice-s-quality-standard-on-transition-from-children-s-to-adults-services"
-            style="background-image: url(https://a.storyblok.com/f/271255/788x443/b2d6d3a601/doctor-showing-results-on-tablet-computer-to-male-patient.jpg/m/868x0/filters:quality%2880%29);"
-            tabindex="-1"
+          <h2
+            class="h3"
           >
+            Other ways to listen
+          </h2>
+          <p>
+            Our NICE talks podcasts are available
              
-          </a>
-          <div>
-            <h3
-              class="heading"
+            <a
+              href="https://linktr.ee/nicetalks"
             >
-              <a
-                href="/news/blogs/listening-to-patients-and-organisations-to-update-nice-s-quality-standard-on-transition-from-children-s-to-adults-services"
-              >
-                Listening to patients and organisations to update NICE’s quality standard on transition from children’s to adults’ services
-              </a>
-            </h3>
-            <p
-              class="blogIntroText"
-            >
-              Melanie explains how the update to NICE’s quality standard on the transition from children’s to adults’ services will benefit young people, their families and carers
-            </p>
-            <footer>
-              <div>
-                <span
-                  class="tag tag--outline"
-                  data-component="tag"
-                >
-                  Blogs
-                </span>
-                <span
-                  class="date"
-                >
-                  14 December 2023
-                </span>
-              </div>
-            </footer>
-          </div>
-        </article>
-      </li>
-    </ul>
+              on a variety of different platforms.
+            </a>
+          </p>
+        </div>
+      </div>
+    </div>
     <section
       class="action-banner"
       data-component="action-banner"
@@ -324,7 +488,7 @@ exports[`/news/blogs/index.page BlogIndexPage should match snapshot for main con
          
         of 
         <b>
-          2
+          3
         </b>
       </p>
       <nav
@@ -335,7 +499,7 @@ exports[`/news/blogs/index.page BlogIndexPage should match snapshot for main con
         >
           <a
             class="simple-pagination__link"
-            href="/news/blogs?page=2"
+            href="/news/podcasts?page=2"
           >
             Next page
           </a>
@@ -347,7 +511,7 @@ exports[`/news/blogs/index.page BlogIndexPage should match snapshot for main con
 </body>
 `;
 
-exports[`/news/blogs/index.page BlogIndexPage should render error page if validateRouteParams returns error 1`] = `
+exports[`/news/podcasts/index.page PodcastsIndexPage should render error page if validateRouteParams returns error 1`] = `
 <DocumentFragment>
   <nav
     aria-label="Breadcrumbs"
