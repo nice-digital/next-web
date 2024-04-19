@@ -2,6 +2,7 @@ import http from "k6/http";
 import { SharedArray } from "k6/data";
 import { sleep } from "k6";
 
+
 export const options = {
   stages: [
     { duration: '5m', target: 100 }, // simulate ramp-up of traffic from 1 to 100 users over 5 minutes.
@@ -26,6 +27,7 @@ let params = {
 export default function () {
   const mixmatchPage = mixmatchPages[Math.floor(Math.random() * mixmatchPages.length)];
 
+ // http.get("https://alpha.nice.org.uk", {noConnectionReuse: true} + mixmatchPage, params);
   http.get("https://alpha.nice.org.uk" + mixmatchPage, params);
 //   console.log(searchTerm); //This can slow the number of requests per second - only use for debugging
   sleep(Math.random() * 0.25);
