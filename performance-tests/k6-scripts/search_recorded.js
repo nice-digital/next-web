@@ -1,5 +1,5 @@
-import { sleep, group } from 'k6'
-import http from 'k6/http'
+import { sleep, group } from "k6";
+import http from "k6/http";
 
 // export const options = {
 //   stages: [
@@ -10,7 +10,7 @@ import http from 'k6/http'
 //   thresholds: {
 //     'http_req_duration': ['p(99)<120'], // 99% of requests must complete below 120ms
 //     'iteration_duration': ['p(95)<150'], // 95% of requests must complete below 150ms
-//     'http_req_waiting': ['p(99)<120'], // 99% of requests must complete below 120ms   
+//     'http_req_waiting': ['p(99)<120'], // 99% of requests must complete below 120ms
 //   },
 // };
 // export const options = {
@@ -28,101 +28,119 @@ import http from 'k6/http'
 //   thresholds: {
 //     'http_req_duration': ['p(99)<1500'], // 99% of requests must complete below 1.5s
 //     'iteration_duration': ['p(95)<1500'], // 99% of requests must complete below 1.5s
-//     'http_req_waiting': ['p(99)<1000'], // 99% of requests must complete below 1s    
+//     'http_req_waiting': ['p(99)<1000'], // 99% of requests must complete below 1s
 //   },
 // };
 
 export default function scenario_1() {
-  let response
+	let response;
 
-  group(
-    'page_1 - http://alpha.nice.org.uk/search?pa=4&q=%22Ulcerative%20colitis%22&s=date',
-    function () {
-      response = http.get(
-        'https://alpha.nice.org.uk/search?pa=4&q=%22Ulcerative%20colitis%22&s=date',
-        {
-          headers: {
-            'upgrade-insecure-requests': '1',
-            'sec-ch-ua': '"Not A(Brand";v="99", "Google Chrome";v="121", "Chromium";v="121"',
-            'sec-ch-ua-mobile': '?0',
-            'sec-ch-ua-platform': '"Windows"',
-          },
-        }
-      )
-      response = http.get(
-        'https://alpha-search-api.nice.org.uk/api/typeahead?index=nice&q=%22Ulcerative%20colitis%22',
-        {
-          headers: {
-            'sec-ch-ua': '"Not A(Brand";v="99", "Google Chrome";v="121", "Chromium";v="121"',
-            'sec-ch-ua-mobile': '?0',
-            'sec-ch-ua-platform': '"Windows"',
-          },
-        }
-      )
-      response = http.get('https://alpha-search-api.nice.org.uk/api/typeahead?index=nice&q=dia', {
-        headers: {
-          'sec-ch-ua': '"Not A(Brand";v="99", "Google Chrome";v="121", "Chromium";v="121"',
-          'sec-ch-ua-mobile': '?0',
-          'sec-ch-ua-platform': '"Windows"',
-        },
-      })
-      response = http.get('https://alpha-search-api.nice.org.uk/api/typeahead?index=nice&q=diab', {
-        headers: {
-          'sec-ch-ua': '"Not A(Brand";v="99", "Google Chrome";v="121", "Chromium";v="121"',
-          'sec-ch-ua-mobile': '?0',
-          'sec-ch-ua-platform': '"Windows"',
-        },
-      })
-      response = http.get('https://alpha-search-api.nice.org.uk/api/typeahead?index=nice&q=diabe', {
-        headers: {
-          'sec-ch-ua': '"Not A(Brand";v="99", "Google Chrome";v="121", "Chromium";v="121"',
-          'sec-ch-ua-mobile': '?0',
-          'sec-ch-ua-platform': '"Windows"',
-        },
-      })
-      response = http.get(
-        'https://alpha-search-api.nice.org.uk/api/typeahead?index=nice&q=diabete',
-        {
-          headers: {
-            'sec-ch-ua': '"Not A(Brand";v="99", "Google Chrome";v="121", "Chromium";v="121"',
-            'sec-ch-ua-mobile': '?0',
-            'sec-ch-ua-platform': '"Windows"',
-          },
-        }
-      )
-      response = http.get(
-        'https://alpha-search-api.nice.org.uk/api/typeahead?index=nice&q=diabetes',
-        {
-          headers: {
-            'sec-ch-ua': '"Not A(Brand";v="99", "Google Chrome";v="121", "Chromium";v="121"',
-            'sec-ch-ua-mobile': '?0',
-            'sec-ch-ua-platform': '"Windows"',
-          },
-        }
-      )
-      sleep(0.9)
-    }
-  )
+	group(
+		"page_1 - http://alpha.nice.org.uk/search?pa=4&q=%22Ulcerative%20colitis%22&s=date",
+		function () {
+			response = http.get(
+				"https://alpha.nice.org.uk/search?pa=4&q=%22Ulcerative%20colitis%22&s=date",
+				{
+					headers: {
+						"upgrade-insecure-requests": "1",
+						"sec-ch-ua":
+							'"Not A(Brand";v="99", "Google Chrome";v="121", "Chromium";v="121"',
+						"sec-ch-ua-mobile": "?0",
+						"sec-ch-ua-platform": '"Windows"',
+					},
+				}
+			);
+			response = http.get(
+				"https://alpha-search-api.nice.org.uk/api/typeahead?index=nice&q=%22Ulcerative%20colitis%22",
+				{
+					headers: {
+						"sec-ch-ua":
+							'"Not A(Brand";v="99", "Google Chrome";v="121", "Chromium";v="121"',
+						"sec-ch-ua-mobile": "?0",
+						"sec-ch-ua-platform": '"Windows"',
+					},
+				}
+			);
+			response = http.get(
+				"https://alpha-search-api.nice.org.uk/api/typeahead?index=nice&q=dia",
+				{
+					headers: {
+						"sec-ch-ua":
+							'"Not A(Brand";v="99", "Google Chrome";v="121", "Chromium";v="121"',
+						"sec-ch-ua-mobile": "?0",
+						"sec-ch-ua-platform": '"Windows"',
+					},
+				}
+			);
+			response = http.get(
+				"https://alpha-search-api.nice.org.uk/api/typeahead?index=nice&q=diab",
+				{
+					headers: {
+						"sec-ch-ua":
+							'"Not A(Brand";v="99", "Google Chrome";v="121", "Chromium";v="121"',
+						"sec-ch-ua-mobile": "?0",
+						"sec-ch-ua-platform": '"Windows"',
+					},
+				}
+			);
+			response = http.get(
+				"https://alpha-search-api.nice.org.uk/api/typeahead?index=nice&q=diabe",
+				{
+					headers: {
+						"sec-ch-ua":
+							'"Not A(Brand";v="99", "Google Chrome";v="121", "Chromium";v="121"',
+						"sec-ch-ua-mobile": "?0",
+						"sec-ch-ua-platform": '"Windows"',
+					},
+				}
+			);
+			response = http.get(
+				"https://alpha-search-api.nice.org.uk/api/typeahead?index=nice&q=diabete",
+				{
+					headers: {
+						"sec-ch-ua":
+							'"Not A(Brand";v="99", "Google Chrome";v="121", "Chromium";v="121"',
+						"sec-ch-ua-mobile": "?0",
+						"sec-ch-ua-platform": '"Windows"',
+					},
+				}
+			);
+			response = http.get(
+				"https://alpha-search-api.nice.org.uk/api/typeahead?index=nice&q=diabetes",
+				{
+					headers: {
+						"sec-ch-ua":
+							'"Not A(Brand";v="99", "Google Chrome";v="121", "Chromium";v="121"',
+						"sec-ch-ua-mobile": "?0",
+						"sec-ch-ua-platform": '"Windows"',
+					},
+				}
+			);
+			sleep(0.9);
+		}
+	);
 
-  group('page_2 - https://alpha.nice.org.uk/search?q=diabetes', function () {
-    response = http.get('https://alpha.nice.org.uk/search?q=diabetes', {
-      headers: {
-        'upgrade-insecure-requests': '1',
-        'sec-ch-ua': '"Not A(Brand";v="99", "Google Chrome";v="121", "Chromium";v="121"',
-        'sec-ch-ua-mobile': '?0',
-        'sec-ch-ua-platform': '"Windows"',
-      },
-    })
-    sleep(0.5)
-    response = http.get(
-      'https://alpha-search-api.nice.org.uk/api/typeahead?index=nice&q=diabetes',
-      {
-        headers: {
-          'sec-ch-ua': '"Not A(Brand";v="99", "Google Chrome";v="121", "Chromium";v="121"',
-          'sec-ch-ua-mobile': '?0',
-          'sec-ch-ua-platform': '"Windows"',
-        },
-      }
-    )
-  })
+	group("page_2 - https://alpha.nice.org.uk/search?q=diabetes", function () {
+		response = http.get("https://alpha.nice.org.uk/search?q=diabetes", {
+			headers: {
+				"upgrade-insecure-requests": "1",
+				"sec-ch-ua":
+					'"Not A(Brand";v="99", "Google Chrome";v="121", "Chromium";v="121"',
+				"sec-ch-ua-mobile": "?0",
+				"sec-ch-ua-platform": '"Windows"',
+			},
+		});
+		sleep(0.5);
+		response = http.get(
+			"https://alpha-search-api.nice.org.uk/api/typeahead?index=nice&q=diabetes",
+			{
+				headers: {
+					"sec-ch-ua":
+						'"Not A(Brand";v="99", "Google Chrome";v="121", "Chromium";v="121"',
+					"sec-ch-ua-mobile": "?0",
+					"sec-ch-ua-platform": '"Windows"',
+				},
+			}
+		);
+	});
 }
