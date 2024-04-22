@@ -7,15 +7,17 @@ import { logger } from "@/logger";
 export const initStoryblok = (): void => {
 	try {
 		const accessToken = publicRuntimeConfig.storyblok.previewAccessToken;
+		const endpoint = publicRuntimeConfig.storyblok.endpoint;
 
 		storyblokInit({
 			accessToken,
 			use: [apiPlugin],
 			apiOptions: {
 				cache: {
-					clear: "auto",
-					type: "memory",
+					clear: "manual",
+					type: "none",
 				},
+				endpoint,
 			},
 		});
 	} catch (e) {

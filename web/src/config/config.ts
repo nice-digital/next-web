@@ -100,6 +100,7 @@ export interface FeedsConfig {
 export interface StoryblokConfig {
 	readonly previewAccessToken: string;
 	readonly publicAccessToken: string;
+	readonly endpoint: string;
 }
 /**
  * Server-only run time config, useful for secrets etc
