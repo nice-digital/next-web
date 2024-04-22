@@ -5,10 +5,9 @@ import { render, screen } from "@testing-library/react";
 import { GetServerSidePropsContext } from "next";
 import { StoryblokStory } from "storyblok-generate-ts";
 
-import { StoryblokAuthor } from "@/components/Storyblok/StoryblokAuthor/StoryblokAuthor";
 import Mock404FromStoryblokApi from "@/test-utils/storyblok-not-found-response.json";
 import mockBlogPostSuccessResponse from "@/test-utils/storyblok-single-blog-post-response.json";
-import { AuthorStoryblok, BlogPostStoryblok } from "@/types/storyblok";
+import { BlogPostStoryblok } from "@/types/storyblok";
 import * as storyblokUtils from "@/utils/storyblok";
 
 import BlogPostPage, { getServerSideProps } from "./[slug].page";
