@@ -10,6 +10,7 @@ import {
 } from "@storyblok/react";
 import { type MetaTag } from "next-seo/lib/types";
 import { Redirect } from "next/types";
+import { StoryblokStory } from "storyblok-generate-ts";
 
 import { publicRuntimeConfig } from "@/config";
 import { logger } from "@/logger";
@@ -20,7 +21,7 @@ import { type MultilinkStoryblok } from "@/types/storyblok";
 export type StoryVersion = "draft" | "published" | undefined;
 
 export type SBSingleResponse<T> = {
-	story?: ISbStoryData<T>;
+	story?: StoryblokStory<T>;
 	notFound?: boolean;
 };
 
@@ -29,7 +30,6 @@ export type SBMultipleResponse<T> = {
 	stories: ISbStoryData<T>[];
 	perPage?: number;
 	total?: number;
-	error?: string;
 };
 
 export type SBListingResponse<T> = SBMultipleResponse<T> & {
@@ -63,7 +63,7 @@ export const fetchStory = async <T>(
 		...params,
 	};
 
-	let result = null;
+	let result: SBSingleResponse<T>;
 
 	try {
 		const response: ISbResult = await storyblokApi.get(
@@ -218,9 +218,6 @@ export const fetchStories = async <T>(
 		result.total = response.total;
 	} catch (e) {
 		const errorResponse = JSON.parse(e as string) as ISbError;
-
-		result.error = errorResponse.message?.message;
-
 		logger.error(
 			`${errorResponse.status} error from Storyblok API: ${errorResponse.message}`,
 			e
