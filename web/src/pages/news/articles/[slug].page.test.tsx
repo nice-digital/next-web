@@ -1,16 +1,7 @@
-import { getStoryblokApi } from "@storyblok/react";
 import { render, screen } from "@testing-library/react";
 import { GetServerSidePropsContext } from "next";
 
 import { mockNewsArticle } from "@/test-utils/storyblok-data";
-import { NewsArticleStoryblok } from "@/types/storyblok";
-import {
-	fetchStory,
-	getStoryVersionFromQuery,
-	getSlugFromParams,
-	getBreadcrumbs,
-	SBSingleResponse,
-} from "@/utils/storyblok";
 import * as storyblokUtils from "@/utils/storyblok";
 
 import NewsArticlePage, { getServerSideProps } from "./[slug].page";
