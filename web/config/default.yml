@@ -1,3 +1,7 @@
+
+# !!! This approach is deprecated! We should start switching to using environment variables
+# !!! See the notice here: https://nextjs.org/docs/pages/api-reference/next-config-js/runtime-configuration
+
 # ! This is a PUBLIC repo so please don't put any sensitive info or secrets in here
 
 # ! This file contains default config values for both 'public' config (accessible to both client and server-side code) and 'server' config (server-only runtime config).
@@ -25,11 +29,6 @@ public:
     defaultCacheHeader: public, s-max-age=300, max-age=120, stale-while-revalidate=1800
   jotForm:
     baseURL: https://nice.jotform.com
-  storyblok:
-    previewAccessToken: SECRET
-    publicAccessToken: SECRET
-    # The base URL of Ocelot
-    endpoint: http://localhost:45127
 
 # ! This is a PUBLIC repo so please don't put any sensitive info or secrets in here
 # ! Use local-development.yml or local-development.json to override settings locally instead: https://edibleco.de/3dLJKiP
