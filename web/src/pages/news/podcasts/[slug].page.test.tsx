@@ -10,19 +10,59 @@ const mockPodcast = {
 	...mockPodcastPage,
 };
 
+const mockBreadcrumbs = [
+	{ title: "News", path: "/news" },
+	{ title: "Podcasts", path: "/news/podcasts" },
+	{ title: mockPodcast.name },
+];
+
 describe("PodcastPage", () => {
 	it("renders the page", () => {
-		render(<PodcastPage story={mockPodcastPage} />);
-		expect(screen.getByText(mockPodcastPage.name)).toBeInTheDocument();
+		render(
+			<PodcastPage story={mockPodcastPage} breadcrumbs={mockBreadcrumbs} />
+		);
+
 		expect(document.body).toMatchSnapshot();
+	});
+
+	it("should not render the breadcrumbs if none are provided", () => {
+		render(<PodcastPage story={mockPodcastPage} />);
+
+		const breadcrumbs = screen.queryByRole("navigation", {
+			name: "Breadcrumbs",
+		});
+
+		expect(breadcrumbs).not.toBeInTheDocument();
 	});
 
 	it("should render error page if fetchStory returns error", async () => {
 		const errorMessage = "An error returned from getserversideprops";
+		//TODO: check if we're using Fragment correctly
 		const { asFragment } = render(<PodcastPage error={errorMessage} />);
 
 		expect(screen.getByText(errorMessage)).toBeInTheDocument();
 		expect(asFragment()).toMatchSnapshot();
+	});
+
+	it("should render a fallback image if no image is provided", () => {
+		const storyWithoutImage = {
+			...mockPodcast,
+			content: {
+				...mockPodcast.content,
+				image: {
+					id: 123,
+					filename: "",
+					name: "",
+					alt: "Podcast image",
+				},
+			},
+		};
+
+		render(
+			<PodcastPage story={storyWithoutImage} breadcrumbs={mockBreadcrumbs} />
+		);
+
+		expect(document.body).toMatchSnapshot();
 	});
 
 	describe("getServerSideProps", () => {
@@ -97,11 +137,7 @@ describe("PodcastPage", () => {
 			expect(result).toEqual({
 				props: {
 					story: mockPodcast,
-					breadcrumbs: [
-						{ title: "News", path: "/news" },
-						{ title: "Podcasts", path: "/news/podcasts" },
-						{ title: mockPodcast.name },
-					],
+					breadcrumbs: mockBreadcrumbs,
 				},
 			});
 		});

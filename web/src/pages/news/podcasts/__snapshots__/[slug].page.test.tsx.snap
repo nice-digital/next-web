@@ -10,6 +10,91 @@ exports[`PodcastPage renders the page 1`] = `
       <div
         class="hero__container"
       >
+        <nav
+          aria-label="Breadcrumbs"
+          data-component="breadcrumbs"
+          role="navigation"
+        >
+          <ol
+            class="breadcrumbs"
+          >
+            <li
+              class="breadcrumbs__crumb"
+            >
+              <a
+                href="/"
+              >
+                Home
+              </a>
+            </li>
+            <li
+              class="breadcrumbs__crumb"
+            >
+              <a
+                href="/news"
+              >
+                News
+              </a>
+            </li>
+            <li
+              class="breadcrumbs__crumb"
+            >
+              <a
+                href="/news/podcasts"
+              >
+                Podcasts
+              </a>
+            </li>
+            <li
+              class="breadcrumbs__crumb"
+            >
+              <span>
+                Test podcast title
+              </span>
+            </li>
+          </ol>
+        </nav>
+        <script
+          type="application/ld+json"
+        >
+          {
+  "@context": "http://schema.org",
+  "@type": "BreadcrumbList",
+  "itemListElement": [
+    {
+      "@type": "ListItem",
+      "position": 1,
+      "item": {
+        "@id": "/",
+        "name": "Home"
+      }
+    },
+    {
+      "@type": "ListItem",
+      "position": 2,
+      "item": {
+        "@id": "/news",
+        "name": "News"
+      }
+    },
+    {
+      "@type": "ListItem",
+      "position": 3,
+      "item": {
+        "@id": "/news/podcasts",
+        "name": "Podcasts"
+      }
+    },
+    {
+      "@type": "ListItem",
+      "position": 4,
+      "item": {
+        "name": "Test podcast title"
+      }
+    }
+  ]
+}
+        </script>
         <div
           class="hero__body"
         >
@@ -38,6 +123,170 @@ exports[`PodcastPage renders the page 1`] = `
       <div
         class="hero__image-container"
         style="background-image: url(https://a.storyblok.com/f/243782/413x297/6a7748fdb4/stroke.PNG/m/filters:quality%2880%29);"
+      />
+    </div>
+    <div
+      class="content"
+    >
+      <h2>
+        Listen
+      </h2>
+      <iframe
+        frameborder="no"
+        height="200"
+        scrolling="no"
+        src="https://w.soundcloud.com/player/?url=https%3A//api.soundcloud.com/tracks/1648857267&color=%23ff5500&auto_play=false&hide_related=true&show_comments=false&show_user=true&show_reposts=false&show_teaser=true&visual=true"
+        width="100%"
+      />
+      <h2>
+        About this episode
+      </h2>
+      <div
+        class="storyblokRichTextWrapper"
+        data-testid="storyblok-rich-text"
+      >
+        <p>
+          It is estimated that there are around 85,000 strokes every year in England, with over 1 million people currently living with its long-term effects.
+        </p>
+      </div>
+      <p>
+        Our NICE talks podcasts are available on a
+         
+        <a
+          href="https://linktr.ee/nicetalks"
+        >
+          variety of different platforms
+        </a>
+        .
+      </p>
+    </div>
+  </div>
+</body>
+`;
+
+exports[`PodcastPage should render a fallback image if no image is provided 1`] = `
+<body>
+  <div>
+    <div
+      class="hero"
+      data-component="hero"
+    >
+      <div
+        class="hero__container"
+      >
+        <nav
+          aria-label="Breadcrumbs"
+          data-component="breadcrumbs"
+          role="navigation"
+        >
+          <ol
+            class="breadcrumbs"
+          >
+            <li
+              class="breadcrumbs__crumb"
+            >
+              <a
+                href="/"
+              >
+                Home
+              </a>
+            </li>
+            <li
+              class="breadcrumbs__crumb"
+            >
+              <a
+                href="/news"
+              >
+                News
+              </a>
+            </li>
+            <li
+              class="breadcrumbs__crumb"
+            >
+              <a
+                href="/news/podcasts"
+              >
+                Podcasts
+              </a>
+            </li>
+            <li
+              class="breadcrumbs__crumb"
+            >
+              <span>
+                Test podcast title
+              </span>
+            </li>
+          </ol>
+        </nav>
+        <script
+          type="application/ld+json"
+        >
+          {
+  "@context": "http://schema.org",
+  "@type": "BreadcrumbList",
+  "itemListElement": [
+    {
+      "@type": "ListItem",
+      "position": 1,
+      "item": {
+        "@id": "/",
+        "name": "Home"
+      }
+    },
+    {
+      "@type": "ListItem",
+      "position": 2,
+      "item": {
+        "@id": "/news",
+        "name": "News"
+      }
+    },
+    {
+      "@type": "ListItem",
+      "position": 3,
+      "item": {
+        "@id": "/news/podcasts",
+        "name": "Podcasts"
+      }
+    },
+    {
+      "@type": "ListItem",
+      "position": 4,
+      "item": {
+        "name": "Test podcast title"
+      }
+    }
+  ]
+}
+        </script>
+        <div
+          class="hero__body"
+        >
+          <h1
+            class="hero__title"
+          >
+            Test podcast title
+          </h1>
+          <div
+            class="hero__actions"
+          >
+            <span
+              class="tag tag--outline"
+              data-component="tag"
+            >
+              Podcast
+            </span>
+            <span
+              class="date"
+            >
+              17 April 2024
+            </span>
+          </div>
+        </div>
+      </div>
+      <div
+        class="hero__image-container"
+        style="background-image: url(/img/nice-talks.png);"
       />
     </div>
     <div
