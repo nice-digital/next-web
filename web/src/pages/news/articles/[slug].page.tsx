@@ -5,6 +5,7 @@ import {
 } from "@storyblok/react";
 import { NextSeo } from "next-seo";
 import React, { useMemo } from "react";
+import { StoryblokStory } from "storyblok-generate-ts";
 
 import { ErrorPageContent } from "@/components/ErrorPageContent/ErrorPageContent";
 import { Blockquote } from "@/components/Storyblok/Blockquote/Blockquote";
@@ -31,7 +32,7 @@ type NewsArticlePageErrorProps = {
 };
 
 type NewsArticlePageSuccessProps = {
-	story: ISbStoryData<NewsArticleStoryblok>;
+	story: StoryblokStory<NewsArticleStoryblok>;
 	breadcrumbs?: Breadcrumb[];
 };
 
@@ -53,7 +54,6 @@ setComponents({
 export default function NewsArticlePage(
 	props: NewsArticlePageProps
 ): React.ReactElement {
-	//TODO: is this a suitable way to handle the story dependancy for useMemo?
 	// story for meta tags, allows for additionalMetaTags to be fetched in useMemo
 	const story = "story" in props ? props.story : null;
 
@@ -61,14 +61,14 @@ export default function NewsArticlePage(
 		if (story) {
 			return getAdditionalMetaTags(story);
 		} else {
-			//TODO: logger here - unable to fetch additonalMeta?
-			//TODO: should this be an empty array or undefined?
-			return [];
+			logger.error(
+				`Story is not available for additionalMetaTags in NewsArticlePage.`
+			);
+			return undefined;
 		}
 	}, [story]);
 
 	if ("error" in props) {
-		//TODO: should we redirect to a relevant in gssp instead of showing an error page content in situe?
 		const { error } = props;
 		return <ErrorPageContent title="Error" heading={error} />;
 	}
@@ -97,8 +97,6 @@ export async function getServerSideProps(context: GetServerSidePropsContext) {
 	const slug = getSlugFromParams(params?.slug);
 
 	if (!slug) {
-		//TODO: logger here? - no slug provided
-		//TODO: should we return a 404 here or throw and handle in the catch?
 		return {
 			notFound: true,
 		};
@@ -108,7 +106,10 @@ export async function getServerSideProps(context: GetServerSidePropsContext) {
 
 	try {
 		// Get the story and its breadcrumbs
-		const storyResult = await fetchStory(`news/articles/${slug}`, version);
+		const storyResult = await fetchStory<NewsArticleStoryblok>(
+			`news/articles/${slug}`,
+			version
+		);
 
 		if ("notFound" in storyResult) {
 			//TODO: logger here? - no slug provided
