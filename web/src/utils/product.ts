@@ -77,7 +77,7 @@ export const getChapterLinks = (
 			.filter(({ title }) => title !== overviewTitle || !product.summary)
 			.map(({ title, chapterSlug }) => ({
 				title,
-				url: `${productPath}/chapters/${chapterSlug}`,
+				url: `${productPath}/chapter/${chapterSlug}`,
 			})),
 	];
 };

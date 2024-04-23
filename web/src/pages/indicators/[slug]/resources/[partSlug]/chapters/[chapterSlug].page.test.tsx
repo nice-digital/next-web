@@ -13,7 +13,7 @@ const productRoot = "process",
 	partSlug = `developing-nice-guidelines-the-manual-appendices-${resourceId}-${partId}`,
 	chapterSlug =
 		"appendix-b-approaches-to-additional-consultation-and-commissioned-primary-research",
-	resolvedUrl = `/${productRoot}/${slug}/${partSlug}/chapters/${chapterSlug}`,
+	resolvedUrl = `/${productRoot}/${slug}/${partSlug}/chapter/${chapterSlug}`,
 	getServerSidePropsContext = {
 		params: {
 			slug,
@@ -30,7 +30,7 @@ const productRoot = "process",
 		chapterSlug: string;
 	}>;
 
-describe("/product/[slug]/resources/[partSlug]/chapters/[chapterSlug].page", () => {
+describe("/product/[slug]/resources/[partSlug]/chapter/[chapterSlug].page", () => {
 	beforeEach(() => {
 		(useRouter as jest.Mock).mockReturnValue({
 			asPath: resolvedUrl,
