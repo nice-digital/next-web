@@ -1,6 +1,6 @@
 import { StoryblokComponent, setComponents } from "@storyblok/react";
 import { NextSeo } from "next-seo";
-import React from "react";
+import React, { useMemo } from "react";
 import { type StoryblokStory } from "storyblok-generate-ts";
 
 import { ErrorPageContent } from "@/components/ErrorPageContent/ErrorPageContent";
@@ -8,6 +8,7 @@ import { Blockquote } from "@/components/Storyblok/Blockquote/Blockquote";
 import { StoryblokBlogPost } from "@/components/Storyblok/StoryblokBlogPost/StoryblokBlogPost";
 import { StoryblokIframe } from "@/components/Storyblok/StoryblokIframe/StoryblokIframe";
 import { StoryblokYoutubeEmbed } from "@/components/Storyblok/StoryblokYoutubeEmbed/StoryblokYoutubeEmbed";
+import { logger } from "@/logger";
 import { type Breadcrumb } from "@/types/Breadcrumb";
 import { BlogPostStoryblok } from "@/types/storyblok";
 import {
@@ -31,7 +32,7 @@ export type BlogPageSuccessProps = {
 
 export type BlogPageProps = BlogPageSuccessProps | BlogPageErrorProps;
 
-//TODO check if moving this out of the component improves performance
+//TODO check if moving this out of the component improves performance. Or, should this be in the component function and wrapped in a useMemo/useCallback?
 setComponents({
 	blogPost: StoryblokBlogPost,
 	quote: Blockquote,
@@ -40,17 +41,27 @@ setComponents({
 });
 
 export default function BlogPostPage(props: BlogPageProps): React.ReactElement {
+	const story = "story" in props ? props.story : null;
+
+	const additionalMetaTags = useMemo(() => {
+		if (story) {
+			return getAdditionalMetaTags(story);
+		} else {
+			logger.error(
+				`Story is not available for additionalMetaTags in BlogPostPage.`
+			);
+			return undefined;
+		}
+	}, [story]);
+
 	if ("error" in props) {
 		const { error } = props;
 		return <ErrorPageContent title="Error" heading={error} />;
 	}
 
-	const { story, breadcrumbs } = props;
+	const { story: storyData, breadcrumbs } = props;
 
-	//TODO can't use useMemo conditionally - is the refactor worth that cost?
-	const additionalMetaTags = getAdditionalMetaTags(story);
-
-	const title = story.name;
+	const title = storyData.name;
 
 	return (
 		<>
@@ -59,7 +70,7 @@ export default function BlogPostPage(props: BlogPageProps): React.ReactElement {
 				openGraph={{ title: title }}
 				additionalMetaTags={additionalMetaTags}
 			></NextSeo>
-			<StoryblokComponent blok={story.content} breadcrumbs={breadcrumbs} />
+			<StoryblokComponent blok={storyData.content} breadcrumbs={breadcrumbs} />
 		</>
 	);
 }
