@@ -82,11 +82,14 @@ export const fetchStory = async <T>(
 			e
 		);
 
+		//TODO: check if we need to handle 404s differently or in the correct place
 		if (result.status === 404) {
 			return {
 				notFound: true,
 			};
 		} else {
+			//TODO: what error message should we return here?
+			//TODO: what error do we get from the Storyblok API? Should we handle each error differently?
 			throw Error(
 				`${result.status} error from Storyblok API: ${result.message}`
 			);
