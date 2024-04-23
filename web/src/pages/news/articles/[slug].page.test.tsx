@@ -1,3 +1,4 @@
+import { getStoryblokApi } from "@storyblok/react";
 import { render, screen } from "@testing-library/react";
 import { GetServerSidePropsContext } from "next";
 
@@ -10,6 +11,7 @@ import {
 	getBreadcrumbs,
 	SBSingleResponse,
 } from "@/utils/storyblok";
+import * as storyblokUtils from "@/utils/storyblok";
 
 import NewsArticlePage, { getServerSideProps } from "./[slug].page";
 
@@ -17,78 +19,99 @@ const mockArticle = {
 	...mockNewsArticle,
 };
 
-// jest.mock("@/utils/storyblok", () => ({
-// 	fetchStory: jest.fn(),
-// 	getStoryVersionFromQuery: jest.fn(),
-// 	getSlugFromParams: jest.fn(),
-// 	getAdditionalMetaTags: jest.fn(),
-// 	getBreadcrumbs: jest.fn(),
-// }));
-
-// jest.mock("@storyblok/react", () => ({
-// 	StoryblokComponent: ({ blok }: { blok: NewsArticleStoryblok }) => {
-// 		return <div data-testid={`mock-${blok.component}`}>{blok.title}</div>;
-// 	},
-// }));
-
 describe("NewsArticlePage", () => {
 	it("renders the page", () => {
 		render(<NewsArticlePage story={mockNewsArticle} />);
 		expect(screen.getByText(mockNewsArticle.content.title)).toBeInTheDocument();
-	});
-});
-
-xdescribe("getServerSideProps", () => {
-	it("returns notFound if no slug is provided", async () => {
-		const context = { query: {}, params: {} } as GetServerSidePropsContext;
-		const result = await getServerSideProps(context);
-		expect(result).toEqual({ notFound: true });
+		expect(document.body).toMatchSnapshot();
 	});
 
-	it("calls the fetchStory function when a slug is provided", async () => {
-		const context = {
-			query: { version: "draft" },
-			params: { slug: "mock-news-article" },
-		} as unknown as GetServerSidePropsContext;
+	it("should render error page if fetchStory returns error", async () => {
+		const errorMessage = "An error returned from getserversideprops";
+		const { asFragment } = render(<NewsArticlePage error={errorMessage} />);
 
-		(getSlugFromParams as jest.Mock).mockReturnValueOnce("mock-news-article");
-		(getStoryVersionFromQuery as jest.Mock).mockReturnValueOnce("draft");
-		(fetchStory as jest.Mock).mockResolvedValueOnce([mockArticle.story, []]);
-		(getBreadcrumbs as jest.Mock).mockResolvedValueOnce([]);
-		await getServerSideProps(context);
-
-		expect(fetchStory).toHaveBeenCalledWith(
-			"news/articles/mock-news-article",
-			"draft"
-		);
+		expect(screen.getByText(errorMessage)).toBeInTheDocument();
+		expect(asFragment()).toMatchSnapshot();
 	});
 
-	it("returns the story and breadcrumbs", async () => {
-		const slug = "test-slug";
-		const version = "draft";
+	describe("getServerSideProps", () => {
+		let fetchStorySpy: jest.SpyInstance;
+		beforeEach(() => {
+			fetchStorySpy = jest.spyOn(storyblokUtils, "fetchStory");
+		});
 
-		jest.mocked(getSlugFromParams).mockReturnValue(slug);
-		jest.mocked(getStoryVersionFromQuery).mockReturnValue(version);
-		jest
-			.mocked(fetchStory)
-			.mockResolvedValue(
-				mockNewsArticle as SBSingleResponse<NewsArticleStoryblok>
-			);
+		afterEach(() => {
+			jest.clearAllMocks();
+		});
 
-		const context = {
-			params: { slug: [slug] },
-			query: { version },
-		} as unknown as GetServerSidePropsContext;
+		it("returns notFound if no slug is provided", async () => {
+			const context = { query: {}, params: {} } as GetServerSidePropsContext;
+			const result = await getServerSideProps(context);
+			expect(result).toEqual({ notFound: true });
+		});
 
-		const response = await getServerSideProps(context);
-		expect(response).toEqual({
-			props: {
-				...mockNewsArticle,
-				breadcrumbs: [
-					{ title: "News", path: "/news" },
-					{ title: "News articles", path: "/news/articles" },
-				],
-			},
+		it("should return notFound when fetchStory returns notFound", async () => {
+			fetchStorySpy.mockResolvedValue({ notFound: true });
+			const context = {
+				query: {},
+				params: { slug: "slug-does-not-exist" },
+			} as unknown as GetServerSidePropsContext;
+
+			const result = await getServerSideProps(context);
+
+			expect(result).toEqual({ notFound: true });
+		});
+
+		it("should return an error if fetchStory returns an error", async () => {
+			const errorMessage = "An error occurred";
+			fetchStorySpy.mockRejectedValue(new Error(errorMessage));
+			const context = {
+				query: {},
+				params: { slug: "test-slug" },
+			} as unknown as GetServerSidePropsContext;
+
+			const result = await getServerSideProps(context);
+
+			expect(result).toEqual({ props: { error: errorMessage } });
+		});
+
+		//TODO: should we be returning a generic error message in any case?
+		it("should return a generic error message if fetchStory returns an error without a message", async () => {
+			const errorMessage = "An error occurred";
+			fetchStorySpy.mockRejectedValue(errorMessage);
+
+			const context = {
+				query: {},
+				params: { slug: "test-slug" },
+			} as unknown as GetServerSidePropsContext;
+
+			const result = await getServerSideProps(context);
+			expect(result).toEqual({
+				props: {
+					error:
+						"Oops! Something went wrong and we're working to fix it. Please try again later.",
+				},
+			});
+		});
+
+		it("should return the story and breadcrumbs", async () => {
+			fetchStorySpy.mockResolvedValue({ story: mockArticle });
+			const context = {
+				query: {},
+				params: { slug: "test-slug" },
+			} as unknown as GetServerSidePropsContext;
+
+			const result = await getServerSideProps(context);
+
+			expect(result).toEqual({
+				props: {
+					story: mockArticle,
+					breadcrumbs: [
+						{ title: "News", path: "/news" },
+						{ title: "News articles", path: "/news/articles" },
+					],
+				},
+			});
 		});
 	});
 });
