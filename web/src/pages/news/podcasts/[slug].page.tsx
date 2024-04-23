@@ -6,6 +6,7 @@ import { Breadcrumbs, Breadcrumb } from "@nice-digital/nds-breadcrumbs";
 import { Hero } from "@nice-digital/nds-hero";
 import { Tag } from "@nice-digital/nds-tag";
 
+import { ErrorPageContent } from "@/components/ErrorPageContent/ErrorPageContent";
 import { SoundCloudEmbed } from "@/components/SoundCloudEmbed/SoundCloudEmbed";
 import { StoryblokRichText } from "@/components/Storyblok/StoryblokRichText/StoryblokRichText";
 import { type Breadcrumb as TypeBreadcrumb } from "@/types/Breadcrumb";
@@ -18,27 +19,44 @@ import {
 	getAdditionalMetaTags,
 	defaultPodcastImage,
 	constructStoryblokImageSrc,
+	isError,
 } from "@/utils/storyblok";
 
 import styles from "./podcast.module.scss";
 
 import type { GetServerSidePropsContext } from "next";
 
-interface PodcastPageProps {
+type PodcastPageErrorProps = {
+	error: string;
+};
+
+type PodcastPageSuccessProps = {
 	story: StoryblokStory<PodcastStoryblok>;
 	breadcrumbs?: TypeBreadcrumb[];
-}
+};
 
-export default function PodcastPage({
-	story,
-	breadcrumbs,
-}: PodcastPageProps): React.ReactElement {
-	const additionalMetaTags = useMemo(
-		() => getAdditionalMetaTags(story),
-		[story]
-	);
+type PodcastPageProps = PodcastPageSuccessProps | PodcastPageErrorProps;
 
-	const { name, content } = story;
+export default function PodcastPage(
+	props: PodcastPageProps
+): React.ReactElement {
+	const story = "story" in props ? props.story : null;
+
+	const additionalMetaTags = useMemo(() => {
+		if (story) {
+			return getAdditionalMetaTags(story);
+		} else {
+			return [];
+		}
+	}, [story]);
+
+	if ("error" in props) {
+		const { error } = props;
+		return <ErrorPageContent title="Error" heading={error} />;
+	}
+
+	const { story: storyData, breadcrumbs } = props;
+	const { name, content } = storyData;
 	const { date, description, soundcloudEmbedID } = content;
 
 	const optimisedImage = content.image?.filename
@@ -104,14 +122,27 @@ export async function getServerSideProps(context: GetServerSidePropsContext) {
 	const { query, params } = context;
 	const slug = getSlugFromParams(params?.slug);
 
-	if (slug) {
-		const version = getStoryVersionFromQuery(query);
+	if (!slug) {
+		return {
+			notFound: true,
+		};
+	}
 
+	const version = getStoryVersionFromQuery(query);
+	try {
 		// Get the story and its breadcrumbs
 		const storyResult = await fetchStory<PodcastStoryblok>(
 			`news/podcasts/${slug}`,
 			version
 		);
+
+		if ("notFound" in storyResult) {
+			//TODO: logger here? - no slug provided
+			//TODO: should we return a 404 here or throw and handle in the catch?
+			return {
+				notFound: true,
+			};
+		}
 
 		const breadcrumbs = [
 			{ title: "News", path: "/news" },
@@ -127,9 +158,13 @@ export async function getServerSideProps(context: GetServerSidePropsContext) {
 		};
 
 		return result;
-	} else {
+	} catch (error) {
 		return {
-			notFound: true,
+			props: {
+				error: isError(error)
+					? error.message
+					: "Oops! Something went wrong and we're working to fix it. Please try again later.",
+			},
 		};
 	}
 }
