@@ -8,6 +8,7 @@ import {
 	type BlogPostStoryblok,
 	type NewsArticleStoryblok,
 	AssetStoryblok,
+	PodcastStoryblok,
 } from "@/types/storyblok";
 
 export const mockStoryblokStory = {
@@ -233,6 +234,50 @@ export const mockBlogPost: StoryblokStory<BlogPostStoryblok> = {
 		_uid: "def456",
 		component: "blogPost",
 		content: { ...mockRichText },
+	},
+};
+
+export const mockPodcastPage: StoryblokStory<PodcastStoryblok> = {
+	...mockStoryblokStory,
+	name: "Test podcast title",
+	content: {
+		_uid: "2663bc46-cefe-4878-8c86-ecc78cc1f65e",
+		date: "2024-04-17 12:00",
+		image: {
+			id: 15267557,
+			alt: "",
+			name: "",
+			focus: "",
+			title: "",
+			source: "",
+			filename:
+				"https://a.storyblok.com/f/243782/413x297/6a7748fdb4/stroke.PNG",
+			copyright: "",
+			fieldtype: "asset",
+			meta_data: {},
+			is_private: false,
+			is_external_url: false,
+		},
+		component: "podcast",
+		introText:
+			"It is estimated that there are around 85,000 strokes every year in England, with over 1 million people currently living with its long-term effects.\n" +
+			"\n" +
+			"We catch up with Jon Brown, chair of the independent committee and Professor Stephen Hill, lay member on the committee about NICE’s updated guidance on stroke rehabilitation.",
+		description: {
+			type: "doc",
+			content: [
+				{
+					type: "paragraph",
+					content: [
+						{
+							text: "It is estimated that there are around 85,000 strokes every year in England, with over 1 million people currently living with its long-term effects.",
+							type: "text",
+						},
+					],
+				},
+			],
+		},
+		soundcloudEmbedID: "1648857267",
 	},
 };
 
