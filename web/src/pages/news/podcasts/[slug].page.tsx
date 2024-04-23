@@ -9,6 +9,7 @@ import { Tag } from "@nice-digital/nds-tag";
 import { ErrorPageContent } from "@/components/ErrorPageContent/ErrorPageContent";
 import { SoundCloudEmbed } from "@/components/SoundCloudEmbed/SoundCloudEmbed";
 import { StoryblokRichText } from "@/components/Storyblok/StoryblokRichText/StoryblokRichText";
+import { logger } from "@/logger";
 import { type Breadcrumb as TypeBreadcrumb } from "@/types/Breadcrumb";
 import { PodcastStoryblok } from "@/types/storyblok";
 import {
@@ -46,6 +47,9 @@ export default function PodcastPage(
 		if (story) {
 			return getAdditionalMetaTags(story);
 		} else {
+			logger.error(
+				`Story is not available for additionalMetaTags in PodcastPage.`
+			);
 			return [];
 		}
 	}, [story]);
