@@ -1,11 +1,9 @@
 import { ParsedUrlQuery } from "querystring";
 
-import { getStoryblokApi } from "@storyblok/react";
 import { render, screen } from "@testing-library/react";
 import { GetServerSidePropsContext } from "next";
 import { StoryblokStory } from "storyblok-generate-ts";
 
-import Mock404FromStoryblokApi from "@/test-utils/storyblok-not-found-response.json";
 import mockBlogPostSuccessResponse from "@/test-utils/storyblok-single-blog-post-response.json";
 import { BlogPostStoryblok } from "@/types/storyblok";
 import * as storyblokUtils from "@/utils/storyblok";
@@ -40,21 +38,7 @@ describe("BlogPostPage", () => {
 	describe("getServerSideProps", () => {
 		let fetchStorySpy: jest.SpyInstance;
 		beforeEach(() => {
-			jest.mock("@/utils/storyblok", () => ({
-				...jest.requireActual("@/utils/storyblok"),
-				getSlugFromParams: jest.fn().mockReturnValueOnce("test-slug"),
-				getStoryVersionFromQuery: jest.fn().mockReturnValue("published"),
-				fetchStory: jest.fn().mockResolvedValue(mockBlogPost),
-			}));
-
 			fetchStorySpy = jest.spyOn(storyblokUtils, "fetchStory");
-
-			getStoryblokApi().get = jest
-				.fn()
-				.mockResolvedValue(mockBlogPostSuccessResponse);
-
-			jest.useFakeTimers();
-			jest.setSystemTime(new Date("2024-04-08"));
 		});
 
 		afterEach(() => {
@@ -73,14 +57,7 @@ describe("BlogPostPage", () => {
 		});
 
 		it("should return notFound when fetchStory returns notFound", async () => {
-			getStoryblokApi().get = jest
-				.fn()
-				.mockRejectedValue(JSON.stringify(Mock404FromStoryblokApi));
-			jest.mock("@/utils/storyblok", () => ({
-				getSlugFromParams: jest.fn().mockReturnValueOnce("slug-does-not-exist"),
-				getStoryVersionFromQuery: jest.fn().mockReturnValue("published"),
-				fetchStory: jest.fn().mockRejectedValue({ notFound: true }),
-			}));
+			fetchStorySpy.mockResolvedValue({ notFound: true });
 			const context = {
 				query: {},
 				params: { slug: "slug-does-not-exist" },
@@ -125,6 +102,8 @@ describe("BlogPostPage", () => {
 		});
 
 		it("should fetch story and return it with breadcrumbs when slug is provided", async () => {
+			fetchStorySpy.mockResolvedValue({ story: mockBlogPost });
+
 			const context = {
 				query: { version: "published" },
 				params: { slug: "test-slug" },
