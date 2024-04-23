@@ -1,0 +1,274 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`PodcastPage renders the page 1`] = `
+<body>
+  <div>
+    <div
+      class="hero"
+      data-component="hero"
+    >
+      <div
+        class="hero__container"
+      >
+        <div
+          class="hero__body"
+        >
+          <h1
+            class="hero__title"
+          >
+            Test podcast title
+          </h1>
+          <div
+            class="hero__actions"
+          >
+            <span
+              class="tag tag--outline"
+              data-component="tag"
+            >
+              Podcast
+            </span>
+            <span
+              class="date"
+            >
+              17 April 2024
+            </span>
+          </div>
+        </div>
+      </div>
+      <div
+        class="hero__image-container"
+        style="background-image: url(https://a.storyblok.com/f/243782/413x297/6a7748fdb4/stroke.PNG/m/filters:quality%2880%29);"
+      />
+    </div>
+    <div
+      class="content"
+    >
+      <h2>
+        Listen
+      </h2>
+      <iframe
+        frameborder="no"
+        height="200"
+        scrolling="no"
+        src="https://w.soundcloud.com/player/?url=https%3A//api.soundcloud.com/tracks/1648857267&color=%23ff5500&auto_play=false&hide_related=true&show_comments=false&show_user=true&show_reposts=false&show_teaser=true&visual=true"
+        width="100%"
+      />
+      <h2>
+        About this episode
+      </h2>
+      <div
+        class="storyblokRichTextWrapper"
+        data-testid="storyblok-rich-text"
+      >
+        <p>
+          It is estimated that there are around 85,000 strokes every year in England, with over 1 million people currently living with its long-term effects.
+        </p>
+      </div>
+      <p>
+        Our NICE talks podcasts are available on a
+         
+        <a
+          href="https://linktr.ee/nicetalks"
+        >
+          variety of different platforms
+        </a>
+        .
+      </p>
+    </div>
+  </div>
+</body>
+`;
+
+exports[`PodcastPage should render error page if fetchStory returns error 1`] = `
+<DocumentFragment>
+  <nav
+    aria-label="Breadcrumbs"
+    data-component="breadcrumbs"
+    role="navigation"
+  >
+    <ol
+      class="breadcrumbs"
+    >
+      <li
+        class="breadcrumbs__crumb"
+      >
+        <a
+          href="/"
+        >
+          Home
+        </a>
+      </li>
+      <li
+        class="breadcrumbs__crumb"
+      >
+        <span>
+          Error
+        </span>
+      </li>
+    </ol>
+  </nav>
+  <script
+    type="application/ld+json"
+  >
+    {
+  "@context": "http://schema.org",
+  "@type": "BreadcrumbList",
+  "itemListElement": [
+    {
+      "@type": "ListItem",
+      "position": 1,
+      "item": {
+        "@id": "/",
+        "name": "Home"
+      }
+    },
+    {
+      "@type": "ListItem",
+      "position": 2,
+      "item": {
+        "name": "Error"
+      }
+    }
+  ]
+}
+  </script>
+  <div
+    class="page-header "
+    data-component="page-header"
+    id="content-start"
+  >
+    <div
+      class="grid"
+    >
+      <div
+        data-component="grid-item"
+        data-g="12 md:12"
+      >
+        <h1
+          class="page-header__heading "
+        >
+          An error returned from getserversideprops
+        </h1>
+        <p
+          class="page-header__lead"
+        >
+          We'll look into it right away. Please try again in a few minutes. And if it's still not fixed, 
+          <a
+            href="/get-involved/contact-us"
+          >
+            contact us
+          </a>
+          .
+        </p>
+      </div>
+    </div>
+  </div>
+  <h2>
+    What can I do now?
+  </h2>
+  <div
+    class="grid grid--loose"
+  >
+    <div
+      data-component="grid-item"
+      data-g="12 sm:6 md:4"
+    >
+      <ul
+        class="mt--0"
+      >
+        <li>
+          Check that the web address has been typed correctly
+        </li>
+        <li>
+          Look for it using search
+        </li>
+        <li>
+          Browse for it from the 
+          <a
+            href="/"
+          >
+            homepage
+          </a>
+        </li>
+      </ul>
+      <p>
+        And if you still can't find what you're looking for, 
+        <a
+          href="/get-involved/contact-us"
+        >
+          get in touch
+        </a>
+        .
+      </p>
+    </div>
+    <div
+      data-component="grid-item"
+      data-g="12 sm:6 md:8"
+    >
+      <p
+        class="mt--0"
+      >
+        Here's where you can go from here:
+      </p>
+      <ul>
+        <li>
+          Explore 
+          <a
+            href="/guidance"
+          >
+            NICE guidance, quality standards and advice
+          </a>
+          . You can do this by 
+          <a
+            href="/guidance/conditions-and-diseases"
+          >
+            category to find a topic
+          </a>
+          , or choose a 
+          <a
+            href="/guidance/published"
+          >
+            list organised by date or title
+          </a>
+          .
+        </li>
+        <li>
+          <a
+            href="http://www.evidence.nhs.uk/"
+          >
+            Try evidence search
+          </a>
+          . This is our unique index of authoritative, evidence-based information from hundreds of trustworthy and accredited sources.
+        </li>
+        <li>
+          <a
+            href="/about"
+          >
+            Visit our about pages
+          </a>
+           to find information about our services, 
+          <a
+            href="/about/who-we-are"
+          >
+            who we are
+          </a>
+           and 
+          <a
+            href="/about/what-we-do"
+          >
+            what we do
+          </a>
+        </li>
+      </ul>
+      <p>
+        If this is not the first time you have seen this message and believe that there is a serious problem 
+        <a
+          href="/get-involved/contact-us"
+        >
+          please contact us directly
+        </a>
+      </p>
+    </div>
+  </div>
+</DocumentFragment>
+`;
