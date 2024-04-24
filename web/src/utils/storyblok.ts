@@ -226,9 +226,10 @@ export const fetchStories = async <T>(
 			e
 		);
 
-		throw Error(
+		throw new Error(
 			//TODO we probably don't want to reveal details of API error to the user
-			`Something went wrong, please try again later.`
+			`Something went wrong, please try again later.`,
+			{ cause: e }
 		);
 	}
 
@@ -470,4 +471,8 @@ export const constructStoryblokImageSrc = (
 
 export const isError = (obj: unknown): obj is Error => {
 	return obj instanceof Error;
+};
+
+export const throwError = (error: Error): never => {
+	throw error;
 };

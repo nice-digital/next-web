@@ -3,18 +3,21 @@ import { GetServerSidePropsContext } from "next";
 import { NextSeo } from "next-seo";
 import Image from "next/image";
 import { StoryblokStory } from "storyblok-generate-ts";
+import { isAwaitExpression } from "typescript";
 
 import { Breadcrumbs, Breadcrumb } from "@nice-digital/nds-breadcrumbs";
 import { Card } from "@nice-digital/nds-card";
 import { PageHeader } from "@nice-digital/nds-page-header";
 import { Tag } from "@nice-digital/nds-tag";
 
+import { ErrorPageContent } from "@/components/ErrorPageContent/ErrorPageContent";
 import { Link } from "@/components/Link/Link";
 import { NewsLetterSignup } from "@/components/NewsLetterSignUp/NewsLetterSignup";
 import { FeaturedStory } from "@/components/Storyblok/News/FeaturedStory/FeaturedStory";
 import { NewsCard } from "@/components/Storyblok/News/NewsCard/NewsCard";
 import { NewsGrid } from "@/components/Storyblok/News/NewsGrid/NewsGrid";
 import { NewsListNav } from "@/components/Storyblok/News/NewsListNav/NewsListNav";
+import { logger } from "@/logger";
 import {
 	BlogPostStoryblok,
 	InDepthArticleStoryblok,
@@ -26,23 +29,33 @@ import {
 	fetchStories,
 	defaultPodcastImage,
 	friendlyDate,
+	isError,
 } from "@/utils/storyblok";
 
 import styles from "./index.module.scss";
 
-interface NewsIndexProps {
+type NewsIndexErrorProps = {
+	error: string;
+};
+type NewsIndexSuccessProps = {
 	newsArticles: StoryblokStory<NewsArticleStoryblok>[];
 	inDepthArticles: StoryblokStory<InDepthArticleStoryblok>[];
 	blogPosts: StoryblokStory<BlogPostStoryblok>[];
 	podcasts: StoryblokStory<PodcastStoryblok>[];
-}
+};
 
-export default function NewsIndexPage({
-	newsArticles,
-	inDepthArticles,
-	blogPosts,
-	podcasts,
-}: NewsIndexProps): React.ReactElement {
+type NewsIndexProps = NewsIndexErrorProps | NewsIndexSuccessProps;
+
+export default function NewsIndexPage(
+	props: NewsIndexProps
+): React.ReactElement {
+	if ("error" in props) {
+		const { error } = props;
+		return <ErrorPageContent title="Error" heading={error} />;
+	}
+
+	const { newsArticles, inDepthArticles, blogPosts, podcasts } = props;
+
 	const breadcrumbs = (
 		<Breadcrumbs>
 			<Breadcrumb to="/">Home</Breadcrumb>
@@ -176,6 +189,7 @@ export async function getServerSideProps(context: GetServerSidePropsContext) {
 		...commonParams,
 		starts_with: "news/articles",
 		per_page: 4,
+		// illegalparam: "illegal",
 	};
 
 	const inDepthParams = {
@@ -190,6 +204,7 @@ export async function getServerSideProps(context: GetServerSidePropsContext) {
 		excluding_slugs: "news/blogs/authors/*",
 		resolve_relations: "blogPost.author",
 		per_page: 2,
+		illegalparam: "illegal",
 	};
 
 	const podcastParams = {
@@ -198,21 +213,63 @@ export async function getServerSideProps(context: GetServerSidePropsContext) {
 		per_page: 2,
 	};
 
-	const [newsArticles, inDepthArticles, blogPosts, podcasts] =
-		await Promise.all([
-			fetchStories<NewsArticleStoryblok>(version, articleParams),
-			fetchStories<InDepthArticleStoryblok>(version, inDepthParams),
-			fetchStories<BlogPostStoryblok>(version, blogParams),
-			fetchStories<PodcastStoryblok>(version, podcastParams),
-		]);
-
-	const result = {
-		props: {
-			newsArticles: newsArticles.stories,
-			inDepthArticles: inDepthArticles.stories,
-			blogPosts: blogPosts.stories,
-			podcasts: podcasts.stories,
-		},
+	const handleError = (error: Error, message: string) => {
+		logger.error(`${error}`);
+		throw new Error(`Failed to fetch ${message}`, { cause: error });
 	};
-	return result;
+
+	const fetchArticles = fetchStories<NewsArticleStoryblok>(
+		version,
+		articleParams
+	).catch((error) => {
+		return handleError(error, "news article stories");
+	});
+
+	const fetchIndepth = fetchStories<InDepthArticleStoryblok>(
+		version,
+		inDepthParams
+	).catch((error) => {
+		return handleError(error, "in-depth stories");
+	});
+
+	const fetchBlogPosts = fetchStories<BlogPostStoryblok>(
+		version,
+		blogParams
+	).catch((error) => {
+		return handleError(error, "blog posts");
+	});
+
+	const fetchPodcasts = fetchStories<PodcastStoryblok>(
+		version,
+		podcastParams
+	).catch((error) => {
+		return handleError(error, "pod casts");
+	});
+
+	try {
+		const [newsArticles, inDepthArticles, blogPosts, podcasts] =
+			await Promise.all([
+				fetchArticles,
+				fetchIndepth,
+				fetchBlogPosts,
+				fetchPodcasts,
+			]);
+
+		const result = {
+			props: {
+				newsArticles: newsArticles.stories,
+				inDepthArticles: inDepthArticles.stories,
+				blogPosts: blogPosts.stories,
+				podcasts: podcasts.stories,
+			},
+		};
+		return result;
+	} catch (error) {
+		return {
+			props: {
+				error:
+					"Oops! Something went wrong and we're working to fix it. Please try again later.",
+			},
+		};
+	}
 }
