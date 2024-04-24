@@ -13,9 +13,7 @@ const defaultSortOrder = SortOrder.guidanceRefAscending,
 	dateFilterLabel = "Published date",
 	textFilterLabel = "Filter by reference number or keyword";
 
-const tableBodyRender = (
-	documents: (Document & { sectionNumber?: string })[]
-) => (
+const tableBodyRender = (documents: Document[]) => (
 	<>
 		<caption className="visually-hidden">
 			List of research recommendations
@@ -33,16 +31,12 @@ const tableBodyRender = (
 					id,
 					title,
 					guidanceRef,
-					sectionNumber,
 					pathAndQuery,
 					publicationDate,
 				}) => {
-					const recommendationId = `${guidanceRef}${
-						sectionNumber ? `/${sectionNumber.padStart(2, "0")}` : ""
-					}`;
 					return (
 						<tr key={id}>
-							<td>{recommendationId}</td>
+							<td>{guidanceRef}</td>
 							<td>
 								<Link href={pathAndQuery}>
 									<span dangerouslySetInnerHTML={{ __html: title }} />
