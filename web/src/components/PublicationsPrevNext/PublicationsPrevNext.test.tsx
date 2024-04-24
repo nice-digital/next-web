@@ -8,8 +8,8 @@ import {
 
 const indicatorSlug = "ind123-some-title",
 	firstOverviewChapterPath = `/indicators/${indicatorSlug}`,
-	secondChapterPath = `/indicators/${indicatorSlug}/chapters/indicator-nm181`,
-	thirdAndLastChapterPath = `/indicators/${indicatorSlug}/chapters/further-information`,
+	secondChapterPath = `/indicators/${indicatorSlug}/chapter/indicator-nm181`,
+	thirdAndLastChapterPath = `/indicators/${indicatorSlug}/chapter/further-information`,
 	mockChapters: PublicationsPrevNextProps["chapters"] = [
 		{
 			title: "First chapter",
