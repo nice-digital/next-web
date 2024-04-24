@@ -9,11 +9,7 @@ terraform {
   required_version = ">= 0.14"
   required_providers {
   }
-  backend "s3" {
-    bucket = "tfs3test"
-    key    = "nextweb/terraform.tfstate"
-    region = "eu-west-1"
-  }
+  //* Teamcity/Octopus Delploy Backend config *//
 }
 
 ##################################################################################
