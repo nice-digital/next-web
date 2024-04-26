@@ -36,6 +36,33 @@ exports[`/research-recommendations/index should match the snapshot 1`] = `
           <li
             class="breadcrumbs__crumb"
           >
+            <a
+              href="/about"
+            >
+              About
+            </a>
+          </li>
+          <li
+            class="breadcrumbs__crumb"
+          >
+            <a
+              href="/about/what-we-do"
+            >
+              What we do
+            </a>
+          </li>
+          <li
+            class="breadcrumbs__crumb"
+          >
+            <a
+              href="/about/what-we-do/research-and-development"
+            >
+              Research and development
+            </a>
+          </li>
+          <li
+            class="breadcrumbs__crumb"
+          >
             <span>
               Research recommendations
             </span>
@@ -60,6 +87,30 @@ exports[`/research-recommendations/index should match the snapshot 1`] = `
     {
       "@type": "ListItem",
       "position": 2,
+      "item": {
+        "@id": "/about",
+        "name": "About"
+      }
+    },
+    {
+      "@type": "ListItem",
+      "position": 3,
+      "item": {
+        "@id": "/about/what-we-do",
+        "name": "What we do"
+      }
+    },
+    {
+      "@type": "ListItem",
+      "position": 4,
+      "item": {
+        "@id": "/about/what-we-do/research-and-development",
+        "name": "Research and development"
+      }
+    },
+    {
+      "@type": "ListItem",
+      "position": 5,
       "item": {
         "name": "Research recommendations"
       }
@@ -385,7 +436,7 @@ exports[`/research-recommendations/index should match the snapshot 1`] = `
               <tbody>
                 <tr>
                   <td>
-                    CG118/01
+                    CG118/1
                   </td>
                   <td>
                     <a
@@ -410,7 +461,7 @@ exports[`/research-recommendations/index should match the snapshot 1`] = `
                 </tr>
                 <tr>
                   <td>
-                    CG118/02
+                    CG118/2
                   </td>
                   <td>
                     <a
@@ -435,7 +486,7 @@ exports[`/research-recommendations/index should match the snapshot 1`] = `
                 </tr>
                 <tr>
                   <td>
-                    CG118/03
+                    CG118/3
                   </td>
                   <td>
                     <a
@@ -460,7 +511,7 @@ exports[`/research-recommendations/index should match the snapshot 1`] = `
                 </tr>
                 <tr>
                   <td>
-                    CG118/04
+                    CG118/4
                   </td>
                   <td>
                     <a
@@ -485,7 +536,7 @@ exports[`/research-recommendations/index should match the snapshot 1`] = `
                 </tr>
                 <tr>
                   <td>
-                    DG1/02
+                    DG1/2
                   </td>
                   <td>
                     <a
@@ -510,7 +561,7 @@ exports[`/research-recommendations/index should match the snapshot 1`] = `
                 </tr>
                 <tr>
                   <td>
-                    DG1/03
+                    DG1/3
                   </td>
                   <td>
                     <a
@@ -535,7 +586,7 @@ exports[`/research-recommendations/index should match the snapshot 1`] = `
                 </tr>
                 <tr>
                   <td>
-                    DG1/01
+                    DG1/1
                   </td>
                   <td>
                     <a
@@ -560,7 +611,7 @@ exports[`/research-recommendations/index should match the snapshot 1`] = `
                 </tr>
                 <tr>
                   <td>
-                    DG13/01
+                    DG13/1
                   </td>
                   <td>
                     <a
@@ -585,7 +636,7 @@ exports[`/research-recommendations/index should match the snapshot 1`] = `
                 </tr>
                 <tr>
                   <td>
-                    DG13/02
+                    DG13/2
                   </td>
                   <td>
                     <a
@@ -610,7 +661,7 @@ exports[`/research-recommendations/index should match the snapshot 1`] = `
                 </tr>
                 <tr>
                   <td>
-                    DG13/03
+                    DG13/3
                   </td>
                   <td>
                     <a

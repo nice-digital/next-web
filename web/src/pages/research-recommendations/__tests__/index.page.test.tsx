@@ -67,10 +67,10 @@ describe("/research-recommendations/index", () => {
 		});
 
 		describe("First row data", () => {
-			const { guidanceRef, title, publicationDate, sectionNumber } =
+			const { guidanceRef, title, publicationDate } =
 				sampleData.documents[0];
 			it.each([
-				[`${guidanceRef}/${sectionNumber.padStart(2, "0")}`],
+				[guidanceRef],
 				[title],
 				[formatDateStr(String(publicationDate))],
 			])("should set data cell to '%s'", (text) => {

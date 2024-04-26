@@ -1,6 +1,7 @@
 import React from "react";
 
 import { Document, SortOrder } from "@nice-digital/search-client";
+import { Breadcrumb } from "@nice-digital/nds-breadcrumbs";
 
 import { Link } from "@/components/Link/Link";
 import {
@@ -56,7 +57,13 @@ const tableBodyRender = (documents: Document[]) => (
 export default getProductListPage({
 	metaDescription: "",
 	listNavType: () => null,
-	breadcrumbTrail: [],
+	breadcrumbTrail: [
+		<Breadcrumb to="/about" key="About">
+			About
+		</Breadcrumb>,
+		<Breadcrumb to="/about/what-we-do" key="What we do">What we do</Breadcrumb>,
+		<Breadcrumb to="/about/what-we-do/research-and-development" key="Research and development">Research and development</Breadcrumb>,
+	],
 	currentBreadcrumb: "Research recommendations",
 	preheading: "Published",
 	heading: <>Research recommendations</>,
