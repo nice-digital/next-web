@@ -28,13 +28,7 @@ const tableBodyRender = (documents: Document[]) => (
 		</thead>
 		<tbody>
 			{documents.map(
-				({
-					id,
-					title,
-					guidanceRef,
-					pathAndQuery,
-					publicationDate,
-				}) => {
+				({ id, title, guidanceRef, pathAndQuery, publicationDate }) => {
 					return (
 						<tr key={id}>
 							<td>{guidanceRef}</td>
@@ -61,8 +55,15 @@ export default getProductListPage({
 		<Breadcrumb to="/about" key="About">
 			About
 		</Breadcrumb>,
-		<Breadcrumb to="/about/what-we-do" key="What we do">What we do</Breadcrumb>,
-		<Breadcrumb to="/about/what-we-do/research-and-development" key="Research and development">Research and development</Breadcrumb>,
+		<Breadcrumb to="/about/what-we-do" key="What we do">
+			What we do
+		</Breadcrumb>,
+		<Breadcrumb
+			to="/about/what-we-do/research-and-development"
+			key="Research and development"
+		>
+			Research and development
+		</Breadcrumb>,
 	],
 	currentBreadcrumb: "Research recommendations",
 	preheading: "Published",

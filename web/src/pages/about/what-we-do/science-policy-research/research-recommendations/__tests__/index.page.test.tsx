@@ -7,7 +7,7 @@ import sampleData from "@/mockData/search/researchrecs-published.json";
 import { render, screen, within } from "@/test-utils/rendering";
 import { formatDateStr } from "@/utils/datetime";
 
-import PublishedPage from "./../index.page";
+import PublishedPage from "../index.page";
 
 (useRouter as jest.Mock).mockImplementation(() => ({
 	route: "/",
@@ -67,8 +67,7 @@ describe("/research-recommendations/index", () => {
 		});
 
 		describe("First row data", () => {
-			const { guidanceRef, title, publicationDate } =
-				sampleData.documents[0];
+			const { guidanceRef, title, publicationDate } = sampleData.documents[0];
 			it.each([
 				[guidanceRef],
 				[title],
