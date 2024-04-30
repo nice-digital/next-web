@@ -73,5 +73,5 @@ Ocelot has been added as an alternative to Storybloks own inbuilt caching. To se
 ```
 
 5. Open next-web/api/NICE.NextWeb.API.sln in Visual Studio and Run. You should be presented with a web page that says 'Not found'.
-6. Ensure that in the Storybloks .env file STORYBLOK_OCELOT_ENDPOINT correctly matches your local Ocelot endpoint URL.
+6. Ensure that in the Storyblok's .env file STORYBLOK_OCELOT_ENDPOINT correctly matches your local Ocelot endpoint URL and has a suffix of /storyblok. i.e. `STORYBLOK_OCELOT_ENDPOINT=http://localhost:45127/storyblok`
 7. Run Storyblok, it should now use Ocelot for it's caching.
