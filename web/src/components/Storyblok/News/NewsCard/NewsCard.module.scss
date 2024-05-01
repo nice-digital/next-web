@@ -62,7 +62,6 @@
     &:active,
     &:focus {
       @include typography.links-default;
-      text-decoration: none;
     }
   }
 

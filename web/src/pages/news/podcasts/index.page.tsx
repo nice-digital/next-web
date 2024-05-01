@@ -45,7 +45,7 @@ export const PodcastIndexPage = ({
 				id="content-start"
 				heading="Podcasts"
 				variant="fullWidthDark"
-				lead="Our NICE talks podcasts bring you the real life experience of people working within NHS, public health and social care."
+				lead="Our NICE talks podcasts bring you the real life experiences of people working within the NHS, public health and social care."
 				breadcrumbs={
 					<Breadcrumbs>
 						<Breadcrumb to="/">Home</Breadcrumb>
@@ -108,7 +108,7 @@ export const getServerSideProps = async ({
 		query,
 		sbParams: {
 			starts_with: "news/podcasts/",
-			per_page: 3,
+			per_page: 6,
 		},
 		resolvedUrl,
 	});
