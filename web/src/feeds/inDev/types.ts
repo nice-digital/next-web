@@ -555,12 +555,12 @@ export type ProjectDetail = {
 		niceIndevFullUpdateList?: NiceIndevFullUpdateList;
 		niceIndevPartialUpdateList?: NiceIndevPartialUpdateList;
 		niceIndevTopicList?: NiceIndevTopicList;
-		niceIndevPanelList: {
+		niceIndevPanelList?: {
 			links: {
 				self: [Link];
 			};
-			embedded: {
-				niceIndevPanel: IndevPanel | IndevPanel[];
+			embedded?: {
+				niceIndevPanel?: IndevPanel | IndevPanel[];
 			};
 		};
 		niceIndevProvisionalScheduleList?: NiceIndevProvisionalScheduleList;
