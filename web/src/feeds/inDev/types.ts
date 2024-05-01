@@ -559,7 +559,7 @@ export type ProjectDetail = {
 			links: {
 				self: [Link];
 			};
-			embedded: {
+			embedded?: {
 				niceIndevPanel: IndevPanel | IndevPanel[];
 			};
 		};
