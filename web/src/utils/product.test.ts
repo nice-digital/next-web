@@ -64,7 +64,7 @@ describe("product utils", () => {
 				},
 				{
 					title: "Chapter 1",
-					url: "/guidance/ng100/chapters/chapter-1",
+					url: "/guidance/ng100/chapter/chapter-1",
 				},
 			]);
 		});
@@ -113,7 +113,7 @@ describe("product utils", () => {
 				},
 				{
 					title: "Chapter 1",
-					url: "/indicators/ind1-test-indicator/chapters/chapter-1",
+					url: "/indicators/ind1-test-indicator/chapter/chapter-1",
 				},
 			]);
 		});
@@ -159,11 +159,11 @@ describe("product utils", () => {
 			expect(chapterLinks).toStrictEqual([
 				{
 					title: "Chapter 1",
-					url: "/indicators/ind1-test-indicator/chapters/chapter-1",
+					url: "/indicators/ind1-test-indicator/chapter/chapter-1",
 				},
 				{
 					title: "Chapter 2",
-					url: "/indicators/ind1-test-indicator/chapters/chapter-2",
+					url: "/indicators/ind1-test-indicator/chapter/chapter-2",
 				},
 			]);
 		});
@@ -266,7 +266,7 @@ describe("product utils", () => {
 					slug: "ind1001-incorrect",
 				},
 				resolvedUrl:
-					"/indicators/ind1001-incorrect/chapters/anything?somequery=true",
+					"/indicators/ind1001-incorrect/chapter/anything?somequery=true",
 				query: {
 					productRoot: "indicators",
 				},
@@ -274,7 +274,7 @@ describe("product utils", () => {
 
 			expect(result).toStrictEqual({
 				redirect: {
-					destination: `/indicators/${slug}/chapters/anything?somequery=true`,
+					destination: `/indicators/${slug}/chapter/anything?somequery=true`,
 					permanent: true,
 				},
 			});

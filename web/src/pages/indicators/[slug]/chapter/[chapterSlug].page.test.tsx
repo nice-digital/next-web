@@ -15,7 +15,7 @@ type IndicatorChapterPageGetServerSidePropsContext = GetServerSidePropsContext<{
 const productRoot = "guidance",
 	slug = "ng100",
 	chapterSlug = "recommendations",
-	resolvedUrl = `/${productRoot}/${slug}/chapters/${chapterSlug}`,
+	resolvedUrl = `/${productRoot}/${slug}/chapter/${chapterSlug}`,
 	getServerSidePropsContext = {
 		params: { slug, chapterSlug },
 		resolvedUrl,
@@ -24,7 +24,7 @@ const productRoot = "guidance",
 		},
 	} as unknown as IndicatorChapterPageGetServerSidePropsContext;
 
-describe("/indicators/[slug]/chapters/[chapterSlug].page", () => {
+describe("/indicators/[slug]/chapter/[chapterSlug].page", () => {
 	beforeEach(() => {
 		jest.mocked(useRouter).mockReturnValue({
 			asPath: resolvedUrl,
@@ -53,9 +53,7 @@ describe("/indicators/[slug]/chapters/[chapterSlug].page", () => {
 		it("should render the page title with reversed breadcrumbs for SEO", async () => {
 			render(<IndicatorChapterPage {...props} />);
 			await waitFor(() => {
-				expect(document.title).toEqual(
-					`Recommendations | NG100 | Indicators | Standards and Indicators`
-				);
+				expect(document.title).toEqual(`Recommendations | NG100 | Indicators`);
 			});
 		});
 
@@ -144,7 +142,7 @@ describe("/indicators/[slug]/chapters/[chapterSlug].page", () => {
 			it("should return notFound if chapter slug doesn't exist", async () => {
 				const notFoundResult = await getServerSideProps({
 					...getServerSidePropsContext,
-					resolvedUrl: `/${productRoot}/${slug}/chapters/this-does-not-exist`,
+					resolvedUrl: `/${productRoot}/${slug}/chapter/this-does-not-exist`,
 					params: { slug, chapterSlug: "this-does-not-exist" },
 				} as unknown as IndicatorChapterPageGetServerSidePropsContext);
 

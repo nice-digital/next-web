@@ -37,15 +37,6 @@ exports[`/indicators/published should match the snapshot 1`] = `
             class="breadcrumbs__crumb"
           >
             <a
-              href="/standards-and-indicators"
-            >
-              Standards and Indicators
-            </a>
-          </li>
-          <li
-            class="breadcrumbs__crumb"
-          >
-            <a
               href="/standards-and-indicators/indicators"
             >
               Indicators
@@ -79,21 +70,13 @@ exports[`/indicators/published should match the snapshot 1`] = `
       "@type": "ListItem",
       "position": 2,
       "item": {
-        "@id": "/standards-and-indicators",
-        "name": "Standards and Indicators"
-      }
-    },
-    {
-      "@type": "ListItem",
-      "position": 3,
-      "item": {
         "@id": "/standards-and-indicators/indicators",
         "name": "Indicators"
       }
     },
     {
       "@type": "ListItem",
-      "position": 4,
+      "position": 3,
       "item": {
         "name": "Published indicators"
       }
@@ -133,16 +116,6 @@ exports[`/indicators/published should match the snapshot 1`] = `
           </a>
         </p>
       </div>
-      <p>
-        The NICE indicator menu includes general practice and CCG level indicators by clinical area. Use the filters to display indicators by type or subject - or filter by both, for more specific results.
-      </p>
-      <p>
-        <a
-          href="/standards-and-indicators"
-        >
-          About NICE Indicators
-        </a>
-      </p>
       <nav
         aria-label="Stages of indicator development"
         class="horizontal-nav"

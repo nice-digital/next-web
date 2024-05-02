@@ -84,9 +84,9 @@ export type GetProductListPageOptions = {
 );
 
 /**
- * Gets a guidance list page component with the given options
+ * Gets a guidance or indicator list page component with the given options
  *
- * @returns A guidance list page component
+ * @returns A guidance or indicator list page component
  */
 export const getProductListPage =
 	({
@@ -157,11 +157,7 @@ export const getProductListPage =
 		if (failed)
 			return (
 				<>
-					<NextSeo
-						title={title + " | Guidance"}
-						noindex={true}
-						description={metaDescription}
-					/>
+					<NextSeo title={title} noindex={true} description={metaDescription} />
 					<ErrorPageContent breadcrumbs={breadcrumbs} />
 				</>
 			);
@@ -169,7 +165,7 @@ export const getProductListPage =
 		return (
 			<>
 				<NextSeo
-					title={title + " | Guidance"}
+					title={title}
 					noindex={documents.length === 0}
 					description={metaDescription}
 				/>

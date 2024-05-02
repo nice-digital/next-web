@@ -41,15 +41,10 @@ export default function EvidenceResourcesListPage({
 }: EvidenceResourcesListPageProps): JSX.Element {
 	return (
 		<>
-			<NextSeo
-				title={`Evidence | ${product.id} | Indicators | Standards and Indicators`}
-			/>
+			<NextSeo title={`Evidence | ${product.id} | Indicators`} />
 
 			<Breadcrumbs>
 				<Breadcrumb to="/">Home</Breadcrumb>
-				<Breadcrumb to="/standards-and-indicators">
-					Standards and Indicators
-				</Breadcrumb>
 				<Breadcrumb to="/standards-and-indicators/indicators">
 					Indicators
 				</Breadcrumb>

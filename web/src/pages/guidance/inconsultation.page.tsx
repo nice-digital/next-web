@@ -68,7 +68,7 @@ export default getProductListPage({
 	currentBreadcrumb: "In consultation",
 	preheading: "Guidance and quality standards ",
 	heading: "In consultation",
-	title: "Guidance and quality standards in consultation",
+	title: "Guidance and quality standards in consultation | Guidance",
 	defaultSort: {
 		order: defaultSortOrder,
 		label: "Date",
