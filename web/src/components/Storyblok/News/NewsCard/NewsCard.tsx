@@ -108,7 +108,7 @@ export const NewsCard: React.FC<NewsCardProps> = ({
 
 							return (
 								<div className={styles.author} key={id}>
-									by {name}, {jobTitle}
+									{name}, {jobTitle}
 								</div>
 							);
 						})}

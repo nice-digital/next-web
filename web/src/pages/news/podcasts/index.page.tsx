@@ -2,14 +2,13 @@ import { NextSeo } from "next-seo";
 import React from "react";
 import { StoryblokStory } from "storyblok-generate-ts";
 
-import { ActionBanner } from "@nice-digital/nds-action-banner";
 import { Breadcrumbs, Breadcrumb } from "@nice-digital/nds-breadcrumbs";
-import { Button } from "@nice-digital/nds-button";
 import { Grid, GridItem } from "@nice-digital/nds-grid";
 import { PageHeader } from "@nice-digital/nds-page-header";
 import { Panel } from "@nice-digital/nds-panel";
 
 import { ErrorPageContent } from "@/components/ErrorPageContent/ErrorPageContent";
+import { NewsLetterSignup } from "@/components/NewsLetterSignUp/NewsLetterSignup";
 import { NewsList } from "@/components/Storyblok/News/NewsList/NewsList";
 import { NewsListNav } from "@/components/Storyblok/News/NewsListNav/NewsListNav";
 import { NewsListPagination } from "@/components/Storyblok/News/NewsListPagination/NewsListPagination";
@@ -79,16 +78,7 @@ export const PodcastIndexPage = ({
 				</GridItem>
 			</Grid>
 
-			<ActionBanner
-				title="Sign up for our newsletters and alerts"
-				cta={
-					<Button variant="cta" to="/news/nice-newsletters-and-alerts">
-						Sign up for newsletters and alerts
-					</Button>
-				}
-			>
-				Keeping you up to date with important developments at NICE
-			</ActionBanner>
+			<NewsLetterSignup />
 			<NewsListPagination
 				configuration={{
 					currentPage,
