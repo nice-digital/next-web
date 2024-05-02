@@ -6,6 +6,7 @@ export const SoundCloudEmbed: React.FC<SoundCloudEmbedProps> = ({
 	id,
 }: SoundCloudEmbedProps) => (
 	<iframe
+		title="SoundCloud player for this NICE podcast"
 		width="100%"
 		height="200"
 		scrolling="no"
