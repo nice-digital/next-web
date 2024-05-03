@@ -1,5 +1,6 @@
 import React, { ImgHTMLAttributes } from "react";
 
+import { publicRuntimeConfig } from "@/config";
 import {
 	ImageServiceOptions,
 	constructStoryblokImageSrc,
@@ -20,7 +21,8 @@ export const StoryblokImage = React.forwardRef<
 	HTMLImageElement,
 	StoryblokImageProps
 >(({ src, alt = "", serviceOptions, ...rest }, ref) => {
-	const placeholderSrc = "/fallback-image.png";
+	const placeholderSrc =
+		publicRuntimeConfig.publicBaseURL + "/fallback-image.png";
 
 	// if no src is provided, use a placeholder image.  See TODO above
 	if (!src || src === "") {
