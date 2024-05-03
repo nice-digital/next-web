@@ -85,7 +85,6 @@ exports[`Homepage latest news component should match snapshot 1`] = `
             <div
               class="author"
             >
-              by 
               Bob Holness
               , 
               Blockbusters host
