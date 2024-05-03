@@ -59,7 +59,11 @@
   }
 
   :global(.action-banner) {
-    margin: utils.rem(spacing.$xx-large) 0;
+    margin: utils.rem(spacing.$x-large) 0;
+
+    @include media-queries.mq($from: md) {
+      margin: utils.rem(spacing.$xx-large) 0;
+    }
   }
 
 
