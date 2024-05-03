@@ -6,8 +6,7 @@ import { logger } from "@/logger";
 // Init connection to Storyblok
 export const initStoryblok = (): void => {
 	try {
-		// const accessToken = publicRuntimeConfig.storyblok.previewAccessToken;
-		const accessToken = "yU8uloicMxBRDuiNAWQkmgtt"; // TEMP STUFF! DO NOT CHECK IN!
+		const accessToken = publicRuntimeConfig.storyblok.previewAccessToken;
 
 		storyblokInit({
 			accessToken,
