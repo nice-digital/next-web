@@ -59,7 +59,7 @@ export default function PodcastPage({
 
 	const meta = (
 		<>
-			<Tag outline>Podcast</Tag>
+			<Tag outline>Podcasts</Tag>
 			<span className={styles.date}>{friendlyDate(date)}</span>
 		</>
 	);
@@ -88,10 +88,11 @@ export default function PodcastPage({
 						<StoryblokRichText content={description} />
 					</>
 				)}
+				<h2>Other ways to listen</h2>
 				<p>
-					Our NICE talks podcasts are available on a{" "}
+					Our NICE talks podcasts are available{" "}
 					<a href="https://linktr.ee/nicetalks">
-						variety of different platforms
+						on a variety of different platforms
 					</a>
 					.
 				</p>
@@ -116,7 +117,6 @@ export async function getServerSideProps(context: GetServerSidePropsContext) {
 		const breadcrumbs = [
 			{ title: "News", path: "/news" },
 			{ title: "Podcasts", path: "/news/podcasts" },
-			{ title: storyResult.story?.name },
 		];
 
 		const result = {

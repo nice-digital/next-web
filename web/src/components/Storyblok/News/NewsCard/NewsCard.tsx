@@ -87,28 +87,31 @@ export const NewsCard: React.FC<NewsCardProps> = ({
 				<HeadingElement className={styles.heading}>
 					{headingLink}
 				</HeadingElement>
-				<p>{content.introText}</p>
+				<p
+					className={
+						storyType === newsTypes.blogPost ? styles.blogIntroText : undefined
+					}
+				>
+					{content.introText}
+				</p>
 				<footer>
-					{content.author && (
-						<div className={styles.author}>
-							{content.author.slice(0, 1).map((author: AuthorStoryblok) => {
-								if (typeof author === "string") {
-									return null;
-								}
+					{content.author &&
+						content.author.slice(0, 1).map((author: AuthorStoryblok) => {
+							if (typeof author === "string") {
+								return null;
+							}
 
-								const {
-									content: { name, jobTitle },
-									id,
-								} = author;
+							const {
+								content: { name, jobTitle },
+								id,
+							} = author;
 
-								return (
-									<p key={id} className={styles.author}>
-										by {name}, {jobTitle}
-									</p>
-								);
-							})}
-						</div>
-					)}
+							return (
+								<div className={styles.author} key={id}>
+									{name}, {jobTitle}
+								</div>
+							);
+						})}
 					<div>
 						<Tag outline>{storyType}</Tag>
 						<span className={styles.date}>

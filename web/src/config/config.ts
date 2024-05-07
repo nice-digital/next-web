@@ -100,7 +100,10 @@ export interface FeedsConfig {
 export interface StoryblokConfig {
 	readonly previewAccessToken: string;
 	readonly publicAccessToken: string;
+	readonly ocelotEndpoint: string;
+	readonly enableRootCatchAll: string;
 }
+
 /**
  * Server-only run time config, useful for secrets etc
  */

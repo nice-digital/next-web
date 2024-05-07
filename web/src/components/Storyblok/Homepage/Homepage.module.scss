@@ -1,4 +1,5 @@
 @use '@nice-digital/nds-core/scss/layout';
+@use '@nice-digital/nds-core/scss/media-queries';
 @use '@nice-digital/nds-core/scss/spacing';
 @use '@nice-digital/nds-core/scss/utils';
 @use '~/styles/colours';
@@ -7,7 +8,12 @@
 .links {
   @include layout.fullWidth();
   background-color: colours.$links-background;
-  padding: $homepage-large-spacing 0;
+
+  padding: $homepage-large-spacing-mobile 0;
+
+  @include media-queries.mq($from: md) {
+    padding: $homepage-large-spacing 0;
+  }
 }
 
 .linksTransparent {

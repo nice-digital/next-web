@@ -65,7 +65,7 @@ export const Homepage = ({
 				))}
 
 			{/* Links */}
-			<div className={linksClassName}>
+			<div className={linksClassName} data-tracking="homepage-links">
 				<div className={styles.linksContainer}>
 					<StoryblokRichText content={links} />
 				</div>

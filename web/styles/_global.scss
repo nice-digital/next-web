@@ -25,3 +25,7 @@ html {
 
 }
 
+main a {
+  // This is to ensure that we can't tab into a link that's hidden by the "back to top" sticky element
+  scroll-margin: utils.rem(60px);
+}

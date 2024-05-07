@@ -11,7 +11,7 @@ export const NewsLetterSignup = (): React.ReactElement => {
 			elementType="a"
 			variant="cta"
 			className={styles.signupCta}
-			href="/news/nice-newsletters-and-alerts"
+			href="/newsletters-and-alerts"
 		>
 			Sign up for newsletters and alerts
 		</Button>
@@ -22,8 +22,7 @@ export const NewsLetterSignup = (): React.ReactElement => {
 			title="Sign up for our newsletters and alerts"
 			cta={ctaButton}
 		>
-			Bringing you our latest news, features and guidance. Keeping you up to
-			date with important developments at NICE.
+			Keeping you up to date with important developments at NICE.
 		</ActionBanner>
 	);
 };
