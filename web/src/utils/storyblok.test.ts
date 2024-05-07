@@ -272,7 +272,7 @@ describe("Storyblok utils", () => {
 			};
 
 			expect(throwErrorFetchStory).rejects.toThrow(
-				"503 error from Storyblok API: Service Unavailable"
+				"There was an error fetching this content. Please try again later"
 			);
 		});
 	});
