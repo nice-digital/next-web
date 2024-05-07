@@ -29,7 +29,6 @@ import {
 	friendlyDate,
 	validateRouteParams,
 	constructStoryblokImageSrc,
-	isError,
 } from "./storyblok";
 
 describe("Storyblok utils", () => {
