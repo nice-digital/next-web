@@ -66,7 +66,6 @@ describe("NewsArticlePage", () => {
 			expect(result).toEqual({ props: { error: errorMessage } });
 		});
 
-		//TODO: should we be returning a generic error message in any case?
 		it("should return a generic error message if fetchStory returns an error without a message", async () => {
 			const errorMessage = "An error occurred";
 			fetchStorySpy.mockRejectedValue(errorMessage);

@@ -108,8 +108,6 @@ export async function getServerSideProps(context: GetServerSidePropsContext) {
 		);
 
 		if ("notFound" in storyResult) {
-			//TODO: logger here? - no slug provided
-			//TODO: should we return a 404 here or throw and handle in the catch?
 			return {
 				notFound: true,
 			};
@@ -129,8 +127,6 @@ export async function getServerSideProps(context: GetServerSidePropsContext) {
 
 		return result;
 	} catch (error) {
-		//TODO: logger here? - error fetching story
-		//TODO: the current error message from error.message is not user friendly and exposes internal details
 		return {
 			props: {
 				error: isError(error)

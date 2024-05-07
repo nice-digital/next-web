@@ -142,8 +142,6 @@ export async function getServerSideProps(context: GetServerSidePropsContext) {
 		);
 
 		if ("notFound" in storyResult) {
-			//TODO: logger here? - no slug provided
-			//TODO: should we return a 404 here or throw and handle in the catch?
 			return {
 				notFound: true,
 			};
