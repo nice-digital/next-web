@@ -3,7 +3,6 @@ import { GetServerSidePropsContext } from "next";
 import { NextSeo } from "next-seo";
 import Image from "next/image";
 import { StoryblokStory } from "storyblok-generate-ts";
-import { isAwaitExpression } from "typescript";
 
 import { Breadcrumbs, Breadcrumb } from "@nice-digital/nds-breadcrumbs";
 import { Card } from "@nice-digital/nds-card";
@@ -18,6 +17,7 @@ import { NewsCard } from "@/components/Storyblok/News/NewsCard/NewsCard";
 import { NewsGrid } from "@/components/Storyblok/News/NewsGrid/NewsGrid";
 import { NewsListNav } from "@/components/Storyblok/News/NewsListNav/NewsListNav";
 import { logger } from "@/logger";
+import { NewsStory } from "@/types/News";
 import {
 	BlogPostStoryblok,
 	InDepthArticleStoryblok,
@@ -34,21 +34,20 @@ import {
 
 import styles from "./index.module.scss";
 
-type NewsIndexErrorProps = {
+export type NewsIndexErrorProps = {
 	error: string;
 };
-type NewsIndexSuccessProps = {
+
+export type NewsIndexSuccessProps = {
 	newsArticles: StoryblokStory<NewsArticleStoryblok>[];
 	inDepthArticles: StoryblokStory<InDepthArticleStoryblok>[];
 	blogPosts: StoryblokStory<BlogPostStoryblok>[];
 	podcasts: StoryblokStory<PodcastStoryblok>[];
 };
 
-type NewsIndexProps = NewsIndexErrorProps | NewsIndexSuccessProps;
+export type NewsIndexProps = NewsIndexErrorProps | NewsIndexSuccessProps;
 
-export default function NewsIndexPage(
-	props: NewsIndexProps
-): React.ReactElement {
+export function NewsIndexPage(props: NewsIndexProps): React.ReactElement {
 	if ("error" in props) {
 		const { error } = props;
 		return <ErrorPageContent title="Error" heading={error} />;
@@ -189,7 +188,6 @@ export async function getServerSideProps(context: GetServerSidePropsContext) {
 		...commonParams,
 		starts_with: "news/articles",
 		per_page: 4,
-		// illegalparam: "illegal",
 	};
 
 	const inDepthParams = {
@@ -204,7 +202,6 @@ export async function getServerSideProps(context: GetServerSidePropsContext) {
 		excluding_slugs: "news/blogs/authors/*",
 		resolve_relations: "blogPost.author",
 		per_page: 2,
-		illegalparam: "illegal",
 	};
 
 	const podcastParams = {
@@ -236,14 +233,14 @@ export async function getServerSideProps(context: GetServerSidePropsContext) {
 		version,
 		blogParams
 	).catch((error) => {
-		return handleError(error, "blog posts");
+		return handleError(error, "blog post stories");
 	});
 
 	const fetchPodcasts = fetchStories<PodcastStoryblok>(
 		version,
 		podcastParams
 	).catch((error) => {
-		return handleError(error, "pod casts");
+		return handleError(error, "podcast stories");
 	});
 
 	try {
@@ -253,7 +250,14 @@ export async function getServerSideProps(context: GetServerSidePropsContext) {
 				fetchIndepth,
 				fetchBlogPosts,
 				fetchPodcasts,
-			]);
+			]).then((storiesResponse) => {
+				storiesResponse.some((storiesResponse) => {
+					if (storiesResponse.stories.length === 0) {
+						throw new Error("No stories found");
+					}
+				});
+				return storiesResponse;
+			});
 
 		const result = {
 			props: {
@@ -273,3 +277,5 @@ export async function getServerSideProps(context: GetServerSidePropsContext) {
 		};
 	}
 }
+
+export default NewsIndexPage;

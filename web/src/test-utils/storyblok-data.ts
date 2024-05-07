@@ -9,6 +9,7 @@ import {
 	type NewsArticleStoryblok,
 	AssetStoryblok,
 	PodcastStoryblok,
+	InDepthArticleStoryblok,
 } from "@/types/storyblok";
 
 export const mockStoryblokStory = {
@@ -285,4 +286,28 @@ export const mockImageAsset: AssetStoryblok = {
 	filename: "https://placebacon.net/300/210?image=1",
 	id: 654654654,
 	name: "Delicious bacon",
+};
+
+export const mockIndepthArticle: StoryblokStory<InDepthArticleStoryblok> = {
+	...mockStoryblokStory,
+	name: "sample indepth test",
+	id: 476215653,
+	uuid: "7bb356cb",
+	content: {
+		_uid: "cd984458-0e14-4fd6-871d-469e9cd3a845",
+		date: "2024-04-10 12:00",
+		link: {
+			id: "",
+			url: "https://test-storyblok.nice.org.uk/news/blogs/lessons-learned-from-the-multi-agency-advisory-service",
+			linktype: "url",
+			fieldtype: "multilink",
+			cached_url:
+				"https://test-storyblok.nice.org.uk/news/blogs/lessons-learned-from-the-multi-agency-advisory-service",
+		},
+		image: mockImageAsset,
+		title: "sample test",
+		component: "inDepthArticle",
+		introText:
+			"Clíodhna Ní Ghuidhir and Rebecca Boffa outline the common challenges that developers of artificial intelligence (AI) tech face when navigating their way to the health and care market, and link to their series of articles, which provide further advice on what can be done to avoid these.",
+	},
 };
