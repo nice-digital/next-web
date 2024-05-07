@@ -81,24 +81,22 @@ export const fetchStory = async <T>(
 		result = {
 			story: response.data.story,
 		};
-	} catch (e) {
-		const result = JSON.parse(e as string) as ISbError;
+	} catch (error) {
+		const errorResponse = JSON.parse(error as string) as ISbError;
 
 		logger.error(
-			`${result.status} error from Storyblok API: ${result.message}`,
-			e
+			`${errorResponse.status} error from Storyblok API: ${errorResponse.message}`,
+			error
 		);
 
-		//TODO: check if we need to handle 404s differently or in the correct place
-		if (result.status === 404) {
+		if (errorResponse.status === 404) {
 			return {
 				notFound: true,
 			};
 		} else {
-			//TODO: what error message should we return here?
-			//TODO: what error do we get from the Storyblok API? Should we handle each error differently?
 			throw Error(
-				`${result.status} error from Storyblok API: ${result.message}`
+				`There was an error fetching this content. Please try again later.`,
+				{ cause: error }
 			);
 		}
 	}
@@ -126,10 +124,6 @@ export type ValidateRouteParamsSuccess<T> = {
 	currentPage: number;
 	perPage?: number;
 };
-
-// export type ValidateRouteParamsError = {
-// 	error: string;
-// };
 
 export type ValidateRouteParamsResult<T> =
 	| { notFound: true }
@@ -164,7 +158,6 @@ export const validateRouteParams = async <T>({
 	};
 
 	try {
-		//TODO: revisit once we've confirmed total is accurately typed
 		const result = (await fetchStories<T>(
 			version,
 			requestParams
@@ -202,7 +195,8 @@ export const validateRouteParams = async <T>({
 		logger.error("Error from catch in validateRouteParams: ", error);
 
 		throw new Error(
-			"There was an error fetching this content. Please try again later."
+			"There was an error fetching this content. Please try again later.",
+			{ cause: error }
 		);
 	}
 };
@@ -231,17 +225,17 @@ export const fetchStories = async <T>(
 		result.stories = response.data.stories;
 		result.perPage = response.perPage;
 		result.total = response.total;
-	} catch (e) {
-		const errorResponse = JSON.parse(e as string) as ISbError;
+	} catch (error) {
+		const errorResponse = JSON.parse(error as string) as ISbError;
 		logger.error(
 			`${errorResponse.status} error from Storyblok API: ${errorResponse.message}`,
-			e
+			error
 		);
 
 		throw new Error(
-			//TODO we probably don't want to reveal details of API error to the user
+			//NOTE: we probably don't want to reveal details of API error to the user
 			`Something went wrong, please try again later.`,
-			{ cause: e }
+			{ cause: error }
 		);
 	}
 
