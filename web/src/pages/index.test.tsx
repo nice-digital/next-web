@@ -2,7 +2,7 @@ import { GetServerSidePropsContext } from "next";
 import { StoryblokStory } from "storyblok-generate-ts";
 
 import { homepageHeroProps } from "@/components/Storyblok/Homepage/HomepageHero/HomepageHero.test";
-import { render, screen, waitFor } from "@/test-utils/rendering";
+import { render, screen } from "@/test-utils/rendering";
 import {
 	mockStoryblokStory,
 	mockNewsArticle,

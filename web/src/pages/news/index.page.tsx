@@ -17,7 +17,6 @@ import { NewsCard } from "@/components/Storyblok/News/NewsCard/NewsCard";
 import { NewsGrid } from "@/components/Storyblok/News/NewsGrid/NewsGrid";
 import { NewsListNav } from "@/components/Storyblok/News/NewsListNav/NewsListNav";
 import { logger } from "@/logger";
-import { NewsStory } from "@/types/News";
 import {
 	BlogPostStoryblok,
 	InDepthArticleStoryblok,
@@ -29,7 +28,6 @@ import {
 	fetchStories,
 	defaultPodcastImage,
 	friendlyDate,
-	isError,
 } from "@/utils/storyblok";
 
 import styles from "./index.module.scss";

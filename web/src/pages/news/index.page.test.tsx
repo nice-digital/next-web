@@ -1,5 +1,4 @@
 import { render, screen } from "@testing-library/react";
-import c from "config";
 import { GetServerSidePropsContext } from "next";
 import { useRouter } from "next/router";
 
@@ -10,7 +9,6 @@ import {
 	mockPodcastPage,
 } from "@/test-utils/storyblok-data";
 import * as storyblokUtils from "@/utils/storyblok";
-import { fetchStories } from "@/utils/storyblok";
 
 import {
 	getServerSideProps,
@@ -53,8 +51,12 @@ describe("getServerSideProps", () => {
 			.mockResolvedValueOnce(mockBlogPosts)
 			.mockResolvedValueOnce(mockPodcasts);
 
-		const context = { query: {} };
-		const response = await getServerSideProps(context as any);
+		const context = {
+			query: {},
+			params: { slug: "test-slug" },
+		} as unknown as GetServerSidePropsContext;
+
+		const response = await getServerSideProps(context);
 
 		expect(response).toEqual({
 			props: {
