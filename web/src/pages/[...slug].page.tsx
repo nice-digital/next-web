@@ -92,6 +92,13 @@ export default function SlugCatchAll({
 }
 
 export async function getServerSideProps(context: GetServerSidePropsContext) {
+	// Bail out early unless this route is enabled for this environment
+	if (process.env.ENABLE_ROOT_CATCH_ALL !== "true") {
+		return {
+			notFound: true,
+		};
+	}
+
 	const { query, params } = context;
 
 	// Resolve slug from params
