@@ -287,7 +287,7 @@ exports[`BlogPostPage renders the page 1`] = `
                   <div
                     class="action-banner__intro"
                   >
-                    Bringing you our latest news, features and guidance. Keeping you up to date with important developments at NICE.
+                    Keeping you up to date with important developments at NICE.
                   </div>
                 </div>
                 <div
@@ -296,7 +296,7 @@ exports[`BlogPostPage renders the page 1`] = `
                   <a
                     class="btn btn--cta signupCta"
                     data-component="button--cta"
-                    href="/news/nice-newsletters-and-alerts"
+                    href="/newsletters-and-alerts"
                   >
                     Sign up for newsletters and alerts
                   </a>

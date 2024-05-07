@@ -45,13 +45,6 @@ exports[`PodcastPage renders the page 1`] = `
                 Podcasts
               </a>
             </li>
-            <li
-              class="breadcrumbs__crumb"
-            >
-              <span>
-                Test podcast title
-              </span>
-            </li>
           </ol>
         </nav>
         <script
@@ -84,13 +77,6 @@ exports[`PodcastPage renders the page 1`] = `
         "@id": "/news/podcasts",
         "name": "Podcasts"
       }
-    },
-    {
-      "@type": "ListItem",
-      "position": 4,
-      "item": {
-        "name": "Test podcast title"
-      }
     }
   ]
 }
@@ -110,7 +96,7 @@ exports[`PodcastPage renders the page 1`] = `
               class="tag tag--outline"
               data-component="tag"
             >
-              Podcast
+              Podcasts
             </span>
             <span
               class="date"
@@ -136,6 +122,7 @@ exports[`PodcastPage renders the page 1`] = `
         height="200"
         scrolling="no"
         src="https://w.soundcloud.com/player/?url=https%3A//api.soundcloud.com/tracks/1648857267&color=%23ff5500&auto_play=false&hide_related=true&show_comments=false&show_user=true&show_reposts=false&show_teaser=true&visual=true"
+        title="SoundCloud player for this NICE podcast"
         width="100%"
       />
       <h2>
@@ -149,13 +136,16 @@ exports[`PodcastPage renders the page 1`] = `
           It is estimated that there are around 85,000 strokes every year in England, with over 1 million people currently living with its long-term effects.
         </p>
       </div>
+      <h2>
+        Other ways to listen
+      </h2>
       <p>
-        Our NICE talks podcasts are available on a
+        Our NICE talks podcasts are available
          
         <a
           href="https://linktr.ee/nicetalks"
         >
-          variety of different platforms
+          on a variety of different platforms
         </a>
         .
       </p>
@@ -209,13 +199,6 @@ exports[`PodcastPage should render a fallback image if no image is provided 1`] 
                 Podcasts
               </a>
             </li>
-            <li
-              class="breadcrumbs__crumb"
-            >
-              <span>
-                Test podcast title
-              </span>
-            </li>
           </ol>
         </nav>
         <script
@@ -248,13 +231,6 @@ exports[`PodcastPage should render a fallback image if no image is provided 1`] 
         "@id": "/news/podcasts",
         "name": "Podcasts"
       }
-    },
-    {
-      "@type": "ListItem",
-      "position": 4,
-      "item": {
-        "name": "Test podcast title"
-      }
     }
   ]
 }
@@ -274,7 +250,7 @@ exports[`PodcastPage should render a fallback image if no image is provided 1`] 
               class="tag tag--outline"
               data-component="tag"
             >
-              Podcast
+              Podcasts
             </span>
             <span
               class="date"
@@ -300,6 +276,7 @@ exports[`PodcastPage should render a fallback image if no image is provided 1`] 
         height="200"
         scrolling="no"
         src="https://w.soundcloud.com/player/?url=https%3A//api.soundcloud.com/tracks/1648857267&color=%23ff5500&auto_play=false&hide_related=true&show_comments=false&show_user=true&show_reposts=false&show_teaser=true&visual=true"
+        title="SoundCloud player for this NICE podcast"
         width="100%"
       />
       <h2>
@@ -313,13 +290,16 @@ exports[`PodcastPage should render a fallback image if no image is provided 1`] 
           It is estimated that there are around 85,000 strokes every year in England, with over 1 million people currently living with its long-term effects.
         </p>
       </div>
+      <h2>
+        Other ways to listen
+      </h2>
       <p>
-        Our NICE talks podcasts are available on a
+        Our NICE talks podcasts are available
          
         <a
           href="https://linktr.ee/nicetalks"
         >
-          variety of different platforms
+          on a variety of different platforms
         </a>
         .
       </p>

@@ -13,7 +13,6 @@ const mockPodcast = {
 const mockBreadcrumbs = [
 	{ title: "News", path: "/news" },
 	{ title: "Podcasts", path: "/news/podcasts" },
-	{ title: mockPodcast.name },
 ];
 
 describe("PodcastPage", () => {

@@ -36,7 +36,7 @@ describe("/news/podcasts/index.page", () => {
 	const mockConfig = {
 		currentPage: 1,
 		//TODO check why podcasts are 3 per page
-		resultsPerPage: 3,
+		resultsPerPage: 6,
 		startsWith: "news/podcasts/",
 		query: {
 			upperOutOfBoundPagination: "30",
@@ -158,7 +158,7 @@ describe("/news/podcasts/index.page", () => {
 
 				await waitFor(() =>
 					expect(screen.getByRole("alert")).toHaveTextContent(
-						"Podcast listing page, 1 of 3"
+						"Podcast listing page, 1 of 2"
 					)
 				);
 

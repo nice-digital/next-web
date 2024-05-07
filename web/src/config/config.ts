@@ -53,9 +53,6 @@ export interface PublicConfig {
 
 	/** Public config for JotForm. Note, there's also a server config object with the secret API key */
 	readonly jotForm: JotFormPublicConfig;
-
-	/** Public config for Storyblok */
-	readonly storyblok: StoryblokConfig;
 }
 
 /**
@@ -97,10 +94,6 @@ export interface FeedsConfig {
 	readonly jotForm: Pick<FeedConfig, "apiKey">;
 }
 
-export interface StoryblokConfig {
-	readonly previewAccessToken: string;
-	readonly publicAccessToken: string;
-}
 /**
  * Server-only run time config, useful for secrets etc
  */

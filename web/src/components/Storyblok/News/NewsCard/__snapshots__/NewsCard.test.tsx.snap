@@ -33,7 +33,6 @@ exports[`News card component should match snapshot for a blog post 1`] = `
         <div
           class="author"
         >
-          by 
           Bob Holness
           , 
           Blockbusters host

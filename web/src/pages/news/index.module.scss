@@ -3,10 +3,15 @@
 @use '@nice-digital/nds-core/scss/spacing';
 @use '@nice-digital/nds-core/scss/utils';
 @use '~/styles/colours';
+@use '~/styles/spacing' as *;
 
 .section {
   @include layout.fullWidth();
-  padding: utils.rem(spacing.$xx-large) 0;
+  padding: $homepage-large-spacing-mobile 0;
+
+  @include media-queries.mq($from: md) {
+    padding: $homepage-large-spacing 0;
+  }
 
   &:first-of-type {
     padding-top: utils.rem(spacing.$medium);

@@ -44,6 +44,10 @@ export const newsTypes = {
 	inDepthArticle: "In-depth",
 };
 
+// Are we using the Ocelot cache?
+// If not, then we can assume we're not in production and can just request the latest version of the content
+export const usingOcelotCache = !!process.env.STORYBLOK_OCELOT_ENDPOINT;
+
 // Default podcast image
 export const defaultPodcastImage =
 	publicRuntimeConfig.publicBaseURL + "/img/nice-talks.png";
@@ -59,11 +63,14 @@ export const fetchStory = async <T>(
 	const sbParams: ISbStoriesParams = {
 		version,
 		resolve_links: "url",
-		cv: Date.now(), // Useful for flushing the Storyblok cache
 		...params,
 	};
 
 	let result: SBSingleResponse<T>;
+
+	if (!usingOcelotCache) {
+		sbParams.cv = Date.now();
+	}
 
 	try {
 		const response: ISbResult = await storyblokApi.get(
@@ -209,10 +216,15 @@ export const fetchStories = async <T>(
 	const sbParams: ISbStoriesParams = {
 		version,
 		resolve_links: "url",
-		cv: Date.now(), // Useful for flushing the Storyblok cache
 		...params,
 	};
+
+	if (!usingOcelotCache) {
+		sbParams.cv = Date.now();
+	}
+
 	const result: SBMultipleResponse<T> = { stories: [] };
+
 	try {
 		const response: ISbResult = await storyblokApi.get(`cdn/stories`, sbParams);
 

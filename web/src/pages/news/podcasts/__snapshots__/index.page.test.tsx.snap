@@ -98,7 +98,7 @@ exports[`/news/podcasts/index.page PodcastsIndexPage should match snapshot for m
             <p
               class="page-header__lead"
             >
-              Our NICE talks podcasts bring you the real life experience of people working within NHS, public health and social care.
+              Our NICE talks podcasts bring you the real life experiences of people working within the NHS, public health and social care.
             </p>
           </div>
         </div>
@@ -459,16 +459,16 @@ exports[`/news/podcasts/index.page PodcastsIndexPage should match snapshot for m
             <div
               class="action-banner__intro"
             >
-              Keeping you up to date with important developments at NICE
+              Keeping you up to date with important developments at NICE.
             </div>
           </div>
           <div
             class="action-banner__actions"
           >
             <a
-              class="btn btn--cta"
+              class="btn btn--cta signupCta"
               data-component="button--cta"
-              href="/news/nice-newsletters-and-alerts"
+              href="/newsletters-and-alerts"
             >
               Sign up for newsletters and alerts
             </a>
@@ -488,7 +488,7 @@ exports[`/news/podcasts/index.page PodcastsIndexPage should match snapshot for m
          
         of 
         <b>
-          3
+          2
         </b>
       </p>
       <nav
