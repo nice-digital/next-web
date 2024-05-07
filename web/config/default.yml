@@ -29,6 +29,11 @@ public:
     defaultCacheHeader: public, s-max-age=300, max-age=120, stale-while-revalidate=1800
   jotForm:
     baseURL: https://nice.jotform.com
+  storyblok:
+    previewAccessToken: SECRET
+    publicAccessToken: SECRET
+    ocelotEndpoint: SECRET
+    enableRootCatchAll: false
 
 # ! This is a PUBLIC repo so please don't put any sensitive info or secrets in here
 # ! Use local-development.yml or local-development.json to override settings locally instead: https://edibleco.de/3dLJKiP

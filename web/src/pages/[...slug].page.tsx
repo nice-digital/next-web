@@ -16,6 +16,7 @@ import { StoryblokHero } from "@/components/Storyblok/StoryblokHero/StoryblokHer
 import { StoryblokIframe } from "@/components/Storyblok/StoryblokIframe/StoryblokIframe";
 import { StoryblokPageHeader } from "@/components/Storyblok/StoryblokPageHeader/StoryblokPageHeader";
 import { StoryblokYoutubeEmbed } from "@/components/Storyblok/StoryblokYoutubeEmbed/StoryblokYoutubeEmbed";
+import { publicRuntimeConfig } from "@/config";
 import { type Breadcrumb } from "@/types/Breadcrumb";
 import {
 	CategoryNavigationStoryblok,
@@ -93,7 +94,7 @@ export default function SlugCatchAll({
 
 export async function getServerSideProps(context: GetServerSidePropsContext) {
 	// Bail out early unless this route is enabled for this environment
-	if (process.env.ENABLE_ROOT_CATCH_ALL !== "true") {
+	if (publicRuntimeConfig.storyblok.enableRootCatchAll.toString() !== "true") {
 		return {
 			notFound: true,
 		};
