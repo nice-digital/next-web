@@ -474,11 +474,3 @@ export const constructStoryblokImageSrc = (
 
 	return encodeParens(url);
 };
-
-export const isError = (obj: unknown): obj is Error => {
-	return obj instanceof Error;
-};
-
-export const throwError = (error: Error): never => {
-	throw error;
-};

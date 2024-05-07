@@ -1,4 +1,5 @@
 import { StoryblokComponent, setComponents } from "@storyblok/react";
+import { isError } from "lodash";
 import { NextSeo } from "next-seo";
 import React, { useMemo } from "react";
 import { type StoryblokStory } from "storyblok-generate-ts";
@@ -16,7 +17,6 @@ import {
 	getStoryVersionFromQuery,
 	getSlugFromParams,
 	getAdditionalMetaTags,
-	isError,
 } from "@/utils/storyblok";
 
 import type { GetServerSidePropsContext } from "next";

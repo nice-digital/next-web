@@ -1,3 +1,4 @@
+import { isError } from "lodash";
 import { NextSeo } from "next-seo";
 import React from "react";
 import { StoryblokStory } from "storyblok-generate-ts";
@@ -15,7 +16,7 @@ import { NewsListPagination } from "@/components/Storyblok/News/NewsListPaginati
 import { NewsListPaginationAnnouncer } from "@/components/Storyblok/News/NewsListPaginationAnnouncer/NewsListPaginationAnnouncer";
 import { PaginationFocusedElement } from "@/components/Storyblok/News/NewsListPaginationFocus/NewsListPaginationFocus";
 import { NewsStory } from "@/types/News";
-import { isError, validateRouteParams } from "@/utils/storyblok";
+import { validateRouteParams } from "@/utils/storyblok";
 
 import type { GetServerSidePropsContext } from "next";
 

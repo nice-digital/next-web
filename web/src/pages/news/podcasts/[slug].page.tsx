@@ -1,3 +1,4 @@
+import { isError } from "lodash";
 import { NextSeo } from "next-seo";
 import React, { useMemo } from "react";
 import { StoryblokStory } from "storyblok-generate-ts";
@@ -20,7 +21,6 @@ import {
 	getAdditionalMetaTags,
 	defaultPodcastImage,
 	constructStoryblokImageSrc,
-	isError,
 } from "@/utils/storyblok";
 
 import styles from "./podcast.module.scss";
