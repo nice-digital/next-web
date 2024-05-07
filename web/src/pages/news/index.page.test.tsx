@@ -108,7 +108,7 @@ describe("/news/index.page", () => {
 				"<<<< There was an error fetching stories. Please try again later. >>>>> ";
 			const mockCatchError = new Error(mockErrorMessage);
 
-			fetchStoriesSpy.mockResolvedValueOnce(mockCatchError);
+			fetchStoriesSpy.mockRejectedValueOnce(mockCatchError);
 
 			const context = {
 				query: {},

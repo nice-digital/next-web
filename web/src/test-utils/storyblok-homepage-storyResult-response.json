@@ -1,0 +1,1199 @@
+{
+  "story": {
+    "name": "Home",
+    "created_at": "2023-08-18T12:50:55.390Z",
+    "published_at": "2024-05-02T16:11:26.509Z",
+    "id": 356706280,
+    "uuid": "c3ff153a-2a9b-4d29-8fdf-2bacb8b36e46",
+    "content": {
+      "_uid": "e065dbeb-a16e-4345-ae53-42362989609a",
+      "hero": [
+        {
+          "cta": [
+            {
+              "_uid": "773cac13-5f78-4ff7-8b97-fe164be1a22f",
+              "link": {
+                "id": "",
+                "url": "https://www.nice.org.uk/guidance",
+                "linktype": "url",
+                "fieldtype": "multilink",
+                "cached_url": "https://www.nice.org.uk/guidance"
+              },
+              "text": "Find guidance",
+              "variant": "cta",
+              "component": "buttonLink"
+            }
+          ],
+          "_uid": "40e4283d-cae3-4c15-9ba1-d0c7f9024a17",
+          "title": "We produce useful and useable guidance for the NHS and wider health and care system. ",
+          "images": [
+            {
+              "id": 14945325,
+              "alt": "A patient using an oximeter at home on a mobile phone app",
+              "name": "",
+              "focus": "",
+              "title": "",
+              "source": "",
+              "filename": "https://a.storyblok.com/f/243782/2120x1414/589029a64d/patient-using-oximeter-at-home.jpg",
+              "copyright": "",
+              "fieldtype": "asset",
+              "meta_data": {
+                "alt": "A patient using an oximeter at home on a mobile phone app",
+                "title": "",
+                "source": "",
+                "copyright": ""
+              },
+              "is_private": false
+            },
+            {
+              "id": 14945294,
+              "alt": "",
+              "name": "",
+              "focus": "",
+              "title": "A mother in a clinic with her child on her knee having an examination",
+              "source": "",
+              "filename": "https://a.storyblok.com/f/243782/1313x875/cd30f0268f/mother-with-child-on-knee.jpg",
+              "copyright": "",
+              "fieldtype": "asset",
+              "meta_data": {
+                "alt": "",
+                "title": "A mother in a clinic with her child on her knee having an examination",
+                "source": "",
+                "copyright": ""
+              },
+              "is_private": false
+            },
+            {
+              "id": 14945278,
+              "alt": "A man in a clinic having a diabetes test administered by a nurse",
+              "name": "",
+              "focus": "",
+              "title": "",
+              "source": "",
+              "filename": "https://a.storyblok.com/f/243782/1100x619/1b15b50113/man-having-diabetes-test.jpg",
+              "copyright": "",
+              "fieldtype": "asset",
+              "meta_data": {
+                "alt": "A man in a clinic having a diabetes test administered by a nurse",
+                "title": "",
+                "source": "",
+                "copyright": ""
+              },
+              "is_private": false
+            },
+            {
+              "id": 14944712,
+              "alt": "An elderly man a healthcare professional sat on a sofa completing a healthcare assessment",
+              "name": "",
+              "focus": "",
+              "title": "",
+              "source": "",
+              "filename": "https://a.storyblok.com/f/243782/2121x1414/ca3e4a6818/man-on-sofa-home-assessment.jpg",
+              "copyright": "",
+              "fieldtype": "asset",
+              "meta_data": {
+                "alt": "An elderly man a healthcare professional sat on a sofa completing a healthcare assessment",
+                "title": "",
+                "source": "",
+                "copyright": ""
+              },
+              "is_private": false
+            }
+          ],
+          "ctaLink": {
+            "id": "",
+            "url": "/guidance",
+            "linktype": "url",
+            "fieldtype": "multilink",
+            "cached_url": "/guidance"
+          },
+          "ctaText": "Find guidance",
+          "component": "homepageHero",
+          "description": "Our recommendations help practitioners and commissioners get the best care to people, fast, while ensuring value for the taxpayer."
+        }
+      ],
+      "links": {
+        "type": "doc",
+        "content": [
+          {
+            "type": "heading",
+            "attrs": { "level": 2 },
+            "content": [
+              { "text": "Implementation and planning", "type": "text" }
+            ]
+          },
+          {
+            "type": "paragraph",
+            "content": [
+              {
+                "text": "Best practice resources for practitioners and commissioners.",
+                "type": "text"
+              }
+            ]
+          },
+          {
+            "type": "blok",
+            "attrs": {
+              "id": "f3f28508-3e91-4d3d-ae39-4644e273062c",
+              "body": [
+                {
+                  "_uid": "i-219f2f90-4c70-4991-a816-5eaae784d838",
+                  "cards": [
+                    {
+                      "_uid": "dc83e61a-10cf-4862-ac51-eb12df44774c",
+                      "body": "Helping you define, improve and measure quality in health, public health and social care.",
+                      "link": {
+                        "id": "",
+                        "url": "https://www.nice.org.uk/standards-and-indicators",
+                        "linktype": "url",
+                        "fieldtype": "multilink",
+                        "cached_url": "https://www.nice.org.uk/standards-and-indicators"
+                      },
+                      "heading": "Quality improvement - using our standards and indicators",
+                      "component": "card"
+                    },
+                    {
+                      "_uid": "c61a661a-132d-467b-a520-02091d17b8d4",
+                      "body": "Resources and recommendations for adult and children’s social care,  with example scenarios to help put them into practice.",
+                      "link": {
+                        "id": "",
+                        "url": "https://www.nice.org.uk/about/nice-communities/social-care/quick-guides",
+                        "linktype": "url",
+                        "fieldtype": "multilink",
+                        "cached_url": "https://www.nice.org.uk/about/nice-communities/social-care/quick-guides"
+                      },
+                      "heading": "Guidelines and resources for social care",
+                      "component": "card"
+                    },
+                    {
+                      "_uid": "37a78e25-3a39-4323-baa1-9f4334495e03",
+                      "body": "Explore ways to plan, save money and make decisions on the best ways to use resources. ",
+                      "link": {
+                        "id": "",
+                        "url": "oluwafunmilayo.osho@nice.org.uk",
+                        "email": "oluwafunmilayo.osho@nice.org.uk",
+                        "linktype": "email",
+                        "fieldtype": "multilink",
+                        "cached_url": "oluwafunmilayo.osho@nice.org.uk"
+                      },
+                      "heading": "Productivity, planning and cost saving resources",
+                      "component": "card"
+                    }
+                  ],
+                  "component": "cardGrid"
+                }
+              ]
+            }
+          },
+          {
+            "type": "heading",
+            "attrs": { "level": 2 },
+            "content": [{ "text": "More ways we support you", "type": "text" }]
+          },
+          {
+            "type": "paragraph",
+            "content": [
+              {
+                "text": "Useful sources of information and advice for healthcare professionals, patients, parents and carers.",
+                "type": "text",
+                "marks": [{ "type": "textStyle", "attrs": { "color": "" } }]
+              }
+            ]
+          },
+          {
+            "type": "blok",
+            "attrs": {
+              "id": "af0e85e8-e6b4-4200-b9d0-e5905e1400d6",
+              "body": [
+                {
+                  "_uid": "i-b99d3593-7b34-4c41-8464-b206c8739073",
+                  "cards": [
+                    {
+                      "_uid": "76c65865-6d11-4cc8-9374-6d62b3be65b4",
+                      "body": "The British National Formulary (BNF) provides information about the selection, prescribing, dispensing and administration of drugs.",
+                      "link": {
+                        "id": "",
+                        "url": "https://bnf.nice.org.uk/",
+                        "linktype": "url",
+                        "fieldtype": "multilink",
+                        "cached_url": "https://bnf.nice.org.uk/"
+                      },
+                      "heading": "Advice and information on the use of drugs (BNF)",
+                      "component": "card"
+                    },
+                    {
+                      "_uid": "4e87cac4-9de7-493e-a3d3-c6db358ba01a",
+                      "body": "With over 370 topics to choose from, clinical knowledge summaries (CKS) can provide quick answers to clinical questions.",
+                      "link": {
+                        "id": "",
+                        "url": "https://cks.nice.org.uk/",
+                        "linktype": "url",
+                        "fieldtype": "multilink",
+                        "cached_url": "https://cks.nice.org.uk/"
+                      },
+                      "heading": "Summaries of evidence and advice on common health topics (CKS)",
+                      "component": "card"
+                    },
+                    {
+                      "_uid": "7d4c98f1-4beb-4b8b-8a74-b475d84ed204",
+                      "body": "Our patient decision aids (PDAs) include treatment options available, likely outcomes, benefits, harms and uncertainties.",
+                      "link": {
+                        "id": "",
+                        "url": "https://www.nice.org.uk/about/nice-communities/nice-and-the-public/making-decisions-about-your-care/patient-decision-aids",
+                        "linktype": "url",
+                        "fieldtype": "multilink",
+                        "cached_url": "https://www.nice.org.uk/about/nice-communities/nice-and-the-public/making-decisions-about-your-care/patient-decision-aids"
+                      },
+                      "heading": "Making decisions about your care",
+                      "component": "card"
+                    }
+                  ],
+                  "component": "cardGrid"
+                }
+              ]
+            }
+          }
+        ]
+      },
+      "metadata": [
+        {
+          "_uid": "151f83d8-741e-4d58-a530-74543b8b4d5d",
+          "creator": "Test creator content",
+          "component": "metadata",
+          "description": "NICE helps practitioners and commissioners get the best care to patients, fast, while ensuring value for the taxpayer"
+        }
+      ],
+      "PromoBox3": [
+        {
+          "cta": [
+            {
+              "_uid": "ca7ef241-e566-41ea-b216-c4334d1f539f",
+              "link": {
+                "id": "79eb6455-fba6-4237-8fbc-2b7b16d4787e",
+                "url": "",
+                "linktype": "story",
+                "fieldtype": "multilink",
+                "cached_url": "news/articles/nice-welcomes-new-senior-executive-team-appointments",
+                "story": {
+                  "name": "NICE welcomes new senior executive team appointments",
+                  "id": 433589840,
+                  "uuid": "79eb6455-fba6-4237-8fbc-2b7b16d4787e",
+                  "slug": "nice-welcomes-new-senior-executive-team-appointments",
+                  "url": "news/articles/nice-welcomes-new-senior-executive-team-appointments",
+                  "full_slug": "news/articles/nice-welcomes-new-senior-executive-team-appointments",
+                  "_stopResolving": true
+                }
+              },
+              "text": "Test",
+              "variant": "cta",
+              "component": "buttonLink"
+            }
+          ],
+          "_uid": "e7028bc6-7a4e-4f4b-a473-276649764723",
+          "body": {
+            "type": "doc",
+            "content": [
+              {
+                "type": "paragraph",
+                "content": [{ "text": "Some body texts", "type": "text" }]
+              }
+            ]
+          },
+          "image": {
+            "id": 13876667,
+            "alt": "",
+            "name": "",
+            "focus": "",
+            "title": "",
+            "source": "",
+            "filename": "https://a.storyblok.com/f/243782/2120x1414/45f8cd4e8b/female-technician-examining-machinery-at-science-lab.jpg",
+            "copyright": "",
+            "fieldtype": "asset",
+            "meta_data": {},
+            "is_private": false,
+            "is_external_url": false
+          },
+          "heading": "Test more than 2 promo box added",
+          "useVideo": false,
+          "component": "promoBox",
+          "youtubeEmbed": [],
+          "isTransparent": false,
+          "swapMediaSide": false
+        }
+      ],
+      "component": "homepage",
+      "promoBox1": [
+        {
+          "cta": [
+            {
+              "_uid": "cfca49cb-57f5-4046-88d6-cad2d4f16600",
+              "link": {
+                "id": "",
+                "url": "https://www.nice.org.uk/about/what-we-do/our-programmes/nice-guidance/nice-guidelines/how-we-develop-nice-guidelines",
+                "linktype": "url",
+                "fieldtype": "multilink",
+                "cached_url": "https://www.nice.org.uk/about/what-we-do/our-programmes/nice-guidance/nice-guidelines/how-we-develop-nice-guidelines"
+              },
+              "text": "How we develop our guidelines",
+              "variant": "primary",
+              "component": "buttonLink"
+            }
+          ],
+          "_uid": "38493099-c863-4191-b40b-515ba3e362cd",
+          "body": {
+            "type": "doc",
+            "content": [
+              {
+                "type": "paragraph",
+                "content": [
+                  {
+                    "text": "We produce evidence-based guidance to support the health and care system, ensure value for money, and provide people with access to the best quality care. When it comes to decision making, we follow a rigorous process to develop our guidance.",
+                    "type": "text",
+                    "marks": [
+                      {
+                        "type": "textStyle",
+                        "attrs": { "color": "rgb(15, 15, 15)" }
+                      }
+                    ]
+                  }
+                ]
+              }
+            ]
+          },
+          "image": {
+            "id": 14889245,
+            "alt": "",
+            "name": "",
+            "focus": "",
+            "title": "",
+            "source": "",
+            "filename": "https://a.storyblok.com/f/243782/1000x666/f7804c1d20/committee-meeting.jpeg",
+            "copyright": "",
+            "fieldtype": "asset",
+            "meta_data": {},
+            "is_private": false,
+            "is_external_url": false
+          },
+          "heading": "How NICE makes decisions",
+          "useVideo": true,
+          "component": "promoBox",
+          "youtubeEmbed": [
+            {
+              "_uid": "a6b8cf36-ac73-4595-b639-a2b58e37bda9",
+              "title": "How NICE makes decisions",
+              "source": "BliByNegKlk",
+              "component": "youtubeEmbed"
+            }
+          ],
+          "isTransparent": false,
+          "swapMediaSide": false
+        }
+      ],
+      "promoBox2": [
+        {
+          "cta": [
+            {
+              "_uid": "4126654d-6d8a-47af-b43c-626a67bb26a9",
+              "link": {
+                "id": "",
+                "url": "https://www.nice.org.uk/get-involved/our-committees/join-a-committee/how-to-apply-to-join-a-committee",
+                "linktype": "url",
+                "fieldtype": "multilink",
+                "cached_url": "https://www.nice.org.uk/get-involved/our-committees/join-a-committee/how-to-apply-to-join-a-committee"
+              },
+              "text": "How to join a committee",
+              "variant": "primary",
+              "component": "buttonLink"
+            }
+          ],
+          "_uid": "d7128e03-ca5c-4163-a72f-35daeb515ceb",
+          "body": {
+            "type": "doc",
+            "content": [
+              {
+                "type": "paragraph",
+                "content": [
+                  {
+                    "text": "Join us in our mission to improve the quality of health and social care services. Our committees develop and update our guidance.",
+                    "type": "text",
+                    "marks": [
+                      {
+                        "type": "textStyle",
+                        "attrs": { "color": "rgb(14, 14, 14)" }
+                      }
+                    ]
+                  }
+                ]
+              },
+              {
+                "type": "paragraph",
+                "content": [
+                  {
+                    "text": "They meet over several months and their work is vital in forming our recommendations.",
+                    "type": "text",
+                    "marks": [
+                      {
+                        "type": "textStyle",
+                        "attrs": { "color": "rgb(14, 14, 14)" }
+                      }
+                    ]
+                  }
+                ]
+              },
+              {
+                "type": "paragraph",
+                "content": [
+                  {
+                    "text": "Being a committee member puts you at the heart of our work and helps us make sure that our guidance is relevant to the people that matter.",
+                    "type": "text",
+                    "marks": [
+                      {
+                        "type": "textStyle",
+                        "attrs": { "color": "rgb(14, 14, 14)" }
+                      }
+                    ]
+                  }
+                ]
+              }
+            ]
+          },
+          "image": {
+            "id": 14889245,
+            "alt": "",
+            "name": "",
+            "focus": "",
+            "title": "",
+            "source": "",
+            "filename": "https://a.storyblok.com/f/243782/1000x666/f7804c1d20/committee-meeting.jpeg",
+            "copyright": "",
+            "fieldtype": "asset",
+            "meta_data": {},
+            "is_private": false,
+            "is_external_url": false
+          },
+          "heading": "You could help us develop our guidance",
+          "useVideo": false,
+          "component": "promoBox",
+          "youtubeEmbed": [
+            {
+              "_uid": "927076a6-44db-43a3-9bf4-bbd34d9d69be",
+              "title": "How NICE makes decisions",
+              "source": "XcF9HJlhvzs",
+              "component": "youtubeEmbed"
+            }
+          ],
+          "isTransparent": false,
+          "swapMediaSide": false
+        }
+      ],
+      "spotlight": [
+        {
+          "_uid": "e96ac736-8c90-4893-bc66-fd2dcc4b4507",
+          "heading": "Why health technology evaluation is changing",
+          "stories": [
+            {
+              "name": "Women inspiring inclusion in NICE guidance - Test",
+              "created_at": "2024-03-18T17:47:05.387Z",
+              "published_at": "2024-05-07T10:05:34.851Z",
+              "id": 463058669,
+              "uuid": "8b6a7fde-f488-4d9c-9c5b-d172d78d1d9d",
+              "content": {
+                "_uid": "e4005356-7f20-4433-ac92-4bd2804a0751",
+                "date": "2024-05-07 12:00",
+                "image": {
+                  "id": 14512875,
+                  "alt": "",
+                  "name": "",
+                  "focus": "",
+                  "title": "",
+                  "source": "",
+                  "filename": "https://a.storyblok.com/f/243782/420x234/7a576133e7/register-for-board-meeting.PNG",
+                  "copyright": "",
+                  "fieldtype": "asset",
+                  "meta_data": {},
+                  "is_private": false,
+                  "is_external_url": false
+                },
+                "title": "Women inspiring inclusion in NICE guidance -Test",
+                "author": [
+                  {
+                    "name": "Vanessa Nunes",
+                    "created_at": "2024-03-18T17:54:20.919Z",
+                    "published_at": "2024-04-11T09:20:00.529Z",
+                    "id": 463058738,
+                    "uuid": "8d15759d-3764-4cba-9f96-a71e1b02467e",
+                    "content": {
+                      "_uid": "19cb5420-0d41-4b48-ab01-624a72a8fef9",
+                      "name": "Vanessa Nunes",
+                      "image": {
+                        "id": 14953591,
+                        "alt": "",
+                        "name": "",
+                        "focus": "",
+                        "title": "",
+                        "source": "",
+                        "filename": "https://a.storyblok.com/f/243782/239x298/f5556eb6f5/vanessa-nunes.PNG",
+                        "copyright": "",
+                        "fieldtype": "asset",
+                        "meta_data": {},
+                        "is_private": false,
+                        "is_external_url": false
+                      },
+                      "jobTitle": "Associate Director of NICE’s centre for guidelines",
+                      "component": "author"
+                    },
+                    "slug": "vanessa-nunes",
+                    "full_slug": "news/blogs/authors/vanessa-nunes",
+                    "sort_by_date": null,
+                    "position": -410,
+                    "tag_list": [],
+                    "is_startpage": false,
+                    "parent_id": 416560259,
+                    "meta_data": null,
+                    "group_id": "70aa5d65-6ec0-4132-8fbb-9c66a8115849",
+                    "first_published_at": "2024-03-18T17:54:33.026Z",
+                    "release_id": null,
+                    "lang": "default",
+                    "path": null,
+                    "alternates": [],
+                    "default_full_slug": null,
+                    "translated_slugs": null,
+                    "_stopResolving": true
+                  }
+                ],
+                "content": {
+                  "type": "doc",
+                  "content": [
+                    {
+                      "type": "paragraph",
+                      "content": [
+                        {
+                          "text": "At NICE, we’re celebrating the theme #InspireInclusion as we mark International Women’s Day 2024. From our reception staff to our technical analysts, chair and CEO, we’re an organisation driven by women from all backgrounds to create useful and useable evidence-based healthcare guidance, reflecting our commitment to inclusivity and collaboration.",
+                          "type": "text"
+                        }
+                      ]
+                    },
+                    {
+                      "type": "paragraph",
+                      "content": [
+                        {
+                          "text": "As of March 2024, women constitute 68.4% of our workforce, and at executive team level this stands at 58.3%, showcasing diversity and equity at all levels of our organisation.",
+                          "type": "text"
+                        }
+                      ]
+                    },
+                    {
+                      "type": "paragraph",
+                      "content": [
+                        {
+                          "text": "With women’s health occupying a prominent place on the national agenda, especially amid England's 10-year women's health strategy, we recently consolidated our guidance on women's and reproductive health, streamlining access to essential information in one place.",
+                          "type": "text"
+                        }
+                      ]
+                    },
+                    {
+                      "type": "heading",
+                      "attrs": { "level": 2 },
+                      "content": [
+                        {
+                          "text": "Meet two of the women involved in NICE's committees",
+                          "type": "text",
+                          "marks": [{ "type": "bold" }]
+                        }
+                      ]
+                    },
+                    {
+                      "type": "paragraph",
+                      "content": [
+                        {
+                          "type": "image",
+                          "attrs": {
+                            "id": 14767634,
+                            "alt": "",
+                            "src": "https://a.storyblok.com/f/243782/627x624/86275f6701/women-involved-in-nice-s-committees.PNG",
+                            "title": "",
+                            "source": "",
+                            "copyright": "",
+                            "meta_data": {}
+                          }
+                        }
+                      ]
+                    },
+                    {
+                      "type": "blok",
+                      "attrs": {
+                        "id": "bc399ab7-cdcc-4d56-8cd5-7fbb295e1b7c",
+                        "body": [
+                          {
+                            "_uid": "i-e355cf06-7cbf-42fd-bbc1-f58f5a168c74",
+                            "component": "quote",
+                            "quoteText": {
+                              "type": "doc",
+                              "content": [
+                                {
+                                  "type": "paragraph",
+                                  "content": [
+                                    {
+                                      "text": "I'm Chim, I’ve been a consultant in the NHS since 2014 and am currently leading an Early Pregnancy Unit, as well as serving as the divisional research lead for the women’s and children unit.",
+                                      "type": "text"
+                                    }
+                                  ]
+                                }
+                              ]
+                            },
+                            "quoteAuthor": "Chim Kalumbi"
+                          }
+                        ]
+                      }
+                    },
+                    {
+                      "type": "paragraph",
+                      "content": [
+                        {
+                          "text": "As vice chair of the Women’s and Reproductive Health Suite, I facilitate committees providing advisory insights to NICE’s board, guiding the development and updating of guidelines in the Women’s and Reproductive Health Suite.",
+                          "type": "text"
+                        }
+                      ]
+                    },
+                    {
+                      "type": "paragraph",
+                      "content": [
+                        {
+                          "text": "My passion lies in global women’s health. Given alarming maternal health disparities worldwide, my involvement in NICE committees offers an opportunity to address such inequalities, especially for women from marginalised backgrounds, who we know are statistically more likely to have worse outcomes, and even die during pregnancy. Coming from a black ethnic background sitting on the NICE committee gives me the opportunity to contribute towards improving care and pregnancy outcomes in these women.",
+                          "type": "text"
+                        }
+                      ]
+                    },
+                    {
+                      "type": "paragraph",
+                      "content": [
+                        {
+                          "text": "I’ve been privileged to contribute towards the review and update of the following guidelines, fetal monitoring in labour, intrapartum care for healthy women and babies and ectopic pregnancy and miscarriage: diagnosis and initial management just to mention a few. I know that through this work, I’ve helped ensure that the guideline review process considers the disparities in maternal health outcomes.",
+                          "type": "text"
+                        }
+                      ]
+                    },
+                    {
+                      "type": "paragraph",
+                      "content": [
+                        {
+                          "text": "Developing and producing a clinical guideline is one thing, ensuring that the guideline is implementable is another. This is where, as clinicians on the ground our knowledge and experience provide insight to the committee on some of the challenges in the implementation pathway. ",
+                          "type": "text"
+                        },
+                        {
+                          "text": "Testing link",
+                          "type": "text",
+                          "marks": [
+                            {
+                              "type": "link",
+                              "attrs": {
+                                "href": "https://www.nice.org.uk/guidance/population-groups",
+                                "uuid": null,
+                                "anchor": null,
+                                "target": "_blank",
+                                "linktype": "url"
+                              }
+                            }
+                          ]
+                        }
+                      ]
+                    },
+                    {
+                      "type": "paragraph",
+                      "content": [
+                        {
+                          "text": "Inclusiveness to me means tackling persistent disparities underlying maternal mortality within the health systems from a strategic and policy making level, to the clinician on the ground. Every pregnant woman deserves a positive experience and outcome, and no woman should die from avoidable and preventable causes.",
+                          "type": "text"
+                        }
+                      ]
+                    },
+                    {
+                      "type": "paragraph",
+                      "content": [
+                        {
+                          "text": "Funmi (anchor span)",
+                          "type": "text",
+                          "marks": [
+                            { "type": "anchor", "attrs": { "id": "funmiosho" } }
+                          ]
+                        }
+                      ]
+                    },
+                    {
+                      "type": "paragraph",
+                      "content": [
+                        {
+                          "type": "image",
+                          "attrs": {
+                            "id": 14767644,
+                            "alt": "",
+                            "src": "https://a.storyblok.com/f/243782/632x626/bf4770d38e/women-involved-in-nice-s-committees.PNG",
+                            "title": "",
+                            "source": "",
+                            "copyright": "",
+                            "meta_data": {}
+                          },
+                          "marks": [
+                            { "type": "anchor", "attrs": { "id": "funmiosho" } }
+                          ]
+                        }
+                      ]
+                    },
+                    {
+                      "type": "blok",
+                      "attrs": {
+                        "id": "bc399ab7-cdcc-4d56-8cd5-7fbb295e1b7c",
+                        "body": [
+                          {
+                            "_uid": "i-b8f9205c-b064-4012-a719-b27ab3f9341d",
+                            "component": "quote",
+                            "quoteText": {
+                              "type": "doc",
+                              "content": [
+                                {
+                                  "type": "paragraph",
+                                  "content": [
+                                    {
+                                      "text": "I’m Munira, and I’m the Director of The Ectopic Pregnancy Trust (EPT). I have personally experienced both ectopic pregnancy and miscarriage and my role with EPT involves supporting women, people, and families who are affected by pregnancy loss and complications.",
+                                      "type": "text"
+                                    }
+                                  ]
+                                }
+                              ]
+                            },
+                            "quoteAuthor": "Munira Oza"
+                          }
+                        ]
+                      }
+                    },
+                    {
+                      "type": "paragraph",
+                      "content": [
+                        {
+                          "text": "The committee provides input on NICE’s guidelines across a range of women and reproductive health topics, spanning conditions that start in puberty through to menopause. This includes fertility and pregnancy and the topic group for which I am member, early pregnancy. Most recently I’ve been involved with updating NICE’s guidance on ectopic pregnancy and miscarriage. This involved reviewing new recommendations on practical aspects - such as what doctors should look out for on scans and miscarriage treatment. As well as overall consideration of recommendations, I have assisted with specific points from the patient’s view, for example what to look out for following discharge and when and how to seek further medical assistance.",
+                          "type": "text"
+                        }
+                      ]
+                    },
+                    {
+                      "type": "paragraph",
+                      "content": [
+                        {
+                          "text": "At the start of this role, I had a touch of imposter syndrome, with so many clinical experts around the table! However, committee colleagues have been very welcoming and keen to hear the patient’s perspective. Often, the committee chair or other participants expressly refer a particular point for my input and the views I reflect feel very valued. Any nervousness I had at the outset quickly vanished.",
+                          "type": "text"
+                        }
+                      ]
+                    },
+                    {
+                      "type": "paragraph",
+                      "content": [
+                        {
+                          "text": "To me “Inspire inclusion” means learning and working together to tackle discrimination and biases head-on. This includes asking and actively listening to affected groups. NICE’s public involvement programme aims to put that into practice.",
+                          "type": "text"
+                        }
+                      ]
+                    },
+                    {
+                      "type": "heading",
+                      "attrs": { "level": 2 },
+                      "content": [
+                        {
+                          "text": "Vanessa on inspiring inclusion",
+                          "type": "text",
+                          "marks": [{ "type": "bold" }]
+                        }
+                      ]
+                    },
+                    {
+                      "type": "paragraph",
+                      "content": [
+                        {
+                          "text": "As we continue to update and prioritise guidance at NICE, it remains paramount we ensure women are central to our work. Their perspectives, experiences and needs must continually inform and shape our efforts to promote inclusivity and equity in healthcare.",
+                          "type": "text"
+                        }
+                      ]
+                    },
+                    {
+                      "type": "paragraph",
+                      "content": [
+                        {
+                          "text": "Together, let's inspire inclusion and forge a future where every woman receives the care and support they deserve.",
+                          "type": "text"
+                        }
+                      ]
+                    },
+                    { "type": "heading", "attrs": { "level": 2 } }
+                  ]
+                },
+                "component": "blogPost",
+                "introText": "This International Women’s Day, we’re specifically focusing on the invaluable contributions of two of the women who help shape our guidance through their independent / voluntary committee roles. Hear from them, as they talk about their involvement with NICE and what #InspireInclusion means to them."
+              },
+              "slug": "women-inspiring-inclusion-in-nice-guidance",
+              "full_slug": "news/blogs/women-inspiring-inclusion-in-nice-guidance",
+              "sort_by_date": null,
+              "position": -440,
+              "tag_list": [],
+              "is_startpage": false,
+              "parent_id": 420552804,
+              "meta_data": null,
+              "group_id": "99db358d-1b65-4953-b9bf-c42736436ace",
+              "first_published_at": "2024-03-25T17:57:00.000Z",
+              "release_id": null,
+              "lang": "default",
+              "path": null,
+              "alternates": [],
+              "default_full_slug": null,
+              "translated_slugs": null,
+              "_stopResolving": true
+            },
+            {
+              "name": "Health technology assessment in Latin America -Test",
+              "created_at": "2024-03-18T16:58:03.253Z",
+              "published_at": "2024-04-12T12:06:55.393Z",
+              "id": 462971063,
+              "uuid": "59759df9-cef6-4b8d-af14-1cdda91ff97d",
+              "content": {
+                "_uid": "07b493b6-5410-4e90-ab0c-bd55a49ce0c0",
+                "date": "2024-04-15 12:00",
+                "link": {
+                  "id": "",
+                  "url": "https://case-studies.nice.org.uk/LatinAmerica/index.html",
+                  "linktype": "url",
+                  "fieldtype": "multilink",
+                  "cached_url": "https://case-studies.nice.org.uk/LatinAmerica/index.html"
+                },
+                "image": {
+                  "id": 14767299,
+                  "alt": "",
+                  "name": "",
+                  "focus": "",
+                  "title": "",
+                  "source": "",
+                  "filename": "https://a.storyblok.com/f/243782/902x853/f31d4e6911/assessment-in-latin-americas.PNG",
+                  "copyright": "",
+                  "fieldtype": "asset",
+                  "meta_data": {},
+                  "is_private": false,
+                  "is_external_url": false
+                },
+                "title": "Health technology assessment in Latin America",
+                "component": "inDepthArticle",
+                "introText": "In this case study, we explore our collaboration with 8 countries across Latin America and the Caribbean. This project focuses on sharing knowledge about challenging aspects of health technology assessment.\n"
+              },
+              "slug": "health-technology-assessment-in-latin-america",
+              "full_slug": "news/in-depth/health-technology-assessment-in-latin-america",
+              "sort_by_date": null,
+              "position": -40,
+              "tag_list": [],
+              "is_startpage": false,
+              "parent_id": 420933638,
+              "meta_data": null,
+              "group_id": "08a05216-702f-4d78-8cad-3f56854083ce",
+              "first_published_at": "2024-03-18T17:02:04.910Z",
+              "release_id": null,
+              "lang": "default",
+              "path": null,
+              "alternates": [],
+              "default_full_slug": null,
+              "translated_slugs": null,
+              "_stopResolving": true
+            }
+          ],
+          "component": "spotlight",
+          "youtubeEmbed": [
+            {
+              "_uid": "ac12c60f-f0d8-456a-8087-d4333878fdf8",
+              "title": " NICE Webinar: why health technology evaluation is changing",
+              "source": "I8rJ2bcP21A",
+              "component": "youtubeEmbed"
+            }
+          ],
+          "isTransparent": true,
+          "mediaDescription": "In November 2019 we held a webinar to share how and why health technology evaluation is changing and what it means for patients.  The webinar includes a presentation and panel discussion based on questions sent in by the audience. "
+        }
+      ],
+      "featuredStory": {
+        "name": "145,000 people in England to have further treatment choice for preventing migraine attacks",
+        "created_at": "2024-01-22T13:16:36.411Z",
+        "published_at": "2024-01-22T13:27:05.655Z",
+        "id": 430633954,
+        "uuid": "f70c597e-d51d-4f76-b82a-651720aebdef",
+        "content": {
+          "_uid": "6c5f183a-9509-4410-8e8f-38ca8786a687",
+          "date": "2023-05-31 00:00",
+          "image": {
+            "id": 13818620,
+            "alt": "A woman, sat at a desk, experiencing a migraine",
+            "name": "A woman, sat at a desk, experiencing a migraine",
+            "focus": "",
+            "title": "",
+            "source": "",
+            "filename": "https://a.storyblok.com/f/243782/4096x2160/5edf48e2e6/woman-experiencing-a-migraine.jpg",
+            "copyright": "",
+            "fieldtype": "asset",
+            "meta_data": {},
+            "is_private": "",
+            "is_external_url": false
+          },
+          "title": "145,000 people in England to have further treatment choice for preventing migraine attacks",
+          "content": {
+            "type": "doc",
+            "content": [
+              {
+                "type": "paragraph",
+                "content": [
+                  {
+                    "text": "Rimegepant (also called Vydura and made by Pfizer) is recommended as an option for preventing episodic",
+                    "type": "text"
+                  },
+                  {
+                    "text": " ",
+                    "type": "text",
+                    "marks": [{ "type": "superscript" }]
+                  },
+                  {
+                    "text": "migraine in adults where at least 3 previous preventive treatments have failed, opening the way for up to 145,000 people to choose it on the NHS in England.",
+                    "type": "text"
+                  }
+                ]
+              },
+              {
+                "type": "paragraph",
+                "content": [
+                  {
+                    "text": "The final draft guidance recommends rimegepant for adults who have at least 4 migraine attacks per month but less than 15.",
+                    "type": "text"
+                  }
+                ]
+              },
+              {
+                "type": "paragraph",
+                "content": [
+                  {
+                    "text": "The clinical trial evidence shows that rimegepant works better than a dummy treatment for reducing the number of episodic migraines in people who have already tried 3 preventive treatments.",
+                    "type": "text"
+                  }
+                ]
+              },
+              {
+                "type": "paragraph",
+                "content": [
+                  {
+                    "text": "Over 5.6m people in England are thought to have episodic migraines in England and it is estimated that 190,000 migraine attacks are experienced every day in England.",
+                    "type": "text"
+                  }
+                ]
+              },
+              {
+                "type": "paragraph",
+                "content": [
+                  {
+                    "text": "Rimegepant is taken as a wafer which dissolves under the tongue. It works by stopping the release of a protein around the brain that is responsible for the severe pain associated with migraine attacks.",
+                    "type": "text"
+                  }
+                ]
+              },
+              {
+                "type": "paragraph",
+                "content": [
+                  { "text": " ", "type": "text", "marks": [{ "type": "bold" }] }
+                ]
+              },
+              {
+                "type": "blok",
+                "attrs": {
+                  "id": "97c8b4ab-4d20-4fd2-8108-211d3f892dc4",
+                  "body": [
+                    {
+                      "_uid": "i-045b8f5d-602c-4283-a6b5-60c94ce00d1e",
+                      "component": "quote",
+                      "quoteText": {
+                        "type": "doc",
+                        "content": [
+                          {
+                            "type": "paragraph",
+                            "content": [
+                              {
+                                "text": "Each year the lives of millions of people in England are blighted by migraine attacks. They can be extremely debilitating and can significantly affect a person’s quality of life. In comments received during consultation on the previous draft guidance, patients and carers described migraine as an invisible disability that affects all aspects of life including family, social activities, mental health, finances, education.",
+                                "type": "text"
+                              }
+                            ]
+                          },
+                          { "type": "paragraph" },
+                          {
+                            "type": "paragraph",
+                            "content": [
+                              {
+                                "text": "Rimegepant is the first oral treatment for migraine to be recommended by NICE and for many thousands of people it is likely to be a welcome and more convenient addition to existing options for a condition that is often overlooked and undertreated.",
+                                "type": "text"
+                              }
+                            ]
+                          },
+                          { "type": "paragraph" },
+                          {
+                            "type": "paragraph",
+                            "content": [
+                              {
+                                "text": "Today’s draft guidance demonstrates our commitment to focusing on what matters most and getting the best care to people while ensuring value for the taxpayer.",
+                                "type": "text"
+                              }
+                            ]
+                          }
+                        ]
+                      },
+                      "quoteAuthor": "Helen Knight, director of medicines evaluation at NICE"
+                    }
+                  ]
+                }
+              },
+              { "type": "paragraph" },
+              {
+                "type": "paragraph",
+                "content": [
+                  {
+                    "text": "Current treatment options for preventing migraine include drugs that are used for treating other conditions, such as beta-blockers, antidepressants and epilepsy medications. These treatments can have significant side-effects and can be ineffective for some people. Treatments offered after these have been tried include NICE-recommended erenumab, fremanezumab or galcanezumab, all of which are given as injections.",
+                    "type": "text"
+                  }
+                ]
+              },
+              {
+                "type": "paragraph",
+                "content": [
+                  {
+                    "text": "The draft guidance says if rimegepant is considered to be 1 of a range of suitable treatments, after discussing the advantages and disadvantages of all the options, the least expensive should be used.",
+                    "type": "text"
+                  }
+                ]
+              },
+              {
+                "type": "paragraph",
+                "content": [
+                  {
+                    "text": "NICE expects to publish final guidance on rimegepant for preventing episodic migraines next month.",
+                    "type": "text"
+                  }
+                ]
+              }
+            ]
+          },
+          "component": "newsArticle",
+          "introText": "NICE has for the first time recommended an oral treatment for preventing migraines",
+          "resources": [
+            {
+              "_uid": "571a8c15-397c-45f5-a844-d54152a655e3",
+              "link": {
+                "id": "",
+                "url": "https://www.nice.org.uk/guidance/indevelopment/gid-ta11322/documents",
+                "linktype": "url",
+                "fieldtype": "multilink",
+                "cached_url": "https://www.nice.org.uk/guidance/indevelopment/gid-ta11322/documents"
+              },
+              "title": "Guidance on rimegepant for preventing episodic migraines",
+              "component": "relatedLink"
+            }
+          ],
+          "relatedNews": []
+        },
+        "slug": "145-000-people-in-england-to-have-further-treatment-choice-for-preventing-migraine-attacks",
+        "full_slug": "news/articles/145-000-people-in-england-to-have-further-treatment-choice-for-preventing-migraine-attacks",
+        "sort_by_date": null,
+        "position": -1290,
+        "tag_list": [],
+        "is_startpage": false,
+        "parent_id": 420552799,
+        "meta_data": null,
+        "group_id": "44f8923f-136c-49f8-bd45-878d19856bab",
+        "first_published_at": "2024-01-22T13:27:05.655Z",
+        "release_id": null,
+        "lang": "default",
+        "path": null,
+        "alternates": [],
+        "default_full_slug": null,
+        "translated_slugs": null,
+        "_stopResolving": true
+      },
+      "linksAreTransparent": true,
+      "primaryActionBanner": [
+        {
+          "cta": [
+            {
+              "_uid": "e90f5ef7-cab3-4bf4-a08b-4d00142c591f",
+              "link": {
+                "id": "",
+                "url": "https://www.nice.org.uk/about/what-we-do/life-sciences/nice-advice-service",
+                "linktype": "url",
+                "fieldtype": "multilink",
+                "cached_url": "https://www.nice.org.uk/about/what-we-do/life-sciences/nice-advice-service"
+              },
+              "text": "Learn more about NICE Advice",
+              "variant": "inverse",
+              "component": "buttonLink"
+            }
+          ],
+          "_uid": "aef3121c-d4d7-4924-9355-99ce15c3bcda",
+          "body": {
+            "type": "doc",
+            "content": [
+              {
+                "type": "paragraph",
+                "content": [
+                  {
+                    "text": "If your healthtech innovation improves lives, but you're struggling to get a foot in the door. ",
+                    "type": "text"
+                  }
+                ]
+              },
+              {
+                "type": "paragraph",
+                "content": [
+                  {
+                    "text": "NICE Advice will guide you through. ",
+                    "type": "text"
+                  }
+                ]
+              }
+            ]
+          },
+          "image": {
+            "id": 14954000,
+            "alt": "A biochemist looking through the eyepiece of a microscope",
+            "name": "",
+            "focus": "",
+            "title": "",
+            "source": "",
+            "filename": "https://a.storyblok.com/f/243782/800x448/0a95c7f9b3/nice-advice-biochemist.jpg",
+            "copyright": "",
+            "fieldtype": "asset",
+            "meta_data": {
+              "alt": "A biochemist looking through the eyepiece of a microscope",
+              "title": "",
+              "source": "",
+              "copyright": ""
+            },
+            "is_private": false,
+            "is_external_url": false
+          },
+          "heading": "NICE Advice service ",
+          "component": "actionBanner"
+        }
+      ],
+      "linksBackgroundColour": false
+    },
+    "slug": "home",
+    "full_slug": "home",
+    "sort_by_date": null,
+    "position": 10,
+    "tag_list": [],
+    "is_startpage": false,
+    "parent_id": null,
+    "meta_data": null,
+    "group_id": "8440dace-a420-4d51-a43a-b4980cf4eca8",
+    "first_published_at": "2023-08-25T10:45:45.418Z",
+    "release_id": null,
+    "lang": "default",
+    "path": "/",
+    "alternates": [],
+    "default_full_slug": null,
+    "translated_slugs": null
+  }
+}
