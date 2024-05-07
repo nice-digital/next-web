@@ -41,7 +41,7 @@ export const newsTypes = {
 
 // Are we using the Ocelot cache?
 // If not, then we can assume we're not in production and can just request the latest version of the content
-export const usingOcelotCache = !!process.env.STORYBLOK_OCELOT_ENDPOINT;
+export const usingOcelotCache = !!publicRuntimeConfig.storyblok.ocelotEndpoint;
 
 // Default podcast image
 export const defaultPodcastImage =
