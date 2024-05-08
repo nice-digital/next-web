@@ -7,7 +7,7 @@ exports[`Featured story component should match snapshot 1`] = `
   >
     <div
       class="imageContainer"
-      style="background-image: url(https://placekitten.com/200/286/m/868x0/filters:quality%2880%29);"
+      style="background-image: url(localhost/f/243782/420x234/7a576133e7/register-for-board-meeting.PNG/m/867x0/filters:format%28jpeg%29:quality%2880%29/m/868x0/filters:quality%2880%29);"
     />
     <div
       class="content"

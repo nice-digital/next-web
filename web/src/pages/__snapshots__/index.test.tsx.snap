@@ -43,7 +43,7 @@ exports[`Homepage Hero should match snapshot 1`] = `
         </div>
         <div
           class="hero__image-container"
-          style="background-image: url(https://placebacon.net/300/210?image=1/m/);"
+          style="background-image: url(localhost/f/243782/420x234/7a576133e7/register-for-board-meeting.PNG/m/867x0/filters:format%28jpeg%29:quality%2880%29/m/);"
         />
       </div>
     </div>
@@ -95,7 +95,7 @@ exports[`Homepage should match snapshot 1`] = `
         </div>
         <div
           class="hero__image-container"
-          style="background-image: url(https://placebacon.net/300/210?image=1/m/);"
+          style="background-image: url(localhost/f/243782/420x234/7a576133e7/register-for-board-meeting.PNG/m/867x0/filters:format%28jpeg%29:quality%2880%29/m/);"
         />
       </div>
       <section
@@ -120,7 +120,7 @@ exports[`Homepage should match snapshot 1`] = `
                 aria-hidden="true"
                 class="imageContainer"
                 href="/i/am/a-very-full-slug"
-                style="background-image: url(https://placekitten.com/200/286/m/868x0/filters:quality%2880%29);"
+                style="background-image: url(localhost/f/243782/420x234/7a576133e7/register-for-board-meeting.PNG/m/867x0/filters:format%28jpeg%29:quality%2880%29/m/868x0/filters:quality%2880%29);"
                 tabindex="-1"
               >
                  
@@ -166,7 +166,7 @@ exports[`Homepage should match snapshot 1`] = `
                 aria-hidden="true"
                 class="imageContainer"
                 href="/i/am/a-very-full-slug"
-                style="background-image: url(https://placekitten.com/200/139/m/868x0/filters:quality%2880%29);"
+                style="background-image: url(localhost/f/243782/420x234/7a576133e7/register-for-board-meeting.PNG/m/867x0/filters:format%28jpeg%29:quality%2880%29/m/868x0/filters:quality%2880%29);"
                 tabindex="-1"
               >
                  
@@ -221,7 +221,7 @@ exports[`Homepage should match snapshot 1`] = `
                 aria-hidden="true"
                 class="imageContainer"
                 href="/i/am/a-very-full-slug"
-                style="background-image: url(https://placekitten.com/200/286/m/868x0/filters:quality%2880%29);"
+                style="background-image: url(localhost/f/243782/420x234/7a576133e7/register-for-board-meeting.PNG/m/867x0/filters:format%28jpeg%29:quality%2880%29/m/868x0/filters:quality%2880%29);"
                 tabindex="-1"
               >
                  
@@ -307,17 +307,17 @@ exports[`Homepage should match snapshot 1`] = `
             </p>
             <picture>
               <source
-                srcset="https://placekitten.com/200/286/m/867x0/filters:format%28avif%29:quality%2880%29"
+                srcset="localhost/f/243782/420x234/7a576133e7/register-for-board-meeting.PNG/m/867x0/filters:format%28jpeg%29:quality%2880%29/m/867x0/filters:format%28avif%29:quality%2880%29"
                 type="image/avif"
               />
               <source
-                srcset="https://placekitten.com/200/286/m/867x0/filters:format%28webp%29:quality%2880%29"
+                srcset="localhost/f/243782/420x234/7a576133e7/register-for-board-meeting.PNG/m/867x0/filters:format%28jpeg%29:quality%2880%29/m/867x0/filters:format%28webp%29:quality%2880%29"
                 type="image/webp"
               />
               <img
                 alt="Kitten wearing mittens"
                 loading="lazy"
-                src="https://placekitten.com/200/286/m/867x0/filters:format%28jpeg%29:quality%2880%29"
+                src="localhost/f/243782/420x234/7a576133e7/register-for-board-meeting.PNG/m/867x0/filters:format%28jpeg%29:quality%2880%29/m/867x0/filters:format%28jpeg%29:quality%2880%29"
               />
             </picture>
             <figure

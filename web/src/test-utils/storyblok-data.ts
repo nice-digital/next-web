@@ -49,7 +49,8 @@ export const mockAuthorBlok: StoryblokStory<AuthorStoryblok> = {
 		jobTitle: "Blockbusters host",
 		image: {
 			id: 123,
-			filename: "https://placekitten.com/200/139",
+			filename:
+				"localhost/f/243782/420x234/7a576133e7/register-for-board-meeting.PNG/m/867x0/filters:format%28jpeg%29:quality%2880%29",
 			name: "Bob",
 			alt: "Bob the host",
 		},
@@ -137,7 +138,7 @@ export const mockRichText: RichtextStoryblok = {
 					attrs: {
 						id: "13894387",
 						alt: "Kitten wearing mittens",
-						src: "https://placekitten.com/200/286",
+						src: "localhost/f/243782/420x234/7a576133e7/register-for-board-meeting.PNG/m/867x0/filters:format%28jpeg%29:quality%2880%29",
 						title: "",
 						source: "",
 						copyright: "",
@@ -172,7 +173,8 @@ export const mockNewsArticle: StoryblokStory<NewsArticleStoryblok> = {
 		introText: "Test intro text",
 		image: {
 			id: 123,
-			filename: "https://placekitten.com/200/286",
+			filename:
+				"localhost/f/243782/420x234/7a576133e7/register-for-board-meeting.PNG/m/867x0/filters:format%28jpeg%29:quality%2880%29",
 			name: "A kitten being a kitten",
 			alt: "Kitten mittens",
 		},
@@ -226,7 +228,8 @@ export const mockBlogPost: StoryblokStory<BlogPostStoryblok> = {
 		author: [{ ...mockAuthorBlok }],
 		image: {
 			id: 456,
-			filename: "https://placekitten.com/200/139",
+			filename:
+				"localhost/f/243782/420x234/7a576133e7/register-for-board-meeting.PNG/m/867x0/filters:format%28jpeg%29:quality%2880%29",
 			name: "Cat cat cat",
 			alt: "A kitty cat",
 		},
@@ -237,7 +240,8 @@ export const mockBlogPost: StoryblokStory<BlogPostStoryblok> = {
 };
 
 export const mockImageAsset: AssetStoryblok = {
-	filename: "https://placebacon.net/300/210?image=1",
+	filename:
+		"localhost/f/243782/420x234/7a576133e7/register-for-board-meeting.PNG/m/867x0/filters:format%28jpeg%29:quality%2880%29",
 	id: 654654654,
 	name: "Delicious bacon",
 };
