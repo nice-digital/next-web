@@ -39,11 +39,12 @@ exports[`NewsList matches snapshot 1`] = `
               >
                 News
               </span>
-              <span
+              <time
                 class="date"
+                datetime="2022-06-16 00:00"
               >
                 16 June 2022
-              </span>
+              </time>
             </div>
           </footer>
         </div>
@@ -83,11 +84,12 @@ exports[`NewsList matches snapshot 1`] = `
               >
                 News
               </span>
-              <span
+              <time
                 class="date"
+                datetime="2022-06-16 00:00"
               >
                 16 June 2022
-              </span>
+              </time>
             </div>
           </footer>
         </div>
@@ -127,11 +129,12 @@ exports[`NewsList matches snapshot 1`] = `
               >
                 News
               </span>
-              <span
+              <time
                 class="date"
+                datetime="2022-06-16 00:00"
               >
                 16 June 2022
-              </span>
+              </time>
             </div>
           </footer>
         </div>
@@ -171,11 +174,12 @@ exports[`NewsList should match the snapshot if showImage is false 1`] = `
               >
                 News
               </span>
-              <span
+              <time
                 class="date"
+                datetime="2022-06-16 00:00"
               >
                 16 June 2022
-              </span>
+              </time>
             </div>
           </footer>
         </div>
@@ -206,11 +210,12 @@ exports[`NewsList should match the snapshot if showImage is false 1`] = `
               >
                 News
               </span>
-              <span
+              <time
                 class="date"
+                datetime="2022-06-16 00:00"
               >
                 16 June 2022
-              </span>
+              </time>
             </div>
           </footer>
         </div>
@@ -241,11 +246,12 @@ exports[`NewsList should match the snapshot if showImage is false 1`] = `
               >
                 News
               </span>
-              <span
+              <time
                 class="date"
+                datetime="2022-06-16 00:00"
               >
                 16 June 2022
-              </span>
+              </time>
             </div>
           </footer>
         </div>

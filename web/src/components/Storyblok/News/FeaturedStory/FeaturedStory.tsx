@@ -59,7 +59,10 @@ export const FeaturedStory: React.FC<FeaturedStoryProps> = ({
 				<p>{content.introText}</p>
 				<footer>
 					<Tag outline>{storyType}</Tag>
-					<span className={styles.date}>{friendlyDate(content.date)}</span>
+					<time className={styles.date} dateTime={content.date}>
+						{friendlyDate(content.date)}
+					</time>
+
 					{story.content.author && (
 						<div className={styles.author}>
 							{story.content.author

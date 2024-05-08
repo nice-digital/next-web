@@ -44,11 +44,12 @@ exports[`News card component should match snapshot for a blog post 1`] = `
           >
             Blogs
           </span>
-          <span
+          <time
             class="date"
+            datetime="2024-02-20"
           >
             20 February 2024
-          </span>
+          </time>
         </div>
       </footer>
     </div>
@@ -91,11 +92,12 @@ exports[`News card component should match snapshot for a news article 1`] = `
           >
             News
           </span>
-          <span
+          <time
             class="date"
+            datetime="2024-01-31T15:16:15.19"
           >
             31 January 2024
-          </span>
+          </time>
         </div>
       </footer>
     </div>
@@ -129,11 +131,12 @@ exports[`News card component should not render an image if showImage is false 1`
           >
             News
           </span>
-          <span
+          <time
             class="date"
+            datetime="2024-01-31T15:16:15.19"
           >
             31 January 2024
-          </span>
+          </time>
         </div>
       </footer>
     </div>

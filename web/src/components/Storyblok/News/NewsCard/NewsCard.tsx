@@ -114,9 +114,9 @@ export const NewsCard: React.FC<NewsCardProps> = ({
 						})}
 					<div>
 						<Tag outline>{storyType}</Tag>
-						<span className={styles.date}>
+						<time className={styles.date} dateTime={story.content.date}>
 							{friendlyDate(story.content.date)}
-						</span>
+						</time>
 					</div>
 				</footer>
 			</div>

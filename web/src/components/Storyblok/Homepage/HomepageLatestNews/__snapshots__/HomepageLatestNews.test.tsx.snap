@@ -40,11 +40,12 @@ exports[`Homepage latest news component should match snapshot with a featured st
           >
             News
           </span>
-          <span
+          <time
             class="date"
+            datetime="2024-01-31T15:16:15.19"
           >
             31 January 2024
-          </span>
+          </time>
         </footer>
       </div>
     </article>
@@ -87,11 +88,12 @@ exports[`Homepage latest news component should match snapshot with a featured st
                 >
                   News
                 </span>
-                <span
+                <time
                   class="date"
+                  datetime="2024-01-31T15:16:15.19"
                 >
                   31 January 2024
-                </span>
+                </time>
               </div>
             </footer>
           </div>
@@ -142,11 +144,12 @@ exports[`Homepage latest news component should match snapshot with a featured st
                 >
                   Blogs
                 </span>
-                <span
+                <time
                   class="date"
+                  datetime="2024-02-20"
                 >
                   20 February 2024
-                </span>
+                </time>
               </div>
             </footer>
           </div>
@@ -188,11 +191,12 @@ exports[`Homepage latest news component should match snapshot with a featured st
                 >
                   News
                 </span>
-                <span
+                <time
                   class="date"
+                  datetime="2024-01-31T15:16:15.19"
                 >
                   31 January 2024
-                </span>
+                </time>
               </div>
             </footer>
           </div>
@@ -260,11 +264,12 @@ exports[`Homepage latest news component should match snapshot without a featured
                 >
                   News
                 </span>
-                <span
+                <time
                   class="date"
+                  datetime="2024-01-31T15:16:15.19"
                 >
                   31 January 2024
-                </span>
+                </time>
               </div>
             </footer>
           </div>
@@ -315,11 +320,12 @@ exports[`Homepage latest news component should match snapshot without a featured
                 >
                   Blogs
                 </span>
-                <span
+                <time
                   class="date"
+                  datetime="2024-02-20"
                 >
                   20 February 2024
-                </span>
+                </time>
               </div>
             </footer>
           </div>
@@ -361,11 +367,12 @@ exports[`Homepage latest news component should match snapshot without a featured
                 >
                   News
                 </span>
-                <span
+                <time
                   class="date"
+                  datetime="2024-01-31T15:16:15.19"
                 >
                   31 January 2024
-                </span>
+                </time>
               </div>
             </footer>
           </div>

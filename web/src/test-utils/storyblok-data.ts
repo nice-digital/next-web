@@ -169,7 +169,7 @@ export const mockNewsArticle: StoryblokStory<NewsArticleStoryblok> = {
 	name: "Test news article title",
 	content: {
 		title: "Test news article title",
-		date: "2024-01-31T15:16:15.194Z",
+		date: "2024-01-31T15:16:15.19",
 		introText: "Test intro text",
 		image: {
 			id: 123,
