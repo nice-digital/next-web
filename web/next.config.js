@@ -202,10 +202,6 @@ const nextConfig = {
 			},
 		],
 	},
-	env: {
-		STORYBLOK_PREVIEW_ACCESS_TOKEN:
-			process.env.STORYBLOK_PREVIEW_ACCESS_TOKEN || "",
-	},
 };
 
 // The weird comment syntax below is a JSDoc TypeScript cast: https://edibleco.de/2UMm8nx
