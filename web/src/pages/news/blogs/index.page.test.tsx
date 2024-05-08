@@ -6,7 +6,6 @@ import { useRouter } from "next/router";
 import { GetServerSidePropsContext } from "next/types";
 import { StoryblokStory } from "storyblok-generate-ts";
 
-//TODO is separate mock data necessary? Authors aren't coming through - how to handle this?
 import MockStoryblokSuccessResponse from "@/test-utils/storyblok-blog-posts-listing.json";
 import { NewsStory } from "@/types/News";
 import * as storyblokUtils from "@/utils/storyblok";

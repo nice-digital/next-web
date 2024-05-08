@@ -36,7 +36,6 @@ describe("PodcastPage", () => {
 
 	it("should render error page if fetchStory returns error", async () => {
 		const errorMessage = "An error returned from getserversideprops";
-		//TODO: check if we're using Fragment correctly
 		const { asFragment } = render(<PodcastPage error={errorMessage} />);
 
 		expect(screen.getByText(errorMessage)).toBeInTheDocument();

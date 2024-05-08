@@ -200,13 +200,13 @@ exports[`/news/podcasts/index.page PodcastsIndexPage should match snapshot for m
                   class="heading"
                 >
                   <a
-                    href="/news/articles/test-news-tomorrow"
+                    href="/news/podcasts/podcast-pagination"
                   >
-                    test news tomorrow
+                    Podcast pagination
                   </a>
                 </h3>
                 <p>
-                  intro
+                  Updated guidance on stroke rehabilitation
                 </p>
                 <footer>
                   <div>
@@ -214,12 +214,12 @@ exports[`/news/podcasts/index.page PodcastsIndexPage should match snapshot for m
                       class="tag tag--outline"
                       data-component="tag"
                     >
-                      News
+                      Podcasts
                     </span>
                     <span
                       class="date"
                     >
-                      13 March 2024
+                      03 May 2024
                     </span>
                   </div>
                 </footer>
@@ -237,13 +237,13 @@ exports[`/news/podcasts/index.page PodcastsIndexPage should match snapshot for m
                   class="heading"
                 >
                   <a
-                    href="/news/articles/test-news-today"
+                    href="/news/podcasts/25-years-of-nice-and-focusing-on-what-matters-most-to-deliver-for-the-future"
                   >
-                    test news today
+                    25 years of NICE and focusing on what matters most to deliver for the future
                   </a>
                 </h3>
                 <p>
-                  intro
+                  In this episode, our guests reflect on 25 years of NICE, how the organisation has developed, the impact its had and how it will change to adapt to the challenges of the next 25 years.
                 </p>
                 <footer>
                   <div>
@@ -251,12 +251,12 @@ exports[`/news/podcasts/index.page PodcastsIndexPage should match snapshot for m
                       class="tag tag--outline"
                       data-component="tag"
                     >
-                      News
+                      Podcasts
                     </span>
                     <span
                       class="date"
                     >
-                      11 March 2024
+                      01 May 2024
                     </span>
                   </div>
                 </footer>
@@ -274,13 +274,15 @@ exports[`/news/podcasts/index.page PodcastsIndexPage should match snapshot for m
                   class="heading"
                 >
                   <a
-                    href="/news/articles/test-news-yesterday"
+                    href="/news/podcasts/updated-guidance-on-stroke-rehabilitation"
                   >
-                    test news yesterday
+                    Updated guidance on stroke rehabilitation
                   </a>
                 </h3>
                 <p>
-                  intro
+                  It is estimated that there are around 85,000 strokes every year in England, with over 1 million people currently living with its long-term effects.
+
+We catch up with Jon Brown, chair of the independent committee and Professor Stephen Hill, lay member on the committee about NICE’s updated guidance on stroke rehabilitation.
                 </p>
                 <footer>
                   <div>
@@ -288,12 +290,12 @@ exports[`/news/podcasts/index.page PodcastsIndexPage should match snapshot for m
                       class="tag tag--outline"
                       data-component="tag"
                     >
-                      News
+                      Podcasts
                     </span>
                     <span
                       class="date"
                     >
-                      10 March 2024
+                      17 April 2024
                     </span>
                   </div>
                 </footer>
@@ -311,13 +313,13 @@ exports[`/news/podcasts/index.page PodcastsIndexPage should match snapshot for m
                   class="heading"
                 >
                   <a
-                    href="/news/articles/mock-news-article"
+                    href="/news/podcasts/learning-more-about-the-nice-advice-service-test"
                   >
-                    Mock News Article
+                    Learning more about the NICE Advice service - Test
                   </a>
                 </h3>
                 <p>
-                  Some mock intro text to be displayed in the page header
+                  Learning more about the NICE Advice service. In November 2019 we held a webinar to share how and why health technology evaluation is changing and what it means for patients. The webinar includes a presentation and panel discussion based on questions sent in by the audience.
                 </p>
                 <footer>
                   <div>
@@ -325,12 +327,12 @@ exports[`/news/podcasts/index.page PodcastsIndexPage should match snapshot for m
                       class="tag tag--outline"
                       data-component="tag"
                     >
-                      News
+                      Podcasts
                     </span>
                     <span
                       class="date"
                     >
-                      31 January 2024
+                      15 April 2024
                     </span>
                   </div>
                 </footer>
@@ -348,13 +350,13 @@ exports[`/news/podcasts/index.page PodcastsIndexPage should match snapshot for m
                   class="heading"
                 >
                   <a
-                    href="/news/articles/sample-test-article"
+                    href="/news/podcasts/test-image-podcast"
                   >
-                    Sample test article 
+                    Breast Cancer: The significance of family history and looking for early warning signs
                   </a>
                 </h3>
                 <p>
-                  Test content and purpose of functionality fields 
+                  How much does family history affect the chances of being diagnosed with breast cancer and what are the early warning signs? We speak to Professor Andrew Wardley, Breast Cancer Medical Oncologist at The Christie Hospital, Manchester, and Geneva Rhodes, a current patient at The Christie and patient advocate.
                 </p>
                 <footer>
                   <div>
@@ -362,12 +364,12 @@ exports[`/news/podcasts/index.page PodcastsIndexPage should match snapshot for m
                       class="tag tag--outline"
                       data-component="tag"
                     >
-                      News
+                      Podcasts
                     </span>
                     <span
                       class="date"
                     >
-                      11 January 2024
+                      14 April 2024
                     </span>
                   </div>
                 </footer>
@@ -385,13 +387,13 @@ exports[`/news/podcasts/index.page PodcastsIndexPage should match snapshot for m
                   class="heading"
                 >
                   <a
-                    href="/news/articles/millions-of-people-with-cardiovascular-disease-could-benefit-from-a-new-cholesterol-treatment-target-recommendation"
+                    href="/news/podcasts/new-patient-decision-aid-on-asthma-inhalers-and-climate-change"
                   >
-                    Millions of people with cardiovascular disease could benefit from a new cholesterol treatment target recommendation
+                    New patient decision aid on asthma inhalers and climate changes
                   </a>
                 </h3>
                 <p>
-                  Some text
+                  New patient decision aid on asthma inhalers and climate change. Clíodhna Ní Ghuidhir and Rebecca Boffa outline the common challenges that developers of artificial intelligence (AI) tech face when navigating their way to the health and care market, and link to their series of articles, which provide further advice on what can be done to avoid these.
                 </p>
                 <footer>
                   <div>
@@ -399,12 +401,12 @@ exports[`/news/podcasts/index.page PodcastsIndexPage should match snapshot for m
                       class="tag tag--outline"
                       data-component="tag"
                     >
-                      News
+                      Podcasts
                     </span>
                     <span
                       class="date"
                     >
-                      14 December 2023
+                      12 April 2024
                     </span>
                   </div>
                 </footer>

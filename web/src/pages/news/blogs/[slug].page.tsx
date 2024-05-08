@@ -32,7 +32,6 @@ export type BlogPageSuccessProps = {
 
 export type BlogPageProps = BlogPageSuccessProps | BlogPageErrorProps;
 
-//TODO check if moving this out of the component improves performance. Or, should this be in the component function and wrapped in a useMemo/useCallback?
 setComponents({
 	blogPost: StoryblokBlogPost,
 	quote: Blockquote,

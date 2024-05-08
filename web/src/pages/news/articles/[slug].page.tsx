@@ -36,8 +36,6 @@ type NewsArticlePageProps =
 	| NewsArticlePageSuccessProps
 	| NewsArticlePageErrorProps;
 
-//TODO: check if moving this out of the component improves performance
-//TODO: Or, should this be in the component function and wrapped in a useMemo/useCallback?
 setComponents({
 	newsArticle: StoryblokNewsArticle,
 	quote: Blockquote,

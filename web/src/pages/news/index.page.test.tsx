@@ -16,8 +16,6 @@ import {
 	NewsIndexProps,
 } from "./index.page";
 
-// const mockStories = MockStoryblokSuccessResponse.data.stories;
-
 const mockProps: NewsIndexProps = {
 	newsArticles: [mockNewsArticle],
 	inDepthArticles: [mockIndepthArticle],

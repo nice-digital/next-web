@@ -6,8 +6,7 @@ import { useRouter } from "next/router";
 import { GetServerSidePropsContext } from "next/types";
 import { StoryblokStory } from "storyblok-generate-ts";
 
-//TODO check shape of podcast mock response - can news stories still be used?
-import MockStoryblokSuccessResponse from "@/test-utils/storyblok-news-articles-listing.json";
+import MockStoryblokSuccessResponse from "@/test-utils/storyblok-podcasts--listing-response.json";
 import { NewsStory } from "@/types/News";
 import * as storyblokUtils from "@/utils/storyblok";
 
@@ -35,7 +34,6 @@ describe("/news/podcasts/index.page", () => {
 
 	const mockConfig = {
 		currentPage: 1,
-		//TODO check why podcasts are 3 per page
 		resultsPerPage: 6,
 		startsWith: "news/podcasts/",
 		query: {
@@ -300,7 +298,6 @@ describe("/news/podcasts/index.page", () => {
 
 			expect(result).toEqual({
 				props: {
-					//TODO check functionality around featuredStory merging - does this suffice?
 					stories: MockStoryblokSuccessResponse.data.stories,
 					perPage: MockStoryblokSuccessResponse.perPage,
 					total: MockStoryblokSuccessResponse.total,
@@ -309,17 +306,15 @@ describe("/news/podcasts/index.page", () => {
 			});
 		});
 
-		//TODO check if this test is accurate
 		it("should return a correct props object if validateRouteParams returns success and page is not equal to 1", async () => {
 			const notPageOne = "2";
 			const mockValidatedRouteParamsSuccessResponse = {
-				featuredStory: mockStories[0],
-				stories: mockStories.slice(1),
+				stories: mockStories,
 				total: MockStoryblokSuccessResponse.total,
 				currentPage: 2,
 				perPage: MockStoryblokSuccessResponse.perPage,
 			};
-			// MockStoryblokSuccessResponse
+
 			validateRouteParamsSpy.mockResolvedValue(
 				mockValidatedRouteParamsSuccessResponse
 			);
@@ -328,20 +323,8 @@ describe("/news/podcasts/index.page", () => {
 				query: { page: notPageOne },
 			} as unknown as GetServerSidePropsContext<ParsedUrlQuery>);
 
-			//TODO check functionality around featuredStory merging - does this suffice to cover:
-			// const podcastStories =
-			// currentPage === 1 ? [featuredStory, ...stories] : stories;
-
-			const mockStoriesWithoutFeaturedStory =
-				MockStoryblokSuccessResponse.data.stories.slice(1);
-
 			expect(result).toEqual({
-				props: {
-					stories: mockStoriesWithoutFeaturedStory,
-					perPage: MockStoryblokSuccessResponse.perPage,
-					total: MockStoryblokSuccessResponse.total,
-					currentPage: 2,
-				},
+				props: mockValidatedRouteParamsSuccessResponse,
 			});
 		});
 	});

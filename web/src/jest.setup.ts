@@ -26,12 +26,6 @@ expect.extend({
 	},
 });
 
-//TODO - investigate why this global mock causes module undefined errors in tests
-// Mock the storyblok connection function (but leave all other Storyblok functions in place)
-// jest.mock("@/utils/storyblok", () => ({
-// 	...jest.requireActual("@/utils/storyblok"),
-// }));
-
 jest.mock("@/utils/initStoryblok", () => ({
 	initStoryblok: jest.fn(),
 }));
