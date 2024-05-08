@@ -32,7 +32,7 @@ public:
   storyblok:
     previewAccessToken: SECRET
     publicAccessToken: SECRET
-    ocelotEndpoint: SECRET
+    ocelotEndpoint:
     enableRootCatchAll: false
 
 # ! This is a PUBLIC repo so please don't put any sensitive info or secrets in here
