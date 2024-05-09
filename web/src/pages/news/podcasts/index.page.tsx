@@ -1,3 +1,4 @@
+import { isError } from "lodash";
 import { NextSeo } from "next-seo";
 import React from "react";
 import { StoryblokStory } from "storyblok-generate-ts";
@@ -19,24 +20,31 @@ import { validateRouteParams } from "@/utils/storyblok";
 
 import type { GetServerSidePropsContext } from "next";
 
-export type PodcastPostsProps = {
+export type PodcastPostsErrorProps = {
+	error: string;
+};
+
+export type PodcastPostsSuccessProps = {
 	stories: StoryblokStory<NewsStory>[];
 	total: number;
 	currentPage: number;
 	perPage: number;
-	error?: string | undefined;
 };
 
-export const PodcastIndexPage = ({
-	stories,
-	currentPage,
-	total,
-	perPage,
-	error,
-}: PodcastPostsProps): React.ReactElement => {
-	if (error) {
+export type PodcastPostsProps =
+	| PodcastPostsSuccessProps
+	| PodcastPostsErrorProps;
+
+export const PodcastIndexPage = (
+	props: PodcastPostsProps
+): React.ReactElement => {
+	if ("error" in props) {
+		const { error } = props;
 		return <ErrorPageContent title="Error" heading={error} />;
 	}
+
+	const { stories, total, currentPage, perPage } = props;
+
 	return (
 		<>
 			<NextSeo title="Podcasts" openGraph={{ title: "Podcasts" }}></NextSeo>
@@ -54,29 +62,33 @@ export const PodcastIndexPage = ({
 				}
 			/>
 			<NewsListNav />
-			<Grid gutter="loose">
-				<GridItem cols={12} md={{ cols: 7 }}>
-					<NewsListPaginationAnnouncer
-						currentPage={currentPage}
-						total={total}
-						perPage={perPage}
-						announcementPrefix="Podcast listing page"
-					/>
-					<PaginationFocusedElement innerText="Podcast list" />
-					<NewsList news={stories} showImage={false} />
-				</GridItem>
-				<GridItem cols={12} md={{ cols: 4, push: 1 }}>
-					<Panel>
-						<h2 className="h3">Other ways to listen</h2>
-						<p>
-							Our NICE talks podcasts are available{" "}
-							<a href="https://linktr.ee/nicetalks">
-								on a variety of different platforms.
-							</a>
-						</p>
-					</Panel>
-				</GridItem>
-			</Grid>
+			{stories.length === 0 ? (
+				<p>Sorry there are no podcasts available</p>
+			) : (
+				<Grid gutter="loose">
+					<GridItem cols={12} md={{ cols: 7 }}>
+						<NewsListPaginationAnnouncer
+							currentPage={currentPage}
+							total={total}
+							perPage={perPage}
+							announcementPrefix="Podcast listing page"
+						/>
+						<PaginationFocusedElement innerText="Podcast list" />
+						<NewsList news={stories} showImage={false} />
+					</GridItem>
+					<GridItem cols={12} md={{ cols: 4, push: 1 }}>
+						<Panel>
+							<h2 className="h3">Other ways to listen</h2>
+							<p>
+								Our NICE talks podcasts are available{" "}
+								<a href="https://linktr.ee/nicetalks">
+									on a variety of different platforms.
+								</a>
+							</p>
+						</Panel>
+					</GridItem>
+				</Grid>
+			)}
 
 			<NewsLetterSignup />
 			<NewsListPagination
@@ -92,41 +104,41 @@ export const PodcastIndexPage = ({
 
 export const getServerSideProps = async ({
 	query,
-	resolvedUrl,
 }: GetServerSidePropsContext) => {
-	const result = await validateRouteParams<PodcastPostsProps>({
-		query,
-		sbParams: {
-			starts_with: "news/podcasts/",
-			per_page: 6,
-		},
-		resolvedUrl,
-	});
+	try {
+		const result = await validateRouteParams<PodcastPostsProps>({
+			query,
+			sbParams: {
+				starts_with: "news/podcasts/",
+				per_page: 6,
+			},
+		});
 
-	if ("notFound" in result || "redirect" in result) return result;
+		if ("notFound" in result || "redirect" in result) return result;
 
-	if ("error" in result) {
+		const { featuredStory, stories, total, perPage, currentPage } = result;
+
+		/* because there's no featuredStory in podcasts we need to include the returned featuredStory in the stories array on page 1 */
+		const podcastStories =
+			currentPage === 1 ? [featuredStory, ...stories] : stories;
+
 		return {
 			props: {
-				...result,
+				stories: podcastStories,
+				total,
+				currentPage,
+				perPage,
+			},
+		};
+	} catch (error) {
+		return {
+			props: {
+				error: isError(error)
+					? error.message
+					: "Oops! Something went wrong and we're working to fix it. Please try again later.",
 			},
 		};
 	}
-
-	const { featuredStory, stories, total, perPage, currentPage } = result;
-
-	/* because there's no featuredStory in podcasts we need to include the returned featuredStory in the stories array on page 1 */
-	const podcastStories =
-		currentPage === 1 ? [featuredStory, ...stories] : stories;
-
-	return {
-		props: {
-			stories: podcastStories,
-			total,
-			currentPage,
-			perPage,
-		},
-	};
 };
 
 export default PodcastIndexPage;

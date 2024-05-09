@@ -76,4 +76,11 @@ describe("StoryblokBlogPost", () => {
 			expect(screen.getByText(author.content.jobTitle)).toBeInTheDocument();
 		}
 	});
+
+	it("should render an action banner for newsletters and alerts", () => {
+		render(<StoryblokBlogPost {...mockProps} />);
+		expect(
+			screen.getByText("Sign up for our newsletters and alerts")
+		).toBeInTheDocument();
+	});
 });

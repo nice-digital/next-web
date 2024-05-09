@@ -1,3 +1,4 @@
+import { isError } from "lodash";
 import { NextSeo } from "next-seo";
 import React from "react";
 import { StoryblokStory } from "storyblok-generate-ts";
@@ -18,26 +19,27 @@ import { validateRouteParams } from "@/utils/storyblok";
 
 import type { GetServerSidePropsContext } from "next";
 
-export type BlogPostsProps = {
+export type BlogPostsErrorProps = {
+	error: string;
+};
+
+export type BlogPostsSuccessProps = {
 	featuredStory?: StoryblokStory<NewsStory> | null;
 	stories: StoryblokStory<NewsStory>[];
 	total: number;
 	currentPage: number;
 	perPage: number;
-	error?: string | undefined;
 };
 
-export const BlogIndexPage = ({
-	stories,
-	currentPage,
-	total,
-	perPage,
-	featuredStory,
-	error,
-}: BlogPostsProps): React.ReactElement => {
-	if (error) {
+export type BlogPostsProps = BlogPostsSuccessProps | BlogPostsErrorProps;
+
+export const BlogIndexPage = (props: BlogPostsProps): React.ReactElement => {
+	if ("error" in props) {
+		const { error } = props;
 		return <ErrorPageContent title="Error" heading={error} />;
 	}
+
+	const { featuredStory, stories, total, currentPage, perPage } = props;
 
 	const pageTitle = "Blogs";
 
@@ -57,17 +59,21 @@ export const BlogIndexPage = ({
 				}
 			/>
 			<NewsListNav />
-			<>
-				<NewsListPaginationAnnouncer
-					currentPage={currentPage}
-					total={total}
-					perPage={perPage}
-					announcementPrefix="Blog post listing page"
-				/>
-				<PaginationFocusedElement innerText="Blog post list" />
-			</>
-			{featuredStory && <FeaturedStory story={featuredStory} />}
-			<NewsList news={stories} />
+			{stories.length === 0 ? (
+				<p>Sorry there are no blog posts available</p>
+			) : (
+				<>
+					<NewsListPaginationAnnouncer
+						currentPage={currentPage}
+						total={total}
+						perPage={perPage}
+						announcementPrefix="Blog post listing page"
+					/>
+					<PaginationFocusedElement innerText="Blog post list" />
+					{featuredStory && <FeaturedStory story={featuredStory} />}
+					<NewsList news={stories} />
+				</>
+			)}
 			<NewsLetterSignup />
 			<NewsListPagination
 				configuration={{
@@ -82,39 +88,39 @@ export const BlogIndexPage = ({
 
 export const getServerSideProps = async ({
 	query,
-	resolvedUrl,
 }: GetServerSidePropsContext) => {
-	const result = await validateRouteParams<BlogPostsProps>({
-		query,
-		sbParams: {
-			starts_with: "news/blogs/",
-			per_page: 6,
-			resolve_relations: "blogPost.author",
-		},
-		resolvedUrl,
-	});
+	try {
+		const result = await validateRouteParams<BlogPostsProps>({
+			query,
+			sbParams: {
+				starts_with: "news/blogs/",
+				per_page: 6,
+				resolve_relations: "blogPost.author",
+			},
+		});
 
-	if ("notFound" in result || "redirect" in result) return result;
+		if ("notFound" in result || "redirect" in result) return result;
 
-	if ("error" in result) {
+		const { featuredStory, stories, total, perPage, currentPage } = result;
+
 		return {
 			props: {
-				...result,
+				featuredStory,
+				stories,
+				total,
+				currentPage,
+				perPage,
+			},
+		};
+	} catch (error) {
+		return {
+			props: {
+				error: isError(error)
+					? error.message
+					: "Oops! Something went wrong and we're working to fix it. Please try again later.",
 			},
 		};
 	}
-
-	const { featuredStory, stories, total, perPage, currentPage } = result;
-
-	return {
-		props: {
-			featuredStory,
-			stories,
-			total,
-			currentPage,
-			perPage,
-		},
-	};
 };
 
 export default BlogIndexPage;
