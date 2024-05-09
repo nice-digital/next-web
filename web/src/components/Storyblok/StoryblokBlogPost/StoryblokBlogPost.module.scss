@@ -5,8 +5,6 @@
 @use '~/styles/colours';
 
 
-/* stylelint-disable selector-class-pattern */
-
 .newsSectionArticle {
 
   --featuredImageOffset: 16dvh;
@@ -15,7 +13,7 @@
   //TODO: Fix issue with spacing, dependant on the number of authors. listed
   &:has(.featuredImage) {
     :global(.page-header) {
-      padding-bottom: var(--featuredImageOffset);
+      padding-bottom: calc(var(--featuredImageOffset) - utils.rem(spacing.$large));
     }
   }
 
@@ -24,7 +22,7 @@
     display: block;
     height: auto;
     margin-bottom: utils.rem(spacing.$large);
-    margin-top: calc(calc(var(--featuredImageOffset) * -1) - 1rem);
+    margin-top: calc(calc(var(--featuredImageOffset) * -1) - utils.rem(spacing.$medium));
     object-fit: cover;
     width: 100%;
 
@@ -54,6 +52,18 @@
 
   :global(.page-header__description) {
     margin: 0 0 utils.rem(spacing.$medium) 0;
+
+    @include media-queries.mq($from: md) {
+      margin: 0 0 utils.rem(spacing.$large) 0;
+    }
+  }
+
+  :global(.page-header__second-section) {
+    margin-bottom: utils.rem(spacing.$large);
+
+    @include media-queries.mq($from: md) {
+      margin-bottom: 0;
+    }
   }
 
   :global(.breadcrumbs) {
@@ -73,7 +83,7 @@
     @include media-queries.mq($from: md) {
       border-left: 2px solid colours.$author-section-border;
       padding-bottom: utils.rem(spacing.$x-large);
-      padding-left: 1rem;
+      padding-left: utils.rem(spacing.$medium);
     }
   }
 
