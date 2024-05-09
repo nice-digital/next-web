@@ -197,7 +197,7 @@ exports[`/news/in-depth/index.page InDepthArticleIndexPage should match snapshot
             aria-hidden="true"
             class="imageContainer"
             href="/news/articles/test-news-tomorrow"
-            style="background-image: url(https://a.storyblok.com/f/271255/788x443/b2d6d3a601/doctor-showing-results-on-tablet-computer-to-male-patient.jpg/m/868x0/filters:quality%2880%29);"
+            style="background-image: url(https://local-host-test-nice-org.com/f/271255/788x443/b2d6d3a601/doctor-showing-results-on-tablet-computer-to-male-patient.jpg/m/868x0/filters:quality%2880%29);"
             tabindex="-1"
           >
              
@@ -223,11 +223,12 @@ exports[`/news/in-depth/index.page InDepthArticleIndexPage should match snapshot
                 >
                   News
                 </span>
-                <span
+                <time
                   class="date"
+                  datetime="2024-03-13 00:00"
                 >
                   13 March 2024
-                </span>
+                </time>
               </div>
             </footer>
           </div>
@@ -243,7 +244,7 @@ exports[`/news/in-depth/index.page InDepthArticleIndexPage should match snapshot
             aria-hidden="true"
             class="imageContainer"
             href="/news/articles/test-news-today"
-            style="background-image: url(https://a.storyblok.com/f/271255/788x443/b2d6d3a601/doctor-showing-results-on-tablet-computer-to-male-patient.jpg/m/868x0/filters:quality%2880%29);"
+            style="background-image: url(https://local-host-test-nice-org.com/f/271255/788x443/b2d6d3a601/doctor-showing-results-on-tablet-computer-to-male-patient.jpg/m/868x0/filters:quality%2880%29);"
             tabindex="-1"
           >
              
@@ -269,11 +270,12 @@ exports[`/news/in-depth/index.page InDepthArticleIndexPage should match snapshot
                 >
                   News
                 </span>
-                <span
+                <time
                   class="date"
+                  datetime="2024-03-11 00:00"
                 >
                   11 March 2024
-                </span>
+                </time>
               </div>
             </footer>
           </div>
@@ -289,7 +291,7 @@ exports[`/news/in-depth/index.page InDepthArticleIndexPage should match snapshot
             aria-hidden="true"
             class="imageContainer"
             href="/news/articles/test-news-yesterday"
-            style="background-image: url(https://a.storyblok.com/f/271255/788x443/b2d6d3a601/doctor-showing-results-on-tablet-computer-to-male-patient.jpg/m/868x0/filters:quality%2880%29);"
+            style="background-image: url(https://local-host-test-nice-org.com/f/271255/788x443/b2d6d3a601/doctor-showing-results-on-tablet-computer-to-male-patient.jpg/m/868x0/filters:quality%2880%29);"
             tabindex="-1"
           >
              
@@ -315,11 +317,12 @@ exports[`/news/in-depth/index.page InDepthArticleIndexPage should match snapshot
                 >
                   News
                 </span>
-                <span
+                <time
                   class="date"
+                  datetime="2024-03-10 00:00"
                 >
                   10 March 2024
-                </span>
+                </time>
               </div>
             </footer>
           </div>
@@ -335,7 +338,7 @@ exports[`/news/in-depth/index.page InDepthArticleIndexPage should match snapshot
             aria-hidden="true"
             class="imageContainer"
             href="/news/articles/mock-news-article"
-            style="background-image: url(https://a.storyblok.com/f/271255/788x443/b2d6d3a601/doctor-showing-results-on-tablet-computer-to-male-patient.jpg/m/868x0/filters:quality%2880%29);"
+            style="background-image: url(https://local-host-test-nice-org.com/f/271255/788x443/b2d6d3a601/doctor-showing-results-on-tablet-computer-to-male-patient.jpg/m/868x0/filters:quality%2880%29);"
             tabindex="-1"
           >
              
@@ -361,11 +364,12 @@ exports[`/news/in-depth/index.page InDepthArticleIndexPage should match snapshot
                 >
                   News
                 </span>
-                <span
+                <time
                   class="date"
+                  datetime="2024-01-31 00:00"
                 >
                   31 January 2024
-                </span>
+                </time>
               </div>
             </footer>
           </div>
@@ -381,7 +385,7 @@ exports[`/news/in-depth/index.page InDepthArticleIndexPage should match snapshot
             aria-hidden="true"
             class="imageContainer"
             href="/news/articles/sample-test-article"
-            style="background-image: url(https://a.storyblok.com/f/243782/300x300/f85d11c365/breast-cancer-cells.jpg/m/868x0/filters:quality%2880%29);"
+            style="background-image: url(https://local-host-test-nice-org.com/f/243782/300x300/f85d11c365/breast-cancer-cells.jpg/m/868x0/filters:quality%2880%29);"
             tabindex="-1"
           >
              
@@ -407,11 +411,12 @@ exports[`/news/in-depth/index.page InDepthArticleIndexPage should match snapshot
                 >
                   News
                 </span>
-                <span
+                <time
                   class="date"
+                  datetime="2024-01-11 00:00"
                 >
                   11 January 2024
-                </span>
+                </time>
               </div>
             </footer>
           </div>
@@ -427,7 +432,7 @@ exports[`/news/in-depth/index.page InDepthArticleIndexPage should match snapshot
             aria-hidden="true"
             class="imageContainer"
             href="/news/articles/millions-of-people-with-cardiovascular-disease-could-benefit-from-a-new-cholesterol-treatment-target-recommendation"
-            style="background-image: url(https://a.storyblok.com/f/243782/385x215/8755f1f754/an-elderly-man-receiving-a-checkup-from-his-doctor-stock-image-385x215.jpg/m/868x0/filters:quality%2880%29);"
+            style="background-image: url(https://local-host-test-nice-org.com/f/243782/385x215/8755f1f754/an-elderly-man-receiving-a-checkup-from-his-doctor-stock-image-385x215.jpg/m/868x0/filters:quality%2880%29);"
             tabindex="-1"
           >
              
@@ -453,11 +458,12 @@ exports[`/news/in-depth/index.page InDepthArticleIndexPage should match snapshot
                 >
                   News
                 </span>
-                <span
+                <time
                   class="date"
+                  datetime="2023-12-14 00:00"
                 >
                   14 December 2023
-                </span>
+                </time>
               </div>
             </footer>
           </div>

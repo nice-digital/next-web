@@ -15,7 +15,7 @@ exports[`Homepage latest news component should match snapshot 1`] = `
           aria-hidden="true"
           class="imageContainer"
           href="/i/am/a-very-full-slug"
-          style="background-image: url(localhost/f/243782/420x234/7a576133e7/register-for-board-meeting.PNG/m/867x0/filters:format%28jpeg%29:quality%2880%29/m/868x0/filters:quality%2880%29);"
+          style="background-image: url(http://local-host-test-nice-org.com/f/243782/420x234/7a576133e7/register-for-board-meeting.PNG/m/867x0/filters:format%28jpeg%29:quality%2880%29/m/868x0/filters:quality%2880%29);"
           tabindex="-1"
         >
            
@@ -62,7 +62,7 @@ exports[`Homepage latest news component should match snapshot 1`] = `
           aria-hidden="true"
           class="imageContainer"
           href="/i/am/a-very-full-slug"
-          style="background-image: url(localhost/f/243782/420x234/7a576133e7/register-for-board-meeting.PNG/m/867x0/filters:format%28jpeg%29:quality%2880%29/m/868x0/filters:quality%2880%29);"
+          style="background-image: url(http://local-host-test-nice-org.com/f/243782/420x234/7a576133e7/register-for-board-meeting.PNG/m/867x0/filters:format%28jpeg%29:quality%2880%29/m/868x0/filters:quality%2880%29);"
           tabindex="-1"
         >
            
@@ -118,7 +118,7 @@ exports[`Homepage latest news component should match snapshot 1`] = `
           aria-hidden="true"
           class="imageContainer"
           href="/i/am/a-very-full-slug"
-          style="background-image: url(localhost/f/243782/420x234/7a576133e7/register-for-board-meeting.PNG/m/867x0/filters:format%28jpeg%29:quality%2880%29/m/868x0/filters:quality%2880%29);"
+          style="background-image: url(http://local-host-test-nice-org.com/f/243782/420x234/7a576133e7/register-for-board-meeting.PNG/m/867x0/filters:format%28jpeg%29:quality%2880%29/m/868x0/filters:quality%2880%29);"
           tabindex="-1"
         >
            

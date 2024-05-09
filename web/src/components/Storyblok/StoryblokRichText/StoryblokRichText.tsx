@@ -75,7 +75,7 @@ export const StoryblokRichText: React.FC<StoryblokRichTextProps> = ({
 							width: props.src ? props.src.split("/")[5].split("x")[0] : 16,
 							height: props.src ? props.src.split("/")[5].split("x")[1] : 9,
 						};
-						// style={{ aspectRatio: `${dimensions.width}/${dimensions.height}` }}
+
 						return (
 							<StoryblokImage
 								src={props.src}

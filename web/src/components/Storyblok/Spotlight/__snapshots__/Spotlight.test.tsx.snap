@@ -61,16 +61,16 @@ exports[`Spotlight component should match snapshot 1`] = `
               >
                 <picture>
                   <source
-                    srcset="localhost/f/243782/420x234/7a576133e7/register-for-board-meeting.PNG/m/867x0/filters:format%28jpeg%29:quality%2880%29/m/708x0/filters:format%28avif%29:quality%2880%29"
+                    srcset="http://local-host-test-nice-org.com/f/243782/420x234/7a576133e7/register-for-board-meeting.PNG/m/867x0/filters:format%28jpeg%29:quality%2880%29/m/708x0/filters:format%28avif%29:quality%2880%29"
                     type="image/avif"
                   />
                   <source
-                    srcset="localhost/f/243782/420x234/7a576133e7/register-for-board-meeting.PNG/m/867x0/filters:format%28jpeg%29:quality%2880%29/m/708x0/filters:format%28webp%29:quality%2880%29"
+                    srcset="http://local-host-test-nice-org.com/f/243782/420x234/7a576133e7/register-for-board-meeting.PNG/m/867x0/filters:format%28jpeg%29:quality%2880%29/m/708x0/filters:format%28webp%29:quality%2880%29"
                     type="image/webp"
                   />
                   <img
                     alt="Kitten mittens"
-                    src="localhost/f/243782/420x234/7a576133e7/register-for-board-meeting.PNG/m/867x0/filters:format%28jpeg%29:quality%2880%29/m/708x0/filters:format%28jpeg%29:quality%2880%29"
+                    src="http://local-host-test-nice-org.com/f/243782/420x234/7a576133e7/register-for-board-meeting.PNG/m/867x0/filters:format%28jpeg%29:quality%2880%29/m/708x0/filters:format%28jpeg%29:quality%2880%29"
                   />
                 </picture>
               </div>
@@ -107,16 +107,16 @@ exports[`Spotlight component should match snapshot 1`] = `
               >
                 <picture>
                   <source
-                    srcset="localhost/f/243782/420x234/7a576133e7/register-for-board-meeting.PNG/m/867x0/filters:format%28jpeg%29:quality%2880%29/m/708x0/filters:format%28avif%29:quality%2880%29"
+                    srcset="http://local-host-test-nice-org.com/f/243782/420x234/7a576133e7/register-for-board-meeting.PNG/m/867x0/filters:format%28jpeg%29:quality%2880%29/m/708x0/filters:format%28avif%29:quality%2880%29"
                     type="image/avif"
                   />
                   <source
-                    srcset="localhost/f/243782/420x234/7a576133e7/register-for-board-meeting.PNG/m/867x0/filters:format%28jpeg%29:quality%2880%29/m/708x0/filters:format%28webp%29:quality%2880%29"
+                    srcset="http://local-host-test-nice-org.com/f/243782/420x234/7a576133e7/register-for-board-meeting.PNG/m/867x0/filters:format%28jpeg%29:quality%2880%29/m/708x0/filters:format%28webp%29:quality%2880%29"
                     type="image/webp"
                   />
                   <img
                     alt="A kitty cat"
-                    src="localhost/f/243782/420x234/7a576133e7/register-for-board-meeting.PNG/m/867x0/filters:format%28jpeg%29:quality%2880%29/m/708x0/filters:format%28jpeg%29:quality%2880%29"
+                    src="http://local-host-test-nice-org.com/f/243782/420x234/7a576133e7/register-for-board-meeting.PNG/m/867x0/filters:format%28jpeg%29:quality%2880%29/m/708x0/filters:format%28jpeg%29:quality%2880%29"
                   />
                 </picture>
               </div>

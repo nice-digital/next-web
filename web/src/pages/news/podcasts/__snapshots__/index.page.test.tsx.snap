@@ -216,11 +216,12 @@ exports[`/news/podcasts/index.page PodcastsIndexPage should match snapshot for m
                     >
                       Podcasts
                     </span>
-                    <span
+                    <time
                       class="date"
+                      datetime="2024-05-03 12:00"
                     >
                       03 May 2024
-                    </span>
+                    </time>
                   </div>
                 </footer>
               </div>
@@ -253,11 +254,12 @@ exports[`/news/podcasts/index.page PodcastsIndexPage should match snapshot for m
                     >
                       Podcasts
                     </span>
-                    <span
+                    <time
                       class="date"
+                      datetime="2024-05-01 12:00"
                     >
                       01 May 2024
-                    </span>
+                    </time>
                   </div>
                 </footer>
               </div>
@@ -292,11 +294,12 @@ We catch up with Jon Brown, chair of the independent committee and Professor Ste
                     >
                       Podcasts
                     </span>
-                    <span
+                    <time
                       class="date"
+                      datetime="2024-04-17 12:00"
                     >
                       17 April 2024
-                    </span>
+                    </time>
                   </div>
                 </footer>
               </div>
@@ -329,11 +332,12 @@ We catch up with Jon Brown, chair of the independent committee and Professor Ste
                     >
                       Podcasts
                     </span>
-                    <span
+                    <time
                       class="date"
+                      datetime="2024-04-15 12:00"
                     >
                       15 April 2024
-                    </span>
+                    </time>
                   </div>
                 </footer>
               </div>
@@ -366,11 +370,12 @@ We catch up with Jon Brown, chair of the independent committee and Professor Ste
                     >
                       Podcasts
                     </span>
-                    <span
+                    <time
                       class="date"
+                      datetime="2024-04-14 12:00"
                     >
                       14 April 2024
-                    </span>
+                    </time>
                   </div>
                 </footer>
               </div>
@@ -403,11 +408,12 @@ We catch up with Jon Brown, chair of the independent committee and Professor Ste
                     >
                       Podcasts
                     </span>
-                    <span
+                    <time
                       class="date"
+                      datetime="2024-04-12 12:00"
                     >
                       12 April 2024
-                    </span>
+                    </time>
                   </div>
                 </footer>
               </div>
