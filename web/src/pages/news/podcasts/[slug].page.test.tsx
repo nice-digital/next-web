@@ -1,28 +1,66 @@
 import { render, screen } from "@testing-library/react";
 import { GetServerSidePropsContext } from "next";
 
-import { mockNewsArticle } from "@/test-utils/storyblok-data";
+import { mockPodcastPage } from "@/test-utils/storyblok-data";
 import * as storyblokUtils from "@/utils/storyblok";
 
-import NewsArticlePage, { getServerSideProps } from "./[slug].page";
+import PodcastPage, { getServerSideProps } from "./[slug].page";
 
-const mockArticle = {
-	...mockNewsArticle,
+const mockPodcast = {
+	...mockPodcastPage,
 };
 
-describe("NewsArticlePage", () => {
+const mockBreadcrumbs = [
+	{ title: "News", path: "/news" },
+	{ title: "Podcasts", path: "/news/podcasts" },
+];
+
+describe("PodcastPage", () => {
 	it("renders the page", () => {
-		render(<NewsArticlePage story={mockNewsArticle} />);
-		expect(screen.getByText(mockNewsArticle.content.title)).toBeInTheDocument();
+		render(
+			<PodcastPage story={mockPodcastPage} breadcrumbs={mockBreadcrumbs} />
+		);
+
 		expect(document.body).toMatchSnapshot();
+	});
+
+	it("should not render the breadcrumbs if none are provided", () => {
+		render(<PodcastPage story={mockPodcastPage} />);
+
+		const breadcrumbs = screen.queryByRole("navigation", {
+			name: "Breadcrumbs",
+		});
+
+		expect(breadcrumbs).not.toBeInTheDocument();
 	});
 
 	it("should render error page if fetchStory returns error", async () => {
 		const errorMessage = "An error returned from getserversideprops";
-		const { asFragment } = render(<NewsArticlePage error={errorMessage} />);
+		const { asFragment } = render(<PodcastPage error={errorMessage} />);
 
 		expect(screen.getByText(errorMessage)).toBeInTheDocument();
 		expect(asFragment()).toMatchSnapshot();
+	});
+
+	it("should render a fallback image if no image is provided", () => {
+		const storyWithoutImage = {
+			...mockPodcast,
+			content: {
+				...mockPodcast.content,
+				image: {
+					id: 123,
+					filename: "",
+					name: "",
+					alt: "Podcast image",
+				},
+			},
+		};
+
+		render(
+			<PodcastPage story={storyWithoutImage} breadcrumbs={mockBreadcrumbs} />
+		);
+
+		expect(document.body).toMatchSnapshot();
 	});
 
 	describe("getServerSideProps", () => {
@@ -85,7 +123,7 @@ describe("NewsArticlePage", () => {
 		});
 
 		it("should return the story and breadcrumbs", async () => {
-			fetchStorySpy.mockResolvedValue({ story: mockArticle });
+			fetchStorySpy.mockResolvedValue({ story: mockPodcast });
 			const context = {
 				query: {},
 				params: { slug: "test-slug" },
@@ -95,11 +133,8 @@ describe("NewsArticlePage", () => {
 
 			expect(result).toEqual({
 				props: {
-					story: mockArticle,
-					breadcrumbs: [
-						{ title: "News", path: "/news" },
-						{ title: "News articles", path: "/news/articles" },
-					],
+					story: mockPodcast,
+					breadcrumbs: mockBreadcrumbs,
 				},
 			});
 		});

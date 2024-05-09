@@ -1,17 +1,17 @@
-import {
-	type ISbStoryData,
-	StoryblokComponent,
-	setComponents,
-} from "@storyblok/react";
+import { StoryblokComponent, setComponents } from "@storyblok/react";
+import { isError } from "lodash";
 import { NextSeo } from "next-seo";
 import React, { useMemo } from "react";
+import { StoryblokStory } from "storyblok-generate-ts";
 
+import { ErrorPageContent } from "@/components/ErrorPageContent/ErrorPageContent";
 import { Blockquote } from "@/components/Storyblok/Blockquote/Blockquote";
 import { StoryblokIframe } from "@/components/Storyblok/StoryblokIframe/StoryblokIframe";
 import { StoryblokNewsArticle } from "@/components/Storyblok/StoryblokNewsArticle/StoryblokNewsArticle";
 import { StoryblokRelatedLink } from "@/components/Storyblok/StoryblokRelatedLink/StoryblokRelatedLink";
 import { StoryblokRelatedNewsLink } from "@/components/Storyblok/StoryblokRelatedNewsLink/StoryblokRelatedNewsLink";
 import { StoryblokYoutubeEmbed } from "@/components/Storyblok/StoryblokYoutubeEmbed/StoryblokYoutubeEmbed";
+import { logger } from "@/logger";
 import { type Breadcrumb } from "@/types/Breadcrumb";
 import { NewsArticleStoryblok } from "@/types/storyblok";
 import {
@@ -23,29 +23,54 @@ import {
 
 import type { GetServerSidePropsContext } from "next";
 
-interface NewsArticlePageProps {
-	story: ISbStoryData<NewsArticleStoryblok>;
+type NewsArticlePageErrorProps = {
+	error: string;
+};
+
+type NewsArticlePageSuccessProps = {
+	story: StoryblokStory<NewsArticleStoryblok>;
 	breadcrumbs?: Breadcrumb[];
-}
+};
 
-export default function NewsArticlePage({
-	story,
-	breadcrumbs,
-}: NewsArticlePageProps): React.ReactElement {
-	const additionalMetaTags = useMemo(
-		() => getAdditionalMetaTags(story),
-		[story]
-	);
+type NewsArticlePageProps =
+	| NewsArticlePageSuccessProps
+	| NewsArticlePageErrorProps;
 
-	setComponents({
-		newsArticle: StoryblokNewsArticle,
-		quote: Blockquote,
-		relatedLink: StoryblokRelatedLink,
-		relatedNewsLink: StoryblokRelatedNewsLink,
-		youtubeEmbed: StoryblokYoutubeEmbed,
-		iframe: StoryblokIframe,
-	});
-	const title = story.name;
+setComponents({
+	newsArticle: StoryblokNewsArticle,
+	quote: Blockquote,
+	relatedLink: StoryblokRelatedLink,
+	relatedNewsLink: StoryblokRelatedNewsLink,
+	youtubeEmbed: StoryblokYoutubeEmbed,
+	iframe: StoryblokIframe,
+});
+
+export default function NewsArticlePage(
+	props: NewsArticlePageProps
+): React.ReactElement {
+	// story for meta tags, allows for additionalMetaTags to be fetched in useMemo
+	const story = "story" in props ? props.story : null;
+
+	const additionalMetaTags = useMemo(() => {
+		if (story) {
+			return getAdditionalMetaTags(story);
+		} else {
+			logger.error(
+				`Story is not available for additionalMetaTags in NewsArticlePage.`
+			);
+			return undefined;
+		}
+	}, [story]);
+
+	if ("error" in props) {
+		const { error } = props;
+		return <ErrorPageContent title="Error" heading={error} />;
+	}
+
+	// reassigning story to avoid TS error
+	const { story: storyData, breadcrumbs } = props;
+
+	const title = storyData.name;
 
 	return (
 		<>
@@ -54,21 +79,37 @@ export default function NewsArticlePage({
 				openGraph={{ title: title }}
 				additionalMetaTags={additionalMetaTags}
 			></NextSeo>
-			<StoryblokComponent blok={story.content} breadcrumbs={breadcrumbs} />
+			<StoryblokComponent blok={storyData.content} breadcrumbs={breadcrumbs} />
 		</>
 	);
 }
 
 export async function getServerSideProps(context: GetServerSidePropsContext) {
 	const { query, params } = context;
+
 	// Resolve slug from params
 	const slug = getSlugFromParams(params?.slug);
 
-	if (slug) {
-		const version = getStoryVersionFromQuery(query);
+	if (!slug) {
+		return {
+			notFound: true,
+		};
+	}
 
+	const version = getStoryVersionFromQuery(query);
+
+	try {
 		// Get the story and its breadcrumbs
-		const storyResult = await fetchStory(`news/articles/${slug}`, version);
+		const storyResult = await fetchStory<NewsArticleStoryblok>(
+			`news/articles/${slug}`,
+			version
+		);
+
+		if ("notFound" in storyResult) {
+			return {
+				notFound: true,
+			};
+		}
 
 		const breadcrumbs = [
 			{ title: "News", path: "/news" },
@@ -83,9 +124,13 @@ export async function getServerSideProps(context: GetServerSidePropsContext) {
 		};
 
 		return result;
-	} else {
+	} catch (error) {
 		return {
-			notFound: true,
+			props: {
+				error: isError(error)
+					? error.message
+					: "Oops! Something went wrong and we're working to fix it. Please try again later.",
+			},
 		};
 	}
 }

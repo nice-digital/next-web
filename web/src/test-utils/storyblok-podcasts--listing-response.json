@@ -1,0 +1,461 @@
+{
+  "data": {
+    "stories": [
+      {
+        "name": "Podcast pagination",
+        "created_at": "2024-05-03T10:52:39.674Z",
+        "published_at": "2024-05-03T14:46:51.477Z",
+        "id": 489341127,
+        "uuid": "f670beaf-9e99-4a26-aa65-6eeb1ab087a1",
+        "content": {
+          "_uid": "54d069e9-26d2-489d-961c-b61d580522ba",
+          "date": "2024-05-03 12:00",
+          "image": {
+            "id": null,
+            "alt": null,
+            "name": "",
+            "focus": null,
+            "title": null,
+            "filename": null,
+            "copyright": null,
+            "fieldtype": "asset",
+            "meta_data": {},
+            "is_external_url": false
+          },
+          "component": "podcast",
+          "introText": "Updated guidance on stroke rehabilitation",
+          "description": {
+            "type": "doc",
+            "content": [
+              {
+                "type": "paragraph",
+                "content": [
+                  {
+                    "text": "It is estimated that there are around 85,000 strokes every year in England, with over 1 million people currently living with its long-term effects.",
+                    "type": "text"
+                  }
+                ]
+              },
+              {
+                "type": "paragraph",
+                "content": [
+                  {
+                    "text": "We catch up with Jon Brown, chair of the independent committee and Professor Stephen Hill, lay member on the committee about NICE’s updated guidance on stroke rehabilitation.",
+                    "type": "text"
+                  }
+                ]
+              }
+            ]
+          },
+          "soundcloudEmbedID": "1696148949"
+        },
+        "slug": "podcast-pagination",
+        "full_slug": "news/podcasts/podcast-pagination",
+        "sort_by_date": null,
+        "position": -70,
+        "tag_list": [],
+        "is_startpage": false,
+        "parent_id": 420933347,
+        "meta_data": null,
+        "group_id": "e4572634-9d4e-4a59-adfa-39b888cceb87",
+        "first_published_at": "2024-05-03T10:53:28.947Z",
+        "release_id": null,
+        "lang": "default",
+        "path": null,
+        "alternates": [],
+        "default_full_slug": null,
+        "translated_slugs": null
+      },
+      {
+        "name": "25 years of NICE and focusing on what matters most to deliver for the future",
+        "created_at": "2024-05-02T15:39:57.356Z",
+        "published_at": "2024-05-02T15:44:57.824Z",
+        "id": 488592613,
+        "uuid": "0b797b87-e841-4285-8a07-ee32075e8db0",
+        "content": {
+          "_uid": "1e8d49d8-7df1-4ef5-9caa-6eaf7372985f",
+          "date": "2024-05-01 12:00",
+          "image": {
+            "id": 15129242,
+            "alt": "",
+            "name": "",
+            "focus": "",
+            "title": "",
+            "source": "",
+            "filename": "https://a.storyblok.com/f/243782/332x220/617b0d8df0/learning-more-about-the-nice-advice-service.PNG",
+            "copyright": "",
+            "fieldtype": "asset",
+            "meta_data": {},
+            "is_private": false,
+            "is_external_url": false
+          },
+          "component": "podcast",
+          "introText": "In this episode, our guests reflect on 25 years of NICE, how the organisation has developed, the impact its had and how it will change to adapt to the challenges of the next 25 years.",
+          "description": {
+            "type": "doc",
+            "content": [
+              {
+                "type": "paragraph",
+                "content": [
+                  {
+                    "text": "Guests: NICE CEO Dr Sam Roberts, Chief Medical Officer for England Professor Sir Chris Whitty, MHRA CEO Dame June Raine, Director of Value and Access at Association of British HealthTech Industries Luella Trickett, and Director of the Bennett Institute for Applied Data Science Ben Goldacre.",
+                    "type": "text"
+                  }
+                ]
+              }
+            ]
+          },
+          "soundcloudEmbedID": "1811172462"
+        },
+        "slug": "25-years-of-nice-and-focusing-on-what-matters-most-to-deliver-for-the-future",
+        "full_slug": "news/podcasts/25-years-of-nice-and-focusing-on-what-matters-most-to-deliver-for-the-future",
+        "sort_by_date": null,
+        "position": -60,
+        "tag_list": [],
+        "is_startpage": false,
+        "parent_id": 420933347,
+        "meta_data": null,
+        "group_id": "3d233a07-e9a7-4d48-9b77-7936365af0bd",
+        "first_published_at": "2024-05-02T15:43:14.773Z",
+        "release_id": null,
+        "lang": "default",
+        "path": null,
+        "alternates": [],
+        "default_full_slug": null,
+        "translated_slugs": null
+      },
+      {
+        "name": "Updated guidance on stroke rehabilitation",
+        "created_at": "2024-04-17T08:17:26.606Z",
+        "published_at": "2024-04-17T08:25:19.900Z",
+        "id": 479353912,
+        "uuid": "9d81eba3-8324-4d1a-8748-df56595ce595",
+        "content": {
+          "_uid": "2663bc46-cefe-4878-8c86-ecc78cc1f65e",
+          "date": "2024-04-17 12:00",
+          "image": {
+            "id": 15267557,
+            "alt": "",
+            "name": "",
+            "focus": "",
+            "title": "",
+            "source": "",
+            "filename": "https://a.storyblok.com/f/243782/413x297/6a7748fdb4/stroke.PNG",
+            "copyright": "",
+            "fieldtype": "asset",
+            "meta_data": {},
+            "is_private": false,
+            "is_external_url": false
+          },
+          "component": "podcast",
+          "introText": "It is estimated that there are around 85,000 strokes every year in England, with over 1 million people currently living with its long-term effects.\n\nWe catch up with Jon Brown, chair of the independent committee and Professor Stephen Hill, lay member on the committee about NICE’s updated guidance on stroke rehabilitation.",
+          "description": {
+            "type": "doc",
+            "content": [
+              {
+                "type": "paragraph",
+                "content": [
+                  {
+                    "text": "It is estimated that there are around 85,000 strokes every year in England, with over 1 million people currently living with its long-term effects.",
+                    "type": "text"
+                  }
+                ]
+              },
+              {
+                "type": "paragraph",
+                "content": [
+                  {
+                    "text": "We catch up with Jon Brown, chair of the independent committee and Professor Stephen Hill, lay member on the committee about NICE’s updated guidance on stroke rehabilitation.",
+                    "type": "text"
+                  }
+                ]
+              }
+            ]
+          },
+          "soundcloudEmbedID": "1648857267"
+        },
+        "slug": "updated-guidance-on-stroke-rehabilitation",
+        "full_slug": "news/podcasts/updated-guidance-on-stroke-rehabilitation",
+        "sort_by_date": null,
+        "position": -50,
+        "tag_list": [],
+        "is_startpage": false,
+        "parent_id": 420933347,
+        "meta_data": null,
+        "group_id": "36b8eea8-6707-4676-82fd-fdbb62e8f203",
+        "first_published_at": "2024-04-17T08:18:45.287Z",
+        "release_id": null,
+        "lang": "default",
+        "path": null,
+        "alternates": [],
+        "default_full_slug": null,
+        "translated_slugs": null
+      },
+      {
+        "name": "Learning more about the NICE Advice service - Test",
+        "created_at": "2024-03-21T11:11:35.599Z",
+        "published_at": "2024-04-15T13:29:02.619Z",
+        "id": 465262548,
+        "uuid": "74f25d93-875e-4781-9b69-a3a812712e15",
+        "content": {
+          "_uid": "9b9bf615-91fa-43d5-b733-a96a66928e75",
+          "date": "2024-04-15 12:00",
+          "image": {
+            "id": 15129242,
+            "alt": "",
+            "name": "",
+            "focus": "",
+            "title": "",
+            "source": "",
+            "filename": "https://a.storyblok.com/f/243782/332x220/617b0d8df0/learning-more-about-the-nice-advice-service.PNG",
+            "copyright": "",
+            "fieldtype": "asset",
+            "meta_data": {},
+            "is_private": false,
+            "is_external_url": false
+          },
+          "component": "podcast",
+          "introText": "Learning more about the NICE Advice service. In November 2019 we held a webinar to share how and why health technology evaluation is changing and what it means for patients. The webinar includes a presentation and panel discussion based on questions sent in by the audience.",
+          "description": {
+            "type": "doc",
+            "content": [
+              {
+                "type": "paragraph",
+                "content": [
+                  {
+                    "text": "In this month's podcast, we speak with Jeanette Kusel, director of NICE Advice and Luella Trickett, director of value and access at the Association of British HealthTech Industries. They outline the benefits and opportunities NICE Advice can provide.",
+                    "type": "text",
+                    "marks": [
+                      {
+                        "type": "textStyle",
+                        "attrs": {
+                          "color": "rgb(51, 51, 51)"
+                        }
+                      }
+                    ]
+                  }
+                ]
+              },
+              {
+                "type": "paragraph",
+                "content": [
+                  {
+                    "text": "How much does family history affect the chances of being diagnosed with breast cancer and what are the early warning signs? We speak to ",
+                    "type": "text",
+                    "marks": [
+                      {
+                        "type": "textStyle",
+                        "attrs": {
+                          "color": "rgb(51, 51, 51)"
+                        }
+                      }
+                    ]
+                  },
+                  {
+                    "text": "Professor Andrew Wardley",
+                    "type": "text",
+                    "marks": [
+                      {
+                        "type": "bold"
+                      },
+                      {
+                        "type": "italic"
+                      },
+                      {
+                        "type": "textStyle",
+                        "attrs": {
+                          "color": "rgb(51, 51, 51)"
+                        }
+                      }
+                    ]
+                  },
+                  {
+                    "text": ", Breast Cancer Medical Oncologist at The Christie Hospital, Manchester, and Geneva Rhodes, a current patient at The Christie and patient advocate.",
+                    "type": "text",
+                    "marks": [
+                      {
+                        "type": "textStyle",
+                        "attrs": {
+                          "color": "rgb(51, 51, 51)"
+                        }
+                      }
+                    ]
+                  }
+                ]
+              },
+              {
+                "type": "paragraph",
+                "content": [
+                  {
+                    "type": "image",
+                    "attrs": {
+                      "id": 15226517,
+                      "alt": "",
+                      "src": "https://a.storyblok.com/f/243782/700x259/f55d2cf21c/down-syndrome-children-in-care-home-facility-sml.jpg",
+                      "title": "",
+                      "source": "",
+                      "copyright": "",
+                      "meta_data": {}
+                    }
+                  }
+                ]
+              }
+            ]
+          },
+          "soundcloudEmbedID": "1373679814"
+        },
+        "slug": "learning-more-about-the-nice-advice-service-test",
+        "full_slug": "news/podcasts/learning-more-about-the-nice-advice-service-test",
+        "sort_by_date": null,
+        "position": -10,
+        "tag_list": [],
+        "is_startpage": false,
+        "parent_id": 420933347,
+        "meta_data": null,
+        "group_id": "10c156e1-ae05-4bfa-a1c7-4a06eaec4641",
+        "first_published_at": "2024-04-09T09:14:35.902Z",
+        "release_id": null,
+        "lang": "default",
+        "path": null,
+        "alternates": [],
+        "default_full_slug": null,
+        "translated_slugs": null
+      },
+      {
+        "name": "Breast Cancer: The significance of family history and looking for early warning signs",
+        "created_at": "2024-04-15T13:09:29.896Z",
+        "published_at": "2024-04-15T13:18:00.303Z",
+        "id": 478248946,
+        "uuid": "90e88e10-12c9-4250-9b99-50b8bf3f9891",
+        "content": {
+          "_uid": "3942666d-f3d7-456b-b37c-ca50428a07b9",
+          "date": "2024-04-14 12:00",
+          "image": {
+            "id": null,
+            "alt": null,
+            "name": "",
+            "focus": null,
+            "title": null,
+            "source": null,
+            "filename": "",
+            "copyright": null,
+            "fieldtype": "asset",
+            "meta_data": {}
+          },
+          "component": "podcast",
+          "introText": "How much does family history affect the chances of being diagnosed with breast cancer and what are the early warning signs? We speak to Professor Andrew Wardley, Breast Cancer Medical Oncologist at The Christie Hospital, Manchester, and Geneva Rhodes, a current patient at The Christie and patient advocate.",
+          "description": {
+            "type": "doc",
+            "content": [
+              {
+                "type": "paragraph",
+                "content": [
+                  {
+                    "text": "How much does family history affect the chances of being diagnosed with breast cancer and what are the early warning signs? We speak to Professor Andrew Wardley, Breast Cancer Medical Oncologist at The Christie Hospital, Manchester, and Geneva Rhodes, a current patient at The Christie and patient advocate.",
+                    "type": "text",
+                    "marks": [
+                      {
+                        "type": "textStyle",
+                        "attrs": {
+                          "color": "rgb(51, 51, 51)"
+                        }
+                      }
+                    ]
+                  }
+                ]
+              }
+            ]
+          },
+          "soundcloudEmbedID": "686500705"
+        },
+        "slug": "test-image-podcast",
+        "full_slug": "news/podcasts/test-image-podcast",
+        "sort_by_date": null,
+        "position": -40,
+        "tag_list": [],
+        "is_startpage": false,
+        "parent_id": 420933347,
+        "meta_data": null,
+        "group_id": "07635f2f-e58f-4409-8d83-c3742ef470b4",
+        "first_published_at": "2024-04-15T13:11:52.316Z",
+        "release_id": null,
+        "lang": "default",
+        "path": null,
+        "alternates": [],
+        "default_full_slug": null,
+        "translated_slugs": null
+      },
+      {
+        "name": "New patient decision aid on asthma inhalers and climate changes",
+        "created_at": "2024-04-10T07:53:01.520Z",
+        "published_at": "2024-04-12T12:15:17.976Z",
+        "id": 476079045,
+        "uuid": "de4f175f-5c80-44f4-b133-346d8387b7c0",
+        "content": {
+          "_uid": "367875db-5e70-4b9f-b304-5f33c84ed92a",
+          "date": "2024-04-12 12:00",
+          "image": {
+            "id": 15185706,
+            "alt": "",
+            "name": "",
+            "focus": "",
+            "title": "",
+            "source": "",
+            "filename": "https://a.storyblok.com/f/243782/434x274/1351f1cefb/greener-inhaler.PNG",
+            "copyright": "",
+            "fieldtype": "asset",
+            "meta_data": {},
+            "is_private": false,
+            "is_external_url": false
+          },
+          "component": "podcast",
+          "introText": "New patient decision aid on asthma inhalers and climate change. Clíodhna Ní Ghuidhir and Rebecca Boffa outline the common challenges that developers of artificial intelligence (AI) tech face when navigating their way to the health and care market, and link to their series of articles, which provide further advice on what can be done to avoid these.",
+          "description": {
+            "type": "doc",
+            "content": [
+              {
+                "type": "paragraph",
+                "content": [
+                  {
+                    "text": "We speak to Consultant Respiratory Physician Dr Hitasha Rupani, Medicines Consultant Clinical Adviser at NICE Jonathan Underhill and asthma patient Sheba Joseph about NICE’s recently published patient decision aid on asthma inhalers and climate change. The aid supports people with asthma to consider whether they might be able to use inhalers which have a smaller carbon footprint as part of their treatment plan.",
+                    "type": "text",
+                    "marks": [
+                      {
+                        "type": "textStyle",
+                        "attrs": {
+                          "color": "rgb(51, 51, 51)"
+                        }
+                      }
+                    ]
+                  }
+                ]
+              }
+            ]
+          },
+          "soundcloudEmbedID": "1373679814"
+        },
+        "slug": "new-patient-decision-aid-on-asthma-inhalers-and-climate-change",
+        "full_slug": "news/podcasts/new-patient-decision-aid-on-asthma-inhalers-and-climate-change",
+        "sort_by_date": null,
+        "position": -20,
+        "tag_list": [],
+        "is_startpage": false,
+        "parent_id": 420933347,
+        "meta_data": null,
+        "group_id": "fc5f70e2-29bd-41c6-a960-257b63fd56d8",
+        "first_published_at": "2024-04-10T07:55:03.401Z",
+        "release_id": null,
+        "lang": "default",
+        "path": null,
+        "alternates": [],
+        "default_full_slug": null,
+        "translated_slugs": null
+      }
+    ],
+    "cv": 1711448785,
+    "rels": ["boop", "beep", "bop"],
+    "links": []
+  },
+  "total": 6,
+  "perPage": 8
+}

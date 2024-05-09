@@ -10,6 +10,7 @@ import {
 } from "@storyblok/react";
 import { type MetaTag } from "next-seo/lib/types";
 import { Redirect } from "next/types";
+import { StoryblokStory } from "storyblok-generate-ts";
 
 import { publicRuntimeConfig } from "@/config";
 import { logger } from "@/logger";
@@ -20,15 +21,19 @@ import { type MultilinkStoryblok } from "@/types/storyblok";
 export type StoryVersion = "draft" | "published" | undefined;
 
 export type SBSingleResponse<T> = {
-	story?: ISbStoryData<T>;
+	story?: StoryblokStory<T>;
 	notFound?: boolean;
 };
 
+//TODO: check whether the optional total is correct
 export type SBMultipleResponse<T> = {
 	stories: ISbStoryData<T>[];
 	perPage?: number;
 	total?: number;
-	error?: string;
+};
+
+export type SBListingResponse<T> = SBMultipleResponse<T> & {
+	total: number;
 };
 
 // News type enum
@@ -61,11 +66,11 @@ export const fetchStory = async <T>(
 		...params,
 	};
 
+	let result: SBSingleResponse<T>;
+
 	if (!usingOcelotCache) {
 		sbParams.cv = Date.now();
 	}
-
-	let result = null;
 
 	try {
 		const response: ISbResult = await storyblokApi.get(
@@ -76,24 +81,34 @@ export const fetchStory = async <T>(
 		result = {
 			story: response.data.story,
 		};
-	} catch (e) {
-		const result = JSON.parse(e as string) as ISbError;
+	} catch (error) {
+		const errorResponse = JSON.parse(error as string) as ISbError;
+
 		logger.error(
-			`${result.status} error from Storyblok API: ${result.message}`,
-			e
+			`${errorResponse.status} error from Storyblok API: ${errorResponse.message}`,
+			error
 		);
-		if (result.status === 404) {
+
+		if (errorResponse.status === 404) {
 			return {
 				notFound: true,
 			};
 		} else {
 			throw Error(
-				`${result.status} error from Storyblok API: ${result.message}`
+				`There was an error fetching this content. Please try again later.`,
+				{ cause: error }
 			);
 		}
 	}
 
 	return result;
+};
+
+const isValidPageParam = (
+	queryPage: string | string[] | undefined
+): boolean => {
+	const page = Number(queryPage);
+	return !isNaN(page) && page >= 1;
 };
 
 export type ValidateRouteParamsArgs = {
@@ -107,28 +122,30 @@ export type ValidateRouteParamsSuccess<T> = {
 	stories: ISbStoryData<T>[];
 	total: number;
 	currentPage: number;
-	perPage: number | undefined;
-};
-
-export type ValidateRouteParamsError = {
-	error: string;
+	perPage?: number;
 };
 
 export type ValidateRouteParamsResult<T> =
 	| { notFound: true }
 	| { redirect: Redirect }
-	| ValidateRouteParamsSuccess<T>
-	| ValidateRouteParamsError;
+	| ValidateRouteParamsSuccess<T>;
 
 export const validateRouteParams = async <T>({
 	query,
 	sbParams,
-	resolvedUrl,
 }: ValidateRouteParamsArgs): Promise<ValidateRouteParamsResult<T>> => {
 	const version = getStoryVersionFromQuery(query);
-	const page = Number(query.page) || 1;
 
-	// const { starts_with, per_page } = options;
+	let page;
+
+	if (!isValidPageParam(query.page) && query.page !== undefined) {
+		return {
+			notFound: true,
+		};
+	} else {
+		page = Number(query.page) || 1;
+	}
+
 	const requestParams: ISbStoriesParams = {
 		...sbParams,
 		page,
@@ -140,49 +157,48 @@ export const validateRouteParams = async <T>({
 		},
 	};
 
-	const redirectUrl = new URL(resolvedUrl || "", "http://localhost");
+	try {
+		const result = (await fetchStories<T>(
+			version,
+			requestParams
+		)) as SBListingResponse<T>;
 
-	const result = await fetchStories<T>(version, requestParams);
+		if (result.stories.length === 0) {
+			logger.info("No stories in result");
+		}
 
-	if (
-		!result ||
-		result.total === undefined ||
-		(result.total === 0 && result.stories.length === 0)
-	) {
-		logger.error("Error fetching stories: ", result);
+		let featuredStory = null;
+		let stories = result.stories;
+
+		const { total, perPage } = result;
+
+		if (page === 1 && stories.length > 0) {
+			featuredStory = result.stories[0]; // Set featured story on page 1
+			stories = stories.slice(1); // Skip first story on page 1 as it's featured
+		}
+
+		// redirect to page 1 if page is out of range
+		if (perPage && total && page > Math.ceil(total / perPage)) {
+			return {
+				notFound: true,
+			};
+		}
+
 		return {
-			error:
-				"There are no stories to display at the moment. Please try again later.",
+			featuredStory,
+			stories,
+			total,
+			currentPage: page,
+			perPage,
 		};
+	} catch (error) {
+		logger.error("Error from catch in validateRouteParams: ", error);
+
+		throw new Error(
+			"There was an error fetching this content. Please try again later.",
+			{ cause: error }
+		);
 	}
-
-	let featuredStory = null;
-	let stories = result.stories;
-
-	const { total, perPage } = result;
-
-	if (page === 1 && stories.length > 0) {
-		featuredStory = result.stories[0]; // Set featured story on page 1
-		stories = stories.slice(1); // Skip first story on page 1 as it's featured
-	}
-
-	// redirect to page 1 if page is out of range
-	if (page && perPage && page > Math.ceil(total / perPage)) {
-		return {
-			redirect: {
-				destination: redirectUrl.pathname,
-				permanent: false,
-			},
-		};
-	}
-
-	return {
-		featuredStory,
-		stories,
-		total,
-		currentPage: page,
-		perPage,
-	};
 };
 
 // Fetch multiple stories from the Storyblok API
@@ -191,7 +207,6 @@ export const fetchStories = async <T>(
 	params: ISbStoriesParams = {}
 ): Promise<SBMultipleResponse<T>> => {
 	const storyblokApi = getStoryblokApi();
-
 	const sbParams: ISbStoriesParams = {
 		version,
 		resolve_links: "url",
@@ -206,21 +221,21 @@ export const fetchStories = async <T>(
 
 	try {
 		const response: ISbResult = await storyblokApi.get(`cdn/stories`, sbParams);
+
 		result.stories = response.data.stories;
 		result.perPage = response.perPage;
 		result.total = response.total;
-	} catch (e) {
-		const errorResponse = JSON.parse(e as string) as ISbError;
-
-		result.error = errorResponse.message?.message;
-		Promise.reject(new Error(`${errorResponse.message}"`));
-
+	} catch (error) {
+		const errorResponse = JSON.parse(error as string) as ISbError;
 		logger.error(
 			`${errorResponse.status} error from Storyblok API: ${errorResponse.message}`,
-			e
+			error
 		);
-		throw Error(
-			`${errorResponse.status} error from Storyblok API: ${errorResponse.message}`
+
+		throw new Error(
+			//NOTE: we probably don't want to reveal details of API error to the user
+			`Something went wrong, please try again later.`,
+			{ cause: error }
 		);
 	}
 
@@ -373,6 +388,9 @@ export const getAdditionalMetaTags = (story: ISbStoryData): MetaTag[] => {
 
 // Turn a Storyblok date string (yyyy-mm-dd hh:ss) into a friendly date
 export const friendlyDate = (date: string): string => {
+	if (!date || !Date.parse(date)) {
+		throw new Error("Invalid date format");
+	}
 	const formatter = new Intl.DateTimeFormat("en-GB", {
 		day: "2-digit",
 		month: "long",

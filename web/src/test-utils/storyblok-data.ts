@@ -8,6 +8,8 @@ import {
 	type BlogPostStoryblok,
 	type NewsArticleStoryblok,
 	AssetStoryblok,
+	PodcastStoryblok,
+	InDepthArticleStoryblok,
 } from "@/types/storyblok";
 
 export const mockStoryblokStory = {
@@ -239,9 +241,77 @@ export const mockBlogPost: StoryblokStory<BlogPostStoryblok> = {
 	},
 };
 
+export const mockPodcastPage: StoryblokStory<PodcastStoryblok> = {
+	...mockStoryblokStory,
+	name: "Test podcast title",
+	content: {
+		_uid: "2663bc46-cefe-4878-8c86-ecc78cc1f65e",
+		date: "2024-04-17 12:00",
+		image: {
+			id: 15267557,
+			alt: "",
+			name: "",
+			focus: "",
+			title: "",
+			source: "",
+			filename:
+				"https://a.storyblok.com/f/243782/413x297/6a7748fdb4/stroke.PNG",
+			copyright: "",
+			fieldtype: "asset",
+			meta_data: {},
+			is_private: false,
+			is_external_url: false,
+		},
+		component: "podcast",
+		introText:
+			"It is estimated that there are around 85,000 strokes every year in England, with over 1 million people currently living with its long-term effects.\n" +
+			"\n" +
+			"We catch up with Jon Brown, chair of the independent committee and Professor Stephen Hill, lay member on the committee about NICE’s updated guidance on stroke rehabilitation.",
+		description: {
+			type: "doc",
+			content: [
+				{
+					type: "paragraph",
+					content: [
+						{
+							text: "It is estimated that there are around 85,000 strokes every year in England, with over 1 million people currently living with its long-term effects.",
+							type: "text",
+						},
+					],
+				},
+			],
+		},
+		soundcloudEmbedID: "1648857267",
+	},
+};
+
 export const mockImageAsset: AssetStoryblok = {
 	filename:
 		"localhost/f/243782/420x234/7a576133e7/register-for-board-meeting.PNG/m/867x0/filters:format%28jpeg%29:quality%2880%29",
 	id: 654654654,
 	name: "Delicious bacon",
+};
+
+export const mockIndepthArticle: StoryblokStory<InDepthArticleStoryblok> = {
+	...mockStoryblokStory,
+	name: "sample indepth test",
+	id: 476215653,
+	uuid: "7bb356cb",
+	content: {
+		_uid: "cd984458-0e14-4fd6-871d-469e9cd3a845",
+		date: "2024-04-10 12:00",
+		link: {
+			id: "",
+			url: "https://test-storyblok.nice.org.uk/news/blogs/lessons-learned-from-the-multi-agency-advisory-service",
+			linktype: "url",
+			fieldtype: "multilink",
+			cached_url:
+				"https://test-storyblok.nice.org.uk/news/blogs/lessons-learned-from-the-multi-agency-advisory-service",
+		},
+		image: mockImageAsset,
+		title: "sample test",
+		component: "inDepthArticle",
+		introText:
+			"Clíodhna Ní Ghuidhir and Rebecca Boffa outline the common challenges that developers of artificial intelligence (AI) tech face when navigating their way to the health and care market, and link to their series of articles, which provide further advice on what can be done to avoid these.",
+	},
 };

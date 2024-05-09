@@ -9,12 +9,14 @@ import { Card } from "@nice-digital/nds-card";
 import { PageHeader } from "@nice-digital/nds-page-header";
 import { Tag } from "@nice-digital/nds-tag";
 
+import { ErrorPageContent } from "@/components/ErrorPageContent/ErrorPageContent";
 import { Link } from "@/components/Link/Link";
 import { NewsLetterSignup } from "@/components/NewsLetterSignUp/NewsLetterSignup";
 import { FeaturedStory } from "@/components/Storyblok/News/FeaturedStory/FeaturedStory";
 import { NewsCard } from "@/components/Storyblok/News/NewsCard/NewsCard";
 import { NewsGrid } from "@/components/Storyblok/News/NewsGrid/NewsGrid";
 import { NewsListNav } from "@/components/Storyblok/News/NewsListNav/NewsListNav";
+import { logger } from "@/logger";
 import {
 	BlogPostStoryblok,
 	InDepthArticleStoryblok,
@@ -30,19 +32,27 @@ import {
 
 import styles from "./index.module.scss";
 
-interface NewsIndexProps {
+export type NewsIndexErrorProps = {
+	error: string;
+};
+
+export type NewsIndexSuccessProps = {
 	newsArticles: StoryblokStory<NewsArticleStoryblok>[];
 	inDepthArticles: StoryblokStory<InDepthArticleStoryblok>[];
 	blogPosts: StoryblokStory<BlogPostStoryblok>[];
 	podcasts: StoryblokStory<PodcastStoryblok>[];
-}
+};
 
-export default function NewsIndexPage({
-	newsArticles,
-	inDepthArticles,
-	blogPosts,
-	podcasts,
-}: NewsIndexProps): React.ReactElement {
+export type NewsIndexProps = NewsIndexErrorProps | NewsIndexSuccessProps;
+
+export function NewsIndexPage(props: NewsIndexProps): React.ReactElement {
+	if ("error" in props) {
+		const { error } = props;
+		return <ErrorPageContent title="Error" heading={error} />;
+	}
+
+	const { newsArticles, inDepthArticles, blogPosts, podcasts } = props;
+
 	const breadcrumbs = (
 		<Breadcrumbs>
 			<Breadcrumb to="/">Home</Breadcrumb>
@@ -198,21 +208,72 @@ export async function getServerSideProps(context: GetServerSidePropsContext) {
 		per_page: 2,
 	};
 
-	const [newsArticles, inDepthArticles, blogPosts, podcasts] =
-		await Promise.all([
-			fetchStories<NewsArticleStoryblok>(version, articleParams),
-			fetchStories<InDepthArticleStoryblok>(version, inDepthParams),
-			fetchStories<BlogPostStoryblok>(version, blogParams),
-			fetchStories<PodcastStoryblok>(version, podcastParams),
-		]);
-
-	const result = {
-		props: {
-			newsArticles: newsArticles.stories,
-			inDepthArticles: inDepthArticles.stories,
-			blogPosts: blogPosts.stories,
-			podcasts: podcasts.stories,
-		},
+	const handleError = (error: Error, message: string) => {
+		logger.error(`${error}`);
+		throw new Error(`Failed to fetch ${message}`, { cause: error });
 	};
-	return result;
+
+	const fetchArticles = fetchStories<NewsArticleStoryblok>(
+		version,
+		articleParams
+	).catch((error) => {
+		return handleError(error, "news article stories");
+	});
+
+	const fetchIndepth = fetchStories<InDepthArticleStoryblok>(
+		version,
+		inDepthParams
+	).catch((error) => {
+		return handleError(error, "in-depth stories");
+	});
+
+	const fetchBlogPosts = fetchStories<BlogPostStoryblok>(
+		version,
+		blogParams
+	).catch((error) => {
+		return handleError(error, "blog post stories");
+	});
+
+	const fetchPodcasts = fetchStories<PodcastStoryblok>(
+		version,
+		podcastParams
+	).catch((error) => {
+		return handleError(error, "podcast stories");
+	});
+
+	try {
+		const [newsArticles, inDepthArticles, blogPosts, podcasts] =
+			await Promise.all([
+				fetchArticles,
+				fetchIndepth,
+				fetchBlogPosts,
+				fetchPodcasts,
+			]).then((storiesResponse) => {
+				storiesResponse.some((storiesResponse) => {
+					if (storiesResponse.stories.length === 0) {
+						throw new Error("No stories found");
+					}
+				});
+				return storiesResponse;
+			});
+
+		const result = {
+			props: {
+				newsArticles: newsArticles.stories,
+				inDepthArticles: inDepthArticles.stories,
+				blogPosts: blogPosts.stories,
+				podcasts: podcasts.stories,
+			},
+		};
+		return result;
+	} catch (error) {
+		return {
+			props: {
+				error:
+					"Oops! Something went wrong and we're working to fix it. Please try again later.",
+			},
+		};
+	}
 }
+
+export default NewsIndexPage;

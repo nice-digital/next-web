@@ -1,3 +1,4 @@
+import { isError } from "lodash";
 import { NextSeo } from "next-seo";
 import React from "react";
 import { StoryblokStory } from "storyblok-generate-ts";
@@ -18,27 +19,31 @@ import { validateRouteParams } from "@/utils/storyblok";
 
 import type { GetServerSidePropsContext } from "next";
 
-export type NewsArticlesProps = {
+export type NewsArticleErrorProps = {
+	error: string;
+};
+
+export type NewsArticlesSuccessProps = {
 	featuredStory?: StoryblokStory<NewsStory> | null;
 	stories: StoryblokStory<NewsStory>[];
 	total: number;
 	currentPage: number;
 	perPage: number;
-	error?: string | undefined;
 };
 
-export const ArticlesIndexPage = ({
-	stories,
-	currentPage,
-	total,
-	perPage,
-	featuredStory,
-	error,
-}: NewsArticlesProps): React.ReactElement => {
-	if (error) {
+export type NewsArticlesProps =
+	| NewsArticlesSuccessProps
+	| NewsArticleErrorProps;
+
+export const ArticlesIndexPage = (
+	props: NewsArticlesProps
+): React.ReactElement => {
+	if ("error" in props) {
+		const { error } = props;
 		return <ErrorPageContent title="Error" heading={error} />;
 	}
 
+	const { featuredStory, stories, total, currentPage, perPage } = props;
 	return (
 		<>
 			<NextSeo
@@ -87,40 +92,39 @@ export const ArticlesIndexPage = ({
 
 export const getServerSideProps = async ({
 	query,
-	resolvedUrl,
 }: GetServerSidePropsContext) => {
-	const result = await validateRouteParams<NewsArticlesProps>({
-		query,
-		sbParams: {
-			starts_with: "news/articles/",
-			per_page: 6,
-		},
-		resolvedUrl,
-	});
+	try {
+		const result = await validateRouteParams<NewsArticlesProps>({
+			query,
+			sbParams: {
+				starts_with: "news/articles/",
+				per_page: 6,
+			},
+		});
 
-	// will return a 404 or redirect if the route is not valid
-	if ("notFound" in result || "redirect" in result) return result;
+		// will return a 404 or redirect if the route is not valid
+		if ("notFound" in result || "redirect" in result) return result;
 
-	//
-	if ("error" in result) {
+		const { featuredStory, stories, total, perPage, currentPage } = result;
+
 		return {
 			props: {
-				...result,
+				featuredStory,
+				stories,
+				total,
+				currentPage,
+				perPage,
+			},
+		};
+	} catch (error) {
+		return {
+			props: {
+				error: isError(error)
+					? error.message
+					: "Oops! Something went wrong and we're working to fix it. Please try again later.",
 			},
 		};
 	}
-
-	const { featuredStory, stories, total, perPage, currentPage } = result;
-
-	return {
-		props: {
-			featuredStory,
-			stories,
-			total,
-			currentPage,
-			perPage,
-		},
-	};
 };
 
 export default ArticlesIndexPage;

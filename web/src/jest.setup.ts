@@ -5,13 +5,37 @@ import { addDefaultJSONFeedMocks, axiosJSONMock } from "@/test-utils/feeds";
 //import * as matchers from "jest-extended/all";
 //expect.extend(matchers);
 
-// Mock the storyblok connection function (but leave all other Storyblok functions in place)
-jest.mock("@/utils/storyblok", () => ({
-	...jest.requireActual("@/utils/storyblok"),
-}));
+expect.extend({
+	toHaveTextContentIgnoreTags(received, expected) {
+		const strippedReceived = received.replace(/(<([^>]+)>)/gi, "");
+		const strippedExpected = expected.replace(/(<([^>]+)>)/gi, "");
+		const pass = strippedReceived.includes(strippedExpected);
+		if (pass) {
+			return {
+				message: () =>
+					`expected ${received} not to have text content ignoring tags ${expected}`,
+				pass: true,
+			};
+		} else {
+			return {
+				message: () =>
+					`expected ${received} to have text content ignoring tags ${expected}`,
+				pass: false,
+			};
+		}
+	},
+});
 
 jest.mock("@/utils/initStoryblok", () => ({
 	initStoryblok: jest.fn(),
+}));
+
+jest.mock("@storyblok/react", () => ({
+	...jest.requireActual("@storyblok/react"),
+	getStoryblokApi: jest.fn().mockReturnValue({
+		get: jest.fn(),
+		getAll: jest.fn(),
+	}),
 }));
 
 beforeEach(() => {
