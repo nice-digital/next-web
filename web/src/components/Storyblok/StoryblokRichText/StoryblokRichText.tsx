@@ -83,12 +83,14 @@ export const StoryblokRichText: React.FC<StoryblokRichTextProps> = ({
 								loading="lazy"
 								serviceOptions={{
 									height: 0,
-									width: 867,
+									width: Number(dimensions.width),
 									quality: 80,
 								}}
 								style={{
 									aspectRatio: `${dimensions.width}/${dimensions.height}`,
 								}}
+								width={Number(dimensions.width)}
+								height={Number(dimensions.height)}
 							/>
 						);
 					},
