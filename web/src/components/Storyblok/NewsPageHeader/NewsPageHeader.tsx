@@ -19,12 +19,6 @@ export const NewsPageHeader: React.FC<NewsPageHeaderProps> = ({
 	showFooter = false,
 }) => {
 	const NewsPageHeaderMeta = () => {
-		{
-			/** NOTE: we could use the same component across listing pages and slug pages.*/
-			/** TODO: Move to own component to reuse across blog and news article pages?*/
-			/** TODO: Manage Tag content dynamically with a util function to grab the right part of the path to distinguish between news articles, in-depth, podcast, etc? */
-		}
-
 		if (!showFooter) {
 			return null;
 		}

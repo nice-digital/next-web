@@ -96,7 +96,7 @@ export const StoryblokRichText: React.FC<StoryblokRichTextProps> = ({
 					},
 					[NODE_QUOTE]: (children) => {
 						// workaround: hardcoded blockquote component
-						//TODO: refactor this workaround to handle inline quotes in the richtext field of the storyblok editor
+
 						return (
 							<figure className={blockquoteStyles.quote}>
 								<blockquote>{children}</blockquote>

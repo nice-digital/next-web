@@ -5,9 +5,6 @@ import { QuoteStoryblok } from "@/types/storyblok";
 
 import styles from "./Blockquote.module.scss";
 
-/**
- * TODO: refactor this component. We might want to change the markup to not use a figure element.
- */
 interface BlockquoteBlokProps {
 	blok: QuoteStoryblok;
 }

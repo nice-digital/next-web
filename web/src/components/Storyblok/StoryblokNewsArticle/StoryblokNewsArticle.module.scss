@@ -20,8 +20,6 @@
     margin-bottom: utils.rem(spacing.$large);
   }
 
-
-  //TODO: move to  news page header component
   :global(.page-header__heading) {
 
     /* best compromise between legibility vs words being chopped off on narrow viewports*/
