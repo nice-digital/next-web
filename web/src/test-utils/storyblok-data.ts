@@ -52,7 +52,7 @@ export const mockAuthorBlok: StoryblokStory<AuthorStoryblok> = {
 		image: {
 			id: 123,
 			filename:
-				"localhost/f/243782/420x234/7a576133e7/register-for-board-meeting.PNG/m/867x0/filters:format%28jpeg%29:quality%2880%29",
+				"http://localhost/f/243782/420x234/7a576133e7/register-for-board-meeting.PNG/m/867x0/filters:format%28jpeg%29:quality%2880%29",
 			name: "Bob",
 			alt: "Bob the host",
 		},
@@ -140,7 +140,7 @@ export const mockRichText: RichtextStoryblok = {
 					attrs: {
 						id: "13894387",
 						alt: "Kitten wearing mittens",
-						src: "localhost/f/243782/420x234/7a576133e7/register-for-board-meeting.PNG/m/867x0/filters:format%28jpeg%29:quality%2880%29",
+						src: "http://local-host-test-nice-org.com/f/243782/420x234/7a576133e7/register-for-board-meeting.PNG/m/867x0/filters:format%28jpeg%29:quality%2880%29",
 						title: "",
 						source: "",
 						copyright: "",
@@ -176,7 +176,7 @@ export const mockNewsArticle: StoryblokStory<NewsArticleStoryblok> = {
 		image: {
 			id: 123,
 			filename:
-				"localhost/f/243782/420x234/7a576133e7/register-for-board-meeting.PNG/m/867x0/filters:format%28jpeg%29:quality%2880%29",
+				"http://localhost/f/243782/420x234/7a576133e7/register-for-board-meeting.PNG/m/867x0/filters:format%28jpeg%29:quality%2880%29",
 			name: "A kitten being a kitten",
 			alt: "Kitten mittens",
 		},
@@ -231,7 +231,7 @@ export const mockBlogPost: StoryblokStory<BlogPostStoryblok> = {
 		image: {
 			id: 456,
 			filename:
-				"localhost/f/243782/420x234/7a576133e7/register-for-board-meeting.PNG/m/867x0/filters:format%28jpeg%29:quality%2880%29",
+				"http://localhost/f/243782/420x234/7a576133e7/register-for-board-meeting.PNG/m/867x0/filters:format%28jpeg%29:quality%2880%29",
 			name: "Cat cat cat",
 			alt: "A kitty cat",
 		},
@@ -255,7 +255,7 @@ export const mockPodcastPage: StoryblokStory<PodcastStoryblok> = {
 			title: "",
 			source: "",
 			filename:
-				"https://a.storyblok.com/f/243782/413x297/6a7748fdb4/stroke.PNG",
+				"https://local-host-test-nice-org.com/f/243782/413x297/6a7748fdb4/stroke.PNG",
 			copyright: "",
 			fieldtype: "asset",
 			meta_data: {},
@@ -287,7 +287,7 @@ export const mockPodcastPage: StoryblokStory<PodcastStoryblok> = {
 
 export const mockImageAsset: AssetStoryblok = {
 	filename:
-		"localhost/f/243782/420x234/7a576133e7/register-for-board-meeting.PNG/m/867x0/filters:format%28jpeg%29:quality%2880%29",
+		"http://localhost/f/243782/420x234/7a576133e7/register-for-board-meeting.PNG/m/867x0/filters:format%28jpeg%29:quality%2880%29",
 	id: 654654654,
 	name: "Delicious bacon",
 };
@@ -302,11 +302,11 @@ export const mockIndepthArticle: StoryblokStory<InDepthArticleStoryblok> = {
 		date: "2024-04-10 12:00",
 		link: {
 			id: "",
-			url: "https://test-storyblok.nice.org.uk/news/blogs/lessons-learned-from-the-multi-agency-advisory-service",
+			url: "https://local-host-test-nice-org.com/news/blogs/lessons-learned-from-the-multi-agency-advisory-service",
 			linktype: "url",
 			fieldtype: "multilink",
 			cached_url:
-				"https://test-storyblok.nice.org.uk/news/blogs/lessons-learned-from-the-multi-agency-advisory-service",
+				"https://local-host-test-nice-org.com/news/blogs/lessons-learned-from-the-multi-agency-advisory-service",
 		},
 		image: mockImageAsset,
 		title: "sample test",
