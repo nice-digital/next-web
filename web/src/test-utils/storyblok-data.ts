@@ -52,7 +52,7 @@ export const mockAuthorBlok: StoryblokStory<AuthorStoryblok> = {
 		image: {
 			id: 123,
 			filename:
-				"http://localhost/f/243782/420x234/7a576133e7/register-for-board-meeting.PNG/m/867x0/filters:format%28jpeg%29:quality%2880%29",
+				"http://local-host-test-nice-org.com/f/243782/420x234/7a576133e7/register-for-board-meeting.PNG/m/867x0/filters:format%28jpeg%29:quality%2880%29",
 			name: "Bob",
 			alt: "Bob the host",
 		},
@@ -176,7 +176,7 @@ export const mockNewsArticle: StoryblokStory<NewsArticleStoryblok> = {
 		image: {
 			id: 123,
 			filename:
-				"http://localhost/f/243782/420x234/7a576133e7/register-for-board-meeting.PNG/m/867x0/filters:format%28jpeg%29:quality%2880%29",
+				"http://local-host-test-nice-org.com/f/243782/420x234/7a576133e7/register-for-board-meeting.PNG/m/867x0/filters:format%28jpeg%29:quality%2880%29",
 			name: "A kitten being a kitten",
 			alt: "Kitten mittens",
 		},
@@ -231,7 +231,7 @@ export const mockBlogPost: StoryblokStory<BlogPostStoryblok> = {
 		image: {
 			id: 456,
 			filename:
-				"http://localhost/f/243782/420x234/7a576133e7/register-for-board-meeting.PNG/m/867x0/filters:format%28jpeg%29:quality%2880%29",
+				"http://local-host-test-nice-org.com/f/243782/420x234/7a576133e7/register-for-board-meeting.PNG/m/867x0/filters:format%28jpeg%29:quality%2880%29",
 			name: "Cat cat cat",
 			alt: "A kitty cat",
 		},
@@ -287,7 +287,7 @@ export const mockPodcastPage: StoryblokStory<PodcastStoryblok> = {
 
 export const mockImageAsset: AssetStoryblok = {
 	filename:
-		"http://localhost/f/243782/420x234/7a576133e7/register-for-board-meeting.PNG/m/867x0/filters:format%28jpeg%29:quality%2880%29",
+		"http://local-host-test-nice-org.com/f/243782/420x234/7a576133e7/register-for-board-meeting.PNG/m/867x0/filters:format%28jpeg%29:quality%2880%29",
 	id: 654654654,
 	name: "Delicious bacon",
 };
