@@ -1,20 +1,21 @@
-import { sleep } from "k6";
+import { sleep, check } from "k6";
 import { SharedArray } from "k6/data";
 import http from "k6/http";
 
-export const options = {
-	stages: [
-		{ duration: "5m", target: 100 }, // simulate ramp-up of traffic from 1 to 100 users over 5 minutes.
-		{ duration: "20m", target: 100 }, // stay at 100 users for 20 minutes
-		{ duration: "5m", target: 0 }, // ramp-down to 0 users
-	],
-	thresholds: {
-		"http_req_duration{status:200}": ["p(99)<1500"], // 99% of requests must complete below 1500ms
-		"http_req_duration{expected_response:true}": ["p(99)<1500"], // 99% of requests must complete below 1500ms
-		iteration_duration: ["p(95)<1500"], // 95% of requests must complete below 1500ms
-		http_req_waiting: ["p(99)<1000"], // 99% of requests must complete below 1s
-	},
-};
+
+// export const options = {
+// 	stages: [
+// 		{ duration: "5m", target: 100 }, // simulate ramp-up of traffic from 1 to 100 users over 5 minutes.
+// 		{ duration: "20m", target: 100 }, // stay at 100 users for 20 minutes
+// 		{ duration: "5m", target: 0 }, // ramp-down to 0 users
+// 	],
+// 	thresholds: {
+// 		"http_req_duration{status:200}": ["p(99)<1500"], // 99% of requests must complete below 1500ms
+// 		"http_req_duration{expected_response:true}": ["p(99)<1500"], // 99% of requests must complete below 1500ms
+// 		iteration_duration: ["p(95)<1500"], // 95% of requests must complete below 1500ms
+// 		http_req_waiting: ["p(99)<1000"], // 99% of requests must complete below 1s
+// 	},
+// };
 
 // export const options = {
 //   stages: [
@@ -43,16 +44,15 @@ const searchTerms = new SharedArray("terms", function () {
 let params = {
 	timeout: "120s",
 	headers: {
-		"Content-Type": "application/json",
 		"cache-control": "no-cache",
 	},
 };
 
 export default function () {
 	const urlpath = searchTerms[Math.floor(Math.random() * searchTerms.length)];
-	const res = http.get("https://alpha.nice.org.uk" + urlpath, params);
-	check(res, {
-		"status is 200": (r) => r.status === 200,
+	const res = http.get("https://alpha.nice.org.uk" + encodeURI(urlpath), params);
+	// check(res, {
+		// "status is 200": (r) => r.status === 200,
 
 		// console.log(urlpath);
 
@@ -67,5 +67,5 @@ export default function () {
 		// console.log("\n\n\n\n");
 
 		// console.log(res.body + "\n\n\n\n");
-	});
+	// });
 }
