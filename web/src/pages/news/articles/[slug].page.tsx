@@ -36,18 +36,17 @@ type NewsArticlePageProps =
 	| NewsArticlePageSuccessProps
 	| NewsArticlePageErrorProps;
 
-setComponents({
-	newsArticle: StoryblokNewsArticle,
-	quote: Blockquote,
-	relatedLink: StoryblokRelatedLink,
-	relatedNewsLink: StoryblokRelatedNewsLink,
-	youtubeEmbed: StoryblokYoutubeEmbed,
-	iframe: StoryblokIframe,
-});
-
 export default function NewsArticlePage(
 	props: NewsArticlePageProps
 ): React.ReactElement {
+	setComponents({
+		newsArticle: StoryblokNewsArticle,
+		quote: Blockquote,
+		relatedLink: StoryblokRelatedLink,
+		relatedNewsLink: StoryblokRelatedNewsLink,
+		youtubeEmbed: StoryblokYoutubeEmbed,
+		iframe: StoryblokIframe,
+	});
 	// story for meta tags, allows for additionalMetaTags to be fetched in useMemo
 	const story = "story" in props ? props.story : null;
 
