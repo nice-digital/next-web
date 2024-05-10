@@ -57,7 +57,6 @@ describe("StoryblokBlogPost", () => {
 		expect(screen.getByRole("link", { name: "Blog post" })).toBeInTheDocument();
 	});
 
-	//TODO: mob help: mock the author component?
 	it("renders the author name", () => {
 		const author = mockBlogPost.content
 			.author[0] as StoryblokStory<AuthorStoryblok>;

@@ -24,7 +24,6 @@ export interface StoryblokRichTextProps {
 	content: RichtextStoryblok;
 }
 
-//TODO: should we handle the the parent component in props so we can render the image with the correct size?
 export const StoryblokRichText: React.FC<StoryblokRichTextProps> = ({
 	content,
 }) => {
@@ -72,6 +71,10 @@ export const StoryblokRichText: React.FC<StoryblokRichTextProps> = ({
 						// renders inline images from the stories richText field to StoryblokImage component
 						// Assumes the image will fall below the fold and uses lazy loading
 						// Assumes we're currently in the context of main body content so will use the main image max size in 7 column layout max width: 867px
+						const dimensions = {
+							width: props.src ? props.src.split("/")[5].split("x")[0] : 16,
+							height: props.src ? props.src.split("/")[5].split("x")[1] : 9,
+						};
 
 						return (
 							<StoryblokImage
@@ -80,15 +83,20 @@ export const StoryblokRichText: React.FC<StoryblokRichTextProps> = ({
 								loading="lazy"
 								serviceOptions={{
 									height: 0,
-									width: 867,
+									width: Number(dimensions.width),
 									quality: 80,
 								}}
+								style={{
+									aspectRatio: `${dimensions.width}/${dimensions.height}`,
+								}}
+								width={Number(dimensions.width)}
+								height={Number(dimensions.height)}
 							/>
 						);
 					},
 					[NODE_QUOTE]: (children) => {
 						// workaround: hardcoded blockquote component
-						//TODO: refactor this workaround to handle inline quotes in the richtext field of the storyblok editor
+
 						return (
 							<figure className={blockquoteStyles.quote}>
 								<blockquote>{children}</blockquote>

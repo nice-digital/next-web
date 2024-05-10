@@ -48,7 +48,7 @@ exports[`BlogPostPage renders the page 1`] = `
                         data-component="tag"
                         data-testid="pageTag"
                       >
-                        Blog
+                        Blogs
                       </span>
                       <time
                         datetime="2024-04-15 12:00"
@@ -64,39 +64,44 @@ exports[`BlogPostPage renders the page 1`] = `
                   data-g="12 md:3"
                 >
                   <div
-                    class="author"
-                    data-testid="author-component-19cb5420-0d41-4b48-ab01-624a72a8fef9"
+                    class="authorSection"
                   >
-                    <picture>
-                      <source
-                        srcset="https://a.storyblok.com/f/243782/239x298/f5556eb6f5/vanessa-nunes.PNG/m/270x270/smart/filters:format%28avif%29:quality%2880%29"
-                        type="image/avif"
-                      />
-                      <source
-                        srcset="https://a.storyblok.com/f/243782/239x298/f5556eb6f5/vanessa-nunes.PNG/m/270x270/smart/filters:format%28webp%29:quality%2880%29"
-                        type="image/webp"
-                      />
-                      <img
-                        alt=""
-                        class="image"
-                        height="136px"
-                        src="https://a.storyblok.com/f/243782/239x298/f5556eb6f5/vanessa-nunes.PNG/m/270x270/smart/filters:format%28jpeg%29:quality%2880%29"
-                        width="136px"
-                      />
-                    </picture>
                     <div
-                      class="author__content"
+                      class="author"
+                      data-testid="author-component-19cb5420-0d41-4b48-ab01-624a72a8fef9"
                     >
-                      <h2
-                        class="name"
+                      <picture>
+                        <source
+                          srcset="https://local-host-test-nice-org.com/f/243782/239x298/f5556eb6f5/vanessa-nunes.PNG/m/270x270/smart/filters:format%28avif%29:quality%2880%29"
+                          type="image/avif"
+                        />
+                        <source
+                          srcset="https://local-host-test-nice-org.com/f/243782/239x298/f5556eb6f5/vanessa-nunes.PNG/m/270x270/smart/filters:format%28webp%29:quality%2880%29"
+                          type="image/webp"
+                        />
+                        <img
+                          alt=""
+                          class="image"
+                          height="136px"
+                          role="presentation"
+                          src="https://local-host-test-nice-org.com/f/243782/239x298/f5556eb6f5/vanessa-nunes.PNG/m/270x270/smart/filters:format%28jpeg%29:quality%2880%29"
+                          width="136px"
+                        />
+                      </picture>
+                      <div
+                        class="author__content"
                       >
-                        Vanessa Nunes
-                      </h2>
-                      <p
-                        class="jobTitle"
-                      >
-                        Associate Director of NICE’s centre for guidelines
-                      </p>
+                        <h2
+                          class="name"
+                        >
+                          Vanessa Nunes
+                        </h2>
+                        <p
+                          class="jobTitle"
+                        >
+                          Associate Director of NICE’s centre for guidelines
+                        </p>
+                      </div>
                     </div>
                   </div>
                 </div>
@@ -110,11 +115,11 @@ exports[`BlogPostPage renders the page 1`] = `
         >
           <picture>
             <source
-              srcset="https://a.storyblok.com/f/243782/420x234/7a576133e7/register-for-board-meeting.PNG/m/867x0/filters:format%28avif%29:quality%2880%29"
+              srcset="https://local-host-test-nice-org.com/f/243782/420x234/7a576133e7/register-for-board-meeting.PNG/m/867x0/filters:format%28avif%29:quality%2880%29"
               type="image/avif"
             />
             <source
-              srcset="https://a.storyblok.com/f/243782/420x234/7a576133e7/register-for-board-meeting.PNG/m/867x0/filters:format%28webp%29:quality%2880%29"
+              srcset="https://local-host-test-nice-org.com/f/243782/420x234/7a576133e7/register-for-board-meeting.PNG/m/867x0/filters:format%28webp%29:quality%2880%29"
               type="image/webp"
             />
             <img
@@ -122,7 +127,8 @@ exports[`BlogPostPage renders the page 1`] = `
               class="featuredImage"
               height="428px"
               loading="eager"
-              src="https://a.storyblok.com/f/243782/420x234/7a576133e7/register-for-board-meeting.PNG/m/867x0/filters:format%28jpeg%29:quality%2880%29"
+              role="presentation"
+              src="https://local-host-test-nice-org.com/f/243782/420x234/7a576133e7/register-for-board-meeting.PNG/m/867x0/filters:format%28jpeg%29:quality%2880%29"
               width="760px"
             />
           </picture>
@@ -148,17 +154,20 @@ exports[`BlogPostPage renders the page 1`] = `
             </h2>
             <picture>
               <source
-                srcset="https://a.storyblok.com/f/243782/627x624/86275f6701/women-involved-in-nice-s-committees.PNG/m/867x0/filters:format%28avif%29:quality%2880%29"
+                srcset="https://local-host-test-nice-org.com/f/243782/627x624/86275f6701/women-involved-in-nice-s-committees.PNG/m/627x0/filters:format%28avif%29:quality%2880%29"
                 type="image/avif"
               />
               <source
-                srcset="https://a.storyblok.com/f/243782/627x624/86275f6701/women-involved-in-nice-s-committees.PNG/m/867x0/filters:format%28webp%29:quality%2880%29"
+                srcset="https://local-host-test-nice-org.com/f/243782/627x624/86275f6701/women-involved-in-nice-s-committees.PNG/m/627x0/filters:format%28webp%29:quality%2880%29"
                 type="image/webp"
               />
               <img
                 alt=""
+                height="624"
                 loading="lazy"
-                src="https://a.storyblok.com/f/243782/627x624/86275f6701/women-involved-in-nice-s-committees.PNG/m/867x0/filters:format%28jpeg%29:quality%2880%29"
+                role="presentation"
+                src="https://local-host-test-nice-org.com/f/243782/627x624/86275f6701/women-involved-in-nice-s-committees.PNG/m/627x0/filters:format%28jpeg%29:quality%2880%29"
+                width="627"
               />
             </picture>
             <figure
@@ -209,17 +218,20 @@ exports[`BlogPostPage renders the page 1`] = `
               >
                 <picture>
                   <source
-                    srcset="https://a.storyblok.com/f/243782/632x626/bf4770d38e/women-involved-in-nice-s-committees.PNG/m/867x0/filters:format%28avif%29:quality%2880%29"
+                    srcset="https://local-host-test-nice-org.com/f/243782/632x626/bf4770d38e/women-involved-in-nice-s-committees.PNG/m/632x0/filters:format%28avif%29:quality%2880%29"
                     type="image/avif"
                   />
                   <source
-                    srcset="https://a.storyblok.com/f/243782/632x626/bf4770d38e/women-involved-in-nice-s-committees.PNG/m/867x0/filters:format%28webp%29:quality%2880%29"
+                    srcset="https://local-host-test-nice-org.com/f/243782/632x626/bf4770d38e/women-involved-in-nice-s-committees.PNG/m/632x0/filters:format%28webp%29:quality%2880%29"
                     type="image/webp"
                   />
                   <img
                     alt=""
+                    height="626"
                     loading="lazy"
-                    src="https://a.storyblok.com/f/243782/632x626/bf4770d38e/women-involved-in-nice-s-committees.PNG/m/867x0/filters:format%28jpeg%29:quality%2880%29"
+                    role="presentation"
+                    src="https://local-host-test-nice-org.com/f/243782/632x626/bf4770d38e/women-involved-in-nice-s-committees.PNG/m/632x0/filters:format%28jpeg%29:quality%2880%29"
+                    width="632"
                   />
                 </picture>
               </span>

@@ -22,10 +22,13 @@ export const AuthorList = ({
 		return null;
 	}
 
+	const sortedAuthorsArray = authors.sort((a, b) =>
+		a.name.localeCompare(b.name)
+	);
 	return (
 		<div className={styles.authorList}>
 			<h2 className={styles.heading}>List of authors</h2>
-			{authors.map((author) => {
+			{sortedAuthorsArray.map((author) => {
 				// eslint-disable-next-line @typescript-eslint/no-unused-vars
 				const { image, ...contentWithoutImage } = author.content;
 				return (

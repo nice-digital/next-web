@@ -64,7 +64,6 @@ describe("NewsArticle", () => {
 		render(<StoryblokNewsArticle blok={newsArticleProps.blok} />);
 		expect(screen.getByTestId("mock-relatedNewsLink")).toBeInTheDocument();
 
-		//TODO: sanity check in mob session
 		if (mockNewsArticle.content && mockNewsArticle.content.relatedNews) {
 			const relatedNewsTitle = mockNewsArticle.content?.relatedNews[0].title;
 			expect(screen.getByText(relatedNewsTitle)).toBeInTheDocument();

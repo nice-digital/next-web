@@ -12,7 +12,7 @@
   // set padding on page-header based on the negat
   &:has(.featuredImage) {
     :global(.page-header) {
-      padding-bottom: var(--featuredImageOffset);
+      padding-bottom: calc(var(--featuredImageOffset) - utils.rem(spacing.$medium));
     }
   }
 
@@ -20,7 +20,6 @@
     margin-bottom: utils.rem(spacing.$large);
   }
 
-  //TODO: move to  news page header component
   :global(.page-header__heading) {
 
     /* best compromise between legibility vs words being chopped off on narrow viewports*/
@@ -41,7 +40,16 @@
   }
 
   :global(.page-header__description) {
-    margin: 0 0 utils.rem(spacing.$medium) 0;
+    margin-bottom: utils.rem(spacing.$large);
+
+  }
+
+  :global(.page-header__second-section) {
+    margin-bottom: utils.rem(spacing.$large) ;
+
+    @include media-queries.mq($from: md) {
+      margin-bottom: 0;
+    }
   }
 
   :global(.breadcrumbs) {
@@ -54,7 +62,7 @@
     display: block;
     height: auto;
     margin-bottom: utils.rem(spacing.$large);
-    margin-top: calc(calc(var(--featuredImageOffset) * -1) - 1rem);
+    margin-top: calc(calc(var(--featuredImageOffset) * -1) - utils.rem(spacing.$medium));
     object-fit: cover;
     width: 100%;
 
@@ -62,8 +70,6 @@
       aspect-ratio: 21 / 9;
     }
   }
-
-
 
   hr {
     margin: utils.rem(spacing.$medium 0);

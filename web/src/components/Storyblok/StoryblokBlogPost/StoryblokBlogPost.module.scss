@@ -2,18 +2,17 @@
 @use '@nice-digital/nds-core/scss/spacing';
 @use '@nice-digital/nds-core/scss/typography';
 @use '@nice-digital/nds-core/scss/utils';
+@use '~/styles/colours';
 
-/* stylelint-disable selector-class-pattern */
 
 .newsSectionArticle {
 
   --featuredImageOffset: 16dvh;
 
   // set padding on page-header based on the image offset
-  //TODO: Fix issue with spacing, dependant on the number of authors. listed
   &:has(.featuredImage) {
     :global(.page-header) {
-      padding-bottom: var(--featuredImageOffset);
+      padding-bottom: calc(var(--featuredImageOffset) - utils.rem(spacing.$large));
     }
   }
 
@@ -22,7 +21,7 @@
     display: block;
     height: auto;
     margin-bottom: utils.rem(spacing.$large);
-    margin-top: calc(calc(var(--featuredImageOffset) * -1) - 1rem);
+    margin-top: calc(calc(var(--featuredImageOffset) * -1) - utils.rem(spacing.$medium));
     object-fit: cover;
     width: 100%;
 
@@ -31,7 +30,6 @@
     }
   }
 
-  //TODO: all news and blog header related. Move to NewsPageHeader
   :global(.page-header__heading) {
     margin: 0 0 utils.rem(spacing.$large) 0;
 
@@ -52,6 +50,18 @@
 
   :global(.page-header__description) {
     margin: 0 0 utils.rem(spacing.$medium) 0;
+
+    @include media-queries.mq($from: md) {
+      margin: 0 0 utils.rem(spacing.$large) 0;
+    }
+  }
+
+  :global(.page-header__second-section) {
+    margin-bottom: utils.rem(spacing.$large);
+
+    @include media-queries.mq($from: md) {
+      margin-bottom: 0;
+    }
   }
 
   :global(.breadcrumbs) {
@@ -63,6 +73,15 @@
 
     @include media-queries.mq($from: md) {
       margin: utils.rem(spacing.$xx-large) 0;
+    }
+  }
+
+  .authorSection {
+
+    @include media-queries.mq($from: md) {
+      border-left: 2px solid colours.$author-section-border;
+      padding-bottom: utils.rem(spacing.$x-large);
+      padding-left: utils.rem(spacing.$medium);
     }
   }
 

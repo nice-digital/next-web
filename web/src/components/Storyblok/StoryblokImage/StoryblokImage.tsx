@@ -14,7 +14,6 @@ export interface StoryblokImageProps
 	serviceOptions?: ImageServiceOptions;
 }
 
-//TODO: do we pass a fallback image as a prop or just use a default fallback image?
 // We set the alt to an empty string as it's required for accessibility.
 // If no alt is provided, it will be an empty string and treated as a decorative image
 export const StoryblokImage = React.forwardRef<
@@ -24,11 +23,15 @@ export const StoryblokImage = React.forwardRef<
 	const placeholderSrc =
 		publicRuntimeConfig.publicBaseURL + "/fallback-image.png";
 
-	// if no src is provided, use a placeholder image.  See TODO above
+	// if no src is provided, we use a placeholder image
 	if (!src || src === "") {
 		return <img {...rest} ref={ref} src={placeholderSrc} alt={alt} />;
 	}
 
+	if (alt.length === 0) {
+		console.warn("No alt text provided for image");
+		rest.role = "presentation";
+	}
 	// construct the source urls for webp, avif and jpeg for the picture element
 	const webPSrc = constructStoryblokImageSrc(src, serviceOptions, "webp");
 	const avifSrc = constructStoryblokImageSrc(src, serviceOptions, "avif");

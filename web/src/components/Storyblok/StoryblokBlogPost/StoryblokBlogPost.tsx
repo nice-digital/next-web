@@ -70,9 +70,13 @@ export const StoryblokBlogPost = ({
 
 	const PageHeaderAuthorsList =
 		authors.length === 0 ? null : authors.length > 1 ? (
-			<AuthorList authors={authors} />
+			<div className={styles.authorSection}>
+				<AuthorList authors={authors} />
+			</div>
 		) : typeof blok.author[0] !== "string" ? (
-			<StoryblokAuthor blok={blok.author[0].content} headingLevel={2} />
+			<div className={styles.authorSection}>
+				<StoryblokAuthor blok={blok.author[0].content} headingLevel={2} />
+			</div>
 		) : null;
 
 	return (

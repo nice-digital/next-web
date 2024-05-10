@@ -22,7 +22,7 @@ const mockStory = {
 			title: "",
 			source: "",
 			filename:
-				"https://a.storyblok.com/f/243782/724x483/ef045348c1/kidney-transplant.jpg",
+				"https://local-host-test-nice-org.com/f/243782/724x483/ef045348c1/kidney-transplant.jpg",
 			copyright: "",
 			fieldtype: "asset",
 			meta_data: {},

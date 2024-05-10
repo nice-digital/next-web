@@ -43,7 +43,7 @@ exports[`Homepage Hero should match snapshot 1`] = `
         </div>
         <div
           class="hero__image-container"
-          style="background-image: url(https://placebacon.net/300/210?image=1/m/);"
+          style="background-image: url(http://local-host-test-nice-org.com/f/243782/420x234/7a576133e7/register-for-board-meeting.PNG/m/867x0/filters:format%28jpeg%29:quality%2880%29/m/);"
         />
       </div>
     </div>

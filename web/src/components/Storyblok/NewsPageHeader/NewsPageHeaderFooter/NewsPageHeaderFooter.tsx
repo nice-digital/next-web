@@ -3,38 +3,27 @@ import React from "react";
 import { Tag } from "@nice-digital/nds-tag";
 
 import { formatDateStr } from "@/utils/datetime";
+import { getNewsType, newsTypes } from "@/utils/storyblok";
 
 import styles from "./NewsPageHeaderFooter.module.scss";
 
-type componentPageType = "blogPost" | "newsArticle";
+type storyType = keyof typeof newsTypes;
 
 export interface NewsPageHeaderFooterProps {
-	date?: string;
-	pageType?: componentPageType;
+	date: string;
+	pageType: storyType;
 }
 
 export const NewsPageHeaderFooter: React.FC<NewsPageHeaderFooterProps> = ({
 	date,
 	pageType,
 }) => {
-	let tagValue: string | null = null;
-
-	switch (pageType) {
-		case "newsArticle":
-			tagValue = "News";
-			break;
-		case "blogPost":
-			tagValue = "Blog";
-			break;
-		default:
-			tagValue = null;
-			break;
-	}
+	const storyType = getNewsType(pageType);
 
 	return (
 		<div className={styles.footer}>
 			<Tag outline data-testid="pageTag">
-				{tagValue}
+				{storyType}
 			</Tag>
 			{typeof date === "string" && (
 				<time dateTime={date}>{formatDateStr(date)}</time>

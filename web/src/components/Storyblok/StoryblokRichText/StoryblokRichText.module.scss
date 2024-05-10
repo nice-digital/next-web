@@ -38,7 +38,8 @@
     }
   }
 
-  &:last-child {
+  // remove bottom margin on any last child in richtext bloks
+  > *:last-child {
     margin-bottom: 0;
   }
 

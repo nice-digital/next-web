@@ -43,7 +43,7 @@ exports[`Homepage Hero should match snapshot 1`] = `
         </div>
         <div
           class="hero__image-container"
-          style="background-image: url(https://placebacon.net/300/210?image=1/m/);"
+          style="background-image: url(http://local-host-test-nice-org.com/f/243782/420x234/7a576133e7/register-for-board-meeting.PNG/m/867x0/filters:format%28jpeg%29:quality%2880%29/m/);"
         />
       </div>
     </div>
@@ -298,7 +298,7 @@ exports[`Homepage should match snapshot for main content 1`] = `
         </div>
         <div
           class="hero__image-container"
-          style="background-image: url(https://placebacon.net/300/210?image=1/m/);"
+          style="background-image: url(http://local-host-test-nice-org.com/f/243782/420x234/7a576133e7/register-for-board-meeting.PNG/m/867x0/filters:format%28jpeg%29:quality%2880%29/m/);"
         />
       </div>
       <section
@@ -323,7 +323,7 @@ exports[`Homepage should match snapshot for main content 1`] = `
                 aria-hidden="true"
                 class="imageContainer"
                 href="/i/am/a-very-full-slug"
-                style="background-image: url(https://placekitten.com/200/286/m/868x0/filters:quality%2880%29);"
+                style="background-image: url(http://local-host-test-nice-org.com/f/243782/420x234/7a576133e7/register-for-board-meeting.PNG/m/867x0/filters:format%28jpeg%29:quality%2880%29/m/868x0/filters:quality%2880%29);"
                 tabindex="-1"
               >
                  
@@ -349,11 +349,12 @@ exports[`Homepage should match snapshot for main content 1`] = `
                     >
                       News
                     </span>
-                    <span
+                    <time
                       class="date"
+                      datetime="2024-01-31T15:16:15.19"
                     >
                       31 January 2024
-                    </span>
+                    </time>
                   </div>
                 </footer>
               </div>
@@ -369,7 +370,7 @@ exports[`Homepage should match snapshot for main content 1`] = `
                 aria-hidden="true"
                 class="imageContainer"
                 href="/i/am/a-very-full-slug"
-                style="background-image: url(https://placekitten.com/200/139/m/868x0/filters:quality%2880%29);"
+                style="background-image: url(http://local-host-test-nice-org.com/f/243782/420x234/7a576133e7/register-for-board-meeting.PNG/m/867x0/filters:format%28jpeg%29:quality%2880%29/m/868x0/filters:quality%2880%29);"
                 tabindex="-1"
               >
                  
@@ -404,11 +405,12 @@ exports[`Homepage should match snapshot for main content 1`] = `
                     >
                       Blogs
                     </span>
-                    <span
+                    <time
                       class="date"
+                      datetime="2024-02-20"
                     >
                       20 February 2024
-                    </span>
+                    </time>
                   </div>
                 </footer>
               </div>
@@ -424,7 +426,7 @@ exports[`Homepage should match snapshot for main content 1`] = `
                 aria-hidden="true"
                 class="imageContainer"
                 href="/i/am/a-very-full-slug"
-                style="background-image: url(https://placekitten.com/200/286/m/868x0/filters:quality%2880%29);"
+                style="background-image: url(http://local-host-test-nice-org.com/f/243782/420x234/7a576133e7/register-for-board-meeting.PNG/m/867x0/filters:format%28jpeg%29:quality%2880%29/m/868x0/filters:quality%2880%29);"
                 tabindex="-1"
               >
                  
@@ -450,11 +452,12 @@ exports[`Homepage should match snapshot for main content 1`] = `
                     >
                       News
                     </span>
-                    <span
+                    <time
                       class="date"
+                      datetime="2024-01-31T15:16:15.19"
                     >
                       31 January 2024
-                    </span>
+                    </time>
                   </div>
                 </footer>
               </div>
@@ -510,17 +513,19 @@ exports[`Homepage should match snapshot for main content 1`] = `
             </p>
             <picture>
               <source
-                srcset="https://placekitten.com/200/286/m/867x0/filters:format%28avif%29:quality%2880%29"
+                srcset="http://local-host-test-nice-org.com/f/243782/420x234/7a576133e7/register-for-board-meeting.PNG/m/867x0/filters:format%28jpeg%29:quality%2880%29/m/420x0/filters:format%28avif%29:quality%2880%29"
                 type="image/avif"
               />
               <source
-                srcset="https://placekitten.com/200/286/m/867x0/filters:format%28webp%29:quality%2880%29"
+                srcset="http://local-host-test-nice-org.com/f/243782/420x234/7a576133e7/register-for-board-meeting.PNG/m/867x0/filters:format%28jpeg%29:quality%2880%29/m/420x0/filters:format%28webp%29:quality%2880%29"
                 type="image/webp"
               />
               <img
                 alt="Kitten wearing mittens"
+                height="234"
                 loading="lazy"
-                src="https://placekitten.com/200/286/m/867x0/filters:format%28jpeg%29:quality%2880%29"
+                src="http://local-host-test-nice-org.com/f/243782/420x234/7a576133e7/register-for-board-meeting.PNG/m/867x0/filters:format%28jpeg%29:quality%2880%29/m/420x0/filters:format%28jpeg%29:quality%2880%29"
+                width="420"
               />
             </picture>
             <figure

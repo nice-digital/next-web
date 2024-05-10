@@ -15,7 +15,7 @@ exports[`NewsList matches snapshot 1`] = `
           aria-hidden="true"
           class="imageContainer"
           href="/news/articles/mock-news-article"
-          style="background-image: url(https://a.storyblok.com/f/243782/724x483/ef045348c1/kidney-transplant.jpg/m/868x0/filters:quality%2880%29);"
+          style="background-image: url(https://local-host-test-nice-org.com/f/243782/724x483/ef045348c1/kidney-transplant.jpg/m/868x0/filters:quality%2880%29);"
           tabindex="-1"
         >
            
@@ -39,11 +39,12 @@ exports[`NewsList matches snapshot 1`] = `
               >
                 News
               </span>
-              <span
+              <time
                 class="date"
+                datetime="2022-06-16 00:00"
               >
                 16 June 2022
-              </span>
+              </time>
             </div>
           </footer>
         </div>
@@ -59,7 +60,7 @@ exports[`NewsList matches snapshot 1`] = `
           aria-hidden="true"
           class="imageContainer"
           href="/news/articles/mock-news-article"
-          style="background-image: url(https://a.storyblok.com/f/243782/724x483/ef045348c1/kidney-transplant.jpg/m/868x0/filters:quality%2880%29);"
+          style="background-image: url(https://local-host-test-nice-org.com/f/243782/724x483/ef045348c1/kidney-transplant.jpg/m/868x0/filters:quality%2880%29);"
           tabindex="-1"
         >
            
@@ -83,11 +84,12 @@ exports[`NewsList matches snapshot 1`] = `
               >
                 News
               </span>
-              <span
+              <time
                 class="date"
+                datetime="2022-06-16 00:00"
               >
                 16 June 2022
-              </span>
+              </time>
             </div>
           </footer>
         </div>
@@ -103,7 +105,7 @@ exports[`NewsList matches snapshot 1`] = `
           aria-hidden="true"
           class="imageContainer"
           href="/news/articles/mock-news-article"
-          style="background-image: url(https://a.storyblok.com/f/243782/724x483/ef045348c1/kidney-transplant.jpg/m/868x0/filters:quality%2880%29);"
+          style="background-image: url(https://local-host-test-nice-org.com/f/243782/724x483/ef045348c1/kidney-transplant.jpg/m/868x0/filters:quality%2880%29);"
           tabindex="-1"
         >
            
@@ -127,11 +129,12 @@ exports[`NewsList matches snapshot 1`] = `
               >
                 News
               </span>
-              <span
+              <time
                 class="date"
+                datetime="2022-06-16 00:00"
               >
                 16 June 2022
-              </span>
+              </time>
             </div>
           </footer>
         </div>
@@ -171,11 +174,12 @@ exports[`NewsList should match the snapshot if showImage is false 1`] = `
               >
                 News
               </span>
-              <span
+              <time
                 class="date"
+                datetime="2022-06-16 00:00"
               >
                 16 June 2022
-              </span>
+              </time>
             </div>
           </footer>
         </div>
@@ -206,11 +210,12 @@ exports[`NewsList should match the snapshot if showImage is false 1`] = `
               >
                 News
               </span>
-              <span
+              <time
                 class="date"
+                datetime="2022-06-16 00:00"
               >
                 16 June 2022
-              </span>
+              </time>
             </div>
           </footer>
         </div>
@@ -241,11 +246,12 @@ exports[`NewsList should match the snapshot if showImage is false 1`] = `
               >
                 News
               </span>
-              <span
+              <time
                 class="date"
+                datetime="2022-06-16 00:00"
               >
                 16 June 2022
-              </span>
+              </time>
             </div>
           </footer>
         </div>

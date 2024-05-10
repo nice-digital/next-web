@@ -40,11 +40,12 @@ exports[`Homepage latest news component should match snapshot with a featured st
           >
             News
           </span>
-          <span
+          <time
             class="date"
+            datetime="2024-01-31T15:16:15.19"
           >
             31 January 2024
-          </span>
+          </time>
         </footer>
       </div>
     </article>
@@ -61,7 +62,7 @@ exports[`Homepage latest news component should match snapshot with a featured st
             aria-hidden="true"
             class="imageContainer"
             href="/i/am/a-very-full-slug"
-            style="background-image: url(https://placekitten.com/200/286/m/868x0/filters:quality%2880%29);"
+            style="background-image: url(http://local-host-test-nice-org.com/f/243782/420x234/7a576133e7/register-for-board-meeting.PNG/m/867x0/filters:format%28jpeg%29:quality%2880%29/m/868x0/filters:quality%2880%29);"
             tabindex="-1"
           >
              
@@ -87,11 +88,12 @@ exports[`Homepage latest news component should match snapshot with a featured st
                 >
                   News
                 </span>
-                <span
+                <time
                   class="date"
+                  datetime="2024-01-31T15:16:15.19"
                 >
                   31 January 2024
-                </span>
+                </time>
               </div>
             </footer>
           </div>
@@ -107,7 +109,7 @@ exports[`Homepage latest news component should match snapshot with a featured st
             aria-hidden="true"
             class="imageContainer"
             href="/i/am/a-very-full-slug"
-            style="background-image: url(https://placekitten.com/200/139/m/868x0/filters:quality%2880%29);"
+            style="background-image: url(http://local-host-test-nice-org.com/f/243782/420x234/7a576133e7/register-for-board-meeting.PNG/m/867x0/filters:format%28jpeg%29:quality%2880%29/m/868x0/filters:quality%2880%29);"
             tabindex="-1"
           >
              
@@ -142,11 +144,12 @@ exports[`Homepage latest news component should match snapshot with a featured st
                 >
                   Blogs
                 </span>
-                <span
+                <time
                   class="date"
+                  datetime="2024-02-20"
                 >
                   20 February 2024
-                </span>
+                </time>
               </div>
             </footer>
           </div>
@@ -162,7 +165,7 @@ exports[`Homepage latest news component should match snapshot with a featured st
             aria-hidden="true"
             class="imageContainer"
             href="/i/am/a-very-full-slug"
-            style="background-image: url(https://placekitten.com/200/286/m/868x0/filters:quality%2880%29);"
+            style="background-image: url(http://local-host-test-nice-org.com/f/243782/420x234/7a576133e7/register-for-board-meeting.PNG/m/867x0/filters:format%28jpeg%29:quality%2880%29/m/868x0/filters:quality%2880%29);"
             tabindex="-1"
           >
              
@@ -188,11 +191,12 @@ exports[`Homepage latest news component should match snapshot with a featured st
                 >
                   News
                 </span>
-                <span
+                <time
                   class="date"
+                  datetime="2024-01-31T15:16:15.19"
                 >
                   31 January 2024
-                </span>
+                </time>
               </div>
             </footer>
           </div>
@@ -234,7 +238,7 @@ exports[`Homepage latest news component should match snapshot without a featured
             aria-hidden="true"
             class="imageContainer"
             href="/i/am/a-very-full-slug"
-            style="background-image: url(https://placekitten.com/200/286/m/868x0/filters:quality%2880%29);"
+            style="background-image: url(http://local-host-test-nice-org.com/f/243782/420x234/7a576133e7/register-for-board-meeting.PNG/m/867x0/filters:format%28jpeg%29:quality%2880%29/m/868x0/filters:quality%2880%29);"
             tabindex="-1"
           >
              
@@ -260,11 +264,12 @@ exports[`Homepage latest news component should match snapshot without a featured
                 >
                   News
                 </span>
-                <span
+                <time
                   class="date"
+                  datetime="2024-01-31T15:16:15.19"
                 >
                   31 January 2024
-                </span>
+                </time>
               </div>
             </footer>
           </div>
@@ -280,7 +285,7 @@ exports[`Homepage latest news component should match snapshot without a featured
             aria-hidden="true"
             class="imageContainer"
             href="/i/am/a-very-full-slug"
-            style="background-image: url(https://placekitten.com/200/139/m/868x0/filters:quality%2880%29);"
+            style="background-image: url(http://local-host-test-nice-org.com/f/243782/420x234/7a576133e7/register-for-board-meeting.PNG/m/867x0/filters:format%28jpeg%29:quality%2880%29/m/868x0/filters:quality%2880%29);"
             tabindex="-1"
           >
              
@@ -315,11 +320,12 @@ exports[`Homepage latest news component should match snapshot without a featured
                 >
                   Blogs
                 </span>
-                <span
+                <time
                   class="date"
+                  datetime="2024-02-20"
                 >
                   20 February 2024
-                </span>
+                </time>
               </div>
             </footer>
           </div>
@@ -335,7 +341,7 @@ exports[`Homepage latest news component should match snapshot without a featured
             aria-hidden="true"
             class="imageContainer"
             href="/i/am/a-very-full-slug"
-            style="background-image: url(https://placekitten.com/200/286/m/868x0/filters:quality%2880%29);"
+            style="background-image: url(http://local-host-test-nice-org.com/f/243782/420x234/7a576133e7/register-for-board-meeting.PNG/m/867x0/filters:format%28jpeg%29:quality%2880%29/m/868x0/filters:quality%2880%29);"
             tabindex="-1"
           >
              
@@ -361,11 +367,12 @@ exports[`Homepage latest news component should match snapshot without a featured
                 >
                   News
                 </span>
-                <span
+                <time
                   class="date"
+                  datetime="2024-01-31T15:16:15.19"
                 >
                   31 January 2024
-                </span>
+                </time>
               </div>
             </footer>
           </div>
