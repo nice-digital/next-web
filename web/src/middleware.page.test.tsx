@@ -13,7 +13,7 @@ describe("Middleware", () => {
 		redirectSpy.mockReset();
 	});
 
-	it("should resolve a mixed case url as a lowercase url", () => {
+	it("should resolve a mixed case indicators url as a lowercase url", () => {
 		const req = new NextRequest(
 			new Request(
 				"http://www.nice.org.uk/StAnDArDs-aNd-iNdIcAtOrS/nLiNdIcAtOrS/"
@@ -26,6 +26,20 @@ describe("Middleware", () => {
 		expect(redirectSpy).toHaveBeenCalledTimes(1);
 		expect(redirectSpy).toHaveBeenCalledWith(
 			new URL("http://www.nice.org.uk/standards-and-indicators/nlindicators/")
+		);
+	});
+
+	it("should resolve a mixed case guidance url as a lowercase url", () => {
+		const req = new NextRequest(
+			new Request("http://www.nice.org.uk/guidance/PubLiSHED/"),
+			{}
+		);
+
+		middleware(req);
+
+		expect(redirectSpy).toHaveBeenCalledTimes(1);
+		expect(redirectSpy).toHaveBeenCalledWith(
+			new URL("http://www.nice.org.uk/guidance/published/")
 		);
 	});
 
