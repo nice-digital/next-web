@@ -4,7 +4,7 @@
 @use '@nice-digital/nds-core/scss/utils';
 @use '~/styles/colours';
 
-
+/* stylelint-disable selector-class-pattern */
 .newsSectionArticle {
 
   --featuredImageOffset: 16dvh;

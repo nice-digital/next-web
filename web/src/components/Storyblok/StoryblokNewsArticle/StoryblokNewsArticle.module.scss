@@ -45,7 +45,7 @@
   }
 
   :global(.page-header__second-section) {
-    margin-bottom: utils.rem(spacing.$large) ;
+    margin-bottom: utils.rem(spacing.$large);
 
     @include media-queries.mq($from: md) {
       margin-bottom: 0;
