@@ -3,6 +3,7 @@ import {
 	StoryblokComponent,
 	setComponents,
 } from "@storyblok/react";
+import { isError } from "lodash";
 import { NextSeo } from "next-seo";
 import React, { useMemo } from "react";
 
@@ -22,6 +23,7 @@ import {
 	CategoryNavigationStoryblok,
 	InfoPageStoryblok,
 } from "@/types/storyblok";
+import { initStoryblok } from "@/utils/initStoryblok";
 import {
 	fetchStory,
 	getStoryVersionFromQuery,
@@ -104,9 +106,21 @@ export async function getServerSideProps(context: GetServerSidePropsContext) {
 
 	// Resolve slug from params
 	const slug = getSlugFromParams(params?.slug);
-	if (slug) {
-		const version = getStoryVersionFromQuery(query);
+	const version = getStoryVersionFromQuery(query);
 
+	try {
+		initStoryblok(version);
+	} catch (error) {
+		return {
+			props: {
+				error: isError(error)
+					? error.message
+					: "Oops! Something went wrong and we're working to fix it. Please try again later.",
+			},
+		};
+	}
+
+	if (slug) {
 		// Get the story and its breadcrumbs
 		const [storyResult, breadcrumbs] = await Promise.all([
 			fetchStory<CategoryNavigationStoryblok | InfoPageStoryblok>(

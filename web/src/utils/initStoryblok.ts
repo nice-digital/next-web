@@ -1,12 +1,16 @@
 import { apiPlugin, storyblokInit } from "@storyblok/react";
 
-import { publicRuntimeConfig } from "@/config";
+import { publicRuntimeConfig, serverRuntimeConfig } from "@/config";
 import { logger } from "@/logger";
 
 // Init connection to Storyblok
-export const initStoryblok = (): void => {
+export const initStoryblok = (version?: string): void => {
 	try {
-		const accessToken = publicRuntimeConfig.storyblok.previewAccessToken;
+		const accessToken =
+			version === "draft"
+				? serverRuntimeConfig.storyblok.previewAccessToken
+				: serverRuntimeConfig.storyblok.publicAccessToken;
+
 		const endpoint = publicRuntimeConfig.storyblok.ocelotEndpoint;
 		const usingOcelotCache = !!endpoint;
 
@@ -21,7 +25,10 @@ export const initStoryblok = (): void => {
 				endpoint,
 			},
 		});
-	} catch (e) {
-		logger.error("Error initialising Storyblok:", e);
+
+		return;
+	} catch (error) {
+		logger.error("Error initialising Storyblok:", error);
+		new Error("Error initialising Storyblok", { cause: error });
 	}
 };

@@ -222,6 +222,7 @@ describe("/news/podcasts/index.page", () => {
 					starts_with: mockConfig.startsWith,
 					per_page: mockConfig.resultsPerPage,
 				},
+				version: "published",
 			});
 		});
 

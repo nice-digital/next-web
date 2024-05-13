@@ -1,4 +1,5 @@
 import { ISbStoriesParams } from "@storyblok/react";
+import { isError } from "lodash";
 import { GetServerSidePropsContext } from "next";
 import { NextSeo } from "next-seo";
 import Image from "next/image";
@@ -23,6 +24,7 @@ import {
 	NewsArticleStoryblok,
 	PodcastStoryblok,
 } from "@/types/storyblok";
+import { initStoryblok } from "@/utils/initStoryblok";
 import {
 	getStoryVersionFromQuery,
 	fetchStories,
@@ -169,7 +171,20 @@ export function NewsIndexPage(props: NewsIndexProps): React.ReactElement {
 }
 
 export async function getServerSideProps(context: GetServerSidePropsContext) {
-	const version = getStoryVersionFromQuery(context.query);
+	const { query } = context;
+	const version = getStoryVersionFromQuery(query);
+
+	try {
+		initStoryblok(version);
+	} catch (error) {
+		return {
+			props: {
+				error: isError(error)
+					? error.message
+					: "Oops! Something went wrong and we're working to fix it. Please try again later.",
+			},
+		};
+	}
 
 	// Construct our query params
 	const commonParams: ISbStoriesParams = {

@@ -115,6 +115,7 @@ export type ValidateRouteParamsArgs = {
 	query: ParsedUrlQuery;
 	sbParams?: ISbStoriesParams;
 	resolvedUrl?: string;
+	version: StoryVersion;
 };
 
 export type ValidateRouteParamsSuccess<T> = {
@@ -133,9 +134,8 @@ export type ValidateRouteParamsResult<T> =
 export const validateRouteParams = async <T>({
 	query,
 	sbParams,
+	version,
 }: ValidateRouteParamsArgs): Promise<ValidateRouteParamsResult<T>> => {
-	const version = getStoryVersionFromQuery(query);
-
 	let page;
 
 	if (!isValidPageParam(query.page) && query.page !== undefined) {

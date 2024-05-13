@@ -12,6 +12,7 @@ import { StoryblokYoutubeEmbed } from "@/components/Storyblok/StoryblokYoutubeEm
 import { logger } from "@/logger";
 import { type Breadcrumb } from "@/types/Breadcrumb";
 import { BlogPostStoryblok } from "@/types/storyblok";
+import { initStoryblok } from "@/utils/initStoryblok";
 import {
 	fetchStory,
 	getStoryVersionFromQuery,
@@ -75,18 +76,29 @@ export default function BlogPostPage(props: BlogPageProps): React.ReactElement {
 
 export async function getServerSideProps(context: GetServerSidePropsContext) {
 	const { query, params } = context;
+	const slug = getSlugFromParams(params?.slug);
+	const version = getStoryVersionFromQuery(query);
+
+	// Resolve slug from params
+	if (!slug) {
+		return {
+			notFound: true,
+		};
+	}
+
 	try {
-		// Resolve slug from params
-		const slug = getSlugFromParams(params?.slug);
+		initStoryblok(version);
+	} catch (error) {
+		return {
+			props: {
+				error: isError(error)
+					? error.message
+					: "Oops! Something went wrong and we're working to fix it. Please try again later.",
+			},
+		};
+	}
 
-		if (!slug) {
-			return {
-				notFound: true,
-			};
-		}
-
-		const version = getStoryVersionFromQuery(query);
-
+	try {
 		// Get the story and its breadcrumbs
 		const storyResult = await fetchStory<BlogPostStoryblok>(
 			`news/blogs/${slug}`,

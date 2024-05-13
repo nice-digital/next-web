@@ -224,6 +224,7 @@ describe("/news/in-depth/index.page", () => {
 					starts_with: mockConfig.startsWith,
 					per_page: mockConfig.resultsPerPage,
 				},
+				version: "published",
 			});
 		});
 

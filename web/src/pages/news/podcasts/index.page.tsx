@@ -1,3 +1,4 @@
+import c from "config";
 import { isError } from "lodash";
 import { NextSeo } from "next-seo";
 import React from "react";
@@ -16,7 +17,11 @@ import { NewsListPagination } from "@/components/Storyblok/News/NewsListPaginati
 import { NewsListPaginationAnnouncer } from "@/components/Storyblok/News/NewsListPaginationAnnouncer/NewsListPaginationAnnouncer";
 import { PaginationFocusedElement } from "@/components/Storyblok/News/NewsListPaginationFocus/NewsListPaginationFocus";
 import { NewsStory } from "@/types/News";
-import { validateRouteParams } from "@/utils/storyblok";
+import { initStoryblok } from "@/utils/initStoryblok";
+import {
+	getStoryVersionFromQuery,
+	validateRouteParams,
+} from "@/utils/storyblok";
 
 import type { GetServerSidePropsContext } from "next";
 
@@ -105,6 +110,20 @@ export const PodcastIndexPage = (
 export const getServerSideProps = async ({
 	query,
 }: GetServerSidePropsContext) => {
+	const version = getStoryVersionFromQuery(query);
+
+	try {
+		initStoryblok(version);
+	} catch (error) {
+		return {
+			props: {
+				error: isError(error)
+					? error.message
+					: "Oops! Something went wrong and we're working to fix it. Please try again later.",
+			},
+		};
+	}
+
 	try {
 		const result = await validateRouteParams<PodcastPostsProps>({
 			query,
@@ -112,6 +131,7 @@ export const getServerSideProps = async ({
 				starts_with: "news/podcasts/",
 				per_page: 6,
 			},
+			version,
 		});
 
 		if ("notFound" in result || "redirect" in result) return result;

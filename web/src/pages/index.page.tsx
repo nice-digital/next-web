@@ -23,6 +23,7 @@ import {
 	type HomepageStoryblok,
 	type NewsArticleStoryblok,
 } from "@/types/storyblok";
+import { initStoryblok } from "@/utils/initStoryblok";
 import {
 	fetchStory,
 	fetchStories,
@@ -44,6 +45,18 @@ export type HomePageSuccessProps = {
 export type HomePageProps = HomePageErrorProps | HomePageSuccessProps;
 
 export default function Home(props: HomePageProps): React.ReactElement {
+	setComponents({
+		actionBanner: StoryblokActionBanner,
+		hero: StoryblokHero,
+		homepage: Homepage,
+		homepageHero: HomepageHero,
+		metadata: Metadata,
+		nestedRichText: NestedRichText,
+		promoBox: PromoBox,
+		spotlight: Spotlight,
+		cardGrid: CardGrid,
+	});
+
 	const story = "story" in props ? props.story : null;
 
 	const additionalMetaTags = useMemo(() => {
@@ -62,18 +75,6 @@ export default function Home(props: HomePageProps): React.ReactElement {
 		return <ErrorPageContent title="Error" heading={error} />;
 	}
 
-	setComponents({
-		actionBanner: StoryblokActionBanner,
-		hero: StoryblokHero,
-		homepage: Homepage,
-		homepageHero: HomepageHero,
-		metadata: Metadata,
-		nestedRichText: NestedRichText,
-		promoBox: PromoBox,
-		spotlight: Spotlight,
-		cardGrid: CardGrid,
-	});
-
 	const { story: storyData, latestNews } = props;
 
 	return (
@@ -89,8 +90,20 @@ export default function Home(props: HomePageProps): React.ReactElement {
 }
 
 export async function getServerSideProps(context: GetServerSidePropsContext) {
+	const { query } = context;
 	const slug = "home";
-	const version = getStoryVersionFromQuery(context.query);
+	const version = getStoryVersionFromQuery(query);
+
+	try {
+		initStoryblok(version);
+	} catch (error) {
+		return {
+			props: {
+				error:
+					"Oops! Something went wrong and we're working to fix it. Please try again later.",
+			},
+		};
+	}
 
 	try {
 		const storyResult = await fetchStory<HomepageStoryblok>(slug, version, {

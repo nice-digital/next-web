@@ -15,7 +15,11 @@ import { NewsListPagination } from "@/components/Storyblok/News/NewsListPaginati
 import { NewsListPaginationAnnouncer } from "@/components/Storyblok/News/NewsListPaginationAnnouncer/NewsListPaginationAnnouncer";
 import { PaginationFocusedElement } from "@/components/Storyblok/News/NewsListPaginationFocus/NewsListPaginationFocus";
 import { NewsStory } from "@/types/News";
-import { validateRouteParams } from "@/utils/storyblok";
+import { initStoryblok } from "@/utils/initStoryblok";
+import {
+	getStoryVersionFromQuery,
+	validateRouteParams,
+} from "@/utils/storyblok";
 
 import type { GetServerSidePropsContext } from "next";
 
@@ -93,6 +97,20 @@ export const ArticlesIndexPage = (
 export const getServerSideProps = async ({
 	query,
 }: GetServerSidePropsContext) => {
+	const version = getStoryVersionFromQuery(query);
+
+	try {
+		initStoryblok(version);
+	} catch (error) {
+		return {
+			props: {
+				error: isError(error)
+					? error.message
+					: "Oops! Something went wrong and we're working to fix it. Please try again later.",
+			},
+		};
+	}
+
 	try {
 		const result = await validateRouteParams<NewsArticlesProps>({
 			query,
@@ -100,6 +118,7 @@ export const getServerSideProps = async ({
 				starts_with: "news/articles/",
 				per_page: 6,
 			},
+			version,
 		});
 
 		// will return a 404 or redirect if the route is not valid

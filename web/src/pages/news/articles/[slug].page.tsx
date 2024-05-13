@@ -14,6 +14,7 @@ import { StoryblokYoutubeEmbed } from "@/components/Storyblok/StoryblokYoutubeEm
 import { logger } from "@/logger";
 import { type Breadcrumb } from "@/types/Breadcrumb";
 import { NewsArticleStoryblok } from "@/types/storyblok";
+import { initStoryblok } from "@/utils/initStoryblok";
 import {
 	fetchStory,
 	getStoryVersionFromQuery,
@@ -47,6 +48,7 @@ export default function NewsArticlePage(
 		youtubeEmbed: StoryblokYoutubeEmbed,
 		iframe: StoryblokIframe,
 	});
+
 	// story for meta tags, allows for additionalMetaTags to be fetched in useMemo
 	const story = "story" in props ? props.story : null;
 
@@ -88,6 +90,7 @@ export async function getServerSideProps(context: GetServerSidePropsContext) {
 
 	// Resolve slug from params
 	const slug = getSlugFromParams(params?.slug);
+	const version = getStoryVersionFromQuery(query);
 
 	if (!slug) {
 		return {
@@ -95,7 +98,17 @@ export async function getServerSideProps(context: GetServerSidePropsContext) {
 		};
 	}
 
-	const version = getStoryVersionFromQuery(query);
+	try {
+		initStoryblok(version);
+	} catch (error) {
+		return {
+			props: {
+				error: isError(error)
+					? error.message
+					: "Oops! Something went wrong and we're working to fix it. Please try again later.",
+			},
+		};
+	}
 
 	try {
 		// Get the story and its breadcrumbs

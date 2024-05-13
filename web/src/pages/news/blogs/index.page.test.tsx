@@ -224,6 +224,7 @@ describe("/news/blogs/index.page", () => {
 					per_page: mockConfig.resultsPerPage,
 					resolve_relations: mockConfig.resolve_relations,
 				},
+				version: "published",
 			});
 		});
 

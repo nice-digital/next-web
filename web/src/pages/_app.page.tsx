@@ -16,7 +16,6 @@ import { Container } from "@nice-digital/nds-container";
 import { ErrorPageContent } from "@/components/ErrorPageContent/ErrorPageContent";
 import { GoogleTagManager } from "@/components/GoogleTagManager/GoogleTagManager";
 import { logger } from "@/logger";
-import { initStoryblok } from "@/utils/initStoryblok";
 
 import { getDefaultSeoConfig } from "./next-seo.config";
 import { publicRuntimeConfig } from "@/config";
@@ -50,8 +49,6 @@ const lora = Lora({
 	subsets: ["latin"],
 	variable: "--serif-font-family",
 });
-
-initStoryblok();
 
 // eslint-disable-next-line @typescript-eslint/ban-types
 class NextWebApp extends App<{}, {}, AppState> {

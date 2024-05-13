@@ -13,6 +13,7 @@ import { StoryblokRichText } from "@/components/Storyblok/StoryblokRichText/Stor
 import { logger } from "@/logger";
 import { type Breadcrumb as TypeBreadcrumb } from "@/types/Breadcrumb";
 import { PodcastStoryblok } from "@/types/storyblok";
+import { initStoryblok } from "@/utils/initStoryblok";
 import {
 	fetchStory,
 	friendlyDate,
@@ -126,6 +127,7 @@ export default function PodcastPage(
 export async function getServerSideProps(context: GetServerSidePropsContext) {
 	const { query, params } = context;
 	const slug = getSlugFromParams(params?.slug);
+	const version = getStoryVersionFromQuery(query);
 
 	if (!slug) {
 		return {
@@ -133,7 +135,18 @@ export async function getServerSideProps(context: GetServerSidePropsContext) {
 		};
 	}
 
-	const version = getStoryVersionFromQuery(query);
+	try {
+		initStoryblok(version);
+	} catch (error) {
+		return {
+			props: {
+				error: isError(error)
+					? error.message
+					: "Oops! Something went wrong and we're working to fix it. Please try again later.",
+			},
+		};
+	}
+
 	try {
 		// Get the story and its breadcrumbs
 		const storyResult = await fetchStory<PodcastStoryblok>(

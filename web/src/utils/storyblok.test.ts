@@ -546,7 +546,8 @@ describe("Storyblok utils", () => {
 				starts_with: "news/articles/",
 				per_page: 8,
 			},
-		};
+			version: "published",
+		} as storyblokUtils.ValidateRouteParamsArgs;
 
 		let expectedParams: ISbStoriesParams;
 

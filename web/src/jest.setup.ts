@@ -26,12 +26,10 @@ expect.extend({
 	},
 });
 
-jest.mock("@/utils/initStoryblok", () => ({
-	initStoryblok: jest.fn(),
-}));
-
 jest.mock("@storyblok/react", () => ({
 	...jest.requireActual("@storyblok/react"),
+	storyblokInit: jest.fn(),
+	apiPlugin: {},
 	getStoryblokApi: jest.fn().mockReturnValue({
 		get: jest.fn(),
 		getAll: jest.fn(),

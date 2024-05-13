@@ -110,6 +110,7 @@ export interface StoryblokConfig {
 export interface ServerConfig {
 	cache: CacheConfig;
 	feeds: FeedsConfig;
+	storyblok: StoryblokConfig;
 }
 
 export { publicRuntimeConfig, serverRuntimeConfig };

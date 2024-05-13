@@ -3,6 +3,7 @@ import { NextSeo } from "next-seo";
 import React, { useMemo } from "react";
 
 import { type Breadcrumb } from "@/types/Breadcrumb";
+import { initStoryblok } from "@/utils/initStoryblok";
 import {
 	fetchStory,
 	getStoryVersionFromQuery,
@@ -41,6 +42,7 @@ export async function getServerSideProps(context: GetServerSidePropsContext) {
 	const slug = "about";
 	const { query } = context;
 	const version = getStoryVersionFromQuery(query);
+	initStoryblok(version);
 
 	const storyResult = await fetchStory(slug, version);
 	const breadcrumbs = [{ title: "About" }];
