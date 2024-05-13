@@ -5,4 +5,17 @@ dist
 .DS_Store
 api/assets/c4/.structurizr/*
 
-aws/terraform/.terraform
+aws/terraform/.terraform/*
+aws/terraform/.terraform.lock.hcl
+
+**/.terraform/*
+
+*.tfstate
+*.tfstate.*
+
+crash.log
+crash.*.log
+
+
+
+
