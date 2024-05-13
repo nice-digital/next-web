@@ -82,7 +82,14 @@ resource "aws_ecs_task_definition" "nextweb-main-task" {
           hostPort      = 3000,
           protocol      = "tcp"
         }
-      ]
+      ],
+      healthCheck = {
+		retries = 10
+		command = [ "CMD-SHELL", "curl -f http://localhost:3000/status || exit 1" ]
+		timeout: 5
+		interval: 10
+		startPeriod: 30
+    	}
     }
   ])
 
