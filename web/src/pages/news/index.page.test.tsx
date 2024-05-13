@@ -8,6 +8,7 @@ import {
 	mockNewsArticle,
 	mockPodcastPage,
 } from "@/test-utils/storyblok-data";
+import * as initSB from "@/utils/initStoryblok";
 import * as storyblokUtils from "@/utils/storyblok";
 
 import {
@@ -101,7 +102,25 @@ describe("/news/index.page", () => {
 		afterEach(() => {
 			jest.clearAllMocks();
 		});
-		//return success when fetchStories returns success
+
+		it("should return an error when initStoryblok returns an error", async () => {
+			const mockErrorMessage =
+				"<<<< There was an error initializing Storyblok. >>>>> ";
+			const mockError = new Error(mockErrorMessage);
+
+			jest.spyOn(initSB, "initStoryblok").mockImplementationOnce(() => {
+				throw mockError;
+			});
+
+			const context = {
+				query: {},
+				params: { slug: "home" },
+			} as unknown as GetServerSidePropsContext;
+
+			const result = await getServerSideProps(context);
+
+			expect(result).toEqual({ props: { error: expectedErrorMessage } });
+		});
 
 		it("should return error when fetchStories returns error", async () => {
 			const mockErrorMessage =

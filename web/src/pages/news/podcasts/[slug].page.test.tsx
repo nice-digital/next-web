@@ -2,6 +2,7 @@ import { render, screen } from "@testing-library/react";
 import { GetServerSidePropsContext } from "next";
 
 import { mockPodcastPage } from "@/test-utils/storyblok-data";
+import * as initSB from "@/utils/initStoryblok";
 import * as storyblokUtils from "@/utils/storyblok";
 
 import PodcastPage, { getServerSideProps } from "./[slug].page";
@@ -14,6 +15,8 @@ const mockBreadcrumbs = [
 	{ title: "News", path: "/news" },
 	{ title: "Podcasts", path: "/news/podcasts" },
 ];
+const expectedErrorMessage =
+	"Oops! Something went wrong and we're working to fix it. Please try again later.";
 
 describe("PodcastPage", () => {
 	it("renders the page", () => {
@@ -79,6 +82,25 @@ describe("PodcastPage", () => {
 			expect(result).toEqual({ notFound: true });
 		});
 
+		it("should return an error when initStoryblok returns an error", async () => {
+			const mockErrorMessage =
+				"<<<< There was an error initializing Storyblok. >>>>> ";
+			const mockError = new Error(mockErrorMessage);
+
+			jest.spyOn(initSB, "initStoryblok").mockImplementationOnce(() => {
+				throw mockError;
+			});
+
+			const context = {
+				query: {},
+				params: { slug: "home" },
+			} as unknown as GetServerSidePropsContext;
+
+			const result = await getServerSideProps(context);
+
+			expect(result).toEqual({ props: { error: expectedErrorMessage } });
+		});
+
 		it("should return notFound when fetchStory returns notFound", async () => {
 			fetchStorySpy.mockResolvedValue({ notFound: true });
 			const context = {
@@ -116,8 +138,7 @@ describe("PodcastPage", () => {
 			const result = await getServerSideProps(context);
 			expect(result).toEqual({
 				props: {
-					error:
-						"Oops! Something went wrong and we're working to fix it. Please try again later.",
+					error: expectedErrorMessage,
 				},
 			});
 		});

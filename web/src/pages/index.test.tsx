@@ -13,6 +13,7 @@ import mockLatestNews from "@/test-utils/storyblok-homepage-latestnews-response.
 import mockResult from "@/test-utils/storyblok-homepage-result.json";
 import mockFetchStory from "@/test-utils/storyblok-homepage-storyResult-response.json";
 import { NewsStory } from "@/types/News";
+import * as initSB from "@/utils/initStoryblok";
 import * as storyblokUtils from "@/utils/storyblok";
 
 import Home, { type HomePageProps, getServerSideProps } from "./index.page";
@@ -62,15 +63,37 @@ describe("Homepage", () => {
 	describe("getServerSideProps", () => {
 		let fetchStoriesSpy: jest.SpyInstance;
 		let fetchStorySpy: jest.SpyInstance;
+		let initStoryblokSpy: jest.SpyInstance;
+
 		beforeEach(() => {
 			fetchStoriesSpy = jest.spyOn(storyblokUtils, "fetchStories");
 			fetchStorySpy = jest.spyOn(storyblokUtils, "fetchStory");
+
 			jest.useFakeTimers();
 			jest.setSystemTime(new Date("2024-04-08"));
 		});
 
 		afterEach(() => {
 			jest.clearAllMocks();
+		});
+
+		it("should return an error when initStoryblok returns an error", async () => {
+			const mockErrorMessage =
+				"<<<< There was an error initializing Storyblok. >>>>> ";
+			const mockError = new Error(mockErrorMessage);
+
+			jest.spyOn(initSB, "initStoryblok").mockImplementationOnce(() => {
+				throw mockError;
+			});
+
+			const context = {
+				query: {},
+				params: { slug: "home" },
+			} as unknown as GetServerSidePropsContext;
+
+			const result = await getServerSideProps(context);
+
+			expect(result).toEqual({ props: { error: expectedErrorMessage } });
 		});
 
 		it("should return error when fetchStory returns error", async () => {

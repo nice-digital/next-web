@@ -8,6 +8,7 @@ import { StoryblokStory } from "storyblok-generate-ts";
 
 import MockStoryblokSuccessResponse from "@/test-utils/storyblok-news-articles-listing.json";
 import { NewsStory } from "@/types/News";
+import * as initSB from "@/utils/initStoryblok";
 import * as storyblokUtils from "@/utils/storyblok";
 
 import {
@@ -17,6 +18,8 @@ import {
 } from "./index.page";
 
 const mockStories = MockStoryblokSuccessResponse.data.stories;
+const expectedErrorMessage =
+	"Oops! Something went wrong and we're working to fix it. Please try again later.";
 
 describe("/news/in-depth/index.page", () => {
 	(useRouter as jest.Mock).mockReturnValue({
@@ -191,6 +194,25 @@ describe("/news/in-depth/index.page", () => {
 			jest.clearAllMocks();
 		});
 
+		it("should return an error when initStoryblok returns an error", async () => {
+			const mockErrorMessage =
+				"<<<< There was an error initializing Storyblok. >>>>> ";
+			const mockError = new Error(mockErrorMessage);
+
+			jest.spyOn(initSB, "initStoryblok").mockImplementationOnce(() => {
+				throw mockError;
+			});
+
+			const context = {
+				query: {},
+				params: { slug: "home" },
+			} as unknown as GetServerSidePropsContext;
+
+			const result = await getServerSideProps(context);
+
+			expect(result).toEqual({ props: { error: expectedErrorMessage } });
+		});
+
 		it("should return notFound when page is less than 1", async () => {
 			const result = await getServerSideProps({
 				query: { page: mockConfig.query.lowerOutOfBoundPagination },
@@ -276,8 +298,7 @@ describe("/news/in-depth/index.page", () => {
 
 			expect(result).toEqual({
 				props: {
-					error:
-						"Oops! Something went wrong and we're working to fix it. Please try again later.",
+					error: expectedErrorMessage,
 				},
 			});
 		});

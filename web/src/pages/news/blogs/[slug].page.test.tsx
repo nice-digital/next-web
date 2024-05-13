@@ -6,6 +6,7 @@ import { StoryblokStory } from "storyblok-generate-ts";
 
 import mockBlogPostSuccessResponse from "@/test-utils/storyblok-single-blog-post-response.json";
 import { BlogPostStoryblok } from "@/types/storyblok";
+import * as initSB from "@/utils/initStoryblok";
 import * as storyblokUtils from "@/utils/storyblok";
 
 import BlogPostPage, { getServerSideProps } from "./[slug].page";
@@ -18,6 +19,8 @@ const mockBreadcrumbs = [
 	{ title: "News", path: "/news" },
 	{ title: "Blogs", path: "/news/blogs" },
 ];
+const expectedErrorMessage =
+	"Oops! Something went wrong and we're working to fix it. Please try again later.";
 
 describe("BlogPostPage", () => {
 	it("renders the page", () => {
@@ -56,6 +59,25 @@ describe("BlogPostPage", () => {
 			expect(result).toEqual({ notFound: true });
 		});
 
+		it("should return an error when initStoryblok returns an error", async () => {
+			const mockErrorMessage =
+				"<<<< There was an error initializing Storyblok. >>>>> ";
+			const mockError = new Error(mockErrorMessage);
+
+			jest.spyOn(initSB, "initStoryblok").mockImplementationOnce(() => {
+				throw mockError;
+			});
+
+			const context = {
+				query: {},
+				params: { slug: "home" },
+			} as unknown as GetServerSidePropsContext;
+
+			const result = await getServerSideProps(context);
+
+			expect(result).toEqual({ props: { error: expectedErrorMessage } });
+		});
+
 		it("should return notFound when fetchStory returns notFound", async () => {
 			fetchStorySpy.mockResolvedValue({ notFound: true });
 			const context = {
@@ -80,7 +102,7 @@ describe("BlogPostPage", () => {
 				params: { slug: "test-slug" },
 			} as unknown as GetServerSidePropsContext<ParsedUrlQuery>);
 
-			expect(result).toEqual({ props: { error: mockErrorMessage } });
+			expect(result).toEqual({ props: { error: expectedErrorMessage } });
 		});
 
 		it("should return a general error message if there is a throw that is not an Error object", async () => {
@@ -95,8 +117,7 @@ describe("BlogPostPage", () => {
 
 			expect(result).toEqual({
 				props: {
-					error:
-						"Oops! Something went wrong and we're working to fix it. Please try again later.",
+					error: expectedErrorMessage,
 				},
 			});
 		});

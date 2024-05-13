@@ -103,9 +103,8 @@ export async function getServerSideProps(context: GetServerSidePropsContext) {
 	} catch (error) {
 		return {
 			props: {
-				error: isError(error)
-					? error.message
-					: "Oops! Something went wrong and we're working to fix it. Please try again later.",
+				error:
+					"Oops! Something went wrong and we're working to fix it. Please try again later.",
 			},
 		};
 	}
@@ -139,9 +138,8 @@ export async function getServerSideProps(context: GetServerSidePropsContext) {
 	} catch (error) {
 		return {
 			props: {
-				error: isError(error)
-					? error.message
-					: "Oops! Something went wrong and we're working to fix it. Please try again later.",
+				error:
+					"Oops! Something went wrong and we're working to fix it. Please try again later.",
 			},
 		};
 	}

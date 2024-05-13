@@ -25,8 +25,6 @@ export const initStoryblok = (version?: string): void => {
 				endpoint,
 			},
 		});
-
-		return;
 	} catch (error) {
 		logger.error("Error initialising Storyblok:", error);
 		new Error("Error initialising Storyblok", { cause: error });

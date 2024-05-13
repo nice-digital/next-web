@@ -1,7 +1,10 @@
+import exp from "constants";
+
 import { render, screen } from "@testing-library/react";
 import { GetServerSidePropsContext } from "next";
 
 import { mockNewsArticle } from "@/test-utils/storyblok-data";
+import * as initSB from "@/utils/initStoryblok";
 import * as storyblokUtils from "@/utils/storyblok";
 
 import NewsArticlePage, { getServerSideProps } from "./[slug].page";
@@ -9,6 +12,9 @@ import NewsArticlePage, { getServerSideProps } from "./[slug].page";
 const mockArticle = {
 	...mockNewsArticle,
 };
+
+const expectedErrorMessage =
+	"Oops! Something went wrong and we're working to fix it. Please try again later.";
 
 describe("NewsArticlePage", () => {
 	it("renders the page", () => {
@@ -33,6 +39,25 @@ describe("NewsArticlePage", () => {
 
 		afterEach(() => {
 			jest.clearAllMocks();
+		});
+
+		it("should return an error when initStoryblok returns an error", async () => {
+			const mockErrorMessage =
+				"<<<< There was an error initializing Storyblok. >>>>> ";
+			const mockError = new Error(mockErrorMessage);
+
+			jest.spyOn(initSB, "initStoryblok").mockImplementationOnce(() => {
+				throw mockError;
+			});
+
+			const context = {
+				query: {},
+				params: { slug: "home" },
+			} as unknown as GetServerSidePropsContext;
+
+			const result = await getServerSideProps(context);
+
+			expect(result).toEqual({ props: { error: expectedErrorMessage } });
 		});
 
 		it("returns notFound if no slug is provided", async () => {
@@ -63,7 +88,7 @@ describe("NewsArticlePage", () => {
 
 			const result = await getServerSideProps(context);
 
-			expect(result).toEqual({ props: { error: errorMessage } });
+			expect(result).toEqual({ props: { error: expectedErrorMessage } });
 		});
 
 		it("should return a generic error message if fetchStory returns an error without a message", async () => {
@@ -78,8 +103,7 @@ describe("NewsArticlePage", () => {
 			const result = await getServerSideProps(context);
 			expect(result).toEqual({
 				props: {
-					error:
-						"Oops! Something went wrong and we're working to fix it. Please try again later.",
+					error: expectedErrorMessage,
 				},
 			});
 		});
