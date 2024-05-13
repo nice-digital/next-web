@@ -5,8 +5,8 @@ export const middleware = (req: NextRequest): NextResponse => {
 
 	// As we are standardising all routes to lowercase, we need to exclude these next.js files to avoid 404 errors in production
 	if (
-		url.pathname.includes("_ssgManifest.js") ||
-		url.pathname.includes("_buildManifest.js")
+		url.pathname.includes("_next/static") ||
+		url.pathname.includes("_next/data")
 	) {
 		return NextResponse.next();
 	}
