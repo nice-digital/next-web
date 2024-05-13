@@ -54,4 +54,17 @@ describe("Middleware", () => {
 
 		expect(redirectSpy).toHaveBeenCalledTimes(0);
 	});
+
+	it("should ignore _next/data file", () => {
+		const req = new NextRequest(
+			new Request(
+				"https://test.nice.org.uk/_next/data/n28OoOS6j6fuYoLrSL0vz/indicators/inconsultation.json"
+			),
+			{}
+		);
+
+		middleware(req);
+
+		expect(redirectSpy).toHaveBeenCalledTimes(0);
+	});
 });
