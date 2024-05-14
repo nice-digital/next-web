@@ -46,11 +46,17 @@ Make sure you say "yes" to confirm the changes.
 ## Gotchas
 
 ### Update of NextWeb config variables in Octopus Deploy don't result in a task/variable update in ECS
-Problem:- Terraform only detects and applies differences found in TF files. If you update variables in Octopus which are stored in the NextWeb config directly and no other changes are present then the deployment wont actually deploy anything to ECS. 
+Problem:
+Terraform only detects and applies differences found in TF files. If you update variables in Octopus which are stored in the NextWeb config directly and no other changes are present then the deployment wont actually deploy anything to ECS. 
 
-Solution:- 
+Solution:
 If you only make a change to NextWeb config (such as an api key) and you need it to deploy - you need to create a new release. This is best achieved by triggering a Teamcity build as the last four digits of the build number need to be different.
 
+Question:
+Where is the Terraform backend state configuration stored/configured?
+
+Answer:
+To keep this Terraform configuration simple and contained within a single file (avoiding the need for creating modules and multiple variable input/output files), we decided to use TeamCity for handling the backend state configuration. Specifically, TeamCity replaces a placeholder string "//* TeamCity/Octopus Deploy Backend config *//" during the build process. This modified configuration is then passed into Octopus Deploy as part of a deployment step for variable replacement. Since this was one of a few pilot Terraform projects for our organization, we might adjust this approach in the future to align with Terraform best practices.
 
 ### Random Commands
 
