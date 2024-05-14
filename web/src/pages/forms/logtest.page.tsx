@@ -14,7 +14,7 @@ export default function LogTestPage(): JSX.Element {
 		<>
 			<NextSeo title="Log test" noindex />
 			<h1>Log test</h1>
-			<p>It&apos;s big, it&apos;s heavy, it&apos;s wood</p>
+			<p>Logging test page</p>
 		</>
 	);
 }
