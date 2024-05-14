@@ -43,6 +43,13 @@ Make sure you say "yes" to confirm the changes.
 
 ## Troubleshooting
 
+## Gotchas
+
+### Update of NextWeb config variables in Octopus Deploy don't result in a task/variable update in ECS
+Problem:- Terraform only detects and applies differences found in TF files. If you update variables in Octopus which are stored in the NextWeb config directly and no other changes are present then the deployment wont actually deploy anything to ECS. 
+
+Solution:- 
+If you only make a change to NextWeb config (such as an api key) and you need it to deploy - you need to create a new release. This is best achieved by triggering a Teamcity build as the last four digits of the build number need to be different.
 
 
 ### Random Commands
