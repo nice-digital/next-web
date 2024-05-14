@@ -9,7 +9,7 @@ terraform {
   required_version = ">= 0.14"
   required_providers {
   }
-  //* Teamcity/Octopus Delploy Backend config *//
+  //* Teamcity/Octopus Deploy Backend config *//
 }
 
 ##################################################################################
