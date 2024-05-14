@@ -58,5 +58,11 @@ Where is the Terraform backend state configuration stored/configured?
 Answer:
 To keep this Terraform configuration simple and contained within a single file (avoiding the need for creating modules and multiple variable input/output files), we decided to use TeamCity for handling the backend state configuration. Specifically, TeamCity replaces a placeholder string "//* TeamCity/Octopus Deploy Backend config *//" during the build process. This modified configuration is then passed into Octopus Deploy as part of a deployment step for variable replacement. Since this was one of a few pilot Terraform projects for our organization, we might adjust this approach in the future to align with Terraform best practices.
 
+Question:
+Where is the Terraform backend configuration stored?
+
+Answer:
+When developing locally, the Terraform backend configuration is stored on disk using the Terraform file state provider. When running in AWS and deployed via our TeamCity/Octopus Deploy pipeline, it is stored in an AWS S3 bucket specific to each environment.
+
 ### Random Commands
 
