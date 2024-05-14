@@ -23,7 +23,7 @@ provider "aws" {
   skip_metadata_api_check     = true
   skip_region_validation      = true
   skip_credentials_validation = true
-  skip_requesting_account_id = false
+  skip_requesting_account_id  = false
 }
 
 ##################################################################################
@@ -31,12 +31,12 @@ provider "aws" {
 ##################################################################################
 
 locals {
-	default_tags = {
-		org_name = var.org_name
-		application_name = var.application_name
-		environment_name = var.environment_name
-}
-	name = "${var.org_name}-${var.application_name}-${var.environment_name}"
+  default_tags = {
+    org_name         = var.org_name
+    application_name = var.application_name
+    environment_name = var.environment_name
+  }
+  name = "${var.org_name}-${var.application_name}-${var.environment_name}"
 }
 
 ##################################################################################
@@ -53,7 +53,7 @@ resource "aws_ecs_task_definition" "nextweb-main-task" {
   requires_compatibilities = ["FARGATE"]
   cpu                      = var.resource_cpu
   memory                   = var.resource_mem
-	task_role_arn            = var.ecs_task_role
+  task_role_arn            = var.ecs_task_role
   execution_role_arn       = aws_iam_role.ecs_task_execution_role.arn
 
   container_definitions = jsonencode([
@@ -69,7 +69,7 @@ resource "aws_ecs_task_definition" "nextweb-main-task" {
           value = var.node_env
         }
       ]
-	  mountPoints = [
+      mountPoints = [
         {
           sourceVolume  = "config",
           containerPath = "/next-web/config"
@@ -84,12 +84,12 @@ resource "aws_ecs_task_definition" "nextweb-main-task" {
         }
       ],
       healthCheck = {
-		retries = 10
-		command = [ "CMD-SHELL", "curl -f http://localhost:3000/status || exit 1" ]
-		timeout: 5
-		interval: 10
-		startPeriod: 30
-    	}
+        retries = 10
+        command = ["CMD-SHELL", "curl -f http://localhost:3000/status || exit 1"]
+        timeout : 5
+        interval : 10
+        startPeriod : 30
+      }
     }
   ])
 
@@ -98,7 +98,7 @@ resource "aws_ecs_task_definition" "nextweb-main-task" {
     cpu_architecture        = "X86_64"
   }
 
-    volume {
+  volume {
     name = "config"
 
     efs_volume_configuration {
@@ -133,20 +133,20 @@ resource "aws_iam_role_policy_attachment" "ecs_task_execution_role_policy" {
 }
 
 resource "aws_ecs_service" "nextweb-ecs-service" {
-  name            = "${local.name}-service"
-  cluster         = aws_ecs_cluster.nextweb-cluster.id
-  task_definition = aws_ecs_task_definition.nextweb-main-task.arn
-  desired_count   = var.server_count
-  launch_type     = "FARGATE"
-	enable_execute_command = true
+  name                   = "${local.name}-service"
+  cluster                = aws_ecs_cluster.nextweb-cluster.id
+  task_definition        = aws_ecs_task_definition.nextweb-main-task.arn
+  desired_count          = var.server_count
+  launch_type            = "FARGATE"
+  enable_execute_command = true
 
   network_configuration {
-    subnets = var.nextweb_ecs_subnets
-    security_groups = var.nextweb_ecs_sg
+    subnets          = var.nextweb_ecs_subnets
+    security_groups  = var.nextweb_ecs_sg
     assign_public_ip = false
   }
 
-    load_balancer {
+  load_balancer {
     target_group_arn = var.load_balancer_tg
     container_name   = "nextweb-container"
     container_port   = 3000

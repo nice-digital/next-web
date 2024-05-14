@@ -2,44 +2,44 @@
 # VARIABLES
 ##################################################################################
 variable "org_name" {
-    type = string
+  type = string
 }
 variable "environment_name" {
-    type = string
+  type = string
 }
 variable "application_name" {
-    type = string
+  type = string
 }
 variable "docker_image_address" {
-    type = string
+  type = string
 }
 variable "docker_image_build_number" {
-    type = string
+  type = string
 }
 variable "nextweb_efs_config_volume" {
-    type = string
+  type = string
 }
 variable "nextweb_ecs_subnets" {
-  type    = list(string)
+  type = list(string)
 }
 variable "nextweb_ecs_sg" {
-  type    = list(string)
+  type = list(string)
 }
 variable "load_balancer_tg" {
-  type    = string
+  type = string
 }
 variable "node_env" {
-  type    = string
+  type = string
 }
 variable "resource_cpu" {
-  type    = number
+  type = number
 }
 variable "resource_mem" {
-  type    = number
+  type = number
 }
 variable "ecs_task_role" {
-	type   = string
+  type = string
 }
 variable "server_count" {
-  type    = number
+  type = number
 }
