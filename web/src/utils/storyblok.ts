@@ -8,8 +8,8 @@ import {
 	type ISbError,
 	type ISbStoryData,
 } from "@storyblok/react";
-import { type MetaTag } from "next-seo/lib/types";
 import { Redirect } from "next/types";
+import { type MetaTag } from "next-seo/lib/types";
 import { StoryblokStory } from "storyblok-generate-ts";
 
 import { publicRuntimeConfig } from "@/config";
@@ -51,6 +51,9 @@ export const usingOcelotCache = !!publicRuntimeConfig.storyblok.ocelotEndpoint;
 // Default podcast image
 export const defaultPodcastImage =
 	publicRuntimeConfig.publicBaseURL + "/img/nice-talks.png";
+
+export const GENERIC_ERROR_MESSAGE =
+	"Oops! Something went wrong and we're working to fix it. Please try again later.";
 
 // Fetch a single story from the Storyblok API
 export const fetchStory = async <T>(

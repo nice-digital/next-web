@@ -3,6 +3,7 @@ import { GetServerSidePropsContext } from "next";
 
 import { mockPodcastPage } from "@/test-utils/storyblok-data";
 import * as storyblokUtils from "@/utils/storyblok";
+import { GENERIC_ERROR_MESSAGE } from "@/utils/storyblok";
 
 import PodcastPage, { getServerSideProps } from "./[slug].page";
 
@@ -101,7 +102,7 @@ describe("PodcastPage", () => {
 
 			const result = await getServerSideProps(context);
 
-			expect(result).toEqual({ props: { error: errorMessage } });
+			expect(result).toEqual({ props: { error: GENERIC_ERROR_MESSAGE } });
 		});
 
 		it("should return a generic error message if fetchStory returns an error without a message", async () => {
@@ -116,8 +117,7 @@ describe("PodcastPage", () => {
 			const result = await getServerSideProps(context);
 			expect(result).toEqual({
 				props: {
-					error:
-						"Oops! Something went wrong and we're working to fix it. Please try again later.",
+					error: GENERIC_ERROR_MESSAGE,
 				},
 			});
 		});

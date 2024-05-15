@@ -28,6 +28,7 @@ import {
 	fetchStories,
 	getStoryVersionFromQuery,
 	getAdditionalMetaTags,
+	GENERIC_ERROR_MESSAGE,
 } from "@/utils/storyblok";
 
 import type { GetServerSidePropsContext } from "next";
@@ -136,8 +137,7 @@ export async function getServerSideProps(context: GetServerSidePropsContext) {
 	} catch (error) {
 		return {
 			props: {
-				error:
-					"Oops! Something went wrong and we're working to fix it. Please try again later.",
+				error: GENERIC_ERROR_MESSAGE,
 			},
 		};
 	}

@@ -1,7 +1,7 @@
 import { ISbStoriesParams } from "@storyblok/react";
 import { GetServerSidePropsContext } from "next";
-import { NextSeo } from "next-seo";
 import Image from "next/image";
+import { NextSeo } from "next-seo";
 import { StoryblokStory } from "storyblok-generate-ts";
 
 import { Breadcrumbs, Breadcrumb } from "@nice-digital/nds-breadcrumbs";
@@ -28,6 +28,7 @@ import {
 	fetchStories,
 	defaultPodcastImage,
 	friendlyDate,
+	GENERIC_ERROR_MESSAGE,
 } from "@/utils/storyblok";
 
 import styles from "./index.module.scss";
@@ -269,8 +270,7 @@ export async function getServerSideProps(context: GetServerSidePropsContext) {
 	} catch (error) {
 		return {
 			props: {
-				error:
-					"Oops! Something went wrong and we're working to fix it. Please try again later.",
+				error: GENERIC_ERROR_MESSAGE,
 			},
 		};
 	}

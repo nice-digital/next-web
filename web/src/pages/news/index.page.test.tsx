@@ -10,6 +10,7 @@ import {
 } from "@/test-utils/storyblok-data";
 import * as storyblokUtils from "@/utils/storyblok";
 
+import { GENERIC_ERROR_MESSAGE } from "@/utils/storyblok";
 import {
 	getServerSideProps,
 	NewsIndexPage,
@@ -22,8 +23,7 @@ const mockProps: NewsIndexProps = {
 	blogPosts: [mockBlogPost],
 	podcasts: [mockPodcastPage],
 };
-const expectedErrorMessage =
-	"Oops! Something went wrong and we're working to fix it. Please try again later.";
+const expectedErrorMessage = GENERIC_ERROR_MESSAGE;
 
 // Example data for successful fetch
 const mockNewsArticles = { stories: [mockNewsArticle] };
@@ -58,8 +58,7 @@ describe("getServerSideProps", () => {
 
 		expect(response).toEqual({
 			props: {
-				error:
-					"Oops! Something went wrong and we're working to fix it. Please try again later.",
+				error: GENERIC_ERROR_MESSAGE,
 			},
 		});
 	});

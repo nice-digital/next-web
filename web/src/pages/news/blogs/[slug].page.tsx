@@ -1,5 +1,4 @@
 import { StoryblokComponent, setComponents } from "@storyblok/react";
-import { isError } from "lodash";
 import { NextSeo } from "next-seo";
 import React, { useMemo } from "react";
 import { type StoryblokStory } from "storyblok-generate-ts";
@@ -17,6 +16,7 @@ import {
 	getStoryVersionFromQuery,
 	getSlugFromParams,
 	getAdditionalMetaTags,
+	GENERIC_ERROR_MESSAGE,
 } from "@/utils/storyblok";
 
 import type { GetServerSidePropsContext } from "next";
@@ -114,9 +114,7 @@ export async function getServerSideProps(context: GetServerSidePropsContext) {
 	} catch (error) {
 		return {
 			props: {
-				error: isError(error)
-					? error.message
-					: "Oops! Something went wrong and we're working to fix it. Please try again later.",
+				error: GENERIC_ERROR_MESSAGE,
 			},
 		};
 	}
