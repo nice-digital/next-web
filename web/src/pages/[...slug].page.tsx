@@ -5,7 +5,9 @@ import {
 } from "@storyblok/react";
 import { NextSeo } from "next-seo";
 import React, { useMemo } from "react";
+import { StoryblokStory } from "storyblok-generate-ts";
 
+import { ErrorPageContent } from "@/components/ErrorPageContent/ErrorPageContent";
 import { Blockquote } from "@/components/Storyblok/Blockquote/Blockquote";
 import { CardGrid } from "@/components/Storyblok/CardGrid/CardGrid";
 import { CategoryNavigation } from "@/components/Storyblok/CategoryNavigation/CategoryNavigation";
@@ -17,6 +19,7 @@ import { StoryblokIframe } from "@/components/Storyblok/StoryblokIframe/Storyblo
 import { StoryblokPageHeader } from "@/components/Storyblok/StoryblokPageHeader/StoryblokPageHeader";
 import { StoryblokYoutubeEmbed } from "@/components/Storyblok/StoryblokYoutubeEmbed/StoryblokYoutubeEmbed";
 import { publicRuntimeConfig } from "@/config";
+import { logger } from "@/logger";
 import { type Breadcrumb } from "@/types/Breadcrumb";
 import {
 	CategoryNavigationStoryblok,
@@ -32,23 +35,43 @@ import {
 
 import type { GetServerSidePropsContext } from "next";
 
-interface SlugCatchAllProps {
-	story: ISbStoryData;
+export type SlugCatchAllSuccessProps = {
+	story: StoryblokStory<InfoPageStoryblok | CategoryNavigationStoryblok>;
 	breadcrumbs: Breadcrumb[];
-	siblingPages?: string[]; // Eventually this will be an array of pages
+	siblingPages?: string[];
 	component: string;
-}
+};
 
-export default function SlugCatchAll({
-	story,
-	breadcrumbs,
-	siblingPages,
-	component,
-}: SlugCatchAllProps): React.ReactElement {
-	const additionalMetaTags = useMemo(
-		() => getAdditionalMetaTags(story),
-		[story]
-	);
+export type SlugCatchAllErrorProps = {
+	error: string;
+};
+
+export type SlugCatchAllProps =
+	| SlugCatchAllSuccessProps
+	| SlugCatchAllErrorProps;
+
+export default function SlugCatchAll(
+	props: SlugCatchAllProps
+): React.ReactElement {
+	const story = "story" in props ? props.story : null;
+
+	const additionalMetaTags = useMemo(() => {
+		if (story) {
+			return getAdditionalMetaTags(story);
+		} else {
+			logger.error(
+				`Story is not available for additionalMetaTags in BlogPostPage.`
+			);
+			return undefined;
+		}
+	}, [story]);
+
+	if ("error" in props) {
+		const { error } = props;
+		return <ErrorPageContent title="Error" heading={error} />;
+	}
+
+	const { story: storyData, breadcrumbs, siblingPages, component } = props;
 
 	const commonComponents = {
 		cardGrid: CardGrid,
@@ -74,7 +97,7 @@ export default function SlugCatchAll({
 
 	setComponents(components);
 
-	const title = story.name;
+	const title = storyData.name;
 
 	return (
 		<>
@@ -84,7 +107,7 @@ export default function SlugCatchAll({
 				additionalMetaTags={additionalMetaTags}
 			></NextSeo>
 			<StoryblokComponent
-				blok={story.content}
+				blok={storyData.content}
 				breadcrumbs={breadcrumbs}
 				siblingPages={siblingPages}
 			/>
@@ -104,7 +127,14 @@ export async function getServerSideProps(context: GetServerSidePropsContext) {
 
 	// Resolve slug from params
 	const slug = getSlugFromParams(params?.slug);
-	if (slug) {
+
+	if (!slug) {
+		return {
+			notFound: true,
+		};
+	}
+
+	try {
 		const version = getStoryVersionFromQuery(query);
 
 		// Get the story and its breadcrumbs
@@ -137,9 +167,11 @@ export async function getServerSideProps(context: GetServerSidePropsContext) {
 		};
 
 		return result;
-	} else {
+	} catch (error) {
 		return {
-			notFound: true,
+			props: {
+				error: "Oops! Something went wrong. Please try again later.",
+			},
 		};
 	}
 }

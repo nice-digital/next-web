@@ -100,6 +100,7 @@ export interface FeedsConfig {
 export interface StoryblokConfig {
 	readonly previewAccessToken: string;
 	readonly publicAccessToken: string;
+	readonly storyblokApiKey: string;
 	readonly ocelotEndpoint: string;
 	readonly enableRootCatchAll: string;
 }
@@ -110,6 +111,7 @@ export interface StoryblokConfig {
 export interface ServerConfig {
 	cache: CacheConfig;
 	feeds: FeedsConfig;
+	storyblok: StoryblokConfig;
 }
 
 export { publicRuntimeConfig, serverRuntimeConfig };
