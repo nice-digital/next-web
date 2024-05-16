@@ -176,7 +176,7 @@ export const getGetServerSidePropsFunc =
 			title,
 			url:
 				`${productPath}/${resourceTypeSlug}/${params.partSlug}` +
-				(i === 0 ? "" : `/chapters/${chapterSlug}`),
+				(i === 0 ? "" : `/chapter/${chapterSlug}`),
 		}));
 		const chapterSections = arrayify(
 			currentChapterContent.embedded?.htmlChapterSectionInfo
