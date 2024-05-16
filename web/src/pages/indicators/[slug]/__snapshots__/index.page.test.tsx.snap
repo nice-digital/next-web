@@ -223,7 +223,7 @@ exports[`/indicators/[slug].page IndicatorDetailPage should match snapshot for m
             >
               <a
                 aria-current="false"
-                href="/guidance/ng100/chapters/recommendations"
+                href="/guidance/ng100/chapter/recommendations"
               >
                 <span
                   class="stacked-nav__content-wrapper"
@@ -239,7 +239,7 @@ exports[`/indicators/[slug].page IndicatorDetailPage should match snapshot for m
             >
               <a
                 aria-current="false"
-                href="/guidance/ng100/chapters/recommendations-for-research"
+                href="/guidance/ng100/chapter/recommendations-for-research"
               >
                 <span
                   class="stacked-nav__content-wrapper"
@@ -255,7 +255,7 @@ exports[`/indicators/[slug].page IndicatorDetailPage should match snapshot for m
             >
               <a
                 aria-current="false"
-                href="/guidance/ng100/chapters/rationale-and-impact"
+                href="/guidance/ng100/chapter/rationale-and-impact"
               >
                 <span
                   class="stacked-nav__content-wrapper"
@@ -271,7 +271,7 @@ exports[`/indicators/[slug].page IndicatorDetailPage should match snapshot for m
             >
               <a
                 aria-current="false"
-                href="/guidance/ng100/chapters/context"
+                href="/guidance/ng100/chapter/context"
               >
                 <span
                   class="stacked-nav__content-wrapper"
@@ -287,7 +287,7 @@ exports[`/indicators/[slug].page IndicatorDetailPage should match snapshot for m
             >
               <a
                 aria-current="false"
-                href="/guidance/ng100/chapters/finding-more-information-and-committee-details"
+                href="/guidance/ng100/chapter/finding-more-information-and-committee-details"
               >
                 <span
                   class="stacked-nav__content-wrapper"
@@ -303,7 +303,7 @@ exports[`/indicators/[slug].page IndicatorDetailPage should match snapshot for m
             >
               <a
                 aria-current="false"
-                href="/guidance/ng100/chapters/update-information"
+                href="/guidance/ng100/chapter/update-information"
               >
                 <span
                   class="stacked-nav__content-wrapper"
@@ -511,7 +511,7 @@ exports[`/indicators/[slug].page IndicatorDetailPage should match snapshot for m
           >
             <a
               class="prev-next__link"
-              href="/guidance/ng100/chapters/recommendations"
+              href="/guidance/ng100/chapter/recommendations"
             >
               <span
                 class="prev-next__link-intro"

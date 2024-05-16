@@ -77,7 +77,7 @@ export const getChapterLinks = (
 			.filter(({ title }) => title !== overviewTitle || !product.summary)
 			.map(({ title, chapterSlug }) => ({
 				title,
-				url: `${productPath}/chapters/${chapterSlug}`,
+				url: `${productPath}/chapter/${chapterSlug}`,
 			})),
 	];
 };
@@ -153,7 +153,7 @@ export const validateRouteParams = async ({
 
 	const historyPanels = project
 		? arrayify(
-				project.embedded.niceIndevPanelList.embedded.niceIndevPanel
+				project.embedded.niceIndevPanelList?.embedded?.niceIndevPanel
 		  ).filter((panel) => panel.showPanel && panel.panelType == "History")
 		: [];
 
