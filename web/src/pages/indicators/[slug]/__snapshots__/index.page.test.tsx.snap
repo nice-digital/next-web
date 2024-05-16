@@ -179,7 +179,7 @@ exports[`/indicators/[slug].page IndicatorDetailPage should match snapshot for m
           aria-label="Download indicator PDF file"
           class="btn btn--cta download"
           data-component="button--cta"
-          href="/guidance/ng100/NG100.pdf"
+          href="/guidance/ng100/NG100-20220530.pdf"
           target="_blank"
         >
           Download indicator

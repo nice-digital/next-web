@@ -658,7 +658,7 @@ Object {
     "hasHistory": true,
     "hasInfoForPublicResources": true,
     "hasToolsAndResources": true,
-    "pdfDownloadPath": "/guidance/ng100/NG100.pdf",
+    "pdfDownloadPath": "/guidance/ng100/NG100-20220530.pdf",
     "product": Object {
       "id": "NG100",
       "indicatorSubTypeList": Array [],
@@ -851,7 +851,7 @@ exports[`/indicators/[slug]/chapter/[chapterSlug].page IndicatorChapterPage shou
           aria-label="Download indicator PDF file"
           class="btn btn--cta download"
           data-component="button--cta"
-          href="/guidance/ng100/NG100.pdf"
+          href="/guidance/ng100/NG100-20220530.pdf"
           target="_blank"
         >
           Download indicator
