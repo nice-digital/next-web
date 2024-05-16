@@ -1,3 +1,15 @@
+<!-- START doctoc generated TOC please keep comment here to allow auto update -->
+<!-- DON'T EDIT THIS SECTION, INSTEAD RE-RUN doctoc TO UPDATE -->
+
+- [Next Web](#next-web)
+  - [Project structure](#project-structure)
+  - [Stack](#stack)
+    - [Linting](#linting)
+    - [Tests](#tests)
+  - [JotForms Integration](#jotforms-integration)
+
+<!-- END doctoc generated TOC please keep comment here to allow auto update -->
+
 # Next Web
 
 > Website front-end for www.nice.org.uk using NextJS
@@ -6,11 +18,11 @@
 
 The repository is set up as a monorepo. That is, there are various sub folders providing different parts of the project e.g. the web app and functional tests:
 
-| Folder                      | Purpose                            |
-| --------------------------- | ---------------------------------- |
-| [web](web#readme)           | NextJS web app                     |
-| [web-host](web-host#readme) | PM2 hosting for the NextJS web app |
-| [api](api#readme)           | Ocelot Api Cache                   |
+| Folder                      | Purpose                                |
+| --------------------------- | ---------------------------------------|
+| [web](web#readme)           | NextJS web app                         |
+| [aws](aws#readme)           | AWS ECS hosting for the NextJS web app |
+| [api](api#readme)           | Ocelot Api Cache                       |
 
 ## Stack
 
