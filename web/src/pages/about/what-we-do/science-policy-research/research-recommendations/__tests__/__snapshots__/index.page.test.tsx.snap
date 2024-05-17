@@ -158,13 +158,15 @@ exports[`/research-recommendations/index should match the snapshot 1`] = `
       <p
         class="lead"
       >
-        Read our 
+        Read our
+         
         <a
           href="https://www.nice.org.uk/process/pmg45"
         >
           research recommendations process and methods guide
         </a>
-        . For more information email 
+        . For more information email
+         
         <a
           href="mailto:research@nice.org.uk"
         >
