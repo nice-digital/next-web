@@ -307,18 +307,6 @@ exports[`Publication tools and resources page ToolsAndResourcesListPage should m
                         <dt
                           class="visually-hidden"
                         >
-                          Type
-                        </dt>
-                        <dd>
-                          Audit and service improvement
-                        </dd>
-                      </div>
-                      <div
-                        class="card__metadatum"
-                      >
-                        <dt
-                          class="visually-hidden"
-                        >
                           Date
                         </dt>
                         <dd>
@@ -327,30 +315,6 @@ exports[`Publication tools and resources page ToolsAndResourcesListPage should m
                           >
                             12 October 2020
                           </time>
-                        </dd>
-                      </div>
-                      <div
-                        class="card__metadatum"
-                      >
-                        <dt
-                          class="visually-hidden"
-                        >
-                          File type
-                        </dt>
-                        <dd>
-                          Excel
-                        </dd>
-                      </div>
-                      <div
-                        class="card__metadatum"
-                      >
-                        <dt
-                          class="visually-hidden"
-                        >
-                          File size
-                        </dt>
-                        <dd>
-                          48 kB
                         </dd>
                       </div>
                     </dl>
@@ -394,22 +358,7 @@ exports[`Publication tools and resources page ToolsAndResourcesListPage should m
                         </a>
                       </p>
                     </header>
-                    <dl
-                      class="card__metadata"
-                    >
-                      <div
-                        class="card__metadatum"
-                      >
-                        <dt
-                          class="visually-hidden"
-                        >
-                          Type
-                        </dt>
-                        <dd>
-                          Implementation support
-                        </dd>
-                      </div>
-                    </dl>
+                    0
                   </article>
                 </li>
                 <li>
@@ -430,22 +379,7 @@ exports[`Publication tools and resources page ToolsAndResourcesListPage should m
                         </a>
                       </p>
                     </header>
-                    <dl
-                      class="card__metadata"
-                    >
-                      <div
-                        class="card__metadatum"
-                      >
-                        <dt
-                          class="visually-hidden"
-                        >
-                          Type
-                        </dt>
-                        <dd>
-                          Implementation support
-                        </dd>
-                      </div>
-                    </dl>
+                    0
                   </article>
                 </li>
                 <li>
@@ -466,22 +400,7 @@ exports[`Publication tools and resources page ToolsAndResourcesListPage should m
                         </a>
                       </p>
                     </header>
-                    <dl
-                      class="card__metadata"
-                    >
-                      <div
-                        class="card__metadatum"
-                      >
-                        <dt
-                          class="visually-hidden"
-                        >
-                          Type
-                        </dt>
-                        <dd>
-                          Implementation support
-                        </dd>
-                      </div>
-                    </dl>
+                    0
                   </article>
                 </li>
               </ul>
@@ -522,22 +441,7 @@ exports[`Publication tools and resources page ToolsAndResourcesListPage should m
                         </a>
                       </p>
                     </header>
-                    <dl
-                      class="card__metadata"
-                    >
-                      <div
-                        class="card__metadatum"
-                      >
-                        <dt
-                          class="visually-hidden"
-                        >
-                          Type
-                        </dt>
-                        <dd>
-                          Resource impact
-                        </dd>
-                      </div>
-                    </dl>
+                    0
                   </article>
                 </li>
               </ul>
@@ -594,18 +498,6 @@ exports[`Publication tools and resources page ToolsAndResourcesListPage should m
                         <dt
                           class="visually-hidden"
                         >
-                          Type
-                        </dt>
-                        <dd>
-                          Summary versions
-                        </dd>
-                      </div>
-                      <div
-                        class="card__metadatum"
-                      >
-                        <dt
-                          class="visually-hidden"
-                        >
                           Date
                         </dt>
                         <dd>
@@ -614,30 +506,6 @@ exports[`Publication tools and resources page ToolsAndResourcesListPage should m
                           >
                             11 July 2018
                           </time>
-                        </dd>
-                      </div>
-                      <div
-                        class="card__metadatum"
-                      >
-                        <dt
-                          class="visually-hidden"
-                        >
-                          File type
-                        </dt>
-                        <dd>
-                          PDF
-                        </dd>
-                      </div>
-                      <div
-                        class="card__metadatum"
-                      >
-                        <dt
-                          class="visually-hidden"
-                        >
-                          File size
-                        </dt>
-                        <dd>
-                          189 kB
                         </dd>
                       </div>
                     </dl>
@@ -677,18 +545,6 @@ exports[`Publication tools and resources page ToolsAndResourcesListPage should m
                         <dt
                           class="visually-hidden"
                         >
-                          Type
-                        </dt>
-                        <dd>
-                          Summary versions
-                        </dd>
-                      </div>
-                      <div
-                        class="card__metadatum"
-                      >
-                        <dt
-                          class="visually-hidden"
-                        >
                           Date
                         </dt>
                         <dd>
@@ -697,30 +553,6 @@ exports[`Publication tools and resources page ToolsAndResourcesListPage should m
                           >
                             11 July 2018
                           </time>
-                        </dd>
-                      </div>
-                      <div
-                        class="card__metadatum"
-                      >
-                        <dt
-                          class="visually-hidden"
-                        >
-                          File type
-                        </dt>
-                        <dd>
-                          PDF
-                        </dd>
-                      </div>
-                      <div
-                        class="card__metadatum"
-                      >
-                        <dt
-                          class="visually-hidden"
-                        >
-                          File size
-                        </dt>
-                        <dd>
-                          192 kB
                         </dd>
                       </div>
                     </dl>
