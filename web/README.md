@@ -6,23 +6,25 @@
 
 <details>
 <summary><strong>Table of contents</strong></summary>
-<!-- START doctoc -->
+<!-- START doctoc generated TOC please keep comment here to allow auto update -->
+<!-- DON'T EDIT THIS SECTION, INSTEAD RE-RUN doctoc TO UPDATE -->
+- [Stack](#stack)
 
 - [Stack](#stack)
-	- [Software](#software)
-	- [React and NextJS learning resources](#react-and-nextjs-learning-resources)
-	- [TypeScript path mapping](#typescript-path-mapping)
-	- [Logging](#logging)
-		- [RabbitMQ locally](#rabbitmq-locally)
-		- [Logging performance](#logging-performance)
+  - [Software](#software)
+  - [React and NextJS learning resources](#react-and-nextjs-learning-resources)
+  - [TypeScript path mapping](#typescript-path-mapping)
+  - [Logging](#logging)
+    - [RabbitMQ locally](#rabbitmq-locally)
+    - [Logging performance](#logging-performance)
 - [Config](#config)
-	- [Secrets](#secrets)
+  - [Secrets](#secrets)
 - [:rocket: Set up](#rocket-set-up)
 - [Production hosting](#production-hosting)
-	- [NextJS server](#nextjs-server)
-	- [PM2](#pm2)
+  - [NextJS server](#nextjs-server)
+  - [AWS EC2](#aws-ec2)
 
-<!-- END doctoc -->
+<!-- END doctoc generated TOC please keep comment here to allow auto update -->
 </details>
 
 ## Stack
@@ -151,10 +153,8 @@ Run `npm start` to run the built in NextJS server as a single process.
 
 This is a good, quick way to verify the production build works properly but it's not 100% representative of how it runs in production. For example, it's a single process rather than clustered over multiple CPU cores. Using PM2 (below) is a more 'production-like' approach:
 
-### PM2
+### AWS EC2
 
-[PM2](https://pm2.keymetrics.io/) is a daemon process manager for Node. It allows scaling Node processes over multiple cores, process management, restarts and zero-downtime deployments, amongst other things. We use PM2 to host the Next application in production.
+[AWS EC2](https://aws.amazon.com/ec2/) Docker is a platform for developing, shipping, and running applications inside containers. AWS Elastic Container Service (ECS) is a fully managed container orchestration service that makes it easy to deploy, manage, and scale containerized applications using Docker. We use Docker containers hosted on AWS ECS to manage the deployment and scaling of our Next application in production, ensuring efficient resource utilization, process isolation, and seamless scaling across multiple instances. Terraform is used to automate the provisioning and deployment of our infrastructure on AWS, enabling consistent and repeatable deployments via Teamcity and Octopus Deploy.
 
-> Note: We've opted to use existing server infrastructure (hence use of PM2) in the short term for ease and speed. We ~might~ migrate to serverless infrastructure in the future at which point we'll remove PM2.
-
-See the [web-host](../web-host) folder for more information.
+See the [aws](../aws) folder for more information.

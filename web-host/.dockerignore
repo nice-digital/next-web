@@ -1,8 +1,0 @@
-# We exclude pretty much everything apart from the pm2 ecosystem file here
-current
-node_modules
-Deploy.ps1
-NICE.NextWeb.WebHost.nuspec
-package-lock.json
-package.json
-README.md
