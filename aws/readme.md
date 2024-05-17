@@ -1,3 +1,20 @@
+<!-- START doctoc generated TOC please keep comment here to allow auto update -->
+<!-- DON'T EDIT THIS SECTION, INSTEAD RE-RUN doctoc TO UPDATE -->
+
+- [AWS Performance Testing](#aws-performance-testing)
+  - [What is it?](#what-is-it)
+  - [How to use?](#how-to-use)
+    - [Install and dev locally](#install-and-dev-locally)
+    - [Configure](#configure)
+    - [Usage locally](#usage-locally)
+    - [Destroying the instances once finished](#destroying-the-instances-once-finished)
+  - [Troubleshooting](#troubleshooting)
+  - [Gotchas](#gotchas)
+    - [Update of NextWeb config variables in Octopus Deploy don't result in a task/variable update in ECS](#update-of-nextweb-config-variables-in-octopus-deploy-dont-result-in-a-taskvariable-update-in-ecs)
+    - [Random Commands](#random-commands)
+
+<!-- END doctoc generated TOC please keep comment here to allow auto update -->
+
 # AWS Performance Testing
 
  > These scripts allow you easily create, and update AWS ECS infrastructure to run 'containerised' NextWeb - NextJS based app using Terraform.
