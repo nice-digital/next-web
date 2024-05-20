@@ -7,7 +7,7 @@
     "build": "next build",
     "postbuild": "next-sitemap",
     "start": "next start",
-    "host": "npm start | pino-mq -c .pino-mqrc.json",
+    "host": "cross-env NODE_OPTIONS='-r next-logger' next start | pino-mq -c ./config/.pino-mqrc.json",
     "test": "cd .. && npm run test -- --selectProjects web"
   },
   "repository": {
@@ -46,7 +46,7 @@
     "lodash.throttle": "^4.1.1",
     "needle": "^2.8.0",
     "next": "^13.3.1",
-    "next-logger": "^3.0.1",
+    "next-logger": "^4.0.0",
     "next-plugin-node-config": "^1.0.2",
     "next-seo": "^5.5.0",
     "next-sitemap": "^3.1.29",
