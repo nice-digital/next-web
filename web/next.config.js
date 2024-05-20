@@ -6,6 +6,11 @@ const config = require("config"),
 	withNodeConfig = require("next-plugin-node-config");
 
 /**
+ * A list of legacy urls from indicators on Orchard, some mixed case, that need redirecting to the correct next-js route.
+ */
+const IndicatorsLegacyRedirects = require("../web/redirects/indicators_redirects");
+
+/**
  * A list of paths to hooks used in global nav that should allow transpilation.
  *
  * Avoids the error "cannot use import outside a module"
@@ -126,7 +131,7 @@ const nextConfig = {
 		];
 	},
 	async redirects() {
-		return [
+		const hardCodedRedirects = [
 			{
 				source: "/hub/published",
 				destination: "/guidance/indevelopment?ngt=NICE+guidelines",
@@ -163,6 +168,10 @@ const nextConfig = {
 				permanent: true,
 			},
 		];
+		const indicatorsRedirects = await Promise.resolve(
+			IndicatorsLegacyRedirects
+		);
+		return [...indicatorsRedirects, ...hardCodedRedirects];
 	},
 	async headers() {
 		return [
