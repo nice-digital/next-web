@@ -726,7 +726,7 @@ const nextConfig = {
 			},
 			{
 				source:
-					"/Standards-and-Indicators/GPQualityImprovements/the-percentage-of-patients-aged-75-or-over-with-a-fragility-fracture-on-or-after-1-april-2012-who-are-currently-treated-with-an-appropriate-bone-sparing-agent",
+					"/standards-and-indicators/gpqualityimprovements/the-percentage-of-patients-aged-75-or-over-with-a-fragility-fracture-on-or-after-1-april-2012-who-are-currently-treated-with-an-appropriate-bone-sparing-agent",
 				destination:
 					"/indicators/IND92-osteoporosis-bone-sparing-agents-75-years-and-over",
 				permanent: true,
@@ -908,7 +908,7 @@ const nextConfig = {
 			},
 			{
 				source:
-					"/Standards-and-Indicators/GPQualityImprovements/the-percentage-of-patients-with-dementia-diagnosed-on-or-after-1-april-2014-with-a-record-of-fbc-calcium-glucose-renal-and-liver-function-thyroid-function-tests-serum-vitamin-b12-and-folate-levels-recorded-up-to-12-months-before-entering-on-to-the-registe",
+					"/standards-and-indicators/gpqualityimprovements/the-percentage-of-patients-with-dementia-diagnosed-on-or-after-1-april-2014-with-a-record-of-fbc-calcium-glucose-renal-and-liver-function-thyroid-function-tests-serum-vitamin-b12-and-folate-levels-recorded-up-to-12-months-before-entering-on-to-the-registe",
 				destination:
 					"/indicators/IND118-dementia-target-organ-damage-all-patients",
 				permanent: true,
@@ -963,7 +963,7 @@ const nextConfig = {
 			},
 			{
 				source:
-					"/Standards-and-Indicators/GPQualityImprovements/the-percentage-of-patients-who-had-a-myocardial-infarction-in-the-preceding-1-april-to-31-march-and-who-are-currently-being-treated-with-ace-i-or-arb-if-ace-i-intolerant-dual-anti-platelet-therapy-a-statin-and-a-beta-blocker-for-those-patients-with-left-v",
+					"/standards-and-indicators/gpqualityimprovements/the-percentage-of-patients-who-had-a-myocardial-infarction-in-the-preceding-1-april-to-31-march-and-who-are-currently-being-treated-with-ace-i-or-arb-if-ace-i-intolerant-dual-anti-platelet-therapy-a-statin-and-a-beta-blocker-for-those-patients-with-left-v",
 				destination:
 					"/indicators/IND125-myocardial-infarction-medication-for-mi-in-preceding-12-months",
 				permanent: true,
