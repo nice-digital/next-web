@@ -1,4 +1,3 @@
-import { startsWith } from "lodash";
 import { NextApiResponse } from "next";
 
 import { type SBLink } from "@/types/SBLink";
@@ -9,7 +8,12 @@ function generateSiteMap(links: SBLink[]) {
    <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
      ${links
 				.map(({ real_path }) => {
-					return `
+					// Storyblok Links API won't let us supply any params to exclude
+					// certain results, so we have to weed them out here instead
+					// e.g. we don't want to see any authors
+					return real_path.includes("/authors")
+						? null
+						: `
        <url>
            <loc>https://www.nice.org.uk${`${real_path}`}</loc>
        </url>
