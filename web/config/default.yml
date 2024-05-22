@@ -30,8 +30,7 @@ public:
   jotForm:
     baseURL: https://nice.jotform.com
   storyblok:
-    previewAccessToken: SECRET
-    publicAccessToken: SECRET
+    accessToken: SECRET
     ocelotEndpoint:
     enableRootCatchAll: false
 
