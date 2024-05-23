@@ -39,8 +39,8 @@ function processTestOutput() {
   echo "Copying docker logs from docker to logs.txt"
   docker-compose logs --no-color > ./docker-output/logs.txt
 
-  echo "Copying PM2 logs out to pm2-logs.txt"
-  docker-compose exec -T next-web pm2 logs --nostream --lines 1000 > ./docker-output/pm2-logs.txt
+  # echo "Copying PM2 logs out to pm2-logs.txt"
+  # docker-compose exec -T next-web pm2 logs --nostream --lines 1000 > ./docker-output/pm2-logs.txt
 }
 
 function cleanup() {
@@ -71,6 +71,12 @@ echo "List Docker Images"
 docker image ls
 
 echo "End of List Docker Images"
+
+echo "Docker logout"
+
+docker lougout
+
+echo "Docker logout"
 
 cleanupBeforeStart
 runTests
