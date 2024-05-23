@@ -66,6 +66,12 @@ catch() {
   error=1
 }
 
+echo "List Docker Images"
+
+docker image ls
+
+echo "End of List Docker Images"
+
 cleanupBeforeStart
 runTests
 processTestOutput
