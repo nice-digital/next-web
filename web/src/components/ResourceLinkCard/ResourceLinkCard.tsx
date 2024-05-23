@@ -29,6 +29,8 @@ export const ResourceLinkCard: FC<ResourceLinkCardProps> = ({
 			: undefined,
 	].filter(isTruthy);
 
+	const cardMetaProp = cardMeta.length ? { metadata: cardMeta } : {};
+
 	return (
 		<Card
 			headingText={
@@ -50,7 +52,7 @@ export const ResourceLinkCard: FC<ResourceLinkCardProps> = ({
 						? "a"
 						: ScrollToContentStartLink,
 			}}
-			metadata={cardMeta}
+			{...cardMetaProp}
 		/>
 	);
 };
