@@ -68,10 +68,6 @@ export const fetchStory = async <T>(
 
 	let result: SBSingleResponse<T>;
 
-	if (!usingOcelotCache) {
-		sbParams.cv = Date.now();
-	}
-
 	try {
 		const response: ISbResult = await storyblokApi.get(
 			`cdn/stories/${slug}`,
@@ -212,10 +208,6 @@ export const fetchStories = async <T>(
 		resolve_links: "url",
 		...params,
 	};
-
-	if (!usingOcelotCache) {
-		sbParams.cv = Date.now();
-	}
 
 	const result: SBMultipleResponse<T> = { stories: [] };
 
