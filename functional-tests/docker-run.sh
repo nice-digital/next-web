@@ -74,7 +74,7 @@ echo "End of List Docker Images"
 
 echo "Docker logout"
 
-docker lougout
+docker logout
 
 echo "Docker logout"
 
