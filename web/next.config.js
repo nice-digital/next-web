@@ -170,7 +170,7 @@ const nextConfig = {
 			},
 			{
 				source: "/news/newsandfeatures",
-				destination: "/articles",
+				destination: "/news/articles",
 				permanent: true,
 			},
 			{
