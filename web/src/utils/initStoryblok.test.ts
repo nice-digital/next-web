@@ -8,16 +8,13 @@ jest.mock("@/config", () => ({
 	publicRuntimeConfig: {
 		storyblok: {
 			ocelotEndpoint: "testEndpoint",
-			previewAccessToken: "previewToken",
-			publicAccessToken: "publicToken",
-			storyblokApiKey: "testApiKey",
+			accessToken: "testApiKey",
 		},
 	},
 	serverRuntimeConfig: {
 		storyblok: {
-			previewAccessToken: "previewToken",
-			publicAccessToken: "publicToken",
-			storyblokApiKey: "testApiKey",
+			ocelotEndpoint: "testEndpoint",
+			accessToken: "testApiKey",
 		},
 	},
 }));

@@ -29,6 +29,7 @@ import {
 	friendlyDate,
 	validateRouteParams,
 	constructStoryblokImageSrc,
+	GENERIC_ERROR_MESSAGE,
 } from "./storyblok";
 
 describe("Storyblok utils", () => {
@@ -269,9 +270,7 @@ describe("Storyblok utils", () => {
 				await fetchStory("news/articles/test-page", "published");
 			};
 
-			expect(throwErrorFetchStory).rejects.toThrow(
-				"There was an error fetching this content. Please try again later"
-			);
+			expect(throwErrorFetchStory).rejects.toThrow(GENERIC_ERROR_MESSAGE);
 		});
 	});
 
@@ -331,7 +330,7 @@ describe("Storyblok utils", () => {
 
 			expect(throwErrorFetchStories).rejects.toThrow(
 				// "404 error from Storyblok API: Not Found"
-				"Something went wrong, please try again later."
+				GENERIC_ERROR_MESSAGE
 			);
 
 			await waitFor(() => {
@@ -359,7 +358,7 @@ describe("Storyblok utils", () => {
 
 			expect(throwErrorFetchStories).rejects.toThrow(
 				// "503 error from Storyblok API: Service Unavailable"
-				"Something went wrong, please try again later."
+				GENERIC_ERROR_MESSAGE
 			);
 
 			await waitFor(() => {
@@ -676,7 +675,7 @@ describe("Storyblok utils", () => {
 			};
 
 			expect(throwErrorValiadateRouteParams).rejects.toThrow(
-				"There was an error fetching this content. Please try again later."
+				GENERIC_ERROR_MESSAGE
 			);
 
 			await waitFor(() => {
