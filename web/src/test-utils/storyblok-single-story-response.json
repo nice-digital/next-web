@@ -1,0 +1,72 @@
+{
+  "data": {
+    "story": {
+    "name": "test page",
+    "created_at": "2024-03-19T10:53:04.665Z",
+    "published_at": "2024-03-19T11:00:17.184Z",
+    "id": 463630307,
+    "uuid": "7cdb7e21-7d7a-48e8-adbd-a3233cf01ce3",
+    "content": {
+      "_uid": "160d9dfd-18e6-48ee-8a0c-743db6fe7806",
+      "body": [],
+      "table": {
+        "tbody": [
+          {
+            "_uid": "626774c6-eeef-414b-90a6-c3719940f0da",
+            "body": [
+              {
+                "_uid": "6e64f99e-e16f-470e-a647-ddea4f44c7bc",
+                "value": "",
+                "component": "_table_col"
+              },
+              {
+                "_uid": "67cd74fe-f9d9-4fbf-9858-4fc2cb19cae9",
+                "value": "",
+                "component": "_table_col"
+              }
+            ],
+            "component": "_table_row"
+          }
+        ],
+        "thead": [
+          {
+            "_uid": "e4b88ece-36f3-4ebf-b255-f08d5b2dc7c9",
+            "value": "",
+            "component": "_table_head"
+          },
+          {
+            "_uid": "cdd66732-066b-4504-b2f8-d2723395d3f3",
+            "value": "",
+            "component": "_table_head"
+          }
+        ],
+        "fieldtype": "table"
+      },
+      "wysiwyg": { "type": "doc", "content": [{ "type": "paragraph" }] },
+      "metadata": [],
+      "component": "page",
+      "markdowntest": "| Heading | Also a heading |\n| [A link](http://www.example.com) | [Also a link](http://www.google.com) |"
+    },
+    "slug": "test-page",
+    "full_slug": "test-page",
+    "sort_by_date": null,
+    "position": 0,
+    "tag_list": [],
+    "is_startpage": false,
+    "parent_id": null,
+    "meta_data": null,
+    "group_id": "d6e9bd49-5fdc-49cd-b976-e04e3e0675dd",
+    "first_published_at": "2024-03-19T11:00:17.184Z",
+    "release_id": null,
+    "lang": "default",
+    "path": null,
+    "alternates": [],
+    "default_full_slug": null,
+    "translated_slugs": null
+  },
+  "cv": 1711448785,
+  "rels": [],
+  "links": []
+  }
+
+}
