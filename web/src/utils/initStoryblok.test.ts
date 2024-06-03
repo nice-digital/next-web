@@ -11,12 +11,6 @@ jest.mock("@/config", () => ({
 			accessToken: "testApiKey",
 		},
 	},
-	serverRuntimeConfig: {
-		storyblok: {
-			ocelotEndpoint: "testEndpoint",
-			accessToken: "testApiKey",
-		},
-	},
 }));
 
 jest.mock("@/logger", () => ({
