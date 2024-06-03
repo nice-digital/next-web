@@ -234,7 +234,6 @@ describe("Storyblok utils", () => {
 			expect(getStoryblokApi().get).toHaveBeenCalledWith(
 				"cdn/stories/news/articles/test-page",
 				{
-					cv: expect.any(Number),
 					resolve_links: "url",
 					version: "draft",
 				}
@@ -291,7 +290,6 @@ describe("Storyblok utils", () => {
 			expect(getStoryblokApi().get).toHaveBeenCalledOnce();
 
 			expect(getStoryblokApi().get).toHaveBeenCalledWith("cdn/stories", {
-				cv: expect.any(Number),
 				resolve_links: "url",
 				version: "published",
 				starts_with: "news/articles",

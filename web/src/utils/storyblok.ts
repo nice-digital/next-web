@@ -71,10 +71,6 @@ export const fetchStory = async <T>(
 
 	let result: SBSingleResponse<T>;
 
-	if (!usingOcelotCache) {
-		sbParams.cv = Date.now();
-	}
-
 	try {
 		const response: ISbResult = await storyblokApi.get(
 			`cdn/stories/${slug}`,
@@ -97,10 +93,7 @@ export const fetchStory = async <T>(
 				notFound: true,
 			};
 		} else {
-			throw Error(
-				`There was an error fetching this content. Please try again later.`,
-				{ cause: error }
-			);
+			throw Error(GENERIC_ERROR_MESSAGE, { cause: error });
 		}
 	}
 
@@ -197,10 +190,7 @@ export const validateRouteParams = async <T>({
 	} catch (error) {
 		logger.error("Error from catch in validateRouteParams: ", error);
 
-		throw new Error(
-			"There was an error fetching this content. Please try again later.",
-			{ cause: error }
-		);
+		throw new Error(GENERIC_ERROR_MESSAGE, { cause: error });
 	}
 };
 
@@ -215,10 +205,6 @@ export const fetchStories = async <T>(
 		resolve_links: "url",
 		...params,
 	};
-
-	if (!usingOcelotCache) {
-		sbParams.cv = Date.now();
-	}
 
 	const result: SBMultipleResponse<T> = { stories: [] };
 
@@ -237,7 +223,7 @@ export const fetchStories = async <T>(
 
 		throw new Error(
 			//NOTE: we probably don't want to reveal details of API error to the user
-			`Something went wrong, please try again later.`,
+			GENERIC_ERROR_MESSAGE,
 			{ cause: error }
 		);
 	}
@@ -272,7 +258,10 @@ export const fetchLinks = async (
 			`${result.status} error from Storyblok API: ${result.message}`,
 			e
 		);
-		throw Error(`${result.status} error from Storyblok API: ${result.message}`);
+		throw Error(
+			`${result.status} error from Storyblok API: ${result.message}`,
+			{ cause: e }
+		);
 	}
 
 	return result;

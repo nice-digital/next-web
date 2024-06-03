@@ -98,9 +98,7 @@ export interface FeedsConfig {
 }
 
 export interface StoryblokConfig {
-	readonly previewAccessToken: string;
-	readonly publicAccessToken: string;
-	readonly storyblokApiKey: string;
+	readonly accessToken: string;
 	readonly ocelotEndpoint: string;
 	readonly enableRootCatchAll: string;
 }
