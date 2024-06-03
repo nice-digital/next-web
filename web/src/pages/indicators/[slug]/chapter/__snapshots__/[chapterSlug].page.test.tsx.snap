@@ -744,53 +744,44 @@ exports[`/indicators/[slug]/chapter/[chapterSlug].page IndicatorChapterPage shou
 }
     </script>
     <div
-      class="page-header "
+      class="page-header"
       data-component="page-header"
       id="content-start"
     >
-      <div
-        class="grid"
+      <h1
+        class="page-header__heading page-header__heading--alt"
       >
-        <div
-          data-component="grid-item"
-          data-g="12 md:12"
-        >
-          <h1
-            class="page-header__heading page-header__heading--alt"
+        Rheumatoid arthritis in adults: management
+      </h1>
+      <ul
+        class="page-header__metadata"
+      >
+        <li>
+          NICE guideline
+        </li>
+        <li>
+          NG100
+        </li>
+        <li>
+          Published:
+          <time
+            datetime="2018-07-11"
           >
-            Rheumatoid arthritis in adults: management
-          </h1>
-          <ul
-            class="page-header__metadata"
+             
+            11 July 2018
+          </time>
+        </li>
+        <li>
+          Last updated:
+          <time
+            datetime="2020-10-12"
           >
-            <li>
-              NICE guideline
-            </li>
-            <li>
-              NG100
-            </li>
-            <li>
-              Published:
-              <time
-                datetime="2018-07-11"
-              >
-                 
-                11 July 2018
-              </time>
-            </li>
-            <li>
-              Last updated:
-              <time
-                datetime="2020-10-12"
-              >
-                 
-                 
-                12 October 2020
-              </time>
-            </li>
-          </ul>
-        </div>
-      </div>
+             
+             
+            12 October 2020
+          </time>
+        </li>
+      </ul>
     </div>
     <nav
       class="horizontal-nav"

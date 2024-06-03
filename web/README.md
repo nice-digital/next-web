@@ -172,4 +172,3 @@ Two things to bear in mind before you do this:
 1. You'll need to log in via the CLI, otherwise you'll get an error that you're not authorised. [Docs for installing the CLI, logging in and so on are here](https://www.storyblok.com/docs/Guides/command-line-interface). Sometimes you need to log out and in again, which is a bit annoying. If you're asked for a region when logging in, it's `eu`.
 
 2. You'll need to replace the two instances of {SPACE_ID} in the script with our actual Storyblok space ID, which isn't added to package.json for security reasons. There may be a better way to do this by reading it from our env vars, but for now this'll do.
-
