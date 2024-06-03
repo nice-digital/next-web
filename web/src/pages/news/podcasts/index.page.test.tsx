@@ -9,6 +9,7 @@ import { StoryblokStory } from "storyblok-generate-ts";
 import MockStoryblokSuccessResponse from "@/test-utils/storyblok-podcasts--listing-response.json";
 import { NewsStory } from "@/types/News";
 import * as storyblokUtils from "@/utils/storyblok";
+import { GENERIC_ERROR_MESSAGE } from "@/utils/storyblok";
 
 import {
 	getServerSideProps,
@@ -259,7 +260,7 @@ describe("/news/podcasts/index.page", () => {
 				query: { page: mockConfig.query.upperOutOfBoundPagination },
 			} as unknown as GetServerSidePropsContext<ParsedUrlQuery>);
 
-			expect(result).toEqual({ props: { error: mockErrorMessage } });
+			expect(result).toEqual({ props: { error: GENERIC_ERROR_MESSAGE } });
 		});
 
 		it("should return a general error message if there is a throw that is not an Error object", async () => {
@@ -273,8 +274,7 @@ describe("/news/podcasts/index.page", () => {
 
 			expect(result).toEqual({
 				props: {
-					error:
-						"Oops! Something went wrong and we're working to fix it. Please try again later.",
+					error: GENERIC_ERROR_MESSAGE,
 				},
 			});
 		});

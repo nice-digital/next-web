@@ -14,6 +14,7 @@ import mockResult from "@/test-utils/storyblok-homepage-result.json";
 import mockFetchStory from "@/test-utils/storyblok-homepage-storyResult-response.json";
 import { NewsStory } from "@/types/News";
 import * as storyblokUtils from "@/utils/storyblok";
+import { GENERIC_ERROR_MESSAGE } from "@/utils/storyblok";
 
 import Home, { type HomePageProps, getServerSideProps } from "./index.page";
 
@@ -42,8 +43,7 @@ const props: HomePageProps = {
 	},
 };
 
-const expectedErrorMessage =
-	"Oops! Something went wrong and we're working to fix it. Please try again later.";
+const expectedErrorMessage = GENERIC_ERROR_MESSAGE;
 
 describe("Homepage", () => {
 	it("should match snapshot for main content", () => {
