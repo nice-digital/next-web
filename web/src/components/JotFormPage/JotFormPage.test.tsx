@@ -55,9 +55,10 @@ describe("JotFormPage", () => {
 	it("should render content start id on page header", () => {
 		render(<JotFormPage {...props} />);
 
-		const contentStart = screen.getByTestId("content-start");
+		const h1 = screen.getByRole("heading", { level: 1 });
 
-		expect(contentStart.id).toBe("content-start");
+		// eslint-disable-next-line testing-library/no-node-access
+		expect(h1.parentNode).toHaveAttribute("id", "content-start");
 	});
 
 	it("should render iframe with form id and title", () => {

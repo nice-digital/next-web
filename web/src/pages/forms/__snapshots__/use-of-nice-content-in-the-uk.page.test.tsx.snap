@@ -78,30 +78,20 @@ exports[`UseOfNICEContentInTheUKForm should match snapshot 1`] = `
       data-g="12 md:12 lg:12"
     >
       <div
-        class="page-header "
+        class="page-header"
         data-component="page-header"
-        data-testid="content-start"
         id="content-start"
       >
-        <div
-          class="grid"
+        <h1
+          class="page-header__heading "
         >
-          <div
-            data-component="grid-item"
-            data-g="12 md:12"
-          >
-            <h1
-              class="page-header__heading "
-            >
-              Use of NICE content in the UK form
-            </h1>
-            <p
-              class="page-header__lead"
-            >
-              This licence allows individuals, commercial organisations and non-commercial organisations to reuse NICE content free of charge in their publications, products and systems. It applies to requests to use our content in a UK setting only.
-            </p>
-          </div>
-        </div>
+          Use of NICE content in the UK form
+        </h1>
+        <p
+          class="page-header__lead"
+        >
+          This licence allows individuals, commercial organisations and non-commercial organisations to reuse NICE content free of charge in their publications, products and systems. It applies to requests to use our content in a UK setting only.
+        </p>
       </div>
       <h2>
         Using our content in the UK

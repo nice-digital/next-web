@@ -95,30 +95,20 @@ exports[`MedicinesAndPrescribingNewsletterForm should match snapshot 1`] = `
       data-g="12 md:12 lg:12"
     >
       <div
-        class="page-header "
+        class="page-header"
         data-component="page-header"
-        data-testid="content-start"
         id="content-start"
       >
-        <div
-          class="grid"
+        <h1
+          class="page-header__heading "
         >
-          <div
-            data-component="grid-item"
-            data-g="12 md:12"
-          >
-            <h1
-              class="page-header__heading "
-            >
-              Subscribe to medicines and prescribing alerts
-            </h1>
-            <p
-              class="page-header__lead"
-            >
-              Get updates from our medicines and prescribing team.
-            </p>
-          </div>
-        </div>
+          Subscribe to medicines and prescribing alerts
+        </h1>
+        <p
+          class="page-header__lead"
+        >
+          Get updates from our medicines and prescribing team.
+        </p>
       </div>
       <p>
         This includes:

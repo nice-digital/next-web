@@ -10,17 +10,8 @@ const siteUrl = isTeamCity
 /** @type {import('next-sitemap').IConfig} */
 module.exports = {
 	siteUrl,
-	generateIndexSitemap: false,
 	generateRobotsTxt: false,
-	sitemapBaseFileName: "sitemap-0",
-	exclude: [
-		"/guidance/errortest",
-		"/status",
-		"/search",
-		"/news",
-		"/news/*",
-		"/sitemap-next.xml",
-	],
+	exclude: ["/guidance/errortest", "/status", "/search"],
 	transform: (config, loc) => ({
 		// Strip out changefreq, priority, lastmod etc:
 		// we either don't need them or don't know what the values are

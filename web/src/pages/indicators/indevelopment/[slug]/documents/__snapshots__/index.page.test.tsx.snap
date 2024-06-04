@@ -106,48 +106,39 @@ exports[`/indicators/indevelopment/[slug]/documents DocumentsPage should match s
 }
     </script>
     <div
-      class="page-header "
+      class="page-header"
       data-component="page-header"
       id="content-start"
     >
-      <div
-        class="grid"
+      <h1
+        class="page-header__heading page-header__heading--alt"
       >
-        <div
-          data-component="grid-item"
-          data-g="12 md:12"
-        >
-          <h1
-            class="page-header__heading page-header__heading--alt"
+        Automated ankle brachial pressure index measurement devices to detect peripheral arterial disease in people with leg ulcers
+      </h1>
+      <ul
+        class="page-header__metadata"
+      >
+        <li>
+          In development GID-DG10049
+        </li>
+        <li>
+          <span>
+            Expected publication date: 
+          </span>
+          <time
+            datetime="17 May 2023"
           >
-            Automated ankle brachial pressure index measurement devices to detect peripheral arterial disease in people with leg ulcers
-          </h1>
-          <ul
-            class="page-header__metadata"
+            17 May 2023
+          </time>
+        </li>
+        <li>
+          <a
+            href="https://www.nice.org.uk/about/what-we-do/our-programmes/nice-guidance/nice-diagnostics-guidance/dt-stakeholder-registration?t=&p=GID-DG10049&returnUrl=/guidance/indevelopment/gid-dg10049"
           >
-            <li>
-              In development GID-DG10049
-            </li>
-            <li>
-              <span>
-                Expected publication date: 
-              </span>
-              <time
-                datetime="17 May 2023"
-              >
-                17 May 2023
-              </time>
-            </li>
-            <li>
-              <a
-                href="https://www.nice.org.uk/about/what-we-do/our-programmes/nice-guidance/nice-diagnostics-guidance/dt-stakeholder-registration?t=&p=GID-DG10049&returnUrl=/guidance/indevelopment/gid-dg10049"
-              >
-                Register as a stakeholder
-              </a>
-            </li>
-          </ul>
-        </div>
-      </div>
+            Register as a stakeholder
+          </a>
+        </li>
+      </ul>
     </div>
     <nav
       class="horizontal-nav"

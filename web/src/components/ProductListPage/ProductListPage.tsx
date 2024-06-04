@@ -178,7 +178,6 @@ export const getProductListPage =
 					preheading={preheading}
 					heading={heading}
 					id="content-start"
-					data-testid="content-start"
 					lead={
 						<>
 							<SkipLink targetId="filters">Skip to filters</SkipLink>

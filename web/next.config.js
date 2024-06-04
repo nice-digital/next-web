@@ -57,6 +57,10 @@ const commonHeaders = [
 		value: "max-age=31536000; includeSubDomains; preload",
 	},
 	{
+		key: "X-Frame-Options",
+		value: "DENY",
+	},
+	{
 		key: "X-XSS-Protection",
 		value: "1; mode=block",
 	},
@@ -72,6 +76,10 @@ const commonHeaders = [
 		key: "Referrer-Policy",
 		value: "strict-origin-when-cross-origin",
 	},
+	{
+		key: "Content-Security-Policy",
+		value: "frame-ancestors 'none'", // TODO: Add a strong CSP
+	},
 	/**
 	 * Preload external assets and preconnecting external domains via Link header
 	 */
@@ -85,20 +93,6 @@ const commonHeaders = [
 		].join(","),
 	},
 ];
-
-// Prevent emebdding this site in frames in production, but allow it in dev so we can use the Storyblok preview editor
-if (process.env.NODE_ENV === "production") {
-	commonHeaders.push(
-		{
-			key: "X-Frame-Options",
-			value: "DENY",
-		},
-		{
-			key: "Content-Security-Policy",
-			value: "frame-ancestors 'none'",
-		}
-	);
-}
 
 /**
  * @type {import('next').NextConfig}
@@ -2017,51 +2011,6 @@ const nextConfig = {
 				destination: "/indicators/published",
 				permanent: true,
 			},
-			{
-				source: "/news/newsandfeatures",
-				destination: "/news/articles",
-				permanent: true,
-			},
-			{
-				source: "/news/article/:slug",
-				destination: "/news/articles/:slug",
-				permanent: true,
-			},
-			{
-				source: "/news/blog",
-				destination: "/news/blogs",
-				permanent: true,
-			},
-			{
-				source: "/news/blog/:slug",
-				destination: "/news/blogs/:slug",
-				permanent: true,
-			},
-			{
-				source: "/news/features",
-				destination: "/news/in-depth",
-				permanent: true,
-			},
-			{
-				source: "/news/nice-talks-podcasts",
-				destination: "/news/podcasts",
-				permanent: true,
-			},
-			{
-				source: "/news/press-and-media",
-				destination: "/press-and-media",
-				permanent: true,
-			},
-			{
-				source: "/news/nice-newsletters-and-alerts",
-				destination: "/nice-newsletters-and-alerts",
-				permanent: true,
-			},
-			{
-				source: "/news/events",
-				destination: "/events",
-				permanent: true,
-			},
 		];
 	},
 	async headers() {
@@ -2085,16 +2034,6 @@ const nextConfig = {
 	sassOptions: {
 		fiber: false,
 		includePaths: [path.join(__dirname, "node_modules/@nice-digital")],
-	},
-	images: {
-		// https://nextjs.org/docs/app/api-reference/components/image#remotepatterns
-		remotePatterns: [
-			{
-				protocol: "https",
-				hostname: "**.nice.org.uk",
-				port: "",
-			},
-		],
 	},
 };
 

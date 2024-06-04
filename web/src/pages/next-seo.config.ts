@@ -91,10 +91,6 @@ export const getDefaultSeoConfig = (pathname: string): NextSeoProps => ({
 			color: "black",
 			href: publicRuntimeConfig.publicBaseURL + "/icons/safari-pinned-tab.svg",
 		},
-		{
-			rel: "canonical",
-			href: publicRuntimeConfig.baseURL + pathname,
-		},
 	],
 	additionalMetaTags: [
 		{
@@ -104,23 +100,6 @@ export const getDefaultSeoConfig = (pathname: string): NextSeoProps => ({
 		{
 			name: "application-name",
 			content: "NICE",
-		},
-		{
-			name: "DC:Publisher",
-			content: "NICE",
-		},
-		{
-			name: "DC.Rights.Copyright",
-			content:
-				"All content on this site is NICE copyright unless otherwise stated. You can download material for private research, study or in-house use only. Do not distribute or publish any material from this site without first obtaining NICE's permission. Where Crown copyright applies, see the Office of Public Sector Information (formerly HMSO) website for information.",
-		},
-		{
-			name: "DC.Language",
-			content: "eng",
-		},
-		{
-			name: "x-country",
-			content: "gb",
 		},
 		// Apple specific as per https://edibleco.de/3jQIcIf
 		{

@@ -112,30 +112,20 @@ exports[`HelpImplementNiceGuidanceForm should match snapshot 1`] = `
       data-g="12 md:12 lg:12"
     >
       <div
-        class="page-header "
+        class="page-header"
         data-component="page-header"
-        data-testid="content-start"
         id="content-start"
       >
-        <div
-          class="grid"
+        <h1
+          class="page-header__heading "
         >
-          <div
-            data-component="grid-item"
-            data-g="12 md:12"
-          >
-            <h1
-              class="page-header__heading "
-            >
-              Adoption and impact reference panel membership form
-            </h1>
-            <p
-              class="page-header__lead"
-            >
-              Join the NICE Adoption and Impact Reference Panel. Give your advice on tools and resources as they're being developed. Help us shape the commissioning and delivery of safe, effective and cost-efficient care.
-            </p>
-          </div>
-        </div>
+          Adoption and impact reference panel membership form
+        </h1>
+        <p
+          class="page-header__lead"
+        >
+          Join the NICE Adoption and Impact Reference Panel. Give your advice on tools and resources as they're being developed. Help us shape the commissioning and delivery of safe, effective and cost-efficient care.
+        </p>
       </div>
       <iframe
         allow="geolocation; microphone; camera"

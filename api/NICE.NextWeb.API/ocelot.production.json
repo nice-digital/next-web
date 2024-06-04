@@ -3,22 +3,6 @@
     {
       "DownstreamHostAndPorts": [
         {
-          "Host": "api.storyblok.com",
-          "Port": 443
-        }
-      ],
-      "DownstreamPathTemplate": "/v1/{everything}",
-      "DownstreamScheme": "https",
-      "UpstreamHttpMethod": [ "Get", "Post" ],
-      "UpstreamPathTemplate": "/storyblok/{everything}",
-      "FileCacheOptions": {
-        "TtlSeconds": 900,
-        "Region": "OcelotStoryblok"
-      }
-    },
-    {
-      "DownstreamHostAndPorts": [
-        {
           "Host": "#{Ocelot.Routes.NiceorgDownstreamHost}",
           "Port": 443
         }

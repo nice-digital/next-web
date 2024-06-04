@@ -106,50 +106,41 @@ exports[`[resourceTitleId].page ConsultationHTMLPage should match snapshot for m
 }
     </script>
     <div
-      class="page-header "
+      class="page-header"
       data-component="page-header"
       id="content-start"
     >
-      <div
-        class="grid"
+      <h1
+        class="page-header__heading page-header__heading--alt"
       >
-        <div
-          data-component="grid-item"
-          data-g="12 md:12"
+        Daratumumab with lenalidomide and dexamethasone for untreated multiple myeloma when stem cell transplant is unsuitable  [ID4014]
+      </h1>
+      <ul
+        class="page-header__metadata"
+      >
+        <li>
+          In development GID-TA10914
+        </li>
+        <li>
+          <span>
+            Expected publication date: 
+          </span>
+          <time
+            datetime="23 August 2023"
+          >
+            23 August 2023
+          </time>
+        </li>
+      </ul>
+      <p
+        class="page-header__cta"
+      >
+        <a
+          href="/consultations/leadinformation"
         >
-          <h1
-            class="page-header__heading page-header__heading--alt"
-          >
-            Daratumumab with lenalidomide and dexamethasone for untreated multiple myeloma when stem cell transplant is unsuitable  [ID4014]
-          </h1>
-          <ul
-            class="page-header__metadata"
-          >
-            <li>
-              In development GID-TA10914
-            </li>
-            <li>
-              <span>
-                Expected publication date: 
-              </span>
-              <time
-                datetime="23 August 2023"
-              >
-                23 August 2023
-              </time>
-            </li>
-          </ul>
-          <p
-            class="page-header__cta"
-          >
-            <a
-              href="/consultations/leadinformation"
-            >
-              Request commenting lead permission
-            </a>
-          </p>
-        </div>
-      </div>
+          Request commenting lead permission
+        </a>
+      </p>
     </div>
     <nav
       class="horizontal-nav"

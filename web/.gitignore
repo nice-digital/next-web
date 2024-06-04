@@ -39,7 +39,4 @@ config/local*
 .cache
 
 # Generated sitemap XML files
-public/sitemap-0.xml
-
-# JSON component structure from the Storyblok CLI
-components.*.json
+public/sitemap*

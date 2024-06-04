@@ -1,14 +1,17 @@
 {
   "editor.formatOnSave": false,
   "editor.codeActionsOnSave": {
-    "source.organizeImports": "never",
-    "source.fixAll.eslint": "explicit",
-    "source.fixAll": "explicit"
+    "source.organizeImports": false,
+    "source.fixAll.eslint": true,
+    "source.fixAll": true
   },
+  "editor.codeActionsOnSaveTimeout": 20000,
   "editor.defaultFormatter": "esbenp.prettier-vscode",
   "editor.rulers": [80, 120],
+  "markdown.extension.toc.levels": "2..6",
   "files.eol": "\n",
   "typescript.tsdk": "node_modules\\typescript\\lib",
+  "npm.includeDirectories": ["web", "web-host", "functional-tests"],
   "files.exclude": {
     "**/.git": true,
     "**/.svn": true,
@@ -24,6 +27,7 @@
   "css.validate": false,
   "less.validate": false,
   "scss.validate": false,
+  "sasslint.enable": false,
   "eslint.codeActionsOnSave.mode": "problems",
   "eslint.lintTask.enable": true,
   "eslint.format.enable": true,
@@ -49,6 +53,8 @@
 		"activityBar.foreground": "#222"
   },
   "jest.jestCommandLine": "npm test --",
-  "jest.runMode": {"type": "on-save", "testFileOnly": true},
-  "stylelint.validate": ["css", "scss"]
+  "jest.autoRun": {
+    "watch": false,
+    "onSave": "test-file"
+ }
 }

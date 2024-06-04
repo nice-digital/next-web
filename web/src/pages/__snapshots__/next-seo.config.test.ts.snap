@@ -44,10 +44,6 @@ Object {
       "href": "/icons/safari-pinned-tab.svg",
       "rel": "mask-icon",
     },
-    Object {
-      "href": "https://next-web-tests.nice.org.uk/",
-      "rel": "canonical",
-    },
   ],
   "additionalMetaTags": Array [
     Object {
@@ -57,22 +53,6 @@ Object {
     Object {
       "content": "NICE",
       "name": "application-name",
-    },
-    Object {
-      "content": "NICE",
-      "name": "DC:Publisher",
-    },
-    Object {
-      "content": "All content on this site is NICE copyright unless otherwise stated. You can download material for private research, study or in-house use only. Do not distribute or publish any material from this site without first obtaining NICE's permission. Where Crown copyright applies, see the Office of Public Sector Information (formerly HMSO) website for information.",
-      "name": "DC.Rights.Copyright",
-    },
-    Object {
-      "content": "eng",
-      "name": "DC.Language",
-    },
-    Object {
-      "content": "gb",
-      "name": "x-country",
     },
     Object {
       "content": "yes",

@@ -112,25 +112,15 @@ exports[`LifeSciencesContactUsForm should match snapshot 1`] = `
       data-g="12 md:12 lg:12"
     >
       <div
-        class="page-header "
+        class="page-header"
         data-component="page-header"
-        data-testid="content-start"
         id="content-start"
       >
-        <div
-          class="grid"
+        <h1
+          class="page-header__heading "
         >
-          <div
-            data-component="grid-item"
-            data-g="12 md:12"
-          >
-            <h1
-              class="page-header__heading "
-            >
-              Life sciences contact us form
-            </h1>
-          </div>
-        </div>
+          Life sciences contact us form
+        </h1>
       </div>
       <iframe
         allow="geolocation; microphone; camera"
