@@ -5,4 +5,3 @@ current
 node_modules
 docker-output
 allure-report
-web/src/types/storyblok.d.ts

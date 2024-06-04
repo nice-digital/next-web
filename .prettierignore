@@ -14,6 +14,3 @@ dist
 
 functional-tests/docker-output
 functional-tests/allure-report
-
-# Auto generated storyblok types
-web/src/types/storyblok.d.ts

@@ -1,5 +1,3 @@
-import exp from "constants";
-
 import { useRouter } from "next/router";
 
 import { Breadcrumb } from "@nice-digital/nds-breadcrumbs";
@@ -137,9 +135,12 @@ describe("/guidance/published", () => {
 		});
 
 		it("should add content-start skip link target id to div element", () => {
-			const contentStart = screen.getByTestId("content-start");
-
-			expect(contentStart).toHaveAttribute("id", "content-start");
+			const headingElement = screen.getByText(
+				"Guidance, NICE advice and quality standards"
+			);
+			expect(headingElement.parentElement?.getAttribute("id")).toEqual(
+				"content-start"
+			);
 		});
 	});
 

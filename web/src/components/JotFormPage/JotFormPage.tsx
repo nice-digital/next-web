@@ -51,12 +51,7 @@ export const JotFormPage: FC<JotFormPageProps> = ({
 					md={informationPanel ? 8 : 12}
 					lg={informationPanel ? 8 : 12}
 				>
-					<PageHeader
-						heading={formName}
-						lead={lead}
-						id="content-start"
-						data-testid="content-start"
-					/>
+					<PageHeader heading={formName} lead={lead} id="content-start" />
 					{formHeader ? <>{formHeader}</> : null}
 					<JotFormEmbed jotFormID={formID} title={formName} height={height} />
 					{formFooter ? <>{formFooter}</> : null}

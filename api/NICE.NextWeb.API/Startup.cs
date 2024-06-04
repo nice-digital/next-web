@@ -1,6 +1,5 @@
 using System;
 using System.Net;
-using System.Web;
 using CacheManager.Core;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Diagnostics;
@@ -12,7 +11,6 @@ using Microsoft.Extensions.Hosting;
 using NICE.NextWeb.API.CacheManager;
 using NICE.NextWeb.API.ScheduledTasks.Niceorg;
 using NICE.NextWeb.API.ScheduledTasks.Scheduler;
-using Ocelot.Administration;
 using Ocelot.DependencyInjection;
 using Ocelot.Middleware;
 using Serilog;
@@ -34,14 +32,12 @@ namespace NICE.NextWeb.API
 
             var redisDatabaseId = Configuration.GetValue<int>("Ocelot:RedisEndpointDatabase");
             var redisConnectionString = Configuration.GetValue<string>("Ocelot:RedisConnectionString");
-            var ocelotSecret = Configuration.GetValue<string>("Ocelot:ClientSecret");
 
             services.AddOcelot()
                 .AddCacheManager(x =>
                     x.WithRedisConfiguration("redis", redisConnectionString, redisDatabaseId)
                         .WithJsonSerializer()
-                        .WithRedisCacheHandle("redis"))
-                .AddAdministration("/administration", ocelotSecret);
+                        .WithRedisCacheHandle("redis"));
 
             services.AddSingleton<INiceorgHttpRequestMessage, NiceorgHttpRequestMessage>();
             services.AddSingleton<IScheduledTask, RefreshGuidanceTaxonomyScheduledTask>();
@@ -98,20 +94,7 @@ namespace NICE.NextWeb.API
                 }
             });
 
-            var configuration = new OcelotPipelineConfiguration
-            {
-                PreAuthenticationMiddleware = async (context, next) =>
-                {
-                    if (context.Request.Path.ToString().Contains("storyblok"))
-                    {
-                        var newQuery = HttpUtility.ParseQueryString(context.Items.DownstreamRequest().Query.ToString());
-                        newQuery["cv"] = DateTimeOffset.UtcNow.ToUnixTimeSeconds().ToString();
-                        context.Items.DownstreamRequest().Query =  $"?{newQuery}";
-                    }
-                    await next.Invoke();
-                }
-            };
-            app.UseOcelot(configuration).Wait();
+            app.UseOcelot().Wait();
         }
     }
 }

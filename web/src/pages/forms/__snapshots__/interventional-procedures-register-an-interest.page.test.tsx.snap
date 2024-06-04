@@ -146,30 +146,20 @@ exports[`InterventionalProceduresRegisterAnInterestForm should match snapshot 1`
       data-g="12 md:8 lg:8"
     >
       <div
-        class="page-header "
+        class="page-header"
         data-component="page-header"
-        data-testid="content-start"
         id="content-start"
       >
-        <div
-          class="grid"
+        <h1
+          class="page-header__heading "
         >
-          <div
-            data-component="grid-item"
-            data-g="12 md:12"
-          >
-            <h1
-              class="page-header__heading "
-            >
-              Interventional procedures register an interest form
-            </h1>
-            <p
-              class="page-header__lead"
-            >
-              Sign up to receive email updates on interventional procedures guidance.
-            </p>
-          </div>
-        </div>
+          Interventional procedures register an interest form
+        </h1>
+        <p
+          class="page-header__lead"
+        >
+          Sign up to receive email updates on interventional procedures guidance.
+        </p>
       </div>
       <p>
         We'll let you know when:

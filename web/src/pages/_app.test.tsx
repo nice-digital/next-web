@@ -40,18 +40,6 @@ describe("NextWebApp", () => {
 			expect(document.title).toBe("A test title | NICE");
 		});
 
-		it("should add canonical meta tag for dynamic slug page with query string removed", async () => {
-			renderApp({
-				pathname: "/news/articles/[slug]",
-				asPath: "/news/articles/some-dynamic-slug?action=test",
-			});
-
-			expect(document.querySelector("link[rel='canonical']")).toHaveAttribute(
-				"href",
-				"https://next-web-tests.nice.org.uk/news/articles/some-dynamic-slug"
-			);
-		});
-
 		describe("open graph", () => {
 			it("should set en_GB open graph locale meta tag", async () => {
 				renderApp();
