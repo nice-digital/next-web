@@ -56,7 +56,7 @@ export default function SlugCatchAll(
 			return getAdditionalMetaTags(story);
 		} else {
 			logger.error(
-				`Story is not available for additionalMetaTags in BlogPostPage.`
+				`Story is not available for additionalMetaTags in SlugCatchAllPage.`
 			);
 			return undefined;
 		}
