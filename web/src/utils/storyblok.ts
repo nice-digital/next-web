@@ -61,6 +61,7 @@ export const fetchStory = async <T>(
 	version: StoryVersion = "published",
 	params: ISbStoryParams = {}
 ): Promise<SBSingleResponse<T>> => {
+	// logger.info()
 	const storyblokApi = getStoryblokApi();
 
 	const sbParams: ISbStoriesParams = {
@@ -87,18 +88,25 @@ export const fetchStory = async <T>(
 		if (isJsonString(error)) {
 			errorResponse = JSON.parse(error as string) as ISbError;
 
-			logger.error({
-				message: `${errorResponse.status} error from Storyblok API: ${errorResponse.message} at slug: ${slug} from fetchStory`,
-				sbParams,
-				slug,
-			});
+			logger.error(
+				`${errorResponse.status} error from Storyblok API: ${errorResponse.message} at slug: ${slug} from fetchStory`,
+				{
+					originatingErrorResponse: errorResponse,
+					sbParams,
+					slug,
+					ocelotEndpoint: publicRuntimeConfig.storyblok.ocelotEndpoint,
+				}
+			);
 		} else {
-			logger.error({
-				message: `Failed to parse error response: ${error} at ${slug} from fetchStory`,
-				errorMessage: error,
-				sbParams,
-				slug,
-			});
+			logger.error(
+				`Failed to parse error response: ${error}; At path: ${slug}; From: fetchStory function`,
+				{
+					originatingErrorMessage: error,
+					sbParams,
+					slug,
+					ocelotEndpoint: publicRuntimeConfig.storyblok.ocelotEndpoint,
+				}
+			);
 		}
 
 		if (errorResponse && errorResponse.status === 404) {

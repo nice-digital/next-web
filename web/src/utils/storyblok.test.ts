@@ -5,6 +5,7 @@ import {
 } from "@storyblok/react";
 import { waitFor } from "@testing-library/react";
 
+import { publicRuntimeConfig } from "@/config";
 import { logger } from "@/logger";
 import MockMultipleStorySuccessResponse from "@/test-utils/storyblok-news-articles-listing.json";
 import Mock404FromStoryblokApi from "@/test-utils/storyblok-not-found-response.json";
@@ -276,12 +277,18 @@ describe("Storyblok utils", () => {
 			await waitFor(() => {
 				expect(loggerErrorSpy).toHaveBeenCalled();
 				// eslint-disable-next-line testing-library/no-wait-for-multiple-assertions
-				expect(loggerErrorSpy).toHaveBeenCalledWith({
-					message:
-						"503 error from Storyblok API: Service Unavailable at slug: news/articles/test-page from fetchStory",
-					sbParams: { resolve_links: "url", version: "published" },
-					slug: "news/articles/test-page",
-				});
+				expect(loggerErrorSpy).toHaveBeenCalledWith(
+					"503 error from Storyblok API: Service Unavailable at slug: news/articles/test-page from fetchStory",
+					{
+						ocelotEndpoint: publicRuntimeConfig.storyblok.ocelotEndpoint,
+						originatingErrorResponse: {
+							message: "Service Unavailable",
+							status: 503,
+						},
+						sbParams: { resolve_links: "url", version: "published" },
+						slug: "news/articles/test-page",
+					}
+				);
 			});
 		});
 
@@ -300,13 +307,15 @@ describe("Storyblok utils", () => {
 			await waitFor(() => {
 				expect(loggerErrorSpy).toHaveBeenCalled();
 				// eslint-disable-next-line testing-library/no-wait-for-multiple-assertions
-				expect(loggerErrorSpy).toHaveBeenCalledWith({
-					errorMessage: "This is not JSON",
-					message:
-						"Failed to parse error response: This is not JSON at news/articles/test-page from fetchStory",
-					sbParams: { resolve_links: "url", version: "published" },
-					slug: "news/articles/test-page",
-				});
+				expect(loggerErrorSpy).toHaveBeenCalledWith(
+					"Failed to parse error response: This is not JSON; At path: news/articles/test-page; From: fetchStory function",
+					{
+						ocelotEndpoint: publicRuntimeConfig.storyblok.ocelotEndpoint,
+						originatingErrorMessage: "This is not JSON",
+						sbParams: { resolve_links: "url", version: "published" },
+						slug: "news/articles/test-page",
+					}
+				);
 			});
 		});
 	});
