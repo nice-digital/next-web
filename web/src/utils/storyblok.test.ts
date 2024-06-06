@@ -4,7 +4,6 @@ import {
 	getStoryblokApi,
 } from "@storyblok/react";
 import { waitFor } from "@testing-library/react";
-import { wait } from "@testing-library/user-event/dist/types/utils";
 
 import { logger } from "@/logger";
 import MockMultipleStorySuccessResponse from "@/test-utils/storyblok-news-articles-listing.json";
