@@ -16,6 +16,7 @@ jest.mock("@/config", () => ({
 jest.mock("@/logger", () => ({
 	logger: {
 		error: jest.fn(),
+		info: jest.fn(),
 	},
 }));
 
@@ -54,8 +55,11 @@ describe("initStoryblok", () => {
 		initStoryblok();
 
 		expect(logger.error).toHaveBeenCalledWith(
-			"Error initialising Storyblok:",
-			new Error("Test error")
+			"Error initialising Storyblok: Error: Test error",
+			{
+				ocelotEndpoint: "testEndpoint",
+				usingOcelotCache: true,
+			}
 		);
 	});
 });

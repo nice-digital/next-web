@@ -61,7 +61,16 @@ export const fetchStory = async <T>(
 	version: StoryVersion = "published",
 	params: ISbStoryParams = {}
 ): Promise<SBSingleResponse<T>> => {
-	// logger.info()
+	logger.info(
+		`Fetching story with slug: ${slug} and version: ${version} from fetchStory function`,
+		{
+			slug,
+			version,
+			params,
+			ocelotEndpoint: publicRuntimeConfig.storyblok.ocelotEndpoint,
+		}
+	);
+
 	const storyblokApi = getStoryblokApi();
 
 	const sbParams: ISbStoriesParams = {
@@ -110,13 +119,27 @@ export const fetchStory = async <T>(
 		}
 
 		if (errorResponse && errorResponse.status === 404) {
+			logger.error(
+				`Story not found at slug: ${slug} from fetchStory. Returning notFound: true`
+			);
+
 			return {
 				notFound: true,
 			};
 		} else {
+			logger.error(
+				`Error fetching story at slug: ${slug} from fetchStory. Throwing generic error message`
+			);
 			throw Error(GENERIC_ERROR_MESSAGE, { cause: error });
 		}
 	}
+
+	logger.info(`Fetched story with slug: ${slug} and version: ${version}`, {
+		slug,
+		version,
+		params,
+		ocelotEndpoint: publicRuntimeConfig.storyblok.ocelotEndpoint,
+	});
 
 	return result;
 };
