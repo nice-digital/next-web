@@ -4,6 +4,7 @@ import {
 	getStoryblokApi,
 } from "@storyblok/react";
 import { waitFor } from "@testing-library/react";
+import { wait } from "@testing-library/user-event/dist/types/utils";
 
 import { logger } from "@/logger";
 import MockMultipleStorySuccessResponse from "@/test-utils/storyblok-news-articles-listing.json";
@@ -262,6 +263,7 @@ describe("Storyblok utils", () => {
 		});
 
 		it("should handle server errors", async () => {
+			const loggerErrorSpy = jest.spyOn(logger, "error");
 			getStoryblokApi().get = jest
 				.fn()
 				.mockRejectedValueOnce(JSON.stringify(MockServerErrorResponse));
@@ -271,6 +273,42 @@ describe("Storyblok utils", () => {
 			};
 
 			expect(throwErrorFetchStory).rejects.toThrow(GENERIC_ERROR_MESSAGE);
+
+			await waitFor(() => {
+				expect(loggerErrorSpy).toHaveBeenCalled();
+				// eslint-disable-next-line testing-library/no-wait-for-multiple-assertions
+				expect(loggerErrorSpy).toHaveBeenCalledWith({
+					message:
+						"503 error from Storyblok API: Service Unavailable at slug: news/articles/test-page from fetchStory",
+					sbParams: { resolve_links: "url", version: "published" },
+					slug: "news/articles/test-page",
+				});
+			});
+		});
+
+		it("should handle malformed JSON error responses", async () => {
+			const loggerErrorSpy = jest.spyOn(logger, "error");
+			getStoryblokApi().get = jest
+				.fn()
+				.mockRejectedValueOnce("This is not JSON");
+
+			const throwErrorFetchStory = async () => {
+				await fetchStory("news/articles/test-page", "published");
+			};
+
+			expect(throwErrorFetchStory).rejects.toThrow(GENERIC_ERROR_MESSAGE);
+
+			await waitFor(() => {
+				expect(loggerErrorSpy).toHaveBeenCalled();
+				// eslint-disable-next-line testing-library/no-wait-for-multiple-assertions
+				expect(loggerErrorSpy).toHaveBeenCalledWith({
+					errorMessage: "This is not JSON",
+					message:
+						"Failed to parse error response: This is not JSON at news/articles/test-page from fetchStory",
+					sbParams: { resolve_links: "url", version: "published" },
+					slug: "news/articles/test-page",
+				});
+			});
 		});
 	});
 

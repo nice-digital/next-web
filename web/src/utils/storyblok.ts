@@ -81,14 +81,27 @@ export const fetchStory = async <T>(
 			story: response.data.story,
 		};
 	} catch (error) {
-		const errorResponse = JSON.parse(error as string) as ISbError;
+		// const errorResponse = JSON.parse(error as string) as ISbError;
+		let errorResponse: ISbError | null = null;
 
-		logger.error(
-			`${errorResponse.status} error from Storyblok API: ${errorResponse.message}`,
-			error
-		);
+		if (isJsonString(error)) {
+			errorResponse = JSON.parse(error as string) as ISbError;
 
-		if (errorResponse.status === 404) {
+			logger.error({
+				message: `${errorResponse.status} error from Storyblok API: ${errorResponse.message} at slug: ${slug} from fetchStory`,
+				sbParams,
+				slug,
+			});
+		} else {
+			logger.error({
+				message: `Failed to parse error response: ${error} at ${slug} from fetchStory`,
+				errorMessage: error,
+				sbParams,
+				slug,
+			});
+		}
+
+		if (errorResponse && errorResponse.status === 404) {
 			return {
 				notFound: true,
 			};
@@ -98,6 +111,17 @@ export const fetchStory = async <T>(
 	}
 
 	return result;
+};
+
+export const isJsonString = (str: string | unknown): boolean => {
+	try {
+		const parsed = JSON.parse(str as string);
+		return (
+			(typeof parsed === "object" && parsed !== null) || Array.isArray(parsed)
+		);
+	} catch (error) {
+		return false;
+	}
 };
 
 const isValidPageParam = (
