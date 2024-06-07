@@ -9,12 +9,17 @@ export const initStoryblok = (): void => {
 	const endpoint = publicRuntimeConfig.storyblok.ocelotEndpoint;
 	const usingOcelotCache = !!endpoint;
 
-	try {
-		// logger.info(
-		// 	`start initStoryblok with accessToken: ${accessToken} and endpoint: ${endpoint}`
-		// );
+	logger.info(
+		{ endpoint, accessToken, usingOcelotCache },
+		"initStoryblok test log order"
+	);
 
-		// logger.info(`initStoryblok usingOcelotCache: ${usingOcelotCache}`);
+	try {
+		logger.info(
+			`start initStoryblok with accessToken: ${accessToken} and endpoint: ${endpoint}`
+		);
+
+		logger.info(`initStoryblok usingOcelotCache: ${usingOcelotCache}`);
 
 		storyblokInit({
 			accessToken,
@@ -31,8 +36,10 @@ export const initStoryblok = (): void => {
 		logger.error(`Error initialising Storyblok: ${error}`, {
 			ocelotEndpoint: endpoint,
 			usingOcelotCache,
+			originatingError: error instanceof Error && error.message,
+			error,
 		});
 		new Error("Error initialising Storyblok", { cause: error });
 	}
-	// logger.info("end initStoryblok");
+	logger.info("end initStoryblok");
 };

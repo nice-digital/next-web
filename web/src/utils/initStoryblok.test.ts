@@ -1,4 +1,5 @@
 import { storyblokInit } from "@storyblok/react";
+import { waitFor } from "@testing-library/react";
 
 import { logger } from "@/logger";
 
@@ -13,15 +14,10 @@ jest.mock("@/config", () => ({
 	},
 }));
 
-jest.mock("@/logger", () => ({
-	logger: {
-		error: jest.fn(),
-		info: jest.fn(),
-	},
-}));
-
 describe("initStoryblok", () => {
 	let consoleLogSpy: jest.SpyInstance;
+	const loggerErrorSpy = jest.spyOn(logger, "error");
+	const loggerInfoSpy = jest.spyOn(logger, "info");
 
 	beforeEach(() => {
 		consoleLogSpy = jest.spyOn(console, "log").mockImplementation();
@@ -45,21 +41,29 @@ describe("initStoryblok", () => {
 				endpoint: "testEndpoint",
 			},
 		});
+
+		expect(loggerInfoSpy).toHaveBeenCalledWith("end initStoryblok");
 	});
 
-	it("should log an error when an exception is thrown", () => {
+	it("should log an error when an exception is thrown", async () => {
 		(storyblokInit as jest.Mock).mockImplementationOnce(() => {
 			throw new Error("Test error");
 		});
 
 		initStoryblok();
 
-		expect(logger.error).toHaveBeenCalledWith(
-			"Error initialising Storyblok: Error: Test error",
-			{
-				ocelotEndpoint: "testEndpoint",
-				usingOcelotCache: true,
-			}
-		);
+		expect(loggerInfoSpy).toHaveBeenCalled();
+
+		await waitFor(() => {
+			expect(loggerErrorSpy).toHaveBeenCalledWith(
+				"Error initialising Storyblok: Error: Test error",
+				{
+					ocelotEndpoint: "testEndpoint",
+					usingOcelotCache: true,
+					originatingError: "Test error",
+					error: new Error("Test error"),
+				}
+			);
+		});
 	});
 });
