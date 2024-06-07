@@ -278,7 +278,6 @@ describe("Storyblok utils", () => {
 				expect(loggerErrorSpy).toHaveBeenCalled();
 				// eslint-disable-next-line testing-library/no-wait-for-multiple-assertions
 				expect(loggerErrorSpy).toHaveBeenCalledWith(
-					"503 error from Storyblok API: Service Unavailable at slug: news/articles/test-page from fetchStory",
 					{
 						ocelotEndpoint: publicRuntimeConfig.storyblok.ocelotEndpoint,
 						originatingErrorResponse: {
@@ -287,7 +286,8 @@ describe("Storyblok utils", () => {
 						},
 						sbParams: { resolve_links: "url", version: "published" },
 						slug: "news/articles/test-page",
-					}
+					},
+					"503 error from Storyblok API: Service Unavailable at slug: news/articles/test-page from fetchStory"
 				);
 			});
 		});
@@ -308,13 +308,13 @@ describe("Storyblok utils", () => {
 				expect(loggerErrorSpy).toHaveBeenCalled();
 				// eslint-disable-next-line testing-library/no-wait-for-multiple-assertions
 				expect(loggerErrorSpy).toHaveBeenCalledWith(
-					"Failed to parse error response: This is not JSON; At path: news/articles/test-page; From: fetchStory function",
 					{
 						ocelotEndpoint: publicRuntimeConfig.storyblok.ocelotEndpoint,
 						originatingErrorMessage: "This is not JSON",
 						sbParams: { resolve_links: "url", version: "published" },
 						slug: "news/articles/test-page",
-					}
+					},
+					"Failed to parse error response: This is not JSON; At path: news/articles/test-page; From: fetchStory function"
 				);
 			});
 		});

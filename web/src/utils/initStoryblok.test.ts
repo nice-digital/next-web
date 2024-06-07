@@ -56,13 +56,13 @@ describe("initStoryblok", () => {
 
 		await waitFor(() => {
 			expect(loggerErrorSpy).toHaveBeenCalledWith(
-				"Error initialising Storyblok: Error: Test error",
 				{
 					ocelotEndpoint: "testEndpoint",
 					usingOcelotCache: true,
 					originatingError: "Test error",
 					error: new Error("Test error"),
-				}
+				},
+				"Error initialising Storyblok: Error: Test error"
 			);
 		});
 	});

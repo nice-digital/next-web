@@ -62,13 +62,13 @@ export const fetchStory = async <T>(
 	params: ISbStoryParams = {}
 ): Promise<SBSingleResponse<T>> => {
 	logger.info(
-		`Fetching story with slug: ${slug} and version: ${version} from fetchStory function`,
 		{
 			slug,
 			version,
 			params,
 			ocelotEndpoint: publicRuntimeConfig.storyblok.ocelotEndpoint,
-		}
+		},
+		`Fetching story with slug: ${slug} and version: ${version} from fetchStory function`
 	);
 
 	const storyblokApi = getStoryblokApi();
@@ -98,23 +98,23 @@ export const fetchStory = async <T>(
 			errorResponse = JSON.parse(error as string) as ISbError;
 
 			logger.error(
-				`${errorResponse.status} error from Storyblok API: ${errorResponse.message} at slug: ${slug} from fetchStory`,
 				{
 					originatingErrorResponse: errorResponse,
 					sbParams,
 					slug,
 					ocelotEndpoint: publicRuntimeConfig.storyblok.ocelotEndpoint,
-				}
+				},
+				`${errorResponse.status} error from Storyblok API: ${errorResponse.message} at slug: ${slug} from fetchStory`
 			);
 		} else {
 			logger.error(
-				`Failed to parse error response: ${error}; At path: ${slug}; From: fetchStory function`,
 				{
 					originatingErrorMessage: error,
 					sbParams,
 					slug,
 					ocelotEndpoint: publicRuntimeConfig.storyblok.ocelotEndpoint,
-				}
+				},
+				`Failed to parse error response: ${error}; At path: ${slug}; From: fetchStory function`
 			);
 		}
 
@@ -134,12 +134,15 @@ export const fetchStory = async <T>(
 		}
 	}
 
-	logger.info(`Fetched story with slug: ${slug} and version: ${version}`, {
-		slug,
-		version,
-		params,
-		ocelotEndpoint: publicRuntimeConfig.storyblok.ocelotEndpoint,
-	});
+	logger.info(
+		{
+			slug,
+			version,
+			params,
+			ocelotEndpoint: publicRuntimeConfig.storyblok.ocelotEndpoint,
+		},
+		`Fetched story with slug: ${slug} and version: ${version}`
+	);
 
 	return result;
 };

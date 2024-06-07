@@ -9,11 +9,6 @@ export const initStoryblok = (): void => {
 	const endpoint = publicRuntimeConfig.storyblok.ocelotEndpoint;
 	const usingOcelotCache = !!endpoint;
 
-	logger.info(
-		{ endpoint, accessToken, usingOcelotCache },
-		"initStoryblok test log order"
-	);
-
 	try {
 		logger.info(
 			`start initStoryblok with accessToken: ${accessToken} and endpoint: ${endpoint}`
@@ -33,12 +28,15 @@ export const initStoryblok = (): void => {
 			},
 		});
 	} catch (error) {
-		logger.error(`Error initialising Storyblok: ${error}`, {
-			ocelotEndpoint: endpoint,
-			usingOcelotCache,
-			originatingError: error instanceof Error && error.message,
-			error,
-		});
+		logger.error(
+			{
+				ocelotEndpoint: endpoint,
+				usingOcelotCache,
+				originatingError: error instanceof Error && error.message,
+				error,
+			},
+			`Error initialising Storyblok: ${error}`
+		);
 		new Error("Error initialising Storyblok", { cause: error });
 	}
 	logger.info("end initStoryblok");
