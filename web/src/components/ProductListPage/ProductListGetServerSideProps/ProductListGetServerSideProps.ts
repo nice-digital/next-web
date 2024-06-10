@@ -24,7 +24,7 @@ export const defaultPageSize = 10;
 
 export interface GetGetServerSidePropsOptions {
 	/** Pre-filter for the guidance status type (gst) 'or modifier' that gets passed to search */
-	gstPreFilter:
+	gstPreFilter?:
 		| "Published"
 		| "In consultation"
 		| "In development"

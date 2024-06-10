@@ -35,6 +35,7 @@ export interface SearchListFiltersProps {
 	showDateFilter: boolean;
 	showTextFilter: boolean;
 	dateFilterLabel?: string;
+	textFilterLabel?: string;
 	useFutureDates?: boolean;
 	navigatorsOrder: KnownOrModifierKeys[];
 	searchInputPlaceholder?: string;
@@ -52,6 +53,7 @@ export const SearchListFilters: FC<SearchListFiltersProps> = ({
 	showDateFilter,
 	showTextFilter,
 	dateFilterLabel,
+	textFilterLabel = "Filter by title or keyword",
 	useFutureDates,
 	navigatorsOrder,
 	searchInputPlaceholder = "E.g. 'diabetes' or 'NG28'",
@@ -129,7 +131,7 @@ export const SearchListFilters: FC<SearchListFiltersProps> = ({
 			<input type="hidden" name="s" value={sortOrder} />
 			{showTextFilter ? (
 				<InlineTextFilter
-					label="Filter by title or keyword"
+					label={textFilterLabel}
 					name="q"
 					defaultValue={queryText}
 					placeholder={searchInputPlaceholder}
