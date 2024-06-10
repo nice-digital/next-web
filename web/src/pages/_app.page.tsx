@@ -142,7 +142,10 @@ class NextWebApp extends App<{}, {}, AppState> {
 					});
 				},
 			},
-			auth: { provider: "niceAccounts", environment: "live" },
+			auth: {
+				provider: "niceAccounts",
+				environment: publicRuntimeConfig.authEnvironment,
+			},
 		};
 
 		const {
