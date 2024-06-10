@@ -500,7 +500,7 @@ exports[`/news/in-depth/index.page InDepthArticleIndexPage should match snapshot
             <a
               class="btn btn--cta signupCta"
               data-component="button--cta"
-              href="/newsletters-and-alerts"
+              href="/nice-newsletters-and-alerts"
             >
               Sign up for newsletters and alerts
             </a>
