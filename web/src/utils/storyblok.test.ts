@@ -279,7 +279,7 @@ describe("Storyblok utils", () => {
 				// eslint-disable-next-line testing-library/no-wait-for-multiple-assertions
 				expect(loggerErrorSpy).toHaveBeenCalledWith(
 					{
-						ocelotEndpoint: publicRuntimeConfig.storyblok.ocelotEndpoint,
+						ocelotEndpoint: null,
 						originatingErrorResponse: {
 							message: "Service Unavailable",
 							status: 503,
@@ -287,7 +287,7 @@ describe("Storyblok utils", () => {
 						sbParams: { resolve_links: "url", version: "published" },
 						slug: "news/articles/test-page",
 					},
-					"503 error from Storyblok API: Service Unavailable at slug: news/articles/test-page from fetchStory"
+					"fetchStory: 503 error from Storyblok API: Service Unavailable at slug: news/articles/test-page "
 				);
 			});
 		});
@@ -309,12 +309,12 @@ describe("Storyblok utils", () => {
 				// eslint-disable-next-line testing-library/no-wait-for-multiple-assertions
 				expect(loggerErrorSpy).toHaveBeenCalledWith(
 					{
-						ocelotEndpoint: publicRuntimeConfig.storyblok.ocelotEndpoint,
+						ocelotEndpoint: null,
 						originatingErrorMessage: "This is not JSON",
 						sbParams: { resolve_links: "url", version: "published" },
 						slug: "news/articles/test-page",
 					},
-					"Failed to parse error response: This is not JSON; At path: news/articles/test-page; From: fetchStory function"
+					"fetchStory: Failed to parse error response: This is not JSON; At path: news/articles/test-page;"
 				);
 			});
 		});
@@ -712,7 +712,9 @@ describe("Storyblok utils", () => {
 		it("should call the logger error method when fetchStories throws an error", async () => {
 			const loggerErrorSpy = jest.spyOn(logger, "error");
 
-			const mockError = "Error fetching stories";
+			const mockError = new Error("Error fetching stories", {
+				cause: "test cause of error",
+			});
 
 			fetchStoriesSpy.mockRejectedValue(mockError);
 
@@ -728,8 +730,20 @@ describe("Storyblok utils", () => {
 				expect(loggerErrorSpy).toHaveBeenCalled();
 				// eslint-disable-next-line testing-library/no-wait-for-multiple-assertions
 				expect(loggerErrorSpy).toHaveBeenCalledWith(
-					"Error from catch in validateRouteParams: ",
-					mockError
+					{
+						errorMessage: "Error fetching stories",
+						errorCause: "test cause of error",
+						requestParams: {
+							filter_query: { date: { lt_date: "2024-04-08T00:00:00.000Z" } },
+							page: 1,
+							per_page: 8,
+							sort_by: "content.date:desc",
+							starts_with: "news/articles/",
+						},
+					},
+					`validateRouteParams: ${new Error(
+						"Error fetching stories"
+					)} in catch at slug 1`
 				);
 			});
 		});

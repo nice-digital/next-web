@@ -104,7 +104,7 @@ export const fetchStory = async <T>(
 					slug,
 					ocelotEndpoint: publicRuntimeConfig.storyblok.ocelotEndpoint,
 				},
-				`${errorResponse.status} error from Storyblok API: ${errorResponse.message} at slug: ${slug} from fetchStory`
+				`fetchStory: ${errorResponse.status} error from Storyblok API: ${errorResponse.message} at slug: ${slug} `
 			);
 		} else {
 			logger.error(
@@ -114,13 +114,13 @@ export const fetchStory = async <T>(
 					slug,
 					ocelotEndpoint: publicRuntimeConfig.storyblok.ocelotEndpoint,
 				},
-				`Failed to parse error response: ${error}; At path: ${slug}; From: fetchStory function`
+				`fetchStory: Failed to parse error response: ${error}; At path: ${slug};`
 			);
 		}
 
 		if (errorResponse && errorResponse.status === 404) {
 			logger.error(
-				`Story not found at slug: ${slug} from fetchStory. Returning notFound: true`
+				`fetchStory: Story not found at slug: ${slug} from. Returning notFound: true`
 			);
 
 			return {
@@ -128,7 +128,7 @@ export const fetchStory = async <T>(
 			};
 		} else {
 			logger.error(
-				`Error fetching story at slug: ${slug} from fetchStory. Throwing generic error message`
+				`fetchStory: Error fetching story at slug: ${slug}. Throwing generic error message`
 			);
 			throw Error(GENERIC_ERROR_MESSAGE, { cause: error });
 		}
@@ -141,7 +141,7 @@ export const fetchStory = async <T>(
 			params,
 			ocelotEndpoint: publicRuntimeConfig.storyblok.ocelotEndpoint,
 		},
-		`Fetched story with slug: ${slug} and version: ${version}`
+		`fetchStory: Fetched story with slug: ${slug} and version: ${version}`
 	);
 
 	return result;
@@ -246,7 +246,16 @@ export const validateRouteParams = async <T>({
 			perPage,
 		};
 	} catch (error) {
-		logger.error("Error from catch in validateRouteParams: ", error);
+		logger.error(
+			{
+				requestParams,
+				errorMessage: error instanceof Error && error.message,
+				errorCause: error instanceof Error && error.cause,
+			},
+			`validateRouteParams: Error: ${
+				error instanceof Error && error.message
+			} in catch at slug ${page}`
+		);
 
 		throw new Error(GENERIC_ERROR_MESSAGE, { cause: error });
 	}
