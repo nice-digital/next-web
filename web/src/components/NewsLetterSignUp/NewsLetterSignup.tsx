@@ -11,7 +11,7 @@ export const NewsLetterSignup = (): React.ReactElement => {
 			elementType="a"
 			variant="cta"
 			className={styles.signupCta}
-			href="/newsletters-and-alerts"
+			href="/nice-newsletters-and-alerts"
 		>
 			Sign up for newsletters and alerts
 		</Button>
