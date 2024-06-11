@@ -1,14 +1,9 @@
 import { NextApiRequest, NextApiResponse } from "next";
 
-jest.mock("@/config", () => ({
-	publicRuntimeConfig: {
-		//denyRobots not set
-	},
-}));
+import { normaliseString } from "@/test-utils/string";
 
-const normalizeString = (str: string): string => {
-	return str.replace(/\s+/g, " ").trim();
-};
+const expectedRobotsAllowedString = `User-agent: bingbot\nCrawl-delay: 1\nUser-agent: *\nAllow: /`;
+const expectedRobotsDeniedString = `User-agent: *\nDisallow: /`;
 
 describe("Robots txt API Handler Tests", () => {
 	let req: NextApiRequest;
@@ -38,10 +33,8 @@ describe("Robots txt API Handler Tests", () => {
 
 		expect(handlerSpy).toHaveBeenCalledTimes(1);
 
-		const expectedString = `User-agent: *\nDisallow: /`;
-
-		expect(normalizeString(handlerSpy.mock.calls[0][0])).toBe(
-			normalizeString(expectedString)
+		expect(normaliseString(handlerSpy.mock.calls[0][0])).toBe(
+			normaliseString(expectedRobotsDeniedString)
 		);
 	});
 
@@ -61,10 +54,8 @@ describe("Robots txt API Handler Tests", () => {
 
 		expect(handlerSpy).toHaveBeenCalledTimes(1);
 
-		const expectedString = `User-agent: bingbot\nCrawl-delay: 1\nUser-agent: *\nAllow: /`;
-
-		expect(normalizeString(handlerSpy.mock.calls[0][0])).toBe(
-			normalizeString(expectedString)
+		expect(normaliseString(handlerSpy.mock.calls[0][0])).toBe(
+			normaliseString(expectedRobotsAllowedString)
 		);
 	});
 
@@ -84,10 +75,8 @@ describe("Robots txt API Handler Tests", () => {
 
 		expect(handlerSpy).toHaveBeenCalledTimes(1);
 
-		const expectedString = `User-agent: bingbot\nCrawl-delay: 1\nUser-agent: *\nAllow: /`;
-
-		expect(normalizeString(handlerSpy.mock.calls[0][0])).toBe(
-			normalizeString(expectedString)
+		expect(normaliseString(handlerSpy.mock.calls[0][0])).toBe(
+			normaliseString(expectedRobotsAllowedString)
 		);
 	});
 
@@ -107,10 +96,8 @@ describe("Robots txt API Handler Tests", () => {
 
 		expect(handlerSpy).toHaveBeenCalledTimes(1);
 
-		const expectedString = `User-agent: bingbot\nCrawl-delay: 1\nUser-agent: *\nAllow: /`;
-
-		expect(normalizeString(handlerSpy.mock.calls[0][0])).toBe(
-			normalizeString(expectedString)
+		expect(normaliseString(handlerSpy.mock.calls[0][0])).toBe(
+			normaliseString(expectedRobotsAllowedString)
 		);
 	});
 
@@ -130,10 +117,8 @@ describe("Robots txt API Handler Tests", () => {
 
 		expect(handlerSpy).toHaveBeenCalledTimes(1);
 
-		const expectedString = `User-agent: bingbot\nCrawl-delay: 1\nUser-agent: *\nAllow: /`;
-
-		expect(normalizeString(handlerSpy.mock.calls[0][0])).toBe(
-			normalizeString(expectedString)
+		expect(normaliseString(handlerSpy.mock.calls[0][0])).toBe(
+			normaliseString(expectedRobotsAllowedString)
 		);
 	});
 
@@ -153,10 +138,8 @@ describe("Robots txt API Handler Tests", () => {
 
 		expect(handlerSpy).toHaveBeenCalledTimes(1);
 
-		const expectedString = `User-agent: bingbot\nCrawl-delay: 1\nUser-agent: *\nAllow: /`;
-
-		expect(normalizeString(handlerSpy.mock.calls[0][0])).toBe(
-			normalizeString(expectedString)
+		expect(normaliseString(handlerSpy.mock.calls[0][0])).toBe(
+			normaliseString(expectedRobotsAllowedString)
 		);
 	});
 });
