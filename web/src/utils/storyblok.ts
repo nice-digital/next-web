@@ -61,6 +61,16 @@ export const fetchStory = async <T>(
 	version: StoryVersion = "published",
 	params: ISbStoryParams = {}
 ): Promise<SBSingleResponse<T>> => {
+	logger.info(
+		{
+			slug,
+			version,
+			params,
+			ocelotEndpoint: publicRuntimeConfig.storyblok.ocelotEndpoint,
+		},
+		`Fetching story with slug: ${slug} and version: ${version} from fetchStory function`
+	);
+
 	const storyblokApi = getStoryblokApi();
 
 	const sbParams: ISbStoriesParams = {
@@ -81,23 +91,71 @@ export const fetchStory = async <T>(
 			story: response.data.story,
 		};
 	} catch (error) {
-		const errorResponse = JSON.parse(error as string) as ISbError;
+		// const errorResponse = JSON.parse(error as string) as ISbError;
+		let errorResponse: ISbError | null = null;
 
-		logger.error(
-			`${errorResponse.status} error from Storyblok API: ${errorResponse.message}`,
-			error
-		);
+		if (isJsonString(error)) {
+			errorResponse = JSON.parse(error as string) as ISbError;
 
-		if (errorResponse.status === 404) {
+			logger.error(
+				{
+					originatingErrorResponse: errorResponse,
+					sbParams,
+					slug,
+					ocelotEndpoint: publicRuntimeConfig.storyblok.ocelotEndpoint,
+				},
+				`${errorResponse.status} error from Storyblok API: ${errorResponse.message} at slug: ${slug} from fetchStory`
+			);
+		} else {
+			logger.error(
+				{
+					originatingErrorMessage: error,
+					sbParams,
+					slug,
+					ocelotEndpoint: publicRuntimeConfig.storyblok.ocelotEndpoint,
+				},
+				`Failed to parse error response: ${error}; At path: ${slug}; From: fetchStory function`
+			);
+		}
+
+		if (errorResponse && errorResponse.status === 404) {
+			logger.error(
+				`Story not found at slug: ${slug} from fetchStory. Returning notFound: true`
+			);
+
 			return {
 				notFound: true,
 			};
 		} else {
+			logger.error(
+				`Error fetching story at slug: ${slug} from fetchStory. Throwing generic error message`
+			);
 			throw Error(GENERIC_ERROR_MESSAGE, { cause: error });
 		}
 	}
 
+	logger.info(
+		{
+			slug,
+			version,
+			params,
+			ocelotEndpoint: publicRuntimeConfig.storyblok.ocelotEndpoint,
+		},
+		`Fetched story with slug: ${slug} and version: ${version}`
+	);
+
 	return result;
+};
+
+export const isJsonString = (str: string | unknown): boolean => {
+	try {
+		const parsed = JSON.parse(str as string);
+		return (
+			(typeof parsed === "object" && parsed !== null) || Array.isArray(parsed)
+		);
+	} catch (error) {
+		return false;
+	}
 };
 
 const isValidPageParam = (

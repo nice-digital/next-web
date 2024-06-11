@@ -97,11 +97,21 @@ export async function getServerSideProps(context: GetServerSidePropsContext) {
 
 	const version = getStoryVersionFromQuery(query);
 
+	logger.info("Fetching news article from storyblok at path", params?.slug);
+
 	try {
 		// Get the story and its breadcrumbs
 		const storyResult = await fetchStory<NewsArticleStoryblok>(
 			`news/articles/${slug}`,
 			version
+		);
+
+		logger.info(
+			{
+				data: storyResult,
+				requestHeaders: context.req.headers,
+			},
+			`Fetched news article from storyblok at path: ${slug}`
 		);
 
 		if ("notFound" in storyResult) {
@@ -124,6 +134,14 @@ export async function getServerSideProps(context: GetServerSidePropsContext) {
 
 		return result;
 	} catch (error) {
+		logger.error(
+			{
+				"Cache-Control-Request": context.req.headers["cache-control"],
+				errorCause: error instanceof Error && error.cause,
+				requestHeaders: context.req.headers,
+			},
+			`Error fetching news article at path ${slug} from gssp`
+		);
 		return {
 			props: {
 				error: GENERIC_ERROR_MESSAGE,

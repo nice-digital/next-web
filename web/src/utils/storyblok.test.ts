@@ -5,6 +5,7 @@ import {
 } from "@storyblok/react";
 import { waitFor } from "@testing-library/react";
 
+import { publicRuntimeConfig } from "@/config";
 import { logger } from "@/logger";
 import MockMultipleStorySuccessResponse from "@/test-utils/storyblok-news-articles-listing.json";
 import Mock404FromStoryblokApi from "@/test-utils/storyblok-not-found-response.json";
@@ -262,6 +263,7 @@ describe("Storyblok utils", () => {
 		});
 
 		it("should handle server errors", async () => {
+			const loggerErrorSpy = jest.spyOn(logger, "error");
 			getStoryblokApi().get = jest
 				.fn()
 				.mockRejectedValueOnce(JSON.stringify(MockServerErrorResponse));
@@ -271,6 +273,50 @@ describe("Storyblok utils", () => {
 			};
 
 			expect(throwErrorFetchStory).rejects.toThrow(GENERIC_ERROR_MESSAGE);
+
+			await waitFor(() => {
+				expect(loggerErrorSpy).toHaveBeenCalled();
+				// eslint-disable-next-line testing-library/no-wait-for-multiple-assertions
+				expect(loggerErrorSpy).toHaveBeenCalledWith(
+					{
+						ocelotEndpoint: publicRuntimeConfig.storyblok.ocelotEndpoint,
+						originatingErrorResponse: {
+							message: "Service Unavailable",
+							status: 503,
+						},
+						sbParams: { resolve_links: "url", version: "published" },
+						slug: "news/articles/test-page",
+					},
+					"503 error from Storyblok API: Service Unavailable at slug: news/articles/test-page from fetchStory"
+				);
+			});
+		});
+
+		it("should handle malformed JSON error responses", async () => {
+			const loggerErrorSpy = jest.spyOn(logger, "error");
+			getStoryblokApi().get = jest
+				.fn()
+				.mockRejectedValueOnce("This is not JSON");
+
+			const throwErrorFetchStory = async () => {
+				await fetchStory("news/articles/test-page", "published");
+			};
+
+			expect(throwErrorFetchStory).rejects.toThrow(GENERIC_ERROR_MESSAGE);
+
+			await waitFor(() => {
+				expect(loggerErrorSpy).toHaveBeenCalled();
+				// eslint-disable-next-line testing-library/no-wait-for-multiple-assertions
+				expect(loggerErrorSpy).toHaveBeenCalledWith(
+					{
+						ocelotEndpoint: publicRuntimeConfig.storyblok.ocelotEndpoint,
+						originatingErrorMessage: "This is not JSON",
+						sbParams: { resolve_links: "url", version: "published" },
+						slug: "news/articles/test-page",
+					},
+					"Failed to parse error response: This is not JSON; At path: news/articles/test-page; From: fetchStory function"
+				);
+			});
 		});
 	});
 
