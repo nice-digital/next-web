@@ -32,7 +32,7 @@ exports[`NewsInternationalNewsletterForm should match snapshot 1`] = `
         class="breadcrumbs__crumb"
       >
         <a
-          href="/news/nice-newsletters-and-alerts"
+          href="/nice-newsletters-and-alerts"
         >
           Newsletters and alerts
         </a>
@@ -73,7 +73,7 @@ exports[`NewsInternationalNewsletterForm should match snapshot 1`] = `
       "@type": "ListItem",
       "position": 3,
       "item": {
-        "@id": "/news/nice-newsletters-and-alerts",
+        "@id": "/nice-newsletters-and-alerts",
         "name": "Newsletters and alerts"
       }
     },

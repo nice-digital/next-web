@@ -229,7 +229,7 @@ exports[`NewsArticlePage renders the page 1`] = `
                   <a
                     class="btn btn--cta signupCta"
                     data-component="button--cta"
-                    href="/newsletters-and-alerts"
+                    href="/nice-newsletters-and-alerts"
                   >
                     Sign up for newsletters and alerts
                   </a>

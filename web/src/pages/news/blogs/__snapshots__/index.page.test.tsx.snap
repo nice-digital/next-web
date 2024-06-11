@@ -306,7 +306,7 @@ exports[`/news/blogs/index.page BlogIndexPage should match snapshot for main con
             <a
               class="btn btn--cta signupCta"
               data-component="button--cta"
-              href="/newsletters-and-alerts"
+              href="/nice-newsletters-and-alerts"
             >
               Sign up for newsletters and alerts
             </a>
