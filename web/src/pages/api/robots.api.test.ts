@@ -15,10 +15,10 @@ describe("Robots txt API Handler Tests", () => {
 			send: jest.fn(),
 			status: jest.fn().mockReturnThis(),
 		} as unknown as NextApiResponse;
+		jest.resetModules();
 	});
 
 	it('should return "Disallow: /" when denyRobots is "true"', async () => {
-		jest.resetModules();
 		jest.doMock("@/config", () => ({
 			publicRuntimeConfig: {
 				denyRobots: "true",
@@ -39,7 +39,6 @@ describe("Robots txt API Handler Tests", () => {
 	});
 
 	it('should return "Allow: /" and "Crawl-delay: 1" for bingbot when denyRobots is not "true"', async () => {
-		jest.resetModules();
 		jest.doMock("@/config", () => ({
 			publicRuntimeConfig: {
 				denyRobots: "false",
@@ -60,7 +59,6 @@ describe("Robots txt API Handler Tests", () => {
 	});
 
 	it('should return "Allow: /" and "Crawl-delay: 1" for bingbot when denyRobots is not set', async () => {
-		jest.resetModules();
 		jest.doMock("@/config", () => ({
 			publicRuntimeConfig: {
 				// DenyRobots not set
@@ -81,7 +79,6 @@ describe("Robots txt API Handler Tests", () => {
 	});
 
 	it('should return "Allow: /" and "Crawl-delay: 1" for bingbot when denyRobots is set to garbage value', async () => {
-		jest.resetModules();
 		jest.doMock("@/config", () => ({
 			publicRuntimeConfig: {
 				denyRobots: "garbage",
@@ -102,7 +99,6 @@ describe("Robots txt API Handler Tests", () => {
 	});
 
 	it('should return "Allow: /" and "Crawl-delay: 1" for bingbot when denyRobots is undefined', async () => {
-		jest.resetModules();
 		jest.doMock("@/config", () => ({
 			publicRuntimeConfig: {
 				denyRobots: undefined,
@@ -123,7 +119,6 @@ describe("Robots txt API Handler Tests", () => {
 	});
 
 	it('should return "Allow: /" and "Crawl-delay: 1" for bingbot when denyRobots is set to null', async () => {
-		jest.resetModules();
 		jest.doMock("@/config", () => ({
 			publicRuntimeConfig: {
 				denyRobots: null,
