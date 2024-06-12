@@ -42,7 +42,6 @@
     "clipboard-polyfill": "^3.0.3",
     "config": "^3.3.6",
     "dayjs": "^1.11.4",
-    "dotenv": "^16.4.5",
     "eslint-config-next": "^13.4.16",
     "fast-sort": "^3.0.2",
     "filesize": "^10.0.5",
@@ -64,7 +63,6 @@
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
     "react-lite-youtube-embed": "^2.4.0",
-    "readline-sync": "^1.4.10",
     "serialize-error": "^8.1.0",
     "storyblok-rich-text-react-renderer": "^2.9.1",
     "striptags": "^3.2.0"
@@ -86,7 +84,9 @@
     "pino-pretty": "^5.1.3",
     "sass": "^1.35.1",
     "storyblok-generate-ts": "^1.15.1",
-    "type-fest": "^2.17.0"
+    "type-fest": "^2.17.0",
+    "dotenv": "^16.4.5",
+    "readline-sync": "^1.4.10"
   },
   "volta": {
     "node": "18.18.2"

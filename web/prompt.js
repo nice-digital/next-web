@@ -8,8 +8,8 @@ const rl = readline.createInterface({
 	output: process.stdout,
 });
 
-const fromId = process.env.FROM_ID;
-const toId = process.env.TO_ID;
+const fromId = process.env.LIVE_SPACE_ID;
+const toId = process.env.SANDBOX_SPACE_ID;
 
 if (!fromId || !toId) {
 	console.error(
