@@ -1,54 +1,90 @@
 import { exec } from "child_process";
-import path, { dirname } from "path";
-import readline from "readline";
-import { fileURLToPath } from "url";
 
 import { config } from "dotenv";
+import inquirer from "inquirer";
 
-const __filename = fileURLToPath(import.meta.url);
-const __dirname = dirname(__filename);
+config({ path: ".env.local" });
 
-config({ path: path.join(__dirname, "./.env.local") });
+const LIVE_SPACE_ID = process.env.LIVE_SPACE_ID;
+const SANDBOX_SPACE_ID = process.env.SANDBOX_SPACE_ID;
+const TEST_SPACE_ID = process.env.TEST_SPACE_ID;
 
-const rl = readline.createInterface({
-	input: process.stdin,
-	output: process.stdout,
-});
+const options = [
+	{ name: "Live", value: LIVE_SPACE_ID },
+	{ name: "Sandbox", value: SANDBOX_SPACE_ID },
+	{ name: "Test", value: TEST_SPACE_ID },
+];
 
-const fromId = process.env.LIVE_SPACE_ID;
-const toId = process.env.SANDBOX_SPACE_ID;
+// Custom caution message
+const cautionMessage = `
+*************************************************************
+*                    WARNING:                             *
+* This is a VERY dangerous operation!!! Please be cautious. *
+*************************************************************
+`;
 
-if (!fromId || !toId) {
-	console.error(
-		"Missing environment variables. Please set FROM_ID and TO_ID in .env.local."
-	);
-	rl.close();
-	process.exit(1);
-}
+console.log(cautionMessage);
 
-console.log(`Sync from ID: ${fromId}`);
-console.log(`Sync to ID: ${toId}`);
+inquirer
+	.prompt([
+		{
+			type: "list",
+			name: "from",
+			message: "Select 'from' value:",
+			choices: options.map((option) => option.name),
+		},
+	])
+	.then((answers) => {
+		console.log("Options:", options);
+		const selectedFromOption = options.find(
+			(option) => option.name === answers.from
+		);
+		const filteredOptions = options.filter(
+			(option) => option.value !== selectedFromOption?.value
+		);
+		console.log("Filtered Options:", filteredOptions);
+		inquirer
+			.prompt([
+				{
+					type: "list",
+					name: "to",
+					message: "Select 'to' value:",
+					choices: filteredOptions.map((option) => option.name),
+				},
+				{
+					type: "confirm",
+					name: "confirm",
+					message: (answers) =>
+						`Confirm sync selection: from "${selectedFromOption?.name}" to "${answers.to}"?`,
+					default: true,
+				},
+			])
+			.then((answers) => {
+				if (answers.confirm) {
+					const selectedToOption = filteredOptions.find(
+						(option) => option.name === answers.to
+					);
 
-rl.question(
-	"WARNING - DANGEROUS OPERATION! Do you want to continue? (yes/no): ",
-	(confirmation) => {
-		if (confirmation.toLowerCase() === "yes") {
-			const command = `powershell.exe -Command "echo 'Syncing From ID: ${fromId}'; echo 'To ID: ${toId}'"`;
-			exec(command, (error, stdout, stderr) => {
-				if (error) {
-					console.error(`Error executing PowerShell command: ${error}`);
-					return;
+					const command = `echo Your selection: syncing from "${selectedFromOption?.name} ${selectedFromOption?.value} " to "${selectedToOption?.name} ${selectedToOption?.value}"`;
+					exec(command, (error, stdout, stderr) => {
+						if (error) {
+							console.error(`Error: ${error.message}`);
+							return;
+						}
+						if (stderr) {
+							console.error(`Error: ${stderr}`);
+							return;
+						}
+						console.log(stdout);
+					});
+				} else {
+					console.log("Selection canceled.");
 				}
-				console.log("Standard output:", stdout);
-				console.log("Error output:", stderr);
+			})
+			.catch((error) => {
+				console.error(`Error: ${error}`);
 			});
-		} else {
-			console.log("Exiting...");
-		}
-		rl.close();
-	}
-);
-
-rl.on("close", () => {
-	console.log("Script terminated.");
-});
+	})
+	.catch((error) => {
+		console.error(`Error: ${error}`);
+	});
