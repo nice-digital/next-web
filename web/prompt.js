@@ -1,6 +1,6 @@
 const { exec } = require("child_process");
 
-const prompt = require("prompt-sync");
+const readlineSync = require("readline-sync");
 
 const args = process.argv.slice(2);
 const sandboxSpaceId = args[0];
@@ -14,22 +14,28 @@ if (!sandboxSpaceId || !liveSpaceId) {
 }
 
 const warningMessage = `
-╔════════════════════════════════════════════╗
-║!!! This is a REALLY DANGEROUS operation !!!║
-╚════════════════════════════════════════════╝
-Are you sure you want to copy from space ID: ${sandboxSpaceId} to space ID: ${liveSpaceId} ? (y/n):
+*********************************************
+*         !!! WARNING !!!                   *
+*********************************************
+* This is a REALLY DANGEROUS operation!    *
+*********************************************
+* Are you sure you want to copy from       *
+* space ID: ${sandboxSpaceId} to           *
+* space ID: ${liveSpaceId}?                *
+*********************************************
+* (y/n):                                   *
+*********************************************
 `;
 
-const userInput = prompt({ sigint: true })(warningMessage);
+const userInput = readlineSync.question(warningMessage);
 
 if (userInput.toLowerCase() === "y") {
-	// const command = `sh -c 'echo "Copying space ID: ${sandboxSpaceId} to space ID: ${liveSpaceId}, " '`;
 	const command = `sh -c 'echo "Copying space ID: ${sandboxSpaceId} to space ID: ${liveSpaceId}" '`;
 
 	exec(command, (error, stdout, stderr) => {
 		if (error) {
-			console.error(`Error executing shell command: ${error}`);
-			return;
+			console.error(`Error executing shell command: ${error.message}`);
+			process.exit(1);
 		}
 
 		console.log(`Shell command output: ${stdout}`);
