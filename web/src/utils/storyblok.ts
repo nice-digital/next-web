@@ -240,8 +240,11 @@ export const fetchLinks = async (
 
 	const sbParams: ISbStoriesParams = {
 		version: version || "published",
-		// cv: Date.now(), // Useful for flushing the Storyblok cache
 	};
+
+	if (usingOcelotCache) {
+		sbParams.cv = Date.now();
+	}
 
 	if (startsWith) {
 		sbParams.starts_with = startsWith;

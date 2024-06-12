@@ -9,7 +9,6 @@ export const initStoryblok = (): void => {
 		const accessToken = publicRuntimeConfig.storyblok.accessToken;
 		const endpoint = publicRuntimeConfig.storyblok.ocelotEndpoint;
 		const usingOcelotCache = !!endpoint;
-		console.log("*********************", endpoint, usingOcelotCache);
 
 		storyblokInit({
 			accessToken,
