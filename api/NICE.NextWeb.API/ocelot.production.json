@@ -12,7 +12,7 @@
       "UpstreamHttpMethod": [ "Get", "Post" ],
       "UpstreamPathTemplate": "/storyblok/{everything}",
       "FileCacheOptions": {
-        "TtlSeconds": "#{Ocelot.StoryblokTtlSeconds}",
+        "TtlSeconds": #{Ocelot.StoryblokTtlSeconds},
         "Region": "OcelotStoryblok"
       }
     },
