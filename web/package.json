@@ -12,7 +12,7 @@
     "generate-sb-types": "storyblok pull-components --space {SPACE_ID} && storyblok-generate-ts source=./components.{SPACE_ID}.json target=./src/types/storyblok",
     "generate-sb-types-dynamic": "sh -c 'storyblok pull-components --space $SPACE_ID; storyblok-generate-ts source=./components.$SPACE_ID.json target=./src/types/storyblok'",
     "proxy": "mkcert -install && mkcert localhost && local-ssl-proxy --source 4010 --target 4000 --cert localhost.pem --key localhost-key.pem",
-    "danger-sandbox-to-live-copy": "node --experimental-modules ./prompt.mjs"
+    "danger-storyblok-sync": "node --experimental-modules ./prompt.mjs"
   },
   "repository": {
     "type": "git",

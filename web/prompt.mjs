@@ -17,10 +17,13 @@ const options = [
 
 // Custom caution message
 const cautionMessage = `
-*************************************************************
-*                    WARNING:                             *
-* This is a VERY dangerous operation!!! Please be cautious. *
-*************************************************************
+*************************************************************************
+*                                WARNING:                               *
+*                 This is a VERY DANGEROUS operation!!!                 *
+*                   Use caution with sync direction <-->                *
+*        Verify local env space ids match actual storyblok space ids    *
+*                                                                       *
+*************************************************************************
 `;
 
 console.log(cautionMessage);
@@ -30,7 +33,7 @@ inquirer
 		{
 			type: "list",
 			name: "from",
-			message: "Select 'from' value:",
+			message: "Select sync 'from' value:",
 			choices: options.map((option) => option.name),
 		},
 	])
@@ -48,7 +51,7 @@ inquirer
 				{
 					type: "list",
 					name: "to",
-					message: "Select 'to' value:",
+					message: "Select sync 'to' value:",
 					choices: filteredOptions.map((option) => option.name),
 				},
 				{
