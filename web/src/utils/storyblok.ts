@@ -44,10 +44,6 @@ export const newsTypes = {
 	inDepthArticle: "In-depth",
 };
 
-// Are we using the Ocelot cache?
-// If not, then we can assume we're not in production and can just request the latest version of the content
-export const usingOcelotCache = !!publicRuntimeConfig.storyblok.ocelotEndpoint;
-
 // Default podcast image
 export const defaultPodcastImage =
 	publicRuntimeConfig.publicBaseURL + "/img/nice-talks.png";
