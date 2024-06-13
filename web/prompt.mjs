@@ -37,10 +37,9 @@ inquirer
 			choices: options.map((option) => option.name),
 		},
 	])
-	.then((answers) => {
-		console.log("Options:", options);
+	.then((fromAnswers) => {
 		const selectedFromOption = options.find(
-			(option) => option.name === answers.from
+			(option) => option.name === fromAnswers.from
 		);
 		const filteredOptions = options.filter(
 			(option) => option.value !== selectedFromOption?.value
@@ -57,18 +56,22 @@ inquirer
 				{
 					type: "confirm",
 					name: "confirm",
-					message: (answers) =>
-						`Confirm sync selection: from "${selectedFromOption?.name}" to "${answers.to}"?`,
-					default: true,
+					message: (confirmAnswers) => {
+						const selectedToOption = filteredOptions.find(
+							(option) => option.name === confirmAnswers.to
+						);
+						return `Confirm sync selection: Sync from "${selectedFromOption?.name} ${selectedFromOption?.value}" to "${selectedToOption?.name} ${selectedToOption?.value}"?`;
+					},
+					default: false,
 				},
 			])
-			.then((answers) => {
-				if (answers.confirm) {
+			.then((toAnswers) => {
+				if (toAnswers.confirm) {
 					const selectedToOption = filteredOptions.find(
-						(option) => option.name === answers.to
+						(option) => option.name === toAnswers.to
 					);
 
-					const command = `echo Your selection: syncing from "${selectedFromOption?.name} ${selectedFromOption?.value} " to "${selectedToOption?.name} ${selectedToOption?.value}"`;
+					const command = `echo Your selection: syncing from "${selectedFromOption?.name} ${selectedFromOption?.value}" to "${selectedToOption?.name} ${selectedToOption?.value}"`;
 					exec(command, (error, stdout, stderr) => {
 						if (error) {
 							console.error(`Error: ${error.message}`);
@@ -81,7 +84,7 @@ inquirer
 						console.log(stdout);
 					});
 				} else {
-					console.log("Selection canceled.");
+					console.log("Sync selection canceled.");
 				}
 			})
 			.catch((error) => {
