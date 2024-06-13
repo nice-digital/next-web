@@ -27,7 +27,7 @@ const cautionMessage = `
 
 console.log(cautionMessage);
 
-async function promptSyncSelection() {
+(async function () {
 	try {
 		const { from } = await inquirer.prompt([
 			{
@@ -84,6 +84,4 @@ async function promptSyncSelection() {
 	} catch (error) {
 		console.error(`Error: ${error}`);
 	}
-}
-
-promptSyncSelection();
+})();
