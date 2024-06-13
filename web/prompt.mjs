@@ -7,12 +7,12 @@ config({ path: ".env.local" });
 
 const LIVE_SPACE_ID = process.env.LIVE_SPACE_ID;
 const SANDBOX_SPACE_ID = process.env.SANDBOX_SPACE_ID;
-const TEST_SPACE_ID = process.env.TEST_SPACE_ID;
+const DEV_SANDBOX_SPACE_ID = process.env.DEV_SANDBOX_SPACE_ID;
 
 const options = [
 	{ name: "Live", value: LIVE_SPACE_ID },
 	{ name: "Sandbox", value: SANDBOX_SPACE_ID },
-	{ name: "Test", value: TEST_SPACE_ID },
+	{ name: "DEV Sandbox", value: DEV_SANDBOX_SPACE_ID },
 ];
 
 // Custom caution message
