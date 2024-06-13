@@ -10,7 +10,7 @@ const SANDBOX_SPACE_ID = process.env.SANDBOX_SPACE_ID;
 const DEV_SANDBOX_SPACE_ID = process.env.DEV_SANDBOX_SPACE_ID;
 
 const options = [
-	{ name: "Live", value: LIVE_SPACE_ID },
+	// { name: "Live", value: LIVE_SPACE_ID },
 	{ name: "Sandbox", value: SANDBOX_SPACE_ID },
 	{ name: "DEV Sandbox", value: DEV_SANDBOX_SPACE_ID },
 ];
@@ -66,18 +66,32 @@ console.log(cautionMessage);
 		]);
 
 		if (confirm) {
-			const command = `echo Your selection: syncing from "${selectedFromOption?.name} ${selectedFromOption?.value}" to "${selectedToOption?.name} ${selectedToOption?.value}"`;
-			exec(command, (error, stdout, stderr) => {
-				if (error) {
-					console.error(`Error: ${error.message}`);
-					return;
+			const command = `
+			echo "Your selection: syncing from '${selectedFromOption?.name} ${selectedFromOption?.value}' to '${selectedToOption?.name} ${selectedToOption?.value}'";
+			echo "List directory contents";
+			dir;
+			echo "Creating a temporary file";
+            echo "torybloock! sync --type 'YOUR TYPES HERE'  --source ${selectedFromOption?.value} --target ${selectedToOption?.value}" > temp.txt;
+            echo "Temporary file created";
+            echo "Harmless commands completed";
+		`;
+
+			exec(
+				`powershell -Command "${command
+					.replace(/\n/g, " ")
+					.replace(/"/g, '\\"')}"`,
+				(error, stdout, stderr) => {
+					if (error) {
+						console.error(`Error: ${error.message}`);
+						return;
+					}
+					if (stderr) {
+						console.error(`Error: ${stderr}`);
+						return;
+					}
+					console.log(stdout);
 				}
-				if (stderr) {
-					console.error(`Error: ${stderr}`);
-					return;
-				}
-				console.log(stdout);
-			});
+			);
 		} else {
 			console.log("Sync selection canceled.");
 		}
