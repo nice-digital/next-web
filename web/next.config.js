@@ -129,6 +129,10 @@ const nextConfig = {
 					"/:productRoot(indicators|guidance|advice|process|corporate|hub)/:path*",
 				destination: "/indicators/:path*?productRoot=:productRoot",
 			},
+			{
+				source: "/robots.txt",
+				destination: "/api/robots",
+			},
 		];
 	},
 	async redirects() {
