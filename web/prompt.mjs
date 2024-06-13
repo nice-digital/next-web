@@ -72,9 +72,10 @@ console.log(cautionMessage);
 			dir;
 			echo "Creating a temporary file";
             echo "torybloock! sync --type folders, components, stories  --source ${selectedFromOption?.value} --target ${selectedToOption?.value} --dryrun" > temp.txt;
+			echo "Temporary file created";
 			code temp.txt;
 			del temp.txt;
-            echo "Temporary file created";
+            echo "Temporary file deleted";
             echo "Harmless commands completed";
 		`;
 
