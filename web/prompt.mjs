@@ -15,7 +15,6 @@ const options = [
 	{ name: "DEV Sandbox", value: DEV_SANDBOX_SPACE_ID },
 ];
 
-// Custom caution message
 const cautionMessage = `
 *************************************************************************
 *                                WARNING:                               *
@@ -28,69 +27,63 @@ const cautionMessage = `
 
 console.log(cautionMessage);
 
-inquirer
-	.prompt([
-		{
-			type: "list",
-			name: "from",
-			message: "Select sync 'from' value:",
-			choices: options.map((option) => option.name),
-		},
-	])
-	.then((fromAnswers) => {
-		const selectedFromOption = options.find(
-			(option) => option.name === fromAnswers.from
-		);
+async function promptSyncSelection() {
+	try {
+		const { from } = await inquirer.prompt([
+			{
+				type: "list",
+				name: "from",
+				message: "Select sync 'from' value:",
+				choices: options.map((option) => option.name),
+			},
+		]);
+
+		const selectedFromOption = options.find((option) => option.name === from);
 		const filteredOptions = options.filter(
 			(option) => option.value !== selectedFromOption?.value
 		);
-		console.log("Filtered Options:", filteredOptions);
-		inquirer
-			.prompt([
-				{
-					type: "list",
-					name: "to",
-					message: "Select sync 'to' value:",
-					choices: filteredOptions.map((option) => option.name),
-				},
-				{
-					type: "confirm",
-					name: "confirm",
-					message: (confirmAnswers) => {
-						const selectedToOption = filteredOptions.find(
-							(option) => option.name === confirmAnswers.to
-						);
-						return `Confirm sync selection: Sync from "${selectedFromOption?.name} ${selectedFromOption?.value}" to "${selectedToOption?.name} ${selectedToOption?.value}"?`;
-					},
-					default: false,
-				},
-			])
-			.then((toAnswers) => {
-				if (toAnswers.confirm) {
-					const selectedToOption = filteredOptions.find(
-						(option) => option.name === toAnswers.to
-					);
 
-					const command = `echo Your selection: syncing from "${selectedFromOption?.name} ${selectedFromOption?.value}" to "${selectedToOption?.name} ${selectedToOption?.value}"`;
-					exec(command, (error, stdout, stderr) => {
-						if (error) {
-							console.error(`Error: ${error.message}`);
-							return;
-						}
-						if (stderr) {
-							console.error(`Error: ${stderr}`);
-							return;
-						}
-						console.log(stdout);
-					});
-				} else {
-					console.log("Sync selection canceled.");
+		const { to } = await inquirer.prompt([
+			{
+				type: "list",
+				name: "to",
+				message: "Select sync 'to' value:",
+				choices: filteredOptions.map((option) => option.name),
+			},
+		]);
+
+		const selectedToOption = filteredOptions.find(
+			(option) => option.name === to
+		);
+
+		const { confirm } = await inquirer.prompt([
+			{
+				type: "confirm",
+				name: "confirm",
+				message: `Confirm sync selection: Sync from "${selectedFromOption?.name} ${selectedFromOption?.value}" to "${selectedToOption?.name} ${selectedToOption?.value}"?`,
+				default: false,
+			},
+		]);
+
+		if (confirm) {
+			const command = `echo Your selection: syncing from "${selectedFromOption?.name} ${selectedFromOption?.value}" to "${selectedToOption?.name} ${selectedToOption?.value}"`;
+			exec(command, (error, stdout, stderr) => {
+				if (error) {
+					console.error(`Error: ${error.message}`);
+					return;
 				}
-			})
-			.catch((error) => {
-				console.error(`Error: ${error}`);
+				if (stderr) {
+					console.error(`Error: ${stderr}`);
+					return;
+				}
+				console.log(stdout);
 			});
-	})
-	.catch((error) => {
+		} else {
+			console.log("Sync selection canceled.");
+		}
+	} catch (error) {
 		console.error(`Error: ${error}`);
-	});
+	}
+}
+
+promptSyncSelection();
