@@ -10,7 +10,7 @@ const SANDBOX_SPACE_ID = process.env.SANDBOX_SPACE_ID;
 const DEV_SANDBOX_SPACE_ID = process.env.DEV_SANDBOX_SPACE_ID;
 
 const options = [
-	// { name: "Live", value: LIVE_SPACE_ID },
+	{ name: "Live", value: LIVE_SPACE_ID },
 	{ name: "Sandbox", value: SANDBOX_SPACE_ID },
 	{ name: "DEV Sandbox", value: DEV_SANDBOX_SPACE_ID },
 ];
