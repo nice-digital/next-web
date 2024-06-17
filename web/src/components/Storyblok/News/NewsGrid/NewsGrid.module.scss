@@ -1,0 +1,24 @@
+@use '@nice-digital/nds-core/scss/media-queries';
+@use '@nice-digital/nds-core/scss/spacing';
+@use '@nice-digital/nds-core/scss/utils';
+
+.newsGrid {
+  list-style: none;
+  margin: 0;
+  max-width: none;
+
+  @include media-queries.mq($from: md) {
+    display: flex;
+  }
+
+  li {
+    @include media-queries.mq($from: md) {
+      flex: 0 1 33%;
+      margin-right: utils.rem(spacing.$large);
+
+      &:last-child {
+        margin-right: 0;
+      }
+    }
+  }
+}
