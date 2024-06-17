@@ -81,35 +81,48 @@ console.log(cautionMessage);
 
 			const typesStr = types.join(", ");
 
-			const command = `
-				echo "Your selection: syncing from '${selectedFromOption?.name} ${selectedFromOption?.value}' to '${selectedToOption?.name} ${selectedToOption?.value}'";
-				echo "List directory contents";
-				dir;
-				echo "Creating a temporary file";
-				echo "storyblok sync --type ${typesStr} --source ${selectedFromOption?.value} --target ${selectedToOption?.value} --dryrun" > temp.txt;
-				echo "Temporary file created";
-				code temp.txt;
-				del temp.txt;
-				echo "Temporary file deleted";
-				echo "Harmless commands completed";
-			`;
+			const { confirmTypes } = await inquirer.prompt([
+				{
+					type: "confirm",
+					name: "confirmTypes",
+					message: `You selected the following types to copy: ${typesStr}. Confirm?`,
+					default: false,
+				},
+			]);
 
-			exec(
-				`powershell -Command "${command
-					.replace(/\n/g, " ")
-					.replace(/"/g, '\\"')}"`,
-				(error, stdout, stderr) => {
-					if (error) {
-						console.error(`Error: ${error.message}`);
-						return;
+			if (confirmTypes) {
+				const command = `
+          echo "Your selection: syncing from '${selectedFromOption?.name} ${selectedFromOption?.value}' to '${selectedToOption?.name} ${selectedToOption?.value}'";
+          echo "List directory contents";
+          dir;
+          echo "Creating a temporary file";
+          echo "storyblok sync --type ${typesStr} --source ${selectedFromOption?.value} --target ${selectedToOption?.value} --dryrun" > temp.txt;
+          echo "Temporary file created";
+          code temp.txt;
+          del temp.txt;
+          echo "Temporary file deleted";
+          echo "Harmless commands completed";
+        `;
+
+				exec(
+					`powershell -Command "${command
+						.replace(/\n/g, " ")
+						.replace(/"/g, '\\"')}"`,
+					(error, stdout, stderr) => {
+						if (error) {
+							console.error(`Error: ${error.message}`);
+							return;
+						}
+						if (stderr) {
+							console.error(`Error: ${stderr}`);
+							return;
+						}
+						console.log(stdout);
 					}
-					if (stderr) {
-						console.error(`Error: ${stderr}`);
-						return;
-					}
-					console.log(stdout);
-				}
-			);
+				);
+			} else {
+				console.log("Type selection canceled.");
+			}
 		} else {
 			console.log("Sync selection canceled.");
 		}
