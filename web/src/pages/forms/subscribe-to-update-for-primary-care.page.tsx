@@ -17,7 +17,7 @@ export default function PrimaryCareNewsletterForm(
 			parentPages={[
 				{
 					title: "Newsletters and alerts",
-					path: "/news/nice-newsletters-and-alerts",
+					path: "/nice-newsletters-and-alerts",
 				},
 				{
 					title: "News",

@@ -1,0 +1,90 @@
+@use '@nice-digital/nds-core/scss/media-queries';
+@use '@nice-digital/nds-core/scss/spacing';
+@use '@nice-digital/nds-core/scss/typography';
+@use '@nice-digital/nds-core/scss/utils';
+@use '~/styles/colours';
+
+/* stylelint-disable selector-class-pattern */
+.newsSectionArticle {
+
+  --featuredImageOffset: 16dvh;
+
+  // set padding on page-header based on the image offset
+  &:has(.featuredImage) {
+    :global(.page-header) {
+      padding-bottom: calc(var(--featuredImageOffset) - utils.rem(spacing.$large));
+    }
+  }
+
+  .featuredImage {
+    aspect-ratio: 16 / 9;
+    display: block;
+    height: auto;
+    margin-bottom: utils.rem(spacing.$large);
+    margin-top: calc(calc(var(--featuredImageOffset) * -1) - utils.rem(spacing.$medium));
+    object-fit: cover;
+    width: 100%;
+
+    @include media-queries.mq($from: sm, $until: md) {
+      aspect-ratio: 21 / 9;
+    }
+  }
+
+  :global(.page-header__heading) {
+    margin: 0 0 utils.rem(spacing.$large) 0;
+
+    /* best compromise between legibility vs words being chopped off on narrow viewports*/
+    @include media-queries.mq($until: 360px) {
+      hyphens: auto;
+      word-break: break-word;
+    }
+
+    @include media-queries.mq($until: xs) {
+      @include typography.font-size(5);
+    }
+  }
+
+  :global(.page-header__lead) {
+    margin: 0 0 utils.rem(spacing.$large) 0;
+  }
+
+  :global(.page-header__description) {
+    margin: 0 0 utils.rem(spacing.$medium) 0;
+
+    @include media-queries.mq($from: md) {
+      margin: 0 0 utils.rem(spacing.$large) 0;
+    }
+  }
+
+  :global(.page-header__second-section) {
+    margin-bottom: utils.rem(spacing.$large);
+
+    @include media-queries.mq($from: md) {
+      margin-bottom: 0;
+    }
+  }
+
+  :global(.breadcrumbs) {
+    margin-top: 0;
+  }
+
+  :global(.action-banner) {
+    margin: utils.rem(spacing.$x-large) 0;
+
+    @include media-queries.mq($from: md) {
+      margin: utils.rem(spacing.$xx-large) 0;
+    }
+  }
+
+  .authorSection {
+
+    @include media-queries.mq($from: md) {
+      border-left: 2px solid colours.$author-section-border;
+      padding-bottom: utils.rem(spacing.$x-large);
+      padding-left: utils.rem(spacing.$medium);
+    }
+  }
+
+
+}
+

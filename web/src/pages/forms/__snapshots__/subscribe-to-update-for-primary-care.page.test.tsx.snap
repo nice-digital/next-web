@@ -32,7 +32,7 @@ exports[`PrimaryCareNewsletterForm should match snapshot 1`] = `
         class="breadcrumbs__crumb"
       >
         <a
-          href="/news/nice-newsletters-and-alerts"
+          href="/nice-newsletters-and-alerts"
         >
           Newsletters and alerts
         </a>
@@ -73,7 +73,7 @@ exports[`PrimaryCareNewsletterForm should match snapshot 1`] = `
       "@type": "ListItem",
       "position": 3,
       "item": {
-        "@id": "/news/nice-newsletters-and-alerts",
+        "@id": "/nice-newsletters-and-alerts",
         "name": "Newsletters and alerts"
       }
     },
@@ -95,20 +95,30 @@ exports[`PrimaryCareNewsletterForm should match snapshot 1`] = `
       data-g="12 md:12 lg:12"
     >
       <div
-        class="page-header"
+        class="page-header "
         data-component="page-header"
+        data-testid="content-start"
         id="content-start"
       >
-        <h1
-          class="page-header__heading "
+        <div
+          class="grid"
         >
-          Subscribe to update for Primary Care
-        </h1>
-        <p
-          class="page-header__lead"
-        >
-          Keeping GPs and others working in primary care up-to-date with important developments.
-        </p>
+          <div
+            data-component="grid-item"
+            data-g="12 md:12"
+          >
+            <h1
+              class="page-header__heading "
+            >
+              Subscribe to update for Primary Care
+            </h1>
+            <p
+              class="page-header__lead"
+            >
+              Keeping GPs and others working in primary care up-to-date with important developments.
+            </p>
+          </div>
+        </div>
       </div>
       <iframe
         allow="geolocation; microphone; camera"

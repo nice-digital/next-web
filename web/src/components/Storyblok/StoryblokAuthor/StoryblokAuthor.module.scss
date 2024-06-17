@@ -1,0 +1,72 @@
+@use '@nice-digital/nds-core/scss/media-queries';
+@use '@nice-digital/nds-core/scss/spacing';
+@use '@nice-digital/nds-core/scss/typography';
+@use '@nice-digital/nds-core/scss/utils';
+
+.author {
+  &:first-of-type {
+    margin-top: utils.rem(spacing.$small);
+  }
+
+  margin-top: utils.rem(spacing.$medium);
+
+  &:has(img) .name {
+    margin-top: utils.rem(spacing.$medium);
+  }
+}
+
+.isCardAuthor {
+  display: flex;
+  gap: utils.rem(spacing.$medium);
+  margin-top: utils.rem(spacing.$medium);
+
+  > picture {
+    flex: 0 0 72px;
+  }
+
+  &:has(img) .name {
+    margin-top: 0;
+  }
+}
+
+.image {
+  aspect-ratio: 1 / 1;
+  border-radius: 50%;
+  display: block;
+  height: auto;
+  object-fit: cover;
+  width: 82px;
+
+  @include media-queries.mq($from: md) {
+    width: 100px;
+  }
+
+  @include media-queries.mq($from: lg) {
+    width: 136px;
+  }
+}
+
+.name {
+  @include typography.h4;
+  margin: 0;
+  margin-top: utils.rem(spacing.$x-small);
+
+  .isCardAuthor & {
+    @include typography.h6;
+    font-family: var(--sans-font-family);
+    margin: 0;
+  }
+}
+
+.jobTitle {
+  @include typography.h5;
+  font-weight: 400;
+  margin: utils.rem(spacing.$small) 0 0;
+
+  .isCardAuthor & {
+    @include typography.p;
+    margin: 0;
+    text-wrap: pretty;
+
+  }
+}

@@ -2,14 +2,6 @@
 
 exports[`/indicators/published should match the snapshot 1`] = `
 <div>
-  <style>
-    
-		html {
-			--sans-font-family: Arial;
-			--serif-font-family: Arial;
-		}
-	
-  </style>
   <div />
   <main>
     <div
@@ -85,36 +77,46 @@ exports[`/indicators/published should match the snapshot 1`] = `
 }
       </script>
       <div
-        class="page-header"
+        class="page-header "
         data-component="page-header"
+        data-testid="content-start"
         id="content-start"
       >
-        <h1
-          class="page-header__heading "
+        <div
+          class="grid"
         >
-          <span
-            class="page-header__pre-heading"
+          <div
+            data-component="grid-item"
+            data-g="12 md:12"
           >
-            Published
-          </span>
-          Indicators
-        </h1>
-        <p
-          class="page-header__lead"
-        >
-          <a
-            class="skipLink"
-            href="#filters"
-          >
-            Skip to filters
-          </a>
-          <a
-            class="skipLink"
-            href="#results"
-          >
-            Skip to results
-          </a>
-        </p>
+            <h1
+              class="page-header__heading "
+            >
+              <span
+                class="page-header__pre-heading"
+              >
+                Published
+              </span>
+              Indicators
+            </h1>
+            <p
+              class="page-header__lead"
+            >
+              <a
+                class="skipLink"
+                href="#filters"
+              >
+                Skip to filters
+              </a>
+              <a
+                class="skipLink"
+                href="#results"
+              >
+                Skip to results
+              </a>
+            </p>
+          </div>
+        </div>
       </div>
       <nav
         aria-label="Stages of indicator development"
