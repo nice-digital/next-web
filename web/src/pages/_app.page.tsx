@@ -172,19 +172,21 @@ class NextWebApp extends App<{}, {}, AppState> {
 		return (
 			<>
 				<DefaultSeo {...getDefaultSeoConfig(canonicalPathname)} />
-				<div ref={this.globalNavWrapperRef}>
-					<Header {...headerProps} service={service} />
+				<div className={`${lora.variable} ${inter.variable}`}>
+					<div ref={this.globalNavWrapperRef}>
+						<Header {...headerProps} service={service} />
+					</div>
+					<Main>
+						<Container>
+							{this.state.hasError ? (
+								<ErrorPageContent />
+							) : (
+								<Component {...pageProps} />
+							)}
+						</Container>
+					</Main>
+					<AppFooter />
 				</div>
-				<Main className={`${lora.variable} ${inter.variable}`}>
-					<Container>
-						{this.state.hasError ? (
-							<ErrorPageContent />
-						) : (
-							<Component {...pageProps} />
-						)}
-					</Container>
-				</Main>
-				<AppFooter />
 			</>
 		);
 	}
