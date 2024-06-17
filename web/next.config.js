@@ -143,18 +143,8 @@ const nextConfig = {
 				permanent: true,
 			},
 			{
-				source: "/news/article/:slug",
-				destination: "/news/articles/:slug",
-				permanent: true,
-			},
-			{
 				source: "/news/blog",
 				destination: "/news/blogs",
-				permanent: true,
-			},
-			{
-				source: "/news/blog/:slug",
-				destination: "/news/blogs/:slug",
 				permanent: true,
 			},
 			{
@@ -297,6 +287,16 @@ const nextConfig = {
 					"/news/blog/listening-to-patients-and-organisations-to-update-nice-s-quality-standard-on-transition-from-children-s-to-adults-services",
 				destination:
 					"/news/blogs/listening-to-patients-and-organisations-to-update-nice-s-quality-standard-on-transition-from-children-s-to-adults-services",
+				permanent: true,
+			},
+			{
+				source: "/news/article/:slug",
+				destination: "/news/articles/:slug",
+				permanent: true,
+			},
+			{
+				source: "/news/blog/:slug",
+				destination: "/news/blogs/:slug",
 				permanent: true,
 			},
 			{
