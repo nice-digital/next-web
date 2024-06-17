@@ -66,18 +66,33 @@ console.log(cautionMessage);
 		]);
 
 		if (confirm) {
+			const { types } = await inquirer.prompt([
+				{
+					type: "checkbox",
+					name: "types",
+					message: "Select types to copy:",
+					choices: [
+						{ name: "folders" },
+						{ name: "components" },
+						{ name: "stories" },
+					],
+				},
+			]);
+
+			const typesStr = types.join(", ");
+
 			const command = `
-			echo "Your selection: syncing from '${selectedFromOption?.name} ${selectedFromOption?.value}' to '${selectedToOption?.name} ${selectedToOption?.value}'";
-			echo "List directory contents";
-			dir;
-			echo "Creating a temporary file";
-            echo "torybloock! sync --type folders, components, stories  --source ${selectedFromOption?.value} --target ${selectedToOption?.value} --dryrun" > temp.txt;
-			echo "Temporary file created";
-			code temp.txt;
-			del temp.txt;
-            echo "Temporary file deleted";
-            echo "Harmless commands completed";
-		`;
+				echo "Your selection: syncing from '${selectedFromOption?.name} ${selectedFromOption?.value}' to '${selectedToOption?.name} ${selectedToOption?.value}'";
+				echo "List directory contents";
+				dir;
+				echo "Creating a temporary file";
+				echo "storyblok sync --type ${typesStr} --source ${selectedFromOption?.value} --target ${selectedToOption?.value} --dryrun" > temp.txt;
+				echo "Temporary file created";
+				code temp.txt;
+				del temp.txt;
+				echo "Temporary file deleted";
+				echo "Harmless commands completed";
+			`;
 
 			exec(
 				`powershell -Command "${command
