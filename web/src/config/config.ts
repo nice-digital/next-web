@@ -30,6 +30,12 @@ export interface PublicConfig {
 	/** Name of the environment e.g. _dev_ or _test_ */
 	readonly environment: string;
 
+	/** Name of the auth environment which is passed through to global nav */
+	readonly authEnvironment: "live" | "beta" | "test" | "local";
+
+	/** Disallow crawlers from indexing the site */
+	readonly denyRobots: string;
+
 	/** The base URL of the website including protocol and port e.g. http://localhost:3000 for local dev or http://dev.nice.org.uk.
 	 *
 	 * **Note** the lack of trailing slash! It will get prepended to paths that start with a slash. */
@@ -53,6 +59,9 @@ export interface PublicConfig {
 
 	/** Public config for JotForm. Note, there's also a server config object with the secret API key */
 	readonly jotForm: JotFormPublicConfig;
+
+	/** Public config for Storyblok */
+	readonly storyblok: StoryblokConfig;
 }
 
 /**
@@ -92,6 +101,12 @@ export interface FeedsConfig {
 
 	/** Feed config for JotForm */
 	readonly jotForm: Pick<FeedConfig, "apiKey">;
+}
+
+export interface StoryblokConfig {
+	readonly accessToken: string;
+	readonly ocelotEndpoint: string;
+	readonly enableRootCatchAll: string;
 }
 
 /**

@@ -57,10 +57,6 @@ const commonHeaders = [
 		value: "max-age=31536000; includeSubDomains; preload",
 	},
 	{
-		key: "X-Frame-Options",
-		value: "DENY",
-	},
-	{
 		key: "X-XSS-Protection",
 		value: "1; mode=block",
 	},
@@ -76,10 +72,6 @@ const commonHeaders = [
 		key: "Referrer-Policy",
 		value: "strict-origin-when-cross-origin",
 	},
-	{
-		key: "Content-Security-Policy",
-		value: "frame-ancestors 'none'", // TODO: Add a strong CSP
-	},
 	/**
 	 * Preload external assets and preconnecting external domains via Link header
 	 */
@@ -93,6 +85,20 @@ const commonHeaders = [
 		].join(","),
 	},
 ];
+
+// Prevent emebdding this site in frames in production, but allow it in dev so we can use the Storyblok preview editor
+if (process.env.NODE_ENV === "production") {
+	commonHeaders.push(
+		{
+			key: "X-Frame-Options",
+			value: "DENY",
+		},
+		{
+			key: "Content-Security-Policy",
+			value: "frame-ancestors 'none'",
+		}
+	);
+}
 
 /**
  * @type {import('next').NextConfig}
@@ -123,10 +129,176 @@ const nextConfig = {
 					"/:productRoot(indicators|guidance|advice|process|corporate|hub)/:path*",
 				destination: "/indicators/:path*?productRoot=:productRoot",
 			},
+			{
+				source: "/robots.txt",
+				destination: "/api/robots",
+			},
 		];
 	},
 	async redirects() {
 		return [
+			{
+				source: "/news/newsandfeatures",
+				destination: "/news/articles",
+				permanent: true,
+			},
+			{
+				source: "/news/blog",
+				destination: "/news/blogs",
+				permanent: true,
+			},
+			{
+				source: "/news/features",
+				destination: "/news/in-depth",
+				permanent: true,
+			},
+			{
+				source: "/news/nice-talks-podcasts",
+				destination: "/news/podcasts",
+				permanent: true,
+			},
+			{
+				source: "/news/press-and-media",
+				destination: "/press-and-media",
+				permanent: true,
+			},
+			{
+				source: "/news/nice-newsletters-and-alerts",
+				destination: "/nice-newsletters-and-alerts",
+				permanent: true,
+			},
+			{
+				source: "/news/events",
+				destination: "/events",
+				permanent: true,
+			},
+			{
+				source:
+					"/news/article/1-4-million-more-people-at-risk-of-severe-covid-19-to-have-access-to-antiviral-paxlovid",
+				destination:
+					"/news/articles/people-at-risk-of-severe-covid-19-to-have-access-to-antiviral-paxlovid",
+				permanent: true,
+			},
+			{
+				source:
+					"/news/article/300-people-to-benefit-from-new-treatment-for-advanced-breast-cancer-recommended-by-nice-following-price-deal",
+				destination:
+					"/news/articles/new-treatment-for-advanced-breast-cancer-recommended-by-nice",
+				permanent: true,
+			},
+			{
+				source:
+					"/news/article/updated-nice-guidance-recommends-more-targeting-of-antibiotics-to-those-at-the-highest-risk-of-suspected-sepsis",
+				destination:
+					"/news/articles/nice-recommends-better-targeting-of-antibiotics-for-suspected-sepsis",
+				permanent: true,
+			},
+			{
+				source:
+					"/news/article/up-to-14-000-people-could-benefit-from-the-first-treatment-for-severe-alopecia-recommended-by-nice",
+				destination:
+					"/news/articles/thousands-could-benefit-from-treatment-for-severe-alopecia",
+				permanent: true,
+			},
+			{
+				source:
+					"/news/article/a-public-consultation-on-our-new-approach-to-prioritising-guidance-is-now-open",
+				destination:
+					"/news/articles/public-consultation-on-our-new-approach-to-prioritising-guidance-now-open",
+				permanent: true,
+			},
+			{
+				source:
+					"/news/article/new-treatment-option-available-today-for-womb-cancer",
+				destination:
+					"/news/articles/new-treatment-option-available-for-womb-cancer",
+				permanent: true,
+			},
+			{
+				source:
+					"/news/article/nice-publishes-final-draft-guidance-on-enhertu-after-commercial-discussions-conclude-without-a-price-to-make-it-a-cost-effective-use-of-nhs-resources",
+				destination:
+					"/news/articles/nice-publishes-final-draft-guidance-on-enhertu-after-commercial-discussions-conclude",
+				permanent: true,
+			},
+			{
+				source:
+					"/news/article/25-000-people-to-benefit-after-nice-recommends-new-ulcerative-colitis-treatment",
+				destination:
+					"/news/articles/25000-people-to-benefit-after-nice-recommends-new-ulcerative-colitis-treatment",
+				permanent: true,
+			},
+			{
+				source:
+					"/news/article/children-and-young-adults-to-benefit-after-nice-recommends-personalised-immunotherapy-to-treat-blood-cancer-be-made-routinely-available-on-the-nhs",
+				destination:
+					"/news/articles/nice-recommended-personalised-immunotherapy-to-treat-blood-cancer-in-children-and-young-adults-to-be-made-routinely-available-on-the-nhs",
+				permanent: true,
+			},
+			{
+				source:
+					"/news/article/children-and-teenagers-with-an-aggressive-form-of-brain-cancer-set-to-benefit-after-nice-recommends-new-life-extending-drug-combination-treatment",
+				destination:
+					"/news/articles/new-life-extending-drug-treatment-for-children-and-teenagers-with-an-aggressive-form-of-brain-cancer",
+				permanent: true,
+			},
+			{
+				source:
+					"/news/article/improved-deal-signals-nice-recommendation-of-sickle-cell-treatment-voxelotor",
+				destination:
+					"/news/articles/around-4-000-people-with-sickle-cell-disease-could-benefit-from-a-new-treatment-recommended-by-nice",
+				permanent: true,
+			},
+			{
+				source:
+					"/news/article/tests-could-lead-to-fewer-people-having-unnecessary-chemotherapy-after-surgery-for-early-breast-cancer",
+				destination:
+					"/news/articles/new-tests-could-spare-people-with-early-breast-cancer-from-unnecessary-chemotherapy",
+				permanent: true,
+			},
+			{
+				source:
+					"/news/article/home-testing-devices-could-increase-the-number-of-people-diagnosed-with-sleep-condition",
+				destination:
+					"/news/articles/home-testing-devices-could-increase-the-number-of-people-diagnosed-with-sleep-apnoea",
+				permanent: true,
+			},
+			{
+				source:
+					"/news/article/statins-could-be-a-choice-for-more-people-to-reduce-their-risk-of-heart-attacks-and-strokes-says-nice",
+				destination:
+					"/news/articles/statins-a-choice-for-more-people-to-reduce-risk-of-heart-attacks-and-strokes",
+				permanent: true,
+			},
+			{
+				source:
+					"/news/article/first-treatment-for-acute-migraine-to-be-recommended-by-nice-set-to-benefit-thousands",
+				destination:
+					"/news/articles/new-treatment-for-acute-migraine-set-to-benefit-thousands",
+				permanent: true,
+			},
+			{
+				source: "/news/blog/international-women-s-day-2024",
+				destination: "/news/blogs/women-inspiring-inclusion-nice-guidance",
+				permanent: true,
+			},
+			{
+				source:
+					"/news/blog/listening-to-patients-and-organisations-to-update-nice-s-quality-standard-on-transition-from-children-s-to-adults-services",
+				destination:
+					"/news/blogs/listening-to-patients-and-organisations-to-update-nice-s-quality-standard-on-transition-from-children-s-to-adults-services",
+				permanent: true,
+			},
+			{
+				source: "/news/article/:slug",
+				destination: "/news/articles/:slug",
+				permanent: true,
+			},
+			{
+				source: "/news/blog/:slug",
+				destination: "/news/blogs/:slug",
+				permanent: true,
+			},
 			{
 				source: "/standards-and-indicators/ccgoisindicators/cancer-ccg01",
 				destination:
@@ -2034,6 +2206,16 @@ const nextConfig = {
 	sassOptions: {
 		fiber: false,
 		includePaths: [path.join(__dirname, "node_modules/@nice-digital")],
+	},
+	images: {
+		// https://nextjs.org/docs/app/api-reference/components/image#remotepatterns
+		remotePatterns: [
+			{
+				protocol: "https",
+				hostname: "**.nice.org.uk",
+				port: "",
+			},
+		],
 	},
 };
 
