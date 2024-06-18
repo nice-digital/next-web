@@ -1,0 +1,57 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Homepage Hero should match snapshot 1`] = `
+<div>
+  <div
+    class="undefined undefined"
+  >
+    <div />
+    <main>
+      <div
+        class="container"
+        data-component="container"
+      >
+        <div
+          class="hero hero--dark hero"
+          data-component="hero"
+        >
+          <div
+            class="hero__container"
+          >
+            <div
+              class="hero__body"
+            >
+              <h1
+                class="hero__title"
+              >
+                Holding out for a homepage hero
+              </h1>
+              <p
+                class="hero__intro"
+              >
+                'til the end of the night
+              </p>
+              <div
+                class="hero__actions"
+              >
+                <a
+                  class="btn btn--cta"
+                  data-component="button--cta"
+                  href="https://www.youtube.com/watch?v=bWcASV2sey0&pp=ygUjYm9ubmllIHR5bGVyIGhvbGRpbmcgb3V0IGZvciBhIGhlcm8%3D"
+                >
+                  Click this thing
+                </a>
+              </div>
+            </div>
+          </div>
+          <div
+            class="hero__image-container"
+            style="background-image: url(http://local-host-test-nice-org.com/f/243782/420x234/7a576133e7/register-for-board-meeting.PNG/m/867x0/filters:format%28jpeg%29:quality%2880%29/m/);"
+          />
+        </div>
+      </div>
+    </main>
+    <noscript />
+  </div>
+</div>
+`;

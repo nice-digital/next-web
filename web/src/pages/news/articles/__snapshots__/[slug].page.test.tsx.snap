@@ -1,0 +1,439 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`NewsArticlePage renders the page 1`] = `
+<body>
+  <div>
+    <article
+      class="newsSectionArticle"
+    >
+      <div
+        class="grid"
+      >
+        <div
+          data-component="grid-item"
+          data-g="12"
+        >
+          <div
+            class="page-header page-header--full-width-light"
+            data-component="page-header"
+          >
+            <div
+              class="page-header__full-width-container"
+            >
+              <div
+                class="grid"
+              >
+                <div
+                  data-component="grid-item"
+                  data-g="12 md:12"
+                >
+                  <h1
+                    class="page-header__heading "
+                  >
+                    Test news article title
+                  </h1>
+                  <p
+                    class="page-header__lead"
+                  >
+                    Test intro text
+                  </p>
+                  <div
+                    class="page-header__description"
+                  >
+                    <div
+                      class="footer"
+                    >
+                      <span
+                        class="tag tag--outline"
+                        data-component="tag"
+                        data-testid="pageTag"
+                      >
+                        News
+                      </span>
+                      <time
+                        datetime="2024-01-31T15:16:15.19"
+                      >
+                        31 January 2024
+                      </time>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div
+          data-component="grid-item"
+          data-g="12 md:7"
+        >
+          <picture>
+            <source
+              srcset="http://local-host-test-nice-org.com/f/243782/420x234/7a576133e7/register-for-board-meeting.PNG/m/867x0/filters:format%28jpeg%29:quality%2880%29/m/760x0/filters:format%28avif%29:quality%2880%29"
+              type="image/avif"
+            />
+            <source
+              srcset="http://local-host-test-nice-org.com/f/243782/420x234/7a576133e7/register-for-board-meeting.PNG/m/867x0/filters:format%28jpeg%29:quality%2880%29/m/760x0/filters:format%28webp%29:quality%2880%29"
+              type="image/webp"
+            />
+            <img
+              alt="Kitten mittens"
+              class="featuredImage"
+              height="428px"
+              loading="eager"
+              src="http://local-host-test-nice-org.com/f/243782/420x234/7a576133e7/register-for-board-meeting.PNG/m/867x0/filters:format%28jpeg%29:quality%2880%29/m/760x0/filters:format%28jpeg%29:quality%2880%29"
+              width="760px"
+            />
+          </picture>
+          <div
+            class="storyblokRichTextWrapper"
+            data-testid="storyblok-rich-text"
+          >
+            <h2
+              class="sbRichtextHeading2"
+            >
+              A mock h2 heading in a rich text field
+            </h2>
+            <h3
+              class="sbRichtextHeading3"
+            >
+              A mock h3 heading
+            </h3>
+            <h4
+              class="sbRichtextHeading4"
+            >
+              A mock h4 heading
+            </h4>
+            <h5
+              class="sbRichtextHeading5"
+            >
+              A mock h5 heading
+            </h5>
+            <h6
+              class="sbRichtextHeading6"
+            >
+              A mock h6 heading
+            </h6>
+            <p>
+              Example text content.
+            </p>
+            <picture>
+              <source
+                srcset="http://local-host-test-nice-org.com/f/243782/420x234/7a576133e7/register-for-board-meeting.PNG/m/867x0/filters:format%28jpeg%29:quality%2880%29/m/420x0/filters:format%28avif%29:quality%2880%29"
+                type="image/avif"
+              />
+              <source
+                srcset="http://local-host-test-nice-org.com/f/243782/420x234/7a576133e7/register-for-board-meeting.PNG/m/867x0/filters:format%28jpeg%29:quality%2880%29/m/420x0/filters:format%28webp%29:quality%2880%29"
+                type="image/webp"
+              />
+              <img
+                alt="Kitten wearing mittens"
+                height="234"
+                loading="lazy"
+                src="http://local-host-test-nice-org.com/f/243782/420x234/7a576133e7/register-for-board-meeting.PNG/m/867x0/filters:format%28jpeg%29:quality%2880%29/m/420x0/filters:format%28jpeg%29:quality%2880%29"
+                width="420"
+              />
+            </picture>
+            <figure
+              class="quote"
+            >
+              <blockquote>
+                <p>
+                  A inline quote in the rich text field of a news article. 
+                </p>
+              </blockquote>
+            </figure>
+          </div>
+        </div>
+        <aside
+          class="articleSidebar"
+          data-component="grid-item"
+          data-g="12 md:4 md:push:1"
+        >
+          <div
+            class="panel panel--primary"
+            data-component="panel--primary"
+          >
+            <h2
+              class="h5"
+            >
+              Associated guidance and resources
+            </h2>
+            <a
+              href="test-new-nc-2"
+            >
+              Test related link 1
+            </a>
+          </div>
+          <div
+            class="panel"
+            data-component="panel"
+          >
+            <h2
+              class="h5"
+            >
+              Related news stories
+            </h2>
+            <a
+              href="https://youtube.com/@niceorguk"
+              rel="noreferrer"
+              target="_blank"
+            >
+              Test related news link 1
+            </a>
+            <p
+              class=""
+            >
+              <span>
+                NICE
+              </span>
+              , 
+              <time
+                datetime="2024-01-31 00:00"
+              >
+                31 January 2024
+              </time>
+            </p>
+          </div>
+        </aside>
+        <div
+          data-component="grid-item"
+          data-g="12"
+        >
+          <section
+            class="action-banner"
+            data-component="action-banner"
+          >
+            <div
+              class="action-banner__container"
+            >
+              <div
+                class="action-banner__inner"
+              >
+                <div
+                  class="action-banner__text"
+                >
+                  <h2
+                    class="action-banner__title"
+                  >
+                    Sign up for our newsletters and alerts
+                  </h2>
+                  <div
+                    class="action-banner__intro"
+                  >
+                    Keeping you up to date with important developments at NICE.
+                  </div>
+                </div>
+                <div
+                  class="action-banner__actions"
+                >
+                  <a
+                    class="btn btn--cta signupCta"
+                    data-component="button--cta"
+                    href="/nice-newsletters-and-alerts"
+                  >
+                    Sign up for newsletters and alerts
+                  </a>
+                </div>
+              </div>
+            </div>
+          </section>
+        </div>
+      </div>
+    </article>
+  </div>
+</body>
+`;
+
+exports[`NewsArticlePage should render error page if fetchStory returns error 1`] = `
+<DocumentFragment>
+  <nav
+    aria-label="Breadcrumbs"
+    data-component="breadcrumbs"
+    role="navigation"
+  >
+    <ol
+      class="breadcrumbs"
+    >
+      <li
+        class="breadcrumbs__crumb"
+      >
+        <a
+          href="/"
+        >
+          Home
+        </a>
+      </li>
+      <li
+        class="breadcrumbs__crumb"
+      >
+        <span>
+          Error
+        </span>
+      </li>
+    </ol>
+  </nav>
+  <script
+    type="application/ld+json"
+  >
+    {
+  "@context": "http://schema.org",
+  "@type": "BreadcrumbList",
+  "itemListElement": [
+    {
+      "@type": "ListItem",
+      "position": 1,
+      "item": {
+        "@id": "/",
+        "name": "Home"
+      }
+    },
+    {
+      "@type": "ListItem",
+      "position": 2,
+      "item": {
+        "name": "Error"
+      }
+    }
+  ]
+}
+  </script>
+  <div
+    class="page-header "
+    data-component="page-header"
+    id="content-start"
+  >
+    <div
+      class="grid"
+    >
+      <div
+        data-component="grid-item"
+        data-g="12 md:12"
+      >
+        <h1
+          class="page-header__heading "
+        >
+          An error returned from getserversideprops
+        </h1>
+        <p
+          class="page-header__lead"
+        >
+          We'll look into it right away. Please try again in a few minutes. And if it's still not fixed, 
+          <a
+            href="/get-involved/contact-us"
+          >
+            contact us
+          </a>
+          .
+        </p>
+      </div>
+    </div>
+  </div>
+  <h2>
+    What can I do now?
+  </h2>
+  <div
+    class="grid grid--loose"
+  >
+    <div
+      data-component="grid-item"
+      data-g="12 sm:6 md:4"
+    >
+      <ul
+        class="mt--0"
+      >
+        <li>
+          Check that the web address has been typed correctly
+        </li>
+        <li>
+          Look for it using search
+        </li>
+        <li>
+          Browse for it from the 
+          <a
+            href="/"
+          >
+            homepage
+          </a>
+        </li>
+      </ul>
+      <p>
+        And if you still can't find what you're looking for, 
+        <a
+          href="/get-involved/contact-us"
+        >
+          get in touch
+        </a>
+        .
+      </p>
+    </div>
+    <div
+      data-component="grid-item"
+      data-g="12 sm:6 md:8"
+    >
+      <p
+        class="mt--0"
+      >
+        Here's where you can go from here:
+      </p>
+      <ul>
+        <li>
+          Explore 
+          <a
+            href="/guidance"
+          >
+            NICE guidance, quality standards and advice
+          </a>
+          . You can do this by 
+          <a
+            href="/guidance/conditions-and-diseases"
+          >
+            category to find a topic
+          </a>
+          , or choose a 
+          <a
+            href="/guidance/published"
+          >
+            list organised by date or title
+          </a>
+          .
+        </li>
+        <li>
+          <a
+            href="http://www.evidence.nhs.uk/"
+          >
+            Try evidence search
+          </a>
+          . This is our unique index of authoritative, evidence-based information from hundreds of trustworthy and accredited sources.
+        </li>
+        <li>
+          <a
+            href="/about"
+          >
+            Visit our about pages
+          </a>
+           to find information about our services, 
+          <a
+            href="/about/who-we-are"
+          >
+            who we are
+          </a>
+           and 
+          <a
+            href="/about/what-we-do"
+          >
+            what we do
+          </a>
+        </li>
+      </ul>
+      <p>
+        If this is not the first time you have seen this message and believe that there is a serious problem 
+        <a
+          href="/get-involved/contact-us"
+        >
+          please contact us directly
+        </a>
+      </p>
+    </div>
+  </div>
+</DocumentFragment>
+`;
