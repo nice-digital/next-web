@@ -2,94 +2,101 @@
 
 exports[`Homepage Hero should match snapshot 1`] = `
 <div>
-  <div />
-  <main>
-    <div
-      class="container"
-      data-component="container"
-    >
+  <div
+    class="undefined undefined"
+  >
+    <div />
+    <main>
       <div
-        class="hero hero--dark hero"
-        data-component="hero"
+        class="container"
+        data-component="container"
       >
         <div
-          class="hero__container"
+          class="hero hero--dark hero"
+          data-component="hero"
         >
           <div
-            class="hero__body"
+            class="hero__container"
           >
-            <h1
-              class="hero__title"
-            >
-              Holding out for a homepage hero
-            </h1>
-            <p
-              class="hero__intro"
-            >
-              'til the end of the night
-            </p>
             <div
-              class="hero__actions"
+              class="hero__body"
             >
-              <a
-                class="btn btn--cta"
-                data-component="button--cta"
-                href="https://www.youtube.com/watch?v=bWcASV2sey0&pp=ygUjYm9ubmllIHR5bGVyIGhvbGRpbmcgb3V0IGZvciBhIGhlcm8%3D"
+              <h1
+                class="hero__title"
               >
-                Click this thing
-              </a>
+                Holding out for a homepage hero
+              </h1>
+              <p
+                class="hero__intro"
+              >
+                'til the end of the night
+              </p>
+              <div
+                class="hero__actions"
+              >
+                <a
+                  class="btn btn--cta"
+                  data-component="button--cta"
+                  href="https://www.youtube.com/watch?v=bWcASV2sey0&pp=ygUjYm9ubmllIHR5bGVyIGhvbGRpbmcgb3V0IGZvciBhIGhlcm8%3D"
+                >
+                  Click this thing
+                </a>
+              </div>
             </div>
           </div>
+          <div
+            class="hero__image-container"
+            style="background-image: url(http://local-host-test-nice-org.com/f/243782/420x234/7a576133e7/register-for-board-meeting.PNG/m/867x0/filters:format%28jpeg%29:quality%2880%29/m/);"
+          />
         </div>
-        <div
-          class="hero__image-container"
-          style="background-image: url(http://local-host-test-nice-org.com/f/243782/420x234/7a576133e7/register-for-board-meeting.PNG/m/867x0/filters:format%28jpeg%29:quality%2880%29/m/);"
-        />
       </div>
-    </div>
-  </main>
-  <noscript />
+    </main>
+    <noscript />
+  </div>
 </div>
 `;
 
 exports[`Homepage Should render error content when error is passed as a prop 1`] = `
 <DocumentFragment>
-  <div />
-  <main>
-    <div
-      class="container"
-      data-component="container"
-    >
-      <nav
-        aria-label="Breadcrumbs"
-        data-component="breadcrumbs"
-        role="navigation"
+  <div
+    class="undefined undefined"
+  >
+    <div />
+    <main>
+      <div
+        class="container"
+        data-component="container"
       >
-        <ol
-          class="breadcrumbs"
+        <nav
+          aria-label="Breadcrumbs"
+          data-component="breadcrumbs"
+          role="navigation"
         >
-          <li
-            class="breadcrumbs__crumb"
+          <ol
+            class="breadcrumbs"
           >
-            <a
-              href="/"
+            <li
+              class="breadcrumbs__crumb"
             >
-              Home
-            </a>
-          </li>
-          <li
-            class="breadcrumbs__crumb"
-          >
-            <span>
-              Error
-            </span>
-          </li>
-        </ol>
-      </nav>
-      <script
-        type="application/ld+json"
-      >
-        {
+              <a
+                href="/"
+              >
+                Home
+              </a>
+            </li>
+            <li
+              class="breadcrumbs__crumb"
+            >
+              <span>
+                Error
+              </span>
+            </li>
+          </ol>
+        </nav>
+        <script
+          type="application/ld+json"
+        >
+          {
   "@context": "http://schema.org",
   "@type": "BreadcrumbList",
   "itemListElement": [
@@ -110,438 +117,443 @@ exports[`Homepage Should render error content when error is passed as a prop 1`]
     }
   ]
 }
-      </script>
-      <div
-        class="page-header "
-        data-component="page-header"
-        id="content-start"
-      >
+        </script>
         <div
-          class="grid"
+          class="page-header "
+          data-component="page-header"
+          id="content-start"
+        >
+          <div
+            class="grid"
+          >
+            <div
+              data-component="grid-item"
+              data-g="12 md:12"
+            >
+              <h1
+                class="page-header__heading "
+              >
+                An error returned from getserversideprops
+              </h1>
+              <p
+                class="page-header__lead"
+              >
+                We'll look into it right away. Please try again in a few minutes. And if it's still not fixed, 
+                <a
+                  href="/get-involved/contact-us"
+                >
+                  contact us
+                </a>
+                .
+              </p>
+            </div>
+          </div>
+        </div>
+        <h2>
+          What can I do now?
+        </h2>
+        <div
+          class="grid grid--loose"
         >
           <div
             data-component="grid-item"
-            data-g="12 md:12"
+            data-g="12 sm:6 md:4"
           >
-            <h1
-              class="page-header__heading "
+            <ul
+              class="mt--0"
             >
-              An error returned from getserversideprops
-            </h1>
-            <p
-              class="page-header__lead"
-            >
-              We'll look into it right away. Please try again in a few minutes. And if it's still not fixed, 
+              <li>
+                Check that the web address has been typed correctly
+              </li>
+              <li>
+                Look for it using search
+              </li>
+              <li>
+                Browse for it from the 
+                <a
+                  href="/"
+                >
+                  homepage
+                </a>
+              </li>
+            </ul>
+            <p>
+              And if you still can't find what you're looking for, 
               <a
                 href="/get-involved/contact-us"
               >
-                contact us
+                get in touch
               </a>
               .
             </p>
           </div>
+          <div
+            data-component="grid-item"
+            data-g="12 sm:6 md:8"
+          >
+            <p
+              class="mt--0"
+            >
+              Here's where you can go from here:
+            </p>
+            <ul>
+              <li>
+                Explore 
+                <a
+                  href="/guidance"
+                >
+                  NICE guidance, quality standards and advice
+                </a>
+                . You can do this by 
+                <a
+                  href="/guidance/conditions-and-diseases"
+                >
+                  category to find a topic
+                </a>
+                , or choose a 
+                <a
+                  href="/guidance/published"
+                >
+                  list organised by date or title
+                </a>
+                .
+              </li>
+              <li>
+                <a
+                  href="http://www.evidence.nhs.uk/"
+                >
+                  Try evidence search
+                </a>
+                . This is our unique index of authoritative, evidence-based information from hundreds of trustworthy and accredited sources.
+              </li>
+              <li>
+                <a
+                  href="/about"
+                >
+                  Visit our about pages
+                </a>
+                 to find information about our services, 
+                <a
+                  href="/about/who-we-are"
+                >
+                  who we are
+                </a>
+                 and 
+                <a
+                  href="/about/what-we-do"
+                >
+                  what we do
+                </a>
+              </li>
+            </ul>
+            <p>
+              If this is not the first time you have seen this message and believe that there is a serious problem 
+              <a
+                href="/get-involved/contact-us"
+              >
+                please contact us directly
+              </a>
+            </p>
+          </div>
         </div>
       </div>
-      <h2>
-        What can I do now?
-      </h2>
-      <div
-        class="grid grid--loose"
-      >
-        <div
-          data-component="grid-item"
-          data-g="12 sm:6 md:4"
-        >
-          <ul
-            class="mt--0"
-          >
-            <li>
-              Check that the web address has been typed correctly
-            </li>
-            <li>
-              Look for it using search
-            </li>
-            <li>
-              Browse for it from the 
-              <a
-                href="/"
-              >
-                homepage
-              </a>
-            </li>
-          </ul>
-          <p>
-            And if you still can't find what you're looking for, 
-            <a
-              href="/get-involved/contact-us"
-            >
-              get in touch
-            </a>
-            .
-          </p>
-        </div>
-        <div
-          data-component="grid-item"
-          data-g="12 sm:6 md:8"
-        >
-          <p
-            class="mt--0"
-          >
-            Here's where you can go from here:
-          </p>
-          <ul>
-            <li>
-              Explore 
-              <a
-                href="/guidance"
-              >
-                NICE guidance, quality standards and advice
-              </a>
-              . You can do this by 
-              <a
-                href="/guidance/conditions-and-diseases"
-              >
-                category to find a topic
-              </a>
-              , or choose a 
-              <a
-                href="/guidance/published"
-              >
-                list organised by date or title
-              </a>
-              .
-            </li>
-            <li>
-              <a
-                href="http://www.evidence.nhs.uk/"
-              >
-                Try evidence search
-              </a>
-              . This is our unique index of authoritative, evidence-based information from hundreds of trustworthy and accredited sources.
-            </li>
-            <li>
-              <a
-                href="/about"
-              >
-                Visit our about pages
-              </a>
-               to find information about our services, 
-              <a
-                href="/about/who-we-are"
-              >
-                who we are
-              </a>
-               and 
-              <a
-                href="/about/what-we-do"
-              >
-                what we do
-              </a>
-            </li>
-          </ul>
-          <p>
-            If this is not the first time you have seen this message and believe that there is a serious problem 
-            <a
-              href="/get-involved/contact-us"
-            >
-              please contact us directly
-            </a>
-          </p>
-        </div>
-      </div>
-    </div>
-  </main>
-  <noscript />
+    </main>
+    <noscript />
+  </div>
 </DocumentFragment>
 `;
 
 exports[`Homepage should match snapshot for main content 1`] = `
 <div>
-  <div />
-  <main>
-    <div
-      class="container"
-      data-component="container"
-    >
+  <div
+    class="undefined undefined"
+  >
+    <div />
+    <main>
       <div
-        class="hero hero--dark hero"
-        data-component="hero"
+        class="container"
+        data-component="container"
       >
         <div
-          class="hero__container"
+          class="hero hero--dark hero"
+          data-component="hero"
         >
           <div
-            class="hero__body"
+            class="hero__container"
           >
-            <h1
-              class="hero__title"
-            >
-              Holding out for a homepage hero
-            </h1>
-            <p
-              class="hero__intro"
-            >
-              'til the end of the night
-            </p>
             <div
-              class="hero__actions"
+              class="hero__body"
             >
-              <a
-                class="btn btn--cta"
-                data-component="button--cta"
-                href="https://www.youtube.com/watch?v=bWcASV2sey0&pp=ygUjYm9ubmllIHR5bGVyIGhvbGRpbmcgb3V0IGZvciBhIGhlcm8%3D"
+              <h1
+                class="hero__title"
               >
-                Click this thing
-              </a>
+                Holding out for a homepage hero
+              </h1>
+              <p
+                class="hero__intro"
+              >
+                'til the end of the night
+              </p>
+              <div
+                class="hero__actions"
+              >
+                <a
+                  class="btn btn--cta"
+                  data-component="button--cta"
+                  href="https://www.youtube.com/watch?v=bWcASV2sey0&pp=ygUjYm9ubmllIHR5bGVyIGhvbGRpbmcgb3V0IGZvciBhIGhlcm8%3D"
+                >
+                  Click this thing
+                </a>
+              </div>
+            </div>
+          </div>
+          <div
+            class="hero__image-container"
+            style="background-image: url(http://local-host-test-nice-org.com/f/243782/420x234/7a576133e7/register-for-board-meeting.PNG/m/867x0/filters:format%28jpeg%29:quality%2880%29/m/);"
+          />
+        </div>
+        <section
+          class="latestNews"
+          data-tracking="latest-news"
+        >
+          <h2
+            class="title"
+          >
+            Latest from NICE
+          </h2>
+          <ol
+            class="newsGrid"
+          >
+            <li
+              class="newsItem"
+            >
+              <article
+                class="newsCard "
+              >
+                <a
+                  aria-hidden="true"
+                  class="imageContainer"
+                  href="/i/am/a-very-full-slug"
+                  style="background-image: url(http://local-host-test-nice-org.com/f/243782/420x234/7a576133e7/register-for-board-meeting.PNG/m/867x0/filters:format%28jpeg%29:quality%2880%29/m/868x0/filters:quality%2880%29);"
+                  tabindex="-1"
+                >
+                   
+                </a>
+                <div>
+                  <h3
+                    class="heading"
+                  >
+                    <a
+                      href="/i/am/a-very-full-slug"
+                    >
+                      Test news article title
+                    </a>
+                  </h3>
+                  <p>
+                    Test intro text
+                  </p>
+                  <footer>
+                    <div>
+                      <span
+                        class="tag tag--outline"
+                        data-component="tag"
+                      >
+                        News
+                      </span>
+                      <time
+                        class="date"
+                        datetime="2024-01-31T15:16:15.19"
+                      >
+                        31 January 2024
+                      </time>
+                    </div>
+                  </footer>
+                </div>
+              </article>
+            </li>
+            <li
+              class="newsItem"
+            >
+              <article
+                class="newsCard "
+              >
+                <a
+                  aria-hidden="true"
+                  class="imageContainer"
+                  href="/i/am/a-very-full-slug"
+                  style="background-image: url(http://local-host-test-nice-org.com/f/243782/420x234/7a576133e7/register-for-board-meeting.PNG/m/867x0/filters:format%28jpeg%29:quality%2880%29/m/868x0/filters:quality%2880%29);"
+                  tabindex="-1"
+                >
+                   
+                </a>
+                <div>
+                  <h3
+                    class="heading"
+                  >
+                    <a
+                      href="/i/am/a-very-full-slug"
+                    >
+                      Test blog post title
+                    </a>
+                  </h3>
+                  <p
+                    class="blogIntroText"
+                  >
+                    Let's play Blockbusters!
+                  </p>
+                  <footer>
+                    <div
+                      class="author"
+                    >
+                      Bob Holness
+                      , 
+                      Blockbusters host
+                    </div>
+                    <div>
+                      <span
+                        class="tag tag--outline"
+                        data-component="tag"
+                      >
+                        Blogs
+                      </span>
+                      <time
+                        class="date"
+                        datetime="2024-02-20"
+                      >
+                        20 February 2024
+                      </time>
+                    </div>
+                  </footer>
+                </div>
+              </article>
+            </li>
+            <li
+              class="newsItem"
+            >
+              <article
+                class="newsCard "
+              >
+                <a
+                  aria-hidden="true"
+                  class="imageContainer"
+                  href="/i/am/a-very-full-slug"
+                  style="background-image: url(http://local-host-test-nice-org.com/f/243782/420x234/7a576133e7/register-for-board-meeting.PNG/m/867x0/filters:format%28jpeg%29:quality%2880%29/m/868x0/filters:quality%2880%29);"
+                  tabindex="-1"
+                >
+                   
+                </a>
+                <div>
+                  <h3
+                    class="heading"
+                  >
+                    <a
+                      href="/i/am/a-very-full-slug"
+                    >
+                      Test news article title
+                    </a>
+                  </h3>
+                  <p>
+                    Test intro text
+                  </p>
+                  <footer>
+                    <div>
+                      <span
+                        class="tag tag--outline"
+                        data-component="tag"
+                      >
+                        News
+                      </span>
+                      <time
+                        class="date"
+                        datetime="2024-01-31T15:16:15.19"
+                      >
+                        31 January 2024
+                      </time>
+                    </div>
+                  </footer>
+                </div>
+              </article>
+            </li>
+          </ol>
+          <p>
+            <a
+              href="/news"
+            >
+              View all news, blogs and podcasts
+            </a>
+          </p>
+        </section>
+        <div
+          class="links"
+          data-tracking="homepage-links"
+        >
+          <div
+            class="linksContainer"
+          >
+            <div
+              class="storyblokRichTextWrapper"
+              data-testid="storyblok-rich-text"
+            >
+              <h2
+                class="sbRichtextHeading2"
+              >
+                A mock h2 heading in a rich text field
+              </h2>
+              <h3
+                class="sbRichtextHeading3"
+              >
+                A mock h3 heading
+              </h3>
+              <h4
+                class="sbRichtextHeading4"
+              >
+                A mock h4 heading
+              </h4>
+              <h5
+                class="sbRichtextHeading5"
+              >
+                A mock h5 heading
+              </h5>
+              <h6
+                class="sbRichtextHeading6"
+              >
+                A mock h6 heading
+              </h6>
+              <p>
+                Example text content.
+              </p>
+              <picture>
+                <source
+                  srcset="http://local-host-test-nice-org.com/f/243782/420x234/7a576133e7/register-for-board-meeting.PNG/m/867x0/filters:format%28jpeg%29:quality%2880%29/m/420x0/filters:format%28avif%29:quality%2880%29"
+                  type="image/avif"
+                />
+                <source
+                  srcset="http://local-host-test-nice-org.com/f/243782/420x234/7a576133e7/register-for-board-meeting.PNG/m/867x0/filters:format%28jpeg%29:quality%2880%29/m/420x0/filters:format%28webp%29:quality%2880%29"
+                  type="image/webp"
+                />
+                <img
+                  alt="Kitten wearing mittens"
+                  height="234"
+                  loading="lazy"
+                  src="http://local-host-test-nice-org.com/f/243782/420x234/7a576133e7/register-for-board-meeting.PNG/m/867x0/filters:format%28jpeg%29:quality%2880%29/m/420x0/filters:format%28jpeg%29:quality%2880%29"
+                  width="420"
+                />
+              </picture>
+              <figure
+                class="quote"
+              >
+                <blockquote>
+                  <p>
+                    A inline quote in the rich text field of a news article. 
+                  </p>
+                </blockquote>
+              </figure>
             </div>
           </div>
         </div>
-        <div
-          class="hero__image-container"
-          style="background-image: url(http://local-host-test-nice-org.com/f/243782/420x234/7a576133e7/register-for-board-meeting.PNG/m/867x0/filters:format%28jpeg%29:quality%2880%29/m/);"
-        />
       </div>
-      <section
-        class="latestNews"
-        data-tracking="latest-news"
-      >
-        <h2
-          class="title"
-        >
-          Latest from NICE
-        </h2>
-        <ol
-          class="newsGrid"
-        >
-          <li
-            class="newsItem"
-          >
-            <article
-              class="newsCard "
-            >
-              <a
-                aria-hidden="true"
-                class="imageContainer"
-                href="/i/am/a-very-full-slug"
-                style="background-image: url(http://local-host-test-nice-org.com/f/243782/420x234/7a576133e7/register-for-board-meeting.PNG/m/867x0/filters:format%28jpeg%29:quality%2880%29/m/868x0/filters:quality%2880%29);"
-                tabindex="-1"
-              >
-                 
-              </a>
-              <div>
-                <h3
-                  class="heading"
-                >
-                  <a
-                    href="/i/am/a-very-full-slug"
-                  >
-                    Test news article title
-                  </a>
-                </h3>
-                <p>
-                  Test intro text
-                </p>
-                <footer>
-                  <div>
-                    <span
-                      class="tag tag--outline"
-                      data-component="tag"
-                    >
-                      News
-                    </span>
-                    <time
-                      class="date"
-                      datetime="2024-01-31T15:16:15.19"
-                    >
-                      31 January 2024
-                    </time>
-                  </div>
-                </footer>
-              </div>
-            </article>
-          </li>
-          <li
-            class="newsItem"
-          >
-            <article
-              class="newsCard "
-            >
-              <a
-                aria-hidden="true"
-                class="imageContainer"
-                href="/i/am/a-very-full-slug"
-                style="background-image: url(http://local-host-test-nice-org.com/f/243782/420x234/7a576133e7/register-for-board-meeting.PNG/m/867x0/filters:format%28jpeg%29:quality%2880%29/m/868x0/filters:quality%2880%29);"
-                tabindex="-1"
-              >
-                 
-              </a>
-              <div>
-                <h3
-                  class="heading"
-                >
-                  <a
-                    href="/i/am/a-very-full-slug"
-                  >
-                    Test blog post title
-                  </a>
-                </h3>
-                <p
-                  class="blogIntroText"
-                >
-                  Let's play Blockbusters!
-                </p>
-                <footer>
-                  <div
-                    class="author"
-                  >
-                    Bob Holness
-                    , 
-                    Blockbusters host
-                  </div>
-                  <div>
-                    <span
-                      class="tag tag--outline"
-                      data-component="tag"
-                    >
-                      Blogs
-                    </span>
-                    <time
-                      class="date"
-                      datetime="2024-02-20"
-                    >
-                      20 February 2024
-                    </time>
-                  </div>
-                </footer>
-              </div>
-            </article>
-          </li>
-          <li
-            class="newsItem"
-          >
-            <article
-              class="newsCard "
-            >
-              <a
-                aria-hidden="true"
-                class="imageContainer"
-                href="/i/am/a-very-full-slug"
-                style="background-image: url(http://local-host-test-nice-org.com/f/243782/420x234/7a576133e7/register-for-board-meeting.PNG/m/867x0/filters:format%28jpeg%29:quality%2880%29/m/868x0/filters:quality%2880%29);"
-                tabindex="-1"
-              >
-                 
-              </a>
-              <div>
-                <h3
-                  class="heading"
-                >
-                  <a
-                    href="/i/am/a-very-full-slug"
-                  >
-                    Test news article title
-                  </a>
-                </h3>
-                <p>
-                  Test intro text
-                </p>
-                <footer>
-                  <div>
-                    <span
-                      class="tag tag--outline"
-                      data-component="tag"
-                    >
-                      News
-                    </span>
-                    <time
-                      class="date"
-                      datetime="2024-01-31T15:16:15.19"
-                    >
-                      31 January 2024
-                    </time>
-                  </div>
-                </footer>
-              </div>
-            </article>
-          </li>
-        </ol>
-        <p>
-          <a
-            href="/news"
-          >
-            View all news, blogs and podcasts
-          </a>
-        </p>
-      </section>
-      <div
-        class="links"
-        data-tracking="homepage-links"
-      >
-        <div
-          class="linksContainer"
-        >
-          <div
-            class="storyblokRichTextWrapper"
-            data-testid="storyblok-rich-text"
-          >
-            <h2
-              class="sbRichtextHeading2"
-            >
-              A mock h2 heading in a rich text field
-            </h2>
-            <h3
-              class="sbRichtextHeading3"
-            >
-              A mock h3 heading
-            </h3>
-            <h4
-              class="sbRichtextHeading4"
-            >
-              A mock h4 heading
-            </h4>
-            <h5
-              class="sbRichtextHeading5"
-            >
-              A mock h5 heading
-            </h5>
-            <h6
-              class="sbRichtextHeading6"
-            >
-              A mock h6 heading
-            </h6>
-            <p>
-              Example text content.
-            </p>
-            <picture>
-              <source
-                srcset="http://local-host-test-nice-org.com/f/243782/420x234/7a576133e7/register-for-board-meeting.PNG/m/867x0/filters:format%28jpeg%29:quality%2880%29/m/420x0/filters:format%28avif%29:quality%2880%29"
-                type="image/avif"
-              />
-              <source
-                srcset="http://local-host-test-nice-org.com/f/243782/420x234/7a576133e7/register-for-board-meeting.PNG/m/867x0/filters:format%28jpeg%29:quality%2880%29/m/420x0/filters:format%28webp%29:quality%2880%29"
-                type="image/webp"
-              />
-              <img
-                alt="Kitten wearing mittens"
-                height="234"
-                loading="lazy"
-                src="http://local-host-test-nice-org.com/f/243782/420x234/7a576133e7/register-for-board-meeting.PNG/m/867x0/filters:format%28jpeg%29:quality%2880%29/m/420x0/filters:format%28jpeg%29:quality%2880%29"
-                width="420"
-              />
-            </picture>
-            <figure
-              class="quote"
-            >
-              <blockquote>
-                <p>
-                  A inline quote in the rich text field of a news article. 
-                </p>
-              </blockquote>
-            </figure>
-          </div>
-        </div>
-      </div>
-    </div>
-  </main>
-  <noscript />
+    </main>
+    <noscript />
+  </div>
 </div>
 `;

@@ -2,60 +2,63 @@
 
 exports[`Storyblok Hero should match snapshot with breadcrumbs 1`] = `
 <div>
-  <div />
-  <main>
-    <div
-      class="container"
-      data-component="container"
-    >
+  <div
+    class="undefined undefined"
+  >
+    <div />
+    <main>
       <div
-        class="hero"
-        data-component="hero"
+        class="container"
+        data-component="container"
       >
         <div
-          class="hero__container"
+          class="hero"
+          data-component="hero"
         >
-          <nav
-            aria-label="Breadcrumbs"
-            data-component="breadcrumbs"
-            role="navigation"
+          <div
+            class="hero__container"
           >
-            <ol
-              class="breadcrumbs"
+            <nav
+              aria-label="Breadcrumbs"
+              data-component="breadcrumbs"
+              role="navigation"
             >
-              <li
-                class="breadcrumbs__crumb"
+              <ol
+                class="breadcrumbs"
               >
-                <a
-                  href="/"
+                <li
+                  class="breadcrumbs__crumb"
                 >
-                  Home
-                </a>
-              </li>
-              <li
-                class="breadcrumbs__crumb"
-              >
-                <a
-                  href="/bacon"
+                  <a
+                    href="/"
+                  >
+                    Home
+                  </a>
+                </li>
+                <li
+                  class="breadcrumbs__crumb"
                 >
-                  All about bacon
-                </a>
-              </li>
-              <li
-                class="breadcrumbs__crumb"
-              >
-                <a
-                  href="/bacon/maple-syrup"
+                  <a
+                    href="/bacon"
+                  >
+                    All about bacon
+                  </a>
+                </li>
+                <li
+                  class="breadcrumbs__crumb"
                 >
-                  Wonderful bacon additive
-                </a>
-              </li>
-            </ol>
-          </nav>
-          <script
-            type="application/ld+json"
-          >
-            {
+                  <a
+                    href="/bacon/maple-syrup"
+                  >
+                    Wonderful bacon additive
+                  </a>
+                </li>
+              </ol>
+            </nav>
+            <script
+              type="application/ld+json"
+            >
+              {
   "@context": "http://schema.org",
   "@type": "BreadcrumbList",
   "itemListElement": [
@@ -85,60 +88,65 @@ exports[`Storyblok Hero should match snapshot with breadcrumbs 1`] = `
     }
   ]
 }
-          </script>
-          <div
-            class="hero__body"
-          >
-            <h1
-              class="hero__title"
+            </script>
+            <div
+              class="hero__body"
             >
-              Holding out for a hero
-            </h1>
+              <h1
+                class="hero__title"
+              >
+                Holding out for a hero
+              </h1>
+            </div>
           </div>
+          <div
+            class="hero__image-container"
+            style="background-image: url(http://local-host-test-nice-org.com/f/243782/420x234/7a576133e7/register-for-board-meeting.PNG/m/867x0/filters:format%28jpeg%29:quality%2880%29/m/filters:quality%2880%29);"
+          />
         </div>
-        <div
-          class="hero__image-container"
-          style="background-image: url(http://local-host-test-nice-org.com/f/243782/420x234/7a576133e7/register-for-board-meeting.PNG/m/867x0/filters:format%28jpeg%29:quality%2880%29/m/filters:quality%2880%29);"
-        />
       </div>
-    </div>
-  </main>
-  <noscript />
+    </main>
+    <noscript />
+  </div>
 </div>
 `;
 
 exports[`Storyblok Hero should match snapshot without breadcrumbs 1`] = `
 <div>
-  <div />
-  <main>
-    <div
-      class="container"
-      data-component="container"
-    >
+  <div
+    class="undefined undefined"
+  >
+    <div />
+    <main>
       <div
-        class="hero"
-        data-component="hero"
+        class="container"
+        data-component="container"
       >
         <div
-          class="hero__container"
+          class="hero"
+          data-component="hero"
         >
           <div
-            class="hero__body"
+            class="hero__container"
           >
-            <h1
-              class="hero__title"
+            <div
+              class="hero__body"
             >
-              Holding out for a hero
-            </h1>
+              <h1
+                class="hero__title"
+              >
+                Holding out for a hero
+              </h1>
+            </div>
           </div>
+          <div
+            class="hero__image-container"
+            style="background-image: url(http://local-host-test-nice-org.com/f/243782/420x234/7a576133e7/register-for-board-meeting.PNG/m/867x0/filters:format%28jpeg%29:quality%2880%29/m/filters:quality%2880%29);"
+          />
         </div>
-        <div
-          class="hero__image-container"
-          style="background-image: url(http://local-host-test-nice-org.com/f/243782/420x234/7a576133e7/register-for-board-meeting.PNG/m/867x0/filters:format%28jpeg%29:quality%2880%29/m/filters:quality%2880%29);"
-        />
       </div>
-    </div>
-  </main>
-  <noscript />
+    </main>
+    <noscript />
+  </div>
 </div>
 `;
