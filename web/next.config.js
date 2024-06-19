@@ -2183,51 +2183,6 @@ const nextConfig = {
 				destination: "/indicators/published",
 				permanent: true,
 			},
-			{
-				source: "/news/newsandfeatures",
-				destination: "/news/articles",
-				permanent: true,
-			},
-			{
-				source: "/news/article/:slug",
-				destination: "/news/articles/:slug",
-				permanent: true,
-			},
-			{
-				source: "/news/blog",
-				destination: "/news/blogs",
-				permanent: true,
-			},
-			{
-				source: "/news/blog/:slug",
-				destination: "/news/blogs/:slug",
-				permanent: true,
-			},
-			{
-				source: "/news/features",
-				destination: "/news/in-depth",
-				permanent: true,
-			},
-			{
-				source: "/news/nice-talks-podcasts",
-				destination: "/news/podcasts",
-				permanent: true,
-			},
-			{
-				source: "/news/press-and-media",
-				destination: "/press-and-media",
-				permanent: true,
-			},
-			{
-				source: "/news/nice-newsletters-and-alerts",
-				destination: "/nice-newsletters-and-alerts",
-				permanent: true,
-			},
-			{
-				source: "/news/events",
-				destination: "/events",
-				permanent: true,
-			},
 		];
 	},
 	async headers() {
