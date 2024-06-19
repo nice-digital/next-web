@@ -1,4 +1,4 @@
-import { exec } from "child_process";
+import { exec, spawn } from "child_process";
 
 import { config } from "dotenv";
 import inquirer from "inquirer";
@@ -92,31 +92,51 @@ console.log(cautionMessage);
 
 			//    storyblok sync --type "${typesStr}" --source ${selectedFromOption?.value} --target ${selectedToOption?.value} --dryrun;
 			if (confirmTypes) {
-				const command = `
-          echo "Your selection: syncing from '${selectedFromOption?.name} ${selectedFromOption?.value}' to '${selectedToOption?.name} ${selectedToOption?.value}'";
-          echo 'storyblok sync --type "${typesStr}" --source ${selectedFromOption?.value} --target ${selectedToOption?.value}' > temp.txt;
-          echo "Temporary file created";
-          code temp.txt;
-          del temp.txt;
-          echo "Temporary file deleted";
-        `;
+				// 		const command = `
+				//   echo "Your selection: syncing from '${selectedFromOption?.name} ${selectedFromOption?.value}' to '${selectedToOption?.name} ${selectedToOption?.value}'";
+				//   echo 'storyblok sync --type "${typesStr}" --source ${selectedFromOption?.value} --target ${selectedToOption?.value}' > temp.txt;
+				//   echo "Temporary file created";
+				//   code temp.txt;
+				//   del temp.txt;
+				//   echo "Temporary file deleted";
+				// `;
 
-				exec(
-					`powershell -Command "${command
-						.replace(/\n/g, " ")
-						.replace(/"/g, '\\"')}"`,
-					(error, stdout, stderr) => {
-						if (error) {
-							console.error(`Error: ${error.message}`);
-							return;
-						}
-						if (stderr) {
-							console.error(`Error: ${stderr}`);
-							return;
-						}
-						console.log(stdout);
-					}
-				);
+				// const command = `storyblok pull-components --space ${selectedFromOption?.value}`;
+
+				const command = `storyblok sync --type "${typesStr}" --source ${selectedFromOption?.value} --target ${selectedToOption?.value}`;
+
+				const child = spawn("powershell.exe", ["-Command", command]);
+				child.stdout.on("data", function (data) {
+					console.log("Powershell Data: " + data);
+				});
+				child.stderr.on("data", function (data) {
+					console.log("Powershell Errors: " + data);
+				});
+				child.on("exit", function () {
+					console.log("Powershell Script finished");
+				});
+				child.stdin.end(); //end input
+
+				// shell.on("close", (code) => {
+				// 	console.log(`child process exited with code ${code}`);
+				// });
+
+				// exec(
+				// 	`powershell -Command "${command
+				// 		.replace(/\n/g, " ")
+				// 		.replace(/"/g, '\\"')}"`,
+				// 	(error, stdout, stderr) => {
+				// 		if (error) {
+				// 			console.error(`Error: ${error.message}`);
+				// 			return;
+				// 		}
+				// 		if (stderr) {
+				// 			console.error(`Error: ${stderr}`);
+				// 			return;
+				// 		}
+				// 		console.log(stdout);
+				// 	}
+				// );
 			} else {
 				console.log("Type selection canceled.");
 			}
