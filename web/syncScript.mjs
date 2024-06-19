@@ -90,6 +90,7 @@ console.log(cautionMessage);
 				},
 			]);
 
+			//    storyblok sync --type "${typesStr}" --source ${selectedFromOption?.value} --target ${selectedToOption?.value} --dryrun;
 			if (confirmTypes) {
 				const command = `
           echo "Your selection: syncing from '${selectedFromOption?.name} ${selectedFromOption?.value}' to '${selectedToOption?.name} ${selectedToOption?.value}'";
