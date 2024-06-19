@@ -70,9 +70,9 @@ echo "List Docker Images"
 docker image ls
 echo "End of List Docker Images"
 
-echo "Docker logout"
-docker logout
-echo "Docker logedout"
+# echo "Docker logout"
+# docker logout
+# echo "Docker logedout"
 
 echo "Docker cleanupBeforeStart"
 cleanupBeforeStart
