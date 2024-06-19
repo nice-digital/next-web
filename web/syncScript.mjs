@@ -93,15 +93,12 @@ console.log(cautionMessage);
 			if (confirmTypes) {
 				const command = `
           echo "Your selection: syncing from '${selectedFromOption?.name} ${selectedFromOption?.value}' to '${selectedToOption?.name} ${selectedToOption?.value}'";
-          echo "List directory contents";
-          dir;
           echo "Creating a temporary file";
-          echo "storyblok sync --type ${typesStr} --source ${selectedFromOption?.value} --target ${selectedToOption?.value} --dryrun" > temp.txt;
+          echo 'storyblok sync --type "${typesStr}" --source ${selectedFromOption?.value} --target ${selectedToOption?.value} --dryrun' > temp.txt;
           echo "Temporary file created";
           code temp.txt;
           del temp.txt;
           echo "Temporary file deleted";
-          echo "Harmless commands completed";
         `;
 
 				exec(
