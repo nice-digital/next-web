@@ -57,7 +57,7 @@ We use [Jest](https://jestjs.io/) for JS unit testing with [React Testing Librar
 
 [vscode-jest](https://marketplace.visualstudio.com/items?itemName=Orta.vscode-jest) is added as recommended extension (via [extensions.json](.vscode/extensions.json)). This gives you the ability in-IDE to run and debug tests.
 
-Use the command line instead if you neeed more granular control:
+Use the command line instead if you need more granular control:
 
 1. Run `npm test` to run the Jest tests (note: this doesn't run the WDIO functional tests)
    1. Or, run `npm run test:watch` to run the tests and watch for changes to files, to re-run the tests
@@ -66,4 +66,24 @@ Use the command line instead if you neeed more granular control:
 > Running tests in watch mode via `npm run test:watch` is most useful when developing locally.
 
 ## JotForms Integration
+
 We use an enterprise edition of JotForms, [https://nice.jotform.com/myforms/](https://nice.jotform.com/myforms/) to host forms on the NICE Website. For further information, please see [docs/jotforms-integration.md](docs/jotforms-integration.md).
+
+## Setting up Ocelot for Storyblok
+
+Ocelot has been added as an alternative to Storybloks own inbuilt caching. To set up Ocelot for Storyblok locally the following steps need to be taken:
+
+1.  Ensure Redis is installed and running. Check that the redis endpoint URL is correct in the Ocelot section of appsettings.Development.json or appsettings.Production.json
+2.  There are two endpoints for clearing the Ocelot Cache, for which postman is used to access, these can be obtained from a developer or tester.
+3.  Amend the appsettings.Development.json or appsettings.Production.json so that the Ocelot.ClientSecret matches the client_secret in the Get Token postman request.
+4.  In the ocelot.development.json and/or ocelot.production.js in GlobalConfiguration add a BaseUrl key and the value is the local ocelot endpoint
+
+```
+"GlobalConfiguration": {
+   "BaseUrl": "http://localhost:45127"
+}
+```
+
+5. Open next-web/api/NICE.NextWeb.API.sln in Visual Studio and Run. You should be presented with a web page that says 'Not found'.
+6. Ensure that in the Storyblok's .env file STORYBLOK_OCELOT_ENDPOINT correctly matches your local Ocelot endpoint URL and has a suffix of /storyblok. i.e. `STORYBLOK_OCELOT_ENDPOINT=http://localhost:45127/storyblok`
+7. Run Storyblok, it should now use Ocelot for it's caching.
