@@ -171,3 +171,5 @@ This usually occurrs after updating Chrome on your PC. When you run `npm i` (or 
 ### Port 4444 is already in use
 
 This occurs when the Selenium server isn't shutdown properly after a test run. We found this with JDK 16 so make sure you have JDK 8 instead.
+
+### Docker
