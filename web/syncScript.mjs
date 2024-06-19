@@ -6,12 +6,12 @@ import inquirer from "inquirer";
 config({ path: ".env.local" });
 
 const LIVE_SPACE_ID = process.env.LIVE_SPACE_ID;
-const SANDBOX_SPACE_ID = process.env.SANDBOX_SPACE_ID;
+const ALPHA_SPACE_ID = process.env.ALPHA_SPACE_ID;
 const DEV_SANDBOX_SPACE_ID = process.env.DEV_SANDBOX_SPACE_ID;
 
 const options = [
 	{ name: "Live", value: LIVE_SPACE_ID },
-	{ name: "Sandbox", value: SANDBOX_SPACE_ID },
+	{ name: "Alpha", value: ALPHA_SPACE_ID },
 	{ name: "DEV Sandbox", value: DEV_SANDBOX_SPACE_ID },
 ];
 
@@ -79,7 +79,7 @@ console.log(cautionMessage);
 				},
 			]);
 
-			const typesStr = types.join(", ");
+			const typesStr = types.join(",");
 
 			const { confirmTypes } = await inquirer.prompt([
 				{
@@ -94,8 +94,7 @@ console.log(cautionMessage);
 			if (confirmTypes) {
 				const command = `
           echo "Your selection: syncing from '${selectedFromOption?.name} ${selectedFromOption?.value}' to '${selectedToOption?.name} ${selectedToOption?.value}'";
-          echo "Creating a temporary file";
-          echo 'storyblok sync --type "${typesStr}" --source ${selectedFromOption?.value} --target ${selectedToOption?.value} --dryrun' > temp.txt;
+          echo 'storyblok sync --type "${typesStr}" --source ${selectedFromOption?.value} --target ${selectedToOption?.value}' > temp.txt;
           echo "Temporary file created";
           code temp.txt;
           del temp.txt;
