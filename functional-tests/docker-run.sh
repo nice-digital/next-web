@@ -67,19 +67,27 @@ catch() {
 }
 
 echo "List Docker Images"
-
 docker image ls
-
 echo "End of List Docker Images"
 
 echo "Docker logout"
-
 docker logout
+echo "Docker logedout"
 
-echo "Docker logout"
-
+echo "Docker cleanupBeforeStart"
 cleanupBeforeStart
+echo "Docker cleanupBeforeStart Ended"
+
+echo "Docker runTests"
 runTests
+echo "Docker runTests Ended"
+
+echo "Docker processTestOutput"
 processTestOutput
+echo "Docker processTestOutput Ended"
+
+echo "Docker cleanup"
 cleanup
+echo "Docker cleanup Ended"
+
 exitWithCode $error
