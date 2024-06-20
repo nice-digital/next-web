@@ -381,7 +381,7 @@ export const getAdditionalMetaTags = (story: ISbStoryData): MetaTag[] => {
 // Turn a Storyblok date string (yyyy-mm-dd hh:ss) into a friendly date
 export const friendlyDate = (date: string): string => {
 	if (!date || !Date.parse(date)) {
-		logger.error(
+		logger.warn(
 			`Invalid date format/browser failed to parse date for: ${date}`
 		);
 		return date || "";
