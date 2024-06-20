@@ -308,18 +308,6 @@ exports[`/indicators/indevelopment/[slug]/documents DocumentsPage should match s
                           <dt
                             class="visually-hidden"
                           >
-                            Type
-                          </dt>
-                          <dd>
-                            Diagnostics consultation
-                          </dd>
-                        </div>
-                        <div
-                          class="card__metadatum"
-                        >
-                          <dt
-                            class="visually-hidden"
-                          >
                             Date
                           </dt>
                           <dd>
@@ -367,18 +355,6 @@ exports[`/indicators/indevelopment/[slug]/documents DocumentsPage should match s
                           <dt
                             class="visually-hidden"
                           >
-                            Type
-                          </dt>
-                          <dd>
-                            Diagnostics consultation
-                          </dd>
-                        </div>
-                        <div
-                          class="card__metadatum"
-                        >
-                          <dt
-                            class="visually-hidden"
-                          >
                             Date
                           </dt>
                           <dd>
@@ -387,30 +363,6 @@ exports[`/indicators/indevelopment/[slug]/documents DocumentsPage should match s
                             >
                               9 December 2022
                             </time>
-                          </dd>
-                        </div>
-                        <div
-                          class="card__metadatum"
-                        >
-                          <dt
-                            class="visually-hidden"
-                          >
-                            File type
-                          </dt>
-                          <dd>
-                            PDF
-                          </dd>
-                        </div>
-                        <div
-                          class="card__metadatum"
-                        >
-                          <dt
-                            class="visually-hidden"
-                          >
-                            File size
-                          </dt>
-                          <dd>
-                            283 kB
                           </dd>
                         </div>
                       </dl>
@@ -450,18 +402,6 @@ exports[`/indicators/indevelopment/[slug]/documents DocumentsPage should match s
                           <dt
                             class="visually-hidden"
                           >
-                            Type
-                          </dt>
-                          <dd>
-                            Diagnostics consultation
-                          </dd>
-                        </div>
-                        <div
-                          class="card__metadatum"
-                        >
-                          <dt
-                            class="visually-hidden"
-                          >
                             Date
                           </dt>
                           <dd>
@@ -470,30 +410,6 @@ exports[`/indicators/indevelopment/[slug]/documents DocumentsPage should match s
                             >
                               9 December 2022
                             </time>
-                          </dd>
-                        </div>
-                        <div
-                          class="card__metadatum"
-                        >
-                          <dt
-                            class="visually-hidden"
-                          >
-                            File type
-                          </dt>
-                          <dd>
-                            Word
-                          </dd>
-                        </div>
-                        <div
-                          class="card__metadatum"
-                        >
-                          <dt
-                            class="visually-hidden"
-                          >
-                            File size
-                          </dt>
-                          <dd>
-                            62 kB
                           </dd>
                         </div>
                       </dl>
@@ -533,18 +449,6 @@ exports[`/indicators/indevelopment/[slug]/documents DocumentsPage should match s
                           <dt
                             class="visually-hidden"
                           >
-                            Type
-                          </dt>
-                          <dd>
-                            Diagnostics consultation
-                          </dd>
-                        </div>
-                        <div
-                          class="card__metadatum"
-                        >
-                          <dt
-                            class="visually-hidden"
-                          >
                             Date
                           </dt>
                           <dd>
@@ -553,30 +457,6 @@ exports[`/indicators/indevelopment/[slug]/documents DocumentsPage should match s
                             >
                               9 December 2022
                             </time>
-                          </dd>
-                        </div>
-                        <div
-                          class="card__metadatum"
-                        >
-                          <dt
-                            class="visually-hidden"
-                          >
-                            File type
-                          </dt>
-                          <dd>
-                            PDF
-                          </dd>
-                        </div>
-                        <div
-                          class="card__metadatum"
-                        >
-                          <dt
-                            class="visually-hidden"
-                          >
-                            File size
-                          </dt>
-                          <dd>
-                            3.7 MB
                           </dd>
                         </div>
                       </dl>
@@ -616,18 +496,6 @@ exports[`/indicators/indevelopment/[slug]/documents DocumentsPage should match s
                           <dt
                             class="visually-hidden"
                           >
-                            Type
-                          </dt>
-                          <dd>
-                            Diagnostics consultation
-                          </dd>
-                        </div>
-                        <div
-                          class="card__metadatum"
-                        >
-                          <dt
-                            class="visually-hidden"
-                          >
                             Date
                           </dt>
                           <dd>
@@ -636,30 +504,6 @@ exports[`/indicators/indevelopment/[slug]/documents DocumentsPage should match s
                             >
                               9 December 2022
                             </time>
-                          </dd>
-                        </div>
-                        <div
-                          class="card__metadatum"
-                        >
-                          <dt
-                            class="visually-hidden"
-                          >
-                            File type
-                          </dt>
-                          <dd>
-                            PDF
-                          </dd>
-                        </div>
-                        <div
-                          class="card__metadatum"
-                        >
-                          <dt
-                            class="visually-hidden"
-                          >
-                            File size
-                          </dt>
-                          <dd>
-                            602 kB
                           </dd>
                         </div>
                       </dl>
@@ -699,18 +543,6 @@ exports[`/indicators/indevelopment/[slug]/documents DocumentsPage should match s
                           <dt
                             class="visually-hidden"
                           >
-                            Type
-                          </dt>
-                          <dd>
-                            Diagnostics consultation
-                          </dd>
-                        </div>
-                        <div
-                          class="card__metadatum"
-                        >
-                          <dt
-                            class="visually-hidden"
-                          >
                             Date
                           </dt>
                           <dd>
@@ -719,30 +551,6 @@ exports[`/indicators/indevelopment/[slug]/documents DocumentsPage should match s
                             >
                               9 December 2022
                             </time>
-                          </dd>
-                        </div>
-                        <div
-                          class="card__metadatum"
-                        >
-                          <dt
-                            class="visually-hidden"
-                          >
-                            File type
-                          </dt>
-                          <dd>
-                            PDF
-                          </dd>
-                        </div>
-                        <div
-                          class="card__metadatum"
-                        >
-                          <dt
-                            class="visually-hidden"
-                          >
-                            File size
-                          </dt>
-                          <dd>
-                            484 kB
                           </dd>
                         </div>
                       </dl>
@@ -782,18 +590,6 @@ exports[`/indicators/indevelopment/[slug]/documents DocumentsPage should match s
                           <dt
                             class="visually-hidden"
                           >
-                            Type
-                          </dt>
-                          <dd>
-                            Diagnostics consultation
-                          </dd>
-                        </div>
-                        <div
-                          class="card__metadatum"
-                        >
-                          <dt
-                            class="visually-hidden"
-                          >
                             Date
                           </dt>
                           <dd>
@@ -802,30 +598,6 @@ exports[`/indicators/indevelopment/[slug]/documents DocumentsPage should match s
                             >
                               9 December 2022
                             </time>
-                          </dd>
-                        </div>
-                        <div
-                          class="card__metadatum"
-                        >
-                          <dt
-                            class="visually-hidden"
-                          >
-                            File type
-                          </dt>
-                          <dd>
-                            PDF
-                          </dd>
-                        </div>
-                        <div
-                          class="card__metadatum"
-                        >
-                          <dt
-                            class="visually-hidden"
-                          >
-                            File size
-                          </dt>
-                          <dd>
-                            573 kB
                           </dd>
                         </div>
                       </dl>
@@ -865,18 +637,6 @@ exports[`/indicators/indevelopment/[slug]/documents DocumentsPage should match s
                           <dt
                             class="visually-hidden"
                           >
-                            Type
-                          </dt>
-                          <dd>
-                            Diagnostics consultation
-                          </dd>
-                        </div>
-                        <div
-                          class="card__metadatum"
-                        >
-                          <dt
-                            class="visually-hidden"
-                          >
                             Date
                           </dt>
                           <dd>
@@ -885,30 +645,6 @@ exports[`/indicators/indevelopment/[slug]/documents DocumentsPage should match s
                             >
                               9 December 2022
                             </time>
-                          </dd>
-                        </div>
-                        <div
-                          class="card__metadatum"
-                        >
-                          <dt
-                            class="visually-hidden"
-                          >
-                            File type
-                          </dt>
-                          <dd>
-                            PDF
-                          </dd>
-                        </div>
-                        <div
-                          class="card__metadatum"
-                        >
-                          <dt
-                            class="visually-hidden"
-                          >
-                            File size
-                          </dt>
-                          <dd>
-                            260 kB
                           </dd>
                         </div>
                       </dl>
@@ -952,22 +688,6 @@ exports[`/indicators/indevelopment/[slug]/documents DocumentsPage should match s
                           </a>
                         </p>
                       </header>
-                      <dl
-                        class="card__metadata"
-                      >
-                        <div
-                          class="card__metadatum"
-                        >
-                          <dt
-                            class="visually-hidden"
-                          >
-                            Type
-                          </dt>
-                          <dd>
-                            Expected publication
-                          </dd>
-                        </div>
-                      </dl>
                     </article>
                   </li>
                 </ul>
@@ -1008,22 +728,6 @@ exports[`/indicators/indevelopment/[slug]/documents DocumentsPage should match s
                           </a>
                         </p>
                       </header>
-                      <dl
-                        class="card__metadata"
-                      >
-                        <div
-                          class="card__metadatum"
-                        >
-                          <dt
-                            class="visually-hidden"
-                          >
-                            Type
-                          </dt>
-                          <dd>
-                            Launch
-                          </dd>
-                        </div>
-                      </dl>
                     </article>
                   </li>
                   <li>
@@ -1060,18 +764,6 @@ exports[`/indicators/indevelopment/[slug]/documents DocumentsPage should match s
                           <dt
                             class="visually-hidden"
                           >
-                            Type
-                          </dt>
-                          <dd>
-                            Launch
-                          </dd>
-                        </div>
-                        <div
-                          class="card__metadatum"
-                        >
-                          <dt
-                            class="visually-hidden"
-                          >
                             Date
                           </dt>
                           <dd>
@@ -1080,30 +772,6 @@ exports[`/indicators/indevelopment/[slug]/documents DocumentsPage should match s
                             >
                               20 December 2021
                             </time>
-                          </dd>
-                        </div>
-                        <div
-                          class="card__metadatum"
-                        >
-                          <dt
-                            class="visually-hidden"
-                          >
-                            File type
-                          </dt>
-                          <dd>
-                            PDF
-                          </dd>
-                        </div>
-                        <div
-                          class="card__metadatum"
-                        >
-                          <dt
-                            class="visually-hidden"
-                          >
-                            File size
-                          </dt>
-                          <dd>
-                            88 kB
                           </dd>
                         </div>
                       </dl>
@@ -1147,22 +815,6 @@ exports[`/indicators/indevelopment/[slug]/documents DocumentsPage should match s
                           </a>
                         </p>
                       </header>
-                      <dl
-                        class="card__metadata"
-                      >
-                        <div
-                          class="card__metadatum"
-                        >
-                          <dt
-                            class="visually-hidden"
-                          >
-                            Type
-                          </dt>
-                          <dd>
-                            Scope published
-                          </dd>
-                        </div>
-                      </dl>
                     </article>
                   </li>
                   <li>
@@ -1199,18 +851,6 @@ exports[`/indicators/indevelopment/[slug]/documents DocumentsPage should match s
                           <dt
                             class="visually-hidden"
                           >
-                            Type
-                          </dt>
-                          <dd>
-                            Scope published
-                          </dd>
-                        </div>
-                        <div
-                          class="card__metadatum"
-                        >
-                          <dt
-                            class="visually-hidden"
-                          >
                             Date
                           </dt>
                           <dd>
@@ -1219,30 +859,6 @@ exports[`/indicators/indevelopment/[slug]/documents DocumentsPage should match s
                             >
                               13 April 2022
                             </time>
-                          </dd>
-                        </div>
-                        <div
-                          class="card__metadatum"
-                        >
-                          <dt
-                            class="visually-hidden"
-                          >
-                            File type
-                          </dt>
-                          <dd>
-                            PDF
-                          </dd>
-                        </div>
-                        <div
-                          class="card__metadatum"
-                        >
-                          <dt
-                            class="visually-hidden"
-                          >
-                            File size
-                          </dt>
-                          <dd>
-                            414 kB
                           </dd>
                         </div>
                       </dl>
@@ -1282,18 +898,6 @@ exports[`/indicators/indevelopment/[slug]/documents DocumentsPage should match s
                           <dt
                             class="visually-hidden"
                           >
-                            Type
-                          </dt>
-                          <dd>
-                            Scope published
-                          </dd>
-                        </div>
-                        <div
-                          class="card__metadatum"
-                        >
-                          <dt
-                            class="visually-hidden"
-                          >
                             Date
                           </dt>
                           <dd>
@@ -1302,30 +906,6 @@ exports[`/indicators/indevelopment/[slug]/documents DocumentsPage should match s
                             >
                               13 April 2022
                             </time>
-                          </dd>
-                        </div>
-                        <div
-                          class="card__metadatum"
-                        >
-                          <dt
-                            class="visually-hidden"
-                          >
-                            File type
-                          </dt>
-                          <dd>
-                            PDF
-                          </dd>
-                        </div>
-                        <div
-                          class="card__metadatum"
-                        >
-                          <dt
-                            class="visually-hidden"
-                          >
-                            File size
-                          </dt>
-                          <dd>
-                            523 kB
                           </dd>
                         </div>
                       </dl>
@@ -1365,18 +945,6 @@ exports[`/indicators/indevelopment/[slug]/documents DocumentsPage should match s
                           <dt
                             class="visually-hidden"
                           >
-                            Type
-                          </dt>
-                          <dd>
-                            Scope published
-                          </dd>
-                        </div>
-                        <div
-                          class="card__metadatum"
-                        >
-                          <dt
-                            class="visually-hidden"
-                          >
                             Date
                           </dt>
                           <dd>
@@ -1385,30 +953,6 @@ exports[`/indicators/indevelopment/[slug]/documents DocumentsPage should match s
                             >
                               13 April 2022
                             </time>
-                          </dd>
-                        </div>
-                        <div
-                          class="card__metadatum"
-                        >
-                          <dt
-                            class="visually-hidden"
-                          >
-                            File type
-                          </dt>
-                          <dd>
-                            PDF
-                          </dd>
-                        </div>
-                        <div
-                          class="card__metadatum"
-                        >
-                          <dt
-                            class="visually-hidden"
-                          >
-                            File size
-                          </dt>
-                          <dd>
-                            150 kB
                           </dd>
                         </div>
                       </dl>
@@ -1448,18 +992,6 @@ exports[`/indicators/indevelopment/[slug]/documents DocumentsPage should match s
                           <dt
                             class="visually-hidden"
                           >
-                            Type
-                          </dt>
-                          <dd>
-                            Scope published
-                          </dd>
-                        </div>
-                        <div
-                          class="card__metadatum"
-                        >
-                          <dt
-                            class="visually-hidden"
-                          >
                             Date
                           </dt>
                           <dd>
@@ -1468,30 +1000,6 @@ exports[`/indicators/indevelopment/[slug]/documents DocumentsPage should match s
                             >
                               13 April 2022
                             </time>
-                          </dd>
-                        </div>
-                        <div
-                          class="card__metadatum"
-                        >
-                          <dt
-                            class="visually-hidden"
-                          >
-                            File type
-                          </dt>
-                          <dd>
-                            PDF
-                          </dd>
-                        </div>
-                        <div
-                          class="card__metadatum"
-                        >
-                          <dt
-                            class="visually-hidden"
-                          >
-                            File size
-                          </dt>
-                          <dd>
-                            116 kB
                           </dd>
                         </div>
                       </dl>
@@ -1531,18 +1039,6 @@ exports[`/indicators/indevelopment/[slug]/documents DocumentsPage should match s
                           <dt
                             class="visually-hidden"
                           >
-                            Type
-                          </dt>
-                          <dd>
-                            Scope published
-                          </dd>
-                        </div>
-                        <div
-                          class="card__metadatum"
-                        >
-                          <dt
-                            class="visually-hidden"
-                          >
                             Date
                           </dt>
                           <dd>
@@ -1551,30 +1047,6 @@ exports[`/indicators/indevelopment/[slug]/documents DocumentsPage should match s
                             >
                               13 October 2022
                             </time>
-                          </dd>
-                        </div>
-                        <div
-                          class="card__metadatum"
-                        >
-                          <dt
-                            class="visually-hidden"
-                          >
-                            File type
-                          </dt>
-                          <dd>
-                            PDF
-                          </dd>
-                        </div>
-                        <div
-                          class="card__metadatum"
-                        >
-                          <dt
-                            class="visually-hidden"
-                          >
-                            File size
-                          </dt>
-                          <dd>
-                            114 kB
                           </dd>
                         </div>
                       </dl>
@@ -1618,22 +1090,6 @@ exports[`/indicators/indevelopment/[slug]/documents DocumentsPage should match s
                           </a>
                         </p>
                       </header>
-                      <dl
-                        class="card__metadata"
-                      >
-                        <div
-                          class="card__metadatum"
-                        >
-                          <dt
-                            class="visually-hidden"
-                          >
-                            Type
-                          </dt>
-                          <dd>
-                            Specialist committee member recruitment
-                          </dd>
-                        </div>
-                      </dl>
                     </article>
                   </li>
                 </ul>
