@@ -384,7 +384,7 @@ export const friendlyDate = (date: string): string => {
 		logger.error(
 			`Invalid date format/browser failed to parse date for: ${date}`
 		);
-		return "";
+		return date || "";
 	}
 	const formatter = new Intl.DateTimeFormat("en-GB", {
 		day: "2-digit",
