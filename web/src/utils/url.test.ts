@@ -100,14 +100,16 @@ describe("URL utils", () => {
 	describe("getPublicationPdfDownloadPath", () => {
 		it("should return a publication download path", async () => {
 			const product = await getProductDetail("IND1001");
+			const lastModified = product?.lastModified ?? "";
 
 			await waitFor(() => {
 				expect(
 					getPublicationPdfDownloadPath(
 						product as unknown as ProductDetail,
-						ProductGroup.Other
+						ProductGroup.Other,
+						lastModified
 					)
-				).toBe(`/indicators/${slug}/IND1001.pdf`);
+				).toBe(`/indicators/${slug}/IND1001-20221012.pdf`);
 			});
 		});
 
