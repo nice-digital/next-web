@@ -14,7 +14,8 @@ function cleanupBeforeStart() {
 function runTests() {
   if [[ -v TEAMCITY_VERSION ]]; then
     # Assume that on TeamCity we've created the containers in the background but not started them
-    docker-compose start
+    # docker-compose start
+    docker-compose up -d
   else
     docker-compose up -d
   fi
