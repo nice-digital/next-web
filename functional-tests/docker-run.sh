@@ -12,13 +12,8 @@ function cleanupBeforeStart() {
 }
 
 function runTests() {
-  if [[ -v TEAMCITY_VERSION ]]; then
-    # Assume that on TeamCity we've created the containers in the background but not started them
-    # docker-compose start
-    docker-compose up -d
-  else
-    docker-compose up -d
-  fi
+  # Bring up images including the one that will be sent to AWS ECR
+  docker-compose up -d
 
   # Wait for the web app to be up before running the tests
   docker-compose run -T nxt-test-runner npm run wait-then-test
@@ -39,9 +34,6 @@ function processTestOutput() {
 
   echo "Copying docker logs from docker to logs.txt"
   docker-compose logs --no-color > ./docker-output/logs.txt
-
-  # echo "Copying PM2 logs out to pm2-logs.txt"
-  # docker-compose exec -T next-web pm2 logs --nostream --lines 1000 > ./docker-output/pm2-logs.txt
 }
 
 function cleanup() {
@@ -67,28 +59,10 @@ catch() {
   error=1
 }
 
-echo "List Docker Images"
 docker image ls
-echo "End of List Docker Images"
-
-# echo "Docker logout"
-# docker logout
-# echo "Docker logedout"
-
-echo "Docker cleanupBeforeStart"
 cleanupBeforeStart
-echo "Docker cleanupBeforeStart Ended"
-
-echo "Docker runTests"
 runTests
-echo "Docker runTests Ended"
-
-echo "Docker processTestOutput"
 processTestOutput
-echo "Docker processTestOutput Ended"
-
-echo "Docker cleanup"
 cleanup
-echo "Docker cleanup Ended"
 
 exitWithCode $error
