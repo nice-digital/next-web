@@ -28,16 +28,16 @@ services:
       - ./:/next-web/tests
       - /next-web/tests/node_modules/
 
-  # Next Web (NextJS web app)
+  # New Next Web (NextJS web app)
   next-web:
-    build: ../web-host
+    image: nextweb:latest
     container_name: next-web
     depends_on:
       - mock-search-api
       - mock-publications
     ports:
       # Next Web runs on 8092 in PM2: see pm2.ecosystem.json in the web-host folder
-      - '8092:8092'
+      - '3000:3000'
     volumes:
       - ./../web:/web
     environment:

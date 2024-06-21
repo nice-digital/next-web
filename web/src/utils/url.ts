@@ -115,7 +115,8 @@ export const getProductPath = (
 
 export const getPublicationPdfDownloadPath = (
 	product: ProductDetail,
-	productGroup: ProductGroup
+	productGroup: ProductGroup,
+	lastModified: string
 ): string | null => {
 	if (!product.embedded.contentPartList?.embedded.uploadAndConvertContentPart)
 		return null;
@@ -125,5 +126,7 @@ export const getPublicationPdfDownloadPath = (
 		productGroup,
 	});
 
-	return `${rootPath}/${product.id}.pdf`;
+	return `${rootPath}/${product.id}-${lastModified
+		.slice(0, 10)
+		.replace(/-/g, "")}.pdf`;
 };

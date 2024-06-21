@@ -17,11 +17,6 @@ export const ResourceLinkCard: FC<ResourceLinkCardProps> = ({
 	resourceLink,
 }) => {
 	const cardMeta: CardMetaDataProps[] = [
-		{
-			// Hack because of a bug with the card component rendering a 0 when no metadata
-			label: "Type",
-			value: resourceLink.type,
-		},
 		resourceLink.date
 			? {
 					label: "Date",
@@ -32,16 +27,9 @@ export const ResourceLinkCard: FC<ResourceLinkCardProps> = ({
 					),
 			  }
 			: undefined,
-		resourceLink.fileTypeName
-			? { label: "File type", value: resourceLink.fileTypeName }
-			: undefined,
-		resourceLink.fileSize && resourceLink.fileSize > 0
-			? {
-					label: "File size",
-					value: <FileSize fileSizeBytes={resourceLink.fileSize} />,
-			  }
-			: undefined,
 	].filter(isTruthy);
+
+	const cardMetaProp = cardMeta.length ? { metadata: cardMeta } : {};
 
 	return (
 		<Card
@@ -64,7 +52,7 @@ export const ResourceLinkCard: FC<ResourceLinkCardProps> = ({
 						? "a"
 						: ScrollToContentStartLink,
 			}}
-			metadata={cardMeta}
+			{...cardMetaProp}
 		/>
 	);
 };

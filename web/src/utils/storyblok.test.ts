@@ -498,14 +498,15 @@ describe("Storyblok utils", () => {
 			expect(formattedDate).toBe("02 April 2022");
 		});
 
-		it("should handle invalid input gracefully", () => {
-			expect(() => {
-				friendlyDate("");
-			}).toThrow("Invalid date format");
+		it("should handle invalid input gracefully for an empty string", () => {
+			const duffDate = friendlyDate("");
+			expect(duffDate).toBe("");
+		});
 
-			expect(() => {
-				friendlyDate("not_a_date");
-			}).toThrow("Invalid date format");
+		it("should handle invalid input gracefully for an invalid string", () => {
+			const horribleDate = "some kind of unexpected and weird date format";
+			const processedDate = friendlyDate(horribleDate);
+			expect(processedDate).toBe(horribleDate);
 		});
 	});
 
