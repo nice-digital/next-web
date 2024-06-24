@@ -35,18 +35,6 @@ exports[`ResourceLinkCard should match snapshot for file download 1`] = `
         <dt
           class="visually-hidden"
         >
-          Type
-        </dt>
-        <dd>
-          Implementation support
-        </dd>
-      </div>
-      <div
-        class="card__metadatum"
-      >
-        <dt
-          class="visually-hidden"
-        >
           Date
         </dt>
         <dd>
@@ -55,30 +43,6 @@ exports[`ResourceLinkCard should match snapshot for file download 1`] = `
           >
             26 July 2022
           </time>
-        </dd>
-      </div>
-      <div
-        class="card__metadatum"
-      >
-        <dt
-          class="visually-hidden"
-        >
-          File type
-        </dt>
-        <dd>
-          Excel
-        </dd>
-      </div>
-      <div
-        class="card__metadatum"
-      >
-        <dt
-          class="visually-hidden"
-        >
-          File size
-        </dt>
-        <dd>
-          12 kB
         </dd>
       </div>
     </dl>

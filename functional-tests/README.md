@@ -6,22 +6,23 @@
 
 ## Table of contents
 
-- [Table of contents](#table-of-contents)
-- [Stack](#stack)
-	- [Software](#software)
-- [:rocket: Set up](#rocket-set-up)
-	- [Install Java JDK](#install-java-jdk)
-	- [Run the tests](#run-the-tests)
-	- [Using VSCode](#using-vscode)
-	- [Using npm](#using-npm)
-		- [Different URLs](#different-urls)
-	- [Docker](#docker)
-		- [Development mode](#development-mode)
-- [Excluding tests](#excluding-tests)
-- [Running single features](#running-single-features)
-- [Troubleshooting](#troubleshooting)
-	- [session not created: This version of ChromeDriver only supports Chrome version xx](#session-not-created-this-version-of-chromedriver-only-supports-chrome-version-xx)
-	- [Port 4444 is already in use](#port-4444-is-already-in-use)
+- [Functional tests for Next Web](#functional-tests-for-next-web)
+	- [Table of contents](#table-of-contents)
+	- [Stack](#stack)
+		- [Software](#software)
+	- [:rocket: Set up](#rocket-set-up)
+		- [Install Java JDK](#install-java-jdk)
+		- [Run the tests](#run-the-tests)
+		- [Using VSCode](#using-vscode)
+		- [Using npm](#using-npm)
+			- [Different URLs](#different-urls)
+		- [Docker](#docker)
+			- [Development mode](#development-mode)
+	- [Excluding tests](#excluding-tests)
+	- [Running single features](#running-single-features)
+	- [Troubleshooting](#troubleshooting)
+		- [session not created: This version of ChromeDriver only supports Chrome version xx](#session-not-created-this-version-of-chromedriver-only-supports-chrome-version-xx)
+		- [Port 4444 is already in use](#port-4444-is-already-in-use)
 
 ## Stack
 
@@ -89,7 +90,9 @@ npm test -- -b https://test.nice.org.uk/
 
 ### Docker
 
-We run the tests in Docker on TeamCity because it allows us to spin up a self-contained application, and selenium grid with both Chrome and Firefox. You can run this same stack locally inside Docker.
+We run the tests in Docker on TeamCity because it allows us to spin up a self-contained application, and selenium grid with both Chrome and Firefox. The Teamcity steps have been configured to build and test the actual production image before it is sent to AWS ECR. If the tests fail then the image won't be copied to ECR. 
+
+You can run this same stack locally inside Docker.
 
 It can be harder to debug tests running inside Docker as you can't watch the tests run in the browser, but we do save error screenshots and logs into the docker-output folder for debugging.
 
@@ -105,6 +108,8 @@ It can be harder to debug tests running inside Docker as you can't watch the tes
    1. This builds the docker network, runs the tests and copies outputs in the _docker-output_ folder.
 
 > View the [docker-compose.yml](docker-compose.yml) file to understand the structure of the Docker network and the links between containers.
+>
+> 
 
 #### Development mode
 
@@ -171,3 +176,5 @@ This usually occurrs after updating Chrome on your PC. When you run `npm i` (or 
 ### Port 4444 is already in use
 
 This occurs when the Selenium server isn't shutdown properly after a test run. We found this with JDK 16 so make sure you have JDK 8 instead.
+
+
