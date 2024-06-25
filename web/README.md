@@ -10,19 +10,23 @@
 <!-- DON'T EDIT THIS SECTION, INSTEAD RE-RUN doctoc TO UPDATE -->
 - [Stack](#stack)
 
-- [Stack](#stack)
-  - [Software](#software)
-  - [React and NextJS learning resources](#react-and-nextjs-learning-resources)
-  - [TypeScript path mapping](#typescript-path-mapping)
-  - [Logging](#logging)
-    - [RabbitMQ locally](#rabbitmq-locally)
-    - [Logging performance](#logging-performance)
-- [Config](#config)
-  - [Secrets](#secrets)
-- [:rocket: Set up](#rocket-set-up)
-- [Production hosting](#production-hosting)
-  - [NextJS server](#nextjs-server)
-  - [AWS EC2](#aws-ec2)
+- [Next Web](#next-web)
+	- [Stack](#stack)
+		- [Software](#software)
+		- [React and NextJS learning resources](#react-and-nextjs-learning-resources)
+		- [TypeScript path mapping](#typescript-path-mapping)
+		- [Logging](#logging)
+			- [RabbitMQ locally](#rabbitmq-locally)
+			- [Logging performance](#logging-performance)
+	- [Config](#config)
+		- [Secrets](#secrets)
+	- [:rocket: Set up](#rocket-set-up)
+	- [Production hosting](#production-hosting)
+		- [NextJS server](#nextjs-server)
+		- [AWS EC2](#aws-ec2)
+	- [Storyblok](#storyblok)
+		- [Updating types](#updating-types)
+		- [Syncing Types, Components, and Stories between Storyblok spaces](#syncing-types-components-and-stories-between-storyblok-spaces)
 
 <!-- END doctoc generated TOC please keep comment here to allow auto update -->
 </details>
@@ -172,3 +176,26 @@ Two things to bear in mind before you do this:
 1. You'll need to log in via the CLI, otherwise you'll get an error that you're not authorised. [Docs for installing the CLI, logging in and so on are here](https://www.storyblok.com/docs/Guides/command-line-interface). Sometimes you need to log out and in again, which is a bit annoying. If you're asked for a region when logging in, it's `eu`.
 
 2. You'll need to replace the two instances of {SPACE_ID} in the script with our actual Storyblok space ID, which isn't added to package.json for security reasons. There may be a better way to do this by reading it from our env vars, but for now this'll do.
+
+### Syncing Types, Components, and Stories between Storyblok spaces
+
+Use extreme caution when syncing between spaces as you can overwrite live content if you get the sync direction or space ids wrong.
+
+1. **Add Space IDs to environment variables:**
+   - Open your `.env.local` file.
+   - Add the space IDs from Storyblok using the following variable names:
+     - `LIVE_SPACE_ID`
+     - `ALPHA_SPACE_ID`
+     - `DEV_SANDBOX_SPACE_ID`
+
+   Example:
+   ```plaintext
+   LIVE_SPACE_ID=your_live_space_id
+   ALPHA_SPACE_ID=your_alpha_space_id
+   DEV_SANDBOX_SPACE_ID=your_dev_sandbox_space_id
+	 ```
+
+2. **Run the sync command**
+   - Navigate to the web directory
+   - Execute the sync command: npm run danger-storyblok-sync
+   - Follow the prompts in the terminal, double checking the sync direction, space ids and content to sync.
