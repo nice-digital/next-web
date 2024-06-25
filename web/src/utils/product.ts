@@ -190,7 +190,8 @@ export const validateRouteParams = async ({
 			productPath,
 			pdfDownloadPath: getPublicationPdfDownloadPath(
 				product,
-				productType.group
+				productType.group,
+				product.lastModified
 			),
 			toolsAndResources,
 			hasToolsAndResources: toolsAndResources.length > 0,
