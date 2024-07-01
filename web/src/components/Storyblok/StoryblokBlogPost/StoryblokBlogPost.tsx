@@ -7,6 +7,7 @@ import { Grid, GridItem } from "@nice-digital/nds-grid";
 import { PageHeader } from "@nice-digital/nds-page-header";
 
 import { NewsLetterSignup } from "@/components/NewsLetterSignUp/NewsLetterSignup";
+import { Metadata } from "@/components/Storyblok/Metadata/Metadata";
 import { type Breadcrumb as TypeBreadcrumb } from "@/types/Breadcrumb";
 import {
 	type AuthorStoryblok,
@@ -81,6 +82,9 @@ export const StoryblokBlogPost = ({
 
 	return (
 		<article className={styles.newsSectionArticle} ref={articleRef}>
+			{blok.metadata && blok.metadata.length > 0 && (
+				<Metadata blok={blok.metadata[0]} />
+			)}
 			<Grid>
 				{/* page header */}
 				<GridItem cols={12}>

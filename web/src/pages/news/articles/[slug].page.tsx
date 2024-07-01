@@ -5,6 +5,7 @@ import { StoryblokStory } from "storyblok-generate-ts";
 
 import { ErrorPageContent } from "@/components/ErrorPageContent/ErrorPageContent";
 import { Blockquote } from "@/components/Storyblok/Blockquote/Blockquote";
+import { Metadata } from "@/components/Storyblok/Metadata/Metadata";
 import { StoryblokIframe } from "@/components/Storyblok/StoryblokIframe/StoryblokIframe";
 import { StoryblokNewsArticle } from "@/components/Storyblok/StoryblokNewsArticle/StoryblokNewsArticle";
 import { StoryblokRelatedLink } from "@/components/Storyblok/StoryblokRelatedLink/StoryblokRelatedLink";
@@ -46,6 +47,7 @@ export default function NewsArticlePage(
 		relatedNewsLink: StoryblokRelatedNewsLink,
 		youtubeEmbed: StoryblokYoutubeEmbed,
 		iframe: StoryblokIframe,
+		metadata: Metadata,
 	});
 	// story for meta tags, allows for additionalMetaTags to be fetched in useMemo
 	const story = "story" in props ? props.story : null;
