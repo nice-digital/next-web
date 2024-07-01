@@ -12,7 +12,7 @@ resource "aws_lambda_function" "ocelot_cache_clear" {
   runtime = "nodejs20.x"
   handler = "index.handler"
 
-  filename = "../../../ocelot-cache-clear/index.zip"
+  filename = "../../../index.zip"
   timeout  = 10
 
   environment {

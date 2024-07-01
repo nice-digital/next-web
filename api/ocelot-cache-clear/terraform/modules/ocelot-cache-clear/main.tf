@@ -41,7 +41,7 @@ resource "aws_api_gateway_stage" "ocelot_cache_clear_stage" {
   cache_cluster_size    = 0.5
   //depends_on            = [aws_cloudwatch_log_group.taxonomy_api_logs]
   variables = {
-    TaxonomyGetAllSelectableTerms = "OcelotCacheClear-${var.environment}-${var.build}"
+    OcelotCacheClear = "OcelotCacheClear-${var.environment}-${var.build}"
   }
 }
 
