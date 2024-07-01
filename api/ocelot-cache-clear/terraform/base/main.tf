@@ -27,6 +27,7 @@ resource "aws_iam_role" "ocelot_cache_clear_role" {
   name                = var.role_name
   description         = var.role_description
   managed_policy_arns = [
+    "arn:aws:iam::aws:policy/AWSLambda_FullAccess",
     "arn:aws:iam::aws:policy/CloudWatchLogsFullAccess"
   ]
   assume_role_policy  = jsonencode({
@@ -36,7 +37,7 @@ resource "aws_iam_role" "ocelot_cache_clear_role" {
       Effect    = "Allow",
       Principal = {
         Service = [
-          "lambda.amazonaws.com", 
+          "lambda.amazonaws.com",
           "apigateway.amazonaws.com"
         ]
       }

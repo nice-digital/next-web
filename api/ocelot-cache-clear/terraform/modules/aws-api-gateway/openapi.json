@@ -15,7 +15,7 @@
           }
         },
         "x-amazon-apigateway-integration" : {
-          "httpMethod" : "GET",
+          "httpMethod" : "POST",
           "uri" : "arn:aws:apigateway:eu-west-1:lambda:path/2015-03-31/functions/arn:aws:lambda:eu-west-1:362524971603:function:${stageVariables.OcelotCacheClear}/invocations",
           "responses" : {
             "default" : {
