@@ -22,16 +22,26 @@ module "lambda_function" {
 resource "aws_api_gateway_deployment" "ocelot_cache_clear_deployment" {
   rest_api_id = data.aws_api_gateway_rest_api.ocelot_cache_clear_rest_api.id
 
+	depends_on    = [
+    aws_cloudwatch_log_group.ocelot_cache_clear_log_group
+  ]
+
   triggers = {
     redeployment = sha1(jsonencode([
       "${var.environment}-${var.build}"
     ]))
   }
-
-  //lifecycle {
-  //  create_before_destroy = true
-  //}
 }
+
+resource "aws_cloudwatch_log_group" "ocelot_cache_clear_log_group" {
+  retention_in_days = 30
+  skip_destroy      = true
+  name_prefix       = "/aws/api_gw/${data.aws_api_gateway_rest_api.ocelot_cache_clear_rest_api.name}/${var.environment}/"
+}
+
+# resource "aws_api_gateway_account" "ocelot_cache_clear_account" {
+#   cloudwatch_role_arn = data.aws_iam_role.ocelot_cache_clear_role.arn
+# }
 
 resource "aws_api_gateway_stage" "ocelot_cache_clear_stage" {
   rest_api_id           = data.aws_api_gateway_rest_api.ocelot_cache_clear_rest_api.id
@@ -39,9 +49,15 @@ resource "aws_api_gateway_stage" "ocelot_cache_clear_stage" {
   stage_name            = var.environment
   cache_cluster_enabled = false
   cache_cluster_size    = 0.5
-  //depends_on            = [aws_cloudwatch_log_group.taxonomy_api_logs]
+	depends_on    = [
+    aws_cloudwatch_log_group.ocelot_cache_clear_log_group
+  ]
   variables = {
     OcelotCacheClear = "OcelotCacheClear-${var.environment}-${var.build}"
+  }
+	access_log_settings {
+    destination_arn = aws_cloudwatch_log_group.ocelot_cache_clear_log_group.arn
+    format          = "$context.identity.sourceIp [$context.requestTime] \"$context.httpMethod $context.//resourcePath $context.protocol\" $context.status $context.responseLength $context.requestId"
   }
 }
 

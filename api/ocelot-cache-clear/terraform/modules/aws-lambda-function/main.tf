@@ -2,6 +2,12 @@ data "aws_api_gateway_rest_api" "ocelot_cache_clear_rest_api" {
   name = "OcelotCacheClear"
 }
 
+resource "aws_cloudwatch_log_group" "ocelot_cache_clear_log_group" {
+  retention_in_days = 30
+  skip_destroy      = true
+  name_prefix       = "/aws/lambda/OcelotCacheClear-${var.environment}-${var.build}/"
+}
+
 resource "aws_lambda_function" "ocelot_cache_clear" {
 
   function_name = "OcelotCacheClear-${var.environment}-${var.build}"
@@ -25,12 +31,12 @@ resource "aws_lambda_function" "ocelot_cache_clear" {
     }
   }
 
-  //logging_config {
-  //  log_group             = aws_cloudwatch_log_group.taxonomy_fn.id
-  //  log_format            = "JSON"
-  //  system_log_level      = "WARN"
-  //  application_log_level = "WARN"
-  //}
+  logging_config {
+    log_group             = aws_cloudwatch_log_group.ocelot_cache_clear_log_group.id
+    log_format            = "JSON"
+    system_log_level      = "WARN"
+    application_log_level = "WARN"
+  }
 }
 
 resource "aws_lambda_permission" "ocelot_cache_clear" {

@@ -19,3 +19,4 @@ crash.*.log
 api/ocelot-cache-clear/terraform/**/*.terraform.lock.hcl
 api/ocelot-cache-clear/index.zip
 api/ocelot-cache-clear/terraform/base/tfplan
+api/ocelot-cache-clear/terraform/environments/test/tfplan
