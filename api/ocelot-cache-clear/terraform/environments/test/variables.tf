@@ -33,25 +33,25 @@ variable "ocelot_cache_clear_role" {
 
 variable "token_url" {
     type = string
-    default = "https://test-next-web-api.nice.org.uk/administration/connect/token"
+    default = "tokenURL"
 }
 
 variable "client_id" {
     type = string
-    default = "admin"
+    default = "client_id"
 }
 
 variable "client_secret" {
     type = string
-    default = "066f86f158ff"
+    default = "client_secret"
 }
 
 variable "scope" {
     type = string
-    default = "admin"
+    default = "scope"
 }
 
 variable "cache_clear_url" {
     type = string
-    default = "https://test-next-web-api.nice.org.uk/administration/outputcache/OcelotStoryblok"
+    default = "cache_clear_url"
 }
