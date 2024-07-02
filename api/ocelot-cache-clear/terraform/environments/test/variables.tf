@@ -1,6 +1,5 @@
 variable "aws_region" {
   type    = string
-  default = "eu-west-1"
 }
 
 variable "tags" {
@@ -33,25 +32,20 @@ variable "ocelot_cache_clear_role" {
 
 variable "token_url" {
     type = string
-    default = "tokenURL"
 }
 
 variable "client_id" {
     type = string
-    default = "client_id"
 }
 
 variable "client_secret" {
     type = string
-    default = "client_secret"
 }
 
 variable "scope" {
     type = string
-    default = "scope"
 }
 
 variable "cache_clear_url" {
     type = string
-    default = "cache_clear_url"
 }
