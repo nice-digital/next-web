@@ -19,21 +19,21 @@ variable "ocelot_cache_clear_role" {
 }
 
 variable "token_url" {
-    type = string
+	type = string
 }
 
 variable "client_id" {
-    type = string
+	type = string
 }
 
 variable "client_secret" {
-    type = string
+	type = string
 }
 
 variable "scope" {
-    type = string
+	type = string
 }
 
 variable "cache_clear_url" {
-    type = string
+	type = string
 }
