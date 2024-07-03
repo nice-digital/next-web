@@ -1,6 +1,6 @@
 variable "api_name" {
   type = string
-  default = "OcelotCacheClear"
+  default = "NextWebOcelotCacheClear"
 }
 
 variable "environment" {
@@ -15,7 +15,7 @@ variable "build" {
 
 variable "ocelot_cache_clear_role" {
   type    = string
-  default = "OcelotCacheClear"
+  default = "NextWebOcelotCacheClear"
 }
 
 variable "token_url" {

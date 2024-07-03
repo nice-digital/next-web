@@ -1,19 +1,23 @@
 data "aws_api_gateway_rest_api" "ocelot_cache_clear_rest_api" {
-  name = "OcelotCacheClear"
+  name = "NextWebOcelotCacheClear"
+}
+
+data "aws_iam_role" "ocelot_cache_clear_role" {
+  name = "NextWebOcelotCacheClear"
 }
 
 resource "aws_cloudwatch_log_group" "ocelot_cache_clear_log_group" {
   retention_in_days = 30
   skip_destroy      = true
-  name_prefix       = "/aws/lambda/OcelotCacheClear-${var.environment}-${var.build}/"
+  name_prefix       = "/aws/lambda/NextWebOcelotCacheClear-${var.environment}-${var.build}/"
 }
 
 resource "aws_lambda_function" "ocelot_cache_clear" {
 
-  function_name = "OcelotCacheClear-${var.environment}-${var.build}"
-  description   = "OcelotCacheClear-${var.environment}-${var.build}"
+  function_name = "NextWebOcelotCacheClear-${var.environment}-${var.build}"
+  description   = "NextWebOcelotCacheClear-${var.environment}-${var.build}"
 
-  role = var.execution_role
+  role = data.aws_iam_role.ocelot_cache_clear_role.arn
 
   runtime = "nodejs20.x"
   handler = "index.handler"
@@ -40,7 +44,7 @@ resource "aws_lambda_function" "ocelot_cache_clear" {
 }
 
 resource "aws_lambda_permission" "ocelot_cache_clear" {
-  statement_id_prefix = "AllowLambdaExecutionFromOcelotCacheClear-"
+  statement_id_prefix = "AllowLambdaExecutionFromNextWebOcelotCacheClear-"
   action              = "lambda:InvokeFunction"
   function_name       = aws_lambda_function.ocelot_cache_clear.arn
   principal  = "apigateway.amazonaws.com"

@@ -8,10 +8,6 @@ variable "build" {
   default = "1"
 }
 
-variable "execution_role" {
-  type = string
-}
-
 variable "token_url" {
 	type = string
 }

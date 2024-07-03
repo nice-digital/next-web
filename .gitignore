@@ -10,6 +10,8 @@ aws/terraform/.terraform.lock.hcl
 
 **/.terraform/*
 
+*.tfvars
+
 *.tfstate
 *.tfstate.*
 

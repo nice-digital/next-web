@@ -6,13 +6,13 @@ variable "tags" {
   type    = map(string)
   default = {
     Terraform = "true"
-    Service   = "OcelotCacheClear"
+    Service   = "NextWebOcelotCacheClear"
   }
 }
 
 variable "role_name" {
   type    = string
-  default = "OcelotCacheClear"
+  default = "NextWebOcelotCacheClear"
 }
 
 variable "role_description" {
@@ -22,5 +22,5 @@ variable "role_description" {
 
 variable "api_name" {
   type    = string
-  default = "OcelotCacheClear"
+  default = "NextWebOcelotCacheClear"
 }
