@@ -1,9 +1,9 @@
-data "aws_api_gateway_rest_api" "ocelot_cache_clear_rest_api" {
-  name = "NextWebOcelotCacheClear"
+data "aws_iam_role" "ocelot_cache_clear_role" {
+  name = var.role_name
 }
 
-data "aws_iam_role" "ocelot_cache_clear_role" {
-  name = "NextWebOcelotCacheClear"
+data "aws_api_gateway_rest_api" "ocelot_cache_clear_rest_api" {
+  name        = var.api_name
 }
 
 resource "aws_cloudwatch_log_group" "ocelot_cache_clear_log_group" {
@@ -49,7 +49,6 @@ resource "aws_lambda_permission" "ocelot_cache_clear" {
   function_name       = aws_lambda_function.ocelot_cache_clear.arn
   principal  = "apigateway.amazonaws.com"
   source_arn = "${data.aws_api_gateway_rest_api.ocelot_cache_clear_rest_api.execution_arn}/*"
-  depends_on = [aws_lambda_function.ocelot_cache_clear]
   lifecycle {
     replace_triggered_by = [
       aws_lambda_function.ocelot_cache_clear
@@ -61,5 +60,4 @@ resource "aws_lambda_function_url" "ocelot_cache_clear" {
   count              = 1
   function_name      = aws_lambda_function.ocelot_cache_clear.function_name
   authorization_type = "NONE"
-  depends_on         = [aws_lambda_function.ocelot_cache_clear]
 }

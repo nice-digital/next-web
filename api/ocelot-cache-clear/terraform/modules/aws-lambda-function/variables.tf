@@ -1,6 +1,22 @@
+
+variable "api_name" {
+  type    = string
+  default = "NextWebOcelotCacheClear"
+}
+
 variable "environment" {
   type = string
   default = "test"
+}
+
+variable "role_name" {
+  type    = string
+  default = "NextWebOcelotCacheClear"
+}
+
+variable "role_description" {
+  type    = string
+  default = "Ocelot Cache Clear access to AWS services"
 }
 
 variable "build" {

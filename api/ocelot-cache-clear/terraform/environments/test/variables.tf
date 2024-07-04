@@ -2,6 +2,16 @@ variable "aws_region" {
   type = string
 }
 
+variable "role_name" {
+  type    = string
+  default = "NextWebOcelotCacheClear"
+}
+
+variable "role_description" {
+  type    = string
+  default = "Ocelot Cache Clear access to AWS services"
+}
+
 variable "tags" {
   type = map(string)
   default = {

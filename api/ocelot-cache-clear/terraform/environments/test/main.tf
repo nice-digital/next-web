@@ -23,8 +23,32 @@ provider "aws" {
   }
 }
 
+resource "aws_iam_role" "ocelot_cache_clear_role" {
+  name                = var.role_name
+  description         = var.role_description
+
+  managed_policy_arns = [
+    "arn:aws:iam::aws:policy/AWSLambda_FullAccess",
+    "arn:aws:iam::aws:policy/CloudWatchLogsFullAccess"
+  ]
+  assume_role_policy  = jsonencode({
+    Version   = "2012-10-17",
+    Statement = [{
+      Action    = "sts:AssumeRole",
+      Effect    = "Allow",
+      Principal = {
+        Service = [
+          "lambda.amazonaws.com",
+          "apigateway.amazonaws.com"
+        ]
+      }
+    }]
+  })
+}
+
 module "ocelot-cache-clear_test" {
   source          = "../../modules/ocelot-cache-clear"
+	depends_on = [aws_iam_role.ocelot_cache_clear_role]
   build           = var.build
   environment     = var.environment
   token_url       = var.token_url
