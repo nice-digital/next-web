@@ -1,0 +1,1506 @@
+{
+  "data": {
+    "stories": [
+      {
+        "name": "test blog post in dev",
+        "created_at": "2024-02-12T12:51:06.165Z",
+        "published_at": "2024-02-19T12:43:42.225Z",
+        "id": 442096564,
+        "uuid": "d2e7bfcd-aef0-40ef-ac0c-78d748348e51",
+        "content": {
+          "_uid": "fa5aa8ad-9613-404b-83ab-73da4847b129",
+          "date": "2024-02-02 00:00",
+          "image": {
+            "id": 13894387,
+            "alt": "doctor showing results on a tablet computer to a male patient",
+            "name": "",
+            "focus": "",
+            "title": "",
+            "source": "",
+            "filename": "https://local-host-test-nice-org.com/f/271255/788x443/b2d6d3a601/doctor-showing-results-on-tablet-computer-to-male-patient.jpg",
+            "copyright": "",
+            "fieldtype": "asset",
+            "meta_data": {},
+            "is_private": "",
+            "is_external_url": false
+          },
+          "title": "Test blog post title organisations to update NICE’s quality standard on transition from children’s to adults’ services",
+          "author": [
+            "235352d6-c9b3-4cac-be53-1c2a281f236b",
+            "16f91af8-29ac-46a9-8d2f-040a9a8f3cc4",
+            "083b7a63-d196-43b9-929c-8f74fd46b01f"
+          ],
+          "content": {
+            "type": "doc",
+            "content": [
+              {
+                "type": "heading",
+                "attrs": {
+                  "level": 2
+                },
+                "content": [
+                  {
+                    "text": "A mock h2 heading in a news article is rich text field",
+                    "type": "text"
+                  }
+                ]
+              },
+              {
+                "type": "paragraph",
+                "content": [
+                  {
+                    "text": "A mock paragraph in a news article rich text field.  Paragraph 1 will render some ",
+                    "type": "text"
+                  },
+                  {
+                    "text": "bold text",
+                    "type": "text",
+                    "marks": [
+                      {
+                        "type": "bold"
+                      }
+                    ]
+                  },
+                  {
+                    "text": ", some ",
+                    "type": "text"
+                  },
+                  {
+                    "text": "italic text, ",
+                    "type": "text",
+                    "marks": [
+                      {
+                        "type": "italic"
+                      }
+                    ]
+                  },
+                  {
+                    "text": "some ",
+                    "type": "text"
+                  },
+                  {
+                    "text": "strike text",
+                    "type": "text",
+                    "marks": [
+                      {
+                        "type": "strike"
+                      }
+                    ]
+                  },
+                  {
+                    "text": ". ",
+                    "type": "text",
+                    "marks": [
+                      {
+                        "type": "italic"
+                      }
+                    ]
+                  },
+                  {
+                    "text": "A mock paragraph in a news article rich text field.  Paragraph 1 will render some ",
+                    "type": "text"
+                  },
+                  {
+                    "text": "bold text",
+                    "type": "text",
+                    "marks": [
+                      {
+                        "type": "bold"
+                      }
+                    ]
+                  },
+                  {
+                    "text": ", some ",
+                    "type": "text"
+                  },
+                  {
+                    "text": "italic text, ",
+                    "type": "text",
+                    "marks": [
+                      {
+                        "type": "italic"
+                      }
+                    ]
+                  },
+                  {
+                    "text": "some ",
+                    "type": "text"
+                  },
+                  {
+                    "text": "strike text",
+                    "type": "text",
+                    "marks": [
+                      {
+                        "type": "strike"
+                      }
+                    ]
+                  },
+                  {
+                    "text": ". ",
+                    "type": "text",
+                    "marks": [
+                      {
+                        "type": "italic"
+                      }
+                    ]
+                  },
+                  {
+                    "text": "A mock paragraph in a news article rich text field.  Paragraph 1 will render some ",
+                    "type": "text"
+                  },
+                  {
+                    "text": "bold text",
+                    "type": "text",
+                    "marks": [
+                      {
+                        "type": "bold"
+                      }
+                    ]
+                  },
+                  {
+                    "text": ", some ",
+                    "type": "text"
+                  },
+                  {
+                    "text": "italic text, ",
+                    "type": "text",
+                    "marks": [
+                      {
+                        "type": "italic"
+                      }
+                    ]
+                  },
+                  {
+                    "text": "some ",
+                    "type": "text"
+                  },
+                  {
+                    "text": "strike text",
+                    "type": "text",
+                    "marks": [
+                      {
+                        "type": "strike"
+                      }
+                    ]
+                  },
+                  {
+                    "text": ".",
+                    "type": "text",
+                    "marks": [
+                      {
+                        "type": "italic"
+                      }
+                    ]
+                  }
+                ]
+              },
+              {
+                "type": "heading",
+                "attrs": {
+                  "level": 3
+                },
+                "content": [
+                  {
+                    "text": "Test heading level 3",
+                    "type": "text"
+                  }
+                ]
+              },
+              {
+                "type": "paragraph",
+                "content": [
+                  {
+                    "text": "A mock paragraph in a news article rich text field.  Paragraph 1 will render some ",
+                    "type": "text"
+                  },
+                  {
+                    "text": "bold text",
+                    "type": "text",
+                    "marks": [
+                      {
+                        "type": "bold"
+                      }
+                    ]
+                  },
+                  {
+                    "text": ", some ",
+                    "type": "text"
+                  },
+                  {
+                    "text": "italic text, ",
+                    "type": "text",
+                    "marks": [
+                      {
+                        "type": "italic"
+                      }
+                    ]
+                  },
+                  {
+                    "text": "some ",
+                    "type": "text"
+                  },
+                  {
+                    "text": "strike text",
+                    "type": "text",
+                    "marks": [
+                      {
+                        "type": "strike"
+                      }
+                    ]
+                  },
+                  {
+                    "text": " ",
+                    "type": "text",
+                    "marks": [
+                      {
+                        "type": "italic"
+                      }
+                    ]
+                  }
+                ]
+              },
+              {
+                "type": "heading",
+                "attrs": {
+                  "level": 4
+                },
+                "content": [
+                  {
+                    "text": "Test heading level 4",
+                    "type": "text"
+                  }
+                ]
+              },
+              {
+                "type": "paragraph",
+                "content": [
+                  {
+                    "text": "A mock paragraph in a news article rich text field.  Paragraph 1 will render some ",
+                    "type": "text"
+                  },
+                  {
+                    "text": "bold text",
+                    "type": "text",
+                    "marks": [
+                      {
+                        "type": "bold"
+                      }
+                    ]
+                  },
+                  {
+                    "text": ", some ",
+                    "type": "text"
+                  },
+                  {
+                    "text": "italic text, ",
+                    "type": "text",
+                    "marks": [
+                      {
+                        "type": "italic"
+                      }
+                    ]
+                  },
+                  {
+                    "text": "some ",
+                    "type": "text"
+                  },
+                  {
+                    "text": "strike text",
+                    "type": "text",
+                    "marks": [
+                      {
+                        "type": "strike"
+                      }
+                    ]
+                  },
+                  {
+                    "text": " ",
+                    "type": "text",
+                    "marks": [
+                      {
+                        "type": "italic"
+                      }
+                    ]
+                  }
+                ]
+              },
+              {
+                "type": "heading",
+                "attrs": {
+                  "level": 5
+                },
+                "content": [
+                  {
+                    "text": "test heading level 5",
+                    "type": "text"
+                  }
+                ]
+              },
+              {
+                "type": "paragraph",
+                "content": [
+                  {
+                    "text": "A mock paragraph in a news article rich text field.  Paragraph 1 will render some ",
+                    "type": "text"
+                  },
+                  {
+                    "text": "bold text",
+                    "type": "text",
+                    "marks": [
+                      {
+                        "type": "bold"
+                      }
+                    ]
+                  },
+                  {
+                    "text": ", some ",
+                    "type": "text"
+                  },
+                  {
+                    "text": "italic text, ",
+                    "type": "text",
+                    "marks": [
+                      {
+                        "type": "italic"
+                      }
+                    ]
+                  },
+                  {
+                    "text": "some ",
+                    "type": "text"
+                  },
+                  {
+                    "text": "strike text",
+                    "type": "text",
+                    "marks": [
+                      {
+                        "type": "strike"
+                      }
+                    ]
+                  },
+                  {
+                    "text": " ",
+                    "type": "text",
+                    "marks": [
+                      {
+                        "type": "italic"
+                      }
+                    ]
+                  }
+                ]
+              },
+              {
+                "type": "heading",
+                "attrs": {
+                  "level": 6
+                },
+                "content": [
+                  {
+                    "text": "test heading level 6",
+                    "type": "text"
+                  }
+                ]
+              },
+              {
+                "type": "paragraph",
+                "content": [
+                  {
+                    "text": "A mock paragraph in a news article rich text field.  Paragraph 1 will render some ",
+                    "type": "text"
+                  },
+                  {
+                    "text": "bold text",
+                    "type": "text",
+                    "marks": [
+                      {
+                        "type": "bold"
+                      }
+                    ]
+                  },
+                  {
+                    "text": ", some ",
+                    "type": "text"
+                  },
+                  {
+                    "text": "italic text, ",
+                    "type": "text",
+                    "marks": [
+                      {
+                        "type": "italic"
+                      }
+                    ]
+                  },
+                  {
+                    "text": "some ",
+                    "type": "text"
+                  },
+                  {
+                    "text": "strike text",
+                    "type": "text",
+                    "marks": [
+                      {
+                        "type": "strike"
+                      }
+                    ]
+                  },
+                  {
+                    "text": " ",
+                    "type": "text",
+                    "marks": [
+                      {
+                        "type": "italic"
+                      }
+                    ]
+                  }
+                ]
+              },
+              {
+                "type": "paragraph",
+                "content": [
+                  {
+                    "text": "A mock paragraph in a news article rich text field.  Paragraph 1 will render some ",
+                    "type": "text"
+                  },
+                  {
+                    "text": "bold text",
+                    "type": "text",
+                    "marks": [
+                      {
+                        "type": "bold"
+                      }
+                    ]
+                  },
+                  {
+                    "text": ", some ",
+                    "type": "text"
+                  },
+                  {
+                    "text": "italic text, ",
+                    "type": "text",
+                    "marks": [
+                      {
+                        "type": "italic"
+                      }
+                    ]
+                  },
+                  {
+                    "text": "some ",
+                    "type": "text"
+                  },
+                  {
+                    "text": "strike text",
+                    "type": "text",
+                    "marks": [
+                      {
+                        "type": "strike"
+                      }
+                    ]
+                  },
+                  {
+                    "text": " ",
+                    "type": "text",
+                    "marks": [
+                      {
+                        "type": "italic"
+                      }
+                    ]
+                  }
+                ]
+              },
+              {
+                "type": "paragraph",
+                "content": [
+                  {
+                    "text": "A mock paragraph in a news article rich text field.  Paragraph 1 will render some ",
+                    "type": "text"
+                  },
+                  {
+                    "text": "bold text",
+                    "type": "text",
+                    "marks": [
+                      {
+                        "type": "bold"
+                      }
+                    ]
+                  },
+                  {
+                    "text": ", some ",
+                    "type": "text"
+                  },
+                  {
+                    "text": "italic text, ",
+                    "type": "text",
+                    "marks": [
+                      {
+                        "type": "italic"
+                      }
+                    ]
+                  },
+                  {
+                    "text": "some ",
+                    "type": "text"
+                  },
+                  {
+                    "text": "strike text",
+                    "type": "text",
+                    "marks": [
+                      {
+                        "type": "strike"
+                      }
+                    ]
+                  },
+                  {
+                    "text": " ",
+                    "type": "text",
+                    "marks": [
+                      {
+                        "type": "italic"
+                      }
+                    ]
+                  }
+                ]
+              },
+              {
+                "type": "paragraph",
+                "content": [
+                  {
+                    "text": "Another paragraph test. Paragraph 2",
+                    "type": "text"
+                  }
+                ]
+              },
+              {
+                "type": "paragraph",
+                "content": [
+                  {
+                    "type": "image",
+                    "attrs": {
+                      "id": 13894387,
+                      "alt": "doctor showing results on a tablet computer to a male patient",
+                      "src": "https://local-host-test-nice-org.com/f/271255/788x443/b2d6d3a601/doctor-showing-results-on-tablet-computer-to-male-patient.jpg",
+                      "title": "",
+                      "source": "",
+                      "copyright": "",
+                      "meta_data": "[object Object]"
+                    }
+                  }
+                ]
+              },
+              {
+                "type": "blockquote",
+                "content": [
+                  {
+                    "type": "paragraph",
+                    "content": [
+                      {
+                        "text": "A inline quote in the rich text field of a news article. ",
+                        "type": "text"
+                      }
+                    ]
+                  }
+                ]
+              },
+              {
+                "type": "bullet_list",
+                "content": [
+                  {
+                    "type": "list_item",
+                    "content": [
+                      {
+                        "type": "paragraph",
+                        "content": [
+                          {
+                            "text": "unordered list item 1",
+                            "type": "text"
+                          }
+                        ]
+                      }
+                    ]
+                  },
+                  {
+                    "type": "list_item",
+                    "content": [
+                      {
+                        "type": "paragraph",
+                        "content": [
+                          {
+                            "text": "unordered list item 2",
+                            "type": "text"
+                          }
+                        ]
+                      }
+                    ]
+                  },
+                  {
+                    "type": "list_item",
+                    "content": [
+                      {
+                        "type": "paragraph",
+                        "content": [
+                          {
+                            "text": "unordered list item 3",
+                            "type": "text"
+                          }
+                        ]
+                      }
+                    ]
+                  }
+                ]
+              },
+              {
+                "type": "ordered_list",
+                "attrs": {
+                  "order": 1
+                },
+                "content": [
+                  {
+                    "type": "list_item",
+                    "content": [
+                      {
+                        "type": "paragraph",
+                        "content": [
+                          {
+                            "text": "ordered list item 1",
+                            "type": "text"
+                          }
+                        ]
+                      }
+                    ]
+                  },
+                  {
+                    "type": "list_item",
+                    "content": [
+                      {
+                        "type": "paragraph",
+                        "content": [
+                          {
+                            "text": "unordered list item 2",
+                            "type": "text"
+                          }
+                        ]
+                      }
+                    ]
+                  },
+                  {
+                    "type": "list_item",
+                    "content": [
+                      {
+                        "type": "paragraph",
+                        "content": [
+                          {
+                            "text": "unordered list item 3",
+                            "type": "text"
+                          }
+                        ]
+                      }
+                    ]
+                  }
+                ]
+              },
+              {
+                "type": "blok",
+                "attrs": {
+                  "id": "26429829-7602-4227-9627-dc77c65b8521",
+                  "body": [
+                    {
+                      "_uid": "i-2b515652-5f2f-4cb6-9e69-9bdec18310f2",
+                      "title": "Understanding your prostate cancer | Prostate Cancer UK",
+                      "source": "Bs4zv6TwhYw",
+                      "component": "youtubeEmbed"
+                    },
+                    {
+                      "_uid": "i-f8f0f885-1cec-429b-a081-c5d2ba4c65b5",
+                      "component": "quote",
+                      "quoteText": {
+                        "type": "doc",
+                        "content": [
+                          {
+                            "type": "paragraph",
+                            "content": [
+                              {
+                                "text": "A test quote blok inserted into the rich text field in a news article",
+                                "type": "text"
+                              }
+                            ]
+                          }
+                        ]
+                      },
+                      "quoteAuthor": "Test Author"
+                    },
+                    {
+                      "_uid": "i-cece84f9-ed5d-45c6-8b8c-0544a1edaa6c",
+                      "cards": [
+                        {
+                          "_uid": "480bbadd-cbc9-4cfd-9e5f-c372944b54de",
+                          "body": "Test card body 1",
+                          "link": {
+                            "id": "3b2d47a3-2a78-4346-96c3-70072fdcab45",
+                            "url": "",
+                            "linktype": "story",
+                            "fieldtype": "multilink",
+                            "cached_url": "test-info-page-updated-hero"
+                          },
+                          "heading": "Test card heading 1",
+                          "component": "card"
+                        },
+                        {
+                          "_uid": "91436534-dec7-4208-8f4a-bdae069b34ac",
+                          "body": "Test card body 2",
+                          "link": {
+                            "id": "f3a7c553-f1fb-465c-b1b2-db3385726f3c",
+                            "url": "",
+                            "linktype": "story",
+                            "fieldtype": "multilink",
+                            "cached_url": "news/articles/nice-recommends-new-treatment-for-rare-blood-disorder"
+                          },
+                          "heading": "Test card heading 2",
+                          "component": "card"
+                        },
+                        {
+                          "_uid": "28a4b9a2-e407-4dcb-aac5-d42d1f21c467",
+                          "body": "Test card body 3",
+                          "link": {
+                            "id": "",
+                            "url": "https://www.youtube.com/@niceorguk",
+                            "linktype": "url",
+                            "fieldtype": "multilink",
+                            "cached_url": "https://www.youtube.com/@niceorguk"
+                          },
+                          "heading": "Test card heading 3",
+                          "component": "card"
+                        }
+                      ],
+                      "columns": "3",
+                      "component": "cardGrid"
+                    }
+                  ]
+                }
+              },
+              {
+                "type": "paragraph",
+                "content": [
+                  {
+                    "text": "Another paragraph following the allowed bloks. paragrph 3.  We'll follow this paragraph with some empty lines.  Empty lines will output empty paragraph tags in the markup unless we handle remove those empty p tags.",
+                    "type": "text"
+                  }
+                ]
+              },
+              {
+                "type": "heading",
+                "attrs": {
+                  "level": 2
+                },
+                "content": [
+                  {
+                    "text": "How will this improve transitions from children’s to adults’ services for young people, their families, and carers?",
+                    "type": "text"
+                  }
+                ]
+              },
+              {
+                "type": "paragraph",
+                "content": [
+                  {
+                    "text": "paragraph following heading.  We'll follow this paragraph with some empty lines.  Empty lines will output empty paragraph tags in the markup unless we handle remove those empty p tags.",
+                    "type": "text"
+                  }
+                ]
+              },
+              {
+                "type": "paragraph",
+                "content": [
+                  {
+                    "text": "Another paragraph following the allowed bloks. paragrph 3.  We'll follow this paragraph with some empty lines.  Empty lines will output empty paragraph tags in the markup unless we handle remove those empty p tags",
+                    "type": "text"
+                  }
+                ]
+              },
+              {
+                "type": "paragraph"
+              },
+              {
+                "type": "paragraph"
+              },
+              {
+                "type": "paragraph"
+              },
+              {
+                "type": "paragraph"
+              }
+            ]
+          },
+          "component": "blogPost",
+          "introText": "Melanie explains how the update to NICE’s quality standard on the transition from children’s to adults’ services will benefit young people, their families and carers"
+        },
+        "slug": "test-blog-post-in-dev",
+        "full_slug": "news/blogs/test-blog-post-in-dev",
+        "sort_by_date": null,
+        "position": -30,
+        "tag_list": [],
+        "is_startpage": false,
+        "parent_id": 428383158,
+        "meta_data": null,
+        "group_id": "73203cde-aab5-4307-a718-260c8f34a823",
+        "first_published_at": "2024-02-12T12:53:43.172Z",
+        "release_id": null,
+        "lang": "default",
+        "path": null,
+        "alternates": [],
+        "default_full_slug": null,
+        "translated_slugs": null
+      },
+      {
+        "name": "Listening to patients and organisations to update NICE’s quality standard on transition from children’s to adults’ services",
+        "created_at": "2024-01-16T16:07:00.553Z",
+        "published_at": "2024-02-13T13:02:55.778Z",
+        "id": 428383244,
+        "uuid": "f91ec3a7-b9f1-4ae5-b366-72e93108be6e",
+        "content": {
+          "_uid": "1b39c95e-832c-47a6-8516-9b2d362db770",
+          "date": "2023-12-14 00:00",
+          "image": {
+            "id": 13894387,
+            "alt": "doctor showing results on a tablet computer to a male patient",
+            "name": "",
+            "focus": "",
+            "title": "",
+            "source": "",
+            "filename": "https://local-host-test-nice-org.com/f/271255/788x443/b2d6d3a601/doctor-showing-results-on-tablet-computer-to-male-patient.jpg",
+            "copyright": "",
+            "fieldtype": "asset",
+            "meta_data": {},
+            "is_private": "",
+            "is_external_url": false
+          },
+          "title": "Listening to patients and organisations to update NICE’s quality standard on transition from children’s to adults’ services",
+          "author": ["16f91af8-29ac-46a9-8d2f-040a9a8f3cc4"],
+          "content": {
+            "type": "doc",
+            "content": [
+              {
+                "type": "paragraph",
+                "content": [
+                  {
+                    "text": "NICE quality standards",
+                    "type": "text",
+                    "marks": [
+                      {
+                        "type": "link",
+                        "attrs": {
+                          "href": "https://www.nice.org.uk/standards-and-indicators/quality-standards",
+                          "uuid": null,
+                          "anchor": null,
+                          "target": null,
+                          "linktype": "url"
+                        }
+                      },
+                      {
+                        "type": "textStyle",
+                        "attrs": {
+                          "color": ""
+                        }
+                      }
+                    ]
+                  },
+                  {
+                    "text": " set out priority areas for quality improvement in health, public health and social care. They include a small number of concise statements describing the priorities, together with information on how to measure progress. Our previous quality standard on the transition from children’s to adults’ services was first published in 2016, based on the NICE guideline published in the same year, and has now been updated to ensure it remains current. ",
+                    "type": "text",
+                    "marks": [
+                      {
+                        "type": "textStyle",
+                        "attrs": {
+                          "color": ""
+                        }
+                      }
+                    ]
+                  }
+                ]
+              },
+              {
+                "type": "paragraph",
+                "content": [
+                  {
+                    "text": "What has changed in the quality standard?",
+                    "type": "text",
+                    "marks": [
+                      {
+                        "type": "bold"
+                      },
+                      {
+                        "type": "textStyle",
+                        "attrs": {
+                          "color": ""
+                        }
+                      }
+                    ]
+                  },
+                  {
+                    "text": " ",
+                    "type": "text",
+                    "marks": [
+                      {
+                        "type": "textStyle",
+                        "attrs": {
+                          "color": ""
+                        }
+                      }
+                    ]
+                  }
+                ]
+              },
+              {
+                "type": "paragraph",
+                "content": [
+                  {
+                    "text": "The key changes made are: ",
+                    "type": "text",
+                    "marks": [
+                      {
+                        "type": "textStyle",
+                        "attrs": {
+                          "color": ""
+                        }
+                      }
+                    ]
+                  }
+                ]
+              },
+              {
+                "type": "bullet_list",
+                "content": [
+                  {
+                    "type": "list_item",
+                    "content": [
+                      {
+                        "type": "paragraph",
+                        "content": [
+                          {
+                            "text": "There is a new statement (statement 2) on having a co-ordinated transition plan in place to ensure there is a consistent response, particularly when several different services are supporting a young person with complex needs. ",
+                            "type": "text",
+                            "marks": [
+                              {
+                                "type": "textStyle",
+                                "attrs": {
+                                  "color": ""
+                                }
+                              }
+                            ]
+                          }
+                        ]
+                      }
+                    ]
+                  },
+                  {
+                    "type": "list_item",
+                    "content": [
+                      {
+                        "type": "paragraph",
+                        "content": [
+                          {
+                            "text": "The statement on missed appointments after transfer to adults’ services (statement 6) now focusses on initial appointments (for example, those in the first year following transfer) rather than just the first appointment. This is to ensure young people are not discharged from adult services for not attending appointments. ",
+                            "type": "text",
+                            "marks": [
+                              {
+                                "type": "textStyle",
+                                "attrs": {
+                                  "color": ""
+                                }
+                              }
+                            ]
+                          }
+                        ]
+                      }
+                    ]
+                  },
+                  {
+                    "type": "list_item",
+                    "content": [
+                      {
+                        "type": "paragraph",
+                        "content": [
+                          {
+                            "text": "The wording of the statement on meeting a practitioner in adults’ services (statement 5) has been amended to clarify who is included. ",
+                            "type": "text",
+                            "marks": [
+                              {
+                                "type": "textStyle",
+                                "attrs": {
+                                  "color": ""
+                                }
+                              }
+                            ]
+                          },
+                          {
+                            "type": "hard_break",
+                            "marks": [
+                              {
+                                "type": "textStyle",
+                                "attrs": {
+                                  "color": ""
+                                }
+                              }
+                            ]
+                          }
+                        ]
+                      }
+                    ]
+                  }
+                ]
+              },
+              {
+                "type": "paragraph",
+                "content": [
+                  {
+                    "text": "How will this improve transitions from children’s to adults’ services for young people, their families, and carers?",
+                    "type": "text",
+                    "marks": [
+                      {
+                        "type": "bold"
+                      },
+                      {
+                        "type": "textStyle",
+                        "attrs": {
+                          "color": ""
+                        }
+                      }
+                    ]
+                  },
+                  {
+                    "text": " ",
+                    "type": "text",
+                    "marks": [
+                      {
+                        "type": "textStyle",
+                        "attrs": {
+                          "color": ""
+                        }
+                      }
+                    ]
+                  }
+                ]
+              },
+              {
+                "type": "paragraph",
+                "content": [
+                  {
+                    "text": "We know that improving transition from children’s to adults’ services is challenging and requires more resources but is important that young people can access the support they need to help them avoid crisis and the need for acute intervention.  ",
+                    "type": "text",
+                    "marks": [
+                      {
+                        "type": "textStyle",
+                        "attrs": {
+                          "color": ""
+                        }
+                      }
+                    ]
+                  }
+                ]
+              },
+              {
+                "type": "paragraph",
+                "content": [
+                  {
+                    "text": "The updated quality standard provides a focus for integrated care systems and paediatric and adult health and social care services to work together to make improvements to how the transition works. They can use it in many ways including identifying gaps, developing action plans, collecting data to benchmark and monitor their progress and building a business case to support investment.  ",
+                    "type": "text",
+                    "marks": [
+                      {
+                        "type": "textStyle",
+                        "attrs": {
+                          "color": ""
+                        }
+                      }
+                    ]
+                  },
+                  {
+                    "type": "hard_break",
+                    "marks": [
+                      {
+                        "type": "textStyle",
+                        "attrs": {
+                          "color": ""
+                        }
+                      }
+                    ]
+                  },
+                  {
+                    "text": " ",
+                    "type": "text",
+                    "marks": [
+                      {
+                        "type": "textStyle",
+                        "attrs": {
+                          "color": ""
+                        }
+                      }
+                    ]
+                  }
+                ]
+              },
+              {
+                "type": "paragraph",
+                "content": [
+                  {
+                    "text": "How did NICE go about updating the quality standard?",
+                    "type": "text",
+                    "marks": [
+                      {
+                        "type": "bold"
+                      },
+                      {
+                        "type": "textStyle",
+                        "attrs": {
+                          "color": ""
+                        }
+                      }
+                    ]
+                  },
+                  {
+                    "text": " ",
+                    "type": "text",
+                    "marks": [
+                      {
+                        "type": "textStyle",
+                        "attrs": {
+                          "color": ""
+                        }
+                      }
+                    ]
+                  }
+                ]
+              },
+              {
+                "type": "paragraph",
+                "content": [
+                  {
+                    "text": "The transition to adult services can be a challenge for many young people and families, particularly those living with rare diseases. In response to the ",
+                    "type": "text",
+                    "marks": [
+                      {
+                        "type": "textStyle",
+                        "attrs": {
+                          "color": ""
+                        }
+                      }
+                    ]
+                  },
+                  {
+                    "text": "England Rare Diseases Action Plan report",
+                    "type": "text",
+                    "marks": [
+                      {
+                        "type": "link",
+                        "attrs": {
+                          "href": "https://www.gov.uk/government/publications/england-rare-diseases-action-plan-2023/england-rare-diseases-action-plan-2023-main-report",
+                          "uuid": null,
+                          "anchor": null,
+                          "target": null,
+                          "linktype": "url"
+                        }
+                      },
+                      {
+                        "type": "textStyle",
+                        "attrs": {
+                          "color": ""
+                        }
+                      }
+                    ]
+                  },
+                  {
+                    "text": ", published by the Department of Health and Social Care earlier this year, NICE hosted a workshop with representatives of the rare diseases community in June 2023 to find out how best to ensure the updated quality standard met their needs. We heard that the areas included in the quality standard are important for young people with rare diseases but could be improved by emphasising the importance of having a transition plan and meeting the needs of different groups of young people. ",
+                    "type": "text",
+                    "marks": [
+                      {
+                        "type": "textStyle",
+                        "attrs": {
+                          "color": ""
+                        }
+                      }
+                    ]
+                  }
+                ]
+              },
+              {
+                "type": "paragraph",
+                "content": [
+                  {
+                    "text": " ",
+                    "type": "text",
+                    "marks": [
+                      {
+                        "type": "textStyle",
+                        "attrs": {
+                          "color": ""
+                        }
+                      }
+                    ]
+                  },
+                  {
+                    "type": "hard_break",
+                    "marks": [
+                      {
+                        "type": "textStyle",
+                        "attrs": {
+                          "color": ""
+                        }
+                      }
+                    ]
+                  },
+                  {
+                    "text": "What did NICE do?",
+                    "type": "text",
+                    "marks": [
+                      {
+                        "type": "bold"
+                      },
+                      {
+                        "type": "textStyle",
+                        "attrs": {
+                          "color": ""
+                        }
+                      }
+                    ]
+                  },
+                  {
+                    "text": " ",
+                    "type": "text",
+                    "marks": [
+                      {
+                        "type": "textStyle",
+                        "attrs": {
+                          "color": ""
+                        }
+                      }
+                    ]
+                  }
+                ]
+              },
+              {
+                "type": "paragraph",
+                "content": [
+                  {
+                    "text": "We used the detailed feedback from the workshop to help update the quality standard. This included adding information from the ",
+                    "type": "text",
+                    "marks": [
+                      {
+                        "type": "textStyle",
+                        "attrs": {
+                          "color": ""
+                        }
+                      }
+                    ]
+                  },
+                  {
+                    "text": "NICE guideline on disabled children and young people up to 25 with severe complex needs",
+                    "type": "text",
+                    "marks": [
+                      {
+                        "type": "link",
+                        "attrs": {
+                          "href": "https://www.nice.org.uk/guidance/ng213",
+                          "uuid": null,
+                          "anchor": null,
+                          "target": null,
+                          "linktype": "url"
+                        }
+                      },
+                      {
+                        "type": "textStyle",
+                        "attrs": {
+                          "color": ""
+                        }
+                      }
+                    ]
+                  },
+                  {
+                    "text": " (2022). ",
+                    "type": "text",
+                    "marks": [
+                      {
+                        "type": "textStyle",
+                        "attrs": {
+                          "color": ""
+                        }
+                      }
+                    ]
+                  }
+                ]
+              },
+              {
+                "type": "paragraph",
+                "content": [
+                  {
+                    "text": "We held a public consultation on the partially updated quality standard in October this year. There was a good response to the consultation from 63 organisations, highlighting the importance of this area of care across health and social care services. ",
+                    "type": "text",
+                    "marks": [
+                      {
+                        "type": "textStyle",
+                        "attrs": {
+                          "color": ""
+                        }
+                      }
+                    ]
+                  }
+                ]
+              },
+              {
+                "type": "paragraph",
+                "content": [
+                  {
+                    "text": "We finalised the quality standard based on the consultation feedback and have published responses to all the comments made by stakeholders. ",
+                    "type": "text",
+                    "marks": [
+                      {
+                        "type": "textStyle",
+                        "attrs": {
+                          "color": ""
+                        }
+                      }
+                    ]
+                  }
+                ]
+              },
+              {
+                "type": "paragraph",
+                "content": [
+                  {
+                    "text": "What has the response been from partner organisations?",
+                    "type": "text",
+                    "marks": [
+                      {
+                        "type": "bold"
+                      },
+                      {
+                        "type": "textStyle",
+                        "attrs": {
+                          "color": ""
+                        }
+                      }
+                    ]
+                  },
+                  {
+                    "text": " ",
+                    "type": "text",
+                    "marks": [
+                      {
+                        "type": "textStyle",
+                        "attrs": {
+                          "color": ""
+                        }
+                      }
+                    ]
+                  }
+                ]
+              },
+              {
+                "type": "paragraph",
+                "content": [
+                  {
+                    "text": "Dr Kath Bainbridge, Head of Rare Diseases and Emerging Therapies at the Department of Health and Social Care, said:",
+                    "type": "text",
+                    "marks": [
+                      {
+                        "type": "bold"
+                      },
+                      {
+                        "type": "textStyle",
+                        "attrs": {
+                          "color": ""
+                        }
+                      }
+                    ]
+                  },
+                  {
+                    "text": " “I am delighted that following feedback from the workshop and an extensive public consultation, changes have been made to the quality standard to better support young people with rare diseases. We know that moving from children’s to adults’ services can be difficult for all young people so it is really pleasing that NICE has worked closely with the public and partner organisations to produce this useful and useable update.” ",
+                    "type": "text",
+                    "marks": [
+                      {
+                        "type": "textStyle",
+                        "attrs": {
+                          "color": ""
+                        }
+                      }
+                    ]
+                  }
+                ]
+              },
+              {
+                "type": "paragraph",
+                "content": [
+                  {
+                    "text": "You can read the full update to NICE’s quality standard on the transition from children’s to adults’ services on the ",
+                    "type": "text",
+                    "marks": [
+                      {
+                        "type": "textStyle",
+                        "attrs": {
+                          "color": ""
+                        }
+                      }
+                    ]
+                  },
+                  {
+                    "text": "NICE website",
+                    "type": "text",
+                    "marks": [
+                      {
+                        "type": "link",
+                        "attrs": {
+                          "href": "https://www.nice.org.uk/guidance/qs140",
+                          "uuid": null,
+                          "anchor": null,
+                          "target": null,
+                          "linktype": "url"
+                        }
+                      },
+                      {
+                        "type": "textStyle",
+                        "attrs": {
+                          "color": ""
+                        }
+                      }
+                    ]
+                  },
+                  {
+                    "text": ". ",
+                    "type": "text",
+                    "marks": [
+                      {
+                        "type": "textStyle",
+                        "attrs": {
+                          "color": ""
+                        }
+                      }
+                    ]
+                  }
+                ]
+              }
+            ]
+          },
+          "component": "blogPost",
+          "introText": "Melanie explains how the update to NICE’s quality standard on the transition from children’s to adults’ services will benefit young people, their families and carers"
+        },
+        "slug": "listening-to-patients-and-organisations-to-update-nice-s-quality-standard-on-transition-from-children-s-to-adults-services",
+        "full_slug": "news/blogs/listening-to-patients-and-organisations-to-update-nice-s-quality-standard-on-transition-from-children-s-to-adults-services",
+        "sort_by_date": null,
+        "position": 0,
+        "tag_list": [],
+        "is_startpage": false,
+        "parent_id": 428383158,
+        "meta_data": null,
+        "group_id": "8146b99f-51c6-4c15-8bc5-5257ee2733df",
+        "first_published_at": "2023-12-19T13:42:11.902Z",
+        "release_id": null,
+        "lang": "default",
+        "path": null,
+        "alternates": [],
+        "default_full_slug": null,
+        "translated_slugs": null
+      }
+    ],
+    "cv": 1711448785,
+    "rels": ["boop", "beep", "bop"],
+    "links": []
+  },
+  "total": 6,
+  "perPage": 8
+}

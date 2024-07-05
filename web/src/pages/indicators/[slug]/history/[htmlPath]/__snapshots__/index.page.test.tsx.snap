@@ -106,44 +106,53 @@ exports[`/indicators/[slug]/history/[htmlPath]/index.page HistoryHTMLPage should
 }
     </script>
     <div
-      class="page-header"
+      class="page-header "
       data-component="page-header"
       id="content-start"
     >
-      <h1
-        class="page-header__heading page-header__heading--alt"
+      <div
+        class="grid"
       >
-        Rheumatoid arthritis in adults: management
-      </h1>
-      <ul
-        class="page-header__metadata"
-      >
-        <li>
-          NICE guideline
-        </li>
-        <li>
-          NG100
-        </li>
-        <li>
-          Published:
-          <time
-            datetime="2018-07-11"
+        <div
+          data-component="grid-item"
+          data-g="12 md:12"
+        >
+          <h1
+            class="page-header__heading page-header__heading--alt"
           >
-             
-            11 July 2018
-          </time>
-        </li>
-        <li>
-          Last updated:
-          <time
-            datetime="2020-10-12"
+            Rheumatoid arthritis in adults: management
+          </h1>
+          <ul
+            class="page-header__metadata"
           >
-             
-             
-            12 October 2020
-          </time>
-        </li>
-      </ul>
+            <li>
+              NICE guideline
+            </li>
+            <li>
+              NG100
+            </li>
+            <li>
+              Published:
+              <time
+                datetime="2018-07-11"
+              >
+                 
+                11 July 2018
+              </time>
+            </li>
+            <li>
+              Last updated:
+              <time
+                datetime="2020-10-12"
+              >
+                 
+                 
+                12 October 2020
+              </time>
+            </li>
+          </ul>
+        </div>
+      </div>
     </div>
     <nav
       class="horizontal-nav"
@@ -409,18 +418,6 @@ exports[`/indicators/[slug]/history/[htmlPath]/index.page HistoryHTMLPage should
                 <dt
                   class="visually-hidden"
                 >
-                  Type
-                </dt>
-                <dd>
-                  Draft scope consultation
-                </dd>
-              </div>
-              <div
-                class="card__metadatum"
-              >
-                <dt
-                  class="visually-hidden"
-                >
                   Date
                 </dt>
                 <dd>
@@ -429,30 +426,6 @@ exports[`/indicators/[slug]/history/[htmlPath]/index.page HistoryHTMLPage should
                   >
                     14 June 2016
                   </time>
-                </dd>
-              </div>
-              <div
-                class="card__metadatum"
-              >
-                <dt
-                  class="visually-hidden"
-                >
-                  File type
-                </dt>
-                <dd>
-                  Word
-                </dd>
-              </div>
-              <div
-                class="card__metadatum"
-              >
-                <dt
-                  class="visually-hidden"
-                >
-                  File size
-                </dt>
-                <dd>
-                  65 kB
                 </dd>
               </div>
             </dl>
@@ -492,18 +465,6 @@ exports[`/indicators/[slug]/history/[htmlPath]/index.page HistoryHTMLPage should
                 <dt
                   class="visually-hidden"
                 >
-                  Type
-                </dt>
-                <dd>
-                  Draft scope consultation
-                </dd>
-              </div>
-              <div
-                class="card__metadatum"
-              >
-                <dt
-                  class="visually-hidden"
-                >
                   Date
                 </dt>
                 <dd>
@@ -512,30 +473,6 @@ exports[`/indicators/[slug]/history/[htmlPath]/index.page HistoryHTMLPage should
                   >
                     17 June 2016
                   </time>
-                </dd>
-              </div>
-              <div
-                class="card__metadatum"
-              >
-                <dt
-                  class="visually-hidden"
-                >
-                  File type
-                </dt>
-                <dd>
-                  PDF
-                </dd>
-              </div>
-              <div
-                class="card__metadatum"
-              >
-                <dt
-                  class="visually-hidden"
-                >
-                  File size
-                </dt>
-                <dd>
-                  124 kB
                 </dd>
               </div>
             </dl>
@@ -575,18 +512,6 @@ exports[`/indicators/[slug]/history/[htmlPath]/index.page HistoryHTMLPage should
                 <dt
                   class="visually-hidden"
                 >
-                  Type
-                </dt>
-                <dd>
-                  Draft scope consultation
-                </dd>
-              </div>
-              <div
-                class="card__metadatum"
-              >
-                <dt
-                  class="visually-hidden"
-                >
                   Date
                 </dt>
                 <dd>
@@ -595,30 +520,6 @@ exports[`/indicators/[slug]/history/[htmlPath]/index.page HistoryHTMLPage should
                   >
                     31 March 2020
                   </time>
-                </dd>
-              </div>
-              <div
-                class="card__metadatum"
-              >
-                <dt
-                  class="visually-hidden"
-                >
-                  File type
-                </dt>
-                <dd>
-                  PDF
-                </dd>
-              </div>
-              <div
-                class="card__metadatum"
-              >
-                <dt
-                  class="visually-hidden"
-                >
-                  File size
-                </dt>
-                <dd>
-                  233 kB
                 </dd>
               </div>
             </dl>
