@@ -2,77 +2,72 @@
 
 exports[`/research-recommendations/index should match the snapshot 1`] = `
 <div>
-  <style>
-    
-		html {
-			--sans-font-family: Arial;
-			--serif-font-family: Arial;
-		}
-	
-  </style>
-  <div />
-  <main>
-    <div
-      class="container"
-      data-component="container"
-    >
-      <nav
-        aria-label="Breadcrumbs"
-        data-component="breadcrumbs"
-        role="navigation"
+  <div
+    class="undefined undefined"
+  >
+    <div />
+    <main>
+      <div
+        class="container"
+        data-component="container"
       >
-        <ol
-          class="breadcrumbs"
+        <nav
+          aria-label="Breadcrumbs"
+          data-component="breadcrumbs"
+          role="navigation"
         >
-          <li
-            class="breadcrumbs__crumb"
+          <ol
+            class="breadcrumbs"
           >
-            <a
-              href="/"
+            <li
+              class="breadcrumbs__crumb"
             >
-              Home
-            </a>
-          </li>
-          <li
-            class="breadcrumbs__crumb"
-          >
-            <a
-              href="/about"
+              <a
+                href="/"
+              >
+                Home
+              </a>
+            </li>
+            <li
+              class="breadcrumbs__crumb"
             >
-              About
-            </a>
-          </li>
-          <li
-            class="breadcrumbs__crumb"
-          >
-            <a
-              href="/about/what-we-do"
+              <a
+                href="/about"
+              >
+                About
+              </a>
+            </li>
+            <li
+              class="breadcrumbs__crumb"
             >
-              What we do
-            </a>
-          </li>
-          <li
-            class="breadcrumbs__crumb"
-          >
-            <a
-              href="/about/what-we-do/research-and-development"
+              <a
+                href="/about/what-we-do"
+              >
+                What we do
+              </a>
+            </li>
+            <li
+              class="breadcrumbs__crumb"
             >
-              Research and development
-            </a>
-          </li>
-          <li
-            class="breadcrumbs__crumb"
-          >
-            <span>
-              Research recommendations
-            </span>
-          </li>
-        </ol>
-      </nav>
-      <script
-        type="application/ld+json"
-      >
-        {
+              <a
+                href="/about/what-we-do/research-and-development"
+              >
+                Research and development
+              </a>
+            </li>
+            <li
+              class="breadcrumbs__crumb"
+            >
+              <span>
+                Research recommendations
+              </span>
+            </li>
+          </ol>
+        </nav>
+        <script
+          type="application/ld+json"
+        >
+          {
   "@context": "http://schema.org",
   "@type": "BreadcrumbList",
   "itemListElement": [
@@ -117,733 +112,744 @@ exports[`/research-recommendations/index should match the snapshot 1`] = `
     }
   ]
 }
-      </script>
-      <div
-        class="page-header"
-        data-component="page-header"
-        id="content-start"
-      >
-        <h1
-          class="page-header__heading "
+        </script>
+        <div
+          class="page-header "
+          data-component="page-header"
+          data-testid="content-start"
+          id="content-start"
         >
-          <span
-            class="page-header__pre-heading"
-          >
-            Published
-          </span>
-          Research recommendations
-        </h1>
-        <p
-          class="page-header__lead"
-        >
-          <a
-            class="skipLink"
-            href="#filters"
-          >
-            Skip to filters
-          </a>
-          <a
-            class="skipLink"
-            href="#results"
-          >
-            Skip to results
-          </a>
-        </p>
-      </div>
-      <div
-        class="grid grid--loose sectionWrapper"
-      >
-        <section
-          aria-label="Filter results"
-          class="panelWrapper"
-          data-component="grid-item"
-          data-g="12 md:4 lg:3"
-        >
-          <form
-            aria-label="Filter results"
-            id="filters"
+          <div
+            class="grid"
           >
             <div
-              class="filter-panel"
-              data-component="filter-panel"
+              data-component="grid-item"
+              data-g="12 md:12"
             >
-              <h2
-                class="filter-panel__heading"
+              <h1
+                class="page-header__heading "
               >
-                <button
-                  aria-controls="filter-panel-body"
-                  aria-expanded="true"
-                  type="button"
+                <span
+                  class="page-header__pre-heading"
                 >
-                  <svg
-                    aria-hidden="true"
-                    class="filter-panel__heading-icon filter-panel__heading-icon--expanded"
-                    fill="none"
-                    focusable="false"
-                    height="1em"
-                    viewBox="0 0 512 512"
-                    width="1em"
-                    xmlns="http://www.w3.org/2000/svg"
-                  >
-                    <path
-                      d="M478.152 174c0 10.091-3.525 18.661-10.576 25.712l-186 186c-7.243 7.243-15.909 10.864-26 10.864-10.283 0-18.853-3.621-25.712-10.864l-186-186C36.621 192.853 33 184.283 33 174c0-10.091 3.621-18.757 10.864-26L65 126.576C72.424 119.525 81.09 116 91 116c10.091 0 18.661 3.525 25.712 10.576L255.576 265.44 394.44 126.576c7.051-7.051 15.621-10.576 25.712-10.576 9.909 0 18.576 3.525 26 10.576L467.576 148c7.051 7.424 10.576 16.091 10.576 26Z"
-                      fill="currentColor"
-                    />
-                  </svg>
-                  Filter
-                </button>
-              </h2>
-              <div
-                aria-hidden="false"
-                class="filter-panel__body"
-                id="filter-panel-body"
+                  Published
+                </span>
+                Research recommendations
+              </h1>
+              <p
+                class="page-header__lead"
               >
+                <a
+                  class="skipLink"
+                  href="#filters"
+                >
+                  Skip to filters
+                </a>
                 <a
                   class="skipLink"
                   href="#results"
                 >
                   Skip to results
                 </a>
-                <input
-                  name="ps"
-                  type="hidden"
-                  value=""
-                />
-                <input
-                  name="s"
-                  type="hidden"
-                  value=""
-                />
-                <div
-                  class="container"
+              </p>
+            </div>
+          </div>
+        </div>
+        <div
+          class="grid grid--loose sectionWrapper"
+        >
+          <section
+            aria-label="Filter results"
+            class="panelWrapper"
+            data-component="grid-item"
+            data-g="12 md:4 lg:3"
+          >
+            <form
+              aria-label="Filter results"
+              id="filters"
+            >
+              <div
+                class="filter-panel"
+                data-component="filter-panel"
+              >
+                <h2
+                  class="filter-panel__heading"
                 >
-                  <label
-                    class="label"
-                    for="q"
-                  >
-                    Filter by reference number or keyword
-                  </label>
-                  <div
-                    class="input"
-                    data-component="input"
-                  >
-                    <input
-                      autocomplete="off"
-                      class="input__input"
-                      id="q"
-                      name="q"
-                      placeholder="E.g. 'IND28' or 'diabetes'"
-                      type="text"
-                      value=""
-                    />
-                  </div>
                   <button
-                    class="btn button"
-                    data-component="button--primary"
-                    type="submit"
+                    aria-controls="filter-panel-body"
+                    aria-expanded="true"
+                    type="button"
                   >
+                    <svg
+                      aria-hidden="true"
+                      class="filter-panel__heading-icon filter-panel__heading-icon--expanded"
+                      fill="none"
+                      focusable="false"
+                      height="1em"
+                      viewBox="0 0 512 512"
+                      width="1em"
+                      xmlns="http://www.w3.org/2000/svg"
+                    >
+                      <path
+                        d="M478.152 174c0 10.091-3.525 18.661-10.576 25.712l-186 186c-7.243 7.243-15.909 10.864-26 10.864-10.283 0-18.853-3.621-25.712-10.864l-186-186C36.621 192.853 33 184.283 33 174c0-10.091 3.621-18.757 10.864-26L65 126.576C72.424 119.525 81.09 116 91 116c10.091 0 18.661 3.525 25.712 10.576L255.576 265.44 394.44 126.576c7.051-7.051 15.621-10.576 25.712-10.576 9.909 0 18.576 3.525 26 10.576L467.576 148c7.051 7.424 10.576 16.091 10.576 26Z"
+                        fill="currentColor"
+                      />
+                    </svg>
                     Filter
                   </button>
-                </div>
+                </h2>
                 <div
-                  class="filter-group"
+                  aria-hidden="false"
+                  class="filter-panel__body"
+                  id="filter-panel-body"
                 >
-                  <h3
-                    class="filter-group__heading"
+                  <a
+                    class="skipLink"
+                    href="#results"
                   >
-                    <button
-                      aria-controls="group-published-date"
-                      aria-expanded="true"
-                      type="button"
+                    Skip to results
+                  </a>
+                  <input
+                    name="ps"
+                    type="hidden"
+                    value=""
+                  />
+                  <input
+                    name="s"
+                    type="hidden"
+                    value=""
+                  />
+                  <div
+                    class="container"
+                  >
+                    <label
+                      class="label"
+                      for="q"
                     >
-                      <svg
-                        aria-hidden="true"
-                        class="filter-group__heading-icon filter-group__heading-icon--expanded"
-                        fill="none"
-                        focusable="false"
-                        height="1em"
-                        viewBox="0 0 512 512"
-                        width="1em"
-                        xmlns="http://www.w3.org/2000/svg"
-                      >
-                        <path
-                          d="M478.152 174c0 10.091-3.525 18.661-10.576 25.712l-186 186c-7.243 7.243-15.909 10.864-26 10.864-10.283 0-18.853-3.621-25.712-10.864l-186-186C36.621 192.853 33 184.283 33 174c0-10.091 3.621-18.757 10.864-26L65 126.576C72.424 119.525 81.09 116 91 116c10.091 0 18.661 3.525 25.712 10.576L255.576 265.44 394.44 126.576c7.051-7.051 15.621-10.576 25.712-10.576 9.909 0 18.576 3.525 26 10.576L467.576 148c7.051 7.424 10.576 16.091 10.576 26Z"
-                          fill="currentColor"
-                        />
-                      </svg>
-                      <span
-                        id="group-heading-published-date"
-                      >
-                        Published date
-                         
-                      </span>
-                    </button>
-                  </h3>
-                  <fieldset
-                    aria-hidden="false"
-                    class="filter-group__options"
-                    id="group-published-date"
-                  >
-                    <legend>
-                      Published date
-                    </legend>
+                      Filter by reference number or keyword
+                    </label>
                     <div
-                      class="ph--c pt--c"
+                      class="input"
+                      data-component="input"
                     >
-                      <div
-                        class="input"
-                        data-component="input"
-                      >
-                        <label
-                          class="input__label"
-                          for="from"
-                        >
-                          From date
-                        </label>
-                        <input
-                          class="input__input"
-                          id="from"
-                          max="2020-11-22"
-                          min="2000-01-01"
-                          name="from"
-                          pattern="[0-9]{4}-(0[1-9]|1[012])-(0[1-9]|1[0-9]|2[0-9]|3[01])"
-                          placeholder="yyyy-mm-dd"
-                          type="date"
-                          value=""
-                        />
-                      </div>
-                      <div
-                        class="input"
-                        data-component="input"
-                      >
-                        <label
-                          class="input__label"
-                          for="to"
-                        >
-                          To date
-                        </label>
-                        <input
-                          class="input__input"
-                          id="to"
-                          max="2020-11-22"
-                          min="2000-01-01"
-                          name="to"
-                          pattern="[0-9]{4}-(0[1-9]|1[012])-(0[1-9]|1[0-9]|2[0-9]|3[01])"
-                          placeholder="yyyy-mm-dd"
-                          type="date"
-                          value=""
-                        />
-                      </div>
-                      <button
-                        class="btn btn--secondary ml--0"
-                        data-component="button--secondary"
-                        type="submit"
-                      >
-                        Apply date filters
-                      </button>
+                      <input
+                        autocomplete="off"
+                        class="input__input"
+                        id="q"
+                        name="q"
+                        placeholder="E.g. 'IND28' or 'diabetes'"
+                        type="text"
+                        value=""
+                      />
                     </div>
-                  </fieldset>
+                    <button
+                      class="btn button"
+                      data-component="button--primary"
+                      type="submit"
+                    >
+                      Filter
+                    </button>
+                  </div>
+                  <div
+                    class="filter-group"
+                  >
+                    <h3
+                      class="filter-group__heading"
+                    >
+                      <button
+                        aria-controls="group-published-date"
+                        aria-expanded="true"
+                        type="button"
+                      >
+                        <svg
+                          aria-hidden="true"
+                          class="filter-group__heading-icon filter-group__heading-icon--expanded"
+                          fill="none"
+                          focusable="false"
+                          height="1em"
+                          viewBox="0 0 512 512"
+                          width="1em"
+                          xmlns="http://www.w3.org/2000/svg"
+                        >
+                          <path
+                            d="M478.152 174c0 10.091-3.525 18.661-10.576 25.712l-186 186c-7.243 7.243-15.909 10.864-26 10.864-10.283 0-18.853-3.621-25.712-10.864l-186-186C36.621 192.853 33 184.283 33 174c0-10.091 3.621-18.757 10.864-26L65 126.576C72.424 119.525 81.09 116 91 116c10.091 0 18.661 3.525 25.712 10.576L255.576 265.44 394.44 126.576c7.051-7.051 15.621-10.576 25.712-10.576 9.909 0 18.576 3.525 26 10.576L467.576 148c7.051 7.424 10.576 16.091 10.576 26Z"
+                            fill="currentColor"
+                          />
+                        </svg>
+                        <span
+                          id="group-heading-published-date"
+                        >
+                          Published date
+                           
+                        </span>
+                      </button>
+                    </h3>
+                    <fieldset
+                      aria-hidden="false"
+                      class="filter-group__options"
+                      id="group-published-date"
+                    >
+                      <legend>
+                        Published date
+                      </legend>
+                      <div
+                        class="ph--c pt--c"
+                      >
+                        <div
+                          class="input"
+                          data-component="input"
+                        >
+                          <label
+                            class="input__label"
+                            for="from"
+                          >
+                            From date
+                          </label>
+                          <input
+                            class="input__input"
+                            id="from"
+                            max="2020-11-22"
+                            min="2000-01-01"
+                            name="from"
+                            pattern="[0-9]{4}-(0[1-9]|1[012])-(0[1-9]|1[0-9]|2[0-9]|3[01])"
+                            placeholder="yyyy-mm-dd"
+                            type="date"
+                            value=""
+                          />
+                        </div>
+                        <div
+                          class="input"
+                          data-component="input"
+                        >
+                          <label
+                            class="input__label"
+                            for="to"
+                          >
+                            To date
+                          </label>
+                          <input
+                            class="input__input"
+                            id="to"
+                            max="2020-11-22"
+                            min="2000-01-01"
+                            name="to"
+                            pattern="[0-9]{4}-(0[1-9]|1[012])-(0[1-9]|1[0-9]|2[0-9]|3[01])"
+                            placeholder="yyyy-mm-dd"
+                            type="date"
+                            value=""
+                          />
+                        </div>
+                        <button
+                          class="btn btn--secondary ml--0"
+                          data-component="button--secondary"
+                          type="submit"
+                        >
+                          Apply date filters
+                        </button>
+                      </div>
+                    </fieldset>
+                  </div>
                 </div>
               </div>
-            </div>
-          </form>
-        </section>
-        <section
-          aria-labelledby="filter-summary"
-          data-component="grid-item"
-          data-g="12 md:8 lg:9"
-        >
-          <div
-            class="filter-summary"
-            data-component="filter-summary"
-            id="filter-summary"
+            </form>
+          </section>
+          <section
+            aria-labelledby="filter-summary"
+            data-component="grid-item"
+            data-g="12 md:8 lg:9"
           >
             <div
-              class="filter-summary__count"
+              class="filter-summary"
+              data-component="filter-summary"
+              id="filter-summary"
             >
-              <h2
-                class="h5 mv--0"
+              <div
+                class="filter-summary__count"
               >
-                Showing 
-                1
-                 to 
-                10
-                 of 
-                176
-              </h2>
-            </div>
-            <div
-              class="filter-summary__sorting"
-            >
-              <label
-                class="filter-summary__sort-label"
-                for="sorting-options"
-              >
-                Sort by
-              </label>
-              <select
-                class="filter-summary__select"
-                id="sorting-options"
-                name="s"
-              >
-                <option
-                  selected=""
-                  value="GuidanceRef"
+                <h2
+                  class="h5 mv--0"
                 >
-                  Reference number
-                </option>
-                <option
-                  value="Date"
-                >
-                  Published
-                </option>
-              </select>
-            </div>
-          </div>
-          <div
-            class="tableWrapper"
-          >
-            <table
-              aria-describedby="filter-summary"
-              class="table"
-              data-component="table"
-              id="results"
-            >
-              <caption
-                class="visually-hidden"
+                  Showing 
+                  1
+                   to 
+                  10
+                   of 
+                  176
+                </h2>
+              </div>
+              <div
+                class="filter-summary__sorting"
               >
-                List of research recommendations
-              </caption>
-              <thead>
-                <tr>
-                  <th
-                    scope="col"
+                <label
+                  class="filter-summary__sort-label"
+                  for="sorting-options"
+                >
+                  Sort by
+                </label>
+                <select
+                  class="filter-summary__select"
+                  id="sorting-options"
+                  name="s"
+                >
+                  <option
+                    selected=""
+                    value="GuidanceRef"
                   >
                     Reference number
-                  </th>
-                  <th
-                    scope="col"
-                  >
-                    Recommendation for research
-                  </th>
-                  <th
-                    scope="col"
+                  </option>
+                  <option
+                    value="Date"
                   >
                     Published
-                  </th>
-                </tr>
-              </thead>
-              <tbody>
-                <tr>
-                  <td>
-                    CG118/1
-                  </td>
-                  <td>
-                    <a
-                      href="/guidance/CG118/chapter/recommendations-for-research#cg118-natural-history-of-progression-to-colorectal-cancer-in-people-at-increased-risk"
-                    >
-                      <span>
-                        What is the natural history of progression to colorectal cancer in people with IBD or adenomas?
-                      </span>
-                    </a>
-                  </td>
-                  <td>
-                    <time
-                      class="date"
-                      data-shortdate="26/2/2024"
-                      datetime="2024-02-26T12:00:00"
-                    >
-                      <span>
-                        26 February 2024
-                      </span>
-                    </time>
-                  </td>
-                </tr>
-                <tr>
-                  <td>
-                    CG118/2
-                  </td>
-                  <td>
-                    <a
-                      href="/guidance/CG118/chapter/recommendations-for-research#cg118-surveillance-programmes-for-people-at-increased-risk-of-colorectal-cancer"
-                    >
-                      <span>
-                        How effective are colonoscopic surveillance programmes in improving overall survival and cancer-related survival in people at increased risk of colorectal cancer?
-                      </span>
-                    </a>
-                  </td>
-                  <td>
-                    <time
-                      class="date"
-                      data-shortdate="26/2/2024"
-                      datetime="2024-02-26T12:00:00"
-                    >
-                      <span>
-                        26 February 2024
-                      </span>
-                    </time>
-                  </td>
-                </tr>
-                <tr>
-                  <td>
-                    CG118/3
-                  </td>
-                  <td>
-                    <a
-                      href="/guidance/CG118/chapter/recommendations-for-research#cg118-effectiveness-of-biomarkers-for-determining-level-of-risk-of-colorectal-cancer"
-                    >
-                      <span>
-                        Which biomarkers, including epigenic and genetic markers, are predictors of colorectal cancer? How should these be used to improve risk stratification?
-                      </span>
-                    </a>
-                  </td>
-                  <td>
-                    <time
-                      class="date"
-                      data-shortdate="26/2/2024"
-                      datetime="2024-02-26T12:00:00"
-                    >
-                      <span>
-                        26 February 2024
-                      </span>
-                    </time>
-                  </td>
-                </tr>
-                <tr>
-                  <td>
-                    CG118/4
-                  </td>
-                  <td>
-                    <a
-                      href="/guidance/CG118/chapter/recommendations-for-research#cg118-adenoma-types-and-risk-of-colorectal-cancer"
-                    >
-                      <span>
-                        Does the risk of colorectal cancer depend on the type of adenoma?
-                      </span>
-                    </a>
-                  </td>
-                  <td>
-                    <time
-                      class="date"
-                      data-shortdate="26/2/2024"
-                      datetime="2024-02-26T12:00:00"
-                    >
-                      <span>
-                        26 February 2024
-                      </span>
-                    </time>
-                  </td>
-                </tr>
-                <tr>
-                  <td>
-                    DG1/2
-                  </td>
-                  <td>
-                    <a
-                      href="/guidance/DG1/chapter/7-recommendations-for-further-research#dg1-7.2"
-                    >
-                      <span>
-                        Additional methodological research is needed to determine the most appropriate model structures to assess the benefit arising from radiation dose reduction. Additional work is needed to assess when the radiation-induced cancers actually occur and the impact of the timing of the emergence of cancer on health status.
-                      </span>
-                    </a>
-                  </td>
-                  <td>
-                    <time
-                      class="date"
-                      data-shortdate="22/3/2024"
-                      datetime="2024-03-22T12:00:00"
-                    >
-                      <span>
-                        22 March 2024
-                      </span>
-                    </time>
-                  </td>
-                </tr>
-                <tr>
-                  <td>
-                    DG1/3
-                  </td>
-                  <td>
-                    <a
-                      href="/guidance/DG1/chapter/7-recommendations-for-further-research#dg1-7.3"
-                    >
-                      <span>
-                        Research is needed to determine whether, and for which conditions, use of the EOS system for 3D reconstruction provides benefit for diagnosis or treatment planning.
-                      </span>
-                    </a>
-                  </td>
-                  <td>
-                    <time
-                      class="date"
-                      data-shortdate="22/3/2024"
-                      datetime="2024-03-22T12:00:00"
-                    >
-                      <span>
-                        22 March 2024
-                      </span>
-                    </time>
-                  </td>
-                </tr>
-                <tr>
-                  <td>
-                    DG1/1
-                  </td>
-                  <td>
-                    <a
-                      href="/guidance/DG1/chapter/7-recommendations-for-further-research#dg1-7.1"
-                    >
-                      <span>
-                        Research is needed to quantify the health outcome benefits associated with imaging improvements with the EOS system. Examples of such benefits might include reduced back pain or reduced postural difficulties in people with scoliosis, or longer lasting and less painful joint replacements. Although research into the use of the EOS system is appropriate for all the indications included in the scope, the research most likely to be useful is for planning hip and knee replacement, including patient selection, device selection, and surgical approach. Joint replacement operations are more common than the other indications and the EOS system is thought to be most likely to provide benefit to these patients.
-                      </span>
-                    </a>
-                  </td>
-                  <td>
-                    <time
-                      class="date"
-                      data-shortdate="22/3/2024"
-                      datetime="2024-03-22T12:00:00"
-                    >
-                      <span>
-                        22 March 2024
-                      </span>
-                    </time>
-                  </td>
-                </tr>
-                <tr>
-                  <td>
-                    DG13/1
-                  </td>
-                  <td>
-                    <a
-                      href="/guidance/DG13/chapter/recommendations-for-further-research#dg13-7_1"
-                    >
-                      <span>
-                        The committee recommended further research to demonstrate the utility of the Sonoclot system in detecting, managing and monitoring haemostasis in cardiac surgery.
-                      </span>
-                    </a>
-                  </td>
-                  <td>
-                    <time
-                      class="date"
-                      data-shortdate="28/3/2024"
-                      datetime="2024-03-28T12:00:00"
-                    >
-                      <span>
-                        28 March 2024
-                      </span>
-                    </time>
-                  </td>
-                </tr>
-                <tr>
-                  <td>
-                    DG13/2
-                  </td>
-                  <td>
-                    <a
-                      href="/guidance/DG13/chapter/recommendations-for-further-research#dg13-7_2"
-                    >
-                      <span>
-                        The committee recommended further research in using viscoelastometric testing in the emergency control of bleeding after trauma and during postpartum haemorrhage to assess its effectiveness compared with standard laboratory testing. The committee recommended that outcomes should include, but may not be limited to, bleeding outcomes, mortality, duration of hospital or intensive care unit stay, transfusion rates and volumes transfused.
-                      </span>
-                    </a>
-                  </td>
-                  <td>
-                    <time
-                      class="date"
-                      data-shortdate="28/3/2024"
-                      datetime="2024-03-28T12:00:00"
-                    >
-                      <span>
-                        28 March 2024
-                      </span>
-                    </time>
-                  </td>
-                </tr>
-                <tr>
-                  <td>
-                    DG13/3
-                  </td>
-                  <td>
-                    <a
-                      href="/guidance/DG13/chapter/recommendations-for-further-research#dg13-7_3"
-                    >
-                      <span>
-                        The committee recommended further research comparing the clinical effectiveness of all 3 viscoelastometric devices (ROTEM, TEG and Sonoclot systems) in cardiac surgery and in the emergency control of bleeding after trauma and during postpartum haemorrhage. In particular, the committee recommended research to determine which of the parameters included in the viscoelastometric testing systems are the most significant in changing clinical decision‑making and improving clinical outcomes. The degree of change needed in these parameters to affect clinical decision‑making and clinical outcomes should also be considered.
-                      </span>
-                    </a>
-                  </td>
-                  <td>
-                    <time
-                      class="date"
-                      data-shortdate="28/3/2024"
-                      datetime="2024-03-28T12:00:00"
-                    >
-                      <span>
-                        28 March 2024
-                      </span>
-                    </time>
-                  </td>
-                </tr>
-              </tbody>
-            </table>
-          </div>
-          <nav
-            aria-label="Pagination"
-            class="pagination "
-            data-component="pagination"
-            role="navigation"
-          >
-            <ol
-              class="pagination__list"
-            >
-              <li
-                aria-current="true"
-                class="pagination__item pagination__item--current"
-              >
-                <span
-                  class="pagination__inactive"
-                >
-                  <span
-                    class="visually-hidden"
-                  >
-                    Current page 
-                  </span>
-                  1
-                </span>
-              </li>
-              <li
-                class="pagination__item"
-              >
-                <a
-                  aria-label="Go to page 2"
-                  class="pagination__link"
-                  href="/?pa=2"
-                >
-                  2
-                </a>
-              </li>
-              <li
-                class="pagination__item"
-              >
-                <a
-                  aria-label="Go to page 3"
-                  class="pagination__link"
-                  href="/?pa=3"
-                >
-                  3
-                </a>
-              </li>
-              <li
-                class="pagination__item"
-              >
-                <span
-                  class="pagination__inactive"
-                >
-                  …
-                </span>
-              </li>
-              <li
-                class="pagination__item"
-              >
-                <a
-                  aria-label="Go to page 18"
-                  class="pagination__link"
-                  href="/?pa=18"
-                >
-                  18
-                </a>
-              </li>
-              <li
-                class="pagination__item pagination__item--count"
-              >
-                <span>
-                  Page 
-                  <strong>
-                    1
-                  </strong>
-                   of 
-                  <strong>
-                    18
-                  </strong>
-                </span>
-              </li>
-              <li
-                class="pagination__item pagination__item--bookend"
-              >
-                <a
-                  class="pagination__link"
-                  href="/?pa=2"
-                >
-                  Next page
-                </a>
-              </li>
-            </ol>
-          </nav>
-          <div
-            class="grid grid--middle mt--d"
-          >
-            <div
-              class="mb--e mb--0-sm"
-              data-component="grid-item"
-              data-g="12 sm:6"
-            >
-              <button
-                class="btn mv--0 mh--0"
-                data-component="button--primary"
-                type="button"
-              >
-                Copy 
-                10 results
-                 to clipboard
-              </button>
+                  </option>
+                </select>
+              </div>
             </div>
             <div
-              class="text-right"
-              data-component="grid-item"
-              data-g="12 sm:6"
+              class="tableWrapper"
             >
-              <h3
-                class="resultsPerPageHeading"
+              <table
+                aria-describedby="filter-summary"
+                class="table"
+                data-component="table"
+                id="results"
               >
-                Results per page
-              </h3>
+                <caption
+                  class="visually-hidden"
+                >
+                  List of research recommendations
+                </caption>
+                <thead>
+                  <tr>
+                    <th
+                      scope="col"
+                    >
+                      Reference number
+                    </th>
+                    <th
+                      scope="col"
+                    >
+                      Recommendation for research
+                    </th>
+                    <th
+                      scope="col"
+                    >
+                      Published
+                    </th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td>
+                      CG118/1
+                    </td>
+                    <td>
+                      <a
+                        href="/guidance/CG118/chapter/recommendations-for-research#cg118-natural-history-of-progression-to-colorectal-cancer-in-people-at-increased-risk"
+                      >
+                        <span>
+                          What is the natural history of progression to colorectal cancer in people with IBD or adenomas?
+                        </span>
+                      </a>
+                    </td>
+                    <td>
+                      <time
+                        class="date"
+                        data-shortdate="26/2/2024"
+                        datetime="2024-02-26T12:00:00"
+                      >
+                        <span>
+                          26 February 2024
+                        </span>
+                      </time>
+                    </td>
+                  </tr>
+                  <tr>
+                    <td>
+                      CG118/2
+                    </td>
+                    <td>
+                      <a
+                        href="/guidance/CG118/chapter/recommendations-for-research#cg118-surveillance-programmes-for-people-at-increased-risk-of-colorectal-cancer"
+                      >
+                        <span>
+                          How effective are colonoscopic surveillance programmes in improving overall survival and cancer-related survival in people at increased risk of colorectal cancer?
+                        </span>
+                      </a>
+                    </td>
+                    <td>
+                      <time
+                        class="date"
+                        data-shortdate="26/2/2024"
+                        datetime="2024-02-26T12:00:00"
+                      >
+                        <span>
+                          26 February 2024
+                        </span>
+                      </time>
+                    </td>
+                  </tr>
+                  <tr>
+                    <td>
+                      CG118/3
+                    </td>
+                    <td>
+                      <a
+                        href="/guidance/CG118/chapter/recommendations-for-research#cg118-effectiveness-of-biomarkers-for-determining-level-of-risk-of-colorectal-cancer"
+                      >
+                        <span>
+                          Which biomarkers, including epigenic and genetic markers, are predictors of colorectal cancer? How should these be used to improve risk stratification?
+                        </span>
+                      </a>
+                    </td>
+                    <td>
+                      <time
+                        class="date"
+                        data-shortdate="26/2/2024"
+                        datetime="2024-02-26T12:00:00"
+                      >
+                        <span>
+                          26 February 2024
+                        </span>
+                      </time>
+                    </td>
+                  </tr>
+                  <tr>
+                    <td>
+                      CG118/4
+                    </td>
+                    <td>
+                      <a
+                        href="/guidance/CG118/chapter/recommendations-for-research#cg118-adenoma-types-and-risk-of-colorectal-cancer"
+                      >
+                        <span>
+                          Does the risk of colorectal cancer depend on the type of adenoma?
+                        </span>
+                      </a>
+                    </td>
+                    <td>
+                      <time
+                        class="date"
+                        data-shortdate="26/2/2024"
+                        datetime="2024-02-26T12:00:00"
+                      >
+                        <span>
+                          26 February 2024
+                        </span>
+                      </time>
+                    </td>
+                  </tr>
+                  <tr>
+                    <td>
+                      DG1/2
+                    </td>
+                    <td>
+                      <a
+                        href="/guidance/DG1/chapter/7-recommendations-for-further-research#dg1-7.2"
+                      >
+                        <span>
+                          Additional methodological research is needed to determine the most appropriate model structures to assess the benefit arising from radiation dose reduction. Additional work is needed to assess when the radiation-induced cancers actually occur and the impact of the timing of the emergence of cancer on health status.
+                        </span>
+                      </a>
+                    </td>
+                    <td>
+                      <time
+                        class="date"
+                        data-shortdate="22/3/2024"
+                        datetime="2024-03-22T12:00:00"
+                      >
+                        <span>
+                          22 March 2024
+                        </span>
+                      </time>
+                    </td>
+                  </tr>
+                  <tr>
+                    <td>
+                      DG1/3
+                    </td>
+                    <td>
+                      <a
+                        href="/guidance/DG1/chapter/7-recommendations-for-further-research#dg1-7.3"
+                      >
+                        <span>
+                          Research is needed to determine whether, and for which conditions, use of the EOS system for 3D reconstruction provides benefit for diagnosis or treatment planning.
+                        </span>
+                      </a>
+                    </td>
+                    <td>
+                      <time
+                        class="date"
+                        data-shortdate="22/3/2024"
+                        datetime="2024-03-22T12:00:00"
+                      >
+                        <span>
+                          22 March 2024
+                        </span>
+                      </time>
+                    </td>
+                  </tr>
+                  <tr>
+                    <td>
+                      DG1/1
+                    </td>
+                    <td>
+                      <a
+                        href="/guidance/DG1/chapter/7-recommendations-for-further-research#dg1-7.1"
+                      >
+                        <span>
+                          Research is needed to quantify the health outcome benefits associated with imaging improvements with the EOS system. Examples of such benefits might include reduced back pain or reduced postural difficulties in people with scoliosis, or longer lasting and less painful joint replacements. Although research into the use of the EOS system is appropriate for all the indications included in the scope, the research most likely to be useful is for planning hip and knee replacement, including patient selection, device selection, and surgical approach. Joint replacement operations are more common than the other indications and the EOS system is thought to be most likely to provide benefit to these patients.
+                        </span>
+                      </a>
+                    </td>
+                    <td>
+                      <time
+                        class="date"
+                        data-shortdate="22/3/2024"
+                        datetime="2024-03-22T12:00:00"
+                      >
+                        <span>
+                          22 March 2024
+                        </span>
+                      </time>
+                    </td>
+                  </tr>
+                  <tr>
+                    <td>
+                      DG13/1
+                    </td>
+                    <td>
+                      <a
+                        href="/guidance/DG13/chapter/recommendations-for-further-research#dg13-7_1"
+                      >
+                        <span>
+                          The committee recommended further research to demonstrate the utility of the Sonoclot system in detecting, managing and monitoring haemostasis in cardiac surgery.
+                        </span>
+                      </a>
+                    </td>
+                    <td>
+                      <time
+                        class="date"
+                        data-shortdate="28/3/2024"
+                        datetime="2024-03-28T12:00:00"
+                      >
+                        <span>
+                          28 March 2024
+                        </span>
+                      </time>
+                    </td>
+                  </tr>
+                  <tr>
+                    <td>
+                      DG13/2
+                    </td>
+                    <td>
+                      <a
+                        href="/guidance/DG13/chapter/recommendations-for-further-research#dg13-7_2"
+                      >
+                        <span>
+                          The committee recommended further research in using viscoelastometric testing in the emergency control of bleeding after trauma and during postpartum haemorrhage to assess its effectiveness compared with standard laboratory testing. The committee recommended that outcomes should include, but may not be limited to, bleeding outcomes, mortality, duration of hospital or intensive care unit stay, transfusion rates and volumes transfused.
+                        </span>
+                      </a>
+                    </td>
+                    <td>
+                      <time
+                        class="date"
+                        data-shortdate="28/3/2024"
+                        datetime="2024-03-28T12:00:00"
+                      >
+                        <span>
+                          28 March 2024
+                        </span>
+                      </time>
+                    </td>
+                  </tr>
+                  <tr>
+                    <td>
+                      DG13/3
+                    </td>
+                    <td>
+                      <a
+                        href="/guidance/DG13/chapter/recommendations-for-further-research#dg13-7_3"
+                      >
+                        <span>
+                          The committee recommended further research comparing the clinical effectiveness of all 3 viscoelastometric devices (ROTEM, TEG and Sonoclot systems) in cardiac surgery and in the emergency control of bleeding after trauma and during postpartum haemorrhage. In particular, the committee recommended research to determine which of the parameters included in the viscoelastometric testing systems are the most significant in changing clinical decision‑making and improving clinical outcomes. The degree of change needed in these parameters to affect clinical decision‑making and clinical outcomes should also be considered.
+                        </span>
+                      </a>
+                    </td>
+                    <td>
+                      <time
+                        class="date"
+                        data-shortdate="28/3/2024"
+                        datetime="2024-03-28T12:00:00"
+                      >
+                        <span>
+                          28 March 2024
+                        </span>
+                      </time>
+                    </td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+            <nav
+              aria-label="Pagination"
+              class="pagination "
+              data-component="pagination"
+              role="navigation"
+            >
               <ol
-                class="list list--piped resultsPerPageList"
+                class="pagination__list"
               >
-                <li>
-                  10
-                </li>
-                <li>
-                  <a
-                    aria-label="Show 25 results per page"
-                    href="/?ps=25"
+                <li
+                  aria-current="true"
+                  class="pagination__item pagination__item--current"
+                >
+                  <span
+                    class="pagination__inactive"
                   >
-                    25
+                    <span
+                      class="visually-hidden"
+                    >
+                      Current page 
+                    </span>
+                    1
+                  </span>
+                </li>
+                <li
+                  class="pagination__item"
+                >
+                  <a
+                    aria-label="Go to page 2"
+                    class="pagination__link"
+                    href="/?pa=2"
+                  >
+                    2
                   </a>
                 </li>
-                <li>
+                <li
+                  class="pagination__item"
+                >
                   <a
-                    aria-label="Show 50 results per page"
-                    href="/?ps=50"
+                    aria-label="Go to page 3"
+                    class="pagination__link"
+                    href="/?pa=3"
                   >
-                    50
+                    3
                   </a>
                 </li>
-                <li>
-                  <a
-                    aria-label="Show All results per page"
-                    href="/?ps=9999"
+                <li
+                  class="pagination__item"
+                >
+                  <span
+                    class="pagination__inactive"
                   >
-                    All
+                    …
+                  </span>
+                </li>
+                <li
+                  class="pagination__item"
+                >
+                  <a
+                    aria-label="Go to page 18"
+                    class="pagination__link"
+                    href="/?pa=18"
+                  >
+                    18
+                  </a>
+                </li>
+                <li
+                  class="pagination__item pagination__item--count"
+                >
+                  <span>
+                    Page 
+                    <strong>
+                      1
+                    </strong>
+                     of 
+                    <strong>
+                      18
+                    </strong>
+                  </span>
+                </li>
+                <li
+                  class="pagination__item pagination__item--bookend"
+                >
+                  <a
+                    class="pagination__link"
+                    href="/?pa=2"
+                  >
+                    Next page
                   </a>
                 </li>
               </ol>
+            </nav>
+            <div
+              class="grid grid--middle mt--d"
+            >
+              <div
+                class="mb--e mb--0-sm"
+                data-component="grid-item"
+                data-g="12 sm:6"
+              >
+                <button
+                  class="btn mv--0 mh--0"
+                  data-component="button--primary"
+                  type="button"
+                >
+                  Copy 
+                  10 results
+                   to clipboard
+                </button>
+              </div>
+              <div
+                class="text-right"
+                data-component="grid-item"
+                data-g="12 sm:6"
+              >
+                <h3
+                  class="resultsPerPageHeading"
+                >
+                  Results per page
+                </h3>
+                <ol
+                  class="list list--piped resultsPerPageList"
+                >
+                  <li>
+                    10
+                  </li>
+                  <li>
+                    <a
+                      aria-label="Show 25 results per page"
+                      href="/?ps=25"
+                    >
+                      25
+                    </a>
+                  </li>
+                  <li>
+                    <a
+                      aria-label="Show 50 results per page"
+                      href="/?ps=50"
+                    >
+                      50
+                    </a>
+                  </li>
+                  <li>
+                    <a
+                      aria-label="Show All results per page"
+                      href="/?ps=9999"
+                    >
+                      All
+                    </a>
+                  </li>
+                </ol>
+              </div>
             </div>
-          </div>
-        </section>
+          </section>
+        </div>
       </div>
-    </div>
-  </main>
-  <noscript />
+    </main>
+    <noscript />
+  </div>
 </div>
 `;
