@@ -55,17 +55,24 @@ resource "aws_cloudwatch_log_group" "ocelot_cache_clear_log_group" {
   name_prefix       = "/aws/lambda/NextWebOcelotCacheClear-${var.environment}/"
 }
 
-resource "aws_lambda_function" "ocelot_cache_clear" {
+data "archive_file" "ocelot_cache_clear" {
+  type        = "zip"
+  source_file = "${path.module}/../index.mjs"
+  output_path = "${path.module}/../index.zip"
+}
 
+resource "aws_lambda_function" "ocelot_cache_clear" {
   function_name = "NextWebOcelotCacheClear-${var.environment}"
   description   = "NextWebOcelotCacheClear-${var.environment}"
 
+  depends_on = [data.archive_file.ocelot_cache_clear]
   role = aws_iam_role.ocelot_cache_clear_role.arn
 
   runtime = "nodejs20.x"
   handler = "index.handler"
 
   filename = "../index.zip"
+	source_code_hash  = "${data.archive_file.ocelot_cache_clear.output_base64sha256}"
   timeout  = 10
 
   environment {
@@ -135,11 +142,3 @@ resource "aws_lambda_permission" "ocelot_cache_clear" {
     ]
   }
 }
-
-//resource "aws_lambda_function_url" "ocelot_cache_clear" {
-//  count              = 1
-//  function_name      = aws_lambda_function.ocelot_cache_clear.function_name
-//  authorization_type = "NONE"
-//}
-
-
