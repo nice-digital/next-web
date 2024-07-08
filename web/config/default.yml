@@ -35,6 +35,7 @@ public:
     accessToken: SECRET
     ocelotEndpoint:
     enableRootCatchAll: false
+  denyRobots: false
 
 # ! This is a PUBLIC repo so please don't put any sensitive info or secrets in here
 # ! Use local-development.yml or local-development.json to override settings locally instead: https://edibleco.de/3dLJKiP
