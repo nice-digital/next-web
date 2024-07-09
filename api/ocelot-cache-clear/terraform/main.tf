@@ -111,7 +111,7 @@ resource "aws_apigatewayv2_deployment" "ocelot_cache_clear_deployment" {
 
 resource "aws_apigatewayv2_stage" "ocelot_cache_clear_stage" {
   api_id = aws_apigatewayv2_api.ocelot_cache_clear_api.id
-  name   = "NextWebOcelotCacheClear"
+  name   = "NextWebOcelotCacheClear-${var.environment}"
 	deployment_id = aws_apigatewayv2_deployment.ocelot_cache_clear_deployment.id
 }
 
@@ -119,7 +119,7 @@ resource "aws_apigatewayv2_integration" "ocelot_cache_clear_integration" {
   api_id           = aws_apigatewayv2_api.ocelot_cache_clear_api.id
   integration_type = "AWS_PROXY"
 
-  description               = "NextWebOcelotCacheClear"
+  description               = "NextWebOcelotCacheClear-${var.environment}"
   integration_method        = "POST"
   integration_uri           = aws_lambda_function.ocelot_cache_clear.invoke_arn
 }

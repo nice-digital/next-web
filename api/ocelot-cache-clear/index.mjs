@@ -36,7 +36,7 @@ export const handler = async (event) => {
 			};
 		} else {
 			response = {
-				statusCode: 204,
+				statusCode: 200,
 				body: "Cache cleared successfully",
 			};
 		}
