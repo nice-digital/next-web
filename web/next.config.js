@@ -300,8 +300,10 @@ const nextConfig = {
 				permanent: true,
 			},
 			{
-				source: "/about/what-we-do/research-and-development/research-recommendations/:slug*",
-				destination: "/about/what-we-do/science-policy-research/research-recommendations",
+				source:
+					"/about/what-we-do/research-and-development/research-recommendations/:slug*",
+				destination:
+					"/about/what-we-do/science-policy-research/research-recommendations",
 				permanent: true,
 			},
 			{
