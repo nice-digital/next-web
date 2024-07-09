@@ -111,7 +111,7 @@ resource "aws_apigatewayv2_deployment" "ocelot_cache_clear_deployment" {
 
 resource "aws_apigatewayv2_stage" "ocelot_cache_clear_stage" {
   api_id = aws_apigatewayv2_api.ocelot_cache_clear_api.id
-  name   = "NextWebOcelotCacheClear-${var.environment}"
+  name   = "${var.environment}"
 	deployment_id = aws_apigatewayv2_deployment.ocelot_cache_clear_deployment.id
 }
 
