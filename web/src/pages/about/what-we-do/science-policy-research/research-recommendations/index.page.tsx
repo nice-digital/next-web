@@ -1,12 +1,10 @@
-import React from "react";
-
 import { Breadcrumb } from "@nice-digital/nds-breadcrumbs";
 import { Document, SortOrder } from "@nice-digital/search-client";
 
 import { Link } from "@/components/Link/Link";
 import {
-	getProductListPage,
 	getGetServerSidePropsFunc,
+	getProductListPage,
 } from "@/components/ProductListPage/ProductListPage";
 import { ResponsiveDate } from "@/components/ResponsiveDate/ResponsiveDate";
 
@@ -82,7 +80,7 @@ export default getProductListPage({
 	dateFilterLabel,
 	textFilterLabel,
 	tableBodyRender,
-	searchInputPlaceholder: "E.g. 'IND28' or 'diabetes'",
+	searchInputPlaceholder: "E.g. 'CG100/1' or 'diabetes'",
 });
 
 export const getServerSideProps = getGetServerSidePropsFunc({
