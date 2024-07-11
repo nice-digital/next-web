@@ -336,6 +336,12 @@ export type ContentPartList = {
 	};
 };
 
+export type ContentPartList2 = {
+	embedded: {
+		contentParts?: [];
+	};
+};
+
 export type RelatedResourceList = {
 	links: EmptySelfLinks;
 	embedded: {
@@ -518,6 +524,7 @@ export type ProductAndResourceBase = {
 	eTag: ETag;
 	embedded: {
 		contentPartList?: ContentPartList;
+		contentPartList2?: ContentPartList2;
 		relatedResourceList?: RelatedResourceList;
 		relatedProductList?: RelatedProductList;
 	};

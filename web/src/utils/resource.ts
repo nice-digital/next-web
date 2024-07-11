@@ -1,13 +1,18 @@
 import { IndevPanel, IndevResource, ProjectDetail } from "@/feeds/inDev/inDev";
 import {
 	BaseContentPart,
+	EditableContentPart,
+	ExternalUrlContentPart,
 	FileContent,
 	ProductAndResourceBase,
 	ResourceType,
+	UploadAndConvertContentPart,
+	UploadContentPart,
 	type ResourceDetail,
 } from "@/feeds/publications/types";
 
 import { arrayify, byTitleAlphabetically } from "./array";
+import { fetchAndMapContentParts } from "./contentparts";
 import { getFileTypeNameFromMime } from "./file";
 import { getProjectPath, slugify } from "./url";
 
@@ -172,50 +177,65 @@ export const findContentPartLinks = (
 	resource: ResourceDetail,
 	resourceTypeSlug: ResourceTypeSlug
 ): ResourceLinkViewModel[] => {
-	const { contentPartList } = resource.embedded;
+	if (!resource.embedded.contentPartList2?.embedded.contentParts) return [];
 
-	if (!contentPartList) return [];
+	const { contentParts } = resource.embedded.contentPartList2.embedded;
+	const contentPartsArray = [];
 
-	const {
-		uploadAndConvertContentPart,
-		editableContentPart,
-		externalUrlContentPart,
-		uploadContentPart,
-	} = contentPartList.embedded;
+	for (const part of contentParts) {
+		if (part["type"] == "UploadAndConvertContentPart") {
+			const uploadAndConvertContent: UploadAndConvertContentPart = part;
 
-	return [
-		...arrayify(uploadAndConvertContentPart).map((part) => ({
-			title: part.title,
-			href: `${productPath}/${resourceTypeSlug}/${slugify(part.title)}-${
-				resource.uid
-			}-${part.uid}`,
-			type: resource.resourceTypeName,
-		})),
-		...arrayify(editableContentPart).map((part) => ({
-			title: part.title,
-			href: `${productPath}/${resourceTypeSlug}/${slugify(part.title)}-${
-				resource.uid
-			}-${part.uid}`,
-			type: resource.resourceTypeName,
-		})),
-		...arrayify(uploadContentPart).map((part) => ({
-			title: part.title,
-			href: `${productPath}/downloads/${productID.toUpperCase()}-${slugify(
-				part.title
-			)}-${resource.uid}-${part.uid}.${
-				part.embedded.file.fileName.split(".").slice(-1)[0]
-			}`,
-			fileSize: part.embedded.file.length,
-			fileTypeName: getFileTypeNameFromMime(part.embedded.file.mimeType),
-			date: resource.lastMajorModificationDate,
-			type: resource.resourceTypeName,
-		})),
-		...arrayify(externalUrlContentPart).map((part) => ({
-			title: part.title,
-			href: part.url,
-			type: resource.resourceTypeName,
-		})),
-	];
+			const content = {
+				title: uploadAndConvertContent.title,
+				href: `${productPath}/${resourceTypeSlug}/${slugify(
+					uploadAndConvertContent.title
+				)}-${resource.uid}-${uploadAndConvertContent.uid}`,
+				type: resource.resourceTypeName,
+			};
+			contentPartsArray.push(content);
+		} else if (part["type"] == "EditableContentPart") {
+			const editableContent: EditableContentPart = part;
+
+			const content = {
+				title: editableContent.title,
+				href: `${productPath}/${resourceTypeSlug}/${slugify(
+					editableContent.title
+				)}-${resource.uid}-${editableContent.uid}`,
+				type: resource.resourceTypeName,
+			};
+			contentPartsArray.push(content);
+		} else if (part["type"] == "UploadContentPart") {
+			const uploadContent: UploadContentPart = part;
+
+			const content = {
+				title: uploadContent.title,
+				href: `${productPath}/downloads/${productID.toUpperCase()}-${slugify(
+					uploadContent.title
+				)}-${resource.uid}-${uploadContent.uid}.${
+					uploadContent.embedded.file.fileName.split(".").slice(-1)[0]
+				}`,
+				fileSize: uploadContent.embedded.file.length,
+				fileTypeName: getFileTypeNameFromMime(
+					uploadContent.embedded.file.mimeType
+				),
+				date: resource.lastMajorModificationDate,
+				type: resource.resourceTypeName,
+			};
+			contentPartsArray.push(content);
+		} else if (part["type"] == "ExternalUrlContentPart") {
+			const externalLinkContent: ExternalUrlContentPart = part;
+
+			const content = {
+				title: externalLinkContent.title,
+				href: externalLinkContent.url,
+				type: resource.resourceTypeName,
+			};
+			contentPartsArray.push(content);
+		}
+	}
+
+	return contentPartsArray;
 };
 
 export const isEvidenceUpdate = (resource: ResourceDetail): boolean =>
@@ -241,13 +261,22 @@ export const findDownloadable = (
 	resource: ProductAndResourceBase,
 	partUID: number
 ): { file: FileContent; part: BaseContentPart } | null => {
-	if (!resource.embedded.contentPartList) return null;
+	if (!resource.embedded.contentPartList2?.embedded?.contentParts) return null;
 
-	const {
-		uploadAndConvertContentPart,
-		uploadContentPart,
-		editableContentPart,
-	} = resource.embedded.contentPartList.embedded;
+	const { contentParts } = resource.embedded.contentPartList2.embedded;
+	const uploadAndConvertContentPart =
+			fetchAndMapContentParts<UploadAndConvertContentPart>(
+				contentParts,
+				"UploadAndConvertContentPart"
+			),
+		uploadContentPart = fetchAndMapContentParts<UploadContentPart>(
+			contentParts,
+			"UploadContentPart"
+		),
+		editableContentPart = fetchAndMapContentParts<EditableContentPart>(
+			contentParts,
+			"EditableContentPart"
+		);
 
 	const checkFile = (
 		file: FileContent | undefined | null,
