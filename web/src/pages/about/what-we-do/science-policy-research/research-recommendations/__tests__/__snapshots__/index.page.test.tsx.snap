@@ -237,7 +237,7 @@ exports[`/research-recommendations/index should match the snapshot 1`] = `
                         class="input__input"
                         id="q"
                         name="q"
-                        placeholder="E.g. 'IND28' or 'diabetes'"
+                        placeholder="E.g. 'CG100/1' or 'diabetes'"
                         type="text"
                         value=""
                       />
