@@ -1,5 +1,6 @@
 import { Given } from "@wdio/cucumber-framework";
 
+import { breadcrumbPath, breadcrumbName } from "../support/breadcrumbPaths.js";
 import { getPath, PageName } from "../support/pagePaths.js";
 
 /**
@@ -43,3 +44,10 @@ Given(/^I open the (.*) page$/, async (pageName: PageName) => {
 	// Make sure the cookie banner is dismissed before we continue, as it's an overlay so blocks clicks
 	await acceptCookieBanner();
 });
+
+Given(
+	/^I click on the breadcrumb (.*)$/,
+	async (breadcrumbName: breadcrumbName) => {
+		await openWebsite("url", breadcrumbPath(breadcrumbName));
+	}
+);
