@@ -1,12 +1,12 @@
 import { Breadcrumb } from "@nice-digital/nds-breadcrumbs";
 import { Document, SortOrder } from "@nice-digital/search-client";
 
-import { Link } from "@/components/Link/Link";
 import {
 	getGetServerSidePropsFunc,
 	getProductListPage,
 } from "@/components/ProductListPage/ProductListPage";
 import { ResponsiveDate } from "@/components/ResponsiveDate/ResponsiveDate";
+import { publicRuntimeConfig } from "@/config";
 
 const defaultSortOrder = SortOrder.guidanceRefAscending,
 	dateFilterLabel = "Published date",
@@ -31,9 +31,10 @@ const tableBodyRender = (documents: Document[]) => (
 						<tr key={id}>
 							<td>{guidanceRef}</td>
 							<td>
-								<Link href={pathAndQuery}>
-									<span dangerouslySetInnerHTML={{ __html: title }} />
-								</Link>
+								<a
+									href={publicRuntimeConfig.baseURL + pathAndQuery}
+									dangerouslySetInnerHTML={{ __html: title }}
+								/>
 							</td>
 							<td>
 								<ResponsiveDate isoDateTime={String(publicationDate)} />

@@ -445,11 +445,9 @@ exports[`/research-recommendations/index should match the snapshot 1`] = `
                     </td>
                     <td>
                       <a
-                        href="/guidance/CG118/chapter/recommendations-for-research#cg118-natural-history-of-progression-to-colorectal-cancer-in-people-at-increased-risk"
+                        href="https://next-web-tests.nice.org.uk/guidance/CG118/chapter/recommendations-for-research/#cg118-natural-history-of-progression-to-colorectal-cancer-in-people-at-increased-risk"
                       >
-                        <span>
-                          What is the natural history of progression to colorectal cancer in people with IBD or adenomas?
-                        </span>
+                        What is the natural history of progression to colorectal cancer in people with IBD or adenomas?
                       </a>
                     </td>
                     <td>
@@ -470,11 +468,9 @@ exports[`/research-recommendations/index should match the snapshot 1`] = `
                     </td>
                     <td>
                       <a
-                        href="/guidance/CG118/chapter/recommendations-for-research#cg118-surveillance-programmes-for-people-at-increased-risk-of-colorectal-cancer"
+                        href="https://next-web-tests.nice.org.uk/guidance/CG118/chapter/recommendations-for-research/#cg118-surveillance-programmes-for-people-at-increased-risk-of-colorectal-cancer"
                       >
-                        <span>
-                          How effective are colonoscopic surveillance programmes in improving overall survival and cancer-related survival in people at increased risk of colorectal cancer?
-                        </span>
+                        How effective are colonoscopic surveillance programmes in improving overall survival and cancer-related survival in people at increased risk of colorectal cancer?
                       </a>
                     </td>
                     <td>
@@ -495,11 +491,9 @@ exports[`/research-recommendations/index should match the snapshot 1`] = `
                     </td>
                     <td>
                       <a
-                        href="/guidance/CG118/chapter/recommendations-for-research#cg118-effectiveness-of-biomarkers-for-determining-level-of-risk-of-colorectal-cancer"
+                        href="https://next-web-tests.nice.org.uk/guidance/CG118/chapter/recommendations-for-research/#cg118-effectiveness-of-biomarkers-for-determining-level-of-risk-of-colorectal-cancer"
                       >
-                        <span>
-                          Which biomarkers, including epigenic and genetic markers, are predictors of colorectal cancer? How should these be used to improve risk stratification?
-                        </span>
+                        Which biomarkers, including epigenic and genetic markers, are predictors of colorectal cancer? How should these be used to improve risk stratification?
                       </a>
                     </td>
                     <td>
@@ -520,11 +514,9 @@ exports[`/research-recommendations/index should match the snapshot 1`] = `
                     </td>
                     <td>
                       <a
-                        href="/guidance/CG118/chapter/recommendations-for-research#cg118-adenoma-types-and-risk-of-colorectal-cancer"
+                        href="https://next-web-tests.nice.org.uk/guidance/CG118/chapter/recommendations-for-research/#cg118-adenoma-types-and-risk-of-colorectal-cancer"
                       >
-                        <span>
-                          Does the risk of colorectal cancer depend on the type of adenoma?
-                        </span>
+                        Does the risk of colorectal cancer depend on the type of adenoma?
                       </a>
                     </td>
                     <td>
@@ -545,11 +537,9 @@ exports[`/research-recommendations/index should match the snapshot 1`] = `
                     </td>
                     <td>
                       <a
-                        href="/guidance/DG1/chapter/7-recommendations-for-further-research#dg1-7.2"
+                        href="https://next-web-tests.nice.org.uk/guidance/DG1/chapter/7-recommendations-for-further-research/#dg1-7.2"
                       >
-                        <span>
-                          Additional methodological research is needed to determine the most appropriate model structures to assess the benefit arising from radiation dose reduction. Additional work is needed to assess when the radiation-induced cancers actually occur and the impact of the timing of the emergence of cancer on health status.
-                        </span>
+                        Additional methodological research is needed to determine the most appropriate model structures to assess the benefit arising from radiation dose reduction. Additional work is needed to assess when the radiation-induced cancers actually occur and the impact of the timing of the emergence of cancer on health status.
                       </a>
                     </td>
                     <td>
@@ -570,11 +560,9 @@ exports[`/research-recommendations/index should match the snapshot 1`] = `
                     </td>
                     <td>
                       <a
-                        href="/guidance/DG1/chapter/7-recommendations-for-further-research#dg1-7.3"
+                        href="https://next-web-tests.nice.org.uk/guidance/DG1/chapter/7-recommendations-for-further-research/#dg1-7.3"
                       >
-                        <span>
-                          Research is needed to determine whether, and for which conditions, use of the EOS system for 3D reconstruction provides benefit for diagnosis or treatment planning.
-                        </span>
+                        Research is needed to determine whether, and for which conditions, use of the EOS system for 3D reconstruction provides benefit for diagnosis or treatment planning.
                       </a>
                     </td>
                     <td>
@@ -595,11 +583,9 @@ exports[`/research-recommendations/index should match the snapshot 1`] = `
                     </td>
                     <td>
                       <a
-                        href="/guidance/DG1/chapter/7-recommendations-for-further-research#dg1-7.1"
+                        href="https://next-web-tests.nice.org.uk/guidance/DG1/chapter/7-recommendations-for-further-research/#dg1-7.1"
                       >
-                        <span>
-                          Research is needed to quantify the health outcome benefits associated with imaging improvements with the EOS system. Examples of such benefits might include reduced back pain or reduced postural difficulties in people with scoliosis, or longer lasting and less painful joint replacements. Although research into the use of the EOS system is appropriate for all the indications included in the scope, the research most likely to be useful is for planning hip and knee replacement, including patient selection, device selection, and surgical approach. Joint replacement operations are more common than the other indications and the EOS system is thought to be most likely to provide benefit to these patients.
-                        </span>
+                        Research is needed to quantify the health outcome benefits associated with imaging improvements with the EOS system. Examples of such benefits might include reduced back pain or reduced postural difficulties in people with scoliosis, or longer lasting and less painful joint replacements. Although research into the use of the EOS system is appropriate for all the indications included in the scope, the research most likely to be useful is for planning hip and knee replacement, including patient selection, device selection, and surgical approach. Joint replacement operations are more common than the other indications and the EOS system is thought to be most likely to provide benefit to these patients.
                       </a>
                     </td>
                     <td>
@@ -620,11 +606,9 @@ exports[`/research-recommendations/index should match the snapshot 1`] = `
                     </td>
                     <td>
                       <a
-                        href="/guidance/DG13/chapter/recommendations-for-further-research#dg13-7_1"
+                        href="https://next-web-tests.nice.org.uk/guidance/DG13/chapter/recommendations-for-further-research/#dg13-7_1"
                       >
-                        <span>
-                          The committee recommended further research to demonstrate the utility of the Sonoclot system in detecting, managing and monitoring haemostasis in cardiac surgery.
-                        </span>
+                        The committee recommended further research to demonstrate the utility of the Sonoclot system in detecting, managing and monitoring haemostasis in cardiac surgery.
                       </a>
                     </td>
                     <td>
@@ -645,11 +629,9 @@ exports[`/research-recommendations/index should match the snapshot 1`] = `
                     </td>
                     <td>
                       <a
-                        href="/guidance/DG13/chapter/recommendations-for-further-research#dg13-7_2"
+                        href="https://next-web-tests.nice.org.uk/guidance/DG13/chapter/recommendations-for-further-research/#dg13-7_2"
                       >
-                        <span>
-                          The committee recommended further research in using viscoelastometric testing in the emergency control of bleeding after trauma and during postpartum haemorrhage to assess its effectiveness compared with standard laboratory testing. The committee recommended that outcomes should include, but may not be limited to, bleeding outcomes, mortality, duration of hospital or intensive care unit stay, transfusion rates and volumes transfused.
-                        </span>
+                        The committee recommended further research in using viscoelastometric testing in the emergency control of bleeding after trauma and during postpartum haemorrhage to assess its effectiveness compared with standard laboratory testing. The committee recommended that outcomes should include, but may not be limited to, bleeding outcomes, mortality, duration of hospital or intensive care unit stay, transfusion rates and volumes transfused.
                       </a>
                     </td>
                     <td>
@@ -670,11 +652,9 @@ exports[`/research-recommendations/index should match the snapshot 1`] = `
                     </td>
                     <td>
                       <a
-                        href="/guidance/DG13/chapter/recommendations-for-further-research#dg13-7_3"
+                        href="https://next-web-tests.nice.org.uk/guidance/DG13/chapter/recommendations-for-further-research/#dg13-7_3"
                       >
-                        <span>
-                          The committee recommended further research comparing the clinical effectiveness of all 3 viscoelastometric devices (ROTEM, TEG and Sonoclot systems) in cardiac surgery and in the emergency control of bleeding after trauma and during postpartum haemorrhage. In particular, the committee recommended research to determine which of the parameters included in the viscoelastometric testing systems are the most significant in changing clinical decision‑making and improving clinical outcomes. The degree of change needed in these parameters to affect clinical decision‑making and clinical outcomes should also be considered.
-                        </span>
+                        The committee recommended further research comparing the clinical effectiveness of all 3 viscoelastometric devices (ROTEM, TEG and Sonoclot systems) in cardiac surgery and in the emergency control of bleeding after trauma and during postpartum haemorrhage. In particular, the committee recommended research to determine which of the parameters included in the viscoelastometric testing systems are the most significant in changing clinical decision‑making and improving clinical outcomes. The degree of change needed in these parameters to affect clinical decision‑making and clinical outcomes should also be considered.
                       </a>
                     </td>
                     <td>
