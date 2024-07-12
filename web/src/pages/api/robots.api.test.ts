@@ -18,10 +18,10 @@ describe("Robots txt API Handler Tests", () => {
 		jest.resetModules();
 	});
 
-	it('should return "Disallow: /" when denyRobots is "true"', async () => {
+	it('should return "Disallow: /" when denyRobots is true', async () => {
 		jest.doMock("@/config", () => ({
 			publicRuntimeConfig: {
-				denyRobots: "true",
+				denyRobots: true,
 			},
 		}));
 
