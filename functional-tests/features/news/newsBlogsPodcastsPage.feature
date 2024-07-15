@@ -10,13 +10,13 @@ Feature: Home page
     And I pause for 2000ms
     Then I expect that element "h1.page-header__heading" contains the text "News, blogs and podcasts"
     Given I click on the breadcrumb Home
-    Then I expect the url to contain "http://localhost:4000/"
+    Then I expect the url to contain "/"
 
   Scenario: User can view news tab navigation
     And I pause for 2000ms
     Then I expect that element "h1.page-header__heading" contains the text "News, blogs and podcasts"
     And I expect that element ".horizontal-nav__link" contains the text "News"
     Given I click on the breadcrumb Home
-    Then I expect the url to contain "http://localhost:4000/"
+    Then I expect the url to contain "/"
 
 

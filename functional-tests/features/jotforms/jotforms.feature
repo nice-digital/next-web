@@ -11,7 +11,7 @@ Feature: Individual indicator page
 
 
   Scenario: User can subscribe to NICE news for health and social care
-    And I pause for 2000ms
+    When I pause for 2000ms
     Given I open the subscribe to NICE news for health and social care page
     Then I expect that element "h1" contains the text "Subscribe to NICE news for health and social care"
     # When I add details to subscribe to newsletters

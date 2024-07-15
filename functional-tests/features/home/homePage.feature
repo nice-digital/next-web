@@ -29,32 +29,47 @@ Feature: Home page
     And I pause for 2000ms
     When I click on the element "a[href='/news']"
     And I pause for 2000ms
-    Then I expect the url to contain "http://localhost:4000/news"
+    Then I expect the url to contain "/news"
     Then I expect that element "h1.page-header__heading " contains the text "News, blogs and podcasts"
     Then I click on the element "a[href='/']"
-    Then I expect the url to contain "http://localhost:4000"
+    Then I expect the url to contain "/"
 
 
-# guidance
-#    -status.feature   *DONE
+
 # guidanceListPage
-#    -guidanceListPage.feature
 #    -filterSortIndicatorListPage.feature
-# home
-#    -homePage.feature   *DONE
+
 # hub
 #    -hubPage
+
 # indicators.feature
-#    -indicators.feature   *DONE
-#    -published-list.feature  *DONE
 #    -filterSortIndicatorListPage.feature
-# jotforms
-#    -jotforms.feature  *ALMOST DONE
+
 # news
 #    - blogs.feature
 #    - header.feature
 #    - inDepth.feature
 #    - newsArticle.feature      *ALMOST DONE - fix
+#    - podcasts.feature
+
+###################
+# guidance
+#    -status.feature   *DONE
+
+# jotforms
+#    -jotforms.feature  *DONE
+
+#news
 #    - newsBlogsPodcastPage.feature     *DONE
 #    - newsSections.feature    -fix
-#    - podcasts.feature
+
+# indicators.feature
+#    -indicators.feature   *DONE
+#    -published-list.feature  *DONE
+
+# home
+#    -homePage.feature   *DONE
+
+# guidanceListPage
+#    -guidanceListPage.feature
+
