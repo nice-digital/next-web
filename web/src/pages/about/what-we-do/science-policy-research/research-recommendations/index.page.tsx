@@ -21,7 +21,7 @@ const tableBodyRender = (documents: Document[]) => (
 			<tr>
 				<th scope="col">Reference number</th>
 				<th scope="col">Recommendation for research</th>
-				<th scope="col">Published</th>
+				<th scope="col">Published date</th>
 			</tr>
 		</thead>
 		<tbody>
@@ -74,7 +74,7 @@ export default getProductListPage({
 	},
 	secondarySort: {
 		order: SortOrder.dateDescending,
-		label: "Published",
+		label: "Published date",
 	},
 	showDateFilter: true,
 	useFutureDates: false,

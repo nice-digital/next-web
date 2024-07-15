@@ -400,7 +400,7 @@ exports[`/research-recommendations/index should match the snapshot 1`] = `
                   <option
                     value="Date"
                   >
-                    Published
+                    Published date
                   </option>
                 </select>
               </div>
@@ -434,7 +434,7 @@ exports[`/research-recommendations/index should match the snapshot 1`] = `
                     <th
                       scope="col"
                     >
-                      Published
+                      Published date
                     </th>
                   </tr>
                 </thead>
