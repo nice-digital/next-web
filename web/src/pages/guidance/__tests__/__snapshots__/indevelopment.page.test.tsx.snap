@@ -833,7 +833,7 @@ exports[`/guidance/indevelopment should match the snapshot 1`] = `
                     Title
                   </option>
                   <option
-                    value="DateAsc"
+                    value="Date"
                   >
                     Date
                   </option>
