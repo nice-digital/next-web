@@ -1,4 +1,4 @@
-const toDataQASelAttr = (attrValue, p0: any, p1: string) =>
+const toDataQASelAttr = (attrValue, p0: unknown, p1: string) =>
 	`[data-qa-sel='${attrValue}']`;
 const toNthChildAttr = (attrValue) => `> :nth-child(${attrValue}) a`;
 const toChildAndQASel = (childIndex, attrValue) =>
