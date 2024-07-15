@@ -21,7 +21,7 @@ jest.mock("@/logger", () => ({
 
 describe("getGetServerSidePropsFunc", () => {
 	const getServerSideProps = getGetServerSidePropsFunc({
-		defaultSortOrder: SortOrder.dateAscending,
+		defaultSortOrder: SortOrder.dateDescending,
 		gstPreFilter: "Published",
 		dateFilterLabel: "Last updated date",
 		index: "guidance",
