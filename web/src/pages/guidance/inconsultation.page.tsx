@@ -9,7 +9,7 @@ import {
 import { ResponsiveDate } from "@/components/ResponsiveDate/ResponsiveDate";
 import { publicRuntimeConfig } from "@/config";
 
-const defaultSortOrder = SortOrder.dateAscending,
+const defaultSortOrder = SortOrder.dateDescending,
 	dateFilterLabel = "Consultation end date";
 
 const tableBodyRender = (documents: Document[]) => (

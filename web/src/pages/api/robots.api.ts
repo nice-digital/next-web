@@ -6,7 +6,7 @@ export default function handler(
 	req: NextApiRequest,
 	res: NextApiResponse
 ): void {
-	if (publicRuntimeConfig.denyRobots === "true") {
+	if (publicRuntimeConfig.denyRobots === true) {
 		res.send(`User-agent: *
 Disallow: /
 	`);

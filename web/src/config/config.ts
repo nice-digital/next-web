@@ -34,7 +34,7 @@ export interface PublicConfig {
 	readonly authEnvironment: "live" | "beta" | "test" | "local";
 
 	/** Disallow crawlers from indexing the site */
-	readonly denyRobots: string;
+	readonly denyRobots: boolean;
 
 	/** The base URL of the website including protocol and port e.g. http://localhost:3000 for local dev or http://dev.nice.org.uk.
 	 *

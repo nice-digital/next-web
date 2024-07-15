@@ -138,6 +138,11 @@ const nextConfig = {
 	async redirects() {
 		return [
 			{
+				source: "/indicators",
+				destination: "/indicators/published",
+				permanent: true,
+			},
+			{
 				source: "/news/newsandfeatures",
 				destination: "/news/articles",
 				permanent: true,
