@@ -62,7 +62,10 @@ export const handler = async (event) => {
 			};
 			return response;
 		}
+	} else {
+		console.error(
+			`Error getting token, Unexpected HTTP Status Received : HTTPCode - ${tokenResponse.status} | Status - ${tokenResponse.statusText}`
+		);
+		return basicErrorResponse;
 	}
-
-	return basicErrorResponse;
 };
