@@ -9,6 +9,16 @@ export interface RichtextStoryblok {
   [k: string]: any;
 }
 
+export interface AccordionStoryblok {
+  title: string;
+	displayTitleAsHeading:boolean;
+	headingLevel?: number;
+  content: RichtextStoryblok;
+  component: "accordion";
+  _uid: string;
+  [k: string]: any;
+}
+
 export interface AssetStoryblok {
   alt?: string;
   copyright?: string;
