@@ -40,9 +40,10 @@ export const InlineTextFilter: FC<InlineTextFilterProps> = ({
 				autoComplete="off"
 				onChange={onInputChange}
 				value={value}
+				spellCheck={false}
 			/>
 			<Button className={styles.button} variant="primary" type="submit">
-				Filter
+				Apply Filter
 			</Button>
 		</div>
 	);

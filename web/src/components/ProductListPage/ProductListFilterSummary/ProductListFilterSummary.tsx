@@ -73,7 +73,7 @@ export const ProductListFilterSummary: FC<ProductListFilterSummaryProps> = ({
 			sorting={sorting}
 		>
 			{resultCount === 0 ? (
-				"No results found"
+				"No results found."
 			) : (
 				<>
 					Showing {firstResult} to {lastResult} of {resultCount}

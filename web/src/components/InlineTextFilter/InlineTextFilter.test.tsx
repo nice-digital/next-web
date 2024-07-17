@@ -52,7 +52,7 @@ describe("InlineTextFilter", () => {
 	it("should render cta submit button", () => {
 		render(<InlineTextFilter label="Test label" name="q" />);
 
-		const button = screen.getByText("Filter");
+		const button = screen.getByText("Apply Filter");
 
 		expect(button).toBeInTheDocument();
 		expect(button).toHaveAttribute("type", "submit");

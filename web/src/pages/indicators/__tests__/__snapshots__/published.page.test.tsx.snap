@@ -237,7 +237,7 @@ exports[`/indicators/published should match the snapshot 1`] = `
                       class="label"
                       for="q"
                     >
-                      Filter by title or keyword
+                      Filter by word or reference number
                     </label>
                     <div
                       class="input"
@@ -249,6 +249,7 @@ exports[`/indicators/published should match the snapshot 1`] = `
                         id="q"
                         name="q"
                         placeholder="E.g. 'diabetes' or 'IND28'"
+                        spellcheck="false"
                         type="text"
                         value=""
                       />
@@ -258,7 +259,7 @@ exports[`/indicators/published should match the snapshot 1`] = `
                       data-component="button--primary"
                       type="submit"
                     >
-                      Filter
+                      Apply Filter
                     </button>
                   </div>
                   <div

@@ -72,7 +72,7 @@ describe("SearchListFilters", () => {
 				/>
 			);
 
-			userEvent.click(screen.getByRole("button", { name: "Filter" }));
+			userEvent.click(screen.getByRole("button", { name: "Apply Filter" }));
 
 			await waitFor(() => {
 				expect(routerPush).toHaveBeenCalledWith(
@@ -188,7 +188,7 @@ describe("SearchListFilters", () => {
 
 		it("should render title filter input box and label", () => {
 			expect(
-				screen.getByLabelText("Filter by title or keyword")
+				screen.getByLabelText("Filter by word or reference number")
 			).toBeInTheDocument();
 		});
 
@@ -204,7 +204,7 @@ describe("SearchListFilters", () => {
 				/>
 			);
 			expect(
-				screen.getByLabelText("Filter by title or keyword")
+				screen.getByLabelText("Filter by word or reference number")
 			).toHaveAttribute("placeholder", "E.g. 'diabetes' or 'NG28'");
 		});
 
@@ -221,21 +221,27 @@ describe("SearchListFilters", () => {
 				/>
 			);
 			expect(
-				screen.getByLabelText("Filter by title or keyword")
+				screen.getByLabelText("Filter by word or reference number")
 			).toHaveAttribute("placeholder", "Some placeholder text");
 		});
 
 		it("should render search submit button", () => {
-			expect(screen.getByText("Filter")).toBeInTheDocument();
-			expect(screen.getByText("Filter")).toHaveProperty("tagName", "BUTTON");
-			expect(screen.getByText("Filter")).toHaveAttribute("type", "submit");
+			expect(screen.getByText("Apply Filter")).toBeInTheDocument();
+			expect(screen.getByText("Apply Filter")).toHaveProperty(
+				"tagName",
+				"BUTTON"
+			);
+			expect(screen.getByText("Apply Filter")).toHaveAttribute(
+				"type",
+				"submit"
+			);
 		});
 
 		it("should use NextJS router with serialized form on search button click", async () => {
 			const input = screen.getByRole("textbox", {
-					name: "Filter by title or keyword",
+					name: "Filter by word or reference number",
 				}),
-				button = screen.getByRole("button", { name: "Filter" });
+				button = screen.getByRole("button", { name: "Apply Filter" });
 
 			await userEvent.type(input, "diabetes");
 			await userEvent.click(button);

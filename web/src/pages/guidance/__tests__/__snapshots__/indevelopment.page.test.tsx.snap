@@ -95,12 +95,7 @@ exports[`/guidance/indevelopment should match the snapshot 1`] = `
               <h1
                 class="page-header__heading "
               >
-                <span
-                  class="page-header__pre-heading"
-                >
-                  Guidance, NICE advice and quality standards 
-                </span>
-                In development
+                In development: Guidance, quality standards and advice
               </h1>
               <p
                 class="page-header__lead"
@@ -261,7 +256,7 @@ exports[`/guidance/indevelopment should match the snapshot 1`] = `
                       class="label"
                       for="q"
                     >
-                      Filter by title or keyword
+                      Filter by word or reference number
                     </label>
                     <div
                       class="input"
@@ -273,6 +268,7 @@ exports[`/guidance/indevelopment should match the snapshot 1`] = `
                         id="q"
                         name="q"
                         placeholder="E.g. 'diabetes' or 'NG28'"
+                        spellcheck="false"
                         type="text"
                         value=""
                       />
@@ -282,7 +278,7 @@ exports[`/guidance/indevelopment should match the snapshot 1`] = `
                       data-component="button--primary"
                       type="submit"
                     >
-                      Filter
+                      Apply Filter
                     </button>
                   </div>
                   <div

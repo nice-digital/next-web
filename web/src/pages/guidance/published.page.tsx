@@ -68,8 +68,8 @@ export default getProductListPage({
 		</Breadcrumb>,
 	],
 	currentBreadcrumb: "Published",
-	preheading: "Published ",
-	heading: <>Guidance, NICE advice and quality&nbsp;standards</>,
+	preheading: "",
+	heading: <>Published: Guidance, quality&nbsp;standards and advice</>,
 	title: "Published guidance, NICE advice and quality standards | Guidance",
 	defaultSort: {
 		order: defaultSortOrder,

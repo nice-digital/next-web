@@ -129,7 +129,7 @@ export const SearchListFilters: FC<SearchListFiltersProps> = ({
 			<input type="hidden" name="s" value={sortOrder} />
 			{showTextFilter ? (
 				<InlineTextFilter
-					label="Filter by title or keyword"
+					label="Filter by word or reference number"
 					name="q"
 					defaultValue={queryText}
 					placeholder={searchInputPlaceholder}

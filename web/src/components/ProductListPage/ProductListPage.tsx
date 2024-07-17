@@ -35,6 +35,8 @@ import { SearchListFilters } from "@/components/SearchListFilters/SearchListFilt
 import { SearchPagination } from "@/components/SearchPagination/SearchPagination";
 import { SkipLink } from "@/components/SkipLink/SkipLink";
 
+import { basePath } from "next.config";
+
 import { ProductListFilterSummary } from "./ProductListFilterSummary/ProductListFilterSummary";
 import { defaultPageSize } from "./ProductListGetServerSideProps/ProductListGetServerSideProps";
 import styles from "./ProductListPage.module.scss";
@@ -244,16 +246,30 @@ export const getProductListPage =
 
 						{documents.length === 0 ? (
 							<p id="results">
-								We can&apos;t find any matching products. Try{" "}
-								<Link
-									to={
-										pathname +
-										(ps && Number(ps) != defaultPageSize ? `?ps=${ps}` : "")
-									}
-								>
-									clearing your filters
-								</Link>{" "}
-								and starting again.
+								Sorry, we haven’t found any results for you. You could try:
+								<ul>
+									<li>
+										Using the <Link href="/search">full site search</Link>.
+									</li>
+									<li>
+										<Link href="/guidance/conditions-and-diseases">
+											Browsing by topic
+										</Link>
+										. Our topic pages show all our guidance in a particular
+										area, such as specific conditions or healthcare settings.
+									</li>
+									<li>
+										<Link
+											to={
+												pathname +
+												(ps && Number(ps) != defaultPageSize ? `?ps=${ps}` : "")
+											}
+										>
+											Clearing your filters
+										</Link>{" "}
+										and starting again.
+									</li>
+								</ul>
 							</p>
 						) : (
 							<>
