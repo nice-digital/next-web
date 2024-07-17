@@ -176,7 +176,7 @@ export const getChapterContent = async (
 	return getFeedBodyCached<ChapterHTMLContent | null>(
 		cacheKeyPrefix,
 		chapterHref,
-		defaultTTL,
+		longTTL,
 		async () => {
 			const response = await getFeedBodyUnCached<
 				ChapterHTMLContent | ErrorResponse
@@ -202,7 +202,7 @@ export const getResourceDetail = async (
 	return getFeedBodyCached<ResourceDetail | null>(
 		cacheKeyPrefix,
 		href,
-		defaultTTL,
+		longTTL,
 		async () => {
 			const response = await getFeedBodyUnCached<
 				ResourceDetail | ErrorResponse
