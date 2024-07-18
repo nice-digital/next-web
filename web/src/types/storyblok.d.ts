@@ -19,6 +19,13 @@ export interface AccordionStoryblok {
   [k: string]: any;
 }
 
+export interface AccordionGroupStoryblok {
+	accordions: AccordionStoryblok[];
+	component: "accordionGroup";
+  _uid: string;
+  [k: string]: any;
+}
+
 export interface AssetStoryblok {
   alt?: string;
   copyright?: string;
