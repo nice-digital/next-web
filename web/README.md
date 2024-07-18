@@ -10,19 +10,23 @@
 <!-- DON'T EDIT THIS SECTION, INSTEAD RE-RUN doctoc TO UPDATE -->
 - [Stack](#stack)
 
-- [Stack](#stack)
-  - [Software](#software)
-  - [React and NextJS learning resources](#react-and-nextjs-learning-resources)
-  - [TypeScript path mapping](#typescript-path-mapping)
-  - [Logging](#logging)
-    - [RabbitMQ locally](#rabbitmq-locally)
-    - [Logging performance](#logging-performance)
-- [Config](#config)
-  - [Secrets](#secrets)
-- [:rocket: Set up](#rocket-set-up)
-- [Production hosting](#production-hosting)
-  - [NextJS server](#nextjs-server)
-  - [AWS EC2](#aws-ec2)
+- [Next Web](#next-web)
+	- [Stack](#stack)
+		- [Software](#software)
+		- [React and NextJS learning resources](#react-and-nextjs-learning-resources)
+		- [TypeScript path mapping](#typescript-path-mapping)
+		- [Logging](#logging)
+			- [RabbitMQ locally](#rabbitmq-locally)
+			- [Logging performance](#logging-performance)
+	- [Config](#config)
+		- [Secrets](#secrets)
+	- [:rocket: Set up](#rocket-set-up)
+	- [Production hosting](#production-hosting)
+		- [NextJS server](#nextjs-server)
+		- [AWS EC2](#aws-ec2)
+	- [Storyblok](#storyblok)
+		- [Updating types](#updating-types)
+		- [Syncing Types, Components, and Stories between Storyblok spaces](#syncing-types-components-and-stories-between-storyblok-spaces)
 
 <!-- END doctoc generated TOC please keep comment here to allow auto update -->
 </details>
@@ -45,7 +49,7 @@ Linting, code style and unit testing are all handled at the root of this reposit
 
 If you're new to React, then start with the [official tutorial](https://reactjs.org/tutorial/tutorial.html) before you learn NextJS.
 
-These resources area a great place to start learning NextJS:
+These resources are a a great place to start learning NextJS:
 
 - [The official interactive Next.js tutorial](https://nextjs.org/learn)
 - YouTube videos like:
@@ -158,3 +162,40 @@ This is a good, quick way to verify the production build works properly but it's
 [AWS EC2](https://aws.amazon.com/ec2/) Docker is a platform for developing, shipping, and running applications inside containers. AWS Elastic Container Service (ECS) is a fully managed container orchestration service that makes it easy to deploy, manage, and scale containerized applications using Docker. We use Docker containers hosted on AWS ECS to manage the deployment and scaling of our Next application in production, ensuring efficient resource utilization, process isolation, and seamless scaling across multiple instances. Terraform is used to automate the provisioning and deployment of our infrastructure on AWS, enabling consistent and repeatable deployments via Teamcity and Octopus Deploy.
 
 See the [aws](../aws) folder for more information.
+
+## Storyblok
+
+Storyblok is the CMS we use for our corporate content.
+
+### Updating types
+
+We can get updated Typescript types automatically using the Storyblok CLI. Running `npm run generate-sb-types` in the web folder will connect to our Storyblok instance and replace all the types in `/web/src/types/storyblok.d.ts`.
+
+Two things to bear in mind before you do this:
+
+1. You'll need to log in via the CLI, otherwise you'll get an error that you're not authorised. [Docs for installing the CLI, logging in and so on are here](https://www.storyblok.com/docs/Guides/command-line-interface). Sometimes you need to log out and in again, which is a bit annoying. If you're asked for a region when logging in, it's `eu`.
+
+2. You'll need to replace the two instances of {SPACE_ID} in the script with our actual Storyblok space ID, which isn't added to package.json for security reasons. There may be a better way to do this by reading it from our env vars, but for now this'll do.
+
+### Syncing Types, Components, and Stories between Storyblok spaces
+
+Use extreme caution when syncing between spaces as you can overwrite live content if you get the sync direction or space ids wrong.
+
+1. **Add Space IDs to environment variables:**
+   - Open your `.env.local` file.
+   - Add the space IDs from Storyblok using the following variable names:
+     - `LIVE_SPACE_ID`
+     - `ALPHA_SPACE_ID`
+     - `DEV_SANDBOX_SPACE_ID`
+
+   Example:
+   ```plaintext
+   LIVE_SPACE_ID=your_live_space_id
+   ALPHA_SPACE_ID=your_alpha_space_id
+   DEV_SANDBOX_SPACE_ID=your_dev_sandbox_space_id
+	 ```
+
+2. **Run the sync command**
+   - Navigate to the web directory
+   - Execute the sync command: npm run danger-storyblok-sync
+   - Follow the prompts in the terminal, double checking the sync direction, space ids and content to sync.

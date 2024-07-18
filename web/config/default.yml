@@ -1,3 +1,7 @@
+
+# !!! This approach is deprecated! We should start switching to using environment variables
+# !!! See the notice here: https://nextjs.org/docs/pages/api-reference/next-config-js/runtime-configuration
+
 # ! This is a PUBLIC repo so please don't put any sensitive info or secrets in here
 
 # ! This file contains default config values for both 'public' config (accessible to both client and server-side code) and 'server' config (server-only runtime config).
@@ -8,6 +12,8 @@ public:
   buildNumber: PLACEHOLDER
   # Name of the environment e.g. dev,test etc, used for logging to ELK
   environment: local
+  # Name of the environment for auth purposes
+  authEnvironment: "live"
   # The base part of the URL where the website it hosted e.g https://dev.nice.org.uk
   baseURL: http://localhost:4000
   # URL of the cookie banner script. It's config driven so we can point to the alpha CDN on non-live environments or even use localhost
@@ -25,6 +31,11 @@ public:
     defaultCacheHeader: public, s-max-age=300, max-age=120, stale-while-revalidate=1800
   jotForm:
     baseURL: https://nice.jotform.com
+  storyblok:
+    accessToken: SECRET
+    ocelotEndpoint:
+    enableRootCatchAll: false
+  denyRobots: false
 
 # ! This is a PUBLIC repo so please don't put any sensitive info or secrets in here
 # ! Use local-development.yml or local-development.json to override settings locally instead: https://edibleco.de/3dLJKiP

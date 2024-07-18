@@ -1,0 +1,13 @@
+@use '@nice-digital/nds-core/scss/media-queries';
+@use '@nice-digital/nds-core/scss/spacing';
+@use '@nice-digital/nds-core/scss/utils';
+
+.date {
+  margin-left: utils.rem(spacing.$medium);
+}
+
+.content {
+  @include media-queries.mq($from: md) {
+    max-width: 66%;
+  }
+}

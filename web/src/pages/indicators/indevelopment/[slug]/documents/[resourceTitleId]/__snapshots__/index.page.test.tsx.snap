@@ -123,25 +123,34 @@ exports[`[resourceTitleId].page DocumentsHTMLPage should match snapshot for main
 }
     </script>
     <div
-      class="page-header"
+      class="page-header "
       data-component="page-header"
       id="content-start"
     >
-      <h1
-        class="page-header__heading page-header__heading--alt"
+      <div
+        class="grid"
       >
-        Lu vipivotide tetraxetan for treating PSMA-positive hormone-relapsed metastatic prostate cancer after 2 or more therapies [ID3840]
-      </h1>
-      <ul
-        class="page-header__metadata"
-      >
-        <li>
-          In development GID-TA10730
-        </li>
-        <li>
-          Expected publication date: TBC
-        </li>
-      </ul>
+        <div
+          data-component="grid-item"
+          data-g="12 md:12"
+        >
+          <h1
+            class="page-header__heading page-header__heading--alt"
+          >
+            Lu vipivotide tetraxetan for treating PSMA-positive hormone-relapsed metastatic prostate cancer after 2 or more therapies [ID3840]
+          </h1>
+          <ul
+            class="page-header__metadata"
+          >
+            <li>
+              In development GID-TA10730
+            </li>
+            <li>
+              Expected publication date: TBC
+            </li>
+          </ul>
+        </div>
+      </div>
     </div>
     <nav
       class="horizontal-nav"
@@ -215,18 +224,6 @@ exports[`[resourceTitleId].page DocumentsHTMLPage should match snapshot for main
               <dt
                 class="visually-hidden"
               >
-                Type
-              </dt>
-              <dd>
-                Invitation to participate
-              </dd>
-            </div>
-            <div
-              class="card__metadatum"
-            >
-              <dt
-                class="visually-hidden"
-              >
                 Date
               </dt>
               <dd>
@@ -235,30 +232,6 @@ exports[`[resourceTitleId].page DocumentsHTMLPage should match snapshot for main
                 >
                   3 November 2021
                 </time>
-              </dd>
-            </div>
-            <div
-              class="card__metadatum"
-            >
-              <dt
-                class="visually-hidden"
-              >
-                File type
-              </dt>
-              <dd>
-                PDF
-              </dd>
-            </div>
-            <div
-              class="card__metadatum"
-            >
-              <dt
-                class="visually-hidden"
-              >
-                File size
-              </dt>
-              <dd>
-                169 kB
               </dd>
             </div>
           </dl>
@@ -298,18 +271,6 @@ exports[`[resourceTitleId].page DocumentsHTMLPage should match snapshot for main
               <dt
                 class="visually-hidden"
               >
-                Type
-              </dt>
-              <dd>
-                Invitation to participate
-              </dd>
-            </div>
-            <div
-              class="card__metadatum"
-            >
-              <dt
-                class="visually-hidden"
-              >
                 Date
               </dt>
               <dd>
@@ -318,30 +279,6 @@ exports[`[resourceTitleId].page DocumentsHTMLPage should match snapshot for main
                 >
                   3 November 2021
                 </time>
-              </dd>
-            </div>
-            <div
-              class="card__metadatum"
-            >
-              <dt
-                class="visually-hidden"
-              >
-                File type
-              </dt>
-              <dd>
-                PDF
-              </dd>
-            </div>
-            <div
-              class="card__metadatum"
-            >
-              <dt
-                class="visually-hidden"
-              >
-                File size
-              </dt>
-              <dd>
-                127 kB
               </dd>
             </div>
           </dl>
@@ -381,18 +318,6 @@ exports[`[resourceTitleId].page DocumentsHTMLPage should match snapshot for main
               <dt
                 class="visually-hidden"
               >
-                Type
-              </dt>
-              <dd>
-                Invitation to participate
-              </dd>
-            </div>
-            <div
-              class="card__metadatum"
-            >
-              <dt
-                class="visually-hidden"
-              >
                 Date
               </dt>
               <dd>
@@ -401,30 +326,6 @@ exports[`[resourceTitleId].page DocumentsHTMLPage should match snapshot for main
                 >
                   3 November 2021
                 </time>
-              </dd>
-            </div>
-            <div
-              class="card__metadatum"
-            >
-              <dt
-                class="visually-hidden"
-              >
-                File type
-              </dt>
-              <dd>
-                PDF
-              </dd>
-            </div>
-            <div
-              class="card__metadatum"
-            >
-              <dt
-                class="visually-hidden"
-              >
-                File size
-              </dt>
-              <dd>
-                555 kB
               </dd>
             </div>
           </dl>
@@ -464,18 +365,6 @@ exports[`[resourceTitleId].page DocumentsHTMLPage should match snapshot for main
               <dt
                 class="visually-hidden"
               >
-                Type
-              </dt>
-              <dd>
-                Invitation to participate
-              </dd>
-            </div>
-            <div
-              class="card__metadatum"
-            >
-              <dt
-                class="visually-hidden"
-              >
                 Date
               </dt>
               <dd>
@@ -484,30 +373,6 @@ exports[`[resourceTitleId].page DocumentsHTMLPage should match snapshot for main
                 >
                   22 September 2022
                 </time>
-              </dd>
-            </div>
-            <div
-              class="card__metadatum"
-            >
-              <dt
-                class="visually-hidden"
-              >
-                File type
-              </dt>
-              <dd>
-                PDF
-              </dd>
-            </div>
-            <div
-              class="card__metadatum"
-            >
-              <dt
-                class="visually-hidden"
-              >
-                File size
-              </dt>
-              <dd>
-                228 kB
               </dd>
             </div>
           </dl>

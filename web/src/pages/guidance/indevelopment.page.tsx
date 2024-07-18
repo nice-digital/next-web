@@ -81,7 +81,7 @@ export default getProductListPage({
 		label: "Title",
 	},
 	secondarySort: {
-		order: SortOrder.dateAscending,
+		order: SortOrder.dateDescending,
 		label: "Date",
 	},
 	showDateFilter: true,
