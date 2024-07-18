@@ -89,12 +89,29 @@ resource "aws_apigatewayv2_stage" "ocelot_cache_clear_stage" {
   stage_variables = {
     functionName = "NextWebOcelotCacheClear${var.environment == "" ? "" : "-${var.environment}"}"
   }
+	depends_on    = [
+    aws_cloudwatch_log_group.ocelot_cache_clear_log_group
+  ]
+	access_log_settings {
+    destination_arn = aws_cloudwatch_log_group.ocelot_cache_clear_log_group.arn
+    format          = "$context.identity.sourceIp [$context.requestTime] \"$context.httpMethod $context.protocol\" $context.status $context.responseLength $context.requestId"
+  }
 }
 
 data "aws_iam_policy_document" "invoke_function_policy_document" {
+	depends_on    = [
+    aws_cloudwatch_log_group.ocelot_cache_clear_log_group
+  ]
   statement {
     actions = ["lambda:InvokeFunction"]
     resources = ["arn:aws:lambda:eu-west-1:${var.aws_account_id}:function:NextWebOcelotCacheClear-${var.environment}"]
+  }
+  statement {
+    actions = [
+      "logs:CreateLogStream",
+      "logs:PutLogEvents"
+    ]
+    resources = ["${aws_cloudwatch_log_group.ocelot_cache_clear_log_group.arn}:*"]
   }
 }
 

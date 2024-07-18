@@ -29,10 +29,6 @@ provider "aws" {
 resource "aws_iam_role" "ocelot_cache_clear_role" {
   name        = "NextWebOcelotCacheClear"
   description = "Next Web Ocelot Cache Clear access to AWS services"
-
-  managed_policy_arns = [
-    "arn:aws:iam::aws:policy/CloudWatchLogsFullAccess"
-  ]
   assume_role_policy = jsonencode({
     Version = "2012-10-17",
     Statement = [{
