@@ -7,7 +7,7 @@ variable "aws_region" {
 }
 
 variable "aws_account_id" {
-	type = string
+  type = string
 }
 
 variable "token_url" {
