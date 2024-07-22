@@ -1,0 +1,8 @@
+environment     = "#{ocelot_cache_clear_environment}"
+aws_region      = "#{ocelot_cache_clear_aws_region}"
+aws_account_id  = "#{ocelot_cache_clear_aws_account_id}"
+token_url       = "#{ocelot_cache_clear_token_url}"
+client_id       = "#{ocelot_cache_clear_client_id}"
+client_secret   = "#{ocelot_cache_clear_client_secret}"
+scope           = "#{ocelot_cache_clear_scope}"
+cache_clear_url = "#{ocelot_cache_clear_cache_clear_url}"
