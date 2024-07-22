@@ -342,6 +342,12 @@ export type ContentPartList2 = {
 	};
 };
 
+export type ContentPart =
+	| UploadAndConvertContentPart
+	| EditableContentPart
+	| UploadContentPart
+	| ExternalUrlContentPart;
+
 export type RelatedResourceList = {
 	links: EmptySelfLinks;
 	embedded: {

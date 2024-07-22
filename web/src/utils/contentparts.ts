@@ -12,7 +12,10 @@ export function fetchAndMapContentParts<T>(
 	contentParts: [],
 	type: string
 ): T[] {
-	return contentParts
+	if (contentParts && contentParts.length>0) {
+		return contentParts
 		.filter((part) => part["type"] === type)
 		.map((part) => part as T);
+	}
+	return contentParts as T[];
 }

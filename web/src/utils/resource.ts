@@ -1,6 +1,7 @@
 import { IndevPanel, IndevResource, ProjectDetail } from "@/feeds/inDev/inDev";
 import {
 	BaseContentPart,
+	ContentPart,
 	EditableContentPart,
 	ExternalUrlContentPart,
 	FileContent,
@@ -180,63 +181,72 @@ export const findContentPartLinks = (
 	if (!resource.embedded.contentPartList2?.embedded.contentParts) return [];
 
 	const { contentParts } = resource.embedded.contentPartList2.embedded;
-	const contentPartsArray = [];
+	const contentPartsArray: ResourceLinkViewModel[] = [];
 
-	for (const part of contentParts) {
-		if (part["type"] == "UploadAndConvertContentPart") {
-			const uploadAndConvertContent: UploadAndConvertContentPart = part;
-
-			const content = {
-				title: uploadAndConvertContent.title,
-				href: `${productPath}/${resourceTypeSlug}/${slugify(
-					uploadAndConvertContent.title
-				)}-${resource.uid}-${uploadAndConvertContent.uid}`,
-				type: resource.resourceTypeName,
-			};
-			contentPartsArray.push(content);
-		} else if (part["type"] == "EditableContentPart") {
-			const editableContent: EditableContentPart = part;
-
-			const content = {
-				title: editableContent.title,
-				href: `${productPath}/${resourceTypeSlug}/${slugify(
-					editableContent.title
-				)}-${resource.uid}-${editableContent.uid}`,
-				type: resource.resourceTypeName,
-			};
-			contentPartsArray.push(content);
-		} else if (part["type"] == "UploadContentPart") {
-			const uploadContent: UploadContentPart = part;
-
-			const content = {
-				title: uploadContent.title,
-				href: `${productPath}/downloads/${productID.toUpperCase()}-${slugify(
-					uploadContent.title
-				)}-${resource.uid}-${uploadContent.uid}.${
-					uploadContent.embedded.file.fileName.split(".").slice(-1)[0]
-				}`,
-				fileSize: uploadContent.embedded.file.length,
-				fileTypeName: getFileTypeNameFromMime(
-					uploadContent.embedded.file.mimeType
-				),
-				date: resource.lastMajorModificationDate,
-				type: resource.resourceTypeName,
-			};
-			contentPartsArray.push(content);
-		} else if (part["type"] == "ExternalUrlContentPart") {
-			const externalLinkContent: ExternalUrlContentPart = part;
-
-			const content = {
-				title: externalLinkContent.title,
-				href: externalLinkContent.url,
-				type: resource.resourceTypeName,
-			};
-			contentPartsArray.push(content);
+	const processContentParts = (parts: ContentPart | ContentPart[]) => {
+		if (Array.isArray(parts)) {
+		  parts.forEach(part => {
+			const content = mapContentPartToLink(part, productID, productPath, resource, resourceTypeSlug);
+			if (content) contentPartsArray.push(content);
+		  });
+		} else {
+		  const content = mapContentPartToLink(parts, productID, productPath, resource, resourceTypeSlug);
+		  if (content) contentPartsArray.push(content);
 		}
-	}
+	  };
+
+	processContentParts(contentParts);
 
 	return contentPartsArray;
 };
+
+const mapContentPartToLink = (
+	part: ContentPart,
+	productID: string,
+	productPath: string,
+	resource: ResourceDetail,
+	resourceTypeSlug: ResourceTypeSlug
+  ): ResourceLinkViewModel | null => {
+	switch (part.type) {
+	  case "UploadAndConvertContentPart":
+		const uploadAndConvertContent = part as UploadAndConvertContentPart;
+		return {
+		  title: uploadAndConvertContent.title,
+		  href: `${productPath}/${resourceTypeSlug}/${slugify(uploadAndConvertContent.title)}-
+		  		${resource.uid}-${uploadAndConvertContent.uid}`,
+		  type: resource.resourceTypeName,
+		};
+	  case "EditableContentPart":
+		const editableContent = part as EditableContentPart;
+		return {
+		  title: editableContent.title,
+		  href: `${productPath}/${resourceTypeSlug}/${slugify(editableContent.title)}-
+		  		${resource.uid}-${editableContent.uid}`,
+		  type: resource.resourceTypeName,
+		};
+	  case "UploadContentPart":
+		const uploadContent = part as UploadContentPart;
+		return {
+		  title: uploadContent.title,
+		  href: `${productPath}/downloads/${productID.toUpperCase()}-
+		  		${slugify(uploadContent.title)}-${resource.uid}-
+				${uploadContent.uid}.${uploadContent.embedded.file.fileName.split('.').slice(-1)[0]}`,
+		  fileSize: uploadContent.embedded.file.length,
+		  fileTypeName: getFileTypeNameFromMime(uploadContent.embedded.file.mimeType),
+		  date: resource.lastMajorModificationDate,
+		  type: resource.resourceTypeName,
+		};
+	  case "ExternalUrlContentPart":
+		const externalLinkContent = part as ExternalUrlContentPart;
+		return {
+		  title: externalLinkContent.title,
+		  href: externalLinkContent.url,
+		  type: resource.resourceTypeName,
+		};
+	  default:
+		return null;
+	}
+  };
 
 export const isEvidenceUpdate = (resource: ResourceDetail): boolean =>
 	resource.resourceType === ResourceType.EvidenceUpdate;
