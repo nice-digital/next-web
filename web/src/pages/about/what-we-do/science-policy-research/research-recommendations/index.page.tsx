@@ -3,7 +3,7 @@ import { Document, SortOrder } from "@nice-digital/search-client";
 
 import {
 	getGetServerSidePropsFunc,
-	getProductListPage,
+	getProductListPage
 } from "@/components/ProductListPage/ProductListPage";
 import { ResponsiveDate } from "@/components/ResponsiveDate/ResponsiveDate";
 import { publicRuntimeConfig } from "@/config";
@@ -99,7 +99,7 @@ export default getProductListPage({
 	dateFilterLabel,
 	textFilterLabel,
 	tableBodyRender,
-	searchInputPlaceholder: "E.g. 'CG100/1' or 'diabetes'",
+	searchInputPlaceholder: "E.g. 'CG100-1' or 'diabetes'",
 });
 
 export const getServerSideProps = getGetServerSidePropsFunc({
