@@ -1,7 +1,7 @@
 import { useRouter } from "next/router";
 import { NextSeo } from "next-seo";
 import pluralize from "pluralize";
-import React, {
+import {
 	ElementType,
 	FC,
 	ReactChild,
@@ -12,19 +12,19 @@ import React, {
 } from "react";
 
 import {
-	Breadcrumbs,
 	Breadcrumb,
+	Breadcrumbs,
 	type BreadcrumbsProps,
 } from "@nice-digital/nds-breadcrumbs";
 import { Grid, GridItem } from "@nice-digital/nds-grid";
 import { PageHeader } from "@nice-digital/nds-page-header";
 import { Table } from "@nice-digital/nds-table";
 import {
+	Document,
+	removeQueryParam,
 	SearchResultsSuccess,
 	SortOrder,
-	Document,
 	upsertQueryParam,
-	removeQueryParam,
 } from "@nice-digital/search-client";
 
 import { Announcer } from "@/components/Announcer/Announcer";
@@ -181,16 +181,16 @@ export const getProductListPage =
 					preheading={preheading}
 					heading={heading}
 					id="content-start"
+					className={`page-header ${styles.pageHeader}`}
 					data-testid="content-start"
 					lead={
 						<>
 							<SkipLink targetId="filters">Skip to filters</SkipLink>
 							<SkipLink targetId="results">Skip to results</SkipLink>
+							{intro}
 						</>
 					}
 				/>
-
-				{intro}
 
 				<ListNavType />
 

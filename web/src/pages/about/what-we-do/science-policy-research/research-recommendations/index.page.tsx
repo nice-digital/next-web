@@ -65,24 +65,22 @@ export default getProductListPage({
 		</Breadcrumb>,
 	],
 	currentBreadcrumb: "Research recommendations",
-	preheading: "Published",
-	heading: <>Research recommendations</>,
+	preheading: "",
+	heading: <>Published: Research recommendations</>,
 	intro: (
 		<>
-			<p className="lead">
-				As we develop guidance, we identify gaps, uncertainties or conflicts in
-				the existing evidence base which could benefit from further research.
-				The most important unanswered questions are developed into research
-				recommendations.
-			</p>
-			<p className="lead">
-				Read our{" "}
-				<a href="https://www.nice.org.uk/process/pmg45">
-					research recommendations process and methods guide
-				</a>
-				. For more information email{" "}
-				<a href="mailto:research@nice.org.uk">research@nice.org.uk</a>.
-			</p>
+			As we develop guidance, we identify gaps, uncertainties or conflicts in
+			the existing evidence base which could benefit from further research. The
+			most important unanswered questions are developed into research
+			recommendations.
+			<br />
+			<br />
+			Read our{" "}
+			<a href="https://www.nice.org.uk/process/pmg45">
+				research recommendations process and methods guide
+			</a>
+			. For more information email{" "}
+			<a href="mailto:research@nice.org.uk">research@nice.org.uk</a>.
 		</>
 	),
 	title: "Research recommendations | NICE",
