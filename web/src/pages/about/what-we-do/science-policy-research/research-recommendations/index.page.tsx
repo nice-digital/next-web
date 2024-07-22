@@ -3,7 +3,7 @@ import { Document, SortOrder } from "@nice-digital/search-client";
 
 import {
 	getGetServerSidePropsFunc,
-	getProductListPage
+	getProductListPage,
 } from "@/components/ProductListPage/ProductListPage";
 import { ResponsiveDate } from "@/components/ResponsiveDate/ResponsiveDate";
 import { publicRuntimeConfig } from "@/config";
