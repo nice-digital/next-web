@@ -14,6 +14,16 @@ terraform {
       version = "3.6.0"
     }
   }
+#  backend "s3" {
+#    bucket = "next-web-ocelot-cache-clear-tfstate"
+#    key    = "test.tfstate"
+#    region = "eu-west-1"
+#  }
+  backend "s3" {
+    bucket = "#{terraform_base_backend_s3bucket}"
+    key    = "#{terraform_base_backend_statefolder}"
+    region = "#{terraform_base_backend_region}"
+  }
 }
 
 provider "aws" {
