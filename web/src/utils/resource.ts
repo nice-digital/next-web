@@ -185,15 +185,27 @@ export const findContentPartLinks = (
 
 	const processContentParts = (parts: ContentPart | ContentPart[]) => {
 		if (Array.isArray(parts)) {
-		  parts.forEach(part => {
-			const content = mapContentPartToLink(part, productID, productPath, resource, resourceTypeSlug);
-			if (content) contentPartsArray.push(content);
-		  });
+			parts.forEach((part) => {
+				const content = mapContentPartToLink(
+					part,
+					productID,
+					productPath,
+					resource,
+					resourceTypeSlug
+				);
+				if (content) contentPartsArray.push(content);
+			});
 		} else {
-		  const content = mapContentPartToLink(parts, productID, productPath, resource, resourceTypeSlug);
-		  if (content) contentPartsArray.push(content);
+			const content = mapContentPartToLink(
+				parts,
+				productID,
+				productPath,
+				resource,
+				resourceTypeSlug
+			);
+			if (content) contentPartsArray.push(content);
 		}
-	  };
+	};
 
 	processContentParts(contentParts);
 
@@ -206,51 +218,57 @@ const mapContentPartToLink = (
 	productPath: string,
 	resource: ResourceDetail,
 	resourceTypeSlug: ResourceTypeSlug
-  ): ResourceLinkViewModel | null => {
+): ResourceLinkViewModel | null => {
 	switch (part.type) {
-	  case "UploadAndConvertContentPart":
-		const uploadAndConvertContent = part as UploadAndConvertContentPart;
-		return {
-		  title: uploadAndConvertContent.title,
-		  href: `${productPath}/${resourceTypeSlug}/${slugify(
-						uploadAndConvertContent.title
-					)}-${resource.uid}-${uploadAndConvertContent.uid}`,
-		  type: resource.resourceTypeName,
-		};
-	  case "EditableContentPart":
-		const editableContent = part as EditableContentPart;
-		return {
-		  title: editableContent.title,
-		  href: `${productPath}/${resourceTypeSlug}/${slugify(
-						editableContent.title
-					)}-${resource.uid}-${editableContent.uid}`,
-		  type: resource.resourceTypeName,
-		};
-	  case "UploadContentPart":
-		const uploadContent = part as UploadContentPart;
-		return {
-		  title: uploadContent.title,
-		  href: `${productPath}/downloads/${productID.toUpperCase()}-${slugify(
-						uploadContent.title
-					)}-${resource.uid}-${uploadContent.uid}.${
-						uploadContent.embedded.file.fileName.split(".").slice(-1)[0]
-					}`,
-		  fileSize: uploadContent.embedded.file.length,
-		  fileTypeName: getFileTypeNameFromMime(uploadContent.embedded.file.mimeType),
-		  date: resource.lastMajorModificationDate,
-		  type: resource.resourceTypeName,
-		};
-	  case "ExternalUrlContentPart":
-		const externalLinkContent = part as ExternalUrlContentPart;
-		return {
-		  title: externalLinkContent.title,
-		  href: externalLinkContent.url,
-		  type: resource.resourceTypeName,
-		};
-	  default:
-		return null;
+		case "UploadAndConvertContentPart": {
+			const uploadAndConvertContent: UploadAndConvertContentPart = part;
+			return {
+				title: uploadAndConvertContent.title,
+				href: `${productPath}/${resourceTypeSlug}/${slugify(
+					uploadAndConvertContent.title
+				)}-${resource.uid}-${uploadAndConvertContent.uid}`,
+				type: resource.resourceTypeName,
+			};
+		}
+		case "EditableContentPart": {
+			const editableContent = part as EditableContentPart;
+			return {
+				title: editableContent.title,
+				href: `${productPath}/${resourceTypeSlug}/${slugify(
+					editableContent.title
+				)}-${resource.uid}-${editableContent.uid}`,
+				type: resource.resourceTypeName,
+			};
+		}
+		case "UploadContentPart": {
+			const uploadContent = part as UploadContentPart;
+			return {
+				title: uploadContent.title,
+				href: `${productPath}/downloads/${productID.toUpperCase()}-${slugify(
+					uploadContent.title
+				)}-${resource.uid}-${uploadContent.uid}.${
+					uploadContent.embedded.file.fileName.split(".").slice(-1)[0]
+				}`,
+				fileSize: uploadContent.embedded.file.length,
+				fileTypeName: getFileTypeNameFromMime(
+					uploadContent.embedded.file.mimeType
+				),
+				date: resource.lastMajorModificationDate,
+				type: resource.resourceTypeName,
+			};
+		}
+		case "ExternalUrlContentPart": {
+			const externalLinkContent = part as ExternalUrlContentPart;
+			return {
+				title: externalLinkContent.title,
+				href: externalLinkContent.url,
+				type: resource.resourceTypeName,
+			};
+		}
+		default:
+			return null;
 	}
-  };
+};
 
 export const isEvidenceUpdate = (resource: ResourceDetail): boolean =>
 	resource.resourceType === ResourceType.EvidenceUpdate;
