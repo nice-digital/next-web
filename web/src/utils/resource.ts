@@ -212,25 +212,29 @@ const mapContentPartToLink = (
 		const uploadAndConvertContent = part as UploadAndConvertContentPart;
 		return {
 		  title: uploadAndConvertContent.title,
-		  href: `${productPath}/${resourceTypeSlug}/${slugify(uploadAndConvertContent.title)}-
-		  		${resource.uid}-${uploadAndConvertContent.uid}`,
+		  href: `${productPath}/${resourceTypeSlug}/${slugify(
+						uploadAndConvertContent.title
+					)}-${resource.uid}-${uploadAndConvertContent.uid}`,
 		  type: resource.resourceTypeName,
 		};
 	  case "EditableContentPart":
 		const editableContent = part as EditableContentPart;
 		return {
 		  title: editableContent.title,
-		  href: `${productPath}/${resourceTypeSlug}/${slugify(editableContent.title)}-
-		  		${resource.uid}-${editableContent.uid}`,
+		  href: `${productPath}/${resourceTypeSlug}/${slugify(
+						editableContent.title
+					)}-${resource.uid}-${editableContent.uid}`,
 		  type: resource.resourceTypeName,
 		};
 	  case "UploadContentPart":
 		const uploadContent = part as UploadContentPart;
 		return {
 		  title: uploadContent.title,
-		  href: `${productPath}/downloads/${productID.toUpperCase()}-
-		  		${slugify(uploadContent.title)}-${resource.uid}-
-				${uploadContent.uid}.${uploadContent.embedded.file.fileName.split('.').slice(-1)[0]}`,
+		  href: `${productPath}/downloads/${productID.toUpperCase()}-${slugify(
+						uploadContent.title
+					)}-${resource.uid}-${uploadContent.uid}.${
+						uploadContent.embedded.file.fileName.split(".").slice(-1)[0]
+					}`,
 		  fileSize: uploadContent.embedded.file.length,
 		  fileTypeName: getFileTypeNameFromMime(uploadContent.embedded.file.mimeType),
 		  date: resource.lastMajorModificationDate,
