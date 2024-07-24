@@ -20,9 +20,9 @@ terraform {
 #    region = "eu-west-1"
 #  }
   backend "s3" {
-    bucket = "#{cache_clear_base_backend_s3bucket}"
-    key    = "#{cache_clear_base_backend_statefolder}"
-    region = "#{cache_clear_base_backend_region}"
+    bucket = "#{cache_clear_backend_s3bucket}"
+    key    = "#{cache_clear_backend_statefolder}"
+    region = "#{cache_clear_backend_region}"
   }
 }
 
