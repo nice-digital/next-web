@@ -7,13 +7,26 @@ describe("product utils", () => {
 		"ind1001-test-indicator-ind-1001-the-percentage-of-patients-with-one-or-more-of-the-following-conditions-chd-atrial-fibrillation-chronic-heart-failure-stroke-or-tia-diabetes-or-dementia-with-a-fast-score-of-3-or-more-or-audit-c-score-of-5-or-more-in-the-preceding-2-years-who-have-received-brief-intervention-to-help-them-reduce-their-alcohol-related-risk-within-3-months-of-the-score-being-recorded";
 
 	describe("getChapterLinks", () => {
+		it("should have no chapters when there's no contentPartList", () => {
+			const chapterLinks = getChapterLinks(
+				{
+					id: "IND1",
+					title: "Test indicator",
+					embedded: {},
+				} as ProductDetail,
+				ProductGroup.Other
+			);
+
+			expect(chapterLinks).toStrictEqual([]);
+		});
+
 		it("should have no chapters when there's no upload and convert parts", () => {
 			const chapterLinks = getChapterLinks(
 				{
 					id: "IND1",
 					title: "Test indicator",
 					embedded: {
-						contentPartList: {
+						contentPartList2: {
 							embedded: {},
 						},
 					},
@@ -32,9 +45,9 @@ describe("product utils", () => {
 					productType: "NG",
 					summary: "Some overview text",
 					embedded: {
-						contentPartList: {
+						contentPartList2: {
 							embedded: {
-								uploadAndConvertContentPart: [
+								contentParts: [
 									{
 										embedded: {
 											htmlContent: {
@@ -48,6 +61,7 @@ describe("product utils", () => {
 												},
 											},
 										},
+										type: "UploadAndConvertContentPart",
 									},
 								],
 							},
@@ -77,9 +91,9 @@ describe("product utils", () => {
 					productType: "IND",
 					summary: "Some overview text",
 					embedded: {
-						contentPartList: {
+						contentPartList2: {
 							embedded: {
-								uploadAndConvertContentPart: [
+								contentParts: [
 									{
 										embedded: {
 											htmlContent: {
@@ -97,6 +111,7 @@ describe("product utils", () => {
 												},
 											},
 										},
+										type: "UploadAndConvertContentPart",
 									},
 								],
 							},
@@ -126,9 +141,9 @@ describe("product utils", () => {
 					productType: "IND",
 					summary: null,
 					embedded: {
-						contentPartList: {
+						contentPartList2: {
 							embedded: {
-								uploadAndConvertContentPart: [
+								contentParts: [
 									{
 										embedded: {
 											htmlContent: {
@@ -146,6 +161,7 @@ describe("product utils", () => {
 												},
 											},
 										},
+										type: "UploadAndConvertContentPart",
 									},
 									{},
 								],
