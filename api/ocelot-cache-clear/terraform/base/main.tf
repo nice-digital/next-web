@@ -14,11 +14,11 @@ terraform {
       version = "3.6.0"
     }
   }
-#  backend "s3" {
-#    bucket = "next-web-ocelot-cache-clear-tfstate"
-#    key    = "base.tfstate"
-#    region = "eu-west-1"
-#  }
+  #  backend "s3" {
+  #    bucket = "next-web-ocelot-cache-clear-tfstate"
+  #    key    = "base.tfstate"
+  #    region = "eu-west-1"
+  #  }
   backend "s3" {
     bucket = "#{cache_clear_base_backend_s3bucket}"
     key    = "#{cache_clear_base_backend_statefolder}"
