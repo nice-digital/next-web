@@ -101,7 +101,7 @@ Ocelot is a modified .Netcore Web Application pipeline. Each component of the pi
 
 1. Refresh cache using a header - this allows us to refresh the cache from a simple https request without waiting for the TTL to run out. This can be trigged internally by using the internal [Task Scheduler](#task-scheduler) or by simply making a http request with the correct header
 2. Don't cache errors (or anything other than status 200) - if a request fails then the resulting error content isn't stored in the cache. This means that the last known good content is always served from cache.
-n
+
 ### Clearing the Cache
 
 If someone wants to see immediate changes to a document they are working on, they can hit a special URL to clear the cache. This URL will take the form of http://fill-in-url-when-known/{environment}
