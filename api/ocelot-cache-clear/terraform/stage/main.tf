@@ -118,7 +118,7 @@ data "aws_iam_policy_document" "invoke_function_policy_document" {
   ]
   statement {
     actions   = ["lambda:InvokeFunction"]
-    resources = ["arn:aws:lambda:${var.aws_region}}:${var.aws_account_id}:function:NextWebOcelotCacheClear-${var.environment}"]
+    resources = ["arn:aws:lambda:${var.aws_region}:${var.aws_account_id}:function:NextWebOcelotCacheClear-${var.environment}"]
   }
   statement {
     actions = [
