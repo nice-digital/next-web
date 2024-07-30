@@ -19,6 +19,7 @@
   - [X-CacheManager-RefreshCache Header](#x-cachemanager-refreshcache-header)
   - [Route config](#route-config)
   - [Ocelot Pipeline](#ocelot-pipeline)
+	- [Clearing the Cache](#clearing-the-cache)
   - [Redis cached content keys](#redis-cached-content-keys)
     - [Redis Key naming](#redis-key-naming)
     - [Key Generation Admin tool](#key-generation-admin-tool)
@@ -100,6 +101,19 @@ Ocelot is a modified .Netcore Web Application pipeline. Each component of the pi
 
 1. Refresh cache using a header - this allows us to refresh the cache from a simple https request without waiting for the TTL to run out. This can be trigged internally by using the internal [Task Scheduler](#task-scheduler) or by simply making a http request with the correct header
 2. Don't cache errors (or anything other than status 200) - if a request fails then the resulting error content isn't stored in the cache. This means that the last known good content is always served from cache.
+n
+### Clearing the Cache
+
+If someone wants to see immediate changes to a document they are working on, they can hit a special URL to clear the cache. This URL will take the form of http://fill-in-url-when-known/{environment}
+
+So:
+http://fill-in-url-when-known/test
+http://fill-in-url-when-known/alpha
+
+And just a URL with no route for live
+http://fill-in-url-when-known
+
+This is create using a terraform script which is built into the CI pipeline alongside ocelot itself. You can find the terraform modules in the ocelot-cache-clear folder. There are two modules, one for the single API gateway and another for the stages (test/alpha/beta/live/etc...). They are protected by state files which are stored in an s3 bucket called next-web-ocelot-cache-clear-terraform-backend there is one file for the API base and another for the stages.
 
 ### Redis cached content keys
 
