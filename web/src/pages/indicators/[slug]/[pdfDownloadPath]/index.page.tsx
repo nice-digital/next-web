@@ -1,6 +1,10 @@
 import { GetServerSideProps } from "next/types";
 
-import { getFileStream } from "@/feeds/publications/publications";
+import {
+	UploadAndConvertContentPart,
+	getFileStream,
+} from "@/feeds/publications/publications";
+import { fetchAndMapContentParts } from "@/utils/contentparts";
 import { validateRouteParams } from "@/utils/product";
 import { getServerSidePDF } from "@/utils/response";
 
@@ -20,7 +24,8 @@ export const getServerSideProps: GetServerSideProps<
 
 	const { product, pdfDownloadPath, actualPath } = result;
 
-	if (!product.embedded.contentPartList) return { notFound: true };
+	if (!product.embedded.contentPartList2?.embedded.contentParts)
+		return { notFound: true };
 
 	if (!pdfDownloadPath)
 		return {
@@ -35,8 +40,13 @@ export const getServerSideProps: GetServerSideProps<
 			},
 		};
 
-	const { uploadAndConvertContentPart } =
-			product.embedded.contentPartList.embedded,
+	const { contentParts } = product.embedded.contentPartList2.embedded;
+
+	const uploadAndConvertContentPart =
+			fetchAndMapContentParts<UploadAndConvertContentPart>(
+				contentParts,
+				"UploadAndConvertContentPart"
+			),
 		part = Array.isArray(uploadAndConvertContentPart)
 			? uploadAndConvertContentPart[0]
 			: uploadAndConvertContentPart;

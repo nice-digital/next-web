@@ -26,12 +26,15 @@ describe("resource utils", () => {
 						"/guidance/ng100",
 						{
 							embedded: {
-								contentPartList: {
+								contentPartList2: {
 									embedded: {
-										editableContentPart: {
-											title: "Test title",
-											uid: 123,
-										},
+										contentParts: [
+											{
+												title: "Test title",
+												uid: 123,
+												type: "EditableContentPart",
+											},
+										],
 									},
 								},
 							},
@@ -55,16 +58,18 @@ describe("resource utils", () => {
 						"/guidance/ng100",
 						{
 							embedded: {
-								contentPartList: {
+								contentPartList2: {
 									embedded: {
-										editableContentPart: [
+										contentParts: [
 											{
 												title: "Part 1",
 												uid: 123,
+												type: "EditableContentPart",
 											},
 											{
 												title: "Part 2",
 												uid: 456,
+												type: "EditableContentPart",
 											},
 										],
 									},
@@ -97,12 +102,15 @@ describe("resource utils", () => {
 						"/guidance/ng100",
 						{
 							embedded: {
-								contentPartList: {
+								contentPartList2: {
 									embedded: {
-										externalUrlContentPart: {
-											title: "Test title",
-											url: "https://someurl.com",
-										},
+										contentParts: [
+											{
+												title: "Test title",
+												url: "https://someurl.com",
+												type: "ExternalUrlContentPart",
+											},
+										],
 									},
 								},
 							},
@@ -121,16 +129,18 @@ describe("resource utils", () => {
 						"/guidance/ng100",
 						{
 							embedded: {
-								contentPartList: {
+								contentPartList2: {
 									embedded: {
-										externalUrlContentPart: [
+										contentParts: [
 											{
 												title: "Link 1",
 												url: "https://link1.com",
+												type: "ExternalUrlContentPart",
 											},
 											{
 												title: "Link 2",
 												url: "https://link2.com",
+												type: "ExternalUrlContentPart",
 											},
 										],
 									},
@@ -154,12 +164,15 @@ describe("resource utils", () => {
 						"/guidance/ng100",
 						{
 							embedded: {
-								contentPartList: {
+								contentPartList2: {
 									embedded: {
-										uploadAndConvertContentPart: {
-											title: "Test title",
-											uid: 123,
-										},
+										contentParts: [
+											{
+												title: "Test title",
+												uid: 123,
+												type: "UploadAndConvertContentPart",
+											},
+										],
 									},
 								},
 							},
@@ -183,16 +196,18 @@ describe("resource utils", () => {
 						"/guidance/ng100",
 						{
 							embedded: {
-								contentPartList: {
+								contentPartList2: {
 									embedded: {
-										uploadAndConvertContentPart: [
+										contentParts: [
 											{
 												title: "Part 1",
 												uid: 123,
+												type: "UploadAndConvertContentPart",
 											},
 											{
 												title: "Part 2",
 												uid: 456,
+												type: "UploadAndConvertContentPart",
 											},
 										],
 									},
@@ -225,19 +240,22 @@ describe("resource utils", () => {
 						"/guidance/ng100",
 						{
 							embedded: {
-								contentPartList: {
+								contentPartList2: {
 									embedded: {
-										uploadContentPart: {
-											title: "Test title",
-											uid: 123,
-											embedded: {
-												file: {
-													fileName: "any thing.xls",
-													length: 12345,
-													mimeType: "application/vnd.ms-excel",
+										contentParts: [
+											{
+												title: "Test title",
+												uid: 123,
+												embedded: {
+													file: {
+														fileName: "any thing.xls",
+														length: 12345,
+														mimeType: "application/vnd.ms-excel",
+													},
 												},
+												type: "UploadContentPart",
 											},
-										},
+										],
 									},
 								},
 							},
@@ -265,9 +283,9 @@ describe("resource utils", () => {
 						"/guidance/ng100",
 						{
 							embedded: {
-								contentPartList: {
+								contentPartList2: {
 									embedded: {
-										uploadContentPart: [
+										contentParts: [
 											{
 												title: "Part 1",
 												uid: 123,
@@ -278,6 +296,7 @@ describe("resource utils", () => {
 														mimeType: "application/vnd.ms-excel",
 													},
 												},
+												type: "UploadContentPart",
 											},
 											{
 												title: "Part 2",
@@ -289,6 +308,7 @@ describe("resource utils", () => {
 														mimeType: "application/pdf",
 													},
 												},
+												type: "UploadContentPart",
 											},
 										],
 									},
@@ -314,6 +334,144 @@ describe("resource utils", () => {
 						date: "2017-05-10T00:00:00",
 						fileTypeName: "PDF",
 						fileSize: 2468,
+						type: undefined,
+					},
+				]);
+			});
+		});
+
+		describe("Order of content parts", () => {
+			it("should not find content part list", () => {
+				expect(
+					findContentPartLinks(
+						"NG100",
+						"/guidance/ng100",
+						{
+							embedded: {},
+							uid: 99,
+						} as ResourceDetail,
+						ResourceTypeSlug.ToolsAndResources
+					)
+				).toStrictEqual([]);
+			});
+
+			it("should not find content parts", () => {
+				expect(
+					findContentPartLinks(
+						"NG100",
+						"/guidance/ng100",
+						{
+							embedded: {
+								contentPartList2: {
+									embedded: {},
+								},
+							},
+							uid: 99,
+						} as ResourceDetail,
+						ResourceTypeSlug.ToolsAndResources
+					)
+				).toStrictEqual([]);
+			});
+
+			it("should find single content part", () => {
+				expect(
+					findContentPartLinks(
+						"NG100",
+						"/guidance/ng100",
+						{
+							embedded: {
+								contentPartList2: {
+									embedded: {
+										contentParts: [
+											{
+												title: "Content part title",
+												uid: 123,
+												type: "EditableContentPart",
+											},
+										],
+									},
+								},
+							},
+							uid: 99,
+						} as ResourceDetail,
+						ResourceTypeSlug.ToolsAndResources
+					)
+				).toStrictEqual([
+					{
+						href: "/guidance/ng100/resources/content-part-title-99-123",
+						title: "Content part title",
+						type: undefined,
+					},
+				]);
+			});
+
+			it("should find multiple ordered content parts", () => {
+				expect(
+					findContentPartLinks(
+						"NG100",
+						"/guidance/ng100",
+						{
+							embedded: {
+								contentPartList2: {
+									embedded: {
+										contentParts: [
+											{
+												title: "Content Part 1",
+												uid: 123,
+												type: "EditableContentPart",
+											},
+											{
+												title: "Content Part 2",
+												uid: 456,
+												type: "UploadAndConvertContentPart",
+											},
+											{
+												title: "Content Link 1",
+												url: "https://link1.com",
+												type: "ExternalUrlContentPart",
+											},
+											{
+												title: "Content Part 4",
+												uid: 678,
+												type: "EditableContentPart",
+											},
+											{
+												title: "Content Link 2",
+												url: "https://link2.com",
+												type: "ExternalUrlContentPart",
+											},
+										],
+									},
+								},
+							},
+							uid: 99,
+						} as ResourceDetail,
+						ResourceTypeSlug.Evidence
+					)
+				).toStrictEqual([
+					{
+						href: "/guidance/ng100/evidence/content-part-1-99-123",
+						title: "Content Part 1",
+						type: undefined,
+					},
+					{
+						href: "/guidance/ng100/evidence/content-part-2-99-456",
+						title: "Content Part 2",
+						type: undefined,
+					},
+					{
+						href: "https://link1.com",
+						title: "Content Link 1",
+						type: undefined,
+					},
+					{
+						href: "/guidance/ng100/evidence/content-part-4-99-678",
+						title: "Content Part 4",
+						type: undefined,
+					},
+					{
+						href: "https://link2.com",
+						title: "Content Link 2",
 						type: undefined,
 					},
 				]);
@@ -368,16 +526,18 @@ describe("resource utils", () => {
 						{
 							resourceTypeName: "First group",
 							embedded: {
-								contentPartList: {
+								contentPartList2: {
 									embedded: {
-										externalUrlContentPart: [
+										contentParts: [
 											{
 												title: "First group link 1",
 												url: "https://firstgrouplink1.com",
+												type: "ExternalUrlContentPart",
 											},
 											{
 												title: "First group link 2",
 												url: "https://firstgrouplink2.com",
+												type: "ExternalUrlContentPart",
 											},
 										],
 									},
@@ -387,12 +547,13 @@ describe("resource utils", () => {
 						{
 							resourceTypeName: "Second group",
 							embedded: {
-								contentPartList: {
+								contentPartList2: {
 									embedded: {
-										externalUrlContentPart: [
+										contentParts: [
 											{
 												title: "Second group link 1",
 												url: "https://secondgrouplink1.com",
+												type: "ExternalUrlContentPart",
 											},
 										],
 									},
@@ -402,12 +563,13 @@ describe("resource utils", () => {
 						{
 							resourceTypeName: "First group",
 							embedded: {
-								contentPartList: {
+								contentPartList2: {
 									embedded: {
-										externalUrlContentPart: [
+										contentParts: [
 											{
 												title: "First group link 3",
 												url: "https://firstgrouplink3.com",
+												type: "ExternalUrlContentPart",
 											},
 										],
 									},
@@ -465,16 +627,18 @@ describe("resource utils", () => {
 						{
 							resourceTypeName: "First group",
 							embedded: {
-								contentPartList: {
+								contentPartList2: {
 									embedded: {
-										externalUrlContentPart: [
+										contentParts: [
 											{
 												title: "First group link 1",
 												url: "https://firstgrouplink1.com",
+												type: "ExternalUrlContentPart",
 											},
 											{
 												title: "First group link 2",
 												url: "https://firstgrouplink2.com",
+												type: "ExternalUrlContentPart",
 											},
 										],
 									},
@@ -484,12 +648,13 @@ describe("resource utils", () => {
 						{
 							resourceTypeName: "Second group",
 							embedded: {
-								contentPartList: {
+								contentPartList2: {
 									embedded: {
-										externalUrlContentPart: [
+										contentParts: [
 											{
 												title: "Second group link 1",
 												url: "https://secondgrouplink1.com",
+												type: "ExternalUrlContentPart",
 											},
 										],
 									},
@@ -499,12 +664,13 @@ describe("resource utils", () => {
 						{
 							resourceTypeName: "First group",
 							embedded: {
-								contentPartList: {
+								contentPartList2: {
 									embedded: {
-										externalUrlContentPart: [
+										contentParts: [
 											{
 												title: "First group link 3",
 												url: "https://firstgrouplink3.com",
+												type: "ExternalUrlContentPart",
 											},
 										],
 									},
@@ -577,7 +743,7 @@ describe("resource utils", () => {
 					findDownloadable(
 						{
 							embedded: {
-								contentPartList: {
+								contentPartList2: {
 									embedded: {},
 								},
 							},
@@ -594,11 +760,14 @@ describe("resource utils", () => {
 					findDownloadable(
 						{
 							embedded: {
-								contentPartList: {
+								contentPartList2: {
 									embedded: {
-										uploadContentPart: {
-											uid: 987,
-										},
+										contentParts: [
+											{
+												uid: 987,
+												type: "UploadContentPart",
+											},
+										],
 									},
 								},
 							},
@@ -617,14 +786,15 @@ describe("resource utils", () => {
 						file,
 					},
 					uid: 123,
+					type: "UploadContentPart",
 				};
 				expect(
 					findDownloadable(
 						{
 							embedded: {
-								contentPartList: {
+								contentPartList2: {
 									embedded: {
-										uploadContentPart: part,
+										contentParts: [part],
 									},
 								},
 							},
@@ -641,11 +811,14 @@ describe("resource utils", () => {
 					findDownloadable(
 						{
 							embedded: {
-								contentPartList: {
+								contentPartList2: {
 									embedded: {
-										editableContentPart: {
-											uid: 987,
-										},
+										contentParts: [
+											{
+												uid: 987,
+												type: "EditableContentPart",
+											},
+										],
 									},
 								},
 							},
@@ -664,14 +837,15 @@ describe("resource utils", () => {
 						pdfFile,
 					},
 					uid: 123,
+					type: "EditableContentPart",
 				};
 				expect(
 					findDownloadable(
 						{
 							embedded: {
-								contentPartList: {
+								contentPartList2: {
 									embedded: {
-										editableContentPart: part,
+										contentParts: [part],
 									},
 								},
 							},
@@ -688,11 +862,14 @@ describe("resource utils", () => {
 					findDownloadable(
 						{
 							embedded: {
-								contentPartList: {
+								contentPartList2: {
 									embedded: {
-										uploadAndConvertContentPart: {
-											uid: 987,
-										},
+										contentParts: [
+											{
+												uid: 987,
+												type: "UploadAndConvertContentPart",
+											},
+										],
 									},
 								},
 							},
@@ -717,14 +894,15 @@ describe("resource utils", () => {
 							[filePropertyName]: file,
 						} as unknown as UploadAndConvertContentPart["embedded"],
 						uid: 123,
+						type: "UploadAndConvertContentPart",
 					};
 					expect(
 						findDownloadable(
 							{
 								embedded: {
-									contentPartList: {
+									contentPartList2: {
 										embedded: {
-											uploadAndConvertContentPart: part,
+											contentParts: [part],
 										},
 									},
 								},

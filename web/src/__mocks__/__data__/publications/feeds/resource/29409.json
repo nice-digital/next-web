@@ -108,6 +108,51 @@
         }
       },
       "ETag": null
+    },
+    "nice.publications:content-part-list2": {
+      "_links": { "self": [{}] },
+      "_embedded": {
+        "nice.publications:content-parts": [
+            {
+              "_links": { "self": [{}] },
+              "_embedded": {
+              "nice.publications:html-content": {
+                "_links": {
+                "self": [
+                  { "href": "/feeds/supportingresource/29409/content/1/html" }
+                ]
+                },
+                "ETag": null,
+                "Reference": "29409",
+                "PartId": 1
+              },
+              "nice.publications:pdf-file": {
+                "_links": {
+                "self": [
+                  {
+                  "href": "/feeds/downloads/2d345860-3c0e-45f5-ac29-1acd6771a2fc"
+                  }
+                ]
+                },
+                "ETag": null,
+                "Id": "2d345860-3c0e-45f5-ac29-1acd6771a2fc",
+                "MimeType": "application/pdf",
+                "FileName": "resource-impact-statement.pdf",
+                "Length": 40258,
+                "Hash": "39A7A1BB2D285CED4D19A26BCAAB316334269039",
+                "Name": "default",
+                "Uid": 6356219492293
+              }
+              },
+              "ETag": null,
+              "Title": "Resource impact statement",
+              "Type": "EditableContentPart",
+              "Uid": 4904490349,
+              "LegacyId": null
+            }
+          ]
+        },
+        "ETag": null
     }
   },
   "ETag": "01000000-0000-0001-0000-00000000D665",
