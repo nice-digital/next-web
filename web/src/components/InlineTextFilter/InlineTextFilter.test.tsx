@@ -4,18 +4,26 @@ import { InlineTextFilter } from "./InlineTextFilter";
 
 describe("InlineTextFilter", () => {
 	it("should render label with given text", () => {
-		render(<InlineTextFilter label="Test label" name="test" />);
+		render(
+			<InlineTextFilter label="Test label" name="test" heading="Test label1" />
+		);
 
-		const label = screen.getByText("Test label");
+		console.log(screen.getByRole("button", {
+			name:"Test label1"
+		}));
+
+		const label = screen.getByRole("button", {
+			name:"Test label1"
+		});
 
 		expect(label).toBeInTheDocument();
-		expect(label).toHaveProperty("tagName", "LABEL");
+		expect(label).toHaveProperty("tagName", "BUTTON");
 	});
 
 	it("should render label matching given input name", () => {
 		render(<InlineTextFilter label="Test label" name="test" />);
 
-		const input = screen.getByLabelText("Test label");
+		const input = screen.getByRole('textbox', { id: 'test' });
 
 		expect(input).toHaveProperty("tagName", "INPUT");
 		expect(input).toHaveAttribute("type", "text");
@@ -30,9 +38,9 @@ describe("InlineTextFilter", () => {
 			/>
 		);
 
-		const input = screen.getByLabelText("Test label");
+		const input = screen.getByPlaceholderText("Some text");
 
-		expect(input).toHaveProperty("placeholder", "Some text");
+		expect(input).toBeInTheDocument();
 	});
 
 	it("should render default value on input", () => {
@@ -44,9 +52,9 @@ describe("InlineTextFilter", () => {
 			/>
 		);
 
-		const input = screen.getByLabelText("Test label");
+		const input = screen.getByDisplayValue("Some value");
 
-		expect(input).toHaveProperty("value", "Some value");
+		expect(input).toBeInTheDocument();
 	});
 
 	it("should render cta submit button", () => {

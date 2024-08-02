@@ -245,8 +245,12 @@ export const getProductListPage =
 						/>
 
 						{documents.length === 0 ? (
-							<p id="results">
-								Sorry, we haven’t found any results for you. You could try:
+							<div id="results">
+								<h2>No results found</h2>
+								<p>
+									Sorry, we haven’t found any results for you. You could try:
+								</p>
+
 								<ul>
 									<li>
 										Using the <Link href="/search">full site search</Link>.
@@ -270,7 +274,7 @@ export const getProductListPage =
 										and starting again.
 									</li>
 								</ul>
-							</p>
+							</div>
 						) : (
 							<>
 								<div className={styles.tableWrapper}>

@@ -188,7 +188,7 @@ describe("SearchListFilters", () => {
 
 		it("should render title filter input box and label", () => {
 			expect(
-				screen.getByLabelText("Filter by word or reference number")
+				screen.getByPlaceholderText("E.g. 'diabetes' or 'NG28'")
 			).toBeInTheDocument();
 		});
 
@@ -204,8 +204,8 @@ describe("SearchListFilters", () => {
 				/>
 			);
 			expect(
-				screen.getByLabelText("Filter by word or reference number")
-			).toHaveAttribute("placeholder", "E.g. 'diabetes' or 'NG28'");
+				screen.getByPlaceholderText("E.g. 'diabetes' or 'NG28'")
+			).toBeInTheDocument();
 		});
 
 		it("should render custom placeholder attribute on title filter input when searchInputPlaceholder prop supplied", () => {
@@ -221,8 +221,8 @@ describe("SearchListFilters", () => {
 				/>
 			);
 			expect(
-				screen.getByLabelText("Filter by word or reference number")
-			).toHaveAttribute("placeholder", "Some placeholder text");
+				screen.getByPlaceholderText("Some placeholder text")
+			).toBeInTheDocument();
 		});
 
 		it("should render search submit button", () => {
@@ -238,9 +238,7 @@ describe("SearchListFilters", () => {
 		});
 
 		it("should use NextJS router with serialized form on search button click", async () => {
-			const input = screen.getByRole("textbox", {
-					name: "Filter by word or reference number",
-				}),
+			const input = screen.getByPlaceholderText("E.g. 'diabetes' or 'NG28'"),
 				button = screen.getByRole("button", { name: "Apply Filter" });
 
 			await userEvent.type(input, "diabetes");
@@ -309,6 +307,7 @@ describe("SearchListFilters", () => {
 				.getAllByRole("heading", { level: 3 })
 				.map((el) => el.textContent || "");
 			expect(filterGroupHeadings).toStrictEqual([
+				"Keyword in title or reference number ",
 				"Last updated date ",
 				"Status (1 selected)",
 				"Area of interest ",

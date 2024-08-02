@@ -81,8 +81,8 @@ export default getProductListPage({
 		</Breadcrumb>,
 	],
 	currentBreadcrumb: "In development",
-	preheading: "In development",
-	heading: <>Indicators</>,
+	preheading: "",
+	heading: <>In development: Indicators</>,
 	title: "In development | Indicators",
 	defaultSort: {
 		order: defaultSortOrder,

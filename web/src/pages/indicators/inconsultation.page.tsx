@@ -67,8 +67,8 @@ export default getProductListPage({
 		</Breadcrumb>,
 	],
 	currentBreadcrumb: "In consultation",
-	preheading: "In consultation",
-	heading: <>Indicators</>,
+	preheading: "",
+	heading: <>In consultation: Indicators</>,
 	title: "In consultation | Indicators",
 	defaultSort: {
 		order: defaultSortOrder,

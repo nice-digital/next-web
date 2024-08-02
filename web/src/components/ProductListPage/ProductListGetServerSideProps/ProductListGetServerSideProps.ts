@@ -97,9 +97,11 @@ export const getGetServerSidePropsFunc =
 		if (searchUrl.from && searchUrl.to) {
 			// Add an active modifier for the date range to allow users to easily toggle it
 			activeModifiers.unshift({
-				displayName: `${dateFilterLabel} between ${dayjs(searchUrl.from).format(
+				displayName: `${dateFilterLabel} between: ${dayjs(
+					searchUrl.from
+				).format(dateFormatShort)} and ${dayjs(searchUrl.to).format(
 					dateFormatShort
-				)} and ${dayjs(searchUrl.to).format(dateFormatShort)}`,
+				)}`,
 				toggleUrl: getUrlPathAndQuery({
 					...searchUrl,
 					sp: "on",
@@ -111,7 +113,7 @@ export const getGetServerSidePropsFunc =
 
 		if (searchUrl.q) {
 			activeModifiers.unshift({
-				displayName: searchUrl.q,
+				displayName: `Keyword in title: ${searchUrl.q}`,
 				toggleUrl: getUrlPathAndQuery({
 					...searchUrl,
 					sp: undefined,

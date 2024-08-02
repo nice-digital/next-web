@@ -1,6 +1,7 @@
 import React, { FC, ReactNode, useCallback, useEffect, useState } from "react";
 
 import { Button } from "@nice-digital/nds-button";
+import { FilterGroup } from "@nice-digital/nds-filters";
 import { Input } from "@nice-digital/nds-input";
 
 import styles from "./InlineTextFilter.module.scss";
@@ -10,9 +11,27 @@ interface InlineTextFilterProps {
 	name: string;
 	placeholder?: string;
 	defaultValue?: string;
+	heading?: string;
 }
 
 export const InlineTextFilter: FC<InlineTextFilterProps> = ({
+	label,
+	name,
+	placeholder,
+	defaultValue,
+	heading = "Keyword in title or reference number",
+}) => (
+	<FilterGroup heading={heading} headingLevel={3}>
+		<InlineTextFilterBody
+			label={label}
+			name={name}
+			placeholder={placeholder}
+			defaultValue={defaultValue}
+		/>
+	</FilterGroup>
+);
+
+export const InlineTextFilterBody: FC<InlineTextFilterProps> = ({
 	label,
 	name,
 	placeholder,
@@ -28,13 +47,10 @@ export const InlineTextFilter: FC<InlineTextFilterProps> = ({
 	}, [defaultValue]);
 
 	return (
-		<div className={styles.container}>
-			<label className={styles.label} htmlFor={name}>
-				{label}
-			</label>
+		<div className="ph--c pt--c">
 			<Input
 				name={name}
-				label={null}
+				label=""
 				placeholder={placeholder}
 				className={styles.input}
 				autoComplete="off"
@@ -42,7 +58,7 @@ export const InlineTextFilter: FC<InlineTextFilterProps> = ({
 				value={value}
 				spellCheck={false}
 			/>
-			<Button className={styles.button} variant="primary" type="submit">
+			<Button className="ml--0" variant="secondary" type="submit">
 				Apply Filter
 			</Button>
 		</div>

@@ -70,8 +70,8 @@ export default getProductListPage({
 		</Breadcrumb>,
 	],
 	currentBreadcrumb: "Published indicators",
-	preheading: "Published",
-	heading: <>Indicators</>,
+	preheading: "",
+	heading: <>Published: Indicators</>,
 	title: "Published | Indicators",
 	defaultSort: {
 		order: defaultSortOrder,
