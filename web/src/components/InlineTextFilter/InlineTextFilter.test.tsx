@@ -5,15 +5,10 @@ import { InlineTextFilter } from "./InlineTextFilter";
 describe("InlineTextFilter", () => {
 	it("should render label with given text", () => {
 		render(
-			<InlineTextFilter label="Test label" name="test" heading="Test label1" />
+			<InlineTextFilter label="Test label" name="test" heading="Test heading" />
 		);
-
-		console.log(screen.getByRole("button", {
-			name:"Test label1"
-		}));
-
 		const label = screen.getByRole("button", {
-			name:"Test label1"
+			name: "Test heading",
 		});
 
 		expect(label).toBeInTheDocument();
@@ -23,7 +18,7 @@ describe("InlineTextFilter", () => {
 	it("should render label matching given input name", () => {
 		render(<InlineTextFilter label="Test label" name="test" />);
 
-		const input = screen.getByRole('textbox', { id: 'test' });
+		const input = screen.getByRole("textbox", { id: "test" });
 
 		expect(input).toHaveProperty("tagName", "INPUT");
 		expect(input).toHaveAttribute("type", "text");
