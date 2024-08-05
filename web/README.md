@@ -180,7 +180,7 @@ Two things to bear in mind before you do this:
 
 ### Syncing Types, Components, and Stories between Storyblok spaces
 
-Use extreme caution when syncing between spaces as you can overwrite live content if you get the sync direction or space ids wrong.
+Use extreme caution when syncing between spaces as you can overwrite live content if you get the sync direction or space ids wrong. The same advice for logging in and out of the storyblok CLI applies ([see updating types](#updating-types)).
 
 1. **Add Space IDs to environment variables:**
    - Open your `.env.local` file.
@@ -203,7 +203,7 @@ Use extreme caution when syncing between spaces as you can overwrite live conten
 
 ### Push pull components between storyblok spaces
 
-Use extreme caution when push pulling components between spaces as you can overwrite live content if you get the push / pull direction or space ids wrong. The pull command creates a temporary local backup directory with the id of the space, then pulls the components from storyblok as individual files. The push command first executes a pull to ensure the latest version from storyblok, then prompts for the name of the component to push to the chosen space - multiple components can be pushed by comma separating the names.
+Use extreme caution when push pulling components between spaces as you can overwrite live content if you get the push / pull direction or space ids wrong. The same advice for logging in and out of the storyblok CLI applies ([see updating types](#updating-types)). The pull command creates a temporary local backup directory with the id of the space, then pulls the components from storyblok as individual files. The push command first executes a pull to ensure the latest version from storyblok, then prompts for the name of the component to push to the chosen space - multiple components can be pushed by comma separating the names.
 
 1. **Add Space IDs to environment variables:**
    - Open your `.env.local` file.
