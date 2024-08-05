@@ -27,6 +27,7 @@
 	- [Storyblok](#storyblok)
 		- [Updating types](#updating-types)
 		- [Syncing Types, Components, and Stories between Storyblok spaces](#syncing-types-components-and-stories-between-storyblok-spaces)
+		- [Push pull components between storyblok spaces](#push-pull-components-between-storyblok-spaces)
 
 <!-- END doctoc generated TOC please keep comment here to allow auto update -->
 </details>
@@ -199,3 +200,26 @@ Use extreme caution when syncing between spaces as you can overwrite live conten
    - Navigate to the web directory
    - Execute the sync command: npm run danger-storyblok-sync
    - Follow the prompts in the terminal, double checking the sync direction, space ids and content to sync.
+
+### Push pull components between storyblok spaces
+
+Use extreme caution when push pulling components between spaces as you can overwrite live content if you get the push / pull direction or space ids wrong. The pull command creates a temporary local backup directory with the id of the space, then pulls the components from storyblok as individual files. The push command first executes a pull to ensure the latest version from storyblok, then prompts for the name of the component to push to the chosen space - multiple components can be pushed by comma separating the names.
+
+1. **Add Space IDs to environment variables:**
+   - Open your `.env.local` file.
+   - Add the space IDs from Storyblok using the following variable names:
+     - `LIVE_SPACE_ID`
+     - `ALPHA_SPACE_ID`
+     - `DEV_SANDBOX_SPACE_ID`
+
+   Example:
+   ```plaintext
+   LIVE_SPACE_ID=your_live_space_id
+   ALPHA_SPACE_ID=your_alpha_space_id
+   DEV_SANDBOX_SPACE_ID=your_dev_sandbox_space_id
+	 ```
+
+2. **Run the push/pull command**
+   - Navigate to the web directory
+   - Execute the push / pull command: npm run danger-storyblok-push-pull
+   - Follow the prompts in the terminal, double checking the push / pull direction, space ids and components to push/pull.
