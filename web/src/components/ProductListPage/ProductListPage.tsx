@@ -1,5 +1,5 @@
-import { useRouter } from "next/router";
 import { NextSeo } from "next-seo";
+import { useRouter } from "next/router";
 import pluralize from "pluralize";
 import React, {
 	ElementType,
