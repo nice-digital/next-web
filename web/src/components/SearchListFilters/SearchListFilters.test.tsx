@@ -157,7 +157,7 @@ describe("SearchListFilters", () => {
 			});
 		});
 
-		it("should NOT render title filter input box and label when show text filter is false", () => {
+		it("should NOT render title filter input box and heading when show text filter is false", () => {
 			rerender(
 				<SearchListFilters
 					numActiveModifiers={2}
@@ -186,7 +186,7 @@ describe("SearchListFilters", () => {
 			).not.toBeNull();
 		});
 
-		it("should render title filter input box and label", () => {
+		it("should render title filter input box and heading", () => {
 			expect(
 				screen.getByPlaceholderText("E.g. 'diabetes' or 'NG28'")
 			).toBeInTheDocument();

@@ -2,34 +2,6 @@
 @use '@nice-digital/nds-core/scss/spacing';
 @use '@nice-digital/nds-core/scss/utils';
 
-.container {
-  @include media-queries.mq($from: md) {
-    align-items: baseline;
-    display: flex;
-    justify-content: flex-end;
-    position: absolute;
-    right: 1rem;
-    top: 0;
-    width: 55%;
-  }
-}
-
-.button {
-  margin-left: 0;
-
-  @include media-queries.mq($from: md) {
-    margin: utils.rem(0 0 0 spacing.$small);
-  }
-}
-
-.label {
-  font-weight: 700;
-
-  @include media-queries.mq($from: md) {
-    margin: utils.rem(0 spacing.$small 0 0);
-  }
-}
-
 .input {
   flex-grow: 1;
 }

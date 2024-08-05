@@ -3,10 +3,8 @@ import { render, screen } from "@testing-library/react";
 import { InlineTextFilter } from "./InlineTextFilter";
 
 describe("InlineTextFilter", () => {
-	it("should render label with given text", () => {
-		render(
-			<InlineTextFilter label="Test label" name="test" heading="Test heading" />
-		);
+	it("should render Input with given heading", () => {
+		render(<InlineTextFilter name="test" heading="Test heading" />);
 		const label = screen.getByRole("button", {
 			name: "Test heading",
 		});
@@ -15,8 +13,8 @@ describe("InlineTextFilter", () => {
 		expect(label).toHaveProperty("tagName", "BUTTON");
 	});
 
-	it("should render label matching given input name", () => {
-		render(<InlineTextFilter label="Test label" name="test" />);
+	it("should render Input matching given input name", () => {
+		render(<InlineTextFilter heading="Test label" name="test" />);
 
 		const input = screen.getByRole("textbox", { id: "test" });
 
@@ -27,7 +25,7 @@ describe("InlineTextFilter", () => {
 	it("should render placeholder on input", () => {
 		render(
 			<InlineTextFilter
-				label="Test label"
+				heading="Test label"
 				name="test"
 				placeholder="Some text"
 			/>
@@ -41,7 +39,7 @@ describe("InlineTextFilter", () => {
 	it("should render default value on input", () => {
 		render(
 			<InlineTextFilter
-				label="Test label"
+				heading="Test label"
 				name="test"
 				defaultValue="Some value"
 			/>
@@ -53,7 +51,7 @@ describe("InlineTextFilter", () => {
 	});
 
 	it("should render cta submit button", () => {
-		render(<InlineTextFilter label="Test label" name="q" />);
+		render(<InlineTextFilter heading="Test label" name="q" />);
 
 		const button = screen.getByText("Apply Filter");
 

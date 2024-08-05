@@ -7,7 +7,6 @@ import { Input } from "@nice-digital/nds-input";
 import styles from "./InlineTextFilter.module.scss";
 
 interface InlineTextFilterProps {
-	label: ReactNode;
 	name: string;
 	placeholder?: string;
 	defaultValue?: string;
@@ -15,7 +14,6 @@ interface InlineTextFilterProps {
 }
 
 export const InlineTextFilter: FC<InlineTextFilterProps> = ({
-	label,
 	name,
 	placeholder,
 	defaultValue,
@@ -23,7 +21,6 @@ export const InlineTextFilter: FC<InlineTextFilterProps> = ({
 }) => (
 	<FilterGroup heading={heading} headingLevel={3}>
 		<InlineTextFilterBody
-			label={label}
 			name={name}
 			placeholder={placeholder}
 			defaultValue={defaultValue}
@@ -32,7 +29,6 @@ export const InlineTextFilter: FC<InlineTextFilterProps> = ({
 );
 
 export const InlineTextFilterBody: FC<InlineTextFilterProps> = ({
-	label,
 	name,
 	placeholder,
 	defaultValue,
