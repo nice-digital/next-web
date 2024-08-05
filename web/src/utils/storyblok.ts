@@ -8,8 +8,8 @@ import {
 	type ISbError,
 	type ISbStoryData,
 } from "@storyblok/react";
-import { type MetaTag } from "next-seo/lib/types";
 import { Redirect } from "next/types";
+import { type MetaTag } from "next-seo/lib/types";
 import { StoryblokStory } from "storyblok-generate-ts";
 
 import { publicRuntimeConfig } from "@/config";
