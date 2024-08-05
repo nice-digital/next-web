@@ -186,12 +186,6 @@ describe("SearchListFilters", () => {
 			).not.toBeNull();
 		});
 
-		it("should render title filter input box and heading", () => {
-			expect(
-				screen.getByPlaceholderText("E.g. 'diabetes' or 'NG28'")
-			).toBeInTheDocument();
-		});
-
 		it("should render default placeholder attribute on title filter input when searchInputPlaceholder prop not supplied", () => {
 			rerender(
 				<SearchListFilters

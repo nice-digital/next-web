@@ -251,12 +251,12 @@ export const getProductListPage =
 
 								<ul>
 									<li>
-										Using the <a href="/search">full site search</a>.
+										Using the <Link href="/search">full site search</Link>.
 									</li>
 									<li>
-										<a href="/guidance/conditions-and-diseases">
+										<Link href="/guidance/conditions-and-diseases">
 											Browsing by topic
-										</a>
+										</Link>
 										. Our topic pages show all our guidance in a particular
 										area, such as specific conditions or healthcare settings.
 									</li>

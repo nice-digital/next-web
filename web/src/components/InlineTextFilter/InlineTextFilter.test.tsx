@@ -3,17 +3,17 @@ import { render, screen } from "@testing-library/react";
 import { InlineTextFilter } from "./InlineTextFilter";
 
 describe("InlineTextFilter", () => {
-	it("should render Input with given heading", () => {
+	it("should render FilterGroup with given heading", () => {
 		render(<InlineTextFilter name="test" heading="Test heading" />);
-		const label = screen.getByRole("button", {
+		const filterHeading = screen.getByRole("button", {
 			name: "Test heading",
 		});
 
-		expect(label).toBeInTheDocument();
-		expect(label).toHaveProperty("tagName", "BUTTON");
+		expect(filterHeading).toBeInTheDocument();
+		expect(filterHeading).toHaveProperty("tagName", "BUTTON");
 	});
 
-	it("should render Input matching given input name", () => {
+	it("should render input with id matching the given component name prop", () => {
 		render(<InlineTextFilter heading="Test label" name="test" />);
 
 		const input = screen.getByRole("textbox", { id: "test" });
