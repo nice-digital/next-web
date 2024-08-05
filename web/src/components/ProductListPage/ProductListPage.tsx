@@ -1,5 +1,5 @@
-import { NextSeo } from "next-seo";
 import { useRouter } from "next/router";
+import { NextSeo } from "next-seo";
 import pluralize from "pluralize";
 import React, {
 	ElementType,
@@ -34,8 +34,6 @@ import { Link, ScrollToLink } from "@/components/Link/Link";
 import { SearchListFilters } from "@/components/SearchListFilters/SearchListFilters";
 import { SearchPagination } from "@/components/SearchPagination/SearchPagination";
 import { SkipLink } from "@/components/SkipLink/SkipLink";
-
-import { basePath } from "next.config";
 
 import { ProductListFilterSummary } from "./ProductListFilterSummary/ProductListFilterSummary";
 import { defaultPageSize } from "./ProductListGetServerSideProps/ProductListGetServerSideProps";
