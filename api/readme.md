@@ -115,6 +115,14 @@ http://fill-in-url-when-known
 
 This is create using a terraform script which is built into the CI pipeline alongside ocelot itself. You can find the terraform modules in the ocelot-cache-clear folder. There are two modules, one for the single API gateway and another for the stages (test/alpha/beta/live/etc...). They are protected by state files which are stored in an s3 bucket called next-web-ocelot-cache-clear-terraform-backend there is one file for the API base and another for the stages.
 
+N.B. If there is an existing gateway in AWS and the state file is aware of it, then nothing should change. If however, the base terraform module runs and a new gateway is created, the base url for the gateway will change e.g.
+
+https://sbbuwb99v2.execute-api.eu-west-2.amazonaws.com
+becomes
+https://32hd723h23.execute-api.eu-west-2.amazonaws.com
+
+You will need to talk to ops and get the url "fill-in-url-when-known" updated so it points to the new gateway address.
+
 ### Redis cached content keys
 
 Requests are handled the Ocelot pipeline by various stages. Ocelot Cache Manager is one such stage. This stage uses the similarly named [CacheManager](https://cachemanager.michaco.net/) to implement the basic caching features. CacheManager in turn uses [StackExchange.Redis](https://stackexchange.github.io/StackExchange.Redis/) as a client for Redis.
