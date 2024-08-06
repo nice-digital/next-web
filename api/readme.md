@@ -108,7 +108,6 @@ If someone wants to see immediate changes to a document they are working on, the
 
 So:
 http://fill-in-url-when-known/test
-http://fill-in-url-when-known/alpha
 
 And just a URL with no route for live
 http://fill-in-url-when-known
