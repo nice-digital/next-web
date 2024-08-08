@@ -4,7 +4,7 @@ import { Document, SortOrder } from "@nice-digital/search-client";
 import { GuidanceListNav } from "@/components/ProductListNav/GuidanceListNav";
 import {
 	getGetServerSidePropsFunc,
-	getProductListPage
+	getProductListPage,
 } from "@/components/ProductListPage/ProductListPage";
 import { publicRuntimeConfig } from "@/config";
 

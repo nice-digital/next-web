@@ -5,7 +5,7 @@ import { Link } from "@/components/Link/Link";
 import { IndicatorListNav } from "@/components/ProductListNav/IndicatorListNav";
 import {
 	getGetServerSidePropsFunc,
-	getProductListPage
+	getProductListPage,
 } from "@/components/ProductListPage/ProductListPage";
 import { ResponsiveDate } from "@/components/ResponsiveDate/ResponsiveDate";
 
