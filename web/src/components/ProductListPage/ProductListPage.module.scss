@@ -17,7 +17,7 @@
 
 @include media-queries.mq($from: md) {
   .sectionWrapper {
-    padding-top: utils.rem(spacing.$xx-large);
+    padding-top: utils.rem(spacing.$large);
     position: relative;
   }
 
