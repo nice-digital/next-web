@@ -72,7 +72,7 @@ describe("SearchListFilters", () => {
 				/>
 			);
 
-			userEvent.click(screen.getByRole("button", { name: "Apply Filter" }));
+			userEvent.click(screen.getByRole("button", { name: "Apply filter" }));
 
 			await waitFor(() => {
 				expect(routerPush).toHaveBeenCalledWith(
@@ -220,12 +220,12 @@ describe("SearchListFilters", () => {
 		});
 
 		it("should render search submit button", () => {
-			expect(screen.getByText("Apply Filter")).toBeInTheDocument();
-			expect(screen.getByText("Apply Filter")).toHaveProperty(
+			expect(screen.getByText("Apply filter")).toBeInTheDocument();
+			expect(screen.getByText("Apply filter")).toHaveProperty(
 				"tagName",
 				"BUTTON"
 			);
-			expect(screen.getByText("Apply Filter")).toHaveAttribute(
+			expect(screen.getByText("Apply filter")).toHaveAttribute(
 				"type",
 				"submit"
 			);
@@ -233,7 +233,7 @@ describe("SearchListFilters", () => {
 
 		it("should use NextJS router with serialized form on search button click", async () => {
 			const input = screen.getByPlaceholderText("E.g. 'diabetes' or 'NG28'"),
-				button = screen.getByRole("button", { name: "Apply Filter" });
+				button = screen.getByRole("button", { name: "Apply filter" });
 
 			await userEvent.type(input, "diabetes");
 			await userEvent.click(button);

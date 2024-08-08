@@ -1,7 +1,7 @@
 import { NextSeo } from "next-seo";
 import { useRouter } from "next/router";
 import pluralize from "pluralize";
-import React, {
+import {
 	ElementType,
 	FC,
 	ReactChild,
@@ -12,19 +12,19 @@ import React, {
 } from "react";
 
 import {
-	Breadcrumbs,
 	Breadcrumb,
+	Breadcrumbs,
 	type BreadcrumbsProps,
 } from "@nice-digital/nds-breadcrumbs";
 import { Grid, GridItem } from "@nice-digital/nds-grid";
 import { PageHeader } from "@nice-digital/nds-page-header";
 import { Table } from "@nice-digital/nds-table";
 import {
+	Document,
+	removeQueryParam,
 	SearchResultsSuccess,
 	SortOrder,
-	Document,
 	upsertQueryParam,
-	removeQueryParam,
 } from "@nice-digital/search-client";
 
 import { Announcer } from "@/components/Announcer/Announcer";
@@ -69,6 +69,7 @@ export type GetProductListPageOptions = {
 	showDateFilter: boolean;
 	showTextFilter?: boolean;
 	dateFilterLabel?: string;
+	textFilterHeading?: string;
 	useFutureDates?: boolean;
 	tableBodyRender: (documents: Document[]) => JSX.Element;
 	searchInputPlaceholder: string;
@@ -102,6 +103,7 @@ export const getProductListPage =
 		secondarySort,
 		showDateFilter,
 		dateFilterLabel,
+		textFilterHeading,
 		useFutureDates,
 		tableBodyRender,
 		searchInputPlaceholder,
@@ -212,6 +214,7 @@ export const getProductListPage =
 							showDateFilter={showDateFilter}
 							showTextFilter={true}
 							dateFilterLabel={dateFilterLabel}
+							textFilterHeading={textFilterHeading}
 							useFutureDates={useFutureDates}
 							navigatorsOrder={[
 								"nai",

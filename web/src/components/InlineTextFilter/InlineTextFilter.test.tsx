@@ -14,9 +14,15 @@ describe("InlineTextFilter", () => {
 	});
 
 	it("should render input with id matching the given component name prop", () => {
-		render(<InlineTextFilter heading="Test label" name="test" />);
+		render(
+			<InlineTextFilter
+				heading="Test label"
+				name="test"
+				placeholder="Placeholder"
+			/>
+		);
 
-		const input = screen.getByRole("textbox", { id: "test" });
+		const input = screen.getByPlaceholderText("Placeholder");
 
 		expect(input).toHaveProperty("tagName", "INPUT");
 		expect(input).toHaveAttribute("type", "text");
@@ -53,7 +59,7 @@ describe("InlineTextFilter", () => {
 	it("should render cta submit button", () => {
 		render(<InlineTextFilter heading="Test label" name="q" />);
 
-		const button = screen.getByText("Apply Filter");
+		const button = screen.getByText("Apply filter");
 
 		expect(button).toBeInTheDocument();
 		expect(button).toHaveAttribute("type", "submit");

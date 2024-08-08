@@ -290,7 +290,7 @@ exports[`/indicators/indevelopment should match the snapshot 1`] = `
                           data-component="button--secondary"
                           type="submit"
                         >
-                          Apply Filter
+                          Apply filter
                         </button>
                       </div>
                     </fieldset>

@@ -1,4 +1,4 @@
-import React, { FC, ReactNode, useCallback, useEffect, useState } from "react";
+import React, { FC, useCallback, useEffect, useState } from "react";
 
 import { Button } from "@nice-digital/nds-button";
 import { FilterGroup } from "@nice-digital/nds-filters";
@@ -55,7 +55,7 @@ export const InlineTextFilterBody: FC<InlineTextFilterProps> = ({
 				spellCheck={false}
 			/>
 			<Button className="ml--0" variant="secondary" type="submit">
-				Apply Filter
+				Apply filter
 			</Button>
 		</div>
 	);

@@ -2,15 +2,15 @@ import dayjs from "dayjs";
 import { GetServerSidePropsContext, GetServerSidePropsResult } from "next";
 
 import {
-	search,
-	initialise as initSearchClient,
-	getSearchUrl,
 	getActiveModifiers,
+	getSearchUrl,
 	getUrlPathAndQuery,
-	SortOrder,
+	initialise as initSearchClient,
 	Modifier,
 	Navigator,
+	search,
 	SearchIndex,
+	SortOrder,
 } from "@nice-digital/search-client";
 
 import { getRedirectUrl } from "@/components/ProductListPage/redirects";
@@ -18,7 +18,7 @@ import { publicRuntimeConfig } from "@/config";
 import { logger } from "@/logger";
 import { dateFormatShort } from "@/utils/datetime";
 
-import { ProductListPageProps, ActiveModifier } from "../ProductListPageProps";
+import { ActiveModifier, ProductListPageProps } from "../ProductListPageProps";
 
 export const defaultPageSize = 10;
 
@@ -32,6 +32,7 @@ export interface GetGetServerSidePropsOptions {
 		| "Topic selection";
 	defaultSortOrder: SortOrder;
 	dateFilterLabel?: string;
+	textFilterLabel?: string;
 	index: SearchIndex;
 }
 
@@ -40,6 +41,7 @@ export const getGetServerSidePropsFunc =
 		gstPreFilter,
 		defaultSortOrder,
 		dateFilterLabel,
+		textFilterLabel = "Keyword or ref number",
 		index,
 	}: GetGetServerSidePropsOptions) =>
 	async (
@@ -113,7 +115,7 @@ export const getGetServerSidePropsFunc =
 
 		if (searchUrl.q) {
 			activeModifiers.unshift({
-				displayName: `Keyword in title: ${searchUrl.q}`,
+				displayName: `${textFilterLabel}: ${searchUrl.q}`,
 				toggleUrl: getUrlPathAndQuery({
 					...searchUrl,
 					sp: undefined,

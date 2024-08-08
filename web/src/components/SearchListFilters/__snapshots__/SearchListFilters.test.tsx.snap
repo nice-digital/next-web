@@ -121,7 +121,7 @@ exports[`SearchListFilters should match snapshot for filter panel form 1`] = `
               data-component="button--secondary"
               type="submit"
             >
-              Apply Filter
+              Apply filter
             </button>
           </div>
         </fieldset>
