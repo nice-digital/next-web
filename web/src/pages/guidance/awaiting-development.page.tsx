@@ -4,12 +4,12 @@ import { Document, SortOrder } from "@nice-digital/search-client";
 import { GuidanceListNav } from "@/components/ProductListNav/GuidanceListNav";
 import {
 	getGetServerSidePropsFunc,
-	getProductListPage,
+	getProductListPage
 } from "@/components/ProductListPage/ProductListPage";
 import { publicRuntimeConfig } from "@/config";
 
 const defaultSortOrder = SortOrder.titleAscending,
-	textFilterHeading = "Keyword in title or reference number",
+	textFilterHeading = "Keyword or ref number",
 	textFilterLabel = "Keyword or ref number";
 
 const tableBodyRender = (documents: Document[]) => (

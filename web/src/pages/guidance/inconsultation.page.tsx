@@ -4,14 +4,14 @@ import { Document, SortOrder } from "@nice-digital/search-client";
 import { GuidanceListNav } from "@/components/ProductListNav/GuidanceListNav";
 import {
 	getGetServerSidePropsFunc,
-	getProductListPage,
+	getProductListPage
 } from "@/components/ProductListPage/ProductListPage";
 import { ResponsiveDate } from "@/components/ResponsiveDate/ResponsiveDate";
 import { publicRuntimeConfig } from "@/config";
 
 const defaultSortOrder = SortOrder.dateDescending,
 	dateFilterLabel = "Consultation end date",
-	textFilterHeading = "Keyword in title or reference number",
+	textFilterHeading = "Keyword or ref number",
 	textFilterLabel = "Keyword or ref number";
 
 const tableBodyRender = (documents: Document[]) => (
