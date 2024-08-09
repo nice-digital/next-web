@@ -1,7 +1,7 @@
 import dayjs from "dayjs";
 import { GetServerSidePropsContext, GetServerSidePropsResult } from "next";
-import { NextSeo } from "next-seo";
 import { useRouter } from "next/router";
+import { NextSeo } from "next-seo";
 import React, { useEffect, useState } from "react";
 
 import { FilterSummary } from "@nice-digital/nds-filters";

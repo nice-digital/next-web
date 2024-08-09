@@ -1,7 +1,7 @@
-import { NextSeo } from "next-seo";
 import { useRouter } from "next/router";
+import { NextSeo } from "next-seo";
 import pluralize from "pluralize";
-import React, {
+import {
 	ElementType,
 	FC,
 	ReactChild,
@@ -12,19 +12,19 @@ import React, {
 } from "react";
 
 import {
-	Breadcrumbs,
 	Breadcrumb,
+	Breadcrumbs,
 	type BreadcrumbsProps,
 } from "@nice-digital/nds-breadcrumbs";
 import { Grid, GridItem } from "@nice-digital/nds-grid";
 import { PageHeader } from "@nice-digital/nds-page-header";
 import { Table } from "@nice-digital/nds-table";
 import {
+	Document,
+	removeQueryParam,
 	SearchResultsSuccess,
 	SortOrder,
-	Document,
 	upsertQueryParam,
-	removeQueryParam,
 } from "@nice-digital/search-client";
 
 import { Announcer } from "@/components/Announcer/Announcer";
@@ -69,6 +69,7 @@ export type GetProductListPageOptions = {
 	showDateFilter: boolean;
 	showTextFilter?: boolean;
 	dateFilterLabel?: string;
+	textFilterLabel?: string;
 	useFutureDates?: boolean;
 	tableBodyRender: (documents: Document[]) => JSX.Element;
 	searchInputPlaceholder: string;
@@ -76,6 +77,7 @@ export type GetProductListPageOptions = {
 	| {
 			showDateFilter: true;
 			dateFilterLabel: string;
+			textFilterLabel: string;
 			useFutureDates: boolean;
 	  }
 	| {
@@ -102,6 +104,7 @@ export const getProductListPage =
 		secondarySort,
 		showDateFilter,
 		dateFilterLabel,
+		textFilterLabel,
 		useFutureDates,
 		tableBodyRender,
 		searchInputPlaceholder,
@@ -178,16 +181,16 @@ export const getProductListPage =
 					preheading={preheading}
 					heading={heading}
 					id="content-start"
+					className={`page-header ${styles.pageHeader}`}
 					data-testid="content-start"
 					lead={
 						<>
 							<SkipLink targetId="filters">Skip to filters</SkipLink>
 							<SkipLink targetId="results">Skip to results</SkipLink>
+							{intro}
 						</>
 					}
 				/>
-
-				{intro}
 
 				<ListNavType />
 
@@ -212,6 +215,7 @@ export const getProductListPage =
 							showDateFilter={showDateFilter}
 							showTextFilter={true}
 							dateFilterLabel={dateFilterLabel}
+							textFilterLabel={textFilterLabel}
 							useFutureDates={useFutureDates}
 							navigatorsOrder={[
 								"nai",
