@@ -6,6 +6,7 @@ import {
 	getProductListPage,
 	getGetServerSidePropsFunc,
 } from "@/components/ProductListPage/ProductListPage";
+import { ResponsiveDate } from "@/components/ResponsiveDate/ResponsiveDate";
 import { publicRuntimeConfig } from "@/config";
 
 const defaultSortOrder = SortOrder.titleAscending;
@@ -18,6 +19,7 @@ const tableBodyRender = (documents: Document[]) => (
 				<th scope="col">Title</th>
 				<th scope="col">Technology type</th>
 				<th scope="col">Decision</th>
+				<th scope="col">Decision date</th>
 			</tr>
 		</thead>
 		<tbody>
@@ -28,6 +30,7 @@ const tableBodyRender = (documents: Document[]) => (
 					pathAndQuery,
 					technologyType,
 					topicSelectionDecision,
+					topicSelectionDecisionDate,
 				}) => {
 					return (
 						<tr key={id}>
@@ -39,6 +42,13 @@ const tableBodyRender = (documents: Document[]) => (
 							</td>
 							<td>{technologyType || "n/a"}</td>
 							<td>{topicSelectionDecision || "n/a"}</td>
+							<td>
+								{topicSelectionDecisionDate ? (
+									<ResponsiveDate isoDateTime={topicSelectionDecisionDate} />
+								) : (
+									<abbr title="To be confirmed">TBC</abbr>
+								)}
+							</td>
 						</tr>
 					);
 				}
