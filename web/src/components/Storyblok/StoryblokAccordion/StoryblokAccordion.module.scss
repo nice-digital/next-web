@@ -1,0 +1,9 @@
+.accordionRichText {
+  > :first-child {
+    margin-top: 0;
+  }
+  > :last-child,
+  > :last-child:is(picture) > img {
+    margin-bottom: 0;
+  }
+}

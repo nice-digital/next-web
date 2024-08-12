@@ -38,10 +38,16 @@
     }
   }
 
+  // override the margin for accordion heading levels in rich text
+  :global(.accordion__heading) {
+    margin: 0;
+  }
+
   // remove bottom margin on any last child in richtext bloks
   > *:last-child {
     margin-bottom: 0;
   }
+
 
 }
 

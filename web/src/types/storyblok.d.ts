@@ -12,7 +12,7 @@ export interface RichtextStoryblok {
 export interface AccordionStoryblok {
   title: string;
 	displayTitleAsHeading:boolean;
-	headingLevel?: number;
+	headingLevel?: 2 | 3 | 4 | 5 | 6;
   content: RichtextStoryblok;
   component: "accordion";
   _uid: string;

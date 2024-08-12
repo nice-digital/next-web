@@ -4,6 +4,7 @@ import { Accordion, AccordionGroup } from "@nice-digital/nds-accordion";
 
 import { AccordionGroupStoryblok } from "@/types/storyblok";
 
+import style from "../StoryblokAccordion/StoryblokAccordion.module.scss";
 import { StoryblokRichText } from "../StoryblokRichText/StoryblokRichText";
 
 export interface StoryblokAccordionGroupProps {
@@ -17,15 +18,20 @@ export const StoryblokAccordionGroup: React.FC<
 	return (
 		<AccordionGroup>
 			{accordions.map((accordion, index) => {
-				const { title, content, displayTitleAsHeading, headingLevel } =
-					accordion;
+				const { title, content, headingLevel } = accordion;
+
+				const resolvedHeadingLevel = headingLevel ?? headingLevel;
+
 				return (
-					<Accordion title={title} key={index}>
-						{displayTitleAsHeading
-							? "showTitleAsHeading"
-							: "no showTitleAsHeading"}
-						{headingLevel}
-						<StoryblokRichText content={content} />
+					<Accordion
+						title={title}
+						key={index}
+						headingLevel={resolvedHeadingLevel}
+					>
+						<StoryblokRichText
+							content={content}
+							className={style.accordionRichText}
+						/>
 					</Accordion>
 				);
 			})}

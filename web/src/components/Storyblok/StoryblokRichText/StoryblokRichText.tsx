@@ -22,16 +22,16 @@ import styles from "./StoryblokRichText.module.scss";
 
 export interface StoryblokRichTextProps {
 	content: RichtextStoryblok;
+	className?: string;
 }
 
 export const StoryblokRichText: React.FC<StoryblokRichTextProps> = ({
 	content,
+	className,
 }) => {
+	const classes = [styles.storyblokRichTextWrapper, className].join(" ");
 	return (
-		<div
-			className={styles.storyblokRichTextWrapper}
-			data-testid="storyblok-rich-text"
-		>
+		<div className={classes} data-testid="storyblok-rich-text">
 			{render(content, {
 				nodeResolvers: {
 					[NODE_HEADING]: (

@@ -6,6 +6,8 @@ import { AccordionStoryblok } from "@/types/storyblok";
 
 import { StoryblokRichText } from "../StoryblokRichText/StoryblokRichText";
 
+import styles from "./StoryblokAccordion.module.scss";
+
 export interface StoryblokAccordionProps {
 	blok: AccordionStoryblok;
 }
@@ -13,12 +15,16 @@ export interface StoryblokAccordionProps {
 export const StoryblokAccordion: React.FC<StoryblokAccordionProps> = ({
 	blok,
 }: StoryblokAccordionProps) => {
-	const { title, content, displayTitleAsHeading, headingLevel } = blok;
+	const { title, content, headingLevel } = blok;
+
+	const resolvedHeadingLevel = headingLevel ?? headingLevel;
+
 	return (
-		<Accordion title={title}>
-			{displayTitleAsHeading ? "showTitleAsHeading" : "no showTitleAsHeading"}
-			{headingLevel}
-			<StoryblokRichText content={content} />
+		<Accordion title={title} headingLevel={resolvedHeadingLevel}>
+			<StoryblokRichText
+				content={content}
+				className={styles.accordionRichText}
+			/>
 		</Accordion>
 	);
 };
