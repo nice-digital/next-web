@@ -1,6 +1,5 @@
 import { StoryblokComponent } from "@storyblok/react";
 
-import { Accordion } from "@nice-digital/nds-accordion";
 import { Grid, GridItem } from "@nice-digital/nds-grid";
 import { StackedNav, StackedNavLink } from "@nice-digital/nds-stacked-nav";
 
