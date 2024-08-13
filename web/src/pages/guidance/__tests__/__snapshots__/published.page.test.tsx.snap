@@ -256,7 +256,7 @@ exports[`/guidance/published should match the snapshot 1`] = `
                       class="filter-group__heading"
                     >
                       <button
-                        aria-controls="group-keyword-or-ref-number"
+                        aria-controls="group-keyword-or-reference-number"
                         aria-expanded="true"
                         type="button"
                       >
@@ -276,9 +276,9 @@ exports[`/guidance/published should match the snapshot 1`] = `
                           />
                         </svg>
                         <span
-                          id="group-heading-keyword-or-ref-number"
+                          id="group-heading-keyword-or-reference-number"
                         >
-                          Keyword or ref number
+                          Keyword or reference number
                            
                         </span>
                       </button>
@@ -286,10 +286,10 @@ exports[`/guidance/published should match the snapshot 1`] = `
                     <fieldset
                       aria-hidden="false"
                       class="filter-group__options"
-                      id="group-keyword-or-ref-number"
+                      id="group-keyword-or-reference-number"
                     >
                       <legend>
-                        Keyword or ref number
+                        Keyword or reference number
                       </legend>
                       <div
                         class="ph--c pt--c"

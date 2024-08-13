@@ -17,7 +17,7 @@ export const InlineTextFilter: FC<InlineTextFilterProps> = ({
 	name,
 	placeholder,
 	defaultValue,
-	heading = "Keyword in title or reference number",
+	heading = "Keyword or reference number",
 }) => (
 	<FilterGroup heading={heading} headingLevel={3}>
 		<InlineTextFilterBody

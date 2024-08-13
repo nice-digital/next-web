@@ -121,7 +121,7 @@ describe("getGetServerSidePropsFunc", () => {
 		it("should set active modifiers from navigators and from/to dates and q title query", () => {
 			expect(result.props.activeModifiers).toStrictEqual([
 				{
-					displayName: "Keyword or ref number: test",
+					displayName: "Keyword or reference number: test",
 					toggleUrl:
 						"/guidance/published?ndt=Guidance&from=2020-07-28&to=2021-06-04",
 				},

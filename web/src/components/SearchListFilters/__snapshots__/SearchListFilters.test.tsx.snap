@@ -63,7 +63,7 @@ exports[`SearchListFilters should match snapshot for filter panel form 1`] = `
           class="filter-group__heading"
         >
           <button
-            aria-controls="group-keyword-in-title-or-reference-number"
+            aria-controls="group-keyword-or-reference-number"
             aria-expanded="true"
             type="button"
           >
@@ -83,9 +83,9 @@ exports[`SearchListFilters should match snapshot for filter panel form 1`] = `
               />
             </svg>
             <span
-              id="group-heading-keyword-in-title-or-reference-number"
+              id="group-heading-keyword-or-reference-number"
             >
-              Keyword in title or reference number
+              Keyword or reference number
                
             </span>
           </button>
@@ -93,10 +93,10 @@ exports[`SearchListFilters should match snapshot for filter panel form 1`] = `
         <fieldset
           aria-hidden="false"
           class="filter-group__options"
-          id="group-keyword-in-title-or-reference-number"
+          id="group-keyword-or-reference-number"
         >
           <legend>
-            Keyword in title or reference number
+            Keyword or reference number
           </legend>
           <div
             class="ph--c pt--c"

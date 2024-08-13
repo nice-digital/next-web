@@ -301,7 +301,7 @@ describe("SearchListFilters", () => {
 				.getAllByRole("heading", { level: 3 })
 				.map((el) => el.textContent || "");
 			expect(filterGroupHeadings).toStrictEqual([
-				"Keyword in title or reference number ",
+				"Keyword or reference number ",
 				"Last updated date ",
 				"Status (1 selected)",
 				"Area of interest ",

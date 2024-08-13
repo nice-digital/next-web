@@ -11,8 +11,8 @@ import { publicRuntimeConfig } from "@/config";
 
 const defaultSortOrder = SortOrder.dateDescending,
 	dateFilterLabel = "Last updated date",
-	textFilterHeading = "Keyword or ref number",
-	textFilterLabel = "Keyword or ref number";
+	textFilterHeading = "Keyword or reference number",
+	textFilterLabel = "Keyword or reference number";
 
 const tableBodyRender = (documents: Document[]) => (
 	<>

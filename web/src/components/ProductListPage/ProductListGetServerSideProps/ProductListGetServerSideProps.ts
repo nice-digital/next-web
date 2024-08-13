@@ -41,7 +41,7 @@ export const getGetServerSidePropsFunc =
 		gstPreFilter,
 		defaultSortOrder,
 		dateFilterLabel,
-		textFilterLabel = "Keyword or ref number",
+		textFilterLabel = "Keyword or reference number",
 		index,
 	}: GetGetServerSidePropsOptions) =>
 	async (
