@@ -29,7 +29,7 @@ const mockAccordionGroup: StoryblokAccordionGroupProps = {
 					],
 				},
 				component: "accordion",
-				headingLevel: "2",
+				headingLevel: 2,
 				displayTitleAsHeading: true,
 			},
 			{
@@ -50,7 +50,7 @@ const mockAccordionGroup: StoryblokAccordionGroupProps = {
 					],
 				},
 				component: "accordion",
-				headingLevel: "2",
+				headingLevel: 2,
 				displayTitleAsHeading: true,
 			},
 			{
@@ -71,7 +71,7 @@ const mockAccordionGroup: StoryblokAccordionGroupProps = {
 					],
 				},
 				component: "accordion",
-				headingLevel: "",
+				headingLevel: undefined,
 				displayTitleAsHeading: false,
 			},
 		],

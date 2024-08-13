@@ -283,7 +283,7 @@ exports[`PodcastPage should render a fallback image if no image is provided 1`] 
         About this episode
       </h2>
       <div
-        class="storyblokRichTextWrapper"
+        class="storyblokRichTextWrapper "
         data-testid="storyblok-rich-text"
       >
         <p>
