@@ -133,7 +133,7 @@ exports[`BlogPostPage renders the page 1`] = `
             />
           </picture>
           <div
-            class="storyblokRichTextWrapper"
+            class="storyblokRichTextWrapper "
             data-testid="storyblok-rich-text"
           >
             <p>
