@@ -72,7 +72,7 @@ describe("SearchListFilters", () => {
 				/>
 			);
 
-			userEvent.click(screen.getByRole("button", { name: "Filter" }));
+			userEvent.click(screen.getByRole("button", { name: "Apply filter" }));
 
 			await waitFor(() => {
 				expect(routerPush).toHaveBeenCalledWith(
@@ -157,7 +157,7 @@ describe("SearchListFilters", () => {
 			});
 		});
 
-		it("should NOT render title filter input box and label when show text filter is false", () => {
+		it("should NOT render title filter input box and heading when show text filter is false", () => {
 			rerender(
 				<SearchListFilters
 					numActiveModifiers={2}
@@ -186,12 +186,6 @@ describe("SearchListFilters", () => {
 			).not.toBeNull();
 		});
 
-		it("should render title filter input box and label", () => {
-			expect(
-				screen.getByLabelText("Filter by title or keyword")
-			).toBeInTheDocument();
-		});
-
 		it("should render default placeholder attribute on title filter input when searchInputPlaceholder prop not supplied", () => {
 			rerender(
 				<SearchListFilters
@@ -204,8 +198,8 @@ describe("SearchListFilters", () => {
 				/>
 			);
 			expect(
-				screen.getByLabelText("Filter by title or keyword")
-			).toHaveAttribute("placeholder", "E.g. 'diabetes' or 'NG28'");
+				screen.getByPlaceholderText("E.g. 'diabetes' or 'NG28'")
+			).toBeInTheDocument();
 		});
 
 		it("should render custom placeholder attribute on title filter input when searchInputPlaceholder prop supplied", () => {
@@ -221,21 +215,25 @@ describe("SearchListFilters", () => {
 				/>
 			);
 			expect(
-				screen.getByLabelText("Filter by title or keyword")
-			).toHaveAttribute("placeholder", "Some placeholder text");
+				screen.getByPlaceholderText("Some placeholder text")
+			).toBeInTheDocument();
 		});
 
 		it("should render search submit button", () => {
-			expect(screen.getByText("Filter")).toBeInTheDocument();
-			expect(screen.getByText("Filter")).toHaveProperty("tagName", "BUTTON");
-			expect(screen.getByText("Filter")).toHaveAttribute("type", "submit");
+			expect(screen.getByText("Apply filter")).toBeInTheDocument();
+			expect(screen.getByText("Apply filter")).toHaveProperty(
+				"tagName",
+				"BUTTON"
+			);
+			expect(screen.getByText("Apply filter")).toHaveAttribute(
+				"type",
+				"submit"
+			);
 		});
 
 		it("should use NextJS router with serialized form on search button click", async () => {
-			const input = screen.getByRole("textbox", {
-					name: "Filter by title or keyword",
-				}),
-				button = screen.getByRole("button", { name: "Filter" });
+			const input = screen.getByPlaceholderText("E.g. 'diabetes' or 'NG28'"),
+				button = screen.getByRole("button", { name: "Apply filter" });
 
 			await userEvent.type(input, "diabetes");
 			await userEvent.click(button);
@@ -303,6 +301,7 @@ describe("SearchListFilters", () => {
 				.getAllByRole("heading", { level: 3 })
 				.map((el) => el.textContent || "");
 			expect(filterGroupHeadings).toStrictEqual([
+				"Keyword or reference number ",
 				"Last updated date ",
 				"Status (1 selected)",
 				"Area of interest ",

@@ -36,7 +36,7 @@ export const ProductListFilterSummary: FC<ProductListFilterSummaryProps> = ({
 
 	let sorting: FilterSummaryProps["sorting"] = undefined;
 
-	if (secondarySort) {
+	if (secondarySort && resultCount !== 0) {
 		sorting = [
 			{
 				active: currentSortOrder === defaultSort.order || !currentSortOrder,
@@ -72,9 +72,7 @@ export const ProductListFilterSummary: FC<ProductListFilterSummaryProps> = ({
 			}))}
 			sorting={sorting}
 		>
-			{resultCount === 0 ? (
-				"No results found"
-			) : (
+			{resultCount > 0 && (
 				<>
 					Showing {firstResult} to {lastResult} of {resultCount}
 				</>

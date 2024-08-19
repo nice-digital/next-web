@@ -3,14 +3,16 @@ import { Document, SortOrder } from "@nice-digital/search-client";
 
 import { GuidanceListNav } from "@/components/ProductListNav/GuidanceListNav";
 import {
-	getProductListPage,
 	getGetServerSidePropsFunc,
+	getProductListPage,
 } from "@/components/ProductListPage/ProductListPage";
 import { ResponsiveDate } from "@/components/ResponsiveDate/ResponsiveDate";
 import { publicRuntimeConfig } from "@/config";
 
 const defaultSortOrder = SortOrder.dateDescending,
-	dateFilterLabel = "Last updated date";
+	dateFilterLabel = "Last updated date",
+	textFilterHeading = "Keyword or reference number",
+	textFilterLabel = "Keyword or reference number";
 
 const tableBodyRender = (documents: Document[]) => (
 	<>
@@ -68,8 +70,8 @@ export default getProductListPage({
 		</Breadcrumb>,
 	],
 	currentBreadcrumb: "Published",
-	preheading: "Published ",
-	heading: <>Guidance, NICE advice and quality&nbsp;standards</>,
+	preheading: "",
+	heading: <>Published: Guidance, quality&nbsp;standards and advice</>,
 	title: "Published guidance, NICE advice and quality standards | Guidance",
 	defaultSort: {
 		order: defaultSortOrder,
@@ -82,6 +84,7 @@ export default getProductListPage({
 	showDateFilter: true,
 	useFutureDates: false,
 	dateFilterLabel,
+	textFilterHeading,
 	tableBodyRender,
 	searchInputPlaceholder: "E.g. 'diabetes' or 'NG28'",
 });
@@ -90,5 +93,6 @@ export const getServerSideProps = getGetServerSidePropsFunc({
 	gstPreFilter: "Published",
 	defaultSortOrder,
 	dateFilterLabel,
+	textFilterLabel,
 	index: "guidance",
 });
