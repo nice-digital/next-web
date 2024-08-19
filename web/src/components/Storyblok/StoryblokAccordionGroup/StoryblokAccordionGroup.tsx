@@ -4,11 +4,14 @@ import { Accordion, AccordionGroup } from "@nice-digital/nds-accordion";
 
 import { AccordionGroupStoryblok } from "@/types/storyblok";
 
+import { AccordionStoryblokExtended } from "../StoryblokAccordion/StoryblokAccordion";
 import style from "../StoryblokAccordion/StoryblokAccordion.module.scss";
 import { StoryblokRichText } from "../StoryblokRichText/StoryblokRichText";
 
 export interface StoryblokAccordionGroupProps {
-	blok: AccordionGroupStoryblok;
+	blok: Omit<AccordionGroupStoryblok, "accordions"> & {
+		accordions: AccordionStoryblokExtended[];
+	};
 }
 
 export const StoryblokAccordionGroup: React.FC<
@@ -18,22 +21,34 @@ export const StoryblokAccordionGroup: React.FC<
 	return (
 		<AccordionGroup>
 			{accordions.map((accordion, index) => {
-				const { title, content, headingLevel } = accordion;
+				const { title, content, headingLevel, displayTitleAsHeading } =
+					accordion;
 
-				const resolvedHeadingLevel = headingLevel ?? headingLevel;
-
-				return (
-					<Accordion
-						title={title}
-						key={index}
-						headingLevel={resolvedHeadingLevel}
-					>
-						<StoryblokRichText
-							content={content}
-							className={style.accordionRichText}
-						/>
-					</Accordion>
-				);
+				if (displayTitleAsHeading) {
+					const resolvedHeadingLevel = headingLevel ?? 2;
+					return (
+						<Accordion
+							title={title}
+							displayTitleAsHeading={true}
+							headingLevel={resolvedHeadingLevel}
+							key={index}
+						>
+							<StoryblokRichText
+								content={content}
+								className={style.accordionRichText}
+							/>
+						</Accordion>
+					);
+				} else {
+					return (
+						<Accordion title={title} key={index}>
+							<StoryblokRichText
+								content={content}
+								className={style.accordionRichText}
+							/>
+						</Accordion>
+					);
+				}
 			})}
 		</AccordionGroup>
 	);
