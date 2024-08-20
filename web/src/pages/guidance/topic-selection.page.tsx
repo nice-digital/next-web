@@ -4,12 +4,13 @@ import { Document, SortOrder } from "@nice-digital/search-client";
 import { GuidanceListNav } from "@/components/ProductListNav/GuidanceListNav";
 import {
 	getGetServerSidePropsFunc,
-	getProductListPage,
+	getProductListPage
 } from "@/components/ProductListPage/ProductListPage";
 import { ResponsiveDate } from "@/components/ResponsiveDate/ResponsiveDate";
 import { publicRuntimeConfig } from "@/config";
 
 const defaultSortOrder = SortOrder.titleAscending,
+	dateFilterLabel = "Decision date",
 	textFilterHeading = "Keyword or reference number",
 	textFilterLabel = "Keyword or reference number";
 
@@ -75,7 +76,9 @@ export default getProductListPage({
 		order: defaultSortOrder,
 		label: "Title",
 	},
-	showDateFilter: false,
+	showDateFilter: true,
+	useFutureDates: false,
+	dateFilterLabel,
 	textFilterHeading,
 	tableBodyRender,
 	searchInputPlaceholder: "E.g. 'diabetes' or 'NG28'",
@@ -83,7 +86,8 @@ export default getProductListPage({
 
 export const getServerSideProps = getGetServerSidePropsFunc({
 	gstPreFilter: "Topic selection",
-	textFilterLabel,
 	defaultSortOrder,
+	dateFilterLabel,
+	textFilterLabel,
 	index: "guidance",
 });
