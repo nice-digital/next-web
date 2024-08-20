@@ -1,16 +1,18 @@
 import { Breadcrumb } from "@nice-digital/nds-breadcrumbs";
-import { SortOrder, Document } from "@nice-digital/search-client";
+import { Document, SortOrder } from "@nice-digital/search-client";
 
 import { GuidanceListNav } from "@/components/ProductListNav/GuidanceListNav";
 import {
-	getProductListPage,
 	getGetServerSidePropsFunc,
+	getProductListPage,
 } from "@/components/ProductListPage/ProductListPage";
 import { ResponsiveDate } from "@/components/ResponsiveDate/ResponsiveDate";
 import { publicRuntimeConfig } from "@/config";
 
 const defaultSortOrder = SortOrder.dateDescending,
-	dateFilterLabel = "Consultation end date";
+	dateFilterLabel = "Consultation end date",
+	textFilterHeading = "Keyword or reference number",
+	textFilterLabel = "Keyword or reference number";
 
 const tableBodyRender = (documents: Document[]) => (
 	<>
@@ -66,8 +68,8 @@ export default getProductListPage({
 		</Breadcrumb>,
 	],
 	currentBreadcrumb: "In consultation",
-	preheading: "Guidance and quality standards ",
-	heading: "In consultation",
+	preheading: "",
+	heading: "In consultation: Guidance and quality standards",
 	title: "Guidance and quality standards in consultation | Guidance",
 	defaultSort: {
 		order: defaultSortOrder,
@@ -79,6 +81,7 @@ export default getProductListPage({
 	},
 	showDateFilter: true,
 	dateFilterLabel,
+	textFilterHeading,
 	useFutureDates: true,
 	tableBodyRender,
 	searchInputPlaceholder: "E.g. 'diabetes' or 'NG28'",
@@ -88,5 +91,6 @@ export const getServerSideProps = getGetServerSidePropsFunc({
 	gstPreFilter: "In consultation",
 	defaultSortOrder,
 	dateFilterLabel,
+	textFilterLabel,
 	index: "guidance",
 });

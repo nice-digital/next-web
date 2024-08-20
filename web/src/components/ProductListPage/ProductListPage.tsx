@@ -1,5 +1,5 @@
-import { useRouter } from "next/router";
 import { NextSeo } from "next-seo";
+import { useRouter } from "next/router";
 import pluralize from "pluralize";
 import {
 	ElementType,
@@ -8,13 +8,13 @@ import {
 	ReactElement,
 	useEffect,
 	useMemo,
-	useState,
+	useState
 } from "react";
 
 import {
 	Breadcrumb,
 	Breadcrumbs,
-	type BreadcrumbsProps,
+	type BreadcrumbsProps
 } from "@nice-digital/nds-breadcrumbs";
 import { Grid, GridItem } from "@nice-digital/nds-grid";
 import { PageHeader } from "@nice-digital/nds-page-header";
@@ -24,7 +24,7 @@ import {
 	removeQueryParam,
 	SearchResultsSuccess,
 	SortOrder,
-	upsertQueryParam,
+	upsertQueryParam
 } from "@nice-digital/search-client";
 
 import { Announcer } from "@/components/Announcer/Announcer";
@@ -69,7 +69,7 @@ export type GetProductListPageOptions = {
 	showDateFilter: boolean;
 	showTextFilter?: boolean;
 	dateFilterLabel?: string;
-	textFilterLabel?: string;
+	textFilterHeading?: string;
 	useFutureDates?: boolean;
 	tableBodyRender: (documents: Document[]) => JSX.Element;
 	searchInputPlaceholder: string;
@@ -104,7 +104,7 @@ export const getProductListPage =
 		secondarySort,
 		showDateFilter,
 		dateFilterLabel,
-		textFilterLabel,
+		textFilterHeading,
 		useFutureDates,
 		tableBodyRender,
 		searchInputPlaceholder,
@@ -215,7 +215,7 @@ export const getProductListPage =
 							showDateFilter={showDateFilter}
 							showTextFilter={true}
 							dateFilterLabel={dateFilterLabel}
-							textFilterLabel={textFilterLabel}
+							textFilterHeading={textFilterHeading}
 							useFutureDates={useFutureDates}
 							navigatorsOrder={[
 								"nai",
@@ -247,18 +247,36 @@ export const getProductListPage =
 						/>
 
 						{documents.length === 0 ? (
-							<p id="results">
-								We can&apos;t find any matching products. Try{" "}
-								<Link
-									to={
-										pathname +
-										(ps && Number(ps) != defaultPageSize ? `?ps=${ps}` : "")
-									}
-								>
-									clearing your filters
-								</Link>{" "}
-								and starting again.
-							</p>
+							<div id="results">
+								<h2>No results found</h2>
+								<p>
+									Sorry, we haven’t found any results for you. You could try:
+								</p>
+
+								<ul>
+									<li>
+										Using the <Link href="/search">full site search</Link>.
+									</li>
+									<li>
+										<Link href="/guidance/conditions-and-diseases">
+											Browsing by topic
+										</Link>
+										. Our topic pages show all our guidance in a particular
+										area, such as specific conditions or healthcare settings.
+									</li>
+									<li>
+										<Link
+											to={
+												pathname +
+												(ps && Number(ps) != defaultPageSize ? `?ps=${ps}` : "")
+											}
+										>
+											Clearing your filters
+										</Link>{" "}
+										and starting again.
+									</li>
+								</ul>
+							</div>
 						) : (
 							<>
 								<div className={styles.tableWrapper}>

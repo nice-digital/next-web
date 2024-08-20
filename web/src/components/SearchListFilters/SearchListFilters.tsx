@@ -3,14 +3,14 @@ import { useRouter } from "next/router";
 import React, { createRef, FC, useCallback, useState } from "react";
 
 import {
-	FilterPanel,
 	FilterGroup,
 	FilterOption,
+	FilterPanel
 } from "@nice-digital/nds-filters";
 import {
-	Navigator,
 	KnownOrModifierKeys,
 	Modifier,
+	Navigator
 } from "@nice-digital/search-client";
 
 import { InlineTextFilter } from "@/components/InlineTextFilter/InlineTextFilter";
@@ -35,7 +35,7 @@ export interface SearchListFiltersProps {
 	showDateFilter: boolean;
 	showTextFilter: boolean;
 	dateFilterLabel?: string;
-	textFilterLabel?: string;
+	textFilterHeading?: string;
 	useFutureDates?: boolean;
 	navigatorsOrder: KnownOrModifierKeys[];
 	searchInputPlaceholder?: string;
@@ -53,7 +53,7 @@ export const SearchListFilters: FC<SearchListFiltersProps> = ({
 	showDateFilter,
 	showTextFilter,
 	dateFilterLabel,
-	textFilterLabel = "Filter by title or keyword",
+	textFilterHeading,
 	useFutureDates,
 	navigatorsOrder,
 	searchInputPlaceholder = "E.g. 'diabetes' or 'NG28'",
@@ -121,7 +121,7 @@ export const SearchListFilters: FC<SearchListFiltersProps> = ({
 			id="filters"
 			aria-label="Filter results"
 			heading={`Filter${
-				numActiveModifiers === 0 ? "" : ` (${numActiveModifiers} active)`
+				numActiveModifiers === 0 ? "" : ` (${numActiveModifiers} applied)`
 			}`}
 			innerRef={formRef}
 			onSubmit={formSubmitHandler}
@@ -131,7 +131,7 @@ export const SearchListFilters: FC<SearchListFiltersProps> = ({
 			<input type="hidden" name="s" value={sortOrder} />
 			{showTextFilter ? (
 				<InlineTextFilter
-					label={textFilterLabel}
+					heading={textFilterHeading}
 					name="q"
 					defaultValue={queryText}
 					placeholder={searchInputPlaceholder}
