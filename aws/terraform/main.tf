@@ -103,7 +103,7 @@ resource "aws_ecs_task_definition" "nextweb-main-task" {
 
     efs_volume_configuration {
       file_system_id     = var.nextweb_efs_config_volume
-      root_directory     = "/${var.docker_image_build_number}/"
+      root_directory     = "/${var.nextweb_efs_config_volume_dir}/"
       transit_encryption = "ENABLED"
     }
   }

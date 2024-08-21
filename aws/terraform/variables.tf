@@ -19,6 +19,9 @@ variable "docker_image_build_number" {
 variable "nextweb_efs_config_volume" {
   type = string
 }
+variable "nextweb_efs_config_volume_dir" {
+  type = string
+}
 variable "nextweb_ecs_subnets" {
   type = list(string)
 }
