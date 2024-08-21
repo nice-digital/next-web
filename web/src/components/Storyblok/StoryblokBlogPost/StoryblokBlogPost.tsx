@@ -101,6 +101,7 @@ export const StoryblokBlogPost = ({
 							/>,
 						]}
 						secondSection={PageHeaderAuthorsList}
+						verticalPadding="loose"
 					/>
 				</GridItem>
 
