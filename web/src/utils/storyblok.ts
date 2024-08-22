@@ -61,7 +61,6 @@ export const fetchStory = async <T>(
 	version: StoryVersion = "published",
 	params: ISbStoryParams = {}
 ): Promise<SBSingleResponse<T>> => {
-<<<<<<< HEAD
 	logger.info(
 		{
 			slug,
@@ -72,8 +71,6 @@ export const fetchStory = async <T>(
 		`Fetching story with slug: ${slug} and version: ${version} from fetchStory function`
 	);
 
-=======
->>>>>>> main
 	const storyblokApi = getStoryblokApi();
 
 	const sbParams: ISbStoriesParams = {
@@ -94,7 +91,6 @@ export const fetchStory = async <T>(
 			story: response.data.story,
 		};
 	} catch (error) {
-<<<<<<< HEAD
 		// const errorResponse = JSON.parse(error as string) as ISbError;
 		let errorResponse: ISbError | null = null;
 
@@ -127,31 +123,17 @@ export const fetchStory = async <T>(
 				`fetchStory: Story not found at slug: ${slug} from. Returning notFound: true`
 			);
 
-=======
-		const errorResponse = JSON.parse(error as string) as ISbError;
-
-		logger.error(
-			`${errorResponse.status} error from Storyblok API: ${errorResponse.message}`,
-			error
-		);
-
-		if (errorResponse.status === 404) {
->>>>>>> main
 			return {
 				notFound: true,
 			};
 		} else {
-<<<<<<< HEAD
 			logger.error(
 				`fetchStory: Error fetching story at slug: ${slug}. Throwing generic error message`
 			);
-=======
->>>>>>> main
 			throw Error(GENERIC_ERROR_MESSAGE, { cause: error });
 		}
 	}
 
-<<<<<<< HEAD
 	logger.info(
 		{
 			slug,
@@ -176,11 +158,6 @@ export const isJsonString = (str: string | unknown): boolean => {
 	}
 };
 
-=======
-	return result;
-};
-
->>>>>>> main
 const isValidPageParam = (
 	queryPage: string | string[] | undefined
 ): boolean => {
@@ -269,7 +246,6 @@ export const validateRouteParams = async <T>({
 			perPage,
 		};
 	} catch (error) {
-<<<<<<< HEAD
 		logger.error(
 			{
 				requestParams,
@@ -280,9 +256,6 @@ export const validateRouteParams = async <T>({
 				error instanceof Error && error.message
 			} in catch at slug ${page}`
 		);
-=======
-		logger.error("Error from catch in validateRouteParams: ", error);
->>>>>>> main
 
 		throw new Error(GENERIC_ERROR_MESSAGE, { cause: error });
 	}
@@ -475,14 +448,7 @@ export const getAdditionalMetaTags = (story: ISbStoryData): MetaTag[] => {
 // Turn a Storyblok date string (yyyy-mm-dd hh:ss) into a friendly date
 export const friendlyDate = (date: string): string => {
 	if (!date || !Date.parse(date)) {
-<<<<<<< HEAD
 		throw new Error("Invalid date format");
-=======
-		logger.warn(
-			`Invalid date format/browser failed to parse date for: ${date}`
-		);
-		return date || "";
->>>>>>> main
 	}
 	const formatter = new Intl.DateTimeFormat("en-GB", {
 		day: "2-digit",

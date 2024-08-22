@@ -1,8 +1,5 @@
 import { storyblokInit } from "@storyblok/react";
-<<<<<<< HEAD
 import { waitFor } from "@testing-library/react";
-=======
->>>>>>> main
 
 import { logger } from "@/logger";
 
@@ -17,21 +14,10 @@ jest.mock("@/config", () => ({
 	},
 }));
 
-<<<<<<< HEAD
 describe("initStoryblok", () => {
 	let consoleLogSpy: jest.SpyInstance;
 	const loggerErrorSpy = jest.spyOn(logger, "error");
 	const loggerInfoSpy = jest.spyOn(logger, "info");
-=======
-jest.mock("@/logger", () => ({
-	logger: {
-		error: jest.fn(),
-	},
-}));
-
-describe("initStoryblok", () => {
-	let consoleLogSpy: jest.SpyInstance;
->>>>>>> main
 
 	beforeEach(() => {
 		consoleLogSpy = jest.spyOn(console, "log").mockImplementation();
@@ -55,24 +41,17 @@ describe("initStoryblok", () => {
 				endpoint: "testEndpoint",
 			},
 		});
-<<<<<<< HEAD
 
 		expect(loggerInfoSpy).toHaveBeenCalledWith("end initStoryblok");
 	});
 
 	it("should log an error when an exception is thrown", async () => {
-=======
-	});
-
-	it("should log an error when an exception is thrown", () => {
->>>>>>> main
 		(storyblokInit as jest.Mock).mockImplementationOnce(() => {
 			throw new Error("Test error");
 		});
 
 		initStoryblok();
 
-<<<<<<< HEAD
 		expect(loggerInfoSpy).toHaveBeenCalled();
 
 		await waitFor(() => {
@@ -86,11 +65,5 @@ describe("initStoryblok", () => {
 				"Error initialising Storyblok: Error: Test error"
 			);
 		});
-=======
-		expect(logger.error).toHaveBeenCalledWith(
-			"Error initialising Storyblok:",
-			new Error("Test error")
-		);
->>>>>>> main
 	});
 });

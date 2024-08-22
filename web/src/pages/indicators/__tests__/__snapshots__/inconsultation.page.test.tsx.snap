@@ -2,18 +2,6 @@
 
 exports[`/indicators/inconsultation should match the snapshot 1`] = `
 <div>
-<<<<<<< HEAD
-  <div />
-  <main>
-    <div
-      class="container"
-      data-component="container"
-    >
-      <nav
-        aria-label="Breadcrumbs"
-        data-component="breadcrumbs"
-        role="navigation"
-=======
   <div
     class="undefined undefined"
   >
@@ -22,7 +10,6 @@ exports[`/indicators/inconsultation should match the snapshot 1`] = `
       <div
         class="container"
         data-component="container"
->>>>>>> main
       >
         <nav
           aria-label="Breadcrumbs"
@@ -91,108 +78,6 @@ exports[`/indicators/inconsultation should match the snapshot 1`] = `
     }
   ]
 }
-<<<<<<< HEAD
-      </script>
-      <div
-        class="page-header "
-        data-component="page-header"
-        data-testid="content-start"
-        id="content-start"
-      >
-        <div
-          class="grid"
-        >
-          <div
-            data-component="grid-item"
-            data-g="12 md:12"
-          >
-            <h1
-              class="page-header__heading "
-            >
-              <span
-                class="page-header__pre-heading"
-              >
-                In consultation
-              </span>
-              Indicators
-            </h1>
-            <p
-              class="page-header__lead"
-            >
-              <a
-                class="skipLink"
-                href="#filters"
-              >
-                Skip to filters
-              </a>
-              <a
-                class="skipLink"
-                href="#results"
-              >
-                Skip to results
-              </a>
-            </p>
-          </div>
-        </div>
-      </div>
-      <nav
-        aria-label="Stages of indicator development"
-        class="horizontal-nav"
-      >
-        <ul
-          class="horizontal-nav__list"
-        >
-          <li
-            class="horizontal-nav__item"
-            data-component="horizontal-nav"
-          >
-            <a
-              aria-current="false"
-              class="horizontal-nav__link"
-              href="/indicators/published"
-            >
-              Published
-            </a>
-          </li>
-          <li
-            class="horizontal-nav__item"
-            data-component="horizontal-nav"
-          >
-            <a
-              aria-current="false"
-              class="horizontal-nav__link"
-              href="/indicators/inconsultation"
-            >
-              In consultation
-            </a>
-          </li>
-          <li
-            class="horizontal-nav__item"
-            data-component="horizontal-nav"
-          >
-            <a
-              aria-current="false"
-              class="horizontal-nav__link"
-              href="/indicators/indevelopment"
-            >
-              In development
-            </a>
-          </li>
-        </ul>
-      </nav>
-      <div
-        class="grid grid--loose sectionWrapper"
-      >
-        <section
-          aria-label="Filter results"
-          class="panelWrapper"
-          data-component="grid-item"
-          data-g="12 md:4 lg:3"
-        >
-          <form
-            aria-label="Filter results"
-            id="filters"
-=======
         </script>
         <div
           class="page-header "
@@ -202,7 +87,6 @@ exports[`/indicators/inconsultation should match the snapshot 1`] = `
         >
           <div
             class="grid"
->>>>>>> main
           >
             <div
               data-component="grid-item"
@@ -407,7 +291,7 @@ exports[`/indicators/inconsultation should match the snapshot 1`] = `
                           id="group-heading-consultation-end-date"
                         >
                           Consultation end date
-                           
+
                         </span>
                       </button>
                     </h3>
@@ -496,11 +380,11 @@ exports[`/indicators/inconsultation should match the snapshot 1`] = `
                 <h2
                   class="h5 mv--0"
                 >
-                  Showing 
+                  Showing
                   1
-                   to 
+                   to
                   7
-                   of 
+                   of
                   7
                 </h2>
               </div>
@@ -763,7 +647,7 @@ exports[`/indicators/inconsultation should match the snapshot 1`] = `
                     <span
                       class="visually-hidden"
                     >
-                      Current page 
+                      Current page
                     </span>
                     1
                   </span>
@@ -772,11 +656,11 @@ exports[`/indicators/inconsultation should match the snapshot 1`] = `
                   class="pagination__item pagination__item--count"
                 >
                   <span>
-                    Page 
+                    Page
                     <strong>
                       1
                     </strong>
-                     of 
+                     of
                     <strong>
                       1
                     </strong>
@@ -797,7 +681,7 @@ exports[`/indicators/inconsultation should match the snapshot 1`] = `
                   data-component="button--primary"
                   type="button"
                 >
-                  Copy 
+                  Copy
                   7 results
                    to clipboard
                 </button>

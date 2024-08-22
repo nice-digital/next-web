@@ -5,10 +5,6 @@ import {
 } from "@storyblok/react";
 import { waitFor } from "@testing-library/react";
 
-<<<<<<< HEAD
-import { publicRuntimeConfig } from "@/config";
-=======
->>>>>>> main
 import { logger } from "@/logger";
 import MockMultipleStorySuccessResponse from "@/test-utils/storyblok-news-articles-listing.json";
 import Mock404FromStoryblokApi from "@/test-utils/storyblok-not-found-response.json";
@@ -266,10 +262,7 @@ describe("Storyblok utils", () => {
 		});
 
 		it("should handle server errors", async () => {
-<<<<<<< HEAD
 			const loggerErrorSpy = jest.spyOn(logger, "error");
-=======
->>>>>>> main
 			getStoryblokApi().get = jest
 				.fn()
 				.mockRejectedValueOnce(JSON.stringify(MockServerErrorResponse));
@@ -279,7 +272,6 @@ describe("Storyblok utils", () => {
 			};
 
 			expect(throwErrorFetchStory).rejects.toThrow(GENERIC_ERROR_MESSAGE);
-<<<<<<< HEAD
 
 			await waitFor(() => {
 				expect(loggerErrorSpy).toHaveBeenCalled();
@@ -324,8 +316,6 @@ describe("Storyblok utils", () => {
 					"fetchStory: Failed to parse error response: This is not JSON; At path: news/articles/test-page;"
 				);
 			});
-=======
->>>>>>> main
 		});
 	});
 
@@ -553,7 +543,6 @@ describe("Storyblok utils", () => {
 			expect(formattedDate).toBe("02 April 2022");
 		});
 
-<<<<<<< HEAD
 		it("should handle invalid input gracefully", () => {
 			expect(() => {
 				friendlyDate("");
@@ -562,17 +551,6 @@ describe("Storyblok utils", () => {
 			expect(() => {
 				friendlyDate("not_a_date");
 			}).toThrow("Invalid date format");
-=======
-		it("should handle invalid input gracefully for an empty string", () => {
-			const duffDate = friendlyDate("");
-			expect(duffDate).toBe("");
-		});
-
-		it("should handle invalid input gracefully for an invalid string", () => {
-			const horribleDate = "some kind of unexpected and weird date format";
-			const processedDate = friendlyDate(horribleDate);
-			expect(processedDate).toBe(horribleDate);
->>>>>>> main
 		});
 	});
 
@@ -733,13 +711,9 @@ describe("Storyblok utils", () => {
 		it("should call the logger error method when fetchStories throws an error", async () => {
 			const loggerErrorSpy = jest.spyOn(logger, "error");
 
-<<<<<<< HEAD
 			const mockError = new Error("Error fetching stories", {
 				cause: "test cause of error",
 			});
-=======
-			const mockError = "Error fetching stories";
->>>>>>> main
 
 			fetchStoriesSpy.mockRejectedValue(mockError);
 
@@ -755,7 +729,6 @@ describe("Storyblok utils", () => {
 				expect(loggerErrorSpy).toHaveBeenCalled();
 				// eslint-disable-next-line testing-library/no-wait-for-multiple-assertions
 				expect(loggerErrorSpy).toHaveBeenCalledWith(
-<<<<<<< HEAD
 					{
 						errorMessage: "Error fetching stories",
 						errorCause: "test cause of error",
@@ -770,10 +743,6 @@ describe("Storyblok utils", () => {
 					`validateRouteParams: ${new Error(
 						"Error fetching stories"
 					)} in catch at slug 1`
-=======
-					"Error from catch in validateRouteParams: ",
-					mockError
->>>>>>> main
 				);
 			});
 		});
