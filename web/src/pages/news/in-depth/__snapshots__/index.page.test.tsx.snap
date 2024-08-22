@@ -4,7 +4,7 @@ exports[`/news/in-depth/index.page InDepthArticleIndexPage should match snapshot
 <body>
   <div>
     <div
-      class="page-header page-header--full-width-dark"
+      class="page-header page-header--full-width-dark page-header--vertical-padding-loose"
       data-component="page-header"
       id="content-start"
     >

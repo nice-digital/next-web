@@ -14,7 +14,7 @@ exports[`BlogPostPage renders the page 1`] = `
           data-g="12"
         >
           <div
-            class="page-header page-header--full-width-light"
+            class="page-header page-header--full-width-light page-header--vertical-padding-loose"
             data-component="page-header"
           >
             <div
