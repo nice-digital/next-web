@@ -150,7 +150,7 @@ exports[`LifeSciencesContactUsForm should match snapshot 1`] = `
       />
       <p>
         As you have expressed an interest in NICE's support services, your details will be added to our mailing list so that you can receive the latest news about NICE's support for the life sciences sector. You can unsubscribe from this at any time. Our legal basis for processing your data in this way is that of public task. View our
-
+         
         <a
           href="/privacy-notice"
         >

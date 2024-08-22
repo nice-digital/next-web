@@ -138,7 +138,7 @@ exports[`Homepage Should render error content when error is passed as a prop 1`]
               <p
                 class="page-header__lead"
               >
-                We'll look into it right away. Please try again in a few minutes. And if it's still not fixed,
+                We'll look into it right away. Please try again in a few minutes. And if it's still not fixed, 
                 <a
                   href="/get-involved/contact-us"
                 >
@@ -169,7 +169,7 @@ exports[`Homepage Should render error content when error is passed as a prop 1`]
                 Look for it using search
               </li>
               <li>
-                Browse for it from the
+                Browse for it from the 
                 <a
                   href="/"
                 >
@@ -178,7 +178,7 @@ exports[`Homepage Should render error content when error is passed as a prop 1`]
               </li>
             </ul>
             <p>
-              And if you still can't find what you're looking for,
+              And if you still can't find what you're looking for, 
               <a
                 href="/get-involved/contact-us"
               >
@@ -198,19 +198,19 @@ exports[`Homepage Should render error content when error is passed as a prop 1`]
             </p>
             <ul>
               <li>
-                Explore
+                Explore 
                 <a
                   href="/guidance"
                 >
                   NICE guidance, quality standards and advice
                 </a>
-                . You can do this by
+                . You can do this by 
                 <a
                   href="/guidance/conditions-and-diseases"
                 >
                   category to find a topic
                 </a>
-                , or choose a
+                , or choose a 
                 <a
                   href="/guidance/published"
                 >
@@ -232,13 +232,13 @@ exports[`Homepage Should render error content when error is passed as a prop 1`]
                 >
                   Visit our about pages
                 </a>
-                 to find information about our services,
+                 to find information about our services, 
                 <a
                   href="/about/who-we-are"
                 >
                   who we are
                 </a>
-                 and
+                 and 
                 <a
                   href="/about/what-we-do"
                 >
@@ -247,7 +247,7 @@ exports[`Homepage Should render error content when error is passed as a prop 1`]
               </li>
             </ul>
             <p>
-              If this is not the first time you have seen this message and believe that there is a serious problem
+              If this is not the first time you have seen this message and believe that there is a serious problem 
               <a
                 href="/get-involved/contact-us"
               >
@@ -337,7 +337,7 @@ exports[`Homepage should match snapshot for main content 1`] = `
                   style="background-image: url(http://local-host-test-nice-org.com/f/243782/420x234/7a576133e7/register-for-board-meeting.PNG/m/867x0/filters:format%28jpeg%29:quality%2880%29/m/868x0/filters:quality%2880%29);"
                   tabindex="-1"
                 >
-
+                   
                 </a>
                 <div>
                   <h3
@@ -384,7 +384,7 @@ exports[`Homepage should match snapshot for main content 1`] = `
                   style="background-image: url(http://local-host-test-nice-org.com/f/243782/420x234/7a576133e7/register-for-board-meeting.PNG/m/867x0/filters:format%28jpeg%29:quality%2880%29/m/868x0/filters:quality%2880%29);"
                   tabindex="-1"
                 >
-
+                   
                 </a>
                 <div>
                   <h3
@@ -406,7 +406,7 @@ exports[`Homepage should match snapshot for main content 1`] = `
                       class="author"
                     >
                       Bob Holness
-                      ,
+                      , 
                       Blockbusters host
                     </div>
                     <div>
@@ -440,7 +440,7 @@ exports[`Homepage should match snapshot for main content 1`] = `
                   style="background-image: url(http://local-host-test-nice-org.com/f/243782/420x234/7a576133e7/register-for-board-meeting.PNG/m/867x0/filters:format%28jpeg%29:quality%2880%29/m/868x0/filters:quality%2880%29);"
                   tabindex="-1"
                 >
-
+                   
                 </a>
                 <div>
                   <h3
@@ -544,7 +544,7 @@ exports[`Homepage should match snapshot for main content 1`] = `
               >
                 <blockquote>
                   <p>
-                    A inline quote in the rich text field of a news article.
+                    A inline quote in the rich text field of a news article. 
                   </p>
                 </blockquote>
               </figure>

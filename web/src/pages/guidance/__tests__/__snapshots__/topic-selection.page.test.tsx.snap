@@ -98,7 +98,7 @@ exports[`/guidance/topic-selection should match the snapshot 1`] = `
                 <span
                   class="page-header__pre-heading"
                 >
-                  Guidance in
+                  Guidance in 
                 </span>
                 Topic selection
               </h1>
@@ -315,7 +315,7 @@ exports[`/guidance/topic-selection should match the snapshot 1`] = `
                           id="group-heading-nai"
                         >
                           Area of interest
-
+                           
                         </span>
                       </button>
                     </h3>
@@ -377,7 +377,7 @@ exports[`/guidance/topic-selection should match the snapshot 1`] = `
                           id="group-heading-tt"
                         >
                           Technology type
-
+                           
                         </span>
                       </button>
                     </h3>
@@ -493,7 +493,7 @@ exports[`/guidance/topic-selection should match the snapshot 1`] = `
                           id="group-heading-tsd"
                         >
                           Topic selection decision
-
+                           
                         </span>
                       </button>
                     </h3>
@@ -573,7 +573,7 @@ exports[`/guidance/topic-selection should match the snapshot 1`] = `
                           id="group-heading-ngt"
                         >
                           Guidance programme
-
+                           
                         </span>
                       </button>
                     </h3>
@@ -697,11 +697,11 @@ exports[`/guidance/topic-selection should match the snapshot 1`] = `
                 <h2
                   class="h5 mv--0"
                 >
-                  Showing
+                  Showing 
                   1
-                   to
+                   to 
                   10
-                   of
+                   of 
                   13
                 </h2>
               </div>
@@ -912,7 +912,7 @@ exports[`/guidance/topic-selection should match the snapshot 1`] = `
                     <span
                       class="visually-hidden"
                     >
-                      Current page
+                      Current page 
                     </span>
                     1
                   </span>
@@ -932,11 +932,11 @@ exports[`/guidance/topic-selection should match the snapshot 1`] = `
                   class="pagination__item pagination__item--count"
                 >
                   <span>
-                    Page
+                    Page 
                     <strong>
                       1
                     </strong>
-                     of
+                     of 
                     <strong>
                       2
                     </strong>
@@ -967,7 +967,7 @@ exports[`/guidance/topic-selection should match the snapshot 1`] = `
                   data-component="button--primary"
                   type="button"
                 >
-                  Copy
+                  Copy 
                   10 results
                    to clipboard
                 </button>
