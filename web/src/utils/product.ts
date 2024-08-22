@@ -25,6 +25,7 @@ import { logger } from "@/logger";
 import { getProductPath, getPublicationPdfDownloadPath } from "@/utils/url";
 
 import { arrayify } from "./array";
+import { fetchAndMapContentParts } from "./contentparts";
 
 /** The title of the ovreview page */
 export const overviewTitle = "Overview";
@@ -38,10 +39,15 @@ export const overviewTitle = "Overview";
 export const getFirstUploadAndConvertPart = (
 	product: ProductDetail
 ): UploadAndConvertContentPart | null => {
-	if (!product.embedded.contentPartList) return null;
+	if (!product.embedded.contentPartList2?.embedded.contentParts) return null;
 
-	const { uploadAndConvertContentPart } =
-		product.embedded.contentPartList.embedded;
+	const { contentParts } = product.embedded.contentPartList2.embedded;
+
+	const uploadAndConvertContentPart =
+		fetchAndMapContentParts<UploadAndConvertContentPart>(
+			contentParts,
+			"UploadAndConvertContentPart"
+		);
 
 	return Array.isArray(uploadAndConvertContentPart)
 		? uploadAndConvertContentPart[0]
@@ -190,7 +196,8 @@ export const validateRouteParams = async ({
 			productPath,
 			pdfDownloadPath: getPublicationPdfDownloadPath(
 				product,
-				productType.group
+				productType.group,
+				product.lastModified
 			),
 			toolsAndResources,
 			hasToolsAndResources: toolsAndResources.length > 0,

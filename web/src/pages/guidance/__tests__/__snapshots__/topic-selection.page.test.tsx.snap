@@ -2,6 +2,7 @@
 
 exports[`/guidance/topic-selection should match the snapshot 1`] = `
 <div>
+<<<<<<< HEAD
   <div />
   <main>
     <div
@@ -12,41 +13,56 @@ exports[`/guidance/topic-selection should match the snapshot 1`] = `
         aria-label="Breadcrumbs"
         data-component="breadcrumbs"
         role="navigation"
+=======
+  <div
+    class="undefined undefined"
+  >
+    <div />
+    <main>
+      <div
+        class="container"
+        data-component="container"
+>>>>>>> main
       >
-        <ol
-          class="breadcrumbs"
+        <nav
+          aria-label="Breadcrumbs"
+          data-component="breadcrumbs"
+          role="navigation"
         >
-          <li
-            class="breadcrumbs__crumb"
+          <ol
+            class="breadcrumbs"
           >
-            <a
-              href="/"
+            <li
+              class="breadcrumbs__crumb"
             >
-              Home
-            </a>
-          </li>
-          <li
-            class="breadcrumbs__crumb"
-          >
-            <a
-              href="/guidance"
+              <a
+                href="/"
+              >
+                Home
+              </a>
+            </li>
+            <li
+              class="breadcrumbs__crumb"
             >
-              NICE guidance
-            </a>
-          </li>
-          <li
-            class="breadcrumbs__crumb"
-          >
-            <span>
-              Topic selection
-            </span>
-          </li>
-        </ol>
-      </nav>
-      <script
-        type="application/ld+json"
-      >
-        {
+              <a
+                href="/guidance"
+              >
+                NICE guidance
+              </a>
+            </li>
+            <li
+              class="breadcrumbs__crumb"
+            >
+              <span>
+                Topic selection
+              </span>
+            </li>
+          </ol>
+        </nav>
+        <script
+          type="application/ld+json"
+        >
+          {
   "@context": "http://schema.org",
   "@type": "BreadcrumbList",
   "itemListElement": [
@@ -75,6 +91,7 @@ exports[`/guidance/topic-selection should match the snapshot 1`] = `
     }
   ]
 }
+<<<<<<< HEAD
       </script>
       <div
         class="page-header "
@@ -199,823 +216,950 @@ exports[`/guidance/topic-selection should match the snapshot 1`] = `
           <form
             aria-label="Filter results"
             id="filters"
+=======
+        </script>
+        <div
+          class="page-header "
+          data-component="page-header"
+          data-testid="content-start"
+          id="content-start"
+        >
+          <div
+            class="grid"
+>>>>>>> main
           >
             <div
-              class="filter-panel"
-              data-component="filter-panel"
+              data-component="grid-item"
+              data-g="12 md:12"
             >
-              <h2
-                class="filter-panel__heading"
+              <h1
+                class="page-header__heading "
               >
-                <button
-                  aria-controls="filter-panel-body"
-                  aria-expanded="true"
-                  type="button"
+                <span
+                  class="page-header__pre-heading"
                 >
-                  <svg
-                    aria-hidden="true"
-                    class="filter-panel__heading-icon filter-panel__heading-icon--expanded"
-                    fill="none"
-                    focusable="false"
-                    height="1em"
-                    viewBox="0 0 512 512"
-                    width="1em"
-                    xmlns="http://www.w3.org/2000/svg"
-                  >
-                    <path
-                      d="M478.152 174c0 10.091-3.525 18.661-10.576 25.712l-186 186c-7.243 7.243-15.909 10.864-26 10.864-10.283 0-18.853-3.621-25.712-10.864l-186-186C36.621 192.853 33 184.283 33 174c0-10.091 3.621-18.757 10.864-26L65 126.576C72.424 119.525 81.09 116 91 116c10.091 0 18.661 3.525 25.712 10.576L255.576 265.44 394.44 126.576c7.051-7.051 15.621-10.576 25.712-10.576 9.909 0 18.576 3.525 26 10.576L467.576 148c7.051 7.424 10.576 16.091 10.576 26Z"
-                      fill="currentColor"
-                    />
-                  </svg>
-                  Filter
-                </button>
-              </h2>
-              <div
-                aria-hidden="false"
-                class="filter-panel__body"
-                id="filter-panel-body"
+                  Guidance in 
+                </span>
+                Topic selection
+              </h1>
+              <p
+                class="page-header__lead"
               >
+                <a
+                  class="skipLink"
+                  href="#filters"
+                >
+                  Skip to filters
+                </a>
                 <a
                   class="skipLink"
                   href="#results"
                 >
                   Skip to results
                 </a>
-                <input
-                  name="ps"
-                  type="hidden"
-                  value=""
-                />
-                <input
-                  name="s"
-                  type="hidden"
-                  value=""
-                />
-                <div
-                  class="container"
+              </p>
+            </div>
+          </div>
+        </div>
+        <nav
+          aria-label="Stages of guidance development"
+          class="horizontal-nav"
+        >
+          <ul
+            class="horizontal-nav__list"
+          >
+            <li
+              class="horizontal-nav__item"
+              data-component="horizontal-nav"
+            >
+              <a
+                aria-current="false"
+                class="horizontal-nav__link"
+                href="/guidance/published"
+              >
+                Published
+              </a>
+            </li>
+            <li
+              class="horizontal-nav__item"
+              data-component="horizontal-nav"
+            >
+              <a
+                aria-current="false"
+                class="horizontal-nav__link"
+                href="/guidance/inconsultation"
+              >
+                In consultation
+              </a>
+            </li>
+            <li
+              class="horizontal-nav__item"
+              data-component="horizontal-nav"
+            >
+              <a
+                aria-current="false"
+                class="horizontal-nav__link"
+                href="/guidance/indevelopment"
+              >
+                In development
+              </a>
+            </li>
+            <li
+              class="horizontal-nav__item"
+              data-component="horizontal-nav"
+            >
+              <a
+                aria-current="false"
+                class="horizontal-nav__link"
+                href="/guidance/awaiting-development"
+              >
+                Awaiting development
+              </a>
+            </li>
+            <li
+              class="horizontal-nav__item"
+              data-component="horizontal-nav"
+            >
+              <a
+                aria-current="false"
+                class="horizontal-nav__link"
+                href="/guidance/topic-selection"
+              >
+                Topic selection
+              </a>
+            </li>
+          </ul>
+        </nav>
+        <div
+          class="grid grid--loose sectionWrapper"
+        >
+          <section
+            aria-label="Filter results"
+            class="panelWrapper"
+            data-component="grid-item"
+            data-g="12 md:4 lg:3"
+          >
+            <form
+              aria-label="Filter results"
+              id="filters"
+            >
+              <div
+                class="filter-panel"
+                data-component="filter-panel"
+              >
+                <h2
+                  class="filter-panel__heading"
                 >
-                  <label
-                    class="label"
-                    for="q"
-                  >
-                    Filter by title or keyword
-                  </label>
-                  <div
-                    class="input"
-                    data-component="input"
-                  >
-                    <input
-                      autocomplete="off"
-                      class="input__input"
-                      id="q"
-                      name="q"
-                      placeholder="E.g. 'diabetes' or 'NG28'"
-                      type="text"
-                      value=""
-                    />
-                  </div>
                   <button
-                    class="btn button"
-                    data-component="button--primary"
-                    type="submit"
+                    aria-controls="filter-panel-body"
+                    aria-expanded="true"
+                    type="button"
                   >
+                    <svg
+                      aria-hidden="true"
+                      class="filter-panel__heading-icon filter-panel__heading-icon--expanded"
+                      fill="none"
+                      focusable="false"
+                      height="1em"
+                      viewBox="0 0 512 512"
+                      width="1em"
+                      xmlns="http://www.w3.org/2000/svg"
+                    >
+                      <path
+                        d="M478.152 174c0 10.091-3.525 18.661-10.576 25.712l-186 186c-7.243 7.243-15.909 10.864-26 10.864-10.283 0-18.853-3.621-25.712-10.864l-186-186C36.621 192.853 33 184.283 33 174c0-10.091 3.621-18.757 10.864-26L65 126.576C72.424 119.525 81.09 116 91 116c10.091 0 18.661 3.525 25.712 10.576L255.576 265.44 394.44 126.576c7.051-7.051 15.621-10.576 25.712-10.576 9.909 0 18.576 3.525 26 10.576L467.576 148c7.051 7.424 10.576 16.091 10.576 26Z"
+                        fill="currentColor"
+                      />
+                    </svg>
                     Filter
                   </button>
-                </div>
+                </h2>
                 <div
-                  class="filter-group"
+                  aria-hidden="false"
+                  class="filter-panel__body"
+                  id="filter-panel-body"
                 >
-                  <h3
-                    class="filter-group__heading"
+                  <a
+                    class="skipLink"
+                    href="#results"
                   >
-                    <button
-                      aria-controls="group-nai"
-                      aria-expanded="true"
-                      type="button"
+                    Skip to results
+                  </a>
+                  <input
+                    name="ps"
+                    type="hidden"
+                    value=""
+                  />
+                  <input
+                    name="s"
+                    type="hidden"
+                    value=""
+                  />
+                  <div
+                    class="container"
+                  >
+                    <label
+                      class="label"
+                      for="q"
                     >
-                      <svg
-                        aria-hidden="true"
-                        class="filter-group__heading-icon filter-group__heading-icon--expanded"
-                        fill="none"
-                        focusable="false"
-                        height="1em"
-                        viewBox="0 0 512 512"
-                        width="1em"
-                        xmlns="http://www.w3.org/2000/svg"
+                      Filter by title or keyword
+                    </label>
+                    <div
+                      class="input"
+                      data-component="input"
+                    >
+                      <input
+                        autocomplete="off"
+                        class="input__input"
+                        id="q"
+                        name="q"
+                        placeholder="E.g. 'diabetes' or 'NG28'"
+                        type="text"
+                        value=""
+                      />
+                    </div>
+                    <button
+                      class="btn button"
+                      data-component="button--primary"
+                      type="submit"
+                    >
+                      Filter
+                    </button>
+                  </div>
+                  <div
+                    class="filter-group"
+                  >
+                    <h3
+                      class="filter-group__heading"
+                    >
+                      <button
+                        aria-controls="group-nai"
+                        aria-expanded="true"
+                        type="button"
                       >
-                        <path
-                          d="M478.152 174c0 10.091-3.525 18.661-10.576 25.712l-186 186c-7.243 7.243-15.909 10.864-26 10.864-10.283 0-18.853-3.621-25.712-10.864l-186-186C36.621 192.853 33 184.283 33 174c0-10.091 3.621-18.757 10.864-26L65 126.576C72.424 119.525 81.09 116 91 116c10.091 0 18.661 3.525 25.712 10.576L255.576 265.44 394.44 126.576c7.051-7.051 15.621-10.576 25.712-10.576 9.909 0 18.576 3.525 26 10.576L467.576 148c7.051 7.424 10.576 16.091 10.576 26Z"
-                          fill="currentColor"
-                        />
-                      </svg>
-                      <span
-                        id="group-heading-nai"
-                      >
+                        <svg
+                          aria-hidden="true"
+                          class="filter-group__heading-icon filter-group__heading-icon--expanded"
+                          fill="none"
+                          focusable="false"
+                          height="1em"
+                          viewBox="0 0 512 512"
+                          width="1em"
+                          xmlns="http://www.w3.org/2000/svg"
+                        >
+                          <path
+                            d="M478.152 174c0 10.091-3.525 18.661-10.576 25.712l-186 186c-7.243 7.243-15.909 10.864-26 10.864-10.283 0-18.853-3.621-25.712-10.864l-186-186C36.621 192.853 33 184.283 33 174c0-10.091 3.621-18.757 10.864-26L65 126.576C72.424 119.525 81.09 116 91 116c10.091 0 18.661 3.525 25.712 10.576L255.576 265.44 394.44 126.576c7.051-7.051 15.621-10.576 25.712-10.576 9.909 0 18.576 3.525 26 10.576L467.576 148c7.051 7.424 10.576 16.091 10.576 26Z"
+                            fill="currentColor"
+                          />
+                        </svg>
+                        <span
+                          id="group-heading-nai"
+                        >
+                          Area of interest
+                           
+                        </span>
+                      </button>
+                    </h3>
+                    <fieldset
+                      aria-hidden="false"
+                      class="filter-group__options"
+                      id="group-nai"
+                    >
+                      <legend>
                         Area of interest
-                         
-                      </span>
-                    </button>
-                  </h3>
-                  <fieldset
-                    aria-hidden="false"
-                    class="filter-group__options"
-                    id="group-nai"
-                  >
-                    <legend>
-                      Area of interest
-                    </legend>
-                    <label
-                      class="filter-option"
-                      data-component="filter-option"
-                      for="filter_nai_covid-19"
-                    >
-                      <input
-                        id="filter_nai_covid-19"
-                        name="nai"
-                        title="Area of interest - COVID-19 (1)"
-                        type="checkbox"
-                        value="COVID-19"
-                      />
-                      <span
-                        class="filter-option__text"
+                      </legend>
+                      <label
+                        class="filter-option"
+                        data-component="filter-option"
+                        for="filter_nai_covid-19"
                       >
-                        COVID-19 (1)
-                      </span>
-                    </label>
-                  </fieldset>
-                </div>
-                <div
-                  class="filter-group"
-                >
-                  <h3
-                    class="filter-group__heading"
-                  >
-                    <button
-                      aria-controls="group-tt"
-                      aria-expanded="true"
-                      type="button"
-                    >
-                      <svg
-                        aria-hidden="true"
-                        class="filter-group__heading-icon filter-group__heading-icon--expanded"
-                        fill="none"
-                        focusable="false"
-                        height="1em"
-                        viewBox="0 0 512 512"
-                        width="1em"
-                        xmlns="http://www.w3.org/2000/svg"
-                      >
-                        <path
-                          d="M478.152 174c0 10.091-3.525 18.661-10.576 25.712l-186 186c-7.243 7.243-15.909 10.864-26 10.864-10.283 0-18.853-3.621-25.712-10.864l-186-186C36.621 192.853 33 184.283 33 174c0-10.091 3.621-18.757 10.864-26L65 126.576C72.424 119.525 81.09 116 91 116c10.091 0 18.661 3.525 25.712 10.576L255.576 265.44 394.44 126.576c7.051-7.051 15.621-10.576 25.712-10.576 9.909 0 18.576 3.525 26 10.576L467.576 148c7.051 7.424 10.576 16.091 10.576 26Z"
-                          fill="currentColor"
+                        <input
+                          id="filter_nai_covid-19"
+                          name="nai"
+                          title="Area of interest - COVID-19 (1)"
+                          type="checkbox"
+                          value="COVID-19"
                         />
-                      </svg>
-                      <span
-                        id="group-heading-tt"
+                        <span
+                          class="filter-option__text"
+                        >
+                          COVID-19 (1)
+                        </span>
+                      </label>
+                    </fieldset>
+                  </div>
+                  <div
+                    class="filter-group"
+                  >
+                    <h3
+                      class="filter-group__heading"
+                    >
+                      <button
+                        aria-controls="group-tt"
+                        aria-expanded="true"
+                        type="button"
                       >
+                        <svg
+                          aria-hidden="true"
+                          class="filter-group__heading-icon filter-group__heading-icon--expanded"
+                          fill="none"
+                          focusable="false"
+                          height="1em"
+                          viewBox="0 0 512 512"
+                          width="1em"
+                          xmlns="http://www.w3.org/2000/svg"
+                        >
+                          <path
+                            d="M478.152 174c0 10.091-3.525 18.661-10.576 25.712l-186 186c-7.243 7.243-15.909 10.864-26 10.864-10.283 0-18.853-3.621-25.712-10.864l-186-186C36.621 192.853 33 184.283 33 174c0-10.091 3.621-18.757 10.864-26L65 126.576C72.424 119.525 81.09 116 91 116c10.091 0 18.661 3.525 25.712 10.576L255.576 265.44 394.44 126.576c7.051-7.051 15.621-10.576 25.712-10.576 9.909 0 18.576 3.525 26 10.576L467.576 148c7.051 7.424 10.576 16.091 10.576 26Z"
+                            fill="currentColor"
+                          />
+                        </svg>
+                        <span
+                          id="group-heading-tt"
+                        >
+                          Technology type
+                           
+                        </span>
+                      </button>
+                    </h3>
+                    <fieldset
+                      aria-hidden="false"
+                      class="filter-group__options"
+                      id="group-tt"
+                    >
+                      <legend>
                         Technology type
-                         
-                      </span>
-                    </button>
-                  </h3>
-                  <fieldset
-                    aria-hidden="false"
-                    class="filter-group__options"
-                    id="group-tt"
-                  >
-                    <legend>
-                      Technology type
-                    </legend>
-                    <label
-                      class="filter-option"
-                      data-component="filter-option"
-                      for="filter_tt_device"
-                    >
-                      <input
-                        id="filter_tt_device"
-                        name="tt"
-                        title="Technology type - Device (2)"
-                        type="checkbox"
-                        value="Device"
-                      />
-                      <span
-                        class="filter-option__text"
+                      </legend>
+                      <label
+                        class="filter-option"
+                        data-component="filter-option"
+                        for="filter_tt_device"
                       >
-                        Device (2)
-                      </span>
-                    </label>
-                    <label
-                      class="filter-option"
-                      data-component="filter-option"
-                      for="filter_tt_diagnostic"
-                    >
-                      <input
-                        id="filter_tt_diagnostic"
-                        name="tt"
-                        title="Technology type - Diagnostic (2)"
-                        type="checkbox"
-                        value="Diagnostic"
-                      />
-                      <span
-                        class="filter-option__text"
-                      >
-                        Diagnostic (2)
-                      </span>
-                    </label>
-                    <label
-                      class="filter-option"
-                      data-component="filter-option"
-                      for="filter_tt_medicine"
-                    >
-                      <input
-                        id="filter_tt_medicine"
-                        name="tt"
-                        title="Technology type - Medicine (1)"
-                        type="checkbox"
-                        value="Medicine"
-                      />
-                      <span
-                        class="filter-option__text"
-                      >
-                        Medicine (1)
-                      </span>
-                    </label>
-                    <label
-                      class="filter-option"
-                      data-component="filter-option"
-                      for="filter_tt_procedure"
-                    >
-                      <input
-                        id="filter_tt_procedure"
-                        name="tt"
-                        title="Technology type - Procedure (1)"
-                        type="checkbox"
-                        value="Procedure"
-                      />
-                      <span
-                        class="filter-option__text"
-                      >
-                        Procedure (1)
-                      </span>
-                    </label>
-                  </fieldset>
-                </div>
-                <div
-                  class="filter-group"
-                >
-                  <h3
-                    class="filter-group__heading"
-                  >
-                    <button
-                      aria-controls="group-tsd"
-                      aria-expanded="true"
-                      type="button"
-                    >
-                      <svg
-                        aria-hidden="true"
-                        class="filter-group__heading-icon filter-group__heading-icon--expanded"
-                        fill="none"
-                        focusable="false"
-                        height="1em"
-                        viewBox="0 0 512 512"
-                        width="1em"
-                        xmlns="http://www.w3.org/2000/svg"
-                      >
-                        <path
-                          d="M478.152 174c0 10.091-3.525 18.661-10.576 25.712l-186 186c-7.243 7.243-15.909 10.864-26 10.864-10.283 0-18.853-3.621-25.712-10.864l-186-186C36.621 192.853 33 184.283 33 174c0-10.091 3.621-18.757 10.864-26L65 126.576C72.424 119.525 81.09 116 91 116c10.091 0 18.661 3.525 25.712 10.576L255.576 265.44 394.44 126.576c7.051-7.051 15.621-10.576 25.712-10.576 9.909 0 18.576 3.525 26 10.576L467.576 148c7.051 7.424 10.576 16.091 10.576 26Z"
-                          fill="currentColor"
+                        <input
+                          id="filter_tt_device"
+                          name="tt"
+                          title="Technology type - Device (2)"
+                          type="checkbox"
+                          value="Device"
                         />
-                      </svg>
-                      <span
-                        id="group-heading-tsd"
+                        <span
+                          class="filter-option__text"
+                        >
+                          Device (2)
+                        </span>
+                      </label>
+                      <label
+                        class="filter-option"
+                        data-component="filter-option"
+                        for="filter_tt_diagnostic"
                       >
+                        <input
+                          id="filter_tt_diagnostic"
+                          name="tt"
+                          title="Technology type - Diagnostic (2)"
+                          type="checkbox"
+                          value="Diagnostic"
+                        />
+                        <span
+                          class="filter-option__text"
+                        >
+                          Diagnostic (2)
+                        </span>
+                      </label>
+                      <label
+                        class="filter-option"
+                        data-component="filter-option"
+                        for="filter_tt_medicine"
+                      >
+                        <input
+                          id="filter_tt_medicine"
+                          name="tt"
+                          title="Technology type - Medicine (1)"
+                          type="checkbox"
+                          value="Medicine"
+                        />
+                        <span
+                          class="filter-option__text"
+                        >
+                          Medicine (1)
+                        </span>
+                      </label>
+                      <label
+                        class="filter-option"
+                        data-component="filter-option"
+                        for="filter_tt_procedure"
+                      >
+                        <input
+                          id="filter_tt_procedure"
+                          name="tt"
+                          title="Technology type - Procedure (1)"
+                          type="checkbox"
+                          value="Procedure"
+                        />
+                        <span
+                          class="filter-option__text"
+                        >
+                          Procedure (1)
+                        </span>
+                      </label>
+                    </fieldset>
+                  </div>
+                  <div
+                    class="filter-group"
+                  >
+                    <h3
+                      class="filter-group__heading"
+                    >
+                      <button
+                        aria-controls="group-tsd"
+                        aria-expanded="true"
+                        type="button"
+                      >
+                        <svg
+                          aria-hidden="true"
+                          class="filter-group__heading-icon filter-group__heading-icon--expanded"
+                          fill="none"
+                          focusable="false"
+                          height="1em"
+                          viewBox="0 0 512 512"
+                          width="1em"
+                          xmlns="http://www.w3.org/2000/svg"
+                        >
+                          <path
+                            d="M478.152 174c0 10.091-3.525 18.661-10.576 25.712l-186 186c-7.243 7.243-15.909 10.864-26 10.864-10.283 0-18.853-3.621-25.712-10.864l-186-186C36.621 192.853 33 184.283 33 174c0-10.091 3.621-18.757 10.864-26L65 126.576C72.424 119.525 81.09 116 91 116c10.091 0 18.661 3.525 25.712 10.576L255.576 265.44 394.44 126.576c7.051-7.051 15.621-10.576 25.712-10.576 9.909 0 18.576 3.525 26 10.576L467.576 148c7.051 7.424 10.576 16.091 10.576 26Z"
+                            fill="currentColor"
+                          />
+                        </svg>
+                        <span
+                          id="group-heading-tsd"
+                        >
+                          Topic selection decision
+                           
+                        </span>
+                      </button>
+                    </h3>
+                    <fieldset
+                      aria-hidden="false"
+                      class="filter-group__options"
+                      id="group-tsd"
+                    >
+                      <legend>
                         Topic selection decision
-                         
-                      </span>
-                    </button>
-                  </h3>
-                  <fieldset
-                    aria-hidden="false"
-                    class="filter-group__options"
-                    id="group-tsd"
-                  >
-                    <legend>
-                      Topic selection decision
-                    </legend>
-                    <label
-                      class="filter-option"
-                      data-component="filter-option"
-                      for="filter_tsd_awaiting-decision"
-                    >
-                      <input
-                        id="filter_tsd_awaiting-decision"
-                        name="tsd"
-                        title="Topic selection decision - Awaiting decision (12)"
-                        type="checkbox"
-                        value="Awaiting decision"
-                      />
-                      <span
-                        class="filter-option__text"
+                      </legend>
+                      <label
+                        class="filter-option"
+                        data-component="filter-option"
+                        for="filter_tsd_awaiting-decision"
                       >
-                        Awaiting decision (12)
-                      </span>
-                    </label>
-                    <label
-                      class="filter-option"
-                      data-component="filter-option"
-                      for="filter_tsd_further-information-required"
-                    >
-                      <input
-                        id="filter_tsd_further-information-required"
-                        name="tsd"
-                        title="Topic selection decision - Further information required (1)"
-                        type="checkbox"
-                        value="Further information required"
-                      />
-                      <span
-                        class="filter-option__text"
-                      >
-                        Further information required (1)
-                      </span>
-                    </label>
-                  </fieldset>
-                </div>
-                <div
-                  class="filter-group"
-                >
-                  <h3
-                    class="filter-group__heading"
-                  >
-                    <button
-                      aria-controls="group-ngt"
-                      aria-expanded="false"
-                      type="button"
-                    >
-                      <svg
-                        aria-hidden="true"
-                        class="filter-group__heading-icon"
-                        fill="none"
-                        focusable="false"
-                        height="1em"
-                        viewBox="0 0 512 512"
-                        width="1em"
-                        xmlns="http://www.w3.org/2000/svg"
-                      >
-                        <path
-                          d="M478.152 174c0 10.091-3.525 18.661-10.576 25.712l-186 186c-7.243 7.243-15.909 10.864-26 10.864-10.283 0-18.853-3.621-25.712-10.864l-186-186C36.621 192.853 33 184.283 33 174c0-10.091 3.621-18.757 10.864-26L65 126.576C72.424 119.525 81.09 116 91 116c10.091 0 18.661 3.525 25.712 10.576L255.576 265.44 394.44 126.576c7.051-7.051 15.621-10.576 25.712-10.576 9.909 0 18.576 3.525 26 10.576L467.576 148c7.051 7.424 10.576 16.091 10.576 26Z"
-                          fill="currentColor"
+                        <input
+                          id="filter_tsd_awaiting-decision"
+                          name="tsd"
+                          title="Topic selection decision - Awaiting decision (12)"
+                          type="checkbox"
+                          value="Awaiting decision"
                         />
-                      </svg>
-                      <span
-                        id="group-heading-ngt"
+                        <span
+                          class="filter-option__text"
+                        >
+                          Awaiting decision (12)
+                        </span>
+                      </label>
+                      <label
+                        class="filter-option"
+                        data-component="filter-option"
+                        for="filter_tsd_further-information-required"
                       >
-                        Guidance programme
-                         
-                      </span>
-                    </button>
-                  </h3>
-                  <fieldset
-                    aria-hidden="true"
-                    class="filter-group__options"
-                    id="group-ngt"
+                        <input
+                          id="filter_tsd_further-information-required"
+                          name="tsd"
+                          title="Topic selection decision - Further information required (1)"
+                          type="checkbox"
+                          value="Further information required"
+                        />
+                        <span
+                          class="filter-option__text"
+                        >
+                          Further information required (1)
+                        </span>
+                      </label>
+                    </fieldset>
+                  </div>
+                  <div
+                    class="filter-group"
                   >
-                    <legend>
-                      Guidance programme
-                    </legend>
-                    <label
-                      class="filter-option"
-                      data-component="filter-option"
-                      for="filter_ngt_diagnostics-guidance"
+                    <h3
+                      class="filter-group__heading"
                     >
-                      <input
-                        id="filter_ngt_diagnostics-guidance"
-                        name="ngt"
-                        title="Guidance programme - Diagnostics guidance (6)"
-                        type="checkbox"
-                        value="Diagnostics guidance"
-                      />
-                      <span
-                        class="filter-option__text"
+                      <button
+                        aria-controls="group-ngt"
+                        aria-expanded="false"
+                        type="button"
                       >
-                        Diagnostics guidance (6)
-                      </span>
-                    </label>
-                    <label
-                      class="filter-option"
-                      data-component="filter-option"
-                      for="filter_ngt_highly-specialised-technologies-guidance"
+                        <svg
+                          aria-hidden="true"
+                          class="filter-group__heading-icon"
+                          fill="none"
+                          focusable="false"
+                          height="1em"
+                          viewBox="0 0 512 512"
+                          width="1em"
+                          xmlns="http://www.w3.org/2000/svg"
+                        >
+                          <path
+                            d="M478.152 174c0 10.091-3.525 18.661-10.576 25.712l-186 186c-7.243 7.243-15.909 10.864-26 10.864-10.283 0-18.853-3.621-25.712-10.864l-186-186C36.621 192.853 33 184.283 33 174c0-10.091 3.621-18.757 10.864-26L65 126.576C72.424 119.525 81.09 116 91 116c10.091 0 18.661 3.525 25.712 10.576L255.576 265.44 394.44 126.576c7.051-7.051 15.621-10.576 25.712-10.576 9.909 0 18.576 3.525 26 10.576L467.576 148c7.051 7.424 10.576 16.091 10.576 26Z"
+                            fill="currentColor"
+                          />
+                        </svg>
+                        <span
+                          id="group-heading-ngt"
+                        >
+                          Guidance programme
+                           
+                        </span>
+                      </button>
+                    </h3>
+                    <fieldset
+                      aria-hidden="true"
+                      class="filter-group__options"
+                      id="group-ngt"
                     >
-                      <input
-                        id="filter_ngt_highly-specialised-technologies-guidance"
-                        name="ngt"
-                        title="Guidance programme - Highly specialised technologies guidance (1)"
-                        type="checkbox"
-                        value="Highly specialised technologies guidance"
-                      />
-                      <span
-                        class="filter-option__text"
+                      <legend>
+                        Guidance programme
+                      </legend>
+                      <label
+                        class="filter-option"
+                        data-component="filter-option"
+                        for="filter_ngt_diagnostics-guidance"
                       >
-                        Highly specialised technologies guidance (1)
-                      </span>
-                    </label>
-                    <label
-                      class="filter-option"
-                      data-component="filter-option"
-                      for="filter_ngt_interventional-procedures-guidance"
-                    >
-                      <input
-                        id="filter_ngt_interventional-procedures-guidance"
-                        name="ngt"
-                        title="Guidance programme - Interventional procedures guidance (3)"
-                        type="checkbox"
-                        value="Interventional procedures guidance"
-                      />
-                      <span
-                        class="filter-option__text"
+                        <input
+                          id="filter_ngt_diagnostics-guidance"
+                          name="ngt"
+                          title="Guidance programme - Diagnostics guidance (6)"
+                          type="checkbox"
+                          value="Diagnostics guidance"
+                        />
+                        <span
+                          class="filter-option__text"
+                        >
+                          Diagnostics guidance (6)
+                        </span>
+                      </label>
+                      <label
+                        class="filter-option"
+                        data-component="filter-option"
+                        for="filter_ngt_highly-specialised-technologies-guidance"
                       >
-                        Interventional procedures guidance (3)
-                      </span>
-                    </label>
-                    <label
-                      class="filter-option"
-                      data-component="filter-option"
-                      for="filter_ngt_medical-technologies-guidance"
-                    >
-                      <input
-                        id="filter_ngt_medical-technologies-guidance"
-                        name="ngt"
-                        title="Guidance programme - Medical technologies guidance (2)"
-                        type="checkbox"
-                        value="Medical technologies guidance"
-                      />
-                      <span
-                        class="filter-option__text"
+                        <input
+                          id="filter_ngt_highly-specialised-technologies-guidance"
+                          name="ngt"
+                          title="Guidance programme - Highly specialised technologies guidance (1)"
+                          type="checkbox"
+                          value="Highly specialised technologies guidance"
+                        />
+                        <span
+                          class="filter-option__text"
+                        >
+                          Highly specialised technologies guidance (1)
+                        </span>
+                      </label>
+                      <label
+                        class="filter-option"
+                        data-component="filter-option"
+                        for="filter_ngt_interventional-procedures-guidance"
                       >
-                        Medical technologies guidance (2)
-                      </span>
-                    </label>
-                    <label
-                      class="filter-option"
-                      data-component="filter-option"
-                      for="filter_ngt_technology-appraisal-guidance"
-                    >
-                      <input
-                        id="filter_ngt_technology-appraisal-guidance"
-                        name="ngt"
-                        title="Guidance programme - Technology appraisal guidance (1)"
-                        type="checkbox"
-                        value="Technology appraisal guidance"
-                      />
-                      <span
-                        class="filter-option__text"
+                        <input
+                          id="filter_ngt_interventional-procedures-guidance"
+                          name="ngt"
+                          title="Guidance programme - Interventional procedures guidance (3)"
+                          type="checkbox"
+                          value="Interventional procedures guidance"
+                        />
+                        <span
+                          class="filter-option__text"
+                        >
+                          Interventional procedures guidance (3)
+                        </span>
+                      </label>
+                      <label
+                        class="filter-option"
+                        data-component="filter-option"
+                        for="filter_ngt_medical-technologies-guidance"
                       >
-                        Technology appraisal guidance (1)
-                      </span>
-                    </label>
-                  </fieldset>
+                        <input
+                          id="filter_ngt_medical-technologies-guidance"
+                          name="ngt"
+                          title="Guidance programme - Medical technologies guidance (2)"
+                          type="checkbox"
+                          value="Medical technologies guidance"
+                        />
+                        <span
+                          class="filter-option__text"
+                        >
+                          Medical technologies guidance (2)
+                        </span>
+                      </label>
+                      <label
+                        class="filter-option"
+                        data-component="filter-option"
+                        for="filter_ngt_technology-appraisal-guidance"
+                      >
+                        <input
+                          id="filter_ngt_technology-appraisal-guidance"
+                          name="ngt"
+                          title="Guidance programme - Technology appraisal guidance (1)"
+                          type="checkbox"
+                          value="Technology appraisal guidance"
+                        />
+                        <span
+                          class="filter-option__text"
+                        >
+                          Technology appraisal guidance (1)
+                        </span>
+                      </label>
+                    </fieldset>
+                  </div>
                 </div>
               </div>
-            </div>
-          </form>
-        </section>
-        <section
-          aria-labelledby="filter-summary"
-          data-component="grid-item"
-          data-g="12 md:8 lg:9"
-        >
-          <div
-            class="filter-summary"
-            data-component="filter-summary"
-            id="filter-summary"
+            </form>
+          </section>
+          <section
+            aria-labelledby="filter-summary"
+            data-component="grid-item"
+            data-g="12 md:8 lg:9"
           >
             <div
-              class="filter-summary__count"
+              class="filter-summary"
+              data-component="filter-summary"
+              id="filter-summary"
             >
-              <h2
-                class="h5 mv--0"
+              <div
+                class="filter-summary__count"
               >
-                Showing 
-                1
-                 to 
-                10
-                 of 
-                13
-              </h2>
+                <h2
+                  class="h5 mv--0"
+                >
+                  Showing 
+                  1
+                   to 
+                  10
+                   of 
+                  13
+                </h2>
+              </div>
             </div>
-          </div>
-          <div
-            class="tableWrapper"
-          >
-            <table
-              aria-describedby="filter-summary"
-              class="table"
-              data-component="table"
-              id="results"
+            <div
+              class="tableWrapper"
             >
-              <caption
-                class="visually-hidden"
+              <table
+                aria-describedby="filter-summary"
+                class="table"
+                data-component="table"
+                id="results"
               >
-                Guidance in topic selection
-              </caption>
-              <thead>
-                <tr>
-                  <th
-                    scope="col"
-                  >
-                    Title
-                  </th>
-                  <th
-                    scope="col"
-                  >
-                    Technology type
-                  </th>
-                  <th
-                    scope="col"
-                  >
-                    Decision
-                  </th>
-                </tr>
-              </thead>
-              <tbody>
-                <tr>
-                  <td>
-                    <a
-                      href="https://next-web-tests.nice.org.uk/guidance/indevelopment/GID-DG10162"
+                <caption
+                  class="visually-hidden"
+                >
+                  Guidance in topic selection
+                </caption>
+                <thead>
+                  <tr>
+                    <th
+                      scope="col"
                     >
-                      DG11
-                    </a>
-                  </td>
-                  <td>
-                    n/a
-                  </td>
-                  <td>
-                    Awaiting decision
-                  </td>
-                </tr>
-                <tr>
-                  <td>
-                    <a
-                      href="https://next-web-tests.nice.org.uk/guidance/indevelopment/GID-DG10161"
+                      Title
+                    </th>
+                    <th
+                      scope="col"
                     >
-                      DG-ID322
-                    </a>
-                  </td>
-                  <td>
-                    n/a
-                  </td>
-                  <td>
-                    Awaiting decision
-                  </td>
-                </tr>
-                <tr>
-                  <td>
-                    <a
-                      href="https://next-web-tests.nice.org.uk/guidance/indevelopment/GID-TA10409"
+                      Technology type
+                    </th>
+                    <th
+                      scope="col"
                     >
-                      TAID330
-                    </a>
-                  </td>
-                  <td>
-                    n/a
-                  </td>
-                  <td>
-                    Further information required
-                  </td>
-                </tr>
-                <tr>
-                  <td>
-                    <a
-                      href="https://next-web-tests.nice.org.uk/guidance/indevelopment/GID-IPG10126"
-                    >
-                      TEST Project IP
-                    </a>
-                  </td>
-                  <td>
-                    n/a
-                  </td>
-                  <td>
-                    Awaiting decision
-                  </td>
-                </tr>
-                <tr>
-                  <td>
-                    <a
-                      href="https://next-web-tests.nice.org.uk/guidance/indevelopment/GID-DG10175"
-                    >
-                      Idam476Nov112021a
-                    </a>
-                  </td>
-                  <td>
-                    Diagnostic
-                  </td>
-                  <td>
-                    Awaiting decision
-                  </td>
-                </tr>
-                <tr>
-                  <td>
-                    <a
-                      href="https://next-web-tests.nice.org.uk/guidance/indevelopment/GID-DG10167"
-                    >
-                      DG321
-                    </a>
-                  </td>
-                  <td>
-                    n/a
-                  </td>
-                  <td>
-                    Awaiting decision
-                  </td>
-                </tr>
-                <tr>
-                  <td>
-                    <a
-                      href="https://next-web-tests.nice.org.uk/guidance/indevelopment/GID-IPG10130"
-                    >
-                      TA321-2
-                    </a>
-                  </td>
-                  <td>
-                    n/a
-                  </td>
-                  <td>
-                    Awaiting decision
-                  </td>
-                </tr>
-                <tr>
-                  <td>
-                    <a
-                      href="https://next-web-tests.nice.org.uk/guidance/indevelopment/GID-DG10177"
-                    >
-                      DG329
-                    </a>
-                  </td>
-                  <td>
-                    Diagnostic
-                  </td>
-                  <td>
-                    Awaiting decision
-                  </td>
-                </tr>
-                <tr>
-                  <td>
-                    <a
-                      href="https://next-web-tests.nice.org.uk/guidance/indevelopment/GID-DG10172"
-                    >
-                      DG323
-                    </a>
-                  </td>
-                  <td>
-                    n/a
-                  </td>
-                  <td>
-                    Awaiting decision
-                  </td>
-                </tr>
-                <tr>
-                  <td>
-                    <a
-                      href="https://next-web-tests.nice.org.uk/guidance/indevelopment/GID-MT590"
-                    >
-                      MTG323
-                    </a>
-                  </td>
-                  <td>
-                    Device
-                  </td>
-                  <td>
-                    Awaiting decision
-                  </td>
-                </tr>
-              </tbody>
-            </table>
-          </div>
-          <nav
-            aria-label="Pagination"
-            class="pagination "
-            data-component="pagination"
-            role="navigation"
-          >
-            <ol
-              class="pagination__list"
+                      Decision
+                    </th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td>
+                      <a
+                        href="https://next-web-tests.nice.org.uk/guidance/indevelopment/GID-DG10162"
+                      >
+                        DG11
+                      </a>
+                    </td>
+                    <td>
+                      n/a
+                    </td>
+                    <td>
+                      Awaiting decision
+                    </td>
+                  </tr>
+                  <tr>
+                    <td>
+                      <a
+                        href="https://next-web-tests.nice.org.uk/guidance/indevelopment/GID-DG10161"
+                      >
+                        DG-ID322
+                      </a>
+                    </td>
+                    <td>
+                      n/a
+                    </td>
+                    <td>
+                      Awaiting decision
+                    </td>
+                  </tr>
+                  <tr>
+                    <td>
+                      <a
+                        href="https://next-web-tests.nice.org.uk/guidance/indevelopment/GID-TA10409"
+                      >
+                        TAID330
+                      </a>
+                    </td>
+                    <td>
+                      n/a
+                    </td>
+                    <td>
+                      Further information required
+                    </td>
+                  </tr>
+                  <tr>
+                    <td>
+                      <a
+                        href="https://next-web-tests.nice.org.uk/guidance/indevelopment/GID-IPG10126"
+                      >
+                        TEST Project IP
+                      </a>
+                    </td>
+                    <td>
+                      n/a
+                    </td>
+                    <td>
+                      Awaiting decision
+                    </td>
+                  </tr>
+                  <tr>
+                    <td>
+                      <a
+                        href="https://next-web-tests.nice.org.uk/guidance/indevelopment/GID-DG10175"
+                      >
+                        Idam476Nov112021a
+                      </a>
+                    </td>
+                    <td>
+                      Diagnostic
+                    </td>
+                    <td>
+                      Awaiting decision
+                    </td>
+                  </tr>
+                  <tr>
+                    <td>
+                      <a
+                        href="https://next-web-tests.nice.org.uk/guidance/indevelopment/GID-DG10167"
+                      >
+                        DG321
+                      </a>
+                    </td>
+                    <td>
+                      n/a
+                    </td>
+                    <td>
+                      Awaiting decision
+                    </td>
+                  </tr>
+                  <tr>
+                    <td>
+                      <a
+                        href="https://next-web-tests.nice.org.uk/guidance/indevelopment/GID-IPG10130"
+                      >
+                        TA321-2
+                      </a>
+                    </td>
+                    <td>
+                      n/a
+                    </td>
+                    <td>
+                      Awaiting decision
+                    </td>
+                  </tr>
+                  <tr>
+                    <td>
+                      <a
+                        href="https://next-web-tests.nice.org.uk/guidance/indevelopment/GID-DG10177"
+                      >
+                        DG329
+                      </a>
+                    </td>
+                    <td>
+                      Diagnostic
+                    </td>
+                    <td>
+                      Awaiting decision
+                    </td>
+                  </tr>
+                  <tr>
+                    <td>
+                      <a
+                        href="https://next-web-tests.nice.org.uk/guidance/indevelopment/GID-DG10172"
+                      >
+                        DG323
+                      </a>
+                    </td>
+                    <td>
+                      n/a
+                    </td>
+                    <td>
+                      Awaiting decision
+                    </td>
+                  </tr>
+                  <tr>
+                    <td>
+                      <a
+                        href="https://next-web-tests.nice.org.uk/guidance/indevelopment/GID-MT590"
+                      >
+                        MTG323
+                      </a>
+                    </td>
+                    <td>
+                      Device
+                    </td>
+                    <td>
+                      Awaiting decision
+                    </td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+            <nav
+              aria-label="Pagination"
+              class="pagination "
+              data-component="pagination"
+              role="navigation"
             >
-              <li
-                aria-current="true"
-                class="pagination__item pagination__item--current"
+              <ol
+                class="pagination__list"
               >
-                <span
-                  class="pagination__inactive"
+                <li
+                  aria-current="true"
+                  class="pagination__item pagination__item--current"
                 >
                   <span
-                    class="visually-hidden"
+                    class="pagination__inactive"
                   >
-                    Current page 
-                  </span>
-                  1
-                </span>
-              </li>
-              <li
-                class="pagination__item"
-              >
-                <a
-                  aria-label="Go to page 2"
-                  class="pagination__link"
-                  href="/?pa=2"
-                >
-                  2
-                </a>
-              </li>
-              <li
-                class="pagination__item pagination__item--count"
-              >
-                <span>
-                  Page 
-                  <strong>
+                    <span
+                      class="visually-hidden"
+                    >
+                      Current page 
+                    </span>
                     1
-                  </strong>
-                   of 
-                  <strong>
-                    2
-                  </strong>
-                </span>
-              </li>
-              <li
-                class="pagination__item pagination__item--bookend"
-              >
-                <a
-                  class="pagination__link"
-                  href="/?pa=2"
+                  </span>
+                </li>
+                <li
+                  class="pagination__item"
                 >
-                  Next page
-                </a>
-              </li>
-            </ol>
-          </nav>
-          <div
-            class="grid grid--middle mt--d"
-          >
-            <div
-              class="mb--e mb--0-sm"
-              data-component="grid-item"
-              data-g="12 sm:6"
-            >
-              <button
-                class="btn mv--0 mh--0"
-                data-component="button--primary"
-                type="button"
-              >
-                Copy 
-                10 results
-                 to clipboard
-              </button>
-            </div>
-            <div
-              class="text-right"
-              data-component="grid-item"
-              data-g="12 sm:6"
-            >
-              <h3
-                class="resultsPerPageHeading"
-              >
-                Results per page
-              </h3>
-              <ol
-                class="list list--piped resultsPerPageList"
-              >
-                <li>
-                  10
-                </li>
-                <li>
                   <a
-                    aria-label="Show 25 results per page"
-                    href="/?ps=25"
+                    aria-label="Go to page 2"
+                    class="pagination__link"
+                    href="/?pa=2"
                   >
-                    25
+                    2
                   </a>
                 </li>
-                <li>
-                  <a
-                    aria-label="Show 50 results per page"
-                    href="/?ps=50"
-                  >
-                    50
-                  </a>
+                <li
+                  class="pagination__item pagination__item--count"
+                >
+                  <span>
+                    Page 
+                    <strong>
+                      1
+                    </strong>
+                     of 
+                    <strong>
+                      2
+                    </strong>
+                  </span>
                 </li>
-                <li>
+                <li
+                  class="pagination__item pagination__item--bookend"
+                >
                   <a
-                    aria-label="Show All results per page"
-                    href="/?ps=9999"
+                    class="pagination__link"
+                    href="/?pa=2"
                   >
-                    All
+                    Next page
                   </a>
                 </li>
               </ol>
+            </nav>
+            <div
+              class="grid grid--middle mt--d"
+            >
+              <div
+                class="mb--e mb--0-sm"
+                data-component="grid-item"
+                data-g="12 sm:6"
+              >
+                <button
+                  class="btn mv--0 mh--0"
+                  data-component="button--primary"
+                  type="button"
+                >
+                  Copy 
+                  10 results
+                   to clipboard
+                </button>
+              </div>
+              <div
+                class="text-right"
+                data-component="grid-item"
+                data-g="12 sm:6"
+              >
+                <h3
+                  class="resultsPerPageHeading"
+                >
+                  Results per page
+                </h3>
+                <ol
+                  class="list list--piped resultsPerPageList"
+                >
+                  <li>
+                    10
+                  </li>
+                  <li>
+                    <a
+                      aria-label="Show 25 results per page"
+                      href="/?ps=25"
+                    >
+                      25
+                    </a>
+                  </li>
+                  <li>
+                    <a
+                      aria-label="Show 50 results per page"
+                      href="/?ps=50"
+                    >
+                      50
+                    </a>
+                  </li>
+                  <li>
+                    <a
+                      aria-label="Show All results per page"
+                      href="/?ps=9999"
+                    >
+                      All
+                    </a>
+                  </li>
+                </ol>
+              </div>
             </div>
-          </div>
-        </section>
+          </section>
+        </div>
       </div>
-    </div>
-  </main>
-  <noscript />
+    </main>
+    <noscript />
+  </div>
 </div>
 `;

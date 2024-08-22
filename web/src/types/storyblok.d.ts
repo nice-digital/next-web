@@ -46,6 +46,7 @@ export interface BlogPostStoryblok {
   introText: string;
   content: RichtextStoryblok;
   author: (StoryblokStory<AuthorStoryblok> | string)[];
+  metadata?: MetadataStoryblok[];
   _uid: string;
   component: "blogPost";
   [k: string]: any;
@@ -258,9 +259,9 @@ export interface InDepthArticleStoryblok {
 }
 
 export interface InfoPageStoryblok {
-  header: (HeroStoryblok | PageHeaderStoryblok)[];
-  content: RichtextStoryblok;
+  header: (PageHeaderStoryblok | HeroStoryblok)[];
   metadata?: MetadataStoryblok[];
+  content: RichtextStoryblok;
   _uid: string;
   component: "infoPage";
   [k: string]: any;
@@ -319,6 +320,7 @@ export interface NewsArticleStoryblok {
   introText: string;
   content: RichtextStoryblok;
   image: AssetStoryblok;
+  metadata?: MetadataStoryblok[];
   _uid: string;
   component: "newsArticle";
   [k: string]: any;
@@ -382,6 +384,7 @@ export interface PodcastStoryblok {
   introText: string;
   description: RichtextStoryblok;
   image?: AssetStoryblok;
+  metadata?: MetadataStoryblok[];
   _uid: string;
   component: "podcast";
   [k: string]: any;
@@ -430,7 +433,13 @@ export interface RelatedNewsLinkStoryblok {
 export interface SpotlightStoryblok {
   heading: string;
   mediaDescription?: string;
-  stories: (StoryblokStory<BlogPostStoryblok> | StoryblokStory<NewsArticleStoryblok> | string)[];
+  stories: (
+    | StoryblokStory<BlogPostStoryblok>
+    | StoryblokStory<NewsArticleStoryblok>
+    | StoryblokStory<InDepthArticleStoryblok>
+    | StoryblokStory<PodcastStoryblok>
+    | string
+  )[];
   youtubeEmbed: YoutubeEmbedStoryblok[];
   isTransparent?: boolean;
   _uid: string;

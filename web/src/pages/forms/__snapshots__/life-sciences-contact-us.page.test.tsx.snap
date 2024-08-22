@@ -129,6 +129,11 @@ exports[`LifeSciencesContactUsForm should match snapshot 1`] = `
             >
               Life sciences contact us form
             </h1>
+            <p
+              class="page-header__lead"
+            >
+              Briefly tell us why you're getting in touch. We'll then give you an indication of how we can support you. In most cases, we'll include estimated costs and timelines sent straight to your inbox.
+            </p>
           </div>
         </div>
       </div>
@@ -136,13 +141,23 @@ exports[`LifeSciencesContactUsForm should match snapshot 1`] = `
         allow="geolocation; microphone; camera"
         allowfullscreen=""
         class="iframe"
-        data-jotform-id="232991221799063"
-        id="JotFormIFrame-232991221799063"
+        data-jotform-id="242062773274053"
+        id="JotFormIFrame-242062773274053"
         scrolling="no"
-        src="https://next-web-tests.jotform.com/232991221799063?isIframeEmbed=1"
+        src="https://next-web-tests.jotform.com/242062773274053?isIframeEmbed=1"
         style="height: 539px; overflow: hidden;"
         title="Life sciences contact us form"
       />
+      <p>
+        As you have expressed an interest in NICE's support services, your details will be added to our mailing list so that you can receive the latest news about NICE's support for the life sciences sector. You can unsubscribe from this at any time. Our legal basis for processing your data in this way is that of public task. View our
+
+        <a
+          href="/privacy-notice"
+        >
+          privacy notice
+        </a>
+         for more information.
+      </p>
     </div>
   </div>
 </div>

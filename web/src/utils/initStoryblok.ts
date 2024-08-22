@@ -5,6 +5,7 @@ import { logger } from "@/logger";
 
 // Init connection to Storyblok
 export const initStoryblok = (): void => {
+<<<<<<< HEAD
 	const accessToken = publicRuntimeConfig.storyblok.accessToken;
 	const endpoint = publicRuntimeConfig.storyblok.ocelotEndpoint;
 	const usingOcelotCache = !!endpoint;
@@ -15,6 +16,12 @@ export const initStoryblok = (): void => {
 		);
 
 		logger.info(`initStoryblok usingOcelotCache: ${usingOcelotCache}`);
+=======
+	try {
+		const accessToken = publicRuntimeConfig.storyblok.accessToken;
+		const endpoint = publicRuntimeConfig.storyblok.ocelotEndpoint;
+		const usingOcelotCache = !!endpoint;
+>>>>>>> main
 
 		storyblokInit({
 			accessToken,
@@ -28,6 +35,7 @@ export const initStoryblok = (): void => {
 			},
 		});
 	} catch (error) {
+<<<<<<< HEAD
 		logger.error(
 			{
 				ocelotEndpoint: endpoint,
@@ -40,4 +48,9 @@ export const initStoryblok = (): void => {
 		new Error("Error initialising Storyblok", { cause: error });
 	}
 	logger.info("end initStoryblok");
+=======
+		logger.error("Error initialising Storyblok:", error);
+		new Error("Error initialising Storyblok", { cause: error });
+	}
+>>>>>>> main
 };

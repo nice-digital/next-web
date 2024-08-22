@@ -157,6 +157,7 @@ export async function getServerSideProps(context: GetServerSidePropsContext) {
 			);
 			return storyResult;
 		}
+		if ("notFound" in storyResult) return storyResult;
 
 		const siblingPages = [];
 

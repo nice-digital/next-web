@@ -8,6 +8,7 @@ import { Tag } from "@nice-digital/nds-tag";
 
 import { ErrorPageContent } from "@/components/ErrorPageContent/ErrorPageContent";
 import { SoundCloudEmbed } from "@/components/SoundCloudEmbed/SoundCloudEmbed";
+import { Metadata } from "@/components/Storyblok/Metadata/Metadata";
 import { StoryblokRichText } from "@/components/Storyblok/StoryblokRichText/StoryblokRichText";
 import { logger } from "@/logger";
 import { type Breadcrumb as TypeBreadcrumb } from "@/types/Breadcrumb";
@@ -61,7 +62,7 @@ export default function PodcastPage(
 
 	const { story: storyData, breadcrumbs } = props;
 	const { name, content } = storyData;
-	const { date, description, soundcloudEmbedID } = content;
+	const { date, description, soundcloudEmbedID, metadata } = content;
 
 	const optimisedImage = content.image?.filename
 		? constructStoryblokImageSrc(content.image?.filename)
@@ -88,6 +89,7 @@ export default function PodcastPage(
 
 	return (
 		<>
+			{metadata && metadata.length > 0 && <Metadata blok={metadata[0]} />}
 			<NextSeo
 				title={name}
 				openGraph={{ title: name }}
