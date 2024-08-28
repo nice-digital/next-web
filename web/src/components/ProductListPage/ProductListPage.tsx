@@ -253,9 +253,7 @@ export const getProductListPage =
 								</p>
 
 								<ul>
-									<li>
-										Using the full site search.
-									</li>
+									<li>Using the full site search.</li>
 									<li>
 										<Link href="/guidance/conditions-and-diseases">
 											Browsing by topic
