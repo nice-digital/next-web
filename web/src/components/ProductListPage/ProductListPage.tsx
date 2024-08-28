@@ -254,7 +254,7 @@ export const getProductListPage =
 
 								<ul>
 									<li>
-										Using the <Link href="/search">full site search</Link>.
+										Using the full site search.
 									</li>
 									<li>
 										<Link href="/guidance/conditions-and-diseases">
