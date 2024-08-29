@@ -88,32 +88,24 @@ exports[`/indicators/published should match the snapshot 1`] = `
           <h1
             class="page-header__heading "
           >
-            <span
-              class="page-header__pre-heading"
+            Published: Indicators
+          </h1>
+          <p
+            class="page-header__lead"
+          >
+            <a
+              class="skipLink"
+              href="#filters"
             >
-              <h1
-                class="page-header__heading "
-              >
-                Published: Indicators
-              </h1>
-              <p
-                class="page-header__lead"
-              >
-                <a
-                  class="skipLink"
-                  href="#filters"
-                >
-                  Skip to filters
-                </a>
-                <a
-                  class="skipLink"
-                  href="#results"
-                >
-                  Skip to results
-                </a>
-              </p>
-            </div>
-          </div>
+              Skip to filters
+            </a>
+            <a
+              class="skipLink"
+              href="#results"
+            >
+              Skip to results
+            </a>
+          </p>
         </div>
         <nav
           aria-label="Stages of indicator development"
@@ -254,7 +246,7 @@ exports[`/indicators/published should match the snapshot 1`] = `
                           id="group-heading-keyword-or-reference-number"
                         >
                           Keyword or reference number
-
+                           
                         </span>
                       </button>
                     </h3>
@@ -324,7 +316,7 @@ exports[`/indicators/published should match the snapshot 1`] = `
                           id="group-heading-last-updated-date"
                         >
                           Last updated date
-
+                           
                         </span>
                       </button>
                     </h3>
@@ -423,7 +415,7 @@ exports[`/indicators/published should match the snapshot 1`] = `
                           id="group-heading-rty"
                         >
                           Indicator type
-
+                           
                         </span>
                       </button>
                     </h3>
@@ -529,11 +521,11 @@ exports[`/indicators/published should match the snapshot 1`] = `
                 <h2
                   class="h5 mv--0"
                 >
-                  Showing
+                  Showing 
                   1
-                   to
+                   to 
                   10
-                   of
+                   of 
                   83
                 </h2>
               </div>
@@ -986,7 +978,7 @@ exports[`/indicators/published should match the snapshot 1`] = `
                     <span
                       class="visually-hidden"
                     >
-                      Current page
+                      Current page 
                     </span>
                     1
                   </span>
@@ -1037,11 +1029,11 @@ exports[`/indicators/published should match the snapshot 1`] = `
                   class="pagination__item pagination__item--count"
                 >
                   <span>
-                    Page
+                    Page 
                     <strong>
                       1
                     </strong>
-                     of
+                     of 
                     <strong>
                       9
                     </strong>
@@ -1072,7 +1064,7 @@ exports[`/indicators/published should match the snapshot 1`] = `
                   data-component="button--primary"
                   type="button"
                 >
-                  Copy
+                  Copy 
                   10 results
                    to clipboard
                 </button>
