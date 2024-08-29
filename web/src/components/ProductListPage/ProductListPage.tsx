@@ -8,13 +8,13 @@ import {
 	ReactElement,
 	useEffect,
 	useMemo,
-	useState,
+	useState
 } from "react";
 
 import {
 	Breadcrumb,
 	Breadcrumbs,
-	type BreadcrumbsProps,
+	type BreadcrumbsProps
 } from "@nice-digital/nds-breadcrumbs";
 import { Grid, GridItem } from "@nice-digital/nds-grid";
 import { PageHeader } from "@nice-digital/nds-page-header";
@@ -24,7 +24,7 @@ import {
 	removeQueryParam,
 	SearchResultsSuccess,
 	SortOrder,
-	upsertQueryParam,
+	upsertQueryParam
 } from "@nice-digital/search-client";
 
 import { Announcer } from "@/components/Announcer/Announcer";
@@ -253,9 +253,7 @@ export const getProductListPage =
 								</p>
 
 								<ul>
-									<li>
-										Using the <Link href="/search">full site search</Link>.
-									</li>
+									<li>Using the full site search.</li>
 									<li>
 										<Link href="/guidance/conditions-and-diseases">
 											Browsing by topic

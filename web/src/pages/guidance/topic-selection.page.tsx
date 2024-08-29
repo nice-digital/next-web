@@ -4,7 +4,7 @@ import { Document, SortOrder } from "@nice-digital/search-client";
 import { GuidanceListNav } from "@/components/ProductListNav/GuidanceListNav";
 import {
 	getGetServerSidePropsFunc,
-	getProductListPage,
+	getProductListPage
 } from "@/components/ProductListPage/ProductListPage";
 import { ResponsiveDate } from "@/components/ResponsiveDate/ResponsiveDate";
 import { publicRuntimeConfig } from "@/config";
@@ -90,6 +90,7 @@ export default getProductListPage({
 
 export const getServerSideProps = getGetServerSidePropsFunc({
 	gstPreFilter: "Topic selection",
+	textFilterLabel,
 	defaultSortOrder,
 	dateFilterLabel,
 	textFilterLabel,
