@@ -1,5 +1,5 @@
-import { NextSeo } from "next-seo";
 import { useRouter } from "next/router";
+import { NextSeo } from "next-seo";
 import pluralize from "pluralize";
 import {
 	ElementType,
@@ -8,13 +8,13 @@ import {
 	ReactElement,
 	useEffect,
 	useMemo,
-	useState
+	useState,
 } from "react";
 
 import {
 	Breadcrumb,
 	Breadcrumbs,
-	type BreadcrumbsProps
+	type BreadcrumbsProps,
 } from "@nice-digital/nds-breadcrumbs";
 import { Grid, GridItem } from "@nice-digital/nds-grid";
 import { PageHeader } from "@nice-digital/nds-page-header";
@@ -24,7 +24,7 @@ import {
 	removeQueryParam,
 	SearchResultsSuccess,
 	SortOrder,
-	upsertQueryParam
+	upsertQueryParam,
 } from "@nice-digital/search-client";
 
 import { Announcer } from "@/components/Announcer/Announcer";
