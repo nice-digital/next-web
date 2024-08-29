@@ -5,12 +5,12 @@ import React, { createRef, FC, useCallback, useState } from "react";
 import {
 	FilterGroup,
 	FilterOption,
-	FilterPanel
+	FilterPanel,
 } from "@nice-digital/nds-filters";
 import {
 	KnownOrModifierKeys,
 	Modifier,
-	Navigator
+	Navigator,
 } from "@nice-digital/search-client";
 
 import { InlineTextFilter } from "@/components/InlineTextFilter/InlineTextFilter";

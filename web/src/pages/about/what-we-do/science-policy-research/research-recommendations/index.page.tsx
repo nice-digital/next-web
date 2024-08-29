@@ -8,9 +8,10 @@ import {
 import { ResponsiveDate } from "@/components/ResponsiveDate/ResponsiveDate";
 import { publicRuntimeConfig } from "@/config";
 
-const defaultSortOrder = SortOrder.guidanceRefAscending,
-	dateFilterLabel = "Published date",
-	textFilterLabel = "Filter by reference number or keyword";
+const defaultSortOrder = SortOrder.dateDescending,
+	dateFilterLabel = "Published",
+	textFilterHeading = "Keyword or reference number",
+	textFilterLabel = "Keyword or reference number";
 
 const tableBodyRender = (documents: Document[]) => (
 	<>
@@ -19,9 +20,9 @@ const tableBodyRender = (documents: Document[]) => (
 		</caption>
 		<thead>
 			<tr>
-				<th scope="col">Reference number</th>
 				<th scope="col">Recommendation for research</th>
-				<th scope="col">Published date</th>
+				<th scope="col">Reference number</th>
+				<th scope="col">Published</th>
 			</tr>
 		</thead>
 		<tbody>
@@ -29,13 +30,13 @@ const tableBodyRender = (documents: Document[]) => (
 				({ id, title, guidanceRef, pathAndQuery, publicationDate }) => {
 					return (
 						<tr key={id}>
-							<td>{guidanceRef}</td>
 							<td>
 								<a
 									href={publicRuntimeConfig.baseURL + pathAndQuery}
 									dangerouslySetInnerHTML={{ __html: title }}
 								/>
 							</td>
+							<td>{guidanceRef}</td>
 							<td>
 								<ResponsiveDate isoDateTime={String(publicationDate)} />
 							</td>
@@ -66,7 +67,7 @@ export default getProductListPage({
 	],
 	currentBreadcrumb: "Research recommendations",
 	preheading: "",
-	heading: <>Published: Research recommendations</>,
+	heading: <>Published: Recommendations for research</>,
 	intro: (
 		<>
 			As we develop guidance, we identify gaps, uncertainties or conflicts in
@@ -86,22 +87,23 @@ export default getProductListPage({
 	title: "Research recommendations | NICE",
 	defaultSort: {
 		order: defaultSortOrder,
-		label: "Reference number",
+		label: "Published",
 	},
 	secondarySort: {
-		order: SortOrder.dateDescending,
-		label: "Published date",
+		order: SortOrder.guidanceRefAscending,
+		label: "Reference number",
 	},
 	showDateFilter: true,
 	useFutureDates: false,
 	dateFilterLabel,
-	textFilterLabel,
+	textFilterHeading,
 	tableBodyRender,
-	searchInputPlaceholder: "E.g. 'CG100-1' or 'diabetes'",
+	searchInputPlaceholder: "E.g. 'diabetes' or 'CG100-1'",
 });
 
 export const getServerSideProps = getGetServerSidePropsFunc({
 	defaultSortOrder,
 	dateFilterLabel,
+	textFilterLabel,
 	index: "researchrecs",
 });

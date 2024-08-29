@@ -39,9 +39,9 @@ describe("/research-recommendations/index", () => {
 	describe("Table", () => {
 		describe("Column headings", () => {
 			it.each([
-				["Reference number", 1],
-				["Recommendation for research", 2],
-				["Published date", 3],
+				["Recommendation for research", 1],
+				["Reference number", 2],
+				["Published", 3],
 			])(
 				"should set column header '%s' at column %i",
 				(headingText, columnIndex) => {

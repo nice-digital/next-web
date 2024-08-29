@@ -129,7 +129,7 @@ exports[`/research-recommendations/index should match the snapshot 1`] = `
               <h1
                 class="page-header__heading "
               >
-                Published: Research recommendations
+                Published: Recommendations for research
               </h1>
               <p
                 class="page-header__lead"
@@ -233,44 +233,13 @@ exports[`/research-recommendations/index should match the snapshot 1`] = `
                     value=""
                   />
                   <div
-                    class="container"
-                  >
-                    <label
-                      class="label"
-                      for="q"
-                    >
-                      Filter by reference number or keyword
-                    </label>
-                    <div
-                      class="input"
-                      data-component="input"
-                    >
-                      <input
-                        autocomplete="off"
-                        class="input__input"
-                        id="q"
-                        name="q"
-                        placeholder="E.g. 'CG100-1' or 'diabetes'"
-                        type="text"
-                        value=""
-                      />
-                    </div>
-                    <button
-                      class="btn button"
-                      data-component="button--primary"
-                      type="submit"
-                    >
-                      Filter
-                    </button>
-                  </div>
-                  <div
                     class="filter-group"
                   >
                     <h3
                       class="filter-group__heading"
                     >
                       <button
-                        aria-controls="group-published-date"
+                        aria-controls="group-keyword-or-reference-number"
                         aria-expanded="true"
                         type="button"
                       >
@@ -290,9 +259,9 @@ exports[`/research-recommendations/index should match the snapshot 1`] = `
                           />
                         </svg>
                         <span
-                          id="group-heading-published-date"
+                          id="group-heading-keyword-or-reference-number"
                         >
-                          Published date
+                          Keyword or reference number
                            
                         </span>
                       </button>
@@ -300,10 +269,80 @@ exports[`/research-recommendations/index should match the snapshot 1`] = `
                     <fieldset
                       aria-hidden="false"
                       class="filter-group__options"
-                      id="group-published-date"
+                      id="group-keyword-or-reference-number"
                     >
                       <legend>
-                        Published date
+                        Keyword or reference number
+                      </legend>
+                      <div
+                        class="ph--c pt--c"
+                      >
+                        <div
+                          class="input"
+                          data-component="input"
+                        >
+                          <input
+                            autocomplete="off"
+                            class="input__input"
+                            id="q"
+                            name="q"
+                            placeholder="E.g. 'diabetes' or 'CG100-1'"
+                            spellcheck="false"
+                            type="text"
+                            value=""
+                          />
+                        </div>
+                        <button
+                          class="btn btn--secondary ml--0"
+                          data-component="button--secondary"
+                          type="submit"
+                        >
+                          Apply filter
+                        </button>
+                      </div>
+                    </fieldset>
+                  </div>
+                  <div
+                    class="filter-group"
+                  >
+                    <h3
+                      class="filter-group__heading"
+                    >
+                      <button
+                        aria-controls="group-published"
+                        aria-expanded="true"
+                        type="button"
+                      >
+                        <svg
+                          aria-hidden="true"
+                          class="filter-group__heading-icon filter-group__heading-icon--expanded"
+                          fill="none"
+                          focusable="false"
+                          height="1em"
+                          viewBox="0 0 512 512"
+                          width="1em"
+                          xmlns="http://www.w3.org/2000/svg"
+                        >
+                          <path
+                            d="M478.152 174c0 10.091-3.525 18.661-10.576 25.712l-186 186c-7.243 7.243-15.909 10.864-26 10.864-10.283 0-18.853-3.621-25.712-10.864l-186-186C36.621 192.853 33 184.283 33 174c0-10.091 3.621-18.757 10.864-26L65 126.576C72.424 119.525 81.09 116 91 116c10.091 0 18.661 3.525 25.712 10.576L255.576 265.44 394.44 126.576c7.051-7.051 15.621-10.576 25.712-10.576 9.909 0 18.576 3.525 26 10.576L467.576 148c7.051 7.424 10.576 16.091 10.576 26Z"
+                            fill="currentColor"
+                          />
+                        </svg>
+                        <span
+                          id="group-heading-published"
+                        >
+                          Published
+                           
+                        </span>
+                      </button>
+                    </h3>
+                    <fieldset
+                      aria-hidden="false"
+                      class="filter-group__options"
+                      id="group-published"
+                    >
+                      <legend>
+                        Published
                       </legend>
                       <div
                         class="ph--c pt--c"
@@ -406,14 +445,14 @@ exports[`/research-recommendations/index should match the snapshot 1`] = `
                 >
                   <option
                     selected=""
+                    value="Date"
+                  >
+                    Published
+                  </option>
+                  <option
                     value="GuidanceRef"
                   >
                     Reference number
-                  </option>
-                  <option
-                    value="Date"
-                  >
-                    Published date
                   </option>
                 </select>
               </div>
@@ -437,25 +476,22 @@ exports[`/research-recommendations/index should match the snapshot 1`] = `
                     <th
                       scope="col"
                     >
-                      Reference number
-                    </th>
-                    <th
-                      scope="col"
-                    >
                       Recommendation for research
                     </th>
                     <th
                       scope="col"
                     >
-                      Published date
+                      Reference number
+                    </th>
+                    <th
+                      scope="col"
+                    >
+                      Published
                     </th>
                   </tr>
                 </thead>
                 <tbody>
                   <tr>
-                    <td>
-                      CG118/1
-                    </td>
                     <td>
                       <a
                         href="https://next-web-tests.nice.org.uk/guidance/CG118/chapter/recommendations-for-research/#cg118-natural-history-of-progression-to-colorectal-cancer-in-people-at-increased-risk"
@@ -464,6 +500,9 @@ exports[`/research-recommendations/index should match the snapshot 1`] = `
                       </a>
                     </td>
                     <td>
+                      CG118/1
+                    </td>
+                    <td>
                       <time
                         class="date"
                         data-shortdate="26/2/2024"
@@ -476,9 +515,6 @@ exports[`/research-recommendations/index should match the snapshot 1`] = `
                     </td>
                   </tr>
                   <tr>
-                    <td>
-                      CG118/2
-                    </td>
                     <td>
                       <a
                         href="https://next-web-tests.nice.org.uk/guidance/CG118/chapter/recommendations-for-research/#cg118-surveillance-programmes-for-people-at-increased-risk-of-colorectal-cancer"
@@ -487,6 +523,9 @@ exports[`/research-recommendations/index should match the snapshot 1`] = `
                       </a>
                     </td>
                     <td>
+                      CG118/2
+                    </td>
+                    <td>
                       <time
                         class="date"
                         data-shortdate="26/2/2024"
@@ -499,9 +538,6 @@ exports[`/research-recommendations/index should match the snapshot 1`] = `
                     </td>
                   </tr>
                   <tr>
-                    <td>
-                      CG118/3
-                    </td>
                     <td>
                       <a
                         href="https://next-web-tests.nice.org.uk/guidance/CG118/chapter/recommendations-for-research/#cg118-effectiveness-of-biomarkers-for-determining-level-of-risk-of-colorectal-cancer"
@@ -510,6 +546,9 @@ exports[`/research-recommendations/index should match the snapshot 1`] = `
                       </a>
                     </td>
                     <td>
+                      CG118/3
+                    </td>
+                    <td>
                       <time
                         class="date"
                         data-shortdate="26/2/2024"
@@ -522,9 +561,6 @@ exports[`/research-recommendations/index should match the snapshot 1`] = `
                     </td>
                   </tr>
                   <tr>
-                    <td>
-                      CG118/4
-                    </td>
                     <td>
                       <a
                         href="https://next-web-tests.nice.org.uk/guidance/CG118/chapter/recommendations-for-research/#cg118-adenoma-types-and-risk-of-colorectal-cancer"
@@ -533,6 +569,9 @@ exports[`/research-recommendations/index should match the snapshot 1`] = `
                       </a>
                     </td>
                     <td>
+                      CG118/4
+                    </td>
+                    <td>
                       <time
                         class="date"
                         data-shortdate="26/2/2024"
@@ -546,14 +585,14 @@ exports[`/research-recommendations/index should match the snapshot 1`] = `
                   </tr>
                   <tr>
                     <td>
-                      DG1/2
-                    </td>
-                    <td>
                       <a
                         href="https://next-web-tests.nice.org.uk/guidance/DG1/chapter/7-recommendations-for-further-research/#dg1-7.2"
                       >
                         Additional methodological research is needed to determine the most appropriate model structures to assess the benefit arising from radiation dose reduction. Additional work is needed to assess when the radiation-induced cancers actually occur and the impact of the timing of the emergence of cancer on health status.
                       </a>
+                    </td>
+                    <td>
+                      DG1/2
                     </td>
                     <td>
                       <time
@@ -568,9 +607,6 @@ exports[`/research-recommendations/index should match the snapshot 1`] = `
                     </td>
                   </tr>
                   <tr>
-                    <td>
-                      DG1/3
-                    </td>
                     <td>
                       <a
                         href="https://next-web-tests.nice.org.uk/guidance/DG1/chapter/7-recommendations-for-further-research/#dg1-7.3"
@@ -579,6 +615,9 @@ exports[`/research-recommendations/index should match the snapshot 1`] = `
                       </a>
                     </td>
                     <td>
+                      DG1/3
+                    </td>
+                    <td>
                       <time
                         class="date"
                         data-shortdate="22/3/2024"
@@ -591,9 +630,6 @@ exports[`/research-recommendations/index should match the snapshot 1`] = `
                     </td>
                   </tr>
                   <tr>
-                    <td>
-                      DG1/1
-                    </td>
                     <td>
                       <a
                         href="https://next-web-tests.nice.org.uk/guidance/DG1/chapter/7-recommendations-for-further-research/#dg1-7.1"
@@ -602,6 +638,9 @@ exports[`/research-recommendations/index should match the snapshot 1`] = `
                       </a>
                     </td>
                     <td>
+                      DG1/1
+                    </td>
+                    <td>
                       <time
                         class="date"
                         data-shortdate="22/3/2024"
@@ -615,14 +654,14 @@ exports[`/research-recommendations/index should match the snapshot 1`] = `
                   </tr>
                   <tr>
                     <td>
-                      DG13/1
-                    </td>
-                    <td>
                       <a
                         href="https://next-web-tests.nice.org.uk/guidance/DG13/chapter/recommendations-for-further-research/#dg13-7_1"
                       >
                         The committee recommended further research to demonstrate the utility of the Sonoclot system in detecting, managing and monitoring haemostasis in cardiac surgery.
                       </a>
+                    </td>
+                    <td>
+                      DG13/1
                     </td>
                     <td>
                       <time
@@ -637,9 +676,6 @@ exports[`/research-recommendations/index should match the snapshot 1`] = `
                     </td>
                   </tr>
                   <tr>
-                    <td>
-                      DG13/2
-                    </td>
                     <td>
                       <a
                         href="https://next-web-tests.nice.org.uk/guidance/DG13/chapter/recommendations-for-further-research/#dg13-7_2"
@@ -648,6 +684,9 @@ exports[`/research-recommendations/index should match the snapshot 1`] = `
                       </a>
                     </td>
                     <td>
+                      DG13/2
+                    </td>
+                    <td>
                       <time
                         class="date"
                         data-shortdate="28/3/2024"
@@ -661,14 +700,14 @@ exports[`/research-recommendations/index should match the snapshot 1`] = `
                   </tr>
                   <tr>
                     <td>
-                      DG13/3
-                    </td>
-                    <td>
                       <a
                         href="https://next-web-tests.nice.org.uk/guidance/DG13/chapter/recommendations-for-further-research/#dg13-7_3"
                       >
                         The committee recommended further research comparing the clinical effectiveness of all 3 viscoelastometric devices (ROTEM, TEG and Sonoclot systems) in cardiac surgery and in the emergency control of bleeding after trauma and during postpartum haemorrhage. In particular, the committee recommended research to determine which of the parameters included in the viscoelastometric testing systems are the most significant in changing clinical decision‑making and improving clinical outcomes. The degree of change needed in these parameters to affect clinical decision‑making and clinical outcomes should also be considered.
                       </a>
+                    </td>
+                    <td>
+                      DG13/3
                     </td>
                     <td>
                       <time
