@@ -4,7 +4,7 @@ import { Document, SortOrder } from "@nice-digital/search-client";
 import { GuidanceListNav } from "@/components/ProductListNav/GuidanceListNav";
 import {
 	getGetServerSidePropsFunc,
-	getProductListPage
+	getProductListPage,
 } from "@/components/ProductListPage/ProductListPage";
 import { ResponsiveDate } from "@/components/ResponsiveDate/ResponsiveDate";
 import { publicRuntimeConfig } from "@/config";
@@ -75,6 +75,10 @@ export default getProductListPage({
 	defaultSort: {
 		order: defaultSortOrder,
 		label: "Title",
+	},
+	secondarySort: {
+		order: SortOrder.dateDescending,
+		label: "Decision date",
 	},
 	showDateFilter: true,
 	useFutureDates: false,
