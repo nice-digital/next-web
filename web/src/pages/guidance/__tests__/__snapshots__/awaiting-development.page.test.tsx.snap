@@ -91,26 +91,29 @@ exports[`/guidance/awaiting-development should match the snapshot 1`] = `
             <span
               class="page-header__pre-heading"
             >
-              Guidance and quality standards 
-            </span>
-            Awaiting development
-          </h1>
-          <p
-            class="page-header__lead"
-          >
-            <a
-              class="skipLink"
-              href="#filters"
-            >
-              Skip to filters
-            </a>
-            <a
-              class="skipLink"
-              href="#results"
-            >
-              Skip to results
-            </a>
-          </p>
+              <h1
+                class="page-header__heading "
+              >
+                Awaiting development: Guidance and quality standards
+              </h1>
+              <p
+                class="page-header__lead"
+              >
+                <a
+                  class="skipLink"
+                  href="#filters"
+                >
+                  Skip to filters
+                </a>
+                <a
+                  class="skipLink"
+                  href="#results"
+                >
+                  Skip to results
+                </a>
+              </p>
+            </div>
+          </div>
         </div>
         <nav
           aria-label="Stages of guidance development"
@@ -246,35 +249,74 @@ exports[`/guidance/awaiting-development should match the snapshot 1`] = `
                     value=""
                   />
                   <div
-                    class="container"
+                    class="filter-group"
                   >
-                    <label
-                      class="label"
-                      for="q"
+                    <h3
+                      class="filter-group__heading"
                     >
-                      Filter by title or keyword
-                    </label>
-                    <div
-                      class="input"
-                      data-component="input"
+                      <button
+                        aria-controls="group-keyword-or-reference-number"
+                        aria-expanded="true"
+                        type="button"
+                      >
+                        <svg
+                          aria-hidden="true"
+                          class="filter-group__heading-icon filter-group__heading-icon--expanded"
+                          fill="none"
+                          focusable="false"
+                          height="1em"
+                          viewBox="0 0 512 512"
+                          width="1em"
+                          xmlns="http://www.w3.org/2000/svg"
+                        >
+                          <path
+                            d="M478.152 174c0 10.091-3.525 18.661-10.576 25.712l-186 186c-7.243 7.243-15.909 10.864-26 10.864-10.283 0-18.853-3.621-25.712-10.864l-186-186C36.621 192.853 33 184.283 33 174c0-10.091 3.621-18.757 10.864-26L65 126.576C72.424 119.525 81.09 116 91 116c10.091 0 18.661 3.525 25.712 10.576L255.576 265.44 394.44 126.576c7.051-7.051 15.621-10.576 25.712-10.576 9.909 0 18.576 3.525 26 10.576L467.576 148c7.051 7.424 10.576 16.091 10.576 26Z"
+                            fill="currentColor"
+                          />
+                        </svg>
+                        <span
+                          id="group-heading-keyword-or-reference-number"
+                        >
+                          Keyword or reference number
+
+                        </span>
+                      </button>
+                    </h3>
+                    <fieldset
+                      aria-hidden="false"
+                      class="filter-group__options"
+                      id="group-keyword-or-reference-number"
                     >
-                      <input
-                        autocomplete="off"
-                        class="input__input"
-                        id="q"
-                        name="q"
-                        placeholder="E.g. 'diabetes' or 'NG28'"
-                        type="text"
-                        value=""
-                      />
-                    </div>
-                    <button
-                      class="btn button"
-                      data-component="button--primary"
-                      type="submit"
-                    >
-                      Filter
-                    </button>
+                      <legend>
+                        Keyword or reference number
+                      </legend>
+                      <div
+                        class="ph--c pt--c"
+                      >
+                        <div
+                          class="input"
+                          data-component="input"
+                        >
+                          <input
+                            autocomplete="off"
+                            class="input__input"
+                            id="q"
+                            name="q"
+                            placeholder="E.g. 'diabetes' or 'NG28'"
+                            spellcheck="false"
+                            type="text"
+                            value=""
+                          />
+                        </div>
+                        <button
+                          class="btn btn--secondary ml--0"
+                          data-component="button--secondary"
+                          type="submit"
+                        >
+                          Apply filter
+                        </button>
+                      </div>
+                    </fieldset>
                   </div>
                   <div
                     class="filter-group"
@@ -306,7 +348,7 @@ exports[`/guidance/awaiting-development should match the snapshot 1`] = `
                           id="group-heading-nai"
                         >
                           Area of interest
-                           
+
                         </span>
                       </button>
                     </h3>
@@ -368,7 +410,7 @@ exports[`/guidance/awaiting-development should match the snapshot 1`] = `
                           id="group-heading-ndt"
                         >
                           Type
-                           
+
                         </span>
                       </button>
                     </h3>
@@ -448,7 +490,7 @@ exports[`/guidance/awaiting-development should match the snapshot 1`] = `
                           id="group-heading-ngt"
                         >
                           Guidance programme
-                           
+
                         </span>
                       </button>
                     </h3>
@@ -518,11 +560,11 @@ exports[`/guidance/awaiting-development should match the snapshot 1`] = `
                 <h2
                   class="h5 mv--0"
                 >
-                  Showing 
+                  Showing
                   1
-                   to 
+                   to
                   10
-                   of 
+                   of
                   209
                 </h2>
               </div>
@@ -698,7 +740,7 @@ exports[`/guidance/awaiting-development should match the snapshot 1`] = `
                     <span
                       class="visually-hidden"
                     >
-                      Current page 
+                      Current page
                     </span>
                     1
                   </span>
@@ -749,11 +791,11 @@ exports[`/guidance/awaiting-development should match the snapshot 1`] = `
                   class="pagination__item pagination__item--count"
                 >
                   <span>
-                    Page 
+                    Page
                     <strong>
                       1
                     </strong>
-                     of 
+                     of
                     <strong>
                       21
                     </strong>
@@ -784,7 +826,7 @@ exports[`/guidance/awaiting-development should match the snapshot 1`] = `
                   data-component="button--primary"
                   type="button"
                 >
-                  Copy 
+                  Copy
                   10 results
                    to clipboard
                 </button>
