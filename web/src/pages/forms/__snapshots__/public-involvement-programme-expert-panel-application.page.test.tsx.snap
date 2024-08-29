@@ -134,20 +134,11 @@ exports[`InternationalEnquiryForm should match snapshot 1`] = `
         data-testid="content-start"
         id="content-start"
       >
-        <div
-          class="grid"
+        <h1
+          class="page-header__heading "
         >
-          <div
-            data-component="grid-item"
-            data-g="12 md:12"
-          >
-            <h1
-              class="page-header__heading "
-            >
-              Public Involvement Programme - expert panel application
-            </h1>
-          </div>
-        </div>
+          Public Involvement Programme - expert panel application
+        </h1>
       </div>
       <iframe
         allow="geolocation; microphone; camera"

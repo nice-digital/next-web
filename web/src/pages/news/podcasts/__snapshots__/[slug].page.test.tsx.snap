@@ -362,35 +362,26 @@ exports[`PodcastPage should render error page if fetchStory returns error 1`] = 
 }
   </script>
   <div
-    class="page-header "
+    class="page-header  page-header--vertical-padding-loose"
     data-component="page-header"
     id="content-start"
   >
-    <div
-      class="grid"
+    <h1
+      class="page-header__heading "
     >
-      <div
-        data-component="grid-item"
-        data-g="12 md:12"
+      An error returned from getserversideprops
+    </h1>
+    <p
+      class="page-header__lead"
+    >
+      We'll look into it right away. Please try again in a few minutes. And if it's still not fixed, 
+      <a
+        href="/get-involved/contact-us"
       >
-        <h1
-          class="page-header__heading "
-        >
-          An error returned from getserversideprops
-        </h1>
-        <p
-          class="page-header__lead"
-        >
-          We'll look into it right away. Please try again in a few minutes. And if it's still not fixed, 
-          <a
-            href="/get-involved/contact-us"
-          >
-            contact us
-          </a>
-          .
-        </p>
-      </div>
-    </div>
+        contact us
+      </a>
+      .
+    </p>
   </div>
   <h2>
     What can I do now?

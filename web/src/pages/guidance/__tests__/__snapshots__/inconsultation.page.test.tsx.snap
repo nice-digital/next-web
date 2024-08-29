@@ -85,41 +85,32 @@ exports[`/guidance/inconsultation should match the snapshot 1`] = `
           data-testid="content-start"
           id="content-start"
         >
-          <div
-            class="grid"
+          <h1
+            class="page-header__heading "
           >
-            <div
-              data-component="grid-item"
-              data-g="12 md:12"
+            <span
+              class="page-header__pre-heading"
             >
-              <h1
-                class="page-header__heading "
-              >
-                <span
-                  class="page-header__pre-heading"
-                >
-                  Guidance and quality standards 
-                </span>
-                In consultation
-              </h1>
-              <p
-                class="page-header__lead"
-              >
-                <a
-                  class="skipLink"
-                  href="#filters"
-                >
-                  Skip to filters
-                </a>
-                <a
-                  class="skipLink"
-                  href="#results"
-                >
-                  Skip to results
-                </a>
-              </p>
-            </div>
-          </div>
+              Guidance and quality standards 
+            </span>
+            In consultation
+          </h1>
+          <p
+            class="page-header__lead"
+          >
+            <a
+              class="skipLink"
+              href="#filters"
+            >
+              Skip to filters
+            </a>
+            <a
+              class="skipLink"
+              href="#results"
+            >
+              Skip to results
+            </a>
+          </p>
         </div>
         <nav
           aria-label="Stages of guidance development"
