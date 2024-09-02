@@ -72,16 +72,40 @@ export default getProductListPage({
 		<>
 			As we develop guidance, we identify gaps, uncertainties or conflicts in
 			the existing evidence base which could benefit from further research. The
-			most important unanswered questions are developed into research
-			recommendations.
+			most important unanswered questions are developed into recommendations for
+			research.
 			<br />
 			<br />
 			Read our{" "}
 			<a href="https://www.nice.org.uk/process/pmg45">
-				research recommendations process and methods guide
+				recommendations for research process and methods guide
 			</a>
 			. For more information email{" "}
 			<a href="mailto:research@nice.org.uk">research@nice.org.uk</a>.
+			<br />
+			<br />
+			<a href="https://www.nihr.ac.uk/">
+				National Institute for Health and Care Research (NIHR)
+			</a>
+			<br />
+			<br />
+			NICE meets regularly with NIHR to share information about our respective
+			research priorities, and seeks NIHR’s input to ensure our recommendations
+			for research are clear and actionable. We also work closely to fast-track,
+			co-produce and advertise research briefs which are jointly agreed as key
+			priorities. In addition to these fast-tracked key priorities, NIHR also
+			reviews all NICE guidance and advertises research calls against NICE
+			research recommendations through individual programme commissioned
+			workstreams. NIHR has been screening NICE guidance for nearly 20 years to
+			identify topics suitable for commissioning research. In 2021, NIHR
+			launched a researcher-led{" "}
+			<a href="https://www.nihr.ac.uk/documents/nihr-nice-rolling-call/27517">
+				rolling funding call
+			</a>
+			, which will complement existing commissioning workstreams. The rolling
+			research call aims to build on the success of the relationship between
+			NIHR and NICE, and further develop the evidence base supporting guidance
+			development.
 		</>
 	),
 	title: "Research recommendations | NICE",
