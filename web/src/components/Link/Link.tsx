@@ -66,9 +66,8 @@ export const ScrollToLink: FC<
 
 	const handleRouteChange = useCallback(
 		(url: string) => {
-			const routeChangeMatch = props.href === url;
 			const targetElement = document.getElementById(scrollTargetId);
-			if (targetElement && routeChangeMatch) {
+			if (targetElement) {
 				targetElement.setAttribute("tabIndex", "-1");
 				targetElement.focus();
 				targetElement.scrollIntoView();
