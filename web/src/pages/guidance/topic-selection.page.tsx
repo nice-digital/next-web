@@ -9,7 +9,7 @@ import {
 import { ResponsiveDate } from "@/components/ResponsiveDate/ResponsiveDate";
 import { publicRuntimeConfig } from "@/config";
 
-const defaultSortOrder = SortOrder.titleAscending,
+const defaultSortOrder = SortOrder.dateDescending,
 	dateFilterLabel = "Decision date",
 	textFilterHeading = "Keyword or reference number",
 	textFilterLabel = "Keyword or reference number";
@@ -74,11 +74,11 @@ export default getProductListPage({
 	title: "Guidance in topic selection | Guidance",
 	defaultSort: {
 		order: defaultSortOrder,
-		label: "Title",
+		label: "Decision date",
 	},
 	secondarySort: {
-		order: SortOrder.dateDescending,
-		label: "Decision date",
+		order: SortOrder.titleAscending,
+		label: "Title",
 	},
 	showDateFilter: true,
 	useFutureDates: false,
@@ -90,7 +90,6 @@ export default getProductListPage({
 
 export const getServerSideProps = getGetServerSidePropsFunc({
 	gstPreFilter: "Topic selection",
-	textFilterLabel,
 	defaultSortOrder,
 	dateFilterLabel,
 	textFilterLabel,
