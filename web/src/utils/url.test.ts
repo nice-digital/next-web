@@ -118,8 +118,46 @@ describe("URL utils", () => {
 			axiosJSONMock.onGet(new RegExp(FeedPath.ProductDetail)).reply(200, {
 				...ind1001,
 				_embedded: {
-					"nice.publications:content-part-list": {
-						_embedded: [],
+					"nice.publications:content-part-list2": {
+						_embedded: {
+							"nice.publications:content-parts": [],
+						},
+					},
+				},
+			});
+
+			const product = await getProductDetail("IND1001");
+
+			if (!product) throw Error("Product should not be null");
+
+			expect(
+				getPublicationPdfDownloadPath(product, ProductGroup.Other)
+			).toBeNull();
+		});
+
+		it("should return null when there's no content part list", async () => {
+			axiosJSONMock.reset();
+			axiosJSONMock.onGet(new RegExp(FeedPath.ProductDetail)).reply(200, {
+				...ind1001,
+				_embedded: {},
+			});
+
+			const product = await getProductDetail("IND1001");
+
+			if (!product) throw Error("Product should not be null");
+
+			expect(
+				getPublicationPdfDownloadPath(product, ProductGroup.Other)
+			).toBeNull();
+		});
+
+		it("should return null when there's no content parts", async () => {
+			axiosJSONMock.reset();
+			axiosJSONMock.onGet(new RegExp(FeedPath.ProductDetail)).reply(200, {
+				...ind1001,
+				_embedded: {
+					"nice.publications:content-part-list2": {
+						_embedded: {},
 					},
 				},
 			});

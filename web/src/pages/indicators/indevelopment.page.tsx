@@ -1,18 +1,18 @@
-import React from "react";
-
 import { Breadcrumb } from "@nice-digital/nds-breadcrumbs";
 import { Document, SortOrder } from "@nice-digital/search-client";
 
 import { Link } from "@/components/Link/Link";
 import { IndicatorListNav } from "@/components/ProductListNav/IndicatorListNav";
 import {
-	getProductListPage,
 	getGetServerSidePropsFunc,
+	getProductListPage,
 } from "@/components/ProductListPage/ProductListPage";
 import { ResponsiveDate } from "@/components/ResponsiveDate/ResponsiveDate";
 
 const defaultSortOrder = SortOrder.dateDescending,
-	dateFilterLabel = "Last updated date";
+	dateFilterLabel = "Last updated date",
+	textFilterHeading = "Keyword or reference number",
+	textFilterLabel = "Keyword or reference number";
 
 const tableBodyRender = (documents: Document[]) => (
 	<>
@@ -81,8 +81,8 @@ export default getProductListPage({
 		</Breadcrumb>,
 	],
 	currentBreadcrumb: "In development",
-	preheading: "In development",
-	heading: <>Indicators</>,
+	preheading: "",
+	heading: <>In development: Indicators</>,
 	title: "In development | Indicators",
 	defaultSort: {
 		order: defaultSortOrder,
@@ -95,6 +95,7 @@ export default getProductListPage({
 	showDateFilter: true,
 	useFutureDates: true,
 	dateFilterLabel,
+	textFilterHeading,
 	tableBodyRender,
 	searchInputPlaceholder: "E.g. 'diabetes' or 'IND28'",
 });
@@ -103,5 +104,6 @@ export const getServerSideProps = getGetServerSidePropsFunc({
 	gstPreFilter: "In development",
 	defaultSortOrder,
 	dateFilterLabel,
+	textFilterLabel,
 	index: "indicators",
 });
