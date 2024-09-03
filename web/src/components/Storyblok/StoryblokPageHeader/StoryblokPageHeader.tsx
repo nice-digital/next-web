@@ -47,6 +47,7 @@ export const StoryblokPageHeader = ({
 				header={BreadcrumbComponent}
 				description={description}
 				variant="fullWidthLight"
+				verticalPadding="loose"
 				cta={
 					updatedCTA ? <StoryblokButtonLink button={updatedCTA} /> : undefined
 				}

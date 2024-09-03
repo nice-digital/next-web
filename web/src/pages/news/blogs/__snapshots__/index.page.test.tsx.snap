@@ -4,7 +4,7 @@ exports[`/news/blogs/index.page BlogIndexPage should match snapshot for main con
 <body>
   <div>
     <div
-      class="page-header page-header--full-width-dark"
+      class="page-header page-header--full-width-dark page-header--vertical-padding-loose"
       data-component="page-header"
       id="content-start"
     >
@@ -12,54 +12,47 @@ exports[`/news/blogs/index.page BlogIndexPage should match snapshot for main con
         class="page-header__full-width-container"
       >
         <div
-          class="grid"
+          class="page-header__breadcrumbs"
         >
-          <div
-            data-component="grid-item"
-            data-g="12 md:12"
+          <nav
+            aria-label="Breadcrumbs"
+            data-component="breadcrumbs"
+            role="navigation"
           >
-            <div
-              class="page-header__breadcrumbs"
+            <ol
+              class="breadcrumbs"
             >
-              <nav
-                aria-label="Breadcrumbs"
-                data-component="breadcrumbs"
-                role="navigation"
+              <li
+                class="breadcrumbs__crumb"
               >
-                <ol
-                  class="breadcrumbs"
+                <a
+                  href="/"
                 >
-                  <li
-                    class="breadcrumbs__crumb"
-                  >
-                    <a
-                      href="/"
-                    >
-                      Home
-                    </a>
-                  </li>
-                  <li
-                    class="breadcrumbs__crumb"
-                  >
-                    <a
-                      href="/news"
-                    >
-                      News
-                    </a>
-                  </li>
-                  <li
-                    class="breadcrumbs__crumb"
-                  >
-                    <span>
-                      Blogs
-                    </span>
-                  </li>
-                </ol>
-              </nav>
-              <script
-                type="application/ld+json"
+                  Home
+                </a>
+              </li>
+              <li
+                class="breadcrumbs__crumb"
               >
-                {
+                <a
+                  href="/news"
+                >
+                  News
+                </a>
+              </li>
+              <li
+                class="breadcrumbs__crumb"
+              >
+                <span>
+                  Blogs
+                </span>
+              </li>
+            </ol>
+          </nav>
+          <script
+            type="application/ld+json"
+          >
+            {
   "@context": "http://schema.org",
   "@type": "BreadcrumbList",
   "itemListElement": [
@@ -88,15 +81,13 @@ exports[`/news/blogs/index.page BlogIndexPage should match snapshot for main con
     }
   ]
 }
-              </script>
-            </div>
-            <h1
-              class="page-header__heading "
-            >
-              Blogs
-            </h1>
-          </div>
+          </script>
         </div>
+        <h1
+          class="page-header__heading "
+        >
+          Blogs
+        </h1>
       </div>
     </div>
     <nav
@@ -403,35 +394,26 @@ exports[`/news/blogs/index.page BlogIndexPage should render error page if valida
 }
   </script>
   <div
-    class="page-header "
+    class="page-header  page-header--vertical-padding-loose"
     data-component="page-header"
     id="content-start"
   >
-    <div
-      class="grid"
+    <h1
+      class="page-header__heading "
     >
-      <div
-        data-component="grid-item"
-        data-g="12 md:12"
+      An error returned from getserversideprops
+    </h1>
+    <p
+      class="page-header__lead"
+    >
+      We'll look into it right away. Please try again in a few minutes. And if it's still not fixed, 
+      <a
+        href="/get-involved/contact-us"
       >
-        <h1
-          class="page-header__heading "
-        >
-          An error returned from getserversideprops
-        </h1>
-        <p
-          class="page-header__lead"
-        >
-          We'll look into it right away. Please try again in a few minutes. And if it's still not fixed, 
-          <a
-            href="/get-involved/contact-us"
-          >
-            contact us
-          </a>
-          .
-        </p>
-      </div>
-    </div>
+        contact us
+      </a>
+      .
+    </p>
   </div>
   <h2>
     What can I do now?

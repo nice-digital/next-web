@@ -117,25 +117,16 @@ exports[`LifeSciencesContactUsForm should match snapshot 1`] = `
         data-testid="content-start"
         id="content-start"
       >
-        <div
-          class="grid"
+        <h1
+          class="page-header__heading "
         >
-          <div
-            data-component="grid-item"
-            data-g="12 md:12"
-          >
-            <h1
-              class="page-header__heading "
-            >
-              Life sciences contact us form
-            </h1>
-            <p
-              class="page-header__lead"
-            >
-              Briefly tell us why you're getting in touch. We'll then give you an indication of how we can support you. In most cases, we'll include estimated costs and timelines sent straight to your inbox.
-            </p>
-          </div>
-        </div>
+          Life sciences contact us form
+        </h1>
+        <p
+          class="page-header__lead"
+        >
+          Briefly tell us why you're getting in touch. We'll then give you an indication of how we can support you. In most cases, we'll include estimated costs and timelines sent straight to your inbox.
+        </p>
       </div>
       <iframe
         allow="geolocation; microphone; camera"

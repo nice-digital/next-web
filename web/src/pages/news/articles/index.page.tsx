@@ -60,6 +60,7 @@ export const ArticlesIndexPage = (
 						<Breadcrumb>Articles</Breadcrumb>
 					</Breadcrumbs>
 				}
+				verticalPadding="loose"
 			/>
 			<NewsListNav />
 			{stories.length === 0 ? (

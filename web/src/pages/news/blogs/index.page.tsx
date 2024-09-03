@@ -56,6 +56,7 @@ export const BlogIndexPage = (props: BlogPostsProps): React.ReactElement => {
 						<Breadcrumb>Blogs</Breadcrumb>
 					</Breadcrumbs>
 				}
+				verticalPadding="loose"
 			/>
 			<NewsListNav />
 			{stories.length === 0 ? (

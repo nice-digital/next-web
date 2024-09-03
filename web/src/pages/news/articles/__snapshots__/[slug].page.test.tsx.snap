@@ -14,49 +14,40 @@ exports[`NewsArticlePage renders the page 1`] = `
           data-g="12"
         >
           <div
-            class="page-header page-header--full-width-light"
+            class="page-header page-header--full-width-light page-header--vertical-padding-loose"
             data-component="page-header"
           >
             <div
               class="page-header__full-width-container"
             >
+              <h1
+                class="page-header__heading "
+              >
+                Test news article title
+              </h1>
+              <p
+                class="page-header__lead"
+              >
+                Test intro text
+              </p>
               <div
-                class="grid"
+                class="page-header__description"
               >
                 <div
-                  data-component="grid-item"
-                  data-g="12 md:12"
+                  class="footer"
                 >
-                  <h1
-                    class="page-header__heading "
+                  <span
+                    class="tag tag--outline"
+                    data-component="tag"
+                    data-testid="pageTag"
                   >
-                    Test news article title
-                  </h1>
-                  <p
-                    class="page-header__lead"
+                    News
+                  </span>
+                  <time
+                    datetime="2024-01-31T15:16:15.19"
                   >
-                    Test intro text
-                  </p>
-                  <div
-                    class="page-header__description"
-                  >
-                    <div
-                      class="footer"
-                    >
-                      <span
-                        class="tag tag--outline"
-                        data-component="tag"
-                        data-testid="pageTag"
-                      >
-                        News
-                      </span>
-                      <time
-                        datetime="2024-01-31T15:16:15.19"
-                      >
-                        31 January 2024
-                      </time>
-                    </div>
-                  </div>
+                    31 January 2024
+                  </time>
                 </div>
               </div>
             </div>
@@ -298,35 +289,26 @@ exports[`NewsArticlePage should render error page if fetchStory returns error 1`
 }
   </script>
   <div
-    class="page-header "
+    class="page-header  page-header--vertical-padding-loose"
     data-component="page-header"
     id="content-start"
   >
-    <div
-      class="grid"
+    <h1
+      class="page-header__heading "
     >
-      <div
-        data-component="grid-item"
-        data-g="12 md:12"
+      An error returned from getserversideprops
+    </h1>
+    <p
+      class="page-header__lead"
+    >
+      We'll look into it right away. Please try again in a few minutes. And if it's still not fixed, 
+      <a
+        href="/get-involved/contact-us"
       >
-        <h1
-          class="page-header__heading "
-        >
-          An error returned from getserversideprops
-        </h1>
-        <p
-          class="page-header__lead"
-        >
-          We'll look into it right away. Please try again in a few minutes. And if it's still not fixed, 
-          <a
-            href="/get-involved/contact-us"
-          >
-            contact us
-          </a>
-          .
-        </p>
-      </div>
-    </div>
+        contact us
+      </a>
+      .
+    </p>
   </div>
   <h2>
     What can I do now?

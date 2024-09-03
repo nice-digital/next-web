@@ -55,29 +55,20 @@ exports[`ErrorPageContent should match snapshot for main content 1`] = `
 }
     </script>
     <div
-      class="page-header "
+      class="page-header  page-header--vertical-padding-loose"
       data-component="page-header"
       id="content-start"
     >
-      <div
-        class="grid"
+      <h1
+        class="page-header__heading "
       >
-        <div
-          data-component="grid-item"
-          data-g="12 md:12"
-        >
-          <h1
-            class="page-header__heading "
-          >
-            A test heading
-          </h1>
-          <p
-            class="page-header__lead"
-          >
-            A test lead
-          </p>
-        </div>
-      </div>
+        A test heading
+      </h1>
+      <p
+        class="page-header__lead"
+      >
+        A test lead
+      </p>
     </div>
     <h2>
       What can I do now?

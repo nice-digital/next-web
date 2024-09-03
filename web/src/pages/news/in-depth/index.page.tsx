@@ -59,6 +59,7 @@ export const InDepthArticleIndexPage = (
 						<Breadcrumb>In-depth</Breadcrumb>
 					</Breadcrumbs>
 				}
+				verticalPadding="loose"
 			/>
 			<NewsListNav />
 
