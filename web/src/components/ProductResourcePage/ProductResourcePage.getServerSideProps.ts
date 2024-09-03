@@ -6,9 +6,12 @@ import {
 	getResourceDetail,
 	BaseContentPart,
 	PDFFile,
+	EditableContentPart,
+	UploadAndConvertContentPart,
 } from "@/feeds/publications/publications";
 import { logger } from "@/logger";
 import { arrayify } from "@/utils/array";
+import { fetchAndMapContentParts } from "@/utils/contentparts";
 import { validateRouteParams } from "@/utils/product";
 import { ResourceTypeSlug } from "@/utils/resource";
 import { slugify } from "@/utils/url";
@@ -89,15 +92,27 @@ export const getGetServerSidePropsFunc =
 
 		const fullResource = await getResourceDetail(resource);
 
-		if (!fullResource || !fullResource.embedded.contentPartList) {
+		if (
+			!fullResource ||
+			!fullResource.embedded.contentPartList2?.embedded.contentParts
+		) {
 			logger.warn(
 				`Full resource with id ${resourceUID} in product ${product.id} can't be found`
 			);
 			return { notFound: true };
 		}
 
-		const { editableContentPart, uploadAndConvertContentPart } =
-				fullResource.embedded.contentPartList.embedded,
+		const { contentParts } = fullResource.embedded.contentPartList2.embedded;
+
+		const editableContentPart = fetchAndMapContentParts<EditableContentPart>(
+				contentParts,
+				"EditableContentPart"
+			),
+			uploadAndConvertContentPart =
+				fetchAndMapContentParts<UploadAndConvertContentPart>(
+					contentParts,
+					"UploadAndConvertContentPart"
+				),
 			byPartUID = ({ uid }: BaseContentPart) => uid === Number(partUID);
 
 		const editablePart = arrayify(editableContentPart).find(byPartUID),

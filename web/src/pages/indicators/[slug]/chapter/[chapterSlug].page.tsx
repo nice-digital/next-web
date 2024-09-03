@@ -20,8 +20,10 @@ import { PublicationsPrevNext } from "@/components/PublicationsPrevNext/Publicat
 import {
 	getChapterContent,
 	ChapterHeading,
+	UploadAndConvertContentPart,
 } from "@/feeds/publications/publications";
 import { arrayify } from "@/utils/array";
+import { fetchAndMapContentParts } from "@/utils/contentparts";
 import { getChapterLinks, validateRouteParams } from "@/utils/product";
 
 import styles from "./[chapterSlug].page.module.scss";
@@ -144,10 +146,16 @@ export const getServerSideProps: GetServerSideProps<
 		} = result,
 		chapters = getChapterLinks(product, productType.group);
 
-	if (!params || !product.embedded.contentPartList) return { notFound: true };
+	if (!params || !product.embedded.contentPartList2?.embedded.contentParts)
+		return { notFound: true };
 
-	const { uploadAndConvertContentPart } =
-			product.embedded.contentPartList.embedded,
+	const { contentParts } = product.embedded.contentPartList2.embedded;
+
+	const uploadAndConvertContentPart =
+			fetchAndMapContentParts<UploadAndConvertContentPart>(
+				contentParts,
+				"UploadAndConvertContentPart"
+			),
 		part = Array.isArray(uploadAndConvertContentPart)
 			? uploadAndConvertContentPart[0]
 			: uploadAndConvertContentPart;

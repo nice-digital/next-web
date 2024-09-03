@@ -5,6 +5,7 @@ import { type StoryblokStory } from "storyblok-generate-ts";
 
 import { ErrorPageContent } from "@/components/ErrorPageContent/ErrorPageContent";
 import { Blockquote } from "@/components/Storyblok/Blockquote/Blockquote";
+import { Metadata } from "@/components/Storyblok/Metadata/Metadata";
 import { StoryblokBlogPost } from "@/components/Storyblok/StoryblokBlogPost/StoryblokBlogPost";
 import { StoryblokIframe } from "@/components/Storyblok/StoryblokIframe/StoryblokIframe";
 import { StoryblokYoutubeEmbed } from "@/components/Storyblok/StoryblokYoutubeEmbed/StoryblokYoutubeEmbed";
@@ -38,6 +39,7 @@ export default function BlogPostPage(props: BlogPageProps): React.ReactElement {
 		quote: Blockquote,
 		youtubeEmbed: StoryblokYoutubeEmbed,
 		iframe: StoryblokIframe,
+		metadata: Metadata,
 	});
 	const story = "story" in props ? props.story : null;
 

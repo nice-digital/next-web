@@ -21,7 +21,7 @@ jest.mock("@/logger", () => ({
 
 describe("getGetServerSidePropsFunc", () => {
 	const getServerSideProps = getGetServerSidePropsFunc({
-		defaultSortOrder: SortOrder.dateAscending,
+		defaultSortOrder: SortOrder.dateDescending,
 		gstPreFilter: "Published",
 		dateFilterLabel: "Last updated date",
 		index: "guidance",
@@ -121,12 +121,12 @@ describe("getGetServerSidePropsFunc", () => {
 		it("should set active modifiers from navigators and from/to dates and q title query", () => {
 			expect(result.props.activeModifiers).toStrictEqual([
 				{
-					displayName: "test",
+					displayName: "Keyword or reference number: test",
 					toggleUrl:
 						"/guidance/published?ndt=Guidance&from=2020-07-28&to=2021-06-04",
 				},
 				{
-					displayName: "Last updated date between 28/7/2020 and 4/6/2021",
+					displayName: "Last updated date between: 28/7/2020 and 4/6/2021",
 					toggleUrl: "/guidance/published?q=test&ndt=Guidance&sp=on",
 				},
 				{

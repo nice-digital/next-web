@@ -100,14 +100,16 @@ describe("URL utils", () => {
 	describe("getPublicationPdfDownloadPath", () => {
 		it("should return a publication download path", async () => {
 			const product = await getProductDetail("IND1001");
+			const lastModified = product?.lastModified ?? "";
 
 			await waitFor(() => {
 				expect(
 					getPublicationPdfDownloadPath(
 						product as unknown as ProductDetail,
-						ProductGroup.Other
+						ProductGroup.Other,
+						lastModified
 					)
-				).toBe(`/indicators/${slug}/IND1001.pdf`);
+				).toBe(`/indicators/${slug}/IND1001-20221012.pdf`);
 			});
 		});
 
@@ -116,8 +118,46 @@ describe("URL utils", () => {
 			axiosJSONMock.onGet(new RegExp(FeedPath.ProductDetail)).reply(200, {
 				...ind1001,
 				_embedded: {
-					"nice.publications:content-part-list": {
-						_embedded: [],
+					"nice.publications:content-part-list2": {
+						_embedded: {
+							"nice.publications:content-parts": [],
+						},
+					},
+				},
+			});
+
+			const product = await getProductDetail("IND1001");
+
+			if (!product) throw Error("Product should not be null");
+
+			expect(
+				getPublicationPdfDownloadPath(product, ProductGroup.Other)
+			).toBeNull();
+		});
+
+		it("should return null when there's no content part list", async () => {
+			axiosJSONMock.reset();
+			axiosJSONMock.onGet(new RegExp(FeedPath.ProductDetail)).reply(200, {
+				...ind1001,
+				_embedded: {},
+			});
+
+			const product = await getProductDetail("IND1001");
+
+			if (!product) throw Error("Product should not be null");
+
+			expect(
+				getPublicationPdfDownloadPath(product, ProductGroup.Other)
+			).toBeNull();
+		});
+
+		it("should return null when there's no content parts", async () => {
+			axiosJSONMock.reset();
+			axiosJSONMock.onGet(new RegExp(FeedPath.ProductDetail)).reply(200, {
+				...ind1001,
+				_embedded: {
+					"nice.publications:content-part-list2": {
+						_embedded: {},
 					},
 				},
 			});

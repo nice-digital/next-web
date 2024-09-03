@@ -253,6 +253,185 @@
       },
       "ETag": null
     },
+    "nice.publications:content-part-list2": {
+      "_links": { "self": [{}] },
+      "_embedded": {
+        "nice.publications:content-parts": [
+          {
+            "_links": { "self": [{}] },
+            "_embedded": {
+            "nice.publications:html-content": {
+              "_links": {
+              "self": [{ "href": "/feeds/product/NG100/content/1/html" }]
+              },
+              "_embedded": {
+              "nice.publications:html-chapter-content-info": [
+                {
+                "_links": {
+                  "self": [
+                  {
+                    "href": "/feeds/product/NG100/part/1/chapter/overview"
+                  }
+                  ]
+                },
+                "ETag": null,
+                "Reference": "NG100",
+                "PartId": 1,
+                "ChapterSlug": "overview",
+                "Title": "Overview"
+                },
+                {
+                "_links": {
+                  "self": [
+                  {
+                    "href": "/feeds/product/NG100/part/1/chapter/recommendations"
+                  }
+                  ]
+                },
+                "ETag": null,
+                "Reference": "NG100",
+                "PartId": 1,
+                "ChapterSlug": "recommendations",
+                "Title": "Recommendations"
+                },
+                {
+                "_links": {
+                  "self": [
+                  {
+                    "href": "/feeds/product/NG100/part/1/chapter/recommendations-for-research"
+                  }
+                  ]
+                },
+                "ETag": null,
+                "Reference": "NG100",
+                "PartId": 1,
+                "ChapterSlug": "recommendations-for-research",
+                "Title": "Recommendations for research"
+                },
+                {
+                "_links": {
+                  "self": [
+                  {
+                    "href": "/feeds/product/NG100/part/1/chapter/rationale-and-impact"
+                  }
+                  ]
+                },
+                "ETag": null,
+                "Reference": "NG100",
+                "PartId": 1,
+                "ChapterSlug": "rationale-and-impact",
+                "Title": "Rationale and impact"
+                },
+                {
+                "_links": {
+                  "self": [
+                  {
+                    "href": "/feeds/product/NG100/part/1/chapter/context"
+                  }
+                  ]
+                },
+                "ETag": null,
+                "Reference": "NG100",
+                "PartId": 1,
+                "ChapterSlug": "context",
+                "Title": "Context"
+                },
+                {
+                "_links": {
+                  "self": [
+                  {
+                    "href": "/feeds/product/NG100/part/1/chapter/finding-more-information-and-committee-details"
+                  }
+                  ]
+                },
+                "ETag": null,
+                "Reference": "NG100",
+                "PartId": 1,
+                "ChapterSlug": "finding-more-information-and-committee-details",
+                "Title": "Finding more information and committee details"
+                },
+                {
+                "_links": {
+                  "self": [
+                  {
+                    "href": "/feeds/product/NG100/part/1/chapter/update-information"
+                  }
+                  ]
+                },
+                "ETag": null,
+                "Reference": "NG100",
+                "PartId": 1,
+                "ChapterSlug": "update-information",
+                "Title": "Update information"
+                }
+              ]
+              },
+              "ETag": null,
+              "Reference": "NG100",
+              "PartId": 1
+            },
+            "nice.publications:pdf-file": {
+              "_links": {
+              "self": [
+                {
+                "href": "/feeds/downloads/9095116f-5c06-43b5-bedc-1aa98b3af693"
+                }
+              ]
+              },
+              "ETag": null,
+              "Id": "9095116f-5c06-43b5-bedc-1aa98b3af693",
+              "MimeType": "application/pdf",
+              "FileName": "NG100 Guidance 20220113.pdf",
+              "Length": 190002,
+              "Hash": "809F5E72EEA5822E958A42EB2C69CA50C3FA36FE",
+              "Name": "default",
+              "Uid": 66141531233989
+            },
+            "nice.publications:mobi-file": {
+              "_links": {
+              "self": [
+                {
+                "href": "/feeds/downloads/53ab748c-fd02-4ddb-a9d2-702bd2ea15a6"
+                }
+              ]
+              },
+              "ETag": null,
+              "Id": "53ab748c-fd02-4ddb-a9d2-702bd2ea15a6",
+              "MimeType": "application/x-mobipocket-ebook",
+              "FileName": "NG100 Guidance 20220113.mobi",
+              "Length": 400334,
+              "Hash": "7B93C88E25FBBB16D901AC4C428A249BF8C2A597",
+              "Name": "default",
+              "Uid": 66141531233986
+            },
+            "nice.publications:epub-file": {
+              "_links": {
+              "self": [
+                {
+                "href": "/feeds/downloads/c767efb7-ba52-41ee-87a9-8845a633447c"
+                }
+              ]
+              },
+              "ETag": null,
+              "Id": "c767efb7-ba52-41ee-87a9-8845a633447c",
+              "MimeType": "application/epub+zip",
+              "FileName": "NG100 Guidance 20220113.epub",
+              "Length": 227122,
+              "Hash": "82F150B6501F6FBD555CAA46B0705C5A9DB01EFB",
+              "Name": "default",
+              "Uid": 66141531233978
+            }
+            },
+            "ETag": null,
+            "Title": "Rheumatoid arthritis in adults: management",
+            "Type": "UploadAndConvertContentPart",
+            "Uid": 51035132125,
+            "LegacyId": null
+          }
+        ]
+      },
+      "ETag": null
+    },
     "nice.publications:related-resource-list": {
       "_links": { "self": [{}] },
       "_embedded": {

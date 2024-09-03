@@ -1,14 +1,16 @@
 import { Breadcrumb } from "@nice-digital/nds-breadcrumbs";
-import { SortOrder, Document } from "@nice-digital/search-client";
+import { Document, SortOrder } from "@nice-digital/search-client";
 
 import { GuidanceListNav } from "@/components/ProductListNav/GuidanceListNav";
 import {
-	getProductListPage,
 	getGetServerSidePropsFunc,
+	getProductListPage,
 } from "@/components/ProductListPage/ProductListPage";
 import { publicRuntimeConfig } from "@/config";
 
-const defaultSortOrder = SortOrder.titleAscending;
+const defaultSortOrder = SortOrder.titleAscending,
+	textFilterHeading = "Keyword or reference number",
+	textFilterLabel = "Keyword or reference number";
 
 const tableBodyRender = (documents: Document[]) => (
 	<>
@@ -49,20 +51,22 @@ export default getProductListPage({
 		</Breadcrumb>,
 	],
 	currentBreadcrumb: "Awaiting development",
-	preheading: "Guidance and quality standards ",
-	heading: "Awaiting development",
+	preheading: "",
+	heading: "Awaiting development: Guidance and quality standards",
 	title: "Guidance and quality standards awaiting development | Guidance",
 	defaultSort: {
 		order: defaultSortOrder,
 		label: "Title",
 	},
 	showDateFilter: false,
+	textFilterHeading,
 	tableBodyRender,
 	searchInputPlaceholder: "E.g. 'diabetes' or 'NG28'",
 });
 
 export const getServerSideProps = getGetServerSidePropsFunc({
 	gstPreFilter: "Awaiting development",
+	textFilterLabel,
 	defaultSortOrder,
 	index: "guidance",
 });
