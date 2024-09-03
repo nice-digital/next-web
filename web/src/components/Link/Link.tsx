@@ -1,7 +1,7 @@
 import NextJSLink, { LinkProps as NextJSLinkProps } from "next/link";
 import { useRouter } from "next/router";
-import { FC, ReactChild, useEffect, useCallback } from "react";
-import { RequireExactlyOne, SetOptional, Except } from "type-fest";
+import { FC, ReactChild, useCallback, useEffect } from "react";
+import { Except, RequireExactlyOne, SetOptional } from "type-fest";
 
 type NextJSUrl = NextJSLinkProps["href"];
 export type LinkProps = RequireExactlyOne<
@@ -64,17 +64,20 @@ export const ScrollToLink: FC<
 > = ({ scrollTargetId, ...props }) => {
 	const router = useRouter();
 
-	const handleRouteChange = useCallback(() => {
-		const targetElement = document.getElementById(scrollTargetId);
-		if (targetElement) {
-			targetElement.setAttribute("tabIndex", "-1");
-			targetElement.focus();
-			targetElement.scrollIntoView();
-		} else {
-			console.warn(`Element with id ${scrollTargetId} could not be found`);
-		}
-		router.events.off("routeChangeComplete", handleRouteChange);
-	}, [router.events, scrollTargetId]);
+	const handleRouteChange = useCallback(
+		(url: string) => {
+			const targetElement = document.getElementById(scrollTargetId);
+			if (targetElement) {
+				targetElement.setAttribute("tabIndex", "-1");
+				targetElement.focus();
+				targetElement.scrollIntoView();
+			} else {
+				console.warn(`Element with id ${scrollTargetId} could not be found`);
+			}
+			router.events.off("routeChangeComplete", handleRouteChange);
+		},
+		[router.events, scrollTargetId]
+	);
 
 	useEffect(() => {
 		if (router.events)
