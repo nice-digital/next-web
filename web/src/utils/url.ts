@@ -9,9 +9,12 @@ import {
 import {
 	ProductGroup,
 	ProductTypeAcronym,
+	UploadAndConvertContentPart,
 	type ProductDetail,
 	type ProductLite,
 } from "@/feeds/publications/types";
+
+import { fetchAndMapContentParts } from "./contentparts";
 
 /** A custom exported version of @sindresorhus/slugify we use everywhere in case we introduce custom replacement */
 export const slugify = libSlugify;
@@ -118,7 +121,17 @@ export const getPublicationPdfDownloadPath = (
 	productGroup: ProductGroup,
 	lastModified: string
 ): string | null => {
-	if (!product.embedded.contentPartList?.embedded.uploadAndConvertContentPart)
+	if (!product.embedded.contentPartList2?.embedded.contentParts) return null;
+
+	const { contentParts } = product.embedded.contentPartList2.embedded;
+
+	const uploadAndConvertContentPart =
+		fetchAndMapContentParts<UploadAndConvertContentPart>(
+			contentParts,
+			"UploadAndConvertContentPart"
+		);
+
+	if (!uploadAndConvertContentPart || uploadAndConvertContentPart.length == 0)
 		return null;
 
 	const rootPath = getProductPath({

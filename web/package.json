@@ -8,11 +8,13 @@
     "postbuild": "next-sitemap",
     "start": "next start",
     "host": "cross-env NODE_OPTIONS='-r next-logger' next start | pino-mq -c ./config/.pino-mqrc.json",
+    "host-console-logging": "cross-env NODE_OPTIONS='-r next-logger' next start",
     "test": "cd .. && npm run test -- --selectProjects web",
     "generate-sb-types": "storyblok pull-components --space {SPACE_ID} && storyblok-generate-ts source=./components.{SPACE_ID}.json target=./src/types/storyblok",
     "generate-sb-types-dynamic": "sh -c 'storyblok pull-components --space $SPACE_ID; storyblok-generate-ts source=./components.$SPACE_ID.json target=./src/types/storyblok'",
     "proxy": "mkcert -install && mkcert localhost && local-ssl-proxy --source 4010 --target 4000 --cert localhost.pem --key localhost-key.pem",
-    "danger-storyblok-sync": "node --experimental-modules ./syncScript.mjs"
+    "danger-storyblok-sync": "node --experimental-modules ./syncScript.mjs",
+    "danger-storyblok-push-pull": "node --experimental-modules ./pullPushScript.mjs"
   },
   "repository": {
     "type": "git",
@@ -32,7 +34,7 @@
     "@nice-digital/design-system": "^5.0.30-alpha.0",
     "@nice-digital/global-nav": "^7.1.1068",
     "@nice-digital/nds-prev-next": "^3.0.2",
-    "@nice-digital/search-client": "^2.0.1571",
+    "@nice-digital/search-client": "^2.0.1589",
     "@sindresorhus/slugify": "^1.1.2",
     "@storyblok/react": "^2.4.4",
     "axios": "^1.1.2",

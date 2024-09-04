@@ -83,6 +83,7 @@ export const StoryblokNewsArticle = ({
 								pageType={blok.component}
 							/>,
 						]}
+						verticalPadding="loose"
 					/>
 				</GridItem>
 

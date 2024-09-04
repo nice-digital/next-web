@@ -1,3 +1,28 @@
+<!-- START doctoc generated TOC please keep comment here to allow auto update -->
+<!-- DON'T EDIT THIS SECTION, INSTEAD RE-RUN doctoc TO UPDATE -->
+**Table of Contents**  *generated with [DocToc](https://github.com/thlorenz/doctoc)*
+
+- [Functional tests for Next Web](#functional-tests-for-next-web)
+  - [Table of contents](#table-of-contents)
+  - [Stack](#stack)
+    - [Software](#software)
+  - [:rocket: Set up](#rocket-set-up)
+    - [Install Java JDK](#install-java-jdk)
+    - [Run the tests](#run-the-tests)
+    - [Using VSCode](#using-vscode)
+    - [Using npm](#using-npm)
+      - [Different URLs](#different-urls)
+    - [Docker](#docker)
+    - [Steps to Run NextWeb in Docker with Teamcity built image](#steps-to-run-nextweb-in-docker-with-teamcity-built-image)
+      - [Development mode](#development-mode)
+  - [Excluding tests](#excluding-tests)
+  - [Running single features](#running-single-features)
+  - [Troubleshooting](#troubleshooting)
+    - [session not created: This version of ChromeDriver only supports Chrome version xx](#session-not-created-this-version-of-chromedriver-only-supports-chrome-version-xx)
+    - [Port 4444 is already in use](#port-4444-is-already-in-use)
+
+<!-- END doctoc generated TOC please keep comment here to allow auto update -->
+
 # Functional tests for Next Web
 
 > Functional, browser-based tests for Next Web, built with WebdriverIO 7
@@ -111,6 +136,66 @@ It can be harder to debug tests running inside Docker as you can't watch the tes
 >
 > 
 
+### Steps to Run NextWeb in Docker with Teamcity built image
+
+1. **Verify AWS CLI Installation**
+   - Run `aws sts get-caller-identity` to confirm the AWS CLI is installed and configured correctly. You should see your username/account information.
+
+1. **Login to AWS ECR**
+   - Use the command below to log into AWS ECR. Replace `xxxxxxxxxxxxxx` with your AWS account details:
+     ```bash
+     aws ecr get-login-password --region eu-west-1 | docker login --username AWS --password-stdin xxxxxxxxxxxxxx.dkr.ecr.eu-west-1.amazonaws.com
+     ```
+
+1. **Check Docker in WSL**
+   - Confirm Docker is working in WSL by running:
+     ```bash
+     docker run hello-world
+     ```
+
+1. **Pull NextWeb Image**
+   - Obtain the 4-digit build number from Teamcity, then pull the NextWeb image:
+     ```bash
+     docker pull .dkr.ecr.eu-west-1.amazonaws.com/nextweb:nnnn
+     ```
+   - Replace `nnnn` with the build number.
+
+1. **Navigate to the Functional Tests Directory**
+   - Change to the directory containing the `docker-compose.yml` file:
+     ```bash
+     cd /functional-tests
+     ```
+
+1. **Update Docker Compose File**
+   - Edit the `docker-compose.yml` file to specify the correct image for the "next-web" container. Replace `xxxx` with the build number from Step 4:
+     ```yaml
+     xxxxxxxxxxxxxx.dkr.ecr.eu-west-1.amazonaws.com/nextweb:xxxx
+     ```
+
+1. **Redirect NextWeb Error Logs (Optional)**
+   - To send logs to the local console instead of pino-mq and the RELK stack, uncomment the following line in the `docker-compose.yml` file:
+     ```yaml
+     command: ["npm", "run", "host-console-logging"]
+     ```
+
+1. **Start Docker Containers**
+   - Bring up all containers defined in the `docker-compose.yml` file:
+     ```bash
+     docker-compose up
+     ```
+
+1. **Verify Running Containers**
+   - Ensure all containers are running using either:
+     - `docker container ls`
+     - Docker Desktop UI
+
+1. **Run Test Suite**
+    - Once satisfied that the containers are running, execute the test container:
+      ```bash
+      docker-compose run -T nxt-test-runner npm run wait-then-test
+      ```
+
+
 #### Development mode
 
 Using _docker-run.sh_ is great for running the tests one off inside Docker, but it creates the Docker network then destroys everything after the test run. This means slow cycle times for chaning feature files (or step definitions) and re-running the test(s).
@@ -132,6 +217,8 @@ Examine the scripts within [package.json](package.json) to see how the URL is be
 The whole functional-tests folder is mounted as a volume in the test-runner container. This means any screenshots generated in the case of an error are saved into the screenshots folder, and these are available on the host machine.
 
 > Note: run `exit` to escape from bash inside the test-runner container, and run `docker-compose down` to stop the Docker network.
+
+
 
 ## Excluding tests
 
@@ -166,6 +253,8 @@ npm test -- --suite homepage
 ```
 
 See [organizing test suites](https://webdriver.io/docs/organizingsuites/) in the WebdriverIO docs for more info.
+
+
 
 ## Troubleshooting
 

@@ -3,19 +3,26 @@ import { render, screen } from "@testing-library/react";
 import { InlineTextFilter } from "./InlineTextFilter";
 
 describe("InlineTextFilter", () => {
-	it("should render label with given text", () => {
-		render(<InlineTextFilter label="Test label" name="test" />);
+	it("should render FilterGroup with given heading", () => {
+		render(<InlineTextFilter name="test" heading="Test heading" />);
+		const filterHeading = screen.getByRole("button", {
+			name: "Test heading",
+		});
 
-		const label = screen.getByText("Test label");
-
-		expect(label).toBeInTheDocument();
-		expect(label).toHaveProperty("tagName", "LABEL");
+		expect(filterHeading).toBeInTheDocument();
+		expect(filterHeading).toHaveProperty("tagName", "BUTTON");
 	});
 
-	it("should render label matching given input name", () => {
-		render(<InlineTextFilter label="Test label" name="test" />);
+	it("should render input with id matching the given component name prop", () => {
+		render(
+			<InlineTextFilter
+				heading="Test label"
+				name="test"
+				placeholder="Placeholder"
+			/>
+		);
 
-		const input = screen.getByLabelText("Test label");
+		const input = screen.getByPlaceholderText("Placeholder");
 
 		expect(input).toHaveProperty("tagName", "INPUT");
 		expect(input).toHaveAttribute("type", "text");
@@ -24,35 +31,35 @@ describe("InlineTextFilter", () => {
 	it("should render placeholder on input", () => {
 		render(
 			<InlineTextFilter
-				label="Test label"
+				heading="Test label"
 				name="test"
 				placeholder="Some text"
 			/>
 		);
 
-		const input = screen.getByLabelText("Test label");
+		const input = screen.getByPlaceholderText("Some text");
 
-		expect(input).toHaveProperty("placeholder", "Some text");
+		expect(input).toBeInTheDocument();
 	});
 
 	it("should render default value on input", () => {
 		render(
 			<InlineTextFilter
-				label="Test label"
+				heading="Test label"
 				name="test"
 				defaultValue="Some value"
 			/>
 		);
 
-		const input = screen.getByLabelText("Test label");
+		const input = screen.getByDisplayValue("Some value");
 
-		expect(input).toHaveProperty("value", "Some value");
+		expect(input).toBeInTheDocument();
 	});
 
 	it("should render cta submit button", () => {
-		render(<InlineTextFilter label="Test label" name="q" />);
+		render(<InlineTextFilter heading="Test label" name="q" />);
 
-		const button = screen.getByText("Filter");
+		const button = screen.getByText("Apply filter");
 
 		expect(button).toBeInTheDocument();
 		expect(button).toHaveAttribute("type", "submit");
