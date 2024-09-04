@@ -109,49 +109,40 @@ exports[`/product/[slug]/resources/[partSlug]/chapter/[chapterSlug].page Product
     data-component="page-header"
     id="content-start"
   >
-    <div
-      class="grid"
+    <h1
+      class="page-header__heading page-header__heading--alt"
     >
-      <div
-        data-component="grid-item"
-        data-g="12 md:12"
-      >
-        <h1
-          class="page-header__heading page-header__heading--alt"
+      Developing NICE guidelines: the manual 
+    </h1>
+    <ul
+      class="page-header__metadata"
+    >
+      <li>
+        Process and methods
+      </li>
+      <li>
+        PMG20
+      </li>
+      <li>
+        Published:
+        <time
+          datetime="2014-10-31"
         >
-          Developing NICE guidelines: the manual 
-        </h1>
-        <ul
-          class="page-header__metadata"
+           
+          31 October 2014
+        </time>
+      </li>
+      <li>
+        Last updated:
+        <time
+          datetime="2022-01-18"
         >
-          <li>
-            Process and methods
-          </li>
-          <li>
-            PMG20
-          </li>
-          <li>
-            Published:
-            <time
-              datetime="2014-10-31"
-            >
-               
-              31 October 2014
-            </time>
-          </li>
-          <li>
-            Last updated:
-            <time
-              datetime="2022-01-18"
-            >
-               
-               
-              18 January 2022
-            </time>
-          </li>
-        </ul>
-      </div>
-    </div>
+           
+           
+          18 January 2022
+        </time>
+      </li>
+    </ul>
   </div>
   <nav
     class="horizontal-nav"
