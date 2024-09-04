@@ -40,6 +40,7 @@ exports[`Storyblok accordion group component should match snapshot 1`] = `
         aria-expanded="false"
         class="accordion__summary"
         data-tracking="Show"
+        id="accordion-button-r:id"
         type="button"
       >
         <span
@@ -71,7 +72,7 @@ exports[`Storyblok accordion group component should match snapshot 1`] = `
       </button>
     </h2>
     <div
-      aria-labelledby="accordion-title-r:id"
+      aria-labelledby="accordion-button-r:id"
       class="accordion__content"
       hidden=""
       id="accordion-content-r:id"
@@ -97,6 +98,7 @@ exports[`Storyblok accordion group component should match snapshot 1`] = `
         aria-expanded="false"
         class="accordion__summary"
         data-tracking="Show"
+        id="accordion-button-r:id"
         type="button"
       >
         <span
@@ -128,7 +130,7 @@ exports[`Storyblok accordion group component should match snapshot 1`] = `
       </button>
     </h2>
     <div
-      aria-labelledby="accordion-title-r:id"
+      aria-labelledby="accordion-button-r:id"
       class="accordion__content"
       hidden=""
       id="accordion-content-r:id"
@@ -154,6 +156,7 @@ exports[`Storyblok accordion group component should match snapshot 1`] = `
         aria-expanded="false"
         class="accordion__summary"
         data-tracking="Show"
+        id="accordion-button-r:id"
         type="button"
       >
         <span
@@ -185,7 +188,7 @@ exports[`Storyblok accordion group component should match snapshot 1`] = `
       </button>
     </div>
     <div
-      aria-labelledby="accordion-title-r:id"
+      aria-labelledby="accordion-button-r:id"
       class="accordion__content"
       hidden=""
       id="accordion-content-r:id"
