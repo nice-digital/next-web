@@ -117,25 +117,16 @@ exports[`SubscribeToOurGPReferencePanelForm should match snapshot 1`] = `
         data-testid="content-start"
         id="content-start"
       >
-        <div
-          class="grid"
+        <h1
+          class="page-header__heading "
         >
-          <div
-            data-component="grid-item"
-            data-g="12 md:12"
-          >
-            <h1
-              class="page-header__heading "
-            >
-              Subscribe to our GP reference panel
-            </h1>
-            <p
-              class="page-header__lead"
-            >
-              Contribute to the development of NICE guidance in a quick and easy way.
-            </p>
-          </div>
-        </div>
+          Subscribe to our GP reference panel
+        </h1>
+        <p
+          class="page-header__lead"
+        >
+          Contribute to the development of NICE guidance in a quick and easy way.
+        </p>
       </div>
       <p>
         Our GP reference panel aims to gather the collective wisdom of GPs on the ground who might not otherwise be heard. We welcome registration by any GP currently on a performers list anywhere in the UK.
