@@ -71,6 +71,7 @@ export function NewsIndexPage(props: NewsIndexProps): React.ReactElement {
 				breadcrumbs={breadcrumbs}
 				heading={pageTitle}
 				variant="fullWidthDark"
+				verticalPadding="loose"
 			/>
 			<NewsListNav />
 

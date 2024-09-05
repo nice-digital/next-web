@@ -45,6 +45,7 @@ export const NewsPageHeader: React.FC<NewsPageHeaderProps> = ({
 			heading={heading}
 			lead={lead}
 			description={[<NewsPageHeaderMeta key="page-header-meta" />]}
+			verticalPadding="loose"
 		/>
 	);
 };

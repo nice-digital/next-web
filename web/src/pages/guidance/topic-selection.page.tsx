@@ -6,9 +6,11 @@ import {
 	getGetServerSidePropsFunc,
 	getProductListPage,
 } from "@/components/ProductListPage/ProductListPage";
+import { ResponsiveDate } from "@/components/ResponsiveDate/ResponsiveDate";
 import { publicRuntimeConfig } from "@/config";
 
-const defaultSortOrder = SortOrder.titleAscending,
+const defaultSortOrder = SortOrder.dateDescending,
+	dateFilterLabel = "Decision date",
 	textFilterHeading = "Keyword or reference number",
 	textFilterLabel = "Keyword or reference number";
 
@@ -20,6 +22,7 @@ const tableBodyRender = (documents: Document[]) => (
 				<th scope="col">Title</th>
 				<th scope="col">Technology type</th>
 				<th scope="col">Decision</th>
+				<th scope="col">Decision date</th>
 			</tr>
 		</thead>
 		<tbody>
@@ -30,6 +33,7 @@ const tableBodyRender = (documents: Document[]) => (
 					pathAndQuery,
 					technologyType,
 					topicSelectionDecision,
+					topicSelectionDecisionDate,
 				}) => {
 					return (
 						<tr key={id}>
@@ -41,6 +45,13 @@ const tableBodyRender = (documents: Document[]) => (
 							</td>
 							<td>{technologyType || "n/a"}</td>
 							<td>{topicSelectionDecision || "n/a"}</td>
+							<td>
+								{topicSelectionDecisionDate ? (
+									<ResponsiveDate isoDateTime={topicSelectionDecisionDate} />
+								) : (
+									<abbr title="To be confirmed">TBC</abbr>
+								)}
+							</td>
 						</tr>
 					);
 				}
@@ -63,9 +74,15 @@ export default getProductListPage({
 	title: "Guidance in topic selection | Guidance",
 	defaultSort: {
 		order: defaultSortOrder,
+		label: "Decision date",
+	},
+	secondarySort: {
+		order: SortOrder.titleAscending,
 		label: "Title",
 	},
-	showDateFilter: false,
+	showDateFilter: true,
+	useFutureDates: false,
+	dateFilterLabel,
 	textFilterHeading,
 	tableBodyRender,
 	searchInputPlaceholder: "E.g. 'diabetes' or 'NG28'",
@@ -73,7 +90,8 @@ export default getProductListPage({
 
 export const getServerSideProps = getGetServerSidePropsFunc({
 	gstPreFilter: "Topic selection",
-	textFilterLabel,
 	defaultSortOrder,
+	dateFilterLabel,
+	textFilterLabel,
 	index: "guidance",
 });

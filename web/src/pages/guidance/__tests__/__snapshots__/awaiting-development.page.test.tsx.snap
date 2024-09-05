@@ -85,36 +85,27 @@ exports[`/guidance/awaiting-development should match the snapshot 1`] = `
           data-testid="content-start"
           id="content-start"
         >
-          <div
-            class="grid"
+          <h1
+            class="page-header__heading "
           >
-            <div
-              data-component="grid-item"
-              data-g="12 md:12"
+            Awaiting development: Guidance and quality standards
+          </h1>
+          <p
+            class="page-header__lead"
+          >
+            <a
+              class="skipLink"
+              href="#filters"
             >
-              <h1
-                class="page-header__heading "
-              >
-                Awaiting development: Guidance and quality standards
-              </h1>
-              <p
-                class="page-header__lead"
-              >
-                <a
-                  class="skipLink"
-                  href="#filters"
-                >
-                  Skip to filters
-                </a>
-                <a
-                  class="skipLink"
-                  href="#results"
-                >
-                  Skip to results
-                </a>
-              </p>
-            </div>
-          </div>
+              Skip to filters
+            </a>
+            <a
+              class="skipLink"
+              href="#results"
+            >
+              Skip to results
+            </a>
+          </p>
         </div>
         <nav
           aria-label="Stages of guidance development"

@@ -31,6 +31,9 @@ services:
   # New Next Web (NextJS web app)
   next-web:
     image: nextweb:latest
+    ## Uncomment the two lines below to run with a specific image with a specific Teamcity build number
+    ## image: xxxxxxxxxxxx.dkr.ecr.eu-west-1.amazonaws.com/nextweb:nnnn
+    ## command: ["npm", "run", "host-console-logging"]
     container_name: next-web
     depends_on:
       - mock-search-api

@@ -59,6 +59,7 @@ export const PodcastIndexPage = (
 						<Breadcrumb>Podcasts</Breadcrumb>
 					</Breadcrumbs>
 				}
+				verticalPadding="loose"
 			/>
 			<NewsListNav />
 			{stories.length === 0 ? (
