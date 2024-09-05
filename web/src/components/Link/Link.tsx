@@ -1,8 +1,9 @@
-import { useScrollToTarget } from "@/hooks/useScrollToTarget";
 import NextJSLink, { LinkProps as NextJSLinkProps } from "next/link";
 import { useRouter } from "next/router";
 import { FC, ReactChild } from "react";
 import { Except, RequireExactlyOne, SetOptional } from "type-fest";
+
+import { useScrollToTarget } from "@/hooks/useScrollToTarget";
 
 type NextJSUrl = NextJSLinkProps["href"];
 export type LinkProps = RequireExactlyOne<

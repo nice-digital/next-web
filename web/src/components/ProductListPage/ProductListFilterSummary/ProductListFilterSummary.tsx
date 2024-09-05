@@ -44,11 +44,12 @@ export const ProductListFilterSummary: FC<ProductListFilterSummaryProps> = ({
 				active: currentSortOrder === defaultSort.order || !currentSortOrder,
 				label: defaultSort.label,
 				onSelected: () => {
-					push({
-						query: { ...query, s: defaultSort.order },
-					},
-					undefined,
-					{ scroll: false }
+					push(
+						{
+							query: { ...query, s: defaultSort.order },
+						},
+						undefined,
+						{ scroll: false }
 					);
 					events.on("routeChangeComplete", scrollToTarget);
 				},
@@ -58,11 +59,12 @@ export const ProductListFilterSummary: FC<ProductListFilterSummaryProps> = ({
 				active: currentSortOrder === secondarySort.order,
 				label: secondarySort.label,
 				onSelected: () => {
-					push({
-						query: { ...query, s: secondarySort.order },
-					},
-					undefined,
-					{ scroll: false }
+					push(
+						{
+							query: { ...query, s: secondarySort.order },
+						},
+						undefined,
+						{ scroll: false }
 					);
 					events.on("routeChangeComplete", scrollToTarget);
 				},

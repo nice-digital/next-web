@@ -1,7 +1,9 @@
 import { useRouter } from "next/router";
 import { useCallback } from "react";
 
-export const useScrollToTarget = (scrollTargetId: string): (url: string) => void => {
+export const useScrollToTarget = (
+	scrollTargetId: string
+): ((url: string) => void) => {
 	const { events } = useRouter();
 
 	const scrollToTarget = useCallback(
