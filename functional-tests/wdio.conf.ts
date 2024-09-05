@@ -53,7 +53,9 @@ export const config: WebdriverIO.Config = {
 
 	afterStep: async function (_test, _scenario, { error }) {
 		// Take screenshots on error, these end up in the Allure reports
+		const fileName = "errorShots/" + "ERROR_" + _scenario.name + ".png";
 		if (error) await browser.takeScreenshot();
+		if (error) await browser.saveScreenshot(fileName);
 	},
 
 	autoCompileOpts: {

@@ -29,6 +29,8 @@ function processTestOutput() {
   echo "Making docker-output folder"
   mkdir -p docker-output
 
+  docker cp nxt-test-runner:/tests/errorShots ./docker-output/errorShots
+
   echo "Copying allure report out of nxt-test-runner"
   docker cp nxt-test-runner:/next-web/tests/allure-report ./docker-output
 
