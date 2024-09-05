@@ -382,8 +382,21 @@ describe("Storyblok utils", () => {
 				expect(loggerErrorSpy).toHaveBeenCalled();
 				// eslint-disable-next-line testing-library/no-wait-for-multiple-assertions
 				expect(loggerErrorSpy).toHaveBeenCalledWith(
-					"404 error from Storyblok API: Not Found",
-					'{"message":"Not Found","status":404,"response":"This record could not be found"}'
+					{
+						ocelotEndpoint: null,
+						originatingErrorResponse: {
+							message: "Not Found",
+							response: "This record could not be found",
+							status: 404,
+						},
+						sbParams: {
+							per_page: 8,
+							resolve_links: "url",
+							starts_with: "news/articles",
+							version: "published",
+						},
+					},
+					"fetchStories: 404 error from Storyblok API: Not Found at starts_with: news/articles "
 				);
 			});
 		});
@@ -410,8 +423,20 @@ describe("Storyblok utils", () => {
 				expect(loggerErrorSpy).toHaveBeenCalled();
 				// eslint-disable-next-line testing-library/no-wait-for-multiple-assertions
 				expect(loggerErrorSpy).toHaveBeenCalledWith(
-					"503 error from Storyblok API: Service Unavailable",
-					'{"status":503,"message":"Service Unavailable"}'
+					{
+						ocelotEndpoint: null,
+						originatingErrorResponse: {
+							message: "Service Unavailable",
+							status: 503,
+						},
+						sbParams: {
+							per_page: 8,
+							resolve_links: "url",
+							starts_with: "news/articles",
+							version: "published",
+						},
+					},
+					"fetchStories: 503 error from Storyblok API: Service Unavailable at starts_with: news/articles "
 				);
 			});
 		});

@@ -283,9 +283,14 @@ export const fetchStories = async <T>(
 		result.total = response.total;
 	} catch (error) {
 		const errorResponse = JSON.parse(error as string) as ISbError;
+
 		logger.error(
-			`${errorResponse.status} error from Storyblok API: ${errorResponse.message}`,
-			error
+			{
+				originatingErrorResponse: errorResponse,
+				sbParams,
+				ocelotEndpoint: publicRuntimeConfig.storyblok.ocelotEndpoint,
+			},
+			`fetchStories: ${errorResponse.status} error from Storyblok API: ${errorResponse.message} at starts_with: ${sbParams.starts_with} `
 		);
 
 		throw new Error(
