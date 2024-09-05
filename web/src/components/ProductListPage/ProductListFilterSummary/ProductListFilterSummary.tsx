@@ -5,6 +5,7 @@ import { FilterSummary, FilterSummaryProps } from "@nice-digital/nds-filters";
 import { SearchResultsSuccess, SortOrder } from "@nice-digital/search-client";
 
 import { NoScrollLink } from "@/components/Link/Link";
+import { useScrollToTarget } from "@/hooks/useScrollToTarget";
 
 export interface ActiveModifier {
 	displayName: string;
@@ -32,7 +33,8 @@ export const ProductListFilterSummary: FC<ProductListFilterSummaryProps> = ({
 	defaultSort,
 	secondarySort,
 }) => {
-	const { push, query } = useRouter();
+	const { push, query, events } = useRouter();
+	const scrollToTarget = useScrollToTarget("filter-summary");
 
 	let sorting: FilterSummaryProps["sorting"] = undefined;
 
@@ -44,7 +46,11 @@ export const ProductListFilterSummary: FC<ProductListFilterSummaryProps> = ({
 				onSelected: () => {
 					push({
 						query: { ...query, s: defaultSort.order },
-					});
+					},
+					undefined,
+					{ scroll: false }
+					);
+					events.on("routeChangeComplete", scrollToTarget);
 				},
 				value: defaultSort.order,
 			},
@@ -54,7 +60,11 @@ export const ProductListFilterSummary: FC<ProductListFilterSummaryProps> = ({
 				onSelected: () => {
 					push({
 						query: { ...query, s: secondarySort.order },
-					});
+					},
+					undefined,
+					{ scroll: false }
+					);
+					events.on("routeChangeComplete", scrollToTarget);
 				},
 				value: secondarySort.order,
 			},
