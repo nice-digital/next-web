@@ -10,6 +10,7 @@ export interface RichtextStoryblok {
 }
 
 export interface AccordionStoryblok {
+  variant: "subtle" | "callout";
   title: string;
   displayTitleAsHeading?: boolean;
   headingLevel?: string;

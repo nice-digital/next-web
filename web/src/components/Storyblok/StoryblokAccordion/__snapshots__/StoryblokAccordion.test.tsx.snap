@@ -3,7 +3,7 @@
 exports[`Storyblok accordion component should match snapshot 1`] = `
 <div>
   <div
-    class="accordion "
+    class="accordion accordion--subtle"
   >
     <div
       class="accordion__heading"
