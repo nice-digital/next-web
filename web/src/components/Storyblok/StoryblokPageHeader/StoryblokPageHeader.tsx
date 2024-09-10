@@ -44,7 +44,8 @@ export const StoryblokPageHeader = ({
 			<PageHeader
 				heading={title}
 				lead={summary || undefined}
-				header={BreadcrumbComponent}
+				breadcrumbs={BreadcrumbComponent}
+				// header={BreadcrumbComponent}
 				description={description}
 				variant="fullWidthLight"
 				verticalPadding="loose"
