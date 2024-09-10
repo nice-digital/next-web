@@ -1,5 +1,3 @@
-import exp from "constants";
-
 import userEvent from "@testing-library/user-event";
 import { NextRouter, useRouter } from "next/router";
 
@@ -11,7 +9,7 @@ import {
 } from "@nice-digital/search-client";
 
 import sampleData from "@/mockData/search/guidance-published.json";
-import { render, screen, cleanup, waitFor } from "@/test-utils/rendering";
+import { cleanup, render, screen, waitFor } from "@/test-utils/rendering";
 
 import { GuidanceListNav } from "../ProductListNav/GuidanceListNav";
 
@@ -58,6 +56,7 @@ describe("/guidance/published", () => {
 
 	let routerPush: jest.Mock;
 	let mockRouter: NextRouter;
+	let routeChangeCompleteCallback: () => void;
 
 	beforeEach(() => {
 		routerPush = jest.fn();
@@ -69,7 +68,11 @@ describe("/guidance/published", () => {
 			asPath: "",
 			push: routerPush,
 			events: {
-				on: jest.fn(),
+				on: jest.fn((event, callback) => {
+					if (event === "routeChangeComplete") {
+						routeChangeCompleteCallback = callback;
+					}
+				}),
 				off: jest.fn(),
 			},
 			beforePopState: jest.fn(() => null),
@@ -90,6 +93,7 @@ describe("/guidance/published", () => {
 
 	describe("Meta", () => {
 		it("should set meta description", () => {
+			/* eslint-disable testing-library/no-node-access */
 			expect(
 				document.querySelector("meta[name='description']")
 			).toBeInTheDocument();
@@ -97,6 +101,7 @@ describe("/guidance/published", () => {
 				"content",
 				"A list of all published guidance"
 			);
+			/* eslint-enable testing-library/no-node-access */
 		});
 
 		it("should set page title", () => {
@@ -106,14 +111,17 @@ describe("/guidance/published", () => {
 		});
 
 		it("should not set noindex meta tag when there are results", () => {
+			/* eslint-disable testing-library/no-node-access */
 			expect(document.querySelector("meta[name='robots']")).toBeInTheDocument();
 			expect(document.querySelector("meta[name='robots']")).toHaveProperty(
 				"content",
 				"index,follow"
 			);
+			/* eslint-enable testing-library/no-node-access */
 		});
 
 		it("should set noindex meta tag when no results", () => {
+			/* eslint-disable testing-library/no-node-access */
 			cleanup();
 
 			render(
@@ -130,6 +138,7 @@ describe("/guidance/published", () => {
 				"content",
 				"noindex,follow"
 			);
+			/* eslint-enable testing-library/no-node-access */
 		});
 	});
 
@@ -193,19 +202,18 @@ describe("/guidance/published", () => {
 			window.HTMLElement.prototype.scrollIntoView = originalScrollIntoView;
 		});
 
-		it("should scroll to the given scroll target id on route change", async () => {
-			const selectElement = await screen.findByRole("combobox", {
-				name: /sort by/i,
+		it("should scroll to filter summary after sorting by title", async () => {
+			/* eslint-disable testing-library/no-node-access, testing-library/no-wait-for-multiple-assertions */
+			const sortByDropdown = await screen.findByRole("combobox", {
+				name: "Sort by",
 			});
+			const filterSummary = document.getElementById("filter-summary"); // should maybe be using a testid
 
-			expect(selectElement).toBeInTheDocument();
+			expect(sortByDropdown).toBeInTheDocument();
+			expect(filterSummary).toBeInTheDocument();
 
-			// eslint-disable-next-line testing-library/no-node-access
-			const filterSummaryDiv = document.getElementById("filter-summary");
-			expect(filterSummaryDiv).toBeInTheDocument();
+			userEvent.selectOptions(sortByDropdown, "Title");
 
-			userEvent.selectOptions(selectElement, "Title");
-			// Wait for the route change to be triggered
 			await waitFor(() => {
 				expect(mockRouter.push).toHaveBeenCalledWith(
 					{ query: { s: "Title" } },
@@ -214,13 +222,96 @@ describe("/guidance/published", () => {
 				);
 			});
 
+			if (routeChangeCompleteCallback) {
+				routeChangeCompleteCallback();
+			}
+
 			await waitFor(() => {
-				// expect(filterSummaryDiv?.scrollIntoView).toHaveBeenCalled();
-				// eslint-disable-next-line testing-library/no-wait-for-multiple-assertions
-				// expect(filterSummaryDiv).toHaveFocus();
-				// eslint-disable-next-line testing-library/no-wait-for-multiple-assertions
-				expect(filterSummaryDiv).toHaveAttribute("tabIndex", "-1");
+				expect(filterSummary?.scrollIntoView).toHaveBeenCalled();
+				expect(filterSummary).toHaveFocus();
+				expect(filterSummary).toHaveAttribute("tabIndex", "-1");
 			});
+			/* eslint-enable testing-library/no-node-access, testing-library/no-wait-for-multiple-assertions */
+		});
+
+		it("should scroll to filter summary after sorting by date", async () => {
+			/* eslint-disable testing-library/no-node-access, testing-library/no-wait-for-multiple-assertions */
+			mockRouter.query = { s: "Title" };
+
+			const sortByDropdown = await screen.findByRole("combobox", {
+				name: "Sort by",
+			});
+			const filterSummary = document.getElementById("filter-summary"); // should maybe be using a testid
+
+			expect(sortByDropdown).toBeInTheDocument();
+			expect(filterSummary).toBeInTheDocument();
+
+			userEvent.selectOptions(sortByDropdown, "Date");
+
+			await waitFor(() => {
+				expect(mockRouter.push).toHaveBeenCalledWith(
+					{ query: { s: "Date" } },
+					undefined,
+					{ scroll: false }
+				);
+			});
+
+			if (routeChangeCompleteCallback) {
+				routeChangeCompleteCallback();
+			}
+
+			await waitFor(() => {
+				expect(filterSummary?.scrollIntoView).toHaveBeenCalled();
+				expect(filterSummary).toHaveFocus();
+				expect(filterSummary).toHaveAttribute("tabIndex", "-1");
+			});
+			/* eslint-enable testing-library/no-node-access, testing-library/no-wait-for-multiple-assertions */
+		});
+
+		it("should scroll to the given scroll target on pagination click", async () => {
+			/* eslint-disable testing-library/no-node-access, testing-library/no-wait-for-multiple-assertions */
+			const nextPageButton = screen.getByText("Next page");
+			const filterSummary = document.getElementById("filter-summary"); // should maybe be using a testid
+
+			expect(nextPageButton).toBeInTheDocument();
+			expect(filterSummary).toBeInTheDocument();
+
+			await userEvent.click(nextPageButton);
+
+			if (routeChangeCompleteCallback) {
+				routeChangeCompleteCallback();
+			}
+
+			await waitFor(() => {
+				expect(filterSummary?.scrollIntoView).toHaveBeenCalled();
+				expect(filterSummary).toHaveFocus();
+				expect(filterSummary).toHaveAttribute("tabIndex", "-1");
+			});
+			/* eslint-enable testing-library/no-node-access, testing-library/no-wait-for-multiple-assertions */
+		});
+
+		it("should scroll to the given scroll target on results per page click", async () => {
+			/* eslint-disable testing-library/no-node-access, testing-library/no-wait-for-multiple-assertions */
+			const allResultsButton = screen.getByLabelText(
+				"Show All results per page"
+			);
+			const filterSummary = document.getElementById("filter-summary"); // should maybe be using a testid
+
+			expect(allResultsButton).toBeInTheDocument();
+			expect(filterSummary).toBeInTheDocument();
+
+			await userEvent.click(allResultsButton);
+
+			if (routeChangeCompleteCallback) {
+				routeChangeCompleteCallback();
+			}
+
+			await waitFor(() => {
+				expect(filterSummary?.scrollIntoView).toHaveBeenCalled();
+				expect(filterSummary).toHaveFocus();
+				expect(filterSummary).toHaveAttribute("tabIndex", "-1");
+			});
+			/* eslint-enable testing-library/no-node-access, testing-library/no-wait-for-multiple-assertions */
 		});
 	});
 });

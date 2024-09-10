@@ -3,7 +3,7 @@ import { useRouter } from "next/router";
 
 import {
 	ProjectHorizontalNav,
-	type ProjectHorizontalNavProps
+	type ProjectHorizontalNavProps,
 } from "./ProjectHorizontalNav";
 
 const props: ProjectHorizontalNavProps = {
