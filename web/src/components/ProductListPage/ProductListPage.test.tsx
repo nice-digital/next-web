@@ -181,9 +181,19 @@ describe("/guidance/published", () => {
 	});
 
 	describe("Scroll behaviour", () => {
-		it("should scroll to the given scroll target id on route change", async () => {
-			window.HTMLElement.prototype.scrollIntoView = jest.fn();
+		const originalScrollIntoView = window.HTMLElement.prototype.scrollIntoView;
 
+		beforeEach(() => {
+			// Mock scrollIntoView for the test
+			window.HTMLElement.prototype.scrollIntoView = jest.fn();
+		});
+
+		afterEach(() => {
+			// Restore the original scrollIntoView after each test
+			window.HTMLElement.prototype.scrollIntoView = originalScrollIntoView;
+		});
+
+		it("should scroll to the given scroll target id on route change", async () => {
 			const selectElement = await screen.findByRole("combobox", {
 				name: /sort by/i,
 			});
@@ -206,7 +216,11 @@ describe("/guidance/published", () => {
 				);
 			});
 
-			expect(filterSummaryDiv).toHaveFocus();
+			await waitFor(() => {
+				expect(filterSummaryDiv?.scrollIntoView).toHaveBeenCalled();
+				// eslint-disable-next-line testing-library/no-wait-for-multiple-assertions
+				expect(filterSummaryDiv).toHaveFocus();
+			});
 		});
 	});
 });
