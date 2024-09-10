@@ -3,7 +3,7 @@ import { useRouter } from "next/router";
 
 import {
 	ProjectHorizontalNav,
-	type ProjectHorizontalNavProps,
+	type ProjectHorizontalNavProps
 } from "./ProjectHorizontalNav";
 
 const props: ProjectHorizontalNavProps = {
@@ -82,7 +82,7 @@ describe("ProjectHorizontalNav", () => {
 		} as ReturnType<typeof useRouter>);
 
 		render(<ProjectHorizontalNav {...props} />);
-		screen.debug;
+
 		expect(
 			screen.getByRole("link", { name: "Consultation 2" })
 		).toHaveAttribute("aria-current", "true");
