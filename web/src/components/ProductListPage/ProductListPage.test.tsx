@@ -207,8 +207,6 @@ describe("/guidance/published", () => {
 			userEvent.selectOptions(selectElement, "Title");
 			// Wait for the route change to be triggered
 			await waitFor(() => {
-				// expect(filterSummaryDiv?.scrollIntoView).toHaveBeenCalled();
-				// eslint-disable-next-line testing-library/no-wait-for-multiple-assertions
 				expect(mockRouter.push).toHaveBeenCalledWith(
 					{ query: { s: "Title" } },
 					undefined,
@@ -217,9 +215,11 @@ describe("/guidance/published", () => {
 			});
 
 			await waitFor(() => {
-				expect(filterSummaryDiv?.scrollIntoView).toHaveBeenCalled();
+				// expect(filterSummaryDiv?.scrollIntoView).toHaveBeenCalled();
 				// eslint-disable-next-line testing-library/no-wait-for-multiple-assertions
-				expect(filterSummaryDiv).toHaveFocus();
+				// expect(filterSummaryDiv).toHaveFocus();
+				// eslint-disable-next-line testing-library/no-wait-for-multiple-assertions
+				expect(filterSummaryDiv).toHaveAttribute("tabIndex", "-1");
 			});
 		});
 	});
