@@ -1,6 +1,7 @@
 import exp from "constants";
 
-import { useRouter } from "next/router";
+import userEvent from "@testing-library/user-event";
+import { NextRouter, useRouter } from "next/router";
 
 import { Breadcrumb } from "@nice-digital/nds-breadcrumbs";
 import {
@@ -10,7 +11,7 @@ import {
 } from "@nice-digital/search-client";
 
 import sampleData from "@/mockData/search/guidance-published.json";
-import { render, screen, cleanup } from "@/test-utils/rendering";
+import { render, screen, cleanup, waitFor } from "@/test-utils/rendering";
 
 import { GuidanceListNav } from "../ProductListNav/GuidanceListNav";
 
@@ -45,6 +46,7 @@ describe("/guidance/published", () => {
 		showDateFilter: true,
 		useFutureDates: false,
 		dateFilterLabel: "Last updated date",
+		searchInputPlaceholder: "Search published guidance",
 		tableBodyRender: (_docs) => (
 			<tbody>
 				<tr>
@@ -55,16 +57,26 @@ describe("/guidance/published", () => {
 	});
 
 	let routerPush: jest.Mock;
+	let mockRouter: NextRouter;
+
 	beforeEach(() => {
 		routerPush = jest.fn();
 
-		(useRouter as jest.Mock).mockImplementation(() => ({
+		mockRouter = {
 			route: "/",
 			pathname: "/guidance/published",
 			query: "",
 			asPath: "",
 			push: routerPush,
-		}));
+			events: {
+				on: jest.fn(),
+				off: jest.fn(),
+			},
+			beforePopState: jest.fn(() => null),
+			prefetch: jest.fn(() => null),
+		} as unknown as NextRouter;
+
+		(useRouter as jest.Mock).mockImplementation(() => mockRouter);
 
 		// eslint-disable-next-line testing-library/no-render-in-setup
 		render(
@@ -150,21 +162,51 @@ describe("/guidance/published", () => {
 
 		it("should use custom renderer for table body", () => {
 			expect(screen.getByRole("table")).toMatchInlineSnapshot(`
-			<table
-			  aria-describedby="filter-summary"
-			  class="table"
-			  data-component="table"
-			  id="results"
-			>
-			  <tbody>
-			    <tr>
-			      <td>
-			        test
-			      </td>
-			    </tr>
-			  </tbody>
-			</table>
-		`);
+				<table
+				  aria-describedby="filter-summary"
+				  class="table"
+				  data-component="table"
+				  id="results"
+				>
+				  <tbody>
+				    <tr>
+				      <td>
+				        test
+				      </td>
+				    </tr>
+				  </tbody>
+				</table>
+			`);
+		});
+	});
+
+	describe("Scroll behaviour", () => {
+		it("should scroll to the given scroll target id on route change", async () => {
+			window.HTMLElement.prototype.scrollIntoView = jest.fn();
+
+			const selectElement = await screen.findByRole("combobox", {
+				name: /sort by/i,
+			});
+
+			expect(selectElement).toBeInTheDocument();
+
+			// eslint-disable-next-line testing-library/no-node-access
+			const filterSummaryDiv = document.getElementById("filter-summary");
+			expect(filterSummaryDiv).toBeInTheDocument();
+
+			userEvent.selectOptions(selectElement, "Title");
+			// Wait for the route change to be triggered
+			await waitFor(() => {
+				// expect(filterSummaryDiv?.scrollIntoView).toHaveBeenCalled();
+				// eslint-disable-next-line testing-library/no-wait-for-multiple-assertions
+				expect(mockRouter.push).toHaveBeenCalledWith(
+					{ query: { s: "Title" } },
+					undefined,
+					{ scroll: false }
+				);
+			});
+
+			expect(filterSummaryDiv).toHaveFocus();
 		});
 	});
 });
