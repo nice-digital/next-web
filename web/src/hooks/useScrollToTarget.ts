@@ -3,11 +3,11 @@ import { useCallback } from "react";
 
 export const useScrollToTarget = (
 	scrollTargetId: string
-): ((url: string) => void) => {
+): (() => void) => {
 	const { events } = useRouter();
 
 	const scrollToTarget = useCallback(
-		(url: string) => {
+		() => {
 			const targetElement = document.getElementById(scrollTargetId);
 
 			if (targetElement) {
