@@ -22,6 +22,7 @@ import {
 	defaultPodcastImage,
 	constructStoryblokImageSrc,
 	GENERIC_ERROR_MESSAGE,
+	getBreadcrumbs,
 } from "@/utils/storyblok";
 
 import styles from "./podcast.module.scss";
@@ -72,7 +73,7 @@ export default function PodcastPage(
 
 	const BreadcrumbComponent = breadcrumbs?.length ? (
 		<Breadcrumbs>
-			{[{ title: "Home", path: "/" }, ...breadcrumbs].map((breadcrumb) => (
+			{breadcrumbs.map((breadcrumb) => (
 				<Breadcrumb key={breadcrumb.title} to={breadcrumb.path}>
 					{breadcrumb.title}
 				</Breadcrumb>
@@ -136,23 +137,19 @@ export async function getServerSideProps(context: GetServerSidePropsContext) {
 	}
 
 	const version = getStoryVersionFromQuery(query);
+	const pagePath = `news/podcasts/${slug}`;
 	try {
 		// Get the story and its breadcrumbs
-		const storyResult = await fetchStory<PodcastStoryblok>(
-			`news/podcasts/${slug}`,
-			version
-		);
+		const [storyResult, breadcrumbs] = await Promise.all([
+			fetchStory<PodcastStoryblok>(pagePath, version),
+			getBreadcrumbs(pagePath, version),
+		]);
 
 		if ("notFound" in storyResult) {
 			return {
 				notFound: true,
 			};
 		}
-
-		const breadcrumbs = [
-			{ title: "News", path: "/news" },
-			{ title: "Podcasts", path: "/news/podcasts" },
-		];
 
 		const result = {
 			props: {

@@ -20,7 +20,7 @@ export const StoryblokPageHeader = ({
 }: PageHeaderBlokProps): React.ReactElement => {
 	const BreadcrumbComponent = breadcrumbs?.length ? (
 		<Breadcrumbs>
-			{[{ title: "Home", path: "/" }, ...breadcrumbs].map((breadcrumb) => (
+			{breadcrumbs.map((breadcrumb) => (
 				<Breadcrumb key={breadcrumb.title} to={breadcrumb.path}>
 					{breadcrumb.title}
 				</Breadcrumb>
