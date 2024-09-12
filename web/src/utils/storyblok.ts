@@ -285,12 +285,10 @@ export const getBreadcrumbs = async (
 
 		// Get item with current slug, add it to the array
 		let thisPage = links.find((l) => l.slug === slug);
-		breadcrumbs.push({
-			title: thisPage?.name as string,
-		});
 
 		// Get current item's parent_id
 		let parentId = thisPage?.parent_id;
+
 		if (parentId) {
 			// If it has a parent_id, get item with that ID & keep moving upwards
 			do {
@@ -307,7 +305,7 @@ export const getBreadcrumbs = async (
 		}
 	}
 
-	return breadcrumbs;
+	return [{ title: "Home", path: "/" }, ...breadcrumbs];
 };
 
 // Resolve a link object returned from the Storyblok API, so that it returns

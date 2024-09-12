@@ -479,9 +479,9 @@ describe("Storyblok utils", () => {
 			);
 
 			expect(result).toEqual([
+				{ path: "/", title: "Home" },
 				{ path: "/news", title: "News" },
 				{ path: "/news/podcasts", title: "Podcasts" },
-				{ title: "Test podcast 4" },
 			]);
 		});
 
