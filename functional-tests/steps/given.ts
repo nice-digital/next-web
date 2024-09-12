@@ -1,5 +1,4 @@
 import { Given } from "@wdio/cucumber-framework";
-import { pause } from "webdriverio/build/commands/browser.js";
 
 import { getPath, PageName } from "../support/pagePaths.js";
 
@@ -40,8 +39,6 @@ export async function openWebsite(
 
 Given(/^I open the (.*) page$/, async (pageName: PageName) => {
 	await openWebsite("url", getPath(pageName));
-	await browser.pause(2000);
 	// Make sure the cookie banner is dismissed before we continue, as it's an overlay so blocks clicks
 	await acceptCookieBanner();
-	await browser.pause(2000);
 });
