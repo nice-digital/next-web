@@ -1,5 +1,11 @@
 import { Given } from "@wdio/cucumber-framework";
 
+import { clickElement } from "@nice-digital/wdio-cucumber-steps/lib/support/action/clickElement.js";
+
+import {
+	indicatorFilter,
+	indicatorFilterDate,
+} from "../support/action/indicatorFilter.js";
 import { breadcrumbPath, breadcrumbName } from "../support/breadcrumbPaths.js";
 import { getPath, PageName } from "../support/pagePaths.js";
 
@@ -48,6 +54,13 @@ Given(/^I open the (.*) page$/, async (pageName: PageName) => {
 Given(
 	/^I click on the breadcrumb (.*)$/,
 	async (breadcrumbName: breadcrumbName) => {
-		await openWebsite("url", breadcrumbPath(breadcrumbName));
+		await clickElement("click", "", breadcrumbPath(breadcrumbName));
 	}
 );
+
+Given(
+	/^I enter keyword or reference number "([^"]*)" to filter page list$/,
+	indicatorFilter
+);
+
+Given(/^I enter From date "([^"]*)" to filter page list$/, indicatorFilterDate);

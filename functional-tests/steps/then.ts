@@ -3,8 +3,14 @@ import { expect } from "expect-webdriverio";
 
 import { checkContainsText } from "@nice-digital/wdio-cucumber-steps/lib/support/check/checkContainsText.js";
 
-// eslint-disable-next-line import/no-unresolved
 import { getSelector, SelectorName } from "../selectors/index.js";
+import {
+	indicatorList,
+	indicatorHistory,
+} from "../support/check/indicatorList.js";
+import { validateIndicatorPageResultCount } from "../support/check/validateIndicatorPageResultCount.js";
+
+// eslint-disable-next-line import/no-unresolved
 
 // Then(
 // 	"I expect that element {string} contains the text {string}",
@@ -26,4 +32,12 @@ Then(
 		const menuSelector = await getSelector("autocomplete menu");
 		await checkContainsText("element", menuSelector, "", text);
 	}
+);
+
+Then(/^I expect to see the overview and indicator list item$/, indicatorList);
+Then(/^I expect to see the indicator history$/, indicatorHistory);
+
+Then(
+	/^I expect the result list count contains "([^"]*)"$/,
+	validateIndicatorPageResultCount
 );

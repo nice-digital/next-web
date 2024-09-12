@@ -1,8 +1,6 @@
 Feature: Published guidance list page
-  As a user I can use the published guidance list page
-  As a user I can use the in consultation guidance list page
-  As a user I can use the in development guidance list page
-  As a user I can use the awaiting development guidance list page
+  As a user I can use the published guidance list page and in consultation guidance list page
+  As a user I can use the in development guidance list page and awaiting development guidance list page
   As a user I can use the topic selection list page
 
   Background:

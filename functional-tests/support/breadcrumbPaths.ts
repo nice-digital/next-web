@@ -7,7 +7,7 @@ export const breadcrumbPaths = {
 	"published indicators list": "/indicators/published",
 	"IND63 overview":
 		"/indicators/ind63-pregnancy-and-neonates-mental-health-at-booking-appointment",
-	Home: "/",
+	home: ".breadcrumbs__crumb:nth-of-type(1)",
 	News: "/news",
 	"Newsletters and alerts": "/nice-newsletters-and-alerts",
 } as const;
