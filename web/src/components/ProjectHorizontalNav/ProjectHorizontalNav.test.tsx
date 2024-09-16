@@ -82,7 +82,7 @@ describe("ProjectHorizontalNav", () => {
 		} as ReturnType<typeof useRouter>);
 
 		render(<ProjectHorizontalNav {...props} />);
-		screen.debug;
+
 		expect(
 			screen.getByRole("link", { name: "Consultation 2" })
 		).toHaveAttribute("aria-current", "true");
