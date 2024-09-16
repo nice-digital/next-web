@@ -3,6 +3,7 @@ import { When } from "@wdio/cucumber-framework";
 import { clickElement } from "@nice-digital/wdio-cucumber-steps/lib/support/action/clickElement.js";
 
 import { getSelector } from "../selectors/index.js";
+import { clickSecondPaginationOption } from "../support/action/clickSecondPaginationOption.js";
 import { subscribeNewsletter } from "../support/action/subscribeNewsletter.js";
 import { typeInSearchBox } from "../support/action/typeInSearchBox.js";
 import { waitForSearchLoad } from "../support/action/waitForSearchLoad.js";
@@ -54,3 +55,5 @@ When(
 );
 
 When(/^I add details to subscribe to newsletters$/, subscribeNewsletter);
+
+When(/^I click the second pagination option$/, clickSecondPaginationOption);

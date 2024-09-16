@@ -4,11 +4,16 @@ import { expect } from "expect-webdriverio";
 import { checkContainsText } from "@nice-digital/wdio-cucumber-steps/lib/support/check/checkContainsText.js";
 
 import { getSelector, SelectorName } from "../selectors/index.js";
+import { clickNextPagination } from "../support/action/clickNextPagination.js";
+import { clickPreviousPagination } from "../support/action/clickPreviousPagination.js";
 import {
 	indicatorList,
 	indicatorHistory,
 } from "../support/check/indicatorList.js";
-import { validateIndicatorPageResultCount } from "../support/check/validateIndicatorPageResultCount.js";
+import {
+	validateIndicatorPageResultCount,
+	validateFirstLinkInPagination,
+} from "../support/check/validateIndicatorPageResultCount.js";
 
 // eslint-disable-next-line import/no-unresolved
 
@@ -41,3 +46,11 @@ Then(
 	/^I expect the result list count contains "([^"]*)"$/,
 	validateIndicatorPageResultCount
 );
+
+Then(
+	/^I expect the first pagination option is "([^"]*)"$/,
+	validateFirstLinkInPagination
+);
+
+Then(/^I click the next pagination option$/, clickNextPagination);
+Then(/^I click the previous pagination option$/, clickPreviousPagination);

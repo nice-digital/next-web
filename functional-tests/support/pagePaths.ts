@@ -8,17 +8,19 @@ export const pagePaths = {
 	status: "/status",
 	"published indicators list": "/indicators/published",
 	"in consultation indicators list": "/indicators/inconsultation",
+	"in development indicators list": "/indicators/indevelopment",
 	"IND63 overview":
 		"/indicators/ind63-pregnancy-and-neonates-mental-health-at-booking-appointment",
 	"IND63 indicator":
 		"/indicators/ind63-pregnancy-and-neonates-mental-health-at-booking-appointment/chapter/indicator",
 	"IND264 overview":
 		"/indicators/ind264-kidney-conditions-ckd-and-blood-pressure-when-acr-70-or-more",
+	"IND264 indicator":
+		"/indicators/ind264-kidney-conditions-ckd-and-blood-pressure-when-acr-70-or-more/chapter/indicator",
 	"IND271 overview":
 		"/indicators/ind271-smoking-cessation-success-in-people-with-bipolar-schizophrenia-and-other-psychoses",
 	"IND262 overview":
 		"/indicators/ind262-kidney-conditions-ckd-and-sglt-2-inhibitors",
-	"in development indicators list": "/indicators/indevelopment",
 	IND10272: "/indicators/indevelopment/gid-ind10272",
 
 	"HUB10001 overview": "/hub/indevelopment/gid-hub10001",
