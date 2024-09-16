@@ -70,27 +70,31 @@ export default getProductListPage({
 	heading: <>Published: Recommendations for research</>,
 	intro: (
 		<>
-			As we develop guidance, we identify gaps, uncertainties or conflicts in
-			the existing evidence base which could benefit from further research. The
-			most important unanswered questions are developed into recommendations for
-			research.
-			<br />
-			<br />
-			Read our{" "}
-			<a href="https://www.nice.org.uk/process/pmg45">
-				recommendations for research process and methods guide
+			As we develop guidance, we identify gaps and uncertainties in the evidence
+			base which could benefit from further research. The most important
+			unanswered questions are developed into research recommendations.
+			<a href="https://www.nice.org.uk/Media/Default/About/what-we-do/Science-policy-and-research/research-recommendation-process-methods-guide-2015.pdf">
+				Read our process and methods guide (PDF)
 			</a>
-			. For more information email{" "}
-			<a href="mailto:research@nice.org.uk">research@nice.org.uk</a>.
+			.
+			<br />
+			<br />
+			Browse the list below to find a topic of interest. Published dates
+			represent the date the guidance was first published. A year noted at the
+			end of a research recommendation title indicates when the research
+			recommendation was last published/updated. This is may differ to the
+			guidance published date for guidance that’s undergone a partial update.
+			Please <a href="mailto:research@nice.org.uk">contact</a> us if you need
+			more information.
 			<br />
 			<br />
 			<a href="https://www.nihr.ac.uk/funding/nihr-nice-rolling-call/36180">
-				Call for research addressing NICE recommendations
+				Call for research studies addressing NICE research recommendations
 			</a>
 			<br />
-			<br />
-			The National Institute for Health Research (NIHR) are seeking applications
-			to address NICE recommendations as part of a rolling research call.
+			The National Institute for Health and Care Research (NIHR) are seeking
+			applications to address NICE research recommendations as part of a rolling
+			research call.
 		</>
 	),
 	title: "Research recommendations | NICE",
