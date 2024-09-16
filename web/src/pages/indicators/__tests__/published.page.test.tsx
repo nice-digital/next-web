@@ -85,8 +85,6 @@ describe("/indicators/published", () => {
 		});
 
 		describe("Date formatting", () => {
-			// eslint-disable-next-line testing-library/no-debugging-utils
-			screen.debug();
 			it("should render the date in the NICE style format", () => {
 				expect(
 					screen.getAllByRole("cell", { name: "16 February 2023" })[0]
