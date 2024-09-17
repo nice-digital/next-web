@@ -16,9 +16,17 @@ export const config: WebdriverIO.Config = {
 
 	capabilities: [
 		{
+			acceptInsecureCerts: true, // Because of self-signed cert inside Docker
+			// acceptSslCerts: true,
+			maxInstances: 1,
 			browserName: "chrome",
 			"goog:chromeOptions": {
-				args: ["--window-size=1366,768"].concat(isInDocker ? "--headless" : []),
+				args: [
+					"--headless",
+					"--disable-dev-shm-usage",
+					"--no-sandbox",
+					"--window-size=1920,1080",
+				],
 			},
 		},
 	],

@@ -31,7 +31,7 @@ Feature: The list of guidance list page is reduced when user filter by name
     Given I open the published guidance list page
     And I enter From date "01/01/2024" to filter page list
     And I pause for 2000ms
-    Then I expect the result list count contains "Showing 1 to 10 of 120"
+    Then I expect the result list count contains "Showing 1 to 10 of 121"
     Given I open the topic selection list page
     And I enter From date "02/02/2024" to filter page list
     Then I expect the result list count contains "Showing 1 to 10 of 23"
