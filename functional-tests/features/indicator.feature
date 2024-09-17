@@ -14,5 +14,5 @@ Feature: Individual indicator page
     Then I open the IND264 indicator page
     Then I expect that element "h2#indicator.title" contains the text "Indicator"
     Then I expect that element "h3#rationale.title" contains the text "Rationale"
-    Given I click on the breadcrumb home
+    Given I click on the home breadcrumb link
     Then I expect that the url is "http://localhost:3000/"

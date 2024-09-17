@@ -12,7 +12,7 @@ Feature: Hub detail page
     And I pause for 2000ms
     Then I expect that element "h2:nth-child(3)" contains the text "Guidelines"
     And I pause for 2000ms
-    Given I click on the breadcrumb home
+    Given I click on the home breadcrumb link
     Then I expect that the url is "http://localhost:3000/"
 
   Scenario: User can see hub detail page headings

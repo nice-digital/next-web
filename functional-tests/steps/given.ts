@@ -1,12 +1,13 @@
 import { Given } from "@wdio/cucumber-framework";
 
 import { clickElement } from "@nice-digital/wdio-cucumber-steps/lib/support/action/clickElement.js";
+import { pause } from "@nice-digital/wdio-cucumber-steps/lib/support/action/pause.js";
+import { waitForDisplayed } from "@nice-digital/wdio-cucumber-steps/lib/support/action/waitForDisplayed.js";
 
 import {
 	indicatorFilter,
 	indicatorFilterDate,
 } from "../support/action/indicatorFilter.js";
-import { breadcrumbPath, breadcrumbName } from "../support/breadcrumbPaths.js";
 import { getPath, PageName } from "../support/pagePaths.js";
 
 /**
@@ -51,12 +52,11 @@ Given(/^I open the (.*) page$/, async (pageName: PageName) => {
 	await acceptCookieBanner();
 });
 
-Given(
-	/^I click on the breadcrumb (.*)$/,
-	async (breadcrumbName: breadcrumbName) => {
-		await clickElement("click", "", breadcrumbPath(breadcrumbName));
-	}
-);
+Given(/^I click on the home breadcrumb link$/, async () => {
+	await waitForDisplayed(".breadcrumbs__crumb a", "");
+	await clickElement("click", "selector", ".breadcrumbs__crumb a");
+	await pause("2000");
+});
 
 Given(
 	/^I enter keyword or reference number "([^"]*)" to filter page list$/,

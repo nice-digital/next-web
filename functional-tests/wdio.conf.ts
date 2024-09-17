@@ -52,7 +52,7 @@ export const config: WebdriverIO.Config = {
 		require: [
 			"./steps/**/*.ts",
 			"./support/pagePaths.ts",
-			"./support/breadcrumbPaths.ts",
+			// "./support/breadcrumbPaths.ts",
 			"./node_modules/@nice-digital/wdio-cucumber-steps/lib/index.js",
 		],
 		tagExpression: "not @pending", // See https://docs.cucumber.io/tag-expressions/
