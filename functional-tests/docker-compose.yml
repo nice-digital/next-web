@@ -36,7 +36,7 @@ services:
     # image: xxxxxxxxxxxx.dkr.ecr.eu-west-1.amazonaws.com/nextweb:nnnn
     # command: ["npm", "run", "host-console-logging"]
     container_name: next-web
-    build: ./../web
+    build: ./../web/
     depends_on:
       - mock-search-api
       - mock-publications
@@ -50,6 +50,9 @@ services:
       - SEARCH_BASE_URL
       - PUBLICATIONS_BASE_URL
       - INDEV_BASE_URL
+      - STORYBLOK_TOKEN
+      - JOTFORM_BASE_URL
+      - JOTFORM_APIKEY
     networks:
       default:
         aliases:
