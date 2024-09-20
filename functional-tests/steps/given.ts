@@ -47,7 +47,6 @@ export async function openWebsite(
 
 Given(/^I open the (.*) page$/, async (pageName: PageName) => {
 	await openWebsite("url", getPath(pageName));
-
 	// Make sure the cookie banner is dismissed before we continue, as it's an overlay so blocks clicks
 	await acceptCookieBanner();
 });

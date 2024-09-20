@@ -18,16 +18,10 @@ Object {
 
 exports[`publications getAllProductTypes should load raw feed data with empty cache 1`] = `
 Object {
-  "eTag": null,
   "enabled": true,
   "group": "Advice",
   "identifierPrefix": "APA",
   "lastModified": "2016-09-06T00:00:00",
-  "links": Object {
-    "self": Array [
-      Object {},
-    ],
-  },
   "name": "Antimicrobial prescribing evidence summary",
   "parent": "ES",
   "pluralName": "Antimicrobial prescribing evidence summaries",

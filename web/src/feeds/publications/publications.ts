@@ -14,7 +14,7 @@ import {
 	ProductListLite,
 	ProductLite,
 	ProductType,
-	ProductTypeList,
+	ProductTypes,
 	ResourceDetail,
 	RelatedResource,
 	IndicatorMappings,
@@ -64,12 +64,12 @@ export const getAllProductTypes = async (): Promise<ProductType[]> =>
 		longTTL,
 		async () =>
 			(
-				await getFeedBodyUnCached<ProductTypeList>(
+				await getFeedBodyUnCached<ProductTypes>(
 					origin,
 					FeedPath.ProductTypes,
 					apiKey
 				)
-			).embedded.productTypeList.embedded.productType
+			).productTypes
 	);
 
 /**

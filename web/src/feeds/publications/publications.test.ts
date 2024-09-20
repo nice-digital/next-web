@@ -59,7 +59,7 @@ describe("publications", () => {
 			await getAllProductTypes();
 
 			expect(cacheWrapMock).toHaveBeenCalledWith(
-				"next-web:tests:publications:/feeds/producttypes",
+				"next-web:tests:publications:/newfeeds/producttypes",
 				expect.any(Function),
 				{ ttl: serverRuntimeConfig.cache.longTTL }
 			);
