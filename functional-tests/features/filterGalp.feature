@@ -15,12 +15,12 @@ Feature: The list of guidance list page is reduced when user filter by name
   Scenario: User can apply keyword filter published guidance list page
     Given I open the published guidance list page
     And I enter keyword or reference number "syndrome" to filter page list
-    Then I expect the result list count contains "Showing 1 to 10 of 42"
+    Then I expect the result list count contains "Showing 1 to 10 of 40"
 
   Scenario: User can apply keyword filter topic selection list page
     Given I open the topic selection list page
     And I enter keyword or reference number "test" to filter page list
-    Then I expect the result list count contains "Showing 1 to 6 of 6"
+    Then I expect the result list count contains "Showing 1 to 7 of 7"
 
   Scenario: User can apply keyword filter in consultation guidance list page
     Given I open the in consultation guidance list page
