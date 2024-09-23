@@ -28,7 +28,7 @@ describe("publications", () => {
 			await getAllAreasOfInterest();
 
 			expect(cacheWrapMock).toHaveBeenCalledWith(
-				"next-web:tests:publications:/feeds/areaofinteresttypes",
+				"next-web:tests:publications:/newfeeds/areaofinteresttypes",
 				expect.any(Function),
 				{ ttl: serverRuntimeConfig.cache.longTTL }
 			);
