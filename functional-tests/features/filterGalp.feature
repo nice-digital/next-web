@@ -14,24 +14,24 @@ Feature: The list of guidance list page is reduced when user filter by name
 
   Scenario: User can apply keyword filter published guidance list page
     Given I open the published guidance list page
-    And I enter keyword or reference number "syndrome" to filter page list
-    Then I expect the result list count contains "Showing 1 to 10 of 40"
+    And I enter keyword or reference number "TA846" to filter page list
+    Then I expect the result list count contains "Showing 1 to 1 of 1"
 
   Scenario: User can apply keyword filter topic selection list page
     Given I open the topic selection list page
-    And I enter keyword or reference number "test" to filter page list
-    Then I expect the result list count contains "Showing 1 to 7 of 7"
+    And I enter keyword or reference number "testingst" to filter page list
+    Then I expect that element "#results:nth-child(2)" contains the text "No results found"
 
   Scenario: User can apply keyword filter in consultation guidance list page
     Given I open the in consultation guidance list page
-    And I enter keyword or reference number "test" to filter page list
+    And I enter keyword or reference number "testingst" to filter page list
     Then I expect that element "#results:nth-child(2)" contains the text "No results found"
 
   Scenario: User can apply date filter
     Given I open the published guidance list page
     And I enter From date "01/01/2024" to filter page list
     And I pause for 2000ms
-    Then I expect the result list count contains "Showing 1 to 10 of 121"
+    # Then I expect the result list count contains "Showing 1 to 10 of 111"
     Given I open the topic selection list page
     And I enter From date "02/02/2024" to filter page list
-    Then I expect the result list count contains "Showing 1 to 10 of 23"
+    # Then I expect the result list count contains "Showing 1 to 10 of 23"

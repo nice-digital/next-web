@@ -50,9 +50,6 @@ services:
       - SEARCH_BASE_URL
       - PUBLICATIONS_BASE_URL
       - INDEV_BASE_URL
-      # - STORYBLOK_TOKEN
-      # - JOTFORM_BASE_URL
-      # - JOTFORM_APIKEY
     networks:
       default:
         aliases:
