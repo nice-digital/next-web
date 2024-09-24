@@ -3,7 +3,7 @@ import type { Except } from "type-fest";
 export enum FeedPath {
 	ProductsLite = "/feeds/products-lite",
 	ProductTypes = "/newfeeds/producttypes",
-	AreasOfInterest = "/feeds/areaofinteresttypes",
+	AreasOfInterest = "/newfeeds/areaofinteresttypes",
 	IndicatorSubTypes = "/feeds/indicatorsubtypes",
 	IndicatorMappings = "/feeds/indicatormappings",
 	ProductDetail = "/feeds/product/",
@@ -183,7 +183,7 @@ export type ProductType = NewBaseFeedItem & {
 	parent: ParentProductTypeAcronym | "";
 };
 
-export type AreaOfInterest = BaseFeedItem & {
+export type AreaOfInterest = NewBaseFeedItem & {
 	enabled: boolean;
 	name: string;
 	pluralName: string;
@@ -218,11 +218,9 @@ type FeedContent<
 	lastModified: string;
 } & Embedded<TEmbeddedOuter, FeedContentInner<TEmbeddedInner, TItemType>>;
 
-export type AreasOfInterestList = FeedContent<
-	"areaOfInterestTypeList",
-	"areaOfInterestType",
-	AreaOfInterest
->;
+export type AreaOfInterestTypes = NewBaseFeedItem & {
+	areaOfInterestTypes: AreaOfInterest[];
+};
 
 export type ProductTypes = NewBaseFeedItem & {
 	productTypes: ProductType[];
