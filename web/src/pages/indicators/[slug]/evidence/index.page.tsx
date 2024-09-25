@@ -1,7 +1,7 @@
 import { type GetServerSideProps } from "next";
 import { NextSeo } from "next-seo";
 
-import { Breadcrumbs, Breadcrumb } from "@nice-digital/nds-breadcrumbs";
+import { Breadcrumb, Breadcrumbs } from "@nice-digital/nds-breadcrumbs";
 
 import { Link } from "@/components/Link/Link";
 import { ProductHorizontalNav } from "@/components/ProductHorizontalNav/ProductHorizontalNav";
@@ -11,13 +11,14 @@ import {
 } from "@/components/ProductPageHeading/ProductPageHeading";
 import { ResourceList } from "@/components/ResourceList/ResourceList";
 import { getResourceDetails } from "@/feeds/publications/publications";
+import { logger } from "@/logger";
 import { validateRouteParams } from "@/utils/product";
 import {
 	getResourceGroup,
 	isEvidenceUpdate,
 	isSupportingEvidence,
-	type ResourceGroupViewModel,
 	ResourceTypeSlug,
+	type ResourceGroupViewModel,
 } from "@/utils/resource";
 
 export type EvidenceResourcesListPageProps = {
@@ -87,6 +88,21 @@ export const getServerSideProps: GetServerSideProps<
 		hasEvidenceResources,
 		hasHistory,
 	} = result;
+
+	const isFullyWithdrawn = product.productStatus === "Withdrawn";
+	const isTempWithdrawn = product.productStatus === "TemporarilyWithdrawn";
+
+	if (isFullyWithdrawn || isTempWithdrawn) {
+		logger.info(
+			`Product with id ${product.id} has '${product.productStatus}' status`
+		);
+		return {
+			redirect: {
+				permanent: true,
+				destination: productPath,
+			},
+		};
+	}
 
 	if (!evidenceResources.length) return { notFound: true };
 

@@ -1,9 +1,10 @@
 import { GetServerSideProps } from "next/types";
 
 import {
-	UploadAndConvertContentPart,
 	getFileStream,
+	UploadAndConvertContentPart,
 } from "@/feeds/publications/publications";
+import { logger } from "@/logger";
 import { fetchAndMapContentParts } from "@/utils/contentparts";
 import { validateRouteParams } from "@/utils/product";
 import { getServerSidePDF } from "@/utils/response";
@@ -22,7 +23,22 @@ export const getServerSideProps: GetServerSideProps<
 
 	if ("notFound" in result || "redirect" in result) return result;
 
-	const { product, pdfDownloadPath, actualPath } = result;
+	const { product, productPath, pdfDownloadPath, actualPath } = result;
+
+	const isFullyWithdrawn = product.productStatus === "Withdrawn";
+	const isTempWithdrawn = product.productStatus === "TemporarilyWithdrawn";
+
+	if (isFullyWithdrawn || isTempWithdrawn) {
+		logger.info(
+			`Product with id ${product.id} has '${product.productStatus}' status`
+		);
+		return {
+			redirect: {
+				permanent: true,
+				destination: productPath,
+			},
+		};
+	}
 
 	if (!product.embedded.contentPartList2?.embedded.contentParts)
 		return { notFound: true };

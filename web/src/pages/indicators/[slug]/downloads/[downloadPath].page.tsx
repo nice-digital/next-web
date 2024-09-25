@@ -31,10 +31,26 @@ export const getServerSideProps: GetServerSideProps<
 
 	const {
 		product,
+		productPath,
 		toolsAndResources,
 		evidenceResources,
 		infoForPublicResources,
 	} = result;
+
+	const isFullyWithdrawn = product.productStatus === "Withdrawn";
+	const isTempWithdrawn = product.productStatus === "TemporarilyWithdrawn";
+
+	if (isFullyWithdrawn || isTempWithdrawn) {
+		logger.info(
+			`Product with id ${product.id} has '${product.productStatus}' status`
+		);
+		return {
+			redirect: {
+				permanent: true,
+				destination: productPath,
+			},
+		};
+	}
 
 	const allResources = [
 		...toolsAndResources,

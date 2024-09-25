@@ -1,14 +1,14 @@
 import { NextSeo } from "next-seo";
 import { type GetServerSideProps } from "next/types";
-import React from "react";
 
-import { Breadcrumbs, Breadcrumb } from "@nice-digital/nds-breadcrumbs";
+import { Breadcrumb, Breadcrumbs } from "@nice-digital/nds-breadcrumbs";
 
 import { ProductHorizontalNav } from "@/components/ProductHorizontalNav/ProductHorizontalNav";
 import { ProductPageHeading } from "@/components/ProductPageHeading/ProductPageHeading";
 import { ResourceList } from "@/components/ResourceList/ResourceList";
 import { ProjectDetail } from "@/feeds/inDev/inDev";
 import { ProductDetail } from "@/feeds/publications/types";
+import { logger } from "@/logger";
 import { arrayify, byTitleAlphabetically } from "@/utils/array";
 import { getFileTypeNameFromMime } from "@/utils/file";
 import { validateRouteParams } from "@/utils/product";
@@ -92,6 +92,21 @@ export const getServerSideProps: GetServerSideProps<
 		hasToolsAndResources,
 		hasHistory,
 	} = result;
+
+	const isFullyWithdrawn = product.productStatus === "Withdrawn";
+	const isTempWithdrawn = product.productStatus === "TemporarilyWithdrawn";
+
+	if (isFullyWithdrawn || isTempWithdrawn) {
+		logger.info(
+			`Product with id ${product.id} has '${product.productStatus}' status`
+		);
+		return {
+			redirect: {
+				permanent: true,
+				destination: productPath,
+			},
+		};
+	}
 
 	if (!project) return { notFound: true };
 

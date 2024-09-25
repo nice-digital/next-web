@@ -1,8 +1,7 @@
 import { GetServerSideProps } from "next";
 import { NextSeo } from "next-seo";
-import React from "react";
 
-import { Breadcrumbs, Breadcrumb } from "@nice-digital/nds-breadcrumbs";
+import { Breadcrumb, Breadcrumbs } from "@nice-digital/nds-breadcrumbs";
 import { Grid, GridItem } from "@nice-digital/nds-grid";
 
 import {
@@ -18,10 +17,11 @@ import { PublicationsChapterMenu } from "@/components/PublicationsChapterMenu/Pu
 import { PublicationsDownloadLink } from "@/components/PublicationsDownloadLink/PublicationsDownloadLink";
 import { PublicationsPrevNext } from "@/components/PublicationsPrevNext/PublicationsPrevNext";
 import {
-	getChapterContent,
 	ChapterHeading,
+	getChapterContent,
 	UploadAndConvertContentPart,
 } from "@/feeds/publications/publications";
+import { logger } from "@/logger";
 import { arrayify } from "@/utils/array";
 import { fetchAndMapContentParts } from "@/utils/contentparts";
 import { getChapterLinks, validateRouteParams } from "@/utils/product";
@@ -145,6 +145,21 @@ export const getServerSideProps: GetServerSideProps<
 			hasHistory,
 		} = result,
 		chapters = getChapterLinks(product, productType.group);
+
+	const isFullyWithdrawn = product.productStatus === "Withdrawn";
+	const isTempWithdrawn = product.productStatus === "TemporarilyWithdrawn";
+
+	if (isFullyWithdrawn || isTempWithdrawn) {
+		logger.info(
+			`Product with id ${product.id} has '${product.productStatus}' status`
+		);
+		return {
+			redirect: {
+				permanent: true,
+				destination: productPath,
+			},
+		};
+	}
 
 	if (!params || !product.embedded.contentPartList2?.embedded.contentParts)
 		return { notFound: true };

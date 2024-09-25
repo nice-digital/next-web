@@ -12,6 +12,7 @@ export enum FeedPath {
 export enum Status {
 	Published = "Published",
 	Withdrawn = "Withdrawn",
+	TemporarilyWithdrawn = "TemporarilyWithdrawn",
 }
 
 export enum ProductGroup {
@@ -592,6 +593,7 @@ export type ProductDetail = ProductAndResourceBase & {
 	inDevReference: string | null;
 	metaDescription: string;
 	productStatus: Status;
+	withdrawnNotes: string;
 	majorChangeDate: string | null;
 	nextReviewDate: string | null;
 	collectionTypesList: [];
