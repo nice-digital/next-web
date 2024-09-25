@@ -5,7 +5,7 @@ export enum FeedPath {
 	ProductTypes = "/newfeeds/producttypes",
 	AreasOfInterest = "/newfeeds/areaofinteresttypes",
 	IndicatorSubTypes = "/feeds/indicatorsubtypes",
-	IndicatorMappings = "/feeds/indicatormappings",
+	IndicatorMappings = "/newfeeds/indicatormappings",
 	ProductDetail = "/feeds/product/",
 }
 
