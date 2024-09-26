@@ -8,10 +8,12 @@ import { ProductPageHeading } from "@/components/ProductPageHeading/ProductPageH
 import { ResourceList } from "@/components/ResourceList/ResourceList";
 import { ProjectDetail } from "@/feeds/inDev/inDev";
 import { ProductDetail } from "@/feeds/publications/types";
-import { logger } from "@/logger";
 import { arrayify, byTitleAlphabetically } from "@/utils/array";
 import { getFileTypeNameFromMime } from "@/utils/file";
-import { validateRouteParams } from "@/utils/product";
+import {
+	redirectWithdrawnProducts,
+	validateRouteParams,
+} from "@/utils/product";
 import {
 	ResourceGroupViewModel,
 	ResourceSubGroupViewModel,
@@ -93,19 +95,10 @@ export const getServerSideProps: GetServerSideProps<
 		hasHistory,
 	} = result;
 
-	const isFullyWithdrawn = product.productStatus === "Withdrawn";
-	const isTempWithdrawn = product.productStatus === "TemporarilyWithdrawn";
+	const isWithdrawn = redirectWithdrawnProducts(product, productPath);
 
-	if (isFullyWithdrawn || isTempWithdrawn) {
-		logger.info(
-			`Product with id ${product.id} has '${product.productStatus}' status`
-		);
-		return {
-			redirect: {
-				permanent: true,
-				destination: productPath,
-			},
-		};
+	if (isWithdrawn) {
+		return isWithdrawn;
 	}
 
 	if (!project) return { notFound: true };

@@ -4,9 +4,11 @@ import {
 	getFileStream,
 	UploadAndConvertContentPart,
 } from "@/feeds/publications/publications";
-import { logger } from "@/logger";
 import { fetchAndMapContentParts } from "@/utils/contentparts";
-import { validateRouteParams } from "@/utils/product";
+import {
+	redirectWithdrawnProducts,
+	validateRouteParams,
+} from "@/utils/product";
 import { getServerSidePDF } from "@/utils/response";
 
 export const getServerSideProps: GetServerSideProps<
@@ -25,19 +27,10 @@ export const getServerSideProps: GetServerSideProps<
 
 	const { product, productPath, pdfDownloadPath, actualPath } = result;
 
-	const isFullyWithdrawn = product.productStatus === "Withdrawn";
-	const isTempWithdrawn = product.productStatus === "TemporarilyWithdrawn";
+	const isWithdrawn = redirectWithdrawnProducts(product, productPath);
 
-	if (isFullyWithdrawn || isTempWithdrawn) {
-		logger.info(
-			`Product with id ${product.id} has '${product.productStatus}' status`
-		);
-		return {
-			redirect: {
-				permanent: true,
-				destination: productPath,
-			},
-		};
+	if (isWithdrawn) {
+		return isWithdrawn;
 	}
 
 	if (!product.embedded.contentPartList2?.embedded.contentParts)

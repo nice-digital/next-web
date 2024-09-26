@@ -5,7 +5,10 @@ import {
 	getResourceDetail,
 } from "@/feeds/publications/publications";
 import { logger } from "@/logger";
-import { validateRouteParams } from "@/utils/product";
+import {
+	redirectWithdrawnProducts,
+	validateRouteParams,
+} from "@/utils/product";
 import { findDownloadable } from "@/utils/resource";
 import { getServerSideFile } from "@/utils/response";
 import { slugify } from "@/utils/url";
@@ -37,19 +40,10 @@ export const getServerSideProps: GetServerSideProps<
 		infoForPublicResources,
 	} = result;
 
-	const isFullyWithdrawn = product.productStatus === "Withdrawn";
-	const isTempWithdrawn = product.productStatus === "TemporarilyWithdrawn";
+	const isWithdrawn = redirectWithdrawnProducts(product, productPath);
 
-	if (isFullyWithdrawn || isTempWithdrawn) {
-		logger.info(
-			`Product with id ${product.id} has '${product.productStatus}' status`
-		);
-		return {
-			redirect: {
-				permanent: true,
-				destination: productPath,
-			},
-		};
+	if (isWithdrawn) {
+		return isWithdrawn;
 	}
 
 	const allResources = [

@@ -12,7 +12,10 @@ import {
 import { ResourceList } from "@/components/ResourceList/ResourceList";
 import { getResourceDetails } from "@/feeds/publications/publications";
 import { logger } from "@/logger";
-import { validateRouteParams } from "@/utils/product";
+import {
+	redirectWithdrawnProducts,
+	validateRouteParams,
+} from "@/utils/product";
 import {
 	getResourceGroups,
 	ResourceTypeSlug,
@@ -87,21 +90,10 @@ export const getServerSideProps: GetServerSideProps<
 		hasHistory,
 	} = result;
 
-	console.log(productPath);
+	const isWithdrawn = redirectWithdrawnProducts(product, productPath);
 
-	const isFullyWithdrawn = product.productStatus === "Withdrawn";
-	const isTempWithdrawn = product.productStatus === "TemporarilyWithdrawn";
-
-	if (isFullyWithdrawn || isTempWithdrawn) {
-		logger.info(
-			`Product with id ${product.id} has '${product.productStatus}' status`
-		);
-		return {
-			redirect: {
-				permanent: true,
-				destination: productPath,
-			},
-		};
+	if (isWithdrawn) {
+		return isWithdrawn;
 	}
 
 	if (!toolsAndResources.length) {

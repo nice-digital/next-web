@@ -21,10 +21,13 @@ import {
 	getChapterContent,
 	UploadAndConvertContentPart,
 } from "@/feeds/publications/publications";
-import { logger } from "@/logger";
 import { arrayify } from "@/utils/array";
 import { fetchAndMapContentParts } from "@/utils/contentparts";
-import { getChapterLinks, validateRouteParams } from "@/utils/product";
+import {
+	getChapterLinks,
+	redirectWithdrawnProducts,
+	validateRouteParams,
+} from "@/utils/product";
 
 import styles from "./[chapterSlug].page.module.scss";
 
@@ -146,19 +149,10 @@ export const getServerSideProps: GetServerSideProps<
 		} = result,
 		chapters = getChapterLinks(product, productType.group);
 
-	const isFullyWithdrawn = product.productStatus === "Withdrawn";
-	const isTempWithdrawn = product.productStatus === "TemporarilyWithdrawn";
+	const isWithdrawn = redirectWithdrawnProducts(product, productPath);
 
-	if (isFullyWithdrawn || isTempWithdrawn) {
-		logger.info(
-			`Product with id ${product.id} has '${product.productStatus}' status`
-		);
-		return {
-			redirect: {
-				permanent: true,
-				destination: productPath,
-			},
-		};
+	if (isWithdrawn) {
+		return isWithdrawn;
 	}
 
 	if (!params || !product.embedded.contentPartList2?.embedded.contentParts)

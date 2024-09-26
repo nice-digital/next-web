@@ -11,8 +11,10 @@ import {
 } from "@/components/ProductPageHeading/ProductPageHeading";
 import { ResourceList } from "@/components/ResourceList/ResourceList";
 import { getResourceDetails } from "@/feeds/publications/publications";
-import { logger } from "@/logger";
-import { validateRouteParams } from "@/utils/product";
+import {
+	redirectWithdrawnProducts,
+	validateRouteParams,
+} from "@/utils/product";
 import {
 	getResourceGroup,
 	isEvidenceUpdate,
@@ -89,19 +91,10 @@ export const getServerSideProps: GetServerSideProps<
 		hasHistory,
 	} = result;
 
-	const isFullyWithdrawn = product.productStatus === "Withdrawn";
-	const isTempWithdrawn = product.productStatus === "TemporarilyWithdrawn";
+	const isWithdrawn = redirectWithdrawnProducts(product, productPath);
 
-	if (isFullyWithdrawn || isTempWithdrawn) {
-		logger.info(
-			`Product with id ${product.id} has '${product.productStatus}' status`
-		);
-		return {
-			redirect: {
-				permanent: true,
-				destination: productPath,
-			},
-		};
+	if (isWithdrawn) {
+		return isWithdrawn;
 	}
 
 	if (!evidenceResources.length) return { notFound: true };

@@ -9,7 +9,7 @@ import { addDefaultJSONFeedMocks, axiosJSONMock } from "@/test-utils/feeds";
 
 import IndicatorChapterPage, {
 	getServerSideProps,
-	type IndicatorChapterPageProps
+	type IndicatorChapterPageProps,
 } from "./[chapterSlug].page";
 
 jest.mock("@/logger", () => ({

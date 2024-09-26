@@ -9,7 +9,7 @@ import { addDefaultJSONFeedMocks, axiosJSONMock } from "@/test-utils/feeds";
 
 import HistoryPage, {
 	getServerSideProps,
-	HistoryPageProps
+	HistoryPageProps,
 } from "./index.page";
 
 jest.mock("@/logger", () => ({
