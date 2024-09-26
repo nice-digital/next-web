@@ -62,6 +62,7 @@ describe("BlogPostPage", () => {
 			const context = {
 				query: {},
 				params: { slug: "slug-does-not-exist" },
+				req: { headers: {} },
 			} as unknown as GetServerSidePropsContext<ParsedUrlQuery>;
 
 			const result = await getServerSideProps(context);
@@ -79,6 +80,7 @@ describe("BlogPostPage", () => {
 			const result = await getServerSideProps({
 				query: {},
 				params: { slug: "test-slug" },
+				req: { headers: {} },
 			} as unknown as GetServerSidePropsContext<ParsedUrlQuery>);
 
 			expect(result).toEqual({ props: { error: GENERIC_ERROR_MESSAGE } });
@@ -92,6 +94,7 @@ describe("BlogPostPage", () => {
 			const result = await getServerSideProps({
 				query: {},
 				params: { slug: "test-slug" },
+				req: { headers: {} },
 			} as unknown as GetServerSidePropsContext<ParsedUrlQuery>);
 
 			expect(result).toEqual({
@@ -107,6 +110,7 @@ describe("BlogPostPage", () => {
 			const context = {
 				query: { version: "published" },
 				params: { slug: "test-slug" },
+				req: { headers: {} },
 			} as unknown as GetServerSidePropsContext;
 
 			const result = await getServerSideProps(context);

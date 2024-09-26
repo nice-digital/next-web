@@ -85,6 +85,7 @@ describe("PodcastPage", () => {
 			const context = {
 				query: {},
 				params: { slug: "slug-does-not-exist" },
+				req: { headers: {} },
 			} as unknown as GetServerSidePropsContext;
 
 			const result = await getServerSideProps(context);
@@ -98,6 +99,7 @@ describe("PodcastPage", () => {
 			const context = {
 				query: {},
 				params: { slug: "test-slug" },
+				req: { headers: {} },
 			} as unknown as GetServerSidePropsContext;
 
 			const result = await getServerSideProps(context);
@@ -112,6 +114,7 @@ describe("PodcastPage", () => {
 			const context = {
 				query: {},
 				params: { slug: "test-slug" },
+				req: { headers: {} },
 			} as unknown as GetServerSidePropsContext;
 
 			const result = await getServerSideProps(context);
@@ -127,6 +130,7 @@ describe("PodcastPage", () => {
 			const context = {
 				query: {},
 				params: { slug: "test-slug" },
+				req: { headers: {} },
 			} as unknown as GetServerSidePropsContext;
 
 			const result = await getServerSideProps(context);
