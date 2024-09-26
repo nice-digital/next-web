@@ -2,8 +2,8 @@ import type { Except } from "type-fest";
 
 export enum FeedPath {
 	ProductsLite = "/feeds/products-lite",
-	ProductTypes = "/feeds/producttypes",
-	AreasOfInterest = "/feeds/areaofinteresttypes",
+	ProductTypes = "/newfeeds/producttypes",
+	AreasOfInterest = "/newfeeds/areaofinteresttypes",
 	IndicatorSubTypes = "/feeds/indicatorsubtypes",
 	IndicatorMappings = "/feeds/indicatormappings",
 	ProductDetail = "/feeds/product/",
@@ -144,6 +144,11 @@ export type BaseFeedItem = {
 	lastModified: string;
 };
 
+export type NewBaseFeedItem = {
+	/** Full ISO date string like `2021-04-15T08:18:13.7945978Z` */
+	lastModified: string;
+};
+
 /**
  * The raw object that comes back from the feed
  */
@@ -169,7 +174,7 @@ export type ProductLiteRaw = BaseFeedItem & {
 /** A product lite from the feed, but with redundant properties removed */
 export type ProductLite = Except<ProductLiteRaw, "eTag" | "links">;
 
-export type ProductType = BaseFeedItem & {
+export type ProductType = NewBaseFeedItem & {
 	enabled: boolean;
 	name: string;
 	pluralName: string;
@@ -178,7 +183,7 @@ export type ProductType = BaseFeedItem & {
 	parent: ParentProductTypeAcronym | "";
 };
 
-export type AreaOfInterest = BaseFeedItem & {
+export type AreaOfInterest = NewBaseFeedItem & {
 	enabled: boolean;
 	name: string;
 	pluralName: string;
@@ -213,17 +218,13 @@ type FeedContent<
 	lastModified: string;
 } & Embedded<TEmbeddedOuter, FeedContentInner<TEmbeddedInner, TItemType>>;
 
-export type AreasOfInterestList = FeedContent<
-	"areaOfInterestTypeList",
-	"areaOfInterestType",
-	AreaOfInterest
->;
+export type AreaOfInterestTypes = NewBaseFeedItem & {
+	areaOfInterestTypes: AreaOfInterest[];
+};
 
-export type ProductTypeList = FeedContent<
-	"productTypeList",
-	"productType",
-	ProductType
->;
+export type ProductTypes = NewBaseFeedItem & {
+	productTypes: ProductType[];
+};
 
 export type ProductListLite = FeedContent<
 	"productListLite",
