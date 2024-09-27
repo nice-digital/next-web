@@ -19,6 +19,7 @@ import {
 	getStoryVersionFromQuery,
 	getSlugFromParams,
 	getAdditionalMetaTags,
+	getBreadcrumbs,
 	GENERIC_ERROR_MESSAGE,
 } from "@/utils/storyblok";
 
@@ -100,11 +101,13 @@ export async function getServerSideProps(context: GetServerSidePropsContext) {
 	const version = getStoryVersionFromQuery(query);
 
 	try {
+		const pagePath = `news/articles/${slug}`;
+
 		// Get the story and its breadcrumbs
-		const storyResult = await fetchStory<NewsArticleStoryblok>(
-			`news/articles/${slug}`,
-			version
-		);
+		const [storyResult, breadcrumbs] = await Promise.all([
+			fetchStory<NewsArticleStoryblok>(pagePath, version),
+			getBreadcrumbs(pagePath, version),
+		]);
 
 		if ("notFound" in storyResult) {
 			return {
@@ -112,15 +115,18 @@ export async function getServerSideProps(context: GetServerSidePropsContext) {
 			};
 		}
 
-		const breadcrumbs = [
-			{ title: "News", path: "/news" },
-			{ title: "News articles", path: "/news/articles" },
-		];
+		// update breadcrumbs Articles name to be News Articles
+		const renamedBreadcrumbs = breadcrumbs.map((breadcrumb) => {
+			if (breadcrumb.title === "Articles") {
+				breadcrumb.title = "News articles";
+			}
+			return breadcrumb;
+		});
 
 		const result = {
 			props: {
 				...storyResult,
-				breadcrumbs,
+				breadcrumbs: renamedBreadcrumbs,
 			},
 		};
 
