@@ -18,6 +18,7 @@ import {
 	getSlugFromParams,
 	getAdditionalMetaTags,
 	GENERIC_ERROR_MESSAGE,
+	getBreadcrumbs,
 } from "@/utils/storyblok";
 
 import type { GetServerSidePropsContext } from "next";
@@ -77,6 +78,7 @@ export default function BlogPostPage(props: BlogPageProps): React.ReactElement {
 
 export async function getServerSideProps(context: GetServerSidePropsContext) {
 	const { query, params } = context;
+
 	try {
 		// Resolve slug from params
 		const slug = getSlugFromParams(params?.slug);
@@ -89,12 +91,23 @@ export async function getServerSideProps(context: GetServerSidePropsContext) {
 
 		const version = getStoryVersionFromQuery(query);
 
+		const pagePath = `news/blogs/${slug}`;
+
 		// Get the story and its breadcrumbs
-		const storyResult = await fetchStory<BlogPostStoryblok>(
-			`news/blogs/${slug}`,
-			version,
-			{ resolve_relations: "blogPost.author" }
-		);
+		const [storyResult, breadcrumbs] = await Promise.all([
+			// fetchStory<BlogPostStoryblok>(pagePath, version),
+			fetchStory<BlogPostStoryblok>(pagePath, version, {
+				resolve_relations: "blogPost.author",
+			}),
+			getBreadcrumbs(pagePath, version),
+		]);
+
+		// // Get the story and its breadcrumbs
+		// const storyResult = await fetchStory<BlogPostStoryblok>(
+		// 	`news/blogs/${slug}`,
+		// 	version,
+		// 	{ resolve_relations: "blogPost.author" }
+		// );
 
 		if ("notFound" in storyResult) {
 			return {
@@ -102,10 +115,10 @@ export async function getServerSideProps(context: GetServerSidePropsContext) {
 			};
 		}
 
-		const breadcrumbs = [
-			{ title: "News", path: "/news" },
-			{ title: "Blogs", path: "/news/blogs" },
-		];
+		// const breadcrumbs = [
+		// 	{ title: "News", path: "/news" },
+		// 	{ title: "Blogs", path: "/news/blogs" },
+		// ];
 
 		return {
 			props: {
