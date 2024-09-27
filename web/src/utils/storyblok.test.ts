@@ -485,6 +485,25 @@ describe("Storyblok utils", () => {
 			]);
 		});
 
+		it("should include the current page in the breadbrumb if the parameter is set", async () => {
+			getStoryblokApi().getAll = jest
+				.fn()
+				.mockResolvedValue(MockLinksSuccessResponse.links);
+
+			const result = await getBreadcrumbs(
+				"news/podcasts/test-podcast-4",
+				"published",
+				true
+			);
+
+			expect(result).toEqual([
+				{ path: "/", title: "Home" },
+				{ path: "/news", title: "News" },
+				{ path: "/news/podcasts", title: "Podcasts" },
+				{ title: "Test podcast 4" },
+			]);
+		});
+
 		it.todo("no links found?");
 		it.todo("no parent id?");
 		it.todo("reverse ordering");
