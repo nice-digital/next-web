@@ -1,6 +1,6 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`NiceContentAssuranceServiceForm should match snapshot 1`] = `
+exports[`UseOfNICEContentInternationalForm should match snapshot 1`] = `
 <div>
   <nav
     aria-label="Breadcrumbs"
@@ -31,17 +31,8 @@ exports[`NiceContentAssuranceServiceForm should match snapshot 1`] = `
       <li
         class="breadcrumbs__crumb"
       >
-        <a
-          href="/re-using-our-content/content-assurance-service"
-        >
-          Content assurance service
-        </a>
-      </li>
-      <li
-        class="breadcrumbs__crumb"
-      >
         <span>
-          NICE content assurance service form
+          Permission request form for international use of nice content
         </span>
       </li>
     </ol>
@@ -73,15 +64,7 @@ exports[`NiceContentAssuranceServiceForm should match snapshot 1`] = `
       "@type": "ListItem",
       "position": 3,
       "item": {
-        "@id": "/re-using-our-content/content-assurance-service",
-        "name": "Content assurance service"
-      }
-    },
-    {
-      "@type": "ListItem",
-      "position": 4,
-      "item": {
-        "name": "NICE content assurance service form"
+        "name": "Permission request form for international use of nice content"
       }
     }
   ]
@@ -103,28 +86,19 @@ exports[`NiceContentAssuranceServiceForm should match snapshot 1`] = `
         <h1
           class="page-header__heading "
         >
-          NICE content assurance service form
+          Permission request form for international use of nice content
         </h1>
       </div>
-      <p>
-        To enable us to process your request as quickly as possible and provide a quote, it is important that you supply us with all the relevant information.
-      </p>
-      <p>
-        We aim to respond within 7 working days. If you have an urgent deadline, please let us know and we will do our best to accommodate this though it may not always be possible due to the high volume of requests we receive.
-      </p>
-      <p>
-        If your publication, product or service is for use outside of the United Kingdom, NICE will provide a content assurance service as part of the permissions process to use our content.
-      </p>
       <iframe
         allow="geolocation; microphone; camera"
         allowfullscreen=""
         class="iframe"
-        data-jotform-id="241971910941055"
-        id="JotFormIFrame-241971910941055"
+        data-jotform-id="241962582676065"
+        id="JotFormIFrame-241962582676065"
         scrolling="no"
-        src="https://next-web-tests.jotform.com/241971910941055?isIframeEmbed=1"
+        src="https://next-web-tests.jotform.com/241962582676065?isIframeEmbed=1"
         style="height: 539px; overflow: hidden;"
-        title="NICE content assurance service form"
+        title="Permission request form for international use of nice content"
       />
     </div>
   </div>
