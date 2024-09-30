@@ -22,11 +22,9 @@ export const pagePaths = {
 	"IND262 overview":
 		"/indicators/ind262-kidney-conditions-ckd-and-sglt-2-inhibitors",
 	IND10272: "/indicators/indevelopment/gid-ind10272",
-
 	"HUB10001 overview": "/hub/indevelopment/gid-hub10001",
 	"HUB10002 overview": "/hub/indevelopment/gid-hub10002",
 	"HUB10003 overview": "/hub/indevelopment/gid-hub10003",
-
 	home: "/",
 	"news, blogs and podcasts": "/news",
 	"nice newsletters and alerts": "/nice-newsletters-and-alerts",

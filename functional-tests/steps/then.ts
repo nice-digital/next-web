@@ -52,5 +52,5 @@ Then(
 	validateFirstLinkInPagination
 );
 
-Then(/^I click the next pagination option$/, clickNextPagination);
-Then(/^I click the previous pagination option$/, clickPreviousPagination);
+Then(/^I click the next page option$/, clickNextPagination);
+Then(/^I click the previous page option$/, clickPreviousPagination);

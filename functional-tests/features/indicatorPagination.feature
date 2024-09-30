@@ -11,8 +11,8 @@ Feature: Users can page through the list of indicator
 		And I expect the result list count contains "Showing 1 to 10 of 277"
     Then I expect the first pagination option is "1"
     When I click the second pagination option
-		# Then I expect the first pagination option is "Previous page"
-		# And I click the next pagination option
-		# And I click the previous pagination option
-		# And I click the previous pagination option
-		# Then I expect the first pagination option is "1"
+		Then I expect the first pagination option is "Previous page"
+		And I click the next page option
+		And I click the previous page option
+		And I click the previous page option
+		Then I expect the first pagination option is "1"

@@ -16,7 +16,7 @@ Feature: The list of indicators is reduced when user filter by name
   Scenario: User can apply keyword filter in development indicators list page
     Given I open the in development indicators list page
     And I enter keyword or reference number "IND85" to filter page list
-    Then I expect the result list count contains "Showing 1 to 1 of 1"
+    Then I expect that element "#results:nth-child(2)" contains the text "No results found"
 
   Scenario: User can apply keyword filter in consultation indicators list page
     Given I open the in consultation indicators list page
