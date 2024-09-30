@@ -119,14 +119,17 @@ const mockStory = {
 const mockNews: StoryblokStory<NewsStory>[] = [
 	{
 		...mockStory,
+		id: 1,
 		name: "Article 1 name",
 	},
 	{
 		...mockStory,
+		id: 2,
 		name: "Article 2 name",
 	},
 	{
 		...mockStory,
+		id: 3,
 		name: "Article 3 name",
 	},
 ];

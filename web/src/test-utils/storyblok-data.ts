@@ -168,6 +168,7 @@ export const mockRichText: RichtextStoryblok = {
 
 export const mockNewsArticle: StoryblokStory<NewsArticleStoryblok> = {
 	...mockStoryblokStory,
+	id: 987654,
 	name: "Test news article title",
 	content: {
 		title: "Test news article title",

@@ -2,15 +2,9 @@
 
 exports[`publications getAllAreasOfInterest should load raw feed data with empty cache 1`] = `
 Object {
-  "eTag": null,
   "enabled": true,
   "identifierPrefix": "AMP",
   "lastModified": "2021-02-23T00:00:00",
-  "links": Object {
-    "self": Array [
-      Object {},
-    ],
-  },
   "name": "Antimicrobial prescribing",
   "pluralName": "Antimicrobial prescribing",
 }

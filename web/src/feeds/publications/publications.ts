@@ -4,7 +4,7 @@ import { getFeedBodyCached, getFeedBodyUnCached, getResponseStream } from "../";
 
 import {
 	AreaOfInterest,
-	AreasOfInterestList,
+	AreaOfInterestTypes,
 	ErrorResponse,
 	FeedPath,
 	ChapterHTMLContent,
@@ -84,12 +84,12 @@ export const getAllAreasOfInterest = async (): Promise<AreaOfInterest[]> =>
 		longTTL,
 		async () =>
 			(
-				await getFeedBodyUnCached<AreasOfInterestList>(
+				await getFeedBodyUnCached<AreaOfInterestTypes>(
 					origin,
 					FeedPath.AreasOfInterest,
 					apiKey
 				)
-			).embedded.areaOfInterestTypeList.embedded.areaOfInterestType
+			).areaOfInterestTypes
 	);
 
 /**
