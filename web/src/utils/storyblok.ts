@@ -322,6 +322,7 @@ export const resolveStoryblokLink = ({
 	url,
 	cached_url,
 	email,
+	story,
 }: MultilinkStoryblok): { url: string | undefined; isInternal: boolean } => {
 	switch (linktype) {
 		case "url":
@@ -335,11 +336,13 @@ export const resolveStoryblokLink = ({
 				url: email?.trim() ? `mailto:${email.trim()}` : undefined,
 				isInternal: false,
 			};
-		case "story":
+		case "story": {
+			const resolvedUrl = story?.url.trim() || cached_url?.trim() || undefined;
 			return {
-				url: url?.trim() || cached_url?.trim() || undefined,
+				url: `/${resolvedUrl}`,
 				isInternal: true,
 			};
+		}
 		default:
 			return {
 				url: undefined,
