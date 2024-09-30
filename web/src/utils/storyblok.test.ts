@@ -262,7 +262,6 @@ describe("Storyblok utils", () => {
 		});
 
 		it("should handle server errors", async () => {
-			const loggerErrorSpy = jest.spyOn(logger, "error");
 			getStoryblokApi().get = jest
 				.fn()
 				.mockRejectedValueOnce(JSON.stringify(MockServerErrorResponse));
@@ -273,10 +272,12 @@ describe("Storyblok utils", () => {
 
 			expect(throwErrorFetchStory).rejects.toThrow(GENERIC_ERROR_MESSAGE);
 
+			expect(jest.isMockFunction(logger.error)).toBe(true);
+
 			await waitFor(() => {
-				expect(loggerErrorSpy).toHaveBeenCalled();
+				expect(logger.error as jest.Mock).toHaveBeenCalled();
 				// eslint-disable-next-line testing-library/no-wait-for-multiple-assertions
-				expect(loggerErrorSpy).toHaveBeenCalledWith(
+				expect(logger.error).toHaveBeenCalledWith(
 					{
 						ocelotEndpoint: null,
 						originatingErrorResponse: {
@@ -292,7 +293,6 @@ describe("Storyblok utils", () => {
 		});
 
 		it("should handle malformed JSON error responses", async () => {
-			const loggerErrorSpy = jest.spyOn(logger, "error");
 			getStoryblokApi().get = jest
 				.fn()
 				.mockRejectedValueOnce("This is not JSON");
@@ -303,10 +303,11 @@ describe("Storyblok utils", () => {
 
 			expect(throwErrorFetchStory).rejects.toThrow(GENERIC_ERROR_MESSAGE);
 
+			expect(jest.isMockFunction(logger.error)).toBe(true);
 			await waitFor(() => {
-				expect(loggerErrorSpy).toHaveBeenCalled();
+				expect(logger.error).toHaveBeenCalled();
 				// eslint-disable-next-line testing-library/no-wait-for-multiple-assertions
-				expect(loggerErrorSpy).toHaveBeenCalledWith(
+				expect(logger.error).toHaveBeenCalledWith(
 					{
 						ocelotEndpoint: null,
 						originatingErrorMessage: "This is not JSON",
@@ -361,7 +362,6 @@ describe("Storyblok utils", () => {
 		});
 
 		it("should return a 404 error and log error message to logger when there is an error from storyblok", async () => {
-			const loggerErrorSpy = jest.spyOn(logger, "error");
 			getStoryblokApi().get = jest
 				.fn()
 				.mockRejectedValue(JSON.stringify(Mock404FromStoryblokApi));
@@ -378,10 +378,12 @@ describe("Storyblok utils", () => {
 				GENERIC_ERROR_MESSAGE
 			);
 
+			expect(jest.isMockFunction(logger.error)).toBe(true);
+
 			await waitFor(() => {
-				expect(loggerErrorSpy).toHaveBeenCalled();
+				expect(logger.error).toHaveBeenCalled();
 				// eslint-disable-next-line testing-library/no-wait-for-multiple-assertions
-				expect(loggerErrorSpy).toHaveBeenCalledWith(
+				expect(logger.error).toHaveBeenCalledWith(
 					{
 						ocelotEndpoint: null,
 						originatingErrorResponse: {
@@ -402,7 +404,6 @@ describe("Storyblok utils", () => {
 		});
 
 		it("should return a 503 error and log error message to logger when there is an error from storyblok", async () => {
-			const loggerErrorSpy = jest.spyOn(logger, "error");
 			getStoryblokApi().get = jest
 				.fn()
 				.mockRejectedValue(JSON.stringify(MockServerErrorResponse));
@@ -420,9 +421,9 @@ describe("Storyblok utils", () => {
 			);
 
 			await waitFor(() => {
-				expect(loggerErrorSpy).toHaveBeenCalled();
+				expect(logger.error).toHaveBeenCalled();
 				// eslint-disable-next-line testing-library/no-wait-for-multiple-assertions
-				expect(loggerErrorSpy).toHaveBeenCalledWith(
+				expect(logger.error).toHaveBeenCalledWith(
 					{
 						ocelotEndpoint: null,
 						originatingErrorResponse: {
@@ -470,7 +471,6 @@ describe("Storyblok utils", () => {
 		});
 
 		it("should return a 404 error and log error message to logger when there is an error from storyblok", async () => {
-			const loggerErrorSpy = jest.spyOn(logger, "error");
 			getStoryblokApi().getAll = jest
 				.fn()
 				.mockRejectedValue(JSON.stringify(Mock404FromStoryblokApi));
@@ -483,10 +483,12 @@ describe("Storyblok utils", () => {
 				"404 error from Storyblok API: Not Found"
 			);
 
+			expect(jest.isMockFunction(logger.error)).toBe(true);
+
 			await waitFor(() => {
-				expect(loggerErrorSpy).toHaveBeenCalled();
+				expect(logger.error).toHaveBeenCalled();
 				// eslint-disable-next-line testing-library/no-wait-for-multiple-assertions
-				expect(loggerErrorSpy).toHaveBeenCalledWith(
+				expect(logger.error).toHaveBeenCalledWith(
 					"404 error from Storyblok API: Not Found",
 					'{"message":"Not Found","status":404,"response":"This record could not be found"}'
 				);
@@ -494,7 +496,6 @@ describe("Storyblok utils", () => {
 		});
 
 		it("should return a 503 error and log error message to logger when there is an error from storyblok", async () => {
-			const loggerErrorSpy = jest.spyOn(logger, "error");
 			getStoryblokApi().getAll = jest
 				.fn()
 				.mockRejectedValue(JSON.stringify(MockServerErrorResponse));
@@ -508,9 +509,9 @@ describe("Storyblok utils", () => {
 			);
 
 			await waitFor(() => {
-				expect(loggerErrorSpy).toHaveBeenCalled();
+				expect(logger.error).toHaveBeenCalled();
 				// eslint-disable-next-line testing-library/no-wait-for-multiple-assertions
-				expect(loggerErrorSpy).toHaveBeenCalledWith(
+				expect(logger.error).toHaveBeenCalledWith(
 					"503 error from Storyblok API: Service Unavailable",
 					'{"status":503,"message":"Service Unavailable"}'
 				);
@@ -564,15 +565,12 @@ describe("Storyblok utils", () => {
 
 	describe("friendlyDate", () => {
 		it("should format date string into expected format", () => {
-			const formattedDate = friendlyDate("2022-04-02");
-			expect(formattedDate).toBe("02 April 2022");
+			expect(friendlyDate("2022-04-02")).toBe("02 April 2022");
 		});
 
 		it("should handle invalid input gracefully", () => {
-			const emptyStringDate = friendlyDate("");
-			const dateAsRandomString = friendlyDate("random string");
-			expect(emptyStringDate).toBe("Invalid Date");
-			expect(dateAsRandomString).toBe("Invalid Date");
+			expect(friendlyDate("")).toBe("Invalid Date");
+			expect(friendlyDate("random string")).toBe("Invalid Date");
 		});
 	});
 
@@ -715,8 +713,6 @@ describe("Storyblok utils", () => {
 		});
 
 		it("should call the logger info method when fetchStories returns no stories", async () => {
-			const loggerInfoSpy = jest.spyOn(logger, "info");
-
 			const mockNoStoriesResponse = {
 				stories: [],
 			};
@@ -725,14 +721,13 @@ describe("Storyblok utils", () => {
 
 			await validateRouteParams(mockRequestParams);
 
-			expect(loggerInfoSpy).toHaveBeenCalled();
+			expect(jest.isMockFunction(logger.info)).toBe(true);
+			expect(logger.info).toHaveBeenCalled();
 
-			expect(loggerInfoSpy).toHaveBeenCalledWith("No stories in result");
+			expect(logger.info).toHaveBeenCalledWith("No stories in result");
 		});
 
 		it("should call the logger error method when fetchStories throws an error", async () => {
-			const loggerErrorSpy = jest.spyOn(logger, "error");
-
 			const mockError = new Error("Error fetching stories", {
 				cause: "test cause of error",
 			});
@@ -748,9 +743,11 @@ describe("Storyblok utils", () => {
 			);
 
 			await waitFor(() => {
-				expect(loggerErrorSpy).toHaveBeenCalled();
+				expect(jest.isMockFunction(logger.error)).toBe(true);
 				// eslint-disable-next-line testing-library/no-wait-for-multiple-assertions
-				expect(loggerErrorSpy).toHaveBeenCalledWith(
+				expect(logger.error).toHaveBeenCalled();
+				// eslint-disable-next-line testing-library/no-wait-for-multiple-assertions
+				expect(logger.error).toHaveBeenCalledWith(
 					{
 						errorMessage: "Error fetching stories",
 						errorCause: "test cause of error",

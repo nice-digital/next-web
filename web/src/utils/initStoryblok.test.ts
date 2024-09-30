@@ -16,8 +16,6 @@ jest.mock("@/config", () => ({
 
 describe("initStoryblok", () => {
 	let consoleLogSpy: jest.SpyInstance;
-	const loggerErrorSpy = jest.spyOn(logger, "error");
-	const loggerInfoSpy = jest.spyOn(logger, "info");
 
 	beforeEach(() => {
 		consoleLogSpy = jest.spyOn(console, "log").mockImplementation();
@@ -42,7 +40,9 @@ describe("initStoryblok", () => {
 			},
 		});
 
-		expect(loggerInfoSpy).toHaveBeenCalledWith("end initStoryblok");
+		expect(jest.isMockFunction(logger.info)).toBe(true);
+
+		expect(logger.info).toHaveBeenCalledWith("end initStoryblok");
 	});
 
 	it("should log an error when an exception is thrown", async () => {
@@ -52,10 +52,12 @@ describe("initStoryblok", () => {
 
 		initStoryblok();
 
-		expect(loggerInfoSpy).toHaveBeenCalled();
+		expect(jest.isMockFunction(logger.info)).toBe(true);
+		expect(jest.isMockFunction(logger.error)).toBe(true);
 
+		expect(logger.info).toHaveBeenCalled();
 		await waitFor(() => {
-			expect(loggerErrorSpy).toHaveBeenCalledWith(
+			expect(logger.error).toHaveBeenCalledWith(
 				{
 					ocelotEndpoint: "testEndpoint",
 					usingOcelotCache: true,
