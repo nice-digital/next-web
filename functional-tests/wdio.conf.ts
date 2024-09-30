@@ -17,6 +17,8 @@ export const config: WebdriverIO.Config = {
 		"./features/**/home.feature",
 		"./features/**/newsTabs.feature",
 		"./features/**/jotforms.feature",
+		"./features/**/newsHomePage.feature",
+		"./features/**/indicator.feature",
 	],
 
 	capabilities: [
