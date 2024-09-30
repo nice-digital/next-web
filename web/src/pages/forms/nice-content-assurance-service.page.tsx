@@ -3,7 +3,6 @@ import {
 	getGetServerSideProps,
 } from "@/components/JotFormPage/getGetServerSideProps";
 import { JotFormPage } from "@/components/JotFormPage/JotFormPage";
-import { Link } from "@/components/Link/Link";
 
 import styles from "./forms.module.scss";
 
