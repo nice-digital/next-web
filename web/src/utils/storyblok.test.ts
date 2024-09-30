@@ -569,13 +569,10 @@ describe("Storyblok utils", () => {
 		});
 
 		it("should handle invalid input gracefully", () => {
-			expect(() => {
-				friendlyDate("");
-			}).toThrow("Invalid date format");
-
-			expect(() => {
-				friendlyDate("not_a_date");
-			}).toThrow("Invalid date format");
+			const emptyStringDate = friendlyDate("");
+			const dateAsRandomString = friendlyDate("random string");
+			expect(emptyStringDate).toBe("Invalid Date");
+			expect(dateAsRandomString).toBe("Invalid Date");
 		});
 	});
 

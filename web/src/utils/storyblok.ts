@@ -452,14 +452,16 @@ export const getAdditionalMetaTags = (story: ISbStoryData): MetaTag[] => {
 
 // Turn a Storyblok date string (yyyy-mm-dd hh:ss) into a friendly date
 export const friendlyDate = (date: string): string => {
-	if (!date || !Date.parse(date)) {
-		throw new Error("Invalid date format");
+	if (!date || isNaN(Date.parse(date))) {
+		return "Invalid Date";
 	}
+
 	const formatter = new Intl.DateTimeFormat("en-GB", {
 		day: "2-digit",
 		month: "long",
 		year: "numeric",
 	});
+
 	return formatter.format(new Date(date));
 };
 
