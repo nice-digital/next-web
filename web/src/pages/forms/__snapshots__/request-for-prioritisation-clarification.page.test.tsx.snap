@@ -1,0 +1,111 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`RequestForPrioritisationClarificationForm should match snapshot 1`] = `
+<div>
+  <nav
+    aria-label="Breadcrumbs"
+    data-component="breadcrumbs"
+    role="navigation"
+  >
+    <ol
+      class="breadcrumbs"
+    >
+      <li
+        class="breadcrumbs__crumb"
+      >
+        <a
+          href="/"
+        >
+          Home
+        </a>
+      </li>
+      <li
+        class="breadcrumbs__crumb"
+      >
+        <a
+          href="/re-using-our-content"
+        >
+          Reusing our content
+        </a>
+      </li>
+      <li
+        class="breadcrumbs__crumb"
+      >
+        <span>
+          Use of NICE content in the UK form
+        </span>
+      </li>
+    </ol>
+  </nav>
+  <script
+    type="application/ld+json"
+  >
+    {
+  "@context": "http://schema.org",
+  "@type": "BreadcrumbList",
+  "itemListElement": [
+    {
+      "@type": "ListItem",
+      "position": 1,
+      "item": {
+        "@id": "/",
+        "name": "Home"
+      }
+    },
+    {
+      "@type": "ListItem",
+      "position": 2,
+      "item": {
+        "@id": "/re-using-our-content",
+        "name": "Reusing our content"
+      }
+    },
+    {
+      "@type": "ListItem",
+      "position": 3,
+      "item": {
+        "name": "Use of NICE content in the UK form"
+      }
+    }
+  ]
+}
+  </script>
+  <div
+    class="grid grid--loose"
+  >
+    <div
+      data-component="grid-item"
+      data-g="12 md:12 lg:12"
+    >
+      <div
+        class="page-header "
+        data-component="page-header"
+        data-testid="content-start"
+        id="content-start"
+      >
+        <h1
+          class="page-header__heading "
+        >
+          Use of NICE content in the UK form
+        </h1>
+        <p
+          class="page-header__lead"
+        >
+          This licence allows individuals, commercial organisations and non-commercial organisations to reuse NICE content free of charge in their publications, products and systems. It applies to requests to use our content in a UK setting only.
+        </p>
+      </div>
+      <iframe
+        allow="geolocation; microphone; camera"
+        allowfullscreen=""
+        class="iframe"
+        data-jotform-id="223412731228044"
+        id="JotFormIFrame-223412731228044"
+        scrolling="no"
+        src="https://next-web-tests.jotform.com/223412731228044?isIframeEmbed=1"
+        style="height: 539px; overflow: hidden;"
+        title="Use of NICE content in the UK form"
+      />
+    </div>
+  </div>
+</div>
+`;
