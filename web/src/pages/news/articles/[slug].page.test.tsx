@@ -1,7 +1,9 @@
+import { type ISbStoryData } from "@storyblok/react";
 import { render, screen } from "@testing-library/react";
 import { GetServerSidePropsContext } from "next";
 
 import { mockNewsArticle } from "@/test-utils/storyblok-data";
+import { NewsArticleStoryblok } from "@/types/storyblok";
 import * as storyblokUtils from "@/utils/storyblok";
 import { GENERIC_ERROR_MESSAGE } from "@/utils/storyblok";
 
@@ -13,7 +15,11 @@ const mockArticle = {
 
 describe("NewsArticlePage", () => {
 	it("renders the page", () => {
-		render(<NewsArticlePage story={mockNewsArticle} />);
+		render(
+			<NewsArticlePage
+				story={mockNewsArticle as ISbStoryData<NewsArticleStoryblok>}
+			/>
+		);
 		expect(screen.getByText(mockNewsArticle.content.title)).toBeInTheDocument();
 		expect(document.body).toMatchSnapshot();
 	});
