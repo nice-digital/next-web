@@ -119,7 +119,7 @@ export default function SlugCatchAll(
 }
 
 export async function getServerSideProps(context: GetServerSidePropsContext) {
-	logger.info(
+	logger.warn(
 		{ context },
 		`SlugCatchAll page getServerSideProps context: ${context}`
 	);
