@@ -42,7 +42,9 @@ export default function BlogPostPage(props: BlogPageProps): React.ReactElement {
 		metadata: Metadata,
 	});
 	const story = "story" in props ? props.story : null;
-
+	console.log("SLUG TEMPLATE");
+	console.log({ story });
+	console.log("END SLUG TEMPLATE");
 	const additionalMetaTags = useMemo(() => {
 		if (story) {
 			return getAdditionalMetaTags(story);

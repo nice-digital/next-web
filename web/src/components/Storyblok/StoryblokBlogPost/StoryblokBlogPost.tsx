@@ -33,7 +33,11 @@ export const StoryblokBlogPost = ({
 }: StoryblokBlogPostProps): React.ReactElement => {
 	const imageRef = useRef<HTMLImageElement>(null);
 	const articleRef = useRef<HTMLDivElement>(null);
-
+	const { author } = blok;
+	console.log("BLOG POST TEMPLATE");
+	console.log({ blok });
+	console.log({ author });
+	console.log("END BLOG POST TEMPLATE");
 	useEffect(() => {
 		const handleResize = debounce(() => {
 			// set the offset for the featured image
@@ -67,16 +71,20 @@ export const StoryblokBlogPost = ({
 		</Breadcrumbs>
 	) : undefined;
 
-	const authors = blok.author as StoryblokStory<AuthorStoryblok>[];
+	const authors = author as StoryblokStory<AuthorStoryblok>[];
+
+	console.log("AUTHORS");
+	console.log({ authors });
+	console.log("END AUTHORS");
 
 	const PageHeaderAuthorsList =
 		authors.length === 0 ? null : authors.length > 1 ? (
 			<div className={styles.authorSection}>
 				<AuthorList authors={authors} />
 			</div>
-		) : typeof blok.author[0] !== "string" ? (
+		) : typeof author[0] !== "string" ? (
 			<div className={styles.authorSection}>
-				<StoryblokAuthor blok={blok.author[0].content} headingLevel={2} />
+				<StoryblokAuthor blok={author[0].content} headingLevel={2} />
 			</div>
 		) : null;
 
