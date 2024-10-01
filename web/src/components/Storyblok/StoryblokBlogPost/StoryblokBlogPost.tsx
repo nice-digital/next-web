@@ -34,10 +34,7 @@ export const StoryblokBlogPost = ({
 	const imageRef = useRef<HTMLImageElement>(null);
 	const articleRef = useRef<HTMLDivElement>(null);
 	const { author } = blok;
-	console.log("BLOG POST TEMPLATE");
-	console.log({ blok });
-	console.log({ author });
-	console.log("END BLOG POST TEMPLATE");
+
 	useEffect(() => {
 		const handleResize = debounce(() => {
 			// set the offset for the featured image
@@ -72,10 +69,6 @@ export const StoryblokBlogPost = ({
 	) : undefined;
 
 	const authors = author as StoryblokStory<AuthorStoryblok>[];
-
-	console.log("AUTHORS");
-	console.log({ authors });
-	console.log("END AUTHORS");
 
 	const PageHeaderAuthorsList =
 		authors.length === 0 ? null : authors.length > 1 ? (

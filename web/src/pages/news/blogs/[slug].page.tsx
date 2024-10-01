@@ -1,7 +1,10 @@
-import { StoryblokComponent, setComponents } from "@storyblok/react";
+import {
+	type ISbStoryData,
+	StoryblokComponent,
+	setComponents,
+} from "@storyblok/react";
 import { NextSeo } from "next-seo";
 import React, { useMemo } from "react";
-import { type StoryblokStory } from "storyblok-generate-ts";
 
 import { ErrorPageContent } from "@/components/ErrorPageContent/ErrorPageContent";
 import { Blockquote } from "@/components/Storyblok/Blockquote/Blockquote";
@@ -27,7 +30,7 @@ export type BlogPageErrorProps = {
 };
 
 export type BlogPageSuccessProps = {
-	story: StoryblokStory<BlogPostStoryblok>;
+	story: ISbStoryData<BlogPostStoryblok>;
 	breadcrumbs?: Breadcrumb[];
 };
 
@@ -42,9 +45,7 @@ export default function BlogPostPage(props: BlogPageProps): React.ReactElement {
 		metadata: Metadata,
 	});
 	const story = "story" in props ? props.story : null;
-	console.log("SLUG TEMPLATE");
-	console.log({ story });
-	console.log("END SLUG TEMPLATE");
+
 	const additionalMetaTags = useMemo(() => {
 		if (story) {
 			return getAdditionalMetaTags(story);

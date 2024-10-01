@@ -10,18 +10,18 @@ export interface RichtextStoryblok {
 }
 
 export interface AccordionStoryblok {
-  variant: "subtle" | "callout";
   title: string;
   displayTitleAsHeading?: boolean;
   headingLevel?: string;
   content: RichtextStoryblok;
+  variant: "" | "subtle" | "callout";
   _uid: string;
   component: "accordion";
   [k: string]: any;
 }
 
 export interface AccordionGroupStoryblok {
-  accordions: AccordionStoryblok[];
+  accordions?: AccordionStoryblok[];
   _uid: string;
   component: "accordionGroup";
   [k: string]: any;
@@ -173,15 +173,11 @@ export interface GridStoryblok {
     | IframeStoryblok
     | ImageOrVideoStoryblok
     | InDepthArticleStoryblok
-    | InfoLandingPageStoryblok
     | InfoPageStoryblok
-    | ListItemStoryblok
-    | MarkdownStoryblok
     | MetadataStoryblok
     | NestedRichTextStoryblok
     | NestedTableStoryblok
     | NewsArticleStoryblok
-    | OrderedListStoryblok
     | PageStoryblok
     | PageHeaderStoryblok
     | PodcastStoryblok
@@ -291,20 +287,6 @@ export interface InfoPageStoryblok {
   [k: string]: any;
 }
 
-export interface ListItemStoryblok {
-  ListItemText?: string;
-  _uid: string;
-  component: "ListItem";
-  [k: string]: any;
-}
-
-export interface MarkdownStoryblok {
-  content: string;
-  _uid: string;
-  component: "markdown";
-  [k: string]: any;
-}
-
 export interface MetadataStoryblok {
   description?: string;
   creator?: string;
@@ -364,14 +346,6 @@ export interface NewsArticleStoryblok {
   [k: string]: any;
 }
 
-export interface OrderedListStoryblok {
-  StartingNumber?: string;
-  ListItems?: ListItemStoryblok[];
-  _uid: string;
-  component: "OrderedList";
-  [k: string]: any;
-}
-
 export interface PageStoryblok {
   body?: (
     | AccordionStoryblok
@@ -391,15 +365,11 @@ export interface PageStoryblok {
     | IframeStoryblok
     | ImageOrVideoStoryblok
     | InDepthArticleStoryblok
-    | InfoLandingPageStoryblok
     | InfoPageStoryblok
-    | ListItemStoryblok
-    | MarkdownStoryblok
     | MetadataStoryblok
     | NestedRichTextStoryblok
     | NestedTableStoryblok
     | NewsArticleStoryblok
-    | OrderedListStoryblok
     | PageStoryblok
     | PageHeaderStoryblok
     | PodcastStoryblok

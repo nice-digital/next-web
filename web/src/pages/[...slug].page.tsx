@@ -1,7 +1,10 @@
-import { StoryblokComponent, setComponents } from "@storyblok/react";
+import {
+	type ISbStoryData,
+	StoryblokComponent,
+	setComponents,
+} from "@storyblok/react";
 import { NextSeo } from "next-seo";
 import React, { useMemo } from "react";
-import { StoryblokStory } from "storyblok-generate-ts";
 
 import { ErrorPageContent } from "@/components/ErrorPageContent/ErrorPageContent";
 import { Blockquote } from "@/components/Storyblok/Blockquote/Blockquote";
@@ -34,7 +37,7 @@ import {
 import type { GetServerSidePropsContext } from "next";
 
 export type SlugCatchAllSuccessProps = {
-	story: StoryblokStory<InfoPageStoryblok | CategoryNavigationStoryblok>;
+	story: ISbStoryData<InfoPageStoryblok | CategoryNavigationStoryblok>;
 	breadcrumbs: Breadcrumb[];
 	siblingPages?: string[];
 	component: string;
