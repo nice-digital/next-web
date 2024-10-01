@@ -14,7 +14,7 @@ export default function UseOfNICEContentInternationalForm(
 	return (
 		<JotFormPage
 			{...props}
-			formName="Permission request form for international use of nice content"
+			formName="Permission request form for international use of NICE content"
 			lead=""
 			parentPages={[
 				{
