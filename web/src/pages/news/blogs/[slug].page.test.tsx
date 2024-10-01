@@ -1,8 +1,8 @@
 import { ParsedUrlQuery } from "querystring";
 
+import { type ISbStoryData } from "@storyblok/react";
 import { render, screen } from "@testing-library/react";
 import { GetServerSidePropsContext } from "next";
-import { StoryblokStory } from "storyblok-generate-ts";
 
 import mockBlogPostSuccessResponse from "@/test-utils/storyblok-single-blog-post-response.json";
 import { BlogPostStoryblok } from "@/types/storyblok";
@@ -13,7 +13,7 @@ import BlogPostPage, { getServerSideProps } from "./[slug].page";
 
 //cast to unknown necessary due to some differences in response versus expected type from generate-ts
 const mockBlogPost = mockBlogPostSuccessResponse.data
-	.story as unknown as StoryblokStory<BlogPostStoryblok>;
+	.story as unknown as ISbStoryData<BlogPostStoryblok>;
 
 const mockBreadcrumbs = [
 	{ title: "Home", path: "/" },

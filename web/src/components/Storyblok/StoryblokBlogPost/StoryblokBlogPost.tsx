@@ -33,6 +33,7 @@ export const StoryblokBlogPost = ({
 }: StoryblokBlogPostProps): React.ReactElement => {
 	const imageRef = useRef<HTMLImageElement>(null);
 	const articleRef = useRef<HTMLDivElement>(null);
+	const { author } = blok;
 
 	useEffect(() => {
 		const handleResize = debounce(() => {
@@ -67,7 +68,7 @@ export const StoryblokBlogPost = ({
 		</Breadcrumbs>
 	) : undefined;
 
-	const authors = blok.author as StoryblokStory<AuthorStoryblok>[];
+	const authors = author as StoryblokStory<AuthorStoryblok>[];
 
 	const PageHeaderAuthorsList =
 		authors.length === 0 ? null : authors.length > 1 ? (

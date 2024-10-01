@@ -1,6 +1,6 @@
+import { type ISbStoryData } from "@storyblok/react";
 import { NextSeo } from "next-seo";
 import React, { useMemo } from "react";
-import { StoryblokStory } from "storyblok-generate-ts";
 
 import { Breadcrumbs, Breadcrumb } from "@nice-digital/nds-breadcrumbs";
 import { Hero } from "@nice-digital/nds-hero";
@@ -34,7 +34,7 @@ type PodcastPageErrorProps = {
 };
 
 type PodcastPageSuccessProps = {
-	story: StoryblokStory<PodcastStoryblok>;
+	story: ISbStoryData<PodcastStoryblok>;
 	breadcrumbs?: TypeBreadcrumb[];
 };
 
