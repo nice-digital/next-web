@@ -4,7 +4,7 @@ import { getFeedBodyCached, getFeedBodyUnCached, getResponseStream } from "../";
 
 import {
 	AreaOfInterest,
-	AreasOfInterestList,
+	AreaOfInterestTypes,
 	ErrorResponse,
 	FeedPath,
 	ChapterHTMLContent,
@@ -14,7 +14,7 @@ import {
 	ProductListLite,
 	ProductLite,
 	ProductType,
-	ProductTypeList,
+	ProductTypes,
 	ResourceDetail,
 	RelatedResource,
 	IndicatorMappings,
@@ -64,12 +64,12 @@ export const getAllProductTypes = async (): Promise<ProductType[]> =>
 		longTTL,
 		async () =>
 			(
-				await getFeedBodyUnCached<ProductTypeList>(
+				await getFeedBodyUnCached<ProductTypes>(
 					origin,
 					FeedPath.ProductTypes,
 					apiKey
 				)
-			).embedded.productTypeList.embedded.productType
+			).productTypes
 	);
 
 /**
@@ -84,12 +84,12 @@ export const getAllAreasOfInterest = async (): Promise<AreaOfInterest[]> =>
 		longTTL,
 		async () =>
 			(
-				await getFeedBodyUnCached<AreasOfInterestList>(
+				await getFeedBodyUnCached<AreaOfInterestTypes>(
 					origin,
 					FeedPath.AreasOfInterest,
 					apiKey
 				)
-			).embedded.areaOfInterestTypeList.embedded.areaOfInterestType
+			).areaOfInterestTypes
 	);
 
 /**
