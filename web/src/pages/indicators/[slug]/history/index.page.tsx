@@ -125,8 +125,12 @@ export const getServerSideProps: GetServerSideProps<
 					subGroups.push(currentSubGroup);
 				}
 
-				const { mimeType, length, resourceTitleId, fileName } =
-						resource.embedded.niceIndevFile,
+				const {
+						mimeType = "",
+						length = 0,
+						resourceTitleId = "",
+						fileName = "",
+					} = resource?.embedded?.niceIndevFile || {},
 					isHTML = mimeType === "text/html",
 					fileSize = isHTML ? null : length,
 					fileTypeName = isHTML ? null : getFileTypeNameFromMime(mimeType),
