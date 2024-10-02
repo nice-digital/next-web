@@ -254,7 +254,7 @@ describe("Storyblok utils", () => {
 		it("should handle a 404", async () => {
 			getStoryblokApi().get = jest
 				.fn()
-				.mockRejectedValue(JSON.stringify(Mock404FromStoryblokApi));
+				.mockRejectedValue(Mock404FromStoryblokApi);
 
 			const response = await fetchStory("non/existent/slug", "published");
 
@@ -264,7 +264,7 @@ describe("Storyblok utils", () => {
 		it("should handle server errors", async () => {
 			getStoryblokApi().get = jest
 				.fn()
-				.mockRejectedValueOnce(JSON.stringify(MockServerErrorResponse));
+				.mockRejectedValueOnce(MockServerErrorResponse);
 
 			const throwErrorFetchStory = async () => {
 				await fetchStory("news/articles/test-page", "published");
@@ -292,10 +292,8 @@ describe("Storyblok utils", () => {
 			});
 		});
 
-		it("should handle malformed JSON error responses", async () => {
-			getStoryblokApi().get = jest
-				.fn()
-				.mockRejectedValueOnce("This is not JSON");
+		it("should handle non ISbError responses", async () => {
+			getStoryblokApi().get = jest.fn().mockRejectedValueOnce("Generic error");
 
 			const throwErrorFetchStory = async () => {
 				await fetchStory("news/articles/test-page", "published");
@@ -310,11 +308,11 @@ describe("Storyblok utils", () => {
 				expect(logger.error).toHaveBeenCalledWith(
 					{
 						ocelotEndpoint: null,
-						originatingErrorMessage: "This is not JSON",
+						originatingErrorResponse: "Generic error",
 						sbParams: { resolve_links: "url", version: "published" },
 						slug: "news/articles/test-page",
 					},
-					"fetchStory: Failed to parse error response: This is not JSON; At path: news/articles/test-page;"
+					"fetchStory: Non ISbError response at slug: news/articles/test-page"
 				);
 			});
 		});

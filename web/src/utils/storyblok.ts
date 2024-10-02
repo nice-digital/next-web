@@ -90,48 +90,33 @@ export const fetchStory = async <T>(
 		result = {
 			story: response.data.story,
 		};
-	} catch (error) {
-		// const errorResponse = JSON.parse(error as string) as ISbError;
-		let errorResponse: ISbError | null = null;
+	} catch (error: unknown) {
+		const errorContext = {
+			originatingErrorResponse: error,
+			sbParams,
+			slug,
+			ocelotEndpoint: publicRuntimeConfig.storyblok.ocelotEndpoint,
+		};
 
-		if (isJsonString(error)) {
-			errorResponse = JSON.parse(error as string) as ISbError;
-
+		if (isISbError(error) && error.status === 404) {
 			logger.error(
-				{
-					originatingErrorResponse: errorResponse,
-					sbParams,
-					slug,
-					ocelotEndpoint: publicRuntimeConfig.storyblok.ocelotEndpoint,
-				},
-				`fetchStory: ${errorResponse.status} error from Storyblok API: ${errorResponse.message} at slug: ${slug} `
-			);
-		} else {
-			logger.error(
-				{
-					originatingErrorMessage: error,
-					sbParams,
-					slug,
-					ocelotEndpoint: publicRuntimeConfig.storyblok.ocelotEndpoint,
-				},
-				`fetchStory: Failed to parse error response: ${error}; At path: ${slug};`
-			);
-		}
-
-		if (errorResponse && errorResponse.status === 404) {
-			logger.error(
-				`fetchStory: Story not found at slug: ${slug} from. Returning notFound: true`
+				errorContext,
+				`fetchStory: 404 error from Storyblok API: ${error.message} at slug: ${slug} `
 			);
 
 			return {
 				notFound: true,
 			};
-		} else {
-			logger.error(
-				`fetchStory: Error fetching story at slug: ${slug}. Throwing generic error message`
-			);
-			throw Error(GENERIC_ERROR_MESSAGE, { cause: error });
 		}
+
+		logger.error(
+			errorContext,
+			isISbError(error)
+				? `fetchStory: ${error.status} error from Storyblok API: ${error.message} at slug: ${slug} `
+				: `fetchStory: Non ISbError response at slug: ${slug}`
+		);
+
+		throw Error(GENERIC_ERROR_MESSAGE, { cause: error });
 	}
 
 	logger.info(
@@ -147,15 +132,13 @@ export const fetchStory = async <T>(
 	return result;
 };
 
-export const isJsonString = (str: string | unknown): boolean => {
-	try {
-		const parsed = JSON.parse(str as string);
-		return (
-			(typeof parsed === "object" && parsed !== null) || Array.isArray(parsed)
-		);
-	} catch (error) {
-		return false;
-	}
+export const isISbError = (error: unknown): error is ISbError => {
+	return (
+		typeof error === "object" &&
+		error !== null &&
+		"status" in error &&
+		"message" in error
+	);
 };
 
 const isValidPageParam = (
