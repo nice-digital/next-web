@@ -13,6 +13,18 @@ const FormHeader = () => {
 	return (
 		<>
 			<p>
+				Note: If you plan to use our content in an international setting, you
+				must submit the{" "}
+				<a
+					href="https://www.nice.org.uk/Media/Default/About/Reusing-our-content/Open-content-licence/International-use-of-NICE-content-form.docx"
+					target="_blank"
+					rel="noreferrer"
+				>
+					International use of NICE content form
+				</a>
+				.
+			</p>
+			<p>
 				Requests to use third-party content, including Clinical Knowledge
 				Summaries and the British National Formulary and its derivative outputs,
 				are not covered by the terms of this licence. Please complete the
