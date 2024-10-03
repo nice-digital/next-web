@@ -13,6 +13,7 @@ import { NewsListNav } from "@/components/Storyblok/News/NewsListNav/NewsListNav
 import { NewsListPagination } from "@/components/Storyblok/News/NewsListPagination/NewsListPagination";
 import { NewsListPaginationAnnouncer } from "@/components/Storyblok/News/NewsListPaginationAnnouncer/NewsListPaginationAnnouncer";
 import { PaginationFocusedElement } from "@/components/Storyblok/News/NewsListPaginationFocus/NewsListPaginationFocus";
+import { logger } from "@/logger";
 import { NewsStory } from "@/types/News";
 import { GENERIC_ERROR_MESSAGE, validateRouteParams } from "@/utils/storyblok";
 
@@ -86,9 +87,10 @@ export const BlogIndexPage = (props: BlogPostsProps): React.ReactElement => {
 	);
 };
 
-export const getServerSideProps = async ({
-	query,
-}: GetServerSidePropsContext) => {
+export const getServerSideProps = async (
+	context: GetServerSidePropsContext
+) => {
+	const { query } = context;
 	try {
 		const result = await validateRouteParams<BlogPostsProps>({
 			query,
@@ -113,6 +115,14 @@ export const getServerSideProps = async ({
 			},
 		};
 	} catch (error) {
+		logger.error(
+			{
+				originatingError: error instanceof Error && error.cause,
+				requestHeaders: context.req.headers,
+			},
+			`Error fetching blog listing at page ${query.page || 1} from gssp`
+		);
+
 		return {
 			props: {
 				error: GENERIC_ERROR_MESSAGE,
