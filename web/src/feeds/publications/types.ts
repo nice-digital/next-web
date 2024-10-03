@@ -4,8 +4,8 @@ export enum FeedPath {
 	ProductsLite = "/feeds/products-lite",
 	ProductTypes = "/newfeeds/producttypes",
 	AreasOfInterest = "/newfeeds/areaofinteresttypes",
-	IndicatorSubTypes = "/feeds/indicatorsubtypes",
-	IndicatorMappings = "/feeds/indicatormappings",
+	IndicatorSubTypes = "/newfeeds/indicatorsubtypes",
+	IndicatorMappings = "/newfeeds/indicatormappings",
 	ProductDetail = "/feeds/product/",
 }
 
@@ -233,11 +233,9 @@ export type ProductListLite = FeedContent<
 	ProductLiteRaw
 >;
 
-export type IndicatorSubTypesList = FeedContent<
-	"indicatorSubTypeList",
-	"indicatorSubType",
-	IndicatorSubType
->;
+export type IndicatorSubTypes = {
+	indicatorSubTypes: IndicatorSubType[];
+};
 
 export type ChapterHeading = {
 	title: string;

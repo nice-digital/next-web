@@ -1,0 +1,29 @@
+{
+  "LastModified": "2022-12-01T11:15:30.9024748",
+  "Mappings": [
+      {
+          "Url": "https://www.nice.org.uk/standards-and-indicators/qofindicators/product-not-found",
+          "Id": "ABC123"
+      },
+      {
+          "Url": "https://www.nice.org.uk/standards-and-indicators/qofindicators/the-percentage-of-patients-with-diabetes-with-a-record-of-testing-of-foot-sensation-using-a-10g-monofilament-within-the-preceding-12-months",
+          "Id": "IND102"
+      },
+      {
+          "Url": "https://www.nice.org.uk/standards-and-indicators/ccgoisindicators/coronary-heart-disease-ccg10",
+          "Id": "IND7"
+      },
+      {
+          "Url": "https://www.nice.org.uk/standards-and-indicators/qofindicators/the-percentage-of-patients-with-one-or-more-of-the-following-conditions-chd-atrial-fibrillation-chronic-heart-failure-stroke-or-tia-diabetes-or-dementia-with-a-fast-score-of-3-or-audit-c-score-of-5-in-the-preceding-2-years-who-have-received-brief-interven",
+          "Id": "IND1001"
+      },
+      {
+          "Url": "https://www.nice.org.uk/standards-and-indicators/ccgoisindicators/proportion-of-patients-with-atrial-fibrillation-not-on-anticoagulation-admitted-to-hospital-for-stroke",
+          "Id": "IND20"
+      },
+      {
+          "Url": "https://www.nice.org.uk/standards-and-indicators/ccgoisindicators/proportion-of-patients-with-atrial-fibrillation-on-anticoagulation-admitted-to-hospital-for-stroke",
+          "Id": "IND101"
+      }
+  ]
+}
