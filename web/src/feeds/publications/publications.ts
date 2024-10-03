@@ -9,7 +9,7 @@ import {
 	FeedPath,
 	ChapterHTMLContent,
 	IndicatorSubType,
-	IndicatorSubTypesList,
+	IndicatorSubTypes,
 	ProductDetail,
 	ProductListLite,
 	ProductLite,
@@ -104,12 +104,12 @@ export const getAllIndicatorSubTypes = async (): Promise<IndicatorSubType[]> =>
 		longTTL,
 		async () =>
 			(
-				await getFeedBodyUnCached<IndicatorSubTypesList>(
+				await getFeedBodyUnCached<IndicatorSubTypes>(
 					origin,
 					FeedPath.IndicatorSubTypes,
 					apiKey
 				)
-			).embedded.indicatorSubTypeList.embedded.indicatorSubType
+			).indicatorSubTypes
 	);
 
 /**

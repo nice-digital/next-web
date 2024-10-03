@@ -36,6 +36,12 @@ jest.mock("@storyblok/react", () => ({
 	apiPlugin: {},
 }));
 
+// mock the useId hook to always return the same value
+jest.mock("react", () => ({
+	...jest.requireActual("react"),
+	useId: () => "r:id",
+}));
+
 beforeEach(() => {
 	axiosJSONMock.reset();
 	addDefaultJSONFeedMocks();

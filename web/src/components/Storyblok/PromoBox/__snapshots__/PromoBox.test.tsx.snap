@@ -26,7 +26,7 @@ exports[`Promo box component should match snapshot 1`] = `
             class="body"
           >
             <div
-              class="storyblokRichTextWrapper"
+              class="storyblokRichTextWrapper "
               data-testid="storyblok-rich-text"
             />
           </div>
