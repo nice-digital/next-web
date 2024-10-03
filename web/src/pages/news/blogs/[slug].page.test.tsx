@@ -4,6 +4,9 @@ import { type ISbStoryData } from "@storyblok/react";
 import { render, screen } from "@testing-library/react";
 import { GetServerSidePropsContext } from "next";
 
+import { logger } from "@/logger";
+import Mock404FromStoryblokApi from "@/test-utils/storyblok-not-found-response.json";
+import MockServerErrorResponse from "@/test-utils/storyblok-server-error-response.json";
 import mockBlogPostSuccessResponse from "@/test-utils/storyblok-single-blog-post-response.json";
 import { BlogPostStoryblok } from "@/types/storyblok";
 import * as storyblokUtils from "@/utils/storyblok";
@@ -70,6 +73,74 @@ describe("BlogPostPage", () => {
 			expect(result).toEqual({ notFound: true });
 		});
 
+		it("should log error if fetchStory returns error if 404", async () => {
+			expect(jest.isMockFunction(logger.error)).toBe(true);
+			const mockErrorMessage =
+				"There was an error fetching this story. Please try again later.";
+			const mockCatchError = new Error(mockErrorMessage, {
+				cause: Mock404FromStoryblokApi,
+			});
+			fetchStorySpy.mockRejectedValueOnce(mockCatchError);
+
+			const mockContext = {
+				query: {},
+				params: { slug: "test-slug" },
+				req: {
+					headers: {
+						"cache-control":
+							"public, s-max-age=300, max-age=120, stale-while-revalidate=1800",
+					},
+					url: "/some-erroring-page",
+				},
+			} as unknown as GetServerSidePropsContext<ParsedUrlQuery>;
+
+			await getServerSideProps(mockContext);
+
+			expect(logger.error).toHaveBeenCalled();
+			expect(logger.error).toHaveBeenCalledWith(
+				{
+					"Cache-Control-Request": mockContext.req.headers["cache-control"],
+					errorCause: Mock404FromStoryblokApi,
+					requestHeaders: mockContext.req.headers,
+				},
+				`Error fetching blog post at path ${mockContext.params?.slug} from gssp`
+			);
+		});
+
+		it("should log error if fetchStory returns error if 503", async () => {
+			expect(jest.isMockFunction(logger.error)).toBe(true);
+			const mockErrorMessage =
+				"There was an error fetching this story. Please try again later.";
+			const mockCatchError = new Error(mockErrorMessage, {
+				cause: MockServerErrorResponse,
+			});
+			fetchStorySpy.mockRejectedValueOnce(mockCatchError);
+
+			const mockContext = {
+				query: {},
+				params: { slug: "test-slug" },
+				req: {
+					headers: {
+						"cache-control":
+							"public, s-max-age=300, max-age=120, stale-while-revalidate=1800",
+					},
+					url: "/some-erroring-page",
+				},
+			} as unknown as GetServerSidePropsContext<ParsedUrlQuery>;
+
+			await getServerSideProps(mockContext);
+
+			expect(logger.error).toHaveBeenCalled();
+			expect(logger.error).toHaveBeenCalledWith(
+				{
+					"Cache-Control-Request": mockContext.req.headers["cache-control"],
+					errorCause: MockServerErrorResponse,
+					requestHeaders: mockContext.req.headers,
+				},
+				`Error fetching blog post at path ${mockContext.params?.slug} from gssp`
+			);
+		});
+
 		it("should return error if fetchStory returns error", async () => {
 			const mockErrorMessage =
 				"There was an error fetching this story. Please try again later.";
@@ -122,6 +193,7 @@ describe("BlogPostPage", () => {
 					resolve_relations: "blogPost.author",
 				}
 			);
+
 			expect(result).toEqual({
 				props: {
 					breadcrumbs: mockBreadcrumbs,
