@@ -280,10 +280,7 @@ describe("Storyblok utils", () => {
 				expect(logger.error).toHaveBeenCalledWith(
 					{
 						ocelotEndpoint: null,
-						originatingErrorResponse: {
-							message: "Service Unavailable",
-							status: 503,
-						},
+						originatingErrorResponse: MockServerErrorResponse,
 						sbParams: { resolve_links: "url", version: "published" },
 						slug: "news/articles/test-page",
 					},
@@ -362,7 +359,7 @@ describe("Storyblok utils", () => {
 		it("should return a 404 error and log error message to logger when there is an error from storyblok", async () => {
 			getStoryblokApi().get = jest
 				.fn()
-				.mockRejectedValue(JSON.stringify(Mock404FromStoryblokApi));
+				.mockRejectedValue(Mock404FromStoryblokApi);
 
 			const throwErrorFetchStories = async () => {
 				await fetchStories("published", {
@@ -404,7 +401,7 @@ describe("Storyblok utils", () => {
 		it("should return a 503 error and log error message to logger when there is an error from storyblok", async () => {
 			getStoryblokApi().get = jest
 				.fn()
-				.mockRejectedValue(JSON.stringify(MockServerErrorResponse));
+				.mockRejectedValue(MockServerErrorResponse);
 
 			const throwErrorFetchStories = async () => {
 				await fetchStories("published", {
@@ -727,7 +724,7 @@ describe("Storyblok utils", () => {
 
 		it("should call the logger error method when fetchStories throws an error", async () => {
 			const mockError = new Error("Error fetching stories", {
-				cause: "test cause of error",
+				cause: MockServerErrorResponse,
 			});
 
 			fetchStoriesSpy.mockRejectedValue(mockError);
@@ -747,8 +744,9 @@ describe("Storyblok utils", () => {
 				// eslint-disable-next-line testing-library/no-wait-for-multiple-assertions
 				expect(logger.error).toHaveBeenCalledWith(
 					{
-						errorMessage: "Error fetching stories",
-						errorCause: "test cause of error",
+						originatingErrorResponse: MockServerErrorResponse,
+						errorMessage: mockError.message,
+						ocelotEndpoint: null,
 						requestParams: {
 							filter_query: { date: { lt_date: "2024-04-08T00:00:00.000Z" } },
 							page: 1,
@@ -759,7 +757,9 @@ describe("Storyblok utils", () => {
 					},
 					`validateRouteParams: ${new Error(
 						"Error fetching stories"
-					)} in catch at slug 1`
+					)} in catch at slug starts_with ${
+						mockRequestParams.sbParams.starts_with
+					} on page 1`
 				);
 			});
 		});

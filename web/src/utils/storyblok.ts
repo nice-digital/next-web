@@ -232,15 +232,18 @@ export const validateRouteParams = async <T>({
 		logger.error(
 			{
 				requestParams,
+				originatingErrorResponse: error instanceof Error && error.cause,
 				errorMessage: error instanceof Error && error.message,
-				errorCause: error instanceof Error && error.cause,
+				ocelotEndpoint: publicRuntimeConfig.storyblok.ocelotEndpoint,
 			},
 			`validateRouteParams: Error: ${
 				error instanceof Error && error.message
-			} in catch at slug ${page}`
+			} in catch at slug starts_with ${sbParams?.starts_with} on page ${page}`
 		);
 
-		throw new Error(GENERIC_ERROR_MESSAGE, { cause: error });
+		throw Error(GENERIC_ERROR_MESSAGE, {
+			cause: error instanceof Error && error.cause,
+		});
 	}
 };
 
@@ -265,22 +268,18 @@ export const fetchStories = async <T>(
 		result.perPage = response.perPage;
 		result.total = response.total;
 	} catch (error) {
-		const errorResponse = JSON.parse(error as string) as ISbError;
-
 		logger.error(
 			{
-				originatingErrorResponse: errorResponse,
+				originatingErrorResponse: error,
 				sbParams,
 				ocelotEndpoint: publicRuntimeConfig.storyblok.ocelotEndpoint,
 			},
-			`fetchStories: ${errorResponse.status} error from Storyblok API: ${errorResponse.message} at starts_with: ${sbParams.starts_with} `
+			isISbError(error)
+				? `fetchStories: ${error.status} error from Storyblok API: ${error.message} at starts_with: ${sbParams.starts_with} `
+				: `fetchStories: Non ISbError response at starts_with: ${sbParams.starts_with}`
 		);
 
-		throw new Error(
-			//NOTE: we probably don't want to reveal details of API error to the user
-			GENERIC_ERROR_MESSAGE,
-			{ cause: error }
-		);
+		throw Error(GENERIC_ERROR_MESSAGE, { cause: error });
 	}
 
 	return result;
