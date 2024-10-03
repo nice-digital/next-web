@@ -7,14 +7,29 @@ import { Link } from "@/components/Link/Link";
 
 export const getServerSideProps = getGetServerSideProps("242062773274053");
 
+const FormHeader = () => (
+	<p>
+		Briefly tell us why you&apos;re getting in touch with{" "}
+		<a
+			href="https://www.nice.org.uk/about/what-we-do/life-sciences/nice-advice-service?utm_medium=enquiry_form&utm_source=nice_website&utm_campaign=nice_advice_24"
+			target="_blank"
+			rel="noreferrer"
+		>
+			NICE Advice
+		</a>
+		. We&apos;ll then give you an indication of how we can support you. In most
+		cases, we&apos;ll include estimated costs and timelines sent straight to
+		your inbox.
+	</p>
+);
 export default function LifeSciencesContactUsForm(
 	props: FormProps
 ): JSX.Element {
 	return (
 		<JotFormPage
 			{...props}
-			formName="Life sciences contact us form"
-			lead="Briefly tell us why you're getting in touch. We'll then give you an indication of how we can support you. In most cases, we'll include estimated costs and timelines sent straight to your inbox."
+			formName="NICE Advice contact us form"
+			lead=""
 			parentPages={[
 				{
 					title: "Life sciences: how to get your product to market",
@@ -29,6 +44,7 @@ export default function LifeSciencesContactUsForm(
 					path: "/about",
 				},
 			]}
+			formHeader={<FormHeader />}
 			formFooter={
 				<p>
 					As you have expressed an interest in NICE&apos;s support services,
