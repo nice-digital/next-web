@@ -80,12 +80,10 @@ const FormFooter = () => {
 						complete the permission form and we will forward requests to the
 						relevant copyright owner.
 					</p>
-					<ol>
-						<li>
-							You are encouraged to use the information that is available under
-							this licence freely and flexibly, with only a few conditions.
-						</li>
-					</ol>
+					<p>
+						You are encouraged to use the information that is available under
+						this licence freely and flexibly, with only a few conditions.
+					</p>
 					<h3>Using information under this licence</h3>
 					<ol>
 						<li>
@@ -115,7 +113,7 @@ const FormFooter = () => {
 									<a href="#definitions"> (see &apos;definitions&apos;); </a>
 								</li>
 								<li>
-									exploit the information commercially and non-commercially -
+									exploit the information commercially and non-commercially —
 									for example, by combining it with other information, or by
 									including it in your own product or application.
 								</li>
