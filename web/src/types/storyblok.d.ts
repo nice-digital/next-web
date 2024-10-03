@@ -14,14 +14,14 @@ export interface AccordionStoryblok {
   displayTitleAsHeading?: boolean;
   headingLevel?: string;
   content: RichtextStoryblok;
-  variant: "" | "subtle" | "callout";
+  variant: "subtle" | "callout";
   _uid: string;
   component: "accordion";
   [k: string]: any;
 }
 
 export interface AccordionGroupStoryblok {
-  accordions?: AccordionStoryblok[];
+  accordions: AccordionStoryblok[];
   _uid: string;
   component: "accordionGroup";
   [k: string]: any;
