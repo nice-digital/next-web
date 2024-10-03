@@ -12,6 +12,13 @@ export const getServerSideProps = getGetServerSideProps("223412731228044");
 const FormHeader = () => {
 	return (
 		<>
+			<p>
+				Requests to use third-party content, including Clinical Knowledge
+				Summaries and the British National Formulary and its derivative outputs,
+				are not covered by the terms of this licence. Please complete the
+				permission form and we will forward requests to the relevant copyright
+				owner.
+			</p>
 			<h2>Using our content in the UK</h2>
 			<p>The NICE UK open content licence is a self-assessment exercise:</p>
 			<ol id="instructions" className="alt">
@@ -56,6 +63,23 @@ const FormFooter = () => {
 						Read the licence carefully before using our content and adhere to
 						its terms and conditions.
 					</p>
+					<p>
+						Requests to use our content for artificial intelligence (AI)
+						purposes in the United Kingdom and internationally are not covered
+						by the terms of this licence. To obtain permission, please complete
+						the{" "}
+						<Link href="/reusing-our-content/permission-to-use-nice-content-for-ai-purposes">
+							permission to use NICE content for artificial intelligence (AI)
+							purposes form.
+						</Link>
+					</p>
+					<p>
+						Requests to use third-party content, including Clinical Knowledge
+						Summaries and the British National Formulary and its derivative
+						outputs, are not covered by the terms of this licence. Please
+						complete the permission form and we will forward requests to the
+						relevant copyright owner.
+					</p>
 					<ol>
 						<li>
 							You are encouraged to use the information that is available under
@@ -91,7 +115,7 @@ const FormFooter = () => {
 									<a href="#definitions"> (see &apos;definitions&apos;); </a>
 								</li>
 								<li>
-									exploit the information commercially and non-commercially –
+									exploit the information commercially and non-commercially -
 									for example, by combining it with other information, or by
 									including it in your own product or application.
 								</li>
