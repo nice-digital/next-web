@@ -296,6 +296,7 @@ export const findDownloadable = (
 	if (!resource.embedded.contentPartList2?.embedded?.contentParts) return null;
 
 	const { contentParts } = resource.embedded.contentPartList2.embedded;
+
 	const uploadAndConvertContentPart =
 			fetchAndMapContentParts<UploadAndConvertContentPart>(
 				contentParts,
