@@ -252,8 +252,6 @@ export type HTMLContent = {
 };
 
 export type HTMLChapterContentInfo = {
-	// links: { self: [Link] };
-	// eTag: ETag;
 	reference: string;
 	partId: number;
 	chapterSlug: string;
@@ -262,8 +260,6 @@ export type HTMLChapterContentInfo = {
 };
 
 export type TableOfContentInfo = {
-	// links: { self: [Link] };
-	// eTag: ETag;
 	url: string;
 	reference: string;
 	partId: number;
@@ -298,8 +294,6 @@ export type EpubFile = FileContent & {
 };
 
 export type BaseContentPart<T extends string = string> = {
-	// links: EmptySelfLinks;
-	// eTag: ETag;
 	reference: string;
 	partId: number;
 	title: string;
@@ -307,34 +301,6 @@ export type BaseContentPart<T extends string = string> = {
 	type: T;
 	uid: number;
 };
-
-// export type UploadAndConvertContentPart =
-// 	BaseContentPart<"UploadAndConvertContentPart"> & {
-// 		embedded: {
-// 			htmlContent: HTMLContent;
-// 			pdfFile: PDFFile;
-// 			mobiFile?: MobiFile;
-// 			epubFile?: EpubFile;
-// 		};
-// 	};
-
-// export type EditableContentPart = BaseContentPart<"EditableContentPart"> & {
-// 	embedded: {
-// 		htmlContent: HTMLContent;
-// 		pdfFile?: PDFFile;
-// 	};
-// };
-
-// export type UploadContentPart = BaseContentPart<"UploadContentPart"> & {
-// 	embedded: {
-// 		file: FileContent;
-// 	};
-// };
-
-// export type ExternalUrlContentPart =
-// 	BaseContentPart<"ExternalUrlContentPart"> & {
-// 		url: string;
-// 	};
 
 export type UploadAndConvertContentPart =
 	BaseContentPart<"UploadAndConvertContentPart"> & {
@@ -383,14 +349,6 @@ export type ContentPart =
 	| EditableContentPart
 	| UploadContentPart
 	| ExternalUrlContentPart;
-
-// export type RelatedResourceList = {
-// 	links: EmptySelfLinks;
-// 	embedded: {
-// 		relatedResource: RelatedResource | RelatedResource[];
-// 	};
-// 	eTag: ETag;
-// };
 
 export type RelatedResourceList = {
 	id: string;
@@ -670,17 +628,6 @@ export type ProductDetail = ProductAndResourceBase & {
 };
 
 /** The type of the response from a chapter endpoint e.g. /feeds/product/ind69/part/1/chapter/overview */
-// export type ChapterHTMLContent = {
-// 	links: EmptySelfLinks;
-// 	eTag: ETag;
-// 	/** The HTML content of this chapter */
-// 	content: string;
-// 	embedded?: {
-// 		/** Publications returns either a single object or an array of objects */
-// 		htmlChapterSectionInfo: HTMLChapterSectionInfo | HTMLChapterSectionInfo[];
-// 	};
-// };
-
 export type ChapterHTMLContent = HTMLChapterSectionInfo & {
 	/** The HTML content of this chapter */
 	content: string;

@@ -197,7 +197,6 @@ export const getChapterContent = async (
 export const getResourceDetail = async (
 	resource: RelatedResourceList
 ): Promise<ResourceDetail | null> => {
-	// const { href } = resource.links.relatedResourceUri[0];
 	const { url } = resource;
 
 	return getFeedBodyCached<ResourceDetail | null>(
