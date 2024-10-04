@@ -118,7 +118,7 @@ exports[`/product/[slug]/resources/[partSlug]/chapter/[chapterSlug].page Product
       class="page-header__metadata"
     >
       <li>
-        Process and methods
+        NICE process and methods
       </li>
       <li>
         PMG20
@@ -135,11 +135,11 @@ exports[`/product/[slug]/resources/[partSlug]/chapter/[chapterSlug].page Product
       <li>
         Last updated:
         <time
-          datetime="2022-01-18"
+          datetime="2024-05-29"
         >
            
            
-          18 January 2022
+          29 May 2024
         </time>
       </li>
     </ul>
@@ -3439,8 +3439,8 @@ Object {
     "lastUpdated": "2022-01-18T00:00:00",
     "product": Object {
       "id": "PMG20",
-      "lastMajorModificationDate": "2022-01-18T00:00:00",
-      "productTypeName": "Process and methods",
+      "lastMajorModificationDate": "2024-05-29T00:00:00",
+      "productTypeName": "NICE process and methods",
       "publishedDate": "2014-10-31T00:00:00",
       "title": "Developing NICE guidelines: the manual ",
     },

@@ -178,9 +178,9 @@ export const findContentPartLinks = (
 	resource: ResourceDetail,
 	resourceTypeSlug: ResourceTypeSlug
 ): ResourceLinkViewModel[] => {
-	if (!resource.embedded.contentPartList2?.embedded.contentParts) return [];
+	if (!resource.contentPartsList) return [];
 
-	const { contentParts } = resource.embedded.contentPartList2.embedded;
+	const contentParts = resource.contentPartsList;
 	const contentPartsArray: ResourceLinkViewModel[] = [];
 
 	const processContentParts = (parts: ContentPart | ContentPart[]) => {
@@ -247,12 +247,10 @@ const mapContentPartToLink = (
 				href: `${productPath}/downloads/${productID.toUpperCase()}-${slugify(
 					uploadContent.title
 				)}-${resource.uid}-${uploadContent.uid}.${
-					uploadContent.embedded.file.fileName.split(".").slice(-1)[0]
+					uploadContent.file.fileName.split(".").slice(-1)[0]
 				}`,
-				fileSize: uploadContent.embedded.file.length,
-				fileTypeName: getFileTypeNameFromMime(
-					uploadContent.embedded.file.mimeType
-				),
+				fileSize: uploadContent.file.length,
+				fileTypeName: getFileTypeNameFromMime(uploadContent.file.mimeType),
 				date: resource.lastMajorModificationDate,
 				type: resource.resourceTypeName,
 			};
@@ -293,9 +291,9 @@ export const findDownloadable = (
 	resource: ProductAndResourceBase,
 	partUID: number
 ): { file: FileContent; part: BaseContentPart } | null => {
-	if (!resource.embedded.contentPartList2?.embedded?.contentParts) return null;
+	if (!resource.contentPartsList) return null;
 
-	const { contentParts } = resource.embedded.contentPartList2.embedded;
+	const contentParts = resource.contentPartsList;
 	const uploadAndConvertContentPart =
 			fetchAndMapContentParts<UploadAndConvertContentPart>(
 				contentParts,
@@ -319,26 +317,25 @@ export const findDownloadable = (
 	const uploadPart = arrayify(uploadContentPart).find(
 		(p) => p.uid === Number(partUID)
 	);
-	if (uploadPart) return checkFile(uploadPart.embedded.file, uploadPart);
+	if (uploadPart) return checkFile(uploadPart.file, uploadPart);
 
 	const editablePart = arrayify(editableContentPart).find(
 		(p) => p.uid === Number(partUID)
 	);
-	if (editablePart)
-		return checkFile(editablePart.embedded.pdfFile, editablePart);
+	if (editablePart) return checkFile(editablePart.pdf, editablePart);
 
 	const convertPart = arrayify(uploadAndConvertContentPart).find(
 		(p) => p.uid === Number(partUID)
 	);
 	if (!convertPart) return null;
 
-	const { pdfFile, epubFile, mobiFile } = convertPart.embedded;
+	const { pdf } = convertPart;
 
-	if (pdfFile) return checkFile(pdfFile, convertPart);
+	if (pdf) return checkFile(pdf, convertPart);
 
-	if (epubFile) return checkFile(epubFile, convertPart);
+	// if (epubFile) return checkFile(epubFile, convertPart);
 
-	if (mobiFile) return checkFile(mobiFile, convertPart);
+	// if (mobiFile) return checkFile(mobiFile, convertPart);
 
 	return null;
 };

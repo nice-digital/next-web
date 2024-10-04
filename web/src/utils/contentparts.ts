@@ -1,3 +1,5 @@
+import { ContentPart } from "@/feeds/publications/types";
+
 /**
  * Filters and maps an array of content parts to a specific type.
  *
@@ -9,7 +11,7 @@
  * @returns {T[]} - returns an array of content parts matching the specified type, cast to "T".
  */
 export function fetchAndMapContentParts<T>(
-	contentParts: [],
+	contentParts: ContentPart[],
 	type: string
 ): T[] {
 	if (contentParts && contentParts.length > 0) {

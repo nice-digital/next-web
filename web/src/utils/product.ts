@@ -20,6 +20,7 @@ import {
 	ResourceGroupType,
 	RelatedResource,
 	ProductType,
+	RelatedResourceList,
 } from "@/feeds/publications/types";
 import { logger } from "@/logger";
 import { getProductPath, getPublicationPdfDownloadPath } from "@/utils/url";
@@ -39,9 +40,10 @@ export const overviewTitle = "Overview";
 export const getFirstUploadAndConvertPart = (
 	product: ProductDetail
 ): UploadAndConvertContentPart | null => {
-	if (!product.embedded.contentPartList2?.embedded.contentParts) return null;
+	// if (!product.embedded.contentPartList2?.embedded.contentParts) return null;
+	if (!product.contentPartsList) return null;
 
-	const { contentParts } = product.embedded.contentPartList2.embedded;
+	const contentParts = product.contentPartsList;
 
 	const uploadAndConvertContentPart =
 		fetchAndMapContentParts<UploadAndConvertContentPart>(
@@ -62,9 +64,7 @@ export const getChapterLinks = (
 
 	if (!part) return [];
 
-	const chapterInfos = arrayify(
-			part.embedded.htmlContent.embedded?.htmlChapterContentInfo
-		),
+	const chapterInfos = arrayify(part.tableOfContents),
 		productPath = getProductPath({
 			...product,
 			productGroup,
@@ -100,11 +100,11 @@ export type ValidateRouteParamsSuccess = {
 	productType: ProductType;
 	productPath: string;
 	pdfDownloadPath: string | null;
-	toolsAndResources: RelatedResource[];
+	toolsAndResources: RelatedResourceList[];
 	hasToolsAndResources: boolean;
-	evidenceResources: RelatedResource[];
+	evidenceResources: RelatedResourceList[];
 	hasEvidenceResources: boolean;
-	infoForPublicResources: RelatedResource[];
+	infoForPublicResources: RelatedResourceList[];
 	hasInfoForPublicResources: boolean;
 	project: ProjectDetail | null;
 	historyPanels: IndevPanel[];
@@ -238,10 +238,10 @@ export const validateRouteParams = async ({
  */
 export const getPublishedRelatedResources = (
 	product: ProductDetail
-): RelatedResource[] =>
-	arrayify(
-		product.embedded.relatedResourceList?.embedded?.relatedResource
-	).filter(({ status }) => status === Status.Published);
+): RelatedResourceList[] =>
+	arrayify(product.relatedResourceList).filter(
+		({ status }) => status === Status.Published
+	);
 
 /**
  * Extracts a list of published related resources for the 'tools and resources' section of a product.
@@ -252,10 +252,9 @@ export const getPublishedRelatedResources = (
  */
 export const getPublishedToolsAndResources = (
 	product: ProductDetail
-): RelatedResource[] =>
+): RelatedResourceList[] =>
 	getPublishedRelatedResources(product).filter((resource) => {
-		const groupName =
-			resource.embedded.resourceGroupList.embedded.resourceGroup.name;
+		const groupName = resource.resourceGroupsList?.[0] || "";
 
 		return (
 			groupName !== ResourceGroupType.Evidence &&
@@ -271,11 +270,10 @@ export const getPublishedToolsAndResources = (
  */
 export const getPublishedEvidenceResources = (
 	product: ProductDetail
-): RelatedResource[] =>
+): RelatedResourceList[] =>
 	getPublishedRelatedResources(product).filter(
 		(resource) =>
-			resource.embedded.resourceGroupList.embedded.resourceGroup.name ===
-			ResourceGroupType.Evidence
+			(resource.resourceGroupsList?.[0] || "") === ResourceGroupType.Evidence
 	);
 
 /**
@@ -286,9 +284,9 @@ export const getPublishedEvidenceResources = (
  */
 export const getPublishedIFPResources = (
 	product: ProductDetail
-): RelatedResource[] =>
+): RelatedResourceList[] =>
 	getPublishedRelatedResources(product).filter(
 		(resource) =>
-			resource.embedded.resourceGroupList.embedded.resourceGroup.name ===
+			(resource.resourceGroupsList?.[0] || "") ===
 			ResourceGroupType.InformationForThePublic
 	);

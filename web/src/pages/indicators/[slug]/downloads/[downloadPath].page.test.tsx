@@ -25,7 +25,7 @@ const resourceUID = 3784329,
 	partUID = 4904490349,
 	downloadPath = `NG100-resource-impact-statement-${resourceUID}-${partUID}.pdf`,
 	slug = `ng100`,
-	resourcePDFHref = "/feeds/downloads/2d345860-3c0e-45f5-ac29-1acd6771a2fc";
+	resourcePDFHref = "/newfeeds/downloads/2d345860-3c0e-45f5-ac29-1acd6771a2fc";
 
 const getServerSidePropsContext = {
 	params: {
