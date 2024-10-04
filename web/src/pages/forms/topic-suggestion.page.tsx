@@ -7,7 +7,6 @@ import { JotFormPage } from "@/components/JotFormPage/JotFormPage";
 import styles from "./forms.module.scss";
 
 export const getServerSideProps = getGetServerSideProps("241421977936062");
-241421977936062;
 
 export default function TopicSuggestionForm(props: FormProps): JSX.Element {
 	return (
