@@ -136,6 +136,13 @@ export async function getServerSideProps(context: GetServerSidePropsContext) {
 
 		return result;
 	} catch (error) {
+		logger.error(
+			{
+				errorCause: error instanceof Error && error.cause,
+				requestHeaders: context.req.headers,
+			},
+			`Error fetching Homepage from gssp`
+		);
 		return {
 			props: {
 				error: GENERIC_ERROR_MESSAGE,
