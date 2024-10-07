@@ -18,7 +18,6 @@ import {
 	ProductGroup,
 	Status,
 	ResourceGroupType,
-	RelatedResource,
 	ProductType,
 	RelatedResourceList,
 } from "@/feeds/publications/types";
@@ -40,7 +39,6 @@ export const overviewTitle = "Overview";
 export const getFirstUploadAndConvertPart = (
 	product: ProductDetail
 ): UploadAndConvertContentPart | null => {
-	// if (!product.embedded.contentPartList2?.embedded.contentParts) return null;
 	if (!product.contentPartsList) return null;
 
 	const contentParts = product.contentPartsList;

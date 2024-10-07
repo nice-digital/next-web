@@ -146,7 +146,6 @@ export const getServerSideProps: GetServerSideProps<
 		} = result,
 		chapters = getChapterLinks(product, productType.group);
 
-	// if (!params || !product.embedded.contentPartList2?.embedded.contentParts)
 	if (!params || !product.contentPartsList?.length) return { notFound: true };
 
 	const contentParts = product.contentPartsList;
@@ -171,12 +170,6 @@ export const getServerSideProps: GetServerSideProps<
 	const chapterContent = await getChapterContent(chapter?.url as string);
 
 	if (!chapterContent) return { notFound: true };
-
-	// const chapterSections =
-	// 	chapterContent.embedded?.htmlChapterSectionInfo &&
-	// 	Array.isArray(chapterContent.embedded.htmlChapterSectionInfo)
-	// 		? chapterContent.embedded.htmlChapterSectionInfo
-	// 		: [];
 
 	const chapterSections =
 		chapterContent.sections && Array.isArray(chapterContent.sections)

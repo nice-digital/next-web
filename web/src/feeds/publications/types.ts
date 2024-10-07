@@ -323,17 +323,6 @@ export type ExternalUrlContentPart =
 		url: string;
 	};
 
-export type OldContentPartList = {
-	embedded: {
-		uploadAndConvertContentPart?:
-			| UploadAndConvertContentPart
-			| UploadAndConvertContentPart[];
-		editableContentPart?: EditableContentPart | EditableContentPart[];
-		uploadContentPart?: UploadContentPart | UploadContentPart[];
-		externalUrlContentPart?: ExternalUrlContentPart | ExternalUrlContentPart[];
-	};
-};
-
 export type ContentPartList = {
 	contentParts?: [];
 };

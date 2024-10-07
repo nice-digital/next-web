@@ -333,9 +333,5 @@ export const findDownloadable = (
 
 	if (pdf) return checkFile(pdf, convertPart);
 
-	// if (epubFile) return checkFile(epubFile, convertPart);
-
-	// if (mobiFile) return checkFile(mobiFile, convertPart);
-
 	return null;
 };
