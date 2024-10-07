@@ -111,7 +111,7 @@ Object {
       },
     ],
     "locale": "en_GB",
-    "site_name": "NICE",
+    "site_name": "NICE website: the National Institute for Health and Care Excellence",
     "type": "website",
     "url": "https://next-web-tests.nice.org.uk/",
   },

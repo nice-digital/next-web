@@ -84,7 +84,10 @@ describe("NextWebApp", () => {
 
 				expect(
 					document.querySelector("meta[property='og:site_name']")
-				).toHaveAttribute("content", "NICE");
+				).toHaveAttribute(
+					"content",
+					"NICE website: the National Institute for Health and Care Excellence"
+				);
 			});
 		});
 
