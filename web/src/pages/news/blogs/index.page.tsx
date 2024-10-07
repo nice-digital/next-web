@@ -117,7 +117,7 @@ export const getServerSideProps = async (
 	} catch (error) {
 		logger.error(
 			{
-				originatingError: error instanceof Error && error.cause,
+				errorCause: error instanceof Error && error.cause,
 				requestHeaders: context.req.headers,
 			},
 			`Error fetching blog listing at page ${query.page || 1} from gssp`

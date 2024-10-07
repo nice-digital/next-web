@@ -6,7 +6,9 @@ import { useRouter } from "next/router";
 import { GetServerSidePropsContext } from "next/types";
 import { StoryblokStory } from "storyblok-generate-ts";
 
+import { logger } from "@/logger";
 import MockStoryblokSuccessResponse from "@/test-utils/storyblok-podcasts--listing-response.json";
+import MockServerErrorResponse from "@/test-utils/storyblok-server-error-response.json";
 import { NewsStory } from "@/types/News";
 import * as storyblokUtils from "@/utils/storyblok";
 import { GENERIC_ERROR_MESSAGE } from "@/utils/storyblok";
@@ -243,9 +245,13 @@ describe("/news/podcasts/index.page", () => {
 
 			validateRouteParamsSpy.mockResolvedValue(mockRedirect);
 
-			const result = await getServerSideProps({
+			const mockContext = {
+				req: { headers: {} },
+				params: {},
 				query: { page: mockConfig.query.upperOutOfBoundPagination },
-			} as unknown as GetServerSidePropsContext<ParsedUrlQuery>);
+			} as unknown as GetServerSidePropsContext;
+
+			const result = await getServerSideProps(mockContext);
 
 			expect(result).toEqual(mockRedirect);
 		});
@@ -256,11 +262,42 @@ describe("/news/podcasts/index.page", () => {
 
 			validateRouteParamsSpy.mockRejectedValue(mockCatchError);
 
-			const result = await getServerSideProps({
+			const mockContext = {
+				req: { headers: {} },
+				params: {},
 				query: { page: mockConfig.query.upperOutOfBoundPagination },
-			} as unknown as GetServerSidePropsContext<ParsedUrlQuery>);
+			} as unknown as GetServerSidePropsContext;
+
+			const result = await getServerSideProps(mockContext);
 
 			expect(result).toEqual({ props: { error: GENERIC_ERROR_MESSAGE } });
+		});
+
+		it("should log and error if validateRouteParams throws an error", async () => {
+			expect(jest.isMockFunction(logger.error)).toBe(true);
+			const mockErrorMessage =
+				"There was an error fetching this story. Please try again later.";
+			const mockCatchError = new Error(mockErrorMessage, {
+				cause: MockServerErrorResponse,
+			});
+
+			validateRouteParamsSpy.mockRejectedValue(mockCatchError);
+
+			const mockContext = {
+				query: { page: mockConfig.query.upperOutOfBoundPagination },
+				req: { headers: {} },
+			} as unknown as GetServerSidePropsContext<ParsedUrlQuery>;
+
+			await getServerSideProps(mockContext);
+
+			expect(logger.error).toHaveBeenCalled();
+			expect(logger.error).toHaveBeenCalledWith(
+				{
+					errorCause: mockCatchError.cause,
+					requestHeaders: mockContext.req.headers,
+				},
+				`Error fetching podcast listing at page ${mockConfig.query.upperOutOfBoundPagination} from gssp`
+			);
 		});
 
 		it("should return a general error message if there is a throw that is not an Error object", async () => {
@@ -268,9 +305,13 @@ describe("/news/podcasts/index.page", () => {
 
 			validateRouteParamsSpy.mockRejectedValue(mockCatchError);
 
-			const result = await getServerSideProps({
+			const mockContext = {
+				req: { headers: {} },
+				params: {},
 				query: { page: mockConfig.query.upperOutOfBoundPagination },
-			} as unknown as GetServerSidePropsContext<ParsedUrlQuery>);
+			} as unknown as GetServerSidePropsContext;
+
+			const result = await getServerSideProps(mockContext);
 
 			expect(result).toEqual({
 				props: {

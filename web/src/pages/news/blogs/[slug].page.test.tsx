@@ -118,13 +118,12 @@ describe("BlogPostPage", () => {
 
 			const mockContext = {
 				query: {},
-				params: { slug: "test-slug" },
+				params: { slug: "some-erroring-page" },
 				req: {
 					headers: {
 						"cache-control":
 							"public, s-max-age=300, max-age=120, stale-while-revalidate=1800",
 					},
-					url: "/some-erroring-page",
 				},
 			} as unknown as GetServerSidePropsContext<ParsedUrlQuery>;
 
@@ -150,7 +149,7 @@ describe("BlogPostPage", () => {
 
 			const result = await getServerSideProps({
 				query: {},
-				params: { slug: "test-slug" },
+				params: { slug: "some-erroring-page" },
 				req: { headers: {} },
 			} as unknown as GetServerSidePropsContext<ParsedUrlQuery>);
 
