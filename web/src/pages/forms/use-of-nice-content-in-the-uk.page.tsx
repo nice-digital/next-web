@@ -3,7 +3,6 @@ import {
 	getGetServerSideProps,
 } from "@/components/JotFormPage/getGetServerSideProps";
 import { JotFormPage } from "@/components/JotFormPage/JotFormPage";
-import { Link } from "@/components/Link/Link";
 
 import styles from "./forms.module.scss";
 
@@ -15,11 +14,7 @@ const FormHeader = () => {
 			<p>
 				Note: If you plan to use our content in an international setting, you
 				must submit the{" "}
-				<a
-					href="https://www.nice.org.uk/Media/Default/About/Reusing-our-content/Open-content-licence/International-use-of-NICE-content-form.docx"
-					target="_blank"
-					rel="noreferrer"
-				>
+				<a href="https://www.nice.org.uk/Media/Default/About/Reusing-our-content/Open-content-licence/International-use-of-NICE-content-form.docx">
 					International use of NICE content form
 				</a>
 				.
@@ -63,9 +58,9 @@ const FormFooter = () => {
 				<li>fast turnaround</li>
 				<li>approval of artwork.</li>
 			</ul>
-			<Link to="https://www.nice.org.uk/re-using-our-content/content-assurance-service">
+			<a href="https://www.nice.org.uk/re-using-our-content/content-assurance-service">
 				Find out more about our content assurance service.
-			</Link>
+			</a>
 			<details id="licence" className={styles.details}>
 				<summary>
 					<strong>View the NICE UK open content licence</strong>
@@ -80,10 +75,10 @@ const FormFooter = () => {
 						purposes in the United Kingdom and internationally are not covered
 						by the terms of this licence. To obtain permission, please complete
 						the{" "}
-						<Link href="/reusing-our-content/permission-to-use-nice-content-for-ai-purposes">
+						<a href="https://www.nice.org.uk/reusing-our-content/permission-to-use-nice-content-for-artificial-intelligence--ai--purposes-">
 							permission to use NICE content for artificial intelligence (AI)
 							purposes form.
-						</Link>
+						</a>
 					</p>
 					<p>
 						Requests to use third-party content, including Clinical Knowledge

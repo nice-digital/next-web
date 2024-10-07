@@ -99,8 +99,6 @@ exports[`UseOfNICEContentInTheUKForm should match snapshot 1`] = `
          
         <a
           href="https://www.nice.org.uk/Media/Default/About/Reusing-our-content/Open-content-licence/International-use-of-NICE-content-form.docx"
-          rel="noreferrer"
-          target="_blank"
         >
           International use of NICE content form
         </a>
@@ -196,7 +194,7 @@ exports[`UseOfNICEContentInTheUKForm should match snapshot 1`] = `
             Requests to use our content for artificial intelligence (AI) purposes in the United Kingdom and internationally are not covered by the terms of this licence. To obtain permission, please complete the
              
             <a
-              href="/reusing-our-content/permission-to-use-nice-content-for-ai-purposes"
+              href="https://www.nice.org.uk/reusing-our-content/permission-to-use-nice-content-for-artificial-intelligence--ai--purposes-"
             >
               permission to use NICE content for artificial intelligence (AI) purposes form.
             </a>
