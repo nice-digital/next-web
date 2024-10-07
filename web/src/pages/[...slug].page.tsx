@@ -123,10 +123,6 @@ export default function SlugCatchAll(
 }
 
 export async function getServerSideProps(context: GetServerSidePropsContext) {
-	logger.warn(
-		{ context },
-		`SlugCatchAll page getServerSideProps context: ${context}`
-	);
 	// Bail out early unless this route is enabled for this environment
 	if (publicRuntimeConfig.storyblok.enableRootCatchAll.toString() !== "true") {
 		return {
