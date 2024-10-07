@@ -32,7 +32,6 @@ export const initStoryblok = (): void => {
 			{
 				ocelotEndpoint: endpoint,
 				usingOcelotCache,
-				originatingError: error instanceof Error && error.message,
 				error,
 			},
 			`Error initialising Storyblok: ${error}`

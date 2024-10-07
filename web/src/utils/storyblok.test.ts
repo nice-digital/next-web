@@ -90,10 +90,14 @@ describe("Storyblok utils", () => {
 	describe("Get story version from NextJS query", () => {
 		it("should get the draft version when the _storyblok query param is present", () => {
 			expect(getStoryVersionFromQuery({ _storyblok: "" })).toBe("draft");
+			expect(getStoryVersionFromQuery({ _storyblok: "somevalue" })).toBe(
+				"draft"
+			);
 		});
 
 		it("should get the published version when the _storyblok query param isn't present", () => {
 			expect(getStoryVersionFromQuery()).toBe("published");
+			expect(getStoryVersionFromQuery({})).toBe("published");
 		});
 	});
 
@@ -280,7 +284,7 @@ describe("Storyblok utils", () => {
 				expect(logger.error).toHaveBeenCalledWith(
 					{
 						ocelotEndpoint: null,
-						originatingErrorResponse: MockServerErrorResponse,
+						errorCause: MockServerErrorResponse,
 						sbParams: { resolve_links: "url", version: "published" },
 						slug: "news/articles/test-page",
 					},
@@ -305,7 +309,7 @@ describe("Storyblok utils", () => {
 				expect(logger.error).toHaveBeenCalledWith(
 					{
 						ocelotEndpoint: null,
-						originatingErrorResponse: "Generic error",
+						errorCause: "Generic error",
 						sbParams: { resolve_links: "url", version: "published" },
 						slug: "news/articles/test-page",
 					},
@@ -381,7 +385,7 @@ describe("Storyblok utils", () => {
 				expect(logger.error).toHaveBeenCalledWith(
 					{
 						ocelotEndpoint: null,
-						originatingErrorResponse: {
+						errorCause: {
 							message: "Not Found",
 							response: "This record could not be found",
 							status: 404,
@@ -421,7 +425,7 @@ describe("Storyblok utils", () => {
 				expect(logger.error).toHaveBeenCalledWith(
 					{
 						ocelotEndpoint: null,
-						originatingErrorResponse: {
+						errorCause: {
 							message: "Service Unavailable",
 							status: 503,
 						},
@@ -744,7 +748,7 @@ describe("Storyblok utils", () => {
 				// eslint-disable-next-line testing-library/no-wait-for-multiple-assertions
 				expect(logger.error).toHaveBeenCalledWith(
 					{
-						originatingErrorResponse: MockServerErrorResponse,
+						errorCause: MockServerErrorResponse,
 						errorMessage: mockError.message,
 						ocelotEndpoint: null,
 						requestParams: {

@@ -4,7 +4,6 @@ import { GetServerSidePropsContext } from "next";
 
 import { logger } from "@/logger";
 import { mockPodcastPage } from "@/test-utils/storyblok-data";
-import Mock404FromStoryblokApi from "@/test-utils/storyblok-not-found-response.json";
 import MockServerErrorResponse from "@/test-utils/storyblok-server-error-response.json";
 import { PodcastStoryblok } from "@/types/storyblok";
 import * as storyblokUtils from "@/utils/storyblok";

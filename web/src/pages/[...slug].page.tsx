@@ -32,6 +32,7 @@ import {
 	getSlugFromParams,
 	getAdditionalMetaTags,
 	getBreadcrumbs,
+	GENERIC_ERROR_MESSAGE,
 } from "@/utils/storyblok";
 
 import type { GetServerSidePropsContext } from "next";
@@ -187,14 +188,14 @@ export async function getServerSideProps(context: GetServerSidePropsContext) {
 	} catch (error) {
 		logger.error(
 			{
-				error,
+				errorCause: error instanceof Error && error.cause,
 				requestHeaders: context.req.headers,
 			},
 			`Error fetching story for slug: ${slug} in SlugCatchAll page getServerSideProps.`
 		);
 		return {
 			props: {
-				error: "Oops! Something went wrong. Please try again later.",
+				error: GENERIC_ERROR_MESSAGE,
 			},
 		};
 	}

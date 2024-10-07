@@ -46,6 +46,10 @@ describe("initStoryblok", () => {
 	});
 
 	it("should log an error when an exception is thrown", async () => {
+		/*
+		   We've wrapped the storyblokInit call in a try/catch block.
+		   To date storyblokInit returns void and doesn't throw errors.
+		*/
 		(storyblokInit as jest.Mock).mockImplementationOnce(() => {
 			throw new Error("Test error");
 		});
@@ -61,7 +65,6 @@ describe("initStoryblok", () => {
 				{
 					ocelotEndpoint: "testEndpoint",
 					usingOcelotCache: true,
-					originatingError: "Test error",
 					error: new Error("Test error"),
 				},
 				"Error initialising Storyblok: Error: Test error"

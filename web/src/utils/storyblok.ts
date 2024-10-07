@@ -92,7 +92,7 @@ export const fetchStory = async <T>(
 		};
 	} catch (error: unknown) {
 		const errorContext = {
-			originatingErrorResponse: error,
+			errorCause: error,
 			sbParams,
 			slug,
 			ocelotEndpoint: publicRuntimeConfig.storyblok.ocelotEndpoint,
@@ -232,7 +232,7 @@ export const validateRouteParams = async <T>({
 		logger.error(
 			{
 				requestParams,
-				originatingErrorResponse: error instanceof Error && error.cause,
+				errorCause: error instanceof Error && error.cause,
 				errorMessage: error instanceof Error && error.message,
 				ocelotEndpoint: publicRuntimeConfig.storyblok.ocelotEndpoint,
 			},
@@ -270,7 +270,7 @@ export const fetchStories = async <T>(
 	} catch (error) {
 		logger.error(
 			{
-				originatingErrorResponse: error,
+				errorCause: error,
 				sbParams,
 				ocelotEndpoint: publicRuntimeConfig.storyblok.ocelotEndpoint,
 			},
@@ -404,7 +404,7 @@ export const resolveStoryblokLink = ({
 export const getStoryVersionFromQuery = (query?: {
 	_storyblok?: string;
 }): StoryVersion => {
-	return (query && query._storyblok) === "" ? "draft" : "published";
+	return query && query._storyblok !== undefined ? "draft" : "published";
 };
 
 // Resolve the slug object from the NextJS query params into a full slug that we
