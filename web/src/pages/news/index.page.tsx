@@ -211,8 +211,14 @@ export async function getServerSideProps(context: GetServerSidePropsContext) {
 	};
 
 	const handleError = (error: Error, message: string) => {
-		logger.error(`${error}`);
-		throw new Error(`Failed to fetch ${message}`, { cause: error });
+		logger.error(
+			{
+				errorCause: error instanceof Error ? error.cause : error,
+				errorMessage: error.message,
+			},
+			`Failed to fetch ${message} in news landing page`
+		);
+		throw new Error(`Failed to fetch ${message}`, { cause: error.cause });
 	};
 
 	const fetchArticles = fetchStories<NewsArticleStoryblok>(
@@ -269,6 +275,13 @@ export async function getServerSideProps(context: GetServerSidePropsContext) {
 		};
 		return result;
 	} catch (error) {
+		logger.error(
+			{
+				requestHeaders: context.req.headers,
+				errorCause: error instanceof Error && error.cause,
+			},
+			`Error fetching news landing page content from gssp`
+		);
 		return {
 			props: {
 				error: GENERIC_ERROR_MESSAGE,
