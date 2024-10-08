@@ -482,7 +482,7 @@ exports[`Homepage should match snapshot for main content 1`] = `
             class="linksContainer"
           >
             <div
-              class="storyblokRichTextWrapper"
+              class="storyblokRichTextWrapper "
               data-testid="storyblok-rich-text"
             >
               <h2

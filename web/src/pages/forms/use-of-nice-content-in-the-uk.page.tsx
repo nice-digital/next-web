@@ -3,7 +3,6 @@ import {
 	getGetServerSideProps,
 } from "@/components/JotFormPage/getGetServerSideProps";
 import { JotFormPage } from "@/components/JotFormPage/JotFormPage";
-import { Link } from "@/components/Link/Link";
 
 import styles from "./forms.module.scss";
 
@@ -12,6 +11,21 @@ export const getServerSideProps = getGetServerSideProps("223412731228044");
 const FormHeader = () => {
 	return (
 		<>
+			<p>
+				Note: If you plan to use our content in an international setting, you
+				must submit the{" "}
+				<a href="https://www.nice.org.uk/Media/Default/About/Reusing-our-content/Open-content-licence/International-use-of-NICE-content-form.docx">
+					International use of NICE content form
+				</a>
+				.
+			</p>
+			<p>
+				Requests to use third-party content, including Clinical Knowledge
+				Summaries and the British National Formulary and its derivative outputs,
+				are not covered by the terms of this licence. Please complete the
+				permission form and we will forward requests to the relevant copyright
+				owner.
+			</p>
 			<h2>Using our content in the UK</h2>
 			<p>The NICE UK open content licence is a self-assessment exercise:</p>
 			<ol id="instructions" className="alt">
@@ -44,9 +58,9 @@ const FormFooter = () => {
 				<li>fast turnaround</li>
 				<li>approval of artwork.</li>
 			</ul>
-			<Link to="https://www.nice.org.uk/re-using-our-content/content-assurance-service">
+			<a href="https://www.nice.org.uk/re-using-our-content/content-assurance-service">
 				Find out more about our content assurance service.
-			</Link>
+			</a>
 			<details id="licence" className={styles.details}>
 				<summary>
 					<strong>View the NICE UK open content licence</strong>
@@ -56,12 +70,27 @@ const FormFooter = () => {
 						Read the licence carefully before using our content and adhere to
 						its terms and conditions.
 					</p>
-					<ol>
-						<li>
-							You are encouraged to use the information that is available under
-							this licence freely and flexibly, with only a few conditions.
-						</li>
-					</ol>
+					<p>
+						Requests to use our content for artificial intelligence (AI)
+						purposes in the United Kingdom and internationally are not covered
+						by the terms of this licence. To obtain permission, please complete
+						the{" "}
+						<a href="https://www.nice.org.uk/reusing-our-content/permission-to-use-nice-content-for-artificial-intelligence--ai--purposes-">
+							permission to use NICE content for artificial intelligence (AI)
+							purposes form.
+						</a>
+					</p>
+					<p>
+						Requests to use third-party content, including Clinical Knowledge
+						Summaries and the British National Formulary and its derivative
+						outputs, are not covered by the terms of this licence. Please
+						complete the permission form and we will forward requests to the
+						relevant copyright owner.
+					</p>
+					<p>
+						You are encouraged to use the information that is available under
+						this licence freely and flexibly, with only a few conditions.
+					</p>
 					<h3>Using information under this licence</h3>
 					<ol>
 						<li>
@@ -91,7 +120,7 @@ const FormFooter = () => {
 									<a href="#definitions"> (see &apos;definitions&apos;); </a>
 								</li>
 								<li>
-									exploit the information commercially and non-commercially –
+									exploit the information commercially and non-commercially —
 									for example, by combining it with other information, or by
 									including it in your own product or application.
 								</li>

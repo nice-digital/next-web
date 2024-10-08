@@ -1,6 +1,7 @@
 @use '@nice-digital/nds-core/scss/spacing';
 @use '@nice-digital/nds-core/scss/utils';
 
+/* stylelint-disable selector-class-pattern */
 
 .storyblokRichTextWrapper {
   p:has(img) {
@@ -38,10 +39,16 @@
     }
   }
 
+  // override the margin for accordion heading levels in rich text
+  :global(.accordion__heading) {
+    margin: 0;
+  }
+
   // remove bottom margin on any last child in richtext bloks
   > *:last-child {
     margin-bottom: 0;
   }
+
 
 }
 

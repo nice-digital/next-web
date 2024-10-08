@@ -19,9 +19,7 @@ export const StoryblokButtonLink: React.FC<StoryblokButtonLinkProps> = ({
 	const resolvedLink = resolveStoryblokLink(link as MultilinkStoryblok);
 	if (resolvedLink.url) {
 		linkType = resolvedLink.isInternal ? Link : undefined;
-		linkDestination = resolvedLink.isInternal
-			? `/${resolvedLink.url}`
-			: resolvedLink.url;
+		linkDestination = resolvedLink.url;
 	} else {
 		return undefined;
 	}

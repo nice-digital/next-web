@@ -4,6 +4,7 @@
   "private": true,
   "scripts": {
     "dev": "cross-env NODE_OPTIONS=\"-r next-logger/presets/next-only --inspect\" next dev -p 4000 | pino-pretty",
+    "dev-debug": "next dev -p 4000",
     "build": "next build",
     "postbuild": "next-sitemap",
     "start": "next start",
@@ -31,7 +32,7 @@
     "extends @nice-digital/browserslist-config"
   ],
   "dependencies": {
-    "@nice-digital/design-system": "^5.0.28",
+    "@nice-digital/design-system": "^5.1.0",
     "@nice-digital/global-nav": "^7.1.1068",
     "@nice-digital/nds-prev-next": "^3.0.2",
     "@nice-digital/search-client": "^2.0.1589",

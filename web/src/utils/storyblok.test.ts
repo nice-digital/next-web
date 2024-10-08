@@ -48,8 +48,22 @@ describe("Storyblok utils", () => {
 				{ url: "mailto:somebody@example.com", isInternal: false },
 			],
 			[
-				{ linktype: "story", url: "example/page/slug" },
-				{ url: "example/page/slug", isInternal: true },
+				{
+					linktype: "story",
+					url: "",
+					cached_url: "example/page/slug ",
+					story: { url: "example/page/slug ", full_slug: "example/page/slug" },
+				},
+				{ url: "/example/page/slug", isInternal: true },
+			],
+			[
+				{
+					linktype: "story",
+					url: "",
+					cached_url: "example/page/slug",
+					story: { url: "", full_slug: "example/page/slug" },
+				},
+				{ url: "/example/page/slug", isInternal: true },
 			],
 		])(
 			"should ensure that correct links are returned for each linktype",
