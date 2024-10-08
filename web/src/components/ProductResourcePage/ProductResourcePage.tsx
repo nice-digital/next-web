@@ -1,10 +1,10 @@
 import { NextSeo } from "next-seo";
 import { FC } from "react";
 
-import { Breadcrumbs, Breadcrumb } from "@nice-digital/nds-breadcrumbs";
+import { Breadcrumb, Breadcrumbs } from "@nice-digital/nds-breadcrumbs";
+import { Button } from "@nice-digital/nds-button";
 import { Grid, GridItem } from "@nice-digital/nds-grid";
 
-import { FileSize } from "@/components/FileSize/FileSize";
 import { Link } from "@/components/Link/Link";
 import { OnThisPage } from "@/components/OnThisPage/OnThisPage";
 import { ProductHorizontalNav } from "@/components/ProductHorizontalNav/ProductHorizontalNav";
@@ -36,6 +36,8 @@ export const ProductResourcePage: FC<ProductResourcePageProps> = ({
 	resourceDownloadSizeBytes,
 }) => {
 	const hasChapters = chapters.length > 0,
+		hasDownloadButton = !!resourceDownloadPath,
+		hasLeftHandSide = hasChapters || hasDownloadButton,
 		hasOnThisPageMenu = chapterSections.length > 1;
 
 	const parentPageTitle =
@@ -80,7 +82,7 @@ export const ProductResourcePage: FC<ProductResourcePageProps> = ({
 			/>
 
 			<Grid gutter="loose">
-				{hasChapters ? (
+				{hasLeftHandSide ? (
 					<GridItem
 						cols={12}
 						md={4}
@@ -88,17 +90,30 @@ export const ProductResourcePage: FC<ProductResourcePageProps> = ({
 						elementType="section"
 						aria-label="Chapters"
 					>
-						<PublicationsChapterMenu
-							ariaLabel="Chapter pages"
-							chapters={chapters}
-						/>
+						{hasDownloadButton ? (
+							<Button
+								aria-label="Download PDF"
+								className={styles.download}
+								target="_blank"
+								to={resourceDownloadPath}
+								variant="cta"
+							>
+								Download (PDF)
+							</Button>
+						) : null}
+						{hasChapters ? (
+							<PublicationsChapterMenu
+								ariaLabel="Chapter pages"
+								chapters={chapters}
+							/>
+						) : null}
 					</GridItem>
 				) : null}
 
 				<GridItem
 					cols={12}
-					md={hasChapters ? 8 : 12}
-					lg={hasChapters ? 9 : 12}
+					md={hasLeftHandSide ? 8 : 12}
+					lg={hasLeftHandSide ? 9 : 12}
 					elementType="section"
 				>
 					<Grid reverse gutter="loose">
@@ -113,19 +128,6 @@ export const ProductResourcePage: FC<ProductResourcePageProps> = ({
 							lg={hasOnThisPageMenu ? 9 : 12}
 						>
 							<h2 className={styles.heading}>{title}</h2>
-							{resourceDownloadPath ? (
-								<p>
-									<a href={resourceDownloadPath}>
-										Download (PDF
-										{resourceDownloadSizeBytes ? (
-											<>
-												, <FileSize fileSizeBytes={resourceDownloadSizeBytes} />
-											</>
-										) : null}
-										)
-									</a>
-								</p>
-							) : null}
 							<div dangerouslySetInnerHTML={{ __html: htmlBody }} />
 							{lastUpdated ? (
 								<p>

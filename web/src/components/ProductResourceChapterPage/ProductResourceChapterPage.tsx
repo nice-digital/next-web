@@ -1,10 +1,10 @@
 import { NextSeo } from "next-seo";
 import { FC } from "react";
 
-import { Breadcrumbs, Breadcrumb } from "@nice-digital/nds-breadcrumbs";
+import { Breadcrumb, Breadcrumbs } from "@nice-digital/nds-breadcrumbs";
+import { Button } from "@nice-digital/nds-button";
 import { Grid, GridItem } from "@nice-digital/nds-grid";
 
-import { FileSize } from "@/components/FileSize/FileSize";
 import { Link } from "@/components/Link/Link";
 import { OnThisPage } from "@/components/OnThisPage/OnThisPage";
 import { ProductHorizontalNav } from "@/components/ProductHorizontalNav/ProductHorizontalNav";
@@ -37,7 +37,8 @@ export const ProductResourceChapterPage: FC<
 	resourceDownloadPath,
 	resourceDownloadSizeBytes,
 }) => {
-	const hasOnThisPageMenu = chapterSections.length > 1;
+	const hasOnThisPageMenu = chapterSections.length > 1,
+		hasDownloadButton = !!resourceDownloadPath;
 
 	return (
 		<>
@@ -81,6 +82,17 @@ export const ProductResourceChapterPage: FC<
 					elementType="section"
 					aria-label="Chapters"
 				>
+					{hasDownloadButton ? (
+						<Button
+							aria-label="Download PDF"
+							className={styles.download}
+							target="_blank"
+							to={resourceDownloadPath}
+							variant="cta"
+						>
+							Download (PDF)
+						</Button>
+					) : null}
 					<PublicationsChapterMenu
 						ariaLabel="Chapter pages"
 						chapters={chapters}
@@ -100,19 +112,6 @@ export const ProductResourceChapterPage: FC<
 							lg={hasOnThisPageMenu ? 9 : 12}
 						>
 							<h2 className={styles.heading}>{title}</h2>
-							{resourceDownloadPath ? (
-								<p>
-									<a href={resourceDownloadPath}>
-										Download (PDF
-										{resourceDownloadSizeBytes ? (
-											<>
-												, <FileSize fileSizeBytes={resourceDownloadSizeBytes} />
-											</>
-										) : null}
-										)
-									</a>
-								</p>
-							) : null}
 							<div dangerouslySetInnerHTML={{ __html: htmlBody }} />
 							{lastUpdated ? (
 								<p>
