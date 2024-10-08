@@ -1,6 +1,6 @@
+import { ISbStoryData } from "@storyblok/react";
 import { NextSeo } from "next-seo";
 import React from "react";
-import { StoryblokStory } from "storyblok-generate-ts";
 
 import { Breadcrumbs, Breadcrumb } from "@nice-digital/nds-breadcrumbs";
 import { PageHeader } from "@nice-digital/nds-page-header";
@@ -24,8 +24,8 @@ export type InDepthArticleErrorProps = {
 };
 
 export type InDepthArticleSuccessProps = {
-	featuredStory?: StoryblokStory<NewsStory> | null;
-	stories: StoryblokStory<NewsStory>[];
+	featuredStory?: ISbStoryData<NewsStory> | null;
+	stories: ISbStoryData<NewsStory>[];
 	total: number;
 	currentPage: number;
 	perPage: number;

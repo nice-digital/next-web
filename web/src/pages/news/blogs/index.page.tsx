@@ -1,6 +1,6 @@
+import { ISbStoryData } from "@storyblok/react";
 import { NextSeo } from "next-seo";
 import React from "react";
-import { StoryblokStory } from "storyblok-generate-ts";
 
 import { Breadcrumbs, Breadcrumb } from "@nice-digital/nds-breadcrumbs";
 import { PageHeader } from "@nice-digital/nds-page-header";
@@ -15,6 +15,8 @@ import { NewsListPaginationAnnouncer } from "@/components/Storyblok/News/NewsLis
 import { PaginationFocusedElement } from "@/components/Storyblok/News/NewsListPaginationFocus/NewsListPaginationFocus";
 import { logger } from "@/logger";
 import { NewsStory } from "@/types/News";
+import { BlogPostStoryblok } from "@/types/storyblok";
+import { arrayify } from "@/utils/array";
 import { GENERIC_ERROR_MESSAGE, validateRouteParams } from "@/utils/storyblok";
 
 import type { GetServerSidePropsContext } from "next";
@@ -24,8 +26,8 @@ export type BlogPostsErrorProps = {
 };
 
 export type BlogPostsSuccessProps = {
-	featuredStory?: StoryblokStory<NewsStory> | null;
-	stories: StoryblokStory<NewsStory>[];
+	featuredStory?: ISbStoryData<NewsStory> | null;
+	stories: ISbStoryData<NewsStory>[];
 	total: number;
 	currentPage: number;
 	perPage: number;
@@ -40,7 +42,6 @@ export const BlogIndexPage = (props: BlogPostsProps): React.ReactElement => {
 	}
 
 	const { featuredStory, stories, total, currentPage, perPage } = props;
-
 	const pageTitle = "Blogs";
 
 	return (

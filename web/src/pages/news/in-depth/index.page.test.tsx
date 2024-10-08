@@ -1,10 +1,9 @@
 import { ParsedUrlQuery } from "querystring";
 
-import { getStoryblokApi } from "@storyblok/react";
+import { getStoryblokApi, ISbStoryData } from "@storyblok/react";
 import { render, screen, waitFor, within } from "@testing-library/react";
 import { useRouter } from "next/router";
 import { GetServerSidePropsContext } from "next/types";
-import { StoryblokStory } from "storyblok-generate-ts";
 
 import { logger } from "@/logger";
 import MockStoryblokSuccessResponse from "@/test-utils/storyblok-news-articles-listing.json";
@@ -48,7 +47,7 @@ describe("/news/in-depth/index.page", () => {
 	};
 
 	const mockProps: InDepthArticleProps = {
-		stories: mockStories as unknown as StoryblokStory<NewsStory>[],
+		stories: mockStories as unknown as ISbStoryData<NewsStory>[],
 		currentPage: mockConfig.currentPage,
 		total: mockConfig.totalResults,
 		perPage: mockConfig.resultsPerPage,

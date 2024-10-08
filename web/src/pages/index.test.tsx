@@ -1,5 +1,5 @@
+import { ISbStoryData } from "@storyblok/react";
 import { GetServerSidePropsContext } from "next";
-import { StoryblokStory } from "storyblok-generate-ts";
 
 import { homepageHeroProps } from "@/components/Storyblok/Homepage/HomepageHero/HomepageHero.test";
 import { logger } from "@/logger";
@@ -26,7 +26,7 @@ const secondNewsArticle = {
 	id: 987654321,
 };
 
-const latestNews: StoryblokStory<NewsStory>[] = [
+const latestNews: ISbStoryData<NewsStory>[] = [
 	mockNewsArticle,
 	mockBlogPost,
 	secondNewsArticle,
@@ -36,7 +36,6 @@ const props: HomePageProps = {
 	latestNews,
 	story: {
 		...mockStoryblokStory,
-		release_id: mockStoryblokStory.release_id ?? undefined,
 		content: {
 			hero: [homepageHeroProps.blok],
 			links: mockRichText,
@@ -86,6 +85,7 @@ describe("Homepage", () => {
 			const context = {
 				query: {},
 				params: { slug: "home" },
+				req: { headers: {} },
 			} as unknown as GetServerSidePropsContext;
 
 			const result = await getServerSideProps(context);
@@ -100,6 +100,7 @@ describe("Homepage", () => {
 			const context = {
 				query: {},
 				params: { slug: "home" },
+				req: { headers: {} },
 			} as unknown as GetServerSidePropsContext;
 
 			const result = await getServerSideProps(context);
@@ -166,6 +167,7 @@ describe("Homepage", () => {
 			const context = {
 				query: {},
 				params: { slug: "home" },
+				req: { headers: {} },
 			} as unknown as GetServerSidePropsContext;
 
 			const result = await getServerSideProps(context);

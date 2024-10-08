@@ -6,7 +6,6 @@ import {
 } from "@storyblok/react";
 import { NextSeo } from "next-seo";
 import React, { useMemo } from "react";
-import { StoryblokStory } from "storyblok-generate-ts";
 
 import { ErrorPageContent } from "@/components/ErrorPageContent/ErrorPageContent";
 import { CardGrid } from "@/components/Storyblok/CardGrid/CardGrid";
@@ -40,7 +39,7 @@ export type HomePageErrorProps = {
 
 export type HomePageSuccessProps = {
 	story: ISbStoryData<HomepageStoryblok>;
-	latestNews: StoryblokStory<NewsStory>[];
+	latestNews: ISbStoryData<NewsStory>[];
 };
 
 export type HomePageProps = HomePageErrorProps | HomePageSuccessProps;
@@ -117,7 +116,7 @@ export async function getServerSideProps(context: GetServerSidePropsContext) {
 
 		// Check if we've got a featured story - if so, we need to exclude it
 		const featuredStory = storyResult.story?.content
-			.featuredStory as StoryblokStory<NewsArticleStoryblok>;
+			.featuredStory as ISbStoryData<NewsArticleStoryblok>;
 		if (featuredStory.id) {
 			latestNewsParams.excluding_ids = featuredStory.id.toString();
 		}

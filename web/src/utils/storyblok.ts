@@ -10,7 +10,6 @@ import {
 } from "@storyblok/react";
 import { type MetaTag } from "next-seo/lib/types";
 import { Redirect } from "next/types";
-import { StoryblokStory } from "storyblok-generate-ts";
 
 import { publicRuntimeConfig } from "@/config";
 import { logger } from "@/logger";
@@ -21,7 +20,7 @@ import { type MultilinkStoryblok } from "@/types/storyblok";
 export type StoryVersion = "draft" | "published" | undefined;
 
 export type SBSingleResponse<T> = {
-	story?: StoryblokStory<T>;
+	story?: ISbStoryData<T>;
 	notFound?: boolean;
 };
 

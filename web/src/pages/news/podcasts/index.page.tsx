@@ -1,6 +1,6 @@
+import { ISbStoryData } from "@storyblok/react";
 import { NextSeo } from "next-seo";
 import React from "react";
-import { StoryblokStory } from "storyblok-generate-ts";
 
 import { Breadcrumbs, Breadcrumb } from "@nice-digital/nds-breadcrumbs";
 import { Grid, GridItem } from "@nice-digital/nds-grid";
@@ -25,7 +25,7 @@ export type PodcastPostsErrorProps = {
 };
 
 export type PodcastPostsSuccessProps = {
-	stories: StoryblokStory<NewsStory>[];
+	stories: ISbStoryData<NewsStory>[];
 	total: number;
 	currentPage: number;
 	perPage: number;

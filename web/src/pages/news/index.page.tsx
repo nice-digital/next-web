@@ -1,8 +1,7 @@
-import { ISbStoriesParams } from "@storyblok/react";
+import { ISbStoriesParams, ISbStoryData } from "@storyblok/react";
 import { GetServerSidePropsContext } from "next";
 import { NextSeo } from "next-seo";
 import Image from "next/image";
-import { StoryblokStory } from "storyblok-generate-ts";
 
 import { Breadcrumbs, Breadcrumb } from "@nice-digital/nds-breadcrumbs";
 import { Card } from "@nice-digital/nds-card";
@@ -38,10 +37,10 @@ export type NewsIndexErrorProps = {
 };
 
 export type NewsIndexSuccessProps = {
-	newsArticles: StoryblokStory<NewsArticleStoryblok>[];
-	inDepthArticles: StoryblokStory<InDepthArticleStoryblok>[];
-	blogPosts: StoryblokStory<BlogPostStoryblok>[];
-	podcasts: StoryblokStory<PodcastStoryblok>[];
+	newsArticles: ISbStoryData<NewsArticleStoryblok>[];
+	inDepthArticles: ISbStoryData<InDepthArticleStoryblok>[];
+	blogPosts: ISbStoryData<BlogPostStoryblok>[];
+	podcasts: ISbStoryData<PodcastStoryblok>[];
 };
 
 export type NewsIndexProps = NewsIndexErrorProps | NewsIndexSuccessProps;
