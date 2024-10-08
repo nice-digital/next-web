@@ -95,30 +95,17 @@ export async function getServerSideProps(context: GetServerSidePropsContext) {
 
 		// Get the story and its breadcrumbs
 		const [storyResult, breadcrumbs] = await Promise.all([
-			// fetchStory<BlogPostStoryblok>(pagePath, version),
 			fetchStory<BlogPostStoryblok>(pagePath, version, {
 				resolve_relations: "blogPost.author",
 			}),
 			getBreadcrumbs(pagePath, version),
 		]);
 
-		// // Get the story and its breadcrumbs
-		// const storyResult = await fetchStory<BlogPostStoryblok>(
-		// 	`news/blogs/${slug}`,
-		// 	version,
-		// 	{ resolve_relations: "blogPost.author" }
-		// );
-
 		if ("notFound" in storyResult) {
 			return {
 				notFound: true,
 			};
 		}
-
-		// const breadcrumbs = [
-		// 	{ title: "News", path: "/news" },
-		// 	{ title: "Blogs", path: "/news/blogs" },
-		// ];
 
 		return {
 			props: {
