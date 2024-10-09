@@ -15,8 +15,6 @@ import { NewsListPaginationAnnouncer } from "@/components/Storyblok/News/NewsLis
 import { PaginationFocusedElement } from "@/components/Storyblok/News/NewsListPaginationFocus/NewsListPaginationFocus";
 import { logger } from "@/logger";
 import { NewsStory } from "@/types/News";
-import { BlogPostStoryblok } from "@/types/storyblok";
-import { arrayify } from "@/utils/array";
 import { GENERIC_ERROR_MESSAGE, validateRouteParams } from "@/utils/storyblok";
 
 import type { GetServerSidePropsContext } from "next";

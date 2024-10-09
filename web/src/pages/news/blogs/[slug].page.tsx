@@ -81,6 +81,7 @@ export default function BlogPostPage(props: BlogPageProps): React.ReactElement {
 export async function getServerSideProps(context: GetServerSidePropsContext) {
 	const { query, params } = context;
 
+	// Resolve slug from params
 	const slug = getSlugFromParams(params?.slug);
 
 	if (!slug) {
@@ -94,8 +95,6 @@ export async function getServerSideProps(context: GetServerSidePropsContext) {
 	logger.info("Fetching blog post from storyblok at path", params?.slug);
 
 	try {
-		// Resolve slug from params
-
 		// Get the story and its breadcrumbs
 		const storyResult = await fetchStory<BlogPostStoryblok>(
 			`news/blogs/${slug}`,

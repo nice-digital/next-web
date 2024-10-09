@@ -15,7 +15,7 @@ export const getDefaultSeoConfig = (pathname: string): NextSeoProps => ({
 		locale: "en_GB",
 		url: publicRuntimeConfig.baseURL + pathname,
 		site_name:
-			"NICE website: the National Institute for Health and Care Excellence",
+			"NICE website: The National Institute for Health and Care Excellence",
 		images: [
 			// Landscape open graph image used on Twitter's 'summary_large_image' card type and Facebook (+ others)
 			{
