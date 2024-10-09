@@ -1,0 +1,136 @@
+{
+  "story": {
+    "name": "category landing",
+    "created_at": "2024-10-09T12:28:47.062Z",
+    "published_at": "2024-10-09T12:35:28.176Z",
+    "id": 560615999,
+    "uuid": "be70c55b-d349-41d4-b655-43f4ff83cab5",
+    "content": {
+      "_uid": "9cf407f3-4cf8-4f23-b4ae-65317307a96f",
+      "header": [
+        {
+          "cta": [
+            {
+              "_uid": "00dbc97f-e470-4edf-83de-4f6b5894f7f1",
+              "link": {
+                "id": "7abc28f6-a5d1-4274-8c32-ab5a9a04d085",
+                "url": "",
+                "linktype": "story",
+                "fieldtype": "multilink",
+                "cached_url": "committee-b-members-2",
+                "story": {
+                  "name": "Committee B members 2",
+                  "id": 558818376,
+                  "uuid": "7abc28f6-a5d1-4274-8c32-ab5a9a04d085",
+                  "slug": "committee-b-members-2",
+                  "url": "committee-b-members-2",
+                  "full_slug": "committee-b-members-2",
+                  "_stopResolving": true
+                }
+              },
+              "text": "Landing page CTA",
+              "variant": "cta",
+              "component": "buttonLink"
+            }
+          ],
+          "_uid": "842d5dc7-4fdd-49c4-99f1-3e28f3581c17",
+          "title": "test page header in category landing page",
+          "ctaLink": {
+            "id": "",
+            "url": "",
+            "linktype": "story",
+            "fieldtype": "multilink",
+            "cached_url": ""
+          },
+          "ctaText": "",
+          "summary": "summary of category landing page header",
+          "component": "pageHeader",
+          "description": "description of category landing page header"
+        }
+      ],
+      "content": [
+        {
+          "cta": [
+            {
+              "_uid": "2e035905-245e-45d9-900e-fa75d4de09c1",
+              "link": {
+                "id": "7abc28f6-a5d1-4274-8c32-ab5a9a04d085",
+                "url": "",
+                "linktype": "story",
+                "fieldtype": "multilink",
+                "cached_url": "committee-b-members-2",
+                "story": {
+                  "name": "Committee B members 2",
+                  "id": 558818376,
+                  "uuid": "7abc28f6-a5d1-4274-8c32-ab5a9a04d085",
+                  "slug": "committee-b-members-2",
+                  "url": "committee-b-members-2",
+                  "full_slug": "committee-b-members-2",
+                  "_stopResolving": true
+                }
+              },
+              "text": "Action CTA",
+              "variant": "cta",
+              "component": "buttonLink"
+            }
+          ],
+          "_uid": "a40c363e-9a4c-4ed9-8c13-c001182f359e",
+          "body": {
+            "type": "doc",
+            "content": [
+              {
+                "type": "paragraph",
+                "content": [
+                  {
+                    "text": "Testing Action banner in cat landing",
+                    "type": "text"
+                  }
+                ]
+              }
+            ]
+          },
+          "image": {
+            "id": 16871730,
+            "alt": "",
+            "name": "",
+            "focus": "",
+            "title": "",
+            "source": "",
+            "filename": "https://a.storyblok.com/f/292509/291x164/db85746a8b/ai.PNG",
+            "copyright": "",
+            "fieldtype": "asset",
+            "meta_data": {},
+            "is_external_url": false
+          },
+          "heading": "Test action banner in cat landing",
+          "component": "actionBanner"
+        }
+      ],
+      "metadata": [
+        {
+          "_uid": "99ca25c9-a812-49c9-8802-fd6149ded628",
+          "creator": "NICE",
+          "component": "metadata",
+          "description": "Test category landing page meta description"
+        }
+      ],
+      "component": "categoryLandingPage"
+    },
+    "slug": "test-category-landing",
+    "full_slug": "test-category-landing/",
+    "sort_by_date": null,
+    "position": -40,
+    "tag_list": [],
+    "is_startpage": true,
+    "parent_id": 560613884,
+    "meta_data": null,
+    "group_id": "2ed91972-e8ce-42fb-b4e7-e4b17d17cfb5",
+    "first_published_at": "2024-10-09T12:35:28.176Z",
+    "release_id": null,
+    "lang": "default",
+    "path": null,
+    "alternates": [],
+    "default_full_slug": null,
+    "translated_slugs": null
+  }
+}

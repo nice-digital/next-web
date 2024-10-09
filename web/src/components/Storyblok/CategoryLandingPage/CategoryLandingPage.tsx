@@ -4,7 +4,7 @@ import { type CategoryLandingPageStoryblok } from "@/types/storyblok";
 
 // import styles from "./CategoryLandingPage.module.scss";
 
-interface CategoryLandindPageBlokProps {
+export interface CategoryLandindPageBlokProps {
 	blok: CategoryLandingPageStoryblok;
 }
 
