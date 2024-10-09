@@ -6,6 +6,7 @@ import { StoryblokStory } from "storyblok-generate-ts";
 import { ErrorPageContent } from "@/components/ErrorPageContent/ErrorPageContent";
 import { Blockquote } from "@/components/Storyblok/Blockquote/Blockquote";
 import { CardGrid } from "@/components/Storyblok/CardGrid/CardGrid";
+import { CategoryLandingPage } from "@/components/Storyblok/CategoryLandingPage/CategoryLandingPage";
 import { CategoryNavigation } from "@/components/Storyblok/CategoryNavigation/CategoryNavigation";
 import { InfoPage } from "@/components/Storyblok/InfoPage/InfoPage";
 import { Metadata } from "@/components/Storyblok/Metadata/Metadata";
@@ -21,6 +22,7 @@ import { logger } from "@/logger";
 import { type Breadcrumb } from "@/types/Breadcrumb";
 import {
 	CategoryNavigationStoryblok,
+	CategoryLandingPageStoryblok,
 	InfoPageStoryblok,
 } from "@/types/storyblok";
 import {
@@ -34,7 +36,11 @@ import {
 import type { GetServerSidePropsContext } from "next";
 
 export type SlugCatchAllSuccessProps = {
-	story: StoryblokStory<InfoPageStoryblok | CategoryNavigationStoryblok>;
+	story: StoryblokStory<
+		| InfoPageStoryblok
+		| CategoryNavigationStoryblok
+		| CategoryLandingPageStoryblok
+	>;
 	breadcrumbs: Breadcrumb[];
 	siblingPages?: string[];
 	component: string;
@@ -77,6 +83,12 @@ export default function SlugCatchAll(
 		pageHeader: StoryblokPageHeader,
 	};
 
+	//TODO: add the rest of the components as we iterate through the page build
+	const categoryLandingPageComponents = {
+		categoryLandingPage: CategoryLandingPage,
+		hero: StoryblokHero,
+	};
+
 	const infoPageComponents = {
 		accordion: StoryblokAccordion,
 		accordionGroup: StoryblokAccordionGroup,
@@ -92,6 +104,8 @@ export default function SlugCatchAll(
 		...commonComponents,
 		...(component === "infoPage"
 			? infoPageComponents
+			: component === "categoryLandingPage"
+			? categoryLandingPageComponents
 			: { categoryNavigation: CategoryNavigation }),
 	};
 
@@ -139,10 +153,11 @@ export async function getServerSideProps(context: GetServerSidePropsContext) {
 
 		// Get the story and its breadcrumbs
 		const [storyResult, breadcrumbs] = await Promise.all([
-			fetchStory<CategoryNavigationStoryblok | InfoPageStoryblok>(
-				slug,
-				version
-			),
+			fetchStory<
+				| CategoryNavigationStoryblok
+				| InfoPageStoryblok
+				| CategoryLandingPageStoryblok
+			>(slug, version),
 			getBreadcrumbs(slug, version),
 		]);
 

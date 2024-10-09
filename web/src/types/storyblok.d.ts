@@ -10,11 +10,11 @@ export interface RichtextStoryblok {
 }
 
 export interface AccordionStoryblok {
-  variant: "subtle" | "callout";
   title: string;
   displayTitleAsHeading?: boolean;
   headingLevel?: string;
   content: RichtextStoryblok;
+  variant: "subtle" | "callout";
   _uid: string;
   component: "accordion";
   [k: string]: any;
@@ -65,6 +65,7 @@ export interface BlogPostStoryblok {
   content: RichtextStoryblok;
   author: (StoryblokStory<AuthorStoryblok> | string)[];
   metadata?: MetadataStoryblok[];
+  excludeFromHomepage?: boolean;
   _uid: string;
   component: "blogPost";
   [k: string]: any;
@@ -145,6 +146,15 @@ export interface CardGridStoryblok {
   [k: string]: any;
 }
 
+export interface CategoryLandingPageStoryblok {
+  header: (HeroStoryblok | PageHeaderStoryblok)[];
+  metadata?: MetadataStoryblok[];
+  content?: ActionBannerStoryblok[];
+  _uid: string;
+  component: "categoryLandingPage";
+  [k: string]: any;
+}
+
 export interface CategoryNavigationStoryblok {
   pageHeader: PageHeaderStoryblok[];
   cardGrid: CardGridStoryblok[];
@@ -164,6 +174,7 @@ export interface GridStoryblok {
     | ButtonLinkStoryblok
     | CardStoryblok
     | CardGridStoryblok
+    | CategoryLandingPageStoryblok
     | CategoryNavigationStoryblok
     | GridStoryblok
     | GridItemStoryblok
@@ -173,7 +184,6 @@ export interface GridStoryblok {
     | IframeStoryblok
     | ImageOrVideoStoryblok
     | InDepthArticleStoryblok
-    | InfoLandingPageStoryblok
     | InfoPageStoryblok
     | ListItemStoryblok
     | MarkdownStoryblok
@@ -284,6 +294,7 @@ export interface InDepthArticleStoryblok {
 
 export interface InfoPageStoryblok {
   header: (PageHeaderStoryblok | HeroStoryblok)[];
+  isNavigationRoot?: boolean;
   metadata?: MetadataStoryblok[];
   content: RichtextStoryblok;
   _uid: string;
@@ -359,6 +370,7 @@ export interface NewsArticleStoryblok {
   content: RichtextStoryblok;
   image: AssetStoryblok;
   metadata?: MetadataStoryblok[];
+  excludeFromHomepage?: boolean;
   _uid: string;
   component: "newsArticle";
   [k: string]: any;
@@ -382,6 +394,7 @@ export interface PageStoryblok {
     | ButtonLinkStoryblok
     | CardStoryblok
     | CardGridStoryblok
+    | CategoryLandingPageStoryblok
     | CategoryNavigationStoryblok
     | GridStoryblok
     | GridItemStoryblok
@@ -391,7 +404,6 @@ export interface PageStoryblok {
     | IframeStoryblok
     | ImageOrVideoStoryblok
     | InDepthArticleStoryblok
-    | InfoLandingPageStoryblok
     | InfoPageStoryblok
     | ListItemStoryblok
     | MarkdownStoryblok
