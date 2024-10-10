@@ -37,7 +37,7 @@ export const ProductResourcePage: FC<ProductResourcePageProps> = ({
 }) => {
 	const hasChapters = chapters.length > 0,
 		hasDownloadButton = !!resourceDownloadPath,
-		hasLeftHandSide = hasChapters || hasDownloadButton,
+		hasChaptersOrDownloadButton = hasChapters || hasDownloadButton,
 		hasOnThisPageMenu = chapterSections.length > 1;
 
 	const parentPageTitle =
@@ -82,7 +82,7 @@ export const ProductResourcePage: FC<ProductResourcePageProps> = ({
 			/>
 
 			<Grid gutter="loose">
-				{hasLeftHandSide ? (
+				{hasChaptersOrDownloadButton ? (
 					<GridItem
 						cols={12}
 						md={4}
@@ -112,8 +112,8 @@ export const ProductResourcePage: FC<ProductResourcePageProps> = ({
 
 				<GridItem
 					cols={12}
-					md={hasLeftHandSide ? 8 : 12}
-					lg={hasLeftHandSide ? 9 : 12}
+					md={hasChaptersOrDownloadButton ? 8 : 12}
+					lg={hasChaptersOrDownloadButton ? 9 : 12}
 					elementType="section"
 				>
 					<Grid reverse gutter="loose">
