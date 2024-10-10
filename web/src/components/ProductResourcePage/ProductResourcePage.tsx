@@ -33,7 +33,6 @@ export const ProductResourcePage: FC<ProductResourcePageProps> = ({
 	lastUpdated,
 	resourceTypeSlug,
 	resourceDownloadPath,
-	resourceDownloadSizeBytes,
 }) => {
 	const hasChapters = chapters.length > 0,
 		hasDownloadButton = !!resourceDownloadPath,

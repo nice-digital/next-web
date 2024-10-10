@@ -35,7 +35,6 @@ export const ProductResourceChapterPage: FC<
 	resourceTypeSlug,
 	resourceTypeName,
 	resourceDownloadPath,
-	resourceDownloadSizeBytes,
 }) => {
 	const hasOnThisPageMenu = chapterSections.length > 1,
 		hasDownloadButton = !!resourceDownloadPath;
