@@ -15,42 +15,41 @@ jest.mock("@/components/Storyblok/StoryblokRichText/StoryblokRichText", () => ({
 
 describe("InfoPage", () => {
 	const blok = {
-		_uid: "4172c380-d200-439f-963a-b093bead4d3c",
+		_uid: "uid1",
 		header: [
 			{
 				cta: [
 					{
-						_uid: "244f571a-88c4-40a8-84fb-29045fccd61d",
+						_uid: "uid2",
 						link: {
 							id: "",
-							url: "https://alpha.nice.org.uk/guidance",
+							url: "https://example.com/guidance",
 							linktype: "url",
 							fieldtype: "multilink",
-							cached_url: "https://alpha.nice.org.uk/guidance",
+							cached_url: "https://example.com/guidance",
 						},
 						text: "follow guidance link",
 						variant: "cta",
 						component: "buttonLink",
 						_editable:
-							'<!--#storyblok#{"name": "buttonLink", "space": "292509", "uid": "244f571a-88c4-40a8-84fb-29045fccd61d", "id": "551380672"}-->',
+							'<!--#storyblok#{"name": "buttonLink", "space": "space1", "uid": "uid2", "id": "id1"}-->',
 					},
 				],
-				_uid: "335fe1a7-249a-459c-9853-a93d144a396b",
+				_uid: "uid3",
 				image: {
-					id: 16871731,
+					id: 12345,
 					alt: "",
 					name: "",
 					focus: "",
 					title: "",
 					source: "",
-					filename:
-						"https://a.storyblok.com/f/292509/274x122/1d5d0eabed/foo-me.JPG",
+					filename: "https://example.com/image.jpg",
 					copyright: "",
 					fieldtype: "asset",
 					meta_data: {},
 					is_external_url: false,
 				},
-				title: "Hero header - test ",
+				title: "Hero header - test",
 				ctaLink: {
 					id: "",
 					url: "",
@@ -59,12 +58,12 @@ describe("InfoPage", () => {
 					cached_url: "",
 				},
 				ctaText: "",
-				summary: "The service received 1.82 million referrals in 2023/24. ",
+				summary: "Sample summary data.",
 				component: "hero",
 				description:
-					"Demand for NHS Talking Therapies has reached an all-time high. This is slightly higher than 2021/2022, and more than double the 884,000 received in 2012/13. \nAs more people come forward for help, the NHS is looking to use NICE-recommended digital therapies to help increase the support available.",
+					"Sample description text about the service and how demand has grown over the years.",
 				_editable:
-					'<!--#storyblok#{"name": "hero", "space": "292509", "uid": "335fe1a7-249a-459c-9853-a93d144a396b", "id": "551380672"}-->',
+					'<!--#storyblok#{"name": "hero", "space": "space1", "uid": "uid3", "id": "id1"}-->',
 			},
 		],
 		content: {
@@ -72,12 +71,7 @@ describe("InfoPage", () => {
 			content: [
 				{
 					type: "paragraph",
-					content: [
-						{
-							text: "Dream comes true EVENTUALLY",
-							type: "text",
-						},
-					],
+					content: [{ text: "Sample headline text", type: "text" }],
 				},
 				{
 					type: "paragraph",
@@ -86,7 +80,7 @@ describe("InfoPage", () => {
 					type: "paragraph",
 					content: [
 						{
-							text: "The benefits of the new Alzheimer’s drug lecanemab are too small to justify the costs, NICE said in draft guidance published today.",
+							text: "Sample sentence discussing a new treatment in draft guidance.",
 							type: "text",
 						},
 					],
@@ -95,16 +89,8 @@ describe("InfoPage", () => {
 					type: "paragraph",
 					content: [
 						{
-							text: "Lecanemab (also called Leqembi and made by Eisai) is for slowing progression in mild cognitive impairment or mild dementia due to Alzheimer’s disease (AD) in adults and has been licensed by The Medicines and Healthcare products Regulatory Agency (MHRA) today.",
+							text: "Details on the treatment and its licensing status.",
 							type: "text",
-							marks: [
-								{
-									type: "textStyle",
-									attrs: {
-										color: "",
-									},
-								},
-							],
 						},
 					],
 				},
@@ -112,77 +98,52 @@ describe("InfoPage", () => {
 					type: "paragraph",
 					content: [
 						{
-							text: "It is the first medicine to be licensed for Great Britain that has been shown to slow down progression of the disease, by between 4 and 6 months, NICE's independent committee heard.",
+							text: "Explanation of the treatment's impact.",
 							type: "text",
-							marks: [
-								{
-									type: "textStyle",
-									attrs: {
-										color: "",
-									},
-								},
-							],
 						},
 					],
-				},
-				{
-					type: "paragraph",
 				},
 				{
 					type: "heading",
-					attrs: {
-						level: 3,
-					},
+					attrs: { level: 3 },
 					content: [
 						{
-							text: "NICE recommended digital therapies for depression and anxiety could free up thousands of NHS therapist hours",
+							text: "Recommended digital therapies for mental health",
 							type: "text",
 							marks: [
 								{
 									type: "link",
 									attrs: {
-										href: "https://www.nice.org.uk/news/articles/digital-therapies-for-depression-and-anxiety-disorders-recommended-by-nice-could-potentially-release-thousands-of-therapist-hours-for-the-nhs",
+										href: "https://example.com/news",
 										uuid: null,
 										anchor: null,
 										target: null,
 										linktype: "url",
 									},
 								},
-								{
-									type: "bold",
-								},
+								{ type: "bold" },
 							],
 						},
 					],
 				},
 				{
 					type: "paragraph",
-					content: [
-						{
-							text: "NHS Talking Therapies for anxiety and depression services saw record referrals in 2023/24.",
-							type: "text",
-						},
-					],
+					content: [{ text: "Record referrals for 2023.", type: "text" }],
 				},
 				{
 					type: "blok",
 					attrs: {
-						id: "b9ecea46-1ccd-4928-92a7-db8f78b908e6",
+						id: "uid4",
 						body: [
 							{
-								_uid: "i-b7fcf688-3302-492b-9b16-0f0013d5b72c",
+								_uid: "uid5",
 								title: "rest",
 								content: {
 									type: "doc",
 									content: [
 										{
 											type: "paragraph",
-											content: [
-												{
-													text: "testy",
-													type: "text",
-												},
-											],
+											content: [{ text: "test content", type: "text" }],
 										},
 									],
 								},
@@ -191,111 +152,7 @@ describe("InfoPage", () => {
 								headingLevel: "4",
 								displayTitleAsHeading: true,
 								_editable:
-									'<!--#storyblok#{"name": "accordion", "space": "292509", "uid": "i-b7fcf688-3302-492b-9b16-0f0013d5b72c", "id": "551380672"}-->',
-							},
-							{
-								_uid: "i-29cedec9-ed46-4abf-a182-e5e942a63548",
-								title: "best",
-								content: {
-									type: "doc",
-									content: [
-										{
-											type: "paragraph",
-											content: [
-												{
-													text: "reassure",
-													type: "text",
-												},
-											],
-										},
-									],
-								},
-								variant: "callout",
-								component: "accordion",
-								headingLevel: "",
-								displayTitleAsHeading: false,
-								_editable:
-									'<!--#storyblok#{"name": "accordion", "space": "292509", "uid": "i-29cedec9-ed46-4abf-a182-e5e942a63548", "id": "551380672"}-->',
-							},
-							{
-								_uid: "i-9682a059-16c9-41a1-a695-ad8cbfb9fd0f",
-								component: "accordionGroup",
-								accordions: [
-									{
-										_uid: "697743a9-05e6-42d4-972b-980bf0853ebe",
-										title: "group - test1",
-										content: {
-											type: "doc",
-											content: [
-												{
-													type: "paragraph",
-													content: [
-														{
-															text: "testsger",
-															type: "text",
-														},
-													],
-												},
-											],
-										},
-										variant: "subtle",
-										component: "accordion",
-										headingLevel: "",
-										displayTitleAsHeading: false,
-										_editable:
-											'<!--#storyblok#{"name": "accordion", "space": "292509", "uid": "697743a9-05e6-42d4-972b-980bf0853ebe", "id": "551380672"}-->',
-									},
-									{
-										_uid: "d6d6e094-686c-4bce-bd17-3f344968ed53",
-										title: "group-test1.1",
-										content: {
-											type: "doc",
-											content: [
-												{
-													type: "paragraph",
-													content: [
-														{
-															text: "teaterssfsfsfssf",
-															type: "text",
-														},
-													],
-												},
-											],
-										},
-										variant: "callout",
-										component: "accordion",
-										headingLevel: "",
-										displayTitleAsHeading: false,
-										_editable:
-											'<!--#storyblok#{"name": "accordion", "space": "292509", "uid": "d6d6e094-686c-4bce-bd17-3f344968ed53", "id": "551380672"}-->',
-									},
-								],
-								_editable:
-									'<!--#storyblok#{"name": "accordionGroup", "space": "292509", "uid": "i-9682a059-16c9-41a1-a695-ad8cbfb9fd0f", "id": "551380672"}-->',
-							},
-							{
-								_uid: "i-781ba78e-4edf-40a8-a248-0e8a5f87b6cc",
-								title: "My title",
-								content: {
-									type: "doc",
-									content: [
-										{
-											type: "paragraph",
-											content: [
-												{
-													text: "hjkhhjkhkj",
-													type: "text",
-												},
-											],
-										},
-									],
-								},
-								variant: "subtle",
-								component: "accordion",
-								headingLevel: "2",
-								displayTitleAsHeading: true,
-								_editable:
-									'<!--#storyblok#{"name": "accordion", "space": "292509", "uid": "i-781ba78e-4edf-40a8-a248-0e8a5f87b6cc", "id": "551380672"}-->',
+									'<!--#storyblok#{"name": "accordion", "space": "space1", "uid": "uid5", "id": "id1"}-->',
 							},
 						],
 					},
@@ -304,18 +161,18 @@ describe("InfoPage", () => {
 		},
 		metadata: [
 			{
-				_uid: "abc123",
+				_uid: "uid6",
 				component: "metadata",
-				description: "This is a sample metadata description.",
-				creator: "John Doe",
-				additionalField1: "Some extra information",
+				description: "Anonymised metadata description.",
+				creator: "Anon",
+				additionalField1: "Additional info",
 				additionalField2: 42,
 			},
 		],
 		component: "infoPage",
 		isNavigationRoot: false,
 		_editable:
-			'<!--#storyblok#{"name": "infoPage", "space": "292509", "uid": "4172c380-d200-439f-963a-b093bead4d3c", "id": "551380672"}-->',
+			'<!--#storyblok#{"name": "infoPage", "space": "space1", "uid": "uid1", "id": "id1"}-->',
 	} as InfoPageStoryblok;
 
 	it("renders StoryblokComponent for header and metadata", () => {
