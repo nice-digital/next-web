@@ -14,7 +14,7 @@ jest.mock("@/components/Storyblok/StoryblokRichText/StoryblokRichText", () => ({
 }));
 
 describe("InfoPage", () => {
-	const blok = {
+	const mockBlok = {
 		_uid: "uid1",
 		header: [
 			{
@@ -176,23 +176,23 @@ describe("InfoPage", () => {
 	} as InfoPageStoryblok;
 
 	it("renders StoryblokComponent for header and metadata", () => {
-		render(<InfoPage blok={blok} />);
+		render(<InfoPage blok={mockBlok} />);
 
-		if (blok.metadata && blok.metadata.length > 0) {
+		if (mockBlok.metadata && mockBlok.metadata.length > 0) {
 			expect(StoryblokComponent).toHaveBeenCalledWith(
-				expect.objectContaining({ blok: blok.metadata[0] }),
+				expect.objectContaining({ blok: mockBlok.metadata[0] }),
 				expect.anything()
 			);
 		}
 		expect(StoryblokComponent).toHaveBeenCalledWith(
-			expect.objectContaining({ blok: blok.header[0] }),
+			expect.objectContaining({ blok: mockBlok.header[0] }),
 			expect.anything()
 		);
 	});
 
 	it("renders sibling pages in the StackedNav when provided", () => {
 		const siblingPages = ["Page 1", "Page 2"];
-		render(<InfoPage blok={blok} siblingPages={siblingPages} />);
+		render(<InfoPage blok={mockBlok} siblingPages={siblingPages} />);
 
 		siblingPages.forEach((page) => {
 			expect(screen.getByText(page)).toBeInTheDocument();
@@ -200,13 +200,13 @@ describe("InfoPage", () => {
 	});
 
 	it("renders StoryblokRichText content", () => {
-		render(<InfoPage blok={blok} />);
+		render(<InfoPage blok={mockBlok} />);
 
 		expect(screen.getByText("Mocked Rich Text Content")).toBeInTheDocument();
 	});
 
 	it("renders the StoryblokComponent for each nested blok in the content", () => {
-		render(<InfoPage blok={blok} />);
+		render(<InfoPage blok={mockBlok} />);
 
 		expect(StoryblokComponent).toHaveBeenCalledTimes(2);
 		expect(screen.getAllByText("Mocked Storyblok Component")).toHaveLength(2);
