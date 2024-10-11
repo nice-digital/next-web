@@ -1,7 +1,7 @@
 import { ISbStoriesParams } from "@storyblok/react";
 import { GetServerSidePropsContext } from "next";
-import { NextSeo } from "next-seo";
 import Image from "next/image";
+import { NextSeo } from "next-seo";
 import { StoryblokStory } from "storyblok-generate-ts";
 
 import { Breadcrumbs, Breadcrumb } from "@nice-digital/nds-breadcrumbs";
