@@ -65,7 +65,6 @@ export interface BlogPostStoryblok {
   content: RichtextStoryblok;
   author: (StoryblokStory<AuthorStoryblok> | string)[];
   metadata?: MetadataStoryblok[];
-  excludeFromHomepage?: boolean;
   _uid: string;
   component: "blogPost";
   [k: string]: any;
@@ -185,13 +184,10 @@ export interface GridStoryblok {
     | ImageOrVideoStoryblok
     | InDepthArticleStoryblok
     | InfoPageStoryblok
-    | ListItemStoryblok
-    | MarkdownStoryblok
     | MetadataStoryblok
     | NestedRichTextStoryblok
     | NestedTableStoryblok
     | NewsArticleStoryblok
-    | OrderedListStoryblok
     | PageStoryblok
     | PageHeaderStoryblok
     | PodcastStoryblok
@@ -294,25 +290,10 @@ export interface InDepthArticleStoryblok {
 
 export interface InfoPageStoryblok {
   header: (PageHeaderStoryblok | HeroStoryblok)[];
-  isNavigationRoot?: boolean;
   metadata?: MetadataStoryblok[];
   content: RichtextStoryblok;
   _uid: string;
   component: "infoPage";
-  [k: string]: any;
-}
-
-export interface ListItemStoryblok {
-  ListItemText?: string;
-  _uid: string;
-  component: "ListItem";
-  [k: string]: any;
-}
-
-export interface MarkdownStoryblok {
-  content: string;
-  _uid: string;
-  component: "markdown";
   [k: string]: any;
 }
 
@@ -370,17 +351,8 @@ export interface NewsArticleStoryblok {
   content: RichtextStoryblok;
   image: AssetStoryblok;
   metadata?: MetadataStoryblok[];
-  excludeFromHomepage?: boolean;
   _uid: string;
   component: "newsArticle";
-  [k: string]: any;
-}
-
-export interface OrderedListStoryblok {
-  StartingNumber?: string;
-  ListItems?: ListItemStoryblok[];
-  _uid: string;
-  component: "OrderedList";
   [k: string]: any;
 }
 
@@ -405,13 +377,10 @@ export interface PageStoryblok {
     | ImageOrVideoStoryblok
     | InDepthArticleStoryblok
     | InfoPageStoryblok
-    | ListItemStoryblok
-    | MarkdownStoryblok
     | MetadataStoryblok
     | NestedRichTextStoryblok
     | NestedTableStoryblok
     | NewsArticleStoryblok
-    | OrderedListStoryblok
     | PageStoryblok
     | PageHeaderStoryblok
     | PodcastStoryblok
