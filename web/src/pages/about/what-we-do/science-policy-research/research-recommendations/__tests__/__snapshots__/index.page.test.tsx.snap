@@ -139,7 +139,8 @@ exports[`/research-recommendations/index should match the snapshot 1`] = `
             >
               Skip to results
             </a>
-            As we develop guidance, we identify gaps and uncertainties in the evidence base which could benefit from further research. The most important unanswered questions are developed into research recommendations. Read our 
+            As we develop guidance, we identify gaps and uncertainties in the evidence base which could benefit from further research. The most important unanswered questions are developed into research recommendations. Read our
+             
             <a
               href="https://www.nice.org.uk/Media/Default/About/what-we-do/Science-policy-and-research/research-recommendation-process-methods-guide-2015.pdf"
             >
@@ -148,7 +149,8 @@ exports[`/research-recommendations/index should match the snapshot 1`] = `
             .
             <br />
             <br />
-            Browse the list to find a topic of interest and check out the 
+            Browse the list to find a topic of interest and check out the
+             
             <a
               href="https://www.nihr.ac.uk/funding/nihr-nice-rolling-call/36180"
             >
@@ -157,7 +159,8 @@ exports[`/research-recommendations/index should match the snapshot 1`] = `
             .
             <br />
             <br />
-            For further information email 
+            For further information email
+             
             <a
               href="mailto:research@nice.org.uk"
             >
