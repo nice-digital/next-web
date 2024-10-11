@@ -69,6 +69,7 @@ export type GetProductListPageOptions = {
 	showDateFilter: boolean;
 	showTextFilter?: boolean;
 	dateFilterLabel?: string;
+	textFilterLabel?: string;
 	textFilterHeading?: string;
 	useFutureDates?: boolean;
 	tableBodyRender: (documents: Document[]) => JSX.Element;
@@ -76,8 +77,6 @@ export type GetProductListPageOptions = {
 } & (
 	| {
 			showDateFilter: true;
-			dateFilterLabel: string;
-			textFilterLabel: string;
 			useFutureDates: boolean;
 	  }
 	| {

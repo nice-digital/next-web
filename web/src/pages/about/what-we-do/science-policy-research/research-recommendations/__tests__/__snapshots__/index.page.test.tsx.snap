@@ -139,31 +139,31 @@ exports[`/research-recommendations/index should match the snapshot 1`] = `
             >
               Skip to results
             </a>
-            As we develop guidance, we identify gaps and uncertainties in the evidence base which could benefit from further research. The most important unanswered questions are developed into research recommendations.
+            As we develop guidance, we identify gaps and uncertainties in the evidence base which could benefit from further research. The most important unanswered questions are developed into research recommendations. Read our 
             <a
               href="https://www.nice.org.uk/Media/Default/About/what-we-do/Science-policy-and-research/research-recommendation-process-methods-guide-2015.pdf"
             >
-              Read our process and methods guide (PDF)
+              process and methods guide
             </a>
             .
             <br />
             <br />
-            Browse the list below to find a topic of interest. Published dates represent the date the guidance was first published. A year noted at the end of a research recommendation title indicates when the research recommendation was last published/updated. This is may differ to the guidance published date for guidance that’s undergone a partial update. Please 
-            <a
-              href="mailto:research@nice.org.uk"
-            >
-              contact
-            </a>
-             us if you need more information.
-            <br />
-            <br />
+            Browse the list to find a topic of interest and check out the 
             <a
               href="https://www.nihr.ac.uk/funding/nihr-nice-rolling-call/36180"
             >
-              Call for research studies addressing NICE research recommendations
+              National Institute for Health and Care Research (NIHR) call for research studies addressing NICE recommendations for research
             </a>
+            .
             <br />
-            The National Institute for Health and Care Research (NIHR) are seeking applications to address NICE research recommendations as part of a rolling research call.
+            <br />
+            For further information email 
+            <a
+              href="mailto:research@nice.org.uk"
+            >
+              research@nice.org.uk
+            </a>
+            .
           </p>
         </div>
         <div
