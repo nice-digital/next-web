@@ -103,11 +103,23 @@ describe("Storyblok utils", () => {
 
 	describe("Get story version from NextJS query", () => {
 		it("should get the draft version when the _storyblok query param is present", () => {
+			expect(getStoryVersionFromQuery({ _storyblok: "draft" })).toBe("draft");
+			expect(getStoryVersionFromQuery({ _storyblok: "someValue" })).toBe(
+				"draft"
+			);
+			expect(getStoryVersionFromQuery({ _storyblok: "1" })).toBe("draft");
+		});
+
+		it("should get the draft version when the _storyblok query param is present but empty", () => {
 			expect(getStoryVersionFromQuery({ _storyblok: "" })).toBe("draft");
 		});
 
 		it("should get the published version when the _storyblok query param isn't present", () => {
 			expect(getStoryVersionFromQuery()).toBe("published");
+		});
+
+		it('should return "published" when query is undefined', () => {
+			expect(getStoryVersionFromQuery(undefined)).toBe("published");
 		});
 	});
 

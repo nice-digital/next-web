@@ -353,7 +353,7 @@ export const resolveStoryblokLink = ({
 export const getStoryVersionFromQuery = (query?: {
 	_storyblok?: string;
 }): StoryVersion => {
-	return (query && query._storyblok) === "" ? "draft" : "published";
+	return query?._storyblok !== undefined ? "draft" : "published";
 };
 
 // Resolve the slug object from the NextJS query params into a full slug that we
