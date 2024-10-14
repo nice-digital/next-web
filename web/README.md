@@ -279,7 +279,7 @@ server:
 			# origin: https://indev.nice.org.uk
 			# apiKey: <SECRET>
 		jotForm:
-			apiKey: <jotform-apikey>
+			apiKey: <SECRET>
 ```
 Uncomment the relevant `origin` and `apiKey` based on your needs.
 
