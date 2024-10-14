@@ -10,12 +10,14 @@ aws/terraform/.terraform.lock.hcl
 
 **/.terraform/*
 
+terraform.tfvars
+
 *.tfstate
 *.tfstate.*
 
 crash.log
 crash.*.log
 
-
-
-
+api/ocelot-cache-clear/terraform/**/*.terraform.lock.hcl
+api/ocelot-cache-clear/index.zip
+api/ocelot-cache-clear/**/tfplan*
