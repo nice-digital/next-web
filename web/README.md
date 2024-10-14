@@ -258,32 +258,32 @@ server:
 	feeds:
 		publications:
 			# origin: https://alpha-publications.nice.org.uk
-			# apiKey: <Non-Idam-EndpointKey-NextWeb>
+			# apiKey: <SECRET>
 			# origin: https://beta.publications.nice.org.uk
-			# apiKey: <Non-Idam-EndpointKey-NextWeb>
+			# apiKey: <SECRET>
 			# origin: https://test-publications.nice.org.uk
-			# apiKey: <Non-Idam-EndpointKey-NextWeb>
+			# apiKey: <SECRET>
 			# origin: https://live-publications.nice.org.uk
-			# apiKey: <Non-Idam-EndpointKey-NextWeb>
+			# apiKey: <SECRET>
 			origin: https://local-publications.nice.org.uk
-			apiKey: <Non-Idam-EndpointKey-NextWeb>
+			apiKey: <SECRET>
 		inDev:
 			# origin: http://local-indev.nice.org.uk
-			# apiKey: <alpha-apikey>
+			# apiKey: <SECRET>
 			origin: https://alpha-indev.nice.org.uk
-			apiKey: <alpha-apikey>
+			apiKey: <SECRET>
 			# origin: https://beta-indev.nice.org.uk
-			# apiKey: <beta-apikey>
+			# apiKey: <SECRET>
 			# origin: https://test-indev.nice.org.uk
-			# apiKey: <test-apikey>
+			# apiKey: <SECRET>
 			# origin: https://indev.nice.org.uk
-			# apiKey: <live-apikey>
+			# apiKey: <SECRET>
 		jotForm:
 			apiKey: <jotform-apikey>
 ```
 Uncomment the relevant `origin` and `apiKey` based on your needs.
 
-**Note:** API keys can be obtained from [Octodeploy](https://deploy-aws.nice.org.uk/app#/Spaces-1/projects/publications/variables). Ensure you have the necessary permissions to access these keys.
+**Note:** API keys can be obtained from [Octodeploy](https://deploy-aws.nice.org.uk/app#/Spaces-1/projects/publications/variables). Ensure you have the necessary permissions to access these keys. The `SECRET` in the "publications" section should match `Non-Idam-EndpointKey-NextWeb` and the `SECRET` in "inDev" section should match `ApiKey` in Octodeploy.
 
 3. **Update `next.config.ts`:**
    - In the `next.config.ts` file, add the following line before the `module.exports` block
