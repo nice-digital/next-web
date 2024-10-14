@@ -155,8 +155,8 @@ export async function getServerSideProps(context: GetServerSidePropsContext) {
 
 		// will return a 404 if the story is not found
 		if ("notFound" in storyResult) {
+			// { storyResult },
 			logger.error(
-				{ storyResult },
 				`Story not found for slug: ${slug} in root [...slug] catch all.`
 			);
 			return storyResult;
@@ -182,11 +182,11 @@ export async function getServerSideProps(context: GetServerSidePropsContext) {
 
 		return result;
 	} catch (error) {
+		// {
+		// 	errorCause: error instanceof Error && error.cause,
+		// 	requestHeaders: context.req.headers,
+		// },
 		logger.error(
-			{
-				errorCause: error instanceof Error && error.cause,
-				requestHeaders: context.req.headers,
-			},
 			`Error fetching story for slug: ${slug} in SlugCatchAll page getServerSideProps.`
 		);
 		return {

@@ -133,11 +133,11 @@ export const getServerSideProps = async (
 			},
 		};
 	} catch (error) {
+		// {
+		// 	errorCause: error instanceof Error && error.cause,
+		// 	requestHeaders: context.req.headers,
+		// },
 		logger.error(
-			{
-				errorCause: error instanceof Error && error.cause,
-				requestHeaders: context.req.headers,
-			},
 			`Error fetching podcast listing at page ${query.page || 1} from gssp`
 		);
 		return {

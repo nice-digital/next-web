@@ -98,11 +98,11 @@ describe("BlogPostPage", () => {
 
 			expect(logger.error).toHaveBeenCalled();
 			expect(logger.error).toHaveBeenCalledWith(
-				{
-					"Cache-Control-Request": mockContext.req.headers["cache-control"],
-					errorCause: Mock404FromStoryblokApi,
-					requestHeaders: mockContext.req.headers,
-				},
+				// {
+				// 	"Cache-Control-Request": mockContext.req.headers["cache-control"],
+				// 	errorCause: Mock404FromStoryblokApi,
+				// 	requestHeaders: mockContext.req.headers,
+				// },
 				`Error fetching blog post at path ${mockContext.params?.slug} from gssp`
 			);
 		});
@@ -131,11 +131,11 @@ describe("BlogPostPage", () => {
 
 			expect(logger.error).toHaveBeenCalled();
 			expect(logger.error).toHaveBeenCalledWith(
-				{
-					"Cache-Control-Request": mockContext.req.headers["cache-control"],
-					errorCause: MockServerErrorResponse,
-					requestHeaders: mockContext.req.headers,
-				},
+				// {
+				// 	"Cache-Control-Request": mockContext.req.headers["cache-control"],
+				// 	errorCause: MockServerErrorResponse,
+				// 	requestHeaders: mockContext.req.headers,
+				// },
 				`Error fetching blog post at path ${mockContext.params?.slug} from gssp`
 			);
 		});

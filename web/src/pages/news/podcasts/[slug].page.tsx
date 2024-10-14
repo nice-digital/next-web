@@ -174,14 +174,12 @@ export async function getServerSideProps(context: GetServerSidePropsContext) {
 
 		return result;
 	} catch (error) {
-		logger.error(
-			{
-				"Cache-Control-Request": context.req.headers["cache-control"],
-				errorCause: error instanceof Error && error.cause,
-				requestHeaders: context.req.headers,
-			},
-			`Error fetching podcast at path ${slug} from gssp`
-		);
+		// {
+		// 	"Cache-Control-Request": context.req.headers["cache-control"],
+		// 	errorCause: error instanceof Error && error.cause,
+		// 	requestHeaders: context.req.headers,
+		// },
+		logger.error(`Error fetching podcast at path ${slug} from gssp`);
 		return {
 			props: {
 				error: GENERIC_ERROR_MESSAGE,

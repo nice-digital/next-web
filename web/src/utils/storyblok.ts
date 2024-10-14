@@ -98,8 +98,8 @@ export const fetchStory = async <T>(
 		};
 
 		if (isISbError(error) && error.status === 404) {
+			// errorContext,
 			logger.error(
-				errorContext,
 				`fetchStory: 404 error from Storyblok API: ${error.message} at slug: ${slug} `
 			);
 
@@ -108,8 +108,8 @@ export const fetchStory = async <T>(
 			};
 		}
 
+		// errorContext,
 		logger.error(
-			errorContext,
 			isISbError(error)
 				? `fetchStory: ${error.status} error from Storyblok API: ${error.message} at slug: ${slug} `
 				: `fetchStory: Non ISbError response at slug: ${slug}`
@@ -228,13 +228,13 @@ export const validateRouteParams = async <T>({
 			perPage,
 		};
 	} catch (error) {
+		// {
+		// 	requestParams,
+		// 	errorCause: error instanceof Error && error.cause,
+		// 	errorMessage: error instanceof Error && error.message,
+		// 	ocelotEndpoint: publicRuntimeConfig.storyblok.ocelotEndpoint,
+		// },
 		logger.error(
-			{
-				requestParams,
-				errorCause: error instanceof Error && error.cause,
-				errorMessage: error instanceof Error && error.message,
-				ocelotEndpoint: publicRuntimeConfig.storyblok.ocelotEndpoint,
-			},
 			`validateRouteParams: Error: ${
 				error instanceof Error && error.message
 			} in catch at slug starts_with ${sbParams?.starts_with} on page ${page}`
@@ -267,12 +267,12 @@ export const fetchStories = async <T>(
 		result.perPage = response.perPage;
 		result.total = response.total;
 	} catch (error) {
+		// {
+		// 	errorCause: error,
+		// 	sbParams,
+		// 	ocelotEndpoint: publicRuntimeConfig.storyblok.ocelotEndpoint,
+		// },
 		logger.error(
-			{
-				errorCause: error,
-				sbParams,
-				ocelotEndpoint: publicRuntimeConfig.storyblok.ocelotEndpoint,
-			},
 			isISbError(error)
 				? `fetchStories: ${error.status} error from Storyblok API: ${error.message} at starts_with: ${sbParams.starts_with} `
 				: `fetchStories: Non ISbError response at starts_with: ${sbParams.starts_with}`
@@ -308,8 +308,7 @@ export const fetchLinks = async (
 	} catch (e) {
 		const result = JSON.parse(e as string) as ISbError;
 		logger.error(
-			`${result.status} error from Storyblok API: ${result.message}`,
-			e
+			`${result.status} error from Storyblok API: ${result.message}`
 		);
 		throw Error(
 			`${result.status} error from Storyblok API: ${result.message}`,

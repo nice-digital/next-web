@@ -149,10 +149,10 @@ describe("Homepage", () => {
 
 			expect(logger.error).toHaveBeenCalled();
 			expect(logger.error).toHaveBeenCalledWith(
-				{
-					errorCause: mockCatchError.cause,
-					requestHeaders: mockContext.req.headers,
-				},
+				// {
+				// 	errorCause: mockCatchError.cause,
+				// 	requestHeaders: mockContext.req.headers,
+				// },
 				`Error fetching Homepage from gssp`
 			);
 		});

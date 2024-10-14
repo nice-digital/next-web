@@ -129,11 +129,11 @@ describe("PodcastPage", () => {
 
 			expect(logger.error).toHaveBeenCalled();
 			expect(logger.error).toHaveBeenCalledWith(
-				{
-					"Cache-Control-Request": mockContext.req.headers["cache-control"],
-					errorCause: MockServerErrorResponse,
-					requestHeaders: mockContext.req.headers,
-				},
+				// {
+				// 	"Cache-Control-Request": mockContext.req.headers["cache-control"],
+				// 	errorCause: MockServerErrorResponse,
+				// 	requestHeaders: mockContext.req.headers,
+				// },
 				`Error fetching podcast at path ${mockContext.params?.slug} from gssp`
 			);
 		});

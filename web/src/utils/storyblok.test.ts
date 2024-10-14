@@ -282,12 +282,12 @@ describe("Storyblok utils", () => {
 				expect(logger.error as jest.Mock).toHaveBeenCalled();
 				// eslint-disable-next-line testing-library/no-wait-for-multiple-assertions
 				expect(logger.error).toHaveBeenCalledWith(
-					{
-						ocelotEndpoint: null,
-						errorCause: MockServerErrorResponse,
-						sbParams: { resolve_links: "url", version: "published" },
-						slug: "news/articles/test-page",
-					},
+					// {
+					// 	ocelotEndpoint: null,
+					// 	errorCause: MockServerErrorResponse,
+					// 	sbParams: { resolve_links: "url", version: "published" },
+					// 	slug: "news/articles/test-page",
+					// },
 					"fetchStory: 503 error from Storyblok API: Service Unavailable at slug: news/articles/test-page "
 				);
 			});
@@ -307,12 +307,12 @@ describe("Storyblok utils", () => {
 				expect(logger.error).toHaveBeenCalled();
 				// eslint-disable-next-line testing-library/no-wait-for-multiple-assertions
 				expect(logger.error).toHaveBeenCalledWith(
-					{
-						ocelotEndpoint: null,
-						errorCause: "Generic error",
-						sbParams: { resolve_links: "url", version: "published" },
-						slug: "news/articles/test-page",
-					},
+					// {
+					// 	ocelotEndpoint: null,
+					// 	errorCause: "Generic error",
+					// 	sbParams: { resolve_links: "url", version: "published" },
+					// 	slug: "news/articles/test-page",
+					// },
 					"fetchStory: Non ISbError response at slug: news/articles/test-page"
 				);
 			});
@@ -383,20 +383,20 @@ describe("Storyblok utils", () => {
 				expect(logger.error).toHaveBeenCalled();
 				// eslint-disable-next-line testing-library/no-wait-for-multiple-assertions
 				expect(logger.error).toHaveBeenCalledWith(
-					{
-						ocelotEndpoint: null,
-						errorCause: {
-							message: "Not Found",
-							response: "This record could not be found",
-							status: 404,
-						},
-						sbParams: {
-							per_page: 8,
-							resolve_links: "url",
-							starts_with: "news/articles",
-							version: "published",
-						},
-					},
+					// {
+					// 	ocelotEndpoint: null,
+					// 	errorCause: {
+					// 		message: "Not Found",
+					// 		response: "This record could not be found",
+					// 		status: 404,
+					// 	},
+					// 	sbParams: {
+					// 		per_page: 8,
+					// 		resolve_links: "url",
+					// 		starts_with: "news/articles",
+					// 		version: "published",
+					// 	},
+					// },
 					"fetchStories: 404 error from Storyblok API: Not Found at starts_with: news/articles "
 				);
 			});
@@ -423,19 +423,19 @@ describe("Storyblok utils", () => {
 				expect(logger.error).toHaveBeenCalled();
 				// eslint-disable-next-line testing-library/no-wait-for-multiple-assertions
 				expect(logger.error).toHaveBeenCalledWith(
-					{
-						ocelotEndpoint: null,
-						errorCause: {
-							message: "Service Unavailable",
-							status: 503,
-						},
-						sbParams: {
-							per_page: 8,
-							resolve_links: "url",
-							starts_with: "news/articles",
-							version: "published",
-						},
-					},
+					// {
+					// 	ocelotEndpoint: null,
+					// 	errorCause: {
+					// 		message: "Service Unavailable",
+					// 		status: 503,
+					// 	},
+					// 	sbParams: {
+					// 		per_page: 8,
+					// 		resolve_links: "url",
+					// 		starts_with: "news/articles",
+					// 		version: "published",
+					// 	},
+					// },
 					"fetchStories: 503 error from Storyblok API: Service Unavailable at starts_with: news/articles "
 				);
 			});
@@ -488,8 +488,8 @@ describe("Storyblok utils", () => {
 				expect(logger.error).toHaveBeenCalled();
 				// eslint-disable-next-line testing-library/no-wait-for-multiple-assertions
 				expect(logger.error).toHaveBeenCalledWith(
-					"404 error from Storyblok API: Not Found",
-					'{"message":"Not Found","status":404,"response":"This record could not be found"}'
+					"404 error from Storyblok API: Not Found"
+					// '{"message":"Not Found","status":404,"response":"This record could not be found"}'
 				);
 			});
 		});
@@ -511,8 +511,8 @@ describe("Storyblok utils", () => {
 				expect(logger.error).toHaveBeenCalled();
 				// eslint-disable-next-line testing-library/no-wait-for-multiple-assertions
 				expect(logger.error).toHaveBeenCalledWith(
-					"503 error from Storyblok API: Service Unavailable",
-					'{"status":503,"message":"Service Unavailable"}'
+					"503 error from Storyblok API: Service Unavailable"
+					// '{"status":503,"message":"Service Unavailable"}'
 				);
 			});
 		});
@@ -747,18 +747,18 @@ describe("Storyblok utils", () => {
 				expect(logger.error).toHaveBeenCalled();
 				// eslint-disable-next-line testing-library/no-wait-for-multiple-assertions
 				expect(logger.error).toHaveBeenCalledWith(
-					{
-						errorCause: MockServerErrorResponse,
-						errorMessage: mockError.message,
-						ocelotEndpoint: null,
-						requestParams: {
-							filter_query: { date: { lt_date: "2024-04-08T00:00:00.000Z" } },
-							page: 1,
-							per_page: 8,
-							sort_by: "content.date:desc",
-							starts_with: "news/articles/",
-						},
-					},
+					// {
+					// 	errorCause: MockServerErrorResponse,
+					// 	errorMessage: mockError.message,
+					// 	ocelotEndpoint: null,
+					// 	requestParams: {
+					// 		filter_query: { date: { lt_date: "2024-04-08T00:00:00.000Z" } },
+					// 		page: 1,
+					// 		per_page: 8,
+					// 		sort_by: "content.date:desc",
+					// 		starts_with: "news/articles/",
+					// 	},
+					// },
 					`validateRouteParams: ${new Error(
 						"Error fetching stories"
 					)} in catch at slug starts_with ${

@@ -291,10 +291,10 @@ describe("/news/podcasts/index.page", () => {
 
 			expect(logger.error).toHaveBeenCalled();
 			expect(logger.error).toHaveBeenCalledWith(
-				{
-					errorCause: mockCatchError.cause,
-					requestHeaders: mockContext.req.headers,
-				},
+				// {
+				// 	errorCause: mockCatchError.cause,
+				// 	requestHeaders: mockContext.req.headers,
+				// },
 				`Error fetching podcast listing at page ${mockConfig.query.upperOutOfBoundPagination} from gssp`
 			);
 		});

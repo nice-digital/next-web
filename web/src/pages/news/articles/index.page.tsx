@@ -119,11 +119,11 @@ export const getServerSideProps = async (
 			},
 		};
 	} catch (error) {
+		// {
+		// 	errorCause: error instanceof Error && error.cause,
+		// 	requestHeaders: context.req.headers,
+		// },
 		logger.error(
-			{
-				errorCause: error instanceof Error && error.cause,
-				requestHeaders: context.req.headers,
-			},
 			`Error fetching news article listing at page ${query.page || 1} from gssp`
 		);
 

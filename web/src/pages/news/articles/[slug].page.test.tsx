@@ -89,11 +89,11 @@ describe("NewsArticlePage", () => {
 
 			expect(logger.error).toHaveBeenCalled();
 			expect(logger.error).toHaveBeenCalledWith(
-				{
-					"Cache-Control-Request": mockContext.req.headers["cache-control"],
-					errorCause: Mock404FromStoryblokApi,
-					requestHeaders: mockContext.req.headers,
-				},
+				// {
+				// 	"Cache-Control-Request": mockContext.req.headers["cache-control"],
+				// 	errorCause: Mock404FromStoryblokApi,
+				// 	requestHeaders: mockContext.req.headers,
+				// },
 				`Error fetching news article at path ${mockContext.params?.slug} from gssp`
 			);
 		});
@@ -123,11 +123,11 @@ describe("NewsArticlePage", () => {
 
 			expect(logger.error).toHaveBeenCalled();
 			expect(logger.error).toHaveBeenCalledWith(
-				{
-					"Cache-Control-Request": mockContext.req.headers["cache-control"],
-					errorCause: MockServerErrorResponse,
-					requestHeaders: mockContext.req.headers,
-				},
+				// {
+				// 	"Cache-Control-Request": mockContext.req.headers["cache-control"],
+				// 	errorCause: MockServerErrorResponse,
+				// 	requestHeaders: mockContext.req.headers,
+				// },
 				`Error fetching news article at path ${mockContext.params?.slug} from gssp`
 			);
 		});

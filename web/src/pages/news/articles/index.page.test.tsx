@@ -270,10 +270,10 @@ describe("/news/articles/index.page", () => {
 
 			expect(logger.error).toHaveBeenCalled();
 			expect(logger.error).toHaveBeenCalledWith(
-				{
-					errorCause: mockCatchError.cause,
-					requestHeaders: mockContext.req.headers,
-				},
+				// {
+				// 	errorCause: mockCatchError.cause,
+				// 	requestHeaders: mockContext.req.headers,
+				// },
 				`Error fetching news article listing at page ${mockConfig.query.upperOutOfBoundPagination} from gssp`
 			);
 		});

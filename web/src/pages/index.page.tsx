@@ -51,9 +51,10 @@ export default function Home(props: HomePageProps): React.ReactElement {
 		if (story) {
 			return getAdditionalMetaTags(story);
 		} else {
-			logger.error(
-				`Story is not available for additionalMetaTags in HomePage.`
-			);
+			//TODO this needs moving to the function as it is generating a lot of noise
+			// logger.error(
+			// 	`Story is not available for additionalMetaTags in HomePage.`
+			// );
 			return undefined;
 		}
 	}, [story]);
@@ -135,13 +136,11 @@ export async function getServerSideProps(context: GetServerSidePropsContext) {
 
 		return result;
 	} catch (error) {
-		logger.error(
-			{
-				errorCause: error instanceof Error && error.cause,
-				requestHeaders: context.req.headers,
-			},
-			`Error fetching Homepage from gssp`
-		);
+		// {
+		// 	errorCause: error instanceof Error && error.cause,
+		// 	requestHeaders: context.req.headers,
+		// },
+		logger.error(`Error fetching Homepage from gssp`);
 		return {
 			props: {
 				error: GENERIC_ERROR_MESSAGE,
