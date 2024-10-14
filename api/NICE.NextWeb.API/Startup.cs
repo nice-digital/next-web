@@ -40,8 +40,8 @@ namespace NICE.NextWeb.API
                 .AddCacheManager(x =>
                     x.WithRedisConfiguration("redis", redisConnectionString, redisDatabaseId)
                         .WithJsonSerializer()
-                        .WithRedisCacheHandle("redis"))
-                .AddAdministration("/administration", ocelotSecret);
+                        .WithRedisCacheHandle("redis"));
+                // .AddAdministration("/administration", ocelotSecret);
 
             services.AddSingleton<INiceorgHttpRequestMessage, NiceorgHttpRequestMessage>();
             services.AddSingleton<IScheduledTask, RefreshGuidanceTaxonomyScheduledTask>();
