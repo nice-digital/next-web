@@ -34,6 +34,7 @@ const props: HomePageProps = {
 	latestNews,
 	story: {
 		...mockStoryblokStory,
+		release_id: mockStoryblokStory.release_id ?? undefined,
 		content: {
 			hero: [homepageHeroProps.blok],
 			links: mockRichText,

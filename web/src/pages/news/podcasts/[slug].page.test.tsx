@@ -1,7 +1,9 @@
+import { type ISbStoryData } from "@storyblok/react";
 import { render, screen } from "@testing-library/react";
 import { GetServerSidePropsContext } from "next";
 
 import { mockPodcastPage } from "@/test-utils/storyblok-data";
+import { PodcastStoryblok } from "@/types/storyblok";
 import * as storyblokUtils from "@/utils/storyblok";
 import { GENERIC_ERROR_MESSAGE } from "@/utils/storyblok";
 
@@ -12,6 +14,7 @@ const mockPodcast = {
 };
 
 const mockBreadcrumbs = [
+	{ title: "Home", path: "/" },
 	{ title: "News", path: "/news" },
 	{ title: "Podcasts", path: "/news/podcasts" },
 ];
@@ -19,14 +22,19 @@ const mockBreadcrumbs = [
 describe("PodcastPage", () => {
 	it("renders the page", () => {
 		render(
-			<PodcastPage story={mockPodcastPage} breadcrumbs={mockBreadcrumbs} />
+			<PodcastPage
+				story={mockPodcastPage as ISbStoryData<PodcastStoryblok>}
+				breadcrumbs={mockBreadcrumbs}
+			/>
 		);
 
 		expect(document.body).toMatchSnapshot();
 	});
 
 	it("should not render the breadcrumbs if none are provided", () => {
-		render(<PodcastPage story={mockPodcastPage} />);
+		render(
+			<PodcastPage story={mockPodcastPage as ISbStoryData<PodcastStoryblok>} />
+		);
 
 		const breadcrumbs = screen.queryByRole("navigation", {
 			name: "Breadcrumbs",
@@ -58,7 +66,10 @@ describe("PodcastPage", () => {
 		};
 
 		render(
-			<PodcastPage story={storyWithoutImage} breadcrumbs={mockBreadcrumbs} />
+			<PodcastPage
+				story={storyWithoutImage as ISbStoryData<PodcastStoryblok>}
+				breadcrumbs={mockBreadcrumbs}
+			/>
 		);
 
 		expect(document.body).toMatchSnapshot();
@@ -66,8 +77,10 @@ describe("PodcastPage", () => {
 
 	describe("getServerSideProps", () => {
 		let fetchStorySpy: jest.SpyInstance;
+		let getBreadCrumbsSpy: jest.SpyInstance;
 		beforeEach(() => {
 			fetchStorySpy = jest.spyOn(storyblokUtils, "fetchStory");
+			getBreadCrumbsSpy = jest.spyOn(storyblokUtils, "getBreadcrumbs");
 		});
 
 		afterEach(() => {
@@ -124,6 +137,7 @@ describe("PodcastPage", () => {
 
 		it("should return the story and breadcrumbs", async () => {
 			fetchStorySpy.mockResolvedValue({ story: mockPodcast });
+			getBreadCrumbsSpy.mockResolvedValue(mockBreadcrumbs);
 			const context = {
 				query: {},
 				params: { slug: "test-slug" },

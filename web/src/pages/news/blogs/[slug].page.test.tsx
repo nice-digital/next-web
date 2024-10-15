@@ -1,8 +1,8 @@
 import { ParsedUrlQuery } from "querystring";
 
+import { type ISbStoryData } from "@storyblok/react";
 import { render, screen } from "@testing-library/react";
 import { GetServerSidePropsContext } from "next";
-import { StoryblokStory } from "storyblok-generate-ts";
 
 import mockBlogPostSuccessResponse from "@/test-utils/storyblok-single-blog-post-response.json";
 import { BlogPostStoryblok } from "@/types/storyblok";
@@ -13,9 +13,10 @@ import BlogPostPage, { getServerSideProps } from "./[slug].page";
 
 //cast to unknown necessary due to some differences in response versus expected type from generate-ts
 const mockBlogPost = mockBlogPostSuccessResponse.data
-	.story as unknown as StoryblokStory<BlogPostStoryblok>;
+	.story as unknown as ISbStoryData<BlogPostStoryblok>;
 
 const mockBreadcrumbs = [
+	{ title: "Home", path: "/" },
 	{ title: "News", path: "/news" },
 	{ title: "Blogs", path: "/news/blogs" },
 ];
@@ -38,8 +39,10 @@ describe("BlogPostPage", () => {
 
 	describe("getServerSideProps", () => {
 		let fetchStorySpy: jest.SpyInstance;
+		let getBreadcrumbs: jest.SpyInstance;
 		beforeEach(() => {
 			fetchStorySpy = jest.spyOn(storyblokUtils, "fetchStory");
+			getBreadcrumbs = jest.spyOn(storyblokUtils, "getBreadcrumbs");
 		});
 
 		afterEach(() => {
@@ -103,6 +106,7 @@ describe("BlogPostPage", () => {
 
 		it("should fetch story and return it with breadcrumbs when slug is provided", async () => {
 			fetchStorySpy.mockResolvedValue({ story: mockBlogPost });
+			getBreadcrumbs.mockResolvedValue(mockBreadcrumbs);
 
 			const context = {
 				query: { version: "published" },

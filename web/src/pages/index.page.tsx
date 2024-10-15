@@ -1,4 +1,5 @@
 import {
+	type ISbStoryData,
 	type ISbStoriesParams,
 	StoryblokComponent,
 	setComponents,
@@ -38,7 +39,7 @@ export type HomePageErrorProps = {
 };
 
 export type HomePageSuccessProps = {
-	story: StoryblokStory<HomepageStoryblok>;
+	story: ISbStoryData<HomepageStoryblok>;
 	latestNews: StoryblokStory<NewsStory>[];
 };
 

@@ -1,7 +1,9 @@
+import { type ISbStoryData } from "@storyblok/react";
 import { render, screen } from "@testing-library/react";
 import { GetServerSidePropsContext } from "next";
 
 import { mockNewsArticle } from "@/test-utils/storyblok-data";
+import { NewsArticleStoryblok } from "@/types/storyblok";
 import * as storyblokUtils from "@/utils/storyblok";
 import { GENERIC_ERROR_MESSAGE } from "@/utils/storyblok";
 
@@ -13,7 +15,11 @@ const mockArticle = {
 
 describe("NewsArticlePage", () => {
 	it("renders the page", () => {
-		render(<NewsArticlePage story={mockNewsArticle} />);
+		render(
+			<NewsArticlePage
+				story={mockNewsArticle as ISbStoryData<NewsArticleStoryblok>}
+			/>
+		);
 		expect(screen.getByText(mockNewsArticle.content.title)).toBeInTheDocument();
 		expect(document.body).toMatchSnapshot();
 	});
@@ -28,8 +34,10 @@ describe("NewsArticlePage", () => {
 
 	describe("getServerSideProps", () => {
 		let fetchStorySpy: jest.SpyInstance;
+		let getBreadcrumbs: jest.SpyInstance;
 		beforeEach(() => {
 			fetchStorySpy = jest.spyOn(storyblokUtils, "fetchStory");
+			getBreadcrumbs = jest.spyOn(storyblokUtils, "getBreadcrumbs");
 		});
 
 		afterEach(() => {
@@ -86,6 +94,11 @@ describe("NewsArticlePage", () => {
 
 		it("should return the story and breadcrumbs", async () => {
 			fetchStorySpy.mockResolvedValue({ story: mockArticle });
+			getBreadcrumbs.mockResolvedValue([
+				{ title: "Home", path: "/" },
+				{ title: "News", path: "/news" },
+				{ title: "Articles", path: "/news/articles" },
+			]);
 			const context = {
 				query: {},
 				params: { slug: "test-slug" },
@@ -97,6 +110,7 @@ describe("NewsArticlePage", () => {
 				props: {
 					story: mockArticle,
 					breadcrumbs: [
+						{ title: "Home", path: "/" },
 						{ title: "News", path: "/news" },
 						{ title: "News articles", path: "/news/articles" },
 					],
