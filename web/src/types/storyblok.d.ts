@@ -65,6 +65,7 @@ export interface BlogPostStoryblok {
   content: RichtextStoryblok;
   author: (StoryblokStory<AuthorStoryblok> | string)[];
   metadata?: MetadataStoryblok[];
+  excludeFromHomepage?: boolean;
   _uid: string;
   component: "blogPost";
   [k: string]: any;
@@ -138,6 +139,16 @@ export interface CardStoryblok {
   [k: string]: any;
 }
 
+export interface CardContentStoryblok {
+  title?: string;
+  body?: string;
+  link?: Exclude<MultilinkStoryblok, {linktype?: "email"} | {linktype?: "asset"}>;
+  image?: AssetStoryblok;
+  _uid: string;
+  component: "cardContent";
+  [k: string]: any;
+}
+
 export interface CardGridStoryblok {
   cards: CardStoryblok[];
   _uid: string;
@@ -148,7 +159,7 @@ export interface CardGridStoryblok {
 export interface CategoryLandingPageStoryblok {
   header: (HeroStoryblok | PageHeaderStoryblok)[];
   metadata?: MetadataStoryblok[];
-  content?: ActionBannerStoryblok[];
+  content?: (ActionBannerStoryblok | FullWidthSectionStoryblok)[];
   _uid: string;
   component: "categoryLandingPage";
   [k: string]: any;
@@ -163,6 +174,33 @@ export interface CategoryNavigationStoryblok {
   [k: string]: any;
 }
 
+export interface ComposableCardStoryblok {
+  story?: (
+    | StoryblokStory<BlogPostStoryblok>
+    | StoryblokStory<CategoryLandingPageStoryblok>
+    | StoryblokStory<CategoryNavigationStoryblok>
+    | StoryblokStory<InfoPageStoryblok>
+    | StoryblokStory<NewsArticleStoryblok>
+    | StoryblokStory<PodcastStoryblok>
+    | string
+  )[];
+  cardContent?: CardContentStoryblok[];
+  _uid: string;
+  component: "composableCard";
+  [k: string]: any;
+}
+
+export interface FullWidthSectionStoryblok {
+  heading?: string;
+  lead?: RichtextStoryblok;
+  showHeading?: boolean;
+  theme: "subtle" | "impact" | "transparent";
+  content?: (ActionBannerStoryblok | CardGridStoryblok | PromoBoxStoryblok)[];
+  _uid: string;
+  component: "fullWidthSection";
+  [k: string]: any;
+}
+
 export interface GridStoryblok {
   columns?: (
     | AccordionStoryblok
@@ -172,9 +210,12 @@ export interface GridStoryblok {
     | BlogPostStoryblok
     | ButtonLinkStoryblok
     | CardStoryblok
+    | CardContentStoryblok
     | CardGridStoryblok
     | CategoryLandingPageStoryblok
     | CategoryNavigationStoryblok
+    | ComposableCardStoryblok
+    | FullWidthSectionStoryblok
     | GridStoryblok
     | GridItemStoryblok
     | HeroStoryblok
@@ -184,10 +225,13 @@ export interface GridStoryblok {
     | ImageOrVideoStoryblok
     | InDepthArticleStoryblok
     | InfoPageStoryblok
+    | ListItemStoryblok
+    | MarkdownStoryblok
     | MetadataStoryblok
     | NestedRichTextStoryblok
     | NestedTableStoryblok
     | NewsArticleStoryblok
+    | OrderedListStoryblok
     | PageStoryblok
     | PageHeaderStoryblok
     | PodcastStoryblok
@@ -290,10 +334,25 @@ export interface InDepthArticleStoryblok {
 
 export interface InfoPageStoryblok {
   header: (PageHeaderStoryblok | HeroStoryblok)[];
+  isNavigationRoot?: boolean;
   metadata?: MetadataStoryblok[];
   content: RichtextStoryblok;
   _uid: string;
   component: "infoPage";
+  [k: string]: any;
+}
+
+export interface ListItemStoryblok {
+  ListItemText?: string;
+  _uid: string;
+  component: "ListItem";
+  [k: string]: any;
+}
+
+export interface MarkdownStoryblok {
+  content: string;
+  _uid: string;
+  component: "markdown";
   [k: string]: any;
 }
 
@@ -351,8 +410,17 @@ export interface NewsArticleStoryblok {
   content: RichtextStoryblok;
   image: AssetStoryblok;
   metadata?: MetadataStoryblok[];
+  excludeFromHomepage?: boolean;
   _uid: string;
   component: "newsArticle";
+  [k: string]: any;
+}
+
+export interface OrderedListStoryblok {
+  StartingNumber?: string;
+  ListItems?: ListItemStoryblok[];
+  _uid: string;
+  component: "OrderedList";
   [k: string]: any;
 }
 
@@ -365,9 +433,12 @@ export interface PageStoryblok {
     | BlogPostStoryblok
     | ButtonLinkStoryblok
     | CardStoryblok
+    | CardContentStoryblok
     | CardGridStoryblok
     | CategoryLandingPageStoryblok
     | CategoryNavigationStoryblok
+    | ComposableCardStoryblok
+    | FullWidthSectionStoryblok
     | GridStoryblok
     | GridItemStoryblok
     | HeroStoryblok
@@ -377,10 +448,13 @@ export interface PageStoryblok {
     | ImageOrVideoStoryblok
     | InDepthArticleStoryblok
     | InfoPageStoryblok
+    | ListItemStoryblok
+    | MarkdownStoryblok
     | MetadataStoryblok
     | NestedRichTextStoryblok
     | NestedTableStoryblok
     | NewsArticleStoryblok
+    | OrderedListStoryblok
     | PageStoryblok
     | PageHeaderStoryblok
     | PodcastStoryblok
