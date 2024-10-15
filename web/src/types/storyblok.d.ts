@@ -145,6 +145,15 @@ export interface CardGridStoryblok {
   [k: string]: any;
 }
 
+export interface CategoryLandingPageStoryblok {
+  header: (HeroStoryblok | PageHeaderStoryblok)[];
+  metadata?: MetadataStoryblok[];
+  content?: ActionBannerStoryblok[];
+  _uid: string;
+  component: "categoryLandingPage";
+  [k: string]: any;
+}
+
 export interface CategoryNavigationStoryblok {
   pageHeader: PageHeaderStoryblok[];
   cardGrid: CardGridStoryblok[];
@@ -164,6 +173,7 @@ export interface GridStoryblok {
     | ButtonLinkStoryblok
     | CardStoryblok
     | CardGridStoryblok
+    | CategoryLandingPageStoryblok
     | CategoryNavigationStoryblok
     | GridStoryblok
     | GridItemStoryblok
@@ -356,6 +366,7 @@ export interface PageStoryblok {
     | ButtonLinkStoryblok
     | CardStoryblok
     | CardGridStoryblok
+    | CategoryLandingPageStoryblok
     | CategoryNavigationStoryblok
     | GridStoryblok
     | GridItemStoryblok
