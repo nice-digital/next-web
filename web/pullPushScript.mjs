@@ -10,7 +10,7 @@ config({ path: ".env.local" });
 const SPACE_IDS = {
 	LIVE: process.env.LIVE_SPACE_ID,
 	ALPHA: process.env.ALPHA_SPACE_ID,
-	DEV_SANDBOX: process.env.DEV_SANDBOX_SPACE_ID,
+	DEV: process.env.DEV_SPACE_ID,
 };
 
 const options = Object.entries(SPACE_IDS).map(([name, value]) => ({
@@ -229,7 +229,7 @@ const validateJSONFiles = (
 				case "Push Component": {
 					// Execute in the backup directory and use relative file paths
 					command = `storyblok push-components ${localFiles.join(
-						" "
+						","
 					)} --space ${toOption?.value}`;
 					await executeCommand(command, spaceBackupDir);
 					return;
