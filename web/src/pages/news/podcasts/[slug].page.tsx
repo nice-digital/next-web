@@ -1,6 +1,6 @@
+import { type ISbStoryData } from "@storyblok/react";
 import { NextSeo } from "next-seo";
 import React, { useMemo } from "react";
-import { StoryblokStory } from "storyblok-generate-ts";
 
 import { Breadcrumbs, Breadcrumb } from "@nice-digital/nds-breadcrumbs";
 import { Hero } from "@nice-digital/nds-hero";
@@ -33,7 +33,7 @@ type PodcastPageErrorProps = {
 };
 
 type PodcastPageSuccessProps = {
-	story: StoryblokStory<PodcastStoryblok>;
+	story: ISbStoryData<PodcastStoryblok>;
 	breadcrumbs?: TypeBreadcrumb[];
 };
 
@@ -136,11 +136,22 @@ export async function getServerSideProps(context: GetServerSidePropsContext) {
 	}
 
 	const version = getStoryVersionFromQuery(query);
+
+	logger.info("Fetching podcast from storyblok at path", params?.slug);
+
 	try {
 		// Get the story and its breadcrumbs
 		const storyResult = await fetchStory<PodcastStoryblok>(
 			`news/podcasts/${slug}`,
 			version
+		);
+
+		logger.info(
+			{
+				data: storyResult,
+				requestHeaders: context.req.headers,
+			},
+			`Fetched podcast from storyblok at path: ${slug}`
 		);
 
 		if ("notFound" in storyResult) {
@@ -163,6 +174,12 @@ export async function getServerSideProps(context: GetServerSidePropsContext) {
 
 		return result;
 	} catch (error) {
+		// {
+		// 	"Cache-Control-Request": context.req.headers["cache-control"],
+		// 	errorCause: error instanceof Error && error.cause,
+		// 	requestHeaders: context.req.headers,
+		// },
+		logger.error(`Error fetching podcast at path ${slug} from gssp`);
 		return {
 			props: {
 				error: GENERIC_ERROR_MESSAGE,

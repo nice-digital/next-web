@@ -1,5 +1,5 @@
+import { ISbStoryData } from "@storyblok/react";
 import { render, screen } from "@testing-library/react";
-import { StoryblokStory } from "storyblok-generate-ts";
 
 import { mockNewsArticle, mockBlogPost } from "@/test-utils/storyblok-data";
 import type { NewsStory } from "@/types/News";
@@ -7,7 +7,7 @@ import type { NewsStory } from "@/types/News";
 import { HomepageLatestNews } from "./HomepageLatestNews";
 
 // Mock a featured story
-const featuredStory: StoryblokStory<NewsStory> = {
+const featuredStory: ISbStoryData<NewsStory> = {
 	...mockNewsArticle,
 	id: 333333,
 	name: "Featured story title",
@@ -28,7 +28,7 @@ const secondNewsArticle = {
 	id: 987654321,
 };
 
-const latestNews: StoryblokStory<NewsStory>[] = [
+const latestNews: ISbStoryData<NewsStory>[] = [
 	mockNewsArticle,
 	mockBlogPost,
 	secondNewsArticle,

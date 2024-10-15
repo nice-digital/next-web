@@ -1,4 +1,4 @@
-import { StoryblokStory } from "storyblok-generate-ts";
+import { ISbStoryData } from "@storyblok/react";
 
 import { Link } from "@/components/Link/Link";
 import { FeaturedStory } from "@/components/Storyblok/News/FeaturedStory/FeaturedStory";
@@ -8,8 +8,8 @@ import { type NewsStory } from "@/types/News";
 import styles from "./HomepageLatestNews.module.scss";
 
 interface LatestNewsProps {
-	featuredStory?: StoryblokStory<NewsStory>;
-	latestNews: StoryblokStory<NewsStory>[];
+	featuredStory?: ISbStoryData<NewsStory>;
+	latestNews: ISbStoryData<NewsStory>[];
 }
 
 export const HomepageLatestNews: React.FC<LatestNewsProps> = ({

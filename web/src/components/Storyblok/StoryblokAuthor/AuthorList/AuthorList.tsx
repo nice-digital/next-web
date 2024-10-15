@@ -1,5 +1,5 @@
+import { ISbStoryData } from "@storyblok/react";
 import React from "react";
-import { StoryblokStory } from "storyblok-generate-ts";
 
 import { AuthorStoryblok } from "@/types/storyblok";
 
@@ -8,7 +8,7 @@ import { StoryblokAuthor } from "../StoryblokAuthor";
 import styles from "./AuthorList.module.scss";
 
 export interface AuthorListProps {
-	authors: StoryblokStory<AuthorStoryblok>[];
+	authors: ISbStoryData<AuthorStoryblok>[];
 }
 
 export interface AuthorListRefactorProps {

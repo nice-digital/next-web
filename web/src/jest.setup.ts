@@ -27,6 +27,17 @@ expect.extend({
 	},
 });
 
+jest.mock("@/logger", () => ({
+	logger: {
+		info: jest.fn(),
+		warn: jest.fn(),
+		error: jest.fn(),
+	},
+	useLogger: jest.fn(() => ({
+		error: jest.fn(),
+	})),
+}));
+
 jest.mock("@storyblok/react", () => ({
 	...jest.requireActual("@storyblok/react"),
 	getStoryblokApi: jest.fn().mockReturnValue({
