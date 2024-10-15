@@ -1,5 +1,5 @@
+import { ISbStoryData } from "@storyblok/react";
 import classnames from "classnames";
-import { StoryblokStory } from "storyblok-generate-ts";
 
 import { Card, type CardHeadingLinkProps } from "@nice-digital/nds-card";
 import { Tag } from "@nice-digital/nds-tag";
@@ -30,7 +30,7 @@ export const Spotlight: React.FC<SpotlightProps> = ({
 	const HeadingElement = `h${headingLevel}` as keyof JSX.IntrinsicElements;
 
 	// Resolve stories
-	const stories = blok.stories as StoryblokStory<NewsStory>[];
+	const stories = blok.stories as ISbStoryData<NewsStory>[];
 
 	// Resolve transparency
 	const transparentClass = isTransparent ? styles.transparent : undefined;

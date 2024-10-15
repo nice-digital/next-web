@@ -1,7 +1,5 @@
-// FILEPATH: /c:/Users/DHudson/Development/next-web/web/src/components/Storyblok/StoryblokBlogPost/StoryblokBlogPost.test.tsx
-
+import { ISbStoryData } from "@storyblok/react";
 import { render, screen } from "@testing-library/react";
-import { StoryblokStory } from "storyblok-generate-ts";
 
 import { mockBlogPost } from "@/test-utils/storyblok-data";
 import { AuthorStoryblok } from "@/types/storyblok";
@@ -59,7 +57,7 @@ describe("StoryblokBlogPost", () => {
 
 	it("renders the author name", () => {
 		const author = mockBlogPost.content
-			.author[0] as StoryblokStory<AuthorStoryblok>;
+			.author[0] as ISbStoryData<AuthorStoryblok>;
 
 		render(<StoryblokBlogPost {...mockProps} />);
 		expect(screen.getByText(author.content.name)).toBeInTheDocument();
@@ -67,7 +65,7 @@ describe("StoryblokBlogPost", () => {
 
 	it("renders the author jobTitle", () => {
 		const author = mockBlogPost.content
-			.author[0] as StoryblokStory<AuthorStoryblok>;
+			.author[0] as ISbStoryData<AuthorStoryblok>;
 
 		render(<StoryblokBlogPost {...mockProps} />);
 

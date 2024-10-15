@@ -1,9 +1,12 @@
 import { ParsedUrlQuery } from "querystring";
 
+import { type ISbStoryData } from "@storyblok/react";
 import { render, screen } from "@testing-library/react";
 import { GetServerSidePropsContext } from "next";
-import { StoryblokStory } from "storyblok-generate-ts";
 
+import { logger } from "@/logger";
+import Mock404FromStoryblokApi from "@/test-utils/storyblok-not-found-response.json";
+import MockServerErrorResponse from "@/test-utils/storyblok-server-error-response.json";
 import mockBlogPostSuccessResponse from "@/test-utils/storyblok-single-blog-post-response.json";
 import { BlogPostStoryblok } from "@/types/storyblok";
 import * as storyblokUtils from "@/utils/storyblok";
@@ -13,7 +16,7 @@ import BlogPostPage, { getServerSideProps } from "./[slug].page";
 
 //cast to unknown necessary due to some differences in response versus expected type from generate-ts
 const mockBlogPost = mockBlogPostSuccessResponse.data
-	.story as unknown as StoryblokStory<BlogPostStoryblok>;
+	.story as unknown as ISbStoryData<BlogPostStoryblok>;
 
 const mockBreadcrumbs = [
 	{ title: "News", path: "/news" },
@@ -62,11 +65,79 @@ describe("BlogPostPage", () => {
 			const context = {
 				query: {},
 				params: { slug: "slug-does-not-exist" },
+				req: { headers: {} },
 			} as unknown as GetServerSidePropsContext<ParsedUrlQuery>;
 
 			const result = await getServerSideProps(context);
 
 			expect(result).toEqual({ notFound: true });
+		});
+
+		it("should log error if fetchStory returns error if 404", async () => {
+			expect(jest.isMockFunction(logger.error)).toBe(true);
+			const mockErrorMessage =
+				"There was an error fetching this story. Please try again later.";
+			const mockCatchError = new Error(mockErrorMessage, {
+				cause: Mock404FromStoryblokApi,
+			});
+			fetchStorySpy.mockRejectedValueOnce(mockCatchError);
+
+			const mockContext = {
+				query: {},
+				params: { slug: "test-slug" },
+				req: {
+					headers: {
+						"cache-control":
+							"public, s-max-age=300, max-age=120, stale-while-revalidate=1800",
+					},
+					url: "/some-erroring-page",
+				},
+			} as unknown as GetServerSidePropsContext<ParsedUrlQuery>;
+
+			await getServerSideProps(mockContext);
+
+			expect(logger.error).toHaveBeenCalled();
+			expect(logger.error).toHaveBeenCalledWith(
+				// {
+				// 	"Cache-Control-Request": mockContext.req.headers["cache-control"],
+				// 	errorCause: Mock404FromStoryblokApi,
+				// 	requestHeaders: mockContext.req.headers,
+				// },
+				`Error fetching blog post at path ${mockContext.params?.slug} from gssp`
+			);
+		});
+
+		it("should log error if fetchStory returns error if 503", async () => {
+			expect(jest.isMockFunction(logger.error)).toBe(true);
+			const mockErrorMessage =
+				"There was an error fetching this story. Please try again later.";
+			const mockCatchError = new Error(mockErrorMessage, {
+				cause: MockServerErrorResponse,
+			});
+			fetchStorySpy.mockRejectedValueOnce(mockCatchError);
+
+			const mockContext = {
+				query: {},
+				params: { slug: "some-erroring-page" },
+				req: {
+					headers: {
+						"cache-control":
+							"public, s-max-age=300, max-age=120, stale-while-revalidate=1800",
+					},
+				},
+			} as unknown as GetServerSidePropsContext<ParsedUrlQuery>;
+
+			await getServerSideProps(mockContext);
+
+			expect(logger.error).toHaveBeenCalled();
+			expect(logger.error).toHaveBeenCalledWith(
+				// {
+				// 	"Cache-Control-Request": mockContext.req.headers["cache-control"],
+				// 	errorCause: MockServerErrorResponse,
+				// 	requestHeaders: mockContext.req.headers,
+				// },
+				`Error fetching blog post at path ${mockContext.params?.slug} from gssp`
+			);
 		});
 
 		it("should return error if fetchStory returns error", async () => {
@@ -78,7 +149,8 @@ describe("BlogPostPage", () => {
 
 			const result = await getServerSideProps({
 				query: {},
-				params: { slug: "test-slug" },
+				params: { slug: "some-erroring-page" },
+				req: { headers: {} },
 			} as unknown as GetServerSidePropsContext<ParsedUrlQuery>);
 
 			expect(result).toEqual({ props: { error: GENERIC_ERROR_MESSAGE } });
@@ -92,6 +164,7 @@ describe("BlogPostPage", () => {
 			const result = await getServerSideProps({
 				query: {},
 				params: { slug: "test-slug" },
+				req: { headers: {} },
 			} as unknown as GetServerSidePropsContext<ParsedUrlQuery>);
 
 			expect(result).toEqual({
@@ -107,6 +180,7 @@ describe("BlogPostPage", () => {
 			const context = {
 				query: { version: "published" },
 				params: { slug: "test-slug" },
+				req: { headers: {} },
 			} as unknown as GetServerSidePropsContext;
 
 			const result = await getServerSideProps(context);
@@ -118,6 +192,7 @@ describe("BlogPostPage", () => {
 					resolve_relations: "blogPost.author",
 				}
 			);
+
 			expect(result).toEqual({
 				props: {
 					breadcrumbs: mockBreadcrumbs,
