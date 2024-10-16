@@ -1,5 +1,4 @@
 import { StoryblokComponent } from "@storyblok/react";
-import { ReactNode } from "react";
 
 import { type CategoryLandingPageStoryblok } from "@/types/storyblok";
 

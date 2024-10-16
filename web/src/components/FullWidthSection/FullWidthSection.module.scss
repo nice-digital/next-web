@@ -1,0 +1,43 @@
+@use '@nice-digital/nds-core/scss/colours/tokens/global';
+@use '@nice-digital/nds-core/scss/colours/tokens/alias' as aliasToken;
+@use '@nice-digital/nds-core/scss/layout';
+@use '@nice-digital/nds-core/scss/spacing';
+@use '@nice-digital/nds-core/scss/utils';
+
+
+$theme-subtle-background: global.$nice-cream-3;
+$theme-impact-background: global.$nice-blue;
+$theme-impact-text: aliasToken.$text-inverse;
+
+$small: utils.rem(spacing.$x-large);
+$medium: utils.rem(spacing.$x-large + spacing.$large);
+$large: utils.rem(spacing.$xx-large + spacing.$x-large);
+
+.verticalPaddingSmall {
+  padding-block: $small
+}
+
+.verticalPaddingMedium {
+  padding-block: $medium
+}
+
+.verticalPaddingLarge {
+  padding-block: $large
+}
+
+.fullWidth {
+  @include layout.fullWidth();
+}
+
+.themeSubtle {
+  background-color: $theme-subtle-background;
+}
+
+.themeImpact {
+  color: $theme-impact-text;
+  background-color: $theme-impact-background;
+}
+
+.themeTransparent {
+  background-color: transparent;
+}
