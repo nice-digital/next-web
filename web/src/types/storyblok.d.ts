@@ -159,7 +159,7 @@ export interface CardGridStoryblok {
 export interface CategoryLandingPageStoryblok {
   header: (HeroStoryblok | PageHeaderStoryblok)[];
   metadata?: MetadataStoryblok[];
-  content?: (ActionBannerStoryblok | FullWidthSectionStoryblok)[];
+  content?: (ActionBannerStoryblok | GridSectionStoryblok)[];
   _uid: string;
   component: "categoryLandingPage";
   [k: string]: any;
@@ -190,17 +190,6 @@ export interface ComposableCardStoryblok {
   [k: string]: any;
 }
 
-export interface FullWidthSectionStoryblok {
-  heading?: string;
-  lead?: RichtextStoryblok;
-  showHeading?: boolean;
-  theme: "subtle" | "impact" | "transparent";
-  content?: (ActionBannerStoryblok | CardGridStoryblok | PromoBoxStoryblok)[];
-  _uid: string;
-  component: "fullWidthSection";
-  [k: string]: any;
-}
-
 export interface GridStoryblok {
   columns?: (
     | AccordionStoryblok
@@ -215,9 +204,10 @@ export interface GridStoryblok {
     | CategoryLandingPageStoryblok
     | CategoryNavigationStoryblok
     | ComposableCardStoryblok
-    | FullWidthSectionStoryblok
     | GridStoryblok
     | GridItemStoryblok
+    | GridSectionStoryblok
+    | GridSectionItemStoryblok
     | HeroStoryblok
     | HomepageStoryblok
     | HomepageHeroStoryblok
@@ -252,6 +242,26 @@ export interface GridItemStoryblok {
   block?: CardStoryblok[];
   _uid: string;
   component: "gridItem";
+  [k: string]: any;
+}
+
+export interface GridSectionStoryblok {
+  heading?: string;
+  lead?: RichtextStoryblok;
+  showHeading?: boolean;
+  theme: "subtle" | "impact" | "transparent";
+  verticalPadding?: "small" | "medium" | "large";
+  content?: GridSectionItemStoryblok[];
+  _uid: string;
+  component: "gridSection";
+  [k: string]: any;
+}
+
+export interface GridSectionItemStoryblok {
+  columns?: "12" | "6" | "4";
+  cards?: CardStoryblok[];
+  _uid: string;
+  component: "gridSectionItem";
   [k: string]: any;
 }
 
@@ -438,9 +448,10 @@ export interface PageStoryblok {
     | CategoryLandingPageStoryblok
     | CategoryNavigationStoryblok
     | ComposableCardStoryblok
-    | FullWidthSectionStoryblok
     | GridStoryblok
     | GridItemStoryblok
+    | GridSectionStoryblok
+    | GridSectionItemStoryblok
     | HeroStoryblok
     | HomepageStoryblok
     | HomepageHeroStoryblok
