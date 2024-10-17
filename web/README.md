@@ -28,6 +28,10 @@
 		- [Updating types](#updating-types)
 		- [Syncing Types, Components, and Stories between Storyblok spaces](#syncing-types-components-and-stories-between-storyblok-spaces)
 		- [Push pull components between storyblok spaces](#push-pull-components-between-storyblok-spaces)
+   	- [Local setup between Next-Web and Publications](#local-setup-between-next-web-and-publications)
+   	  	- [Publications setup](#publications-setup)
+   	  	- [Next-Web setup](#next-web-setup)
+   	  	- [Debugging Next-Web locally](#debugging-next-web-locally)
 
 <!-- END doctoc generated TOC please keep comment here to allow auto update -->
 </details>
@@ -223,3 +227,111 @@ Use extreme caution when push pulling components between spaces as you can overw
    - Navigate to the web directory
    - Execute the push / pull command: npm run danger-storyblok-push-pull
    - Follow the prompts in the terminal, double checking the push / pull direction, space ids and components to push/pull.
+
+
+## Local setup between Next-Web and Publications
+
+### Publications setup
+Follow these steps to set up the Publications service locally and enable communication with local Next-Web.
+
+1. **Follow the Publications README:**
+   - Refer to the [Publications](https://github.com/nice-digital/publications) repository README and complete all the steps for local setup.
+2. **Modify `web.config` for local development:**
+   - In [web.config](https://github.com/nice-digital/publications/blob/master/src/Publications/web.config#L116), update the value of `UseSecureFeeds` to `false`
+   - Modify the value of `Non-Idam-EndpointKey-NextWeb` in `web.config` with the corresponding key from [Octodeploy](https://deploy-aws.nice.org.uk/app#/Spaces-1/projects/publications/variables).
+3. **Build and run the application:**
+   - Once the configuration is updated, build and run the Publications service as per the repository instructions.
+
+### Next-Web setup
+1. **Follow setup instructions:**
+   - Start by following the steps outlined in the [Set up](#rocket-set-up) section 
+2. **Create a `local-development.yml` file:**
+   - In the web/config directory of `Next-Web`, create a `local-development.yml` file and add the following configuration:
+
+```yaml
+public:
+	search:
+		baseURL: https://alpha-search-api.nice.org.uk/api
+	jotForm:
+		baseURL: https://nice.jotform.com
+server:
+	feeds:
+		publications:
+			# origin: https://alpha-publications.nice.org.uk
+			# apiKey: <SECRET>
+			# origin: https://beta.publications.nice.org.uk
+			# apiKey: <SECRET>
+			# origin: https://test-publications.nice.org.uk
+			# apiKey: <SECRET>
+			# origin: https://live-publications.nice.org.uk
+			# apiKey: <SECRET>
+			origin: https://local-publications.nice.org.uk
+			apiKey: <SECRET>
+		inDev:
+			# origin: http://local-indev.nice.org.uk
+			# apiKey: <SECRET>
+			origin: https://alpha-indev.nice.org.uk
+			apiKey: <SECRET>
+			# origin: https://beta-indev.nice.org.uk
+			# apiKey: <SECRET>
+			# origin: https://test-indev.nice.org.uk
+			# apiKey: <SECRET>
+			# origin: https://indev.nice.org.uk
+			# apiKey: <SECRET>
+		jotForm:
+			apiKey: <SECRET>
+```
+Uncomment the relevant `origin` and `apiKey` based on your needs.
+
+**Note:** API keys can be obtained from [Octodeploy](https://deploy-aws.nice.org.uk/app#/Spaces-1/projects/publications/variables). Ensure you have the necessary permissions to access these keys. The `SECRET` in the "publications" section should match `Non-Idam-EndpointKey-NextWeb` and the `SECRET` in "inDev" section should match `ApiKey` in Octodeploy.
+
+3. **Update `next.config.ts`:**
+   - In the `next.config.ts` file, add the following line before the `module.exports` block
+```
+process.env.NODE_TLS_REJECT_UNAUTHORIZED = "0";
+```
+4. **Install dependencies**
+   - Navigate to the `web` directory in your termimal in Visual Studio code and run `npm i`
+5. **Run the development server:**
+   - Start the local Next-Web development server by running `npm run dev`
+6. **Access Next-Web:**
+   - Open the browser and navigate to http://localhost:4000/guidance/published
+7. **Access pubished product:**
+   - To view a published product created in the local publications instance, open:
+```
+   http://localhost:4000/guidance/<product>
+```
+   Replace `product` with the actual product ID from local Publications.
+
+### Debugging Next-Web locally
+To debug next-web locally, follow these steps:
+
+1. **Install required packages:**
+   Navigate to `web` folder in your terminal and run the following commands to install the necessary packages
+   ```
+   npm i next@latest react@latest react-dom@latest eslint-config-next@latest
+   npm install @types/react@latest @types/react-dom@latest
+   npm run dev
+   ```
+2. **Enable debugging in Chrome:**
+   - Open Chrome and enter the following URL
+   ```
+   chrome://inspect/#devices
+   ```
+3. **Configure Target discovery settings:**
+   - On the devices page, click the `Configure` button.
+   - In the pop-up for `Target discovery settings`, add the host and port that the debugger is listening to (as mentioned in the console after [step 5](#run-the-development-server) of the  "Next-web setup" section above). 
+   - For example, if the debugger is listening to multiple ports like 127.0.0.1:9229 and 127.0.0.1:9230, add both these ports as
+   ```
+   localhost:9229
+   localhost:9230
+   ```
+   - Click on `Done` when finished.
+4. **Inspect Remote Target:**
+   - Under the `Remote Target` section in the devices page, click on `Inspect` for `C:_src_next-web_web_node_modules_next_dist_server_lib_start-server.js`
+   - This will launch Chrome DevTools.
+5. **Access source files:**
+    - In DevTools, go to the `Sources` tab and navigate to `nice-digital/src`. Here, you will find the files needed for debugging. Set breakpoints where necessary to begin debugging.
+6. You are all set!
+
+**Note:** Ensure that any changes made for local setup are not committed to GitHub.
