@@ -6,9 +6,6 @@ import { getGetServerSideProps } from "./getGetServerSideProps";
 import type { GetServerSidePropsContext } from "next";
 
 jest.mock("@/feeds/jotform/jotform");
-jest.mock("@/logger");
-
-const loggerMock = jest.mocked(logger);
 
 const getFormMock = (getForm as jest.Mock).mockResolvedValue({
 	responseCode: 200,
@@ -62,11 +59,13 @@ describe("getGetServerSideProps", () => {
 		const error = new Error("Test error");
 		getFormMock.mockRejectedValueOnce(error);
 
+		expect(jest.isMockFunction(logger.error)).toBe(true);
+
 		await expect(
 			getGetServerSideProps("1234")(getServerSidePropsContext)
 		).rejects.toBe(error);
 
-		expect(loggerMock.error).toHaveBeenCalledWith(
+		expect(logger.error).toHaveBeenCalledWith(
 			"Could not get form from JotForm API with id 1234 at URL /forms/anything",
 			error
 		);
@@ -81,13 +80,15 @@ describe("getGetServerSideProps", () => {
 			info: "https://api.jotform.com/docs",
 		});
 
+		expect(jest.isMockFunction(logger.info)).toBe(true);
+
 		const result = await getGetServerSideProps("1234")(
 			getServerSidePropsContext
 		);
 
 		expect(result).toStrictEqual({ notFound: true });
 
-		expect(loggerMock.info).toHaveBeenCalledWith(
+		expect(logger.info).toHaveBeenCalledWith(
 			"Couldn't find form with id 1234 at URL /forms/anything"
 		);
 	});
@@ -118,13 +119,15 @@ describe("getGetServerSideProps", () => {
 			duration: "17.33ms",
 		});
 
+		expect(jest.isMockFunction(logger.warn)).toBe(true);
+
 		const result = await getGetServerSideProps("1234")(
 			getServerSidePropsContext
 		);
 
 		expect(result).toStrictEqual({ notFound: true });
 
-		expect(loggerMock.warn).toHaveBeenCalledWith(
+		expect(logger.warn).toHaveBeenCalledWith(
 			"Form with id 1234 at URL /forms/anything is disabled"
 		);
 	});

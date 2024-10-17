@@ -11,8 +11,8 @@
     "host": "cross-env NODE_OPTIONS='-r next-logger' next start | pino-mq -c ./config/.pino-mqrc.json",
     "host-console-logging": "cross-env NODE_OPTIONS='-r next-logger' next start",
     "test": "cd .. && npm run test -- --selectProjects web",
-    "generate-sb-types": "storyblok pull-components --space {SPACE_ID} && storyblok-generate-ts source=./components.{SPACE_ID}.json target=./src/types/storyblok",
-    "generate-sb-types-dynamic": "sh -c 'storyblok pull-components --space $SPACE_ID; storyblok-generate-ts source=./components.$SPACE_ID.json target=./src/types/storyblok'",
+    "generate-sb-types": "storyblok pull-components --space {SPACE_ID} && storyblok generate-typescript-typedefs --sourceFilePaths=./components.{SPACE_ID}.json --destinationFilePath=./src/types/storyblok",
+    "generate-sb-types-dynamic": "sh -c 'storyblok pull-components --space $SPACE_ID; storyblok generate-typescript-typedefs --sourceFilePaths=./components.$SPACE_ID.json --destinationFilePath=./src/types/storyblok.d.ts'",
     "proxy": "mkcert -install && mkcert localhost && local-ssl-proxy --source 4010 --target 4000 --cert localhost.pem --key localhost-key.pem",
     "danger-storyblok-sync": "node --experimental-modules ./syncScript.mjs",
     "danger-storyblok-push-pull": "node --experimental-modules ./pullPushScript.mjs"
@@ -89,7 +89,6 @@
     "mockdate": "^3.0.5",
     "pino-pretty": "^5.1.3",
     "sass": "^1.35.1",
-    "storyblok-generate-ts": "^1.15.1",
     "type-fest": "^2.17.0"
   },
   "volta": {

@@ -10,7 +10,6 @@ import {
 } from "@storyblok/react";
 import { type MetaTag } from "next-seo/lib/types";
 import { Redirect } from "next/types";
-import { StoryblokStory } from "storyblok-generate-ts";
 
 import { publicRuntimeConfig } from "@/config";
 import { logger } from "@/logger";
@@ -21,7 +20,7 @@ import { type MultilinkStoryblok } from "@/types/storyblok";
 export type StoryVersion = "draft" | "published" | undefined;
 
 export type SBSingleResponse<T> = {
-	story?: StoryblokStory<T>;
+	story?: ISbStoryData<T>;
 	notFound?: boolean;
 };
 
@@ -61,6 +60,16 @@ export const fetchStory = async <T>(
 	version: StoryVersion = "published",
 	params: ISbStoryParams = {}
 ): Promise<SBSingleResponse<T>> => {
+	logger.info(
+		{
+			slug,
+			version,
+			params,
+			ocelotEndpoint: publicRuntimeConfig.storyblok.ocelotEndpoint,
+		},
+		`Fetching story with slug: ${slug} and version: ${version} from fetchStory function`
+	);
+
 	const storyblokApi = getStoryblokApi();
 
 	const sbParams: ISbStoriesParams = {
@@ -80,24 +89,55 @@ export const fetchStory = async <T>(
 		result = {
 			story: response.data.story,
 		};
-	} catch (error) {
-		const errorResponse = JSON.parse(error as string) as ISbError;
+	} catch (error: unknown) {
+		const errorContext = {
+			errorCause: error,
+			sbParams,
+			slug,
+			ocelotEndpoint: publicRuntimeConfig.storyblok.ocelotEndpoint,
+		};
 
-		logger.error(
-			`${errorResponse.status} error from Storyblok API: ${errorResponse.message}`,
-			error
-		);
+		if (isISbError(error) && error.status === 404) {
+			// errorContext,
+			logger.error(
+				`fetchStory: 404 error from Storyblok API: ${error.message} at slug: ${slug} `
+			);
 
-		if (errorResponse.status === 404) {
 			return {
 				notFound: true,
 			};
-		} else {
-			throw Error(GENERIC_ERROR_MESSAGE, { cause: error });
 		}
+
+		// errorContext,
+		logger.error(
+			isISbError(error)
+				? `fetchStory: ${error.status} error from Storyblok API: ${error.message} at slug: ${slug} `
+				: `fetchStory: Non ISbError response at slug: ${slug}`
+		);
+
+		throw Error(GENERIC_ERROR_MESSAGE, { cause: error });
 	}
 
+	logger.info(
+		{
+			slug,
+			version,
+			params,
+			ocelotEndpoint: publicRuntimeConfig.storyblok.ocelotEndpoint,
+		},
+		`fetchStory: Fetched story with slug: ${slug} and version: ${version}`
+	);
+
 	return result;
+};
+
+export const isISbError = (error: unknown): error is ISbError => {
+	return (
+		typeof error === "object" &&
+		error !== null &&
+		"status" in error &&
+		"message" in error
+	);
 };
 
 const isValidPageParam = (
@@ -188,9 +228,21 @@ export const validateRouteParams = async <T>({
 			perPage,
 		};
 	} catch (error) {
-		logger.error("Error from catch in validateRouteParams: ", error);
+		// {
+		// 	requestParams,
+		// 	errorCause: error instanceof Error && error.cause,
+		// 	errorMessage: error instanceof Error && error.message,
+		// 	ocelotEndpoint: publicRuntimeConfig.storyblok.ocelotEndpoint,
+		// },
+		logger.error(
+			`validateRouteParams: Error: ${
+				error instanceof Error && error.message
+			} in catch at slug starts_with ${sbParams?.starts_with} on page ${page}`
+		);
 
-		throw new Error(GENERIC_ERROR_MESSAGE, { cause: error });
+		throw Error(GENERIC_ERROR_MESSAGE, {
+			cause: error instanceof Error && error.cause,
+		});
 	}
 };
 
@@ -215,17 +267,18 @@ export const fetchStories = async <T>(
 		result.perPage = response.perPage;
 		result.total = response.total;
 	} catch (error) {
-		const errorResponse = JSON.parse(error as string) as ISbError;
+		// {
+		// 	errorCause: error,
+		// 	sbParams,
+		// 	ocelotEndpoint: publicRuntimeConfig.storyblok.ocelotEndpoint,
+		// },
 		logger.error(
-			`${errorResponse.status} error from Storyblok API: ${errorResponse.message}`,
-			error
+			isISbError(error)
+				? `fetchStories: ${error.status} error from Storyblok API: ${error.message} at starts_with: ${sbParams.starts_with} `
+				: `fetchStories: Non ISbError response at starts_with: ${sbParams.starts_with}`
 		);
 
-		throw new Error(
-			//NOTE: we probably don't want to reveal details of API error to the user
-			GENERIC_ERROR_MESSAGE,
-			{ cause: error }
-		);
+		throw Error(GENERIC_ERROR_MESSAGE, { cause: error });
 	}
 
 	return result;
@@ -240,11 +293,8 @@ export const fetchLinks = async (
 
 	const sbParams: ISbStoriesParams = {
 		version: version || "published",
+		// cv: Date.now(), // Useful for flushing the Storyblok cache
 	};
-
-	if (usingOcelotCache) {
-		sbParams.cv = Date.now();
-	}
 
 	if (startsWith) {
 		sbParams.starts_with = startsWith;
@@ -258,8 +308,7 @@ export const fetchLinks = async (
 	} catch (e) {
 		const result = JSON.parse(e as string) as ISbError;
 		logger.error(
-			`${result.status} error from Storyblok API: ${result.message}`,
-			e
+			`${result.status} error from Storyblok API: ${result.message}`
 		);
 		throw Error(
 			`${result.status} error from Storyblok API: ${result.message}`,
@@ -356,7 +405,7 @@ export const resolveStoryblokLink = ({
 export const getStoryVersionFromQuery = (query?: {
 	_storyblok?: string;
 }): StoryVersion => {
-	return (query && query._storyblok) === "" ? "draft" : "published";
+	return query && query._storyblok !== undefined ? "draft" : "published";
 };
 
 // Resolve the slug object from the NextJS query params into a full slug that we
@@ -386,17 +435,16 @@ export const getAdditionalMetaTags = (story: ISbStoryData): MetaTag[] => {
 
 // Turn a Storyblok date string (yyyy-mm-dd hh:ss) into a friendly date
 export const friendlyDate = (date: string): string => {
-	if (!date || !Date.parse(date)) {
-		logger.warn(
-			`Invalid date format/browser failed to parse date for: ${date}`
-		);
-		return date || "";
+	if (!date || isNaN(Date.parse(date))) {
+		return "Invalid Date";
 	}
+
 	const formatter = new Intl.DateTimeFormat("en-GB", {
 		day: "2-digit",
 		month: "long",
 		year: "numeric",
 	});
+
 	return formatter.format(new Date(date));
 };
 

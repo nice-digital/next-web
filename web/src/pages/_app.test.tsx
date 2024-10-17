@@ -14,7 +14,9 @@ import type { AppProps } from "next/app";
 jest.unmock("@nice-digital/global-nav");
 
 // NextWebApp.componentDidCatch logs so we don't want extra console logs littering our tests
-jest.mock("@/logger", () => ({ logger: { error: jest.fn() } }));
+jest.mock("@/logger", () => ({
+	logger: { error: jest.fn(), info: jest.fn() },
+}));
 
 const FakeComponentWithSEO: AppProps["Component"] = () => (
 	<>
@@ -82,7 +84,10 @@ describe("NextWebApp", () => {
 
 				expect(
 					document.querySelector("meta[property='og:site_name']")
-				).toHaveAttribute("content", "NICE");
+				).toHaveAttribute(
+					"content",
+					"NICE website: The National Institute for Health and Care Excellence"
+				);
 			});
 		});
 

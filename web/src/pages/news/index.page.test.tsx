@@ -52,6 +52,7 @@ describe("getServerSideProps", () => {
 		const context = {
 			query: {},
 			params: { slug: "test-slug" },
+			req: { headers: {} },
 		} as unknown as GetServerSidePropsContext;
 
 		const response = await getServerSideProps(context);
@@ -112,6 +113,7 @@ describe("/news/index.page", () => {
 			const context = {
 				query: {},
 				params: { slug: "test-slug" },
+				req: { headers: {} },
 			} as unknown as GetServerSidePropsContext;
 
 			const result = await getServerSideProps(context);
@@ -126,6 +128,7 @@ describe("/news/index.page", () => {
 			const context = {
 				query: {},
 				params: { slug: "test-slug" },
+				req: { headers: {} },
 			} as unknown as GetServerSidePropsContext;
 
 			const result = await getServerSideProps(context);
@@ -162,7 +165,7 @@ describe("/news/index.page", () => {
 				.mockResolvedValueOnce(mockBlogPosts)
 				.mockResolvedValueOnce(mockPodcasts);
 
-			const context = { query: {} };
+			const context = { query: {}, req: { headers: {} }, params: {} };
 			const response = await getServerSideProps(
 				context as unknown as GetServerSidePropsContext
 			);

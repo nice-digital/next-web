@@ -1,6 +1,6 @@
+import { ISbStoryData } from "@storyblok/react";
 import { debounce } from "lodash";
 import React, { useEffect, useRef } from "react";
-import { StoryblokStory } from "storyblok-generate-ts";
 
 import { Breadcrumbs, Breadcrumb } from "@nice-digital/nds-breadcrumbs";
 import { Grid, GridItem } from "@nice-digital/nds-grid";
@@ -68,16 +68,16 @@ export const StoryblokBlogPost = ({
 		</Breadcrumbs>
 	) : undefined;
 
-	const authors = author as StoryblokStory<AuthorStoryblok>[];
+	const authors = author as ISbStoryData<AuthorStoryblok>[];
 
 	const PageHeaderAuthorsList =
 		authors.length === 0 ? null : authors.length > 1 ? (
 			<div className={styles.authorSection}>
 				<AuthorList authors={authors} />
 			</div>
-		) : typeof blok.author[0] !== "string" ? (
+		) : typeof author[0] !== "string" ? (
 			<div className={styles.authorSection}>
-				<StoryblokAuthor blok={blok.author[0].content} headingLevel={2} />
+				<StoryblokAuthor blok={author[0].content} headingLevel={2} />
 			</div>
 		) : null;
 
