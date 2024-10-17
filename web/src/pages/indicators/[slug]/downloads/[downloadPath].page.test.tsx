@@ -93,6 +93,50 @@ describe("getServerSideProps", () => {
 		);
 	});
 
+	it("should return redirect when product has been withdrawn", async () => {
+		axiosJSONMock.reset();
+		axiosJSONMock.onGet(new RegExp(FeedPath.ProductDetail)).reply(200, {
+			...ng100,
+			ProductStatus: "Withdrawn",
+		});
+		addDefaultJSONFeedMocks();
+
+		const result = await getServerSideProps(getServerSidePropsContext);
+
+		expect(loggerInfoMock).toHaveBeenCalledWith(
+			"Product with id NG100 has 'Withdrawn' status"
+		);
+
+		expect(result).toStrictEqual({
+			redirect: {
+				permanent: true,
+				destination: "/guidance/ng100",
+			},
+		});
+	});
+
+	it("should return redirect when product has been temporarily withdrawn", async () => {
+		axiosJSONMock.reset();
+		axiosJSONMock.onGet(new RegExp(FeedPath.ProductDetail)).reply(200, {
+			...ng100,
+			ProductStatus: "TemporarilyWithdrawn",
+		});
+		addDefaultJSONFeedMocks();
+
+		const result = await getServerSideProps(getServerSidePropsContext);
+
+		expect(loggerInfoMock).toHaveBeenCalledWith(
+			"Product with id NG100 has 'TemporarilyWithdrawn' status"
+		);
+
+		expect(result).toStrictEqual({
+			redirect: {
+				permanent: true,
+				destination: "/guidance/ng100",
+			},
+		});
+	});
+
 	it("should return redierct to correct slugified title when incorrect", async () => {
 		expect(
 			await getServerSideProps({

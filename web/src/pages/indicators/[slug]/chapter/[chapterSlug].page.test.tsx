@@ -2,10 +2,21 @@ import { render, screen, waitFor } from "@testing-library/react";
 import { type GetServerSidePropsContext } from "next";
 import { useRouter } from "next/router";
 
+import { FeedPath } from "@/feeds/publications/types";
+import { logger } from "@/logger";
+import ng100 from "@/mockData/publications/feeds/product/ng100.json";
+import { addDefaultJSONFeedMocks, axiosJSONMock } from "@/test-utils/feeds";
+
 import IndicatorChapterPage, {
-	type IndicatorChapterPageProps,
 	getServerSideProps,
+	type IndicatorChapterPageProps,
 } from "./[chapterSlug].page";
+
+jest.mock("@/logger", () => ({
+	logger: { info: jest.fn() },
+}));
+
+const loggerInfoMock = jest.mocked(logger.info);
 
 type IndicatorChapterPageGetServerSidePropsContext = GetServerSidePropsContext<{
 	slug: string;
@@ -137,6 +148,50 @@ describe("/indicators/[slug]/chapter/[chapterSlug].page", () => {
 				const result = await getServerSideProps(getServerSidePropsContext);
 
 				expect(result).toMatchSnapshot();
+			});
+
+			it("should return redirect when product has been withdrawn", async () => {
+				axiosJSONMock.reset();
+				axiosJSONMock.onGet(new RegExp(FeedPath.ProductDetail)).reply(200, {
+					...ng100,
+					ProductStatus: "Withdrawn",
+				});
+				addDefaultJSONFeedMocks();
+
+				const result = await getServerSideProps(getServerSidePropsContext);
+
+				expect(loggerInfoMock).toHaveBeenCalledWith(
+					"Product with id NG100 has 'Withdrawn' status"
+				);
+
+				expect(result).toStrictEqual({
+					redirect: {
+						permanent: true,
+						destination: "/guidance/ng100",
+					},
+				});
+			});
+
+			it("should return redirect when product has been temporarily withdrawn", async () => {
+				axiosJSONMock.reset();
+				axiosJSONMock.onGet(new RegExp(FeedPath.ProductDetail)).reply(200, {
+					...ng100,
+					ProductStatus: "TemporarilyWithdrawn",
+				});
+				addDefaultJSONFeedMocks();
+
+				const result = await getServerSideProps(getServerSidePropsContext);
+
+				expect(loggerInfoMock).toHaveBeenCalledWith(
+					"Product with id NG100 has 'TemporarilyWithdrawn' status"
+				);
+
+				expect(result).toStrictEqual({
+					redirect: {
+						permanent: true,
+						destination: "/guidance/ng100",
+					},
+				});
 			});
 
 			it("should return notFound if chapter slug doesn't exist", async () => {

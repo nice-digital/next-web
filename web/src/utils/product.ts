@@ -8,18 +8,18 @@ import {
 	ProjectDetail,
 } from "@/feeds/inDev/inDev";
 import {
-	getProductDetail,
 	getAllProductTypes,
+	getProductDetail,
 } from "@/feeds/publications/publications";
 import {
-	type ProductDetail,
-	type ChapterHeading,
-	type UploadAndConvertContentPart,
 	ProductGroup,
-	Status,
-	ResourceGroupType,
-	RelatedResource,
 	ProductType,
+	RelatedResource,
+	ResourceGroupType,
+	Status,
+	type ChapterHeading,
+	type ProductDetail,
+	type UploadAndConvertContentPart,
 } from "@/feeds/publications/types";
 import { logger } from "@/logger";
 import { getProductPath, getPublicationPdfDownloadPath } from "@/utils/url";
@@ -228,6 +228,29 @@ export const validateRouteParams = async ({
 			permanent: true,
 		},
 	};
+};
+
+export const redirectWithdrawnProducts = (
+	product: ProductDetail,
+	productPath: string,
+	permanent = true
+): { redirect: Redirect } | false => {
+	const isFullyWithdrawn = product.productStatus === "Withdrawn";
+	const isTempWithdrawn = product.productStatus === "TemporarilyWithdrawn";
+
+	if (isFullyWithdrawn || isTempWithdrawn) {
+		logger.info(
+			`Product with id ${product.id} has '${product.productStatus}' status`
+		);
+		return {
+			redirect: {
+				permanent: permanent,
+				destination: productPath,
+			},
+		};
+	}
+
+	return false;
 };
 
 /**
