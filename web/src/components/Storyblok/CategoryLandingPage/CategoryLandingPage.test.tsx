@@ -26,17 +26,25 @@ describe("CategoryLandingPage", () => {
 			screen.getByText(mockHeroData.metadata[0].component)
 		).toBeInTheDocument();
 	});
-	xit("renders the hero title", () => {
+
+	it("renders the Hero through the StoryblokComponent, if it's passed as block", () => {
 		render(<CategoryLandingPage {...mockPropsWithHero} />);
 		expect(
 			screen.getByText(mockHeroData.header[0].component)
 		).toBeInTheDocument();
 	});
 
-	xit("renders the page header title", () => {
+	it("renders the Page Header through the StoryblokComponent, if it's passed as block", () => {
 		render(<CategoryLandingPage {...mockPropsWithPageHeader} />);
 		expect(
-			screen.getByText(mockPageHeaderData.header[0].title)
+			screen.getByText(mockPageHeaderData.header[0].component)
+		).toBeInTheDocument();
+	});
+
+	it("renders the FullWidth Action Banner through the StoryblokComponent, if it's passed as block", () => {
+		render(<CategoryLandingPage {...mockPropsWithPageHeader} />);
+		expect(
+			screen.getByText(mockPageHeaderData.content[0].component)
 		).toBeInTheDocument();
 	});
 });
