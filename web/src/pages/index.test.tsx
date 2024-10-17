@@ -1,7 +1,8 @@
+import { ISbStoryData } from "@storyblok/react";
 import { GetServerSidePropsContext } from "next";
-import { StoryblokStory } from "storyblok-generate-ts";
 
 import { homepageHeroProps } from "@/components/Storyblok/Homepage/HomepageHero/HomepageHero.test";
+import { logger } from "@/logger";
 import { render, screen } from "@/test-utils/rendering";
 import {
 	mockStoryblokStory,
@@ -12,6 +13,7 @@ import {
 import mockLatestNews from "@/test-utils/storyblok-homepage-latestnews-response.json";
 import mockResult from "@/test-utils/storyblok-homepage-result.json";
 import mockFetchStory from "@/test-utils/storyblok-homepage-storyResult-response.json";
+import MockServerErrorResponse from "@/test-utils/storyblok-server-error-response.json";
 import { NewsStory } from "@/types/News";
 import * as storyblokUtils from "@/utils/storyblok";
 import { GENERIC_ERROR_MESSAGE } from "@/utils/storyblok";
@@ -24,7 +26,7 @@ const secondNewsArticle = {
 	id: 987654321,
 };
 
-const latestNews: StoryblokStory<NewsStory>[] = [
+const latestNews: ISbStoryData<NewsStory>[] = [
 	mockNewsArticle,
 	mockBlogPost,
 	secondNewsArticle,
@@ -83,6 +85,7 @@ describe("Homepage", () => {
 			const context = {
 				query: {},
 				params: { slug: "home" },
+				req: { headers: {} },
 			} as unknown as GetServerSidePropsContext;
 
 			const result = await getServerSideProps(context);
@@ -97,6 +100,7 @@ describe("Homepage", () => {
 			const context = {
 				query: {},
 				params: { slug: "home" },
+				req: { headers: {} },
 			} as unknown as GetServerSidePropsContext;
 
 			const result = await getServerSideProps(context);
@@ -120,6 +124,39 @@ describe("Homepage", () => {
 			expect(result).toEqual(mockResult);
 		});
 
+		it("should log and error if validateRouteParams throws an error", async () => {
+			expect(jest.isMockFunction(logger.error)).toBe(true);
+			const mockErrorMessage =
+				"There was an error fetching this story. Please try again later.";
+			const mockCatchError = new Error(mockErrorMessage, {
+				cause: MockServerErrorResponse,
+			});
+
+			fetchStorySpy.mockRejectedValueOnce(mockCatchError);
+
+			const mockContext = {
+				query: {},
+				params: { slug: "home" },
+				req: {
+					headers: {
+						"cache-control":
+							"public, s-max-age=300, max-age=120, stale-while-revalidate=1800",
+					},
+				},
+			} as unknown as GetServerSidePropsContext;
+
+			await getServerSideProps(mockContext);
+
+			expect(logger.error).toHaveBeenCalled();
+			expect(logger.error).toHaveBeenCalledWith(
+				// {
+				// 	errorCause: mockCatchError.cause,
+				// 	requestHeaders: mockContext.req.headers,
+				// },
+				`Error fetching Homepage from gssp`
+			);
+		});
+
 		it("should return error when fetchStories returns error", async () => {
 			const mockErrorMessage =
 				"<<<< There was an error fetching stories. Please try again later. >>>>> ";
@@ -130,6 +167,7 @@ describe("Homepage", () => {
 			const context = {
 				query: {},
 				params: { slug: "home" },
+				req: { headers: {} },
 			} as unknown as GetServerSidePropsContext;
 
 			const result = await getServerSideProps(context);

@@ -1,4 +1,4 @@
-import { StoryblokStory } from "storyblok-generate-ts";
+import { ISbStoryData } from "@storyblok/react";
 
 import { Tag } from "@nice-digital/nds-tag";
 
@@ -16,7 +16,7 @@ import {
 import styles from "./NewsCard.module.scss";
 
 interface NewsCardProps {
-	story: StoryblokStory<NewsStory>;
+	story: ISbStoryData<NewsStory>;
 	headingLevel?: number;
 	variant?: "default" | "isNewsListItem";
 	showImage?: boolean;

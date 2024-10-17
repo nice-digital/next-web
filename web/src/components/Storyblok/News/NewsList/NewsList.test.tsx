@@ -1,5 +1,5 @@
+import { ISbStoryData } from "@storyblok/react";
 import { render } from "@testing-library/react";
-import { StoryblokStory } from "storyblok-generate-ts";
 
 import { NewsStory } from "@/types/News";
 
@@ -114,9 +114,9 @@ const mockStory = {
 	alternates: [],
 	default_full_slug: null,
 	translated_slugs: null,
-} as unknown as StoryblokStory<NewsStory>;
+} as unknown as ISbStoryData<NewsStory>;
 
-const mockNews: StoryblokStory<NewsStory>[] = [
+const mockNews: ISbStoryData<NewsStory>[] = [
 	{
 		...mockStory,
 		id: 1,

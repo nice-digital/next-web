@@ -338,7 +338,7 @@ export type ContentPartList = {
 
 export type ContentPartList2 = {
 	embedded: {
-		contentParts?: [];
+		contentParts?: ContentPart[] | ContentPart;
 	};
 };
 
