@@ -1,20 +1,20 @@
 import { waitFor } from "@testing-library/react";
 
-import { ProjectStatus, ProjectGroup, ProjectType } from "@/feeds/inDev/types";
+import { ProjectGroup, ProjectStatus, ProjectType } from "@/feeds/inDev/types";
 import {
+	FeedPath,
 	getProductDetail,
 	ProductGroup,
 	ProductTypeAcronym,
-	type ProductLite,
 	type ProductDetail,
-	FeedPath,
+	type ProductLite,
 } from "@/feeds/publications/publications";
 import ind1001 from "@/mockData/publications/feeds/product/ind1001.json";
 import { axiosJSONMock } from "@/test-utils/feeds";
 
 import {
-	getProjectPath,
 	getProductPath,
+	getProjectPath,
 	getPublicationPdfDownloadPath,
 } from "./url";
 
@@ -127,11 +127,12 @@ describe("URL utils", () => {
 			});
 
 			const product = await getProductDetail("IND1001");
+			const lastModified = product?.lastModified ?? "";
 
 			if (!product) throw Error("Product should not be null");
 
 			expect(
-				getPublicationPdfDownloadPath(product, ProductGroup.Other)
+				getPublicationPdfDownloadPath(product, ProductGroup.Other, lastModified)
 			).toBeNull();
 		});
 
@@ -143,11 +144,12 @@ describe("URL utils", () => {
 			});
 
 			const product = await getProductDetail("IND1001");
+			const lastModified = product?.lastModified ?? "";
 
 			if (!product) throw Error("Product should not be null");
 
 			expect(
-				getPublicationPdfDownloadPath(product, ProductGroup.Other)
+				getPublicationPdfDownloadPath(product, ProductGroup.Other, lastModified)
 			).toBeNull();
 		});
 
@@ -163,11 +165,12 @@ describe("URL utils", () => {
 			});
 
 			const product = await getProductDetail("IND1001");
+			const lastModified = product?.lastModified ?? "";
 
 			if (!product) throw Error("Product should not be null");
 
 			expect(
-				getPublicationPdfDownloadPath(product, ProductGroup.Other)
+				getPublicationPdfDownloadPath(product, ProductGroup.Other, lastModified)
 			).toBeNull();
 		});
 	});

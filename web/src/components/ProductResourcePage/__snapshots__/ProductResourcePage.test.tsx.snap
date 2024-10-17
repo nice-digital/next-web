@@ -204,8 +204,23 @@ exports[`ProductResourcePage should match snapshot 1`] = `
     class="grid grid--loose"
   >
     <section
+      aria-label="Chapters"
       data-component="grid-item"
-      data-g="12 md:12 lg:12"
+      data-g="12 md:4 lg:3"
+    >
+      <a
+        aria-label="Download PDF"
+        class="btn btn--cta download"
+        data-component="button--cta"
+        href="/guidance/ng100/downloads/NG100-resource-impact-statement-3784329-4904490349.pdf"
+        target="_blank"
+      >
+        Download (PDF)
+      </a>
+    </section>
+    <section
+      data-component="grid-item"
+      data-g="12 md:8 lg:9"
     >
       <div
         class="grid grid--rev grid--loose"
@@ -219,16 +234,6 @@ exports[`ProductResourcePage should match snapshot 1`] = `
           >
             Resource impact statement
           </h2>
-          <p>
-            <a
-              href="/guidance/ng100/downloads/NG100-resource-impact-statement-3784329-4904490349.pdf"
-            >
-              Download (PDF
-              , 
-              40 kB
-              )
-            </a>
-          </p>
           <div>
             <p>
               Some body content
