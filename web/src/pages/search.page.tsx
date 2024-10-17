@@ -41,14 +41,23 @@ export interface SearchPageProps {
 
 const flattenNavigators = (navigators: Navigator[]): Navigator[] => {
 	const arr: Navigator[] = [];
-	navigators.forEach((node) => {
-		arr.push(node);
-		node.modifiers.forEach((node) => {
-			if (node.childNavigators) {
-				node.childNavigators.forEach((child) => arr.push(child));
+
+	const flatten = (nodes: Navigator[]) => {
+		nodes.forEach((node) => {
+			arr.push(node);
+			if (Array.isArray(node.modifiers)) {
+				node.modifiers.forEach((modifier) => {
+					if (Array.isArray(modifier.childNavigators)) {
+						flatten(modifier.childNavigators);
+					}
+				});
 			}
 		});
-	});
+	};
+
+	if (Array.isArray(navigators)) {
+		flatten(navigators);
+	}
 
 	return arr;
 };

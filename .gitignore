@@ -16,6 +16,6 @@ aws/terraform/.terraform.lock.hcl
 crash.log
 crash.*.log
 
-
-
-
+aws/THIRD_PARTY_LICENSES
+aws/install
+awscliv2.zip
