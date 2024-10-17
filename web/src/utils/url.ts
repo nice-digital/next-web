@@ -121,9 +121,9 @@ export const getPublicationPdfDownloadPath = (
 	productGroup: ProductGroup,
 	lastModified: string
 ): string | null => {
-	if (!product.embedded.contentPartList2?.embedded.contentParts) return null;
+	if (!product.contentPartsList) return null;
 
-	const { contentParts } = product.embedded.contentPartList2.embedded;
+	const contentParts = product.contentPartsList;
 
 	const uploadAndConvertContentPart =
 		fetchAndMapContentParts<UploadAndConvertContentPart>(

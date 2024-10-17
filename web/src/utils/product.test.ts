@@ -12,7 +12,6 @@ describe("product utils", () => {
 				{
 					id: "IND1",
 					title: "Test indicator",
-					embedded: {},
 				} as ProductDetail,
 				ProductGroup.Other
 			);
@@ -25,11 +24,7 @@ describe("product utils", () => {
 				{
 					id: "IND1",
 					title: "Test indicator",
-					embedded: {
-						contentPartList2: {
-							embedded: {},
-						},
-					},
+					contentPartsList: [{}],
 				} as ProductDetail,
 				ProductGroup.Other
 			);
@@ -44,29 +39,17 @@ describe("product utils", () => {
 					title: "Test guidance",
 					productType: "NG",
 					summary: "Some overview text",
-					embedded: {
-						contentPartList2: {
-							embedded: {
-								contentParts: [
-									{
-										embedded: {
-											htmlContent: {
-												embedded: {
-													htmlChapterContentInfo: [
-														{
-															chapterSlug: "chapter-1",
-															title: "Chapter 1",
-														},
-													],
-												},
-											},
-										},
-										type: "UploadAndConvertContentPart",
-									},
-								],
-							},
+					contentPartsList: [
+						{
+							tableOfContents: [
+								{
+									chapterSlug: "chapter-1",
+									title: "Chapter 1",
+								},
+							],
+							type: "UploadAndConvertContentPart",
 						},
-					},
+					],
 				} as ProductDetail,
 				ProductGroup.Guidance
 			);
@@ -90,33 +73,21 @@ describe("product utils", () => {
 					title: "Test indicator",
 					productType: "IND",
 					summary: "Some overview text",
-					embedded: {
-						contentPartList2: {
-							embedded: {
-								contentParts: [
-									{
-										embedded: {
-											htmlContent: {
-												embedded: {
-													htmlChapterContentInfo: [
-														{
-															chapterSlug: "overview",
-															title: "Overview",
-														},
-														{
-															chapterSlug: "chapter-1",
-															title: "Chapter 1",
-														},
-													],
-												},
-											},
-										},
-										type: "UploadAndConvertContentPart",
-									},
-								],
-							},
+					contentPartsList: [
+						{
+							tableOfContents: [
+								{
+									chapterSlug: "overview",
+									title: "Overview",
+								},
+								{
+									chapterSlug: "chapter-1",
+									title: "Chapter 1",
+								},
+							],
+							type: "UploadAndConvertContentPart",
 						},
-					},
+					],
 				} as ProductDetail,
 				ProductGroup.Other
 			);
@@ -140,34 +111,22 @@ describe("product utils", () => {
 					title: "Test indicator",
 					productType: "IND",
 					summary: null,
-					embedded: {
-						contentPartList2: {
-							embedded: {
-								contentParts: [
-									{
-										embedded: {
-											htmlContent: {
-												embedded: {
-													htmlChapterContentInfo: [
-														{
-															chapterSlug: "chapter-1",
-															title: "Chapter 1",
-														},
-														{
-															chapterSlug: "chapter-2",
-															title: "Chapter 2",
-														},
-													],
-												},
-											},
-										},
-										type: "UploadAndConvertContentPart",
-									},
-									{},
-								],
-							},
+					contentPartsList: [
+						{
+							tableOfContents: [
+								{
+									chapterSlug: "chapter-1",
+									title: "Chapter 1",
+								},
+								{
+									chapterSlug: "chapter-2",
+									title: "Chapter 2",
+								},
+							],
+							type: "UploadAndConvertContentPart",
 						},
-					},
+						{},
+					],
 				} as ProductDetail,
 				ProductGroup.Other
 			);

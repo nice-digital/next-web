@@ -93,17 +93,14 @@ export const getGetServerSidePropsFunc =
 
 		const fullResource = await getResourceDetail(resource);
 
-		if (
-			!fullResource ||
-			!fullResource.embedded.contentPartList2?.embedded.contentParts
-		) {
+		if (!fullResource || !fullResource.contentPartsList) {
 			logger.warn(
 				`Full resource with id ${resourceUID} in product ${product.id} can't be found`
 			);
 			return { notFound: true };
 		}
 
-		const { contentParts } = fullResource.embedded.contentPartList2.embedded;
+		const contentParts = fullResource.contentPartsList;
 
 		const uploadAndConvertContentPart =
 				fetchAndMapContentParts<UploadAndConvertContentPart>(
@@ -143,9 +140,7 @@ export const getGetServerSidePropsFunc =
 			};
 		}
 
-		const chapterInfos = arrayify(
-				convertPart.embedded.htmlContent.embedded?.htmlChapterContentInfo
-			),
+		const chapterInfos = arrayify(convertPart.tableOfContents),
 			currentChapter = chapterInfos.find(
 				(c) => c.chapterSlug === params.chapterSlug
 			);
@@ -170,9 +165,7 @@ export const getGetServerSidePropsFunc =
 			};
 		}
 
-		const currentChapterContent = await getChapterContent(
-			currentChapter.links.self[0].href
-		);
+		const currentChapterContent = await getChapterContent(currentChapter.url);
 
 		if (!currentChapterContent)
 			throw Error(
@@ -181,19 +174,19 @@ export const getGetServerSidePropsFunc =
 
 		const htmlBody = currentChapterContent.content;
 		const resourceDownloadPath = `${productPath}/downloads/${product.id}-${params.partSlug}.pdf`;
-		const resourceDownloadSizeBytes = convertPart.embedded.pdfFile.length;
+		const resourceDownloadSizeBytes = convertPart.pdf.length;
 		const chapters = chapterInfos.map(({ title, chapterSlug }, i) => ({
 			title,
 			url:
 				`${productPath}/${resourceTypeSlug}/${params.partSlug}` +
 				(i === 0 ? "" : `/chapter/${chapterSlug}`),
 		}));
-		const chapterSections = arrayify(
-			currentChapterContent.embedded?.htmlChapterSectionInfo
-		).map((s) => ({
-			slug: s.chapterSlug,
-			title: s.title,
-		}));
+		const chapterSections = arrayify(currentChapterContent.sections).map(
+			(s) => ({
+				slug: s.chapterSlug,
+				title: s.title,
+			})
+		);
 
 		return {
 			props: {
