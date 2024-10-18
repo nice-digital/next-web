@@ -12,6 +12,20 @@ export const heroProps: HeroBlokProps = {
 		image: mockImageAsset,
 		_uid: "123245789",
 		component: "hero",
+		cta: [
+			{
+				_uid: "123456789",
+				component: "buttonLink",
+				text: "Click me",
+				link: {
+					_uid: "123456789",
+					url: "https://example.com",
+				},
+				variant: "primary",
+			},
+		],
+		summary: "The hero we need",
+		description: "The hero we deserve",
 	},
 };
 

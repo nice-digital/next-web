@@ -97,6 +97,19 @@ exports[`Storyblok Hero should match snapshot with breadcrumbs 1`] = `
               >
                 Holding out for a hero
               </h1>
+              <p
+                class="hero__intro"
+              >
+                The hero we need
+              </p>
+              <p
+                class="hero__description"
+              >
+                The hero we deserve
+              </p>
+              <div
+                class="hero__actions"
+              />
             </div>
           </div>
           <div
@@ -137,6 +150,19 @@ exports[`Storyblok Hero should match snapshot without breadcrumbs 1`] = `
               >
                 Holding out for a hero
               </h1>
+              <p
+                class="hero__intro"
+              >
+                The hero we need
+              </p>
+              <p
+                class="hero__description"
+              >
+                The hero we deserve
+              </p>
+              <div
+                class="hero__actions"
+              />
             </div>
           </div>
           <div
