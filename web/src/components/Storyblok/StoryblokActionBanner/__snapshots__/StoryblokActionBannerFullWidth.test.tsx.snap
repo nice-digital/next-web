@@ -1,6 +1,6 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`Storyblok action banner component should match snapshot 1`] = `
+exports[`Storyblok action banner full width component should match snapshot 1`] = `
 <div>
   <section
     class="action-banner action-banner--full-width"
@@ -10,6 +10,52 @@ exports[`Storyblok action banner component should match snapshot 1`] = `
       class="action-banner--full-width__image-container"
       style="background-image: url(https://placekitten.com/408/287/m/899x0/filters:quality%2880%29);"
     />
+    <div
+      class="action-banner__container"
+    >
+      <div
+        class="action-banner__inner"
+      >
+        <div
+          class="action-banner__text"
+        >
+          <h2
+            class="action-banner__title"
+          >
+            Mock action banner title
+          </h2>
+          <div
+            class="action-banner__intro"
+          >
+            <div
+              class="storyblokRichTextWrapper "
+              data-testid="storyblok-rich-text"
+            />
+          </div>
+        </div>
+        <div
+          class="action-banner__actions"
+        >
+          <a
+            class="btn btn--inverse"
+            data-component="button--inverse"
+            href="https://placekitten.com/408/287"
+          >
+            Press me
+          </a>
+        </div>
+      </div>
+    </div>
+  </section>
+</div>
+`;
+
+exports[`Storyblok action banner full width component should match snapshot for the subtle variant 1`] = `
+<div>
+  <section
+    class="action-banner action-banner--full-width-subtle"
+    data-component="action-banner--fullWidthSubtle"
+  >
     <div
       class="action-banner__container"
     >
