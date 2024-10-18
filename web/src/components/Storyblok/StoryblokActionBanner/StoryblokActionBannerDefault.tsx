@@ -11,11 +11,16 @@ import { StoryblokRichText } from "../StoryblokRichText/StoryblokRichText";
 export interface StoryblokActionBannerDefaultProps {
 	blok: ActionBannerDefaultStoryblok;
 	className?: string;
+	headingLevel?: 2 | 3 | 4 | 5 | 6;
 }
 
 export const StoryblokActionBannerDefault: React.FC<
 	StoryblokActionBannerDefaultProps
-> = ({ blok, className = undefined }: StoryblokActionBannerDefaultProps) => {
+> = ({
+	blok,
+	className = undefined,
+	headingLevel = 2,
+}: StoryblokActionBannerDefaultProps) => {
 	const { heading, body, cta, variant } = blok;
 
 	return (
@@ -24,6 +29,7 @@ export const StoryblokActionBannerDefault: React.FC<
 			variant={variant === "subtle" ? "subtle" : "default"}
 			cta={<StoryblokButtonLink button={cta[0]} />}
 			className={className}
+			headingLevel={headingLevel}
 		>
 			<StoryblokRichText content={body as RichtextStoryblok} />
 		</ActionBanner>
