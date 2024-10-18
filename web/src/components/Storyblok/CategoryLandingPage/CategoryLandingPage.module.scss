@@ -1,0 +1,11 @@
+
+.categoryLandingPage {
+  // page overrides for DS components
+  :global(.action-banner--full-width) {
+    margin-bottom: 0;
+  }
+  :global(.action-banner--full-width-subtle) {
+    margin-bottom: 0;
+  }
+
+}
