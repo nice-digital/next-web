@@ -11,16 +11,15 @@ export interface StoryblokActionBannerProps {
 	className?: string;
 }
 
-export const StoryblokActionBanner: React.FC<StoryblokActionBannerProps> = ({
-	blok,
-	className = undefined,
-}: StoryblokActionBannerProps) => {
-	const { heading, body, cta, image } = blok;
+export const StoryblokActionBannerFullWidth: React.FC<
+	StoryblokActionBannerProps
+> = ({ blok, className = undefined }: StoryblokActionBannerProps) => {
+	const { heading, body, cta, image, variant } = blok;
 
 	return (
 		<ActionBanner
 			title={heading}
-			variant="fullWidth"
+			variant={variant === "fullWidthSubtle" ? "fullWidthSubtle" : "fullWidth"}
 			cta={<StoryblokButtonLink button={cta[0]} />}
 			image={
 				image.filename

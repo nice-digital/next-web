@@ -15,7 +15,7 @@ import { Metadata } from "@/components/Storyblok/Metadata/Metadata";
 import { NestedRichText } from "@/components/Storyblok/NestedRichText/NestedRichText";
 import { PromoBox } from "@/components/Storyblok/PromoBox/PromoBox";
 import { Spotlight } from "@/components/Storyblok/Spotlight/Spotlight";
-import { StoryblokActionBanner } from "@/components/Storyblok/StoryblokActionBanner/StoryblokActionBanner";
+import { StoryblokActionBannerFullWidth } from "@/components/Storyblok/StoryblokActionBanner/StoryblokActionBannerFullWidth";
 import { StoryblokHero } from "@/components/Storyblok/StoryblokHero/StoryblokHero";
 import { logger } from "@/logger";
 import { type NewsStory } from "@/types/News";
@@ -65,7 +65,7 @@ export default function Home(props: HomePageProps): React.ReactElement {
 	}
 
 	setComponents({
-		actionBanner: StoryblokActionBanner,
+		actionBanner: StoryblokActionBannerFullWidth,
 		hero: StoryblokHero,
 		homepage: Homepage,
 		homepageHero: HomepageHero,
