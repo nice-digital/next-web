@@ -73,7 +73,7 @@ export default getProductListPage({
 			As we develop guidance, we identify gaps and uncertainties in the evidence
 			base which could benefit from further research. The most important
 			unanswered questions are developed into research recommendations. Read our{" "}
-			<a href="https://www.nice.org.uk/Media/Default/About/what-we-do/Science-policy-and-research/research-recommendation-process-methods-guide-2015.pdf">
+			<a href="https://www.nice.org.uk/process/pmg45">
 				process and methods guide
 			</a>
 			.
