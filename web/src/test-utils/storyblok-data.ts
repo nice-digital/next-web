@@ -1,6 +1,6 @@
 // Dump any useful test objects in here for mocking Storyblok responses
 
-import { type StoryblokStory } from "storyblok-generate-ts";
+import { ISbStoryData } from "@storyblok/react";
 
 import {
 	type AuthorStoryblok,
@@ -28,7 +28,6 @@ export const mockStoryblokStory = {
 	parent_id: 987654321,
 	meta_data: null,
 	group_id: "5625b207-7bb8-4410-aac3-3d7d5743f97a",
-	release_id: null,
 	lang: "default",
 	path: undefined,
 	alternates: [],
@@ -42,7 +41,7 @@ export const mockStoryblokStory = {
 	],
 };
 
-export const mockAuthorBlok: StoryblokStory<AuthorStoryblok> = {
+export const mockAuthorBlok: ISbStoryData<AuthorStoryblok> = {
 	...mockStoryblokStory,
 	name: "Test Author title",
 	content: {
@@ -166,7 +165,7 @@ export const mockRichText: RichtextStoryblok = {
 	],
 };
 
-export const mockNewsArticle: StoryblokStory<NewsArticleStoryblok> = {
+export const mockNewsArticle: ISbStoryData<NewsArticleStoryblok> = {
 	...mockStoryblokStory,
 	id: 987654,
 	name: "Test news article title",
@@ -221,7 +220,7 @@ export const mockNewsArticle: StoryblokStory<NewsArticleStoryblok> = {
 	},
 };
 
-export const mockBlogPost: StoryblokStory<BlogPostStoryblok> = {
+export const mockBlogPost: ISbStoryData<BlogPostStoryblok> = {
 	...mockStoryblokStory,
 	name: "Test blog post title",
 	content: {
@@ -242,7 +241,7 @@ export const mockBlogPost: StoryblokStory<BlogPostStoryblok> = {
 	},
 };
 
-export const mockPodcastPage: StoryblokStory<PodcastStoryblok> = {
+export const mockPodcastPage: ISbStoryData<PodcastStoryblok> = {
 	...mockStoryblokStory,
 	name: "Test podcast title",
 	content: {
@@ -293,7 +292,7 @@ export const mockImageAsset: AssetStoryblok = {
 	name: "Delicious bacon",
 };
 
-export const mockIndepthArticle: StoryblokStory<InDepthArticleStoryblok> = {
+export const mockIndepthArticle: ISbStoryData<InDepthArticleStoryblok> = {
 	...mockStoryblokStory,
 	name: "sample indepth test",
 	id: 476215653,

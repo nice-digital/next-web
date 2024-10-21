@@ -1,5 +1,5 @@
+import { ISbStoryData } from "@storyblok/react";
 import Link from "next/link";
-import { StoryblokStory } from "storyblok-generate-ts";
 
 import { Tag } from "@nice-digital/nds-tag";
 
@@ -17,7 +17,7 @@ import {
 import styles from "./FeaturedStory.module.scss";
 
 interface FeaturedStoryProps {
-	story: StoryblokStory<NewsStory>;
+	story: ISbStoryData<NewsStory>;
 	headingLevel?: number;
 }
 

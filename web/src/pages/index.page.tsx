@@ -1,11 +1,11 @@
 import {
+	type ISbStoryData,
 	type ISbStoriesParams,
 	StoryblokComponent,
 	setComponents,
 } from "@storyblok/react";
 import { NextSeo } from "next-seo";
 import React, { useMemo } from "react";
-import { StoryblokStory } from "storyblok-generate-ts";
 
 import { ErrorPageContent } from "@/components/ErrorPageContent/ErrorPageContent";
 import { CardGrid } from "@/components/Storyblok/CardGrid/CardGrid";
@@ -38,8 +38,8 @@ export type HomePageErrorProps = {
 };
 
 export type HomePageSuccessProps = {
-	story: StoryblokStory<HomepageStoryblok>;
-	latestNews: StoryblokStory<NewsStory>[];
+	story: ISbStoryData<HomepageStoryblok>;
+	latestNews: ISbStoryData<NewsStory>[];
 };
 
 export type HomePageProps = HomePageErrorProps | HomePageSuccessProps;
@@ -51,9 +51,10 @@ export default function Home(props: HomePageProps): React.ReactElement {
 		if (story) {
 			return getAdditionalMetaTags(story);
 		} else {
-			logger.error(
-				`Story is not available for additionalMetaTags in BlogPostPage.`
-			);
+			//TODO this needs moving to the function as it is generating a lot of noise
+			// logger.error(
+			// 	`Story is not available for additionalMetaTags in HomePage.`
+			// );
 			return undefined;
 		}
 	}, [story]);
@@ -116,7 +117,7 @@ export async function getServerSideProps(context: GetServerSidePropsContext) {
 
 		// Check if we've got a featured story - if so, we need to exclude it
 		const featuredStory = storyResult.story?.content
-			.featuredStory as StoryblokStory<NewsArticleStoryblok>;
+			.featuredStory as ISbStoryData<NewsArticleStoryblok>;
 		if (featuredStory.id) {
 			latestNewsParams.excluding_ids = featuredStory.id.toString();
 		}
@@ -135,6 +136,11 @@ export async function getServerSideProps(context: GetServerSidePropsContext) {
 
 		return result;
 	} catch (error) {
+		// {
+		// 	errorCause: error instanceof Error && error.cause,
+		// 	requestHeaders: context.req.headers,
+		// },
+		logger.error(`Error fetching Homepage from gssp`);
 		return {
 			props: {
 				error: GENERIC_ERROR_MESSAGE,

@@ -8,6 +8,10 @@ import { render, screen } from "@/test-utils/rendering";
 import { CopyToClipboard } from "./CopyToClipboard";
 
 jest.mock("@/logger", () => ({
+	logger: {
+		error: jest.fn(),
+		info: jest.fn(),
+	},
 	useLogger: jest.fn(() => ({
 		error: jest.fn(),
 	})),

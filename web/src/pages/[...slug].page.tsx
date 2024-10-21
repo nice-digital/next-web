@@ -1,7 +1,10 @@
-import { StoryblokComponent, setComponents } from "@storyblok/react";
+import {
+	type ISbStoryData,
+	StoryblokComponent,
+	setComponents,
+} from "@storyblok/react";
 import { NextSeo } from "next-seo";
 import React, { useMemo } from "react";
-import { StoryblokStory } from "storyblok-generate-ts";
 
 import { ErrorPageContent } from "@/components/ErrorPageContent/ErrorPageContent";
 import { Blockquote } from "@/components/Storyblok/Blockquote/Blockquote";
@@ -29,12 +32,13 @@ import {
 	getSlugFromParams,
 	getAdditionalMetaTags,
 	getBreadcrumbs,
+	GENERIC_ERROR_MESSAGE,
 } from "@/utils/storyblok";
 
 import type { GetServerSidePropsContext } from "next";
 
 export type SlugCatchAllSuccessProps = {
-	story: StoryblokStory<InfoPageStoryblok | CategoryNavigationStoryblok>;
+	story: ISbStoryData<InfoPageStoryblok | CategoryNavigationStoryblok>;
 	breadcrumbs: Breadcrumb[];
 	siblingPages?: string[];
 	component: string;
@@ -51,6 +55,9 @@ export type SlugCatchAllProps =
 export default function SlugCatchAll(
 	props: SlugCatchAllProps
 ): React.ReactElement {
+	logger.info(
+		`SlugCatchAll page rendered with props: ${JSON.stringify(props)}`
+	);
 	const story = "story" in props ? props.story : null;
 
 	const additionalMetaTags = useMemo(() => {
@@ -58,7 +65,7 @@ export default function SlugCatchAll(
 			return getAdditionalMetaTags(story);
 		} else {
 			logger.error(
-				`Story is not available for additionalMetaTags in BlogPostPage.`
+				`Story is not available for additionalMetaTags in SlugCatchAllPage.`
 			);
 			return undefined;
 		}
@@ -147,6 +154,13 @@ export async function getServerSideProps(context: GetServerSidePropsContext) {
 		]);
 
 		// will return a 404 if the story is not found
+		if ("notFound" in storyResult) {
+			// { storyResult },
+			logger.error(
+				`Story not found for slug: ${slug} in root [...slug] catch all.`
+			);
+			return storyResult;
+		}
 		if ("notFound" in storyResult) return storyResult;
 
 		const siblingPages = [];
@@ -168,9 +182,16 @@ export async function getServerSideProps(context: GetServerSidePropsContext) {
 
 		return result;
 	} catch (error) {
+		// {
+		// 	errorCause: error instanceof Error && error.cause,
+		// 	requestHeaders: context.req.headers,
+		// },
+		logger.error(
+			`Error fetching story for slug: ${slug} in SlugCatchAll page getServerSideProps.`
+		);
 		return {
 			props: {
-				error: "Oops! Something went wrong. Please try again later.",
+				error: GENERIC_ERROR_MESSAGE,
 			},
 		};
 	}

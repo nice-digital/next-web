@@ -1,6 +1,6 @@
+import { ISbStoryData } from "@storyblok/react";
 import { NextSeo } from "next-seo";
 import React from "react";
-import { StoryblokStory } from "storyblok-generate-ts";
 
 import { Breadcrumbs, Breadcrumb } from "@nice-digital/nds-breadcrumbs";
 import { PageHeader } from "@nice-digital/nds-page-header";
@@ -13,6 +13,7 @@ import { NewsListNav } from "@/components/Storyblok/News/NewsListNav/NewsListNav
 import { NewsListPagination } from "@/components/Storyblok/News/NewsListPagination/NewsListPagination";
 import { NewsListPaginationAnnouncer } from "@/components/Storyblok/News/NewsListPaginationAnnouncer/NewsListPaginationAnnouncer";
 import { PaginationFocusedElement } from "@/components/Storyblok/News/NewsListPaginationFocus/NewsListPaginationFocus";
+import { logger } from "@/logger";
 import { NewsStory } from "@/types/News";
 import { GENERIC_ERROR_MESSAGE, validateRouteParams } from "@/utils/storyblok";
 
@@ -23,8 +24,8 @@ export type NewsArticleErrorProps = {
 };
 
 export type NewsArticlesSuccessProps = {
-	featuredStory?: StoryblokStory<NewsStory> | null;
-	stories: StoryblokStory<NewsStory>[];
+	featuredStory?: ISbStoryData<NewsStory> | null;
+	stories: ISbStoryData<NewsStory>[];
 	total: number;
 	currentPage: number;
 	perPage: number;
@@ -90,9 +91,10 @@ export const ArticlesIndexPage = (
 	);
 };
 
-export const getServerSideProps = async ({
-	query,
-}: GetServerSidePropsContext) => {
+export const getServerSideProps = async (
+	context: GetServerSidePropsContext
+) => {
+	const { query } = context;
 	try {
 		const result = await validateRouteParams<NewsArticlesProps>({
 			query,
@@ -117,6 +119,14 @@ export const getServerSideProps = async ({
 			},
 		};
 	} catch (error) {
+		// {
+		// 	errorCause: error instanceof Error && error.cause,
+		// 	requestHeaders: context.req.headers,
+		// },
+		logger.error(
+			`Error fetching news article listing at page ${query.page || 1} from gssp`
+		);
+
 		return {
 			props: {
 				error: GENERIC_ERROR_MESSAGE,
