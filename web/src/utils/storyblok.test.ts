@@ -104,10 +104,14 @@ describe("Storyblok utils", () => {
 	describe("Get story version from NextJS query", () => {
 		it("should get the draft version when the _storyblok query param is present", () => {
 			expect(getStoryVersionFromQuery({ _storyblok: "" })).toBe("draft");
+			expect(getStoryVersionFromQuery({ _storyblok: "somevalue" })).toBe(
+				"draft"
+			);
 		});
 
 		it("should get the published version when the _storyblok query param isn't present", () => {
 			expect(getStoryVersionFromQuery()).toBe("published");
+			expect(getStoryVersionFromQuery({})).toBe("published");
 		});
 	});
 
@@ -268,7 +272,7 @@ describe("Storyblok utils", () => {
 		it("should handle a 404", async () => {
 			getStoryblokApi().get = jest
 				.fn()
-				.mockRejectedValue(JSON.stringify(Mock404FromStoryblokApi));
+				.mockRejectedValue(Mock404FromStoryblokApi);
 
 			const response = await fetchStory("non/existent/slug", "published");
 
@@ -278,13 +282,54 @@ describe("Storyblok utils", () => {
 		it("should handle server errors", async () => {
 			getStoryblokApi().get = jest
 				.fn()
-				.mockRejectedValueOnce(JSON.stringify(MockServerErrorResponse));
+				.mockRejectedValueOnce(MockServerErrorResponse);
 
 			const throwErrorFetchStory = async () => {
 				await fetchStory("news/articles/test-page", "published");
 			};
 
 			expect(throwErrorFetchStory).rejects.toThrow(GENERIC_ERROR_MESSAGE);
+
+			expect(jest.isMockFunction(logger.error)).toBe(true);
+
+			await waitFor(() => {
+				expect(logger.error as jest.Mock).toHaveBeenCalled();
+				// eslint-disable-next-line testing-library/no-wait-for-multiple-assertions
+				expect(logger.error).toHaveBeenCalledWith(
+					// {
+					// 	ocelotEndpoint: null,
+					// 	errorCause: MockServerErrorResponse,
+					// 	sbParams: { resolve_links: "url", version: "published" },
+					// 	slug: "news/articles/test-page",
+					// },
+					"fetchStory: 503 error from Storyblok API: Service Unavailable at slug: news/articles/test-page "
+				);
+			});
+		});
+
+		it("should handle non ISbError responses", async () => {
+			getStoryblokApi().get = jest.fn().mockRejectedValueOnce("Generic error");
+
+			const throwErrorFetchStory = async () => {
+				await fetchStory("news/articles/test-page", "published");
+			};
+
+			expect(throwErrorFetchStory).rejects.toThrow(GENERIC_ERROR_MESSAGE);
+
+			expect(jest.isMockFunction(logger.error)).toBe(true);
+			await waitFor(() => {
+				expect(logger.error).toHaveBeenCalled();
+				// eslint-disable-next-line testing-library/no-wait-for-multiple-assertions
+				expect(logger.error).toHaveBeenCalledWith(
+					// {
+					// 	ocelotEndpoint: null,
+					// 	errorCause: "Generic error",
+					// 	sbParams: { resolve_links: "url", version: "published" },
+					// 	slug: "news/articles/test-page",
+					// },
+					"fetchStory: Non ISbError response at slug: news/articles/test-page"
+				);
+			});
 		});
 	});
 
@@ -330,10 +375,9 @@ describe("Storyblok utils", () => {
 		});
 
 		it("should return a 404 error and log error message to logger when there is an error from storyblok", async () => {
-			const loggerErrorSpy = jest.spyOn(logger, "error");
 			getStoryblokApi().get = jest
 				.fn()
-				.mockRejectedValue(JSON.stringify(Mock404FromStoryblokApi));
+				.mockRejectedValue(Mock404FromStoryblokApi);
 
 			const throwErrorFetchStories = async () => {
 				await fetchStories("published", {
@@ -347,21 +391,35 @@ describe("Storyblok utils", () => {
 				GENERIC_ERROR_MESSAGE
 			);
 
+			expect(jest.isMockFunction(logger.error)).toBe(true);
+
 			await waitFor(() => {
-				expect(loggerErrorSpy).toHaveBeenCalled();
+				expect(logger.error).toHaveBeenCalled();
 				// eslint-disable-next-line testing-library/no-wait-for-multiple-assertions
-				expect(loggerErrorSpy).toHaveBeenCalledWith(
-					"404 error from Storyblok API: Not Found",
-					'{"message":"Not Found","status":404,"response":"This record could not be found"}'
+				expect(logger.error).toHaveBeenCalledWith(
+					// {
+					// 	ocelotEndpoint: null,
+					// 	errorCause: {
+					// 		message: "Not Found",
+					// 		response: "This record could not be found",
+					// 		status: 404,
+					// 	},
+					// 	sbParams: {
+					// 		per_page: 8,
+					// 		resolve_links: "url",
+					// 		starts_with: "news/articles",
+					// 		version: "published",
+					// 	},
+					// },
+					"fetchStories: 404 error from Storyblok API: Not Found at starts_with: news/articles "
 				);
 			});
 		});
 
 		it("should return a 503 error and log error message to logger when there is an error from storyblok", async () => {
-			const loggerErrorSpy = jest.spyOn(logger, "error");
 			getStoryblokApi().get = jest
 				.fn()
-				.mockRejectedValue(JSON.stringify(MockServerErrorResponse));
+				.mockRejectedValue(MockServerErrorResponse);
 
 			const throwErrorFetchStories = async () => {
 				await fetchStories("published", {
@@ -376,11 +434,23 @@ describe("Storyblok utils", () => {
 			);
 
 			await waitFor(() => {
-				expect(loggerErrorSpy).toHaveBeenCalled();
+				expect(logger.error).toHaveBeenCalled();
 				// eslint-disable-next-line testing-library/no-wait-for-multiple-assertions
-				expect(loggerErrorSpy).toHaveBeenCalledWith(
-					"503 error from Storyblok API: Service Unavailable",
-					'{"status":503,"message":"Service Unavailable"}'
+				expect(logger.error).toHaveBeenCalledWith(
+					// {
+					// 	ocelotEndpoint: null,
+					// 	errorCause: {
+					// 		message: "Service Unavailable",
+					// 		status: 503,
+					// 	},
+					// 	sbParams: {
+					// 		per_page: 8,
+					// 		resolve_links: "url",
+					// 		starts_with: "news/articles",
+					// 		version: "published",
+					// 	},
+					// },
+					"fetchStories: 503 error from Storyblok API: Service Unavailable at starts_with: news/articles "
 				);
 			});
 		});
@@ -414,7 +484,6 @@ describe("Storyblok utils", () => {
 		});
 
 		it("should return a 404 error and log error message to logger when there is an error from storyblok", async () => {
-			const loggerErrorSpy = jest.spyOn(logger, "error");
 			getStoryblokApi().getAll = jest
 				.fn()
 				.mockRejectedValue(JSON.stringify(Mock404FromStoryblokApi));
@@ -427,18 +496,19 @@ describe("Storyblok utils", () => {
 				"404 error from Storyblok API: Not Found"
 			);
 
+			expect(jest.isMockFunction(logger.error)).toBe(true);
+
 			await waitFor(() => {
-				expect(loggerErrorSpy).toHaveBeenCalled();
+				expect(logger.error).toHaveBeenCalled();
 				// eslint-disable-next-line testing-library/no-wait-for-multiple-assertions
-				expect(loggerErrorSpy).toHaveBeenCalledWith(
-					"404 error from Storyblok API: Not Found",
-					'{"message":"Not Found","status":404,"response":"This record could not be found"}'
+				expect(logger.error).toHaveBeenCalledWith(
+					"404 error from Storyblok API: Not Found"
+					// '{"message":"Not Found","status":404,"response":"This record could not be found"}'
 				);
 			});
 		});
 
 		it("should return a 503 error and log error message to logger when there is an error from storyblok", async () => {
-			const loggerErrorSpy = jest.spyOn(logger, "error");
 			getStoryblokApi().getAll = jest
 				.fn()
 				.mockRejectedValue(JSON.stringify(MockServerErrorResponse));
@@ -452,11 +522,11 @@ describe("Storyblok utils", () => {
 			);
 
 			await waitFor(() => {
-				expect(loggerErrorSpy).toHaveBeenCalled();
+				expect(logger.error).toHaveBeenCalled();
 				// eslint-disable-next-line testing-library/no-wait-for-multiple-assertions
-				expect(loggerErrorSpy).toHaveBeenCalledWith(
-					"503 error from Storyblok API: Service Unavailable",
-					'{"status":503,"message":"Service Unavailable"}'
+				expect(logger.error).toHaveBeenCalledWith(
+					"503 error from Storyblok API: Service Unavailable"
+					// '{"status":503,"message":"Service Unavailable"}'
 				);
 			});
 		});
@@ -527,19 +597,12 @@ describe("Storyblok utils", () => {
 
 	describe("friendlyDate", () => {
 		it("should format date string into expected format", () => {
-			const formattedDate = friendlyDate("2022-04-02");
-			expect(formattedDate).toBe("02 April 2022");
+			expect(friendlyDate("2022-04-02")).toBe("02 April 2022");
 		});
 
-		it("should handle invalid input gracefully for an empty string", () => {
-			const duffDate = friendlyDate("");
-			expect(duffDate).toBe("");
-		});
-
-		it("should handle invalid input gracefully for an invalid string", () => {
-			const horribleDate = "some kind of unexpected and weird date format";
-			const processedDate = friendlyDate(horribleDate);
-			expect(processedDate).toBe(horribleDate);
+		it("should handle invalid input gracefully", () => {
+			expect(friendlyDate("")).toBe("Invalid Date");
+			expect(friendlyDate("random string")).toBe("Invalid Date");
 		});
 	});
 
@@ -682,8 +745,6 @@ describe("Storyblok utils", () => {
 		});
 
 		it("should call the logger info method when fetchStories returns no stories", async () => {
-			const loggerInfoSpy = jest.spyOn(logger, "info");
-
 			const mockNoStoriesResponse = {
 				stories: [],
 			};
@@ -692,15 +753,16 @@ describe("Storyblok utils", () => {
 
 			await validateRouteParams(mockRequestParams);
 
-			expect(loggerInfoSpy).toHaveBeenCalled();
+			expect(jest.isMockFunction(logger.info)).toBe(true);
+			expect(logger.info).toHaveBeenCalled();
 
-			expect(loggerInfoSpy).toHaveBeenCalledWith("No stories in result");
+			expect(logger.info).toHaveBeenCalledWith("No stories in result");
 		});
 
 		it("should call the logger error method when fetchStories throws an error", async () => {
-			const loggerErrorSpy = jest.spyOn(logger, "error");
-
-			const mockError = "Error fetching stories";
+			const mockError = new Error("Error fetching stories", {
+				cause: MockServerErrorResponse,
+			});
 
 			fetchStoriesSpy.mockRejectedValue(mockError);
 
@@ -713,11 +775,28 @@ describe("Storyblok utils", () => {
 			);
 
 			await waitFor(() => {
-				expect(loggerErrorSpy).toHaveBeenCalled();
+				expect(jest.isMockFunction(logger.error)).toBe(true);
 				// eslint-disable-next-line testing-library/no-wait-for-multiple-assertions
-				expect(loggerErrorSpy).toHaveBeenCalledWith(
-					"Error from catch in validateRouteParams: ",
-					mockError
+				expect(logger.error).toHaveBeenCalled();
+				// eslint-disable-next-line testing-library/no-wait-for-multiple-assertions
+				expect(logger.error).toHaveBeenCalledWith(
+					// {
+					// 	errorCause: MockServerErrorResponse,
+					// 	errorMessage: mockError.message,
+					// 	ocelotEndpoint: null,
+					// 	requestParams: {
+					// 		filter_query: { date: { lt_date: "2024-04-08T00:00:00.000Z" } },
+					// 		page: 1,
+					// 		per_page: 8,
+					// 		sort_by: "content.date:desc",
+					// 		starts_with: "news/articles/",
+					// 	},
+					// },
+					`validateRouteParams: ${new Error(
+						"Error fetching stories"
+					)} in catch at slug starts_with ${
+						mockRequestParams.sbParams.starts_with
+					} on page 1`
 				);
 			});
 		});

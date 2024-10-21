@@ -5,7 +5,6 @@ import {
 } from "@storyblok/react";
 import { NextSeo } from "next-seo";
 import React, { useMemo } from "react";
-// import { StoryblokStory } from "storyblok-generate-ts";
 
 import { ErrorPageContent } from "@/components/ErrorPageContent/ErrorPageContent";
 import { Blockquote } from "@/components/Storyblok/Blockquote/Blockquote";
@@ -104,6 +103,8 @@ export async function getServerSideProps(context: GetServerSidePropsContext) {
 
 	const version = getStoryVersionFromQuery(query);
 
+	logger.info("Fetching news article from storyblok at path", params?.slug);
+
 	try {
 		const pagePath = `news/articles/${slug}`;
 
@@ -112,6 +113,14 @@ export async function getServerSideProps(context: GetServerSidePropsContext) {
 			fetchStory<NewsArticleStoryblok>(pagePath, version),
 			getBreadcrumbs(pagePath, version),
 		]);
+
+		logger.info(
+			{
+				data: storyResult,
+				requestHeaders: context.req.headers,
+			},
+			`Fetched news article from storyblok at path: ${slug}`
+		);
 
 		if ("notFound" in storyResult) {
 			return {
@@ -136,6 +145,12 @@ export async function getServerSideProps(context: GetServerSidePropsContext) {
 
 		return result;
 	} catch (error) {
+		// {
+		// 	"Cache-Control-Request": context.req.headers["cache-control"],
+		// 	errorCause: error instanceof Error && error.cause,
+		// 	requestHeaders: context.req.headers,
+		// },
+		logger.error(`Error fetching news article at path ${slug} from gssp`);
 		return {
 			props: {
 				error: GENERIC_ERROR_MESSAGE,

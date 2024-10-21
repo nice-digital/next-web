@@ -16,7 +16,7 @@ import { GuidanceListNav } from "../ProductListNav/GuidanceListNav";
 import { getProductListPage } from "./ProductListPage";
 
 jest.mock("@/logger", () => ({
-	logger: { error: jest.fn() },
+	logger: { error: jest.fn(), info: jest.fn() },
 	useLogger: jest.fn(() => ({ error: jest.fn() })),
 }));
 

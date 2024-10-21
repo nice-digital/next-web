@@ -82,20 +82,21 @@ export default function BlogPostPage(props: BlogPageProps): React.ReactElement {
 export async function getServerSideProps(context: GetServerSidePropsContext) {
 	const { query, params } = context;
 
+	// Resolve slug from params
+	const slug = getSlugFromParams(params?.slug);
+
+	if (!slug) {
+		return {
+			notFound: true,
+		};
+	}
+
+	const version = getStoryVersionFromQuery(query);
+	const pagePath = `news/blogs/${slug}`;
+
+	logger.info("Fetching blog post from storyblok at path", pagePath);
+
 	try {
-		// Resolve slug from params
-		const slug = getSlugFromParams(params?.slug);
-
-		if (!slug) {
-			return {
-				notFound: true,
-			};
-		}
-
-		const version = getStoryVersionFromQuery(query);
-
-		const pagePath = `news/blogs/${slug}`;
-
 		// Get the story and its breadcrumbs
 		const [storyResult, breadcrumbs] = await Promise.all([
 			fetchStory<BlogPostStoryblok>(pagePath, version, {
@@ -104,19 +105,35 @@ export async function getServerSideProps(context: GetServerSidePropsContext) {
 			getBreadcrumbs(pagePath, version),
 		]);
 
+		logger.info(
+			{
+				data: storyResult,
+				requestHeaders: context.req.headers,
+			},
+			`Fetched blog post from storyblok at path: ${pagePath}`
+		);
+
 		if ("notFound" in storyResult) {
 			return {
 				notFound: true,
 			};
 		}
 
-		return {
+		const result = {
 			props: {
 				...storyResult,
 				breadcrumbs,
 			},
 		};
+
+		return result;
 	} catch (error) {
+		// {
+		// 	"Cache-Control-Request": context.req.headers["cache-control"],
+		// 	errorCause: error instanceof Error && error.cause,
+		// 	requestHeaders: context.req.headers,
+		// },
+		logger.error(`Error fetching blog post at path ${slug} from gssp`);
 		return {
 			props: {
 				error: GENERIC_ERROR_MESSAGE,

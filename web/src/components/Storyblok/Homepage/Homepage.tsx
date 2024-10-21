@@ -1,5 +1,4 @@
-import { StoryblokComponent } from "@storyblok/react";
-import { StoryblokStory } from "storyblok-generate-ts";
+import { StoryblokComponent, ISbStoryData } from "@storyblok/react";
 
 import { StoryblokRichText } from "@/components/Storyblok/StoryblokRichText/StoryblokRichText";
 import { type NewsStory } from "@/types/News";
@@ -10,7 +9,7 @@ import { HomepageLatestNews } from "./HomepageLatestNews/HomepageLatestNews";
 
 interface HomepageBlokProps {
 	blok: HomepageStoryblok;
-	latestNews: StoryblokStory<NewsStory>[];
+	latestNews: ISbStoryData<NewsStory>[];
 }
 
 export const Homepage = ({
@@ -48,7 +47,7 @@ export const Homepage = ({
 
 			{/* Latest news */}
 			<HomepageLatestNews
-				featuredStory={featuredStory as StoryblokStory<NewsStory>}
+				featuredStory={featuredStory as ISbStoryData<NewsStory>}
 				latestNews={latestNews}
 			/>
 

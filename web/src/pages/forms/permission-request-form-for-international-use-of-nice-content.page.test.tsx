@@ -3,18 +3,18 @@ import { GetServerSidePropsContext } from "next";
 
 import { FormProps } from "@/components/JotFormPage/getGetServerSideProps";
 
-import LifeSciencesContactUsForm, {
+import UseOfNICEContentInternationalForm, {
 	getServerSideProps,
-} from "./life-sciences-contact-us.page";
+} from "./permission-request-form-for-international-use-of-nice-content.page";
 
 jest.mock("@/feeds/jotform/jotform", () => ({
 	getForm: jest.fn().mockResolvedValue({
 		responseCode: 200,
 		message: "success",
 		content: {
-			id: "242062773274053",
+			id: "241962582676065",
 			username: "nice_teams",
-			title: "NICE Advice contact us form",
+			title: "Permission request form for international use of NICE content",
 			height: "539",
 			status: "ENABLED",
 			created_at: "2022-12-08 06:31:44",
@@ -25,20 +25,21 @@ jest.mock("@/feeds/jotform/jotform", () => ({
 			type: "LEGACY",
 			favorite: "0",
 			archived: "0",
-			url: "https://nice.jotform.com/242062773274053",
+			url: "https://nice.jotform.com/241962582676065",
 		},
 		duration: "14.98ms",
 	}),
 }));
 
-describe("LifeSciencesContactUsForm", () => {
+describe("UseOfNICEContentInternationalForm", () => {
 	it("should match snapshot", async () => {
 		const props = (await getServerSideProps({
-			resolvedUrl: "/forms/life-sciences-contact-us",
+			resolvedUrl:
+				"/forms/permission-request-form-for-international-use-of-nice-content",
 		} as GetServerSidePropsContext)) as { props: FormProps };
 
 		const { container } = render(
-			<LifeSciencesContactUsForm {...props.props} />
+			<UseOfNICEContentInternationalForm {...props.props} />
 		);
 
 		expect(container).toMatchSnapshot();

@@ -1,10 +1,10 @@
 import libSlugify from "@sindresorhus/slugify";
 
 import {
-	ProjectStatus,
-	type ProjectDetail,
 	ProjectGroup,
+	ProjectStatus,
 	ProjectType,
+	type ProjectDetail,
 } from "@/feeds/inDev/types";
 import {
 	ProductGroup,
@@ -131,8 +131,9 @@ export const getPublicationPdfDownloadPath = (
 			"UploadAndConvertContentPart"
 		);
 
-	if (!uploadAndConvertContentPart || uploadAndConvertContentPart.length == 0)
+	if (!uploadAndConvertContentPart) {
 		return null;
+	}
 
 	const rootPath = getProductPath({
 		...product,
