@@ -1,5 +1,5 @@
-import { NextSeo } from "next-seo";
 import { useRouter } from "next/router";
+import { NextSeo } from "next-seo";
 import pluralize from "pluralize";
 import {
 	ElementType,
@@ -69,6 +69,7 @@ export type GetProductListPageOptions = {
 	showDateFilter: boolean;
 	showTextFilter?: boolean;
 	dateFilterLabel?: string;
+	textFilterLabel?: string;
 	textFilterHeading?: string;
 	useFutureDates?: boolean;
 	tableBodyRender: (documents: Document[]) => JSX.Element;
@@ -76,7 +77,6 @@ export type GetProductListPageOptions = {
 } & (
 	| {
 			showDateFilter: true;
-			dateFilterLabel: string;
 			useFutureDates: boolean;
 	  }
 	| {
@@ -180,16 +180,16 @@ export const getProductListPage =
 					preheading={preheading}
 					heading={heading}
 					id="content-start"
+					className={`page-header ${styles.pageHeader}`}
 					data-testid="content-start"
 					lead={
 						<>
 							<SkipLink targetId="filters">Skip to filters</SkipLink>
 							<SkipLink targetId="results">Skip to results</SkipLink>
+							{intro}
 						</>
 					}
 				/>
-
-				{intro}
 
 				<ListNavType />
 

@@ -80,7 +80,7 @@ exports[`/guidance/indevelopment should match the snapshot 1`] = `
 }
         </script>
         <div
-          class="page-header "
+          class="page-header pageHeader"
           data-component="page-header"
           data-testid="content-start"
           id="content-start"
