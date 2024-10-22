@@ -19,6 +19,7 @@ const mockBlogPost = mockBlogPostSuccessResponse.data
 	.story as unknown as ISbStoryData<BlogPostStoryblok>;
 
 const mockBreadcrumbs = [
+	{ title: "Home", path: "/" },
 	{ title: "News", path: "/news" },
 	{ title: "Blogs", path: "/news/blogs" },
 ];
@@ -41,8 +42,10 @@ describe("BlogPostPage", () => {
 
 	describe("getServerSideProps", () => {
 		let fetchStorySpy: jest.SpyInstance;
+		let getBreadcrumbs: jest.SpyInstance;
 		beforeEach(() => {
 			fetchStorySpy = jest.spyOn(storyblokUtils, "fetchStory");
+			getBreadcrumbs = jest.spyOn(storyblokUtils, "getBreadcrumbs");
 		});
 
 		afterEach(() => {
@@ -176,6 +179,7 @@ describe("BlogPostPage", () => {
 
 		it("should fetch story and return it with breadcrumbs when slug is provided", async () => {
 			fetchStorySpy.mockResolvedValue({ story: mockBlogPost });
+			getBreadcrumbs.mockResolvedValue(mockBreadcrumbs);
 
 			const context = {
 				query: { version: "published" },

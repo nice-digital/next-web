@@ -21,6 +21,7 @@ import {
 	getSlugFromParams,
 	getAdditionalMetaTags,
 	GENERIC_ERROR_MESSAGE,
+	getBreadcrumbs,
 } from "@/utils/storyblok";
 
 import type { GetServerSidePropsContext } from "next";
@@ -91,23 +92,25 @@ export async function getServerSideProps(context: GetServerSidePropsContext) {
 	}
 
 	const version = getStoryVersionFromQuery(query);
+	const pagePath = `news/blogs/${slug}`;
 
-	logger.info("Fetching blog post from storyblok at path", params?.slug);
+	logger.info("Fetching blog post from storyblok at path", pagePath);
 
 	try {
 		// Get the story and its breadcrumbs
-		const storyResult = await fetchStory<BlogPostStoryblok>(
-			`news/blogs/${slug}`,
-			version,
-			{ resolve_relations: "blogPost.author" }
-		);
+		const [storyResult, breadcrumbs] = await Promise.all([
+			fetchStory<BlogPostStoryblok>(pagePath, version, {
+				resolve_relations: "blogPost.author",
+			}),
+			getBreadcrumbs(pagePath, version),
+		]);
 
 		logger.info(
 			{
 				data: storyResult,
 				requestHeaders: context.req.headers,
 			},
-			`Fetched blog post from storyblok at path: ${slug}`
+			`Fetched blog post from storyblok at path: ${pagePath}`
 		);
 
 		if ("notFound" in storyResult) {
@@ -115,11 +118,6 @@ export async function getServerSideProps(context: GetServerSidePropsContext) {
 				notFound: true,
 			};
 		}
-
-		const breadcrumbs = [
-			{ title: "News", path: "/news" },
-			{ title: "Blogs", path: "/news/blogs" },
-		];
 
 		const result = {
 			props: {
