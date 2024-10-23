@@ -8,8 +8,8 @@ import {
 	ProjectDetail,
 } from "@/feeds/inDev/inDev";
 import {
-	getProductDetail,
 	getAllProductTypes,
+	getProductDetail,
 } from "@/feeds/publications/publications";
 import {
 	type ProductDetail,
@@ -226,6 +226,29 @@ export const validateRouteParams = async ({
 			permanent: true,
 		},
 	};
+};
+
+export const redirectWithdrawnProducts = (
+	product: ProductDetail,
+	productPath: string,
+	permanent = true
+): { redirect: Redirect } | false => {
+	const isFullyWithdrawn = product.productStatus === "Withdrawn";
+	const isTempWithdrawn = product.productStatus === "TemporarilyWithdrawn";
+
+	if (isFullyWithdrawn || isTempWithdrawn) {
+		logger.info(
+			`Product with id ${product.id} has '${product.productStatus}' status`
+		);
+		return {
+			redirect: {
+				permanent: permanent,
+				destination: productPath,
+			},
+		};
+	}
+
+	return false;
 };
 
 /**
