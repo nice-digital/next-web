@@ -33,8 +33,7 @@ export const getServerSideProps: GetServerSideProps<
 		return isWithdrawn;
 	}
 
-	if (!product.embedded.contentPartList2?.embedded.contentParts)
-		return { notFound: true };
+	if (!product.contentPartsList?.length) return { notFound: true };
 
 	if (!pdfDownloadPath)
 		return {
@@ -49,7 +48,7 @@ export const getServerSideProps: GetServerSideProps<
 			},
 		};
 
-	const { contentParts } = product.embedded.contentPartList2.embedded;
+	const contentParts = product.contentPartsList;
 
 	const uploadAndConvertContentPart =
 			fetchAndMapContentParts<UploadAndConvertContentPart>(
@@ -62,7 +61,7 @@ export const getServerSideProps: GetServerSideProps<
 
 	if (!part) return { notFound: true };
 
-	const pdfHref = part.embedded.pdfFile.links.self[0].href;
+	const pdfHref = part.pdf.url;
 
 	return getServerSidePDF(await getFileStream(pdfHref), res);
 };
