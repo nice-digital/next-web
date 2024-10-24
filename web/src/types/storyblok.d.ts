@@ -153,8 +153,8 @@ export interface CategoryLandingPageStoryblok {
   header: (HeroStoryblok | PageHeaderStoryblok)[];
   metadata?: MetadataStoryblok[];
   content?: ActionBannerStoryblok[];
-  component: "categoryLandingPage";
   _uid: string;
+  component: "categoryLandingPage";
   [k: string]: any;
 }
 

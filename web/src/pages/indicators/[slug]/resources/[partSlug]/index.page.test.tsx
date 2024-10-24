@@ -23,8 +23,8 @@ const resourceUID = 3784329,
 	partUID = 4904490349,
 	partSlug = `resource-impact-statement-${resourceUID}-${partUID}`,
 	slug = `ng100`,
-	resourceHref = "/feeds/resource/29409",
-	partHTMLHref = "/feeds/supportingresource/29409/content/1/html",
+	resourceHref = "/newfeeds/resource/29409",
+	partHTMLHref = "/newfeeds/resource/29409/part/1/html",
 	productRoot = "guidance",
 	resolvedUrl = `/${productRoot}/${slug}/resources/${partSlug}`;
 
