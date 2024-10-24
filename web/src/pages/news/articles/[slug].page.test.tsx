@@ -37,8 +37,10 @@ describe("NewsArticlePage", () => {
 
 	describe("getServerSideProps", () => {
 		let fetchStorySpy: jest.SpyInstance;
+		let getBreadcrumbs: jest.SpyInstance;
 		beforeEach(() => {
 			fetchStorySpy = jest.spyOn(storyblokUtils, "fetchStory");
+			getBreadcrumbs = jest.spyOn(storyblokUtils, "getBreadcrumbs");
 		});
 
 		afterEach(() => {
@@ -166,6 +168,11 @@ describe("NewsArticlePage", () => {
 
 		it("should return the story and breadcrumbs", async () => {
 			fetchStorySpy.mockResolvedValue({ story: mockArticle });
+			getBreadcrumbs.mockResolvedValue([
+				{ title: "Home", path: "/" },
+				{ title: "News", path: "/news" },
+				{ title: "Articles", path: "/news/articles" },
+			]);
 			const context = {
 				query: {},
 				params: { slug: "test-slug" },
@@ -178,6 +185,7 @@ describe("NewsArticlePage", () => {
 				props: {
 					story: mockArticle,
 					breadcrumbs: [
+						{ title: "Home", path: "/" },
 						{ title: "News", path: "/news" },
 						{ title: "News articles", path: "/news/articles" },
 					],

@@ -36,10 +36,7 @@ describe("Publication tools and resources page", () => {
 			axiosJSONMock.reset();
 			axiosJSONMock.onGet(new RegExp(FeedPath.ProductDetail)).reply(200, {
 				...ng100,
-				_embedded: {
-					...ng100._embedded,
-					"nice.publications:related-resource-list": undefined,
-				},
+				RelatedResourceList: undefined,
 			});
 			addDefaultJSONFeedMocks();
 

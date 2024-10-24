@@ -8,6 +8,7 @@ import {
 	PDFFile,
 	EditableContentPart,
 	UploadAndConvertContentPart,
+	FileContent,
 } from "@/feeds/publications/publications";
 import { logger } from "@/logger";
 import { arrayify } from "@/utils/array";
@@ -92,17 +93,14 @@ export const getGetServerSidePropsFunc =
 
 		const fullResource = await getResourceDetail(resource);
 
-		if (
-			!fullResource ||
-			!fullResource.embedded.contentPartList2?.embedded.contentParts
-		) {
+		if (!fullResource || !fullResource.contentPartsList) {
 			logger.warn(
 				`Full resource with id ${resourceUID} in product ${product.id} can't be found`
 			);
 			return { notFound: true };
 		}
 
-		const { contentParts } = fullResource.embedded.contentPartList2.embedded;
+		const contentParts = fullResource.contentPartsList;
 
 		const editableContentPart = fetchAndMapContentParts<EditableContentPart>(
 				contentParts,
@@ -150,29 +148,23 @@ export const getGetServerSidePropsFunc =
 		}
 
 		let htmlBody = "",
-			pdfFile: PDFFile | null = null,
+			pdfFile: FileContent | null = null,
 			chapters: ChapterHeading[] = [],
 			chapterSections: OnThisPageSection[] = [];
 
 		if (editablePart) {
-			const fullEditablePartContent = await getChapterContent(
-				editablePart.embedded.htmlContent.links.self[0].href
-			);
+			const fullEditablePartContent = await getChapterContent(editablePart.url);
 
 			if (!fullEditablePartContent)
 				throw Error(
 					`Could not find editable part HTML for part ${editablePart.uid} in product ${product.id}`
 				);
-			htmlBody = fullEditablePartContent.content;
-			pdfFile = editablePart.embedded.pdfFile || null;
+			htmlBody = fullEditablePartContent as unknown as string;
+			pdfFile = editablePart.pdf || null;
 		} else if (convertPart) {
-			const chapterInfos = arrayify(
-					convertPart.embedded.htmlContent.embedded?.htmlChapterContentInfo
-				),
+			const chapterInfos = arrayify(convertPart.tableOfContents),
 				firstChapter = chapterInfos[0],
-				firstChapterContent = await getChapterContent(
-					firstChapter.links.self[0].href
-				);
+				firstChapterContent = await getChapterContent(firstChapter.url);
 
 			if (!firstChapterContent)
 				throw Error(
@@ -180,16 +172,14 @@ export const getGetServerSidePropsFunc =
 				);
 
 			htmlBody = firstChapterContent.content;
-			pdfFile = convertPart.embedded.pdfFile;
+			pdfFile = convertPart.pdf;
 			chapters = chapterInfos.map(({ title, chapterSlug }, i) => ({
 				title,
 				url:
 					`${productPath}/${resourceTypeSlug}/${params.partSlug}` +
 					(i === 0 ? "" : `/chapter/${chapterSlug}`),
 			}));
-			chapterSections = arrayify(
-				firstChapterContent.embedded?.htmlChapterSectionInfo
-			).map((s) => ({
+			chapterSections = arrayify(firstChapterContent.sections).map((s) => ({
 				slug: s.chapterSlug,
 				title: s.title,
 			}));

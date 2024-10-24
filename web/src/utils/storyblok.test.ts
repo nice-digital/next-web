@@ -563,6 +563,25 @@ describe("Storyblok utils", () => {
 			);
 
 			expect(result).toEqual([
+				{ path: "/", title: "Home" },
+				{ path: "/news", title: "News" },
+				{ path: "/news/podcasts", title: "Podcasts" },
+			]);
+		});
+
+		it("should include the current page in the breadbrumb if the parameter is set", async () => {
+			getStoryblokApi().getAll = jest
+				.fn()
+				.mockResolvedValue(MockLinksSuccessResponse.links);
+
+			const result = await getBreadcrumbs(
+				"news/podcasts/test-podcast-4",
+				"published",
+				true
+			);
+
+			expect(result).toEqual([
+				{ path: "/", title: "Home" },
 				{ path: "/news", title: "News" },
 				{ path: "/news/podcasts", title: "Podcasts" },
 				{ title: "Test podcast 4" },
