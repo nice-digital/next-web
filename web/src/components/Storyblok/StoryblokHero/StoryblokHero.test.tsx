@@ -64,4 +64,28 @@ describe("Storyblok Hero", () => {
 		render(<StoryblokHero {...heroBreadcrumbProps} />);
 		expect(screen.getAllByRole("link").length).toBe(breadcrumbs.length);
 	});
+
+	it("should apply the 'hero--dark' class when theme is 'impact'", () => {
+		const impactThemedProps: HeroBlokProps = {
+			...heroProps,
+			blok: { ...heroProps.blok, theme: "impact" },
+		};
+		render(<StoryblokHero {...impactThemedProps} />);
+		expect(screen.getByTestId("hero-container")).toHaveClass("hero--dark");
+	});
+
+	it("should not apply the 'hero--dark' class when theme is 'subtle'", () => {
+		const subtleThemedProps: HeroBlokProps = {
+			...heroProps,
+			blok: { ...heroProps.blok, theme: "subtle" },
+		};
+
+		render(<StoryblokHero {...subtleThemedProps} />);
+		expect(screen.getByTestId("hero-container")).not.toHaveClass("hero--dark");
+	});
+
+	it("should not apply the 'hero--dark' class when theme is undefined", () => {
+		render(<StoryblokHero {...heroProps} />);
+		expect(screen.getByTestId("hero-container")).not.toHaveClass("hero--dark");
+	});
 });

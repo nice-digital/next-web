@@ -14,6 +14,8 @@ exports[`Storyblok Hero should match snapshot with breadcrumbs 1`] = `
         <div
           class="hero"
           data-component="hero"
+          data-testid="hero-container"
+          description="The hero we deserve"
         >
           <div
             class="hero__container"
@@ -102,11 +104,6 @@ exports[`Storyblok Hero should match snapshot with breadcrumbs 1`] = `
               >
                 The hero we need
               </p>
-              <p
-                class="hero__description"
-              >
-                The hero we deserve
-              </p>
               <div
                 class="hero__actions"
               />
@@ -138,6 +135,8 @@ exports[`Storyblok Hero should match snapshot without breadcrumbs 1`] = `
         <div
           class="hero"
           data-component="hero"
+          data-testid="hero-container"
+          description="The hero we deserve"
         >
           <div
             class="hero__container"
@@ -154,11 +153,6 @@ exports[`Storyblok Hero should match snapshot without breadcrumbs 1`] = `
                 class="hero__intro"
               >
                 The hero we need
-              </p>
-              <p
-                class="hero__description"
-              >
-                The hero we deserve
               </p>
               <div
                 class="hero__actions"

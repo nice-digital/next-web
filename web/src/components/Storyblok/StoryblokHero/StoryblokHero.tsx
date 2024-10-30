@@ -43,6 +43,8 @@ export const StoryblokHero = ({
 			header={BreadcrumbComponent}
 			image={optimisedImage}
 			actions={action}
+			isDark={blok.theme === "impact" ? true : undefined}
+			data-testid="hero-container"
 		/>
 	);
 };
