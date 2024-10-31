@@ -17,6 +17,10 @@ export const heroProps: HeroBlokProps = {
 
 const breadcrumbs: TypeBreadcrumb[] = [
 	{
+		title: "Home",
+		path: "/",
+	},
+	{
 		title: "All about bacon",
 		path: "/bacon",
 	},
@@ -44,6 +48,6 @@ describe("Storyblok Hero", () => {
 
 	it("should render breadcrumbs if supplied", () => {
 		render(<StoryblokHero {...heroBreadcrumbProps} />);
-		expect(screen.getAllByRole("link").length).toBe(breadcrumbs.length + 1);
+		expect(screen.getAllByRole("link").length).toBe(breadcrumbs.length);
 	});
 });

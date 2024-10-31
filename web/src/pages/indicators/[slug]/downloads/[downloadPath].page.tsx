@@ -91,7 +91,7 @@ export const getServerSideProps: GetServerSideProps<
 
 	const {
 		part,
-		file: { mimeType, links, fileName },
+		file: { mimeType, url, fileName },
 	} = downloadable;
 
 	// Check the file extension matches
@@ -118,11 +118,7 @@ export const getServerSideProps: GetServerSideProps<
 		};
 	}
 
-	return getServerSideFile(
-		await getFileStream(links.self[0].href),
-		res,
-		mimeType
-	);
+	return getServerSideFile(await getFileStream(url), res, mimeType);
 };
 
 export default function ResourceDownload(): void {

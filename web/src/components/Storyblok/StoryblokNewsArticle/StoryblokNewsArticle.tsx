@@ -55,7 +55,7 @@ export const StoryblokNewsArticle = ({
 
 	const BreadcrumbComponent = breadcrumbs?.length ? (
 		<Breadcrumbs className="">
-			{[{ title: "Home", path: "/" }, ...breadcrumbs].map((breadcrumb) => (
+			{breadcrumbs.map((breadcrumb) => (
 				<Breadcrumb key={breadcrumb.title} to={breadcrumb.path}>
 					{breadcrumb.title}
 				</Breadcrumb>

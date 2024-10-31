@@ -9,22 +9,30 @@ import {
 	type StoryblokBlogPostProps,
 } from "./StoryblokBlogPost";
 
-describe("StoryblokBlogPost", () => {
-	const { content } = mockBlogPost;
-	const mockProps: StoryblokBlogPostProps = {
-		blok: { ...content },
-		breadcrumbs: [
-			{
-				title: "News",
-				path: "/news",
-			},
-			{
-				title: "Blog post",
-				path: "/news/blogs",
-			},
-		],
-	};
+/**  TODO: look to shape this based on mocking gssp from slug page,
+ 		   or mockApi when added or util mocks?
+**/
 
+const { content } = mockBlogPost;
+const mockProps: StoryblokBlogPostProps = {
+	blok: { ...content },
+	breadcrumbs: [
+		{
+			title: "Home",
+			path: "/",
+		},
+		{
+			title: "News",
+			path: "/news",
+		},
+		{
+			title: "Blog post",
+			path: "/news/blogs",
+		},
+	],
+};
+
+describe("StoryblokBlogPost", () => {
 	it("renders the title", () => {
 		render(<StoryblokBlogPost {...mockProps} />);
 		expect(screen.getByText(mockProps.blok.title)).toBeInTheDocument();
@@ -51,6 +59,7 @@ describe("StoryblokBlogPost", () => {
 	// Add more tests as needed for other parts of the component
 	it("renders the breadcrumbs", () => {
 		render(<StoryblokBlogPost {...mockProps} />);
+		expect(screen.getByRole("link", { name: "Home" })).toBeInTheDocument();
 		expect(screen.getByRole("link", { name: "News" })).toBeInTheDocument();
 		expect(screen.getByRole("link", { name: "Blog post" })).toBeInTheDocument();
 	});

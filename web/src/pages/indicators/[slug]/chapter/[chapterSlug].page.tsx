@@ -146,10 +146,9 @@ export const getServerSideProps: GetServerSideProps<
 		} = result,
 		chapters = getChapterLinks(product, productType.group);
 
-	if (!params || !product.embedded.contentPartList2?.embedded.contentParts)
-		return { notFound: true };
+	if (!params || !product.contentPartsList?.length) return { notFound: true };
 
-	const { contentParts } = product.embedded.contentPartList2.embedded;
+	const contentParts = product.contentPartsList;
 
 	const uploadAndConvertContentPart =
 			fetchAndMapContentParts<UploadAndConvertContentPart>(
@@ -162,22 +161,19 @@ export const getServerSideProps: GetServerSideProps<
 
 	if (!part) return { notFound: true };
 
-	const chapter = arrayify(
-		part.embedded.htmlContent.embedded?.htmlChapterContentInfo
-	).find((c) => c.chapterSlug === params.chapterSlug);
+	const chapter = arrayify(part.tableOfContents).find(
+		(c) => c.chapterSlug === params.chapterSlug
+	);
 
 	if (!chapter) return { notFound: true };
 
-	const chapterContent = await getChapterContent(
-		chapter?.links.self[0].href as string
-	);
+	const chapterContent = await getChapterContent(chapter?.url as string);
 
 	if (!chapterContent) return { notFound: true };
 
 	const chapterSections =
-		chapterContent.embedded?.htmlChapterSectionInfo &&
-		Array.isArray(chapterContent.embedded.htmlChapterSectionInfo)
-			? chapterContent.embedded.htmlChapterSectionInfo
+		chapterContent.sections && Array.isArray(chapterContent.sections)
+			? chapterContent.sections
 			: [];
 
 	const {
