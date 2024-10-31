@@ -7,12 +7,12 @@ config({ path: ".env.local" });
 
 const LIVE_SPACE_ID = process.env.LIVE_SPACE_ID;
 const ALPHA_SPACE_ID = process.env.ALPHA_SPACE_ID;
-const DEV_SANDBOX_SPACE_ID = process.env.DEV_SANDBOX_SPACE_ID;
+const DEV_SPACE_ID = process.env.DEV_SPACE_ID;
 
 const options = [
-	{ name: "Live", value: LIVE_SPACE_ID },
-	{ name: "Alpha", value: ALPHA_SPACE_ID },
-	{ name: "DEV Sandbox", value: DEV_SANDBOX_SPACE_ID },
+	{ name: "LIVE", value: LIVE_SPACE_ID },
+	{ name: "ALPHA", value: ALPHA_SPACE_ID },
+	{ name: "DEV", value: DEV_SPACE_ID },
 ];
 
 const cautionMessage = `
