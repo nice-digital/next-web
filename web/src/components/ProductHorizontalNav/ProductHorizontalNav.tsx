@@ -16,6 +16,7 @@ export type ProductHorizontalNavProps = {
 	hasInfoForPublicResources: boolean;
 	hasToolsAndResources: boolean;
 	hasHistory: boolean;
+	isWithdrawn?: boolean;
 };
 
 export const ProductHorizontalNav: FC<ProductHorizontalNavProps> = ({
@@ -25,6 +26,7 @@ export const ProductHorizontalNav: FC<ProductHorizontalNavProps> = ({
 	hasInfoForPublicResources,
 	hasToolsAndResources,
 	hasHistory,
+	isWithdrawn,
 }) => {
 	const { asPath } = useRouter(),
 		path = asPath.replace(/#.*/, ""),
@@ -40,10 +42,11 @@ export const ProductHorizontalNav: FC<ProductHorizontalNavProps> = ({
 	// Some product types e.g. corporate or process don't have any resources or history,
 	// and therefore don't need a nav at all
 	if (
-		!hasEvidenceResources &&
-		!hasInfoForPublicResources &&
-		!hasToolsAndResources &&
-		!hasHistory
+		(!hasEvidenceResources &&
+			!hasInfoForPublicResources &&
+			!hasToolsAndResources &&
+			!hasHistory) ||
+		isWithdrawn
 	)
 		return null;
 

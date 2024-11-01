@@ -1,7 +1,7 @@
 import { NextSeo } from "next-seo";
 import { type GetServerSideProps } from "next/types";
 
-import { Breadcrumbs, Breadcrumb } from "@nice-digital/nds-breadcrumbs";
+import { Breadcrumb, Breadcrumbs } from "@nice-digital/nds-breadcrumbs";
 import { Grid, GridItem } from "@nice-digital/nds-grid";
 
 import { ProductHorizontalNav } from "@/components/ProductHorizontalNav/ProductHorizontalNav";
@@ -13,8 +13,8 @@ import { PublicationsChapterMenu } from "@/components/PublicationsChapterMenu/Pu
 import { PublicationsDownloadLink } from "@/components/PublicationsDownloadLink/PublicationsDownloadLink";
 import { PublicationsPrevNext } from "@/components/PublicationsPrevNext/PublicationsPrevNext";
 import {
-	getAllIndicatorSubTypes,
 	ChapterHeading,
+	getAllIndicatorSubTypes,
 } from "@/feeds/publications/publications";
 import {
 	ProductDetail,
@@ -27,7 +27,14 @@ import styles from "./index.page.module.scss";
 export type IndicatorsDetailsPageProps = {
 	productPath: string;
 	product: ProductPageHeadingProps["product"] &
-		Pick<ProductDetail, "metaDescription" | "indicatorSubTypeList" | "summary">;
+		Pick<
+			ProductDetail,
+			| "metaDescription"
+			| "indicatorSubTypeList"
+			| "summary"
+			| "productStatus"
+			| "withdrawnNotes"
+		>;
 	indicatorSubTypes: IndicatorSubType[];
 	pdfDownloadPath: string | null;
 	chapters: ChapterHeading[];
@@ -49,6 +56,8 @@ export default function IndicatorsDetailsPage({
 	hasHistory,
 }: IndicatorsDetailsPageProps): JSX.Element {
 	const hasLeftColumn = pdfDownloadPath || chapters.length > 0;
+	const isFullyWithdrawn = product.productStatus === "Withdrawn";
+	const isTempWithdrawn = product.productStatus === "TemporarilyWithdrawn";
 
 	return (
 		<>
@@ -112,6 +121,7 @@ export default function IndicatorsDetailsPage({
 				hasToolsAndResources={hasToolsAndResources}
 				hasInfoForPublicResources={hasInfoForPublicResources}
 				hasHistory={hasHistory}
+				isWithdrawn={isFullyWithdrawn || isTempWithdrawn}
 			/>
 
 			<Grid gutter="loose">
@@ -146,6 +156,11 @@ export default function IndicatorsDetailsPage({
 					{product.summary ? (
 						<div
 							dangerouslySetInnerHTML={{ __html: product.summary }}
+							className={styles.summary}
+						/>
+					) : isTempWithdrawn ? (
+						<div
+							dangerouslySetInnerHTML={{ __html: product.withdrawnNotes }}
 							className={styles.summary}
 						/>
 					) : null}
@@ -193,6 +208,8 @@ export const getServerSideProps: GetServerSideProps<
 				indicatorSubTypeList: product.indicatorSubTypeList,
 				metaDescription: product.metaDescription,
 				summary: product.summary,
+				productStatus: product.productStatus,
+				withdrawnNotes: product.withdrawnNotes,
 			},
 			indicatorSubTypes,
 			pdfDownloadPath,

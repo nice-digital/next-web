@@ -1,7 +1,7 @@
 import { type GetServerSideProps } from "next";
 import { NextSeo } from "next-seo";
 
-import { Breadcrumbs, Breadcrumb } from "@nice-digital/nds-breadcrumbs";
+import { Breadcrumb, Breadcrumbs } from "@nice-digital/nds-breadcrumbs";
 
 import { Link } from "@/components/Link/Link";
 import { ProductHorizontalNav } from "@/components/ProductHorizontalNav/ProductHorizontalNav";
@@ -11,13 +11,16 @@ import {
 } from "@/components/ProductPageHeading/ProductPageHeading";
 import { ResourceList } from "@/components/ResourceList/ResourceList";
 import { getResourceDetails } from "@/feeds/publications/publications";
-import { validateRouteParams } from "@/utils/product";
+import {
+	redirectWithdrawnProducts,
+	validateRouteParams,
+} from "@/utils/product";
 import {
 	getResourceGroup,
 	isEvidenceUpdate,
 	isSupportingEvidence,
-	type ResourceGroupViewModel,
 	ResourceTypeSlug,
+	type ResourceGroupViewModel,
 } from "@/utils/resource";
 
 export type EvidenceResourcesListPageProps = {
@@ -87,6 +90,12 @@ export const getServerSideProps: GetServerSideProps<
 		hasEvidenceResources,
 		hasHistory,
 	} = result;
+
+	const isWithdrawn = redirectWithdrawnProducts(product, productPath);
+
+	if (isWithdrawn) {
+		return isWithdrawn;
+	}
 
 	if (!evidenceResources.length) return { notFound: true };
 

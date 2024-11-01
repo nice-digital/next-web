@@ -12,6 +12,7 @@ export enum FeedPath {
 export enum Status {
 	Published = "Published",
 	Withdrawn = "Withdrawn",
+	TemporarilyWithdrawn = "TemporarilyWithdrawn",
 }
 
 export enum ProductGroup {
@@ -585,8 +586,8 @@ export type ProductDetail = ProductAndResourceBase & {
 	/** E.g. `CG/Wave18/51` */
 	inDevReference: string | null;
 	metaDescription: string;
-	withdrawnNotes: string;
 	productStatus: Status;
+	withdrawnNotes: string;
 	versionNumber: number;
 	publishedDate: string | null;
 	majorChangeDate: string | null;

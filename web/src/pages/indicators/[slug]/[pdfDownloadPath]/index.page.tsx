@@ -1,11 +1,14 @@
 import { GetServerSideProps } from "next/types";
 
 import {
-	UploadAndConvertContentPart,
 	getFileStream,
+	UploadAndConvertContentPart,
 } from "@/feeds/publications/publications";
 import { fetchAndMapContentParts } from "@/utils/contentparts";
-import { validateRouteParams } from "@/utils/product";
+import {
+	redirectWithdrawnProducts,
+	validateRouteParams,
+} from "@/utils/product";
 import { getServerSidePDF } from "@/utils/response";
 
 export const getServerSideProps: GetServerSideProps<
@@ -22,7 +25,13 @@ export const getServerSideProps: GetServerSideProps<
 
 	if ("notFound" in result || "redirect" in result) return result;
 
-	const { product, pdfDownloadPath, actualPath } = result;
+	const { product, productPath, pdfDownloadPath, actualPath } = result;
+
+	const isWithdrawn = redirectWithdrawnProducts(product, productPath);
+
+	if (isWithdrawn) {
+		return isWithdrawn;
+	}
 
 	if (!product.contentPartsList?.length) return { notFound: true };
 
