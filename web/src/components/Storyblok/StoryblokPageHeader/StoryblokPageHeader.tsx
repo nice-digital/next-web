@@ -28,7 +28,7 @@ export const StoryblokPageHeader = ({
 		</Breadcrumbs>
 	) : undefined;
 
-	const { title, summary, description, cta } = blok;
+	const { title, summary, description, cta, theme } = blok;
 	let updatedCTA: ButtonLinkStoryblok | undefined = undefined;
 
 	// Force button to CTA variant for this template
@@ -46,7 +46,7 @@ export const StoryblokPageHeader = ({
 				lead={summary || undefined}
 				breadcrumbs={BreadcrumbComponent}
 				description={description}
-				variant="fullWidthLight"
+				variant={theme === "impact" ? "fullWidthDark" : "fullWidthLight"}
 				verticalPadding="loose"
 				cta={
 					updatedCTA ? <StoryblokButtonLink button={updatedCTA} /> : undefined
