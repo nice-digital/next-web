@@ -181,7 +181,6 @@ export async function getServerSideProps(context: GetServerSidePropsContext) {
 			siblingPages.push(...["page1", "page2"]);
 		}
 
-		// console.log(JSON.stringify(storyResult, null, 2));
 		const result = {
 			props: {
 				...storyResult,
