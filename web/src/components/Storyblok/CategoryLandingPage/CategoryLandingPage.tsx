@@ -18,9 +18,10 @@ export const CategoryLandingPage = ({
 				blok.metadata?.map((nestedBlok) => (
 					<StoryblokComponent blok={nestedBlok} key={nestedBlok._uid} />
 				))}
-			{blok.header.map((nestedBlok) => (
-				<StoryblokComponent blok={nestedBlok} key={nestedBlok._uid} />
-			))}
+			{blok.header &&
+				blok.header.map((nestedBlok) => (
+					<StoryblokComponent blok={nestedBlok} key={nestedBlok._uid} />
+				))}
 			{/* {blok.content &&
 				blok.content.map((nestedBlok) => (
 					<StoryblokComponent blok={nestedBlok} key={nestedBlok._uid} />
