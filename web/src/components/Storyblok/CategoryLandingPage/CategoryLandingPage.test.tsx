@@ -58,6 +58,8 @@ describe("CategoryLandingPage", () => {
 		mockPageHeaderData.content.forEach(({ component }) => {
 			expect(screen.getByText(component)).toBeInTheDocument();
 		});
+	});
+
 	xit("renders the FullWidth Action Banner through the StoryblokComponent, if it's passed as block", () => {
 		render(<CategoryLandingPage {...mockPropsWithPageHeader} />);
 		expect(
