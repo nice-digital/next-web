@@ -1,7 +1,7 @@
 import { type GetServerSideProps } from "next";
 import { NextSeo } from "next-seo";
 
-import { Breadcrumbs, Breadcrumb } from "@nice-digital/nds-breadcrumbs";
+import { Breadcrumb, Breadcrumbs } from "@nice-digital/nds-breadcrumbs";
 
 import { Link } from "@/components/Link/Link";
 import { ProductHorizontalNav } from "@/components/ProductHorizontalNav/ProductHorizontalNav";
@@ -12,11 +12,14 @@ import {
 import { ResourceList } from "@/components/ResourceList/ResourceList";
 import { getResourceDetails } from "@/feeds/publications/publications";
 import { logger } from "@/logger";
-import { validateRouteParams } from "@/utils/product";
+import {
+	redirectWithdrawnProducts,
+	validateRouteParams,
+} from "@/utils/product";
 import {
 	getResourceGroups,
-	type ResourceGroupViewModel,
 	ResourceTypeSlug,
+	type ResourceGroupViewModel,
 } from "@/utils/resource";
 
 export type ToolsAndResourcesListPageProps = {
@@ -86,6 +89,12 @@ export const getServerSideProps: GetServerSideProps<
 		hasEvidenceResources,
 		hasHistory,
 	} = result;
+
+	const isWithdrawn = redirectWithdrawnProducts(product, productPath);
+
+	if (isWithdrawn) {
+		return isWithdrawn;
+	}
 
 	if (!toolsAndResources.length) {
 		logger.info(`No tools and resources found for product ${product.id}`);

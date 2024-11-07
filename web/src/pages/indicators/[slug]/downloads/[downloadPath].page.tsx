@@ -5,7 +5,10 @@ import {
 	getResourceDetail,
 } from "@/feeds/publications/publications";
 import { logger } from "@/logger";
-import { validateRouteParams } from "@/utils/product";
+import {
+	redirectWithdrawnProducts,
+	validateRouteParams,
+} from "@/utils/product";
 import { findDownloadable } from "@/utils/resource";
 import { getServerSideFile } from "@/utils/response";
 import { slugify } from "@/utils/url";
@@ -31,10 +34,17 @@ export const getServerSideProps: GetServerSideProps<
 
 	const {
 		product,
+		productPath,
 		toolsAndResources,
 		evidenceResources,
 		infoForPublicResources,
 	} = result;
+
+	const isWithdrawn = redirectWithdrawnProducts(product, productPath);
+
+	if (isWithdrawn) {
+		return isWithdrawn;
+	}
 
 	const allResources = [
 		...toolsAndResources,

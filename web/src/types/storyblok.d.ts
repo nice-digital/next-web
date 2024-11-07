@@ -172,7 +172,7 @@ export interface CardGridStoryblok {
 }
 
 export interface CategoryLandingPageStoryblok {
-  header: (HeroStoryblok | PageHeaderStoryblok)[];
+  header?: (HeroStoryblok | PageHeaderStoryblok)[];
   metadata?: MetadataStoryblok[];
   content?: (ActionBannerStoryblok | GridSectionStoryblok | ActionBannerDefaultStoryblok)[];
   component: "categoryLandingPage";
@@ -185,6 +185,17 @@ export interface CategoryNavigationStoryblok {
   cardGrid: CardGridStoryblok[];
   metadata?: MetadataStoryblok[];
   component: "categoryNavigation";
+  _uid: string;
+  [k: string]: any;
+}
+
+export interface FullWidthSectionStoryblok {
+  heading?: string;
+  lead?: RichtextStoryblok;
+  showHeading?: boolean;
+  theme: "subtle" | "impact" | "transparent";
+  content?: (ActionBannerStoryblok | CardGridStoryblok | PromoBoxStoryblok)[];
+  component: "fullWidthSection";
   _uid: string;
   [k: string]: any;
 }
@@ -203,6 +214,7 @@ export interface GridStoryblok {
     | CardGridStoryblok
     | CategoryLandingPageStoryblok
     | CategoryNavigationStoryblok
+    | FullWidthSectionStoryblok
     | GridStoryblok
     | GridItemStoryblok
     | GridSectionStoryblok
@@ -270,8 +282,7 @@ export interface HeroStoryblok {
   description?: string;
   image: AssetStoryblok;
   cta?: ButtonLinkStoryblok[];
-  ctaText?: string;
-  ctaLink?: Exclude<MultilinkStoryblok, {linktype?: "email"} | {linktype?: "asset"}>;
+  theme?: "subtle" | "impact";
   component: "hero";
   _uid: string;
   [k: string]: any;
@@ -447,6 +458,7 @@ export interface PageStoryblok {
     | CardGridStoryblok
     | CategoryLandingPageStoryblok
     | CategoryNavigationStoryblok
+    | FullWidthSectionStoryblok
     | GridStoryblok
     | GridItemStoryblok
     | GridSectionStoryblok

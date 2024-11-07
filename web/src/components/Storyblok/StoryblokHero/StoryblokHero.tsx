@@ -39,9 +39,12 @@ export const StoryblokHero = ({
 		<Hero
 			title={blok.title}
 			intro={blok.summary || undefined}
+			description={blok.description || undefined}
 			header={BreadcrumbComponent}
 			image={optimisedImage}
 			actions={action}
+			isDark={blok.theme === "impact" ? true : undefined}
+			data-testid="hero-container"
 		/>
 	);
 };
