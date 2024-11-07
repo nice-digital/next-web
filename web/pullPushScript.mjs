@@ -7,10 +7,19 @@ import inquirer from "inquirer";
 
 config({ path: ".env.local" });
 
+const STORYBLOK_TOKEN = process.env.STORYBLOK_TOKEN;
+
+if (!STORYBLOK_TOKEN) {
+	console.error(
+		"Error: STORYBLOK_TOKEN is missing. Please add it to .env.local"
+	);
+	process.exit(1);
+}
+
 const SPACE_IDS = {
 	LIVE: process.env.LIVE_SPACE_ID,
 	ALPHA: process.env.ALPHA_SPACE_ID,
-	DEV_SANDBOX: process.env.DEV_SANDBOX_SPACE_ID,
+	DEV: process.env.DEV_SPACE_ID,
 };
 
 const options = Object.entries(SPACE_IDS).map(([name, value]) => ({
@@ -61,6 +70,34 @@ const executeCommand = async (
 	});
 };
 
+const loginToStoryblok = async (/** @type {string | undefined} */ token) => {
+	try {
+		console.log(`Logging in to Storyblok using token: ${token}`);
+		await executeCommand(`storyblok login --token ${token} --region eu`);
+		console.log("Logged in to Storyblok successfully.");
+	} catch (error) {
+		if (error instanceof Error) {
+			console.error("Error during login:", error.message);
+		} else {
+			console.error("Error during login:", error);
+		}
+	}
+};
+
+const logoutFromStoryblok = async () => {
+	try {
+		console.log("Logging out of Storyblok...");
+		await executeCommand("storyblok logout");
+		console.log("Logged out of Storyblok successfully.");
+	} catch (error) {
+		if (error instanceof Error) {
+			console.error("Error during logout:", error.message);
+		} else {
+			console.error("Error during logout:", error);
+		}
+	}
+};
+
 const promptOperation = () =>
 	inquirer.prompt([
 		{
@@ -70,6 +107,7 @@ const promptOperation = () =>
 			choices: [
 				"Push Component",
 				"Pull ALL Components",
+				"Generate Types",
 				// "Push ALL Components",
 				// "Delete Component",
 				// "Delete ALL Components",
@@ -151,6 +189,7 @@ const validateJSONFiles = (
 
 (async () => {
 	try {
+		await loginToStoryblok(STORYBLOK_TOKEN);
 		const { operation } = await promptOperation();
 		/**
 		 * @type {{ name: string; value: string | undefined; } | undefined}
@@ -163,6 +202,7 @@ const validateJSONFiles = (
 				"Push Component",
 				"Delete Component",
 				"Push ALL Components",
+				"Generate Types",
 			].some((op) => operation.includes(op))
 		) {
 			const { space: from } = await promptSpace(
@@ -219,29 +259,47 @@ const validateJSONFiles = (
 
 		if (confirm) {
 			let command;
+			let workingDir = "."; // Default working directory is root unless changed for other operations
 			const spaceBackupDir = `${backupDirBase}-${fromOption?.value}`;
+
 			switch (operation) {
 				case "Pull ALL Components": {
 					checkBackupDirExists(fromOption?.value);
 					command = `storyblok pull-components --space ${fromOption?.value} --separate-files --prefix-presets-names`;
+					workingDir = spaceBackupDir;
 					break;
 				}
 				case "Push Component": {
-					// Execute in the backup directory and use relative file paths
 					command = `storyblok push-components ${localFiles.join(
-						" "
+						","
 					)} --space ${toOption?.value}`;
-					await executeCommand(command, spaceBackupDir);
-					return;
+					workingDir = spaceBackupDir; // Execute in backup dir for push
+					break;
 				}
 				case "Push ALL Components": {
 					const allFiles = fs
 						.readdirSync(spaceBackupDir)
 						.filter((file) => file.endsWith(".json"))
 						.map((file) => path.join(spaceBackupDir, file));
-					command = `storyblok push-components ${allFiles.join(" ")} --space ${
+					command = `storyblok push-components ${allFiles.join(",")} --space ${
 						toOption?.value
 					}`;
+					workingDir = spaceBackupDir;
+					break;
+				}
+				case "Generate Types": {
+					checkBackupDirExists(fromOption?.value);
+					await executeCommand(
+						`storyblok pull-components --space ${fromOption?.value} --prefix-presets-names`,
+						workingDir
+					);
+
+					const jsonFilePath = `./components.${fromOption?.value}.json`;
+					if (!fs.existsSync(jsonFilePath)) {
+						console.error(`JSON file not found: ${jsonFilePath}`);
+						return;
+					}
+					command = `storyblok generate-typescript-typedefs --sourceFilePaths=${jsonFilePath} --destinationFilePath=./src/types/storyblok.d.ts`;
 					break;
 				}
 				case "Delete Component": {
@@ -257,11 +315,13 @@ const validateJSONFiles = (
 					return;
 				}
 			}
-			await executeCommand(command, spaceBackupDir);
+			await executeCommand(command, workingDir);
 		} else {
 			console.log("Operation cancelled.");
 		}
 	} catch (error) {
-		console.error(`Error: ${error}`);
+		console.error(`Error: ${error instanceof Error ? error.message : error}`);
+	} finally {
+		await logoutFromStoryblok();
 	}
 })();
