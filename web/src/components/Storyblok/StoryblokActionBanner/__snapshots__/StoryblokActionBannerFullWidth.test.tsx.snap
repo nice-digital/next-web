@@ -57,6 +57,10 @@ exports[`Storyblok action banner full width component should match snapshot for 
     data-component="action-banner--fullWidthSubtle"
   >
     <div
+      class="action-banner--full-width-subtle__image-container"
+      style="background-image: url(https://placekitten.com/408/287/m/899x0/filters:quality%2880%29);"
+    />
+    <div
       class="action-banner__container"
     >
       <div
