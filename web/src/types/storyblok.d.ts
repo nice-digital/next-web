@@ -189,17 +189,6 @@ export interface CategoryNavigationStoryblok {
   [k: string]: any;
 }
 
-export interface FullWidthSectionStoryblok {
-  heading?: string;
-  lead?: RichtextStoryblok;
-  showHeading?: boolean;
-  theme: "subtle" | "impact" | "transparent";
-  content?: (ActionBannerStoryblok | CardGridStoryblok | PromoBoxStoryblok)[];
-  component: "fullWidthSection";
-  _uid: string;
-  [k: string]: any;
-}
-
 export interface GridStoryblok {
   columns?: (
     | AccordionStoryblok
@@ -214,7 +203,6 @@ export interface GridStoryblok {
     | CardGridStoryblok
     | CategoryLandingPageStoryblok
     | CategoryNavigationStoryblok
-    | FullWidthSectionStoryblok
     | GridStoryblok
     | GridItemStoryblok
     | GridSectionStoryblok
@@ -458,7 +446,6 @@ export interface PageStoryblok {
     | CardGridStoryblok
     | CategoryLandingPageStoryblok
     | CategoryNavigationStoryblok
-    | FullWidthSectionStoryblok
     | GridStoryblok
     | GridItemStoryblok
     | GridSectionStoryblok

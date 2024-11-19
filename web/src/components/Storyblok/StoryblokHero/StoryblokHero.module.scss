@@ -1,0 +1,7 @@
+@use '@nice-digital/nds-core/scss/media-queries';
+
+.heroBreadcrumbs {
+  @include media-queries.mq($from: md) {
+    width: 66%;
+  }
+}

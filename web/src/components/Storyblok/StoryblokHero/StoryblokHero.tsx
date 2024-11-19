@@ -6,6 +6,8 @@ import { type Breadcrumb as TypeBreadcrumb } from "@/types/Breadcrumb";
 import { type HeroStoryblok } from "@/types/storyblok";
 import { constructStoryblokImageSrc } from "@/utils/storyblok";
 
+import styles from "./StoryblokHero.module.scss";
+
 export interface HeroBlokProps {
 	blok: HeroStoryblok;
 	breadcrumbs?: TypeBreadcrumb[];
@@ -18,7 +20,7 @@ export const StoryblokHero = ({
 	const { image, cta } = blok;
 
 	const BreadcrumbComponent = breadcrumbs?.length ? (
-		<Breadcrumbs>
+		<Breadcrumbs className={styles.heroBreadcrumbs}>
 			{breadcrumbs.map((breadcrumb) => (
 				<Breadcrumb key={breadcrumb.title} to={breadcrumb.path}>
 					{breadcrumb.title}
