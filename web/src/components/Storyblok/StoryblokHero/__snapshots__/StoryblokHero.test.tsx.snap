@@ -21,6 +21,7 @@ exports[`Storyblok Hero should match snapshot with breadcrumbs 1`] = `
           >
             <nav
               aria-label="Breadcrumbs"
+              class="heroBreadcrumbs"
               data-component="breadcrumbs"
               role="navigation"
             >
