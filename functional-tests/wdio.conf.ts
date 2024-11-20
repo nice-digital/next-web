@@ -14,11 +14,11 @@ export const config: WebdriverIO.Config = {
 
 	specs: ["./features/**/*.feature"],
 	exclude: [
-		"./features/**/home.feature",
-		"./features/**/newsTabs.feature",
-		"./features/**/jotforms.feature",
-		"./features/**/newsHomePage.feature",
-		"./features/**/indicator.feature",
+		// "./features/**/home.feature",
+		// "./features/**/newsTabs.feature",
+		// "./features/**/jotforms.feature",
+		// "./features/**/newsHomePage.feature",
+		// "./features/**/indicator.feature",
 	],
 
 	capabilities: [

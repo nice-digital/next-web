@@ -1,4 +1,3 @@
-version: '2.2'
 services:
   selenium-hub:
     image: selenium/hub:3.141.59-20210713
@@ -50,6 +49,10 @@ services:
       - SEARCH_BASE_URL
       - PUBLICATIONS_BASE_URL
       - INDEV_BASE_URL
+      - STORYBLOK_TOKEN
+      - STORYBLOK_ROUTE_CATCHALL
+      - JOTFORM_BASE_URL
+      - JOTFORM_APIKEY
     networks:
       default:
         aliases:
