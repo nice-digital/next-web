@@ -9,14 +9,14 @@ import {
 	FeedPath,
 	ChapterHTMLContent,
 	IndicatorSubType,
-	IndicatorSubTypesList,
+	IndicatorSubTypes,
 	ProductDetail,
 	ProductListLite,
 	ProductLite,
 	ProductType,
 	ProductTypes,
 	ResourceDetail,
-	RelatedResource,
+	RelatedResourceList,
 	IndicatorMappings,
 	IndicatorMapping,
 } from "./types";
@@ -104,12 +104,12 @@ export const getAllIndicatorSubTypes = async (): Promise<IndicatorSubType[]> =>
 		longTTL,
 		async () =>
 			(
-				await getFeedBodyUnCached<IndicatorSubTypesList>(
+				await getFeedBodyUnCached<IndicatorSubTypes>(
 					origin,
 					FeedPath.IndicatorSubTypes,
 					apiKey
 				)
-			).embedded.indicatorSubTypeList.embedded.indicatorSubType
+			).indicatorSubTypes
 	);
 
 /**
@@ -195,18 +195,18 @@ export const getChapterContent = async (
  * @param resource The related resource, or null if the resource can't be found
  */
 export const getResourceDetail = async (
-	resource: RelatedResource
+	resource: RelatedResourceList
 ): Promise<ResourceDetail | null> => {
-	const { href } = resource.links.relatedResourceUri[0];
+	const { url } = resource;
 
 	return getFeedBodyCached<ResourceDetail | null>(
 		cacheKeyPrefix,
-		href,
+		url,
 		longTTL,
 		async () => {
 			const response = await getFeedBodyUnCached<
 				ResourceDetail | ErrorResponse
-			>(origin, href, apiKey);
+			>(origin, url, apiKey);
 
 			return isSuccessResponse(response) ? response : null;
 		}
@@ -219,13 +219,13 @@ export const getResourceDetail = async (
  * It will throw an error if any of the resources can't be found
  */
 export const getResourceDetails = async (
-	resources: RelatedResource[]
+	resources: RelatedResourceList[]
 ): Promise<ResourceDetail[]> => {
 	const fullResources = await Promise.all(
 		resources.map(
 			(relatedResource) =>
 				new Promise<{
-					relatedResource: RelatedResource;
+					relatedResource: RelatedResourceList;
 					resourceDetail: ResourceDetail | null;
 				}>((resolve) => {
 					getResourceDetail(relatedResource).then((resourceDetail) => {

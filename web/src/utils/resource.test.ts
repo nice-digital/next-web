@@ -25,19 +25,13 @@ describe("resource utils", () => {
 						"NG100",
 						"/guidance/ng100",
 						{
-							embedded: {
-								contentPartList2: {
-									embedded: {
-										contentParts: [
-											{
-												title: "Test title",
-												uid: 123,
-												type: "EditableContentPart",
-											},
-										],
-									},
+							contentPartsList: [
+								{
+									title: "Test title",
+									uid: 123,
+									type: "EditableContentPart",
 								},
-							},
+							],
 							uid: 99,
 						} as ResourceDetail,
 						ResourceTypeSlug.ToolsAndResources
@@ -57,24 +51,18 @@ describe("resource utils", () => {
 						"NG100",
 						"/guidance/ng100",
 						{
-							embedded: {
-								contentPartList2: {
-									embedded: {
-										contentParts: [
-											{
-												title: "Part 1",
-												uid: 123,
-												type: "EditableContentPart",
-											},
-											{
-												title: "Part 2",
-												uid: 456,
-												type: "EditableContentPart",
-											},
-										],
-									},
+							contentPartsList: [
+								{
+									title: "Part 1",
+									uid: 123,
+									type: "EditableContentPart",
 								},
-							},
+								{
+									title: "Part 2",
+									uid: 456,
+									type: "EditableContentPart",
+								},
+							],
 							uid: 99,
 						} as ResourceDetail,
 						ResourceTypeSlug.Evidence
@@ -101,19 +89,13 @@ describe("resource utils", () => {
 						"NG100",
 						"/guidance/ng100",
 						{
-							embedded: {
-								contentPartList2: {
-									embedded: {
-										contentParts: [
-											{
-												title: "Test title",
-												url: "https://someurl.com",
-												type: "ExternalUrlContentPart",
-											},
-										],
-									},
+							contentPartsList: [
+								{
+									title: "Test title",
+									url: "https://someurl.com",
+									type: "ExternalUrlContentPart",
 								},
-							},
+							],
 						} as unknown as ResourceDetail,
 						ResourceTypeSlug.ToolsAndResources
 					)
@@ -128,24 +110,18 @@ describe("resource utils", () => {
 						"NG100",
 						"/guidance/ng100",
 						{
-							embedded: {
-								contentPartList2: {
-									embedded: {
-										contentParts: [
-											{
-												title: "Link 1",
-												url: "https://link1.com",
-												type: "ExternalUrlContentPart",
-											},
-											{
-												title: "Link 2",
-												url: "https://link2.com",
-												type: "ExternalUrlContentPart",
-											},
-										],
-									},
+							contentPartsList: [
+								{
+									title: "Link 1",
+									url: "https://link1.com",
+									type: "ExternalUrlContentPart",
 								},
-							},
+								{
+									title: "Link 2",
+									url: "https://link2.com",
+									type: "ExternalUrlContentPart",
+								},
+							],
 						} as ResourceDetail,
 						ResourceTypeSlug.Evidence
 					)
@@ -163,19 +139,13 @@ describe("resource utils", () => {
 						"NG100",
 						"/guidance/ng100",
 						{
-							embedded: {
-								contentPartList2: {
-									embedded: {
-										contentParts: [
-											{
-												title: "Test title",
-												uid: 123,
-												type: "UploadAndConvertContentPart",
-											},
-										],
-									},
+							contentPartsList: [
+								{
+									title: "Test title",
+									uid: 123,
+									type: "UploadAndConvertContentPart",
 								},
-							},
+							],
 							uid: 99,
 						} as ResourceDetail,
 						ResourceTypeSlug.ToolsAndResources
@@ -195,24 +165,18 @@ describe("resource utils", () => {
 						"NG100",
 						"/guidance/ng100",
 						{
-							embedded: {
-								contentPartList2: {
-									embedded: {
-										contentParts: [
-											{
-												title: "Part 1",
-												uid: 123,
-												type: "UploadAndConvertContentPart",
-											},
-											{
-												title: "Part 2",
-												uid: 456,
-												type: "UploadAndConvertContentPart",
-											},
-										],
-									},
+							contentPartsList: [
+								{
+									title: "Part 1",
+									uid: 123,
+									type: "UploadAndConvertContentPart",
 								},
-							},
+								{
+									title: "Part 2",
+									uid: 456,
+									type: "UploadAndConvertContentPart",
+								},
+							],
 							uid: 99,
 						} as ResourceDetail,
 						ResourceTypeSlug.Evidence
@@ -239,26 +203,18 @@ describe("resource utils", () => {
 						"NG100",
 						"/guidance/ng100",
 						{
-							embedded: {
-								contentPartList2: {
-									embedded: {
-										contentParts: [
-											{
-												title: "Test title",
-												uid: 123,
-												embedded: {
-													file: {
-														fileName: "any thing.xls",
-														length: 12345,
-														mimeType: "application/vnd.ms-excel",
-													},
-												},
-												type: "UploadContentPart",
-											},
-										],
+							contentPartsList: [
+								{
+									title: "Test title",
+									uid: 123,
+									file: {
+										fileName: "any thing.xls",
+										length: 12345,
+										mimeType: "application/vnd.ms-excel",
 									},
+									type: "UploadContentPart",
 								},
-							},
+							],
 							lastMajorModificationDate: "2017-05-10T00:00:00",
 							uid: 99,
 						} as ResourceDetail,
@@ -282,38 +238,28 @@ describe("resource utils", () => {
 						"NG100",
 						"/guidance/ng100",
 						{
-							embedded: {
-								contentPartList2: {
-									embedded: {
-										contentParts: [
-											{
-												title: "Part 1",
-												uid: 123,
-												embedded: {
-													file: {
-														fileName: "any thing.xls",
-														length: 1357,
-														mimeType: "application/vnd.ms-excel",
-													},
-												},
-												type: "UploadContentPart",
-											},
-											{
-												title: "Part 2",
-												uid: 456,
-												embedded: {
-													file: {
-														fileName: "any thing.pdf",
-														length: 2468,
-														mimeType: "application/pdf",
-													},
-												},
-												type: "UploadContentPart",
-											},
-										],
+							contentPartsList: [
+								{
+									title: "Part 1",
+									uid: 123,
+									file: {
+										fileName: "any thing.xls",
+										length: 1357,
+										mimeType: "application/vnd.ms-excel",
 									},
+									type: "UploadContentPart",
 								},
-							},
+								{
+									title: "Part 2",
+									uid: 456,
+									file: {
+										fileName: "any thing.pdf",
+										length: 2468,
+										mimeType: "application/pdf",
+									},
+									type: "UploadContentPart",
+								},
+							],
 							lastMajorModificationDate: "2017-05-10T00:00:00",
 							uid: 99,
 						} as ResourceDetail,
@@ -347,7 +293,7 @@ describe("resource utils", () => {
 						"NG100",
 						"/guidance/ng100",
 						{
-							embedded: {},
+							contentPartsList: [{}],
 							uid: 99,
 						} as ResourceDetail,
 						ResourceTypeSlug.ToolsAndResources
@@ -361,11 +307,7 @@ describe("resource utils", () => {
 						"NG100",
 						"/guidance/ng100",
 						{
-							embedded: {
-								contentPartList2: {
-									embedded: {},
-								},
-							},
+							contentPartsList: [{}],
 							uid: 99,
 						} as ResourceDetail,
 						ResourceTypeSlug.ToolsAndResources
@@ -379,19 +321,13 @@ describe("resource utils", () => {
 						"NG100",
 						"/guidance/ng100",
 						{
-							embedded: {
-								contentPartList2: {
-									embedded: {
-										contentParts: [
-											{
-												title: "Content part title",
-												uid: 123,
-												type: "EditableContentPart",
-											},
-										],
-									},
+							contentPartsList: [
+								{
+									title: "Content part title",
+									uid: 123,
+									type: "EditableContentPart",
 								},
-							},
+							],
 							uid: 99,
 						} as ResourceDetail,
 						ResourceTypeSlug.ToolsAndResources
@@ -411,39 +347,33 @@ describe("resource utils", () => {
 						"NG100",
 						"/guidance/ng100",
 						{
-							embedded: {
-								contentPartList2: {
-									embedded: {
-										contentParts: [
-											{
-												title: "Content Part 1",
-												uid: 123,
-												type: "EditableContentPart",
-											},
-											{
-												title: "Content Part 2",
-												uid: 456,
-												type: "UploadAndConvertContentPart",
-											},
-											{
-												title: "Content Link 1",
-												url: "https://link1.com",
-												type: "ExternalUrlContentPart",
-											},
-											{
-												title: "Content Part 4",
-												uid: 678,
-												type: "EditableContentPart",
-											},
-											{
-												title: "Content Link 2",
-												url: "https://link2.com",
-												type: "ExternalUrlContentPart",
-											},
-										],
-									},
+							contentPartsList: [
+								{
+									title: "Content Part 1",
+									uid: 123,
+									type: "EditableContentPart",
 								},
-							},
+								{
+									title: "Content Part 2",
+									uid: 456,
+									type: "UploadAndConvertContentPart",
+								},
+								{
+									title: "Content Link 1",
+									url: "https://link1.com",
+									type: "ExternalUrlContentPart",
+								},
+								{
+									title: "Content Part 4",
+									uid: 678,
+									type: "EditableContentPart",
+								},
+								{
+									title: "Content Link 2",
+									url: "https://link2.com",
+									type: "ExternalUrlContentPart",
+								},
+							],
 							uid: 99,
 						} as ResourceDetail,
 						ResourceTypeSlug.Evidence
@@ -525,56 +455,38 @@ describe("resource utils", () => {
 					[
 						{
 							resourceTypeName: "First group",
-							embedded: {
-								contentPartList2: {
-									embedded: {
-										contentParts: [
-											{
-												title: "First group link 1",
-												url: "https://firstgrouplink1.com",
-												type: "ExternalUrlContentPart",
-											},
-											{
-												title: "First group link 2",
-												url: "https://firstgrouplink2.com",
-												type: "ExternalUrlContentPart",
-											},
-										],
-									},
+							contentPartsList: [
+								{
+									title: "First group link 1",
+									url: "https://firstgrouplink1.com",
+									type: "ExternalUrlContentPart",
 								},
-							},
+								{
+									title: "First group link 2",
+									url: "https://firstgrouplink2.com",
+									type: "ExternalUrlContentPart",
+								},
+							],
 						} as ResourceDetail,
 						{
 							resourceTypeName: "Second group",
-							embedded: {
-								contentPartList2: {
-									embedded: {
-										contentParts: [
-											{
-												title: "Second group link 1",
-												url: "https://secondgrouplink1.com",
-												type: "ExternalUrlContentPart",
-											},
-										],
-									},
+							contentPartsList: [
+								{
+									title: "Second group link 1",
+									url: "https://secondgrouplink1.com",
+									type: "ExternalUrlContentPart",
 								},
-							},
+							],
 						} as ResourceDetail,
 						{
 							resourceTypeName: "First group",
-							embedded: {
-								contentPartList2: {
-									embedded: {
-										contentParts: [
-											{
-												title: "First group link 3",
-												url: "https://firstgrouplink3.com",
-												type: "ExternalUrlContentPart",
-											},
-										],
-									},
+							contentPartsList: [
+								{
+									title: "First group link 3",
+									url: "https://firstgrouplink3.com",
+									type: "ExternalUrlContentPart",
 								},
-							},
+							],
 						} as ResourceDetail,
 					],
 					ResourceTypeSlug.ToolsAndResources
@@ -626,56 +538,38 @@ describe("resource utils", () => {
 					[
 						{
 							resourceTypeName: "First group",
-							embedded: {
-								contentPartList2: {
-									embedded: {
-										contentParts: [
-											{
-												title: "First group link 1",
-												url: "https://firstgrouplink1.com",
-												type: "ExternalUrlContentPart",
-											},
-											{
-												title: "First group link 2",
-												url: "https://firstgrouplink2.com",
-												type: "ExternalUrlContentPart",
-											},
-										],
-									},
+							contentPartsList: [
+								{
+									title: "First group link 1",
+									url: "https://firstgrouplink1.com",
+									type: "ExternalUrlContentPart",
 								},
-							},
+								{
+									title: "First group link 2",
+									url: "https://firstgrouplink2.com",
+									type: "ExternalUrlContentPart",
+								},
+							],
 						} as ResourceDetail,
 						{
 							resourceTypeName: "Second group",
-							embedded: {
-								contentPartList2: {
-									embedded: {
-										contentParts: [
-											{
-												title: "Second group link 1",
-												url: "https://secondgrouplink1.com",
-												type: "ExternalUrlContentPart",
-											},
-										],
-									},
+							contentPartsList: [
+								{
+									title: "Second group link 1",
+									url: "https://secondgrouplink1.com",
+									type: "ExternalUrlContentPart",
 								},
-							},
+							],
 						} as ResourceDetail,
 						{
 							resourceTypeName: "First group",
-							embedded: {
-								contentPartList2: {
-									embedded: {
-										contentParts: [
-											{
-												title: "First group link 3",
-												url: "https://firstgrouplink3.com",
-												type: "ExternalUrlContentPart",
-											},
-										],
-									},
+							contentPartsList: [
+								{
+									title: "First group link 3",
+									url: "https://firstgrouplink3.com",
+									type: "ExternalUrlContentPart",
 								},
-							},
+							],
 						} as ResourceDetail,
 					],
 					ResourceTypeSlug.ToolsAndResources
@@ -731,7 +625,7 @@ describe("resource utils", () => {
 				expect(
 					findDownloadable(
 						{
-							embedded: {},
+							contentPartsList: [{}],
 						} as ProductAndResourceBase,
 						123
 					)
@@ -742,11 +636,7 @@ describe("resource utils", () => {
 				expect(
 					findDownloadable(
 						{
-							embedded: {
-								contentPartList2: {
-									embedded: {},
-								},
-							},
+							contentPartsList: [{}],
 						} as ProductAndResourceBase,
 						123
 					)
@@ -759,18 +649,12 @@ describe("resource utils", () => {
 				expect(
 					findDownloadable(
 						{
-							embedded: {
-								contentPartList2: {
-									embedded: {
-										contentParts: [
-											{
-												uid: 987,
-												type: "UploadContentPart",
-											},
-										],
-									},
+							contentPartsList: [
+								{
+									uid: 987,
+									type: "UploadContentPart",
 								},
-							},
+							],
 						} as ProductAndResourceBase,
 						123
 					)
@@ -782,22 +666,14 @@ describe("resource utils", () => {
 					fileName: "test.pdf",
 				} as FileContent;
 				const part = {
-					embedded: {
-						file,
-					},
+					file,
 					uid: 123,
 					type: "UploadContentPart",
 				};
 				expect(
 					findDownloadable(
 						{
-							embedded: {
-								contentPartList2: {
-									embedded: {
-										contentParts: [part],
-									},
-								},
-							},
+							contentPartsList: [part],
 						} as ProductAndResourceBase,
 						123
 					)
@@ -810,18 +686,12 @@ describe("resource utils", () => {
 				expect(
 					findDownloadable(
 						{
-							embedded: {
-								contentPartList2: {
-									embedded: {
-										contentParts: [
-											{
-												uid: 987,
-												type: "EditableContentPart",
-											},
-										],
-									},
+							contentPartsList: [
+								{
+									uid: 987,
+									type: "EditableContentPart",
 								},
-							},
+							],
 						} as ProductAndResourceBase,
 						123
 					)
@@ -829,30 +699,22 @@ describe("resource utils", () => {
 			});
 
 			it("should return editable part file with matching part id", () => {
-				const pdfFile = {
+				const pdf = {
 					fileName: "test.pdf",
 				} as FileContent;
 				const part = {
-					embedded: {
-						pdfFile,
-					},
+					pdf,
 					uid: 123,
 					type: "EditableContentPart",
 				};
 				expect(
 					findDownloadable(
 						{
-							embedded: {
-								contentPartList2: {
-									embedded: {
-										contentParts: [part],
-									},
-								},
-							},
+							contentPartsList: [part],
 						} as ProductAndResourceBase,
 						123
 					)
-				).toStrictEqual({ file: pdfFile, part });
+				).toStrictEqual({ file: pdf, part });
 			});
 		});
 
@@ -861,51 +723,33 @@ describe("resource utils", () => {
 				expect(
 					findDownloadable(
 						{
-							embedded: {
-								contentPartList2: {
-									embedded: {
-										contentParts: [
-											{
-												uid: 987,
-												type: "UploadAndConvertContentPart",
-											},
-										],
-									},
+							contentPartsList: [
+								{
+									uid: 987,
+									type: "UploadAndConvertContentPart",
 								},
-							},
+							],
 						} as ProductAndResourceBase,
 						123
 					)
 				).toBeNull();
 			});
 
-			it.each<[string, "pdfFile" | "mobiFile" | "epubFile"]>([
-				["pdf", "pdfFile"],
-				["mobi", "mobiFile"],
-				["epub", "epubFile"],
-			])(
+			it.each<[string, "pdf"]>([["pdf", "pdf"]])(
 				"should return convert part %file file with matching part id",
 				(extension, filePropertyName) => {
 					const file = {
 						fileName: `test.${extension}`,
 					} as FileContent;
 					const part = {
-						embedded: {
-							[filePropertyName]: file,
-						} as unknown as UploadAndConvertContentPart["embedded"],
+						[filePropertyName]: file,
 						uid: 123,
 						type: "UploadAndConvertContentPart",
 					};
 					expect(
 						findDownloadable(
 							{
-								embedded: {
-									contentPartList2: {
-										embedded: {
-											contentParts: [part],
-										},
-									},
-								},
+								contentPartsList: [part],
 							} as ProductAndResourceBase,
 							123
 						)

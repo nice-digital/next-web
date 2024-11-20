@@ -1,7 +1,5 @@
-// FILEPATH: /c:/Users/DHudson/Development/next-web/web/src/components/Storyblok/StoryblokBlogPost/StoryblokBlogPost.test.tsx
-
+import { ISbStoryData } from "@storyblok/react";
 import { render, screen } from "@testing-library/react";
-import { StoryblokStory } from "storyblok-generate-ts";
 
 import { mockBlogPost } from "@/test-utils/storyblok-data";
 import { AuthorStoryblok } from "@/types/storyblok";
@@ -11,22 +9,30 @@ import {
 	type StoryblokBlogPostProps,
 } from "./StoryblokBlogPost";
 
-describe("StoryblokBlogPost", () => {
-	const { content } = mockBlogPost;
-	const mockProps: StoryblokBlogPostProps = {
-		blok: { ...content },
-		breadcrumbs: [
-			{
-				title: "News",
-				path: "/news",
-			},
-			{
-				title: "Blog post",
-				path: "/news/blogs",
-			},
-		],
-	};
+/**  TODO: look to shape this based on mocking gssp from slug page,
+ 		   or mockApi when added or util mocks?
+**/
 
+const { content } = mockBlogPost;
+const mockProps: StoryblokBlogPostProps = {
+	blok: { ...content },
+	breadcrumbs: [
+		{
+			title: "Home",
+			path: "/",
+		},
+		{
+			title: "News",
+			path: "/news",
+		},
+		{
+			title: "Blog post",
+			path: "/news/blogs",
+		},
+	],
+};
+
+describe("StoryblokBlogPost", () => {
 	it("renders the title", () => {
 		render(<StoryblokBlogPost {...mockProps} />);
 		expect(screen.getByText(mockProps.blok.title)).toBeInTheDocument();
@@ -53,13 +59,14 @@ describe("StoryblokBlogPost", () => {
 	// Add more tests as needed for other parts of the component
 	it("renders the breadcrumbs", () => {
 		render(<StoryblokBlogPost {...mockProps} />);
+		expect(screen.getByRole("link", { name: "Home" })).toBeInTheDocument();
 		expect(screen.getByRole("link", { name: "News" })).toBeInTheDocument();
 		expect(screen.getByRole("link", { name: "Blog post" })).toBeInTheDocument();
 	});
 
 	it("renders the author name", () => {
 		const author = mockBlogPost.content
-			.author[0] as StoryblokStory<AuthorStoryblok>;
+			.author[0] as ISbStoryData<AuthorStoryblok>;
 
 		render(<StoryblokBlogPost {...mockProps} />);
 		expect(screen.getByText(author.content.name)).toBeInTheDocument();
@@ -67,7 +74,7 @@ describe("StoryblokBlogPost", () => {
 
 	it("renders the author jobTitle", () => {
 		const author = mockBlogPost.content
-			.author[0] as StoryblokStory<AuthorStoryblok>;
+			.author[0] as ISbStoryData<AuthorStoryblok>;
 
 		render(<StoryblokBlogPost {...mockProps} />);
 

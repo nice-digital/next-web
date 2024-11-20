@@ -1,6 +1,6 @@
+import { ISbStoryData } from "@storyblok/react";
 import { debounce } from "lodash";
 import React, { useEffect, useRef } from "react";
-import { StoryblokStory } from "storyblok-generate-ts";
 
 import { Breadcrumbs, Breadcrumb } from "@nice-digital/nds-breadcrumbs";
 import { Grid, GridItem } from "@nice-digital/nds-grid";
@@ -33,6 +33,7 @@ export const StoryblokBlogPost = ({
 }: StoryblokBlogPostProps): React.ReactElement => {
 	const imageRef = useRef<HTMLImageElement>(null);
 	const articleRef = useRef<HTMLDivElement>(null);
+	const { author } = blok;
 
 	useEffect(() => {
 		const handleResize = debounce(() => {
@@ -59,7 +60,7 @@ export const StoryblokBlogPost = ({
 
 	const BreadcrumbComponent = breadcrumbs?.length ? (
 		<Breadcrumbs className="">
-			{[{ title: "Home", path: "/" }, ...breadcrumbs].map((breadcrumb) => (
+			{breadcrumbs.map((breadcrumb) => (
 				<Breadcrumb key={breadcrumb.title} to={breadcrumb.path}>
 					{breadcrumb.title}
 				</Breadcrumb>
@@ -67,16 +68,16 @@ export const StoryblokBlogPost = ({
 		</Breadcrumbs>
 	) : undefined;
 
-	const authors = blok.author as StoryblokStory<AuthorStoryblok>[];
+	const authors = author as ISbStoryData<AuthorStoryblok>[];
 
 	const PageHeaderAuthorsList =
 		authors.length === 0 ? null : authors.length > 1 ? (
 			<div className={styles.authorSection}>
 				<AuthorList authors={authors} />
 			</div>
-		) : typeof blok.author[0] !== "string" ? (
+		) : typeof author[0] !== "string" ? (
 			<div className={styles.authorSection}>
-				<StoryblokAuthor blok={blok.author[0].content} headingLevel={2} />
+				<StoryblokAuthor blok={author[0].content} headingLevel={2} />
 			</div>
 		) : null;
 

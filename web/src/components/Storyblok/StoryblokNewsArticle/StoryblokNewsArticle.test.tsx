@@ -18,6 +18,10 @@ const newsArticleProps: StoryblokNewsArticleProps = {
 	},
 	breadcrumbs: [
 		{
+			title: "Home",
+			path: "/",
+		},
+		{
 			title: "News",
 			path: "/news",
 		},

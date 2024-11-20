@@ -1,6 +1,6 @@
+import { type ISbStoryData } from "@storyblok/react";
 import { NextSeo } from "next-seo";
 import React, { useMemo } from "react";
-import { StoryblokStory } from "storyblok-generate-ts";
 
 import { Breadcrumbs, Breadcrumb } from "@nice-digital/nds-breadcrumbs";
 import { Hero } from "@nice-digital/nds-hero";
@@ -22,6 +22,7 @@ import {
 	defaultPodcastImage,
 	constructStoryblokImageSrc,
 	GENERIC_ERROR_MESSAGE,
+	getBreadcrumbs,
 } from "@/utils/storyblok";
 
 import styles from "./podcast.module.scss";
@@ -33,7 +34,7 @@ type PodcastPageErrorProps = {
 };
 
 type PodcastPageSuccessProps = {
-	story: StoryblokStory<PodcastStoryblok>;
+	story: ISbStoryData<PodcastStoryblok>;
 	breadcrumbs?: TypeBreadcrumb[];
 };
 
@@ -72,7 +73,7 @@ export default function PodcastPage(
 
 	const BreadcrumbComponent = breadcrumbs?.length ? (
 		<Breadcrumbs>
-			{[{ title: "Home", path: "/" }, ...breadcrumbs].map((breadcrumb) => (
+			{breadcrumbs.map((breadcrumb) => (
 				<Breadcrumb key={breadcrumb.title} to={breadcrumb.path}>
 					{breadcrumb.title}
 				</Breadcrumb>
@@ -136,11 +137,23 @@ export async function getServerSideProps(context: GetServerSidePropsContext) {
 	}
 
 	const version = getStoryVersionFromQuery(query);
+	const pagePath = `news/podcasts/${slug}`;
+
+	logger.info("Fetching podcast from storyblok at path", params?.slug);
+
 	try {
 		// Get the story and its breadcrumbs
-		const storyResult = await fetchStory<PodcastStoryblok>(
-			`news/podcasts/${slug}`,
-			version
+		const [storyResult, breadcrumbs] = await Promise.all([
+			fetchStory<PodcastStoryblok>(pagePath, version),
+			getBreadcrumbs(pagePath, version),
+		]);
+
+		logger.info(
+			{
+				data: storyResult,
+				requestHeaders: context.req.headers,
+			},
+			`Fetched podcast from storyblok at path: ${slug}`
 		);
 
 		if ("notFound" in storyResult) {
@@ -148,11 +161,6 @@ export async function getServerSideProps(context: GetServerSidePropsContext) {
 				notFound: true,
 			};
 		}
-
-		const breadcrumbs = [
-			{ title: "News", path: "/news" },
-			{ title: "Podcasts", path: "/news/podcasts" },
-		];
 
 		const result = {
 			props: {
@@ -163,6 +171,12 @@ export async function getServerSideProps(context: GetServerSidePropsContext) {
 
 		return result;
 	} catch (error) {
+		// {
+		// 	"Cache-Control-Request": context.req.headers["cache-control"],
+		// 	errorCause: error instanceof Error && error.cause,
+		// 	requestHeaders: context.req.headers,
+		// },
+		logger.error(`Error fetching podcast at path ${slug} from gssp`);
 		return {
 			props: {
 				error: GENERIC_ERROR_MESSAGE,

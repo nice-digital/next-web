@@ -1,10 +1,10 @@
 import libSlugify from "@sindresorhus/slugify";
 
 import {
-	ProjectStatus,
-	type ProjectDetail,
 	ProjectGroup,
+	ProjectStatus,
 	ProjectType,
+	type ProjectDetail,
 } from "@/feeds/inDev/types";
 import {
 	ProductGroup,
@@ -121,9 +121,9 @@ export const getPublicationPdfDownloadPath = (
 	productGroup: ProductGroup,
 	lastModified: string
 ): string | null => {
-	if (!product.embedded.contentPartList2?.embedded.contentParts) return null;
+	if (!product.contentPartsList) return null;
 
-	const { contentParts } = product.embedded.contentPartList2.embedded;
+	const contentParts = product.contentPartsList;
 
 	const uploadAndConvertContentPart =
 		fetchAndMapContentParts<UploadAndConvertContentPart>(
@@ -131,8 +131,9 @@ export const getPublicationPdfDownloadPath = (
 			"UploadAndConvertContentPart"
 		);
 
-	if (!uploadAndConvertContentPart || uploadAndConvertContentPart.length == 0)
+	if (!uploadAndConvertContentPart) {
 		return null;
+	}
 
 	const rootPath = getProductPath({
 		...product,
