@@ -25,7 +25,7 @@ const resourceUID = 3784329,
 	partUID = 4904490349,
 	downloadPath = `NG100-resource-impact-statement-${resourceUID}-${partUID}.pdf`,
 	slug = `ng100`,
-	resourcePDFHref = "/feeds/downloads/2d345860-3c0e-45f5-ac29-1acd6771a2fc";
+	resourcePDFHref = "/newfeeds/downloads/2d345860-3c0e-45f5-ac29-1acd6771a2fc";
 
 const getServerSidePropsContext = {
 	params: {
@@ -91,6 +91,50 @@ describe("getServerSideProps", () => {
 		expect(loggerInfoMock.mock.calls[0][0]).toBe(
 			"Found incorrect extension of xls in part Resource impact statement (4904490349) in product NG100. Expected extension of pdf"
 		);
+	});
+
+	it("should return redirect when product has been withdrawn", async () => {
+		axiosJSONMock.reset();
+		axiosJSONMock.onGet(new RegExp(FeedPath.ProductDetail)).reply(200, {
+			...ng100,
+			ProductStatus: "Withdrawn",
+		});
+		addDefaultJSONFeedMocks();
+
+		const result = await getServerSideProps(getServerSidePropsContext);
+
+		expect(loggerInfoMock).toHaveBeenCalledWith(
+			"Product with id NG100 has 'Withdrawn' status"
+		);
+
+		expect(result).toStrictEqual({
+			redirect: {
+				permanent: true,
+				destination: "/guidance/ng100",
+			},
+		});
+	});
+
+	it("should return redirect when product has been temporarily withdrawn", async () => {
+		axiosJSONMock.reset();
+		axiosJSONMock.onGet(new RegExp(FeedPath.ProductDetail)).reply(200, {
+			...ng100,
+			ProductStatus: "TemporarilyWithdrawn",
+		});
+		addDefaultJSONFeedMocks();
+
+		const result = await getServerSideProps(getServerSidePropsContext);
+
+		expect(loggerInfoMock).toHaveBeenCalledWith(
+			"Product with id NG100 has 'TemporarilyWithdrawn' status"
+		);
+
+		expect(result).toStrictEqual({
+			redirect: {
+				permanent: true,
+				destination: "/guidance/ng100",
+			},
+		});
 	});
 
 	it("should return redierct to correct slugified title when incorrect", async () => {

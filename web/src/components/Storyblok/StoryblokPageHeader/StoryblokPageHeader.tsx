@@ -20,7 +20,7 @@ export const StoryblokPageHeader = ({
 }: PageHeaderBlokProps): React.ReactElement => {
 	const BreadcrumbComponent = breadcrumbs?.length ? (
 		<Breadcrumbs>
-			{[{ title: "Home", path: "/" }, ...breadcrumbs].map((breadcrumb) => (
+			{breadcrumbs.map((breadcrumb) => (
 				<Breadcrumb key={breadcrumb.title} to={breadcrumb.path}>
 					{breadcrumb.title}
 				</Breadcrumb>
@@ -28,7 +28,7 @@ export const StoryblokPageHeader = ({
 		</Breadcrumbs>
 	) : undefined;
 
-	const { title, summary, description, cta } = blok;
+	const { title, summary, description, cta, theme } = blok;
 	let updatedCTA: ButtonLinkStoryblok | undefined = undefined;
 
 	// Force button to CTA variant for this template
@@ -44,9 +44,9 @@ export const StoryblokPageHeader = ({
 			<PageHeader
 				heading={title}
 				lead={summary || undefined}
-				header={BreadcrumbComponent}
+				breadcrumbs={BreadcrumbComponent}
 				description={description}
-				variant="fullWidthLight"
+				variant={theme === "impact" ? "fullWidthDark" : "fullWidthLight"}
 				verticalPadding="loose"
 				cta={
 					updatedCTA ? <StoryblokButtonLink button={updatedCTA} /> : undefined

@@ -1,8 +1,7 @@
 import { GetServerSideProps } from "next";
 import { NextSeo } from "next-seo";
-import React from "react";
 
-import { Breadcrumbs, Breadcrumb } from "@nice-digital/nds-breadcrumbs";
+import { Breadcrumb, Breadcrumbs } from "@nice-digital/nds-breadcrumbs";
 import { Grid, GridItem } from "@nice-digital/nds-grid";
 
 import {
@@ -18,13 +17,17 @@ import { PublicationsChapterMenu } from "@/components/PublicationsChapterMenu/Pu
 import { PublicationsDownloadLink } from "@/components/PublicationsDownloadLink/PublicationsDownloadLink";
 import { PublicationsPrevNext } from "@/components/PublicationsPrevNext/PublicationsPrevNext";
 import {
-	getChapterContent,
 	ChapterHeading,
+	getChapterContent,
 	UploadAndConvertContentPart,
 } from "@/feeds/publications/publications";
 import { arrayify } from "@/utils/array";
 import { fetchAndMapContentParts } from "@/utils/contentparts";
-import { getChapterLinks, validateRouteParams } from "@/utils/product";
+import {
+	getChapterLinks,
+	redirectWithdrawnProducts,
+	validateRouteParams,
+} from "@/utils/product";
 
 import styles from "./[chapterSlug].page.module.scss";
 
@@ -146,10 +149,15 @@ export const getServerSideProps: GetServerSideProps<
 		} = result,
 		chapters = getChapterLinks(product, productType.group);
 
-	if (!params || !product.embedded.contentPartList2?.embedded.contentParts)
-		return { notFound: true };
+	const isWithdrawn = redirectWithdrawnProducts(product, productPath);
 
-	const { contentParts } = product.embedded.contentPartList2.embedded;
+	if (isWithdrawn) {
+		return isWithdrawn;
+	}
+
+	if (!params || !product.contentPartsList?.length) return { notFound: true };
+
+	const contentParts = product.contentPartsList;
 
 	const uploadAndConvertContentPart =
 			fetchAndMapContentParts<UploadAndConvertContentPart>(
@@ -162,22 +170,19 @@ export const getServerSideProps: GetServerSideProps<
 
 	if (!part) return { notFound: true };
 
-	const chapter = arrayify(
-		part.embedded.htmlContent.embedded?.htmlChapterContentInfo
-	).find((c) => c.chapterSlug === params.chapterSlug);
+	const chapter = arrayify(part.tableOfContents).find(
+		(c) => c.chapterSlug === params.chapterSlug
+	);
 
 	if (!chapter) return { notFound: true };
 
-	const chapterContent = await getChapterContent(
-		chapter?.links.self[0].href as string
-	);
+	const chapterContent = await getChapterContent(chapter?.url as string);
 
 	if (!chapterContent) return { notFound: true };
 
 	const chapterSections =
-		chapterContent.embedded?.htmlChapterSectionInfo &&
-		Array.isArray(chapterContent.embedded.htmlChapterSectionInfo)
-			? chapterContent.embedded.htmlChapterSectionInfo
+		chapterContent.sections && Array.isArray(chapterContent.sections)
+			? chapterContent.sections
 			: [];
 
 	const {

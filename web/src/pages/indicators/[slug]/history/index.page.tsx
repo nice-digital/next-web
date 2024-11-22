@@ -1,8 +1,7 @@
-import { type GetServerSideProps } from "next/types";
 import { NextSeo } from "next-seo";
-import React from "react";
+import { type GetServerSideProps } from "next/types";
 
-import { Breadcrumbs, Breadcrumb } from "@nice-digital/nds-breadcrumbs";
+import { Breadcrumb, Breadcrumbs } from "@nice-digital/nds-breadcrumbs";
 
 import { ProductHorizontalNav } from "@/components/ProductHorizontalNav/ProductHorizontalNav";
 import { ProductPageHeading } from "@/components/ProductPageHeading/ProductPageHeading";
@@ -11,10 +10,13 @@ import { ProjectDetail } from "@/feeds/inDev/inDev";
 import { ProductDetail } from "@/feeds/publications/types";
 import { arrayify, byTitleAlphabetically } from "@/utils/array";
 import { getFileTypeNameFromMime } from "@/utils/file";
-import { validateRouteParams } from "@/utils/product";
+import {
+	redirectWithdrawnProducts,
+	validateRouteParams
+} from "@/utils/product";
 import {
 	ResourceGroupViewModel,
-	ResourceSubGroupViewModel,
+	ResourceSubGroupViewModel
 } from "@/utils/resource";
 
 export type HistoryPageProps = {
@@ -93,6 +95,12 @@ export const getServerSideProps: GetServerSideProps<
 		hasHistory,
 	} = result;
 
+	const isWithdrawn = redirectWithdrawnProducts(product, productPath);
+
+	if (isWithdrawn) {
+		return isWithdrawn;
+	}
+
 	if (!project) return { notFound: true };
 
 	if (!hasHistory) return { notFound: true };
@@ -117,8 +125,12 @@ export const getServerSideProps: GetServerSideProps<
 					subGroups.push(currentSubGroup);
 				}
 
-				const { mimeType, length, resourceTitleId, fileName } =
-						resource.embedded.niceIndevFile,
+				const {
+						mimeType = "",
+						length = 0,
+						resourceTitleId = "",
+						fileName = "",
+					} = resource?.embedded?.niceIndevFile || {},
 					isHTML = mimeType === "text/html",
 					fileSize = isHTML ? null : length,
 					fileTypeName = isHTML ? null : getFileTypeNameFromMime(mimeType),

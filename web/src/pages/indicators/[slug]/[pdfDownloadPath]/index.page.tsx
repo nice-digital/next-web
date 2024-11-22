@@ -1,11 +1,14 @@
 import { GetServerSideProps } from "next/types";
 
 import {
-	UploadAndConvertContentPart,
 	getFileStream,
+	UploadAndConvertContentPart,
 } from "@/feeds/publications/publications";
 import { fetchAndMapContentParts } from "@/utils/contentparts";
-import { validateRouteParams } from "@/utils/product";
+import {
+	redirectWithdrawnProducts,
+	validateRouteParams,
+} from "@/utils/product";
 import { getServerSidePDF } from "@/utils/response";
 
 export const getServerSideProps: GetServerSideProps<
@@ -22,10 +25,15 @@ export const getServerSideProps: GetServerSideProps<
 
 	if ("notFound" in result || "redirect" in result) return result;
 
-	const { product, pdfDownloadPath, actualPath } = result;
+	const { product, productPath, pdfDownloadPath, actualPath } = result;
 
-	if (!product.embedded.contentPartList2?.embedded.contentParts)
-		return { notFound: true };
+	const isWithdrawn = redirectWithdrawnProducts(product, productPath);
+
+	if (isWithdrawn) {
+		return isWithdrawn;
+	}
+
+	if (!product.contentPartsList?.length) return { notFound: true };
 
 	if (!pdfDownloadPath)
 		return {
@@ -40,7 +48,7 @@ export const getServerSideProps: GetServerSideProps<
 			},
 		};
 
-	const { contentParts } = product.embedded.contentPartList2.embedded;
+	const contentParts = product.contentPartsList;
 
 	const uploadAndConvertContentPart =
 			fetchAndMapContentParts<UploadAndConvertContentPart>(
@@ -53,7 +61,7 @@ export const getServerSideProps: GetServerSideProps<
 
 	if (!part) return { notFound: true };
 
-	const pdfHref = part.embedded.pdfFile.links.self[0].href;
+	const pdfHref = part.pdf.url;
 
 	return getServerSidePDF(await getFileStream(pdfHref), res);
 };

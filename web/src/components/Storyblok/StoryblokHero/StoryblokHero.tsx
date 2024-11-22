@@ -6,6 +6,8 @@ import { type Breadcrumb as TypeBreadcrumb } from "@/types/Breadcrumb";
 import { type HeroStoryblok } from "@/types/storyblok";
 import { constructStoryblokImageSrc } from "@/utils/storyblok";
 
+import styles from "./StoryblokHero.module.scss";
+
 export interface HeroBlokProps {
 	blok: HeroStoryblok;
 	breadcrumbs?: TypeBreadcrumb[];
@@ -18,8 +20,8 @@ export const StoryblokHero = ({
 	const { image, cta } = blok;
 
 	const BreadcrumbComponent = breadcrumbs?.length ? (
-		<Breadcrumbs>
-			{[{ title: "Home", path: "/" }, ...breadcrumbs].map((breadcrumb) => (
+		<Breadcrumbs className={styles.heroBreadcrumbs}>
+			{breadcrumbs.map((breadcrumb) => (
 				<Breadcrumb key={breadcrumb.title} to={breadcrumb.path}>
 					{breadcrumb.title}
 				</Breadcrumb>
@@ -39,9 +41,12 @@ export const StoryblokHero = ({
 		<Hero
 			title={blok.title}
 			intro={blok.summary || undefined}
+			description={blok.description || undefined}
 			header={BreadcrumbComponent}
 			image={optimisedImage}
 			actions={action}
+			isDark={blok.theme === "impact" ? true : undefined}
+			data-testid="hero-container"
 		/>
 	);
 };

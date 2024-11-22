@@ -6,12 +6,13 @@ export enum FeedPath {
 	AreasOfInterest = "/newfeeds/areaofinteresttypes",
 	IndicatorSubTypes = "/newfeeds/indicatorsubtypes",
 	IndicatorMappings = "/newfeeds/indicatormappings",
-	ProductDetail = "/feeds/product/",
+	ProductDetail = "/newfeeds/product/",
 }
 
 export enum Status {
 	Published = "Published",
 	Withdrawn = "Withdrawn",
+	TemporarilyWithdrawn = "TemporarilyWithdrawn",
 }
 
 export enum ProductGroup {
@@ -252,24 +253,30 @@ export type HTMLContent = {
 };
 
 export type HTMLChapterContentInfo = {
-	links: { self: [Link] };
-	eTag: ETag;
-	title: string;
 	reference: string;
 	partId: number;
 	chapterSlug: string;
+	uri: string;
+	title: string;
+};
+
+export type TableOfContentInfo = {
+	url: string;
+	reference: string;
+	partId: number;
+	chapterSlug: string;
+	title: string;
 };
 
 export type FileContent = {
-	fileName: string;
-	length: number;
-	links: { self: [Link] };
-	eTag: string | null;
-	uid: number;
 	id: string;
 	mimeType: string;
+	fileName: string;
+	length: number;
 	hash: string;
 	name: string;
+	uid: number;
+	url: string;
 };
 
 export type PDFFile = FileContent & {
@@ -288,35 +295,28 @@ export type EpubFile = FileContent & {
 };
 
 export type BaseContentPart<T extends string = string> = {
-	links: EmptySelfLinks;
-	eTag: ETag;
+	reference: string;
+	partId: number;
 	title: string;
+	legacyId: string | null;
 	type: T;
 	uid: number;
-	legacyId: string | null;
 };
 
 export type UploadAndConvertContentPart =
 	BaseContentPart<"UploadAndConvertContentPart"> & {
-		embedded: {
-			htmlContent: HTMLContent;
-			pdfFile: PDFFile;
-			mobiFile?: MobiFile;
-			epubFile?: EpubFile;
-		};
+		tableOfContents: TableOfContentInfo[];
+		pdf: FileContent;
+		url: string;
 	};
 
 export type EditableContentPart = BaseContentPart<"EditableContentPart"> & {
-	embedded: {
-		htmlContent: HTMLContent;
-		pdfFile?: PDFFile;
-	};
+	pdf?: FileContent;
+	url: string;
 };
 
 export type UploadContentPart = BaseContentPart<"UploadContentPart"> & {
-	embedded: {
-		file: FileContent;
-	};
+	file: FileContent;
 };
 
 export type ExternalUrlContentPart =
@@ -325,14 +325,7 @@ export type ExternalUrlContentPart =
 	};
 
 export type ContentPartList = {
-	embedded: {
-		uploadAndConvertContentPart?:
-			| UploadAndConvertContentPart
-			| UploadAndConvertContentPart[];
-		editableContentPart?: EditableContentPart | EditableContentPart[];
-		uploadContentPart?: UploadContentPart | UploadContentPart[];
-		externalUrlContentPart?: ExternalUrlContentPart | ExternalUrlContentPart[];
-	};
+	contentParts?: [];
 };
 
 export type ContentPartList2 = {
@@ -348,11 +341,15 @@ export type ContentPart =
 	| ExternalUrlContentPart;
 
 export type RelatedResourceList = {
-	links: EmptySelfLinks;
-	embedded: {
-		relatedResource: RelatedResource | RelatedResource[];
-	};
-	eTag: ETag;
+	id: string;
+	url: string;
+	relationship: string;
+	title: string;
+	resourceType: ResourceType;
+	resourceGroupsList: string[];
+	status: Status;
+	language: Language;
+	uid: number;
 };
 
 export type RelatedResource = {
@@ -525,14 +522,13 @@ export enum RelationshipType {
 }
 
 export type ProductAndResourceBase = {
-	links: { self: [Link] };
-	eTag: ETag;
-	embedded: {
-		contentPartList?: ContentPartList;
-		contentPartList2?: ContentPartList2;
-		relatedResourceList?: RelatedResourceList;
-		relatedProductList?: RelatedProductList;
-	};
+	contentPartsList?: ContentPart[];
+	contentPartList2?: ContentPartList2;
+	relatedResourceList?: RelatedResourceList;
+	relatedProductList?: RelatedProductList;
+	accreditationList: BadgingFields[];
+	endorsementList: BadgingFields[];
+	supportingList: BadgingFields[];
 	/**
 	 * An ISO date string of the time the record was last modified, e.g. `2022-05-05T08:58:37.5476922Z`.
 	 *
@@ -553,9 +549,9 @@ export type ProductAndResourceBase = {
 };
 
 export type ResourceDetail = ProductAndResourceBase & {
-	embedded: {
-		resourceGroupList: ResourceGroupList;
-	};
+	configurableFieldList: ConfigurableField[];
+	resourceGroupList: string[];
+	id: string;
 	uid: number;
 	legacyId: string | null;
 	language: Language;
@@ -591,10 +587,14 @@ export type ProductDetail = ProductAndResourceBase & {
 	inDevReference: string | null;
 	metaDescription: string;
 	productStatus: Status;
+	withdrawnNotes: string;
+	versionNumber: number;
+	publishedDate: string | null;
 	majorChangeDate: string | null;
 	nextReviewDate: string | null;
 	collectionTypesList: [];
 	authorList: string[];
+	additionalAuthorList: BadgingFields[];
 	publisherList: string[];
 	audienceList: string[];
 	developedAs: string | null;
@@ -604,6 +604,7 @@ export type ProductDetail = ProductAndResourceBase & {
 	indicatorSubTypeList: string[];
 	indicatorOldCode: string;
 	indicatorOldUrl: string;
+	taxonomySubjectList: string[];
 	/**
 	 * The list of chapter titles and URLs.
 	 *
@@ -617,20 +618,14 @@ export type ProductDetail = ProductAndResourceBase & {
 };
 
 /** The type of the response from a chapter endpoint e.g. /feeds/product/ind69/part/1/chapter/overview */
-export type ChapterHTMLContent = {
-	links: EmptySelfLinks;
-	eTag: ETag;
+export type ChapterHTMLContent = HTMLChapterSectionInfo & {
 	/** The HTML content of this chapter */
 	content: string;
-	embedded?: {
-		/** Publications returns either a single object or an array of objects */
-		htmlChapterSectionInfo: HTMLChapterSectionInfo | HTMLChapterSectionInfo[];
-	};
+	/** Publications returns either a single object or an array of objects */
+	sections?: HTMLChapterSectionInfo[];
 };
 
 export type HTMLChapterSectionInfo = {
-	links: EmptySelfLinks;
-	eTag: string;
 	reference: string;
 	partId: number;
 	chapterSlug: string;
@@ -650,4 +645,17 @@ export type IndicatorMappings = {
 export type IndicatorMapping = {
 	url: string;
 	id: string;
+};
+
+export type ConfigurableField = {
+	name: string;
+	value: string;
+};
+
+export type BadgingFields = {
+	name: string;
+	url: string;
+	logo: {
+		url: string;
+	};
 };

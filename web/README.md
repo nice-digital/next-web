@@ -25,13 +25,10 @@
 		- [NextJS server](#nextjs-server)
 		- [AWS EC2](#aws-ec2)
 	- [Storyblok](#storyblok)
-		- [Updating types](#updating-types)
-		- [Syncing Types, Components, and Stories between Storyblok spaces](#syncing-types-components-and-stories-between-storyblok-spaces)
-		- [Push pull components between storyblok spaces](#push-pull-components-between-storyblok-spaces)
-   	- [Local setup between Next-Web and Publications](#local-setup-between-next-web-and-publications)
-   	  	- [Publications setup](#publications-setup)
-   	  	- [Next-Web setup](#next-web-setup)
-   	  	- [Debugging Next-Web locally](#debugging-next-web-locally)
+		- [Updating types on the command line manually](#updating-types-on-the-command-line-manually)
+		- [The storyblok CLI script tools](#the-storyblok-cli-script-tools)
+			- [Setup](#setup)
+		- [Debugging Next-Web locally](#debugging-next-web-locally)
 
 <!-- END doctoc generated TOC please keep comment here to allow auto update -->
 </details>
@@ -172,62 +169,62 @@ See the [aws](../aws) folder for more information.
 
 Storyblok is the CMS we use for our corporate content.
 
-### Updating types
+### Updating types on the command line manually
 
 We can get updated Typescript types automatically using the Storyblok CLI. Running `npm run generate-sb-types` in the web folder will connect to our Storyblok instance and replace all the types in `/web/src/types/storyblok.d.ts`.
 
 Two things to bear in mind before you do this:
 
-1. You'll need to log in via the CLI, otherwise you'll get an error that you're not authorised. [Docs for installing the CLI, logging in and so on are here](https://www.storyblok.com/docs/Guides/command-line-interface). Sometimes you need to log out and in again, which is a bit annoying. If you're asked for a region when logging in, it's `eu`.
+1. You'll need to log in via the CLI, otherwise you'll get an error that you're not authorised. [Docs for installing the CLI, logging in and so on are here](https://www.storyblok.com/docs/Guides/command-line-interface). Sometimes you need to log out and in again, which is a bit annoying. If you're asked for a region when logging in, it's `eu`. NOTE - `npm run danger-storyblok-push-pull` outlined below will now log you in and out automatically via your unique storyblok token to perform selected operations.
 
 2. You'll need to replace the two instances of {SPACE_ID} in the script with our actual Storyblok space ID, which isn't added to package.json for security reasons. There may be a better way to do this by reading it from our env vars, but for now this'll do.
 
-### Syncing Types, Components, and Stories between Storyblok spaces
+### The storyblok CLI script tools
+We can get updated Typescript types automatically, pull and push components and sync components and types between spaces using the storyblok CLI script tools. 
 
-Use extreme caution when syncing between spaces as you can overwrite live content if you get the sync direction or space ids wrong. The same advice for logging in and out of the storyblok CLI applies ([see updating types](#updating-types)).
-
-1. **Add Space IDs to environment variables:**
+#### Setup
+1. **Add Space IDs to environment variables and your storyblok:**
    - Open your `.env.local` file.
-   - Add the space IDs from Storyblok using the following variable names:
+   - Add the space IDs from Storyblok using the following variable names, ensuring they are correct with the storyblok space settings page:
      - `LIVE_SPACE_ID`
      - `ALPHA_SPACE_ID`
-     - `DEV_SANDBOX_SPACE_ID`
+     - `DEV_SPACE_ID`
+	- Add your uniquely generated storyblok token, you will need to update your token when it expires (see - https://app.storyblok.com/#/me/account?tab=token)
+     - `STORYBLOK_TOKEN`
 
    Example:
    ```plaintext
    LIVE_SPACE_ID=your_live_space_id
    ALPHA_SPACE_ID=your_alpha_space_id
-   DEV_SANDBOX_SPACE_ID=your_dev_sandbox_space_id
+   DEV_SPACE_ID=your_dev_sandbox_space_id
+	STORYBLOK_TOKEN=your_storyblok_token
 	 ```
 
-2. **Run the sync command**
+### Updating types with the CLI script tool
+This will allow you to connect to one of our Storyblok spaces and replace all the types in `/web/src/types/storyblok.d.ts` with those from the chosen space.
+
+1. **Run the generate types command**
    - Navigate to the web directory
-   - Execute the sync command: npm run danger-storyblok-sync
-   - Follow the prompts in the terminal, double checking the sync direction, space ids and content to sync.
+   - Execute the push/pull command: npm run danger-storyblok-push-pull
+   - Choose 'Generate Types' and follow the prompts in the terminal to generate types from a chosen space
 
 ### Push pull components between storyblok spaces
 
 Use extreme caution when push pulling components between spaces as you can overwrite live content if you get the push / pull direction or space ids wrong. The same advice for logging in and out of the storyblok CLI applies ([see updating types](#updating-types)). The pull command creates a temporary local backup directory with the id of the space, then pulls the components from storyblok as individual files. The push command first executes a pull to ensure the latest version from storyblok, then prompts for the name of the component to push to the chosen space - multiple components can be pushed by comma separating the names.
 
-1. **Add Space IDs to environment variables:**
-   - Open your `.env.local` file.
-   - Add the space IDs from Storyblok using the following variable names:
-     - `LIVE_SPACE_ID`
-     - `ALPHA_SPACE_ID`
-     - `DEV_SANDBOX_SPACE_ID`
-
-   Example:
-   ```plaintext
-   LIVE_SPACE_ID=your_live_space_id
-   ALPHA_SPACE_ID=your_alpha_space_id
-   DEV_SANDBOX_SPACE_ID=your_dev_sandbox_space_id
-	 ```
-
-2. **Run the push/pull command**
+1. **Run the push/pull command**
    - Navigate to the web directory
    - Execute the push / pull command: npm run danger-storyblok-push-pull
    - Follow the prompts in the terminal, double checking the push / pull direction, space ids and components to push/pull.
+  
+### Syncing Types, Components, and Stories between Storyblok spaces
 
+Use extreme caution when syncing between spaces as you can overwrite live content if you get the sync direction or space ids wrong. The same advice for logging in and out of the storyblok CLI manually applies ([see updating types](#updating-types)).
+
+1. **Run the sync command**
+   - Navigate to the web directory
+   - Execute the sync command: npm run danger-storyblok-sync
+   - Follow the prompts in the terminal, double checking the sync direction, space ids and content to sync
 
 ## Local setup between Next-Web and Publications
 
