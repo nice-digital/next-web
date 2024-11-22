@@ -1,7 +1,7 @@
 import { ISbStoriesParams, ISbStoryData } from "@storyblok/react";
 import { GetServerSidePropsContext } from "next";
-import Image from "next/image";
 import { NextSeo } from "next-seo";
+import Image from "next/image";
 
 import { Breadcrumbs, Breadcrumb } from "@nice-digital/nds-breadcrumbs";
 import { Card } from "@nice-digital/nds-card";

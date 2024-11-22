@@ -12,11 +12,11 @@ import { arrayify, byTitleAlphabetically } from "@/utils/array";
 import { getFileTypeNameFromMime } from "@/utils/file";
 import {
 	redirectWithdrawnProducts,
-	validateRouteParams
+	validateRouteParams,
 } from "@/utils/product";
 import {
 	ResourceGroupViewModel,
-	ResourceSubGroupViewModel
+	ResourceSubGroupViewModel,
 } from "@/utils/resource";
 
 export type HistoryPageProps = {

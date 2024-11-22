@@ -1,5 +1,5 @@
-import { type GetServerSideProps } from "next/types";
 import { NextSeo } from "next-seo";
+import { type GetServerSideProps } from "next/types";
 import React from "react";
 
 import { Breadcrumbs, Breadcrumb } from "@nice-digital/nds-breadcrumbs";
