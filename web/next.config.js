@@ -122,12 +122,12 @@ const nextConfig = {
 				source:
 					"/:productRoot(indicators|guidance|hub)/:statusSlug(indevelopment|discontinued|awaiting-development|topic-selection)/:path*",
 				destination:
-					"/indicators/indevelopment/:path*?productRoot=:productRoot&statusSlug=:statusSlug",
+					"/productTemplates/indevelopment/:path*?productRoot=:productRoot&statusSlug=:statusSlug",
 			},
 			{
 				source:
 					"/:productRoot(indicators|guidance|advice|process|corporate|hub)/:path*",
-				destination: "/indicators/:path*?productRoot=:productRoot",
+				destination: "/productTemplates/:path*?productRoot=:productRoot",
 			},
 			{
 				source: "/robots.txt",
