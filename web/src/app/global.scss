@@ -1,0 +1,35 @@
+@use '@nice-digital/nds-core/scss/media-queries';
+@use '@nice-digital/nds-core/scss/typography';
+@use '@nice-digital/nds-core/scss/utils';
+
+/*
+  set font-size to 14px, to handle narrow viewport sizes.
+  e.g. Galaxy Fold 280px
+*/
+$narrow-viewport-root-font-size: utils.rem(typography.$base-font-size * 0.875);
+
+footer {
+  margin-top: 0 !important;
+}
+
+html {
+  scroll-behavior: smooth;
+
+  @media (prefers-reduced-motion) {
+    scroll-behavior: auto;
+  }
+
+  @include media-queries.mq($until: 300px) {
+    font-size: $narrow-viewport-root-font-size;
+  }
+
+}
+
+main {
+  font-family: var(--sans-font-family);
+}
+
+main a {
+  // This is to ensure that we can't tab into a link that's hidden by the "back to top" sticky element
+  scroll-margin: utils.rem(60px);
+}
