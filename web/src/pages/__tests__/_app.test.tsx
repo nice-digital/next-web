@@ -6,7 +6,7 @@ import { useEffect } from "react";
 import { logger } from "@/logger";
 import { getMockRouter } from "@/test-utils/rendering";
 
-import NextWebApp, { reportWebVitals } from "./_app.page";
+import NextWebApp, { reportWebVitals } from "../_app";
 
 import type { AppProps } from "next/app";
 

@@ -2,21 +2,21 @@ import { screen, waitFor } from "@testing-library/react";
 
 import { render } from "@/test-utils/rendering";
 
-import ErrorPage from "./_error.page";
+import FourOhFourPage from "../404";
 
-describe("_error", () => {
+describe("404", () => {
 	describe("SEO", () => {
-		it("should render 'Error' in the page title", async () => {
-			render(<ErrorPage />);
+		it("should render 'Page not found' in the page title", async () => {
+			render(<FourOhFourPage />);
 			await waitFor(() => {
-				expect(document.title).toStartWith("Error");
+				expect(document.title).toStartWith("Page not found");
 			});
 		});
 	});
 
 	describe("Breadcrumbs", () => {
 		it("should render home breadcrumb linking to the homepage", () => {
-			render(<ErrorPage />);
+			render(<FourOhFourPage />);
 			expect(
 				screen.queryByText("Home", {
 					selector: ".breadcrumbs a",
@@ -24,10 +24,10 @@ describe("_error", () => {
 			).toHaveAttribute("href", "/");
 		});
 
-		it("should render error as current page breadcrumb without link", () => {
-			render(<ErrorPage />);
+		it("should render page not found as current page breadcrumb without link", () => {
+			render(<FourOhFourPage />);
 			expect(
-				screen.getByText("Error", {
+				screen.getByText("Page not found", {
 					selector: ".breadcrumbs span",
 				})
 			).toBeInTheDocument();
@@ -35,11 +35,11 @@ describe("_error", () => {
 	});
 
 	it("should render heading 1 with correct text", () => {
-		render(<ErrorPage />);
+		render(<FourOhFourPage />);
 		expect(
 			screen.getByRole("heading", {
 				level: 1,
 			})
-		).toHaveTextContent("Something's gone wrong");
+		).toHaveTextContent("We can't find this page");
 	});
 });

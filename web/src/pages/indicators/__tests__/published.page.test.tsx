@@ -7,7 +7,7 @@ import sampleData from "@/mockData/search/indicators-published.json";
 import { render, screen, within } from "@/test-utils/rendering";
 import { formatDateStr } from "@/utils/datetime";
 
-import PublishedPage from "./../published.page";
+import PublishedPage from "../published";
 
 (useRouter as jest.Mock).mockImplementation(() => ({
 	route: "/",

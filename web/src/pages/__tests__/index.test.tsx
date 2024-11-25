@@ -18,7 +18,7 @@ import { NewsStory } from "@/types/News";
 import * as storyblokUtils from "@/utils/storyblok";
 import { GENERIC_ERROR_MESSAGE } from "@/utils/storyblok";
 
-import Home, { type HomePageProps, getServerSideProps } from "./index.page";
+import Home, { type HomePageProps, getServerSideProps } from "..";
 
 // Mock a second article with a different ID so we avoid duplicate key warnings
 const secondNewsArticle = {
