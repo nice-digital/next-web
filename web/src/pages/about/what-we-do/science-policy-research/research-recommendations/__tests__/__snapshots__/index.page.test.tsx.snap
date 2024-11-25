@@ -1,6 +1,6 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`/guidance/inconsultation should match the snapshot 1`] = `
+exports[`/research-recommendations/index should match the snapshot 1`] = `
 <div>
   <div
     class="undefined undefined"
@@ -32,16 +32,34 @@ exports[`/guidance/inconsultation should match the snapshot 1`] = `
               class="breadcrumbs__crumb"
             >
               <a
-                href="/guidance"
+                href="/about"
               >
-                NICE guidance
+                About
+              </a>
+            </li>
+            <li
+              class="breadcrumbs__crumb"
+            >
+              <a
+                href="/about/what-we-do"
+              >
+                What we do
+              </a>
+            </li>
+            <li
+              class="breadcrumbs__crumb"
+            >
+              <a
+                href="/about/what-we-do/research-and-development"
+              >
+                Research and development
               </a>
             </li>
             <li
               class="breadcrumbs__crumb"
             >
               <span>
-                In consultation
+                Research recommendations
               </span>
             </li>
           </ol>
@@ -65,15 +83,31 @@ exports[`/guidance/inconsultation should match the snapshot 1`] = `
       "@type": "ListItem",
       "position": 2,
       "item": {
-        "@id": "/guidance",
-        "name": "NICE guidance"
+        "@id": "/about",
+        "name": "About"
       }
     },
     {
       "@type": "ListItem",
       "position": 3,
       "item": {
-        "name": "In consultation"
+        "@id": "/about/what-we-do",
+        "name": "What we do"
+      }
+    },
+    {
+      "@type": "ListItem",
+      "position": 4,
+      "item": {
+        "@id": "/about/what-we-do/research-and-development",
+        "name": "Research and development"
+      }
+    },
+    {
+      "@type": "ListItem",
+      "position": 5,
+      "item": {
+        "name": "Research recommendations"
       }
     }
   ]
@@ -88,7 +122,7 @@ exports[`/guidance/inconsultation should match the snapshot 1`] = `
           <h1
             class="page-header__heading "
           >
-            In consultation: Guidance and quality standards
+            Published: Recommendations for research
           </h1>
           <p
             class="page-header__lead"
@@ -105,77 +139,36 @@ exports[`/guidance/inconsultation should match the snapshot 1`] = `
             >
               Skip to results
             </a>
+            As we develop guidance, we identify gaps and uncertainties in the evidence base which could benefit from further research. The most important unanswered questions are developed into research recommendations. Read our
+             
+            <a
+              href="https://www.nice.org.uk/process/pmg45"
+            >
+              process and methods guide
+            </a>
+            .
+            <br />
+            <br />
+            Browse the list to find a topic of interest and check out the
+             
+            <a
+              href="https://www.nihr.ac.uk/funding/nihr-nice-rolling-call/36180"
+            >
+              National Institute for Health and Care Research (NIHR) call for research studies addressing NICE recommendations for research
+            </a>
+            .
+            <br />
+            <br />
+            For further information email
+             
+            <a
+              href="mailto:research@nice.org.uk"
+            >
+              research@nice.org.uk
+            </a>
+            .
           </p>
         </div>
-        <nav
-          aria-label="Stages of guidance development"
-          class="horizontal-nav"
-        >
-          <ul
-            class="horizontal-nav__list"
-          >
-            <li
-              class="horizontal-nav__item"
-              data-component="horizontal-nav"
-            >
-              <a
-                aria-current="false"
-                class="horizontal-nav__link"
-                href="/guidance/published"
-              >
-                Published
-              </a>
-            </li>
-            <li
-              class="horizontal-nav__item"
-              data-component="horizontal-nav"
-            >
-              <a
-                aria-current="false"
-                class="horizontal-nav__link"
-                href="/guidance/inconsultation"
-              >
-                In consultation
-              </a>
-            </li>
-            <li
-              class="horizontal-nav__item"
-              data-component="horizontal-nav"
-            >
-              <a
-                aria-current="false"
-                class="horizontal-nav__link"
-                href="/guidance/indevelopment"
-              >
-                In development
-              </a>
-            </li>
-            <li
-              class="horizontal-nav__item"
-              data-component="horizontal-nav"
-            >
-              <a
-                aria-current="false"
-                class="horizontal-nav__link"
-                href="/guidance/awaiting-development"
-              >
-                Awaiting development
-              </a>
-            </li>
-            <li
-              class="horizontal-nav__item"
-              data-component="horizontal-nav"
-            >
-              <a
-                aria-current="false"
-                class="horizontal-nav__link"
-                href="/guidance/topic-selection"
-              >
-                Topic selection
-              </a>
-            </li>
-          </ul>
-        </nav>
         <div
           class="grid grid--loose sectionWrapper"
         >
@@ -294,7 +287,7 @@ exports[`/guidance/inconsultation should match the snapshot 1`] = `
                             class="input__input"
                             id="q"
                             name="q"
-                            placeholder="E.g. 'diabetes' or 'NG28'"
+                            placeholder="E.g. 'diabetes' or 'CG100-1'"
                             spellcheck="false"
                             type="text"
                             value=""
@@ -317,7 +310,7 @@ exports[`/guidance/inconsultation should match the snapshot 1`] = `
                       class="filter-group__heading"
                     >
                       <button
-                        aria-controls="group-consultation-end-date"
+                        aria-controls="group-published"
                         aria-expanded="true"
                         type="button"
                       >
@@ -337,9 +330,9 @@ exports[`/guidance/inconsultation should match the snapshot 1`] = `
                           />
                         </svg>
                         <span
-                          id="group-heading-consultation-end-date"
+                          id="group-heading-published"
                         >
-                          Consultation end date
+                          Published
                            
                         </span>
                       </button>
@@ -347,10 +340,10 @@ exports[`/guidance/inconsultation should match the snapshot 1`] = `
                     <fieldset
                       aria-hidden="false"
                       class="filter-group__options"
-                      id="group-consultation-end-date"
+                      id="group-published"
                     >
                       <legend>
-                        Consultation end date
+                        Published
                       </legend>
                       <div
                         class="ph--c pt--c"
@@ -368,8 +361,8 @@ exports[`/guidance/inconsultation should match the snapshot 1`] = `
                           <input
                             class="input__input"
                             id="from"
-                            max="2030-11-22"
-                            min="2020-11-22"
+                            max="2020-11-22"
+                            min="2000-01-01"
                             name="from"
                             pattern="[0-9]{4}-(0[1-9]|1[012])-(0[1-9]|1[0-9]|2[0-9]|3[01])"
                             placeholder="yyyy-mm-dd"
@@ -390,8 +383,8 @@ exports[`/guidance/inconsultation should match the snapshot 1`] = `
                           <input
                             class="input__input"
                             id="to"
-                            max="2030-11-22"
-                            min="2020-11-22"
+                            max="2020-11-22"
+                            min="2000-01-01"
                             name="to"
                             pattern="[0-9]{4}-(0[1-9]|1[012])-(0[1-9]|1[0-9]|2[0-9]|3[01])"
                             placeholder="yyyy-mm-dd"
@@ -407,202 +400,6 @@ exports[`/guidance/inconsultation should match the snapshot 1`] = `
                           Apply date filters
                         </button>
                       </div>
-                    </fieldset>
-                  </div>
-                  <div
-                    class="filter-group"
-                  >
-                    <h3
-                      class="filter-group__heading"
-                    >
-                      <button
-                        aria-controls="group-ndt"
-                        aria-expanded="true"
-                        type="button"
-                      >
-                        <svg
-                          aria-hidden="true"
-                          class="filter-group__heading-icon filter-group__heading-icon--expanded"
-                          fill="none"
-                          focusable="false"
-                          height="1em"
-                          viewBox="0 0 512 512"
-                          width="1em"
-                          xmlns="http://www.w3.org/2000/svg"
-                        >
-                          <path
-                            d="M478.152 174c0 10.091-3.525 18.661-10.576 25.712l-186 186c-7.243 7.243-15.909 10.864-26 10.864-10.283 0-18.853-3.621-25.712-10.864l-186-186C36.621 192.853 33 184.283 33 174c0-10.091 3.621-18.757 10.864-26L65 126.576C72.424 119.525 81.09 116 91 116c10.091 0 18.661 3.525 25.712 10.576L255.576 265.44 394.44 126.576c7.051-7.051 15.621-10.576 25.712-10.576 9.909 0 18.576 3.525 26 10.576L467.576 148c7.051 7.424 10.576 16.091 10.576 26Z"
-                            fill="currentColor"
-                          />
-                        </svg>
-                        <span
-                          id="group-heading-ndt"
-                        >
-                          Type
-                           
-                        </span>
-                      </button>
-                    </h3>
-                    <fieldset
-                      aria-hidden="false"
-                      class="filter-group__options"
-                      id="group-ndt"
-                    >
-                      <legend>
-                        Type
-                      </legend>
-                      <label
-                        class="filter-option"
-                        data-component="filter-option"
-                        for="filter_ndt_guidance"
-                      >
-                        <input
-                          id="filter_ndt_guidance"
-                          name="ndt"
-                          title="Type - Guidance (14)"
-                          type="checkbox"
-                          value="Guidance"
-                        />
-                        <span
-                          class="filter-option__text"
-                        >
-                          Guidance (14)
-                        </span>
-                      </label>
-                    </fieldset>
-                  </div>
-                  <div
-                    class="filter-group"
-                  >
-                    <h3
-                      class="filter-group__heading"
-                    >
-                      <button
-                        aria-controls="group-ngt"
-                        aria-expanded="false"
-                        type="button"
-                      >
-                        <svg
-                          aria-hidden="true"
-                          class="filter-group__heading-icon"
-                          fill="none"
-                          focusable="false"
-                          height="1em"
-                          viewBox="0 0 512 512"
-                          width="1em"
-                          xmlns="http://www.w3.org/2000/svg"
-                        >
-                          <path
-                            d="M478.152 174c0 10.091-3.525 18.661-10.576 25.712l-186 186c-7.243 7.243-15.909 10.864-26 10.864-10.283 0-18.853-3.621-25.712-10.864l-186-186C36.621 192.853 33 184.283 33 174c0-10.091 3.621-18.757 10.864-26L65 126.576C72.424 119.525 81.09 116 91 116c10.091 0 18.661 3.525 25.712 10.576L255.576 265.44 394.44 126.576c7.051-7.051 15.621-10.576 25.712-10.576 9.909 0 18.576 3.525 26 10.576L467.576 148c7.051 7.424 10.576 16.091 10.576 26Z"
-                            fill="currentColor"
-                          />
-                        </svg>
-                        <span
-                          id="group-heading-ngt"
-                        >
-                          Guidance programme
-                           
-                        </span>
-                      </button>
-                    </h3>
-                    <fieldset
-                      aria-hidden="true"
-                      class="filter-group__options"
-                      id="group-ngt"
-                    >
-                      <legend>
-                        Guidance programme
-                      </legend>
-                      <label
-                        class="filter-option"
-                        data-component="filter-option"
-                        for="filter_ngt_diagnostics-guidance"
-                      >
-                        <input
-                          id="filter_ngt_diagnostics-guidance"
-                          name="ngt"
-                          title="Guidance programme - Diagnostics guidance (1)"
-                          type="checkbox"
-                          value="Diagnostics guidance"
-                        />
-                        <span
-                          class="filter-option__text"
-                        >
-                          Diagnostics guidance (1)
-                        </span>
-                      </label>
-                      <label
-                        class="filter-option"
-                        data-component="filter-option"
-                        for="filter_ngt_interventional-procedures-guidance"
-                      >
-                        <input
-                          id="filter_ngt_interventional-procedures-guidance"
-                          name="ngt"
-                          title="Guidance programme - Interventional procedures guidance (6)"
-                          type="checkbox"
-                          value="Interventional procedures guidance"
-                        />
-                        <span
-                          class="filter-option__text"
-                        >
-                          Interventional procedures guidance (6)
-                        </span>
-                      </label>
-                      <label
-                        class="filter-option"
-                        data-component="filter-option"
-                        for="filter_ngt_medical-technologies-guidance"
-                      >
-                        <input
-                          id="filter_ngt_medical-technologies-guidance"
-                          name="ngt"
-                          title="Guidance programme - Medical technologies guidance (1)"
-                          type="checkbox"
-                          value="Medical technologies guidance"
-                        />
-                        <span
-                          class="filter-option__text"
-                        >
-                          Medical technologies guidance (1)
-                        </span>
-                      </label>
-                      <label
-                        class="filter-option"
-                        data-component="filter-option"
-                        for="filter_ngt_nice-guideline"
-                      >
-                        <input
-                          id="filter_ngt_nice-guideline"
-                          name="ngt"
-                          title="Guidance programme - NICE guideline (4)"
-                          type="checkbox"
-                          value="NICE guideline"
-                        />
-                        <span
-                          class="filter-option__text"
-                        >
-                          NICE guideline (4)
-                        </span>
-                      </label>
-                      <label
-                        class="filter-option"
-                        data-component="filter-option"
-                        for="filter_ngt_technology-appraisal-guidance"
-                      >
-                        <input
-                          id="filter_ngt_technology-appraisal-guidance"
-                          name="ngt"
-                          title="Guidance programme - Technology appraisal guidance (2)"
-                          type="checkbox"
-                          value="Technology appraisal guidance"
-                        />
-                        <span
-                          class="filter-option__text"
-                        >
-                          Technology appraisal guidance (2)
-                        </span>
-                      </label>
                     </fieldset>
                   </div>
                 </div>
@@ -630,7 +427,7 @@ exports[`/guidance/inconsultation should match the snapshot 1`] = `
                    to 
                   10
                    of 
-                  14
+                  176
                 </h2>
               </div>
               <div
@@ -651,12 +448,12 @@ exports[`/guidance/inconsultation should match the snapshot 1`] = `
                     selected=""
                     value="Date"
                   >
-                    Date
+                    Published
                   </option>
                   <option
-                    value="Title"
+                    value="GuidanceRef"
                   >
-                    Title
+                    Reference number
                   </option>
                 </select>
               </div>
@@ -673,29 +470,24 @@ exports[`/guidance/inconsultation should match the snapshot 1`] = `
                 <caption
                   class="visually-hidden"
                 >
-                  Guidance and quality standards in consultation
+                  List of research recommendations
                 </caption>
                 <thead>
                   <tr>
                     <th
                       scope="col"
                     >
-                      Title
+                      Recommendation for research
                     </th>
                     <th
                       scope="col"
                     >
-                      Consultation
+                      Reference number
                     </th>
                     <th
                       scope="col"
                     >
-                      Type
-                    </th>
-                    <th
-                      scope="col"
-                    >
-                      Consultation end date
+                      Published
                     </th>
                   </tr>
                 </thead>
@@ -703,25 +495,22 @@ exports[`/guidance/inconsultation should match the snapshot 1`] = `
                   <tr>
                     <td>
                       <a
-                        href="https://next-web-tests.nice.org.uk/guidance/gid-ng10160/consultation/html-content"
+                        href="https://next-web-tests.nice.org.uk/guidance/CG118/chapter/recommendations-for-research/#cg118-natural-history-of-progression-to-colorectal-cancer-in-people-at-increased-risk"
                       >
-                        Type 2 diabetes in adults: management (update)
+                        What is the natural history of progression to colorectal cancer in people with IBD or adenomas?
                       </a>
                     </td>
                     <td>
-                      Draft guidance consultation
-                    </td>
-                    <td>
-                      NICE guideline
+                      CG118/1
                     </td>
                     <td>
                       <time
                         class="date"
-                        data-shortdate="14/10/2021"
-                        datetime="2021-10-14T05:00:00"
+                        data-shortdate="26/2/2024"
+                        datetime="2024-02-26T12:00:00"
                       >
                         <span>
-                          14 October 2021
+                          26 February 2024
                         </span>
                       </time>
                     </td>
@@ -729,25 +518,22 @@ exports[`/guidance/inconsultation should match the snapshot 1`] = `
                   <tr>
                     <td>
                       <a
-                        href="https://next-web-tests.nice.org.uk/guidance/gid-ipg10181/consultation/html-content"
+                        href="https://next-web-tests.nice.org.uk/guidance/CG118/chapter/recommendations-for-research/#cg118-surveillance-programmes-for-people-at-increased-risk-of-colorectal-cancer"
                       >
-                        Microwave ablation for treating primary lung cancer and metastases in the lung
+                        How effective are colonoscopic surveillance programmes in improving overall survival and cancer-related survival in people at increased risk of colorectal cancer?
                       </a>
                     </td>
                     <td>
-                      Interventional procedure consultation
-                    </td>
-                    <td>
-                      Interventional procedures guidance
+                      CG118/2
                     </td>
                     <td>
                       <time
                         class="date"
-                        data-shortdate="18/10/2021"
-                        datetime="2021-10-18T05:00:00"
+                        data-shortdate="26/2/2024"
+                        datetime="2024-02-26T12:00:00"
                       >
                         <span>
-                          18 October 2021
+                          26 February 2024
                         </span>
                       </time>
                     </td>
@@ -755,25 +541,22 @@ exports[`/guidance/inconsultation should match the snapshot 1`] = `
                   <tr>
                     <td>
                       <a
-                        href="https://next-web-tests.nice.org.uk/guidance/gid-ipg10179/consultation/html-content"
+                        href="https://next-web-tests.nice.org.uk/guidance/CG118/chapter/recommendations-for-research/#cg118-effectiveness-of-biomarkers-for-determining-level-of-risk-of-colorectal-cancer"
                       >
-                        Stereotactic radiosurgery for trigeminal neuralgia
+                        Which biomarkers, including epigenic and genetic markers, are predictors of colorectal cancer? How should these be used to improve risk stratification?
                       </a>
                     </td>
                     <td>
-                      Interventional procedure consultation
-                    </td>
-                    <td>
-                      Interventional procedures guidance
+                      CG118/3
                     </td>
                     <td>
                       <time
                         class="date"
-                        data-shortdate="18/10/2021"
-                        datetime="2021-10-18T05:00:00"
+                        data-shortdate="26/2/2024"
+                        datetime="2024-02-26T12:00:00"
                       >
                         <span>
-                          18 October 2021
+                          26 February 2024
                         </span>
                       </time>
                     </td>
@@ -781,25 +564,22 @@ exports[`/guidance/inconsultation should match the snapshot 1`] = `
                   <tr>
                     <td>
                       <a
-                        href="https://next-web-tests.nice.org.uk/guidance/gid-ipg10175/consultation/html-content"
+                        href="https://next-web-tests.nice.org.uk/guidance/CG118/chapter/recommendations-for-research/#cg118-adenoma-types-and-risk-of-colorectal-cancer"
                       >
-                        Transcutaneous electrical stimulation of the supraorbital nerve for treating and preventing migraine
+                        Does the risk of colorectal cancer depend on the type of adenoma?
                       </a>
                     </td>
                     <td>
-                      Interventional procedure consultation
-                    </td>
-                    <td>
-                      Interventional procedures guidance
+                      CG118/4
                     </td>
                     <td>
                       <time
                         class="date"
-                        data-shortdate="18/10/2021"
-                        datetime="2021-10-18T05:00:00"
+                        data-shortdate="26/2/2024"
+                        datetime="2024-02-26T12:00:00"
                       >
                         <span>
-                          18 October 2021
+                          26 February 2024
                         </span>
                       </time>
                     </td>
@@ -807,25 +587,22 @@ exports[`/guidance/inconsultation should match the snapshot 1`] = `
                   <tr>
                     <td>
                       <a
-                        href="https://next-web-tests.nice.org.uk/guidance/gid-ta10478/consultation/html-content-3"
+                        href="https://next-web-tests.nice.org.uk/guidance/DG1/chapter/7-recommendations-for-further-research/#dg1-7.2"
                       >
-                        Venetoclax with a hypomethylating agent for untreated acute myeloid leukaemia when intensive chemotherapy is unsuitable [ID1564]
+                        Additional methodological research is needed to determine the most appropriate model structures to assess the benefit arising from radiation dose reduction. Additional work is needed to assess when the radiation-induced cancers actually occur and the impact of the timing of the emergence of cancer on health status.
                       </a>
                     </td>
                     <td>
-                      Appraisal consultation
-                    </td>
-                    <td>
-                      Technology appraisal guidance
+                      DG1/2
                     </td>
                     <td>
                       <time
                         class="date"
-                        data-shortdate="25/10/2021"
-                        datetime="2021-10-25T05:00:00"
+                        data-shortdate="22/3/2024"
+                        datetime="2024-03-22T12:00:00"
                       >
                         <span>
-                          25 October 2021
+                          22 March 2024
                         </span>
                       </time>
                     </td>
@@ -833,25 +610,22 @@ exports[`/guidance/inconsultation should match the snapshot 1`] = `
                   <tr>
                     <td>
                       <a
-                        href="https://next-web-tests.nice.org.uk/guidance/gid-ta10556/consultation/html-content-2"
+                        href="https://next-web-tests.nice.org.uk/guidance/DG1/chapter/7-recommendations-for-further-research/#dg1-7.3"
                       >
-                        Ponesimod for treating relapsing multiple sclerosis [ID1393]
+                        Research is needed to determine whether, and for which conditions, use of the EOS system for 3D reconstruction provides benefit for diagnosis or treatment planning.
                       </a>
                     </td>
                     <td>
-                      Appraisal consultation
-                    </td>
-                    <td>
-                      Technology appraisal guidance
+                      DG1/3
                     </td>
                     <td>
                       <time
                         class="date"
-                        data-shortdate="26/10/2021"
-                        datetime="2021-10-26T05:00:00"
+                        data-shortdate="22/3/2024"
+                        datetime="2024-03-22T12:00:00"
                       >
                         <span>
-                          26 October 2021
+                          22 March 2024
                         </span>
                       </time>
                     </td>
@@ -859,25 +633,22 @@ exports[`/guidance/inconsultation should match the snapshot 1`] = `
                   <tr>
                     <td>
                       <a
-                        href="https://next-web-tests.nice.org.uk/guidance/gid-ng10140/consultation/html-content"
+                        href="https://next-web-tests.nice.org.uk/guidance/DG1/chapter/7-recommendations-for-further-research/#dg1-7.1"
                       >
-                        Mental wellbeing at work
+                        Research is needed to quantify the health outcome benefits associated with imaging improvements with the EOS system. Examples of such benefits might include reduced back pain or reduced postural difficulties in people with scoliosis, or longer lasting and less painful joint replacements. Although research into the use of the EOS system is appropriate for all the indications included in the scope, the research most likely to be useful is for planning hip and knee replacement, including patient selection, device selection, and surgical approach. Joint replacement operations are more common than the other indications and the EOS system is thought to be most likely to provide benefit to these patients.
                       </a>
                     </td>
                     <td>
-                      Draft guidance consultation
-                    </td>
-                    <td>
-                      NICE guideline
+                      DG1/1
                     </td>
                     <td>
                       <time
                         class="date"
-                        data-shortdate="29/10/2021"
-                        datetime="2021-10-29T05:00:00"
+                        data-shortdate="22/3/2024"
+                        datetime="2024-03-22T12:00:00"
                       >
                         <span>
-                          29 October 2021
+                          22 March 2024
                         </span>
                       </time>
                     </td>
@@ -885,25 +656,22 @@ exports[`/guidance/inconsultation should match the snapshot 1`] = `
                   <tr>
                     <td>
                       <a
-                        href="https://next-web-tests.nice.org.uk/guidance/gid-ng10191/consultation/html-content"
+                        href="https://next-web-tests.nice.org.uk/guidance/DG13/chapter/recommendations-for-further-research/#dg13-7_1"
                       >
-                        Maternal and child nutrition
+                        The committee recommended further research to demonstrate the utility of the Sonoclot system in detecting, managing and monitoring haemostasis in cardiac surgery.
                       </a>
                     </td>
                     <td>
-                      Draft scope consultation
-                    </td>
-                    <td>
-                      NICE guideline
+                      DG13/1
                     </td>
                     <td>
                       <time
                         class="date"
-                        data-shortdate="29/10/2021"
-                        datetime="2021-10-29T05:00:00"
+                        data-shortdate="28/3/2024"
+                        datetime="2024-03-28T12:00:00"
                       >
                         <span>
-                          29 October 2021
+                          28 March 2024
                         </span>
                       </time>
                     </td>
@@ -911,25 +679,22 @@ exports[`/guidance/inconsultation should match the snapshot 1`] = `
                   <tr>
                     <td>
                       <a
-                        href="https://next-web-tests.nice.org.uk/guidance/gid-ipg10163/consultation/html-content"
+                        href="https://next-web-tests.nice.org.uk/guidance/DG13/chapter/recommendations-for-further-research/#dg13-7_2"
                       >
-                        Intramedullary distraction for upper limb lengthening
+                        The committee recommended further research in using viscoelastometric testing in the emergency control of bleeding after trauma and during postpartum haemorrhage to assess its effectiveness compared with standard laboratory testing. The committee recommended that outcomes should include, but may not be limited to, bleeding outcomes, mortality, duration of hospital or intensive care unit stay, transfusion rates and volumes transfused.
                       </a>
                     </td>
                     <td>
-                      Interventional procedure consultation
-                    </td>
-                    <td>
-                      Interventional procedures guidance
+                      DG13/2
                     </td>
                     <td>
                       <time
                         class="date"
-                        data-shortdate="2/11/2021"
-                        datetime="2021-11-02T05:00:00"
+                        data-shortdate="28/3/2024"
+                        datetime="2024-03-28T12:00:00"
                       >
                         <span>
-                          2 November 2021
+                          28 March 2024
                         </span>
                       </time>
                     </td>
@@ -937,25 +702,22 @@ exports[`/guidance/inconsultation should match the snapshot 1`] = `
                   <tr>
                     <td>
                       <a
-                        href="https://next-web-tests.nice.org.uk/guidance/gid-ipg10189/consultation/html-content"
+                        href="https://next-web-tests.nice.org.uk/guidance/DG13/chapter/recommendations-for-further-research/#dg13-7_3"
                       >
-                        Percutaneous insertion of a cystic duct stent after cholecystostomy for acute calculous cholecystitis
+                        The committee recommended further research comparing the clinical effectiveness of all 3 viscoelastometric devices (ROTEM, TEG and Sonoclot systems) in cardiac surgery and in the emergency control of bleeding after trauma and during postpartum haemorrhage. In particular, the committee recommended research to determine which of the parameters included in the viscoelastometric testing systems are the most significant in changing clinical decision‑making and improving clinical outcomes. The degree of change needed in these parameters to affect clinical decision‑making and clinical outcomes should also be considered.
                       </a>
                     </td>
                     <td>
-                      Interventional procedure consultation
-                    </td>
-                    <td>
-                      Interventional procedures guidance
+                      DG13/3
                     </td>
                     <td>
                       <time
                         class="date"
-                        data-shortdate="2/11/2021"
-                        datetime="2021-11-02T05:00:00"
+                        data-shortdate="28/3/2024"
+                        datetime="2024-03-28T12:00:00"
                       >
                         <span>
-                          2 November 2021
+                          28 March 2024
                         </span>
                       </time>
                     </td>
@@ -999,6 +761,37 @@ exports[`/guidance/inconsultation should match the snapshot 1`] = `
                   </a>
                 </li>
                 <li
+                  class="pagination__item"
+                >
+                  <a
+                    aria-label="Go to page 3"
+                    class="pagination__link"
+                    href="/?pa=3"
+                  >
+                    3
+                  </a>
+                </li>
+                <li
+                  class="pagination__item"
+                >
+                  <span
+                    class="pagination__inactive"
+                  >
+                    …
+                  </span>
+                </li>
+                <li
+                  class="pagination__item"
+                >
+                  <a
+                    aria-label="Go to page 18"
+                    class="pagination__link"
+                    href="/?pa=18"
+                  >
+                    18
+                  </a>
+                </li>
+                <li
                   class="pagination__item pagination__item--count"
                 >
                   <span>
@@ -1008,7 +801,7 @@ exports[`/guidance/inconsultation should match the snapshot 1`] = `
                     </strong>
                      of 
                     <strong>
-                      2
+                      18
                     </strong>
                   </span>
                 </li>

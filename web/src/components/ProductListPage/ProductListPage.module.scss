@@ -15,6 +15,15 @@
   display: table;
 }
 
+.pageHeader {
+  margin-bottom: utils.rem(spacing.$large);
+  padding-bottom: 0;
+
+  h1 {
+    margin-bottom: utils.rem(spacing.$large);
+  }
+}
+
 @include media-queries.mq($from: md) {
   .sectionWrapper {
     padding-top: utils.rem(spacing.$large);
