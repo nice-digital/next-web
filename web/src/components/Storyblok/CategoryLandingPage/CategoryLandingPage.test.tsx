@@ -53,6 +53,13 @@ describe("CategoryLandingPage", () => {
 		).toBeInTheDocument();
 	});
 
+	it("renders all permissible components in the content area through the StoryblokComponent", () => {
+		render(<CategoryLandingPage {...mockPropsWithPageHeader} />);
+		mockPageHeaderData.content.forEach(({ component }) => {
+			expect(screen.getByText(component)).toBeInTheDocument();
+		});
+	});
+
 	xit("renders the FullWidth Action Banner through the StoryblokComponent, if it's passed as block", () => {
 		render(<CategoryLandingPage {...mockPropsWithPageHeader} />);
 		expect(
