@@ -25,7 +25,7 @@ describe("Robots txt API Handler Tests", () => {
 			},
 		}));
 
-		const { default: handler } = await import("./robots.api");
+		const { default: handler } = await import("../robots");
 
 		handler(req, res);
 
@@ -45,7 +45,7 @@ describe("Robots txt API Handler Tests", () => {
 			},
 		}));
 
-		const { default: handler } = await import("./robots.api");
+		const { default: handler } = await import("../robots");
 
 		handler(req, res);
 
@@ -65,7 +65,7 @@ describe("Robots txt API Handler Tests", () => {
 			},
 		}));
 
-		const { default: handler } = await import("./robots.api");
+		const { default: handler } = await import("../robots");
 
 		handler(req, res);
 
@@ -85,7 +85,7 @@ describe("Robots txt API Handler Tests", () => {
 			},
 		}));
 
-		const { default: handler } = await import("./robots.api");
+		const { default: handler } = await import("../robots");
 
 		handler(req, res);
 
@@ -105,7 +105,7 @@ describe("Robots txt API Handler Tests", () => {
 			},
 		}));
 
-		const { default: handler } = await import("./robots.api");
+		const { default: handler } = await import("../robots");
 
 		handler(req, res);
 
@@ -125,7 +125,7 @@ describe("Robots txt API Handler Tests", () => {
 			},
 		}));
 
-		const { default: handler } = await import("./robots.api");
+		const { default: handler } = await import("../robots");
 
 		handler(req, res);
 
