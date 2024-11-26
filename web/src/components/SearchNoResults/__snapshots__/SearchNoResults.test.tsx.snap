@@ -14,7 +14,7 @@ exports[`SearchNoResults should match snapshot 1`] = `
       <p>
         Our 
         <a
-          href="/guidance/conditions-and-diseases"
+          href="/guidance/conditions-and-diseases/"
         >
           topic pages
         </a>
