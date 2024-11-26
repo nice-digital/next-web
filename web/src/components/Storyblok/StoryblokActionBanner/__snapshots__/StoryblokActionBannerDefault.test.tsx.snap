@@ -1,0 +1,93 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Storyblok action banner default component should match snapshot 1`] = `
+<div>
+  <section
+    class="action-banner action-banner--default"
+    data-component="action-banner--default"
+  >
+    <div
+      class="action-banner__container"
+    >
+      <div
+        class="action-banner__inner"
+      >
+        <div
+          class="action-banner__text"
+        >
+          <h2
+            class="action-banner__title"
+          >
+            Mock action banner title
+          </h2>
+          <div
+            class="action-banner__intro"
+          >
+            <div
+              class="storyblokRichTextWrapper "
+              data-testid="storyblok-rich-text"
+            />
+          </div>
+        </div>
+        <div
+          class="action-banner__actions"
+        >
+          <a
+            class="btn btn--inverse"
+            data-component="button--inverse"
+            href="https://placekitten.com/408/287"
+          >
+            Press me
+          </a>
+        </div>
+      </div>
+    </div>
+  </section>
+</div>
+`;
+
+exports[`Storyblok action banner default component should match the snapshot for the subtle variant 1`] = `
+<div>
+  <section
+    class="action-banner action-banner--subtle"
+    data-component="action-banner--subtle"
+  >
+    <div
+      class="action-banner__container"
+    >
+      <div
+        class="action-banner__inner"
+      >
+        <div
+          class="action-banner__text"
+        >
+          <h2
+            class="action-banner__title"
+          >
+            Mock action banner title
+          </h2>
+          <div
+            class="action-banner__intro"
+          >
+            <div
+              class="storyblokRichTextWrapper "
+              data-testid="storyblok-rich-text"
+            />
+          </div>
+        </div>
+        <div
+          class="action-banner__actions"
+        >
+          <a
+            class="btn btn--inverse"
+            data-component="button--inverse"
+            href="https://placekitten.com/408/287"
+          >
+            Press me
+          </a>
+        </div>
+      </div>
+    </div>
+  </section>
+</div>
+`;

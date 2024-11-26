@@ -2,11 +2,11 @@
 import { render } from "@testing-library/react";
 
 import {
-	StoryblokActionBanner,
+	StoryblokActionBannerFullWidth,
 	type StoryblokActionBannerProps,
-} from "./StoryblokActionBanner";
+} from "./StoryblokActionBannerFullWidth";
 
-const mockStoryblokActionBanner: StoryblokActionBannerProps = {
+const mockStoryblokActionBannerFullWidth: StoryblokActionBannerProps = {
 	blok: {
 		heading: "Mock action banner title",
 		body: {
@@ -34,10 +34,26 @@ const mockStoryblokActionBanner: StoryblokActionBannerProps = {
 	},
 };
 
-describe("Storyblok action banner component", () => {
+const mockStoryblokActionBannerFullWidthSubtle: StoryblokActionBannerProps = {
+	blok: {
+		...mockStoryblokActionBannerFullWidth.blok,
+		variant: "fullWidthSubtle",
+	},
+};
+
+describe("Storyblok action banner full width component", () => {
 	it("should match snapshot", () => {
 		const { container } = render(
-			<StoryblokActionBanner {...mockStoryblokActionBanner} />
+			<StoryblokActionBannerFullWidth {...mockStoryblokActionBannerFullWidth} />
+		);
+		expect(container).toMatchSnapshot();
+	});
+
+	it("should match snapshot for the subtle variant", () => {
+		const { container } = render(
+			<StoryblokActionBannerFullWidth
+				{...mockStoryblokActionBannerFullWidthSubtle}
+			/>
 		);
 		expect(container).toMatchSnapshot();
 	});

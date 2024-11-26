@@ -9,12 +9,15 @@ import React, { useMemo } from "react";
 import { ErrorPageContent } from "@/components/ErrorPageContent/ErrorPageContent";
 import { Blockquote } from "@/components/Storyblok/Blockquote/Blockquote";
 import { CardGrid } from "@/components/Storyblok/CardGrid/CardGrid";
+import { CategoryLandingPage } from "@/components/Storyblok/CategoryLandingPage/CategoryLandingPage";
 import { CategoryNavigation } from "@/components/Storyblok/CategoryNavigation/CategoryNavigation";
 import { InfoPage } from "@/components/Storyblok/InfoPage/InfoPage";
 import { Metadata } from "@/components/Storyblok/Metadata/Metadata";
 import { NestedRichText } from "@/components/Storyblok/NestedRichText/NestedRichText";
 import { StoryblokAccordion } from "@/components/Storyblok/StoryblokAccordion/StoryblokAccordion";
 import { StoryblokAccordionGroup } from "@/components/Storyblok/StoryblokAccordionGroup/StoryblokAccordionGroup";
+import { StoryblokActionBannerDefault } from "@/components/Storyblok/StoryblokActionBanner/StoryblokActionBannerDefault";
+import { StoryblokActionBannerFullWidth } from "@/components/Storyblok/StoryblokActionBanner/StoryblokActionBannerFullWidth";
 import { StoryblokHero } from "@/components/Storyblok/StoryblokHero/StoryblokHero";
 import { StoryblokIframe } from "@/components/Storyblok/StoryblokIframe/StoryblokIframe";
 import { StoryblokPageHeader } from "@/components/Storyblok/StoryblokPageHeader/StoryblokPageHeader";
@@ -55,9 +58,6 @@ export type SlugCatchAllProps =
 export default function SlugCatchAll(
 	props: SlugCatchAllProps
 ): React.ReactElement {
-	logger.info(
-		`SlugCatchAll page rendered with props: ${JSON.stringify(props)}`
-	);
 	const story = "story" in props ? props.story : null;
 
 	const additionalMetaTags = useMemo(() => {
@@ -84,6 +84,14 @@ export default function SlugCatchAll(
 		pageHeader: StoryblokPageHeader,
 	};
 
+	//TODO: add the rest of the components as we iterate through the page build
+	const categoryLandingPageComponents = {
+		categoryLandingPage: CategoryLandingPage,
+		hero: StoryblokHero,
+		actionBanner: StoryblokActionBannerFullWidth,
+		actionBannerDefault: StoryblokActionBannerDefault,
+	};
+
 	const infoPageComponents = {
 		accordion: StoryblokAccordion,
 		accordionGroup: StoryblokAccordionGroup,
@@ -99,6 +107,8 @@ export default function SlugCatchAll(
 		...commonComponents,
 		...(component === "infoPage"
 			? infoPageComponents
+			: component === "categoryLandingPage"
+			? categoryLandingPageComponents
 			: { categoryNavigation: CategoryNavigation }),
 	};
 

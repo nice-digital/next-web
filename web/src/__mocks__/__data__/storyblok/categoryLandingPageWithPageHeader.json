@@ -1,0 +1,321 @@
+{
+  "story": {
+    "name": "category landing",
+    "created_at": "2024-10-09T12:28:47.062Z",
+    "published_at": "2024-10-16T16:19:03.830Z",
+    "id": 560615999,
+    "uuid": "be70c55b-d349-41d4-b655-43f4ff83cab5",
+    "content": {
+      "_uid": "9cf407f3-4cf8-4f23-b4ae-65317307a96f",
+      "header": [
+        {
+          "cta": [
+            {
+              "_uid": "00dbc97f-e470-4edf-83de-4f6b5894f7f1",
+              "link": {
+                "id": "7abc28f6-a5d1-4274-8c32-ab5a9a04d085",
+                "url": "",
+                "linktype": "story",
+                "fieldtype": "multilink",
+                "cached_url": "committee-b-members-2",
+                "story": {
+                  "name": "Committee B members 2",
+                  "id": 558818376,
+                  "uuid": "7abc28f6-a5d1-4274-8c32-ab5a9a04d085",
+                  "slug": "committee-b-members-2",
+                  "url": "committee-b-members-2",
+                  "full_slug": "committee-b-members-2",
+                  "_stopResolving": true
+                }
+              },
+              "text": "Landing page CTA",
+              "variant": "cta",
+              "component": "buttonLink",
+              "_editable": "<!--#storyblok#{\"name\": \"buttonLink\", \"space\": \"292509\", \"uid\": \"00dbc97f-e470-4edf-83de-4f6b5894f7f1\", \"id\": \"560615999\"}-->"
+            }
+          ],
+          "_uid": "842d5dc7-4fdd-49c4-99f1-3e28f3581c17",
+          "title": "test page header in category landing page",
+          "ctaLink": {
+            "id": "",
+            "url": "",
+            "linktype": "story",
+            "fieldtype": "multilink",
+            "cached_url": ""
+          },
+          "ctaText": "",
+          "summary": "summary of category landing page header",
+          "component": "pageHeader",
+          "description": "description of category landing page header",
+          "_editable": "<!--#storyblok#{\"name\": \"pageHeader\", \"space\": \"292509\", \"uid\": \"842d5dc7-4fdd-49c4-99f1-3e28f3581c17\", \"id\": \"560615999\"}-->"
+        }
+      ],
+      "content": [
+        {
+          "cta": [
+            {
+              "_uid": "466a1773-adc8-4b7c-95f8-64cafd6cbd98",
+              "link": {
+                "id": "3438c568-fe74-4c73-89a0-6727771cda58",
+                "url": "",
+                "linktype": "story",
+                "fieldtype": "multilink",
+                "cached_url": "nxt-484-test",
+                "story": {
+                  "name": "nxt-484 test",
+                  "id": 562925522,
+                  "uuid": "3438c568-fe74-4c73-89a0-6727771cda58",
+                  "slug": "nxt-484-test",
+                  "url": "nxt-484-test",
+                  "full_slug": "nxt-484-test",
+                  "_stopResolving": true
+                }
+              },
+              "text": "Register as a stakeholder",
+              "variant": "cta",
+              "component": "buttonLink",
+              "_editable": "<!--#storyblok#{\"name\": \"buttonLink\", \"space\": \"292509\", \"uid\": \"466a1773-adc8-4b7c-95f8-64cafd6cbd98\", \"id\": \"560615999\"}-->"
+            }
+          ],
+          "_uid": "d62a3725-3d9f-4fed-a231-3c0520188f30",
+          "body": {
+            "type": "doc",
+            "content": [
+              {
+                "type": "paragraph",
+                "content": [
+                  {
+                    "text": "Stakeholders can comment on draft guidance and participate in workshops and events",
+                    "type": "text"
+                  }
+                ]
+              }
+            ]
+          },
+          "heading": "Register as a stakeholder",
+          "variant": "default",
+          "component": "actionBannerDefault",
+          "_editable": "<!--#storyblok#{\"name\": \"actionBannerDefault\", \"space\": \"292509\", \"uid\": \"d62a3725-3d9f-4fed-a231-3c0520188f30\", \"id\": \"560615999\"}-->"
+        },
+        {
+          "cta": [
+            {
+              "_uid": "2e035905-245e-45d9-900e-fa75d4de09c1",
+              "link": {
+                "id": "7abc28f6-a5d1-4274-8c32-ab5a9a04d085",
+                "url": "",
+                "linktype": "story",
+                "fieldtype": "multilink",
+                "cached_url": "committee-b-members-2",
+                "story": {
+                  "name": "Committee B members 2",
+                  "id": 558818376,
+                  "uuid": "7abc28f6-a5d1-4274-8c32-ab5a9a04d085",
+                  "slug": "committee-b-members-2",
+                  "url": "committee-b-members-2",
+                  "full_slug": "committee-b-members-2",
+                  "_stopResolving": true
+                }
+              },
+              "text": "Action CTA",
+              "variant": "cta",
+              "component": "buttonLink",
+              "_editable": "<!--#storyblok#{\"name\": \"buttonLink\", \"space\": \"292509\", \"uid\": \"2e035905-245e-45d9-900e-fa75d4de09c1\", \"id\": \"560615999\"}-->"
+            }
+          ],
+          "_uid": "a40c363e-9a4c-4ed9-8c13-c001182f359e",
+          "body": {
+            "type": "doc",
+            "content": [
+              {
+                "type": "paragraph",
+                "content": [
+                  {
+                    "text": "Testing Action banner in cat landing",
+                    "type": "text"
+                  }
+                ]
+              }
+            ]
+          },
+          "image": {
+            "id": 16871730,
+            "alt": "",
+            "name": "",
+            "focus": "",
+            "title": "",
+            "source": "",
+            "filename": "https://a.storyblok.com/f/292509/291x164/db85746a8b/ai.PNG",
+            "copyright": "",
+            "fieldtype": "asset",
+            "meta_data": {},
+            "is_external_url": false
+          },
+          "heading": "Test action banner in cat landing",
+          "component": "actionBanner",
+          "_editable": "<!--#storyblok#{\"name\": \"actionBanner\", \"space\": \"292509\", \"uid\": \"a40c363e-9a4c-4ed9-8c13-c001182f359e\", \"id\": \"560615999\"}-->"
+        },
+        {
+          "_uid": "10d6477b-7e5f-43a2-bc74-8a8f92d15c82",
+          "lead": {
+            "type": "doc",
+            "content": [
+              {
+                "type": "paragraph",
+                "content": [
+                  {
+                    "text": "Grid section lead text",
+                    "type": "text"
+                  }
+                ]
+              }
+            ]
+          },
+          "theme": "subtle",
+          "content": [
+            {
+              "_uid": "01b5e6c3-e67c-42bd-b9c8-46360218260e",
+              "cards": [
+                {
+                  "_uid": "366f5ad7-9480-42e9-b9b4-3fe9968de42b",
+                  "body": "card one",
+                  "link": {
+                    "id": "be70c55b-d349-41d4-b655-43f4ff83cab5",
+                    "url": "",
+                    "linktype": "story",
+                    "fieldtype": "multilink",
+                    "cached_url": "test-category-landing/",
+                    "story": {
+                      "name": "category landing",
+                      "id": 560615999,
+                      "uuid": "be70c55b-d349-41d4-b655-43f4ff83cab5",
+                      "slug": "test-category-landing",
+                      "url": "test-category-landing/",
+                      "full_slug": "test-category-landing/",
+                      "_stopResolving": true
+                    }
+                  },
+                  "heading": "card one",
+                  "component": "card",
+                  "_editable": "<!--#storyblok#{\"name\": \"card\", \"space\": \"292509\", \"uid\": \"366f5ad7-9480-42e9-b9b4-3fe9968de42b\", \"id\": \"560615999\"}-->"
+                },
+                {
+                  "_uid": "42617494-ae98-4e0e-91db-73fe2a4fed8f",
+                  "body": "card two body",
+                  "link": {
+                    "id": "be70c55b-d349-41d4-b655-43f4ff83cab5",
+                    "url": "",
+                    "linktype": "story",
+                    "fieldtype": "multilink",
+                    "cached_url": "test-category-landing/",
+                    "story": {
+                      "name": "category landing",
+                      "id": 560615999,
+                      "uuid": "be70c55b-d349-41d4-b655-43f4ff83cab5",
+                      "slug": "test-category-landing",
+                      "url": "test-category-landing/",
+                      "full_slug": "test-category-landing/",
+                      "_stopResolving": true
+                    }
+                  },
+                  "heading": "card two",
+                  "component": "card",
+                  "_editable": "<!--#storyblok#{\"name\": \"card\", \"space\": \"292509\", \"uid\": \"42617494-ae98-4e0e-91db-73fe2a4fed8f\", \"id\": \"560615999\"}-->"
+                },
+                {
+                  "_uid": "0c16e4a3-6570-421f-9659-6b39911d2973",
+                  "body": "card three body",
+                  "link": {
+                    "id": "be70c55b-d349-41d4-b655-43f4ff83cab5",
+                    "url": "",
+                    "linktype": "story",
+                    "fieldtype": "multilink",
+                    "cached_url": "test-category-landing/",
+                    "story": {
+                      "name": "category landing",
+                      "id": 560615999,
+                      "uuid": "be70c55b-d349-41d4-b655-43f4ff83cab5",
+                      "slug": "test-category-landing",
+                      "url": "test-category-landing/",
+                      "full_slug": "test-category-landing/",
+                      "_stopResolving": true
+                    }
+                  },
+                  "heading": "card three",
+                  "component": "card",
+                  "_editable": "<!--#storyblok#{\"name\": \"card\", \"space\": \"292509\", \"uid\": \"0c16e4a3-6570-421f-9659-6b39911d2973\", \"id\": \"560615999\"}-->"
+                }
+              ],
+              "columns": "4",
+              "component": "gridSectionItem",
+              "_editable": "<!--#storyblok#{\"name\": \"gridSectionItem\", \"space\": \"292509\", \"uid\": \"01b5e6c3-e67c-42bd-b9c8-46360218260e\", \"id\": \"560615999\"}-->"
+            },
+            {
+              "_uid": "227d3c70-0080-487d-b057-acd588438b32",
+              "cards": [
+                {
+                  "_uid": "b7fcb21a-c796-418d-8e75-c29c89524feb",
+                  "body": "one column card body",
+                  "link": {
+                    "id": "be70c55b-d349-41d4-b655-43f4ff83cab5",
+                    "url": "",
+                    "linktype": "story",
+                    "fieldtype": "multilink",
+                    "cached_url": "test-category-landing/",
+                    "story": {
+                      "name": "category landing",
+                      "id": 560615999,
+                      "uuid": "be70c55b-d349-41d4-b655-43f4ff83cab5",
+                      "slug": "test-category-landing",
+                      "url": "test-category-landing/",
+                      "full_slug": "test-category-landing/",
+                      "_stopResolving": true
+                    }
+                  },
+                  "heading": "one column card",
+                  "component": "card",
+                  "_editable": "<!--#storyblok#{\"name\": \"card\", \"space\": \"292509\", \"uid\": \"b7fcb21a-c796-418d-8e75-c29c89524feb\", \"id\": \"560615999\"}-->"
+                }
+              ],
+              "columns": "12",
+              "component": "gridSectionItem",
+              "_editable": "<!--#storyblok#{\"name\": \"gridSectionItem\", \"space\": \"292509\", \"uid\": \"227d3c70-0080-487d-b057-acd588438b32\", \"id\": \"560615999\"}-->"
+            }
+          ],
+          "heading": "Test grid section",
+          "component": "gridSection",
+          "showHeading": true,
+          "verticalPadding": "medium",
+          "_editable": "<!--#storyblok#{\"name\": \"gridSection\", \"space\": \"292509\", \"uid\": \"10d6477b-7e5f-43a2-bc74-8a8f92d15c82\", \"id\": \"560615999\"}-->"
+        }
+      ],
+      "metadata": [
+        {
+          "_uid": "99ca25c9-a812-49c9-8802-fd6149ded628",
+          "creator": "NICE",
+          "component": "metadata",
+          "description": "Test category landing page meta description",
+          "_editable": "<!--#storyblok#{\"name\": \"metadata\", \"space\": \"292509\", \"uid\": \"99ca25c9-a812-49c9-8802-fd6149ded628\", \"id\": \"560615999\"}-->"
+        }
+      ],
+      "component": "categoryLandingPage",
+      "_editable": "<!--#storyblok#{\"name\": \"categoryLandingPage\", \"space\": \"292509\", \"uid\": \"9cf407f3-4cf8-4f23-b4ae-65317307a96f\", \"id\": \"560615999\"}-->"
+    },
+    "slug": "test-category-landing",
+    "full_slug": "test-category-landing/",
+    "sort_by_date": null,
+    "position": -40,
+    "tag_list": [],
+    "is_startpage": true,
+    "parent_id": 560613884,
+    "meta_data": null,
+    "group_id": "2ed91972-e8ce-42fb-b4e7-e4b17d17cfb5",
+    "first_published_at": "2024-10-09T12:35:28.176Z",
+    "release_id": null,
+    "lang": "default",
+    "path": null,
+    "alternates": [],
+    "default_full_slug": null,
+    "translated_slugs": null
+  }
+}

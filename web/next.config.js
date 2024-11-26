@@ -305,6 +305,13 @@ const nextConfig = {
 				permanent: true,
 			},
 			{
+				source:
+					"/about/what-we-do/research-and-development/research-recommendations/:slug*",
+				destination:
+					"/about/what-we-do/science-policy-research/research-recommendations",
+				permanent: true,
+			},
+			{
 				source: "/standards-and-indicators/ccgoisindicators/cancer-ccg01",
 				destination:
 					"/indicators/IND1-cancer-invasive-cancer-diagnosed-via-emergency-routes",

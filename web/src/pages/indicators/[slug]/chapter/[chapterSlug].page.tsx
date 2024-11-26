@@ -1,8 +1,7 @@
 import { GetServerSideProps } from "next";
 import { NextSeo } from "next-seo";
-import React from "react";
 
-import { Breadcrumbs, Breadcrumb } from "@nice-digital/nds-breadcrumbs";
+import { Breadcrumb, Breadcrumbs } from "@nice-digital/nds-breadcrumbs";
 import { Grid, GridItem } from "@nice-digital/nds-grid";
 
 import {
@@ -18,13 +17,17 @@ import { PublicationsChapterMenu } from "@/components/PublicationsChapterMenu/Pu
 import { PublicationsDownloadLink } from "@/components/PublicationsDownloadLink/PublicationsDownloadLink";
 import { PublicationsPrevNext } from "@/components/PublicationsPrevNext/PublicationsPrevNext";
 import {
-	getChapterContent,
 	ChapterHeading,
+	getChapterContent,
 	UploadAndConvertContentPart,
 } from "@/feeds/publications/publications";
 import { arrayify } from "@/utils/array";
 import { fetchAndMapContentParts } from "@/utils/contentparts";
-import { getChapterLinks, validateRouteParams } from "@/utils/product";
+import {
+	getChapterLinks,
+	redirectWithdrawnProducts,
+	validateRouteParams,
+} from "@/utils/product";
 
 import styles from "./[chapterSlug].page.module.scss";
 
@@ -145,6 +148,12 @@ export const getServerSideProps: GetServerSideProps<
 			hasHistory,
 		} = result,
 		chapters = getChapterLinks(product, productType.group);
+
+	const isWithdrawn = redirectWithdrawnProducts(product, productPath);
+
+	if (isWithdrawn) {
+		return isWithdrawn;
+	}
 
 	if (!params || !product.contentPartsList?.length) return { notFound: true };
 
