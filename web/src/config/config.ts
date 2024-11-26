@@ -1,23 +1,23 @@
 //import config from "config";
-import getConfig from "next/config";
+// import getConfig from "next/config";
 
 import type { InitialiseOptions as SearchClientInitOptions } from "@nice-digital/search-client";
 
-const { publicRuntimeConfig, serverRuntimeConfig } = getConfig();
+// const { publicRuntimeConfig, serverRuntimeConfig } = getConfig();
 
 export interface SearchConfig {
 	/** The base URL of the Single Search Endpoint (SSE) e.g. https://beta-search-api.nice.org.uk/api/ */
-	readonly baseURL: SearchClientInitOptions["baseURL"];
+	readonly baseURL: SearchClientInitOptions["baseURL"] | undefined;
 }
 
 export interface CacheControlConfig {
 	/** The default value for the cache-control header */
-	readonly defaultCacheHeader: string;
+	readonly defaultCacheHeader: string | undefined;
 }
 
 export interface JotFormPublicConfig {
 	/** The full base URL for NICE's JotForm instance, including protocol but excluding trailing slash */
-	readonly baseURL: string;
+	readonly baseURL: string | undefined;
 }
 
 /**
@@ -25,10 +25,10 @@ export interface JotFormPublicConfig {
  */
 export interface PublicConfig {
 	/** The version number of the current build (or Octopus.Release.Number in Octo) */
-	readonly buildNumber: string;
+	readonly buildNumber: string | undefined;
 
 	/** Name of the environment e.g. _dev_ or _test_ */
-	readonly environment: string;
+	readonly environment: string | undefined;
 
 	/** Name of the auth environment which is passed through to global nav */
 	readonly authEnvironment: "live" | "beta" | "test" | "local";
@@ -39,18 +39,18 @@ export interface PublicConfig {
 	/** The base URL of the website including protocol and port e.g. http://localhost:3000 for local dev or http://dev.nice.org.uk.
 	 *
 	 * **Note** the lack of trailing slash! It will get prepended to paths that start with a slash. */
-	readonly baseURL: string;
+	readonly baseURL: string | undefined;
 
 	/**
 	 * The absolute URL to the NICE cookie banner script include
 	 */
-	readonly cookieBannerScriptURL: string;
+	readonly cookieBannerScriptURL: string | undefined;
 
 	/**
 	 * The base URL to the deployed NextJS _public_ folder, see https://nextjs.org/docs/basic-features/static-file-serving.
 	 * Empty string means relative to the deployed app. Set it to an absolute path in _config.yml_ to use a CDN.
 	 */
-	readonly publicBaseURL: string;
+	readonly publicBaseURL: string | undefined;
 
 	readonly search: SearchConfig;
 
@@ -104,9 +104,9 @@ export interface FeedsConfig {
 }
 
 export interface StoryblokConfig {
-	readonly accessToken: string;
-	readonly ocelotEndpoint: string;
-	readonly enableRootCatchAll: string;
+	readonly accessToken: string | undefined;
+	readonly ocelotEndpoint: string | undefined;
+	readonly enableRootCatchAll: string | undefined;
 }
 
 /**
@@ -116,5 +116,35 @@ export interface ServerConfig {
 	cache: CacheConfig;
 	feeds: FeedsConfig;
 }
+
+const publicRuntimeConfig: PublicConfig = {
+	storyblok: {
+		accessToken: process.env.PUBLIC_STORYBLOK_ACCESS_TOKEN,
+		enableRootCatchAll: process.env.PUBLIC_STORYBLOK_ENABLE_ROOT_CATCH_ALL,
+		ocelotEndpoint: process.env.PUBLIC_STORYBLOK_OCELOT_ENDPOINT,
+	},
+	search: {
+		baseURL: process.env.PUBLIC_SEARCH_BASE_URL as `https://${string}/api`,
+	},
+	jotForm: {
+		baseURL: process.env.PUBLIC_JOTFORM_BASE_URL,
+	},
+	authEnvironment: process.env.PUBLIC_AUTH_ENVIRONMENT as
+		| "test"
+		| "live"
+		| "beta"
+		| "local",
+	publicBaseURL: process.env.PUBLIC_PUBLIC_BASE_URL,
+	environment: process.env.PUBLIC_ENVIRONMENT,
+	buildNumber: process.env.PUBLIC_BUILD_NUMBER,
+	cookieBannerScriptURL: process.env.PUBLIC_COOKIE_BANNER_SCRIPT_URL,
+	baseURL: process.env.PUBLIC_BASE_URL,
+	denyRobots: process.env.PUBLIC_DENY_ROBOTS === "true",
+	cacheControl: {
+		defaultCacheHeader: process.env.PUBLIC_CACHE_CONTROL_DEFAULT_CACHE_HEADER,
+	},
+};
+
+const serverRuntimeConfig: ServerConfig = {};
 
 export { publicRuntimeConfig, serverRuntimeConfig };
