@@ -69,27 +69,27 @@ export interface PublicConfig {
  */
 export interface CacheConfig {
 	/** The prefix for cache keys */
-	readonly keyPrefix: string;
+	readonly keyPrefix: string | undefined;
 
 	/** Path to the folder used for file system disk cache */
-	readonly filePath: string;
+	readonly filePath: string | undefined;
 
 	/** The default TTL (time to live), in seconds, of cache entries */
-	readonly defaultTTL: number;
+	readonly defaultTTL: number | undefined;
 
 	/** The longer TTL (time to live), in seconds, for long-lived cache entries that rarely change */
-	readonly longTTL: number;
+	readonly longTTL: number | undefined;
 
 	/** Threshold for TTL, in seconds, below which object caches are refreshed in the background as per https://edibleco.de/3hyfpGG */
-	readonly refreshThreshold: number;
+	readonly refreshThreshold: number | undefined;
 }
 
 export interface FeedConfig {
 	/** The origin URL of the feeds */
-	readonly origin: string;
+	readonly origin: string | undefined;
 
 	/** The API key for accessing the feed */
-	readonly apiKey: string;
+	readonly apiKey: string | undefined;
 }
 
 export interface FeedsConfig {
@@ -145,6 +145,27 @@ const publicRuntimeConfig: PublicConfig = {
 	},
 };
 
-const serverRuntimeConfig: ServerConfig = {};
+const serverRuntimeConfig: ServerConfig = {
+	cache: {
+		keyPrefix: process.env.SERVER_CACHE_KEY_PREFIX,
+		defaultTTL: Number(process.env.SERVER_CACHE_DEFAULT_TTL),
+		longTTL: Number(process.env.SERVER_CACHE_LONG_TTL),
+		filePath: process.env.SERVER_CACHE_FILE_PATH,
+		refreshThreshold: Number(process.env.SERVER_CACHE_REFRESH_THRESHOLD),
+	},
+	feeds: {
+		publications: {
+			origin: process.env.SERVER_FEEDS_PUBLICATIONS_ORIGIN,
+			apiKey: process.env.SERVER_FEEDS_PUBLICATIONS_API_KEY,
+		},
+		inDev: {
+			origin: process.env.SERVER_FEEDS_INDEV_ORIGIN,
+			apiKey: process.env.SERVER_FEEDS_INDEV_API_KEY,
+		},
+		jotForm: {
+			apiKey: process.env.SERVER_FEEDS_JOTFORM_API_KEY,
+		},
+	},
+};
 
 export { publicRuntimeConfig, serverRuntimeConfig };
