@@ -63,3 +63,21 @@ Given(
 );
 
 Given(/^I enter From date "([^"]*)" to filter page list$/, indicatorFilterDate);
+
+Given(/^I click on the news breadcrumb link$/, async () => {
+	await waitForDisplayed(".breadcrumbs__crumb:nth-of-type(2)", "");
+	await clickElement("click", "selector", ".breadcrumbs__crumb:nth-of-type(2)");
+	await pause("2000");
+});
+
+Given(/^I click on the blogs breadcrumb link$/, async () => {
+	await waitForDisplayed(".breadcrumbs__crumb:nth-child(3)", "");
+	await clickElement("click", "selector", ".breadcrumbs__crumb:nth-child(3)");
+	await pause("2000");
+});
+
+Given(/^I click on the news articles breadcrumb link$/, async () => {
+	await waitForDisplayed(".breadcrumbs__crumb:nth-child(3)", "");
+	await clickElement("click", "selector", ".breadcrumbs__crumb:nth-child(3)");
+	await pause("2000");
+});

@@ -27,6 +27,8 @@ export const pagePaths = {
 	"HUB10003 overview": "/hub/indevelopment/gid-hub10003",
 	home: "/",
 	"news, blogs and podcasts": "/news",
+	"blogs 1": "/news/blogs/nextweb-automation-blog-donotuse",
+	"news articles 1": "/news/articles/nextweb-automation-news-1-donotuse",
 	"nice newsletters and alerts": "/nice-newsletters-and-alerts",
 	"subscribe to NICE news for health and social care":
 		"/forms/subscribe-to-nice-news-for-health-and-social-care",

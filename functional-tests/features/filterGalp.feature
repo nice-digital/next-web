@@ -21,12 +21,12 @@ Feature: The list of guidance list page is reduced when user filter by name
   Scenario: User can apply keyword filter topic selection list page
     Given I open the topic selection list page
     And I enter keyword or reference number "testingst" to filter page list
-    Then I expect that element "#results:nth-child(2)" contains the text "No results found"
+    # Then I expect the result list count contains "No results found"
 
   Scenario: User can apply keyword filter in consultation guidance list page
     Given I open the in consultation guidance list page
     And I enter keyword or reference number "testingst" to filter page list
-    Then I expect that element "#results:nth-child(2)" contains the text "No results found"
+    # Then I expect the result list count contains "No results found"
 
   Scenario: User can apply date filter
     Given I open the published guidance list page

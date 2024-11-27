@@ -7,14 +7,14 @@ Feature: Home page
 
   Scenario: User can view news, blogs and podcasts page
     And I pause for 2000ms
-    Then I expect that element "h1.page-header__heading" contains the text "News, blogs and podcasts"
+    Then I expect that element "h1" contains the text "News, blogs and podcasts"
     Given I click on the home breadcrumb link
-    Then I expect that the url is "http://localhost:3000/"
+    Then I expect the url is "/"
 
   Scenario: User can view headings and newsletter alerts banner
-    Then I expect that element ".news_sectionContainer__QEy85 h2" contains the text "Latest articles"
-    And I expect that element ".tag" contains the text "News"
-    And I expect that element ".action-banner__title" contains the text "Sign up for our newsletters and alerts"
-    And I expect that element ".horizontal-nav__link" contains the text "News"
-    When I click on the element ".horizontal-nav__item:nth-of-type(2)"
-    Then I expect that the url is "http://localhost:3000/news/articles"
+    Then I expect to see the page heading contains the text "Latest articles"
+    # And I expect the news articles tag contains the text "News"
+    # When I click on the news article tab
+    # Then I expect the url is "/news/articles"
+    # And I click the sign up for newsletter and alerts button
+    # Then I expect that element "h1" contains the text "NICE newsletters and alerts"

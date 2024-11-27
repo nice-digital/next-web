@@ -1,19 +1,48 @@
 import { Then } from "@wdio/cucumber-framework";
-import { expect } from "expect-webdriverio";
+// import { expect } from "expect-webdriverio";
 
 import { checkContainsText } from "@nice-digital/wdio-cucumber-steps/lib/support/check/checkContainsText.js";
-
+import { validateUrl } from "../support/check/validateUrl.js";
 import { getSelector, SelectorName } from "../selectors/index.js";
 import { clickNextPagination } from "../support/action/clickNextPagination.js";
 import { clickPreviousPagination } from "../support/action/clickPreviousPagination.js";
+import { clickSignUpButton } from "../support/action/clickSignInButton.js";
 import {
 	indicatorList,
 	indicatorHistory,
 } from "../support/check/indicatorList.js";
 import {
+	validateBlogAuthorImage,
+	validateBlogAuthorName,
+	validateBlogAuthorTitle,
+	validateRelatedNewsStory,
+} from "../support/check/validateBlogPage.js";
+import {
+	validateHomeSection,
+	validateHomeSectionLink1,
+	validateHomeSectionLink2,
+} from "../support/check/validateHomePage.js";
+import {
 	validateIndicatorPageResultCount,
 	validateFirstLinkInPagination,
 } from "../support/check/validateIndicatorPageResultCount.js";
+import {
+	validateNewsArticleTag,
+	validateInDepthTag,
+	validateBlogsTag,
+	validatePodcastsTag,
+	validateNewsArticlePagination,
+} from "../support/check/validateNewsArticleTag.js";
+import {
+	validateNewsHomePage,
+	validateIndicatorHeading,
+	validateIndicatorNavItem1,
+	validateIndicatorNavItem2,
+	validateHubHeading1,
+	validateHubHeading2,
+	validateHubHeading3,
+	validateHubTableText,
+} from "../support/check/validateNewsHomePage.js";
 
 // eslint-disable-next-line import/no-unresolved
 
@@ -54,3 +83,96 @@ Then(
 
 Then(/^I click the next page option$/, clickNextPagination);
 Then(/^I click the previous page option$/, clickPreviousPagination);
+
+Then(
+	/^I expect the news articles tag contains the text "([^"]*)"$/,
+	validateNewsArticleTag
+);
+
+Then(
+	/^I expect the in Depth tag contains the text "([^"]*)"$/,
+	validateInDepthTag
+);
+
+Then(/^I expect the blogs tag contains the text "([^"]*)"$/, validateBlogsTag);
+Then(
+	/^I expect the podcasts tag contains the text "([^"]*)"$/,
+	validatePodcastsTag
+);
+
+Then(
+	/^I expect the pagination shows the text "([^"]*)"$/,
+	validateNewsArticlePagination
+);
+
+Then(
+	/^I expect to see the page heading contains the text "([^"]*)"$/,
+	validateNewsHomePage
+);
+
+Then(
+	/^I click the sign up for newsletter and alerts button$/,
+	clickSignUpButton
+);
+Then(
+	/^I expect to see the indicator page heading contains the text "([^"]*)"$/,
+	validateIndicatorHeading
+);
+
+Then(
+	/^I expect to see the first horizontal nav item contains the text "([^"]*)"$/,
+	validateIndicatorNavItem1
+);
+
+Then(
+	/^I expect to see the second horizontal nav item contains the text "([^"]*)"$/,
+	validateIndicatorNavItem2
+);
+Then(
+	/^I expect to see the hub page heading contains the text "([^"]*)"$/,
+	validateHubHeading1
+);
+
+Then(
+	/^I expect to see the hub page headings contains the text "([^"]*)"$/,
+	validateHubHeading3
+);
+Then(
+	/^I expect to see another hub page heading contains the text "([^"]*)"$/,
+	validateHubHeading2
+);
+Then(
+	/^I expect to see table contains the text "([^"]*)"$/,
+	validateHubTableText
+);
+Then(
+	/^I expect to see the section heading contains the text "([^"]*)"$/,
+	validateHomeSection
+);
+Then(
+	/^I expect to see the section heading link contains the text "([^"]*)"$/,
+	validateHomeSectionLink1
+);
+Then(
+	/^I expect to see another section heading link contains the text "([^"]*)"$/,
+	validateHomeSectionLink2
+);
+
+Then(/^I expect to see blog author image does exist$/, validateBlogAuthorImage);
+Then(
+	/^I expect to see blog author name contains the text "([^"]*)"$/,
+	validateBlogAuthorName
+);
+
+Then(
+	/^I expect to see blog author title contains the text "([^"]*)"$/,
+	validateBlogAuthorTitle
+);
+Then(
+	/^I expect to see related news stories contains the text "([^"]*)"$/,
+	validateRelatedNewsStory
+);
+Then(
+	/^I expect the url is "([^"]*)"$/,
+	validateUrl
+);

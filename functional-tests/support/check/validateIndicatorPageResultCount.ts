@@ -7,13 +7,8 @@ import selectors from "../selectors.js";
 export async function validateIndicatorPageResultCount(
 	countText: string
 ): Promise<void> {
-	await waitForDisplayed("div.filter-summary__count", "");
-	await checkContainsText(
-		"element",
-		"div.filter-summary__count",
-		"",
-		countText
-	);
+	await waitForDisplayed(".filter-summary__count:nth-child(1)", "");
+	await checkContainsText("element", ".filter-summary__count:nth-child(1)", "", countText);
 	await pause("5000");
 
 	const elem = await $(".horizontal-nav__list:nth-child(1)");

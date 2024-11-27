@@ -3,23 +3,23 @@
 **Table of Contents**  *generated with [DocToc](https://github.com/thlorenz/doctoc)*
 
 - [Functional tests for Next Web](#functional-tests-for-next-web)
-  - [Table of contents](#table-of-contents)
-  - [Stack](#stack)
-    - [Software](#software)
-  - [:rocket: Set up](#rocket-set-up)
-    - [Install Java JDK](#install-java-jdk)
-    - [Run the tests](#run-the-tests)
-    - [Using VSCode](#using-vscode)
-    - [Using npm](#using-npm)
-      - [Different URLs](#different-urls)
-    - [Docker](#docker)
-    - [Steps to Run NextWeb in Docker with Teamcity built image](#steps-to-run-nextweb-in-docker-with-teamcity-built-image)
-      - [Development mode](#development-mode)
-  - [Excluding tests](#excluding-tests)
-  - [Running single features](#running-single-features)
-  - [Troubleshooting](#troubleshooting)
-    - [session not created: This version of ChromeDriver only supports Chrome version xx](#session-not-created-this-version-of-chromedriver-only-supports-chrome-version-xx)
-    - [Port 4444 is already in use](#port-4444-is-already-in-use)
+	- [Table of contents](#table-of-contents)
+	- [Stack](#stack)
+		- [Software](#software)
+	- [:rocket: Set up](#rocket-set-up)
+		- [Install Java JDK](#install-java-jdk)
+		- [Run the tests](#run-the-tests)
+		- [Using VSCode](#using-vscode)
+		- [Using npm](#using-npm)
+			- [Different URLs](#different-urls)
+		- [Docker](#docker)
+		- [Steps to Run NextWeb in Docker with Teamcity built image](#steps-to-run-nextweb-in-docker-with-teamcity-built-image)
+			- [Development mode](#development-mode)
+	- [Excluding tests](#excluding-tests)
+	- [Running single features](#running-single-features)
+	- [Troubleshooting](#troubleshooting)
+		- [session not created: This version of ChromeDriver only supports Chrome version xx](#session-not-created-this-version-of-chromedriver-only-supports-chrome-version-xx)
+		- [Port 4444 is already in use](#port-4444-is-already-in-use)
 
 <!-- END doctoc generated TOC please keep comment here to allow auto update -->
 
@@ -42,6 +42,7 @@
 		- [Using npm](#using-npm)
 			- [Different URLs](#different-urls)
 		- [Docker](#docker)
+		- [Steps to Run NextWeb in Docker with Teamcity built image](#steps-to-run-nextweb-in-docker-with-teamcity-built-image)
 			- [Development mode](#development-mode)
 	- [Excluding tests](#excluding-tests)
 	- [Running single features](#running-single-features)
@@ -91,7 +92,7 @@ This runs the tests against the [NextJS web app](../web/) running on http://loca
 5. Install dependencies from npm:
    1. Run 'npm: Install Dependencies' from the VS Code command palette (_Ctrl+Shift+P_) and choose the functional-tests folder from the next dropdown (or just install all)
    2. Or run `cd functional-tests && npm ci` on the command line
-6. Run `npm run dev` from the _web_ folder to run the NextJS web app on [locahost](http://localhost:3000):
+6. Run `npm run build` & `npm start` from the _web_ folder to run the NextJS web app on [locahost](http://localhost:3000):
 7. Run 'Run Test Task' from the command palette (_Ctrl+Shift+P_) and choose 'Functional tests - all'
    1. Or run 'Functional tests - current feature' to run just the currently opened feature file.
 

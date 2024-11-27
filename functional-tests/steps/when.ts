@@ -3,7 +3,15 @@ import { When } from "@wdio/cucumber-framework";
 import { clickElement } from "@nice-digital/wdio-cucumber-steps/lib/support/action/clickElement.js";
 
 import { getSelector } from "../selectors/index.js";
+import {
+	clickNewsTab,
+	clickInDepthTab,
+	clickBlogsTab,
+	clickPodcastsTab,
+	clickNewslink,
+} from "../support/action/clickNewsTab.js";
 import { clickSecondPaginationOption } from "../support/action/clickSecondPaginationOption.js";
+import { clickSignInButton } from "../support/action/clickSignInButton.js";
 import { subscribeNewsletter } from "../support/action/subscribeNewsletter.js";
 import { typeInSearchBox } from "../support/action/typeInSearchBox.js";
 import { waitForSearchLoad } from "../support/action/waitForSearchLoad.js";
@@ -57,3 +65,15 @@ When(
 When(/^I add details to subscribe to newsletters$/, subscribeNewsletter);
 
 When(/^I click the second pagination option$/, clickSecondPaginationOption);
+
+When(/^I click on the news article tab$/, clickNewsTab);
+
+When(/^I click on the in depth tab$/, clickInDepthTab);
+
+When(/^I click on the blogs tab$/, clickBlogsTab);
+
+When(/^I click on the podcasts tab$/, clickPodcastsTab);
+
+When(/^I click on the home news link$/, clickNewslink);
+
+When(/^I can click on the Sign in link$/, clickSignInButton);
