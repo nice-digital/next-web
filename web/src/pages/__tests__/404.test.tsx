@@ -2,7 +2,7 @@ import { screen, waitFor } from "@testing-library/react";
 
 import { render } from "@/test-utils/rendering";
 
-import FourOhFourPage from "../404";
+import FourOhFourPage from "../404.page";
 
 describe("404", () => {
 	describe("SEO", () => {
