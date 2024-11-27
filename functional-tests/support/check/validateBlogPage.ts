@@ -6,7 +6,6 @@ import { checkContainsText } from "@nice-digital/wdio-cucumber-steps/lib/support
 import selectors from "../selectors.js";
 
 export async function validateBlogAuthorImage(): Promise<void> {
-	// await waitForDisplayed(selectors.blog.blogAuthorImage, "");
 	await isDisplayed(selectors.blog.blogAuthorImage, "");
 	await pause("2000");
 }

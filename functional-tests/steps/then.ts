@@ -1,6 +1,4 @@
 import { Then } from "@wdio/cucumber-framework";
-// import { expect } from "expect-webdriverio";
-
 import { checkContainsText } from "@nice-digital/wdio-cucumber-steps/lib/support/check/checkContainsText.js";
 import { validateUrl } from "../support/check/validateUrl.js";
 import { getSelector, SelectorName } from "../selectors/index.js";
@@ -43,17 +41,6 @@ import {
 	validateHubHeading3,
 	validateHubTableText,
 } from "../support/check/validateNewsHomePage.js";
-
-// eslint-disable-next-line import/no-unresolved
-
-// Then(
-// 	"I expect that element {string} contains the text {string}",
-// 	async (selector, expectedText) => {
-// 		const element = await browser.$(selector);
-// 		const actualText = await element.getText();
-// 		expect(actualText).toContain(expectedText);
-// 	}
-// );
 
 Then(
 	/^I expect to see "([^"]*)" in the autocomplete suggestions$/,
