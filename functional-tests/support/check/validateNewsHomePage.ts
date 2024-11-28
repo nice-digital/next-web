@@ -48,27 +48,15 @@ export async function validateIndicatorNavItem2(text: string): Promise<void> {
 	await pause("2000");
 }
 
-export async function validateHubHeading1(text: string): Promise<void> {
+export async function validateHubHeading(text: string): Promise<void> {
 	await waitForDisplayed(selectors.hub.hubHeading1, "");
 	await checkContainsText("element", selectors.hub.hubHeading1, "", text);
-	await pause("2000");
-}
-
-export async function validateHubHeading2(text: string): Promise<void> {
-	await waitForDisplayed(selectors.hub.hubHeading2, "");
-	await checkContainsText("element", selectors.hub.hubHeading2, "", text);
 	await pause("2000");
 }
 
 export async function validateHubTableText(text: string): Promise<void> {
 	await waitForDisplayed(selectors.hub.tableHeading, "");
 	await checkContainsText("element", selectors.hub.tableHeading, "", text);
-	await pause("2000");
-}
-
-export async function validateHubHeading3(text: string): Promise<void> {
-	await waitForDisplayed(selectors.hub.hubHeading3, "");
-	await checkContainsText("element", selectors.hub.hubHeading3, "", text);
 	await pause("2000");
 }
 

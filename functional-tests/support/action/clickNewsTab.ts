@@ -41,6 +41,7 @@ export async function clickPodcastsTab(): Promise<void> {
 }
 
 export async function clickNewslink(): Promise<void> {
+	await browser.scroll(900, 900);
 	await waitForDisplayed(selectors.home.homeNewLink, "");
 	await clickElement("click", "selector", selectors.home.homeNewLink);
 	await pause("2000");

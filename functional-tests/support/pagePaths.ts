@@ -24,11 +24,10 @@ export const pagePaths = {
 	IND10272: "/indicators/indevelopment/gid-ind10272",
 	"HUB10001 overview": "/hub/indevelopment/gid-hub10001",
 	"HUB10002 overview": "/hub/indevelopment/gid-hub10002",
-	"HUB10003 overview": "/hub/indevelopment/gid-hub10003",
 	home: "/",
 	"news, blogs and podcasts": "/news",
-	"blogs 1": "/news/blogs/nextweb-automation-blog-donotuse",
-	"news articles 1": "/news/articles/nextweb-automation-news-1-donotuse",
+	blogs: "/news/blogs/nextweb-automation-blog-donotuse",
+	"news articles": "/news/articles/nextweb-automation-news-1-donotuse",
 	"nice newsletters and alerts": "/nice-newsletters-and-alerts",
 	"subscribe to NICE news for health and social care":
 		"/forms/subscribe-to-nice-news-for-health-and-social-care",

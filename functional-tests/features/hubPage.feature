@@ -14,11 +14,8 @@ Feature: Hub detail page
     And I pause for 2000ms
     Given I click on the home breadcrumb link
     Then I expect the url is "/"
-
-  # Scenario: User can see hub detail page headings
-  #   Then I open the HUB10002 overview page
-  #   Then I expect that element "h1" contains the text "Cardiometabolic disease prevention and treatment guidelines"
-  #   # Then I expect to see the hub page headings contains the text "Guidelines"
-  #   # Then I expect to see another hub page heading contains the text "Cardiovascular disease"
-  #   # Then I expect to see table contains the text "Updates planned and in progress"
+    Then I open the HUB10002 overview page
+    And I pause for 2000ms
+    Then I expect that element "h1" contains the text "Cardiometabolic disease prevention and treatment guidelines"
+    # Then I see table contains the text "Updates planned and in progress"
 

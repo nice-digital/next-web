@@ -29,8 +29,6 @@ export default {
 	},
 	hub: {
 		hubHeading1: "h2:nth-child(3)",
-		hubHeading3: "h2:nth-child(2)",
-		hubHeading2: "h3:nth-child(3)",
 		tableHeading: "td:nth-child(2)",
 	},
 	blog: {

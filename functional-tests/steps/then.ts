@@ -37,9 +37,7 @@ import {
 	validateIndicatorHeading,
 	validateIndicatorNavItem1,
 	validateIndicatorNavItem2,
-	validateHubHeading1,
-	validateHubHeading2,
-	validateHubHeading3,
+	validateHubHeading,
 	validateHubTableText,
 } from "../support/check/validateNewsHomePage.js";
 import { validateUrl } from "../support/check/validateUrl.js";
@@ -119,21 +117,10 @@ Then(
 );
 Then(
 	/^I expect to see the hub page heading contains the text "([^"]*)"$/,
-	validateHubHeading1
+	validateHubHeading
 );
 
-Then(
-	/^I expect to see the hub page headings contains the text "([^"]*)"$/,
-	validateHubHeading3
-);
-Then(
-	/^I expect to see another hub page heading contains the text "([^"]*)"$/,
-	validateHubHeading2
-);
-Then(
-	/^I expect to see table contains the text "([^"]*)"$/,
-	validateHubTableText
-);
+Then(/^I see table contains the text "([^"]*)"$/, validateHubTableText);
 Then(
 	/^I expect to see the section heading contains the text "([^"]*)"$/,
 	validateHomeSection

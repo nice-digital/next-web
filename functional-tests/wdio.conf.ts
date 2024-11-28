@@ -13,8 +13,6 @@ export const config: WebdriverIO.Config = {
 	path: "/wd/hub",
 
 	specs: ["./features/**/*.feature"],
-	// exclude: [
-	// ],
 
 	capabilities: [
 		{
@@ -22,13 +20,18 @@ export const config: WebdriverIO.Config = {
 			// acceptSslCerts: true,
 			maxInstances: 1,
 			browserName: "chrome",
+			// "goog:chromeOptions": {
+			// 	args: [
+			// 		"--headless",
+			// 		"--disable-dev-shm-usage",
+			// 		"--no-sandbox",
+			// 		"--window-size=1920,1080",
+			// 	],
+			// },
 			"goog:chromeOptions": {
-				args: [
-					"--headless",
-					"--disable-dev-shm-usage",
-					"--no-sandbox",
-					"--window-size=1920,1080",
-				],
+				args: ["--window-size=1920,1080"].concat(
+					isInDocker ? "--headless" : []
+				),
 			},
 		},
 	],
@@ -54,7 +57,6 @@ export const config: WebdriverIO.Config = {
 		require: [
 			"./steps/**/*.ts",
 			"./support/pagePaths.ts",
-			// "./support/breadcrumbPaths.ts",
 			"./node_modules/@nice-digital/wdio-cucumber-steps/lib/index.js",
 		],
 		tagExpression: "not @pending", // See https://docs.cucumber.io/tag-expressions/
