@@ -11,8 +11,8 @@ export const SearchNoResults: FC<SearchNoResultsProps> = ({ searchText }) => {
 			<section aria-labelledby="browse-for-content">
 				<h3 id="browse-for-content">Try browsing by topic</h3>
 				<p>
-					Our <Link href="/guidance/conditions-and-diseases?">topic pages</Link>{" "}
-					show all our products in a particular topic area
+					The <a href="/guidance/conditions-and-diseases?">topic pages</a> show
+					all our products in a particular topic area
 				</p>
 			</section>
 			<section aria-labelledby="try-other-services">
