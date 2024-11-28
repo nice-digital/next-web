@@ -119,26 +119,26 @@ export interface ServerConfig {
 
 const publicRuntimeConfig: PublicConfig = {
 	storyblok: {
-		accessToken: process.env.PUBLIC_STORYBLOK_ACCESS_TOKEN,
-		enableRootCatchAll: process.env.PUBLIC_STORYBLOK_ENABLE_ROOT_CATCH_ALL,
-		ocelotEndpoint: process.env.PUBLIC_STORYBLOK_OCELOT_ENDPOINT,
+		accessToken: process.env.NEXT_PUBLIC_STORYBLOK_ACCESS_TOKEN,
+		enableRootCatchAll: process.env.NEXT_PUBLIC_STORYBLOK_ENABLE_ROOT_CATCH_ALL,
+		ocelotEndpoint: process.env.NEXT_PUBLIC_STORYBLOK_OCELOT_ENDPOINT,
 	},
 	search: {
 		baseURL: process.env.NEXT_PUBLIC_SEARCH_BASE_URL as `https://${string}/api`,
 	},
 	jotForm: {
-		baseURL: process.env.PUBLIC_JOTFORM_BASE_URL,
+		baseURL: process.env.NEXT_PUBLIC_JOTFORM_BASE_URL,
 	},
-	authEnvironment: process.env.PUBLIC_AUTH_ENVIRONMENT as
+	authEnvironment: process.env.NEXT_PUBLIC_AUTH_ENVIRONMENT as
 		| "test"
 		| "live"
 		| "beta"
 		| "local",
-	publicBaseURL: process.env.PUBLIC_PUBLIC_BASE_URL,
-	environment: process.env.PUBLIC_ENVIRONMENT,
-	buildNumber: process.env.PUBLIC_BUILD_NUMBER,
+	publicBaseURL: process.env.NEXT_PUBLIC_PUBLIC_BASE_URL,
+	environment: process.env.NEXT_PUBLIC_ENVIRONMENT,
+	buildNumber: process.env.NEXT_PUBLIC_BUILD_NUMBER,
 	cookieBannerScriptURL: process.env.PUBLIC_COOKIE_BANNER_SCRIPT_URL,
-	baseURL: process.env.PUBLIC_BASE_URL,
+	baseURL: process.env.NEXT_PUBLIC_BASE_URL,
 	denyRobots: process.env.PUBLIC_DENY_ROBOTS === "true",
 	cacheControl: {
 		defaultCacheHeader: process.env.PUBLIC_CACHE_CONTROL_DEFAULT_CACHE_HEADER,
