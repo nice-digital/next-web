@@ -1,4 +1,3 @@
-import Link from "next/link";
 import { FC } from "react";
 
 export interface SearchNoResultsProps {
@@ -11,7 +10,7 @@ export const SearchNoResults: FC<SearchNoResultsProps> = ({ searchText }) => {
 			<section aria-labelledby="browse-for-content">
 				<h3 id="browse-for-content">Try browsing by topic</h3>
 				<p>
-					The <a href="/guidance/conditions-and-diseases?">topic pages</a> show
+					Our <a href="/guidance/conditions-and-diseases">topic pages</a> show
 					all our products in a particular topic area
 				</p>
 			</section>
