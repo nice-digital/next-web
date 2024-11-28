@@ -124,7 +124,7 @@ const publicRuntimeConfig: PublicConfig = {
 		ocelotEndpoint: process.env.PUBLIC_STORYBLOK_OCELOT_ENDPOINT,
 	},
 	search: {
-		baseURL: process.env.PUBLIC_SEARCH_BASE_URL as `https://${string}/api`,
+		baseURL: process.env.NEXT_PUBLIC_SEARCH_BASE_URL as `https://${string}/api`,
 	},
 	jotForm: {
 		baseURL: process.env.PUBLIC_JOTFORM_BASE_URL,
