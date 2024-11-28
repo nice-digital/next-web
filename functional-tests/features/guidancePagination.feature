@@ -1,14 +1,13 @@
-Feature: Users can page through the list of indicator
-	As a user of indicators
-	We want to be able to page through the list of indicator
+Feature: Users can page through the list of published guidance page
+	As a user of published guidance list page
+	We want to be able to page through the list of published guidance page
 
 	Background:
   	Given I open the home page
     # Given I have a screen that is 1400 by 900 pixels
 
 	Scenario: User can page through the list of indicators
-    Given I open the published indicators list page
-		# And I expect the result list count contains "Showing 1 to 10 of 276"
+    Given I open the published guidance list page
     Then I expect the first pagination option is "1"
     When I click the second pagination option
 		Then I expect the first pagination option is "Previous page"

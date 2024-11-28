@@ -10,6 +10,7 @@ Feature: The list of indicators is reduced when user filter by name
   Scenario: User can apply reference number filter published indicators list page
     Given I open the published indicators list page
     And I enter keyword or reference number "IND65" to filter page list
+    And I pause for 2000ms
     Then I expect the result list count contains "Showing 1 to 1 of 1"
 
   Scenario: User can apply keyword filter in development indicators list page

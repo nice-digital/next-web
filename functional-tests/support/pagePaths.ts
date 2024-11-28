@@ -31,6 +31,8 @@ export const pagePaths = {
 	"nice newsletters and alerts": "/nice-newsletters-and-alerts",
 	"subscribe to NICE news for health and social care":
 		"/forms/subscribe-to-nice-news-for-health-and-social-care",
+	"recommendation for research list":
+		"/about/what-we-do/science-policy-research/research-recommendations",
 } as const;
 
 export type PageName = keyof typeof pagePaths;
