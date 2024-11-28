@@ -1,6 +1,7 @@
 import { Then } from "@wdio/cucumber-framework";
+
 import { checkContainsText } from "@nice-digital/wdio-cucumber-steps/lib/support/check/checkContainsText.js";
-import { validateUrl } from "../support/check/validateUrl.js";
+
 import { getSelector, SelectorName } from "../selectors/index.js";
 import { clickNextPagination } from "../support/action/clickNextPagination.js";
 import { clickPreviousPagination } from "../support/action/clickPreviousPagination.js";
@@ -41,6 +42,7 @@ import {
 	validateHubHeading3,
 	validateHubTableText,
 } from "../support/check/validateNewsHomePage.js";
+import { validateUrl } from "../support/check/validateUrl.js";
 
 Then(
 	/^I expect to see "([^"]*)" in the autocomplete suggestions$/,
@@ -159,7 +161,4 @@ Then(
 	/^I expect to see related news stories contains the text "([^"]*)"$/,
 	validateRelatedNewsStory
 );
-Then(
-	/^I expect the url is "([^"]*)"$/,
-	validateUrl
-);
+Then(/^I expect the url is "([^"]*)"$/, validateUrl);

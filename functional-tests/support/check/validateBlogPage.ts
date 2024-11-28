@@ -1,7 +1,7 @@
 import { pause } from "@nice-digital/wdio-cucumber-steps/lib/support/action/pause.js";
 import { waitForDisplayed } from "@nice-digital/wdio-cucumber-steps/lib/support/action/waitForDisplayed.js";
-import { isDisplayed } from "@nice-digital/wdio-cucumber-steps/lib/support/check/isDisplayed.js";
 import { checkContainsText } from "@nice-digital/wdio-cucumber-steps/lib/support/check/checkContainsText.js";
+import { isDisplayed } from "@nice-digital/wdio-cucumber-steps/lib/support/check/isDisplayed.js";
 
 import selectors from "../selectors.js";
 
@@ -28,4 +28,3 @@ export async function validateRelatedNewsStory(text: string): Promise<void> {
 	await pause("2000");
 }
 export default validateBlogAuthorImage;
-

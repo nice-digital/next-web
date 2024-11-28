@@ -8,7 +8,12 @@ export async function validateIndicatorPageResultCount(
 	countText: string
 ): Promise<void> {
 	await waitForDisplayed(".filter-summary__count:nth-child(1)", "");
-	await checkContainsText("element", ".filter-summary__count:nth-child(1)", "", countText);
+	await checkContainsText(
+		"element",
+		".filter-summary__count:nth-child(1)",
+		"",
+		countText
+	);
 	await pause("5000");
 	const elem = await $(".horizontal-nav__list:nth-child(1)");
 	await elem.scrollIntoView({ block: "center", inline: "center" });
