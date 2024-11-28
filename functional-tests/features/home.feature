@@ -10,5 +10,6 @@ Feature: Home page
     Then I expect to see another section heading link contains the text "More ways we support you"
     When I can click on the Sign in link
     And I open the home page
+    And I pause for 2000ms
     When I click on the home news link
     Then I expect that element "h1" contains the text "News, blogs and podcasts"
