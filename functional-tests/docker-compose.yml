@@ -44,10 +44,11 @@ services:
     volumes:
       - ./../web:/web
     environment:
-      NEXT_PUBLIC_SEARCH_BASE_URL: "https://search-api.nice.org.uk/api"
-      SERVER_FEEDS_PUBLICATIONS_ORIGIN: "https://live-publications.nice.org.uk"
-      SERVER_FEEDS_INDEV_ORIGIN: "https://indev.nice.org.uk"
+      NEXT_PUBLIC_SEARCH_BASE_URL: "https://alpha-search-api.nice.org.uk/api"
+      SERVER_FEEDS_PUBLICATIONS_ORIGIN: "https://alpha-publications.nice.org.uk"
+      SERVER_FEEDS_INDEV_ORIGIN: "https://alpha-indev.nice.org.uk"
       NEXT_PUBLIC_STORYBLOK_ACCESS_TOKEN: "4W1k8jiLtTFLtx5Tgh9k1Qtt"
+
     networks:
       default:
         aliases:
