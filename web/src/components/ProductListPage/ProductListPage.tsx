@@ -1,5 +1,5 @@
-import { useRouter } from "next/router";
 import { NextSeo } from "next-seo";
+import { useRouter } from "next/router";
 import pluralize from "pluralize";
 import {
 	ElementType,
@@ -255,9 +255,9 @@ export const getProductListPage =
 								<ul>
 									<li>Using the full site search.</li>
 									<li>
-										<Link href="/guidance/conditions-and-diseases">
+										<a href="/guidance/conditions-and-diseases">
 											Browsing by topic
-										</Link>
+										</a>
 										. Our topic pages show all our guidance in a particular
 										area, such as specific conditions or healthcare settings.
 									</li>
