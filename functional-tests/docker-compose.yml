@@ -30,10 +30,10 @@ services:
 
   # New Next Web (NextJS web app)
   next-web:
-    image: nextweb:latest
-    ## Uncomment the two lines below to run with a specific image with a specific Teamcity build number
-    ## image: xxxxxxxxxxxx.dkr.ecr.eu-west-1.amazonaws.com/nextweb:nnnn
-    ## command: ["npm", "run", "host-console-logging"]
+    # image: nextweb:latest
+    # Uncomment the two lines below to run with a specific image with a specific Teamcity build number
+    image: 700141040783.dkr.ecr.eu-west-1.amazonaws.com/nextweb:2160
+    command: ["npm", "run", "host-console-logging"]
     container_name: next-web
     depends_on:
       - mock-search-api
@@ -44,9 +44,9 @@ services:
     volumes:
       - ./../web:/web
     environment:
-      - SEARCH_BASE_URL=http://mock-search-api.nice.org.uk/api
-      - PUBLICATIONS_BASE_URL=http://mock-publications.nice.org.uk
-      - INDEV_BASE_URL=http://mock-indev.nice.org.uk
+      - NEXT_PUBLIC_SEARCH_BASE_URL
+      - SERVER_FEEDS_PUBLICATIONS_ORIGIN
+      - SERVER_FEEDS_INDEV_ORIGIN
     networks:
       default:
         aliases:
