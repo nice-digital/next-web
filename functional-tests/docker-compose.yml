@@ -30,11 +30,13 @@ services:
 
   # New Next Web (NextJS web app)
   next-web:
-    image: nextweb:latest
+    image: nextweblocalimage:latest
+    # image: nextweb:latest
     # Uncomment the two lines below to run with a specific image with a specific Teamcity build number
     # image: 700141040783.dkr.ecr.eu-west-1.amazonaws.com/nextweb:2195
     command: ["npm", "run", "host-console-logging"]
     container_name: next-web
+    build: ./../web/
     depends_on:
       - mock-search-api
       - mock-publications
@@ -44,10 +46,12 @@ services:
     volumes:
       - ./../web:/web
     environment:
-      NEXT_PUBLIC_SEARCH_BASE_URL: "https://alpha-search-api.nice.org.uk/api"
-      SERVER_FEEDS_PUBLICATIONS_ORIGIN: "https://alpha-publications.nice.org.uk"
-      SERVER_FEEDS_INDEV_ORIGIN: "https://alpha-indev.nice.org.uk"
-      NEXT_PUBLIC_STORYBLOK_ACCESS_TOKEN: "4W1k8jiLtTFLtx5Tgh9k1Qtt"
+      - NEXT_PUBLIC_SEARCH_BASE_URL
+      - SERVER_FEEDS_PUBLICATIONS_ORIGIN
+      - SERVER_FEEDS_INDEV_ORIGIN
+      - NEXT_PUBLIC_STORYBLOK_ACCESS_TOKEN
+      - NEXT_PUBLIC_JOTFORM_BASE_URL
+      - SERVER_FEEDS_JOTFORM_API_KEY
 
     networks:
       default:
@@ -66,10 +70,20 @@ services:
   mock-publications:
     build: https://github.com/nice-digital/mocks-apis.git#main:publications
     container_name: mock-publications
+    command: npm start
     networks:
       default:
         aliases:
           - mock-publications.nice.org.uk
+
+  mock-indev:
+    build: https://github.com/nice-digital/mocks-apis.git#main:indev
+    container_name: mock-indev
+    command: npm start
+    networks:
+      default:
+        aliases:
+          - mock-indev.nice.org.uk
 
 networks:
   default:
