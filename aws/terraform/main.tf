@@ -67,7 +67,83 @@ resource "aws_ecs_task_definition" "nextweb-main-task" {
         {
           name  = "NODE_ENV"
           value = var.node_env
-        }
+        },
+				{
+					name	=	"NEXT_PUBLIC_AUTH_ENVIRONMENT"
+					value	= var.next_public_auth_environment
+				},
+				{
+					name	= "NEXT_PUBLIC_BASE_URL"
+					value	=	var.next_public_base_url
+				},
+				{
+					name	= "NEXT_PUBLIC_BUILD_NUMBER"
+					value	= var.next_public_build_number
+				},
+				{
+					name	=	"NEXT_PUBLIC_ENVIRONMENT"
+					value	= var.next_public_environment
+				},
+				{
+					name	=	"NEXT_PUBLIC_PUBLIC_BASE_URL"
+					value	=	var.next_public_public_base_url
+				},
+				{
+					name	=	"NEXT_PUBLIC_SEARCH_BASE_URL"
+					value	=	var.next_public_search_base_url
+				},
+				{
+					name	=	"NEXT_PUBLIC_STORYBLOK_ACCESS_TOKEN"
+					value	=	var.next_public_storyblok_access_token
+				},
+				{
+					name	=	"NEXT_PUBLIC_STORYBLOK_ENABLE_ROOT_CATCH_ALL"
+					value	=	var.next_public_storyblok_enable_root_catch_all
+				},
+				{
+					name	=	"NEXT_PUBLIC_STORYBLOK_OCELOT_ENDPOINT"
+					value	=	var.next_public_storyblok_ocelot_endpoint
+				},
+				{
+					name	=	"PUBLIC_COOKIE_BANNER_SCRIPT_URL"
+					value	=	var.public_cookie_banner_script_url
+				},
+				{
+					name	=	"PUBLIC_DENY_ROBOTS"
+					value	=	var.public_deny_robots
+				},
+				{
+					name	=	"SERVER_CACHE_FILE_PATH"
+					value	=	var.server_cache_file_path
+				},
+				{
+					name	= "SERVER_CACHE_KEY_PREFIX"
+					value	=	var.server_cache_key_prefix
+				},
+				{
+					name	= "SERVER_CACHE_LONG_TTL"
+					value	= var.server_cache_long_ttl
+				},
+				{
+					name	=	"SERVER_FEEDS_INDEV_API_KEY"
+					value	=	var.server_feeds_indev_api_key
+				},
+				{
+					name	=	"SERVER_FEEDS_INDEV_ORIGIN"
+					value	=	var.server_feeds_indev_origin
+				},
+				{
+					name	=	"SERVER_FEEDS_JOTFORM_API_KEY"
+					value	=	var.server_feeds_jotform_api_key
+				},
+				{
+					name	=	"SERVER_FEEDS_PUBLICATIONS_API_KEY"
+					value	=	var.server_feeds_publications_api_key
+				},
+				{
+					name	=	"SERVER_FEEDS_PUBLICATIONS_ORIGIN"
+					value	=	var.server_feeds_publications_origin
+				}
       ]
       mountPoints = [
         {
