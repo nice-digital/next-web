@@ -53,53 +53,53 @@ variable "next_public_base_url" {
   type = string
 }
 variable "next_public_build_number" {
-	type = string
+  type = string
 }
 variable "next_public_environment" {
-	type = string
+  type = string
 }
 variable "next_public_public_base_url" {
-	type = string
+  type = string
 }
 variable "next_public_search_base_url" {
-	type = string
+  type = string
 }
 variable "next_public_storyblok_access_token" {
-	type = string
+  type = string
 }
 variable "next_public_storyblok_enable_root_catch_all" {
-	type = string
+  type = string
 }
 variable "next_public_storyblok_ocelot_endpoint" {
-	type = string
+  type = string
 }
 variable "public_cookie_banner_script_url" {
-	type = string
+  type = string
 }
 variable "public_deny_robots" {
-	type = string
+  type = string
 }
 variable "server_cache_file_path" {
-	type = string
+  type = string
 }
 variable "server_cache_key_prefix" {
-	type = string
+  type = string
 }
 variable "server_cache_long_ttl" {
-	type = number
+  type = number
 }
 variable "server_feeds_indev_api_key" {
-	type = string
+  type = string
 }
 variable "server_feeds_indev_origin" {
-	type = string
+  type = string
 }
 variable "server_feeds_jotform_api_key" {
-	type = string
+  type = string
 }
 variable "server_feeds_publications_api_key" {
-	type = string
+  type = string
 }
 variable "server_feeds_publications_origin" {
-	type = string
+  type = string
 }
