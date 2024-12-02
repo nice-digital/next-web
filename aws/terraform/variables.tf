@@ -86,7 +86,7 @@ variable "server_cache_key_prefix" {
   type = string
 }
 variable "server_cache_long_ttl" {
-  type = number
+  type = string
 }
 variable "server_feeds_indev_api_key" {
   type = string
