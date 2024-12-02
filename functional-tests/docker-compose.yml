@@ -1,4 +1,3 @@
-version: '2.2'
 services:
   selenium-hub:
     image: selenium/hub:3.141.59-20210713
@@ -30,8 +29,8 @@ services:
 
   # New Next Web (NextJS web app)
   next-web:
-    image: nextweblocalimage:latest
-    # image: nextweb:latest
+    # image: nextweblocalimage:latest # run a local image by cd into the web folder and running docker build -t nameofyourimage:latest .
+    image: nextweb:latest
     # Uncomment the two lines below to run with a specific image with a specific Teamcity build number
     # image: 700141040783.dkr.ecr.eu-west-1.amazonaws.com/nextweb:2195
     command: ["npm", "run", "host-console-logging"]
