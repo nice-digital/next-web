@@ -137,7 +137,7 @@ const publicRuntimeConfig: PublicConfig = {
 	publicBaseURL: process.env.NEXT_PUBLIC_PUBLIC_BASE_URL,
 	environment: process.env.NEXT_PUBLIC_ENVIRONMENT,
 	buildNumber: process.env.NEXT_PUBLIC_BUILD_NUMBER,
-	cookieBannerScriptURL: process.env.NEXT_PUBLIC_COOKIE_BANNER_SCRIPT_URL,
+	cookieBannerScriptURL: process.env.PUBLIC_COOKIE_BANNER_SCRIPT_URL,
 	baseURL: process.env.NEXT_PUBLIC_BASE_URL,
 	denyRobots: process.env.PUBLIC_DENY_ROBOTS === "true",
 	cacheControl: {

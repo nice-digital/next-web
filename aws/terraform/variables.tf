@@ -73,7 +73,7 @@ variable "next_public_storyblok_enable_root_catch_all" {
 variable "next_public_storyblok_ocelot_endpoint" {
   type = string
 }
-variable "next_public_cookie_banner_script_url" {
+variable "public_cookie_banner_script_url" {
   type = string
 }
 variable "public_deny_robots" {

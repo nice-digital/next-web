@@ -105,8 +105,8 @@ resource "aws_ecs_task_definition" "nextweb-main-task" {
           value = var.next_public_storyblok_ocelot_endpoint
         },
         {
-          name  = "NEXT_PUBLIC_COOKIE_BANNER_SCRIPT_URL"
-          value = var.next_public_cookie_banner_script_url
+          name  = "PUBLIC_COOKIE_BANNER_SCRIPT_URL"
+          value = var.public_cookie_banner_script_url
         },
         {
           name  = "PUBLIC_DENY_ROBOTS"
