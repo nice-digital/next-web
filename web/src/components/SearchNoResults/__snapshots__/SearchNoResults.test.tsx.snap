@@ -18,8 +18,7 @@ exports[`SearchNoResults should match snapshot 1`] = `
         >
           topic pages
         </a>
-         
-        show all our products in a particular topic area
+         show all our products in a particular topic area
       </p>
     </section>
     <section

@@ -348,10 +348,10 @@ const FormFooter = () => {
 							For further information about this licence please contact:
 							<ul className="unstyled">
 								<li>National Institute for Health and Care Excellence</li>
-								<li>Level 1A, City Tower</li>
-								<li>Piccadilly Plaza</li>
+								<li>3rd floor,</li>
+								<li>3 Piccadilly Place</li>
 								<li>Manchester</li>
-								<li>M1 4BT</li>
+								<li>M1 3BN</li>
 								<li>
 									Telephone: <a href="tel:+03003230140">+44 (0)300 323 0140</a>
 								</li>
