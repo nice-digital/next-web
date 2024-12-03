@@ -4,5 +4,5 @@ Feature: Status page
   Background:
     Given I open the status page
 
-  Scenario: User can see staus page heading
+  Scenario: User can see status page heading
     Then I expect that element "h1" contains the text "OK"
