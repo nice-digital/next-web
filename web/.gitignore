@@ -45,4 +45,5 @@ public/sitemap-0.xml
 components.*.json
 
 #env
+.env.development
 .env.production
