@@ -7,17 +7,17 @@ import type { InitialiseOptions as SearchClientInitOptions } from "@nice-digital
 
 export interface SearchConfig {
 	/** The base URL of the Single Search Endpoint (SSE) e.g. https://beta-search-api.nice.org.uk/api/ */
-	readonly baseURL: SearchClientInitOptions["baseURL"] | undefined;
+	readonly baseURL: SearchClientInitOptions["baseURL"];
 }
 
 export interface CacheControlConfig {
 	/** The default value for the cache-control header */
-	readonly defaultCacheHeader: string | undefined;
+	readonly defaultCacheHeader: string;
 }
 
 export interface JotFormPublicConfig {
 	/** The full base URL for NICE's JotForm instance, including protocol but excluding trailing slash */
-	readonly baseURL: string | undefined;
+	readonly baseURL: string;
 }
 
 /**
@@ -25,10 +25,10 @@ export interface JotFormPublicConfig {
  */
 export interface PublicConfig {
 	/** The version number of the current build (or Octopus.Release.Number in Octo) */
-	readonly buildNumber: string | undefined;
+	readonly buildNumber: string;
 
 	/** Name of the environment e.g. _dev_ or _test_ */
-	readonly environment: string | undefined;
+	readonly environment: string;
 
 	/** Name of the auth environment which is passed through to global nav */
 	readonly authEnvironment: "live" | "beta" | "test" | "local";
@@ -39,18 +39,18 @@ export interface PublicConfig {
 	/** The base URL of the website including protocol and port e.g. http://localhost:3000 for local dev or http://dev.nice.org.uk.
 	 *
 	 * **Note** the lack of trailing slash! It will get prepended to paths that start with a slash. */
-	readonly baseURL: string | undefined;
+	readonly baseURL: string;
 
 	/**
 	 * The absolute URL to the NICE cookie banner script include
 	 */
-	readonly cookieBannerScriptURL: string | undefined;
+	readonly cookieBannerScriptURL: string;
 
 	/**
 	 * The base URL to the deployed NextJS _public_ folder, see https://nextjs.org/docs/basic-features/static-file-serving.
 	 * Empty string means relative to the deployed app. Set it to an absolute path in _config.yml_ to use a CDN.
 	 */
-	readonly publicBaseURL: string | undefined;
+	readonly publicBaseURL: string;
 
 	readonly search: SearchConfig;
 
@@ -69,27 +69,27 @@ export interface PublicConfig {
  */
 export interface CacheConfig {
 	/** The prefix for cache keys */
-	readonly keyPrefix: string | undefined;
+	readonly keyPrefix: string;
 
 	/** Path to the folder used for file system disk cache */
-	readonly filePath: string | undefined;
+	readonly filePath: string;
 
 	/** The default TTL (time to live), in seconds, of cache entries */
-	readonly defaultTTL: number | undefined;
+	readonly defaultTTL: number;
 
 	/** The longer TTL (time to live), in seconds, for long-lived cache entries that rarely change */
-	readonly longTTL: number | undefined;
+	readonly longTTL: number;
 
 	/** Threshold for TTL, in seconds, below which object caches are refreshed in the background as per https://edibleco.de/3hyfpGG */
-	readonly refreshThreshold: number | undefined;
+	readonly refreshThreshold: number;
 }
 
 export interface FeedConfig {
 	/** The origin URL of the feeds */
-	readonly origin: string | undefined;
+	readonly origin: string;
 
 	/** The API key for accessing the feed */
-	readonly apiKey: string | undefined;
+	readonly apiKey: string;
 }
 
 export interface FeedsConfig {
@@ -104,9 +104,9 @@ export interface FeedsConfig {
 }
 
 export interface StoryblokConfig {
-	readonly accessToken: string | undefined;
-	readonly ocelotEndpoint: string | undefined;
-	readonly enableRootCatchAll: string | undefined;
+	readonly accessToken: string;
+	readonly ocelotEndpoint: string;
+	readonly enableRootCatchAll: string;
 }
 
 /**
@@ -119,51 +119,51 @@ export interface ServerConfig {
 
 const publicRuntimeConfig: PublicConfig = {
 	storyblok: {
-		accessToken: process.env.NEXT_PUBLIC_STORYBLOK_ACCESS_TOKEN,
-		enableRootCatchAll: process.env.NEXT_PUBLIC_STORYBLOK_ENABLE_ROOT_CATCH_ALL,
-		ocelotEndpoint: process.env.NEXT_PUBLIC_STORYBLOK_OCELOT_ENDPOINT,
+		accessToken: process.env.NEXT_PUBLIC_STORYBLOK_ACCESS_TOKEN || "SECRET",
+		enableRootCatchAll: process.env.NEXT_PUBLIC_STORYBLOK_ENABLE_ROOT_CATCH_ALL || "false",
+		ocelotEndpoint: process.env.NEXT_PUBLIC_STORYBLOK_OCELOT_ENDPOINT || "",
 	},
 	search: {
-		baseURL: process.env.NEXT_PUBLIC_SEARCH_BASE_URL as `https://${string}/api`,
+		baseURL: process.env.NEXT_PUBLIC_SEARCH_BASE_URL as `https://${string}/api` || "http://localhost:19332/api",
 	},
 	jotForm: {
-		baseURL: process.env.NEXT_PUBLIC_JOTFORM_BASE_URL,
+		baseURL: process.env.NEXT_PUBLIC_JOTFORM_BASE_URL || "https://nice.jotform.com",
 	},
 	authEnvironment: process.env.NEXT_PUBLIC_AUTH_ENVIRONMENT as
 		| "test"
 		| "live"
 		| "beta"
 		| "local",
-	publicBaseURL: process.env.NEXT_PUBLIC_PUBLIC_BASE_URL,
-	environment: process.env.NEXT_PUBLIC_ENVIRONMENT,
-	buildNumber: process.env.NEXT_PUBLIC_BUILD_NUMBER,
-	cookieBannerScriptURL: process.env.PUBLIC_COOKIE_BANNER_SCRIPT_URL,
-	baseURL: process.env.NEXT_PUBLIC_BASE_URL,
+	publicBaseURL: process.env.NEXT_PUBLIC_PUBLIC_BASE_URL || "",
+	environment: process.env.NEXT_PUBLIC_ENVIRONMENT || "local",
+	buildNumber: process.env.NEXT_PUBLIC_BUILD_NUMBER || "PLACEHOLDER",
+	cookieBannerScriptURL: process.env.PUBLIC_COOKIE_BANNER_SCRIPT_URL || "https://cdn.nice.org.uk/cookie-banner/cookie-banner.min.js",
+	baseURL: process.env.NEXT_PUBLIC_BASE_URL || "http://localhost:4000",
 	denyRobots: process.env.PUBLIC_DENY_ROBOTS === "true",
 	cacheControl: {
-		defaultCacheHeader: process.env.PUBLIC_CACHE_CONTROL_DEFAULT_CACHE_HEADER,
+		defaultCacheHeader: process.env.PUBLIC_CACHE_CONTROL_DEFAULT_CACHE_HEADER || "public, s-max-age=300, max-age=120, stale-while-revalidate=1800",
 	},
 };
 
 const serverRuntimeConfig: ServerConfig = {
 	cache: {
-		keyPrefix: process.env.SERVER_CACHE_KEY_PREFIX,
-		defaultTTL: Number(process.env.SERVER_CACHE_DEFAULT_TTL),
-		longTTL: Number(process.env.SERVER_CACHE_LONG_TTL),
-		filePath: process.env.SERVER_CACHE_FILE_PATH,
-		refreshThreshold: Number(process.env.SERVER_CACHE_REFRESH_THRESHOLD),
+		keyPrefix: process.env.SERVER_CACHE_KEY_PREFIX || "next-web:local",
+		defaultTTL: !isNaN(Number(process.env.SERVER_CACHE_DEFAULT_TTL)) ? Number(process.env.SERVER_CACHE_DEFAULT_TTL) : 300,
+		longTTL: !isNaN(Number(process.env.SERVER_CACHE_LONG_TTL)) ? Number(process.env.SERVER_CACHE_LONG_TTL) : 86400,
+		filePath: process.env.SERVER_CACHE_FILE_PATH || "./.cache/",
+		refreshThreshold: !isNaN(Number(process.env.SERVER_CACHE_REFRESH_THRESHOLD)) ? Number(process.env.SERVER_CACHE_REFRESH_THRESHOLD) : 150,
 	},
 	feeds: {
 		publications: {
-			origin: process.env.SERVER_FEEDS_PUBLICATIONS_ORIGIN,
-			apiKey: process.env.SERVER_FEEDS_PUBLICATIONS_API_KEY,
+			origin: process.env.SERVER_FEEDS_PUBLICATIONS_ORIGIN || "SECRET",
+			apiKey: process.env.SERVER_FEEDS_PUBLICATIONS_API_KEY || "SECRET",
 		},
 		inDev: {
-			origin: process.env.SERVER_FEEDS_INDEV_ORIGIN,
-			apiKey: process.env.SERVER_FEEDS_INDEV_API_KEY,
+			origin: process.env.SERVER_FEEDS_INDEV_ORIGIN || "SECRET",
+			apiKey: process.env.SERVER_FEEDS_INDEV_API_KEY || "SECRET",
 		},
 		jotForm: {
-			apiKey: process.env.SERVER_FEEDS_JOTFORM_API_KEY,
+			apiKey: process.env.SERVER_FEEDS_JOTFORM_API_KEY || "SECRET",
 		},
 	},
 };
