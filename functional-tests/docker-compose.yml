@@ -30,7 +30,7 @@ services:
 
   # New Next Web (NextJS web app)
   next-web:
-    # image: nextweblocalimage:latest # run a local image by cd into the web folder and running docker build -t nameofyourimage:latest .
+    # image: nameofyourlocalimage:latest # run a local image by cd into the web folder and running docker build -t nameofyourlocalimage:latest .
     image: nextweb:latest
     ## Uncomment the two lines below to run with a specific image with a specific Teamcity build number
     # image: xxxxxxxxxxxx.dkr.ecr.eu-west-1.amazonaws.com/nextweb:nnnn
