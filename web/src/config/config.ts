@@ -1,9 +1,4 @@
-//import config from "config";
-// import getConfig from "next/config";
-
 import type { InitialiseOptions as SearchClientInitOptions } from "@nice-digital/search-client";
-
-// const { publicRuntimeConfig, serverRuntimeConfig } = getConfig();
 
 export interface SearchConfig {
 	/** The base URL of the Single Search Endpoint (SSE) e.g. https://beta-search-api.nice.org.uk/api/ */
