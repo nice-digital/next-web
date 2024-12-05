@@ -1,4 +1,3 @@
-// app/layout.tsx
 "use client";
 
 import { Inter, Lora } from "next/font/google";
@@ -17,7 +16,12 @@ import { publicRuntimeConfig } from "@/config";
 import "./global.scss";
 
 //TODO - initialise storyblok in layout once?
-
+// export const metadata: Metadata = {
+// 	title: {
+// 	  default: 'NICE',
+// 	  template: '%s | NICE',
+// 	},
+//   }
 const inter = Inter({ subsets: ["latin"], variable: "--sans-font-family" });
 const lora = Lora({ subsets: ["latin"], variable: "--serif-font-family" });
 
@@ -56,11 +60,12 @@ const Layout: FC<{ children: React.ReactNode }> = ({ children }) => {
 		},
 	};
 
-	// TODO - use next/head for SEO?
-	// const canonicalPathname =
-	// 	pathname && pathname.includes("[slug]")
-	// 		? pathname.split("?")[0]
-	// 		: pathname || "";
+	// TODO - pass canonical pathname to a client component for metadata ?
+	const canonicalPathname =
+		pathname && pathname.includes("[slug]")
+			? pathname.split("?")[0]
+			: pathname || "";
+
 
 	useEffect(() => {
 		// TODO error handling
@@ -68,10 +73,13 @@ const Layout: FC<{ children: React.ReactNode }> = ({ children }) => {
 
 	return (
 		<html lang="en">
-			{/* TODO use next/head for SEO ? */}
-			{/* <head> */}
-			{/* <DefaultSeo {...getDefaultSeoConfig(canonicalPathname)} /> */}
-			{/* </head> */}
+			{/* TODO can metadata api be used for a root layout - possibly needs breaking down into server and client components */}
+			 {/* <head> */}
+				{/* <title>NICE root layout test title</title> */}
+				{/* <meta name="test-meta" content="This is a test meta tag" /> */}
+			 {/* <DefaultSeo {...getDefaultSeoConfig(canonicalPathname)} /> */}
+			 {/* </head> */}
+
 			<body className={`${lora.variable} ${inter.variable}`}>
 				<GoogleTagManager />
 				<Header {...headerProps} service={service} />

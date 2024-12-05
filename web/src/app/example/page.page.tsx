@@ -1,6 +1,6 @@
 import React from "react";
 import { ResolvingMetadata, Metadata } from 'next';
-import { getDefaultSeoConfig } from "src/pages/next-seo.config";
+import { getDefaultSeoConfig } from "./../../pages/next-seo.config";
 
 
 type Props = {
