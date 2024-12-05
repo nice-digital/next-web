@@ -12,13 +12,10 @@ export const generateMetadata = async (): Promise<Metadata> => {
 	delete defaultSeoConfig.alternates; //remove canonical for not-found page.
 
 	return {
-		title: {
-			default: "Page not found | NICE",
-			template: "%s | NICE",
-		},
+		...defaultSeoConfig,
+		title: "Page not found | NICE",
 		description:
 			"We can't find this page. It's probably been moved, updated or deleted.",
-		...defaultSeoConfig,
 	};
 };
 export default function NotFoundPage(): JSX.Element {

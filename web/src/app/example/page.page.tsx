@@ -1,7 +1,7 @@
 import { ResolvingMetadata, Metadata } from "next";
 import React from "react";
 
-import { getDefaultSeoConfig } from "./../../pages/seo.config";
+import { getDefaultSeoConfig } from "../../pages/seo.config";
 
 type Props = {
 	params: Promise<{ id: string }>;
@@ -15,8 +15,8 @@ export const generateMetadata = async (
 	const defaultSeoConfig = getDefaultSeoConfig("/example") as Metadata;
 
 	return {
-		title: "Example Page | NICE",
 		...defaultSeoConfig,
+		title: "Example Page | NICE",
 		robots: "noindex, nofollow",
 	};
 };
