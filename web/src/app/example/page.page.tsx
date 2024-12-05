@@ -1,22 +1,25 @@
+import { ResolvingMetadata, Metadata } from "next";
 import React from "react";
-import { ResolvingMetadata, Metadata } from 'next';
-import { getDefaultSeoConfig } from "./../../pages/next-seo.config";
 
+import { getDefaultSeoConfig } from "./../../pages/seo.config";
 
 type Props = {
-	params: Promise<{ id: string }>
-	searchParams: Promise<{ [key: string]: string | string[] | undefined }>
-  }
+	params: Promise<{ id: string }>;
+	searchParams: Promise<{ [key: string]: string | string[] | undefined }>;
+};
 
-  export const generateMetadata = async(
+export const generateMetadata = async (
 	props: Props,
 	parent: ResolvingMetadata
-  ): Promise<Metadata> => {
+): Promise<Metadata> => {
+	const defaultSeoConfig = getDefaultSeoConfig("/example") as Metadata;
 
-	const defaultSeoConfig = getDefaultSeoConfig("example") as unknown as Metadata;
-
-	return {title: "Example Page | NICE",...defaultSeoConfig}
-  }
+	return {
+		title: "Example Page | NICE",
+		...defaultSeoConfig,
+		robots: "noindex, nofollow",
+	};
+};
 
 const ExamplePage = (): React.ReactNode => {
 	return (

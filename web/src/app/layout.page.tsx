@@ -66,7 +66,6 @@ const Layout: FC<{ children: React.ReactNode }> = ({ children }) => {
 			? pathname.split("?")[0]
 			: pathname || "";
 
-
 	useEffect(() => {
 		// TODO error handling
 	}, [hasError]);
@@ -74,11 +73,11 @@ const Layout: FC<{ children: React.ReactNode }> = ({ children }) => {
 	return (
 		<html lang="en">
 			{/* TODO can metadata api be used for a root layout - possibly needs breaking down into server and client components */}
-			 {/* <head> */}
-				{/* <title>NICE root layout test title</title> */}
-				{/* <meta name="test-meta" content="This is a test meta tag" /> */}
-			 {/* <DefaultSeo {...getDefaultSeoConfig(canonicalPathname)} /> */}
-			 {/* </head> */}
+			{/* <head> */}
+			{/* <title>NICE root layout test title</title> */}
+			{/* <meta name="test-meta" content="This is a test meta tag" /> */}
+			{/* <DefaultSeo {...getDefaultSeoConfig(canonicalPathname)} /> */}
+			{/* </head> */}
 
 			<body className={`${lora.variable} ${inter.variable}`}>
 				<GoogleTagManager />
