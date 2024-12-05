@@ -4,7 +4,7 @@ import { render } from "@/test-utils/rendering";
 
 import NotFoundPage from "./not-found.page";
 
-describe("404", () => {
+describe("not-found", () => {
 	describe("SEO", () => {
 		it("should render 'Page not found' in the page title", async () => {
 			render(<NotFoundPage />);

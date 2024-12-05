@@ -11,9 +11,6 @@ const mockDataBaseDirectory = path.resolve(
 		"__mocks__",
 		"__data__"
 	),
-	//TODO remove config.get when we are happy with env migration
-	// publicationsBaseUrl = new URL(config.get("server.feeds.publications.origin")),
-	// inDevBaseUrl = new URL(config.get("server.feeds.inDev.origin"));
 	// eslint-disable-next-line @typescript-eslint/no-non-null-assertion
 	publicationsBaseUrl = new URL(process.env.SERVER_FEEDS_PUBLICATIONS_ORIGIN!),
 	// eslint-disable-next-line @typescript-eslint/no-non-null-assertion

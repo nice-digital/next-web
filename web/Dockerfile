@@ -12,7 +12,6 @@ RUN npm ci --no-audit --quiet
 
 COPY ./.next /next-web/.next
 COPY ./public /next-web/public
-# COPY ./config /next-web/config
 COPY ./next.config.js /next-web/next.config.js
 COPY ./.env* /next-web/
 

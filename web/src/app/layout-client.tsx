@@ -1,8 +1,8 @@
 "use client";
 import { usePathname, useRouter, useSearchParams } from "next/navigation";
-import { useEffect, useState, ReactNode } from "react";
+import { ReactNode, useEffect, useState } from "react";
 
-import { Header, Footer, Main, type Service } from "@nice-digital/global-nav";
+import { Footer, Header, Main, type Service } from "@nice-digital/global-nav";
 import { Container } from "@nice-digital/nds-container";
 
 import { ErrorPageContent } from "@/components/ErrorPageContent/ErrorPageContent";
@@ -49,10 +49,10 @@ export default function LayoutClient({
 	};
 
 	// TODO - pass canonical pathname to a client component for metadata ?
-	const canonicalPathname =
-		pathname && pathname.includes("[slug]")
-			? pathname.split("?")[0]
-			: pathname || "";
+	// const canonicalPathname =
+	// 	pathname && pathname.includes("[slug]")
+	// 		? pathname.split("?")[0]
+	// 		: pathname || "";
 
 	useEffect(() => {
 		// TODO error handling
