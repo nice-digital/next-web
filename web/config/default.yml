@@ -1,3 +1,0 @@
-# Public config values are accessible to both client and server-side code:
-public:
-  buildNumber: PLACEHOLDER
