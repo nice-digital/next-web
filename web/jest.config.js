@@ -1,7 +1,14 @@
+const path = require("path");
+
+const dotenv = require("dotenv");
 const { pathsToModuleNameMapper } = require("ts-jest");
 
 const baseConfig = require("./../jest.config"),
 	{ compilerOptions } = require("./tsconfig.json");
+
+const envPath = path.resolve(__dirname, ".env.test");
+
+dotenv.config({ path: envPath });
 
 // Translation of TypeScript path mappings to jest paths: https://kulshekhar.github.io/ts-jest/docs/getting-started/paths-mapping
 const tsPathsModuleNameMappings = pathsToModuleNameMapper(
