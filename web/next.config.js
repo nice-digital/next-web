@@ -83,6 +83,14 @@ const commonHeaders = [
 			"<https://www.googletagmanager.com>; rel=preconnect",
 		].join(","),
 	},
+	{
+		key: "Build-Number",
+		value: process.env.NEXT_PUBLIC_BUILD_NUMBER,
+	},
+	{
+		key: "Auth-Environment",
+		value: process.env.NEXT_PUBLIC_AUTH_ENVIRONMENT,
+	},
 ];
 
 // Prevent emebdding this site in frames in production, but allow it in dev so we can use the Storyblok preview editor
