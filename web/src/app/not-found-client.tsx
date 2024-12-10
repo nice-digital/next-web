@@ -1,7 +1,8 @@
 "use client";
 
-import { ErrorPageContent } from "@/components/ErrorPageContent/ErrorPageContent";
 import { useEffect, useState } from "react";
+
+import { ErrorPageContent } from "@/components/ErrorPageContent/ErrorPageContent";
 
 export default function NotFoundClient(): JSX.Element {
 	const [showDebug, setShowDebug] = useState(false);
