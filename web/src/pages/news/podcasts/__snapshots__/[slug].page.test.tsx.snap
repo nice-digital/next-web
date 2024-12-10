@@ -454,14 +454,6 @@ exports[`PodcastPage should render error page if fetchStory returns error 1`] = 
         </li>
         <li>
           <a
-            href="http://www.evidence.nhs.uk/"
-          >
-            Try evidence search
-          </a>
-          . This is our unique index of authoritative, evidence-based information from hundreds of trustworthy and accredited sources.
-        </li>
-        <li>
-          <a
             href="/about"
           >
             Visit our about pages

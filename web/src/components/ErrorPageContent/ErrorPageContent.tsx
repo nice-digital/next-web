@@ -74,11 +74,6 @@ export const ErrorPageContent: FC<ErrorPageContentProps> = ({
 							<a href="/guidance/published">list organised by date or title</a>.
 						</li>
 						<li>
-							<a href="http://www.evidence.nhs.uk/">Try evidence search</a>.
-							This is our unique index of authoritative, evidence-based
-							information from hundreds of trustworthy and accredited sources.
-						</li>
-						<li>
 							<a href="/about">Visit our about pages</a> to find information
 							about our services, <a href="/about/who-we-are">who we are</a> and{" "}
 							<a href="/about/what-we-do">what we do</a>
