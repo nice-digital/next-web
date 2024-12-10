@@ -1,0 +1,4 @@
+public:
+  buildNumber: PLACEHOLDER
+  authEnvironment: "live"
+  environment: local
