@@ -1,4 +1,4 @@
-export default async function Home() {
+export default async function Home(): Promise<JSX.Element> {
 	const response = await fetch(
 		`${process.env.NEXT_PUBLIC_BASE_URL || "http://localhost:4000"}/api/env2`,
 		{
