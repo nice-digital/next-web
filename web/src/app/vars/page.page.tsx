@@ -1,6 +1,6 @@
 export default async function Home(): Promise<JSX.Element> {
 	const response = await fetch(
-		`${process.env.NEXT_PUBLIC_BASE_URL || "http://localhost:4000"}/api/env2`,
+		`${process.env.NEXT_PUBLIC_BASE_URL || ""}/api/env2`,
 		{
 			cache: "no-store",
 		}
