@@ -1,3 +1,5 @@
+"use client";
+
 export default async function Home(): Promise<JSX.Element> {
 	const response = await fetch(
 		`${process.env.NEXT_PUBLIC_BASE_URL || ""}/api/env2`,
