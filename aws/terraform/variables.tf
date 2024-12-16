@@ -46,13 +46,13 @@ variable "ecs_task_role" {
 variable "server_count" {
   type = number
 }
-variable "auth_environment" {
+variable "next_public_next_public_auth_environment" {
   type = string
 }
-variable "base_url" {
+variable "next_public_next_public_base_url" {
   type = string
 }
-variable "build_number" {
+variable "next_public_next_public_build_number" {
   type = string
 }
 variable "next_public_environment" {
