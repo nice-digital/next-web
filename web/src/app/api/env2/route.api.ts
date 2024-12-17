@@ -6,6 +6,7 @@ export async function GET(): Promise<NextResponse> {
 		NEXT_PUBLIC_BASE_URL: process.env.NEXT_PUBLIC_BASE_URL,
 		NEXT_PUBLIC_AUTH_ENVIRONMENT: process.env.NEXT_PUBLIC_AUTH_ENVIRONMENT,
 		NEXT_PUBLIC_BUILD_NUMBER: process.env.NEXT_PUBLIC_BUILD_NUMBER,
+		NEXT_PUBLIC_SEARCH_BASE_URL: process.env.NEXT_PUBLIC_SEARCH_BASE_URL,
 	};
 
 	return NextResponse.json(envVars);
