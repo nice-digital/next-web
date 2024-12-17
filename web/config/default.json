@@ -1,0 +1,23 @@
+{
+  "storyblok": {
+    "accessToken": "SECRET",
+    "enableRootCatchAll": "false",
+    "ocelotEndpoint": ""
+  },
+  "search": {
+    "baseURL": "http://localhost:19332/api"
+  },
+  "jotForm": {
+    "baseURL": "https://nice.jotform.com"
+  },
+  "authEnvironment": "local",
+  "publicBaseURL": "",
+  "environment": "local",
+  "buildNumber": "PLACEHOLDER",
+  "cookieBannerScriptURL": "https://cdn.nice.org.uk/cookie-banner/cookie-banner.min.js",
+  "baseURL": "http://localhost:4000",
+  "denyRobots": false,
+  "cacheControl": {
+    "defaultCacheHeader": "public, s-max-age=300, max-age=120, stale-while-revalidate=1800"
+  }
+}
