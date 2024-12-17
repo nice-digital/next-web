@@ -1,6 +1,7 @@
 import type { InitialiseOptions as SearchClientInitOptions } from "@nice-digital/search-client";
 
-import config from "../../config/default.json";
+import defaultconfig from "../../config/default.json";
+import testconfig from "../../config/test.json";
 
 export interface SearchConfig {
 	/** The base URL of the Single Search Endpoint (SSE) e.g. https://beta-search-api.nice.org.uk/api/ */
@@ -113,6 +114,10 @@ export interface ServerConfig {
 	cache: CacheConfig;
 	feeds: FeedsConfig;
 }
+
+const isTeamCity = !!process.env.TEAMCITY_VERSION;
+
+const config = isTeamCity ? testconfig : defaultconfig;
 
 const publicRuntimeConfig = {
 	storyblok: {
