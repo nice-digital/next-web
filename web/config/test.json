@@ -8,7 +8,7 @@
     "baseURL": "http://localhost:19332/api"
   },
   "jotForm": {
-    "baseURL": "https://nice.jotform.com"
+    "baseURL": "https://next-web-tests.jotform.com"
   },
   "authEnvironment": "local",
   "publicBaseURL": "",
