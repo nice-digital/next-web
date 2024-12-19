@@ -134,7 +134,7 @@ export default function SlugCatchAll(
 
 export async function getServerSideProps(context: GetServerSidePropsContext) {
 	// Bail out early unless this route is enabled for this environment
-	if (publicRuntimeConfig.storyblok.enableRootCatchAll.toString() !== "true") {
+	if (publicRuntimeConfig.storyblok.enableRootCatchAll?.toString() !== "true") {
 		return {
 			notFound: true,
 		};

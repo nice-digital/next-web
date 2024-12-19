@@ -49,6 +49,14 @@ describe("next.config.js", () => {
 		    "key": "Link",
 		    "value": "<https://cdn.nice.org.uk/cookie-banner/cookie-banner.min.js>; rel=preload; as=script,<https://apikeys.civiccomputing.com>; rel=preconnect; crossorigin,<https://www.googletagmanager.com>; rel=preconnect",
 		  },
+		  Object {
+		    "key": "Build-Number",
+		    "value": "PLACEHOLDER",
+		  },
+		  Object {
+		    "key": "Auth-Environment",
+		    "value": "live",
+		  },
 		]
 	`);
 	});
