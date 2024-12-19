@@ -18,8 +18,8 @@ const EnvPage: () => Promise<JSX.Element> = async () => {
 						NEXT_PUBLIC_SEARCH_BASE_URL: {envVars.NEXT_PUBLIC_SEARCH_BASE_URL}
 					</li>
 					<li>PUBLIC_DENY_ROBOTS: {envVars.PUBLIC_DENY_ROBOTS}</li>
-					<li>NEXT_PUBLIC_JOHN: {envVars.NEXT_PUBLIC_JOHN}</li>
-					<li>PUBLIC_JOHN: {envVars.PUBLIC_JOHN}</li>
+					{/* <li>NEXT_PUBLIC_JOHN: {envVars.NEXT_PUBLIC_JOHN}</li>
+					<li>PUBLIC_JOHN: {envVars.PUBLIC_JOHN}</li> */}
 					<li>PUBLIC_JOHN: {defaultJson.PUBLIC_JOHN}</li>
 				</ul>
 			</div>
