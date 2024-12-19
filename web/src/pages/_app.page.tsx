@@ -20,7 +20,6 @@ import { initStoryblok } from "@/utils/initStoryblok";
 
 import { getDefaultSeoConfig } from "./next-seo.config";
 import { publicRuntimeConfig } from "@/config";
-import { getNextPublicEnvVars } from "src/config/config-utils";
 
 import "@nice-digital/nds-table/scss/table.scss";
 import "@nice-digital/nds-panel/scss/panel.scss";
@@ -33,10 +32,6 @@ interface AppState {
 	 * If it's true then we should show the server error component
 	 */
 	hasError: boolean;
-	envVars: {
-		NEXT_PUBLIC_SEARCH_BASE_URL: string;
-		NEXT_PUBLIC_AUTH_ENVIRONMENT: "test" | "live" | "beta" | "local";
-	};
 }
 
 const AppFooter: FC = () => (
@@ -65,13 +60,7 @@ class NextWebApp extends App<{}, {}, AppState> {
 	constructor(props: AppProps) {
 		super(props);
 
-		this.state = {
-			hasError: false,
-			envVars: {
-				NEXT_PUBLIC_SEARCH_BASE_URL: "",
-				NEXT_PUBLIC_AUTH_ENVIRONMENT: "live",
-			},
-		};
+		this.state = { hasError: false };
 
 		this.handleRouteChange = this.handleRouteChange.bind(this);
 		this.globalNavWrapperRef = this.globalNavWrapperRef.bind(this);
@@ -81,20 +70,8 @@ class NextWebApp extends App<{}, {}, AppState> {
 		window.dataLayer.push({ event: "pageview", path });
 	}
 
-	async componentDidMount(): Promise<void> {
+	componentDidMount(): void {
 		this.props.router.events.on("routeChangeComplete", this.handleRouteChange);
-
-		const environmentVars = await getNextPublicEnvVars();
-
-		this.setState({
-			envVars: {
-				NEXT_PUBLIC_SEARCH_BASE_URL:
-					environmentVars.NEXT_PUBLIC_SEARCH_BASE_URL,
-				NEXT_PUBLIC_AUTH_ENVIRONMENT:
-					environmentVars.NEXT_PUBLIC_AUTH_ENVIRONMENT,
-			},
-		});
-		// console.log("component did mount ---------->", environmentVars);
 	}
 
 	componentWillUnmount(): void {
@@ -151,12 +128,11 @@ class NextWebApp extends App<{}, {}, AppState> {
 	render(): JSX.Element {
 		const queryTerm = this.props.router.query.q as string;
 
-		console.log("-------------->>>>>>>>>>>>", this.state.envVars);
-
 		const headerProps: HeaderProps = {
 			search: {
 				url: "/search",
-				autocomplete: `${this.state.envVars.NEXT_PUBLIC_SEARCH_BASE_URL}/typeahead?index=nice`,
+				autocomplete:
+					publicRuntimeConfig.search.baseURL + "/typeahead?index=nice",
 				query: queryTerm,
 				onSearching: (e): void => {
 					// this.props.router.push("/search/?q=" + encodeURIComponent(e.query));
@@ -168,7 +144,7 @@ class NextWebApp extends App<{}, {}, AppState> {
 			},
 			auth: {
 				provider: "niceAccounts",
-				environment: this.state.envVars.NEXT_PUBLIC_AUTH_ENVIRONMENT,
+				environment: publicRuntimeConfig.authEnvironment,
 			},
 		};
 

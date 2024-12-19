@@ -1,8 +1,5 @@
 import type { InitialiseOptions as SearchClientInitOptions } from "@nice-digital/search-client";
 
-import defaultconfig from "../../config/default.json";
-import testconfig from "../../config/test.json";
-
 export interface SearchConfig {
 	/** The base URL of the Single Search Endpoint (SSE) e.g. https://beta-search-api.nice.org.uk/api/ */
 	readonly baseURL: SearchClientInitOptions["baseURL"];
@@ -115,73 +112,41 @@ export interface ServerConfig {
 	feeds: FeedsConfig;
 }
 
-const isTeamCity = !!process.env.TEAMCITY_VERSION;
-
-const config = isTeamCity ? testconfig : defaultconfig;
-
-const publicRuntimeConfig = {
+const publicRuntimeConfig: PublicConfig = {
 	storyblok: {
-		accessToken: config.storyblok.accessToken || "SECRET",
-		enableRootCatchAll: config.storyblok.enableRootCatchAll || false,
-		ocelotEndpoint: config.storyblok.ocelotEndpoint || "",
+		accessToken: process.env.NEXT_PUBLIC_STORYBLOK_ACCESS_TOKEN || "SECRET",
+		enableRootCatchAll:
+			process.env.NEXT_PUBLIC_STORYBLOK_ENABLE_ROOT_CATCH_ALL || "false",
+		ocelotEndpoint: process.env.NEXT_PUBLIC_STORYBLOK_OCELOT_ENDPOINT || "",
 	},
 	search: {
-		baseURL: config.search.baseURL || "http://localhost:19332/api",
+		baseURL:
+			(process.env.NEXT_PUBLIC_SEARCH_BASE_URL as `https://${string}/api`) ||
+			"http://localhost:19332/api",
 	},
 	jotForm: {
-		baseURL: config.jotForm.baseURL || "https://nice.jotform.com",
+		baseURL:
+			process.env.NEXT_PUBLIC_JOTFORM_BASE_URL || "https://nice.jotform.com",
 	},
-	authEnvironment: config.authEnvironment || "live",
-	publicBaseURL: config.publicBaseURL || "",
-	environment: config.environment || "local",
-	buildNumber: config.buildNumber || "PLACEHOLDER",
+	authEnvironment: process.env.NEXT_PUBLIC_AUTH_ENVIRONMENT as
+		| "test"
+		| "live"
+		| "beta"
+		| "local",
+	publicBaseURL: process.env.NEXT_PUBLIC_PUBLIC_BASE_URL || "",
+	environment: process.env.NEXT_PUBLIC_ENVIRONMENT || "local",
+	buildNumber: process.env.NEXT_PUBLIC_BUILD_NUMBER || "PLACEHOLDER",
 	cookieBannerScriptURL:
-		config.cookieBannerScriptURL ||
+		process.env.PUBLIC_COOKIE_BANNER_SCRIPT_URL ||
 		"https://cdn.nice.org.uk/cookie-banner/cookie-banner.min.js",
-	baseURL: config.baseURL || "http://localhost:4000",
-	denyRobots: config.denyRobots || false,
+	baseURL: process.env.NEXT_PUBLIC_BASE_URL || "http://localhost:4000",
+	denyRobots: process.env.PUBLIC_DENY_ROBOTS === "true",
 	cacheControl: {
 		defaultCacheHeader:
-			config.cacheControl.defaultCacheHeader ||
+			process.env.PUBLIC_CACHE_CONTROL_DEFAULT_CACHE_HEADER ||
 			"public, s-max-age=300, max-age=120, stale-while-revalidate=1800",
 	},
 };
-
-// const publicRuntimeConfig: PublicConfig = {
-// 	storyblok: {
-// 		accessToken: process.env.NEXT_PUBLIC_STORYBLOK_ACCESS_TOKEN || "SECRET",
-// 		enableRootCatchAll:
-// 			process.env.NEXT_PUBLIC_STORYBLOK_ENABLE_ROOT_CATCH_ALL || "false",
-// 		ocelotEndpoint: process.env.NEXT_PUBLIC_STORYBLOK_OCELOT_ENDPOINT || "",
-// 	},
-// 	search: {
-// 		baseURL:
-// 			(process.env.NEXT_PUBLIC_SEARCH_BASE_URL as `https://${string}/api`) ||
-// 			"http://localhost:19332/api",
-// 	},
-// 	jotForm: {
-// 		baseURL:
-// 			process.env.NEXT_PUBLIC_JOTFORM_BASE_URL || "https://nice.jotform.com",
-// 	},
-// 	authEnvironment: process.env.NEXT_PUBLIC_AUTH_ENVIRONMENT as
-// 		| "test"
-// 		| "live"
-// 		| "beta"
-// 		| "local",
-// 	publicBaseURL: process.env.NEXT_PUBLIC_PUBLIC_BASE_URL || "",
-// 	environment: process.env.NEXT_PUBLIC_ENVIRONMENT || "local",
-// 	buildNumber: process.env.NEXT_PUBLIC_BUILD_NUMBER || "PLACEHOLDER",
-// 	cookieBannerScriptURL:
-// 		process.env.PUBLIC_COOKIE_BANNER_SCRIPT_URL ||
-// 		"https://cdn.nice.org.uk/cookie-banner/cookie-banner.min.js",
-// 	baseURL: process.env.NEXT_PUBLIC_BASE_URL || "http://localhost:4000",
-// 	denyRobots: process.env.PUBLIC_DENY_ROBOTS === "true",
-// 	cacheControl: {
-// 		defaultCacheHeader:
-// 			process.env.PUBLIC_CACHE_CONTROL_DEFAULT_CACHE_HEADER ||
-// 			"public, s-max-age=300, max-age=120, stale-while-revalidate=1800",
-// 	},
-// };
 
 const serverRuntimeConfig: ServerConfig = {
 	cache: {
