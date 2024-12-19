@@ -46,6 +46,12 @@ variable "ecs_task_role" {
 variable "server_count" {
   type = number
 }
+variable "next_public_john" {
+  type = string
+}
+variable "public_john" {
+  type = string
+}
 variable "next_public_auth_environment" {
   type = string
 }
