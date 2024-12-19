@@ -4,6 +4,8 @@ export const getNextPublicEnvVars = async (): Promise<{
 	NEXT_PUBLIC_BUILD_NUMBER: string;
 	NEXT_PUBLIC_SEARCH_BASE_URL: string;
 	PUBLIC_DENY_ROBOTS: string;
+	NEXT_PUBLIC_JOHN: string;
+	PUBLIC_JOHN: string;
 }> => {
 	if (typeof window === "undefined") {
 		// Server-side: Use environment variables directly
@@ -19,6 +21,8 @@ export const getNextPublicEnvVars = async (): Promise<{
 			NEXT_PUBLIC_SEARCH_BASE_URL:
 				process.env.NEXT_PUBLIC_SEARCH_BASE_URL || "",
 			PUBLIC_DENY_ROBOTS: process.env.PUBLIC_DENY_ROBOTS || "",
+			NEXT_PUBLIC_JOHN: process.env.NEXT_PUBLIC_JOHN || "",
+			PUBLIC_JOHN: process.env.PUBLIC_JOHN || "",
 		};
 	}
 
