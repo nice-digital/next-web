@@ -2,7 +2,6 @@
 
 import React from "react";
 
-
 type EnvPageClientProps = {
 	envVars: {
 		NEXT_PUBLIC_BASE_URL: string;
