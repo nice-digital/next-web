@@ -139,7 +139,9 @@ const publicRuntimeConfig: PublicConfig = {
 	cookieBannerScriptURL:
 		process.env.PUBLIC_COOKIE_BANNER_SCRIPT_URL ||
 		"https://cdn.nice.org.uk/cookie-banner/cookie-banner.min.js",
-	baseURL: process.env.NEXT_PUBLIC_BASE_URL || "http://localhost:4000",
+	baseURL:
+		process.env.NEXT_PUBLIC_BASE_URL ||
+		"http://localhost:4000/fromconfigfallback",
 	denyRobots: process.env.PUBLIC_DENY_ROBOTS === "true",
 	cacheControl: {
 		defaultCacheHeader:
