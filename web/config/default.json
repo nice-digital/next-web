@@ -1,4 +1,5 @@
 {
+  "PUBLIC_DENY_ROBOTS": "true",
   "NEXT_PUBLIC_JOHN":"localfromdefaultjson",
   "PUBLIC_JOHN":"#{PUBLIC_JOHN}"
 }
