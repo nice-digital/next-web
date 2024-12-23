@@ -50,7 +50,6 @@ describe("publications", () => {
 			cacheWrapMock.mockResolvedValue(data);
 
 			const retVal = await getAllProductTypes();
-
 			expect(cacheWrapMock).toHaveBeenCalledTimes(1);
 			expect(retVal).toBe(data);
 		});
@@ -90,7 +89,7 @@ describe("publications", () => {
 			await getAllProducts();
 
 			expect(cacheWrapMock).toHaveBeenCalledWith(
-				"next-web:tests:publications:/feeds/products-lite",
+				"next-web:tests:publications:/newfeeds/products-lite",
 				expect.any(Function),
 				{ ttl: serverRuntimeConfig.cache.defaultTTL }
 			);
@@ -101,7 +100,7 @@ describe("publications", () => {
 			const data: Awaited<ReturnType<typeof getAllProducts>> =
 				await cacheWrapMock.mock.calls[0][1]();
 
-			expect(data).toHaveLength(2963);
+			expect(data).toHaveLength(1024);
 			expect(data[0]).toMatchSnapshot();
 		});
 	});

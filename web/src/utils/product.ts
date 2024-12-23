@@ -134,7 +134,7 @@ export const validateRouteParams = async ({
 		return { notFound: true };
 	}
 
-	const productType = allProductTypes.find(
+	const productType = allProductTypes&& allProductTypes.find(
 		(t) => t.enabled && t.identifierPrefix === product.productType
 	);
 

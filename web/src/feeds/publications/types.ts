@@ -1,7 +1,7 @@
 import type { Except } from "type-fest";
 
 export enum FeedPath {
-	ProductsLite = "/feeds/products-lite",
+	ProductsLite = "/newfeeds/products-lite",
 	ProductTypes = "/newfeeds/producttypes",
 	AreasOfInterest = "/newfeeds/areaofinteresttypes",
 	IndicatorSubTypes = "/newfeeds/indicatorsubtypes",
@@ -153,11 +153,12 @@ export type NewBaseFeedItem = {
 /**
  * The raw object that comes back from the feed
  */
-export type ProductLiteRaw = BaseFeedItem & {
-	links: EmptySelfLinks & {
-		productFeed: Link[];
-	};
-	eTag: ETag;
+export type NewProductLite = ProductLite & {
+	url: string;
+};
+
+
+export type ProductLite = BaseFeedItem & {
 	id: string;
 	title: string;
 	productStatus: Status;
@@ -173,7 +174,7 @@ export type ProductLiteRaw = BaseFeedItem & {
 };
 
 /** A product lite from the feed, but with redundant properties removed */
-export type ProductLite = Except<ProductLiteRaw, "eTag" | "links">;
+// export type ProductLite = Except<ProductLiteRaw, "eTag" | "links">;
 
 export type ProductType = NewBaseFeedItem & {
 	enabled: boolean;
@@ -227,12 +228,14 @@ export type ProductTypes = NewBaseFeedItem & {
 	productTypes: ProductType[];
 };
 
-export type ProductListLite = FeedContent<
-	"productListLite",
-	"productLite",
-	ProductLiteRaw
->;
-
+// export type ProductListLite = FeedContent<
+// 	"productListLite",
+// 	"productLite",
+// 	ProductLiteRaw
+// >;
+export type ProductListLite = {
+	products: NewProductLite[];
+};
 export type IndicatorSubTypes = {
 	indicatorSubTypes: IndicatorSubType[];
 };
