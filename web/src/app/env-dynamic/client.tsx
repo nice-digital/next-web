@@ -2,7 +2,6 @@
 
 import React from "react";
 
-import defaultJson from "../../../config/default.json";
 
 type EnvPageClientProps = {
 	envVars: {
@@ -13,6 +12,7 @@ type EnvPageClientProps = {
 		PUBLIC_DENY_ROBOTS?: string;
 		NEXT_PUBLIC_JOHN?: string;
 		PUBLIC_JOHN?: string;
+		PUBLIC_NEW_JOHN?: string;
 	};
 };
 
@@ -32,7 +32,8 @@ const EnvPageClient: React.FC<EnvPageClientProps> = ({ envVars }) => {
 				<li>PUBLIC_DENY_ROBOTS: {envVars.PUBLIC_DENY_ROBOTS}</li>
 				<li>NEXT_PUBLIC_JOHN: {envVars.NEXT_PUBLIC_JOHN}</li>
 				<li>PUBLIC_JOHN: {envVars.PUBLIC_JOHN}</li>
-				<li>defaultjson PUBLIC_JOHN: {defaultJson.PUBLIC_JOHN}</li>
+				{/* <li>defaultjson PUBLIC_JOHN: {defaultJson.PUBLIC_JOHN}</li> */}
+				<li>PUBLIC_NEW_JOHN?: {envVars.PUBLIC_NEW_JOHN}</li>
 			</ul>
 		</div>
 	);
