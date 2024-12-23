@@ -1,7 +1,6 @@
 import { NextResponse } from "next/server";
 
 export async function GET(): Promise<NextResponse> {
-	console.log("GET /api/env");
 	const envVars = {
 		NEXT_PUBLIC_BASE_URL: process.env.NEXT_PUBLIC_BASE_URL,
 		NEXT_PUBLIC_AUTH_ENVIRONMENT: process.env.NEXT_PUBLIC_AUTH_ENVIRONMENT,

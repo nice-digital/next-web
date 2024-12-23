@@ -1,6 +1,8 @@
 import defaultJson from "../../../config/default.json";
 import { getNextPublicEnvVars } from "../../config/config-utils";
 
+export const dynamic = "force-dynamic";
+
 const EnvPage: () => Promise<JSX.Element> = async () => {
 	try {
 		const envVars = await getNextPublicEnvVars();
