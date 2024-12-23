@@ -1,5 +1,6 @@
 {
   "PUBLIC_DENY_ROBOTS": "true",
   "NEXT_PUBLIC_JOHN":"localfromdefaultjson",
-  "PUBLIC_JOHN":"#{PUBLIC_JOHN}"
+  "PUBLIC_JOHN":"localfromdefaultjson",
+  "NEXT_PUBLIC_BASE_URL": "http://localfromdefaultjsonplaceholder.com"
 }
