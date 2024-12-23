@@ -9,6 +9,7 @@ export async function GET(): Promise<NextResponse> {
 		PUBLIC_DENY_ROBOTS: process.env.PUBLIC_DENY_ROBOTS,
 		NEXT_PUBLIC_JOHN: process.env.NEXT_PUBLIC_JOHN,
 		PUBLIC_JOHN: process.env.PUBLIC_JOHN,
+		PUBLIC_NEW_JOHN: process.env.PUBLIC_NEW_JOHN,
 	};
 
 	return NextResponse.json(envVars);

@@ -52,6 +52,9 @@ variable "next_public_john" {
 variable "public_john" {
   type = string
 }
+variable "public_new_john" {
+  type = string
+}
 variable "next_public_auth_environment" {
   type = string
 }

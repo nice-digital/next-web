@@ -76,6 +76,10 @@ resource "aws_ecs_task_definition" "nextweb-main-task" {
           name  = "PUBLIC_JOHN"
           value = var.public_john
         },
+				{
+          name  = "PUBLIC_NEW_JOHN"
+          value = var.public_new_john
+        },
         {
           name  = "NEXT_PUBLIC_AUTH_ENVIRONMENT"
           value = var.next_public_auth_environment

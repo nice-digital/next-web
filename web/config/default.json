@@ -4,5 +4,6 @@
   "PUBLIC_JOHN":"localfromdefaultjson",
   "NEXT_PUBLIC_BASE_URL":"http://localfromdefaultjsonplaceholder.com",
   "NEXT_PUBLIC_BUILD_NUMBER":"localfromdefaultjson",
-  "NEXT_PUBLIC_AUTH_ENVIRONMENT":"localfromdefaultjson"
+  "NEXT_PUBLIC_AUTH_ENVIRONMENT":"localfromdefaultjson",
+  "PUBLIC_NEW_JOHN":"localfromdefJSON"
 }
