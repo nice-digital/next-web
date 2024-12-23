@@ -112,3 +112,27 @@ variable "server_feeds_publications_api_key" {
 variable "server_feeds_publications_origin" {
   type = string
 }
+variable "santa_both" {
+  type = string
+}
+variable "santa_tc" {
+  type = string
+}
+variable "santa_env" {
+  type = string
+}
+variable "santa_none" {
+  type = string
+}
+variable "next_public_santa_both" {
+  type = string
+}
+variable "next_public_santa_tc" {
+  type = string
+}
+variable "next_public_santa_env" {
+  type = string
+}
+variable "next_public_santa_none" {
+  type = string
+}

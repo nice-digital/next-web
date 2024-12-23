@@ -7,6 +7,14 @@ export const getNextPublicEnvVars = async (): Promise<{
 	NEXT_PUBLIC_JOHN: string;
 	PUBLIC_JOHN: string;
 	PUBLIC_NEW_JOHN: string;
+	SANTA_BOTH: string;
+	SANTA_TC: string;
+	SANTA_ENV: string;
+	SANTA_NONE: string;
+	NEXT_PUBLIC_SANTA_BOTH: string;
+	NEXT_PUBLIC_SANTA_TC: string;
+	NEXT_PUBLIC_SANTA_ENV: string;
+	NEXT_PUBLIC_SANTA_NONE: string;
 }> => {
 	if (typeof window === "undefined") {
 		// Server-side: Use environment variables directly
@@ -25,6 +33,14 @@ export const getNextPublicEnvVars = async (): Promise<{
 			NEXT_PUBLIC_JOHN: process.env.NEXT_PUBLIC_JOHN || "",
 			PUBLIC_JOHN: process.env.PUBLIC_JOHN || "",
 			PUBLIC_NEW_JOHN: process.env.PUBLIC_NEW_JOHN || "",
+			SANTA_BOTH: process.env.SANTA_BOTH || "",
+			SANTA_TC: process.env.SANTA_TC || "",
+			SANTA_ENV: process.env.SANTA_ENV || "",
+			SANTA_NONE: process.env.SANTA_NONE || "",
+			NEXT_PUBLIC_SANTA_BOTH: process.env.NEXT_PUBLIC_SANTA_BOTH || "",
+			NEXT_PUBLIC_SANTA_TC: process.env.NEXT_PUBLIC_SANTA_TC || "",
+			NEXT_PUBLIC_SANTA_ENV: process.env.NEXT_PUBLIC_SANTA_ENV || "",
+			NEXT_PUBLIC_SANTA_NONE: process.env.NEXT_PUBLIC_SANTA_NONE || "",
 		};
 	}
 

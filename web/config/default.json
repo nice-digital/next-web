@@ -6,5 +6,13 @@
   "NEXT_PUBLIC_BUILD_NUMBER":"localfromdefaultjson",
   "NEXT_PUBLIC_AUTH_ENVIRONMENT":"localfromdefaultjson",
   "PUBLIC_NEW_JOHN":"localfromdefJSON",
-  "NEXT_PUBLIC_SEARCH_BASE_URL":"https://alpha-search-api.nice.org.uk/api/fromdefaultjson"
+  "NEXT_PUBLIC_SEARCH_BASE_URL":"https://alpha-search-api.nice.org.uk/api/fromdefaultjson",
+  "SANTA_BOTH": "defaultjson",
+  "SANTA_TC": "defaultjson",
+  "SANTA_ENV": "defaultjson",
+  "SANTA_NONE": "defaultjson",
+  "NEXT_PUBLIC_SANTA_BOTH": "defaultjson",
+  "NEXT_PUBLIC_SANTA_TC": "defaultjson",
+  "NEXT_PUBLIC_SANTA_ENV": "defaultjson",
+  "NEXT_PUBLIC_SANTA_NONE": "defaultjson"
 }

@@ -10,6 +10,14 @@ export async function GET(): Promise<NextResponse> {
 		NEXT_PUBLIC_JOHN: process.env.NEXT_PUBLIC_JOHN,
 		PUBLIC_JOHN: process.env.PUBLIC_JOHN,
 		PUBLIC_NEW_JOHN: process.env.PUBLIC_NEW_JOHN,
+		SANTA_BOTH: process.env.SANTA_BOTH,
+		SANTA_TC: process.env.SANTA_TC,
+		SANTA_ENV: process.env.SANTA_ENV,
+		SANTA_NONE: process.env.SANTA_NONE,
+		NEXT_PUBLIC_SANTA_BOTH: process.env.NEXT_PUBLIC_SANTA_BOTH,
+		NEXT_PUBLIC_SANTA_TC: process.env.NEXT_PUBLIC_SANTA_TC,
+		NEXT_PUBLIC_SANTA_ENV: process.env.NEXT_PUBLIC_SANTA_ENV,
+		NEXT_PUBLIC_SANTA_NONE: process.env.NEXT_PUBLIC_SANTA_NONE,
 	};
 
 	return NextResponse.json(envVars);

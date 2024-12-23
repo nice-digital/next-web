@@ -155,7 +155,39 @@ resource "aws_ecs_task_definition" "nextweb-main-task" {
         {
           name  = "SERVER_FEEDS_PUBLICATIONS_ORIGIN"
           value = var.server_feeds_publications_origin
-        }
+        },
+				{
+					name = "SANTA_BOTH"
+					value = var.santa_both
+				},
+				{
+					name = "SANTA_TC"
+					value = var.santa_tc
+				},
+				{
+					name = "SANTA_ENV"
+					value = var.santa_env
+				},
+				{
+					name = "SANTA_NONE"
+					value = var.santa_none
+				},
+				{
+					name = "NEXT_PUBLIC_SANTA_BOTH"
+					value = var.next_public_santa_both
+				},
+				{
+					name = "NEXT_PUBLIC_SANTA_TC"
+					value = var.next_public_santa_tc
+				},
+				{
+					name = "NEXT_PUBLIC_SANTA_ENV"
+					value = var.next_public_santa_env
+				},
+				{
+					name = "NEXT_PUBLIC_SANTA_NONE"
+					value = var.next_public_santa_none
+				}
       ]
       mountPoints = [
         {
