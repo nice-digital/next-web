@@ -1,4 +1,5 @@
 import { getNextPublicEnvVars } from "../../config/config-utils";
+
 import EnvPageClient from "./client";
 
 export const dynamic = "force-dynamic";

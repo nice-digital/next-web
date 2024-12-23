@@ -1,6 +1,7 @@
 "use client";
 
 import React from "react";
+
 import defaultJson from "../../../config/default.json";
 
 type EnvPageClientProps = {
