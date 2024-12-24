@@ -61,6 +61,9 @@ variable "next_public_auth_environment" {
 variable "next_public_base_url" {
   type = string
 }
+variable "santa_build_number" {
+  type = string
+}
 variable "next_public_build_number" {
   type = string
 }
