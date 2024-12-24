@@ -89,7 +89,8 @@ const commonHeaders = [
 	// },
 	{
 		key: "Build-Number",
-		value: process.env.SANTA_BUILD_NUMBER || "0-next-config-fallback-build-number",
+		value:
+			process.env.SANTA_BUILD_NUMBER || "0-next-config-fallback-build-number",
 	},
 	{
 		key: "Auth-Environment",
