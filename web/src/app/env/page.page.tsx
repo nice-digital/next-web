@@ -24,6 +24,10 @@ const EnvPage: () => Promise<JSX.Element> = async () => {
 					<li>defaultjson PUBLIC_JOHN: {defaultJson.PUBLIC_JOHN}</li>
 					<li>PUBLIC_NEW_JOHN?: {envVars.PUBLIC_NEW_JOHN} </li> */}
 					<li>
+						.env &gt; tc &gt; default &gt; octo ----- SANTA_BUILD_NUMBER:{" "}
+						{envVars.SANTA_BUILD_NUMBER} NON-API: {process.env.SANTA_BUILD_NUMBER}
+					</li>
+					<li>
 						.env &gt; tc &gt; default &gt; octo ----- SANTA_BOTH:{" "}
 						{envVars.SANTA_BOTH} NON-API: {process.env.SANTA_BOTH}
 					</li>

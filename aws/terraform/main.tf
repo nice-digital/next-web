@@ -88,6 +88,10 @@ resource "aws_ecs_task_definition" "nextweb-main-task" {
           name  = "NEXT_PUBLIC_BASE_URL"
           value = var.next_public_base_url
         },
+				{
+          name  = "SANTA_BUILD_NUMBER"
+          value = var.santa_build_number
+        },
         {
           name  = "NEXT_PUBLIC_BUILD_NUMBER"
           value = var.next_public_build_number

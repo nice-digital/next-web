@@ -6,6 +6,7 @@ type EnvPageClientProps = {
 	envVars: {
 		NEXT_PUBLIC_BASE_URL: string;
 		NEXT_PUBLIC_AUTH_ENVIRONMENT: "test" | "live" | "beta" | "local";
+		SANTA_BUILD_NUMBER: string;
 		NEXT_PUBLIC_BUILD_NUMBER: string;
 		NEXT_PUBLIC_SEARCH_BASE_URL: string;
 		PUBLIC_DENY_ROBOTS?: string;
@@ -24,6 +25,7 @@ const EnvPageClient: React.FC<EnvPageClientProps> = ({ envVars }) => {
 				<li>
 					NEXT_PUBLIC_AUTH_ENVIRONMENT: {envVars.NEXT_PUBLIC_AUTH_ENVIRONMENT}
 				</li>
+				<li>SANTA_BUILD_NUMBER: {envVars.SANTA_BUILD_NUMBER}</li>
 				<li>NEXT_PUBLIC_BUILD_NUMBER: {envVars.NEXT_PUBLIC_BUILD_NUMBER}</li>
 				<li>
 					NEXT_PUBLIC_SEARCH_BASE_URL: {envVars.NEXT_PUBLIC_SEARCH_BASE_URL}

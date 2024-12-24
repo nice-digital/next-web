@@ -1,6 +1,7 @@
 export const getNextPublicEnvVars = async (): Promise<{
 	NEXT_PUBLIC_BASE_URL: string;
 	NEXT_PUBLIC_AUTH_ENVIRONMENT: "test" | "live" | "beta" | "local";
+	SANTA_BUILD_NUMBER: string;
 	NEXT_PUBLIC_BUILD_NUMBER: string;
 	NEXT_PUBLIC_SEARCH_BASE_URL: string;
 	PUBLIC_DENY_ROBOTS: string;
@@ -26,6 +27,7 @@ export const getNextPublicEnvVars = async (): Promise<{
 					| "live"
 					| "beta"
 					| "local") || "local",
+			SANTA_BUILD_NUMBER: process.env.SANTA_BUILD_NUMBER || "config-utils-fallback",
 			NEXT_PUBLIC_BUILD_NUMBER: process.env.NEXT_PUBLIC_BUILD_NUMBER || "0",
 			NEXT_PUBLIC_SEARCH_BASE_URL:
 				process.env.NEXT_PUBLIC_SEARCH_BASE_URL || "",
