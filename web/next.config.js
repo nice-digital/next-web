@@ -83,9 +83,13 @@ const commonHeaders = [
 			"<https://www.googletagmanager.com>; rel=preconnect",
 		].join(","),
 	},
+	// {
+	// 	key: "Build-Number",
+	// 	value: process.env.NEXT_PUBLIC_BUILD_NUMBER,
+	// },
 	{
 		key: "Build-Number",
-		value: process.env.NEXT_PUBLIC_BUILD_NUMBER,
+		value: process.env.SANTA_BUILD_NUMBER || "0-next-config-fallback-build-number",
 	},
 	{
 		key: "Auth-Environment",
