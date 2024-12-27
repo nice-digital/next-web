@@ -2,7 +2,7 @@ import { Then } from "@wdio/cucumber-framework";
 
 import { checkContainsText } from "@nice-digital/wdio-cucumber-steps/lib/support/check/checkContainsText.js";
 
-import { getSelector, SelectorName } from "../selectors/index.js";
+import { getSelector } from "../selectors/index.js";
 import { clickNextPagination } from "../support/action/clickNextPagination.js";
 import { clickPreviousPagination } from "../support/action/clickPreviousPagination.js";
 import { clickSignUpButton } from "../support/action/clickSignInButton.js";
@@ -24,6 +24,7 @@ import {
 import {
 	validateIndicatorPageResultCount,
 	validateFirstLinkInPagination,
+	validateIndicatorPageNoResultCount,
 } from "../support/check/validateIndicatorPageResultCount.js";
 import {
 	validateNewsArticleTag,
@@ -61,6 +62,11 @@ Then(/^I expect to see the indicator history$/, indicatorHistory);
 Then(
 	/^I expect the result list count contains "([^"]*)"$/,
 	validateIndicatorPageResultCount
+);
+
+Then(
+	/^I expect the result list count shows "([^"]*)"$/,
+	validateIndicatorPageNoResultCount
 );
 
 Then(

@@ -28,7 +28,8 @@ export const pagePaths = {
 	"news, blogs and podcasts": "/news",
 	blogs: "/news/blogs/nextweb-automation-blog-donotuse",
 	"news articles": "/news/articles/nextweb-automation-news-1-donotuse",
-	"nice newsletters and alerts": "/nice-newsletters-and-alerts",
+	podcasts: "/news/podcasts/nextweb-automation-podcasts-1-donotuse",
+	"leave feedback": "/forms/leave-feedback",
 	"subscribe to NICE news for health and social care":
 		"/forms/subscribe-to-nice-news-for-health-and-social-care",
 	"recommendation for research list":

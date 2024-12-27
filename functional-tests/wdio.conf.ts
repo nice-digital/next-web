@@ -13,7 +13,6 @@ export const config: WebdriverIO.Config = {
 	path: "/wd/hub",
 
 	specs: ["./features/**/*.feature"],
-	exclude: ["./features/**/indicator.feature"],
 
 	capabilities: [
 		{

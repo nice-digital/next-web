@@ -19,10 +19,10 @@ export async function indicatorFilterDate(
 	await pause("2000");
 	await clickElement("click", "button", ".btn--secondary:nth-child(3)");
 
-	await pause("2000");
+	// await pause("2000");
 
-	const elem = await $(".horizontal-nav__list:nth-child(1)");
-	await elem.scrollIntoView({ block: "center", inline: "center" });
+	// const elem = await $(".horizontal-nav__list:nth-child(1)");
+	// await elem.scrollIntoView({ block: "center", inline: "center" });
 }
 
 export default indicatorFilter;
