@@ -1,4 +1,4 @@
-export const getNextPublicEnvVars = async (): Promise<{
+export type EnvVarsType = {
 	PUBLIC_BASE_URL: string;
 	PUBLIC_AUTH_ENVIRONMENT: "test" | "live" | "beta" | "local";
 	SANTA_BUILD_NUMBER: string;
@@ -16,7 +16,9 @@ export const getNextPublicEnvVars = async (): Promise<{
 	NEXT_PUBLIC_SANTA_TC: string;
 	NEXT_PUBLIC_SANTA_ENV: string;
 	NEXT_PUBLIC_SANTA_NONE: string;
-}> => {
+}
+
+export const getNextPublicEnvVars = async (): Promise<EnvVarsType> => {
 	if (typeof window === "undefined") {
 		// Server-side: Use environment variables directly
 		return {

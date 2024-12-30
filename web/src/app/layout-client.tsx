@@ -1,4 +1,5 @@
 "use client";
+
 import { usePathname, useRouter, useSearchParams } from "next/navigation";
 import { ReactNode, useEffect, useState } from "react";
 
@@ -7,13 +8,17 @@ import { Container } from "@nice-digital/nds-container";
 
 import { ErrorPageContent } from "@/components/ErrorPageContent/ErrorPageContent";
 import { GoogleTagManager } from "@/components/GoogleTagManager/GoogleTagManager";
-import { publicRuntimeConfig } from "@/config";
+import { EnvVarsType } from "src/config/config-utils";
+
+type LayoutClientProps = {
+	children: ReactNode;
+	envVars: EnvVarsType; // Adjust based on EnvVarsType
+};
 
 export default function LayoutClient({
 	children,
-}: {
-	children: ReactNode;
-}): JSX.Element {
+	envVars,
+}: LayoutClientProps): JSX.Element {
 	const pathname = usePathname();
 	const router = useRouter();
 	const searchParams = useSearchParams();
@@ -36,7 +41,7 @@ export default function LayoutClient({
 	const headerProps = {
 		search: {
 			url: "/search",
-			autocomplete: `${publicRuntimeConfig.search.baseURL}/typeahead?index=nice`,
+			autocomplete: `${envVars.PUBLIC_SEARCH_BASE_URL}/typeahead?index=nice`, // Use envVars
 			query: queryTerm,
 			onSearching: (e: { query: string }) => {
 				router.push(`/search?q=${encodeURIComponent(e.query)}`);
@@ -44,7 +49,7 @@ export default function LayoutClient({
 		},
 		auth: {
 			provider: "niceAccounts" as const,
-			environment: publicRuntimeConfig.authEnvironment,
+			environment: envVars.PUBLIC_AUTH_ENVIRONMENT, // Use envVars
 		},
 	};
 
