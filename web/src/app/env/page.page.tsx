@@ -10,19 +10,13 @@ const EnvPage: () => Promise<JSX.Element> = async () => {
 			<div>
 				<h1>Environment Variables</h1>
 				<ul>
-					{/* <li>NEXT_PUBLIC_BASE_URL: {envVars.NEXT_PUBLIC_BASE_URL}</li>
-					<li>
-						NEXT_PUBLIC_AUTH_ENVIRONMENT: {envVars.NEXT_PUBLIC_AUTH_ENVIRONMENT}
-					</li>
-					<li>NEXT_PUBLIC_BUILD_NUMBER: {envVars.NEXT_PUBLIC_BUILD_NUMBER}</li>
-					<li>
-						NEXT_PUBLIC_SEARCH_BASE_URL: {envVars.NEXT_PUBLIC_SEARCH_BASE_URL}
-					</li>
+					<li>PUBLIC_BASE_URL: {envVars.PUBLIC_BASE_URL}</li>
+					<li>PUBLIC_AUTH_ENVIRONMENT: {envVars.PUBLIC_AUTH_ENVIRONMENT}</li>
+					<li>PUBLIC_BUILD_NUMBER: {envVars.PUBLIC_BUILD_NUMBER}</li>
+					<li>PUBLIC_SEARCH_BASE_URL: {envVars.PUBLIC_SEARCH_BASE_URL}</li>
 					<li>PUBLIC_DENY_ROBOTS: {envVars.PUBLIC_DENY_ROBOTS}</li>
-					<li>NEXT_PUBLIC_JOHN: {envVars.NEXT_PUBLIC_JOHN}</li>
-					<li>PUBLIC_JOHN: {envVars.PUBLIC_JOHN}</li>
-					<li>defaultjson PUBLIC_JOHN: {defaultJson.PUBLIC_JOHN}</li>
-					<li>PUBLIC_NEW_JOHN?: {envVars.PUBLIC_NEW_JOHN} </li> */}
+					<li>-----------------------------------------</li>
+					<li>-----------------------------------------</li>
 					<li>
 						.env &gt; tc &gt; default &gt; octo ----- SANTA_BUILD_NUMBER:{" "}
 						{envVars.SANTA_BUILD_NUMBER} NON-API:{" "}
@@ -44,6 +38,7 @@ const EnvPage: () => Promise<JSX.Element> = async () => {
 						default &gt; octo ----- SANTA_NONE: {envVars.SANTA_NONE} NON-API:{" "}
 						{process.env.SANTA_NONE}
 					</li>
+					<li>-----------------------------------------</li>
 					<li>-----------------------------------------</li>
 					<li>
 						.env &gt; tc &gt; default &gt; octo ----- NEXT_PUBLIC_SANTA_BOTH:{" "}

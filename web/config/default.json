@@ -20,7 +20,7 @@
   ],
   "PUBLIC_PUBLIC_BASE_URL": "",
   "comment8": "The base URL of the Single Search Endpoint (SSE) e.g. https://beta-search-api.nice.org.uk/api/",
-  "PUBLIC_SEARCH_BASE_URL": "http://localhost:19332/api",
+  "PUBLIC_SEARCH_BASE_URL": "http://localhost:19332/api/fromdefaultjson",
   "_comment9": [
     "The default cache-control header used for 'dynamic' responses - apis/pages with getServerSideProps",
     "# See https://nextjs.org/docs/going-to-production#caching for more details on cache headers with NextJS",

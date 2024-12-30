@@ -122,7 +122,7 @@ const publicRuntimeConfig: PublicConfig = {
 	search: {
 		baseURL:
 			(process.env.PUBLIC_SEARCH_BASE_URL as `https://${string}/api`) ||
-			"http://localhost:19332/api",
+			"http://localhost:19332/api/fromconfigfallback",
 	},
 	jotForm: {
 		baseURL: process.env.PUBLIC_JOTFORM_BASE_URL || "https://nice.jotform.com",
