@@ -16,7 +16,7 @@ export type EnvVarsType = {
 	NEXT_PUBLIC_SANTA_TC: string;
 	NEXT_PUBLIC_SANTA_ENV: string;
 	NEXT_PUBLIC_SANTA_NONE: string;
-}
+};
 
 export const getNextPublicEnvVars = async (): Promise<EnvVarsType> => {
 	if (typeof window === "undefined") {
