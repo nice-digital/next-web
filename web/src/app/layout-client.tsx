@@ -8,6 +8,7 @@ import { Container } from "@nice-digital/nds-container";
 
 import { ErrorPageContent } from "@/components/ErrorPageContent/ErrorPageContent";
 import { GoogleTagManager } from "@/components/GoogleTagManager/GoogleTagManager";
+
 import { EnvVarsType } from "src/config/config-utils";
 
 type LayoutClientProps = {
