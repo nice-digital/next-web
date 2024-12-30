@@ -1,8 +1,10 @@
 import { Inter, Lora } from "next/font/google";
 import React, { FC } from "react";
-import { EnvVarsType, getNextPublicEnvVars } from "src/config/config-utils";
 
 import "@nice-digital/design-system/scss/base.scss";
+
+import { EnvVarsType, getNextPublicEnvVars } from "src/config/config-utils";
+
 import "./global.scss";
 import LayoutClient from "./layout-client";
 
