@@ -19,8 +19,10 @@
 			- [RabbitMQ locally](#rabbitmq-locally)
 			- [Logging performance](#logging-performance)
 	- [Config](#config)
+		- [Unit tests config](#unit-tests-config)
 		- [Secrets](#secrets)
 	- [:rocket: Set up](#rocket-set-up)
+	- [NextJS routing](#nextjs-routing)
 	- [Production hosting](#production-hosting)
 		- [NextJS server](#nextjs-server)
 		- [AWS EC2](#aws-ec2)
@@ -254,11 +256,11 @@ Follow these steps to set up the Publications service locally and enable communi
    - In the web directory of `Next-Web`, create a `.env.development.local` file and add the following configuration:
 
 ```env
-NEXT_PUBLIC_SEARCH_BASE_URL=https://search-api.nice.org.uk/api
-NEXT_PUBLIC_JOTFORM_BASE_URL=https://nice.jotform.com
-NEXT_PUBLIC_STORYBLOK_ACCESS_TOKEN=SECRET
-NEXT_PUBLIC_STORYBLOK_ENABLE_ROOT_CATCH_ALL=true
-NEXT_PUBLIC_STORYBLOK_OCELOT_ENDPOINT=
+PUBLIC_SEARCH_BASE_URL=https://search-api.nice.org.uk/api
+PUBLIC_JOTFORM_BASE_URL=https://nice.jotform.com
+PUBLIC_STORYBLOK_ACCESS_TOKEN=SECRET
+PUBLIC_STORYBLOK_ENABLE_ROOT_CATCH_ALL=true
+PUBLIC_STORYBLOK_OCELOT_ENDPOINT=
 PUBLIC_DENY_ROBOTS=false
 
 # SERVER_FEEDS_PUBLICATIONS_ORIGIN=https://alpha-publications.nice.org.uk

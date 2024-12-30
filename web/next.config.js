@@ -85,7 +85,7 @@ const commonHeaders = [
 	},
 	// {
 	// 	key: "Build-Number",
-	// 	value: process.env.NEXT_PUBLIC_BUILD_NUMBER,
+	// 	value: process.env.PUBLIC_BUILD_NUMBER,
 	// },
 	{
 		key: "Build-Number",
@@ -94,7 +94,7 @@ const commonHeaders = [
 	},
 	{
 		key: "Auth-Environment",
-		value: process.env.NEXT_PUBLIC_AUTH_ENVIRONMENT,
+		value: process.env.PUBLIC_AUTH_ENVIRONMENT,
 	},
 ];
 

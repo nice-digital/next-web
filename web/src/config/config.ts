@@ -114,34 +114,32 @@ export interface ServerConfig {
 
 const publicRuntimeConfig: PublicConfig = {
 	storyblok: {
-		accessToken: process.env.NEXT_PUBLIC_STORYBLOK_ACCESS_TOKEN || "SECRET",
+		accessToken: process.env.PUBLIC_STORYBLOK_ACCESS_TOKEN || "SECRET",
 		enableRootCatchAll:
-			process.env.NEXT_PUBLIC_STORYBLOK_ENABLE_ROOT_CATCH_ALL || "false",
-		ocelotEndpoint: process.env.NEXT_PUBLIC_STORYBLOK_OCELOT_ENDPOINT || "",
+			process.env.PUBLIC_STORYBLOK_ENABLE_ROOT_CATCH_ALL || "false",
+		ocelotEndpoint: process.env.PUBLIC_STORYBLOK_OCELOT_ENDPOINT || "",
 	},
 	search: {
 		baseURL:
-			(process.env.NEXT_PUBLIC_SEARCH_BASE_URL as `https://${string}/api`) ||
+			(process.env.PUBLIC_SEARCH_BASE_URL as `https://${string}/api`) ||
 			"http://localhost:19332/api",
 	},
 	jotForm: {
-		baseURL:
-			process.env.NEXT_PUBLIC_JOTFORM_BASE_URL || "https://nice.jotform.com",
+		baseURL: process.env.PUBLIC_JOTFORM_BASE_URL || "https://nice.jotform.com",
 	},
-	authEnvironment: process.env.NEXT_PUBLIC_AUTH_ENVIRONMENT as
+	authEnvironment: process.env.PUBLIC_AUTH_ENVIRONMENT as
 		| "test"
 		| "live"
 		| "beta"
 		| "local",
-	publicBaseURL: process.env.NEXT_PUBLIC_PUBLIC_BASE_URL || "",
-	environment: process.env.NEXT_PUBLIC_ENVIRONMENT || "local",
-	buildNumber: process.env.NEXT_PUBLIC_BUILD_NUMBER || "PLACEHOLDER",
+	publicBaseURL: process.env.PUBLIC_PUBLIC_BASE_URL || "",
+	environment: process.env.PUBLIC_ENVIRONMENT || "local",
+	buildNumber: process.env.PUBLIC_BUILD_NUMBER || "PLACEHOLDER",
 	cookieBannerScriptURL:
 		process.env.PUBLIC_COOKIE_BANNER_SCRIPT_URL ||
 		"https://cdn.nice.org.uk/cookie-banner/cookie-banner.min.js",
 	baseURL:
-		process.env.NEXT_PUBLIC_BASE_URL ||
-		"http://localhost:4000/fromconfigfallback",
+		process.env.PUBLIC_BASE_URL || "http://localhost:4000/fromconfigfallback",
 	denyRobots: process.env.PUBLIC_DENY_ROBOTS === "true",
 	cacheControl: {
 		defaultCacheHeader:

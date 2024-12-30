@@ -81,44 +81,44 @@ resource "aws_ecs_task_definition" "nextweb-main-task" {
           value = var.public_new_john
         },
         {
-          name  = "NEXT_PUBLIC_AUTH_ENVIRONMENT"
-          value = var.next_public_auth_environment
+          name  = "PUBLIC_AUTH_ENVIRONMENT"
+          value = var.public_auth_environment
         },
         {
-          name  = "NEXT_PUBLIC_BASE_URL"
-          value = var.next_public_base_url
+          name  = "PUBLIC_BASE_URL"
+          value = var.public_base_url
         },
 				{
           name  = "SANTA_BUILD_NUMBER"
           value = var.santa_build_number
         },
         {
-          name  = "NEXT_PUBLIC_BUILD_NUMBER"
-          value = var.next_public_build_number
+          name  = "PUBLIC_BUILD_NUMBER"
+          value = var.public_build_number
         },
         {
-          name  = "NEXT_PUBLIC_ENVIRONMENT"
-          value = var.next_public_environment
+          name  = "PUBLIC_ENVIRONMENT"
+          value = var.public_environment
         },
         {
-          name  = "NEXT_PUBLIC_PUBLIC_BASE_URL"
-          value = var.next_public_public_base_url
+          name  = "PUBLIC_PUBLIC_BASE_URL"
+          value = var.public_public_base_url
         },
         {
-          name  = "NEXT_PUBLIC_SEARCH_BASE_URL"
-          value = var.next_public_search_base_url
+          name  = "PUBLIC_SEARCH_BASE_URL"
+          value = var.public_search_base_url
         },
         {
-          name  = "NEXT_PUBLIC_STORYBLOK_ACCESS_TOKEN"
-          value = var.next_public_storyblok_access_token
+          name  = "PUBLIC_STORYBLOK_ACCESS_TOKEN"
+          value = var.public_storyblok_access_token
         },
         {
-          name  = "NEXT_PUBLIC_STORYBLOK_ENABLE_ROOT_CATCH_ALL"
-          value = var.next_public_storyblok_enable_root_catch_all
+          name  = "PUBLIC_STORYBLOK_ENABLE_ROOT_CATCH_ALL"
+          value = var.public_storyblok_enable_root_catch_all
         },
         {
-          name  = "NEXT_PUBLIC_STORYBLOK_OCELOT_ENDPOINT"
-          value = var.next_public_storyblok_ocelot_endpoint
+          name  = "PUBLIC_STORYBLOK_OCELOT_ENDPOINT"
+          value = var.public_storyblok_ocelot_endpoint
         },
         {
           name  = "PUBLIC_COOKIE_BANNER_SCRIPT_URL"
