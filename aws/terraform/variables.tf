@@ -55,34 +55,34 @@ variable "public_john" {
 variable "public_new_john" {
   type = string
 }
-variable "next_public_auth_environment" {
+variable "public_auth_environment" {
   type = string
 }
-variable "next_public_base_url" {
+variable "public_base_url" {
   type = string
 }
 variable "santa_build_number" {
   type = string
 }
-variable "next_public_build_number" {
+variable "public_build_number" {
   type = string
 }
-variable "next_public_environment" {
+variable "public_environment" {
   type = string
 }
-variable "next_public_public_base_url" {
+variable "public_public_base_url" {
   type = string
 }
-variable "next_public_search_base_url" {
+variable "public_search_base_url" {
   type = string
 }
-variable "next_public_storyblok_access_token" {
+variable "public_storyblok_access_token" {
   type = string
 }
-variable "next_public_storyblok_enable_root_catch_all" {
+variable "public_storyblok_enable_root_catch_all" {
   type = string
 }
-variable "next_public_storyblok_ocelot_endpoint" {
+variable "public_storyblok_ocelot_endpoint" {
   type = string
 }
 variable "public_cookie_banner_script_url" {
