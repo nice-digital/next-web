@@ -8,6 +8,8 @@ import { EnvVarsType, getNextPublicEnvVars } from "src/config/config-utils";
 import "./global.scss";
 import LayoutClient from "./layout-client";
 
+export const dynamic = "force-dynamic";
+
 const inter = Inter({ subsets: ["latin"], variable: "--sans-font-family" });
 const lora = Lora({ subsets: ["latin"], variable: "--serif-font-family" });
 
@@ -16,12 +18,11 @@ type Props = {
 };
 
 const Layout: FC<Props> = async ({ children }) => {
-	const envVars: EnvVarsType = await getNextPublicEnvVars(); // Fetch env vars
+	const envVars: EnvVarsType = await getNextPublicEnvVars();
 
 	return (
 		<html lang="en">
 			<body className={`${lora.variable} ${inter.variable}`}>
-				{/* Pass envVars to LayoutClient */}
 				<LayoutClient envVars={envVars}>{children}</LayoutClient>
 			</body>
 		</html>
