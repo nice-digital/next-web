@@ -7,13 +7,14 @@ import React, {
 	useState,
 } from "react";
 
-import { publicRuntimeConfig } from "@/config";
+// import { publicRuntimeConfig } from "@/config";
 import type { FormID } from "@/feeds/jotform/jotform";
 import { logger } from "@/logger";
 
 import styles from "./JotFormEmbed.module.scss";
 
-const jotFormBaseURL = publicRuntimeConfig.jotForm.baseURL;
+// const jotFormBaseURL = publicRuntimeConfig.jotForm.baseURL;
+const jotFormBaseURL = process.env.PUBLIC_JOTFORM_BASE_URL;
 
 interface JotFormEmbedProps {
 	jotFormID: FormID;

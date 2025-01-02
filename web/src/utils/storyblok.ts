@@ -11,7 +11,7 @@ import {
 import { Redirect } from "next/types";
 import { type MetaTag } from "next-seo/lib/types";
 
-import { publicRuntimeConfig } from "@/config";
+// import { publicRuntimeConfig } from "@/config";
 import { logger } from "@/logger";
 import { type Breadcrumb } from "@/types/Breadcrumb";
 import { type SBLink } from "@/types/SBLink";
@@ -45,11 +45,13 @@ export const newsTypes = {
 
 // Are we using the Ocelot cache?
 // If not, then we can assume we're not in production and can just request the latest version of the content
-export const usingOcelotCache = !!publicRuntimeConfig.storyblok.ocelotEndpoint;
+// export const usingOcelotCache = !!publicRuntimeConfig.storyblok.ocelotEndpoint;
+export const usingOcelotCache = !!process.env.PUBLIC_STORYBLOK_OCELOT_ENDPOINT;
 
 // Default podcast image
 export const defaultPodcastImage =
-	publicRuntimeConfig.publicBaseURL + "/img/nice-talks.png";
+	// publicRuntimeConfig.publicBaseURL + "/img/nice-talks.png";
+	process.env.PUBLIC_PUBLIC_BASE_URL + "/img/nice-talks.png";
 
 export const GENERIC_ERROR_MESSAGE =
 	"Oops! Something went wrong and we're working to fix it. Please try again later.";
@@ -65,7 +67,8 @@ export const fetchStory = async <T>(
 			slug,
 			version,
 			params,
-			ocelotEndpoint: publicRuntimeConfig.storyblok.ocelotEndpoint,
+			// ocelotEndpoint: publicRuntimeConfig.storyblok.ocelotEndpoint,
+			ocelotEndpoint: process.env.PUBLIC_STORYBLOK_OCELOT_ENDPOINT,
 		},
 		`Fetching story with slug: ${slug} and version: ${version} from fetchStory function`
 	);
@@ -94,7 +97,8 @@ export const fetchStory = async <T>(
 			errorCause: error,
 			sbParams,
 			slug,
-			ocelotEndpoint: publicRuntimeConfig.storyblok.ocelotEndpoint,
+			// ocelotEndpoint: publicRuntimeConfig.storyblok.ocelotEndpoint,
+			ocelotEndpoint: process.env.PUBLIC_STORYBLOK_OCELOT_ENDPOINT,
 		};
 
 		if (isISbError(error) && error.status === 404) {
@@ -123,7 +127,8 @@ export const fetchStory = async <T>(
 			slug,
 			version,
 			params,
-			ocelotEndpoint: publicRuntimeConfig.storyblok.ocelotEndpoint,
+			// ocelotEndpoint: publicRuntimeConfig.storyblok.ocelotEndpoint,
+			ocelotEndpoint: process.env.PUBLIC_STORYBLOK_OCELOT_ENDPOINT,
 		},
 		`fetchStory: Fetched story with slug: ${slug} and version: ${version}`
 	);

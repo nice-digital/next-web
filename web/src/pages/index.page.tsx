@@ -133,9 +133,9 @@ export async function getServerSideProps(context: GetServerSidePropsContext) {
 				latestNews: latestNews.stories,
 			},
 		};
-		logger.warn(
-			`ENVIRONMENT VARS ----------------> ${JSON.stringify(process.env)}`
-		);
+		// logger.warn(
+		// 	`ENVIRONMENT VARS ----------------> ${JSON.stringify(process.env)}`
+		// );
 
 		return result;
 	} catch (error) {

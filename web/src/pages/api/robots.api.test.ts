@@ -18,12 +18,19 @@ describe("Robots txt API Handler Tests", () => {
 		jest.resetModules();
 	});
 
+	afterEach(() => {
+		// Reset environment variables after each test
+		delete process.env.PUBLIC_DENY_ROBOTS;
+	});
+
 	it('should return "Disallow: /" when denyRobots is true', async () => {
-		jest.doMock("@/config", () => ({
-			publicRuntimeConfig: {
-				denyRobots: true,
-			},
-		}));
+		// jest.doMock("@/config", () => ({
+		// 	publicRuntimeConfig: {
+		// 		denyRobots: true,
+		// 	},
+		// }));
+
+		process.env.PUBLIC_DENY_ROBOTS = "true";
 
 		const { default: handler } = await import("./robots.api");
 
@@ -39,11 +46,13 @@ describe("Robots txt API Handler Tests", () => {
 	});
 
 	it('should return "Allow: /" and "Crawl-delay: 1" for bingbot when denyRobots is not "true"', async () => {
-		jest.doMock("@/config", () => ({
-			publicRuntimeConfig: {
-				denyRobots: "false",
-			},
-		}));
+		// jest.doMock("@/config", () => ({
+		// 	publicRuntimeConfig: {
+		// 		denyRobots: "false",
+		// 	},
+		// }));
+
+		process.env.PUBLIC_DENY_ROBOTS = "false";
 
 		const { default: handler } = await import("./robots.api");
 
@@ -59,11 +68,11 @@ describe("Robots txt API Handler Tests", () => {
 	});
 
 	it('should return "Allow: /" and "Crawl-delay: 1" for bingbot when denyRobots is not set', async () => {
-		jest.doMock("@/config", () => ({
-			publicRuntimeConfig: {
-				// DenyRobots not set
-			},
-		}));
+		// jest.doMock("@/config", () => ({
+		// 	publicRuntimeConfig: {
+		// 		// DenyRobots not set
+		// 	},
+		// }));
 
 		const { default: handler } = await import("./robots.api");
 

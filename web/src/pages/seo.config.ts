@@ -1,6 +1,6 @@
 import { Metadata } from "next";
 
-import { publicRuntimeConfig } from "@/config";
+// import { publicRuntimeConfig } from "@/config";
 
 /**
  * Gets the default SEO config for the given page.
@@ -9,7 +9,8 @@ import { publicRuntimeConfig } from "@/config";
  * @returns The Next SEO config object
  */
 export const getDefaultSeoConfig = (pathname: string): Metadata => ({
-	metadataBase: new URL(publicRuntimeConfig.baseURL),
+	// metadataBase: new URL(publicRuntimeConfig.baseURL),
+	metadataBase: new URL(process.env.PUBLIC_BASE_URL!),
 	title: {
 		default: "NICE",
 		template: "%s | NICE",
@@ -22,14 +23,18 @@ export const getDefaultSeoConfig = (pathname: string): Metadata => ({
 	openGraph: {
 		type: "website",
 		locale: "en_GB",
-		url: publicRuntimeConfig.baseURL + pathname,
+		// url: publicRuntimeConfig.baseURL + pathname,
+		url: process.env.PUBLIC_BASE_URL + pathname,
 		siteName:
 			"NICE website: The National Institute for Health and Care Excellence",
 		images: [
 			// Landscape open graph image used on Twitter's 'summary_large_image' card type and Facebook (+ others)
 			{
+				// url:
+				// 	publicRuntimeConfig.publicBaseURL +
+				// 	"/open-graph/open-graph-1200x630.png",
 				url:
-					publicRuntimeConfig.publicBaseURL +
+					process.env.PUBLIC_PUBLIC_BASE_URL +
 					"/open-graph/open-graph-1200x630.png",
 				width: 1200,
 				height: 630,
@@ -37,8 +42,11 @@ export const getDefaultSeoConfig = (pathname: string): Metadata => ({
 			},
 			// Square open graph image: used for Twitter's 'summary' card type
 			{
+				// url:
+				// 	publicRuntimeConfig.publicBaseURL +
+				// 	"/open-graph/open-graph-1200x1200.png",
 				url:
-					publicRuntimeConfig.publicBaseURL +
+					process.env.PUBLIC_PUBLIC_BASE_URL +
 					"/open-graph/open-graph-1200x1200.png",
 				width: 1200,
 				height: 1200,
@@ -52,55 +60,64 @@ export const getDefaultSeoConfig = (pathname: string): Metadata => ({
 		card: "summary",
 	},
 	alternates: {
-		canonical: publicRuntimeConfig.baseURL + pathname,
+		// canonical: publicRuntimeConfig.baseURL + pathname,
+		canonical: process.env.PUBLIC_BASE_URL + pathname,
 	},
 	icons: [
 		{
 			rel: "icon",
-			url: publicRuntimeConfig.publicBaseURL + "/favicon.ico",
+			// url: publicRuntimeConfig.publicBaseURL + "/favicon.ico",
+			url: process.env.PUBLIC_PUBLIC_BASE_URL + "/favicon.ico",
 		},
 		{
 			rel: "icon",
 			type: "image/png",
 			sizes: "16x16",
-			url: publicRuntimeConfig.publicBaseURL + "/icons/icon-16x16.png",
+			// url: publicRuntimeConfig.publicBaseURL + "/icons/icon-16x16.png",
+			url: process.env.PUBLIC_PUBLIC_BASE_URL + "/icons/icon-16x16.png",
 		},
 		{
 			rel: "icon",
 			type: "image/png",
 			sizes: "32x32",
-			url: publicRuntimeConfig.publicBaseURL + "/icons/icon-32x32.png",
+			// url: publicRuntimeConfig.publicBaseURL + "/icons/icon-32x32.png",
+			url: process.env.PUBLIC_PUBLIC_BASE_URL + "/icons/icon-32x32.png",
 		},
 		// Apple icons
 		{
 			// iPhone (X/Plus)
 			rel: "apple-touch-icon",
 			sizes: "120x120",
-			url: publicRuntimeConfig.publicBaseURL + "/icons/icon-120x120.png",
+			// url: publicRuntimeConfig.publicBaseURL + "/icons/icon-120x120.png",
+			url: process.env.PUBLIC_PUBLIC_BASE_URL + "/icons/icon-120x120.png",
 		},
 		{
 			// iPad, iPad mini
 			rel: "apple-touch-icon",
 			sizes: "152x152",
-			url: publicRuntimeConfig.publicBaseURL + "/icons/icon-152x152.png",
+			// url: publicRuntimeConfig.publicBaseURL + "/icons/icon-152x152.png",
+			url: process.env.PUBLIC_PUBLIC_BASE_URL + "/icons/icon-152x152.png",
 		},
 		{
 			// iPad Pro
 			rel: "apple-touch-icon",
 			sizes: "167x167",
-			url: publicRuntimeConfig.publicBaseURL + "/icons/icon-167x167.png",
+			// url: publicRuntimeConfig.publicBaseURL + "/icons/icon-167x167.png",
+			url: process.env.PUBLIC_PUBLIC_BASE_URL + "/icons/icon-167x167.png",
 		},
 		{
 			// iPhone
 			rel: "apple-touch-icon",
 			sizes: "180x180",
-			url: publicRuntimeConfig.publicBaseURL + "/icons/icon-180x180.png",
+			// url: publicRuntimeConfig.publicBaseURL + "/icons/icon-180x180.png",
+			url: process.env.PUBLIC_PUBLIC_BASE_URL + "/icons/icon-180x180.png",
 		},
 		// Safari pinned tab as per https://edibleco.de/3dRyFge
 		{
 			rel: "mask-icon",
 			color: "black",
-			url: publicRuntimeConfig.publicBaseURL + "/icons/safari-pinned-tab.svg",
+			// url: publicRuntimeConfig.publicBaseURL + "/icons/safari-pinned-tab.svg",
+			url: process.env.PUBLIC_PUBLIC_BASE_URL + "/icons/safari-pinned-tab.svg",
 		},
 	],
 	appleWebApp: {

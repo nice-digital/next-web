@@ -6,7 +6,7 @@ import {
 	getGetServerSidePropsFunc,
 	getProductListPage,
 } from "@/components/ProductListPage/ProductListPage";
-import { publicRuntimeConfig } from "@/config";
+// import { publicRuntimeConfig } from "@/config";
 
 const defaultSortOrder = SortOrder.titleAscending,
 	textFilterHeading = "Keyword or reference number",
@@ -29,7 +29,8 @@ const tableBodyRender = (documents: Document[]) => (
 					<tr key={id}>
 						<td>
 							<a
-								href={publicRuntimeConfig.baseURL + pathAndQuery}
+								// href={publicRuntimeConfig.baseURL + pathAndQuery}
+								href={process.env.PUBLIC_BASE_URL + pathAndQuery}
 								dangerouslySetInnerHTML={{ __html: title }}
 							/>
 						</td>

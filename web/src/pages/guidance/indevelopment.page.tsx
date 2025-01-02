@@ -7,7 +7,7 @@ import {
 	getProductListPage,
 } from "@/components/ProductListPage/ProductListPage";
 import { ResponsiveDate } from "@/components/ResponsiveDate/ResponsiveDate";
-import { publicRuntimeConfig } from "@/config";
+// import { publicRuntimeConfig } from "@/config";
 
 const defaultSortOrder = SortOrder.titleAscending,
 	dateFilterLabel = "Expected publication date",
@@ -43,7 +43,8 @@ const tableBodyRender = (documents: Document[]) => (
 									<span dangerouslySetInnerHTML={{ __html: title }} />
 								) : (
 									<a
-										href={publicRuntimeConfig.baseURL + pathAndQuery}
+										// href={publicRuntimeConfig.baseURL + pathAndQuery}
+										href={process.env.PUBLIC_BASE_URL + pathAndQuery}
 										dangerouslySetInnerHTML={{ __html: title }}
 									/>
 								)}

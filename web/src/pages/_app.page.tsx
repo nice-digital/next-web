@@ -1,7 +1,7 @@
 /* eslint-disable import/order */
 import { ErrorInfo, FC } from "react";
 import { DefaultSeo } from "next-seo";
-import App, { AppProps, NextWebVitalsMetric } from "next/app";
+import App, { AppContext, AppProps, NextWebVitalsMetric } from "next/app";
 import { Inter, Lora } from "next/font/google";
 import "@nice-digital/design-system/scss/base.scss";
 import {
@@ -19,7 +19,7 @@ import { logger } from "@/logger";
 import { initStoryblok } from "@/utils/initStoryblok";
 
 import { getDefaultSeoConfig } from "./next-seo.config";
-import { publicRuntimeConfig } from "@/config";
+// import { publicRuntimeConfig } from "@/config";
 
 import "@nice-digital/nds-table/scss/table.scss";
 import "@nice-digital/nds-panel/scss/panel.scss";
@@ -54,10 +54,41 @@ const lora = Lora({
 initStoryblok();
 
 // eslint-disable-next-line @typescript-eslint/ban-types
-class NextWebApp extends App<{}, {}, AppState> {
+interface CustomAppProps extends AppProps {
+	PUBLIC_SEARCH_BASE_URL: `https://${string}/api`;
+	PUBLIC_AUTH_ENVIRONMENT: "test" | "live" | "beta" | "local";
+}
+
+class NextWebApp extends App<CustomAppProps, Record<string, never>, AppState> {
+	// Add getInitialProps
+	static async getInitialProps(
+		appContext: AppContext
+	): Promise<CustomAppProps> {
+		// Fetch initial props from the default App component
+		const appProps = await App.getInitialProps(appContext);
+
+		// Set environment variables
+		const PUBLIC_SEARCH_BASE_URL = process.env
+			.PUBLIC_SEARCH_BASE_URL as `https://${string}/api`;
+		const PUBLIC_AUTH_ENVIRONMENT = process.env.PUBLIC_AUTH_ENVIRONMENT as
+			| "test"
+			| "live"
+			| "beta"
+			| "local";
+
+		return {
+			...appProps,
+			pageProps: {
+				...appProps.pageProps,
+				PUBLIC_SEARCH_BASE_URL,
+				PUBLIC_AUTH_ENVIRONMENT,
+			},
+		} as unknown as CustomAppProps;
+	}
+
 	headerObserver: MutationObserver | null = null;
 
-	constructor(props: AppProps) {
+	constructor(props: CustomAppProps) {
 		super(props);
 
 		this.state = { hasError: false };
@@ -131,8 +162,10 @@ class NextWebApp extends App<{}, {}, AppState> {
 		const headerProps: HeaderProps = {
 			search: {
 				url: "/search",
+				// autocomplete:
+				// 	publicRuntimeConfig.search.baseURL + "/typeahead?index=nice",
 				autocomplete:
-					publicRuntimeConfig.search.baseURL + "/typeahead?index=nice",
+					this.props.pageProps.PUBLIC_SEARCH_BASE_URL + "/typeahead?index=nice",
 				query: queryTerm,
 				onSearching: (e): void => {
 					// this.props.router.push("/search/?q=" + encodeURIComponent(e.query));
@@ -144,7 +177,8 @@ class NextWebApp extends App<{}, {}, AppState> {
 			},
 			auth: {
 				provider: "niceAccounts",
-				environment: publicRuntimeConfig.authEnvironment,
+				// environment: publicRuntimeConfig.authEnvironment,
+				environment: this.props.pageProps.PUBLIC_AUTH_ENVIRONMENT,
 			},
 		};
 

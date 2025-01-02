@@ -1,10 +1,15 @@
 import { caching, Cache } from "cache-manager";
 import store from "cache-manager-fs-hash";
 
-import { serverRuntimeConfig } from "@/config";
+// import { serverRuntimeConfig } from "@/config";
 
-const { keyPrefix, defaultTTL, refreshThreshold, filePath } =
-	serverRuntimeConfig.cache;
+// const { keyPrefix, defaultTTL, refreshThreshold, filePath } =
+// 	serverRuntimeConfig.cache;
+
+const keyPrefix = process.env.SERVER_CACHE_KEY_PREFIX || "",
+	defaultTTL = Number(process.env.SERVER_CACHE_DEFAULT_TTL) || 0,
+	refreshThreshold = Number(process.env.SERVER_CACHE_REFRESH_THRESHOLD) || 0,
+	filePath = process.env.SERVER_CACHE_FILE_PATH || "./.cache/";
 
 /**
  * Returns a cache key generated from the given prefix and postfix.

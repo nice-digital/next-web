@@ -1,4 +1,4 @@
-import { serverRuntimeConfig } from "@/config";
+// import { serverRuntimeConfig } from "@/config";
 
 import { getFeedBodyCached, getFeedBodyUnCached, getResponseStream } from "../";
 
@@ -24,8 +24,12 @@ import {
 export * from "./types";
 
 const cacheKeyPrefix = "publications",
-	{ defaultTTL, longTTL } = serverRuntimeConfig.cache,
-	{ origin, apiKey } = serverRuntimeConfig.feeds.publications;
+	// { defaultTTL, longTTL } = serverRuntimeConfig.cache,
+	// { origin, apiKey } = serverRuntimeConfig.feeds.publications;
+	defaultTTL = Number(process.env.SERVER_CACHE_DEFAULT_TTL) || 0,
+	longTTL = Number(process.env.SERVER_CACHE_LONG_TTL) || 0,
+	origin = process.env.SERVER_FEEDS_PUBLICATIONS_ORIGIN || "",
+	apiKey = process.env.SERVER_FEEDS_PUBLICATIONS_API_KEY || "";
 
 /**
  * Gets a list of products from the 'products lite' endpoint.
