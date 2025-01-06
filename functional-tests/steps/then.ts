@@ -1,5 +1,7 @@
 import { Then } from "@wdio/cucumber-framework";
 
+import { pause } from "@nice-digital/wdio-cucumber-steps/lib/support/action/pause.js";
+import { waitForDisplayed } from "@nice-digital/wdio-cucumber-steps/lib/support/action/waitForDisplayed.js";
 import { checkContainsText } from "@nice-digital/wdio-cucumber-steps/lib/support/check/checkContainsText.js";
 
 import { getSelector } from "../selectors/index.js";
@@ -155,3 +157,11 @@ Then(
 	validateRelatedNewsStory
 );
 Then(/^I expect the url is "([^"]*)"$/, validateUrl);
+Then(
+	/^I expect to see the heading contains the text "([^"]*)"$/,
+	async (text: string) => {
+		await waitForDisplayed("h2:nth-of-type(2)", "");
+		await checkContainsText("element", "h2:nth-of-type(2)", "", text);
+		await pause("2000");
+	}
+);

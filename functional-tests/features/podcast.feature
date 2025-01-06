@@ -9,7 +9,7 @@ Feature: Individual podcast
     Given I open the podcasts page
     Then I expect that element "h1" contains the text "NextWeb-automation-Podcasts-1-DONOTUSE"
     Then I expect the blogs tag contains the text "Podcasts"
-    Then I expect that element "h2:nth-of-type(2)" contains the text "About this episode"
+    Then I expect to see the heading contains the text "About this episode"
     Given I click on the home breadcrumb link
     Then I expect the url is "/"
     Then I expect to see the section heading contains the text "Latest from NICE"

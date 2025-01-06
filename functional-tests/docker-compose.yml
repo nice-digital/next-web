@@ -21,9 +21,6 @@ services:
     depends_on:
       - selenium-hub
       - next-web
-      - mock-search-api
-      - mock-publications
-      - mock-indev
     environment:
       - TEAMCITY_VERSION
     volumes:
