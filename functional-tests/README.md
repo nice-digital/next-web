@@ -94,7 +94,7 @@ This runs the tests against the [NextJS web app](../web/) running on http://loca
    1. Run 'npm: Install Dependencies' from the VS Code command palette (_Ctrl+Shift+P_) and choose the functional-tests folder from the next dropdown (or just install all)
    2. Or run `cd functional-tests && npm ci` on the command line
 6. Run `npm run build` & `npm start` from the _web_ folder to run the NextJS web app on http://localhost:3000
-7. You will need the environment variable file '.env.production' on your local machine
+7. You will need the environment variable file 'local-production.yml' on your local machine
 8. Run 'Run Test Task' from the command palette (_Ctrl+Shift+P_) and choose 'Functional tests - all'
    1. Or run 'Functional tests - current feature' to run just the currently opened feature file.
 
