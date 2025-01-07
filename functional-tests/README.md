@@ -89,11 +89,13 @@ This runs the tests against the [NextJS web app](../web/) running on http://loca
 2. Install Chrome (and Firefox if you're going to test against multiple browsers)
 3. Clone this repository
 4. Open the root of the repository in VS Code
+   1. use Ubuntu wsl terminal 
 5. Install dependencies from npm:
    1. Run 'npm: Install Dependencies' from the VS Code command palette (_Ctrl+Shift+P_) and choose the functional-tests folder from the next dropdown (or just install all)
    2. Or run `cd functional-tests && npm ci` on the command line
-6. Run `npm run build` & `npm start` from the _web_ folder to run the NextJS web app on [locahost](http://localhost:3000):
-7. Run 'Run Test Task' from the command palette (_Ctrl+Shift+P_) and choose 'Functional tests - all'
+6. Run `npm run build` & `npm start` from the _web_ folder to run the NextJS web app on http://localhost:3000
+7. You will need the environment variable file 'local-production.yml' on your local machine
+8. Run 'Run Test Task' from the command palette (_Ctrl+Shift+P_) and choose 'Functional tests - all'
    1. Or run 'Functional tests - current feature' to run just the currently opened feature file.
 
 Depending on your use case, you can run the tests against [different URLs](#different-urls) instead of http://localhost:3000.
@@ -127,10 +129,13 @@ It can be harder to debug tests running inside Docker as you can't watch the tes
    1. `cd web && npm run build`
 3. Install Docker
 4. Open bash and `cd` into the _functional-tests_ folder
-5. Run `docker-compose build`
+5. You will need the environment variable file 'local-xxx.yml' on your local machine
+6. Run `docker-compose build`
    1. This downloads all the required images from Docker
    2. So it takes a while but it will cache everything so will be quicker next time
-6. Run `./docker-run.sh`
+   3. If you get AWS error access to nextweb container, you will need to get access. Check out the step below;
+      1. [Steps to Run NextWeb in Docker with Teamcity built image](#steps-to-run-nextweb-in-docker-with-teamcity-built-image)
+7. Run `./docker-run.sh`
    1. This builds the docker network, runs the tests and copies outputs in the _docker-output_ folder.
 
 > View the [docker-compose.yml](docker-compose.yml) file to understand the structure of the Docker network and the links between containers.
