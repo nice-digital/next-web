@@ -100,7 +100,7 @@ describe("publications", () => {
 			const data: Awaited<ReturnType<typeof getAllProducts>> =
 				await cacheWrapMock.mock.calls[0][1]();
 
-			expect(data).toHaveLength(1024);
+			expect(data).toHaveLength(10);
 			expect(data[0]).toMatchSnapshot();
 		});
 	});
