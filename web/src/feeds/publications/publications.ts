@@ -43,14 +43,8 @@ export const getAllProducts = async (): Promise<ProductLite[]> =>
 					apiKey
 				)
 			).products.map((product) => {
-				// Discard unneeded properties on products to make what we're storing in cache a lot smaller.
-				// This means we're essentially storing a ProductLite in cache rather than a ProductLiteRaw.
-				// In perf tests this saved ~30% off the cache load time from the file system (once you factor in deserialization, file access times etc).
-				// delete (product as Partial<typeof product>).eTag;
-				// delete (product as Partial<typeof product>).links;
 				return product;
 			})
-			
 	);
 /**
  * Gets _all_ product types.
