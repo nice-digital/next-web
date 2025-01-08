@@ -25,7 +25,7 @@ import { SearchCardList } from "@/components/SearchCard/SearchCardList";
 import { SearchListFilters } from "@/components/SearchListFilters/SearchListFilters";
 import { SearchNoResults } from "@/components/SearchNoResults/SearchNoResults";
 import { SearchPagination } from "@/components/SearchPagination/SearchPagination";
-import { publicRuntimeConfig } from "@/config";
+// import { publicRuntimeConfig } from "@/config";
 import { logger } from "@/logger";
 import { dateFormatShort } from "@/utils/datetime";
 
@@ -322,7 +322,8 @@ export const getServerSideProps = async (
 	context: GetServerSidePropsContext
 ): Promise<GetServerSidePropsResult<SearchPageProps>> => {
 	initialise({
-		baseURL: publicRuntimeConfig.search.baseURL,
+		// baseURL: publicRuntimeConfig.search.baseURL,
+		baseURL: process.env.PUBLIC_SEARCH_BASE_URL as `https://${string}/api`,
 		index: "nice",
 		usePrettyUrls: true,
 	});

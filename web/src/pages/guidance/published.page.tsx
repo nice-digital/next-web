@@ -7,7 +7,7 @@ import {
 	getProductListPage,
 } from "@/components/ProductListPage/ProductListPage";
 import { ResponsiveDate } from "@/components/ResponsiveDate/ResponsiveDate";
-import { publicRuntimeConfig } from "@/config";
+// import { publicRuntimeConfig } from "@/config";
 
 const defaultSortOrder = SortOrder.dateDescending,
 	dateFilterLabel = "Last updated date",
@@ -41,7 +41,8 @@ const tableBodyRender = (documents: Document[]) => (
 						<tr key={id}>
 							<td>
 								<a
-									href={publicRuntimeConfig.baseURL + pathAndQuery}
+									// href={publicRuntimeConfig.baseURL + pathAndQuery}
+									href={process.env.PUBLIC_BASE_URL + pathAndQuery}
 									dangerouslySetInnerHTML={{ __html: title }}
 								/>
 							</td>

@@ -97,6 +97,8 @@ describe("StoryblokImage Component", () => {
 
 		const imageSrc = screen.getByRole("img").getAttribute("src");
 
-		expect(imageSrc).toBe("/fallback-image.png");
+		expect(imageSrc).toBe(
+			"https://next-web-tests.nice.org.uk/fallback-image.png"
+		);
 	});
 });

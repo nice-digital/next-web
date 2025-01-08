@@ -1,12 +1,14 @@
 import { apiPlugin, storyblokInit } from "@storyblok/react";
 
-import { publicRuntimeConfig } from "@/config";
+// import { publicRuntimeConfig } from "@/config";
 import { logger } from "@/logger";
 
 // Init connection to Storyblok
 export const initStoryblok = (): void => {
-	const accessToken = publicRuntimeConfig.storyblok.accessToken;
-	const endpoint = publicRuntimeConfig.storyblok.ocelotEndpoint;
+	// const accessToken = publicRuntimeConfig.storyblok.accessToken;
+	// const endpoint = publicRuntimeConfig.storyblok.ocelotEndpoint;
+	const accessToken = process.env.PUBLIC_STORYBLOK_ACCESS_TOKEN;
+	const endpoint = process.env.PUBLIC_STORYBLOK_OCELOT_ENDPOINT;
 	const usingOcelotCache = !!endpoint;
 
 	try {

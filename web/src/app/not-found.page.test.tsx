@@ -2,12 +2,12 @@ import { screen, waitFor } from "@testing-library/react";
 
 import { render } from "@/test-utils/rendering";
 
-import FourOhFourPage from "./404.page";
+import NotFoundPage from "./not-found.page";
 
-describe("404", () => {
+describe("not-found", () => {
 	describe("SEO", () => {
 		it("should render 'Page not found' in the page title", async () => {
-			render(<FourOhFourPage />);
+			render(<NotFoundPage />);
 			await waitFor(() => {
 				expect(document.title).toStartWith("Page not found");
 			});
@@ -16,7 +16,7 @@ describe("404", () => {
 
 	describe("Breadcrumbs", () => {
 		it("should render home breadcrumb linking to the homepage", () => {
-			render(<FourOhFourPage />);
+			render(<NotFoundPage />);
 			expect(
 				screen.queryByText("Home", {
 					selector: ".breadcrumbs a",
@@ -25,7 +25,7 @@ describe("404", () => {
 		});
 
 		it("should render page not found as current page breadcrumb without link", () => {
-			render(<FourOhFourPage />);
+			render(<NotFoundPage />);
 			expect(
 				screen.getByText("Page not found", {
 					selector: ".breadcrumbs span",
@@ -35,7 +35,7 @@ describe("404", () => {
 	});
 
 	it("should render heading 1 with correct text", () => {
-		render(<FourOhFourPage />);
+		render(<NotFoundPage />);
 		expect(
 			screen.getByRole("heading", {
 				level: 1,

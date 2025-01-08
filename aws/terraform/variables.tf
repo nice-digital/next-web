@@ -46,3 +46,96 @@ variable "ecs_task_role" {
 variable "server_count" {
   type = number
 }
+variable "next_public_john" {
+  type = string
+}
+variable "public_john" {
+  type = string
+}
+variable "public_new_john" {
+  type = string
+}
+variable "public_auth_environment" {
+  type = string
+}
+variable "public_base_url" {
+  type = string
+}
+variable "santa_build_number" {
+  type = string
+}
+variable "public_build_number" {
+  type = string
+}
+variable "public_environment" {
+  type = string
+}
+variable "public_public_base_url" {
+  type = string
+}
+variable "public_search_base_url" {
+  type = string
+}
+variable "public_storyblok_access_token" {
+  type = string
+}
+variable "public_storyblok_enable_root_catch_all" {
+  type = string
+}
+variable "public_storyblok_ocelot_endpoint" {
+  type = string
+}
+variable "public_cookie_banner_script_url" {
+  type = string
+}
+variable "public_deny_robots" {
+  type = string
+}
+variable "server_cache_file_path" {
+  type = string
+}
+variable "server_cache_key_prefix" {
+  type = string
+}
+variable "server_cache_long_ttl" {
+  type = string
+}
+variable "server_feeds_indev_api_key" {
+  type = string
+}
+variable "server_feeds_indev_origin" {
+  type = string
+}
+variable "server_feeds_jotform_api_key" {
+  type = string
+}
+variable "server_feeds_publications_api_key" {
+  type = string
+}
+variable "server_feeds_publications_origin" {
+  type = string
+}
+variable "santa_both" {
+  type = string
+}
+variable "santa_tc" {
+  type = string
+}
+variable "santa_env" {
+  type = string
+}
+variable "santa_none" {
+  type = string
+}
+variable "next_public_santa_both" {
+  type = string
+}
+variable "next_public_santa_tc" {
+  type = string
+}
+variable "next_public_santa_env" {
+  type = string
+}
+variable "next_public_santa_none" {
+  type = string
+}

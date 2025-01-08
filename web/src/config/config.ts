@@ -1,9 +1,4 @@
-//import config from "config";
-import getConfig from "next/config";
-
 import type { InitialiseOptions as SearchClientInitOptions } from "@nice-digital/search-client";
-
-const { publicRuntimeConfig, serverRuntimeConfig } = getConfig();
 
 export interface SearchConfig {
 	/** The base URL of the Single Search Endpoint (SSE) e.g. https://beta-search-api.nice.org.uk/api/ */
@@ -116,5 +111,73 @@ export interface ServerConfig {
 	cache: CacheConfig;
 	feeds: FeedsConfig;
 }
+
+// const publicRuntimeConfig: PublicConfig = {
+// 	storyblok: {
+// 		accessToken: process.env.PUBLIC_STORYBLOK_ACCESS_TOKEN || "SECRET",
+// 		enableRootCatchAll:
+// 			process.env.PUBLIC_STORYBLOK_ENABLE_ROOT_CATCH_ALL || "false",
+// 		ocelotEndpoint: process.env.PUBLIC_STORYBLOK_OCELOT_ENDPOINT || "",
+// 	},
+// 	search: {
+// 		baseURL:
+// 			(process.env.PUBLIC_SEARCH_BASE_URL as `https://${string}/api`) ||
+// 			"http://localhost:19332/api/fromconfigfallback",
+// 	},
+// 	jotForm: {
+// 		baseURL: process.env.PUBLIC_JOTFORM_BASE_URL || "https://nice.jotform.com",
+// 	},
+// 	authEnvironment: process.env.PUBLIC_AUTH_ENVIRONMENT as
+// 		| "test"
+// 		| "live"
+// 		| "beta"
+// 		| "local",
+// 	publicBaseURL: process.env.PUBLIC_PUBLIC_BASE_URL || "",
+// 	environment: process.env.PUBLIC_ENVIRONMENT || "local",
+// 	buildNumber: process.env.PUBLIC_BUILD_NUMBER || "PLACEHOLDER",
+// 	cookieBannerScriptURL:
+// 		process.env.PUBLIC_COOKIE_BANNER_SCRIPT_URL ||
+// 		"https://cdn.nice.org.uk/cookie-banner/cookie-banner.min.js",
+// 	baseURL:
+// 		process.env.PUBLIC_BASE_URL || "http://localhost:4000/fromconfigfallback",
+// 	denyRobots: process.env.PUBLIC_DENY_ROBOTS === "true",
+// 	cacheControl: {
+// 		defaultCacheHeader:
+// 			process.env.PUBLIC_CACHE_CONTROL_DEFAULT_CACHE_HEADER ||
+// 			"public, s-max-age=300, max-age=120, stale-while-revalidate=1800",
+// 	},
+// };
+
+// const serverRuntimeConfig: ServerConfig = {
+// 	cache: {
+// 		keyPrefix: process.env.SERVER_CACHE_KEY_PREFIX || "next-web:local",
+// 		defaultTTL: !isNaN(Number(process.env.SERVER_CACHE_DEFAULT_TTL))
+// 			? Number(process.env.SERVER_CACHE_DEFAULT_TTL)
+// 			: 300,
+// 		longTTL: !isNaN(Number(process.env.SERVER_CACHE_LONG_TTL))
+// 			? Number(process.env.SERVER_CACHE_LONG_TTL)
+// 			: 86400,
+// 		filePath: process.env.SERVER_CACHE_FILE_PATH || "./.cache/",
+// 		refreshThreshold: !isNaN(Number(process.env.SERVER_CACHE_REFRESH_THRESHOLD))
+// 			? Number(process.env.SERVER_CACHE_REFRESH_THRESHOLD)
+// 			: 150,
+// 	},
+// 	feeds: {
+// 		publications: {
+// 			origin: process.env.SERVER_FEEDS_PUBLICATIONS_ORIGIN || "SECRET",
+// 			apiKey: process.env.SERVER_FEEDS_PUBLICATIONS_API_KEY || "SECRET",
+// 		},
+// 		inDev: {
+// 			origin: process.env.SERVER_FEEDS_INDEV_ORIGIN || "SECRET",
+// 			apiKey: process.env.SERVER_FEEDS_INDEV_API_KEY || "SECRET",
+// 		},
+// 		jotForm: {
+// 			apiKey: process.env.SERVER_FEEDS_JOTFORM_API_KEY || "SECRET",
+// 		},
+// 	},
+// };
+
+const publicRuntimeConfig = {};
+const serverRuntimeConfig = {};
 
 export { publicRuntimeConfig, serverRuntimeConfig };

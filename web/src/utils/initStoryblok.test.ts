@@ -5,24 +5,28 @@ import { logger } from "@/logger";
 
 import { initStoryblok } from "./initStoryblok";
 
-jest.mock("@/config", () => ({
-	publicRuntimeConfig: {
-		storyblok: {
-			ocelotEndpoint: "testEndpoint",
-			accessToken: "testApiKey",
-		},
-	},
-}));
+// jest.mock("@/config", () => ({
+// 	publicRuntimeConfig: {
+// 		storyblok: {
+// 			ocelotEndpoint: "testEndpoint",
+// 			accessToken: "testApiKey",
+// 		},
+// 	},
+// }));
 
 describe("initStoryblok", () => {
 	let consoleLogSpy: jest.SpyInstance;
 
 	beforeEach(() => {
 		consoleLogSpy = jest.spyOn(console, "log").mockImplementation();
+		process.env.PUBLIC_STORYBLOK_ACCESS_TOKEN = "testApiKey";
+		process.env.PUBLIC_STORYBLOK_OCELOT_ENDPOINT = "testEndpoint";
 	});
 
 	afterEach(() => {
 		consoleLogSpy.mockRestore();
+		delete process.env.PUBLIC_STORYBLOK_ACCESS_TOKEN;
+		delete process.env.PUBLIC_STORYBLOK_OCELOT_ENDPOINT;
 	});
 
 	it("should initialize Storyblok with the storyblokApiKey", () => {
