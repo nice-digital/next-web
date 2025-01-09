@@ -6,6 +6,7 @@ import { PromoBox, type PromoBoxProps } from "./PromoBox";
 const mockPromoBox: PromoBoxProps = {
 	blok: {
 		heading: "Mock promo box title",
+		headingLevel: 2,
 		image: {
 			filename: "https://placebacon.net/130/210?image=4",
 			id: 123456789,
@@ -94,12 +95,11 @@ describe("Promo box component", () => {
 	it("should render a heading at the correct level if one is specified", () => {
 		const box: PromoBoxProps = {
 			...mockPromoBox,
-			headingLevel: 5,
 		};
 
 		render(<PromoBox {...box} />);
 		expect(
-			screen.getByRole("heading", { level: 5, name: "Mock promo box title" })
+			screen.getByRole("heading", { level: 2, name: "Mock promo box title" })
 		).toBeInTheDocument();
 	});
 });

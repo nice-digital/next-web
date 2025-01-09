@@ -26,7 +26,6 @@ export interface PromoBoxProps {
 
 export const PromoBox: React.FC<PromoBoxProps> = ({
 	blok,
-	headingLevel = 2,
 	className = undefined,
 }: PromoBoxProps) => {
 	const {
@@ -38,6 +37,7 @@ export const PromoBox: React.FC<PromoBoxProps> = ({
 		useVideo,
 		youtubeEmbed,
 		isTransparent,
+		headingLevel=2
 	} = blok;
 
 	// Resolve heading type
