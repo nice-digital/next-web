@@ -4,7 +4,7 @@ import {
 	Grid,
 	GridItem,
 	type Columns,
-	type PullOrPush,
+	type PullOrPush
 } from "@nice-digital/nds-grid";
 
 import { StoryblokButtonLink } from "@/components/Storyblok/StoryblokButtonLink/StoryblokButtonLink";
@@ -12,7 +12,7 @@ import { StoryblokRichText } from "@/components/Storyblok/StoryblokRichText/Stor
 import { StoryblokYoutubeEmbed } from "@/components/Storyblok/StoryblokYoutubeEmbed/StoryblokYoutubeEmbed";
 import {
 	YoutubeEmbedStoryblok,
-	type PromoBoxStoryblok,
+	type PromoBoxStoryblok
 } from "@/types/storyblok";
 import { constructStoryblokImageSrc } from "@/utils/storyblok";
 
@@ -81,7 +81,7 @@ export const PromoBox: React.FC<PromoBoxProps> = ({
 								<StoryblokRichText content={body} />
 							</div>
 						)}
-						{cta?.length && <StoryblokButtonLink button={cta[0]} />}
+						{!!cta?.length && <StoryblokButtonLink button={cta[0]} />}
 					</GridItem>
 					<GridItem
 						cols={12}
@@ -92,12 +92,12 @@ export const PromoBox: React.FC<PromoBoxProps> = ({
 							<StoryblokYoutubeEmbed
 								blok={youtubeEmbed[0] as YoutubeEmbedStoryblok}
 							/>
-						) : (
+						) : optimisedImage ? (
 							<div
 								className={styles.imageContainer}
 								style={{ backgroundImage: `url(${optimisedImage})` }}
 							></div>
-						)}
+						) : null}
 					</GridItem>
 				</Grid>
 			</div>
