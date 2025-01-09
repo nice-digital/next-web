@@ -157,7 +157,6 @@ export type NewProductLite = ProductLite & {
 	url: string;
 };
 
-
 export type ProductLite = BaseFeedItem & {
 	id: string;
 	title: string;

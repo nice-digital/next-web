@@ -134,9 +134,11 @@ export const validateRouteParams = async ({
 		return { notFound: true };
 	}
 
-	const productType = allProductTypes&& allProductTypes.find(
-		(t) => t.enabled && t.identifierPrefix === product.productType
-	);
+	const productType =
+		allProductTypes &&
+		allProductTypes.find(
+			(t) => t.enabled && t.identifierPrefix === product.productType
+		);
 
 	if (!productType) {
 		logger.info(`Product type ${product.productType} not found`);
