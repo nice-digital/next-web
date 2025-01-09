@@ -173,7 +173,6 @@ export type ProductLite = BaseFeedItem & {
 };
 
 /** A product lite from the feed, but with redundant properties removed */
-// export type ProductLite = Except<ProductLiteRaw, "eTag" | "links">;
 
 export type ProductType = NewBaseFeedItem & {
 	enabled: boolean;
@@ -227,11 +226,6 @@ export type ProductTypes = NewBaseFeedItem & {
 	productTypes: ProductType[];
 };
 
-// export type ProductListLite = FeedContent<
-// 	"productListLite",
-// 	"productLite",
-// 	ProductLiteRaw
-// >;
 export type ProductListLite = {
 	products: NewProductLite[];
 };
