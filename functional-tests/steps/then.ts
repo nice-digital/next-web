@@ -1,8 +1,10 @@
 import { Then } from "@wdio/cucumber-framework";
 
+import { pause } from "@nice-digital/wdio-cucumber-steps/lib/support/action/pause.js";
+import { waitForDisplayed } from "@nice-digital/wdio-cucumber-steps/lib/support/action/waitForDisplayed.js";
 import { checkContainsText } from "@nice-digital/wdio-cucumber-steps/lib/support/check/checkContainsText.js";
 
-import { getSelector, SelectorName } from "../selectors/index.js";
+import { getSelector } from "../selectors/index.js";
 import { clickNextPagination } from "../support/action/clickNextPagination.js";
 import { clickPreviousPagination } from "../support/action/clickPreviousPagination.js";
 import { clickSignUpButton } from "../support/action/clickSignInButton.js";
@@ -24,6 +26,7 @@ import {
 import {
 	validateIndicatorPageResultCount,
 	validateFirstLinkInPagination,
+	validateIndicatorPageNoResultCount,
 } from "../support/check/validateIndicatorPageResultCount.js";
 import {
 	validateNewsArticleTag,
@@ -61,6 +64,11 @@ Then(/^I expect to see the indicator history$/, indicatorHistory);
 Then(
 	/^I expect the result list count contains "([^"]*)"$/,
 	validateIndicatorPageResultCount
+);
+
+Then(
+	/^I expect the result list count shows "([^"]*)"$/,
+	validateIndicatorPageNoResultCount
 );
 
 Then(
@@ -149,3 +157,11 @@ Then(
 	validateRelatedNewsStory
 );
 Then(/^I expect the url is "([^"]*)"$/, validateUrl);
+Then(
+	/^I expect to see the heading contains the text "([^"]*)"$/,
+	async (text: string) => {
+		await waitForDisplayed("h2:nth-of-type(2)", "");
+		await checkContainsText("element", "h2:nth-of-type(2)", "", text);
+		await pause("2000");
+	}
+);
