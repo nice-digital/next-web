@@ -24,6 +24,7 @@ export interface PromoBoxProps {
 	headingLevel?: number;
 	className?: string;
 	verticalPadding?: string;
+	imageAspectRatio?: string;
 }
 
 export const PromoBox: React.FC<PromoBoxProps> = ({
@@ -41,6 +42,7 @@ export const PromoBox: React.FC<PromoBoxProps> = ({
 		isTransparent,
 		headingLevel = 2,
 		verticalPadding = "medium",
+		imageAspectRatio = "landscape"
 	} = blok;
 
 	// Resolve heading type
@@ -65,6 +67,8 @@ export const PromoBox: React.FC<PromoBoxProps> = ({
 		: undefined;
 
 	const verticalPaddingClass = `promoBox${toTitleCase(verticalPadding)}Spacing`;
+
+	const imageAspectRatioClass = `imageContainer${toTitleCase(imageAspectRatio)}`;
 
 	return (
 		<article
@@ -99,7 +103,7 @@ export const PromoBox: React.FC<PromoBoxProps> = ({
 							/>
 						) : optimisedImage ? (
 							<div
-								className={styles.imageContainer}
+								className={classnames(styles.imageContainer, styles[imageAspectRatioClass], className)}
 								style={{ backgroundImage: `url(${optimisedImage})` }}
 							></div>
 						) : null}
