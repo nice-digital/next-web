@@ -1,24 +1,27 @@
 @use '~/styles/colours';
+@use '~/styles/spacing' as *;
 @use '@nice-digital/nds-core/scss/layout';
 @use '@nice-digital/nds-core/scss/media-queries';
 @use '@nice-digital/nds-core/scss/spacing';
 @use '@nice-digital/nds-core/scss/utils';
-@use '~/styles/spacing' as *;
-$large-spacing: 7rem;
-$medium-spacing: 5rem;
-$small-spacing: 3rem;
 
 .promoBox {
   @include layout.fullWidth();
   background: colours.$promo-box-background;
-  padding: $medium-spacing 0;
 }
+
 .promoBoxLarge {
-  padding: $large-spacing 0;
+  padding: $promo-box-large-spacing 0;
 }
+
+.promoBoxMedium {
+  padding: $promo-box-medium-spacing 0;
+}
+
 .promoBoxSmall {
-  padding: $small-spacing 0;
+  padding: $promo-box-small-spacing 0;
 }
+
 .transparent {
   background: transparent;
 }
