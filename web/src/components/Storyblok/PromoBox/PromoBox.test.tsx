@@ -18,6 +18,7 @@ const mockPromoBox: PromoBoxProps = {
 		},
 		_uid: "123456789",
 		component: "promoBox",
+		verticalPadding:"medium",
 	},
 };
 
@@ -26,7 +27,11 @@ describe("Promo box component", () => {
 		const { container } = render(<PromoBox {...mockPromoBox} />);
 		expect(container).toMatchSnapshot();
 	});
-
+	it("should match snapshot", () => {
+		const mockPromoBoxPortrait={...mockPromoBox,imageAspectRatio:"portrait"}
+		const { container } = render(<PromoBox {...mockPromoBoxPortrait} />);
+		expect(container).toMatchSnapshot();
+	});
 	it("should render a button if one is supplied", () => {
 		const box: PromoBoxProps = {
 			...mockPromoBox,
