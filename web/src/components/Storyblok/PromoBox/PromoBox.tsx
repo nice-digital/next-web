@@ -64,7 +64,7 @@ export const PromoBox: React.FC<PromoBoxProps> = ({
 		? constructStoryblokImageSrc(image?.filename)
 		: undefined;
 
-	const verticalPaddingClass = `promoBox${toTitleCase(verticalPadding)}`;
+	const verticalPaddingClass = `promoBox${toTitleCase(verticalPadding)}Spacing`;
 
 	return (
 		<article
