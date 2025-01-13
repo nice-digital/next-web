@@ -1,4 +1,4 @@
-export const toTitleCase = (str: string) => {
+export const toTitleCase = (str: string): string => {
 	return str
 		.toLowerCase()
 		.split(/\s+/)
