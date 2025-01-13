@@ -4,17 +4,21 @@
 @use '@nice-digital/nds-core/scss/spacing';
 @use '@nice-digital/nds-core/scss/utils';
 @use '~/styles/spacing' as *;
+$large-spacing: 7rem;
+$medium-spacing: 5rem;
+$small-spacing: 3rem;
 
 .promoBox {
   @include layout.fullWidth();
   background: colours.$promo-box-background;
-  padding: $homepage-large-spacing-mobile 0;
-
-  @include media-queries.mq($from: md) {
-    padding: $homepage-large-spacing 0;
-  }
+  padding: $medium-spacing 0;
 }
-
+.promoBoxLarge {
+  padding: $large-spacing 0;
+}
+.promoBoxSmall {
+  padding: $small-spacing 0;
+}
 .transparent {
   background: transparent;
 }

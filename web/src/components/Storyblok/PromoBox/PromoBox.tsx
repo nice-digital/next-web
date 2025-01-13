@@ -4,7 +4,7 @@ import {
 	Grid,
 	GridItem,
 	type Columns,
-	type PullOrPush
+	type PullOrPush,
 } from "@nice-digital/nds-grid";
 
 import { StoryblokButtonLink } from "@/components/Storyblok/StoryblokButtonLink/StoryblokButtonLink";
@@ -12,7 +12,7 @@ import { StoryblokRichText } from "@/components/Storyblok/StoryblokRichText/Stor
 import { StoryblokYoutubeEmbed } from "@/components/Storyblok/StoryblokYoutubeEmbed/StoryblokYoutubeEmbed";
 import {
 	YoutubeEmbedStoryblok,
-	type PromoBoxStoryblok
+	type PromoBoxStoryblok,
 } from "@/types/storyblok";
 import { constructStoryblokImageSrc } from "@/utils/storyblok";
 
@@ -22,6 +22,7 @@ export interface PromoBoxProps {
 	blok: PromoBoxStoryblok;
 	headingLevel?: number;
 	className?: string;
+	verticalPadding?: string;
 }
 
 export const PromoBox: React.FC<PromoBoxProps> = ({
@@ -37,7 +38,8 @@ export const PromoBox: React.FC<PromoBoxProps> = ({
 		useVideo,
 		youtubeEmbed,
 		isTransparent,
-		headingLevel=2
+		headingLevel = 2,
+		verticalPadding,
 	} = blok;
 
 	// Resolve heading type
@@ -60,10 +62,15 @@ export const PromoBox: React.FC<PromoBoxProps> = ({
 	const optimisedImage = image?.filename
 		? constructStoryblokImageSrc(image?.filename)
 		: undefined;
-
+	const verticalPaddingClass =
+		verticalPadding == "small"
+			? styles.promoBoxSmall 
+			: verticalPadding == "large"
+			? styles.promoBoxLarge
+			: null;
 	return (
 		<article
-			className={classnames(styles.promoBox, transparentClass, className)}
+			className={classnames(styles.promoBox, transparentClass,verticalPaddingClass,className)}
 			data-tracking="promo-box"
 		>
 			<div className={styles.container}>
