@@ -4,7 +4,7 @@ import {
 	Grid,
 	GridItem,
 	type Columns,
-	type PullOrPush
+	type PullOrPush,
 } from "@nice-digital/nds-grid";
 
 import { StoryblokButtonLink } from "@/components/Storyblok/StoryblokButtonLink/StoryblokButtonLink";
@@ -12,7 +12,7 @@ import { StoryblokRichText } from "@/components/Storyblok/StoryblokRichText/Stor
 import { StoryblokYoutubeEmbed } from "@/components/Storyblok/StoryblokYoutubeEmbed/StoryblokYoutubeEmbed";
 import {
 	YoutubeEmbedStoryblok,
-	type PromoBoxStoryblok
+	type PromoBoxStoryblok,
 } from "@/types/storyblok";
 import { constructStoryblokImageSrc } from "@/utils/storyblok";
 import { toTitleCase } from "@/utils/string";
@@ -42,7 +42,7 @@ export const PromoBox: React.FC<PromoBoxProps> = ({
 		isTransparent,
 		headingLevel = 2,
 		verticalPadding = "medium",
-		imageAspectRatio = "landscape"
+		imageAspectRatio = "landscape",
 	} = blok;
 
 	// Resolve heading type
@@ -68,11 +68,18 @@ export const PromoBox: React.FC<PromoBoxProps> = ({
 
 	const verticalPaddingClass = `promoBox${toTitleCase(verticalPadding)}Spacing`;
 
-	const imageAspectRatioClass = `imageContainer${toTitleCase(imageAspectRatio)}`;
+	const imageAspectRatioClass = `imageContainer${toTitleCase(
+		imageAspectRatio
+	)}`;
 
 	return (
 		<article
-			className={classnames(styles.promoBox, transparentClass, styles[verticalPaddingClass], className)}
+			className={classnames(
+				styles.promoBox,
+				transparentClass,
+				styles[verticalPaddingClass],
+				className
+			)}
 			data-tracking="promo-box"
 		>
 			<div className={styles.container}>
@@ -103,7 +110,11 @@ export const PromoBox: React.FC<PromoBoxProps> = ({
 							/>
 						) : optimisedImage ? (
 							<div
-								className={classnames(styles.imageContainer, styles[imageAspectRatioClass], className)}
+								className={classnames(
+									styles.imageContainer,
+									styles[imageAspectRatioClass],
+									className
+								)}
 								style={{ backgroundImage: `url(${optimisedImage})` }}
 							></div>
 						) : null}
