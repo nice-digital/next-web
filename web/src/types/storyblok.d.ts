@@ -171,10 +171,34 @@ export interface CardGridStoryblok {
   [k: string]: any;
 }
 
+export interface CardSectionStoryblok {
+  heading?: string;
+  headingLevel: string;
+  leadText?: RichtextStoryblok;
+  content?: CardSectionItemStoryblok[];
+  theme?: "" | "subtle" | "transparent";
+  component: "cardSection";
+  _uid: string;
+  [k: string]: any;
+}
+
+export interface CardSectionItemStoryblok {
+  cards?: CardStoryblok[];
+  component: "cardSectionItem";
+  _uid: string;
+  [k: string]: any;
+}
+
 export interface CategoryLandingPageStoryblok {
   header?: (HeroStoryblok | PageHeaderStoryblok)[];
   metadata?: MetadataStoryblok[];
-  content?: (ActionBannerStoryblok | GridSectionStoryblok | ActionBannerDefaultStoryblok)[];
+  content?: (
+    | ActionBannerStoryblok
+    | GridSectionStoryblok
+    | ActionBannerDefaultStoryblok
+    | PromoBoxStoryblok
+    | CardSectionStoryblok
+  )[];
   component: "categoryLandingPage";
   _uid: string;
   [k: string]: any;
@@ -201,6 +225,8 @@ export interface GridStoryblok {
     | CardStoryblok
     | CardContentStoryblok
     | CardGridStoryblok
+    | CardSectionStoryblok
+    | CardSectionItemStoryblok
     | CategoryLandingPageStoryblok
     | CategoryNavigationStoryblok
     | GridStoryblok
@@ -229,6 +255,7 @@ export interface GridStoryblok {
     | RelatedLinkStoryblok
     | RelatedNewsLinkStoryblok
     | SpotlightStoryblok
+    | SpotlightCopyStoryblok
     | YoutubeEmbedStoryblok
   )[];
   component: "grid";
@@ -444,6 +471,8 @@ export interface PageStoryblok {
     | CardStoryblok
     | CardContentStoryblok
     | CardGridStoryblok
+    | CardSectionStoryblok
+    | CardSectionItemStoryblok
     | CategoryLandingPageStoryblok
     | CategoryNavigationStoryblok
     | GridStoryblok
@@ -472,6 +501,7 @@ export interface PageStoryblok {
     | RelatedLinkStoryblok
     | RelatedNewsLinkStoryblok
     | SpotlightStoryblok
+    | SpotlightCopyStoryblok
     | YoutubeEmbedStoryblok
   )[];
   metadata?: MetadataStoryblok[];
@@ -486,8 +516,7 @@ export interface PageHeaderStoryblok {
   summary?: string;
   description?: string;
   cta?: ButtonLinkStoryblok[];
-  ctaText?: string;
-  ctaLink?: MultilinkStoryblok;
+  theme?: "subtle" | "impact";
   component: "pageHeader";
   _uid: string;
   [k: string]: any;
@@ -507,13 +536,16 @@ export interface PodcastStoryblok {
 
 export interface PromoBoxStoryblok {
   heading: string;
+  headingLevel: string;
   body?: RichtextStoryblok;
   cta?: ButtonLinkStoryblok[];
   useVideo?: boolean;
   image?: AssetStoryblok;
+  imageAspectRatio?: "landscape" | "portrait";
   youtubeEmbed?: YoutubeEmbedStoryblok[];
   swapMediaSide?: boolean;
   isTransparent?: boolean;
+  verticalPadding?: "" | "small" | "medium" | "large";
   component: "promoBox";
   _uid: string;
   [k: string]: any;
@@ -558,6 +590,23 @@ export interface SpotlightStoryblok {
   youtubeEmbed: YoutubeEmbedStoryblok[];
   isTransparent?: boolean;
   component: "spotlight";
+  _uid: string;
+  [k: string]: any;
+}
+
+export interface SpotlightCopyStoryblok {
+  heading: string;
+  mediaDescription?: RichtextStoryblok;
+  stories: (
+    | ISbStoryData<BlogPostStoryblok>
+    | ISbStoryData<NewsArticleStoryblok>
+    | ISbStoryData<InDepthArticleStoryblok>
+    | ISbStoryData<PodcastStoryblok>
+    | string
+  )[];
+  youtubeEmbed: YoutubeEmbedStoryblok[];
+  isTransparent?: boolean;
+  component: "spotlight_copy";
   _uid: string;
   [k: string]: any;
 }
