@@ -1,5 +1,18 @@
+@use '~/styles/colours';
+@use '@nice-digital/nds-core/scss/layout';
+@use '@nice-digital/nds-core/scss/media-queries';
 .cardSection {
-  background-color: yellow;
+  @include layout.fullWidth();
+  background-color: colours.$card-section-background;
 }
 
-.leadText {}
+.leadText {
+}
+
+.transparent {
+  background: transparent;
+}
+.container {
+    @include layout.fullWidthContainer();
+  }
+  

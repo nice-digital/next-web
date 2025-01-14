@@ -1,30 +1,38 @@
+import classnames from "classnames";
+
 import { StoryblokRichText } from "@/components/Storyblok/StoryblokRichText/StoryblokRichText";
 
 import styles from "./CardSection.module.scss";
-
+import { CardSectionStoryblok } from "@/types/storyblok";
+import { toTitleCase } from "@/utils/string";
 export interface CardSectionProps {
-	//blok: CardSectionStoryblok;
-	blok: any;
+	blok: CardSectionStoryblok;
 	headingLevel?: number;
 	className?: string;
 	verticalPadding?: string;
 	imageAspectRatio?: string;
+	theme?: string;
 }
 
-export const CardSection: React.FC<CardSectionProps> = ({ blok }: CardSectionProps) => {
-	const { heading, leadText, headingLevel } = blok;
+export const CardSection: React.FC<CardSectionProps> = ({
+	blok,
+}: CardSectionProps) => {
+	const { heading, leadText, headingLevel, theme,verticalPadding } = blok;
 	const HeadingElement = `h${headingLevel}` as keyof JSX.IntrinsicElements;
-
+	const transparentClass = theme === "subtle" ? undefined : styles.transparent;
+    const verticalPaddingClass = `cardSection${toTitleCase(verticalPadding)}Spacing`;
 	return (
-		<section className={styles.cardSection}>
-			<HeadingElement>{heading}</HeadingElement>
-			{leadText && (
-				<StoryblokRichText content={leadText} />
-			)}
-			{/* <CardSectionList /> */}
+		<section className={classnames(styles.cardSection,styles[verticalPaddingClass], transparentClass)}>
+			<div className={styles.container}>
+				<HeadingElement>{heading}</HeadingElement>
+				{leadText && <StoryblokRichText content={leadText} />}
+				{/* <CardSectionList /> */}
+			</div>
 		</section>
 	);
 };
+
+
 
 // import classnames from "classnames";
 
