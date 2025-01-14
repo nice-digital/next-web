@@ -1,13 +1,27 @@
-import Link from "next/link";
+import { StoryblokRichText } from "@/components/Storyblok/StoryblokRichText/StoryblokRichText";
 
-import { Card, type CardHeadingLinkProps } from "@nice-digital/nds-card";
 import styles from "./CardSection.module.scss";
-export const CardSection = ({ blok }): React.ReactElement => {
+
+export interface CardSectionProps {
+	//blok: CardSectionStoryblok;
+	blok: any;
+	headingLevel?: number;
+	className?: string;
+	verticalPadding?: string;
+	imageAspectRatio?: string;
+}
+
+export const CardSection: React.FC<CardSectionProps> = ({ blok }: CardSectionProps) => {
 	const { heading, leadText, headingLevel } = blok;
 	const HeadingElement = `h${headingLevel}` as keyof JSX.IntrinsicElements;
+
 	return (
-		<section>
-			<HeadingElement className={styles.cardSection}>{heading}</HeadingElement>
+		<section className={styles.cardSection}>
+			<HeadingElement>{heading}</HeadingElement>
+			{leadText && (
+				<StoryblokRichText content={leadText} />
+			)}
+			{/* <CardSectionList /> */}
 		</section>
 	);
 };
