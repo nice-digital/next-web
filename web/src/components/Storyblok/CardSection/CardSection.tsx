@@ -5,6 +5,7 @@ import { StoryblokRichText } from "@/components/Storyblok/StoryblokRichText/Stor
 import styles from "./CardSection.module.scss";
 import { CardSectionStoryblok } from "@/types/storyblok";
 import { toTitleCase } from "@/utils/string";
+
 export interface CardSectionProps {
 	blok: CardSectionStoryblok;
 	headingLevel?: number;
