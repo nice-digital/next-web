@@ -2,12 +2,13 @@ import classnames from "classnames";
 
 import { StoryblokRichText } from "@/components/Storyblok/StoryblokRichText/StoryblokRichText";
 
-import styles from "./CardSection.module.scss";
-import { CardSectionStoryblok } from "@/types/storyblok";
+import styles from "./CardListSection.module.scss";
+import { CardListSectionStoryblok } from "@/types/storyblok";
+import { Card, type CardHeadingLinkProps } from "@nice-digital/nds-card";
 import { toTitleCase } from "@/utils/string";
 
-export interface CardSectionProps {
-	blok: CardSectionStoryblok;
+export interface CardListSectionProps {
+	blok: CardListSectionStoryblok;
 	headingLevel?: number;
 	className?: string;
 	verticalPadding?: string;
@@ -15,25 +16,40 @@ export interface CardSectionProps {
 	theme?: string;
 }
 
-export const CardSection: React.FC<CardSectionProps> = ({
+export const CardListSection: React.FC<CardListSectionProps> = ({
 	blok,
-}: CardSectionProps) => {
-	const { heading, leadText, headingLevel, theme,verticalPadding } = blok;
+}: CardListSectionProps) => {
+	const { heading, leadText, headingLevel, theme, verticalPadding, cards } =
+		blok;
 	const HeadingElement = `h${headingLevel}` as keyof JSX.IntrinsicElements;
 	const transparentClass = theme === "subtle" ? undefined : styles.transparent;
-    const verticalPaddingClass = `cardSection${toTitleCase(verticalPadding)}Spacing`;
+	const verticalPaddingClass = `cardSection${toTitleCase(
+		verticalPadding
+	)}Spacing`;
 	return (
-		<section className={classnames(styles.cardSection,styles[verticalPaddingClass], transparentClass)}>
+		<section
+			className={classnames(
+				styles.cardSection,
+				styles[verticalPaddingClass],
+				transparentClass
+			)}
+		>
 			<div className={styles.container}>
 				<HeadingElement>{heading}</HeadingElement>
 				{leadText && <StoryblokRichText content={leadText} />}
-				{/* <CardSectionList /> */}
+				<ul className="list list--unstyled">
+					{cards.map(({ heading, body }) => (
+						<li>
+							<Card elementType="li" headingText={heading}>
+								{body}
+							</Card>
+						</li>
+					))}
+				</ul>
 			</div>
 		</section>
 	);
 };
-
-
 
 // import classnames from "classnames";
 

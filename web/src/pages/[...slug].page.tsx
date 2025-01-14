@@ -39,7 +39,8 @@ import {
 } from "@/utils/storyblok";
 
 import type { GetServerSidePropsContext } from "next";
-import { CardSection } from "@/components/Storyblok/CardSection/CardSection";
+import { CardListSection } from "@/components/Storyblok/CardListSection/CardListSection";
+
 
 export type SlugCatchAllSuccessProps = {
 	story: ISbStoryData<InfoPageStoryblok | CategoryNavigationStoryblok>;
@@ -91,7 +92,7 @@ export default function SlugCatchAll(
 		hero: StoryblokHero,
 		actionBanner: StoryblokActionBannerFullWidth,
 		actionBannerDefault: StoryblokActionBannerDefault,
-		cardSection:CardSection
+		cardListSection:CardListSection
 	};
 
 	const infoPageComponents = {

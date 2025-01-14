@@ -206,20 +206,14 @@ export interface CardGridStoryblok {
   [k: string]: any;
 }
 
-export interface CardSectionStoryblok {
+export interface CardListSectionStoryblok {
   heading?: string;
   headingLevel: string;
   leadText?: RichtextStoryblok;
-  content?: CardSectionItemStoryblok[];
   theme?: "" | "subtle" | "transparent";
-  component: "cardSection";
-  _uid: string;
-  [k: string]: any;
-}
-
-export interface CardSectionItemStoryblok {
+  verticalPadding?: "" | "small" | "medium" | "large";
   cards?: CardStoryblok[];
-  component: "cardSectionItem";
+  component: "cardListSection";
   _uid: string;
   [k: string]: any;
 }
@@ -232,7 +226,7 @@ export interface CategoryLandingPageStoryblok {
     | GridSectionStoryblok
     | ActionBannerDefaultStoryblok
     | PromoBoxStoryblok
-    | CardSectionStoryblok
+    | CardListSectionStoryblok
   )[];
   component: "categoryLandingPage";
   _uid: string;
@@ -260,8 +254,7 @@ export interface GridStoryblok {
     | CardStoryblok
     | CardContentStoryblok
     | CardGridStoryblok
-    | CardSectionStoryblok
-    | CardSectionItemStoryblok
+    | CardListSectionStoryblok
     | CategoryLandingPageStoryblok
     | CategoryNavigationStoryblok
     | GridStoryblok
@@ -521,8 +514,7 @@ export interface PageStoryblok {
     | CardStoryblok
     | CardContentStoryblok
     | CardGridStoryblok
-    | CardSectionStoryblok
-    | CardSectionItemStoryblok
+    | CardListSectionStoryblok
     | CategoryLandingPageStoryblok
     | CategoryNavigationStoryblok
     | GridStoryblok
