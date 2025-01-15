@@ -210,9 +210,9 @@ export interface CardListSectionStoryblok {
   heading?: string;
   headingLevel: string;
   leadText?: RichtextStoryblok;
+  cards?: CardStoryblok[];
   theme?: "" | "subtle" | "transparent";
   verticalPadding?: "" | "small" | "medium" | "large";
-  cards?: CardStoryblok[];
   component: "cardListSection";
   _uid: string;
   [k: string]: any;
