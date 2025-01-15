@@ -527,3 +527,6 @@ export const constructStoryblokImageSrc = (
 
 	return encodeParens(url);
 };
+
+export const fieldHasValidContent = (field: { content: any[] }) =>
+	Array.isArray(field?.content) && 'content' in field.content[0]

@@ -5,7 +5,7 @@ import { StoryblokRichText } from "@/components/Storyblok/StoryblokRichText/Stor
 import { Card, type CardHeadingLinkProps } from "@nice-digital/nds-card";
 
 import { CardListSectionStoryblok } from "@/types/storyblok";
-import { resolveStoryblokLink } from "@/utils/storyblok";
+import { fieldHasValidContent, resolveStoryblokLink } from "@/utils/storyblok";
 
 import { toTitleCase } from "@/utils/string";
 import styles from "./CardListSection.module.scss";
@@ -22,14 +22,20 @@ export interface CardListSectionProps {
 export const CardListSection: React.FC<CardListSectionProps> = ({
 	blok,
 }: CardListSectionProps) => {
-	const { heading, leadText, headingLevel, theme, verticalPadding = "medium", cards } =
-		blok;
+	const {
+		heading,
+		leadText,
+		headingLevel,
+		theme,
+		verticalPadding = "medium",
+		cards,
+	} = blok;
 	const HeadingElement = `h${headingLevel}` as keyof JSX.IntrinsicElements;
 	const transparentClass = theme === "subtle" ? undefined : styles.transparent;
 	const verticalPaddingClass = `cardSection${toTitleCase(
 		verticalPadding
 	)}Spacing`;
-
+	const richTextHasContent = fieldHasValidContent(leadText) && leadText;
 	return (
 		<section
 			className={classnames(
@@ -39,12 +45,28 @@ export const CardListSection: React.FC<CardListSectionProps> = ({
 			)}
 		>
 			<div className={styles.container}>
-				<HeadingElement className={styles.heading}>{heading}</HeadingElement>
-				{leadText ? <StoryblokRichText content={leadText} className={styles.leadText} /> : undefined}
+				{heading || richTextHasContent ? (
+					<div className={styles.cardSectionListIntro}>
+						{heading && (
+							<HeadingElement className={styles.heading}>
+								{heading}
+							</HeadingElement>
+						)}
+						{richTextHasContent && (
+							<StoryblokRichText
+								content={leadText}
+								className={styles.leadText}
+							/>
+						)}
+					</div>
+				) : undefined}
+
 				<ul className="list list--unstyled">
 					{cards.map(({ heading, body, link, _uid }) => {
 						let cardLink: CardHeadingLinkProps | undefined = undefined;
-						const resolvedLink = link.url ? resolveStoryblokLink(link) : undefined;
+						const resolvedLink = link.url
+							? resolveStoryblokLink(link)
+							: undefined;
 						if (resolvedLink?.url) {
 							cardLink = {
 								destination: resolvedLink.url,
@@ -54,7 +76,12 @@ export const CardListSection: React.FC<CardListSectionProps> = ({
 						}
 
 						return (
-							<Card elementType="li" headingText={heading} link={cardLink || undefined} key={_uid}>
+							<Card
+								elementType="li"
+								headingText={heading}
+								link={cardLink || undefined}
+								key={_uid}
+							>
 								{body}
 							</Card>
 						);

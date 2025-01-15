@@ -3,6 +3,7 @@
 @use '@nice-digital/nds-core/scss/media-queries';
 @use '@nice-digital/nds-core/scss/spacing';
 @use '@nice-digital/nds-core/scss/typography';
+@use '@nice-digital/nds-core/scss/utils';
 @use '~/styles/spacing' as *;
 
 .cardSection {
@@ -11,15 +12,15 @@
 }
 
 .cardSectionLargeSpacing {
-  padding: $card-section-large-spacing 0;
+  padding: $section-large-spacing 0;
 }
 
 .cardSectionMediumSpacing {
-  padding: $card-section-medium-spacing 0;
+  padding: $section-medium-spacing 0;
 }
 
 .cardSectionSmallSpacing {
-  padding: $card-section-small-spacing 0;
+  padding: $section-small-spacing 0;
 }
 
 .heading {
@@ -31,7 +32,9 @@
     @include typography.font-size(lead);
   }
 }
-
+.cardSectionListIntro{
+  margin-bottom: utils.rem(spacing.$large);
+}
 .transparent {
   background: transparent;
 }
