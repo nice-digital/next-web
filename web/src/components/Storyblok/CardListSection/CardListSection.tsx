@@ -1,11 +1,14 @@
 import classnames from "classnames";
+import Link from "next/link";
 
 import { StoryblokRichText } from "@/components/Storyblok/StoryblokRichText/StoryblokRichText";
-
-import styles from "./CardListSection.module.scss";
-import { CardListSectionStoryblok } from "@/types/storyblok";
 import { Card, type CardHeadingLinkProps } from "@nice-digital/nds-card";
+
+import { CardListSectionStoryblok } from "@/types/storyblok";
+import { resolveStoryblokLink } from "@/utils/storyblok";
+
 import { toTitleCase } from "@/utils/string";
+import styles from "./CardListSection.module.scss";
 
 export interface CardListSectionProps {
 	blok: CardListSectionStoryblok;
@@ -19,13 +22,14 @@ export interface CardListSectionProps {
 export const CardListSection: React.FC<CardListSectionProps> = ({
 	blok,
 }: CardListSectionProps) => {
-	const { heading, leadText, headingLevel, theme, verticalPadding, cards } =
+	const { heading, leadText, headingLevel, theme, verticalPadding = "medium", cards } =
 		blok;
 	const HeadingElement = `h${headingLevel}` as keyof JSX.IntrinsicElements;
 	const transparentClass = theme === "subtle" ? undefined : styles.transparent;
 	const verticalPaddingClass = `cardSection${toTitleCase(
 		verticalPadding
 	)}Spacing`;
+
 	return (
 		<section
 			className={classnames(
@@ -35,16 +39,26 @@ export const CardListSection: React.FC<CardListSectionProps> = ({
 			)}
 		>
 			<div className={styles.container}>
-				<HeadingElement>{heading}</HeadingElement>
-				{leadText && <StoryblokRichText content={leadText} />}
+				<HeadingElement className={styles.heading}>{heading}</HeadingElement>
+				{leadText ? <StoryblokRichText content={leadText} className={styles.leadText} /> : undefined}
 				<ul className="list list--unstyled">
-					{cards.map(({ heading, body }) => (
-						<li>
-							<Card elementType="li" headingText={heading}>
+					{cards.map(({ heading, body, link, _uid }) => {
+						let cardLink: CardHeadingLinkProps | undefined = undefined;
+						const resolvedLink = link.url ? resolveStoryblokLink(link) : undefined;
+						if (resolvedLink?.url) {
+							cardLink = {
+								destination: resolvedLink.url,
+								elementType: resolvedLink.isInternal ? Link : "a",
+								method: "href",
+							};
+						}
+
+						return (
+							<Card elementType="li" headingText={heading} link={cardLink || undefined} key={_uid}>
 								{body}
 							</Card>
-						</li>
-					))}
+						);
+					})}
 				</ul>
 			</div>
 		</section>

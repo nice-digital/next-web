@@ -2,12 +2,14 @@
 @use '@nice-digital/nds-core/scss/layout';
 @use '@nice-digital/nds-core/scss/media-queries';
 @use '@nice-digital/nds-core/scss/spacing';
+@use '@nice-digital/nds-core/scss/typography';
 @use '~/styles/spacing' as *;
 
 .cardSection {
   @include layout.fullWidth();
   background-color: colours.$card-section-background;
 }
+
 .cardSectionLargeSpacing {
   padding: $card-section-large-spacing 0;
 }
@@ -20,12 +22,20 @@
   padding: $card-section-small-spacing 0;
 }
 
+.heading {
+  margin-top: 0;
+}
+
 .leadText {
+  p {
+    @include typography.font-size(lead);
+  }
 }
 
 .transparent {
   background: transparent;
 }
+
 .container {
   @include layout.fullWidthContainer();
 }
