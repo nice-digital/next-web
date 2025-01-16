@@ -10,17 +10,24 @@ import { fieldHasValidContent, resolveStoryblokLink } from "@/utils/storyblok";
 import { toTitleCase } from "@/utils/string";
 import styles from "./CardListSection.module.scss";
 
+export type cardListSectionItem = {
+	heading: string;
+	body: string;
+	link: string;
+};
 export interface CardListSectionProps {
 	blok: CardListSectionStoryblok;
-	headingLevel?: number;
-	className?: string;
+	className?:string;
+	heading?: string;
+	leadText?: string;
+	headingLevel?: string;
 	verticalPadding?: string;
-	imageAspectRatio?: string;
 	theme?: string;
+	cards: [cardListSectionItem];
 }
 
 export const CardListSection: React.FC<CardListSectionProps> = ({
-	blok,
+	blok,className=undefined
 }: CardListSectionProps) => {
 	const {
 		heading,
@@ -36,12 +43,13 @@ export const CardListSection: React.FC<CardListSectionProps> = ({
 		verticalPadding
 	)}Spacing`;
 	const richTextHasContent = fieldHasValidContent(leadText) && leadText;
+	console.log("leadText", leadText);
 	return (
 		<section
 			className={classnames(
 				styles.cardSection,
 				styles[verticalPaddingClass],
-				transparentClass
+				transparentClass,className
 			)}
 		>
 			<div className={styles.container}>
