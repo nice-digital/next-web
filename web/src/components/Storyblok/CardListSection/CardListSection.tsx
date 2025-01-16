@@ -33,7 +33,7 @@ export const CardListSection: React.FC<CardListSectionProps> = ({
 	)}Spacing`;
 	const richTextHasContent = fieldHasValidContent(leadText) && leadText;
 
-	console.log("heading", heading);
+	console.log("leadText>>>", leadText);
 
 	return (
 		<section
