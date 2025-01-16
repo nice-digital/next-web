@@ -32,9 +32,11 @@
     @include typography.font-size(lead);
   }
 }
-.cardSectionListIntro{
+
+.cardSectionListIntro {
   margin-bottom: utils.rem(spacing.$large);
 }
+
 .transparent {
   background: transparent;
 }

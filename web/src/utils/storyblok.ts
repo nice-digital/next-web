@@ -1,15 +1,10 @@
 import { ParsedUrlQuery } from "querystring";
 
 import {
-	getStoryblokApi,
-	type ISbStoryParams,
-	type ISbStoriesParams,
-	type ISbResult,
-	type ISbError,
-	type ISbStoryData,
+	getStoryblokApi, type ISbError, type ISbResult, type ISbStoriesParams, type ISbStoryData, type ISbStoryParams
 } from "@storyblok/react";
-import { Redirect } from "next/types";
 import { type MetaTag } from "next-seo/lib/types";
+import { Redirect } from "next/types";
 
 import { publicRuntimeConfig } from "@/config";
 import { logger } from "@/logger";
@@ -528,5 +523,5 @@ export const constructStoryblokImageSrc = (
 	return encodeParens(url);
 };
 
-export const fieldHasValidContent = (field: { content: any[] }) =>
+export const fieldHasValidContent = (field: any) =>
 	Array.isArray(field?.content) && 'content' in field.content[0]
