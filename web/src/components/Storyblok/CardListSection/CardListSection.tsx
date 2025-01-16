@@ -15,7 +15,7 @@ export interface CardListSectionProps {
 }
 
 export const CardListSection: React.FC<CardListSectionProps> = ({
-	blok
+	blok,
 }: CardListSectionProps) => {
 	const {
 		heading,
@@ -32,8 +32,6 @@ export const CardListSection: React.FC<CardListSectionProps> = ({
 		verticalPadding
 	)}Spacing`;
 	const richTextHasContent = fieldHasValidContent(leadText) && leadText;
-
-	console.log("leadText>>>", leadText);
 
 	return (
 		<section

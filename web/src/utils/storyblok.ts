@@ -1,7 +1,12 @@
 import { ParsedUrlQuery } from "querystring";
 
 import {
-	getStoryblokApi, type ISbError, type ISbResult, type ISbStoriesParams, type ISbStoryData, type ISbStoryParams
+	getStoryblokApi,
+	type ISbError,
+	type ISbResult,
+	type ISbStoriesParams,
+	type ISbStoryData,
+	type ISbStoryParams,
 } from "@storyblok/react";
 import { type MetaTag } from "next-seo/lib/types";
 import { Redirect } from "next/types";
@@ -524,4 +529,4 @@ export const constructStoryblokImageSrc = (
 };
 
 export const fieldHasValidContent = (field: any) =>
-	Array.isArray(field?.content) && 'content' in field.content[0]
+	Array.isArray(field?.content) && "content" in field.content[0];
