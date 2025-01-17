@@ -6,11 +6,15 @@ import { PromoBox, type PromoBoxProps } from "./PromoBox";
 const mockPromoBox: PromoBoxProps = {
 	blok: {
 		heading: "Mock promo box title",
-		headingLevel: 2,
+		headingLevel: "2",
 		image: {
 			filename: "https://placebacon.net/130/210?image=4",
 			id: 123456789,
 			name: "Delicious bacon",
+			alt: null,
+			fieldtype: "asset",
+			title: null,
+			focus: null,
 		},
 		useVideo: false,
 		body: {
@@ -27,12 +31,37 @@ describe("Promo box component", () => {
 		const { container } = render(<PromoBox {...mockPromoBox} />);
 		expect(container).toMatchSnapshot();
 	});
-	it("should match snapshot", () => {
+	it("should match snapshot if image is provided and video is not provided", () => {
 		const mockPromoBoxPortrait = {
 			...mockPromoBox,
 			imageAspectRatio: "portrait",
 		};
 		const { container } = render(<PromoBox {...mockPromoBoxPortrait} />);
+		expect(container).toMatchSnapshot();
+	});
+	it("should match snapshot if image is not provided and video is provided", () => {
+		const mockPromoBoxNoImage = {
+			...mockPromoBox,
+			image: {
+				filename: null,
+				id: 123456789,
+				name: "Delicious bacon",
+				alt: null,
+				fieldtype: "asset",
+				title: null,
+				focus: null,
+			},
+			useVideo: true,
+				youtubeEmbed: [
+					{
+						title: "Test Youtube title",
+						source: "wwSzpaTHyS8",
+						_uid: "123456",
+						component: "youtubeEmbed",
+					},
+				],
+		};
+		const { container } = render(<PromoBox {...mockPromoBoxNoImage} />);
 		expect(container).toMatchSnapshot();
 	});
 	it("should render a button if one is supplied", () => {
@@ -43,9 +72,16 @@ describe("Promo box component", () => {
 				cta: [
 					{
 						text: "Press me",
+						// link: {
+						// 	url: "https://www.example.com/some-test-url",
+						// 	linktype: "url",
+						// },
 						link: {
+							id: "",
 							url: "https://www.example.com/some-test-url",
 							linktype: "url",
+							fieldtype: "multilink",
+							cached_url: "https://www.example.com/some-test-url",
 						},
 						variant: "primary",
 						_uid: "123456789",
@@ -100,7 +136,7 @@ describe("Promo box component", () => {
 		expect(screen.getByRole("button")).toHaveClass("youtubePlayButton");
 	});
 
-	it("should render a heading at the correct level if one is specified", () => {
+	it("should render heading as h2 when headingLevel is not specified", () => {
 		const box: PromoBoxProps = {
 			...mockPromoBox,
 		};
@@ -110,4 +146,33 @@ describe("Promo box component", () => {
 			screen.getByRole("heading", { level: 2, name: "Mock promo box title" })
 		).toBeInTheDocument();
 	});
+	it("should render heading as h3 when headingLevel has been selected as 3", () => {
+		const mockPromoBoxPropsHeading3: PromoBoxProps = {
+			blok: {
+				...mockPromoBox.blok,
+				headingLevel: "3",
+			},
+		};
+		render(<PromoBox {...mockPromoBoxPropsHeading3} />);
+		expect(
+			screen.getByRole("heading", {
+				level: 3,
+				name: mockPromoBoxPropsHeading3.blok.heading,
+			})
+		).toBeInTheDocument();
+	});
+	it("should apply transparent class to article element", () => {
+		const mockPromoBoxPropsTransparent: PromoBoxProps = {
+			blok: {
+				...mockPromoBox.blok,
+				isTransparent: true,
+			},
+		};
+		const { container } = render(
+			<PromoBox {...mockPromoBoxPropsTransparent} />
+		);
+		const article = container.querySelector("article");
+		expect(article?.classList.contains("transparent")).toBe(true);
+	});
+	
 });
