@@ -21,10 +21,7 @@ import styles from "./PromoBox.module.scss";
 
 export interface PromoBoxProps {
 	blok: PromoBoxStoryblok;
-	headingLevel?: number;
 	className?: string;
-	verticalPadding?: string;
-	imageAspectRatio?: string;
 }
 
 export const PromoBox: React.FC<PromoBoxProps> = ({
@@ -45,10 +42,8 @@ export const PromoBox: React.FC<PromoBoxProps> = ({
 		imageAspectRatio = "landscape",
 	} = blok;
 
-	// Resolve heading type
 	const HeadingElement = `h${headingLevel}` as keyof JSX.IntrinsicElements;
 
-	// Resolve grid
 	const contentGridConfig = {
 		cols: 7 as Columns,
 		push: swapMediaSide ? (5 as PullOrPush) : undefined,
@@ -59,7 +54,6 @@ export const PromoBox: React.FC<PromoBoxProps> = ({
 		pull: swapMediaSide ? (7 as PullOrPush) : undefined,
 	};
 
-	// Resolve transparency
 	const transparentClass = isTransparent ? styles.transparent : undefined;
 
 	const optimisedImage = image?.filename
