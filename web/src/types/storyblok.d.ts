@@ -275,6 +275,7 @@ export interface GridStoryblok {
     | HomepageStoryblok
     | HomepageHeroStoryblok
     | IframeStoryblok
+    | ImageEmbedStoryblok
     | ImageOrVideoStoryblok
     | InDepthArticleStoryblok
     | InfoPageStoryblok
@@ -399,6 +400,13 @@ export interface HomepageHeroStoryblok {
 export interface IframeStoryblok {
   source: string;
   component: "iframe";
+  _uid: string;
+  [k: string]: any;
+}
+
+export interface ImageEmbedStoryblok {
+  image: AssetStoryblok;
+  component: "imageEmbed";
   _uid: string;
   [k: string]: any;
 }
@@ -536,6 +544,7 @@ export interface PageStoryblok {
     | HomepageStoryblok
     | HomepageHeroStoryblok
     | IframeStoryblok
+    | ImageEmbedStoryblok
     | ImageOrVideoStoryblok
     | InDepthArticleStoryblok
     | InfoPageStoryblok
@@ -592,13 +601,14 @@ export interface PromoBoxStoryblok {
   headingLevel: string;
   body?: RichtextStoryblok;
   cta?: ButtonLinkStoryblok[];
-  useVideo?: boolean;
-  image?: AssetStoryblok;
-  imageAspectRatio?: "landscape" | "portrait";
-  youtubeEmbed?: YoutubeEmbedStoryblok[];
+  media: (YoutubeEmbedStoryblok | ImageEmbedStoryblok)[];
   swapMediaSide?: boolean;
+  imageAspectRatio?: "landscape" | "portrait";
   isTransparent?: boolean;
   verticalPadding?: "" | "small" | "medium" | "large";
+  useVideo?: boolean;
+  youtubeEmbed?: YoutubeEmbedStoryblok[];
+  image?: AssetStoryblok;
   component: "promoBox";
   _uid: string;
   [k: string]: any;
