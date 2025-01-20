@@ -32,6 +32,14 @@ class NextWebDocument extends Document<NextWebDocumentProps> {
 						src={publicRuntimeConfig.cookieBannerScriptURL}
 						strategy="beforeInteractive"
 					/>
+					<Script
+						src="https://mfpembedcdnweu.azureedge.net/mfpembedcontweu/Embed.js"
+						strategy="beforeInteractive"
+					/>
+					<Script
+						src="https://mfpembedcdnweu.azureedge.net/mfpembedcontweu/Embed.css"
+						strategy="beforeInteractive"
+					/>
 				</body>
 			</Html>
 		);
