@@ -61,7 +61,7 @@ export const CardListSection: React.FC<CardListSectionProps> = ({
 				<ul className="list list--unstyled">
 					{cards.map(({ heading, body, link, _uid }) => {
 						let cardLink: CardHeadingLinkProps | undefined = undefined;
-						const resolvedLink = link.url
+						const resolvedLink = link
 							? resolveStoryblokLink(link)
 							: undefined;
 						if (resolvedLink?.url) {
