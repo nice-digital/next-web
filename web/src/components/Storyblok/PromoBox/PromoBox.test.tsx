@@ -7,16 +7,21 @@ const mockPromoBox: PromoBoxProps = {
 	blok: {
 		heading: "Mock promo box title",
 		headingLevel: "2",
-		image: {
-			filename: "https://placebacon.net/130/210?image=4",
-			id: 123456789,
-			name: "Delicious bacon",
-			alt: null,
-			fieldtype: "asset",
-			title: null,
-			focus: null,
-		},
-		useVideo: false,
+		media: [
+			{
+				_uid: "123456789",
+				image: {
+					filename: "https://placebacon.net/130/210?image=4",
+					id: 123456789,
+					name: "Delicious bacon",
+					alt: null,
+					fieldtype: "asset",
+					title: null,
+					focus: null,
+				},
+				component: "imageEmbed",
+			},
+		],
 		body: {
 			type: "Mock rich text",
 		},
@@ -92,17 +97,7 @@ describe("Promo box component", () => {
 		const box: PromoBoxProps = {
 			blok: {
 				...mockPromoBox.blok,
-				image: {
-					filename: null,
-					id: 123456789,
-					name: "Delicious bacon",
-					alt: null,
-					fieldtype: "asset",
-					title: null,
-					focus: null,
-				},
-				useVideo: true,
-				youtubeEmbed: [
+				media: [
 					{
 						title: "Test Youtube title",
 						source: "wwSzpaTHyS8",

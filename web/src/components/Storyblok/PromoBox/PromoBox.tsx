@@ -4,7 +4,7 @@ import {
 	Grid,
 	GridItem,
 	type Columns,
-	type PullOrPush,
+	type PullOrPush
 } from "@nice-digital/nds-grid";
 
 import { StoryblokButtonLink } from "@/components/Storyblok/StoryblokButtonLink/StoryblokButtonLink";
@@ -12,7 +12,7 @@ import { StoryblokRichText } from "@/components/Storyblok/StoryblokRichText/Stor
 import { StoryblokYoutubeEmbed } from "@/components/Storyblok/StoryblokYoutubeEmbed/StoryblokYoutubeEmbed";
 import {
 	YoutubeEmbedStoryblok,
-	type PromoBoxStoryblok,
+	type PromoBoxStoryblok
 } from "@/types/storyblok";
 import { constructStoryblokImageSrc } from "@/utils/storyblok";
 import { toTitleCase } from "@/utils/string";
@@ -32,12 +32,10 @@ export const PromoBox: React.FC<PromoBoxProps> = ({
 		heading,
 		body,
 		cta,
-		image,
+		media,
 		swapMediaSide,
-		useVideo,
-		youtubeEmbed,
 		isTransparent,
-		headingLevel = 2,
+		headingLevel = "2",
 		verticalPadding = "medium",
 		imageAspectRatio = "landscape",
 	} = blok;
@@ -56,8 +54,10 @@ export const PromoBox: React.FC<PromoBoxProps> = ({
 
 	const transparentClass = isTransparent ? styles.transparent : undefined;
 
-	const optimisedImage = image?.filename
-		? constructStoryblokImageSrc(image?.filename)
+	const isVideo = media.length && media[0].component === "youtubeEmbed";
+
+	const optimisedImage = !isVideo
+		? constructStoryblokImageSrc(media[0].image?.filename)
 		: undefined;
 
 	const verticalPaddingClass = `promoBox${toTitleCase(verticalPadding)}Spacing`;
@@ -98,10 +98,8 @@ export const PromoBox: React.FC<PromoBoxProps> = ({
 						md={mediaGridConfig}
 						className={styles.mediaContainer}
 					>
-						{useVideo && youtubeEmbed?.length ? (
-							<StoryblokYoutubeEmbed
-								blok={youtubeEmbed[0] as YoutubeEmbedStoryblok}
-							/>
+						{isVideo ? (
+							<StoryblokYoutubeEmbed blok={media[0] as YoutubeEmbedStoryblok} />
 						) : optimisedImage ? (
 							<div
 								className={classnames(
