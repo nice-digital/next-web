@@ -1,13 +1,13 @@
 import classnames from "classnames";
 import Link from "next/link";
 
-import { StoryblokRichText } from "@/components/Storyblok/StoryblokRichText/StoryblokRichText";
 import { Card, type CardHeadingLinkProps } from "@nice-digital/nds-card";
 
+import { StoryblokRichText } from "@/components/Storyblok/StoryblokRichText/StoryblokRichText";
 import { CardListSectionStoryblok } from "@/types/storyblok";
 import { fieldHasValidContent, resolveStoryblokLink } from "@/utils/storyblok";
-
 import { toTitleCase } from "@/utils/string";
+
 import styles from "./CardListSection.module.scss";
 
 export interface CardListSectionProps {
@@ -31,7 +31,7 @@ export const CardListSection: React.FC<CardListSectionProps> = ({
 	const verticalPaddingClass = `cardSection${toTitleCase(
 		verticalPadding
 	)}Spacing`;
-	const richTextHasContent = fieldHasValidContent(leadText) && leadText;
+	const richTextHasContent = leadText ? fieldHasValidContent(leadText) : false;
 
 	return (
 		<section

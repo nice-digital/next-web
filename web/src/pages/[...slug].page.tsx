@@ -9,6 +9,7 @@ import React, { useMemo } from "react";
 import { ErrorPageContent } from "@/components/ErrorPageContent/ErrorPageContent";
 import { Blockquote } from "@/components/Storyblok/Blockquote/Blockquote";
 import { CardGrid } from "@/components/Storyblok/CardGrid/CardGrid";
+import { CardListSection } from "@/components/Storyblok/CardListSection/CardListSection";
 import { CategoryLandingPage } from "@/components/Storyblok/CategoryLandingPage/CategoryLandingPage";
 import { CategoryNavigation } from "@/components/Storyblok/CategoryNavigation/CategoryNavigation";
 import { InfoPage } from "@/components/Storyblok/InfoPage/InfoPage";
@@ -39,7 +40,6 @@ import {
 } from "@/utils/storyblok";
 
 import type { GetServerSidePropsContext } from "next";
-import { CardListSection } from "@/components/Storyblok/CardListSection/CardListSection";
 
 export type SlugCatchAllSuccessProps = {
 	story: ISbStoryData<InfoPageStoryblok | CategoryNavigationStoryblok>;

@@ -54,7 +54,7 @@ describe("cardListSection component", () => {
 	});
 
 	it("should match snapshot with transparent theme and large padding", () => {
-		let propsWithTransparentLargePadding: CardListSectionProps = {
+		const propsWithTransparentLargePadding: CardListSectionProps = {
 			blok: {
 				...mockCardListSectionProps.blok,
 				verticalPadding: "large",
