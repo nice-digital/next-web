@@ -1,5 +1,7 @@
 import {
-	setComponents, StoryblokComponent, type ISbStoryData
+	setComponents,
+	StoryblokComponent,
+	type ISbStoryData,
 } from "@storyblok/react";
 import { NextSeo } from "next-seo";
 import React, { useMemo } from "react";
@@ -27,11 +29,15 @@ import { logger } from "@/logger";
 import { type Breadcrumb } from "@/types/Breadcrumb";
 import {
 	CategoryNavigationStoryblok,
-	InfoPageStoryblok
+	InfoPageStoryblok,
 } from "@/types/storyblok";
 import {
-	fetchStory, GENERIC_ERROR_MESSAGE, getAdditionalMetaTags,
-	getBreadcrumbs, getSlugFromParams, getStoryVersionFromQuery
+	fetchStory,
+	GENERIC_ERROR_MESSAGE,
+	getAdditionalMetaTags,
+	getBreadcrumbs,
+	getSlugFromParams,
+	getStoryVersionFromQuery,
 } from "@/utils/storyblok";
 
 import type { GetServerSidePropsContext } from "next";

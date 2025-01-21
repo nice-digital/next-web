@@ -1,5 +1,6 @@
-import { CardListSectionItemStoryblok } from "@/types/storyblok";
 import { render, screen } from "@testing-library/react";
+
+import { CardListSectionItemStoryblok } from "@/types/storyblok";
 
 import { CardListSection, type CardListSectionProps } from "./CardListSection";
 
@@ -165,15 +166,17 @@ describe("cardListSection component", () => {
 				slug: "test-nick",
 				url: "test-nick",
 				full_slug: "test-nick",
-				_stopResolving: true
-			}
+				_stopResolving: true,
+			},
 		};
-		const cards = [{ ...mockCardListSectionProps.blok.cards[0], link: internalLink }] as CardListSectionItemStoryblok[];
+		const cards = [
+			{ ...mockCardListSectionProps.blok.cards[0], link: internalLink },
+		] as CardListSectionItemStoryblok[];
 		const mockCardListSectionPropsInternalLink: CardListSectionProps = {
 			blok: {
 				...mockCardListSectionProps.blok,
 				headingLevel: "3",
-				cards: cards
+				cards: cards,
 			},
 		};
 		render(<CardListSection {...mockCardListSectionPropsInternalLink} />);
