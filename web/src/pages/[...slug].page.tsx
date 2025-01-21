@@ -1,7 +1,5 @@
 import {
-	type ISbStoryData,
-	StoryblokComponent,
-	setComponents,
+	setComponents, StoryblokComponent, type ISbStoryData
 } from "@storyblok/react";
 import { NextSeo } from "next-seo";
 import React, { useMemo } from "react";
@@ -15,6 +13,7 @@ import { CategoryNavigation } from "@/components/Storyblok/CategoryNavigation/Ca
 import { InfoPage } from "@/components/Storyblok/InfoPage/InfoPage";
 import { Metadata } from "@/components/Storyblok/Metadata/Metadata";
 import { NestedRichText } from "@/components/Storyblok/NestedRichText/NestedRichText";
+import { PromoBox } from "@/components/Storyblok/PromoBox/PromoBox";
 import { StoryblokAccordion } from "@/components/Storyblok/StoryblokAccordion/StoryblokAccordion";
 import { StoryblokAccordionGroup } from "@/components/Storyblok/StoryblokAccordionGroup/StoryblokAccordionGroup";
 import { StoryblokActionBannerDefault } from "@/components/Storyblok/StoryblokActionBanner/StoryblokActionBannerDefault";
@@ -28,15 +27,11 @@ import { logger } from "@/logger";
 import { type Breadcrumb } from "@/types/Breadcrumb";
 import {
 	CategoryNavigationStoryblok,
-	InfoPageStoryblok,
+	InfoPageStoryblok
 } from "@/types/storyblok";
 import {
-	fetchStory,
-	getStoryVersionFromQuery,
-	getSlugFromParams,
-	getAdditionalMetaTags,
-	getBreadcrumbs,
-	GENERIC_ERROR_MESSAGE,
+	fetchStory, GENERIC_ERROR_MESSAGE, getAdditionalMetaTags,
+	getBreadcrumbs, getSlugFromParams, getStoryVersionFromQuery
 } from "@/utils/storyblok";
 
 import type { GetServerSidePropsContext } from "next";
@@ -92,6 +87,7 @@ export default function SlugCatchAll(
 		actionBanner: StoryblokActionBannerFullWidth,
 		actionBannerDefault: StoryblokActionBannerDefault,
 		cardListSection: CardListSection,
+		promoBox: PromoBox,
 	};
 
 	const infoPageComponents = {
