@@ -3,7 +3,7 @@ import { spawn } from "child_process";
 import { config } from "dotenv";
 import inquirer from "inquirer";
 
-config({ path: ".env.local" });
+config({ path: ".env.dev.local" });
 
 const LIVE_SPACE_ID = process.env.LIVE_SPACE_ID;
 const ALPHA_SPACE_ID = process.env.ALPHA_SPACE_ID;

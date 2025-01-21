@@ -14,6 +14,7 @@ import { CategoryNavigation } from "@/components/Storyblok/CategoryNavigation/Ca
 import { InfoPage } from "@/components/Storyblok/InfoPage/InfoPage";
 import { Metadata } from "@/components/Storyblok/Metadata/Metadata";
 import { NestedRichText } from "@/components/Storyblok/NestedRichText/NestedRichText";
+import { PromoBox } from "@/components/Storyblok/PromoBox/PromoBox";
 import { StoryblokAccordion } from "@/components/Storyblok/StoryblokAccordion/StoryblokAccordion";
 import { StoryblokAccordionGroup } from "@/components/Storyblok/StoryblokAccordionGroup/StoryblokAccordionGroup";
 import { StoryblokActionBannerDefault } from "@/components/Storyblok/StoryblokActionBanner/StoryblokActionBannerDefault";
@@ -90,6 +91,7 @@ export default function SlugCatchAll(
 		hero: StoryblokHero,
 		actionBanner: StoryblokActionBannerFullWidth,
 		actionBannerDefault: StoryblokActionBannerDefault,
+		promoBox: PromoBox,
 	};
 
 	const infoPageComponents = {

@@ -1,18 +1,25 @@
-@use '~/styles/colours';
 @use '@nice-digital/nds-core/scss/layout';
 @use '@nice-digital/nds-core/scss/media-queries';
 @use '@nice-digital/nds-core/scss/spacing';
 @use '@nice-digital/nds-core/scss/utils';
+@use '~/styles/colours';
 @use '~/styles/spacing' as *;
 
 .promoBox {
   @include layout.fullWidth();
   background: colours.$promo-box-background;
-  padding: $homepage-large-spacing-mobile 0;
+}
 
-  @include media-queries.mq($from: md) {
-    padding: $homepage-large-spacing 0;
-  }
+.promoBoxLargeSpacing {
+  padding: $section-large-spacing 0;
+}
+
+.promoBoxMediumSpacing {
+  padding: $section-medium-spacing 0;
+}
+
+.promoBoxSmallSpacing {
+  padding: $section-small-spacing 0;
 }
 
 .transparent {
@@ -44,9 +51,12 @@
 }
 
 .imageContainer {
-  aspect-ratio: 16 / 9;
   background-position: center;
   background-size: cover;
+}
+
+.imageContainerLandscape {
+  aspect-ratio: 16 / 9;
 
   @include media-queries.mq($from: sm) {
     aspect-ratio: 21 / 9;
@@ -54,5 +64,17 @@
 
   @include media-queries.mq($from: md) {
     aspect-ratio: 16 / 9;
+  }
+}
+
+.imageContainerPortrait {
+  aspect-ratio: 5 / 4;
+
+  @include media-queries.mq($from: sm) {
+    aspect-ratio: 16 / 9;
+  }
+
+  @include media-queries.mq($from: md) {
+    aspect-ratio: 5 / 4;
   }
 }
