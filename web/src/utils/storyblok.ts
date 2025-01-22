@@ -2,11 +2,11 @@ import { ParsedUrlQuery } from "querystring";
 
 import {
 	getStoryblokApi,
-	type ISbStoryParams,
-	type ISbStoriesParams,
-	type ISbResult,
 	type ISbError,
+	type ISbResult,
+	type ISbStoriesParams,
 	type ISbStoryData,
+	type ISbStoryParams,
 } from "@storyblok/react";
 import { Redirect } from "next/types";
 import { type MetaTag } from "next-seo/lib/types";
@@ -15,7 +15,7 @@ import { publicRuntimeConfig } from "@/config";
 import { logger } from "@/logger";
 import { type Breadcrumb } from "@/types/Breadcrumb";
 import { type SBLink } from "@/types/SBLink";
-import { type MultilinkStoryblok } from "@/types/storyblok";
+import { RichtextStoryblok, type MultilinkStoryblok } from "@/types/storyblok";
 
 export type StoryVersion = "draft" | "published" | undefined;
 
@@ -527,3 +527,6 @@ export const constructStoryblokImageSrc = (
 
 	return encodeParens(url);
 };
+
+export const fieldHasValidContent = (field: RichtextStoryblok): boolean =>
+	Array.isArray(field.content) && "content" in field.content[0];
