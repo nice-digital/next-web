@@ -30,6 +30,7 @@ import {
 	validateRouteParams,
 	constructStoryblokImageSrc,
 	GENERIC_ERROR_MESSAGE,
+	fieldHasValidContent,
 } from "./storyblok";
 
 describe("Storyblok utils", () => {
@@ -799,6 +800,12 @@ describe("Storyblok utils", () => {
 					} on page 1`
 				);
 			});
+		});
+	});
+	describe("fieldHasValidContent", () => {
+		it("should return true or false based on StoryBlok RichText object", () => {
+			const mockFieldObject = { content: [{ type: "paragraph" }] };
+			expect(fieldHasValidContent(mockFieldObject)).toBe(false);
 		});
 	});
 });

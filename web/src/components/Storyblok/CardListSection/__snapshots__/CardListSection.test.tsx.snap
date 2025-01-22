@@ -1,0 +1,143 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`cardListSection component should match snapshot when card section list intro is not present 1`] = `
+<div>
+  <section
+    class="cardSection cardSectionMediumSpacing"
+  >
+    <div
+      class="container"
+    >
+      <ul
+        class="list list--unstyled"
+      >
+        <li
+          class="card"
+          data-component="card"
+        >
+          <header
+            class="card__header"
+          >
+            <p
+              class="card__heading"
+            >
+              <a
+                href="https://nice.org.uk/guidance/ta10"
+              >
+                Mock card heading 1
+              </a>
+            </p>
+          </header>
+          Mock card summary 1
+        </li>
+      </ul>
+    </div>
+  </section>
+</div>
+`;
+
+exports[`cardListSection component should match snapshot with default values 1`] = `
+<div>
+  <section
+    class="cardSection cardSectionMediumSpacing"
+  >
+    <div
+      class="container"
+    >
+      <div
+        class="cardSectionListIntro"
+      >
+        <h2
+          class="heading"
+        >
+          Mock cardListSection title
+        </h2>
+        <div
+          class="storyblokRichTextWrapper leadText"
+          data-testid="storyblok-rich-text"
+        >
+          <p>
+            Mock cardListSection lead text
+          </p>
+        </div>
+      </div>
+      <ul
+        class="list list--unstyled"
+      >
+        <li
+          class="card"
+          data-component="card"
+        >
+          <header
+            class="card__header"
+          >
+            <p
+              class="card__heading"
+            >
+              <a
+                href="https://nice.org.uk/guidance/ta10"
+              >
+                Mock card heading 1
+              </a>
+            </p>
+          </header>
+          Mock card summary 1
+        </li>
+      </ul>
+    </div>
+  </section>
+</div>
+`;
+
+exports[`cardListSection component should match snapshot with transparent theme and large padding 1`] = `
+<div>
+  <section
+    class="cardSection cardSectionLargeSpacing transparent"
+  >
+    <div
+      class="container"
+    >
+      <div
+        class="cardSectionListIntro"
+      >
+        <h2
+          class="heading"
+        >
+          Mock cardListSection title
+        </h2>
+        <div
+          class="storyblokRichTextWrapper leadText"
+          data-testid="storyblok-rich-text"
+        >
+          <p>
+            Mock cardListSection lead text
+          </p>
+        </div>
+      </div>
+      <ul
+        class="list list--unstyled"
+      >
+        <li
+          class="card"
+          data-component="card"
+        >
+          <header
+            class="card__header"
+          >
+            <p
+              class="card__heading"
+            >
+              <a
+                href="https://nice.org.uk/guidance/ta10"
+              >
+                Mock card heading 1
+              </a>
+            </p>
+          </header>
+          Mock card summary 1
+        </li>
+      </ul>
+    </div>
+  </section>
+</div>
+`;

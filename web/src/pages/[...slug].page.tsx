@@ -1,7 +1,7 @@
 import {
-	type ISbStoryData,
-	StoryblokComponent,
 	setComponents,
+	StoryblokComponent,
+	type ISbStoryData,
 } from "@storyblok/react";
 import { NextSeo } from "next-seo";
 import React, { useMemo } from "react";
@@ -9,6 +9,7 @@ import React, { useMemo } from "react";
 import { ErrorPageContent } from "@/components/ErrorPageContent/ErrorPageContent";
 import { Blockquote } from "@/components/Storyblok/Blockquote/Blockquote";
 import { CardGrid } from "@/components/Storyblok/CardGrid/CardGrid";
+import { CardListSection } from "@/components/Storyblok/CardListSection/CardListSection";
 import { CategoryLandingPage } from "@/components/Storyblok/CategoryLandingPage/CategoryLandingPage";
 import { CategoryNavigation } from "@/components/Storyblok/CategoryNavigation/CategoryNavigation";
 import { InfoPage } from "@/components/Storyblok/InfoPage/InfoPage";
@@ -32,11 +33,11 @@ import {
 } from "@/types/storyblok";
 import {
 	fetchStory,
-	getStoryVersionFromQuery,
-	getSlugFromParams,
+	GENERIC_ERROR_MESSAGE,
 	getAdditionalMetaTags,
 	getBreadcrumbs,
-	GENERIC_ERROR_MESSAGE,
+	getSlugFromParams,
+	getStoryVersionFromQuery,
 } from "@/utils/storyblok";
 
 import type { GetServerSidePropsContext } from "next";
@@ -91,6 +92,7 @@ export default function SlugCatchAll(
 		hero: StoryblokHero,
 		actionBanner: StoryblokActionBannerFullWidth,
 		actionBannerDefault: StoryblokActionBannerDefault,
+		cardListSection: CardListSection,
 		promoBox: PromoBox,
 	};
 
