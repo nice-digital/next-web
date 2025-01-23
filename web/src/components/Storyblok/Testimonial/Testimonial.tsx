@@ -1,5 +1,4 @@
 import React, { ReactNode } from "react";
-import classnames from "classnames";
 import styles from "./Testimonial.module.scss";
 
 export interface TestimonialProps {
@@ -39,7 +38,10 @@ export const Testimonial: React.FC<TestimonialProps> = (
 	};
 	const HeadingLevelElement = `h${headingLevel}` as keyof JSX.IntrinsicElements;
 	return (
-				<div className={styles.testimonial}>
+		<div className={styles.testimonial}>
+			<div className={styles.container}>
+
+				<div className={styles.tempFlex}>
 					<div className={styles.testimonialImage}>
 						<img
 							src="https://avatar.iran.liara.run/public"
@@ -64,5 +66,7 @@ export const Testimonial: React.FC<TestimonialProps> = (
 						</div>
 					</div>
 				</div>
+			</div>
+		</div>
 	);
 };
