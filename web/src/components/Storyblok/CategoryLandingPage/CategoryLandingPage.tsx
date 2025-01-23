@@ -4,6 +4,7 @@ import { type Breadcrumb } from "@/types/Breadcrumb";
 import { type CategoryLandingPageStoryblok } from "@/types/storyblok";
 
 import styles from "./CategoryLandingPage.module.scss";
+import { Testimonial } from "../Testimonial/Testimonial";
 
 export interface CategoryLandindPageBlokProps {
 	blok: CategoryLandingPageStoryblok;
@@ -33,6 +34,14 @@ export const CategoryLandingPage = ({
 				blok.content.map((nestedBlok) => (
 					<StoryblokComponent blok={nestedBlok} key={nestedBlok._uid} />
 				))}
+			<Testimonial
+				variant="default"
+				quoteText="this is my quote for testimonial component"
+				quoteName="Person's Name"
+				quoteRole="Role Name"
+				children={undefined}
+				image={"https://avatar.iran.liara.run/public"}
+			/>
 		</div>
 	);
 };
