@@ -1,115 +1,220 @@
-@use '~/styles/colours';
+/// @group components
+@use 'sass:math';
+@use '@nice-digital/nds-core/scss/colours';
+@use '@nice-digital/nds-core/scss/focus';
 @use '@nice-digital/nds-core/scss/layout';
 @use '@nice-digital/nds-core/scss/media-queries';
 @use '@nice-digital/nds-core/scss/spacing';
 @use '@nice-digital/nds-core/scss/typography';
 @use '@nice-digital/nds-core/scss/utils';
 @use '@nice-digital/nds-core/scss/visibility';
+@use '~/styles/colours' as *;
 @use '~/styles/spacing' as *;
 
-/* Base styles for the testimonial container */
 .testimonial {
-  @include layout.fullWidth();
-  // align-items: flex-start;
-  // border: 1px solid #ddd;
-  // border-radius: 8px;
+  @include visibility.hide-print;
   // display: flex;
-  // flex-direction: column; /* Stack by default */
-  // gap: 1rem;
-  // margin: auto;
-  // max-width: 800px;
-  // padding: 1rem;
-}
-
-.container {
-  @include layout.fullWidthContainer();
-
-  // @include media-queries.mq($from: md) {
-  //   display: flex;
-  // }
-}
-
-.tempFlex {
-  display: flex;
-}
-
-/* Main image (wide screens) */
-.testimonialImage img {
-  border-radius: 50%;
-  height: 100px;
-  object-fit: cover;
-  width: 100px;
-}
-
-/* Small image for narrow screens */
-.testimonialAvatar {
-  border-radius: 50%;
-  display: none; /* Hidden by default */
-  height: 50px;
-  margin-right: 0.5rem;
-  object-fit: cover;
-  width: 50px;
-}
-
-/* Content styles */
-.testimonialContent {
-  display: flex;
   flex-direction: column;
-  gap: 0.5rem;
-}
+  gap: spacing.$medium;
+  background: $testimonial-default-background;
+  border: 1px solid $testimonial-default-background;
+  // color: colours.$text-inverse;
+  // margin: utils.rem(0 0 spacing.$large);
+  padding: utils.rem(spacing.$medium 0);
+  position: relative;
 
-.testimonialQuote {
-  color: #555;
-  font-style: italic;
-}
-
-.testimonialPerson {
-  align-items: center;
-  display: flex;
-}
-
-.testimonialName {
-  font-weight: bold;
-  margin: 0;
-}
-
-.testimonialJob {
-  color: #888;
-  font-size: 0.9rem;
-}
-
-/* Responsive layout for medium screens */
-@media (min-width: 600px) {
-  .testimonial {
-    align-items: center;
-    flex-direction: row; /* Side-by-side layout */
-    gap: 2rem;
+  &__container {
+    @include layout.container;
+  }
+  &__mainContent {
+    display: flex;
+    flex-wrap: wrap;
+    gap: spacing.$medium;
+    align-items: flex-start;
+    container-type: inline-size;
+    container-name: testimonial;
   }
 
-  .testimonialContent {
+  &__mainImage {
+    // flex: 0 0 120px;
+    // width: 120px;
+    // height: 120px;
+    // border-radius: 50%;
+    // object-fit: cover;
+    // margin-left: spacing.$large;
+    // order: 2;
+    display: none;
+  }
+
+  &__content {
     flex: 1;
+    display: flex;
+    flex-direction: column;
+    gap: spacing.$x-small;
   }
 
-  .testimonialImage {
-    order: 2; /* Image moves to the right */
+  &__quote {
+    font-style: italic;
+    // color: colours.$text-secondary;
   }
 
-  .testimonialAvatar {
-    display: none; /* Avatar hidden on larger screens */
-  }
-}
-
-/* Small viewports: Show avatar in .testimonial-person */
-@media (max-width: 599px) {
-  .testimonialImage {
-    display: none; /* Hide the main image */
+  &__person {
+    display: flex;
+    flex-direction: row;
+    gap: spacing.$x-small;
   }
 
-  .testimonialAvatar {
-    display: block; /* Show the smaller avatar */
+  &__avatar {
+    display: block;
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    object-fit: cover;
+    margin-right: spacing.$medium;
+  }
+  &__details {
+    display: flex;
+    flex-direction: column;
   }
 
-  .testimonialContent {
-    flex-direction: column; /* Stack content */
+  &__name {
+    font-weight: bold;
+    margin: 0;
+    padding: 0;
+  }
+
+  &__job {
+    margin: 0;
+    padding: 0;
+    color: #888;
+    font-size: 0.9rem;
+  }
+  &--subtle {
+    @include typography.links-default;
+    background-color: $testimonial-subtle-background;
+    // color: colours.$text;
+  }
+  &--full-width,
+  &--full-width-subtle {
+    @include layout.fullWidth();
+    // @include layout.fullWidthContainer();
+    // display: block;
+    background: #fff;
+    &__container {
+      @include layout.container;
+    }
+
+    // Conditional subtle styling
+    &.testimonial--full-width-subtle {
+      background-color: $testimonial-subtle-background;
+      // color: colours.$text;
+
+      &__quote {
+        // color: colours.$text-muted;
+      }
+
+      &__name {
+        // color: colours.$text-inverse;
+      }
+
+      &__job {
+        // color: colours.$text-inverse;
+      }
+    }
+
+    &__mainContent {
+      display: block;
+      gap: 0;
+      flex-direction: column;
+    }
+
+    &__mainImage {
+      flex: 0 0 200px;
+      width: 200px;
+      height: 200px;
+      margin: 0 auto 20px;
+      order: 0;
+      // display: none;
+    }
+
+    &__content {
+      margin-top: spacing.$medium;
+    }
+  }
+  // @media (min-width: 600px) {
+  //   &__mainContent {
+  //     flex-direction: row;
+  //   }
+
+  //   &__mainImage {
+  //     flex: 0 0 120px;
+  //     margin-left: spacing.$large;
+  //     order: 2;
+  //   }
+
+  //   &__content {
+  //     flex: 1;
+  //     order: 1;
+  //   }
+
+  //   &__avatar {
+  //     display: none;
+  //   }
+  // }
+
+  // @media (max-width: 599px) {
+  //   &__mainImage {
+  //     display: none;
+  //   }
+
+  //   &__avatar {
+  //     display: block;
+  //     width: 50px;
+  //     height: 50px;
+  //     border-radius: 50%;
+  //     object-fit: cover;
+  //     margin-right: spacing.$medium;
+  //   }
+
+  //   &__person {
+  //     flex-direction: row;
+  //     align-items: center;
+  //   }
+
+  //   &__details {
+  //     display: flex;
+  //     flex-direction: column;
+  //   }
+  // }
+
+  //container
+  @container testimonial (min-width:600px) {
+    &__mainContent {
+      flex-direction: row;
+    }
+
+    &__mainImage {
+      flex: 0 0 120px;
+      width: 120px;
+      height: 120px;
+      border-radius: 50%;
+      object-fit: cover;
+      margin-left: spacing.$large;
+      order: 2;
+      display: block;
+    }
+
+    &__content {
+      flex: 1;
+      order: 1;
+    }
+    &__avatar {
+      display: none;
+    }
+    &__person {
+      display: flex;
+      flex-direction: row;
+      align-items: center;
+    }
   }
 }

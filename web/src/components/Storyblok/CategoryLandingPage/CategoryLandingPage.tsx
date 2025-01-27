@@ -5,7 +5,7 @@ import { type CategoryLandingPageStoryblok } from "@/types/storyblok";
 
 import styles from "./CategoryLandingPage.module.scss";
 import { Testimonial } from "../Testimonial/Testimonial";
-
+import { Grid, GridItem } from "@nice-digital/nds-grid";
 export interface CategoryLandindPageBlokProps {
 	blok: CategoryLandingPageStoryblok;
 	breadcrumbs?: Breadcrumb[];
@@ -34,14 +34,54 @@ export const CategoryLandingPage = ({
 				blok.content.map((nestedBlok) => (
 					<StoryblokComponent blok={nestedBlok} key={nestedBlok._uid} />
 				))}
-			<Testimonial
-				variant="default"
-				quoteText="this is my quote for testimonial component"
-				quoteName="Person's Name"
-				quoteRole="Role Name"
-				children={undefined}
-				image={"https://avatar.iran.liara.run/public"}
-			/>
+			{/* fullWidthVariations
+			<Testimonial variant="fullWidth" children={undefined} />
+			<Testimonial variant="fullWidthSubtle" children={undefined} />
+			column layout-subtle
+			<Grid gutter="loose">
+				1 col-subtle
+				<GridItem cols={12}>
+					<Testimonial variant="subtle" children={undefined} />
+				</GridItem>
+			</Grid> */}
+			<Testimonial variant="subtle" children={undefined} />
+			{/* 2 col-subtle
+			<Grid gutter="loose">
+				<GridItem cols={6}>
+					<Testimonial variant="subtle" children={undefined} />
+				</GridItem>
+				<GridItem cols={6}>
+					<Testimonial variant="subtle" children={undefined} />
+				</GridItem>
+			</Grid> */}
+			3 col-subtle
+			<Grid gutter="loose">
+				<GridItem cols={12} sm={6} md={4}>
+					<Testimonial variant="subtle" children={undefined} />
+				</GridItem>
+				<GridItem cols={12} sm={6} md={4}>
+					<Testimonial variant="subtle" children={undefined} />
+				</GridItem>
+				<GridItem cols={12} sm={6} md={4}>
+					<Testimonial variant="subtle" children={undefined} />
+				</GridItem>
+			</Grid>
+			{/* Column layout-default
+			<Grid gutter="loose">
+				1 col-default
+				<GridItem cols={12}>
+					<Testimonial variant="default" children={undefined} />
+				</GridItem>
+			</Grid>
+			2 col-default
+			<Grid gutter="loose">
+				<GridItem cols={6} >
+					<Testimonial variant="default" children={undefined} />
+				</GridItem>
+				<GridItem cols={6} >
+					<Testimonial variant="default" children={undefined} />
+				</GridItem>
+			</Grid> */}
 		</div>
 	);
 };
