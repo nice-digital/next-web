@@ -1,0 +1,611 @@
+{
+    "story": {
+      "name": "Home",
+      "created_at": "2024-08-02T13:41:14.512Z",
+      "published_at": "2025-01-22T16:21:44.985Z",
+      "updated_at": "2025-01-22T16:21:45.008Z",
+      "id": 531693872,
+      "uuid": "c3ff153a-2a9b-4d29-8fdf-2bacb8b36e46",
+      "content": {
+        "_uid": "e065dbeb-a16e-4345-ae53-42362989609a",
+        "hero": [
+          {
+            "cta": [
+              {
+                "_uid": "773cac13-5f78-4ff7-8b97-fe164be1a22f",
+                "link": {
+                  "id": "",
+                  "url": "https://test.nice.org.uk/guidance",
+                  "linktype": "url",
+                  "fieldtype": "multilink",
+                  "cached_url": "https://test.nice.org.uk/guidance"
+                },
+                "text": "Find guidance",
+                "variant": "cta",
+                "component": "buttonLink"
+              }
+            ],
+            "_uid": "40e4283d-cae3-4c15-9ba1-d0c7f9024a17",
+            "title": "MOCKAPITEST: We produce useful and useable guidance for the NHS and wider health and care system. Changes to Hero component.",
+            "images": [
+              {
+                "id": 14945325,
+                "alt": "A patient using an oximeter at home on a mobile phone app",
+                "name": "",
+                "focus": "",
+                "title": "",
+                "source": "",
+                "filename": "https://a.storyblok.com/f/243782/2120x1414/589029a64d/patient-using-oximeter-at-home.jpg",
+                "copyright": "",
+                "fieldtype": "asset",
+                "meta_data": {
+                  "alt": "A patient using an oximeter at home on a mobile phone app",
+                  "title": "",
+                  "source": "",
+                  "copyright": ""
+                }
+              },
+              {
+                "id": 14945294,
+                "alt": "",
+                "name": "",
+                "focus": "",
+                "title": "A mother in a clinic with her child on her knee having an examination",
+                "source": "",
+                "filename": "https://a.storyblok.com/f/243782/1313x875/cd30f0268f/mother-with-child-on-knee.jpg",
+                "copyright": "",
+                "fieldtype": "asset",
+                "meta_data": {
+                  "alt": "",
+                  "title": "A mother in a clinic with her child on her knee having an examination",
+                  "source": "",
+                  "copyright": ""
+                }
+              },
+              {
+                "id": 17530016,
+                "alt": "",
+                "name": "",
+                "focus": "",
+                "title": "",
+                "source": "",
+                "filename": "https://a.storyblok.com/f/292509/4423x2940/3d3e198250/nurse-taking-blood.png",
+                "copyright": "",
+                "fieldtype": "asset",
+                "meta_data": {
+                  
+                }
+              },
+              {
+                "id": 17462941,
+                "alt": "",
+                "name": "",
+                "focus": "",
+                "title": "",
+                "source": "",
+                "filename": "https://a.storyblok.com/f/292509/867x650/f25566b425/filters_format-avif-_quality-80.jpg",
+                "copyright": "",
+                "fieldtype": "asset",
+                "meta_data": {
+                  
+                }
+              }
+            ],
+            "ctaLink": {
+              "id": "",
+              "url": "/guidance",
+              "linktype": "url",
+              "fieldtype": "multilink",
+              "cached_url": "/guidance"
+            },
+            "ctaText": "Find guidance",
+            "component": "homepageHero",
+            "description": "Our recommendations help practitioners and commissioners get the best care to people, fast, while ensuring value for the taxpayer.  Health system test. 22/01/2025"
+          }
+        ],
+        "links": {
+          "type": "doc",
+          "content": [
+            {
+              "type": "heading",
+              "attrs": {
+                "level": 2
+              },
+              "content": [
+                {
+                  "text": "Implementation and planning",
+                  "type": "text"
+                }
+              ]
+            },
+            {
+              "type": "paragraph",
+              "content": [
+                {
+                  "text": "Best practice resources for practitioners and commissioners. Regression testing 22/01/2025",
+                  "type": "text"
+                }
+              ]
+            },
+            {
+              "type": "blok",
+              "attrs": {
+                "id": "f3f28508-3e91-4d3d-ae39-4644e273062c",
+                "body": [
+                  {
+                    "_uid": "i-219f2f90-4c70-4991-a816-5eaae784d838",
+                    "cards": [
+                      {
+                        "_uid": "dc83e61a-10cf-4862-ac51-eb12df44774c",
+                        "body": "Helping you define, improve and measure quality in health, public health and social care. Beta-PRs",
+                        "link": {
+                          "id": "",
+                          "url": "https://www.nice.org.uk/standards-and-indicators",
+                          "linktype": "url",
+                          "fieldtype": "multilink",
+                          "cached_url": "https://www.nice.org.uk/standards-and-indicators"
+                        },
+                        "heading": "Quality improvement - using our standards and indicators. Regression 22/01/2025",
+                        "component": "card"
+                      },
+                      {
+                        "_uid": "c61a661a-132d-467b-a520-02091d17b8d4",
+                        "body": "Resources and recommendations for adult and children’s social care,  with example scenarios to help put them into practice.",
+                        "link": {
+                          "id": "",
+                          "url": "https://www.nice.org.uk/about/nice-communities/social-care/quick-guides",
+                          "linktype": "url",
+                          "fieldtype": "multilink",
+                          "cached_url": "https://www.nice.org.uk/about/nice-communities/social-care/quick-guides"
+                        },
+                        "heading": "Guidelines and resources for social care",
+                        "component": "card"
+                      },
+                      {
+                        "_uid": "37a78e25-3a39-4323-baa1-9f4334495e03",
+                        "body": "Explore ways to plan, save money and make decisions on the best ways to use resources. ",
+                        "link": {
+                          "id": "",
+                          "url": "oluwafunmilayo.osho@nice.org.uk",
+                          "email": "oluwafunmilayo.osho@nice.org.uk",
+                          "linktype": "email",
+                          "fieldtype": "multilink",
+                          "cached_url": "oluwafunmilayo.osho@nice.org.uk"
+                        },
+                        "heading": "Productivity, planning and cost saving resources",
+                        "component": "card"
+                      }
+                    ],
+                    "component": "cardGrid"
+                  }
+                ]
+              }
+            },
+            {
+              "type": "heading",
+              "attrs": {
+                "level": 2
+              },
+              "content": [
+                {
+                  "text": "More ways we support you",
+                  "type": "text"
+                }
+              ]
+            },
+            {
+              "type": "paragraph",
+              "content": [
+                {
+                  "text": "Useful sources of information and advice for healthcare professionals, patients, parents and carers. RF",
+                  "type": "text",
+                  "marks": [
+                    {
+                      "type": "textStyle",
+                      "attrs": {
+                        "color": ""
+                      }
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "type": "blok",
+              "attrs": {
+                "id": "af0e85e8-e6b4-4200-b9d0-e5905e1400d6",
+                "body": [
+                  {
+                    "_uid": "i-b99d3593-7b34-4c41-8464-b206c8739073",
+                    "cards": [
+                      {
+                        "_uid": "76c65865-6d11-4cc8-9374-6d62b3be65b4",
+                        "body": "The British National Formulary (BNF) provides information about the selection, prescribing, dispensing and administration of drugs.",
+                        "link": {
+                          "id": "",
+                          "url": "https://bnf.nice.org.uk/",
+                          "linktype": "url",
+                          "fieldtype": "multilink",
+                          "cached_url": "https://bnf.nice.org.uk/"
+                        },
+                        "heading": "Advice and information on the use of drugs (BNF)",
+                        "component": "card"
+                      },
+                      {
+                        "_uid": "4e87cac4-9de7-493e-a3d3-c6db358ba01a",
+                        "body": "With over 370 topics to choose from, clinical knowledge summaries (CKS) can provide quick answers to clinical questions.",
+                        "link": {
+                          "id": "",
+                          "url": "https://cks.nice.org.uk/",
+                          "linktype": "url",
+                          "fieldtype": "multilink",
+                          "cached_url": "https://cks.nice.org.uk/"
+                        },
+                        "heading": "Summaries of evidence and advice on common health topics (CKS)",
+                        "component": "card"
+                      },
+                      {
+                        "_uid": "7d4c98f1-4beb-4b8b-8a74-b475d84ed204",
+                        "body": "Our patient decision aids (PDAs) include treatment options available, likely outcomes, benefits, harms and uncertainties.",
+                        "link": {
+                          "id": "",
+                          "url": "https://www.nice.org.uk/about/nice-communities/nice-and-the-public/making-decisions-about-your-care/patient-decision-aids",
+                          "linktype": "url",
+                          "fieldtype": "multilink",
+                          "cached_url": "https://www.nice.org.uk/about/nice-communities/nice-and-the-public/making-decisions-about-your-care/patient-decision-aids"
+                        },
+                        "heading": "Making decisions about your care",
+                        "component": "card"
+                      }
+                    ],
+                    "component": "cardGrid"
+                  }
+                ]
+              }
+            }
+          ]
+        },
+        "metadata": [
+          {
+            "_uid": "151f83d8-741e-4d58-a530-74543b8b4d5d",
+            "creator": "Test creator content - Oomi~Osho**",
+            "component": "metadata",
+            "description": "NICE helps practitioners and Story Information Regression 22/01/2025"
+          }
+        ],
+        "component": "homepage",
+        "promoBox1": [
+          {
+            "cta": [
+              {
+                "_uid": "cfca49cb-57f5-4046-88d6-cad2d4f16600",
+                "link": {
+                  "id": "",
+                  "url": "https://indepth.nice.org.uk/2024highlights/index.html",
+                  "linktype": "url",
+                  "fieldtype": "multilink",
+                  "cached_url": "https://indepth.nice.org.uk/2024highlights/index.html"
+                },
+                "text": "Learn more",
+                "variant": "primary",
+                "component": "buttonLink"
+              }
+            ],
+            "_uid": "38493099-c863-4191-b40b-515ba3e362cd",
+            "body": {
+              "type": "doc",
+              "content": [
+                {
+                  "type": "paragraph",
+                  "content": [
+                    {
+                      "text": "An end of year summary from our chief executive, Dr Sam Roberts. 22/01/2025",
+                      "type": "text"
+                    }
+                  ]
+                }
+              ]
+            },
+            "image": {
+              "id": 14889245,
+              "alt": "",
+              "name": "",
+              "focus": "",
+              "title": "",
+              "source": "",
+              "filename": "https://a.storyblok.com/f/243782/1000x666/f7804c1d20/committee-meeting.jpeg",
+              "copyright": "",
+              "fieldtype": "asset",
+              "meta_data": {
+                
+              },
+              "is_external_url": false
+            },
+            "media": [
+              {
+                "_uid": "9b9b95ee-1a73-4005-b8eb-3f454e4fe018",
+                "image": {
+                  "id": 17580839,
+                  "alt": "",
+                  "name": "",
+                  "focus": "",
+                  "title": "",
+                  "source": "",
+                  "filename": "https://a.storyblok.com/f/292509/758x420/3037b2e1c5/guidance-topics.JPG",
+                  "copyright": "",
+                  "fieldtype": "asset",
+                  "meta_data": {
+                    
+                  },
+                  "is_external_url": false
+                },
+                "component": "imageEmbed"
+              }
+            ],
+            "heading": "NICE in 2024: Highlights from our 25th year",
+            "useVideo": true,
+            "component": "promoBox",
+            "headingLevel": "2",
+            "youtubeEmbed": [
+              {
+                "_uid": "a6b8cf36-ac73-4595-b639-a2b58e37bda9",
+                "title": "Professor Andrew Furber, NHS regional director of public health, north West England, on NICE at 25",
+                "source": "XcF9HJlhvzs",
+                "component": "youtubeEmbed"
+              }
+            ],
+            "isTransparent": false,
+            "swapMediaSide": false,
+            "verticalPadding": "medium",
+            "imageAspectRatio": "landscape"
+          }
+        ],
+        "promoBox2": [
+          {
+            "cta": [
+              {
+                "_uid": "4126654d-6d8a-47af-b43c-626a67bb26a9",
+                "link": {
+                  "id": "",
+                  "url": "https://www.nice.org.uk/get-involved/our-committees/join-a-committee/how-to-apply-to-join-a-committee",
+                  "linktype": "url",
+                  "fieldtype": "multilink",
+                  "cached_url": "https://www.nice.org.uk/get-involved/our-committees/join-a-committee/how-to-apply-to-join-a-committee"
+                },
+                "text": "How to join a committee",
+                "variant": "primary",
+                "component": "buttonLink"
+              }
+            ],
+            "_uid": "d7128e03-ca5c-4163-a72f-35daeb515ceb",
+            "body": {
+              "type": "doc",
+              "content": [
+                {
+                  "type": "paragraph",
+                  "content": [
+                    {
+                      "text": "On NICE’s 25th anniversary, our partners and collaborators in the health care system discuss what the future holds for NICE. Regression 22/01/2025",
+                      "type": "text"
+                    }
+                  ]
+                }
+              ]
+            },
+            "image": {
+              "id": 14889245,
+              "alt": "",
+              "name": "",
+              "focus": "",
+              "title": "",
+              "source": "",
+              "filename": "https://a.storyblok.com/f/243782/1000x666/f7804c1d20/committee-meeting.jpeg",
+              "copyright": "",
+              "fieldtype": "asset",
+              "meta_data": {
+                
+              },
+              "is_external_url": false
+            },
+            "media": [
+              {
+                "_uid": "6b615b35-b3d7-4258-bd11-8c02dd60429e",
+                "title": "On NICE’s 25th anniversary, our partners and collaborators in the health care system discuss what the future holds for NICE. 22012025",
+                "source": "RRDz047so4E",
+                "component": "youtubeEmbed"
+              }
+            ],
+            "heading": "NICE 25: What are our future challenges and opportunities? Regression 22/01/2025",
+            "useVideo": true,
+            "component": "promoBox",
+            "headingLevel": "2",
+            "youtubeEmbed": [
+              {
+                "_uid": "927076a6-44db-43a3-9bf4-bbd34d9d69be",
+                "title": "On NICE’s 25th anniversary, our partners and collaborators in the health care system discuss what the future holds for NICE. 25112024",
+                "source": "RRDz047so4E",
+                "component": "youtubeEmbed"
+              }
+            ],
+            "isTransparent": false,
+            "swapMediaSide": false,
+            "verticalPadding": "medium",
+            "imageAspectRatio": ""
+          }
+        ],
+        "spotlight": [
+          {
+            "_uid": "d19c1b3d-08a0-4eb5-82cc-a2a32aadab5c",
+            "heading": "NICE committees: Join us and use your voice to make a real difference to patient care. Regression 22/01/2025",
+            "stories": [
+              "3393314b-490e-4902-812b-3071e0417628",
+              "50d79cf8-faf7-48bf-8876-67388caea834"
+            ],
+            "component": "spotlight",
+            "youtubeEmbed": [
+              {
+                "_uid": "1b0c0879-f3f7-4813-bcca-4ca4da10acf7",
+                "title": "Acute medicine consultant, Bushra Alam on NICE at 25",
+                "source": "Qghu-14a9p8",
+                "component": "youtubeEmbed"
+              }
+            ],
+            "isTransparent": true,
+            "mediaDescription": "Hear from our professional members representing general practice. They explained why they joined a NICE committee and what it means to them. Regression 22/01/2025"
+          }
+        ],
+        "Spotlight1": [
+          {
+            "_uid": "cd279829-6d19-474b-8e54-1127b9534276",
+            "heading": "Something",
+            "stories": [
+              "5e3fbe6e-23d1-4e4b-a532-02c8369d6bea",
+              "9da191e5-38f2-46ea-ad62-6027a52042f1"
+            ],
+            "component": "spotlight_copy",
+            "youtubeEmbed": [
+              {
+                "_uid": "db6fd5cb-790d-4774-9034-c823fd1143cf",
+                "title": "A title",
+                "source": "Qghu-14a9p8",
+                "component": "youtubeEmbed"
+              }
+            ],
+            "isTransparent": false,
+            "mediaDescription": {
+              "type": "doc",
+              "content": [
+                {
+                  "type": "paragraph",
+                  "content": [
+                    {
+                      "text": "Some text ",
+                      "type": "text"
+                    },
+                    {
+                      "text": "and some linked text",
+                      "type": "text",
+                      "marks": [
+                        {
+                          "type": "link",
+                          "attrs": {
+                            "href": "/test-nick",
+                            "uuid": "600c4173-54de-4d42-b7cb-92feb3c92228",
+                            "anchor": null,
+                            "target": "_self",
+                            "linktype": "story"
+                          }
+                        }
+                      ]
+                    },
+                    {
+                      "text": " and some more text. ",
+                      "type": "text"
+                    }
+                  ]
+                }
+              ]
+            }
+          }
+        ],
+        "featuredStory": "60539a7d-0a5c-4f19-8dc8-7f215e8737cc",
+        "linksAreTransparent": true,
+        "primaryActionBanner": [
+          {
+            "cta": [
+              {
+                "_uid": "e90f5ef7-cab3-4bf4-a08b-4d00142c591f",
+                "link": {
+                  "id": "",
+                  "url": "https://indepth.nice.org.uk/NICE-at-25/index.html",
+                  "linktype": "url",
+                  "fieldtype": "multilink",
+                  "cached_url": "https://indepth.nice.org.uk/NICE-at-25/index.html"
+                },
+                "text": "Learn more",
+                "variant": "inverse",
+                "component": "buttonLink"
+              }
+            ],
+            "_uid": "aef3121c-d4d7-4924-9355-99ce15c3bcda",
+            "body": {
+              "type": "doc",
+              "content": [
+                {
+                  "type": "paragraph",
+                  "content": [
+                    {
+                      "text": "Our NICE Advice service will guide you there.",
+                      "type": "text",
+                      "marks": [
+                        {
+                          "type": "textStyle",
+                          "attrs": {
+                            "color": ""
+                          }
+                        }
+                      ]
+                    }
+                  ]
+                },
+                {
+                  "type": "paragraph",
+                  "content": [
+                    {
+                      "text": "Get reliable scientific advice and NHS insights, direct from NICE. We support companies seeking nationwide adoption of the best treatments and care. Our aim is to drive innovation into the hands of health and care professionals to enable best practice. Regression 22/01/2025",
+                      "type": "text"
+                    }
+                  ]
+                }
+              ]
+            },
+            "image": {
+              "id": 18214711,
+              "alt": "",
+              "name": "",
+              "focus": "",
+              "title": "",
+              "source": "",
+              "filename": "https://a.storyblok.com/f/292509/604x337/017be78f82/nice-transformation-plan.JPG",
+              "copyright": "",
+              "fieldtype": "asset",
+              "meta_data": {
+                
+              },
+              "is_external_url": false
+            },
+            "heading": "If you’re striving for NHS market access.",
+            "variant": "",
+            "component": "actionBanner"
+          }
+        ]
+      },
+      "slug": "home",
+      "full_slug": "home",
+      "sort_by_date": null,
+      "position": 10,
+      "tag_list": [
+        
+      ],
+      "is_startpage": false,
+      "parent_id": 0,
+      "meta_data": null,
+      "group_id": "8440dace-a420-4d51-a43a-b4980cf4eca8",
+      "first_published_at": "2023-08-25T10:45:45.418Z",
+      "release_id": null,
+      "lang": "default",
+      "path": "/",
+      "alternates": [
+        
+      ],
+      "default_full_slug": null,
+      "translated_slugs": null
+    },
+    "cv": 1737737586,
+    "rels": [
+      
+    ],
+    "links": [
+      
+    ]
+  }
