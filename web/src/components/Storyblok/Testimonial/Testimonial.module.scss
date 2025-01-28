@@ -125,9 +125,10 @@
     padding: 0;
   }
 
-  &--subtle {
-    @include typography.links-default;
-    background-color: $testimonial-subtle-background;
+  &--transparent {
+    background-color: transparent;
+    border-left: unset;
+    border-right: unset;
   }
 
   &--full-width,
@@ -153,17 +154,8 @@
       }
     }
 
-    .testimonial__mainImage {
-      @container testimonial (min-width:600px) {
-        margin-left: 5rem; //TODO: set up as NDS var?
-      }
-
-      @container testimonial (min-width:1200px) {
-        height: 200px;
-        width: 200px;
-      }
-    }
   }
+
 
   &--full-width {
     background-color: $testimonial-subtle-background;

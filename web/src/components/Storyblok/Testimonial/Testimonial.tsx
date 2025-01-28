@@ -3,7 +3,7 @@ import classnames from "classnames";
 import styles from "./Testimonial.module.scss";
 
 export interface TestimonialProps {
-	variant?: "default" | "subtle" | "fullWidth" | "fullWidthWhite";
+	variant?: "default" | "transparent" | "fullWidth" | "fullWidthWhite";
 	children: ReactNode[] | ReactNode;
 	className?: string;
 	image: string; // This is the main image URL (for desktop)
@@ -18,7 +18,7 @@ export const Testimonial: React.FC<TestimonialProps> = (
 	props
 ): JSX.Element | null => {
 	const {
-		variant,
+		variant="default",
 		quoteText,
 		quoteName,
 		quoteRole,
@@ -44,9 +44,7 @@ export const Testimonial: React.FC<TestimonialProps> = (
 	const gridClasses = classnames(styles.testimonialWrapper, {
 		[styles[`testimonial--layout-${layout}`]]: layout,
 	});
-	const HeadingLevelElement = `h${headingLevel}` as keyof JSX.IntrinsicElements;
-	console.log("gridClasses", gridClasses);
-	console.log("layout", layout);
+
 	return (
 		<div
 			className={testimonialClasses}
@@ -61,8 +59,10 @@ export const Testimonial: React.FC<TestimonialProps> = (
 						/>
 					</div>
 					<div className={styles.testimonial__content}>
+					{/* <h2 className="visually-hidden">Testimonial </h2> */}
 						<p className={styles.testimonial__quote}>
-							"This is an amazing product! Highly recommended for everyone."
+
+							This is an amazing product! Highly recommended for everyone.
 						</p>
 						<div className={styles.testimonial__person}>
 							{/* Avatar for mobile */}
