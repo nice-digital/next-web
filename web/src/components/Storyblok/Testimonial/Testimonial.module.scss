@@ -65,7 +65,7 @@
   }
 
   &__quote {
-    font-style: italic;
+    @include typography.font-size(lead); //TODO: Incorrect on mobile
   }
 
   &__person {
@@ -94,6 +94,7 @@
   }
 
   &__details {
+    @include typography.font-size(p); //TODO: Incorrect on mobile
     display: flex;
     flex-direction: column;
   }
@@ -105,8 +106,6 @@
   }
 
   &__job {
-    color: #888;
-    font-size: 0.9rem;
     margin: 0;
     padding: 0;
   }
