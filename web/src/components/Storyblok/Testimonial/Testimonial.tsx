@@ -53,7 +53,6 @@ export const Testimonial: React.FC<TestimonialProps> = (
 			data-component={`testimonial${variant ? `--${variant}` : ""}`}
 			{...rest}
 		>
-			<div className={styles.testimonial__container}>
 				<div className={styles.testimonial__mainContent}>
 					<div className={styles.testimonial__mainImage}>
 						<img
@@ -79,7 +78,6 @@ export const Testimonial: React.FC<TestimonialProps> = (
 						</div>
 					</div>
 				</div>
-			</div>
 		</div>
 	);
 };

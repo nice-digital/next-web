@@ -21,18 +21,23 @@
   gap: utils.rem(spacing.$medium);
   position: relative;
 
-  &__container {
-    @include layout.container;
-  }
-
   &__mainContent {
+    @include layout.container;
     align-items: flex-start;
     display: flex;
     flex-wrap: wrap;
     gap: utils.rem(spacing.$medium);
+    padding: utils.rem(spacing.$large spacing.$medium);
 
     @container testimonial (min-width:600px) {
       flex-direction: row;
+      padding-left: utils.rem(spacing.$medium);
+      padding-right: utils.rem(spacing.$medium);
+    }
+
+    @container testimonial (min-width:1200px) {
+      padding-left: utils.rem(spacing.$xx-large);
+      padding-right: utils.rem(spacing.$xx-large);
     }
   }
 
