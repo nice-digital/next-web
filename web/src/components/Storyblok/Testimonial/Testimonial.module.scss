@@ -13,34 +13,55 @@
 
 .testimonial {
   @include visibility.hide-print;
-  flex-direction: column;
-  gap: spacing.$medium;
   background: $testimonial-default-background;
   border: 1px solid $testimonial-default-background;
+  flex-direction: column;
+  gap: spacing.$medium;
   padding: utils.rem(spacing.$medium 0);
   position: relative;
 
   &__container {
     @include layout.container;
   }
+
   &__mainContent {
+    align-items: flex-start;
+    container-name: testimonial;
+    container-type: inline-size;
     display: flex;
     flex-wrap: wrap;
     gap: spacing.$medium;
-    align-items: flex-start;
-    container-type: inline-size;
-    container-name: testimonial;
+
+    @container testimonial (min-width:600px) {
+      flex-direction: row;
+    }
   }
 
   &__mainImage {
     display: none;
+
+    @container testimonial (min-width:600px) {
+      border-radius: 50%;
+      display: block;
+      flex: 0 0 120px;
+      height: 120px;
+      margin-left: spacing.$large;
+      object-fit: cover;
+      order: 2;
+      width: 120px;
+    }
   }
 
   &__content {
-    flex: 1;
     display: flex;
+    flex: 1;
     flex-direction: column;
     gap: spacing.$x-small;
+
+    @container testimonial (min-width:600px) {
+      flex: 1;
+      order: 1;
+    }
   }
 
   &__quote {
@@ -51,16 +72,27 @@
     display: flex;
     flex-direction: row;
     gap: spacing.$x-small;
+
+    @container testimonial (min-width:600px) {
+      align-items: center;
+      display: flex;
+      flex-direction: row;
+    }
   }
 
   &__avatar {
-    display: block;
-    width: 50px;
-    height: 50px;
     border-radius: 50%;
-    object-fit: cover;
+    display: block;
+    height: 50px;
     margin-right: spacing.$medium;
+    object-fit: cover;
+    width: 50px;
+
+    @container testimonial (min-width:600px) {
+      display: none;
+    }
   }
+
   &__details {
     display: flex;
     flex-direction: column;
@@ -73,19 +105,22 @@
   }
 
   &__job {
-    margin: 0;
-    padding: 0;
     color: #888;
     font-size: 0.9rem;
+    margin: 0;
+    padding: 0;
   }
+
   &--subtle {
     @include typography.links-default;
     background-color: $testimonial-subtle-background;
   }
+
   &--full-width,
   &--full-width-subtle {
     @include layout.fullWidth();
     background: #fff;
+
     &__container {
       @include layout.container;
     }
@@ -97,51 +132,20 @@
 
     &__mainContent {
       display: block;
-      gap: 0;
       flex-direction: column;
+      gap: 0;
     }
 
     &__mainImage {
       flex: 0 0 200px;
-      width: 200px;
       height: 200px;
       margin: 0 auto 20px;
       order: 0;
+      width: 200px;
     }
 
     &__content {
       margin-top: spacing.$medium;
-    }
-  }
-
-  //container
-  @container testimonial (min-width:600px) {
-    &__mainContent {
-      flex-direction: row;
-    }
-
-    &__mainImage {
-      flex: 0 0 120px;
-      width: 120px;
-      height: 120px;
-      border-radius: 50%;
-      object-fit: cover;
-      margin-left: spacing.$large;
-      order: 2;
-      display: block;
-    }
-
-    &__content {
-      flex: 1;
-      order: 1;
-    }
-    &__avatar {
-      display: none;
-    }
-    &__person {
-      display: flex;
-      flex-direction: row;
-      align-items: center;
     }
   }
 }
