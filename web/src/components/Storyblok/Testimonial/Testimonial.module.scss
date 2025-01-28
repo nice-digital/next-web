@@ -133,9 +133,21 @@
   &--full-width,
   &--full-width-white {
     @include layout.fullWidth();
+    border: unset;
+
+    .testimonial__mainImage {
+      @include media-queries.mq($from: lg) {
+        height: 200px;
+        width: 200px;
+
+      }
+      @include media-queries.mq($from: sm) {
+        margin-left: 5rem;
+      }
+    }
 
     .testimonial__mainContent {
-      @container testimonial (min-width:1200px) {
+      @include media-queries.mq($from: lg) {
         padding-bottom: utils.rem(spacing.$x-large);
         padding-top: utils.rem(spacing.$x-large);
       }
