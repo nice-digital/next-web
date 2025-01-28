@@ -171,5 +171,7 @@
 
   &--full-width-white {
     background-color: colours.$fill-white-background;
+    border-bottom: 1px solid colours.$border;
+    border-top: 1px solid colours.$border;
   }
 }
