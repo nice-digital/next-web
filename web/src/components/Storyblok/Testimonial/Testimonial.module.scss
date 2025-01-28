@@ -70,6 +70,7 @@
 
   &__quote {
     @include typography.font-size(lead); //TODO: Incorrect on mobile
+    margin: 0 0 utils.rem(spacing.$medium) 0;
   }
 
   &__person {
