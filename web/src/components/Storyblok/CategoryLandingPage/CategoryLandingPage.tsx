@@ -41,33 +41,38 @@ export const CategoryLandingPage = ({
 			Full Width White
 			<Testimonial variant="fullWidthWhite" children={undefined} />
 
-			1 col-subtle
+			1 col-default
 			<Grid gutter="loose">
 				<GridItem cols={12}>
-					<Testimonial variant="subtle" children={undefined} />
+					<Testimonial  children={undefined} />
+				</GridItem>
+			</Grid>
+			1 col-transparent
+			<Grid gutter="loose">
+				<GridItem cols={12}>
+					<Testimonial variant="transparent" children={undefined} />
+				</GridItem>
+			</Grid>
+			2 col-default
+			<Grid gutter="loose">
+				<GridItem cols={12} md={6}>
+					<Testimonial  children={undefined} />
+				</GridItem>
+				<GridItem cols={12} md={6}>
+					<Testimonial  children={undefined} />
 				</GridItem>
 			</Grid>
 
-			2 col-subtle
-			<Grid gutter="loose">
-				<GridItem cols={12} md={6}>
-					<Testimonial variant="subtle" children={undefined} />
-				</GridItem>
-				<GridItem cols={12} md={6}>
-					<Testimonial variant="subtle" children={undefined} />
-				</GridItem>
-			</Grid>
-
-			3 col-subtle
+			3 col-transparent
 			<Grid gutter="loose">
 				<GridItem cols={12} md={4}>
-					<Testimonial variant="subtle" children={undefined} />
+					<Testimonial variant="transparent" children={undefined} />
 				</GridItem>
 				<GridItem cols={12} md={4}>
-					<Testimonial variant="subtle" children={undefined} />
+					<Testimonial variant="transparent" children={undefined} />
 				</GridItem>
 				<GridItem cols={12} md={4}>
-					<Testimonial variant="subtle" children={undefined} />
+					<Testimonial variant="transparent" children={undefined} />
 				</GridItem>
 			</Grid>
 			{/* Column layout-default
