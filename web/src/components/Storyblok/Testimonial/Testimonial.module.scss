@@ -27,32 +27,37 @@
     display: flex;
     flex-wrap: wrap;
     gap: utils.rem(spacing.$medium);
-    padding: utils.rem(spacing.$large spacing.$medium);
+    padding: utils.rem(spacing.$large 0); // 1rem L/R margin
 
-    @container testimonial (min-width:600px) {
+    @container testimonial (min-width:600px) { // TODO: use breakpoint vars, fix border / computed size issue
       flex-direction: row;
-      padding-left: utils.rem(spacing.$medium);
-      padding-right: utils.rem(spacing.$medium);
+      padding-left: utils.rem(spacing.$medium); // 1rem L/R margin
+      padding-right: utils.rem(spacing.$medium); // 1rem L/R margin
     }
 
     @container testimonial (min-width:1200px) {
-      padding-left: utils.rem(spacing.$xx-large);
-      padding-right: utils.rem(spacing.$xx-large);
+      padding-left: utils.rem(spacing.$xx-large); // 1rem L/R margin
+      padding-right: utils.rem(spacing.$xx-large); // 1rem L/R margin
     }
   }
 
   &__mainImage {
     display: none;
 
-    @container testimonial (min-width:600px) {
+    @container testimonial (min-width:900px) {
       border-radius: 50%;
       display: block;
-      flex: 0 0 120px;
-      height: 120px;
+      flex: 0 0 145px;
+      height: 145px;
       margin-left: utils.rem(spacing.$x-large);
       object-fit: cover;
       order: 2;
-      width: 120px;
+      width: 145px;
+    }
+
+    @container testimonial (min-width:1200px) {
+      height: 164px;
+      width: 164px;
     }
   }
 
@@ -70,7 +75,7 @@
 
   &__quote {
     @include typography.font-size(lead); //TODO: Incorrect on mobile
-    margin: 0 0 utils.rem(spacing.$medium) 0;
+    margin: utils.rem(spacing.$medium) 0;
   }
 
   &__person {
@@ -88,12 +93,17 @@
   &__avatar {
     border-radius: 50%;
     display: block;
-    height: 50px;
+    height: 64px;
     margin-right: utils.rem(spacing.$medium);
     object-fit: cover;
-    width: 50px;
+    width: 64px;
 
     @container testimonial (min-width:600px) {
+      height: 90px;
+      width: 90px;
+    }
+
+    @container testimonial (min-width:900px) {
       display: none;
     }
   }
@@ -134,6 +144,11 @@
     .testimonial__mainImage {
       @container testimonial (min-width:600px) {
         margin-left: 5rem; //TODO: set up as NDS var?
+      }
+
+      @container testimonial (min-width:1200px) {
+        height: 200px;
+        width: 200px;
       }
     }
   }
