@@ -14,7 +14,7 @@
 .testimonial {
   @include visibility.hide-print;
   background: $testimonial-default-background;
-  border: 1px solid $testimonial-default-background;
+  border: 1px solid $testimonial-default-border;
   container-name: testimonial;
   container-type: inline-size;
   flex-direction: column;
