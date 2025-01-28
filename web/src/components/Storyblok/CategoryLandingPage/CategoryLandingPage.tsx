@@ -47,7 +47,8 @@ export const CategoryLandingPage = ({
 					<Testimonial variant="subtle" children={undefined} />
 				</GridItem>
 			</Grid>
-			{/* 2 col-subtle
+
+			2 col-subtle
 			<Grid gutter="loose">
 				<GridItem cols={6}>
 					<Testimonial variant="subtle" children={undefined} />
@@ -55,7 +56,8 @@ export const CategoryLandingPage = ({
 				<GridItem cols={6}>
 					<Testimonial variant="subtle" children={undefined} />
 				</GridItem>
-			</Grid> */}
+			</Grid>
+
 			3 col-subtle
 			<Grid gutter="loose">
 				<GridItem cols={12} sm={6} md={4}>
