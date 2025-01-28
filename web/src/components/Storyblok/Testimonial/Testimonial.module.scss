@@ -122,6 +122,19 @@
   &--full-width,
   &--full-width-white {
     @include layout.fullWidth();
+
+    .testimonial__mainContent {
+      @container testimonial (min-width:1200px) {
+        padding-bottom: utils.rem(spacing.$x-large);
+        padding-top: utils.rem(spacing.$x-large);
+      }
+    }
+
+    .testimonial__mainImage {
+      @container testimonial (min-width:600px) {
+        margin-left: 5rem; //TODO: set up as NDS var?
+      }
+    }
   }
 
   &--full-width {
