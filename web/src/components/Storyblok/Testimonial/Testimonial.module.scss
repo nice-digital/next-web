@@ -16,8 +16,7 @@
   background: $testimonial-default-background;
   border: 1px solid $testimonial-default-background;
   flex-direction: column;
-  gap: spacing.$medium;
-  padding: utils.rem(spacing.$medium 0);
+  gap: utils.rem(spacing.$medium);
   position: relative;
 
   &__container {
@@ -30,7 +29,7 @@
     container-type: inline-size;
     display: flex;
     flex-wrap: wrap;
-    gap: spacing.$medium;
+    gap: utils.rem(spacing.$medium);
 
     @container testimonial (min-width:600px) {
       flex-direction: row;
@@ -45,7 +44,7 @@
       display: block;
       flex: 0 0 120px;
       height: 120px;
-      margin-left: spacing.$large;
+      margin-left: utils.rem(spacing.$x-large);
       object-fit: cover;
       order: 2;
       width: 120px;
@@ -56,7 +55,7 @@
     display: flex;
     flex: 1;
     flex-direction: column;
-    gap: spacing.$x-small;
+    gap: utils.rem(spacing.$x-small);
 
     @container testimonial (min-width:600px) {
       flex: 1;
@@ -71,7 +70,7 @@
   &__person {
     display: flex;
     flex-direction: row;
-    gap: spacing.$x-small;
+    gap: utils.rem(spacing.$x-small);
 
     @container testimonial (min-width:600px) {
       align-items: center;
@@ -84,7 +83,7 @@
     border-radius: 50%;
     display: block;
     height: 50px;
-    margin-right: spacing.$medium;
+    margin-right: utils.rem(spacing.$medium);
     object-fit: cover;
     width: 50px;
 
