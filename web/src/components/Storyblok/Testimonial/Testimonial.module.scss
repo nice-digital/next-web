@@ -15,6 +15,8 @@
   @include visibility.hide-print;
   background: $testimonial-default-background;
   border: 1px solid $testimonial-default-background;
+  container-name: testimonial;
+  container-type: inline-size;
   flex-direction: column;
   gap: utils.rem(spacing.$medium);
   position: relative;
@@ -25,8 +27,6 @@
 
   &__mainContent {
     align-items: flex-start;
-    container-name: testimonial;
-    container-type: inline-size;
     display: flex;
     flex-wrap: wrap;
     gap: utils.rem(spacing.$medium);
