@@ -118,28 +118,6 @@
   &--full-width,
   &--full-width-white {
     @include layout.fullWidth();
-
-    &__container {
-      @include layout.container;
-    }
-
-    &__mainContent {
-      display: block;
-      flex-direction: column;
-      gap: 0;
-    }
-
-    &__mainImage {
-      flex: 0 0 200px;
-      height: 200px;
-      margin: 0 auto 20px;
-      order: 0;
-      width: 200px;
-    }
-
-    &__content {
-      margin-top: spacing.$medium;
-    }
   }
 
   &--full-width {
