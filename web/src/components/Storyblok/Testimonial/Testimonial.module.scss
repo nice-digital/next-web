@@ -116,17 +116,11 @@
   }
 
   &--full-width,
-  &--full-width-subtle {
+  &--full-width-white {
     @include layout.fullWidth();
-    background: #fff;
 
     &__container {
       @include layout.container;
-    }
-
-    // Conditional subtle styling
-    &.testimonial--full-width-subtle {
-      background-color: $testimonial-subtle-background;
     }
 
     &__mainContent {
@@ -146,5 +140,13 @@
     &__content {
       margin-top: spacing.$medium;
     }
+  }
+
+  &--full-width {
+    background-color: $testimonial-subtle-background;
+  }
+
+  &--full-width-white {
+    background-color: colours.$fill-white-background;
   }
 }

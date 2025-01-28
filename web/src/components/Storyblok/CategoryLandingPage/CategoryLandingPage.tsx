@@ -34,17 +34,19 @@ export const CategoryLandingPage = ({
 				blok.content.map((nestedBlok) => (
 					<StoryblokComponent blok={nestedBlok} key={nestedBlok._uid} />
 				))}
-			{/* fullWidthVariations
+
+			Full Width Default
 			<Testimonial variant="fullWidth" children={undefined} />
-			<Testimonial variant="fullWidthSubtle" children={undefined} />
-			column layout-subtle
+
+			Full Width White
+			<Testimonial variant="fullWidthWhite" children={undefined} />
+
+			1 col-subtle
 			<Grid gutter="loose">
-				1 col-subtle
 				<GridItem cols={12}>
 					<Testimonial variant="subtle" children={undefined} />
 				</GridItem>
-			</Grid> */}
-			<Testimonial variant="subtle" children={undefined} />
+			</Grid>
 			{/* 2 col-subtle
 			<Grid gutter="loose">
 				<GridItem cols={6}>

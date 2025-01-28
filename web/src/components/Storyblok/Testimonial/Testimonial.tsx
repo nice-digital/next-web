@@ -3,7 +3,7 @@ import classnames from "classnames";
 import styles from "./Testimonial.module.scss";
 
 export interface TestimonialProps {
-	variant?: "default" | "subtle" | "fullWidth" | "fullWidthSubtle";
+	variant?: "default" | "subtle" | "fullWidth" | "fullWidthWhite";
 	children: ReactNode[] | ReactNode;
 	className?: string;
 	image: string; // This is the main image URL (for desktop)
