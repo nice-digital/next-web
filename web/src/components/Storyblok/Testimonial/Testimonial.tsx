@@ -25,7 +25,6 @@ export const Testimonial: React.FC<TestimonialProps> = (
 		className,
 		headingLevel = 4,
 		image,
-		layout = "one",
 		...rest
 	} = props;
 
