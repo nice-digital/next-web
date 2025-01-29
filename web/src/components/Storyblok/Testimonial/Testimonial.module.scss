@@ -8,6 +8,7 @@
 @use '@nice-digital/nds-core/scss/typography';
 @use '@nice-digital/nds-core/scss/utils';
 @use '@nice-digital/nds-core/scss/visibility';
+@use '@nice-digital/nds-core/scss/colours/tokens/global';
 @use '~/styles/colours' as *;
 @use '~/styles/spacing' as *;
 
@@ -29,7 +30,8 @@
     gap: utils.rem(spacing.$medium);
     padding: utils.rem(spacing.$large 0); // 1rem L/R margin
 
-    @container testimonial (min-width: #{media-queries.$sm}) { // TODO: fix border / computed size issue
+    @container testimonial (min-width: #{media-queries.$sm}) {
+      // TODO: fix border / computed size issue
       flex-direction: row;
       padding-left: utils.rem(spacing.$medium); // 1rem L/R margin
       padding-right: utils.rem(spacing.$medium); // 1rem L/R margin
@@ -66,19 +68,23 @@
     flex: 1;
     flex-direction: column;
     gap: utils.rem(spacing.$x-small);
-
-    &::before {
-      color: #228096; //TODO get value from design system
-      content: '\201C';
-      font-family: 'Lora', serif; //TODO check font as it looks different to the design
-      font-size: 6rem;
-      line-height: 0;
-      padding-top: utils.rem(spacing.$large);
-    }
-
     @container testimonial (min-width: #{media-queries.$sm}) {
       flex: 1;
       order: 1;
+    }
+    &::before {
+      color: global.$nice-teal; //TODO get value from design system
+      content: '\201C';
+      font-family: var(--serif-font-family);
+      font-size: utils.rem(72, 15);
+      line-height: 0;
+      padding-top: utils.rem(spacing.$large);
+      @container testimonial (min-width: #{media-queries.$sm}) {
+        font-size: utils.rem(90,15);
+      }
+      @container testimonial (min-width: #{media-queries.$lg}) {
+        font-size: utils.rem(108, 18);
+      }
     }
   }
 
@@ -145,11 +151,22 @@
     @include layout.fullWidth();
     border: unset;
 
+    .testimonial__content {
+      @include media-queries.mq($from: sm) {
+        &::before {
+          font-size: utils.rem(90, 15);
+        }
+      }
+      @include media-queries.mq($from: lg) {
+        &::before {
+          font-size: utils.rem(124, 18);
+        }
+      }
+    }
     .testimonial__mainImage {
       @include media-queries.mq($from: lg) {
         height: 200px;
         width: 200px;
-
       }
       @include media-queries.mq($from: sm) {
         margin-left: 5rem;
@@ -162,9 +179,7 @@
         padding-top: utils.rem(spacing.$x-large);
       }
     }
-
   }
-
 
   &--full-width {
     background-color: $testimonial-subtle-background;
