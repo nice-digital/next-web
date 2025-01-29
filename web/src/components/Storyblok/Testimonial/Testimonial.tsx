@@ -11,7 +11,6 @@ export interface TestimonialProps {
 	quoteName: string;
 	quoteRole: string;
 	headingLevel?: 2 | 3 | 4 | 5 | 6;
-	layout: "one" | "two" | "three";
 }
 
 export const Testimonial: React.FC<TestimonialProps> = (
@@ -41,9 +40,6 @@ export const Testimonial: React.FC<TestimonialProps> = (
 		},
 		className
 	);
-	const gridClasses = classnames(styles.testimonialWrapper, {
-		[styles[`testimonial--layout-${layout}`]]: layout,
-	});
 
 	return (
 		<div
