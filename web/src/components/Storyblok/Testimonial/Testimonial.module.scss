@@ -68,10 +68,12 @@
     flex: 1;
     flex-direction: column;
     gap: utils.rem(spacing.$x-small);
+
     @container testimonial (min-width: #{media-queries.$sm}) {
       flex: 1;
       order: 1;
     }
+
     &::before {
       color: global.$nice-teal;
       content: '\201C';
@@ -79,12 +81,15 @@
       font-size: utils.rem(72, 15);
       line-height: 1rem;
       padding-top: utils.rem(spacing.$large);
+
       @container testimonial (min-width: #{media-queries.$sm}) {
         font-size: utils.rem(90, 15);
       }
+
       @container testimonial (min-width: #{media-queries.$lg}) {
         font-size: utils.rem(108, 18);
       }
+
       @include media-queries.mq($from: lg) {
         line-height: 2rem;
       }
@@ -154,19 +159,17 @@
     @include layout.fullWidth();
     border: unset;
 
-    .testimonial__content {
+    .testimonial__content::before {
       @include media-queries.mq($from: sm) {
-        &::before {
-          font-size: utils.rem(90, 15);
-        }
+        font-size: utils.rem(90, 15);
       }
+
       @include media-queries.mq($from: lg) {
-        &::before {
-          font-size: utils.rem(124, 18);
-          line-height: 2rem;
-        }
+        font-size: utils.rem(124, 18);
+        line-height: 2rem;
       }
     }
+
     .testimonial__mainImage {
       @include media-queries.mq($from: lg) {
         height: 200px;
