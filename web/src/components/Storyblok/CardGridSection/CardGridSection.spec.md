@@ -1,4 +1,6 @@
 ## CardGridSection spec
+Replicate CardListSection
+
 Fields:
 - heading (opt)
 - headingLevel (default h2)
@@ -20,5 +22,11 @@ Fields:
 	- calloutCard*
 	- testimonial
 
-	Can we limit no of cards based on 'columns' field?
 	Mix and match within row?
+		No
+
+	Not all components can be all widths (see ACs for more detail)
+	- Component-specific grid rows? e.g. CardGridRow/TestimonialGridRow/CalloutGridRow?
+
+	Not all columns have to be filled (e.g. if 5 of same component, use 3 col layout with 3 row and 2 row)
+
