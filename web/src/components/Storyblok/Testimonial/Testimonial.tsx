@@ -58,7 +58,7 @@ export const Testimonial: React.FC<TestimonialProps> = (
 		? cloneElement(image as ReactElement, {
 				className: classnames(
 					(image as ReactElement).props.className,
-					styles.testimonial__mainImage
+					styles.testimonialMainImage
 				),
 				alt: (image as ReactElement).props.alt || "Testimonial Main Image",
 		  })
@@ -69,9 +69,9 @@ export const Testimonial: React.FC<TestimonialProps> = (
 			data-component={`testimonial${variant ? `--${variant}` : ""}`}
 			{...rest}
 		>
-			<div className={styles.testimonial__mainContent}>
+			<div className={styles.testimonialMainContent}>
 				<div className={styles.testimonial__mainImageContainer}>{mainImage}</div>
-				<div className={styles.testimonial__content}>
+				<div className={styles.testimonialContent}>
 					<p className={styles.testimonial__quote}>{quoteText}</p>
 					<div className={styles.testimonial__person}>
 						{mobileImage}

@@ -22,7 +22,7 @@
   gap: utils.rem(spacing.$medium);
   position: relative;
 
-  &__mainContent {
+  &MainContent {
     @include layout.container;
     align-items: flex-start;
     display: flex;
@@ -53,7 +53,7 @@
     }
   }
 
-  &__mainImage {
+  &MainImage {
     @container testimonial (min-width: #{media-queries.$md}) {
       aspect-ratio: 1 / 1;
       border-radius: 50%;
@@ -69,7 +69,7 @@
     }
   }
 
-  &__content {
+  &Content {
     display: flex;
     flex: 1;
     flex-direction: column;
@@ -165,7 +165,7 @@
     @include layout.fullWidth();
     border: unset;
 
-    .testimonial__content::before {
+    .testimonialContent::before {
       @include media-queries.mq($from: sm) {
         font-size: utils.rem(90, 15);
       }
@@ -176,7 +176,7 @@
       }
     }
 
-    .testimonial__mainImage {
+    .testimonialMainImage {
       @include media-queries.mq($from: lg) {
         height: 200px;
         width: 200px;
@@ -186,7 +186,7 @@
       }
     }
 
-    .testimonial__mainContent {
+    .testimonialMainContent {
       @include media-queries.mq($from: lg) {
         padding-bottom: utils.rem(spacing.$x-large);
         padding-top: utils.rem(spacing.$x-large);
