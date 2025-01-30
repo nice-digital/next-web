@@ -1,12 +1,12 @@
-import React, { ReactNode } from "react";
+import React, { ReactElement, ReactNode, isValidElement, cloneElement } from "react";
 import classnames from "classnames";
 import styles from "./Testimonial.module.scss";
 
 export interface TestimonialProps {
 	variant?: "default" | "transparent" | "fullWidth" | "fullWidthWhite";
-	children: ReactNode[] | ReactNode;
+	children?: ReactNode[] | ReactNode; //TODO does this component need to be able to accept children?
 	className?: string;
-	image: string; // This is the main image URL (for desktop)
+	image?: ReactElement;
 	quoteText: string;
 	quoteName: string;
 	quoteRole: string;
@@ -17,7 +17,7 @@ export const Testimonial: React.FC<TestimonialProps> = (
 	props
 ): JSX.Element | null => {
 	const {
-		variant="default",
+		variant = "default",
 		quoteText,
 		quoteName,
 		quoteRole,
@@ -40,39 +40,34 @@ export const Testimonial: React.FC<TestimonialProps> = (
 		className
 	);
 
+	const mobileAvatar = isValidElement(image)
+		? cloneElement(image as ReactElement, {
+				className: classnames((image as ReactElement).props.className, styles.testimonial__avatar),
+				alt: (image as ReactElement).props.alt || "Testimonial avatar"
+		  })
+		: null;
+
 	return (
 		<div
 			className={testimonialClasses}
 			data-component={`testimonial${variant ? `--${variant}` : ""}`}
 			{...rest}
 		>
-				<div className={styles.testimonial__mainContent}>
-					<div className={styles.testimonial__mainImage}>
-						<img
-							src="https://avatar.iran.liara.run/public"
-							alt="Person's Name"
-						/>
-					</div>
-					<div className={styles.testimonial__content}>
-					{/* <h2 className="visually-hidden">Testimonial </h2> */}
-						<p className={styles.testimonial__quote}>
-
-							This is an amazing product! Highly recommended for everyone.
-						</p>
-						<div className={styles.testimonial__person}>
-							{/* Avatar for mobile */}
-							<img
-								className={styles.testimonial__avatar}
-								src="https://avatar.iran.liara.run/public"
-								alt="Person's Name"
-							/>
-							<div className={styles.testimonial__details}>
-								<p className={styles.testimonial__name}>Jane Doe</p>
-								<p className={styles.testimonial__job}>Software Engineer</p>
-							</div>
+			<div className={styles.testimonial__mainContent}>
+				<div className={styles.testimonial__mainImage}>{image}</div>
+				<div className={styles.testimonial__content}>
+					<p className={styles.testimonial__quote}>
+						{quoteText}
+					</p>
+					<div className={styles.testimonial__person}>
+						{mobileAvatar}
+						<div className={styles.testimonial__details}>
+							<p className={styles.testimonial__name}>{quoteName}</p>
+							<p className={styles.testimonial__job}>{quoteRole}</p>
 						</div>
 					</div>
 				</div>
+			</div>
 		</div>
 	);
 };

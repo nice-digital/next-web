@@ -36,59 +36,59 @@ export const CategoryLandingPage = ({
 				))}
 
 			Full Width Default
-			<Testimonial variant="fullWidth" children={undefined} />
+			<Testimonial variant="fullWidth" quoteName="Jane Doe" quoteRole="Software Engineer" quoteText="This is an amazing product! Highly recommended for everyone." children={undefined} image={<img src="https://avatar.iran.liara.run/public" alt="Persons name" />} />
 
 			Full Width White
-			<Testimonial variant="fullWidthWhite" children={undefined} />
+			<Testimonial variant="fullWidthWhite" quoteName="Jane Doe" quoteRole="Software Engineer" quoteText="This is an amazing product! Highly recommended for everyone." children={undefined} image={<img src="https://avatar.iran.liara.run/public" alt="Persons name" />} />
 
 			1 col-default
 			<Grid gutter="loose">
 				<GridItem cols={12}>
-					<Testimonial  children={undefined} />
+					<Testimonial  quoteName="Jane Doe" quoteRole="Software Engineer" quoteText="This is an amazing product! Highly recommended for everyone."  children={undefined} image={<img src="https://avatar.iran.liara.run/public" alt="Persons name" />} />
 				</GridItem>
 			</Grid>
 			1 col-transparent
 			<Grid gutter="loose">
 				<GridItem cols={12}>
-					<Testimonial variant="transparent" children={undefined} />
+					<Testimonial quoteName="Jane Doe" quoteRole="Software Engineer" quoteText="This is an amazing product! Highly recommended for everyone."  variant="transparent" children={undefined} image={<img src="https://avatar.iran.liara.run/public" alt="Persons name" />}/>
 				</GridItem>
 			</Grid>
 			2 col-default
 			<Grid gutter="loose">
 				<GridItem cols={12} md={6}>
-					<Testimonial  children={undefined} />
+					<Testimonial  quoteName="Jane Doe" quoteRole="Software Engineer" quoteText="This is an amazing product! Highly recommended for everyone."  children={undefined} image={<img src="https://avatar.iran.liara.run/public" alt="Persons name" />}/>
 				</GridItem>
 				<GridItem cols={12} md={6}>
-					<Testimonial  children={undefined} />
+					<Testimonial  quoteName="Jane Doe" quoteRole="Software Engineer" quoteText="This is an amazing product! Highly recommended for everyone."  children={undefined} image={<img src="https://avatar.iran.liara.run/public" alt="Persons name" />}/>
 				</GridItem>
 			</Grid>
 
 			3 col-transparent
 			<Grid gutter="loose">
 				<GridItem cols={12} md={4}>
-					<Testimonial variant="transparent" children={undefined} />
+					<Testimonial quoteName="Jane Doe" quoteRole="Software Engineer" quoteText="This is an amazing product! Highly recommended for everyone."  variant="transparent"  image={<img src="https://avatar.iran.liara.run/public" alt="Persons name" />}/>
 				</GridItem>
 				<GridItem cols={12} md={4}>
-					<Testimonial variant="transparent" children={undefined} />
+					<Testimonial quoteName="Jane Doe" quoteRole="Software Engineer" quoteText="This is an amazing product! Highly recommended for everyone."  variant="transparent"  image={<img src="https://avatar.iran.liara.run/public" alt="Persons name" />}/>
 				</GridItem>
 				<GridItem cols={12} md={4}>
-					<Testimonial variant="transparent" children={undefined} />
+					<Testimonial quoteName="Jane Doe" quoteRole="Software Engineer" quoteText="This is an amazing product! Highly recommended for everyone."  variant="transparent"  image={<img src="https://avatar.iran.liara.run/public" alt="Persons name" />}/>
 				</GridItem>
 			</Grid>
 			{/* Column layout-default
 			<Grid gutter="loose">
 				1 col-default
 				<GridItem cols={12}>
-					<Testimonial variant="default" children={undefined} />
+					<Testimonial variant="default"  />
 				</GridItem>
 			</Grid>
 			2 col-default
 			<Grid gutter="loose">
 				<GridItem cols={6} >
-					<Testimonial variant="default" children={undefined} />
+					<Testimonial variant="default"  />
 				</GridItem>
 				<GridItem cols={6} >
-					<Testimonial variant="default" children={undefined} />
+					<Testimonial variant="default"  />
 				</GridItem>
 			</Grid> */}
 		</div>
