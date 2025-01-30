@@ -1,4 +1,9 @@
-import React, { ReactElement, ReactNode, isValidElement, cloneElement } from "react";
+import React, {
+	ReactElement,
+	ReactNode,
+	isValidElement,
+	cloneElement,
+} from "react";
 import classnames from "classnames";
 import styles from "./Testimonial.module.scss";
 
@@ -40,13 +45,24 @@ export const Testimonial: React.FC<TestimonialProps> = (
 		className
 	);
 
-	const mobileAvatar = isValidElement(image)
+	const mobileImage = isValidElement(image)
 		? cloneElement(image as ReactElement, {
-				className: classnames((image as ReactElement).props.className, styles.testimonial__avatar),
-				alt: (image as ReactElement).props.alt || "Testimonial avatar"
+				className: classnames(
+					(image as ReactElement).props.className,
+					styles.testimonial__mobileImage
+				),
+				alt: (image as ReactElement).props.alt || "Testimonial Mobile Image",
 		  })
 		: null;
-
+	const mainImage = isValidElement(image)
+		? cloneElement(image as ReactElement, {
+				className: classnames(
+					(image as ReactElement).props.className,
+					styles.testimonial__mainImage
+				),
+				alt: (image as ReactElement).props.alt || "Testimonial Main Image",
+		  })
+		: null;
 	return (
 		<div
 			className={testimonialClasses}
@@ -54,13 +70,11 @@ export const Testimonial: React.FC<TestimonialProps> = (
 			{...rest}
 		>
 			<div className={styles.testimonial__mainContent}>
-				<div className={styles.testimonial__mainImage}>{image}</div>
+				<div className={styles.testimonial__mainImageContainer}>{mainImage}</div>
 				<div className={styles.testimonial__content}>
-					<p className={styles.testimonial__quote}>
-						{quoteText}
-					</p>
+					<p className={styles.testimonial__quote}>{quoteText}</p>
 					<div className={styles.testimonial__person}>
-						{mobileAvatar}
+						{mobileImage}
 						<div className={styles.testimonial__details}>
 							<p className={styles.testimonial__name}>{quoteName}</p>
 							<p className={styles.testimonial__job}>{quoteRole}</p>
