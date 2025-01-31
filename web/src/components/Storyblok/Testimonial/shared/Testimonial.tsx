@@ -17,7 +17,7 @@ export interface TestimonialProps {
 	quoteName: string;
 	quoteRole: string;
 	headingLevel?: 2 | 3 | 4 | 5 | 6;
-	link?: string;
+	link?: any;//TODO Need to add proper types to link
 }
 
 export const Testimonial: React.FC<TestimonialProps> = (
@@ -31,6 +31,7 @@ export const Testimonial: React.FC<TestimonialProps> = (
 		children,
 		className,
 		headingLevel = 4,
+		link=undefined,
 		image,
 		...rest
 	} = props;
@@ -85,14 +86,16 @@ export const Testimonial: React.FC<TestimonialProps> = (
 							<p className={styles.testimonial__job}>{quoteRole}</p>
 						</div>
 					</div>
-					{/* TODO: Added logic to render link for fullwidth variations */}
-					{/* {variant === "fullWidth" || variant === "fullWidthWhite" ? (
+					{/* TODO: Need to fix style issues from <picture> tag when adding storyBlokImage */}
+
+					{(variant === "fullWidth" || variant === "fullWidthWhite") &&
+					link !== undefined ? (
 						<div>
 							<Link href="" className={styles.testimonial__link}>
 								Read the Story
 							</Link>
 						</div>
-					) : null} */}
+					) : null}
 				</div>
 			</div>
 		</div>

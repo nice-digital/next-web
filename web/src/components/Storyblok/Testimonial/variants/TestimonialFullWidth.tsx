@@ -19,6 +19,7 @@ export const TestimonialFullWidth: React.FC<TestimonialFullWidthProps> = ({
 		children,
 		headingLevel = 4,
 		image,
+		link,
 	} = blok;
 
 	return (
@@ -35,6 +36,7 @@ export const TestimonialFullWidth: React.FC<TestimonialFullWidthProps> = ({
 					serviceOptions={{ height: 0, quality: 80, width: 708 }}
 				/>
 			}
+			link={link}
 		/>
 	);
 };
