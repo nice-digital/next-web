@@ -164,6 +164,8 @@
   &--full-width-white {
     @include layout.fullWidth();
     border: unset;
+    //Added bottom margin to create spacing between two full-width variations if both are added.
+    margin-bottom: utils.rem(spacing.$large);
 
     .testimonialContent::before {
       @include media-queries.mq($from: sm) {

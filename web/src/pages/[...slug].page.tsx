@@ -41,6 +41,8 @@ import {
 } from "@/utils/storyblok";
 
 import type { GetServerSidePropsContext } from "next";
+import { TestimonialFullWidth } from "@/components/Storyblok/Testimonial/variants/TestimonialFullWidth";
+import { TestimonialDefault } from "@/components/Storyblok/Testimonial/variants/TestimonialDefault";
 
 export type SlugCatchAllSuccessProps = {
 	story: ISbStoryData<InfoPageStoryblok | CategoryNavigationStoryblok>;
@@ -94,6 +96,8 @@ export default function SlugCatchAll(
 		actionBannerDefault: StoryblokActionBannerDefault,
 		cardListSection: CardListSection,
 		promoBox: PromoBox,
+		testimonial: TestimonialFullWidth,
+		TestimonialDefault: TestimonialDefault,
 	};
 
 	const infoPageComponents = {

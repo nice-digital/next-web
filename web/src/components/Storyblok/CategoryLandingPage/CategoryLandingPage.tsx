@@ -35,7 +35,7 @@ export const CategoryLandingPage = ({
 				blok.content.map((nestedBlok) => (
 					<StoryblokComponent blok={nestedBlok} key={nestedBlok._uid} />
 				))}
-			Full Width Default
+			{/* Full Width Default
 			<Testimonial
 				variant="fullWidth"
 				quoteName="Jane Doe"
@@ -60,7 +60,7 @@ export const CategoryLandingPage = ({
 				image={
 					<img src="https://avatar.iran.liara.run/public" alt="Persons name" />
 				}
-			/>
+			/> */}
 			1 col-default
 			<Grid gutter="loose">
 				<GridItem cols={12}>
