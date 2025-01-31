@@ -4,7 +4,7 @@ import { type Breadcrumb } from "@/types/Breadcrumb";
 import { type CategoryLandingPageStoryblok } from "@/types/storyblok";
 
 import styles from "./CategoryLandingPage.module.scss";
-import { Testimonial } from "../Testimonial/Testimonial";
+import { Testimonial } from "../Testimonial/shared/Testimonial";
 import { Grid, GridItem } from "@nice-digital/nds-grid";
 import { StoryblokImage } from "../StoryblokImage/StoryblokImage";
 export interface CategoryLandindPageBlokProps {
@@ -168,22 +168,6 @@ export const CategoryLandingPage = ({
 					/>
 				</GridItem>
 			</Grid>
-			{/* Column layout-default
-			<Grid gutter="loose">
-				1 col-default
-				<GridItem cols={12}>
-					<Testimonial variant="default"  />
-				</GridItem>
-			</Grid>
-			2 col-default
-			<Grid gutter="loose">
-				<GridItem cols={6} >
-					<Testimonial variant="default"  />
-				</GridItem>
-				<GridItem cols={6} >
-					<Testimonial variant="default"  />
-				</GridItem>
-			</Grid> */}
 		</div>
 	);
 };
