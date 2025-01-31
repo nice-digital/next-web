@@ -6,6 +6,7 @@ import React, {
 } from "react";
 import classnames from "classnames";
 import styles from "./Testimonial.module.scss";
+import { Link } from "@/components/Link/Link";
 
 export interface TestimonialProps {
 	variant?: "default" | "transparent" | "fullWidth" | "fullWidthWhite";
@@ -16,6 +17,7 @@ export interface TestimonialProps {
 	quoteName: string;
 	quoteRole: string;
 	headingLevel?: 2 | 3 | 4 | 5 | 6;
+	link?: string;
 }
 
 export const Testimonial: React.FC<TestimonialProps> = (
@@ -83,6 +85,14 @@ export const Testimonial: React.FC<TestimonialProps> = (
 							<p className={styles.testimonial__job}>{quoteRole}</p>
 						</div>
 					</div>
+					{/* TODO: Added logic to render link for fullwidth variations */}
+					{/* {variant === "fullWidth" || variant === "fullWidthWhite" ? (
+						<div>
+							<Link href="" className={styles.testimonial__link}>
+								Read the Story
+							</Link>
+						</div>
+					) : null} */}
 				</div>
 			</div>
 		</div>

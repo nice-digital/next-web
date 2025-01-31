@@ -154,6 +154,13 @@
     padding: 0;
   }
 
+  &__link {
+    color: colours.$link;
+    font-family: var(--sans-font-family);
+    font-size: utils.rem(18, 18);
+    padding-top: utils.rem(spacing.$medium);
+  }
+
   &--transparent {
     background-color: transparent;
     border-left: unset;

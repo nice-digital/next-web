@@ -744,6 +744,7 @@ export interface TestimonialStoryblok {
   quoteText: string;
   image: AssetStoryblok;
   variant: "fullWidth" | "fullWidthWhite";
+  link?: Exclude<MultilinkStoryblok, {linktype?: "email"} | {linktype?: "asset"}>;
   component: "testimonial";
   _uid: string;
   [k: string]: any;
