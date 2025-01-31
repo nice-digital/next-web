@@ -1,0 +1,153 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Storyblok testimonial full width component should match snapshot for full width variant 1`] = `
+<div>
+  <div
+    class="testimonial testimonial--full-width"
+    data-component="testimonial--fullWidth"
+    data-testid="testimonial-fullWidth"
+  >
+    <div
+      class="testimonialMainContent"
+    >
+      <div
+        class="testimonial__mainImageContainer"
+      >
+        <picture>
+          <source
+            srcset="https://placekitten.com/408/287/m/708x0/filters:format%28avif%29:quality%2880%29"
+            type="image/avif"
+          />
+          <source
+            srcset="https://placekitten.com/408/287/m/708x0/filters:format%28webp%29:quality%2880%29"
+            type="image/webp"
+          />
+          <img
+            alt="some alt text"
+            class="testimonialMainImage"
+            src="https://placekitten.com/408/287/m/708x0/filters:format%28jpeg%29:quality%2880%29"
+          />
+        </picture>
+      </div>
+      <div
+        class="testimonialContent"
+      >
+        <p
+          class="testimonial__quote"
+        >
+          Test Quote Text
+        </p>
+        <div
+          class="testimonial__person"
+        >
+          <picture>
+            <source
+              srcset="https://placekitten.com/408/287/m/708x0/filters:format%28avif%29:quality%2880%29"
+              type="image/avif"
+            />
+            <source
+              srcset="https://placekitten.com/408/287/m/708x0/filters:format%28webp%29:quality%2880%29"
+              type="image/webp"
+            />
+            <img
+              alt="some alt text"
+              class="testimonial__mobileImage"
+              src="https://placekitten.com/408/287/m/708x0/filters:format%28jpeg%29:quality%2880%29"
+            />
+          </picture>
+          <div
+            class="testimonial__details"
+          >
+            <p
+              class="testimonial__name"
+            >
+              Test Name
+            </p>
+            <p
+              class="testimonial__job"
+            >
+              Test Role
+            </p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+`;
+
+exports[`Storyblok testimonial full width component should match snapshot for the full width white variant 1`] = `
+<div>
+  <div
+    class="testimonial testimonial--full-width-white"
+    data-component="testimonial--fullWidthWhite"
+    data-testid="testimonial-fullWidthWhite"
+  >
+    <div
+      class="testimonialMainContent"
+    >
+      <div
+        class="testimonial__mainImageContainer"
+      >
+        <picture>
+          <source
+            srcset="https://placekitten.com/408/287/m/708x0/filters:format%28avif%29:quality%2880%29"
+            type="image/avif"
+          />
+          <source
+            srcset="https://placekitten.com/408/287/m/708x0/filters:format%28webp%29:quality%2880%29"
+            type="image/webp"
+          />
+          <img
+            alt="some alt text"
+            class="testimonialMainImage"
+            src="https://placekitten.com/408/287/m/708x0/filters:format%28jpeg%29:quality%2880%29"
+          />
+        </picture>
+      </div>
+      <div
+        class="testimonialContent"
+      >
+        <p
+          class="testimonial__quote"
+        >
+          Test Quote Text
+        </p>
+        <div
+          class="testimonial__person"
+        >
+          <picture>
+            <source
+              srcset="https://placekitten.com/408/287/m/708x0/filters:format%28avif%29:quality%2880%29"
+              type="image/avif"
+            />
+            <source
+              srcset="https://placekitten.com/408/287/m/708x0/filters:format%28webp%29:quality%2880%29"
+              type="image/webp"
+            />
+            <img
+              alt="some alt text"
+              class="testimonial__mobileImage"
+              src="https://placekitten.com/408/287/m/708x0/filters:format%28jpeg%29:quality%2880%29"
+            />
+          </picture>
+          <div
+            class="testimonial__details"
+          >
+            <p
+              class="testimonial__name"
+            >
+              Test Name
+            </p>
+            <p
+              class="testimonial__job"
+            >
+              Test Role
+            </p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+`;
