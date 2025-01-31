@@ -141,6 +141,7 @@
     @include typography.font-size(p); //TODO: Incorrect on mobile
     display: flex;
     flex-direction: column;
+    justify-content: center;
   }
 
   &__name {
