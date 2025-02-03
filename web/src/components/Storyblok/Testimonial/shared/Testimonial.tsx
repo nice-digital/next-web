@@ -52,7 +52,8 @@ export const Testimonial: React.FC<TestimonialProps> = (
 		? cloneElement(image as ReactElement, {
 				className: classnames(
 					(image as ReactElement).props.className,
-					styles.testimonial__mobileImage
+					styles.testimonial__image,
+					styles.testimonial__imageMobile
 				),
 				alt: (image as ReactElement).props.alt || "Testimonial Mobile Image",
 		  })
@@ -61,7 +62,7 @@ export const Testimonial: React.FC<TestimonialProps> = (
 		? cloneElement(image as ReactElement, {
 				className: classnames(
 					(image as ReactElement).props.className,
-					styles.testimonialMainImage
+					styles.testimonial__image
 				),
 				alt: (image as ReactElement).props.alt || "Testimonial Main Image",
 		  })
