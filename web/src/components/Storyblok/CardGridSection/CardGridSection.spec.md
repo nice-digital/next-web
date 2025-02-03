@@ -29,4 +29,5 @@ Fields:
 	- Component-specific grid rows? e.g. CardGridRow/TestimonialGridRow/CalloutGridRow?
 
 	Not all columns have to be filled (e.g. if 5 of same component, use 3 col layout with 3 row and 2 row)
+	- Can "GridRow" support >3 and handle wrapping? Or does code only handle rows not grids?
 
