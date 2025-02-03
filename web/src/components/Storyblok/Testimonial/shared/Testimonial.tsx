@@ -75,28 +75,29 @@ export const Testimonial: React.FC<TestimonialProps> = (
 			{...rest}
 		>
 			<div className={styles.testimonial__mainContent}>
-				<div className={styles.testimonial__mainImageContainer}>
-					{mainImage}
-				</div>
-				<div className={styles.testimonial__content}>
-					<p className={styles.testimonial__quote}>{quoteText}</p>
-					<div className={styles.testimonial__person}>
+				<figure className={styles.testimonial__content}>
+					<blockquote className={styles.testimonial__quote}>{quoteText}</blockquote>
+					<figcaption className={styles.testimonial__person}>
 						{mobileImage}
-						<div className={styles.testimonial__details}>
-							<p className={styles.testimonial__name}>{quoteName}</p>
-							<p className={styles.testimonial__job}>{quoteRole}</p>
-						</div>
-					</div>
+
+						<p className={styles.testimonial__details}>
+							<span className={styles.testimonial__name}>{quoteName}</span>
+							<span className={styles.testimonial__job}>{quoteRole}</span>
+						</p>
+						</figcaption>
+
 					{/* TODO: Need to add display:flex to <picture> tag when adding storyBlokImage */}
 
 					{(variant === "fullWidth" || variant === "fullWidthWhite") &&
 					link !== undefined ? (
-						<div>
-							<Link href="" className={styles.testimonial__link}>
-								Read the Story
-							</Link>
-						</div>
+						<Link href="" className={styles.testimonial__link}>
+							Read the Story
+						</Link>
 					) : null}
+				</figure>
+
+				<div className={styles.testimonial__mainImageContainer}>
+					{mainImage}
 				</div>
 			</div>
 		</div>
