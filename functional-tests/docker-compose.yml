@@ -21,7 +21,7 @@ services:
     depends_on:
       - selenium-hub
       - next-web
-      - api
+      # - api
     environment:
       - TEAMCITY_VERSION
     volumes:
@@ -41,7 +41,7 @@ services:
       - mock-search-api
       - mock-publications
       - mock-indev
-      - api
+      # - api
     ports:
       # Next Web runs on 8092 in PM2: see pm2.ecosystem.json in the web-host folder
       - '3000:3000'
@@ -51,7 +51,7 @@ services:
       - SEARCH_BASE_URL
       - PUBLICATIONS_BASE_URL
       - INDEV_BASE_URL
-      # - STORYBLOK_TOKEN
+      - STORYBLOK_TOKEN
       - STORYBLOK_ROUTE_CATCHALL
       - JOTFORM_BASE_URL
       - JOTFORM_APIKEY
@@ -61,22 +61,22 @@ services:
           # Make sure the app uses a nice.org.uk domain so that the cookie banner license works
           - next-web-tests.nice.org.uk
 
-  api:
-    # (This is a mock api data that is still WIP)
-    container_name: functional-tests_api_1
-    build: ./../nextwebmockapi/
-    ports:
-      - 3001:3001
-    environment:
-      - HTTP_PORT ="3001"
-    volumes:
-      - ./../nextwebmockapi:/data
-      - /data/node_modules
-    command: npm start
-    networks:
-      default:
-        aliases:
-          - api
+  # api:
+  #   # (This is a mock api data that is still WIP)
+  #   container_name: functional-tests_api_1
+  #   build: ./../nextwebmockapi/
+  #   ports:
+  #     - 3001:3001
+  #   environment:
+  #     - HTTP_PORT ="3001"
+  #   volumes:
+  #     - ./../nextwebmockapi:/data
+  #     - /data/node_modules
+  #   command: npm start
+  #   networks:
+  #     default:
+  #       aliases:
+  #         - api
 
   mock-search-api:
     build: https://github.com/nice-digital/mocks-apis.git#main:search-apis
