@@ -87,7 +87,7 @@ export const Testimonial: React.FC<TestimonialProps> = (
 							<p className={styles.testimonial__job}>{quoteRole}</p>
 						</div>
 					</div>
-					{/* TODO: Need to fix style issues from <picture> tag when adding storyBlokImage */}
+					{/* TODO: Need to add display:flex to <picture> tag when adding storyBlokImage */}
 
 					{(variant === "fullWidth" || variant === "fullWidthWhite") &&
 					link !== undefined ? (

@@ -29,7 +29,6 @@
     align-items: flex-start;
     display: flex;
     flex-wrap: wrap;
-    gap: utils.rem(spacing.$medium);
     padding: utils.rem(spacing.$large 0); // 1rem L/R margin
 
     @container testimonial (min-width: #{media-queries.$sm}) {
@@ -49,8 +48,8 @@
     display: none;
 
     @container testimonial (min-width: #{media-queries.$md}) {
-      display: block;
-      margin-left: utils.rem(spacing.$x-large);
+      align-self: center;
+      display: flex;
       order: 2;
     }
   }
@@ -130,7 +129,6 @@
   &__person {
     display: flex;
     flex-direction: row;
-    gap: utils.rem(spacing.$x-small);
 
     @container testimonial (min-width: #{media-queries.$sm}) {
       align-items: center;
