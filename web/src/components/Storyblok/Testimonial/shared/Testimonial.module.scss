@@ -11,6 +11,13 @@
 @use '@nice-digital/nds-core/scss/colours/tokens/global';
 @use '~/styles/colours' as *;
 @use '~/styles/spacing' as *;
+@mixin testimonialBodyFontSize {
+  font-size: utils.rem(18, 15);
+
+  @include media-queries.mq($from: lg) {
+    font-size: utils.rem(18, 18);
+  }
+}
 
 .testimonial {
   $block: &;
@@ -138,7 +145,7 @@
   }
 
   &__details {
-    @include typography.font-size(p); //TODO: Incorrect on mobile
+    @include testimonialBodyFontSize();
     display: flex;
     flex-direction: column;
     justify-content: center;
@@ -156,10 +163,7 @@
   }
 
   &__link {
-    color: colours.$link;
-    font-family: var(--sans-font-family);
-    font-size: utils.rem(18, 18);
-    padding-top: utils.rem(spacing.$medium);
+    display: none;
   }
 
   &--transparent {
@@ -200,6 +204,14 @@
       @include media-queries.mq($from: lg) {
         padding-bottom: utils.rem(spacing.$x-large);
         padding-top: utils.rem(spacing.$x-large);
+      }
+    }
+    #{$block}__link {
+      @include media-queries.mq($from: sm) {
+        @include testimonialBodyFontSize();
+        color: colours.$link;
+        display: block;
+        margin-top: utils.rem(spacing.$medium);
       }
     }
   }
