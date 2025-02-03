@@ -11,6 +11,7 @@
 @use '@nice-digital/nds-core/scss/colours/tokens/global';
 @use '~/styles/colours' as *;
 @use '~/styles/spacing' as *;
+
 @mixin testimonialBodyFontSize {
   font-size: utils.rem(18, 15);
 
@@ -36,8 +37,7 @@
     padding: utils.rem(spacing.$large 0); // 1rem L/R margin
 
     @container testimonial (min-width: #{media-queries.$sm}) {
-      // TODO: fix border / computed size issue
-      flex-direction: row;
+      // TODO: fix border / computed size issue affecting container query breakpoints
       padding-left: utils.rem(spacing.$medium); // 1rem L/R margin
       padding-right: utils.rem(spacing.$medium); // 1rem L/R margin
     }
@@ -119,8 +119,8 @@
   }
 
   &__quote {
-    @include typography.font-size(lead); //TODO: Incorrect on mobile
-    margin: utils.rem(spacing.$medium) 0;
+    @include typography.font-size(lead); //TODO: Incorrect 900-1200px due to scaling
+    margin: 0 0 utils.rem(spacing.$medium) 0; // Top pseudo-margin coming from line-height on ::before element
   }
 
   &__person {
@@ -169,21 +169,23 @@
     }
 
     #{$block}__image {
-      @include media-queries.mq($from: lg) {
+      @include media-queries.mq($from: md) {
         height: 200px;
-        width: 200px;
-      }
-      @include media-queries.mq($from: sm) {
         margin-left: 5rem;
+        width: 200px;
       }
     }
 
     #{$block}__mainContent {
-      @include media-queries.mq($from: lg) {
+      padding-left: 0;
+      padding-right: 0;
+
+      @include media-queries.mq($from: md) {
         padding-bottom: utils.rem(spacing.$x-large);
         padding-top: utils.rem(spacing.$x-large);
       }
     }
+
     #{$block}__link {
       @include media-queries.mq($from: sm) {
         @include testimonialBodyFontSize();
