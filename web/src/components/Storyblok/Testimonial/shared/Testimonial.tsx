@@ -74,11 +74,11 @@ export const Testimonial: React.FC<TestimonialProps> = (
 			data-testid={`testimonial-${variant}`}
 			{...rest}
 		>
-			<div className={styles.testimonialMainContent}>
+			<div className={styles.testimonial__mainContent}>
 				<div className={styles.testimonial__mainImageContainer}>
 					{mainImage}
 				</div>
-				<div className={styles.testimonialContent}>
+				<div className={styles.testimonial__content}>
 					<p className={styles.testimonial__quote}>{quoteText}</p>
 					<div className={styles.testimonial__person}>
 						{mobileImage}

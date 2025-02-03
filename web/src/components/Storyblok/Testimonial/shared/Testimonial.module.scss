@@ -13,6 +13,8 @@
 @use '~/styles/spacing' as *;
 
 .testimonial {
+  $block: &;
+
   @include visibility.hide-print;
   background: $testimonial-default-background;
   border: 1px solid $testimonial-default-border;
@@ -22,7 +24,7 @@
   gap: utils.rem(spacing.$medium);
   position: relative;
 
-  &MainContent {
+  &__mainContent {
     @include layout.container;
     align-items: flex-start;
     display: flex;
@@ -53,7 +55,7 @@
     }
   }
 
-  &MainImage {
+  &__image {
     aspect-ratio: 1 / 1;
     border-radius: 50%;
     height: 64px;
@@ -87,7 +89,7 @@
     }
   }
 
-  &Content {
+  &__content {
     display: flex;
     flex: 1;
     flex-direction: column;
@@ -175,7 +177,7 @@
     //Added bottom margin to create spacing between two full-width variations if both are added.
     margin-bottom: utils.rem(spacing.$large);
 
-    .testimonialContent::before {
+    #{$block}__content::before {
       @include media-queries.mq($from: sm) {
         font-size: utils.rem(90, 15);
       }
@@ -186,7 +188,7 @@
       }
     }
 
-    .testimonialMainImage {
+    #{$block}__image {
       @include media-queries.mq($from: lg) {
         height: 200px;
         width: 200px;
@@ -196,7 +198,7 @@
       }
     }
 
-    .testimonialMainContent {
+    #{$block}__mainContent {
       @include media-queries.mq($from: lg) {
         padding-bottom: utils.rem(spacing.$x-large);
         padding-top: utils.rem(spacing.$x-large);
