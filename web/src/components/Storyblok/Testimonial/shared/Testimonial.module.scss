@@ -111,10 +111,6 @@
       @container testimonial (min-width: #{media-queries.$lg}) {
         font-size: utils.rem(108, 18);
       }
-
-      @include media-queries.mq($from: lg) {
-        line-height: 2rem;
-      }
     }
   }
 
@@ -144,12 +140,6 @@
     display: none;
   }
 
-  &--transparent {
-    background-color: transparent;
-    border-left: unset;
-    border-right: unset;
-  }
-
   &--full-width,
   &--full-width-white {
     @include layout.fullWidth();
@@ -164,7 +154,7 @@
 
       @include media-queries.mq($from: lg) {
         font-size: utils.rem(124, 18);
-        line-height: 2rem;
+        padding-top: utils.rem(spacing.$x-large);
       }
     }
 
@@ -204,5 +194,11 @@
     background-color: colours.$fill-white-background;
     border-bottom: 1px solid colours.$border;
     border-top: 1px solid colours.$border;
+  }
+
+  &--transparent {
+    background-color: transparent;
+    border-left: unset;
+    border-right: unset;
   }
 }
