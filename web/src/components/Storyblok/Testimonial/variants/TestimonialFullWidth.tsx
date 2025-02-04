@@ -1,6 +1,7 @@
 import { Testimonial } from "../shared/Testimonial";
 import { StoryblokImage } from "../../StoryblokImage/StoryblokImage";
 import { TestimonialStoryblok } from "@/types/storyblok";
+import { StoryblokRelatedLink } from "../../StoryblokRelatedLink/StoryblokRelatedLink";
 
 export interface TestimonialFullWidthProps {
 	blok: TestimonialStoryblok;
@@ -36,7 +37,7 @@ export const TestimonialFullWidth: React.FC<TestimonialFullWidthProps> = ({
 					serviceOptions={{ height: 0, quality: 80, width: 708 }}
 				/>
 			}
-			link={link}
+			link={link && link.length > 0 ? <StoryblokRelatedLink blok={link[0]} /> :  null}
 		/>
 	);
 };

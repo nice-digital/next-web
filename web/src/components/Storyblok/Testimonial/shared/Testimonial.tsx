@@ -6,7 +6,6 @@ import React, {
 } from "react";
 import classnames from "classnames";
 import styles from "./Testimonial.module.scss";
-import { Link } from "@/components/Link/Link";
 
 export interface TestimonialProps {
 	variant?: "default" | "transparent" | "fullWidth" | "fullWidthWhite";
@@ -17,7 +16,14 @@ export interface TestimonialProps {
 	quoteName: string;
 	quoteRole: string;
 	headingLevel?: 2 | 3 | 4 | 5 | 6;
-	link?: any;//TODO Need to add proper types to link
+	link?: ReactElement | null;
+}
+
+export interface TestimonialLinkProps {
+	[prop: string]: unknown;
+	destination?: string;
+	elementType?: React.ElementType;
+	method?: string;
 }
 
 export const Testimonial: React.FC<TestimonialProps> = (
@@ -48,6 +54,8 @@ export const Testimonial: React.FC<TestimonialProps> = (
 		className
 	);
 
+	const linkElement = isValidElement(link) ? cloneElement(link as ReactElement, {className: classnames((link as ReactElement).props.className, styles.testimonial__link)}) : null;
+
 	const mobileImage = isValidElement(image)
 		? cloneElement(image as ReactElement, {
 				className: classnames(
@@ -67,6 +75,8 @@ export const Testimonial: React.FC<TestimonialProps> = (
 				alt: (image as ReactElement).props.alt || "Testimonial Main Image",
 		  })
 		: null;
+
+
 	return (
 		<div
 			className={testimonialClasses}
@@ -89,11 +99,7 @@ export const Testimonial: React.FC<TestimonialProps> = (
 					{/* TODO: Need to add display:flex to <picture> tag when adding storyBlokImage */}
 
 					{(variant === "fullWidth" || variant === "fullWidthWhite") &&
-					link !== undefined ? (
-						<Link href="" className={styles.testimonial__link}>
-							Read the Story
-						</Link>
-					) : null}
+						linkElement}
 				</figure>
 
 				<div className={styles.testimonial__mainImageContainer}>

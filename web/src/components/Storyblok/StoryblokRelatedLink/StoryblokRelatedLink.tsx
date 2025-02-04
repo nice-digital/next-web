@@ -9,7 +9,7 @@ export interface StoryblokRelatedLinkProps {
 }
 
 export const StoryblokRelatedLink: React.FC<StoryblokRelatedLinkProps> = ({
-	blok,
+	blok, ...rest
 }: StoryblokRelatedLinkProps) => {
 	// TODO: check if we are handling to href props of the link component correctly
 
@@ -24,5 +24,5 @@ export const StoryblokRelatedLink: React.FC<StoryblokRelatedLinkProps> = ({
 		return undefined;
 	}
 
-	return <Tag href={linkDestination}>{blok.title}</Tag>;
+	return <Tag href={linkDestination} {...rest}>{blok.title}</Tag>;
 };
