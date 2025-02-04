@@ -63,6 +63,7 @@
     height: 64px;
     margin-right: utils.rem(spacing.$medium);
     object-fit: cover;
+    vertical-align: middle;
     width: 64px;
 
     @container testimonial (min-width: #{media-queries.$sm}) {
