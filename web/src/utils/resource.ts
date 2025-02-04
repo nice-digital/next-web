@@ -251,7 +251,9 @@ const mapContentPartToLink = (
 				}`,
 				fileSize: uploadContent.file.length,
 				fileTypeName: getFileTypeNameFromMime(uploadContent.file.mimeType),
-				date: resource.lastMajorModificationDate,
+				date: part.majorChangeDate
+					? part.majorChangeDate
+					: resource.lastMajorModificationDate,
 				type: resource.resourceTypeName,
 			};
 		}
