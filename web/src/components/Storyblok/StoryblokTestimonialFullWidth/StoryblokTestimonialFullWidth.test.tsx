@@ -12,7 +12,7 @@ const mockStoryblokTestimonialFullWidth: StoryblokTestimonialFullWidthProps = {
 			id: 123456789,
 			name: "Kittens mate.",
 			filename: "https://placekitten.com/408/287",
-			alt: null,
+			alt: "some alt text",
 			fieldtype: "asset",
 			title: null,
 			focus: null,
