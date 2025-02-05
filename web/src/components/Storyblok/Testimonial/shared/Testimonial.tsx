@@ -92,6 +92,7 @@ export const Testimonial: React.FC<TestimonialProps> = (
 			className={testimonialClasses}
 			data-component={`testimonial${variant ? `--${variant}` : ""}`}
 			data-testid={`testimonial-${variant}`}
+			data-tracking="testimonial"
 			{...rest}
 		>
 			<div className={styles.testimonial__mainContent}>
