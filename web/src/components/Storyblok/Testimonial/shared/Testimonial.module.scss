@@ -115,7 +115,7 @@
   }
 
   &__quote {
-    @include typography.font-size(lead); //TODO: Incorrect 900-1200px due to scaling; not specific to this component
+    @include typography.font-size(lead); //TODO: Incorrect on desktop 3-col & 900-1200px due to scaling as lead-text is MQ based
     margin: 0 0 utils.rem(spacing.$medium) 0; // Top pseudo-margin coming from line-height on ::before element
   }
 
