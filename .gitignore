@@ -19,5 +19,3 @@ crash.*.log
 aws/THIRD_PARTY_LICENSES
 aws/install
 awscliv2.zip
-
-.env.local
