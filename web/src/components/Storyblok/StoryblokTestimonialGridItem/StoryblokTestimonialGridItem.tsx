@@ -29,7 +29,7 @@ export const StoryblokTestimonialGridItem: React.FC<
 			image={
 				<StoryblokImage
 					src={image.filename ? image.filename : undefined}
-					alt={"some alt text"}
+					alt={image.alt ? image.alt : ""}
 					serviceOptions={{ height: 0, quality: 80, width: 708 }}
 				/>
 			}
