@@ -12,7 +12,7 @@
 @use '~/styles/colours' as *;
 @use '~/styles/spacing' as *;
 
-@mixin testimonialBodyFontSize {
+@mixin testimonial-body-font-size {
   font-size: utils.rem(18, 15);
 
   @include media-queries.mq($from: lg) {
@@ -126,7 +126,7 @@
   }
 
   &__details {
-    @include testimonialBodyFontSize();
+    @include testimonial-body-font-size;
     display: flex;
     flex-direction: column;
     justify-content: center;
@@ -179,7 +179,7 @@
 
     #{$block}__link {
       @include media-queries.mq($from: sm) {
-        @include testimonialBodyFontSize();
+        @include testimonial-body-font-size;
         color: colours.$link;
         display: block;
         margin-top: utils.rem(spacing.$medium);
