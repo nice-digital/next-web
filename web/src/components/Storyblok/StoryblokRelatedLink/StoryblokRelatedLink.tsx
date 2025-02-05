@@ -1,16 +1,17 @@
 import React from "react";
-
 import { Link } from "@/components/Link/Link";
 import { MultilinkStoryblok, RelatedLinkStoryblok } from "@/types/storyblok";
 import { resolveStoryblokLink } from "@/utils/storyblok";
 
-export interface StoryblokRelatedLinkProps {
+export interface StoryblokRelatedLinkProps
+	extends React.AnchorHTMLAttributes<HTMLAnchorElement> {
 	blok: RelatedLinkStoryblok;
 }
 
 export const StoryblokRelatedLink: React.FC<StoryblokRelatedLinkProps> = ({
-	blok, ...rest
-}: StoryblokRelatedLinkProps) => {
+	blok,
+	...restProps
+}) => {
 	// TODO: check if we are handling to href props of the link component correctly
 
 	let Tag: React.ElementType;
@@ -21,8 +22,12 @@ export const StoryblokRelatedLink: React.FC<StoryblokRelatedLinkProps> = ({
 		Tag = resolvedLink.isInternal ? Link : "a";
 		linkDestination = resolvedLink.url;
 	} else {
-		return undefined;
+		return null;
 	}
 
-	return <Tag href={linkDestination} {...rest}>{blok.title}</Tag>;
+	return (
+		<Tag href={linkDestination} {...restProps}>
+			{blok.title}
+		</Tag>
+	);
 };

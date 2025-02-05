@@ -54,27 +54,37 @@ export const Testimonial: React.FC<TestimonialProps> = (
 		className
 	);
 
-	const linkElement = isValidElement(link) ? cloneElement(link as ReactElement, {className: classnames((link as ReactElement).props.className, styles.testimonial__link)}) : null;
+	const cloneElementWithClassNames = <T extends ReactElement>(
+		element: T | undefined,
+		...additionalClassNames: string[]
+	  ): T | null => {
+		if (!isValidElement(element)) return null;
 
-	const mobileImage = isValidElement(image)
-		? cloneElement(image as ReactElement, {
-				className: classnames(
-					(image as ReactElement).props.className,
-					styles.testimonial__image,
-					styles.testimonial__imageMobile
-				),
-				alt: (image as ReactElement).props.alt || "Testimonial Mobile Image",
-		  })
-		: null;
-	const mainImage = isValidElement(image)
-		? cloneElement(image as ReactElement, {
-				className: classnames(
-					(image as ReactElement).props.className,
-					styles.testimonial__image
-				),
-				alt: (image as ReactElement).props.alt || "Testimonial Main Image",
-		  })
-		: null;
+		const { className, alt, ...restProps } = element.props as Record<string, any>;
+
+		return cloneElement(
+		  element,
+		  {
+			...restProps,
+			className: classnames(className, ...additionalClassNames),
+			...(element.type === "img" && { alt: alt || "Testimonial image" }),
+		  }
+		) as T;
+	  };
+
+
+	const linkElement = cloneElementWithClassNames(link as ReactElement, styles.testimonial__link);
+
+	const mobileImage = cloneElementWithClassNames(
+		image as ReactElement,
+		styles.testimonial__image,
+		styles.testimonial__imageMobile
+	);
+
+	const mainImage = cloneElementWithClassNames(
+		image as ReactElement,
+		styles.testimonial__image
+	);
 
 
 	return (
