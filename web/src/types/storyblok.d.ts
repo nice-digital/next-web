@@ -254,8 +254,8 @@ export interface CardGridSectionStoryblok {
     | RelatedNewsLinkStoryblok
     | SpotlightStoryblok
     | SpotlightCopyStoryblok
-    | TestimonialStoryblok
-    | TestimonialDefaultStoryblok
+    | TestimonialFullWidthStoryblok
+    | TestimonialGridItemStoryblok
     | YoutubeEmbedStoryblok
   )[];
   theme?: "" | "subtle" | "transparent";
@@ -295,8 +295,8 @@ export interface CategoryLandingPageStoryblok {
     | ActionBannerDefaultStoryblok
     | PromoBoxStoryblok
     | CardListSectionStoryblok
-    | TestimonialStoryblok
-    | TestimonialDefaultStoryblok
+    | TestimonialGridItemStoryblok
+    | TestimonialFullWidthStoryblok
   )[];
   component: "categoryLandingPage";
   _uid: string;
@@ -357,8 +357,8 @@ export interface GridStoryblok {
     | RelatedNewsLinkStoryblok
     | SpotlightStoryblok
     | SpotlightCopyStoryblok
-    | TestimonialStoryblok
-    | TestimonialDefaultStoryblok
+    | TestimonialFullWidthStoryblok
+    | TestimonialGridItemStoryblok
     | YoutubeEmbedStoryblok
   )[];
   component: "grid";
@@ -629,8 +629,8 @@ export interface PageStoryblok {
     | RelatedNewsLinkStoryblok
     | SpotlightStoryblok
     | SpotlightCopyStoryblok
-    | TestimonialStoryblok
-    | TestimonialDefaultStoryblok
+    | TestimonialFullWidthStoryblok
+    | TestimonialGridItemStoryblok
     | YoutubeEmbedStoryblok
   )[];
   metadata?: MetadataStoryblok[];
@@ -738,25 +738,25 @@ export interface SpotlightCopyStoryblok {
   [k: string]: any;
 }
 
-export interface TestimonialStoryblok {
+export interface TestimonialFullWidthStoryblok {
+  quoteText: string;
   quoteName: string;
   quoteRole: string;
-  quoteText: string;
   image: AssetStoryblok;
+  link?: RelatedLinkStoryblok[];
   variant: "fullWidth" | "fullWidthWhite";
-  link?: Exclude<MultilinkStoryblok, {linktype?: "email"} | {linktype?: "asset"}>;
-  component: "testimonial";
+  component: "testimonialFullWidth";
   _uid: string;
   [k: string]: any;
 }
 
-export interface TestimonialDefaultStoryblok {
+export interface TestimonialGridItemStoryblok {
   quoteText: string;
   quoteName: string;
   quoteRole: string;
   image: AssetStoryblok;
   variant: "default" | "transparent";
-  component: "testimonialDefault";
+  component: "testimonialGridItem";
   _uid: string;
   [k: string]: any;
 }
