@@ -1,12 +1,15 @@
 import { StoryblokComponent } from "@storyblok/react";
 
+import { Grid, GridItem } from "@nice-digital/nds-grid";
+
 import { type Breadcrumb } from "@/types/Breadcrumb";
 import { type CategoryLandingPageStoryblok } from "@/types/storyblok";
 
-import styles from "./CategoryLandingPage.module.scss";
-import { Testimonial } from "../Testimonial/shared/Testimonial";
-import { Grid, GridItem } from "@nice-digital/nds-grid";
+import { Testimonial } from "../../Testimonial/Testimonial";
 import { StoryblokImage } from "../StoryblokImage/StoryblokImage";
+
+import styles from "./CategoryLandingPage.module.scss";
+
 export interface CategoryLandindPageBlokProps {
 	blok: CategoryLandingPageStoryblok;
 	breadcrumbs?: Breadcrumb[];

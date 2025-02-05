@@ -1,4 +1,5 @@
 import { render, screen } from "@testing-library/react";
+
 import { Testimonial, type TestimonialProps } from "./Testimonial";
 
 describe("testimonial component", () => {
@@ -62,7 +63,6 @@ describe("testimonial component", () => {
 		);
 		const images = screen.getAllByRole("img", { name: "test_image_alt" });
 		expect(images).toHaveLength(2);
-        expect(images[0]).toHaveAttribute("src","test_image.jpeg");
+		expect(images[0]).toHaveAttribute("src", "test_image.jpeg");
 	});
-
 });

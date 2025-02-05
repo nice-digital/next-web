@@ -1,10 +1,11 @@
+import classnames from "classnames";
 import React, {
 	ReactElement,
 	ReactNode,
 	isValidElement,
 	cloneElement,
 } from "react";
-import classnames from "classnames";
+
 import styles from "./Testimonial.module.scss";
 
 export interface TestimonialProps {
@@ -37,7 +38,7 @@ export const Testimonial: React.FC<TestimonialProps> = (
 		children,
 		className,
 		headingLevel = 4,
-		link=undefined,
+		link = undefined,
 		image,
 		...rest
 	} = props;
@@ -57,23 +58,26 @@ export const Testimonial: React.FC<TestimonialProps> = (
 	const cloneElementWithClassNames = <T extends ReactElement>(
 		element: T | undefined,
 		...additionalClassNames: string[]
-	  ): T | null => {
+	): T | null => {
 		if (!isValidElement(element)) return null;
 
-		const { className, alt, ...restProps } = element.props as Record<string, any>;
+		const { className, alt, ...restProps } = element.props as {
+			className?: string;
+			alt?: string;
+			[key: string]: unknown;
+		};
 
-		return cloneElement(
-		  element,
-		  {
+		return cloneElement(element, {
 			...restProps,
 			className: classnames(className, ...additionalClassNames),
 			...(element.type === "img" && { alt: alt || "Testimonial image" }),
-		  }
-		) as T;
-	  };
+		}) as T;
+	};
 
-
-	const linkElement = cloneElementWithClassNames(link as ReactElement, styles.testimonial__link);
+	const linkElement = cloneElementWithClassNames(
+		link as ReactElement,
+		styles.testimonial__link
+	);
 
 	const mobileImage = cloneElementWithClassNames(
 		image as ReactElement,
@@ -86,7 +90,6 @@ export const Testimonial: React.FC<TestimonialProps> = (
 		styles.testimonial__image
 	);
 
-
 	return (
 		<div
 			className={testimonialClasses}
@@ -97,7 +100,9 @@ export const Testimonial: React.FC<TestimonialProps> = (
 		>
 			<div className={styles.testimonial__mainContent}>
 				<figure className={styles.testimonial__content}>
-					<blockquote className={styles.testimonial__quote}>{quoteText}</blockquote>
+					<blockquote className={styles.testimonial__quote}>
+						{quoteText}
+					</blockquote>
 					<figcaption className={styles.testimonial__person}>
 						{mobileImage}
 
@@ -105,7 +110,7 @@ export const Testimonial: React.FC<TestimonialProps> = (
 							<span className={styles.testimonial__name}>{quoteName}</span>
 							<span className={styles.testimonial__job}>{quoteRole}</span>
 						</p>
-						</figcaption>
+					</figcaption>
 
 					{(variant === "fullWidth" || variant === "fullWidthWhite") &&
 						linkElement}

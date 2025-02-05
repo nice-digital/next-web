@@ -23,6 +23,8 @@ import { StoryblokActionBannerFullWidth } from "@/components/Storyblok/Storyblok
 import { StoryblokHero } from "@/components/Storyblok/StoryblokHero/StoryblokHero";
 import { StoryblokIframe } from "@/components/Storyblok/StoryblokIframe/StoryblokIframe";
 import { StoryblokPageHeader } from "@/components/Storyblok/StoryblokPageHeader/StoryblokPageHeader";
+import { StoryblokTestimonialFullWidth } from "@/components/Storyblok/StoryblokTestimonialFullWidth/StoryblokTestimonialFullWidth";
+import { StoryblokTestimonialGridItem } from "@/components/Storyblok/StoryblokTestimonialGridItem/StoryblokTestimonialGridItem";
 import { StoryblokYoutubeEmbed } from "@/components/Storyblok/StoryblokYoutubeEmbed/StoryblokYoutubeEmbed";
 import { publicRuntimeConfig } from "@/config";
 import { logger } from "@/logger";
@@ -41,8 +43,6 @@ import {
 } from "@/utils/storyblok";
 
 import type { GetServerSidePropsContext } from "next";
-import { TestimonialFullWidth } from "@/components/Storyblok/Testimonial/variants/TestimonialFullWidth";
-import { TestimonialDefault } from "@/components/Storyblok/Testimonial/variants/TestimonialDefault";
 
 export type SlugCatchAllSuccessProps = {
 	story: ISbStoryData<InfoPageStoryblok | CategoryNavigationStoryblok>;
@@ -96,8 +96,8 @@ export default function SlugCatchAll(
 		actionBannerDefault: StoryblokActionBannerDefault,
 		cardListSection: CardListSection,
 		promoBox: PromoBox,
-		testimonial: TestimonialFullWidth,
-		TestimonialDefault: TestimonialDefault,
+		testimonialFullWidth: StoryblokTestimonialFullWidth,
+		testimonialGridItem: StoryblokTestimonialGridItem,
 	};
 
 	const infoPageComponents = {

@@ -1,15 +1,58 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`Storyblok testimonial Default component should match snapshot for default variant 1`] = `
+exports[`Storyblok testimonial full width component should match snapshot for full width variant 1`] = `
 <div>
   <div
-    class="testimonial testimonial--transparent"
-    data-component="testimonial--transparent"
-    data-testid="testimonial-transparent"
+    class="testimonial testimonial--full-width"
+    data-component="testimonial--fullWidth"
+    data-testid="testimonial-fullWidth"
+    data-tracking="testimonial"
   >
     <div
-      class="testimonialMainContent"
+      class="testimonial__mainContent"
     >
+      <figure
+        class="testimonial__content"
+      >
+        <blockquote
+          class="testimonial__quote"
+        >
+          Test Quote Text
+        </blockquote>
+        <figcaption
+          class="testimonial__person"
+        >
+          <picture>
+            <source
+              srcset="https://placekitten.com/408/287/m/708x0/filters:format%28avif%29:quality%2880%29"
+              type="image/avif"
+            />
+            <source
+              srcset="https://placekitten.com/408/287/m/708x0/filters:format%28webp%29:quality%2880%29"
+              type="image/webp"
+            />
+            <img
+              alt="some alt text"
+              class="testimonial__image testimonial__imageMobile"
+              src="https://placekitten.com/408/287/m/708x0/filters:format%28jpeg%29:quality%2880%29"
+            />
+          </picture>
+          <p
+            class="testimonial__details"
+          >
+            <span
+              class="testimonial__name"
+            >
+              Test Name
+            </span>
+            <span
+              class="testimonial__job"
+            >
+              Test Role
+            </span>
+          </p>
+        </figcaption>
+      </figure>
       <div
         class="testimonial__mainImageContainer"
       >
@@ -24,68 +67,69 @@ exports[`Storyblok testimonial Default component should match snapshot for defau
           />
           <img
             alt="some alt text"
-            class="testimonialMainImage"
+            class="testimonial__image"
             src="https://placekitten.com/408/287/m/708x0/filters:format%28jpeg%29:quality%2880%29"
           />
         </picture>
-      </div>
-      <div
-        class="testimonialContent"
-      >
-        <p
-          class="testimonial__quote"
-        >
-          Test Quote Text
-        </p>
-        <div
-          class="testimonial__person"
-        >
-          <picture>
-            <source
-              srcset="https://placekitten.com/408/287/m/708x0/filters:format%28avif%29:quality%2880%29"
-              type="image/avif"
-            />
-            <source
-              srcset="https://placekitten.com/408/287/m/708x0/filters:format%28webp%29:quality%2880%29"
-              type="image/webp"
-            />
-            <img
-              alt="some alt text"
-              class="testimonial__mobileImage"
-              src="https://placekitten.com/408/287/m/708x0/filters:format%28jpeg%29:quality%2880%29"
-            />
-          </picture>
-          <div
-            class="testimonial__details"
-          >
-            <p
-              class="testimonial__name"
-            >
-              Test Name
-            </p>
-            <p
-              class="testimonial__job"
-            >
-              Test Role
-            </p>
-          </div>
-        </div>
       </div>
     </div>
   </div>
 </div>
 `;
 
-exports[`Storyblok testimonial Default component should match snapshot for the default transparent variant 1`] = `
+exports[`Storyblok testimonial full width component should match snapshot for the full width white variant 1`] = `
 <div>
   <div
-    class="testimonial testimonial--transparent"
-    data-component="testimonial--transparent"
-    data-testid="testimonial-transparent"
+    class="testimonial testimonial--full-width-white"
+    data-component="testimonial--fullWidthWhite"
+    data-testid="testimonial-fullWidthWhite"
+    data-tracking="testimonial"
   >
     <div
-      class="testimonialMainContent"
+      class="testimonial__mainContent"
     >
+      <figure
+        class="testimonial__content"
+      >
+        <blockquote
+          class="testimonial__quote"
+        >
+          Test Quote Text
+        </blockquote>
+        <figcaption
+          class="testimonial__person"
+        >
+          <picture>
+            <source
+              srcset="https://placekitten.com/408/287/m/708x0/filters:format%28avif%29:quality%2880%29"
+              type="image/avif"
+            />
+            <source
+              srcset="https://placekitten.com/408/287/m/708x0/filters:format%28webp%29:quality%2880%29"
+              type="image/webp"
+            />
+            <img
+              alt="some alt text"
+              class="testimonial__image testimonial__imageMobile"
+              src="https://placekitten.com/408/287/m/708x0/filters:format%28jpeg%29:quality%2880%29"
+            />
+          </picture>
+          <p
+            class="testimonial__details"
+          >
+            <span
+              class="testimonial__name"
+            >
+              Test Name
+            </span>
+            <span
+              class="testimonial__job"
+            >
+              Test Role
+            </span>
+          </p>
+        </figcaption>
+      </figure>
       <div
         class="testimonial__mainImageContainer"
       >
@@ -100,52 +144,10 @@ exports[`Storyblok testimonial Default component should match snapshot for the d
           />
           <img
             alt="some alt text"
-            class="testimonialMainImage"
+            class="testimonial__image"
             src="https://placekitten.com/408/287/m/708x0/filters:format%28jpeg%29:quality%2880%29"
           />
         </picture>
-      </div>
-      <div
-        class="testimonialContent"
-      >
-        <p
-          class="testimonial__quote"
-        >
-          Test Quote Text
-        </p>
-        <div
-          class="testimonial__person"
-        >
-          <picture>
-            <source
-              srcset="https://placekitten.com/408/287/m/708x0/filters:format%28avif%29:quality%2880%29"
-              type="image/avif"
-            />
-            <source
-              srcset="https://placekitten.com/408/287/m/708x0/filters:format%28webp%29:quality%2880%29"
-              type="image/webp"
-            />
-            <img
-              alt="some alt text"
-              class="testimonial__mobileImage"
-              src="https://placekitten.com/408/287/m/708x0/filters:format%28jpeg%29:quality%2880%29"
-            />
-          </picture>
-          <div
-            class="testimonial__details"
-          >
-            <p
-              class="testimonial__name"
-            >
-              Test Name
-            </p>
-            <p
-              class="testimonial__job"
-            >
-              Test Role
-            </p>
-          </div>
-        </div>
       </div>
     </div>
   </div>

@@ -1,11 +1,12 @@
 /* eslint-disable testing-library/no-node-access */
 import { render } from "@testing-library/react";
-import {
-	TestimonialFullWidth,
-	TestimonialFullWidthProps,
-} from "./TestimonialFullWidth";
 
-const mockTestimonialFullWidth: TestimonialFullWidthProps = {
+import {
+	StoryblokTestimonialFullWidth,
+	StoryblokTestimonialFullWidthProps,
+} from "./StoryblokTestimonialFullWidth";
+
+const mockStoryblokTestimonialFullWidth: StoryblokTestimonialFullWidthProps = {
 	blok: {
 		image: {
 			id: 123456789,
@@ -20,29 +21,32 @@ const mockTestimonialFullWidth: TestimonialFullWidthProps = {
 		quoteRole: "Test Role",
 		quoteText: "Test Quote Text",
 		variant: "fullWidth",
-		component: "testimonial",
+		component: "testimonialFullWidth",
 		_uid: "",
 	},
 };
 
-const mockTestimonialFullWidthWhite: TestimonialFullWidthProps = {
-	blok: {
-		...mockTestimonialFullWidth.blok,
-		variant: "fullWidthWhite",
-	},
-};
+const mockStoryblokTestimonialFullWidthWhite: StoryblokTestimonialFullWidthProps =
+	{
+		blok: {
+			...mockStoryblokTestimonialFullWidth.blok,
+			variant: "fullWidthWhite",
+		},
+	};
 
 describe("Storyblok testimonial full width component", () => {
 	it("should match snapshot for full width variant", () => {
 		const { container } = render(
-			<TestimonialFullWidth {...mockTestimonialFullWidth} />
+			<StoryblokTestimonialFullWidth {...mockStoryblokTestimonialFullWidth} />
 		);
 		expect(container).toMatchSnapshot();
 	});
 
 	it("should match snapshot for the full width white variant", () => {
 		const { container } = render(
-			<TestimonialFullWidth {...mockTestimonialFullWidthWhite} />
+			<StoryblokTestimonialFullWidth
+				{...mockStoryblokTestimonialFullWidthWhite}
+			/>
 		);
 		expect(container).toMatchSnapshot();
 	});

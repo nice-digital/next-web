@@ -1,11 +1,12 @@
 /* eslint-disable testing-library/no-node-access */
 import { render } from "@testing-library/react";
-import {
-	TestimonialDefault,
-	TestimonialDefaultProps,
-} from "./TestimonialDefault";
 
-const mockTestimonialDefault: TestimonialDefaultProps = {
+import {
+	StoryblokTestimonialGridItem,
+	StoryblokTestimonialGridItemProps,
+} from "./StoryblokTestimonialGridItem";
+
+const mockStoryBlokTestimonialGridItem: StoryblokTestimonialGridItemProps = {
 	blok: {
 		image: {
 			id: 123456789,
@@ -21,28 +22,31 @@ const mockTestimonialDefault: TestimonialDefaultProps = {
 		quoteText: "Test Quote Text",
 		variant: "transparent",
 		_uid: "",
-		component: "testimonialDefault",
+		component: "testimonialGridItem",
 	},
 };
 
-const mockTestimonialDefaultTransparent: TestimonialDefaultProps = {
-	blok: {
-		...mockTestimonialDefault.blok,
-		variant: "transparent",
-	},
-};
+const mockStoryBlokTestimonialGridItemTransparent: StoryblokTestimonialGridItemProps =
+	{
+		blok: {
+			...mockStoryBlokTestimonialGridItem.blok,
+			variant: "transparent",
+		},
+	};
 
 describe("Storyblok testimonial Default component", () => {
 	it("should match snapshot for default variant", () => {
 		const { container } = render(
-			<TestimonialDefault {...mockTestimonialDefault} />
+			<StoryblokTestimonialGridItem {...mockStoryBlokTestimonialGridItem} />
 		);
 		expect(container).toMatchSnapshot();
 	});
 
 	it("should match snapshot for the default transparent variant", () => {
 		const { container } = render(
-			<TestimonialDefault {...mockTestimonialDefaultTransparent} />
+			<StoryblokTestimonialGridItem
+				{...mockStoryBlokTestimonialGridItemTransparent}
+			/>
 		);
 		expect(container).toMatchSnapshot();
 	});
