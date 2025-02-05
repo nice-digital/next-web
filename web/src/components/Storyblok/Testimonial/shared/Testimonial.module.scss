@@ -25,9 +25,9 @@
 
   @include visibility.hide-print;
   background: $testimonial-default-background;
-  border: 1px solid $testimonial-default-border;
   container-name: testimonial;
   container-type: inline-size;
+  outline: 1px solid $testimonial-default-border; // using instead of border due to use of container queries
 
   &__mainContent {
     @include layout.container;
@@ -144,7 +144,7 @@
   &--full-width,
   &--full-width-white {
     @include layout.fullWidth();
-    border: unset;
+    outline: unset;
 
     #{$block}__content::before {
       @include media-queries.mq($from: sm) {
@@ -197,7 +197,8 @@
 
   &--transparent {
     background-color: transparent;
-    border-left: unset;
-    border-right: unset;
+    border-bottom: 1px solid $testimonial-default-border;
+    border-top: 1px solid $testimonial-default-border;
+    outline: unset;
   }
 }
