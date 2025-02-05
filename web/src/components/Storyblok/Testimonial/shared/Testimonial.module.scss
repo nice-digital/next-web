@@ -34,17 +34,17 @@
     align-items: flex-start;
     display: flex;
     flex-wrap: wrap;
-    padding: utils.rem(spacing.$large 0); // 1rem L/R margin
+    padding: utils.rem(spacing.$large 0); // 1rem L/R margin from layout.container
 
     @container testimonial (min-width: #{media-queries.$sm}) {
       // TODO: fix border / computed size issue affecting container query breakpoints
-      padding-left: utils.rem(spacing.$medium); // 1rem L/R margin
-      padding-right: utils.rem(spacing.$medium); // 1rem L/R margin
+      padding-left: utils.rem(spacing.$medium); // 1rem L/R margin from layout.container
+      padding-right: utils.rem(spacing.$medium); // 1rem L/R margin from layout.container
     }
 
     @container testimonial (min-width: #{media-queries.$lg}) {
-      padding-left: utils.rem(spacing.$xx-large); // 1rem L/R margin
-      padding-right: utils.rem(spacing.$xx-large); // 1rem L/R margin
+      padding-left: utils.rem(spacing.$xx-large); // 1rem L/R margin from layout.container
+      padding-right: utils.rem(spacing.$xx-large); // 1rem L/R margin from layout.container
     }
   }
 
@@ -145,8 +145,6 @@
   &--full-width-white {
     @include layout.fullWidth();
     border: unset;
-    //Added bottom margin to create spacing between two full-width variations if both are added.
-    margin-bottom: utils.rem(spacing.$large);
 
     #{$block}__content::before {
       @include media-queries.mq($from: sm) {
