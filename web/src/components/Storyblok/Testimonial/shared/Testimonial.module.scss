@@ -12,7 +12,7 @@
 @use '~/styles/colours' as *;
 @use '~/styles/spacing' as *;
 
-@mixin testimonialBodyFontSize {
+@mixin testimonial-body-font-size {
   font-size: utils.rem(18, 15);
 
   @include media-queries.mq($from: lg) {
@@ -24,27 +24,26 @@
   $block: &;
 
   @include visibility.hide-print;
-  background: $testimonial-default-background;
-  border: 1px solid $testimonial-default-border;
+  background: colours.$fill-white-background;
   container-name: testimonial;
   container-type: inline-size;
+  outline: 1px solid $testimonial-default-border; // using instead of border due to use of container queries
 
   &__mainContent {
     @include layout.container;
     align-items: flex-start;
     display: flex;
     flex-wrap: wrap;
-    padding: utils.rem(spacing.$large 0); // 1rem L/R margin
+    padding: utils.rem(spacing.$large 0); // 1rem L/R margin from layout.container
 
     @container testimonial (min-width: #{media-queries.$sm}) {
-      // TODO: fix border / computed size issue affecting container query breakpoints
-      padding-left: utils.rem(spacing.$medium); // 1rem L/R margin
-      padding-right: utils.rem(spacing.$medium); // 1rem L/R margin
+      padding-left: utils.rem(spacing.$medium); // 1rem L/R margin from layout.container
+      padding-right: utils.rem(spacing.$medium); // 1rem L/R margin from layout.container
     }
 
     @container testimonial (min-width: #{media-queries.$lg}) {
-      padding-left: utils.rem(spacing.$xx-large); // 1rem L/R margin
-      padding-right: utils.rem(spacing.$xx-large); // 1rem L/R margin
+      padding-left: utils.rem(spacing.$xx-large); // 1rem L/R margin from layout.container
+      padding-right: utils.rem(spacing.$xx-large); // 1rem L/R margin from layout.container
     }
   }
 
@@ -116,7 +115,7 @@
   }
 
   &__quote {
-    @include typography.font-size(lead); //TODO: Incorrect 900-1200px due to scaling
+    @include typography.font-size(lead); //TODO: Incorrect on desktop 3-col & 900-1200px due to scaling as lead-text is MQ based
     margin: 0 0 utils.rem(spacing.$medium) 0; // Top pseudo-margin coming from line-height on ::before element
   }
 
@@ -126,7 +125,7 @@
   }
 
   &__details {
-    @include testimonialBodyFontSize();
+    @include testimonial-body-font-size;
     display: flex;
     flex-direction: column;
     justify-content: center;
@@ -144,9 +143,7 @@
   &--full-width,
   &--full-width-white {
     @include layout.fullWidth();
-    border: unset;
-    //Added bottom margin to create spacing between two full-width variations if both are added.
-    margin-bottom: utils.rem(spacing.$large);
+    outline: unset;
 
     #{$block}__content::before {
       @include media-queries.mq($from: sm) {
@@ -179,7 +176,7 @@
 
     #{$block}__link {
       @include media-queries.mq($from: sm) {
-        @include testimonialBodyFontSize();
+        @include testimonial-body-font-size;
         color: colours.$link;
         display: block;
         margin-top: utils.rem(spacing.$medium);
@@ -199,7 +196,8 @@
 
   &--transparent {
     background-color: transparent;
-    border-left: unset;
-    border-right: unset;
+    border-bottom: 1px solid $testimonial-default-border;
+    border-top: 1px solid $testimonial-default-border;
+    outline: unset;
   }
 }
