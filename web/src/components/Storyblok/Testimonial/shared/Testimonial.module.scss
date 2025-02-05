@@ -37,7 +37,6 @@
     padding: utils.rem(spacing.$large 0); // 1rem L/R margin from layout.container
 
     @container testimonial (min-width: #{media-queries.$sm}) {
-      // TODO: fix border / computed size issue affecting container query breakpoints
       padding-left: utils.rem(spacing.$medium); // 1rem L/R margin from layout.container
       padding-right: utils.rem(spacing.$medium); // 1rem L/R margin from layout.container
     }
@@ -116,7 +115,7 @@
   }
 
   &__quote {
-    @include typography.font-size(lead); //TODO: Incorrect 900-1200px due to scaling
+    @include typography.font-size(lead); //TODO: Incorrect 900-1200px due to scaling; not specific to this component
     margin: 0 0 utils.rem(spacing.$medium) 0; // Top pseudo-margin coming from line-height on ::before element
   }
 
