@@ -24,7 +24,7 @@
   $block: &;
 
   @include visibility.hide-print;
-  background: $testimonial-default-background;
+  background: colours.$fill-white-background;
   container-name: testimonial;
   container-type: inline-size;
   outline: 1px solid $testimonial-default-border; // using instead of border due to use of container queries
