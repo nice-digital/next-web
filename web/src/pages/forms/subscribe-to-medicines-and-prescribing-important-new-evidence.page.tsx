@@ -34,7 +34,7 @@ export default function MedicinesAndPrescribingNewsletterForm(
 
 	return (
 		<>
-			<NextSeo title="NICE | Medicines and prescribing - important new evidence" />
+			<NextSeo title="Medicines and prescribing - important new evidence" />
 
 			<Breadcrumbs>
 				<Breadcrumb to="/news">News</Breadcrumb>
