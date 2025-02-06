@@ -39,6 +39,7 @@ export default function MedicinesAndPrescribingNewsletterForm(
 			<NextSeo title="Medicines and prescribing - important new evidence | Newsletters and alerts | News" />
 
 			<Breadcrumbs>
+				<Breadcrumb to="/">Home</Breadcrumb>
 				<Breadcrumb to="/news">News</Breadcrumb>
 				<Breadcrumb to="/nice-newsletters-and-alerts">
 					Newsletters and alerts
