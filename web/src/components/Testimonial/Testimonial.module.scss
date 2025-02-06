@@ -59,7 +59,7 @@
   &__image {
     aspect-ratio: 1 / 1;
     border-radius: 50%;
-    height: 64px;
+    height: auto;
     margin-right: utils.rem(spacing.$medium);
     object-fit: cover;
     vertical-align: middle;
