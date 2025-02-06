@@ -1,12 +1,14 @@
+import { NextSeo } from "next-seo";
+
+import { Breadcrumb, Breadcrumbs } from "@nice-digital/nds-breadcrumbs";
+import { Grid, GridItem } from "@nice-digital/nds-grid";
+import { PageHeader } from "@nice-digital/nds-page-header";
+
 import {
 	type FormProps,
 	getGetServerSideProps,
 } from "@/components/JotFormPage/getGetServerSideProps";
 import { JotFormPage } from "@/components/JotFormPage/JotFormPage";
-import { Breadcrumb, Breadcrumbs } from "@nice-digital/nds-breadcrumbs";
-import { Grid, GridItem } from "@nice-digital/nds-grid";
-import { PageHeader } from "@nice-digital/nds-page-header";
-import { NextSeo } from "next-seo";
 
 export const getServerSideProps = getGetServerSideProps("232421834202848");
 
