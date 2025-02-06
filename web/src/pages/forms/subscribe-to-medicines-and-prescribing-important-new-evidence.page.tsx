@@ -46,7 +46,7 @@ export default function MedicinesAndPrescribingNewsletterForm(
 
 				<PageHeader
 					heading="Medicines and prescribing - important new evidence"
-					lead="We no longer publish the ‘medicines and prescribing - important new evidence newsletter."
+					lead="We no longer publish the medicines and prescribing - important new evidence newsletter."
 					// lead="some lead text"
 					id="content-start"
 					verticalPadding="loose"
