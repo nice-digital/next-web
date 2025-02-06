@@ -34,7 +34,7 @@ export default function MedicinesAndPrescribingNewsletterForm(
 
 	return (
 			<>
-				<NextSeo title="some page title" />
+				<NextSeo title="NICE | Medicines and prescribing - important new evidence" />
 
 
 					<Breadcrumbs>
@@ -46,10 +46,13 @@ export default function MedicinesAndPrescribingNewsletterForm(
 
 				<PageHeader
 					heading="Medicines and prescribing - important new evidence"
-					lead={<p>We no longer publish the ‘medicines and prescribing - important new evidence’ newsletter. Please visit our main <a href="/nice-newsletters-and-alerts">NICE newsletters and alerts</a> page to subscribe to other resources, including the <a href="https://nice.us8.list-manage.com/subscribe?u=7864f766b10b8edd18f19aa56&id=ea7a83a510">medicines awareness service</a> and <a href="https://www.nice.org.uk/forms/subscribe-to-medicine-and-prescribing-alerts">medicines and prescribing alerts</a> bulletins.</p>}
+					lead="We no longer publish the ‘medicines and prescribing - important new evidence newsletter."
+					// lead="some lead text"
 					id="content-start"
 					verticalPadding="loose"
 				/>
+				<h3>What can I do now?</h3>
+				<p>Please visit our main <a href="/nice-newsletters-and-alerts">NICE newsletters and alerts</a> page to subscribe to other resources, including the <a href="https://nice.us8.list-manage.com/subscribe?u=7864f766b10b8edd18f19aa56&id=ea7a83a510">medicines awareness service</a> and <a href="https://www.nice.org.uk/forms/subscribe-to-medicine-and-prescribing-alerts">medicines and prescribing alerts</a> bulletins.</p>
 			</>
 		);
 }
