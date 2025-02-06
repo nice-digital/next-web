@@ -165,6 +165,7 @@
     }
 
     #{$block}__mainContent {
+      @include layout.fullWidthContainer;
       padding-left: 0;
       padding-right: 0;
 
