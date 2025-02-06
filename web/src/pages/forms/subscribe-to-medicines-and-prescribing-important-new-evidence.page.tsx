@@ -56,7 +56,7 @@ export default function MedicinesAndPrescribingNewsletterForm(
 				id="content-start"
 				verticalPadding="loose"
 			/>
-			<h3>What can I do now?</h3>
+			<h2>What can I do now?</h2>
 			<p>
 				Please visit our main{" "}
 				<a href="/nice-newsletters-and-alerts">NICE newsletters and alerts</a>{" "}
