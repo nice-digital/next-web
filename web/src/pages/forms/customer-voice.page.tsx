@@ -1,5 +1,5 @@
-import { useEffect } from "react";
-
+import { useEffect, useRef } from "react";
+import { Container } from "@nice-digital/nds-container";
 import styles from "./customer-voice.module.scss";
 
 declare global {
@@ -16,6 +16,8 @@ declare global {
 }
 
 const SurveyFormOriginal = () => {
+    const surveyContainerRef = useRef<HTMLDivElement>(null);
+
     useEffect(() => {
         // Ensure the SurveyEmbed library is initialized when the component is mounted
         if (typeof window !== "undefined" && window.SurveyEmbed) {
@@ -55,11 +57,26 @@ const SurveyFormOriginal = () => {
                                     if (iframe.contentDocument) {
                                         iframe.contentDocument.head.appendChild(styleTag);
                                         console.log("✅ Style tag injected:", styleTag);
+
+                                        // Use ResizeObserver to monitor changes in the iframe content size
+                                        const resizeObserver = new ResizeObserver((entries) => {
+                                            for (let entry of entries) {
+                                                if (surveyContainerRef.current) {
+                                                    surveyContainerRef.current.style.height = `${entry.contentRect.height}px`;
+                                                }
+                                            }
+                                        });
+
+                                        if (iframe.contentDocument.body) {
+                                            resizeObserver.observe(iframe.contentDocument.body);
+                                        }
                                     } else {
                                         console.warn("🚨 Unable to access iframe contentDocument.");
                                     }
                                 } catch (error) {
-                                    console.warn("🚨 Unable to access iframe content due to cross-origin policy.");
+                                    console.warn(
+                                        "🚨 Unable to access iframe content due to cross-origin policy."
+                                    );
                                 }
                             }, 250); // Delay to ensure iframe content is fully loaded
                         };
@@ -77,7 +94,24 @@ const SurveyFormOriginal = () => {
         return () => observer.disconnect();
     }, []);
 
-    return <div id="survey-container" className={styles.surveyContainer} />;
+    // Listen for messages from the iframe
+    useEffect(() => {
+        const handleMessage = (event: MessageEvent) => {
+            console.log("📡 Message received:", event.data);
+			console.log("📡 Message type:", event.data.type);
+            if (event.data === "ResponsePageLoaded" && surveyContainerRef.current) {
+                console.log("📏 Resizing survey container...");
+                surveyContainerRef.current.style.height = `1500px`;
+            }
+        };
+
+        window.addEventListener("message", handleMessage);
+
+        // Cleanup event listener on unmount
+        return () => window.removeEventListener("message", handleMessage);
+    }, []);
+
+    return <div id="survey-container" ref={surveyContainerRef} className={styles.surveyContainer} />;
 };
 
 const SurveyForm = () => {
@@ -85,16 +119,17 @@ const SurveyForm = () => {
         <iframe
             src="/api/proxy"
             width="100%"
-            height="500px"
-            style={{ border: "none" }}
+            height="1000px"
+            style={{ border: "none", overflow: "hidden" }}
+            scrolling="no"
         />
     );
 };
 
 export default function CustomerVoiceTestForm(): JSX.Element {
     return (
-        <>
+        <Container>
             <SurveyFormOriginal />
-        </>
+        </Container>
     );
 }
