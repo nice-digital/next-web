@@ -162,6 +162,11 @@
 
     #{$block}__image {
       @include media-queries.mq($from: md) {
+        height: 200px;
+        margin-left: 5rem;
+        width: 200px;
+      }
+      @include media-queries.mq($from: lg) {
         height: 220px;
         margin-left: 5rem;
         width: 220px;
