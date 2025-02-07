@@ -3,9 +3,9 @@
 exports[`Storyblok testimonial Default component should match snapshot for default variant 1`] = `
 <div>
   <div
-    class="testimonial testimonial--transparent"
-    data-component="testimonial--transparent"
-    data-testid="testimonial-transparent"
+    class="testimonial testimonial--default"
+    data-component="testimonial--default"
+    data-testid="testimonial-default"
     data-tracking="testimonial"
   >
     <div

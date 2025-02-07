@@ -20,7 +20,7 @@ const mockStoryBlokTestimonialGridItem: StoryblokTestimonialGridItemProps = {
 		quoteName: "Test Name",
 		quoteRole: "Test Role",
 		quoteText: "Test Quote Text",
-		variant: "transparent",
+		variant: "default",
 		_uid: "",
 		component: "testimonialGridItem",
 	},
