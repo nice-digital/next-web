@@ -122,6 +122,10 @@
   &__person {
     align-items: center;
     display: flex;
+
+    > picture {
+      flex-shrink: 0;
+    }
   }
 
   &__details {
