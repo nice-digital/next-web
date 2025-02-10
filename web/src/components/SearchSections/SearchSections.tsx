@@ -48,12 +48,10 @@ export const SearchSections: FC<SearchSectionsProps> = ({
 	return (
 		<div className={styles.wrapper}>
 			{keyLink && (
-				<Link to={keyLink.url} className={styles.keyLink}>
-					<>
-						{keyLink.text}
-						<span className="visually-hidden">{` for ${guidanceRef}`}</span>
-					</>
-				</Link>
+				<a href={keyLink.url} className={styles.keyLink}>
+					{keyLink.text}
+					<span className="visually-hidden">{` for ${guidanceRef}`}</span>
+				</a>
 			)}
 			<details
 				className={styles.details}

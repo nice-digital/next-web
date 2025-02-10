@@ -301,6 +301,7 @@ export type BaseContentPart<T extends string = string> = {
 	legacyId: string | null;
 	type: T;
 	uid: number;
+	majorChangeDate: string | null;
 };
 
 export type UploadAndConvertContentPart =
