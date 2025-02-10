@@ -44,3 +44,6 @@ public/sitemap-0.xml
 
 # JSON component structure from the Storyblok CLI
 components.*.json
+
+# Component back up from push/pull script
+temp-components-backup-*
