@@ -15,8 +15,6 @@ export const StoryblokTestimonialGridItem: React.FC<
 		quoteText,
 		quoteName,
 		quoteRole,
-		children,
-		headingLevel = 4,
 		image,
 	} = blok;
 

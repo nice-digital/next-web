@@ -17,8 +17,6 @@ export const StoryblokTestimonialFullWidth: React.FC<
 		quoteText,
 		quoteName,
 		quoteRole,
-		children,
-		headingLevel = 4,
 		image,
 		link,
 	} = blok;

@@ -6,7 +6,7 @@ import { type Breadcrumb } from "@/types/Breadcrumb";
 import { type CategoryLandingPageStoryblok } from "@/types/storyblok";
 
 import { Testimonial } from "../../Testimonial/Testimonial";
-import { StoryblokImage } from "../StoryblokImage/StoryblokImage";
+
 
 import styles from "./CategoryLandingPage.module.scss";
 

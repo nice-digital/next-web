@@ -40,11 +40,6 @@
       padding-left: utils.rem(spacing.$medium); // 1rem L/R margin from layout.container
       padding-right: utils.rem(spacing.$medium); // 1rem L/R margin from layout.container
     }
-
-    @container testimonial (min-width: #{media-queries.$lg}) {
-      padding-left: utils.rem(spacing.$large); // 1rem L/R margin from layout.container
-      padding-right: utils.rem(spacing.$large); // 1rem L/R margin from layout.container
-    }
   }
 
   &__mainImageContainer {
@@ -61,9 +56,9 @@
     border-radius: 50%;
     height: 64px;
     margin-right: utils.rem(spacing.$medium);
+    min-width: 64px;
     object-fit: cover;
     vertical-align: middle;
-    width: 64px;
 
     @container testimonial (min-width: #{media-queries.$sm}) {
       height: 90px;
@@ -115,17 +110,15 @@
   }
 
   &__quote {
-    @include typography.font-size(lead); //TODO: Incorrect on desktop 3-col & 900-1200px due to scaling as lead-text is MQ based
+    @include typography.font-size(
+      lead
+    ); //TODO: Incorrect on desktop 3-col & 900-1200px due to scaling as lead-text is MQ based
     margin: 0 0 utils.rem(spacing.$medium) 0; // Top pseudo-margin coming from line-height on ::before element
   }
 
   &__person {
     align-items: center;
     display: flex;
-
-    > picture {
-      flex-shrink: 0;
-    }
   }
 
   &__details {
@@ -168,7 +161,6 @@
       }
       @include media-queries.mq($from: lg) {
         height: 220px;
-        margin-left: 5rem;
         width: 220px;
       }
     }

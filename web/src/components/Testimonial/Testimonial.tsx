@@ -10,13 +10,11 @@ import styles from "./Testimonial.module.scss";
 
 export interface TestimonialProps {
 	variant?: "default" | "transparent" | "fullWidth" | "fullWidthWhite";
-	children?: ReactNode[] | ReactNode; //TODO does this component need to be able to accept children?
 	className?: string;
 	image?: ReactElement;
 	quoteText: string;
 	quoteName: string;
 	quoteRole: string;
-	headingLevel?: 2 | 3 | 4 | 5 | 6;
 	link?: ReactElement | null;
 }
 
@@ -35,9 +33,7 @@ export const Testimonial: React.FC<TestimonialProps> = (
 		quoteText,
 		quoteName,
 		quoteRole,
-		children,
 		className,
-		headingLevel = 4,
 		link = undefined,
 		image,
 		...rest
