@@ -10,13 +10,7 @@ export interface StoryblokTestimonialGridItemProps {
 export const StoryblokTestimonialGridItem: React.FC<
 	StoryblokTestimonialGridItemProps
 > = ({ blok }) => {
-	const {
-		variant,
-		quoteText,
-		quoteName,
-		quoteRole,
-		image,
-	} = blok;
+	const { variant, quoteText, quoteName, quoteRole, image } = blok;
 
 	return (
 		<Testimonial

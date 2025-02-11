@@ -7,7 +7,6 @@ import { type CategoryLandingPageStoryblok } from "@/types/storyblok";
 
 import { Testimonial } from "../../Testimonial/Testimonial";
 
-
 import styles from "./CategoryLandingPage.module.scss";
 
 export interface CategoryLandindPageBlokProps {

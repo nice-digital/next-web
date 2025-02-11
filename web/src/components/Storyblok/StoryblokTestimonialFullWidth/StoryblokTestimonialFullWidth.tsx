@@ -12,14 +12,7 @@ export interface StoryblokTestimonialFullWidthProps {
 export const StoryblokTestimonialFullWidth: React.FC<
 	StoryblokTestimonialFullWidthProps
 > = ({ blok, className = undefined }) => {
-	const {
-		variant,
-		quoteText,
-		quoteName,
-		quoteRole,
-		image,
-		link,
-	} = blok;
+	const { variant, quoteText, quoteName, quoteRole, image, link } = blok;
 
 	return (
 		<Testimonial
