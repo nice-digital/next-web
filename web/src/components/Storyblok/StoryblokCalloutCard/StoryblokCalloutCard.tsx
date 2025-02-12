@@ -1,12 +1,15 @@
-import React from "react";
-import { Card, type CardHeadingLinkProps } from "@nice-digital/nds-card";
 import Link from "next/link";
-import { StoryblokImage } from "../StoryblokImage/StoryblokImage";
+import React from "react";
+
+import { Card, type CardHeadingLinkProps } from "@nice-digital/nds-card";
+
 import {
 	CalloutCardStoryblok,
 	CalloutCardWithImageStoryblok,
 } from "@/types/storyblok";
 import { resolveStoryblokLink } from "@/utils/storyblok";
+
+import { StoryblokImage } from "../StoryblokImage/StoryblokImage";
 
 export interface StoryblokCalloutCardProps {
 	blok: CalloutCardStoryblok | CalloutCardWithImageStoryblok;
@@ -16,10 +19,8 @@ export const StoryblokCalloutCard: React.FC<StoryblokCalloutCardProps> = ({
 	blok,
 }: StoryblokCalloutCardProps) => {
 	const { heading, body, link, image } = blok;
-	console.log("blok", blok);
 	let cardLink: CardHeadingLinkProps | undefined = undefined;
-	const resolvedLink = link ? resolveStoryblokLink(link) : undefined;
-	console.log("resolved link", resolvedLink);
+	const resolvedLink = resolveStoryblokLink(link);
 	if (resolvedLink?.url) {
 		cardLink = {
 			destination: resolvedLink.url,
@@ -27,12 +28,10 @@ export const StoryblokCalloutCard: React.FC<StoryblokCalloutCardProps> = ({
 			method: "href",
 		};
 	}
-	console.log("link", link);
-
 	const renderImage = () => {
 		return image ? (
 			<StoryblokImage
-				src={image?.filename ? image.filename : undefined}
+				src={image.filename}
 				alt={image?.alt || "callout card image"}
 				serviceOptions={{ height: 0, quality: 80, width: 708 }}
 			/>
@@ -41,12 +40,7 @@ export const StoryblokCalloutCard: React.FC<StoryblokCalloutCardProps> = ({
 
 	return (
 		<div>
-			<Card
-				headingText={heading}
-				callout
-				link={cardLink || undefined}
-				image={renderImage()}
-			>
+			<Card headingText={heading} callout link={cardLink} image={renderImage()}>
 				{body}
 			</Card>
 		</div>

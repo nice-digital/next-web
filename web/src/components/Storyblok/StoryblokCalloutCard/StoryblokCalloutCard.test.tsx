@@ -1,16 +1,12 @@
-import {
-	CalloutCardStoryblok,
-	CalloutCardWithImageStoryblok,
-} from "@/types/storyblok";
 import { render, screen } from "@testing-library/react";
+
+import { CalloutCardWithImageStoryblok } from "@/types/storyblok";
+
 import {
 	StoryblokCalloutCard,
 	StoryblokCalloutCardProps,
 } from "./StoryblokCalloutCard";
 
-// export interface StoryblokCalloutCardWithImageProps {
-// 	blok: CalloutCardWithImageStoryblok;
-// }
 const cardLinkUrl = "https://nice.org.uk/guidance/ta10";
 
 const mockCalloutCardProps: StoryblokCalloutCardProps = {
@@ -41,7 +37,19 @@ describe("cardListSection component", () => {
 		const mockCalloutCardWithImageProps = {
 			blok: {
 				...mockCalloutCardProps.blok,
-				image: {},
+				image: {
+					id: 18214711,
+					alt: "",
+					name: "",
+					focus: "",
+					title: "",
+					source: "",
+					filename: "test.JPG",
+					copyright: "",
+					fieldtype: "asset",
+					meta_data: {},
+					is_external_url: false,
+				},
 				component: "calloutCardWithImage",
 			} as unknown as CalloutCardWithImageStoryblok,
 		};
@@ -83,9 +91,13 @@ describe("cardListSection component", () => {
 			blok: {
 				...mockCalloutCardProps.blok,
 				link: internalLink,
-			} as unknown as StoryblokCalloutCardProps,
+			},
 		};
-		render(<StoryblokCalloutCard {...mockCardListSectionPropsInternalLink} />);
+		render(
+			<StoryblokCalloutCard
+				{...(mockCardListSectionPropsInternalLink as StoryblokCalloutCardProps)}
+			/>
+		);
 		const cardHeading = screen.getByText("Mock card title", {
 			selector: "a",
 		});

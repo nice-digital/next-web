@@ -36,10 +36,20 @@ exports[`cardListSection component should match snapshot with transparent theme 
       <div
         class="card__image"
       >
-        <img
-          alt="callout card image"
-          src="/fallback-image.png"
-        />
+        <picture>
+          <source
+            srcset="test.JPG/m/708x0/filters:format%28avif%29:quality%2880%29"
+            type="image/avif"
+          />
+          <source
+            srcset="test.JPG/m/708x0/filters:format%28webp%29:quality%2880%29"
+            type="image/webp"
+          />
+          <img
+            alt="callout card image"
+            src="test.JPG/m/708x0/filters:format%28jpeg%29:quality%2880%29"
+          />
+        </picture>
       </div>
       <div
         class="card__text"
