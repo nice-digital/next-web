@@ -180,6 +180,25 @@ export interface ButtonLinkStoryblok {
   [k: string]: any;
 }
 
+export interface CalloutCardStoryblok {
+  heading: string;
+  body: string;
+  link: Exclude<MultilinkStoryblok, {linktype?: "email"} | {linktype?: "asset"}>;
+  component: "calloutCard";
+  _uid: string;
+  [k: string]: any;
+}
+
+export interface CalloutCardWithImageStoryblok {
+  heading: string;
+  body: string;
+  link: Exclude<MultilinkStoryblok, {linktype?: "email"} | {linktype?: "asset"}>;
+  image: AssetStoryblok;
+  component: "calloutCardWithImage";
+  _uid: string;
+  [k: string]: any;
+}
+
 export interface CardStoryblok {
   heading: string;
   body: string;
@@ -202,6 +221,55 @@ export interface CardContentStoryblok {
 export interface CardGridStoryblok {
   cards: CardStoryblok[];
   component: "cardGrid";
+  _uid: string;
+  [k: string]: any;
+}
+
+export interface CardGridRowBasicStoryblok {
+  columns?: "" | "2" | "3";
+  gridItems: CardStoryblok[];
+  component: "cardGridRowBasic";
+  _uid: string;
+  [k: string]: any;
+}
+
+export interface CardGridRowCalloutStoryblok {
+  columns?: "" | "2" | "3";
+  gridItems: CalloutCardStoryblok[];
+  component: "cardGridRowCallout";
+  _uid: string;
+  [k: string]: any;
+}
+
+export interface CardGridRowCalloutWithImageStoryblok {
+  columns?: "" | "2" | "3";
+  gridItems: CalloutCardWithImageStoryblok[];
+  component: "cardGridRowCalloutWithImage";
+  _uid: string;
+  [k: string]: any;
+}
+
+export interface CardGridRowTestimonialsStoryblok {
+  columns: "" | "1" | "2" | "3";
+  gridItems: TestimonialGridItemStoryblok[];
+  component: "cardGridRowTestimonials";
+  _uid: string;
+  [k: string]: any;
+}
+
+export interface CardGridSectionStoryblok {
+  heading?: string;
+  headingLevel: string;
+  leadText?: RichtextStoryblok;
+  cards: (
+    | CardGridRowBasicStoryblok
+    | CardGridRowCalloutStoryblok
+    | CardGridRowTestimonialsStoryblok
+    | CardGridRowCalloutWithImageStoryblok
+  )[];
+  theme?: "" | "subtle" | "transparent";
+  verticalPadding?: "" | "small" | "medium" | "large";
+  component: "cardGridSection";
   _uid: string;
   [k: string]: any;
 }
@@ -236,6 +304,11 @@ export interface CategoryLandingPageStoryblok {
     | ActionBannerDefaultStoryblok
     | PromoBoxStoryblok
     | CardListSectionStoryblok
+    | TestimonialFullWidthStoryblok
+    | CalloutCardStoryblok
+    | CardGridSectionStoryblok
+    | CalloutCardWithImageStoryblok
+    | TestimonialGridItemStoryblok
   )[];
   component: "categoryLandingPage";
   _uid: string;
@@ -260,9 +333,16 @@ export interface GridStoryblok {
     | AuthorStoryblok
     | BlogPostStoryblok
     | ButtonLinkStoryblok
+    | CalloutCardStoryblok
+    | CalloutCardWithImageStoryblok
     | CardStoryblok
     | CardContentStoryblok
     | CardGridStoryblok
+    | CardGridRowBasicStoryblok
+    | CardGridRowCalloutStoryblok
+    | CardGridRowCalloutWithImageStoryblok
+    | CardGridRowTestimonialsStoryblok
+    | CardGridSectionStoryblok
     | CardListSectionStoryblok
     | CardListSectionItemStoryblok
     | CategoryLandingPageStoryblok
@@ -295,6 +375,8 @@ export interface GridStoryblok {
     | RelatedNewsLinkStoryblok
     | SpotlightStoryblok
     | SpotlightCopyStoryblok
+    | TestimonialFullWidthStoryblok
+    | TestimonialGridItemStoryblok
     | YoutubeEmbedStoryblok
   )[];
   component: "grid";
@@ -529,9 +611,16 @@ export interface PageStoryblok {
     | AuthorStoryblok
     | BlogPostStoryblok
     | ButtonLinkStoryblok
+    | CalloutCardStoryblok
+    | CalloutCardWithImageStoryblok
     | CardStoryblok
     | CardContentStoryblok
     | CardGridStoryblok
+    | CardGridRowBasicStoryblok
+    | CardGridRowCalloutStoryblok
+    | CardGridRowCalloutWithImageStoryblok
+    | CardGridRowTestimonialsStoryblok
+    | CardGridSectionStoryblok
     | CardListSectionStoryblok
     | CardListSectionItemStoryblok
     | CategoryLandingPageStoryblok
@@ -564,6 +653,8 @@ export interface PageStoryblok {
     | RelatedNewsLinkStoryblok
     | SpotlightStoryblok
     | SpotlightCopyStoryblok
+    | TestimonialFullWidthStoryblok
+    | TestimonialGridItemStoryblok
     | YoutubeEmbedStoryblok
   )[];
   metadata?: MetadataStoryblok[];
@@ -606,9 +697,6 @@ export interface PromoBoxStoryblok {
   imageAspectRatio?: "landscape" | "portrait";
   isTransparent?: boolean;
   verticalPadding?: "" | "small" | "medium" | "large";
-  useVideo?: boolean;
-  youtubeEmbed?: YoutubeEmbedStoryblok[];
-  image?: AssetStoryblok;
   component: "promoBox";
   _uid: string;
   [k: string]: any;
@@ -670,6 +758,29 @@ export interface SpotlightCopyStoryblok {
   youtubeEmbed: YoutubeEmbedStoryblok[];
   isTransparent?: boolean;
   component: "spotlight_copy";
+  _uid: string;
+  [k: string]: any;
+}
+
+export interface TestimonialFullWidthStoryblok {
+  quoteText: string;
+  quoteName: string;
+  quoteRole: string;
+  image: AssetStoryblok;
+  link?: RelatedLinkStoryblok[];
+  variant: "fullWidth" | "fullWidthWhite";
+  component: "testimonialFullWidth";
+  _uid: string;
+  [k: string]: any;
+}
+
+export interface TestimonialGridItemStoryblok {
+  quoteText: string;
+  quoteName: string;
+  quoteRole: string;
+  image: AssetStoryblok;
+  variant: "default" | "transparent";
+  component: "testimonialGridItem";
   _uid: string;
   [k: string]: any;
 }

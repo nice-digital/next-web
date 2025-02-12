@@ -1,0 +1,58 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`cardListSection component should match snapshot with default values 1`] = `
+<div>
+  <div>
+    <article
+      class="card card--callout"
+      data-component="card"
+    >
+      <header
+        class="card__header"
+      >
+        <p
+          class="card__heading"
+        >
+          <a
+            href="https://nice.org.uk/guidance/ta10"
+          >
+            Mock card title
+          </a>
+        </p>
+      </header>
+      Mock card summary
+    </article>
+  </div>
+</div>
+`;
+
+exports[`cardListSection component should match snapshot with transparent theme and large padding 1`] = `
+<div>
+  <div>
+    <article
+      class="card card--callout"
+      data-component="card"
+    >
+      <div
+        class="card__image"
+      >
+        <img
+          alt="callout card image"
+          src="/fallback-image.png"
+        />
+      </div>
+      <div
+        class="card__text"
+      >
+        <header
+          class="card__header"
+        >
+          <p
+            class="card__heading"
+          />
+        </header>
+      </div>
+    </article>
+  </div>
+</div>
+`;
