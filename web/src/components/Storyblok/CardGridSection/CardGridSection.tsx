@@ -38,6 +38,7 @@ export const CardGridSection: React.FC<CardGridSectionProps> = ({
 		leadText && fieldHasValidContent(leadText) ? leadText : null;
 
 	const RenderComponent: React.FC<{ gridItem: { component: string } }> = ({ gridItem }) => {
+		// TODO: fix type of component; discriminatory union?
 		const {
 			heading,
 			body,
@@ -65,6 +66,7 @@ export const CardGridSection: React.FC<CardGridSectionProps> = ({
 				 	/>
 				);
 			case "calloutCard":
+			case "calloutCardWithImage":
 				return (
 					<StoryblokCalloutCard
 						blok={gridItem}
