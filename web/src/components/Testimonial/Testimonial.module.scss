@@ -1,0 +1,205 @@
+/// @group components
+@use 'sass:math';
+@use '@nice-digital/nds-core/scss/colours';
+@use '@nice-digital/nds-core/scss/focus';
+@use '@nice-digital/nds-core/scss/layout';
+@use '@nice-digital/nds-core/scss/media-queries';
+@use '@nice-digital/nds-core/scss/spacing';
+@use '@nice-digital/nds-core/scss/typography';
+@use '@nice-digital/nds-core/scss/utils';
+@use '@nice-digital/nds-core/scss/visibility';
+@use '@nice-digital/nds-core/scss/colours/tokens/global';
+@use '~/styles/colours' as *;
+@use '~/styles/spacing' as *;
+
+@mixin testimonial-body-font-size {
+  font-size: utils.rem(18, 15);
+
+  @include media-queries.mq($from: lg) {
+    font-size: utils.rem(18, 18);
+  }
+}
+
+.testimonial {
+  $block: &;
+
+  @include visibility.hide-print;
+  background: colours.$fill-white-background;
+  container-name: testimonial;
+  container-type: inline-size;
+  outline: 1px solid $testimonial-default-border; // using instead of border due to use of container queries
+
+  &__mainContent {
+    @include layout.container;
+    align-items: flex-start;
+    display: flex;
+    flex-wrap: wrap;
+    padding: utils.rem(spacing.$large 0); // 1rem L/R margin from layout.container
+
+    @container testimonial (min-width: #{media-queries.$sm}) {
+      padding-left: utils.rem(spacing.$medium); // 1rem L/R margin from layout.container
+      padding-right: utils.rem(spacing.$medium); // 1rem L/R margin from layout.container
+    }
+  }
+
+  &__mainImageContainer {
+    display: none;
+
+    @container testimonial (min-width: #{media-queries.$md}) {
+      align-self: center;
+      display: flex;
+    }
+  }
+
+  &__image {
+    aspect-ratio: 1 / 1;
+    border-radius: 50%;
+    height: 64px;
+    margin-right: utils.rem(spacing.$medium);
+    min-width: 64px;
+    object-fit: cover;
+    vertical-align: middle;
+
+    @container testimonial (min-width: #{media-queries.$sm}) {
+      height: 90px;
+      width: 90px;
+    }
+
+    @container testimonial (min-width: #{media-queries.$md}) {
+      height: 145px;
+      margin-left: utils.rem(spacing.$large);
+      margin-right: 0;
+      width: 145px;
+    }
+
+    @container testimonial (min-width: #{media-queries.$lg}) {
+      height: 164px;
+      margin-left: utils.rem(spacing.$x-large);
+      width: 164px;
+    }
+
+    &Mobile {
+      @container testimonial (min-width: #{media-queries.$md}) {
+        display: none;
+      }
+    }
+  }
+
+  &__content {
+    display: flex;
+    flex: 1;
+    flex-direction: column;
+    margin: 0;
+
+    &::before {
+      color: global.$nice-teal;
+      content: '\201C';
+      font-family: var(--serif-font-family);
+      font-size: utils.rem(75, 15);
+      line-height: 1rem;
+      padding-top: utils.rem(spacing.$large);
+
+      @container testimonial (min-width: #{media-queries.$sm}) {
+        font-size: utils.rem(90, 15);
+      }
+
+      @container testimonial (min-width: #{media-queries.$lg}) {
+        font-size: utils.rem(108, 18);
+      }
+    }
+  }
+
+  &__quote {
+    @include typography.font-size(
+      lead
+    ); //TODO: Incorrect on desktop 3-col & 900-1200px due to scaling as lead-text is MQ based
+    margin: 0 0 utils.rem(spacing.$medium) 0; // Top pseudo-margin coming from line-height on ::before element
+  }
+
+  &__person {
+    align-items: center;
+    display: flex;
+  }
+
+  &__details {
+    @include testimonial-body-font-size;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    margin: 0;
+  }
+
+  &__name {
+    font-weight: bold;
+  }
+
+  &__link {
+    display: none;
+  }
+
+  &--full-width,
+  &--full-width-white {
+    @include layout.fullWidth();
+    outline: unset;
+
+    #{$block}__content::before {
+      @include media-queries.mq($from: sm) {
+        font-size: utils.rem(90, 15);
+      }
+
+      @include media-queries.mq($from: lg) {
+        font-size: utils.rem(124, 18);
+        padding-top: utils.rem(spacing.$x-large);
+      }
+    }
+
+    #{$block}__image {
+      @include media-queries.mq($from: md) {
+        height: 200px;
+        margin-left: 5rem;
+        width: 200px;
+      }
+      @include media-queries.mq($from: lg) {
+        height: 220px;
+        width: 220px;
+      }
+    }
+
+    #{$block}__mainContent {
+      @include layout.fullWidthContainer;
+      padding-left: 0;
+      padding-right: 0;
+
+      @include media-queries.mq($from: md) {
+        padding-bottom: utils.rem(spacing.$x-large);
+        padding-top: utils.rem(spacing.$x-large);
+      }
+    }
+
+    #{$block}__link {
+      @include media-queries.mq($from: sm) {
+        @include testimonial-body-font-size;
+        color: colours.$link;
+        display: block;
+        margin-top: utils.rem(spacing.$medium);
+      }
+    }
+  }
+
+  &--full-width {
+    background-color: $testimonial-subtle-background;
+  }
+
+  &--full-width-white {
+    background-color: colours.$fill-white-background;
+    border-bottom: 1px solid colours.$border;
+    border-top: 1px solid colours.$border;
+  }
+
+  &--transparent {
+    background-color: transparent;
+    border-bottom: 1px solid $testimonial-default-border;
+    border-top: 1px solid $testimonial-default-border;
+    outline: unset;
+  }
+}

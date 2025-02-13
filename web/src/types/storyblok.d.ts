@@ -225,47 +225,57 @@ export interface CardGridStoryblok {
   [k: string]: any;
 }
 
-export interface CardGridRowBasicStoryblok {
-  columns?: "" | "2" | "3";
-  gridItems: CardStoryblok[];
-  component: "cardGridRowBasic";
-  _uid: string;
-  [k: string]: any;
-}
-
-export interface CardGridRowCalloutStoryblok {
-  columns?: "" | "2" | "3";
-  gridItems: CalloutCardStoryblok[];
-  component: "cardGridRowCallout";
-  _uid: string;
-  [k: string]: any;
-}
-
-export interface CardGridRowCalloutWithImageStoryblok {
-  columns?: "" | "2" | "3";
-  gridItems: CalloutCardWithImageStoryblok[];
-  component: "cardGridRowCalloutWithImage";
-  _uid: string;
-  [k: string]: any;
-}
-
-export interface CardGridRowTestimonialsStoryblok {
-  columns: "" | "1" | "2" | "3";
-  gridItems: TestimonialGridItemStoryblok[];
-  component: "cardGridRowTestimonials";
-  _uid: string;
-  [k: string]: any;
-}
-
 export interface CardGridSectionStoryblok {
   heading?: string;
   headingLevel: string;
   leadText?: RichtextStoryblok;
-  cards: (
-    | CardGridRowBasicStoryblok
-    | CardGridRowCalloutStoryblok
-    | CardGridRowTestimonialsStoryblok
-    | CardGridRowCalloutWithImageStoryblok
+  cardGrid: (
+    | AccordionStoryblok
+    | AccordionGroupStoryblok
+    | ActionBannerStoryblok
+    | ActionBannerDefaultStoryblok
+    | AuthorStoryblok
+    | BlogPostStoryblok
+    | ButtonLinkStoryblok
+    | CardStoryblok
+    | CardContentStoryblok
+    | CardGridStoryblok
+    | CardGridSectionStoryblok
+    | CardListSectionStoryblok
+    | CardListSectionItemStoryblok
+    | CategoryLandingPageStoryblok
+    | CategoryNavigationStoryblok
+    | GridStoryblok
+    | GridItemStoryblok
+    | GridSectionStoryblok
+    | GridSectionItemStoryblok
+    | HeroStoryblok
+    | HomepageStoryblok
+    | HomepageHeroStoryblok
+    | IframeStoryblok
+    | ImageEmbedStoryblok
+    | ImageOrVideoStoryblok
+    | InDepthArticleStoryblok
+    | InfoPageStoryblok
+    | ListItemStoryblok
+    | MarkdownStoryblok
+    | MetadataStoryblok
+    | NestedRichTextStoryblok
+    | NestedTableStoryblok
+    | NewsArticleStoryblok
+    | OrderedListStoryblok
+    | PageStoryblok
+    | PageHeaderStoryblok
+    | PodcastStoryblok
+    | PromoBoxStoryblok
+    | QuoteStoryblok
+    | RelatedLinkStoryblok
+    | RelatedNewsLinkStoryblok
+    | SpotlightStoryblok
+    | SpotlightCopyStoryblok
+    | TestimonialFullWidthStoryblok
+    | TestimonialGridItemStoryblok
+    | YoutubeEmbedStoryblok
   )[];
   theme?: "" | "subtle" | "transparent";
   verticalPadding?: "" | "small" | "medium" | "large";
@@ -304,11 +314,8 @@ export interface CategoryLandingPageStoryblok {
     | ActionBannerDefaultStoryblok
     | PromoBoxStoryblok
     | CardListSectionStoryblok
-    | TestimonialFullWidthStoryblok
-    | CalloutCardStoryblok
-    | CardGridSectionStoryblok
-    | CalloutCardWithImageStoryblok
     | TestimonialGridItemStoryblok
+    | TestimonialFullWidthStoryblok
   )[];
   component: "categoryLandingPage";
   _uid: string;
@@ -333,15 +340,9 @@ export interface GridStoryblok {
     | AuthorStoryblok
     | BlogPostStoryblok
     | ButtonLinkStoryblok
-    | CalloutCardStoryblok
-    | CalloutCardWithImageStoryblok
     | CardStoryblok
     | CardContentStoryblok
     | CardGridStoryblok
-    | CardGridRowBasicStoryblok
-    | CardGridRowCalloutStoryblok
-    | CardGridRowCalloutWithImageStoryblok
-    | CardGridRowTestimonialsStoryblok
     | CardGridSectionStoryblok
     | CardListSectionStoryblok
     | CardListSectionItemStoryblok
@@ -616,10 +617,6 @@ export interface PageStoryblok {
     | CardStoryblok
     | CardContentStoryblok
     | CardGridStoryblok
-    | CardGridRowBasicStoryblok
-    | CardGridRowCalloutStoryblok
-    | CardGridRowCalloutWithImageStoryblok
-    | CardGridRowTestimonialsStoryblok
     | CardGridSectionStoryblok
     | CardListSectionStoryblok
     | CardListSectionItemStoryblok
