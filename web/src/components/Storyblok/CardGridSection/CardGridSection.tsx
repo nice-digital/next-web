@@ -5,11 +5,11 @@ import { Card, type CardHeadingLinkProps } from "@nice-digital/nds-card";
 import { Grid, GridItem, type Columns } from "@nice-digital/nds-grid";
 
 import { StoryblokRichText } from "@/components/Storyblok/StoryblokRichText/StoryblokRichText";
+import { StoryblokTestimonialGridItem } from "@/components/Storyblok/StoryblokTestimonialGridItem/StoryblokTestimonialGridItem";
+import { StoryblokImage } from "@/components/Storyblok/StoryblokImage/StoryblokImage";
 import { CardGridSectionStoryblok } from "@/types/storyblok";
 import { fieldHasValidContent, resolveStoryblokLink } from "@/utils/storyblok";
 import { toTitleCase } from "@/utils/string";
-
-import { StoryblokImage } from "../StoryblokImage/StoryblokImage";
 
 import styles from "./CardGridSection.module.scss";
 
@@ -95,8 +95,7 @@ export const CardGridSection: React.FC<CardGridSectionProps> = ({
 								return (
 									<GridItem cols={12} md={cols} key={_uid}>
 										{component === "testimonialGridItem" ? (
-											// <StoryblokTestimonialGridItem />
-											<p>&nsbp;</p>
+											<StoryblokTestimonialGridItem />
 										) : (
 											<Card
 												headingText={heading}
