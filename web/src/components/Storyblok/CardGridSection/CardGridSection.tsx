@@ -6,7 +6,7 @@ import { Grid, GridItem, type Columns } from "@nice-digital/nds-grid";
 
 import { StoryblokRichText } from "@/components/Storyblok/StoryblokRichText/StoryblokRichText";
 import { StoryblokTestimonialGridItem } from "@/components/Storyblok/StoryblokTestimonialGridItem/StoryblokTestimonialGridItem";
-import { StoryblokImage } from "@/components/Storyblok/StoryblokImage/StoryblokImage";
+import { StoryblokCalloutCard } from "../StoryblokCalloutCard/StoryblokCalloutCard";
 import { CardGridSectionStoryblok } from "@/types/storyblok";
 import { fieldHasValidContent, resolveStoryblokLink } from "@/utils/storyblok";
 import { toTitleCase } from "@/utils/string";
@@ -36,6 +36,53 @@ export const CardGridSection: React.FC<CardGridSectionProps> = ({
 	)}Spacing`;
 	const leadTextProcessed =
 		leadText && fieldHasValidContent(leadText) ? leadText : null;
+
+	const RenderComponent: React.FC<{ gridItem: { component: string } }> = ({ gridItem }) => {
+		const {
+			heading,
+			body,
+			link,
+			component,
+		} = gridItem;
+
+		let cardLink: CardHeadingLinkProps | undefined = undefined;
+		const resolvedLink = link && (link.url || link.cached_url)
+			? resolveStoryblokLink(link)
+			: undefined;
+		if (resolvedLink?.url) {
+			cardLink = {
+				destination: resolvedLink.url,
+				elementType: resolvedLink.isInternal ? Link : "a",
+				method: "href",
+			};
+		}
+
+		switch (component) {
+			case "testimonialGridItem":
+				return (
+					<StoryblokTestimonialGridItem
+						blok={gridItem}
+				 	/>
+				);
+			case "calloutCard":
+				return (
+					<StoryblokCalloutCard
+						blok={gridItem}
+					/>
+				)
+			case "card":
+				return (
+					<Card
+						headingText={heading}
+						link={cardLink || undefined}
+					>
+						{body}
+					</Card>
+				);
+			default:
+				return null;
+		}
+	};
 
 	return (
 		<section
@@ -69,51 +116,9 @@ export const CardGridSection: React.FC<CardGridSectionProps> = ({
 					return (
 						<Grid gutter="loose" key={_uid}>
 							{gridItems.map((gridItem) => {
-								const {
-									heading,
-									body,
-									link,
-									image,
-									quoteName,
-									component,
-									_uid,
-								} = gridItem;
-								const isCallOutVariant = component === "calloutCard";
-
-								let cardLink: CardHeadingLinkProps | undefined = undefined;
-								const resolvedLink = link
-									? resolveStoryblokLink(link)
-									: undefined;
-								if (resolvedLink?.url) {
-									cardLink = {
-										destination: resolvedLink.url,
-										elementType: resolvedLink.isInternal ? Link : "a",
-										method: "href",
-									};
-								}
-
 								return (
-									<GridItem cols={12} md={cols} key={_uid}>
-										{component === "testimonialGridItem" ? (
-											<StoryblokTestimonialGridItem />
-										) : (
-											<Card
-												headingText={heading}
-												link={cardLink || undefined}
-												callout={isCallOutVariant}
-												image={
-													isCallOutVariant && image && image.filename ? (
-														<StoryblokImage
-															src={image.filename || undefined}
-															alt={image.alt || ""}
-															serviceOptions={{ quality: 80 }}
-														/>
-													) : null
-												}
-											>
-												{body}
-											</Card>
-										)}
+									<GridItem cols={12} md={cols} key={gridItem._uid}>
+										<RenderComponent gridItem={gridItem} />
 									</GridItem>
 								);
 							})}
