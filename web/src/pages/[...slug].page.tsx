@@ -21,6 +21,7 @@ import { StoryblokAccordion } from "@/components/Storyblok/StoryblokAccordion/St
 import { StoryblokAccordionGroup } from "@/components/Storyblok/StoryblokAccordionGroup/StoryblokAccordionGroup";
 import { StoryblokActionBannerDefault } from "@/components/Storyblok/StoryblokActionBanner/StoryblokActionBannerDefault";
 import { StoryblokActionBannerFullWidth } from "@/components/Storyblok/StoryblokActionBanner/StoryblokActionBannerFullWidth";
+import { StoryblokCalloutCard } from "@/components/Storyblok/StoryblokCalloutCard/StoryblokCalloutCard";
 import { StoryblokHero } from "@/components/Storyblok/StoryblokHero/StoryblokHero";
 import { StoryblokIframe } from "@/components/Storyblok/StoryblokIframe/StoryblokIframe";
 import { StoryblokPageHeader } from "@/components/Storyblok/StoryblokPageHeader/StoryblokPageHeader";
@@ -98,6 +99,8 @@ export default function SlugCatchAll(
 		cardGridSection: CardGridSection,
 		cardListSection: CardListSection,
 		promoBox: PromoBox,
+		calloutCard: StoryblokCalloutCard,
+		calloutCardWithImage: StoryblokCalloutCard,
 		testimonialFullWidth: StoryblokTestimonialFullWidth,
 		testimonialGridItem: StoryblokTestimonialGridItem,
 	};
