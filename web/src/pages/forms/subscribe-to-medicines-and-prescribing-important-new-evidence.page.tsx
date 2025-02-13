@@ -10,7 +10,8 @@ import {
 } from "@/components/JotFormPage/getGetServerSideProps";
 import { JotFormPage } from "@/components/JotFormPage/JotFormPage";
 
-export const getServerSideProps = getGetServerSideProps("232421834202848");
+//TODO leaving this line in case they want to republish the form later
+// export const getServerSideProps = getGetServerSideProps("232421834202848");
 
 export default function MedicinesAndPrescribingNewsletterForm(
 	props: FormProps
