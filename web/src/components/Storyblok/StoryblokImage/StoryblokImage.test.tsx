@@ -18,9 +18,6 @@ describe("StoryblokImage Component", () => {
 		expect(imageSrc).toContain(
 			"/_next/image?url=http%3A%2F%2Ftest-image.jpg%2Fm%2Ffilters%3Aformat%2528jpeg%2529%3Aquality%252880%2529&w=16&q=75"
 		);
-		// expect(imageSrc).toBe(
-		// 	mockImageResponse.src + "/m/filters:format%28jpeg%29:quality%2880%29"
-		// );
 	});
 
 	it("should add the alt text of the image", () => {
