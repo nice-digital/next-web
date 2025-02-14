@@ -4,7 +4,7 @@ import { StoryblokImage, StoryblokImageProps } from "./StoryblokImage";
 
 const mockImageResponse = {
 	alt: "Test image alt",
-	src: "test-image.jpg",
+	src: "http://test-image.jpg",
 } as StoryblokImageProps;
 
 describe("StoryblokImage Component", () => {
@@ -15,10 +15,10 @@ describe("StoryblokImage Component", () => {
 
 		const imageSrc = screen.getByRole("img").getAttribute("src");
 
-		expect(imageSrc).toContain(".jpg");
-		expect(imageSrc).toBe(
-			mockImageResponse.src + "/m/filters:format%28jpeg%29:quality%2880%29"
-		);
+		expect(imageSrc).toContain("/_next/image?url=http%3A%2F%2Ftest-image.jpg%2Fm%2Ffilters%3Aformat%2528jpeg%2529%3Aquality%252880%2529&w=16&q=75");
+		// expect(imageSrc).toBe(
+		// 	mockImageResponse.src + "/m/filters:format%28jpeg%29:quality%2880%29"
+		// );
 	});
 
 	it("should add the alt text of the image", () => {
@@ -45,7 +45,7 @@ describe("StoryblokImage Component", () => {
 
 		const imageSrc = screen.getByRole("img").getAttribute("src");
 		expect(imageSrc).toContain(
-			"/m/760x428/smart/filters:format%28jpeg%29:quality%2880%29"
+			"/_next/image?url=http%3A%2F%2Ftest-image.jpg%2Fm%2F760x428%2Fsmart%2Ffilters%3Aformat%2528jpeg%2529%3Aquality%252880%2529&w=16&q=75"
 		);
 	});
 
@@ -74,8 +74,8 @@ describe("StoryblokImage Component", () => {
 
 		const imageHeight = screen.getByRole("img").getAttribute("height");
 		const imageWidth = screen.getByRole("img").getAttribute("width");
-		expect(imageHeight).toBe("100px");
-		expect(imageWidth).toBe("100px");
+		expect(imageHeight).toBe("100");
+		expect(imageWidth).toBe("100");
 	});
 
 	it("should add other image attributes to the image if they are passed", () => {
@@ -93,10 +93,10 @@ describe("StoryblokImage Component", () => {
 	});
 
 	it("should add the fallback image if image path is empty", () => {
-		render(<StoryblokImage src={""} alt={mockImageResponse.alt} />);
+		render(<StoryblokImage src={""} alt={mockImageResponse.alt} width={0} height={0}/>);
 
 		const imageSrc = screen.getByRole("img").getAttribute("src");
 
-		expect(imageSrc).toBe("/fallback-image.png");
+		expect(imageSrc).toBe("/_next/image?url=%2Ffallback-image.png&w=16&q=75");
 	});
 });
