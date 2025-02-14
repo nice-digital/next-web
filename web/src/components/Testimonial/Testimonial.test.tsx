@@ -59,11 +59,21 @@ describe("testimonial component", () => {
 				quoteName="Jane Doe"
 				quoteRole="Software Engineer"
 				quoteText="This is an amazing product! Highly recommended for everyone."
-				image={<Image src="http://test_image.jpeg" alt="test_image_alt" width={100} height={100}/>}
+				image={
+					<Image
+						src="http://test_image.jpeg"
+						alt="test_image_alt"
+						width={100}
+						height={100}
+					/>
+				}
 			/>
 		);
 		const images = screen.getAllByRole("img", { name: "test_image_alt" });
 		expect(images).toHaveLength(2);
-		expect(images[0]).toHaveAttribute("src", "/_next/image?url=http%3A%2F%2Ftest_image.jpeg&w=256&q=75");
+		expect(images[0]).toHaveAttribute(
+			"src",
+			"/_next/image?url=http%3A%2F%2Ftest_image.jpeg&w=256&q=75"
+		);
 	});
 });

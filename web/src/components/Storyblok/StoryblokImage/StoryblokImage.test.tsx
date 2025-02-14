@@ -15,7 +15,9 @@ describe("StoryblokImage Component", () => {
 
 		const imageSrc = screen.getByRole("img").getAttribute("src");
 
-		expect(imageSrc).toContain("/_next/image?url=http%3A%2F%2Ftest-image.jpg%2Fm%2Ffilters%3Aformat%2528jpeg%2529%3Aquality%252880%2529&w=16&q=75");
+		expect(imageSrc).toContain(
+			"/_next/image?url=http%3A%2F%2Ftest-image.jpg%2Fm%2Ffilters%3Aformat%2528jpeg%2529%3Aquality%252880%2529&w=16&q=75"
+		);
 		// expect(imageSrc).toBe(
 		// 	mockImageResponse.src + "/m/filters:format%28jpeg%29:quality%2880%29"
 		// );
@@ -93,7 +95,14 @@ describe("StoryblokImage Component", () => {
 	});
 
 	it("should add the fallback image if image path is empty", () => {
-		render(<StoryblokImage src={""} alt={mockImageResponse.alt} width={0} height={0}/>);
+		render(
+			<StoryblokImage
+				src={""}
+				alt={mockImageResponse.alt}
+				width={0}
+				height={0}
+			/>
+		);
 
 		const imageSrc = screen.getByRole("img").getAttribute("src");
 
