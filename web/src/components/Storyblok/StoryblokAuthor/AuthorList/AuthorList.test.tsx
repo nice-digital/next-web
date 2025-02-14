@@ -51,12 +51,12 @@ const authorsListContent: AuthorListProps = {
 			meta_data: null,
 			group_id: "99c-ba",
 			first_published_at: "2023-12-19T13:42:53.756Z",
-			release_id: null,
+			release_id: 1,
 			lang: "default",
-			path: null,
+			path: "",
 			alternates: [],
-			default_full_slug: null,
-			translated_slugs: null,
+			default_full_slug: "",
+			translated_slugs: [],
 		},
 		{
 			name: "Test name",
@@ -94,12 +94,12 @@ const authorsListContent: AuthorListProps = {
 			meta_data: null,
 			group_id: "99c-bb",
 			first_published_at: "2023-12-19T13:42:53.756Z",
-			release_id: null,
+			release_id: 1,
 			lang: "default",
 			path: "",
 			alternates: [],
-			default_full_slug: null,
-			translated_slugs: null,
+			default_full_slug: "",
+			translated_slugs: [],
 		},
 		{
 			name: "Test name 3",
@@ -137,18 +137,14 @@ const authorsListContent: AuthorListProps = {
 			meta_data: null,
 			group_id: "99c-bb",
 			first_published_at: "2023-12-19T13:42:53.756Z",
-			release_id: null,
+			release_id: 1,
 			lang: "default",
 			path: "",
 			alternates: [],
-			default_full_slug: null,
-			translated_slugs: null,
+			default_full_slug: "",
+			translated_slugs: [],
 		},
 	],
-};
-
-const oneAuthorListContent: AuthorListProps = {
-	authors: authorsListContent.authors.slice(0, 1),
 };
 
 const nullAuthorListContent: AuthorListProps = {

@@ -90,12 +90,12 @@ export const fetchStory = async <T>(
 			story: response.data.story,
 		};
 	} catch (error: unknown) {
-		const errorContext = {
-			errorCause: error,
-			sbParams,
-			slug,
-			ocelotEndpoint: publicRuntimeConfig.storyblok.ocelotEndpoint,
-		};
+		// const errorContext = {
+		// 	errorCause: error,
+		// 	sbParams,
+		// 	slug,
+		// 	ocelotEndpoint: publicRuntimeConfig.storyblok.ocelotEndpoint,
+		// };
 
 		if (isISbError(error) && error.status === 404) {
 			// errorContext,

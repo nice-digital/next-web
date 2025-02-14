@@ -1,4 +1,4 @@
-import userEvent from "@testing-library/user-event";
+import { userEvent } from "@testing-library/user-event";
 import { NextRouter, useRouter } from "next/router";
 
 import { Breadcrumb } from "@nice-digital/nds-breadcrumbs";

@@ -3,7 +3,6 @@ import {
 	ResourceType,
 	ProductAndResourceBase,
 	FileContent,
-	UploadAndConvertContentPart,
 } from "@/feeds/publications/types";
 
 import {
@@ -375,7 +374,7 @@ describe("resource utils", () => {
 								},
 							],
 							uid: 99,
-						} as ResourceDetail,
+						} as unknown as ResourceDetail,
 						ResourceTypeSlug.Evidence
 					)
 				).toStrictEqual([
