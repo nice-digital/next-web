@@ -57,7 +57,6 @@ export const StoryblokImage = forwardRef<HTMLImageElement, StoryblokImageProps>(
 					width={rest.width ? parseInt(rest.width as string, 10) : 0}
 					height={rest.height ? parseInt(rest.height as string, 10) : 0}
 				/>
-				{/* <img {...rest} ref={ref} src={jpgSrc || src} alt={alt} /> */}
 			</picture>
 		);
 	}
