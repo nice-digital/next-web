@@ -1,6 +1,7 @@
 import { render, screen } from "@testing-library/react";
+import Image from "next/image";
 
-import { Testimonial, type TestimonialProps } from "./Testimonial";
+import { Testimonial } from "./Testimonial";
 
 describe("testimonial component", () => {
 	it("should render with props passed", () => {
@@ -58,11 +59,11 @@ describe("testimonial component", () => {
 				quoteName="Jane Doe"
 				quoteRole="Software Engineer"
 				quoteText="This is an amazing product! Highly recommended for everyone."
-				image={<img src="test_image.jpeg" alt="test_image_alt" />}
+				image={<Image src="http://test_image.jpeg" alt="test_image_alt" width={100} height={100}/>}
 			/>
 		);
 		const images = screen.getAllByRole("img", { name: "test_image_alt" });
 		expect(images).toHaveLength(2);
-		expect(images[0]).toHaveAttribute("src", "test_image.jpeg");
+		expect(images[0]).toHaveAttribute("src", "/_next/image?url=http%3A%2F%2Ftest_image.jpeg&w=256&q=75");
 	});
 });
