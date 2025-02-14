@@ -11,8 +11,11 @@ const blokContent: AuthorStoryblok = {
 	image: {
 		id: 1,
 		name: "test image",
-		filename: "test.jpg",
+		filename: "https://test.jpg",
 		alt: "test alt",
+		fieldtype: "asset",
+		title: null,
+		focus: null
 	},
 	jobTitle: "test job title",
 };
@@ -25,7 +28,7 @@ describe("StoryblokAuthor", () => {
 		const imageSrc = screen.getByRole("img").getAttribute("src");
 
 		expect(imageSrc).toContain(".jpg");
-		expect(imageSrc).toContain(blokContent.image?.filename);
+		expect(imageSrc).toContain("/_next/image?url=https%3A%2F%2Ftest.jpg%2Fm%2F270x270%2Fsmart%2Ffilters%3Aformat%2528jpeg%2529%3Aquality%252880%2529&w=384&q=75");
 	});
 
 	it("should not render an image if no image is provided", () => {
