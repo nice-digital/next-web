@@ -115,14 +115,16 @@ export const CardGridSection: React.FC<CardGridSectionProps> = ({
 				) : undefined}
 
 				{rows.map((row) => {
-					const { columns, gridItems, _uid } = row;
+					const { component, columns, gridItems, _uid } = row;
 					const cols = (12 / Number(columns || 1)) as Columns;
+					const gridElementType = component !== "cardGridRowTestimonials" && gridItems.length > 1 ? "ul" : "div";
+					const gridItemElementType = gridElementType === "ul" ? "li" : "div";
 
 					return (
-						<Grid className={styles.cardGridSection__gridRow} gutter="loose" key={_uid}>
+						<Grid elementType={gridElementType} className={styles.cardGridSection__gridRow} gutter="loose" key={_uid}>
 							{gridItems.map((gridItem) => {
 								return (
-									<GridItem className={styles.cardGridSection__gridItem} cols={12} md={cols} key={gridItem._uid}>
+									<GridItem elementType={gridItemElementType} className={styles.cardGridSection__gridItem} cols={12} md={cols} key={gridItem._uid}>
 										<RenderComponent gridItem={gridItem} />
 									</GridItem>
 								);
