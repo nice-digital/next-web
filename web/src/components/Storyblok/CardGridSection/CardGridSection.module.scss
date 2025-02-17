@@ -28,6 +28,19 @@
     }
   }
 
+  &__gridRow {
+    row-gap: utils.rem(spacing.$large);
+
+    &:not(:last-child) {
+      margin-bottom: utils.rem(spacing.$x-large);
+    }
+  }
+
+  &__gridItem {
+    > * {
+      margin-bottom: 0; // Some components have their own margin-bottom which messes with grid layout
+    }
+  }
 
   &--largeSpacing {
     padding: $section-large-spacing 0;
