@@ -41,7 +41,7 @@ export const CardGridSection: React.FC<CardGridSectionProps> = ({
 	const leadTextProcessed =
 		leadText && fieldHasValidContent(leadText) ? leadText : null;
 
-	const RenderComponent: React.FC<{ gridItem: TestimonialGridItemStoryblok | CalloutCardStoryblok | CalloutCardWithImageStoryblok | CardStoryblok }> = ({ gridItem }) => {
+	const RenderCardGridComponent: React.FC<{ gridItem: TestimonialGridItemStoryblok | CalloutCardStoryblok | CalloutCardWithImageStoryblok | CardStoryblok }> = ({ gridItem }) => {
 		const {
 			heading,
 			body,
@@ -125,7 +125,7 @@ export const CardGridSection: React.FC<CardGridSectionProps> = ({
 							{gridItems.map((gridItem) => {
 								return (
 									<GridItem elementType={gridItemElementType} className={styles.cardGridSection__gridItem} cols={12} md={cols} key={gridItem._uid}>
-										<RenderComponent gridItem={gridItem} />
+										<RenderCardGridComponent gridItem={gridItem} />
 									</GridItem>
 								);
 							})}
