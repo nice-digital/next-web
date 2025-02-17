@@ -1,7 +1,8 @@
 export default {
 	indicatorsPage: {
 		firstPager: ".pagination__item:nth-child(1)",
-		secondPager:"#__next > div > main > div.container > div.grid.grid--loose.ProductListPage_sectionWrapper__M4hc9 > section:nth-child(2) > nav > ol > li:nth-child(2) > a",
+		secondPager:
+			"#__next > div > main > div.container > div.grid.grid--loose.ProductListPage_sectionWrapper__M4hc9 > section:nth-child(2) > nav > ol > li:nth-child(2) > a",
 		nextPager: ".pagination__item:nth-child(9)",
 	},
 	newsBlogsPodcasts: {
