@@ -7,7 +7,13 @@ import { Grid, GridItem, type Columns } from "@nice-digital/nds-grid";
 import { StoryblokRichText } from "@/components/Storyblok/StoryblokRichText/StoryblokRichText";
 import { StoryblokTestimonialGridItem } from "@/components/Storyblok/StoryblokTestimonialGridItem/StoryblokTestimonialGridItem";
 import { StoryblokCalloutCard } from "../StoryblokCalloutCard/StoryblokCalloutCard";
-import { CardGridSectionStoryblok } from "@/types/storyblok";
+import {
+	TestimonialGridItemStoryblok,
+	CalloutCardStoryblok,
+	CalloutCardWithImageStoryblok,
+	CardStoryblok,
+	CardGridSectionStoryblok,
+ } from "@/types/storyblok";
 import { fieldHasValidContent, resolveStoryblokLink } from "@/utils/storyblok";
 import { toTitleCase } from "@/utils/string";
 
@@ -37,8 +43,7 @@ export const CardGridSection: React.FC<CardGridSectionProps> = ({
 	const leadTextProcessed =
 		leadText && fieldHasValidContent(leadText) ? leadText : null;
 
-	const RenderComponent: React.FC<{ gridItem: { component: string } }> = ({ gridItem }) => {
-		// TODO: fix type of component; discriminatory union?
+	const RenderComponent: React.FC<{ gridItem: TestimonialGridItemStoryblok | CalloutCardStoryblok | CalloutCardWithImageStoryblok | CardStoryblok }> = ({ gridItem }) => {
 		const {
 			heading,
 			body,
