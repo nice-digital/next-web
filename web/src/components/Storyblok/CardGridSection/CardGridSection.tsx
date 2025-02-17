@@ -37,6 +37,7 @@ export const CardGridSection: React.FC<CardGridSectionProps> = ({
 
 	const HeadingElement = `h${headingLevel}` as keyof JSX.IntrinsicElements;
 	const themeClass = `cardGridSection--${theme}`;
+	const verticalPaddingClass = `cardGridSection--${verticalPadding}Spacing`;
 	const leadTextProcessed =
 		leadText && fieldHasValidContent(leadText) ? leadText : null;
 
@@ -91,23 +92,23 @@ export const CardGridSection: React.FC<CardGridSectionProps> = ({
 	return (
 		<section
 			className={classnames(
-				styles.cardSection,
+				styles.cardGridSection,
 				styles[verticalPaddingClass],
 				styles[themeClass]
 			)}
 		>
-			<div className={styles.container}>
+			<div className={styles.cardGridSection__container}>
 				{heading || leadTextProcessed ? (
-					<div className={styles.cardSectionListIntro}>
+					<div className={styles.cardGridSection__intro}>
 						{heading && (
-							<HeadingElement className={styles.heading}>
+							<HeadingElement className={styles.cardGridSection__heading}>
 								{heading}
 							</HeadingElement>
 						)}
 						{leadTextProcessed && (
 							<StoryblokRichText
 								content={leadTextProcessed}
-								className={styles.leadText}
+								className={styles.cardGridSection__leadText}
 							/>
 						)}
 					</div>
@@ -118,10 +119,10 @@ export const CardGridSection: React.FC<CardGridSectionProps> = ({
 					const cols = (12 / Number(columns || 1)) as Columns;
 
 					return (
-						<Grid gutter="loose" key={_uid}>
+						<Grid className={styles.cardGridSection__gridRow} gutter="loose" key={_uid}>
 							{gridItems.map((gridItem) => {
 								return (
-									<GridItem cols={12} md={cols} key={gridItem._uid}>
+									<GridItem className={styles.cardGridSection__gridItem} cols={12} md={cols} key={gridItem._uid}>
 										<RenderComponent gridItem={gridItem} />
 									</GridItem>
 								);
