@@ -31,15 +31,12 @@ export const CardGridSection: React.FC<CardGridSectionProps> = ({
 		headingLevel,
 		leadText,
 		verticalPadding = "medium",
-		theme,
+		theme = "subtle",
 		cards: rows,
 	} = blok;
 
 	const HeadingElement = `h${headingLevel}` as keyof JSX.IntrinsicElements;
-	const transparentClass = theme === "subtle" ? undefined : styles.transparent;
-	const verticalPaddingClass = `cardSection${toTitleCase(
-		verticalPadding
-	)}Spacing`;
+	const themeClass = `cardGridSection--${theme}`;
 	const leadTextProcessed =
 		leadText && fieldHasValidContent(leadText) ? leadText : null;
 
@@ -96,7 +93,7 @@ export const CardGridSection: React.FC<CardGridSectionProps> = ({
 			className={classnames(
 				styles.cardSection,
 				styles[verticalPaddingClass],
-				transparentClass
+				styles[themeClass]
 			)}
 		>
 			<div className={styles.container}>
