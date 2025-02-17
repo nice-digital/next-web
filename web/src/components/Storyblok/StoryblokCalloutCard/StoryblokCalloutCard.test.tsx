@@ -33,7 +33,7 @@ describe("cardListSection component", () => {
 		expect(container).toMatchSnapshot();
 	});
 
-	it("should match snapshot with transparent theme and large padding", () => {
+	it("should match snapshot when image prop is passed", () => {
 		const mockCalloutCardWithImageProps = {
 			blok: {
 				...mockCalloutCardProps.blok,
