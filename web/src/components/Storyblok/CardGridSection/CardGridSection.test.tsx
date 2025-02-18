@@ -1,7 +1,7 @@
 import { render, screen } from "@testing-library/react";
 import { CardGridSection, CardGridSectionProps } from "./CardGridSection";
 import { resolveStoryblokLink } from "@/utils/storyblok";
-import { type RichtextStoryblok } from "@/types/storyblok";
+import { mockCalloutCardProps, mockCalloutCardWithImageProps } from "../StoryblokCalloutCard/StoryblokCalloutCard.test";
 
 jest.mock("@/utils/storyblok", () => ({
 	resolveStoryblokLink: jest.fn(),
@@ -105,6 +105,63 @@ describe("CardGridSection", () => {
 			"href",
 			"https://local-host-test-nice-org.com/link1"
 		);
+	});
+	it("renders Callout Card content correctly", () => {
+		const mockCalloutProps: CardGridSectionProps = {
+			blok: {
+				...mockProps.blok,
+				cards: [
+					{
+						component: "cardGridRowCallout",
+						columns: "3",
+						gridItems: [
+							{
+								...mockCalloutCardProps.blok
+							},
+							{
+								...mockCalloutCardProps.blok
+							},
+							{
+								...mockCalloutCardProps.blok
+							},
+						] as CalloutCardStoryblok[],
+						_uid: "row1",
+					},
+				],
+			},
+		};
+		render(<CardGridSection {...mockCalloutProps}/>);
+		const ul = screen.getByRole('list');
+		const li = screen.getAllByRole('listitem');
+		const cardHeading = li[0].
+		const calloutCard = screen.getAllByText("Mock card title");
+		expect(ul).toBeInTheDocument();
+		expect(li.length).toBe(3);
+		expect(li[0].).toBe('Mock card title');
+		expect(calloutCard.length).toBe(3);
+	});
+
+	it("renders Callout Card With Image content correctly", () => {
+		const mockCalloutProps: CardGridSectionProps = {
+			blok: {
+				...mockProps.blok,
+				cards: [
+					{
+						component: "cardGridRowCalloutWithImage",
+						columns: "2",
+						gridItems: [
+							{
+								...mockCalloutCardWithImageProps.blok
+							} as CalloutCardWithImageStoryblok,
+						],
+						_uid: "row1",
+					},
+				],
+			},
+		};
+		render(<CardGridSection {...mockCalloutProps}/>);
+		const calloutCard = screen.getByText("Mock card title");
+		expect(calloutCard).toBeInTheDocument();
 	});
 
 	it("matches snapshot", () => {
