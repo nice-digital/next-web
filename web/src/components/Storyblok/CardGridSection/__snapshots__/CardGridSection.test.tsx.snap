@@ -1,0 +1,61 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`CardGridSection matches snapshot 1`] = `
+<div>
+  <section
+    class="cardGridSection cardGridSection--mediumSpacing cardGridSection--subtle"
+    data-testid="card-grid-section"
+  >
+    <div
+      class="cardGridSection__container"
+    >
+      <div
+        class="cardGridSection__intro"
+      >
+        <h2
+          class="cardGridSection__heading"
+        >
+          Test Heading
+        </h2>
+        <div
+          class="storyblokRichTextWrapper cardGridSection__leadText"
+          data-testid="storyblok-rich-text"
+        >
+          <p>
+            This is lead text.
+          </p>
+        </div>
+      </div>
+      <div
+        class="grid grid--loose cardGridSection__gridRow"
+      >
+        <div
+          class="cardGridSection__gridItem"
+          data-component="grid-item"
+          data-g="12 md:6"
+        >
+          <article
+            class="card"
+            data-component="card"
+          >
+            <header
+              class="card__header"
+            >
+              <p
+                class="card__heading"
+              >
+                <a
+                  href="https://local-host-test-nice-org.com/link1"
+                >
+                  Card 1
+                </a>
+              </p>
+            </header>
+            Card 1 body
+          </article>
+        </div>
+      </div>
+    </div>
+  </section>
+</div>
+`;

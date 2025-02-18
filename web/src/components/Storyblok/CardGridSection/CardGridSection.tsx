@@ -96,6 +96,7 @@ export const CardGridSection: React.FC<CardGridSectionProps> = ({
 				styles[verticalPaddingClass],
 				styles[themeClass]
 			)}
+			data-testid="card-grid-section"
 		>
 			<div className={styles.cardGridSection__container}>
 				{heading || leadTextProcessed ? (
