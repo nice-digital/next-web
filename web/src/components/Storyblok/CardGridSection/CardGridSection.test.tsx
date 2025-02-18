@@ -148,6 +148,7 @@ describe("CardGridSection", () => {
 		const testimonial = screen.getByText("Test Quote Text");
 		expect(testimonial).toBeInTheDocument();
 	});
+
 	it("renders Callout Card content correctly", () => {
 		const mockCalloutProps: CardGridSectionProps = {
 			blok: {
