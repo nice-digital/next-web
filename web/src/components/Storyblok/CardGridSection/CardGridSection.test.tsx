@@ -11,15 +11,14 @@ jest.mock("@/utils/storyblok", () => ({
 const mockLeadText: RichtextStoryblok = {
 	type: "doc",
 	content: [
-	  {
-		type: "paragraph",
-		content: [{ type: "text", text: "This is lead text." }],
-	  },
+		{
+			type: "paragraph",
+			content: [{ type: "text", text: "This is lead text." }],
+		},
 	],
-  };
+};
 
 describe("CardGridSection", () => {
-
 	beforeEach(() => {
 		// (resolveStoryblokLink as jest.Mock).mockReturnValue({
 		//   url: "https://local-host-test-nice-org.com",
@@ -27,7 +26,8 @@ describe("CardGridSection", () => {
 		// });
 		(resolveStoryblokLink as jest.Mock).mockImplementation((link) => ({
 			url: link?.url || link?.cached_url,
-			isInternal: link?.url?.startsWith("/") || link?.cached_url?.startsWith("/"), //TODO need to check this is correct mocking behaviour
+			isInternal:
+				link?.url?.startsWith("/") || link?.cached_url?.startsWith("/"), //TODO need to check this is correct mocking behaviour
 		}));
 	});
 
@@ -59,7 +59,7 @@ describe("CardGridSection", () => {
 								id: "link1",
 								url: "https://local-host-test-nice-org.com/link1",
 								cached_url: "https://local-host-test-nice-org.com/link1",
-								linktype: "url"
+								linktype: "url",
 							},
 						},
 					],
@@ -71,7 +71,9 @@ describe("CardGridSection", () => {
 
 	it("renders without crashing", () => {
 		render(<CardGridSection {...mockProps} />);
-		expect(screen.getByRole("heading", { level: 2 })).toHaveTextContent("Test Heading");
+		expect(screen.getByRole("heading", { level: 2 })).toHaveTextContent(
+			"Test Heading"
+		);
 	});
 
 	it("renders lead text correctly", () => {
@@ -89,7 +91,9 @@ describe("CardGridSection", () => {
 
 	it("renders the correct grid structure", () => {
 		render(<CardGridSection {...mockProps} />);
-		const grid = screen.getByTestId("card-grid-section").querySelector("div.grid, ul.grid");
+		const grid = screen
+			.getByTestId("card-grid-section")
+			.querySelector("div.grid, ul.grid");
 		expect(grid).toBeInTheDocument();
 	});
 
@@ -97,8 +101,11 @@ describe("CardGridSection", () => {
 		render(<CardGridSection {...mockProps} />);
 		const linkElement = screen.getByRole("link", { name: "Card 1" });
 		expect(linkElement).toBeInTheDocument();
-		expect(linkElement).toHaveAttribute("href", "https://local-host-test-nice-org.com/link1");
-	  });
+		expect(linkElement).toHaveAttribute(
+			"href",
+			"https://local-host-test-nice-org.com/link1"
+		);
+	});
 
 	it("matches snapshot", () => {
 		const { container } = render(<CardGridSection {...mockProps} />);

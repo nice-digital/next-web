@@ -13,7 +13,7 @@ import {
 	CalloutCardWithImageStoryblok,
 	CardStoryblok,
 	CardGridSectionStoryblok,
- } from "@/types/storyblok";
+} from "@/types/storyblok";
 import { fieldHasValidContent, resolveStoryblokLink } from "@/utils/storyblok";
 import { toTitleCase } from "@/utils/string";
 
@@ -41,18 +41,20 @@ export const CardGridSection: React.FC<CardGridSectionProps> = ({
 	const leadTextProcessed =
 		leadText && fieldHasValidContent(leadText) ? leadText : null;
 
-	const RenderCardGridComponent: React.FC<{ gridItem: TestimonialGridItemStoryblok | CalloutCardStoryblok | CalloutCardWithImageStoryblok | CardStoryblok }> = ({ gridItem }) => {
-		const {
-			heading,
-			body,
-			link,
-			component,
-		} = gridItem;
+	const RenderCardGridComponent: React.FC<{
+		gridItem:
+			| TestimonialGridItemStoryblok
+			| CalloutCardStoryblok
+			| CalloutCardWithImageStoryblok
+			| CardStoryblok;
+	}> = ({ gridItem }) => {
+		const { heading, body, link, component } = gridItem;
 
 		let cardLink: CardHeadingLinkProps | undefined = undefined;
-		const resolvedLink = link && (link.url || link.cached_url)
-			? resolveStoryblokLink(link)
-			: undefined;
+		const resolvedLink =
+			link && (link.url || link.cached_url)
+				? resolveStoryblokLink(link)
+				: undefined;
 		if (resolvedLink?.url) {
 			cardLink = {
 				destination: resolvedLink.url,
@@ -63,24 +65,13 @@ export const CardGridSection: React.FC<CardGridSectionProps> = ({
 
 		switch (component) {
 			case "testimonialGridItem":
-				return (
-					<StoryblokTestimonialGridItem
-						blok={gridItem}
-				 	/>
-				);
+				return <StoryblokTestimonialGridItem blok={gridItem} />;
 			case "calloutCard":
 			case "calloutCardWithImage":
-				return (
-					<StoryblokCalloutCard
-						blok={gridItem}
-					/>
-				)
+				return <StoryblokCalloutCard blok={gridItem} />;
 			case "card":
 				return (
-					<Card
-						headingText={heading}
-						link={cardLink || undefined}
-					>
+					<Card headingText={heading} link={cardLink || undefined}>
 						{body}
 					</Card>
 				);
@@ -118,14 +109,28 @@ export const CardGridSection: React.FC<CardGridSectionProps> = ({
 				{rows.map((row) => {
 					const { component, columns, gridItems, _uid } = row;
 					const cols = (12 / Number(columns || 1)) as Columns;
-					const gridElementType = component !== "cardGridRowTestimonials" && gridItems.length > 1 ? "ul" : "div";
+					const gridElementType =
+						component !== "cardGridRowTestimonials" && gridItems.length > 1
+							? "ul"
+							: "div";
 					const gridItemElementType = gridElementType === "ul" ? "li" : "div";
 
 					return (
-						<Grid elementType={gridElementType} className={styles.cardGridSection__gridRow} gutter="loose" key={_uid}>
+						<Grid
+							elementType={gridElementType}
+							className={styles.cardGridSection__gridRow}
+							gutter="loose"
+							key={_uid}
+						>
 							{gridItems.map((gridItem) => {
 								return (
-									<GridItem elementType={gridItemElementType} className={styles.cardGridSection__gridItem} cols={12} md={cols} key={gridItem._uid}>
+									<GridItem
+										elementType={gridItemElementType}
+										className={styles.cardGridSection__gridItem}
+										cols={12}
+										md={cols}
+										key={gridItem._uid}
+									>
 										<RenderCardGridComponent gridItem={gridItem} />
 									</GridItem>
 								);
