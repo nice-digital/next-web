@@ -1,4 +1,4 @@
-import React, { IframeHTMLAttributes } from "react";
+import { forwardRef, IframeHTMLAttributes } from "react";
 
 import { IframeStoryblok } from "@/types/storyblok";
 
@@ -7,7 +7,7 @@ export interface StoryblokIframeProps
 	blok: IframeStoryblok;
 }
 
-export const StoryblokIframe = React.forwardRef<
+export const StoryblokIframe = forwardRef<
 	HTMLIFrameElement,
 	StoryblokIframeProps
 >(({ blok, ...rest }, ref) => {

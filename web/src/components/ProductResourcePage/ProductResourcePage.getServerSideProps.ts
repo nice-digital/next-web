@@ -5,7 +5,6 @@ import {
 	getChapterContent,
 	getResourceDetail,
 	BaseContentPart,
-	PDFFile,
 	EditableContentPart,
 	UploadAndConvertContentPart,
 	FileContent,

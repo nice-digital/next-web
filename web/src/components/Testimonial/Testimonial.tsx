@@ -1,10 +1,5 @@
 import classnames from "classnames";
-import React, {
-	ReactElement,
-	ReactNode,
-	isValidElement,
-	cloneElement,
-} from "react";
+import React, { ReactElement, isValidElement, cloneElement } from "react";
 
 import styles from "./Testimonial.module.scss";
 

@@ -1,5 +1,5 @@
 import { waitFor } from "@testing-library/react";
-import userEvent from "@testing-library/user-event";
+import { userEvent } from "@testing-library/user-event";
 import mockDate from "mockdate";
 import { useRouter } from "next/router";
 

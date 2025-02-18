@@ -4,8 +4,6 @@ import {
 } from "@/components/JotFormPage/getGetServerSideProps";
 import { JotFormPage } from "@/components/JotFormPage/JotFormPage";
 
-import styles from "./forms.module.scss";
-
 export const getServerSideProps = getGetServerSideProps("241983007673057");
 
 export default function SyndicationServiceApplicationForm(
