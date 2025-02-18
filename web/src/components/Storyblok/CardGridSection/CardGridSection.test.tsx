@@ -1,6 +1,14 @@
 import { render, screen } from "@testing-library/react";
 import { CardGridSection, CardGridSectionProps } from "./CardGridSection";
 import { resolveStoryblokLink } from "@/utils/storyblok";
+import {
+	type TestimonialGridItemStoryblok,
+	type CalloutCardStoryblok,
+	type CalloutCardWithImageStoryblok,
+	type CardStoryblok,
+	type CardGridSectionStoryblok,
+	type RichtextStoryblok
+} from "@/types/storyblok";
 import { mockCalloutCardProps, mockCalloutCardWithImageProps } from "../StoryblokCalloutCard/StoryblokCalloutCard.test";
 
 jest.mock("@/utils/storyblok", () => ({
@@ -61,12 +69,12 @@ describe("CardGridSection", () => {
 								cached_url: "https://local-host-test-nice-org.com/link1",
 								linktype: "url",
 							},
-						},
+						} as CardStoryblok,
 					],
 					_uid: "row1",
 				},
 			],
-		},
+		} as CardGridSectionStoryblok,
 	};
 
 	it("renders without crashing", () => {
