@@ -50,8 +50,8 @@ describe("CardGridSection", () => {
 			heading: "Test Heading",
 			headingLevel: "2",
 			leadText: mockLeadText,
-			theme: "subtle",
-			verticalPadding: "medium",
+			theme: "transparent",
+			verticalPadding: "small",
 			cards: [
 				{
 					component: "cardGridRowBasic",
@@ -94,7 +94,7 @@ describe("CardGridSection", () => {
 	it("applies correct theme class", () => {
 		render(<CardGridSection {...mockProps} />);
 		const section = screen.getByTestId("card-grid-section");
-		expect(section).toHaveClass("cardGridSection--subtle");
+		expect(section).toHaveClass("cardGridSection--transparent");
 	});
 
 	it("renders the correct grid structure", () => {
