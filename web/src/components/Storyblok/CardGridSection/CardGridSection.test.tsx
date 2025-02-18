@@ -106,6 +106,32 @@ describe("CardGridSection", () => {
 			"https://local-host-test-nice-org.com/link1"
 		);
 	});
+	it("renders Testimonial content correctly", () => {
+		const mockTestimonialProps: CardGridSectionProps = {
+			blok: {
+				...mockProps.blok,
+				cards: [
+					{
+						component: "cardGridRowTestimonials",
+						columns: "1",
+						gridItems: [
+							{
+								component: "testimonialGridItem",
+								_uid: "1",
+								quoteName: "Test Name",
+								quoteRole: "Test Role",
+								quoteText: "Test Quote Text",
+							} as TestimonialGridItemStoryblok,
+						],
+						_uid: "row1",
+					},
+				],
+			},
+		};
+		render(<CardGridSection {...mockTestimonialProps} />);
+		const testimonial = screen.getByText("Test Quote Text");
+		expect(testimonial).toBeInTheDocument();
+	});
 	it("renders Callout Card content correctly", () => {
 		const mockCalloutProps: CardGridSectionProps = {
 			blok: {
