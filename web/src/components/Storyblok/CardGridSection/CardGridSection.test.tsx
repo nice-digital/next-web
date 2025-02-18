@@ -106,6 +106,14 @@ describe("CardGridSection", () => {
 			"https://local-host-test-nice-org.com/link1"
 		);
 	});
+
+	it("renders Card content correctly", () => {
+		render(<CardGridSection {...mockProps} />);
+		const card = screen.getByText("Card 1");
+		expect(card).toBeInTheDocument();
+	});
+
+
 	it("renders Testimonial content correctly", () => {
 		const mockTestimonialProps: CardGridSectionProps = {
 			blok: {
