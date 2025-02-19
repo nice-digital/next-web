@@ -8,9 +8,10 @@ import {
 	type CardGridSectionStoryblok,
 	type RichtextStoryblok,
 } from "@/types/storyblok";
+import { resolveStoryblokLink } from "@/utils/storyblok";
+
 import { type StoryblokCalloutCardProps } from "../StoryblokCalloutCard/StoryblokCalloutCard";
 
-import { resolveStoryblokLink } from "@/utils/storyblok";
 import { CardGridSection, CardGridSectionProps } from "./CardGridSection";
 
 jest.mock("@/utils/storyblok", () => ({
