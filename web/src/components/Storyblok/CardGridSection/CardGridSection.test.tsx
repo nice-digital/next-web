@@ -8,11 +8,9 @@ import {
 	type CardGridSectionStoryblok,
 	type RichtextStoryblok,
 } from "@/types/storyblok";
-import { resolveStoryblokLink } from "@/utils/storyblok";
-
-// import { mockCalloutCardProps, mockCalloutCardWithImageProps } from "../StoryblokCalloutCard/StoryblokCalloutCard.test";
 import { type StoryblokCalloutCardProps } from "../StoryblokCalloutCard/StoryblokCalloutCard";
 
+import { resolveStoryblokLink } from "@/utils/storyblok";
 import { CardGridSection, CardGridSectionProps } from "./CardGridSection";
 
 jest.mock("@/utils/storyblok", () => ({
@@ -26,7 +24,12 @@ const mockLeadText: RichtextStoryblok = {
 	content: [
 		{
 			type: "paragraph",
-			content: [{ type: "text", text: "This is lead text." }],
+			content: [
+				{
+					type: "text",
+					text: "This is lead text.",
+				},
+			],
 		},
 	],
 };
@@ -78,10 +81,6 @@ const mockCalloutCardWithImageProps = {
 
 describe("CardGridSection", () => {
 	beforeEach(() => {
-		// (resolveStoryblokLink as jest.Mock).mockReturnValue({
-		//   url: "https://local-host-test-nice-org.com",
-		//   isInternal: false,
-		// });
 		(resolveStoryblokLink as jest.Mock).mockImplementation((link) => ({
 			url: link?.url || link?.cached_url,
 			isInternal:
@@ -118,7 +117,7 @@ describe("CardGridSection", () => {
 						},
 						{
 							...mockCardProps.blok,
-							},
+						},
 					] as CardStoryblok[],
 					_uid: "row1",
 				},
@@ -157,12 +156,11 @@ describe("CardGridSection", () => {
 
 	it("resolves links correctly", () => {
 		render(<CardGridSection {...mockProps} />);
-		const linkElement = screen.getAllByRole("link", { name: "Mock card title" });
+		const linkElement = screen.getAllByRole("link", {
+			name: "Mock card title",
+		});
 		expect(linkElement[0]).toBeInTheDocument();
-		expect(linkElement[0]).toHaveAttribute(
-			"href",
-			cardLinkUrl
-		);
+		expect(linkElement[0]).toHaveAttribute("href", cardLinkUrl);
 	});
 
 	it("renders Card content correctly", () => {
@@ -175,6 +173,7 @@ describe("CardGridSection", () => {
 		expect(cardListItems[0]).toHaveTextContent("Mock card title");
 		expect(card.length).toBe(4);
 	});
+
 	it("renders Callout Card content correctly", () => {
 		const mockCalloutProps: CardGridSectionProps = {
 			blok: {
