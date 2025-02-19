@@ -176,11 +176,11 @@ describe("CardGridSection", () => {
 		render(<CardGridSection {...mockCalloutProps}/>);
 		const ul = screen.getByRole('list');
 		const li = screen.getAllByRole('listitem');
-		const cardHeading = li[0].
+		const cardHeading = li[0]
 		const calloutCard = screen.getAllByText("Mock card title");
 		expect(ul).toBeInTheDocument();
 		expect(li.length).toBe(3);
-		expect(li[0].).toBe('Mock card title');
+		expect(li[0]).toBe('Mock card title');
 		expect(calloutCard.length).toBe(3);
 	});
 
