@@ -14,7 +14,6 @@ import {
 	CardGridSectionStoryblok,
 } from "@/types/storyblok";
 import { fieldHasValidContent, resolveStoryblokLink } from "@/utils/storyblok";
-import { toTitleCase } from "@/utils/string";
 
 import { StoryblokCalloutCard } from "../StoryblokCalloutCard/StoryblokCalloutCard";
 
@@ -111,9 +110,7 @@ export const CardGridSection: React.FC<CardGridSectionProps> = ({
 					const { component, columns, gridItems, _uid } = row;
 					const cols = (12 / Number(columns || 1)) as Columns;
 					const gridElementType =
-						component !== "cardGridRowTestimonials" && gridItems.length > 1
-							? "ul"
-							: "div";
+						component !== "cardGridRowTestimonials"	? "ul" : "div";
 					const gridItemElementType = gridElementType === "ul" ? "li" : "div";
 
 					return (
