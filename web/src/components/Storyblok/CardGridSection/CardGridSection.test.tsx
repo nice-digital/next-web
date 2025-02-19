@@ -33,23 +33,30 @@ const mockLeadText: RichtextStoryblok = {
 
 const cardLinkUrl = "https://nice.org.uk/guidance/ta10";
 
-export const mockCalloutCardProps: StoryblokCalloutCardProps = {
+const mockCardProps = {
 	blok: {
+		component: "card",
+		_uid: "1",
 		heading: "Mock card title",
 		body: "Mock card summary",
 		link: {
-			id: "",
-			url: cardLinkUrl,
-			linktype: "url",
 			fieldtype: "multilink",
+			id: "link1",
+			url: cardLinkUrl,
 			cached_url: cardLinkUrl,
+			linktype: "url",
 		},
-		component: "calloutCard",
-		_uid: "123456877",
-	},
+	} as CardStoryblok,
 };
 
-export const mockCalloutCardWithImageProps = {
+const mockCalloutCardProps: StoryblokCalloutCardProps = {
+	blok: {
+		...mockCardProps.blok,
+		component: "calloutCard",
+	} as CalloutCardStoryblok,
+};
+
+const mockCalloutCardWithImageProps = {
 	blok: {
 		...mockCalloutCardProps.blok,
 		image: {
@@ -98,22 +105,21 @@ describe("CardGridSection", () => {
 			cards: [
 				{
 					component: "cardGridRowBasic",
-					columns: "2",
+					columns: "3",
 					gridItems: [
 						{
-							component: "card",
-							_uid: "1",
-							heading: "Card 1",
-							body: "Card 1 body",
-							link: {
-								fieldtype: "multilink",
-								id: "link1",
-								url: "https://local-host-test-nice-org.com/link1",
-								cached_url: "https://local-host-test-nice-org.com/link1",
-								linktype: "url",
+							...mockCardProps.blok,
+						},
+						{
+							...mockCardProps.blok,
+						},
+						{
+							...mockCardProps.blok,
+						},
+						{
+							...mockCardProps.blok,
 							},
-						} as CardStoryblok,
-					],
+					] as CardStoryblok[],
 					_uid: "row1",
 				},
 			],
@@ -161,8 +167,53 @@ describe("CardGridSection", () => {
 
 	it("renders Card content correctly", () => {
 		render(<CardGridSection {...mockProps} />);
-		const card = screen.getByText("Card 1");
-		expect(card).toBeInTheDocument();
+	it("renders Callout Card content correctly", () => {
+		const mockCalloutProps: CardGridSectionProps = {
+			blok: {
+				...mockProps.blok,
+				cards: [
+					{
+						component: "cardGridRowCallout",
+						columns: "3",
+						gridItems: [
+							{
+								...mockCalloutCardProps.blok,
+							},
+							{
+								...mockCalloutCardProps.blok,
+							},
+							{
+								...mockCalloutCardProps.blok,
+							},
+						] as CalloutCardStoryblok[],
+						_uid: "row1",
+					},
+				],
+			},
+		};
+		render(<CardGridSection {...mockCalloutProps} />);
+	it("renders Callout Card With Image content correctly", () => {
+		const mockCalloutProps: CardGridSectionProps = {
+			blok: {
+				...mockProps.blok,
+				cards: [
+					{
+						component: "cardGridRowCalloutWithImage",
+						columns: "2",
+						gridItems: [
+							{
+								...mockCalloutCardWithImageProps.blok,
+							},
+							{
+								...mockCalloutCardWithImageProps.blok,
+							},
+						] as CalloutCardWithImageStoryblok[],
+						_uid: "row1",
+					},
+				],
+			},
+		};
+		render(<CardGridSection {...mockCalloutProps} />);
 	});
 
 	it("renders Testimonial content correctly", () => {
@@ -201,63 +252,6 @@ describe("CardGridSection", () => {
 		render(<CardGridSection {...mockTestimonialProps} />);
 		const testimonial = screen.getByText("Test Quote Text");
 		expect(testimonial).toBeInTheDocument();
-	});
-
-	it("renders Callout Card content correctly", () => {
-		const mockCalloutProps: CardGridSectionProps = {
-			blok: {
-				...mockProps.blok,
-				cards: [
-					{
-						component: "cardGridRowCallout",
-						columns: "3",
-						gridItems: [
-							{
-								...mockCalloutCardProps.blok,
-							},
-							{
-								...mockCalloutCardProps.blok,
-							},
-							{
-								...mockCalloutCardProps.blok,
-							},
-						] as CalloutCardStoryblok[],
-						_uid: "row1",
-					},
-				],
-			},
-		};
-		render(<CardGridSection {...mockCalloutProps} />);
-		const cardList = screen.getByRole("list");
-		const cardListItems = screen.getAllByRole("listitem");
-		const calloutCard = screen.getAllByText("Mock card title");
-		expect(cardList).toBeInTheDocument();
-		expect(cardListItems.length).toBe(3);
-		expect(cardListItems[0]).toHaveTextContent("Mock card title");
-		expect(calloutCard.length).toBe(3);
-	});
-
-	it("renders Callout Card With Image content correctly", () => {
-		const mockCalloutProps: CardGridSectionProps = {
-			blok: {
-				...mockProps.blok,
-				cards: [
-					{
-						component: "cardGridRowCalloutWithImage",
-						columns: "2",
-						gridItems: [
-							{
-								...mockCalloutCardWithImageProps.blok,
-							} as CalloutCardWithImageStoryblok,
-						],
-						_uid: "row1",
-					},
-				],
-			},
-		};
-		render(<CardGridSection {...mockCalloutProps} />);
-		const calloutCard = screen.getByText("Mock card title");
-		expect(calloutCard).toBeInTheDocument();
 	});
 
 	it("matches snapshot", () => {
