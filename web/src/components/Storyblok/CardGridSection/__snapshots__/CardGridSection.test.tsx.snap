@@ -3,7 +3,7 @@
 exports[`CardGridSection matches snapshot 1`] = `
 <div>
   <section
-    class="cardGridSection cardGridSection--smallSpacing cardGridSection--transparent"
+    class="cardGridSection cardGridSection--mediumSpacing cardGridSection--subtle"
     data-testid="card-grid-section"
   >
     <div

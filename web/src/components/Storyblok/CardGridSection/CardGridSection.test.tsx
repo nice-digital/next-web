@@ -101,8 +101,8 @@ describe("CardGridSection", () => {
 			heading: "Card Grid Section Heading",
 			headingLevel: "2",
 			leadText: mockLeadText,
-			theme: "transparent",
-			verticalPadding: "small",
+			theme: "subtle",
+			verticalPadding: "medium",
 			cards: [
 				{
 					component: "cardGridRowBasic",
@@ -141,10 +141,35 @@ describe("CardGridSection", () => {
 		expect(leadTextElement).toHaveTextContent("This is lead text.");
 	});
 
-	it("applies correct theme class", () => {
-		render(<CardGridSection {...mockProps} />);
-		const section = screen.getByTestId("card-grid-section");
-		expect(section).toHaveClass("cardGridSection--transparent");
+	it.each<["subtle" | "transparent", string]>([
+		["subtle", "cardGridSection--subtle"],
+		["transparent", "cardGridSection--transparent"],
+	])("applies correct section theme class '%s'", (variant, expectedClassName) => {
+		render(
+			<CardGridSection
+				{...mockProps}
+				blok={{ ...mockProps.blok, theme: variant }}
+			/>
+		);
+		expect(screen.getByTestId(`card-grid-section`)).toHaveClass(
+			expectedClassName
+		);
+	});
+
+	it.each<["small" | "medium" | "large", string]>([
+		["small", "cardGridSection--smallSpacing"],
+		["medium", "cardGridSection--mediumSpacing"],
+		["large", "cardGridSection--largeSpacing"],
+	])("applies correct section vertical padding class '%s'", (variant, expectedClassName) => {
+		render(
+			<CardGridSection
+				{...mockProps}
+				blok={{ ...mockProps.blok, verticalPadding: variant }}
+			/>
+		);
+		expect(screen.getByTestId(`card-grid-section`)).toHaveClass(
+			expectedClassName
+		);
 	});
 
 	it("renders the correct grid structure", () => {
