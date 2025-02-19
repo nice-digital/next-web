@@ -97,7 +97,7 @@ describe("CardGridSection", () => {
 		blok: {
 			component: "cardGridSection",
 			_uid: "section1",
-			heading: "Test Heading",
+			heading: "Card Grid Section Heading",
 			headingLevel: "2",
 			leadText: mockLeadText,
 			theme: "transparent",
@@ -129,7 +129,7 @@ describe("CardGridSection", () => {
 	it("renders without crashing", () => {
 		render(<CardGridSection {...mockProps} />);
 		expect(screen.getByRole("heading", { level: 2 })).toHaveTextContent(
-			"Test Heading"
+			"Card Grid Section Heading"
 		);
 	});
 
@@ -157,16 +157,24 @@ describe("CardGridSection", () => {
 
 	it("resolves links correctly", () => {
 		render(<CardGridSection {...mockProps} />);
-		const linkElement = screen.getByRole("link", { name: "Card 1" });
-		expect(linkElement).toBeInTheDocument();
-		expect(linkElement).toHaveAttribute(
+		const linkElement = screen.getAllByRole("link", { name: "Mock card title" });
+		expect(linkElement[0]).toBeInTheDocument();
+		expect(linkElement[0]).toHaveAttribute(
 			"href",
-			"https://local-host-test-nice-org.com/link1"
+			cardLinkUrl
 		);
 	});
 
 	it("renders Card content correctly", () => {
 		render(<CardGridSection {...mockProps} />);
+		const cardList = screen.getByRole("list");
+		const cardListItems = screen.getAllByRole("listitem");
+		const card = screen.getAllByText("Mock card title");
+		expect(cardList).toBeInTheDocument();
+		expect(cardListItems.length).toBe(4);
+		expect(cardListItems[0]).toHaveTextContent("Mock card title");
+		expect(card.length).toBe(4);
+	});
 	it("renders Callout Card content correctly", () => {
 		const mockCalloutProps: CardGridSectionProps = {
 			blok: {
@@ -192,6 +200,15 @@ describe("CardGridSection", () => {
 			},
 		};
 		render(<CardGridSection {...mockCalloutProps} />);
+		const cardList = screen.getByRole("list");
+		const cardListItems = screen.getAllByRole("listitem");
+		const calloutCard = screen.getAllByText("Mock card title");
+		expect(cardList).toBeInTheDocument();
+		expect(cardListItems.length).toBe(3);
+		expect(cardListItems[0]).toHaveTextContent("Mock card title");
+		expect(calloutCard.length).toBe(3);
+	});
+
 	it("renders Callout Card With Image content correctly", () => {
 		const mockCalloutProps: CardGridSectionProps = {
 			blok: {
@@ -214,6 +231,13 @@ describe("CardGridSection", () => {
 			},
 		};
 		render(<CardGridSection {...mockCalloutProps} />);
+		const cardList = screen.getByRole("list");
+		const cardListItems = screen.getAllByRole("listitem");
+		const calloutCard = screen.getAllByText("Mock card title");
+		expect(cardList).toBeInTheDocument();
+		expect(cardListItems.length).toBe(2);
+		expect(cardListItems[0]).toHaveTextContent("Mock card title");
+		expect(calloutCard.length).toBe(2);
 	});
 
 	it("renders Testimonial content correctly", () => {
@@ -252,6 +276,10 @@ describe("CardGridSection", () => {
 		render(<CardGridSection {...mockTestimonialProps} />);
 		const testimonial = screen.getByText("Test Quote Text");
 		expect(testimonial).toBeInTheDocument();
+		const cardList = screen.queryByRole("list");
+		const cardListItems = screen.queryByRole("listitem");
+		expect(cardList).not.toBeInTheDocument();
+		expect(cardListItems).not.toBeInTheDocument();
 	});
 
 	it("matches snapshot", () => {
