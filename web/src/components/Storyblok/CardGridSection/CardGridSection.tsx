@@ -110,7 +110,7 @@ export const CardGridSection: React.FC<CardGridSectionProps> = ({
 					const { component, columns, gridItems, _uid } = row;
 					const cols = (12 / Number(columns || 1)) as Columns;
 					const gridElementType =
-						component !== "cardGridRowTestimonials"	? "ul" : "div";
+						component !== "cardGridRowTestimonials" ? "ul" : "div";
 					const gridItemElementType = gridElementType === "ul" ? "li" : "div";
 
 					return (

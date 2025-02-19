@@ -84,7 +84,8 @@ describe("CardGridSection", () => {
 		(resolveStoryblokLink as jest.Mock).mockImplementation((link) => ({
 			url: link?.url || link?.cached_url,
 			isInternal:
-				link?.url?.startsWith("/") || link?.cached_url?.startsWith("/"), //TODO need to check this is correct mocking behaviour
+				(link?.url?.startsWith("/") || link?.cached_url?.startsWith("/")) ??
+				false,
 		}));
 	});
 
