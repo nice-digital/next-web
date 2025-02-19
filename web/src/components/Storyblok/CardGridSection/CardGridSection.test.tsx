@@ -134,11 +134,60 @@ describe("CardGridSection", () => {
 		);
 	});
 
+	it("should render heading as h3 when headingLevel has been selected as 3", () => {
+		const mockCardGridSectionPropsHeading3: CardGridSectionProps = {
+			blok: {
+				...mockProps.blok,
+				headingLevel: "3",
+			},
+		};
+		render(<CardGridSection {...mockCardGridSectionPropsHeading3} />);
+		expect(
+			screen.getByRole("heading", {
+				level: 3,
+				name: mockCardGridSectionPropsHeading3.blok.heading,
+			})
+		).toBeInTheDocument();
+	});
+
 	it("renders lead text correctly", () => {
 		render(<CardGridSection {...mockProps} />);
 		const leadTextElement = screen.getByTestId("storyblok-rich-text");
 		expect(leadTextElement).toBeInTheDocument();
 		expect(leadTextElement).toHaveTextContent("This is lead text.");
+	});
+
+	it("should hide lead text section when not provided", () => {
+		const mockCardGridSectionPropsNoLeadText = {
+			blok: {
+				...mockProps.blok,
+				leadText: {
+					type: "doc",
+					content: [
+						{
+							type: "paragraph",
+						},
+					],
+				},
+			},
+		};
+		render(<CardGridSection {...mockCardGridSectionPropsNoLeadText} />);
+		const leadTextElement = screen.getByTestId("storyblok-rich-text");
+		expect(leadTextElement).not.toBeInTheDocument();
+	});
+
+	it("should hide heading/title section when not provided", () => {
+		const mockCardGridSectionPropsNoHeading = {
+			blok: {
+				...mockProps.blok,
+				heading: " ",
+			},
+		};
+		render(<CardGridSection {...mockCardGridSectionPropsNoHeading} />);
+		const heading = screen.queryByRole("heading", {
+			name: mockCardGridSectionPropsNoHeading.blok.heading,
+		});
+		expect(heading).not.toBeInTheDocument();
 	});
 
 	it.each<["subtle" | "transparent", string]>([
