@@ -1,19 +1,24 @@
 import { render, screen } from "@testing-library/react";
-import { CardGridSection, CardGridSectionProps } from "./CardGridSection";
-import { resolveStoryblokLink } from "@/utils/storyblok";
+
 import {
 	type TestimonialGridItemStoryblok,
 	type CalloutCardStoryblok,
 	type CalloutCardWithImageStoryblok,
 	type CardStoryblok,
 	type CardGridSectionStoryblok,
-	type RichtextStoryblok
+	type RichtextStoryblok,
 } from "@/types/storyblok";
-import { mockCalloutCardProps, mockCalloutCardWithImageProps } from "../StoryblokCalloutCard/StoryblokCalloutCard.test";
+import { resolveStoryblokLink } from "@/utils/storyblok";
+
+// import { mockCalloutCardProps, mockCalloutCardWithImageProps } from "../StoryblokCalloutCard/StoryblokCalloutCard.test";
+import { type StoryblokCalloutCardProps } from "../StoryblokCalloutCard/StoryblokCalloutCard";
+
+import { CardGridSection, CardGridSectionProps } from "./CardGridSection";
 
 jest.mock("@/utils/storyblok", () => ({
 	resolveStoryblokLink: jest.fn(),
 	fieldHasValidContent: jest.fn(() => true),
+	constructStoryblokImageSrc: jest.fn((filename) => filename),
 }));
 
 const mockLeadText: RichtextStoryblok = {
@@ -24,6 +29,44 @@ const mockLeadText: RichtextStoryblok = {
 			content: [{ type: "text", text: "This is lead text." }],
 		},
 	],
+};
+
+const cardLinkUrl = "https://nice.org.uk/guidance/ta10";
+
+export const mockCalloutCardProps: StoryblokCalloutCardProps = {
+	blok: {
+		heading: "Mock card title",
+		body: "Mock card summary",
+		link: {
+			id: "",
+			url: cardLinkUrl,
+			linktype: "url",
+			fieldtype: "multilink",
+			cached_url: cardLinkUrl,
+		},
+		component: "calloutCard",
+		_uid: "123456877",
+	},
+};
+
+export const mockCalloutCardWithImageProps = {
+	blok: {
+		...mockCalloutCardProps.blok,
+		image: {
+			id: 18214711,
+			alt: "",
+			name: "",
+			focus: "",
+			title: "",
+			source: "",
+			filename: "test.JPG",
+			copyright: "",
+			fieldtype: "asset",
+			meta_data: {},
+			is_external_url: false,
+		},
+		component: "calloutCardWithImage",
+	} as CalloutCardWithImageStoryblok,
 };
 
 describe("CardGridSection", () => {
@@ -101,6 +144,7 @@ describe("CardGridSection", () => {
 		render(<CardGridSection {...mockProps} />);
 		const grid = screen
 			.getByTestId("card-grid-section")
+			// eslint-disable-next-line testing-library/no-node-access
 			.querySelector("div.grid, ul.grid");
 		expect(grid).toBeInTheDocument();
 	});
@@ -121,7 +165,6 @@ describe("CardGridSection", () => {
 		expect(card).toBeInTheDocument();
 	});
 
-
 	it("renders Testimonial content correctly", () => {
 		const mockTestimonialProps: CardGridSectionProps = {
 			blok: {
@@ -134,9 +177,20 @@ describe("CardGridSection", () => {
 							{
 								component: "testimonialGridItem",
 								_uid: "1",
+								filename: "test-file",
 								quoteName: "Test Name",
 								quoteRole: "Test Role",
 								quoteText: "Test Quote Text",
+								image: {
+									id: 123,
+									filename: "test-image-filename",
+									alt: "test-alt",
+									fieldtype: "asset",
+									name: "test-name",
+									title: "test-title",
+									focus: null,
+								},
+								variant: "default",
 							} as TestimonialGridItemStoryblok,
 						],
 						_uid: "row1",
@@ -159,13 +213,13 @@ describe("CardGridSection", () => {
 						columns: "3",
 						gridItems: [
 							{
-								...mockCalloutCardProps.blok
+								...mockCalloutCardProps.blok,
 							},
 							{
-								...mockCalloutCardProps.blok
+								...mockCalloutCardProps.blok,
 							},
 							{
-								...mockCalloutCardProps.blok
+								...mockCalloutCardProps.blok,
 							},
 						] as CalloutCardStoryblok[],
 						_uid: "row1",
@@ -173,14 +227,13 @@ describe("CardGridSection", () => {
 				],
 			},
 		};
-		render(<CardGridSection {...mockCalloutProps}/>);
-		const ul = screen.getByRole('list');
-		const li = screen.getAllByRole('listitem');
-		const cardHeading = li[0]
+		render(<CardGridSection {...mockCalloutProps} />);
+		const cardList = screen.getByRole("list");
+		const cardListItems = screen.getAllByRole("listitem");
 		const calloutCard = screen.getAllByText("Mock card title");
-		expect(ul).toBeInTheDocument();
-		expect(li.length).toBe(3);
-		expect(li[0]).toBe('Mock card title');
+		expect(cardList).toBeInTheDocument();
+		expect(cardListItems.length).toBe(3);
+		expect(cardListItems[0]).toHaveTextContent("Mock card title");
 		expect(calloutCard.length).toBe(3);
 	});
 
@@ -194,7 +247,7 @@ describe("CardGridSection", () => {
 						columns: "2",
 						gridItems: [
 							{
-								...mockCalloutCardWithImageProps.blok
+								...mockCalloutCardWithImageProps.blok,
 							} as CalloutCardWithImageStoryblok,
 						],
 						_uid: "row1",
@@ -202,7 +255,7 @@ describe("CardGridSection", () => {
 				],
 			},
 		};
-		render(<CardGridSection {...mockCalloutProps}/>);
+		render(<CardGridSection {...mockCalloutProps} />);
 		const calloutCard = screen.getByText("Mock card title");
 		expect(calloutCard).toBeInTheDocument();
 	});

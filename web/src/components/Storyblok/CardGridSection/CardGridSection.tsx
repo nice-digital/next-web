@@ -6,7 +6,6 @@ import { Grid, GridItem, type Columns } from "@nice-digital/nds-grid";
 
 import { StoryblokRichText } from "@/components/Storyblok/StoryblokRichText/StoryblokRichText";
 import { StoryblokTestimonialGridItem } from "@/components/Storyblok/StoryblokTestimonialGridItem/StoryblokTestimonialGridItem";
-import { StoryblokCalloutCard } from "../StoryblokCalloutCard/StoryblokCalloutCard";
 import {
 	TestimonialGridItemStoryblok,
 	CalloutCardStoryblok,
@@ -16,6 +15,8 @@ import {
 } from "@/types/storyblok";
 import { fieldHasValidContent, resolveStoryblokLink } from "@/utils/storyblok";
 import { toTitleCase } from "@/utils/string";
+
+import { StoryblokCalloutCard } from "../StoryblokCalloutCard/StoryblokCalloutCard";
 
 import styles from "./CardGridSection.module.scss";
 

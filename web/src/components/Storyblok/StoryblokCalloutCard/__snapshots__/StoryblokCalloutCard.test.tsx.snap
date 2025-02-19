@@ -48,74 +48,24 @@ exports[`cardListSection component should match snapshot when image prop is pass
 
 exports[`cardListSection component should match snapshot with default values 1`] = `
 <div>
-  <div>
-    <article
-      class="card card--callout"
-      data-component="card"
+  <article
+    class="card card--callout"
+    data-component="card"
+  >
+    <header
+      class="card__header"
     >
-      <header
-        class="card__header"
+      <p
+        class="card__heading"
       >
-        <p
-          class="card__heading"
+        <a
+          href="https://nice.org.uk/guidance/ta10"
         >
-          <a
-            href="https://nice.org.uk/guidance/ta10"
-          >
-            Mock card title
-          </a>
-        </p>
-      </header>
-      Mock card summary
-    </article>
-  </div>
-</div>
-`;
-
-exports[`cardListSection component should match snapshot with transparent theme and large padding 1`] = `
-<div>
-  <div>
-    <article
-      class="card card--callout"
-      data-component="card"
-    >
-      <div
-        class="card__image"
-      >
-        <picture>
-          <source
-            srcset="test.JPG/m/708x0/filters:format%28avif%29:quality%2880%29"
-            type="image/avif"
-          />
-          <source
-            srcset="test.JPG/m/708x0/filters:format%28webp%29:quality%2880%29"
-            type="image/webp"
-          />
-          <img
-            alt="callout card image"
-            src="test.JPG/m/708x0/filters:format%28jpeg%29:quality%2880%29"
-          />
-        </picture>
-      </div>
-      <div
-        class="card__text"
-      >
-        <header
-          class="card__header"
-        >
-          <p
-            class="card__heading"
-          >
-            <a
-              href="https://nice.org.uk/guidance/ta10"
-            >
-              Mock card title
-            </a>
-          </p>
-        </header>
-        Mock card summary
-      </div>
-    </article>
-  </div>
+          Mock card title
+        </a>
+      </p>
+    </header>
+    Mock card summary
+  </article>
 </div>
 `;
