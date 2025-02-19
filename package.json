@@ -11,6 +11,7 @@
     "test:coverage": "jest --coverage",
     "// LINTING/CODE STYLE": "",
     "lint": "npm run prettier && npm run lint:ts && npm run lint:scss && npm run ts:check",
+    "lint:fix": "npm run prettier:fix && npm run lint:ts:fix && npm run lint:scss:fix",
     "prettier": "prettier --check \"./**/*.{ts,tsx,js}\"",
     "prettier:fix": "npm run prettier -- --write",
     "lint:ts": "eslint .",
