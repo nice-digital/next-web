@@ -194,33 +194,39 @@ describe("CardGridSection", () => {
 	it.each<["subtle" | "transparent", string]>([
 		["subtle", "cardGridSection--subtle"],
 		["transparent", "cardGridSection--transparent"],
-	])("applies correct section theme class '%s'", (variant, expectedClassName) => {
-		render(
-			<CardGridSection
-				{...mockProps}
-				blok={{ ...mockProps.blok, theme: variant }}
-			/>
-		);
-		expect(screen.getByTestId(`card-grid-section`)).toHaveClass(
-			expectedClassName
-		);
-	});
+	])(
+		"applies correct section theme class '%s'",
+		(variant, expectedClassName) => {
+			render(
+				<CardGridSection
+					{...mockProps}
+					blok={{ ...mockProps.blok, theme: variant }}
+				/>
+			);
+			expect(screen.getByTestId(`card-grid-section`)).toHaveClass(
+				expectedClassName
+			);
+		}
+	);
 
 	it.each<["small" | "medium" | "large", string]>([
 		["small", "cardGridSection--smallSpacing"],
 		["medium", "cardGridSection--mediumSpacing"],
 		["large", "cardGridSection--largeSpacing"],
-	])("applies correct section vertical padding class '%s'", (variant, expectedClassName) => {
-		render(
-			<CardGridSection
-				{...mockProps}
-				blok={{ ...mockProps.blok, verticalPadding: variant }}
-			/>
-		);
-		expect(screen.getByTestId(`card-grid-section`)).toHaveClass(
-			expectedClassName
-		);
-	});
+	])(
+		"applies correct section vertical padding class '%s'",
+		(variant, expectedClassName) => {
+			render(
+				<CardGridSection
+					{...mockProps}
+					blok={{ ...mockProps.blok, verticalPadding: variant }}
+				/>
+			);
+			expect(screen.getByTestId(`card-grid-section`)).toHaveClass(
+				expectedClassName
+			);
+		}
+	);
 
 	it("renders the correct grid structure", () => {
 		render(<CardGridSection {...mockProps} />);

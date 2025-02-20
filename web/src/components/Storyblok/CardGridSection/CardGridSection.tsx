@@ -102,7 +102,7 @@ export const CardGridSection: React.FC<CardGridSectionProps> = ({
 								content={leadTextProcessed}
 								className={styles.cardGridSection__leadText}
 							/>
-						)} {/* TODO: Confirm lead text div not rendered when no lead text provided */}
+						)}
 					</div>
 				) : undefined}
 
