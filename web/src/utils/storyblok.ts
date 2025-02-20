@@ -90,15 +90,7 @@ export const fetchStory = async <T>(
 			story: response.data.story,
 		};
 	} catch (error: unknown) {
-		const errorContext = {
-			errorCause: error,
-			sbParams,
-			slug,
-			ocelotEndpoint: publicRuntimeConfig.storyblok.ocelotEndpoint,
-		};
-
 		if (isISbError(error) && error.status === 404) {
-			// errorContext,
 			logger.error(
 				`fetchStory: 404 error from Storyblok API: ${error.message} at slug: ${slug} `
 			);
@@ -107,8 +99,6 @@ export const fetchStory = async <T>(
 				notFound: true,
 			};
 		}
-
-		// errorContext,
 		logger.error(
 			isISbError(error)
 				? `fetchStory: ${error.status} error from Storyblok API: ${error.message} at slug: ${slug} `

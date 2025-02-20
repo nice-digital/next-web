@@ -1,5 +1,5 @@
 import { render, screen } from "@testing-library/react";
-import React from "react";
+import { createRef } from "react";
 
 import { StoryblokIframe, StoryblokIframeProps } from "./StoryblokIframe";
 
@@ -32,7 +32,7 @@ describe("StoryblokIframe", () => {
 	});
 
 	it("forwards the ref to the iframe", () => {
-		const ref = React.createRef<HTMLIFrameElement>();
+		const ref = createRef<HTMLIFrameElement>();
 		render(<StoryblokIframe blok={mockIframeBlok.blok} ref={ref} />);
 		expect(ref.current).toBe(screen.getByTitle("Test Title"));
 	});
