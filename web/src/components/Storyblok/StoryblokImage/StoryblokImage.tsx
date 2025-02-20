@@ -44,6 +44,11 @@ export const StoryblokImage = forwardRef<HTMLImageElement, StoryblokImageProps>(
 		const webPSrc = constructStoryblokImageSrc(src, serviceOptions, "webp");
 		const avifSrc = constructStoryblokImageSrc(src, serviceOptions, "avif");
 		const jpgSrc = constructStoryblokImageSrc(src, serviceOptions, "jpeg");
+		// Set height & width to values provided from image service with fallback as 3x2 as per design system Callout Card example
+		const dimensions = {
+			width: src ? src.split("/")[5].split("x")[0] : 600,
+			height: src ? src.split("/")[5].split("x")[1] : 400,
+		};
 		return (
 			<picture>
 				<source srcSet={avifSrc || src} type="image/avif" />
@@ -53,9 +58,8 @@ export const StoryblokImage = forwardRef<HTMLImageElement, StoryblokImageProps>(
 					ref={ref}
 					src={jpgSrc || src}
 					alt={alt}
-					//Added the following height and width values as they are the required fields for <Image/> and also converting them to number as the width and height are sometimes passed with "px"(eg.136px) values.It will fallback to default value 0 if it is passed as undefined
-					width={rest.width ? parseInt(rest.width as string, 10) : 0}
-					height={rest.height ? parseInt(rest.height as string, 10) : 0}
+					width={Number(dimensions.width)}
+					height={Number(dimensions.height)}
 				/>
 			</picture>
 		);
