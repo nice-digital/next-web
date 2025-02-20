@@ -44,7 +44,7 @@ describe("Callout card component", () => {
 					focus: "",
 					title: "",
 					source: "",
-					filename: "test.JPG",
+					filename: "/test.JPG",
 					copyright: "",
 					fieldtype: "asset",
 					meta_data: {},
