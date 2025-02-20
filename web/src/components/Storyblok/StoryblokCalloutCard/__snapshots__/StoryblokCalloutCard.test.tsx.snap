@@ -1,6 +1,6 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`cardListSection component should match snapshot when image prop is passed 1`] = `
+exports[`Callout card component should match snapshot when image prop is passed 1`] = `
 <div>
   <article
     class="card card--callout"
@@ -46,7 +46,7 @@ exports[`cardListSection component should match snapshot when image prop is pass
 </div>
 `;
 
-exports[`cardListSection component should match snapshot with default values 1`] = `
+exports[`Callout card component should match snapshot with default values 1`] = `
 <div>
   <article
     class="card card--callout"

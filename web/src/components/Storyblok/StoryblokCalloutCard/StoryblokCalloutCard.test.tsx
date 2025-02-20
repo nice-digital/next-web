@@ -25,27 +25,7 @@ export const mockCalloutCardProps: StoryblokCalloutCardProps = {
 	},
 };
 
-export const mockCalloutCardWithImageProps = {
-	blok: {
-		...mockCalloutCardProps.blok,
-		image: {
-			id: 18214711,
-			alt: "",
-			name: "",
-			focus: "",
-			title: "",
-			source: "",
-			filename: "test.JPG",
-			copyright: "",
-			fieldtype: "asset",
-			meta_data: {},
-			is_external_url: false,
-		},
-		component: "calloutCardWithImage",
-	} as CalloutCardWithImageStoryblok,
-};
-
-describe("cardListSection component", () => {
+describe("Callout card component", () => {
 	it("should match snapshot with default values", () => {
 		const { container } = render(
 			<StoryblokCalloutCard {...mockCalloutCardProps} />
@@ -54,6 +34,25 @@ describe("cardListSection component", () => {
 	});
 
 	it("should match snapshot when image prop is passed", () => {
+		const mockCalloutCardWithImageProps = {
+			blok: {
+				...mockCalloutCardProps.blok,
+				image: {
+					id: 18214711,
+					alt: "",
+					name: "",
+					focus: "",
+					title: "",
+					source: "",
+					filename: "test.JPG",
+					copyright: "",
+					fieldtype: "asset",
+					meta_data: {},
+					is_external_url: false,
+				},
+				component: "calloutCardWithImage",
+			} as unknown as CalloutCardWithImageStoryblok,
+		};
 		const { container } = render(
 			<StoryblokCalloutCard {...mockCalloutCardWithImageProps} />
 		);
