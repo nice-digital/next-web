@@ -25,7 +25,7 @@ const mockCalloutCardProps: StoryblokCalloutCardProps = {
 	},
 };
 
-describe("cardListSection component", () => {
+describe("Callout card component", () => {
 	it("should match snapshot with default values", () => {
 		const { container } = render(
 			<StoryblokCalloutCard {...mockCalloutCardProps} />
