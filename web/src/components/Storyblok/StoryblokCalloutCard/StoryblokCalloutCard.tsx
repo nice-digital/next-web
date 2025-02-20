@@ -33,7 +33,7 @@ export const StoryblokCalloutCard: React.FC<StoryblokCalloutCardProps> = ({
 			<StoryblokImage
 				src={image.filename}
 				alt={image?.alt || "callout card image"}
-				serviceOptions={{ height: 0, quality: 80, width: 708 }}
+				serviceOptions={{ quality: 80 }}
 			/>
 		) : null;
 	};
