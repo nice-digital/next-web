@@ -20,6 +20,9 @@ jest.mock("@/utils/storyblok", () => ({
 	constructStoryblokImageSrc: jest.fn((filename) => filename),
 }));
 
+const leadTextContent = "This is lead text.";
+const cardLinkUrl = "https://nice.org.uk/guidance/ta10";
+
 const mockLeadText: RichtextStoryblok = {
 	type: "doc",
 	content: [
@@ -28,14 +31,12 @@ const mockLeadText: RichtextStoryblok = {
 			content: [
 				{
 					type: "text",
-					text: "This is lead text.",
+					text: leadTextContent,
 				},
 			],
 		},
 	],
 };
-
-const cardLinkUrl = "https://nice.org.uk/guidance/ta10";
 
 const mockCardProps = {
 	blok: {
@@ -172,7 +173,7 @@ describe("CardGridSection", () => {
 			},
 		};
 		render(<CardGridSection {...mockCardGridSectionPropsNoLeadText} />);
-		const leadTextElement = screen.getByTestId("storyblok-rich-text");
+		const leadTextElement = screen.queryByText(leadTextContent);
 		expect(leadTextElement).not.toBeInTheDocument();
 	});
 
