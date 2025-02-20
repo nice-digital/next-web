@@ -25,7 +25,6 @@ exports[`CardGridSection matches snapshot 1`] = `
             This is lead text.
           </p>
         </div>
-         
       </div>
       <ul
         class="grid grid--loose cardGridSection__gridRow"

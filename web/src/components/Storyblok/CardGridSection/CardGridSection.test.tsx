@@ -71,7 +71,7 @@ const mockCalloutCardWithImageProps = {
 			focus: "",
 			title: "",
 			source: "",
-			filename: "test.JPG",
+			filename: "/test.JPG",
 			copyright: "",
 			fieldtype: "asset",
 			meta_data: {},
@@ -334,13 +334,12 @@ describe("CardGridSection", () => {
 							{
 								component: "testimonialGridItem",
 								_uid: "1",
-								filename: "test-file",
 								quoteName: "Test Name",
 								quoteRole: "Test Role",
 								quoteText: "Test Quote Text",
 								image: {
 									id: 123,
-									filename: "test-image-filename",
+									filename: "/test-image-filename",
 									alt: "test-alt",
 									fieldtype: "asset",
 									name: "test-name",
