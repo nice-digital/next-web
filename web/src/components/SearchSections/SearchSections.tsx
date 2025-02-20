@@ -5,8 +5,6 @@ import ChevronRight from "@nice-digital/icons/lib/ChevronDown";
 import { Panel } from "@nice-digital/nds-panel";
 import { Document } from "@nice-digital/search-client";
 
-import { Link } from "@/components/Link/Link";
-
 import styles from "./SearchSections.module.scss";
 
 const qualityStatementsChapterLinkRegex =
