@@ -1,15 +1,15 @@
-import React from "react";
+import { AnchorHTMLAttributes, FC } from "react";
 
 import { Link } from "@/components/Link/Link";
 import { MultilinkStoryblok, RelatedLinkStoryblok } from "@/types/storyblok";
 import { resolveStoryblokLink } from "@/utils/storyblok";
 
 export interface StoryblokRelatedLinkProps
-	extends React.AnchorHTMLAttributes<HTMLAnchorElement> {
+	extends AnchorHTMLAttributes<HTMLAnchorElement> {
 	blok: RelatedLinkStoryblok;
 }
 
-export const StoryblokRelatedLink: React.FC<StoryblokRelatedLinkProps> = ({
+export const StoryblokRelatedLink: FC<StoryblokRelatedLinkProps> = ({
 	blok,
 	...restProps
 }) => {
