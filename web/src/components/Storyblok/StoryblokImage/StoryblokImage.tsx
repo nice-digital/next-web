@@ -30,8 +30,9 @@ export const StoryblokImage = forwardRef<HTMLImageElement, StoryblokImageProps>(
 					ref={ref}
 					src={placeholderSrc}
 					alt={alt}
-					width={parseInt(rest.width as string, 10)}
-					height={parseInt(rest.height as string, 10)}
+					layout="intrinsic"
+					width={rest.width ? parseInt(rest.width as string, 10) : 0}
+					height={rest.height ? parseInt(rest.height as string, 10) : 0}
 				/>
 			);
 		}
