@@ -30,8 +30,9 @@ export const StoryblokImage = forwardRef<HTMLImageElement, StoryblokImageProps>(
 					ref={ref}
 					src={placeholderSrc}
 					alt={alt}
-					width={parseInt(rest.width as string, 10)}
-					height={parseInt(rest.height as string, 10)}
+					layout="intrinsic"
+					width={rest.width ? parseInt(rest.width as string, 10) : 0}
+					height={rest.height ? parseInt(rest.height as string, 10) : 0}
 				/>
 			);
 		}
@@ -53,6 +54,7 @@ export const StoryblokImage = forwardRef<HTMLImageElement, StoryblokImageProps>(
 					ref={ref}
 					src={jpgSrc || src}
 					alt={alt}
+					layout="intrinsic"
 					//Added the following height and width values as they are the required fields for <Image/> and also converting them to number as the width and height are sometimes passed with "px"(eg.136px) values.It will fallback to default value 0 if it is passed as undefined
 					width={rest.width ? parseInt(rest.width as string, 10) : 0}
 					height={rest.height ? parseInt(rest.height as string, 10) : 0}
