@@ -89,7 +89,7 @@ exports[`BlogPostPage renders the page 1`] = `
                           role="presentation"
                           src="/_next/image?url=https%3A%2F%2Flocal-host-test-nice-org.com%2Ff%2F243782%2F239x298%2Ff5556eb6f5%2Fvanessa-nunes.PNG%2Fm%2F270x270%2Fsmart%2Ffilters%3Aformat%2528jpeg%2529%3Aquality%252880%2529&w=640&q=75"
                           srcset="/_next/image?url=https%3A%2F%2Flocal-host-test-nice-org.com%2Ff%2F243782%2F239x298%2Ff5556eb6f5%2Fvanessa-nunes.PNG%2Fm%2F270x270%2Fsmart%2Ffilters%3Aformat%2528jpeg%2529%3Aquality%252880%2529&w=384&q=75 1x, /_next/image?url=https%3A%2F%2Flocal-host-test-nice-org.com%2Ff%2F243782%2F239x298%2Ff5556eb6f5%2Fvanessa-nunes.PNG%2Fm%2F270x270%2Fsmart%2Ffilters%3Aformat%2528jpeg%2529%3Aquality%252880%2529&w=640&q=75 2x"
-                          style="color: transparent;"
+                          style="color: transparent; max-width: 100%; height: auto;"
                           width="270"
                         />
                       </picture>
@@ -137,7 +137,7 @@ exports[`BlogPostPage renders the page 1`] = `
               role="presentation"
               src="/_next/image?url=https%3A%2F%2Flocal-host-test-nice-org.com%2Ff%2F243782%2F420x234%2F7a576133e7%2Fregister-for-board-meeting.PNG%2Fm%2F867x0%2Ffilters%3Aformat%2528jpeg%2529%3Aquality%252880%2529&w=1920&q=75"
               srcset="/_next/image?url=https%3A%2F%2Flocal-host-test-nice-org.com%2Ff%2F243782%2F420x234%2F7a576133e7%2Fregister-for-board-meeting.PNG%2Fm%2F867x0%2Ffilters%3Aformat%2528jpeg%2529%3Aquality%252880%2529&w=1080&q=75 1x, /_next/image?url=https%3A%2F%2Flocal-host-test-nice-org.com%2Ff%2F243782%2F420x234%2F7a576133e7%2Fregister-for-board-meeting.PNG%2Fm%2F867x0%2Ffilters%3Aformat%2528jpeg%2529%3Aquality%252880%2529&w=1920&q=75 2x"
-              style="color: transparent;"
+              style="color: transparent; max-width: 100%; height: auto;"
               width="867"
             />
           </picture>
@@ -179,7 +179,7 @@ exports[`BlogPostPage renders the page 1`] = `
                 role="presentation"
                 src="/_next/image?url=https%3A%2F%2Flocal-host-test-nice-org.com%2Ff%2F243782%2F627x624%2F86275f6701%2Fwomen-involved-in-nice-s-committees.PNG%2Fm%2F627x0%2Ffilters%3Aformat%2528jpeg%2529%3Aquality%252880%2529&w=1920&q=75"
                 srcset="/_next/image?url=https%3A%2F%2Flocal-host-test-nice-org.com%2Ff%2F243782%2F627x624%2F86275f6701%2Fwomen-involved-in-nice-s-committees.PNG%2Fm%2F627x0%2Ffilters%3Aformat%2528jpeg%2529%3Aquality%252880%2529&w=640&q=75 1x, /_next/image?url=https%3A%2F%2Flocal-host-test-nice-org.com%2Ff%2F243782%2F627x624%2F86275f6701%2Fwomen-involved-in-nice-s-committees.PNG%2Fm%2F627x0%2Ffilters%3Aformat%2528jpeg%2529%3Aquality%252880%2529&w=1920&q=75 2x"
-                style="color: transparent;"
+                style="color: transparent; max-width: 100%; height: auto;"
                 width="627"
               />
             </picture>
@@ -247,7 +247,7 @@ exports[`BlogPostPage renders the page 1`] = `
                     role="presentation"
                     src="/_next/image?url=https%3A%2F%2Flocal-host-test-nice-org.com%2Ff%2F243782%2F632x626%2Fbf4770d38e%2Fwomen-involved-in-nice-s-committees.PNG%2Fm%2F632x0%2Ffilters%3Aformat%2528jpeg%2529%3Aquality%252880%2529&w=1920&q=75"
                     srcset="/_next/image?url=https%3A%2F%2Flocal-host-test-nice-org.com%2Ff%2F243782%2F632x626%2Fbf4770d38e%2Fwomen-involved-in-nice-s-committees.PNG%2Fm%2F632x0%2Ffilters%3Aformat%2528jpeg%2529%3Aquality%252880%2529&w=640&q=75 1x, /_next/image?url=https%3A%2F%2Flocal-host-test-nice-org.com%2Ff%2F243782%2F632x626%2Fbf4770d38e%2Fwomen-involved-in-nice-s-committees.PNG%2Fm%2F632x0%2Ffilters%3Aformat%2528jpeg%2529%3Aquality%252880%2529&w=1920&q=75 2x"
-                    style="color: transparent;"
+                    style="color: transparent; max-width: 100%; height: auto;"
                     width="632"
                   />
                 </picture>

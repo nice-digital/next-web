@@ -26,7 +26,7 @@ exports[`Callout card component should match snapshot when image prop is passed 
           loading="lazy"
           src="/_next/image?url=%2Ftest.JPG%2Fm%2Ffilters%3Aformat%2528jpeg%2529%3Aquality%252880%2529&w=1200&q=75"
           srcset="/_next/image?url=%2Ftest.JPG%2Fm%2Ffilters%3Aformat%2528jpeg%2529%3Aquality%252880%2529&w=640&q=75 1x, /_next/image?url=%2Ftest.JPG%2Fm%2Ffilters%3Aformat%2528jpeg%2529%3Aquality%252880%2529&w=1200&q=75 2x"
-          style="color: transparent;"
+          style="color: transparent; max-width: 100%; height: auto;"
           width="600"
         />
       </picture>
