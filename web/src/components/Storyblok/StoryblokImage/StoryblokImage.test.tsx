@@ -28,24 +28,6 @@ describe("StoryblokImage Component", () => {
 		expect(altText).toBe(mockImageResponse.alt);
 	});
 
-	it("should append any service options for the Storyblok Image service", () => {
-		render(
-			<StoryblokImage
-				src={mockImageResponse.src}
-				alt={mockImageResponse.alt}
-				serviceOptions={{
-					quality: 80,
-					smart: true,
-				}}
-			/>
-		);
-
-		const imageSrc = screen.getByRole("img").getAttribute("src");
-		expect(imageSrc).toContain(
-			"/_next/image?url=https%3A%2F%2Fa.storyblok.com%2Ff%2F292509%2F805x603%2F292d0d5de8%2Fnhs-team.JPG%2Fm%2Fsmart%2Ffilters%3Aformat%2528jpeg%2529%3Aquality%252880%2529&w=1920&q=75"
-		);
-	});
-
 	it("should pull the height and width from the src if it matches the expected format", () => {
 		render(
 			<StoryblokImage
@@ -60,7 +42,6 @@ describe("StoryblokImage Component", () => {
 		expect(imageWidth).toBe("805");
 	});
 
-
 	it("should use the default height and the width if src doesn't match expected format", () => {
 		render(
 			<StoryblokImage
@@ -73,6 +54,30 @@ describe("StoryblokImage Component", () => {
 		const imageWidth = screen.getByRole("img").getAttribute("width");
 		expect(imageHeight).toBe("600");
 		expect(imageWidth).toBe("600");
+	});
+
+	it("should append any service options for the Storyblok Image service", () => {
+		render(
+			<StoryblokImage
+				src={mockImageResponse.src}
+				alt={mockImageResponse.alt}
+				serviceOptions={{
+					height: 428,
+					quality: 80,
+					smart: true,
+					width: 760,
+				}}
+			/>
+		);
+
+		const imageSrc = screen.getByRole("img").getAttribute("src");
+		expect(imageSrc).toContain(
+			"/_next/image?url=https%3A%2F%2Fa.storyblok.com%2Ff%2F292509%2F805x603%2F292d0d5de8%2Fnhs-team.JPG%2Fm%2F760x428%2Fsmart%2Ffilters%3Aformat%2528jpeg%2529%3Aquality%252880%2529&w=1920&q=75"
+		);
+		const imageHeight = screen.getByRole("img").getAttribute("height");
+		const imageWidth = screen.getByRole("img").getAttribute("width");
+		expect(imageHeight).toBe("428");
+		expect(imageWidth).toBe("760");
 	});
 
 	it("should add the className to the image if className passed", () => {

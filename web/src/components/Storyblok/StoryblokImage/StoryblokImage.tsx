@@ -67,8 +67,8 @@ export const StoryblokImage = forwardRef<HTMLImageElement, StoryblokImageProps>(
 					ref={ref}
 					src={jpgSrc || src}
 					alt={alt}
-					width={Number(dimensions.width)}
-					height={Number(dimensions.height)}
+					width={typeof serviceOptions?.width == 'number' ? Number(serviceOptions.width) : Number(dimensions.width)}
+					height={typeof serviceOptions?.height == 'number' ? Number(serviceOptions.height) : Number(dimensions.height)}
 				/>
 			</picture>
 		);
