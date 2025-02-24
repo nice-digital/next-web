@@ -45,13 +45,13 @@ export const StoryblokImage = forwardRef<HTMLImageElement, StoryblokImageProps>(
 		const avifSrc = constructStoryblokImageSrc(src, serviceOptions, "avif");
 		const jpgSrc = constructStoryblokImageSrc(src, serviceOptions, "jpeg");
 
-		// Set height & width to values provided from image service with fallback as 3x2 aspect ratio as per design system Callout Card example
+		// Set height & width to values provided from image service with fallback as square image at ~full size mobile resolution
 		// Will need updating if shape of image url changes; assumes https://a.storyblok.com/f/292509/648x349/be49eaa335/image-name.JPG/m/filters:format%28avif%29:quality%2880%29
 		const widthSubstr = src.match(/^https:\/\/a\.storyblok\.com\/f\/\d+\/\d{2,5}x\d{2,5}/gm) ? src.split("/")[5].split("x")[0] : "";
 		const heightSubstr = src.match(/^https:\/\/a\.storyblok\.com\/f\/\d+\/\d{2,5}x\d{2,5}/gm) ? src.split("/")[5].split("x")[1] : "";
 		const dimensions = {
 			width: !isNaN(parseFloat(widthSubstr)) ? widthSubstr : 600,
-			height: !isNaN(parseFloat(heightSubstr)) ? heightSubstr : 400,
+			height: !isNaN(parseFloat(heightSubstr)) ? heightSubstr : 600,
 		};
 
 		if (isNaN(parseFloat(widthSubstr)) || isNaN(parseFloat(heightSubstr))) {
