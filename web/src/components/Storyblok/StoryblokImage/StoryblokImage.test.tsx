@@ -4,7 +4,7 @@ import { StoryblokImage, StoryblokImageProps } from "./StoryblokImage";
 
 const mockImageResponse = {
 	alt: "Test image alt",
-	src: "http://test-image.jpg",
+	src: "https://a.storyblok.com/f/292509/805x603/292d0d5de8/nhs-team.JPG",
 } as StoryblokImageProps;
 
 describe("StoryblokImage Component", () => {
@@ -16,7 +16,7 @@ describe("StoryblokImage Component", () => {
 		const imageSrc = screen.getByRole("img").getAttribute("src");
 
 		expect(imageSrc).toContain(
-			"/_next/image?url=http%3A%2F%2Ftest-image.jpg%2Fm%2Ffilters%3Aformat%2528jpeg%2529%3Aquality%252880%2529&w=16&q=75"
+			"/_next/image?url=https%3A%2F%2Fa.storyblok.com%2Ff%2F292509%2F805x603%2F292d0d5de8%2Fnhs-team.JPG%2Fm%2Ffilters%3Aformat%2528jpeg%2529%3Aquality%252880%2529&w=1920&q=75"
 		);
 	});
 
@@ -34,17 +34,15 @@ describe("StoryblokImage Component", () => {
 				src={mockImageResponse.src}
 				alt={mockImageResponse.alt}
 				serviceOptions={{
-					height: 428,
 					quality: 80,
 					smart: true,
-					width: 760,
 				}}
 			/>
 		);
 
 		const imageSrc = screen.getByRole("img").getAttribute("src");
 		expect(imageSrc).toContain(
-			"/_next/image?url=http%3A%2F%2Ftest-image.jpg%2Fm%2F760x428%2Fsmart%2Ffilters%3Aformat%2528jpeg%2529%3Aquality%252880%2529&w=16&q=75"
+			"/_next/image?url=https%3A%2F%2Fa.storyblok.com%2Ff%2F292509%2F805x603%2F292d0d5de8%2Fnhs-team.JPG%2Fm%2Fsmart%2Ffilters%3Aformat%2528jpeg%2529%3Aquality%252880%2529&w=1920&q=75"
 		);
 	});
 
