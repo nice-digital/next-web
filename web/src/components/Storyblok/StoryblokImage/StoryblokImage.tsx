@@ -54,8 +54,9 @@ export const StoryblokImage = forwardRef<HTMLImageElement, StoryblokImageProps>(
 			height: !isNaN(parseFloat(heightSubstr)) ? heightSubstr : 600,
 		};
 
-		if (isNaN(parseFloat(widthSubstr)) || isNaN(parseFloat(heightSubstr))) {
+		if (isNaN(parseFloat(widthSubstr)) || isNaN(parseFloat(heightSubstr)) || dimensions.width === 0 || dimensions.height === 0) {
 			console.warn("Dimensions are not valid numbers");
+			// TODO: Sense check / update components using StoryblokImage to make correct use of serviceOptions
 		}
 
 		return (
