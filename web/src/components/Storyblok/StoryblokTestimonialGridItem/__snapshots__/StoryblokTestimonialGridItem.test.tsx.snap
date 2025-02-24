@@ -40,7 +40,7 @@ exports[`Storyblok testimonial Default component should match snapshot for defau
               loading="lazy"
               src="/_next/image?url=https%3A%2F%2Fplacekitten.com%2F408%2F287%2Fm%2F708x0%2Ffilters%3Aformat%2528jpeg%2529%3Aquality%252880%2529&w=16&q=75"
               srcset="/_next/image?url=https%3A%2F%2Fplacekitten.com%2F408%2F287%2Fm%2F708x0%2Ffilters%3Aformat%2528jpeg%2529%3Aquality%252880%2529&w=16&q=75 1x"
-              style="color: transparent;"
+              style="color: transparent; max-width: 100%; height: auto;"
               width="0"
             />
           </picture>
@@ -81,7 +81,7 @@ exports[`Storyblok testimonial Default component should match snapshot for defau
             loading="lazy"
             src="/_next/image?url=https%3A%2F%2Fplacekitten.com%2F408%2F287%2Fm%2F708x0%2Ffilters%3Aformat%2528jpeg%2529%3Aquality%252880%2529&w=16&q=75"
             srcset="/_next/image?url=https%3A%2F%2Fplacekitten.com%2F408%2F287%2Fm%2F708x0%2Ffilters%3Aformat%2528jpeg%2529%3Aquality%252880%2529&w=16&q=75 1x"
-            style="color: transparent;"
+            style="color: transparent; max-width: 100%; height: auto;"
             width="0"
           />
         </picture>
@@ -131,7 +131,7 @@ exports[`Storyblok testimonial Default component should match snapshot for the d
               loading="lazy"
               src="/_next/image?url=https%3A%2F%2Fplacekitten.com%2F408%2F287%2Fm%2F708x0%2Ffilters%3Aformat%2528jpeg%2529%3Aquality%252880%2529&w=16&q=75"
               srcset="/_next/image?url=https%3A%2F%2Fplacekitten.com%2F408%2F287%2Fm%2F708x0%2Ffilters%3Aformat%2528jpeg%2529%3Aquality%252880%2529&w=16&q=75 1x"
-              style="color: transparent;"
+              style="color: transparent; max-width: 100%; height: auto;"
               width="0"
             />
           </picture>
@@ -172,7 +172,7 @@ exports[`Storyblok testimonial Default component should match snapshot for the d
             loading="lazy"
             src="/_next/image?url=https%3A%2F%2Fplacekitten.com%2F408%2F287%2Fm%2F708x0%2Ffilters%3Aformat%2528jpeg%2529%3Aquality%252880%2529&w=16&q=75"
             srcset="/_next/image?url=https%3A%2F%2Fplacekitten.com%2F408%2F287%2Fm%2F708x0%2Ffilters%3Aformat%2528jpeg%2529%3Aquality%252880%2529&w=16&q=75 1x"
-            style="color: transparent;"
+            style="color: transparent; max-width: 100%; height: auto;"
             width="0"
           />
         </picture>
