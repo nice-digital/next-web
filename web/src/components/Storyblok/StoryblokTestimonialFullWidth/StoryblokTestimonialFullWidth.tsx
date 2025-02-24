@@ -25,7 +25,7 @@ export const StoryblokTestimonialFullWidth: React.FC<
 				<StoryblokImage
 					src={image.filename ? image.filename : undefined}
 					alt={image.alt ? image.alt : ""}
-					serviceOptions={{ quality: 80 }}
+					serviceOptions={{ height: 440, quality: 80, width: 440 }}
 				/>
 			}
 			link={
