@@ -11,7 +11,8 @@ const blokContent: AuthorStoryblok = {
 	image: {
 		id: 1,
 		name: "test image",
-		filename: "https://a.storyblok.com/f/292509/2120x1414/dd56873afd/joe-bloggs.jpg",
+		filename:
+			"https://a.storyblok.com/f/292509/2120x1414/dd56873afd/joe-bloggs.jpg",
 		alt: "Joe Bloggs",
 		fieldtype: "asset",
 		title: null,

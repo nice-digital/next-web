@@ -30,10 +30,7 @@ describe("StoryblokImage Component", () => {
 
 	it("should pull the height and width from the src if it matches the expected format", () => {
 		render(
-			<StoryblokImage
-				src={mockImageResponse.src}
-				alt={mockImageResponse.alt}
-			/>
+			<StoryblokImage src={mockImageResponse.src} alt={mockImageResponse.alt} />
 		);
 
 		const imageHeight = screen.getByRole("img").getAttribute("height");

@@ -48,14 +48,27 @@ export const StoryblokImage = forwardRef<HTMLImageElement, StoryblokImageProps>(
 
 		// Set height & width to values provided from image service with fallback as square image at ~full size mobile resolution
 		// Will need updating if shape of image url changes; assumes https://a.storyblok.com/f/292509/648x349/be49eaa335/image-name.JPG/m/filters:format%28avif%29:quality%2880%29
-		const widthSubstr = src.match(/^https:\/\/a\.storyblok\.com\/f\/\d+\/\d{2,5}x\d{2,5}/gm) ? src.split("/")[5].split("x")[0] : "";
-		const heightSubstr = src.match(/^https:\/\/a\.storyblok\.com\/f\/\d+\/\d{2,5}x\d{2,5}/gm) ? src.split("/")[5].split("x")[1] : "";
+		const widthSubstr = src.match(
+			/^https:\/\/a\.storyblok\.com\/f\/\d+\/\d{2,5}x\d{2,5}/gm
+		)
+			? src.split("/")[5].split("x")[0]
+			: "";
+		const heightSubstr = src.match(
+			/^https:\/\/a\.storyblok\.com\/f\/\d+\/\d{2,5}x\d{2,5}/gm
+		)
+			? src.split("/")[5].split("x")[1]
+			: "";
 		const dimensions = {
 			width: !isNaN(parseFloat(widthSubstr)) ? widthSubstr : 600,
 			height: !isNaN(parseFloat(heightSubstr)) ? heightSubstr : 600,
 		};
 
-		if (isNaN(parseFloat(widthSubstr)) || isNaN(parseFloat(heightSubstr)) || dimensions.width === 0 || dimensions.height === 0) {
+		if (
+			isNaN(parseFloat(widthSubstr)) ||
+			isNaN(parseFloat(heightSubstr)) ||
+			dimensions.width === 0 ||
+			dimensions.height === 0
+		) {
 			console.warn("Dimensions are not valid numbers");
 			// TODO: Sense check / update components using StoryblokImage to make correct use of serviceOptions
 		}
@@ -70,8 +83,16 @@ export const StoryblokImage = forwardRef<HTMLImageElement, StoryblokImageProps>(
 					src={jpgSrc || src}
 					alt={alt}
 					layout="intrinsic"
-					width={typeof serviceOptions?.width == 'number' ? Number(serviceOptions.width) : Number(dimensions.width)}
-					height={typeof serviceOptions?.height == 'number' ? Number(serviceOptions.height) : Number(dimensions.height)}
+					width={
+						typeof serviceOptions?.width == "number"
+							? Number(serviceOptions.width)
+							: Number(dimensions.width)
+					}
+					height={
+						typeof serviceOptions?.height == "number"
+							? Number(serviceOptions.height)
+							: Number(dimensions.height)
+					}
 				/>
 			</picture>
 		);
