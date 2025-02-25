@@ -118,6 +118,7 @@ export const CardGridSection: React.FC<CardGridSectionProps> = ({
 							elementType={gridElementType}
 							className={styles.cardGridSection__gridRow}
 							gutter="loose"
+							equalHeight
 							key={_uid}
 						>
 							{gridItems.map((gridItem) => {
