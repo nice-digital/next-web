@@ -27,7 +27,7 @@ exports[`CardGridSection matches snapshot 1`] = `
         </div>
       </div>
       <ul
-        class="grid grid--loose cardGridSection__gridRow"
+        class="grid grid--equal-height grid--loose cardGridSection__gridRow"
       >
         <li
           class="cardGridSection__gridItem"
