@@ -17,10 +17,10 @@ import {
 import { constructStoryblokImageSrc } from "@/utils/storyblok";
 import { toTitleCase } from "@/utils/string";
 
-import { CardGridSection } from "../CardGridSection/CardGridSection";
 import { StoryblokActionBannerDefault } from "../StoryblokActionBanner/StoryblokActionBannerDefault";
 
 import styles from "./PromoBox.module.scss";
+import { CardGridSection } from "../CardGridSection/CardGridSection";
 
 export interface PromoBoxProps {
 	blok: PromoBoxStoryblok;
@@ -41,7 +41,7 @@ export const PromoBox: React.FC<PromoBoxProps> = ({
 		headingLevel = "2",
 		verticalPadding = "medium",
 		imageAspectRatio = "landscape",
-		_uid
+		_uid,
 	} = blok;
 
 	const HeadingElement = `h${headingLevel}` as keyof JSX.IntrinsicElements;
@@ -78,7 +78,12 @@ export const PromoBox: React.FC<PromoBoxProps> = ({
 		switch (component) {
 			case "cardGridRowTestimonials":
 				// return null;
-				return <CardGridSection blok={promoboxContent} />;
+				return (
+					<GridItem cols={12} className={styles.testimonialContainer}>
+						<CardGridSection blok={promoboxContent} />
+					</GridItem>
+				);
+
 			case "actionBannerDefault":
 				return (
 					<GridItem cols={12} className={styles.actionBannerContainer}>
@@ -136,8 +141,11 @@ export const PromoBox: React.FC<PromoBoxProps> = ({
 						) : null}
 					</GridItem>
 
-					{blok.content.map((item: any) => (
-						<RenderTestimonialOrActionBanner promoboxContent={item} key={_uid}/>
+					{blok.content?.map((item: any) => (
+						<RenderTestimonialOrActionBanner
+							promoboxContent={item}
+							key={_uid}
+						/>
 					))}
 				</Grid>
 			</div>
