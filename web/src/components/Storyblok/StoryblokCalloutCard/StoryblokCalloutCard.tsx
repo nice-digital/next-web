@@ -10,7 +10,7 @@ import {
 import { resolveStoryblokLink } from "@/utils/storyblok";
 
 import { StoryblokImage } from "../StoryblokImage/StoryblokImage";
-
+import styles from "./StoryblokCalloutCard.module.scss";
 export interface StoryblokCalloutCardProps {
 	blok: CalloutCardStoryblok | CalloutCardWithImageStoryblok;
 }
@@ -34,6 +34,7 @@ export const StoryblokCalloutCard: React.FC<StoryblokCalloutCardProps> = ({
 				src={image.filename}
 				alt={image?.alt || "callout card image"}
 				serviceOptions={{ quality: 80 }}
+				className={styles.imageContainer}
 			/>
 		) : null;
 	};
