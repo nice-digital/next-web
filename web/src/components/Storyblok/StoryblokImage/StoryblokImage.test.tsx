@@ -4,7 +4,7 @@ import { StoryblokImage, StoryblokImageProps } from "./StoryblokImage";
 
 const mockImageResponse = {
 	alt: "Test image alt",
-	src: "http://test-image.jpg",
+	src: "https://a.storyblok.com/f/292509/805x603/292d0d5de8/nhs-team.JPG",
 } as StoryblokImageProps;
 
 describe("StoryblokImage Component", () => {
@@ -16,7 +16,7 @@ describe("StoryblokImage Component", () => {
 		const imageSrc = screen.getByRole("img").getAttribute("src");
 
 		expect(imageSrc).toContain(
-			"/_next/image?url=http%3A%2F%2Ftest-image.jpg%2Fm%2Ffilters%3Aformat%2528jpeg%2529%3Aquality%252880%2529&w=16&q=75"
+			"/_next/image?url=https%3A%2F%2Fa.storyblok.com%2Ff%2F292509%2F805x603%2F292d0d5de8%2Fnhs-team.JPG%2Fm%2Ffilters%3Aformat%2528jpeg%2529%3Aquality%252880%2529&w=1920&q=75"
 		);
 	});
 
@@ -26,6 +26,31 @@ describe("StoryblokImage Component", () => {
 		);
 		const altText = screen.getByRole("img").getAttribute("alt");
 		expect(altText).toBe(mockImageResponse.alt);
+	});
+
+	it("should pull the height and width from the src if it matches the expected format", () => {
+		render(
+			<StoryblokImage src={mockImageResponse.src} alt={mockImageResponse.alt} />
+		);
+
+		const imageHeight = screen.getByRole("img").getAttribute("height");
+		const imageWidth = screen.getByRole("img").getAttribute("width");
+		expect(imageHeight).toBe("603");
+		expect(imageWidth).toBe("805");
+	});
+
+	it("should use the default height and the width if src doesn't match expected format", () => {
+		render(
+			<StoryblokImage
+				src="https://placehold.co/600x400"
+				alt={mockImageResponse.alt}
+			/>
+		);
+
+		const imageHeight = screen.getByRole("img").getAttribute("height");
+		const imageWidth = screen.getByRole("img").getAttribute("width");
+		expect(imageHeight).toBe("600");
+		expect(imageWidth).toBe("600");
 	});
 
 	it("should append any service options for the Storyblok Image service", () => {
@@ -44,8 +69,12 @@ describe("StoryblokImage Component", () => {
 
 		const imageSrc = screen.getByRole("img").getAttribute("src");
 		expect(imageSrc).toContain(
-			"/_next/image?url=http%3A%2F%2Ftest-image.jpg%2Fm%2F760x428%2Fsmart%2Ffilters%3Aformat%2528jpeg%2529%3Aquality%252880%2529&w=16&q=75"
+			"/_next/image?url=https%3A%2F%2Fa.storyblok.com%2Ff%2F292509%2F805x603%2F292d0d5de8%2Fnhs-team.JPG%2Fm%2F760x428%2Fsmart%2Ffilters%3Aformat%2528jpeg%2529%3Aquality%252880%2529&w=1920&q=75"
 		);
+		const imageHeight = screen.getByRole("img").getAttribute("height");
+		const imageWidth = screen.getByRole("img").getAttribute("width");
+		expect(imageHeight).toBe("428");
+		expect(imageWidth).toBe("760");
 	});
 
 	it("should add the className to the image if className passed", () => {
@@ -59,22 +88,6 @@ describe("StoryblokImage Component", () => {
 
 		const imageClass = screen.getByRole("img").getAttribute("class");
 		expect(imageClass).toContain("test-class");
-	});
-
-	it("should add the height and the width to the image if height and width passed", () => {
-		render(
-			<StoryblokImage
-				src={mockImageResponse.src}
-				alt={mockImageResponse.alt}
-				height="100px"
-				width="100px"
-			/>
-		);
-
-		const imageHeight = screen.getByRole("img").getAttribute("height");
-		const imageWidth = screen.getByRole("img").getAttribute("width");
-		expect(imageHeight).toBe("100");
-		expect(imageWidth).toBe("100");
 	});
 
 	it("should add other image attributes to the image if they are passed", () => {
