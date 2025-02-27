@@ -4,7 +4,8 @@ exports[`Callout card component should match snapshot when image prop is passed 
 <div>
   <article
     class="card card--callout"
-    data-component="card"
+    data-component="card--callout"
+    data-tracking="card--callout"
   >
     <div
       class="card__image"
@@ -20,6 +21,7 @@ exports[`Callout card component should match snapshot when image prop is passed 
         />
         <img
           alt="callout card image"
+          class="calloutImageContainer"
           data-nimg="1"
           decoding="async"
           height="600"
@@ -57,7 +59,8 @@ exports[`Callout card component should match snapshot with default values 1`] = 
 <div>
   <article
     class="card card--callout"
-    data-component="card"
+    data-component="card--callout"
+    data-tracking="card--callout"
   >
     <header
       class="card__header"
