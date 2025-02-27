@@ -40,7 +40,7 @@ export const StoryblokCalloutCard: React.FC<StoryblokCalloutCardProps> = ({
 	};
 
 	return (
-		<Card headingText={heading} callout link={cardLink} image={renderImage()}>
+		<Card headingText={heading} callout link={cardLink} image={renderImage()} data-tracking="card--callout" data-component="card--callout">
 			{body}
 		</Card>
 	);
