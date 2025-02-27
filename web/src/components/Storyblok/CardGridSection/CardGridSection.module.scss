@@ -10,6 +10,10 @@
   background-color: colours.$card-section-background;
   padding: $section-medium-spacing 0;
 
+  &__promoboxTestimonials {
+    padding: 0;
+  }
+
   &__container {
     @include layout.fullWidthContainer();
   }

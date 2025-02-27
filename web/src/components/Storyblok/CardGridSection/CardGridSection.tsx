@@ -98,7 +98,12 @@ export const CardGridSection: React.FC<CardGridSectionProps> = ({
 							styles[verticalPaddingClass],
 							styles[themeClass]
 					  )
-					: classnames(styles.cardGridSection, styles[themeClass])
+					: classnames(
+							styles.cardGridSection,
+							styles.cardGridSection__promoboxTestimonials,
+							styles[verticalPaddingClass],
+							styles[themeClass]
+					  )
 			}
 			data-testid="card-grid-section"
 		>
