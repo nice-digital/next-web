@@ -79,14 +79,27 @@ export const CardGridSection: React.FC<CardGridSectionProps> = ({
 				return null;
 		}
 	};
-
+	const promoBoxCardContent = [
+		{
+			gridItems: blok.gridItems,
+			columns: blok.columns,
+			...blok,
+		},
+	];
+	const renderCardContent =
+		blok.gridItems !== undefined ? promoBoxCardContent : rows;
+	const renderStyles = Boolean(rows);
 	return (
 		<section
-			className={classnames(
-				styles.cardGridSection,
-				styles[verticalPaddingClass],
-				styles[themeClass]
-			)}
+			className={
+				renderStyles
+					? classnames(
+							styles.cardGridSection,
+							styles[verticalPaddingClass],
+							styles[themeClass]
+					  )
+					: classnames(styles.cardGridSection, styles[themeClass])
+			}
 			data-testid="card-grid-section"
 		>
 			<div className={styles.cardGridSection__container}>
@@ -105,8 +118,7 @@ export const CardGridSection: React.FC<CardGridSectionProps> = ({
 						)}
 					</div>
 				) : undefined}
-
-				{rows.map((row) => {
+				{renderCardContent.map((row) => {
 					const { component, columns, gridItems, _uid } = row;
 					const cols = (12 / Number(columns || 1)) as Columns;
 					const gridElementType =
@@ -121,19 +133,21 @@ export const CardGridSection: React.FC<CardGridSectionProps> = ({
 							equalHeight
 							key={_uid}
 						>
-							{gridItems.map((gridItem) => {
-								return (
-									<GridItem
-										elementType={gridItemElementType}
-										className={styles.cardGridSection__gridItem}
-										cols={12}
-										md={cols}
-										key={gridItem._uid}
-									>
-										<RenderCardGridComponent gridItem={gridItem} />
-									</GridItem>
-								);
-							})}
+							{gridItems.map(
+								(gridItem: TestimonialGridItemStoryblok | CardStoryblok) => {
+									return (
+										<GridItem
+											elementType={gridItemElementType}
+											className={styles.cardGridSection__gridItem}
+											cols={12}
+											md={cols}
+											key={gridItem._uid}
+										>
+											<RenderCardGridComponent gridItem={gridItem} />
+										</GridItem>
+									);
+								}
+							)}
 						</Grid>
 					);
 				})}
