@@ -10,7 +10,9 @@ import {
 import { resolveStoryblokLink } from "@/utils/storyblok";
 
 import { StoryblokImage } from "../StoryblokImage/StoryblokImage";
+
 import styles from "./StoryblokCalloutCard.module.scss";
+
 export interface StoryblokCalloutCardProps {
 	blok: CalloutCardStoryblok | CalloutCardWithImageStoryblok;
 }
@@ -34,13 +36,20 @@ export const StoryblokCalloutCard: React.FC<StoryblokCalloutCardProps> = ({
 				src={image.filename}
 				alt={image?.alt || "callout card image"}
 				serviceOptions={{ quality: 80 }}
-				className={styles.imageContainer}
+				className={styles.calloutImageContainer}
 			/>
 		) : null;
 	};
 
 	return (
-		<Card headingText={heading} callout link={cardLink} image={renderImage()} data-tracking="card--callout" data-component="card--callout">
+		<Card
+			headingText={heading}
+			callout
+			link={cardLink}
+			image={renderImage()}
+			data-tracking="card--callout"
+			data-component="card--callout"
+		>
 			{body}
 		</Card>
 	);
