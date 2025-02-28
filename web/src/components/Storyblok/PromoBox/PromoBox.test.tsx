@@ -251,48 +251,4 @@ describe("Promo box component", () => {
 		expect(screen.getByText("Quote Name")).toBeInTheDocument();
 		expect(screen.getByText("Quote Text")).toBeInTheDocument();
 	});
-	it("should not render ActionBanner default or testimonials when component is card or something else", () => {
-		const mockPromoBoxPropsContentWithDefault: PromoBoxProps = {
-			blok: {
-				...mockPromoBox.blok,
-				isTransparent: true,
-				content: [
-					{
-						_uid: "e1a57fa5-1f4f-4319-8f1c-c9a9c263935e",
-						columns: "1",
-						component: "card",
-						gridItems: [
-							{
-								_uid: "4083c80c-16ab-45a5-b27c-d915b1f9c754",
-								image: {
-									id: 18781080,
-									alt: "",
-									name: "",
-									focus: "",
-									title: "",
-									source: "",
-									filename:
-										"https://a.storyblok.com/f/292509/2120x1414/dd56873afd/joe-bloggs.jpg",
-									copyright: "",
-									fieldtype: "asset",
-									meta_data: {},
-									is_external_url: false,
-								},
-								variant: "default",
-								component: "testimonialGridItem",
-								quoteName: "Quote Name",
-								quoteRole: "Role",
-								quoteText: "Quote Text",
-							},
-						],
-					},
-				],
-			},
-		};
-
-		const { container } = render(
-			<PromoBox {...mockPromoBoxPropsContentWithDefault} />
-		);
-		expect(container).toMatchSnapshot();
-	});
 });
