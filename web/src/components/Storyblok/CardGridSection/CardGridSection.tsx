@@ -12,6 +12,7 @@ import {
 	CalloutCardWithImageStoryblok,
 	CardStoryblok,
 	CardGridSectionStoryblok,
+	CardGridRowTestimonialsStoryblok,
 } from "@/types/storyblok";
 import { fieldHasValidContent, resolveStoryblokLink } from "@/utils/storyblok";
 
@@ -20,7 +21,7 @@ import { StoryblokCalloutCard } from "../StoryblokCalloutCard/StoryblokCalloutCa
 import styles from "./CardGridSection.module.scss";
 
 export interface CardGridSectionProps {
-	blok: CardGridSectionStoryblok;
+	blok: CardGridSectionStoryblok | CardGridRowTestimonialsStoryblok;
 }
 
 export const CardGridSection: React.FC<CardGridSectionProps> = ({
@@ -80,16 +81,12 @@ export const CardGridSection: React.FC<CardGridSectionProps> = ({
 		}
 	};
 	const promoBoxCardContent = [
-		{
-			gridItems: blok.gridItems,
-			columns: blok.columns,
-			...blok,
-		},
+		{ ...blok, gridItems: blok.gridItems, columns: blok.columns },
 	];
 	const renderCardContent =
 		blok.gridItems !== undefined ? promoBoxCardContent : rows;
 	const renderStyles = !!rows;
-	
+
 	return (
 		<section
 			className={
@@ -124,39 +121,48 @@ export const CardGridSection: React.FC<CardGridSectionProps> = ({
 						)}
 					</div>
 				) : undefined}
-				{renderCardContent.map((row) => {
-					const { component, columns, gridItems, _uid } = row;
-					const cols = (12 / Number(columns || 1)) as Columns;
-					const gridElementType =
-						component !== "cardGridRowTestimonials" ? "ul" : "div";
-					const gridItemElementType = gridElementType === "ul" ? "li" : "div";
+				{renderCardContent.map(
+					(
+						row:
+							| CardGridRowTestimonialsStoryblok
+							| TestimonialGridItemStoryblok
+							| CalloutCardStoryblok
+							| CalloutCardWithImageStoryblok
+							| CardStoryblok
+					) => {
+						const { component, columns, gridItems, _uid } = row;
+						const cols = (12 / Number(columns || 1)) as Columns;
+						const gridElementType =
+							component !== "cardGridRowTestimonials" ? "ul" : "div";
+						const gridItemElementType = gridElementType === "ul" ? "li" : "div";
 
-					return (
-						<Grid
-							elementType={gridElementType}
-							className={styles.cardGridSection__gridRow}
-							gutter="loose"
-							equalHeight
-							key={_uid}
-						>
-							{gridItems.map(
-								(gridItem: TestimonialGridItemStoryblok | CardStoryblok) => {
-									return (
-										<GridItem
-											elementType={gridItemElementType}
-											className={styles.cardGridSection__gridItem}
-											cols={12}
-											md={cols}
-											key={gridItem._uid}
-										>
-											<RenderCardGridComponent gridItem={gridItem} />
-										</GridItem>
-									);
-								}
-							)}
-						</Grid>
-					);
-				})}
+						return (
+							<Grid
+								elementType={gridElementType}
+								className={styles.cardGridSection__gridRow}
+								gutter="loose"
+								equalHeight
+								key={_uid}
+							>
+								{gridItems.map(
+									(gridItem: TestimonialGridItemStoryblok | CardStoryblok) => {
+										return (
+											<GridItem
+												elementType={gridItemElementType}
+												className={styles.cardGridSection__gridItem}
+												cols={12}
+												md={cols}
+												key={gridItem._uid}
+											>
+												<RenderCardGridComponent gridItem={gridItem} />
+											</GridItem>
+										);
+									}
+								)}
+							</Grid>
+						);
+					}
+				)}
 			</div>
 		</section>
 	);

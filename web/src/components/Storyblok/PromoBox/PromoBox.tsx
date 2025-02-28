@@ -11,16 +11,18 @@ import { StoryblokButtonLink } from "@/components/Storyblok/StoryblokButtonLink/
 import { StoryblokRichText } from "@/components/Storyblok/StoryblokRichText/StoryblokRichText";
 import { StoryblokYoutubeEmbed } from "@/components/Storyblok/StoryblokYoutubeEmbed/StoryblokYoutubeEmbed";
 import {
+	ActionBannerDefaultStoryblok,
+	CardGridRowTestimonialsStoryblok,
 	YoutubeEmbedStoryblok,
 	type PromoBoxStoryblok,
 } from "@/types/storyblok";
 import { constructStoryblokImageSrc } from "@/utils/storyblok";
 import { toTitleCase } from "@/utils/string";
 
+import { CardGridSection } from "../CardGridSection/CardGridSection";
 import { StoryblokActionBannerDefault } from "../StoryblokActionBanner/StoryblokActionBannerDefault";
 
 import styles from "./PromoBox.module.scss";
-import { CardGridSection } from "../CardGridSection/CardGridSection";
 
 export interface PromoBoxProps {
 	blok: PromoBoxStoryblok;
@@ -69,26 +71,23 @@ export const PromoBox: React.FC<PromoBoxProps> = ({
 	const imageAspectRatioClass = `imageContainer${toTitleCase(
 		imageAspectRatio
 	)}`;
-	console.log("content", blok);
-	const RenderTestimonialOrActionBanner: React.FC<any> = ({
-		promoboxContent,
-	}) => {
-		const { component } = promoboxContent;
-		console.log("promoboxContent", promoboxContent);
+	const RenderTestimonialOrActionBanner: React.FC<{
+		blok: CardGridRowTestimonialsStoryblok | ActionBannerDefaultStoryblok;
+	}> = ({ blok }) => {
+		const { component } = blok;
+		console.log("component", component);
+		console.log("blok", blok);
 		switch (component) {
 			case "cardGridRowTestimonials":
-				// return null;
 				return (
-					<GridItem cols={12} className={styles.testimonialContainer}>
-						<CardGridSection blok={promoboxContent} />
-					</GridItem>
+					<CardGridSection blok={blok as CardGridRowTestimonialsStoryblok} />
 				);
 
 			case "actionBannerDefault":
 				return (
-					<GridItem cols={12} className={styles.actionBannerContainer}>
-						<StoryblokActionBannerDefault blok={promoboxContent} />
-					</GridItem>
+					<StoryblokActionBannerDefault
+						blok={blok as ActionBannerDefaultStoryblok}
+					/>
 				);
 			default:
 				return null;
@@ -140,13 +139,20 @@ export const PromoBox: React.FC<PromoBoxProps> = ({
 							></div>
 						) : null}
 					</GridItem>
-
-					{blok.content?.map((item: any) => (
-						<RenderTestimonialOrActionBanner
-							promoboxContent={item}
-							key={_uid}
-						/>
-					))}
+					<GridItem
+						cols={12}
+						className={styles.actionBannerOrTestimonialContainer}
+					>
+						{blok.content?.map(
+							(
+								item:
+									| CardGridRowTestimonialsStoryblok
+									| ActionBannerDefaultStoryblok
+							) => (
+								<RenderTestimonialOrActionBanner blok={item} key={_uid} />
+							)
+						)}
+					</GridItem>
 				</Grid>
 			</div>
 		</article>
