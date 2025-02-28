@@ -75,8 +75,6 @@ export const PromoBox: React.FC<PromoBoxProps> = ({
 		blok: CardGridRowTestimonialsStoryblok | ActionBannerDefaultStoryblok;
 	}> = ({ blok }) => {
 		const { component } = blok;
-		console.log("component", component);
-		console.log("blok", blok);
 		switch (component) {
 			case "cardGridRowTestimonials":
 				return (
