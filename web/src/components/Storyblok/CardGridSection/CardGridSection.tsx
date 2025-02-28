@@ -88,7 +88,8 @@ export const CardGridSection: React.FC<CardGridSectionProps> = ({
 	];
 	const renderCardContent =
 		blok.gridItems !== undefined ? promoBoxCardContent : rows;
-	const renderStyles = Boolean(rows);
+	const renderStyles = !!rows;
+	
 	return (
 		<section
 			className={
