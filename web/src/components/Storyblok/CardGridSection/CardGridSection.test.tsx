@@ -21,6 +21,7 @@ jest.mock("@/utils/storyblok", () => ({
 }));
 
 const leadTextContent = "This is lead text.";
+const additionalLeadTextContent = "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut felis leo, fermentum quis posuere non, viverra at nulla. Fusce urna augue, suscipit a pellentesque at, volutpat in mi. Ut vel ante dignissim, semper lectus at, scelerisque lacus.";
 const cardLinkUrl = "https://nice.org.uk/guidance/ta10";
 
 const mockLeadText: RichtextStoryblok = {
@@ -32,6 +33,21 @@ const mockLeadText: RichtextStoryblok = {
 				{
 					type: "text",
 					text: leadTextContent,
+				},
+			],
+		},
+	],
+};
+
+const mockAdditionalLeadText: RichtextStoryblok = {
+	type: "doc",
+	content: [
+		{
+			type: "paragraph",
+			content: [
+				{
+					type: "text",
+					text: additionalLeadTextContent,
 				},
 			],
 		},
@@ -102,6 +118,7 @@ describe("CardGridSection", () => {
 			heading: "Card Grid Section Heading",
 			headingLevel: "2",
 			leadText: mockLeadText,
+			additionalLeadText: mockAdditionalLeadText,
 			theme: "subtle",
 			verticalPadding: "medium",
 			cards: [
