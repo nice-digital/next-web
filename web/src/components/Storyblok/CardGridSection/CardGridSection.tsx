@@ -103,6 +103,12 @@ export const CardGridSection: React.FC<CardGridSectionProps> = ({
 								className={styles.cardGridSection__leadText}
 							/>
 						)}
+						{leadTextProcessed && additionalLeadTextProcessed && (
+							<StoryblokRichText
+								content={additionalLeadTextProcessed}
+								className={styles.cardGridSection__leadTextAdditional}
+							/>
+						)}
 					</div>
 				) : undefined}
 
