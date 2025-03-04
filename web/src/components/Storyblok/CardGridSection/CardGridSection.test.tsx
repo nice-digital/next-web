@@ -390,12 +390,9 @@ describe("CardGridSection", () => {
 						quoteName: "Quote Name",
 						quoteRole: "Quote Role",
 						quoteText: "Quote Text",
-						_editable:
-							'<!--#storyblok#{"name": "testimonialGridItem", "space": "292509", "uid": "22efcc3f-27a1-49d3-bc70-06b75e6699c8", "id": "628392114"}-->',
 					},
 				],
-				_editable:
-					'<!--#storyblok#{"name": "cardGridRowTestimonials", "space": "292509", "uid": "5b2cf64a-dde9-4bd1-9abd-90ff4164d932", "id": "628392114"}-->',
+
 				headingLevel: "",
 				component: "cardGridSection",
 			},
