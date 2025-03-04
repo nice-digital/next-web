@@ -24,11 +24,11 @@ exports[`Storyblok testimonial full width component should match snapshot for fu
         >
           <picture>
             <source
-              srcset="https://placekitten.com/408/287/m/708x0/filters:format%28avif%29:quality%2880%29"
+              srcset="https://placekitten.com/408/287/m/440x440/filters:format%28avif%29:quality%2880%29"
               type="image/avif"
             />
             <source
-              srcset="https://placekitten.com/408/287/m/708x0/filters:format%28webp%29:quality%2880%29"
+              srcset="https://placekitten.com/408/287/m/440x440/filters:format%28webp%29:quality%2880%29"
               type="image/webp"
             />
             <img
@@ -36,12 +36,12 @@ exports[`Storyblok testimonial full width component should match snapshot for fu
               class="testimonial__image testimonial__imageMobile"
               data-nimg="1"
               decoding="async"
-              height="0"
+              height="440"
               loading="lazy"
-              src="/_next/image?url=https%3A%2F%2Fplacekitten.com%2F408%2F287%2Fm%2F708x0%2Ffilters%3Aformat%2528jpeg%2529%3Aquality%252880%2529&w=16&q=75"
-              srcset="/_next/image?url=https%3A%2F%2Fplacekitten.com%2F408%2F287%2Fm%2F708x0%2Ffilters%3Aformat%2528jpeg%2529%3Aquality%252880%2529&w=16&q=75 1x"
+              src="/_next/image?url=https%3A%2F%2Fplacekitten.com%2F408%2F287%2Fm%2F440x440%2Ffilters%3Aformat%2528jpeg%2529%3Aquality%252880%2529&w=1080&q=75"
+              srcset="/_next/image?url=https%3A%2F%2Fplacekitten.com%2F408%2F287%2Fm%2F440x440%2Ffilters%3Aformat%2528jpeg%2529%3Aquality%252880%2529&w=640&q=75 1x, /_next/image?url=https%3A%2F%2Fplacekitten.com%2F408%2F287%2Fm%2F440x440%2Ffilters%3Aformat%2528jpeg%2529%3Aquality%252880%2529&w=1080&q=75 2x"
               style="color: transparent; max-width: 100%; height: auto;"
-              width="0"
+              width="440"
             />
           </picture>
           <p
@@ -65,11 +65,11 @@ exports[`Storyblok testimonial full width component should match snapshot for fu
       >
         <picture>
           <source
-            srcset="https://placekitten.com/408/287/m/708x0/filters:format%28avif%29:quality%2880%29"
+            srcset="https://placekitten.com/408/287/m/440x440/filters:format%28avif%29:quality%2880%29"
             type="image/avif"
           />
           <source
-            srcset="https://placekitten.com/408/287/m/708x0/filters:format%28webp%29:quality%2880%29"
+            srcset="https://placekitten.com/408/287/m/440x440/filters:format%28webp%29:quality%2880%29"
             type="image/webp"
           />
           <img
@@ -77,12 +77,12 @@ exports[`Storyblok testimonial full width component should match snapshot for fu
             class="testimonial__image"
             data-nimg="1"
             decoding="async"
-            height="0"
+            height="440"
             loading="lazy"
-            src="/_next/image?url=https%3A%2F%2Fplacekitten.com%2F408%2F287%2Fm%2F708x0%2Ffilters%3Aformat%2528jpeg%2529%3Aquality%252880%2529&w=16&q=75"
-            srcset="/_next/image?url=https%3A%2F%2Fplacekitten.com%2F408%2F287%2Fm%2F708x0%2Ffilters%3Aformat%2528jpeg%2529%3Aquality%252880%2529&w=16&q=75 1x"
+            src="/_next/image?url=https%3A%2F%2Fplacekitten.com%2F408%2F287%2Fm%2F440x440%2Ffilters%3Aformat%2528jpeg%2529%3Aquality%252880%2529&w=1080&q=75"
+            srcset="/_next/image?url=https%3A%2F%2Fplacekitten.com%2F408%2F287%2Fm%2F440x440%2Ffilters%3Aformat%2528jpeg%2529%3Aquality%252880%2529&w=640&q=75 1x, /_next/image?url=https%3A%2F%2Fplacekitten.com%2F408%2F287%2Fm%2F440x440%2Ffilters%3Aformat%2528jpeg%2529%3Aquality%252880%2529&w=1080&q=75 2x"
             style="color: transparent; max-width: 100%; height: auto;"
-            width="0"
+            width="440"
           />
         </picture>
       </div>
@@ -115,11 +115,11 @@ exports[`Storyblok testimonial full width component should match snapshot for fu
         >
           <picture>
             <source
-              srcset="https://placekitten.com/408/287/m/708x0/filters:format%28avif%29:quality%2880%29"
+              srcset="https://placekitten.com/408/287/m/440x440/filters:format%28avif%29:quality%2880%29"
               type="image/avif"
             />
             <source
-              srcset="https://placekitten.com/408/287/m/708x0/filters:format%28webp%29:quality%2880%29"
+              srcset="https://placekitten.com/408/287/m/440x440/filters:format%28webp%29:quality%2880%29"
               type="image/webp"
             />
             <img
@@ -127,12 +127,12 @@ exports[`Storyblok testimonial full width component should match snapshot for fu
               class="testimonial__image testimonial__imageMobile"
               data-nimg="1"
               decoding="async"
-              height="0"
+              height="440"
               loading="lazy"
-              src="/_next/image?url=https%3A%2F%2Fplacekitten.com%2F408%2F287%2Fm%2F708x0%2Ffilters%3Aformat%2528jpeg%2529%3Aquality%252880%2529&w=16&q=75"
-              srcset="/_next/image?url=https%3A%2F%2Fplacekitten.com%2F408%2F287%2Fm%2F708x0%2Ffilters%3Aformat%2528jpeg%2529%3Aquality%252880%2529&w=16&q=75 1x"
+              src="/_next/image?url=https%3A%2F%2Fplacekitten.com%2F408%2F287%2Fm%2F440x440%2Ffilters%3Aformat%2528jpeg%2529%3Aquality%252880%2529&w=1080&q=75"
+              srcset="/_next/image?url=https%3A%2F%2Fplacekitten.com%2F408%2F287%2Fm%2F440x440%2Ffilters%3Aformat%2528jpeg%2529%3Aquality%252880%2529&w=640&q=75 1x, /_next/image?url=https%3A%2F%2Fplacekitten.com%2F408%2F287%2Fm%2F440x440%2Ffilters%3Aformat%2528jpeg%2529%3Aquality%252880%2529&w=1080&q=75 2x"
               style="color: transparent; max-width: 100%; height: auto;"
-              width="0"
+              width="440"
             />
           </picture>
           <p
@@ -162,11 +162,11 @@ exports[`Storyblok testimonial full width component should match snapshot for fu
       >
         <picture>
           <source
-            srcset="https://placekitten.com/408/287/m/708x0/filters:format%28avif%29:quality%2880%29"
+            srcset="https://placekitten.com/408/287/m/440x440/filters:format%28avif%29:quality%2880%29"
             type="image/avif"
           />
           <source
-            srcset="https://placekitten.com/408/287/m/708x0/filters:format%28webp%29:quality%2880%29"
+            srcset="https://placekitten.com/408/287/m/440x440/filters:format%28webp%29:quality%2880%29"
             type="image/webp"
           />
           <img
@@ -174,12 +174,12 @@ exports[`Storyblok testimonial full width component should match snapshot for fu
             class="testimonial__image"
             data-nimg="1"
             decoding="async"
-            height="0"
+            height="440"
             loading="lazy"
-            src="/_next/image?url=https%3A%2F%2Fplacekitten.com%2F408%2F287%2Fm%2F708x0%2Ffilters%3Aformat%2528jpeg%2529%3Aquality%252880%2529&w=16&q=75"
-            srcset="/_next/image?url=https%3A%2F%2Fplacekitten.com%2F408%2F287%2Fm%2F708x0%2Ffilters%3Aformat%2528jpeg%2529%3Aquality%252880%2529&w=16&q=75 1x"
+            src="/_next/image?url=https%3A%2F%2Fplacekitten.com%2F408%2F287%2Fm%2F440x440%2Ffilters%3Aformat%2528jpeg%2529%3Aquality%252880%2529&w=1080&q=75"
+            srcset="/_next/image?url=https%3A%2F%2Fplacekitten.com%2F408%2F287%2Fm%2F440x440%2Ffilters%3Aformat%2528jpeg%2529%3Aquality%252880%2529&w=640&q=75 1x, /_next/image?url=https%3A%2F%2Fplacekitten.com%2F408%2F287%2Fm%2F440x440%2Ffilters%3Aformat%2528jpeg%2529%3Aquality%252880%2529&w=1080&q=75 2x"
             style="color: transparent; max-width: 100%; height: auto;"
-            width="0"
+            width="440"
           />
         </picture>
       </div>
@@ -212,11 +212,11 @@ exports[`Storyblok testimonial full width component should match snapshot for th
         >
           <picture>
             <source
-              srcset="https://placekitten.com/408/287/m/708x0/filters:format%28avif%29:quality%2880%29"
+              srcset="https://placekitten.com/408/287/m/440x440/filters:format%28avif%29:quality%2880%29"
               type="image/avif"
             />
             <source
-              srcset="https://placekitten.com/408/287/m/708x0/filters:format%28webp%29:quality%2880%29"
+              srcset="https://placekitten.com/408/287/m/440x440/filters:format%28webp%29:quality%2880%29"
               type="image/webp"
             />
             <img
@@ -224,12 +224,12 @@ exports[`Storyblok testimonial full width component should match snapshot for th
               class="testimonial__image testimonial__imageMobile"
               data-nimg="1"
               decoding="async"
-              height="0"
+              height="440"
               loading="lazy"
-              src="/_next/image?url=https%3A%2F%2Fplacekitten.com%2F408%2F287%2Fm%2F708x0%2Ffilters%3Aformat%2528jpeg%2529%3Aquality%252880%2529&w=16&q=75"
-              srcset="/_next/image?url=https%3A%2F%2Fplacekitten.com%2F408%2F287%2Fm%2F708x0%2Ffilters%3Aformat%2528jpeg%2529%3Aquality%252880%2529&w=16&q=75 1x"
+              src="/_next/image?url=https%3A%2F%2Fplacekitten.com%2F408%2F287%2Fm%2F440x440%2Ffilters%3Aformat%2528jpeg%2529%3Aquality%252880%2529&w=1080&q=75"
+              srcset="/_next/image?url=https%3A%2F%2Fplacekitten.com%2F408%2F287%2Fm%2F440x440%2Ffilters%3Aformat%2528jpeg%2529%3Aquality%252880%2529&w=640&q=75 1x, /_next/image?url=https%3A%2F%2Fplacekitten.com%2F408%2F287%2Fm%2F440x440%2Ffilters%3Aformat%2528jpeg%2529%3Aquality%252880%2529&w=1080&q=75 2x"
               style="color: transparent; max-width: 100%; height: auto;"
-              width="0"
+              width="440"
             />
           </picture>
           <p
@@ -253,11 +253,11 @@ exports[`Storyblok testimonial full width component should match snapshot for th
       >
         <picture>
           <source
-            srcset="https://placekitten.com/408/287/m/708x0/filters:format%28avif%29:quality%2880%29"
+            srcset="https://placekitten.com/408/287/m/440x440/filters:format%28avif%29:quality%2880%29"
             type="image/avif"
           />
           <source
-            srcset="https://placekitten.com/408/287/m/708x0/filters:format%28webp%29:quality%2880%29"
+            srcset="https://placekitten.com/408/287/m/440x440/filters:format%28webp%29:quality%2880%29"
             type="image/webp"
           />
           <img
@@ -265,12 +265,12 @@ exports[`Storyblok testimonial full width component should match snapshot for th
             class="testimonial__image"
             data-nimg="1"
             decoding="async"
-            height="0"
+            height="440"
             loading="lazy"
-            src="/_next/image?url=https%3A%2F%2Fplacekitten.com%2F408%2F287%2Fm%2F708x0%2Ffilters%3Aformat%2528jpeg%2529%3Aquality%252880%2529&w=16&q=75"
-            srcset="/_next/image?url=https%3A%2F%2Fplacekitten.com%2F408%2F287%2Fm%2F708x0%2Ffilters%3Aformat%2528jpeg%2529%3Aquality%252880%2529&w=16&q=75 1x"
+            src="/_next/image?url=https%3A%2F%2Fplacekitten.com%2F408%2F287%2Fm%2F440x440%2Ffilters%3Aformat%2528jpeg%2529%3Aquality%252880%2529&w=1080&q=75"
+            srcset="/_next/image?url=https%3A%2F%2Fplacekitten.com%2F408%2F287%2Fm%2F440x440%2Ffilters%3Aformat%2528jpeg%2529%3Aquality%252880%2529&w=640&q=75 1x, /_next/image?url=https%3A%2F%2Fplacekitten.com%2F408%2F287%2Fm%2F440x440%2Ffilters%3Aformat%2528jpeg%2529%3Aquality%252880%2529&w=1080&q=75 2x"
             style="color: transparent; max-width: 100%; height: auto;"
-            width="0"
+            width="440"
           />
         </picture>
       </div>
