@@ -42,7 +42,9 @@ export const CardGridSection: React.FC<CardGridSectionProps> = ({
 	const leadTextProcessed =
 		leadText && fieldHasValidContent(leadText) ? leadText : null;
 	const secondaryLeadTextProcessed =
-	secondaryLeadText && fieldHasValidContent(secondaryLeadText) ? secondaryLeadText : null;
+		secondaryLeadText && fieldHasValidContent(secondaryLeadText)
+			? secondaryLeadText
+			: null;
 
 	const RenderCardGridComponent: React.FC<{
 		gridItem:

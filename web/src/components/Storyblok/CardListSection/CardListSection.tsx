@@ -35,7 +35,9 @@ export const CardListSection: React.FC<CardListSectionProps> = ({
 	const leadTextProcessed =
 		leadText && fieldHasValidContent(leadText) ? leadText : null;
 	const secondaryLeadTextProcessed =
-	secondaryLeadText && fieldHasValidContent(secondaryLeadText) ? secondaryLeadText : null;
+		secondaryLeadText && fieldHasValidContent(secondaryLeadText)
+			? secondaryLeadText
+			: null;
 
 	return (
 		<section
