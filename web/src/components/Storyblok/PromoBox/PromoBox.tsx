@@ -11,11 +11,16 @@ import { StoryblokButtonLink } from "@/components/Storyblok/StoryblokButtonLink/
 import { StoryblokRichText } from "@/components/Storyblok/StoryblokRichText/StoryblokRichText";
 import { StoryblokYoutubeEmbed } from "@/components/Storyblok/StoryblokYoutubeEmbed/StoryblokYoutubeEmbed";
 import {
+	ActionBannerDefaultStoryblok,
+	CardGridRowTestimonialsStoryblok,
 	YoutubeEmbedStoryblok,
 	type PromoBoxStoryblok,
 } from "@/types/storyblok";
 import { constructStoryblokImageSrc } from "@/utils/storyblok";
 import { toTitleCase } from "@/utils/string";
+
+import { GridSection } from "../GridSection/GridSection";
+import { StoryblokActionBannerDefault } from "../StoryblokActionBanner/StoryblokActionBannerDefault";
 
 import styles from "./PromoBox.module.scss";
 
@@ -38,6 +43,7 @@ export const PromoBox: React.FC<PromoBoxProps> = ({
 		headingLevel = "2",
 		verticalPadding = "medium",
 		imageAspectRatio = "landscape",
+		_uid,
 	} = blok;
 
 	const HeadingElement = `h${headingLevel}` as keyof JSX.IntrinsicElements;
@@ -65,6 +71,24 @@ export const PromoBox: React.FC<PromoBoxProps> = ({
 	const imageAspectRatioClass = `imageContainer${toTitleCase(
 		imageAspectRatio
 	)}`;
+	const RenderTestimonialOrActionBanner: React.FC<{
+		blok: CardGridRowTestimonialsStoryblok | ActionBannerDefaultStoryblok;
+	}> = ({ blok }) => {
+		const { component } = blok;
+		switch (component) {
+			case "cardGridRowTestimonials":
+				return <GridSection row={blok as CardGridRowTestimonialsStoryblok} />;
+
+			case "actionBannerDefault":
+				return (
+					<StoryblokActionBannerDefault
+						blok={blok as ActionBannerDefaultStoryblok}
+					/>
+				);
+			default:
+				return null;
+		}
+	};
 
 	return (
 		<article
@@ -110,6 +134,20 @@ export const PromoBox: React.FC<PromoBoxProps> = ({
 								style={{ backgroundImage: `url(${optimisedImage})` }}
 							></div>
 						) : null}
+					</GridItem>
+					<GridItem
+						cols={12}
+						className={styles.actionBannerOrTestimonialContainer}
+					>
+						{blok.content?.map(
+							(
+								item:
+									| CardGridRowTestimonialsStoryblok
+									| ActionBannerDefaultStoryblok
+							) => (
+								<RenderTestimonialOrActionBanner blok={item} key={_uid} />
+							)
+						)}
 					</GridItem>
 				</Grid>
 			</div>

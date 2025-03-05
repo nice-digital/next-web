@@ -50,6 +50,10 @@
   }
 }
 
+.actionBannerOrTestimonialContainer {
+  margin-top: utils.rem(spacing.$x-large);
+}
+
 .imageContainer {
   background-position: center;
   background-size: cover;

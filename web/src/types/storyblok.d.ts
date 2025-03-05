@@ -278,6 +278,7 @@ export interface CardListSectionStoryblok {
   heading?: string;
   headingLevel: string;
   leadText?: RichtextStoryblok;
+  secondaryLeadText?: RichtextStoryblok;
   cards: CardListSectionItemStoryblok[];
   theme?: "" | "subtle" | "transparent";
   verticalPadding?: "" | "small" | "medium" | "large";
@@ -308,7 +309,7 @@ export interface CategoryLandingPageStoryblok {
     | CalloutCardStoryblok
     | CardGridSectionStoryblok
     | CalloutCardWithImageStoryblok
-    | TestimonialGridItemStoryblok
+    | PromoPanelStoryblok
   )[];
   component: "categoryLandingPage";
   _uid: string;
@@ -603,62 +604,9 @@ export interface OrderedListStoryblok {
 }
 
 export interface PageStoryblok {
-  body?: (
-    | AccordionStoryblok
-    | AccordionGroupStoryblok
-    | ActionBannerStoryblok
-    | ActionBannerDefaultStoryblok
-    | AuthorStoryblok
-    | BlogPostStoryblok
-    | ButtonLinkStoryblok
-    | CalloutCardStoryblok
-    | CalloutCardWithImageStoryblok
-    | CardStoryblok
-    | CardContentStoryblok
-    | CardGridStoryblok
-    | CardGridRowBasicStoryblok
-    | CardGridRowCalloutStoryblok
-    | CardGridRowCalloutWithImageStoryblok
-    | CardGridRowTestimonialsStoryblok
-    | CardGridSectionStoryblok
-    | CardListSectionStoryblok
-    | CardListSectionItemStoryblok
-    | CategoryLandingPageStoryblok
-    | CategoryNavigationStoryblok
-    | GridStoryblok
-    | GridItemStoryblok
-    | GridSectionStoryblok
-    | GridSectionItemStoryblok
-    | HeroStoryblok
-    | HomepageStoryblok
-    | HomepageHeroStoryblok
-    | IframeStoryblok
-    | ImageEmbedStoryblok
-    | ImageOrVideoStoryblok
-    | InDepthArticleStoryblok
-    | InfoPageStoryblok
-    | ListItemStoryblok
-    | MarkdownStoryblok
-    | MetadataStoryblok
-    | NestedRichTextStoryblok
-    | NestedTableStoryblok
-    | NewsArticleStoryblok
-    | OrderedListStoryblok
-    | PageStoryblok
-    | PageHeaderStoryblok
-    | PodcastStoryblok
-    | PromoBoxStoryblok
-    | QuoteStoryblok
-    | RelatedLinkStoryblok
-    | RelatedNewsLinkStoryblok
-    | SpotlightStoryblok
-    | SpotlightCopyStoryblok
-    | TestimonialFullWidthStoryblok
-    | TestimonialGridItemStoryblok
-    | YoutubeEmbedStoryblok
-  )[];
+  header?: (PageHeaderStoryblok | HeroStoryblok)[];
+  content?: PromoBoxStoryblok[];
   metadata?: MetadataStoryblok[];
-  wysiwyg?: RichtextStoryblok;
   component: "page";
   _uid: string;
   [k: string]: any;
@@ -697,6 +645,7 @@ export interface PromoBoxStoryblok {
   imageAspectRatio?: "landscape" | "portrait";
   isTransparent?: boolean;
   verticalPadding?: "" | "small" | "medium" | "large";
+  content?: (ActionBannerDefaultStoryblok | CardGridRowTestimonialsStoryblok)[];
   component: "promoBox";
   _uid: string;
   [k: string]: any;

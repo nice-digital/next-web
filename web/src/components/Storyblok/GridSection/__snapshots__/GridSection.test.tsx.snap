@@ -1,0 +1,36 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`GridSection matches snapshot 1`] = `
+<div>
+  <ul
+    class="grid grid--equal-height grid--loose gridSection__gridRow"
+    data-testid="grid-section"
+  >
+    <li
+      class="gridSection__gridItem"
+      data-component="grid-item"
+      data-g="12 md:6"
+    >
+      <article
+        class="card"
+        data-component="card"
+      >
+        <header
+          class="card__header"
+        >
+          <p
+            class="card__heading"
+          >
+            <a
+              href="https://nice.org.uk/guidance/ta10"
+            >
+              Basic Card
+            </a>
+          </p>
+        </header>
+        Basic card body
+      </article>
+    </li>
+  </ul>
+</div>
+`;
