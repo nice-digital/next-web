@@ -278,6 +278,7 @@ export interface CardListSectionStoryblok {
   heading?: string;
   headingLevel: string;
   leadText?: RichtextStoryblok;
+  secondaryLeadText?: RichtextStoryblok;
   cards: CardListSectionItemStoryblok[];
   theme?: "" | "subtle" | "transparent";
   verticalPadding?: "" | "small" | "medium" | "large";
@@ -308,7 +309,7 @@ export interface CategoryLandingPageStoryblok {
     | CalloutCardStoryblok
     | CardGridSectionStoryblok
     | CalloutCardWithImageStoryblok
-    | TestimonialGridItemStoryblok
+    | PromoPanelStoryblok
   )[];
   component: "categoryLandingPage";
   _uid: string;
@@ -697,6 +698,7 @@ export interface PromoBoxStoryblok {
   imageAspectRatio?: "landscape" | "portrait";
   isTransparent?: boolean;
   verticalPadding?: "" | "small" | "medium" | "large";
+  content?: (ActionBannerDefaultStoryblok | CardGridRowTestimonialsStoryblok)[];
   component: "promoBox";
   _uid: string;
   [k: string]: any;

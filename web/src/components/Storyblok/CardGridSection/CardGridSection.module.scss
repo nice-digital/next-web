@@ -28,6 +28,12 @@
     }
   }
 
+  &__leadTextSecondary {
+    p {
+      @include typography.font-size(p);
+    }
+  }
+
   &__gridRow {
     row-gap: utils.rem(spacing.$large);
 

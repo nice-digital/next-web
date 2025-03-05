@@ -5,6 +5,8 @@ import { CardListSectionItemStoryblok } from "@/types/storyblok";
 import { CardListSection, type CardListSectionProps } from "./CardListSection";
 
 const leadTextContent = "Mock cardListSection lead text";
+const secondaryLeadTextContent =
+	"Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut felis leo, fermentum quis posuere non, viverra at nulla.";
 const cardLinkUrl = "https://nice.org.uk/guidance/ta10";
 
 const mockCardListSectionProps: CardListSectionProps = {
@@ -20,6 +22,20 @@ const mockCardListSectionProps: CardListSectionProps = {
 						{
 							type: "text",
 							text: leadTextContent,
+						},
+					],
+				},
+			],
+		},
+		secondaryLeadText: {
+			type: "doc",
+			content: [
+				{
+					type: "paragraph",
+					content: [
+						{
+							type: "text",
+							text: secondaryLeadTextContent,
 						},
 					],
 				},
@@ -88,6 +104,24 @@ describe("cardListSection component", () => {
 			<CardListSection {...mockCardListSectionPropsNoIntro} />
 		);
 		expect(container).toMatchSnapshot();
+	});
+
+	it("renders lead text correctly", () => {
+		render(<CardListSection {...mockCardListSectionProps} />);
+		const leadTextElements = screen.getAllByTestId("storyblok-rich-text");
+		const leadTextElement = leadTextElements[0];
+		expect(leadTextElement).toBeVisible();
+		expect(leadTextElement).toHaveTextContent(leadTextContent);
+	});
+
+	it("renders secondary lead text correctly", () => {
+		render(<CardListSection {...mockCardListSectionProps} />);
+		const leadTextElements = screen.getAllByTestId("storyblok-rich-text");
+		const secondaryLeadTextElement = leadTextElements[1];
+		expect(secondaryLeadTextElement).toBeVisible();
+		expect(secondaryLeadTextElement).toHaveTextContent(
+			secondaryLeadTextContent
+		);
 	});
 
 	it("should hide heading/title section when not provided", () => {

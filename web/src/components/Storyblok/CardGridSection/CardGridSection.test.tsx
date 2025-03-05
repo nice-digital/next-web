@@ -21,6 +21,8 @@ jest.mock("@/utils/storyblok", () => ({
 }));
 
 const leadTextContent = "This is lead text.";
+const secondaryLeadTextContent =
+	"Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut felis leo, fermentum quis posuere non, viverra at nulla.";
 const cardLinkUrl = "https://nice.org.uk/guidance/ta10";
 
 const mockLeadText: RichtextStoryblok = {
@@ -32,6 +34,21 @@ const mockLeadText: RichtextStoryblok = {
 				{
 					type: "text",
 					text: leadTextContent,
+				},
+			],
+		},
+	],
+};
+
+const mockSecondaryLeadText: RichtextStoryblok = {
+	type: "doc",
+	content: [
+		{
+			type: "paragraph",
+			content: [
+				{
+					type: "text",
+					text: secondaryLeadTextContent,
 				},
 			],
 		},
@@ -102,6 +119,7 @@ describe("CardGridSection", () => {
 			heading: "Card Grid Section Heading",
 			headingLevel: "2",
 			leadText: mockLeadText,
+			secondaryLeadText: mockSecondaryLeadText,
 			theme: "subtle",
 			verticalPadding: "medium",
 			cards: [
@@ -153,9 +171,20 @@ describe("CardGridSection", () => {
 
 	it("renders lead text correctly", () => {
 		render(<CardGridSection {...mockProps} />);
-		const leadTextElement = screen.getByTestId("storyblok-rich-text");
-		expect(leadTextElement).toBeInTheDocument();
-		expect(leadTextElement).toHaveTextContent("This is lead text.");
+		const leadTextElements = screen.getAllByTestId("storyblok-rich-text");
+		const leadTextElement = leadTextElements[0];
+		expect(leadTextElement).toBeVisible();
+		expect(leadTextElement).toHaveTextContent(leadTextContent);
+	});
+
+	it("renders additional lead text correctly", () => {
+		render(<CardGridSection {...mockProps} />);
+		const leadTextElements = screen.getAllByTestId("storyblok-rich-text");
+		const secondaryLeadTextElement = leadTextElements[1];
+		expect(secondaryLeadTextElement).toBeVisible();
+		expect(secondaryLeadTextElement).toHaveTextContent(
+			secondaryLeadTextContent
+		);
 	});
 
 	it("should hide lead text section when not provided", () => {
