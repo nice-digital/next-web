@@ -32,7 +32,8 @@ export const CardListSection: React.FC<CardListSectionProps> = ({
 	const verticalPaddingClass = `cardSection${toTitleCase(
 		verticalPadding
 	)}Spacing`;
-	const richTextHasContent = leadText ? fieldHasValidContent(leadText) : false;
+	const leadTextProcessed =
+		leadText && fieldHasValidContent(leadText) ? leadText : null;
 	const secondaryLeadTextProcessed =
 	secondaryLeadText && fieldHasValidContent(secondaryLeadText) ? secondaryLeadText : null;
 
@@ -45,20 +46,20 @@ export const CardListSection: React.FC<CardListSectionProps> = ({
 			)}
 		>
 			<div className={styles.container}>
-				{heading || richTextHasContent ? (
+				{heading || leadTextProcessed ? (
 					<div className={styles.cardSectionListIntro}>
 						{heading && (
 							<HeadingElement className={styles.heading}>
 								{heading}
 							</HeadingElement>
 						)}
-						{richTextHasContent && (
+						{leadTextProcessed && (
 							<StoryblokRichText
-								content={leadText}
+								content={leadTextProcessed}
 								className={styles.leadText}
 							/>
 						)}
-						{richTextHasContent && secondaryLeadTextProcessed && (
+						{leadTextProcessed && secondaryLeadTextProcessed && (
 							<StoryblokRichText
 								content={secondaryLeadTextProcessed}
 								className={styles.leadTextSecondary}
