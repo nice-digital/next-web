@@ -28,7 +28,7 @@
     }
   }
 
-  &__leadTextAdditional {
+  &__leadTextSecondary {
     p {
       @include typography.font-size(p);
     }

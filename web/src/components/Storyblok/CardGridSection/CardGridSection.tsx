@@ -30,6 +30,7 @@ export const CardGridSection: React.FC<CardGridSectionProps> = ({
 		heading,
 		headingLevel,
 		leadText,
+		secondaryLeadText,
 		verticalPadding = "medium",
 		theme = "subtle",
 		cards: rows,
@@ -40,6 +41,8 @@ export const CardGridSection: React.FC<CardGridSectionProps> = ({
 	const verticalPaddingClass = `cardGridSection--${verticalPadding}Spacing`;
 	const leadTextProcessed =
 		leadText && fieldHasValidContent(leadText) ? leadText : null;
+	const secondaryLeadTextProcessed =
+	secondaryLeadText && fieldHasValidContent(secondaryLeadText) ? secondaryLeadText : null;
 
 	const RenderCardGridComponent: React.FC<{
 		gridItem:
@@ -103,10 +106,10 @@ export const CardGridSection: React.FC<CardGridSectionProps> = ({
 								className={styles.cardGridSection__leadText}
 							/>
 						)}
-						{leadTextProcessed && additionalLeadTextProcessed && (
+						{leadTextProcessed && secondaryLeadTextProcessed && (
 							<StoryblokRichText
-								content={additionalLeadTextProcessed}
-								className={styles.cardGridSection__leadTextAdditional}
+								content={secondaryLeadTextProcessed}
+								className={styles.cardGridSection__leadTextSecondary}
 							/>
 						)}
 					</div>

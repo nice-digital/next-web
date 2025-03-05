@@ -21,6 +21,7 @@ export const CardListSection: React.FC<CardListSectionProps> = ({
 		heading,
 		headingLevel,
 		leadText,
+		secondaryLeadText,
 		verticalPadding = "medium",
 		theme,
 		cards,
@@ -32,6 +33,8 @@ export const CardListSection: React.FC<CardListSectionProps> = ({
 		verticalPadding
 	)}Spacing`;
 	const richTextHasContent = leadText ? fieldHasValidContent(leadText) : false;
+	const secondaryLeadTextProcessed =
+	secondaryLeadText && fieldHasValidContent(secondaryLeadText) ? secondaryLeadText : null;
 
 	return (
 		<section
@@ -53,6 +56,12 @@ export const CardListSection: React.FC<CardListSectionProps> = ({
 							<StoryblokRichText
 								content={leadText}
 								className={styles.leadText}
+							/>
+						)}
+						{richTextHasContent && secondaryLeadTextProcessed && (
+							<StoryblokRichText
+								content={secondaryLeadTextProcessed}
+								className={styles.leadTextSecondary}
 							/>
 						)}
 					</div>

@@ -33,6 +33,13 @@
   }
 }
 
+
+.leadTextSecondary {
+  p {
+    @include typography.font-size(p);
+  }
+}
+
 .cardSectionListIntro {
   margin-bottom: utils.rem(spacing.$large);
 }
