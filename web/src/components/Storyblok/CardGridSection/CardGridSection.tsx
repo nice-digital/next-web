@@ -1,22 +1,16 @@
 import classnames from "classnames";
-import Link from "next/link";
-
-import { Card, type CardHeadingLinkProps } from "@nice-digital/nds-card";
-import { Grid, GridItem, type Columns } from "@nice-digital/nds-grid";
 
 import { StoryblokRichText } from "@/components/Storyblok/StoryblokRichText/StoryblokRichText";
-import { StoryblokTestimonialGridItem } from "@/components/Storyblok/StoryblokTestimonialGridItem/StoryblokTestimonialGridItem";
 import {
-	TestimonialGridItemStoryblok,
-	CalloutCardStoryblok,
-	CalloutCardWithImageStoryblok,
-	CardStoryblok,
 	CardGridSectionStoryblok,
 	CardGridRowTestimonialsStoryblok,
+	CardGridRowBasicStoryblok,
+	CardGridRowCalloutStoryblok,
+	CardGridRowCalloutWithImageStoryblok,
 } from "@/types/storyblok";
-import { fieldHasValidContent, resolveStoryblokLink } from "@/utils/storyblok";
+import { fieldHasValidContent } from "@/utils/storyblok";
 
-import { StoryblokCalloutCard } from "../StoryblokCalloutCard/StoryblokCalloutCard";
+import { GridSection } from "../GridSection/GridSection";
 
 import styles from "./CardGridSection.module.scss";
 
@@ -42,67 +36,13 @@ export const CardGridSection: React.FC<CardGridSectionProps> = ({
 	const leadTextProcessed =
 		leadText && fieldHasValidContent(leadText) ? leadText : null;
 
-	const RenderCardGridComponent: React.FC<{
-		gridItem:
-			| TestimonialGridItemStoryblok
-			| CalloutCardStoryblok
-			| CalloutCardWithImageStoryblok
-			| CardStoryblok;
-	}> = ({ gridItem }) => {
-		const { heading, body, link, component } = gridItem;
-
-		let cardLink: CardHeadingLinkProps | undefined = undefined;
-		const resolvedLink =
-			link && (link.url || link.cached_url)
-				? resolveStoryblokLink(link)
-				: undefined;
-		if (resolvedLink?.url) {
-			cardLink = {
-				destination: resolvedLink.url,
-				elementType: resolvedLink.isInternal ? Link : "a",
-				method: "href",
-			};
-		}
-
-		switch (component) {
-			case "testimonialGridItem":
-				return <StoryblokTestimonialGridItem blok={gridItem} />;
-			case "calloutCard":
-			case "calloutCardWithImage":
-				return <StoryblokCalloutCard blok={gridItem} />;
-			case "card":
-				return (
-					<Card headingText={heading} link={cardLink || undefined}>
-						{body}
-					</Card>
-				);
-			default:
-				return null;
-		}
-	};
-	const promoBoxCardContent = [
-		{ ...blok, gridItems: blok.gridItems, columns: blok.columns },
-	];
-	const renderCardContent =
-		blok.gridItems !== undefined ? promoBoxCardContent : rows;
-	const renderStyles = !!rows;
-
 	return (
 		<section
-			className={
-				renderStyles
-					? classnames(
-							styles.cardGridSection,
-							styles[verticalPaddingClass],
-							styles[themeClass]
-					  )
-					: classnames(
-							styles.cardGridSection,
-							styles.cardGridSection__promoboxTestimonials,
-							styles[verticalPaddingClass],
-							styles[themeClass]
-					  )
-			}
+			className={classnames(
+				styles.cardGridSection,
+				styles[verticalPaddingClass],
+				styles[themeClass]
+			)}
 			data-testid="card-grid-section"
 		>
 			<div className={styles.cardGridSection__container}>
@@ -121,47 +61,16 @@ export const CardGridSection: React.FC<CardGridSectionProps> = ({
 						)}
 					</div>
 				) : undefined}
-				{renderCardContent.map(
+				{rows.map(
 					(
 						row:
 							| CardGridRowTestimonialsStoryblok
-							| TestimonialGridItemStoryblok
-							| CalloutCardStoryblok
-							| CalloutCardWithImageStoryblok
-							| CardStoryblok
-					) => {
-						const { component, columns, gridItems, _uid } = row;
-						const cols = (12 / Number(columns || 1)) as Columns;
-						const gridElementType =
-							component !== "cardGridRowTestimonials" ? "ul" : "div";
-						const gridItemElementType = gridElementType === "ul" ? "li" : "div";
-
-						return (
-							<Grid
-								elementType={gridElementType}
-								className={styles.cardGridSection__gridRow}
-								gutter="loose"
-								equalHeight
-								key={_uid}
-							>
-								{gridItems.map(
-									(gridItem: TestimonialGridItemStoryblok | CardStoryblok) => {
-										return (
-											<GridItem
-												elementType={gridItemElementType}
-												className={styles.cardGridSection__gridItem}
-												cols={12}
-												md={cols}
-												key={gridItem._uid}
-											>
-												<RenderCardGridComponent gridItem={gridItem} />
-											</GridItem>
-										);
-									}
-								)}
-							</Grid>
-						);
-					}
+							| CardGridRowBasicStoryblok
+							| CardGridRowCalloutStoryblok
+							| CardGridRowCalloutWithImageStoryblok
+					) => (
+						<GridSection row={row} key={row._uid} />
+					)
 				)}
 			</div>
 		</section>

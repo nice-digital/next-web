@@ -278,6 +278,7 @@ export interface CardListSectionStoryblok {
   heading?: string;
   headingLevel: string;
   leadText?: RichtextStoryblok;
+  secondaryLeadText?: RichtextStoryblok;
   cards: CardListSectionItemStoryblok[];
   theme?: "" | "subtle" | "transparent";
   verticalPadding?: "" | "small" | "medium" | "large";

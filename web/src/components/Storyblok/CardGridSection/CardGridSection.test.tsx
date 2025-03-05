@@ -362,46 +362,6 @@ describe("CardGridSection", () => {
 		expect(cardList).not.toBeInTheDocument();
 		expect(cardListItems).not.toBeInTheDocument();
 	});
-	it("renders Testimonial content correctly with promobox", () => {
-		const mockTestimonialProps: CardGridSectionProps = {
-			blok: {
-				_uid: "5b2cf64a-dde9-4bd1-9abd-90ff4164d932",
-				columns: "3",
-				cards: [],
-				gridItems: [
-					{
-						_uid: "22efcc3f-27a1-49d3-bc70-06b75e6699c8",
-						image: {
-							id: 20714807,
-							alt: "",
-							name: "",
-							focus: "",
-							title: "",
-							source: "",
-							filename:
-								"https://a.storyblok.com/f/292509/698x418/64068e0d3b/severe-dust-mite-allerg.JPG",
-							copyright: "",
-							fieldtype: "asset",
-							meta_data: {},
-							is_external_url: false,
-						},
-						variant: "default",
-						component: "testimonialGridItem",
-						quoteName: "Quote Name",
-						quoteRole: "Quote Role",
-						quoteText: "Quote Text",
-					},
-				],
-
-				headingLevel: "",
-				component: "cardGridSection",
-			},
-		};
-		render(<CardGridSection {...mockTestimonialProps} />);
-		expect(screen.getByText("Quote Text")).toBeInTheDocument();
-		expect(screen.getByText("Quote Name")).toBeInTheDocument();
-		expect(screen.getByText("Quote Role")).toBeInTheDocument();
-	});
 	it("matches snapshot", () => {
 		const { container } = render(<CardGridSection {...mockProps} />);
 		expect(container).toMatchSnapshot();
