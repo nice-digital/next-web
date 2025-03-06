@@ -10,7 +10,9 @@ interface BasicCardGridBlokProps {
 	blok: CardGridStoryblok;
 }
 
-export const BasicCardGrid = ({ blok }: BasicCardGridBlokProps): React.ReactElement => {
+export const BasicCardGrid = ({
+	blok,
+}: BasicCardGridBlokProps): React.ReactElement => {
 	const { cards } = blok;
 
 	return (

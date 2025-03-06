@@ -152,7 +152,7 @@ describe("Promo box component", () => {
 			blok: {
 				...mockPromoBox.blok,
 				isTransparent: true,
-				content: [
+				promotionalContent: [
 					{
 						cta: [
 							{
@@ -213,7 +213,7 @@ describe("Promo box component", () => {
 			blok: {
 				...mockPromoBox.blok,
 				isTransparent: true,
-				content: [
+				promotionalContent: [
 					{
 						_uid: "e1a57fa5-1f4f-4319-8f1c-c9a9c263935e",
 						columns: "1",

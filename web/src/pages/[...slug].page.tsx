@@ -7,8 +7,8 @@ import { NextSeo } from "next-seo";
 import React, { useMemo } from "react";
 
 import { ErrorPageContent } from "@/components/ErrorPageContent/ErrorPageContent";
-import { Blockquote } from "@/components/Storyblok/Blockquote/Blockquote";
 import { BasicCardGrid } from "@/components/Storyblok/BasicCardGrid/BasicCardGrid";
+import { Blockquote } from "@/components/Storyblok/Blockquote/Blockquote";
 import { CardGridSection } from "@/components/Storyblok/CardGridSection/CardGridSection";
 import { CardListSection } from "@/components/Storyblok/CardListSection/CardListSection";
 import { CategoryLandingPage } from "@/components/Storyblok/CategoryLandingPage/CategoryLandingPage";
