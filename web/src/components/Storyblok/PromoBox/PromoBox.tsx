@@ -19,7 +19,7 @@ import {
 import { constructStoryblokImageSrc } from "@/utils/storyblok";
 import { toTitleCase } from "@/utils/string";
 
-import { GridSection } from "../GridSection/GridSection";
+import { CardGrid } from "../CardGrid/CardGrid";
 import { StoryblokActionBannerDefault } from "../StoryblokActionBanner/StoryblokActionBannerDefault";
 
 import styles from "./PromoBox.module.scss";
@@ -77,7 +77,7 @@ export const PromoBox: React.FC<PromoBoxProps> = ({
 		const { component } = blok;
 		switch (component) {
 			case "cardGridRowTestimonials":
-				return <GridSection row={blok as CardGridRowTestimonialsStoryblok} />;
+				return <CardGrid row={blok as CardGridRowTestimonialsStoryblok} />;
 
 			case "actionBannerDefault":
 				return (

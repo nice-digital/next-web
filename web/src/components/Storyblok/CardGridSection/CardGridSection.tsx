@@ -10,7 +10,7 @@ import {
 } from "@/types/storyblok";
 import { fieldHasValidContent } from "@/utils/storyblok";
 
-import { GridSection } from "../GridSection/GridSection";
+import { CardGrid } from "../CardGrid/CardGrid";
 
 import styles from "./CardGridSection.module.scss";
 
@@ -69,7 +69,7 @@ export const CardGridSection: React.FC<CardGridSectionProps> = ({
 							| CardGridRowCalloutStoryblok
 							| CardGridRowCalloutWithImageStoryblok
 					) => (
-						<GridSection row={row} key={row._uid} />
+						<CardGrid row={row} key={row._uid} />
 					)
 				)}
 			</div>
