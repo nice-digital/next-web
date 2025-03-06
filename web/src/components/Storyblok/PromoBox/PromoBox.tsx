@@ -89,7 +89,6 @@ export const PromoBox: React.FC<PromoBoxProps> = ({
 				return null;
 		}
 	};
-
 	return (
 		<article
 			className={classnames(
@@ -139,7 +138,7 @@ export const PromoBox: React.FC<PromoBoxProps> = ({
 						cols={12}
 						className={styles.actionBannerOrTestimonialContainer}
 					>
-						{blok.content?.map(
+						{blok.promotionalContent?.map(
 							(
 								item:
 									| CardGridRowTestimonialsStoryblok

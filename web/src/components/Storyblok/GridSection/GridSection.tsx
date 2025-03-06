@@ -73,7 +73,6 @@ export const GridSection: React.FC<GridSectionProps> = ({ row }) => {
 	const gridElementType =
 		component !== "cardGridRowTestimonials" ? "ul" : "div";
 	const gridItemElementType = gridElementType === "ul" ? "li" : "div";
-	console.log("card section row", row);
 	return (
 		<Grid
 			elementType={gridElementType}
