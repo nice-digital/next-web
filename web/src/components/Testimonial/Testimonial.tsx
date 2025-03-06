@@ -57,15 +57,12 @@ export const Testimonial: React.FC<TestimonialProps> = (
 			alt?: string;
 			[key: string]: unknown;
 		};
-
 		return cloneElement(element, {
 			...restProps,
 			className: classnames(className, ...additionalClassNames),
 
 			...(element.type === "img" && {
 				alt: alt || "Testimonial image",
-				role: "img",
-				"aria-label": alt || "Testimonial image",
 			}),
 		}) as T;
 	};
