@@ -261,6 +261,7 @@ export interface CardGridSectionStoryblok {
   heading?: string;
   headingLevel: string;
   leadText?: RichtextStoryblok;
+  secondaryLeadText?: RichtextStoryblok;
   cards: (
     | CardGridRowBasicStoryblok
     | CardGridRowCalloutStoryblok
@@ -698,7 +699,7 @@ export interface PromoBoxStoryblok {
   imageAspectRatio?: "landscape" | "portrait";
   isTransparent?: boolean;
   verticalPadding?: "" | "small" | "medium" | "large";
-  content?: (ActionBannerDefaultStoryblok | CardGridRowTestimonialsStoryblok)[];
+  promotionalContent?: (ActionBannerDefaultStoryblok | CardGridRowTestimonialsStoryblok)[];
   component: "promoBox";
   _uid: string;
   [k: string]: any;
