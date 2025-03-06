@@ -261,6 +261,7 @@ export interface CardGridSectionStoryblok {
   heading?: string;
   headingLevel: string;
   leadText?: RichtextStoryblok;
+  secondaryLeadText?: RichtextStoryblok;
   cards: (
     | CardGridRowBasicStoryblok
     | CardGridRowCalloutStoryblok
@@ -604,9 +605,62 @@ export interface OrderedListStoryblok {
 }
 
 export interface PageStoryblok {
-  header?: (PageHeaderStoryblok | HeroStoryblok)[];
-  content?: PromoBoxStoryblok[];
+  body?: (
+    | AccordionStoryblok
+    | AccordionGroupStoryblok
+    | ActionBannerStoryblok
+    | ActionBannerDefaultStoryblok
+    | AuthorStoryblok
+    | BlogPostStoryblok
+    | ButtonLinkStoryblok
+    | CalloutCardStoryblok
+    | CalloutCardWithImageStoryblok
+    | CardStoryblok
+    | CardContentStoryblok
+    | CardGridStoryblok
+    | CardGridRowBasicStoryblok
+    | CardGridRowCalloutStoryblok
+    | CardGridRowCalloutWithImageStoryblok
+    | CardGridRowTestimonialsStoryblok
+    | CardGridSectionStoryblok
+    | CardListSectionStoryblok
+    | CardListSectionItemStoryblok
+    | CategoryLandingPageStoryblok
+    | CategoryNavigationStoryblok
+    | GridStoryblok
+    | GridItemStoryblok
+    | GridSectionStoryblok
+    | GridSectionItemStoryblok
+    | HeroStoryblok
+    | HomepageStoryblok
+    | HomepageHeroStoryblok
+    | IframeStoryblok
+    | ImageEmbedStoryblok
+    | ImageOrVideoStoryblok
+    | InDepthArticleStoryblok
+    | InfoPageStoryblok
+    | ListItemStoryblok
+    | MarkdownStoryblok
+    | MetadataStoryblok
+    | NestedRichTextStoryblok
+    | NestedTableStoryblok
+    | NewsArticleStoryblok
+    | OrderedListStoryblok
+    | PageStoryblok
+    | PageHeaderStoryblok
+    | PodcastStoryblok
+    | PromoBoxStoryblok
+    | QuoteStoryblok
+    | RelatedLinkStoryblok
+    | RelatedNewsLinkStoryblok
+    | SpotlightStoryblok
+    | SpotlightCopyStoryblok
+    | TestimonialFullWidthStoryblok
+    | TestimonialGridItemStoryblok
+    | YoutubeEmbedStoryblok
+  )[];
   metadata?: MetadataStoryblok[];
+  wysiwyg?: RichtextStoryblok;
   component: "page";
   _uid: string;
   [k: string]: any;
@@ -645,7 +699,7 @@ export interface PromoBoxStoryblok {
   imageAspectRatio?: "landscape" | "portrait";
   isTransparent?: boolean;
   verticalPadding?: "" | "small" | "medium" | "large";
-  content?: (ActionBannerDefaultStoryblok | CardGridRowTestimonialsStoryblok)[];
+  promotionalContent?: (ActionBannerDefaultStoryblok | CardGridRowTestimonialsStoryblok)[];
   component: "promoBox";
   _uid: string;
   [k: string]: any;
