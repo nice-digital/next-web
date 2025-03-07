@@ -57,7 +57,6 @@ exports[`CardGridSection matches snapshot 1`] = `
         </li>
         <li
           class="gridSection__gridItem"
-
           data-component="grid-item"
           data-g="12 md:4"
         >
@@ -83,7 +82,6 @@ exports[`CardGridSection matches snapshot 1`] = `
         </li>
         <li
           class="gridSection__gridItem"
-
           data-component="grid-item"
           data-g="12 md:4"
         >
@@ -109,7 +107,6 @@ exports[`CardGridSection matches snapshot 1`] = `
         </li>
         <li
           class="gridSection__gridItem"
-
           data-component="grid-item"
           data-g="12 md:4"
         >
