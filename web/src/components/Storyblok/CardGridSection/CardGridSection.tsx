@@ -1,5 +1,4 @@
 import classnames from "classnames";
-
 import { StoryblokRichText } from "@/components/Storyblok/StoryblokRichText/StoryblokRichText";
 import {
 	CardGridSectionStoryblok,
