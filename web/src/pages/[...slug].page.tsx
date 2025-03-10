@@ -114,6 +114,7 @@ export default function SlugCatchAll(
 		nestedRichText: NestedRichText,
 		quote: Blockquote,
 		youtubeEmbed: StoryblokYoutubeEmbed,
+		actionBannerDefault: StoryblokActionBannerDefault,
 	};
 
 	const components = {
