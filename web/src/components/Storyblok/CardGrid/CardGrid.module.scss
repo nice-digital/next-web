@@ -2,7 +2,7 @@
 @use '@nice-digital/nds-core/scss/utils';
 
 
-.cardGridSection {
+.cardGrid {
   &__cardGridRow {
     row-gap: utils.rem(spacing.$large);
     
