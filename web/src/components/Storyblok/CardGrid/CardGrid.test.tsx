@@ -102,7 +102,7 @@ describe("GridSection", () => {
 
 	it("renders the correct grid structure", () => {
 		render(<CardGrid {...mockProps} />);
-		const grid = screen.getByTestId("grid-section");
+		const grid = screen.getByTestId("card-grid");
 		expect(grid).toBeInTheDocument();
 	});
 
