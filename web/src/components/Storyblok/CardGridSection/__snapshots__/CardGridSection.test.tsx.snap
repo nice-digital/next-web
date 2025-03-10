@@ -35,11 +35,11 @@ exports[`CardGridSection matches snapshot 1`] = `
         </div>
       </div>
       <ul
-        class="grid grid--equal-height grid--loose cardGridSection__cardGridRow"
+        class="grid grid--equal-height grid--loose cardGrid__cardGridRow"
         data-testid="card-grid"
       >
         <li
-          class="cardGridSection__cardGridItem"
+          class="cardGrid__cardGridItem"
           data-component="grid-item"
           data-g="12 md:4"
         >
@@ -64,7 +64,7 @@ exports[`CardGridSection matches snapshot 1`] = `
           </article>
         </li>
         <li
-          class="cardGridSection__cardGridItem"
+          class="cardGrid__cardGridItem"
           data-component="grid-item"
           data-g="12 md:4"
         >
@@ -89,7 +89,7 @@ exports[`CardGridSection matches snapshot 1`] = `
           </article>
         </li>
         <li
-          class="cardGridSection__cardGridItem"
+          class="cardGrid__cardGridItem"
           data-component="grid-item"
           data-g="12 md:4"
         >
@@ -114,7 +114,7 @@ exports[`CardGridSection matches snapshot 1`] = `
           </article>
         </li>
         <li
-          class="cardGridSection__cardGridItem"
+          class="cardGrid__cardGridItem"
           data-component="grid-item"
           data-g="12 md:4"
         >

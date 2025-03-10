@@ -3,11 +3,11 @@
 exports[`GridSection matches snapshot 1`] = `
 <div>
   <ul
-    class="grid grid--equal-height grid--loose cardGridSection__cardGridRow"
+    class="grid grid--equal-height grid--loose cardGrid__cardGridRow"
     data-testid="card-grid"
   >
     <li
-      class="cardGridSection__cardGridItem"
+      class="cardGrid__cardGridItem"
       data-component="grid-item"
       data-g="12 md:6"
     >
