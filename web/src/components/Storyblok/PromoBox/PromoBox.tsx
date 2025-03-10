@@ -71,7 +71,7 @@ export const PromoBox: React.FC<PromoBoxProps> = ({
 	const imageAspectRatioClass = `imageContainer${toTitleCase(
 		imageAspectRatio
 	)}`;
-	const RenderTestimonialOrActionBanner: React.FC<{
+	const RenderPromotionalChildComponent: React.FC<{
 		blok: CardGridRowTestimonialsStoryblok | ActionBannerDefaultStoryblok;
 	}> = ({ blok }) => {
 		const { component } = blok;
@@ -89,6 +89,7 @@ export const PromoBox: React.FC<PromoBoxProps> = ({
 				return null;
 		}
 	};
+	
 	return (
 		<article
 			className={classnames(
@@ -134,20 +135,13 @@ export const PromoBox: React.FC<PromoBoxProps> = ({
 							></div>
 						) : null}
 					</GridItem>
-					<GridItem
-						cols={12}
-						className={styles.actionBannerOrTestimonialContainer}
-					>
-						{blok.promotionalContent?.map(
-							(
-								item:
-									| CardGridRowTestimonialsStoryblok
-									| ActionBannerDefaultStoryblok
-							) => (
-								<RenderTestimonialOrActionBanner blok={item} key={_uid} />
-							)
-						)}
-					</GridItem>
+					{blok.promotionalContent?.length ? (
+						<GridItem cols={12} className={styles.promotionalChildContainer }>
+							{blok.promotionalContent.map((item) => (
+								<RenderPromotionalChildComponent blok={item} key={_uid} />
+							))}
+						</GridItem>
+					) : null}
 				</Grid>
 			</div>
 		</article>

@@ -8,6 +8,11 @@
 .promoBox {
   @include layout.fullWidth();
   background: colours.$promo-box-background;
+
+  /* stylelint-disable-next-line selector-class-pattern */
+  :global(.action-banner) {
+    margin-bottom: 0;
+  }
 }
 
 .promoBoxLargeSpacing {
@@ -50,9 +55,11 @@
   }
 }
 
-.actionBannerOrTestimonialContainer {
+.promotionalChildContainer {
   margin-top: utils.rem(spacing.$x-large);
 }
+
+
 
 .imageContainer {
   background-position: center;
