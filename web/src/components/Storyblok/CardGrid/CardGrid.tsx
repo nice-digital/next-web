@@ -76,11 +76,11 @@ export const CardGrid: React.FC<CardGridProps> = ({ row }) => {
 	return (
 		<Grid
 			elementType={gridElementType}
-			className={styles.gridSection__gridRow}
+			className={styles.cardGridSection__cardGridRow}
 			gutter="loose"
 			equalHeight
 			key={_uid}
-			data-testid="grid-section"
+			data-testid="card-grid-section"
 		>
 			{gridItems.map(
 				(
@@ -93,7 +93,7 @@ export const CardGrid: React.FC<CardGridProps> = ({ row }) => {
 					return (
 						<GridItem
 							elementType={gridItemElementType}
-							className={styles.gridSection__gridItem}
+							className={styles.cardGridSection__cardGridItem}
 							cols={12}
 							md={cols}
 							key={gridItem._uid}
