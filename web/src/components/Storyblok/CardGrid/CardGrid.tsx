@@ -1,7 +1,7 @@
 import Link from "next/link";
 
 import { Card, type CardHeadingLinkProps } from "@nice-digital/nds-card";
-import { Columns, Grid, GridItem } from "@nice-digital/nds-grid";
+import {  Grid, GridItem,type Columns } from "@nice-digital/nds-grid";
 
 import {
 	CalloutCardStoryblok,
