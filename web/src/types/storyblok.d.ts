@@ -261,6 +261,7 @@ export interface CardGridSectionStoryblok {
   heading?: string;
   headingLevel: string;
   leadText?: RichtextStoryblok;
+  secondaryLeadText?: RichtextStoryblok;
   cards: (
     | CardGridRowBasicStoryblok
     | CardGridRowCalloutStoryblok
@@ -309,7 +310,7 @@ export interface CategoryLandingPageStoryblok {
     | CalloutCardStoryblok
     | CardGridSectionStoryblok
     | CalloutCardWithImageStoryblok
-    | TestimonialGridItemStoryblok
+    | PromoPanelStoryblok
   )[];
   component: "categoryLandingPage";
   _uid: string;

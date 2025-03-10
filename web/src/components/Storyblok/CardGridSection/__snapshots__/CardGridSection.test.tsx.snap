@@ -25,6 +25,14 @@ exports[`CardGridSection matches snapshot 1`] = `
             This is lead text.
           </p>
         </div>
+        <div
+          class="storyblokRichTextWrapper cardGridSection__leadTextSecondary"
+          data-testid="storyblok-rich-text"
+        >
+          <p>
+            Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut felis leo, fermentum quis posuere non, viverra at nulla.
+          </p>
+        </div>
       </div>
       <ul
         class="grid grid--equal-height grid--loose cardGridSection__cardGridRow"

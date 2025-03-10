@@ -28,6 +28,12 @@
     }
   }
 
+  &__leadTextSecondary {
+    p {
+      @include typography.font-size(p);
+    }
+  }
+
   &--largeSpacing {
     padding: $section-large-spacing 0;
   }
