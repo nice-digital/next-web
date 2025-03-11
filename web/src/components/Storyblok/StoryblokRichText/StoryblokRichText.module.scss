@@ -43,12 +43,12 @@
   :global(.accordion__heading) {
     margin: 0;
   }
-
+  // override the margin for action banner heading levels in rich text
+  :global(.action-banner__title) {
+    margin: 0;
+  }
   // remove bottom margin on any last child in richtext bloks
   > *:last-child {
     margin-bottom: 0;
   }
-
-
 }
-
