@@ -89,7 +89,7 @@ export const PromoBox: React.FC<PromoBoxProps> = ({
 				return null;
 		}
 	};
-	
+
 	return (
 		<article
 			className={classnames(
@@ -136,7 +136,7 @@ export const PromoBox: React.FC<PromoBoxProps> = ({
 						) : null}
 					</GridItem>
 					{blok.promotionalContent?.length ? (
-						<GridItem cols={12} className={styles.promotionalChildContainer }>
+						<GridItem cols={12} className={styles.promotionalChildContainer}>
 							{blok.promotionalContent.map((item) => (
 								<RenderPromotionalChildComponent blok={item} key={_uid} />
 							))}
