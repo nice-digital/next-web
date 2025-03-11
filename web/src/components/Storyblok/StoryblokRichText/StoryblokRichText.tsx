@@ -30,6 +30,7 @@ export const StoryblokRichText: React.FC<StoryblokRichTextProps> = ({
 	className,
 }) => {
 	const classes = [styles.storyblokRichTextWrapper, className].join(" ");
+	
 	return (
 		<div className={classes} data-testid="storyblok-rich-text">
 			{render(content, {
@@ -107,6 +108,7 @@ export const StoryblokRichText: React.FC<StoryblokRichTextProps> = ({
 				defaultBlokResolver: (name, props) => {
 					// resolves all other storyblok components to permissable components
 					const blok = { ...props, component: name };
+					console.log("blok inside default resolver",blok)
 					return <StoryblokComponent blok={blok} key={blok._uid} />;
 				},
 			})}
