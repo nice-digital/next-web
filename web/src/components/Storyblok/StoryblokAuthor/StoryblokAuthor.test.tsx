@@ -11,8 +11,9 @@ const blokContent: AuthorStoryblok = {
 	image: {
 		id: 1,
 		name: "test image",
-		filename: "https://test.jpg",
-		alt: "test alt",
+		filename:
+			"https://a.storyblok.com/f/292509/2120x1414/dd56873afd/joe-bloggs.jpg",
+		alt: "Joe Bloggs",
 		fieldtype: "asset",
 		title: null,
 		focus: null,
@@ -29,7 +30,7 @@ describe("StoryblokAuthor", () => {
 
 		expect(imageSrc).toContain(".jpg");
 		expect(imageSrc).toContain(
-			"/_next/image?url=https%3A%2F%2Ftest.jpg%2Fm%2F270x270%2Fsmart%2Ffilters%3Aformat%2528jpeg%2529%3Aquality%252880%2529&w=384&q=75"
+			"/_next/image?url=https%3A%2F%2Fa.storyblok.com%2Ff%2F292509%2F2120x1414%2Fdd56873afd%2Fjoe-bloggs.jpg%2Fm%2F270x270%2Fsmart%2Ffilters%3Aformat%2528jpeg%2529%3Aquality%252880%2529&w=640&q=75"
 		);
 	});
 

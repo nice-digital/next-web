@@ -9,6 +9,7 @@ import React, { useMemo } from "react";
 import { ErrorPageContent } from "@/components/ErrorPageContent/ErrorPageContent";
 import { Blockquote } from "@/components/Storyblok/Blockquote/Blockquote";
 import { CardGrid } from "@/components/Storyblok/CardGrid/CardGrid";
+import { CardGridSection } from "@/components/Storyblok/CardGridSection/CardGridSection";
 import { CardListSection } from "@/components/Storyblok/CardListSection/CardListSection";
 import { CategoryLandingPage } from "@/components/Storyblok/CategoryLandingPage/CategoryLandingPage";
 import { CategoryNavigation } from "@/components/Storyblok/CategoryNavigation/CategoryNavigation";
@@ -20,6 +21,7 @@ import { StoryblokAccordion } from "@/components/Storyblok/StoryblokAccordion/St
 import { StoryblokAccordionGroup } from "@/components/Storyblok/StoryblokAccordionGroup/StoryblokAccordionGroup";
 import { StoryblokActionBannerDefault } from "@/components/Storyblok/StoryblokActionBanner/StoryblokActionBannerDefault";
 import { StoryblokActionBannerFullWidth } from "@/components/Storyblok/StoryblokActionBanner/StoryblokActionBannerFullWidth";
+import { StoryblokCalloutCard } from "@/components/Storyblok/StoryblokCalloutCard/StoryblokCalloutCard";
 import { StoryblokHero } from "@/components/Storyblok/StoryblokHero/StoryblokHero";
 import { StoryblokIframe } from "@/components/Storyblok/StoryblokIframe/StoryblokIframe";
 import { StoryblokPageHeader } from "@/components/Storyblok/StoryblokPageHeader/StoryblokPageHeader";
@@ -95,8 +97,11 @@ export default function SlugCatchAll(
 		hero: StoryblokHero,
 		actionBanner: StoryblokActionBannerFullWidth,
 		actionBannerDefault: StoryblokActionBannerDefault,
+		cardGridSection: CardGridSection,
 		cardListSection: CardListSection,
 		promoBox: PromoBox,
+		calloutCard: StoryblokCalloutCard,
+		calloutCardWithImage: StoryblokCalloutCard,
 		testimonialFullWidth: StoryblokTestimonialFullWidth,
 		testimonialGridItem: StoryblokTestimonialGridItem,
 	};
@@ -110,6 +115,7 @@ export default function SlugCatchAll(
 		nestedRichText: NestedRichText,
 		quote: Blockquote,
 		youtubeEmbed: StoryblokYoutubeEmbed,
+		actionBannerDefault: StoryblokActionBannerDefault,
 		nestedTable: StoryblokTable,
 	};
 

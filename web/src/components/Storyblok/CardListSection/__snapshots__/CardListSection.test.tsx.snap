@@ -60,6 +60,14 @@ exports[`cardListSection component should match snapshot with default values 1`]
             Mock cardListSection lead text
           </p>
         </div>
+        <div
+          class="storyblokRichTextWrapper leadTextSecondary"
+          data-testid="storyblok-rich-text"
+        >
+          <p>
+            Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut felis leo, fermentum quis posuere non, viverra at nulla.
+          </p>
+        </div>
       </div>
       <ul
         class="list list--unstyled"
@@ -111,6 +119,14 @@ exports[`cardListSection component should match snapshot with transparent theme 
         >
           <p>
             Mock cardListSection lead text
+          </p>
+        </div>
+        <div
+          class="storyblokRichTextWrapper leadTextSecondary"
+          data-testid="storyblok-rich-text"
+        >
+          <p>
+            Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut felis leo, fermentum quis posuere non, viverra at nulla.
           </p>
         </div>
       </div>
