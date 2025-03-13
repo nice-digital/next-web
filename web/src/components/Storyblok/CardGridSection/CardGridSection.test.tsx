@@ -391,7 +391,6 @@ describe("CardGridSection", () => {
 		expect(cardList).not.toBeInTheDocument();
 		expect(cardListItems).not.toBeInTheDocument();
 	});
-
 	it("matches snapshot", () => {
 		const { container } = render(<CardGridSection {...mockProps} />);
 		expect(container).toMatchSnapshot();
