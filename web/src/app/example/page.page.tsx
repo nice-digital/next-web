@@ -2,7 +2,7 @@ import React from 'react';
 import { publicRuntimeConfig, PublicConfig } from "@/config";
 
 export default function TestExamplePage():JSX.Element {
-	console.log("FROM PAGE")
+
 	const configList = [];
 	for (const property in publicRuntimeConfig) {
 		configList.push(<li key={property}>{property}: </li>);
