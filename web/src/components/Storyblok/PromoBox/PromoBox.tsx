@@ -83,6 +83,7 @@ export const PromoBox: React.FC<PromoBoxProps> = ({
 				return (
 					<StoryblokActionBannerDefault
 						blok={blok as ActionBannerDefaultStoryblok}
+						headingLevel={3}
 					/>
 				);
 			default:

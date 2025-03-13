@@ -203,7 +203,7 @@ describe("Promo box component", () => {
 		render(<PromoBox {...mockPromoBoxPropsWithActionBanner} />);
 		expect(
 			screen.getByRole("heading", {
-				level: 2,
+				level: 3,
 				name: "Promobox with Action Banner",
 			})
 		).toBeInTheDocument();
