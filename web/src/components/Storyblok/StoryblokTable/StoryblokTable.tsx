@@ -1,5 +1,7 @@
 import React from "react";
+
 import { Table } from "@nice-digital/nds-table";
+
 interface TableCol {
 	_uid: string;
 	value: string;

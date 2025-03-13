@@ -1,5 +1,6 @@
-import React from "react";
 import { render, screen } from "@testing-library/react";
+import React from "react";
+
 import { StoryblokTable } from "./StoryblokTable";
 
 const mockBlok = {
@@ -39,36 +40,54 @@ describe("StoryblokTable", () => {
 		expect(screen.getByTestId("table-header-h2")).toHaveTextContent("Header 2");
 
 		expect(screen.getByTestId("table-row-r1")).toBeInTheDocument();
-		expect(screen.getByTestId("table-cell-c1")).toHaveTextContent("Row 1 Col 1");
-		expect(screen.getByTestId("table-cell-c2")).toHaveTextContent("Row 1 Col 2");
+		expect(screen.getByTestId("table-cell-c1")).toHaveTextContent(
+			"Row 1 Col 1"
+		);
+		expect(screen.getByTestId("table-cell-c2")).toHaveTextContent(
+			"Row 1 Col 2"
+		);
 	});
 
 	it("renders nothing when no table data is provided", () => {
 		const { container } = renderTable({ table: { thead: [], tbody: [] } });
+		// eslint-disable-next-line testing-library/no-node-access
 		expect(container.firstChild).toBeNull();
 	});
 
 	describe("Table caption", () => {
 		it("renders caption with title and summary", () => {
 			renderTable({ title: "Test Title", summary: "Test Summary" });
-			expect(screen.getByTestId("table-caption")).toHaveTextContent("Test Title");
-			expect(screen.getByTestId("table-summary")).toHaveTextContent("Test Summary");
+			expect(screen.getByTestId("table-caption")).toHaveTextContent(
+				"Test Title"
+			);
+			expect(screen.getByTestId("table-summary")).toHaveTextContent(
+				"Test Summary"
+			);
 		});
 
 		it("renders table with aria-describedby attribute pointing to summary", () => {
 			renderTable({ title: "Test Title", summary: "Test Summary" });
-			expect(screen.getByTestId("storyblok-table")).toHaveAttribute("aria-describedby", "table-summary");
+			expect(screen.getByTestId("storyblok-table")).toHaveAttribute(
+				"aria-describedby",
+				"table-summary"
+			);
 		});
 
 		it("renders caption with only title when summary is missing", () => {
 			renderTable({ title: "Only Title", summary: undefined });
-			expect(screen.getByTestId("table-caption")).toHaveTextContent("Only Title");
+			expect(screen.getByTestId("table-caption")).toHaveTextContent(
+				"Only Title"
+			);
 		});
 
 		it("renders caption with only summary when title is missing", () => {
 			renderTable({ title: undefined, summary: "Only Summary" });
-			expect(screen.getByTestId("table-caption")).not.toHaveTextContent("Only Title");
-			expect(screen.getByTestId("table-summary")).toHaveTextContent("Only Summary");
+			expect(screen.getByTestId("table-caption")).not.toHaveTextContent(
+				"Only Title"
+			);
+			expect(screen.getByTestId("table-summary")).toHaveTextContent(
+				"Only Summary"
+			);
 		});
 
 		it("does not render caption when both title and summary are missing", () => {
