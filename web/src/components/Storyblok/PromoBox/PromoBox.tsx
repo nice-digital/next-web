@@ -11,11 +11,16 @@ import { StoryblokButtonLink } from "@/components/Storyblok/StoryblokButtonLink/
 import { StoryblokRichText } from "@/components/Storyblok/StoryblokRichText/StoryblokRichText";
 import { StoryblokYoutubeEmbed } from "@/components/Storyblok/StoryblokYoutubeEmbed/StoryblokYoutubeEmbed";
 import {
+	ActionBannerDefaultStoryblok,
+	CardGridRowTestimonialsStoryblok,
 	YoutubeEmbedStoryblok,
 	type PromoBoxStoryblok,
 } from "@/types/storyblok";
 import { constructStoryblokImageSrc } from "@/utils/storyblok";
 import { toTitleCase } from "@/utils/string";
+
+import { CardGrid } from "../CardGrid/CardGrid";
+import { StoryblokActionBannerDefault } from "../StoryblokActionBanner/StoryblokActionBannerDefault";
 
 import styles from "./PromoBox.module.scss";
 
@@ -38,6 +43,7 @@ export const PromoBox: React.FC<PromoBoxProps> = ({
 		headingLevel = "2",
 		verticalPadding = "medium",
 		imageAspectRatio = "landscape",
+		_uid,
 	} = blok;
 
 	const HeadingElement = `h${headingLevel}` as keyof JSX.IntrinsicElements;
@@ -65,6 +71,25 @@ export const PromoBox: React.FC<PromoBoxProps> = ({
 	const imageAspectRatioClass = `imageContainer${toTitleCase(
 		imageAspectRatio
 	)}`;
+	const RenderPromotionalChildComponent: React.FC<{
+		blok: CardGridRowTestimonialsStoryblok | ActionBannerDefaultStoryblok;
+	}> = ({ blok }) => {
+		const { component } = blok;
+		switch (component) {
+			case "cardGridRowTestimonials":
+				return <CardGrid row={blok as CardGridRowTestimonialsStoryblok} />;
+
+			case "actionBannerDefault":
+				return (
+					<StoryblokActionBannerDefault
+						blok={blok as ActionBannerDefaultStoryblok}
+						headingLevel={3}
+					/>
+				);
+			default:
+				return null;
+		}
+	};
 
 	return (
 		<article
@@ -111,6 +136,13 @@ export const PromoBox: React.FC<PromoBoxProps> = ({
 							></div>
 						) : null}
 					</GridItem>
+					{blok.promotionalContent?.length ? (
+						<GridItem cols={12} className={styles.promotionalChildContainer}>
+							{blok.promotionalContent.map((item) => (
+								<RenderPromotionalChildComponent blok={item} key={_uid} />
+							))}
+						</GridItem>
+					) : null}
 				</Grid>
 			</div>
 		</article>

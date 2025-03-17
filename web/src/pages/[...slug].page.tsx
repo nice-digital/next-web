@@ -7,8 +7,8 @@ import { NextSeo } from "next-seo";
 import React, { useMemo } from "react";
 
 import { ErrorPageContent } from "@/components/ErrorPageContent/ErrorPageContent";
+import { BasicCardGrid } from "@/components/Storyblok/BasicCardGrid/BasicCardGrid";
 import { Blockquote } from "@/components/Storyblok/Blockquote/Blockquote";
-import { CardGrid } from "@/components/Storyblok/CardGrid/CardGrid";
 import { CardGridSection } from "@/components/Storyblok/CardGridSection/CardGridSection";
 import { CardListSection } from "@/components/Storyblok/CardListSection/CardListSection";
 import { CategoryLandingPage } from "@/components/Storyblok/CategoryLandingPage/CategoryLandingPage";
@@ -85,7 +85,7 @@ export default function SlugCatchAll(
 	const { story: storyData, breadcrumbs, siblingPages, component } = props;
 
 	const commonComponents = {
-		cardGrid: CardGrid,
+		cardGrid: BasicCardGrid,
 		metadata: Metadata,
 		pageHeader: StoryblokPageHeader,
 	};
