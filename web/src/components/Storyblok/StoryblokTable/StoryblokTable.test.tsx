@@ -58,9 +58,7 @@ describe("StoryblokTable", () => {
 		it("renders caption with title and summary", () => {
 			renderTable({ title: "Test Title", summary: "Test Summary" });
 			expect(screen.queryByTestId("table-caption")).toBeInTheDocument();
-			expect(screen.getByTestId("table-title")).toHaveTextContent(
-				"Test Title"
-			);
+			expect(screen.getByTestId("table-title")).toHaveTextContent("Test Title");
 			expect(screen.getByTestId("table-summary")).toHaveTextContent(
 				"Test Summary"
 			);
@@ -68,9 +66,7 @@ describe("StoryblokTable", () => {
 
 		it("renders caption with only title when summary is missing", () => {
 			renderTable({ title: "Only Title", summary: undefined });
-			expect(screen.getByTestId("table-title")).toHaveTextContent(
-				"Only Title"
-			);
+			expect(screen.getByTestId("table-title")).toHaveTextContent("Only Title");
 		});
 
 		it("renders caption with only summary when title is missing", () => {
