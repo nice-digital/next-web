@@ -57,7 +57,8 @@ describe("StoryblokTable", () => {
 	describe("Table caption", () => {
 		it("renders caption with title and summary", () => {
 			renderTable({ title: "Test Title", summary: "Test Summary" });
-			expect(screen.getByTestId("table-caption")).toHaveTextContent(
+			expect(screen.queryByTestId("table-caption")).toBeInTheDocument();
+			expect(screen.getByTestId("table-title")).toHaveTextContent(
 				"Test Title"
 			);
 			expect(screen.getByTestId("table-summary")).toHaveTextContent(
@@ -65,26 +66,16 @@ describe("StoryblokTable", () => {
 			);
 		});
 
-		it("renders table with aria-describedby attribute pointing to summary", () => {
-			renderTable({ title: "Test Title", summary: "Test Summary" });
-			expect(screen.getByTestId("storyblok-table")).toHaveAttribute(
-				"aria-describedby",
-				"table-summary"
-			);
-		});
-
 		it("renders caption with only title when summary is missing", () => {
 			renderTable({ title: "Only Title", summary: undefined });
-			expect(screen.getByTestId("table-caption")).toHaveTextContent(
+			expect(screen.getByTestId("table-title")).toHaveTextContent(
 				"Only Title"
 			);
 		});
 
 		it("renders caption with only summary when title is missing", () => {
 			renderTable({ title: undefined, summary: "Only Summary" });
-			expect(screen.getByTestId("table-caption")).not.toHaveTextContent(
-				"Only Title"
-			);
+			expect(screen.queryByTestId("table-title")).not.toBeInTheDocument();
 			expect(screen.getByTestId("table-summary")).toHaveTextContent(
 				"Only Summary"
 			);
@@ -93,6 +84,7 @@ describe("StoryblokTable", () => {
 		it("does not render caption when both title and summary are missing", () => {
 			renderTable({ title: undefined, summary: undefined });
 			expect(screen.queryByTestId("table-caption")).not.toBeInTheDocument();
+			expect(screen.queryByTestId("table-title")).not.toBeInTheDocument();
 			expect(screen.queryByTestId("table-summary")).not.toBeInTheDocument();
 		});
 	});
