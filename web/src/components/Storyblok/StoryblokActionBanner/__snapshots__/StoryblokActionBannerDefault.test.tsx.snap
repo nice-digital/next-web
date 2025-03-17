@@ -3,7 +3,7 @@
 exports[`Storyblok action banner default component should match snapshot 1`] = `
 <div>
   <section
-    class="action-banner action-banner--default actionBannerDefault"
+    class="action-banner action-banner--default action-banner--standalone"
     data-component="action-banner--default"
   >
     <div
@@ -49,7 +49,7 @@ exports[`Storyblok action banner default component should match snapshot 1`] = `
 exports[`Storyblok action banner default component should match the snapshot for the subtle variant 1`] = `
 <div>
   <section
-    class="action-banner action-banner--subtle actionBannerDefault"
+    class="action-banner action-banner--subtle action-banner--standalone"
     data-component="action-banner--subtle"
   >
     <div

@@ -1,6 +1,7 @@
+/* stylelint-disable selector-class-pattern */
 @use '@nice-digital/nds-core/scss/spacing';
 @use '@nice-digital/nds-core/scss/utils';
 
-.actionBannerDefault {
+.action-banner--standalone {
   margin-top: utils.rem(spacing.$large);
 }

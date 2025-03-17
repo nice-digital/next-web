@@ -29,7 +29,7 @@ export const StoryblokActionBannerDefault: React.FC<
 }: StoryblokActionBannerDefaultProps) => {
 	const { heading, body, cta, variant } = blok;
 	const defaultActionBannerClasses = classnames({
-		[styles.actionBannerDefault]: isStandAlone,
+		[styles["action-banner--standalone"]]: isStandAlone,
 		className,
 	});
 	return (
