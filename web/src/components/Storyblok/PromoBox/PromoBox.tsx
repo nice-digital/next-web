@@ -84,6 +84,7 @@ export const PromoBox: React.FC<PromoBoxProps> = ({
 					<StoryblokActionBannerDefault
 						blok={blok as ActionBannerDefaultStoryblok}
 						headingLevel={3}
+						isStandAlone={false}
 					/>
 				);
 			default:
