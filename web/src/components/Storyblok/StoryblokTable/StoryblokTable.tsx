@@ -39,11 +39,15 @@ export const StoryblokTable: React.FC<StoryblokTableProps> = ({ blok }) => {
 	const { thead = [], tbody = [] } = table;
 
 	return (
-		<Table>
+		<Table
+			data-testid="storyblok-table"
+			data-tracking="storyblok-table"
+			data-component="storyblok-table"
+		>
 			{(title || summary) && (
 				<caption className={styles.table__caption} data-testid="table-caption">
-					{title && <h3>{title}</h3>}
-					{summary && <p>{summary}</p>}
+					{title && <h3 data-testid="table-title">{title}</h3>}
+					{summary && <p data-testid="table-summary">{summary}</p>}
 				</caption>
 			)}
 			<thead data-testid="table-head">
