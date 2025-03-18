@@ -1,6 +1,7 @@
 import React from "react";
 
 import { Table } from "@nice-digital/nds-table";
+
 import styles from "./StoryblokTable.module.scss";
 
 interface TableCol {
