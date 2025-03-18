@@ -1,12 +1,15 @@
 import { Inter, Lora } from "next/font/google";
 
-
+import Script from "next/script";
 import HeaderClient from "@/components/HeaderClient/HeaderClient";
 import MainClient from "@/components/MainClient/MainClient";
 import FooterClient from "@/components/FooterClient/FooterClient";
 import { Container } from "@nice-digital/nds-container";
+
+import { publicRuntimeConfig } from "@/config";
 import { GoogleTagManager } from "@/components/GoogleTagManager/GoogleTagManager";
-import G from "glob";
+
+import "../pages/_app.page.scss";
 
 // export const metadata = {
 //   title: 'Next.js',
@@ -23,17 +26,26 @@ export default function RootLayout({
 }) {
   return (
     <html lang="en">
-
-		{/* <head><title>TEST LAYOUT NESTED STATIC TITLE</title></head> */}
       	<body className={`${lora.variable} ${inter.variable}`}>
-
-			<HeaderClient />
+			{/*
+				Example to show it's possible to pass current config values from server components to client components
+				as props.
+			*/}
+			<HeaderClient
+				searchBasePath={publicRuntimeConfig.search.baseURL}
+				authEnv={publicRuntimeConfig.authEnvironment}/>
 			<MainClient>
 				<Container>
 					{children}
 				</Container>
 			</MainClient>
 			<FooterClient/>
+
+			<Script
+				id="cookieBanner"
+				src={publicRuntimeConfig.cookieBannerScriptURL}
+				strategy="beforeInteractive"
+			/>
 			{/* <GoogleTagManager /> */}
 		</body>
     </html>
