@@ -48,7 +48,8 @@ export const getServerSideProps: GetServerSideProps = async (context) => {
 
 	const exampleMap = {
         "implementing-nice-guidance": "563840532",
-        "implementing-nice-guidance/cost-saving-resource-planning-and-audit": "642423873"
+        "implementing-nice-guidance/cost-saving-resource-planning-and-audit": "642423873",
+		"implementing-nice-guidance/cost-saving-resource-planning-and-audit/nice-and-health-inequalities": "642423884",
     }
 
 	const parentID = slug && slug in exampleMap ? exampleMap[slug as keyof typeof exampleMap] : undefined;
