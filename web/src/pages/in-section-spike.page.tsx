@@ -23,6 +23,7 @@ const InSectionSpike = ({ siblings, parentAndSiblings }: { siblings: Link[] }): 
 		{linksArray.map((link: Link) => (
 			<li key={link.id}>
 				{link.name} {" "}
+				{link.is_startpage && `🏠`}
 				{link.is_folder && `📁`}
 			</li>
 		))}
@@ -32,6 +33,7 @@ const InSectionSpike = ({ siblings, parentAndSiblings }: { siblings: Link[] }): 
 		{parentAndSiblingsArray.map((link: Link) => (
 			<li key={link.id}>
 				{link.name} {" "}
+				{link.is_startpage && `🏠`}
 				{link.is_folder && `📁`	}
 			</li>
 		))}
