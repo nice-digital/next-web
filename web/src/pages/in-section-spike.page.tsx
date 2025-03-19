@@ -60,7 +60,7 @@ export const getServerSideProps: GetServerSideProps = async (context) => {
 	console.log("slug from querystring:", slug);
 	const token = publicRuntimeConfig.storyblok.accessToken;
 
-	//https://api.storyblok.com/v2/cdn/links?version=published&token=O8HhG6D7S3KeDqGrZeDMoAtt&starts_with=implementing-nice-guidance/cost-saving
+	//https://api.storyblok.com/v2/cdn/links?version=published&token=${token}&starts_with=implementing-nice-guidance/cost-saving
 
 	const res = await fetch(`https://api.storyblok.com/v2/cdn/links?version=published&token=${token}&with_parent=${parentID}`);
 	const data = await res.json();
