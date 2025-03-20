@@ -1,18 +1,17 @@
 "use client";
 
+import { usePathname, useRouter, useSearchParams } from "next/navigation";
+
 import {
 	Header,
 	type HeaderProps,
 	type Service,
 } from "@nice-digital/global-nav";
 
-import { usePathname, useRouter, useSearchParams } from "next/navigation";
-
 interface HeaderClientProps extends HeaderProps {
 	searchBasePath: string;
-	authEnv: "live" | "beta" | "test" | "local"
+	authEnv: "live" | "beta" | "test" | "local";
 }
-
 
 /**
  * Client components cannot access config directly without error.  We can pass the config as props to the client component and use it to configure the header.
@@ -20,20 +19,19 @@ interface HeaderClientProps extends HeaderProps {
  * Not an ideal approach as we're not adhering to NextJS recommendations, but shows there are ways to pass config to client components from server components with the current config setup.
  */
 
-export default function HeaderClient(props : HeaderClientProps): JSX.Element {
+export default function HeaderClient(props: HeaderClientProps): JSX.Element {
 	const pathname = usePathname();
 	const router = useRouter();
 	const searchParams = useSearchParams();
 	const queryTerm = searchParams ? (searchParams.get("q") as string) : "";
 	const { searchBasePath, authEnv } = props;
 
-
 	// process.env.NEXT_PUBLIC_SEARCH_BASE_URL
 	// process.env.NEXT_PUBLIC_AUTH_ENVIRONMENT
-	const headerProps : HeaderProps  = {
+	const headerProps: HeaderProps = {
 		search: {
 			url: "/search",
-			autocomplete: searchBasePath  + "/typeahead?index=nice",
+			autocomplete: searchBasePath + "/typeahead?index=nice",
 			query: queryTerm,
 			onSearching: (e): void => {
 				router.push(`/search?q=${e.query}`);
@@ -54,14 +52,12 @@ export default function HeaderClient(props : HeaderClientProps): JSX.Element {
 		pathname?.startsWith("/indicators")
 	) {
 		service = "standards-and-indicators";
-		}
+	}
 
-/**
- *  Creates a client wrapper for the Header component from global-nav
- *  NOTE: we can add relevant logic to handle header props here
- * import react hooks etc to handle state and props
-*/
-	return (
-		<Header {...headerProps} service={service}/>
-	);
+	/**
+	 *  Creates a client wrapper for the Header component from global-nav
+	 *  NOTE: we can add relevant logic to handle header props here
+	 * import react hooks etc to handle state and props
+	 */
+	return <Header {...headerProps} service={service} />;
 }

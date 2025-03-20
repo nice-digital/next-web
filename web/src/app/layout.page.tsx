@@ -1,13 +1,13 @@
 import { Inter, Lora } from "next/font/google";
-
 import Script from "next/script";
-import HeaderClient from "@/components/HeaderClient/HeaderClient";
-import MainClient from "@/components/MainClient/MainClient";
-import FooterClient from "@/components/FooterClient/FooterClient";
+
 import { Container } from "@nice-digital/nds-container";
 
-import { publicRuntimeConfig } from "@/config";
+import FooterClient from "@/components/FooterClient/FooterClient";
 import { GoogleTagManager } from "@/components/GoogleTagManager/GoogleTagManager";
+import HeaderClient from "@/components/HeaderClient/HeaderClient";
+import MainClient from "@/components/MainClient/MainClient";
+import { publicRuntimeConfig } from "@/config";
 
 import "../pages/_app.page.scss";
 
@@ -20,34 +20,33 @@ const inter = Inter({ subsets: ["latin"], variable: "--sans-font-family" });
 const lora = Lora({ subsets: ["latin"], variable: "--serif-font-family" });
 
 export default function RootLayout({
-  children,
+	children,
 }: {
-  children: React.ReactNode
+	children: React.ReactNode;
 }) {
-  return (
-    <html lang="en">
-      	<body className={`${lora.variable} ${inter.variable}`}>
-			{/*
+	return (
+		<html lang="en">
+			<body className={`${lora.variable} ${inter.variable}`}>
+				{/*
 				Example to show it's possible to pass current config values from server components to client components
 				as props.
 			*/}
-			<HeaderClient
-				searchBasePath={publicRuntimeConfig.search.baseURL}
-				authEnv={publicRuntimeConfig.authEnvironment}/>
-			<MainClient>
-				<Container>
-					{children}
-				</Container>
-			</MainClient>
-			<FooterClient/>
+				<HeaderClient
+					searchBasePath={publicRuntimeConfig.search.baseURL}
+					authEnv={publicRuntimeConfig.authEnvironment}
+				/>
+				<MainClient>
+					<Container>{children}</Container>
+				</MainClient>
+				<FooterClient />
 
-			<Script
-				id="cookieBanner"
-				src={publicRuntimeConfig.cookieBannerScriptURL}
-				strategy="beforeInteractive"
-			/>
-			{/* <GoogleTagManager /> */}
-		</body>
-    </html>
-  )
+				<Script
+					id="cookieBanner"
+					src={publicRuntimeConfig.cookieBannerScriptURL}
+					strategy="beforeInteractive"
+				/>
+				{/* <GoogleTagManager /> */}
+			</body>
+		</html>
+	);
 }
