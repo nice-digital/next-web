@@ -43,8 +43,7 @@ const InSectionSpike = ({
 			<h2>In section spike</h2>
 			<ul>
 				<h3>
-					Flat structure with folders highlighted - current page and its
-					siblings
+					Flat structure with folders highlighted - current page and its siblings
 				</h3>
 				{linksArray.map((link: Link) => (
 					<li key={link.id}>
@@ -81,12 +80,13 @@ const InSectionSpike = ({
 	);
 };
 
-
 // fetch data server side
 export const getServerSideProps: GetServerSideProps = async (context) => {
-	const slug = Array.isArray(context.query.slug)
+	// normalise the slug by removing a trailing slash (if present)
+	let slug = Array.isArray(context.query.slug)
 		? context.query.slug[0]
-		: context.query.slug;
+		: context.query.slug || "";
+	const normalisedSlug = slug.endsWith("/") ? slug.slice(0, -1) : slug;
 
 	const exampleMap = {
 		"implementing-nice-guidance": "563840532",
@@ -96,18 +96,18 @@ export const getServerSideProps: GetServerSideProps = async (context) => {
 			"642423884",
 	};
 
+	// Use the normalised slug to determine the parentID.
 	const parentID =
-		slug && slug in exampleMap
-			? exampleMap[slug as keyof typeof exampleMap]
+		normalisedSlug && normalisedSlug in exampleMap
+			? exampleMap[normalisedSlug as keyof typeof exampleMap]
 			: undefined;
 
-	//https://api.storyblok.com/v2/cdn/links?version=published&token=${token}&starts_with=implementing-nice-guidance/cost-saving
+	// https://api.storyblok.com/v2/cdn/links?version=published&token=${token}&starts_with=...
 	console.log("slug from querystring:", slug);
 	const token = publicRuntimeConfig.storyblok.accessToken;
 
-
+	// Siblings fetch - get links with the given parent_id.
 	const siblingsFetchStart = performance.now();
-
 	const res = await fetch(
 		`https://api.storyblok.com/v2/cdn/links?version=published&token=${token}&with_parent=${parentID}`
 	);
@@ -122,34 +122,43 @@ export const getServerSideProps: GetServerSideProps = async (context) => {
 	// id 563840532 is the parent id
 	console.log("siblings", siblings);
 
-
+	// Starts_with fetch - get all links that start with the slug.
 	const startsWithFetchStart = performance.now();
-
 	const startsWithres = await fetch(
 		`https://api.storyblok.com/v2/cdn/links?version=published&token=${token}&starts_with=${slug}`
 	);
 	const startsWithData = await startsWithres.json();
 	const startsWith = startsWithData.links;
-
 	const startsWithFetchTime = performance.now() - startsWithFetchStart;
 	const startsWithDataSize = JSON.stringify(startsWithData.links).length;
 	const startsWithCount = Object.keys(startsWithData.links).length;
 
+	// Determine the current folder, if any.
 	const currentFolder = Object.values(startsWith).find(
 		(item) => item.is_folder && item.slug === slug
 	);
 
-	const parentFetchStart = performance.now();
-
-	const parentRes = await fetch(
-		`https://api.storyblok.com/v2/cdn/links?version=published&token=${token}&with_parent=${currentFolder.parent_id}`
-	);
-
-	const parentData = await parentRes.json();
-	const parentAndSiblings = parentData.links;
-	const parentFetchTime = performance.now() - parentFetchStart;
-	const parentDataSize = JSON.stringify(parentData.links).length;
-	const parentCount = Object.keys(parentData.links).length;
+	// Conditionally fetch parent's siblings if currentFolder exists and has a parent_id.
+	let parentAndSiblings = {};
+	let parentFetchTime = 0;
+	let parentDataSize = 0;
+	let parentCount = 0;
+	if (currentFolder && currentFolder.parent_id) {
+		const parentFetchStart = performance.now();
+		const parentRes = await fetch(
+			`https://api.storyblok.com/v2/cdn/links?version=published&token=${token}&with_parent=${currentFolder.parent_id}`
+		);
+		const parentData = await parentRes.json();
+		parentAndSiblings = parentData.links;
+		parentFetchTime = performance.now() - parentFetchStart;
+		parentDataSize = JSON.stringify(parentData.links).length;
+		parentCount = Object.keys(parentData.links).length;
+	} else {
+		// When on a top-level slug (like "implementing-nice-guidance"), we
+		// use the siblings data to populate the render.
+		console.log("No current folder found or current folder has no parent_id");
+		parentAndSiblings = siblings;
+	}
 
 	console.log("parentAndSiblings >>>>>>", parentAndSiblings);
 
