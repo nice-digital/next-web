@@ -102,32 +102,38 @@ export const getServerSideProps: GetServerSideProps = async (context) => {
 			? exampleMap[normalisedSlug as keyof typeof exampleMap]
 			: undefined;
 
-	// https://api.storyblok.com/v2/cdn/links?version=published&token=${token}&starts_with=...
+	// https://api.storyblok.com/v2/cdn/links?version=published&token=${token}&starts_with=implementing-nice-guidance/cost-saving
 	console.log("slug from querystring:", slug);
 	const token = publicRuntimeConfig.storyblok.accessToken;
 
 	// Siblings fetch - get links with the given parent_id.
 	const siblingsFetchStart = performance.now();
-	const res = await fetch(
+	// Use Promise.all to run siblings and starts_with fetch concurrently.
+	const siblingsPromise = fetch(
 		`https://api.storyblok.com/v2/cdn/links?version=published&token=${token}&with_parent=${parentID}`
-	);
-	const data = await res.json();
-	const siblings = data.links;
+	).then((res) => res.json());
+
+	// Starts_with fetch - get all links that start with the slug.
+	const startsWithFetchStart = performance.now();
+	const startsWithPromise = fetch(
+		`https://api.storyblok.com/v2/cdn/links?version=published&token=${token}&starts_with=${slug}`
+	).then((res) => res.json());
+
+	const [siblingsData, startsWithData] = await Promise.all([
+		siblingsPromise,
+		startsWithPromise,
+	]);
+
+	const siblings = siblingsData.links;
 	const siblingsFetchTime = performance.now() - siblingsFetchStart;
-	const siblingsDataSize = JSON.stringify(data.links).length;
-	const siblingsCount = Object.keys(data.links).length;
+	const siblingsDataSize = JSON.stringify(siblingsData.links).length;
+	const siblingsCount = Object.keys(siblingsData.links).length;
 
 	// we need other pages with the parent's parent id...
 	// id 642423873 is the folder
 	// id 563840532 is the parent id
 	console.log("siblings", siblings);
 
-	// Starts_with fetch - get all links that start with the slug.
-	const startsWithFetchStart = performance.now();
-	const startsWithres = await fetch(
-		`https://api.storyblok.com/v2/cdn/links?version=published&token=${token}&starts_with=${slug}`
-	);
-	const startsWithData = await startsWithres.json();
 	const startsWith = startsWithData.links;
 	const startsWithFetchTime = performance.now() - startsWithFetchStart;
 	const startsWithDataSize = JSON.stringify(startsWithData.links).length;
@@ -145,6 +151,7 @@ export const getServerSideProps: GetServerSideProps = async (context) => {
 	let parentCount = 0;
 	if (currentFolder && currentFolder.parent_id) {
 		const parentFetchStart = performance.now();
+
 		const parentRes = await fetch(
 			`https://api.storyblok.com/v2/cdn/links?version=published&token=${token}&with_parent=${currentFolder.parent_id}`
 		);
