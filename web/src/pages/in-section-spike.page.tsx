@@ -41,27 +41,27 @@ const InSectionSpike = ({
 	return (
 		<>
 			<h2>In section spike</h2>
+			<h3>Flat structure with folders highlighted - current page and its siblings</h3>
+				<p>*Siblings ≈ children; root page of folder will represented as the parent but structurally is on same level as other children of the folder</p>
 			<ul>
-				<h3>
-					Flat structure with folders highlighted - current page and its siblings
-				</h3>
-				{linksArray.map((link: Link) => (
-					<li key={link.id}>
-						{link.name} {link.is_startpage && `🏠`}
-						{link.is_folder && `📁`}
-					</li>
-				))}
+			{linksArray.map((link: Link) => (
+				<li key={link.id}>
+					{link.name} {" "}
+					{link.is_startpage && `🏠`}
+					{link.is_folder && `📁`}
+				</li>
+			))}
 			</ul>
+
+			<h3>Flat structure with folders highlighted - parent page and its siblings</h3>
 			<ul>
-				<h3>
-					Flat structure with folders highlighted - parent page and its siblings
-				</h3>
-				{parentAndSiblingsArray.map((link: Link) => (
-					<li key={link.id}>
-						{link.name} {link.is_startpage && `🏠`}
-						{link.is_folder && `📁`}
-					</li>
-				))}
+			{parentAndSiblingsArray.map((link: Link) => (
+				<li key={link.id}>
+					{link.name} {" "}
+					{link.is_startpage && `🏠`}
+					{link.is_folder && `📁`	}
+				</li>
+			))}
 			</ul>
 
 			<div>
