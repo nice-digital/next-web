@@ -2,6 +2,7 @@
 
 import { GetServerSideProps } from "next";
 import { publicRuntimeConfig } from "@/config";
+import { fetchStory, getStoryVersionFromQuery } from "@/utils/storyblok";
 import React from "react";
 import Link from "next/link";
 
@@ -24,10 +25,12 @@ const InSectionSpike = ({
 			<h2>In section spike</h2>
 			<Link href="/in-section-spike-tree-structure?slug=implementing-nice-guidance">
 				implementing-nice-guidance{" "}
-			</Link><br/>
+			</Link>
+			<br />
 			<Link href="/in-section-spike-tree-structure?slug=implementing-nice-guidance/cost-saving-resource-planning-and-audit">
 				implementing-nice-guidance/cost-saving-resource-planning-and-audit{" "}
-			</Link><br/>
+			</Link>
+			<br />
 			<Link href="/in-section-spike-tree-structure?slug=implementing-nice-guidance/cost-saving-resource-planning-and-audit/nice-and-health-inequalities">
 				implementing-nice-guidance/cost-saving-resource-planning-and-audit/nice-and-health-inequalities{" "}
 			</Link>
@@ -65,19 +68,14 @@ export const getServerSideProps: GetServerSideProps = async (context) => {
 		? context.query.slug[0]
 		: context.query.slug || "";
 	const normalisedSlug = slug.endsWith("/") ? slug.slice(0, -1) : slug;
+	const version = getStoryVersionFromQuery(context.query);
+	const [storyResult] = await Promise.all([
+		fetchStory<CategoryNavigationStoryblok | InfoPageStoryblok>(slug, version),
+	]);
+	console.log("storyResults", storyResult);
 
-	const exampleMap = {
-		"implementing-nice-guidance": "563840532",
-		"implementing-nice-guidance/cost-saving-resource-planning-and-audit":
-			"642423873",
-		"implementing-nice-guidance/cost-saving-resource-planning-and-audit/nice-and-health-inequalities":
-			"642423884",
-	};
+	const parentID = storyResult.story?.parent_id;
 
-	const parentID =
-		normalisedSlug && normalisedSlug in exampleMap
-			? exampleMap[normalisedSlug as keyof typeof exampleMap]
-			: undefined;
 	// storyID 642423873 is a folder
 	// id 642430829 is the root story of the parent folder
 	console.log("slug from querystring:", slug);
