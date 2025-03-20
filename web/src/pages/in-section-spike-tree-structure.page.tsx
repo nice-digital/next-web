@@ -11,15 +11,7 @@ type Link = {
 	name: string;
 	is_folder: boolean;
 };
-const InSectionSpike = ({
-	siblings,
-	parentAndSiblings,
-}: {
-	siblings: Link[];
-}): JSX.Element => {
-	const linksArray = Object.values(siblings);
-	const parentAndSiblingsArray = Object.values(parentAndSiblings);
-
+const InSectionSpike = ({ groupedLinks }): JSX.Element => {
 	return (
 		<>
 			<h2>In section spike</h2>
@@ -34,26 +26,33 @@ const InSectionSpike = ({
 			<Link href="/in-section-spike-tree-structure?slug=implementing-nice-guidance/cost-saving-resource-planning-and-audit/nice-and-health-inequalities">
 				implementing-nice-guidance/cost-saving-resource-planning-and-audit/nice-and-health-inequalities{" "}
 			</Link>
+			<h2>In section spike</h2>
+			<h3>
+				Flat structure with folders highlighted - current page and its siblings
+			</h3>
+			<p>
+				*Siblings ≈ children; root page of folder will represented as the parent
+				but structurally is on same level as other children of the folder
+			</p>
 			<ul>
-				<h3>
-					Flat structure with folders highlighted - current page and its
-					siblings
-				</h3>
-				{linksArray.map((link: Link) => (
-					<li key={link.id}>
-						{link.name} {link.is_startpage && `🏠`}
-						{link.is_folder && `📁`}
-					</li>
-				))}
-			</ul>
-			<ul>
-				<h3>
-					Flat structure with folders highlighted - parent page and its siblings
-				</h3>
-				{parentAndSiblingsArray.map((link: Link) => (
-					<li key={link.id}>
-						{link.name} {link.is_startpage && `🏠`}
-						{link.is_folder && `📁`}
+				{groupedLinks?.map((parent: Link) => (
+					<li key={parent.id}>
+						{parent.name} {parent.is_startpage && `🏠`}{" "}
+						{parent.is_folder && `📁`}
+						{/* Render childLinks if they exist */}
+						{parent.childLinks && parent.childLinks.length > 0 && (
+							<>
+								<h4>child and siblings</h4>
+								<ul>
+									{parent.childLinks.map((child: Link) => (
+										<li key={child.id}>
+											{child.name} {child.is_startpage && `🏠`}{" "}
+											{child.is_folder && `📁`}
+										</li>
+									))}
+								</ul>
+							</>
+						)}
 					</li>
 				))}
 			</ul>
@@ -72,7 +71,6 @@ export const getServerSideProps: GetServerSideProps = async (context) => {
 	const [storyResult] = await Promise.all([
 		fetchStory<CategoryNavigationStoryblok | InfoPageStoryblok>(slug, version),
 	]);
-	console.log("storyResults", storyResult);
 
 	const parentID = storyResult.story?.parent_id;
 
@@ -127,11 +125,27 @@ export const getServerSideProps: GetServerSideProps = async (context) => {
 		console.log("No current folder found or current folder has no parent_id");
 		parentAndSiblings = siblings;
 	}
+	const linksArray = Object.values(siblings);
+	const parentAndSiblingsArray = Object.values(parentAndSiblings);
+	const groupedLinks = parentAndSiblingsArray.map((parent) => {
+		const children = linksArray.filter((childLink) => {
+			const isChild = childLink.parent_id === parent.id;
+
+			return isChild;
+		});
+
+		if (children.length > 0) {
+			parent.childLinks = children;
+		} else {
+			parent.childLinks = [];
+		}
+
+		return parent;
+	});
 
 	return {
 		props: {
-			siblings,
-			parentAndSiblings,
+			groupedLinks,
 		},
 	};
 };
