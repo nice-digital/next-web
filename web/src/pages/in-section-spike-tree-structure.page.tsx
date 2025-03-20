@@ -11,7 +11,7 @@ type Link = {
 	name: string;
 	is_folder: boolean;
 };
-const InSectionSpike = ({ groupedLinks }): JSX.Element => {
+const InSectionSpike = ({ parentChildTreeArray }): JSX.Element => {
 	return (
 		<>
 			<h2>In section spike</h2>
@@ -35,7 +35,7 @@ const InSectionSpike = ({ groupedLinks }): JSX.Element => {
 				but structurally is on same level as other children of the folder
 			</p>
 			<ul>
-				{groupedLinks?.map((parent: Link) => (
+				{parentChildTreeArray?.map((parent: Link) => (
 					<li key={parent.id}>
 						{parent.name} {parent.is_startpage && `🏠`}{" "}
 						{parent.is_folder && `📁`}
@@ -127,7 +127,7 @@ export const getServerSideProps: GetServerSideProps = async (context) => {
 	}
 	const linksArray = Object.values(siblings);
 	const parentAndSiblingsArray = Object.values(parentAndSiblings);
-	const groupedLinks = parentAndSiblingsArray.map((parent) => {
+	const parentChildTreeArray = parentAndSiblingsArray.map((parent) => {
 		const children = linksArray.filter((childLink) => {
 			const isChild = childLink.parent_id === parent.id;
 
@@ -145,7 +145,7 @@ export const getServerSideProps: GetServerSideProps = async (context) => {
 
 	return {
 		props: {
-			groupedLinks,
+			parentChildTreeArray,
 		},
 	};
 };
