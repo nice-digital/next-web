@@ -44,6 +44,7 @@ export const StoryblokTable: React.FC<StoryblokTableProps> = ({ blok }) => {
 			data-testid="storyblok-table"
 			data-tracking="storyblok-table"
 			data-component="storyblok-table"
+			className={styles.table}
 		>
 			{(title || summary) && (
 				<caption className={styles.table__caption} data-testid="table-caption">
