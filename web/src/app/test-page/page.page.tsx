@@ -10,7 +10,7 @@ async function getStory(): Promise<NewsArticleStoryblok | undefined> {
 	try {
 		initStoryblok();
 		const data = await fetchStory<NewsArticleStoryblok>(
-			"news/articles/annual-bmi-checks-recommended-for-adults-with-long-term-conditions",
+			"home",
 			"published"
 		);
 		const story = data?.story?.content;
