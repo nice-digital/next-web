@@ -1,8 +1,14 @@
 @use '@nice-digital/nds-core/scss/spacing';
 @use '@nice-digital/nds-core/scss/utils';
 
-
 .footerMeta {
   display: flex;
   gap: utils.rem(spacing.$large);
+}
+
+.pageHeaderWrapper {
+  /* stylelint-disable-next-line selector-class-pattern */
+  :global(.page-header) {
+    margin-bottom: 0;
+  }
 }

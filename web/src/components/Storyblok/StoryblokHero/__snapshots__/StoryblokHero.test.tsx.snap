@@ -12,7 +12,7 @@ exports[`Storyblok Hero should match snapshot with breadcrumbs 1`] = `
         data-component="container"
       >
         <div
-          class="hero"
+          class="hero hero"
           data-component="hero"
           data-testid="hero-container"
         >
@@ -138,7 +138,7 @@ exports[`Storyblok Hero should match snapshot without breadcrumbs 1`] = `
         data-component="container"
       >
         <div
-          class="hero"
+          class="hero hero"
           data-component="hero"
           data-testid="hero-container"
         >
