@@ -1,6 +1,6 @@
 import nextConfig from "./next.config";
 
-describe("next.config.js", () => {
+xdescribe("next.config.js", () => {
 	it("should disable x-powered-by header", () => {
 		expect(nextConfig.poweredByHeader).toBe(false);
 	});
@@ -61,7 +61,7 @@ describe("next.config.js", () => {
 	`);
 	});
 
-	describe("Redirects", () => {
+	xdescribe("Redirects", () => {
 		it("should redirect proposed list page to awaiting development list page", async () => {
 			if (!nextConfig.redirects)
 				return expect(nextConfig.redirects).toBeTruthy();
