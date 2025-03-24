@@ -4,6 +4,7 @@ import {
 	StoryblokComponent,
 	setComponents,
 } from "@storyblok/react";
+import Link from "next/link";
 import { NextSeo } from "next-seo";
 import React, { useMemo } from "react";
 
@@ -32,7 +33,6 @@ import {
 } from "@/utils/storyblok";
 
 import type { GetServerSidePropsContext } from "next";
-import Link from "next/link";
 
 export type HomePageErrorProps = {
 	error: string;
