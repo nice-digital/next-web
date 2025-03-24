@@ -1,5 +1,8 @@
 import Link from "next/link";
 
+
+export const dynamic = "force-dynamic";
+
 export default function NotFound(): JSX.Element {
 	return (
 		<div>

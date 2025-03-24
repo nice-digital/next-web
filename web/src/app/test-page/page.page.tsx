@@ -4,6 +4,8 @@ import { NewsArticleStoryblok } from "@/types/storyblok";
 import { initStoryblok } from "@/utils/initStoryblok";
 import { fetchStory } from "@/utils/storyblok";
 
+export const dynamic = "force-dynamic";
+
 async function getStory(): Promise<NewsArticleStoryblok | undefined> {
 	try {
 		initStoryblok();
