@@ -2,7 +2,7 @@
  * @jest-environment node
  */
 import { cache } from "@/cache";
-import { serverRuntimeConfig } from "@/config";
+// import { serverRuntimeConfig } from "@/config";
 
 import { getAllProjects, getAllConsultations } from "./inDev";
 
@@ -26,7 +26,8 @@ describe("feeds/inDev", () => {
 			expect(cacheWrapMock).toHaveBeenCalledWith(
 				"next-web:tests:indev:/gidprojects/all",
 				expect.any(Function),
-				{ ttl: serverRuntimeConfig.cache.defaultTTL }
+				// { ttl: serverRuntimeConfig.cache.defaultTTL }
+				{ ttl: Number(process.env.SERVER_CACHE_DEFAULT_TTL) }
 			);
 		});
 
@@ -57,7 +58,8 @@ describe("feeds/inDev", () => {
 			expect(cacheWrapMock).toHaveBeenCalledWith(
 				"next-web:tests:indev:/inconsultationprojects",
 				expect.any(Function),
-				{ ttl: serverRuntimeConfig.cache.defaultTTL }
+				// { ttl: serverRuntimeConfig.cache.defaultTTL }
+				{ ttl: Number(process.env.SERVER_CACHE_DEFAULT_TTL) }
 			);
 		});
 

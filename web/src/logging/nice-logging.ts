@@ -1,7 +1,7 @@
 import { LoggerOptions } from "pino";
 import { serializeError } from "serialize-error";
 
-import { publicRuntimeConfig } from "@/config";
+// import { publicRuntimeConfig } from "@/config";
 
 const errorSerializer = (error: Error): unknown =>
 	process.env.NODE_ENV === "production"
@@ -26,9 +26,11 @@ export const niceLoggingPinoOptions: LoggerOptions = {
 	mixin: () => ({
 		NodeEnv: process.env.NODE_ENV,
 		Application: "Next Web",
-		Environment: publicRuntimeConfig.environment,
+		// Environment: publicRuntimeConfig.environment,
+		Environment: process.env.PUBLIC_ENVIRONMENT,
 		"Properties.NodeVersion": process.version,
-		"Properties.version": publicRuntimeConfig.buildNumber,
+		// "Properties.version": publicRuntimeConfig.buildNumber,
+		"Properties.version": process.env.PUBLIC_BUILD_NUMBER,
 	}),
 	formatters: {
 		level(label, _number) {

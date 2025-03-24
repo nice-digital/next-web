@@ -8,16 +8,21 @@ import Document, {
 } from "next/document";
 import Script from "next/script";
 
-import { publicRuntimeConfig } from "@/config";
+// import { publicRuntimeConfig } from "@/config";
 
 export type NextWebDocumentProps = Record<string, never>;
+interface ExtendedDocumentInitialProps extends DocumentInitialProps {
+	PUBLIC_COOKIE_BANNER_SCRIPT_URL?: string;
+}
 
 class NextWebDocument extends Document<NextWebDocumentProps> {
 	static async getInitialProps(
 		ctx: DocumentContext
-	): Promise<DocumentInitialProps> {
+	): Promise<ExtendedDocumentInitialProps> {
 		const initialProps = await Document.getInitialProps(ctx);
-		return { ...initialProps };
+		const PUBLIC_COOKIE_BANNER_SCRIPT_URL =
+			process.env.PUBLIC_COOKIE_BANNER_SCRIPT_URL;
+		return { ...initialProps, PUBLIC_COOKIE_BANNER_SCRIPT_URL };
 	}
 
 	render(): JSX.Element {
@@ -29,7 +34,8 @@ class NextWebDocument extends Document<NextWebDocumentProps> {
 					<NextScript />
 					<Script
 						id="cookieBanner"
-						src={publicRuntimeConfig.cookieBannerScriptURL}
+						// src={publicRuntimeConfig.cookieBannerScriptURL}
+						src={this.props.PUBLIC_COOKIE_BANNER_SCRIPT_URL}
 						strategy="beforeInteractive"
 					/>
 				</body>

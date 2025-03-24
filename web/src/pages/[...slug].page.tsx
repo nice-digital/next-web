@@ -28,7 +28,7 @@ import { StoryblokPageHeader } from "@/components/Storyblok/StoryblokPageHeader/
 import { StoryblokTestimonialFullWidth } from "@/components/Storyblok/StoryblokTestimonialFullWidth/StoryblokTestimonialFullWidth";
 import { StoryblokTestimonialGridItem } from "@/components/Storyblok/StoryblokTestimonialGridItem/StoryblokTestimonialGridItem";
 import { StoryblokYoutubeEmbed } from "@/components/Storyblok/StoryblokYoutubeEmbed/StoryblokYoutubeEmbed";
-import { publicRuntimeConfig } from "@/config";
+// import { publicRuntimeConfig } from "@/config";
 import { logger } from "@/logger";
 import { type Breadcrumb } from "@/types/Breadcrumb";
 import {
@@ -148,7 +148,15 @@ export default function SlugCatchAll(
 
 export async function getServerSideProps(context: GetServerSidePropsContext) {
 	// Bail out early unless this route is enabled for this environment
-	if (publicRuntimeConfig.storyblok.enableRootCatchAll.toString() !== "true") {
+	// if (publicRuntimeConfig.storyblok.enableRootCatchAll?.toString() !== "true") {
+	// 	return {
+	// 		notFound: true,
+	// 	};
+	// }
+
+	if (
+		process.env.PUBLIC_STORYBLOK_ENABLE_ROOT_CATCH_ALL?.toString() !== "true"
+	) {
 		return {
 			notFound: true,
 		};
