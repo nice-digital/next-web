@@ -25,6 +25,7 @@ import "@nice-digital/nds-table/scss/table.scss";
 import "@nice-digital/nds-panel/scss/panel.scss";
 
 import "./_app.page.scss";
+import Link from "next/link";
 
 interface AppState {
 	/**
@@ -176,6 +177,7 @@ class NextWebApp extends App<{}, {}, AppState> {
 					<div ref={this.globalNavWrapperRef}>
 						<Header {...headerProps} service={service} />
 					</div>
+					<Link href="/example">Example link to client page</Link>
 					<Main>
 						<Container>
 							{this.state.hasError ? (
