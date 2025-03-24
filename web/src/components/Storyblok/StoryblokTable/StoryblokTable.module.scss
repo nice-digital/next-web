@@ -1,9 +1,8 @@
 @use '@nice-digital/nds-core/scss/media-queries';
 
 .table {
-  display: table;
-  @include media-queries.mq($until: sm) {
-    display: block;
+  @include media-queries.mq($from: sm) {
+    display: table;
   }
 
   &__caption {
