@@ -4,6 +4,7 @@ import {
 	StoryblokComponent,
 	setComponents,
 } from "@storyblok/react";
+import Link from "next/link";
 import { NextSeo } from "next-seo";
 import React, { useMemo } from "react";
 
@@ -85,6 +86,8 @@ export default function Home(props: HomePageProps): React.ReactElement {
 				openGraph={{ title: "Homepage" }}
 				additionalMetaTags={additionalMetaTags}
 			></NextSeo>
+			<Link href="/example">Example link to client page</Link>
+
 			<StoryblokComponent blok={storyData.content} latestNews={latestNews} />
 		</>
 	);
