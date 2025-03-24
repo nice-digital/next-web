@@ -70,7 +70,14 @@ exports[`Spotlight component should match snapshot 1`] = `
                   />
                   <img
                     alt="Kitten mittens"
-                    src="http://local-host-test-nice-org.com/f/243782/420x234/7a576133e7/register-for-board-meeting.PNG/m/867x0/filters:format%28jpeg%29:quality%2880%29/m/708x0/filters:format%28jpeg%29:quality%2880%29"
+                    data-nimg="1"
+                    decoding="async"
+                    height="0"
+                    loading="lazy"
+                    src="/_next/image?url=http%3A%2F%2Flocal-host-test-nice-org.com%2Ff%2F243782%2F420x234%2F7a576133e7%2Fregister-for-board-meeting.PNG%2Fm%2F867x0%2Ffilters%3Aformat%2528jpeg%2529%3Aquality%252880%2529%2Fm%2F708x0%2Ffilters%3Aformat%2528jpeg%2529%3Aquality%252880%2529&w=1920&q=75"
+                    srcset="/_next/image?url=http%3A%2F%2Flocal-host-test-nice-org.com%2Ff%2F243782%2F420x234%2F7a576133e7%2Fregister-for-board-meeting.PNG%2Fm%2F867x0%2Ffilters%3Aformat%2528jpeg%2529%3Aquality%252880%2529%2Fm%2F708x0%2Ffilters%3Aformat%2528jpeg%2529%3Aquality%252880%2529&w=750&q=75 1x, /_next/image?url=http%3A%2F%2Flocal-host-test-nice-org.com%2Ff%2F243782%2F420x234%2F7a576133e7%2Fregister-for-board-meeting.PNG%2Fm%2F867x0%2Ffilters%3Aformat%2528jpeg%2529%3Aquality%252880%2529%2Fm%2F708x0%2Ffilters%3Aformat%2528jpeg%2529%3Aquality%252880%2529&w=1920&q=75 2x"
+                    style="color: transparent; max-width: 100%; height: auto;"
+                    width="708"
                   />
                 </picture>
               </div>
@@ -116,7 +123,14 @@ exports[`Spotlight component should match snapshot 1`] = `
                   />
                   <img
                     alt="A kitty cat"
-                    src="http://local-host-test-nice-org.com/f/243782/420x234/7a576133e7/register-for-board-meeting.PNG/m/867x0/filters:format%28jpeg%29:quality%2880%29/m/708x0/filters:format%28jpeg%29:quality%2880%29"
+                    data-nimg="1"
+                    decoding="async"
+                    height="0"
+                    loading="lazy"
+                    src="/_next/image?url=http%3A%2F%2Flocal-host-test-nice-org.com%2Ff%2F243782%2F420x234%2F7a576133e7%2Fregister-for-board-meeting.PNG%2Fm%2F867x0%2Ffilters%3Aformat%2528jpeg%2529%3Aquality%252880%2529%2Fm%2F708x0%2Ffilters%3Aformat%2528jpeg%2529%3Aquality%252880%2529&w=1920&q=75"
+                    srcset="/_next/image?url=http%3A%2F%2Flocal-host-test-nice-org.com%2Ff%2F243782%2F420x234%2F7a576133e7%2Fregister-for-board-meeting.PNG%2Fm%2F867x0%2Ffilters%3Aformat%2528jpeg%2529%3Aquality%252880%2529%2Fm%2F708x0%2Ffilters%3Aformat%2528jpeg%2529%3Aquality%252880%2529&w=750&q=75 1x, /_next/image?url=http%3A%2F%2Flocal-host-test-nice-org.com%2Ff%2F243782%2F420x234%2F7a576133e7%2Fregister-for-board-meeting.PNG%2Fm%2F867x0%2Ffilters%3Aformat%2528jpeg%2529%3Aquality%252880%2529%2Fm%2F708x0%2Ffilters%3Aformat%2528jpeg%2529%3Aquality%252880%2529&w=1920&q=75 2x"
+                    style="color: transparent; max-width: 100%; height: auto;"
+                    width="708"
                   />
                 </picture>
               </div>

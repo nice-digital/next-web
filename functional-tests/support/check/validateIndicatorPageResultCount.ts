@@ -14,9 +14,14 @@ export async function validateIndicatorPageResultCount(
 		"",
 		countText
 	);
+}
+
+export async function validateIndicatorPageNoResultCount(
+	countText: string
+): Promise<void> {
+	await waitForDisplayed("#results h2", "");
+	await checkContainsText("element", "#results h2", "", countText);
 	await pause("5000");
-	const elem = await $(".horizontal-nav__list:nth-child(1)");
-	await elem.scrollIntoView({ block: "center", inline: "center" });
 }
 
 export async function validateFirstLinkInPagination(

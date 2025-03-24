@@ -9,16 +9,21 @@ Feature: The list of published recommendation for research page is reduced when 
     Given I open the recommendation for research list page
     And I enter keyword or reference number "NG289-3" to filter page list
     And I pause for 2000ms
-    # Then I expect the result list count contains "Showing 1 to 1 of 1"
+    Then I expect the result list count contains "Showing 1 to 1 of 1"
 
-  Scenario: User can apply keyword filter published guidance list page
+  Scenario: User can apply keyword filter published recommendation for research list page
     Given I open the recommendation for research list page
-    And I enter keyword or reference number "CG276-3" to filter page list
-    And I pause for 5000ms
-/
+    And I enter keyword or reference number "fluid" to filter page list
+    And I pause for 2000ms
+    # Then I expect the result list count contains "Showing 1 to 10 of 23"
 
-  # Scenario: User can apply date filter
-  #   Given I open the recommendation for research list page
-  #   And I enter From date "01/01/2024" to filter page list
-  #   And I pause for 2000ms
-  #   # Then I expect the result list count contains "Showing 1 to 10 of 138"
+  Scenario: User can apply keyword filter published recommendation for research list page
+    Given I open the recommendation for research list page
+    And I enter keyword or reference number "testingst" to filter page list
+    Then I expect the result list count shows "No results found"
+
+  Scenario: User can apply date filter
+    Given I open the recommendation for research list page
+    And I enter From date "01/01/2024" to filter page list
+    And I pause for 2000ms
+  #   # Then I expect the result list count contains "Showing 1 to 10 of 143"

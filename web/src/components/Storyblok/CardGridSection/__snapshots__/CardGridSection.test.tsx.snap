@@ -1,0 +1,145 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`CardGridSection matches snapshot 1`] = `
+<div>
+  <section
+    class="cardGridSection cardGridSection--mediumSpacing cardGridSection--subtle"
+    data-testid="card-grid-section"
+  >
+    <div
+      class="cardGridSection__container"
+    >
+      <div
+        class="cardGridSection__intro"
+      >
+        <h2
+          class="cardGridSection__heading"
+        >
+          Card Grid Section Heading
+        </h2>
+        <div
+          class="storyblokRichTextWrapper cardGridSection__leadText"
+          data-testid="storyblok-rich-text"
+        >
+          <p>
+            This is lead text.
+          </p>
+        </div>
+        <div
+          class="storyblokRichTextWrapper cardGridSection__leadTextSecondary"
+          data-testid="storyblok-rich-text"
+        >
+          <p>
+            Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut felis leo, fermentum quis posuere non, viverra at nulla.
+          </p>
+        </div>
+      </div>
+      <ul
+        class="grid grid--equal-height grid--loose cardGrid__cardGridRow"
+        data-testid="card-grid"
+      >
+        <li
+          class="cardGrid__cardGridItem"
+          data-component="grid-item"
+          data-g="12 md:4"
+        >
+          <article
+            class="card"
+            data-component="card"
+          >
+            <header
+              class="card__header"
+            >
+              <p
+                class="card__heading"
+              >
+                <a
+                  href="https://nice.org.uk/guidance/ta10"
+                >
+                  Mock card title
+                </a>
+              </p>
+            </header>
+            Mock card summary
+          </article>
+        </li>
+        <li
+          class="cardGrid__cardGridItem"
+          data-component="grid-item"
+          data-g="12 md:4"
+        >
+          <article
+            class="card"
+            data-component="card"
+          >
+            <header
+              class="card__header"
+            >
+              <p
+                class="card__heading"
+              >
+                <a
+                  href="https://nice.org.uk/guidance/ta10"
+                >
+                  Mock card title
+                </a>
+              </p>
+            </header>
+            Mock card summary
+          </article>
+        </li>
+        <li
+          class="cardGrid__cardGridItem"
+          data-component="grid-item"
+          data-g="12 md:4"
+        >
+          <article
+            class="card"
+            data-component="card"
+          >
+            <header
+              class="card__header"
+            >
+              <p
+                class="card__heading"
+              >
+                <a
+                  href="https://nice.org.uk/guidance/ta10"
+                >
+                  Mock card title
+                </a>
+              </p>
+            </header>
+            Mock card summary
+          </article>
+        </li>
+        <li
+          class="cardGrid__cardGridItem"
+          data-component="grid-item"
+          data-g="12 md:4"
+        >
+          <article
+            class="card"
+            data-component="card"
+          >
+            <header
+              class="card__header"
+            >
+              <p
+                class="card__heading"
+              >
+                <a
+                  href="https://nice.org.uk/guidance/ta10"
+                >
+                  Mock card title
+                </a>
+              </p>
+            </header>
+            Mock card summary
+          </article>
+        </li>
+      </ul>
+    </div>
+  </section>
+</div>
+`;

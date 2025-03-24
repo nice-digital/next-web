@@ -1,0 +1,53 @@
+@use '~/styles/colours';
+@use '@nice-digital/nds-core/scss/layout';
+@use '@nice-digital/nds-core/scss/media-queries';
+@use '@nice-digital/nds-core/scss/spacing';
+@use '@nice-digital/nds-core/scss/typography';
+@use '@nice-digital/nds-core/scss/utils';
+@use '~/styles/spacing' as *;
+
+.cardSection {
+  @include layout.fullWidth();
+  background-color: colours.$card-section-background;
+}
+
+.cardSectionLargeSpacing {
+  padding: $section-large-spacing 0;
+}
+
+.cardSectionMediumSpacing {
+  padding: $section-medium-spacing 0;
+}
+
+.cardSectionSmallSpacing {
+  padding: $section-small-spacing 0;
+}
+
+.heading {
+  margin-top: 0;
+}
+
+.leadText {
+  p {
+    @include typography.font-size(lead);
+  }
+}
+
+
+.leadTextSecondary {
+  p {
+    @include typography.font-size(p);
+  }
+}
+
+.cardSectionListIntro {
+  margin-bottom: utils.rem(spacing.$large);
+}
+
+.transparent {
+  background: transparent;
+}
+
+.container {
+  @include layout.fullWidthContainer();
+}

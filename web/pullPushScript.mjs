@@ -5,7 +5,7 @@ import path from "path";
 import { config } from "dotenv";
 import inquirer from "inquirer";
 
-config({ path: ".env.local" });
+config({ path: ".env.dev.local" });
 
 const STORYBLOK_TOKEN = process.env.STORYBLOK_TOKEN;
 

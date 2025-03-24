@@ -2236,7 +2236,14 @@ const nextConfig = {
 		remotePatterns: [
 			{
 				protocol: "https",
+
 				hostname: "**.nice.org.uk",
+				port: "",
+			},
+			{
+				protocol: "https",
+
+				hostname: "a.storyblok.com",
 				port: "",
 			},
 		],

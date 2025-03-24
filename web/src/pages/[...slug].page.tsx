@@ -1,26 +1,32 @@
 import {
-	type ISbStoryData,
-	StoryblokComponent,
 	setComponents,
+	StoryblokComponent,
+	type ISbStoryData,
 } from "@storyblok/react";
 import { NextSeo } from "next-seo";
 import React, { useMemo } from "react";
 
 import { ErrorPageContent } from "@/components/ErrorPageContent/ErrorPageContent";
+import { BasicCardGrid } from "@/components/Storyblok/BasicCardGrid/BasicCardGrid";
 import { Blockquote } from "@/components/Storyblok/Blockquote/Blockquote";
-import { CardGrid } from "@/components/Storyblok/CardGrid/CardGrid";
+import { CardGridSection } from "@/components/Storyblok/CardGridSection/CardGridSection";
+import { CardListSection } from "@/components/Storyblok/CardListSection/CardListSection";
 import { CategoryLandingPage } from "@/components/Storyblok/CategoryLandingPage/CategoryLandingPage";
 import { CategoryNavigation } from "@/components/Storyblok/CategoryNavigation/CategoryNavigation";
 import { InfoPage } from "@/components/Storyblok/InfoPage/InfoPage";
 import { Metadata } from "@/components/Storyblok/Metadata/Metadata";
 import { NestedRichText } from "@/components/Storyblok/NestedRichText/NestedRichText";
+import { PromoBox } from "@/components/Storyblok/PromoBox/PromoBox";
 import { StoryblokAccordion } from "@/components/Storyblok/StoryblokAccordion/StoryblokAccordion";
 import { StoryblokAccordionGroup } from "@/components/Storyblok/StoryblokAccordionGroup/StoryblokAccordionGroup";
 import { StoryblokActionBannerDefault } from "@/components/Storyblok/StoryblokActionBanner/StoryblokActionBannerDefault";
 import { StoryblokActionBannerFullWidth } from "@/components/Storyblok/StoryblokActionBanner/StoryblokActionBannerFullWidth";
+import { StoryblokCalloutCard } from "@/components/Storyblok/StoryblokCalloutCard/StoryblokCalloutCard";
 import { StoryblokHero } from "@/components/Storyblok/StoryblokHero/StoryblokHero";
 import { StoryblokIframe } from "@/components/Storyblok/StoryblokIframe/StoryblokIframe";
 import { StoryblokPageHeader } from "@/components/Storyblok/StoryblokPageHeader/StoryblokPageHeader";
+import { StoryblokTestimonialFullWidth } from "@/components/Storyblok/StoryblokTestimonialFullWidth/StoryblokTestimonialFullWidth";
+import { StoryblokTestimonialGridItem } from "@/components/Storyblok/StoryblokTestimonialGridItem/StoryblokTestimonialGridItem";
 import { StoryblokYoutubeEmbed } from "@/components/Storyblok/StoryblokYoutubeEmbed/StoryblokYoutubeEmbed";
 // import { publicRuntimeConfig } from "@/config";
 import { logger } from "@/logger";
@@ -31,11 +37,11 @@ import {
 } from "@/types/storyblok";
 import {
 	fetchStory,
-	getStoryVersionFromQuery,
-	getSlugFromParams,
+	GENERIC_ERROR_MESSAGE,
 	getAdditionalMetaTags,
 	getBreadcrumbs,
-	GENERIC_ERROR_MESSAGE,
+	getSlugFromParams,
+	getStoryVersionFromQuery,
 } from "@/utils/storyblok";
 
 import type { GetServerSidePropsContext } from "next";
@@ -79,7 +85,7 @@ export default function SlugCatchAll(
 	const { story: storyData, breadcrumbs, siblingPages, component } = props;
 
 	const commonComponents = {
-		cardGrid: CardGrid,
+		cardGrid: BasicCardGrid,
 		metadata: Metadata,
 		pageHeader: StoryblokPageHeader,
 	};
@@ -90,6 +96,13 @@ export default function SlugCatchAll(
 		hero: StoryblokHero,
 		actionBanner: StoryblokActionBannerFullWidth,
 		actionBannerDefault: StoryblokActionBannerDefault,
+		cardGridSection: CardGridSection,
+		cardListSection: CardListSection,
+		promoBox: PromoBox,
+		calloutCard: StoryblokCalloutCard,
+		calloutCardWithImage: StoryblokCalloutCard,
+		testimonialFullWidth: StoryblokTestimonialFullWidth,
+		testimonialGridItem: StoryblokTestimonialGridItem,
 	};
 
 	const infoPageComponents = {
@@ -101,6 +114,7 @@ export default function SlugCatchAll(
 		nestedRichText: NestedRichText,
 		quote: Blockquote,
 		youtubeEmbed: StoryblokYoutubeEmbed,
+		actionBannerDefault: StoryblokActionBannerDefault,
 	};
 
 	const components = {

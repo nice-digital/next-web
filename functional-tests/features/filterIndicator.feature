@@ -15,13 +15,13 @@ Feature: The list of indicators is reduced when user filter by name
 
   Scenario: User can apply keyword filter in development indicators list page
     Given I open the in development indicators list page
-    And I enter keyword or reference number "IND85" to filter page list
-    # Then I expect the result list count contains "No results found"
+    And I enter keyword or reference number "IND8512" to filter page list
+    Then I expect the result list count shows "No results found"
 
   Scenario: User can apply keyword filter in consultation indicators list page
     Given I open the in consultation indicators list page
     And I enter keyword or reference number "testingst" to filter page list
-    # Then I expect the result list count contains "No results found"
+    Then I expect the result list count shows "No results found"
 
   Scenario: User can apply date filter
     Given I open the published indicators list page

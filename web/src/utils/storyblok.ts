@@ -2,11 +2,11 @@ import { ParsedUrlQuery } from "querystring";
 
 import {
 	getStoryblokApi,
-	type ISbStoryParams,
-	type ISbStoriesParams,
-	type ISbResult,
 	type ISbError,
+	type ISbResult,
+	type ISbStoriesParams,
 	type ISbStoryData,
+	type ISbStoryParams,
 } from "@storyblok/react";
 import { Redirect } from "next/types";
 import { type MetaTag } from "next-seo/lib/types";
@@ -15,7 +15,7 @@ import { type MetaTag } from "next-seo/lib/types";
 import { logger } from "@/logger";
 import { type Breadcrumb } from "@/types/Breadcrumb";
 import { type SBLink } from "@/types/SBLink";
-import { type MultilinkStoryblok } from "@/types/storyblok";
+import { RichtextStoryblok, type MultilinkStoryblok } from "@/types/storyblok";
 
 export type StoryVersion = "draft" | "published" | undefined;
 
@@ -93,16 +93,14 @@ export const fetchStory = async <T>(
 			story: response.data.story,
 		};
 	} catch (error: unknown) {
-		const errorContext = {
-			errorCause: error,
-			sbParams,
-			slug,
-			// ocelotEndpoint: publicRuntimeConfig.storyblok.ocelotEndpoint,
-			ocelotEndpoint: process.env.PUBLIC_STORYBLOK_OCELOT_ENDPOINT,
-		};
-
+		// const errorContext = {
+		// 	errorCause: error,
+		// 	sbParams,
+		// 	slug,
+		// 	// ocelotEndpoint: publicRuntimeConfig.storyblok.ocelotEndpoint,
+		// 	ocelotEndpoint: process.env.PUBLIC_STORYBLOK_OCELOT_ENDPOINT,
+		// };
 		if (isISbError(error) && error.status === 404) {
-			// errorContext,
 			logger.error(
 				`fetchStory: 404 error from Storyblok API: ${error.message} at slug: ${slug} `
 			);
@@ -111,8 +109,6 @@ export const fetchStory = async <T>(
 				notFound: true,
 			};
 		}
-
-		// errorContext,
 		logger.error(
 			isISbError(error)
 				? `fetchStory: ${error.status} error from Storyblok API: ${error.message} at slug: ${slug} `
@@ -532,3 +528,6 @@ export const constructStoryblokImageSrc = (
 
 	return encodeParens(url);
 };
+
+export const fieldHasValidContent = (field: RichtextStoryblok): boolean =>
+	Array.isArray(field.content) && "content" in field.content[0];

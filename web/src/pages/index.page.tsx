@@ -8,7 +8,7 @@ import { NextSeo } from "next-seo";
 import React, { useMemo } from "react";
 
 import { ErrorPageContent } from "@/components/ErrorPageContent/ErrorPageContent";
-import { CardGrid } from "@/components/Storyblok/CardGrid/CardGrid";
+import { BasicCardGrid } from "@/components/Storyblok/BasicCardGrid/BasicCardGrid";
 import { Homepage } from "@/components/Storyblok/Homepage/Homepage";
 import { HomepageHero } from "@/components/Storyblok/Homepage/HomepageHero/HomepageHero";
 import { Metadata } from "@/components/Storyblok/Metadata/Metadata";
@@ -73,7 +73,7 @@ export default function Home(props: HomePageProps): React.ReactElement {
 		nestedRichText: NestedRichText,
 		promoBox: PromoBox,
 		spotlight: Spotlight,
-		cardGrid: CardGrid,
+		cardGrid: BasicCardGrid,
 	});
 
 	const { story: storyData, latestNews } = props;

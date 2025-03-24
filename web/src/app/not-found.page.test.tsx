@@ -40,6 +40,6 @@ describe("not-found", () => {
 			screen.getByRole("heading", {
 				level: 1,
 			})
-		).toHaveTextContent("We can't find this page");
+		).toHaveTextContent("We cannot find this page");
 	});
 });
