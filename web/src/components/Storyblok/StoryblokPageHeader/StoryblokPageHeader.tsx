@@ -9,8 +9,6 @@ import {
 
 import { StoryblokButtonLink } from "../StoryblokButtonLink/StoryblokButtonLink";
 
-import styles from "./StoryblokPageHeader.module.scss";
-
 interface PageHeaderBlokProps {
 	blok: PageHeaderStoryblok;
 	breadcrumbs?: TypeBreadcrumb[];
@@ -42,19 +40,15 @@ export const StoryblokPageHeader = ({
 	}
 
 	return (
-		<div className={styles.pageHeaderWrapper}>
-			<PageHeader
-				heading={title}
-				lead={summary || undefined}
-				breadcrumbs={BreadcrumbComponent}
-				description={description}
-				// className={styles.pageHeader}
-				variant={theme === "impact" ? "fullWidthDark" : "fullWidthLight"}
-				verticalPadding="loose"
-				cta={
-					updatedCTA ? <StoryblokButtonLink button={updatedCTA} /> : undefined
-				}
-			/>
-		</div>
+		<PageHeader
+			heading={title}
+			lead={summary || undefined}
+			breadcrumbs={BreadcrumbComponent}
+			description={description}
+			// className={styles.pageHeader}
+			variant={theme === "impact" ? "fullWidthDark" : "fullWidthLight"}
+			verticalPadding="loose"
+			cta={updatedCTA ? <StoryblokButtonLink button={updatedCTA} /> : undefined}
+		/>
 	);
 };

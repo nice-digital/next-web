@@ -47,7 +47,6 @@ export const StoryblokHero = ({
 			actions={action}
 			isDark={blok.theme === "impact" ? true : undefined}
 			data-testid="hero-container"
-			className={styles.hero}
 		/>
 	);
 };

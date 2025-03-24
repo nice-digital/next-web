@@ -5,10 +5,3 @@
   display: flex;
   gap: utils.rem(spacing.$large);
 }
-
-.pageHeaderWrapper {
-  /* stylelint-disable-next-line selector-class-pattern */
-  :global(.page-header) {
-    margin-bottom: 0;
-  }
-}
