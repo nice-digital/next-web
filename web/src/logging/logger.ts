@@ -1,5 +1,5 @@
 // import { useRouter } from "next/router";
-import {useRouter} from "next/compat/router"
+import { useRouter } from "next/compat/router";
 import pino, { Logger } from "pino";
 
 import { niceLoggingPinoOptions } from "./nice-logging";

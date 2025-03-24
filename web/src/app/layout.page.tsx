@@ -1,5 +1,6 @@
 import { Inter, Lora } from "next/font/google";
 import Script from "next/script";
+import { Suspense } from "react";
 
 import { Container } from "@nice-digital/nds-container";
 
@@ -10,7 +11,6 @@ import MainClient from "@/components/MainClient/MainClient";
 import { publicRuntimeConfig } from "@/config";
 
 import "../pages/_app.page.scss";
-import { Suspense } from "react";
 
 // export const metadata = {
 //   title: 'Next.js',
@@ -40,7 +40,7 @@ export default function RootLayout({
 				</Suspense>
 
 				{/* <MainClient> */}
-					<Container>{children}</Container>
+				<Container>{children}</Container>
 				{/* </MainClient> */}
 				<Suspense fallback="Loading footer...">
 					<FooterClient />
