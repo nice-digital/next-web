@@ -32,6 +32,7 @@ import {
 } from "@/utils/storyblok";
 
 import type { GetServerSidePropsContext } from "next";
+import Link from "next/link";
 
 export type HomePageErrorProps = {
 	error: string;
@@ -85,6 +86,8 @@ export default function Home(props: HomePageProps): React.ReactElement {
 				openGraph={{ title: "Homepage" }}
 				additionalMetaTags={additionalMetaTags}
 			></NextSeo>
+			<Link href="/example">Example link to client page</Link>
+
 			<StoryblokComponent blok={storyData.content} latestNews={latestNews} />
 		</>
 	);
