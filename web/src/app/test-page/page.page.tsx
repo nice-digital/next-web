@@ -9,10 +9,7 @@ export const dynamic = "force-dynamic";
 async function getStory(): Promise<NewsArticleStoryblok | undefined> {
 	try {
 		initStoryblok();
-		const data = await fetchStory<NewsArticleStoryblok>(
-			"home",
-			"published"
-		);
+		const data = await fetchStory<NewsArticleStoryblok>("home", "published");
 		const story = data?.story?.content;
 		return story;
 	} catch (error) {

@@ -1,13 +1,13 @@
 import { Inter, Lora } from "next/font/google";
-import Script from "next/script";
+// import Script from "next/script";
 import { Suspense } from "react";
 
 import { Container } from "@nice-digital/nds-container";
 
 import FooterClient from "@/components/FooterClient/FooterClient";
-import { GoogleTagManager } from "@/components/GoogleTagManager/GoogleTagManager";
+// import { GoogleTagManager } from "@/components/GoogleTagManager/GoogleTagManager";
 import HeaderClient from "@/components/HeaderClient/HeaderClient";
-import MainClient from "@/components/MainClient/MainClient";
+// import MainClient from "@/components/MainClient/MainClient";
 import { publicRuntimeConfig } from "@/config";
 
 import "../pages/_app.page.scss";

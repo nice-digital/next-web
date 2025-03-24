@@ -1,6 +1,6 @@
 import React from "react";
 
-import { publicRuntimeConfig, PublicConfig } from "@/config";
+import { publicRuntimeConfig } from "@/config";
 
 export const dynamic = "force-dynamic";
 
