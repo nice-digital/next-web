@@ -14,40 +14,69 @@ type Link = {
 const InSectionSpike = ({ parentChildTreeArray }): JSX.Element => {
 	return (
 		<>
+			<div style={{ fontSize: "small" }}>
+				<Link href="/in-section-spike-tree-structure?slug=implementing-nice-guidance">
+					implementing-nice-guidance{" "}
+				</Link>
+				<br />
+				<Link href="/in-section-spike-tree-structure?slug=implementing-nice-guidance/cost-saving-resource-planning-and-audit">
+					implementing-nice-guidance/cost-saving-resource-planning-and-audit{" "}
+				</Link>
+				<br />
+				<Link href="/in-section-spike-tree-structure?slug=implementing-nice-guidance/cost-saving-resource-planning-and-audit/nice-and-health-inequalities">
+					implementing-nice-guidance/cost-saving-resource-planning-and-audit/nice-and-health-inequalities{" "}
+				</Link>
+				<br />
+				<Link href="/in-section-spike-tree-structure?slug=implementing-nice-guidance/cost-saving-resource-planning-and-audit/nice-and-health-inequalities/nice-and-core20plus5-adults">
+					implementing-nice-guidance/cost-saving-resource-planning-and-audit/nice-and-health-inequalities/nice-and-core20plus5-adults{" "}
+				</Link>
+			</div>
+			{/* <h2>In section spike</h2> */}
+
 			<h2>In section spike</h2>
-			<Link href="/in-section-spike-tree-structure?slug=implementing-nice-guidance">
-				implementing-nice-guidance{" "}
-			</Link>
-			<br />
-			<Link href="/in-section-spike-tree-structure?slug=implementing-nice-guidance/cost-saving-resource-planning-and-audit">
-				implementing-nice-guidance/cost-saving-resource-planning-and-audit{" "}
-			</Link>
-			<br />
-			<Link href="/in-section-spike-tree-structure?slug=implementing-nice-guidance/cost-saving-resource-planning-and-audit/nice-and-health-inequalities">
-				implementing-nice-guidance/cost-saving-resource-planning-and-audit/nice-and-health-inequalities{" "}
-			</Link>
-			<h2>In section spike</h2>
-			<h3>
+			{/* <h3>
 				Flat structure with folders highlighted - current page and its siblings
-			</h3>
-			<p>
+			</h3> */}
+			{/* <p>
 				*Siblings ≈ children; root page of folder will represented as the parent
 				but structurally is on same level as other children of the folder
-			</p>
-			<ul>
+			</p> */}
+			<ul suppressHydrationWarning>
 				{parentChildTreeArray?.map((parent: Link) => (
-					<li key={parent.id}>
-						{parent.name} {parent.is_startpage && `🏠`}{" "}
-						{parent.is_folder && `📁`}
+					<li
+						key={parent.id}
+						style={{
+							listStyle: parent.is_startpage ? "none" : "",
+							marginLeft: parent.is_startpage ? "-1rem" : null,
+						}}
+					>
+						{parent.is_startpage ? (
+							<strong>{parent.name} </strong>
+						) : (
+							<ul style={{ listStyle: "none", marginLeft: "unset" }}>
+								{!parent.is_startpage && (
+									<li key={parent.id}>
+										{parent.is_startpage ? (
+											<strong>{parent.name} </strong>
+										) : (
+											parent.name
+										)}
+									</li>
+								)}
+							</ul>
+						)}
+
+						{/* {parent.is_folder && `📁`} */}
 						{/* Render childLinks if they exist */}
 						{parent.childLinks && parent.childLinks.length > 0 && (
 							<>
-								<h4>child and siblings</h4>
+								{/* <h4>child and siblings</h4> */}
 								<ul>
 									{parent.childLinks.map((child: Link) => (
 										<li key={child.id}>
-											{child.name} {child.is_startpage && `🏠`}{" "}
-											{child.is_folder && `📁`}
+											{child.name}
+											{/* {child.is_startpage && `🏠`}{" "} */}
+											{/* {child.is_folder && `📁`} */}
 										</li>
 									))}
 								</ul>
@@ -129,7 +158,8 @@ export const getServerSideProps: GetServerSideProps = async (context) => {
 	const parentAndSiblingsArray = Object.values(parentAndSiblings);
 	const parentChildTreeArray = parentAndSiblingsArray.map((parent) => {
 		const children = linksArray.filter((childLink) => {
-			const isChild = childLink.parent_id === parent.id;
+			const isChild =
+				childLink.parent_id === parent.id && !childLink.is_startpage;
 
 			return isChild;
 		});
