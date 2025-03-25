@@ -45,7 +45,6 @@ export const StoryblokPageHeader = ({
 			lead={summary || undefined}
 			breadcrumbs={BreadcrumbComponent}
 			description={description}
-			// className={styles.pageHeader}
 			variant={theme === "impact" ? "fullWidthDark" : "fullWidthLight"}
 			verticalPadding="loose"
 			cta={updatedCTA ? <StoryblokButtonLink button={updatedCTA} /> : undefined}
