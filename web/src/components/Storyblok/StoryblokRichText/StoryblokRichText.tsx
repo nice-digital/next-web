@@ -30,6 +30,7 @@ export const StoryblokRichText: React.FC<StoryblokRichTextProps> = ({
 	className,
 }) => {
 	const classes = [styles.storyblokRichTextWrapper, className].join(" ");
+
 	return (
 		<div className={classes} data-testid="storyblok-rich-text">
 			{render(content, {
