@@ -2,7 +2,7 @@ import React from "react";
 
 import { publicRuntimeConfig } from "@/config";
 
-export const dynamic = "force-dynamic";
+// export const dynamic = "force-dynamic";
 
 export default function TestExamplePage(): JSX.Element {
 	const configList = [];
