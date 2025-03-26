@@ -128,8 +128,6 @@ export const getServerSideProps: GetServerSideProps = async (context) => {
 	);
 	const startsWithData = await startsWithres.json();
 	const startsWith = startsWithData.links;
-	//TODO
-	//If it is not a start page,do the look up  without the last bit of the slug
 	const currentFolder = Object.values(startsWith).find(
 		(item) => item.is_folder && item.slug === slug
 	);
@@ -170,6 +168,7 @@ export const getServerSideProps: GetServerSideProps = async (context) => {
 		} else {
 			parent.childLinks = [];
 		}
+		//TODO: if there are no children, render siblings and parent-level items (i.e. same nav structure as when on parent page)
 
 		return parent;
 	});
