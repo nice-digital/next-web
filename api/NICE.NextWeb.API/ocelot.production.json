@@ -19,6 +19,38 @@
     {
       "DownstreamHostAndPorts": [
         {
+          "Host": "api.storyblok.com",
+          "Port": 443
+        }
+      ],
+      "DownstreamPathTemplate": "/v1/{everything}",
+      "DownstreamScheme": "https",
+      "UpstreamHttpMethod": [ "Get", "Post" ],
+      "UpstreamPathTemplate": "api/v1/storyblok/{everything}",
+      "FileCacheOptions": {
+        "TtlSeconds": #{Ocelot.StoryblokTtlSeconds},
+        "Region": "OcelotStoryblok"
+      }
+    },
+    {
+      "DownstreamHostAndPorts": [
+        {
+          "Host": "api.storyblok.com",
+          "Port": 443
+        }
+      ],
+      "DownstreamPathTemplate": "/v2/{everything}",
+      "DownstreamScheme": "https",
+      "UpstreamHttpMethod": [ "Get", "Post" ],
+      "UpstreamPathTemplate": "api/v2/storyblok/{everything}",
+      "FileCacheOptions": {
+        "TtlSeconds": #{Ocelot.StoryblokTtlSeconds},
+        "Region": "OcelotStoryblok"
+      }
+    },
+    {
+      "DownstreamHostAndPorts": [
+        {
           "Host": "#{Ocelot.Routes.NiceorgDownstreamHost}",
           "Port": 443
         }
