@@ -13,7 +13,11 @@ export const getGetServerSideProps =
 	(formID: FormID): GetServerSideProps<FormProps> =>
 	async ({ resolvedUrl }) => {
 		try {
-			const formResponse = await getForm(formID);
+			const formResponse = await getForm(
+				formID,
+				process.env.SERVER_FEEDS_JOTFORM_API_KEY!,
+				process.env.PUBLIC_JOTFORM_BASE_URL!
+			);
 
 			if (formResponse.responseCode === 404) {
 				logger.info(

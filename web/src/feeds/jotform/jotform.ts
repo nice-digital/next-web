@@ -1,15 +1,19 @@
 import needle from "needle";
 
-import { serverRuntimeConfig, publicRuntimeConfig } from "@/config";
+// import { serverRuntimeConfig, publicRuntimeConfig } from "@/config";
 
 import type { FormID, GetFormResponse } from "./types";
 
 export * from "./types";
 
-const { apiKey } = serverRuntimeConfig.feeds.jotForm,
-	{ baseURL } = publicRuntimeConfig.jotForm;
+// const { apiKey } = serverRuntimeConfig.feeds.jotForm,
+// 	{ baseURL } = publicRuntimeConfig.jotForm;
 
-export const getForm = async (formID: FormID): Promise<GetFormResponse> => {
+export const getForm = async (
+	formID: FormID,
+	apiKey: string,
+	baseURL: string
+): Promise<GetFormResponse> => {
 	const response = await needle(
 		"get",
 		`${baseURL}/API/form/${formID}?apiKey=${apiKey}`,

@@ -44,3 +44,7 @@ public/sitemap-0.xml
 
 # JSON component structure from the Storyblok CLI
 components.*.json
+
+#env
+.env.development
+.env.production

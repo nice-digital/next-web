@@ -1,6 +1,6 @@
 import { NextSeoProps } from "next-seo";
 
-import { publicRuntimeConfig } from "@/config";
+// import { publicRuntimeConfig } from "@/config";
 
 /**
  * Gets the default SEO config for the given page.
@@ -13,14 +13,18 @@ export const getDefaultSeoConfig = (pathname: string): NextSeoProps => ({
 	openGraph: {
 		type: "website",
 		locale: "en_GB",
-		url: publicRuntimeConfig.baseURL + pathname,
+		// url: publicRuntimeConfig.baseURL + pathname,
+		url: process.env.PUBLIC_BASE_URL + pathname,
 		site_name:
 			"NICE website: The National Institute for Health and Care Excellence",
 		images: [
 			// Landscape open graph image used on Twitter's 'summary_large_image' card type and Facebook (+ others)
 			{
+				// url:
+				// 	publicRuntimeConfig.publicBaseURL +
+				// 	"/open-graph/open-graph-1200x630.png",
 				url:
-					publicRuntimeConfig.publicBaseURL +
+					process.env.PUBLIC_PUBLIC_BASE_URL +
 					"/open-graph/open-graph-1200x630.png",
 				width: 1200,
 				height: 630,
@@ -28,8 +32,11 @@ export const getDefaultSeoConfig = (pathname: string): NextSeoProps => ({
 			},
 			// Square open graph image: used for Twitter's 'summary' card type
 			{
+				// url:
+				// 	publicRuntimeConfig.publicBaseURL +
+				// 	"/open-graph/open-graph-1200x1200.png",
 				url:
-					publicRuntimeConfig.publicBaseURL +
+					process.env.PUBLIC_PUBLIC_BASE_URL +
 					"/open-graph/open-graph-1200x1200.png",
 				width: 1200,
 				height: 1200,
@@ -46,55 +53,64 @@ export const getDefaultSeoConfig = (pathname: string): NextSeoProps => ({
 		// Old school favicon
 		{
 			rel: "icon",
-			href: publicRuntimeConfig.publicBaseURL + "/favicon.ico",
+			// href: publicRuntimeConfig.publicBaseURL + "/favicon.ico",
+			href: process.env.PUBLIC_PUBLIC_BASE_URL + "/favicon.ico",
 		},
 		// PNG 'favicons'
 		{
 			rel: "icon",
 			type: "image/png",
 			sizes: "16x16",
-			href: publicRuntimeConfig.publicBaseURL + "/icons/icon-16x16.png",
+			// href: publicRuntimeConfig.publicBaseURL + "/icons/icon-16x16.png",
+			href: process.env.PUBLIC_PUBLIC_BASE_URL + "/icons/icon-16x16.png",
 		},
 		{
 			rel: "icon",
 			type: "image/png",
 			sizes: "32x32",
-			href: publicRuntimeConfig.publicBaseURL + "/icons/icon-32x32.png",
+			// href: publicRuntimeConfig.publicBaseURL + "/icons/icon-32x32.png",
+			href: process.env.PUBLIC_PUBLIC_BASE_URL + "/icons/icon-32x32.png",
 		},
 		// Apple icons
 		{
 			// iPhone (X/Plus)
 			rel: "apple-touch-icon",
 			sizes: "120x120",
-			href: publicRuntimeConfig.publicBaseURL + "/icons/icon-120x120.png",
+			// href: publicRuntimeConfig.publicBaseURL + "/icons/icon-120x120.png",
+			href: process.env.PUBLIC_PUBLIC_BASE_URL + "/icons/icon-120x120.png",
 		},
 		{
 			// iPad, iPad mini
 			rel: "apple-touch-icon",
 			sizes: "152x152",
-			href: publicRuntimeConfig.publicBaseURL + "/icons/icon-152x152.png",
+			// href: publicRuntimeConfig.publicBaseURL + "/icons/icon-152x152.png",
+			href: process.env.PUBLIC_PUBLIC_BASE_URL + "/icons/icon-152x152.png",
 		},
 		{
 			// iPad Pro
 			rel: "apple-touch-icon",
 			sizes: "167x167",
-			href: publicRuntimeConfig.publicBaseURL + "/icons/icon-167x167.png",
+			// href: publicRuntimeConfig.publicBaseURL + "/icons/icon-167x167.png",
+			href: process.env.PUBLIC_PUBLIC_BASE_URL + "/icons/icon-167x167.png",
 		},
 		{
 			// iPhone
 			rel: "apple-touch-icon",
 			sizes: "180x180",
-			href: publicRuntimeConfig.publicBaseURL + "/icons/icon-180x180.png",
+			// href: publicRuntimeConfig.publicBaseURL + "/icons/icon-180x180.png",
+			href: process.env.PUBLIC_PUBLIC_BASE_URL + "/icons/icon-180x180.png",
 		},
 		// Safari pinned tab as per https://edibleco.de/3dRyFge
 		{
 			rel: "mask-icon",
 			color: "black",
-			href: publicRuntimeConfig.publicBaseURL + "/icons/safari-pinned-tab.svg",
+			// href: publicRuntimeConfig.publicBaseURL + "/icons/safari-pinned-tab.svg",
+			href: process.env.PUBLIC_PUBLIC_BASE_URL + "/icons/safari-pinned-tab.svg",
 		},
 		{
 			rel: "canonical",
-			href: publicRuntimeConfig.baseURL + pathname,
+			// href: publicRuntimeConfig.baseURL + pathname,
+			href: process.env.PUBLIC_BASE_URL + pathname,
 		},
 	],
 	additionalMetaTags: [

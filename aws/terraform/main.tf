@@ -67,7 +67,131 @@ resource "aws_ecs_task_definition" "nextweb-main-task" {
         {
           name  = "NODE_ENV"
           value = var.node_env
-        }
+        },
+				{
+          name  = "NEXT_PUBLIC_JOHN"
+          value = var.next_public_john
+        },
+				{
+          name  = "PUBLIC_JOHN"
+          value = var.public_john
+        },
+				{
+          name  = "PUBLIC_NEW_JOHN"
+          value = var.public_new_john
+        },
+        {
+          name  = "PUBLIC_AUTH_ENVIRONMENT"
+          value = var.public_auth_environment
+        },
+        {
+          name  = "PUBLIC_BASE_URL"
+          value = var.public_base_url
+        },
+				{
+          name  = "SANTA_BUILD_NUMBER"
+          value = var.santa_build_number
+        },
+        {
+          name  = "PUBLIC_BUILD_NUMBER"
+          value = var.public_build_number
+        },
+        {
+          name  = "PUBLIC_ENVIRONMENT"
+          value = var.public_environment
+        },
+        {
+          name  = "PUBLIC_PUBLIC_BASE_URL"
+          value = var.public_public_base_url
+        },
+        {
+          name  = "PUBLIC_SEARCH_BASE_URL"
+          value = var.public_search_base_url
+        },
+        {
+          name  = "PUBLIC_STORYBLOK_ACCESS_TOKEN"
+          value = var.public_storyblok_access_token
+        },
+        {
+          name  = "PUBLIC_STORYBLOK_ENABLE_ROOT_CATCH_ALL"
+          value = var.public_storyblok_enable_root_catch_all
+        },
+        {
+          name  = "PUBLIC_STORYBLOK_OCELOT_ENDPOINT"
+          value = var.public_storyblok_ocelot_endpoint
+        },
+        {
+          name  = "PUBLIC_COOKIE_BANNER_SCRIPT_URL"
+          value = var.public_cookie_banner_script_url
+        },
+        {
+          name  = "PUBLIC_DENY_ROBOTS"
+          value = var.public_deny_robots
+        },
+        {
+          name  = "SERVER_CACHE_FILE_PATH"
+          value = var.server_cache_file_path
+        },
+        {
+          name  = "SERVER_CACHE_KEY_PREFIX"
+          value = var.server_cache_key_prefix
+        },
+        {
+          name  = "SERVER_CACHE_LONG_TTL"
+          value = var.server_cache_long_ttl
+        },
+        {
+          name  = "SERVER_FEEDS_INDEV_API_KEY"
+          value = var.server_feeds_indev_api_key
+        },
+        {
+          name  = "SERVER_FEEDS_INDEV_ORIGIN"
+          value = var.server_feeds_indev_origin
+        },
+        {
+          name  = "SERVER_FEEDS_JOTFORM_API_KEY"
+          value = var.server_feeds_jotform_api_key
+        },
+        {
+          name  = "SERVER_FEEDS_PUBLICATIONS_API_KEY"
+          value = var.server_feeds_publications_api_key
+        },
+        {
+          name  = "SERVER_FEEDS_PUBLICATIONS_ORIGIN"
+          value = var.server_feeds_publications_origin
+        },
+				{
+					name = "SANTA_BOTH"
+					value = var.santa_both
+				},
+				{
+					name = "SANTA_TC"
+					value = var.santa_tc
+				},
+				{
+					name = "SANTA_ENV"
+					value = var.santa_env
+				},
+				{
+					name = "SANTA_NONE"
+					value = var.santa_none
+				},
+				{
+					name = "NEXT_PUBLIC_SANTA_BOTH"
+					value = var.next_public_santa_both
+				},
+				{
+					name = "NEXT_PUBLIC_SANTA_TC"
+					value = var.next_public_santa_tc
+				},
+				{
+					name = "NEXT_PUBLIC_SANTA_ENV"
+					value = var.next_public_santa_env
+				},
+				{
+					name = "NEXT_PUBLIC_SANTA_NONE"
+					value = var.next_public_santa_none
+				}
       ]
       mountPoints = [
         {

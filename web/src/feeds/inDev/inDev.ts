@@ -1,4 +1,4 @@
-import { serverRuntimeConfig } from "@/config";
+// import { serverRuntimeConfig } from "@/config";
 
 import { getFeedBodyCached, getFeedBodyUnCached, getResponseStream } from "..";
 import {
@@ -19,8 +19,12 @@ import {
 export * from "./types";
 
 const cacheKeyPrefix = "indev",
-	{ defaultTTL, longTTL } = serverRuntimeConfig.cache,
-	{ origin, apiKey } = serverRuntimeConfig.feeds.inDev;
+	// { defaultTTL, longTTL } = serverRuntimeConfig.cache,
+	// { origin, apiKey } = serverRuntimeConfig.feeds.inDev;
+	defaultTTL = Number(process.env.SERVER_CACHE_DEFAULT_TTL) || 0,
+	longTTL = Number(process.env.SERVER_CACHE_LONG_TTL) || 0,
+	origin = process.env.SERVER_FEEDS_INDEV_ORIGIN || "",
+	apiKey = process.env.SERVER_FEEDS_INDEV_API_KEY || "";
 
 export const getAllProjects = async (): Promise<Project[]> =>
 	await getFeedBodyCached<Project[]>(
