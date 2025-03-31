@@ -54,7 +54,7 @@
     "lodash": "^4.17.21",
     "lodash.throttle": "^4.1.1",
     "needle": "^2.8.0",
-    "next": "^13.4.16",
+    "next": "^13.5.11",
     "next-logger": "^4.0.0",
     "next-plugin-node-config": "^1.0.2",
     "next-seo": "^5.15.0",
