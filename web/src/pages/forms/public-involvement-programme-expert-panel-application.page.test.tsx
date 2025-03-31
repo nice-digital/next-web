@@ -14,7 +14,7 @@ jest.mock("@/feeds/jotform/jotform", () => ({
 		content: {
 			id: "232600610579048",
 			username: "nice_teams",
-			title: "People and Communities Network Application",
+			title: "People and communities network application",
 			height: "539",
 			status: "ENABLED",
 			created_at: "2022-12-08 06:31:44",

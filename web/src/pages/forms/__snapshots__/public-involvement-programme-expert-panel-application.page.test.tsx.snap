@@ -52,14 +52,14 @@ exports[`InternationalEnquiryForm should match snapshot 1`] = `
         <a
           href="/about/nice-communities/nice-and-the-public/public-involvement"
         >
-          People and Communities - Putting You at the Heart of Our Work
+          People and communities - putting you at the heart of our work
         </a>
       </li>
       <li
         class="breadcrumbs__crumb"
       >
         <span>
-          People and Communities Network Application
+          People and communities network application
         </span>
       </li>
     </ol>
@@ -108,14 +108,14 @@ exports[`InternationalEnquiryForm should match snapshot 1`] = `
       "position": 5,
       "item": {
         "@id": "/about/nice-communities/nice-and-the-public/public-involvement",
-        "name": "People and Communities - Putting You at the Heart of Our Work"
+        "name": "People and communities - putting you at the heart of our work"
       }
     },
     {
       "@type": "ListItem",
       "position": 6,
       "item": {
-        "name": "People and Communities Network Application"
+        "name": "People and communities network application"
       }
     }
   ]
@@ -137,7 +137,7 @@ exports[`InternationalEnquiryForm should match snapshot 1`] = `
         <h1
           class="page-header__heading "
         >
-          People and Communities Network Application
+          People and communities network application
         </h1>
       </div>
       <iframe
@@ -149,7 +149,7 @@ exports[`InternationalEnquiryForm should match snapshot 1`] = `
         scrolling="no"
         src="https://next-web-tests.jotform.com/232600610579048?isIframeEmbed=1"
         style="height: 539px; overflow: hidden;"
-        title="People and Communities Network Application"
+        title="People and communities network application"
       />
     </div>
   </div>
