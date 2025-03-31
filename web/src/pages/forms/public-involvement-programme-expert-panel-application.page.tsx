@@ -10,11 +10,11 @@ export default function PublicInvolvementForm(props: FormProps): JSX.Element {
 	return (
 		<JotFormPage
 			{...props}
-			formName="Public Involvement Programme - expert panel application"
+			formName="People and Communities Network Application"
 			lead=""
 			parentPages={[
 				{
-					title: "Public involvement - putting you at the heart of our work",
+					title: "People and Communities - Putting You at the Heart of Our Work",
 					path: "/about/nice-communities/nice-and-the-public/public-involvement",
 				},
 
