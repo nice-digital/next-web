@@ -11,7 +11,18 @@ type Link = {
 	name: string;
 	is_folder: boolean;
 };
-const InSectionSpike = ({ parentChildTreeArray }): JSX.Element => {
+
+const InSectionSpike = ({
+	parentChildTreeArray,
+	storyResult,
+	siblings,
+	startsWith,
+	parentAndSiblingsArray,
+	startsWithElse,
+	parentAndSiblingsElse,
+	slug,
+	isChild,
+}): JSX.Element => {
 	return (
 		<>
 			<div style={{ fontSize: "small" }}>
@@ -31,6 +42,12 @@ const InSectionSpike = ({ parentChildTreeArray }): JSX.Element => {
 					implementing-nice-guidance/cost-saving-resource-planning-and-audit/nice-and-health-inequalities/nice-and-core20plus5-adults{" "}
 				</Link>
 			</div>
+			{console.log("storyResult", storyResult)}
+			{console.log("fist Api call ,sibling", siblings)}
+			{console.log("second Api call with slug ", startsWith)}
+			{console.log("third Api call with slug ", parentAndSiblingsArray)}
+			{console.log("startsWithElse", startsWithElse)}
+			{console.log("parentAndSiblingsElse", parentAndSiblingsElse)}
 			{/* <h2>In section spike</h2> */}
 
 			<h2>In section spike</h2>
@@ -42,48 +59,97 @@ const InSectionSpike = ({ parentChildTreeArray }): JSX.Element => {
 				but structurally is on same level as other children of the folder
 			</p> */}
 			<ul suppressHydrationWarning>
-				{parentChildTreeArray?.map((parent: Link) => (
-					<li
-						key={parent.id}
-						style={{
-							listStyle: parent.is_startpage ? "none" : "",
-							marginLeft: parent.is_startpage ? "-1rem" : null,
-						}}
-					>
-						{parent.is_startpage ? (
-							<strong>{parent.name} </strong>
-						) : (
-							<ul style={{ listStyle: "none", marginLeft: "unset" }}>
-								{!parent.is_startpage && (
-									<li key={parent.id}>
-										{parent.is_startpage ? (
-											<strong>{parent.name} </strong>
-										) : (
-											parent.name
+				{parentAndSiblingsElse.length == 0
+					? parentChildTreeArray?.map((parent: Link) => (
+							<li
+								key={parent.id}
+								style={{
+									listStyle: parent.is_startpage ? "none" : "",
+									marginLeft: parent.is_startpage ? "-1rem" : null,
+								}}
+							>
+								{parent.is_startpage ? (
+									<strong>{parent.name} </strong>
+								) : (
+									<ul style={{ listStyle: "none", marginLeft: "unset" }}>
+										{!parent.is_startpage && (
+											<li key={parent.id}>
+												{parent.is_startpage ? (
+													<strong>{parent.name} </strong>
+												) : (
+													parent.name
+												)}
+											</li>
 										)}
-									</li>
+									</ul>
 								)}
-							</ul>
-						)}
 
-						{/* {parent.is_folder && `📁`} */}
-						{/* Render childLinks if they exist */}
-						{parent.childLinks && parent.childLinks.length > 0 && (
-							<>
-								{/* <h4>child and siblings</h4> */}
-								<ul>
-									{parent.childLinks.map((child: Link) => (
-										<li key={child.id}>
-											{child.name}
-											{/* {child.is_startpage && `🏠`}{" "} */}
-											{/* {child.is_folder && `📁`} */}
-										</li>
-									))}
-								</ul>
-							</>
-						)}
-					</li>
-				))}
+								{/* {parent.is_folder && `📁`} */}
+								{/* Render childLinks if they exist */}
+								{parent.childLinks && parent.childLinks.length > 0 && (
+									<>
+										{/* <h4>child and siblings</h4> */}
+										<ul>
+											{parent.childLinks.map((child: Link) => (
+												<li key={child.id}>
+													{child.name}
+													{/* {child.is_startpage && `🏠`}{" "} */}
+													{/* {child.is_folder && `📁`} */}
+												</li>
+											))}
+										</ul>
+									</>
+								)}
+							</li>
+					  ))
+					: parentAndSiblingsElse?.map((parent: Link) => (
+							<li
+								key={parent.id}
+								style={{
+									listStyle: parent.is_startpage ? "none" : "",
+									marginLeft: parent.is_startpage ? "-1rem" : null,
+								}}
+							>
+								{parent.is_startpage ? (
+									parent.name
+								) : (
+									<ul style={{ listStyle: "none", marginLeft: "unset" }}>
+										{!parent.is_startpage && (
+											<li key={parent.id}>
+												{parent.is_startpage ? (
+													<strong>{parent.name} </strong>
+												) : (
+													parent.name
+												)}
+											</li>
+										)}
+									</ul>
+								)}
+
+								{/* {parent.is_folder && `📁`} */}
+								{/* Render childLinks if they exist */}
+								{parent.childLinks && parent.childLinks.length > 0 && (
+									<>
+										{/* <h4>child and siblings</h4> */}
+										<ul>
+											{parent.childLinks.map((child: Link) => (
+												<li key={child.id}>
+													{child.slug == slug ? (
+														<strong>{child.name}</strong>
+													) : (
+														child.name
+													)}
+													{/* {child.name} */}
+													{/* {child.is_startpage && `🏠`}{" "} */}
+													{/* {child.is_folder && `📁`} */}
+												</li>
+											))}
+										</ul>
+									</>
+								)}
+							</li>
+					  ))}
+				{}
 			</ul>
 		</>
 	);
@@ -91,16 +157,16 @@ const InSectionSpike = ({ parentChildTreeArray }): JSX.Element => {
 
 // fetch data server side
 export const getServerSideProps: GetServerSideProps = async (context) => {
+	let isChild = false;
 	// normalise the slug by removing a trailing slash (if present)
 	let slug = Array.isArray(context.query.slug)
 		? context.query.slug[0]
 		: context.query.slug || "";
-	const normalisedSlug = slug.endsWith("/") ? slug.slice(0, -1) : slug;
 	const version = getStoryVersionFromQuery(context.query);
 	const [storyResult] = await Promise.all([
 		fetchStory<CategoryNavigationStoryblok | InfoPageStoryblok>(slug, version),
 	]);
-
+	console.log("storyResult", storyResult);
 	const parentID = storyResult.story?.parent_id;
 
 	// storyID 642423873 is a folder
@@ -120,7 +186,7 @@ export const getServerSideProps: GetServerSideProps = async (context) => {
 	// id 642423873 is the folder
 	// id 563840532 is the parent id
 
-	console.log("siblings", siblings);
+	// console.log("siblings", siblings);
 	// find the object in siblings where the is_folder is true AND it the slug matches the current slug
 
 	const startsWithres = await fetch(
@@ -154,28 +220,85 @@ export const getServerSideProps: GetServerSideProps = async (context) => {
 		parentAndSiblings = siblings;
 	}
 	const linksArray = Object.values(siblings);
+	let startsWithElse = {};
+	let parentAndSiblingsElse = {};
 	const parentAndSiblingsArray = Object.values(parentAndSiblings);
-	const parentChildTreeArray = parentAndSiblingsArray.map((parent) => {
-		const children = linksArray.filter((childLink) => {
-			const isChild =
-				childLink.parent_id === parent.id && !childLink.is_startpage;
+	const parentChildTreeArray = await Promise.all(
+		parentAndSiblingsArray.map(async (parent) => {
+			const children = linksArray.filter((childLink) => {
+				const isChild =
+					childLink.parent_id === parent.id && !childLink.is_startpage;
 
-			return isChild;
-		});
+				return isChild;
+			});
 
-		if (children.length > 0) {
-			parent.childLinks = children;
-		} else {
-			parent.childLinks = [];
-		}
-		//TODO: if there are no children, render siblings and parent-level items (i.e. same nav structure as when on parent page)
+			if (children.length > 0) {
+				parent.childLinks = children;
+				isChild = true;
+			} else {
+				parent.childLinks = [];
+				if (slug.split("/").length > 1 && parent.slug === slug) {
+					isChild = false;
+					const noChildSlug = slug.split("/").slice(0, -1).join("/");
 
-		return parent;
-	});
+					const startsWithres = await fetch(
+						`https://api.storyblok.com/v2/cdn/links?version=published&token=${token}&starts_with=${noChildSlug}`
+					);
+					const startsWithData = await startsWithres.json();
+					startsWithElse = startsWithData.links;
+					// console.log("noChildSlug", noChildSlug);
+					const currentFolder = Object.values(startsWithElse).find((item) => {
+						// {
+						// 	console.log("item.slug", item.slug === noChildSlug);
+						// }
+						return item.is_folder && item.slug === noChildSlug;
+					});
+					// console.log("currentFOlder", currentFolder);
+					if (currentFolder && currentFolder.parent_id) {
+						// console.log("inside if condn");
+						const parentFetchStart = performance.now();
+
+						const parentRes = await fetch(
+							`https://api.storyblok.com/v2/cdn/links?version=published&token=${token}&with_parent=${currentFolder.parent_id}`
+						);
+						const parentData = await parentRes.json();
+						parentAndSiblingsElse = parentData.links;
+						Object.values(parentAndSiblingsElse).map((parentelse) => {
+							const children = Object.values(startsWithElse).filter(
+								(childLink) => {
+									const isChild =
+										childLink.parent_id === parentelse.id &&
+										!childLink.is_startpage;
+
+									return isChild;
+								}
+							);
+							parentelse.childLinks = children;
+							// parentelse.activename = "smoking-cession";
+						});
+					} else {
+						parentAndSiblingsElse = siblings;
+						isChild = true;
+					}
+				}
+			}
+			//TODO: if there are no children, render siblings and parent-level items (i.e. same nav structure as when on parent page)
+
+			return parent;
+		})
+	);
 
 	return {
 		props: {
 			parentChildTreeArray,
+			storyResult,
+			siblings: Object.values(siblings),
+			startsWith: Object.values(startsWith),
+			parentAndSiblingsArray: Object.values(parentAndSiblings),
+			startsWithElse: Object.values(startsWithElse),
+			parentAndSiblingsElse: Object.values(parentAndSiblingsElse),
+			slug,
+			isChild,
 		},
 	};
 };
