@@ -1,6 +1,6 @@
 import React from "react";
 
-// export const dynamic = "force-dynamic";
+export const dynamic = "force-dynamic";
 
 export default function TestExamplePage(): JSX.Element {
 	return (
