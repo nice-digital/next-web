@@ -25,7 +25,7 @@ const InSectionSpike = ({
 }): JSX.Element => {
 	return (
 		<>
-			<div style={{ fontSize: "small" }}>
+			<div style={{ fontSize: "small", marginTop: "1rem" }}>
 				<Link href="/in-section-spike-tree-structure?slug=implementing-nice-guidance">
 					implementing-nice-guidance{" "}
 				</Link>
@@ -40,6 +40,10 @@ const InSectionSpike = ({
 				<br />
 				<Link href="/in-section-spike-tree-structure?slug=implementing-nice-guidance/cost-saving-resource-planning-and-audit/nice-and-health-inequalities/nice-and-core20plus5-adults">
 					implementing-nice-guidance/cost-saving-resource-planning-and-audit/nice-and-health-inequalities/nice-and-core20plus5-adults{" "}
+				</Link>
+				<br />
+				<Link href="/in-section-spike-tree-structure?slug=implementing-nice-guidance/cost-saving-resource-planning-and-audit/nice-and-health-inequalities/nice-and-core20plus5-adults/smoking-cessation">
+					implementing-nice-guidance/cost-saving-resource-planning-and-audit/nice-and-health-inequalities/nice-and-core20plus5-adults/smoking-cessation{" "}
 				</Link>
 			</div>
 			{console.log("storyResult", storyResult)}
