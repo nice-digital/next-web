@@ -51,14 +51,9 @@ const InSectionSpike = ({
 			{/* <h2>In section spike</h2> */}
 
 			<h2>In section spike</h2>
-			{/* <h3>
-				Flat structure with folders highlighted - current page and its siblings
-			</h3> */}
-			{/* <p>
-				*Siblings ≈ children; root page of folder will represented as the parent
-				but structurally is on same level as other children of the folder
-			</p> */}
 			<ul suppressHydrationWarning>
+				{/* Siblings ≈ children; root page of folder will represented as the parent
+				but structurally is on same level as other children of the folder */}
 				{parentAndSiblingsElse.length == 0
 					? parentChildTreeArray?.map((parent: Link) => (
 							<li
@@ -79,22 +74,20 @@ const InSectionSpike = ({
 												) : (
 													parent.name
 												)}
+												{parent.is_folder && ` 📁`}
 											</li>
 										)}
 									</ul>
 								)}
 
-								{/* {parent.is_folder && `📁`} */}
 								{/* Render childLinks if they exist */}
 								{parent.childLinks && parent.childLinks.length > 0 && (
 									<>
-										{/* <h4>child and siblings</h4> */}
 										<ul>
 											{parent.childLinks.map((child: Link) => (
 												<li key={child.id}>
 													{child.name}
-													{/* {child.is_startpage && `🏠`}{" "} */}
-													{/* {child.is_folder && `📁`} */}
+													{child.is_folder && ` 📁`}
 												</li>
 											))}
 										</ul>
@@ -121,16 +114,15 @@ const InSectionSpike = ({
 												) : (
 													parent.name
 												)}
+												{parent.is_folder && ` 📁`}
 											</li>
 										)}
 									</ul>
 								)}
 
-								{/* {parent.is_folder && `📁`} */}
 								{/* Render childLinks if they exist */}
 								{parent.childLinks && parent.childLinks.length > 0 && (
 									<>
-										{/* <h4>child and siblings</h4> */}
 										<ul>
 											{parent.childLinks.map((child: Link) => (
 												<li key={child.id}>
@@ -139,9 +131,7 @@ const InSectionSpike = ({
 													) : (
 														child.name
 													)}
-													{/* {child.name} */}
-													{/* {child.is_startpage && `🏠`}{" "} */}
-													{/* {child.is_folder && `📁`} */}
+													{child.is_folder && ` 📁`}
 												</li>
 											))}
 										</ul>
