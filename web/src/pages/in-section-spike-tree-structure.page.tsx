@@ -258,7 +258,7 @@ export const getServerSideProps: GetServerSideProps = async (context) => {
 						const parentData = await parentRes.json();
 						parentAndSiblingsElse = parentData.links;
 						Object.values(parentAndSiblingsElse).map((parentelse) => {
-							const children = Object.values(startsWithElse).filter(
+							const children = Object.values(linksArray).filter(
 								(childLink) => {
 									const isChild =
 										childLink.parent_id === parentelse.id &&
