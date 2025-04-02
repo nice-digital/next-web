@@ -113,7 +113,7 @@ const InSectionSpike = ({
 									<ul style={{ listStyle: "none", marginLeft: "unset" }}>
 										{!parent.is_startpage && (
 											<li key={parent.id}>
-												{parent.is_startpage ? (
+												{parent.is_startpage||parent.slug == slug ? (
 													<strong>{parent.name} </strong>
 												) : (
 													parent.name
