@@ -16,7 +16,7 @@ const FormHeader = () => {
 	);
 };
 
-export default function PublicInvolvementForm(props: FormProps): JSX.Element {
+export default function HealthTechnologyAssessmentTrainingRegistrationForm(props: FormProps): JSX.Element {
 	return (
 		<JotFormPage
 			{...props}
