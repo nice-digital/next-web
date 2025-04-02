@@ -9,14 +9,14 @@ export const getServerSideProps = getGetServerSideProps("242762670883062");
 const FormHeader = () => {
 	return (
 		<>
-			<p>
-				All fields marked with * are required and must be filled.
-			</p>
+			<p>All fields marked with * are required and must be filled.</p>
 		</>
 	);
 };
 
-export default function HealthTechnologyAssessmentTrainingRegistrationForm(props: FormProps): JSX.Element {
+export default function HealthTechnologyAssessmentTrainingRegistrationForm(
+	props: FormProps
+): JSX.Element {
 	return (
 		<JotFormPage
 			{...props}

@@ -34,7 +34,8 @@ jest.mock("@/feeds/jotform/jotform", () => ({
 describe("HealthTechnologyAssessmentTrainingRegistrationForm", () => {
 	it("should match snapshot", async () => {
 		const props = (await getServerSideProps({
-			resolvedUrl: "/forms/nice-health-technology-assessment-training-registration",
+			resolvedUrl:
+				"/forms/nice-health-technology-assessment-training-registration",
 		} as GetServerSidePropsContext)) as { props: FormProps };
 
 		const { container } = render(
