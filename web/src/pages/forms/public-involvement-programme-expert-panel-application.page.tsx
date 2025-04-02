@@ -14,7 +14,8 @@ export default function PublicInvolvementForm(props: FormProps): JSX.Element {
 			lead=""
 			parentPages={[
 				{
-					title: "People and communities - putting you at the heart of our work",
+					title:
+						"People and communities - putting you at the heart of our work",
 					path: "/about/nice-communities/nice-and-the-public/public-involvement",
 				},
 
