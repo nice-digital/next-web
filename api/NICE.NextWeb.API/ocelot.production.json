@@ -26,7 +26,7 @@
       "DownstreamPathTemplate": "/v1/{everything}",
       "DownstreamScheme": "https",
       "UpstreamHttpMethod": [ "Get", "Post" ],
-      "UpstreamPathTemplate": "api/v1/storyblok/{everything}",
+      "UpstreamPathTemplate": "/storyblokv1/{everything}",
       "FileCacheOptions": {
         "TtlSeconds": #{Ocelot.StoryblokTtlSeconds},
         "Region": "OcelotStoryblok"
@@ -42,7 +42,7 @@
       "DownstreamPathTemplate": "/v2/{everything}",
       "DownstreamScheme": "https",
       "UpstreamHttpMethod": [ "Get", "Post" ],
-      "UpstreamPathTemplate": "api/v2/storyblok/{everything}",
+      "UpstreamPathTemplate": "/storyblokv2/{everything}",
       "FileCacheOptions": {
         "TtlSeconds": #{Ocelot.StoryblokTtlSeconds},
         "Region": "OcelotStoryblok"
