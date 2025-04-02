@@ -21,7 +21,6 @@ const InSectionSpike = ({
 	startsWithElse,
 	parentAndSiblingsElse,
 	slug,
-	isChild,
 }): JSX.Element => {
 	return (
 		<>
@@ -46,12 +45,7 @@ const InSectionSpike = ({
 					implementing-nice-guidance/cost-saving-resource-planning-and-audit/nice-and-health-inequalities/nice-and-core20plus5-adults/smoking-cessation{" "}
 				</Link>
 			</div>
-			{console.log("storyResult", storyResult)}
-			{console.log("fist Api call ,sibling", siblings)}
-			{console.log("second Api call with slug ", startsWith)}
-			{console.log("third Api call with slug ", parentAndSiblingsArray)}
-			{console.log("startsWithElse", startsWithElse)}
-			{console.log("parentAndSiblingsElse", parentAndSiblingsElse)}
+
 			{/* <h2>In section spike</h2> */}
 
 			<h2>In section spike</h2>
@@ -113,7 +107,7 @@ const InSectionSpike = ({
 									<ul style={{ listStyle: "none", marginLeft: "unset" }}>
 										{!parent.is_startpage && (
 											<li key={parent.id}>
-												{parent.is_startpage||parent.slug == slug ? (
+												{parent.is_startpage || parent.slug == slug ? (
 													<strong>{parent.name} </strong>
 												) : (
 													parent.name
@@ -151,7 +145,6 @@ const InSectionSpike = ({
 
 // fetch data server side
 export const getServerSideProps: GetServerSideProps = async (context) => {
-	let isChild = false;
 	// normalise the slug by removing a trailing slash (if present)
 	let slug = Array.isArray(context.query.slug)
 		? context.query.slug[0]
@@ -160,8 +153,9 @@ export const getServerSideProps: GetServerSideProps = async (context) => {
 	const [storyResult] = await Promise.all([
 		fetchStory<CategoryNavigationStoryblok | InfoPageStoryblok>(slug, version),
 	]);
-	console.log("storyResult", storyResult);
+	// console.log("storyResult", storyResult);
 	const parentID = storyResult.story?.parent_id;
+	const isRootPage = storyResult.story?.is_startpage;
 
 	// storyID 642423873 is a folder
 	// id 642430829 is the root story of the parent folder
@@ -210,7 +204,7 @@ export const getServerSideProps: GetServerSideProps = async (context) => {
 	} else {
 		// When on a top-level slug (like "implementing-nice-guidance"), we
 		// use the siblings data to populate the render.
-		console.log("No current folder found or current folder has no parent_id");
+		// console.log("No current folder found or current folder has no parent_id");
 		parentAndSiblings = siblings;
 	}
 	const linksArray = Object.values(siblings);
@@ -228,52 +222,59 @@ export const getServerSideProps: GetServerSideProps = async (context) => {
 
 			if (children.length > 0) {
 				parent.childLinks = children;
-				isChild = true;
 			} else {
 				parent.childLinks = [];
-				if (slug.split("/").length > 1 && parent.slug === slug) {
-					isChild = false;
-					const noChildSlug = slug.split("/").slice(0, -1).join("/");
+				if (parent.slug === slug) {
+					console.log("inside parent.slug===slug");
+					console.log("storyResults", isRootPage);
+					const noChildSlug = isRootPage
+						? slug
+						: slug.split("/").slice(0, -1).join("/");
 
 					const startsWithres = await fetch(
-						`https://api.storyblok.com/v2/cdn/links?version=published&token=${token}&starts_with=${noChildSlug}`
+						`https://api.storyblok.com/v2/cdn/links?version=published&token=${token}&starts_with=${noChildSlug}&per_page=1000`
 					);
 					const startsWithData = await startsWithres.json();
 					startsWithElse = startsWithData.links;
-					// console.log("noChildSlug", noChildSlug);
+					console.log("noChildSlug", noChildSlug);
 					const currentFolder = Object.values(startsWithElse).find((item) => {
 						// {
-						// 	console.log("item.slug", item.slug === noChildSlug);
+						// console.log("item.slug", item.slug === noChildSlug);
 						// }
 						return item.is_folder && item.slug === noChildSlug;
 					});
-					// console.log("currentFOlder", currentFolder);
+					console.log("currentFOlder", currentFolder);
 					if (currentFolder && currentFolder.parent_id) {
 						// console.log("inside if condn");
-						const parentFetchStart = performance.now();
+						// const parentFetchStart = performance.now();
 
 						const parentRes = await fetch(
-							`https://api.storyblok.com/v2/cdn/links?version=published&token=${token}&with_parent=${currentFolder.parent_id}`
+							`https://api.storyblok.com/v2/cdn/links?version=published&token=${token}&with_parent=${currentFolder.parent_id}&per_page=1000`
 						);
 						const parentData = await parentRes.json();
 						parentAndSiblingsElse = parentData.links;
 						Object.values(parentAndSiblingsElse).map((parentelse) => {
-							const children = Object.values(linksArray).filter(
-								(childLink) => {
-									const isChild =
-										childLink.parent_id === parentelse.id &&
-										!childLink.is_startpage;
+							const children = Object.values(linksArray).filter((childLink) => {
+								const isChild =
+									childLink.parent_id === parentelse.id &&
+									!childLink.is_startpage;
 
-									return isChild;
-								}
-							);
+								return isChild;
+							});
+							// console.log("children", children);
 							parentelse.childLinks = children;
 							// parentelse.activename = "smoking-cession";
+							if (children.length > 0) {
+								parentelse.childLinks = children;
+							} else {
+								parentelse.childLinks = [];
+							}
 						});
 					} else {
 						parentAndSiblingsElse = siblings;
-						isChild = true;
 					}
+				} else {
+					console.log("inside else parent.slug===slug");
 				}
 			}
 			//TODO: if there are no children, render siblings and parent-level items (i.e. same nav structure as when on parent page)
@@ -292,7 +293,6 @@ export const getServerSideProps: GetServerSideProps = async (context) => {
 			startsWithElse: Object.values(startsWithElse),
 			parentAndSiblingsElse: Object.values(parentAndSiblingsElse),
 			slug,
-			isChild,
 		},
 	};
 };
