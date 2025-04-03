@@ -8,17 +8,36 @@ import { type Breadcrumb } from "@/types/Breadcrumb";
 import { type InfoPageStoryblok } from "@/types/storyblok";
 
 import styles from "./InfoPage.module.scss";
+import { StoryblokSectionNav } from "../StoryblokSectionNav/StoryblokSectionNav";
+type ChildLink = {
+	childLinks: any;
+	id: string;
+	real_path: string;
+	slug: string;
+	name: string;
+};
 
+type ParentLink = {
+	id: string;
+	real_path: string;
+	slug: string;
+	name: string;
+	childLinks?: ChildLink[];
+};
 interface InfoPageBlokProps {
 	blok: InfoPageStoryblok;
 	breadcrumbs?: Breadcrumb[];
-	siblingPages?: string[];
+	parentChildTreeArray: ParentLink[];
+	parentAndSiblingsElse: ChildLink[];
+	slug: string;
 }
 
 export const InfoPage = ({
 	blok,
 	breadcrumbs,
-	siblingPages,
+	parentChildTreeArray,
+	parentAndSiblingsElse,
+	slug,
 }: InfoPageBlokProps): React.ReactElement => {
 	return (
 		<>
@@ -39,17 +58,11 @@ export const InfoPage = ({
 
 			<Grid gutter="loose">
 				<GridItem cols={12} sm={{ cols: 3 }}>
-					{siblingPages && siblingPages.length > 0 && (
-						<StackedNav label="Label of parent section" elementType="h2">
-							{siblingPages.map((page, index) => {
-								return (
-									<StackedNavLink destination="/" key={index}>
-										{page}
-									</StackedNavLink>
-								);
-							})}
-						</StackedNav>
-					)}
+					<StoryblokSectionNav
+						parentChildTreeArray={parentChildTreeArray}
+						parentAndSiblingsElse={parentAndSiblingsElse}
+						slug={slug}
+					/>
 				</GridItem>
 				<GridItem cols={12} sm={{ cols: 9 }}>
 					<div className={styles.content}>

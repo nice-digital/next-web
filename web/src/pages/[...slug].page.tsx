@@ -1,3 +1,4 @@
+// @ts-nocheck
 import {
 	setComponents,
 	StoryblokComponent,
@@ -83,7 +84,15 @@ export default function SlugCatchAll(
 		return <ErrorPageContent title="Error" heading={error} />;
 	}
 
-	const { story: storyData, breadcrumbs, siblingPages, component } = props;
+	const {
+		story: storyData,
+		breadcrumbs,
+		siblingPages,
+		component,
+		parentChildTreeArray,
+		parentAndSiblingsElse,
+		slug,
+	} = props;
 
 	const commonComponents = {
 		cardGrid: BasicCardGrid,
@@ -143,6 +152,9 @@ export default function SlugCatchAll(
 				blok={storyData.content}
 				breadcrumbs={breadcrumbs}
 				siblingPages={siblingPages}
+				parentChildTreeArray={parentChildTreeArray}
+				parentAndSiblingsElse={parentAndSiblingsElse}
+				slug={slug}
 			/>
 		</>
 	);
@@ -191,10 +203,119 @@ export async function getServerSideProps(context: GetServerSidePropsContext) {
 
 		const siblingPages = [];
 
+		const parentID = storyResult.story?.parent_id;
+		const isRootPage = storyResult.story?.is_startpage;
+
+		console.log("slug from querystring:", slug);
+		const token = publicRuntimeConfig.storyblok.accessToken;
+		const res = await fetch(
+			`https://api.storyblok.com/v2/cdn/links?version=published&token=${token}&with_parent=${parentID}`
+		);
+		const data = await res.json();
+		const siblings = data.links;
+		const startsWithres = await fetch(
+			`https://api.storyblok.com/v2/cdn/links?version=published&token=${token}&starts_with=${slug}`
+		);
+		const startsWithData = await startsWithres.json();
+		const startsWith = startsWithData.links;
+		const currentFolder = Object.values(startsWith).find(
+			(item) => item.is_folder && item.slug === slug
+		);
+
+		let parentAndSiblings = {};
+		let parentFetchTime = 0;
+		let parentDataSize = 0;
+		let parentCount = 0;
+		if (currentFolder && currentFolder.parent_id) {
+			const parentFetchStart = performance.now();
+
+			const parentRes = await fetch(
+				`https://api.storyblok.com/v2/cdn/links?version=published&token=${token}&with_parent=${currentFolder.parent_id}`
+			);
+			const parentData = await parentRes.json();
+			parentAndSiblings = parentData.links;
+			parentFetchTime = performance.now() - parentFetchStart;
+			parentDataSize = JSON.stringify(parentData.links).length;
+			parentCount = Object.keys(parentData.links).length;
+		} else {
+			parentAndSiblings = siblings;
+		}
+		const linksArray = Object.values(siblings);
+		let startsWithElse = {};
+		let parentAndSiblingsElse = {};
+		const parentAndSiblingsArray = Object.values(parentAndSiblings);
+		const parentChildTreeArray = await Promise.all(
+			parentAndSiblingsArray.map(async (parent) => {
+				const children = linksArray.filter((childLink) => {
+					const isChild =
+						childLink.parent_id === parent.id && !childLink.is_startpage;
+
+					return isChild;
+				});
+
+				if (children.length > 0) {
+					parent.childLinks = children;
+				} else {
+					parent.childLinks = [];
+					if (parent.slug === slug) {
+						console.log("inside parent.slug===slug");
+						console.log("storyResults", isRootPage);
+						const noChildSlug = isRootPage
+							? slug
+							: slug.split("/").slice(0, -1).join("/");
+
+						const startsWithres = await fetch(
+							`https://api.storyblok.com/v2/cdn/links?version=published&token=${token}&starts_with=${noChildSlug}&per_page=1000`
+						);
+						const startsWithData = await startsWithres.json();
+						startsWithElse = startsWithData.links;
+						console.log("noChildSlug", noChildSlug);
+						const currentFolder = Object.values(startsWithElse).find((item) => {
+							return item.is_folder && item.slug === noChildSlug;
+						});
+						console.log("currentFOlder", currentFolder);
+						if (currentFolder && currentFolder.parent_id) {
+							console.log("Inside current folder condn");
+							const parentRes = await fetch(
+								`https://api.storyblok.com/v2/cdn/links?version=published&token=${token}&with_parent=${currentFolder.parent_id}&per_page=1000`
+							);
+							const parentData = await parentRes.json();
+							parentAndSiblingsElse = parentData.links;
+							Object.values(parentAndSiblingsElse).map((parentelse) => {
+								const children = Object.values(linksArray).filter(
+									(childLink) => {
+										const isChild =
+											childLink.parent_id === parentelse.id &&
+											!childLink.is_startpage;
+
+										return isChild;
+									}
+								);
+								// console.log("children", children);
+								parentelse.childLinks = children;
+								// parentelse.activename = "smoking-cession";
+								if (children.length > 0) {
+									parentelse.childLinks = children;
+								} else {
+									parentelse.childLinks = [];
+								}
+							});
+						} else {
+							parentAndSiblingsElse = siblings;
+						}
+					} else {
+						console.log("inside else parent.slug===slug");
+					}
+				}
+				//TODO: if there are no children, render siblings and parent-level items (i.e. same nav structure as when on parent page)
+
+				return parent;
+			})
+		);
 		const component = storyResult.story?.content?.component;
 		// TODO: Use the Storyblok Links API to build a map of sibling & optionally child pages
 		if (component === "infoPage") {
-			siblingPages.push(...["page1", "page2"]);
+			siblingPages.push();
 		}
 
 		const result = {
@@ -203,6 +324,14 @@ export async function getServerSideProps(context: GetServerSidePropsContext) {
 				breadcrumbs,
 				siblingPages,
 				component,
+				parentChildTreeArray,
+
+				siblings: Object.values(siblings),
+				startsWith: Object.values(startsWith),
+				parentAndSiblingsArray: Object.values(parentAndSiblings),
+				startsWithElse: Object.values(startsWithElse),
+				parentAndSiblingsElse: Object.values(parentAndSiblingsElse),
+				slug,
 			},
 		};
 
