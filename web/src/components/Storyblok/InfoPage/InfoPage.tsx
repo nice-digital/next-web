@@ -27,16 +27,16 @@ type ParentLink = {
 interface InfoPageBlokProps {
 	blok: InfoPageStoryblok;
 	breadcrumbs?: Breadcrumb[];
-	parentChildTreeArray: ParentLink[];
-	parentAndSiblingsElse: ChildLink[];
+	parentChildLinksTreeArray: ParentLink[];
+	parentAndSiblingLinksElse: ChildLink[];
 	slug: string;
 }
 
 export const InfoPage = ({
 	blok,
 	breadcrumbs,
-	parentChildTreeArray,
-	parentAndSiblingsElse,
+	parentChildLinksTreeArray,
+	parentAndSiblingLinksElse,
 	slug,
 }: InfoPageBlokProps): React.ReactElement => {
 	return (
@@ -59,8 +59,8 @@ export const InfoPage = ({
 			<Grid gutter="loose">
 				<GridItem cols={12} sm={{ cols: 3 }}>
 					<StoryblokSectionNav
-						parentChildTreeArray={parentChildTreeArray}
-						parentAndSiblingsElse={parentAndSiblingsElse}
+						parentChildLinksTreeArray={parentChildLinksTreeArray}
+						parentAndSiblingLinksElse={parentAndSiblingLinksElse}
 						slug={slug}
 					/>
 				</GridItem>

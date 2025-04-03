@@ -89,8 +89,8 @@ export default function SlugCatchAll(
 		breadcrumbs,
 		siblingPages,
 		component,
-		parentChildTreeArray,
-		parentAndSiblingsElse,
+		parentChildLinksTreeArray,
+		parentAndSiblingLinksElse,
 		slug,
 	} = props;
 
@@ -152,8 +152,8 @@ export default function SlugCatchAll(
 				blok={storyData.content}
 				breadcrumbs={breadcrumbs}
 				siblingPages={siblingPages}
-				parentChildTreeArray={parentChildTreeArray}
-				parentAndSiblingsElse={parentAndSiblingsElse}
+				parentChildLinksTreeArray={parentChildLinksTreeArray}
+				parentAndSiblingLinksElse={parentAndSiblingLinksElse}
 				slug={slug}
 			/>
 		</>
@@ -205,48 +205,46 @@ export async function getServerSideProps(context: GetServerSidePropsContext) {
 
 		const parentID = storyResult.story?.parent_id;
 		const isRootPage = storyResult.story?.is_startpage;
-
-		console.log("slug from querystring:", slug);
 		const token = publicRuntimeConfig.storyblok.accessToken;
-		const res = await fetch(
+		const linksFetchResponse = await fetch(
 			`https://api.storyblok.com/v2/cdn/links?version=published&token=${token}&with_parent=${parentID}`
 		);
-		const data = await res.json();
-		const siblings = data.links;
-		const startsWithres = await fetch(
+		const linksData = await linksFetchResponse.json();
+		const siblingsLinks = linksData.links;
+		const startsWithFetchResponse = await fetch(
 			`https://api.storyblok.com/v2/cdn/links?version=published&token=${token}&starts_with=${slug}`
 		);
-		const startsWithData = await startsWithres.json();
-		const startsWith = startsWithData.links;
-		const currentFolder = Object.values(startsWith).find(
+		const startsWithLinksData = await startsWithFetchResponse.json();
+		const startsWithLinks = startsWithLinksData.links;
+		const currentFolderLink = Object.values(startsWithLinks).find(
 			(item) => item.is_folder && item.slug === slug
 		);
 
-		let parentAndSiblings = {};
+		let parentAndSiblingLinks = {};
 		let parentFetchTime = 0;
 		let parentDataSize = 0;
 		let parentCount = 0;
-		if (currentFolder && currentFolder.parent_id) {
+		if (currentFolderLink && currentFolderLink.parent_id) {
 			const parentFetchStart = performance.now();
 
 			const parentRes = await fetch(
-				`https://api.storyblok.com/v2/cdn/links?version=published&token=${token}&with_parent=${currentFolder.parent_id}`
+				`https://api.storyblok.com/v2/cdn/links?version=published&token=${token}&with_parent=${currentFolderLink.parent_id}`
 			);
 			const parentData = await parentRes.json();
-			parentAndSiblings = parentData.links;
+			parentAndSiblingLinks = parentData.links;
 			parentFetchTime = performance.now() - parentFetchStart;
 			parentDataSize = JSON.stringify(parentData.links).length;
 			parentCount = Object.keys(parentData.links).length;
 		} else {
-			parentAndSiblings = siblings;
+			parentAndSiblingLinks = siblingsLinks;
 		}
-		const linksArray = Object.values(siblings);
-		let startsWithElse = {};
-		let parentAndSiblingsElse = {};
-		const parentAndSiblingsArray = Object.values(parentAndSiblings);
-		const parentChildTreeArray = await Promise.all(
-			parentAndSiblingsArray.map(async (parent) => {
-				const children = linksArray.filter((childLink) => {
+		const siblingsLinksArray = Object.values(siblingsLinks);
+		let startsWithLinksElse = {};
+		let parentAndSiblingLinksElse = {};
+		const parentAndSiblingLinksArray = Object.values(parentAndSiblingLinks);
+		const parentChildLinksTreeArray = await Promise.all(
+			parentAndSiblingLinksArray.map(async (parent) => {
+				const children = siblingsLinksArray.filter((childLink) => {
 					const isChild =
 						childLink.parent_id === parent.id && !childLink.is_startpage;
 
@@ -258,31 +256,26 @@ export async function getServerSideProps(context: GetServerSidePropsContext) {
 				} else {
 					parent.childLinks = [];
 					if (parent.slug === slug) {
-						console.log("inside parent.slug===slug");
-						console.log("storyResults", isRootPage);
 						const noChildSlug = isRootPage
 							? slug
 							: slug.split("/").slice(0, -1).join("/");
 
-						const startsWithres = await fetch(
+						const startsWithFetchResponse = await fetch(
 							`https://api.storyblok.com/v2/cdn/links?version=published&token=${token}&starts_with=${noChildSlug}&per_page=1000`
 						);
-						const startsWithData = await startsWithres.json();
-						startsWithElse = startsWithData.links;
-						console.log("noChildSlug", noChildSlug);
-						const currentFolder = Object.values(startsWithElse).find((item) => {
+						const startsWithLinksData = await startsWithFetchResponse.json();
+						startsWithLinksElse = startsWithLinksData.links;
+						const currentFolderLink = Object.values(startsWithLinksElse).find((item) => {
 							return item.is_folder && item.slug === noChildSlug;
 						});
-						console.log("currentFOlder", currentFolder);
-						if (currentFolder && currentFolder.parent_id) {
-							console.log("Inside current folder condn");
+						if (currentFolderLink && currentFolderLink.parent_id) {
 							const parentRes = await fetch(
-								`https://api.storyblok.com/v2/cdn/links?version=published&token=${token}&with_parent=${currentFolder.parent_id}&per_page=1000`
+								`https://api.storyblok.com/v2/cdn/links?version=published&token=${token}&with_parent=${currentFolderLink.parent_id}&per_page=1000`
 							);
 							const parentData = await parentRes.json();
-							parentAndSiblingsElse = parentData.links;
-							Object.values(parentAndSiblingsElse).map((parentelse) => {
-								const children = Object.values(linksArray).filter(
+							parentAndSiblingLinksElse = parentData.links;
+							Object.values(parentAndSiblingLinksElse).map((parentelse) => {
+								const children = Object.values(siblingsLinksArray).filter(
 									(childLink) => {
 										const isChild =
 											childLink.parent_id === parentelse.id &&
@@ -291,9 +284,7 @@ export async function getServerSideProps(context: GetServerSidePropsContext) {
 										return isChild;
 									}
 								);
-								// console.log("children", children);
 								parentelse.childLinks = children;
-								// parentelse.activename = "smoking-cession";
 								if (children.length > 0) {
 									parentelse.childLinks = children;
 								} else {
@@ -301,13 +292,13 @@ export async function getServerSideProps(context: GetServerSidePropsContext) {
 								}
 							});
 						} else {
-							parentAndSiblingsElse = siblings;
+							parentAndSiblingLinksElse = siblingsLinks;
 						}
 					} else {
 						console.log("inside else parent.slug===slug");
 					}
 				}
-				//TODO: if there are no children, render siblings and parent-level items (i.e. same nav structure as when on parent page)
+				//TODO: if there are no children, render siblingsLinks and parent-level items (i.e. same nav structure as when on parent page)
 
 				return parent;
 			})
@@ -324,13 +315,8 @@ export async function getServerSideProps(context: GetServerSidePropsContext) {
 				breadcrumbs,
 				siblingPages,
 				component,
-				parentChildTreeArray,
-
-				siblings: Object.values(siblings),
-				startsWith: Object.values(startsWith),
-				parentAndSiblingsArray: Object.values(parentAndSiblings),
-				startsWithElse: Object.values(startsWithElse),
-				parentAndSiblingsElse: Object.values(parentAndSiblingsElse),
+				parentChildLinksTreeArray,
+				parentAndSiblingLinksElse: Object.values(parentAndSiblingLinksElse),
 				slug,
 			},
 		};
