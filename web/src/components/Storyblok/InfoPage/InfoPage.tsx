@@ -11,14 +11,14 @@ import styles from "./InfoPage.module.scss";
 import { StoryblokSectionNav } from "../StoryblokSectionNav/StoryblokSectionNav";
 type ChildLink = {
 	childLinks: any;
-	id: string;
+	id: number;
 	real_path: string;
 	slug: string;
 	name: string;
 };
 
 type ParentLink = {
-	id: string;
+	id: number;
 	real_path: string;
 	slug: string;
 	name: string;
