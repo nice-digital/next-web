@@ -34,10 +34,9 @@ export const StoryblokSectionNav = ({
 	const parentChildDataWithFirstElement = parentChildDataArray[0];
 	const trimmedParentChildData =
 		parentChildDataArray?.length > 0 ? parentChildDataArray.slice(1) : [];
-
 	return (
 		<>
-			<StackedNav label={parentChildDataWithFirstElement.name}>
+			<StackedNav label={parentChildDataWithFirstElement?.name}>
 				{trimmedParentChildData?.map((parent) => (
 					<StackedNavLink
 						destination={parent.real_path}

@@ -159,7 +159,17 @@ export default function SlugCatchAll(
 		</>
 	);
 }
-
+const fetchLinksFromStoryblok = async (
+	token: string,
+	queryParams: Record<string, string>
+) => {
+	const queryString = new URLSearchParams(queryParams).toString();
+	const res = await fetch(
+		`https://api.storyblok.com/v2/cdn/links?${queryString}`
+	);
+	const data = await res.json();
+	return data.links;
+};
 export async function getServerSideProps(context: GetServerSidePropsContext) {
 	// Bail out early unless this route is enabled for this environment
 	if (publicRuntimeConfig.storyblok.enableRootCatchAll.toString() !== "true") {
@@ -206,35 +216,31 @@ export async function getServerSideProps(context: GetServerSidePropsContext) {
 		const parentID = storyResult.story?.parent_id;
 		const isRootPage = storyResult.story?.is_startpage;
 		const token = publicRuntimeConfig.storyblok.accessToken;
-		const linksFetchResponse = await fetch(
-			`https://api.storyblok.com/v2/cdn/links?version=published&token=${token}&with_parent=${parentID}`
-		);
-		const linksData = await linksFetchResponse.json();
-		const siblingsLinks = linksData.links;
-		const startsWithFetchResponse = await fetch(
-			`https://api.storyblok.com/v2/cdn/links?version=published&token=${token}&starts_with=${slug}`
-		);
-		const startsWithLinksData = await startsWithFetchResponse.json();
-		const startsWithLinks = startsWithLinksData.links;
+		const siblingsLinks = await fetchLinksFromStoryblok(token, {
+			version: "published",
+			token,
+			with_parent: parentID || "",
+			per_page: "1000",
+		});
+		const startsWithLinks = await fetchLinksFromStoryblok(token, {
+			version: "published",
+			token,
+			starts_with: slug,
+			per_page: "1000",
+		});
 		const currentFolderLink = Object.values(startsWithLinks).find(
 			(item) => item.is_folder && item.slug === slug
 		);
 
 		let parentAndSiblingLinks = {};
-		let parentFetchTime = 0;
-		let parentDataSize = 0;
-		let parentCount = 0;
-		if (currentFolderLink && currentFolderLink.parent_id) {
-			const parentFetchStart = performance.now();
 
-			const parentRes = await fetch(
-				`https://api.storyblok.com/v2/cdn/links?version=published&token=${token}&with_parent=${currentFolderLink.parent_id}`
-			);
-			const parentData = await parentRes.json();
-			parentAndSiblingLinks = parentData.links;
-			parentFetchTime = performance.now() - parentFetchStart;
-			parentDataSize = JSON.stringify(parentData.links).length;
-			parentCount = Object.keys(parentData.links).length;
+		if (currentFolderLink && currentFolderLink.parent_id) {
+			 parentAndSiblingLinks = await fetchLinksFromStoryblok(token, {
+				version: "published",
+				token,
+				with_parent: currentFolderLink.parent_id,
+				per_page: "1000",
+			});
 		} else {
 			parentAndSiblingLinks = siblingsLinks;
 		}
@@ -260,20 +266,25 @@ export async function getServerSideProps(context: GetServerSidePropsContext) {
 							? slug
 							: slug.split("/").slice(0, -1).join("/");
 
-						const startsWithFetchResponse = await fetch(
-							`https://api.storyblok.com/v2/cdn/links?version=published&token=${token}&starts_with=${noChildSlug}&per_page=1000`
-						);
-						const startsWithLinksData = await startsWithFetchResponse.json();
-						startsWithLinksElse = startsWithLinksData.links;
-						const currentFolderLink = Object.values(startsWithLinksElse).find((item) => {
-							return item.is_folder && item.slug === noChildSlug;
+						const startsWithLinksElse = await fetchLinksFromStoryblok(token, {
+							version: "published",
+							token,
+							starts_with: noChildSlug,
+							per_page: "1000",
 						});
+						const currentFolderLink = Object.values(startsWithLinksElse).find(
+							(item) => {
+								return item.is_folder && item.slug === noChildSlug;
+							}
+						);
 						if (currentFolderLink && currentFolderLink.parent_id) {
-							const parentRes = await fetch(
-								`https://api.storyblok.com/v2/cdn/links?version=published&token=${token}&with_parent=${currentFolderLink.parent_id}&per_page=1000`
-							);
-							const parentData = await parentRes.json();
-							parentAndSiblingLinksElse = parentData.links;
+							parentAndSiblingLinksElse = await fetchLinksFromStoryblok(token, {
+								version: "published",
+								token,
+								with_parent: currentFolderLink.parent_id,
+								per_page: "1000",
+							});
+
 							Object.values(parentAndSiblingLinksElse).map((parentelse) => {
 								const children = Object.values(siblingsLinksArray).filter(
 									(childLink) => {
