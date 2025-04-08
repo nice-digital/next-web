@@ -1,34 +1,32 @@
 import { StoryblokComponent } from "@storyblok/react";
 
 import { Grid, GridItem } from "@nice-digital/nds-grid";
-import { StackedNav, StackedNavLink } from "@nice-digital/nds-stacked-nav";
 
 import { StoryblokRichText } from "@/components/Storyblok/StoryblokRichText/StoryblokRichText";
 import { type Breadcrumb } from "@/types/Breadcrumb";
 import { type InfoPageStoryblok } from "@/types/storyblok";
 
-import styles from "./InfoPage.module.scss";
 import { StoryblokSectionNav } from "../StoryblokSectionNav/StoryblokSectionNav";
-type ChildLink = {
-	childLinks: any;
+
+import styles from "./InfoPage.module.scss";
+
+type Link = {
 	id: number;
-	real_path: string;
-	slug: string;
-	name: string;
+  slug: string;
+  parent_id: number;
+  name: string;
+  is_folder: boolean;
+  is_startpage: boolean;
+  real_path: string;
+  childLinks?: Link[]
 };
 
-type ParentLink = {
-	id: number;
-	real_path: string;
-	slug: string;
-	name: string;
-	childLinks?: ChildLink[];
-};
+
 interface InfoPageBlokProps {
 	blok: InfoPageStoryblok;
 	breadcrumbs?: Breadcrumb[];
-	parentChildLinksTreeArray: ParentLink[];
-	parentAndSiblingLinksElse: ChildLink[];
+	parentChildLinksTreeArray: Link[];
+	parentAndSiblingLinksElse: Link[];
 	slug: string;
 }
 

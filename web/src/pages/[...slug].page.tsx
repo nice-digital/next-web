@@ -1,4 +1,3 @@
-// @ts-nocheck
 import {
 	setComponents,
 	StoryblokComponent,
@@ -48,10 +47,21 @@ import {
 
 import type { GetServerSidePropsContext } from "next";
 
+type Link = {
+	childLinks?: Link[];
+	id: string;
+	slug: string;
+	parent_id: string;
+	is_folder: boolean;
+	is_startpage: boolean;
+};
 export type SlugCatchAllSuccessProps = {
 	story: ISbStoryData<InfoPageStoryblok | CategoryNavigationStoryblok>;
 	breadcrumbs: Breadcrumb[];
 	component: string;
+	parentChildLinksTreeArray: Link[];
+	parentAndSiblingLinksElse: Link[];
+	slug: string;
 };
 
 export type SlugCatchAllErrorProps = {
@@ -189,21 +199,22 @@ const fetchParentAndSiblingLinks = async (
 const reUseFetchingLogic = async (
 	token: string,
 	slug: string,
-	siblingsLinks: any,
+	siblingsLinks: Link[],
 	secondIteration?: boolean
 ) => {
-	const startsWithLinks = await fetchLinksFromStoryblok(token, {
-		version: "published",
-		token,
-		starts_with: slug,
-		per_page: "1000",
-	});
+	const startsWithLinks: { [key: string]: Link } =
+		await fetchLinksFromStoryblok(token, {
+			version: "published",
+			token,
+			starts_with: slug,
+			per_page: "1000",
+		});
 
-	const currentFolderLink = Object.values(startsWithLinks).find(
-		(item) => item.is_folder && item.slug === slug
-	);
+	const currentFolderLink: Link | undefined = Object.values(
+		startsWithLinks
+	).find((item: Link) => item.is_folder && item.slug === slug);
 
-	let parentAndSiblingLinks = {};
+	let parentAndSiblingLinks: Link[] = [];
 
 	if (currentFolderLink && currentFolderLink.parent_id) {
 		parentAndSiblingLinks = await fetchLinksFromStoryblok(token, {
@@ -277,21 +288,23 @@ export async function getServerSideProps(context: GetServerSidePropsContext) {
 
 		// const siblingPages = [];
 
-		const parentID = storyResult.story?.parent_id;
+		const parentID = storyResult.story?.parent_id as unknown as string;
 		const isRootPage = storyResult.story?.is_startpage;
 		const token = publicRuntimeConfig.storyblok.accessToken;
 
 		const component = storyResult.story?.content?.component;
-		let parentAndSiblingLinksElse = {};
-		let parentChildLinksTreeArray = {};
+		let parentAndSiblingLinksElse: Link[] = [];
+		let parentChildLinksTreeArray: Link[] = [];
 		let secondIteration = false;
 		if (component === "infoPage") {
 			const { siblingsLinks, parentAndSiblingLinks } =
 				await fetchParentAndSiblingLinks(token, parentID, slug);
 
-			const siblingsLinksArray = Object.values(siblingsLinks);
-			const parentAndSiblingLinksArray = Object.values(parentAndSiblingLinks);
-			let startsWithLinksElse = {};
+			const siblingsLinksArray: Link[] = Object.values(siblingsLinks);
+			const parentAndSiblingLinksArray: Link[] = Object.values(
+				parentAndSiblingLinks
+			);
+			// const startsWithLinksElse = {};
 			parentChildLinksTreeArray = await Promise.all(
 				parentAndSiblingLinksArray.map(async (parent) => {
 					const children = siblingsLinksArray.filter((childLink) => {
