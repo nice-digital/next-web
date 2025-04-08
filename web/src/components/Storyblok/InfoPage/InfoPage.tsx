@@ -12,15 +12,14 @@ import styles from "./InfoPage.module.scss";
 
 type Link = {
 	id: number;
-  slug: string;
-  parent_id: number;
-  name: string;
-  is_folder: boolean;
-  is_startpage: boolean;
-  real_path: string;
-  childLinks?: Link[]
+	slug: string;
+	parent_id: number;
+	name: string;
+	is_folder: boolean;
+	is_startpage: boolean;
+	real_path: string;
+	childLinks?: Link[];
 };
-
 
 interface InfoPageBlokProps {
 	blok: InfoPageStoryblok;
