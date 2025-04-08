@@ -51,7 +51,6 @@ import type { GetServerSidePropsContext } from "next";
 export type SlugCatchAllSuccessProps = {
 	story: ISbStoryData<InfoPageStoryblok | CategoryNavigationStoryblok>;
 	breadcrumbs: Breadcrumb[];
-	// siblingPages?: string[];
 	component: string;
 };
 
@@ -87,7 +86,6 @@ export default function SlugCatchAll(
 	const {
 		story: storyData,
 		breadcrumbs,
-		// siblingPages,
 		component,
 		parentChildLinksTreeArray,
 		parentAndSiblingLinksElse,
@@ -151,7 +149,6 @@ export default function SlugCatchAll(
 			<StoryblokComponent
 				blok={storyData.content}
 				breadcrumbs={breadcrumbs}
-				// siblingPages={siblingPages}
 				parentChildLinksTreeArray={parentChildLinksTreeArray}
 				parentAndSiblingLinksElse={parentAndSiblingLinksElse}
 				slug={slug}
@@ -217,14 +214,12 @@ const reUseFetchingLogic = async (
 		});
 		if (secondIteration) {
 			Object.values(parentAndSiblingLinks).map((parentelse) => {
-				const children = Object.values(siblingsLinks).filter(
-					(childLink) => {
-						const isChild =
-							childLink.parent_id === parentelse.id && !childLink.is_startpage;
+				const children = Object.values(siblingsLinks).filter((childLink) => {
+					const isChild =
+						childLink.parent_id === parentelse.id && !childLink.is_startpage;
 
-						return isChild;
-					}
-				);
+					return isChild;
+				});
 				parentelse.childLinks = children;
 				if (children.length > 0) {
 					parentelse.childLinks = children;
