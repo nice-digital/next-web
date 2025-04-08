@@ -295,7 +295,6 @@ export async function getServerSideProps(context: GetServerSidePropsContext) {
 		const component = storyResult.story?.content?.component;
 		let parentAndSiblingLinksElse: Link[] = [];
 		let parentChildLinksTreeArray: Link[] = [];
-		let secondIteration = false;
 		if (component === "infoPage") {
 			const { siblingsLinks, parentAndSiblingLinks } =
 				await fetchParentAndSiblingLinks(token, parentID, slug);
@@ -318,16 +317,17 @@ export async function getServerSideProps(context: GetServerSidePropsContext) {
 						parent.childLinks = children;
 					} else {
 						parent.childLinks = [];
+						let secondIteration;
 						if (parent.slug === slug) {
 							const noChildSlug = isRootPage
 								? slug
 								: slug.split("/").slice(0, -1).join("/");
-							// secondIteration = true;
+							secondIteration = true;
 							parentAndSiblingLinksElse = await reUseFetchingLogic(
 								token,
 								noChildSlug,
 								siblingsLinks,
-								(secondIteration = true)
+								secondIteration
 							);
 						} else {
 							console.log("inside else parent.slug===slug");
