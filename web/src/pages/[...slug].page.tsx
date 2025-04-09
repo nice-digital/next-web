@@ -186,8 +186,7 @@ const fetchLinksBySlug = async (slug: string) => {
 	return fetchLinksFromStoryblok({ starts_with: slug });
 };
 
-// Helper function to find the current folder link
-const findCurrentFolderLink = (links: any, slug: string) => {
+const findCurrentFolder = (links: any, slug: string) => {
 	return Object.values(links).find(
 		(item) => item.is_folder && item.slug === slug
 	);
@@ -203,12 +202,11 @@ const reUseFetchingLogic = async (
 	secondIteration?: boolean
 ) => {
 	let linksStartingWithSlug = await fetchLinksBySlug(slug);
-	const currentFolderLink = findCurrentFolderLink(linksStartingWithSlug, slug);
+	const currentFolder = findCurrentFolder(linksStartingWithSlug, slug);
 
-	if (currentFolderLink && currentFolderLink.parent_id) {
-		parentAndSiblingLinks = await fetchLinksFromStoryblok(token, {
-			with_parent: currentFolderLink.parent_id,
-		});
+	if (currentFolder && currentFolder.parent_id) {
+		const parentLinks = await fetchLinksByParent(currentFolder.parent_id);
+
 		if (secondIteration) {
 			Object.values(parentAndSiblingLinks).map((parentelse) => {
 				const children = Object.values(siblingsLinks).filter(
