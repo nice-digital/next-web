@@ -167,15 +167,15 @@ export default function SlugCatchAll(
 	);
 }
 const fetchLinksFromStoryblok = async (
-	token: string,
 	queryParams: Record<string, string>
-) => {
+): Promise<Link[]> => {
 	const queryString = new URLSearchParams(queryParams).toString();
 	const res = await fetch(
 		`https://api.storyblok.com/v2/cdn/links?${queryString}`
 	);
 	const data = await res.json();
-	return data.links;
+	const dataArray: Link[] = Object.values(data.links);
+	return dataArray;
 };
 const fetchParentAndSiblingLinks = async (
 	token: string,
@@ -183,54 +183,63 @@ const fetchParentAndSiblingLinks = async (
 	slug: string
 ) => {
 	// Fetch sibling links first
-	const siblingsLinks = await fetchLinksFromStoryblok(token, {
+	const siblingsLinksArray = await fetchLinksFromStoryblok({
 		version: "published",
 		token,
 		with_parent: parentID || "",
 		per_page: "1000",
 	});
-	const parentAndSiblingLinks = await reUseFetchingLogic(
+	const parentAndSiblingLinksArray = await reUseFetchingLogic(
 		token,
 		slug,
-		siblingsLinks
+		siblingsLinksArray
 	);
-	return { siblingsLinks, parentAndSiblingLinks };
+	return { siblingsLinksArray, parentAndSiblingLinksArray };
+};
+const filterFunctionForTreeStructure = (
+	siblingsLinksArray: Link[],
+	parent: Link
+) => {
+	const children = siblingsLinksArray.filter((childLink) => {
+		const isChild =
+			childLink.parent_id === parent.id && !childLink.is_startpage;
+
+		return isChild;
+	});
+	return children;
 };
 const reUseFetchingLogic = async (
 	token: string,
 	slug: string,
-	siblingsLinks: Link[],
+	siblingsLinksArray: Link[],
 	secondIteration?: boolean
 ) => {
-	const startsWithLinks: { [key: string]: Link } =
-		await fetchLinksFromStoryblok(token, {
-			version: "published",
-			token,
-			starts_with: slug,
-			per_page: "1000",
-		});
+	const startsWithLinksArray = await fetchLinksFromStoryblok({
+		version: "published",
+		token,
+		starts_with: slug,
+		per_page: "1000",
+	});
 
-	const currentFolderLink: Link | undefined = Object.values(
-		startsWithLinks
-	).find((item: Link) => item.is_folder && item.slug === slug);
+	const currentFolderLink: Link | undefined = startsWithLinksArray.find(
+		(item: Link) => item.is_folder && item.slug === slug
+	);
 
-	let parentAndSiblingLinks: Link[] = [];
+	let parentAndSiblingLinksArray: Link[] = [];
 
 	if (currentFolderLink && currentFolderLink.parent_id) {
-		parentAndSiblingLinks = await fetchLinksFromStoryblok(token, {
+		parentAndSiblingLinksArray = await fetchLinksFromStoryblok({
 			version: "published",
 			token,
 			with_parent: currentFolderLink.parent_id,
 			per_page: "1000",
 		});
 		if (secondIteration) {
-			Object.values(parentAndSiblingLinks).map((parentelse) => {
-				const children = Object.values(siblingsLinks).filter((childLink) => {
-					const isChild =
-						childLink.parent_id === parentelse.id && !childLink.is_startpage;
-
-					return isChild;
-				});
+			parentAndSiblingLinksArray.map((parentelse) => {
+				const children = filterFunctionForTreeStructure(
+					siblingsLinksArray,
+					parentelse
+				);
 				parentelse.childLinks = children;
 				if (children.length > 0) {
 					parentelse.childLinks = children;
@@ -240,9 +249,9 @@ const reUseFetchingLogic = async (
 			});
 		}
 	} else {
-		parentAndSiblingLinks = siblingsLinks;
+		parentAndSiblingLinksArray = siblingsLinksArray;
 	}
-	return parentAndSiblingLinks;
+	return parentAndSiblingLinksArray;
 };
 
 export async function getServerSideProps(context: GetServerSidePropsContext) {
@@ -286,8 +295,6 @@ export async function getServerSideProps(context: GetServerSidePropsContext) {
 		}
 		if ("notFound" in storyResult) return storyResult;
 
-		// const siblingPages = [];
-
 		const parentID = storyResult.story?.parent_id as unknown as string;
 		const isRootPage = storyResult.story?.is_startpage;
 		const token = publicRuntimeConfig.storyblok.accessToken;
@@ -296,22 +303,14 @@ export async function getServerSideProps(context: GetServerSidePropsContext) {
 		let parentAndSiblingLinksElse: Link[] = [];
 		let parentChildLinksTreeArray: Link[] = [];
 		if (component === "infoPage") {
-			const { siblingsLinks, parentAndSiblingLinks } =
+			const { siblingsLinksArray, parentAndSiblingLinksArray } =
 				await fetchParentAndSiblingLinks(token, parentID, slug);
-
-			const siblingsLinksArray: Link[] = Object.values(siblingsLinks);
-			const parentAndSiblingLinksArray: Link[] = Object.values(
-				parentAndSiblingLinks
-			);
-			// const startsWithLinksElse = {};
 			parentChildLinksTreeArray = await Promise.all(
 				parentAndSiblingLinksArray.map(async (parent) => {
-					const children = siblingsLinksArray.filter((childLink) => {
-						const isChild =
-							childLink.parent_id === parent.id && !childLink.is_startpage;
-
-						return isChild;
-					});
+					const children = filterFunctionForTreeStructure(
+						siblingsLinksArray,
+						parent
+					);
 
 					if (children.length > 0) {
 						parent.childLinks = children;
@@ -326,7 +325,7 @@ export async function getServerSideProps(context: GetServerSidePropsContext) {
 							parentAndSiblingLinksElse = await reUseFetchingLogic(
 								token,
 								noChildSlug,
-								siblingsLinks,
+								siblingsLinksArray,
 								secondIteration
 							);
 						} else {
@@ -344,10 +343,9 @@ export async function getServerSideProps(context: GetServerSidePropsContext) {
 			props: {
 				...storyResult,
 				breadcrumbs,
-				// siblingPages,
 				component,
 				parentChildLinksTreeArray,
-				parentAndSiblingLinksElse: Object.values(parentAndSiblingLinksElse),
+				parentAndSiblingLinksElse,
 				slug,
 			},
 		};
