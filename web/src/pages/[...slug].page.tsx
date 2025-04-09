@@ -159,6 +159,7 @@ export default function SlugCatchAll(
 		</>
 	);
 }
+
 const fetchLinksFromStoryblok = async (
 	queryParams: Record<string, string> = {}
 ) => {
@@ -195,10 +196,22 @@ const findCurrentFolder = (links: any, slug: string) => {
 const fetchParentAndSiblingLinks = async (parentID: string, slug: string) => {
 	const siblingLinks = await fetchLinksByParent(parentID);
 	const parentAndSiblingLinks = await reUseFetchingLogic(slug, siblingLinks);
+	return { siblingsLinks: siblingLinks, parentAndSiblingLinks };
+};
+
+const mapChildLinksToParent = (parentLinks: any, siblingLinks: any) => {
+	Object.values(parentLinks).forEach((parent) => {
+		const children = Object.values(siblingLinks).filter(
+			(childLink) =>
+				childLink.parent_id === parent.id && !childLink.is_startpage
+		);
+		parent.childLinks = children.length > 0 ? children : [];
+	});
+};
+
 const reUseFetchingLogic = async (
-	token: string,
 	slug: string,
-	siblingsLinks: any,
+	siblingLinks: any,
 	secondIteration?: boolean
 ) => {
 	let linksStartingWithSlug = await fetchLinksBySlug(slug);
@@ -208,27 +221,13 @@ const reUseFetchingLogic = async (
 		const parentLinks = await fetchLinksByParent(currentFolder.parent_id);
 
 		if (secondIteration) {
-			Object.values(parentAndSiblingLinks).map((parentelse) => {
-				const children = Object.values(siblingsLinks).filter(
-					(childLink) => {
-						const isChild =
-							childLink.parent_id === parentelse.id && !childLink.is_startpage;
-
-						return isChild;
-					}
-				);
-				parentelse.childLinks = children;
-				if (children.length > 0) {
-					parentelse.childLinks = children;
-				} else {
-					parentelse.childLinks = [];
-				}
-			});
+			mapChildLinksToParent(parentLinks, siblingLinks);
 		}
-	} else {
-		parentAndSiblingLinks = siblingsLinks;
+
+		return parentLinks;
 	}
-	return parentAndSiblingLinks;
+
+	return siblingLinks;
 };
 
 export async function getServerSideProps(context: GetServerSidePropsContext) {
