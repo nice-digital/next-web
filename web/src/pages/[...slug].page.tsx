@@ -193,23 +193,9 @@ const findCurrentFolderLink = (links: any, slug: string) => {
 	);
 };
 
-const fetchParentAndSiblingLinks = async (
-	token: string,
-	parentID: string,
-	slug: string
-) => {
-	// Fetch sibling links first
-	const siblingsLinks = await fetchLinksFromStoryblok(token, {
-		with_parent: parentID || "",
-	});
-	const parentAndSiblingLinks = await reUseFetchingLogic(
-		token,
-		slug,
-		siblingsLinks
-	);
-	return { siblingsLinks, parentAndSiblingLinks };
-};
-
+const fetchParentAndSiblingLinks = async (parentID: string, slug: string) => {
+	const siblingLinks = await fetchLinksByParent(parentID);
+	const parentAndSiblingLinks = await reUseFetchingLogic(slug, siblingLinks);
 const reUseFetchingLogic = async (
 	token: string,
 	slug: string,
