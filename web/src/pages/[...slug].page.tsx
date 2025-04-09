@@ -160,12 +160,11 @@ export default function SlugCatchAll(
 	);
 }
 const fetchLinksFromStoryblok = async (
-	token: string,
 	queryParams: Record<string, string> = {}
 ) => {
 	const defaultParams = {
 		version: "published",
-		token,
+		token: publicRuntimeConfig.storyblok.accessToken,
 		per_page: "1000",
 		...queryParams,
 	};
@@ -283,7 +282,6 @@ export async function getServerSideProps(context: GetServerSidePropsContext) {
 
 		const parentID = storyResult.story?.parent_id;
 		const isRootPage = storyResult.story?.is_startpage;
-		const token = publicRuntimeConfig.storyblok.accessToken;
 
 		const component = storyResult.story?.content?.component;
 		let parentAndSiblingLinksElse = {};
