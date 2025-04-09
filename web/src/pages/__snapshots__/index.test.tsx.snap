@@ -257,6 +257,11 @@ exports[`Homepage should match snapshot for main content 1`] = `
         class="container"
         data-component="container"
       >
+        <a
+          href="/example"
+        >
+          Example link to client page
+        </a>
         <div
           class="hero hero--dark hero"
           data-component="hero"
