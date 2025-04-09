@@ -176,6 +176,23 @@ const fetchLinksFromStoryblok = async (
 	return data.links;
 };
 
+// Generalized function to fetch links by parent ID
+const fetchLinksByParent = async (parentID: string) => {
+	return fetchLinksFromStoryblok({ with_parent: parentID || "" });
+};
+
+// Helper function to fetch links starting with a specific slug
+const fetchLinksBySlug = async (slug: string) => {
+	return fetchLinksFromStoryblok({ starts_with: slug });
+};
+
+// Helper function to find the current folder link
+const findCurrentFolderLink = (links: any, slug: string) => {
+	return Object.values(links).find(
+		(item) => item.is_folder && item.slug === slug
+	);
+};
+
 const fetchParentAndSiblingLinks = async (
 	token: string,
 	parentID: string,
@@ -199,15 +216,8 @@ const reUseFetchingLogic = async (
 	siblingsLinks: any,
 	secondIteration?: boolean
 ) => {
-	const startsWithLinks = await fetchLinksFromStoryblok(token, {
-		starts_with: slug,
-	});
-
-	const currentFolderLink = Object.values(startsWithLinks).find(
-		(item) => item.is_folder && item.slug === slug
-	);
-
-	let parentAndSiblingLinks = {};
+	let linksStartingWithSlug = await fetchLinksBySlug(slug);
+	const currentFolderLink = findCurrentFolderLink(linksStartingWithSlug, slug);
 
 	if (currentFolderLink && currentFolderLink.parent_id) {
 		parentAndSiblingLinks = await fetchLinksFromStoryblok(token, {
@@ -311,19 +321,13 @@ export async function getServerSideProps(context: GetServerSidePropsContext) {
 							const noChildSlug = isRootPage
 								? slug
 								: slug.split("/").slice(0, -1).join("/");
-							// secondIteration = true;
 							parentAndSiblingLinksElse = await reUseFetchingLogic(
-								token,
 								noChildSlug,
 								siblingsLinks,
 								(secondIteration = true)
 							);
-						} else {
-							console.log("inside else parent.slug===slug");
 						}
 					}
-					//TODO: if there are no children, render siblingsLinks and parent-level items (i.e. same nav structure as when on parent page)
-
 					return parent;
 				})
 			);
