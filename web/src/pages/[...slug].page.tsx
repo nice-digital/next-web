@@ -279,22 +279,20 @@ export async function getServerSideProps(context: GetServerSidePropsContext) {
 		const component = storyResult.story?.content?.component;
 		let parentAndSiblingLinksElse = {};
 		let parentChildLinksTreeArray = {};
-		let secondIteration = false;
+
 		if (component === "infoPage") {
 			const { siblingsLinks, parentAndSiblingLinks } =
-				await fetchParentAndSiblingLinks(token, parentID, slug);
+				await fetchParentAndSiblingLinks(parentID, slug);
 
 			const siblingsLinksArray = Object.values(siblingsLinks);
 			const parentAndSiblingLinksArray = Object.values(parentAndSiblingLinks);
-			let startsWithLinksElse = {};
+
 			parentChildLinksTreeArray = await Promise.all(
 				parentAndSiblingLinksArray.map(async (parent) => {
-					const children = siblingsLinksArray.filter((childLink) => {
-						const isChild =
-							childLink.parent_id === parent.id && !childLink.is_startpage;
-
-						return isChild;
-					});
+					const children = siblingsLinksArray.filter(
+						(childLink) =>
+							childLink.parent_id === parent.id && !childLink.is_startpage
+					);
 
 					if (children.length > 0) {
 						parent.childLinks = children;
@@ -307,7 +305,7 @@ export async function getServerSideProps(context: GetServerSidePropsContext) {
 							parentAndSiblingLinksElse = await reUseFetchingLogic(
 								noChildSlug,
 								siblingsLinks,
-								(secondIteration = true)
+								true
 							);
 						}
 					}
