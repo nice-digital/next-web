@@ -29,7 +29,7 @@
       "UpstreamPathTemplate": "/storyblokv1/{everything}",
       "FileCacheOptions": {
         "TtlSeconds": #{Ocelot.StoryblokTtlSeconds},
-        "Region": "OcelotStoryblok"
+        "Region": "OcelotStoryblokv1"
       }
     },
     {
@@ -45,7 +45,7 @@
       "UpstreamPathTemplate": "/storyblokv2/{everything}",
       "FileCacheOptions": {
         "TtlSeconds": #{Ocelot.StoryblokTtlSeconds},
-        "Region": "OcelotStoryblok"
+        "Region": "OcelotStoryblokv2"
       }
     },
     {
