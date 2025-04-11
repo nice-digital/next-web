@@ -12,6 +12,7 @@ import {
 import { PublicationsChapterMenu } from "@/components/PublicationsChapterMenu/PublicationsChapterMenu";
 import { PublicationsDownloadLink } from "@/components/PublicationsDownloadLink/PublicationsDownloadLink";
 import { PublicationsPrevNext } from "@/components/PublicationsPrevNext/PublicationsPrevNext";
+import { SupportingOrganisations } from "@/components/SupportingOrganisations/SupportingOrganisations";
 import {
 	ChapterHeading,
 	getAllIndicatorSubTypes,
@@ -23,6 +24,9 @@ import {
 import { getChapterLinks, validateRouteParams } from "@/utils/product";
 
 import styles from "./index.page.module.scss";
+import { EndorsingOrganisations } from "@/components/EndorsingOrganisations/EndorsingOrganisations";
+import { AdditionalAuthorList } from "@/components/AdditionalAuthorList/AdditionalAuthorList";
+import { Accreditations } from "@/components/Accreditations/Accreditations";
 
 export type IndicatorsDetailsPageProps = {
 	productPath: string;
@@ -34,6 +38,11 @@ export type IndicatorsDetailsPageProps = {
 			| "summary"
 			| "productStatus"
 			| "withdrawnNotes"
+			| "supportingList"
+			| "endorsementList"
+			| "additionalAuthorList"
+			| "accreditationList"
+			| "productTypeName"
 		>;
 	indicatorSubTypes: IndicatorSubType[];
 	pdfDownloadPath: string | null;
@@ -164,6 +173,20 @@ export default function IndicatorsDetailsPage({
 							className={styles.summary}
 						/>
 					) : null}
+
+					<EndorsingOrganisations
+						endorsingList={product.endorsementList}
+						productTypeName={product.productTypeName}
+					/>
+					<SupportingOrganisations
+						supportingList={product.supportingList}
+						productTypeName={product.productTypeName}
+					/>
+
+					<AdditionalAuthorList authorList={product.additionalAuthorList} productId={product.id} />
+
+					<Accreditations accreditationsList={product.accreditationList} productId={product.id} />
+
 					<PublicationsPrevNext chapters={chapters} />
 				</GridItem>
 			</Grid>
@@ -210,6 +233,11 @@ export const getServerSideProps: GetServerSideProps<
 				summary: product.summary,
 				productStatus: product.productStatus,
 				withdrawnNotes: product.withdrawnNotes,
+				supportingList: product.supportingList,
+				endorsementList: product.endorsementList,
+				additionalAuthorList: product.additionalAuthorList,
+				authorList: product.authorList,
+				accreditationList: product.accreditationList,
 			},
 			indicatorSubTypes,
 			pdfDownloadPath,
@@ -217,3 +245,4 @@ export const getServerSideProps: GetServerSideProps<
 		},
 	};
 };
+
