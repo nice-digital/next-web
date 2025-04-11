@@ -1,0 +1,6 @@
+/* stylelint-disable selector-class-pattern */
+.storyblok-section-nav {
+  :global(.stacked-nav__nested ,.stacked-nav__content-wrapper) {
+    word-wrap: break-word;
+  }
+}
