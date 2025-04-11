@@ -46,12 +46,23 @@ import {
 } from "@/utils/storyblok";
 
 import type { GetServerSidePropsContext } from "next";
+import { fetchParentAndSiblingLinks, filterFunctionForTreeStructure, reUseFetchingLogic } from "@/components/Storyblok/StoryblokSectionNav/utils/Utils";
 
+type Link = {
+	childLinks?: Link[];
+	id: string;
+	slug: string;
+	parent_id: string;
+	is_folder: boolean;
+	is_startpage: boolean;
+};
 export type SlugCatchAllSuccessProps = {
 	story: ISbStoryData<InfoPageStoryblok | CategoryNavigationStoryblok>;
 	breadcrumbs: Breadcrumb[];
-	siblingPages?: string[];
 	component: string;
+	parentChildLinksTreeArray: Link[];
+	parentAndSiblingLinksElse: Link[];
+	slug: string;
 };
 
 export type SlugCatchAllErrorProps = {
@@ -83,7 +94,14 @@ export default function SlugCatchAll(
 		return <ErrorPageContent title="Error" heading={error} />;
 	}
 
-	const { story: storyData, breadcrumbs, siblingPages, component } = props;
+	const {
+		story: storyData,
+		breadcrumbs,
+		component,
+		parentChildLinksTreeArray,
+		parentAndSiblingLinksElse,
+		slug,
+	} = props;
 
 	const commonComponents = {
 		cardGrid: BasicCardGrid,
@@ -142,12 +160,13 @@ export default function SlugCatchAll(
 			<StoryblokComponent
 				blok={storyData.content}
 				breadcrumbs={breadcrumbs}
-				siblingPages={siblingPages}
+				parentChildLinksTreeArray={parentChildLinksTreeArray}
+				parentAndSiblingLinksElse={parentAndSiblingLinksElse}
+				slug={slug}
 			/>
 		</>
 	);
 }
-
 export async function getServerSideProps(context: GetServerSidePropsContext) {
 	// Bail out early unless this route is enabled for this environment
 	if (publicRuntimeConfig.storyblok.enableRootCatchAll.toString() !== "true") {
@@ -189,20 +208,58 @@ export async function getServerSideProps(context: GetServerSidePropsContext) {
 		}
 		if ("notFound" in storyResult) return storyResult;
 
-		const siblingPages = [];
+		const parentID = storyResult.story?.parent_id as unknown as string;
+		const isRootPage = storyResult.story?.is_startpage;
+		const token = publicRuntimeConfig.storyblok.accessToken;
 
 		const component = storyResult.story?.content?.component;
-		// TODO: Use the Storyblok Links API to build a map of sibling & optionally child pages
+		let parentAndSiblingLinksElse: Link[] = [];
+		let parentChildLinksTreeArray: Link[] = [];
 		if (component === "infoPage") {
-			siblingPages.push(...["page1", "page2"]);
+			const { siblingsLinksArray, parentAndSiblingLinksArray } =
+				await fetchParentAndSiblingLinks(token, parentID, slug);
+			parentChildLinksTreeArray = await Promise.all(
+				parentAndSiblingLinksArray.map(async (parent) => {
+					const children = filterFunctionForTreeStructure(
+						siblingsLinksArray,
+						parent
+					);
+
+					if (children.length > 0) {
+						parent.childLinks = children;
+					} else {
+						parent.childLinks = [];
+						let secondIteration;
+						if (parent.slug === slug) {
+							const noChildSlug = isRootPage
+								? slug
+								: slug.split("/").slice(0, -1).join("/");
+							secondIteration = true;
+							parentAndSiblingLinksElse = await reUseFetchingLogic(
+								token,
+								noChildSlug,
+								siblingsLinksArray,
+								secondIteration
+							);
+						} else {
+							console.log("inside else parent.slug===slug");
+						}
+					}
+					//TODO: if there are no children, render siblingsLinks and parent-level items (i.e. same nav structure as when on parent page)
+
+					return parent;
+				})
+			);
 		}
 
 		const result = {
 			props: {
 				...storyResult,
 				breadcrumbs,
-				siblingPages,
 				component,
+				parentChildLinksTreeArray,
+				parentAndSiblingLinksElse,
+				slug,
 			},
 		};
 

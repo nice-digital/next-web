@@ -1,24 +1,40 @@
 import { StoryblokComponent } from "@storyblok/react";
 
 import { Grid, GridItem } from "@nice-digital/nds-grid";
-import { StackedNav, StackedNavLink } from "@nice-digital/nds-stacked-nav";
 
 import { StoryblokRichText } from "@/components/Storyblok/StoryblokRichText/StoryblokRichText";
 import { type Breadcrumb } from "@/types/Breadcrumb";
 import { type InfoPageStoryblok } from "@/types/storyblok";
 
+import { StoryblokSectionNav } from "../StoryblokSectionNav/StoryblokSectionNav";
+
 import styles from "./InfoPage.module.scss";
+
+type Link = {
+	id: number;
+	slug: string;
+	parent_id: number;
+	name: string;
+	is_folder: boolean;
+	is_startpage: boolean;
+	real_path: string;
+	childLinks?: Link[];
+};
 
 interface InfoPageBlokProps {
 	blok: InfoPageStoryblok;
 	breadcrumbs?: Breadcrumb[];
-	siblingPages?: string[];
+	parentChildLinksTreeArray: Link[];
+	parentAndSiblingLinksElse: Link[];
+	slug: string;
 }
 
 export const InfoPage = ({
 	blok,
 	breadcrumbs,
-	siblingPages,
+	parentChildLinksTreeArray,
+	parentAndSiblingLinksElse,
+	slug,
 }: InfoPageBlokProps): React.ReactElement => {
 	return (
 		<>
@@ -38,20 +54,14 @@ export const InfoPage = ({
 			})}
 
 			<Grid gutter="loose">
-				<GridItem cols={12} sm={{ cols: 3 }}>
-					{siblingPages && siblingPages.length > 0 && (
-						<StackedNav label="Label of parent section" elementType="h2">
-							{siblingPages.map((page, index) => {
-								return (
-									<StackedNavLink destination="/" key={index}>
-										{page}
-									</StackedNavLink>
-								);
-							})}
-						</StackedNav>
-					)}
+				<GridItem cols={12} sm={{ cols: 4 }} md={{ cols: 3 }}>
+					<StoryblokSectionNav
+						parentChildLinksTreeArray={parentChildLinksTreeArray}
+						parentAndSiblingLinksElse={parentAndSiblingLinksElse}
+						slug={slug}
+					/>
 				</GridItem>
-				<GridItem cols={12} sm={{ cols: 9 }}>
+				<GridItem cols={12} sm={{ cols: 8 }} md={{ cols: 9 }}>
 					<div className={styles.content}>
 						<StoryblokRichText content={blok.content} />
 					</div>
