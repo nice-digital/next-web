@@ -54,14 +54,14 @@ export const InfoPage = ({
 			})}
 
 			<Grid gutter="loose">
-				<GridItem cols={12} sm={{ cols: 3 }}>
+				<GridItem cols={12} sm={{ cols: 4 }} md={{ cols: 3 }}>
 					<StoryblokSectionNav
 						parentChildLinksTreeArray={parentChildLinksTreeArray}
 						parentAndSiblingLinksElse={parentAndSiblingLinksElse}
 						slug={slug}
 					/>
 				</GridItem>
-				<GridItem cols={12} sm={{ cols: 9 }}>
+				<GridItem cols={12} sm={{ cols: 8 }} md={{ cols: 9 }}>
 					<div className={styles.content}>
 						<StoryblokRichText content={blok.content} />
 					</div>
