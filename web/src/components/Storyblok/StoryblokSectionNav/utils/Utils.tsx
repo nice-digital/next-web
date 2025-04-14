@@ -15,21 +15,20 @@ export const newFetchParentAndSiblingLinks = async (
 	parentID: number,
 ): Promise<Link[]> => {
 
-// Get all items in current folder (current page and its siblings)
-const currentFolderItems = await fetchLinks({with_parent: parentID});
 // Get all items starting with the current slug - this is the only way to access the current folder object
 const startingWithCurrentSlugItems = await fetchLinks({starts_with: slug});
 // Get currentFolder object so we can access its parent_id
 const currentFolder = startingWithCurrentSlugItems.find((item)=> item.is_folder && item.slug === slug);
 
-const grandparentFolderChildren = await fetchLinks({with_parent: currentFolder?.parent_id});
-
-
+// Get all items in current folder (current page and its siblings or, if current page is a root page, current page and its children)
+const currentFolderItems = await fetchLinks({with_parent: parentID});
+// Get all items in current folder's parent folder (current "page" and its siblings OR parent page and its siblings, depending on current position in tree)
+const parentFolderItems = await fetchLinks({with_parent: currentFolder?.parent_id});
 
 let tree = []
 
 	if(currentFolder && currentFolder.parent_id) {
-		tree = grandparentFolderChildren
+		tree = parentFolderItems
 	} else {
 		// When on a top-level slug (like "implementing-nice-guidance"), we
 	// use the siblings data to populate the render.
@@ -37,8 +36,9 @@ let tree = []
 		tree = currentFolderItems;
 	}
 
-	let children:SBLink[] = []//anything in currentFolderItems with is_startpage != true;
+	let children:SBLink[] = []
 
+	// Filter out the root page from its "children"
 	children = currentFolderItems.filter((item)=> !item.is_startpage)
 
 	console.log({children})
