@@ -458,7 +458,7 @@ describe("Storyblok utils", () => {
 	});
 
 	describe("fetchLinks", () => {
-		it("should call the storyblokApi.getAll method with the correct params", async () => {
+		it("should call the storyblokApi.getAll method with the correct params using defaults", async () => {
 			getStoryblokApi().getAll = jest
 				.fn()
 				.mockResolvedValue(MockLinksSuccessResponse);
@@ -474,25 +474,28 @@ describe("Storyblok utils", () => {
 			});
 		});
 
-		it("should fetch published links from Storyblok", async () => {
+		it("should call the storyblokApi.getAll method with the correct params using overrides", async () => {
 			getStoryblokApi().getAll = jest
 				.fn()
 				.mockResolvedValue(MockLinksSuccessResponse);
+			await fetchLinks({ version: "draft", per_page: 300, starts_with: "news/podcasts" });
 
-			const result = await fetchLinks({
+			expect(getStoryblokApi().getAll).toHaveBeenCalled();
+			expect(getStoryblokApi().getAll).toHaveBeenCalledOnce();
+
+			expect(getStoryblokApi().getAll).toHaveBeenCalledWith("cdn/links", {
+				per_page: 300,
+				version: "draft",
 				starts_with: "news/podcasts",
 			});
-
-			expect(result).toEqual(MockLinksSuccessResponse);
 		});
 
-		it("should fetch draft links from Storyblok", async () => {
+		it("should fetch links from Storyblok", async () => {
 			getStoryblokApi().getAll = jest
 				.fn()
 				.mockResolvedValue(MockLinksSuccessResponse);
 
 			const result = await fetchLinks({
-				version: "draft",
 				starts_with: "news/podcasts",
 			});
 
