@@ -28,6 +28,7 @@ import { StoryblokPageHeader } from "@/components/Storyblok/StoryblokPageHeader/
 import {
 	fetchParentAndSiblingLinks,
 	filterFunctionForTreeStructure,
+	newFetchParentAndSiblingLinks,
 	reUseFetchingLogic,
 } from "@/components/Storyblok/StoryblokSectionNav/utils/Utils";
 import { StoryblokTable } from "@/components/Storyblok/StoryblokTable/StoryblokTable";
@@ -220,40 +221,41 @@ export async function getServerSideProps(context: GetServerSidePropsContext) {
 		let parentAndSiblingLinksElse: Link[] = [];
 		let parentChildLinksTreeArray: Link[] = [];
 		if (component === "infoPage") {
-			const { siblingsLinksArray, parentAndSiblingLinksArray } =
-				await fetchParentAndSiblingLinks(token, parentID, slug);
-			parentChildLinksTreeArray = await Promise.all(
-				parentAndSiblingLinksArray.map(async (parent) => {
-					const children = filterFunctionForTreeStructure(
-						siblingsLinksArray,
-						parent
-					);
+			newFetchParentAndSiblingLinks(slug, parentID)
+			// const { siblingsLinksArray, parentAndSiblingLinksArray } =
+			// 	await fetchParentAndSiblingLinks(token, parentID, slug);
+			// parentChildLinksTreeArray = await Promise.all(
+			// 	parentAndSiblingLinksArray.map(async (parent) => {
+			// 		const children = filterFunctionForTreeStructure(
+			// 			siblingsLinksArray,
+			// 			parent
+			// 		);
 
-					if (children.length > 0) {
-						parent.childLinks = children;
-					} else {
-						parent.childLinks = [];
-						let secondIteration;
-						if (parent.slug === slug) {
-							const noChildSlug = isRootPage
-								? slug
-								: slug.split("/").slice(0, -1).join("/");
-							secondIteration = true;
-							parentAndSiblingLinksElse = await reUseFetchingLogic(
-								token,
-								noChildSlug,
-								siblingsLinksArray,
-								secondIteration
-							);
-						} else {
-							console.log("inside else parent.slug===slug");
-						}
-					}
-					//TODO: if there are no children, render siblingsLinks and parent-level items (i.e. same nav structure as when on parent page)
+			// 		if (children.length > 0) {
+			// 			parent.childLinks = children;
+			// 		} else {
+			// 			parent.childLinks = [];
+			// 			let secondIteration;
+			// 			if (parent.slug === slug) {
+			// 				const noChildSlug = isRootPage
+			// 					? slug
+			// 					: slug.split("/").slice(0, -1).join("/");
+			// 				secondIteration = true;
+			// 				parentAndSiblingLinksElse = await reUseFetchingLogic(
+			// 					token,
+			// 					noChildSlug,
+			// 					siblingsLinksArray,
+			// 					secondIteration
+			// 				);
+			// 			} else {
+			// 				console.log("inside else parent.slug===slug");
+			// 			}
+			// 		}
+			// 		//TODO: if there are no children, render siblingsLinks and parent-level items (i.e. same nav structure as when on parent page)
 
-					return parent;
-				})
-			);
+			// 		return parent;
+			// 	})
+			// );
 		}
 
 		const result = {

@@ -10,17 +10,42 @@ type Link = {
 	is_startpage: boolean;
 };
 
-// export const fetchLinksFromStoryblok = async (
-// 	queryParams: Record<string, string>
-// ): Promise<Link[]> => {
-// 	const queryString = new URLSearchParams(queryParams).toString();
-// 	const res = await fetch(
-// 		`https://api.storyblok.com/v2/cdn/links?${queryString}`
-// 	);
-// 	const data = await res.json();
-// 	const dataArray: Link[] = Object.values(data.links);
-// 	return dataArray;
-// };
+export const newFetchParentAndSiblingLinks = async (
+	slug: string,
+	parentID: number,
+): Promise<Link[]> => {
+
+// Get all items in current folder (current page and its siblings)
+const currentFolderItems = await fetchLinks({with_parent: parentID});
+// Get all items starting with the current slug - this is the only way to access the current folder object
+const startingWithCurrentSlugItems = await fetchLinks({starts_with: slug});
+// Get currentFolder object so we can access its parent_id
+const currentFolder = startingWithCurrentSlugItems.find((item)=> item.is_folder && item.slug === slug);
+
+const grandparentFolderChildren = await fetchLinks({with_parent: currentFolder?.parent_id});
+
+
+
+let tree = []
+
+	if(currentFolder && currentFolder.parent_id) {
+		tree = grandparentFolderChildren
+	} else {
+		// When on a top-level slug (like "implementing-nice-guidance"), we
+	// use the siblings data to populate the render.
+	// console.log("No current folder found or current folder has no parent_id");
+		tree = currentFolderItems;
+	}
+
+	let children:SBLink[] = []//anything in currentFolderItems with is_startpage != true;
+
+	children = currentFolderItems.filter((item)=> !item.is_startpage)
+
+	console.log({children})
+
+	return tree
+};
+
 export const fetchParentAndSiblingLinks = async (
 	token: string,
 	parentID: number,
@@ -33,15 +58,15 @@ export const fetchParentAndSiblingLinks = async (
 	const siblingsLinksArray: SBLink[] = await fetchLinks({
 		with_parent: parentID,
 	});
-	const parentAndSiblingLinksArray = await reUseFetchingLogic(
-		token,
+	//
+	const parentAndSiblingLinksArray = await fetchParentAndChildren(
 		slug,
 		siblingsLinksArray
 	);
 	console.log("parentAndSiblingLinksArray", parentAndSiblingLinksArray);
 	return { siblingsLinksArray, parentAndSiblingLinksArray };
 };
-export const filterFunctionForTreeStructure = (
+export const filterTreeStructure = (
 	siblingsLinksArray: Link[],
 	parent: Link
 ): Link[] => {
@@ -53,11 +78,10 @@ export const filterFunctionForTreeStructure = (
 	});
 	return children;
 };
-export const reUseFetchingLogic = async (
-	token: string,
+export const fetchParentAndChildren = async (
 	slug: string,
 	siblingsLinksArray: Link[],
-	secondIteration?: boolean
+	children?:Link[]
 ): Promise<Link[]> => {
 	const startsWithLinksArray = await fetchLinks({
 		starts_with: slug,
@@ -67,15 +91,15 @@ export const reUseFetchingLogic = async (
 		(item: Link) => item.is_folder && item.slug === slug
 	);
 
-	let parentAndSiblingLinksArray: Link[] = [];
+	let grandparentFolderChildren: Link[] = [];
 
 	if (currentFolder && currentFolder.parent_id) {
-		parentAndSiblingLinksArray = await fetchLinks({
+		grandparentFolderChildren = await fetchLinks({
 			with_parent: currentFolder.parent_id,
 		});
-		if (secondIteration) {
-			parentAndSiblingLinksArray.map((parentelse) => {
-				const children = filterFunctionForTreeStructure(
+		if (!children.length > 0) {
+			grandparentFolderChildren.map((parentelse) => {
+				const children = filterTreeStructure(
 					siblingsLinksArray,
 					parentelse
 				);
@@ -88,7 +112,7 @@ export const reUseFetchingLogic = async (
 			});
 		}
 	} else {
-		parentAndSiblingLinksArray = siblingsLinksArray;
+		grandparentFolderChildren = siblingsLinksArray;
 	}
-	return parentAndSiblingLinksArray;
+	return grandparentFolderChildren;
 };
