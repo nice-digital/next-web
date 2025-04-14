@@ -63,15 +63,15 @@ export const reUseFetchingLogic = async (
 		starts_with: slug,
 	});
 
-	const currentFolderLink: Link | undefined = startsWithLinksArray.find(
+	const currentFolder: Link | undefined = startsWithLinksArray.find(
 		(item: Link) => item.is_folder && item.slug === slug
 	);
 
 	let parentAndSiblingLinksArray: Link[] = [];
 
-	if (currentFolderLink && currentFolderLink.parent_id) {
+	if (currentFolder && currentFolder.parent_id) {
 		parentAndSiblingLinksArray = await fetchLinks({
-			with_parent: currentFolderLink.parent_id,
+			with_parent: currentFolder.parent_id,
 		});
 		if (secondIteration) {
 			parentAndSiblingLinksArray.map((parentelse) => {
