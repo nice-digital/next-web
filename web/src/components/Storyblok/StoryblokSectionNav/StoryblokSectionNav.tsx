@@ -1,6 +1,7 @@
 import React from "react";
 
 import { StackedNav, StackedNavLink } from "@nice-digital/nds-stacked-nav";
+
 import styles from "./StoryblokSectionNav.module.scss";
 
 type Link = {
@@ -34,7 +35,10 @@ export const StoryblokSectionNav = ({
 		parentChildDataArray?.length > 0 ? parentChildDataArray.slice(1) : [];
 	return (
 		<>
-			<StackedNav label={parentChildDataWithFirstElement?.name} className={styles["storyblok-section-nav"]}>
+			<StackedNav
+				label={parentChildDataWithFirstElement?.name}
+				className={styles["storyblok-section-nav"]}
+			>
 				{trimmedParentChildData?.map((parent) => (
 					<StackedNavLink
 						destination={parent.real_path}

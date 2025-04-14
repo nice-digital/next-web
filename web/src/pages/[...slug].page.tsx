@@ -25,6 +25,11 @@ import { StoryblokCalloutCard } from "@/components/Storyblok/StoryblokCalloutCar
 import { StoryblokHero } from "@/components/Storyblok/StoryblokHero/StoryblokHero";
 import { StoryblokIframe } from "@/components/Storyblok/StoryblokIframe/StoryblokIframe";
 import { StoryblokPageHeader } from "@/components/Storyblok/StoryblokPageHeader/StoryblokPageHeader";
+import {
+	fetchParentAndSiblingLinks,
+	filterFunctionForTreeStructure,
+	reUseFetchingLogic,
+} from "@/components/Storyblok/StoryblokSectionNav/utils/Utils";
 import { StoryblokTable } from "@/components/Storyblok/StoryblokTable/StoryblokTable";
 import { StoryblokTestimonialFullWidth } from "@/components/Storyblok/StoryblokTestimonialFullWidth/StoryblokTestimonialFullWidth";
 import { StoryblokTestimonialGridItem } from "@/components/Storyblok/StoryblokTestimonialGridItem/StoryblokTestimonialGridItem";
@@ -46,13 +51,12 @@ import {
 } from "@/utils/storyblok";
 
 import type { GetServerSidePropsContext } from "next";
-import { fetchParentAndSiblingLinks, filterFunctionForTreeStructure, reUseFetchingLogic } from "@/components/Storyblok/StoryblokSectionNav/utils/Utils";
 
 type Link = {
 	childLinks?: Link[];
-	id: string;
+	id: number;
 	slug: string;
-	parent_id: string;
+	parent_id: number;
 	is_folder: boolean;
 	is_startpage: boolean;
 };
@@ -208,7 +212,7 @@ export async function getServerSideProps(context: GetServerSidePropsContext) {
 		}
 		if ("notFound" in storyResult) return storyResult;
 
-		const parentID = storyResult.story?.parent_id as unknown as string;
+		const parentID = storyResult.story?.parent_id as number;
 		const isRootPage = storyResult.story?.is_startpage;
 		const token = publicRuntimeConfig.storyblok.accessToken;
 

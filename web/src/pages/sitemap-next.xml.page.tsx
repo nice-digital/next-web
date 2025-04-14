@@ -1,3 +1,4 @@
+import { ISbStoriesParams } from "@storyblok/react";
 import { NextApiResponse } from "next";
 
 import { type SBLink } from "@/types/SBLink";
@@ -35,7 +36,12 @@ function SiteMap(): void {
 export async function getServerSideProps({ res }: { res: NextApiResponse }) {
 	// We're only interested in fetching news stories for the first release
 	// Eventually this will get everything, once the rest of the stuff goes live
-	const links = await fetchLinks("published", "news");
+	const sbParams: ISbStoriesParams = {
+		version: "published",
+		starts_with: "news",
+	};
+	const links = await fetchLinks(sbParams);
+	// const links = await fetchLinks("published", "news");
 	const sitemap = generateSiteMap(links);
 	res.setHeader("Content-Type", "text/xml");
 	res.write(sitemap);
