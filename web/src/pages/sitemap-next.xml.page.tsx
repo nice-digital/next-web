@@ -37,7 +37,6 @@ export async function getServerSideProps({ res }: { res: NextApiResponse }) {
 	// We're only interested in fetching news stories for the first release
 	// Eventually this will get everything, once the rest of the stuff goes live
 	const sbParams: ISbStoriesParams = {
-		version: "published",
 		starts_with: "news",
 	};
 	const links = await fetchLinks(sbParams);

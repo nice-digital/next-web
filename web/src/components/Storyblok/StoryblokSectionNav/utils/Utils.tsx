@@ -31,10 +31,7 @@ export const fetchParentAndSiblingLinks = async (
 }> => {
 	// Fetch sibling links first
 	const siblingsLinksArray: SBLink[] = await fetchLinks({
-		// version: "published",
-		// token,
 		with_parent: parentID,
-		// per_page: 1000,
 	});
 	const parentAndSiblingLinksArray = await reUseFetchingLogic(
 		token,
@@ -63,10 +60,7 @@ export const reUseFetchingLogic = async (
 	secondIteration?: boolean
 ): Promise<Link[]> => {
 	const startsWithLinksArray = await fetchLinks({
-		// version: "published",
-		// token,
 		starts_with: slug,
-		// per_page: 1000,
 	});
 
 	const currentFolderLink: Link | undefined = startsWithLinksArray.find(
@@ -77,10 +71,7 @@ export const reUseFetchingLogic = async (
 
 	if (currentFolderLink && currentFolderLink.parent_id) {
 		parentAndSiblingLinksArray = await fetchLinks({
-			// version: "published",
-			// token,
 			with_parent: currentFolderLink.parent_id,
-			per_page: 1000,
 		});
 		if (secondIteration) {
 			parentAndSiblingLinksArray.map((parentelse) => {
