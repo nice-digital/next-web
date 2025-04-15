@@ -101,7 +101,7 @@ namespace NICE.NextWeb.API
             {
                 PreAuthenticationMiddleware = async (context, next) =>
                 {
-                    if (context.Request.Path.ToString().Contains("storyblok"))
+                    if (context.Request.Path.StartsWithSegments("/storyblok/"))
                     {
                         var newQuery = HttpUtility.ParseQueryString(context.Items.DownstreamRequest().Query.ToString());
                         newQuery["cv"] = DateTimeOffset.UtcNow.ToUnixTimeSeconds().ToString();
