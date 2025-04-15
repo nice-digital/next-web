@@ -4,6 +4,8 @@ import { NextSeo } from "next-seo";
 import { Breadcrumb, Breadcrumbs } from "@nice-digital/nds-breadcrumbs";
 import { Grid, GridItem } from "@nice-digital/nds-grid";
 
+import { EndorsingOrganisations } from "@/components/EndorsingOrganisations/EndorsingOrganisations";
+import { LogosList } from "@/components/LogosList/LogosList";
 import { ProductHorizontalNav } from "@/components/ProductHorizontalNav/ProductHorizontalNav";
 import {
 	ProductPageHeading,
@@ -13,6 +15,7 @@ import { PublicationsChapterMenu } from "@/components/PublicationsChapterMenu/Pu
 import { PublicationsDownloadLink } from "@/components/PublicationsDownloadLink/PublicationsDownloadLink";
 import { PublicationsPrevNext } from "@/components/PublicationsPrevNext/PublicationsPrevNext";
 import { SupportingOrganisations } from "@/components/SupportingOrganisations/SupportingOrganisations";
+
 import {
 	ChapterHeading,
 	getAllIndicatorSubTypes,
@@ -24,8 +27,6 @@ import {
 import { getChapterLinks, validateRouteParams } from "@/utils/product";
 
 import styles from "./index.page.module.scss";
-import { EndorsingOrganisations } from "@/components/EndorsingOrganisations/EndorsingOrganisations";
-import { LogosList } from "@/components/LogosList/LogosList";
 
 export type IndicatorsDetailsPageProps = {
 	productPath: string;
