@@ -59,7 +59,7 @@ export const fetchParentAndSiblingLinks = async (
 		with_parent: parentID,
 	});
 	//
-	const parentAndSiblingLinksArray = await fetchParentAndChildren(
+	const parentAndSiblingLinksArray = await reUseFetchingLogic(
 		slug,
 		siblingsLinksArray
 	);
@@ -78,7 +78,7 @@ export const filterTreeStructure = (
 	});
 	return children;
 };
-export const fetchParentAndChildren = async (
+export const reUseFetchingLogic = async (
 	slug: string,
 	siblingsLinksArray: Link[],
 	children?:Link[]
@@ -97,7 +97,7 @@ export const fetchParentAndChildren = async (
 		grandparentFolderChildren = await fetchLinks({
 			with_parent: currentFolder.parent_id,
 		});
-		if (!children.length > 0) {
+		if (!(children && children.length > 0)) {
 			grandparentFolderChildren.map((parentelse) => {
 				const children = filterTreeStructure(
 					siblingsLinksArray,

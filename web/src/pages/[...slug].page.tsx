@@ -27,7 +27,7 @@ import { StoryblokIframe } from "@/components/Storyblok/StoryblokIframe/Storyblo
 import { StoryblokPageHeader } from "@/components/Storyblok/StoryblokPageHeader/StoryblokPageHeader";
 import {
 	fetchParentAndSiblingLinks,
-	filterFunctionForTreeStructure,
+	filterTreeStructure,
 	newFetchParentAndSiblingLinks,
 	reUseFetchingLogic,
 } from "@/components/Storyblok/StoryblokSectionNav/utils/Utils";
@@ -222,40 +222,41 @@ export async function getServerSideProps(context: GetServerSidePropsContext) {
 		let parentChildLinksTreeArray: Link[] = [];
 		if (component === "infoPage") {
 			newFetchParentAndSiblingLinks(slug, parentID)
-			// const { siblingsLinksArray, parentAndSiblingLinksArray } =
-			// 	await fetchParentAndSiblingLinks(token, parentID, slug);
-			// parentChildLinksTreeArray = await Promise.all(
-			// 	parentAndSiblingLinksArray.map(async (parent) => {
-			// 		const children = filterFunctionForTreeStructure(
-			// 			siblingsLinksArray,
-			// 			parent
-			// 		);
 
-			// 		if (children.length > 0) {
-			// 			parent.childLinks = children;
-			// 		} else {
-			// 			parent.childLinks = [];
-			// 			let secondIteration;
-			// 			if (parent.slug === slug) {
-			// 				const noChildSlug = isRootPage
-			// 					? slug
-			// 					: slug.split("/").slice(0, -1).join("/");
-			// 				secondIteration = true;
-			// 				parentAndSiblingLinksElse = await reUseFetchingLogic(
-			// 					token,
-			// 					noChildSlug,
-			// 					siblingsLinksArray,
-			// 					secondIteration
-			// 				);
-			// 			} else {
-			// 				console.log("inside else parent.slug===slug");
-			// 			}
-			// 		}
-			// 		//TODO: if there are no children, render siblingsLinks and parent-level items (i.e. same nav structure as when on parent page)
+			// previousLogic START
+			const { siblingsLinksArray, parentAndSiblingLinksArray } =
+				await fetchParentAndSiblingLinks(token, parentID, slug);
+			parentChildLinksTreeArray = await Promise.all(
+				parentAndSiblingLinksArray.map(async (parent) => {
+					const children = filterTreeStructure(
+						siblingsLinksArray,
+						parent
+					);
 
-			// 		return parent;
-			// 	})
-			// );
+					if (children.length > 0) {
+						parent.childLinks = children;
+					} else {
+						parent.childLinks = [];
+						let secondIteration;
+						if (parent.slug === slug) {
+							const noChildSlug = isRootPage
+								? slug
+								: slug.split("/").slice(0, -1).join("/");
+							secondIteration = true;
+							parentAndSiblingLinksElse = await reUseFetchingLogic(
+								noChildSlug,
+								siblingsLinksArray,
+								children
+							);
+						} else {
+							console.log("inside else parent.slug===slug");
+						}
+					}
+					//TODO: if there are no children, render siblingsLinks and parent-level items (i.e. same nav structure as when on parent page)
+
+					return parent;
+				})
+			);
 		}
 
 		const result = {
