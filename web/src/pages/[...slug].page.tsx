@@ -235,7 +235,7 @@ export async function getServerSideProps(context: GetServerSidePropsContext) {
 					);
 
 
-
+			// check if node has children, if so create a childLinks property, if not allocate an empty array and traverse up two levels
 					if (children.length > 0) {
 						parent.childLinks = children;
 					} else {
@@ -249,11 +249,8 @@ export async function getServerSideProps(context: GetServerSidePropsContext) {
 								currentFolderItems,
 								children
 							);
-						} else {
-							console.log("inside else parent.slug===slug");
 						}
 					}
-					//TODO: if there are no children, render siblingsLinks and parent-level items (i.e. same nav structure as when on parent page)
 
 					return parent;
 				})
