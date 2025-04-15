@@ -68,20 +68,12 @@ export const getChapterLinks = (
 			productGroup,
 		});
 
-	// console.log("in product.ts === product.summary ===> ", product.summary);
-	// console.log("in product.ts === product.endorsementList ===> ", product.endorsementList.length);
-	// console.log("in product.ts === product.supportingList ===> ", product.supportingList.length);
-	// console.log("in product.ts === product.authorList ===> ", product.additionalAuthorList.length);
-	// console.log("in product.ts === product.authorList ===> ", product.authorList);
-
 	const isOverview = !(
 		product.summary === null &&
 		(product.endorsementList?.length ?? 0) == 0 &&
 		(product.supportingList?.length ?? 0) == 0 &&
 		(product.additionalAuthorList?.length ?? 0) == 0
 	);
-
-	console.log("IsOverview === > ", isOverview);
 
 	return [
 		...(isOverview
