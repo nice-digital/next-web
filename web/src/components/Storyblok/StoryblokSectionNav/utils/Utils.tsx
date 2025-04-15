@@ -49,7 +49,7 @@ export const newFetchParentAndSiblingLinks = async (
 	// Filter out the root page from its "children"
 	let children = tree.filter((item) => !item.is_startpage);
 
-	// If no children are found, traverse up the tree recursively until children are found
+	// If no children are found, traverse up the tree recursively until children are found (or two level above it)
 	// TODO if there are no children, we need to find the first GRANDparent with children
 	// TODO NICK requirement - ask Becca to clarify
 	let traversalID = currentFolder?.parent_id ?? parentID;
