@@ -240,12 +240,10 @@ export async function getServerSideProps(context: GetServerSidePropsContext) {
 						parent.childLinks = children;
 					} else {
 						parent.childLinks = [];
-						let secondIteration;
 						if (parent.slug === slug) {
 							const noChildSlug = isRootPage
 								? slug
 								: slug.split("/").slice(0, -1).join("/");
-							secondIteration = true;
 							currentPageNoChildrenTree = await reUseFetchingLogic(
 								noChildSlug,
 								currentFolderItems,
