@@ -27,9 +27,9 @@ import { StoryblokIframe } from "@/components/Storyblok/StoryblokIframe/Storyblo
 import { StoryblokPageHeader } from "@/components/Storyblok/StoryblokPageHeader/StoryblokPageHeader";
 import {
 	fetchParentAndSiblingLinks,
-	filterFunctionForTreeStructure,
+	// filterFunctionForTreeStructure,
 	newFetchParentAndSiblingLinks,
-	reUseFetchingLogic,
+	// reUseFetchingLogic,
 } from "@/components/Storyblok/StoryblokSectionNav/utils/Utils";
 import { StoryblokTable } from "@/components/Storyblok/StoryblokTable/StoryblokTable";
 import { StoryblokTestimonialFullWidth } from "@/components/Storyblok/StoryblokTestimonialFullWidth/StoryblokTestimonialFullWidth";
@@ -61,6 +61,7 @@ type Link = {
 	is_folder: boolean;
 	is_startpage: boolean;
 };
+
 export type SlugCatchAllSuccessProps = {
 	story: ISbStoryData<InfoPageStoryblok | CategoryNavigationStoryblok>;
 	breadcrumbs: Breadcrumb[];
@@ -172,6 +173,7 @@ export default function SlugCatchAll(
 		</>
 	);
 }
+
 export async function getServerSideProps(context: GetServerSidePropsContext) {
 	// Bail out early unless this route is enabled for this environment
 	if (publicRuntimeConfig.storyblok.enableRootCatchAll.toString() !== "true") {
@@ -205,7 +207,6 @@ export async function getServerSideProps(context: GetServerSidePropsContext) {
 
 		// will return a 404 if the story is not found
 		if ("notFound" in storyResult) {
-			// { storyResult },
 			logger.error(
 				`Story not found for slug: ${slug} in root [...slug] catch all.`
 			);
@@ -220,42 +221,46 @@ export async function getServerSideProps(context: GetServerSidePropsContext) {
 		const component = storyResult.story?.content?.component;
 		let parentAndSiblingLinksElse: Link[] = [];
 		let parentChildLinksTreeArray: Link[] = [];
+
 		if (component === "infoPage") {
-			newFetchParentAndSiblingLinks(slug, parentID)
-			// const { siblingsLinksArray, parentAndSiblingLinksArray } =
-			// 	await fetchParentAndSiblingLinks(token, parentID, slug);
-			// parentChildLinksTreeArray = await Promise.all(
-			// 	parentAndSiblingLinksArray.map(async (parent) => {
-			// 		const children = filterFunctionForTreeStructure(
-			// 			siblingsLinksArray,
-			// 			parent
-			// 		);
+			// Use the new recursive logic to build the nav tree
+			parentChildLinksTreeArray = await newFetchParentAndSiblingLinks(slug, parentID);
 
-			// 		if (children.length > 0) {
-			// 			parent.childLinks = children;
-			// 		} else {
-			// 			parent.childLinks = [];
-			// 			let secondIteration;
-			// 			if (parent.slug === slug) {
-			// 				const noChildSlug = isRootPage
-			// 					? slug
-			// 					: slug.split("/").slice(0, -1).join("/");
-			// 				secondIteration = true;
-			// 				parentAndSiblingLinksElse = await reUseFetchingLogic(
-			// 					token,
-			// 					noChildSlug,
-			// 					siblingsLinksArray,
-			// 					secondIteration
-			// 				);
-			// 			} else {
-			// 				console.log("inside else parent.slug===slug");
-			// 			}
-			// 		}
-			// 		//TODO: if there are no children, render siblingsLinks and parent-level items (i.e. same nav structure as when on parent page)
+			// Previous logic (commented out for reference)
+			/*
+			const { siblingsLinksArray, parentAndSiblingLinksArray } =
+				await fetchParentAndSiblingLinks(token, parentID, slug);
+			parentChildLinksTreeArray = await Promise.all(
+				parentAndSiblingLinksArray.map(async (parent) => {
+					const children = filterFunctionForTreeStructure(
+						siblingsLinksArray,
+						parent
+					);
 
-			// 		return parent;
-			// 	})
-			// );
+					if (children.length > 0) {
+						parent.childLinks = children;
+					} else {
+						parent.childLinks = [];
+						let secondIteration;
+						if (parent.slug === slug) {
+							const noChildSlug = isRootPage
+								? slug
+								: slug.split("/").slice(0, -1).join("/");
+							secondIteration = true;
+							parentAndSiblingLinksElse = await reUseFetchingLogic(
+								token,
+								noChildSlug,
+								siblingsLinksArray,
+								secondIteration
+							);
+						} else {
+							console.log("inside else parent.slug===slug");
+						}
+					}
+					return parent;
+				})
+			);
+			*/
 		}
 
 		const result = {
@@ -271,10 +276,6 @@ export async function getServerSideProps(context: GetServerSidePropsContext) {
 
 		return result;
 	} catch (error) {
-		// {
-		// 	errorCause: error instanceof Error && error.cause,
-		// 	requestHeaders: context.req.headers,
-		// },
 		logger.error(
 			`Error fetching story for slug: ${slug} in SlugCatchAll page getServerSideProps.`
 		);
