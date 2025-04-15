@@ -225,14 +225,16 @@ export async function getServerSideProps(context: GetServerSidePropsContext) {
 			newFetchParentAndSiblingLinks(slug, parentID)
 
 			// previousLogic START
-			const { siblingsLinksArray, parentAndSiblingLinksArray } =
+			const { currentFolderItems, parentAndSiblingLinksArray } =
 				await fetchParentAndSiblingLinks(token, parentID, slug);
 			parentChildLinksTreeArray = await Promise.all(
 				parentAndSiblingLinksArray.map(async (parent) => {
 					const children = filterTreeStructure(
-						siblingsLinksArray,
+						currentFolderItems,
 						parent
 					);
+
+
 
 					if (children.length > 0) {
 						parent.childLinks = children;
@@ -246,7 +248,7 @@ export async function getServerSideProps(context: GetServerSidePropsContext) {
 							secondIteration = true;
 							currentPageNoChildrenTree = await reUseFetchingLogic(
 								noChildSlug,
-								siblingsLinksArray,
+								currentFolderItems,
 								children
 							);
 						} else {

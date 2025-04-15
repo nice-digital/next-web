@@ -51,26 +51,26 @@ export const fetchParentAndSiblingLinks = async (
 	parentID: number,
 	slug: string
 ): Promise<{
-	siblingsLinksArray: SBLink[];
+	currentFolderItems: SBLink[];
 	parentAndSiblingLinksArray: Link[];
 }> => {
-	// Fetch sibling links first
-	const siblingsLinksArray: SBLink[] = await fetchLinks({
+	// Get all items in current folder (current page and its siblings or, if current page is a root page, current page and its children)
+	const currentFolderItems: SBLink[] = await fetchLinks({
 		with_parent: parentID,
 	});
 	//
 	const parentAndSiblingLinksArray = await reUseFetchingLogic(
 		slug,
-		siblingsLinksArray
+		currentFolderItems
 	);
 	console.log("parentAndSiblingLinksArray", parentAndSiblingLinksArray);
-	return { siblingsLinksArray, parentAndSiblingLinksArray };
+	return { currentFolderItems, parentAndSiblingLinksArray };
 };
 export const filterTreeStructure = (
-	siblingsLinksArray: Link[],
+	currentFolderItems: Link[],
 	parent: Link
 ): Link[] => {
-	const children = siblingsLinksArray.filter((childLink) => {
+	const children = currentFolderItems.filter((childLink) => {
 		const isChild =
 			childLink.parent_id === parent.id && !childLink.is_startpage;
 
@@ -80,7 +80,7 @@ export const filterTreeStructure = (
 };
 export const reUseFetchingLogic = async (
 	slug: string,
-	siblingsLinksArray: Link[],
+	currentFolderItems: Link[],
 	children?:Link[]
 ): Promise<Link[]> => {
 	const startsWithLinksArray = await fetchLinks({
@@ -100,7 +100,7 @@ export const reUseFetchingLogic = async (
 		if (!(children && children.length > 0)) {
 			grandparentFolderChildren.map((parentelse) => {
 				const children = filterTreeStructure(
-					siblingsLinksArray,
+					currentFolderItems,
 					parentelse
 				);
 				parentelse.childLinks = children;
@@ -112,7 +112,7 @@ export const reUseFetchingLogic = async (
 			});
 		}
 	} else {
-		grandparentFolderChildren = siblingsLinksArray;
+		grandparentFolderChildren = currentFolderItems;
 	}
 	return grandparentFolderChildren;
 };
