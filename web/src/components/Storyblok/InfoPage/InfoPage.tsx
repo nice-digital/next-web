@@ -25,7 +25,7 @@ interface InfoPageBlokProps {
 	blok: InfoPageStoryblok;
 	breadcrumbs?: Breadcrumb[];
 	parentChildLinksTreeArray: Link[];
-	parentAndSiblingLinksElse: Link[];
+	currentPageNoChildrenTree: Link[];
 	slug: string;
 }
 
@@ -33,7 +33,7 @@ export const InfoPage = ({
 	blok,
 	breadcrumbs,
 	parentChildLinksTreeArray,
-	parentAndSiblingLinksElse,
+	currentPageNoChildrenTree,
 	slug,
 }: InfoPageBlokProps): React.ReactElement => {
 	return (
@@ -57,7 +57,7 @@ export const InfoPage = ({
 				<GridItem cols={12} sm={{ cols: 4 }} md={{ cols: 3 }}>
 					<StoryblokSectionNav
 						parentChildLinksTreeArray={parentChildLinksTreeArray}
-						parentAndSiblingLinksElse={parentAndSiblingLinksElse}
+						currentPageNoChildrenTree={currentPageNoChildrenTree}
 						slug={slug}
 					/>
 				</GridItem>

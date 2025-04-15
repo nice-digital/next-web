@@ -66,7 +66,7 @@ export type SlugCatchAllSuccessProps = {
 	breadcrumbs: Breadcrumb[];
 	component: string;
 	parentChildLinksTreeArray: Link[];
-	parentAndSiblingLinksElse: Link[];
+	currentPageNoChildrenTree: Link[];
 	slug: string;
 };
 
@@ -104,7 +104,7 @@ export default function SlugCatchAll(
 		breadcrumbs,
 		component,
 		parentChildLinksTreeArray,
-		parentAndSiblingLinksElse,
+		currentPageNoChildrenTree,
 		slug,
 	} = props;
 
@@ -166,7 +166,7 @@ export default function SlugCatchAll(
 				blok={storyData.content}
 				breadcrumbs={breadcrumbs}
 				parentChildLinksTreeArray={parentChildLinksTreeArray}
-				parentAndSiblingLinksElse={parentAndSiblingLinksElse}
+				currentPageNoChildrenTree={currentPageNoChildrenTree}
 				slug={slug}
 			/>
 		</>
@@ -218,7 +218,8 @@ export async function getServerSideProps(context: GetServerSidePropsContext) {
 		const token = publicRuntimeConfig.storyblok.accessToken;
 
 		const component = storyResult.story?.content?.component;
-		let parentAndSiblingLinksElse: Link[] = [];
+		// grandparent, parent, siblings, current page and its siblings - if the current page has no children
+		let currentPageNoChildrenTree: Link[] = [];
 		let parentChildLinksTreeArray: Link[] = [];
 		if (component === "infoPage") {
 			newFetchParentAndSiblingLinks(slug, parentID)
@@ -243,7 +244,7 @@ export async function getServerSideProps(context: GetServerSidePropsContext) {
 								? slug
 								: slug.split("/").slice(0, -1).join("/");
 							secondIteration = true;
-							parentAndSiblingLinksElse = await reUseFetchingLogic(
+							currentPageNoChildrenTree = await reUseFetchingLogic(
 								noChildSlug,
 								siblingsLinksArray,
 								children
@@ -265,7 +266,7 @@ export async function getServerSideProps(context: GetServerSidePropsContext) {
 				breadcrumbs,
 				component,
 				parentChildLinksTreeArray,
-				parentAndSiblingLinksElse,
+				currentPageNoChildrenTree,
 				slug,
 			},
 		};
