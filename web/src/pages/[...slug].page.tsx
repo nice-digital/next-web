@@ -241,11 +241,11 @@ export async function getServerSideProps(context: GetServerSidePropsContext) {
 					} else {
 						parent.childLinks = [];
 						if (parent.slug === slug) {
-							const noChildSlug = isRootPage
+							const slugForStartsWithQueryWhenPageHasNoChildren = isRootPage
 								? slug
 								: slug.split("/").slice(0, -1).join("/");
 							currentPageNoChildrenTree = await reUseFetchingLogic(
-								noChildSlug,
+								slugForStartsWithQueryWhenPageHasNoChildren,
 								currentFolderItems,
 								children
 							);
