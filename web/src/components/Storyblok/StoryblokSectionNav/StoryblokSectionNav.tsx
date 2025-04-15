@@ -26,20 +26,20 @@ export const StoryblokSectionNav = ({
 	parentAndSiblingLinksElse,
 	slug,
 }: StoryblokSectionNavProps): JSX.Element => {
-	const parentChildDataArray =
+	const sectionNavTree =
 		parentAndSiblingLinksElse?.length === 0
 			? parentChildLinksTreeArray
 			: parentAndSiblingLinksElse;
-	const parentChildDataWithFirstElement = parentChildDataArray[0];
-	const trimmedParentChildData =
-		parentChildDataArray?.length > 0 ? parentChildDataArray.slice(1) : [];
+	const sectionNavLabel = sectionNavTree[0];
+	const sectionNavTreeWithoutLabel =
+		sectionNavTree?.length > 0 ? sectionNavTree.slice(1) : [];
 	return (
 		<>
 			<StackedNav
-				label={parentChildDataWithFirstElement?.name}
+				label={sectionNavLabel?.name}
 				className={styles["storyblok-section-nav"]}
 			>
-				{trimmedParentChildData?.map((parent) => (
+				{sectionNavTreeWithoutLabel?.map((parent) => (
 					<StackedNavLink
 						destination={parent.real_path}
 						key={parent.id}
