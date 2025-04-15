@@ -495,6 +495,50 @@ exports[`/indicators/[slug].page IndicatorDetailPage should match snapshot for m
           </p>
         </div>
         <div
+          class="div"
+        >
+          <span
+            class="span"
+          >
+            <img
+              alt="British Association of Dermatologists (BAD)"
+              class="img"
+              src="/api/indicators/NG100/author/british-association-of-dermatologists-bad"
+            />
+          </span>
+          <span
+            class="span"
+          >
+            <img
+              alt="British Thoracic Society (BTS)"
+              class="img"
+              src="/api/indicators/NG100/author/british-thoracic-society-bts"
+            />
+          </span>
+          <span
+            class="span"
+          >
+            <img
+              alt="Royal College of General Practitioners (RCGP)"
+              class="img"
+              src="/api/indicators/NG100/author/royal-college-of-general-practitioners-rcgp"
+            />
+          </span>
+        </div>
+        <div
+          class="div"
+        >
+          <span
+            class="span"
+          >
+            <img
+              alt="National Institute for Health and Care Excellence (NICE)"
+              class="img"
+              src="/api/indicators/NG100/accreditation/national-institute-for-health-and-care-excellence-nice"
+            />
+          </span>
+        </div>
+        <div
           class="prev-next"
         >
           <nav

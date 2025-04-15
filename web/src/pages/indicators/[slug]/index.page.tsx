@@ -25,8 +25,7 @@ import { getChapterLinks, validateRouteParams } from "@/utils/product";
 
 import styles from "./index.page.module.scss";
 import { EndorsingOrganisations } from "@/components/EndorsingOrganisations/EndorsingOrganisations";
-import { AdditionalAuthorList } from "@/components/AdditionalAuthorList/AdditionalAuthorList";
-import { Accreditations } from "@/components/Accreditations/Accreditations";
+import { LogosList } from "@/components/LogosList/LogosList";
 
 export type IndicatorsDetailsPageProps = {
 	productPath: string;
@@ -183,9 +182,17 @@ export default function IndicatorsDetailsPage({
 						productTypeName={product.productTypeName}
 					/>
 
-					<AdditionalAuthorList authorList={product.additionalAuthorList} productId={product.id} />
+					<LogosList
+						logosList={product.additionalAuthorList}
+						productId={product.id}
+						logoType="author"
+					/>
 
-					<Accreditations accreditationsList={product.accreditationList} productId={product.id} />
+					<LogosList
+						logosList={product.accreditationList}
+						productId={product.id}
+						logoType="accreditation"
+					/>
 
 					<PublicationsPrevNext chapters={chapters} />
 				</GridItem>
@@ -245,4 +252,3 @@ export const getServerSideProps: GetServerSideProps<
 		},
 	};
 };
-

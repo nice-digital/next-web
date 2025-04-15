@@ -74,14 +74,24 @@ export const getChapterLinks = (
 	// console.log("in product.ts === product.authorList ===> ", product.additionalAuthorList.length);
 	// console.log("in product.ts === product.authorList ===> ", product.authorList);
 
+	const isOverview = !(
+		product.summary === null &&
+		(product.endorsementList?.length ?? 0) == 0 &&
+		(product.supportingList?.length ?? 0) == 0 &&
+		(product.additionalAuthorList?.length ?? 0) == 0
+	);
+
+	console.log("IsOverview === > ", isOverview);
+
 	return [
-		...(!product.summary && (product.endorsementList.length == 0 && product.supportingList.length == 0 && product.additionalAuthorList.length == 0)
-			? [] : [
+		...(isOverview
+			? [
 					{
 						title: overviewTitle,
 						url: productPath,
 					},
-			  ]),
+			  ]
+			: []),
 		...chapterInfos
 			.filter(({ title }) => title !== overviewTitle || !product.summary)
 			.map(({ title, chapterSlug }) => ({

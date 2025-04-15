@@ -254,25 +254,23 @@ export const getResourceDetails = async (
 };
 
 export const getImage = async (url: string): Promise<Buffer> =>
-	await getFeedBodyCached<Buffer>(
-	  cacheKeyPrefix,
-	  url,
-	  longTTL,
-	  async () => {
+	await getFeedBodyCached<Buffer>(cacheKeyPrefix, url, longTTL, async () => {
 		// Construct the full URL and headers for the request
 		const logourl = origin + url;
 
 		const response = await fetch(logourl, {
-		  method: 'GET',
-		  headers: {
-			"Api-Key": apiKey,
-			"Accept": "application/json",
-		  },
+			method: "GET",
+			headers: {
+				"Api-Key": apiKey,
+				Accept: "application/json",
+			},
 		});
 
 		// Check if the response is OK
 		if (!response.ok) {
-		  throw new Error(`Failed to fetch image from ${url}: ${response.statusText}`);
+			throw new Error(
+				`Failed to fetch image from ${url}: ${response.statusText}`
+			);
 		}
 
 		// Convert the response stream to a Blob
@@ -281,8 +279,7 @@ export const getImage = async (url: string): Promise<Buffer> =>
 		let buffer = Buffer.from(await blob.arrayBuffer());
 
 		return buffer;
-	  }
-	);
+	});
 
 /**
  * Gets a stream of a file from publications.
