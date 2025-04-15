@@ -276,7 +276,7 @@ export const getImage = async (url: string): Promise<Buffer> =>
 		// Convert the response stream to a Blob
 		const blob = await response.blob();
 
-		let buffer = Buffer.from(await blob.arrayBuffer());
+		const buffer = Buffer.from(await blob.arrayBuffer());
 
 		return buffer;
 	});

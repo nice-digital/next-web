@@ -15,7 +15,6 @@ import { PublicationsChapterMenu } from "@/components/PublicationsChapterMenu/Pu
 import { PublicationsDownloadLink } from "@/components/PublicationsDownloadLink/PublicationsDownloadLink";
 import { PublicationsPrevNext } from "@/components/PublicationsPrevNext/PublicationsPrevNext";
 import { SupportingOrganisations } from "@/components/SupportingOrganisations/SupportingOrganisations";
-
 import {
 	ChapterHeading,
 	getAllIndicatorSubTypes,

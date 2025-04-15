@@ -1,7 +1,8 @@
 import { render, screen } from "@testing-library/react";
 
-import { LogosList, type LogosListProps } from "./LogosList";
 import { slugify } from "@/utils/url";
+
+import { LogosList, type LogosListProps } from "./LogosList";
 
 describe("Author Logos", () => {
 	const defaultProps: LogosListProps = {

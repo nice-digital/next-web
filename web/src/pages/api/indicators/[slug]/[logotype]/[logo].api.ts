@@ -4,16 +4,17 @@ import {
 	getProductDetail,
 } from "@/feeds/publications/publications";
 import { slugify } from "@/utils/url";
+
 import type { NextApiRequest, NextApiResponse } from "next";
 
 export default async function handler(
 	req: NextApiRequest,
 	res: NextApiResponse
-) {
+): Promise<void> {
 	const { slug, logo, logotype } = req.query;
 
 	if (!slug || !logo || !logotype) {
-		return null;
+		return res.status(400).json({ error: "Missing query parameters" });
 	}
 
 	const [product] = await Promise.all([getProductDetail(slug as string)]);

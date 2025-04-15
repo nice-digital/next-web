@@ -1,7 +1,9 @@
-import { BadgingFields } from "@/feeds/publications/types";
 import { FC } from "react";
-import styles from "./LogosList.module.scss";
+
+import { BadgingFields } from "@/feeds/publications/types";
 import { slugify } from "@/utils/url";
+
+import styles from "./LogosList.module.scss";
 
 export type LogosListProps = {
 	logosList: BadgingFields[];
