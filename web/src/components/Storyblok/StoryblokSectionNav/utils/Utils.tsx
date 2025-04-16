@@ -65,6 +65,7 @@ export const fetchParentAndSiblingLinks = async (
 	console.log("parentAndSiblingLinksArray", parentAndSiblingLinksArray);
 	return { currentFolderItems, parentAndSiblingLinksArray };
 };
+
 export const filterTreeStructure = (
 	currentFolderItems: Link[],
 	parent: Link
@@ -77,6 +78,7 @@ export const filterTreeStructure = (
 	});
 	return children;
 };
+
 export const reUseFetchingLogic = async (
 	slug: string,
 	currentFolderItems: Link[],
@@ -90,28 +92,27 @@ export const reUseFetchingLogic = async (
 		(item: Link) => item.is_folder && item.slug === slug
 	);
 
-	let parentAndSiblingLinksArray: Link[] = [];
+	let parentFolderItems: Link[] = [];
 
-	if (currentFolder && currentFolder.parent_id) {
-		parentAndSiblingLinksArray = await fetchLinks({
-			with_parent: currentFolder.parent_id,
-		});
-		if (!(children && children.length > 0)) {
-			parentAndSiblingLinksArray.map((parentelse) => {
-				const children = filterTreeStructure(
-					currentFolderItems,
-					parentelse
-				);
-				parentelse.childLinks = children;
-				if (children.length > 0) {
-					parentelse.childLinks = children;
-				} else {
-					parentelse.childLinks = [];
-				}
-			});
+	// no current folder found or current folder has no parent_id return the currentFolderItems
+	if(!currentFolder || !currentFolder.parent_id) return currentFolderItems;
+
+	// Get all items in current folder's parent folder (current "page" and its siblings OR parent page and its siblings, depending on current position in tree)
+	parentFolderItems = await fetchLinks({
+		with_parent: currentFolder.parent_id,
+	});
+	const parentAndSiblingLinksArray = parentFolderItems;
+
+	// if current page has no children
+	if(!(children && children.length > 0)) {
+		for(const parent of parentFolderItems) {
+			const childLinks = filterTreeStructure(
+				currentFolderItems,
+				parent
+			);
+			parent.childLinks = childLinks;
 		}
-	} else {
-		parentAndSiblingLinksArray = currentFolderItems;
 	}
-	return parentAndSiblingLinksArray;
+
+	return parentAndSiblingLinksArray
 };
