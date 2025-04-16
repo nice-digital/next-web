@@ -215,18 +215,16 @@ export async function getServerSideProps(context: GetServerSidePropsContext) {
 
 		const parentID = storyResult.story?.parent_id as number;
 		const isRootPage = storyResult.story?.is_startpage;
-		const token = publicRuntimeConfig.storyblok.accessToken;
 
 		const component = storyResult.story?.content?.component;
 		// grandparent, parent, siblings, current page and its siblings - if the current page has no children
 		let currentPageNoChildrenTree: Link[] = [];
 		let parentChildLinksTreeArray: Link[] = [];
 		if (component === "infoPage") {
-			newFetchParentAndSiblingLinks(slug, parentID)
 
 			// previousLogic START
 			const { currentFolderItems, parentAndSiblingLinksArray } =
-				await fetchParentAndSiblingLinks(token, parentID, slug);
+				await fetchParentAndSiblingLinks(parentID, slug);
 			parentChildLinksTreeArray = await Promise.all(
 				parentAndSiblingLinksArray.map(async (parent) => {
 					const children = filterTreeStructure(

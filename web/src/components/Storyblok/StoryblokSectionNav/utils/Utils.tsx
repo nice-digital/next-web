@@ -47,7 +47,6 @@ let tree = []
 };
 
 export const fetchParentAndSiblingLinks = async (
-	token: string,
 	parentID: number,
 	slug: string
 ): Promise<{
