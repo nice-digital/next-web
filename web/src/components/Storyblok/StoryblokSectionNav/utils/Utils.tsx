@@ -12,48 +12,50 @@ type Link = {
 
 export const newFetchParentAndSiblingLinks = async (
 	slug: string,
-	parentID: number,
+	parentID: number
 ): Promise<Link[]> => {
+	// Get all items starting with the current slug - this is the only way to access the current folder object
+	const startingWithCurrentSlugItems = await fetchLinks({ starts_with: slug });
+	// Get currentFolder object so we can access its parent_id
+	const currentFolder = startingWithCurrentSlugItems.find(
+		(item) => item.is_folder && item.slug === slug
+	);
 
-// Get all items starting with the current slug - this is the only way to access the current folder object
-const startingWithCurrentSlugItems = await fetchLinks({starts_with: slug});
-// Get currentFolder object so we can access its parent_id
-const currentFolder = startingWithCurrentSlugItems.find((item)=> item.is_folder && item.slug === slug);
+	// Get all items in current folder (current page and its siblings or, if current page is a root page, current page and its children)
+	const currentFolderItems = await fetchLinks({ with_parent: parentID });
+	// Get all items in current folder's parent folder (current "page" and its siblings OR parent page and its siblings, depending on current position in tree)
+	const parentFolderItems = await fetchLinks({
+		with_parent: currentFolder?.parent_id,
+	});
 
-// Get all items in current folder (current page and its siblings or, if current page is a root page, current page and its children)
-const currentFolderItems = await fetchLinks({with_parent: parentID});
-// Get all items in current folder's parent folder (current "page" and its siblings OR parent page and its siblings, depending on current position in tree)
-const parentFolderItems = await fetchLinks({with_parent: currentFolder?.parent_id});
+	let tree = [];
 
-let tree = []
-
-	if(currentFolder && currentFolder.parent_id) {
-		tree = parentFolderItems
+	if (currentFolder && currentFolder.parent_id) {
+		tree = parentFolderItems;
 	} else {
 		// When on a top-level slug (like "implementing-nice-guidance"), we
 		// use the siblings data to populate the render.
 		tree = currentFolderItems;
 	}
 
-	let children:SBLink[] = []
+	let children: SBLink[] = [];
 
 	// Filter out the root page from its "children"
-	children = currentFolderItems.filter((item)=> !item.is_startpage)
+	children = currentFolderItems.filter((item) => !item.is_startpage);
 
-	return tree
+	return tree;
 };
 
 export const filterTreeStructure = (
 	currentFolderItems: Link[],
 	parent: Link
-): Link[] => {
-	const children = currentFolderItems.filter((childLink) => {
-		const isChild =
-			childLink.parent_id === parent.id && !childLink.is_startpage;
+): { parent: Link; children: Link[] } => {
+	const children = currentFolderItems.filter(
+		(childLink) => childLink.parent_id === parent.id && !childLink.is_startpage
+	);
 
-		return isChild;
-	});
-	return children;
+	parent.childLinks = children.length > 0 ? children : [];
+	return { parent, children };
 };
 
 export const fetchParentAndSiblingLinks = async (
@@ -72,13 +74,16 @@ export const fetchParentAndSiblingLinks = async (
 		slug,
 		currentFolderItems
 	);
-	return { currentFolderItems, storyParentAndSiblings: storyParentAndSiblingsOrCurrentFolderItems };
+	return {
+		currentFolderItems,
+		storyParentAndSiblings: storyParentAndSiblingsOrCurrentFolderItems,
+	};
 };
 
 export const reUseFetchingLogic = async (
 	slug: string,
 	currentFolderItems: Link[],
-	children?:Link[]
+	children?: Link[]
 ): Promise<Link[]> => {
 	const startsWithLinksArray = await fetchLinks({
 		starts_with: slug,
@@ -91,7 +96,7 @@ export const reUseFetchingLogic = async (
 	let parentFolderItems: Link[] = [];
 
 	// no current folder found or current folder has no parent_id return the currentFolderItems
-	if(!currentFolder || !currentFolder.parent_id) return currentFolderItems;
+	if (!currentFolder || !currentFolder.parent_id) return currentFolderItems;
 
 	// Get all items in current folder's parent folder (current "page" and its siblings OR parent page and its siblings, depending on current position in tree)
 	parentFolderItems = await fetchLinks({
@@ -99,9 +104,9 @@ export const reUseFetchingLogic = async (
 	});
 
 	// if current page has no children
-	if(!(children && children.length > 0)) {
-		for(const parent of parentFolderItems) {
-			const childLinks = filterTreeStructure(
+	if (!(children && children.length > 0)) {
+		for (const parent of parentFolderItems) {
+			const { children: childLinks } = filterTreeStructure(
 				currentFolderItems,
 				parent
 			);
@@ -109,5 +114,5 @@ export const reUseFetchingLogic = async (
 		}
 	}
 
-	return parentFolderItems
+	return parentFolderItems;
 };
