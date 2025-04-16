@@ -503,7 +503,13 @@ exports[`/indicators/[slug].page IndicatorDetailPage should match snapshot for m
             <img
               alt="British Association of Dermatologists (BAD)"
               class="img"
+              data-nimg="1"
+              decoding="async"
+              height="0"
+              loading="lazy"
               src="/api/indicators/NG100/author/british-association-of-dermatologists-bad"
+              style="color: transparent;"
+              width="0"
             />
           </span>
           <span
@@ -512,7 +518,13 @@ exports[`/indicators/[slug].page IndicatorDetailPage should match snapshot for m
             <img
               alt="British Thoracic Society (BTS)"
               class="img"
+              data-nimg="1"
+              decoding="async"
+              height="0"
+              loading="lazy"
               src="/api/indicators/NG100/author/british-thoracic-society-bts"
+              style="color: transparent;"
+              width="0"
             />
           </span>
           <span
@@ -521,7 +533,13 @@ exports[`/indicators/[slug].page IndicatorDetailPage should match snapshot for m
             <img
               alt="Royal College of General Practitioners (RCGP)"
               class="img"
+              data-nimg="1"
+              decoding="async"
+              height="0"
+              loading="lazy"
               src="/api/indicators/NG100/author/royal-college-of-general-practitioners-rcgp"
+              style="color: transparent;"
+              width="0"
             />
           </span>
         </div>
@@ -534,7 +552,13 @@ exports[`/indicators/[slug].page IndicatorDetailPage should match snapshot for m
             <img
               alt="National Institute for Health and Care Excellence (NICE)"
               class="img"
+              data-nimg="1"
+              decoding="async"
+              height="0"
+              loading="lazy"
               src="/api/indicators/NG100/accreditation/national-institute-for-health-and-care-excellence-nice"
+              style="color: transparent;"
+              width="0"
             />
           </span>
         </div>

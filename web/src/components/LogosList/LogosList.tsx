@@ -1,3 +1,4 @@
+import Image from "next/image";
 import { FC } from "react";
 
 import { BadgingFields } from "@/feeds/publications/types";
@@ -20,12 +21,15 @@ export const LogosList: FC<LogosListProps> = ({
 		<div className={styles.div}>
 			{logosList.map((item, index) => (
 				<span key={index} className={styles.span}>
-					<img
+					<Image
 						src={`/api/indicators/${productId}/${logoType}/${slugify(
 							item.name
 						)}`}
 						alt={item.name}
 						className={styles.img}
+						width={0}
+						height={0}
+						unoptimized
 					/>
 				</span>
 			))}
