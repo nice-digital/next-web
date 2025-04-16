@@ -27,7 +27,7 @@ import { StoryblokIframe } from "@/components/Storyblok/StoryblokIframe/Storyblo
 import { StoryblokPageHeader } from "@/components/Storyblok/StoryblokPageHeader/StoryblokPageHeader";
 import {
 	fetchParentAndSiblingLinks,
-	filterTreeStructure,
+	assignChildrenToParent,
 	newFetchParentAndSiblingLinks,
 	reUseFetchingLogic,
 } from "@/components/Storyblok/StoryblokSectionNav/utils/Utils";
@@ -227,7 +227,7 @@ export async function getServerSideProps(context: GetServerSidePropsContext) {
 
 			parentChildLinksTreeArray = await Promise.all(
 				storyParentAndSiblings.map(async (item) => {
-					const {parent,children} = filterTreeStructure(
+					const {parent,children} = assignChildrenToParent(
 						currentFolderItems,
 						item
 					);

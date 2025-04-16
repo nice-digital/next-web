@@ -46,7 +46,7 @@ export const newFetchParentAndSiblingLinks = async (
 	return tree;
 };
 
-export const filterTreeStructure = (
+export const assignChildrenToParent = (
 	currentFolderItems: Link[],
 	parent: Link
 ): { parent: Link; children: Link[] } => {
@@ -106,7 +106,7 @@ export const reUseFetchingLogic = async (
 	// if current page has no children
 	if (!(children && children.length > 0)) {
 		for (const parent of parentFolderItems) {
-			const { children: childLinks } = filterTreeStructure(
+			const { children: childLinks } = assignChildrenToParent(
 				currentFolderItems,
 				parent
 			);
