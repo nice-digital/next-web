@@ -50,7 +50,7 @@ const mockData = {
 			],
 		},
 	],
-	parentAndSiblingLinksElse: [
+	currentPageNoChildrenTree: [
 		{
 			id: 642430801,
 
@@ -121,7 +121,7 @@ describe("StoryblokSectionNav", () => {
 		render(
 			<StoryblokSectionNav
 				parentChildLinksTreeArray={mockData.parentChildLinksTreeArray}
-				parentAndSiblingLinksElse={[]}
+				currentPageNoChildrenTree={[]}
 				slug={mockData.slug}
 			/>
 		);
@@ -140,7 +140,7 @@ describe("StoryblokSectionNav", () => {
 		render(
 			<StoryblokSectionNav
 				parentChildLinksTreeArray={mockData.parentChildLinksTreeArray}
-				parentAndSiblingLinksElse={mockData.parentAndSiblingLinksElse}
+				currentPageNoChildrenTree={mockData.currentPageNoChildrenTree}
 				slug={
 					"implementing-nice-guidance/cost-saving-resource-planning-and-audit/nice-and-health-inequalities/nice-and-core20plus5-adults/smoking-cessation"
 				}
@@ -158,7 +158,7 @@ describe("StoryblokSectionNav", () => {
 		render(
 			<StoryblokSectionNav
 				parentChildLinksTreeArray={[]}
-				parentAndSiblingLinksElse={mockData.parentAndSiblingLinksElse}
+				currentPageNoChildrenTree={mockData.currentPageNoChildrenTree}
 				slug={
 					"implementing-nice-guidance/cost-saving-resource-planning-and-audit/nice-and-health-inequalities/nice-and-core20plus5-adults/nice-and-core20plus5-adults/smoking-cessation"
 				}
@@ -166,7 +166,7 @@ describe("StoryblokSectionNav", () => {
 		);
 
 		// Get all child links and check the aria-current value
-		const childLinks = mockData.parentAndSiblingLinksElse[0].childLinks;
+		const childLinks = mockData.currentPageNoChildrenTree[0].childLinks;
 
 		// Check the aria-current value for each child link
 		childLinks.forEach((link) => {
