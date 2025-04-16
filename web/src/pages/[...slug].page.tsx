@@ -223,22 +223,17 @@ export async function getServerSideProps(context: GetServerSidePropsContext) {
 		if (component === "infoPage") {
 
 			// previousLogic START
-			const { currentFolderItems, parentAndSiblingLinksArray } =
-				await fetchParentAndSiblingLinks(parentID, slug);
+			const { currentFolderItems, storyParentAndSiblings } = await fetchParentAndSiblingLinks(parentID, slug);
+
 			parentChildLinksTreeArray = await Promise.all(
-				parentAndSiblingLinksArray.map(async (parent) => {
+				storyParentAndSiblings.map(async (parent) => {
 					const children = filterTreeStructure(
 						currentFolderItems,
 						parent
 					);
-
-
+					parent.childLinks = children.length > 0 ? children : [];
 			// check if node has children, if so create a childLinks property, if not allocate an empty array and traverse up two levels
-					if (children.length > 0) {
-						parent.childLinks = children;
-					} else {
-						parent.childLinks = [];
-						if (parent.slug === slug) {
+					if (children.length === 0 && parent.slug === slug) {
 							const slugForStartsWithQueryWhenPageHasNoChildren = isRootPage
 								? slug
 								: slug.split("/").slice(0, -1).join("/");
@@ -247,7 +242,6 @@ export async function getServerSideProps(context: GetServerSidePropsContext) {
 								currentFolderItems,
 								children
 							);
-						}
 					}
 
 					return parent;
