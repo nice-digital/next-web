@@ -25,11 +25,7 @@ import { StoryblokCalloutCard } from "@/components/Storyblok/StoryblokCalloutCar
 import { StoryblokHero } from "@/components/Storyblok/StoryblokHero/StoryblokHero";
 import { StoryblokIframe } from "@/components/Storyblok/StoryblokIframe/StoryblokIframe";
 import { StoryblokPageHeader } from "@/components/Storyblok/StoryblokPageHeader/StoryblokPageHeader";
-import {
-	fetchParentAndSiblingLinks,
-	assignChildrenToParent,
-	reUseFetchingLogic,
-} from "@/components/Storyblok/StoryblokSectionNav/utils/Utils";
+import { buildTree } from "@/components/Storyblok/StoryblokSectionNav/utils/Utils";
 import { StoryblokTable } from "@/components/Storyblok/StoryblokTable/StoryblokTable";
 import { StoryblokTestimonialFullWidth } from "@/components/Storyblok/StoryblokTestimonialFullWidth/StoryblokTestimonialFullWidth";
 import { StoryblokTestimonialGridItem } from "@/components/Storyblok/StoryblokTestimonialGridItem/StoryblokTestimonialGridItem";
@@ -219,24 +215,8 @@ export async function getServerSideProps(context: GetServerSidePropsContext) {
 		let tree: Link[] = [];
 
 		if (component === "infoPage") {
+			tree = await buildTree(parentID, slug, isRootPage);
 			// TODO: move out of catchall page; would need API route as GSSP is not allowed in components whilst using pages router
-			const { currentFolderItems, currentAndParentFolderItems } = await fetchParentAndSiblingLinks(parentID, slug);
-			tree = assignChildrenToParent(currentFolderItems, currentAndParentFolderItems);
-
-			const currentPage = tree.find((item)=> item.slug === slug);
-
-			const currentPageHasNoChildren = !currentPage?.childLinks || currentPage?.childLinks.length === 0
-
-			if (currentPage && currentPageHasNoChildren) {
-				const currentFolderSlug = isRootPage ? slug : slug.split("/").slice(0, -1).join("/");
-
-				tree = await reUseFetchingLogic(
-					currentFolderSlug,
-					currentFolderItems,
-					currentPage.childLinks ?? []
-				);
-			}
-
 		}
 
 		const result = {
