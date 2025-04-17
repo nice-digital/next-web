@@ -28,7 +28,6 @@ import { StoryblokPageHeader } from "@/components/Storyblok/StoryblokPageHeader/
 import {
 	fetchParentAndSiblingLinks,
 	assignChildrenToParent,
-	newFetchParentAndSiblingLinks,
 	reUseFetchingLogic,
 } from "@/components/Storyblok/StoryblokSectionNav/utils/Utils";
 import { StoryblokTable } from "@/components/Storyblok/StoryblokTable/StoryblokTable";
@@ -65,7 +64,7 @@ export type SlugCatchAllSuccessProps = {
 	story: ISbStoryData<InfoPageStoryblok | CategoryNavigationStoryblok>;
 	breadcrumbs: Breadcrumb[];
 	component: string;
-	parentChildLinksTreeArray: Link[];
+	tree: Link[];
 	currentPageNoChildrenTree: Link[];
 	slug: string;
 };
@@ -103,7 +102,7 @@ export default function SlugCatchAll(
 		story: storyData,
 		breadcrumbs,
 		component,
-		parentChildLinksTreeArray,
+		tree,
 		currentPageNoChildrenTree,
 		slug,
 	} = props;
@@ -165,7 +164,7 @@ export default function SlugCatchAll(
 			<StoryblokComponent
 				blok={storyData.content}
 				breadcrumbs={breadcrumbs}
-				parentChildLinksTreeArray={parentChildLinksTreeArray}
+				tree={tree}
 				currentPageNoChildrenTree={currentPageNoChildrenTree}
 				slug={slug}
 			/>
@@ -217,24 +216,28 @@ export async function getServerSideProps(context: GetServerSidePropsContext) {
 		const isRootPage = storyResult.story?.is_startpage;
 
 		const component = storyResult.story?.content?.component;
-		// grandparent, parent, siblings, current page and its siblings - if the current page has no children
 		let currentPageNoChildrenTree: Link[] = [];
-		let parentChildLinksTreeArray: Link[] = [];
+		let tree: Link[] = [];
+
 		if (component === "infoPage") {
-			const { currentFolderItems, storyParentAndSiblings } = await fetchParentAndSiblingLinks(parentID, slug);
-			parentChildLinksTreeArray = assignChildrenToParent(currentFolderItems, storyParentAndSiblings);
+			const { currentFolderItems, currentAndParentFolderItems } = await fetchParentAndSiblingLinks(parentID, slug);
+			console.log({currentAndParentFolderItems});
+			console.log({currentFolderItems})
+			console.log(currentFolderItems===currentAndParentFolderItems)
 
-			const currentItem = parentChildLinksTreeArray.find((item)=> item.slug === slug);
+			tree = assignChildrenToParent(currentFolderItems, currentAndParentFolderItems);
 
-			const currentPageItemHasNoChildren = !currentItem?.childLinks || currentItem?.childLinks.length === 0
+			const currentPage = tree.find((item)=> item.slug === slug);
 
-			if (currentItem && currentPageItemHasNoChildren) {
-				const slugByIsRootPage = isRootPage ? slug : slug.split("/").slice(0, -1).join("/");
+			const currentPageHasNoChildren = !currentPage?.childLinks || currentPage?.childLinks.length === 0
+
+			if (currentPage && currentPageHasNoChildren) {
+				const currentFolderSlug = isRootPage ? slug : slug.split("/").slice(0, -1).join("/");
 
 				currentPageNoChildrenTree = await reUseFetchingLogic(
-					slugByIsRootPage,
+					currentFolderSlug,
 					currentFolderItems,
-					currentItem.childLinks ?? []
+					currentPage.childLinks ?? []
 				);
 			}
 
@@ -245,7 +248,7 @@ export async function getServerSideProps(context: GetServerSidePropsContext) {
 				...storyResult,
 				breadcrumbs,
 				component,
-				parentChildLinksTreeArray,
+				tree: tree,
 				currentPageNoChildrenTree,
 				slug,
 			},

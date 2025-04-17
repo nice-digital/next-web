@@ -10,42 +10,6 @@ type Link = {
 	is_startpage: boolean;
 };
 
-export const newFetchParentAndSiblingLinks = async (
-	slug: string,
-	parentID: number
-): Promise<Link[]> => {
-	// Get all items starting with the current slug - this is the only way to access the current folder object
-	const startingWithCurrentSlugItems = await fetchLinks({ starts_with: slug });
-	// Get currentFolder object so we can access its parent_id
-	const currentFolder = startingWithCurrentSlugItems.find(
-		(item) => item.is_folder && item.slug === slug
-	);
-
-	// Get all items in current folder (current page and its siblings or, if current page is a root page, current page and its children)
-	const currentFolderItems = await fetchLinks({ with_parent: parentID });
-	// Get all items in current folder's parent folder (current "page" and its siblings OR parent page and its siblings, depending on current position in tree)
-	const parentFolderItems = await fetchLinks({
-		with_parent: currentFolder?.parent_id,
-	});
-
-	let tree = [];
-
-	if (currentFolder && currentFolder.parent_id) {
-		tree = parentFolderItems;
-	} else {
-		// When on a top-level slug (like "implementing-nice-guidance"), we
-		// use the siblings data to populate the render.
-		tree = currentFolderItems;
-	}
-
-	let children: SBLink[] = [];
-
-	// Filter out the root page from its "children"
-	children = currentFolderItems.filter((item) => !item.is_startpage);
-
-	return tree;
-};
-
 export const assignChildrenToParent = (
 	currentFolderItems: Link[],
 	parents: Link[],
@@ -60,55 +24,59 @@ export const assignChildrenToParent = (
 	return parents;
 }
 
-export const fetchParentAndSiblingLinks = async (
-	parentID: number,
-	slug: string
-): Promise<{
-	currentFolderItems: SBLink[];
-	storyParentAndSiblings: Link[];
-}> => {
-	// Get all items in current folder (current page and its siblings or, if current page is a root page, current page and its children)
-	const currentFolderItems: SBLink[] = await fetchLinks({
-		with_parent: parentID,
-	});
-	//
-	const storyParentAndSiblingsOrCurrentFolderItems = await reUseFetchingLogic(
-		slug,
-		currentFolderItems
-	);
-	return {
-		currentFolderItems,
-		storyParentAndSiblings: storyParentAndSiblingsOrCurrentFolderItems,
-	};
-};
-
 export const reUseFetchingLogic = async (
 	slug: string,
 	currentFolderItems: Link[],
 	children?: Link[]
 ): Promise<Link[]> => {
-	const startsWithLinksArray = await fetchLinks({
+	// Get all items starting with the current folder slug - this is the only way to access the folder object
+	const startsWithCurrentFolderSlugItems = await fetchLinks({
 		starts_with: slug,
 	});
 
-	const currentFolder: Link | undefined = startsWithLinksArray.find(
+	// Get currentFolder object so we can access its parent_id
+	const currentFolder: Link | undefined = startsWithCurrentFolderSlugItems.find(
 		(item: Link) => item.is_folder && item.slug === slug
 	);
 
-	let parentFolderItems: Link[] = [];
+	let tree: Link[] = [];
 
-	// no current folder found or current folder has no parent_id return the currentFolderItems
+	// If no current folder found or current folder has no parent_id, return the currentFolderItems
 	if (!currentFolder || !currentFolder.parent_id) return currentFolderItems;
 
 	// Get all items in current folder's parent folder (current "page" and its siblings OR parent page and its siblings, depending on current position in tree)
-	parentFolderItems = await fetchLinks({
+	const parentFolderItems = await fetchLinks({
 		with_parent: currentFolder.parent_id,
 	});
+	tree = parentFolderItems;
 
 	// If current page has no children, use current level and level above to create the parent/child tree structure
 	if (!(children && children.length > 0)) {
-		parentFolderItems = assignChildrenToParent(currentFolderItems, parentFolderItems)
+		tree = assignChildrenToParent(currentFolderItems, parentFolderItems);
 	}
 
-	return parentFolderItems;
+	return tree;
+};
+
+export const fetchParentAndSiblingLinks = async (
+	parentID: number,
+	slug: string
+): Promise<{
+	currentFolderItems: SBLink[];
+	currentAndParentFolderItems: Link[];
+}> => {
+	// Get all items in current folder (current page and its siblings or, if current page is a root page, current page and its children)
+	const currentFolderItems: SBLink[] = await fetchLinks({
+		with_parent: parentID,
+	});
+
+	//
+	const currentAndParentFolderItemsOrCurrentFolderItems = await reUseFetchingLogic(
+		slug,
+		currentFolderItems
+	);
+	return {
+		currentFolderItems,
+		currentAndParentFolderItems: currentAndParentFolderItemsOrCurrentFolderItems,
+	};
 };

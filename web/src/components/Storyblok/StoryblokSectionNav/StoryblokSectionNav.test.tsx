@@ -4,7 +4,7 @@ import { StoryblokSectionNav } from "./StoryblokSectionNav";
 
 // Example mock data for the StoryblokSectionNav component
 const mockData = {
-	parentChildLinksTreeArray: [
+	tree: [
 		{
 			id: 642423873,
 			uuid: "43715ed7-016d-4e5d-b43a-14fa7cd08b23",
@@ -120,7 +120,7 @@ describe("StoryblokSectionNav", () => {
 	it("should render the parent and child links correctly", () => {
 		render(
 			<StoryblokSectionNav
-				parentChildLinksTreeArray={mockData.parentChildLinksTreeArray}
+				tree={mockData.tree}
 				currentPageNoChildrenTree={[]}
 				slug={mockData.slug}
 			/>
@@ -139,7 +139,7 @@ describe("StoryblokSectionNav", () => {
 	it("should highlight the current child link based on the slug", () => {
 		render(
 			<StoryblokSectionNav
-				parentChildLinksTreeArray={mockData.parentChildLinksTreeArray}
+				tree={mockData.tree}
 				currentPageNoChildrenTree={mockData.currentPageNoChildrenTree}
 				slug={
 					"implementing-nice-guidance/cost-saving-resource-planning-and-audit/nice-and-health-inequalities/nice-and-core20plus5-adults/smoking-cessation"
@@ -157,7 +157,7 @@ describe("StoryblokSectionNav", () => {
 	it("should highlight the current child link based on the slug", () => {
 		render(
 			<StoryblokSectionNav
-				parentChildLinksTreeArray={[]}
+				tree={[]}
 				currentPageNoChildrenTree={mockData.currentPageNoChildrenTree}
 				slug={
 					"implementing-nice-guidance/cost-saving-resource-planning-and-audit/nice-and-health-inequalities/nice-and-core20plus5-adults/nice-and-core20plus5-adults/smoking-cessation"
