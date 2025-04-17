@@ -220,11 +220,8 @@ export async function getServerSideProps(context: GetServerSidePropsContext) {
 		let tree: Link[] = [];
 
 		if (component === "infoPage") {
+			// TODO: move out of catchall page; would need API route as GSSP is not allowed in components whilst using pages router
 			const { currentFolderItems, currentAndParentFolderItems } = await fetchParentAndSiblingLinks(parentID, slug);
-			console.log({currentAndParentFolderItems});
-			console.log({currentFolderItems})
-			console.log(currentFolderItems===currentAndParentFolderItems)
-
 			tree = assignChildrenToParent(currentFolderItems, currentAndParentFolderItems);
 
 			const currentPage = tree.find((item)=> item.slug === slug);
@@ -234,7 +231,7 @@ export async function getServerSideProps(context: GetServerSidePropsContext) {
 			if (currentPage && currentPageHasNoChildren) {
 				const currentFolderSlug = isRootPage ? slug : slug.split("/").slice(0, -1).join("/");
 
-				currentPageNoChildrenTree = await reUseFetchingLogic(
+				tree = await reUseFetchingLogic(
 					currentFolderSlug,
 					currentFolderItems,
 					currentPage.childLinks ?? []
@@ -248,8 +245,7 @@ export async function getServerSideProps(context: GetServerSidePropsContext) {
 				...storyResult,
 				breadcrumbs,
 				component,
-				tree: tree,
-				currentPageNoChildrenTree,
+				tree,
 				slug,
 			},
 		};

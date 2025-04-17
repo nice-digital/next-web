@@ -17,22 +17,16 @@ type Link = {
 
 type StoryblokSectionNavProps = {
 	tree: Link[];
-	currentPageNoChildrenTree: Link[];
 	slug: string;
 };
 
 export const StoryblokSectionNav = ({
 	tree,
-	currentPageNoChildrenTree,
 	slug,
 }: StoryblokSectionNavProps): JSX.Element => {
-	const sectionNavTree =
-		currentPageNoChildrenTree?.length === 0
-			? tree
-			: currentPageNoChildrenTree;
-	const sectionNavLabel = sectionNavTree[0];
+	const sectionNavLabel = tree[0];
 	const sectionNavTreeWithoutLabel =
-		sectionNavTree?.length > 0 ? sectionNavTree.slice(1) : [];
+		tree?.length > 0 ? tree.slice(1) : [];
 	return (
 		<>
 			<StackedNav
