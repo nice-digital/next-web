@@ -48,15 +48,17 @@ export const newFetchParentAndSiblingLinks = async (
 
 export const assignChildrenToParent = (
 	currentFolderItems: Link[],
-	parent: Link
-): { parent: Link; children: Link[] } => {
-	const children = currentFolderItems.filter(
-		(childLink) => childLink.parent_id === parent.id && !childLink.is_startpage
-	);
+	parents: Link[],
+): Link[] => {
+	for(const parent of parents) {
+		const children = currentFolderItems.filter(
+			(childLink) => childLink.parent_id === parent.id && !childLink.is_startpage
+		);
 
-	parent.childLinks = children.length > 0 ? children : [];
-	return { parent, children };
-};
+		parent.childLinks = children.length > 0 ? children : [];
+	}
+	return parents;
+}
 
 export const fetchParentAndSiblingLinks = async (
 	parentID: number,
@@ -103,15 +105,9 @@ export const reUseFetchingLogic = async (
 		with_parent: currentFolder.parent_id,
 	});
 
-	// if current page has no children
+	// If current page has no children, use current level and level above to create the parent/child tree structure
 	if (!(children && children.length > 0)) {
-		for (const parent of parentFolderItems) {
-			const { children: childLinks } = assignChildrenToParent(
-				currentFolderItems,
-				parent
-			);
-			parent.childLinks = childLinks;
-		}
+		parentFolderItems = assignChildrenToParent(currentFolderItems, parentFolderItems)
 	}
 
 	return parentFolderItems;

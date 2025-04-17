@@ -221,32 +221,23 @@ export async function getServerSideProps(context: GetServerSidePropsContext) {
 		let currentPageNoChildrenTree: Link[] = [];
 		let parentChildLinksTreeArray: Link[] = [];
 		if (component === "infoPage") {
-
-			// previousLogic START
 			const { currentFolderItems, storyParentAndSiblings } = await fetchParentAndSiblingLinks(parentID, slug);
+			parentChildLinksTreeArray = assignChildrenToParent(currentFolderItems, storyParentAndSiblings);
 
-			parentChildLinksTreeArray = await Promise.all(
-				storyParentAndSiblings.map(async (item) => {
-					const {parent,children} = assignChildrenToParent(
-						currentFolderItems,
-						item
-					);
-					// parent.childLinks = children.length > 0 ? children : [];
-			// check if node has children, if so create a childLinks property, if not allocate an empty array and traverse up two levels
-					if (children.length === 0 && item.slug === slug) {
-						const slugByIsRootPage = isRootPage
-							? slug
-							: slug.split("/").slice(0, -1).join("/");
-						currentPageNoChildrenTree = await reUseFetchingLogic(
-							slugByIsRootPage,
-							currentFolderItems,
-							children
-						);
-					}
+			const currentItem = parentChildLinksTreeArray.find((item)=> item.slug === slug);
 
-					return parent;
-				})
-			);
+			const currentPageItemHasNoChildren = !currentItem?.childLinks || currentItem?.childLinks.length === 0
+
+			if (currentItem && currentPageItemHasNoChildren) {
+				const slugByIsRootPage = isRootPage ? slug : slug.split("/").slice(0, -1).join("/");
+
+				currentPageNoChildrenTree = await reUseFetchingLogic(
+					slugByIsRootPage,
+					currentFolderItems,
+					currentItem.childLinks ?? []
+				);
+			}
+
 		}
 
 		const result = {
