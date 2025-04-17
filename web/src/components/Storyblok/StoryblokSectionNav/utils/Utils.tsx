@@ -10,37 +10,7 @@ type Link = {
 	is_startpage: boolean;
 };
 
-export const buildTree = async (
-	parentID: number,
-	slug: string,
-	isRootPage: boolean | undefined
-): Promise<Link[]> => {
-	let tree: Link[] = [];
-	const { currentFolderItems, currentAndParentFolderItems } =
-		await fetchParentAndSiblingLinks(parentID, slug);
-	tree = assignChildrenToParent(
-		currentFolderItems,
-		currentAndParentFolderItems
-	);
 
-	const currentPage = tree.find((item) => item.slug === slug);
-
-	const currentPageHasNoChildren =
-		!currentPage?.childLinks || currentPage?.childLinks.length === 0;
-
-	if (currentPage && currentPageHasNoChildren) {
-		const currentFolderSlug = isRootPage
-			? slug
-			: slug.split("/").slice(0, -1).join("/");
-
-		tree = await reUseFetchingLogic(
-			currentFolderSlug,
-			currentFolderItems,
-			currentPage.childLinks ?? []
-		);
-	}
-	return tree;
-};
 export const assignChildrenToParent = (
 	currentFolderItems: Link[],
 	parents: Link[]
@@ -110,4 +80,37 @@ export const fetchParentAndSiblingLinks = async (
 		currentAndParentFolderItems:
 			currentAndParentFolderItemsOrCurrentFolderItems,
 	};
+};
+
+export const buildTree = async (
+	parentID: number,
+	slug: string,
+	isRootPage: boolean | undefined
+): Promise<Link[]> => {
+	let tree: Link[] = [];
+	const { currentFolderItems, currentAndParentFolderItems } =
+		await fetchParentAndSiblingLinks(parentID, slug);
+	tree = assignChildrenToParent(
+		currentFolderItems,
+		currentAndParentFolderItems
+	);
+
+	const currentPage = tree.find((item) => item.slug === slug);
+
+	const currentPageHasNoChildren =
+		!currentPage?.childLinks || currentPage?.childLinks.length === 0;
+
+	if (currentPage && currentPageHasNoChildren) {
+		const currentFolderSlug = isRootPage
+			? slug
+			: slug.split("/").slice(0, -1).join("/");
+
+		tree = await reUseFetchingLogic(
+			currentFolderSlug,
+			currentFolderItems,
+			currentPage.childLinks ?? []
+		);
+	}
+
+	return tree;
 };
