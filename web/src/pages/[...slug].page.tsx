@@ -216,7 +216,6 @@ export async function getServerSideProps(context: GetServerSidePropsContext) {
 		const isRootPage = storyResult.story?.is_startpage;
 
 		const component = storyResult.story?.content?.component;
-		let currentPageNoChildrenTree: Link[] = [];
 		let tree: Link[] = [];
 
 		if (component === "infoPage") {
