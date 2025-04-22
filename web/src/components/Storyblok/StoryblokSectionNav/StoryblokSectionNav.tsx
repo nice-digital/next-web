@@ -25,8 +25,7 @@ export const StoryblokSectionNav = ({
 	slug,
 }: StoryblokSectionNavProps): JSX.Element => {
 	const sectionNavLabel = tree[0];
-	const sectionNavTreeWithoutLabel =
-		tree?.length > 0 ? tree.slice(1) : [];
+	const sectionNavTreeWithoutLabel = tree?.length > 0 ? tree.slice(1) : [];
 	return (
 		<>
 			<StackedNav

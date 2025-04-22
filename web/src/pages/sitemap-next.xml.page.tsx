@@ -40,7 +40,6 @@ export async function getServerSideProps({ res }: { res: NextApiResponse }) {
 		starts_with: "news",
 	};
 	const links = await fetchLinks(sbParams);
-	// const links = await fetchLinks("published", "news");
 	const sitemap = generateSiteMap(links);
 	res.setHeader("Content-Type", "text/xml");
 	res.write(sitemap);

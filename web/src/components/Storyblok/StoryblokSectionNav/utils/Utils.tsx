@@ -10,7 +10,6 @@ type Link = {
 	is_startpage: boolean;
 };
 
-
 export const assignChildrenToParent = (
 	currentFolderItems: Link[],
 	parents: Link[]

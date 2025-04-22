@@ -93,13 +93,7 @@ export default function SlugCatchAll(
 		return <ErrorPageContent title="Error" heading={error} />;
 	}
 
-	const {
-		story: storyData,
-		breadcrumbs,
-		component,
-		tree,
-		slug,
-	} = props;
+	const { story: storyData, breadcrumbs, component, tree, slug } = props;
 
 	const commonComponents = {
 		cardGrid: BasicCardGrid,

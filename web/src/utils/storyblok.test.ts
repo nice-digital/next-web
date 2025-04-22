@@ -478,7 +478,11 @@ describe("Storyblok utils", () => {
 			getStoryblokApi().getAll = jest
 				.fn()
 				.mockResolvedValue(MockLinksSuccessResponse);
-			await fetchLinks({ version: "draft", per_page: 300, starts_with: "news/podcasts" });
+			await fetchLinks({
+				version: "draft",
+				per_page: 300,
+				starts_with: "news/podcasts",
+			});
 
 			expect(getStoryblokApi().getAll).toHaveBeenCalled();
 			expect(getStoryblokApi().getAll).toHaveBeenCalledOnce();

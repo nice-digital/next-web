@@ -286,14 +286,13 @@ export const fetchLinks = async (
 		...sbParams,
 	};
 
-	// if (startsWith) {
-	// 	sbParams.starts_with = startsWith;
-	// }
-
 	let result = null;
 
 	try {
-		const links: SBLink[] = await storyblokApi.getAll("cdn/links", finalParams as ISbStoriesParams);
+		const links: SBLink[] = await storyblokApi.getAll(
+			"cdn/links",
+			finalParams as ISbStoriesParams
+		);
 		result = links;
 	} catch (e) {
 		const result = JSON.parse(e as string) as ISbError;

@@ -1,9 +1,8 @@
 import { render, screen } from "@testing-library/react";
 
-import { StoryblokSectionNav } from "./StoryblokSectionNav";
 import mockData from "@/mockData/storyblok/sectionNavData.json";
 
-// Example mock data for the StoryblokSectionNav component
+import { StoryblokSectionNav } from "./StoryblokSectionNav";
 
 describe("StoryblokSectionNav", () => {
 	it("should render the parent and child links correctly", () => {
@@ -75,10 +74,7 @@ describe("StoryblokSectionNav", () => {
 	});
 	it("should highlight the current  link based on the slug", () => {
 		render(
-			<StoryblokSectionNav
-				tree={mockData.topLevelTree}
-				slug={"contact-us"}
-			/>
+			<StoryblokSectionNav tree={mockData.topLevelTree} slug={"contact-us"} />
 		);
 
 		const link = screen.getByRole("link", { name: /Contact us/i });
