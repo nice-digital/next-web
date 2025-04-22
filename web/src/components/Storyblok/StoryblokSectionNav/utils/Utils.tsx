@@ -87,10 +87,8 @@ export const buildTree = async (
 ): Promise<ExtendedSBLink[]> => {
 	let tree: ExtendedSBLink[] = [];
 	const currentFolderItems = await getCurrentFolderItems(parentID);
-	const { currentAndParentFolderItems } = await fetchCurrentAndParentFolderItems(
-		parentID,
-		slug
-	);
+	const { currentAndParentFolderItems } =
+		await fetchCurrentAndParentFolderItems(parentID, slug);
 	tree = assignChildrenToParent(
 		currentFolderItems,
 		currentAndParentFolderItems
