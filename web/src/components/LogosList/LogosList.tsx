@@ -18,15 +18,15 @@ export const LogosList: FC<LogosListProps> = ({
 	logoType,
 }) => {
 	return logosList && logosList.length > 0 ? (
-		<div className={styles.div}>
+		<div className={styles.logoContainer}>
 			{logosList.map((item, index) => (
-				<span key={index} className={styles.span}>
+				<span key={index} className={styles.logoHolder}>
 					<Image
 						src={`/api/indicators/${productId}/${logoType}/${slugify(
 							item.name
 						)}`}
 						alt={item.name}
-						className={styles.img}
+						className={styles.logo}
 						width={0}
 						height={0}
 						unoptimized
