@@ -30,7 +30,7 @@ export const initStoryblok = (): void => {
 	} catch (error) {
 		logger.error(
 			{
-				ocelotEndpoint: endpoint,
+				ocelotEndpointV2: endpoint,
 				usingOcelotCache,
 				error,
 			},
