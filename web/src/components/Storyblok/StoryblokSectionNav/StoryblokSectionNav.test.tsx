@@ -9,9 +9,7 @@ describe("StoryblokSectionNav", () => {
 		render(<StoryblokSectionNav tree={mockData.tree} slug={mockData.slug} />);
 
 		// Check if the parent link is rendered
-		const parentLink = screen.getByText(
-			"Cost saving, resource planning and audit"
-		);
+		const parentLink = screen.getByText("Implementing NICE guidance");
 		expect(parentLink).toBeInTheDocument();
 		expect(parentLink).toHaveClass(
 			"stacked-nav__root stacked-nav__root--no-link"
@@ -21,9 +19,7 @@ describe("StoryblokSectionNav", () => {
 		render(<StoryblokSectionNav tree={[]} slug={mockData.slug} />);
 
 		// Check if the parent link is rendered
-		const parentLink = screen.queryByText(
-			"Cost saving, resource planning and audit"
-		);
+		const parentLink = screen.queryByText("Implementing NICE guidance");
 		expect(parentLink).not.toBeInTheDocument();
 	});
 	it("should render the current level and level above it correctly when there are no children", () => {
