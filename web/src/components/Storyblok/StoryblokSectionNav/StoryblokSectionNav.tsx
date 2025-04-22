@@ -27,15 +27,18 @@ export const StoryblokSectionNav = ({
 						destination={parent.real_path}
 						key={parent.id}
 						isCurrent={parent.slug === slug ? true : false}
-						nested={parent.childLinks?.map((child: ExtendedSBLink) => (
-							<StackedNavLink
+						nested={parent.childLinks?.length ? (
+							parent.childLinks?.map((child: ExtendedSBLink) => (
+								<StackedNavLink
 								destination={child.real_path}
-								key={child.id}
-								isCurrent={child.slug === slug ? true : false}
-							>
-								{child.name}
-							</StackedNavLink>
-						))}
+									key={child.id}
+									isCurrent={child.slug === slug ? true : false}
+								>
+									{child.name}
+								</StackedNavLink>
+							))
+						) : undefined
+					}
 					>
 						{parent.name}
 					</StackedNavLink>
