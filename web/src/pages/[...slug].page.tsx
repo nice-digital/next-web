@@ -61,7 +61,6 @@ export type SlugCatchAllSuccessProps = {
 	breadcrumbs: Breadcrumb[];
 	component: string;
 	tree: Link[];
-	currentPageNoChildrenTree: Link[];
 	slug: string;
 };
 
@@ -99,7 +98,6 @@ export default function SlugCatchAll(
 		breadcrumbs,
 		component,
 		tree,
-		currentPageNoChildrenTree,
 		slug,
 	} = props;
 
@@ -161,7 +159,6 @@ export default function SlugCatchAll(
 				blok={storyData.content}
 				breadcrumbs={breadcrumbs}
 				tree={tree}
-				currentPageNoChildrenTree={currentPageNoChildrenTree}
 				slug={slug}
 			/>
 		</>
