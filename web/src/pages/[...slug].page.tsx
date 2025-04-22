@@ -25,7 +25,10 @@ import { StoryblokCalloutCard } from "@/components/Storyblok/StoryblokCalloutCar
 import { StoryblokHero } from "@/components/Storyblok/StoryblokHero/StoryblokHero";
 import { StoryblokIframe } from "@/components/Storyblok/StoryblokIframe/StoryblokIframe";
 import { StoryblokPageHeader } from "@/components/Storyblok/StoryblokPageHeader/StoryblokPageHeader";
-import { buildTree } from "@/components/Storyblok/StoryblokSectionNav/utils/Utils";
+import {
+	buildTree,
+	type ExtendedSBLink,
+} from "@/components/Storyblok/StoryblokSectionNav/utils/Utils";
 import { StoryblokTable } from "@/components/Storyblok/StoryblokTable/StoryblokTable";
 import { StoryblokTestimonialFullWidth } from "@/components/Storyblok/StoryblokTestimonialFullWidth/StoryblokTestimonialFullWidth";
 import { StoryblokTestimonialGridItem } from "@/components/Storyblok/StoryblokTestimonialGridItem/StoryblokTestimonialGridItem";
@@ -48,19 +51,11 @@ import {
 
 import type { GetServerSidePropsContext } from "next";
 
-type Link = {
-	childLinks?: Link[];
-	id: number;
-	slug: string;
-	parent_id: number;
-	is_folder: boolean;
-	is_startpage: boolean;
-};
 export type SlugCatchAllSuccessProps = {
 	story: ISbStoryData<InfoPageStoryblok | CategoryNavigationStoryblok>;
 	breadcrumbs: Breadcrumb[];
 	component: string;
-	tree: Link[];
+	tree: ExtendedSBLink[];
 	slug: string;
 };
 
@@ -203,7 +198,7 @@ export async function getServerSideProps(context: GetServerSidePropsContext) {
 		const isRootPage = storyResult.story?.is_startpage;
 
 		const component = storyResult.story?.content?.component;
-		let tree: Link[] = [];
+		let tree: ExtendedSBLink[] = [];
 
 		if (component === "infoPage") {
 			tree = await buildTree(parentID, slug, isRootPage);

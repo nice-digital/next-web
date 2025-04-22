@@ -1,19 +1,15 @@
 import { SBLink } from "@/types/SBLink";
 import { fetchLinks } from "@/utils/storyblok";
 
-type Link = {
-	childLinks?: Link[];
-	id: number;
-	slug: string;
-	parent_id: number;
-	is_folder: boolean;
-	is_startpage: boolean;
+export type ExtendedSBLink = SBLink & {
+	childLinks?: ExtendedSBLink[];
+};
 };
 
 export const assignChildrenToParent = (
-	currentFolderItems: Link[],
-	parents: Link[]
-): Link[] => {
+	currentFolderItems: ExtendedSBLink[],
+	parents: ExtendedSBLink[]
+): ExtendedSBLink[] => {
 	for (const parent of parents) {
 		const children = currentFolderItems.filter(
 			(childLink) =>
@@ -27,20 +23,20 @@ export const assignChildrenToParent = (
 
 export const reUseFetchingLogic = async (
 	slug: string,
-	currentFolderItems: Link[],
-	children?: Link[]
-): Promise<Link[]> => {
+	children?: ExtendedSBLink[]
+): Promise<ExtendedSBLink[]> => {
 	// Get all items starting with the current folder slug - this is the only way to access the folder object
 	const startsWithCurrentFolderSlugItems = await fetchLinks({
 		starts_with: slug,
 	});
 
 	// Get currentFolder object so we can access its parent_id
-	const currentFolder: Link | undefined = startsWithCurrentFolderSlugItems.find(
-		(item: Link) => item.is_folder && item.slug === slug
+	const currentFolder: ExtendedSBLink | undefined =
+		startsWithCurrentFolderSlugItems.find(
+			(item: ExtendedSBLink) => item.is_folder && item.slug === slug
 	);
 
-	let tree: Link[] = [];
+	let tree: ExtendedSBLink[] = [];
 
 	// If no current folder found or current folder has no parent_id, return the currentFolderItems
 	if (!currentFolder || !currentFolder.parent_id) return currentFolderItems;
@@ -63,8 +59,7 @@ export const fetchParentAndSiblingLinks = async (
 	parentID: number,
 	slug: string
 ): Promise<{
-	currentFolderItems: SBLink[];
-	currentAndParentFolderItems: Link[];
+	currentAndParentFolderItems: ExtendedSBLink[];
 }> => {
 	// Get all items in current folder (current page and its siblings or, if current page is a root page, current page and its children)
 	const currentFolderItems: SBLink[] = await fetchLinks({
@@ -85,10 +80,8 @@ export const buildTree = async (
 	parentID: number,
 	slug: string,
 	isRootPage: boolean | undefined
-): Promise<Link[]> => {
-	let tree: Link[] = [];
-	const { currentFolderItems, currentAndParentFolderItems } =
-		await fetchParentAndSiblingLinks(parentID, slug);
+): Promise<ExtendedSBLink[]> => {
+	let tree: ExtendedSBLink[] = [];
 	tree = assignChildrenToParent(
 		currentFolderItems,
 		currentAndParentFolderItems

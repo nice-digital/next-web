@@ -3,20 +3,10 @@ import React from "react";
 import { StackedNav, StackedNavLink } from "@nice-digital/nds-stacked-nav";
 
 import styles from "./StoryblokSectionNav.module.scss";
-
-type Link = {
-	id: number;
-	slug: string;
-	parent_id: number;
-	name: string;
-	is_folder: boolean;
-	is_startpage: boolean;
-	real_path: string;
-	childLinks?: Link[];
-};
+import { type ExtendedSBLink } from "./utils/Utils";
 
 type StoryblokSectionNavProps = {
-	tree: Link[];
+	tree: ExtendedSBLink[];
 	slug: string;
 };
 
@@ -37,7 +27,7 @@ export const StoryblokSectionNav = ({
 						destination={parent.real_path}
 						key={parent.id}
 						isCurrent={parent.slug === slug ? true : false}
-						nested={parent.childLinks?.map((child: Link) => (
+						nested={parent.childLinks?.map((child: ExtendedSBLink) => (
 							<StackedNavLink
 								destination={child.real_path}
 								key={child.id}

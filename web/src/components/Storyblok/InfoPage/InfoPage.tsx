@@ -3,28 +3,17 @@ import { StoryblokComponent } from "@storyblok/react";
 import { Grid, GridItem } from "@nice-digital/nds-grid";
 
 import { StoryblokRichText } from "@/components/Storyblok/StoryblokRichText/StoryblokRichText";
+import { StoryblokSectionNav } from "@/components/Storyblok/StoryblokSectionNav/StoryblokSectionNav";
+import { type ExtendedSBLink } from "@/components/Storyblok/StoryblokSectionNav/utils/Utils";
 import { type Breadcrumb } from "@/types/Breadcrumb";
 import { type InfoPageStoryblok } from "@/types/storyblok";
 
-import { StoryblokSectionNav } from "../StoryblokSectionNav/StoryblokSectionNav";
-
 import styles from "./InfoPage.module.scss";
-
-type Link = {
-	id: number;
-	slug: string;
-	parent_id: number;
-	name: string;
-	is_folder: boolean;
-	is_startpage: boolean;
-	real_path: string;
-	childLinks?: Link[];
-};
 
 interface InfoPageBlokProps {
 	blok: InfoPageStoryblok;
 	breadcrumbs?: Breadcrumb[];
-	tree: Link[];
+	tree: ExtendedSBLink[];
 	slug: string;
 }
 
