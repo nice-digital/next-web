@@ -22,13 +22,6 @@ describe("Endorsing bodies", () => {
 					url: "",
 				},
 			},
-			{
-				name: "Royal College of General Practitioners (RCGP)",
-				url: "https://www.rcgp.org.uk",
-				logo: {
-					url: "",
-				},
-			},
 		],
 		productTypeName: "Public health guideline",
 	};
