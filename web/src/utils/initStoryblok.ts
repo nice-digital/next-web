@@ -6,7 +6,7 @@ import { logger } from "@/logger";
 // Init connection to Storyblok
 export const initStoryblok = (): void => {
 	const accessToken = publicRuntimeConfig.storyblok.accessToken;
-	const endpoint = publicRuntimeConfig.storyblok.ocelotEndpoint;
+	const endpoint = publicRuntimeConfig.storyblok.ocelotEndpointV2;
 	const usingOcelotCache = !!endpoint;
 
 	try {
