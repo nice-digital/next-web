@@ -3,18 +3,18 @@ import { GetServerSidePropsContext } from "next";
 
 import { FormProps } from "@/components/JotFormPage/getGetServerSideProps";
 
-import TopicSuggestionForm, {
+import HealthTechnologyAssessmentTrainingRegistrationForm, {
 	getServerSideProps,
-} from "./topic-suggestion.page";
+} from "./nice-health-technology-assessment-training-registration.page";
 
 jest.mock("@/feeds/jotform/jotform", () => ({
 	getForm: jest.fn().mockResolvedValue({
 		responseCode: 200,
 		message: "success",
 		content: {
-			id: "243234023965959",
+			id: "242762670883062",
 			username: "nice_teams",
-			title: "Topic suggestion",
+			title: "NICE Health Technology Assessment training registration",
 			height: "539",
 			status: "ENABLED",
 			created_at: "2022-12-08 06:31:44",
@@ -25,19 +25,22 @@ jest.mock("@/feeds/jotform/jotform", () => ({
 			type: "LEGACY",
 			favorite: "0",
 			archived: "0",
-			url: "https://nice.jotform.com/243234023965959",
+			url: "https://nice.jotform.com/242762670883062",
 		},
 		duration: "14.98ms",
 	}),
 }));
 
-describe("TopicSuggestionForm", () => {
+describe("HealthTechnologyAssessmentTrainingRegistrationForm", () => {
 	it("should match snapshot", async () => {
 		const props = (await getServerSideProps({
-			resolvedUrl: "/forms/topic-suggestion",
+			resolvedUrl:
+				"/forms/nice-health-technology-assessment-training-registration",
 		} as GetServerSidePropsContext)) as { props: FormProps };
 
-		const { container } = render(<TopicSuggestionForm {...props.props} />);
+		const { container } = render(
+			<HealthTechnologyAssessmentTrainingRegistrationForm {...props.props} />
+		);
 
 		expect(container).toMatchSnapshot();
 	});
