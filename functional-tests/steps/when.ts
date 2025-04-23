@@ -77,3 +77,8 @@ When(/^I click on the podcasts tab$/, clickPodcastsTab);
 When(/^I click on the home news link$/, clickNewslink);
 
 When(/^I can click on the Sign in link$/, clickSignInButton);
+
+When("I scroll to pagination element", async () => {
+	const elem = await $(".pagination__item:nth-child(1)");
+	await elem.scrollIntoView();
+});
