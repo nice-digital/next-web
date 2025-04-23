@@ -8,7 +8,7 @@ Feature: Users can page through the list of published guidance page
 
 	Scenario: User can page through the list of indicators
     Given I open the published guidance list page
-    When I scroll to element ".pagination__item:nth-child(1)"
+    When I scroll to pagination element
     Then I expect the first pagination option is "1"
     When I click the second pagination option
 		Then I expect the first pagination option is "Previous page"
