@@ -1,92 +1,132 @@
+// https://api.storyblok.com/v2/cdn/stories/unit-test-data/category-landing-with-hero?version=published&token=ALPHA_PUBLIC&resolve_links=url
 {
   "story": {
-    "name": "Category landing with hero",
-    "created_at": "2024-10-09T12:58:27.488Z",
-    "published_at": "2024-10-09T12:59:54.573Z",
-    "id": 560642123,
-    "uuid": "d6f8ad6b-57e8-4c87-852e-8d4b443307ed",
-    "content": {
-      "_uid": "dc43c509-6421-48b7-8dc7-2e4ddd858af3",
-      "header": [
-        {
-          "cta": [
-            {
-              "_uid": "509d31e1-8d73-4535-b29b-1e399ed50278",
-              "link": {
-                "id": "7abc28f6-a5d1-4274-8c32-ab5a9a04d085",
-                "url": "",
-                "linktype": "story",
-                "fieldtype": "multilink",
-                "cached_url": "committee-b-members-2",
-                "story": {
-                  "name": "Committee B members 2",
-                  "id": 558818376,
-                  "uuid": "7abc28f6-a5d1-4274-8c32-ab5a9a04d085",
-                  "slug": "committee-b-members-2",
-                  "url": "committee-b-members-2",
-                  "full_slug": "committee-b-members-2",
-                  "_stopResolving": true
-                }
-              },
-              "text": "test hero cta",
-              "variant": "cta",
-              "component": "buttonLink"
-            }
+      "name": "Category landing with hero",
+      "created_at": "2024-10-09T12:58:27.488Z",
+      "published_at": "2025-04-23T15:32:09.400Z",
+      "updated_at": "2025-04-23T15:32:09.414Z",
+      "id": 560642123,
+      "uuid": "d6f8ad6b-57e8-4c87-852e-8d4b443307ed",
+      "content": {
+          "_uid": "dc43c509-6421-48b7-8dc7-2e4ddd858af3",
+          "header": [
+              {
+                  "cta": [
+                      {
+                          "_uid": "509d31e1-8d73-4535-b29b-1e399ed50278",
+                          "link": {
+                              "id": "7abc28f6-a5d1-4274-8c32-ab5a9a04d085",
+                              "url": "",
+                              "linktype": "story",
+                              "fieldtype": "multilink",
+                              "cached_url": "committee-b-members-2"
+                          },
+                          "text": "test hero cta",
+                          "variant": "cta",
+                          "component": "buttonLink"
+                      }
+                  ],
+                  "_uid": "e97b2b2b-7326-4336-a6c1-cfbe41e6b9e3",
+                  "image": {
+                      "id": 16871730,
+                      "alt": "",
+                      "name": "",
+                      "focus": "",
+                      "title": "",
+                      "source": "",
+                      "filename": "https://a.storyblok.com/f/292509/291x164/db85746a8b/ai.PNG",
+                      "copyright": "",
+                      "fieldtype": "asset",
+                      "meta_data": {},
+                      "is_external_url": false
+                  },
+                  "title": "test hero section in cat landing",
+                  "ctaLink": {
+                      "id": "",
+                      "url": "",
+                      "linktype": "story",
+                      "fieldtype": "multilink",
+                      "cached_url": ""
+                  },
+                  "ctaText": "",
+                  "summary": "test hero summary in cat landing",
+                  "component": "hero",
+                  "description": "test hero description in cat landing"
+              }
           ],
-          "_uid": "e97b2b2b-7326-4336-a6c1-cfbe41e6b9e3",
-          "image": {
-            "id": 16871730,
-            "alt": "",
-            "name": "",
-            "focus": "",
-            "title": "",
-            "source": "",
-            "filename": "https://a.storyblok.com/f/292509/291x164/db85746a8b/ai.PNG",
-            "copyright": "",
-            "fieldtype": "asset",
-            "meta_data": {},
-            "is_external_url": false
-          },
-          "title": "test hero section in cat landing",
-          "ctaLink": {
-            "id": "",
-            "url": "",
-            "linktype": "story",
-            "fieldtype": "multilink",
-            "cached_url": ""
-          },
-          "ctaText": "",
-          "summary": "test hero summary in cat landing",
-          "component": "hero",
-          "description": "test hero description in cat landing"
-        }
-      ],
-      "content": [],
-      "metadata": [
-        {
-          "_uid": "ca726db2-96f7-4f59-85de-cd2c28f73e60",
-          "creator": "NICE",
-          "component": "metadata",
-          "description": "test hero with cat landing page"
-        }
-      ],
-      "component": "categoryLandingPage"
-    },
-    "slug": "category-landing-with-hero",
-    "full_slug": "test-category-landing/category-landing-with-hero",
-    "sort_by_date": null,
-    "position": -30,
-    "tag_list": [],
-    "is_startpage": false,
-    "parent_id": 560613884,
-    "meta_data": null,
-    "group_id": "ada70938-8d87-43e4-8535-6ac75cd8c9e1",
-    "first_published_at": "2024-10-09T12:59:54.573Z",
-    "release_id": null,
-    "lang": "default",
-    "path": null,
-    "alternates": [],
-    "default_full_slug": null,
-    "translated_slugs": null
-  }
+          "content": [
+              {
+                  "_uid": "788f2191-5856-4545-a9e0-f86ee1d174b7",
+                  "lead": {
+                      "type": "doc",
+                      "content": [
+                          {
+                              "type": "paragraph",
+                              "content": [
+                                  {
+                                      "text": "Some test lead content ",
+                                      "type": "text"
+                                  }
+                              ]
+                          }
+                      ]
+                  },
+                  "theme": "subtle",
+                  "content": [
+                      {
+                          "_uid": "43e02c21-ac4d-43ac-aae6-0d99e10d7596",
+                          "cards": [
+                              {
+                                  "_uid": "08a93692-5c6b-4e8c-b002-119fa25c9698",
+                                  "body": "Test card body",
+                                  "link": {
+                                      "id": "7abc28f6-a5d1-4274-8c32-ab5a9a04d085",
+                                      "url": "",
+                                      "linktype": "story",
+                                      "fieldtype": "multilink",
+                                      "cached_url": "committee-b-members-2"
+                                  },
+                                  "heading": "Test card heading",
+                                  "component": "card"
+                              }
+                          ],
+                          "component": "cardGrid"
+                      }
+                  ],
+                  "heading": "Test full width section heading",
+                  "component": "gridSection",
+                  "showHeading": true,
+                  "verticalPadding": ""
+              }
+          ],
+          "metadata": [
+              {
+                  "_uid": "ca726db2-96f7-4f59-85de-cd2c28f73e60",
+                  "creator": "NICE",
+                  "component": "metadata",
+                  "description": "test hero with cat landing page"
+              }
+          ],
+          "component": "categoryLandingPage"
+      },
+      "slug": "category-landing-with-hero",
+      "full_slug": "unit-test-data/category-landing-with-hero",
+      "sort_by_date": null,
+      "position": 10,
+      "tag_list": [],
+      "is_startpage": false,
+      "parent_id": 659520607,
+      "meta_data": null,
+      "group_id": "ada70938-8d87-43e4-8535-6ac75cd8c9e1",
+      "first_published_at": "2024-10-09T12:59:54.573Z",
+      "release_id": null,
+      "lang": "default",
+      "path": "",
+      "alternates": [],
+      "default_full_slug": null,
+      "translated_slugs": null
+  },
+  "cv": 1745422329,
+  "rels": [],
+  "links": []
 }
