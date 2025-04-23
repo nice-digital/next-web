@@ -494,15 +494,16 @@ exports[`/indicators/[slug].page IndicatorDetailPage should match snapshot for m
             This guideline updates and replaces NICE guideline CG79 (February 2009).
           </p>
         </div>
-        <div
-          class="div"
+        <ul
+          class="grid"
         >
-          <span
-            class="span"
+          <li
+            data-component="grid-item"
+            data-g="6 lg:4"
           >
             <img
               alt="British Association of Dermatologists (BAD)"
-              class="img"
+              class="logo"
               data-nimg="1"
               decoding="async"
               height="0"
@@ -511,13 +512,14 @@ exports[`/indicators/[slug].page IndicatorDetailPage should match snapshot for m
               style="color: transparent;"
               width="0"
             />
-          </span>
-          <span
-            class="span"
+          </li>
+          <li
+            data-component="grid-item"
+            data-g="6 lg:4"
           >
             <img
               alt="British Thoracic Society (BTS)"
-              class="img"
+              class="logo"
               data-nimg="1"
               decoding="async"
               height="0"
@@ -526,13 +528,14 @@ exports[`/indicators/[slug].page IndicatorDetailPage should match snapshot for m
               style="color: transparent;"
               width="0"
             />
-          </span>
-          <span
-            class="span"
+          </li>
+          <li
+            data-component="grid-item"
+            data-g="6 lg:4"
           >
             <img
               alt="Royal College of General Practitioners (RCGP)"
-              class="img"
+              class="logo"
               data-nimg="1"
               decoding="async"
               height="0"
@@ -541,17 +544,18 @@ exports[`/indicators/[slug].page IndicatorDetailPage should match snapshot for m
               style="color: transparent;"
               width="0"
             />
-          </span>
-        </div>
-        <div
-          class="div"
+          </li>
+        </ul>
+        <ul
+          class="grid"
         >
-          <span
-            class="span"
+          <li
+            data-component="grid-item"
+            data-g="6 lg:4"
           >
             <img
               alt="National Institute for Health and Care Excellence (NICE)"
-              class="img"
+              class="logo"
               data-nimg="1"
               decoding="async"
               height="0"
@@ -560,8 +564,8 @@ exports[`/indicators/[slug].page IndicatorDetailPage should match snapshot for m
               style="color: transparent;"
               width="0"
             />
-          </span>
-        </div>
+          </li>
+        </ul>
         <div
           class="prev-next"
         >

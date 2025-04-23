@@ -14,20 +14,6 @@ describe("Author Logos", () => {
 					url: "/organisation/NICEORG064/Logo/Normal",
 				},
 			},
-			{
-				name: "Test Logo2",
-				url: "https://www.example2.org.uk",
-				logo: {
-					url: "/organisation/NICEORG083/Logo/Normal",
-				},
-			},
-			{
-				name: "Test Logo3",
-				url: "https://www.example3.org.uk",
-				logo: {
-					url: "/organisation/NICEORG170/Logo/Normal",
-				},
-			},
 		],
 		productId: "PR1",
 		logoType: "author",
