@@ -191,11 +191,9 @@ export const validateRouteParams = async <T>({
 	} else {
 		page = Number(query.page) || 1;
 	}
-	const cacheVersion = await fetchCacheVersion();
 	const requestParams: ISbStoriesParams = {
 		...sbParams,
 		page,
-		cv: cacheVersion,
 		sort_by: "content.date:desc",
 		filter_query: {
 			date: {

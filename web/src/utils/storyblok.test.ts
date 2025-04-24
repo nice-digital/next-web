@@ -647,8 +647,6 @@ describe("Storyblok utils", () => {
 	});
 
 	describe("validateRouteParams", () => {
-		const mockCv = 123456789;
-		jest.spyOn(storyblokUtils, "fetchCacheVersion").mockResolvedValue(mockCv);
 		const mockRequestParams = {
 			query: {},
 			resolvedUrl: "/news/articles",
@@ -656,7 +654,6 @@ describe("Storyblok utils", () => {
 				starts_with: "news/articles/",
 				per_page: 8,
 			},
-			cv: mockCv,
 		};
 
 		let expectedParams: ISbStoriesParams;
@@ -672,7 +669,6 @@ describe("Storyblok utils", () => {
 			expectedParams = {
 				page: 1,
 				sort_by: "content.date:desc",
-				cv: mockCv,
 				...mockRequestParams.sbParams,
 				filter_query: {
 					date: {
