@@ -1,4 +1,3 @@
-// https://api.storyblok.com/v2/cdn/stories/unit-test-data/test-category-landing?version=published&token=ALPHA_PUBLIC&resolve_links=url
 {
   "story": {
       "name": "category landing",

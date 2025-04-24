@@ -1,4 +1,3 @@
-// https://api.storyblok.com/v2/cdn/stories/unit-test-data/category-landing-with-hero?version=published&token=ALPHA_PUBLIC&resolve_links=url
 {
   "story": {
       "name": "Category landing with hero",
