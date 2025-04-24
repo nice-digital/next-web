@@ -90,7 +90,7 @@ export const fetchStory = async <T>(
 	);
 
 	const storyblokApi = getStoryblokApi();
-	const cacheVersion= await fetchCacheVersion();
+	const cacheVersion = await fetchCacheVersion();
 	const sbParams: ISbStoriesParams = {
 		version,
 		resolve_links: "url",
@@ -191,7 +191,7 @@ export const validateRouteParams = async <T>({
 	} else {
 		page = Number(query.page) || 1;
 	}
-	const cacheVersion= await fetchCacheVersion();
+	const cacheVersion = await fetchCacheVersion();
 	const requestParams: ISbStoriesParams = {
 		...sbParams,
 		page,
@@ -263,7 +263,7 @@ export const fetchStories = async <T>(
 	params: ISbStoriesParams = {}
 ): Promise<SBMultipleResponse<T>> => {
 	const storyblokApi = getStoryblokApi();
-	const cacheVersion= await fetchCacheVersion();
+	const cacheVersion = await fetchCacheVersion();
 	const sbParams: ISbStoriesParams = {
 		version,
 		resolve_links: "url",
@@ -303,7 +303,7 @@ export const fetchLinks = async (
 	startsWith?: string
 ): Promise<SBLink[]> => {
 	const storyblokApi = getStoryblokApi();
-	const cacheVersion= await fetchCacheVersion();
+	const cacheVersion = await fetchCacheVersion();
 	const sbParams: ISbStoriesParams = {
 		version: version || "published",
 		cv: cacheVersion,
