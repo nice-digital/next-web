@@ -242,6 +242,8 @@ describe("Storyblok utils", () => {
 
 	describe("fetchStory", () => {
 		it("should call the storyblokApi.get method with the correct params", async () => {
+			const mockCv = 123456789;
+			jest.spyOn(storyblokUtils, "fetchCacheVersion").mockResolvedValue(mockCv);
 			getStoryblokApi().get = jest
 				.fn()
 				.mockResolvedValue(MockSingleStorySuccessResponse);
@@ -256,6 +258,7 @@ describe("Storyblok utils", () => {
 				{
 					resolve_links: "url",
 					version: "draft",
+					cv: mockCv,
 				}
 			);
 		});
@@ -336,6 +339,8 @@ describe("Storyblok utils", () => {
 
 	describe("fetchStories", () => {
 		it("should call the Storyblok.get method with the correct params", async () => {
+			const mockCv = 123456789;
+			jest.spyOn(storyblokUtils, "fetchCacheVersion").mockResolvedValue(mockCv);
 			getStoryblokApi().get = jest
 				.fn()
 				.mockResolvedValue(MockMultipleStorySuccessResponse);
@@ -343,6 +348,7 @@ describe("Storyblok utils", () => {
 			await fetchStories("published", {
 				starts_with: "news/articles",
 				per_page: 6,
+				cv: mockCv,
 			});
 
 			expect(getStoryblokApi().get).toHaveBeenCalled();
@@ -353,6 +359,7 @@ describe("Storyblok utils", () => {
 				version: "published",
 				starts_with: "news/articles",
 				per_page: 6,
+				cv: mockCv,
 			});
 		});
 
@@ -459,6 +466,8 @@ describe("Storyblok utils", () => {
 
 	describe("fetchLinks", () => {
 		it("should call the storyblokApi.getAll method with the correct params", async () => {
+			const mockCv = 123456789;
+			jest.spyOn(storyblokUtils, "fetchCacheVersion").mockResolvedValue(mockCv);
 			getStoryblokApi().getAll = jest
 				.fn()
 				.mockResolvedValue(MockLinksSuccessResponse);
@@ -471,6 +480,7 @@ describe("Storyblok utils", () => {
 			expect(getStoryblokApi().getAll).toHaveBeenCalledWith("cdn/links", {
 				version: "published",
 				starts_with: "news/podcasts",
+				cv: mockCv,
 			});
 		});
 
@@ -535,6 +545,8 @@ describe("Storyblok utils", () => {
 
 	describe("getBreadcrumbs", () => {
 		it("should fetch links with correct params", async () => {
+			const mockCv = 123456789;
+			jest.spyOn(storyblokUtils, "fetchCacheVersion").mockResolvedValue(mockCv);
 			const fetchLinksSpy = jest.spyOn(storyblokUtils, "fetchLinks");
 
 			getStoryblokApi().getAll = jest
@@ -550,6 +562,7 @@ describe("Storyblok utils", () => {
 			expect(getStoryblokApi().getAll).toHaveBeenCalledWith("cdn/links", {
 				version: "published",
 				starts_with: "news",
+				cv: mockCv,
 			});
 		});
 
@@ -634,6 +647,8 @@ describe("Storyblok utils", () => {
 	});
 
 	describe("validateRouteParams", () => {
+		const mockCv = 123456789;
+		jest.spyOn(storyblokUtils, "fetchCacheVersion").mockResolvedValue(mockCv);
 		const mockRequestParams = {
 			query: {},
 			resolvedUrl: "/news/articles",
@@ -641,6 +656,7 @@ describe("Storyblok utils", () => {
 				starts_with: "news/articles/",
 				per_page: 8,
 			},
+			cv: mockCv,
 		};
 
 		let expectedParams: ISbStoriesParams;
@@ -656,6 +672,7 @@ describe("Storyblok utils", () => {
 			expectedParams = {
 				page: 1,
 				sort_by: "content.date:desc",
+				cv: mockCv,
 				...mockRequestParams.sbParams,
 				filter_query: {
 					date: {
