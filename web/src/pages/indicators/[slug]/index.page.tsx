@@ -212,9 +212,7 @@ export default function IndicatorsDetailsPage({
 						</GridItem>
 
 						{hasRelatedProduct ? (
-							<GridItem cols={12} md={4}>
-								<RelatedProducts relatedProducts={relatedqs} />
-							</GridItem>
+							<RelatedProducts relatedProducts={relatedqs} />
 						) : null}
 
 						<GridItem cols={12}>
