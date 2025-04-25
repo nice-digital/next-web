@@ -458,18 +458,38 @@ describe("Storyblok utils", () => {
 	});
 
 	describe("fetchLinks", () => {
-		it("should call the storyblokApi.getAll method with the correct params", async () => {
+		it("should call the storyblokApi.getAll method with the correct params using defaults", async () => {
 			getStoryblokApi().getAll = jest
 				.fn()
 				.mockResolvedValue(MockLinksSuccessResponse);
-
-			await fetchLinks("published", "news/podcasts");
+			await fetchLinks({ starts_with: "news/podcasts" });
 
 			expect(getStoryblokApi().getAll).toHaveBeenCalled();
 			expect(getStoryblokApi().getAll).toHaveBeenCalledOnce();
 
 			expect(getStoryblokApi().getAll).toHaveBeenCalledWith("cdn/links", {
+				per_page: 1000,
 				version: "published",
+				starts_with: "news/podcasts",
+			});
+		});
+
+		it("should call the storyblokApi.getAll method with the correct params using overrides", async () => {
+			getStoryblokApi().getAll = jest
+				.fn()
+				.mockResolvedValue(MockLinksSuccessResponse);
+			await fetchLinks({
+				version: "draft",
+				per_page: 300,
+				starts_with: "news/podcasts",
+			});
+
+			expect(getStoryblokApi().getAll).toHaveBeenCalled();
+			expect(getStoryblokApi().getAll).toHaveBeenCalledOnce();
+
+			expect(getStoryblokApi().getAll).toHaveBeenCalledWith("cdn/links", {
+				per_page: 300,
+				version: "draft",
 				starts_with: "news/podcasts",
 			});
 		});
@@ -479,7 +499,9 @@ describe("Storyblok utils", () => {
 				.fn()
 				.mockResolvedValue(MockLinksSuccessResponse);
 
-			const result = await fetchLinks("published", "news/podcasts");
+			const result = await fetchLinks({
+				starts_with: "news/podcasts",
+			});
 
 			expect(result).toEqual(MockLinksSuccessResponse);
 		});
@@ -490,7 +512,9 @@ describe("Storyblok utils", () => {
 				.mockRejectedValue(JSON.stringify(Mock404FromStoryblokApi));
 
 			const throwErrorFetchLinks = async () => {
-				await fetchLinks("published", "news/podcasts");
+				await fetchLinks({
+					starts_with: "news/podcasts",
+				});
 			};
 
 			expect(throwErrorFetchLinks).rejects.toThrow(
@@ -515,7 +539,9 @@ describe("Storyblok utils", () => {
 				.mockRejectedValue(JSON.stringify(MockServerErrorResponse));
 
 			const throwErrorFetchLinks = async () => {
-				await fetchLinks("published", "news/podcasts");
+				await fetchLinks({
+					starts_with: "news/podcasts",
+				});
 			};
 
 			expect(throwErrorFetchLinks).rejects.toThrow(
@@ -544,10 +570,14 @@ describe("Storyblok utils", () => {
 			await getBreadcrumbs("news/podcasts/test-podcast-4", "published");
 
 			expect(fetchLinksSpy).toHaveBeenCalled();
-			expect(fetchLinksSpy).toHaveBeenCalledWith("published", "news");
+			expect(fetchLinksSpy).toHaveBeenCalledWith({
+				starts_with: "news",
+				version: "published",
+			});
 
 			expect(getStoryblokApi().getAll).toHaveBeenCalled();
 			expect(getStoryblokApi().getAll).toHaveBeenCalledWith("cdn/links", {
+				per_page: 1000,
 				version: "published",
 				starts_with: "news",
 			});
