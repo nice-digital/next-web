@@ -594,11 +594,13 @@ exports[`/indicators/[slug].page IndicatorDetailPage should match snapshot for m
               <h5>
                 Related quality standards
               </h5>
-              <a
-                href="/newfeeds/product/QS33"
-              >
-                Rheumatoid arthritis in over 16s
-              </a>
+              <div>
+                <a
+                  href="/newfeeds/product/QS33"
+                >
+                  Rheumatoid arthritis in over 16s
+                </a>
+              </div>
             </div>
           </div>
           <div
