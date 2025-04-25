@@ -265,9 +265,9 @@ describe("Storyblok utils", () => {
 				.fn()
 				.mockResolvedValue(MockSingleStorySuccessResponse);
 
-			const result = await fetchStory("news/articles/test-page", "published");
+			const result = await fetchStory("unit-test-data/test-page", "published");
 
-			expect(result.story).toEqual(MockSingleStorySuccessResponse.data.story);
+			expect(result.story).toEqual(MockSingleStorySuccessResponse.story);
 		});
 
 		it("should handle a 404", async () => {
