@@ -15,7 +15,7 @@ import { GENERIC_ERROR_MESSAGE } from "@/utils/storyblok";
 import BlogPostPage, { getServerSideProps } from "./[slug].page";
 
 //cast to unknown necessary due to some differences in response versus expected type from generate-ts
-const mockBlogPost = mockBlogPostSuccessResponse.data
+const mockBlogPost = mockBlogPostSuccessResponse
 	.story as unknown as ISbStoryData<BlogPostStoryblok>;
 
 const mockBreadcrumbs = [
