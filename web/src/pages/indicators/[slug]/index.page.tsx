@@ -171,48 +171,46 @@ export default function IndicatorsDetailsPage({
 				>
 					<Grid gutter="loose">
 						<GridItem cols={12} md={8}>
-							<Grid gutter="loose">
-								<GridItem cols={12}>
-									{product.summary ? (
-										<div
-											dangerouslySetInnerHTML={{ __html: product.summary }}
-											className={styles.summary}
-										/>
-									) : isTempWithdrawn ? (
-										<div
-											dangerouslySetInnerHTML={{
-												__html: product.withdrawnNotes,
-											}}
-											className={styles.summary}
-										/>
-									) : null}
+							{product.summary ? (
+								<div
+									dangerouslySetInnerHTML={{ __html: product.summary }}
+									className={styles.summary}
+								/>
+							) : isTempWithdrawn ? (
+								<div
+									dangerouslySetInnerHTML={{
+										__html: product.withdrawnNotes,
+									}}
+									className={styles.summary}
+								/>
+							) : null}
 
-									<EndorsingOrganisations
-										endorsingList={product.endorsementList}
-										productTypeName={product.productTypeName}
-									/>
-									<SupportingOrganisations
-										supportingList={product.supportingList}
-										productTypeName={product.productTypeName}
-									/>
+							<EndorsingOrganisations
+								endorsingList={product.endorsementList}
+								productTypeName={product.productTypeName}
+							/>
+							<SupportingOrganisations
+								supportingList={product.supportingList}
+								productTypeName={product.productTypeName}
+							/>
 
-									<LogosList
-										logosList={product.additionalAuthorList}
-										productId={product.id}
-										logoType="author"
-									/>
+							<LogosList
+								logosList={product.additionalAuthorList}
+								productId={product.id}
+								logoType="author"
+							/>
 
-									<LogosList
-										logosList={product.accreditationList}
-										productId={product.id}
-										logoType="accreditation"
-									/>
-								</GridItem>
-							</Grid>
+							<LogosList
+								logosList={product.accreditationList}
+								productId={product.id}
+								logoType="accreditation"
+							/>
 						</GridItem>
 
 						{hasRelatedProduct ? (
-							<RelatedProducts relatedProducts={relatedqs} />
+							<GridItem cols={12} md={4}>
+								<RelatedProducts relatedProducts={relatedqs} />
+							</GridItem>
 						) : null}
 
 						<GridItem cols={12}>

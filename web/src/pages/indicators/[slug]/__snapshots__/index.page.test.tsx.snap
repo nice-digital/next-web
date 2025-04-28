@@ -320,268 +320,259 @@ exports[`/indicators/[slug].page IndicatorDetailPage should match snapshot for m
             data-g="12 md:8"
           >
             <div
-              class="grid grid--loose"
+              class="summary"
             >
-              <div
-                data-component="grid-item"
-                data-g="12"
+              <p
+                class="lead"
               >
-                <div
-                  class="summary"
+                This guideline covers diagnosing and managing rheumatoid arthritis. It aims to improve quality of life by ensuring that people with rheumatoid arthritis have the right treatment to slow the progression of their condition and control their symptoms. People should also have rapid access to specialist care if their condition suddenly worsens.
+              </p>
+              
+
+              <p>
+                NICE has also produced technology appraisal guidance on drug treatment for rheumatoid arthritis.
+              </p>
+              
+
+              <p>
+                In 
+                <strong>
+                  October 2020
+                </strong>
+                , we amended the ‘treat to target’ recommendations to clarify that multiple disease-modifying anti-rheumatic drugs can be offered one after the other to achieve treatment targets.
+              </p>
+              
+
+              <h2>
+                Recommendations
+              </h2>
+              
+
+              <p>
+                This guideline includes new and updated recommendations on:
+              </p>
+              
+
+              <ul>
+                
+
+                <li>
+                  <a
+                    href="https://www.nice.org.uk/guidance/ng100/chapter/Recommendations#investigations-following-diagnosis"
+                  >
+                    investigations following diagnosis
+                  </a>
+                </li>
+                
+
+                <li>
+                  <a
+                    href="https://www.nice.org.uk/guidance/ng100/chapter/Recommendations#treat-to-target-strategy"
+                  >
+                    treat-to-target strategy
+                  </a>
+                   and 
+                  <a
+                    href="http://www.nice.org.uk/guidance/ng100/chapter/Recommendations#initial-pharmacological-management"
+                  >
+                    initial pharmacological management
+                  </a>
+                </li>
+                
+
+                <li>
+                  <a
+                    href="https://www.nice.org.uk/guidance/ng100/chapter/Recommendations#symptom-control"
+                  >
+                    symptom control
+                  </a>
+                   and 
+                  <a
+                    href="http://www.nice.org.uk/guidance/ng100/chapter/Recommendations#monitoring"
+                  >
+                    monitoring
+                  </a>
+                </li>
+                
+
+              </ul>
+              
+
+              <p>
+                It also includes recommendations on:
+              </p>
+              
+
+              <ul>
+                
+
+                <li>
+                  <a
+                    href="http://www.nice.org.uk/guidance/ng100/chapter/Recommendations#investigations"
+                  >
+                    investigations for diagnosis
+                  </a>
+                   and 
+                  <a
+                    href="http://www.nice.org.uk/guidance/ng100/chapter/Recommendations#referral-from-primary-care"
+                  >
+                    referral from primary care
+                  </a>
+                </li>
+                
+
+                <li>
+                  <a
+                    href="http://www.nice.org.uk/guidance/ng100/chapter/Recommendations#non-pharmacological-management"
+                  >
+                    non-pharmacological management
+                  </a>
+                   and 
+                  <a
+                    href="http://www.nice.org.uk/guidance/ng100/chapter/Recommendations#the-multidisciplinary-team"
+                  >
+                    the multidisciplinary team
+                  </a>
+                </li>
+                
+
+                <li>
+                  <a
+                    href="http://www.nice.org.uk/guidance/ng100/chapter/Recommendations#communication-and-education"
+                  >
+                    communication and education
+                  </a>
+                </li>
+                
+
+                <li>
+                  <a
+                    href="http://www.nice.org.uk/guidance/ng100/chapter/Recommendations#timing-and-referral-for-surgery"
+                  >
+                    timing and referral for surgery
+                  </a>
+                </li>
+                
+
+              </ul>
+              
+
+              <h2>
+                Who is it for?
+              </h2>
+              
+
+              <ul>
+                
+
+                <li>
+                  Healthcare professionals
+                </li>
+                
+
+                <li>
+                  Commissioners and providers
+                </li>
+                
+
+                <li>
+                  People with rheumatoid arthritis and their families and carers
+                </li>
+                
+
+              </ul>
+              
+
+              <h2>
+                Guideline development process
+              </h2>
+              
+
+              <p>
+                <a
+                  href="https://www.nice.org.uk/about/what-we-do/our-programmes/nice-guidance/nice-guidelines/how-we-develop-nice-guidelines"
                 >
-                  <p
-                    class="lead"
-                  >
-                    This guideline covers diagnosing and managing rheumatoid arthritis. It aims to improve quality of life by ensuring that people with rheumatoid arthritis have the right treatment to slow the progression of their condition and control their symptoms. People should also have rapid access to specialist care if their condition suddenly worsens.
-                  </p>
-                  
+                  How we develop NICE guidelines
+                </a>
+              </p>
+              
 
-                  <p>
-                    NICE has also produced technology appraisal guidance on drug treatment for rheumatoid arthritis.
-                  </p>
-                  
-
-                  <p>
-                    In 
-                    <strong>
-                      October 2020
-                    </strong>
-                    , we amended the ‘treat to target’ recommendations to clarify that multiple disease-modifying anti-rheumatic drugs can be offered one after the other to achieve treatment targets.
-                  </p>
-                  
-
-                  <h2>
-                    Recommendations
-                  </h2>
-                  
-
-                  <p>
-                    This guideline includes new and updated recommendations on:
-                  </p>
-                  
-
-                  <ul>
-                    
-
-                    <li>
-                      <a
-                        href="https://www.nice.org.uk/guidance/ng100/chapter/Recommendations#investigations-following-diagnosis"
-                      >
-                        investigations following diagnosis
-                      </a>
-                    </li>
-                    
-
-                    <li>
-                      <a
-                        href="https://www.nice.org.uk/guidance/ng100/chapter/Recommendations#treat-to-target-strategy"
-                      >
-                        treat-to-target strategy
-                      </a>
-                       and 
-                      <a
-                        href="http://www.nice.org.uk/guidance/ng100/chapter/Recommendations#initial-pharmacological-management"
-                      >
-                        initial pharmacological management
-                      </a>
-                    </li>
-                    
-
-                    <li>
-                      <a
-                        href="https://www.nice.org.uk/guidance/ng100/chapter/Recommendations#symptom-control"
-                      >
-                        symptom control
-                      </a>
-                       and 
-                      <a
-                        href="http://www.nice.org.uk/guidance/ng100/chapter/Recommendations#monitoring"
-                      >
-                        monitoring
-                      </a>
-                    </li>
-                    
-
-                  </ul>
-                  
-
-                  <p>
-                    It also includes recommendations on:
-                  </p>
-                  
-
-                  <ul>
-                    
-
-                    <li>
-                      <a
-                        href="http://www.nice.org.uk/guidance/ng100/chapter/Recommendations#investigations"
-                      >
-                        investigations for diagnosis
-                      </a>
-                       and 
-                      <a
-                        href="http://www.nice.org.uk/guidance/ng100/chapter/Recommendations#referral-from-primary-care"
-                      >
-                        referral from primary care
-                      </a>
-                    </li>
-                    
-
-                    <li>
-                      <a
-                        href="http://www.nice.org.uk/guidance/ng100/chapter/Recommendations#non-pharmacological-management"
-                      >
-                        non-pharmacological management
-                      </a>
-                       and 
-                      <a
-                        href="http://www.nice.org.uk/guidance/ng100/chapter/Recommendations#the-multidisciplinary-team"
-                      >
-                        the multidisciplinary team
-                      </a>
-                    </li>
-                    
-
-                    <li>
-                      <a
-                        href="http://www.nice.org.uk/guidance/ng100/chapter/Recommendations#communication-and-education"
-                      >
-                        communication and education
-                      </a>
-                    </li>
-                    
-
-                    <li>
-                      <a
-                        href="http://www.nice.org.uk/guidance/ng100/chapter/Recommendations#timing-and-referral-for-surgery"
-                      >
-                        timing and referral for surgery
-                      </a>
-                    </li>
-                    
-
-                  </ul>
-                  
-
-                  <h2>
-                    Who is it for?
-                  </h2>
-                  
-
-                  <ul>
-                    
-
-                    <li>
-                      Healthcare professionals
-                    </li>
-                    
-
-                    <li>
-                      Commissioners and providers
-                    </li>
-                    
-
-                    <li>
-                      People with rheumatoid arthritis and their families and carers
-                    </li>
-                    
-
-                  </ul>
-                  
-
-                  <h2>
-                    Guideline development process
-                  </h2>
-                  
-
-                  <p>
-                    <a
-                      href="https://www.nice.org.uk/about/what-we-do/our-programmes/nice-guidance/nice-guidelines/how-we-develop-nice-guidelines"
-                    >
-                      How we develop NICE guidelines
-                    </a>
-                  </p>
-                  
-
-                  <p>
-                    This guideline updates and replaces NICE guideline CG79 (February 2009).
-                  </p>
-                </div>
-                <ul
-                  class="grid"
-                >
-                  <li
-                    data-component="grid-item"
-                    data-g="6 lg:4"
-                  >
-                    <img
-                      alt="British Association of Dermatologists (BAD)"
-                      class="logo"
-                      data-nimg="1"
-                      decoding="async"
-                      height="0"
-                      loading="lazy"
-                      src="/api/indicators/NG100/author/british-association-of-dermatologists-bad"
-                      style="color: transparent;"
-                      width="0"
-                    />
-                  </li>
-                  <li
-                    data-component="grid-item"
-                    data-g="6 lg:4"
-                  >
-                    <img
-                      alt="British Thoracic Society (BTS)"
-                      class="logo"
-                      data-nimg="1"
-                      decoding="async"
-                      height="0"
-                      loading="lazy"
-                      src="/api/indicators/NG100/author/british-thoracic-society-bts"
-                      style="color: transparent;"
-                      width="0"
-                    />
-                  </li>
-                  <li
-                    data-component="grid-item"
-                    data-g="6 lg:4"
-                  >
-                    <img
-                      alt="Royal College of General Practitioners (RCGP)"
-                      class="logo"
-                      data-nimg="1"
-                      decoding="async"
-                      height="0"
-                      loading="lazy"
-                      src="/api/indicators/NG100/author/royal-college-of-general-practitioners-rcgp"
-                      style="color: transparent;"
-                      width="0"
-                    />
-                  </li>
-                </ul>
-                <ul
-                  class="grid"
-                >
-                  <li
-                    data-component="grid-item"
-                    data-g="6 lg:4"
-                  >
-                    <img
-                      alt="National Institute for Health and Care Excellence (NICE)"
-                      class="logo"
-                      data-nimg="1"
-                      decoding="async"
-                      height="0"
-                      loading="lazy"
-                      src="/api/indicators/NG100/accreditation/national-institute-for-health-and-care-excellence-nice"
-                      style="color: transparent;"
-                      width="0"
-                    />
-                  </li>
-                </ul>
-              </div>
+              <p>
+                This guideline updates and replaces NICE guideline CG79 (February 2009).
+              </p>
             </div>
+            <ul
+              class="grid"
+            >
+              <li
+                data-component="grid-item"
+                data-g="6 lg:4"
+              >
+                <img
+                  alt="British Association of Dermatologists (BAD)"
+                  class="logo"
+                  data-nimg="1"
+                  decoding="async"
+                  height="0"
+                  loading="lazy"
+                  src="/api/indicators/NG100/author/british-association-of-dermatologists-bad"
+                  style="color: transparent;"
+                  width="0"
+                />
+              </li>
+              <li
+                data-component="grid-item"
+                data-g="6 lg:4"
+              >
+                <img
+                  alt="British Thoracic Society (BTS)"
+                  class="logo"
+                  data-nimg="1"
+                  decoding="async"
+                  height="0"
+                  loading="lazy"
+                  src="/api/indicators/NG100/author/british-thoracic-society-bts"
+                  style="color: transparent;"
+                  width="0"
+                />
+              </li>
+              <li
+                data-component="grid-item"
+                data-g="6 lg:4"
+              >
+                <img
+                  alt="Royal College of General Practitioners (RCGP)"
+                  class="logo"
+                  data-nimg="1"
+                  decoding="async"
+                  height="0"
+                  loading="lazy"
+                  src="/api/indicators/NG100/author/royal-college-of-general-practitioners-rcgp"
+                  style="color: transparent;"
+                  width="0"
+                />
+              </li>
+            </ul>
+            <ul
+              class="grid"
+            >
+              <li
+                data-component="grid-item"
+                data-g="6 lg:4"
+              >
+                <img
+                  alt="National Institute for Health and Care Excellence (NICE)"
+                  class="logo"
+                  data-nimg="1"
+                  decoding="async"
+                  height="0"
+                  loading="lazy"
+                  src="/api/indicators/NG100/accreditation/national-institute-for-health-and-care-excellence-nice"
+                  style="color: transparent;"
+                  width="0"
+                />
+              </li>
+            </ul>
           </div>
           <div
             data-component="grid-item"
