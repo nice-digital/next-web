@@ -29,6 +29,23 @@ export const assignChildrenToParent = (
 	return parents;
 };
 
+export const siblingHasChildren = async (
+	slug: string,
+): Promise<boolean> => {
+	//const currentFolderItems = await getCurrentFolderItems(parentID);
+	const startsWithCurrentFolderSlugItems = await fetchLinks({
+		starts_with: slug,
+	});
+
+	// If any items in current folder have children, except for item corresponding with current page, return true
+	const siblingHasChildren = startsWithCurrentFolderSlugItems.some(
+		(item) => item.is_folder && item.slug !== slug
+	);
+
+	console.log({ slug, siblingHasChildren });
+	return siblingHasChildren;
+};
+
 export const fetchAndBuildParentAndChildTree = async (
 	slug: string,
 	parentID: number,
@@ -45,11 +62,12 @@ export const fetchAndBuildParentAndChildTree = async (
 	const currentFolder: ExtendedSBLink | undefined =
 		startsWithCurrentFolderSlugItems.find(
 			(item: ExtendedSBLink) => item.is_folder && item.slug === slug
+		);
 
 	// Check if any items in current folder, except for item corresponding with current page, have children
 	const siblingHasChildren = startsWithCurrentFolderSlugItems.some(
 		(item) => item.is_folder && item.slug !== slug
-		);
+	);
 
 	let tree: ExtendedSBLink[] = [];
 
@@ -100,10 +118,10 @@ export const buildTree = async (
 
 	const currentPage = tree.find((item) => item.slug === slug);
 
-	const currentPageHasNoChildren =
-		!currentPage?.childLinks || currentPage?.childLinks.length === 0;
+	const currentPageOrSiblingHasNoChildren =
+		!currentPage?.childLinks || currentPage?.childLinks.length === 0 || !siblingHasChildren;
 
-	if (currentPage && currentPageHasNoChildren) {
+	if (currentPage && currentPageOrSiblingHasNoChildren) {
 		const currentFolderSlug = isRootPage
 			? slug
 			: slug.split("/").slice(0, -1).join("/");
