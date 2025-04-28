@@ -46,6 +46,7 @@ import {
 } from "@/utils/storyblok";
 
 import type { GetServerSidePropsContext } from "next";
+import { ClientInfogramEmbed } from '@/components/Storyblok/InfogramEmbed/ClientInfogramEmbed';
 
 export type SlugCatchAllSuccessProps = {
 	story: ISbStoryData<InfoPageStoryblok | CategoryNavigationStoryblok>;
@@ -111,6 +112,7 @@ export default function SlugCatchAll(
 		accordionGroup: StoryblokAccordionGroup,
 		hero: StoryblokHero,
 		iframe: StoryblokIframe,
+		infogramEmbed: ClientInfogramEmbed,
 		infoPage: InfoPage,
 		nestedRichText: NestedRichText,
 		quote: Blockquote,
@@ -139,6 +141,7 @@ export default function SlugCatchAll(
 				openGraph={{ title: title }}
 				additionalMetaTags={additionalMetaTags}
 			></NextSeo>
+
 			<StoryblokComponent
 				blok={storyData.content}
 				breadcrumbs={breadcrumbs}
