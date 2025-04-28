@@ -7,7 +7,7 @@ import { GetServerSidePropsContext } from "next";
 import { logger } from "@/logger";
 import Mock404FromStoryblokApi from "@/test-utils/storyblok-not-found-response.json";
 import MockServerErrorResponse from "@/test-utils/storyblok-server-error-response.json";
-import mockBlogPostSuccessResponse from "@/test-utils/storyblok-single-blog-post-response.json"; //https://api.storyblok.com/v2/cdn/storiesnews/blogs/women-inspiring-inclusion-in-nice-guidance?version=draft&resolve_links=url&resolve_relations=blogPost.author&token=ALPHA_PUBLIC
+import mockBlogPostSuccessResponse from "@/test-utils/storyblok-single-blog-post-response.json";
 import { BlogPostStoryblok } from "@/types/storyblok";
 import * as storyblokUtils from "@/utils/storyblok";
 import { GENERIC_ERROR_MESSAGE } from "@/utils/storyblok";
@@ -15,7 +15,7 @@ import { GENERIC_ERROR_MESSAGE } from "@/utils/storyblok";
 import BlogPostPage, { getServerSideProps } from "./[slug].page";
 
 //cast to unknown necessary due to some differences in response versus expected type from generate-ts
-const mockBlogPost = mockBlogPostSuccessResponse
+const mockBlogPost = mockBlogPostSuccessResponse.data
 	.story as unknown as ISbStoryData<BlogPostStoryblok>;
 
 const mockBreadcrumbs = [
