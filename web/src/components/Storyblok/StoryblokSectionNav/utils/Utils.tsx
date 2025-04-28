@@ -45,6 +45,10 @@ export const fetchAndBuildParentAndChildTree = async (
 	const currentFolder: ExtendedSBLink | undefined =
 		startsWithCurrentFolderSlugItems.find(
 			(item: ExtendedSBLink) => item.is_folder && item.slug === slug
+
+	// Check if any items in current folder, except for item corresponding with current page, have children
+	const siblingHasChildren = startsWithCurrentFolderSlugItems.some(
+		(item) => item.is_folder && item.slug !== slug
 		);
 
 	let tree: ExtendedSBLink[] = [];
@@ -58,8 +62,8 @@ export const fetchAndBuildParentAndChildTree = async (
 	});
 	tree = parentFolderItems;
 
-	// If current page has no children, use current level and level above to create the parent/child tree structure
-	if (!(children && children.length > 0)) {
+	// If current page has no children, and none of current page's siblings have children, use current level and level above to create the parent/child tree structure
+	if (!(children && children.length > 0 && siblingHasChildren)) {
 		tree = assignChildrenToParent(currentFolderItems, parentFolderItems);
 	}
 
