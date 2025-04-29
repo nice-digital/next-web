@@ -18,7 +18,7 @@ export const RelatedProducts: FC<RelatedProductsProps> = ({
 			<h5>Related quality standards</h5>
 			{relatedProducts.map((item, index) => (
 				<div key={index}>
-					<a href={item.url}>{item.title}</a>
+					<a href={`/guidance/${item.id.toLowerCase()}`}>{item.title}</a>
 					{index < relatedProducts.length - 1 && <hr />}
 				</div>
 			))}

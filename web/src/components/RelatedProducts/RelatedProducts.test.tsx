@@ -40,8 +40,14 @@ describe("RelatedProducts", () => {
 		expect(screen.getByText("Related quality standards")).toBeInTheDocument();
 		expect(screen.getByText("Product 1")).toBeInTheDocument();
 		expect(screen.getByText("Product 2")).toBeInTheDocument();
-		expect(screen.getByText("Product 1")).toHaveAttribute("href", "/product-1");
-		expect(screen.getByText("Product 2")).toHaveAttribute("href", "/product-2");
+		expect(screen.getByText("Product 1")).toHaveAttribute(
+			"href",
+			"/guidance/qs1"
+		);
+		expect(screen.getByText("Product 2")).toHaveAttribute(
+			"href",
+			"/guidance/qs2"
+		);
 	});
 
 	it("should render a horizontal rule between related products", () => {

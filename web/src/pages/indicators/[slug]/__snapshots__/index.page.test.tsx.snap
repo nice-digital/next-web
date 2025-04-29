@@ -587,7 +587,7 @@ exports[`/indicators/[slug].page IndicatorDetailPage should match snapshot for m
               </h5>
               <div>
                 <a
-                  href="/newfeeds/product/QS33"
+                  href="/guidance/qs33"
                 >
                   Rheumatoid arthritis in over 16s
                 </a>
