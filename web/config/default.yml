@@ -33,7 +33,7 @@ public:
     baseURL: https://nice.jotform.com
   storyblok:
     accessToken: SECRET
-    ocelotEndpoint:
+    ocelotEndpointV2:
     enableRootCatchAll: false
   denyRobots: false
 
