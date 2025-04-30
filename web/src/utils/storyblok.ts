@@ -222,7 +222,7 @@ export const validateRouteParams = async <T>({
 		// 	requestParams,
 		// 	errorCause: error instanceof Error && error.cause,
 		// 	errorMessage: error instanceof Error && error.message,
-		// 	ocelotEndpoint: publicRuntimeConfig.storyblok.ocelotEndpoint,
+		// 	ocelotEndpoint: publicRuntimeConfig.storyblok.ocelotEndpointV2,
 		// },
 		logger.error(
 			`validateRouteParams: Error: ${
@@ -260,7 +260,7 @@ export const fetchStories = async <T>(
 		// {
 		// 	errorCause: error,
 		// 	sbParams,
-		// 	ocelotEndpoint: publicRuntimeConfig.storyblok.ocelotEndpoint,
+		// 	ocelotEndpoint: publicRuntimeConfig.storyblok.ocelotEndpointV2,
 		// },
 		logger.error(
 			isISbError(error)
