@@ -15,7 +15,7 @@ export const EndorsingOrganisations: FC<EndorsingOrganisationsProps> = ({
 		<div>
 			<h4>Endorsing bodies</h4>
 			<p>
-				This {productTypeName} is endorsed by
+				This {productTypeName} is endorsed by{" "}
 				{endorsingList.map((item, index) => (
 					<span key={index}>
 						{index > 0 && " and "}
