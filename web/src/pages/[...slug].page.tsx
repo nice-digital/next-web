@@ -13,6 +13,7 @@ import { CardGridSection } from "@/components/Storyblok/CardGridSection/CardGrid
 import { CardListSection } from "@/components/Storyblok/CardListSection/CardListSection";
 import { CategoryLandingPage } from "@/components/Storyblok/CategoryLandingPage/CategoryLandingPage";
 import { CategoryNavigation } from "@/components/Storyblok/CategoryNavigation/CategoryNavigation";
+import { ClientInfogramEmbed } from "@/components/Storyblok/InfogramEmbed/ClientInfogramEmbed";
 import { InfoPage } from "@/components/Storyblok/InfoPage/InfoPage";
 import { Metadata } from "@/components/Storyblok/Metadata/Metadata";
 import { NestedRichText } from "@/components/Storyblok/NestedRichText/NestedRichText";
@@ -111,6 +112,7 @@ export default function SlugCatchAll(
 		accordionGroup: StoryblokAccordionGroup,
 		hero: StoryblokHero,
 		iframe: StoryblokIframe,
+		infogramEmbed: ClientInfogramEmbed,
 		infoPage: InfoPage,
 		nestedRichText: NestedRichText,
 		quote: Blockquote,
@@ -139,6 +141,7 @@ export default function SlugCatchAll(
 				openGraph={{ title: title }}
 				additionalMetaTags={additionalMetaTags}
 			></NextSeo>
+
 			<StoryblokComponent
 				blok={storyData.content}
 				breadcrumbs={breadcrumbs}
