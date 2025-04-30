@@ -267,7 +267,7 @@ describe("Storyblok utils", () => {
 
 			const result = await fetchStory("unit-test-data/test-page", "published");
 
-			expect(result.story).toEqual(MockSingleStorySuccessResponse.story);
+			expect(result.story).toEqual(MockSingleStorySuccessResponse.data.story);
 		});
 
 		it("should handle a 404", async () => {
