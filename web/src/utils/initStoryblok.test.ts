@@ -9,6 +9,7 @@ jest.mock("@/config", () => ({
 	publicRuntimeConfig: {
 		storyblok: {
 			ocelotEndpoint: "testEndpoint",
+			ocelotEndpointV2: "testEndpoint",
 			accessToken: "testApiKey",
 		},
 	},
