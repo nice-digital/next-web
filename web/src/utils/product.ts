@@ -68,8 +68,15 @@ export const getChapterLinks = (
 			productGroup,
 		});
 
+	const isOverview = !(
+		product.summary === null &&
+		(product.endorsementList?.length ?? 0) == 0 &&
+		(product.supportingList?.length ?? 0) == 0 &&
+		(product.additionalAuthorList?.length ?? 0) == 0
+	);
+
 	return [
-		...(product.summary
+		...(isOverview
 			? [
 					{
 						title: overviewTitle,
