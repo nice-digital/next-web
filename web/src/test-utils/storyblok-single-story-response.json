@@ -1,5 +1,6 @@
 {
-  "story": {
+  "data": {
+    "story": {
       "name": "Test page",
       "created_at": "2024-08-02T13:41:27.350Z",
       "published_at": "2024-04-30T12:41:49.881Z",
@@ -7,53 +8,53 @@
       "id": 531694452,
       "uuid": "e9a479e6-8db1-4b61-bed0-6daaa23aca98",
       "content": {
-          "_uid": "97f5b02d-cd11-4ec4-b646-08dc90e14eef",
-          "cardGrid": [
+        "_uid": "97f5b02d-cd11-4ec4-b646-08dc90e14eef",
+        "cardGrid": [
+          {
+            "_uid": "6d8aa1e2-df46-43e1-a6fa-6e4d2120924d",
+            "cards": [
               {
-                  "_uid": "6d8aa1e2-df46-43e1-a6fa-6e4d2120924d",
-                  "cards": [
-                      {
-                          "_uid": "401760c5-a4bf-4931-a29a-b8adf09b9054",
-                          "body": "Body content",
-                          "link": {
-                              "id": "c3ff153a-2a9b-4d29-8fdf-2bacb8b36e46",
-                              "url": "",
-                              "linktype": "story",
-                              "fieldtype": "multilink",
-                              "cached_url": "home"
-                          },
-                          "heading": "Heading for card 1",
-                          "component": "card"
-                      },
-                      {
-                          "_uid": "a58f94ec-ab95-48bb-b41c-2826ccfe58bb",
-                          "body": "Please do",
-                          "link": {
-                              "id": "c4d87ab5-126e-4b00-805c-fac9b647e24a",
-                              "url": "",
-                              "linktype": "story",
-                              "fieldtype": "multilink",
-                              "cached_url": "get-involved/"
-                          },
-                          "heading": "Get involved",
-                          "component": "card"
-                      }
-                  ],
-                  "columns": "3",
-                  "component": "cardGrid"
-              }
-          ],
-          "metadata": [],
-          "component": "categoryNavigation",
-          "pageHeader": [
+                "_uid": "401760c5-a4bf-4931-a29a-b8adf09b9054",
+                "body": "Body content",
+                "link": {
+                  "id": "c3ff153a-2a9b-4d29-8fdf-2bacb8b36e46",
+                  "url": "",
+                  "linktype": "story",
+                  "fieldtype": "multilink",
+                  "cached_url": "home"
+                },
+                "heading": "Heading for card 1",
+                "component": "card"
+              },
               {
-                  "_uid": "58c8213b-ed56-4029-8bb5-bc5983f84322",
-                  "intro": "And some intro text",
-                  "title": "Test folder/test page title test again",
-                  "summary": "Baked beans, spam, green eggs and ham,\nSam I am!! I do not eat green eggs and ham",
-                  "component": "pageHeader"
+                "_uid": "a58f94ec-ab95-48bb-b41c-2826ccfe58bb",
+                "body": "Please do",
+                "link": {
+                  "id": "c4d87ab5-126e-4b00-805c-fac9b647e24a",
+                  "url": "",
+                  "linktype": "story",
+                  "fieldtype": "multilink",
+                  "cached_url": "get-involved/"
+                },
+                "heading": "Get involved",
+                "component": "card"
               }
-          ]
+            ],
+            "columns": "3",
+            "component": "cardGrid"
+          }
+        ],
+        "metadata": [],
+        "component": "categoryNavigation",
+        "pageHeader": [
+          {
+            "_uid": "58c8213b-ed56-4029-8bb5-bc5983f84322",
+            "intro": "And some intro text",
+            "title": "Test folder/test page title test again",
+            "summary": "Baked beans, spam, green eggs and ham,\nSam I am!! I do not eat green eggs and ham",
+            "component": "pageHeader"
+          }
+        ]
       },
       "slug": "test-page",
       "full_slug": "unit-test-data/test-page",
@@ -71,25 +72,26 @@
       "alternates": [],
       "default_full_slug": null,
       "translated_slugs": null
-  },
-  "cv": 1745593530,
-  "rels": [],
-  "links": [
+    },
+    "cv": 1745593530,
+    "rels": [],
+    "links": [
       {
-          "name": "Home",
-          "id": 531693872,
-          "uuid": "c3ff153a-2a9b-4d29-8fdf-2bacb8b36e46",
-          "slug": "home",
-          "url": "/",
-          "full_slug": "home"
+        "name": "Home",
+        "id": 531693872,
+        "uuid": "c3ff153a-2a9b-4d29-8fdf-2bacb8b36e46",
+        "slug": "home",
+        "url": "/",
+        "full_slug": "home"
       },
       {
-          "name": "Get involved",
-          "id": 531694239,
-          "uuid": "c4d87ab5-126e-4b00-805c-fac9b647e24a",
-          "slug": "get-involved",
-          "url": "get-involved/",
-          "full_slug": "get-involved/"
+        "name": "Get involved",
+        "id": 531694239,
+        "uuid": "c4d87ab5-126e-4b00-805c-fac9b647e24a",
+        "slug": "get-involved",
+        "url": "get-involved/",
+        "full_slug": "get-involved/"
       }
-  ]
+    ]
+  }
 }
