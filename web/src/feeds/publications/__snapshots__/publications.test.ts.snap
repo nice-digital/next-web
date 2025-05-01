@@ -35,6 +35,8 @@ Object {
   "productType": "CG",
   "publishedDate": "2002-12-01T00:00:00",
   "relevantTo": Array [],
+  "taxonomySubjectList": Array [],
   "title": "Schizophrenia",
+  "url": "/newfeeds/product/CG1",
 }
 `;
