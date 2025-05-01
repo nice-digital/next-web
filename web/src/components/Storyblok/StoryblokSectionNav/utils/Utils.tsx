@@ -29,14 +29,11 @@ export const assignChildrenToParent = (
 	return parents;
 };
 
-export const siblingHasChildrenFunction = async (
+export const siblingHasChildren = async (
 	currentFolderSlug: string,
+	startsWithCurrentFolderSlugItems: ExtendedSBLink[],
 	isRootPage: boolean | undefined
 ): Promise<boolean> => {
-	const startsWithCurrentFolderSlugItems = await fetchLinks({
-		starts_with: currentFolderSlug,
-	});
-
 	// If any items in current folder have children, except for item corresponding with current page, return true
 	// We don't want to check this when current page is a root page, because it will always return true, so return false
 	const siblingHasChildren = isRootPage ? false : startsWithCurrentFolderSlugItems.some(
@@ -68,12 +65,11 @@ export const fetchAndBuildParentAndChildTree = async (
 			(item: ExtendedSBLink) => item.is_folder && item.slug === currentFolderSlug
 		);
 
-	const siblingHasChildrenBool = await siblingHasChildrenFunction(currentFolderSlug, isRootPage);
-
 	let tree: ExtendedSBLink[] = [];
 
 	// If no current folder found or current folder has no parent_id, or any of current page's siblings have children, return the currentFolderItems and don't look for parent folder items
-	if (!currentFolder || !currentFolder.parent_id || siblingHasChildrenBool) return currentFolderItems;
+	// TODO: check if grandparent is toplevel (!parentFolder.parent_id) - if so don't fetch parent folder items. Will need additional API call to get parent folder object (like L63 does to get current folder object but using startsWithParentFolderSlugItems instead) in order to access parentFolder.parent_id.
+	if (!currentFolder || !currentFolder.parent_id || await siblingHasChildren(currentFolderSlug, startsWithCurrentFolderSlugItems, isRootPage)) return currentFolderItems;
 
 	// Get all items in current folder's parent folder (current "page" and its siblings OR parent page and its siblings, depending on current position in tree)
 	const parentFolderItems = await fetchLinks({
@@ -119,7 +115,6 @@ export const buildTree = async (
 		currentPageSlug
 		: currentPageSlug.split("/").slice(0, -1).join("/");
 
-	console.log("currentFolderSlug", currentFolderSlug);
 	const { currentAndParentFolderItems } =
 		await fetchCurrentAndParentFolderItems(parentID, currentFolderSlug, isRootPage);
 
@@ -130,12 +125,8 @@ export const buildTree = async (
 
 	const currentPageData = tree.find((item) => item.slug === currentPageSlug);
 
-	console.log({isRootPage});
-	console.log(">>>>> siblingHasChildrenFunction", await siblingHasChildrenFunction(currentFolderSlug, isRootPage));
 	const currentPageHasNoChildren =
 		!currentPageData?.childLinks || currentPageData?.childLinks.length === 0;
-
-		console.log("#####", {currentPageHasNoChildren})
 
 	if (currentPageData && currentPageHasNoChildren) {
 		tree = await fetchAndBuildParentAndChildTree(
