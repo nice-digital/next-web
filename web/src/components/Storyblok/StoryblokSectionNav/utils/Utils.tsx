@@ -5,13 +5,29 @@ export type ExtendedSBLink = SBLink & {
 	childLinks?: ExtendedSBLink[];
 };
 
+export const fetchLinksFromStoryblokV2 = async (
+	queryParams: Record<string, string> = {}
+) => {
+	const defaultParams = {
+		version: "published",
+		per_page: "1000",
+		...queryParams,
+	};
+	const queryString = new URLSearchParams(defaultParams).toString();
+	const res = await fetch(
+		`https://api.storyblok.com/v2/cdn/links?${queryString}`
+	);
+	const data = await res.json();
+	return data.links;
+};
+
 export const getCurrentFolderItems = async (
 	parentID: number
 ): Promise<ExtendedSBLink[]> => {
 	// Get all items in current folder (current page and its siblings or, if current page is a root page, current page and its children)
-	return await fetchLinks({
-		with_parent: parentID,
-	});
+
+
+	return await fetchLinksFromStoryblokV2({ with_parent: String(parentID) || "" });
 };
 
 export const assignChildrenToParent = (
@@ -53,8 +69,8 @@ export const fetchAndBuildParentAndChildTree = async (
 	if (!currentFolder || !currentFolder.parent_id) return currentFolderItems;
 
 	// Get all items in current folder's parent folder (current "page" and its siblings OR parent page and its siblings, depending on current position in tree)
-	const parentFolderItems = await fetchLinks({
-		with_parent: currentFolder.parent_id,
+	const parentFolderItems = await fetchLinksFromStoryblokV2({
+		with_parent: String(currentFolder.parent_id),
 	});
 	tree = parentFolderItems;
 
