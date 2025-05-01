@@ -4,6 +4,21 @@ import { fetchLinks } from "@/utils/storyblok";
 export type ExtendedSBLink = SBLink & {
 	childLinks?: ExtendedSBLink[];
 };
+export const fetchLinksFromStoryblokV2 = async (
+	queryParams: Record<string, string> = {}
+) => {
+	const defaultParams = {
+		version: "published",
+		per_page: "1000",
+		...queryParams,
+	};
+	const queryString = new URLSearchParams(defaultParams).toString();
+	const res = await fetch(
+		`https://api.storyblok.com/v2/cdn/links?${queryString}`
+	);
+	const data = await res.json();
+	return data.links;
+};
 
 export const getCurrentFolderItems = async (
 	parentID: number
