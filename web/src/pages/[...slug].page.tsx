@@ -117,8 +117,7 @@ export default function SlugCatchAll(
 		hero: StoryblokHero,
 		iframe: StoryblokIframe,
 		infoPage: InfoPage,
-		// nestedRichText: NestedRichText,
-		nestedRichText: ()=> <p>bob</p>, //TODO DO NOT COMMIT THIS!
+		nestedRichText: NestedRichText,
 		quote: Blockquote,
 		youtubeEmbed: StoryblokYoutubeEmbed,
 		actionBannerDefault: StoryblokActionBannerDefault,
