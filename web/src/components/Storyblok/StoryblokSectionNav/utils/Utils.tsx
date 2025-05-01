@@ -30,16 +30,17 @@ export const assignChildrenToParent = (
 };
 
 export const siblingHasChildrenFunction = async (
-	slug: string,
+	currentFolderSlug: string,
+	isRootPage: boolean | undefined
 ): Promise<boolean> => {
-	//const currentFolderItems = await getCurrentFolderItems(parentID);
 	const startsWithCurrentFolderSlugItems = await fetchLinks({
-		starts_with: slug,
+		starts_with: currentFolderSlug,
 	});
 
 	// If any items in current folder have children, except for item corresponding with current page, return true
-	const siblingHasChildren = startsWithCurrentFolderSlugItems.some(
-		(item) => item.is_folder && item.slug !== slug // wants to be current page slug
+	// We don't want to check this when current page is a root page, because it will always return true, so return false
+	const siblingHasChildren = isRootPage ? false : startsWithCurrentFolderSlugItems.some(
+		(item) => item.is_folder && item.slug !== currentFolderSlug
 	);
 
 	return siblingHasChildren;
@@ -49,7 +50,8 @@ export const siblingHasChildrenFunction = async (
 export const fetchAndBuildParentAndChildTree = async (
 	currentFolderSlug: string,
 	parentID: number,
-	children?: ExtendedSBLink[]
+	isRootPage: boolean | undefined,
+	children?: ExtendedSBLink[],
 ): Promise<ExtendedSBLink[]> => {
 
 	// Get all items with same parentID as current page
@@ -66,9 +68,7 @@ export const fetchAndBuildParentAndChildTree = async (
 			(item: ExtendedSBLink) => item.is_folder && item.slug === currentFolderSlug
 		);
 
-	// Check if any items in current folder, except for item corresponding with current page, have children
-
-	const siblingHasChildrenBool = await siblingHasChildrenFunction(currentFolderSlug);
+	const siblingHasChildrenBool = await siblingHasChildrenFunction(currentFolderSlug, isRootPage);
 
 	let tree: ExtendedSBLink[] = [];
 
@@ -85,9 +85,6 @@ export const fetchAndBuildParentAndChildTree = async (
 	// If current page has no children, use current level and level above to create the parent/child tree structure
 
 	if (!(children && children.length > 0)) {
-		console.log(
-			`No current page children, no current page siblings children, building tree, children: ${children}, children.length: ${children?.length}, siblingHasChildren:${siblingHasChildrenBool}` )
-
 		tree = assignChildrenToParent(currentFolderItems, parentFolderItems);
 	}
 
@@ -96,13 +93,13 @@ export const fetchAndBuildParentAndChildTree = async (
 
 export const fetchCurrentAndParentFolderItems = async (
 	parentID: number,
-	currentFolderSlug: string
+	currentFolderSlug: string,
+	isRootPage: boolean | undefined
 ): Promise<{
 	currentAndParentFolderItems: ExtendedSBLink[];
 }> => {
-	console.log("fetchCurrentAndParentFolderItems currentFolderSlug >>> " , currentFolderSlug);
 	const currentAndParentFolderItemsOrCurrentFolderItems =
-		await fetchAndBuildParentAndChildTree(currentFolderSlug, parentID);
+		await fetchAndBuildParentAndChildTree(currentFolderSlug, parentID, isRootPage)
 	return {
 		currentAndParentFolderItems:
 			currentAndParentFolderItemsOrCurrentFolderItems,
@@ -124,7 +121,7 @@ export const buildTree = async (
 
 	console.log("currentFolderSlug", currentFolderSlug);
 	const { currentAndParentFolderItems } =
-		await fetchCurrentAndParentFolderItems(parentID, currentFolderSlug);
+		await fetchCurrentAndParentFolderItems(parentID, currentFolderSlug, isRootPage);
 
 	tree = assignChildrenToParent(
 		currentFolderItems,
@@ -133,16 +130,18 @@ export const buildTree = async (
 
 	const currentPageData = tree.find((item) => item.slug === currentPageSlug);
 
-			console.log(">>>>>", await siblingHasChildrenFunction(currentFolderSlug))
-	const currentPageOrSiblingHasNoChildren =
-		!currentPageData?.childLinks || currentPageData?.childLinks.length === 0 || !await siblingHasChildrenFunction(currentFolderSlug);
+	console.log({isRootPage});
+	console.log(">>>>> siblingHasChildrenFunction", await siblingHasChildrenFunction(currentFolderSlug, isRootPage));
+	const currentPageHasNoChildren =
+		!currentPageData?.childLinks || currentPageData?.childLinks.length === 0;
 
-		console.log("#####", currentPageOrSiblingHasNoChildren)
+		console.log("#####", {currentPageHasNoChildren})
 
-	if (currentPageData && currentPageOrSiblingHasNoChildren) {
+	if (currentPageData && currentPageHasNoChildren) {
 		tree = await fetchAndBuildParentAndChildTree(
 			currentFolderSlug,
 			parentID,
+			isRootPage,
 			currentPageData.childLinks ?? []
 		);
 	}
