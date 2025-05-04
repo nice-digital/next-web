@@ -30,6 +30,7 @@ services:
 
   # New Next Web (NextJS web app)
   next-web:
+    # image: nameofyourlocalimage:latest # run a local image by cd into the web folder and running docker build -t nameofyourlocalimage:latest .
     image: nextweb:latest
     ## Uncomment the two lines below to run with a specific image with a specific Teamcity build number
     # image: xxxxxxxxxxxx.dkr.ecr.eu-west-1.amazonaws.com/nextweb:nnnn
@@ -46,13 +47,14 @@ services:
     volumes:
       - ./../web:/web
     environment:
-      - SEARCH_BASE_URL
-      - PUBLICATIONS_BASE_URL
-      - INDEV_BASE_URL
-      - STORYBLOK_TOKEN
-      - STORYBLOK_ROUTE_CATCHALL
-      - JOTFORM_BASE_URL
-      - JOTFORM_APIKEY
+      - PUBLIC_SEARCH_BASE_URL
+      - SERVER_FEEDS_PUBLICATIONS_ORIGIN
+      - SERVER_FEEDS_PUBLICATIONS_API_KEY
+      - SERVER_FEEDS_INDEV_ORIGIN
+      - PUBLIC_STORYBLOK_ACCESS_TOKEN
+      - PUBLIC_STORYBLOK_ENABLE_ROOT_CATCH_ALL
+      - PUBLIC_JOTFORM_BASE_URL
+      - SERVER_FEEDS_JOTFORM_API_KEY
     networks:
       default:
         aliases:

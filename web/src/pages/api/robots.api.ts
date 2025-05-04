@@ -1,12 +1,13 @@
 import { type NextApiRequest, type NextApiResponse } from "next";
 
-import { publicRuntimeConfig } from "@/config";
+// import { publicRuntimeConfig } from "@/config";
 
 export default function handler(
 	req: NextApiRequest,
 	res: NextApiResponse
 ): void {
-	if (publicRuntimeConfig.denyRobots === true) {
+	// if (publicRuntimeConfig.denyRobots === true) {
+	if (process.env.PUBLIC_DENY_ROBOTS === "true") {
 		res.send(`User-agent: *
 Disallow: /
 	`);

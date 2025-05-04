@@ -2,7 +2,6 @@ import fs from "fs/promises";
 import path from "path";
 
 import MockAdapter from "axios-mock-adapter";
-import config from "config";
 
 import { client } from "../feeds";
 
@@ -12,8 +11,10 @@ const mockDataBaseDirectory = path.resolve(
 		"__mocks__",
 		"__data__"
 	),
-	publicationsBaseUrl = new URL(config.get("server.feeds.publications.origin")),
-	inDevBaseUrl = new URL(config.get("server.feeds.inDev.origin"));
+	// eslint-disable-next-line @typescript-eslint/no-non-null-assertion
+	publicationsBaseUrl = new URL(process.env.SERVER_FEEDS_PUBLICATIONS_ORIGIN!),
+	// eslint-disable-next-line @typescript-eslint/no-non-null-assertion
+	inDevBaseUrl = new URL(process.env.SERVER_FEEDS_INDEV_ORIGIN!);
 
 export const axiosJSONMock = new MockAdapter(client, {
 	onNoMatch: "throwException",

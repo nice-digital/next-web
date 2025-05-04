@@ -1,7 +1,7 @@
 import { GetServerSideProps } from "next";
 import { getServerSideSitemap, ISitemapField } from "next-sitemap";
 
-import { publicRuntimeConfig } from "@/config";
+// import { publicRuntimeConfig } from "@/config";
 import {
 	getAllProducts,
 	type ProductLite,
@@ -14,7 +14,8 @@ const isPublishedIndicator = ({ productStatus, productType }: ProductLite) =>
 	productStatus === Status.Published && productType === ProductTypeAcronym.IND;
 
 const toSitemapURL = (product: ProductLite): ISitemapField => ({
-	loc: publicRuntimeConfig.baseURL + getProductPath(product),
+	// loc: publicRuntimeConfig.baseURL + getProductPath(product),
+	loc: process.env.PUBLIC_BASE_URL + getProductPath(product),
 	lastmod: product.lastModified,
 });
 

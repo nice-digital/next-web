@@ -1,8 +1,7 @@
 // @ts-check
 const path = require("path");
 
-const config = require("config"),
-	glob = require("glob"),
+const glob = require("glob"),
 	withNodeConfig = require("next-plugin-node-config");
 
 /**
@@ -39,7 +38,7 @@ const nonES5ModulesToTranspile = ["pino", "serialize-error"];
 const commonHeaders = [
 	{
 		key: "Cache-Control",
-		value: config.get("public.cacheControl.defaultCacheHeader"),
+		value: process.env.PUBLIC_CACHE_CONTROL_DEFAULT_CACHE_HEADER,
 	},
 	{
 		key: "X-App",
@@ -79,10 +78,23 @@ const commonHeaders = [
 		key: "Link",
 		value: [
 			// Preload the cookie banner with API key domain preconnect - we want the cookie banner to show as quickly as possible
-			`<${config.get("public.cookieBannerScriptURL")}>; rel=preload; as=script`,
+			`<${process.env.PUBLIC_COOKIE_BANNER_SCRIPT_URL}>; rel=preload; as=script`,
 			"<https://apikeys.civiccomputing.com>; rel=preconnect; crossorigin",
 			"<https://www.googletagmanager.com>; rel=preconnect",
 		].join(","),
+	},
+	// {
+	// 	key: "Build-Number",
+	// 	value: process.env.PUBLIC_BUILD_NUMBER,
+	// },
+	{
+		key: "Build-Number",
+		value:
+			process.env.SANTA_BUILD_NUMBER || "0-next-config-fallback-build-number",
+	},
+	{
+		key: "Auth-Environment",
+		value: process.env.PUBLIC_AUTH_ENVIRONMENT,
 	},
 ];
 

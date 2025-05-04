@@ -1,7 +1,7 @@
 import Image from "next/image";
 import { ImgHTMLAttributes, forwardRef } from "react";
 
-import { publicRuntimeConfig } from "@/config";
+// import { publicRuntimeConfig } from "@/config";
 import {
 	ImageServiceOptions,
 	constructStoryblokImageSrc,
@@ -20,7 +20,8 @@ export interface StoryblokImageProps
 export const StoryblokImage = forwardRef<HTMLImageElement, StoryblokImageProps>(
 	({ src, alt = "", serviceOptions, ...rest }, ref) => {
 		const placeholderSrc =
-			publicRuntimeConfig.publicBaseURL + "/fallback-image.png";
+			// publicRuntimeConfig.publicBaseURL + "/fallback-image.png";
+			process.env.PUBLIC_BASE_URL + "/fallback-image.png";
 
 		// if no src is provided, we use a placeholder image
 		if (!src || src === "") {

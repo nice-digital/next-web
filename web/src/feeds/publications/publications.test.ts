@@ -2,7 +2,7 @@
  * @jest-environment node
  */
 import { cache } from "@/cache";
-import { serverRuntimeConfig } from "@/config";
+// import { serverRuntimeConfig } from "@/config";
 
 import {
 	getAllAreasOfInterest,
@@ -30,7 +30,8 @@ describe("publications", () => {
 			expect(cacheWrapMock).toHaveBeenCalledWith(
 				"next-web:tests:publications:/newfeeds/areaofinteresttypes",
 				expect.any(Function),
-				{ ttl: serverRuntimeConfig.cache.longTTL }
+				// { ttl: serverRuntimeConfig.cache.longTTL }
+				{ ttl: Number(process.env.SERVER_CACHE_LONG_TTL) }
 			);
 		});
 
@@ -61,7 +62,8 @@ describe("publications", () => {
 			expect(cacheWrapMock).toHaveBeenCalledWith(
 				"next-web:tests:publications:/newfeeds/producttypes",
 				expect.any(Function),
-				{ ttl: serverRuntimeConfig.cache.longTTL }
+				// { ttl: serverRuntimeConfig.cache.longTTL }
+				{ ttl: Number(process.env.SERVER_CACHE_LONG_TTL) }
 			);
 		});
 
@@ -92,7 +94,8 @@ describe("publications", () => {
 			expect(cacheWrapMock).toHaveBeenCalledWith(
 				"next-web:tests:publications:/feeds/products-lite",
 				expect.any(Function),
-				{ ttl: serverRuntimeConfig.cache.defaultTTL }
+				// { ttl: serverRuntimeConfig.cache.defaultTTL }
+				{ ttl: Number(process.env.SERVER_CACHE_DEFAULT_TTL) }
 			);
 		});
 

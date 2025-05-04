@@ -19,8 +19,10 @@
 			- [RabbitMQ locally](#rabbitmq-locally)
 			- [Logging performance](#logging-performance)
 	- [Config](#config)
+		- [Unit tests config](#unit-tests-config)
 		- [Secrets](#secrets)
 	- [:rocket: Set up](#rocket-set-up)
+	- [NextJS routing](#nextjs-routing)
 	- [Production hosting](#production-hosting)
 		- [NextJS server](#nextjs-server)
 		- [AWS EC2](#aws-ec2)
@@ -124,13 +126,17 @@ This means our npm scripts are _slightly_ more complicated: they contain the com
 
 ## Config
 
-The application is configured using [node-config](https://www.npmjs.com/package/config). The file _default.yml_ in the config folder contains _all_ the necessary config options.
+The application is configured using node environment variables. The file _.env_ in the web folder contains _all_ the necessary config options.
 
-This _default.yml_ file will be transformed with real values on deployment via Octopus, using [Structured Configuration Variables](https://octopus.com/docs/projects/steps/configuration-features/structured-configuration-variables-feature).
+Deployment is via Octopus.
+
+### Unit tests config
+
+Unit tests reference variables set in _.env.test_ located in the _web_ directory.
 
 ### Secrets
 
-Sensitive values like secrets are deliberately empty - this is a *public* repo. Create a local file (e.g. _local-development.json_ or _local-development.yml_) in the _config_ directory with any secrets and these will be automatically merged with the config from _default.yml_. Note: avoid using just _local.yml_ as this will also affect tests.
+Sensitive values like secrets are deliberately empty - this is a *public* repo. Create a local file (e.g. _.env.development.local_ or _.env.production.local_) in the _web_ directory with any secrets and these will be automatically merged with the config from _.env_.
 
 ## :rocket: Set up
 
@@ -147,6 +153,10 @@ We will set up VS Code debug integration, but in the mean time use the command l
 
 > This _web_ folder uses dev dependencies from the root folder, because of the way that [NodeJS traverses up folders to find modules](https://nodejs.org/api/modules.html#modules_loading_from_node_modules_folders).
 
+## NextJS routing
+
+Nextweb uses a hybrid routing setup which supports the old _pages_ router and the _app_ router, introduced in NextJS version 13. This will enable a phased migration from _pages_ router to _app_ router. At time of writing the only page served by _app_ router is the _not-found_ (404) page.
+
 ## Production hosting
 
 First run `npm run build` to [build the NextJS app for production](https://nextjs.org/docs/api-reference/cli#build).
@@ -157,7 +167,7 @@ Now run the production build on a local sever by either running the built in Nex
 
 Run `npm start` to run the built in NextJS server as a single process.
 
-This is a good, quick way to verify the production build works properly but it's not 100% representative of how it runs in production. For example, it's a single process rather than clustered over multiple CPU cores. Using PM2 (below) is a more 'production-like' approach:
+This is a good, quick way to verify the production build works properly but it's not 100% representative of how it runs in production. For example, it's a single process rather than clustered over multiple CPU cores.
 
 ### AWS EC2
 
@@ -242,41 +252,32 @@ Follow these steps to set up the Publications service locally and enable communi
 ### Next-Web setup
 1. **Follow setup instructions:**
    - Start by following the steps outlined in the [Set up](#rocket-set-up) section 
-2. **Create a `local-development.yml` file:**
-   - In the web/config directory of `Next-Web`, create a `local-development.yml` file and add the following configuration:
+2. **Create a `.env.development.local` file:**
+   - In the web directory of `Next-Web`, create a `.env.development.local` file and add the following configuration:
 
-```yaml
-public:
-	search:
-		baseURL: https://alpha-search-api.nice.org.uk/api
-	jotForm:
-		baseURL: https://nice.jotform.com
-server:
-	feeds:
-		publications:
-			# origin: https://alpha-publications.nice.org.uk
-			# apiKey: <SECRET>
-			# origin: https://beta.publications.nice.org.uk
-			# apiKey: <SECRET>
-			# origin: https://test-publications.nice.org.uk
-			# apiKey: <SECRET>
-			# origin: https://live-publications.nice.org.uk
-			# apiKey: <SECRET>
-			origin: https://local-publications.nice.org.uk
-			apiKey: <SECRET>
-		inDev:
-			# origin: http://local-indev.nice.org.uk
-			# apiKey: <SECRET>
-			origin: https://alpha-indev.nice.org.uk
-			apiKey: <SECRET>
-			# origin: https://beta-indev.nice.org.uk
-			# apiKey: <SECRET>
-			# origin: https://test-indev.nice.org.uk
-			# apiKey: <SECRET>
-			# origin: https://indev.nice.org.uk
-			# apiKey: <SECRET>
-		jotForm:
-			apiKey: <SECRET>
+```env
+PUBLIC_SEARCH_BASE_URL=https://search-api.nice.org.uk/api
+PUBLIC_JOTFORM_BASE_URL=https://nice.jotform.com
+PUBLIC_STORYBLOK_ACCESS_TOKEN=SECRET
+PUBLIC_STORYBLOK_ENABLE_ROOT_CATCH_ALL=true
+PUBLIC_STORYBLOK_OCELOT_ENDPOINT=
+PUBLIC_DENY_ROBOTS=false
+
+# SERVER_FEEDS_PUBLICATIONS_ORIGIN=https://alpha-publications.nice.org.uk
+# SERVER_FEEDS_PUBLICATIONS_ORIGIN=https://beta.publications.nice.org.uk
+# SERVER_FEEDS_PUBLICATIONS_ORIGIN=https://test-publications.nice.org.uk
+# SERVER_FEEDS_PUBLICATIONS_ORIGIN=https://live-publications.nice.org.uk
+SERVER_FEEDS_PUBLICATIONS_ORIGIN=http://local-publications.nice.org.uk
+SERVER_FEEDS_PUBLICATIONS_API_KEY=SECRET
+# SERVER_FEEDS_INDEV_ORIGIN=http://local-indev.nice.org.uk
+# SERVER_FEEDS_INDEV_ORIGIN=https://beta-indev.nice.org.uk
+# SERVER_FEEDS_INDEV_ORIGIN=https://test-indev.nice.org.uk
+# SERVER_FEEDS_INDEV_ORIGIN=https://indev.nice.org.uk
+SERVER_FEEDS_INDEV_ORIGIN=https://alpha-indev.nice.org.uk
+SERVER_FEEDS_INDEV_API_KEY=SECRET
+SERVER_FEEDS_JOTFORM_API_KEY=SECRET
+
+SUPPRESS_NO_CONFIG_WARNING=true
 ```
 Uncomment the relevant `origin` and `apiKey` based on your needs.
 
@@ -288,7 +289,7 @@ Uncomment the relevant `origin` and `apiKey` based on your needs.
 process.env.NODE_TLS_REJECT_UNAUTHORIZED = "0";
 ```
 4. **Install dependencies**
-   - Navigate to the `web` directory in your termimal in Visual Studio code and run `npm i`
+   - Navigate to the `web` directory in your termimal in Visual Studio code and run `npm ci`
 5. **Run the development server:**
    - Start the local Next-Web development server by running `npm run dev`
 6. **Access Next-Web:**

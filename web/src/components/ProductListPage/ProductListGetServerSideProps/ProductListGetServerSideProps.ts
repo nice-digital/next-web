@@ -14,7 +14,7 @@ import {
 } from "@nice-digital/search-client";
 
 import { getRedirectUrl } from "@/components/ProductListPage/redirects";
-import { publicRuntimeConfig } from "@/config";
+// import { publicRuntimeConfig } from "@/config";
 import { logger } from "@/logger";
 import { dateFormatShort } from "@/utils/datetime";
 
@@ -53,7 +53,8 @@ export const getGetServerSidePropsFunc =
 			return { redirect: { destination: redirectUrl, permanent: true } };
 
 		initSearchClient({
-			baseURL: publicRuntimeConfig.search.baseURL,
+			// baseURL: publicRuntimeConfig.search.baseURL,
+			baseURL: process.env.PUBLIC_SEARCH_BASE_URL as `https://${string}/api`,
 			index: index,
 		});
 
