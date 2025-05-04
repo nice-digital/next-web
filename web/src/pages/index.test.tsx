@@ -12,7 +12,7 @@ import {
 } from "@/test-utils/storyblok-data";
 import mockLatestNews from "@/test-utils/storyblok-homepage-latestnews-response.json";
 import mockResult from "@/test-utils/storyblok-homepage-result.json";
-import mockFetchStory from "@/test-utils/storyblok-homepage-storyResult-response.json";
+import mockFetchStory from "@/test-utils/storyblok-homepage-storyResult-response.json"; //https://api.storyblok.com/v2/cdn/stories/home?version=published&token=ALPHA_PUBLIC&resolve_links=url
 import MockServerErrorResponse from "@/test-utils/storyblok-server-error-response.json";
 import { NewsStory } from "@/types/News";
 import * as storyblokUtils from "@/utils/storyblok";

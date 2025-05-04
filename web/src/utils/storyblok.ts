@@ -42,10 +42,10 @@ export const newsTypes = {
 	podcast: "Podcasts",
 	inDepthArticle: "In-depth",
 };
-
 // Are we using the Ocelot cache?
 // If not, then we can assume we're not in production and can just request the latest version of the content
-export const usingOcelotCache = !!publicRuntimeConfig.storyblok.ocelotEndpoint;
+export const usingOcelotCache =
+	!!publicRuntimeConfig.storyblok.ocelotEndpointV2;
 
 // Default podcast image
 export const defaultPodcastImage =
@@ -53,7 +53,26 @@ export const defaultPodcastImage =
 
 export const GENERIC_ERROR_MESSAGE =
 	"Oops! Something went wrong and we're working to fix it. Please try again later.";
+//Fetch cache version from storyblok space API
+export const fetchCacheVersion = async (): Promise<number> => {
+	const storyblokApi = getStoryblokApi();
+	let result: string;
 
+	try {
+		const response = await storyblokApi.get("cdn/spaces/me");
+		result = response.data.space.version;
+	} catch (error) {
+		logger.error(
+			isISbError(error)
+				? `fetchCacheVersion: ${error.status} error from Storyblok API: ${error.message}`
+				: `fetchCacheVersion: Non ISbError response`
+		);
+		throw Error(GENERIC_ERROR_MESSAGE, { cause: error });
+	}
+	// cacheVersion = Number(result);
+	// localStorage.setItem("cacheVersion", result);
+	return Number(result);
+};
 // Fetch a single story from the Storyblok API
 export const fetchStory = async <T>(
 	slug: string,
@@ -65,16 +84,17 @@ export const fetchStory = async <T>(
 			slug,
 			version,
 			params,
-			ocelotEndpoint: publicRuntimeConfig.storyblok.ocelotEndpoint,
+			ocelotEndpoint: publicRuntimeConfig.storyblok.ocelotEndpointV2,
 		},
 		`Fetching story with slug: ${slug} and version: ${version} from fetchStory function`
 	);
 
 	const storyblokApi = getStoryblokApi();
-
+	const cacheVersion = await fetchCacheVersion();
 	const sbParams: ISbStoriesParams = {
 		version,
 		resolve_links: "url",
+		cv: cacheVersion,
 		...params,
 	};
 
@@ -113,7 +133,7 @@ export const fetchStory = async <T>(
 			slug,
 			version,
 			params,
-			ocelotEndpoint: publicRuntimeConfig.storyblok.ocelotEndpoint,
+			ocelotEndpoint: publicRuntimeConfig.storyblok.ocelotEndpointV2,
 		},
 		`fetchStory: Fetched story with slug: ${slug} and version: ${version}`
 	);
@@ -171,7 +191,6 @@ export const validateRouteParams = async <T>({
 	} else {
 		page = Number(query.page) || 1;
 	}
-
 	const requestParams: ISbStoriesParams = {
 		...sbParams,
 		page,
@@ -242,9 +261,11 @@ export const fetchStories = async <T>(
 	params: ISbStoriesParams = {}
 ): Promise<SBMultipleResponse<T>> => {
 	const storyblokApi = getStoryblokApi();
+	const cacheVersion = await fetchCacheVersion();
 	const sbParams: ISbStoriesParams = {
 		version,
 		resolve_links: "url",
+		cv: cacheVersion,
 		...params,
 	};
 
@@ -280,9 +301,10 @@ export const fetchLinks = async (
 	startsWith?: string
 ): Promise<SBLink[]> => {
 	const storyblokApi = getStoryblokApi();
-
+	const cacheVersion = await fetchCacheVersion();
 	const sbParams: ISbStoriesParams = {
 		version: version || "published",
+		cv: cacheVersion,
 		// cv: Date.now(), // Useful for flushing the Storyblok cache
 	};
 

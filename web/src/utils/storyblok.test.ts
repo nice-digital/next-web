@@ -10,7 +10,7 @@ import MockMultipleStorySuccessResponse from "@/test-utils/storyblok-news-articl
 import Mock404FromStoryblokApi from "@/test-utils/storyblok-not-found-response.json";
 import MockLinksSuccessResponse from "@/test-utils/storyblok-react-links-success-response.json";
 import MockServerErrorResponse from "@/test-utils/storyblok-server-error-response.json";
-import MockSingleStorySuccessResponse from "@/test-utils/storyblok-single-story-response.json";
+import MockSingleStorySuccessResponse from "@/test-utils/storyblok-single-story-response.json"; //https://api.storyblok.com/v2/cdn/stories/unit-test-data/test-page?resolve_links=url&token=ALPHA_PREVIEW
 import { type MultilinkStoryblok } from "@/types/storyblok";
 import * as storyblokUtils from "@/utils/storyblok";
 
@@ -242,6 +242,8 @@ describe("Storyblok utils", () => {
 
 	describe("fetchStory", () => {
 		it("should call the storyblokApi.get method with the correct params", async () => {
+			const mockCv = 123456789;
+			jest.spyOn(storyblokUtils, "fetchCacheVersion").mockResolvedValue(mockCv);
 			getStoryblokApi().get = jest
 				.fn()
 				.mockResolvedValue(MockSingleStorySuccessResponse);
@@ -256,6 +258,7 @@ describe("Storyblok utils", () => {
 				{
 					resolve_links: "url",
 					version: "draft",
+					cv: mockCv,
 				}
 			);
 		});
@@ -265,9 +268,9 @@ describe("Storyblok utils", () => {
 				.fn()
 				.mockResolvedValue(MockSingleStorySuccessResponse);
 
-			const result = await fetchStory("news/articles/test-page", "published");
+			const result = await fetchStory("unit-test-data/test-page", "published");
 
-			expect(result.story).toEqual(MockSingleStorySuccessResponse.data.story);
+			expect(result.story).toEqual(MockSingleStorySuccessResponse.story);
 		});
 
 		it("should handle a 404", async () => {
@@ -336,6 +339,8 @@ describe("Storyblok utils", () => {
 
 	describe("fetchStories", () => {
 		it("should call the Storyblok.get method with the correct params", async () => {
+			const mockCv = 123456789;
+			jest.spyOn(storyblokUtils, "fetchCacheVersion").mockResolvedValue(mockCv);
 			getStoryblokApi().get = jest
 				.fn()
 				.mockResolvedValue(MockMultipleStorySuccessResponse);
@@ -343,6 +348,7 @@ describe("Storyblok utils", () => {
 			await fetchStories("published", {
 				starts_with: "news/articles",
 				per_page: 6,
+				cv: mockCv,
 			});
 
 			expect(getStoryblokApi().get).toHaveBeenCalled();
@@ -353,6 +359,7 @@ describe("Storyblok utils", () => {
 				version: "published",
 				starts_with: "news/articles",
 				per_page: 6,
+				cv: mockCv,
 			});
 		});
 
@@ -459,6 +466,8 @@ describe("Storyblok utils", () => {
 
 	describe("fetchLinks", () => {
 		it("should call the storyblokApi.getAll method with the correct params", async () => {
+			const mockCv = 123456789;
+			jest.spyOn(storyblokUtils, "fetchCacheVersion").mockResolvedValue(mockCv);
 			getStoryblokApi().getAll = jest
 				.fn()
 				.mockResolvedValue(MockLinksSuccessResponse);
@@ -471,6 +480,7 @@ describe("Storyblok utils", () => {
 			expect(getStoryblokApi().getAll).toHaveBeenCalledWith("cdn/links", {
 				version: "published",
 				starts_with: "news/podcasts",
+				cv: mockCv,
 			});
 		});
 
@@ -535,6 +545,8 @@ describe("Storyblok utils", () => {
 
 	describe("getBreadcrumbs", () => {
 		it("should fetch links with correct params", async () => {
+			const mockCv = 123456789;
+			jest.spyOn(storyblokUtils, "fetchCacheVersion").mockResolvedValue(mockCv);
 			const fetchLinksSpy = jest.spyOn(storyblokUtils, "fetchLinks");
 
 			getStoryblokApi().getAll = jest
@@ -550,6 +562,7 @@ describe("Storyblok utils", () => {
 			expect(getStoryblokApi().getAll).toHaveBeenCalledWith("cdn/links", {
 				version: "published",
 				starts_with: "news",
+				cv: mockCv,
 			});
 		});
 

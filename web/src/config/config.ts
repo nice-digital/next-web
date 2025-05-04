@@ -106,6 +106,7 @@ export interface FeedsConfig {
 export interface StoryblokConfig {
 	readonly accessToken: string;
 	readonly ocelotEndpoint: string;
+	readonly ocelotEndpointV2: string;
 	readonly enableRootCatchAll: string;
 }
 
