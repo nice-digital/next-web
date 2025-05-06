@@ -353,6 +353,14 @@ export type RelatedResourceList = {
 	uid: number;
 };
 
+export type RelatedProductList = {
+	id: string;
+	url: string;
+	relationship: string;
+	title: string;
+	shortTitle: string;
+};
+
 export type RelatedResource = {
 	links: {
 		self: [Link, Record<string, never>];
@@ -480,14 +488,6 @@ export enum ResourceType {
 	GuideToResources = "GuideToResources",
 }
 
-export type RelatedProductList = {
-	links: EmptySelfLinks;
-	embedded: {
-		relatedProduct: RelatedProduct | RelatedProduct[];
-	};
-	eTag: ETag;
-};
-
 export type RelatedProduct = {
 	links: EmptySelfLinks & {
 		relatedProductUri: [Link];
@@ -526,7 +526,7 @@ export type ProductAndResourceBase = {
 	contentPartsList?: ContentPart[];
 	contentPartList2?: ContentPartList2;
 	relatedResourceList?: RelatedResourceList;
-	relatedProductList?: RelatedProductList;
+	relatedProductList?: RelatedProductList[];
 	accreditationList: BadgingFields[];
 	endorsementList: BadgingFields[];
 	supportingList: BadgingFields[];
