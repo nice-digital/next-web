@@ -4388,6 +4388,7 @@ exports[`/indicators/[slug]/chapter/[chapterSlug].page IndicatorChapterPage shou
 
               </div>
             </div>
+            <hr />
             <div
               class="prev-next"
             >

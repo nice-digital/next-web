@@ -598,6 +598,7 @@ exports[`/indicators/[slug].page IndicatorDetailPage should match snapshot for m
             data-component="grid-item"
             data-g="12"
           >
+            <hr />
             <div
               class="prev-next"
             >
