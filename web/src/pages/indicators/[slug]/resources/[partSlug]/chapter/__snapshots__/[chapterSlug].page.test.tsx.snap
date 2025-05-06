@@ -2828,6 +2828,7 @@ exports[`/product/[slug]/resources/[partSlug]/chapter/[chapterSlug].page Product
               18 January 2022
             </time>
           </p>
+          <hr />
           <div
             class="prev-next"
           >

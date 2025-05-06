@@ -248,6 +248,7 @@ exports[`ProductResourcePage should match snapshot 1`] = `
               11 July 2018
             </time>
           </p>
+          <hr />
           <div
             class="prev-next"
           />
