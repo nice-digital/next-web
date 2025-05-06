@@ -343,7 +343,22 @@ describe("StoryblokSectionNav Utils", () => {
 			]
 		`);
 		});
+		it("uses full slug when isRootPage is true", async () => {
+			const fullSlug = "a/b/c";
+			jest
+				.spyOn(api, "getCurrentFolderItems")
+				.mockResolvedValue(currentFolderItems);
+			const fetchSpy = jest
+				.spyOn(api, "fetchCurrentAndParentFolderItems")
+				.mockResolvedValue({ currentAndParentFolderItems });
+			jest
+				.spyOn(api, "assignChildrenToParent")
+				.mockReturnValue(currentAndParentFolderItems);
 
+			await buildTree(parentID, fullSlug, true);
+
+			expect(fetchSpy).toHaveBeenCalledWith(parentID, fullSlug, true);
+		});
 		it("calls fetchAndBuildParentAndChildTree when current page has no children", async () => {
 			const parentID = 123;
 			const currentPageSlug = "parent/child/page";
@@ -418,6 +433,8 @@ describe("StoryblokSectionNav Utils", () => {
 			  },
 			]
 		`);
+
+
 		});
 	});
 });
