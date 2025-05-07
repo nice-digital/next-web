@@ -67,6 +67,25 @@ describe("StoryblokSectionNav Utils", () => {
 			  },
 			]
 		`);
+
+			const parentsWithNoChildren = [
+				{ id: 3, name: "Parent 3" },
+			] as unknown as ExtendedSBLink[];
+
+			const resultWithNoChildren = assignChildrenToParent(
+				currentFolderItems,
+				parentsWithNoChildren
+			);
+
+			expect(resultWithNoChildren).toMatchInlineSnapshot(`
+			Array [
+			  Object {
+			    "childLinks": Array [],
+			    "id": 3,
+			    "name": "Parent 3",
+			  },
+			]
+		`);
 		});
 	});
 
@@ -433,8 +452,6 @@ describe("StoryblokSectionNav Utils", () => {
 			  },
 			]
 		`);
-
-
 		});
 	});
 });
