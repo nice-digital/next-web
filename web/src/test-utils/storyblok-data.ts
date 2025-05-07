@@ -1,5 +1,6 @@
 // Dump any useful test objects in here for mocking Storyblok responses
 
+import { release } from "os";
 import { ISbStoryData } from "@storyblok/react";
 
 import {
@@ -39,6 +40,7 @@ export const mockStoryblokStory = {
 			lang: "en",
 		},
 	],
+	release_id: null,
 };
 
 export const mockAuthorBlok: ISbStoryData<AuthorStoryblok> = {
