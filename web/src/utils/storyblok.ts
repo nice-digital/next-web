@@ -54,6 +54,27 @@ export const defaultPodcastImage =
 export const GENERIC_ERROR_MESSAGE =
 	"Oops! Something went wrong and we're working to fix it. Please try again later.";
 
+//Fetch cache version from storyblok space API
+export const fetchCacheVersion = async (): Promise<number> => {
+	const storyblokApi = getStoryblokApi();
+	let result: string;
+
+	try {
+		const response = await storyblokApi.get("cdn/spaces/me");
+		result = response.data.space.version;
+	} catch (error) {
+		logger.error(
+			isISbError(error)
+				? `fetchCacheVersion: ${error.status} error from Storyblok API: ${error.message}`
+				: `fetchCacheVersion: Non ISbError response`
+		);
+		throw Error(GENERIC_ERROR_MESSAGE, { cause: error });
+	}
+	// cacheVersion = Number(result);
+	// localStorage.setItem("cacheVersion", result);
+	return Number(result);
+};
+
 // Fetch a single story from the Storyblok API
 export const fetchStory = async <T>(
 	slug: string,
@@ -71,10 +92,11 @@ export const fetchStory = async <T>(
 	);
 
 	const storyblokApi = getStoryblokApi();
-
+	const cacheVersion = await fetchCacheVersion();
 	const sbParams: ISbStoriesParams = {
 		version,
 		resolve_links: "url",
+		cv: cacheVersion,
 		...params,
 	};
 
@@ -242,9 +264,11 @@ export const fetchStories = async <T>(
 	params: ISbStoriesParams = {}
 ): Promise<SBMultipleResponse<T>> => {
 	const storyblokApi = getStoryblokApi();
+	const cacheVersion = await fetchCacheVersion();
 	const sbParams: ISbStoriesParams = {
 		version,
 		resolve_links: "url",
+		cv: cacheVersion,
 		...params,
 	};
 
