@@ -96,21 +96,6 @@ namespace NICE.NextWeb.API
                             pattern: "{admin}/{controller}/{action=Index}/{id?}");
                 }
             });
-
-            var configuration = new OcelotPipelineConfiguration
-            {
-                PreAuthenticationMiddleware = async (context, next) =>
-                {
-                    if (context.Request.Path.ToString().Contains("storyblok"))
-                    {
-                        var newQuery = HttpUtility.ParseQueryString(context.Items.DownstreamRequest().Query.ToString());
-                        newQuery["cv"] = DateTimeOffset.UtcNow.ToUnixTimeSeconds().ToString();
-                        context.Items.DownstreamRequest().Query =  $"?{newQuery}";
-                    }
-                    await next.Invoke();
-                }
-            };
-            app.UseOcelot(configuration).Wait();
         }
     }
 }
