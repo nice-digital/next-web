@@ -14,12 +14,16 @@ export const StoryblokSectionNav = ({
 	tree,
 	slug,
 }: StoryblokSectionNavProps): JSX.Element => {
-	const sectionNavLabel = tree[0];
-	const sectionNavTreeWithoutLabel = tree?.length > 0 ? tree.slice(1) : [];
+	const sectionNavLabel = tree.filter((item) => item.is_startpage);
+
+	const sectionNavTreeWithoutLabel = tree.filter(
+		(item) => item.is_startpage === false
+	);
+
 	return (
 		<>
 			<StackedNav
-				label={sectionNavLabel?.name}
+				label={sectionNavLabel[0]?.name}
 				className={styles["storyblok-section-nav"]}
 			>
 				{sectionNavTreeWithoutLabel?.map((parent) => (
