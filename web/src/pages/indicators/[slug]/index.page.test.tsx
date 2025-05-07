@@ -2,6 +2,7 @@ import { render, screen, waitFor, within } from "@testing-library/react";
 import { type GetServerSidePropsContext } from "next";
 import { useRouter } from "next/router";
 
+import { RelatedProductsProps } from "@/components/RelatedProducts/RelatedProducts";
 import ng100 from "@/mockData/publications/feeds/product/ng100.json";
 
 import IndicatorsDetailsPage, {
@@ -192,6 +193,57 @@ describe("/indicators/[slug].page", () => {
 				expect(
 					within(publicationsChapterMenu).getByText("Overview")
 				).toBeInTheDocument();
+			});
+		});
+
+		describe("Related quality standards", () => {
+			it("should only render products with IDs starting with 'QS' and relationship is 'IsTheBasisOf'", () => {
+				const relatedProducts: RelatedProductsProps["relatedProducts"] = [
+					{
+						id: "QS1",
+						title: "Product 1",
+						url: "/product-1",
+						relationship: "IsTheBasisOf",
+						shortTitle: "Prod 1",
+					},
+					{
+						id: "QS2",
+						title: "Product 2",
+						url: "/product-2",
+						relationship: "IsTheBasisOf",
+						shortTitle: "Prod 2",
+					},
+					{
+						id: "ABC3",
+						title: "Product 3",
+						url: "/product-3",
+						relationship: "IsTheBasisOf",
+						shortTitle: "Prod 3",
+					},
+					{
+						id: "QS4",
+						title: "Product 4",
+						url: "/product-4",
+						relationship: "IsRelatedTo",
+						shortTitle: "Prod 4",
+					},
+				];
+
+				render(
+					<IndicatorsDetailsPage
+						{...props}
+						product={{
+							...props.product,
+							relatedProductList: relatedProducts,
+						}}
+					/>
+				);
+
+				// Check that only products with IDs starting with 'QS' and relationship 'IsTheBasisOf' are rendered
+				expect(screen.getByText("Product 1")).toBeInTheDocument();
+				expect(screen.getByText("Product 2")).toBeInTheDocument();
+				expect(screen.queryByText("Product 3")).not.toBeInTheDocument();
+				expect(screen.queryByText("Product 4")).not.toBeInTheDocument();
 			});
 		});
 	});

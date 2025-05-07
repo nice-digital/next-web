@@ -34,9 +34,12 @@ export const PublicationsPrevNext: FC<PublicationsPrevNextProps> = ({
 		previousPageLink = chapters[currentIndex - 1];
 
 	return (
-		<PrevNext
-			nextPageLink={getPageLink(nextPageLink)}
-			previousPageLink={getPageLink(previousPageLink)}
-		/>
+		<React.Fragment>
+			<hr />
+			<PrevNext
+				nextPageLink={getPageLink(nextPageLink)}
+				previousPageLink={getPageLink(previousPageLink)}
+			/>
+		</React.Fragment>
 	);
 };

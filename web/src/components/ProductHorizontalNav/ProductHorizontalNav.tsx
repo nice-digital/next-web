@@ -8,6 +8,8 @@ import {
 
 import { ScrollToContentStartLink } from "../Link/Link";
 
+import styles from "./ProductHorizontalNav.module.scss";
+
 export type ProductHorizontalNavProps = {
 	/** The nav label for the product overview eg "Quality standard", "Guidance", "Advice" or "indicator" etc */
 	productTypeName: string;
@@ -23,7 +25,7 @@ export const ProductHorizontalNav: FC<ProductHorizontalNavProps> = ({
 	productTypeName,
 	productPath,
 	hasEvidenceResources,
-	hasInfoForPublicResources,
+	// hasInfoForPublicResources,
 	hasToolsAndResources,
 	hasHistory,
 	isWithdrawn,
@@ -43,12 +45,13 @@ export const ProductHorizontalNav: FC<ProductHorizontalNavProps> = ({
 	// and therefore don't need a nav at all
 	if (
 		(!hasEvidenceResources &&
-			!hasInfoForPublicResources &&
+			// !hasInfoForPublicResources &&
 			!hasToolsAndResources &&
 			!hasHistory) ||
 		isWithdrawn
-	)
-		return null;
+	) {
+		return <hr className={styles.hrCustomTab} />;
+	}
 
 	return (
 		<HorizontalNav>
