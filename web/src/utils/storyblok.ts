@@ -45,7 +45,8 @@ export const newsTypes = {
 
 // Are we using the Ocelot cache?
 // If not, then we can assume we're not in production and can just request the latest version of the content
-export const usingOcelotCache = !!publicRuntimeConfig.storyblok.ocelotEndpointV2;
+export const usingOcelotCache =
+	!!publicRuntimeConfig.storyblok.ocelotEndpointV2;
 
 // Default podcast image
 export const defaultPodcastImage =
@@ -303,11 +304,12 @@ export const fetchLinks = async (
 	version: StoryVersion,
 	startsWith?: string
 ): Promise<SBLink[]> => {
+	const cacheVersion = await fetchCacheVersion();
 	const storyblokApi = getStoryblokApi();
 
 	const sbParams: ISbStoriesParams = {
 		version: version || "published",
-		// cv: Date.now(), // Useful for flushing the Storyblok cache
+		cv: cacheVersion,
 	};
 
 	if (startsWith) {
