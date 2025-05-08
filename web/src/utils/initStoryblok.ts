@@ -6,7 +6,7 @@ import { logger } from "@/logger";
 // Init connection to Storyblok
 export const initStoryblok = (): void => {
 	const accessToken = publicRuntimeConfig.storyblok.accessToken;
-	const endpoint = publicRuntimeConfig.storyblok.ocelotEndpointV2;
+	const endpoint = publicRuntimeConfig.storyblok.ocelotEndpoint;
 	const usingOcelotCache = !!endpoint;
 
 	try {
@@ -30,7 +30,7 @@ export const initStoryblok = (): void => {
 	} catch (error) {
 		logger.error(
 			{
-				ocelotEndpointV2: endpoint,
+				ocelotEndpoint: endpoint,
 				usingOcelotCache,
 				error,
 			},

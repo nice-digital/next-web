@@ -46,7 +46,7 @@ export const newsTypes = {
 // Are we using the Ocelot cache?
 // If not, then we can assume we're not in production and can just request the latest version of the content
 export const usingOcelotCache =
-	!!publicRuntimeConfig.storyblok.ocelotEndpointV2;
+	!!publicRuntimeConfig.storyblok.ocelotEndpoint;
 
 // Default podcast image
 export const defaultPodcastImage =
@@ -91,7 +91,7 @@ export const fetchStory = async <T>(
 			slug,
 			version,
 			params,
-			ocelotEndpoint: publicRuntimeConfig.storyblok.ocelotEndpointV2,
+			ocelotEndpoint: publicRuntimeConfig.storyblok.ocelotEndpoint,
 		},
 		`Fetching story with slug: ${slug} and version: ${version} from fetchStory function`
 	);
@@ -145,7 +145,7 @@ export const fetchStory = async <T>(
 			slug,
 			version,
 			params,
-			ocelotEndpoint: publicRuntimeConfig.storyblok.ocelotEndpointV2,
+			ocelotEndpoint: publicRuntimeConfig.storyblok.ocelotEndpoint,
 		},
 		`fetchStory: Fetched story with slug: ${slug} and version: ${version}`
 	);
@@ -254,7 +254,7 @@ export const validateRouteParams = async <T>({
 		// 	requestParams,
 		// 	errorCause: error instanceof Error && error.cause,
 		// 	errorMessage: error instanceof Error && error.message,
-		// 	ocelotEndpoint: publicRuntimeConfig.storyblok.ocelotEndpointV2,
+		// 	ocelotEndpoint: publicRuntimeConfig.storyblok.ocelotEndpoint,
 		// },
 		logger.error(
 			`validateRouteParams: Error: ${
@@ -294,7 +294,7 @@ export const fetchStories = async <T>(
 		// {
 		// 	errorCause: error,
 		// 	sbParams,
-		// 	ocelotEndpoint: publicRuntimeConfig.storyblok.ocelotEndpointV2,
+		// 	ocelotEndpoint: publicRuntimeConfig.storyblok.ocelotEndpoint,
 		// },
 		logger.error(
 			isISbError(error)
