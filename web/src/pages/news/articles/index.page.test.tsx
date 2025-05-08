@@ -174,6 +174,8 @@ describe("/news/articles/index.page", () => {
 				getStoryVersionFromQuery: jest.fn().mockReturnValue("published"),
 			}));
 
+			jest.spyOn(storyblokUtils, "fetchCacheVersion").mockResolvedValue(123456789);
+
 			validateRouteParamsSpy = jest.spyOn(
 				storyblokUtils,
 				"validateRouteParams"

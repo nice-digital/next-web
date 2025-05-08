@@ -61,7 +61,6 @@ jest.mock("react", () => ({
 	useId: () => "r:id",
 }));
 
-jest.spyOn(storyblokUtils, "fetchCacheVersion").mockResolvedValue(123456789);
 
 beforeEach(() => {
 	axiosJSONMock.reset();

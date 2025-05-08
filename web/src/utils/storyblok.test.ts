@@ -33,7 +33,16 @@ import {
 	fieldHasValidContent,
 } from "./storyblok";
 
-describe("Storyblok utils", () => {
+describe.only("Storyblok utils", () => {
+
+	beforeEach(() => {
+		jest.spyOn(storyblokUtils, "fetchCacheVersion").mockResolvedValue(123456789);
+	});
+
+	afterEach(() => {
+		jest.clearAllMocks();
+	});
+
 	describe("Resolve Storyblok links", () => {
 		it.each([
 			[

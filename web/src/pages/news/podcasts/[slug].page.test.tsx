@@ -83,6 +83,7 @@ describe("PodcastPage", () => {
 		beforeEach(() => {
 			fetchStorySpy = jest.spyOn(storyblokUtils, "fetchStory");
 			getBreadCrumbsSpy = jest.spyOn(storyblokUtils, "getBreadcrumbs");
+			jest.spyOn(storyblokUtils, "fetchCacheVersion").mockResolvedValue(123456789);
 		});
 
 		afterEach(() => {

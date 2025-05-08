@@ -41,6 +41,8 @@ describe("NewsArticlePage", () => {
 		beforeEach(() => {
 			fetchStorySpy = jest.spyOn(storyblokUtils, "fetchStory");
 			getBreadcrumbs = jest.spyOn(storyblokUtils, "getBreadcrumbs");
+			jest.spyOn(storyblokUtils, "fetchCacheVersion").mockResolvedValue(123456789);
+
 		});
 
 		afterEach(() => {

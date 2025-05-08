@@ -180,6 +180,8 @@ describe("/news/blogs/index.page", () => {
 				"validateRouteParams"
 			);
 
+			jest.spyOn(storyblokUtils, "fetchCacheVersion").mockResolvedValue(123456789);
+
 			getStoryblokApi().get = jest
 				.fn()
 				.mockResolvedValue(MockStoryblokSuccessResponse);

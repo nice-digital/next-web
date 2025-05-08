@@ -35,6 +35,7 @@ describe("getServerSideProps", () => {
 	let fetchStoriesSpy: jest.SpyInstance;
 	beforeEach(() => {
 		fetchStoriesSpy = jest.spyOn(storyblokUtils, "fetchStories");
+		jest.spyOn(storyblokUtils, "fetchCacheVersion").mockResolvedValue(123456789);
 	});
 
 	afterEach(() => {

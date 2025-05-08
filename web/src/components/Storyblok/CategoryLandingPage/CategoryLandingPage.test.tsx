@@ -10,24 +10,8 @@ import {
 } from "./CategoryLandingPage";
 
 // test mocking the StoryblokComponent
-// jest.mock("@storyblok/react", () => ({
-// 	// eslint-disable-next-line @typescript-eslint/no-explicit-any
-// 	StoryblokComponent: ({ blok }: { blok: any }) => {
-// 		return (
-// 			<div data-testid={`storyblok-component-${blok.component}`}>
-// 				{blok.component}
-// 			</div>
-// 		);
-// 	},
-// }));
 jest.mock("@storyblok/react", () => ({
-	...jest.requireActual("@storyblok/react"),
-	getStoryblokApi: jest.fn().mockReturnValue({
-		get: jest.fn(),
-		getAll: jest.fn(),
-	}),
-	storyblokInit: jest.fn(),
-	apiPlugin: {},
+	// eslint-disable-next-line @typescript-eslint/no-explicit-any
 	StoryblokComponent: ({ blok }: { blok: any }) => {
 		return (
 			<div data-testid={`storyblok-component-${blok.component}`}>
@@ -47,7 +31,8 @@ const mockPropsWithPageHeader: CategoryLandindPageBlokProps = {
 	blok: mockPageHeaderData as CategoryLandingPageStoryblok,
 };
 
-describe.only("CategoryLandingPage", () => {
+describe("CategoryLandingPage", () => {
+
 	it("includes the metadata through the StoryblokComponent", () => {
 		render(<CategoryLandingPage {...mockPropsWithHero} />);
 		expect(
