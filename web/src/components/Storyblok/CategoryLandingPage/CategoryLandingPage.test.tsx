@@ -32,7 +32,6 @@ const mockPropsWithPageHeader: CategoryLandindPageBlokProps = {
 };
 
 describe("CategoryLandingPage", () => {
-
 	it("includes the metadata through the StoryblokComponent", () => {
 		render(<CategoryLandingPage {...mockPropsWithHero} />);
 		expect(

@@ -1,10 +1,7 @@
 import "@testing-library/jest-dom";
 
 import { addDefaultJSONFeedMocks, axiosJSONMock } from "@/test-utils/feeds";
-import * as storyblokUtils from "@/utils/storyblok";
 
-//import * as matchers from "jest-extended/all";
-//expect.extend(matchers);
 
 expect.extend({
 	toHaveTextContentIgnoreTags(received, expected) {
@@ -60,7 +57,6 @@ jest.mock("react", () => ({
 	...jest.requireActual("react"),
 	useId: () => "r:id",
 }));
-
 
 beforeEach(() => {
 	axiosJSONMock.reset();

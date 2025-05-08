@@ -53,7 +53,6 @@ describe("/news/in-depth/index.page", () => {
 		perPage: mockConfig.resultsPerPage,
 	};
 
-
 	describe("InDepthArticleIndexPage", () => {
 		it("should match snapshot for main content", () => {
 			render(<InDepthArticleIndexPage {...mockProps} />);
@@ -182,7 +181,9 @@ describe("/news/in-depth/index.page", () => {
 				"validateRouteParams"
 			);
 
-			jest.spyOn(storyblokUtils, "fetchCacheVersion").mockResolvedValue(123456789);
+			jest
+				.spyOn(storyblokUtils, "fetchCacheVersion")
+				.mockResolvedValue(123456789);
 
 			getStoryblokApi().get = jest
 				.fn()
