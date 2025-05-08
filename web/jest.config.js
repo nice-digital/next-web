@@ -34,7 +34,7 @@ module.exports = {
 	transformIgnorePatterns: ["/node_modules/(?!(axios)/)", "/dist/"],
 	setupFilesAfterEnv: [
 		"./jest.presetup.js",
-		"./jest.setup.ts",
+		"./jest.setup.tsx",
 		"jest-extended/all",
 	],
 	resetModules: true,

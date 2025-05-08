@@ -205,8 +205,6 @@ describe("/news/in-depth/index.page", () => {
 		});
 
 		it("should return notFound if pagination page is out of range", async () => {
-			const mockCv = 123456789;
-						jest.spyOn(storyblokUtils, "fetchCacheVersion").mockResolvedValue(mockCv);
 			const result = await getServerSideProps({
 				query: { page: mockConfig.query.upperOutOfBoundPagination },
 				resolvedUrl: `${mockConfig.startsWith}?page=${mockConfig.query.upperOutOfBoundPagination}`,

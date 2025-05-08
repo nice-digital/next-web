@@ -1,6 +1,7 @@
 import "@testing-library/jest-dom";
 
 import { addDefaultJSONFeedMocks, axiosJSONMock } from "@/test-utils/feeds";
+import * as storyblokUtils from "@/utils/storyblok";
 
 //import * as matchers from "jest-extended/all";
 //expect.extend(matchers);
@@ -45,6 +46,13 @@ jest.mock("@storyblok/react", () => ({
 	}),
 	storyblokInit: jest.fn(),
 	apiPlugin: {},
+	// StoryblokComponent: ({ blok }: { blok: any }) => {
+	// 	return (
+	// 		<div data-testid={`storyblok-component-${blok.component}`}>
+	// 			{blok.component}
+	// 		</div>
+	// 	);
+	// },
 }));
 
 // mock the useId hook to always return the same value
@@ -52,6 +60,8 @@ jest.mock("react", () => ({
 	...jest.requireActual("react"),
 	useId: () => "r:id",
 }));
+
+jest.spyOn(storyblokUtils, "fetchCacheVersion").mockResolvedValue(123456789);
 
 beforeEach(() => {
 	axiosJSONMock.reset();

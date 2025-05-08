@@ -64,8 +64,6 @@ describe("BlogPostPage", () => {
 		});
 
 		it("should return notFound when fetchStory returns notFound", async () => {
-			const mockCv = 123456789;
-			jest.spyOn(storyblokUtils, "fetchCacheVersion").mockResolvedValue(mockCv);
 			fetchStorySpy.mockResolvedValue({ notFound: true });
 			const context = {
 				query: {},
