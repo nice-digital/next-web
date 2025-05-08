@@ -2,7 +2,6 @@ import "@testing-library/jest-dom";
 
 import { addDefaultJSONFeedMocks, axiosJSONMock } from "@/test-utils/feeds";
 
-
 expect.extend({
 	toHaveTextContentIgnoreTags(received, expected) {
 		const strippedReceived = received.replace(/(<([^>]+)>)/gi, "");
