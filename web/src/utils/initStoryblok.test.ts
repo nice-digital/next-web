@@ -8,7 +8,7 @@ import { initStoryblok } from "./initStoryblok";
 jest.mock("@/config", () => ({
 	publicRuntimeConfig: {
 		storyblok: {
-			ocelotEndpointV2: "testEndpoint",
+			ocelotEndpoint: "testEndpoint",
 			accessToken: "testApiKey",
 		},
 	},
@@ -63,7 +63,7 @@ describe("initStoryblok", () => {
 		await waitFor(() => {
 			expect(logger.error).toHaveBeenCalledWith(
 				{
-					ocelotEndpointV2: "testEndpoint",
+					ocelotEndpoint: "testEndpoint",
 					usingOcelotCache: true,
 					error: new Error("Test error"),
 				},

@@ -39,6 +39,7 @@ export const mockStoryblokStory = {
 			lang: "en",
 		},
 	],
+	release_id: null,
 };
 
 export const mockAuthorBlok: ISbStoryData<AuthorStoryblok> = {

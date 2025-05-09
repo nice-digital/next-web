@@ -6,11 +6,11 @@ import {
 import { waitFor } from "@testing-library/react";
 
 import { logger } from "@/logger";
-import MockMultipleStorySuccessResponse from "@/test-utils/storyblok-news-articles-listing.json";
-import Mock404FromStoryblokApi from "@/test-utils/storyblok-not-found-response.json";
-import MockLinksSuccessResponse from "@/test-utils/storyblok-react-links-success-response.json";
-import MockServerErrorResponse from "@/test-utils/storyblok-server-error-response.json";
-import MockSingleStorySuccessResponse from "@/test-utils/storyblok-single-story-response.json";
+import MockMultipleStorySuccessResponse from "@/test-utils/storyblok-news-articles-listing.json"; //TODO check if mock data needs updating to V2 format
+import Mock404FromStoryblokApi from "@/test-utils/storyblok-not-found-response.json"; //TODO check if mock data needs updating to V2 format
+import MockLinksSuccessResponse from "@/test-utils/storyblok-react-links-success-response.json"; //TODO check if mock data needs updating to V2 format
+import MockServerErrorResponse from "@/test-utils/storyblok-server-error-response.json"; //TODO check if mock data needs updating to V2 format
+import MockSingleStorySuccessResponse from "@/test-utils/storyblok-single-story-response.json"; //https://api.storyblok.com/v2/cdn/stories/unit-test-data/test-page?resolve_links=url&token=ALPHA_PREVIEW
 import { type MultilinkStoryblok } from "@/types/storyblok";
 import * as storyblokUtils from "@/utils/storyblok";
 
@@ -33,7 +33,17 @@ import {
 	fieldHasValidContent,
 } from "./storyblok";
 
-describe("Storyblok utils", () => {
+describe.only("Storyblok utils", () => {
+	beforeEach(() => {
+		jest
+			.spyOn(storyblokUtils, "fetchCacheVersion")
+			.mockResolvedValue(123456789);
+	});
+
+	afterEach(() => {
+		jest.clearAllMocks();
+	});
+
 	describe("Resolve Storyblok links", () => {
 		it.each([
 			[
@@ -256,6 +266,7 @@ describe("Storyblok utils", () => {
 				{
 					resolve_links: "url",
 					version: "draft",
+					cv: 123456789, //globally mocked
 				}
 			);
 		});
@@ -265,7 +276,7 @@ describe("Storyblok utils", () => {
 				.fn()
 				.mockResolvedValue(MockSingleStorySuccessResponse);
 
-			const result = await fetchStory("news/articles/test-page", "published");
+			const result = await fetchStory("unit-test-data/test-page", "published");
 
 			expect(result.story).toEqual(MockSingleStorySuccessResponse.data.story);
 		});
@@ -343,6 +354,7 @@ describe("Storyblok utils", () => {
 			await fetchStories("published", {
 				starts_with: "news/articles",
 				per_page: 6,
+				cv: 123456789, //globally mocked
 			});
 
 			expect(getStoryblokApi().get).toHaveBeenCalled();
@@ -353,6 +365,7 @@ describe("Storyblok utils", () => {
 				version: "published",
 				starts_with: "news/articles",
 				per_page: 6,
+				cv: 123456789, //globally mocked
 			});
 		});
 
@@ -364,6 +377,7 @@ describe("Storyblok utils", () => {
 			const result = await fetchStories("published", {
 				starts_with: "news/articles",
 				per_page: 8,
+				cv: 123456789, //globally mocked
 			});
 
 			const expectedResult = {
@@ -384,6 +398,7 @@ describe("Storyblok utils", () => {
 				await fetchStories("published", {
 					starts_with: "news/articles",
 					per_page: 8,
+					cv: 123456789, //globally mocked
 				});
 			};
 
@@ -426,6 +441,7 @@ describe("Storyblok utils", () => {
 				await fetchStories("published", {
 					starts_with: "news/articles",
 					per_page: 8,
+					cv: 123456789, //globally mocked
 				});
 			};
 
@@ -471,6 +487,7 @@ describe("Storyblok utils", () => {
 			expect(getStoryblokApi().getAll).toHaveBeenCalledWith("cdn/links", {
 				version: "published",
 				starts_with: "news/podcasts",
+				cv: 123456789, //globally mocked
 			});
 		});
 
@@ -550,6 +567,7 @@ describe("Storyblok utils", () => {
 			expect(getStoryblokApi().getAll).toHaveBeenCalledWith("cdn/links", {
 				version: "published",
 				starts_with: "news",
+				cv: 123456789, //globally mocked,
 			});
 		});
 
@@ -668,9 +686,11 @@ describe("Storyblok utils", () => {
 		afterEach(() => {
 			// Clean up and restore original timers after each test
 			jest.useRealTimers();
+			// jest.restoreAllMocks();
+		});
+		afterAll(() => {
 			jest.restoreAllMocks();
 		});
-
 		it("should call fetchStories with page being set to 1 when query object is empty", async () => {
 			getStoryblokApi().get = jest
 				.fn()
@@ -804,7 +824,7 @@ describe("Storyblok utils", () => {
 	});
 	describe("fieldHasValidContent", () => {
 		it("should return true or false based on StoryBlok RichText object", () => {
-			const mockFieldObject = { content: [{ type: "paragraph" }] };
+			const mockFieldObject = { type: "paragraph" };
 			expect(fieldHasValidContent(mockFieldObject)).toBe(false);
 		});
 	});
