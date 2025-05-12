@@ -41,8 +41,8 @@ export async function clickPodcastsTab(): Promise<void> {
 }
 
 export async function clickNewslink(): Promise<void> {
-	// await browser.scroll(900, 900);
-	const newsLink = await $(selectors.home.homeSectionLink1);
+	await browser.scroll(900, 900);
+	const newsLink = await $(selectors.home.homeNewLink);
 	await newsLink.waitForExist({ timeout: 20000 });
 	await newsLink.scrollIntoView();
 	await newsLink.scrollIntoView({ block: "center", inline: "center" });
