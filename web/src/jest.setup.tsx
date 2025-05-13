@@ -42,7 +42,6 @@ jest.mock("@storyblok/react", () => ({
 	}),
 	storyblokInit: jest.fn(),
 	apiPlugin: {},
-
 }));
 
 // mock the useId hook to always return the same value

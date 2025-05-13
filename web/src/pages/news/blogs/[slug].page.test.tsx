@@ -5,6 +5,7 @@ import { render, screen } from "@testing-library/react";
 import { GetServerSidePropsContext } from "next";
 
 import { logger } from "@/logger";
+import { mockCvValue } from "@/test-utils/storyblok-data";
 import Mock404FromStoryblokApi from "@/test-utils/storyblok-not-found-response.json";
 import MockServerErrorResponse from "@/test-utils/storyblok-server-error-response.json";
 import mockBlogPostSuccessResponse from "@/test-utils/storyblok-single-blog-post-response.json";
@@ -13,7 +14,6 @@ import * as storyblokUtils from "@/utils/storyblok";
 import { GENERIC_ERROR_MESSAGE } from "@/utils/storyblok";
 
 import BlogPostPage, { getServerSideProps } from "./[slug].page";
-import { mockCvValue } from "@/test-utils/storyblok-data";
 
 //cast to unknown necessary due to some differences in response versus expected type from generate-ts
 const mockBlogPost = mockBlogPostSuccessResponse.data

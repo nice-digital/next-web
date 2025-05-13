@@ -7,7 +7,7 @@ import {
 	mockIndepthArticle,
 	mockNewsArticle,
 	mockPodcastPage,
-	mockCvValue
+	mockCvValue,
 } from "@/test-utils/storyblok-data";
 import * as storyblokUtils from "@/utils/storyblok";
 import { GENERIC_ERROR_MESSAGE } from "@/utils/storyblok";

@@ -6,6 +6,7 @@ import {
 import { waitFor } from "@testing-library/react";
 
 import { logger } from "@/logger";
+import { mockCvValue } from "@/test-utils/storyblok-data";
 import MockMultipleStorySuccessResponse from "@/test-utils/storyblok-news-articles-listing.json"; //http://localhost:4000/news/articles (Alpha Public)
 import Mock404FromStoryblokApi from "@/test-utils/storyblok-not-found-response.json";
 import MockLinksSuccessResponse from "@/test-utils/storyblok-react-links-success-response.json";
@@ -32,7 +33,6 @@ import {
 	GENERIC_ERROR_MESSAGE,
 	fieldHasValidContent,
 } from "./storyblok";
-import { mockCvValue } from "@/test-utils/storyblok-data";
 
 describe.only("Storyblok utils", () => {
 	beforeEach(() => {

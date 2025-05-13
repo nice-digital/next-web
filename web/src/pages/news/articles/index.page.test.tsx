@@ -6,6 +6,7 @@ import { useRouter } from "next/router";
 import { GetServerSidePropsContext } from "next/types";
 
 import { logger } from "@/logger";
+import { mockCvValue } from "@/test-utils/storyblok-data";
 import MockStoryblokSuccessResponse from "@/test-utils/storyblok-news-articles-listing.json";
 import MockServerErrorResponse from "@/test-utils/storyblok-server-error-response.json";
 import { NewsStory } from "@/types/News";
@@ -17,7 +18,6 @@ import {
 	ArticlesIndexPage,
 	NewsArticlesProps,
 } from "./index.page";
-import { mockCvValue } from "@/test-utils/storyblok-data";
 
 const mockStories = MockStoryblokSuccessResponse.data.stories;
 

@@ -7,6 +7,7 @@ import { GetServerSidePropsContext } from "next/types";
 
 import { logger } from "@/logger";
 import MockStoryblokSuccessResponse from "@/test-utils/storyblok-blog-posts-listing.json";
+import { mockCvValue } from "@/test-utils/storyblok-data";
 import MockServerErrorResponse from "@/test-utils/storyblok-server-error-response.json";
 import { NewsStory } from "@/types/News";
 import * as storyblokUtils from "@/utils/storyblok";
@@ -17,7 +18,6 @@ import {
 	BlogIndexPage,
 	BlogPostsProps,
 } from "./index.page";
-import { mockCvValue } from "@/test-utils/storyblok-data";
 
 const mockStories = MockStoryblokSuccessResponse.data.stories;
 
