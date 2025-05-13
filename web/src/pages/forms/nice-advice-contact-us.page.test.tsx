@@ -37,9 +37,7 @@ describe("NiceAdviceContactUsForm", () => {
 			resolvedUrl: "/forms/nice-advice-contact-us",
 		} as GetServerSidePropsContext)) as { props: FormProps };
 
-		const { container } = render(
-			<NiceAdviceContactUsForm {...props.props} />
-		);
+		const { container } = render(<NiceAdviceContactUsForm {...props.props} />);
 
 		expect(container).toMatchSnapshot();
 	});

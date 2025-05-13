@@ -22,9 +22,7 @@ const FormHeader = () => (
 		your inbox.
 	</p>
 );
-export default function NiceAdviceContactUsForm(
-	props: FormProps
-): JSX.Element {
+export default function NiceAdviceContactUsForm(props: FormProps): JSX.Element {
 	return (
 		<JotFormPage
 			{...props}
