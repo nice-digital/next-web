@@ -494,6 +494,78 @@ exports[`/indicators/[slug].page IndicatorDetailPage should match snapshot for m
             This guideline updates and replaces NICE guideline CG79 (February 2009).
           </p>
         </div>
+        <ul
+          class="grid"
+        >
+          <li
+            data-component="grid-item"
+            data-g="6 lg:4"
+          >
+            <img
+              alt="British Association of Dermatologists (BAD)"
+              class="logo"
+              data-nimg="1"
+              decoding="async"
+              height="0"
+              loading="lazy"
+              src="/api/indicators/NG100/author/british-association-of-dermatologists-bad"
+              style="color: transparent;"
+              width="0"
+            />
+          </li>
+          <li
+            data-component="grid-item"
+            data-g="6 lg:4"
+          >
+            <img
+              alt="British Thoracic Society (BTS)"
+              class="logo"
+              data-nimg="1"
+              decoding="async"
+              height="0"
+              loading="lazy"
+              src="/api/indicators/NG100/author/british-thoracic-society-bts"
+              style="color: transparent;"
+              width="0"
+            />
+          </li>
+          <li
+            data-component="grid-item"
+            data-g="6 lg:4"
+          >
+            <img
+              alt="Royal College of General Practitioners (RCGP)"
+              class="logo"
+              data-nimg="1"
+              decoding="async"
+              height="0"
+              loading="lazy"
+              src="/api/indicators/NG100/author/royal-college-of-general-practitioners-rcgp"
+              style="color: transparent;"
+              width="0"
+            />
+          </li>
+        </ul>
+        <ul
+          class="grid"
+        >
+          <li
+            data-component="grid-item"
+            data-g="6 lg:4"
+          >
+            <img
+              alt="National Institute for Health and Care Excellence (NICE)"
+              class="logo"
+              data-nimg="1"
+              decoding="async"
+              height="0"
+              loading="lazy"
+              src="/api/indicators/NG100/accreditation/national-institute-for-health-and-care-excellence-nice"
+              style="color: transparent;"
+              width="0"
+            />
+          </li>
+        </ul>
         <div
           class="prev-next"
         >

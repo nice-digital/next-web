@@ -4,6 +4,8 @@ import { NextSeo } from "next-seo";
 import { Breadcrumb, Breadcrumbs } from "@nice-digital/nds-breadcrumbs";
 import { Grid, GridItem } from "@nice-digital/nds-grid";
 
+import { EndorsingOrganisations } from "@/components/EndorsingOrganisations/EndorsingOrganisations";
+import { LogosList } from "@/components/LogosList/LogosList";
 import { ProductHorizontalNav } from "@/components/ProductHorizontalNav/ProductHorizontalNav";
 import {
 	ProductPageHeading,
@@ -12,6 +14,7 @@ import {
 import { PublicationsChapterMenu } from "@/components/PublicationsChapterMenu/PublicationsChapterMenu";
 import { PublicationsDownloadLink } from "@/components/PublicationsDownloadLink/PublicationsDownloadLink";
 import { PublicationsPrevNext } from "@/components/PublicationsPrevNext/PublicationsPrevNext";
+import { SupportingOrganisations } from "@/components/SupportingOrganisations/SupportingOrganisations";
 import {
 	ChapterHeading,
 	getAllIndicatorSubTypes,
@@ -34,6 +37,11 @@ export type IndicatorsDetailsPageProps = {
 			| "summary"
 			| "productStatus"
 			| "withdrawnNotes"
+			| "supportingList"
+			| "endorsementList"
+			| "additionalAuthorList"
+			| "accreditationList"
+			| "productTypeName"
 		>;
 	indicatorSubTypes: IndicatorSubType[];
 	pdfDownloadPath: string | null;
@@ -164,6 +172,28 @@ export default function IndicatorsDetailsPage({
 							className={styles.summary}
 						/>
 					) : null}
+
+					<EndorsingOrganisations
+						endorsingList={product.endorsementList}
+						productTypeName={product.productTypeName}
+					/>
+					<SupportingOrganisations
+						supportingList={product.supportingList}
+						productTypeName={product.productTypeName}
+					/>
+
+					<LogosList
+						logosList={product.additionalAuthorList}
+						productId={product.id}
+						logoType="author"
+					/>
+
+					<LogosList
+						logosList={product.accreditationList}
+						productId={product.id}
+						logoType="accreditation"
+					/>
+
 					<PublicationsPrevNext chapters={chapters} />
 				</GridItem>
 			</Grid>
@@ -210,6 +240,11 @@ export const getServerSideProps: GetServerSideProps<
 				summary: product.summary,
 				productStatus: product.productStatus,
 				withdrawnNotes: product.withdrawnNotes,
+				supportingList: product.supportingList,
+				endorsementList: product.endorsementList,
+				additionalAuthorList: product.additionalAuthorList,
+				authorList: product.authorList,
+				accreditationList: product.accreditationList,
 			},
 			indicatorSubTypes,
 			pdfDownloadPath,
