@@ -328,7 +328,6 @@ exports[`/indicators/[slug].page IndicatorDetailPage should match snapshot for m
                 This guideline covers diagnosing and managing rheumatoid arthritis. It aims to improve quality of life by ensuring that people with rheumatoid arthritis have the right treatment to slow the progression of their condition and control their symptoms. People should also have rapid access to specialist care if their condition suddenly worsens.
               </p>
               
-
               <p>
                 NICE has also produced technology appraisal guidance on drug treatment for rheumatoid arthritis.
               </p>
@@ -344,6 +343,100 @@ exports[`/indicators/[slug].page IndicatorDetailPage should match snapshot for m
               
 
               <h2>
+          <p>
+            This guideline updates and replaces NICE guideline CG79 (February 2009).
+          </p>
+        </div>
+        <ul
+          class="grid"
+        >
+          <li
+            data-component="grid-item"
+            data-g="6 lg:4"
+          >
+            <img
+              alt="British Association of Dermatologists (BAD)"
+              class="logo"
+              data-nimg="1"
+              decoding="async"
+              height="0"
+              loading="lazy"
+              src="/api/indicators/NG100/author/british-association-of-dermatologists-bad"
+              style="color: transparent;"
+              width="0"
+            />
+          </li>
+          <li
+            data-component="grid-item"
+            data-g="6 lg:4"
+          >
+            <img
+              alt="British Thoracic Society (BTS)"
+              class="logo"
+              data-nimg="1"
+              decoding="async"
+              height="0"
+              loading="lazy"
+              src="/api/indicators/NG100/author/british-thoracic-society-bts"
+              style="color: transparent;"
+              width="0"
+            />
+          </li>
+          <li
+            data-component="grid-item"
+            data-g="6 lg:4"
+          >
+            <img
+              alt="Royal College of General Practitioners (RCGP)"
+              class="logo"
+              data-nimg="1"
+              decoding="async"
+              height="0"
+              loading="lazy"
+              src="/api/indicators/NG100/author/royal-college-of-general-practitioners-rcgp"
+              style="color: transparent;"
+              width="0"
+            />
+          </li>
+        </ul>
+        <ul
+          class="grid"
+        >
+          <li
+            data-component="grid-item"
+            data-g="6 lg:4"
+          >
+            <img
+              alt="National Institute for Health and Care Excellence (NICE)"
+              class="logo"
+              data-nimg="1"
+              decoding="async"
+              height="0"
+              loading="lazy"
+              src="/api/indicators/NG100/accreditation/national-institute-for-health-and-care-excellence-nice"
+              style="color: transparent;"
+              width="0"
+            />
+          </li>
+        </ul>
+        <div
+          class="prev-next"
+        >
+          <nav
+            aria-label="Previous and next pages"
+          >
+            <a
+              class="prev-next__link"
+              href="/guidance/ng100/chapter/recommendations"
+            >
+              <span
+                class="prev-next__link-intro"
+              >
+                Next page
+              </span>
+              <span
+                class="prev-next__link-text"
+              >
                 Recommendations
               </h2>
               
