@@ -316,3 +316,5 @@ export const mockIndepthArticle: ISbStoryData<InDepthArticleStoryblok> = {
 			"Clíodhna Ní Ghuidhir and Rebecca Boffa outline the common challenges that developers of artificial intelligence (AI) tech face when navigating their way to the health and care market, and link to their series of articles, which provide further advice on what can be done to avoid these.",
 	},
 };
+
+export const mockCvValue = 123456789;

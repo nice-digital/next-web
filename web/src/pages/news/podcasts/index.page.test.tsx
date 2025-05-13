@@ -17,6 +17,7 @@ import {
 	PodcastIndexPage,
 	PodcastPostsProps,
 } from "./index.page";
+import { mockCvValue } from "@/test-utils/storyblok-data";
 
 const mockStories = MockStoryblokSuccessResponse.data.stories;
 
@@ -181,7 +182,7 @@ describe("/news/podcasts/index.page", () => {
 
 			jest
 				.spyOn(storyblokUtils, "fetchCacheVersion")
-				.mockResolvedValue(123456789);
+				.mockResolvedValue(mockCvValue);
 
 			getStoryblokApi().get = jest
 				.fn()

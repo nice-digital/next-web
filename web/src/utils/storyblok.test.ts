@@ -32,12 +32,13 @@ import {
 	GENERIC_ERROR_MESSAGE,
 	fieldHasValidContent,
 } from "./storyblok";
+import { mockCvValue } from "@/test-utils/storyblok-data";
 
 describe.only("Storyblok utils", () => {
 	beforeEach(() => {
 		jest
 			.spyOn(storyblokUtils, "fetchCacheVersion")
-			.mockResolvedValue(123456789);
+			.mockResolvedValue(mockCvValue);
 	});
 
 	afterEach(() => {

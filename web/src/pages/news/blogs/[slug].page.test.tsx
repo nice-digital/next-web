@@ -13,6 +13,7 @@ import * as storyblokUtils from "@/utils/storyblok";
 import { GENERIC_ERROR_MESSAGE } from "@/utils/storyblok";
 
 import BlogPostPage, { getServerSideProps } from "./[slug].page";
+import { mockCvValue } from "@/test-utils/storyblok-data";
 
 //cast to unknown necessary due to some differences in response versus expected type from generate-ts
 const mockBlogPost = mockBlogPostSuccessResponse.data
@@ -48,7 +49,7 @@ describe("BlogPostPage", () => {
 			getBreadcrumbs = jest.spyOn(storyblokUtils, "getBreadcrumbs");
 			jest
 				.spyOn(storyblokUtils, "fetchCacheVersion")
-				.mockResolvedValue(123456789);
+				.mockResolvedValue(mockCvValue);
 		});
 
 		afterEach(() => {

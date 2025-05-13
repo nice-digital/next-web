@@ -3,7 +3,7 @@ import { render, screen } from "@testing-library/react";
 import { GetServerSidePropsContext } from "next";
 
 import { logger } from "@/logger";
-import { mockPodcastPage } from "@/test-utils/storyblok-data";
+import { mockCvValue, mockPodcastPage } from "@/test-utils/storyblok-data";
 import MockServerErrorResponse from "@/test-utils/storyblok-server-error-response.json";
 import { PodcastStoryblok } from "@/types/storyblok";
 import * as storyblokUtils from "@/utils/storyblok";
@@ -85,7 +85,7 @@ describe("PodcastPage", () => {
 			getBreadCrumbsSpy = jest.spyOn(storyblokUtils, "getBreadcrumbs");
 			jest
 				.spyOn(storyblokUtils, "fetchCacheVersion")
-				.mockResolvedValue(123456789);
+				.mockResolvedValue(mockCvValue);
 		});
 
 		afterEach(() => {
