@@ -97,7 +97,6 @@ describe("Homepage", () => {
 		it("should call fetchStories and fetchStory", async () => {
 			fetchStoriesSpy.mockResolvedValueOnce(mockLatestNews);
 			fetchStorySpy.mockResolvedValueOnce(mockFetchStory);
-			//mockFetchStoryResolvedRelations
 
 			const context = {
 				query: {},

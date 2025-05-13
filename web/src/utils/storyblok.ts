@@ -57,14 +57,14 @@ export const GENERIC_ERROR_MESSAGE =
 //Fetch cache version from storyblok space API
 export const fetchCacheVersion = async (): Promise<number> => {
 	const storyblokApi = getStoryblokApi();
-	let result: string;
+	let version: string;
 
 	try {
 		const response = await storyblokApi.get("cdn/spaces/me");
-		result = response.data.space.version;
+		version = response.data.space.version;
 
 		logger.info(
-			`fetchCacheVersion: Fetched cache version ${result} - ${typeof result}`
+			`fetchCacheVersion: Fetched cache version ${version} - ${typeof version}`
 		);
 	} catch (error) {
 		logger.error(
@@ -74,9 +74,8 @@ export const fetchCacheVersion = async (): Promise<number> => {
 		);
 		throw Error(GENERIC_ERROR_MESSAGE, { cause: error });
 	}
-	// cacheVersion = Number(result);
-	// localStorage.setItem("cacheVersion", result);
-	return Number(result);
+
+	return Number(version);
 };
 
 // Fetch a single story from the Storyblok API
