@@ -63,9 +63,10 @@ export const fetchCacheVersion = async (): Promise<number> => {
 		const response = await storyblokApi.get("cdn/spaces/me");
 		version = response.data.space.version;
 
-		logger.info(
+		logger.warn(
 			`fetchCacheVersion: Fetched cache version ${version} - ${typeof version}`
 		);
+
 	} catch (error) {
 		logger.error(
 			isISbError(error)
@@ -97,8 +98,8 @@ export const fetchStory = async <T>(
 	const storyblokApi = getStoryblokApi();
 	const cacheVersion = await fetchCacheVersion();
 
-	logger.info(
-		`fetchStory: Fetched cache version ${cacheVersion} - ${typeof cacheVersion}`
+	logger.warn(
+		`fetchStory: Fetched cache version ${cacheVersion} - $12w}`
 	);
 
 	const sbParams: ISbStoriesParams = {
@@ -282,6 +283,10 @@ export const fetchStories = async <T>(
 
 	const result: SBMultipleResponse<T> = { stories: [] };
 
+	logger.warn(
+		`fetchStory: Fetched cache version ${cacheVersion} - ${typeof cacheVersion}`
+	);
+
 	try {
 		const response: ISbResult = await storyblokApi.get(`cdn/stories`, sbParams);
 
@@ -324,6 +329,10 @@ export const fetchLinks = async (
 	}
 
 	let result = null;
+
+	logger.warn(
+		`fetchLinks: Fetched cache version ${cacheVersion} - ${typeof cacheVersion}`
+	);
 
 	try {
 		const links: SBLink[] = await storyblokApi.getAll("cdn/links", sbParams);
