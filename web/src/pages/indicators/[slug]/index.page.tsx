@@ -14,6 +14,7 @@ import {
 import { PublicationsChapterMenu } from "@/components/PublicationsChapterMenu/PublicationsChapterMenu";
 import { PublicationsDownloadLink } from "@/components/PublicationsDownloadLink/PublicationsDownloadLink";
 import { PublicationsPrevNext } from "@/components/PublicationsPrevNext/PublicationsPrevNext";
+import { RelatedProducts } from "@/components/RelatedProducts/RelatedProducts";
 import { SupportingOrganisations } from "@/components/SupportingOrganisations/SupportingOrganisations";
 import {
 	ChapterHeading,
@@ -42,6 +43,7 @@ export type IndicatorsDetailsPageProps = {
 			| "additionalAuthorList"
 			| "accreditationList"
 			| "productTypeName"
+			| "relatedProductList"
 		>;
 	indicatorSubTypes: IndicatorSubType[];
 	pdfDownloadPath: string | null;
@@ -66,6 +68,12 @@ export default function IndicatorsDetailsPage({
 	const hasLeftColumn = pdfDownloadPath || chapters.length > 0;
 	const isFullyWithdrawn = product.productStatus === "Withdrawn";
 	const isTempWithdrawn = product.productStatus === "TemporarilyWithdrawn";
+	const relatedqs = product.relatedProductList?.filter(
+		(relatedProduct) =>
+			relatedProduct.id.toLowerCase().startsWith("qs") &&
+			relatedProduct.relationship === "IsTheBasisOf"
+	);
+	const hasRelatedProduct = relatedqs?.length && relatedqs.length > 0;
 
 	return (
 		<>
@@ -136,9 +144,9 @@ export default function IndicatorsDetailsPage({
 				{hasLeftColumn ? (
 					<GridItem
 						cols={12}
-						md={4}
-						lg={3}
-						elementType="section"
+						sm={5}
+						md={3}
+						elementType={"section"}
 						aria-label="Chapters"
 					>
 						<PublicationsDownloadLink
@@ -157,44 +165,58 @@ export default function IndicatorsDetailsPage({
 
 				<GridItem
 					cols={12}
-					md={hasLeftColumn ? 8 : 12}
-					lg={hasLeftColumn ? 9 : 12}
-					elementType="section"
+					sm={hasLeftColumn ? 7 : 12}
+					md={hasLeftColumn ? 9 : 12}
+					elementType={"section"}
 				>
-					{product.summary ? (
-						<div
-							dangerouslySetInnerHTML={{ __html: product.summary }}
-							className={styles.summary}
-						/>
-					) : isTempWithdrawn ? (
-						<div
-							dangerouslySetInnerHTML={{ __html: product.withdrawnNotes }}
-							className={styles.summary}
-						/>
-					) : null}
+					<Grid gutter="loose">
+						<GridItem cols={12} md={8}>
+							{product.summary ? (
+								<div
+									dangerouslySetInnerHTML={{ __html: product.summary }}
+									className={styles.summary}
+								/>
+							) : isTempWithdrawn ? (
+								<div
+									dangerouslySetInnerHTML={{
+										__html: product.withdrawnNotes,
+									}}
+									className={styles.summary}
+								/>
+							) : null}
 
-					<EndorsingOrganisations
-						endorsingList={product.endorsementList}
-						productTypeName={product.productTypeName}
-					/>
-					<SupportingOrganisations
-						supportingList={product.supportingList}
-						productTypeName={product.productTypeName}
-					/>
+							<EndorsingOrganisations
+								endorsingList={product.endorsementList}
+								productTypeName={product.productTypeName}
+							/>
+							<SupportingOrganisations
+								supportingList={product.supportingList}
+								productTypeName={product.productTypeName}
+							/>
 
-					<LogosList
-						logosList={product.additionalAuthorList}
-						productId={product.id}
-						logoType="author"
-					/>
+							<LogosList
+								logosList={product.additionalAuthorList}
+								productId={product.id}
+								logoType="author"
+							/>
 
-					<LogosList
-						logosList={product.accreditationList}
-						productId={product.id}
-						logoType="accreditation"
-					/>
+							<LogosList
+								logosList={product.accreditationList}
+								productId={product.id}
+								logoType="accreditation"
+							/>
+						</GridItem>
 
-					<PublicationsPrevNext chapters={chapters} />
+						{hasRelatedProduct ? (
+							<GridItem cols={12} md={4}>
+								<RelatedProducts relatedProducts={relatedqs} />
+							</GridItem>
+						) : null}
+
+						<GridItem cols={12}>
+							<PublicationsPrevNext chapters={chapters} />
+						</GridItem>
+					</Grid>
 				</GridItem>
 			</Grid>
 		</>
@@ -245,6 +267,7 @@ export const getServerSideProps: GetServerSideProps<
 				additionalAuthorList: product.additionalAuthorList,
 				authorList: product.authorList,
 				accreditationList: product.accreditationList,
+				relatedProductList: product.relatedProductList,
 			},
 			indicatorSubTypes,
 			pdfDownloadPath,
