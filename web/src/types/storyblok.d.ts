@@ -29,27 +29,13 @@ export interface AccordionGroupStoryblok {
 }
 
 export interface AssetStoryblok {
-  alt: string | null;
-  copyright?: string | null;
-  fieldtype: "asset";
+  alt?: string;
+  copyright?: string;
   id: number;
-  filename: string | null;
+  filename: string;
   name: string;
-  title: string | null;
-  focus: string | null;
-  meta_data?: {
-    [k: string]: any;
-  };
-  source?: string | null;
-  is_external_url?: boolean;
-  is_private?: boolean;
-  src?: string;
-  updated_at?: string;
-  width?: number | null;
-  height?: number | null;
-  aspect_ratio?: number | null;
-  public_id?: string | null;
-  content_type?: string;
+  title?: string;
+  focus?: string;
   [k: string]: any;
 }
 
@@ -98,16 +84,11 @@ export interface BlogPostStoryblok {
 
 export type MultilinkStoryblok =
   | {
-      fieldtype: "multilink";
-      id: string;
-      url: string;
-      cached_url: string;
-      target?: "_blank" | "_self";
+      id?: string;
+      cached_url?: string;
       anchor?: string;
-      rel?: string;
-      title?: string;
-      prep?: string;
-      linktype: "story";
+      linktype?: "story";
+      target?: "_self" | "_blank";
       story?: {
         name: string;
         created_at?: string;
@@ -140,33 +121,17 @@ export type MultilinkStoryblok =
       [k: string]: any;
     }
   | {
-      fieldtype: "multilink";
-      id: string;
-      url: string;
-      cached_url: string;
-      target?: "_blank" | "_self";
-      linktype: "url";
-      rel?: string;
-      title?: string;
+      url?: string;
+      cached_url?: string;
+      anchor?: string;
+      linktype?: "asset" | "url";
+      target?: "_self" | "_blank";
       [k: string]: any;
     }
   | {
-      fieldtype: "multilink";
-      id: string;
-      url: string;
-      cached_url: string;
-      target?: "_blank" | "_self";
       email?: string;
-      linktype: "email";
-      [k: string]: any;
-    }
-  | {
-      fieldtype: "multilink";
-      id: string;
-      url: string;
-      cached_url: string;
-      target?: "_blank" | "_self";
-      linktype: "asset";
+      linktype?: "email";
+      target?: "_self" | "_blank";
       [k: string]: any;
     };
 
@@ -441,27 +406,12 @@ export interface HomepageStoryblok {
 }
 
 export type MultiassetStoryblok = {
-  alt: string | null;
-  copyright?: string | null;
-  fieldtype: "asset";
+  alt?: string;
+  copyright?: string;
   id: number;
-  filename: string | null;
+  filename: string;
   name: string;
-  title: string | null;
-  focus: string | null;
-  meta_data?: {
-    [k: string]: any;
-  };
-  source?: string | null;
-  is_external_url?: boolean;
-  is_private?: boolean;
-  src?: string;
-  updated_at?: string;
-  width?: number | null;
-  height?: number | null;
-  aspect_ratio?: number | null;
-  public_id?: string | null;
-  content_type?: string;
+  title?: string;
   [k: string]: any;
 }[];
 
