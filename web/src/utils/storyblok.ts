@@ -66,7 +66,6 @@ export const fetchCacheVersion = async (): Promise<number> => {
 		logger.warn(
 			`fetchCacheVersion: Fetched cache version ${version} - ${typeof version}`
 		);
-
 	} catch (error) {
 		logger.error(
 			isISbError(error)
@@ -98,9 +97,7 @@ export const fetchStory = async <T>(
 	const storyblokApi = getStoryblokApi();
 	const cacheVersion = await fetchCacheVersion();
 
-	logger.warn(
-		`fetchStory: Fetched cache version ${cacheVersion} - $12w}`
-	);
+	logger.warn(`fetchStory: Fetched cache version ${cacheVersion} - $12w}`);
 
 	const sbParams: ISbStoriesParams = {
 		version,
