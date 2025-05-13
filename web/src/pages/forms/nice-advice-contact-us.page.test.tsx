@@ -3,9 +3,9 @@ import { GetServerSidePropsContext } from "next";
 
 import { FormProps } from "@/components/JotFormPage/getGetServerSideProps";
 
-import LifeSciencesContactUsForm, {
+import NiceAdviceContactUsForm, {
 	getServerSideProps,
-} from "./life-sciences-contact-us.page";
+} from "./nice-advice-contact-us.page";
 
 jest.mock("@/feeds/jotform/jotform", () => ({
 	getForm: jest.fn().mockResolvedValue({
@@ -31,14 +31,14 @@ jest.mock("@/feeds/jotform/jotform", () => ({
 	}),
 }));
 
-describe("LifeSciencesContactUsForm", () => {
+describe("NiceAdviceContactUsForm", () => {
 	it("should match snapshot", async () => {
 		const props = (await getServerSideProps({
-			resolvedUrl: "/forms/life-sciences-contact-us",
+			resolvedUrl: "/forms/nice-advice-contact-us",
 		} as GetServerSidePropsContext)) as { props: FormProps };
 
 		const { container } = render(
-			<LifeSciencesContactUsForm {...props.props} />
+			<NiceAdviceContactUsForm {...props.props} />
 		);
 
 		expect(container).toMatchSnapshot();

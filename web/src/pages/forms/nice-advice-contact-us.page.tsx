@@ -22,7 +22,7 @@ const FormHeader = () => (
 		your inbox.
 	</p>
 );
-export default function LifeSciencesContactUsForm(
+export default function NiceAdviceContactUsForm(
 	props: FormProps
 ): JSX.Element {
 	return (
