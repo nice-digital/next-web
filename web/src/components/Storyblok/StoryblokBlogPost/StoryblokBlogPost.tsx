@@ -35,6 +35,8 @@ export const StoryblokBlogPost = ({
 	const articleRef = useRef<HTMLDivElement>(null);
 	const { author } = blok;
 
+	//console.log(JSON.stringify(blok)); // Use for generating mock data -- http://localhost:4000/news/blogs/women-inspiring-inclusion-in-nice-guidance?_storyblok
+
 	useEffect(() => {
 		const handleResize = debounce(() => {
 			// set the offset for the featured image

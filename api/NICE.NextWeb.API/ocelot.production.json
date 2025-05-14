@@ -7,7 +7,7 @@
           "Port": 443
         }
       ],
-      "DownstreamPathTemplate": "/v1/{everything}",
+      "DownstreamPathTemplate": "/v2/{everything}",
       "DownstreamScheme": "https",
       "UpstreamHttpMethod": [ "Get", "Post" ],
       "UpstreamPathTemplate": "/storyblok/{everything}",

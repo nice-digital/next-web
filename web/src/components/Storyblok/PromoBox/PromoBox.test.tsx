@@ -229,7 +229,7 @@ describe("Promo box component", () => {
 									title: "",
 									source: "",
 									filename:
-										"https://a.storyblok.com/f/292509/2120x1414/dd56873afd/joe-bloggs.jpg",
+										"https://local-host-test-nice-org.com/f/292509/2120x1414/dd56873afd/joe-bloggs.jpg",
 									copyright: "",
 									fieldtype: "asset",
 									meta_data: {},

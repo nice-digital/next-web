@@ -3,7 +3,7 @@ import { render, screen } from "@testing-library/react";
 import { GetServerSidePropsContext } from "next";
 
 import { logger } from "@/logger";
-import { mockNewsArticle } from "@/test-utils/storyblok-data";
+import { mockNewsArticle, mockCvValue } from "@/test-utils/storyblok-data";
 import Mock404FromStoryblokApi from "@/test-utils/storyblok-not-found-response.json";
 import MockServerErrorResponse from "@/test-utils/storyblok-server-error-response.json";
 import { NewsArticleStoryblok } from "@/types/storyblok";
@@ -41,6 +41,9 @@ describe("NewsArticlePage", () => {
 		beforeEach(() => {
 			fetchStorySpy = jest.spyOn(storyblokUtils, "fetchStory");
 			getBreadcrumbs = jest.spyOn(storyblokUtils, "getBreadcrumbs");
+			jest
+				.spyOn(storyblokUtils, "fetchCacheVersion")
+				.mockResolvedValue(mockCvValue);
 		});
 
 		afterEach(() => {

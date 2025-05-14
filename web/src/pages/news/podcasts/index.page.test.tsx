@@ -6,6 +6,7 @@ import { useRouter } from "next/router";
 import { GetServerSidePropsContext } from "next/types";
 
 import { logger } from "@/logger";
+import { mockCvValue } from "@/test-utils/storyblok-data";
 import MockStoryblokSuccessResponse from "@/test-utils/storyblok-podcasts--listing-response.json";
 import MockServerErrorResponse from "@/test-utils/storyblok-server-error-response.json";
 import { NewsStory } from "@/types/News";
@@ -178,6 +179,10 @@ describe("/news/podcasts/index.page", () => {
 				storyblokUtils,
 				"validateRouteParams"
 			);
+
+			jest
+				.spyOn(storyblokUtils, "fetchCacheVersion")
+				.mockResolvedValue(mockCvValue);
 
 			getStoryblokApi().get = jest
 				.fn()
