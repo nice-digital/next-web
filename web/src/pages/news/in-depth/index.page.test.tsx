@@ -40,7 +40,11 @@ describe("/news/in-depth/index.page", () => {
 		resultsPerPage: 6,
 		startsWith: "news/in-depth/",
 		query: {
-			upperOutOfBoundPagination: "30",
+			upperOutOfBoundPagination: Math.ceil(
+				MockStoryblokSuccessResponse.total /
+					MockStoryblokSuccessResponse.perPage +
+					1
+			),
 			lowerOutOfBoundPagination: "-1",
 			pageAt1: "1",
 		},

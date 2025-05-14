@@ -37,10 +37,14 @@ describe("/news/articles/index.page", () => {
 
 	const mockConfig = {
 		currentPage: 1,
-		resultsPerPage: 6,
+		resultsPerPage: MockStoryblokSuccessResponse.perPage,
 		startsWith: "news/articles/",
 		query: {
-			upperOutOfBoundPagination: "30",
+			upperOutOfBoundPagination: Math.ceil(
+				MockStoryblokSuccessResponse.total /
+					MockStoryblokSuccessResponse.perPage +
+					1
+			),
 			lowerOutOfBoundPagination: "-1",
 			pageAt1: "1",
 		},
@@ -177,7 +181,7 @@ describe("/news/articles/index.page", () => {
 
 			jest
 				.spyOn(storyblokUtils, "fetchCacheVersion")
-				.mockResolvedValue(mockCvValue);
+				.mockResolvedValue(123456789);
 
 			validateRouteParamsSpy = jest.spyOn(
 				storyblokUtils,
