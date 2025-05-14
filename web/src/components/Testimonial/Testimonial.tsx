@@ -72,17 +72,22 @@ export const Testimonial: React.FC<TestimonialProps> = (
 		styles.testimonial__link
 	);
 
-	const mobileImage = cloneElementWithClassNames(
-		image as ReactElement,
-		styles.testimonial__image,
-		styles.testimonial__imageMobile
-	);
+	const hasImageSrc = image?.props.src !== undefined ? true : false;
 
-	const mainImage = cloneElementWithClassNames(
-		image as ReactElement,
-		styles.testimonial__image
-	);
+	const mobileImage = hasImageSrc
+		? cloneElementWithClassNames(
+				image as ReactElement,
+				styles.testimonial__image,
+				styles.testimonial__imageMobile
+		  )
+		: null;
 
+	const mainImage = hasImageSrc
+		? cloneElementWithClassNames(
+				image as ReactElement,
+				styles.testimonial__image
+		  )
+		: null;
 	return (
 		<div
 			className={testimonialClasses}
