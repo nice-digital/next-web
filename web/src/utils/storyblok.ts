@@ -11,7 +11,7 @@ import {
 import { Redirect } from "next/types";
 import { type MetaTag } from "next-seo/lib/types";
 
-import { publicRuntimeConfig } from "@/config";
+import { publicRuntimeConfig, serverRuntimeConfig } from "@/config";
 import { logger } from "@/logger";
 import { type Breadcrumb } from "@/types/Breadcrumb";
 import { type SBLink } from "@/types/SBLink";
@@ -54,6 +54,52 @@ export const defaultPodcastImage =
 export const GENERIC_ERROR_MESSAGE =
 	"Oops! Something went wrong and we're working to fix it. Please try again later.";
 
+
+let cachedCv: number | null = null;
+let lastFetchTime = 0;
+console.log({serverRuntimeConfig})
+const longTTL = serverRuntimeConfig.cache?.longTTL || 1000 * 60 * 2; //TODO: 2 minutes for test purposes, update to something that matches the cache TTL in Ocelot
+
+export const getCachedCv = async (): Promise<number> => {
+
+	logger.info(
+		`getCachedCv: Using Ocelot cache: ${usingOcelotCache} and longTTL: ${longTTL}`
+	);
+
+	const now = Date.now();
+
+	/**
+	 * Check if the cached version is still valid
+	 * If it is, return the cached version
+	 * If not, fetch a new version and update the cache using fetchCacheVersion
+	*/
+	if (cachedCv && now - lastFetchTime < longTTL) {
+		logger.info(
+			`getCachedCv: Using cached version ${cachedCv}`
+		);
+		return cachedCv;
+	}
+
+	try {
+		const cv = await fetchCacheVersion();
+		// update the cache with the new version
+		cachedCv = cv;
+		lastFetchTime = now;
+		logger.info(
+			`getCachedCv: Fetched new CV value ${cachedCv} and updated cache`
+		);
+		return cv;
+	} catch (error) {
+		logger.error(
+			isISbError(error)
+				? `getCachedCv: ${error.status} error from Storyblok API: ${error.message}`
+				: `getCachedCv: Non ISbError response`
+		);
+		throw Error(GENERIC_ERROR_MESSAGE, { cause: error });
+	}
+}
+
+
 //Fetch cache version from storyblok space API
 export const fetchCacheVersion = async (): Promise<number> => {
 	const storyblokApi = getStoryblokApi();
@@ -95,7 +141,7 @@ export const fetchStory = async <T>(
 	);
 
 	const storyblokApi = getStoryblokApi();
-	const cacheVersion = await fetchCacheVersion();
+	const cacheVersion = await getCachedCv();
 
 	logger.warn(`fetchStory: Fetched cache version ${cacheVersion} - $12w}`);
 
@@ -270,7 +316,7 @@ export const fetchStories = async <T>(
 	params: ISbStoriesParams = {}
 ): Promise<SBMultipleResponse<T>> => {
 	const storyblokApi = getStoryblokApi();
-	const cacheVersion = await fetchCacheVersion();
+	const cacheVersion = await getCachedCv();
 	const sbParams: ISbStoriesParams = {
 		version,
 		resolve_links: "url",
@@ -313,7 +359,7 @@ export const fetchLinks = async (
 	version: StoryVersion,
 	startsWith?: string
 ): Promise<SBLink[]> => {
-	const cacheVersion = await fetchCacheVersion();
+	const cacheVersion = await getCachedCv();
 	const storyblokApi = getStoryblokApi();
 
 	const sbParams: ISbStoriesParams = {
