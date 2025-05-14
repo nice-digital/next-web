@@ -1,6 +1,4 @@
-using System;
 using System.Net;
-using System.Web;
 using CacheManager.Core;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Diagnostics;
@@ -12,7 +10,6 @@ using Microsoft.Extensions.Hosting;
 using NICE.NextWeb.API.CacheManager;
 using NICE.NextWeb.API.ScheduledTasks.Niceorg;
 using NICE.NextWeb.API.ScheduledTasks.Scheduler;
-using Ocelot.Administration;
 using Ocelot.DependencyInjection;
 using Ocelot.Middleware;
 using Serilog;
@@ -97,20 +94,24 @@ namespace NICE.NextWeb.API
                 }
             });
 
-            var configuration = new OcelotPipelineConfiguration
+            var requestLoggingEnabled = Configuration.GetValue<bool>("Ocelot:EnableRequestLogging");
+
+            if (requestLoggingEnabled)
             {
-                PreAuthenticationMiddleware = async (context, next) =>
+                app.Use(async (context, next) =>
                 {
-                    if (context.Request.Path.ToString().Contains("storyblok"))
-                    {
-                        var newQuery = HttpUtility.ParseQueryString(context.Items.DownstreamRequest().Query.ToString());
-                        newQuery["cv"] = DateTimeOffset.UtcNow.ToUnixTimeSeconds().ToString();
-                        context.Items.DownstreamRequest().Query =  $"?{newQuery}";
-                    }
+                    Log.Information("Ocelot Request: {Method} {Path} {QueryString} from {IP}",
+                        context.Request.Method,
+                        context.Request.Path,
+                        context.Request.QueryString,
+                        context.Connection.RemoteIpAddress?.ToString());
+
                     await next.Invoke();
-                }
-            };
-            app.UseOcelot(configuration).Wait();
+                });
+
+            }
+
+            app.UseOcelot().Wait();
         }
     }
 }

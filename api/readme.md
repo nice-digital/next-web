@@ -7,26 +7,28 @@
 <!-- START doctoc -->
 - [Ocelot API Layer](#ocelot-api-layer)
 
-- [What is it?](#what-is-it)
-- [Stack](#stack)
-  - [Software](#software)
-  - [Diagram](#diagram)
-- [Local development setup](#local-development-setup)
-  - [.Net Core Locally stored secrets](#net-core-locally-stored-secrets)
-- [Overview](#overview)
-  - [Ocelot](#ocelot)
-  - [Task Scheduler](#task-scheduler)
-  - [X-CacheManager-RefreshCache Header](#x-cachemanager-refreshcache-header)
-  - [Route config](#route-config)
-  - [Ocelot Pipeline](#ocelot-pipeline)
-  - [Redis cached content keys](#redis-cached-content-keys)
-    - [Redis Key naming](#redis-key-naming)
-    - [Key Generation Admin tool](#key-generation-admin-tool)
-    - [Redis Key storage](#redis-key-storage)
-- [Gotchas](#gotchas)
-  - [Redis SSL Connection](#redis-ssl-connection)
-  - [Running Redis on Docker - memory errors](#running-redis-on-docker---memory-errors)
-  - [Secrets.json](#secretsjson)
+- [Next Web API](#next-web-api)
+	- [What is it?](#what-is-it)
+	- [Stack](#stack)
+		- [Software](#software)
+		- [Diagram](#diagram)
+	- [Local development setup](#local-development-setup)
+		- [.Net Core Locally stored secrets](#net-core-locally-stored-secrets)
+	- [Overview](#overview)
+		- [Ocelot](#ocelot)
+		- [Task Scheduler](#task-scheduler)
+		- [X-CacheManager-RefreshCache Header](#x-cachemanager-refreshcache-header)
+		- [Route config](#route-config)
+		- [Ocelot Pipeline](#ocelot-pipeline)
+		- [Redis cached content keys](#redis-cached-content-keys)
+			- [Redis Key naming](#redis-key-naming)
+			- [Key Generation Admin tool](#key-generation-admin-tool)
+			- [Redis Key storage](#redis-key-storage)
+			- [Conditional Request Logging](#conditional-request-logging)
+	- [Gotchas](#gotchas)
+		- [Redis SSL Connection](#redis-ssl-connection)
+		- [Running Redis on Docker - memory errors](#running-redis-on-docker---memory-errors)
+		- [Secrets.json](#secretsjson)
 
 <!-- END doctoc -->
 </details>
@@ -134,6 +136,10 @@ If the API is running in pre-prod mode (set via environment var) then you can ac
 #### Redis Key storage
 
 Cached items are stored as [Redis hashes](https://redis.io/topics/data-types#hashes) which are able to store a set of key value pairs. The name of the key is the MD5 encoded url [as noted here](#redis-key-naming).
+
+#### Conditional Request Logging
+
+Request logging in this API Gateway is conditionally enabled based on a configuration flag defined in appsettings.json. When the EnableRequestLogging setting is set to true, the application injects middleware that logs incoming HTTP requests. This setting can be controlled via Octopus Deploy (Octo) and is disabled by default. When enabled, request paths, HTTP methods, and client IP addresses are logged without requiring any code changes between environments. All logs are written to the standard logging stack configured for the application.
 
 ## Gotchas
 
