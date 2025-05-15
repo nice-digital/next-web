@@ -72,7 +72,7 @@ export const Testimonial: React.FC<TestimonialProps> = (
 		styles.testimonial__link
 	);
 
-	const hasImageSrc = image?.props.src !== undefined ? true : false;
+	const hasImageSrc = Boolean(image?.props?.src);
 
 	const mobileImage = hasImageSrc
 		? cloneElementWithClassNames(
@@ -113,10 +113,11 @@ export const Testimonial: React.FC<TestimonialProps> = (
 					{(variant === "fullWidth" || variant === "fullWidthWhite") &&
 						linkElement}
 				</figure>
-
-				<div className={styles.testimonial__mainImageContainer}>
-					{mainImage}
-				</div>
+				{mainImage && (
+					<div className={styles.testimonial__mainImageContainer}>
+						{mainImage}
+					</div>
+				)}
 			</div>
 		</div>
 	);
