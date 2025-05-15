@@ -4,7 +4,7 @@ import { StoryblokImage, StoryblokImageProps } from "./StoryblokImage";
 
 const mockImageResponse = {
 	alt: "Test image alt",
-	src: "https://a.storyblok.com/f/292509/805x603/292d0d5de8/nhs-team.JPG",
+	src: "https://a.storyblok.com/f/292509/805x603/292d0d5de8/nhs-team.JPG", //TODO: investigate why changing to fake path causes width to change (is it falling back to defaults? Can we mock rather than using a real image?)
 } as StoryblokImageProps;
 
 describe("StoryblokImage Component", () => {

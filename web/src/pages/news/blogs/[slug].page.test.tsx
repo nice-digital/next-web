@@ -5,6 +5,7 @@ import { render, screen } from "@testing-library/react";
 import { GetServerSidePropsContext } from "next";
 
 import { logger } from "@/logger";
+import { mockCvValue } from "@/test-utils/storyblok-data";
 import Mock404FromStoryblokApi from "@/test-utils/storyblok-not-found-response.json";
 import MockServerErrorResponse from "@/test-utils/storyblok-server-error-response.json";
 import mockBlogPostSuccessResponse from "@/test-utils/storyblok-single-blog-post-response.json";
@@ -46,6 +47,9 @@ describe("BlogPostPage", () => {
 		beforeEach(() => {
 			fetchStorySpy = jest.spyOn(storyblokUtils, "fetchStory");
 			getBreadcrumbs = jest.spyOn(storyblokUtils, "getBreadcrumbs");
+			jest
+				.spyOn(storyblokUtils, "fetchCacheVersion")
+				.mockResolvedValue(mockCvValue);
 		});
 
 		afterEach(() => {
