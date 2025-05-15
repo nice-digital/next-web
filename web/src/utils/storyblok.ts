@@ -54,14 +54,12 @@ export const defaultPodcastImage =
 export const GENERIC_ERROR_MESSAGE =
 	"Oops! Something went wrong and we're working to fix it. Please try again later.";
 
-
 let cachedCv: number | null = null;
 let lastFetchTime = 0;
-console.log({serverRuntimeConfig})
+console.log({ serverRuntimeConfig });
 const longTTL = serverRuntimeConfig.cache?.longTTL || 1000 * 60 * 2; //TODO: 2 minutes for test purposes, update to something that matches the cache TTL in Ocelot
 
 export const getCachedCv = async (): Promise<number> => {
-
 	logger.info(
 		`getCachedCv: Using Ocelot cache: ${usingOcelotCache} and longTTL: ${longTTL}`
 	);
@@ -72,11 +70,9 @@ export const getCachedCv = async (): Promise<number> => {
 	 * Check if the cached version is still valid
 	 * If it is, return the cached version
 	 * If not, fetch a new version and update the cache using fetchCacheVersion
-	*/
+	 */
 	if (cachedCv && now - lastFetchTime < longTTL) {
-		logger.info(
-			`getCachedCv: Using cached version ${cachedCv}`
-		);
+		logger.info(`getCachedCv: Using cached version ${cachedCv}`);
 		return cachedCv;
 	}
 
@@ -97,8 +93,7 @@ export const getCachedCv = async (): Promise<number> => {
 		);
 		throw Error(GENERIC_ERROR_MESSAGE, { cause: error });
 	}
-}
-
+};
 
 //Fetch cache version from storyblok space API
 export const fetchCacheVersion = async (): Promise<number> => {
