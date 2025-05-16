@@ -72,17 +72,22 @@ export const Testimonial: React.FC<TestimonialProps> = (
 		styles.testimonial__link
 	);
 
-	const mobileImage = cloneElementWithClassNames(
-		image as ReactElement,
-		styles.testimonial__image,
-		styles.testimonial__imageMobile
-	);
+	const hasImageSrc = Boolean(image?.props?.src);
 
-	const mainImage = cloneElementWithClassNames(
-		image as ReactElement,
-		styles.testimonial__image
-	);
+	const mobileImage = hasImageSrc
+		? cloneElementWithClassNames(
+				image as ReactElement,
+				styles.testimonial__image,
+				styles.testimonial__imageMobile
+		  )
+		: null;
 
+	const mainImage = hasImageSrc
+		? cloneElementWithClassNames(
+				image as ReactElement,
+				styles.testimonial__image
+		  )
+		: null;
 	return (
 		<div
 			className={testimonialClasses}
@@ -108,10 +113,11 @@ export const Testimonial: React.FC<TestimonialProps> = (
 					{(variant === "fullWidth" || variant === "fullWidthWhite") &&
 						linkElement}
 				</figure>
-
-				<div className={styles.testimonial__mainImageContainer}>
-					{mainImage}
-				</div>
+				{mainImage && (
+					<div className={styles.testimonial__mainImageContainer}>
+						{mainImage}
+					</div>
+				)}
 			</div>
 		</div>
 	);

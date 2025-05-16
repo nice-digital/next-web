@@ -91,7 +91,6 @@ export interface BlogPostStoryblok {
   content: RichtextStoryblok;
   author: (ISbStoryData<AuthorStoryblok> | string)[];
   metadata?: MetadataStoryblok[];
-  excludeFromHomepage?: boolean;
   component: "blogPost";
   _uid: string;
   [k: string]: any;
@@ -307,10 +306,7 @@ export interface CategoryLandingPageStoryblok {
     | PromoBoxStoryblok
     | CardListSectionStoryblok
     | TestimonialFullWidthStoryblok
-    | CalloutCardStoryblok
     | CardGridSectionStoryblok
-    | CalloutCardWithImageStoryblok
-    | PromoPanelStoryblok
   )[];
   component: "categoryLandingPage";
   _uid: string;
@@ -322,6 +318,17 @@ export interface CategoryNavigationStoryblok {
   cardGrid: CardGridStoryblok[];
   metadata?: MetadataStoryblok[];
   component: "categoryNavigation";
+  _uid: string;
+  [k: string]: any;
+}
+
+export interface FullWidthSectionStoryblok {
+  heading?: string;
+  lead?: RichtextStoryblok;
+  showHeading?: boolean;
+  theme: "subtle" | "impact" | "transparent";
+  content?: (ActionBannerStoryblok | CardGridStoryblok | PromoBoxStoryblok)[];
+  component: "fullWidthSection";
   _uid: string;
   [k: string]: any;
 }
@@ -349,6 +356,7 @@ export interface GridStoryblok {
     | CardListSectionItemStoryblok
     | CategoryLandingPageStoryblok
     | CategoryNavigationStoryblok
+    | FullWidthSectionStoryblok
     | GridStoryblok
     | GridItemStoryblok
     | GridSectionStoryblok
@@ -360,6 +368,7 @@ export interface GridStoryblok {
     | ImageEmbedStoryblok
     | ImageOrVideoStoryblok
     | InDepthArticleStoryblok
+    | InfogramEmbedStoryblok
     | InfoPageStoryblok
     | ListItemStoryblok
     | MarkdownStoryblok
@@ -512,9 +521,15 @@ export interface InDepthArticleStoryblok {
   [k: string]: any;
 }
 
+export interface InfogramEmbedStoryblok {
+  embedCode?: string;
+  component: "infogramEmbed";
+  _uid: string;
+  [k: string]: any;
+}
+
 export interface InfoPageStoryblok {
   header: (PageHeaderStoryblok | HeroStoryblok)[];
-  isNavigationRoot?: boolean;
   metadata?: MetadataStoryblok[];
   content: RichtextStoryblok;
   component: "infoPage";
@@ -590,7 +605,6 @@ export interface NewsArticleStoryblok {
   content: RichtextStoryblok;
   image: AssetStoryblok;
   metadata?: MetadataStoryblok[];
-  excludeFromHomepage?: boolean;
   component: "newsArticle";
   _uid: string;
   [k: string]: any;
@@ -627,6 +641,7 @@ export interface PageStoryblok {
     | CardListSectionItemStoryblok
     | CategoryLandingPageStoryblok
     | CategoryNavigationStoryblok
+    | FullWidthSectionStoryblok
     | GridStoryblok
     | GridItemStoryblok
     | GridSectionStoryblok
@@ -638,6 +653,7 @@ export interface PageStoryblok {
     | ImageEmbedStoryblok
     | ImageOrVideoStoryblok
     | InDepthArticleStoryblok
+    | InfogramEmbedStoryblok
     | InfoPageStoryblok
     | ListItemStoryblok
     | MarkdownStoryblok
@@ -769,7 +785,7 @@ export interface TestimonialFullWidthStoryblok {
   quoteText: string;
   quoteName: string;
   quoteRole: string;
-  image: AssetStoryblok;
+  image?: AssetStoryblok;
   link?: RelatedLinkStoryblok[];
   variant: "fullWidth" | "fullWidthWhite";
   component: "testimonialFullWidth";
@@ -781,7 +797,7 @@ export interface TestimonialGridItemStoryblok {
   quoteText: string;
   quoteName: string;
   quoteRole: string;
-  image: AssetStoryblok;
+  image?: AssetStoryblok;
   variant: "default" | "transparent";
   component: "testimonialGridItem";
   _uid: string;
