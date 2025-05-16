@@ -19,12 +19,15 @@ export const StoryblokTestimonialGridItem: React.FC<
 			quoteRole={quoteRole}
 			quoteText={quoteText}
 			image={
-				<StoryblokImage
-					src={image?.filename ? image.filename : undefined}
-					alt={image?.alt ? image.alt : ""}
-					serviceOptions={{ height: 328, quality: 80, width: 328 }}
-					//serviceOptions={{ quality: 80 }}
-				/>
+				image?.filename
+					? (
+						<StoryblokImage
+							src={image.filename}
+							alt={image?.alt ? image.alt : ""}
+							serviceOptions={{ height: 328, quality: 80, width: 328 }}
+						/>
+					)
+					: undefined
 			}
 		/>
 	);
