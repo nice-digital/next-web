@@ -7,26 +7,28 @@
 <!-- START doctoc -->
 - [Ocelot API Layer](#ocelot-api-layer)
 
-- [What is it?](#what-is-it)
-- [Stack](#stack)
-  - [Software](#software)
-  - [Diagram](#diagram)
-- [Local development setup](#local-development-setup)
-  - [.Net Core Locally stored secrets](#net-core-locally-stored-secrets)
-- [Overview](#overview)
-  - [Ocelot](#ocelot)
-  - [Task Scheduler](#task-scheduler)
-  - [X-CacheManager-RefreshCache Header](#x-cachemanager-refreshcache-header)
-  - [Route config](#route-config)
-  - [Ocelot Pipeline](#ocelot-pipeline)
-  - [Redis cached content keys](#redis-cached-content-keys)
-    - [Redis Key naming](#redis-key-naming)
-    - [Key Generation Admin tool](#key-generation-admin-tool)
-    - [Redis Key storage](#redis-key-storage)
-- [Gotchas](#gotchas)
-  - [Redis SSL Connection](#redis-ssl-connection)
-  - [Running Redis on Docker - memory errors](#running-redis-on-docker---memory-errors)
-  - [Secrets.json](#secretsjson)
+- [Next Web API](#next-web-api)
+	- [What is it?](#what-is-it)
+	- [Stack](#stack)
+		- [Software](#software)
+		- [Diagram](#diagram)
+	- [Local development setup](#local-development-setup)
+		- [.Net Core Locally stored secrets](#net-core-locally-stored-secrets)
+	- [Overview](#overview)
+		- [Ocelot](#ocelot)
+		- [Task Scheduler](#task-scheduler)
+		- [X-CacheManager-RefreshCache Header](#x-cachemanager-refreshcache-header)
+		- [Route config](#route-config)
+		- [Ocelot Pipeline](#ocelot-pipeline)
+		- [Redis cached content keys](#redis-cached-content-keys)
+			- [Redis Key naming](#redis-key-naming)
+			- [Key Generation Admin tool](#key-generation-admin-tool)
+			- [Redis Key storage](#redis-key-storage)
+			- [Enhanced Ocelot Logging](#enhanced-ocelot-logging)
+	- [Gotchas](#gotchas)
+		- [Redis SSL Connection](#redis-ssl-connection)
+		- [Running Redis on Docker - memory errors](#running-redis-on-docker---memory-errors)
+		- [Secrets.json](#secretsjson)
 
 <!-- END doctoc -->
 </details>
@@ -134,6 +136,20 @@ If the API is running in pre-prod mode (set via environment var) then you can ac
 #### Redis Key storage
 
 Cached items are stored as [Redis hashes](https://redis.io/topics/data-types#hashes) which are able to store a set of key value pairs. The name of the key is the MD5 encoded url [as noted here](#redis-key-naming).
+
+#### Enhanced Ocelot Logging
+
+To enable enhanced logging for Ocelot upstream and downstream requests, set the EnableEnhancedOcelotLogging option in your appsettings.json file. This feature can be toggled on or off dynamically using Octo. By default, this setting is disabled (false) to avoid unnecessary performance overhead, especially in live production environments. Enhanced logging is intended for development or troubleshooting scenarios where detailed request and response information is required.
+
+The output from enhanced logging is written to the standard logging stack and can be filtered using the "LogType" field. This field will have one of the following values:
+
+- UpstreamRequests
+- DownstreamRequests
+- DownstreamRequestBody
+
+These values align with Ocelot's terminology for incoming and outgoing traffic as defined in its documentation.
+
+Downstream responses such as 401, 403, or 500 are logged at the Information level, as they reflect valid HTTP responses from the downstream API and not failures of the NextWeb.Api Ocelot itself.
 
 ## Gotchas
 
