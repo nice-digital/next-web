@@ -108,10 +108,8 @@ namespace NICE.NextWeb.API
             {
                 app.Use(async (context, next) =>
                 {
-                    Log.Information("Extended Ocelot Logging - Upstream Request: {Method} {Path} {QueryString} from {IP} | LogType: {LogType}",
-                        context.Request.Method,
-                        context.Request.Path,
-                        context.Request.QueryString,
+                    Log.Information("Extended Ocelot Logging - Upstream Request: {UpstreamUri} from {IP} | LogType: {LogType}",
+                        context.Request.Path + context.Request.QueryString,
                         context.Connection.RemoteIpAddress?.ToString(), "UpstreamRequest");
 
                     await next.Invoke();

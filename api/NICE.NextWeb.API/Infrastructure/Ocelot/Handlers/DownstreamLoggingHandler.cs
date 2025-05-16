@@ -17,15 +17,15 @@ public class DownstreamLoggingHandler : DelegatingHandler
 
     protected override async Task<HttpResponseMessage> SendAsync(HttpRequestMessage request, CancellationToken cancellationToken)
     {
-        _logger.LogInformation("Extended Ocelot Logging - Sending downstream request: {Method} {Uri} | LogType: {LogType}", request.Method, request.RequestUri, "DownstreamRequest");
+        _logger.LogInformation("Extended Ocelot Logging - Sending downstream request: {DownstreamUri} | LogType: {LogType}", request.RequestUri, "DownstreamRequest");
 
         var response = await base.SendAsync(request, cancellationToken);
 
-        _logger.LogInformation("Extended Ocelot Logging - Received downstream response: {StatusCode} | LogType: {LogType}", response.StatusCode, "DownstreamRequest");
+        _logger.LogInformation("Extended Ocelot Logging - Received downstream response: {StatusCode} from {DownstreamUri} | LogType: {LogType}", response.StatusCode, request.RequestUri, "DownstreamRequest");
         if (response.Content != null)
         {
             var responseBody = await response.Content.ReadAsStringAsync();
-            _logger.LogInformation("Extended Ocelot Logging - Downstream response body: {Body} | LogType: {LogType}", responseBody, "DownstreamRequest");
+            _logger.LogInformation("Extended Ocelot Logging - Downstream response body: {Body} from {DownstreamUri} | LogType: {LogType}", responseBody, request.RequestUri, "DownstreamRequestBody");
         }
 
         return response;
