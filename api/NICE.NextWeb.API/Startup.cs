@@ -9,6 +9,7 @@ using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using NICE.NextWeb.API.CacheManager;
+using NICE.NextWeb.API.Infrastructure.Ocelot.Handlers;
 using NICE.NextWeb.API.ScheduledTasks.Niceorg;
 using NICE.NextWeb.API.ScheduledTasks.Scheduler;
 using Ocelot.DependencyInjection;
@@ -28,25 +29,31 @@ namespace NICE.NextWeb.API
 
         public void ConfigureServices(IServiceCollection services)
         {
-            services.AddControllersWithViews();
-
+            var isRequestLoggingEnabled = Configuration.GetValue<bool>("Ocelot:EnableRequestLogging");
             var redisDatabaseId = Configuration.GetValue<int>("Ocelot:RedisEndpointDatabase");
             var redisConnectionString = Configuration.GetValue<string>("Ocelot:RedisConnectionString");
-            var ocelotSecret = Configuration.GetValue<string>("Ocelot:ClientSecret");
 
-            services.AddOcelot()
+            services.AddControllersWithViews();
+
+            var ocelotBuilder = services.AddOcelot()
                 .AddCacheManager(x =>
                     x.WithRedisConfiguration("redis", redisConnectionString, redisDatabaseId)
                         .WithJsonSerializer()
                         .WithRedisCacheHandle("redis"));
 
+            if (isRequestLoggingEnabled)
+            {
+                ocelotBuilder.AddDelegatingHandler<DownstreamLoggingHandler>(true);
+            }
+
             services.AddSingleton<INiceorgHttpRequestMessage, NiceorgHttpRequestMessage>();
-            services.AddSingleton<IScheduledTask, RefreshGuidanceTaxonomyScheduledTask>();
+
             services.AddScheduler((sender, args) =>
             {
                 Console.Write(args.Exception.Message);
                 args.SetObserved();
             });
+            services.AddSingleton<IScheduledTask, RefreshGuidanceTaxonomyScheduledTask>();
             services.AddHttpClient<RefreshGuidanceTaxonomyScheduledTask>();
         }
 
@@ -101,11 +108,11 @@ namespace NICE.NextWeb.API
             {
                 app.Use(async (context, next) =>
                 {
-                    Log.Information("Ocelot Request: {Method} {Path} {QueryString} from {IP}",
+                    Log.Information("Extended Ocelot Logging - Upstream Request: {Method} {Path} {QueryString} from {IP} | LogType: {LogType}",
                         context.Request.Method,
                         context.Request.Path,
                         context.Request.QueryString,
-                        context.Connection.RemoteIpAddress?.ToString());
+                        context.Connection.RemoteIpAddress?.ToString(), "UpstreamRequest");
 
                     await next.Invoke();
                 });
