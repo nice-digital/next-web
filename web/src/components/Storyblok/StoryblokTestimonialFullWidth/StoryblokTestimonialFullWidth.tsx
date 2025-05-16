@@ -22,15 +22,13 @@ export const StoryblokTestimonialFullWidth: React.FC<
 			quoteText={quoteText}
 			className={className}
 			image={
-				image?.filename
-					? (
-						<StoryblokImage
-							src={image.filename}
-							alt={image?.alt ? image.alt : ""}
-							serviceOptions={{ height: 440, quality: 80, width: 440 }}
-						/>
-					)
-					: undefined
+				image?.filename ? (
+					<StoryblokImage
+						src={image.filename}
+						alt={image?.alt ? image.alt : ""}
+						serviceOptions={{ height: 440, quality: 80, width: 440 }}
+					/>
+				) : undefined
 			}
 			link={
 				link && link.length > 0 ? <StoryblokRelatedLink blok={link[0]} /> : null
