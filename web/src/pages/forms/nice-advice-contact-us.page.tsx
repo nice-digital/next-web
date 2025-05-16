@@ -5,7 +5,7 @@ import {
 import { JotFormPage } from "@/components/JotFormPage/JotFormPage";
 import { Link } from "@/components/Link/Link";
 
-export const getServerSideProps = getGetServerSideProps("242062773274053");
+export const getServerSideProps = getGetServerSideProps("251264227537053");
 
 const FormHeader = () => (
 	<p>
@@ -22,9 +22,7 @@ const FormHeader = () => (
 		your inbox.
 	</p>
 );
-export default function LifeSciencesContactUsForm(
-	props: FormProps
-): JSX.Element {
+export default function NiceAdviceContactUsForm(props: FormProps): JSX.Element {
 	return (
 		<JotFormPage
 			{...props}

@@ -138,6 +138,11 @@ const nextConfig = {
 	async redirects() {
 		return [
 			{
+				source: "/forms/life-sciences-contact-us",
+				destination: "/forms/nice-advice-contact-us",
+				permanent: true,
+			},
+			{
 				source: "/indicators",
 				destination: "/indicators/published",
 				permanent: true,
