@@ -149,6 +149,8 @@ The output from enhanced logging is written to the standard logging stack and ca
 
 These values align with Ocelot's terminology for incoming and outgoing traffic as defined in its documentation.
 
+Downstream responses such as 401, 403, or 500 are logged at the Information level, as they reflect valid HTTP responses from the downstream API and not failures of the NextWeb.Api Ocelot itself.
+
 ## Gotchas
 
 ### Redis SSL Connection
