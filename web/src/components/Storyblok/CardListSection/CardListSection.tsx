@@ -1,12 +1,9 @@
 import classnames from "classnames";
-import Link from "next/link";
-
-import { Card, type CardHeadingLinkProps } from "@nice-digital/nds-card";
 
 import { CardList } from "@/components/Storyblok/CardList/CardList";
 import { StoryblokRichText } from "@/components/Storyblok/StoryblokRichText/StoryblokRichText";
 import { CardListSectionStoryblok } from "@/types/storyblok";
-import { fieldHasValidContent, resolveStoryblokLink } from "@/utils/storyblok";
+import { fieldHasValidContent } from "@/utils/storyblok";
 import { toTitleCase } from "@/utils/string";
 
 import styles from "./CardListSection.module.scss";
