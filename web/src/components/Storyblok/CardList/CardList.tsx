@@ -9,12 +9,8 @@ export interface CardListProps {
 	blok: CardListStoryblok;
 }
 
-export const CardList: React.FC<CardListProps> = ({
-	blok,
-}: CardListProps) => {
-		const {
-			cards,
-		} = blok;
+export const CardList: React.FC<CardListProps> = ({ blok }: CardListProps) => {
+	const { cards } = blok;
 
 	return (
 		<ul className="list list--unstyled">
