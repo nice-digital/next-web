@@ -9,7 +9,7 @@ import React, { useMemo } from "react";
 import { ErrorPageContent } from "@/components/ErrorPageContent/ErrorPageContent";
 import { BasicCardGrid } from "@/components/Storyblok/BasicCardGrid/BasicCardGrid";
 import { Blockquote } from "@/components/Storyblok/Blockquote/Blockquote";
-import { CardGrid } from "@/components/Storyblok/CardGrid/CardGrid";
+import { CardGridRow } from "@/components/Storyblok/CardGridRow/CardGridRow";
 import { CardGridSection } from "@/components/Storyblok/CardGridSection/CardGridSection";
 import { CardListSection } from "@/components/Storyblok/CardListSection/CardListSection";
 import { CategoryLandingPage } from "@/components/Storyblok/CategoryLandingPage/CategoryLandingPage";
@@ -111,6 +111,7 @@ export default function SlugCatchAll(
 		accordion: StoryblokAccordion,
 		accordionGroup: StoryblokAccordionGroup,
 		actionBannerDefault: StoryblokActionBannerDefault,
+		cardGridRowBasic: CardGridRow,
 		cardGridRowBasic: CardGrid,
 		hero: StoryblokHero,
 		iframe: StoryblokIframe,
