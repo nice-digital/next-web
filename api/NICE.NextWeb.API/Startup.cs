@@ -1,6 +1,5 @@
 using System;
 using System.Net;
-using System.Web;
 using CacheManager.Core;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Diagnostics;
@@ -10,9 +9,9 @@ using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using NICE.NextWeb.API.CacheManager;
+using NICE.NextWeb.API.Infrastructure.Ocelot.Handlers;
 using NICE.NextWeb.API.ScheduledTasks.Niceorg;
 using NICE.NextWeb.API.ScheduledTasks.Scheduler;
-using Ocelot.Administration;
 using Ocelot.DependencyInjection;
 using Ocelot.Middleware;
 using Serilog;
@@ -30,25 +29,31 @@ namespace NICE.NextWeb.API
 
         public void ConfigureServices(IServiceCollection services)
         {
-            services.AddControllersWithViews();
-
+            var isRequestLoggingEnabled = Configuration.GetValue<bool>("Ocelot:EnableEnhancedOcelotLogging");
             var redisDatabaseId = Configuration.GetValue<int>("Ocelot:RedisEndpointDatabase");
             var redisConnectionString = Configuration.GetValue<string>("Ocelot:RedisConnectionString");
-            var ocelotSecret = Configuration.GetValue<string>("Ocelot:ClientSecret");
 
-            services.AddOcelot()
+            services.AddControllersWithViews();
+
+            var ocelotBuilder = services.AddOcelot()
                 .AddCacheManager(x =>
                     x.WithRedisConfiguration("redis", redisConnectionString, redisDatabaseId)
                         .WithJsonSerializer()
                         .WithRedisCacheHandle("redis"));
 
+            if (isRequestLoggingEnabled)
+            {
+                ocelotBuilder.AddDelegatingHandler<DownstreamLoggingHandler>(true);
+            }
+
             services.AddSingleton<INiceorgHttpRequestMessage, NiceorgHttpRequestMessage>();
-            services.AddSingleton<IScheduledTask, RefreshGuidanceTaxonomyScheduledTask>();
+
             services.AddScheduler((sender, args) =>
             {
                 Console.Write(args.Exception.Message);
                 args.SetObserved();
             });
+            services.AddSingleton<IScheduledTask, RefreshGuidanceTaxonomyScheduledTask>();
             services.AddHttpClient<RefreshGuidanceTaxonomyScheduledTask>();
         }
 
@@ -96,6 +101,21 @@ namespace NICE.NextWeb.API
                             pattern: "{admin}/{controller}/{action=Index}/{id?}");
                 }
             });
+
+            var requestLoggingEnabled = Configuration.GetValue<bool>("Ocelot:EnableEnhancedOcelotLogging");
+
+            if (requestLoggingEnabled)
+            {
+                app.Use(async (context, next) =>
+                {
+                    Log.Information("Extended Ocelot Logging - Upstream Request: {UpstreamUri} from {IP} | LogType: {LogType}",
+                        $"{context.Request.Scheme}://{context.Request.Host}{context.Request.Path}{context.Request.QueryString}",
+                        context.Connection.RemoteIpAddress?.ToString(), "UpstreamRequest");
+
+                    await next.Invoke();
+                });
+
+            }
 
             app.UseOcelot().Wait();
         }
