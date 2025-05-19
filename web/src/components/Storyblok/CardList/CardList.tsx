@@ -2,11 +2,11 @@ import Link from "next/link";
 
 import { Card, type CardHeadingLinkProps } from "@nice-digital/nds-card";
 
-import { CardListSectionItemStoryblok } from "@/types/storyblok";
+import { CardListStoryblok } from "@/types/storyblok";
 import { resolveStoryblokLink } from "@/utils/storyblok";
 
 export interface CardList {
-	blok: CardListSectionItemStoryblok;
+	blok: CardListStoryblok;
 }
 
 export const CardList: React.FC<CardList> = ({
