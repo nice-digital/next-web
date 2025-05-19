@@ -10,7 +10,7 @@ import {
 } from "@/types/storyblok";
 import { fieldHasValidContent } from "@/utils/storyblok";
 
-import { CardGrid } from "../CardGrid/CardGrid";
+import { CardGrid } from "@/components/Storyblok/CardGrid/CardGrid";
 
 import styles from "./CardGridSection.module.scss";
 

@@ -19,8 +19,8 @@ import {
 import { constructStoryblokImageSrc } from "@/utils/storyblok";
 import { toTitleCase } from "@/utils/string";
 
-import { CardGrid } from "../CardGrid/CardGrid";
-import { StoryblokActionBannerDefault } from "../StoryblokActionBanner/StoryblokActionBannerDefault";
+import { CardGrid } from "@/components/Storyblok/CardGrid/CardGrid";
+import { StoryblokActionBannerDefault } from "@/components/Storyblok/StoryblokActionBanner/StoryblokActionBannerDefault";
 
 import styles from "./PromoBox.module.scss";
 

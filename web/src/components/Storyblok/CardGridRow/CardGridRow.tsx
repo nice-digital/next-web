@@ -4,7 +4,7 @@ import {
 	CardGridRowCalloutWithImageStoryblok,
 } from "@/types/storyblok";
 
-import { CardGrid } from "../CardGrid/CardGrid";
+import { CardGrid } from "@/components/Storyblok/CardGrid/CardGrid";
 
 export type CardGridRow =
 	| CardGridRowBasicStoryblok
