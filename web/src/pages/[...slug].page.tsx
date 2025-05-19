@@ -117,7 +117,7 @@ export default function SlugCatchAll(
 		youtubeEmbed: StoryblokYoutubeEmbed,
 		actionBannerDefault: StoryblokActionBannerDefault,
 		nestedTable: StoryblokTable,
-		testimonialGridItem: StoryblokTestimonialGridItem
+		testimonialGridItem: StoryblokTestimonialGridItem,
 	};
 
 	const components = {
