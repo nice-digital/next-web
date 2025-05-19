@@ -53,7 +53,7 @@ describe("testimonial component", () => {
 			"testimonial testimonial--default"
 		);
 	});
-	it.only("Should render image", () => {
+	it("Should render image", () => {
 		render(
 			<Testimonial
 				quoteName="Jane Doe"
@@ -75,5 +75,16 @@ describe("testimonial component", () => {
 			"src",
 			"/_next/image?url=http%3A%2F%2Ftest_image.jpeg&w=256&q=75"
 		);
+	});
+	it("Should not render an image if the image prop is not passed", () => {
+		render(
+			<Testimonial
+				quoteName="Jane Doe"
+				quoteRole="Software Engineer"
+				quoteText="This is an amazing product! Highly recommended for everyone."
+			/>
+		);
+		const images = screen.queryAllByRole("img");
+		expect(images).toHaveLength(0);
 	});
 });
