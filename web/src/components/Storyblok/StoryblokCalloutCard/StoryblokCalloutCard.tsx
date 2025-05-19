@@ -3,13 +3,12 @@ import React from "react";
 
 import { Card, type CardHeadingLinkProps } from "@nice-digital/nds-card";
 
+import { StoryblokImage } from "@/components/Storyblok/StoryblokImage/StoryblokImage";
 import {
 	CalloutCardStoryblok,
 	CalloutCardWithImageStoryblok,
 } from "@/types/storyblok";
 import { resolveStoryblokLink } from "@/utils/storyblok";
-
-import { StoryblokImage } from "../StoryblokImage/StoryblokImage";
 
 import styles from "./StoryblokCalloutCard.module.scss";
 

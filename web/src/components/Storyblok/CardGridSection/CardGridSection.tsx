@@ -1,5 +1,6 @@
 import classnames from "classnames";
 
+import { CardGrid } from "@/components/Storyblok/CardGrid/CardGrid";
 import { StoryblokRichText } from "@/components/Storyblok/StoryblokRichText/StoryblokRichText";
 import {
 	CardGridSectionStoryblok,
@@ -9,8 +10,6 @@ import {
 	CardGridRowCalloutWithImageStoryblok,
 } from "@/types/storyblok";
 import { fieldHasValidContent } from "@/utils/storyblok";
-
-import { CardGrid } from "@/components/Storyblok/CardGrid/CardGrid";
 
 import styles from "./CardGridSection.module.scss";
 
