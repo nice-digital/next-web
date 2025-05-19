@@ -18,7 +18,6 @@ export interface CardGridRowProps {
 export const CardGridRow: React.FC<CardGridRowProps> = ({
 	blok,
 }: CardGridRowProps) => {
-
 	return (
 		<>
 			<CardGrid row={blok as CardGridRow} />
