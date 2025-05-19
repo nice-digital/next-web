@@ -207,16 +207,6 @@ export interface CardStoryblok {
   [k: string]: any;
 }
 
-export interface CardContentStoryblok {
-  title?: string;
-  body?: string;
-  link?: Exclude<MultilinkStoryblok, {linktype?: "email"} | {linktype?: "asset"}>;
-  image?: AssetStoryblok;
-  component: "cardContent";
-  _uid: string;
-  [k: string]: any;
-}
-
 export interface CardGridStoryblok {
   cards: CardStoryblok[];
   component: "cardGrid";
@@ -345,7 +335,6 @@ export interface GridStoryblok {
     | CalloutCardStoryblok
     | CalloutCardWithImageStoryblok
     | CardStoryblok
-    | CardContentStoryblok
     | CardGridStoryblok
     | CardGridRowBasicStoryblok
     | CardGridRowCalloutStoryblok
@@ -368,15 +357,12 @@ export interface GridStoryblok {
     | ImageEmbedStoryblok
     | ImageOrVideoStoryblok
     | InDepthArticleStoryblok
-    | InfogramEmbedStoryblok
     | InfoPageStoryblok
-    | ListItemStoryblok
     | MarkdownStoryblok
     | MetadataStoryblok
     | NestedRichTextStoryblok
     | NestedTableStoryblok
     | NewsArticleStoryblok
-    | OrderedListStoryblok
     | PageStoryblok
     | PageHeaderStoryblok
     | PodcastStoryblok
@@ -385,7 +371,6 @@ export interface GridStoryblok {
     | RelatedLinkStoryblok
     | RelatedNewsLinkStoryblok
     | SpotlightStoryblok
-    | SpotlightCopyStoryblok
     | TestimonialFullWidthStoryblok
     | TestimonialGridItemStoryblok
     | YoutubeEmbedStoryblok
@@ -521,25 +506,11 @@ export interface InDepthArticleStoryblok {
   [k: string]: any;
 }
 
-export interface InfogramEmbedStoryblok {
-  embedCode?: string;
-  component: "infogramEmbed";
-  _uid: string;
-  [k: string]: any;
-}
-
 export interface InfoPageStoryblok {
   header: (PageHeaderStoryblok | HeroStoryblok)[];
   metadata?: MetadataStoryblok[];
   content: RichtextStoryblok;
   component: "infoPage";
-  _uid: string;
-  [k: string]: any;
-}
-
-export interface ListItemStoryblok {
-  ListItemText?: string;
-  component: "ListItem";
   _uid: string;
   [k: string]: any;
 }
@@ -610,14 +581,6 @@ export interface NewsArticleStoryblok {
   [k: string]: any;
 }
 
-export interface OrderedListStoryblok {
-  StartingNumber?: string;
-  ListItems?: ListItemStoryblok[];
-  component: "OrderedList";
-  _uid: string;
-  [k: string]: any;
-}
-
 export interface PageStoryblok {
   body?: (
     | AccordionStoryblok
@@ -630,7 +593,6 @@ export interface PageStoryblok {
     | CalloutCardStoryblok
     | CalloutCardWithImageStoryblok
     | CardStoryblok
-    | CardContentStoryblok
     | CardGridStoryblok
     | CardGridRowBasicStoryblok
     | CardGridRowCalloutStoryblok
@@ -653,15 +615,12 @@ export interface PageStoryblok {
     | ImageEmbedStoryblok
     | ImageOrVideoStoryblok
     | InDepthArticleStoryblok
-    | InfogramEmbedStoryblok
     | InfoPageStoryblok
-    | ListItemStoryblok
     | MarkdownStoryblok
     | MetadataStoryblok
     | NestedRichTextStoryblok
     | NestedTableStoryblok
     | NewsArticleStoryblok
-    | OrderedListStoryblok
     | PageStoryblok
     | PageHeaderStoryblok
     | PodcastStoryblok
@@ -670,7 +629,6 @@ export interface PageStoryblok {
     | RelatedLinkStoryblok
     | RelatedNewsLinkStoryblok
     | SpotlightStoryblok
-    | SpotlightCopyStoryblok
     | TestimonialFullWidthStoryblok
     | TestimonialGridItemStoryblok
     | YoutubeEmbedStoryblok
@@ -760,23 +718,6 @@ export interface SpotlightStoryblok {
   youtubeEmbed: YoutubeEmbedStoryblok[];
   isTransparent?: boolean;
   component: "spotlight";
-  _uid: string;
-  [k: string]: any;
-}
-
-export interface SpotlightCopyStoryblok {
-  heading: string;
-  mediaDescription?: RichtextStoryblok;
-  stories: (
-    | ISbStoryData<BlogPostStoryblok>
-    | ISbStoryData<NewsArticleStoryblok>
-    | ISbStoryData<InDepthArticleStoryblok>
-    | ISbStoryData<PodcastStoryblok>
-    | string
-  )[];
-  youtubeEmbed: YoutubeEmbedStoryblok[];
-  isTransparent?: boolean;
-  component: "spotlight_copy";
   _uid: string;
   [k: string]: any;
 }
