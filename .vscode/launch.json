@@ -5,7 +5,7 @@
   "version": "0.2.0",
   "configurations": [
     {
-      "name": "Next.js: debug full stack",
+      "name": "Next - Debug full stack",
       "type": "node",
       "request": "launch",
        "cwd": "${workspaceFolder}/web",
@@ -16,9 +16,14 @@
       "serverReadyAction": {
         "action": "debugWithChrome",
         "killOnServerStop": true,
-        "pattern": "- Local:/+(https?://.+)",
+        "pattern": "- Local:\\s*(https?://.+)",
         "uriFormat": "%s",
         "webRoot": "${workspaceFolder}/web/src",
+      },
+      "presentation": {
+        "hidden": false,
+        "group": "Full stack",
+        "order": 1
       }
     },
     {
@@ -42,7 +47,7 @@
       "presentation": {
         "hidden": false,
         "group": "Static site",
-        "order": 1
+        "order": 2
       }
     },
     {
@@ -68,9 +73,7 @@
         "!**/node_modules/**"
       ],
       "console": "integratedTerminal",
-      "protocol": "inspector",
       "sourceMaps": true,
-      "disableOptimisticBPs": true,
       "presentation": {
         "hidden": false,
         "group": "Functional tests",
