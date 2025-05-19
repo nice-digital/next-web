@@ -3,18 +3,18 @@ import { GetServerSidePropsContext } from "next";
 
 import { FormProps } from "@/components/JotFormPage/getGetServerSideProps";
 
-import InternationalEnquiryForm, {
+import NiceAdviceContactUsForm, {
 	getServerSideProps,
-} from "./nice-international-enquiry-form.page";
+} from "./nice-advice-contact-us.page";
 
 jest.mock("@/feeds/jotform/jotform", () => ({
 	getForm: jest.fn().mockResolvedValue({
 		responseCode: 200,
 		message: "success",
 		content: {
-			id: "251353686585064",
+			id: "251264227537053",
 			username: "nice_teams",
-			title: "NICE International enquiry form",
+			title: "NICE Advice contact us form",
 			height: "539",
 			status: "ENABLED",
 			created_at: "2022-12-08 06:31:44",
@@ -25,19 +25,19 @@ jest.mock("@/feeds/jotform/jotform", () => ({
 			type: "LEGACY",
 			favorite: "0",
 			archived: "0",
-			url: "https://nice.jotform.com/251353686585064",
+			url: "https://nice.jotform.com/251264227537053",
 		},
 		duration: "14.98ms",
 	}),
 }));
 
-describe("InternationalEnquiryForm", () => {
+describe("NiceAdviceContactUsForm", () => {
 	it("should match snapshot", async () => {
 		const props = (await getServerSideProps({
-			resolvedUrl: "/forms/nice-international-enquiry-form",
+			resolvedUrl: "/forms/nice-advice-contact-us",
 		} as GetServerSidePropsContext)) as { props: FormProps };
 
-		const { container } = render(<InternationalEnquiryForm {...props.props} />);
+		const { container } = render(<NiceAdviceContactUsForm {...props.props} />);
 
 		expect(container).toMatchSnapshot();
 	});

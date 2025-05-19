@@ -1,6 +1,6 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`InternationalEnquiryForm should match snapshot 1`] = `
+exports[`NiceAdviceContactUsForm should match snapshot 1`] = `
 <div>
   <nav
     aria-label="Breadcrumbs"
@@ -41,25 +41,16 @@ exports[`InternationalEnquiryForm should match snapshot 1`] = `
         class="breadcrumbs__crumb"
       >
         <a
-          href="/about/what-we-do/nice-international"
+          href="/about/what-we-do/life-sciences"
         >
-          NICE International
-        </a>
-      </li>
-      <li
-        class="breadcrumbs__crumb"
-      >
-        <a
-          href="/about/what-we-do/nice-international/about-nice-international"
-        >
-          About NICE International
+          Life sciences: how to get your product to market
         </a>
       </li>
       <li
         class="breadcrumbs__crumb"
       >
         <span>
-          NICE International enquiry form
+          NICE Advice contact us form
         </span>
       </li>
     </ol>
@@ -99,23 +90,15 @@ exports[`InternationalEnquiryForm should match snapshot 1`] = `
       "@type": "ListItem",
       "position": 4,
       "item": {
-        "@id": "/about/what-we-do/nice-international",
-        "name": "NICE International"
+        "@id": "/about/what-we-do/life-sciences",
+        "name": "Life sciences: how to get your product to market"
       }
     },
     {
       "@type": "ListItem",
       "position": 5,
       "item": {
-        "@id": "/about/what-we-do/nice-international/about-nice-international",
-        "name": "About NICE International"
-      }
-    },
-    {
-      "@type": "ListItem",
-      "position": 6,
-      "item": {
-        "name": "NICE International enquiry form"
+        "name": "NICE Advice contact us form"
       }
     }
   ]
@@ -137,25 +120,42 @@ exports[`InternationalEnquiryForm should match snapshot 1`] = `
         <h1
           class="page-header__heading "
         >
-          NICE International enquiry form
+          NICE Advice contact us form
         </h1>
-        <p
-          class="page-header__lead"
-        >
-          Thank you for contacting the NICE International team. We will use the information you provide below to understand your enquiry and contact you about your requirements.
-        </p>
       </div>
+      <p>
+        Briefly tell us why you're getting in touch with
+         
+        <a
+          href="https://www.nice.org.uk/about/what-we-do/life-sciences/nice-advice-service?utm_medium=enquiry_form&utm_source=nice_website&utm_campaign=nice_advice_24"
+          rel="noreferrer"
+          target="_blank"
+        >
+          NICE Advice
+        </a>
+        . We'll then give you an indication of how we can support you. In most cases, we'll include estimated costs and timelines sent straight to your inbox.
+      </p>
       <iframe
         allow="geolocation; microphone; camera"
         allowfullscreen=""
         class="iframe"
-        data-jotform-id="251353686585064"
-        id="JotFormIFrame-251353686585064"
+        data-jotform-id="251264227537053"
+        id="JotFormIFrame-251264227537053"
         scrolling="no"
-        src="https://next-web-tests.jotform.com/251353686585064?isIframeEmbed=1"
+        src="https://next-web-tests.jotform.com/251264227537053?isIframeEmbed=1"
         style="height: 539px; overflow: hidden;"
-        title="NICE International enquiry form"
+        title="NICE Advice contact us form"
       />
+      <p>
+        As you have expressed an interest in NICE's support services, your details will be added to our mailing list so that you can receive the latest news about NICE's support for the life sciences sector. You can unsubscribe from this at any time. Our legal basis for processing your data in this way is that of public task. View our
+         
+        <a
+          href="/privacy-notice"
+        >
+          privacy notice
+        </a>
+         for more information.
+      </p>
     </div>
   </div>
 </div>
