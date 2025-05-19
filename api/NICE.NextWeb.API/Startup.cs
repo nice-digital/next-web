@@ -29,7 +29,7 @@ namespace NICE.NextWeb.API
 
         public void ConfigureServices(IServiceCollection services)
         {
-            var isRequestLoggingEnabled = Configuration.GetValue<bool>("Ocelot:EnablEnhancedOcelotLogging");
+            var isRequestLoggingEnabled = Configuration.GetValue<bool>("Ocelot:EnableEnhancedOcelotLogging");
             var redisDatabaseId = Configuration.GetValue<int>("Ocelot:RedisEndpointDatabase");
             var redisConnectionString = Configuration.GetValue<string>("Ocelot:RedisConnectionString");
 
@@ -102,7 +102,7 @@ namespace NICE.NextWeb.API
                 }
             });
 
-            var requestLoggingEnabled = Configuration.GetValue<bool>("Ocelot:EnablEnhancedOcelotLogging");
+            var requestLoggingEnabled = Configuration.GetValue<bool>("Ocelot:EnableEnhancedOcelotLogging");
 
             if (requestLoggingEnabled)
             {
