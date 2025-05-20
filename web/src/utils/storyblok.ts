@@ -64,13 +64,17 @@ export const fetchCacheVersion = async (): Promise<number> => {
 		version = response.data.space.version;
 
 		logger.warn(
-			`fetchCacheVersion: Fetched cache version ${version} - ${typeof version}`
+			`fetchCacheVersion: Fetched cache version ${version}`
 		);
 	} catch (error) {
 		logger.error(
 			isISbError(error)
 				? `fetchCacheVersion: ${error.status} error from Storyblok API: ${error.message}`
-				: `fetchCacheVersion: Non ISbError response`
+				: `fetchCacheVersion: Non Storyblok error response: ${JSON.stringify(
+						error,
+						null,
+						2
+				  )}`
 		);
 		throw Error(GENERIC_ERROR_MESSAGE, { cause: error });
 	}
@@ -97,7 +101,7 @@ export const fetchStory = async <T>(
 	const storyblokApi = getStoryblokApi();
 	const cacheVersion = await fetchCacheVersion();
 
-	logger.warn(`fetchStory: Fetched cache version ${cacheVersion} - $12w}`);
+	logger.warn(`fetchStory: At slug:${slug}. Cache version value: ${cacheVersion}. Ocelot endpoint: ${publicRuntimeConfig.storyblok.ocelotEndpoint}`);
 
 	const sbParams: ISbStoriesParams = {
 		version,
@@ -120,7 +124,7 @@ export const fetchStory = async <T>(
 	} catch (error: unknown) {
 		if (isISbError(error) && error.status === 404) {
 			logger.error(
-				`fetchStory: 404 error from Storyblok API: ${error.message} at slug: ${slug} `
+				`fetchStory: 404 from Storyblok API: ${error.message} at slug: ${slug} `
 			);
 
 			return {
@@ -130,7 +134,11 @@ export const fetchStory = async <T>(
 		logger.error(
 			isISbError(error)
 				? `fetchStory: ${error.status} error from Storyblok API: ${error.message} at slug: ${slug} `
-				: `fetchStory: Non ISbError response at slug: ${slug}`
+				: `fetchStory: Non Storyblok error response at slug: ${slug}. Error: ${JSON.stringify(
+						error,
+						null,
+						2
+				  )}`
 		);
 
 		throw Error(GENERIC_ERROR_MESSAGE, { cause: error });
