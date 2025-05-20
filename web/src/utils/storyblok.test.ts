@@ -330,6 +330,7 @@ describe.only("Storyblok utils", () => {
 			expect(throwErrorFetchStory).rejects.toThrow(GENERIC_ERROR_MESSAGE);
 
 			expect(jest.isMockFunction(logger.error)).toBe(true);
+
 			await waitFor(() => {
 				expect(logger.error).toHaveBeenCalled();
 				// eslint-disable-next-line testing-library/no-wait-for-multiple-assertions
@@ -340,7 +341,7 @@ describe.only("Storyblok utils", () => {
 					// 	sbParams: { resolve_links: "url", version: "published" },
 					// 	slug: "news/articles/test-page",
 					// },
-					'fetchStory: Non Storyblok error response at slug: news/articles/test-page. Error: "Generic error"'
+					"fetchStory: Non Storyblok error response at slug: news/articles/test-page. Error: Generic error"
 				);
 			});
 		});

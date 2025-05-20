@@ -68,11 +68,7 @@ export const fetchCacheVersion = async (): Promise<number> => {
 		logger.error(
 			isISbError(error)
 				? `fetchCacheVersion: ${error.status} error from Storyblok API: ${error.message}`
-				: `fetchCacheVersion: Non Storyblok error response: ${JSON.stringify(
-						error,
-						null,
-						2
-				  )}`
+				: `fetchCacheVersion: Non Storyblok error response: ${error}`
 		);
 		throw Error(GENERIC_ERROR_MESSAGE, { cause: error });
 	}
@@ -134,11 +130,7 @@ export const fetchStory = async <T>(
 		logger.error(
 			isISbError(error)
 				? `fetchStory: ${error.status} error from Storyblok API: ${error.message} at slug: ${slug} `
-				: `fetchStory: Non Storyblok error response at slug: ${slug}. Error: ${JSON.stringify(
-						error,
-						null,
-						2
-				  )}`
+				: `fetchStory: Non Storyblok error response at slug: ${slug}. Error: ${error}`
 		);
 
 		throw Error(GENERIC_ERROR_MESSAGE, { cause: error });

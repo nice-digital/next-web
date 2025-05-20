@@ -181,7 +181,7 @@ describe("/news/articles/index.page", () => {
 
 			jest
 				.spyOn(storyblokUtils, "fetchCacheVersion")
-				.mockResolvedValue(123456789);
+				.mockResolvedValue(mockCvValue);
 
 			validateRouteParamsSpy = jest.spyOn(
 				storyblokUtils,
