@@ -21,6 +21,7 @@ export const StoryblokSectionNav = ({
 			<StackedNav
 				label={sectionNavLabel?.name}
 				className={styles["storyblok-section-nav"]}
+				aria-label={`Section navigation: ${sectionNavLabel?.name ?? "Section"}`}
 			>
 				{sectionNavTreeWithoutLabel?.map((parent) => (
 					<StackedNavLink
