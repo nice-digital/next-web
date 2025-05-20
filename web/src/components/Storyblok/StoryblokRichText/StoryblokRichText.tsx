@@ -30,7 +30,7 @@ export const StoryblokRichText: React.FC<StoryblokRichTextProps> = ({
 	className,
 }) => {
 	const classes = [styles.storyblokRichTextWrapper, className].join(" ");
-
+	const imageClassName = [styles.imageMain, className].join(" ");
 	return (
 		<div className={classes} data-testid="storyblok-rich-text">
 			{render(content, {
@@ -82,6 +82,7 @@ export const StoryblokRichText: React.FC<StoryblokRichTextProps> = ({
 								src={props.src}
 								alt={props.alt}
 								loading="lazy"
+								className={imageClassName}
 								serviceOptions={{
 									height: 0,
 									width: Number(dimensions.width),
