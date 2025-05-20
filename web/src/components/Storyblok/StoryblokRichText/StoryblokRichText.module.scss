@@ -21,17 +21,6 @@
     display: block;
   }
 
-  // img {
-  //   aspect-ratio: 16/9;
-  //   display: block;
-  //   height: auto;
-  //   margin: utils.rem(spacing.$large) 0;
-  //   object-fit: cover;
-  //   width: 100%;
-  // }
-  // }
-
-
   //target lite youtube embed wrapper - (video) is hardcoded at the start of every title
   [data-title^='(video)'] {
     margin: utils.rem(spacing.$large) 0 utils.rem(spacing.$x-large);
@@ -54,8 +43,6 @@
     margin-bottom: 0;
   }
 }
-
-
 
 .imageMain {
   aspect-ratio: 16/9;
