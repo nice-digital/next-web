@@ -340,7 +340,7 @@ describe.only("Storyblok utils", () => {
 					// 	sbParams: { resolve_links: "url", version: "published" },
 					// 	slug: "news/articles/test-page",
 					// },
-					"fetchStory: Non ISbError response at slug: news/articles/test-page"
+					"fetchStory: Non Storyblok error response at slug: news/articles/test-page. Error: \"Generic error\""
 				);
 			});
 		});
