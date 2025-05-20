@@ -63,9 +63,7 @@ export const fetchCacheVersion = async (): Promise<number> => {
 		const response = await storyblokApi.get("cdn/spaces/me");
 		version = response.data.space.version;
 
-		logger.warn(
-			`fetchCacheVersion: Fetched cache version ${version}`
-		);
+		logger.warn(`fetchCacheVersion: Fetched cache version ${version}`);
 	} catch (error) {
 		logger.error(
 			isISbError(error)
@@ -101,7 +99,9 @@ export const fetchStory = async <T>(
 	const storyblokApi = getStoryblokApi();
 	const cacheVersion = await fetchCacheVersion();
 
-	logger.warn(`fetchStory: At slug:${slug}. Cache version value: ${cacheVersion}. Ocelot endpoint: ${publicRuntimeConfig.storyblok.ocelotEndpoint}`);
+	logger.warn(
+		`fetchStory: At slug:${slug}. Cache version value: ${cacheVersion}. Ocelot endpoint: ${publicRuntimeConfig.storyblok.ocelotEndpoint}`
+	);
 
 	const sbParams: ISbStoriesParams = {
 		version,
