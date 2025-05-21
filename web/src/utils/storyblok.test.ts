@@ -267,7 +267,7 @@ describe("Storyblok utils", () => {
 				{
 					resolve_links: "url",
 					version: "draft",
-					cv:mockCvValue, //globally mocked
+					cv: mockCvValue, //globally mocked
 				}
 			);
 		});
@@ -356,7 +356,7 @@ describe("Storyblok utils", () => {
 			await fetchStories("published", {
 				starts_with: "news/articles",
 				per_page: 6,
-				cv:mockCvValue, //globally mocked
+				cv: mockCvValue, //globally mocked
 			});
 
 			expect(getStoryblokApi().get).toHaveBeenCalled();
@@ -367,7 +367,7 @@ describe("Storyblok utils", () => {
 				version: "published",
 				starts_with: "news/articles",
 				per_page: 6,
-				cv:mockCvValue, //globally mocked
+				cv: mockCvValue, //globally mocked
 			});
 		});
 
@@ -379,7 +379,7 @@ describe("Storyblok utils", () => {
 			const result = await fetchStories("published", {
 				starts_with: "news/articles",
 				per_page: 8,
-				cv:mockCvValue, //globally mocked
+				cv: mockCvValue, //globally mocked
 			});
 
 			const expectedResult = {
@@ -400,7 +400,7 @@ describe("Storyblok utils", () => {
 				await fetchStories("published", {
 					starts_with: "news/articles",
 					per_page: 8,
-					cv:mockCvValue, //globally mocked
+					cv: mockCvValue, //globally mocked
 				});
 			};
 
@@ -443,7 +443,7 @@ describe("Storyblok utils", () => {
 				await fetchStories("published", {
 					starts_with: "news/articles",
 					per_page: 8,
-					cv:mockCvValue, //globally mocked
+					cv: mockCvValue, //globally mocked
 				});
 			};
 
@@ -489,7 +489,7 @@ describe("Storyblok utils", () => {
 				per_page: 1000,
 				version: "published",
 				starts_with: "news/podcasts",
-				cv:mockCvValue, //globally mocked
+				cv: mockCvValue, //globally mocked
 			});
 		});
 
@@ -510,7 +510,7 @@ describe("Storyblok utils", () => {
 				per_page: 300,
 				version: "draft",
 				starts_with: "news/podcasts",
-				cv:mockCvValue
+				cv: mockCvValue,
 			});
 		});
 
@@ -600,7 +600,7 @@ describe("Storyblok utils", () => {
 				per_page: 1000,
 				version: "published",
 				starts_with: "news",
-				cv:mockCvValue, //globally mocked,
+				cv: mockCvValue, //globally mocked,
 			});
 		});
 
