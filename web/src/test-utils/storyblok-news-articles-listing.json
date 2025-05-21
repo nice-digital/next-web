@@ -1,662 +1,957 @@
 {
-  "data": {
-    "stories": [
-      {
-        "name": "test news tomorrow",
-        "created_at": "2024-03-11T16:18:31.636Z",
-        "published_at": "2024-03-12T08:46:09.118Z",
-        "id": 459634219,
-        "uuid": "21fd5b9f-2913-41fc-9bdf-ba40cdaa1177",
-        "content": {
-          "_uid": "8a8957e9-4086-4be0-8c47-60e2f2ba3a8c",
-          "date": "2024-03-13 00:00",
-          "image": {
-            "id": 13894387,
-            "alt": "doctor showing results on a tablet computer to a male patient",
-            "name": "",
-            "focus": "",
-            "title": "",
-            "source": "",
-            "filename": "https://local-host-test-nice-org.com/f/271255/788x443/b2d6d3a601/doctor-showing-results-on-tablet-computer-to-male-patient.jpg",
-            "copyright": "",
-            "fieldtype": "asset",
-            "meta_data": {},
-            "is_private": false,
-            "is_external_url": false
-          },
-          "title": "Test tomorrow news",
-          "content": {
-            "type": "doc",
-            "content": [
-              {
-                "type": "paragraph",
-                "content": [{ "text": "content", "type": "text" }]
-              }
-            ]
-          },
-          "component": "newsArticle",
-          "introText": "intro",
-          "resources": [],
-          "relatedNews": []
-        },
-        "slug": "test-news-tomorrow",
-        "full_slug": "news/articles/test-news-tomorrow",
-        "sort_by_date": null,
-        "position": -830,
-        "tag_list": [],
-        "is_startpage": false,
-        "parent_id": 428383157,
-        "meta_data": null,
-        "group_id": "fdb1686e-e691-4de2-bfbc-54276117b8bb",
-        "first_published_at": "2024-03-11T16:17:32.010Z",
-        "release_id": null,
-        "lang": "default",
-        "path": null,
-        "alternates": [],
-        "default_full_slug": null,
-        "translated_slugs": null
-      },
-      {
-        "name": "test news today",
-        "created_at": "2024-03-11T16:16:46.669Z",
-        "published_at": "2024-03-11T16:17:32.010Z",
-        "id": 459627740,
-        "uuid": "bd2b7e5c-b714-443d-a8e5-fd80fc61b006",
-        "content": {
-          "_uid": "8a8957e9-4086-4be0-8c47-60e2f2ba3a8c",
-          "date": "2024-03-11 00:00",
-          "image": {
-            "id": 13894387,
-            "alt": "doctor showing results on a tablet computer to a male patient",
-            "name": "",
-            "focus": "",
-            "title": "",
-            "source": "",
-            "filename": "https://local-host-test-nice-org.com/f/271255/788x443/b2d6d3a601/doctor-showing-results-on-tablet-computer-to-male-patient.jpg",
-            "copyright": "",
-            "fieldtype": "asset",
-            "meta_data": {},
-            "is_private": false,
-            "is_external_url": false
-          },
-          "title": "Test today news",
-          "content": {
-            "type": "doc",
-            "content": [
-              {
-                "type": "paragraph",
-                "content": [{ "text": "content", "type": "text" }]
-              }
-            ]
-          },
-          "component": "newsArticle",
-          "introText": "intro",
-          "resources": [],
-          "relatedNews": []
-        },
-        "slug": "test-news-today",
-        "full_slug": "news/articles/test-news-today",
-        "sort_by_date": null,
-        "position": -830,
-        "tag_list": [],
-        "is_startpage": false,
-        "parent_id": 428383157,
-        "meta_data": null,
-        "group_id": "e28b1e82-8cce-49b8-ab9a-8c9980d9dc13",
-        "first_published_at": "2024-03-11T16:17:32.010Z",
-        "release_id": null,
-        "lang": "default",
-        "path": null,
-        "alternates": [],
-        "default_full_slug": null,
-        "translated_slugs": null
-      },
-      {
-        "name": "test news yesterday",
-        "created_at": "2024-03-11T16:17:58.393Z",
-        "published_at": "2024-03-11T16:18:14.339Z",
-        "id": 459632112,
-        "uuid": "64a50f14-7559-4fe5-a6ba-38db4ad052a0",
-        "content": {
-          "_uid": "8a8957e9-4086-4be0-8c47-60e2f2ba3a8c",
-          "date": "2024-03-10 00:00",
-          "image": {
-            "id": 13894387,
-            "alt": "doctor showing results on a tablet computer to a male patient",
-            "name": "",
-            "focus": "",
-            "title": "",
-            "source": "",
-            "filename": "https://local-host-test-nice-org.com/f/271255/788x443/b2d6d3a601/doctor-showing-results-on-tablet-computer-to-male-patient.jpg",
-            "copyright": "",
-            "fieldtype": "asset",
-            "meta_data": {},
-            "is_private": false,
-            "is_external_url": false
-          },
-          "title": "Test yesterday news",
-          "content": {
-            "type": "doc",
-            "content": [
-              {
-                "type": "paragraph",
-                "content": [{ "text": "content", "type": "text" }]
-              }
-            ]
-          },
-          "component": "newsArticle",
-          "introText": "intro",
-          "resources": [],
-          "relatedNews": []
-        },
-        "slug": "test-news-yesterday",
-        "full_slug": "news/articles/test-news-yesterday",
-        "sort_by_date": null,
-        "position": -830,
-        "tag_list": [],
-        "is_startpage": false,
-        "parent_id": 428383157,
-        "meta_data": null,
-        "group_id": "02861c04-8291-4f9f-8402-d0d2330836b3",
-        "first_published_at": "2024-03-11T16:17:32.010Z",
-        "release_id": null,
-        "lang": "default",
-        "path": null,
-        "alternates": [],
-        "default_full_slug": null,
-        "translated_slugs": null
-      },
-      {
-        "name": "Mock News Article",
-        "created_at": "2024-01-31T14:47:27.503Z",
-        "published_at": "2024-02-09T14:21:45.666Z",
-        "id": 435600482,
-        "uuid": "ac5f62be-cec5-4cc0-847b-fad3d98c74c5",
-        "content": {
-          "_uid": "87f22048-51e6-46d4-80af-ceeeb3505550",
-          "date": "2024-01-31 00:00",
-          "image": {
-            "id": 13894387,
-            "alt": "doctor showing results on a tablet computer to a male patient",
-            "name": "",
-            "focus": "",
-            "title": "",
-            "source": "",
-            "filename": "https://local-host-test-nice-org.com/f/271255/788x443/b2d6d3a601/doctor-showing-results-on-tablet-computer-to-male-patient.jpg",
-            "copyright": "",
-            "fieldtype": "asset",
-            "meta_data": {},
-            "is_private": "",
-            "is_external_url": false
-          },
-          "title": "A mock news title",
-          "content": {
-            "type": "doc",
-            "content": [
-              {
-                "type": "heading",
-                "attrs": { "level": 2 },
-                "content": [
-                  {
-                    "text": "A mock h2 heading in a news article rich text field",
-                    "type": "text"
-                  }
-                ]
-              },
-              {
-                "type": "heading",
-                "attrs": { "level": 3 },
-                "content": [{ "text": "Test heading level 3", "type": "text" }]
-              },
-              {
-                "type": "heading",
-                "attrs": { "level": 4 },
-                "content": [{ "text": "Test heading level 4", "type": "text" }]
-              },
-              {
-                "type": "heading",
-                "attrs": { "level": 5 },
-                "content": [{ "text": "test heading level 5", "type": "text" }]
-              },
-              {
-                "type": "heading",
-                "attrs": { "level": 6 },
-                "content": [{ "text": "test heading level 6", "type": "text" }]
-              },
-              {
-                "type": "paragraph",
-                "content": [
-                  {
-                    "text": "A mock paragraph in a news article rich text field.  Paragraph 1 will render some ",
-                    "type": "text"
-                  },
-                  {
-                    "text": "bold text",
-                    "type": "text",
-                    "marks": [{ "type": "bold" }]
-                  },
-                  { "text": ", some ", "type": "text" },
-                  {
-                    "text": "italic text, ",
-                    "type": "text",
-                    "marks": [{ "type": "italic" }]
-                  },
-                  { "text": "some ", "type": "text" },
-                  {
-                    "text": "strike text",
-                    "type": "text",
-                    "marks": [{ "type": "strike" }]
-                  },
-                  { "text": " ", "type": "text", "marks": [{ "type": "italic" }] }
-                ]
-              },
-              {
-                "type": "paragraph",
-                "content": [
-                  {
-                    "text": "Another paragraph test. Paragraph 2",
-                    "type": "text"
-                  }
-                ]
-              },
-              {
-                "type": "paragraph",
-                "content": [
-                  {
-                    "type": "image",
-                    "attrs": {
-                      "id": 13894387,
-                      "alt": "doctor showing results on a tablet computer to a male patient",
-                      "src": "https://local-host-test-nice-org.com/f/271255/788x443/b2d6d3a601/doctor-showing-results-on-tablet-computer-to-male-patient.jpg",
-                      "title": "",
-                      "source": "",
-                      "copyright": "",
-                      "meta_data": {}
-                    }
-                  }
-                ]
-              },
-              {
-                "type": "blockquote",
-                "content": [
-                  {
-                    "type": "paragraph",
-                    "content": [
-                      {
-                        "text": "A inline quote in the rich text field of a news article. ",
-                        "type": "text"
-                      }
-                    ]
-                  }
-                ]
-              },
-              {
-                "type": "bullet_list",
-                "content": [
-                  {
-                    "type": "list_item",
-                    "content": [
-                      {
-                        "type": "paragraph",
-                        "content": [
-                          { "text": "unordered list item 1", "type": "text" }
-                        ]
-                      }
-                    ]
-                  },
-                  {
-                    "type": "list_item",
-                    "content": [
-                      {
-                        "type": "paragraph",
-                        "content": [
-                          { "text": "unordered list item 2", "type": "text" }
-                        ]
-                      }
-                    ]
-                  },
-                  {
-                    "type": "list_item",
-                    "content": [
-                      {
-                        "type": "paragraph",
-                        "content": [
-                          { "text": "unordered list item 3", "type": "text" }
-                        ]
-                      }
-                    ]
-                  }
-                ]
-              },
-              {
-                "type": "ordered_list",
-                "attrs": { "order": 1 },
-                "content": [
-                  {
-                    "type": "list_item",
-                    "content": [
-                      {
-                        "type": "paragraph",
-                        "content": [
-                          { "text": "ordered list item 1", "type": "text" }
-                        ]
-                      }
-                    ]
-                  },
-                  {
-                    "type": "list_item",
-                    "content": [
-                      {
-                        "type": "paragraph",
-                        "content": [
-                          { "text": "unordered list item 2", "type": "text" }
-                        ]
-                      }
-                    ]
-                  },
-                  {
-                    "type": "list_item",
-                    "content": [
-                      {
-                        "type": "paragraph",
-                        "content": [
-                          { "text": "unordered list item 3", "type": "text" }
-                        ]
-                      }
-                    ]
-                  }
-                ]
-              },
-              {
-                "type": "blok",
-                "attrs": {
-                  "id": "cfe043ae-da98-4e7c-afe7-136803cf9fb0",
-                  "body": [
-                    {
-                      "_uid": "i-997a361d-a00e-4386-8253-950fdc232264",
-                      "title": "Understanding your prostate cancer | Prostate Cancer UK",
-                      "source": "Bs4zv6TwhYw",
-                      "component": "youtubeEmbed"
-                    },
-                    {
-                      "_uid": "i-a8c4105e-8431-4360-b325-280131aeaa11",
-                      "component": "quote",
-                      "quoteText": {
-                        "type": "doc",
-                        "content": [
-                          {
-                            "type": "paragraph",
-                            "content": [
-                              {
-                                "text": "A test quote blok inserted into the rich text field in a news article",
-                                "type": "text"
-                              }
-                            ]
-                          }
-                        ]
-                      },
-                      "quoteAuthor": "Test Author"
-                    },
-                    {
-                      "_uid": "i-a2d204bb-ad91-4d51-86dc-e683f5517cd2",
-                      "cards": [
-                        {
-                          "_uid": "e03727cc-60dd-47c9-a228-c48dc4b4e55d",
-                          "body": "Test card body 1",
-                          "link": {
-                            "id": "3b2d47a3-2a78-4346-96c3-70072fdcab45",
-                            "url": "",
-                            "linktype": "story",
-                            "fieldtype": "multilink",
-                            "cached_url": "test-info-page-updated-hero"
-                          },
-                          "heading": "Test card heading 1",
-                          "component": "card"
-                        },
-                        {
-                          "_uid": "5c9c6fed-fb70-4c01-9212-df0ed5e4a266",
-                          "body": "Test card body 2",
-                          "link": {
-                            "id": "f3a7c553-f1fb-465c-b1b2-db3385726f3c",
-                            "url": "",
-                            "linktype": "story",
-                            "fieldtype": "multilink",
-                            "cached_url": "news/articles/nice-recommends-new-treatment-for-rare-blood-disorder"
-                          },
-                          "heading": "Test card heading 2",
-                          "component": "card"
-                        },
-                        {
-                          "_uid": "c2aab67b-4ea2-44bf-8432-8b65e9a1e8f4",
-                          "body": "Test card body 3",
-                          "link": {
-                            "id": "",
-                            "url": "https://www.youtube.com/@niceorguk",
-                            "linktype": "url",
-                            "fieldtype": "multilink",
-                            "cached_url": "https://www.youtube.com/@niceorguk"
-                          },
-                          "heading": "Test card heading 3",
-                          "component": "card"
-                        }
-                      ],
-                      "columns": "3",
-                      "component": "cardGrid"
-                    }
-                  ]
-                }
-              },
-              {
-                "type": "paragraph",
-                "content": [
-                  {
-                    "text": "Another paragraph following the allowed bloks. paragrph 3.  We'll follow this paragraph with some empty lines.  Empty lines will output empty paragraph tags in the markup unless we handle remove those empty p tags.",
-                    "type": "text"
-                  }
-                ]
-              },
-              { "type": "heading", "attrs": { "level": 3 } },
-              { "type": "paragraph" },
-              { "type": "paragraph" },
-              { "type": "paragraph" },
-              { "type": "paragraph" }
-            ]
-          },
-          "component": "newsArticle",
-          "introText": "Some mock intro text to be displayed in the page header",
-          "resources": [
-            {
-              "_uid": "8f019cf9-3743-4126-94cb-092898b43636",
-              "link": {
-                "id": "3b2d47a3-2a78-4346-96c3-70072fdcab45",
-                "url": "",
-                "linktype": "story",
-                "fieldtype": "multilink",
-                "cached_url": "test-info-page-updated-hero"
-              },
-              "title": "Test related link 1",
-              "component": "relatedLink"
-            },
-            {
-              "_uid": "94714547-6acc-4055-aa01-3cf899be9fc4",
-              "link": {
-                "id": "",
-                "url": "https://youtube.com/@niceorguk",
-                "linktype": "url",
-                "fieldtype": "multilink",
-                "cached_url": "https://youtube.com/@niceorguk"
-              },
-              "title": "Test related link 2",
-              "component": "relatedLink"
-            }
-          ],
-          "relatedNews": [
-            {
-              "_uid": "50c7601a-1f1f-48f1-96e9-4f16f688fd7a",
-              "date": "2024-01-31 00:00",
-              "link": {
-                "id": "",
-                "url": "https://youtube.com/@niceorguk",
-                "linktype": "url",
-                "fieldtype": "multilink",
-                "cached_url": "https://youtube.com/@niceorguk"
-              },
-              "title": "Test related news link 1",
-              "component": "relatedNewsLink",
-              "publisher": "NICE"
-            },
-            {
-              "_uid": "3cf9f2d3-cb7c-42e6-bf2e-ce72d7bc03ab",
-              "date": "2024-01-30 00:00",
-              "link": {
-                "id": "710ffd49-038a-4383-afb4-1b8d6e96a6c5",
-                "url": "",
-                "linktype": "story",
-                "fieldtype": "multilink",
-                "cached_url": "news/articles/nice-reaches-important-milestone-in-the-uk-s-efforts-to-tackle-antimicrobial-resistance"
-              },
-              "title": "Test related news link 2",
-              "component": "relatedNewsLink",
-              "publisher": "NICE-2"
-            }
-          ]
-        },
-        "slug": "mock-news-article",
-        "full_slug": "news/articles/mock-news-article",
-        "sort_by_date": null,
-        "position": -820,
-        "tag_list": [],
-        "is_startpage": false,
-        "parent_id": 428383157,
-        "meta_data": null,
-        "group_id": "5625b207-7bb8-4410-aac3-3d7d5743f97a",
-        "first_published_at": "2024-01-31T15:16:15.194Z",
-        "release_id": null,
-        "lang": "default",
-        "path": null,
-        "alternates": [],
-        "default_full_slug": null,
-        "translated_slugs": null
-      },
-      {
-        "name": "Sample test article ",
-        "created_at": "2024-01-16T16:06:59.989Z",
-        "published_at": "2024-01-11T14:27:05.951Z",
-        "id": 428383187,
-        "uuid": "96477c67-876c-4cdf-9a63-0ec3aec3e4a8",
-        "content": {
-          "_uid": "d37da78e-f4ab-407d-b105-8d24a6b46ef2",
-          "date": "2024-01-11 00:00",
-          "image": {
-            "id": 13709586,
-            "alt": "",
-            "name": "",
-            "focus": "",
-            "title": "",
-            "source": "",
-            "filename": "https://local-host-test-nice-org.com/f/243782/300x300/f85d11c365/breast-cancer-cells.jpg",
-            "copyright": "",
-            "fieldtype": "asset",
-            "meta_data": {},
-            "is_private": "",
-            "is_external_url": false
-          },
-          "title": "Testing storyblok article content",
-          "content": {
-            "type": "doc",
-            "content": [
-              {
-                "type": "paragraph",
-                "content": [
-                  {
-                    "text": "This content is testing for the news article content type .",
-                    "type": "text"
-                  }
-                ]
-              }
-            ]
-          },
-          "component": "newsArticle",
-          "introText": "Test content and purpose of functionality fields ",
-          "resources": [],
-          "relatedNews": []
-        },
-        "slug": "sample-test-article",
-        "full_slug": "news/articles/sample-test-article",
-        "sort_by_date": null,
-        "position": -260,
-        "tag_list": [],
-        "is_startpage": false,
-        "parent_id": 428383157,
-        "meta_data": null,
-        "group_id": "2755d22d-d2ed-48ba-adba-a8bb9e07e3d3",
-        "first_published_at": "2024-01-11T14:27:05.951Z",
-        "release_id": null,
-        "lang": "default",
-        "path": null,
-        "alternates": [],
-        "default_full_slug": null,
-        "translated_slugs": null
-      },
-      {
-        "name": "Millions of people with cardiovascular disease could benefit from a new cholesterol treatment target recommendation",
-        "created_at": "2024-01-16T16:06:59.989Z",
-        "published_at": "2023-12-19T16:04:26.138Z",
-        "id": 428383161,
-        "uuid": "81456270-a3fd-40e5-b508-63575e030848",
-        "content": {
-          "_uid": "d7ca246b-00d8-4603-b887-3529cf43a89b",
-          "date": "2023-12-14 00:00",
-          "image": {
-            "id": 13346372,
-            "alt": "",
-            "name": "",
-            "focus": "",
-            "title": "",
-            "source": "",
-            "filename": "https://local-host-test-nice-org.com/f/243782/385x215/8755f1f754/an-elderly-man-receiving-a-checkup-from-his-doctor-stock-image-385x215.jpg",
-            "copyright": "",
-            "fieldtype": "asset",
-            "meta_data": {},
-            "is_external_url": false
-          },
-          "title": "Millions of people with etc",
-          "content": {
-            "type": "doc",
-            "content": [
-              {
-                "type": "paragraph",
-                "content": [{ "text": "Some content", "type": "text" }]
-              }
-            ]
-          },
-          "component": "newsArticle",
-          "introText": "Some text",
-          "resources": [],
-          "relatedNews": []
-        },
-        "slug": "millions-of-people-with-cardiovascular-disease-could-benefit-from-a-new-cholesterol-treatment-target-recommendation",
-        "full_slug": "news/articles/millions-of-people-with-cardiovascular-disease-could-benefit-from-a-new-cholesterol-treatment-target-recommendation",
-        "sort_by_date": null,
-        "position": 0,
-        "tag_list": [],
-        "is_startpage": false,
-        "parent_id": 428383157,
-        "meta_data": null,
-        "group_id": "f460415f-b30d-486b-aea8-ee44b9f7584b",
-        "first_published_at": "2023-12-19T16:04:26.138Z",
-        "release_id": null,
-        "lang": "default",
-        "path": null,
-        "alternates": [],
-        "default_full_slug": null,
-        "translated_slugs": null
-      }
-    ],
-    "cv": 1711448785,
-    "rels": ["boop", "beep", "bop"],
-    "links": []
-  },
-  "total": 6,
-  "perPage": 8
+	"data": {
+		"stories": [
+			{
+				"name": "new story",
+				"created_at": "2025-05-12T09:07:27.667Z",
+				"published_at": "2025-05-12T09:07:45.875Z",
+				"updated_at": "2025-05-12T09:07:45.889Z",
+				"id": 668506197,
+				"uuid": "0bb33277-2ecd-4187-a631-fdb6ca748d66",
+				"content": {
+					"_uid": "c4393434-bb53-4aa0-9596-6cf142268bfb",
+					"date": "2025-05-10 00:00",
+					"image": {
+						"id": 21530403,
+						"alt": "",
+						"name": "",
+						"focus": "",
+						"title": "",
+						"source": "",
+						"filename": "https://local-host-test-nice-org.com/f/292509/805x453/42b7a1a419/nhs-team-16-9.JPG",
+						"copyright": "",
+						"fieldtype": "asset",
+						"meta_data": {},
+						"is_external_url": false
+					},
+					"title": "new story",
+					"content": {
+						"type": "doc",
+						"content": [
+							{
+								"type": "paragraph",
+								"content": [
+									{
+										"text": "test",
+										"type": "text"
+									}
+								]
+							}
+						]
+					},
+					"metadata": [],
+					"component": "newsArticle",
+					"introText": "test",
+					"resources": [],
+					"relatedNews": []
+				},
+				"slug": "new-story",
+				"full_slug": "news/articles/new-story",
+				"sort_by_date": null,
+				"position": -2480,
+				"tag_list": [],
+				"is_startpage": false,
+				"parent_id": 531694581,
+				"meta_data": null,
+				"group_id": "3469e40d-0b61-4e97-b1dc-c884b9233f80",
+				"first_published_at": "2025-05-12T09:07:45.875Z",
+				"release_id": null,
+				"lang": "default",
+				"path": null,
+				"alternates": [],
+				"default_full_slug": null,
+				"translated_slugs": null
+			},
+			{
+				"name": "Young people with chronic tic disorders and Tourette syndrome",
+				"created_at": "2025-05-09T15:09:11.192Z",
+				"published_at": "2025-05-09T15:10:53.788Z",
+				"updated_at": "2025-05-09T15:10:53.803Z",
+				"id": 667678646,
+				"uuid": "8dc45914-eb5b-4cfd-8170-3328bb431290",
+				"content": {
+					"_uid": "64297a58-1dd5-4d8c-b516-bbe0f594333b",
+					"date": "2025-05-09 00:00",
+					"image": {
+						"id": 22189591,
+						"alt": "",
+						"name": "",
+						"focus": "",
+						"title": "",
+						"source": "",
+						"filename": "https://local-host-test-nice-org.com/f/292509/x/43838fb421/storyblok_1.avif",
+						"copyright": "",
+						"fieldtype": "asset",
+						"meta_data": {},
+						"is_external_url": false
+					},
+					"title": "Young people with chronic tic disorders and Tourette syndrome recommended ",
+					"content": {
+						"type": "doc",
+						"content": [
+							{
+								"type": "paragraph",
+								"content": [
+									{
+										"text": "A digital therapy that could reduce the severity of the symptoms of chronic tic disorders and Tourette syndrome has been conditionally recommended for NHS use.",
+										"type": "text"
+									}
+								]
+							},
+							{
+								"type": "paragraph",
+								"content": [
+									{
+										"text": "For the first time, a NICE committee has recommended a digital therapy for these conditions, which developers believe could also improve the user’s ability to go about their everyday life.",
+										"type": "text"
+									}
+								]
+							},
+							{
+								"type": "paragraph",
+								"content": [
+									{
+										"text": "We surveyed people with chronic tic disorders and Tourette syndrome, and their parents or carers, about their experiences and received 1,508 responses. In response, some said that for most people, it can take a long time to get a diagnosis (most people need to wait at least 6 months to 2 years). The acceptance of using digital technologies varied between people who completed the survey, but it highlighted that present treatment options are limited.",
+										"type": "text"
+									}
+								]
+							},
+							{
+								"type": "paragraph",
+								"content": [
+									{
+										"text": "Tics are fast, repetitive muscle movements that result in difficult-to-control body movements or sounds. Examples of tics might include blinking, grimacing, head jerking, head banging, finger clicking, coughing, grunting, sneezing, repeating a sound or phrase (in approximately 10% of people, this can be something offensive, such as swearing). When both motor and vocal tics are present for more than 1 year, this is commonly known as Tourette syndrome.",
+										"type": "text"
+									}
+								]
+							},
+							{
+								"type": "paragraph",
+								"content": [
+									{
+										"text": "In the final guidance, our independent committee recommended the use of Online Remote Behavioural Intervention for Tics (ORBIT) by NHS patients for the next three years. Further evidence will be generated during this time on the technology’s long-term clinical effectiveness, how they affect the person’s quality of life, and which patients benefit most from using them.",
+										"type": "text"
+									}
+								]
+							},
+							{
+								"type": "paragraph",
+								"content": [
+									{
+										"text": "ORBIT is accessed via a web browser and is an online guided self-help intervention which uses videos, animations and interactive scripts to help children and young people aged 9 to 17 years. It is supported by an online therapist across a 10-week programme to deliver a form of behavioural therapy called exposure with response-prevention intervention, which involves practising confronting the thoughts, images, objects, and situations that make a person anxious and provoke their tic.",
+										"type": "text"
+									}
+								]
+							},
+							{
+								"type": "paragraph",
+								"content": [
+									{
+										"text": "The technology would only be offered after a clinical assessment with a GP. The first line treatment option will remain as psychoeducation, which combines the elements of cognitive-behaviour therapy and education, before the technology can be offered.",
+										"type": "text"
+									}
+								]
+							},
+							{
+								"type": "paragraph",
+								"content": [
+									{
+										"text": "It is estimated that Tourette syndrome affects ",
+										"type": "text",
+										"marks": [
+											{
+												"type": "textStyle",
+												"attrs": {
+													"color": ""
+												}
+											}
+										]
+									},
+									{
+										"text": "one school child in every hundred",
+										"type": "text",
+										"marks": [
+											{
+												"type": "link",
+												"attrs": {
+													"href": "https://bestpractice.bmj.com/topics/en-gb/1042",
+													"uuid": null,
+													"anchor": null,
+													"target": null,
+													"linktype": "url"
+												}
+											},
+											{
+												"type": "textStyle",
+												"attrs": {
+													"color": ""
+												}
+											}
+										]
+									},
+									{
+										"text": ", with more than 300,000 children and adults in the UK living with the condition. Experts estimate that less than 20% of children and young people with tic disorders ",
+										"type": "text",
+										"marks": [
+											{
+												"type": "textStyle",
+												"attrs": {
+													"color": ""
+												}
+											}
+										]
+									},
+									{
+										"text": "currently have access",
+										"type": "text",
+										"marks": [
+											{
+												"type": "link",
+												"attrs": {
+													"href": "https://pubmed.ncbi.nlm.nih.gov/37488511/",
+													"uuid": null,
+													"anchor": null,
+													"target": null,
+													"linktype": "url"
+												}
+											},
+											{
+												"type": "textStyle",
+												"attrs": {
+													"color": ""
+												}
+											}
+										]
+									},
+									{
+										"text": " to behavioural therapies.",
+										"type": "text",
+										"marks": [
+											{
+												"type": "textStyle",
+												"attrs": {
+													"color": ""
+												}
+											}
+										]
+									}
+								]
+							},
+							{
+								"type": "paragraph",
+								"content": [
+									{
+										"text": "Neupulse, which had been recommended in draft guidance, could not be recommended in final guidance as it does not have appropriate regulatory approval.",
+										"type": "text"
+									}
+								]
+							},
+							{
+								"type": "paragraph",
+								"content": [
+									{
+										"text": "After the evidence generation period has concluded, our committee will meet again to appraise the clinical and cost effectiveness of the technology and publish new guidance.",
+										"type": "text"
+									}
+								]
+							}
+						]
+					},
+					"metadata": [],
+					"component": "newsArticle",
+					"introText": "Digital therapy to help children and young people manage their condition.",
+					"resources": [
+						{
+							"_uid": "c4d73ddf-5c6e-4ad7-b7eb-8f7ec3fd32a5",
+							"link": {
+								"id": "",
+								"url": "https://www.nice.org.uk/guidance/hte25",
+								"linktype": "url",
+								"fieldtype": "multilink",
+								"cached_url": "https://www.nice.org.uk/guidance/hte25"
+							},
+							"title": "Digital therapy for chronic tic disorders and Tourette syndrome: early value assessment",
+							"component": "relatedLink"
+						}
+					],
+					"relatedNews": []
+				},
+				"slug": "young-people-with-chronic-tic-disorders-and-tourette-syndrome",
+				"full_slug": "news/articles/young-people-with-chronic-tic-disorders-and-tourette-syndrome",
+				"sort_by_date": null,
+				"position": -2460,
+				"tag_list": [],
+				"is_startpage": false,
+				"parent_id": 531694581,
+				"meta_data": null,
+				"group_id": "99b654d9-89df-4018-bbda-039c150e29bb",
+				"first_published_at": "2025-05-09T15:10:53.788Z",
+				"release_id": null,
+				"lang": "default",
+				"path": null,
+				"alternates": [],
+				"default_full_slug": null,
+				"translated_slugs": null
+			},
+			{
+				"name": "Technology for children and young people with chronic tic disorders and Tourette syndrome recommended",
+				"created_at": "2025-05-09T12:39:42.847Z",
+				"published_at": "2025-05-09T15:07:51.133Z",
+				"updated_at": "2025-05-09T15:07:51.148Z",
+				"id": 667381686,
+				"uuid": "cecb852f-8eb4-4553-9c88-3e83cc440c2e",
+				"content": {
+					"_uid": "64297a58-1dd5-4d8c-b516-bbe0f594333b",
+					"date": "2025-05-09 00:00",
+					"image": {
+						"id": 22189591,
+						"alt": "",
+						"name": "",
+						"focus": "",
+						"title": "",
+						"source": "",
+						"filename": "https://local-host-test-nice-org.com/f/292509/x/43838fb421/storyblok_1.avif",
+						"copyright": "",
+						"fieldtype": "asset",
+						"meta_data": {},
+						"is_external_url": false
+					},
+					"title": "Young people with chronic tic disorders and Tourette syndrome recommended ",
+					"content": {
+						"type": "doc",
+						"content": [
+							{
+								"type": "paragraph",
+								"content": [
+									{
+										"text": "A digital therapy that could reduce the severity of the symptoms of chronic tic disorders and Tourette syndrome has been conditionally recommended for NHS use.",
+										"type": "text"
+									}
+								]
+							},
+							{
+								"type": "paragraph",
+								"content": [
+									{
+										"text": "For the first time, a NICE committee has recommended a digital therapy for these conditions, which developers believe could also improve the user’s ability to go about their everyday life.",
+										"type": "text"
+									}
+								]
+							},
+							{
+								"type": "paragraph",
+								"content": [
+									{
+										"text": "We surveyed people with chronic tic disorders and Tourette syndrome, and their parents or carers, about their experiences and received 1,508 responses. In response, some said that for most people, it can take a long time to get a diagnosis (most people need to wait at least 6 months to 2 years). The acceptance of using digital technologies varied between people who completed the survey, but it highlighted that present treatment options are limited.",
+										"type": "text"
+									}
+								]
+							},
+							{
+								"type": "paragraph",
+								"content": [
+									{
+										"text": "Tics are fast, repetitive muscle movements that result in difficult-to-control body movements or sounds. Examples of tics might include blinking, grimacing, head jerking, head banging, finger clicking, coughing, grunting, sneezing, repeating a sound or phrase (in approximately 10% of people, this can be something offensive, such as swearing). When both motor and vocal tics are present for more than 1 year, this is commonly known as Tourette syndrome.",
+										"type": "text"
+									}
+								]
+							},
+							{
+								"type": "paragraph",
+								"content": [
+									{
+										"text": "In the final guidance, our independent committee recommended the use of Online Remote Behavioural Intervention for Tics (ORBIT) by NHS patients for the next three years. Further evidence will be generated during this time on the technology’s long-term clinical effectiveness, how they affect the person’s quality of life, and which patients benefit most from using them.",
+										"type": "text"
+									}
+								]
+							},
+							{
+								"type": "paragraph",
+								"content": [
+									{
+										"text": "ORBIT is accessed via a web browser and is an online guided self-help intervention which uses videos, animations and interactive scripts to help children and young people aged 9 to 17 years. It is supported by an online therapist across a 10-week programme to deliver a form of behavioural therapy called exposure with response-prevention intervention, which involves practising confronting the thoughts, images, objects, and situations that make a person anxious and provoke their tic.",
+										"type": "text"
+									}
+								]
+							},
+							{
+								"type": "paragraph",
+								"content": [
+									{
+										"text": "The technology would only be offered after a clinical assessment with a GP. The first line treatment option will remain as psychoeducation, which combines the elements of cognitive-behaviour therapy and education, before the technology can be offered.",
+										"type": "text"
+									}
+								]
+							},
+							{
+								"type": "paragraph",
+								"content": [
+									{
+										"text": "It is estimated that Tourette syndrome affects ",
+										"type": "text",
+										"marks": [
+											{
+												"type": "textStyle",
+												"attrs": {
+													"color": ""
+												}
+											}
+										]
+									},
+									{
+										"text": "one school child in every hundred",
+										"type": "text",
+										"marks": [
+											{
+												"type": "link",
+												"attrs": {
+													"href": "https://bestpractice.bmj.com/topics/en-gb/1042",
+													"uuid": null,
+													"anchor": null,
+													"target": null,
+													"linktype": "url"
+												}
+											},
+											{
+												"type": "textStyle",
+												"attrs": {
+													"color": ""
+												}
+											}
+										]
+									},
+									{
+										"text": ", with more than 300,000 children and adults in the UK living with the condition. Experts estimate that less than 20% of children and young people with tic disorders ",
+										"type": "text",
+										"marks": [
+											{
+												"type": "textStyle",
+												"attrs": {
+													"color": ""
+												}
+											}
+										]
+									},
+									{
+										"text": "currently have access",
+										"type": "text",
+										"marks": [
+											{
+												"type": "link",
+												"attrs": {
+													"href": "https://pubmed.ncbi.nlm.nih.gov/37488511/",
+													"uuid": null,
+													"anchor": null,
+													"target": null,
+													"linktype": "url"
+												}
+											},
+											{
+												"type": "textStyle",
+												"attrs": {
+													"color": ""
+												}
+											}
+										]
+									},
+									{
+										"text": " to behavioural therapies.",
+										"type": "text",
+										"marks": [
+											{
+												"type": "textStyle",
+												"attrs": {
+													"color": ""
+												}
+											}
+										]
+									}
+								]
+							},
+							{
+								"type": "paragraph",
+								"content": [
+									{
+										"text": "Neupulse, which had been recommended in draft guidance, could not be recommended in final guidance as it does not have appropriate regulatory approval.",
+										"type": "text"
+									}
+								]
+							},
+							{
+								"type": "paragraph",
+								"content": [
+									{
+										"text": "After the evidence generation period has concluded, our committee will meet again to appraise the clinical and cost effectiveness of the technology and publish new guidance.",
+										"type": "text"
+									}
+								]
+							}
+						]
+					},
+					"metadata": [],
+					"component": "newsArticle",
+					"introText": "Final guidance recommends one digital therapy to help children and young people manage their condition.",
+					"resources": [
+						{
+							"_uid": "c4d73ddf-5c6e-4ad7-b7eb-8f7ec3fd32a5",
+							"link": {
+								"id": "",
+								"url": "https://www.nice.org.uk/guidance/hte25",
+								"linktype": "url",
+								"fieldtype": "multilink",
+								"cached_url": "https://www.nice.org.uk/guidance/hte25"
+							},
+							"title": "Digital therapy for chronic tic disorders and Tourette syndrome: early value assessment",
+							"component": "relatedLink"
+						}
+					],
+					"relatedNews": []
+				},
+				"slug": "technology-for-children-and-young-people-with-chronic-tic-disorders-and-tourette-syndrome-recommended",
+				"full_slug": "news/articles/technology-for-children-and-young-people-with-chronic-tic-disorders-and-tourette-syndrome-recommended",
+				"sort_by_date": null,
+				"position": -2470,
+				"tag_list": [],
+				"is_startpage": false,
+				"parent_id": 531694581,
+				"meta_data": null,
+				"group_id": "4fffc58a-d206-4789-8d87-76d55771f05c",
+				"first_published_at": "2025-05-09T12:43:25.470Z",
+				"release_id": null,
+				"lang": "default",
+				"path": null,
+				"alternates": [],
+				"default_full_slug": null,
+				"translated_slugs": null
+			},
+			{
+				"name": "Test news article 8th may",
+				"created_at": "2025-05-08T15:47:38.007Z",
+				"published_at": "2025-05-09T09:25:35.129Z",
+				"updated_at": "2025-05-09T09:25:35.146Z",
+				"id": 666864059,
+				"uuid": "0c63577f-bb27-4be3-ae21-6c6d7028f052",
+				"content": {
+					"_uid": "bdf26fec-d4a9-43e4-8d74-5a054aed65c4",
+					"date": "2025-05-08 00:00",
+					"image": {
+						"id": 22134794,
+						"alt": "Team discussing funding",
+						"name": "",
+						"focus": "",
+						"title": "Team discussing",
+						"source": "",
+						"filename": "https://local-host-test-nice-org.com/f/292509/624x350/b118a9ebd8/0c34ac90-2a34-11f0-b26b-ab62c890638b-jpg.webp",
+						"copyright": "",
+						"fieldtype": "asset",
+						"meta_data": {
+							"alt": "Team discussing funding",
+							"title": "Team discussing",
+							"source": "",
+							"copyright": ""
+						},
+						"is_external_url": false
+					},
+					"title": "Test news article 8th may 16:50",
+					"content": {
+						"type": "doc",
+						"content": [
+							{
+								"type": "paragraph",
+								"content": [
+									{
+										"text": "test content",
+										"type": "text"
+									}
+								]
+							}
+						]
+					},
+					"metadata": [],
+					"component": "newsArticle",
+					"introText": "intro text test\nText update 09/05/25 10:15\nText update 09/05 10:25",
+					"resources": [],
+					"relatedNews": []
+				},
+				"slug": "test-news-article-8th-may",
+				"full_slug": "news/articles/test-news-article-8th-may",
+				"sort_by_date": null,
+				"position": -2450,
+				"tag_list": [],
+				"is_startpage": false,
+				"parent_id": 531694581,
+				"meta_data": null,
+				"group_id": "c13f51b5-6622-4800-be0e-8d17944e64e7",
+				"first_published_at": "2025-05-08T15:48:11.477Z",
+				"release_id": null,
+				"lang": "default",
+				"path": null,
+				"alternates": [],
+				"default_full_slug": null,
+				"translated_slugs": null
+			},
+			{
+				"name": "Thousands of people in England with sight loss could benefit from a new treatment option",
+				"created_at": "2024-08-02T13:41:34.253Z",
+				"published_at": "2025-05-08T16:22:47.548Z",
+				"updated_at": "2025-05-08T16:22:47.562Z",
+				"id": 531694685,
+				"uuid": "58065350-5c24-465e-9fba-70830aed5775",
+				"content": {
+					"_uid": "e867e135-7366-41d7-86ba-baef8f4203c5",
+					"date": "2025-05-08 00:00",
+					"image": {
+						"id": 13725141,
+						"alt": "",
+						"name": "",
+						"focus": "",
+						"title": "",
+						"source": "",
+						"filename": "https://local-host-test-nice-org.com/f/243782/8660x5773/c394fd5edb/sight-test.jpg",
+						"copyright": "",
+						"fieldtype": "asset",
+						"meta_data": {},
+						"is_external_url": false
+					},
+					"title": "Thousands of people in England with sight loss",
+					"content": {
+						"type": "doc",
+						"content": [
+							{
+								"type": "paragraph",
+								"content": [
+									{
+										"text": "Thousands of people in England could benefit after NICE today (Tuesday, 24 May) published final draft guidance recommending a new drug to help treat two leading causes of sight loss and visual impairment.",
+										"type": "text"
+									}
+								]
+							},
+							{
+								"type": "paragraph",
+								"content": [
+									{
+										"text": "Clinical evidence shows faricimab (Vabysmo, Roche) is effective in improving vision or reducing vision loss and can be administered less frequently than other medicines currently available.",
+										"type": "text"
+									},
+									{
+										"type": "hard_break"
+									},
+									{
+										"type": "hard_break"
+									},
+									{
+										"text": "Faricimab is administered as an eye injection and is being recommended as an option for treating some adults with wet age-related macular degeneration (AMD) or with diabetic macular oedema (DMO).",
+										"type": "text"
+									},
+									{
+										"type": "hard_break"
+									},
+									{
+										"type": "hard_break"
+									},
+									{
+										"text": "In the key clinical trials, aflibercept, another eye injection drug used to treat AMD and DMO, was administered every 8 weeks, while faricimab dosing, based on assessments of the disease activity, allowed for an interval of up to 16 weeks between doses, and was found to be equally effective.",
+										"type": "text"
+									}
+								]
+							},
+							{
+								"type": "paragraph",
+								"content": [
+									{
+										"text": "Up to 300,000 people in England with wet age-related macular degeneration (AMD) could be eligible to receive faricimab as part of their treatment alongside just over 28,000 people with diabetic macular oedema.",
+										"type": "text"
+									}
+								]
+							},
+							{
+								"type": "paragraph",
+								"content": [
+									{
+										"text": "Our final draft guidance is being published just a week after faricimab was announced as the first treatment to be licensed by the Medicines and Healthcare products Regulatory Agency’s (MHRA) through its participation in the ",
+										"type": "text"
+									},
+									{
+										"text": "Access Consortium",
+										"type": "text",
+										"marks": [
+											{
+												"type": "link",
+												"attrs": {
+													"href": "https://u15245195.ct.sendgrid.net/ls/click?upn=1m2wGNb31gHPDzoBtduPuCIf1cKTh7b-2BY4EoAROTMvemA6uxmIwzWBUI-2BFPGxDX6RhHRTBlQtdOBvw0X7nEB8w-3D-3DPrc-_Ld7ygq4AeAOG3HQth8zL-2BTGc0wYIE7dE9qdQXWx2ym1OyT9LET3J34DCv96uTNiDnadcy1ljIB1HCrIeMnYG1bshbFD8nV7ptY5NoNKOj6FzH08vuabd32XE4vO-2B4s3uZ3Rjc1-2BWOVzOSNwCzDSHP02GXNpFKaIEpB5cWdxJLDXyU04n8FgPvkNJ3Kq3Z7InZjdupy20QtT-2BNthiNX08-2Fieq9urqVM2cwJpyoYVCUYR51J4V7-2FJOmMmZK17CYC-2BmLLmBZrM8GP1ZYAJnqwtpc-2FkXzDxNqFEeRVTghw02JD8L4d2SeBAgW98Tc-2FYM4TEREP3AMBoXF1hfMAhCmGKMJXk5OCHeiZVbf6gSNXgWLXnf-2BZs2zjamCEy-2FLPyXgdwAdUccNeFQ4bhCpbKrqaYu9Qidz3JYNB5BRe-2FrX5cvPb3qxJjOQnuSluiOpFLZkt3BUXUIF1fxAh0CTDudHNNzyEz5KDmqyw9zJn8s4NqKQHE-3D",
+													"uuid": null,
+													"anchor": null,
+													"target": null,
+													"linktype": "url"
+												}
+											}
+										]
+									},
+									{
+										"text": " ‘New Active Substance Work Sharing Initiative’. The consortium is made up of regulatory authorities including the United Kingdom, Australia, Canada, Singapore, and Switzerland, which aims to give people faster access to high quality treatments.",
+										"type": "text"
+									}
+								]
+							},
+							{
+								"type": "blok",
+								"attrs": {
+									"id": "1eac175d-a87a-4b80-8aab-6f9f0cb619b5",
+									"body": [
+										{
+											"_uid": "i-471071d4-9587-445b-b17b-53ec05b542d7",
+											"component": "quote",
+											"quoteText": {
+												"type": "doc",
+												"content": [
+													{
+														"type": "paragraph",
+														"content": [
+															{
+																"text": "I am delighted that we have been able to recommend this treatment to help tackle two leading causes of vision loss so close to its licence just last week.",
+																"type": "text"
+															}
+														]
+													},
+													{
+														"type": "paragraph",
+														"content": [
+															{
+																"text": "We are determined to drive innovations like these into the hands of clinicians to help patients as soon possible. We will continue to work closely with our colleagues in other healthcare organisations to ensure we deliver progressive treatments which balance the best care with value for money, delivering both for individuals and society as a whole.",
+																"type": "text"
+															}
+														]
+													}
+												]
+											},
+											"quoteAuthor": "Helen Knight, interim director for medicines evaluation at NICE"
+										}
+									]
+								}
+							},
+							{
+								"type": "paragraph"
+							},
+							{
+								"type": "blok",
+								"attrs": {
+									"id": "1eac175d-a87a-4b80-8aab-6f9f0cb619b5",
+									"body": [
+										{
+											"_uid": "i-6dd7ef6a-01a1-4ea3-b819-f9010f2e5dd2",
+											"component": "quote",
+											"quoteText": {
+												"type": "doc",
+												"content": [
+													{
+														"type": "paragraph",
+														"content": [
+															{
+																"text": "Patients with wet age-related macular degeneration and diabetic macular oedema face the burden of regular hospital visits to receive the vital treatment they need to save their sight. However, we know these trips can be arduous and often rely on the support of friends and family, sometimes as often as every four weeks.",
+																"type": "text"
+															}
+														]
+													},
+													{
+														"type": "paragraph",
+														"content": [
+															{
+																"text": "We are delighted that a new treatment option, which has the potential to maintain vision and help minimise the number of hospital visits, will be made available to patients in England. This will make a real difference to the lives of many people living with this devastating condition.",
+																"type": "text"
+															}
+														]
+													}
+												]
+											},
+											"quoteAuthor": "Cathy Yelf, chief executive of leading sight loss charity the Macular Society"
+										}
+									]
+								}
+							},
+							{
+								"type": "paragraph"
+							},
+							{
+								"type": "blok",
+								"attrs": {
+									"id": "1eac175d-a87a-4b80-8aab-6f9f0cb619b5",
+									"body": [
+										{
+											"_uid": "i-519ab738-414c-49d4-b573-10cbf2ef5556",
+											"component": "quote",
+											"quoteText": {
+												"type": "doc",
+												"content": [
+													{
+														"type": "paragraph",
+														"content": [
+															{
+																"text": "It’s excellent news that Faricimab will be rolled out across England to help thousands of patients suffering from sight loss and visual impairment.",
+																"type": "text"
+															}
+														]
+													},
+													{
+														"type": "paragraph",
+														"content": [
+															{
+																"text": "Now we have left the EU, the UK is free to team up with other world-leading experts to support initiatives and research, speed up the approval process for medicines, and maintain the highest safety standards.",
+																"type": "text"
+															}
+														]
+													},
+													{
+														"type": "paragraph",
+														"content": [
+															{
+																"text": "This is a great example of UK patients getting quicker access to ground-breaking treatments and I’m grateful to NICE for playing its part in making this possible.",
+																"type": "text"
+															}
+														]
+													}
+												]
+											},
+											"quoteAuthor": "Sajid Javid, health and social care secretary"
+										}
+									]
+								}
+							},
+							{
+								"type": "paragraph",
+								"content": [
+									{
+										"text": "Wet age-related macular degeneration and diabetic macular oedema are usually treated with injections of aflibercept or ranibizumab, or brolucizumab (AMD only), which are already recommended by NICE, and faricimab would be another treatment option which works in a similar way.",
+										"type": "text"
+									}
+								]
+							},
+							{
+								"type": "paragraph",
+								"content": [
+									{
+										"text": "Our committee found that faricimab is likely to be cost saving or have a similar cost compared with aflibercept or ranibizumab and is likely to deliver similar health benefits.",
+										"type": "text"
+									}
+								]
+							},
+							{
+								"type": "paragraph",
+								"content": [
+									{
+										"text": "A confidential price discount, or patient access scheme, has been agreed between NHS England and NHS Improvement and the company.",
+										"type": "text"
+									}
+								]
+							}
+						]
+					},
+					"metadata": [],
+					"component": "newsArticle",
+					"introText": "Test text update 08/05/25 16:41\nTest text update 08/05/25 16:45",
+					"resources": [
+						{
+							"_uid": "846d8c21-15fc-43ac-81de-62c332d41fb5",
+							"link": {
+								"id": "",
+								"url": "https://www.nice.org.uk/guidance/ta799",
+								"linktype": "url",
+								"fieldtype": "multilink",
+								"cached_url": "https://www.nice.org.uk/guidance/ta799"
+							},
+							"title": "Faricimab for treating diabetic macular oedema",
+							"component": "relatedLink"
+						}
+					],
+					"relatedNews": []
+				},
+				"slug": "thousands-of-people-in-england-with-sight-loss-could-benefit-from-a-new-treatment-option",
+				"full_slug": "news/articles/thousands-of-people-in-england-with-sight-loss-could-benefit-from-a-new-treatment-option",
+				"sort_by_date": null,
+				"position": -420,
+				"tag_list": [],
+				"is_startpage": false,
+				"parent_id": 531694581,
+				"meta_data": null,
+				"group_id": "9cbed756-cfcd-4abb-8927-31ec39074ea3",
+				"first_published_at": "2025-05-08T12:37:18.703Z",
+				"release_id": null,
+				"lang": "default",
+				"path": null,
+				"alternates": [],
+				"default_full_slug": null,
+				"translated_slugs": null
+			},
+			{
+				"name": "Test news story 6 may afternoon",
+				"created_at": "2025-05-06T14:54:30.049Z",
+				"published_at": "2025-05-06T14:55:30.133Z",
+				"updated_at": "2025-05-06T14:55:30.147Z",
+				"id": 665344772,
+				"uuid": "7750f761-4f77-4fa8-8bb6-58a4d0e2ef15",
+				"content": {
+					"_uid": "a8bb1f9b-a6c3-4da9-8d05-46e58e0da3d9",
+					"date": "2025-05-06 00:00",
+					"image": {
+						"id": 22134794,
+						"alt": "Team discussing funding",
+						"name": "",
+						"focus": "",
+						"title": "Team discussing",
+						"source": "",
+						"filename": "https://local-host-test-nice-org.com/f/292509/624x350/b118a9ebd8/0c34ac90-2a34-11f0-b26b-ab62c890638b-jpg.webp",
+						"copyright": "",
+						"fieldtype": "asset",
+						"meta_data": {
+							"alt": "Team discussing funding",
+							"title": "Team discussing",
+							"source": "",
+							"copyright": ""
+						},
+						"is_external_url": false
+					},
+					"title": "Test news story 6 May afternoon",
+					"content": {
+						"type": "doc",
+						"content": [
+							{
+								"type": "paragraph",
+								"content": [
+									{
+										"text": "Test content",
+										"type": "text"
+									}
+								]
+							}
+						]
+					},
+					"metadata": [],
+					"component": "newsArticle",
+					"introText": "Intro text",
+					"resources": [],
+					"relatedNews": []
+				},
+				"slug": "test-news-story-6-may-afternoon",
+				"full_slug": "news/articles/test-news-story-6-may-afternoon",
+				"sort_by_date": null,
+				"position": -2440,
+				"tag_list": [],
+				"is_startpage": false,
+				"parent_id": 531694581,
+				"meta_data": null,
+				"group_id": "45c95723-1071-46e1-8cfc-ee2cf399a5ad",
+				"first_published_at": "2025-05-06T14:55:30.133Z",
+				"release_id": null,
+				"lang": "default",
+				"path": null,
+				"alternates": [],
+				"default_full_slug": null,
+				"translated_slugs": null
+			}
+		],
+		"cv": 1747063542,
+		"rels": [],
+		"links": []
+	},
+	"perPage": 6,
+	"total": 193
 }
