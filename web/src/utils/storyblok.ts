@@ -54,6 +54,28 @@ export const defaultPodcastImage =
 export const GENERIC_ERROR_MESSAGE =
 	"Oops! Something went wrong and we're working to fix it. Please try again later.";
 
+//Fetch cache version from storyblok space API
+export const fetchCacheVersion = async (): Promise<number> => {
+	const storyblokApi = getStoryblokApi();
+	let version: string;
+
+	try {
+		const response = await storyblokApi.get("cdn/spaces/me");
+		version = response.data.space.version;
+
+		logger.warn(`fetchCacheVersion: Fetched cache version ${version}`);
+	} catch (error) {
+		logger.error(
+			isISbError(error)
+				? `fetchCacheVersion: ${error.status} error from Storyblok API: ${error.message}`
+				: `fetchCacheVersion: Non Storyblok error response: ${error}`
+		);
+		throw Error(GENERIC_ERROR_MESSAGE, { cause: error });
+	}
+
+	return Number(version);
+};
+
 // Fetch a single story from the Storyblok API
 export const fetchStory = async <T>(
 	slug: string,
@@ -71,10 +93,16 @@ export const fetchStory = async <T>(
 	);
 
 	const storyblokApi = getStoryblokApi();
+	const cacheVersion = await fetchCacheVersion();
+
+	logger.warn(
+		`fetchStory: At slug:${slug}. Cache version value: ${cacheVersion}. Ocelot endpoint: ${publicRuntimeConfig.storyblok.ocelotEndpoint}`
+	);
 
 	const sbParams: ISbStoriesParams = {
 		version,
 		resolve_links: "url",
+		cv: cacheVersion,
 		...params,
 	};
 
@@ -92,7 +120,7 @@ export const fetchStory = async <T>(
 	} catch (error: unknown) {
 		if (isISbError(error) && error.status === 404) {
 			logger.error(
-				`fetchStory: 404 error from Storyblok API: ${error.message} at slug: ${slug} `
+				`fetchStory: 404 from Storyblok API: ${error.message} at slug: ${slug} `
 			);
 
 			return {
@@ -102,7 +130,7 @@ export const fetchStory = async <T>(
 		logger.error(
 			isISbError(error)
 				? `fetchStory: ${error.status} error from Storyblok API: ${error.message} at slug: ${slug} `
-				: `fetchStory: Non ISbError response at slug: ${slug}`
+				: `fetchStory: Non Storyblok error response at slug: ${slug}. Error: ${error}`
 		);
 
 		throw Error(GENERIC_ERROR_MESSAGE, { cause: error });
@@ -242,13 +270,19 @@ export const fetchStories = async <T>(
 	params: ISbStoriesParams = {}
 ): Promise<SBMultipleResponse<T>> => {
 	const storyblokApi = getStoryblokApi();
+	const cacheVersion = await fetchCacheVersion();
 	const sbParams: ISbStoriesParams = {
 		version,
 		resolve_links: "url",
+		cv: cacheVersion,
 		...params,
 	};
 
 	const result: SBMultipleResponse<T> = { stories: [] };
+
+	logger.warn(
+		`fetchStory: Fetched cache version ${cacheVersion} - ${typeof cacheVersion}`
+	);
 
 	try {
 		const response: ISbResult = await storyblokApi.get(`cdn/stories`, sbParams);
@@ -280,13 +314,25 @@ export const fetchLinks = async (
 ): Promise<SBLink[]> => {
 	// const {version = "published", per_page = 1000} = sbParams;
 	const storyblokApi = getStoryblokApi();
+	const cacheVersion = await fetchCacheVersion();
 	const finalParams = {
 		version: "published",
+		cv: cacheVersion,
 		per_page: 1000,
 		...sbParams,
 	};
+	// const storyblokApi = getStoryblokApi();
+
+	// const sbParams: ISbStoriesParams = {
+	// 	version: version || "published",
+	// 	cv: cacheVersion,
+	// };
 
 	let result = null;
+
+	logger.warn(
+		`fetchLinks: Fetched cache version ${cacheVersion} - ${typeof cacheVersion}`
+	);
 
 	try {
 		const links: SBLink[] = await storyblokApi.getAll(
