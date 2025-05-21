@@ -46,6 +46,7 @@ import {
 } from "@/utils/storyblok";
 
 import type { GetServerSidePropsContext } from "next";
+import { getGetServerSideProps } from "./getGetServerSideProps";
 
 export type SlugCatchAllSuccessProps = {
 	story: ISbStoryData<InfoPageStoryblok | CategoryNavigationStoryblok>;
@@ -138,7 +139,8 @@ export default function SlugCatchAll(
 				title={title}
 				openGraph={{ title: title }}
 				additionalMetaTags={additionalMetaTags}
-			></NextSeo><h1>Root catch all route</h1>
+			></NextSeo>
+			<h1>Get Involved catch all route</h1>
 			<StoryblokComponent
 				blok={storyData.content}
 				breadcrumbs={breadcrumbs}
@@ -148,77 +150,83 @@ export default function SlugCatchAll(
 	);
 }
 
-export async function getServerSideProps(context: GetServerSidePropsContext) {
-	// Bail out early unless this route is enabled for this environment
-	// if (publicRuntimeConfig.storyblok.enableRootCatchAll.toString() !== "true") {
-	// 	return {
-	// 		notFound: true,
-	// 	};
-	// }
+export const getServerSideProps = getGetServerSideProps("get-involved");
 
-	const { query, params } = context;
+// export async function getServerSideProps(context: GetServerSidePropsContext) {
+// 	// Bail out early unless this route is enabled for this environment
+// 	// if (publicRuntimeConfig.storyblok.enableRootCatchAll.toString() !== "true") {
+// 	// 	return {
+// 	// 		notFound: true,
+// 	// 	};
+// 	// }
 
-	// Resolve slug from params
-	const slug = getSlugFromParams(params?.slug);
+// 	const { query, params } = context;
+// 	console.log({params})
 
-	if (!slug) {
-		return {
-			notFound: true,
-		};
-	}
+// 	// Resolve slug from params
+// 	const slug = getSlugFromParams(params?.slug);
+// 	console.log("<<< slug >>>", slug);
 
-	try {
-		const version = getStoryVersionFromQuery(query);
+// 	const pagePath = slug ? `/get-involved/${slug}` : "/get-involved";
 
-		// Get the story and its breadcrumbs
-		const [storyResult, breadcrumbs] = await Promise.all([
-			fetchStory<CategoryNavigationStoryblok | InfoPageStoryblok>(
-				slug,
-				version
-			),
-			getBreadcrumbs(slug, version),
-		]);
+// 	// if (!slug) {
+// 	// 	return {
+// 	// 		notFound: true,
+// 	// 	};
+// 	// }
 
-		// will return a 404 if the story is not found
-		if ("notFound" in storyResult) {
-			// { storyResult },
-			logger.error(
-				`Story not found for slug: ${slug} in root [...slug] catch all.`
-			);
-			return storyResult;
-		}
-		if ("notFound" in storyResult) return storyResult;
+// 	try {
+// 		const version = getStoryVersionFromQuery(query);
 
-		const siblingPages = [];
+// 		// Get the story and its breadcrumbs
+// 		const [storyResult, breadcrumbs] = await Promise.all([
+// 			fetchStory<CategoryNavigationStoryblok | InfoPageStoryblok>(
+// 				pagePath,
+// 				version
+// 			),
+// 			getBreadcrumbs(pagePath, version),
+// 		]);
 
-		const component = storyResult.story?.content?.component;
-		// TODO: Use the Storyblok Links API to build a map of sibling & optionally child pages
-		if (component === "infoPage") {
-			siblingPages.push(...["page1", "page2"]);
-		}
+// 		// will return a 404 if the story is not found
+// 		if ("notFound" in storyResult) {
+// 			// { storyResult },
+// 			logger.error(
+// 				`Story not found for slug: ${slug} in root [...slug] catch all.`
+// 			);
+// 			return storyResult;
+// 		}
+// 		if ("notFound" in storyResult) return storyResult;
 
-		const result = {
-			props: {
-				...storyResult,
-				breadcrumbs,
-				siblingPages,
-				component,
-			},
-		};
+// 		const siblingPages = [];
 
-		return result;
-	} catch (error) {
-		// {
-		// 	errorCause: error instanceof Error && error.cause,
-		// 	requestHeaders: context.req.headers,
-		// },
-		logger.error(
-			`Error fetching story for slug: ${slug} in SlugCatchAll page getServerSideProps.`
-		);
-		return {
-			props: {
-				error: GENERIC_ERROR_MESSAGE,
-			},
-		};
-	}
-}
+// 		const component = storyResult.story?.content?.component;
+// 		// TODO: Use the Storyblok Links API to build a map of sibling & optionally child pages
+// 		if (component === "infoPage") {
+// 			siblingPages.push(...["page1", "page2"]);
+// 		}
+
+// 		const result = {
+// 			props: {
+// 				...storyResult,
+// 				breadcrumbs,
+// 				siblingPages,
+// 				component,
+// 			},
+// 		};
+
+// 		return result;
+// 	} catch (error) {
+// 		// {
+// 		// 	errorCause: error instanceof Error && error.cause,
+// 		// 	requestHeaders: context.req.headers,
+// 		// },
+// 		logger.error(
+// 			`Error fetching story for slug: ${slug} in SlugCatchAll page getServerSideProps.`
+// 		);
+// 		return {
+// 			props: {
+// 				error: GENERIC_ERROR_MESSAGE,
+// 			},
+// 		};
+// 	}
+// }
