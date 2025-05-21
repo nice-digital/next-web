@@ -46,7 +46,7 @@ import {
 } from "@/utils/storyblok";
 
 import type { GetServerSidePropsContext } from "next";
-import { getGetServerSideProps } from "./get-involved/getGetServerSideProps";
+import { getCorporateContentGssp } from "@/utils/getCorporateContentGssp";
 
 export type SlugCatchAllSuccessProps = {
 	story: ISbStoryData<InfoPageStoryblok | CategoryNavigationStoryblok>;
@@ -149,7 +149,7 @@ export default function SlugCatchAll(
 	);
 }
 
-export const getServerSideProps = getGetServerSideProps("");
+export const getServerSideProps = getCorporateContentGssp("");
 
 // export async function getServerSideProps(context: GetServerSidePropsContext) {
 // 	// Bail out early unless this route is enabled for this environment

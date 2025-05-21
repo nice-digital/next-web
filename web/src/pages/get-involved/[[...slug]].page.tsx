@@ -40,7 +40,7 @@
 // } from "@/utils/storyblok";
 
 import CorporateContentPageTemplate from "@/components/Storyblok/CorporateContentPage/CorporateContentpage";
-import { getGetServerSideProps } from "./getGetServerSideProps";
+import { getCorporateContentGssp } from "@/utils/getCorporateContentGssp";
 import { ISbStoryData } from "@storyblok/react";
 import { CategoryNavigationStoryblok, InfoPageStoryblok } from "@/types/storyblok";
 import { Breadcrumb } from "@/types/Breadcrumb";
@@ -154,13 +154,16 @@ export type SlugCatchAllProps =
 // 	);
 // }
 
-export default function CorporateContentPage(props: SlugCatchAllProps)  {
+export default function GetInvolvedContentPage(props: SlugCatchAllProps)  {
 	return (
+		<>
+		<h1>Get Involved route catch all</h1>
 		<CorporateContentPageTemplate {...props} />
+		</>
 	);
 }
 
-export const getServerSideProps = getGetServerSideProps("get-involved");
+export const getServerSideProps = getCorporateContentGssp("get-involved");
 
 // export async function getServerSideProps(context: GetServerSidePropsContext) {
 // 	// Bail out early unless this route is enabled for this environment

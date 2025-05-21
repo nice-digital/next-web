@@ -15,7 +15,7 @@ import {
 import type { GetServerSidePropsContext, GetServerSideProps } from "next";
 
 
-export const getGetServerSideProps = (basePath: string): GetServerSideProps => {
+export const getCorporateContentGssp = (basePath: string): GetServerSideProps => {
 	return async function (context: GetServerSidePropsContext) {
 		const { query, params, resolvedUrl } = context;
 

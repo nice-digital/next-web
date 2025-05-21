@@ -133,7 +133,6 @@ export default function CorporateContentPageTemplate(
 				openGraph={{ title: title }}
 				additionalMetaTags={additionalMetaTags}
 			></NextSeo>
-			<h1>Get Involved catch all route</h1>
 			<StoryblokComponent
 				blok={storyData.content}
 				breadcrumbs={breadcrumbs}
