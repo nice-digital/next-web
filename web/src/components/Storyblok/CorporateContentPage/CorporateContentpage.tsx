@@ -1,7 +1,6 @@
 import {
 	setComponents,
 	StoryblokComponent,
-	type ISbStoryData,
 } from "@storyblok/react";
 import { NextSeo } from "next-seo";
 import React, { useMemo } from "react";
@@ -30,31 +29,11 @@ import { StoryblokTestimonialFullWidth } from "@/components/Storyblok/StoryblokT
 import { StoryblokTestimonialGridItem } from "@/components/Storyblok/StoryblokTestimonialGridItem/StoryblokTestimonialGridItem";
 import { StoryblokYoutubeEmbed } from "@/components/Storyblok/StoryblokYoutubeEmbed/StoryblokYoutubeEmbed";
 import { logger } from "@/logger";
-import { type Breadcrumb } from "@/types/Breadcrumb";
-import {
-	CategoryNavigationStoryblok,
-	InfoPageStoryblok,
-} from "@/types/storyblok";
 import {
 	getAdditionalMetaTags,
 } from "@/utils/storyblok";
 
-
-export type SlugCatchAllSuccessProps = {
-	story: ISbStoryData<InfoPageStoryblok | CategoryNavigationStoryblok>;
-	breadcrumbs: Breadcrumb[];
-	siblingPages?: string[];
-	component: string;
-};
-
-export type SlugCatchAllErrorProps = {
-	error: string;
-};
-
-export type SlugCatchAllProps =
-	| SlugCatchAllSuccessProps
-	| SlugCatchAllErrorProps;
-
+import { SlugCatchAllProps } from "@/types/SBCorporateContent";
 
 export default function CorporateContentPageTemplate(
 	props: SlugCatchAllProps

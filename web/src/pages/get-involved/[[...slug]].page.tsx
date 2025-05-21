@@ -41,10 +41,7 @@
 
 import CorporateContentPageTemplate from "@/components/Storyblok/CorporateContentPage/CorporateContentpage";
 import { getCorporateContentGssp } from "@/utils/getCorporateContentGssp";
-import { ISbStoryData } from "@storyblok/react";
-import { CategoryNavigationStoryblok, InfoPageStoryblok } from "@/types/storyblok";
-import { Breadcrumb } from "@/types/Breadcrumb";
-
+import { SlugCatchAllProps } from "@/types/SBCorporateContent";
 
 
 // function PageTemplate (props: any) {
@@ -52,20 +49,6 @@ import { Breadcrumb } from "@/types/Breadcrumb";
 // 		<CorporateContentPageTemplate {...props} />
 // 	);
 // }
-export type SlugCatchAllSuccessProps = {
-	story: ISbStoryData<InfoPageStoryblok | CategoryNavigationStoryblok>;
-	breadcrumbs: Breadcrumb[];
-	siblingPages?: string[];
-	component: string;
-};
-
-export type SlugCatchAllErrorProps = {
-	error: string;
-};
-
-export type SlugCatchAllProps =
-	| SlugCatchAllSuccessProps
-	| SlugCatchAllErrorProps;
 
 // export default function SlugCatchAll(
 // 	props: SlugCatchAllProps
