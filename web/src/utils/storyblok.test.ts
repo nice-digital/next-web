@@ -34,7 +34,7 @@ import {
 	fieldHasValidContent,
 } from "./storyblok";
 
-describe.only("Storyblok utils", () => {
+describe("Storyblok utils", () => {
 	beforeEach(() => {
 		jest
 			.spyOn(storyblokUtils, "fetchCacheVersion")
@@ -267,7 +267,7 @@ describe.only("Storyblok utils", () => {
 				{
 					resolve_links: "url",
 					version: "draft",
-					cv: 123456789, //globally mocked
+					cv:mockCvValue, //globally mocked
 				}
 			);
 		});
@@ -356,7 +356,7 @@ describe.only("Storyblok utils", () => {
 			await fetchStories("published", {
 				starts_with: "news/articles",
 				per_page: 6,
-				cv: 123456789, //globally mocked
+				cv:mockCvValue, //globally mocked
 			});
 
 			expect(getStoryblokApi().get).toHaveBeenCalled();
@@ -367,7 +367,7 @@ describe.only("Storyblok utils", () => {
 				version: "published",
 				starts_with: "news/articles",
 				per_page: 6,
-				cv: 123456789, //globally mocked
+				cv:mockCvValue, //globally mocked
 			});
 		});
 
@@ -379,7 +379,7 @@ describe.only("Storyblok utils", () => {
 			const result = await fetchStories("published", {
 				starts_with: "news/articles",
 				per_page: 8,
-				cv: 123456789, //globally mocked
+				cv:mockCvValue, //globally mocked
 			});
 
 			const expectedResult = {
@@ -400,7 +400,7 @@ describe.only("Storyblok utils", () => {
 				await fetchStories("published", {
 					starts_with: "news/articles",
 					per_page: 8,
-					cv: 123456789, //globally mocked
+					cv:mockCvValue, //globally mocked
 				});
 			};
 
@@ -443,7 +443,7 @@ describe.only("Storyblok utils", () => {
 				await fetchStories("published", {
 					starts_with: "news/articles",
 					per_page: 8,
-					cv: 123456789, //globally mocked
+					cv:mockCvValue, //globally mocked
 				});
 			};
 
@@ -489,7 +489,7 @@ describe.only("Storyblok utils", () => {
 				per_page: 1000,
 				version: "published",
 				starts_with: "news/podcasts",
-				cv: 123456789, //globally mocked
+				cv:mockCvValue, //globally mocked
 			});
 		});
 
@@ -510,6 +510,7 @@ describe.only("Storyblok utils", () => {
 				per_page: 300,
 				version: "draft",
 				starts_with: "news/podcasts",
+				cv:mockCvValue
 			});
 		});
 
@@ -599,7 +600,7 @@ describe.only("Storyblok utils", () => {
 				per_page: 1000,
 				version: "published",
 				starts_with: "news",
-				cv: 123456789, //globally mocked,
+				cv:mockCvValue, //globally mocked,
 			});
 		});
 
