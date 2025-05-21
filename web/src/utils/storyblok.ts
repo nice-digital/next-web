@@ -321,12 +321,6 @@ export const fetchLinks = async (
 		per_page: 1000,
 		...sbParams,
 	};
-	// const storyblokApi = getStoryblokApi();
-
-	// const sbParams: ISbStoriesParams = {
-	// 	version: version || "published",
-	// 	cv: cacheVersion,
-	// };
 
 	let result = null;
 
