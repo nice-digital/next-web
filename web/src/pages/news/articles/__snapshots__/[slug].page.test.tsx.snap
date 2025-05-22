@@ -122,6 +122,7 @@ exports[`NewsArticlePage renders the page 1`] = `
               />
               <img
                 alt="Kitten wearing mittens"
+                class="imageMain "
                 data-nimg="1"
                 decoding="async"
                 height="0"
