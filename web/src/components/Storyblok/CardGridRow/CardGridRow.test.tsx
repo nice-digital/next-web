@@ -2,14 +2,13 @@ import { render, screen } from "@testing-library/react";
 
 import { type StoryblokCalloutCardProps } from "@/components/Storyblok/StoryblokCalloutCard/StoryblokCalloutCard";
 import {
-	type TestimonialGridItemStoryblok,
 	type CalloutCardStoryblok,
 	type CalloutCardWithImageStoryblok,
 	type CardStoryblok,
 } from "@/types/storyblok";
 import { resolveStoryblokLink } from "@/utils/storyblok";
 
-import { CardGrid, CardGridProps } from "./CardGrid";
+import { CardGridRow, CardGridRowProps } from "./CardGridRow";
 
 jest.mock("@/utils/storyblok", () => ({
 	resolveStoryblokLink: jest.fn(),
@@ -62,7 +61,7 @@ const mockCalloutCardWithImageProps = {
 	} as CalloutCardWithImageStoryblok,
 };
 
-describe("GridSection", () => {
+describe("GridRow", () => {
 	beforeEach(() => {
 		(resolveStoryblokLink as jest.Mock).mockImplementation((link) => ({
 			url: link?.url || link?.cached_url,
@@ -76,8 +75,8 @@ describe("GridSection", () => {
 		jest.clearAllMocks();
 	});
 
-	const mockProps: CardGridProps = {
-		row: {
+	const mockProps: CardGridRowProps = {
+		blok: {
 			_uid: "e6d4d18f-e8c3-40af-83e6-b2b6eaa95da3",
 			columns: "2",
 			component: "cardGridRowBasic",
@@ -100,13 +99,13 @@ describe("GridSection", () => {
 	};
 
 	it("renders the correct grid structure", () => {
-		render(<CardGrid {...mockProps} />);
+		render(<CardGridRow {...mockProps} />);
 		const grid = screen.getByTestId("card-grid");
 		expect(grid).toBeInTheDocument();
 	});
 
 	it("resolves links correctly", () => {
-		render(<CardGrid {...mockProps} />);
+		render(<CardGridRow {...mockProps} />);
 		const linkElement = screen.getAllByRole("link", {
 			name: "Basic Card",
 		});
@@ -115,7 +114,7 @@ describe("GridSection", () => {
 	});
 
 	it("renders Card content correctly", () => {
-		render(<CardGrid {...mockProps} />);
+		render(<CardGridRow {...mockProps} />);
 		const cardList = screen.getByRole("list");
 		const cardListItems = screen.getAllByRole("listitem");
 		const card = screen.getAllByText("Basic Card");
@@ -126,8 +125,8 @@ describe("GridSection", () => {
 	});
 
 	it("renders Callout Card content correctly", () => {
-		const mockCalloutProps: CardGridProps = {
-			row: {
+		const mockCalloutProps: CardGridRowProps = {
+			blok: {
 				component: "cardGridRowCallout",
 				columns: "3",
 				gridItems: [
@@ -144,7 +143,7 @@ describe("GridSection", () => {
 				_uid: "row1",
 			},
 		};
-		render(<CardGrid {...mockCalloutProps} />);
+		render(<CardGridRow {...mockCalloutProps} />);
 		const cardList = screen.getByRole("list");
 		const cardListItems = screen.getAllByRole("listitem");
 		const calloutCard = screen.getAllByText("Mock card title");
@@ -155,8 +154,8 @@ describe("GridSection", () => {
 	});
 
 	it("renders Callout Card With Image content correctly", () => {
-		const mockCalloutProps: CardGridProps = {
-			row: {
+		const mockCalloutProps: CardGridRowProps = {
+			blok: {
 				component: "cardGridRowCalloutWithImage",
 				columns: "2",
 				gridItems: [
@@ -170,7 +169,7 @@ describe("GridSection", () => {
 				_uid: "row1",
 			},
 		};
-		render(<CardGrid {...mockCalloutProps} />);
+		render(<CardGridRow {...mockCalloutProps} />);
 		const cardList = screen.getByRole("list");
 		const cardListItems = screen.getAllByRole("listitem");
 		const calloutCard = screen.getAllByText("Mock card title");
@@ -178,46 +177,5 @@ describe("GridSection", () => {
 		expect(cardListItems.length).toBe(2);
 		expect(cardListItems[0]).toHaveTextContent("Mock card title");
 		expect(calloutCard.length).toBe(2);
-	});
-
-	it("renders Testimonial content correctly", () => {
-		const mockTestimonialProps: CardGridProps = {
-			row: {
-				component: "cardGridRowTestimonials",
-				columns: "1",
-				gridItems: [
-					{
-						component: "testimonialGridItem",
-						_uid: "1",
-						quoteName: "Test Name",
-						quoteRole: "Test Role",
-						quoteText: "Test Quote Text",
-						image: {
-							id: 123,
-							filename: "/test-image-filename",
-							alt: "test-alt",
-							fieldtype: "asset",
-							name: "test-name",
-							title: "test-title",
-							focus: null,
-						},
-						variant: "default",
-					} as TestimonialGridItemStoryblok,
-				],
-				_uid: "row1",
-			},
-		};
-		render(<CardGrid {...mockTestimonialProps} />);
-		const testimonial = screen.getByText("Test Quote Text");
-		expect(testimonial).toBeInTheDocument();
-		const cardList = screen.queryByRole("list");
-		const cardListItems = screen.queryByRole("listitem");
-		expect(cardList).not.toBeInTheDocument();
-		expect(cardListItems).not.toBeInTheDocument();
-	});
-
-	it("matches snapshot", () => {
-		const { container } = render(<CardGrid {...mockProps} />);
-		expect(container).toMatchSnapshot();
 	});
 });

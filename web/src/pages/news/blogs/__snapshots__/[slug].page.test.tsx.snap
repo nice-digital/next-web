@@ -51,9 +51,9 @@ exports[`BlogPostPage renders the page 1`] = `
                         Blogs
                       </span>
                       <time
-                        datetime="2024-04-15 12:00"
+                        datetime="2024-05-07 12:00"
                       >
-                        15 April 2024
+                        7 May 2024
                       </time>
                     </div>
                   </div>
@@ -172,6 +172,7 @@ exports[`BlogPostPage renders the page 1`] = `
               />
               <img
                 alt=""
+                class="imageMain "
                 data-nimg="1"
                 decoding="async"
                 height="0"
@@ -240,6 +241,7 @@ exports[`BlogPostPage renders the page 1`] = `
                   />
                   <img
                     alt=""
+                    class="imageMain "
                     data-nimg="1"
                     decoding="async"
                     height="0"

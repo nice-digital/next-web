@@ -7,6 +7,7 @@ import {
 	mockIndepthArticle,
 	mockNewsArticle,
 	mockPodcastPage,
+	mockCvValue,
 } from "@/test-utils/storyblok-data";
 import * as storyblokUtils from "@/utils/storyblok";
 import { GENERIC_ERROR_MESSAGE } from "@/utils/storyblok";
@@ -35,6 +36,9 @@ describe("getServerSideProps", () => {
 	let fetchStoriesSpy: jest.SpyInstance;
 	beforeEach(() => {
 		fetchStoriesSpy = jest.spyOn(storyblokUtils, "fetchStories");
+		jest
+			.spyOn(storyblokUtils, "fetchCacheVersion")
+			.mockResolvedValue(mockCvValue);
 	});
 
 	afterEach(() => {
