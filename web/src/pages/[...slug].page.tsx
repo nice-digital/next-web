@@ -10,6 +10,7 @@ import { ErrorPageContent } from "@/components/ErrorPageContent/ErrorPageContent
 import { BasicCardGrid } from "@/components/Storyblok/BasicCardGrid/BasicCardGrid";
 import { Blockquote } from "@/components/Storyblok/Blockquote/Blockquote";
 import { CardGridSection } from "@/components/Storyblok/CardGridSection/CardGridSection";
+import { CardList } from "@/components/Storyblok/CardList/CardList";
 import { CardListSection } from "@/components/Storyblok/CardListSection/CardListSection";
 import { CategoryLandingPage } from "@/components/Storyblok/CategoryLandingPage/CategoryLandingPage";
 import { CategoryNavigation } from "@/components/Storyblok/CategoryNavigation/CategoryNavigation";
@@ -109,6 +110,7 @@ export default function SlugCatchAll(
 	const infoPageComponents = {
 		accordion: StoryblokAccordion,
 		accordionGroup: StoryblokAccordionGroup,
+		cardList: CardList,
 		hero: StoryblokHero,
 		iframe: StoryblokIframe,
 		infoPage: InfoPage,
