@@ -39,7 +39,7 @@
     margin: 0;
   }
   // Add margin top and bottom to the transparent testimonial component in rich text
-  [data-component='testimonial--transparent'] {
+  :global([class*='testimonial--transparent']) {
     margin-bottom: utils.rem(spacing.$large);
     margin-top: utils.rem(spacing.$large);
   }
