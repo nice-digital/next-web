@@ -21,6 +21,7 @@
     display: block;
   }
 
+
   //target lite youtube embed wrapper - (video) is hardcoded at the start of every title
   [data-title^='(video)'] {
     margin: utils.rem(spacing.$large) 0 utils.rem(spacing.$x-large);
@@ -38,10 +39,16 @@
   :global(.action-banner__title) {
     margin: 0;
   }
+  // Add margin top and bottom to the transparent testimonial component in rich text
+  [data-component='testimonial--transparent'] {
+    margin-bottom: utils.rem(spacing.$large);
+    margin-top: utils.rem(spacing.$large);
+  }
   // remove bottom margin on any last child in richtext bloks
   > *:last-child {
     margin-bottom: 0;
   }
+
 }
 
 .imageMain {
