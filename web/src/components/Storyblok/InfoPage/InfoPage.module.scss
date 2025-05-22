@@ -2,3 +2,15 @@
 .content > div > div > h2 { // Bit ugly, but deals with rich text headings getting nudged down the page
   margin-top: 0;
 }
+
+.infoPage {
+  &--reverse-order {
+    .infoPageContentArea {
+      order: 2;
+    }
+
+    .infoPageNavArea {
+      order: 1;
+    }
+  }
+}

@@ -20,7 +20,6 @@ export const InfoPage = ({
 	breadcrumbs,
 	siblingPages,
 }: InfoPageBlokProps): React.ReactElement => {
-	const navColWidth = 3;
 	return (
 		<>
 			{blok.metadata &&
@@ -38,12 +37,13 @@ export const InfoPage = ({
 				);
 			})}
 
-
-
-			<Grid gutter="loose">
-				{blok.hideSectionNav !== "true" && (
-					<GridItem cols={12} sm={{ cols: navColWidth }}>
-						{siblingPages && siblingPages.length > 0 && (
+			<Grid
+				gutter="loose"
+				className={blok.hideSectionNav === "true" ? styles["infoPage--reverse-order"] : undefined}
+			>
+				<GridItem cols={12} sm={3} className="infoPageNavArea">
+					{blok.hideSectionNav !== "true" ? (
+						siblingPages && siblingPages.length > 0 ? (
 							<StackedNav label="Label of parent section" elementType="h2">
 								{siblingPages.map((page, index) => {
 									return (
@@ -53,23 +53,21 @@ export const InfoPage = ({
 									);
 								})}
 							</StackedNav>
-						)}
-					</GridItem>
-				)}
-				<GridItem cols={12} sm={{ cols: 9 }}>
+						) : (
+							blok.inPageNav && (
+								<div className={styles.inPageNav}>
+									<StoryblokRichText content={blok.inPageNav} />
+								</div>
+							)
+						)
+					) : null}
+				</GridItem>
+
+				<GridItem cols={12} sm={{ cols: 9 }} className="infoPageContentArea">
 					<div className={styles.content}>
 						<StoryblokRichText content={blok.content} />
 					</div>
 				</GridItem>
-				{blok.hideSectionNav === "true" && (
-					<GridItem cols={12} sm={{ cols: navColWidth }}>
-						{blok.inPageNav && (
-							<div className={styles.inPageNav}>
-								<StoryblokRichText content={blok.inPageNav} />
-							</div>
-						)}
-					</GridItem>
-				)}
 			</Grid>
 		</>
 	);
