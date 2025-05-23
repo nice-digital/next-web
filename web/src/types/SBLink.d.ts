@@ -6,12 +6,13 @@ export type SBLink = {
 	slug: string;
 	name: string;
 	is_folder: boolean;
-	parent_id: number;
+	parent_id: number | null;
 	published: boolean;
 	position: number;
 	uuid: string;
 	is_startpage: boolean;
 	real_path: string;
+	path: string | null;
 };
 
 // The API response consists of an arbitrary number of properties
