@@ -38,6 +38,11 @@
   :global(.action-banner__title) {
     margin: 0;
   }
+  // Add margin top and bottom to the transparent testimonial component in rich text
+  :global([class*='testimonial--transparent']) {
+    margin-bottom: utils.rem(spacing.$large);
+    margin-top: utils.rem(spacing.$large);
+  }
   // remove bottom margin on any last child in richtext bloks
   > *:last-child {
     margin-bottom: 0;

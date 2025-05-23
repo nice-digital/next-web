@@ -120,6 +120,7 @@ export default function SlugCatchAll(
 		nestedRichText: NestedRichText,
 		nestedTable: StoryblokTable,
 		quote: Blockquote,
+		testimonialGridItem: StoryblokTestimonialGridItem,
 		youtubeEmbed: StoryblokYoutubeEmbed,
 	};
 
