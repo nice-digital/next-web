@@ -1,3 +1,4 @@
+import { publicRuntimeConfig } from "@/config";
 import { logger } from "@/logger";
 import {
 	InfoPageStoryblok,
@@ -16,6 +17,15 @@ import type { GetServerSidePropsContext, GetServerSideProps } from "next";
 
 export const getCorporateContentGssp = (basePath: string): GetServerSideProps => {
 	return async function (context: GetServerSidePropsContext) {
+
+		// Bail out early unless this route is enabled for this environment
+		if (basePath == "" && publicRuntimeConfig.storyblok.enableRootCatchAll.toString() !== "true") {
+			return {
+				notFound: true,
+			};
+		}
+
+
 		const { query, params } = context;
 
 		let slug = getSlugFromParams(params?.slug);
