@@ -3,6 +3,8 @@ import Link from "next/link";
 import { Card, type CardHeadingLinkProps } from "@nice-digital/nds-card";
 import { Grid, GridItem, type Columns } from "@nice-digital/nds-grid";
 
+import { StoryblokCalloutCard } from "@/components/Storyblok/StoryblokCalloutCard/StoryblokCalloutCard";
+import { StoryblokTestimonialGridItem } from "@/components/Storyblok/StoryblokTestimonialGridItem/StoryblokTestimonialGridItem";
 import {
 	CalloutCardStoryblok,
 	CalloutCardWithImageStoryblok,
@@ -14,9 +16,6 @@ import {
 	TestimonialGridItemStoryblok,
 } from "@/types/storyblok";
 import { resolveStoryblokLink } from "@/utils/storyblok";
-
-import { StoryblokCalloutCard } from "../StoryblokCalloutCard/StoryblokCalloutCard";
-import { StoryblokTestimonialGridItem } from "../StoryblokTestimonialGridItem/StoryblokTestimonialGridItem";
 
 import styles from "./CardGrid.module.scss";
 

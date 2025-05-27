@@ -7,6 +7,8 @@ import {
 	type PullOrPush,
 } from "@nice-digital/nds-grid";
 
+import { CardGrid } from "@/components/Storyblok/CardGrid/CardGrid";
+import { StoryblokActionBannerDefault } from "@/components/Storyblok/StoryblokActionBanner/StoryblokActionBannerDefault";
 import { StoryblokButtonLink } from "@/components/Storyblok/StoryblokButtonLink/StoryblokButtonLink";
 import { StoryblokRichText } from "@/components/Storyblok/StoryblokRichText/StoryblokRichText";
 import { StoryblokYoutubeEmbed } from "@/components/Storyblok/StoryblokYoutubeEmbed/StoryblokYoutubeEmbed";
@@ -18,9 +20,6 @@ import {
 } from "@/types/storyblok";
 import { constructStoryblokImageSrc } from "@/utils/storyblok";
 import { toTitleCase } from "@/utils/string";
-
-import { CardGrid } from "../CardGrid/CardGrid";
-import { StoryblokActionBannerDefault } from "../StoryblokActionBanner/StoryblokActionBannerDefault";
 
 import styles from "./PromoBox.module.scss";
 

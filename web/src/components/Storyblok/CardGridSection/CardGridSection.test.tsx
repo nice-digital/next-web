@@ -1,5 +1,6 @@
 import { render, screen } from "@testing-library/react";
 
+import { type StoryblokCalloutCardProps } from "@/components/Storyblok/StoryblokCalloutCard/StoryblokCalloutCard";
 import {
 	type TestimonialGridItemStoryblok,
 	type CalloutCardStoryblok,
@@ -9,8 +10,6 @@ import {
 	type RichtextStoryblok,
 } from "@/types/storyblok";
 import { resolveStoryblokLink } from "@/utils/storyblok";
-
-import { type StoryblokCalloutCardProps } from "../StoryblokCalloutCard/StoryblokCalloutCard";
 
 import { CardGridSection, CardGridSectionProps } from "./CardGridSection";
 

@@ -9,6 +9,7 @@ import React, { useMemo } from "react";
 import { ErrorPageContent } from "@/components/ErrorPageContent/ErrorPageContent";
 import { BasicCardGrid } from "@/components/Storyblok/BasicCardGrid/BasicCardGrid";
 import { Blockquote } from "@/components/Storyblok/Blockquote/Blockquote";
+import { CardGridRow } from "@/components/Storyblok/CardGridRow/CardGridRow";
 import { CardGridSection } from "@/components/Storyblok/CardGridSection/CardGridSection";
 import { CardList } from "@/components/Storyblok/CardList/CardList";
 import { CardListSection } from "@/components/Storyblok/CardListSection/CardListSection";
@@ -110,15 +111,19 @@ export default function SlugCatchAll(
 	const infoPageComponents = {
 		accordion: StoryblokAccordion,
 		accordionGroup: StoryblokAccordionGroup,
+		actionBannerDefault: StoryblokActionBannerDefault,
 		cardList: CardList,
+		cardGridRowBasic: CardGridRow,
+		cardGridRowCallout: CardGridRow,
+		cardGridRowCalloutWithImage: CardGridRow,
 		hero: StoryblokHero,
 		iframe: StoryblokIframe,
 		infoPage: InfoPage,
 		nestedRichText: NestedRichText,
-		quote: Blockquote,
-		youtubeEmbed: StoryblokYoutubeEmbed,
-		actionBannerDefault: StoryblokActionBannerDefault,
 		nestedTable: StoryblokTable,
+		quote: Blockquote,
+		testimonialGridItem: StoryblokTestimonialGridItem,
+		youtubeEmbed: StoryblokYoutubeEmbed,
 	};
 
 	const components = {
