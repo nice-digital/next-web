@@ -5,16 +5,15 @@
 .cardGrid {
   &__cardGridRow {
     row-gap: utils.rem(spacing.$large);
-    
+
     &:not(:last-child) {
       margin-bottom: utils.rem(spacing.$x-large);
     }
   }
-    
+
   &__cardGridItem {
-    > * {
-      margin-bottom: 0; // Some components have their own margin-bottom which messes with grid layout
-    }
+    margin-bottom: 0;// Some components have their own margin-bottom which messes with grid layout
+
   }
-    
+
 }
