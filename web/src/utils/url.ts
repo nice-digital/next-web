@@ -45,7 +45,6 @@ export const getProjectPath = (
 			return null;
 		case ProjectGroup.Other:
 			if (project.projectType == ProjectType.IND) groupSlug = "indicators";
-			else if (project.projectType === ProjectType.HUB) groupSlug = "hub";
 			else groupSlug = "guidance";
 			break;
 		default:
