@@ -1,4 +1,5 @@
 import { CategoryNavigation } from "@/components/Storyblok/CategoryNavigation/CategoryNavigation";
+import { publicRuntimeConfig } from "@/config";
 import { logger } from "@/logger";
 import {
 	InfoPageStoryblok,
@@ -14,15 +15,14 @@ import {
 
 import type { GetServerSidePropsContext, GetServerSideProps } from "next";
 
-
-export const getCorporateContentGssp = (basePath: string): GetServerSideProps => {
+export const getCorporateContentGssp = (
+	basePath: string
+): GetServerSideProps => {
 	return async function (context: GetServerSidePropsContext) {
-		const { query, params, resolvedUrl } = context;
+
+		const { query, params } = context;
 
 		let slug = getSlugFromParams(params?.slug);
-
-		console.log("resolvedUrl ", resolvedUrl);
-		console.log("slug ", slug);
 
 		if (basePath) {
 			slug = slug ? `${basePath}/${slug}` : basePath;
@@ -86,4 +86,4 @@ export const getCorporateContentGssp = (basePath: string): GetServerSideProps =>
 			};
 		}
 	};
-}
+};
