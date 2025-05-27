@@ -1,7 +1,6 @@
 import {
 	setComponents,
 	StoryblokComponent,
-	type ISbStoryData,
 } from "@storyblok/react";
 import { NextSeo } from "next-seo";
 import React, { useMemo } from "react";
@@ -30,38 +29,16 @@ import { StoryblokTable } from "@/components/Storyblok/StoryblokTable/StoryblokT
 import { StoryblokTestimonialFullWidth } from "@/components/Storyblok/StoryblokTestimonialFullWidth/StoryblokTestimonialFullWidth";
 import { StoryblokTestimonialGridItem } from "@/components/Storyblok/StoryblokTestimonialGridItem/StoryblokTestimonialGridItem";
 import { StoryblokYoutubeEmbed } from "@/components/Storyblok/StoryblokYoutubeEmbed/StoryblokYoutubeEmbed";
-import { publicRuntimeConfig } from "@/config";
 import { logger } from "@/logger";
-import { type Breadcrumb } from "@/types/Breadcrumb";
+
 import {
-	CategoryNavigationStoryblok,
-	InfoPageStoryblok,
-} from "@/types/storyblok";
-import {
-	fetchStory,
-	GENERIC_ERROR_MESSAGE,
 	getAdditionalMetaTags,
-	getBreadcrumbs,
-	getSlugFromParams,
-	getStoryVersionFromQuery,
 } from "@/utils/storyblok";
 
 import type { GetServerSidePropsContext } from "next";
+import { getCorporateContentGssp } from "@/utils/getCorporateContentGssp";
+import { SlugCatchAllProps } from "@/types/SBCorporateContent";
 
-export type SlugCatchAllSuccessProps = {
-	story: ISbStoryData<InfoPageStoryblok | CategoryNavigationStoryblok>;
-	breadcrumbs: Breadcrumb[];
-	siblingPages?: string[];
-	component: string;
-};
-
-export type SlugCatchAllErrorProps = {
-	error: string;
-};
-
-export type SlugCatchAllProps =
-	| SlugCatchAllSuccessProps
-	| SlugCatchAllErrorProps;
 
 export default function SlugCatchAll(
 	props: SlugCatchAllProps
@@ -143,7 +120,7 @@ export default function SlugCatchAll(
 				title={title}
 				openGraph={{ title: title }}
 				additionalMetaTags={additionalMetaTags}
-			></NextSeo>
+			></NextSeo><h1>Root catch all route</h1>
 			<StoryblokComponent
 				blok={storyData.content}
 				breadcrumbs={breadcrumbs}
@@ -153,77 +130,79 @@ export default function SlugCatchAll(
 	);
 }
 
-export async function getServerSideProps(context: GetServerSidePropsContext) {
-	// Bail out early unless this route is enabled for this environment
-	if (publicRuntimeConfig.storyblok.enableRootCatchAll.toString() !== "true") {
-		return {
-			notFound: true,
-		};
-	}
+export const getServerSideProps = getCorporateContentGssp("");
 
-	const { query, params } = context;
+// export async function getServerSideProps(context: GetServerSidePropsContext) {
+// 	// Bail out early unless this route is enabled for this environment
+// 	// if (publicRuntimeConfig.storyblok.enableRootCatchAll.toString() !== "true") {
+// 	// 	return {
+// 	// 		notFound: true,
+// 	// 	};
+// 	// }
 
-	// Resolve slug from params
-	const slug = getSlugFromParams(params?.slug);
+// 	const { query, params } = context;
 
-	if (!slug) {
-		return {
-			notFound: true,
-		};
-	}
+// 	// Resolve slug from params
+// 	const slug = getSlugFromParams(params?.slug);
 
-	try {
-		const version = getStoryVersionFromQuery(query);
+// 	if (!slug) {
+// 		return {
+// 			notFound: true,
+// 		};
+// 	}
 
-		// Get the story and its breadcrumbs
-		const [storyResult, breadcrumbs] = await Promise.all([
-			fetchStory<CategoryNavigationStoryblok | InfoPageStoryblok>(
-				slug,
-				version
-			),
-			getBreadcrumbs(slug, version),
-		]);
+// 	try {
+// 		const version = getStoryVersionFromQuery(query);
 
-		// will return a 404 if the story is not found
-		if ("notFound" in storyResult) {
-			// { storyResult },
-			logger.error(
-				`Story not found for slug: ${slug} in root [...slug] catch all.`
-			);
-			return storyResult;
-		}
-		if ("notFound" in storyResult) return storyResult;
+// 		// Get the story and its breadcrumbs
+// 		const [storyResult, breadcrumbs] = await Promise.all([
+// 			fetchStory<CategoryNavigationStoryblok | InfoPageStoryblok>(
+// 				slug,
+// 				version
+// 			),
+// 			getBreadcrumbs(slug, version),
+// 		]);
 
-		const siblingPages = [];
+// 		// will return a 404 if the story is not found
+// 		if ("notFound" in storyResult) {
+// 			// { storyResult },
+// 			logger.error(
+// 				`Story not found for slug: ${slug} in root [...slug] catch all.`
+// 			);
+// 			return storyResult;
+// 		}
+// 		if ("notFound" in storyResult) return storyResult;
 
-		const component = storyResult.story?.content?.component;
-		// TODO: Use the Storyblok Links API to build a map of sibling & optionally child pages
-		if (component === "infoPage") {
-			siblingPages.push(...["page1", "page2"]);
-		}
+// 		const siblingPages = [];
 
-		const result = {
-			props: {
-				...storyResult,
-				breadcrumbs,
-				siblingPages,
-				component,
-			},
-		};
+// 		const component = storyResult.story?.content?.component;
+// 		// TODO: Use the Storyblok Links API to build a map of sibling & optionally child pages
+// 		if (component === "infoPage") {
+// 			siblingPages.push(...["page1", "page2"]);
+// 		}
 
-		return result;
-	} catch (error) {
-		// {
-		// 	errorCause: error instanceof Error && error.cause,
-		// 	requestHeaders: context.req.headers,
-		// },
-		logger.error(
-			`Error fetching story for slug: ${slug} in SlugCatchAll page getServerSideProps.`
-		);
-		return {
-			props: {
-				error: GENERIC_ERROR_MESSAGE,
-			},
-		};
-	}
-}
+// 		const result = {
+// 			props: {
+// 				...storyResult,
+// 				breadcrumbs,
+// 				siblingPages,
+// 				component,
+// 			},
+// 		};
+
+// 		return result;
+// 	} catch (error) {
+// 		// {
+// 		// 	errorCause: error instanceof Error && error.cause,
+// 		// 	requestHeaders: context.req.headers,
+// 		// },
+// 		logger.error(
+// 			`Error fetching story for slug: ${slug} in SlugCatchAll page getServerSideProps.`
+// 		);
+// 		return {
+// 			props: {
+// 				error: GENERIC_ERROR_MESSAGE,
+// 			},
+// 		};
+// 	}
+// }
