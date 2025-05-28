@@ -11,6 +11,7 @@ import { BasicCardGrid } from "@/components/Storyblok/BasicCardGrid/BasicCardGri
 import { Blockquote } from "@/components/Storyblok/Blockquote/Blockquote";
 import { CardGridRow } from "@/components/Storyblok/CardGridRow/CardGridRow";
 import { CardGridSection } from "@/components/Storyblok/CardGridSection/CardGridSection";
+import { CardList } from "@/components/Storyblok/CardList/CardList";
 import { CardListSection } from "@/components/Storyblok/CardListSection/CardListSection";
 import { CategoryLandingPage } from "@/components/Storyblok/CategoryLandingPage/CategoryLandingPage";
 import { CategoryNavigation } from "@/components/Storyblok/CategoryNavigation/CategoryNavigation";
@@ -111,6 +112,7 @@ export default function SlugCatchAll(
 		accordion: StoryblokAccordion,
 		accordionGroup: StoryblokAccordionGroup,
 		actionBannerDefault: StoryblokActionBannerDefault,
+		cardList: CardList,
 		cardGridRowBasic: CardGridRow,
 		cardGridRowCallout: CardGridRow,
 		cardGridRowCalloutWithImage: CardGridRow,
