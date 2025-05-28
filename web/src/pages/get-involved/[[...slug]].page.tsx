@@ -1,6 +1,7 @@
-import { CorporateContentPage } from "@/components/Storyblok/CorporateContentPage/CorporateContentPage";
 import { SlugCatchAllProps } from "@/types/SBCorporateContent";
 import { getCorporateContentGssp } from "@/utils/getCorporateContentGssp";
+
+import { CorporateContentPage } from "../../components/Storyblok/CorporateContentPage/CorporateContentPage";
 
 export default function GetInvolvedContentPage(
 	props: SlugCatchAllProps

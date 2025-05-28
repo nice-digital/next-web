@@ -3,9 +3,10 @@ import { render, screen } from "@testing-library/react";
 import { NextSeo } from "next-seo";
 import React from "react";
 
-import { CorporateContentPage } from "@/components/Storyblok/CorporateContentPage/CorporateContentPage";
 import { logger } from "@/logger";
 import { getAdditionalMetaTags } from "@/utils/storyblok";
+
+import { CorporateContentPage } from "./CorporateContentPage";
 
 jest.mock("@/utils/storyblok");
 jest.mock("@/logger");

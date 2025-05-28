@@ -1,10 +1,11 @@
 import { GetServerSideProps, GetServerSidePropsResult } from "next";
 import React from "react";
 
-import { CorporateContentPage } from "@/components/Storyblok/CorporateContentPage/CorporateContentPage";
 import { publicRuntimeConfig } from "@/config";
 import { SlugCatchAllProps } from "@/types/SBCorporateContent";
 import { getCorporateContentGssp } from "@/utils/getCorporateContentGssp";
+
+import { CorporateContentPage } from "../components/Storyblok/CorporateContentPage/CorporateContentPage";
 
 export default function SlugCatchAll(
 	props: SlugCatchAllProps
