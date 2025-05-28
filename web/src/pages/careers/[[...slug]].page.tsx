@@ -12,4 +12,4 @@ export default function CareersContentPageTemplate(props: SlugCatchAllProps)  {
 	);
 }
 
-export const getServerSideProps = getCorporateContentGssp("careers");
+export const getServerSideProps = getCorporateContentGssp();

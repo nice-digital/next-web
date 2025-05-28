@@ -11,4 +11,4 @@ export default function GetInvolvedContentPage(props: SlugCatchAllProps)  {
 	);
 }
 
-export const getServerSideProps = getCorporateContentGssp("get-involved");
+export const getServerSideProps = getCorporateContentGssp();
