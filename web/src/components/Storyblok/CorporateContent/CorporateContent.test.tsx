@@ -6,7 +6,7 @@ import React from "react";
 import { logger } from "@/logger";
 import { getAdditionalMetaTags } from "@/utils/storyblok";
 
-import { CorporateContentPage } from "./CorporateContentPage";
+import { CorporateContent } from "./CorporateContent";
 
 jest.mock("@/utils/storyblok");
 jest.mock("@/logger");
@@ -22,14 +22,14 @@ const mockLoggerError = logger.error as jest.Mock;
 const mockStoryblokComponent = StoryblokComponent as unknown as jest.Mock;
 const mockNextSeo = NextSeo as jest.Mock;
 
-describe("CorporateContentPage", () => {
+describe("CorporateContent", () => {
 	beforeEach(() => {
 		jest.clearAllMocks();
 	});
 
 	it("renders error content if error prop is present", () => {
 		const errorText = "Something went wrong";
-		render(<CorporateContentPage error={errorText} />);
+		render(<CorporateContent error={errorText} />);
 
 		expect(screen.getByText(errorText)).toBeInTheDocument();
 		expect(mockStoryblokComponent).not.toHaveBeenCalled();
@@ -48,7 +48,7 @@ describe("CorporateContentPage", () => {
 		]);
 
 		render(
-			<CorporateContentPage
+			<CorporateContent
 				story={story}
 				breadcrumbs={breadcrumbs}
 				siblingPages={siblingPages}
@@ -82,7 +82,7 @@ describe("CorporateContentPage", () => {
 		mockGetAdditionalMetaTags.mockReturnValue(undefined);
 
 		render(
-			<CorporateContentPage
+			<CorporateContent
 				story={undefined}
 				breadcrumbs={[]}
 				siblingPages={[]}

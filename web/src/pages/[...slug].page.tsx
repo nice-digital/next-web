@@ -5,14 +5,14 @@ import { publicRuntimeConfig } from "@/config";
 import { SlugCatchAllProps } from "@/types/SBCorporateContent";
 import { getCorporateContentGssp } from "@/utils/getCorporateContentGssp";
 
-import { CorporateContentPage } from "../components/Storyblok/CorporateContentPage/CorporateContentPage";
+import { CorporateContent } from "../components/Storyblok/CorporateContent/CorporateContent";
 
 export default function SlugCatchAll(
 	props: SlugCatchAllProps
 ): React.ReactElement {
 	return (
 		<>
-			<CorporateContentPage {...props} />
+			<CorporateContent {...props} />
 		</>
 	);
 }
