@@ -172,6 +172,7 @@ exports[`BlogPostPage renders the page 1`] = `
               />
               <img
                 alt=""
+                class="imageMain "
                 data-nimg="1"
                 decoding="async"
                 height="0"
@@ -240,6 +241,7 @@ exports[`BlogPostPage renders the page 1`] = `
                   />
                   <img
                     alt=""
+                    class="imageMain "
                     data-nimg="1"
                     decoding="async"
                     height="0"
