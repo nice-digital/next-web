@@ -1,7 +1,7 @@
 import { GetServerSideProps, GetServerSidePropsResult } from "next";
 import React from "react";
 
-import CorporateContentPageTemplate from "@/components/Storyblok/CorporateContentPage/CorporateContentPage";
+import CorporateContentPageTemplate from "@/components/Storyblok/CorporateContentPage/CorporateContentpage";
 import { publicRuntimeConfig } from "@/config";
 import { SlugCatchAllProps } from "@/types/SBCorporateContent";
 import { getCorporateContentGssp } from "@/utils/getCorporateContentGssp";

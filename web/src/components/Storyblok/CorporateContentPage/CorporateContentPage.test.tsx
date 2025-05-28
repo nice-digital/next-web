@@ -3,7 +3,7 @@ import { render, screen } from "@testing-library/react";
 import { NextSeo } from "next-seo";
 import React from "react";
 
-import CorporateContentPageTemplate from "@/components/Storyblok/CorporateContentPage/CorporateContentPage";
+import CorporateContentPageTemplate from "@/components/Storyblok/CorporateContentPage/CorporateContentpage";
 import { logger } from "@/logger";
 import { getAdditionalMetaTags } from "@/utils/storyblok";
 
