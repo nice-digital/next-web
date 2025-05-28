@@ -1,65 +1,28 @@
-import { StoryblokComponent } from "@storyblok/react";
-import { NextSeo } from "next-seo";
-import React, { useMemo } from "react";
-
-import { ErrorPageContent } from "@/components/ErrorPageContent/ErrorPageContent";
-import { logger } from "@/logger";
-
-import { getAdditionalMetaTags } from "@/utils/storyblok";
+import React from "react";
 
 import { getCorporateContentGssp } from "@/utils/getCorporateContentGssp";
 import { SlugCatchAllProps } from "@/types/SBCorporateContent";
 import { publicRuntimeConfig } from "@/config";
-import { GetServerSideProps, GetServerSidePropsContext, GetServerSidePropsResult } from "next";
+import {
+	GetServerSideProps,
+	GetServerSidePropsContext,
+	GetServerSidePropsResult,
+} from "next";
+import CorporateContentPageTemplate from "@/components/Storyblok/CorporateContentPage/CorporateContentpage";
 
-export default function SlugCatchAll(
-	props: SlugCatchAllProps
-): React.ReactElement {
-	const story = "story" in props ? props.story : null;
-
-	const additionalMetaTags = useMemo(() => {
-		if (story) {
-			return getAdditionalMetaTags(story);
-		} else {
-			logger.error(
-				`Story is not available for additionalMetaTags in SlugCatchAllPage.`
-			);
-			return undefined;
-		}
-	}, [story]);
-
-	if ("error" in props) {
-		const { error } = props;
-		return <ErrorPageContent title="Error" heading={error} />;
-	}
-
-	const { story: storyData, breadcrumbs, siblingPages } = props;
-
-	const title = storyData.name;
-
+export default function SlugCatchAll(props: SlugCatchAllProps) {
 	return (
 		<>
-			<NextSeo
-				title={title}
-				openGraph={{ title: title }}
-				additionalMetaTags={additionalMetaTags}
-			></NextSeo>
-			<h1>Root catch all route</h1>
-			<StoryblokComponent
-				blok={storyData.content}
-				breadcrumbs={breadcrumbs}
-				siblingPages={siblingPages}
-			/>
+			<CorporateContentPageTemplate {...props} />
 		</>
 	);
 }
-
-interface RootCatchAllServerSidePropsContext extends GetServerSidePropsContext {}
+interface RootCatchAllServerSidePropsContext
+	extends GetServerSidePropsContext {}
 
 export const getServerSideProps: GetServerSideProps<SlugCatchAllProps> = async (
 	context: RootCatchAllServerSidePropsContext
 ): Promise<GetServerSidePropsResult<SlugCatchAllProps>> => {
-
 	// Bail out early unless this route is enabled for this environment
 	if (publicRuntimeConfig.storyblok.enableRootCatchAll.toString() !== "true") {
 		return {
@@ -67,6 +30,6 @@ export const getServerSideProps: GetServerSideProps<SlugCatchAllProps> = async (
 		};
 	}
 
-	const result = await getCorporateContentGssp()(context);
-    return result as GetServerSidePropsResult<SlugCatchAllProps>;
+	const result = await getCorporateContentGssp("root-catch-all")(context);
+	return result as GetServerSidePropsResult<SlugCatchAllProps>;
 };

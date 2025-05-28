@@ -23,10 +23,10 @@ export const getBasePathFromSlugAndUrl = (resolvedUrl: string, slug: string | un
 	return basePathParts.join("/").replace(/^\/|\/$/g, "");
 }
 
-export const getCorporateContentGssp = (): GetServerSideProps => {
+export const getCorporateContentGssp = (templateId = "unknown"): GetServerSideProps => {
 	return async function (context: GetServerSidePropsContext) {
 
-		const { query, params, resolvedUrl } = context;
+		const { query, params, res, resolvedUrl } = context;
 
 		const rawSlug = getSlugFromParams(params?.slug);
 		const basePath = getBasePathFromSlugAndUrl(resolvedUrl, rawSlug);
@@ -65,6 +65,13 @@ export const getCorporateContentGssp = (): GetServerSideProps => {
 			const siblingPages = [];
 
 			const component = storyResult.story?.content?.component;
+
+			if (component) {
+				res.setHeader("X-Page-Template-ID", `component:${component} template: ${templateId}`);
+			} else {
+				res.setHeader("X-Page-ID-Template-ID", `slug:${slug} template: ${templateId}`);
+			}
+
 			// TODO: Use the Storyblok Links API to build a map of sibling & optionally child pages
 			if (component === "infoPage") {
 				siblingPages.push(...["page1", "page2"]);
