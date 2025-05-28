@@ -1,4 +1,8 @@
-import { apiPlugin, SbReactComponentsMap, storyblokInit } from "@storyblok/react";
+import {
+	apiPlugin,
+	SbReactComponentsMap,
+	storyblokInit,
+} from "@storyblok/react";
 
 import { BasicCardGrid } from "@/components/Storyblok/BasicCardGrid/BasicCardGrid";
 import { Blockquote } from "@/components/Storyblok/Blockquote/Blockquote";

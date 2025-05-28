@@ -30,7 +30,14 @@ export default function CorporateContentPageTemplate(
 
 	const { story: storyData, breadcrumbs, siblingPages } = props;
 
-	const title = storyData.name;
+	if (!storyData || !storyData.content) {
+		logger.error("Missing storyData or content");
+		return (
+			<ErrorPageContent title="Not Found" heading="Story content not found." />
+		);
+	}
+
+	const title = storyData?.name;
 
 	return (
 		<>

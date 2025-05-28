@@ -1,4 +1,8 @@
-import { getCorporateContentGssp } from "@/utils/getCorporateContentGssp";
+import { logger } from "@/logger";
+import {
+	getCorporateContentGssp,
+	getBasePathFromSlugAndUrl,
+} from "@/utils/getCorporateContentGssp";
 import {
 	fetchStory,
 	getBreadcrumbs,
@@ -6,9 +10,8 @@ import {
 	getStoryVersionFromQuery,
 	GENERIC_ERROR_MESSAGE,
 } from "@/utils/storyblok";
-import { logger } from "@/logger";
+
 import type { GetServerSidePropsContext } from "next";
-import { getBasePathFromSlugAndUrl } from "./getCorporateContentGssp";
 
 jest.mock("@/utils/storyblok");
 jest.mock("@/logger");
@@ -63,8 +66,39 @@ describe("getCorporateContentGssp", () => {
 		expect(result).toEqual({ notFound: true });
 	});
 
-	it.todo("returns notFound if both basePath and rawSlug are empty");
-	it.todo("returns notFound if params.slug is missing");
+	it("returns notFound if both basePath and rawSlug are empty", async () => {
+		mockGetSlugFromParams.mockReturnValue("");
+		mockGetStoryVersionFromQuery.mockReturnValue("draft");
+		mockFetchStory.mockResolvedValue({ notFound: true });
+
+		const context = {
+			...makeContext([]),
+			resolvedUrl: "/",
+		} as GetServerSidePropsContext;
+
+		const handler = getCorporateContentGssp(templateId);
+		const result = await handler(context);
+
+		expect(result).toEqual({ notFound: true });
+	});
+
+	it("returns notFound if params.slug is missing", async () => {
+		mockGetSlugFromParams.mockReturnValue(undefined);
+		mockGetStoryVersionFromQuery.mockReturnValue("draft");
+		mockFetchStory.mockResolvedValue({ notFound: true });
+
+		const context = {
+			params: {},
+			query: {},
+			resolvedUrl: "/something",
+			res: { setHeader: jest.fn() },
+		} as unknown as GetServerSidePropsContext;
+
+		const handler = getCorporateContentGssp(templateId);
+		const result = await handler(context);
+
+		expect(result).toEqual({ notFound: true });
+	});
 
 	it("sets correct headers when component is present", async () => {
 		mockGetSlugFromParams.mockReturnValue("info");
@@ -107,6 +141,13 @@ describe("getCorporateContentGssp", () => {
 			"X-Page-ID-Template-ID",
 			"slug: about template: test-template"
 		);
+
+		expect(result).toMatchObject({
+			props: expect.objectContaining({
+				// breadcrumbs: expect.any(Array),
+				breadcrumbs: ["breadcrumb"],
+			}),
+		});
 	});
 
 	it("returns generic error if fetch fails", async () => {
@@ -208,12 +249,19 @@ describe("getBasePathFromSlugAndUrl", () => {
 		expect(getBasePathFromSlugAndUrl("/corporate/about", "about")).toBe(
 			"corporate"
 		);
-		expect(getBasePathFromSlugAndUrl("/segment1/segment2/segment3", "segment2/segment3")).toBe("segment1");
+		expect(
+			getBasePathFromSlugAndUrl(
+				"/segment1/segment2/segment3",
+				"segment2/segment3"
+			)
+		).toBe("segment1");
 	});
 
 	it("returns normalized path when slug is undefined", () => {
 		expect(getBasePathFromSlugAndUrl("/about/", undefined)).toBe("about");
-		expect(getBasePathFromSlugAndUrl("/segment1/segment2/", undefined)).toBe("segment1/segment2");
+		expect(getBasePathFromSlugAndUrl("/segment1/segment2/", undefined)).toBe(
+			"segment1/segment2"
+		);
 	});
 
 	it("handles root path", () => {

@@ -1,4 +1,4 @@
-import CorporateContentPageTemplate from "@/components/Storyblok/CorporateContentPage/CorporateContentpage";
+import CorporateContentPageTemplate from "@/components/Storyblok/CorporateContentPage/CorporateContentPage";
 import { SlugCatchAllProps } from "@/types/SBCorporateContent";
 import { getCorporateContentGssp } from "@/utils/getCorporateContentGssp";
 
