@@ -1,7 +1,7 @@
 import { GetServerSideProps, GetServerSidePropsResult } from "next";
 import React from "react";
 
-import CorporateContentPageTemplate from "@/components/Storyblok/CorporateContentPage/CorporateContentPage";
+import CorporateContentPage from "@/components/Storyblok/CorporateContentPage/CorporateContentPage";
 import { publicRuntimeConfig } from "@/config";
 import { SlugCatchAllProps } from "@/types/SBCorporateContent";
 import { getCorporateContentGssp } from "@/utils/getCorporateContentGssp";
@@ -11,7 +11,7 @@ export default function SlugCatchAll(
 ): React.ReactElement {
 	return (
 		<>
-			<CorporateContentPageTemplate {...props} />
+			<CorporateContentPage {...props} />
 		</>
 	);
 }

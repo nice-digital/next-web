@@ -7,9 +7,7 @@ import { logger } from "@/logger";
 import { SlugCatchAllProps } from "@/types/SBCorporateContent";
 import { getAdditionalMetaTags } from "@/utils/storyblok";
 
-export default function CorporateContentPageTemplate(
-	props: SlugCatchAllProps
-): React.ReactElement {
+const CorporateContentPage = (props: SlugCatchAllProps): React.ReactElement => {
 	const story = "story" in props ? props.story : null;
 
 	const additionalMetaTags = useMemo(() => {
@@ -46,7 +44,8 @@ export default function CorporateContentPageTemplate(
 					siblingPages={siblingPages}
 				/>
 			)}
-			;
 		</>
 	);
-}
+};
+
+export default CorporateContentPage;

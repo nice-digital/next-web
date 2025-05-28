@@ -3,10 +3,9 @@ import { render, screen } from "@testing-library/react";
 import { NextSeo } from "next-seo";
 import React from "react";
 
+import CorporateContentPage from "@/components/Storyblok/CorporateContentPage/CorporateContentPage";
 import { logger } from "@/logger";
 import { getAdditionalMetaTags } from "@/utils/storyblok";
-
-import CorporateContentPageTemplate from "./CorporateContentPage";
 
 jest.mock("@/utils/storyblok");
 jest.mock("@/logger");
@@ -22,14 +21,14 @@ const mockLoggerError = logger.error as jest.Mock;
 const mockStoryblokComponent = StoryblokComponent as unknown as jest.Mock;
 const mockNextSeo = NextSeo as jest.Mock;
 
-describe("CorporateContentPageTemplate", () => {
+describe("CorporateContentPage", () => {
 	beforeEach(() => {
 		jest.clearAllMocks();
 	});
 
 	it("renders error content if error prop is present", () => {
 		const errorText = "Something went wrong";
-		render(<CorporateContentPageTemplate error={errorText} />);
+		render(<CorporateContentPage error={errorText} />);
 
 		expect(screen.getByText(errorText)).toBeInTheDocument();
 		expect(mockStoryblokComponent).not.toHaveBeenCalled();
@@ -48,7 +47,7 @@ describe("CorporateContentPageTemplate", () => {
 		]);
 
 		render(
-			<CorporateContentPageTemplate
+			<CorporateContentPage
 				story={story}
 				breadcrumbs={breadcrumbs}
 				siblingPages={siblingPages}
@@ -82,7 +81,7 @@ describe("CorporateContentPageTemplate", () => {
 		mockGetAdditionalMetaTags.mockReturnValue(undefined);
 
 		render(
-			<CorporateContentPageTemplate
+			<CorporateContentPage
 				story={undefined}
 				breadcrumbs={[]}
 				siblingPages={[]}

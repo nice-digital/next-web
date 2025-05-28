@@ -1,4 +1,4 @@
-import CorporateContentPageTemplate from "@/components/Storyblok/CorporateContentPage/CorporateContentPage";
+import CorporateContentPage from "@/components/Storyblok/CorporateContentPage/CorporateContentPage";
 import { SlugCatchAllProps } from "@/types/SBCorporateContent";
 import { getCorporateContentGssp } from "@/utils/getCorporateContentGssp";
 
@@ -7,7 +7,7 @@ export default function GetInvolvedContentPage(
 ): React.ReactElement {
 	return (
 		<>
-			<CorporateContentPageTemplate {...props} />
+			<CorporateContentPage {...props} />
 		</>
 	);
 }
