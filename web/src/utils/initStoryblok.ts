@@ -1,7 +1,4 @@
-import { apiPlugin, storyblokInit } from "@storyblok/react";
-
-import { publicRuntimeConfig } from "@/config";
-import { logger } from "@/logger";
+import { apiPlugin, SbReactComponentsMap, storyblokInit } from "@storyblok/react";
 
 import { BasicCardGrid } from "@/components/Storyblok/BasicCardGrid/BasicCardGrid";
 import { Blockquote } from "@/components/Storyblok/Blockquote/Blockquote";
@@ -25,52 +22,53 @@ import { StoryblokTable } from "@/components/Storyblok/StoryblokTable/StoryblokT
 import { StoryblokTestimonialFullWidth } from "@/components/Storyblok/StoryblokTestimonialFullWidth/StoryblokTestimonialFullWidth";
 import { StoryblokTestimonialGridItem } from "@/components/Storyblok/StoryblokTestimonialGridItem/StoryblokTestimonialGridItem";
 import { StoryblokYoutubeEmbed } from "@/components/Storyblok/StoryblokYoutubeEmbed/StoryblokYoutubeEmbed";
+import { publicRuntimeConfig } from "@/config";
+import { logger } from "@/logger";
 
 const commonComponents = {
-        cardGrid: BasicCardGrid,
-        metadata: Metadata,
-        pageHeader: StoryblokPageHeader,
-    };
+	cardGrid: BasicCardGrid,
+	metadata: Metadata,
+	pageHeader: StoryblokPageHeader,
+};
 
-    //TODO: add the rest of the components as we iterate through the page build
-    const categoryLandingPageComponents = {
-        categoryLandingPage: CategoryLandingPage,
-        hero: StoryblokHero,
-        actionBanner: StoryblokActionBannerFullWidth,
-        actionBannerDefault: StoryblokActionBannerDefault,
-        cardGridSection: CardGridSection,
-        cardListSection: CardListSection,
-        promoBox: PromoBox,
-        calloutCard: StoryblokCalloutCard,
-        calloutCardWithImage: StoryblokCalloutCard,
-        testimonialFullWidth: StoryblokTestimonialFullWidth,
-        testimonialGridItem: StoryblokTestimonialGridItem,
-    };
+//TODO: add the rest of the components as we iterate through the page build
+const categoryLandingPageComponents = {
+	categoryLandingPage: CategoryLandingPage,
+	hero: StoryblokHero,
+	actionBanner: StoryblokActionBannerFullWidth,
+	actionBannerDefault: StoryblokActionBannerDefault,
+	cardGridSection: CardGridSection,
+	cardListSection: CardListSection,
+	promoBox: PromoBox,
+	calloutCard: StoryblokCalloutCard,
+	calloutCardWithImage: StoryblokCalloutCard,
+	testimonialFullWidth: StoryblokTestimonialFullWidth,
+	testimonialGridItem: StoryblokTestimonialGridItem,
+};
 
-    const infoPageComponents = {
-        accordion: StoryblokAccordion,
-        accordionGroup: StoryblokAccordionGroup,
-        hero: StoryblokHero,
-        iframe: StoryblokIframe,
-        infoPage: InfoPage,
-        nestedRichText: NestedRichText,
-        quote: Blockquote,
-        youtubeEmbed: StoryblokYoutubeEmbed,
-        actionBannerDefault: StoryblokActionBannerDefault,
-        nestedTable: StoryblokTable,
-    };
+const infoPageComponents = {
+	accordion: StoryblokAccordion,
+	accordionGroup: StoryblokAccordionGroup,
+	hero: StoryblokHero,
+	iframe: StoryblokIframe,
+	infoPage: InfoPage,
+	nestedRichText: NestedRichText,
+	quote: Blockquote,
+	youtubeEmbed: StoryblokYoutubeEmbed,
+	actionBannerDefault: StoryblokActionBannerDefault,
+	nestedTable: StoryblokTable,
+};
 
-	const categoryNavigationPageComponents = {
-		categoryNavigation: CategoryNavigation
-	}
+const categoryNavigationPageComponents = {
+	categoryNavigation: CategoryNavigation,
+};
 
-	const allComponents = {
-		...commonComponents,
-		...infoPageComponents,
-		...categoryLandingPageComponents,
-		...categoryNavigationPageComponents
-	}
-
+export const allComponents: SbReactComponentsMap = {
+	...commonComponents,
+	...infoPageComponents,
+	...categoryLandingPageComponents,
+	...categoryNavigationPageComponents,
+};
 
 // Init connection to Storyblok
 export const initStoryblok = (): void => {

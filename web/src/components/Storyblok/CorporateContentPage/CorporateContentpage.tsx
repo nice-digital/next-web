@@ -1,21 +1,15 @@
-import {
-	StoryblokComponent,
-} from "@storyblok/react";
+import { StoryblokComponent } from "@storyblok/react";
 import { NextSeo } from "next-seo";
 import React, { useMemo } from "react";
 
-import { logger } from "@/logger";
-import {
-	getAdditionalMetaTags,
-} from "@/utils/storyblok";
-
-import { SlugCatchAllProps } from "@/types/SBCorporateContent";
 import { ErrorPageContent } from "@/components/ErrorPageContent/ErrorPageContent";
+import { logger } from "@/logger";
+import { SlugCatchAllProps } from "@/types/SBCorporateContent";
+import { getAdditionalMetaTags } from "@/utils/storyblok";
 
 export default function CorporateContentPageTemplate(
 	props: SlugCatchAllProps
 ): React.ReactElement {
-
 	const story = "story" in props ? props.story : null;
 
 	const additionalMetaTags = useMemo(() => {
@@ -34,7 +28,7 @@ export default function CorporateContentPageTemplate(
 		return <ErrorPageContent title="Error" heading={error} />;
 	}
 
-    const { story: storyData, breadcrumbs, siblingPages } = props;
+	const { story: storyData, breadcrumbs, siblingPages } = props;
 
 	const title = storyData.name;
 

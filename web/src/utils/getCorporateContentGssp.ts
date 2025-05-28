@@ -13,7 +13,11 @@ import {
 
 import type { GetServerSidePropsContext, GetServerSideProps } from "next";
 
-export const getBasePathFromSlugAndUrl = (resolvedUrl: string, slug: string | undefined): string => {
+export const getBasePathFromSlugAndUrl = (
+	resolvedUrl: string,
+	slug: string | undefined
+): string => {
+	//TODO check normalisation work from NXT-543 to see if part of this can be a shared utility
 	const raw = resolvedUrl.split("?")[0].replace(/\/+$/, ""); // strip trailing slashes
 
 	if (!slug) return raw.replace(/^\/|\/$/g, "");
@@ -21,11 +25,14 @@ export const getBasePathFromSlugAndUrl = (resolvedUrl: string, slug: string | un
 	const slugParts = slug.split("/");
 	const basePathParts = raw.split("/").slice(0, -slugParts.length);
 	return basePathParts.join("/").replace(/^\/|\/$/g, "");
-}
+};
 
-export const getCorporateContentGssp = (templateId = "unknown"): GetServerSideProps => {
+export const getCorporateContentGssp = <
+	T extends Record<string, unknown> = Record<string, unknown>
+>(
+	templateId = "unknown"
+): GetServerSideProps<T> => {
 	return async function (context: GetServerSidePropsContext) {
-
 		const { query, params, res, resolvedUrl } = context;
 
 		const rawSlug = getSlugFromParams(params?.slug);
@@ -67,9 +74,15 @@ export const getCorporateContentGssp = (templateId = "unknown"): GetServerSidePr
 			const component = storyResult.story?.content?.component;
 
 			if (component) {
-				res.setHeader("X-Page-Template-ID", `component:${component} template: ${templateId}`);
+				res.setHeader(
+					"X-Page-Template-ID",
+					`component: ${component} template: ${templateId}`
+				);
 			} else {
-				res.setHeader("X-Page-ID-Template-ID", `slug:${slug} template: ${templateId}`);
+				res.setHeader(
+					"X-Page-ID-Template-ID",
+					`slug: ${slug} template: ${templateId}`
+				);
 			}
 
 			// TODO: Use the Storyblok Links API to build a map of sibling & optionally child pages
@@ -83,7 +96,7 @@ export const getCorporateContentGssp = (templateId = "unknown"): GetServerSidePr
 					breadcrumbs,
 					siblingPages,
 					component,
-				},
+				} as unknown as T,
 			};
 
 			return result;
@@ -98,8 +111,8 @@ export const getCorporateContentGssp = (templateId = "unknown"): GetServerSidePr
 			return {
 				props: {
 					error: GENERIC_ERROR_MESSAGE,
-				},
+				} as unknown as T,
 			};
 		}
 	};
-}
+};

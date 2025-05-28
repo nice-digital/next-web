@@ -1,27 +1,27 @@
-import React from "react";
-
-import { getCorporateContentGssp } from "@/utils/getCorporateContentGssp";
-import { SlugCatchAllProps } from "@/types/SBCorporateContent";
-import { publicRuntimeConfig } from "@/config";
 import {
 	GetServerSideProps,
 	GetServerSidePropsContext,
 	GetServerSidePropsResult,
 } from "next";
-import CorporateContentPageTemplate from "@/components/Storyblok/CorporateContentPage/CorporateContentpage";
+import React from "react";
 
-export default function SlugCatchAll(props: SlugCatchAllProps) {
+import CorporateContentPageTemplate from "@/components/Storyblok/CorporateContentPage/CorporateContentpage";
+import { publicRuntimeConfig } from "@/config";
+import { SlugCatchAllProps } from "@/types/SBCorporateContent";
+import { getCorporateContentGssp } from "@/utils/getCorporateContentGssp";
+
+export default function SlugCatchAll(
+	props: SlugCatchAllProps
+): React.ReactElement {
 	return (
 		<>
 			<CorporateContentPageTemplate {...props} />
 		</>
 	);
 }
-interface RootCatchAllServerSidePropsContext
-	extends GetServerSidePropsContext {}
 
 export const getServerSideProps: GetServerSideProps<SlugCatchAllProps> = async (
-	context: RootCatchAllServerSidePropsContext
+	context
 ): Promise<GetServerSidePropsResult<SlugCatchAllProps>> => {
 	// Bail out early unless this route is enabled for this environment
 	if (publicRuntimeConfig.storyblok.enableRootCatchAll.toString() !== "true") {
@@ -30,6 +30,5 @@ export const getServerSideProps: GetServerSideProps<SlugCatchAllProps> = async (
 		};
 	}
 
-	const result = await getCorporateContentGssp("root-catch-all")(context);
-	return result as GetServerSidePropsResult<SlugCatchAllProps>;
+	return getCorporateContentGssp<SlugCatchAllProps>("root-catch-all")(context);
 };
