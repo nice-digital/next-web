@@ -30,13 +30,6 @@ export default function CorporateContentPageTemplate(
 
 	const { story: storyData, breadcrumbs, siblingPages } = props;
 
-	if (!storyData || !storyData.content) {
-		logger.error("Missing storyData or content");
-		return (
-			<ErrorPageContent title="Not Found" heading="Story content not found." />
-		);
-	}
-
 	const title = storyData?.name;
 
 	return (
@@ -46,11 +39,14 @@ export default function CorporateContentPageTemplate(
 				openGraph={{ title: title }}
 				additionalMetaTags={additionalMetaTags}
 			></NextSeo>
-			<StoryblokComponent
-				blok={storyData.content}
-				breadcrumbs={breadcrumbs}
-				siblingPages={siblingPages}
-			/>
+			{storyData?.content && (
+				<StoryblokComponent
+					blok={storyData.content}
+					breadcrumbs={breadcrumbs}
+					siblingPages={siblingPages}
+				/>
+			)}
+			;
 		</>
 	);
 }

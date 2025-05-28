@@ -94,7 +94,5 @@ describe("CorporateContentPageTemplate", () => {
 		);
 
 		expect(mockStoryblokComponent).not.toHaveBeenCalled();
-
-		expect(screen.getByText("Story content not found.")).toBeInTheDocument();
 	});
 });
