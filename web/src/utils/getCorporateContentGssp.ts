@@ -76,12 +76,12 @@ export const getCorporateContentGssp = <
 			if (component) {
 				res.setHeader(
 					"X-Page-Template-ID",
-					`component: ${component} template: ${templateId}`
+					`component: ${component}, template: ${templateId}`
 				);
 			} else {
 				res.setHeader(
 					"X-Page-ID-Template-ID",
-					`slug: ${slug} template: ${templateId}`
+					`slug: ${slug}, template: ${templateId}`
 				);
 			}
 

@@ -114,7 +114,7 @@ describe("getCorporateContentGssp", () => {
 
 		expect(context.res.setHeader).toHaveBeenCalledWith(
 			"X-Page-Template-ID",
-			"component: infoPage template: test-template"
+			"component: infoPage, template: test-template"
 		);
 		expect(result).toMatchObject({
 			props: expect.objectContaining({
@@ -139,7 +139,7 @@ describe("getCorporateContentGssp", () => {
 
 		expect(context.res.setHeader).toHaveBeenCalledWith(
 			"X-Page-ID-Template-ID",
-			"slug: about template: test-template"
+			"slug: about, template: test-template"
 		);
 
 		expect(result).toMatchObject({
@@ -239,7 +239,7 @@ describe("getCorporateContentGssp", () => {
 
 		expect(context.res.setHeader).toHaveBeenCalledWith(
 			"X-Page-ID-Template-ID",
-			"slug: empty template: test-template"
+			"slug: empty, template: test-template"
 		);
 	});
 });
