@@ -54,6 +54,7 @@ export const InfoPage = ({
 						) : (
 							blok.inPageNav && (
 								<div className={styles.inPageNav}>
+										<h3 className={styles.inPageNav__heading}>On This Page</h3>
 										<StoryblokRichText className={styles.inPageNav__content} content={blok.inPageNav} />
 								</div>
 							)

@@ -30,7 +30,10 @@
     margin-bottom: 0;
   }
 
-      order: 1;
+  &__heading {
+    @include typography.font-size(h4);
+    margin-top: 0;
+  }
 
   &__content {
     ul {
