@@ -73,17 +73,12 @@ export const getCorporateContentGssp = <
 
 			const component = storyResult.story?.content?.component;
 
-			if (component) {
-				res.setHeader(
-					"X-Page-Template-ID",
-					`component: ${component}, template: ${templateId}`
-				);
-			} else {
-				res.setHeader(
-					"X-Page-ID-Template-ID",
-					`slug: ${slug}, template: ${templateId}`
-				);
-			}
+			res.setHeader(
+				"X-Page-Template-ID",
+				component
+					? `component: ${component}, template: ${templateId}`
+					: `slug: ${slug}, template: ${templateId}`
+			);
 
 			// TODO: Use the Storyblok Links API to build a map of sibling & optionally child pages
 			if (component === "infoPage") {

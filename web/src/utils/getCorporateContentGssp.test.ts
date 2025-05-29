@@ -138,7 +138,7 @@ describe("getCorporateContentGssp", () => {
 		const result = await handler(context);
 
 		expect(context.res.setHeader).toHaveBeenCalledWith(
-			"X-Page-ID-Template-ID",
+			"X-Page-Template-ID",
 			"slug: about, template: test-template"
 		);
 
@@ -238,7 +238,7 @@ describe("getCorporateContentGssp", () => {
 		await handler(context);
 
 		expect(context.res.setHeader).toHaveBeenCalledWith(
-			"X-Page-ID-Template-ID",
+			"X-Page-Template-ID",
 			"slug: empty, template: test-template"
 		);
 	});
