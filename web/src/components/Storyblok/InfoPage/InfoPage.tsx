@@ -6,6 +6,7 @@ import { StackedNav, StackedNavLink } from "@nice-digital/nds-stacked-nav";
 import { StoryblokRichText } from "@/components/Storyblok/StoryblokRichText/StoryblokRichText";
 import { type Breadcrumb } from "@/types/Breadcrumb";
 import { type InfoPageStoryblok } from "@/types/storyblok";
+import { fieldHasValidContent } from "@/utils/storyblok";
 
 import styles from "./InfoPage.module.scss";
 
@@ -42,6 +43,7 @@ export const InfoPage = ({
 				className={blok.hideSectionNav === "true" ? styles["infoPage--reverse-order"] : undefined}
 			>
 				<GridItem cols={12} sm={3} className={styles.infoPageNavArea}>
+					{blok.hideSectionNav !== "true" && siblingPages && (siblingPages.length > 0) ? (
 							<StackedNav label="Label of parent section" elementType="h2">
 								{siblingPages.map((page, index) => {
 									return (
@@ -52,14 +54,16 @@ export const InfoPage = ({
 								})}
 							</StackedNav>
 						) : (
-							blok.inPageNav && (
-								<div className={styles.inPageNav}>
+							blok.inPageNav && fieldHasValidContent(blok.inPageNav) && (
+								<>
+									<div className={styles.inPageNav}>
 										<h3 className={styles.inPageNav__heading}>On This Page</h3>
 										<StoryblokRichText className={styles.inPageNav__content} content={blok.inPageNav} />
-								</div>
+									</div>
+								</>
 							)
 						)
-					) : null}
+					}
 				</GridItem>
 
 				<GridItem cols={12} sm={{ cols: 9 }} className={styles.infoPageContentArea}>
