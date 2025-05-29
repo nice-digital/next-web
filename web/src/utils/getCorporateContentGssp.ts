@@ -30,7 +30,7 @@ export const getBasePathFromSlugAndUrl = (
 export const getCorporateContentGssp = <
 	T extends Record<string, unknown> = Record<string, unknown>
 >(
-	templateId = "unknown"
+	templateId = "static-route-catch-all"
 ): GetServerSideProps<T> => {
 	return async function (context: GetServerSidePropsContext) {
 		const { query, params, res, resolvedUrl } = context;
