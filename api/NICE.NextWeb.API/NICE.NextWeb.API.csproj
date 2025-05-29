@@ -1,6 +1,11 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk.Web">
 
-  <PropertyGroup>
+	<PropertyGroup>
+		<AssemblyVersion>$(VersionNumber)</AssemblyVersion>
+		<InformationalVersion>$(VersionNumber)</InformationalVersion>
+	</PropertyGroup>
+
+	<PropertyGroup>
     <TargetFramework>net6.0</TargetFramework>
     <UserSecretsId>b5d07038-31e1-4d34-9f6c-5c29afce8651</UserSecretsId>
     <EnvironmentName>Production</EnvironmentName>
@@ -21,6 +26,7 @@
   </ItemGroup>
 
   <ItemGroup>
+    <Folder Include="Infrastructure\Ocelot\Handlers\" />
     <Folder Include="Views\Admin\" />
   </ItemGroup>
 

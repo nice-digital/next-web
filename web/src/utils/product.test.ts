@@ -66,6 +66,95 @@ describe("product utils", () => {
 			]);
 		});
 
+		it("should prepend overview link when there is no product summary but has supporting, endorsing bodies and logos", () => {
+			const chapterLinks = getChapterLinks(
+				{
+					id: "NG100",
+					title: "Test guidance",
+					productType: "NG",
+					summary: "",
+					contentPartsList: [
+						{
+							tableOfContents: [
+								{
+									chapterSlug: "chapter-1",
+									title: "Chapter 1",
+								},
+							],
+							type: "UploadAndConvertContentPart",
+						},
+					],
+					accreditationList: [
+						{
+							name: "National Institute for Health and Care Excellence (NICE)",
+							url: "https://www.nice.org.uk",
+							logo: {
+								url: "/organisation/NICEORG018/AccreditLogo/Normal",
+							},
+						},
+						{
+							name: "Royal College of Obstetricians and Gynaecologists",
+							url: "https://www.rcog.org.uk/",
+							logo: {
+								url: "/organisation/NICEORG019/AccreditLogo/Normal",
+							},
+						},
+					],
+					endorsementList: [
+						{
+							name: "Scottish Intercollegiate Guidelines Network (SIGN) ",
+							url: "https://www.sign.ac.uk",
+							logo: {
+								url: "",
+							},
+						},
+						{
+							name: "British Thoracic Society (BTS)",
+							url: "https://www.brit-thoracic.org.uk",
+							logo: {
+								url: "",
+							},
+						},
+						{
+							name: "Royal College of General Practitioners (RCGP)",
+							url: "https://www.rcgp.org.uk",
+							logo: {
+								url: "",
+							},
+						},
+					],
+					supportingList: [
+						{
+							name: "Association for Clinical Biochemistry and Laboratory Medicine",
+							url: "http://www.acb.org.uk/",
+							logo: {
+								url: "",
+							},
+						},
+						{
+							name: "British Infection Association",
+							url: "http://www.britishinfection.org/",
+							logo: {
+								url: "",
+							},
+						},
+					],
+				} as ProductDetail,
+				ProductGroup.Guidance
+			);
+
+			expect(chapterLinks).toStrictEqual([
+				{
+					title: "Overview",
+					url: "/guidance/ng100",
+				},
+				{
+					title: "Chapter 1",
+					url: "/guidance/ng100/chapter/chapter-1",
+				},
+			]);
+		});
+
 		it("should exclude chapter named overview", () => {
 			const chapterLinks = getChapterLinks(
 				{

@@ -7,45 +7,13 @@
           "Port": 443
         }
       ],
-      "DownstreamPathTemplate": "/v1/{everything}",
+      "DownstreamPathTemplate": "/v2/{everything}",
       "DownstreamScheme": "https",
       "UpstreamHttpMethod": [ "Get", "Post" ],
       "UpstreamPathTemplate": "/storyblok/{everything}",
       "FileCacheOptions": {
         "TtlSeconds": #{Ocelot.StoryblokTtlSeconds},
         "Region": "OcelotStoryblok"
-      }
-    },
-    {
-      "DownstreamHostAndPorts": [
-        {
-          "Host": "api.storyblok.com",
-          "Port": 443
-        }
-      ],
-      "DownstreamPathTemplate": "/v1/{everything}",
-      "DownstreamScheme": "https",
-      "UpstreamHttpMethod": [ "Get" ],
-      "UpstreamPathTemplate": "/storyblokv1/{everything}",
-      "FileCacheOptions": {
-        "TtlSeconds": #{Ocelot.StoryblokTtlSeconds},
-        "Region": "OcelotStoryblokv1"
-      }
-    },
-    {
-      "DownstreamHostAndPorts": [
-        {
-          "Host": "api.storyblok.com",
-          "Port": 443
-        }
-      ],
-      "DownstreamPathTemplate": "/v2/{everything}",
-      "DownstreamScheme": "https",
-      "UpstreamHttpMethod": [ "Get" ],
-      "UpstreamPathTemplate": "/storyblokv2/{everything}",
-      "FileCacheOptions": {
-        "TtlSeconds": #{Ocelot.StoryblokTtlSeconds},
-        "Region": "OcelotStoryblokv2"
       }
     },
     {

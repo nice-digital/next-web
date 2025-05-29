@@ -6,6 +6,7 @@ import { useRouter } from "next/router";
 import { GetServerSidePropsContext } from "next/types";
 
 import { logger } from "@/logger";
+import { mockCvValue } from "@/test-utils/storyblok-data";
 import MockStoryblokSuccessResponse from "@/test-utils/storyblok-news-articles-listing.json";
 import MockServerErrorResponse from "@/test-utils/storyblok-server-error-response.json";
 import { NewsStory } from "@/types/News";
@@ -39,7 +40,11 @@ describe("/news/in-depth/index.page", () => {
 		resultsPerPage: 6,
 		startsWith: "news/in-depth/",
 		query: {
-			upperOutOfBoundPagination: "30",
+			upperOutOfBoundPagination: Math.ceil(
+				MockStoryblokSuccessResponse.total /
+					MockStoryblokSuccessResponse.perPage +
+					1
+			),
 			lowerOutOfBoundPagination: "-1",
 			pageAt1: "1",
 		},
@@ -180,6 +185,10 @@ describe("/news/in-depth/index.page", () => {
 				storyblokUtils,
 				"validateRouteParams"
 			);
+
+			jest
+				.spyOn(storyblokUtils, "fetchCacheVersion")
+				.mockResolvedValue(mockCvValue);
 
 			getStoryblokApi().get = jest
 				.fn()
