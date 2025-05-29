@@ -1,0 +1,23 @@
+.imageRichText {
+  container-name: imageRichText;
+  container-type: inline-size;
+
+  &__mobileOnly {
+    display: block;
+  }
+
+  &__desktopOnly {
+    display: none;
+    margin-top: 1rem;
+  }
+
+  @container imageRichText (min-width: 600px) {
+    &__mobileOnly {
+      display: none;
+    }
+
+    &__desktopOnly {
+      display: block;
+    }
+  }
+}

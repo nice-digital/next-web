@@ -47,6 +47,7 @@ import {
 } from "@/utils/storyblok";
 
 import type { GetServerSidePropsContext } from "next";
+import { StoryblokImageRichText } from "@/components/Storyblok/StoryblokImageRichText/StoryblokImageRichText";
 
 export type SlugCatchAllSuccessProps = {
 	story: ISbStoryData<InfoPageStoryblok | CategoryNavigationStoryblok>;
@@ -121,6 +122,7 @@ export default function SlugCatchAll(
 		nestedTable: StoryblokTable,
 		quote: Blockquote,
 		youtubeEmbed: StoryblokYoutubeEmbed,
+		imageRichText:StoryblokImageRichText
 	};
 
 	const components = {
