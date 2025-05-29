@@ -188,6 +188,15 @@ export interface CalloutCardStoryblok {
   [k: string]: any;
 }
 
+export interface CalloutCardDemoStoryblok {
+  heading: string;
+  body: string;
+  link?: MultilinkStoryblok;
+  component: "calloutCardDemo";
+  _uid: string;
+  [k: string]: any;
+}
+
 export interface CalloutCardWithImageStoryblok {
   heading: string;
   body: string;
@@ -340,9 +349,11 @@ export interface GridStoryblok {
     | BlogPostStoryblok
     | ButtonLinkStoryblok
     | CalloutCardStoryblok
+    | CalloutCardDemoStoryblok
     | CalloutCardWithImageStoryblok
     | CardStoryblok
     | CardGridStoryblok
+    | CardGridRowStoryblok
     | CardGridRowBasicStoryblok
     | CardGridRowCalloutStoryblok
     | CardGridRowCalloutWithImageStoryblok
@@ -365,8 +376,10 @@ export interface GridStoryblok {
     | ImageEmbedStoryblok
     | ImageOrVideoStoryblok
     | InDepthArticleStoryblok
+    | InfogramEmbedStoryblok
     | InfoPageStoryblok
     | MarkdownStoryblok
+    | MenuLinkStoryblok
     | MetadataStoryblok
     | NestedRichTextStoryblok
     | NestedTableStoryblok
@@ -514,6 +527,13 @@ export interface InDepthArticleStoryblok {
   [k: string]: any;
 }
 
+export interface InfogramEmbedStoryblok {
+  embedCode: string;
+  component: "infogramEmbed";
+  _uid: string;
+  [k: string]: any;
+}
+
 export interface InfoPageStoryblok {
   header: (PageHeaderStoryblok | HeroStoryblok)[];
   metadata?: MetadataStoryblok[];
@@ -526,6 +546,14 @@ export interface InfoPageStoryblok {
 export interface MarkdownStoryblok {
   content: string;
   component: "markdown";
+  _uid: string;
+  [k: string]: any;
+}
+
+export interface MenuLinkStoryblok {
+  link?: Exclude<MultilinkStoryblok, {linktype?: "email"} | {linktype?: "asset"}>;
+  name?: string;
+  component: "menu_link";
   _uid: string;
   [k: string]: any;
 }
@@ -599,9 +627,11 @@ export interface PageStoryblok {
     | BlogPostStoryblok
     | ButtonLinkStoryblok
     | CalloutCardStoryblok
+    | CalloutCardDemoStoryblok
     | CalloutCardWithImageStoryblok
     | CardStoryblok
     | CardGridStoryblok
+    | CardGridRowStoryblok
     | CardGridRowBasicStoryblok
     | CardGridRowCalloutStoryblok
     | CardGridRowCalloutWithImageStoryblok
@@ -624,8 +654,10 @@ export interface PageStoryblok {
     | ImageEmbedStoryblok
     | ImageOrVideoStoryblok
     | InDepthArticleStoryblok
+    | InfogramEmbedStoryblok
     | InfoPageStoryblok
     | MarkdownStoryblok
+    | MenuLinkStoryblok
     | MetadataStoryblok
     | NestedRichTextStoryblok
     | NestedTableStoryblok
