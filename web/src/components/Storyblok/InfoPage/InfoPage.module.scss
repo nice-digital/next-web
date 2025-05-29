@@ -1,16 +1,60 @@
+@use '@nice-digital/nds-core/scss/media-queries';
+@use '@nice-digital/nds-core/scss/spacing';
+@use '@nice-digital/nds-core/scss/typography';
+@use '@nice-digital/nds-core/scss/utils';
+
 /* stylelint-disable selector-max-compound-selectors */
-.content > div > div > h2 { // Bit ugly, but deals with rich text headings getting nudged down the page
+.content > div > div > h2 {
+  // Bit ugly, but deals with rich text headings getting nudged down the page
   margin-top: 0;
 }
 
 .infoPage {
-  &--reverse-order {
-    .infoPageContentArea {
-      order: 2;
+  @include media-queries.mq($from: sm) {
+    &--reverse-order {
+      .infoPageContentArea {
+        order: 1;
+      }
+
+      .infoPageNavArea {
+        order: 2;
+      }
+    }
+  }
+}
+
+.inPageNav {
+  margin-bottom: utils.rem(spacing.$large);
+
+  @include media-queries.mq($from: sm) {
+    margin-bottom: 0;
+  }
+
+      order: 1;
+
+  &__content {
+    ul {
+      list-style: disc;
+      margin: 0;
+      padding-left: utils.rem(spacing.$medium + spacing.$xx-small);
+
+      ul {
+        list-style: circle;
+      }
+
+      li:last-of-type > p {
+        margin-bottom: 0;
+      }
     }
 
-    .infoPageNavArea {
-      order: 1;
+    a {
+      &:visited {
+        color: colours.$link;
+      }
+
+      &:focus {
+        background: none;
+      }
     }
   }
 }

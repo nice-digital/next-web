@@ -41,9 +41,7 @@ export const InfoPage = ({
 				gutter="loose"
 				className={blok.hideSectionNav === "true" ? styles["infoPage--reverse-order"] : undefined}
 			>
-				<GridItem cols={12} sm={3} className="infoPageNavArea">
-					{blok.hideSectionNav !== "true" ? (
-						siblingPages && siblingPages.length > 0 ? (
+				<GridItem cols={12} sm={3} className={styles.infoPageNavArea}>
 							<StackedNav label="Label of parent section" elementType="h2">
 								{siblingPages.map((page, index) => {
 									return (
@@ -56,14 +54,14 @@ export const InfoPage = ({
 						) : (
 							blok.inPageNav && (
 								<div className={styles.inPageNav}>
-									<StoryblokRichText content={blok.inPageNav} />
+										<StoryblokRichText className={styles.inPageNav__content} content={blok.inPageNav} />
 								</div>
 							)
 						)
 					) : null}
 				</GridItem>
 
-				<GridItem cols={12} sm={{ cols: 9 }} className="infoPageContentArea">
+				<GridItem cols={12} sm={{ cols: 9 }} className={styles.infoPageContentArea}>
 					<div className={styles.content}>
 						<StoryblokRichText content={blok.content} />
 					</div>
