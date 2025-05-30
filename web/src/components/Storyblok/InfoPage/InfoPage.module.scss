@@ -4,32 +4,30 @@
 @use '@nice-digital/nds-core/scss/typography';
 @use '@nice-digital/nds-core/scss/utils';
 
-/* stylelint-disable selector-max-compound-selectors */
-.content > div > div > h2 {
-  // Bit ugly, but deals with rich text headings getting nudged down the page
-  margin-top: 0;
-}
-// stylelint-disable selector-class-pattern
-.page-header {
-  @include media-queries.mq($until: sm) {
-    margin-bottom: 0; //TODO: why is this not being applied??
-  }
-}
-
 .infoPage {
-  &NavArea {
+  $self: &;
+  // page overrides for DS components
+
+  /* stylelint-disable-next-line selector-class-pattern */
+  :global(.page-header) {
     @include media-queries.mq($until: sm) {
-      margin-top: utils.rem(spacing.$large);
+      margin-bottom: utils.rem(spacing.$large);
     }
+  }
+
+  /* stylelint-disable-next-line selector-max-compound-selectors */
+  .content > div > div > h2 {
+    // Bit ugly, but deals with rich text headings getting nudged down the page
+    margin-top: 0;
   }
 
   @include media-queries.mq($from: sm) {
     &--reverse-order {
-      .infoPageContentArea {
+      #{ $self }__contentArea {
         order: 1;
       }
 
-      .infoPageNavArea {
+      #{ $self }__navArea {
         order: 2;
       }
     }

@@ -23,7 +23,7 @@ export const InfoPage = ({
 	siblingPages,
 }: InfoPageBlokProps): React.ReactElement => {
 	return (
-		<>
+		<div className={styles.infoPage}>
 			{blok.metadata &&
 				blok.metadata.length > 0 &&
 				blok.metadata?.map((nestedBlok) => (
@@ -43,7 +43,7 @@ export const InfoPage = ({
 				gutter="loose"
 				className={blok.hideSectionNav === "true" ? styles["infoPage--reverse-order"] : undefined}
 			>
-				<GridItem cols={12} sm={3} className={styles.infoPageNavArea}>
+				<GridItem cols={12} sm={3} className={styles.infoPage__navArea}>
 					{blok.hideSectionNav !== "true" && siblingPages && (siblingPages.length > 0) ? (
 							<StackedNav label="Label of parent section" elementType="h2">
 								{siblingPages.map((page, index) => {
@@ -60,12 +60,12 @@ export const InfoPage = ({
 					}
 				</GridItem>
 
-				<GridItem cols={12} sm={{ cols: 9 }} className={styles.infoPageContentArea}>
+				<GridItem cols={12} sm={{ cols: 9 }} className={styles.infoPage__contentArea}>
 					<div className={styles.content}>
 						<StoryblokRichText content={blok.content} />
 					</div>
 				</GridItem>
 			</Grid>
-		</>
+		</div>
 	);
 };
