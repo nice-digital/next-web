@@ -2,9 +2,9 @@ import { StoryblokComponent } from "@storyblok/react";
 
 import { Grid, GridItem } from "@nice-digital/nds-grid";
 import { InPageNav } from "@nice-digital/nds-in-page-nav";
-import { StackedNav, StackedNavLink } from "@nice-digital/nds-stacked-nav";
-
 import { StoryblokRichText } from "@/components/Storyblok/StoryblokRichText/StoryblokRichText";
+import { StoryblokSectionNav } from "@/components/Storyblok/StoryblokSectionNav/StoryblokSectionNav";
+import { type ExtendedSBLink } from "@/components/Storyblok/StoryblokSectionNav/utils/Utils";
 import { type Breadcrumb } from "@/types/Breadcrumb";
 import { type InfoPageStoryblok } from "@/types/storyblok";
 import { fieldHasValidContent } from "@/utils/storyblok";
@@ -14,13 +14,15 @@ import styles from "./InfoPage.module.scss";
 interface InfoPageBlokProps {
 	blok: InfoPageStoryblok;
 	breadcrumbs?: Breadcrumb[];
-	siblingPages?: string[];
+	tree: ExtendedSBLink[];
+	slug: string;
 }
 
 export const InfoPage = ({
 	blok,
 	breadcrumbs,
-	siblingPages,
+	tree,
+	slug,
 }: InfoPageBlokProps): React.ReactElement => {
 	return (
 		<div className={styles.infoPage}>
@@ -44,17 +46,9 @@ export const InfoPage = ({
 				className={blok.hideSectionNav === "true" ? styles["infoPage--reverse-order"] : undefined}
 			>
 				{(blok.hideSectionNav !== "true" || blok.hideInPageNav !== "true") && (
-					<GridItem cols={12} sm={3} className={styles.infoPage__navArea}>
-						{blok.hideSectionNav !== "true" && siblingPages && (siblingPages.length > 0) ? (
-								<StackedNav label="Label of parent section" elementType="h2">
-									{siblingPages.map((page, index) => {
-										return (
-											<StackedNavLink destination="/" key={index}>
-												{page}
-											</StackedNavLink>
-										);
-									})}
-								</StackedNav>
+					<GridItem cols={12} sm={{ cols: 4 }} md={{ cols: 3 }} className={styles.infoPage__navArea}>
+						{blok.hideSectionNav !== "true" ? (
+								<StoryblokSectionNav tree={tree} slug={slug} />
 							) : (
 								<InPageNav headingsSelector={"h2"}/>
 							)
@@ -62,7 +56,7 @@ export const InfoPage = ({
 					</GridItem>
 				)}
 
-				<GridItem cols={12} sm={{ cols: 9 }} className={styles.infoPage__contentArea}>
+				<GridItem cols={12} sm={{ cols: 8 }} md={{ cols: 9 }} className={styles.infoPage__contentArea}>
 					<div className={styles.content}>
 						<StoryblokRichText content={blok.content} />
 					</div>

@@ -342,6 +342,13 @@ export interface CardGridSectionStoryblok {
   [k: string]: any;
 }
 
+export interface CardListStoryblok {
+  cards: CardListSectionItemStoryblok[];
+  component: "cardList";
+  _uid: string;
+  [k: string]: any;
+}
+
 export interface CardListSectionStoryblok {
   heading?: string;
   headingLevel: string;
@@ -429,6 +436,7 @@ export interface GridStoryblok {
     | CardGridRowCalloutWithImageStoryblok
     | CardGridRowTestimonialsStoryblok
     | CardGridSectionStoryblok
+    | CardListStoryblok
     | CardListSectionStoryblok
     | CardListSectionItemStoryblok
     | CategoryLandingPageStoryblok
@@ -726,6 +734,7 @@ export interface PageStoryblok {
     | CardGridRowCalloutWithImageStoryblok
     | CardGridRowTestimonialsStoryblok
     | CardGridSectionStoryblok
+    | CardListStoryblok
     | CardListSectionStoryblok
     | CardListSectionItemStoryblok
     | CategoryLandingPageStoryblok

@@ -310,20 +310,17 @@ export const fetchStories = async <T>(
 
 // Fetch an array of links from the links endpoint
 export const fetchLinks = async (
-	version: StoryVersion,
-	startsWith?: string
+	sbParams: ISbStoriesParams
 ): Promise<SBLink[]> => {
-	const cacheVersion = await fetchCacheVersion();
+	// const {version = "published", per_page = 1000} = sbParams;
 	const storyblokApi = getStoryblokApi();
-
-	const sbParams: ISbStoriesParams = {
-		version: version || "published",
+	const cacheVersion = await fetchCacheVersion();
+	const finalParams = {
+		version: "published",
 		cv: cacheVersion,
+		per_page: 1000,
+		...sbParams,
 	};
-
-	if (startsWith) {
-		sbParams.starts_with = startsWith;
-	}
 
 	let result = null;
 
@@ -332,7 +329,10 @@ export const fetchLinks = async (
 	);
 
 	try {
-		const links: SBLink[] = await storyblokApi.getAll("cdn/links", sbParams);
+		const links: SBLink[] = await storyblokApi.getAll(
+			"cdn/links",
+			finalParams as ISbStoriesParams
+		);
 		result = links;
 	} catch (e) {
 		const result = JSON.parse(e as string) as ISbError;
@@ -355,10 +355,11 @@ export const getBreadcrumbs = async (
 	includeCurrentPage?: boolean
 ): Promise<Breadcrumb[]> => {
 	const topSlug = slug.substring(0, slug.indexOf("/")); // Slug of highest level parent
-	const linksResult = await fetchLinks(
-		(version as StoryVersion) || "published",
-		topSlug
-	);
+	const sbParams: ISbStoriesParams = {
+		version: (version as StoryVersion) || "published",
+		starts_with: topSlug,
+	};
+	const linksResult = await fetchLinks(sbParams);
 
 	const breadcrumbs: Breadcrumb[] = [];
 
