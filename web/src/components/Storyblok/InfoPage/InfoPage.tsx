@@ -1,6 +1,7 @@
 import { StoryblokComponent } from "@storyblok/react";
 
 import { Grid, GridItem } from "@nice-digital/nds-grid";
+import { InPageNav } from "@nice-digital/nds-in-page-nav";
 import { StackedNav, StackedNavLink } from "@nice-digital/nds-stacked-nav";
 
 import { StoryblokRichText } from "@/components/Storyblok/StoryblokRichText/StoryblokRichText";
@@ -54,14 +55,7 @@ export const InfoPage = ({
 								})}
 							</StackedNav>
 						) : (
-							blok.inPageNav && fieldHasValidContent(blok.inPageNav) && (
-								<>
-									<div className={styles.inPageNav}>
-										<h3 className={styles.inPageNav__heading}>On This Page</h3>
-										<StoryblokRichText className={styles.inPageNav__content} content={blok.inPageNav} />
-									</div>
-								</>
-							)
+							<InPageNav />
 						)
 					}
 				</GridItem>
