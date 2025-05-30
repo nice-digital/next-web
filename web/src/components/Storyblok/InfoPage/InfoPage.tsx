@@ -11,7 +11,6 @@ import {
 } from "@/components/Storyblok/StoryblokSectionNav/utils/Utils";
 import { type Breadcrumb } from "@/types/Breadcrumb";
 import { type InfoPageStoryblok } from "@/types/storyblok";
-import { fieldHasValidContent } from "@/utils/storyblok";
 
 import styles from "./InfoPage.module.scss";
 
