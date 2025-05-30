@@ -520,12 +520,12 @@ export interface ImageOrVideoStoryblok {
 }
 
 export interface ImageRichTextStoryblok {
-  Image?: AssetStoryblok;
-  Content?: RichtextStoryblok;
-  imageSize?: "" | "small" | "medium" | "large";
-  Swappable?: boolean;
-  smallScreenImage?: AssetStoryblok;
+  imagePosition?: "left" | "right";
+  imageSize?: "small" | "medium" | "large";
   hideImage?: boolean;
+  image: AssetStoryblok;
+  smallScreenImage?: AssetStoryblok;
+  content: RichtextStoryblok;
   component: "imageRichText";
   _uid: string;
   [k: string]: any;

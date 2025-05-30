@@ -11,6 +11,9 @@
     margin-top: 1rem;
   }
 
+  &__hideImageOnMobile {
+    display: block;
+  }
   @container imageRichText (min-width: 600px) {
     &__mobileOnly {
       display: none;
@@ -18,6 +21,11 @@
 
     &__desktopOnly {
       display: block;
+    }
+  }
+  @container imageRichText (max-width: 600px) {
+    &__hideImageOnMobile {
+      display: none;
     }
   }
 }

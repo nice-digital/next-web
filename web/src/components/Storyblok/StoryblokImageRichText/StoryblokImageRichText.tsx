@@ -1,5 +1,4 @@
-import React, { useRef, useEffect, useState } from "react";
-import Link from "next/link";
+import React from "react";
 import { Grid, GridItem, type Columns } from "@nice-digital/nds-grid";
 import { ImageRichTextStoryblok } from "@/types/storyblok";
 import styles from "./StoryblokImageRichText.module.scss";
@@ -13,32 +12,15 @@ interface StoryblokImageRichTextProps {
 export const StoryblokImageRichText: React.FC<StoryblokImageRichTextProps> = ({
 	blok,
 }) => {
-	// Accept a 'blok' prop and use its values if present
 	const {
 		image,
 		content,
 		imageSize = "medium",
-		imagePosition = "right", // changed from swappable to imagePosition
+		imagePosition = "right",
 		hideImage = false,
 		smallScreenImage,
 		_uid,
 	} = blok;
-
-	const containerRef = useRef<HTMLDivElement>(null);
-	const [isAbove600, setIsAbove600] = useState(true);
-
-	useEffect(() => {
-		if (!containerRef.current) return;
-		const observer = new window.ResizeObserver((entries) => {
-			for (let entry of entries) {
-				const width = entry.contentRect.width;
-				setIsAbove600(width >= 600);
-			}
-		});
-		observer.observe(containerRef.current);
-		return () => observer.disconnect();
-	}, []);
-
 	// Map imageSize to column spans
 	const sizeMap: Record<string, { img: Columns; text: Columns }> = {
 		small: { img: 3 as Columns, text: 9 as Columns },
@@ -59,7 +41,7 @@ export const StoryblokImageRichText: React.FC<StoryblokImageRichTextProps> = ({
 				className={styles.imageRichText__desktopOnly}
 			/>
 		) : (
-			image
+			null
 		);
 
 	// Render image for mobile/tablet (<600px)
@@ -82,64 +64,66 @@ export const StoryblokImageRichText: React.FC<StoryblokImageRichTextProps> = ({
 						  )
 						: null
 			  )
-			: content;
-
-	// Only hide image if hideImage is true AND container is below 600px
-	const shouldHideImage = hideImage && !isAbove600;
-
+			: null;
 	return (
-		<div ref={containerRef} className={styles.imageRichText}>
-			<Grid key={_uid} data-testid="image-richtext">
-				{imageFirst ? (
-					<>
-						{!shouldHideImage && (
-							<GridItem cols={12} md={imgCols}>
-								{smallScreenImage && smallScreenImage.filename ? (
-									<>
-										<span className={styles.imageRichText__mobileOnly}>
-											{mobileImg}
-										</span>
-										<span className={styles.imageRichText__desktopOnly}>
-											{desktopImg}
-										</span>
-									</>
-								) : (
-									<span className={styles.imageRichText__desktopOnly}>
-										{desktopImg}
-									</span>
-								)}
-							</GridItem>
+		<Grid
+			key={_uid}
+			data-testid="image-richtext"
+			className={styles.imageRichText}
+		>
+			{imageFirst ? (
+				<>
+					<GridItem
+						cols={12}
+						md={imgCols}
+						className={hideImage ? styles.imageRichText__hideImageOnMobile : ""}
+					>
+						{smallScreenImage && smallScreenImage.filename ? (
+							<>
+								<span className={styles.imageRichText__mobileOnly}>
+									{mobileImg}
+								</span>
+								<span className={styles.imageRichText__desktopOnly}>
+									{desktopImg}
+								</span>
+							</>
+						) : (
+							<span className={styles.imageRichText__desktopOnly}>
+								{desktopImg}
+							</span>
 						)}
-						<GridItem cols={12} md={textCols}>
-							{richContent}
-						</GridItem>
-					</>
-				) : (
-					<>
-						<GridItem cols={12} md={textCols}>
-							{richContent}
-						</GridItem>
-						{!shouldHideImage && (
-							<GridItem cols={12} md={imgCols}>
-								{smallScreenImage && smallScreenImage.filename ? (
-									<>
-										<span className={styles.imageRichText__mobileOnly}>
-											{mobileImg}
-										</span>
-										<span className={styles.imageRichText__desktopOnly}>
-											{desktopImg}
-										</span>
-									</>
-								) : (
-									<span className={styles.imageRichText__desktopOnly}>
-										{desktopImg}
-									</span>
-								)}
-							</GridItem>
+					</GridItem>
+					<GridItem cols={12} md={textCols}>
+						{richContent}
+					</GridItem>
+				</>
+			) : (
+				<>
+					<GridItem cols={12} md={textCols}>
+						{richContent}
+					</GridItem>
+					<GridItem
+						cols={12}
+						md={imgCols}
+						className={hideImage ? styles.imageRichText__hideImageOnMobile : ""}
+					>
+						{smallScreenImage && smallScreenImage.filename ? (
+							<>
+								<span className={styles.imageRichText__mobileOnly}>
+									{mobileImg}
+								</span>
+								<span className={styles.imageRichText__desktopOnly}>
+									{desktopImg}
+								</span>
+							</>
+						) : (
+							<span className={styles.imageRichText__desktopOnly}>
+								{desktopImg}
+							</span>
 						)}
-					</>
-				)}
-			</Grid>
-		</div>
+					</GridItem>
+				</>
+			)}
+		</Grid>
 	);
 };
