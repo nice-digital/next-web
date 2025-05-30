@@ -1,8 +1,12 @@
 import React from "react";
+
 import { Grid, GridItem, type Columns } from "@nice-digital/nds-grid";
+
 import { ImageRichTextStoryblok } from "@/types/storyblok";
-import styles from "./StoryblokImageRichText.module.scss";
+
 import { StoryblokImage } from "../StoryblokImage/StoryblokImage";
+
+import styles from "./StoryblokImageRichText.module.scss";
 
 interface StoryblokImageRichTextProps {
 	blok: ImageRichTextStoryblok;
@@ -40,9 +44,7 @@ export const StoryblokImageRichText: React.FC<StoryblokImageRichTextProps> = ({
 				alt={image.alt || ""}
 				className={styles.imageRichText__desktopOnly}
 			/>
-		) : (
-			null
-		);
+		) : null;
 
 	// Render image for mobile/tablet (<600px)
 	const mobileImg =
@@ -53,18 +55,10 @@ export const StoryblokImageRichText: React.FC<StoryblokImageRichTextProps> = ({
 				className={styles.imageRichText__mobileOnly}
 			/>
 		) : null;
-
 	// Render rich text content if content is a Storyblok rich text object
-	const richContent =
-		content && content.content
-			? content.content.map((block: any, i: number) =>
-					block.content
-						? block.content.map((c: any, j: number) =>
-								c.text ? <p key={`${i}-${j}`}>{c.text}</p> : null
-						  )
-						: null
-			  )
-			: null;
+	const richContent = content?.content?.[0]?.content?.[0]?.text ? (
+		<p>{content.content[0].content[0].text}</p>
+	) : null;
 	return (
 		<Grid
 			key={_uid}
@@ -74,6 +68,7 @@ export const StoryblokImageRichText: React.FC<StoryblokImageRichTextProps> = ({
 			{imageFirst ? (
 				<>
 					<GridItem
+						data-testid="image-richtext-grid-item"
 						cols={12}
 						md={imgCols}
 						className={hideImage ? styles.imageRichText__hideImageOnMobile : ""}
@@ -93,16 +88,25 @@ export const StoryblokImageRichText: React.FC<StoryblokImageRichTextProps> = ({
 							</span>
 						)}
 					</GridItem>
-					<GridItem cols={12} md={textCols}>
+					<GridItem
+						cols={12}
+						md={textCols}
+						data-testid="image-richtext-grid-item"
+					>
 						{richContent}
 					</GridItem>
 				</>
 			) : (
 				<>
-					<GridItem cols={12} md={textCols}>
+					<GridItem
+						cols={12}
+						md={textCols}
+						data-testid="image-richtext-grid-item"
+					>
 						{richContent}
 					</GridItem>
 					<GridItem
+						data-testid="image-richtext-grid-item"
 						cols={12}
 						md={imgCols}
 						className={hideImage ? styles.imageRichText__hideImageOnMobile : ""}
