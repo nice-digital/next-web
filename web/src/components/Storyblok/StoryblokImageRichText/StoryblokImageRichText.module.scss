@@ -1,0 +1,36 @@
+@use '@nice-digital/nds-core/scss/media-queries';
+@use '@nice-digital/nds-core/scss/spacing';
+@use '@nice-digital/nds-core/scss/utils';
+@use '~/styles/spacing' as *;
+
+.imageRichText {
+  container-name: imageRichText;
+  container-type: inline-size;
+
+  &__mobileOnly {
+    display: block;
+  }
+
+  &__desktopOnly {
+    display: none;
+    margin-top: utils.rem(spacing.$medium);
+  }
+
+  &__hideImageOnMobile {
+    display: block;
+  }
+  @container imageRichText (min-width: #{media-queries.$sm}) {
+    &__mobileOnly {
+      display: none;
+    }
+
+    &__desktopOnly {
+      display: block;
+    }
+  }
+  @container imageRichText (max-width:#{media-queries.$sm}) {
+    &__hideImageOnMobile {
+      display: none;
+    }
+  }
+}
