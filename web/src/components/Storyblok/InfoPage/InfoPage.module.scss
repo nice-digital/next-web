@@ -1,3 +1,4 @@
+@use '@nice-digital/nds-core/scss/colours';
 @use '@nice-digital/nds-core/scss/media-queries';
 @use '@nice-digital/nds-core/scss/spacing';
 @use '@nice-digital/nds-core/scss/typography';
@@ -8,8 +9,20 @@
   // Bit ugly, but deals with rich text headings getting nudged down the page
   margin-top: 0;
 }
+// stylelint-disable selector-class-pattern
+.page-header {
+  @include media-queries.mq($until: sm) {
+    margin-bottom: 0; //TODO: why is this not being applied??
+  }
+}
 
 .infoPage {
+  &NavArea {
+    @include media-queries.mq($until: sm) {
+      margin-top: utils.rem(spacing.$large);
+    }
+  }
+
   @include media-queries.mq($from: sm) {
     &--reverse-order {
       .infoPageContentArea {
