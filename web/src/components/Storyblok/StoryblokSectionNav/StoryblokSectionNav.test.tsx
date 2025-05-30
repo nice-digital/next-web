@@ -3,6 +3,7 @@ import { render, screen } from "@testing-library/react";
 import mockData from "@/mockData/storyblok/sectionNavData.json";
 
 import { StoryblokSectionNav } from "./StoryblokSectionNav";
+import { sectionNavIsPopulated } from "./utils/Utils";
 
 describe("StoryblokSectionNav", () => {
 	it("should render the parent and child links correctly", () => {
@@ -68,6 +69,7 @@ describe("StoryblokSectionNav", () => {
 		console.log(link.outerHTML);
 		expect(link).toHaveAttribute("aria-current", "false");
 	});
+
 	it("should highlight the current  link based on the slug", () => {
 		render(
 			<StoryblokSectionNav tree={mockData.topLevelTree} slug={"contact-us"} />
@@ -75,5 +77,24 @@ describe("StoryblokSectionNav", () => {
 
 		const link = screen.getByRole("link", { name: /Contact us/i });
 		expect(link).toHaveAttribute("aria-current", "true");
+	});
+});
+
+describe("sectionNavIsNotEmpty", () => {
+	it("returns true for a non-empty array", () => {
+		const tree = mockData.tree;
+		expect(sectionNavIsPopulated(tree)).toBe(true);
+	});
+
+	it("returns false for an empty array", () => {
+		expect(sectionNavIsPopulated([])).toBe(false);
+	});
+
+	it("returns false for undefined", () => {
+		expect(sectionNavIsPopulated(undefined as any)).toBe(false);
+	});
+
+	it("returns false for null", () => {
+		expect(sectionNavIsPopulated(null as any)).toBe(false);
 	});
 });
