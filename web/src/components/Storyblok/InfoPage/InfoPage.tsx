@@ -43,22 +43,24 @@ export const InfoPage = ({
 				gutter="loose"
 				className={blok.hideSectionNav === "true" ? styles["infoPage--reverse-order"] : undefined}
 			>
-				<GridItem cols={12} sm={3} className={styles.infoPage__navArea}>
-					{blok.hideSectionNav !== "true" && siblingPages && (siblingPages.length > 0) ? (
-							<StackedNav label="Label of parent section" elementType="h2">
-								{siblingPages.map((page, index) => {
-									return (
-										<StackedNavLink destination="/" key={index}>
-											{page}
-										</StackedNavLink>
-									);
-								})}
-							</StackedNav>
-						) : (
-							<InPageNav />
-						)
-					}
-				</GridItem>
+				{(blok.hideSectionNav !== "true" || blok.hideInPageNav !== "true") && (
+					<GridItem cols={12} sm={3} className={styles.infoPage__navArea}>
+						{blok.hideSectionNav !== "true" && siblingPages && (siblingPages.length > 0) ? (
+								<StackedNav label="Label of parent section" elementType="h2">
+									{siblingPages.map((page, index) => {
+										return (
+											<StackedNavLink destination="/" key={index}>
+												{page}
+											</StackedNavLink>
+										);
+									})}
+								</StackedNav>
+							) : (
+								<InPageNav headingsSelector={"h2"}/>
+							)
+						}
+					</GridItem>
+				)}
 
 				<GridItem cols={12} sm={{ cols: 9 }} className={styles.infoPage__contentArea}>
 					<div className={styles.content}>
