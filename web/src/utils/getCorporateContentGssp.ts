@@ -1,3 +1,7 @@
+import {
+	buildTree,
+	type ExtendedSBLink,
+} from "@/components/Storyblok/StoryblokSectionNav/utils/Utils";
 import { logger } from "@/logger";
 import {
 	InfoPageStoryblok,
@@ -69,9 +73,16 @@ export const getCorporateContentGssp = <
 				return { notFound: true };
 			}
 
-			const siblingPages = [];
+			const parentID = storyResult.story?.parent_id as number;
+			const isRootPage = storyResult.story?.is_startpage;
 
 			const component = storyResult.story?.content?.component;
+			let tree: ExtendedSBLink[] = [];
+
+			if (component === "infoPage") {
+				tree = await buildTree(parentID, slug, isRootPage);
+				// TODO: move out of catchall page; would need API route as GSSP is not allowed in components whilst using pages router
+			}
 
 			res.setHeader(
 				"X-Page-Template-ID",
@@ -80,17 +91,13 @@ export const getCorporateContentGssp = <
 					: `slug: ${slug}, template: ${templateId}`
 			);
 
-			// TODO: Use the Storyblok Links API to build a map of sibling & optionally child pages
-			if (component === "infoPage") {
-				siblingPages.push(...["page1", "page2"]);
-			}
-
 			const result = {
 				props: {
 					...storyResult,
 					breadcrumbs,
-					siblingPages,
 					component,
+					tree,
+					slug,
 				} as unknown as T,
 			};
 

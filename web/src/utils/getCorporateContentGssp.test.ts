@@ -1,3 +1,4 @@
+import * as SectionNavUtils from "@/components/Storyblok/StoryblokSectionNav/utils/Utils";
 import { logger } from "@/logger";
 import {
 	getCorporateContentGssp,
@@ -16,11 +17,17 @@ import type { GetServerSidePropsContext } from "next";
 jest.mock("@/utils/storyblok");
 jest.mock("@/logger");
 
+jest.mock("@/components/Storyblok/StoryblokSectionNav/utils/Utils", () => ({
+	buildTree: jest.fn(),
+}));
+
 const mockFetchStory = fetchStory as jest.Mock;
 const mockGetBreadcrumbs = getBreadcrumbs as jest.Mock;
 const mockGetSlugFromParams = getSlugFromParams as jest.Mock;
 const mockGetStoryVersionFromQuery = getStoryVersionFromQuery as jest.Mock;
 const mockLoggerError = logger.error as jest.Mock;
+
+const mockBuildTree = SectionNavUtils.buildTree as jest.Mock;
 
 describe("getCorporateContentGssp", () => {
 	const templateId = "test-template";
@@ -107,6 +114,7 @@ describe("getCorporateContentGssp", () => {
 			story: { content: { component: "infoPage" }, name: "Info Page" },
 		});
 		mockGetBreadcrumbs.mockResolvedValue(["breadcrumb"]);
+		mockBuildTree.mockResolvedValue([]);
 
 		const context = makeContext();
 		const handler = getCorporateContentGssp(templateId);
@@ -119,7 +127,6 @@ describe("getCorporateContentGssp", () => {
 		expect(result).toMatchObject({
 			props: expect.objectContaining({
 				component: "infoPage",
-				siblingPages: ["page1", "page2"],
 				breadcrumbs: ["breadcrumb"],
 			}),
 		});
@@ -200,7 +207,6 @@ describe("getCorporateContentGssp", () => {
 				siblingPages?: unknown[];
 				component?: string;
 			};
-			expect(props.siblingPages).toEqual([]);
 			expect(props.component).toBe("genericPage");
 		} else {
 			throw new Error("Expected result to have props");

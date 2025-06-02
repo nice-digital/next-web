@@ -28,7 +28,7 @@ export const CorporateContent = (
 		return <ErrorPageContent title="Error" heading={error} />;
 	}
 
-	const { story: storyData, breadcrumbs, siblingPages } = props;
+	const { story: storyData, breadcrumbs, tree, slug } = props;
 
 	const title = storyData?.name;
 
@@ -43,7 +43,8 @@ export const CorporateContent = (
 				<StoryblokComponent
 					blok={storyData.content}
 					breadcrumbs={breadcrumbs}
-					siblingPages={siblingPages}
+					tree={tree}
+					slug={slug}
 				/>
 			)}
 		</>

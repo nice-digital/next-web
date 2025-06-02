@@ -3,10 +3,11 @@ import { render, screen } from "@testing-library/react";
 import { NextSeo } from "next-seo";
 import React from "react";
 
+import { type ExtendedSBLink } from "@/components/Storyblok/StoryblokSectionNav/utils/Utils";
 import { logger } from "@/logger";
 import { getAdditionalMetaTags } from "@/utils/storyblok";
 
-import { CorporateContent } from "./CorporateContent";
+import { CorporateContent } from "./CorporateContentPage";
 
 jest.mock("@/utils/storyblok");
 jest.mock("@/logger");
@@ -23,6 +24,24 @@ const mockStoryblokComponent = StoryblokComponent as unknown as jest.Mock;
 const mockNextSeo = NextSeo as jest.Mock;
 
 describe("CorporateContent", () => {
+	const mockTree: ExtendedSBLink[] = [
+		{
+			id: 1,
+			slug: "test-slug",
+			name: "Test Name",
+			is_folder: false,
+			parent_id: 0,
+			published: true,
+			position: 0,
+			uuid: "test-uuid",
+			is_startpage: false,
+			real_path: "/test-slug",
+			path: null,
+		},
+	];
+
+	const slug = "test-story";
+
 	beforeEach(() => {
 		jest.clearAllMocks();
 	});
@@ -41,7 +60,6 @@ describe("CorporateContent", () => {
 			content: { _uid: "123", component: "testComponent" },
 		};
 		const breadcrumbs = ["crumb1"];
-		const siblingPages = ["sib1", "sib2"];
 
 		mockGetAdditionalMetaTags.mockReturnValue([
 			{ name: "custom-meta", content: "value" },
@@ -51,8 +69,9 @@ describe("CorporateContent", () => {
 			<CorporateContent
 				story={story}
 				breadcrumbs={breadcrumbs}
-				siblingPages={siblingPages}
 				component="testComponent"
+				slug={slug}
+				tree={mockTree}
 			/>
 		);
 
@@ -72,7 +91,6 @@ describe("CorporateContent", () => {
 			expect.objectContaining({
 				blok: story.content,
 				breadcrumbs,
-				siblingPages,
 			}),
 			expect.anything()
 		);
@@ -85,8 +103,9 @@ describe("CorporateContent", () => {
 			<CorporateContent
 				story={undefined}
 				breadcrumbs={[]}
-				siblingPages={[]}
 				component="testComponent"
+				slug={slug}
+				tree={mockTree}
 			/>
 		);
 
