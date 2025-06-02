@@ -76,12 +76,9 @@ describe("StoryblokImageRichText", () => {
 		const gridItems = screen.getAllByTestId("image-richtext-grid-item");
 		expect(gridItems.length).toBeGreaterThan(1);
 		const secondGridItem = gridItems[1];
-
-		// Get the images inside the second grid item
 		const desktopImg = within(secondGridItem).getByAltText("Desktop Image");
 		const mobileImg = within(secondGridItem).getByAltText("Mobile Image");
 
-		// Check that their parentElement (the span) has the correct class
 		expect(desktopImg).toHaveClass("imageRichText__desktopOnly");
 		expect(mobileImg).toHaveClass("imageRichText__mobileOnly");
 	});
