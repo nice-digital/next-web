@@ -195,13 +195,6 @@ exports[`InterventionalProceduresNotificationForm should match snapshot 1`] = `
       data-component="grid-item"
       data-g="12 md:4 lg:4"
     >
-      <p>
-        <a
-          href="/about/what-we-do/our-programmes/nice-guidance/nice-interventional-procedures-guidance/notify"
-        >
-          About our notification process
-        </a>
-      </p>
       <div
         class="panel"
         data-component="panel"
