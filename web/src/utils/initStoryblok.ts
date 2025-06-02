@@ -8,6 +8,7 @@ import { BasicCardGrid } from "@/components/Storyblok/BasicCardGrid/BasicCardGri
 import { Blockquote } from "@/components/Storyblok/Blockquote/Blockquote";
 import { CardGridSection } from "@/components/Storyblok/CardGridSection/CardGridSection";
 import { CardListSection } from "@/components/Storyblok/CardListSection/CardListSection";
+import { CardList } from "@/components/Storyblok/CardList/CardList";
 import { CategoryLandingPage } from "@/components/Storyblok/CategoryLandingPage/CategoryLandingPage";
 import { CategoryNavigation } from "@/components/Storyblok/CategoryNavigation/CategoryNavigation";
 import { InfoPage } from "@/components/Storyblok/InfoPage/InfoPage";
@@ -54,6 +55,7 @@ const categoryLandingPageComponents = {
 const infoPageComponents = {
 	accordion: StoryblokAccordion,
 	accordionGroup: StoryblokAccordionGroup,
+	cardList: CardList,
 	hero: StoryblokHero,
 	iframe: StoryblokIframe,
 	infoPage: InfoPage,
