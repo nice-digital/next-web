@@ -4,6 +4,7 @@ import { Card, type CardHeadingLinkProps } from "@nice-digital/nds-card";
 
 import { CardListStoryblok } from "@/types/storyblok";
 import { resolveStoryblokLink } from "@/utils/storyblok";
+import styles from "./CardList.module.scss";
 
 export interface CardListProps {
 	blok: CardListStoryblok;
@@ -31,6 +32,7 @@ export const CardList: React.FC<CardListProps> = ({ blok }: CardListProps) => {
 						headingText={heading}
 						link={cardLink || undefined}
 						key={_uid}
+						className={styles.cardListWidth}
 					>
 						{body}
 					</Card>
