@@ -5,8 +5,7 @@ import { StoryblokImageRichText } from "./StoryblokImageRichText";
 
 const blok = {
 	image: {
-		filename:
-			"https://a.storyblok.com/f/292509/805x603/292d0d5de8/nhs-team.JPG",
+		filename: "https://a.storyblok.com/nhs-team.JPG",
 		alt: "Desktop Image",
 		fieldtype: "asset" as const,
 		id: 1,
@@ -24,8 +23,7 @@ const blok = {
 	imagePosition: "left" as const,
 	hideImage: false,
 	smallScreenImage: {
-		filename:
-			"https://a.storyblok.com/f/292509/805x603/292d0d5de8/nhs-team.JPG",
+		filename: "https://a.storyblok.com/nhs-team.JPG",
 		alt: "Mobile Image",
 		fieldtype: "asset" as const,
 		id: 2,
