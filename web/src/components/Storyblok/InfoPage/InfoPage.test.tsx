@@ -11,12 +11,24 @@ import {
 	type InfoPageBlokProps
 } from "./InfoPage";
 
+// test mocking the StoryblokComponent
+jest.mock("@storyblok/react", () => ({
+	// eslint-disable-next-line @typescript-eslint/no-explicit-any
+	StoryblokComponent: ({ blok }: { blok: any }) => {
+		return (
+			<div data-testid={`storyblok-component-${blok.component}`}>
+				{blok.component}
+			</div>
+		);
+	},
+}));
+
 const mockPageHeaderSectionNavData = sampleDataPageHeaderSectionNav.story.content;
 const mockHeroInPageNavData = sampleDataHeroInPageNav.story.content;
 const mockNoNavData = sampleDataNoNav.story.content;
 
 const mockPropsWithPageHeaderAndSectionNav: InfoPageBlokProps = {
-	blok: sampleDataPageHeaderSectionNav.story.content as InfoPageStoryblok,
+    blok: mockPageHeaderSectionNavData as InfoPageStoryblok,
 	breadcrumbs: sampleDataPageHeaderSectionNav.breadcrumbs,
 	tree: sampleDataPageHeaderSectionNav.tree,
 	slug: sampleDataPageHeaderSectionNav.slug
@@ -36,14 +48,17 @@ const mockPropsWithNoNav: InfoPageBlokProps = {
 	slug: sampleDataNoNav.slug
 };
 
-// test mocking the StoryblokComponent
-jest.mock("@storyblok/react", () => ({
-	// eslint-disable-next-line @typescript-eslint/no-explicit-any
-	StoryblokComponent: ({ blok }: { blok: any }) => {
-		return (
-			<div data-testid={`storyblok-component-${blok.component}`}>
-				{blok.component}
-			</div>
-		);
-	},
-}));
+describe("InfoPage", () => {
+    it("renders all metadata StoryblokComponents if present", () => {
+        render(<InfoPage {...mockPropsWithPageHeaderAndSectionNav} />);
+		expect(
+			screen.getByText(mockPageHeaderSectionNavData.metadata[0].component)
+		).toBeInTheDocument();
+    });
+
+    it("renders all header StoryblokComponents if present", () => {
+        render(<InfoPage {...mockPropsWithPageHeaderAndSectionNav} />);
+        expect(
+			screen.getByText(mockPageHeaderSectionNavData.header[0].component)
+		).toBeInTheDocument();
+    });
