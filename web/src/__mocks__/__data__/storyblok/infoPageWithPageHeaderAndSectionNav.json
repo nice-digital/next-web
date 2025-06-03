@@ -2,8 +2,8 @@
   "story": {
     "name": "Info Page Default (Page Header & Section Nav)",
     "created_at": "2025-06-02T14:14:39.077Z",
-    "published_at": "2025-06-02T14:18:56.770Z",
-    "updated_at": "2025-06-02T14:18:56.786Z",
+    "published_at": "2025-06-03T11:33:56.914Z",
+    "updated_at": "2025-06-03T11:33:57.003Z",
     "id": 681214534,
     "uuid": "0c903941-8f52-4395-8bb1-37d77233c3f3",
     "content": {
@@ -784,7 +784,14 @@
           }
         ]
       },
-      "metadata": [],
+      "metadata": [
+        {
+          "_uid": "05322a00-3408-4cdd-bffd-00b201c36ed7",
+          "creator": "",
+          "component": "metadata",
+          "description": ""
+        }
+      ],
       "component": "infoPage",
       "hideInPageNav": "false",
       "hideSectionNav": "false"
@@ -830,6 +837,20 @@
       "is_startpage": false,
       "position": -30,
       "real_path": "/unit-test-data/info-page-hero-in-page-nav",
+      "childLinks": []
+    },
+    {
+      "id": 681214604,
+      "uuid": "7bdf4e3a-7953-4b81-bdb7-93d91dbc74d2",
+      "slug": "unit-test-data/info-page-no-nav",
+      "path": null,
+      "parent_id": 659520607,
+      "name": "Info Page No Nav",
+      "is_folder": false,
+      "published": true,
+      "is_startpage": false,
+      "position": -20,
+      "real_path": "/unit-test-data/info-page-no-nav",
       "childLinks": []
     },
     {

@@ -2,8 +2,8 @@
   "story": {
     "name": "Info Page No Nav",
     "created_at": "2025-06-02T14:20:22.519Z",
-    "published_at": null,
-    "updated_at": "2025-06-02T15:21:54.947Z",
+    "published_at": "2025-06-03T11:32:58.364Z",
+    "updated_at": "2025-06-03T11:32:58.385Z",
     "id": 681214604,
     "uuid": "7bdf4e3a-7953-4b81-bdb7-93d91dbc74d2",
     "content": {
@@ -16,8 +16,7 @@
           "title": "Guidance executive terms of reference and standing orders",
           "summary": "",
           "component": "pageHeader",
-          "description": "",
-          "_editable": "<!--#storyblok#{\"name\": \"pageHeader\", \"space\": \"292509\", \"uid\": \"689560f8-a0b3-45b2-97d1-3d074ff3f3a2\", \"id\": \"681214604\"}-->"
+          "description": ""
         }
       ],
       "content": {
@@ -865,11 +864,17 @@
           }
         ]
       },
-      "metadata": [],
+      "metadata": [
+        {
+          "_uid": "614f6adc-c4c0-495d-9f16-7e672030e8b6",
+          "creator": "",
+          "component": "metadata",
+          "description": ""
+        }
+      ],
       "component": "infoPage",
       "hideInPageNav": "true",
-      "hideSectionNav": "true",
-      "_editable": "<!--#storyblok#{\"name\": \"infoPage\", \"space\": \"292509\", \"uid\": \"fe60ab80-1abb-4af1-8e5a-1947c27c6a9c\", \"id\": \"681214604\"}-->"
+      "hideSectionNav": "true"
     },
     "slug": "info-page-no-nav",
     "full_slug": "unit-test-data/info-page-no-nav",
@@ -880,7 +885,7 @@
     "parent_id": 659520607,
     "meta_data": null,
     "group_id": "3545fe98-541d-45cd-b0f6-fe5c6fc3afd3",
-    "first_published_at": null,
+    "first_published_at": "2025-06-03T11:32:12.703Z",
     "release_id": null,
     "lang": "default",
     "path": null,
@@ -912,6 +917,20 @@
       "is_startpage": false,
       "position": -30,
       "real_path": "/unit-test-data/info-page-hero-in-page-nav",
+      "childLinks": []
+    },
+    {
+      "id": 681214604,
+      "uuid": "7bdf4e3a-7953-4b81-bdb7-93d91dbc74d2",
+      "slug": "unit-test-data/info-page-no-nav",
+      "path": null,
+      "parent_id": 659520607,
+      "name": "Info Page No Nav",
+      "is_folder": false,
+      "published": true,
+      "is_startpage": false,
+      "position": -20,
+      "real_path": "/unit-test-data/info-page-no-nav",
       "childLinks": []
     },
     {
