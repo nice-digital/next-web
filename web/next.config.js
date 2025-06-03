@@ -120,13 +120,13 @@ const nextConfig = {
 		return [
 			{
 				source:
-					"/:productRoot(indicators|guidance|hub)/:statusSlug(indevelopment|discontinued|awaiting-development|topic-selection)/:path*",
+					"/:productRoot(indicators|guidance)/:statusSlug(indevelopment|discontinued|awaiting-development|topic-selection)/:path*",
 				destination:
 					"/indicators/indevelopment/:path*?productRoot=:productRoot&statusSlug=:statusSlug",
 			},
 			{
 				source:
-					"/:productRoot(indicators|guidance|advice|process|corporate|hub)/:path*",
+					"/:productRoot(indicators|guidance|advice|process|corporate)/:path*",
 				destination: "/indicators/:path*?productRoot=:productRoot",
 			},
 			{
@@ -2163,31 +2163,6 @@ const nextConfig = {
 					"/standards-and-indicators/qofindicators/the-percentage-of-patients-with-cvd-in-whom-the-last-recorded-ldl-cholesterol-level-is-2-0-mmol-per-litre-or-less-or-last-recorded-non-hdl-cholesterol-level-is-2-6-mmol-per-litre-or-less-if-ldl-cholesterol-is-not-recorded",
 				destination:
 					"/indicators/IND268-cardiovascular-disease-prevention-cholesterol-treatment-target-secondary-prevention",
-				permanent: true,
-			},
-			{
-				source: "/hub/published",
-				destination: "/guidance/indevelopment?ngt=NICE+guidelines",
-				permanent: true,
-			},
-			{
-				source: "/hub/inconsultation",
-				destination: "/guidance/indevelopment?ngt=NICE+guidelines",
-				permanent: true,
-			},
-			{
-				source: "/hub/indevelopment",
-				destination: "/guidance/indevelopment?ngt=NICE+guidelines",
-				permanent: true,
-			},
-			{
-				source: "/hub/awaiting-development",
-				destination: "/guidance/indevelopment?ngt=NICE+guidelines",
-				permanent: true,
-			},
-			{
-				source: "/hub/topic-selection",
-				destination: "/guidance/indevelopment?ngt=NICE+guidelines",
 				permanent: true,
 			},
 			{
