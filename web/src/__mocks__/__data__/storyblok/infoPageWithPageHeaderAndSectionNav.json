@@ -805,5 +805,89 @@
     "alternates": [],
     "default_full_slug": null,
     "translated_slugs": null
-  }
+  },
+  "breadcrumbs": [
+    {
+      "title": "Home",
+      "path": "/"
+    },
+    {
+      "title": "Unit Test Data (do not modify)",
+      "path": "/unit-test-data"
+    }
+  ],
+  "component": "infoPage",
+  "tree": [
+    {
+      "id": 681214537,
+      "uuid": "e5cfb560-56ac-45a6-9dec-b421837e7692",
+      "slug": "unit-test-data/info-page-hero-in-page-nav",
+      "path": null,
+      "parent_id": 659520607,
+      "name": "Info Page with Hero and In Page Nav",
+      "is_folder": false,
+      "published": true,
+      "is_startpage": false,
+      "position": -30,
+      "real_path": "/unit-test-data/info-page-hero-in-page-nav",
+      "childLinks": []
+    },
+    {
+      "id": 560615999,
+      "uuid": "be70c55b-d349-41d4-b655-43f4ff83cab5",
+      "slug": "unit-test-data/test-category-landing",
+      "path": null,
+      "parent_id": 659520607,
+      "name": "category landing",
+      "is_folder": false,
+      "published": true,
+      "is_startpage": false,
+      "position": 0,
+      "real_path": "/unit-test-data/test-category-landing",
+      "childLinks": []
+    },
+    {
+      "id": 681214534,
+      "uuid": "0c903941-8f52-4395-8bb1-37d77233c3f3",
+      "slug": "unit-test-data/info-page-default",
+      "path": null,
+      "parent_id": 659520607,
+      "name": "Info Page Default (Page Header & Section Nav)",
+      "is_folder": false,
+      "published": true,
+      "is_startpage": false,
+      "position": 10,
+      "real_path": "/unit-test-data/info-page-default",
+      "childLinks": []
+    },
+    {
+      "id": 560642123,
+      "uuid": "d6f8ad6b-57e8-4c87-852e-8d4b443307ed",
+      "slug": "unit-test-data/category-landing-with-hero",
+      "path": "",
+      "parent_id": 659520607,
+      "name": "Category landing with hero",
+      "is_folder": false,
+      "published": true,
+      "is_startpage": false,
+      "position": 20,
+      "real_path": "/unit-test-data/category-landing-with-hero",
+      "childLinks": []
+    },
+    {
+      "id": 531694452,
+      "uuid": "e9a479e6-8db1-4b61-bed0-6daaa23aca98",
+      "slug": "unit-test-data/test-page",
+      "path": null,
+      "parent_id": 659520607,
+      "name": "Test page",
+      "is_folder": false,
+      "published": true,
+      "is_startpage": false,
+      "position": 30,
+      "real_path": "/unit-test-data/test-page",
+      "childLinks": []
+    }
+  ],
+  "slug": "unit-test-data/info-page-default"
 }
