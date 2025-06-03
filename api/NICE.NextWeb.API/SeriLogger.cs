@@ -9,7 +9,7 @@ using System;
 namespace NICE.NextWeb.API
 {
     /// <summary>
-    /// This has been refactored for .NET Core 3.1 
+    /// This has been refactored for .NET Core 6
     /// 
     /// It now just sets up a LoggerConfiguration object based off appsettings.json (and secrets.json on dev machines)
     /// </summary>
@@ -70,12 +70,11 @@ namespace NICE.NextWeb.API
             if (loggingSettings.UseFile)
             {
                 serilogConfiguration.WriteTo.RollingFile(serilogFormatter,
-                    serilogFilePath,
+                    loggingSettings.SerilogFilePath,
                     fileSizeLimitBytes: 5000000,
                     retainedFileCountLimit: 5,
                     flushToDiskInterval: TimeSpan.FromSeconds(20));
             }
-
             return serilogConfiguration;
         }
     }
