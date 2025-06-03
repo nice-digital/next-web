@@ -7,7 +7,7 @@ import { type ExtendedSBLink } from "@/components/Storyblok/StoryblokSectionNav/
 import { logger } from "@/logger";
 import { getAdditionalMetaTags } from "@/utils/storyblok";
 
-import { CorporateContent } from "./CorporateContentPage";
+import { CorporateContentPage } from "./CorporateContentPage";
 
 jest.mock("@/utils/storyblok");
 jest.mock("@/logger");
@@ -48,7 +48,7 @@ describe("CorporateContent", () => {
 
 	it("renders error content if error prop is present", () => {
 		const errorText = "Something went wrong";
-		render(<CorporateContent error={errorText} />);
+		render(<CorporateContentPage error={errorText} />);
 
 		expect(screen.getByText(errorText)).toBeInTheDocument();
 		expect(mockStoryblokComponent).not.toHaveBeenCalled();
@@ -66,7 +66,7 @@ describe("CorporateContent", () => {
 		]);
 
 		render(
-			<CorporateContent
+			<CorporateContentPage
 				story={story}
 				breadcrumbs={breadcrumbs}
 				component="testComponent"
@@ -100,7 +100,7 @@ describe("CorporateContent", () => {
 		mockGetAdditionalMetaTags.mockReturnValue(undefined);
 
 		render(
-			<CorporateContent
+			<CorporateContentPage
 				story={undefined}
 				breadcrumbs={[]}
 				component="testComponent"

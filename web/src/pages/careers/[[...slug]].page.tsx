@@ -1,4 +1,4 @@
-import { CorporateContent } from "@/components/Storyblok/CorporateContentPage/CorporateContentPage";
+import { CorporateContentPage } from "@/components/Storyblok/CorporateContentPage/CorporateContentPage";
 import { SlugCatchAllProps } from "@/types/SBCorporateContent";
 import { getCorporateContentGssp } from "@/utils/getCorporateContentGssp";
 
@@ -7,7 +7,7 @@ export default function CareersContentPageTemplate(
 ): React.ReactElement {
 	return (
 		<>
-			<CorporateContent {...props} />
+			<CorporateContentPage {...props} />
 		</>
 	);
 }
