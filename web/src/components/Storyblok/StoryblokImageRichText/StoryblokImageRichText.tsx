@@ -5,6 +5,7 @@ import { Grid, GridItem, type Columns } from "@nice-digital/nds-grid";
 import { ImageRichTextStoryblok } from "@/types/storyblok";
 
 import { StoryblokImage } from "../StoryblokImage/StoryblokImage";
+import { StoryblokRichText } from "../StoryblokRichText/StoryblokRichText";
 
 import styles from "./StoryblokImageRichText.module.scss";
 
@@ -55,10 +56,19 @@ export const StoryblokImageRichText: React.FC<StoryblokImageRichTextProps> = ({
 				className={styles.imageRichText__mobileOnly}
 			/>
 		) : null;
-	// Render rich text content if content is a Storyblok rich text object
-	const richContent = content?.content?.[0]?.content?.[0]?.text ? (
-		<p>{content.content[0].content[0].text}</p>
-	) : null;
+	//  Render rich text content if content is a Storyblok rich text object
+	// const richContent = content?.content?.[0]?.content?.[0]?.text ? (
+	// 	<p>{content.content[0].content[0].text}</p>
+	// ) : null;
+
+	// Detect if content starts with a heading (Storyblok rich text uses "heading_2", "heading_3", etc.)
+	const firstBlockType = content?.content?.[0]?.type;
+	console.log("firstBlockType", firstBlockType);
+	console.log("content", content);
+	const contentStartsWithHeading =
+		Array.isArray(content?.content) &&
+		content.content.some((block) => block.type == "heading");
+	console.log("contentStartsWithHeading", contentStartsWithHeading);
 	return (
 		<Grid
 			key={_uid}
@@ -71,19 +81,38 @@ export const StoryblokImageRichText: React.FC<StoryblokImageRichTextProps> = ({
 						data-testid="image-richtext-grid-item"
 						cols={12}
 						md={imgCols}
-						className={hideImage ? styles.imageRichText__hideImageOnMobile : ""}
+						className={[
+							hideImage ? styles.imageRichText__hideImageOnMobile : "",
+							contentStartsWithHeading
+								? styles.imageRichText__imageWithHeading
+								: "",
+						].join(" ")}
 					>
 						{smallScreenImage && smallScreenImage.filename ? (
 							<>
 								<span className={styles.imageRichText__mobileOnly}>
 									{mobileImg}
 								</span>
-								<span className={styles.imageRichText__desktopOnly}>
+								<span
+									className={[
+										styles.imageRichText__desktopOnly,
+										contentStartsWithHeading
+											? ""
+											: styles.imageRichText__imageWithoutHeading,
+									].join(" ")}
+								>
 									{desktopImg}
 								</span>
 							</>
 						) : (
-							<span className={styles.imageRichText__desktopOnly}>
+							<span
+								className={[
+									styles.imageRichText__desktopOnly,
+									contentStartsWithHeading
+										? ""
+										: styles.imageRichText__imageWithoutHeading,
+								].join(" ")}
+							>
 								{desktopImg}
 							</span>
 						)}
@@ -93,7 +122,7 @@ export const StoryblokImageRichText: React.FC<StoryblokImageRichTextProps> = ({
 						md={textCols}
 						data-testid="image-richtext-grid-item"
 					>
-						{richContent}
+						<StoryblokRichText content={content} />
 					</GridItem>
 				</>
 			) : (
@@ -103,25 +132,44 @@ export const StoryblokImageRichText: React.FC<StoryblokImageRichTextProps> = ({
 						md={textCols}
 						data-testid="image-richtext-grid-item"
 					>
-						{richContent}
+						<StoryblokRichText content={content} />
 					</GridItem>
 					<GridItem
 						data-testid="image-richtext-grid-item"
 						cols={12}
 						md={imgCols}
-						className={hideImage ? styles.imageRichText__hideImageOnMobile : ""}
+						className={[
+							hideImage ? styles.imageRichText__hideImageOnMobile : "",
+							contentStartsWithHeading
+								? styles.imageRichText__imageWithHeading
+								: "",
+						].join(" ")}
 					>
 						{smallScreenImage && smallScreenImage.filename ? (
 							<>
 								<span className={styles.imageRichText__mobileOnly}>
 									{mobileImg}
 								</span>
-								<span className={styles.imageRichText__desktopOnly}>
+								<span
+									className={[
+										styles.imageRichText__desktopOnly,
+										contentStartsWithHeading
+											? ""
+											: styles.imageRichText__imageWithoutHeading,
+									].join(" ")}
+								>
 									{desktopImg}
 								</span>
 							</>
 						) : (
-							<span className={styles.imageRichText__desktopOnly}>
+							<span
+								className={[
+									styles.imageRichText__desktopOnly,
+									contentStartsWithHeading
+										? ""
+										: styles.imageRichText__imageWithoutHeading,
+								].join(" ")}
+							>
 								{desktopImg}
 							</span>
 						)}

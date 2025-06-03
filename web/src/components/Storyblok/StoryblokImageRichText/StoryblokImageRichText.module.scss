@@ -2,22 +2,29 @@
 @use '@nice-digital/nds-core/scss/spacing';
 @use '@nice-digital/nds-core/scss/utils';
 
-
 .imageRichText {
   container-name: imageRichText;
   container-type: inline-size;
 
   &__mobileOnly {
     display: block;
+    margin-top: utils.rem(spacing.$medium);
   }
 
   &__desktopOnly {
     display: none;
-    margin-top: utils.rem(spacing.$medium);
   }
 
   &__hideImageOnMobile {
     display: block;
+  }
+
+  &__imageWithHeading {
+    margin-top: utils.rem(spacing.$large);
+  }
+
+  &__imageWithoutHeading {
+    margin-top: utils.rem(spacing.$medium);
   }
   @container imageRichText (min-width: #{media-queries.$sm}) {
     &__mobileOnly {
