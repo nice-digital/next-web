@@ -32,18 +32,26 @@ export const getFeedBodyUnCached = async <TResponse>(
 	apiKey: string,
 	acceptHeader = "application/json"
 ): Promise<TResponse> => {
-	const { data } = await client.get<TResponse>(origin + path, {
-		headers: {
-			"Api-Key": apiKey,
-			Accept: acceptHeader,
-		},
-		validateStatus: (status: number) => {
-			// We don't want feed 404 responses to throw an error, so that we can show users a not found page rather than a server error.
-			return (status >= 200 && status < 300) || status == 404;
-		},
-	});
+	try {
+		const { data } = await client.get<TResponse>(origin + path, {
+			headers: {
+				"Api-Key": apiKey,
+				Accept: acceptHeader,
+			},
+			validateStatus: (status: number) => {
+				// We don't want feed 404 responses to throw an error, so that we can show users a not found page rather than a server error.
+				return (status >= 200 && status < 300) || status == 404;
+			},
+		});
 
-	return data;
+		return data;
+	} catch (ex) {
+		const data = {
+			statusCode: 404,
+			message: ex,
+		};
+		return <TResponse>data;
+	}
 };
 
 /**
