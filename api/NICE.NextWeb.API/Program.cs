@@ -10,12 +10,22 @@ using Ocelot.DependencyInjection;
 using Ocelot.Middleware;
 using Serilog;
 using System.Net;
+using ConfigurationBuilder = Microsoft.Extensions.Configuration.ConfigurationBuilder;
 
 
 var env = Environment.GetEnvironmentVariable("ASPNETCORE_ENVIRONMENT")?.ToLower();
 
+var configuration = new ConfigurationBuilder()
+    .SetBasePath(Directory.GetCurrentDirectory())
+    .AddJsonFile($"appsettings.{env}.json", optional: false)
+    .AddJsonFile($"appsettings.{Environment.GetEnvironmentVariable("ASPNETCORE_ENVIRONMENT")}.json", optional: true)
+    .AddEnvironmentVariables()
+    .Build();
 
-Log.Logger = SeriLogger.GetLoggerConfiguration().CreateLogger();
+var loggingSettings = configuration.GetSection("Logging").Get<LoggingSettings>();
+
+
+Log.Logger = SeriLogger.GetLoggerConfiguration(loggingSettings).CreateLogger();
 
 try
 {
