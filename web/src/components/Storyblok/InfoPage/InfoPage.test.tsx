@@ -48,8 +48,6 @@ const mockPropsWithNoNav: InfoPageBlokProps = {
     slug: sampleDataNoNav.slug
 };
 
-// TODO: mock in-page nav or figure out how to proxy it renders correctly
-
 describe("InfoPage", () => {
 	afterEach(() => {
 		jest.clearAllMocks();
@@ -94,10 +92,10 @@ describe("InfoPage", () => {
     });
 
     xit("renders in-page nav when hideSectionNav is 'true' and hideInPageNav is not 'true'", () => {
-        render(<InfoPage {...mockPropsWithHeroAndInPageNav}/>);
+		render(<InfoPage {...mockPropsWithHeroAndInPageNav}/>);
         expect(screen.getByText("On this page")).toBeInTheDocument();
         expect(screen.queryByTestId("section-nav")).not.toBeInTheDocument();
-    });
+    }); // TODO: mock in-page nav or figure out how to proxy it renders correctly
 
     it("does not render nav area when both hideSectionNav and hideInPageNav are 'true'", () => {
         const blok = { ...mockPropsWithNoNav.blok };
