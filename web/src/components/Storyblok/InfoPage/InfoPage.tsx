@@ -14,7 +14,7 @@ import { type InfoPageStoryblok } from "@/types/storyblok";
 
 import styles from "./InfoPage.module.scss";
 
-interface InfoPageBlokProps {
+export interface InfoPageBlokProps {
 	blok: InfoPageStoryblok;
 	breadcrumbs?: Breadcrumb[];
 	tree: ExtendedSBLink[];
