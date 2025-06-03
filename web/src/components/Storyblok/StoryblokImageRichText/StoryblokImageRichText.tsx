@@ -56,19 +56,11 @@ export const StoryblokImageRichText: React.FC<StoryblokImageRichTextProps> = ({
 				className={styles.imageRichText__mobileOnly}
 			/>
 		) : null;
-	//  Render rich text content if content is a Storyblok rich text object
-	// const richContent = content?.content?.[0]?.content?.[0]?.text ? (
-	// 	<p>{content.content[0].content[0].text}</p>
-	// ) : null;
 
 	// Detect if content starts with a heading (Storyblok rich text uses "heading_2", "heading_3", etc.)
-	const firstBlockType = content?.content?.[0]?.type;
-	console.log("firstBlockType", firstBlockType);
-	console.log("content", content);
 	const contentStartsWithHeading =
 		Array.isArray(content?.content) &&
 		content.content.some((block) => block.type == "heading");
-	console.log("contentStartsWithHeading", contentStartsWithHeading);
 	return (
 		<Grid
 			key={_uid}
@@ -86,7 +78,9 @@ export const StoryblokImageRichText: React.FC<StoryblokImageRichTextProps> = ({
 							contentStartsWithHeading
 								? styles.imageRichText__imageWithHeading
 								: "",
-						].join(" ")}
+						]
+							.filter(Boolean)
+							.join(" ")}
 					>
 						{smallScreenImage && smallScreenImage.filename ? (
 							<>
@@ -143,7 +137,9 @@ export const StoryblokImageRichText: React.FC<StoryblokImageRichTextProps> = ({
 							contentStartsWithHeading
 								? styles.imageRichText__imageWithHeading
 								: "",
-						].join(" ")}
+						]
+							.filter(Boolean)
+							.join(" ")}
 					>
 						{smallScreenImage && smallScreenImage.filename ? (
 							<>
