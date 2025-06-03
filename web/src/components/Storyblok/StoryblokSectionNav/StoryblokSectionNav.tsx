@@ -28,6 +28,7 @@ export const StoryblokSectionNav = ({
 					aria-label={`Section navigation: ${
 						sectionNavLabel?.name ?? "Section"
 					}`}
+					data-testid="section-nav"
 				>
 					{sectionNavTreeWithoutLabel?.map((parent) => (
 						<StackedNavLink

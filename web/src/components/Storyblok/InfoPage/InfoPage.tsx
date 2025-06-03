@@ -59,6 +59,7 @@ export const InfoPage = ({
 						sm={{ cols: 4 }}
 						md={{ cols: 3 }}
 						className={styles.infoPage__navArea}
+						data-testid="info-page-nav-wrapper"
 					>
 						{blok.hideSectionNav !== "true" ? (
 							<StoryblokSectionNav tree={tree} slug={slug} />
