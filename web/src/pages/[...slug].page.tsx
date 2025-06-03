@@ -9,7 +9,9 @@ import React, { useMemo } from "react";
 import { ErrorPageContent } from "@/components/ErrorPageContent/ErrorPageContent";
 import { BasicCardGrid } from "@/components/Storyblok/BasicCardGrid/BasicCardGrid";
 import { Blockquote } from "@/components/Storyblok/Blockquote/Blockquote";
+import { CardGridRow } from "@/components/Storyblok/CardGridRow/CardGridRow";
 import { CardGridSection } from "@/components/Storyblok/CardGridSection/CardGridSection";
+import { CardList } from "@/components/Storyblok/CardList/CardList";
 import { CardListSection } from "@/components/Storyblok/CardListSection/CardListSection";
 import { CategoryLandingPage } from "@/components/Storyblok/CategoryLandingPage/CategoryLandingPage";
 import { CategoryNavigation } from "@/components/Storyblok/CategoryNavigation/CategoryNavigation";
@@ -25,6 +27,10 @@ import { StoryblokCalloutCard } from "@/components/Storyblok/StoryblokCalloutCar
 import { StoryblokHero } from "@/components/Storyblok/StoryblokHero/StoryblokHero";
 import { StoryblokIframe } from "@/components/Storyblok/StoryblokIframe/StoryblokIframe";
 import { StoryblokPageHeader } from "@/components/Storyblok/StoryblokPageHeader/StoryblokPageHeader";
+import {
+	buildTree,
+	type ExtendedSBLink,
+} from "@/components/Storyblok/StoryblokSectionNav/utils/Utils";
 import { StoryblokTable } from "@/components/Storyblok/StoryblokTable/StoryblokTable";
 import { StoryblokTestimonialFullWidth } from "@/components/Storyblok/StoryblokTestimonialFullWidth/StoryblokTestimonialFullWidth";
 import { StoryblokTestimonialGridItem } from "@/components/Storyblok/StoryblokTestimonialGridItem/StoryblokTestimonialGridItem";
@@ -50,8 +56,9 @@ import type { GetServerSidePropsContext } from "next";
 export type SlugCatchAllSuccessProps = {
 	story: ISbStoryData<InfoPageStoryblok | CategoryNavigationStoryblok>;
 	breadcrumbs: Breadcrumb[];
-	siblingPages?: string[];
 	component: string;
+	tree: ExtendedSBLink[];
+	slug: string;
 };
 
 export type SlugCatchAllErrorProps = {
@@ -83,7 +90,7 @@ export default function SlugCatchAll(
 		return <ErrorPageContent title="Error" heading={error} />;
 	}
 
-	const { story: storyData, breadcrumbs, siblingPages, component } = props;
+	const { story: storyData, breadcrumbs, component, tree, slug } = props;
 
 	const commonComponents = {
 		cardGrid: BasicCardGrid,
@@ -109,14 +116,19 @@ export default function SlugCatchAll(
 	const infoPageComponents = {
 		accordion: StoryblokAccordion,
 		accordionGroup: StoryblokAccordionGroup,
+		actionBannerDefault: StoryblokActionBannerDefault,
+		cardList: CardList,
+		cardGridRowBasic: CardGridRow,
+		cardGridRowCallout: CardGridRow,
+		cardGridRowCalloutWithImage: CardGridRow,
 		hero: StoryblokHero,
 		iframe: StoryblokIframe,
 		infoPage: InfoPage,
 		nestedRichText: NestedRichText,
-		quote: Blockquote,
-		youtubeEmbed: StoryblokYoutubeEmbed,
-		actionBannerDefault: StoryblokActionBannerDefault,
 		nestedTable: StoryblokTable,
+		quote: Blockquote,
+		testimonialGridItem: StoryblokTestimonialGridItem,
+		youtubeEmbed: StoryblokYoutubeEmbed,
 	};
 
 	const components = {
@@ -142,12 +154,12 @@ export default function SlugCatchAll(
 			<StoryblokComponent
 				blok={storyData.content}
 				breadcrumbs={breadcrumbs}
-				siblingPages={siblingPages}
+				tree={tree}
+				slug={slug}
 			/>
 		</>
 	);
 }
-
 export async function getServerSideProps(context: GetServerSidePropsContext) {
 	// Bail out early unless this route is enabled for this environment
 	if (publicRuntimeConfig.storyblok.enableRootCatchAll.toString() !== "true") {
@@ -189,20 +201,24 @@ export async function getServerSideProps(context: GetServerSidePropsContext) {
 		}
 		if ("notFound" in storyResult) return storyResult;
 
-		const siblingPages = [];
+		const parentID = storyResult.story?.parent_id as number;
+		const isRootPage = storyResult.story?.is_startpage;
 
 		const component = storyResult.story?.content?.component;
-		// TODO: Use the Storyblok Links API to build a map of sibling & optionally child pages
+		let tree: ExtendedSBLink[] = [];
+
 		if (component === "infoPage") {
-			siblingPages.push(...["page1", "page2"]);
+			tree = await buildTree(parentID, slug, isRootPage);
+			// TODO: move out of catchall page; would need API route as GSSP is not allowed in components whilst using pages router
 		}
 
 		const result = {
 			props: {
 				...storyResult,
 				breadcrumbs,
-				siblingPages,
 				component,
+				tree,
+				slug,
 			},
 		};
 

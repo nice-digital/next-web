@@ -197,7 +197,7 @@ export default function InDevelopmentPage(
 					{indevProjectRelatedLinks && indevProjectRelatedLinks?.length > 0 ? (
 						<>
 							<h3>Related Links</h3>
-							<ul aria-label="Related links" className="list list--unstyled">
+							<ul aria-label="Related links">
 								{indevProjectRelatedLinks?.map((link, index) => {
 									return (
 										<li key={`link_dd_${index}`}>
