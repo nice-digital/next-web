@@ -21,7 +21,6 @@ export const getBasePathFromSlugAndUrl = (
 	resolvedUrl: string,
 	slug: string | undefined
 ): string => {
-	//TODO check normalisation work from NXT-543 to see if part of this can be a shared utility
 	const raw = resolvedUrl.split("?")[0].replace(/\/+$/, ""); // strip trailing slashes
 
 	if (!slug) return raw.replace(/^\/|\/$/g, "");
