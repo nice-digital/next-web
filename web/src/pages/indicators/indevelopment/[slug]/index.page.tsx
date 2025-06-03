@@ -102,8 +102,8 @@ export default function InDevelopmentPage(
 	const MiddleBreadcrumbs = () =>
 		isGuidanceHubPage ? (
 			<>
-				<Breadcrumb>Hub</Breadcrumb>
-				<Breadcrumb>In development</Breadcrumb>
+				<Breadcrumb to="/guidance">NICE guidance</Breadcrumb>
+				<Breadcrumb to="/guidance/indevelopment">In development</Breadcrumb>
 			</>
 		) : (
 			<>
