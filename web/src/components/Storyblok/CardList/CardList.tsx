@@ -5,8 +5,6 @@ import { Card, type CardHeadingLinkProps } from "@nice-digital/nds-card";
 import { CardListStoryblok } from "@/types/storyblok";
 import { resolveStoryblokLink } from "@/utils/storyblok";
 
-import styles from "./CardList.module.scss";
-
 export interface CardListProps {
 	blok: CardListStoryblok;
 }
