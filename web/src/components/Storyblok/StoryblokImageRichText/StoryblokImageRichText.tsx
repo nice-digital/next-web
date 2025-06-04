@@ -18,15 +18,15 @@ export const StoryblokImageRichText: React.FC<StoryblokImageRichTextProps> = ({
 	blok,
 }) => {
 	const {
-		image,
+		mainImage,
 		content,
 		imageSize = "medium",
 		imagePosition = "right",
-		hideImage = false,
+		hideImagesOnSmallScreens = "false",
 		smallScreenImage,
 		_uid,
 	} = blok;
-	// Map imageSize to column spans
+
 	const sizeMap: Record<string, { img: Columns; text: Columns }> = {
 		small: { img: 3 as Columns, text: 9 as Columns },
 		medium: { img: 4 as Columns, text: 8 as Columns },
@@ -34,15 +34,42 @@ export const StoryblokImageRichText: React.FC<StoryblokImageRichTextProps> = ({
 	};
 	const { img: imgCols, text: textCols } = sizeMap[imageSize] || sizeMap.medium;
 
-	// If imagePosition is "left", image on left; if "right", image on right (default)
 	const imageFirst = imagePosition !== "right";
+
+	// Detect if any block in content is a heading
+	const contentStartsWithHeading =
+		Array.isArray(content?.content) &&
+		content.content.some((block) => block.type === "heading");
+
+	const imageVisibilityOnSmallScreens =
+		hideImagesOnSmallScreens === "false" ? false : true;
+
+	// Helper for image GridItem className
+	const imageGridItemClass = [
+		imageVisibilityOnSmallScreens
+			? styles.imageRichText__hideImageOnMobile
+			: null,
+		contentStartsWithHeading ? styles.imageRichText__imageWithHeading : null,
+	]
+		.filter(Boolean)
+		.join(" ");
+
+	// Helper for desktop image span className
+	const desktopSpanClass = [
+		styles.imageRichText__desktopOnly,
+		!contentStartsWithHeading
+			? styles.imageRichText__imageWithoutHeading
+			: null,
+	]
+		.filter(Boolean)
+		.join(" ");
 
 	// Render image for desktop (>=600px)
 	const desktopImg =
-		image && image.filename ? (
+		mainImage && mainImage.filename ? (
 			<StoryblokImage
-				src={image.filename}
-				alt={image.alt || ""}
+				src={mainImage.filename}
+				alt={mainImage.alt || ""}
 				className={styles.imageRichText__desktopOnly}
 			/>
 		) : null;
@@ -57,10 +84,16 @@ export const StoryblokImageRichText: React.FC<StoryblokImageRichTextProps> = ({
 			/>
 		) : null;
 
-	// Detect if content starts with a heading (Storyblok rich text uses "heading_2", "heading_3", etc.)
-	const contentStartsWithHeading =
-		Array.isArray(content?.content) &&
-		content.content.some((block) => block.type == "heading");
+	const renderImageSpans = () =>
+		smallScreenImage && smallScreenImage.filename ? (
+			<>
+				<span className={styles.imageRichText__mobileOnly}>{mobileImg}</span>
+				<span className={desktopSpanClass}>{desktopImg}</span>
+			</>
+		) : (
+			<span className={desktopSpanClass}>{desktopImg}</span>
+		);
+
 	return (
 		<Grid
 			key={_uid}
@@ -73,43 +106,9 @@ export const StoryblokImageRichText: React.FC<StoryblokImageRichTextProps> = ({
 						data-testid="image-richtext-grid-item"
 						cols={12}
 						md={imgCols}
-						className={[
-							hideImage ? styles.imageRichText__hideImageOnMobile : "",
-							contentStartsWithHeading
-								? styles.imageRichText__imageWithHeading
-								: "",
-						]
-							.filter(Boolean)
-							.join(" ")}
+						className={imageGridItemClass}
 					>
-						{smallScreenImage && smallScreenImage.filename ? (
-							<>
-								<span className={styles.imageRichText__mobileOnly}>
-									{mobileImg}
-								</span>
-								<span
-									className={[
-										styles.imageRichText__desktopOnly,
-										contentStartsWithHeading
-											? ""
-											: styles.imageRichText__imageWithoutHeading,
-									].join(" ")}
-								>
-									{desktopImg}
-								</span>
-							</>
-						) : (
-							<span
-								className={[
-									styles.imageRichText__desktopOnly,
-									contentStartsWithHeading
-										? ""
-										: styles.imageRichText__imageWithoutHeading,
-								].join(" ")}
-							>
-								{desktopImg}
-							</span>
-						)}
+						{renderImageSpans()}
 					</GridItem>
 					<GridItem
 						cols={12}
@@ -132,43 +131,9 @@ export const StoryblokImageRichText: React.FC<StoryblokImageRichTextProps> = ({
 						data-testid="image-richtext-grid-item"
 						cols={12}
 						md={imgCols}
-						className={[
-							hideImage ? styles.imageRichText__hideImageOnMobile : "",
-							contentStartsWithHeading
-								? styles.imageRichText__imageWithHeading
-								: "",
-						]
-							.filter(Boolean)
-							.join(" ")}
+						className={imageGridItemClass}
 					>
-						{smallScreenImage && smallScreenImage.filename ? (
-							<>
-								<span className={styles.imageRichText__mobileOnly}>
-									{mobileImg}
-								</span>
-								<span
-									className={[
-										styles.imageRichText__desktopOnly,
-										contentStartsWithHeading
-											? ""
-											: styles.imageRichText__imageWithoutHeading,
-									].join(" ")}
-								>
-									{desktopImg}
-								</span>
-							</>
-						) : (
-							<span
-								className={[
-									styles.imageRichText__desktopOnly,
-									contentStartsWithHeading
-										? ""
-										: styles.imageRichText__imageWithoutHeading,
-								].join(" ")}
-							>
-								{desktopImg}
-							</span>
-						)}
+						{renderImageSpans()}
 					</GridItem>
 				</>
 			)}

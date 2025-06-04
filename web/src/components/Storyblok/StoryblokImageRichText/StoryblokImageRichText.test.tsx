@@ -4,7 +4,7 @@ import React from "react";
 import { StoryblokImageRichText } from "./StoryblokImageRichText";
 
 const blok = {
-	image: {
+	mainImage: {
 		filename: "https://a.storyblok.com/nhs-team.JPG",
 		alt: "Desktop Image",
 		fieldtype: "asset" as const,
@@ -21,7 +21,7 @@ const blok = {
 	},
 	imageSize: "medium" as const,
 	imagePosition: "left" as const,
-	hideImage: false,
+	hideImagesOnSmallScreens: "false" as "false" | "true",
 	smallScreenImage: {
 		filename: "https://a.storyblok.com/nhs-team.JPG",
 		alt: "Mobile Image",
@@ -47,7 +47,10 @@ describe("StoryblokImageRichText", () => {
 	});
 
 	it("hides both images when hideImage is true (GridItem has hideImageOnMobile class)", () => {
-		const blokWithHide = { ...blok, hideImage: true };
+		const blokWithHide = {
+			...blok,
+			hideImagesOnSmallScreens: "true" as "false" | "true",
+		};
 		render(<StoryblokImageRichText blok={blokWithHide} />);
 
 		const gridItems = screen.getAllByTestId("image-richtext-grid-item");
