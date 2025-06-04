@@ -5,6 +5,7 @@
 .imageRichText {
   container-name: imageRichText;
   container-type: inline-size;
+  margin-bottom: utils.rem(spacing.$medium);
 
   &__mobileImage {
     display: block;
