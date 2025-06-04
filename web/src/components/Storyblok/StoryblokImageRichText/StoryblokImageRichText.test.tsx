@@ -80,7 +80,7 @@ describe("StoryblokImageRichText", () => {
 		const desktopImg = within(secondGridItem).getByAltText("Desktop Image");
 		const mobileImg = within(secondGridItem).getByAltText("Mobile Image");
 
-		expect(desktopImg).toHaveClass("imageRichText__desktopOnly");
-		expect(mobileImg).toHaveClass("imageRichText__mobileOnly");
+		expect(desktopImg).toHaveClass("imageRichText__desktopImage");
+		expect(mobileImg).toHaveClass("imageRichText__mobileImage");
 	});
 });
