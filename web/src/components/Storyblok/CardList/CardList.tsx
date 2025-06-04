@@ -15,7 +15,7 @@ export const CardList: React.FC<CardListProps> = ({ blok }: CardListProps) => {
 	const { cards } = blok;
 
 	return (
-		<ul className={`list list--unstyled ${styles.cardListWidth}`}>
+		<ul className={`list list--unstyled ${styles.cardList}`}>
 			{cards.map(({ heading, body, link, _uid }) => {
 				let cardLink: CardHeadingLinkProps | undefined = undefined;
 				const resolvedLink = link ? resolveStoryblokLink(link) : undefined;
