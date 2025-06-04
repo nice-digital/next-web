@@ -32,37 +32,35 @@ import { logger } from "@/logger";
 
 //TODO: consider a mix of static imports for common components and dynamic imports for lesser used components
 const commonComponents = {
+	accordion: StoryblokAccordion,
+	accordionGroup: StoryblokAccordionGroup,
+	actionBannerDefault: StoryblokActionBannerDefault,
 	cardGrid: BasicCardGrid,
+	cardList: CardList,
+	hero: StoryblokHero,
 	metadata: Metadata,
+	nestedRichText: NestedRichText,
 	pageHeader: StoryblokPageHeader,
+	quote: Blockquote,
+	youtubeEmbed: StoryblokYoutubeEmbed,
 };
 
 //TODO: add the rest of the components as we iterate through the page build
 const categoryLandingPageComponents = {
-	categoryLandingPage: CategoryLandingPage,
-	hero: StoryblokHero,
 	actionBanner: StoryblokActionBannerFullWidth,
-	actionBannerDefault: StoryblokActionBannerDefault,
-	cardGridSection: CardGridSection,
-	cardListSection: CardListSection,
-	promoBox: PromoBox,
 	calloutCard: StoryblokCalloutCard,
 	calloutCardWithImage: StoryblokCalloutCard,
+	cardGridSection: CardGridSection,
+	cardListSection: CardListSection,
+	categoryLandingPage: CategoryLandingPage,
+	promoBox: PromoBox,
 	testimonialFullWidth: StoryblokTestimonialFullWidth,
 	testimonialGridItem: StoryblokTestimonialGridItem,
 };
 
 const infoPageComponents = {
-	accordion: StoryblokAccordion,
-	accordionGroup: StoryblokAccordionGroup,
-	cardList: CardList,
-	hero: StoryblokHero,
 	iframe: StoryblokIframe,
 	infoPage: InfoPage,
-	nestedRichText: NestedRichText,
-	quote: Blockquote,
-	youtubeEmbed: StoryblokYoutubeEmbed,
-	actionBannerDefault: StoryblokActionBannerDefault,
 	nestedTable: StoryblokTable,
 };
 
