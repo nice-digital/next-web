@@ -3,7 +3,7 @@ import { waitFor } from "@testing-library/react";
 
 import { logger } from "@/logger";
 
-import { initStoryblok } from "./initStoryblok";
+import { allComponents, initStoryblok } from "./initStoryblok";
 
 jest.mock("@/config", () => ({
 	publicRuntimeConfig: {
@@ -31,6 +31,7 @@ describe("initStoryblok", () => {
 		expect(storyblokInit).toHaveBeenCalledWith({
 			accessToken: "testApiKey",
 			use: [{}],
+			components: allComponents,
 			apiOptions: {
 				cache: {
 					clear: "manual",
