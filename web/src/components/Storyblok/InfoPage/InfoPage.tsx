@@ -63,7 +63,7 @@ export const InfoPage = ({
 					>
 						{blok.hideSectionNav !== "true" ? (
 							<StoryblokSectionNav tree={tree} slug={slug} />
-						) : (
+						) : blok.hideInPageNav !== "true" && (
 							<InPageNav headingsSelector={"h2"} />
 						)}
 					</GridItem>
