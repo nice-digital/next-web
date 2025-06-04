@@ -35,7 +35,6 @@ export const CardList: React.FC<CardListProps> = ({ blok }: CardListProps) => {
 						key={_uid}
 					>
 						<p>{body}</p>
-
 					</Card>
 				);
 			})}

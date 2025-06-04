@@ -34,7 +34,7 @@ describe("cardList component", () => {
 		const cardHeading = screen.getByText("Mock card heading 1", {
 			selector: "a",
 		});
-		const cardBody = screen.getByText("Mock card summary 1",{
+		const cardBody = screen.getByText("Mock card summary 1", {
 			selector: "p",
 		});
 		expect(cardHeading).toBeInTheDocument();
