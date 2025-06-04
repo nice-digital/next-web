@@ -84,17 +84,23 @@ describe("InfoPage", () => {
 		expect(screen.getByTestId("storyblok-rich-text")).toBeInTheDocument();
 	});
 
+	it("handles empty blok object", () => {
+		const blok = {} as InfoPageStoryblok;
+		render(<InfoPage {...mockPropsWithPageHeaderAndSectionNav} />);
+		expect(screen.getByTestId("section-nav")).toBeInTheDocument();
+	});
+
 	it("renders section nav when hideSectionNav is not 'true' and sectionNavIsPopulated(tree) is true", () => {
 		render(<InfoPage {...mockPropsWithPageHeaderAndSectionNav} />);
 		expect(screen.getByTestId("section-nav")).toBeInTheDocument();
-		expect(screen.queryByText("On this page")).not.toBeInTheDocument(); //TODO: add more meaningful check
+		expect(screen.queryByText("On this page")).not.toBeInTheDocument(); //TODO: add more meaningful check; atm In Page Nav is never rendered
 	});
 
 	xit("renders in-page nav when hideSectionNav is 'true' and hideInPageNav is not 'true'", () => {
 		render(<InfoPage {...mockPropsWithHeroAndInPageNav} />);
 		expect(screen.getByText("On this page")).toBeInTheDocument();
 		expect(screen.queryByTestId("section-nav")).not.toBeInTheDocument();
-	}); // TODO: mock in-page nav or figure out how to proxy it renders correctly
+	}); // TODO: mock in-page nav or figure out how to proxy it "renders" correctly
 
 	it("does not render nav area when both hideSectionNav and hideInPageNav are 'true'", () => {
 		const blok = { ...mockPropsWithNoNav.blok };
@@ -102,41 +108,6 @@ describe("InfoPage", () => {
 		expect(
 			screen.queryByTestId("info-page-nav-wrapper")
 		).not.toBeInTheDocument();
-	});
-
-	xit("renders in-page nav when hideSectionNav is not 'true' but sectionNavIsPopulated(tree) is false and hideInPageNav is not 'true'", () => {
-		const blok = {
-			...mockPropsWithNoNav.blok,
-			hideSectionNav: "false",
-			hideInPageNav: "false",
-		};
-		render(<InfoPage {...mockPropsWithNoNav} tree={[]} />);
-		expect(screen.getByTestId("in-page-nav")).toBeInTheDocument();
-		expect(screen.queryByTestId("section-nav")).not.toBeInTheDocument();
-	});
-
-	xit("renders in-page nav when Section Nav is not hidden but tree is undefined", () => {
-		const blok = { ...mockPropsWithNoNav.blok, hideSectionNav: "false" };
-		render(<InfoPage {...mockPropsWithNoNav} tree={undefined as any} />);
-		expect(screen.getByTestId("in-page-nav")).toBeInTheDocument();
-	});
-
-	xit("renders in-page nav when hideSectionNav is not 'true' and tree is an empty array", () => {
-		const blok = { ...mockPropsWithNoNav.blok, hideSectionNav: "false" };
-		render(<InfoPage {...mockPropsWithNoNav} tree={[]} />);
-		expect(screen.getByTestId("in-page-nav")).toBeInTheDocument();
-	});
-
-	xit("renders correct nav area when hideSectionNav is not 'true' and tree is falsy", () => {
-		const blok = { ...mockPropsWithNoNav.blok, hideSectionNav: "false" };
-		render(<InfoPage {...mockPropsWithNoNav} tree={null as any} />);
-		expect(screen.getByTestId("in-page-nav")).toBeInTheDocument();
-	});
-
-	it("handles empty blok object", () => {
-		const blok = {} as InfoPageStoryblok;
-		render(<InfoPage {...mockPropsWithPageHeaderAndSectionNav} />);
-		expect(screen.getByTestId("section-nav")).toBeInTheDocument();
 	});
 
 	it("does not try to render section nav if tree undefined", () => {
