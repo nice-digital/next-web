@@ -1,4 +1,5 @@
-import { render, screen } from "@testing-library/react";
+import { screen } from "@testing-library/react";
+import { render } from "@/test-utils/rendering";
 
 import sampleDataHeroInPageNav from "@/mockData/storyblok/infoPageWithHeroAndInPageNav.json";
 import sampleDataNoNav from "@/mockData/storyblok/infoPageWithNoNav.json";
@@ -13,7 +14,7 @@ jest.mock("@storyblok/react", () => ({
 	StoryblokComponent: ({ blok }: { blok: any }) => {
 		return (
 			<div data-testid={`storyblok-component-${blok.component}`}>
-				{blok.component}
+				<h2>{blok.component}</h2>
 			</div>
 		);
 	},
