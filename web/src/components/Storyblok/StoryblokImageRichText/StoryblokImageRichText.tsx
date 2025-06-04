@@ -56,7 +56,10 @@ export const StoryblokImageRichText: React.FC<StoryblokImageRichTextProps> = ({
 
 	// Helper for desktop image span className
 	const desktopSpanClass = [
-		styles.imageRichText__desktopOnly,
+		smallScreenImage && smallScreenImage.filename
+			? styles.imageRichText__hideMainImageOnDesktop
+			: null,
+		styles.imageRichText__desktopImage,
 		!contentStartsWithHeading
 			? styles.imageRichText__imageWithoutHeading
 			: null,
@@ -70,7 +73,7 @@ export const StoryblokImageRichText: React.FC<StoryblokImageRichTextProps> = ({
 			<StoryblokImage
 				src={mainImage.filename}
 				alt={mainImage.alt || ""}
-				className={styles.imageRichText__desktopOnly}
+				className={styles.imageRichText__desktopImage}
 			/>
 		) : null;
 
@@ -80,14 +83,14 @@ export const StoryblokImageRichText: React.FC<StoryblokImageRichTextProps> = ({
 			<StoryblokImage
 				src={smallScreenImage.filename}
 				alt={smallScreenImage.alt || ""}
-				className={styles.imageRichText__mobileOnly}
+				className={styles.imageRichText__mobileImage}
 			/>
 		) : null;
 
 	const renderImageSpans = () =>
 		smallScreenImage && smallScreenImage.filename ? (
 			<>
-				<span className={styles.imageRichText__mobileOnly}>{mobileImg}</span>
+				<span className={styles.imageRichText__mobileImage}>{mobileImg}</span>
 				<span className={desktopSpanClass}>{desktopImg}</span>
 			</>
 		) : (

@@ -6,12 +6,12 @@
   container-name: imageRichText;
   container-type: inline-size;
 
-  &__mobileOnly {
+  &__mobileImage {
     display: block;
     margin-top: utils.rem(spacing.$medium);
   }
 
-  &__desktopOnly {
+  &__hideMainImageOnDesktop {
     display: none;
   }
 
@@ -27,11 +27,11 @@
     margin-top: utils.rem(spacing.$medium);
   }
   @container imageRichText (min-width: #{media-queries.$sm}) {
-    &__mobileOnly {
+    &__mobileImage {
       display: none;
     }
 
-    &__desktopOnly {
+    &__desktopImage {
       display: block;
     }
   }
