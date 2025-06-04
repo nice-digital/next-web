@@ -1,9 +1,9 @@
 import { screen } from "@testing-library/react";
-import { render } from "@/test-utils/rendering";
 
 import sampleDataHeroInPageNav from "@/mockData/storyblok/infoPageWithHeroAndInPageNav.json";
 import sampleDataNoNav from "@/mockData/storyblok/infoPageWithNoNav.json";
 import sampleDataPageHeaderSectionNav from "@/mockData/storyblok/infoPageWithPageHeaderAndSectionNav.json";
+import { render } from "@/test-utils/rendering";
 import { InfoPageStoryblok } from "@/types/storyblok";
 
 import { InfoPage, type InfoPageBlokProps } from "./InfoPage";
@@ -91,17 +91,17 @@ describe("InfoPage", () => {
 		expect(screen.getByTestId("section-nav")).toBeInTheDocument();
 	});
 
-	it("renders section nav when hideSectionNav is not 'true' and sectionNavIsPopulated(tree) is true", () => {
+	it("renders Section Nav when hideSectionNav is not 'true' and Section Nav tree is populated", () => {
 		render(<InfoPage {...mockPropsWithPageHeaderAndSectionNav} />);
 		expect(screen.getByTestId("section-nav")).toBeInTheDocument();
-		expect(screen.queryByText("On this page")).not.toBeInTheDocument(); //TODO: add more meaningful check; atm In Page Nav is never rendered
+		expect(screen.queryByText("On this page")).not.toBeInTheDocument();
 	});
 
-	xit("renders in-page nav when hideSectionNav is 'true' and hideInPageNav is not 'true'", () => {
+	it("renders In-Page Nav when hideSectionNav is 'true' and hideInPageNav is not 'true'", () => {
 		render(<InfoPage {...mockPropsWithHeroAndInPageNav} />);
 		expect(screen.getByText("On this page")).toBeInTheDocument();
 		expect(screen.queryByTestId("section-nav")).not.toBeInTheDocument();
-	}); // TODO: mock in-page nav or figure out how to proxy it "renders" correctly
+	});
 
 	it("does not render nav area when both hideSectionNav and hideInPageNav are 'true'", () => {
 		const blok = { ...mockPropsWithNoNav.blok };
@@ -121,5 +121,6 @@ describe("InfoPage", () => {
 		);
 		expect(screen.getByTestId("storyblok-rich-text")).toBeInTheDocument();
 		expect(screen.queryByTestId("section-nav")).not.toBeInTheDocument();
+		expect(screen.queryByText("On this page")).not.toBeInTheDocument();
 	});
 });
