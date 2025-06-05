@@ -115,5 +115,5 @@ export const buildTree = async (
 };
 
 export function sectionNavIsPopulated(tree: ExtendedSBLink[]): boolean {
-	return tree?.length > 0;
+	return (tree ?? []).length > 0;
 }
