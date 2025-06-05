@@ -70,13 +70,12 @@ describe("InfoPage", () => {
 		expect(screen.getByTestId("storyblok-component-hero")).toBeInTheDocument();
 	});
 
-	it("handles missing metadata and header gracefully", () => {
+	it("handles missing metadata gracefully", () => {
 		const blok = {
 			...mockPropsWithHeroAndInPageNav.blok,
 			metadata: undefined,
-			header: undefined,
 		};
-		render(<InfoPage {...mockPropsWithHeroAndInPageNav} />);
+		render(<InfoPage {...mockPropsWithHeroAndInPageNav} blok={blok} />);
 		expect(screen.getByTestId("storyblok-rich-text")).toBeInTheDocument();
 	});
 
@@ -85,17 +84,12 @@ describe("InfoPage", () => {
 		expect(screen.getByTestId("storyblok-rich-text")).toBeInTheDocument();
 	});
 
-	it("handles empty blok object", () => {
-		const blok = {} as InfoPageStoryblok;
-		render(<InfoPage {...mockPropsWithPageHeaderAndSectionNav} />);
-		expect(screen.getByTestId("section-nav")).toBeInTheDocument();
-	});
-
 	it("renders Section Nav when hideSectionNav is not 'true' and Section Nav tree is populated", () => {
 		render(<InfoPage {...mockPropsWithPageHeaderAndSectionNav} />);
 		expect(screen.getByTestId("section-nav")).toBeInTheDocument();
 		expect(screen.queryByText("On this page")).not.toBeInTheDocument();
 	});
+
 	it("does not try to render Section Nav if tree is empty", () => {
 		render(<InfoPage {...mockPropsWithPageHeaderAndSectionNav} tree={[]} />);
 		expect(screen.getByTestId("storyblok-rich-text")).toBeInTheDocument();
@@ -110,7 +104,6 @@ describe("InfoPage", () => {
 	});
 
 	it("does not render nav area when both hideSectionNav and hideInPageNav are 'true'", () => {
-		const blok = { ...mockPropsWithNoNav.blok };
 		render(<InfoPage {...mockPropsWithNoNav} />);
 		expect(
 			screen.queryByTestId("info-page-nav-wrapper")
