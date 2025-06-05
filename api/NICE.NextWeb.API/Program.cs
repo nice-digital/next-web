@@ -10,34 +10,27 @@ using Ocelot.DependencyInjection;
 using Ocelot.Middleware;
 using Serilog;
 using System.Net;
-using ConfigurationBuilder = Microsoft.Extensions.Configuration.ConfigurationBuilder;
-
 
 var env = Environment.GetEnvironmentVariable("ASPNETCORE_ENVIRONMENT")?.ToLower();
-
-var configuration = new ConfigurationBuilder()
-    .SetBasePath(Directory.GetCurrentDirectory())
-    .AddJsonFile($"appsettings.{env}.json", optional: false)
-    .AddJsonFile($"appsettings.{Environment.GetEnvironmentVariable("ASPNETCORE_ENVIRONMENT")}.json", optional: true)
-    .AddEnvironmentVariables()
-    .Build();
-
-var loggingSettings = configuration.GetSection("Logging").Get<LoggingSettings>();
-
-
-Log.Logger = SeriLogger.GetLoggerConfiguration(loggingSettings).CreateLogger();
 
 try
 {
     var builder = WebApplication.CreateBuilder(args);
 
+    var configuration = builder.Configuration
+        .SetBasePath(Directory.GetCurrentDirectory())
+        .AddJsonFile($"appsettings.{env}.json", optional: false)
+        .AddJsonFile($"ocelot.{env}.json")
+        .AddEnvironmentVariables()
+        .Build();
+
+    var loggingSettings = configuration.GetSection("Logging").Get<LoggingSettings>();
+
+    Log.Logger = SeriLogger.GetLoggerConfiguration(loggingSettings).CreateLogger();
+
     var ocelotSettings = builder.Configuration
         .GetSection("Ocelot")
         .Get<OcelotSettings>();
-
-    builder.Configuration
-        .SetBasePath(Directory.GetCurrentDirectory())
-        .AddJsonFile($"ocelot.{env}.json");
 
     builder.Host.UseSerilog();
 
@@ -58,7 +51,6 @@ try
     }
 
     builder.Services.AddSingleton<INiceorgHttpRequestMessage, NiceorgHttpRequestMessage>();
-
     builder.Services.AddScheduler((sender, args) =>
     {
         Console.Write(args.Exception.Message);
