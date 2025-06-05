@@ -96,6 +96,12 @@ describe("InfoPage", () => {
 		expect(screen.getByTestId("section-nav")).toBeInTheDocument();
 		expect(screen.queryByText("On this page")).not.toBeInTheDocument();
 	});
+	it("does not try to render Section Nav if tree is empty", () => {
+		render(<InfoPage {...mockPropsWithPageHeaderAndSectionNav} tree={[]} />);
+		expect(screen.getByTestId("storyblok-rich-text")).toBeInTheDocument();
+		expect(screen.queryByTestId("section-nav")).not.toBeInTheDocument();
+		expect(screen.queryByText("On this page")).not.toBeInTheDocument();
+	});
 
 	it("renders In-Page Nav when hideSectionNav is 'true' and hideInPageNav is not 'true'", () => {
 		render(<InfoPage {...mockPropsWithHeroAndInPageNav} />);
@@ -109,18 +115,5 @@ describe("InfoPage", () => {
 		expect(
 			screen.queryByTestId("info-page-nav-wrapper")
 		).not.toBeInTheDocument();
-	});
-
-	it("does not try to render section nav if tree undefined", () => {
-		const blok = { ...mockPropsWithPageHeaderAndSectionNav.blok };
-		render(
-			<InfoPage
-				{...mockPropsWithPageHeaderAndSectionNav}
-				tree={undefined as any}
-			/>
-		);
-		expect(screen.getByTestId("storyblok-rich-text")).toBeInTheDocument();
-		expect(screen.queryByTestId("section-nav")).not.toBeInTheDocument();
-		expect(screen.queryByText("On this page")).not.toBeInTheDocument();
 	});
 });
