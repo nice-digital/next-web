@@ -27,6 +27,10 @@ import { StoryblokCalloutCard } from "@/components/Storyblok/StoryblokCalloutCar
 import { StoryblokHero } from "@/components/Storyblok/StoryblokHero/StoryblokHero";
 import { StoryblokIframe } from "@/components/Storyblok/StoryblokIframe/StoryblokIframe";
 import { StoryblokPageHeader } from "@/components/Storyblok/StoryblokPageHeader/StoryblokPageHeader";
+import {
+	buildTree,
+	type ExtendedSBLink,
+} from "@/components/Storyblok/StoryblokSectionNav/utils/Utils";
 import { StoryblokTable } from "@/components/Storyblok/StoryblokTable/StoryblokTable";
 import { StoryblokTestimonialFullWidth } from "@/components/Storyblok/StoryblokTestimonialFullWidth/StoryblokTestimonialFullWidth";
 import { StoryblokTestimonialGridItem } from "@/components/Storyblok/StoryblokTestimonialGridItem/StoryblokTestimonialGridItem";
@@ -52,8 +56,9 @@ import type { GetServerSidePropsContext } from "next";
 export type SlugCatchAllSuccessProps = {
 	story: ISbStoryData<InfoPageStoryblok | CategoryNavigationStoryblok>;
 	breadcrumbs: Breadcrumb[];
-	siblingPages?: string[];
 	component: string;
+	tree: ExtendedSBLink[];
+	slug: string;
 };
 
 export type SlugCatchAllErrorProps = {
@@ -85,7 +90,7 @@ export default function SlugCatchAll(
 		return <ErrorPageContent title="Error" heading={error} />;
 	}
 
-	const { story: storyData, breadcrumbs, siblingPages, component } = props;
+	const { story: storyData, breadcrumbs, component, tree, slug } = props;
 
 	const commonComponents = {
 		cardGrid: BasicCardGrid,
@@ -149,12 +154,12 @@ export default function SlugCatchAll(
 			<StoryblokComponent
 				blok={storyData.content}
 				breadcrumbs={breadcrumbs}
-				siblingPages={siblingPages}
+				tree={tree}
+				slug={slug}
 			/>
 		</>
 	);
 }
-
 export async function getServerSideProps(context: GetServerSidePropsContext) {
 	// Bail out early unless this route is enabled for this environment
 	if (publicRuntimeConfig.storyblok.enableRootCatchAll.toString() !== "true") {
@@ -196,20 +201,24 @@ export async function getServerSideProps(context: GetServerSidePropsContext) {
 		}
 		if ("notFound" in storyResult) return storyResult;
 
-		const siblingPages = [];
+		const parentID = storyResult.story?.parent_id as number;
+		const isRootPage = storyResult.story?.is_startpage;
 
 		const component = storyResult.story?.content?.component;
-		// TODO: Use the Storyblok Links API to build a map of sibling & optionally child pages
+		let tree: ExtendedSBLink[] = [];
+
 		if (component === "infoPage") {
-			siblingPages.push(...["page1", "page2"]);
+			tree = await buildTree(parentID, slug, isRootPage);
+			// TODO: move out of catchall page; would need API route as GSSP is not allowed in components whilst using pages router
 		}
 
 		const result = {
 			props: {
 				...storyResult,
 				breadcrumbs,
-				siblingPages,
 				component,
+				tree,
+				slug,
 			},
 		};
 

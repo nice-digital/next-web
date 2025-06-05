@@ -5,18 +5,12 @@ import {
 	getGetServerSideProps,
 } from "@/components/JotFormPage/getGetServerSideProps";
 import { JotFormPage } from "@/components/JotFormPage/JotFormPage";
-import { Link } from "@/components/Link/Link";
 
 export const getServerSideProps = getGetServerSideProps("230793530776059");
 
 const InformationPanel = () => {
 	return (
 		<>
-			<p>
-				<Link to="/about/what-we-do/our-programmes/nice-guidance/nice-interventional-procedures-guidance/notify">
-					About our notification process
-				</Link>
-			</p>
 			<Panel>
 				<h2 className="h3">Supporting information</h2>
 				<p>
