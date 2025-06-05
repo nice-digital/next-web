@@ -1,0 +1,599 @@
+{
+  "story": {
+    "name": "Info Page No Nav",
+    "created_at": "2025-06-02T14:20:22.519Z",
+    "published_at": "2025-06-03T15:15:52.649Z",
+    "updated_at": "2025-06-03T15:15:52.673Z",
+    "id": 681214604,
+    "uuid": "7bdf4e3a-7953-4b81-bdb7-93d91dbc74d2",
+    "content": {
+      "_uid": "fe60ab80-1abb-4af1-8e5a-1947c27c6a9c",
+      "header": [
+        {
+          "cta": [],
+          "_uid": "689560f8-a0b3-45b2-97d1-3d074ff3f3a2",
+          "theme": "subtle",
+          "title": "Guidance executive terms of reference and standing orders",
+          "summary": "",
+          "component": "pageHeader",
+          "description": ""
+        }
+      ],
+      "content": {
+        "type": "doc",
+        "content": [
+          {
+            "type": "heading",
+            "attrs": {
+              "level": 2
+            },
+            "content": [
+              {
+                "text": "Terms of reference",
+                "type": "text"
+              }
+            ]
+          },
+          {
+            "type": "paragraph",
+            "content": [
+              {
+                "text": "The guidance executive is constituted as a standing group of NICE and reports to the executive team (ET). Its constitution and terms of reference are set out on this page.",
+                "type": "text"
+              }
+            ]
+          },
+          {
+            "type": "ordered_list",
+            "attrs": {
+              "order": 1
+            },
+            "content": [
+              {
+                "type": "list_item",
+                "content": [
+                  {
+                    "type": "paragraph",
+                    "content": [
+                      {
+                        "text": "The guidance executive is responsible for:",
+                        "type": "text"
+                      }
+                    ]
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "type": "paragraph",
+            "content": [
+              {
+                "text": "a. Approving, on behalf of the board, NICE guidance, advice and other products including:",
+                "type": "text"
+              }
+            ]
+          },
+          {
+            "type": "bullet_list",
+            "content": [
+              {
+                "type": "list_item",
+                "content": [
+                  {
+                    "type": "paragraph",
+                    "content": [
+                      {
+                        "text": "Guidelines",
+                        "type": "text"
+                      }
+                    ]
+                  }
+                ]
+              },
+              {
+                "type": "list_item",
+                "content": [
+                  {
+                    "type": "paragraph",
+                    "content": [
+                      {
+                        "text": "Guidance produced by the Centre for Health Technology Evaluation (technology appraisals, highly specialised technology guidance, interventional procedures guidance, medical technologies guidance, diagnostics guidance)",
+                        "type": "text"
+                      }
+                    ]
+                  }
+                ]
+              },
+              {
+                "type": "list_item",
+                "content": [
+                  {
+                    "type": "paragraph",
+                    "content": [
+                      {
+                        "text": "Quality standards",
+                        "type": "text"
+                      }
+                    ]
+                  }
+                ]
+              },
+              {
+                "type": "list_item",
+                "content": [
+                  {
+                    "type": "paragraph",
+                    "content": [
+                      {
+                        "text": "Associated digital content",
+                        "type": "text"
+                      }
+                    ]
+                  }
+                ]
+              },
+              {
+                "type": "list_item",
+                "content": [
+                  {
+                    "type": "paragraph",
+                    "content": [
+                      {
+                        "text": "Other publications at the discretion of the guidance executive chair",
+                        "type": "text"
+                      }
+                    ]
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "type": "paragraph",
+            "content": [
+              {
+                "text": "b. Consulting on, and making decisions about, variations to the funding requirement for technologies assessed by the technology appraisal and highly specialised technologies programmes.",
+                "type": "text"
+              }
+            ]
+          },
+          {
+            "type": "paragraph",
+            "content": [
+              {
+                "text": "c. Receiving and taking action on appeal decisions regarding the technology appraisal and highly specialised technologies programmes.",
+                "type": "text"
+              }
+            ]
+          },
+          {
+            "type": "paragraph",
+            "content": [
+              {
+                "text": "d. Agreeing any changes to NICE’s methods and processes for guidance development prior to approval by the board (subject to the need for board approval and public consultation).",
+                "type": "text"
+              }
+            ]
+          },
+          {
+            "type": "paragraph",
+            "content": [
+              {
+                "text": "e. Overseeing the topic selection and prioritisation process at NICE.",
+                "type": "text"
+              }
+            ]
+          },
+          {
+            "type": "paragraph",
+            "content": [
+              {
+                "text": "f. Overseeing the arrangements for patient safety.",
+                "type": "text"
+              }
+            ]
+          },
+          {
+            "type": "paragraph",
+            "content": [
+              {
+                "text": "2. The guidance executive will:",
+                "type": "text"
+              }
+            ]
+          },
+          {
+            "type": "paragraph",
+            "content": [
+              {
+                "text": "a) Ensure discussion of contentious issues at early stage.",
+                "type": "text"
+              }
+            ]
+          },
+          {
+            "type": "paragraph",
+            "content": [
+              {
+                "text": "b) Ensure implementation and patient safety considerations inform guidance production.",
+                "type": "text"
+              }
+            ]
+          },
+          {
+            "type": "paragraph",
+            "content": [
+              {
+                "text": "c) Commission and review cross cutting resources related to guidance (e.g., health inequalities, productivity).",
+                "type": "text"
+              }
+            ]
+          },
+          {
+            "type": "paragraph",
+            "content": [
+              {
+                "text": "d) Receive monthly progress reports from the prioritisation board.",
+                "type": "text"
+              }
+            ]
+          },
+          {
+            "type": "paragraph",
+            "content": [
+              {
+                "text": "e) Sign off the prioritisation manual, strategic principles for public health, social care and rare diseases and receive for discussion the annual ‘Forward view’ for the prioritisation board.",
+                "type": "text"
+              }
+            ]
+          },
+          {
+            "type": "paragraph",
+            "content": [
+              {
+                "text": "f) Receive an annual report from the patient safety committee.",
+                "type": "text"
+              }
+            ]
+          },
+          {
+            "type": "heading",
+            "attrs": {
+              "level": 2
+            },
+            "content": [
+              {
+                "text": "Standing orders",
+                "type": "text"
+              }
+            ]
+          },
+          {
+            "type": "heading",
+            "attrs": {
+              "level": 3
+            },
+            "content": [
+              {
+                "text": "General",
+                "type": "text"
+              }
+            ]
+          },
+          {
+            "type": "paragraph",
+            "content": [
+              {
+                "text": "7. These standing orders describe the procedural rules for managing the work of the guidance executive. Nothing in these standing orders or terms of reference should limit compliance with NICE’s standing orders so far as they are applicable to the guidance executive. Members of the guidance executive must also abide by the standards of conduct required by contracts of employment and NICE’s policies.",
+                "type": "text"
+              }
+            ]
+          },
+          {
+            "type": "heading",
+            "attrs": {
+              "level": 3
+            },
+            "content": [
+              {
+                "text": "Membership",
+                "type": "text"
+              }
+            ]
+          },
+          {
+            "type": "paragraph",
+            "content": [
+              {
+                "text": "8. The membership of the guidance executive is:",
+                "type": "text"
+              }
+            ]
+          },
+          {
+            "type": "bullet_list",
+            "content": [
+              {
+                "type": "list_item",
+                "content": [
+                  {
+                    "type": "paragraph",
+                    "content": [
+                      {
+                        "text": "Chief Executive (Chair)",
+                        "type": "text"
+                      }
+                    ]
+                  }
+                ]
+              },
+              {
+                "type": "list_item",
+                "content": [
+                  {
+                    "type": "paragraph",
+                    "content": [
+                      {
+                        "text": "Chief Medical Officer (Deputy Chair) / Deputy Chief Executive and Interim Director – Centre for Guidelines",
+                        "type": "text"
+                      }
+                    ]
+                  }
+                ]
+              },
+              {
+                "type": "list_item",
+                "content": [
+                  {
+                    "type": "paragraph",
+                    "content": [
+                      {
+                        "text": "Director – Medicines Evaluation",
+                        "type": "text"
+                      }
+                    ]
+                  }
+                ]
+              },
+              {
+                "type": "list_item",
+                "content": [
+                  {
+                    "type": "paragraph",
+                    "content": [
+                      {
+                        "text": "Director – Impact and Partnerships",
+                        "type": "text"
+                      }
+                    ]
+                  }
+                ]
+              },
+              {
+                "type": "list_item",
+                "content": [
+                  {
+                    "type": "paragraph",
+                    "content": [
+                      {
+                        "text": "Chief Scientific Officer",
+                        "type": "text"
+                      }
+                    ]
+                  }
+                ]
+              },
+              {
+                "type": "list_item",
+                "content": [
+                  {
+                    "type": "paragraph",
+                    "content": [
+                      {
+                        "text": "Director – Medical Technology and Digital Evaluation",
+                        "type": "text"
+                      }
+                    ]
+                  }
+                ]
+              },
+              {
+                "type": "list_item",
+                "content": [
+                  {
+                    "type": "paragraph",
+                    "content": [
+                      {
+                        "text": "Associate Director – Media Relations",
+                        "type": "text"
+                      }
+                    ]
+                  }
+                ]
+              },
+              {
+                "type": "list_item",
+                "content": [
+                  {
+                    "type": "paragraph",
+                    "content": [
+                      {
+                        "text": "Associate Director – Resource Impact Assessment",
+                        "type": "text"
+                      }
+                    ]
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "type": "paragraph",
+            "content": [
+              {
+                "text": "9. The chair of the guidance executive is the chief executive. In the chief executive’s absence, the meetings will be conducted by the deputy chair, or in their absence, another director nominated by the chief executive.",
+                "type": "text"
+              }
+            ]
+          },
+          {
+            "type": "paragraph",
+            "content": [
+              {
+                "text": "10. If a member is unable to attend, whenever possible apologies should be sent to guidance executive administration at least 5 working days in advance of the meeting. A deputy will be invited to attend the meeting if a guidance executive member is unable to attend. It is important that deputies are chosen to reflect the relevant areas of expertise, especially clinical input, provided by the core members.",
+                "type": "text"
+              }
+            ]
+          },
+          {
+            "type": "heading",
+            "attrs": {
+              "level": 3
+            },
+            "content": [
+              {
+                "text": "Other attendees",
+                "type": "text"
+              }
+            ]
+          },
+          {
+            "type": "paragraph",
+            "content": [
+              {
+                "text": "11. Other members of relevant teams will attend meetings, as required, to present documents for sign-off where they have a specific responsibility for a particular product. Other members of staff may be invited to attend at the discretion of the chair of the guidance executive.",
+                "type": "text"
+              }
+            ]
+          }
+        ]
+      },
+      "metadata": [
+        {
+          "_uid": "614f6adc-c4c0-495d-9f16-7e672030e8b6",
+          "creator": "",
+          "component": "metadata",
+          "description": ""
+        }
+      ],
+      "component": "infoPage",
+      "hideInPageNav": "true",
+      "hideSectionNav": "true"
+    },
+    "slug": "info-page-no-nav",
+    "full_slug": "unit-test-data/info-page-no-nav",
+    "sort_by_date": null,
+    "position": -20,
+    "tag_list": [],
+    "is_startpage": false,
+    "parent_id": 659520607,
+    "meta_data": null,
+    "group_id": "3545fe98-541d-45cd-b0f6-fe5c6fc3afd3",
+    "first_published_at": "2025-06-03T11:32:12.703Z",
+    "release_id": null,
+    "lang": "default",
+    "path": null,
+    "alternates": [],
+    "default_full_slug": null,
+    "translated_slugs": null
+  },
+  "breadcrumbs": [
+    {
+      "title": "Home",
+      "path": "/"
+    },
+    {
+      "title": "Unit Test Data (do not modify)",
+      "path": "/unit-test-data"
+    }
+  ],
+  "component": "infoPage",
+  "tree": [
+    {
+      "id": 681214537,
+      "uuid": "e5cfb560-56ac-45a6-9dec-b421837e7692",
+      "slug": "unit-test-data/info-page-hero-in-page-nav",
+      "path": null,
+      "parent_id": 659520607,
+      "name": "Info Page with Hero and In Page Nav",
+      "is_folder": false,
+      "published": true,
+      "is_startpage": false,
+      "position": -30,
+      "real_path": "/unit-test-data/info-page-hero-in-page-nav",
+      "childLinks": []
+    },
+    {
+      "id": 681214604,
+      "uuid": "7bdf4e3a-7953-4b81-bdb7-93d91dbc74d2",
+      "slug": "unit-test-data/info-page-no-nav",
+      "path": null,
+      "parent_id": 659520607,
+      "name": "Info Page No Nav",
+      "is_folder": false,
+      "published": true,
+      "is_startpage": false,
+      "position": -20,
+      "real_path": "/unit-test-data/info-page-no-nav",
+      "childLinks": []
+    },
+    {
+      "id": 560615999,
+      "uuid": "be70c55b-d349-41d4-b655-43f4ff83cab5",
+      "slug": "unit-test-data/test-category-landing",
+      "path": null,
+      "parent_id": 659520607,
+      "name": "category landing",
+      "is_folder": false,
+      "published": true,
+      "is_startpage": false,
+      "position": 0,
+      "real_path": "/unit-test-data/test-category-landing",
+      "childLinks": []
+    },
+    {
+      "id": 681214534,
+      "uuid": "0c903941-8f52-4395-8bb1-37d77233c3f3",
+      "slug": "unit-test-data/info-page-default",
+      "path": null,
+      "parent_id": 659520607,
+      "name": "Info Page Default (Page Header & Section Nav)",
+      "is_folder": false,
+      "published": true,
+      "is_startpage": false,
+      "position": 10,
+      "real_path": "/unit-test-data/info-page-default",
+      "childLinks": []
+    },
+    {
+      "id": 560642123,
+      "uuid": "d6f8ad6b-57e8-4c87-852e-8d4b443307ed",
+      "slug": "unit-test-data/category-landing-with-hero",
+      "path": "",
+      "parent_id": 659520607,
+      "name": "Category landing with hero",
+      "is_folder": false,
+      "published": true,
+      "is_startpage": false,
+      "position": 20,
+      "real_path": "/unit-test-data/category-landing-with-hero",
+      "childLinks": []
+    },
+    {
+      "id": 531694452,
+      "uuid": "e9a479e6-8db1-4b61-bed0-6daaa23aca98",
+      "slug": "unit-test-data/test-page",
+      "path": null,
+      "parent_id": 659520607,
+      "name": "Test page",
+      "is_folder": false,
+      "published": true,
+      "is_startpage": false,
+      "position": 30,
+      "real_path": "/unit-test-data/test-page",
+      "childLinks": []
+    }
+  ],
+  "slug": "unit-test-data/info-page-no-nav"
+}

@@ -68,6 +68,7 @@ describe("StoryblokSectionNav", () => {
 		console.log(link.outerHTML);
 		expect(link).toHaveAttribute("aria-current", "false");
 	});
+
 	it("should highlight the current  link based on the slug", () => {
 		render(
 			<StoryblokSectionNav tree={mockData.topLevelTree} slug={"contact-us"} />
