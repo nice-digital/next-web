@@ -3,9 +3,16 @@
 @use '@nice-digital/nds-core/scss/utils';
 
 .imageRichText {
+  h2,
+  h3,
+  h4,
+  h5,
+  h6 {
+    margin: 0 0 utils.rem(spacing.$medium);
+  }
   container-name: imageRichText;
   container-type: inline-size;
-  margin-bottom: utils.rem(spacing.$medium);
+  margin-bottom: utils.rem(spacing.$large);
 
   &__mobileImage {
     display: block;
@@ -21,7 +28,7 @@
   }
 
   &__imageWithHeading {
-    margin-top: utils.rem(spacing.$large);
+    margin-top: 0;
   }
 
   &__imageWithoutHeading {
