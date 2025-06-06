@@ -26,6 +26,7 @@ import { StoryblokActionBannerFullWidth } from "@/components/Storyblok/Storyblok
 import { StoryblokCalloutCard } from "@/components/Storyblok/StoryblokCalloutCard/StoryblokCalloutCard";
 import { StoryblokHero } from "@/components/Storyblok/StoryblokHero/StoryblokHero";
 import { StoryblokIframe } from "@/components/Storyblok/StoryblokIframe/StoryblokIframe";
+import { StoryblokImageRichText } from "@/components/Storyblok/StoryblokImageRichText/StoryblokImageRichText";
 import { StoryblokPageHeader } from "@/components/Storyblok/StoryblokPageHeader/StoryblokPageHeader";
 import {
 	buildTree,
@@ -129,6 +130,7 @@ export default function SlugCatchAll(
 		quote: Blockquote,
 		testimonialGridItem: StoryblokTestimonialGridItem,
 		youtubeEmbed: StoryblokYoutubeEmbed,
+		imageRichText: StoryblokImageRichText,
 	};
 
 	const components = {

@@ -1,0 +1,51 @@
+@use '@nice-digital/nds-core/scss/media-queries';
+@use '@nice-digital/nds-core/scss/spacing';
+@use '@nice-digital/nds-core/scss/utils';
+
+.imageRichText {
+  h2,
+  h3,
+  h4,
+  h5,
+  h6 {
+    margin: 0 0 utils.rem(spacing.$medium);
+  }
+  container-name: imageRichText;
+  container-type: inline-size;
+  margin-bottom: utils.rem(spacing.$large);
+
+  &__mobileImage {
+    display: block;
+    margin-top: utils.rem(spacing.$medium);
+  }
+
+  &__hideMainImageOnDesktop {
+    display: none;
+  }
+
+  &__hideImageOnMobile {
+    display: block;
+  }
+
+  &__imageWithHeading {
+    margin-top: 0;
+  }
+
+  &__imageWithoutHeading {
+    margin-top: utils.rem(spacing.$medium);
+  }
+  @container imageRichText (min-width: #{media-queries.$sm}) {
+    &__mobileImage {
+      display: none;
+    }
+
+    &__desktopImage {
+      display: block;
+    }
+  }
+  @container imageRichText (max-width:#{media-queries.$sm}) {
+    &__hideImageOnMobile {
+      display: none;
+    }
+  }
+}
