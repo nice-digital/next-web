@@ -175,7 +175,10 @@ describe("NextWebApp", () => {
 	});
 
 	it("shouldn't highlight guidance on the menu for routes outside guidance", async () => {
-		renderApp({ pathname: "/not-guidance" });
+		renderApp({
+			pathname: "/not-guidance",
+			query: { productRoot: "not-guidance" },
+		});
 
 		const guidanceLinks = screen.queryAllByRole("link", { name: "Guidance" });
 		expect(guidanceLinks).not.toBeNull();
@@ -184,7 +187,10 @@ describe("NextWebApp", () => {
 	});
 
 	it("should highlight guidance on the menu for routes under guidance", () => {
-		renderApp({ pathname: "/guidance/published" });
+		renderApp({
+			pathname: "/guidance/published",
+			query: { productRoot: "guidance" },
+		});
 
 		const guidanceLinks = screen.queryAllByRole("link", { name: "Guidance" });
 		expect(guidanceLinks).not.toBeNull();
