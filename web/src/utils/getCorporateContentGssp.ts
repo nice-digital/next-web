@@ -2,6 +2,7 @@ import {
 	buildTree,
 	type ExtendedSBLink,
 } from "@/components/Storyblok/StoryblokSectionNav/utils/Utils";
+import { memoisedBuildTree } from "@/components/Storyblok/StoryblokSectionNav/utils/memoisedBuildTree";
 import { logger } from "@/logger";
 import {
 	InfoPageStoryblok,
@@ -79,7 +80,8 @@ export const getCorporateContentGssp = <
 			let tree: ExtendedSBLink[] = [];
 
 			if (component === "infoPage") {
-				tree = await buildTree(parentID, slug, isRootPage);
+				// tree = await buildTree(parentID, slug, isRootPage);
+				tree = await memoisedBuildTree(parentID, slug, isRootPage);
 				// TODO: move out of catchall page; would need API route as GSSP is not allowed in components whilst using pages router
 			}
 
