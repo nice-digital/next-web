@@ -8,8 +8,14 @@ export const memoisedBuildTree = mem(
     slug: string,
     isRootPage?: boolean
   ): Promise<ExtendedSBLink[]> => {
+    const start = Date.now();
     logger.warn(`Calling ORIGINAL buildTree (not memoised) for slug: "${slug}", parentID: ${parentID}, isRootPage: ${isRootPage}`);
-    return await buildTree(parentID, slug, isRootPage);
+    const result = await buildTree(parentID, slug, isRootPage);
+    const duration = Date.now() - start;
+    logger.warn(
+      `buildTree execution time for slug: "${slug}", parentID: ${parentID}, isRootPage: ${isRootPage} = ${duration}ms`
+    );
+    return result;
   },
   {
     maxAge: 1000 * 60 * 2, // 2 minutes
