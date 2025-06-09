@@ -1,13 +1,15 @@
 import { render, screen, within } from "@testing-library/react";
 import React from "react";
 
+import { ImageRichTextStoryblok } from "@/types/storyblok";
+
 import { StoryblokImageRichText } from "./StoryblokImageRichText";
 
-const blok = {
+const blok: ImageRichTextStoryblok = {
 	mainImage: {
 		filename: "https://a.storyblok.com/nhs-team.JPG",
 		alt: "Desktop Image",
-		fieldtype: "asset" as const,
+		fieldtype: "asset",
 		id: 1,
 		name: "nhs-team.JPG",
 		title: "Desktop Image",
@@ -19,20 +21,20 @@ const blok = {
 			{ type: "paragraph", content: [{ type: "text", text: "Hello World" }] },
 		],
 	},
-	imageSize: "medium" as const,
-	imagePosition: "left" as const,
-	hideImagesOnSmallScreens: "false" as "false" | "true",
+	imageSize: "medium",
+	imagePosition: "left",
+	hideImagesOnSmallScreens: "false",
 	smallScreenImage: {
 		filename: "https://a.storyblok.com/nhs-team.JPG",
 		alt: "Mobile Image",
-		fieldtype: "asset" as const,
+		fieldtype: "asset",
 		id: 2,
 		name: "nhs-team.JPG",
 		title: "Mobile Image",
 		focus: null,
 	},
 	_uid: "123",
-	component: "imageRichText" as const,
+	component: "imageRichText",
 };
 
 describe("StoryblokImageRichText", () => {
