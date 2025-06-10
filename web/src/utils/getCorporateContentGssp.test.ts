@@ -14,6 +14,12 @@ import {
 
 import type { GetServerSidePropsContext } from "next";
 
+jest.mock(
+	"mem",
+	() =>
+		<T extends (...args: any[]) => any>(fn: T): T =>
+			fn
+);
 jest.mock("@/utils/storyblok");
 jest.mock("@/logger");
 //TODO do we need a better mock for the tree?
