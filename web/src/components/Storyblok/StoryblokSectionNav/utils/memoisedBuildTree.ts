@@ -16,7 +16,7 @@ export const memoisedBuildTree = mem(
     const result = await buildTree(parentID, slug, isRootPage);
     const duration = Date.now() - start;
     logger.warn(
-      `buildTree execution time for slug: "${slug}", parentID: ${parentID}, isRootPage: ${isRootPage} = ${duration}ms`
+      `in section navigation buildTree execution time for slug: "${slug}", parentID: ${parentID}, isRootPage: ${isRootPage} = ${duration}ms`
     );
     return result;
 },
@@ -30,3 +30,20 @@ export const memoisedBuildTree = mem(
     },
   }
 );
+
+
+export const buildTreeWithOptionalCache = async (
+  parentID: number,
+  slug: string,
+  isRootPage?: boolean
+): Promise<ExtendedSBLink[]> => {
+  const ttl = serverRuntimeConfig?.cache?.sectionNavCacheTTL;
+  const isCachingEnabled = !!ttl && ttl > 0;
+
+  if (!isCachingEnabled) {
+    logger.warn(`In section navigation memoisation BYPASSED - calling buildTree for "${slug}"`);
+    return buildTree(parentID, slug, isRootPage);
+  }
+
+  return memoisedBuildTree(parentID, slug, isRootPage);
+};
