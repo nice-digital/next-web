@@ -29,8 +29,6 @@ const memoisedBuildTree = mem(rawBuildTree, {
   maxAge: sectionNavCacheTTL_MS,
   cacheKey: ([parentID, slug, isRootPage]: [number, string, boolean?]) => {
     const key = `${parentID}_${slug}_${isRootPage ?? false}`;
-    logger.warn(`sectionNavCacheTTL_MS: ${sectionNavCacheTTL_MS}`);
-    logger.warn(`Generated buildTree cache key: ${key}`);
     return key;
   },
 });
