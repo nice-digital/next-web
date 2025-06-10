@@ -61,8 +61,8 @@ const categoryLandingPageComponents = {
 
 const infoPageComponents = {
 	iframe: StoryblokIframe,
-	infoPage: InfoPage,
 	imageRichText: StoryblokImageRichText,
+	infoPage: InfoPage,
 	nestedTable: StoryblokTable,
 };
 
