@@ -1,6 +1,9 @@
 import mem from "mem";
 import { buildTree, ExtendedSBLink } from "./Utils";
 import { logger } from "@/logger";
+import { serverRuntimeConfig } from "@/config";
+
+export const sectionNavCacheTTL_MS = (serverRuntimeConfig?.cache?.sectionNavCacheTTL ?? 21600) * 1000; // default to 6 hours if env var is not set
 
 export const memoisedBuildTree = mem(
   async (
@@ -16,11 +19,12 @@ export const memoisedBuildTree = mem(
       `buildTree execution time for slug: "${slug}", parentID: ${parentID}, isRootPage: ${isRootPage} = ${duration}ms`
     );
     return result;
-  },
-  {
-    maxAge: 1000 * 60 * 2, // 2 minutes
-    cacheKey: ([parentID, slug, isRootPage]: [number, string, boolean?]) => {
+},
+{
+	maxAge: sectionNavCacheTTL_MS,
+	cacheKey: ([parentID, slug, isRootPage]: [number, string, boolean?]) => {
       const key = `${parentID}_${slug}_${isRootPage ?? false}`;
+	  logger.warn(`sectionNavCacheTTL_MS: ${sectionNavCacheTTL_MS}`)
       logger.warn(`Generated buildTree cache key: ${key}`);
       return key;
     },
