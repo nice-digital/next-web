@@ -22,6 +22,7 @@ import { StoryblokActionBannerFullWidth } from "@/components/Storyblok/Storyblok
 import { StoryblokCalloutCard } from "@/components/Storyblok/StoryblokCalloutCard/StoryblokCalloutCard";
 import { StoryblokHero } from "@/components/Storyblok/StoryblokHero/StoryblokHero";
 import { StoryblokIframe } from "@/components/Storyblok/StoryblokIframe/StoryblokIframe";
+import { StoryblokImageRichText } from "@/components/Storyblok/StoryblokImageRichText/StoryblokImageRichText";
 import { StoryblokPageHeader } from "@/components/Storyblok/StoryblokPageHeader/StoryblokPageHeader";
 import { StoryblokTable } from "@/components/Storyblok/StoryblokTable/StoryblokTable";
 import { StoryblokTestimonialFullWidth } from "@/components/Storyblok/StoryblokTestimonialFullWidth/StoryblokTestimonialFullWidth";
@@ -61,6 +62,7 @@ const categoryLandingPageComponents = {
 const infoPageComponents = {
 	iframe: StoryblokIframe,
 	infoPage: InfoPage,
+	imageRichText: StoryblokImageRichText,
 	nestedTable: StoryblokTable,
 };
 
