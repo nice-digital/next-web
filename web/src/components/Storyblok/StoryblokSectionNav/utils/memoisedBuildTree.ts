@@ -87,6 +87,7 @@ export const buildTreeWithOptionalCache = async (
   if (res) {
     res.setHeader("X-Section-Navigation-Cache", status);
     res.setHeader("X-Section-Navigation-BuildTime", `${duration}ms`);
+		res.setHeader("X-Section-Navigation-Cache-TTL", `${sectionNavCacheTTL_MS / 1000}s`);
   }
 
   return tree;
