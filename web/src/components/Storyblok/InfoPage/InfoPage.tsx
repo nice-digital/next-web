@@ -65,7 +65,7 @@ export const InfoPage = ({
 							<StoryblokSectionNav tree={tree} slug={slug} />
 						) : (
 							blok.hideInPageNav !== "true" && (
-								<InPageNav headingsSelector={"h2"} />
+								<InPageNav headingsSelector={"h2"} headingsContainerSelector={".inPageNavContainerSelector"} headingsExcludeContainer={".action-banner"} />
 							)
 						)}
 					</GridItem>
@@ -75,7 +75,8 @@ export const InfoPage = ({
 					cols={12}
 					sm={{ cols: 8 }}
 					md={{ cols: 9 }}
-					className={styles.infoPage__contentArea}
+					className={`${styles.infoPage__contentArea} inPageNavContainerSelector`}
+
 				>
 					<div className={styles.content}>
 						<StoryblokRichText content={blok.content} />
