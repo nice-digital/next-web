@@ -35,7 +35,7 @@ describe("cardList component", () => {
 			selector: "a",
 		});
 		const cardBody = screen.getByText("Mock card summary 1", {
-			selector: "li",
+			selector: "p",
 		});
 		expect(cardHeading).toBeInTheDocument();
 		expect(cardHeading).toHaveAttribute("href", cardLinkUrl);
@@ -74,7 +74,7 @@ describe("cardList component", () => {
 			selector: "a",
 		});
 		const cardBody = screen.getByText("Mock card summary 1", {
-			selector: "li",
+			selector: "p",
 		});
 		expect(cardHeading).toBeInTheDocument();
 		expect(cardHeading).toHaveAttribute("href", "/test-nick");
