@@ -188,6 +188,15 @@ export interface CalloutCardStoryblok {
   [k: string]: any;
 }
 
+export interface CalloutCardDemoStoryblok {
+  heading: string;
+  body: string;
+  link?: MultilinkStoryblok;
+  component: "calloutCardDemo";
+  _uid: string;
+  [k: string]: any;
+}
+
 export interface CalloutCardWithImageStoryblok {
   heading: string;
   body: string;
@@ -350,10 +359,12 @@ export interface GridStoryblok {
     | BlogPostStoryblok
     | ButtonLinkStoryblok
     | CalloutCardStoryblok
+    | CalloutCardDemoStoryblok
     | CalloutCardWithImageStoryblok
     | CardStoryblok
     | CardContentStoryblok
     | CardGridStoryblok
+    | CardGridRowStoryblok
     | CardGridRowBasicStoryblok
     | CardGridRowCalloutStoryblok
     | CardGridRowCalloutWithImageStoryblok
@@ -381,6 +392,7 @@ export interface GridStoryblok {
     | InfoPageStoryblok
     | ListItemStoryblok
     | MarkdownStoryblok
+    | MenuLinkStoryblok
     | MetadataStoryblok
     | NestedRichTextStoryblok
     | NestedTableStoryblok
@@ -574,6 +586,14 @@ export interface MarkdownStoryblok {
   [k: string]: any;
 }
 
+export interface MenuLinkStoryblok {
+  link?: Exclude<MultilinkStoryblok, {linktype?: "email"} | {linktype?: "asset"}>;
+  name?: string;
+  component: "menu_link";
+  _uid: string;
+  [k: string]: any;
+}
+
 export interface MetadataStoryblok {
   description?: string;
   creator?: string;
@@ -651,10 +671,12 @@ export interface PageStoryblok {
     | BlogPostStoryblok
     | ButtonLinkStoryblok
     | CalloutCardStoryblok
+    | CalloutCardDemoStoryblok
     | CalloutCardWithImageStoryblok
     | CardStoryblok
     | CardContentStoryblok
     | CardGridStoryblok
+    | CardGridRowStoryblok
     | CardGridRowBasicStoryblok
     | CardGridRowCalloutStoryblok
     | CardGridRowCalloutWithImageStoryblok
@@ -682,6 +704,7 @@ export interface PageStoryblok {
     | InfoPageStoryblok
     | ListItemStoryblok
     | MarkdownStoryblok
+    | MenuLinkStoryblok
     | MetadataStoryblok
     | NestedRichTextStoryblok
     | NestedTableStoryblok
