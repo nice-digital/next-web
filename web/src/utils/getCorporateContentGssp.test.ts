@@ -14,10 +14,13 @@ import {
 
 import type { GetServerSidePropsContext } from "next";
 
+// NOTE: Jest does not support ESM-only modules like 'mem' out of the box, so we mock it here.
+// See: https://jestjs.io/docs/ecmascript-modules for more info.
+// TODO: consider moving this mock or putting it in a wrapper to make jest happy...?
 jest.mock(
 	"mem",
 	() =>
-		<T extends (...args: any[]) => any>(fn: T): T =>
+		<T extends (...args: unknown[]) => unknown>(fn: T): T =>
 			fn
 );
 jest.mock("@/utils/storyblok");
