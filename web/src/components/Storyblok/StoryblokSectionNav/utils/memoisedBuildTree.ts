@@ -48,6 +48,8 @@ const purgeExpiredTimestamps = () => {
 	});
 };
 
+
+//TODO we can likely reduce the amount of logging, given that the behaviour is observable in the headers
 export const buildTreeWithOptionalCache = async (
 	parentID: number,
 	slug: string,
