@@ -9,6 +9,7 @@
     text-align: left;
 
     @include media-queries.mq($until: sm) {
-      display: block;    }
+      display: block;
+    }
   }
 }
