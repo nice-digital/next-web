@@ -18,33 +18,6 @@ jest.mock("@/utils/storyblok", () => ({
 	]),
 }));
 
-// NOTE: Jest does not support ESM-only modules like 'mem' out of the box, so we mock it here.
-// See: https://jestjs.io/docs/ecmascript-modules for more info.
-// TODO: consider moving this mock or putting it in a wrapper to make jest happy...?
-// Fake-mem: first call caches, subsequent return cached value
-jest.mock("mem", () => {
-	return function <T extends (...args: unknown[]) => Promise<unknown>>(
-		fn: T
-	): T {
-		const cache = new Map<string, Awaited<ReturnType<T>>>();
-
-		return (async (...args: Parameters<T>) => {
-			const key = args.join("_");
-
-			const cached = cache.get(key);
-			if (cached !== undefined) {
-				return cached;
-			}
-
-			const result = await fn(...args);
-			// This cast is now safe and necessary to guide the compiler
-			const typedResult = result as Awaited<ReturnType<T>>;
-			cache.set(key, typedResult);
-			return typedResult;
-		}) as T;
-	};
-});
-
 // Default TTL = 1 second
 jest.mock("@/config", () => ({
 	serverRuntimeConfig: { cache: { sectionNavCacheTTL: 1 } },

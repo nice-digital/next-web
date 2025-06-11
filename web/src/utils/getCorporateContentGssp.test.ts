@@ -14,15 +14,6 @@ import {
 
 import type { GetServerSidePropsContext } from "next";
 
-// NOTE: Jest does not support ESM-only modules like 'mem' out of the box, so we mock it here.
-// See: https://jestjs.io/docs/ecmascript-modules for more info.
-// TODO: consider moving this mock or putting it in a wrapper to make jest happy...?
-jest.mock(
-	"mem",
-	() =>
-		<T extends (...args: unknown[]) => unknown>(fn: T): T =>
-			fn
-);
 jest.mock("@/utils/storyblok");
 jest.mock("@/logger");
 //TODO do we need a better mock for the tree?
