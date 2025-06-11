@@ -520,10 +520,10 @@ export interface ImageOrVideoStoryblok {
 }
 
 export interface ImageRichTextStoryblok {
-  imagePosition?: "left" | "right";
+  imagePosition?: "" | "left" | "right";
   imageSize?: "small" | "medium" | "large";
-  hideImage?: boolean;
-  image: AssetStoryblok;
+  hideImagesOnSmallScreens?: "true" | "false";
+  mainImage: AssetStoryblok;
   smallScreenImage?: AssetStoryblok;
   content: RichtextStoryblok;
   component: "imageRichText";
