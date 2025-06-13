@@ -30,6 +30,7 @@ import { StoryblokTestimonialGridItem } from "@/components/Storyblok/StoryblokTe
 import { StoryblokYoutubeEmbed } from "@/components/Storyblok/StoryblokYoutubeEmbed/StoryblokYoutubeEmbed";
 import { publicRuntimeConfig } from "@/config";
 import { logger } from "@/logger";
+import { InfogramEmbed } from "@/components/Storyblok/InfogramEmbed/InfogramEmbed";
 
 //TODO: consider a mix of static imports for common components and dynamic imports for lesser used components
 const commonComponents = {
@@ -57,6 +58,7 @@ const categoryLandingPageComponents = {
 	promoBox: PromoBox,
 	testimonialFullWidth: StoryblokTestimonialFullWidth,
 	testimonialGridItem: StoryblokTestimonialGridItem,
+
 };
 
 const infoPageComponents = {
@@ -64,6 +66,7 @@ const infoPageComponents = {
 	imageRichText: StoryblokImageRichText,
 	infoPage: InfoPage,
 	nestedTable: StoryblokTable,
+	infogramEmbed:InfogramEmbed
 };
 
 const categoryNavigationPageComponents = {
