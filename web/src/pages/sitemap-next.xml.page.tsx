@@ -35,8 +35,8 @@ function SiteMap(): void {
 
 export async function getServerSideProps({ res }: { res: NextApiResponse }) {
 	// Update this array as sections are migrated into NextWeb
-	const nextWebSections = ["news", "careers", "library-and-knowledge-services"]
-	let links: SBLink[] = [];
+	const nextWebSections = ["news", "careers", "library-and-knowledge-services"];
+	const links: SBLink[] = [];
 
 	for (const section of nextWebSections) {
 		const sbParams: ISbStoriesParams = {
