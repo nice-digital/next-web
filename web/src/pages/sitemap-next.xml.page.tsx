@@ -34,17 +34,21 @@ function SiteMap(): void {
 }
 
 export async function getServerSideProps({ res }: { res: NextApiResponse }) {
-	// We're only interested in fetching news stories for the first release
-	// Eventually this will get everything, once the rest of the stuff goes live
-	const sbParams: ISbStoriesParams = {
-		starts_with: "news",
-	};
-	const links = await fetchLinks(sbParams);
+	// Update this array as sections are migrated into NextWeb
+	const nextWebSections = ["news", "careers", "library-and-knowledge-services"]
+	let links: SBLink[] = [];
+
+	for (const section of nextWebSections) {
+		const sbParams: ISbStoriesParams = {
+			starts_with: section,
+		};
+		links.push(...(await fetchLinks(sbParams)));
+	}
+
 	const sitemap = generateSiteMap(links);
 	res.setHeader("Content-Type", "text/xml");
 	res.write(sitemap);
 	res.end();
-
 	return {
 		props: {},
 	};
