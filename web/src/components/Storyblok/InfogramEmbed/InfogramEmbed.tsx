@@ -2,7 +2,7 @@ import Script from "next/script";
 import { InfogramEmbedStoryblok } from "@/types/storyblok";
 import { useEffect, useState } from "react";
 
-import styles from "./InfogramEmbed.module.css";
+import styles from "./infogramEmbed.module.scss";
 
 declare global {
 	interface Window {
@@ -83,10 +83,12 @@ export const InfogramEmbed: React.FC<InfogramEmbedProps> = ({ blok }) => {
 	if (!embedData || !embedData.isValid) {
 		return <div>Embed code is invalid</div>;
 	}
+	console.log("blok", blok);
 	const embedClass =
 		variant === "default"
-			? `infogram-embed ${styles.infogramEmbed__default}`
-			: "infogram-embed";
+			? `infogram-embed ${styles.infogramEmbed} ${styles.infogramEmbed__default}`
+			: `infogram-embed ${styles.infogramEmbed}`;
+			console.log(`embedClass`, embedClass);
 	return (
 		<>
 			<Script
@@ -215,4 +217,4 @@ export const InfogramEmbed: React.FC<InfogramEmbedProps> = ({ blok }) => {
 // 	);
 // };
 
-// export default InfogramEmbed;
+export default InfogramEmbed;
