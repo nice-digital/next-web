@@ -264,6 +264,13 @@ export interface CardGridSectionStoryblok {
   [k: string]: any;
 }
 
+export interface CardListStoryblok {
+  cards: CardListSectionItemStoryblok[];
+  component: "cardList";
+  _uid: string;
+  [k: string]: any;
+}
+
 export interface CardListSectionStoryblok {
   heading?: string;
   headingLevel: string;
@@ -341,6 +348,7 @@ export interface GridStoryblok {
     | CardGridRowCalloutWithImageStoryblok
     | CardGridRowTestimonialsStoryblok
     | CardGridSectionStoryblok
+    | CardListStoryblok
     | CardListSectionStoryblok
     | CardListSectionItemStoryblok
     | CategoryLandingPageStoryblok
@@ -356,6 +364,7 @@ export interface GridStoryblok {
     | IframeStoryblok
     | ImageEmbedStoryblok
     | ImageOrVideoStoryblok
+    | ImageRichTextStoryblok
     | InDepthArticleStoryblok
     | InfoPageStoryblok
     | MarkdownStoryblok
@@ -495,6 +504,18 @@ export interface ImageOrVideoStoryblok {
   [k: string]: any;
 }
 
+export interface ImageRichTextStoryblok {
+  imagePosition?: "" | "left" | "right";
+  imageSize?: "small" | "medium" | "large";
+  hideImagesOnSmallScreens?: "true" | "false";
+  mainImage: AssetStoryblok;
+  smallScreenImage?: AssetStoryblok;
+  content: RichtextStoryblok;
+  component: "imageRichText";
+  _uid: string;
+  [k: string]: any;
+}
+
 export interface InDepthArticleStoryblok {
   title: string;
   link: Exclude<MultilinkStoryblok, {linktype?: "email"} | {linktype?: "asset"}>;
@@ -509,6 +530,8 @@ export interface InDepthArticleStoryblok {
 export interface InfoPageStoryblok {
   header: (PageHeaderStoryblok | HeroStoryblok)[];
   metadata?: MetadataStoryblok[];
+  hideSectionNav?: "true" | "false";
+  hideInPageNav?: "true" | "false";
   content: RichtextStoryblok;
   component: "infoPage";
   _uid: string;
@@ -599,6 +622,7 @@ export interface PageStoryblok {
     | CardGridRowCalloutWithImageStoryblok
     | CardGridRowTestimonialsStoryblok
     | CardGridSectionStoryblok
+    | CardListStoryblok
     | CardListSectionStoryblok
     | CardListSectionItemStoryblok
     | CategoryLandingPageStoryblok
@@ -614,6 +638,7 @@ export interface PageStoryblok {
     | IframeStoryblok
     | ImageEmbedStoryblok
     | ImageOrVideoStoryblok
+    | ImageRichTextStoryblok
     | InDepthArticleStoryblok
     | InfoPageStoryblok
     | MarkdownStoryblok

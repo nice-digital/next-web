@@ -6,11 +6,12 @@ import {
 import { waitFor } from "@testing-library/react";
 
 import { logger } from "@/logger";
-import MockMultipleStorySuccessResponse from "@/test-utils/storyblok-news-articles-listing.json";
+import { mockCvValue } from "@/test-utils/storyblok-data";
+import MockMultipleStorySuccessResponse from "@/test-utils/storyblok-news-articles-listing.json"; //http://localhost:4000/news/articles (Alpha Public)
 import Mock404FromStoryblokApi from "@/test-utils/storyblok-not-found-response.json";
 import MockLinksSuccessResponse from "@/test-utils/storyblok-react-links-success-response.json";
 import MockServerErrorResponse from "@/test-utils/storyblok-server-error-response.json";
-import MockSingleStorySuccessResponse from "@/test-utils/storyblok-single-story-response.json";
+import MockSingleStorySuccessResponse from "@/test-utils/storyblok-single-story-response.json"; //https://api.storyblok.com/v2/cdn/stories/unit-test-data/test-page?resolve_links=url&token=ALPHA_PREVIEW
 import { type MultilinkStoryblok } from "@/types/storyblok";
 import * as storyblokUtils from "@/utils/storyblok";
 
@@ -34,6 +35,16 @@ import {
 } from "./storyblok";
 
 describe("Storyblok utils", () => {
+	beforeEach(() => {
+		jest
+			.spyOn(storyblokUtils, "fetchCacheVersion")
+			.mockResolvedValue(mockCvValue);
+	});
+
+	afterEach(() => {
+		jest.clearAllMocks();
+	});
+
 	describe("Resolve Storyblok links", () => {
 		it.each([
 			[
@@ -256,6 +267,7 @@ describe("Storyblok utils", () => {
 				{
 					resolve_links: "url",
 					version: "draft",
+					cv: mockCvValue, //globally mocked
 				}
 			);
 		});
@@ -265,7 +277,7 @@ describe("Storyblok utils", () => {
 				.fn()
 				.mockResolvedValue(MockSingleStorySuccessResponse);
 
-			const result = await fetchStory("news/articles/test-page", "published");
+			const result = await fetchStory("unit-test-data/test-page", "published");
 
 			expect(result.story).toEqual(MockSingleStorySuccessResponse.data.story);
 		});
@@ -318,6 +330,7 @@ describe("Storyblok utils", () => {
 			expect(throwErrorFetchStory).rejects.toThrow(GENERIC_ERROR_MESSAGE);
 
 			expect(jest.isMockFunction(logger.error)).toBe(true);
+
 			await waitFor(() => {
 				expect(logger.error).toHaveBeenCalled();
 				// eslint-disable-next-line testing-library/no-wait-for-multiple-assertions
@@ -328,7 +341,7 @@ describe("Storyblok utils", () => {
 					// 	sbParams: { resolve_links: "url", version: "published" },
 					// 	slug: "news/articles/test-page",
 					// },
-					"fetchStory: Non ISbError response at slug: news/articles/test-page"
+					"fetchStory: Non Storyblok error response at slug: news/articles/test-page. Error: Generic error"
 				);
 			});
 		});
@@ -343,6 +356,7 @@ describe("Storyblok utils", () => {
 			await fetchStories("published", {
 				starts_with: "news/articles",
 				per_page: 6,
+				cv: mockCvValue, //globally mocked
 			});
 
 			expect(getStoryblokApi().get).toHaveBeenCalled();
@@ -353,6 +367,7 @@ describe("Storyblok utils", () => {
 				version: "published",
 				starts_with: "news/articles",
 				per_page: 6,
+				cv: mockCvValue, //globally mocked
 			});
 		});
 
@@ -364,6 +379,7 @@ describe("Storyblok utils", () => {
 			const result = await fetchStories("published", {
 				starts_with: "news/articles",
 				per_page: 8,
+				cv: mockCvValue, //globally mocked
 			});
 
 			const expectedResult = {
@@ -384,6 +400,7 @@ describe("Storyblok utils", () => {
 				await fetchStories("published", {
 					starts_with: "news/articles",
 					per_page: 8,
+					cv: mockCvValue, //globally mocked
 				});
 			};
 
@@ -426,6 +443,7 @@ describe("Storyblok utils", () => {
 				await fetchStories("published", {
 					starts_with: "news/articles",
 					per_page: 8,
+					cv: mockCvValue, //globally mocked
 				});
 			};
 
@@ -458,19 +476,41 @@ describe("Storyblok utils", () => {
 	});
 
 	describe("fetchLinks", () => {
-		it("should call the storyblokApi.getAll method with the correct params", async () => {
+		it("should call the storyblokApi.getAll method with the correct params using defaults", async () => {
 			getStoryblokApi().getAll = jest
 				.fn()
 				.mockResolvedValue(MockLinksSuccessResponse);
-
-			await fetchLinks("published", "news/podcasts");
+			await fetchLinks({ starts_with: "news/podcasts" });
 
 			expect(getStoryblokApi().getAll).toHaveBeenCalled();
 			expect(getStoryblokApi().getAll).toHaveBeenCalledOnce();
 
 			expect(getStoryblokApi().getAll).toHaveBeenCalledWith("cdn/links", {
+				per_page: 1000,
 				version: "published",
 				starts_with: "news/podcasts",
+				cv: mockCvValue, //globally mocked
+			});
+		});
+
+		it("should call the storyblokApi.getAll method with the correct params using overrides", async () => {
+			getStoryblokApi().getAll = jest
+				.fn()
+				.mockResolvedValue(MockLinksSuccessResponse);
+			await fetchLinks({
+				version: "draft",
+				per_page: 300,
+				starts_with: "news/podcasts",
+			});
+
+			expect(getStoryblokApi().getAll).toHaveBeenCalled();
+			expect(getStoryblokApi().getAll).toHaveBeenCalledOnce();
+
+			expect(getStoryblokApi().getAll).toHaveBeenCalledWith("cdn/links", {
+				per_page: 300,
+				version: "draft",
+				starts_with: "news/podcasts",
+				cv: mockCvValue,
 			});
 		});
 
@@ -479,7 +519,9 @@ describe("Storyblok utils", () => {
 				.fn()
 				.mockResolvedValue(MockLinksSuccessResponse);
 
-			const result = await fetchLinks("published", "news/podcasts");
+			const result = await fetchLinks({
+				starts_with: "news/podcasts",
+			});
 
 			expect(result).toEqual(MockLinksSuccessResponse);
 		});
@@ -490,7 +532,9 @@ describe("Storyblok utils", () => {
 				.mockRejectedValue(JSON.stringify(Mock404FromStoryblokApi));
 
 			const throwErrorFetchLinks = async () => {
-				await fetchLinks("published", "news/podcasts");
+				await fetchLinks({
+					starts_with: "news/podcasts",
+				});
 			};
 
 			expect(throwErrorFetchLinks).rejects.toThrow(
@@ -515,7 +559,9 @@ describe("Storyblok utils", () => {
 				.mockRejectedValue(JSON.stringify(MockServerErrorResponse));
 
 			const throwErrorFetchLinks = async () => {
-				await fetchLinks("published", "news/podcasts");
+				await fetchLinks({
+					starts_with: "news/podcasts",
+				});
 			};
 
 			expect(throwErrorFetchLinks).rejects.toThrow(
@@ -544,12 +590,17 @@ describe("Storyblok utils", () => {
 			await getBreadcrumbs("news/podcasts/test-podcast-4", "published");
 
 			expect(fetchLinksSpy).toHaveBeenCalled();
-			expect(fetchLinksSpy).toHaveBeenCalledWith("published", "news");
+			expect(fetchLinksSpy).toHaveBeenCalledWith({
+				starts_with: "news",
+				version: "published",
+			});
 
 			expect(getStoryblokApi().getAll).toHaveBeenCalled();
 			expect(getStoryblokApi().getAll).toHaveBeenCalledWith("cdn/links", {
+				per_page: 1000,
 				version: "published",
 				starts_with: "news",
+				cv: mockCvValue, //globally mocked,
 			});
 		});
 
@@ -668,9 +719,11 @@ describe("Storyblok utils", () => {
 		afterEach(() => {
 			// Clean up and restore original timers after each test
 			jest.useRealTimers();
+			// jest.restoreAllMocks();
+		});
+		afterAll(() => {
 			jest.restoreAllMocks();
 		});
-
 		it("should call fetchStories with page being set to 1 when query object is empty", async () => {
 			getStoryblokApi().get = jest
 				.fn()
@@ -804,7 +857,7 @@ describe("Storyblok utils", () => {
 	});
 	describe("fieldHasValidContent", () => {
 		it("should return true or false based on StoryBlok RichText object", () => {
-			const mockFieldObject = { content: [{ type: "paragraph" }] };
+			const mockFieldObject = { type: "paragraph" };
 			expect(fieldHasValidContent(mockFieldObject)).toBe(false);
 		});
 	});
