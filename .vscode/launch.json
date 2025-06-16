@@ -16,7 +16,7 @@
       "serverReadyAction": {
         "action": "debugWithChrome",
         "killOnServerStop": true,
-        "pattern": "- Local:\\s*(https?://.+)",
+        "pattern": "Local:\\s*(https?://.+)",
         "uriFormat": "%s",
         "webRoot": "${workspaceFolder}/web/src",
       },
