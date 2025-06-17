@@ -184,57 +184,245 @@ const nextConfig = {
 			},
 			//TODO RewriteRule ^/about/nice-communities/library-and-knowledge-services-staff/nice-evidence-services-issues$ /about/what-we-do/evidence-and-best-practice-resources/evidence-search/evidence-search-service-closure-information [L,R=302,NC]
 			// REDIRECTS TO https://www.nice.org.uk/library-and-knowledge-services
+			{
+				source: "/about/nice-communities/library-and-knowledge-services-staff/nice-evidence-services-issues",
+				destination: "/library-and-knowledge-services",
+				permanent: false,
+			},
+			{
+				source: "/about/what-we-do/evidence-and-best-practice-resources/evidence-search/evidence-search-service-closure-information",
+				destination: "/library-and-knowledge-services",
+				permanent: false,
+			},
 
 			//TODO /about/nice-communities/library-and-knowledge-services-staff/nice-evidence-services-issues#report$ /what-we-do/evidence-services [L,R=302,NC]
 			//REDIRECTS TO https://www.nice.org.uk/library-and-knowledge-services
+			{
+				source: "/about/nice-communities/library-and-knowledge-services-staff/nice-evidence-services-issues",
+				destination: "/library-and-knowledge-services",
+				permanent: false,
+			},
+			{
+				source: "/what-we-do/evidence-services",
+				destination: "/library-and-knowledge-services",
+				permanent: false,
+			},
+
 
 			//TODO RewriteRule ^/about/what-we-do/our-programmes/about-nice-pathways$ /about/what-we-do/our-programmes/nice-pathways/we-are-withdrawing-our-nice-pathways-service [L,R=302,NC]
 			//REDIRECTS TO https://www.nice.org.uk/library-and-knowledge-services
+			{
+				source: "/about/what-we-do/our-programmes/about-nice-pathways",
+				destination: "/library-and-knowledge-services",
+				permanent: false,
+			},
+			{
+				source: "/about/what-we-do/our-programmes/nice-pathways/we-are-withdrawing-our-nice-pathways-service",
+				destination: "/library-and-knowledge-services",
+				permanent: false,
+			},
 
 			//TODO RewriteRule ^/about/nice-communities/library-and-knowledge-services-staff/resources-for-administrators$ https://library.hee.nhs.uk/resources/openathens [L,R=302,NC]
 			//REDIRECTS TO External maintain
+			{
+				source: "/about/nice-communities/library-and-knowledge-services-staff/resources-for-administrators",
+				destination: "https://library.hee.nhs.uk/resources/openathens",
+				permanent: false,
+			},
+
 
 			//TODO RewriteRule ^/about/nice-communities/library-and-knowledge-services-staff/training-materials$ https://library.hee.nhs.uk/resources/openathens [L,R=302,NC]
 			//REDIRECTS TO External maintain
+			{
+				source: "/about/nice-communities/library-and-knowledge-services-staff/training-materials",
+				destination: "https://library.hee.nhs.uk/resources/openathens",
+				permanent: false,
+			},
+
 
 			//TODO RewriteRule ^/digital-jobs$ /get-involved/jobs/digital [L,R=302,NC]
 			// REDIRECTS TO https://www.nice.org.uk/careers/digital-at-nice
+			{
+				source: "/digital-jobs",
+				destination: "/careers/digital-at-nice",
+				permanent: false,
+			},
+			{
+				source: "/get-involved/jobs/digital",
+				destination: "/careers/digital-at-nice",
+				permanent: false,
+			},
+
+
 
 			//TODO RewriteRule ^/executive-recruitment$ /get-involved/jobs/executive-recruitment [L,R=302,NC]
 			//REDIRECTS TO https://www.nice.org.uk/careers
+			{
+				source: "/executive-recruitment",
+				destination: "/careers",
+				permanent: false,
+			},
+			{
+				source: "/get-involved/jobs/executive-recruitment",
+				destination: "/careers",
+				permanent: false,
+			},
+
 
 			//TODO RewriteRule ^/get-involved/jobs/digital-at-nice$ /get-involved/careers/digital-at-nice [L,R=302,NC]
 			//REDIRECTS TO https://www.nice.org.uk/careers/digital-at-nice
 
+			{
+				source: "/get-involved/jobs/digital-at-nice",
+				destination: "/careers/digital-at-nice",
+				permanent: false,
+			},
+			{
+				source: "/get-involved/careers/digital-at-nice",
+				destination: "/careers/digital-at-nice",
+				permanent: false,
+			},
+
 			//TODO RewriteRule ^/get-involved/jobs/we-care-about-our-staff$ /get-involved/careers/we-care-about-our-staff [L,R=302,NC]
 			//REDIRECTS TO https://www.nice.org.uk/careers
+			{
+				source: "/get-involved/jobs/we-care-about-our-staff",
+				destination: "/careers",
+				permanent: false,
+			},
+
+			{
+				source: "/get-involved/careers/we-care-about-our-staff",
+				destination: "/careers",
+				permanent: false,
+			},
+
 
 			//TODO RewriteRule ^/get-involved/jobs/our-benefits--rewards-and-work-life-balance$ /get-involved/careers/our-benefits--rewards-and-work-life-balance [L,R=302,NC]
 			//REDIRECTS TO https://www.nice.org.uk/careers/our-benefits-rewards-and-work-life-balance
+			{
+				source: "/get-involved/jobs/our-benefits--rewards-and-work-life-balance",
+				destination: "/careers/our-benefits-rewards-and-work-life-balance",
+				permanent: false,
+			},
+			{
+				source: "/get-involved/careers/our-benefits--rewards-and-work-life-balance",
+				destination: "/careers/our-benefits-rewards-and-work-life-balance",
+				permanent: false,
+			},
+
 
 			//TODO RewriteRule ^/get-involved/jobs/diversity-and-inclusion$ /get-involved/careers/diversity-and-inclusion [L,R=302,NC]
 			//REDIRECTS TO https://www.nice.org.uk/careers
+			{
+				source: "/get-involved/jobs/diversity-and-inclusion",
+				destination: "/careers",
+				permanent: false,
+			},
+			{
+				source: "/get-involved/careers/diversity-and-inclusion",
+				destination: "/careers",
+				permanent: false,
+			},
+
+
 
 			//TODO RewriteRule ^/get-involved/jobs$ /get-involved/careers [L,R=302,NC]
 			//REDIRECTS TO https://www.nice.org.uk/careers
+			{
+				source: "/get-involved/jobs",
+				destination: "/careers",
+				permanent: false,
+			},
+			{
+				source: "/get-involved/careers",
+				destination: "/careers",
+				permanent: false,
+			},
 
 			//TODO RewriteRule ^/Media/Default/About/NICE-Communities/Library-and-knowledge-services-staff/Training-materials/NICE-Evidence-Search-Quick-Guide.docx$ /about/what-we-do/evidence-and-best-practice-resources/evidence-search/evidence-search-service-closure-information [L,R=302,NC]
 			//REDIRECTS TO https://www.nice.org.uk/library-and-knowledge-services
 
+			{
+				source: "/Media/Default/About/NICE-Communities/Library-and-knowledge-services-staff/Training-materials/NICE-Evidence-Search-Quick-Guide.docx",
+				destination: "/library-and-knowledge-services",
+				permanent: false,
+			},
+
+			{
+				source: "/about/what-we-do/evidence-and-best-practice-resources/evidence-search/evidence-search-service-closure-information",
+				destination: "/library-and-knowledge-services",
+				permanent: false,
+			},
+
+
 			//TODO RewriteRule ^/Media/Default/About/NICE-Communities/Library-and-knowledge-services-staff/Training-materials/NICE-Evidence-Search-reference-slide-set.pptx$ /about/what-we-do/evidence-and-best-practice-resources/evidence-search/evidence-search-service-closure-information [L,R=302,NC]
 			// REDIRECTS TO https://www.nice.org.uk/library-and-knowledge-services
+			{
+				source: "/Media/Default/About/NICE-Communities/Library-and-knowledge-services-staff/Training-materials/NICE-Evidence-Search-reference-slide-set.pptx",
+				destination: "/library-and-knowledge-services",
+				permanent: false,
+			},
+			{
+				source: "/about/what-we-do/evidence-and-best-practice-resources/evidence-search/evidence-search-service-closure-information",
+				destination: "/library-and-knowledge-services",
+				permanent: false,
+			},
 
 			//TODO RewriteRule ^/Media/Default/About/NICE-Communities/Library-and-knowledge-services-staff/Training-materials/NICE-Evidence-Search-evidence-type-definitions.docx$ /about/what-we-do/evidence-and-best-practice-resources/evidence-search/evidence-search-service-closure-information [L,R=302,NC]
 			// //REDIRECTS TO https://www.nice.org.uk/library-and-knowledge-services
+			{
+				source: "/Media/Default/About/NICE-Communities/Library-and-knowledge-services-staff/Training-materials/NICE-Evidence-Search-evidence-type-definitions.docx",
+				destination: "/library-and-knowledge-services",
+				permanent: false,
+			},
+			{
+				source: "/about/what-we-do/evidence-and-best-practice-resources/evidence-search/evidence-search-service-closure-information",
+				destination: "/library-and-knowledge-services",
+				permanent: false,
+			},
+
 
 			//TODO RewriteRule ^/Media/Default/About/NICE-Communities/Library-and-knowledge-services-staff/Training-materials/HDAS-quick-guide-feb-17.pub$ /about/what-we-do/evidence-services/journals-and-databases/hdas-closure-information [L,R=302,NC]
 			// REDIRECTS TO https://www.nice.org.uk/library-and-knowledge-services
+			{
+				source: "/Media/Default/About/NICE-Communities/Library-and-knowledge-services-staff/Training-materials/HDAS-quick-guide-feb-17.pub",
+				destination: "/library-and-knowledge-services",
+				permanent: false,
+			},
+			{
+				source: "/about/what-we-do/evidence-services/journals-and-databases/hdas-closure-information",
+				destination: "/library-and-knowledge-services",
+				permanent: false,
+			},
+
 
 			//TODO RewriteRule ^/Media/Default/About/NICE-Communities/Library-and-knowledge-services-staff/Training-materials/HDAS-full-user-guide-Feb-17.docx$ /about/what-we-do/evidence-services/journals-and-databases/hdas-closure-information [L,R=302,NC]
 			// REDIRECTS TO https://www.nice.org.uk/library-and-knowledge-services
+			{
+				source: "/Media/Default/About/NICE-Communities/Library-and-knowledge-services-staff/Training-materials/HDAS-full-user-guide-Feb-17.docx",
+				destination: "/library-and-knowledge-services",
+				permanent: false,
+			},
+			{
+				source: "/about/what-we-do/evidence-services/journals-and-databases/hdas-closure-information",
+				destination: "/library-and-knowledge-services",
+				permanent: false,
+			},
+
 
 			//TODO RewriteRule ^/media/default/About/NICE-Communities/Library-and-knowledge-services-staff/How-does-my-HDAS-search-map-in-ProQuest.pdf$ /about/what-we-do/evidence-services/journals-and-databases/hdas-closure-information [L,R=302,NC]
 			// REDIRECTS TO https://www.nice.org.uk/library-and-knowledge-services
+			{
+				source: "/media/default/About/NICE-Communities/Library-and-knowledge-services-staff/How-does-my-HDAS-search-map-in-ProQuest.pdf",
+				destination: "/library-and-knowledge-services",
+				permanent: false,
+			},
+			{
+				source: "/about/what-we-do/evidence-services/journals-and-databases/hdas-closure-information",
+				destination: "/library-and-knowledge-services",
+				permanent: false,
+			},
 
 
 
