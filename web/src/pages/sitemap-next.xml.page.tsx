@@ -46,6 +46,7 @@ export async function getServerSideProps({ res }: { res: NextApiResponse }) {
 	}
 
 	const filteredLinks = links.filter((item) => !item.is_folder);
+
 	const sitemap = generateSiteMap(filteredLinks);
 	res.setHeader("Content-Type", "text/xml");
 	res.write(sitemap);
