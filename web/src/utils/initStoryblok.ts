@@ -70,7 +70,6 @@ const infoPageComponents = {
 	infogramEmbed: InfogramEmbed,
 	infoPage: InfoPage,
 	nestedTable: StoryblokTable,
-
 };
 
 const categoryNavigationPageComponents = {
