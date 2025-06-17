@@ -17,12 +17,6 @@ module.exports = {
 		"/guidance/errortest",
 		"/status",
 		"/search",
-		"/news",
-		"/news/*",
-		"/careers",
-		"/careers/*",
-		"/library-and-knowledge-services",
-		"/library-and-knowledge-services/*",
 		"/sitemap-next.xml",
 	],
 	transform: (config, loc) => ({

@@ -7,9 +7,11 @@ import { fetchLinks } from "@/utils/storyblok";
 const pathsToExclude = ["/authors", "/news/in-depth/"];
 
 function generateSiteMap(links: SBLink[]) {
+	const filteredLinks = links.filter(item => !item.is_folder);
+
 	return `<?xml version="1.0" encoding="UTF-8"?>
    <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
-     ${links
+	 ${filteredLinks
 				.map(({ real_path }) => {
 					// Storyblok Links API won't let us supply any params to exclude
 					// certain results, so we have to weed them out here instead
