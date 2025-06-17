@@ -37,7 +37,7 @@ const extractChartIdFromUrl = (url: string): string | null => {
 export const InfogramEmbed: React.FC<InfogramEmbedProps> = ({ blok }) => {
 	const {
 		infogramUrl,
-		infogramVariant = "interactive", // Default to interactive if variant not set
+		infogramVariant = "interactive", // Default to interactive if infogram variant not set
 		layoutVariant = "default", // Default layout variant
 	} = blok;
 
@@ -86,12 +86,12 @@ export const InfogramEmbed: React.FC<InfogramEmbedProps> = ({ blok }) => {
 					onLoad={() => setScriptLoaded(true)}
 				/>
 			)}
-			{/* The div where Infogram will inject the chart */}
+			{/* The div where Infogram will inject the infogram */}
 			<div
 				className={embedClass}
 				data-testid={infogramId}
 				data-id={infogramId}
-				data-title={infogramId} // Using chart ID as title fallback
+				data-title={infogramId} // Using infogram ID as title fallback,if needed we can add a title in the storyblok compoent to override this
 				data-type={infogramVariant} // Embed variant type (interactive, static, etc.)
 			/>
 		</>
