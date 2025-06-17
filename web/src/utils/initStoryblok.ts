@@ -11,6 +11,7 @@ import { CardList } from "@/components/Storyblok/CardList/CardList";
 import { CardListSection } from "@/components/Storyblok/CardListSection/CardListSection";
 import { CategoryLandingPage } from "@/components/Storyblok/CategoryLandingPage/CategoryLandingPage";
 import { CategoryNavigation } from "@/components/Storyblok/CategoryNavigation/CategoryNavigation";
+import { InfogramEmbed } from "@/components/Storyblok/InfogramEmbed/InfogramEmbed";
 import { InfoPage } from "@/components/Storyblok/InfoPage/InfoPage";
 import { Metadata } from "@/components/Storyblok/Metadata/Metadata";
 import { NestedRichText } from "@/components/Storyblok/NestedRichText/NestedRichText";
@@ -30,7 +31,6 @@ import { StoryblokTestimonialGridItem } from "@/components/Storyblok/StoryblokTe
 import { StoryblokYoutubeEmbed } from "@/components/Storyblok/StoryblokYoutubeEmbed/StoryblokYoutubeEmbed";
 import { publicRuntimeConfig } from "@/config";
 import { logger } from "@/logger";
-import { InfogramEmbed } from "@/components/Storyblok/InfogramEmbed/InfogramEmbed";
 
 //TODO: consider a mix of static imports for common components and dynamic imports for lesser used components
 const commonComponents = {
@@ -58,15 +58,15 @@ const categoryLandingPageComponents = {
 	promoBox: PromoBox,
 	testimonialFullWidth: StoryblokTestimonialFullWidth,
 	testimonialGridItem: StoryblokTestimonialGridItem,
-
 };
 
 const infoPageComponents = {
 	iframe: StoryblokIframe,
 	imageRichText: StoryblokImageRichText,
+	infogramEmbed: InfogramEmbed,
 	infoPage: InfoPage,
 	nestedTable: StoryblokTable,
-	infogramEmbed:InfogramEmbed
+
 };
 
 const categoryNavigationPageComponents = {
