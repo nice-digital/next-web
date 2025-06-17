@@ -1,14 +1,14 @@
 import Script from "next/script";
 import { useEffect, useState } from "react";
 
-import styles from "./infogramEmbed.module.scss";
 import { InfogramEmbedStoryblok } from "@/types/storyblok";
+
+import styles from "./infogramEmbed.module.scss";
 
 declare global {
 	interface Window {
 		infogramEmbeds?: {
 			load: () => void;
-			[key: string]: unknown;
 		};
 	}
 }
@@ -34,7 +34,7 @@ const extractChartIdFromUrl = (url: string): string | null => {
 	}
 };
 
-export const InfogramEmbed: React.FC<InfogramEmbedProps> = ({ blok }) => {
+const InfogramEmbed: React.FC<InfogramEmbedProps> = ({ blok }) => {
 	const {
 		infogramUrl,
 		infogramVariant = "interactive", // Default to interactive if variant not set

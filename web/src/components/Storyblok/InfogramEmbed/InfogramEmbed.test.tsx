@@ -1,10 +1,13 @@
 import { render, screen } from "@testing-library/react";
-import InfogramEmbed from "./InfogramEmbed";
+import { ScriptProps } from "next/script";
+
 import { InfogramEmbedStoryblok } from "@/types/storyblok";
 
+import InfogramEmbed from "./InfogramEmbed";
+
 // Mock next/script to simulate script loading
-jest.mock("next/script", () => (props: any) => {
-	props.onLoad?.(); // simulate the script onLoad event
+jest.mock("next/script", () => (props: ScriptProps) => {
+	props.onLoad?.({} as Parameters<NonNullable<ScriptProps["onLoad"]>>[0]); // simulate the script onLoad event with a dummy event object
 	return <div data-testid="mock-script" />;
 });
 
@@ -23,8 +26,10 @@ describe("InfogramEmbed", () => {
 
 	beforeEach(() => {
 		// Cleanup and reset global object before each test
-		document.getElementById("infogram-async")?.remove();
-		(window as any).infogramEmbeds = {
+		const script = screen.queryByTestId("infogram-async");
+		if (script) script.remove();
+		// document.getElementById("infogram-async")?.remove();
+		window.infogramEmbeds = {
 			load: jest.fn(),
 		};
 	});
