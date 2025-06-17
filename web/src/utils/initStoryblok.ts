@@ -6,6 +6,7 @@ import {
 
 import { BasicCardGrid } from "@/components/Storyblok/BasicCardGrid/BasicCardGrid";
 import { Blockquote } from "@/components/Storyblok/Blockquote/Blockquote";
+import { CardGridRow } from "@/components/Storyblok/CardGridRow/CardGridRow";
 import { CardGridSection } from "@/components/Storyblok/CardGridSection/CardGridSection";
 import { CardList } from "@/components/Storyblok/CardList/CardList";
 import { CardListSection } from "@/components/Storyblok/CardListSection/CardListSection";
@@ -61,6 +62,9 @@ const categoryLandingPageComponents = {
 };
 
 const infoPageComponents = {
+	cardGridRowBasic: CardGridRow,
+	cardGridRowCallout: CardGridRow,
+	cardGridRowCalloutWithImage: CardGridRow,
 	iframe: StoryblokIframe,
 	imageRichText: StoryblokImageRichText,
 	infogramEmbed: InfogramEmbed,
