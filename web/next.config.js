@@ -396,6 +396,11 @@ const nextConfig = {
 				permanent: true,
 			},
 			{
+				source: "/get-involved/careers",
+				destination: "/careers",
+				permanent: true,
+			},
+			{
 				source: "/get-involved/careers/digital-at-nice",
 				destination: "/careers/digital-at-nice",
 				permanent: true,
@@ -413,6 +418,22 @@ const nextConfig = {
 			},
 			{
 				source: "/get-involved/jobs/diversity-and-inclusion",
+				destination: "/careers/diversity-and-inclusion",
+				permanent: true,
+			},
+			{
+				source: "/get-involved/careers/we-care-about-our-staff",
+				destination: "/careers/we-care-about-our-staff",
+				permanent: true,
+			},
+			{
+				source:
+					"/get-involved/careers/our-benefits--rewards-and-work-life-balance",
+				destination: "/careers/our-benefits-rewards-and-work-life-balance",
+				permanent: true,
+			},
+			{
+				source: "/get-involved/careers/diversity-and-inclusion",
 				destination: "/careers/diversity-and-inclusion",
 				permanent: true,
 			},
