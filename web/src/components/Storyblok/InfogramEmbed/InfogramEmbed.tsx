@@ -2,6 +2,7 @@ import Script from "next/script";
 import { useEffect, useState } from "react";
 
 import styles from "./infogramEmbed.module.scss";
+import { InfogramEmbedStoryblok } from "@/types/storyblok";
 
 declare global {
 	interface Window {
@@ -13,11 +14,7 @@ declare global {
 }
 
 export interface InfogramEmbedProps {
-	blok: {
-		infogramUrl: string; // Infogram URL input by editor in Storyblok,needs to update storybloktype-pending
-		infogramVariant?: string; // Embed type variant: interactive, static, popup, etc.
-		layoutVariant?: string; // Optional styling variant for layout
-	};
+	blok: InfogramEmbedStoryblok;
 }
 
 const INFOGRAMSCRIPT = "https://e.infogram.com/js/dist/embed-loader-min.js";

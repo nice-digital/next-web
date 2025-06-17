@@ -1,5 +1,6 @@
 import { render, screen } from "@testing-library/react";
 import InfogramEmbed from "./InfogramEmbed";
+import { InfogramEmbedStoryblok } from "@/types/storyblok";
 
 // Mock next/script to simulate script loading
 jest.mock("next/script", () => (props: any) => {
@@ -7,6 +8,13 @@ jest.mock("next/script", () => (props: any) => {
   return <div data-testid="mock-script" />;
 });
 
+const mockInfogramProps: InfogramEmbedStoryblok = {
+  infogramUrl: "https://infogram.com/ta-cancer-decisions-by-type-1hxj48nzk5x54vg",
+  infogramVariant: "interactive",
+  layoutVariant: "default",
+  component: "infogramEmbed",
+  _uid: "mock-uid-1",
+};
 describe("InfogramEmbed", () => {
   const validUrl = "https://infogram.com/ta-cancer-decisions-by-type-1hxj48nzk5x54vg";
   const infogramId = "ta-cancer-decisions-by-type-1hxj48nzk5x54vg";
@@ -22,9 +30,7 @@ describe("InfogramEmbed", () => {
   it("renders with valid URL and default variants", () => {
     render(
       <InfogramEmbed
-        blok={{
-          infogramUrl: validUrl,
-        }}
+        blok={mockInfogramProps}
       />
     );
     const embed = screen.getByTestId(infogramId);
@@ -36,22 +42,19 @@ describe("InfogramEmbed", () => {
   it("renders with a different infogramVariant", () => {
     render(
       <InfogramEmbed
-        blok={{
-          infogramUrl: validUrl,
-          infogramVariant: "compact",
-        }}
+        blok={{ ...mockInfogramProps, infogramVariant: "static" }}
       />
     );
     const embed = screen.getByTestId(infogramId);
-    expect(embed).toHaveAttribute("data-type", "compact");
+    expect(embed).toHaveAttribute("data-type", "static");
   });
 
   it("renders with a non-default layoutVariant", () => {
     render(
       <InfogramEmbed
         blok={{
-          infogramUrl: validUrl,
-          layoutVariant: "minimal",
+          ...mockInfogramProps,
+          layoutVariant: "fullwidth",
         }}
       />
     );
@@ -64,6 +67,7 @@ describe("InfogramEmbed", () => {
     render(
       <InfogramEmbed
         blok={{
+					...mockInfogramProps,
           infogramUrl: "",
         }}
       />
@@ -80,6 +84,7 @@ describe("InfogramEmbed", () => {
     render(
       <InfogramEmbed
         blok={{
+					...mockInfogramProps,
           infogramUrl: validUrl,
         }}
       />
@@ -97,6 +102,7 @@ describe("InfogramEmbed", () => {
     render(
       <InfogramEmbed
         blok={{
+					...mockInfogramProps,
           infogramUrl: validUrl,
         }}
       />
