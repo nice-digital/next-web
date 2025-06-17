@@ -401,6 +401,11 @@ const nextConfig = {
 				permanent: true,
 			},
 			{
+				source: "/get-involved/jobs/we-care-about-our-staff",
+				destination: "/careers/we-care-about-our-staff",
+				permanent: true,
+			},
+			{
 				source:
 					"/get-involved/jobs/our-benefits--rewards-and-work-life-balance",
 				destination: "/careers/our-benefits-rewards-and-work-life-balance",
