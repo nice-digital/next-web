@@ -94,6 +94,7 @@ export const InfogramEmbed: React.FC<InfogramEmbedProps> = ({ blok }) => {
 			{/* The div where Infogram will inject the chart */}
 			<div
 				className={embedClass}
+				data-testid={infogramId}
 				data-id={infogramId}
 				data-title={infogramId} // Using chart ID as title fallback
 				data-type={infogramVariant} // Embed variant type (interactive, static, etc.)
