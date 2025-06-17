@@ -11,15 +11,18 @@ function generateSiteMap(filteredLinks: SBLink[]) {
    <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
 	 ${filteredLinks
 			.map(({ real_path }) => {
-				// Storyblok Links API won't let us supply any params to exclude
-				// certain results, so we have to weed them out here instead
-				// e.g. we don't want to see any authors
-				if (pathsToExclude.some((p) => real_path.includes(p))) {
+				// Remove trailing slash (except for root "/") to avoid having redirecting URLs in sitemap
+				const trimmedPath =
+					real_path !== "/" && real_path.endsWith("/")
+						? real_path.slice(0, -1)
+						: real_path;
+
+				if (pathsToExclude.some((p) => trimmedPath.includes(p))) {
 					return null;
 				} else {
 					return `
 <url>
-	<loc>https://www.nice.org.uk${`${real_path}`}</loc>
+	<loc>https://www.nice.org.uk${trimmedPath}</loc>
 </url>
 `;
 				}
@@ -45,6 +48,7 @@ export async function getServerSideProps({ res }: { res: NextApiResponse }) {
 		links.push(...(await fetchLinks(sbParams)));
 	}
 
+	// Remove folders from links array as only pages should be included in sitemap
 	const filteredLinks = links.filter((item) => !item.is_folder);
 
 	const sitemap = generateSiteMap(filteredLinks);
