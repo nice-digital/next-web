@@ -325,7 +325,7 @@ const nextConfig = {
 				source:
 					"/about/nice-communities/library-and-knowledge-services-staff/buy-books--journals-and-databases/organisations-eligible-to-use-the-framework",
 				destination:
-					"/library-and-knowledge-services/buy-books-journals-and-databases/organisations-eligible-to-use-the-framework",
+					"/library-and-knowledge-services/buy-books-journals-and-databases",
 				permanent: true,
 			},
 			{
