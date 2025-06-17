@@ -555,7 +555,9 @@ export interface InDepthArticleStoryblok {
 }
 
 export interface InfogramEmbedStoryblok {
-  embedCode?: string;
+  infogramUrl: string;
+  infogramVariant?: "" | "interactive" | "embed" | "static" | "popup" | "link";
+  layoutVariant: "default" | "fullwidth";
   component: "infogramEmbed";
   _uid: string;
   [k: string]: any;
