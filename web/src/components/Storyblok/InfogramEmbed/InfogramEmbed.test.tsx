@@ -7,7 +7,7 @@ import { InfogramEmbed } from "./InfogramEmbed";
 
 // Mock next/script to simulate script loading
 jest.mock("next/script", () => (props: ScriptProps) => {
-	props.onLoad?.({} as Parameters<NonNullable<ScriptProps["onLoad"]>>[0]); // simulate the script onLoad event with a dummy event object
+	props.onLoad?.({} as Parameters<NonNullable<ScriptProps["onLoad"]>>[0]); // simulate the script onLoad event with a dummy event object to overide the type error
 	return <div data-testid="mock-script" />;
 });
 
