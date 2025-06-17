@@ -53,8 +53,6 @@ export const InfogramEmbed: React.FC<InfogramEmbedProps> = ({ blok }) => {
 	const scriptAlreadyExists =
 		isBrowser && !!document.getElementById("infogram-async");
 
-	console.log("infogramUrl", blok);
-
 	useEffect(() => {
 		// If script is loaded and Infogram's load method exists, reload embeds (for HMR or dynamic changes)
 		if (scriptLoaded && isBrowser && window.infogramEmbeds?.load) {
