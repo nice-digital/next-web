@@ -34,7 +34,7 @@ const extractChartIdFromUrl = (url: string): string | null => {
 	}
 };
 
-const InfogramEmbed: React.FC<InfogramEmbedProps> = ({ blok }) => {
+export const InfogramEmbed: React.FC<InfogramEmbedProps> = ({ blok }) => {
 	const {
 		infogramUrl,
 		infogramVariant = "interactive", // Default to interactive if variant not set
@@ -99,5 +99,3 @@ const InfogramEmbed: React.FC<InfogramEmbedProps> = ({ blok }) => {
 		</>
 	);
 };
-
-export default InfogramEmbed;

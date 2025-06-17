@@ -3,7 +3,7 @@ import { ScriptProps } from "next/script";
 
 import { InfogramEmbedStoryblok } from "@/types/storyblok";
 
-import InfogramEmbed from "./InfogramEmbed";
+import { InfogramEmbed } from "./InfogramEmbed";
 
 // Mock next/script to simulate script loading
 jest.mock("next/script", () => (props: ScriptProps) => {
