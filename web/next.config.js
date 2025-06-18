@@ -183,6 +183,11 @@ const nextConfig = {
 				permanent: true,
 			},
 			{
+				source: "/about/nice-communities/library-and-knowledge-services-staff",
+				destination: "/library-and-knowledge-services",
+				permanent: true,
+			},
+			{
 				source:
 					"/news/article/1-4-million-more-people-at-risk-of-severe-covid-19-to-have-access-to-antiviral-paxlovid",
 				destination:
