@@ -1,11 +1,6 @@
+const { publicRuntimeConfig } = require("@/config");
 const config = require("config");
-
-const isTeamCity = !!process.env.TEAMCITY_VERSION;
-
-const siteUrl = isTeamCity
-	? // Note the octopus deploy variable in #{} syntax so we can use each environment's full URL at deploy time
-	  "#{public:baseURL}"
-	: `${config.get("public.baseURL")}${config.get("public.publicBaseURL")}`;
+const siteUrl = publicRuntimeConfig.publicBaseURL; //TODO check if public.[public]BaseURL can be used in all envs (needs deploying to check); octo var removed in https://nicedigital.atlassian.net/browse/NXT-375
 
 /** @type {import('next-sitemap').IConfig} */
 module.exports = {
