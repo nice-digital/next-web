@@ -17,7 +17,7 @@ export interface InfogramEmbedProps {
 	blok: InfogramEmbedStoryblok;
 }
 
-const INFOGRAMSCRIPT = "https://e.infogram.com/js/dist/embed-loader-min.js";
+const InfogramScript = "https://e.infogram.com/js/dist/embed-loader-min.js";
 
 const extractChartIdFromUrl = (url: string): string | null => {
 	try {
@@ -71,7 +71,7 @@ export const InfogramEmbed: React.FC<InfogramEmbedProps> = ({ blok }) => {
 			{!scriptTagAlreadyExists && (
 				<Script
 					id="infogram-async"
-					src={INFOGRAMSCRIPT}
+					src={InfogramScript}
 					strategy="afterInteractive"
 					onLoad={() => setScriptLoaded(true)}
 				/>
