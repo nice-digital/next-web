@@ -98,21 +98,21 @@ describe("InfogramEmbed", () => {
 		expect(screen.queryByTestId("mock-script")).not.toBeInTheDocument();
 	});
 
-	// it("calls infogramEmbeds.load if script already exists", () => {
-	// 	// Create script before render to simulate existing load
-	// 	const script = document.createElement("script");
-	// 	script.id = "infogram-async";
-	// 	document.body.appendChild(script);
+	it("calls infogramEmbeds.load if script already exists", () => {
+		// Create script before render to simulate existing load
+		const script = document.createElement("script");
+		script.id = "infogram-async";
+		document.body.appendChild(script);
 
-	// 	render(
-	// 		<InfogramEmbed
-	// 			blok={{
-	// 				...mockInfogramProps,
-	// 				infogramUrl: validUrl,
-	// 			}}
-	// 		/>
-	// 	);
+		render(
+			<InfogramEmbed
+				blok={{
+					...mockInfogramProps,
+					infogramUrl: validUrl,
+				}}
+			/>
+		);
 
-	// 	expect(window.infogramEmbeds?.load).toHaveBeenCalled();
-	// });
+		expect(window.infogramEmbeds?.load).toHaveBeenCalled();
+	});
 });
