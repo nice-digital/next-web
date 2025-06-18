@@ -1,4 +1,4 @@
-const config = require("config");
+// const config = require("config");
 //TODO find out why baseURL is set to localhost in default.yaml - sitemap is generated at build so uses config vars not octo vars
 // const siteUrl = `${config.get("public.baseURL")}${config.get(
 // 	"public.publicBaseURL"
@@ -11,7 +11,16 @@ module.exports = {
 	generateIndexSitemap: false,
 	generateRobotsTxt: false,
 	sitemapBaseFileName: "sitemap-0",
-	exclude: ["/guidance/errortest", "/status", "/search", "/sitemap-next.xml"],
+	exclude: [
+		"/",
+		"/guidance/errortest",
+		"/status",
+		"/search",
+		"/about",
+		"/about/what-we-do/science-policy-research/research-recommendations",
+		"/sitemap-next.xml",
+		"/indicators/sitemap.xml"
+	],
 	transform: (config, loc) => ({
 		// Strip out changefreq, priority, lastmod etc:
 		// we either don't need them or don't know what the values are
