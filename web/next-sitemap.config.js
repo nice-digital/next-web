@@ -1,5 +1,7 @@
-const { publicRuntimeConfig } = require("@/config");
 const config = require("config");
+
+const { publicRuntimeConfig } = require("@/config");
+
 const siteUrl = publicRuntimeConfig.publicBaseURL; //TODO check if public.[public]BaseURL can be used in all envs (needs deploying to check); octo var removed in https://nicedigital.atlassian.net/browse/NXT-375
 
 /** @type {import('next-sitemap').IConfig} */
