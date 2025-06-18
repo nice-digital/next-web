@@ -18,7 +18,7 @@ export interface InfogramEmbedProps {
 }
 
 const INFOGRAMSCRIPT = "https://e.infogram.com/js/dist/embed-loader-min.js";
-
+const INFOGRAMSCRIPTID = "infogram-async";
 /**
  * Extracts Infogram chart ID from the given URL.
  * Infogram URLs look like: https://infogram.com/chartID
@@ -41,7 +41,7 @@ export const InfogramEmbed: React.FC<InfogramEmbedProps> = ({ blok }) => {
 		layoutVariant = "default", // Default layout variant
 	} = blok;
 
-	const [scriptLoaded, setScriptLoaded] = useState(false);
+	// const [scriptLoaded, setScriptLoaded] = useState(false);
 
 	// Extract chart ID from the URL (e.g. "ta-cancer-decisions-by-type-1hxj48nzk5x54vg")
 	const infogramId = extractChartIdFromUrl(infogramUrl);
@@ -50,20 +50,41 @@ export const InfogramEmbed: React.FC<InfogramEmbedProps> = ({ blok }) => {
 	const isBrowser = typeof window !== "undefined";
 
 	// Check if the Infogram script is already loaded in the DOM
-	const scriptAlreadyExists =
-		isBrowser && !!document.getElementById("infogram-async");
+	// const scriptAlreadyExists =
+	// 	isBrowser && !!document.getElementById("infogram-async");
 
+	// useEffect(() => {
+	// 	// If script is loaded and Infogram's load method exists, reload embeds (for HMR or dynamic changes)
+	// 	if (scriptLoaded && isBrowser && window.infogramEmbeds?.load) {
+	// 		window.infogramEmbeds.load();
+	// 	}
+	// 	// If script tag is present but scriptLoaded state is false, update the state to avoid reloading script___safety check
+	// 	if (scriptAlreadyExists && !scriptLoaded) {
+	// 		setScriptLoaded(true);
+	// 	}
+	// }, [scriptLoaded, infogramId, isBrowser, scriptAlreadyExists]);
 	useEffect(() => {
-		// If script is loaded and Infogram's load method exists, reload embeds (for HMR or dynamic changes)
-		if (scriptLoaded && isBrowser && window.infogramEmbeds?.load) {
-			window.infogramEmbeds.load();
-		}
-		// If script tag is present but scriptLoaded state is false, update the state to avoid reloading script___safety check
-		if (scriptAlreadyExists && !scriptLoaded) {
-			setScriptLoaded(true);
-		}
-	}, [scriptLoaded, infogramId, isBrowser, scriptAlreadyExists]);
+		if (!infogramId || !isBrowser) return;
 
+		// If script is already in DOM, mark it loaded
+		const existingScript = document.getElementById(INFOGRAMSCRIPTID);
+		if (existingScript) {
+			// setScriptLoaded(true);
+			return;
+		}
+
+		// Otherwise inject script manually
+		const script = document.createElement("script");
+		script.id = INFOGRAMSCRIPTID;
+		script.src = INFOGRAMSCRIPT;
+		script.async = true;
+		// script.onload = () => setScriptLoaded(true); // simulate onLoad behavior
+		document.body.appendChild(script);
+
+		return () => {
+			document.body.removeChild(script); // cleanup on unmount
+		};
+	}, [infogramId]);
 	// Render fallback if URL is missing or ID extraction failed
 	if (!infogramUrl || !infogramId) {
 		return <div>Invalid or missing Infogram URL</div>;
@@ -78,14 +99,14 @@ export const InfogramEmbed: React.FC<InfogramEmbedProps> = ({ blok }) => {
 	return (
 		<>
 			{/* Load Infogram embed script only if not already loaded */}
-			{!scriptAlreadyExists && (
+			{/* {!scriptAlreadyExists && (
 				<Script
 					id="infogram-async"
 					src={INFOGRAMSCRIPT}
 					strategy="afterInteractive"
 					onLoad={() => setScriptLoaded(true)}
 				/>
-			)}
+			)} */}
 			{/* The div where Infogram will inject the infogram */}
 			<div
 				className={embedClass}
