@@ -1,8 +1,6 @@
-const config = require("config");
+import { publicRuntimeConfig } from "@/config";
 
-const siteUrl = `${config.get("public.baseURL")}${config.get(
-	"public.publicBaseURL"
-)}`; //TODO check if public.[public]BaseURL can be used in all envs (needs deploying to check); octo var removed in https://nicedigital.atlassian.net/browse/NXT-375
+const siteUrl = publicRuntimeConfig.publicBaseURL; //TODO check if public.[public]BaseURL can be used in all envs (needs deploying to check); octo var removed in https://nicedigital.atlassian.net/browse/NXT-375
 
 /** @type {import('next-sitemap').IConfig} */
 module.exports = {
