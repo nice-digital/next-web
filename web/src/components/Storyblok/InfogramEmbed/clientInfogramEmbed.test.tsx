@@ -1,8 +1,10 @@
-import { render, screen, waitFor } from "@testing-library/react";
-import { ClientInfogramEmbed } from "./ClientInfogramEmbed";
+import { render, screen } from "@testing-library/react";
+
 import { InfogramEmbedStoryblok } from "@/types/storyblok";
 
-const mockBlok:InfogramEmbedStoryblok = {
+import { ClientInfogramEmbed } from "./ClientInfogramEmbed";
+
+const mockBlok: InfogramEmbedStoryblok = {
 	infogramUrl: "https://infogram.com/sample-id",
 	infogramVariant: "interactive",
 	layoutVariant: "default",
@@ -24,9 +26,7 @@ describe("ClientInfogramEmbed", () => {
 
 	it("loads and renders InfogramEmbed", async () => {
 		render(<ClientInfogramEmbed blok={mockBlok} />);
-		await waitFor(() =>
-			expect(screen.getByTestId("mock-infogram")).toBeInTheDocument()
-		);
+		await screen.findByTestId("mock-infogram");
 
 		expect(screen.getByText(mockBlok.infogramUrl)).toBeInTheDocument();
 	});
