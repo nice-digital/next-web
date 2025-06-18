@@ -19,11 +19,6 @@ export interface InfogramEmbedProps {
 
 const INFOGRAMSCRIPT = "https://e.infogram.com/js/dist/embed-loader-min.js";
 
-/**
- * Extracts Infogram chart ID from the given URL.
- * Infogram URLs look like: https://infogram.com/chartID
- * Returns chartID string or null if not found.
- */
 const extractChartIdFromUrl = (url: string): string | null => {
 	try {
 		const match = url.match(/infogram\.com\/([^/?#]+)/);
@@ -37,20 +32,18 @@ const extractChartIdFromUrl = (url: string): string | null => {
 export const InfogramEmbed: React.FC<InfogramEmbedProps> = ({ blok }) => {
 	const {
 		infogramUrl,
-		infogramVariant = "interactive", // Default to interactive if infogram variant not set
-		layoutVariant = "default", // Default layout variant
+		infogramVariant = "interactive",
+		layoutVariant = "default",
 	} = blok;
 
 	const [scriptLoaded, setScriptLoaded] = useState(false);
 
-	// Extract chart ID from the URL (e.g. "ta-cancer-decisions-by-type-1hxj48nzk5x54vg")
 	const infogramId = extractChartIdFromUrl(infogramUrl);
 
-	// Check if code is running in browser (to access document/window)
 	const isBrowser = typeof window !== "undefined";
 
 	// Check if the Infogram script is already loaded in the DOM
-	const scriptAlreadyExists =
+	const scriptTagAlreadyExists =
 		isBrowser && !!document.getElementById("infogram-async");
 
 	useEffect(() => {
@@ -59,17 +52,15 @@ export const InfogramEmbed: React.FC<InfogramEmbedProps> = ({ blok }) => {
 			window.infogramEmbeds.load();
 		}
 		// If script tag is present but scriptLoaded state is false, update the state to avoid reloading script___safety check
-		if (scriptAlreadyExists && !scriptLoaded) {
+		if (scriptTagAlreadyExists && !scriptLoaded) {
 			setScriptLoaded(true);
 		}
-	}, [scriptLoaded, infogramId, isBrowser, scriptAlreadyExists]);
+	}, [scriptLoaded, infogramId, isBrowser, scriptTagAlreadyExists]);
 
-	// Render fallback if URL is missing or ID extraction failed
 	if (!infogramUrl || !infogramId) {
 		return <div>Invalid or missing Infogram URL</div>;
 	}
 
-	// Determine CSS classes based on layout variant
 	const embedClass =
 		layoutVariant === "default"
 			? `infogram-embed ${styles.infogramEmbed} ${styles.infogramEmbed__default}`
@@ -77,8 +68,7 @@ export const InfogramEmbed: React.FC<InfogramEmbedProps> = ({ blok }) => {
 
 	return (
 		<>
-			{/* Load Infogram embed script only if not already loaded */}
-			{!scriptAlreadyExists && (
+			{!scriptTagAlreadyExists && (
 				<Script
 					id="infogram-async"
 					src={INFOGRAMSCRIPT}
@@ -86,14 +76,13 @@ export const InfogramEmbed: React.FC<InfogramEmbedProps> = ({ blok }) => {
 					onLoad={() => setScriptLoaded(true)}
 				/>
 			)}
-			{/* The div where Infogram will inject the infogram */}
+
 			<div
 				className={embedClass}
 				data-testid={infogramId}
 				data-id={infogramId}
-				// data-id="_/jkv08t00nRWFojcGMpkN"
-				data-title={infogramId} // Using infogram ID as title fallback,if needed we can add a title in the storyblok compoent to override this
-				data-type={infogramVariant} // Embed variant type (interactive, static, etc.)
+				data-title={infogramId}
+				data-type={infogramVariant}
 			/>
 		</>
 	);
