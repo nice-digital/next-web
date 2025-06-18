@@ -16,10 +16,10 @@ module.exports = {
 		"/guidance/errortest",
 		"/status",
 		"/search",
-		"/about",
-		"/about/what-we-do/science-policy-research/research-recommendations",
+		"/about", // Not live on NextJS yet
+		"/about/what-we-do/science-policy-research/research-recommendations", // Not live on NextJS yet
 		"/sitemap-next.xml",
-		"/indicators/sitemap.xml"
+		"/indicators/sitemap.xml",
 	],
 	transform: (config, loc) => ({
 		// Strip out changefreq, priority, lastmod etc:
