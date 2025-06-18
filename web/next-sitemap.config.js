@@ -1,8 +1,9 @@
 const config = require("config");
-
-const siteUrl = `${config.get("public.baseURL")}${config.get(
-	"public.publicBaseURL"
-)}`; //TODO check if public.[public]BaseURL can be used in all envs (needs deploying to check); octo var removed in https://nicedigital.atlassian.net/browse/NXT-375
+//TODO find out why baseURL is set to localhost in default.yaml - sitemap is generated at build so uses config vars not octo vars
+// const siteUrl = `${config.get("public.baseURL")}${config.get(
+// 	"public.publicBaseURL"
+// )}`;
+const siteUrl = "https://www.nice.org.uk"; // Hard coding live domain as there's no need to have sitemaps for test envs
 
 /** @type {import('next-sitemap').IConfig} */
 module.exports = {
