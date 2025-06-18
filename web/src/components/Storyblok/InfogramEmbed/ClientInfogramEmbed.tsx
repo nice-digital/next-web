@@ -5,9 +5,10 @@ import dynamic from "next/dynamic";
 const LoadingPlaceholder = () => <div>Loading Infogram...</div>;
 
 // how do we test next/dynamic?
-export const ClientInfogramEmbed = dynamic(() => import("./InfogramEmbed"), {
-	ssr: false,
-	loading: () => <LoadingPlaceholder />,
-});
-
-export default ClientInfogramEmbed;
+export const ClientInfogramEmbed = dynamic(
+	() => import("./InfogramEmbed").then((mod) => mod.InfogramEmbed),
+	{
+		ssr: false,
+		loading: () => <LoadingPlaceholder />,
+	}
+);

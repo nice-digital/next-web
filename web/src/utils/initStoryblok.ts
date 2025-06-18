@@ -12,7 +12,7 @@ import { CardList } from "@/components/Storyblok/CardList/CardList";
 import { CardListSection } from "@/components/Storyblok/CardListSection/CardListSection";
 import { CategoryLandingPage } from "@/components/Storyblok/CategoryLandingPage/CategoryLandingPage";
 import { CategoryNavigation } from "@/components/Storyblok/CategoryNavigation/CategoryNavigation";
-import { InfogramEmbed } from "@/components/Storyblok/InfogramEmbed/InfogramEmbed";
+import { ClientInfogramEmbed } from "@/components/Storyblok/InfogramEmbed/ClientInfogramEmbed";
 import { InfoPage } from "@/components/Storyblok/InfoPage/InfoPage";
 import { Metadata } from "@/components/Storyblok/Metadata/Metadata";
 import { NestedRichText } from "@/components/Storyblok/NestedRichText/NestedRichText";
@@ -67,7 +67,7 @@ const infoPageComponents = {
 	cardGridRowCalloutWithImage: CardGridRow,
 	iframe: StoryblokIframe,
 	imageRichText: StoryblokImageRichText,
-	infogramEmbed: InfogramEmbed,
+	infogramEmbed: ClientInfogramEmbed,
 	infoPage: InfoPage,
 	nestedTable: StoryblokTable,
 };
