@@ -63,7 +63,7 @@ export const InfogramEmbed: React.FC<InfogramEmbedProps> = ({ blok }) => {
 
 	const embedClass =
 		layoutVariant === "constrained"
-			? `infogram-embed ${styles.infogramEmbed} ${styles.infogramEmbed__default}`
+			? `infogram-embed ${styles.infogramEmbed} ${styles["infogramEmbed--constrained"]}`
 			: `infogram-embed ${styles.infogramEmbed}`;
 
 	return (
