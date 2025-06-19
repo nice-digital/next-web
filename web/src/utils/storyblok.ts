@@ -312,7 +312,6 @@ export const fetchStories = async <T>(
 export const fetchLinks = async (
 	sbParams: ISbStoriesParams
 ): Promise<SBLink[]> => {
-	// const {version = "published", per_page = 1000} = sbParams;
 	const storyblokApi = getStoryblokApi();
 	const cacheVersion = await fetchCacheVersion();
 	const finalParams = {
