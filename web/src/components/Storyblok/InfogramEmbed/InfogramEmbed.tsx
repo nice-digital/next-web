@@ -35,7 +35,7 @@ export const InfogramEmbed: React.FC<InfogramEmbedProps> = ({ blok }) => {
 		infogramVariant = "interactive",
 		layoutVariant = "constrained",
 	} = blok;
-
+console.log("InfogramEmbed props:", blok);
 	const [scriptLoaded, setScriptLoaded] = useState(false);
 
 	const infogramId = extractChartIdFromUrl(infogramUrl);
