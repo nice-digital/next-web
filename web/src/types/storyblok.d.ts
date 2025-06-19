@@ -188,15 +188,6 @@ export interface CalloutCardStoryblok {
   [k: string]: any;
 }
 
-export interface CalloutCardDemoStoryblok {
-  heading: string;
-  body: string;
-  link?: MultilinkStoryblok;
-  component: "calloutCardDemo";
-  _uid: string;
-  [k: string]: any;
-}
-
 export interface CalloutCardWithImageStoryblok {
   heading: string;
   body: string;
@@ -349,11 +340,9 @@ export interface GridStoryblok {
     | BlogPostStoryblok
     | ButtonLinkStoryblok
     | CalloutCardStoryblok
-    | CalloutCardDemoStoryblok
     | CalloutCardWithImageStoryblok
     | CardStoryblok
     | CardGridStoryblok
-    | CardGridRowStoryblok
     | CardGridRowBasicStoryblok
     | CardGridRowCalloutStoryblok
     | CardGridRowCalloutWithImageStoryblok
@@ -379,7 +368,6 @@ export interface GridStoryblok {
     | InDepthArticleStoryblok
     | InfoPageStoryblok
     | MarkdownStoryblok
-    | MenuLinkStoryblok
     | MetadataStoryblok
     | NestedRichTextStoryblok
     | NestedTableStoryblok
@@ -538,7 +526,6 @@ export interface InDepthArticleStoryblok {
   _uid: string;
   [k: string]: any;
 }
-
 export interface InfogramEmbedStoryblok {
   infogramUrl: string;
   infogramVariant?: "" | "interactive" | "embed" | "static" | "popup" | "link";
@@ -562,14 +549,6 @@ export interface InfoPageStoryblok {
 export interface MarkdownStoryblok {
   content: string;
   component: "markdown";
-  _uid: string;
-  [k: string]: any;
-}
-
-export interface MenuLinkStoryblok {
-  link?: Exclude<MultilinkStoryblok, {linktype?: "email"} | {linktype?: "asset"}>;
-  name?: string;
-  component: "menu_link";
   _uid: string;
   [k: string]: any;
 }
@@ -643,11 +622,9 @@ export interface PageStoryblok {
     | BlogPostStoryblok
     | ButtonLinkStoryblok
     | CalloutCardStoryblok
-    | CalloutCardDemoStoryblok
     | CalloutCardWithImageStoryblok
     | CardStoryblok
     | CardGridStoryblok
-    | CardGridRowStoryblok
     | CardGridRowBasicStoryblok
     | CardGridRowCalloutStoryblok
     | CardGridRowCalloutWithImageStoryblok
@@ -673,7 +650,6 @@ export interface PageStoryblok {
     | InDepthArticleStoryblok
     | InfoPageStoryblok
     | MarkdownStoryblok
-    | MenuLinkStoryblok
     | MetadataStoryblok
     | NestedRichTextStoryblok
     | NestedTableStoryblok
