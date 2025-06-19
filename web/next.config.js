@@ -183,6 +183,11 @@ const nextConfig = {
 				permanent: true,
 			},
 			{
+				source: "/about/nice-communities/library-and-knowledge-services-staff",
+				destination: "/library-and-knowledge-services",
+				permanent: true,
+			},
+			{
 				source:
 					"/news/article/1-4-million-more-people-at-risk-of-severe-covid-19-to-have-access-to-antiviral-paxlovid",
 				destination:
@@ -307,6 +312,134 @@ const nextConfig = {
 			{
 				source: "/news/blog/:slug",
 				destination: "/news/blogs/:slug",
+				permanent: true,
+			},
+			{
+				source: "/About/What-we-do/Evidence-Services/journals-and-databases",
+				destination: "/library-and-knowledge-services",
+				permanent: true,
+			},
+			{
+				source:
+					"/about/nice-communities/library-and-knowledge-services-staff/buy-books-journals-and-databases",
+				destination:
+					"/library-and-knowledge-services/buy-books-journals-and-databases",
+				permanent: true,
+			},
+			{
+				source:
+					"/about/nice-communities/library-and-knowledge-services-staff/buy-books--journals-and-databases/organisations-eligible-to-use-the-framework",
+				destination:
+					"/library-and-knowledge-services/buy-books-journals-and-databases",
+				permanent: true,
+			},
+			{
+				source:
+					"/about/nice-communities/library-and-knowledge-services-staff/buy-books-journals-and-databases/provider-information",
+				destination:
+					"/library-and-knowledge-services/buy-books-journals-and-databases/provider-information",
+				permanent: true,
+			},
+			{
+				source:
+					"/about/nice-communities/library-and-knowledge-services-staff/buy-books--journals-and-databases/provider-information/sole-supplied-titles",
+				destination:
+					"/library-and-knowledge-services/buy-books-journals-and-databases/sole-supplied-titles",
+				permanent: true,
+			},
+			{
+				source:
+					"/about/nice-communities/library-and-knowledge-services-staff/buy-books--journals-and-databases/purchasing-steps--direct-awards",
+				destination:
+					"/library-and-knowledge-services/buy-books-journals-and-databases/purchasing-steps-direct-awards",
+				permanent: true,
+			},
+			{
+				source:
+					"/about/nice-communities/library-and-knowledge-services-staff/buy-books--journals-and-databases/purchasing-steps--further-competition",
+				destination:
+					"/library-and-knowledge-services/buy-books-journals-and-databases/purchasing-steps-further-competition",
+				permanent: true,
+			},
+			{
+				source:
+					"/about/what-we-do/evidence-services/journals-and-databases/OpenAthens",
+				destination: "/library-and-knowledge-services/openathens",
+				permanent: true,
+			},
+			{
+				source:
+					"/about/what-we-do/evidence-services/journals-and-databases/openathens/openathens-support",
+				destination:
+					"/library-and-knowledge-services/openathens/openathens-support",
+				permanent: true,
+			},
+			{
+				source:
+					"/about/what-we-do/evidence-services/journals-and-databases/openathens/openathens-eligibility",
+				destination:
+					"/library-and-knowledge-services/openathens/openathens-eligibility",
+				permanent: true,
+			},
+			{
+				source:
+					"/about/what-we-do/evidence-services/journals-and-databases/openathens/openathens-registration-help",
+				destination:
+					"/library-and-knowledge-services/openathens/openathens-registration-help",
+				permanent: true,
+			},
+			{
+				source:
+					"/about/what-we-do/evidence-services/journals-and-databases/openathens/access",
+				destination:
+					"/library-and-knowledge-services/openathens/openathens-access",
+				permanent: true,
+			},
+			{
+				source: "/get-involved/jobs",
+				destination: "/careers",
+				permanent: true,
+			},
+			{
+				source: "/get-involved/careers",
+				destination: "/careers",
+				permanent: true,
+			},
+			{
+				source: "/get-involved/careers/digital-at-nice",
+				destination: "/careers/digital-at-nice",
+				permanent: true,
+			},
+			{
+				source: "/get-involved/jobs/we-care-about-our-staff",
+				destination: "/careers/we-care-about-our-staff",
+				permanent: true,
+			},
+			{
+				source:
+					"/get-involved/jobs/our-benefits--rewards-and-work-life-balance",
+				destination: "/careers/our-benefits-rewards-and-work-life-balance",
+				permanent: true,
+			},
+			{
+				source: "/get-involved/jobs/diversity-and-inclusion",
+				destination: "/careers/diversity-and-inclusion",
+				permanent: true,
+			},
+			{
+				source: "/get-involved/careers/we-care-about-our-staff",
+				destination: "/careers/we-care-about-our-staff",
+				permanent: true,
+			},
+			{
+				source:
+					"/get-involved/careers/our-benefits--rewards-and-work-life-balance",
+				destination: "/careers/our-benefits-rewards-and-work-life-balance",
+				permanent: true,
+			},
+			{
+				source: "/get-involved/careers/diversity-and-inclusion",
+				destination: "/careers/diversity-and-inclusion",
 				permanent: true,
 			},
 			{
