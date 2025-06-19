@@ -188,12 +188,14 @@ const nextConfig = {
 				permanent: true,
 			},
 			{
-				source: "/about/nice-communities/library-and-knowledge-services-staff/resources-for-administrators",
+				source:
+					"/about/nice-communities/library-and-knowledge-services-staff/resources-for-administrators",
 				destination: "https://library.hee.nhs.uk/resources/openathens",
 				permanent: true,
 			},
 			{
-				source: "/about/nice-communities/library-and-knowledge-services-staff/training-materials",
+				source:
+					"/about/nice-communities/library-and-knowledge-services-staff/training-materials",
 				destination: "https://library.hee.nhs.uk/resources/openathens",
 				permanent: true,
 			},
