@@ -95,7 +95,7 @@ if (process.env.NODE_ENV === "production") {
 		},
 		{
 			key: "Content-Security-Policy",
-			value: "frame-ancestors 'none'",
+			value: "frame-ancestors 'self' https://*.infogram.com",
 		}
 	);
 }
