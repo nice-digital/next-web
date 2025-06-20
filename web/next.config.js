@@ -183,6 +183,23 @@ const nextConfig = {
 				permanent: true,
 			},
 			{
+				source: "/get-involved/jobs/digital-at-nice",
+				destination: "/careers/digital-at-nice",
+				permanent: true,
+			},
+			{
+				source:
+					"/about/nice-communities/library-and-knowledge-services-staff/resources-for-administrators",
+				destination: "https://library.hee.nhs.uk/resources/openathens",
+				permanent: true,
+			},
+			{
+				source:
+					"/about/nice-communities/library-and-knowledge-services-staff/training-materials",
+				destination: "https://library.hee.nhs.uk/resources/openathens",
+				permanent: true,
+			},
+			{
 				source: "/about/nice-communities/library-and-knowledge-services-staff",
 				destination: "/library-and-knowledge-services",
 				permanent: true,
