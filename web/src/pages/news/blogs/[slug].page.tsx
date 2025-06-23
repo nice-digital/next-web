@@ -38,13 +38,13 @@ export type BlogPageSuccessProps = {
 export type BlogPageProps = BlogPageSuccessProps | BlogPageErrorProps;
 
 export default function BlogPostPage(props: BlogPageProps): React.ReactElement {
-	setComponents({
-		blogPost: StoryblokBlogPost,
-		quote: Blockquote,
-		youtubeEmbed: StoryblokYoutubeEmbed,
-		iframe: StoryblokIframe,
-		metadata: Metadata,
-	});
+	// setComponents({
+	// 	blogPost: StoryblokBlogPost,
+	// 	quote: Blockquote,
+	// 	youtubeEmbed: StoryblokYoutubeEmbed,
+	// 	iframe: StoryblokIframe,
+	// 	metadata: Metadata,
+	// });
 	const story = "story" in props ? props.story : null;
 
 	const additionalMetaTags = useMemo(() => {

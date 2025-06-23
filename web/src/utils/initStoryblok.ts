@@ -32,6 +32,51 @@ import { StoryblokYoutubeEmbed } from "@/components/Storyblok/StoryblokYoutubeEm
 import { publicRuntimeConfig } from "@/config";
 import { logger } from "@/logger";
 
+
+// import { BasicCardGrid } from "@/components/Storyblok/BasicCardGrid/BasicCardGrid";
+import { Homepage } from "@/components/Storyblok/Homepage/Homepage";
+import { HomepageHero } from "@/components/Storyblok/Homepage/HomepageHero/HomepageHero";
+// import { Metadata } from "@/components/Storyblok/Metadata/Metadata";
+// import { NestedRichText } from "@/components/Storyblok/NestedRichText/NestedRichText";
+// import { PromoBox } from "@/components/Storyblok/PromoBox/PromoBox";
+import { Spotlight } from "@/components/Storyblok/Spotlight/Spotlight";
+import { StoryblokNewsArticle } from "@/components/Storyblok/StoryblokNewsArticle/StoryblokNewsArticle";
+import { StoryblokRelatedLink } from "@/components/Storyblok/StoryblokRelatedLink/StoryblokRelatedLink";
+import { StoryblokRelatedNewsLink } from "@/components/Storyblok/StoryblokRelatedNewsLink/StoryblokRelatedNewsLink";
+import { StoryblokBlogPost } from "@/components/Storyblok/StoryblokBlogPost/StoryblokBlogPost";
+// import { StoryblokActionBannerFullWidth } from "@/components/Storyblok/StoryblokActionBanner/StoryblokActionBannerFullWidth";
+// import { StoryblokHero } from "@/components/Storyblok/StoryblokHero/StoryblokHero";
+
+const blogComponents = {
+	blogPost: StoryblokBlogPost,
+	quote: Blockquote,
+	youtubeEmbed: StoryblokYoutubeEmbed,
+	iframe: StoryblokIframe,
+	metadata: Metadata,
+}
+
+const articleComponents = {
+	newsArticle: StoryblokNewsArticle,
+	quote: Blockquote,
+	relatedLink: StoryblokRelatedLink,
+	relatedNewsLink: StoryblokRelatedNewsLink,
+	youtubeEmbed: StoryblokYoutubeEmbed,
+	iframe: StoryblokIframe,
+	metadata: Metadata,
+}
+
+const homepageComponents = {
+	basicCardGrid: BasicCardGrid,
+	homepage: Homepage,
+	homepageHero: HomepageHero,
+	metadata: Metadata,
+	nestedRichText: NestedRichText,
+	promobox: PromoBox,
+	spotlight: Spotlight,
+	storyblokActionBannerFullWidth: StoryblokActionBannerFullWidth,
+	storyblokHero: StoryblokHero
+}
+
 //TODO: consider a mix of static imports for common components and dynamic imports for lesser used components
 const commonComponents = {
 	accordion: StoryblokAccordion,
@@ -76,7 +121,10 @@ const categoryNavigationPageComponents = {
 
 export const allComponents: SbReactComponentsMap = {
 	...commonComponents,
+	...homepageComponents,
 	...infoPageComponents,
+	...articleComponents,
+	...blogComponents,
 	...categoryLandingPageComponents,
 	...categoryNavigationPageComponents,
 };
