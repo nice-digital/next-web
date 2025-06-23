@@ -55,14 +55,14 @@ const commonComponents = {
 	youtubeEmbed: StoryblokYoutubeEmbed,
 };
 
-const blogComponents = {
-	blogPost: StoryblokBlogPost,
-};
-
 const articleComponents = {
 	newsArticle: StoryblokNewsArticle,
 	relatedLink: StoryblokRelatedLink,
 	relatedNewsLink: StoryblokRelatedNewsLink,
+};
+
+const blogComponents = {
+	blogPost: StoryblokBlogPost,
 };
 
 const categoryLandingPageComponents = {

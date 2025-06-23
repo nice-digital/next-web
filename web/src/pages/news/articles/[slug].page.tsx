@@ -33,15 +33,6 @@ type NewsArticlePageProps =
 export default function NewsArticlePage(
 	props: NewsArticlePageProps
 ): React.ReactElement {
-	// setComponents({
-	// 	newsArticle: StoryblokNewsArticle,
-	// 	quote: Blockquote,
-	// 	relatedLink: StoryblokRelatedLink,
-	// 	relatedNewsLink: StoryblokRelatedNewsLink,
-	// 	youtubeEmbed: StoryblokYoutubeEmbed,
-	// 	iframe: StoryblokIframe,
-	// 	metadata: Metadata,
-	// });
 	// story for meta tags, allows for additionalMetaTags to be fetched in useMemo
 	const story = "story" in props ? props.story : null;
 
