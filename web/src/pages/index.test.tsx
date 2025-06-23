@@ -1,3 +1,17 @@
+const storyblokInit = jest.fn();
+
+jest.mock("@storyblok/react", () => {
+	const original = jest.requireActual("@storyblok/react");
+	return {
+		...original,
+		storyblokInit: (...args: any[]) => storyblokInit(...args),
+		StoryblokComponent: ({ blok }: any) => (
+			<div data-testid="storyblok-mock">MOCKED: {blok.component}</div>
+		),
+		__esModule: true,
+	};
+});
+
 import { ISbStoryData } from "@storyblok/react";
 import { GetServerSidePropsContext } from "next";
 
@@ -49,8 +63,19 @@ const props: HomePageProps = {
 const expectedErrorMessage = GENERIC_ERROR_MESSAGE;
 
 describe("Homepage", () => {
+	beforeEach(() => {
+		storyblokInit({
+			accessToken: "test",
+			use: [],
+			components: {
+				homepage: () => <div data-testid="homepage">MOCKED: homepage</div>,
+			},
+		});
+	});
+
 	it("should match snapshot for main content", () => {
-		const { container } = render(<Home {...props} />);
+		const { container, getByTestId } = render(<Home {...props} />);
+		expect(getByTestId("storyblok-mock")).toHaveTextContent("MOCKED: homepage");
 		expect(container).toMatchSnapshot();
 	});
 
