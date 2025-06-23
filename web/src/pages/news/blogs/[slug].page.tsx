@@ -1,17 +1,8 @@
-import {
-	type ISbStoryData,
-	StoryblokComponent,
-	setComponents,
-} from "@storyblok/react";
+import { type ISbStoryData, StoryblokComponent } from "@storyblok/react";
 import { NextSeo } from "next-seo";
 import React, { useMemo } from "react";
 
 import { ErrorPageContent } from "@/components/ErrorPageContent/ErrorPageContent";
-import { Blockquote } from "@/components/Storyblok/Blockquote/Blockquote";
-import { Metadata } from "@/components/Storyblok/Metadata/Metadata";
-import { StoryblokBlogPost } from "@/components/Storyblok/StoryblokBlogPost/StoryblokBlogPost";
-import { StoryblokIframe } from "@/components/Storyblok/StoryblokIframe/StoryblokIframe";
-import { StoryblokYoutubeEmbed } from "@/components/Storyblok/StoryblokYoutubeEmbed/StoryblokYoutubeEmbed";
 import { logger } from "@/logger";
 import { type Breadcrumb } from "@/types/Breadcrumb";
 import { BlogPostStoryblok } from "@/types/storyblok";
@@ -38,13 +29,6 @@ export type BlogPageSuccessProps = {
 export type BlogPageProps = BlogPageSuccessProps | BlogPageErrorProps;
 
 export default function BlogPostPage(props: BlogPageProps): React.ReactElement {
-	// setComponents({
-	// 	blogPost: StoryblokBlogPost,
-	// 	quote: Blockquote,
-	// 	youtubeEmbed: StoryblokYoutubeEmbed,
-	// 	iframe: StoryblokIframe,
-	// 	metadata: Metadata,
-	// });
 	const story = "story" in props ? props.story : null;
 
 	const additionalMetaTags = useMemo(() => {
