@@ -1,3 +1,4 @@
+import { ISbStoriesParams } from "@storyblok/react";
 import { NextApiResponse } from "next";
 
 import { type SBLink } from "@/types/SBLink";
@@ -5,25 +6,28 @@ import { fetchLinks } from "@/utils/storyblok";
 
 const pathsToExclude = ["/authors", "/news/in-depth/"];
 
-function generateSiteMap(links: SBLink[]) {
+function generateSiteMap(filteredLinks: SBLink[]) {
 	return `<?xml version="1.0" encoding="UTF-8"?>
    <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
-     ${links
-				.map(({ real_path }) => {
-					// Storyblok Links API won't let us supply any params to exclude
-					// certain results, so we have to weed them out here instead
-					// e.g. we don't want to see any authors
-					if (pathsToExclude.some((p) => real_path.includes(p))) {
-						return null;
-					} else {
-						return `
+	 ${filteredLinks
+			.map(({ real_path }) => {
+				// Remove trailing slash (except for root "/") to avoid having redirecting URLs in sitemap
+				const trimmedPath =
+					real_path !== "/" && real_path.endsWith("/")
+						? real_path.slice(0, -1)
+						: real_path;
+
+				if (pathsToExclude.some((p) => trimmedPath.includes(p))) {
+					return null;
+				} else {
+					return `
 <url>
-	<loc>https://www.nice.org.uk${`${real_path}`}</loc>
+	<loc>https://www.nice.org.uk${trimmedPath}</loc>
 </url>
 `;
-					}
-				})
-				.join("")}
+				}
+			})
+			.join("")}
    </urlset>
  `;
 }
@@ -33,14 +37,24 @@ function SiteMap(): void {
 }
 
 export async function getServerSideProps({ res }: { res: NextApiResponse }) {
-	// We're only interested in fetching news stories for the first release
-	// Eventually this will get everything, once the rest of the stuff goes live
-	const links = await fetchLinks("published", "news");
-	const sitemap = generateSiteMap(links);
+	// Update this array as sections are migrated into NextWeb
+	const nextWebSections = ["news", "careers", "library-and-knowledge-services"];
+	const links: SBLink[] = [];
+
+	for (const section of nextWebSections) {
+		const sbParams: ISbStoriesParams = {
+			starts_with: section,
+		};
+		links.push(...(await fetchLinks(sbParams)));
+	}
+
+	// Remove folders from links array as only pages should be included in sitemap
+	const filteredLinks = links.filter((item) => !item.is_folder);
+
+	const sitemap = generateSiteMap(filteredLinks);
 	res.setHeader("Content-Type", "text/xml");
 	res.write(sitemap);
 	res.end();
-
 	return {
 		props: {},
 	};

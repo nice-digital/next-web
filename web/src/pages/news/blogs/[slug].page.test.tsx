@@ -15,6 +15,25 @@ import { GENERIC_ERROR_MESSAGE } from "@/utils/storyblok";
 
 import BlogPostPage, { getServerSideProps } from "./[slug].page";
 
+jest.mock("@storyblok/react", () => {
+	const actual = jest.requireActual("@storyblok/react");
+
+	return {
+		...actual,
+		__esModule: true,
+		storyblokInit: jest.fn(),
+		// eslint-disable-next-line @typescript-eslint/no-explicit-any
+		StoryblokComponent: ({ blok }: { blok: any }) => (
+			<div data-testid={`storyblok-component-${blok.component}`}>
+				{blok.component}
+			</div>
+		),
+		getStoryblokApi: jest.fn(() => ({
+			get: jest.fn(),
+			getAll: jest.fn(),
+		})),
+	};
+});
 //cast to unknown necessary due to some differences in response versus expected type from generate-ts
 const mockBlogPost = mockBlogPostSuccessResponse.data
 	.story as unknown as ISbStoryData<BlogPostStoryblok>;
@@ -28,8 +47,10 @@ const mockBreadcrumbs = [
 describe("BlogPostPage", () => {
 	it("renders the page", () => {
 		render(<BlogPostPage story={mockBlogPost} />);
-		expect(screen.getByText(mockBlogPost.content.title)).toBeInTheDocument();
 
+		expect(
+			screen.getByTestId("storyblok-component-blogPost")
+		).toBeInTheDocument();
 		expect(document.body).toMatchSnapshot();
 	});
 

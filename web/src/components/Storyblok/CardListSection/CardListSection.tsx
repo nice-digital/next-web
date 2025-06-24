@@ -1,11 +1,9 @@
 import classnames from "classnames";
-import Link from "next/link";
 
-import { Card, type CardHeadingLinkProps } from "@nice-digital/nds-card";
-
+import { CardList } from "@/components/Storyblok/CardList/CardList";
 import { StoryblokRichText } from "@/components/Storyblok/StoryblokRichText/StoryblokRichText";
 import { CardListSectionStoryblok } from "@/types/storyblok";
-import { fieldHasValidContent, resolveStoryblokLink } from "@/utils/storyblok";
+import { fieldHasValidContent } from "@/utils/storyblok";
 import { toTitleCase } from "@/utils/string";
 
 import styles from "./CardListSection.module.scss";
@@ -70,30 +68,13 @@ export const CardListSection: React.FC<CardListSectionProps> = ({
 					</div>
 				) : undefined}
 
-				<ul className="list list--unstyled">
-					{cards.map(({ heading, body, link, _uid }) => {
-						let cardLink: CardHeadingLinkProps | undefined = undefined;
-						const resolvedLink = link ? resolveStoryblokLink(link) : undefined;
-						if (resolvedLink?.url) {
-							cardLink = {
-								destination: resolvedLink.url,
-								elementType: resolvedLink.isInternal ? Link : "a",
-								method: "href",
-							};
-						}
-
-						return (
-							<Card
-								elementType="li"
-								headingText={heading}
-								link={cardLink || undefined}
-								key={_uid}
-							>
-								{body}
-							</Card>
-						);
-					})}
-				</ul>
+				<CardList
+					blok={{
+						cards: cards,
+						component: "cardList",
+						_uid: blok._uid,
+					}}
+				/>
 			</div>
 		</section>
 	);

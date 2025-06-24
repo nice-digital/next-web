@@ -1,0 +1,602 @@
+{
+  "story": {
+    "name": "Info Page Default (Page Header & Section Nav)",
+    "created_at": "2025-06-02T14:14:39.077Z",
+    "published_at": "2025-06-03T15:13:25.708Z",
+    "updated_at": "2025-06-03T15:13:25.735Z",
+    "id": 681214534,
+    "uuid": "0c903941-8f52-4395-8bb1-37d77233c3f3",
+    "content": {
+      "_uid": "4652f8da-6950-4c61-8176-b541e5e846a7",
+      "header": [
+        {
+          "cta": [],
+          "_uid": "77d5c37b-425e-4e34-998d-0b4302faaec6",
+          "theme": "subtle",
+          "title": "Indicator advisory committee (IAC)",
+          "summary": "We work with an independent indicator advisory committee (IAC) to develop quality indicators, including indicators that are suitable for inclusion in the Quality and Outcomes Framework (QOF).",
+          "component": "pageHeader",
+          "description": ""
+        }
+      ],
+      "content": {
+        "type": "doc",
+        "content": [
+          {
+            "type": "blok",
+            "attrs": {
+              "id": "38c8d051-9927-429f-b070-78e4f5566b30",
+              "body": [
+                {
+                  "_uid": "i-03dec4e5-307b-4643-b172-b1071878dfa0",
+                  "richText": {
+                    "type": "doc",
+                    "content": [
+                      {
+                        "type": "paragraph",
+                        "content": [
+                          {
+                            "text": "NICE indicators developed by the IAC can also be used for national or local quality improvement initiatives.",
+                            "type": "text"
+                          }
+                        ]
+                      },
+                      {
+                        "type": "paragraph",
+                        "content": [
+                          {
+                            "text": "The ",
+                            "type": "text"
+                          },
+                          {
+                            "text": "members of the committee",
+                            "type": "text",
+                            "marks": [
+                              {
+                                "type": "link",
+                                "attrs": {
+                                  "href": "/ben/advisory-committee-meetings/indicator-advisory-committee-iac-/indicator-advisory-committee-iac-",
+                                  "uuid": "c10c6993-d22c-4ea9-9369-ce82d17a27a0",
+                                  "anchor": null,
+                                  "target": "_self",
+                                  "linktype": "story",
+                                  "story": {
+                                    "name": "Indicator advisory committee members",
+                                    "id": 651621782,
+                                    "uuid": "c10c6993-d22c-4ea9-9369-ce82d17a27a0",
+                                    "slug": "indicator-advisory-committee-iac-",
+                                    "url": "ben/advisory-committee-meetings/indicator-advisory-committee-iac-/indicator-advisory-committee-iac-",
+                                    "full_slug": "ben/advisory-committee-meetings/indicator-advisory-committee-iac-/indicator-advisory-committee-iac-",
+                                    "_stopResolving": true
+                                  }
+                                }
+                              }
+                            ]
+                          },
+                          {
+                            "text": " include:",
+                            "type": "text"
+                          }
+                        ]
+                      },
+                      {
+                        "type": "bullet_list",
+                        "content": [
+                          {
+                            "type": "list_item",
+                            "content": [
+                              {
+                                "type": "paragraph",
+                                "content": [
+                                  {
+                                    "text": "primary and secondary care professionals",
+                                    "type": "text"
+                                  }
+                                ]
+                              }
+                            ]
+                          },
+                          {
+                            "type": "list_item",
+                            "content": [
+                              {
+                                "type": "paragraph",
+                                "content": [
+                                  {
+                                    "text": "commissioners",
+                                    "type": "text"
+                                  }
+                                ]
+                              }
+                            ]
+                          },
+                          {
+                            "type": "list_item",
+                            "content": [
+                              {
+                                "type": "paragraph",
+                                "content": [
+                                  {
+                                    "text": "public health professionals",
+                                    "type": "text"
+                                  }
+                                ]
+                              }
+                            ]
+                          },
+                          {
+                            "type": "list_item",
+                            "content": [
+                              {
+                                "type": "paragraph",
+                                "content": [
+                                  {
+                                    "text": "patients or service users and their carers",
+                                    "type": "text"
+                                  }
+                                ]
+                              }
+                            ]
+                          },
+                          {
+                            "type": "list_item",
+                            "content": [
+                              {
+                                "type": "paragraph",
+                                "content": [
+                                  {
+                                    "text": "academics.",
+                                    "type": "text"
+                                  }
+                                ]
+                              }
+                            ]
+                          }
+                        ]
+                      },
+                      {
+                        "type": "paragraph",
+                        "content": [
+                          {
+                            "text": "Committee members do not represent their organisations but are selected for their expertise, experience of working with multidisciplinary and lay colleagues, and understanding of indicator development and quality improvement.",
+                            "type": "text"
+                          }
+                        ]
+                      },
+                      {
+                        "type": "paragraph",
+                        "content": [
+                          {
+                            "text": "Where required, topic experts are also invited to help inform the committee's discussions and decision making.",
+                            "type": "text"
+                          }
+                        ]
+                      }
+                    ]
+                  },
+                  "component": "nestedRichText"
+                },
+                {
+                  "_uid": "i-0ba33885-e967-4da9-8c83-f145e9e2790c",
+                  "richText": {
+                    "type": "doc",
+                    "content": [
+                      {
+                        "type": "heading",
+                        "attrs": {
+                          "level": 2
+                        },
+                        "content": [
+                          {
+                            "text": "Meeting dates for 2025",
+                            "type": "text"
+                          }
+                        ]
+                      },
+                      {
+                        "type": "paragraph",
+                        "content": [
+                          {
+                            "text": "Our indicator advisory committee meetings are currently mostly being held virtually.",
+                            "type": "text"
+                          }
+                        ]
+                      },
+                      {
+                        "type": "heading",
+                        "attrs": {
+                          "level": 3
+                        },
+                        "content": [
+                          {
+                            "text": "Tuesday 3 June 2025",
+                            "type": "text"
+                          }
+                        ]
+                      },
+                      {
+                        "type": "heading",
+                        "attrs": {
+                          "level": 4
+                        },
+                        "content": [
+                          {
+                            "text": "Register",
+                            "type": "text",
+                            "marks": [
+                              {
+                                "type": "textStyle",
+                                "attrs": {
+                                  "color": "#0E0E0E"
+                                }
+                              }
+                            ]
+                          }
+                        ]
+                      },
+                      {
+                        "type": "paragraph",
+                        "content": [
+                          {
+                            "text": "As you are registering directly on Zoom, your place is guaranteed so you will not receive a confirmation or approval email. Please make sure you note the meeting date/time in your diary, and you will receive your Zoom joining links and further instructions 1-2 days before the meeting.",
+                            "type": "text"
+                          }
+                        ]
+                      },
+                      {
+                        "type": "paragraph",
+                        "content": [
+                          {
+                            "text": "Register here:",
+                            "type": "text"
+                          }
+                        ]
+                      },
+                      {
+                        "type": "paragraph",
+                        "content": [
+                          {
+                            "text": "Topic 1: ",
+                            "type": "text"
+                          },
+                          {
+                            "text": "Late Stage Assessment of Intermittent Catheters",
+                            "type": "text",
+                            "marks": [
+                              {
+                                "type": "link",
+                                "attrs": {
+                                  "href": "https://meetnice.zoom.us/meeting/register/1y0jAgxaTUu8Qxxvhdtqbw",
+                                  "uuid": null,
+                                  "anchor": null,
+                                  "target": null,
+                                  "linktype": "url"
+                                }
+                              },
+                              {
+                                "type": "underline"
+                              }
+                            ]
+                          },
+                          {
+                            "text": ".",
+                            "type": "text"
+                          }
+                        ]
+                      },
+                      {
+                        "type": "paragraph",
+                        "content": [
+                          {
+                            "text": "Topic 2: ",
+                            "type": "text"
+                          },
+                          {
+                            "text": "Late Stage Assessment of One-piece closed bags for colostomies",
+                            "type": "text",
+                            "marks": [
+                              {
+                                "type": "link",
+                                "attrs": {
+                                  "href": "https://meetnice.zoom.us/meeting/register/BLChWi56TSyd3TOF14uY5Q",
+                                  "uuid": null,
+                                  "anchor": null,
+                                  "target": null,
+                                  "linktype": "url"
+                                }
+                              },
+                              {
+                                "type": "underline"
+                              }
+                            ]
+                          },
+                          {
+                            "text": ".",
+                            "type": "text"
+                          }
+                        ]
+                      },
+                      {
+                        "type": "paragraph",
+                        "content": [
+                          {
+                            "text": "More information about registering and our privacy statement",
+                            "type": "text",
+                            "marks": [
+                              {
+                                "type": "link",
+                                "attrs": {
+                                  "href": "/ben/advisory-committee-meetings/information-about-registering",
+                                  "uuid": "def50991-ca8c-4c58-a4c4-042d4baceb63",
+                                  "anchor": null,
+                                  "target": "_self",
+                                  "linktype": "story",
+                                  "story": {
+                                    "name": "Information about registering",
+                                    "id": 650866420,
+                                    "uuid": "def50991-ca8c-4c58-a4c4-042d4baceb63",
+                                    "slug": "information-about-registering",
+                                    "url": "ben/advisory-committee-meetings/information-about-registering",
+                                    "full_slug": "ben/advisory-committee-meetings/information-about-registering",
+                                    "_stopResolving": true
+                                  }
+                                }
+                              }
+                            ]
+                          },
+                          {
+                            "text": ".",
+                            "type": "text"
+                          }
+                        ]
+                      },
+                      {
+                        "type": "heading",
+                        "attrs": {
+                          "level": 3
+                        },
+                        "content": [
+                          {
+                            "text": "Further meetings",
+                            "type": "text"
+                          }
+                        ]
+                      },
+                      {
+                        "type": "bullet_list",
+                        "content": [
+                          {
+                            "type": "list_item",
+                            "content": [
+                              {
+                                "type": "paragraph",
+                                "content": [
+                                  {
+                                    "text": "Tuesday 16 September 2025",
+                                    "type": "text"
+                                  }
+                                ]
+                              }
+                            ]
+                          },
+                          {
+                            "type": "list_item",
+                            "content": [
+                              {
+                                "type": "paragraph",
+                                "content": [
+                                  {
+                                    "text": "Tuesday 9 December 2025.",
+                                    "type": "text"
+                                  }
+                                ]
+                              }
+                            ]
+                          }
+                        ]
+                      },
+                      {
+                        "type": "paragraph",
+                        "content": [
+                          {
+                            "text": "Dates and venues are subject to change.",
+                            "type": "text"
+                          }
+                        ]
+                      },
+                      {
+                        "type": "heading",
+                        "attrs": {
+                          "level": 2
+                        },
+                        "content": [
+                          {
+                            "text": "Minutes and register of interests from previous meetings",
+                            "type": "text"
+                          }
+                        ]
+                      }
+                    ]
+                  },
+                  "component": "nestedRichText"
+                },
+                {
+                  "cta": [
+                    {
+                      "_uid": "a0dc4ae7-e0c3-48e5-a935-f94ebcd0e00f",
+                      "link": {
+                        "id": "",
+                        "url": "https://www.nice.org.uk/process/pmg44",
+                        "linktype": "url",
+                        "fieldtype": "multilink",
+                        "cached_url": "https://www.nice.org.uk/process/pmg44"
+                      },
+                      "text": "Process guide",
+                      "variant": "cta",
+                      "component": "buttonLink"
+                    }
+                  ],
+                  "_uid": "i-beb153da-3b75-4796-a256-2cc007d4810b",
+                  "body": {
+                    "type": "doc",
+                    "content": [
+                      {
+                        "type": "paragraph",
+                        "content": [
+                          {
+                            "text": "Indicator advisory committee terms of reference and standing orders (PDF)",
+                            "type": "text",
+                            "marks": [
+                              {
+                                "type": "link",
+                                "attrs": {
+                                  "href": "https://www.nice.org.uk/process/pmg44/resources/indicator-advisory-committee-terms-of-reference-and-standing-orders-pdf-13606990381",
+                                  "uuid": null,
+                                  "anchor": null,
+                                  "target": null,
+                                  "linktype": "url"
+                                }
+                              }
+                            ]
+                          }
+                        ]
+                      }
+                    ]
+                  },
+                  "heading": "More information",
+                  "variant": "default",
+                  "component": "actionBannerDefault"
+                }
+              ]
+            }
+          }
+        ]
+      },
+      "metadata": [
+        {
+          "_uid": "05322a00-3408-4cdd-bffd-00b201c36ed7",
+          "creator": "",
+          "component": "metadata",
+          "description": ""
+        }
+      ],
+      "component": "infoPage",
+      "hideInPageNav": "false",
+      "hideSectionNav": "false"
+    },
+    "slug": "info-page-default",
+    "full_slug": "unit-test-data/info-page-default",
+    "sort_by_date": null,
+    "position": 10,
+    "tag_list": [],
+    "is_startpage": false,
+    "parent_id": 659520607,
+    "meta_data": null,
+    "group_id": "1d76001d-989e-46d7-b682-189c04d736a2",
+    "first_published_at": "2025-06-02T14:18:56.770Z",
+    "release_id": null,
+    "lang": "default",
+    "path": null,
+    "alternates": [],
+    "default_full_slug": null,
+    "translated_slugs": null
+  },
+  "breadcrumbs": [
+    {
+      "title": "Home",
+      "path": "/"
+    },
+    {
+      "title": "Unit Test Data (do not modify)",
+      "path": "/unit-test-data"
+    }
+  ],
+  "component": "infoPage",
+  "tree": [
+    {
+      "id": 681214537,
+      "uuid": "e5cfb560-56ac-45a6-9dec-b421837e7692",
+      "slug": "unit-test-data/info-page-hero-in-page-nav",
+      "path": null,
+      "parent_id": 659520607,
+      "name": "Info Page with Hero and In Page Nav",
+      "is_folder": false,
+      "published": true,
+      "is_startpage": false,
+      "position": -30,
+      "real_path": "/unit-test-data/info-page-hero-in-page-nav",
+      "childLinks": []
+    },
+    {
+      "id": 681214604,
+      "uuid": "7bdf4e3a-7953-4b81-bdb7-93d91dbc74d2",
+      "slug": "unit-test-data/info-page-no-nav",
+      "path": null,
+      "parent_id": 659520607,
+      "name": "Info Page No Nav",
+      "is_folder": false,
+      "published": true,
+      "is_startpage": false,
+      "position": -20,
+      "real_path": "/unit-test-data/info-page-no-nav",
+      "childLinks": []
+    },
+    {
+      "id": 560615999,
+      "uuid": "be70c55b-d349-41d4-b655-43f4ff83cab5",
+      "slug": "unit-test-data/test-category-landing",
+      "path": null,
+      "parent_id": 659520607,
+      "name": "category landing",
+      "is_folder": false,
+      "published": true,
+      "is_startpage": false,
+      "position": 0,
+      "real_path": "/unit-test-data/test-category-landing",
+      "childLinks": []
+    },
+    {
+      "id": 681214534,
+      "uuid": "0c903941-8f52-4395-8bb1-37d77233c3f3",
+      "slug": "unit-test-data/info-page-default",
+      "path": null,
+      "parent_id": 659520607,
+      "name": "Info Page Default (Page Header & Section Nav)",
+      "is_folder": false,
+      "published": true,
+      "is_startpage": false,
+      "position": 10,
+      "real_path": "/unit-test-data/info-page-default",
+      "childLinks": []
+    },
+    {
+      "id": 560642123,
+      "uuid": "d6f8ad6b-57e8-4c87-852e-8d4b443307ed",
+      "slug": "unit-test-data/category-landing-with-hero",
+      "path": "",
+      "parent_id": 659520607,
+      "name": "Category landing with hero",
+      "is_folder": false,
+      "published": true,
+      "is_startpage": false,
+      "position": 20,
+      "real_path": "/unit-test-data/category-landing-with-hero",
+      "childLinks": []
+    },
+    {
+      "id": 531694452,
+      "uuid": "e9a479e6-8db1-4b61-bed0-6daaa23aca98",
+      "slug": "unit-test-data/test-page",
+      "path": null,
+      "parent_id": 659520607,
+      "name": "Test page",
+      "is_folder": false,
+      "published": true,
+      "is_startpage": false,
+      "position": 30,
+      "real_path": "/unit-test-data/test-page",
+      "childLinks": []
+    }
+  ],
+  "slug": "unit-test-data/info-page-default"
+}

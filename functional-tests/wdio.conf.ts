@@ -18,6 +18,7 @@ export const config: WebdriverIO.Config = {
 		"./features/**/researchListPage.feature",
 		"./features/**/researchPagination.feature",
 		"./features/**/filterRrlp.feature",
+		"./features/**/hubPage.feature",
 	],
 
 	capabilities: [

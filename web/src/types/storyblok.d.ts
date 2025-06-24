@@ -29,13 +29,27 @@ export interface AccordionGroupStoryblok {
 }
 
 export interface AssetStoryblok {
-  alt?: string;
-  copyright?: string;
+  alt: string | null;
+  copyright?: string | null;
+  fieldtype: "asset";
   id: number;
-  filename: string;
+  filename: string | null;
   name: string;
-  title?: string;
-  focus?: string;
+  title: string | null;
+  focus: string | null;
+  meta_data?: {
+    [k: string]: any;
+  };
+  source?: string | null;
+  is_external_url?: boolean;
+  is_private?: boolean;
+  src?: string;
+  updated_at?: string;
+  width?: number | null;
+  height?: number | null;
+  aspect_ratio?: number | null;
+  public_id?: string | null;
+  content_type?: string;
   [k: string]: any;
 }
 
@@ -84,11 +98,16 @@ export interface BlogPostStoryblok {
 
 export type MultilinkStoryblok =
   | {
-      id?: string;
-      cached_url?: string;
+      fieldtype: "multilink";
+      id: string;
+      url: string;
+      cached_url: string;
+      target?: "_blank" | "_self";
       anchor?: string;
-      linktype?: "story";
-      target?: "_self" | "_blank";
+      rel?: string;
+      title?: string;
+      prep?: string;
+      linktype: "story";
       story?: {
         name: string;
         created_at?: string;
@@ -121,17 +140,33 @@ export type MultilinkStoryblok =
       [k: string]: any;
     }
   | {
-      url?: string;
-      cached_url?: string;
-      anchor?: string;
-      linktype?: "asset" | "url";
-      target?: "_self" | "_blank";
+      fieldtype: "multilink";
+      id: string;
+      url: string;
+      cached_url: string;
+      target?: "_blank" | "_self";
+      linktype: "url";
+      rel?: string;
+      title?: string;
       [k: string]: any;
     }
   | {
+      fieldtype: "multilink";
+      id: string;
+      url: string;
+      cached_url: string;
+      target?: "_blank" | "_self";
       email?: string;
-      linktype?: "email";
-      target?: "_self" | "_blank";
+      linktype: "email";
+      [k: string]: any;
+    }
+  | {
+      fieldtype: "multilink";
+      id: string;
+      url: string;
+      cached_url: string;
+      target?: "_blank" | "_self";
+      linktype: "asset";
       [k: string]: any;
     };
 
@@ -229,6 +264,13 @@ export interface CardGridSectionStoryblok {
   [k: string]: any;
 }
 
+export interface CardListStoryblok {
+  cards: CardListSectionItemStoryblok[];
+  component: "cardList";
+  _uid: string;
+  [k: string]: any;
+}
+
 export interface CardListSectionStoryblok {
   heading?: string;
   headingLevel: string;
@@ -306,6 +348,7 @@ export interface GridStoryblok {
     | CardGridRowCalloutWithImageStoryblok
     | CardGridRowTestimonialsStoryblok
     | CardGridSectionStoryblok
+    | CardListStoryblok
     | CardListSectionStoryblok
     | CardListSectionItemStoryblok
     | CategoryLandingPageStoryblok
@@ -321,6 +364,7 @@ export interface GridStoryblok {
     | IframeStoryblok
     | ImageEmbedStoryblok
     | ImageOrVideoStoryblok
+    | ImageRichTextStoryblok
     | InDepthArticleStoryblok
     | InfoPageStoryblok
     | MarkdownStoryblok
@@ -406,12 +450,27 @@ export interface HomepageStoryblok {
 }
 
 export type MultiassetStoryblok = {
-  alt?: string;
-  copyright?: string;
+  alt: string | null;
+  copyright?: string | null;
+  fieldtype: "asset";
   id: number;
-  filename: string;
+  filename: string | null;
   name: string;
-  title?: string;
+  title: string | null;
+  focus: string | null;
+  meta_data?: {
+    [k: string]: any;
+  };
+  source?: string | null;
+  is_external_url?: boolean;
+  is_private?: boolean;
+  src?: string;
+  updated_at?: string;
+  width?: number | null;
+  height?: number | null;
+  aspect_ratio?: number | null;
+  public_id?: string | null;
+  content_type?: string;
   [k: string]: any;
 }[];
 
@@ -445,6 +504,18 @@ export interface ImageOrVideoStoryblok {
   [k: string]: any;
 }
 
+export interface ImageRichTextStoryblok {
+  imagePosition?: "" | "left" | "right";
+  imageSize?: "small" | "medium" | "large";
+  hideImagesOnSmallScreens?: "true" | "false";
+  mainImage: AssetStoryblok;
+  smallScreenImage?: AssetStoryblok;
+  content: RichtextStoryblok;
+  component: "imageRichText";
+  _uid: string;
+  [k: string]: any;
+}
+
 export interface InDepthArticleStoryblok {
   title: string;
   link: Exclude<MultilinkStoryblok, {linktype?: "email"} | {linktype?: "asset"}>;
@@ -459,6 +530,8 @@ export interface InDepthArticleStoryblok {
 export interface InfoPageStoryblok {
   header: (PageHeaderStoryblok | HeroStoryblok)[];
   metadata?: MetadataStoryblok[];
+  hideSectionNav?: "true" | "false";
+  hideInPageNav?: "true" | "false";
   content: RichtextStoryblok;
   component: "infoPage";
   _uid: string;
@@ -549,6 +622,7 @@ export interface PageStoryblok {
     | CardGridRowCalloutWithImageStoryblok
     | CardGridRowTestimonialsStoryblok
     | CardGridSectionStoryblok
+    | CardListStoryblok
     | CardListSectionStoryblok
     | CardListSectionItemStoryblok
     | CategoryLandingPageStoryblok
@@ -564,6 +638,7 @@ export interface PageStoryblok {
     | IframeStoryblok
     | ImageEmbedStoryblok
     | ImageOrVideoStoryblok
+    | ImageRichTextStoryblok
     | InDepthArticleStoryblok
     | InfoPageStoryblok
     | MarkdownStoryblok

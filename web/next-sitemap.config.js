@@ -1,11 +1,9 @@
-const config = require("config");
-
-const isTeamCity = !!process.env.TEAMCITY_VERSION;
-
-const siteUrl = isTeamCity
-	? // Note the octopus deploy variable in #{} syntax so we can use each environment's full URL at deploy time
-	  "#{public:baseURL}"
-	: `${config.get("public.baseURL")}${config.get("public.publicBaseURL")}`;
+// const config = require("config");
+//TODO find out why baseURL is set to localhost in default.yaml - sitemap is generated at build so uses config vars not octo vars
+// const siteUrl = `${config.get("public.baseURL")}${config.get(
+// 	"public.publicBaseURL"
+// )}`;
+const siteUrl = "https://www.nice.org.uk"; // Hard coding live domain as there's no need to have sitemaps for test envs
 
 /** @type {import('next-sitemap').IConfig} */
 module.exports = {
@@ -14,12 +12,14 @@ module.exports = {
 	generateRobotsTxt: false,
 	sitemapBaseFileName: "sitemap-0",
 	exclude: [
+		"/",
 		"/guidance/errortest",
 		"/status",
 		"/search",
-		"/news",
-		"/news/*",
+		"/about", // Not live on NextJS yet
+		"/about/what-we-do/science-policy-research/research-recommendations", // Not live on NextJS yet
 		"/sitemap-next.xml",
+		"/indicators/sitemap.xml",
 	],
 	transform: (config, loc) => ({
 		// Strip out changefreq, priority, lastmod etc:
