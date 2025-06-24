@@ -366,7 +366,7 @@ const nextConfig = {
 			},
 			{
 				source:
-					"/about/nice-communities/library-and-knowledge-services-staff/buy-books--journals-and-databases/purchasing-steps--direct-awards",
+					"/about/nice-communities/library-and-knowledge-services-staff/buy-books-journals-and-databases/purchasing-steps--direct-awards",
 				destination:
 					"/library-and-knowledge-services/buy-books-journals-and-databases/purchasing-steps-direct-awards",
 				permanent: true,
