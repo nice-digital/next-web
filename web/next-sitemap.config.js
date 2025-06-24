@@ -10,7 +10,7 @@ module.exports = {
 	siteUrl,
 	generateIndexSitemap: false,
 	generateRobotsTxt: false,
-	sitemapBaseFileName: "sitemap-0",
+	sitemapBaseFileName: "sitemap-next",
 	exclude: [
 		"/",
 		"/guidance/errortest",

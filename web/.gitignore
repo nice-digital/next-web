@@ -41,6 +41,7 @@ config/local*
 
 # Generated sitemap XML files
 public/sitemap-0.xml
+public/sitemap-next.xml
 
 # JSON component structure from the Storyblok CLI
 components.*.json
