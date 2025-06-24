@@ -16,9 +16,9 @@ module.exports = {
 		"/guidance/errortest",
 		"/status",
 		"/search",
-		"/about", // Not live on NextJS yet
+		"/forms/*",
 		"/about/what-we-do/science-policy-research/research-recommendations", // Not live on NextJS yet
-		"/sitemap-next.xml",
+		"/sitemap-storyblok.xml",
 		"/indicators/sitemap.xml",
 	],
 	transform: (config, loc) => ({
