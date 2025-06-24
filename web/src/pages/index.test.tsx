@@ -1,17 +1,3 @@
-const storyblokInit = jest.fn();
-
-jest.mock("@storyblok/react", () => {
-	const original = jest.requireActual("@storyblok/react");
-	return {
-		...original,
-		storyblokInit: (...args: any[]) => storyblokInit(...args),
-		StoryblokComponent: ({ blok }: any) => (
-			<div data-testid="storyblok-mock">MOCKED: {blok.component}</div>
-		),
-		__esModule: true,
-	};
-});
-
 import { ISbStoryData } from "@storyblok/react";
 import { GetServerSidePropsContext } from "next";
 
@@ -34,6 +20,25 @@ import { GENERIC_ERROR_MESSAGE } from "@/utils/storyblok";
 
 import Home, { type HomePageProps, getServerSideProps } from "./index.page";
 
+jest.mock("@storyblok/react", () => {
+	const actual = jest.requireActual("@storyblok/react");
+
+	return {
+		...actual,
+		__esModule: true,
+		storyblokInit: jest.fn(),
+		// eslint-disable-next-line @typescript-eslint/no-explicit-any
+		StoryblokComponent: ({ blok }: { blok: any }) => (
+			<div data-testid={`storyblok-component-${blok.component}`}>
+				{blok.component}
+			</div>
+		),
+		getStoryblokApi: jest.fn(() => ({
+			get: jest.fn(),
+			getAll: jest.fn(),
+		})),
+	};
+});
 // Mock a second article with a different ID so we avoid duplicate key warnings
 const secondNewsArticle = {
 	...mockNewsArticle,
@@ -63,20 +68,12 @@ const props: HomePageProps = {
 const expectedErrorMessage = GENERIC_ERROR_MESSAGE;
 
 describe("Homepage", () => {
-	beforeEach(() => {
-		storyblokInit({
-			accessToken: "test",
-			use: [],
-			components: {
-				homepage: () => <div data-testid="homepage">MOCKED: homepage</div>,
-			},
-		});
-	});
-
 	it("should match snapshot for main content", () => {
-		const { container, getByTestId } = render(<Home {...props} />);
-		expect(getByTestId("storyblok-mock")).toHaveTextContent("MOCKED: homepage");
-		expect(container).toMatchSnapshot();
+		render(<Home {...props} />);
+		expect(
+			screen.getByTestId("storyblok-component-homepage")
+		).toBeInTheDocument();
+		expect(document.body).toMatchSnapshot();
 	});
 
 	it("Should render error content when error is passed as a prop", async () => {

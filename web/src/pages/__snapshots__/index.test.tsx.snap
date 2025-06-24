@@ -247,25 +247,30 @@ exports[`Homepage Should render error content when error is passed as a prop 1`]
 `;
 
 exports[`Homepage should match snapshot for main content 1`] = `
-<div>
-  <div
-    class="undefined undefined"
-  >
-    <div />
-    <main>
-      <div
-        class="container"
-        data-component="container"
-      >
+<body>
+  <script
+    data-nscript="afterInteractive"
+    src="https://www.googletagmanager.com/gtm.js?id=GTM-M55QTQ"
+  />
+  <div>
+    <div
+      class="undefined undefined"
+    >
+      <div />
+      <main>
         <div
-          data-testid="storyblok-mock"
+          class="container"
+          data-component="container"
         >
-          MOCKED: 
-          homepage
+          <div
+            data-testid="storyblok-component-homepage"
+          >
+            homepage
+          </div>
         </div>
-      </div>
-    </main>
-    <noscript />
+      </main>
+      <noscript />
+    </div>
   </div>
-</div>
+</body>
 `;
