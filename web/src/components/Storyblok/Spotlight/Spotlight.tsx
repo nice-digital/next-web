@@ -91,7 +91,7 @@ export const Spotlight: React.FC<SpotlightProps> = ({
 												serviceOptions={{ height: 0, quality: 80, width: 708 }}
 											/>
 										}
-										summary={
+										children={
 											<>
 												<Tag outline>{storyType}</Tag>
 											</>
