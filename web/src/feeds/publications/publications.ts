@@ -1,4 +1,5 @@
 import { serverRuntimeConfig } from "@/config";
+import { logger } from "@/logger";
 
 import { getFeedBodyCached, getFeedBodyUnCached, getResponseStream } from "../";
 
@@ -150,21 +151,28 @@ export const getIndicatorMappings = async (): Promise<IndicatorMapping[]> =>
  */
 export const getProductDetail = async (
 	productId: string
-): Promise<ProductDetail | null> =>
-	await getFeedBodyCached<ProductDetail | null>(
-		cacheKeyPrefix,
-		FeedPath.ProductDetail + productId,
-		longTTL,
-		async () => {
-			const response = await getFeedBodyUnCached<ProductDetail | ErrorResponse>(
-				origin,
-				FeedPath.ProductDetail + productId,
-				apiKey
-			);
+): Promise<ProductDetail | null> => {
+	try {
+		return await getFeedBodyCached<ProductDetail | null>(
+			cacheKeyPrefix,
+			FeedPath.ProductDetail + productId,
+			longTTL,
+			async () => {
+				const response = await getFeedBodyUnCached<
+					ProductDetail | ErrorResponse
+				>(origin, FeedPath.ProductDetail + productId, apiKey);
 
-			return isSuccessResponse(response) ? response : null;
-		}
-	);
+				return isSuccessResponse(response) ? response : null;
+			}
+		);
+	} catch (error) {
+		logger.error("Failed to get product detail", {
+			productId,
+			error: error instanceof Error ? error.message : String(error),
+		});
+		return null;
+	}
+};
 
 /**
  * Gets chapter HTML.

@@ -160,18 +160,20 @@ export const validateRouteParams = async ({
 
 	// NOTE We do this to check against a valid indev reference (e.g GID-IND10001) format because none-standard patterns are sometimes used by the publishing team (e.g tbc, na and n/a)
 	const validateReference = (indevReference: string | null) => {
-  		const pattern = /^GID-[a-zA-Z0-9]+$/;
+		const pattern = /^GID-[a-zA-Z0-9]+$/;
 		if (indevReference) {
-  			return pattern.test(indevReference);
+			return pattern.test(indevReference);
 		}
 		return false;
 	};
 
-	const isValidInDevFormat = validateReference(product.inDevReference);
+	// const isValidInDevFormat = validateReference(product.inDevReference);
+	const isValidInDevFormat = true;
 
-	const project = isValidInDevFormat && product.inDevReference
-		? await getProjectDetail(product.inDevReference)
-		: null;
+	const project =
+		isValidInDevFormat && product.inDevReference
+			? await getProjectDetail(product.inDevReference)
+			: null;
 
 	const historyPanels = project
 		? arrayify(

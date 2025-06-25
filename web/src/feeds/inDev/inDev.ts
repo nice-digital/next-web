@@ -1,4 +1,5 @@
 import { serverRuntimeConfig } from "@/config";
+import { logger } from "@/logger";
 
 import { getFeedBodyCached, getFeedBodyUnCached, getResponseStream } from "..";
 import {
@@ -59,21 +60,30 @@ export const getAllConsultations = async (): Promise<Consultation[]> =>
 
 export const getProjectDetail = async (
 	inDevReference: string
-): Promise<ProjectDetail | null> =>
-	await getFeedBodyCached<ProjectDetail | null>(
-		cacheKeyPrefix,
-		FeedPath.ProjectDetail + inDevReference,
-		longTTL,
-		async () => {
-			const response = await getFeedBodyUnCached<ProjectDetail | "">(
-				origin,
-				FeedPath.ProjectDetail + inDevReference,
-				apiKey
-			);
+): Promise<ProjectDetail | null> => {
+	try {
+		return await getFeedBodyCached<ProjectDetail | null>(
+			cacheKeyPrefix,
+			FeedPath.ProjectDetail + inDevReference,
+			longTTL,
+			async () => {
+				const response = await getFeedBodyUnCached<ProjectDetail | "">(
+					origin,
+					FeedPath.ProjectDetail + inDevReference,
+					apiKey
+				);
 
-			return response === "" || isErrorResponse(response) ? null : response;
-		}
-	);
+				return response === "" || isErrorResponse(response) ? null : response;
+			}
+		);
+	} catch (error) {
+		logger.error("Failed to get project detail", {
+			inDevReference,
+			error: error instanceof Error ? error.message : String(error),
+		});
+		return null;
+	}
+};
 
 /**
  * Gets HTML of a resource from InDev,
