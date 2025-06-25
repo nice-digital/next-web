@@ -33,6 +33,8 @@ export const JotFormPage: FC<JotFormPageProps> = ({
 			<NextSeo
 				title={[formName, ...parentPages.map((p) => p.title)].join(" | ")}
 				description={lead}
+				noindex
+				nofollow
 			/>
 			<Breadcrumbs>
 				{[
