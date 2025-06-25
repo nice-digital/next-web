@@ -49,10 +49,11 @@ export const getFeedBodyUnCached = async <TResponse>(
 		return data;
 	} catch (error) {
 		// Something unexpected went wrong - this could include network errors, invalid URLs, or too many redirects
-		logger.error("Error fetching uncached feed", {
-			url: origin + path,
-			error: error instanceof Error ? error.message : String(error),
-		});
+		logger.error(
+			`Error fetching uncached feed - url: ${origin + path}, error: ${
+				error instanceof Error ? error.message : String(error)
+			}`
+		);
 
 		// Re-throw a generic error message to avoid exposing implementation details
 		throw new Error(GENERIC_ERROR_MESSAGE);
@@ -81,10 +82,13 @@ export const getFeedBodyCached = async <T>(
 			{ ttl }
 		);
 	} catch (error) {
-		logger.error("Error retrieving feed from cache or fallback", {
-			cacheKey: getCacheKey(groupCacheKey, path),
-			error: error instanceof Error ? error.message : String(error),
-		});
+		logger.error(
+			`Error retrieving feed from cache or fallback - cacheKey: ${getCacheKey(
+				groupCacheKey,
+				path
+			)}, error: ${error instanceof Error ? error.message : String(error)}`
+		);
+
 		throw new Error(GENERIC_ERROR_MESSAGE);
 	}
 };
@@ -112,10 +116,11 @@ export const getResponseStream = async (
 		});
 		return data;
 	} catch (error) {
-		logger.error("Error fetching response stream", {
-			url: origin + path,
-			error: error instanceof Error ? error.message : String(error),
-		});
+		logger.error(
+			`Error fetching response stream - url: ${origin + path}, error: ${
+				error instanceof Error ? error.message : String(error)
+			}`
+		);
 
 		throw new Error(GENERIC_ERROR_MESSAGE);
 	}

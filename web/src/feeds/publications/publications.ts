@@ -166,10 +166,12 @@ export const getProductDetail = async (
 			}
 		);
 	} catch (error) {
-		logger.error("Failed to get product detail", {
-			productId,
-			error: error instanceof Error ? error.message : String(error),
-		});
+		logger.error(
+			`Failed to get product detail - productId: ${productId}, error: ${
+				error instanceof Error ? error.message : String(error)
+			}`
+		);
+
 		return null;
 	}
 };

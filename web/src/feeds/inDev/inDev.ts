@@ -77,10 +77,11 @@ export const getProjectDetail = async (
 			}
 		);
 	} catch (error) {
-		logger.error("Failed to get project detail", {
-			inDevReference,
-			error: error instanceof Error ? error.message : String(error),
-		});
+		logger.error(
+			`Failed to get project detail - inDevReference: ${inDevReference}, error: ${
+				error instanceof Error ? error.message : String(error)
+			} `
+		);
 		return null;
 	}
 };
