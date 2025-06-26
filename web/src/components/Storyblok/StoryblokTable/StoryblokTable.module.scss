@@ -7,5 +7,9 @@
 
   &__caption {
     text-align: left;
+
+    @include media-queries.mq($until: sm) {
+      display: block;
+    }
   }
 }
