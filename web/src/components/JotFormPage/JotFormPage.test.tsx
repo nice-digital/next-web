@@ -20,6 +20,15 @@ const props: JotFormPageProps = {
 };
 
 describe("JotFormPage", () => {
+	it("should render the correct page meta tags for robots", async () => {
+		render(<JotFormPage {...props} />);
+
+		expect(
+			// eslint-disable-next-line testing-library/no-node-access
+			document.querySelector(`meta[name="robots"]`)
+		).toHaveAttribute("content", "noindex,nofollow");
+	});
+
 	it("should render form name and parent pages in page title", () => {
 		render(<JotFormPage {...props} />);
 

@@ -2,21 +2,11 @@ import {
 	type ISbStoryData,
 	type ISbStoriesParams,
 	StoryblokComponent,
-	setComponents,
 } from "@storyblok/react";
 import { NextSeo } from "next-seo";
 import React, { useMemo } from "react";
 
 import { ErrorPageContent } from "@/components/ErrorPageContent/ErrorPageContent";
-import { BasicCardGrid } from "@/components/Storyblok/BasicCardGrid/BasicCardGrid";
-import { Homepage } from "@/components/Storyblok/Homepage/Homepage";
-import { HomepageHero } from "@/components/Storyblok/Homepage/HomepageHero/HomepageHero";
-import { Metadata } from "@/components/Storyblok/Metadata/Metadata";
-import { NestedRichText } from "@/components/Storyblok/NestedRichText/NestedRichText";
-import { PromoBox } from "@/components/Storyblok/PromoBox/PromoBox";
-import { Spotlight } from "@/components/Storyblok/Spotlight/Spotlight";
-import { StoryblokActionBannerFullWidth } from "@/components/Storyblok/StoryblokActionBanner/StoryblokActionBannerFullWidth";
-import { StoryblokHero } from "@/components/Storyblok/StoryblokHero/StoryblokHero";
 import { logger } from "@/logger";
 import { type NewsStory } from "@/types/News";
 import {
@@ -63,18 +53,6 @@ export default function Home(props: HomePageProps): React.ReactElement {
 		const { error } = props;
 		return <ErrorPageContent title="Error" heading={error} />;
 	}
-
-	setComponents({
-		actionBanner: StoryblokActionBannerFullWidth,
-		hero: StoryblokHero,
-		homepage: Homepage,
-		homepageHero: HomepageHero,
-		metadata: Metadata,
-		nestedRichText: NestedRichText,
-		promoBox: PromoBox,
-		spotlight: Spotlight,
-		cardGrid: BasicCardGrid,
-	});
 
 	const { story: storyData, latestNews } = props;
 
