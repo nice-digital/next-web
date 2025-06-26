@@ -526,6 +526,14 @@ export interface InDepthArticleStoryblok {
   _uid: string;
   [k: string]: any;
 }
+export interface InfogramEmbedStoryblok {
+  infogramUrl: string;
+  infogramVariant?: "" | "interactive" | "embed" | "static" | "popup" | "link";
+  layoutVariant: "default" | "fullwidth";
+  component: "infogramEmbed";
+  _uid: string;
+  [k: string]: any;
+}
 
 export interface InfoPageStoryblok {
   header: (PageHeaderStoryblok | HeroStoryblok)[];

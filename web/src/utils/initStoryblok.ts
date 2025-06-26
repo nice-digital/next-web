@@ -14,6 +14,7 @@ import { CategoryLandingPage } from "@/components/Storyblok/CategoryLandingPage/
 import { CategoryNavigation } from "@/components/Storyblok/CategoryNavigation/CategoryNavigation";
 import { Homepage } from "@/components/Storyblok/Homepage/Homepage";
 import { HomepageHero } from "@/components/Storyblok/Homepage/HomepageHero/HomepageHero";
+import { ClientInfogramEmbed } from "@/components/Storyblok/InfogramEmbed/ClientInfogramEmbed";
 import { InfoPage } from "@/components/Storyblok/InfoPage/InfoPage";
 import { Metadata } from "@/components/Storyblok/Metadata/Metadata";
 import { NestedRichText } from "@/components/Storyblok/NestedRichText/NestedRichText";
@@ -97,6 +98,7 @@ const infoPageComponents = {
 	cardGridRowCallout: CardGridRow,
 	cardGridRowCalloutWithImage: CardGridRow,
 	imageRichText: StoryblokImageRichText,
+	infogramEmbed: ClientInfogramEmbed,
 	infoPage: InfoPage,
 	nestedTable: StoryblokTable,
 };
