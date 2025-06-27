@@ -38,6 +38,7 @@ import { StoryblokTestimonialGridItem } from "@/components/Storyblok/StoryblokTe
 import { StoryblokYoutubeEmbed } from "@/components/Storyblok/StoryblokYoutubeEmbed/StoryblokYoutubeEmbed";
 import { publicRuntimeConfig } from "@/config";
 import { logger } from "@/logger";
+import { InfogramEmbedRichText } from "@/components/Storyblok/infogramEmbedRichText/InfogramEmbedRichText";
 
 //TODO: consider a mix of static imports for common components and dynamic imports for lesser used components
 const commonComponents = {
@@ -99,6 +100,7 @@ const infoPageComponents = {
 	imageRichText: StoryblokImageRichText,
 	infoPage: InfoPage,
 	nestedTable: StoryblokTable,
+	infogramRichText:InfogramEmbedRichText
 };
 
 export const allComponents: SbReactComponentsMap = {
