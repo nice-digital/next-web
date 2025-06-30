@@ -1,0 +1,25 @@
+@use '@nice-digital/nds-core/scss/media-queries';
+@use '@nice-digital/nds-core/scss/spacing';
+@use '@nice-digital/nds-core/scss/utils';
+
+.infogramRichText {
+  h2,
+  h3,
+  h4,
+  h5,
+  h6 {
+    margin: 0 0 utils.rem(spacing.$medium);
+  }
+  container-name: infogramRichText;
+  container-type: inline-size;
+  margin-bottom: utils.rem(spacing.$large);
+
+  &__infogramGrid {
+    display: block;
+  }
+  @container infogramRichText (max-width:#{media-queries.$sm}) {
+    &__infogramGrid {
+      display: none;
+    }
+  }
+}
