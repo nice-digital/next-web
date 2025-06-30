@@ -35,14 +35,14 @@
 
 ## What is it?
 
-Next Web API is a Redis backed .dotnet Core app which provides transparent read through caching for some aspects Guidance Web and (in the future) Next Web. It uses the Ocelot framework as a base with minimal modifications. It also provides last know good for cached content (depending on the config) which in turn will enhance the availability of dependant systems.
+NextWeb API is a Redis-backed .NET Core application that provides transparent read-through caching for certain aspects of both Guidance Web and NextWeb. It leverages the new WebApplicationBuilder interface and uses the Ocelot framework as its foundation, with minimal custom modifications. Additionally, it supports "last known good" caching (configurable), which helps improve the availability of dependent systems.
 
 ## Stack
 
 ### Software
 
-- [Visual Studio 2019](https://visualstudio.microsoft.com/vs/)
-- [.NET Core 3.1 LTS](https://dotnet.microsoft.com/)
+- [Visual Studio 2022](https://visualstudio.microsoft.com/vs/)
+- [.NET Core 6.0 LTS](https://dotnet.microsoft.com/)
 - [xUnit](https://xunit.net/) for tests
 - [Ocelot](https://ocelot.readthedocs.io/) API Framework
 - [CacheManager](https://cachemanager.michaco.net/) Caching framework form Ocelot
@@ -57,7 +57,7 @@ Next Web API is a Redis backed .dotnet Core app which provides transparent read 
 ## Local development setup
 
 1. Clone next-web project to local machine
-1. Open NICE.NextWeb.API project in Visual Studio 2019
+1. Open NICE.NextWeb.API project in Visual Studio 2022
 1. Restore nuget packages
 1. Restore locally stored secrets see [.Net Core Locally stored secrets](#.Net-Core-Locally-stored-secrets)
 2. To run Redis locally start docker using the command ```docker-compose up```
@@ -74,7 +74,7 @@ In the production environment (dev, test, alpha, beta, live) the config is read 
 
 ### Ocelot
 
-Ocelot is used by this project to provide basic API Gateway functionality. More information can be found here [Ocelot](https://ocelot.readthedocs.io/). This project is using version Ocelot 16.0.1 which is the highest version that supports .Net Core 3.1 LTS.
+Ocelot is used by this project to provide basic API Gateway functionality. More information can be found here [Ocelot](https://ocelot.readthedocs.io/). This project is using version Ocelot 18.0.10 which is the highest version that supports .Net Core 6.0 LTS.
 
 Ocelot is loaded from Nuget packages with some minor customisations. Mainly a custom Cache Manager is injected into the service collection. This custom Cache Manager is default except it inspects headers for the X-CacheManager-RefreshCache header which is described [here](#x-cachemanager-refreshcache-header).
 
