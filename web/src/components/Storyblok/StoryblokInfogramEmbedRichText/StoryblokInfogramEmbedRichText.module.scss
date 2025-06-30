@@ -17,6 +17,14 @@
   &__infogramGrid {
     display: block;
   }
+
+  &__infogramWithHeading {
+    margin-top: 0;
+  }
+
+  &__infogramWithoutHeading {
+    margin-top: utils.rem(spacing.$medium);
+  }
   @container infogramRichText (max-width:#{media-queries.$sm}) {
     &__infogramGrid {
       display: none;

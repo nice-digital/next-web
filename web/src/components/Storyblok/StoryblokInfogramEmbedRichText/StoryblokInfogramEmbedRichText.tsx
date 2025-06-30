@@ -1,12 +1,12 @@
 import React from "react";
 import { Grid, GridItem, type Columns } from "@nice-digital/nds-grid";
 import { StoryblokRichText } from "../StoryblokRichText/StoryblokRichText";
-import {ClientInfogramEmbed }from "../InfogramEmbed/ClientInfogramEmbed";
+import { ClientInfogramEmbed } from "../InfogramEmbed/ClientInfogramEmbed";
 import styles from "./StoryblokInfogramEmbedRichText.module.scss";
 import { InfogramRichTextStoryblok } from "@/types/storyblok";
 
 interface InfogramEmbedRichTextProps {
-	blok: InfogramRichTextStoryblok
+	blok: InfogramRichTextStoryblok;
 	className?: string;
 }
 
@@ -29,22 +29,29 @@ export const InfogramEmbedRichText: React.FC<InfogramEmbedRichTextProps> = ({
 		};
 	const validInfogramSize = infogramSize === "" ? "medium" : infogramSize;
 	const { embed: embedCols, text: textCols } = sizeMap[validInfogramSize];
-
+	// Detect if any block in content is a heading
+	const contentStartsWithHeading =
+		Array.isArray(content?.content) &&
+		content.content.some((block) => block.type === "heading");
 	const infogramFirst = infogramPosition !== "right";
-		const infogramVisibilityOnSmallScreens =
+	const infogramVisibilityOnSmallScreens =
 		hideInfogramOnSmallScreens === "false" ? false : true;
-		const infogramGridItemClass = [
+	const infogramGridItemClass = [
 		infogramVisibilityOnSmallScreens
 			? styles.infogramRichText__infogramGrid
 			: null,
+		contentStartsWithHeading
+			? styles.infogramRichText__infogramWithHeading
+			: styles.infogramRichText__infogramWithoutHeading,
 	]
 		.filter(Boolean)
 		.join(" ");
-console.log(blok)
+	console.log(infogramGridItemClass);
 	return (
 		<Grid
 			key={_uid}
 			data-testid="infogram-richtext"
+			className={styles.infogramRichText}
 		>
 			{infogramFirst ? (
 				<>
@@ -79,7 +86,7 @@ console.log(blok)
 						md={embedCols}
 						className={infogramGridItemClass}
 					>
-						<ClientInfogramEmbed blok={infogram[0]}  />
+						<ClientInfogramEmbed blok={infogram[0]} />
 					</GridItem>
 				</>
 			)}
