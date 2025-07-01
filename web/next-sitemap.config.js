@@ -10,15 +10,15 @@ module.exports = {
 	siteUrl,
 	generateIndexSitemap: false,
 	generateRobotsTxt: false,
-	sitemapBaseFileName: "sitemap-0",
+	sitemapBaseFileName: "sitemap-next",
 	exclude: [
 		"/",
 		"/guidance/errortest",
 		"/status",
 		"/search",
-		"/about", // Not live on NextJS yet
+		"/forms/*",
 		"/about/what-we-do/science-policy-research/research-recommendations", // Not live on NextJS yet
-		"/sitemap-next.xml",
+		"/sitemap-storyblok.xml",
 		"/indicators/sitemap.xml",
 	],
 	transform: (config, loc) => ({
