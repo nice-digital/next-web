@@ -158,7 +158,7 @@ export const validateRouteParams = async ({
 		evidenceResources = getPublishedEvidenceResources(product),
 		infoForPublicResources = getPublishedIFPResources(product);
 
-	const project =  product.inDevReference
+	const project = product.inDevReference
 		? await getProjectDetail(product.inDevReference)
 		: null;
 
