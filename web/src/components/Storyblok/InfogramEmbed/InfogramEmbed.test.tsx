@@ -14,8 +14,7 @@ jest.mock("next/script", () => (props: ScriptProps) => {
 const mockInfogramProps: InfogramEmbedStoryblok = {
 	infogramUrl:
 		"https://infogram.com/ta-cancer-decisions-by-type-1hxj48nzk5x54vg",
-	infogramVariant: "interactive",
-	layoutVariant: "default",
+	layoutVariant: "constrained",
 	component: "infogramEmbed",
 	_uid: "mock-uid-1",
 };
@@ -42,17 +41,7 @@ describe("InfogramEmbed", () => {
 		expect(embed).toHaveAttribute("data-type", "interactive");
 	});
 
-	it("renders with a different infogramVariant", () => {
-		render(
-			<InfogramEmbed
-				blok={{ ...mockInfogramProps, infogramVariant: "static" }}
-			/>
-		);
-		const embed = screen.getByTestId(infogramId);
-		expect(embed).toHaveAttribute("data-type", "static");
-	});
-
-	it("renders with a non-default layoutVariant", () => {
+	it("renders with a full width layoutVariant", () => {
 		render(
 			<InfogramEmbed
 				blok={{
@@ -63,7 +52,7 @@ describe("InfogramEmbed", () => {
 		);
 		const embed = screen.getByTestId(infogramId);
 		expect(embed.className).toContain("infogram-embed");
-		expect(embed.className).not.toContain("infogramEmbed__default");
+		expect(embed.className).not.toContain("infogramEmbed__constarined");
 	});
 
 	it("shows error message when URL is invalid", () => {
