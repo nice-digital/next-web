@@ -46,7 +46,7 @@ export const InfogramEmbedRichText: React.FC<InfogramEmbedRichTextProps> = ({
 	]
 		.filter(Boolean)
 		.join(" ");
-	console.log(infogramGridItemClass);
+	const infogramBlok = infogram && infogram[0];
 	return (
 		<Grid
 			key={_uid}
@@ -61,7 +61,7 @@ export const InfogramEmbedRichText: React.FC<InfogramEmbedRichTextProps> = ({
 						md={embedCols}
 						className={infogramGridItemClass}
 					>
-						<ClientInfogramEmbed blok={infogram[0]} />
+						<ClientInfogramEmbed blok={infogramBlok} />
 					</GridItem>
 					<GridItem
 						cols={12}
@@ -86,7 +86,7 @@ export const InfogramEmbedRichText: React.FC<InfogramEmbedRichTextProps> = ({
 						md={embedCols}
 						className={infogramGridItemClass}
 					>
-						<ClientInfogramEmbed blok={infogram[0]} />
+						<ClientInfogramEmbed blok={infogramBlok} />
 					</GridItem>
 				</>
 			)}
