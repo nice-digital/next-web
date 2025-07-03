@@ -378,6 +378,7 @@ export interface GridStoryblok {
     | ImageRichTextStoryblok
     | InDepthArticleStoryblok
     | InfogramEmbedStoryblok
+    | InfogramEmbedCopyStoryblok
     | InfogramRichTextStoryblok
     | InfoPageStoryblok
     | ListItemStoryblok
@@ -545,9 +546,17 @@ export interface InDepthArticleStoryblok {
 
 export interface InfogramEmbedStoryblok {
   infogramUrl: string;
-  infogramVariant?: "" | "interactive" | "embed" | "static" | "popup" | "link";
   layoutVariant: "constrained" | "fullwidth";
   component: "infogramEmbed";
+  _uid: string;
+  [k: string]: any;
+}
+
+export interface InfogramEmbedCopyStoryblok {
+  displayMode: "withRichText" | "standalone";
+  infogramUrl: string;
+  layoutVariant: "constrained" | "fullwidth";
+  component: "infogramEmbed_copy";
   _uid: string;
   [k: string]: any;
 }
@@ -557,7 +566,7 @@ export interface InfogramRichTextStoryblok {
   infogramSize?: "" | "medium" | "large";
   hideInfogramOnSmallScreens?: "true" | "false";
   content: RichtextStoryblok;
-  infogram: InfogramEmbedStoryblok[];
+  infogram: (InfogramEmbedStoryblok | InfogramEmbedStoryblok)[];
   component: "infogramRichText";
   _uid: string;
   [k: string]: any;
@@ -693,6 +702,7 @@ export interface PageStoryblok {
     | ImageRichTextStoryblok
     | InDepthArticleStoryblok
     | InfogramEmbedStoryblok
+    | InfogramEmbedCopyStoryblok
     | InfogramRichTextStoryblok
     | InfoPageStoryblok
     | ListItemStoryblok
