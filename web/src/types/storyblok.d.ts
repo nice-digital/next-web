@@ -529,6 +529,7 @@ export interface InDepthArticleStoryblok {
 }
 
 export interface InfogramEmbedStoryblok {
+  displayMode: "withRichText" | "standalone";
   infogramUrl: string;
   layoutVariant: "constrained" | "fullwidth";
   component: "infogramEmbed";
