@@ -367,6 +367,7 @@ export interface GridStoryblok {
     | ImageRichTextStoryblok
     | InDepthArticleStoryblok
     | InfogramEmbedStoryblok
+    | InfogramRichTextStoryblok
     | InfoPageStoryblok
     | MarkdownStoryblok
     | MetadataStoryblok
