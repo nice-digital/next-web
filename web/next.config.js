@@ -138,6 +138,11 @@ const nextConfig = {
 	async redirects() {
 		return [
 			{
+				source: "/news/nice-newsletters-and-alerts",
+				destination: "/nice-newsletters-and-alerts",
+				permanent: true,
+			},
+			{
 				source: "/forms/life-sciences-contact-us",
 				destination: "/forms/nice-advice-contact-us",
 				permanent: true,
