@@ -30,7 +30,7 @@ const extractChartIdFromUrl = (url: string): string | null => {
 };
 
 export const InfogramEmbed: React.FC<InfogramEmbedProps> = ({ blok }) => {
-	const { infogramUrl, layoutVariant = "constrained" } = blok;
+	const { infogramUrl, layoutVariant = "constrained",displayMode } = blok;
 	const [scriptLoaded, setScriptLoaded] = useState(false);
 
 	const infogramId = extractChartIdFromUrl(infogramUrl);
@@ -78,6 +78,7 @@ export const InfogramEmbed: React.FC<InfogramEmbedProps> = ({ blok }) => {
 				data-id={infogramId}
 				data-title={infogramId}
 				data-type="interactive"
+				data-mode-type={displayMode}
 			/>
 		</>
 	);
