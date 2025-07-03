@@ -537,6 +537,16 @@ export interface InfogramEmbedStoryblok {
   _uid: string;
   [k: string]: any;
 }
+export interface InfogramRichTextStoryblok {
+  infogramPosition?: "left" | "right";
+  infogramSize?: "medium" | "large";
+  hideInfogramOnSmallScreens?: "true" | "false";
+  content: RichtextStoryblok;
+  infogram: InfogramEmbedStoryblok[];
+  component: "infogramRichText";
+  _uid: string;
+  [k: string]: any;
+}
 
 export interface InfoPageStoryblok {
   header: (PageHeaderStoryblok | HeroStoryblok)[];
