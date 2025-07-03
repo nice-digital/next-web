@@ -662,6 +662,7 @@ export interface PageStoryblok {
     | ImageRichTextStoryblok
     | InDepthArticleStoryblok
     | InfogramEmbedStoryblok
+    | InfogramRichTextStoryblok
     | InfoPageStoryblok
     | MarkdownStoryblok
     | MetadataStoryblok
