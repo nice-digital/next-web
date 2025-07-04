@@ -6,7 +6,6 @@ import { formatDateStr, stripTime } from "@/utils/datetime";
 
 import { DefinitionList } from "../DefinitionList/DefinitionList";
 import { Link } from "../Link/Link";
-import { ProjectConsultationDocumentsLink } from "../ProjectConsultationDocumentsLink/ProjectConsultationDocuments";
 
 export type ProjectInformationProps = {
 	consultationUrls: string[];
@@ -31,7 +30,6 @@ export type ProjectInformationProps = {
 };
 
 export const ProjectInformation: FC<ProjectInformationProps> = ({
-	consultationUrls,
 	description,
 	idNumber,
 	process,
@@ -98,9 +96,6 @@ export const ProjectInformation: FC<ProjectInformationProps> = ({
 							<>{suspendDiscontinuedUrlText}</>
 						</Link>
 					)}
-					<ProjectConsultationDocumentsLink
-						consultationUrls={consultationUrls}
-					/>
 					<DefinitionList ariaLabel="Project information">
 						{status && (
 							<>
