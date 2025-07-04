@@ -3,7 +3,7 @@ import { useEffect, useState } from "react";
 
 import { InfogramEmbedStoryblok } from "@/types/storyblok";
 
-import styles from "./infogramEmbed.module.scss";
+import styles from "./StoryblokInfogramEmbed.module.scss";
 
 declare global {
 	interface Window {
@@ -29,8 +29,8 @@ const extractChartIdFromUrl = (url: string): string | null => {
 	}
 };
 
-export const InfogramEmbed: React.FC<InfogramEmbedProps> = ({ blok }) => {
-	const { infogramUrl, layoutVariant = "constrained",displayMode } = blok;
+export const StoryblokInfogramEmbed: React.FC<InfogramEmbedProps> = ({ blok }) => {
+	const { infogramUrl, layoutVariant = "constrained", displayMode } = blok;
 	const [scriptLoaded, setScriptLoaded] = useState(false);
 
 	const infogramId = extractChartIdFromUrl(infogramUrl);

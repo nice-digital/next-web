@@ -14,7 +14,6 @@ import { CategoryLandingPage } from "@/components/Storyblok/CategoryLandingPage/
 import { CategoryNavigation } from "@/components/Storyblok/CategoryNavigation/CategoryNavigation";
 import { Homepage } from "@/components/Storyblok/Homepage/Homepage";
 import { HomepageHero } from "@/components/Storyblok/Homepage/HomepageHero/HomepageHero";
-import { ClientInfogramEmbed } from "@/components/Storyblok/InfogramEmbed/ClientInfogramEmbed";
 import { InfoPage } from "@/components/Storyblok/InfoPage/InfoPage";
 import { Metadata } from "@/components/Storyblok/Metadata/Metadata";
 import { NestedRichText } from "@/components/Storyblok/NestedRichText/NestedRichText";
@@ -29,6 +28,8 @@ import { StoryblokCalloutCard } from "@/components/Storyblok/StoryblokCalloutCar
 import { StoryblokHero } from "@/components/Storyblok/StoryblokHero/StoryblokHero";
 import { StoryblokIframe } from "@/components/Storyblok/StoryblokIframe/StoryblokIframe";
 import { StoryblokImageRichText } from "@/components/Storyblok/StoryblokImageRichText/StoryblokImageRichText";
+import { ClientInfogramEmbed } from "@/components/Storyblok/StoryblokInfogramEmbed/ClientInfogramEmbed";
+import { InfogramEmbedRichText } from "@/components/Storyblok/StoryblokInfogramEmbedRichText/StoryblokInfogramEmbedRichText";
 import { StoryblokNewsArticle } from "@/components/Storyblok/StoryblokNewsArticle/StoryblokNewsArticle";
 import { StoryblokPageHeader } from "@/components/Storyblok/StoryblokPageHeader/StoryblokPageHeader";
 import { StoryblokRelatedLink } from "@/components/Storyblok/StoryblokRelatedLink/StoryblokRelatedLink";
@@ -39,7 +40,6 @@ import { StoryblokTestimonialGridItem } from "@/components/Storyblok/StoryblokTe
 import { StoryblokYoutubeEmbed } from "@/components/Storyblok/StoryblokYoutubeEmbed/StoryblokYoutubeEmbed";
 import { publicRuntimeConfig } from "@/config";
 import { logger } from "@/logger";
-import { InfogramEmbedRichText } from "@/components/Storyblok/infogramEmbedRichText/InfogramEmbedRichText";
 
 //TODO: consider a mix of static imports for common components and dynamic imports for lesser used components
 const commonComponents = {
@@ -102,7 +102,7 @@ const infoPageComponents = {
 	infogramEmbed: ClientInfogramEmbed,
 	infoPage: InfoPage,
 	nestedTable: StoryblokTable,
-	infogramRichText:InfogramEmbedRichText
+	infogramRichText: InfogramEmbedRichText,
 };
 
 export const allComponents: SbReactComponentsMap = {

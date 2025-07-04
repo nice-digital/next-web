@@ -1,7 +1,9 @@
-import React from "react";
 import { render, screen } from "@testing-library/react";
-import { InfogramEmbedRichText } from "./StoryblokInfogramEmbedRichText";
+import React from "react";
+
 import type { InfogramRichTextStoryblok } from "@/types/storyblok";
+
+import { InfogramEmbedRichText } from "./StoryblokInfogramEmbedRichText";
 
 // Mock child components
 jest.mock("../StoryblokRichText/StoryblokRichText", () => ({
@@ -77,9 +79,7 @@ describe("InfogramEmbedRichText", () => {
 	});
 
 	it("uses large size columns when infogramSize is 'large'", () => {
-		render(
-			<InfogramEmbedRichText blok={{ ...blok, infogramSize: "large" }} />
-		);
+		render(<InfogramEmbedRichText blok={{ ...blok, infogramSize: "large" }} />);
 		const gridItems = screen.getAllByTestId("infogram-richtext-grid-item");
 		expect(gridItems.length).toBe(2);
 	});

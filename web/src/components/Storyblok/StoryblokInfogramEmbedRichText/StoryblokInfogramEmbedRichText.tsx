@@ -1,9 +1,13 @@
 import React from "react";
+
 import { Grid, GridItem, type Columns } from "@nice-digital/nds-grid";
-import { StoryblokRichText } from "../StoryblokRichText/StoryblokRichText";
-import { ClientInfogramEmbed } from "../InfogramEmbed/ClientInfogramEmbed";
-import styles from "./StoryblokInfogramEmbedRichText.module.scss";
+
 import { InfogramRichTextStoryblok } from "@/types/storyblok";
+
+import { ClientInfogramEmbed } from "../StoryblokInfogramEmbed/ClientInfogramEmbed";
+import { StoryblokRichText } from "../StoryblokRichText/StoryblokRichText";
+
+import styles from "./StoryblokInfogramEmbedRichText.module.scss";
 
 interface InfogramEmbedRichTextProps {
 	blok: InfogramRichTextStoryblok;
