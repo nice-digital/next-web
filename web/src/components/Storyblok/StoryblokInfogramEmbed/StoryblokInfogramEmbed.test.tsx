@@ -3,7 +3,7 @@ import { ScriptProps } from "next/script";
 
 import { InfogramEmbedStoryblok } from "@/types/storyblok";
 
-import { InfogramEmbed } from "./InfogramEmbed";
+import { StoryblokInfogramEmbed } from "./StoryblokInfogramEmbed";
 
 // Mock next/script to simulate script loading
 jest.mock("next/script", () => (props: ScriptProps) => {
@@ -15,6 +15,7 @@ const mockInfogramProps: InfogramEmbedStoryblok = {
 	infogramUrl:
 		"https://infogram.com/ta-cancer-decisions-by-type-1hxj48nzk5x54vg",
 	layoutVariant: "constrained",
+	displayMode: "standalone",
 	component: "infogramEmbed",
 	_uid: "mock-uid-1",
 };
@@ -34,16 +35,28 @@ describe("InfogramEmbed", () => {
 	});
 
 	it("renders with valid URL and default variants", () => {
-		render(<InfogramEmbed blok={mockInfogramProps} />);
+		render(<StoryblokInfogramEmbed blok={mockInfogramProps} />);
 		const embed = screen.getByTestId(infogramId);
 		expect(embed).toBeInTheDocument();
 		expect(embed).toHaveAttribute("data-id", infogramId);
+		expect(embed).toHaveAttribute("data-mode-type", "standalone");
 		expect(embed).toHaveAttribute("data-type", "interactive");
 	});
-
+	it("renders with RichText", () => {
+		render(
+			<StoryblokInfogramEmbed
+				blok={{
+					...mockInfogramProps,
+					displayMode: "withRichText",
+				}}
+			/>
+		);
+		const embed = screen.getByTestId(infogramId);
+		expect(embed).toHaveAttribute("data-mode-type", "withRichText");
+	});
 	it("renders with a full width layoutVariant", () => {
 		render(
-			<InfogramEmbed
+			<StoryblokInfogramEmbed
 				blok={{
 					...mockInfogramProps,
 					layoutVariant: "fullwidth",
@@ -57,7 +70,7 @@ describe("InfogramEmbed", () => {
 
 	it("shows error message when URL is invalid", () => {
 		render(
-			<InfogramEmbed
+			<StoryblokInfogramEmbed
 				blok={{
 					...mockInfogramProps,
 					infogramUrl: "",
@@ -76,7 +89,7 @@ describe("InfogramEmbed", () => {
 		document.body.appendChild(script);
 
 		render(
-			<InfogramEmbed
+			<StoryblokInfogramEmbed
 				blok={{
 					...mockInfogramProps,
 					infogramUrl: validUrl,
@@ -94,7 +107,7 @@ describe("InfogramEmbed", () => {
 		document.body.appendChild(script);
 
 		render(
-			<InfogramEmbed
+			<StoryblokInfogramEmbed
 				blok={{
 					...mockInfogramProps,
 					infogramUrl: validUrl,
