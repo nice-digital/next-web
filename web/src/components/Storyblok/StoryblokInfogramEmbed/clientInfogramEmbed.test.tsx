@@ -9,7 +9,7 @@ const mockBlok: InfogramEmbedStoryblok = {
 	layoutVariant: "constrained",
 	component: "infogramEmbed",
 	_uid: "test-uid-1",
-	displayMode: "standalone"
+	displayMode: "standalone",
 };
 
 jest.mock("./StoryblokInfogramEmbed", () => ({
