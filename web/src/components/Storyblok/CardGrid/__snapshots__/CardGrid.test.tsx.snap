@@ -28,7 +28,11 @@ exports[`GridSection matches snapshot 1`] = `
             </a>
           </p>
         </header>
-        Basic card body
+        <p
+          class="card__summary"
+        >
+          Basic card body
+        </p>
       </article>
     </li>
   </ul>

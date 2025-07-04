@@ -91,9 +91,12 @@ export const Spotlight: React.FC<SpotlightProps> = ({
 												serviceOptions={{ height: 0, quality: 80, width: 708 }}
 											/>
 										}
-									>
-										<Tag outline>{storyType}</Tag>
-									</Card>
+										children={
+											<>
+												<Tag outline>{storyType}</Tag>
+											</>
+										}
+									/>
 								);
 							})}
 						</ul>
