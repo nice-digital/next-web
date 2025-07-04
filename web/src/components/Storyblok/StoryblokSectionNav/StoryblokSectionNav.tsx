@@ -2,7 +2,6 @@ import React from "react";
 
 import { StackedNav, StackedNavLink } from "@nice-digital/nds-stacked-nav";
 
-import styles from "./StoryblokSectionNav.module.scss";
 import { sectionNavIsPopulated } from "./utils/Utils";
 import { type ExtendedSBLink } from "./utils/Utils";
 
@@ -24,7 +23,6 @@ export const StoryblokSectionNav = ({
 			{sectionNavIsPopulated(tree) && (
 				<StackedNav
 					label={sectionNavLabel?.name}
-					className={styles["storyblok-section-nav"]}
 					aria-label={`Section navigation: ${
 						sectionNavLabel?.name ?? "Section"
 					}`}
