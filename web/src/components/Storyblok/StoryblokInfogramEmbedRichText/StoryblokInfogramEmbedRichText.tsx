@@ -14,9 +14,9 @@ interface InfogramEmbedRichTextProps {
 	className?: string;
 }
 
-export const InfogramEmbedRichText: React.FC<InfogramEmbedRichTextProps> = ({
-	blok,
-}) => {
+export const StoryblokInfogramEmbedRichText: React.FC<
+	InfogramEmbedRichTextProps
+> = ({ blok }) => {
 	const {
 		infogram,
 		content,
@@ -31,8 +31,7 @@ export const InfogramEmbedRichText: React.FC<InfogramEmbedRichTextProps> = ({
 			medium: { embed: 4 as Columns, text: 8 as Columns },
 			large: { embed: 5 as Columns, text: 7 as Columns },
 		};
-	const validInfogramSize = infogramSize === "" ? "medium" : infogramSize;
-	const { embed: embedCols, text: textCols } = sizeMap[validInfogramSize];
+	const { embed: embedCols, text: textCols } = sizeMap[infogramSize];
 	// Detect if any block in content is a heading
 	const contentStartsWithHeading =
 		Array.isArray(content?.content) &&

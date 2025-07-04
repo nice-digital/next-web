@@ -29,7 +29,9 @@ const extractChartIdFromUrl = (url: string): string | null => {
 	}
 };
 
-export const StoryblokInfogramEmbed: React.FC<InfogramEmbedProps> = ({ blok }) => {
+export const StoryblokInfogramEmbed: React.FC<InfogramEmbedProps> = ({
+	blok,
+}) => {
 	const { infogramUrl, layoutVariant = "constrained", displayMode } = blok;
 	const [scriptLoaded, setScriptLoaded] = useState(false);
 

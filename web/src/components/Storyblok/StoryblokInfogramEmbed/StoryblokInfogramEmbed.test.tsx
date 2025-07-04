@@ -59,7 +59,7 @@ describe("InfogramEmbed", () => {
 			<StoryblokInfogramEmbed
 				blok={{
 					...mockInfogramProps,
-				layoutVariant: "fullwidth",
+					layoutVariant: "fullwidth",
 				}}
 			/>
 		);
