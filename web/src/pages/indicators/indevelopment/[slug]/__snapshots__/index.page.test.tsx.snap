@@ -223,7 +223,7 @@ exports[`/indevelopment/[slug].page IndevelopmentPage should match snapshot for 
       </p>
       <table
         aria-label="Timeline"
-        class="table table-condensed"
+        class="tableColumn"
       >
         <tbody>
           <tr>
