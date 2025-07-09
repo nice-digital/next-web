@@ -136,7 +136,6 @@ const nextConfig = {
 		];
 	},
 	async redirects() {
-
 		// TODO the following redirects are currently commented out in the array at correct specificity level:
 		//   1. SOURCE: /forms/topic-suggestion
 		//      DESTINATION: Form
@@ -149,6 +148,23 @@ const nextConfig = {
 		// ------------------------------------------------------------
 		//   4. SOURCE: /get-involved/our-committees/join-a-committee/apply-to-be-a-chair-on-a-nice-committee
 		//      DESTINATION: n/a stay in Orchard until we figure out the TRAC embed
+
+		// CONFLICTING:
+		// {
+		// 		source:
+		// 			"/about/nice-communities/library-and-knowledge-services-staff/buy-books--journals-and-databases/organisations-eligible-to-use-the-framework",
+		// 		destination:
+		// 			"/library-and-knowledge-services/buy-books-journals-and-databases",
+		// 		permanent: true,
+		// 	}, // ORIGINAL
+
+		// 	// === BLOCK GENERATED FROM EXCEL MIGRATION PHASE 2 ===
+		// 	{
+		// 		source:
+		// 			"/about/nice-communities/library-and-knowledge-services-staff/buy-books--journals-and-databases/organisations-eligible-to-use-the-framework",
+		// 		destination: "/library-and-knowledge-services",
+		// 		permanent: true,
+		// 	}, // Generated from Excel Migration Phase 2 URLs
 
 		return [
 			// === BLOCK GENERATED FROM EXCEL MIGRATION PHASE 2 ===
@@ -277,13 +293,6 @@ const nextConfig = {
 			}, // ORIGINAL
 
 			// === BLOCK GENERATED FROM EXCEL MIGRATION PHASE 2 ===
-			{
-				source:
-					"/about/nice-communities/library-and-knowledge-services-staff/buy-books--journals-and-databases/provider-information/sole-supplied-titles",
-				destination:
-					"/library-and-knowledge-services/buy-books-journals-and-databases/sole-supplied-titles",
-				permanent: true,
-			}, // Generated from Excel Migration Phase 2 URLs
 			// {
 			// 	source:
 			// 		"/get-involved/our-committees/join-a-committee/nice-committee-vacancies-for-health--social-care-and-other-professionals-and-practitioners",
@@ -320,17 +329,6 @@ const nextConfig = {
 					"/library-and-knowledge-services/buy-books-journals-and-databases/purchasing-steps-further-competition",
 				permanent: true,
 			}, // ORIGINAL
-
-			// === BLOCK GENERATED FROM EXCEL MIGRATION PHASE 2 ===
-			{
-				source:
-					"/about/nice-communities/library-and-knowledge-services-staff/buy-books--journals-and-databases/purchasing-steps--further-competition",
-				destination:
-					"/library-and-knowledge-services/buy-books-journals-and-databases/purchasing-steps-further-competition",
-				permanent: true,
-			}, // Generated from Excel Migration Phase 2 URLs
-
-			// === ORIGINAL REDIRECTS BLOCK ===
 			{
 				source:
 					"/standards-and-indicators/qofindicators/the-percentage-of-patients-with-cvd-who-are-currently-treated-with-a-lipid-lowering-therapy",
@@ -459,13 +457,6 @@ const nextConfig = {
 			}, // ORIGINAL
 
 			// === BLOCK GENERATED FROM EXCEL MIGRATION PHASE 2 ===
-			{
-				source:
-					"/about/nice-communities/library-and-knowledge-services-staff/buy-books-journals-and-databases/provider-information",
-				destination:
-					"/library-and-knowledge-services/buy-books-journals-and-databases/provider-information",
-				permanent: true,
-			}, // Generated from Excel Migration Phase 2 URLs
 			{
 				source:
 					"/about/nice-communities/social-care/quick-guides-for-social-care/therapeutic-interventions-after-abuse-and-neglect",
@@ -710,13 +701,6 @@ const nextConfig = {
 			// === BLOCK GENERATED FROM EXCEL MIGRATION PHASE 2 ===
 			{
 				source:
-					"/about/what-we-do/evidence-services/journals-and-databases/openathens/openathens-registration-help",
-				destination:
-					"/library-and-knowledge-services/openathens/openathens-registration-help",
-				permanent: true,
-			}, // Generated from Excel Migration Phase 2 URLs
-			{
-				source:
 					"/about/who-we-are/board/public-board-meetings/public-board-meeting-agenda-and-papers--january-2022",
 				destination: "/about-us/our-board/public-board-meetings/2022",
 				permanent: true,
@@ -787,13 +771,6 @@ const nextConfig = {
 			}, // ORIGINAL
 
 			// === BLOCK GENERATED FROM EXCEL MIGRATION PHASE 2 ===
-			{
-				source:
-					"/about/nice-communities/library-and-knowledge-services-staff/buy-books-journals-and-databases",
-				destination:
-					"/library-and-knowledge-services/buy-books-journals-and-databases",
-				permanent: true,
-			}, // Generated from Excel Migration Phase 2 URLs
 			{
 				source:
 					"/about/what-we-do/life-sciences/our-role-in-the-innovative-licensing-and-access-pathway--ilap",
@@ -877,13 +854,6 @@ const nextConfig = {
 			// === BLOCK GENERATED FROM EXCEL MIGRATION PHASE 2 ===
 			{
 				source:
-					"/about/what-we-do/evidence-services/journals-and-databases/openathens/openathens-eligibility",
-				destination:
-					"/library-and-knowledge-services/openathens/openathens-eligibility",
-				permanent: true,
-			}, // Generated from Excel Migration Phase 2 URLs
-			{
-				source:
 					"/about/what-we-do/our-programmes/nice-guidance/nice-about-technology-appraisal-guidance/data",
 				destination:
 					"/what-nice-does/our-guidance/about-technology-appraisal-guidance",
@@ -949,13 +919,6 @@ const nextConfig = {
 			}, // ORIGINAL
 
 			// === BLOCK GENERATED FROM EXCEL MIGRATION PHASE 2 ===
-			{
-				source:
-					"/about/what-we-do/evidence-services/journals-and-databases/openathens/openathens-support",
-				destination:
-					"/library-and-knowledge-services/openathens/openathens-support",
-				permanent: true,
-			}, // Generated from Excel Migration Phase 2 URLs
 			{
 				source:
 					"/About/What-we-do/Our-Programmes/NICE-guidance/NICE-about-medical-technologies-guidance",
@@ -1252,13 +1215,6 @@ const nextConfig = {
 			// === BLOCK GENERATED FROM EXCEL MIGRATION PHASE 2 ===
 			{
 				source:
-					"/about/what-we-do/evidence-services/journals-and-databases/openathens/access",
-				destination:
-					"/library-and-knowledge-services/openathens/openathens-access",
-				permanent: true,
-			}, // Generated from Excel Migration Phase 2 URLs
-			{
-				source:
 					"/about/who-we-are/board-executive-team-and-senior-leaders-interests-register",
 				destination:
 					"/about-us/our-board/board-executive-team-and-senior-leaders-interests-register",
@@ -1377,12 +1333,6 @@ const nextConfig = {
 			}, // ORIGINAL
 
 			// === BLOCK GENERATED FROM EXCEL MIGRATION PHASE 2 ===
-			{
-				source:
-					"/about/what-we-do/evidence-services/journals-and-databases/OpenAthens",
-				destination: "/library-and-knowledge-services/openathens",
-				permanent: true,
-			}, // Generated from Excel Migration Phase 2 URLs
 			{
 				source:
 					"/about/what-we-do/into-practice/measuring-the-uptake-of-nice-guidance",
@@ -1574,12 +1524,6 @@ const nextConfig = {
 			// === BLOCK GENERATED FROM EXCEL MIGRATION PHASE 2 ===
 			{
 				source:
-					"/get-involved/jobs/our-benefits--rewards-and-work-life-balance",
-				destination: "/careers/our-benefits-rewards-and-work-life-balance",
-				permanent: true,
-			}, // Generated from Excel Migration Phase 2 URLs
-			{
-				source:
 					"/get-involved/our-committees/how-gps-help-develop-our-guidance",
 				destination: "/get-involved/gps-and-primary-care",
 				permanent: true,
@@ -1627,11 +1571,6 @@ const nextConfig = {
 			}, // ORIGINAL
 
 			// === BLOCK GENERATED FROM EXCEL MIGRATION PHASE 2 ===
-			{
-				source: "/About/What-we-do/Evidence-Services/journals-and-databases",
-				destination: "/library-and-knowledge-services",
-				permanent: true,
-			}, // Generated from Excel Migration Phase 2 URLs
 			{
 				source: "/about/what-we-do/digital-health/office-for-digital-health",
 				destination: "/what-nice-does/digital-health/office-for-digital-health",
@@ -1861,15 +1800,6 @@ const nextConfig = {
 				destination: "/careers/diversity-and-inclusion",
 				permanent: true,
 			}, // ORIGINAL
-
-			// === BLOCK GENERATED FROM EXCEL MIGRATION PHASE 2 ===
-			{
-				source: "/get-involved/jobs/diversity-and-inclusion",
-				destination: "/careers/diversity-and-inclusion",
-				permanent: true,
-			}, // Generated from Excel Migration Phase 2 URLs
-
-			// === ORIGINAL REDIRECTS BLOCK ===
 			{
 				source: "/get-involved/jobs/we-care-about-our-staff",
 				destination: "/careers/we-care-about-our-staff",
@@ -1877,11 +1807,6 @@ const nextConfig = {
 			}, // ORIGINAL
 
 			// === BLOCK GENERATED FROM EXCEL MIGRATION PHASE 2 ===
-			{
-				source: "/get-involved/jobs/we-care-about-our-staff",
-				destination: "/careers/we-care-about-our-staff",
-				permanent: true,
-			}, // Generated from Excel Migration Phase 2 URLs
 			{
 				source: "/about/what-we-do/commercial-liaison-team",
 				destination:
@@ -1940,11 +1865,6 @@ const nextConfig = {
 
 			// === BLOCK GENERATED FROM EXCEL MIGRATION PHASE 2 ===
 			{
-				source: "/get-involved/careers/digital-at-nice",
-				destination: "/careers/digital-at-nice",
-				permanent: true,
-			}, // Generated from Excel Migration Phase 2 URLs
-			{
 				source: "/about/what-we-do/nice-international",
 				destination: "/what-nice-does/nice-international",
 				permanent: true,
@@ -1994,11 +1914,6 @@ const nextConfig = {
 			}, // ORIGINAL
 
 			// === BLOCK GENERATED FROM EXCEL MIGRATION PHASE 2 ===
-			{
-				source: "/news/nice-newsletters-and-alerts",
-				destination: "/nice-newsletters-and-alerts",
-				permanent: true,
-			}, // Generated from Excel Migration Phase 2 URLs
 			{
 				source: "/re-using-our-content/public-task",
 				destination: "/reusing-our-content/public-task",
@@ -2115,15 +2030,6 @@ const nextConfig = {
 				destination: "/careers",
 				permanent: true,
 			}, // ORIGINAL
-
-			// === BLOCK GENERATED FROM EXCEL MIGRATION PHASE 2 ===
-			{
-				source: "/get-involved/jobs",
-				destination: "/careers",
-				permanent: true,
-			}, // Generated from Excel Migration Phase 2 URLs
-
-			// === ORIGINAL REDIRECTS BLOCK ===
 			{
 				source: "/guidance/proposed",
 				destination: "/guidance/awaiting-development",
@@ -2205,198 +2111,6 @@ const nextConfig = {
 				permanent: true,
 			}, // ORIGINAL - Parameterized
 		];
-
-		// OLD REDIRECTS FOR COMPARISON
-		// return [
-		// 	{
-		// 		source: "/news/nice-newsletters-and-alerts",
-		// 		destination: "/nice-newsletters-and-alerts",
-		// 		permanent: true,
-		// 	},
-		// 	{
-		// 		source: "/forms/life-sciences-contact-us",
-		// 		destination: "/forms/nice-advice-contact-us",
-		// 		permanent: true,
-		// 	},
-		// 	{
-		// 		source: "/indicators",
-		// 		destination: "/indicators/published",
-		// 		permanent: true,
-		// 	},
-		// 	{
-		// 		source: "/About/What-we-do/Evidence-Services/journals-and-databases",
-		// 		destination: "/library-and-knowledge-services",
-		// 		permanent: true,
-		// 	},
-		// 	{
-		// 		source:
-		// 			"/about/nice-communities/library-and-knowledge-services-staff/buy-books-journals-and-databases",
-		// 		destination:
-		// 			"/library-and-knowledge-services/buy-books-journals-and-databases",
-		// 		permanent: true,
-		// 	},
-		// 	{
-		// 		source:
-		// 			"/about/nice-communities/library-and-knowledge-services-staff/buy-books--journals-and-databases/organisations-eligible-to-use-the-framework",
-		// 		destination:
-		// 			"/library-and-knowledge-services/buy-books-journals-and-databases",
-		// 		permanent: true,
-		// 	},
-		// 	{
-		// 		source:
-		// 			"/about/nice-communities/library-and-knowledge-services-staff/buy-books-journals-and-databases/provider-information",
-		// 		destination:
-		// 			"/library-and-knowledge-services/buy-books-journals-and-databases/provider-information",
-		// 		permanent: true,
-		// 	},
-		// 	{
-		// 		source:
-		// 			"/about/nice-communities/library-and-knowledge-services-staff/buy-books--journals-and-databases/provider-information/sole-supplied-titles",
-		// 		destination:
-		// 			"/library-and-knowledge-services/buy-books-journals-and-databases/sole-supplied-titles",
-		// 		permanent: true,
-		// 	},
-		// 	{
-		// 		source:
-		// 			"/about/nice-communities/library-and-knowledge-services-staff/buy-books-journals-and-databases/purchasing-steps--direct-awards",
-		// 		destination:
-		// 			"/library-and-knowledge-services/buy-books-journals-and-databases/purchasing-steps-direct-awards",
-		// 		permanent: true,
-		// 	},
-		// 	{
-		// 		source:
-		// 			"/about/nice-communities/library-and-knowledge-services-staff/buy-books--journals-and-databases/purchasing-steps--further-competition",
-		// 		destination:
-		// 			"/library-and-knowledge-services/buy-books-journals-and-databases/purchasing-steps-further-competition",
-		// 		permanent: true,
-		// 	},
-		// 	{
-		// 		source:
-		// 			"/about/what-we-do/evidence-services/journals-and-databases/OpenAthens",
-		// 		destination: "/library-and-knowledge-services/openathens",
-		// 		permanent: true,
-		// 	},
-		// 	{
-		// 		source:
-		// 			"/about/what-we-do/evidence-services/journals-and-databases/openathens/openathens-support",
-		// 		destination:
-		// 			"/library-and-knowledge-services/openathens/openathens-support",
-		// 		permanent: true,
-		// 	},
-		// 	{
-		// 		source:
-		// 			"/about/what-we-do/evidence-services/journals-and-databases/openathens/openathens-eligibility",
-		// 		destination:
-		// 			"/library-and-knowledge-services/openathens/openathens-eligibility",
-		// 		permanent: true,
-		// 	},
-		// 	{
-		// 		source:
-		// 			"/about/what-we-do/evidence-services/journals-and-databases/openathens/openathens-registration-help",
-		// 		destination:
-		// 			"/library-and-knowledge-services/openathens/openathens-registration-help",
-		// 		permanent: true,
-		// 	},
-		// 	{
-		// 		source:
-		// 			"/about/what-we-do/evidence-services/journals-and-databases/openathens/access",
-		// 		destination:
-		// 			"/library-and-knowledge-services/openathens/openathens-access",
-		// 		permanent: true,
-		// 	},
-		// 	{
-		// 		source: "/get-involved/jobs",
-		// 		destination: "/careers",
-		// 		permanent: true,
-		// 	},
-		// 	{
-		// 		source: "/get-involved/careers",
-		// 		destination: "/careers",
-		// 		permanent: true,
-		// 	},
-		// 	{
-		// 		source: "/get-involved/careers/digital-at-nice",
-		// 		destination: "/careers/digital-at-nice",
-		// 		permanent: true,
-		// 	},
-		// 	{
-		// 		source: "/get-involved/jobs/we-care-about-our-staff",
-		// 		destination: "/careers/we-care-about-our-staff",
-		// 		permanent: true,
-		// 	},
-		// 	{
-		// 		source:
-		// 			"/get-involved/jobs/our-benefits--rewards-and-work-life-balance",
-		// 		destination: "/careers/our-benefits-rewards-and-work-life-balance",
-		// 		permanent: true,
-		// 	},
-		// 	{
-		// 		source: "/get-involved/jobs/diversity-and-inclusion",
-		// 		destination: "/careers/diversity-and-inclusion",
-		// 		permanent: true,
-		// 	},
-		// 	{
-		// 		source: "/get-involved/careers/we-care-about-our-staff",
-		// 		destination: "/careers/we-care-about-our-staff",
-		// 		permanent: true,
-		// 	},
-		// 	{
-		// 		source:
-		// 			"/get-involved/careers/our-benefits--rewards-and-work-life-balance",
-		// 		destination: "/careers/our-benefits-rewards-and-work-life-balance",
-		// 		permanent: true,
-		// 	},
-		// 	{
-		// 		source: "/get-involved/careers/diversity-and-inclusion",
-		// 		destination: "/careers/diversity-and-inclusion",
-		// 		permanent: true,
-		// 	},
-		// 	{
-		// 		source:
-		// 			"/about/what-we-do/research-and-development/research-recommendations/:slug*",
-		// 		destination:
-		// 			"/about/what-we-do/science-policy-research/research-recommendations",
-		// 		permanent: true,
-		// 	},
-		// 	{
-		// 		source:
-		// 			"/standards-and-indicators/qofindicators/the-percentage-of-patients-with-cvd-who-are-currently-treated-with-a-lipid-lowering-therapy",
-		// 		destination:
-		// 			"/indicators/IND230-cardiovascular-disease-prevention-secondary-prevention-with-lipid-lowering-therapies",
-		// 		permanent: true,
-		// 	},
-		// 	{
-		// 		source:
-		// 			"/standards-and-indicators/qofindicators/the-percentage-of-patients-with-dementia-with-the-contact-details-of-a-named-carer-on-their-record",
-		// 		destination: "/indicators/IND114-dementia-named-carer",
-		// 		permanent: true,
-		// 	},
-		// 	{
-		// 		source: "/standards-and-indicators/qofindicators/:path*",
-		// 		destination: "/indicators/published",
-		// 		permanent: true,
-		// 	},
-		// 	{
-		// 		source: "/standards-and-indicators/gpqualityimprovements/:path*",
-		// 		destination: "/indicators/published",
-		// 		permanent: true,
-		// 	},
-		// 	{
-		// 		source: "/standards-and-indicators/ccgoisindicators/:path*",
-		// 		destination: "/indicators/published",
-		// 		permanent: true,
-		// 	},
-		// 	{
-		// 		source: "/guidance/proposed",
-		// 		destination: "/guidance/awaiting-development",
-		// 		permanent: true,
-		// 	},
-		// 	{
-		// 		source: "/standards-and-indicators/index",
-		// 		destination: "/indicators/published",
-		// 		permanent: true,
-		// 	},
-		// ];
 	},
 	async headers() {
 		return [
