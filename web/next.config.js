@@ -117,31 +117,17 @@ const nextConfig = {
 	// Don't send the x-powered-by header: we don't want to expose things like that. See https://edibleco.de/2TpDVAK
 	poweredByHeader: false,
 	async rewrites() {
-		//TODO investigate these:
-
-		// 		1. SOURCE: /forms/request-for-prioritisation-clarification
+		// TODO the following redirects are commented out in the array at correct specificity:
+		//   1. SOURCE: /forms/topic-suggestion
 		//      DESTINATION: Form
-		//      REASON: Contains questionable keyword
-		// ------------------------------------------------------------
-		//   2. SOURCE: /forms/topic-suggestion
-		//      DESTINATION: Form
-		//      REASON: Contains questionable keyword
-		// ------------------------------------------------------------
-		//   3. SOURCE: /forms/interventional-procedures-register-an-interest
-		//      DESTINATION: form
-		//      REASON: Contains questionable keyword
-		// ------------------------------------------------------------
-		//   4. SOURCE: /get-involved/our-committees/join-a-committee/nice-committee-vacancies-for-patients--service-users--carers-and-lay-people
+		//   2. SOURCE: /get-involved/our-committees/join-a-committee/nice-committee-vacancies-for-patients--service-users--carers-and-lay-people
 		//      DESTINATION: n/a stay in Orchard until we figure out the TRAC embed
-		//      REASON: Contains questionable keyword
 		// ------------------------------------------------------------
-		//   5. SOURCE: /get-involved/our-committees/join-a-committee/nice-committee-vacancies-for-health--social-care-and-other-professionals-and-practitioners
+		//   3. SOURCE: /get-involved/our-committees/join-a-committee/nice-committee-vacancies-for-health--social-care-and-other-professionals-and-practitioners
 		//      DESTINATION: n/a stay in Orchard until we figure out the TRAC embed
-		//      REASON: Contains questionable keyword
 		// ------------------------------------------------------------
-		//   6. SOURCE: /get-involved/our-committees/join-a-committee/apply-to-be-a-chair-on-a-nice-committee
+		//   4. SOURCE: /get-involved/our-committees/join-a-committee/apply-to-be-a-chair-on-a-nice-committee
 		//      DESTINATION: n/a stay in Orchard until we figure out the TRAC embed
-		//      REASON: Contains questionable keyword
 
 		return [
 			// === GENERATED FROM EXCEL MIGRATION PHASE 2 ===
@@ -277,12 +263,12 @@ const nextConfig = {
 					"/library-and-knowledge-services/buy-books-journals-and-databases/sole-supplied-titles",
 				permanent: true,
 			}, // Generated from Excel Migration Phase 2 URLs
-			{
-				source:
-					"/get-involved/our-committees/join-a-committee/nice-committee-vacancies-for-health--social-care-and-other-professionals-and-practitioners",
-				destination: "n/a stay in Orchard until we figure out the TRAC embed",
-				permanent: true,
-			}, // Generated from Excel Migration Phase 2 URLs
+			// {
+			// 	source:
+			// 		"/get-involved/our-committees/join-a-committee/nice-committee-vacancies-for-health--social-care-and-other-professionals-and-practitioners",
+			// 	destination: "n/a stay in Orchard until we figure out the TRAC embed",
+			// 	permanent: true,
+			// }, // Generated from Excel Migration Phase 2 URLs
 			{
 				source:
 					"/about/nice-communities/social-care/quick-guides/arranging-services-for-people-with-a-learning-disability-and-behaviour-that-challenges",
@@ -407,12 +393,12 @@ const nextConfig = {
 					"/what-nice-does/our-guidance/about-technology-appraisal-guidance/uk-licensing-and-technology-appraisals",
 				permanent: true,
 			}, // Generated from Excel Migration Phase 2 URLs
-			{
-				source:
-					"/get-involved/our-committees/join-a-committee/nice-committee-vacancies-for-patients--service-users--carers-and-lay-people",
-				destination: "n/a stay in Orchard until we figure out the TRAC embed",
-				permanent: true,
-			}, // Generated from Excel Migration Phase 2 URLs
+			// {
+			// 	source:
+			// 		"/get-involved/our-committees/join-a-committee/nice-committee-vacancies-for-patients--service-users--carers-and-lay-people",
+			// 	destination: "n/a stay in Orchard until we figure out the TRAC embed",
+			// 	permanent: true,
+			// }, // Generated from Excel Migration Phase 2 URLs
 			{
 				source:
 					"/get-involved/our-committees/what-lay-members-do/lay-member-payments-and-expenses/how-lay-member-payments-affect-benefits",
@@ -1012,12 +998,12 @@ const nextConfig = {
 					"/what-nice-does/our-guidance/about-nice-guidelines/about-shared-decision-making",
 				permanent: true,
 			}, // Generated from Excel Migration Phase 2 URLs
-			{
-				source:
-					"/get-involved/our-committees/join-a-committee/apply-to-be-a-chair-on-a-nice-committee",
-				destination: "n/a stay in Orchard until we figure out the TRAC embed",
-				permanent: true,
-			}, // Generated from Excel Migration Phase 2 URLs
+			// {
+			// 	source:
+			// 		"/get-involved/our-committees/join-a-committee/apply-to-be-a-chair-on-a-nice-committee",
+			// 	destination: "n/a stay in Orchard until we figure out the TRAC embed",
+			// 	permanent: true,
+			// }, // Generated from Excel Migration Phase 2 URLs
 			{
 				source:
 					"/about/nice-communities/social-care/quick-guides/recognising-and-preventing-delirium",
@@ -1795,11 +1781,6 @@ const nextConfig = {
 				permanent: true,
 			}, // Generated from Excel Migration Phase 2 URLs
 			{
-				source: "/forms/request-for-prioritisation-clarification",
-				destination: "Form",
-				permanent: true,
-			}, // Generated from Excel Migration Phase 2 URLs
-			{
 				source: "/re-using-our-content/content-assurance-service",
 				destination: "/reusing-our-content/content-assurance-service",
 				permanent: true,
@@ -2077,11 +2058,11 @@ const nextConfig = {
 				destination: "/about-us/our-board/board-members",
 				permanent: true,
 			}, // Generated from Excel Migration Phase 2 URLs
-			{
-				source: "/forms/topic-suggestion",
-				destination: "Form",
-				permanent: true,
-			}, // Generated from Excel Migration Phase 2 URLs
+			// {
+			// 	source: "/forms/topic-suggestion",
+			// 	destination: "Form",
+			// 	permanent: true,
+			// }, // Generated from Excel Migration Phase 2 URLs
 
 			// === ORIGINAL REDIRECTS ===
 			{
