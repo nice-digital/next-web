@@ -74,7 +74,7 @@ export default function DocumentsPage(props: DocumentsPageProps): JSX.Element {
 			/>
 			<ResourceList
 				title="Project documents"
-				lead="A list of downloadable documents created during development."
+				lead="Documents created during the development process."
 				groups={props.project.groups}
 			/>
 		</>
