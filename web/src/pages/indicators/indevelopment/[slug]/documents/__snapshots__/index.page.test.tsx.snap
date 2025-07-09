@@ -131,14 +131,16 @@ exports[`/indicators/indevelopment/[slug]/documents DocumentsPage should match s
             17 May 2023
           </time>
         </li>
-        <li>
-          <a
-            href="https://www.nice.org.uk/about/what-we-do/our-programmes/nice-guidance/nice-diagnostics-guidance/dt-stakeholder-registration?t=&p=GID-DG10049&returnUrl=/guidance/indevelopment/gid-dg10049"
-          >
-            Register as a stakeholder
-          </a>
-        </li>
       </ul>
+      <p
+        class="page-header__cta"
+      >
+        <a
+          href="https://www.nice.org.uk/about/what-we-do/our-programmes/nice-guidance/nice-diagnostics-guidance/dt-stakeholder-registration?t=&p=GID-DG10049&returnUrl=/guidance/indevelopment/gid-dg10049"
+        >
+          Register as a stakeholder
+        </a>
+      </p>
     </div>
     <nav
       class="horizontal-nav"

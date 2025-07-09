@@ -106,14 +106,16 @@ exports[`/indevelopment/[slug].page IndevelopmentPage should match snapshot for 
               11 April 2024
             </time>
           </li>
-          <li>
-            <a
-              href="https://alpha.nice.org.uk/get-involved/stakeholder-registration/register?t=&p=GID-NG10237&returnUrl=/guidance/indevelopment/gid-ng10237"
-            >
-              Register as a stakeholder
-            </a>
-          </li>
         </ul>
+        <p
+          class="page-header__cta"
+        >
+          <a
+            href="https://alpha.nice.org.uk/get-involved/stakeholder-registration/register?t=&p=GID-NG10237&returnUrl=/guidance/indevelopment/gid-ng10237"
+          >
+            Register as a stakeholder
+          </a>
+        </p>
       </div>
       <nav
         class="horizontal-nav"
