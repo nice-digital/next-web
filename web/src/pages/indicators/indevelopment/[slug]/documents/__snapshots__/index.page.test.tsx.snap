@@ -255,7 +255,7 @@ exports[`/indicators/indevelopment/[slug]/documents DocumentsPage should match s
               Project documents
             </h2>
             <p>
-              A list of downloadable documents created during development.
+              Documents created during the development process.
             </p>
             <section
               aria-labelledby="diagnostics-consultation"

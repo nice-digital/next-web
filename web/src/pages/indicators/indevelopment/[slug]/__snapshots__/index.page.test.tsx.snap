@@ -149,176 +149,180 @@ exports[`/indevelopment/[slug].page IndevelopmentPage should match snapshot for 
           </li>
         </ul>
       </nav>
-      <dl
-        aria-label="Project information"
-        class="definitionList"
+      <div
+        class="grid grid--loose"
       >
-        <dt>
-          Status:
-        </dt>
-         
-        <dd>
-          In progress
-        </dd>
-        <dt>
-          Developed as:
-        </dt>
-         
-        <dd>
-          CG
-        </dd>
-      </dl>
-      <h3>
-        Provisional Schedule
-      </h3>
-      <dl
-        aria-label="Provisional schedule"
-        class="definitionList"
-      >
-        <div>
-          <dt>
-            Expected publication
-          </dt>
-          <dd>
-            11 April 2024
-          </dd>
-        </div>
-      </dl>
-      <h3>
-        Project Team
-      </h3>
-      <dl
-        aria-label="Project team"
-        class="definitionList"
-      >
-        <div>
-          <dt>
-            Developer
-          </dt>
-          <dd>
-            National Guideline Centre
-          </dd>
-        </div>
-      </dl>
-      <h3>
-        Email enquiries
-      </h3>
-      <span>
-        If you have any queries please email
-      </span>
-      <ul
-        class="list list--unstyled"
-      >
-        <li>
-          <a
-            href="mailto:hypoadrenalism@nice.org.uk"
-          >
-            hypoadrenalism@nice.org.uk
-          </a>
-        </li>
-      </ul>
-      <h3>
-        Timeline
-      </h3>
-      <p>
-        Key events during the development of the guidance:
-      </p>
-      <table
-        aria-label="Timeline"
-        class="table table-condensed"
-      >
-        <tbody>
-          <tr>
-            <th>
-              Date
-            </th>
-            <th>
-              Update
-            </th>
-          </tr>
-          <tr>
-            <td>
-              13 September 2022
-            </td>
-            <td>
-              Stakeholder list updated
-            </td>
-          </tr>
-          <tr>
-            <td>
-              07 July 2022
-            </td>
-            <td>
-              Committee list updated
-            </td>
-          </tr>
-          <tr>
-            <td>
-              25 May 2022
-            </td>
-            <td>
-              Committee meeting
-            </td>
-          </tr>
-          <tr>
-            <td>
-              14 April 2022
-            </td>
-            <td>
-              Scope published
-            </td>
-          </tr>
-          <tr>
-            <td>
-              01 February 2022 - 01 March 2022
-            </td>
-            <td>
-              Draft scope consultation
-            </td>
-          </tr>
-          <tr>
-            <td>
-              01 February 2022 - 01 March 2022
-            </td>
-            <td>
-              Committee member recruitment
-            </td>
-          </tr>
-          <tr>
-            <td>
-              01 February 2022
-            </td>
-            <td>
-              Guideline title changed from Hypoadrenalism: acute and long-term management to Adrenal insufficiency: acute and long-term management.
-            </td>
-          </tr>
-          <tr>
-            <td>
-              05 January 2022
-            </td>
-            <td>
-              Scoping workshop
-            </td>
-          </tr>
-          <tr>
-            <td>
-              18 October 2021 - 25 October 2021
-            </td>
-            <td>
-              Topic expert committee member recruitment
-            </td>
-          </tr>
-        </tbody>
-      </table>
-      <p>
-        For further information on the guideline development process, please read
-         
-        <a
-          href="https://www.nice.org.uk/about/what-we-do/our-programmes/nice-guidance/nice-guidelines/how-we-develop-nice-guidelines"
+        <section
+          data-component="grid-item"
+          data-g="12 md:8 lg:9"
         >
-          how we develop NICE guidelines
-        </a>
-      </p>
+          <dl
+            aria-label="Project information"
+            class="definitionList"
+          >
+            <dt>
+              Status:
+            </dt>
+             
+            <dd>
+              In progress
+            </dd>
+            <dt>
+              Developed as:
+            </dt>
+             
+            <dd>
+              CG
+            </dd>
+          </dl>
+          <h3>
+            Provisional Schedule
+          </h3>
+          <dl
+            aria-label="Provisional schedule"
+            class="definitionList"
+          >
+            <div>
+              <dt>
+                Expected publication
+              </dt>
+              <dd>
+                11 April 2024
+              </dd>
+            </div>
+          </dl>
+          <h3>
+            Project Team
+          </h3>
+          <dl
+            aria-label="Project team"
+            class="definitionList"
+          >
+            <div>
+              <dt>
+                Developer
+              </dt>
+              <dd>
+                National Guideline Centre
+              </dd>
+            </div>
+          </dl>
+          <h3>
+            Email enquiries
+          </h3>
+          <p>
+            If you have any queries please email
+             
+            <a
+              href="mailto:hypoadrenalism@nice.org.uk"
+            >
+              hypoadrenalism@nice.org.uk
+            </a>
+          </p>
+          <h3>
+            Timeline
+          </h3>
+          <p>
+            Key events during the development of the guidance:
+          </p>
+          <table
+            aria-label="Timeline"
+            class="tableColumn"
+          >
+            <tbody>
+              <tr>
+                <th>
+                  Date
+                </th>
+                <th>
+                  Update
+                </th>
+              </tr>
+              <tr>
+                <td>
+                  13 September 2022
+                </td>
+                <td>
+                  Stakeholder list updated
+                </td>
+              </tr>
+              <tr>
+                <td>
+                  07 July 2022
+                </td>
+                <td>
+                  Committee list updated
+                </td>
+              </tr>
+              <tr>
+                <td>
+                  25 May 2022
+                </td>
+                <td>
+                  Committee meeting
+                </td>
+              </tr>
+              <tr>
+                <td>
+                  14 April 2022
+                </td>
+                <td>
+                  Scope published
+                </td>
+              </tr>
+              <tr>
+                <td>
+                  01 February 2022 - 01 March 2022
+                </td>
+                <td>
+                  Draft scope consultation
+                </td>
+              </tr>
+              <tr>
+                <td>
+                  01 February 2022 - 01 March 2022
+                </td>
+                <td>
+                  Committee member recruitment
+                </td>
+              </tr>
+              <tr>
+                <td>
+                  01 February 2022
+                </td>
+                <td>
+                  Guideline title changed from Hypoadrenalism: acute and long-term management to Adrenal insufficiency: acute and long-term management.
+                </td>
+              </tr>
+              <tr>
+                <td>
+                  05 January 2022
+                </td>
+                <td>
+                  Scoping workshop
+                </td>
+              </tr>
+              <tr>
+                <td>
+                  18 October 2021 - 25 October 2021
+                </td>
+                <td>
+                  Topic expert committee member recruitment
+                </td>
+              </tr>
+            </tbody>
+          </table>
+          <p>
+            For further information on the guideline development process, please read
+             
+            <a
+              href="https://www.nice.org.uk/about/what-we-do/our-programmes/nice-guidance/nice-guidelines/how-we-develop-nice-guidelines"
+            >
+              how we develop NICE guidelines
+            </a>
+          </p>
+        </section>
+      </div>
     </div>
   </div>
 </body>
