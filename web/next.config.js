@@ -130,7 +130,7 @@ const nextConfig = {
 		//      DESTINATION: n/a stay in Orchard until we figure out the TRAC embed
 
 		return [
-			// === GENERATED FROM EXCEL MIGRATION PHASE 2 ===
+			// === BLOCK GENERATED FROM EXCEL MIGRATION PHASE 2 ===
 			{
 				source:
 					"/about/what-we-do/our-programmes/nice-guidance/about-technology-appraisal-guidance/participation-in-clinical-trials-and-subsequent-access-to-drugs-appraised-by-nice-a-statement-on-the-applicability-of-about-technology-appraisal-guidance",
@@ -209,7 +209,7 @@ const nextConfig = {
 				permanent: true,
 			}, // Generated from Excel Migration Phase 2 URLs
 
-			// === ORIGINAL REDIRECTS ===
+			// === ORIGINAL REDIRECTS BLOCK ===
 			{
 				source:
 					"/about/nice-communities/library-and-knowledge-services-staff/buy-books--journals-and-databases/organisations-eligible-to-use-the-framework",
@@ -218,7 +218,7 @@ const nextConfig = {
 				permanent: true,
 			}, // ORIGINAL
 
-			// === GENERATED FROM EXCEL MIGRATION PHASE 2 ===
+			// === BLOCK GENERATED FROM EXCEL MIGRATION PHASE 2 ===
 			{
 				source:
 					"/about/nice-communities/library-and-knowledge-services-staff/buy-books--journals-and-databases/organisations-eligible-to-use-the-framework",
@@ -240,7 +240,7 @@ const nextConfig = {
 				permanent: true,
 			}, // Generated from Excel Migration Phase 2 URLs
 
-			// === ORIGINAL REDIRECTS ===
+			// === ORIGINAL REDIRECTS BLOCK ===
 			{
 				source:
 					"/standards-and-indicators/qofindicators/the-percentage-of-patients-with-dementia-with-the-contact-details-of-a-named-carer-on-their-record",
@@ -255,7 +255,7 @@ const nextConfig = {
 				permanent: true,
 			}, // ORIGINAL
 
-			// === GENERATED FROM EXCEL MIGRATION PHASE 2 ===
+			// === BLOCK GENERATED FROM EXCEL MIGRATION PHASE 2 ===
 			{
 				source:
 					"/about/nice-communities/library-and-knowledge-services-staff/buy-books--journals-and-databases/provider-information/sole-supplied-titles",
@@ -291,7 +291,7 @@ const nextConfig = {
 				permanent: true,
 			}, // Generated from Excel Migration Phase 2 URLs
 
-			// === ORIGINAL REDIRECTS ===
+			// === ORIGINAL REDIRECTS BLOCK ===
 			{
 				source:
 					"/about/nice-communities/library-and-knowledge-services-staff/buy-books--journals-and-databases/purchasing-steps--further-competition",
@@ -300,7 +300,7 @@ const nextConfig = {
 				permanent: true,
 			}, // ORIGINAL
 
-			// === GENERATED FROM EXCEL MIGRATION PHASE 2 ===
+			// === BLOCK GENERATED FROM EXCEL MIGRATION PHASE 2 ===
 			{
 				source:
 					"/about/nice-communities/library-and-knowledge-services-staff/buy-books--journals-and-databases/purchasing-steps--further-competition",
@@ -309,7 +309,7 @@ const nextConfig = {
 				permanent: true,
 			}, // Generated from Excel Migration Phase 2 URLs
 
-			// === ORIGINAL REDIRECTS ===
+			// === ORIGINAL REDIRECTS BLOCK ===
 			{
 				source:
 					"/standards-and-indicators/qofindicators/the-percentage-of-patients-with-cvd-who-are-currently-treated-with-a-lipid-lowering-therapy",
@@ -318,7 +318,7 @@ const nextConfig = {
 				permanent: true,
 			}, // ORIGINAL
 
-			// === GENERATED FROM EXCEL MIGRATION PHASE 2 ===
+			// === BLOCK GENERATED FROM EXCEL MIGRATION PHASE 2 ===
 			{
 				source:
 					"/about/what-we-do/our-programmes/nice-guidance/about-technology-appraisal-guidance/biosimilar-technologies-nice-position-statement",
@@ -362,7 +362,7 @@ const nextConfig = {
 				permanent: true,
 			}, // Generated from Excel Migration Phase 2 URLs
 
-			// === ORIGINAL REDIRECTS ===
+			// === ORIGINAL REDIRECTS BLOCK ===
 			{
 				source:
 					"/about/nice-communities/library-and-knowledge-services-staff/buy-books-journals-and-databases/purchasing-steps--direct-awards",
@@ -371,7 +371,7 @@ const nextConfig = {
 				permanent: true,
 			}, // ORIGINAL
 
-			// === GENERATED FROM EXCEL MIGRATION PHASE 2 ===
+			// === BLOCK GENERATED FROM EXCEL MIGRATION PHASE 2 ===
 			{
 				source:
 					"/about/what-we-do/our-programmes/nice-guidance/nice-about-technology-appraisal-guidance/data/cancer-appraisal-recommendations",
@@ -428,7 +428,7 @@ const nextConfig = {
 				permanent: true,
 			}, // Generated from Excel Migration Phase 2 URLs
 
-			// === ORIGINAL REDIRECTS ===
+			// === ORIGINAL REDIRECTS BLOCK ===
 			{
 				source:
 					"/about/nice-communities/library-and-knowledge-services-staff/buy-books-journals-and-databases/provider-information",
@@ -437,7 +437,7 @@ const nextConfig = {
 				permanent: true,
 			}, // ORIGINAL
 
-			// === GENERATED FROM EXCEL MIGRATION PHASE 2 ===
+			// === BLOCK GENERATED FROM EXCEL MIGRATION PHASE 2 ===
 			{
 				source:
 					"/about/nice-communities/library-and-knowledge-services-staff/buy-books-journals-and-databases/provider-information",
@@ -677,7 +677,7 @@ const nextConfig = {
 				permanent: true,
 			}, // Generated from Excel Migration Phase 2 URLs
 
-			// === ORIGINAL REDIRECTS ===
+			// === ORIGINAL REDIRECTS BLOCK ===
 			{
 				source:
 					"/about/what-we-do/evidence-services/journals-and-databases/openathens/openathens-registration-help",
@@ -686,7 +686,7 @@ const nextConfig = {
 				permanent: true,
 			}, // ORIGINAL
 
-			// === GENERATED FROM EXCEL MIGRATION PHASE 2 ===
+			// === BLOCK GENERATED FROM EXCEL MIGRATION PHASE 2 ===
 			{
 				source:
 					"/about/what-we-do/evidence-services/journals-and-databases/openathens/openathens-registration-help",
@@ -756,7 +756,7 @@ const nextConfig = {
 				permanent: true,
 			}, // Generated from Excel Migration Phase 2 URLs
 
-			// === ORIGINAL REDIRECTS ===
+			// === ORIGINAL REDIRECTS BLOCK ===
 			{
 				source:
 					"/about/nice-communities/library-and-knowledge-services-staff/buy-books-journals-and-databases",
@@ -765,7 +765,7 @@ const nextConfig = {
 				permanent: true,
 			}, // ORIGINAL
 
-			// === GENERATED FROM EXCEL MIGRATION PHASE 2 ===
+			// === BLOCK GENERATED FROM EXCEL MIGRATION PHASE 2 ===
 			{
 				source:
 					"/about/nice-communities/library-and-knowledge-services-staff/buy-books-journals-and-databases",
@@ -844,7 +844,7 @@ const nextConfig = {
 				permanent: true,
 			}, // Generated from Excel Migration Phase 2 URLs
 
-			// === ORIGINAL REDIRECTS ===
+			// === ORIGINAL REDIRECTS BLOCK ===
 			{
 				source:
 					"/about/what-we-do/evidence-services/journals-and-databases/openathens/openathens-eligibility",
@@ -853,7 +853,7 @@ const nextConfig = {
 				permanent: true,
 			}, // ORIGINAL
 
-			// === GENERATED FROM EXCEL MIGRATION PHASE 2 ===
+			// === BLOCK GENERATED FROM EXCEL MIGRATION PHASE 2 ===
 			{
 				source:
 					"/about/what-we-do/evidence-services/journals-and-databases/openathens/openathens-eligibility",
@@ -918,7 +918,7 @@ const nextConfig = {
 				permanent: true,
 			}, // Generated from Excel Migration Phase 2 URLs
 
-			// === ORIGINAL REDIRECTS ===
+			// === ORIGINAL REDIRECTS BLOCK ===
 			{
 				source:
 					"/about/what-we-do/evidence-services/journals-and-databases/openathens/openathens-support",
@@ -927,7 +927,7 @@ const nextConfig = {
 				permanent: true,
 			}, // ORIGINAL
 
-			// === GENERATED FROM EXCEL MIGRATION PHASE 2 ===
+			// === BLOCK GENERATED FROM EXCEL MIGRATION PHASE 2 ===
 			{
 				source:
 					"/about/what-we-do/evidence-services/journals-and-databases/openathens/openathens-support",
@@ -1219,7 +1219,7 @@ const nextConfig = {
 				permanent: true,
 			}, // Generated from Excel Migration Phase 2 URLs
 
-			// === ORIGINAL REDIRECTS ===
+			// === ORIGINAL REDIRECTS BLOCK ===
 			{
 				source:
 					"/about/what-we-do/evidence-services/journals-and-databases/openathens/access",
@@ -1228,7 +1228,7 @@ const nextConfig = {
 				permanent: true,
 			}, // ORIGINAL
 
-			// === GENERATED FROM EXCEL MIGRATION PHASE 2 ===
+			// === BLOCK GENERATED FROM EXCEL MIGRATION PHASE 2 ===
 			{
 				source:
 					"/about/what-we-do/evidence-services/journals-and-databases/openathens/access",
@@ -1347,7 +1347,7 @@ const nextConfig = {
 				permanent: true,
 			}, // Generated from Excel Migration Phase 2 URLs
 
-			// === ORIGINAL REDIRECTS ===
+			// === ORIGINAL REDIRECTS BLOCK ===
 			{
 				source:
 					"/about/what-we-do/evidence-services/journals-and-databases/OpenAthens",
@@ -1355,7 +1355,7 @@ const nextConfig = {
 				permanent: true,
 			}, // ORIGINAL
 
-			// === GENERATED FROM EXCEL MIGRATION PHASE 2 ===
+			// === BLOCK GENERATED FROM EXCEL MIGRATION PHASE 2 ===
 			{
 				source:
 					"/about/what-we-do/evidence-services/journals-and-databases/OpenAthens",
@@ -1418,7 +1418,7 @@ const nextConfig = {
 				permanent: true,
 			}, // Generated from Excel Migration Phase 2 URLs
 
-			// === ORIGINAL REDIRECTS ===
+			// === ORIGINAL REDIRECTS BLOCK ===
 			{
 				source:
 					"/get-involved/careers/our-benefits--rewards-and-work-life-balance",
@@ -1426,7 +1426,7 @@ const nextConfig = {
 				permanent: true,
 			}, // ORIGINAL
 
-			// === GENERATED FROM EXCEL MIGRATION PHASE 2 ===
+			// === BLOCK GENERATED FROM EXCEL MIGRATION PHASE 2 ===
 			{
 				source:
 					"/standards-and-indicators/get-involved/support-a-quality-standard",
@@ -1542,7 +1542,7 @@ const nextConfig = {
 				permanent: true,
 			}, // Generated from Excel Migration Phase 2 URLs
 
-			// === ORIGINAL REDIRECTS ===
+			// === ORIGINAL REDIRECTS BLOCK ===
 			{
 				source:
 					"/get-involved/jobs/our-benefits--rewards-and-work-life-balance",
@@ -1550,7 +1550,7 @@ const nextConfig = {
 				permanent: true,
 			}, // ORIGINAL
 
-			// === GENERATED FROM EXCEL MIGRATION PHASE 2 ===
+			// === BLOCK GENERATED FROM EXCEL MIGRATION PHASE 2 ===
 			{
 				source:
 					"/get-involved/jobs/our-benefits--rewards-and-work-life-balance",
@@ -1598,14 +1598,14 @@ const nextConfig = {
 				permanent: true,
 			}, // Generated from Excel Migration Phase 2 URLs
 
-			// === ORIGINAL REDIRECTS ===
+			// === ORIGINAL REDIRECTS BLOCK ===
 			{
 				source: "/About/What-we-do/Evidence-Services/journals-and-databases",
 				destination: "/library-and-knowledge-services",
 				permanent: true,
 			}, // ORIGINAL
 
-			// === GENERATED FROM EXCEL MIGRATION PHASE 2 ===
+			// === BLOCK GENERATED FROM EXCEL MIGRATION PHASE 2 ===
 			{
 				source: "/About/What-we-do/Evidence-Services/journals-and-databases",
 				destination: "/library-and-knowledge-services",
@@ -1803,7 +1803,7 @@ const nextConfig = {
 				permanent: true,
 			}, // Generated from Excel Migration Phase 2 URLs
 
-			// === ORIGINAL REDIRECTS ===
+			// === ORIGINAL REDIRECTS BLOCK ===
 			{
 				source: "/get-involved/careers/diversity-and-inclusion",
 				destination: "/careers/diversity-and-inclusion",
@@ -1815,7 +1815,7 @@ const nextConfig = {
 				permanent: true,
 			}, // ORIGINAL
 
-			// === GENERATED FROM EXCEL MIGRATION PHASE 2 ===
+			// === BLOCK GENERATED FROM EXCEL MIGRATION PHASE 2 ===
 			{
 				source: "/re-using-our-content/uk-open-content-licence",
 				destination: "/forms/use-of-nice-content-in-the-uk-form",
@@ -1834,28 +1834,28 @@ const nextConfig = {
 				permanent: true,
 			}, // Generated from Excel Migration Phase 2 URLs
 
-			// === ORIGINAL REDIRECTS ===
+			// === ORIGINAL REDIRECTS BLOCK ===
 			{
 				source: "/get-involved/jobs/diversity-and-inclusion",
 				destination: "/careers/diversity-and-inclusion",
 				permanent: true,
 			}, // ORIGINAL
 
-			// === GENERATED FROM EXCEL MIGRATION PHASE 2 ===
+			// === BLOCK GENERATED FROM EXCEL MIGRATION PHASE 2 ===
 			{
 				source: "/get-involved/jobs/diversity-and-inclusion",
 				destination: "/careers/diversity-and-inclusion",
 				permanent: true,
 			}, // Generated from Excel Migration Phase 2 URLs
 
-			// === ORIGINAL REDIRECTS ===
+			// === ORIGINAL REDIRECTS BLOCK ===
 			{
 				source: "/get-involved/jobs/we-care-about-our-staff",
 				destination: "/careers/we-care-about-our-staff",
 				permanent: true,
 			}, // ORIGINAL
 
-			// === GENERATED FROM EXCEL MIGRATION PHASE 2 ===
+			// === BLOCK GENERATED FROM EXCEL MIGRATION PHASE 2 ===
 			{
 				source: "/get-involved/jobs/we-care-about-our-staff",
 				destination: "/careers/we-care-about-our-staff",
@@ -1910,14 +1910,14 @@ const nextConfig = {
 				permanent: true,
 			}, // Generated from Excel Migration Phase 2 URLs
 
-			// === ORIGINAL REDIRECTS ===
+			// === ORIGINAL REDIRECTS BLOCK ===
 			{
 				source: "/get-involved/careers/digital-at-nice",
 				destination: "/careers/digital-at-nice",
 				permanent: true,
 			}, // ORIGINAL
 
-			// === GENERATED FROM EXCEL MIGRATION PHASE 2 ===
+			// === BLOCK GENERATED FROM EXCEL MIGRATION PHASE 2 ===
 			{
 				source: "/get-involved/careers/digital-at-nice",
 				destination: "/careers/digital-at-nice",
@@ -1965,14 +1965,14 @@ const nextConfig = {
 				permanent: true,
 			}, // Generated from Excel Migration Phase 2 URLs
 
-			// === ORIGINAL REDIRECTS ===
+			// === ORIGINAL REDIRECTS BLOCK ===
 			{
 				source: "/news/nice-newsletters-and-alerts",
 				destination: "/nice-newsletters-and-alerts",
 				permanent: true,
 			}, // ORIGINAL
 
-			// === GENERATED FROM EXCEL MIGRATION PHASE 2 ===
+			// === BLOCK GENERATED FROM EXCEL MIGRATION PHASE 2 ===
 			{
 				source: "/news/nice-newsletters-and-alerts",
 				destination: "/nice-newsletters-and-alerts",
@@ -2015,7 +2015,7 @@ const nextConfig = {
 				permanent: true,
 			}, // Generated from Excel Migration Phase 2 URLs
 
-			// === ORIGINAL REDIRECTS ===
+			// === ORIGINAL REDIRECTS BLOCK ===
 			{
 				source: "/forms/life-sciences-contact-us",
 				destination: "/forms/nice-advice-contact-us",
@@ -2027,7 +2027,7 @@ const nextConfig = {
 				permanent: true,
 			}, // ORIGINAL
 
-			// === GENERATED FROM EXCEL MIGRATION PHASE 2 ===
+			// === BLOCK GENERATED FROM EXCEL MIGRATION PHASE 2 ===
 			{
 				source: "/about/who-we-are/our-charter",
 				destination: "/about-us/corporate-publications/our-charter",
@@ -2064,14 +2064,14 @@ const nextConfig = {
 			// 	permanent: true,
 			// }, // Generated from Excel Migration Phase 2 URLs
 
-			// === ORIGINAL REDIRECTS ===
+			// === ORIGINAL REDIRECTS BLOCK ===
 			{
 				source: "/get-involved/careers",
 				destination: "/careers",
 				permanent: true,
 			}, // ORIGINAL
 
-			// === GENERATED FROM EXCEL MIGRATION PHASE 2 ===
+			// === BLOCK GENERATED FROM EXCEL MIGRATION PHASE 2 ===
 			{
 				source: "/news/press-and-media",
 				destination: "/contact-us",
@@ -2088,28 +2088,28 @@ const nextConfig = {
 				permanent: true,
 			}, // Generated from Excel Migration Phase 2 URLs
 
-			// === ORIGINAL REDIRECTS ===
+			// === ORIGINAL REDIRECTS BLOCK ===
 			{
 				source: "/get-involved/jobs",
 				destination: "/careers",
 				permanent: true,
 			}, // ORIGINAL
 
-			// === GENERATED FROM EXCEL MIGRATION PHASE 2 ===
+			// === BLOCK GENERATED FROM EXCEL MIGRATION PHASE 2 ===
 			{
 				source: "/get-involved/jobs",
 				destination: "/careers",
 				permanent: true,
 			}, // Generated from Excel Migration Phase 2 URLs
 
-			// === ORIGINAL REDIRECTS ===
+			// === ORIGINAL REDIRECTS BLOCK ===
 			{
 				source: "/guidance/proposed",
 				destination: "/guidance/awaiting-development",
 				permanent: true,
 			}, // ORIGINAL
 
-			// === GENERATED FROM EXCEL MIGRATION PHASE 2 ===
+			// === BLOCK GENERATED FROM EXCEL MIGRATION PHASE 2 ===
 			{
 				source: "/about/what-we-do",
 				destination: "/what-nice-does",
@@ -2136,14 +2136,14 @@ const nextConfig = {
 				permanent: true,
 			}, // Generated from Excel Migration Phase 2 URLs
 
-			// === ORIGINAL REDIRECTS ===
+			// === ORIGINAL REDIRECTS BLOCK ===
 			{
 				source: "/indicators",
 				destination: "/indicators/published",
 				permanent: true,
 			}, // ORIGINAL
 
-			// === GENERATED FROM EXCEL MIGRATION PHASE 2 ===
+			// === BLOCK GENERATED FROM EXCEL MIGRATION PHASE 2 ===
 			{
 				source: "/Glossary",
 				destination: "Not being created in StoryBlok leave live in Orchard",
@@ -2160,7 +2160,7 @@ const nextConfig = {
 				permanent: true,
 			}, // Generated from Excel Migration Phase 2 URLs
 
-			// === PARAMETERIZED REDIRECTS (MUST BE LAST) ===
+			// === PARAMETERIZED REDIRECTS BLOCK (MUST BE LAST) ===
 			{
 				source:
 					"/about/what-we-do/research-and-development/research-recommendations/:slug*",
