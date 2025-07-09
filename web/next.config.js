@@ -137,19 +137,18 @@ const nextConfig = {
 	},
 	async redirects() {
 		// TODO the following redirects are currently commented out in the array at correct specificity level:
-		//   1. SOURCE: /forms/topic-suggestion
-		//      DESTINATION: Form
 		// ------------------------------------------------------------
-		//   2. SOURCE: /get-involved/our-committees/join-a-committee/nice-committee-vacancies-for-patients--service-users--carers-and-lay-people
+		//   1. SOURCE: /get-involved/our-committees/join-a-committee/nice-committee-vacancies-for-patients--service-users--carers-and-lay-people
 		//      DESTINATION: n/a stay in Orchard until we figure out the TRAC embed
 		// ------------------------------------------------------------
-		//   3. SOURCE: /get-involved/our-committees/join-a-committee/nice-committee-vacancies-for-health--social-care-and-other-professionals-and-practitioners
+		//   2. SOURCE: /get-involved/our-committees/join-a-committee/nice-committee-vacancies-for-health--social-care-and-other-professionals-and-practitioners
 		//      DESTINATION: n/a stay in Orchard until we figure out the TRAC embed
 		// ------------------------------------------------------------
-		//   4. SOURCE: /get-involved/our-committees/join-a-committee/apply-to-be-a-chair-on-a-nice-committee
+		//   3. SOURCE: /get-involved/our-committees/join-a-committee/apply-to-be-a-chair-on-a-nice-committee
 		//      DESTINATION: n/a stay in Orchard until we figure out the TRAC embed
 
 		// CONFLICTING:
+		// === ORIGINAL NEXTWEB REDIRECT
 		// {
 		// 		source:
 		// 			"/about/nice-communities/library-and-knowledge-services-staff/buy-books--journals-and-databases/organisations-eligible-to-use-the-framework",
@@ -1994,12 +1993,6 @@ const nextConfig = {
 				destination: "/about-us/our-board/board-members",
 				permanent: true,
 			}, // Generated from Excel Migration Phase 2 URLs
-			// {
-			// 	source: "/forms/topic-suggestion",
-			// 	destination: "Form",
-			// 	permanent: true,
-			// }, // Generated from Excel Migration Phase 2 URLs
-
 			// === ORIGINAL REDIRECTS BLOCK ===
 			{
 				source: "/get-involved/careers",
