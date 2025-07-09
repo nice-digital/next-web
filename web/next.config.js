@@ -117,9 +117,10 @@ const nextConfig = {
 	// Don't send the x-powered-by header: we don't want to expose things like that. See https://edibleco.de/2TpDVAK
 	poweredByHeader: false,
 	async rewrites() {
-		// TODO the following redirects are commented out in the array at correct specificity:
+		// TODO the following redirects are currently commented out in the array at correct specificity level:
 		//   1. SOURCE: /forms/topic-suggestion
 		//      DESTINATION: Form
+		// ------------------------------------------------------------
 		//   2. SOURCE: /get-involved/our-committees/join-a-committee/nice-committee-vacancies-for-patients--service-users--carers-and-lay-people
 		//      DESTINATION: n/a stay in Orchard until we figure out the TRAC embed
 		// ------------------------------------------------------------
