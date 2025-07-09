@@ -95,7 +95,7 @@ if (process.env.NODE_ENV === "production") {
 		},
 		{
 			key: "Content-Security-Policy",
-			value: "frame-ancestors 'none'",
+			value: "frame-ancestors 'self' https://*.infogram.com",
 		}
 	);
 }
@@ -137,6 +137,11 @@ const nextConfig = {
 	},
 	async redirects() {
 		return [
+			{
+				source: "/news/nice-newsletters-and-alerts",
+				destination: "/nice-newsletters-and-alerts",
+				permanent: true,
+			},
 			{
 				source: "/forms/life-sciences-contact-us",
 				destination: "/forms/nice-advice-contact-us",
