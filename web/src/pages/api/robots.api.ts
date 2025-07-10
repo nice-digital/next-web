@@ -14,6 +14,7 @@ Disallow: /
 		res.send(`User-agent: bingbot
 Crawl-delay: 1
 User-agent: *
+Disallow: /forms/*
 Allow: /
 	`);
 	}
