@@ -9,18 +9,6 @@ import {
 	type CategoryLandindPageBlokProps,
 } from "./CategoryLandingPage";
 
-// test mocking the StoryblokComponent
-jest.mock("@storyblok/react", () => ({
-	// eslint-disable-next-line @typescript-eslint/no-explicit-any
-	StoryblokComponent: ({ blok }: { blok: any }) => {
-		return (
-			<div data-testid={`storyblok-component-${blok.component}`}>
-				{blok.component}
-			</div>
-		);
-	},
-}));
-
 const mockHeroData = sampleDataHero.story.content;
 const mockPageHeaderData = sampleDataPageHeader.story.content;
 
@@ -41,9 +29,12 @@ describe("CategoryLandingPage", () => {
 
 	it("renders the Hero through the StoryblokComponent, if it's passed as block", () => {
 		render(<CategoryLandingPage {...mockPropsWithHero} />);
-		expect(
-			screen.getByText(mockHeroData.header[0].component)
-		).toBeInTheDocument();
+		const { component, title } = mockHeroData.header[0];
+
+		const heroElement = screen.getByTestId(`storyblok-component-${component}`);
+
+		expect(heroElement).toHaveTextContent(component);
+		expect(heroElement).toHaveTextContent(title);
 	});
 
 	xit("renders the Page Header through the StoryblokComponent, if it's passed as block", () => {

@@ -7,6 +7,7 @@ exports[`BlogPostPage renders the page 1`] = `
       data-testid="storyblok-component-blogPost"
     >
       blogPost
+      Women inspiring inclusion in NICE guidance -Test
     </div>
   </div>
 </body>

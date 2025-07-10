@@ -34,6 +34,36 @@ import {
 	fieldHasValidContent,
 } from "./storyblok";
 
+type StoryblokGet = (
+	endpoint: string,
+	params?: Record<string, unknown>
+) => Promise<unknown>;
+type StoryblokGetAll = (
+	endpoint: string,
+	params?: Record<string, unknown>
+) => Promise<unknown>;
+
+const mockStoryblokApi = ({
+	get,
+	getAll,
+}: {
+	get?: jest.Mock<ReturnType<StoryblokGet>, Parameters<StoryblokGet>>;
+	getAll?: jest.Mock<ReturnType<StoryblokGetAll>, Parameters<StoryblokGetAll>>;
+} = {}) => {
+	const getMock =
+		get ?? jest.fn<ReturnType<StoryblokGet>, Parameters<StoryblokGet>>();
+	const getAllMock =
+		getAll ??
+		jest.fn<ReturnType<StoryblokGetAll>, Parameters<StoryblokGetAll>>();
+
+	(getStoryblokApi as jest.Mock).mockReturnValue({
+		get: getMock,
+		getAll: getAllMock,
+	});
+
+	return { getMock, getAllMock };
+};
+
 describe("Storyblok utils", () => {
 	beforeEach(() => {
 		jest
@@ -253,16 +283,16 @@ describe("Storyblok utils", () => {
 
 	describe("fetchStory", () => {
 		it("should call the storyblokApi.get method with the correct params", async () => {
-			getStoryblokApi().get = jest
-				.fn()
-				.mockResolvedValue(MockSingleStorySuccessResponse);
+			const { getMock } = mockStoryblokApi({
+				get: jest.fn().mockResolvedValue(MockSingleStorySuccessResponse),
+			});
 
 			await fetchStory("news/articles/test-page", "draft");
 
-			expect(getStoryblokApi().get).toHaveBeenCalled();
-			expect(getStoryblokApi().get).toHaveBeenCalledOnce();
+			expect(getMock).toHaveBeenCalled();
+			expect(getMock).toHaveBeenCalledOnce();
 
-			expect(getStoryblokApi().get).toHaveBeenCalledWith(
+			expect(getMock).toHaveBeenCalledWith(
 				"cdn/stories/news/articles/test-page",
 				{
 					resolve_links: "url",
@@ -273,9 +303,9 @@ describe("Storyblok utils", () => {
 		});
 
 		it("should fetch a story from Storyblok", async () => {
-			getStoryblokApi().get = jest
-				.fn()
-				.mockResolvedValue(MockSingleStorySuccessResponse);
+			mockStoryblokApi({
+				get: jest.fn().mockResolvedValue(MockSingleStorySuccessResponse),
+			});
 
 			const result = await fetchStory("unit-test-data/test-page", "published");
 
@@ -283,9 +313,9 @@ describe("Storyblok utils", () => {
 		});
 
 		it("should handle a 404", async () => {
-			getStoryblokApi().get = jest
-				.fn()
-				.mockRejectedValue(Mock404FromStoryblokApi);
+			mockStoryblokApi({
+				get: jest.fn().mockRejectedValue(Mock404FromStoryblokApi),
+			});
 
 			const response = await fetchStory("non/existent/slug", "published");
 
@@ -293,9 +323,9 @@ describe("Storyblok utils", () => {
 		});
 
 		it("should handle server errors", async () => {
-			getStoryblokApi().get = jest
-				.fn()
-				.mockRejectedValueOnce(MockServerErrorResponse);
+			mockStoryblokApi({
+				get: jest.fn().mockRejectedValueOnce(MockServerErrorResponse),
+			});
 
 			const throwErrorFetchStory = async () => {
 				await fetchStory("news/articles/test-page", "published");
@@ -321,7 +351,9 @@ describe("Storyblok utils", () => {
 		});
 
 		it("should handle non ISbError responses", async () => {
-			getStoryblokApi().get = jest.fn().mockRejectedValueOnce("Generic error");
+			mockStoryblokApi({
+				get: jest.fn().mockRejectedValueOnce("Generic error"),
+			});
 
 			const throwErrorFetchStory = async () => {
 				await fetchStory("news/articles/test-page", "published");
@@ -349,9 +381,9 @@ describe("Storyblok utils", () => {
 
 	describe("fetchStories", () => {
 		it("should call the Storyblok.get method with the correct params", async () => {
-			getStoryblokApi().get = jest
-				.fn()
-				.mockResolvedValue(MockMultipleStorySuccessResponse);
+			const { getMock } = mockStoryblokApi({
+				get: jest.fn().mockResolvedValue(MockMultipleStorySuccessResponse),
+			});
 
 			await fetchStories("published", {
 				starts_with: "news/articles",
@@ -359,10 +391,10 @@ describe("Storyblok utils", () => {
 				cv: mockCvValue, //globally mocked
 			});
 
-			expect(getStoryblokApi().get).toHaveBeenCalled();
-			expect(getStoryblokApi().get).toHaveBeenCalledOnce();
+			expect(getMock).toHaveBeenCalled();
+			expect(getMock).toHaveBeenCalledOnce();
 
-			expect(getStoryblokApi().get).toHaveBeenCalledWith("cdn/stories", {
+			expect(getMock).toHaveBeenCalledWith("cdn/stories", {
 				resolve_links: "url",
 				version: "published",
 				starts_with: "news/articles",
@@ -372,9 +404,9 @@ describe("Storyblok utils", () => {
 		});
 
 		it("should fetch a list of stories from Storyblok", async () => {
-			getStoryblokApi().get = jest
-				.fn()
-				.mockResolvedValue(MockMultipleStorySuccessResponse);
+			mockStoryblokApi({
+				get: jest.fn().mockResolvedValue(MockMultipleStorySuccessResponse),
+			});
 
 			const result = await fetchStories("published", {
 				starts_with: "news/articles",
@@ -392,9 +424,9 @@ describe("Storyblok utils", () => {
 		});
 
 		it("should return a 404 error and log error message to logger when there is an error from storyblok", async () => {
-			getStoryblokApi().get = jest
-				.fn()
-				.mockRejectedValue(Mock404FromStoryblokApi);
+			mockStoryblokApi({
+				get: jest.fn().mockRejectedValue(Mock404FromStoryblokApi),
+			});
 
 			const throwErrorFetchStories = async () => {
 				await fetchStories("published", {
@@ -435,9 +467,9 @@ describe("Storyblok utils", () => {
 		});
 
 		it("should return a 503 error and log error message to logger when there is an error from storyblok", async () => {
-			getStoryblokApi().get = jest
-				.fn()
-				.mockRejectedValue(MockServerErrorResponse);
+			mockStoryblokApi({
+				get: jest.fn().mockRejectedValue(MockServerErrorResponse),
+			});
 
 			const throwErrorFetchStories = async () => {
 				await fetchStories("published", {
@@ -477,15 +509,16 @@ describe("Storyblok utils", () => {
 
 	describe("fetchLinks", () => {
 		it("should call the storyblokApi.getAll method with the correct params using defaults", async () => {
-			getStoryblokApi().getAll = jest
-				.fn()
-				.mockResolvedValue(MockLinksSuccessResponse);
+			const { getAllMock } = mockStoryblokApi({
+				getAll: jest.fn().mockResolvedValue(MockLinksSuccessResponse),
+			});
+
 			await fetchLinks({ starts_with: "news/podcasts" });
 
-			expect(getStoryblokApi().getAll).toHaveBeenCalled();
-			expect(getStoryblokApi().getAll).toHaveBeenCalledOnce();
+			expect(getAllMock).toHaveBeenCalled();
+			expect(getAllMock).toHaveBeenCalledOnce();
 
-			expect(getStoryblokApi().getAll).toHaveBeenCalledWith("cdn/links", {
+			expect(getAllMock).toHaveBeenCalledWith("cdn/links", {
 				per_page: 1000,
 				version: "published",
 				starts_with: "news/podcasts",
@@ -494,19 +527,20 @@ describe("Storyblok utils", () => {
 		});
 
 		it("should call the storyblokApi.getAll method with the correct params using overrides", async () => {
-			getStoryblokApi().getAll = jest
-				.fn()
-				.mockResolvedValue(MockLinksSuccessResponse);
+			const { getAllMock } = mockStoryblokApi({
+				getAll: jest.fn().mockResolvedValue(MockLinksSuccessResponse),
+			});
+
 			await fetchLinks({
 				version: "draft",
 				per_page: 300,
 				starts_with: "news/podcasts",
 			});
 
-			expect(getStoryblokApi().getAll).toHaveBeenCalled();
-			expect(getStoryblokApi().getAll).toHaveBeenCalledOnce();
+			expect(getAllMock).toHaveBeenCalled();
+			expect(getAllMock).toHaveBeenCalledOnce();
 
-			expect(getStoryblokApi().getAll).toHaveBeenCalledWith("cdn/links", {
+			expect(getAllMock).toHaveBeenCalledWith("cdn/links", {
 				per_page: 300,
 				version: "draft",
 				starts_with: "news/podcasts",
@@ -515,9 +549,9 @@ describe("Storyblok utils", () => {
 		});
 
 		it("should fetch links from Storyblok", async () => {
-			getStoryblokApi().getAll = jest
-				.fn()
-				.mockResolvedValue(MockLinksSuccessResponse);
+			mockStoryblokApi({
+				getAll: jest.fn().mockResolvedValue(MockLinksSuccessResponse),
+			});
 
 			const result = await fetchLinks({
 				starts_with: "news/podcasts",
@@ -527,9 +561,11 @@ describe("Storyblok utils", () => {
 		});
 
 		it("should return a 404 error and log error message to logger when there is an error from storyblok", async () => {
-			getStoryblokApi().getAll = jest
-				.fn()
-				.mockRejectedValue(JSON.stringify(Mock404FromStoryblokApi));
+			mockStoryblokApi({
+				getAll: jest
+					.fn()
+					.mockRejectedValue(JSON.stringify(Mock404FromStoryblokApi)),
+			});
 
 			const throwErrorFetchLinks = async () => {
 				await fetchLinks({
@@ -554,9 +590,11 @@ describe("Storyblok utils", () => {
 		});
 
 		it("should return a 503 error and log error message to logger when there is an error from storyblok", async () => {
-			getStoryblokApi().getAll = jest
-				.fn()
-				.mockRejectedValue(JSON.stringify(MockServerErrorResponse));
+			mockStoryblokApi({
+				getAll: jest
+					.fn()
+					.mockRejectedValue(JSON.stringify(MockServerErrorResponse)),
+			});
 
 			const throwErrorFetchLinks = async () => {
 				await fetchLinks({
@@ -583,9 +621,9 @@ describe("Storyblok utils", () => {
 		it("should fetch links with correct params", async () => {
 			const fetchLinksSpy = jest.spyOn(storyblokUtils, "fetchLinks");
 
-			getStoryblokApi().getAll = jest
-				.fn()
-				.mockResolvedValue([MockLinksSuccessResponse.links]);
+			const { getAllMock } = mockStoryblokApi({
+				getAll: jest.fn().mockResolvedValue([MockLinksSuccessResponse.links]),
+			});
 
 			await getBreadcrumbs("news/podcasts/test-podcast-4", "published");
 
@@ -595,8 +633,8 @@ describe("Storyblok utils", () => {
 				version: "published",
 			});
 
-			expect(getStoryblokApi().getAll).toHaveBeenCalled();
-			expect(getStoryblokApi().getAll).toHaveBeenCalledWith("cdn/links", {
+			expect(getAllMock).toHaveBeenCalled();
+			expect(getAllMock).toHaveBeenCalledWith("cdn/links", {
 				per_page: 1000,
 				version: "published",
 				starts_with: "news",
@@ -605,9 +643,9 @@ describe("Storyblok utils", () => {
 		});
 
 		it("should return valid breadcrumbs", async () => {
-			getStoryblokApi().getAll = jest
-				.fn()
-				.mockResolvedValue(MockLinksSuccessResponse.links);
+			mockStoryblokApi({
+				getAll: jest.fn().mockResolvedValue(MockLinksSuccessResponse.links),
+			});
 
 			const result = await getBreadcrumbs(
 				"news/podcasts/test-podcast-4",
@@ -622,9 +660,9 @@ describe("Storyblok utils", () => {
 		});
 
 		it("should include the current page in the breadbrumb if the parameter is set", async () => {
-			getStoryblokApi().getAll = jest
-				.fn()
-				.mockResolvedValue(MockLinksSuccessResponse.links);
+			mockStoryblokApi({
+				getAll: jest.fn().mockResolvedValue(MockLinksSuccessResponse.links),
+			});
 
 			const result = await getBreadcrumbs(
 				"news/podcasts/test-podcast-4",
@@ -725,9 +763,10 @@ describe("Storyblok utils", () => {
 			jest.restoreAllMocks();
 		});
 		it("should call fetchStories with page being set to 1 when query object is empty", async () => {
-			getStoryblokApi().get = jest
-				.fn()
-				.mockResolvedValue(MockMultipleStorySuccessResponse);
+			mockStoryblokApi({
+				get: jest.fn().mockResolvedValue(MockMultipleStorySuccessResponse),
+			});
+
 			await validateRouteParams(mockRequestParams);
 
 			expect(fetchStoriesSpy).toHaveBeenCalled();
