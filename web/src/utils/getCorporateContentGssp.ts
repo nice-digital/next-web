@@ -78,7 +78,7 @@ export const getCorporateContentGssp = <
 			const component = storyResult.story?.content?.component;
 			let tree: ExtendedSBLink[] = [];
 
-			if (component === "infoPage") {
+			if (component === "infoPage" && parentID !== null) {
 				tree = await buildTree(parentID, slug, isRootPage);
 				// TODO: move out of catchall page; would need API route as GSSP is not allowed in components whilst using pages router
 			}
