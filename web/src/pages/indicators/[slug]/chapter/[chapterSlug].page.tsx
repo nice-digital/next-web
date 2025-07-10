@@ -107,11 +107,11 @@ export default function IndicatorChapterPage({
 				<GridItem cols={12} md={8} lg={9} elementType="section">
 					<Grid reverse gutter="loose">
 						<GridItem cols={12}>
-							<div>
-								{hasOnThisPageMenu ? (
+							{hasOnThisPageMenu ? (
+								<div>
 									<OnThisPage sections={chapterSections} />
-								) : null}
-							</div>
+								</div>
+							) : null}
 
 							<div
 								dangerouslySetInnerHTML={{ __html: chapterHTML }}

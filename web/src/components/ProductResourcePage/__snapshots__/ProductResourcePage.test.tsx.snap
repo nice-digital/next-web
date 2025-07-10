@@ -234,7 +234,6 @@ exports[`ProductResourcePage should match snapshot 1`] = `
           >
             Resource impact statement
           </h2>
-          <div />
           <div>
             <p>
               Some body content

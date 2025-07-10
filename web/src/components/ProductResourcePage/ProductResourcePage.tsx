@@ -119,11 +119,11 @@ export const ProductResourcePage: FC<ProductResourcePageProps> = ({
 						<GridItem cols={12}>
 							<h2 className={styles.heading}>{title}</h2>
 
-							<div>
-								{hasOnThisPageMenu ? (
+							{hasOnThisPageMenu ? (
+								<div>
 									<OnThisPage sections={chapterSections} />
-								) : null}
-							</div>
+								</div>
+							) : null}
 
 							<div dangerouslySetInnerHTML={{ __html: htmlBody }} />
 							{lastUpdated ? (
