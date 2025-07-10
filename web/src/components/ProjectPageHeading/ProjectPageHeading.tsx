@@ -5,8 +5,6 @@ import { PageHeader } from "@nice-digital/nds-page-header";
 import { IndevSchedule, ProjectStatus } from "@/feeds/inDev/types";
 import { formatDateStr } from "@/utils/datetime";
 
-import { Link } from "../Link/Link";
-
 export type ProjectPageHeadingProps = {
 	projectPath: string;
 	projectType: string | null;
@@ -50,11 +48,11 @@ export const ProjectPageHeading: FC<ProjectPageHeadingProps> = ({
 
 	const indevRegisterAnInterestLink =
 		projectType == "IPG" && status != ProjectStatus.Discontinued ? (
-			<Link
-				to={`/about/what-we-do/our-programmes/nice-guidance/nice-interventional-procedures-guidance/ip-register-an-interest?t=0&p=${reference}&returnUrl=${projectPath}`}
+			<a
+				href={`/about/what-we-do/our-programmes/nice-guidance/nice-interventional-procedures-guidance/ip-register-an-interest?t=0&p=${reference}&returnUrl=${projectPath}`}
 			>
 				Register an interest
-			</Link>
+			</a>
 		) : null;
 
 	const indevStakeholderRegistrationLink =
@@ -63,11 +61,11 @@ export const ProjectPageHeading: FC<ProjectPageHeadingProps> = ({
 		indevStakeholderRegistration.length > 0 ? (
 			<>
 				{indevRegisterAnInterestLink && <> | </>}
-				<Link
-					to={`${indevStakeholderRegistration[0].href}?t=&p=${reference}&returnUrl=${projectPath}`}
+				<a
+					href={`${indevStakeholderRegistration[0].href}?t=&p=${reference}&returnUrl=${projectPath}`}
 				>
 					Register as a stakeholder
-				</Link>
+				</a>
 			</>
 		) : null;
 
@@ -75,9 +73,9 @@ export const ProjectPageHeading: FC<ProjectPageHeadingProps> = ({
 		<>
 			{indevRegisterAnInterestLink ||
 				(indevStakeholderRegistrationLink && <> | </>)}
-			<Link to="/consultations/leadinformation">
+			<a href="/consultations/leadinformation">
 				Request commenting lead permission
-			</Link>
+			</a>
 		</>
 	) : null;
 
