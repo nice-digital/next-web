@@ -989,94 +989,91 @@ exports[`/indicators/[slug]/chapter/[chapterSlug].page IndicatorChapterPage shou
         >
           <div
             data-component="grid-item"
-            data-g="12 md:4 lg:3"
+            data-g="12"
           >
-            <nav
-              aria-labelledby="on-this-page"
-              class="wrapper"
-            >
-              <h2
-                class="heading"
-                id="on-this-page"
+            <div>
+              <nav
+                aria-labelledby="on-this-page"
+                class="wrapper"
               >
-                On this page
-              </h2>
-              <ol
-                aria-label="Jump links to sections on this page"
-                class="list"
-              >
-                <li>
-                  <a
-                    class=""
-                    href="#referral-diagnosis-and-investigations"
-                  >
-                    1.1 Referral, diagnosis and investigations
-                  </a>
-                </li>
-                <li>
-                  <a
-                    class=""
-                    href="#treat-to-target-strategy"
-                  >
-                    1.2 Treat-to-target strategy
-                  </a>
-                </li>
-                <li>
-                  <a
-                    class=""
-                    href="#communication-and-education"
-                  >
-                    1.3 Communication and education
-                  </a>
-                </li>
-                <li>
-                  <a
-                    class=""
-                    href="#initial-pharmacological-management"
-                  >
-                    1.4 Initial pharmacological management
-                  </a>
-                </li>
-                <li>
-                  <a
-                    class=""
-                    href="#further-pharmacological-management"
-                  >
-                    1.5 Further pharmacological management
-                  </a>
-                </li>
-              </ol>
-              <button
-                class="moreLinksButton"
-                type="button"
-              >
-                <span
-                  class="label"
+                <h2
+                  class="heading"
+                  id="on-this-page"
                 >
-                  <svg
-                    aria-hidden="true"
-                    class="icon"
-                    fill="none"
-                    focusable="false"
-                    height="1em"
-                    viewBox="0 0 512 512"
-                    width="1em"
-                    xmlns="http://www.w3.org/2000/svg"
+                  On this page
+                </h2>
+                <ol
+                  aria-label="Jump links to sections on this page"
+                  class="list"
+                >
+                  <li>
+                    <a
+                      class=""
+                      href="#referral-diagnosis-and-investigations"
+                    >
+                      1.1 Referral, diagnosis and investigations
+                    </a>
+                  </li>
+                  <li>
+                    <a
+                      class=""
+                      href="#treat-to-target-strategy"
+                    >
+                      1.2 Treat-to-target strategy
+                    </a>
+                  </li>
+                  <li>
+                    <a
+                      class=""
+                      href="#communication-and-education"
+                    >
+                      1.3 Communication and education
+                    </a>
+                  </li>
+                  <li>
+                    <a
+                      class=""
+                      href="#initial-pharmacological-management"
+                    >
+                      1.4 Initial pharmacological management
+                    </a>
+                  </li>
+                  <li>
+                    <a
+                      class=""
+                      href="#further-pharmacological-management"
+                    >
+                      1.5 Further pharmacological management
+                    </a>
+                  </li>
+                </ol>
+                <button
+                  class="moreLinksButton"
+                  type="button"
+                >
+                  <span
+                    class="label"
                   >
-                    <path
-                      d="M478.152 174c0 10.091-3.525 18.661-10.576 25.712l-186 186c-7.243 7.243-15.909 10.864-26 10.864-10.283 0-18.853-3.621-25.712-10.864l-186-186C36.621 192.853 33 184.283 33 174c0-10.091 3.621-18.757 10.864-26L65 126.576C72.424 119.525 81.09 116 91 116c10.091 0 18.661 3.525 25.712 10.576L255.576 265.44 394.44 126.576c7.051-7.051 15.621-10.576 25.712-10.576 9.909 0 18.576 3.525 26 10.576L467.576 148c7.051 7.424 10.576 16.091 10.576 26Z"
-                      fill="currentColor"
-                    />
-                  </svg>
-                  Show all sections
-                </span>
-              </button>
-            </nav>
-          </div>
-          <div
-            data-component="grid-item"
-            data-g="12 md:8 lg:9"
-          >
+                    <svg
+                      aria-hidden="true"
+                      class="icon"
+                      fill="none"
+                      focusable="false"
+                      height="1em"
+                      viewBox="0 0 512 512"
+                      width="1em"
+                      xmlns="http://www.w3.org/2000/svg"
+                    >
+                      <path
+                        d="M478.152 174c0 10.091-3.525 18.661-10.576 25.712l-186 186c-7.243 7.243-15.909 10.864-26 10.864-10.283 0-18.853-3.621-25.712-10.864l-186-186C36.621 192.853 33 184.283 33 174c0-10.091 3.621-18.757 10.864-26L65 126.576C72.424 119.525 81.09 116 91 116c10.091 0 18.661 3.525 25.712 10.576L255.576 265.44 394.44 126.576c7.051-7.051 15.621-10.576 25.712-10.576 9.909 0 18.576 3.525 26 10.576L467.576 148c7.051 7.424 10.576 16.091 10.576 26Z"
+                        fill="currentColor"
+                      />
+                    </svg>
+                    Show all sections
+                  </span>
+                </button>
+              </nav>
+            </div>
             <div
               class="chapterContent"
             >

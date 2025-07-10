@@ -116,17 +116,15 @@ export const ProductResourcePage: FC<ProductResourcePageProps> = ({
 					elementType="section"
 				>
 					<Grid reverse gutter="loose">
-						{hasOnThisPageMenu ? (
-							<GridItem cols={12} md={4} lg={3}>
-								<OnThisPage sections={chapterSections} />
-							</GridItem>
-						) : null}
-						<GridItem
-							cols={12}
-							md={hasOnThisPageMenu ? 8 : 12}
-							lg={hasOnThisPageMenu ? 9 : 12}
-						>
+						<GridItem cols={12}>
 							<h2 className={styles.heading}>{title}</h2>
+
+							<div>
+								{hasOnThisPageMenu ? (
+									<OnThisPage sections={chapterSections} />
+								) : null}
+							</div>
+
 							<div dangerouslySetInnerHTML={{ __html: htmlBody }} />
 							{lastUpdated ? (
 								<p>
