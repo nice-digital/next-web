@@ -68,7 +68,11 @@ export default function EvidenceResourcesListPage({
 				hasHistory={hasHistory}
 			/>
 
-			<ResourceList title="Evidence" groups={resourceGroups} />
+			<ResourceList
+				title="Evidence"
+				lead="Documents containing the evidence that was used to develop the recommendations."
+				groups={resourceGroups}
+			/>
 		</>
 	);
 }

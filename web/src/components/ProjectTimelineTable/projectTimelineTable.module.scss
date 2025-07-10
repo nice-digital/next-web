@@ -1,0 +1,17 @@
+.tableColumn {
+  // override for first column in table
+  th:first-child,
+  td:first-child {
+    min-width: 100px;
+  }
+}
+
+@media (min-width: 900px) {
+  .tableColumn {
+    // override for first column in table
+    th:first-child,
+    td:first-child {
+      min-width: 200px;
+    }
+  }
+}
