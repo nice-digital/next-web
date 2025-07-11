@@ -227,7 +227,7 @@ exports[`ProductResourcePage should match snapshot 1`] = `
       >
         <div
           data-component="grid-item"
-          data-g="12 md:12 lg:12"
+          data-g="12"
         >
           <h2
             class="heading"

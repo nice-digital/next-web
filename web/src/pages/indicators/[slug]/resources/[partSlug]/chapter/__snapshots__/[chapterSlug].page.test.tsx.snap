@@ -405,66 +405,63 @@ exports[`/product/[slug]/resources/[partSlug]/chapter/[chapterSlug].page Product
       >
         <div
           data-component="grid-item"
-          data-g="12 md:4 lg:3"
-        >
-          <nav
-            aria-labelledby="on-this-page"
-            class="wrapper"
-          >
-            <h2
-              class="heading"
-              id="on-this-page"
-            >
-              On this page
-            </h2>
-            <ol
-              aria-label="Jump links to sections on this page"
-              class="list"
-            >
-              <li>
-                <a
-                  class=""
-                  href="#additional-consultation"
-                >
-                  Additional consultation
-                </a>
-              </li>
-              <li>
-                <a
-                  class=""
-                  href="#commissioned-primary-research"
-                >
-                  Commissioned primary research
-                </a>
-              </li>
-              <li>
-                <a
-                  class=""
-                  href="#example-of-key-milestones"
-                >
-                  Example of key milestones
-                </a>
-              </li>
-              <li>
-                <a
-                  class="activeHeading"
-                  href="#references-and-further-reading"
-                >
-                  References and further reading
-                </a>
-              </li>
-            </ol>
-          </nav>
-        </div>
-        <div
-          data-component="grid-item"
-          data-g="12 md:8 lg:9"
+          data-g="12"
         >
           <h2
             class="heading"
           >
             Developing NICE guidelines: the manual – appendices
           </h2>
+          <div>
+            <nav
+              aria-labelledby="on-this-page"
+              class="wrapper"
+            >
+              <h2
+                class="heading"
+                id="on-this-page"
+              >
+                On this page
+              </h2>
+              <ol
+                aria-label="Jump links to sections on this page"
+                class="list"
+              >
+                <li>
+                  <a
+                    class=""
+                    href="#additional-consultation"
+                  >
+                    Additional consultation
+                  </a>
+                </li>
+                <li>
+                  <a
+                    class=""
+                    href="#commissioned-primary-research"
+                  >
+                    Commissioned primary research
+                  </a>
+                </li>
+                <li>
+                  <a
+                    class=""
+                    href="#example-of-key-milestones"
+                  >
+                    Example of key milestones
+                  </a>
+                </li>
+                <li>
+                  <a
+                    class="activeHeading"
+                    href="#references-and-further-reading"
+                  >
+                    References and further reading
+                  </a>
+                </li>
+              </ol>
+            </nav>
+          </div>
           <div>
             <div
               class="chapter"
