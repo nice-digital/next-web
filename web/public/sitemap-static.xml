@@ -432,12 +432,7 @@
 		<lastmod>2023-11-02</lastmod>
 		<priority>0.5</priority>
 	</url>
-	<url>
-		<loc>https://www.nice.org.uk/about/what-we-do/life-sciences/our-role-in-the-innovative-licensing-and-access-pathway--ilap</loc>
-		<changefreq>daily</changefreq>
-		<lastmod>2024-02-02</lastmod>
-		<priority>0.5</priority>
-	</url>
+
 
 	<url>
 		<loc>https://www.nice.org.uk/about/what-we-do/office-for-market-access/thank-you</loc>
@@ -711,12 +706,7 @@
 		<priority>0.5</priority>
 	</url>
 
-	<url>
-		<loc>https://www.nice.org.uk/about/what-we-do/our-research-work/partnering-with-us-for-research---timescales-and-process</loc>
-		<changefreq>daily</changefreq>
-		<lastmod>2022-11-03</lastmod>
-		<priority>0.5</priority>
-	</url>
+
 	<url>
 		<loc>https://www.nice.org.uk/about/what-we-do/patient-access-schemes-liaison-unit</loc>
 		<changefreq>daily</changefreq>
@@ -756,24 +746,7 @@
 		<lastmod>2021-11-30</lastmod>
 		<priority>0.5</priority>
 	</url>
-	<url>
-		<loc>https://www.nice.org.uk/about/who-we-are/board/public-board-meetings/public-board-meeting-agenda-and-papers--january-2022</loc>
-		<changefreq>daily</changefreq>
-		<lastmod>2022-03-11</lastmod>
-		<priority>0.5</priority>
-	</url>
-	<url>
-		<loc>https://www.nice.org.uk/about/who-we-are/board/public-board-meetings/public-board-meeting-agenda-and-papers--march-2022</loc>
-		<changefreq>daily</changefreq>
-		<lastmod>2022-03-15</lastmod>
-		<priority>0.5</priority>
-	</url>
-	<url>
-		<loc>https://www.nice.org.uk/about/who-we-are/board/public-board-meetings/public-board-meeting-agenda-and-papers--november-2021</loc>
-		<changefreq>daily</changefreq>
-		<lastmod>2021-11-12</lastmod>
-		<priority>0.5</priority>
-	</url>
+
 
 	<url>
 		<loc>https://www.nice.org.uk/about/who-we-are/corporate-publications</loc>
