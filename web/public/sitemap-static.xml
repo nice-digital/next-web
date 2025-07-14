@@ -7,11 +7,6 @@
 		<priority>1</priority>
 	</url>
 	<url>
-		<loc>https://www.nice.org.uk/guidance</loc>
-		<changefreq>weekly</changefreq>
-		<priority>1</priority>
-	</url>
-	<url>
 		<loc>https://www.nice.org.uk/guidance/GID-DG10074/consultation/html-content-4</loc>
 		<changefreq>weekly</changefreq>
 		<lastmod>2024-05-15</lastmod>
@@ -53,12 +48,7 @@
 		<lastmod>2024-04-24</lastmod>
 		<priority>0.5</priority>
 	</url>
-	<url>
-		<loc>https://www.nice.org.uk/about</loc>
-		<changefreq>daily</changefreq>
-		<lastmod>2023-06-05</lastmod>
-		<priority>0.5</priority>
-	</url>
+
 	<url>
 		<loc>https://www.nice.org.uk/about/how-we-work</loc>
 		<changefreq>daily</changefreq>
@@ -71,96 +61,21 @@
 		<lastmod>2023-08-16</lastmod>
 		<priority>0.5</priority>
 	</url>
-	<url>
-		<loc>https://www.nice.org.uk/about/nice-communities/generalpractice</loc>
-		<changefreq>daily</changefreq>
-		<lastmod>2024-01-10</lastmod>
-		<priority>0.5</priority>
-	</url>
-	<url>
-		<loc>https://www.nice.org.uk/about/nice-communities/generalpractice/reference-panel</loc>
-		<changefreq>daily</changefreq>
-		<lastmod>2023-03-20</lastmod>
-		<priority>0.5</priority>
-	</url>
-	<url>
-		<loc>https://www.nice.org.uk/about/nice-communities/medicines-and-prescribing</loc>
-		<changefreq>daily</changefreq>
-		<lastmod>2023-01-25</lastmod>
-		<priority>0.5</priority>
-	</url>
-	<url>
-		<loc>https://www.nice.org.uk/about/nice-communities/medicines-and-prescribing/nice-medicines-and-prescribing-associates</loc>
-		<changefreq>daily</changefreq>
-		<lastmod>2023-05-09</lastmod>
-		<priority>0.5</priority>
-	</url>
-	<url>
-		<loc>https://www.nice.org.uk/about/nice-communities/nice-and-the-public</loc>
-		<changefreq>daily</changefreq>
-		<lastmod>2023-06-21</lastmod>
-		<priority>0.5</priority>
-	</url>
-	<url>
-		<loc>https://www.nice.org.uk/about/nice-communities/nice-and-the-public/making-decisions-about-your-care</loc>
-		<changefreq>daily</changefreq>
-		<lastmod>2022-12-06</lastmod>
-		<priority>0.5</priority>
-	</url>
-	<url>
-		<loc>https://www.nice.org.uk/about/nice-communities/nice-and-the-public/making-decisions-about-your-care/information-for-the-public-on-medicines</loc>
-		<changefreq>daily</changefreq>
-		<lastmod>2023-09-18</lastmod>
-		<priority>0.5</priority>
-	</url>
-	<url>
-		<loc>https://www.nice.org.uk/about/nice-communities/nice-and-the-public/making-decisions-about-your-care/patient-decision-aids</loc>
-		<changefreq>daily</changefreq>
-		<lastmod>2024-02-29</lastmod>
-		<priority>0.5</priority>
-	</url>
-	<url>
-		<loc>https://www.nice.org.uk/about/nice-communities/nice-and-the-public/public-involvement</loc>
-		<changefreq>daily</changefreq>
-		<lastmod>2023-06-21</lastmod>
-		<priority>0.5</priority>
-	</url>
+
 	<url>
 		<loc>https://www.nice.org.uk/about/nice-communities/nice-and-the-public/public-involvement/bursary-scheme-for-nice-annual-conference</loc>
 		<changefreq>daily</changefreq>
 		<lastmod>2023-07-13</lastmod>
 		<priority>0.5</priority>
 	</url>
-	<url>
-		<loc>https://www.nice.org.uk/about/nice-communities/nice-and-the-public/public-involvement/involving-you</loc>
-		<changefreq>daily</changefreq>
-		<lastmod>2023-03-20</lastmod>
-		<priority>0.5</priority>
-	</url>
+
 	<url>
 		<loc>https://www.nice.org.uk/about/nice-communities/nice-and-the-public/public-involvement/involving-you/sharing-your-experiences</loc>
 		<changefreq>daily</changefreq>
 		<lastmod>2023-02-03</lastmod>
 		<priority>0.5</priority>
 	</url>
-	<url>
-		<loc>https://www.nice.org.uk/about/nice-communities/nice-and-the-public/public-involvement/making-a-positive-impact</loc>
-		<changefreq>daily</changefreq>
-		<lastmod>2022-11-01</lastmod>
-		<priority>0.5</priority>
-	</url>
-	<url>
-		<loc>https://www.nice.org.uk/about/nice-communities/nice-and-the-public/public-involvement/making-decisions-about-your-care/your-care</loc>
-		<changefreq>daily</changefreq>
-		<lastmod>2023-05-03</lastmod>
-		<priority>0.5</priority>
-	</url>
-	<url>
-		<loc>https://www.nice.org.uk/about/nice-communities/nice-and-the-public/public-involvement/nice-voluntary-and-community-sector-forum</loc>
-		<changefreq>daily</changefreq>
-		<lastmod>2024-05-15</lastmod>
-		<priority>0.5</priority>
-	</url>
+
 	<url>
 		<loc>https://www.nice.org.uk/about/nice-communities/nice-and-the-public/public-involvement/public-involvement-programme</loc>
 		<changefreq>daily</changefreq>
@@ -173,312 +88,7 @@
 		<lastmod>2020-10-15</lastmod>
 		<priority>0.5</priority>
 	</url>
-	<url>
-		<loc>https://www.nice.org.uk/about/nice-communities/nice-and-the-public/public-involvement/public-involvement-programme-expert-panel</loc>
-		<changefreq>daily</changefreq>
-		<lastmod>2024-02-09</lastmod>
-		<priority>0.5</priority>
-	</url>
-	<url>
-		<loc>https://www.nice.org.uk/about/nice-communities/nice-and-the-public/public-involvement/support-for-vcs-organisations</loc>
-		<changefreq>daily</changefreq>
-		<lastmod>2023-09-15</lastmod>
-		<priority>0.5</priority>
-	</url>
-	<url>
-		<loc>https://www.nice.org.uk/about/nice-communities/nice-and-the-public/public-involvement/support-for-vcs-organisations/help-us-develop-guidance</loc>
-		<changefreq>daily</changefreq>
-		<lastmod>2023-08-16</lastmod>
-		<priority>0.5</priority>
-	</url>
-	<url>
-		<loc>https://www.nice.org.uk/about/nice-communities/nice-and-the-public/public-involvement/support-for-vcs-organisations/help-us-develop-guidance/guides-to-developing-our-guidance</loc>
-		<changefreq>daily</changefreq>
-		<lastmod>2024-03-13</lastmod>
-		<priority>0.5</priority>
-	</url>
-	<url>
-		<loc>https://www.nice.org.uk/about/nice-communities/nice-and-the-public/public-involvement/support-for-vcs-organisations/using-our-guidance</loc>
-		<changefreq>daily</changefreq>
-		<lastmod>2023-11-15</lastmod>
-		<priority>0.5</priority>
-	</url>
-	<url>
-		<loc>https://www.nice.org.uk/about/nice-communities/social-care</loc>
-		<changefreq>daily</changefreq>
-		<lastmod>2023-02-15</lastmod>
-		<priority>0.5</priority>
-	</url>
-	<url>
-		<loc>https://www.nice.org.uk/about/nice-communities/social-care/child-abuse-neglect-guidance</loc>
-		<changefreq>daily</changefreq>
-		<lastmod>2023-08-29</lastmod>
-		<priority>0.5</priority>
-	</url>
-	<url>
-		<loc>https://www.nice.org.uk/about/nice-communities/social-care/quality-improvement-resource</loc>
-		<changefreq>daily</changefreq>
-		<lastmod>2022-11-03</lastmod>
-		<priority>0.5</priority>
-	</url>
-	<url>
-		<loc>https://www.nice.org.uk/about/nice-communities/social-care/quick-guides</loc>
-		<changefreq>daily</changefreq>
-		<lastmod>2024-02-05</lastmod>
-		<priority>0.5</priority>
-	</url>
-	<url>
-		<loc>https://www.nice.org.uk/about/nice-communities/social-care/quick-guides/advance-care-planning</loc>
-		<changefreq>daily</changefreq>
-		<lastmod>2022-04-21</lastmod>
-		<priority>0.5</priority>
-	</url>
-	<url>
-		<loc>https://www.nice.org.uk/about/nice-communities/social-care/quick-guides/arranging-services-for-people-with-a-learning-disability-and-behaviour-that-challenges</loc>
-		<changefreq>daily</changefreq>
-		<lastmod>2022-05-11</lastmod>
-		<priority>0.5</priority>
-	</url>
-	<url>
-		<loc>https://www.nice.org.uk/about/nice-communities/social-care/quick-guides/assessment-and-diagnosis-of-autism-what-to-expect</loc>
-		<changefreq>daily</changefreq>
-		<lastmod>2022-04-06</lastmod>
-		<priority>0.5</priority>
-	</url>
-	<url>
-		<loc>https://www.nice.org.uk/about/nice-communities/social-care/quick-guides/better-home-care-for-older-people</loc>
-		<changefreq>daily</changefreq>
-		<lastmod>2022-10-04</lastmod>
-		<priority>0.5</priority>
-	</url>
-	<url>
-		<loc>https://www.nice.org.uk/about/nice-communities/social-care/quick-guides/building-independence-through-planning-for-transition</loc>
-		<changefreq>daily</changefreq>
-		<lastmod>2022-05-25</lastmod>
-		<priority>0.5</priority>
-	</url>
-	<url>
-		<loc>https://www.nice.org.uk/about/nice-communities/social-care/quick-guides/creating-a-safeguarding-culture</loc>
-		<changefreq>daily</changefreq>
-		<lastmod>2022-07-21</lastmod>
-		<priority>0.5</priority>
-	</url>
-	<url>
-		<loc>https://www.nice.org.uk/about/nice-communities/social-care/quick-guides/dementia-discussing-and-planning-support-after-diagnosis</loc>
-		<changefreq>daily</changefreq>
-		<lastmod>2023-02-13</lastmod>
-		<priority>0.5</priority>
-	</url>
-	<url>
-		<loc>https://www.nice.org.uk/about/nice-communities/social-care/quick-guides/developing-a-positive-working-culture-for-supporting-disabled-children-and-young-people-with-severe-complex-needs</loc>
-		<changefreq>daily</changefreq>
-		<lastmod>2022-06-05</lastmod>
-		<priority>0.5</priority>
-	</url>
-	<url>
-		<loc>https://www.nice.org.uk/about/nice-communities/social-care/quick-guides/discussing-and-planning-medicines-support</loc>
-		<changefreq>daily</changefreq>
-		<lastmod>2022-05-25</lastmod>
-		<priority>0.5</priority>
-	</url>
-	<url>
-		<loc>https://www.nice.org.uk/about/nice-communities/social-care/quick-guides/effective-record-keeping-ordering-medicines</loc>
-		<changefreq>daily</changefreq>
-		<lastmod>2022-05-25</lastmod>
-		<priority>0.5</priority>
-	</url>
-	<url>
-		<loc>https://www.nice.org.uk/about/nice-communities/social-care/quick-guides/enabling-positive-lives-for-autistic-adults</loc>
-		<changefreq>daily</changefreq>
-		<lastmod>2022-03-11</lastmod>
-		<priority>0.5</priority>
-	</url>
-	<url>
-		<loc>https://www.nice.org.uk/about/nice-communities/social-care/quick-guides/evidence-for-strengths-and-asset-based-outcomes</loc>
-		<changefreq>daily</changefreq>
-		<lastmod>2022-03-11</lastmod>
-		<priority>0.5</priority>
-	</url>
-	<url>
-		<loc>https://www.nice.org.uk/about/nice-communities/social-care/quick-guides/getting-help-to-overcome-abuse</loc>
-		<changefreq>daily</changefreq>
-		<lastmod>2022-07-06</lastmod>
-		<priority>0.5</priority>
-	</url>
-	<url>
-		<loc>https://www.nice.org.uk/about/nice-communities/social-care/quick-guides/giving-medicines-covertly</loc>
-		<changefreq>daily</changefreq>
-		<lastmod>2022-03-31</lastmod>
-		<priority>0.5</priority>
-	</url>
-	<url>
-		<loc>https://www.nice.org.uk/about/nice-communities/social-care/quick-guides/good-practice-in-safeguarding-training</loc>
-		<changefreq>daily</changefreq>
-		<lastmod>2022-07-21</lastmod>
-		<priority>0.5</priority>
-	</url>
-	<url>
-		<loc>https://www.nice.org.uk/about/nice-communities/social-care/quick-guides/helping-to-prevent-infection</loc>
-		<changefreq>daily</changefreq>
-		<lastmod>2023-07-10</lastmod>
-		<priority>0.5</priority>
-	</url>
-	<url>
-		<loc>https://www.nice.org.uk/about/nice-communities/social-care/quick-guides/helping-to-prevent-pressure-ulcers</loc>
-		<changefreq>daily</changefreq>
-		<lastmod>2022-03-25</lastmod>
-		<priority>0.5</priority>
-	</url>
-	<url>
-		<loc>https://www.nice.org.uk/about/nice-communities/social-care/quick-guides/helping-to-prevent-winter-deaths-and-illnesses-associated-with-cold-homes</loc>
-		<changefreq>daily</changefreq>
-		<lastmod>2022-11-09</lastmod>
-		<priority>0.5</priority>
-	</url>
-	<url>
-		<loc>https://www.nice.org.uk/about/nice-communities/social-care/quick-guides/improving-oral-health-for-adults-in-care-homes</loc>
-		<changefreq>daily</changefreq>
-		<lastmod>2022-06-14</lastmod>
-		<priority>0.5</priority>
-	</url>
-	<url>
-		<loc>https://www.nice.org.uk/about/nice-communities/social-care/quick-guides/improving-young-people-s-experiences-in-transition-to-and-from-inpatient-mental-health-settings</loc>
-		<changefreq>daily</changefreq>
-		<lastmod>2022-04-25</lastmod>
-		<priority>0.5</priority>
-	</url>
-	<url>
-		<loc>https://www.nice.org.uk/about/nice-communities/social-care/quick-guides/moving-between-hospital-and-home-including-care-homes</loc>
-		<changefreq>daily</changefreq>
-		<lastmod>2022-06-22</lastmod>
-		<priority>0.5</priority>
-	</url>
-	<url>
-		<loc>https://www.nice.org.uk/about/nice-communities/social-care/quick-guides/person-centred-future-planning</loc>
-		<changefreq>daily</changefreq>
-		<lastmod>2022-07-06</lastmod>
-		<priority>0.5</priority>
-	</url>
-	<url>
-		<loc>https://www.nice.org.uk/about/nice-communities/social-care/quick-guides/promoting-positive-mental-wellbeing-for-older-people</loc>
-		<changefreq>daily</changefreq>
-		<lastmod>2022-04-06</lastmod>
-		<priority>0.5</priority>
-	</url>
-	<url>
-		<loc>https://www.nice.org.uk/about/nice-communities/social-care/quick-guides/promoting-wellbeing-and-positive-identity-for-a-child-or-young-person-who-is-looked-after</loc>
-		<changefreq>daily</changefreq>
-		<lastmod>2022-05-11</lastmod>
-		<priority>0.5</priority>
-	</url>
-	<url>
-		<loc>https://www.nice.org.uk/about/nice-communities/social-care/quick-guides/recognising-and-preventing-delirium</loc>
-		<changefreq>daily</changefreq>
-		<lastmod>2023-11-15</lastmod>
-		<priority>0.5</priority>
-	</url>
-	<url>
-		<loc>https://www.nice.org.uk/about/nice-communities/social-care/quick-guides/recognising-and-responding-to-domestic-violence-and-abuse</loc>
-		<changefreq>daily</changefreq>
-		<lastmod>2022-03-04</lastmod>
-		<priority>0.5</priority>
-	</url>
-	<url>
-		<loc>https://www.nice.org.uk/about/nice-communities/social-care/quick-guides/reducing-the-risk-violent-and-aggressive-behaviours</loc>
-		<changefreq>daily</changefreq>
-		<lastmod>2022-05-05</lastmod>
-		<priority>0.5</priority>
-	</url>
-	<url>
-		<loc>https://www.nice.org.uk/about/nice-communities/social-care/quick-guides/supporting-people-who-provide-unpaid-care-for-adults-with-health-or-social-care-needs</loc>
-		<changefreq>daily</changefreq>
-		<lastmod>2022-04-11</lastmod>
-		<priority>0.5</priority>
-	</url>
-	<url>
-		<loc>https://www.nice.org.uk/about/nice-communities/social-care/quick-guides/understanding-intermediate-care</loc>
-		<changefreq>daily</changefreq>
-		<lastmod>2022-06-14</lastmod>
-		<priority>0.5</priority>
-	</url>
-	<url>
-		<loc>https://www.nice.org.uk/about/nice-communities/social-care/quick-guides/what-to-expect-during-assessment-and-care-planning</loc>
-		<changefreq>daily</changefreq>
-		<lastmod>2022-05-25</lastmod>
-		<priority>0.5</priority>
-	</url>
-	<url>
-		<loc>https://www.nice.org.uk/about/nice-communities/social-care/quick-guides-for-social-care/promoting-independence-through-intermediate-care</loc>
-		<changefreq>daily</changefreq>
-		<lastmod>2022-04-22</lastmod>
-		<priority>0.5</priority>
-	</url>
-	<url>
-		<loc>https://www.nice.org.uk/about/nice-communities/social-care/quick-guides-for-social-care/therapeutic-interventions-after-abuse-and-neglect</loc>
-		<changefreq>daily</changefreq>
-		<lastmod>2022-06-30</lastmod>
-		<priority>0.5</priority>
-	</url>
-	<url>
-		<loc>https://www.nice.org.uk/about/nice-communities/social-care/social-care-trainers-resource</loc>
-		<changefreq>daily</changefreq>
-		<lastmod>2023-10-12</lastmod>
-		<priority>0.5</priority>
-	</url>
-	<url>
-		<loc>https://www.nice.org.uk/about/nice-communities/social-care/using-nice-guidance-in-social-work</loc>
-		<changefreq>daily</changefreq>
-		<lastmod>2024-04-04</lastmod>
-		<priority>0.5</priority>
-	</url>
-	<url>
-		<loc>https://www.nice.org.uk/about/nice-communities/social-care/using-nice-guidance-principal-social-workers</loc>
-		<changefreq>daily</changefreq>
-		<lastmod>2023-08-16</lastmod>
-		<priority>0.5</priority>
-	</url>
-	<url>
-		<loc>https://www.nice.org.uk/about/what-we-do</loc>
-		<changefreq>daily</changefreq>
-		<lastmod>2024-02-09</lastmod>
-		<priority>0.5</priority>
-	</url>
-	<url>
-		<loc>https://www.nice.org.uk/about/what-we-do/accreditation</loc>
-		<changefreq>daily</changefreq>
-		<lastmod>2024-02-09</lastmod>
-		<priority>0.5</priority>
-	</url>
-	<url>
-		<loc>https://www.nice.org.uk/about/what-we-do/bringing-our-guidance-together-by-topic</loc>
-		<changefreq>daily</changefreq>
-		<lastmod>2024-03-11</lastmod>
-		<priority>0.5</priority>
-	</url>
-	<url>
-		<loc>https://www.nice.org.uk/about/what-we-do/digital-health</loc>
-		<changefreq>daily</changefreq>
-		<lastmod>2023-08-16</lastmod>
-		<priority>0.5</priority>
-	</url>
-	<url>
-		<loc>https://www.nice.org.uk/about/what-we-do/digital-health/multi-agency-advisory-service-for-ai-and-data-driven-technologies</loc>
-		<changefreq>daily</changefreq>
-		<lastmod>2024-01-19</lastmod>
-		<priority>0.5</priority>
-	</url>
-	<url>
-		<loc>https://www.nice.org.uk/about/what-we-do/digital-health/office-for-digital-health</loc>
-		<changefreq>daily</changefreq>
-		<lastmod>2024-02-09</lastmod>
-		<priority>0.5</priority>
-	</url>
-	<url>
-		<loc>https://www.nice.org.uk/about/what-we-do/eva-for-medtech</loc>
-		<changefreq>daily</changefreq>
-		<lastmod>2024-02-19</lastmod>
-		<priority>0.5</priority>
-	</url>
+
 	<url>
 		<loc>https://www.nice.org.uk/about/what-we-do/evidence-and-best-practice-resources/british-national-formulary--bnf</loc>
 		<changefreq>daily</changefreq>
@@ -498,83 +108,22 @@
 		<priority>0.5</priority>
 	</url>
 	<url>
-		<loc>https://www.nice.org.uk/about/what-we-do/evidence-services/clinical-knowledge-summaries</loc>
-		<changefreq>daily</changefreq>
-		<lastmod>2022-03-01</lastmod>
-		<priority>0.5</priority>
-	</url>
-	<url>
 		<loc>https://www.nice.org.uk/about/what-we-do/into-practice</loc>
 		<changefreq>daily</changefreq>
 		<lastmod>2024-02-13</lastmod>
 		<priority>0.5</priority>
 	</url>
-	<url>
-		<loc>https://www.nice.org.uk/about/what-we-do/into-practice/adoption-team</loc>
-		<changefreq>daily</changefreq>
-		<lastmod>2023-09-14</lastmod>
-		<priority>0.5</priority>
-	</url>
-	<url>
-		<loc>https://www.nice.org.uk/about/what-we-do/into-practice/audit-and-service-improvement</loc>
-		<changefreq>daily</changefreq>
-		<lastmod>2023-08-29</lastmod>
-		<priority>0.5</priority>
-	</url>
-	<url>
-		<loc>https://www.nice.org.uk/about/what-we-do/into-practice/audit-and-service-improvement/assessment-tools</loc>
-		<changefreq>daily</changefreq>
-		<lastmod>2021-05-26</lastmod>
-		<priority>0.5</priority>
-	</url>
-	<url>
-		<loc>https://www.nice.org.uk/about/what-we-do/into-practice/audit-and-service-improvement/audit-tools</loc>
-		<changefreq>daily</changefreq>
-		<lastmod>2021-05-26</lastmod>
-		<priority>0.5</priority>
-	</url>
-	<url>
-		<loc>https://www.nice.org.uk/about/what-we-do/into-practice/audit-and-service-improvement/costing-tools</loc>
-		<changefreq>daily</changefreq>
-		<lastmod>2021-05-26</lastmod>
-		<priority>0.5</priority>
-	</url>
-	<url>
-		<loc>https://www.nice.org.uk/about/what-we-do/into-practice/audit-and-service-improvement/service-planning</loc>
-		<changefreq>daily</changefreq>
-		<lastmod>2021-05-26</lastmod>
-		<priority>0.5</priority>
-	</url>
+
 	<url>
 		<loc>https://www.nice.org.uk/about/what-we-do/into-practice/benefits-of-implementing-nice-guidance</loc>
 		<changefreq>daily</changefreq>
 		<lastmod>2020-11-27</lastmod>
 		<priority>0.5</priority>
 	</url>
-	<url>
-		<loc>https://www.nice.org.uk/about/what-we-do/into-practice/cost-saving-guidance</loc>
-		<changefreq>daily</changefreq>
-		<lastmod>2024-02-15</lastmod>
-		<priority>0.5</priority>
-	</url>
-	<url>
-		<loc>https://www.nice.org.uk/about/what-we-do/into-practice/help-implement-nice-guidance</loc>
-		<changefreq>daily</changefreq>
-		<lastmod>2023-08-17</lastmod>
-		<priority>0.5</priority>
-	</url>
+
 	<url>
 		<loc>https://www.nice.org.uk/about/what-we-do/into-practice/implementing-nice-guidance</loc>
-		<changefreq>daily</changefreq>
-		<lastmod>2024-02-21</lastmod>
-		<priority>0.5</priority>
-	</url>
-	<url>
-		<loc>https://www.nice.org.uk/about/what-we-do/into-practice/measuring-the-uptake-of-nice-guidance</loc>
-		<changefreq>daily</changefreq>
-		<lastmod>2023-03-01</lastmod>
-		<priority>0.5</priority>
-	</url>
+
 	<url>
 		<loc>https://www.nice.org.uk/about/what-we-do/into-practice/measuring-the-uptake-of-nice-guidance/impact-of-guidance</loc>
 		<changefreq>daily</changefreq>
@@ -857,30 +406,7 @@
 		<lastmod>2022-11-01</lastmod>
 		<priority>0.5</priority>
 	</url>
-	<url>
-		<loc>https://www.nice.org.uk/about/what-we-do/into-practice/nice-field-team</loc>
-		<changefreq>daily</changefreq>
-		<lastmod>2024-02-13</lastmod>
-		<priority>0.5</priority>
-	</url>
-	<url>
-		<loc>https://www.nice.org.uk/about/what-we-do/into-practice/resource-impact-assessment</loc>
-		<changefreq>daily</changefreq>
-		<lastmod>2024-05-02</lastmod>
-		<priority>0.5</priority>
-	</url>
-	<url>
-		<loc>https://www.nice.org.uk/about/what-we-do/into-practice/resource-planner</loc>
-		<changefreq>daily</changefreq>
-		<lastmod>2024-05-02</lastmod>
-		<priority>0.5</priority>
-	</url>
-	<url>
-		<loc>https://www.nice.org.uk/about/what-we-do/into-practice/resources-help-put-guidance-into-practice</loc>
-		<changefreq>daily</changefreq>
-		<lastmod>2023-09-06</lastmod>
-		<priority>0.5</priority>
-	</url>
+
 	<url>
 		<loc>https://www.nice.org.uk/about/what-we-do/into-practice/resources-help-put-guidance-into-practice/how-guidance-standards-help-you</loc>
 		<changefreq>daily</changefreq>
@@ -893,30 +419,7 @@
 		<lastmod>2023-09-20</lastmod>
 		<priority>0.5</priority>
 	</url>
-	<url>
-		<loc>https://www.nice.org.uk/about/what-we-do/life-sciences</loc>
-		<changefreq>daily</changefreq>
-		<lastmod>2024-03-01</lastmod>
-		<priority>0.5</priority>
-	</url>
-	<url>
-		<loc>https://www.nice.org.uk/about/what-we-do/life-sciences/contact-us-form</loc>
-		<changefreq>daily</changefreq>
-		<lastmod>2023-11-06</lastmod>
-		<priority>0.5</priority>
-	</url>
-	<url>
-		<loc>https://www.nice.org.uk/about/what-we-do/life-sciences/life-sciences-tools</loc>
-		<changefreq>daily</changefreq>
-		<lastmod>2024-01-10</lastmod>
-		<priority>0.5</priority>
-	</url>
-	<url>
-		<loc>https://www.nice.org.uk/about/what-we-do/life-sciences/nice-advice-service</loc>
-		<changefreq>daily</changefreq>
-		<lastmod>2024-02-01</lastmod>
-		<priority>0.5</priority>
-	</url>
+
 	<url>
 		<loc>https://www.nice.org.uk/about/what-we-do/life-sciences/nice-advice-service/early-access-to-medicines-scheme</loc>
 		<changefreq>daily</changefreq>
@@ -935,54 +438,7 @@
 		<lastmod>2024-02-02</lastmod>
 		<priority>0.5</priority>
 	</url>
-	<url>
-		<loc>https://www.nice.org.uk/about/what-we-do/nice-and-health-inequalities</loc>
-		<changefreq>daily</changefreq>
-		<lastmod>2024-03-13</lastmod>
-		<priority>0.5</priority>
-	</url>
-	<url>
-		<loc>https://www.nice.org.uk/about/what-we-do/nice-international</loc>
-		<changefreq>daily</changefreq>
-		<lastmod>2024-01-30</lastmod>
-		<priority>0.5</priority>
-	</url>
-	<url>
-		<loc>https://www.nice.org.uk/about/what-we-do/nice-international/about-nice-international</loc>
-		<changefreq>daily</changefreq>
-		<lastmod>2023-09-04</lastmod>
-		<priority>0.5</priority>
-	</url>
-	<url>
-		<loc>https://www.nice.org.uk/about/what-we-do/nice-international/adapting-nice-guidelines</loc>
-		<changefreq>daily</changefreq>
-		<lastmod>2023-08-21</lastmod>
-		<priority>0.5</priority>
-	</url>
-	<url>
-		<loc>https://www.nice.org.uk/about/what-we-do/nice-international/consultancy-services</loc>
-		<changefreq>daily</changefreq>
-		<lastmod>2023-09-04</lastmod>
-		<priority>0.5</priority>
-	</url>
-	<url>
-		<loc>https://www.nice.org.uk/about/what-we-do/nice-international/knowledge-transfer-seminars</loc>
-		<changefreq>daily</changefreq>
-		<lastmod>2023-07-04</lastmod>
-		<priority>0.5</priority>
-	</url>
-	<url>
-		<loc>https://www.nice.org.uk/about/what-we-do/nice-international/speaking-engagements</loc>
-		<changefreq>daily</changefreq>
-		<lastmod>2023-07-04</lastmod>
-		<priority>0.5</priority>
-	</url>
-	<url>
-		<loc>https://www.nice.org.uk/about/what-we-do/nice-syndication-api</loc>
-		<changefreq>daily</changefreq>
-		<lastmod>2024-04-30</lastmod>
-		<priority>0.5</priority>
-	</url>
+
 	<url>
 		<loc>https://www.nice.org.uk/about/what-we-do/office-for-market-access/thank-you</loc>
 		<changefreq>daily</changefreq>
@@ -1007,30 +463,7 @@
 		<lastmod>2021-12-08</lastmod>
 		<priority>0.5</priority>
 	</url>
-	<url>
-		<loc>https://www.nice.org.uk/about/what-we-do/our-programmes/cost-savings-resource-planning</loc>
-		<changefreq>daily</changefreq>
-		<lastmod>2023-11-29</lastmod>
-		<priority>0.5</priority>
-	</url>
-	<url>
-		<loc>https://www.nice.org.uk/about/what-we-do/our-programmes/evidence-standards-framework-for-digital-health-technologies</loc>
-		<changefreq>daily</changefreq>
-		<lastmod>2023-10-25</lastmod>
-		<priority>0.5</priority>
-	</url>
-	<url>
-		<loc>https://www.nice.org.uk/about/what-we-do/our-programmes/managed-access</loc>
-		<changefreq>daily</changefreq>
-		<lastmod>2024-05-01</lastmod>
-		<priority>0.5</priority>
-	</url>
-	<url>
-		<loc>https://www.nice.org.uk/about/what-we-do/our-programmes/nice-advice/evidence-summaries</loc>
-		<changefreq>daily</changefreq>
-		<lastmod>2024-02-13</lastmod>
-		<priority>0.5</priority>
-	</url>
+
 	<url>
 		<loc>https://www.nice.org.uk/about/what-we-do/our-programmes/nice-advice/evidence-summaries-medicines-and-prescribing-briefings</loc>
 		<changefreq>daily</changefreq>
@@ -1049,24 +482,7 @@
 		<lastmod>2016-10-26</lastmod>
 		<priority>0.5</priority>
 	</url>
-	<url>
-		<loc>https://www.nice.org.uk/about/what-we-do/our-programmes/nice-advice/medtech-innovation-briefings</loc>
-		<changefreq>daily</changefreq>
-		<lastmod>2024-04-15</lastmod>
-		<priority>0.5</priority>
-	</url>
-	<url>
-		<loc>https://www.nice.org.uk/about/what-we-do/our-programmes/nice-guidance</loc>
-		<changefreq>daily</changefreq>
-		<lastmod>2024-04-04</lastmod>
-		<priority>0.5</priority>
-	</url>
-	<url>
-		<loc>https://www.nice.org.uk/about/what-we-do/our-programmes/nice-guidance/interventional-procedures-guidance/recommendations</loc>
-		<changefreq>daily</changefreq>
-		<lastmod>2023-11-28</lastmod>
-		<priority>0.5</priority>
-	</url>
+
 	<url>
 		<loc>https://www.nice.org.uk/about/what-we-do/our-programmes/nice-guidance/medical-technologies-guidance/get-involved</loc>
 		<changefreq>daily</changefreq>
@@ -1079,90 +495,14 @@
 		<lastmod>2023-06-29</lastmod>
 		<priority>0.5</priority>
 	</url>
-	<url>
-		<loc>https://www.nice.org.uk/about/what-we-do/our-programmes/nice-guidance/medical-technologies-guidance/register-as-a-stakeholder</loc>
-		<changefreq>daily</changefreq>
-		<lastmod>2024-03-13</lastmod>
-		<priority>0.5</priority>
-	</url>
-	<url>
-		<loc>https://www.nice.org.uk/about/what-we-do/our-programmes/nice-guidance/nice-diagnostics-guidance</loc>
-		<changefreq>daily</changefreq>
-		<lastmod>2023-07-11</lastmod>
-		<priority>0.5</priority>
-	</url>
-	<url>
-		<loc>https://www.nice.org.uk/about/what-we-do/our-programmes/nice-guidance/nice-diagnostics-guidance/dt-stakeholder-registration</loc>
-		<changefreq>daily</changefreq>
-		<lastmod>2023-08-09</lastmod>
-		<priority>0.5</priority>
-	</url>
-	<url>
-		<loc>https://www.nice.org.uk/about/what-we-do/our-programmes/nice-guidance/nice-diagnostics-guidance/process-timeline</loc>
-		<changefreq>daily</changefreq>
-		<lastmod>2023-08-09</lastmod>
-		<priority>0.5</priority>
-	</url>
-	<url>
-		<loc>https://www.nice.org.uk/about/what-we-do/our-programmes/nice-guidance/nice-guidelines</loc>
-		<changefreq>daily</changefreq>
-		<lastmod>2023-12-27</lastmod>
-		<priority>0.5</priority>
-	</url>
-	<url>
-		<loc>https://www.nice.org.uk/about/what-we-do/our-programmes/nice-guidance/nice-guidelines/how-we-develop-nice-guidelines</loc>
-		<changefreq>daily</changefreq>
-		<lastmod>2022-11-02</lastmod>
-		<priority>0.5</priority>
-	</url>
-	<url>
-		<loc>https://www.nice.org.uk/about/what-we-do/our-programmes/nice-guidance/nice-guidelines/how-we-develop-nice-guidelines/data-and-analytics-statement-of-intent</loc>
-		<changefreq>daily</changefreq>
-		<lastmod>2021-10-11</lastmod>
-		<priority>0.5</priority>
-	</url>
-	<url>
-		<loc>https://www.nice.org.uk/about/what-we-do/our-programmes/nice-guidance/nice-guidelines/maintaining-and-updating-our-guideline-portfolio</loc>
-		<changefreq>daily</changefreq>
-		<lastmod>2024-02-05</lastmod>
-		<priority>0.5</priority>
-	</url>
-	<url>
-		<loc>https://www.nice.org.uk/about/what-we-do/our-programmes/nice-guidance/nice-guidelines/making-decisions-using-nice-guidelines</loc>
-		<changefreq>daily</changefreq>
-		<lastmod>2022-10-04</lastmod>
-		<priority>0.5</priority>
-	</url>
-	<url>
-		<loc>https://www.nice.org.uk/about/what-we-do/our-programmes/nice-guidance/nice-guidelines/shared-decision-making</loc>
-		<changefreq>daily</changefreq>
-		<lastmod>2023-08-22</lastmod>
-		<priority>0.5</priority>
-	</url>
+
 	<url>
 		<loc>https://www.nice.org.uk/about/what-we-do/our-programmes/nice-guidance/nice-guidelines/using-nice-guidelines-to-make-decisions</loc>
 		<changefreq>daily</changefreq>
 		<lastmod>2015-07-31</lastmod>
 		<priority>0.5</priority>
 	</url>
-	<url>
-		<loc>https://www.nice.org.uk/about/what-we-do/our-programmes/nice-guidance/nice-highly-specialised-technologies-guidance</loc>
-		<changefreq>daily</changefreq>
-		<lastmod>2023-10-12</lastmod>
-		<priority>0.5</priority>
-	</url>
-	<url>
-		<loc>https://www.nice.org.uk/about/what-we-do/our-programmes/nice-guidance/nice-interventional-procedures-guidance</loc>
-		<changefreq>daily</changefreq>
-		<lastmod>2023-12-28</lastmod>
-		<priority>0.5</priority>
-	</url>
-	<url>
-		<loc>https://www.nice.org.uk/about/what-we-do/our-programmes/nice-guidance/nice-interventional-procedures-guidance/coding-recommendations</loc>
-		<changefreq>daily</changefreq>
-		<lastmod>2024-01-22</lastmod>
-		<priority>0.5</priority>
-	</url>
+
 	<url>
 		<loc>https://www.nice.org.uk/about/what-we-do/our-programmes/nice-guidance/nice-interventional-procedures-guidance/ip-notification-form</loc>
 		<changefreq>weekly</changefreq>
@@ -1187,18 +527,7 @@
 		<lastmod>2017-02-17</lastmod>
 		<priority>0.5</priority>
 	</url>
-	<url>
-		<loc>https://www.nice.org.uk/about/what-we-do/our-programmes/nice-guidance/nice-interventional-procedures-guidance/notify</loc>
-		<changefreq>daily</changefreq>
-		<lastmod>2024-05-01</lastmod>
-		<priority>0.5</priority>
-	</url>
-	<url>
-		<loc>https://www.nice.org.uk/about/what-we-do/our-programmes/nice-guidance/nice-medical-technologies-evaluation-programme</loc>
-		<changefreq>daily</changefreq>
-		<lastmod>2024-01-31</lastmod>
-		<priority>0.5</priority>
-	</url>
+
 	<url>
 		<loc>https://www.nice.org.uk/about/what-we-do/our-programmes/nice-guidance/nice-medical-technologies-guidance</loc>
 		<changefreq>daily</changefreq>
@@ -1253,12 +582,7 @@
 		<lastmod>2024-03-19</lastmod>
 		<priority>0.5</priority>
 	</url>
-	<url>
-		<loc>https://www.nice.org.uk/about/what-we-do/our-programmes/nice-guidance/nice-technology-appraisal-guidance/consultation-on-changes-to-technology-appraisals-and-highly-specialised-technologies</loc>
-		<changefreq>daily</changefreq>
-		<lastmod>2023-08-09</lastmod>
-		<priority>0.5</priority>
-	</url>
+
 	<url>
 		<loc>https://www.nice.org.uk/about/what-we-do/our-programmes/nice-guidance/nice-technology-appraisal-guidance/data</loc>
 		<changefreq>daily</changefreq>
@@ -1283,12 +607,7 @@
 		<lastmod>2023-06-29</lastmod>
 		<priority>0.5</priority>
 	</url>
-	<url>
-		<loc>https://www.nice.org.uk/about/what-we-do/our-programmes/nice-guidance/nice-technology-appraisal-guidance/process</loc>
-		<changefreq>daily</changefreq>
-		<lastmod>2024-04-08</lastmod>
-		<priority>0.5</priority>
-	</url>
+
 	<url>
 		<loc>https://www.nice.org.uk/about/what-we-do/our-programmes/nice-guidance/nice-technology-appraisal-guidance/process/mta-timeline</loc>
 		<changefreq>daily</changefreq>
@@ -1391,42 +710,7 @@
 		<lastmod>2024-03-27</lastmod>
 		<priority>0.5</priority>
 	</url>
-	<url>
-		<loc>https://www.nice.org.uk/about/what-we-do/our-programmes/patient-safety</loc>
-		<changefreq>daily</changefreq>
-		<lastmod>2024-02-21</lastmod>
-		<priority>0.5</priority>
-	</url>
-	<url>
-		<loc>https://www.nice.org.uk/about/what-we-do/our-research-work</loc>
-		<changefreq>daily</changefreq>
-		<lastmod>2024-01-10</lastmod>
-		<priority>0.5</priority>
-	</url>
-	<url>
-		<loc>https://www.nice.org.uk/about/what-we-do/our-research-work/hta-lab</loc>
-		<changefreq>daily</changefreq>
-		<lastmod>2024-01-04</lastmod>
-		<priority>0.5</priority>
-	</url>
-	<url>
-		<loc>https://www.nice.org.uk/about/what-we-do/our-research-work/methodological-research-areas</loc>
-		<changefreq>daily</changefreq>
-		<lastmod>2023-11-16</lastmod>
-		<priority>0.5</priority>
-	</url>
-	<url>
-		<loc>https://www.nice.org.uk/about/what-we-do/our-research-work/nice-listens</loc>
-		<changefreq>daily</changefreq>
-		<lastmod>2024-04-23</lastmod>
-		<priority>0.5</priority>
-	</url>
-	<url>
-		<loc>https://www.nice.org.uk/about/what-we-do/our-research-work/our-projects-and-partners</loc>
-		<changefreq>daily</changefreq>
-		<lastmod>2024-05-09</lastmod>
-		<priority>0.5</priority>
-	</url>
+
 	<url>
 		<loc>https://www.nice.org.uk/about/what-we-do/our-research-work/partnering-with-us-for-research---timescales-and-process</loc>
 		<changefreq>daily</changefreq>
@@ -1439,18 +723,7 @@
 		<lastmod>2024-05-02</lastmod>
 		<priority>0.5</priority>
 	</url>
-	<url>
-		<loc>https://www.nice.org.uk/about/what-we-do/proportionate-approach-to-technology-appraisals</loc>
-		<changefreq>daily</changefreq>
-		<lastmod>2024-05-09</lastmod>
-		<priority>0.5</priority>
-	</url>
-	<url>
-		<loc>https://www.nice.org.uk/about/what-we-do/science-policy-research/research-recommendations</loc>
-		<changefreq>daily</changefreq>
-		<lastmod>2016-04-22</lastmod>
-		<priority>0.5</priority>
-	</url>
+
 	<url>
 		<loc>https://www.nice.org.uk/about/what-we-do/scientific-advice/meta-tool-tandcs-and-payment</loc>
 		<changefreq>daily</changefreq>
@@ -1469,36 +742,14 @@
 		<lastmod>2018-04-24</lastmod>
 		<priority>0.5</priority>
 	</url>
-	<url>
-		<loc>https://www.nice.org.uk/about/what-we-do/supporting-the-health-and-care-system-to-implement-virtual-wards</loc>
-		<changefreq>daily</changefreq>
-		<lastmod>2023-12-11</lastmod>
-		<priority>0.5</priority>
-	</url>
+
 	<url>
 		<loc>https://www.nice.org.uk/about/who-we-are</loc>
 		<changefreq>daily</changefreq>
 		<lastmod>2023-06-05</lastmod>
 		<priority>0.5</priority>
 	</url>
-	<url>
-		<loc>https://www.nice.org.uk/about/who-we-are/board</loc>
-		<changefreq>daily</changefreq>
-		<lastmod>2024-05-09</lastmod>
-		<priority>0.5</priority>
-	</url>
-	<url>
-		<loc>https://www.nice.org.uk/about/who-we-are/board/board-committees</loc>
-		<changefreq>daily</changefreq>
-		<lastmod>2023-11-06</lastmod>
-		<priority>0.5</priority>
-	</url>
-	<url>
-		<loc>https://www.nice.org.uk/about/who-we-are/board/board-expenses</loc>
-		<changefreq>daily</changefreq>
-		<lastmod>2021-06-15</lastmod>
-		<priority>0.5</priority>
-	</url>
+
 	<url>
 		<loc>https://www.nice.org.uk/about/who-we-are/board/interests-register</loc>
 		<changefreq>daily</changefreq>
@@ -1523,12 +774,7 @@
 		<lastmod>2021-11-12</lastmod>
 		<priority>0.5</priority>
 	</url>
-	<url>
-		<loc>https://www.nice.org.uk/about/who-we-are/board-executive-team-and-senior-leaders-interests-register</loc>
-		<changefreq>daily</changefreq>
-		<lastmod>2024-05-02</lastmod>
-		<priority>0.5</priority>
-	</url>
+
 	<url>
 		<loc>https://www.nice.org.uk/about/who-we-are/corporate-publications</loc>
 		<changefreq>daily</changefreq>
@@ -1559,504 +805,22 @@
 		<lastmod>2024-01-24</lastmod>
 		<priority>0.5</priority>
 	</url>
-	<url>
-		<loc>https://www.nice.org.uk/about/who-we-are/corporate-publications/transparency-of-spend</loc>
-		<changefreq>daily</changefreq>
-		<lastmod>2024-02-12</lastmod>
-		<priority>0.5</priority>
-	</url>
-	<url>
-		<loc>https://www.nice.org.uk/about/who-we-are/executive-team/executive-team-meetings</loc>
-		<changefreq>daily</changefreq>
-		<lastmod>2024-04-25</lastmod>
-		<priority>0.5</priority>
-	</url>
-	<url>
-		<loc>https://www.nice.org.uk/about/who-we-are/guidance-executive</loc>
-		<changefreq>daily</changefreq>
-		<lastmod>2023-03-20</lastmod>
-		<priority>0.5</priority>
-	</url>
-	<url>
-		<loc>https://www.nice.org.uk/about/who-we-are/history-of-nice</loc>
-		<changefreq>daily</changefreq>
-		<lastmod>2023-01-31</lastmod>
-		<priority>0.5</priority>
-	</url>
-	<url>
-		<loc>https://www.nice.org.uk/about/who-we-are/our-charter</loc>
-		<changefreq>daily</changefreq>
-		<lastmod>2024-03-27</lastmod>
-		<priority>0.5</priority>
-	</url>
-	<url>
-		<loc>https://www.nice.org.uk/about/who-we-are/our-principles</loc>
-		<changefreq>daily</changefreq>
-		<lastmod>2022-10-18</lastmod>
-		<priority>0.5</priority>
-	</url>
-	<url>
-		<loc>https://www.nice.org.uk/about/who-we-are/policies-and-procedures</loc>
-		<changefreq>daily</changefreq>
-		<lastmod>2024-01-25</lastmod>
-		<priority>0.5</priority>
-	</url>
-	<url>
-		<loc>https://www.nice.org.uk/about/who-we-are/policies-and-procedures/nice-equality-scheme</loc>
-		<changefreq>daily</changefreq>
-		<lastmod>2022-09-28</lastmod>
-		<priority>0.5</priority>
-	</url>
-	<url>
-		<loc>https://www.nice.org.uk/about/who-we-are/senior-management-team</loc>
-		<changefreq>daily</changefreq>
-		<lastmod>2024-04-09</lastmod>
-		<priority>0.5</priority>
-	</url>
+
 	<url>
 		<loc>https://www.nice.org.uk/about/who-we-are/senior-management-team/interests-register</loc>
 		<changefreq>daily</changefreq>
 		<lastmod>2022-01-07</lastmod>
 		<priority>0.5</priority>
 	</url>
-	<url>
-		<loc>https://www.nice.org.uk/about/who-we-are/structure-of-nice</loc>
-		<changefreq>daily</changefreq>
-		<lastmod>2024-05-02</lastmod>
-		<priority>0.5</priority>
-	</url>
-	<url>
-		<loc>https://www.nice.org.uk/about/who-we-are/sustainability</loc>
-		<changefreq>daily</changefreq>
-		<lastmod>2023-11-14</lastmod>
-		<priority>0.5</priority>
-	</url>
+
 	<url>
 		<loc>https://www.nice.org.uk/about/who-we-are/transforming-nice--delivering-more-relevant--timely-and-useable-guidance</loc>
 		<changefreq>daily</changefreq>
 		<lastmod>2023-07-10</lastmod>
 		<priority>0.5</priority>
 	</url>
-	<url>
-		<loc>https://www.nice.org.uk/accessibility</loc>
-		<changefreq>daily</changefreq>
-		<lastmod>2023-11-30</lastmod>
-		<priority>0.5</priority>
-	</url>
-	<url>
-		<loc>https://www.nice.org.uk/bnfc-uk-only</loc>
-		<changefreq>daily</changefreq>
-		<lastmod>2022-08-16</lastmod>
-		<priority>0.5</priority>
-	</url>
-	<url>
-		<loc>https://www.nice.org.uk/bnf-uk-only</loc>
-		<changefreq>daily</changefreq>
-		<lastmod>2022-08-16</lastmod>
-		<priority>0.5</priority>
-	</url>
-	<url>
-		<loc>https://www.nice.org.uk/cks-uk-only</loc>
-		<changefreq>daily</changefreq>
-		<lastmod>2022-08-30</lastmod>
-		<priority>0.5</priority>
-	</url>
-	<url>
-		<loc>https://www.nice.org.uk/cookies</loc>
-		<changefreq>daily</changefreq>
-		<lastmod>2023-07-07</lastmod>
-		<priority>0.5</priority>
-	</url>
-	<url>
-		<loc>https://www.nice.org.uk/covid-19/rapid-c19</loc>
-		<changefreq>daily</changefreq>
-		<lastmod>2023-04-03</lastmod>
-		<priority>0.5</priority>
-	</url>
-	<url>
-		<loc>https://www.nice.org.uk/freedom-of-information</loc>
-		<changefreq>daily</changefreq>
-		<lastmod>2022-04-28</lastmod>
-		<priority>0.5</priority>
-	</url>
-	<url>
-		<loc>https://www.nice.org.uk/freedom-of-information/freedom-of-information-publication-scheme</loc>
-		<changefreq>daily</changefreq>
-		<lastmod>2022-04-06</lastmod>
-		<priority>0.5</priority>
-	</url>
-	<url>
-		<loc>https://www.nice.org.uk/get-involved</loc>
-		<changefreq>daily</changefreq>
-		<lastmod>2024-03-06</lastmod>
-		<priority>0.5</priority>
-	</url>
-	<url>
-		<loc>https://www.nice.org.uk/get-involved/consultations</loc>
-		<changefreq>daily</changefreq>
-		<lastmod>2022-07-08</lastmod>
-		<priority>0.5</priority>
-	</url>
-	<url>
-		<loc>https://www.nice.org.uk/get-involved/contact-us</loc>
-		<changefreq>daily</changefreq>
-		<lastmod>2023-11-30</lastmod>
-		<priority>0.5</priority>
-	</url>
-	<url>
-		<loc>https://www.nice.org.uk/get-involved/help-us-improve</loc>
-		<changefreq>daily</changefreq>
-		<lastmod>2024-04-05</lastmod>
-		<priority>0.5</priority>
-	</url>
-	<url>
-		<loc>https://www.nice.org.uk/get-involved/help-us-improve/survey</loc>
-		<changefreq>daily</changefreq>
-		<lastmod>2024-04-05</lastmod>
-		<priority>0.5</priority>
-	</url>
-	<url>
-		<loc>https://www.nice.org.uk/get-involved/meetings-in-public/antimicrobials-evaluation-committee</loc>
-		<changefreq>daily</changefreq>
-		<lastmod>2023-08-22</lastmod>
-		<priority>0.5</priority>
-	</url>
-	<url>
-		<loc>https://www.nice.org.uk/get-involved/meetings-in-public/appeal-panel-membership</loc>
-		<changefreq>daily</changefreq>
-		<lastmod>2024-02-09</lastmod>
-		<priority>0.5</priority>
-	</url>
-	<url>
-		<loc>https://www.nice.org.uk/get-involved/meetings-in-public/diagnostics-advisory-committee</loc>
-		<changefreq>daily</changefreq>
-		<lastmod>2024-05-09</lastmod>
-		<priority>0.5</priority>
-	</url>
-	<url>
-		<loc>https://www.nice.org.uk/get-involved/meetings-in-public/diagnostics-advisory-committee/members</loc>
-		<changefreq>daily</changefreq>
-		<lastmod>2024-01-29</lastmod>
-		<priority>0.5</priority>
-	</url>
-	<url>
-		<loc>https://www.nice.org.uk/get-involved/meetings-in-public/highly-specialised-technologies-evaluation-committee</loc>
-		<changefreq>daily</changefreq>
-		<lastmod>2024-04-18</lastmod>
-		<priority>0.5</priority>
-	</url>
-	<url>
-		<loc>https://www.nice.org.uk/get-involved/meetings-in-public/highly-specialised-technologies-evaluation-committee/members</loc>
-		<changefreq>daily</changefreq>
-		<lastmod>2024-02-21</lastmod>
-		<priority>0.5</priority>
-	</url>
-	<url>
-		<loc>https://www.nice.org.uk/get-involved/meetings-in-public/indicator-advisory-committee</loc>
-		<changefreq>daily</changefreq>
-		<lastmod>2024-05-02</lastmod>
-		<priority>0.5</priority>
-	</url>
-	<url>
-		<loc>https://www.nice.org.uk/get-involved/meetings-in-public/indicator-advisory-committee-iac/iac-members</loc>
-		<changefreq>daily</changefreq>
-		<lastmod>2023-11-07</lastmod>
-		<priority>0.5</priority>
-	</url>
-	<url>
-		<loc>https://www.nice.org.uk/get-involved/meetings-in-public/interventional-procedures-advisory-committee</loc>
-		<changefreq>daily</changefreq>
-		<lastmod>2024-05-15</lastmod>
-		<priority>0.5</priority>
-	</url>
-	<url>
-		<loc>https://www.nice.org.uk/get-involved/meetings-in-public/interventional-procedures-advisory-committee/members</loc>
-		<changefreq>daily</changefreq>
-		<lastmod>2023-12-15</lastmod>
-		<priority>0.5</priority>
-	</url>
-	<url>
-		<loc>https://www.nice.org.uk/get-involved/meetings-in-public/medical-technologies-advisory-committee</loc>
-		<changefreq>daily</changefreq>
-		<lastmod>2024-03-27</lastmod>
-		<priority>0.5</priority>
-	</url>
-	<url>
-		<loc>https://www.nice.org.uk/get-involved/meetings-in-public/medical-technologies-advisory-committee/members</loc>
-		<changefreq>daily</changefreq>
-		<lastmod>2024-05-03</lastmod>
-		<priority>0.5</priority>
-	</url>
-	<url>
-		<loc>https://www.nice.org.uk/get-involved/meetings-in-public/public-board-meetings</loc>
-		<changefreq>daily</changefreq>
-		<lastmod>2024-05-14</lastmod>
-		<priority>0.5</priority>
-	</url>
-	<url>
-		<loc>https://www.nice.org.uk/get-involved/meetings-in-public/public-board-meetings/agenda-and-papers-march-2024</loc>
-		<changefreq>daily</changefreq>
-		<lastmod>2024-03-19</lastmod>
-		<priority>0.5</priority>
-	</url>
-	<url>
-		<loc>https://www.nice.org.uk/get-involved/meetings-in-public/public-board-meetings/agenda-papers-december-2022</loc>
-		<changefreq>daily</changefreq>
-		<lastmod>2022-12-19</lastmod>
-		<priority>0.5</priority>
-	</url>
-	<url>
-		<loc>https://www.nice.org.uk/get-involved/meetings-in-public/public-board-meetings/agenda-papers-january-2021</loc>
-		<changefreq>daily</changefreq>
-		<lastmod>2021-01-27</lastmod>
-		<priority>0.5</priority>
-	</url>
-	<url>
-		<loc>https://www.nice.org.uk/get-involved/meetings-in-public/public-board-meetings/agenda-papers-july-2021</loc>
-		<changefreq>daily</changefreq>
-		<lastmod>2021-07-20</lastmod>
-		<priority>0.5</priority>
-	</url>
-	<url>
-		<loc>https://www.nice.org.uk/get-involved/meetings-in-public/public-board-meetings/agenda-papers-march-2021</loc>
-		<changefreq>daily</changefreq>
-		<lastmod>2021-03-22</lastmod>
-		<priority>0.5</priority>
-	</url>
-	<url>
-		<loc>https://www.nice.org.uk/get-involved/meetings-in-public/public-board-meetings/agenda-papers-march-2023</loc>
-		<changefreq>daily</changefreq>
-		<lastmod>2023-03-21</lastmod>
-		<priority>0.5</priority>
-	</url>
-	<url>
-		<loc>https://www.nice.org.uk/get-involved/meetings-in-public/public-board-meetings/agenda-papers-may-2021</loc>
-		<changefreq>daily</changefreq>
-		<lastmod>2021-05-18</lastmod>
-		<priority>0.5</priority>
-	</url>
-	<url>
-		<loc>https://www.nice.org.uk/get-involved/meetings-in-public/public-board-meetings/agenda-papers-may-2022</loc>
-		<changefreq>daily</changefreq>
-		<lastmod>2022-05-24</lastmod>
-		<priority>0.5</priority>
-	</url>
-	<url>
-		<loc>https://www.nice.org.uk/get-involved/meetings-in-public/public-board-meetings/agenda-papers-may-2023</loc>
-		<changefreq>daily</changefreq>
-		<lastmod>2023-05-15</lastmod>
-		<priority>0.5</priority>
-	</url>
-	<url>
-		<loc>https://www.nice.org.uk/get-involved/meetings-in-public/public-board-meetings/agenda-papers-may-2024</loc>
-		<changefreq>daily</changefreq>
-		<lastmod>2024-05-14</lastmod>
-		<priority>0.5</priority>
-	</url>
-	<url>
-		<loc>https://www.nice.org.uk/get-involved/meetings-in-public/public-board-meetings/agenda-papers-november-2020</loc>
-		<changefreq>daily</changefreq>
-		<lastmod>2020-12-29</lastmod>
-		<priority>0.5</priority>
-	</url>
-	<url>
-		<loc>https://www.nice.org.uk/get-involved/meetings-in-public/public-board-meetings/agenda-papers-september-2021</loc>
-		<changefreq>daily</changefreq>
-		<lastmod>2021-09-14</lastmod>
-		<priority>0.5</priority>
-	</url>
-	<url>
-		<loc>https://www.nice.org.uk/get-involved/meetings-in-public/public-board-meetings/agenda-papers-september-2022</loc>
-		<changefreq>daily</changefreq>
-		<lastmod>2022-09-22</lastmod>
-		<priority>0.5</priority>
-	</url>
-	<url>
-		<loc>https://www.nice.org.uk/get-involved/meetings-in-public/public-board-meetings/public-board-meeting-agenda-and-papers-december-2023</loc>
-		<changefreq>daily</changefreq>
-		<lastmod>2023-12-19</lastmod>
-		<priority>0.5</priority>
-	</url>
-	<url>
-		<loc>https://www.nice.org.uk/get-involved/meetings-in-public/public-board-meetings/public-board-meeting-agenda-and-papers--july-2022</loc>
-		<changefreq>daily</changefreq>
-		<lastmod>2023-08-08</lastmod>
-		<priority>0.5</priority>
-	</url>
-	<url>
-		<loc>https://www.nice.org.uk/get-involved/meetings-in-public/public-board-meetings/public-board-meeting-agenda-and-papers--july-2023</loc>
-		<changefreq>daily</changefreq>
-		<lastmod>2023-10-13</lastmod>
-		<priority>0.5</priority>
-	</url>
-	<url>
-		<loc>https://www.nice.org.uk/get-involved/meetings-in-public/public-board-meetings/public-board-meeting-agenda-and-papers-september-2023</loc>
-		<changefreq>daily</changefreq>
-		<lastmod>2023-12-11</lastmod>
-		<priority>0.5</priority>
-	</url>
-	<url>
-		<loc>https://www.nice.org.uk/get-involved/meetings-in-public/public-health-advisory-committees</loc>
-		<changefreq>daily</changefreq>
-		<lastmod>2023-08-22</lastmod>
-		<priority>0.5</priority>
-	</url>
-	<url>
-		<loc>https://www.nice.org.uk/get-involved/meetings-in-public/quality-standards-advisory-committee</loc>
-		<changefreq>daily</changefreq>
-		<lastmod>2024-04-15</lastmod>
-		<priority>0.5</priority>
-	</url>
-	<url>
-		<loc>https://www.nice.org.uk/get-involved/meetings-in-public/quality-standards-advisory-committee/qsac2-members</loc>
-		<changefreq>daily</changefreq>
-		<lastmod>2023-09-04</lastmod>
-		<priority>0.5</priority>
-	</url>
-	<url>
-		<loc>https://www.nice.org.uk/get-involved/meetings-in-public/quality-standards-advisory-committee/qsac3-members</loc>
-		<changefreq>daily</changefreq>
-		<lastmod>2023-06-06</lastmod>
-		<priority>0.5</priority>
-	</url>
-	<url>
-		<loc>https://www.nice.org.uk/get-involved/meetings-in-public/technology-appraisal-committee</loc>
-		<changefreq>daily</changefreq>
-		<lastmod>2024-05-10</lastmod>
-		<priority>0.5</priority>
-	</url>
-	<url>
-		<loc>https://www.nice.org.uk/get-involved/meetings-in-public/technology-appraisal-committee/committee-a-members</loc>
-		<changefreq>daily</changefreq>
-		<lastmod>2024-02-02</lastmod>
-		<priority>0.5</priority>
-	</url>
-	<url>
-		<loc>https://www.nice.org.uk/get-involved/meetings-in-public/technology-appraisal-committee/committee-b-members</loc>
-		<changefreq>daily</changefreq>
-		<lastmod>2024-02-21</lastmod>
-		<priority>0.5</priority>
-	</url>
-	<url>
-		<loc>https://www.nice.org.uk/get-involved/meetings-in-public/technology-appraisal-committee/committee-c-members</loc>
-		<changefreq>daily</changefreq>
-		<lastmod>2023-11-28</lastmod>
-		<priority>0.5</priority>
-	</url>
-	<url>
-		<loc>https://www.nice.org.uk/get-involved/meetings-in-public/technology-appraisal-committee/committee-d-members</loc>
-		<changefreq>daily</changefreq>
-		<lastmod>2024-04-09</lastmod>
-		<priority>0.5</priority>
-	</url>
-	<url>
-		<loc>https://www.nice.org.uk/get-involved/nice-training-and-development-opportunities</loc>
-		<changefreq>daily</changefreq>
-		<lastmod>2024-03-06</lastmod>
-		<priority>0.5</priority>
-	</url>
-	<url>
-		<loc>https://www.nice.org.uk/get-involved/our-committees</loc>
-		<changefreq>daily</changefreq>
-		<lastmod>2024-03-04</lastmod>
-		<priority>0.5</priority>
-	</url>
-	<url>
-		<loc>https://www.nice.org.uk/get-involved/our-committees/how-gps-help-develop-our-guidance</loc>
-		<changefreq>daily</changefreq>
-		<lastmod>2023-05-05</lastmod>
-		<priority>0.5</priority>
-	</url>
-	<url>
-		<loc>https://www.nice.org.uk/get-involved/our-committees/join-a-committee/apply-to-be-a-chair-on-a-nice-committee</loc>
-		<changefreq>daily</changefreq>
-		<lastmod>2024-02-08</lastmod>
-		<priority>0.5</priority>
-	</url>
-	<url>
-		<loc>https://www.nice.org.uk/get-involved/our-committees/join-a-committee/how-to-apply-to-join-a-committee</loc>
-		<changefreq>daily</changefreq>
-		<lastmod>2024-05-08</lastmod>
-		<priority>0.5</priority>
-	</url>
-	<url>
-		<loc>https://www.nice.org.uk/get-involved/our-committees/join-a-committee/nice-committee-vacancies-for-health--social-care-and-other-professionals-and-practitioners</loc>
-		<changefreq>daily</changefreq>
-		<lastmod>2024-02-08</lastmod>
-		<priority>0.5</priority>
-	</url>
-	<url>
-		<loc>https://www.nice.org.uk/get-involved/our-committees/join-a-committee/nice-committee-vacancies-for-patients--service-users--carers-and-lay-people</loc>
-		<changefreq>daily</changefreq>
-		<lastmod>2024-02-08</lastmod>
-		<priority>0.5</priority>
-	</url>
-	<url>
-		<loc>https://www.nice.org.uk/get-involved/our-committees/what-lay-members-do</loc>
-		<changefreq>daily</changefreq>
-		<lastmod>2023-08-21</lastmod>
-		<priority>0.5</priority>
-	</url>
-	<url>
-		<loc>https://www.nice.org.uk/get-involved/our-committees/what-lay-members-do/lay-member-payments-and-expenses</loc>
-		<changefreq>daily</changefreq>
-		<lastmod>2022-04-14</lastmod>
-		<priority>0.5</priority>
-	</url>
-	<url>
-		<loc>https://www.nice.org.uk/get-involved/our-committees/what-lay-members-do/lay-member-payments-and-expenses/how-lay-member-payments-affect-benefits</loc>
-		<changefreq>daily</changefreq>
-		<lastmod>2022-02-24</lastmod>
-		<priority>0.5</priority>
-	</url>
-	<url>
-		<loc>https://www.nice.org.uk/get-involved/our-committees/what-professional-members-do</loc>
-		<changefreq>daily</changefreq>
-		<lastmod>2024-03-05</lastmod>
-		<priority>0.5</priority>
-	</url>
-	<url>
-		<loc>https://www.nice.org.uk/get-involved/register-as-a-stakeholder/who-can-register-as-a-stakeholder</loc>
-		<changefreq>daily</changefreq>
-		<lastmod>2023-06-20</lastmod>
-		<priority>0.5</priority>
-	</url>
-	<url>
-		<loc>https://www.nice.org.uk/get-involved/register-your-organisation-as-a-stakeholder/stakeholder-registration--guidelines--quality-standards-and-indicators</loc>
-		<changefreq>daily</changefreq>
-		<lastmod>2020-12-22</lastmod>
-		<priority>0.5</priority>
-	</url>
-	<url>
-		<loc>https://www.nice.org.uk/get-involved/register-your-organisation-as-a-stakeholder/step-by-step-guide-to-registering-as-a-stakeholder</loc>
-		<changefreq>daily</changefreq>
-		<lastmod>2020-12-22</lastmod>
-		<priority>0.5</priority>
-	</url>
-	<url>
-		<loc>https://www.nice.org.uk/get-involved/stakeholder-registration</loc>
-		<changefreq>daily</changefreq>
-		<lastmod>2022-11-22</lastmod>
-		<priority>0.5</priority>
-	</url>
-	<url>
-		<loc>https://www.nice.org.uk/get-involved/stakeholder-registration/confidentiality-agreement</loc>
-		<changefreq>daily</changefreq>
-		<lastmod>2017-12-04</lastmod>
-		<priority>0.5</priority>
-	</url>
-	<url>
-		<loc>https://www.nice.org.uk/get-involved/stakeholder-registration/tobacco-industry-organisations</loc>
-		<changefreq>daily</changefreq>
-		<lastmod>2018-07-31</lastmod>
-		<priority>0.5</priority>
-	</url>
-	<url>
-		<loc>https://www.nice.org.uk/get-involved/study-nice-and-lse-s-executive-msc-healthcare-decision-making</loc>
-		<changefreq>daily</changefreq>
-		<lastmod>2023-07-13</lastmod>
-		<priority>0.5</priority>
-	</url>
+
+
 	<url>
 		<loc>https://www.nice.org.uk/leave-feedback</loc>
 		<changefreq>daily</changefreq>
@@ -2075,18 +839,7 @@
 		<lastmod>2022-11-08</lastmod>
 		<priority>0.5</priority>
 	</url>
-	<url>
-		<loc>https://www.nice.org.uk/privacy-notice</loc>
-		<changefreq>daily</changefreq>
-		<lastmod>2024-05-14</lastmod>
-		<priority>0.5</priority>
-	</url>
-	<url>
-		<loc>https://www.nice.org.uk/productivity</loc>
-		<changefreq>daily</changefreq>
-		<lastmod>2024-02-29</lastmod>
-		<priority>0.5</priority>
-	</url>
+
 	<url>
 		<loc>https://www.nice.org.uk/researchrecommendation/1-enteral-nutrition-after-surgery</loc>
 		<changefreq>weekly</changefreq>
@@ -15077,30 +13830,7 @@
 		<lastmod>2019-10-25</lastmod>
 		<priority>0.5</priority>
 	</url>
-	<url>
-		<loc>https://www.nice.org.uk/re-using-our-content</loc>
-		<changefreq>daily</changefreq>
-		<lastmod>2023-06-07</lastmod>
-		<priority>0.5</priority>
-	</url>
-	<url>
-		<loc>https://www.nice.org.uk/re-using-our-content/content-assurance-service</loc>
-		<changefreq>daily</changefreq>
-		<lastmod>2023-01-12</lastmod>
-		<priority>0.5</priority>
-	</url>
-	<url>
-		<loc>https://www.nice.org.uk/re-using-our-content/public-task</loc>
-		<changefreq>daily</changefreq>
-		<lastmod>2022-07-14</lastmod>
-		<priority>0.5</priority>
-	</url>
-	<url>
-		<loc>https://www.nice.org.uk/re-using-our-content/uk-open-content-licence</loc>
-		<changefreq>daily</changefreq>
-		<lastmod>2023-03-21</lastmod>
-		<priority>0.5</priority>
-	</url>
+
 	<url>
 		<loc>https://www.nice.org.uk/rwe-navigator-feedback</loc>
 		<changefreq>weekly</changefreq>
@@ -17225,12 +15955,7 @@
 		<lastmod>2020-12-16</lastmod>
 		<priority>0.5</priority>
 	</url>
-	<url>
-		<loc>https://www.nice.org.uk/standards-and-indicators</loc>
-		<changefreq>daily</changefreq>
-		<lastmod>2021-11-30</lastmod>
-		<priority>0.5</priority>
-	</url>
+
 	<url>
 		<loc>https://www.nice.org.uk/standards-and-indicators/ccgoisindicators/admission-rates-due-to-diabetic-ketoacidosis-in-people-with-diabetes</loc>
 		<changefreq>weekly</changefreq>
@@ -17681,24 +16406,7 @@
 		<lastmod>2021-08-27</lastmod>
 		<priority>0.5</priority>
 	</url>
-	<url>
-		<loc>https://www.nice.org.uk/standards-and-indicators/get-involved/quality-standard-consultations</loc>
-		<changefreq>daily</changefreq>
-		<lastmod>2022-09-27</lastmod>
-		<priority>0.5</priority>
-	</url>
-	<url>
-		<loc>https://www.nice.org.uk/standards-and-indicators/get-involved/support-a-quality-standard</loc>
-		<changefreq>daily</changefreq>
-		<lastmod>2024-03-28</lastmod>
-		<priority>0.5</priority>
-	</url>
-	<url>
-		<loc>https://www.nice.org.uk/standards-and-indicators/get-involved/topic-engagement</loc>
-		<changefreq>daily</changefreq>
-		<lastmod>2023-10-12</lastmod>
-		<priority>0.5</priority>
-	</url>
+
 	<url>
 		<loc>https://www.nice.org.uk/standards-and-indicators/gpqualityimprovements/percentage-of-patients-on-the-learning-disability-register-with-down-s-syndrome-aged-18-and-over-who-have-a-record-of-blood-tsh-in-the-previous-15-months-excluding-those-who-are-on-the-thyroid-disease-register</loc>
 		<changefreq>weekly</changefreq>
@@ -17841,18 +16549,6 @@
 		<loc>https://www.nice.org.uk/standards-and-indicators/gpqualityimprovements/the-percentage-of-women-with-schizophrenia-bipolar-affective-disorder-or-other-psychoses-under-the-age-of-45-years-who-have-been-given-information-and-advice-in-the-previous-12-months</loc>
 		<changefreq>weekly</changefreq>
 		<lastmod>2020-11-03</lastmod>
-		<priority>0.5</priority>
-	</url>
-	<url>
-		<loc>https://www.nice.org.uk/standards-and-indicators/how-to-use-quality-standards</loc>
-		<changefreq>daily</changefreq>
-		<lastmod>2023-03-01</lastmod>
-		<priority>0.5</priority>
-	</url>
-	<url>
-		<loc>https://www.nice.org.uk/standards-and-indicators/indicators</loc>
-		<changefreq>daily</changefreq>
-		<lastmod>2024-05-02</lastmod>
 		<priority>0.5</priority>
 	</url>
 	<url>
@@ -19359,48 +18055,6 @@
 		<loc>https://www.nice.org.uk/standards-and-indicators/qofindicators/the-proportion-of-women-eligible-for-screening-and-aged-50-64-years-at-end-of-period-reported-whose-notes-record-that-an-adequate-cervical-screening-test-has-been-performed-in-the-previous-5-5-years</loc>
 		<changefreq>weekly</changefreq>
 		<lastmod>2020-11-04</lastmod>
-		<priority>0.5</priority>
-	</url>
-	<url>
-		<loc>https://www.nice.org.uk/standards-and-indicators/quality-standards</loc>
-		<changefreq>daily</changefreq>
-		<lastmod>2023-08-17</lastmod>
-		<priority>0.5</priority>
-	</url>
-	<url>
-		<loc>https://www.nice.org.uk/standards-and-indicators/quality-standards-topic-library</loc>
-		<changefreq>daily</changefreq>
-		<lastmod>2022-09-27</lastmod>
-		<priority>0.5</priority>
-	</url>
-	<url>
-		<loc>https://www.nice.org.uk/standards-and-indicators/selecting-and-prioritising-quality-standard-topics</loc>
-		<changefreq>daily</changefreq>
-		<lastmod>2022-09-27</lastmod>
-		<priority>0.5</priority>
-	</url>
-	<url>
-		<loc>https://www.nice.org.uk/standards-and-indicators/timeline-developing-quality-standards</loc>
-		<changefreq>daily</changefreq>
-		<lastmod>2024-03-27</lastmod>
-		<priority>0.5</priority>
-	</url>
-	<url>
-		<loc>https://www.nice.org.uk/terms-and-conditions</loc>
-		<changefreq>daily</changefreq>
-		<lastmod>2023-05-24</lastmod>
-		<priority>0.5</priority>
-	</url>
-	<url>
-		<loc>https://www.nice.org.uk/terms-and-conditions/cks-end-user-licence-agreement</loc>
-		<changefreq>daily</changefreq>
-		<lastmod>2024-01-30</lastmod>
-		<priority>0.5</priority>
-	</url>
-	<url>
-		<loc>https://www.nice.org.uk/tls</loc>
-		<changefreq>daily</changefreq>
-		<lastmod>2023-08-15</lastmod>
 		<priority>0.5</priority>
 	</url>
 </urlset>
