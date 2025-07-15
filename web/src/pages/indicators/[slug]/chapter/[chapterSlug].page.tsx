@@ -3,7 +3,6 @@ import { NextSeo } from "next-seo";
 
 import { Breadcrumb, Breadcrumbs } from "@nice-digital/nds-breadcrumbs";
 import { Grid, GridItem } from "@nice-digital/nds-grid";
-import { InPageNav } from "@nice-digital/nds-in-page-nav";
 
 import {
 	OnThisPageBasic,
@@ -109,7 +108,6 @@ export default function IndicatorChapterPage({
 					{hasOnThisPageMenu ? (
 						<div className="hide-print">
 							<OnThisPageBasic sections={chapterSections} />
-							<InPageNav headingsSelector="h3.title" />
 						</div>
 					) : null}
 
