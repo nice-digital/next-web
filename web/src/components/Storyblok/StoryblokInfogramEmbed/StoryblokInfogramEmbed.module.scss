@@ -13,41 +13,42 @@
   &--constrained {
     max-width: layout.$readable-width;
   }
-}
 
-.infogramRichText {
-  container-name: infogramRichText;
-  container-type: inline-size;
+  // Nest richText styles inside for unified module
+  &--richText {
+    container-name: infogramRichText;
+    container-type: inline-size;
 
-  margin-bottom: utils.rem(spacing.$large);
+    margin-bottom: utils.rem(spacing.$large);
 
-  &:last-child {
-    margin-bottom: 0;
-  }
+    &:last-child {
+      margin-bottom: 0;
+    }
 
-  h2,
-  h3,
-  h4,
-  h5,
-  h6 {
-    margin-bottom: utils.rem(spacing.$medium);
-  }
+    h2,
+    h3,
+    h4,
+    h5,
+    h6 {
+      margin-bottom: utils.rem(spacing.$medium);
+    }
 
-  &__infogramGrid {
-    display: block;
-  }
-
-  &__infogramWithHeading {
-    margin-top: 0;
-  }
-
-  &__infogramWithoutHeading {
-    margin-top: utils.rem(spacing.$medium);
-  }
-
-  @container infogramRichText (max-width: #{media-queries.$sm}) {
     &__infogramGrid {
-      display: none;
+      display: block;
+    }
+
+    &__infogramWithHeading {
+      margin-top: 0;
+    }
+
+    &__infogramWithoutHeading {
+      margin-top: utils.rem(spacing.$medium);
+    }
+
+    @container infogramRichText (max-width: #{media-queries.$sm}) {
+      &__infogramGrid {
+        display: none;
+      }
     }
   }
 }

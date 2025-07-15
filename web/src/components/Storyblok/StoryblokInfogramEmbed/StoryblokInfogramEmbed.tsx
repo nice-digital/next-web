@@ -106,10 +106,10 @@ export const StoryblokInfogramEmbed: React.FC<InfogramEmbedProps> = ({
 	const infogramVisible = hideInfogramOnSmallScreens !== "false";
 
 	const infogramGridItemClass = [
-		infogramVisible && styles.infogramRichText__infogramGrid,
+		infogramVisible && styles["infogramEmbed--richText__infogramGrid"],
 		contentStartsWithHeading
-			? styles.infogramRichText__infogramWithHeading
-			: styles.infogramRichText__infogramWithoutHeading,
+			? styles["infogramEmbed--richText__infogramWithHeadingstyles"]
+			: styles["infogramEmbed--richText__infogramWithoutHeading"],
 	]
 		.filter(Boolean)
 		.join(" ");
@@ -145,7 +145,7 @@ export const StoryblokInfogramEmbed: React.FC<InfogramEmbedProps> = ({
 		<Grid
 			key={_uid}
 			data-testid="infogram-richtext"
-			className={styles.infogramRichText}
+			className={styles["infogramEmbed--richText"]}
 		>
 			{infogramFirst ? (
 				<>
