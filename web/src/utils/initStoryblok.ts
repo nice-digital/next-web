@@ -29,7 +29,6 @@ import { StoryblokHero } from "@/components/Storyblok/StoryblokHero/StoryblokHer
 import { StoryblokIframe } from "@/components/Storyblok/StoryblokIframe/StoryblokIframe";
 import { StoryblokImageRichText } from "@/components/Storyblok/StoryblokImageRichText/StoryblokImageRichText";
 import { ClientInfogramEmbed } from "@/components/Storyblok/StoryblokInfogramEmbed/ClientInfogramEmbed";
-import { StoryblokInfogramEmbedRichText } from "@/components/Storyblok/StoryblokInfogramEmbedRichText/StoryblokInfogramEmbedRichText";
 import { StoryblokNewsArticle } from "@/components/Storyblok/StoryblokNewsArticle/StoryblokNewsArticle";
 import { StoryblokPageHeader } from "@/components/Storyblok/StoryblokPageHeader/StoryblokPageHeader";
 import { StoryblokRelatedLink } from "@/components/Storyblok/StoryblokRelatedLink/StoryblokRelatedLink";
@@ -99,10 +98,11 @@ const infoPageComponents = {
 	cardGridRowCallout: CardGridRow,
 	cardGridRowCalloutWithImage: CardGridRow,
 	imageRichText: StoryblokImageRichText,
+	// infogramEmbedNEW: ClientInfogramEmbed,
 	infogramEmbed: ClientInfogramEmbed,
 	infoPage: InfoPage,
 	nestedTable: StoryblokTable,
-	infogramRichText: StoryblokInfogramEmbedRichText,
+	// infogramRichText: StoryblokInfogramEmbedRichText,
 };
 
 export const allComponents: SbReactComponentsMap = {

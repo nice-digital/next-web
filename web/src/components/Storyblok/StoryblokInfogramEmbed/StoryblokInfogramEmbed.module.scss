@@ -1,11 +1,53 @@
 @use '@nice-digital/nds-core/scss/spacing';
+@use '@nice-digital/nds-core/scss/media-queries';
 @use '@nice-digital/nds-core/scss/utils';
 @use '@nice-digital/nds-core/scss/layout';
 
 .infogramEmbed {
   margin-bottom: utils.rem(spacing.$large);
 
+  &:last-child {
+    margin-bottom: 0;
+  }
+
   &--constrained {
     max-width: layout.$readable-width;
+  }
+}
+
+.infogramRichText {
+  container-name: infogramRichText;
+  container-type: inline-size;
+
+  margin-bottom: utils.rem(spacing.$large);
+
+  &:last-child {
+    margin-bottom: 0;
+  }
+
+  h2,
+  h3,
+  h4,
+  h5,
+  h6 {
+    margin-bottom: utils.rem(spacing.$medium);
+  }
+
+  &__infogramGrid {
+    display: block;
+  }
+
+  &__infogramWithHeading {
+    margin-top: 0;
+  }
+
+  &__infogramWithoutHeading {
+    margin-top: utils.rem(spacing.$medium);
+  }
+
+  @container infogramRichText (max-width: #{media-queries.$sm}) {
+    &__infogramGrid {
+      display: none;
+    }
   }
 }

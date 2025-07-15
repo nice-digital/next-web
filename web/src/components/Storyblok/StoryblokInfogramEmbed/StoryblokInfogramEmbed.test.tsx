@@ -5,74 +5,82 @@ import { InfogramEmbedStoryblok } from "@/types/storyblok";
 
 import { StoryblokInfogramEmbed } from "./StoryblokInfogramEmbed";
 
-// Mock next/script to simulate script loading
+// Mock next/script to simulate loading
 jest.mock("next/script", () => (props: ScriptProps) => {
-	props.onLoad?.({} as Parameters<NonNullable<ScriptProps["onLoad"]>>[0]); // simulate the script onLoad event with a dummy event object to overide the type error
+	props.onLoad?.({} as Parameters<NonNullable<ScriptProps["onLoad"]>>[0]);
 	return <div data-testid="mock-script" />;
 });
 
-const mockInfogramProps: InfogramEmbedStoryblok = {
-	infogramUrl:
-		"https://infogram.com/ta-cancer-decisions-by-type-1hxj48nzk5x54vg",
+const infogramId = "ta-cancer-decisions-by-type-1hxj48nzk5x54vg";
+const validUrl = `https://infogram.com/${infogramId}`;
+
+const baseProps: InfogramEmbedStoryblok = {
+	infogramUrl: validUrl,
 	layoutVariant: "constrained",
 	displayMode: "standalone",
 	component: "infogramEmbed",
 	_uid: "mock-uid-1",
+	content: { type: "doc", content: [] },
 };
-describe("InfogramEmbed", () => {
-	const validUrl =
-		"https://infogram.com/ta-cancer-decisions-by-type-1hxj48nzk5x54vg";
-	const infogramId = "ta-cancer-decisions-by-type-1hxj48nzk5x54vg";
 
+describe("StoryblokInfogramEmbed", () => {
 	beforeEach(() => {
-		// Cleanup and reset global object before each test
-		const script = screen.queryByTestId("infogram-async");
-		if (script) script.remove();
-		// document.getElementById("infogram-async")?.remove();
-		window.infogramEmbeds = {
-			load: jest.fn(),
-		};
+		// Cleanup and mock global object
+		screen.queryByTestId("mock-script")?.remove();
+		window.infogramEmbed = { load: jest.fn() };
 	});
 
-	it("renders with valid URL and default variants", () => {
-		render(<StoryblokInfogramEmbed blok={mockInfogramProps} />);
+	it("renders standalone mode with valid URL", () => {
+		render(<StoryblokInfogramEmbed blok={baseProps} />);
 		const embed = screen.getByTestId(infogramId);
 		expect(embed).toBeInTheDocument();
 		expect(embed).toHaveAttribute("data-id", infogramId);
 		expect(embed).toHaveAttribute("data-mode-type", "standalone");
 		expect(embed).toHaveAttribute("data-type", "interactive");
 	});
-	it("renders with RichText", () => {
+
+	it("renders with rich text mode and fallback content", () => {
 		render(
 			<StoryblokInfogramEmbed
 				blok={{
-					...mockInfogramProps,
+					...baseProps,
 					displayMode: "withRichText",
+					content: {
+						type: "doc",
+						content: [
+							{
+								type: "text",
+								text: "Default Content Value",
+							},
+						],
+					},
 				}}
 			/>
 		);
-		const embed = screen.getByTestId(infogramId);
-		expect(embed).toHaveAttribute("data-mode-type", "withRichText");
+		expect(screen.getByTestId("infogram-richtext")).toBeInTheDocument();
+		expect(screen.getByText("Default Content Value")).toBeInTheDocument();
+		expect(screen.getByTestId(infogramId)).toBeInTheDocument();
 	});
-	it("renders with a full width layoutVariant", () => {
+
+	it("renders with full width layoutVariant", () => {
 		render(
 			<StoryblokInfogramEmbed
 				blok={{
-					...mockInfogramProps,
+					...baseProps,
 					layoutVariant: "fullwidth",
 				}}
 			/>
 		);
 		const embed = screen.getByTestId(infogramId);
 		expect(embed.className).toContain("infogram-embed");
-		expect(embed.className).not.toContain("infogramEmbed__constarined");
+		expect(embed.className).not.toContain("infogramEmbed--constrained");
 	});
 
-	it("shows error message when URL is invalid", () => {
+	it("shows error if URL is missing", () => {
 		render(
 			<StoryblokInfogramEmbed
 				blok={{
-					...mockInfogramProps,
+					...baseProps,
 					infogramUrl: "",
 				}}
 			/>
@@ -82,39 +90,21 @@ describe("InfogramEmbed", () => {
 		).toBeInTheDocument();
 	});
 
-	it("does not inject script again if already in DOM", () => {
-		// Manually add the script element before rendering
+	it("does not re-inject script if already in DOM", () => {
 		const script = document.createElement("script");
 		script.id = "infogram-async";
 		document.body.appendChild(script);
 
-		render(
-			<StoryblokInfogramEmbed
-				blok={{
-					...mockInfogramProps,
-					infogramUrl: validUrl,
-				}}
-			/>
-		);
-
+		render(<StoryblokInfogramEmbed blok={baseProps} />);
 		expect(screen.queryByTestId("mock-script")).not.toBeInTheDocument();
 	});
 
-	it("calls infogramEmbeds.load if script already exists", () => {
-		// Create script before render to simulate existing load
+	it("calls infogramEmbedNew.load if script already exists", () => {
 		const script = document.createElement("script");
 		script.id = "infogram-async";
 		document.body.appendChild(script);
 
-		render(
-			<StoryblokInfogramEmbed
-				blok={{
-					...mockInfogramProps,
-					infogramUrl: validUrl,
-				}}
-			/>
-		);
-
-		expect(window.infogramEmbeds?.load).toHaveBeenCalled();
+		render(<StoryblokInfogramEmbed blok={baseProps} />);
+		expect(window.infogramEmbed?.load).toHaveBeenCalled();
 	});
 });
