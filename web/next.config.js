@@ -147,24 +147,6 @@ const nextConfig = {
 		//   3. SOURCE: /get-involved/our-committees/join-a-committee/apply-to-be-a-chair-on-a-nice-committee
 		//      DESTINATION: n/a stay in Orchard until we figure out the TRAC embed
 
-		// CONFLICTING:
-		// === ORIGINAL NEXTWEB REDIRECT
-		// {
-		// 		source:
-		// 			"/about/nice-communities/library-and-knowledge-services-staff/buy-books--journals-and-databases/organisations-eligible-to-use-the-framework",
-		// 		destination:
-		// 			"/library-and-knowledge-services/buy-books-journals-and-databases",
-		// 		permanent: true,
-		// 	}, // ORIGINAL
-
-		// 	// === BLOCK GENERATED FROM EXCEL MIGRATION PHASE 2 ===
-		// 	{
-		// 		source:
-		// 			"/about/nice-communities/library-and-knowledge-services-staff/buy-books--journals-and-databases/organisations-eligible-to-use-the-framework",
-		// 		destination: "/library-and-knowledge-services",
-		// 		permanent: true,
-		// 	}, // Generated from Excel Migration Phase 2 URLs
-
 		return [
 			// === BLOCK GENERATED FROM EXCEL MIGRATION PHASE 2 ===
 			{
@@ -255,12 +237,6 @@ const nextConfig = {
 			}, // ORIGINAL
 
 			// === BLOCK GENERATED FROM EXCEL MIGRATION PHASE 2 ===
-			{
-				source:
-					"/about/nice-communities/library-and-knowledge-services-staff/buy-books--journals-and-databases/organisations-eligible-to-use-the-framework",
-				destination: "/library-and-knowledge-services",
-				permanent: true,
-			}, // Generated from Excel Migration Phase 2 URLs
 			{
 				source:
 					"/about/nice-communities/library-and-knowledge-services-staff/buy-books--journals-and-databases/provider-information/core-standards--agents",
@@ -1640,11 +1616,6 @@ const nextConfig = {
 				source: "/standards-and-indicators/how-to-use-quality-standards",
 				destination:
 					"/what-nice-does/standards-and-indicators/quality-standards/how-to-use-quality-standards",
-				permanent: true,
-			}, // Generated from Excel Migration Phase 2 URLs
-			{
-				source: "/forms/interventional-procedures-register-an-interest",
-				destination: "form",
 				permanent: true,
 			}, // Generated from Excel Migration Phase 2 URLs
 			{
