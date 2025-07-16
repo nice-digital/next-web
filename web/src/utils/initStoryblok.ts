@@ -98,11 +98,9 @@ const infoPageComponents = {
 	cardGridRowCallout: CardGridRow,
 	cardGridRowCalloutWithImage: CardGridRow,
 	imageRichText: StoryblokImageRichText,
-	// infogramEmbedNEW: ClientInfogramEmbed,
 	infogramEmbed: ClientInfogramEmbed,
 	infoPage: InfoPage,
 	nestedTable: StoryblokTable,
-	// infogramRichText: StoryblokInfogramEmbedRichText,
 };
 
 export const allComponents: SbReactComponentsMap = {
