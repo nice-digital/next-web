@@ -562,14 +562,14 @@ const nextConfig = {
 				source:
 					"/get-involved/meetings-in-public/public-board-meetings/public-board-meeting-agenda-and-papers--july-2022",
 				destination:
-					"/about-us/our-board/public-board-meetings/2022/public-board-meeting-agenda-and-papers:-july-2022",
+					"/about-us/our-board/public-board-meetings/2022/public-board-meeting-agenda-and-papers-july-2022",
 				permanent: true,
 			}, // Generated from Excel Migration Phase 2 URLs
 			{
 				source:
 					"/get-involved/meetings-in-public/public-board-meetings/public-board-meeting-agenda-and-papers--july-2023",
 				destination:
-					"/about-us/our-board/public-board-meetings/2023/public-board-meeting-agenda-and-papers:-july-2023",
+					"/about-us/our-board/public-board-meetings/2023/public-board-meeting-agenda-and-papers-july-2023",
 				permanent: true,
 			}, // Generated from Excel Migration Phase 2 URLs
 			{
@@ -1022,7 +1022,7 @@ const nextConfig = {
 				source:
 					"/get-involved/meetings-in-public/public-board-meetings/agenda-papers-september-2022",
 				destination:
-					"/about-us/our-board/public-board-meetings/2022/public-board-meeting-agenda-and-papers:-september-2022",
+					"/about-us/our-board/public-board-meetings/2022/public-board-meeting-agenda-and-papers-september-2022",
 				permanent: true,
 			}, // Generated from Excel Migration Phase 2 URLs
 			{
@@ -1043,7 +1043,7 @@ const nextConfig = {
 				source:
 					"/get-involved/meetings-in-public/public-board-meetings/agenda-papers-december-2022",
 				destination:
-					"/about-us/our-board/public-board-meetings/2022/public-board-meeting-agenda-and-papers:-december-2022",
+					"/about-us/our-board/public-board-meetings/2022/public-board-meeting-agenda-and-papers-december-2022",
 				permanent: true,
 			}, // Generated from Excel Migration Phase 2 URLs
 			{
@@ -1153,14 +1153,14 @@ const nextConfig = {
 				source:
 					"/get-involved/meetings-in-public/public-board-meetings/agenda-papers-may-2022",
 				destination:
-					"/about-us/our-board/public-board-meetings/2022/public-board-meeting-agenda-and-papers:-may-2022",
+					"/about-us/our-board/public-board-meetings/2022/public-board-meeting-agenda-and-papers-may-2022",
 				permanent: true,
 			}, // Generated from Excel Migration Phase 2 URLs
 			{
 				source:
 					"/get-involved/meetings-in-public/public-board-meetings/agenda-papers-may-2023",
 				destination:
-					"/about-us/our-board/public-board-meetings/2023/public-board-meeting-agenda-and-papers:-may-2023",
+					"/about-us/our-board/public-board-meetings/2023/public-board-meeting-agenda-and-papers-may-2023",
 				permanent: true,
 			}, // Generated from Excel Migration Phase 2 URLs
 			{
