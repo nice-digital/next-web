@@ -39,7 +39,6 @@ function SiteMap(): void {
 export async function getServerSideProps({ res }: { res: NextApiResponse }) {
 	// Update this array as sections are migrated into NextWeb
 	const nextWebSections = [
-		"about",
 		"about-us",
 		"accessibility",
 		"careers",
