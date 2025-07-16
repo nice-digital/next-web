@@ -124,9 +124,8 @@ $nds-panel-border-color: #adadad;
 }
 
 .panel--reveal {
-  border-color: $nds-panel-border-color;
   // this should be panel__reveal but was accidentally input to the gcs as panel--reveal
-  border-left: 4px solid;
+  border-left: 4px solid $nds-panel-border-color;
   margin: 1rem 1rem 4rem;
   overflow: auto;
   padding: 0.5rem 1rem;
