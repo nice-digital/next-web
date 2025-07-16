@@ -41,6 +41,7 @@ export async function getServerSideProps({ res }: { res: NextApiResponse }) {
 	const nextWebSections = [
 		"about",
 		"about-us",
+		"accessibility",
 		"careers",
 		"contact-us",
 		"cookies",
