@@ -28,7 +28,9 @@ exports[`cardListSection component should match snapshot when card section list 
               </a>
             </p>
           </header>
-          <p>
+          <p
+            class="card__summary"
+          >
             Mock card summary 1
           </p>
         </li>
@@ -91,7 +93,9 @@ exports[`cardListSection component should match snapshot with default values 1`]
               </a>
             </p>
           </header>
-          <p>
+          <p
+            class="card__summary"
+          >
             Mock card summary 1
           </p>
         </li>
@@ -154,7 +158,9 @@ exports[`cardListSection component should match snapshot with transparent theme 
               </a>
             </p>
           </header>
-          <p>
+          <p
+            class="card__summary"
+          >
             Mock card summary 1
           </p>
         </li>
