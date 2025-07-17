@@ -1,3 +1,13 @@
+@use '@nice-digital/nds-core/scss/spacing';
+@use '@nice-digital/nds-core/scss/utils';
+
 .heading {
   margin-top: 0;
+}
+
+.download {
+  display: block;
+  margin-bottom: utils.rem(spacing.$medium);
+  margin-right: 0;
+  text-align: center;
 }

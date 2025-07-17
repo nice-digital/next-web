@@ -16,32 +16,34 @@ const props: ProjectConsultationDocumentsLinkProps = {
 };
 
 describe("ProjectConsultationDocumentsLink", () => {
-	it("should render a single document link when there is one consultations active", async () => {
+	it("should render a single document link when there is one consultation active", async () => {
 		const singleConsultation = [...consultationUrls];
 		singleConsultation.length = 1;
 
 		const mockProps = {
-			...props,
 			consultationUrls: singleConsultation,
 		};
+
 		render(<ProjectConsultationDocumentsLink {...mockProps} />);
 
-		expect(
-			screen.getByText("Read the consultation documents")
-		).toBeInTheDocument();
+		const consultationDocumentsLink = screen.getByText(
+			"Consultation documents"
+		);
+
+		expect(consultationDocumentsLink).toBeInTheDocument();
+		expect(consultationDocumentsLink).toHaveAttribute(
+			"href",
+			singleConsultation[0]
+		);
 	});
 
 	it("should render indexed document links when there are multiple consultations active", async () => {
 		render(<ProjectConsultationDocumentsLink {...props} />);
 
-		expect(
-			screen.getByText("Read consultation 1 documents")
-		).toBeInTheDocument();
-		expect(
-			screen.getByText("Read consultation 2 documents")
-		).toBeInTheDocument();
-		expect(
-			screen.getByText("Read consultation 3 documents")
-		).toBeInTheDocument();
+		for (let i = 1; i <= props.consultationUrls.length; i++) {
+			expect(
+				screen.getByText(`Consultation ${i} documents`)
+			).toBeInTheDocument();
+		}
 	});
 });

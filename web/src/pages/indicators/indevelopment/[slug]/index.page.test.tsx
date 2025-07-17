@@ -331,7 +331,7 @@ describe("/indevelopment/[slug].page", () => {
 			render(<InDevelopmentPage {...props} />);
 
 			const consultationLink = screen.getByRole("link", {
-				name: "Read the consultation documents",
+				name: "Consultation documents",
 			});
 
 			expect(consultationLink).toBeInTheDocument();

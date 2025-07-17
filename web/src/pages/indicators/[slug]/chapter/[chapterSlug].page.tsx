@@ -5,9 +5,9 @@ import { Breadcrumb, Breadcrumbs } from "@nice-digital/nds-breadcrumbs";
 import { Grid, GridItem } from "@nice-digital/nds-grid";
 
 import {
-	OnThisPage,
-	OnThisPageSection,
-} from "@/components/OnThisPage/OnThisPage";
+	OnThisPageBasic,
+	type OnThisPageBasicSection,
+} from "@/components/OnThisPageBasic/OnThisPageBasic";
 import { ProductHorizontalNav } from "@/components/ProductHorizontalNav/ProductHorizontalNav";
 import {
 	ProductPageHeading,
@@ -38,7 +38,7 @@ export type IndicatorChapterPageProps = {
 	chapterTitle: string;
 	pdfDownloadPath: string | null;
 	chapters: ChapterHeading[];
-	chapterSections: OnThisPageSection[];
+	chapterSections: OnThisPageBasicSection[];
 	hasToolsAndResources: boolean;
 	hasInfoForPublicResources: boolean;
 	hasEvidenceResources: boolean;
@@ -105,24 +105,17 @@ export default function IndicatorChapterPage({
 				</GridItem>
 
 				<GridItem cols={12} md={8} lg={9} elementType="section">
-					<Grid reverse gutter="loose">
-						{hasOnThisPageMenu ? (
-							<GridItem cols={12} md={4} lg={3}>
-								<OnThisPage sections={chapterSections} />
-							</GridItem>
-						) : null}
-						<GridItem
-							cols={12}
-							md={hasOnThisPageMenu ? 8 : 12}
-							lg={hasOnThisPageMenu ? 9 : 12}
-						>
-							<div
-								dangerouslySetInnerHTML={{ __html: chapterHTML }}
-								className={styles.chapterContent}
-							/>
-							<PublicationsPrevNext chapters={chapters} />
-						</GridItem>
-					</Grid>
+					{hasOnThisPageMenu ? (
+						<div className="hide-print">
+							<OnThisPageBasic sections={chapterSections} />
+						</div>
+					) : null}
+
+					<div
+						dangerouslySetInnerHTML={{ __html: chapterHTML }}
+						className={styles.chapterContent}
+					/>
+					<PublicationsPrevNext chapters={chapters} />
 				</GridItem>
 			</Grid>
 		</>
