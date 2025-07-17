@@ -32,7 +32,7 @@
     "extends @nice-digital/browserslist-config"
   ],
   "dependencies": {
-    "@nice-digital/design-system": "^5.5.3-alpha.2",
+    "@nice-digital/design-system": "^5.5.4",
     "@nice-digital/global-nav": "^7.1.1073",
     "@nice-digital/nds-prev-next": "^3.0.2",
     "@nice-digital/search-client": "^2.1.1540-SRCH-780-Research-Re",
