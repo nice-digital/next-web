@@ -38,7 +38,28 @@ function SiteMap(): void {
 
 export async function getServerSideProps({ res }: { res: NextApiResponse }) {
 	// Update this array as sections are migrated into NextWeb
-	const nextWebSections = ["news", "careers", "library-and-knowledge-services"];
+	const nextWebSections = [
+		"about-us",
+		"accessibility",
+		"careers",
+		"contact-us",
+		"cookies",
+		"events",
+		"freedom-of-information",
+		"get-involved",
+		"guidance",
+		"implementing-nice-guidance",
+		"library-and-knowledge-services",
+		"news",
+		"nice-newsletters-and-alerts",
+		"patient-safety",
+		"position-statements",
+		"privacy-notice",
+		"rapid-c-19",
+		"reusing-our-content",
+		"terms-and-conditions",
+		"what-nice-does",
+	];
 	const links: SBLink[] = [];
 
 	for (const section of nextWebSections) {
