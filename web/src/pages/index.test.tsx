@@ -39,6 +39,7 @@ jest.mock("@storyblok/react", () => {
 		})),
 	};
 });
+
 // Mock a second article with a different ID so we avoid duplicate key warnings
 const secondNewsArticle = {
 	...mockNewsArticle,

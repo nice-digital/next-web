@@ -30,9 +30,11 @@ export const BasicCardGrid = ({
 
 				return (
 					<GridItem cols={12} md={{ cols: 4 }} key={_uid}>
-						<Card headingText={heading} link={cardLink || undefined}>
-							{body}
-						</Card>
+						<Card
+							headingText={heading}
+							link={cardLink || undefined}
+							summary={body}
+						/>
 					</GridItem>
 				);
 			})}

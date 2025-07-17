@@ -5,6 +5,8 @@ import applyCaseMiddleware from "axios-case-converter";
 import { camelCase } from "camel-case";
 
 import { cache, getCacheKey } from "@/cache";
+import { logger } from "@/logger";
+import { GENERIC_ERROR_MESSAGE } from "@/utils/storyblok";
 
 export const client: AxiosInstance = applyCaseMiddleware(
 	axios.create({
@@ -32,18 +34,30 @@ export const getFeedBodyUnCached = async <TResponse>(
 	apiKey: string,
 	acceptHeader = "application/json"
 ): Promise<TResponse> => {
-	const { data } = await client.get<TResponse>(origin + path, {
-		headers: {
-			"Api-Key": apiKey,
-			Accept: acceptHeader,
-		},
-		validateStatus: (status: number) => {
-			// We don't want feed 404 responses to throw an error, so that we can show users a not found page rather than a server error.
-			return (status >= 200 && status < 300) || status == 404;
-		},
-	});
+	try {
+		const { data } = await client.get<TResponse>(origin + path, {
+			headers: {
+				"Api-Key": apiKey,
+				Accept: acceptHeader,
+			},
+			validateStatus: (status: number) => {
+				// We don't want feed 404 responses to throw an error, so that we can show users a not found page rather than a server error.
+				return (status >= 200 && status < 300) || status == 404;
+			},
+		});
 
-	return data;
+		return data;
+	} catch (error) {
+		// Something unexpected went wrong - this could include network errors, invalid URLs, or too many redirects
+		logger.error(
+			`Error fetching uncached feed - url: ${origin + path}, error: ${
+				error instanceof Error ? error.message : String(error)
+			}`
+		);
+
+		// Re-throw a generic error message to avoid exposing implementation details
+		throw new Error(GENERIC_ERROR_MESSAGE);
+	}
 };
 
 /**
@@ -60,8 +74,24 @@ export const getFeedBodyCached = async <T>(
 	path: string,
 	ttl: number,
 	getUncachedAction: () => Promise<T>
-): Promise<T> =>
-	cache.wrap<T>(getCacheKey(groupCacheKey, path), getUncachedAction, { ttl });
+): Promise<T> => {
+	try {
+		return await cache.wrap<T>(
+			getCacheKey(groupCacheKey, path),
+			getUncachedAction,
+			{ ttl }
+		);
+	} catch (error) {
+		logger.error(
+			`Error retrieving feed from cache or fallback - cacheKey: ${getCacheKey(
+				groupCacheKey,
+				path
+			)}, error: ${error instanceof Error ? error.message : String(error)}`
+		);
+
+		throw new Error(GENERIC_ERROR_MESSAGE);
+	}
+};
 
 /**
  * Gets a response stream from a remote API endpoint, usually used for binary files e.g. PDFs (or mobi/epub etc).
@@ -76,12 +106,22 @@ export const getResponseStream = async (
 	path: string,
 	apiKey: string
 ): Promise<Readable> => {
-	const { data } = await axios.get<Readable>(origin + path, {
-		headers: {
-			"Api-Key": apiKey,
-		},
-		responseType: "stream",
-		maxBodyLength: Infinity,
-	});
-	return data;
+	try {
+		const { data } = await axios.get<Readable>(origin + path, {
+			headers: {
+				"Api-Key": apiKey,
+			},
+			responseType: "stream",
+			maxBodyLength: Infinity,
+		});
+		return data;
+	} catch (error) {
+		logger.error(
+			`Error fetching response stream - url: ${origin + path}, error: ${
+				error instanceof Error ? error.message : String(error)
+			}`
+		);
+
+		throw new Error(GENERIC_ERROR_MESSAGE);
+	}
 };
