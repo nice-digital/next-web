@@ -21,7 +21,7 @@ module.exports = {
 		"/cks-is-only-available-in-the-uk",
 		"/contact-us",
 		"/cookies",
-		"events",
+		"/events",
 		"/forms/*",
 		"/guidance",
 		"/guidance/errortest",
