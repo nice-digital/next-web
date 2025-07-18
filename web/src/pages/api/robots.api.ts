@@ -15,6 +15,10 @@ Disallow: /
 Crawl-delay: 1
 User-agent: *
 Disallow: /forms/*
+Disallow: /bnfc-via-nice-is-only-available-in-the-uk
+Disallow: /bnf-via-nice-is-only-available-in-the-uk
+Disallow: /cks-is-only-available-in-the-uk
+Disallow: /cks-end-user-licence-agreement
 Allow: /
 	`);
 	}
