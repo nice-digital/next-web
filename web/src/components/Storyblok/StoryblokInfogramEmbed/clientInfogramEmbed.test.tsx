@@ -6,14 +6,14 @@ import { ClientInfogramEmbed } from "./ClientInfogramEmbed";
 
 const mockBlok: InfogramEmbedStoryblok = {
 	infogramUrl: "https://infogram.com/sample-id",
-	infogramVariant: "interactive",
-	layoutVariant: "default",
+	layoutVariant: "constrained",
 	component: "infogramEmbed",
 	_uid: "test-uid-1",
+	displayMode: "standalone",
 };
 
-jest.mock("./InfogramEmbed", () => ({
-	InfogramEmbed: jest.fn(({ blok }) => (
+jest.mock("./StoryblokInfogramEmbed", () => ({
+	StoryblokInfogramEmbed: jest.fn(({ blok }) => (
 		<div data-testid="mock-infogram">{blok.infogramUrl}</div>
 	)),
 }));

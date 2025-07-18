@@ -378,8 +378,8 @@ export interface GridStoryblok {
     | ImageRichTextStoryblok
     | InDepthArticleStoryblok
     | InfogramEmbedStoryblok
-    | InfogramEmbedCopyStoryblok
-    | InfogramRichTextStoryblok
+    | InfogramEmbedOldStoryblok
+    | InfogramRichTextOldStoryblok
     | InfoPageStoryblok
     | ListItemStoryblok
     | MarkdownStoryblok
@@ -545,29 +545,34 @@ export interface InDepthArticleStoryblok {
 }
 
 export interface InfogramEmbedStoryblok {
+  displayMode: "withRichText" | "standalone";
   infogramUrl: string;
   layoutVariant: "constrained" | "fullwidth";
+  content: RichtextStoryblok;
+  infogramPosition?: "left" | "right";
+  infogramSize?: "medium" | "large";
+  hideInfogramOnSmallScreens?: "true" | "false";
   component: "infogramEmbed";
   _uid: string;
   [k: string]: any;
 }
 
-export interface InfogramEmbedCopyStoryblok {
+export interface InfogramEmbedOldStoryblok {
   displayMode: "withRichText" | "standalone";
   infogramUrl: string;
   layoutVariant: "constrained" | "fullwidth";
-  component: "infogramEmbed_copy";
+  component: "infogramEmbedOld";
   _uid: string;
   [k: string]: any;
 }
 
-export interface InfogramRichTextStoryblok {
+export interface InfogramRichTextOldStoryblok {
   infogramPosition?: "left" | "right";
-  infogramSize?: "" | "medium" | "large";
+  infogramSize?: "medium" | "large";
   hideInfogramOnSmallScreens?: "true" | "false";
   content: RichtextStoryblok;
-  infogram: (InfogramEmbedStoryblok | InfogramEmbedStoryblok)[];
-  component: "infogramRichText";
+  infogram: InfogramEmbedOldStoryblok[];
+  component: "infogramRichTextOld";
   _uid: string;
   [k: string]: any;
 }
@@ -702,8 +707,8 @@ export interface PageStoryblok {
     | ImageRichTextStoryblok
     | InDepthArticleStoryblok
     | InfogramEmbedStoryblok
-    | InfogramEmbedCopyStoryblok
-    | InfogramRichTextStoryblok
+    | InfogramEmbedOldStoryblok
+    | InfogramRichTextOldStoryblok
     | InfoPageStoryblok
     | ListItemStoryblok
     | MarkdownStoryblok
