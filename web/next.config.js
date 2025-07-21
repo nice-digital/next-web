@@ -534,21 +534,7 @@ const nextConfig = {
 					"/about/what-we-do/our-programmes/nice-guidance/nice-technology-appraisal-guidance/charging/procedure-tahst",
 				permanent: true,
 			}, // Generated from Excel Rewrite Rules (parseable) A->B
-			{
-				source:
-					"/about/what-we-do/our-programmes/nice-guidance/nice-technology-appraisal-guidance/charging/procedure-ta",
-				destination:
-					"/about/what-we-do/our-programmes/nice-guidance/nice-technology-appraisal-guidance/charging/procedure-tahst",
-				permanent: true,
-			}, // Generated from Excel Rewrite Rules (parseable) A->B
-			{
-				source:
-					"/Media/Default/About/what-we-do/NICE-guidance/technology-appraisal-guidance/ta-hst-charging-process.pdf",
-				destination:
-					"/about/what-we-do/our-programmes/nice-guidance/technology-appraisal-guidance/costs--charging-for-technology-appraisals-and-highly-specialised-technologies/technology-appraisals-and-highly-specialised-technologies-charging-timeline",
-				permanent: true,
-			}, // Generated from Excel Rewrite Rules (parseable) A->B
-			{
+									{
 				source:
 					"/about/what-we-do/our-programmes/nice-guidance/nice-technology-appraisal-guidance/process/sta-timeline",
 				destination:
@@ -596,14 +582,7 @@ const nextConfig = {
 					"/about/what-we-do/our-programmes/nice-guidance/nice-technology-appraisal-guidance/abbreviated-technology-appraisal-process-consultation",
 				permanent: true,
 			}, // Generated from Excel Rewrite Rules (parseable) A->B
-			{
-				source:
-					"/about/what-we-do/our-programmes/nice-guidance/nice-technology-appraisal-guidance/abbreviated-technology-appraisal-process-consultation",
-				destination:
-					"/About/What-we-do/Our-Programmes/NICE-guidance/NICE-technology-appraisal-guidance",
-				permanent: true,
-			}, // Generated from Excel Rewrite Rules (parseable) A->B
-			{
+						{
 				source:
 					"/about/what-we-do/life-sciences/scientific-advice/models-for-the-evaluation-and-purchase-of-antimicrobials/ceftazidime-with-avibactam",
 				destination: "/guidance/hte1",
@@ -616,14 +595,7 @@ const nextConfig = {
 					"/about/what-we-do/our-programmes/nice-guidance/nice-technology-appraisal-guidance",
 				permanent: true,
 			}, // Generated from Excel Rewrite Rules (parseable) A->B
-			{
-				source:
-					"/about/nice-communities/nice-and-the-public/public-involvement/public-involvement-programme/patient-public-involvement-policy",
-				destination:
-					"/about/nice-communities/nice-and-the-public/public-involvement/patient-and-public-involvement-policy",
-				permanent: true,
-			}, // Generated from Excel Rewrite Rules (parseable) A->B
-			{
+						{
 				source:
 					"/about/what-we-do/life-sciences/scientific-advice/models-for-the-evaluation-and-purchase-of-antimicrobials/cefiderocol",
 				destination: "/guidance/hte2",
@@ -657,13 +629,7 @@ const nextConfig = {
 					"/about/what-we-do/life-sciences/scientific-advice/education-and-training",
 				permanent: true,
 			}, // Generated from Excel Rewrite Rules (parseable) A->B
-			{
-				source:
-					"/about/what-we-do/our-programmes/nice-guidance/nice-guidelines/maintaining-and-updating-our-guideline-portfolio",
-				destination: "/about/what-we-do/prioritising-our-guidance-topics",
-				permanent: true,
-			}, // Generated from Excel Rewrite Rules (parseable) A->B
-			{
+						{
 				source:
 					"/about/what-we-do/our-programmes/nice-guidance/nice-interventional-procedures-guidance/ip-register-an-interest",
 				destination: "/forms/interventional-procedures-register-an-interest",
@@ -696,14 +662,7 @@ const nextConfig = {
 					"/about/what-we-do/life-sciences/scientific-advice/education-and-training",
 				permanent: true,
 			}, // Generated from Excel Rewrite Rules (parseable) A->B
-			{
-				source:
-					"/about/what-we-do/our-programmes/nice-guidance/nice-technology-appraisal-guidance/summary-of-decisions",
-				destination:
-					"/about/what-we-do/our-programmes/nice-guidance/nice-technology-appraisal-guidance/data",
-				permanent: true,
-			}, // Generated from Excel Rewrite Rules (parseable) A->B
-			{
+						{
 				source:
 					"/about/what-we-do/our-programmes/nice-guidance/nice-guidelines/using-nice-guidelines-to-make-decisions",
 				destination:
@@ -717,13 +676,7 @@ const nextConfig = {
 					"/about/what-we-do/life-sciences/scientific-advice/education-and-training",
 				permanent: true,
 			}, // Generated from Excel Rewrite Rules (parseable) A->B
-			{
-				source:
-					"/about/what-we-do/our-programmes/nice-guidance/nice-technology-appraisal-guidance/cancer-drugs-fund",
-				destination: "/about/what-we-do/our-programmes/managed-access",
-				permanent: true,
-			}, // Generated from Excel Rewrite Rules (parseable) A->B
-			{
+						{
 				source:
 					"/about/what-we-do/our-programmes/nice-guidance/interventional-procedures-guidance/recommendations",
 				destination:
@@ -765,14 +718,7 @@ const nextConfig = {
 					"/about/what-we-do/our-programmes/nice-guidance/nice-guidelines/types-of-guideline",
 				permanent: true,
 			}, // Generated from Excel Rewrite Rules (parseable) A->B
-			{
-				source:
-					"/about/what-we-do/our-programmes/nice-guidance/nice-guidelines/types-of-guideline",
-				destination:
-					"/about/what-we-do/our-programmes/nice-guidance/nice-guidelines/how-we-develop-nice-guidelines",
-				permanent: true,
-			}, // Generated from Excel Rewrite Rules (parseable) A->B
-			{
+						{
 				source:
 					"/Media/Default/About/Who-we-are/Policies-and-procedures/Information-charter.pdf",
 				destination:
@@ -812,19 +758,7 @@ const nextConfig = {
 					"/about/what-we-do/our-programmes/nice-guidance/nice-technology-appraisal-guidance",
 				permanent: true,
 			}, // Generated from Excel Rewrite Rules (parseable) A->B
-			{
-				source:
-					"/about/what-we-do/life-sciences/office-for-market-access/identify-the-most-appropriate-routes-to-nhs-access",
-				destination: "/about/what-we-do/life-sciences/nice-advice-service",
-				permanent: true,
-			}, // Generated from Excel Rewrite Rules (parseable) A->B
-			{
-				source:
-					"/about/what-we-do/life-sciences/office-for-market-access/changing-healthcare-landscape-and-your-technology",
-				destination: "/about/what-we-do/life-sciences/nice-advice-service",
-				permanent: true,
-			}, // Generated from Excel Rewrite Rules (parseable) A->B
-			{
+									{
 				source:
 					"/about/what-we-do/life-sciences/scientific-advice/models-for-the-evaluation-and-purchase-of-antimicrobials",
 				destination:
@@ -869,26 +803,7 @@ const nextConfig = {
 				destination: "/about/what-we-do/nice-international",
 				permanent: true,
 			}, // Generated from Excel Rewrite Rules (parseable) A->B
-			{
-				source:
-					"/about/what-we-do/life-sciences/office-for-market-access/early-access-to-medicines-scheme",
-				destination:
-					"/about/what-we-do/life-sciences/nice-advice-service/early-access-to-medicines-scheme",
-				permanent: true,
-			}, // Generated from Excel Rewrite Rules (parseable) A->B
-			{
-				source:
-					"/about/what-we-do/life-sciences/office-for-market-access/exploring-your-value-proposition",
-				destination: "/about/what-we-do/life-sciences/nice-advice-service",
-				permanent: true,
-			}, // Generated from Excel Rewrite Rules (parseable) A->B
-			{
-				source:
-					"/about/what-we-do/life-sciences/office-for-market-access/safe-harbour-engagement-meetings",
-				destination: "/about/what-we-do/life-sciences/nice-advice-service",
-				permanent: true,
-			}, // Generated from Excel Rewrite Rules (parseable) A->B
-			{
+												{
 				source:
 					"/about/what-we-do/our-programmes/nice-guidance/chte-methods-and-processes-consultation",
 				destination:
@@ -916,14 +831,7 @@ const nextConfig = {
 					"/guidance/health-protection/communicable-diseases/antimicrobial-stewardship",
 				permanent: true,
 			}, // Generated from Excel Rewrite Rules (parseable) A->B
-			{
-				source:
-					"/about/what-we-do/into-practice/measuring-the-uptake-of-nice-guidance/uptake-data",
-				destination:
-					"/about/what-we-do/into-practice/measuring-the-uptake-of-nice-guidance",
-				permanent: true,
-			}, // Generated from Excel Rewrite Rules (parseable) A->B
-			{
+						{
 				source:
 					"/about/what-we-do/our-programmes/local-practice-collection/shared-learning-awards",
 				destination:
@@ -944,19 +852,7 @@ const nextConfig = {
 					"/about/what-we-do/our-programmes/commissioning-support-programme",
 				permanent: true,
 			}, // Generated from Excel Rewrite Rules (parseable) A->B
-			{
-				source:
-					"/about/what-we-do/life-sciences/scientific-advice/set-scientific-advice-process",
-				destination: "/about/what-we-do/life-sciences/nice-advice-service",
-				permanent: true,
-			}, // Generated from Excel Rewrite Rules (parseable) A->B
-			{
-				source:
-					"/about/what-we-do/life-sciences/scientific-advice/set-scientific-advice-process",
-				destination: "/about/what-we-do/life-sciences/nice-advice-service",
-				permanent: true,
-			}, // Generated from Excel Rewrite Rules (parseable) A->B
-			{
+									{
 				source:
 					"/about/what-we-do/life-sciences/scientific-advice/nice-cadth-scientific-advice",
 				destination: "/about/what-we-do/life-sciences/nice-advice-service",
@@ -969,32 +865,13 @@ const nextConfig = {
 					"/about/what-we-do/our-programmes/commissioning-support-programme",
 				permanent: true,
 			}, // Generated from Excel Rewrite Rules (parseable) A->B
-			{
-				source:
-					"/about/what-we-do/life-sciences/scientific-advice/nice-mhra-scientific-advice",
-				destination: "/about/what-we-do/life-sciences/nice-advice-service",
-				permanent: true,
-			}, // Generated from Excel Rewrite Rules (parseable) A->B
-			{
+						{
 				source:
 					"/about/what-we-do/our-programmes/nice-advice/evidence-summaries-new-medicines",
 				destination: "/about/what-we-do/our-programmes/nice-advice",
 				permanent: true,
 			}, // Generated from Excel Rewrite Rules (parseable) A->B
-			{
-				source:
-					"/about/what-we-do/life-sciences/scientific-advice/frequently-asked-questions",
-				destination: "/about/what-we-do/life-sciences/nice-advice-service",
-				permanent: true,
-			}, // Generated from Excel Rewrite Rules (parseable) A->B
-			{
-				source:
-					"/about/what-we-do/life-sciences/scientific-advice/express-scientific-advice",
-				destination:
-					"/about/what-we-do/life-sciences/scientific-advice/set-scientific-advice-process",
-				permanent: true,
-			}, // Generated from Excel Rewrite Rules (parseable) A->B
-			{
+									{
 				source:
 					"/about/what-we-do/evidence-services/evidence-search/evidence-search-content",
 				destination:
@@ -1020,27 +897,14 @@ const nextConfig = {
 					"/about/what-we-do/our-programmes/commissioning-support-programme",
 				permanent: true,
 			}, // Generated from Excel Rewrite Rules (parseable) A->B
-			{
-				source:
-					"/about/what-we-do/life-sciences/scientific-advice/light-scientific-advice",
-				destination:
-					"/about/what-we-do/life-sciences/scientific-advice/express-scientific-advice",
-				permanent: true,
-			}, // Generated from Excel Rewrite Rules (parseable) A->B
-			{
+						{
 				source:
 					"/about/what-we-do/our-programmes/nice-guidance/chte-methods-consultation",
 				destination:
 					"/about/what-we-do/our-programmes/nice-guidance/nice-technology-appraisal-guidance",
 				permanent: true,
 			}, // Generated from Excel Rewrite Rules (parseable) A->B
-			{
-				source:
-					"/about/what-we-do/life-sciences/scientific-advice/education-and-training",
-				destination: "/about/what-we-do/life-sciences/nice-advice-service",
-				permanent: true,
-			}, // Generated from Excel Rewrite Rules (parseable) A->B
-			{
+						{
 				source:
 					"/about/what-we-do/evidence-services/evidence-search/how-to-search",
 				destination:
@@ -1121,12 +985,7 @@ const nextConfig = {
 				destination: "/guidance/cg45",
 				permanent: true,
 			}, // Generated from Excel Rewrite Rules (parseable) A->B
-			{
-				source: "/nicemedia/live/11824/36191/36191.pdf",
-				destination: "/guidance/cg53",
-				permanent: true,
-			}, // Generated from Excel Rewrite Rules (parseable) A->B
-			{
+						{
 				source: "/nicemedia/live/10932/29218/29218.pdf",
 				destination: "/guidance/cg9",
 				permanent: true,
@@ -1192,13 +1051,7 @@ const nextConfig = {
 				destination: "/guidance/ta341",
 				permanent: true,
 			}, // Generated from Excel Rewrite Rules (parseable) A->B
-			{
-				source:
-					"/guidance/ta341/resources/guidance-apixaban-for-the-treatment-and-secondary-prevention-of-deep-vein-thrombosis-andor-pulmonary-embolism-pdf",
-				destination: "/guidance/ta341",
-				permanent: true,
-			}, // Generated from Excel Rewrite Rules (parseable) A->B
-			{
+						{
 				source:
 					"/guidance/ipg365/resources/guidance-interspinous-distraction-procedures-for-lumbar-spinal-stenosis-causing-neurogenic-claudication-pdf",
 				destination: "/guidance/ipg365",
@@ -1341,14 +1194,7 @@ const nextConfig = {
 				destination: "/about/what-we-do/nice-syndication-api",
 				permanent: true,
 			}, // Generated from Excel Rewrite Rules (parseable) A->B
-			{
-				source:
-					"/about/nice-communities/public-involvement/bursary-scheme-for-nice-annual-conference",
-				destination:
-					"/about/nice-communities/nice-and-the-public/public-involvement/bursary-scheme-for-nice-annual-conference",
-				permanent: true,
-			}, // Generated from Excel Rewrite Rules (parseable) A->B
-			{
+						{
 				source:
 					"/get-involved/meetings-in-public/quality-standards-advisory-committee/qsac2-members",
 				destination:
@@ -1381,13 +1227,7 @@ const nextConfig = {
 				destination: "/guidance/cg180/resources",
 				permanent: true,
 			}, // Generated from Excel Rewrite Rules (parseable) A->B
-			{
-				source:
-					"/guidance/cg180/resources/cg180-atrial-fibrillation-update-patient-decision-aid2",
-				destination: "/guidance/cg180/resources",
-				permanent: true,
-			}, // Generated from Excel Rewrite Rules (parseable) A->B
-			{
+						{
 				source:
 					"/guidance/gid-mt238/resources/stakeholder-registration-and-confidentiality-form2",
 				destination:
@@ -1401,14 +1241,7 @@ const nextConfig = {
 					"/Media/Default/Get-involved/stakeholder-registration/Stakeholder_registration_and_confidentiality_form.doc",
 				permanent: true,
 			}, // Generated from Excel Rewrite Rules (parseable) A->B
-			{
-				source:
-					"/guidance/gid-mt271/resources/stakeholder-registration-and-confidentiality-form2",
-				destination:
-					"/Media/Default/Get-involved/stakeholder-registration/Stakeholder_registration_and_confidentiality_form.doc",
-				permanent: true,
-			}, // Generated from Excel Rewrite Rules (parseable) A->B
-			{
+						{
 				source:
 					"/about/nice-communities/library-and-knowledge-services-staff/training-materials",
 				destination: "https://library.hee.nhs.uk/resources/openathens",
@@ -1466,13 +1299,7 @@ const nextConfig = {
 				destination: "/guidance/cg160",
 				permanent: true,
 			}, // Generated from Excel Rewrite Rules (parseable) A->B
-			{
-				source:
-					"/about/what-we-do/our-programmes/our-endorsement-programme-has-now-closed",
-				destination: "/about/what-we-do/our-programmes",
-				permanent: true,
-			}, // Generated from Excel Rewrite Rules (parseable) A->B
-			{
+						{
 				source:
 					"/about/nice-communities/public-involvement/putting-guidance-into-practice",
 				destination:
@@ -1571,19 +1398,7 @@ const nextConfig = {
 				destination: "/about/what-we-do/nice-syndication-api",
 				permanent: true,
 			}, // Generated from Excel Rewrite Rules (parseable) A->B
-			{
-				source:
-					"/about/what-we-do/into-practice/health-technologies-adoption-team",
-				destination: "/about/what-we-do/into-practice/adoption-team",
-				permanent: true,
-			}, // Generated from Excel Rewrite Rules (parseable) A->B
-			{
-				source:
-					"/about/what-we-do/our-programmes/commissioning-support-programme",
-				destination: "/about/what-we-do/our-programmes",
-				permanent: true,
-			}, // Generated from Excel Rewrite Rules (parseable) A->B
-			{
+									{
 				source:
 					"/about/what-we-do/accreditation/whats-happening-in-accreditation",
 				destination: "/about/what-we-do/accreditation",
@@ -1644,13 +1459,7 @@ const nextConfig = {
 					"/about/what-we-do/life-sciences/scientific-advice/light-scientific-advice",
 				permanent: true,
 			}, // Generated from Excel Rewrite Rules (parseable) A->B
-			{
-				source: "/about/what-we-do/into-practice/local-practice-case-studies",
-				destination:
-					"/about/what-we-do/into-practice/shared-learning-case-studies",
-				permanent: true,
-			}, // Generated from Excel Rewrite Rules (parseable) A->B
-			{
+						{
 				source: "/media/5F2/44/The_guidelines_manual_2009_-_All_chapters.pdf",
 				destination:
 					"http://www.webarchive.org.uk/wayback/archive/20140616203342/http:/nice.org.uk/media/615/64/The_guidelines_manual_2009.pdf",
@@ -1667,12 +1476,7 @@ const nextConfig = {
 				destination: "/guidance/cg90",
 				permanent: true,
 			}, // Generated from Excel Rewrite Rules (parseable) A->B
-			{
-				source: "/about/what-we-do/life-sciences/office-for-market-access",
-				destination: "/about/what-we-do/life-sciences/nice-advice-service",
-				permanent: true,
-			}, // Generated from Excel Rewrite Rules (parseable) A->B
-			{
+						{
 				source: "/guidance/cg181/resources/patient-decision-aid-243780157",
 				destination: "/guidance/cg181/resources/patient-decision-aid-243780159",
 				permanent: true,
@@ -1749,12 +1553,7 @@ const nextConfig = {
 					"/guidance/cg150/update/cg150-update-1/consultation/html-content",
 				permanent: true,
 			}, // Generated from Excel Rewrite Rules (parseable) A->B
-			{
-				source: "/about/what-we-do/life-sciences/scientific-advice",
-				destination: "/about/what-we-do/life-sciences/nice-advice-service",
-				permanent: true,
-			}, // Generated from Excel Rewrite Rules (parseable) A->B
-			{
+						{
 				source: "/guidance/qs50/chapter/List-of-quality-statements",
 				destination: "/guidance/qs50/chapter/Quality-statements",
 				permanent: true,
@@ -1789,12 +1588,7 @@ const nextConfig = {
 				destination: "/about/what-we-do/into-practice/resource-planner",
 				permanent: true,
 			}, // Generated from Excel Rewrite Rules (parseable) A->B
-			{
-				source: "/about/what-we-do/into-practice/forward-planner",
-				destination: "/about/what-we-do/into-practice/resource-planner",
-				permanent: true,
-			}, // Generated from Excel Rewrite Rules (parseable) A->B
-			{
+						{
 				source: "/about/what-we-do/life-sciences/contact-us-form",
 				destination: "/forms/life-sciences-contact-us",
 				permanent: true,
@@ -1818,18 +1612,7 @@ const nextConfig = {
 			// 		"/guidance/indevelopment/gid-$1?",
 			// 	permanent: true,
 			// }, // Generated from Excel Rewrite Rules (parseable) A->B
-			{
-				source: "/about/what-we-do/our-programmes/nice-advice",
-				destination: "/guidance/published?ndt=NICE+advice",
-				permanent: true,
-			}, // Generated from Excel Rewrite Rules (parseable) A->B
-			{
-				source: "/about/what-we-do/into-practice/endorsement",
-				destination:
-					"/about/what-we-do/our-programmes/our-endorsement-programme-has-now-closed",
-				permanent: true,
-			}, // Generated from Excel Rewrite Rules (parseable) A->B
-			{
+									{
 				source: "/about/who-we-are/board/interests-register",
 				destination:
 					"/about/who-we-are/board-executive-team-and-senior-leaders-interests-register",
@@ -2155,12 +1938,7 @@ const nextConfig = {
 				destination: "/about/nice-communities/nice-and-the-public",
 				permanent: true,
 			}, // Generated from Excel Rewrite Rules (parseable) A->B
-			{
-				source: "/about/what-we-do/office-for-market-access",
-				destination: "/about/what-we-do/life-sciences/office-for-market-access",
-				permanent: true,
-			}, // Generated from Excel Rewrite Rules (parseable) A->B
-			{
+						{
 				source: "/about/what-we-do/research-and-development",
 				destination: "/about/what-we-do/science-policy-research",
 				permanent: true,
@@ -2175,12 +1953,7 @@ const nextConfig = {
 				destination: "/get-involved/careers/diversity-and-inclusion",
 				permanent: true,
 			}, // Generated from Excel Rewrite Rules (parseable) A->B
-			{
-				source: "/about/what-we-do/science-policy-research",
-				destination: "/about/what-we-do/our-research-work",
-				permanent: true,
-			}, // Generated from Excel Rewrite Rules (parseable) A->B
-			{
+						{
 				source: "/nicemedia/pdf/cg016publicinfoenglish.pdf",
 				destination: "/guidance/CG16/informationforpublic",
 				permanent: true,
@@ -2352,22 +2125,12 @@ const nextConfig = {
 				destination: "/standards-and-indicators/get-involved/topic-engagement",
 				permanent: true,
 			}, // Generated from Excel Rewrite Rules (parseable) A->B
-			{
-				source: "/standards-and-indicators/get-involved",
-				destination: "/standards-and-indicators/quality-standards",
-				permanent: true,
-			}, // Generated from Excel Rewrite Rules (parseable) A->B
-			{
+						{
 				source: "/guidance/settings-and-environment",
 				destination: "/guidance/settings",
 				permanent: true,
 			}, // Generated from Excel Rewrite Rules (parseable) A->B
-			{
-				source: "/news/nice-newsletters-and-alerts",
-				destination: "/nice-newsletters-and-alerts",
-				permanent: true,
-			}, // Generated from Excel Rewrite Rules (parseable) A->B
-			{
+						{
 				source: "/Get-Involved/join-a-committee",
 				destination: "/Get-Involved/our-committees",
 				permanent: true,
@@ -2641,12 +2404,7 @@ const nextConfig = {
 				destination: "/about/what-we-do/nice-international",
 				permanent: true,
 			}, // Generated from Excel Rewrite Rules (parseable) A->B
-			{
-				source: "/nice-international",
-				destination: "/about/what-we-do/nice-international",
-				permanent: true,
-			}, // Generated from Excel Rewrite Rules (parseable) A->B
-			{
+						{
 				source: "/scientific-advice",
 				destination: "/about/what-we-do/life-sciences/scientific-advice",
 				permanent: true,
@@ -2685,12 +2443,7 @@ const nextConfig = {
 					"/guidance/mtg29/resources/nice-medical-technology-adoption-support-for-the-greenlight-xps-laser-system-for-treating-benign-prostatic-hyperplasia-insights-from-the-nhs-2603460493/chapter/1-Introduction",
 				permanent: true,
 			}, // Generated from Excel Rewrite Rules (parseable) A->B
-			{
-				source: "/leave-feedback",
-				destination: "/forms/leave-feedback",
-				permanent: true,
-			}, // Generated from Excel Rewrite Rules (parseable) A->B
-			{
+						{
 				source: "/methods-review",
 				destination: "https://indepth.nice.org.uk/methods-review/index.html",
 				permanent: true,
@@ -2837,12 +2590,7 @@ const nextConfig = {
 				destination: "https://indepth.nice.org.uk/our-brand/index.html",
 				permanent: true,
 			}, // Generated from Excel Rewrite Rules (parseable) A->B
-			{
-				source: "/brand",
-				destination: "https://indepth.nice.org.uk/our-brand/index.html",
-				permanent: true,
-			}, // Generated from Excel Rewrite Rules (parseable) A->B
-			{
+						{
 				source: "/tahst",
 				destination:
 					"/about/what-we-do/our-programmes/nice-guidance/nice-technology-appraisal-guidance/consultation-on-changes-to-technology-appraisals-and-highly-specialised-technologies",
@@ -2925,47 +2673,20 @@ const nextConfig = {
 					"/what-nice-does/our-guidance/about-technology-appraisal-guidance/charging-for-technology-appraisals-and-highly-specialised-technologies/charging-procedure-technology-appraisal-and-highly-specialised-technologies-evaluations",
 				permanent: true,
 			}, // Generated from Excel Rewrite Rules (parseable) B->D
-			{
-				source:
-					"/about/what-we-do/our-programmes/nice-guidance/nice-technology-appraisal-guidance/charging/procedure-tahst",
-				destination:
-					"/what-nice-does/our-guidance/about-technology-appraisal-guidance/charging-for-technology-appraisals-and-highly-specialised-technologies/charging-procedure-technology-appraisal-and-highly-specialised-technologies-evaluations",
-				permanent: true,
-			}, // Generated from Excel Rewrite Rules (parseable) B->D
-			{
-				source:
-					"/about/what-we-do/our-programmes/nice-guidance/nice-technology-appraisal-guidance/charging/procedure-tahst",
-				destination:
-					"/what-nice-does/our-guidance/about-technology-appraisal-guidance/charging-for-technology-appraisals-and-highly-specialised-technologies/charging-procedure-technology-appraisal-and-highly-specialised-technologies-evaluations",
-				permanent: true,
-			}, // Generated from Excel Rewrite Rules (parseable) B->D
-			{
+									{
 				source:
 					"/Media/Default/About/what-we-do/NICE-guidance/technology-appraisal-guidance/ta-hst-charging-process.pdf",
 				destination:
 					"/what-nice-does/our-guidance/about-technology-appraisal-guidance/charging-for-technology-appraisals-and-highly-specialised-technologies/charging-procedure-technology-appraisal-and-highly-specialised-technologies-evaluations",
 				permanent: true,
 			}, // Generated from Excel Rewrite Rules (parseable) B->D
-			{
-				source:
-					"/Media/Default/About/what-we-do/NICE-guidance/technology-appraisal-guidance/ta-hst-charging-process.pdf",
-				destination:
-					"/what-nice-does/our-guidance/about-technology-appraisal-guidance/charging-for-technology-appraisals-and-highly-specialised-technologies/charging-procedure-technology-appraisal-and-highly-specialised-technologies-evaluations",
-				permanent: true,
-			}, // Generated from Excel Rewrite Rules (parseable) B->D
-			{
+						{
 				source:
 					"/Media/Default/about/what-we-do/nice-guidance/nice-medical-technologies/MTEP-notification-form.docx",
 				destination: "/what-nice-does/our-guidance/about-nice-guidelines",
 				permanent: true,
 			}, // Generated from Excel Rewrite Rules (parseable) B->D
-			{
-				source:
-					"/Media/Default/about/what-we-do/nice-guidance/nice-medical-technologies/MTEP-notification-form.docx",
-				destination: "/what-nice-does/our-guidance/about-nice-guidelines",
-				permanent: true,
-			}, // Generated from Excel Rewrite Rules (parseable) B->D
-			{
+						{
 				source:
 					"/about/what-we-do/our-programmes/nice-guidance/technology-appraisal-guidance/process/sta-timeline",
 				destination:
@@ -3067,13 +2788,7 @@ const nextConfig = {
 				destination: "/what-nice-does/standards-and-indicators",
 				permanent: true,
 			}, // Generated from Excel Rewrite Rules (parseable) B->D
-			{
-				source:
-					"/media/default/Get-involved/Meetings-In-Public/indicator-advisory-committee/ioc-process-guide.pdf",
-				destination: "/what-nice-does/standards-and-indicators",
-				permanent: true,
-			}, // Generated from Excel Rewrite Rules (parseable) B->D
-			{
+						{
 				source:
 					"/Media/Default/About/Who-we-are/Policies-and-procedures/FOI-policy-and-complaints-procedure.docx",
 				destination: "/freedom-of-information",
@@ -3105,48 +2820,14 @@ const nextConfig = {
 				destination: "/what-nice-does",
 				permanent: true,
 			}, // Generated from Excel Rewrite Rules (parseable) B->D
-			{
-				source:
-					"/about/what-we-do/our-programmes/nice-guidance/nice-guidelines/shared-decision-making",
-				destination: "/what-nice-does",
-				permanent: true,
-			}, // Generated from Excel Rewrite Rules (parseable) B->D
-			{
+						{
 				source:
 					"/about/what-we-do/our-programmes/nice-guidance/nice-guidelines/types-of-guideline",
 				destination:
 					"/what-nice-does/our-guidance/about-nice-guidelines/how-we-develop-nice-guidelines",
 				permanent: true,
 			}, // Generated from Excel Rewrite Rules (parseable) B->D
-			{
-				source:
-					"/about/what-we-do/our-programmes/nice-guidance/nice-guidelines/types-of-guideline",
-				destination:
-					"/what-nice-does/our-guidance/about-nice-guidelines/how-we-develop-nice-guidelines",
-				permanent: true,
-			}, // Generated from Excel Rewrite Rules (parseable) B->D
-			{
-				source:
-					"/about/what-we-do/our-programmes/nice-guidance/nice-guidelines/types-of-guideline",
-				destination:
-					"/what-nice-does/our-guidance/about-nice-guidelines/how-we-develop-nice-guidelines",
-				permanent: true,
-			}, // Generated from Excel Rewrite Rules (parseable) B->D
-			{
-				source:
-					"/about/what-we-do/our-programmes/nice-guidance/nice-guidelines/types-of-guideline",
-				destination:
-					"/what-nice-does/our-guidance/about-nice-guidelines/how-we-develop-nice-guidelines",
-				permanent: true,
-			}, // Generated from Excel Rewrite Rules (parseable) B->D
-			{
-				source:
-					"/about/what-we-do/our-programmes/nice-guidance/nice-guidelines/types-of-guideline",
-				destination:
-					"/what-nice-does/our-guidance/about-nice-guidelines/how-we-develop-nice-guidelines",
-				permanent: true,
-			}, // Generated from Excel Rewrite Rules (parseable) B->D
-			{
+															{
 				source:
 					"/guidance/cg155/update/cg155-update-1/consultation/html-content-2",
 				destination: "/Guidance",
@@ -3170,37 +2851,7 @@ const nextConfig = {
 				destination: "/what-nice-does",
 				permanent: true,
 			}, // Generated from Excel Rewrite Rules (parseable) B->D
-			{
-				source:
-					"/about/what-we-do/evidence-and-best-practice-resources/evidence-search/evidence-search-service-closure-information",
-				destination: "/what-nice-does",
-				permanent: true,
-			}, // Generated from Excel Rewrite Rules (parseable) B->D
-			{
-				source:
-					"/about/what-we-do/evidence-and-best-practice-resources/evidence-search/evidence-search-service-closure-information",
-				destination: "/what-nice-does",
-				permanent: true,
-			}, // Generated from Excel Rewrite Rules (parseable) B->D
-			{
-				source:
-					"/about/what-we-do/evidence-and-best-practice-resources/evidence-search/evidence-search-service-closure-information",
-				destination: "/library-and-knowledge-services",
-				permanent: true,
-			}, // Generated from Excel Rewrite Rules (parseable) B->D
-			{
-				source:
-					"/about/what-we-do/evidence-and-best-practice-resources/evidence-search/evidence-search-service-closure-information",
-				destination: "/library-and-knowledge-services",
-				permanent: true,
-			}, // Generated from Excel Rewrite Rules (parseable) B->D
-			{
-				source:
-					"/about/what-we-do/evidence-and-best-practice-resources/evidence-search/evidence-search-service-closure-information",
-				destination: "/library-and-knowledge-services",
-				permanent: true,
-			}, // Generated from Excel Rewrite Rules (parseable) B->D
-			{
+																		{
 				source:
 					"/about/what-we-do/life-sciences/nice-advice-service/models-for-the-evaluation-and-purchase-of-antimicrobials",
 				destination:
@@ -3227,25 +2878,7 @@ const nextConfig = {
 				destination: "/Guidance",
 				permanent: true,
 			}, // Generated from Excel Rewrite Rules (parseable) B->D
-			{
-				source:
-					"/Media/Default/Get-involved/stakeholder-registration/Stakeholder_registration_and_confidentiality_form.doc",
-				destination: "/Guidance",
-				permanent: true,
-			}, // Generated from Excel Rewrite Rules (parseable) B->D
-			{
-				source:
-					"/Media/Default/Get-involved/stakeholder-registration/Stakeholder_registration_and_confidentiality_form.doc",
-				destination: "/Guidance",
-				permanent: true,
-			}, // Generated from Excel Rewrite Rules (parseable) B->D
-			{
-				source:
-					"/Media/Default/Get-involved/stakeholder-registration/Stakeholder_registration_and_confidentiality_form.doc",
-				destination: "/Guidance",
-				permanent: true,
-			}, // Generated from Excel Rewrite Rules (parseable) B->D
-			{
+												{
 				source:
 					"/about/nice-communities/nice-and-the-public/public-involvement/bursary-scheme-for-nice-annual-conference",
 				destination: "/what-nice-does",
@@ -3311,19 +2944,7 @@ const nextConfig = {
 				destination: "/library-and-knowledge-services",
 				permanent: true,
 			}, // Generated from Excel Rewrite Rules (parseable) B->D
-			{
-				source:
-					"/about/what-we-do/evidence-services/journals-and-databases/hdas-closure-information",
-				destination: "/library-and-knowledge-services",
-				permanent: true,
-			}, // Generated from Excel Rewrite Rules (parseable) B->D
-			{
-				source:
-					"/about/what-we-do/evidence-services/journals-and-databases/hdas-closure-information",
-				destination: "/library-and-knowledge-services",
-				permanent: true,
-			}, // Generated from Excel Rewrite Rules (parseable) B->D
-			{
+									{
 				source:
 					"/about/what-we-do/into-practice/local-practice-case-studies/shared-learning-awards",
 				destination: "/what-nice-does",
@@ -3343,315 +2964,14 @@ const nextConfig = {
 					"/what-nice-does/our-guidance/about-technology-appraisal-guidance",
 				permanent: true,
 			}, // Generated from Excel Rewrite Rules (parseable) B->D
-			{
-				source:
-					"/about/what-we-do/our-programmes/nice-guidance/nice-technology-appraisal-guidance",
-				destination:
-					"/what-nice-does/our-guidance/about-technology-appraisal-guidance",
-				permanent: true,
-			}, // Generated from Excel Rewrite Rules (parseable) B->D
-			{
-				source:
-					"/about/what-we-do/our-programmes/nice-guidance/nice-technology-appraisal-guidance",
-				destination:
-					"/what-nice-does/our-guidance/about-technology-appraisal-guidance",
-				permanent: true,
-			}, // Generated from Excel Rewrite Rules (parseable) B->D
-			{
-				source:
-					"/about/what-we-do/our-programmes/nice-guidance/nice-technology-appraisal-guidance",
-				destination:
-					"/what-nice-does/our-guidance/about-technology-appraisal-guidance",
-				permanent: true,
-			}, // Generated from Excel Rewrite Rules (parseable) B->D
-			{
-				source:
-					"/about/what-we-do/our-programmes/nice-guidance/nice-technology-appraisal-guidance",
-				destination:
-					"/what-nice-does/our-guidance/about-technology-appraisal-guidance",
-				permanent: true,
-			}, // Generated from Excel Rewrite Rules (parseable) B->D
-			{
+															{
 				source:
 					"/about/what-we-do/into-practice/measuring-the-uptake-of-nice-guidance/uptake-data",
 				destination:
 					"/implementing-nice-guidance/measuring-the-use-of-NICE-guidance",
 				permanent: true,
 			}, // Generated from Excel Rewrite Rules (parseable) B->D
-			{
-				source:
-					"/about/what-we-do/our-programmes/nice-guidance/nice-technology-appraisal-guidance",
-				destination:
-					"/what-nice-does/our-guidance/about-technology-appraisal-guidance",
-				permanent: true,
-			}, // Generated from Excel Rewrite Rules (parseable) B->D
-			{
-				source:
-					"/about/what-we-do/our-programmes/nice-guidance/nice-technology-appraisal-guidance",
-				destination:
-					"/what-nice-does/our-guidance/about-technology-appraisal-guidance",
-				permanent: true,
-			}, // Generated from Excel Rewrite Rules (parseable) B->D
-			{
-				source:
-					"/about/what-we-do/our-programmes/nice-guidance/nice-technology-appraisal-guidance",
-				destination:
-					"/what-nice-does/our-guidance/about-technology-appraisal-guidance",
-				permanent: true,
-			}, // Generated from Excel Rewrite Rules (parseable) B->D
-			{
-				source:
-					"/about/what-we-do/our-programmes/nice-guidance/nice-technology-appraisal-guidance",
-				destination:
-					"/what-nice-does/our-guidance/about-technology-appraisal-guidance",
-				permanent: true,
-			}, // Generated from Excel Rewrite Rules (parseable) B->D
-			{
-				source:
-					"/about/what-we-do/our-programmes/nice-guidance/nice-technology-appraisal-guidance",
-				destination:
-					"/what-nice-does/our-guidance/about-technology-appraisal-guidance",
-				permanent: true,
-			}, // Generated from Excel Rewrite Rules (parseable) B->D
-			{
-				source:
-					"/about/what-we-do/our-programmes/nice-guidance/nice-technology-appraisal-guidance",
-				destination:
-					"/what-nice-does/our-guidance/about-technology-appraisal-guidance",
-				permanent: true,
-			}, // Generated from Excel Rewrite Rules (parseable) B->D
-			{
-				source:
-					"/about/what-we-do/our-programmes/nice-guidance/nice-technology-appraisal-guidance",
-				destination:
-					"/what-nice-does/our-guidance/about-technology-appraisal-guidance",
-				permanent: true,
-			}, // Generated from Excel Rewrite Rules (parseable) B->D
-			{
-				source:
-					"/about/what-we-do/our-programmes/nice-guidance/nice-technology-appraisal-guidance",
-				destination:
-					"/what-nice-does/our-guidance/about-technology-appraisal-guidance",
-				permanent: true,
-			}, // Generated from Excel Rewrite Rules (parseable) B->D
-			{
-				source:
-					"/about/what-we-do/our-programmes/nice-guidance/nice-technology-appraisal-guidance",
-				destination:
-					"/what-nice-does/our-guidance/about-technology-appraisal-guidance",
-				permanent: true,
-			}, // Generated from Excel Rewrite Rules (parseable) B->D
-			{
-				source:
-					"/about/what-we-do/our-programmes/nice-guidance/nice-technology-appraisal-guidance",
-				destination:
-					"/what-nice-does/our-guidance/about-technology-appraisal-guidance",
-				permanent: true,
-			}, // Generated from Excel Rewrite Rules (parseable) B->D
-			{
-				source:
-					"/about/what-we-do/our-programmes/nice-guidance/nice-technology-appraisal-guidance",
-				destination:
-					"/what-nice-does/our-guidance/about-technology-appraisal-guidance",
-				permanent: true,
-			}, // Generated from Excel Rewrite Rules (parseable) B->D
-			{
-				source:
-					"/about/what-we-do/our-programmes/nice-guidance/nice-technology-appraisal-guidance",
-				destination:
-					"/what-nice-does/our-guidance/about-technology-appraisal-guidance",
-				permanent: true,
-			}, // Generated from Excel Rewrite Rules (parseable) B->D
-			{
-				source:
-					"/about/what-we-do/our-programmes/nice-guidance/nice-technology-appraisal-guidance",
-				destination:
-					"/what-nice-does/our-guidance/about-technology-appraisal-guidance",
-				permanent: true,
-			}, // Generated from Excel Rewrite Rules (parseable) B->D
-			{
-				source:
-					"/about/what-we-do/our-programmes/nice-guidance/nice-technology-appraisal-guidance",
-				destination:
-					"/what-nice-does/our-guidance/about-technology-appraisal-guidance",
-				permanent: true,
-			}, // Generated from Excel Rewrite Rules (parseable) B->D
-			{
-				source:
-					"/about/what-we-do/our-programmes/nice-guidance/nice-technology-appraisal-guidance",
-				destination:
-					"/what-nice-does/our-guidance/about-technology-appraisal-guidance",
-				permanent: true,
-			}, // Generated from Excel Rewrite Rules (parseable) B->D
-			{
-				source:
-					"/about/what-we-do/our-programmes/nice-guidance/nice-technology-appraisal-guidance",
-				destination:
-					"/what-nice-does/our-guidance/about-technology-appraisal-guidance",
-				permanent: true,
-			}, // Generated from Excel Rewrite Rules (parseable) B->D
-			{
-				source:
-					"/about/what-we-do/our-programmes/nice-guidance/nice-technology-appraisal-guidance",
-				destination:
-					"/what-nice-does/our-guidance/about-technology-appraisal-guidance",
-				permanent: true,
-			}, // Generated from Excel Rewrite Rules (parseable) B->D
-			{
-				source:
-					"/about/what-we-do/our-programmes/nice-guidance/nice-technology-appraisal-guidance",
-				destination:
-					"/what-nice-does/our-guidance/about-technology-appraisal-guidance",
-				permanent: true,
-			}, // Generated from Excel Rewrite Rules (parseable) B->D
-			{
-				source:
-					"/about/what-we-do/our-programmes/nice-guidance/nice-technology-appraisal-guidance",
-				destination:
-					"/what-nice-does/our-guidance/about-technology-appraisal-guidance",
-				permanent: true,
-			}, // Generated from Excel Rewrite Rules (parseable) B->D
-			{
-				source:
-					"/about/what-we-do/our-programmes/nice-guidance/nice-technology-appraisal-guidance",
-				destination:
-					"/what-nice-does/our-guidance/about-technology-appraisal-guidance",
-				permanent: true,
-			}, // Generated from Excel Rewrite Rules (parseable) B->D
-			{
-				source:
-					"/about/what-we-do/our-programmes/nice-guidance/nice-technology-appraisal-guidance",
-				destination:
-					"/what-nice-does/our-guidance/about-technology-appraisal-guidance",
-				permanent: true,
-			}, // Generated from Excel Rewrite Rules (parseable) B->D
-			{
-				source:
-					"/about/what-we-do/our-programmes/nice-guidance/nice-technology-appraisal-guidance",
-				destination:
-					"/what-nice-does/our-guidance/about-technology-appraisal-guidance",
-				permanent: true,
-			}, // Generated from Excel Rewrite Rules (parseable) B->D
-			{
-				source:
-					"/about/what-we-do/our-programmes/nice-guidance/nice-technology-appraisal-guidance",
-				destination:
-					"/what-nice-does/our-guidance/about-technology-appraisal-guidance",
-				permanent: true,
-			}, // Generated from Excel Rewrite Rules (parseable) B->D
-			{
-				source:
-					"/about/what-we-do/our-programmes/nice-guidance/nice-technology-appraisal-guidance",
-				destination:
-					"/what-nice-does/our-guidance/about-technology-appraisal-guidance",
-				permanent: true,
-			}, // Generated from Excel Rewrite Rules (parseable) B->D
-			{
-				source:
-					"/about/what-we-do/our-programmes/nice-guidance/nice-technology-appraisal-guidance",
-				destination:
-					"/what-nice-does/our-guidance/about-technology-appraisal-guidance",
-				permanent: true,
-			}, // Generated from Excel Rewrite Rules (parseable) B->D
-			{
-				source:
-					"/about/what-we-do/our-programmes/nice-guidance/nice-technology-appraisal-guidance",
-				destination:
-					"/what-nice-does/our-guidance/about-technology-appraisal-guidance",
-				permanent: true,
-			}, // Generated from Excel Rewrite Rules (parseable) B->D
-			{
-				source:
-					"/about/what-we-do/our-programmes/nice-guidance/nice-technology-appraisal-guidance",
-				destination:
-					"/what-nice-does/our-guidance/about-technology-appraisal-guidance",
-				permanent: true,
-			}, // Generated from Excel Rewrite Rules (parseable) B->D
-			{
-				source:
-					"/about/what-we-do/our-programmes/nice-guidance/nice-technology-appraisal-guidance",
-				destination:
-					"/what-nice-does/our-guidance/about-technology-appraisal-guidance",
-				permanent: true,
-			}, // Generated from Excel Rewrite Rules (parseable) B->D
-			{
-				source:
-					"/about/what-we-do/our-programmes/nice-guidance/nice-technology-appraisal-guidance",
-				destination:
-					"/what-nice-does/our-guidance/about-technology-appraisal-guidance",
-				permanent: true,
-			}, // Generated from Excel Rewrite Rules (parseable) B->D
-			{
-				source:
-					"/about/what-we-do/our-programmes/nice-guidance/nice-technology-appraisal-guidance",
-				destination:
-					"/what-nice-does/our-guidance/about-technology-appraisal-guidance",
-				permanent: true,
-			}, // Generated from Excel Rewrite Rules (parseable) B->D
-			{
-				source:
-					"/about/what-we-do/our-programmes/nice-guidance/nice-technology-appraisal-guidance",
-				destination:
-					"/what-nice-does/our-guidance/about-technology-appraisal-guidance",
-				permanent: true,
-			}, // Generated from Excel Rewrite Rules (parseable) B->D
-			{
-				source:
-					"/about/what-we-do/our-programmes/nice-guidance/nice-technology-appraisal-guidance",
-				destination:
-					"/what-nice-does/our-guidance/about-technology-appraisal-guidance",
-				permanent: true,
-			}, // Generated from Excel Rewrite Rules (parseable) B->D
-			{
-				source:
-					"/about/what-we-do/our-programmes/nice-guidance/nice-technology-appraisal-guidance",
-				destination:
-					"/what-nice-does/our-guidance/about-technology-appraisal-guidance",
-				permanent: true,
-			}, // Generated from Excel Rewrite Rules (parseable) B->D
-			{
-				source:
-					"/about/what-we-do/our-programmes/nice-guidance/nice-technology-appraisal-guidance",
-				destination:
-					"/what-nice-does/our-guidance/about-technology-appraisal-guidance",
-				permanent: true,
-			}, // Generated from Excel Rewrite Rules (parseable) B->D
-			{
-				source:
-					"/about/what-we-do/our-programmes/nice-guidance/nice-technology-appraisal-guidance",
-				destination:
-					"/what-nice-does/our-guidance/about-technology-appraisal-guidance",
-				permanent: true,
-			}, // Generated from Excel Rewrite Rules (parseable) B->D
-			{
-				source:
-					"/about/what-we-do/our-programmes/nice-guidance/nice-technology-appraisal-guidance",
-				destination:
-					"/what-nice-does/our-guidance/about-technology-appraisal-guidance",
-				permanent: true,
-			}, // Generated from Excel Rewrite Rules (parseable) B->D
-			{
-				source:
-					"/about/what-we-do/our-programmes/nice-guidance/nice-technology-appraisal-guidance",
-				destination:
-					"/what-nice-does/our-guidance/about-technology-appraisal-guidance",
-				permanent: true,
-			}, // Generated from Excel Rewrite Rules (parseable) B->D
-			{
-				source:
-					"/about/what-we-do/our-programmes/nice-guidance/nice-technology-appraisal-guidance",
-				destination:
-					"/what-nice-does/our-guidance/about-technology-appraisal-guidance",
-				permanent: true,
-			}, // Generated from Excel Rewrite Rules (parseable) B->D
-			{
-				source:
-					"/about/what-we-do/our-programmes/nice-guidance/nice-technology-appraisal-guidance",
-				destination:
-					"/what-nice-does/our-guidance/about-technology-appraisal-guidance",
-				permanent: true,
-			}, // Generated from Excel Rewrite Rules (parseable) B->D
-			{
+																																																																																																																								{
 				source:
 					"/About/What-we-do/Our-Programmes/NICE-guidance/NICE-medical-technologies-guidance",
 				destination:
@@ -3691,13 +3011,7 @@ const nextConfig = {
 				destination: "/what-nice-does/our-guidance/types-of-recommendation",
 				permanent: true,
 			}, // Generated from Excel Rewrite Rules (parseable) B->D
-			{
-				source:
-					"/about/what-we-do/our-programmes/nice-guidance/types-of-nice-recommendation",
-				destination: "/what-nice-does/our-guidance/types-of-recommendation",
-				permanent: true,
-			}, // Generated from Excel Rewrite Rules (parseable) B->D
-			{
+						{
 				source:
 					"/about/what-we-do/life-sciences/scientific-advice/express-scientific-advice",
 				destination:
@@ -3724,21 +3038,7 @@ const nextConfig = {
 					"/what-nice-does/life-sciences-how-to-get-your-product-to-market/nice-advice-service/educational-webinars-and-masterclasses",
 				permanent: true,
 			}, // Generated from Excel Rewrite Rules (parseable) B->D
-			{
-				source:
-					"/about/what-we-do/life-sciences/scientific-advice/education-and-training",
-				destination:
-					"/what-nice-does/life-sciences-how-to-get-your-product-to-market/nice-advice-service/educational-webinars-and-masterclasses",
-				permanent: true,
-			}, // Generated from Excel Rewrite Rules (parseable) B->D
-			{
-				source:
-					"/about/what-we-do/life-sciences/scientific-advice/education-and-training",
-				destination:
-					"/what-nice-does/life-sciences-how-to-get-your-product-to-market/nice-advice-service/educational-webinars-and-masterclasses",
-				permanent: true,
-			}, // Generated from Excel Rewrite Rules (parseable) B->D
-			{
+									{
 				source:
 					"/About/What-we-do/Our-Programmes/NICE-Advice/Key-therapeutic-topics",
 				destination:
@@ -3825,14 +3125,7 @@ const nextConfig = {
 					"/get-involved/our-committees/nice-committee-meetings/quality-standards-advisory-committee/quality-standards-advisory-committee-members",
 				permanent: true,
 			}, // Generated from Excel Rewrite Rules (parseable) B->D
-			{
-				source:
-					"/get-involved/meetings-in-public/quality-standards-advisory-committee/quality-standards-advisory-committee-members",
-				destination:
-					"/get-involved/our-committees/nice-committee-meetings/quality-standards-advisory-committee/quality-standards-advisory-committee-members",
-				permanent: true,
-			}, // Generated from Excel Rewrite Rules (parseable) B->D
-			{
+						{
 				source:
 					"/guidance/ph17/evidence/ph17-promoting-physical-activity-for-children-and-young-people-evidence-update2",
 				destination: "/Guidance",
@@ -3850,13 +3143,7 @@ const nextConfig = {
 				destination: "/Guidance",
 				permanent: true,
 			}, // Generated from Excel Rewrite Rules (parseable) B->D
-			{
-				source:
-					"/guidance/conditions-and-diseases/cardiovascular-conditions/stroke-and-transient-ischaemic-attack",
-				destination: "/Guidance",
-				permanent: true,
-			}, // Generated from Excel Rewrite Rules (parseable) B->D
-			{
+						{
 				source:
 					"/about/what-we-do/our-programmes/evidence-standards-framework-for-digital-health-technologies",
 				destination:
@@ -3927,13 +3214,7 @@ const nextConfig = {
 				destination: "/Guidance",
 				permanent: true,
 			}, // Generated from Excel Rewrite Rules (parseable) B->D
-			{
-				source:
-					"/guidance/health-protection/communicable-diseases/antimicrobial-stewardship",
-				destination: "/Guidance",
-				permanent: true,
-			}, // Generated from Excel Rewrite Rules (parseable) B->D
-			{
+						{
 				source:
 					"/about/what-we-do/our-programmes/our-endorsement-programme-has-now-closed",
 				destination: "/what-nice-does",
@@ -3985,14 +3266,7 @@ const nextConfig = {
 				destination: "/Guidance",
 				permanent: true,
 			}, // Generated from Excel Rewrite Rules (parseable) B->D
-			{
-				source:
-					"/about/who-we-are/corporate-publications/the-nice-strategy-2021-to-2026",
-				destination:
-					"/about-us/corporate-publications/nice-transformation-plan",
-				permanent: true,
-			}, // Generated from Excel Rewrite Rules (parseable) B->D
-			{
+						{
 				source:
 					"/guidance/GID-CGWAVE0658/documents/consultation-comments-and-responses",
 				destination: "/Guidance",
@@ -4005,14 +3279,7 @@ const nextConfig = {
 					"/implementing-nice-guidance/measuring-the-use-of-NICE-guidance",
 				permanent: true,
 			}, // Generated from Excel Rewrite Rules (parseable) B->D
-			{
-				source:
-					"/about/what-we-do/into-practice/measuring-the-uptake-of-nice-guidance",
-				destination:
-					"/implementing-nice-guidance/measuring-the-use-of-NICE-guidance",
-				permanent: true,
-			}, // Generated from Excel Rewrite Rules (parseable) B->D
-			{
+						{
 				source:
 					"/About/What-we-do/Into-practice/Measuring-the-uptake-of-NICE-guidance",
 				destination:
@@ -4032,14 +3299,7 @@ const nextConfig = {
 					"/implementing-nice-guidance/implementation-help-and-advice/adoption-and-implementation-support",
 				permanent: true,
 			}, // Generated from Excel Rewrite Rules (parseable) B->D
-			{
-				source:
-					"/about/what-we-do/into-practice/health-technologies-adoption-team",
-				destination:
-					"/implementing-nice-guidance/implementation-help-and-advice/adoption-and-implementation-support",
-				permanent: true,
-			}, // Generated from Excel Rewrite Rules (parseable) B->D
-			{
+						{
 				source:
 					"/guidance/conditions-and-diseases/skin-conditions/pressure-ulcers",
 				destination: "/Guidance",
@@ -4051,49 +3311,13 @@ const nextConfig = {
 				destination: "/what-nice-does",
 				permanent: true,
 			}, // Generated from Excel Rewrite Rules (parseable) B->D
-			{
-				source:
-					"/about/what-we-do/our-programmes/commissioning-support-programme",
-				destination: "/what-nice-does",
-				permanent: true,
-			}, // Generated from Excel Rewrite Rules (parseable) B->D
-			{
-				source:
-					"/about/what-we-do/our-programmes/commissioning-support-programme",
-				destination: "/what-nice-does",
-				permanent: true,
-			}, // Generated from Excel Rewrite Rules (parseable) B->D
-			{
-				source:
-					"/about/what-we-do/our-programmes/commissioning-support-programme",
-				destination: "/what-nice-does",
-				permanent: true,
-			}, // Generated from Excel Rewrite Rules (parseable) B->D
-			{
-				source:
-					"/about/what-we-do/our-programmes/commissioning-support-programme",
-				destination: "/what-nice-does",
-				permanent: true,
-			}, // Generated from Excel Rewrite Rules (parseable) B->D
-			{
+															{
 				source:
 					"/guidance/conditions-and-diseases/respiratory-conditions/covid19",
 				destination: "/Guidance",
 				permanent: true,
 			}, // Generated from Excel Rewrite Rules (parseable) B->D
-			{
-				source:
-					"/guidance/conditions-and-diseases/respiratory-conditions/covid19",
-				destination: "/Guidance",
-				permanent: true,
-			}, // Generated from Excel Rewrite Rules (parseable) B->D
-			{
-				source:
-					"/about/what-we-do/our-programmes/commissioning-support-programme",
-				destination: "/what-nice-does",
-				permanent: true,
-			}, // Generated from Excel Rewrite Rules (parseable) B->D
-			{
+									{
 				source:
 					"/about/nice-communities/social-care/quality-improvement-resource",
 				destination: "/what-nice-does",
@@ -4112,19 +3336,7 @@ const nextConfig = {
 				destination: "/get-involved/people-and-communities",
 				permanent: true,
 			}, // Generated from Excel Rewrite Rules (parseable) B->D
-			{
-				source:
-					"/about/nice-communities/nice-and-the-public/public-involvement",
-				destination: "/get-involved/people-and-communities",
-				permanent: true,
-			}, // Generated from Excel Rewrite Rules (parseable) B->D
-			{
-				source:
-					"/about/nice-communities/nice-and-the-public/public-involvement",
-				destination: "/get-involved/people-and-communities",
-				permanent: true,
-			}, // Generated from Excel Rewrite Rules (parseable) B->D
-			{
+									{
 				source: "/guidance/TA65/documents/appendix-a-static-list-review-paper2",
 				destination: "/Guidance",
 				permanent: true,
@@ -4134,12 +3346,7 @@ const nextConfig = {
 				destination: "/what-nice-does",
 				permanent: true,
 			}, // Generated from Excel Rewrite Rules (parseable) B->D
-			{
-				source: "/about/what-we-do/into-practice/shared-learning-case-studies",
-				destination: "/what-nice-does",
-				permanent: true,
-			}, // Generated from Excel Rewrite Rules (parseable) B->D
-			// NOTE next-js can't redirect visits to external domains
+						// NOTE next-js can't redirect visits to external domains
 			// {
 			// 	source: "http://indepth.nice.org.uk/sepsis-what-nice-says/index.html",
 			// 	destination: "/news",
@@ -4156,19 +3363,7 @@ const nextConfig = {
 					"/implementing-nice-guidance/cost-saving-resource-planning-and-audit/assessing-the-resource-impact-of-nice-guidance",
 				permanent: true,
 			}, // Generated from Excel Rewrite Rules (parseable) B->D
-			{
-				source: "/about/what-we-do/into-practice/resource-impact-assessment",
-				destination:
-					"/implementing-nice-guidance/cost-saving-resource-planning-and-audit/assessing-the-resource-impact-of-nice-guidance",
-				permanent: true,
-			}, // Generated from Excel Rewrite Rules (parseable) B->D
-			{
-				source: "/about/what-we-do/into-practice/resource-impact-assessment",
-				destination:
-					"/implementing-nice-guidance/cost-saving-resource-planning-and-audit/assessing-the-resource-impact-of-nice-guidance",
-				permanent: true,
-			}, // Generated from Excel Rewrite Rules (parseable) B->D
-			{
+									{
 				source: "/About/What-we-do/Into-practice/resource-impact-assessment",
 				destination:
 					"/implementing-nice-guidance/cost-saving-resource-planning-and-audit/assessing-the-resource-impact-of-nice-guidance",
@@ -4185,13 +3380,7 @@ const nextConfig = {
 				destination: "/Guidance",
 				permanent: true,
 			}, // Generated from Excel Rewrite Rules (parseable) B->D
-			{
-				source: "/about/what-we-do/life-sciences/office-for-market-access",
-				destination:
-					"/what-nice-does/life-sciences-how-to-get-your-product-to-market/nice-advice-service",
-				permanent: true,
-			}, // Generated from Excel Rewrite Rules (parseable) B->D
-			// {
+						// {
 			// 	source:
 			// 		"http://indepth.nice.org.uk/transforming-nice/index.html",
 			// 	destination:
@@ -4223,115 +3412,7 @@ const nextConfig = {
 					"/what-nice-does/life-sciences-how-to-get-your-product-to-market/nice-advice-service",
 				permanent: true,
 			}, // Generated from Excel Rewrite Rules (parseable) B->D
-			{
-				source: "/about/what-we-do/life-sciences/nice-advice-service",
-				destination:
-					"/what-nice-does/life-sciences-how-to-get-your-product-to-market/nice-advice-service",
-				permanent: true,
-			}, // Generated from Excel Rewrite Rules (parseable) B->D
-			{
-				source: "/about/what-we-do/life-sciences/nice-advice-service",
-				destination:
-					"/what-nice-does/life-sciences-how-to-get-your-product-to-market/nice-advice-service",
-				permanent: true,
-			}, // Generated from Excel Rewrite Rules (parseable) B->D
-			{
-				source: "/about/what-we-do/life-sciences/nice-advice-service",
-				destination:
-					"/what-nice-does/life-sciences-how-to-get-your-product-to-market/nice-advice-service",
-				permanent: true,
-			}, // Generated from Excel Rewrite Rules (parseable) B->D
-			{
-				source: "/about/what-we-do/life-sciences/nice-advice-service",
-				destination:
-					"/what-nice-does/life-sciences-how-to-get-your-product-to-market/nice-advice-service",
-				permanent: true,
-			}, // Generated from Excel Rewrite Rules (parseable) B->D
-			{
-				source: "/about/what-we-do/life-sciences/nice-advice-service",
-				destination:
-					"/what-nice-does/life-sciences-how-to-get-your-product-to-market/nice-advice-service",
-				permanent: true,
-			}, // Generated from Excel Rewrite Rules (parseable) B->D
-			{
-				source: "/about/what-we-do/life-sciences/nice-advice-service",
-				destination:
-					"/what-nice-does/life-sciences-how-to-get-your-product-to-market/nice-advice-service",
-				permanent: true,
-			}, // Generated from Excel Rewrite Rules (parseable) B->D
-			{
-				source: "/about/what-we-do/life-sciences/nice-advice-service",
-				destination:
-					"/what-nice-does/life-sciences-how-to-get-your-product-to-market/nice-advice-service",
-				permanent: true,
-			}, // Generated from Excel Rewrite Rules (parseable) B->D
-			{
-				source: "/about/what-we-do/life-sciences/nice-advice-service",
-				destination:
-					"/what-nice-does/life-sciences-how-to-get-your-product-to-market/nice-advice-service",
-				permanent: true,
-			}, // Generated from Excel Rewrite Rules (parseable) B->D
-			{
-				source: "/about/what-we-do/life-sciences/nice-advice-service",
-				destination:
-					"/what-nice-does/life-sciences-how-to-get-your-product-to-market/nice-advice-service",
-				permanent: true,
-			}, // Generated from Excel Rewrite Rules (parseable) B->D
-			{
-				source: "/about/what-we-do/life-sciences/nice-advice-service",
-				destination:
-					"/what-nice-does/life-sciences-how-to-get-your-product-to-market/nice-advice-service",
-				permanent: true,
-			}, // Generated from Excel Rewrite Rules (parseable) B->D
-			{
-				source: "/about/what-we-do/life-sciences/nice-advice-service",
-				destination:
-					"/what-nice-does/life-sciences-how-to-get-your-product-to-market/nice-advice-service",
-				permanent: true,
-			}, // Generated from Excel Rewrite Rules (parseable) B->D
-			{
-				source: "/about/what-we-do/life-sciences/nice-advice-service",
-				destination:
-					"/what-nice-does/life-sciences-how-to-get-your-product-to-market/nice-advice-service",
-				permanent: true,
-			}, // Generated from Excel Rewrite Rules (parseable) B->D
-			{
-				source: "/about/what-we-do/life-sciences/nice-advice-service",
-				destination:
-					"/what-nice-does/life-sciences-how-to-get-your-product-to-market/nice-advice-service",
-				permanent: true,
-			}, // Generated from Excel Rewrite Rules (parseable) B->D
-			{
-				source: "/about/what-we-do/life-sciences/nice-advice-service",
-				destination:
-					"/what-nice-does/life-sciences-how-to-get-your-product-to-market/nice-advice-service",
-				permanent: true,
-			}, // Generated from Excel Rewrite Rules (parseable) B->D
-			{
-				source: "/about/what-we-do/life-sciences/nice-advice-service",
-				destination:
-					"/what-nice-does/life-sciences-how-to-get-your-product-to-market/nice-advice-service",
-				permanent: true,
-			}, // Generated from Excel Rewrite Rules (parseable) B->D
-			{
-				source: "/about/what-we-do/life-sciences/nice-advice-service",
-				destination:
-					"/what-nice-does/life-sciences-how-to-get-your-product-to-market/nice-advice-service",
-				permanent: true,
-			}, // Generated from Excel Rewrite Rules (parseable) B->D
-			{
-				source: "/about/what-we-do/life-sciences/nice-advice-service",
-				destination:
-					"/what-nice-does/life-sciences-how-to-get-your-product-to-market/nice-advice-service",
-				permanent: true,
-			}, // Generated from Excel Rewrite Rules (parseable) B->D
-			{
-				source: "/about/what-we-do/life-sciences/nice-advice-service",
-				destination:
-					"/what-nice-does/life-sciences-how-to-get-your-product-to-market/nice-advice-service",
-				permanent: true,
-			}, // Generated from Excel Rewrite Rules (parseable) B->D
-			// {
+																																																									// {
 			// 	source:
 			// 		"https://indepth.nice.org.uk/NICE-at-25/index.html",
 			// 	destination:
@@ -4351,13 +3432,7 @@ const nextConfig = {
 					"/what-nice-does/life-sciences-how-to-get-your-product-to-market/nice-advice-service",
 				permanent: true,
 			}, // Generated from Excel Rewrite Rules (parseable) B->D
-			{
-				source: "/about/what-we-do/life-sciences/scientific-advice",
-				destination:
-					"/what-nice-does/life-sciences-how-to-get-your-product-to-market/nice-advice-service",
-				permanent: true,
-			}, // Generated from Excel Rewrite Rules (parseable) B->D
-			// NOTE next-js can't redirect visits to external domains
+						// NOTE next-js can't redirect visits to external domains
 			// {
 			// 	source: "https://indepth.nice.org.uk/our-brand/index.html",
 			// 	destination: "/Guidance",
@@ -4375,13 +3450,7 @@ const nextConfig = {
 					"/implementing-nice-guidance/cost-saving-resource-planning-and-audit/resource-planner",
 				permanent: true,
 			}, // Generated from Excel Rewrite Rules (parseable) B->D
-			{
-				source: "/about/what-we-do/into-practice/resource-planner",
-				destination:
-					"/implementing-nice-guidance/cost-saving-resource-planning-and-audit/resource-planner",
-				permanent: true,
-			}, // Generated from Excel Rewrite Rules (parseable) B->D
-			{
+						{
 				source: "/about/what-we-do/our-research-work/nice-listens",
 				destination: "/what-nice-does/our-research-work/nice-listens",
 				permanent: true,
@@ -4439,19 +3508,7 @@ const nextConfig = {
 					"/what-nice-does/life-sciences-how-to-get-your-product-to-market/nice-advice-service",
 				permanent: true,
 			}, // Generated from Excel Rewrite Rules (parseable) B->D
-			{
-				source: "/about/what-we-do/our-programmes/nice-advice",
-				destination:
-					"/what-nice-does/life-sciences-how-to-get-your-product-to-market/nice-advice-service",
-				permanent: true,
-			}, // Generated from Excel Rewrite Rules (parseable) B->D
-			{
-				source: "/about/what-we-do/our-programmes/nice-advice",
-				destination:
-					"/what-nice-does/life-sciences-how-to-get-your-product-to-market/nice-advice-service",
-				permanent: true,
-			}, // Generated from Excel Rewrite Rules (parseable) B->D
-			{
+									{
 				source: "/guidance/ph8/documents/economics-modelling2",
 				destination: "/Guidance",
 				permanent: true,
@@ -4526,26 +3583,13 @@ const nextConfig = {
 					"/about-us/board/board-executive-team-and-senior-leaders-interests-register",
 				permanent: true,
 			}, // Generated from Excel Rewrite Rules (parseable) B->D
-			{
-				source:
-					"/about/who-we-are/board-executive-team-and-senior-leaders-interests-register",
-				destination:
-					"/about-us/board/board-executive-team-and-senior-leaders-interests-register",
-				permanent: true,
-			}, // Generated from Excel Rewrite Rules (parseable) B->D
-			{
+						{
 				source:
 					"/about/who-we-are/board-executive-team-and-senior-leaders-interests-register",
 				destination: "/what-nice-does",
 				permanent: true,
 			}, // Generated from Excel Rewrite Rules (parseable) B->D
-			{
-				source:
-					"/about/who-we-are/board-executive-team-and-senior-leaders-interests-register",
-				destination: "/what-nice-does",
-				permanent: true,
-			}, // Generated from Excel Rewrite Rules (parseable) B->D
-			{
+						{
 				source:
 					"/about/what-we-do/patient-access-schemes-liaison-unit#list-of-arrangements",
 				destination: "/what-nice-does/commercial-liaison-team",
@@ -4557,19 +3601,7 @@ const nextConfig = {
 				destination: "/get-involved",
 				permanent: true,
 			}, // Generated from Excel Rewrite Rules (parseable) B->D
-			{
-				source:
-					"/about/what-we-do/our-fellows-and-scholars-programmes-have-now-closed",
-				destination: "/get-involved",
-				permanent: true,
-			}, // Generated from Excel Rewrite Rules (parseable) B->D
-			{
-				source:
-					"/about/what-we-do/our-fellows-and-scholars-programmes-have-now-closed",
-				destination: "/get-involved",
-				permanent: true,
-			}, // Generated from Excel Rewrite Rules (parseable) B->D
-			{
+									{
 				source:
 					"/news/article/join-the-nice-network-of-health-and-social-care-leaders",
 				destination: "/news",
@@ -4674,17 +3706,7 @@ const nextConfig = {
 				destination: "/reusing-our-content/nice-syndication-api",
 				permanent: true,
 			}, // Generated from Excel Rewrite Rules (parseable) B->D
-			{
-				source: "/about/what-we-do/nice-syndication-api",
-				destination: "/reusing-our-content/nice-syndication-api",
-				permanent: true,
-			}, // Generated from Excel Rewrite Rules (parseable) B->D
-			{
-				source: "/about/what-we-do/nice-syndication-api",
-				destination: "/reusing-our-content/nice-syndication-api",
-				permanent: true,
-			}, // Generated from Excel Rewrite Rules (parseable) B->D
-			{
+									{
 				source: "/guidance/indevelopment/gid-sgwave0762",
 				destination: "/Guidance",
 				permanent: true,
@@ -4719,47 +3741,12 @@ const nextConfig = {
 				destination: "/what-nice-does/nice-international",
 				permanent: true,
 			}, // Generated from Excel Rewrite Rules (parseable) B->D
-			{
-				source: "/about/what-we-do/nice-international",
-				destination: "/what-nice-does/nice-international",
-				permanent: true,
-			}, // Generated from Excel Rewrite Rules (parseable) B->D
-			{
-				source: "/about/what-we-do/nice-international",
-				destination: "/what-nice-does/nice-international",
-				permanent: true,
-			}, // Generated from Excel Rewrite Rules (parseable) B->D
-			{
-				source: "/about/what-we-do/nice-international",
-				destination: "/what-nice-does/nice-international",
-				permanent: true,
-			}, // Generated from Excel Rewrite Rules (parseable) B->D
-			{
-				source: "/about/what-we-do/nice-international",
-				destination: "/what-nice-does/nice-international",
-				permanent: true,
-			}, // Generated from Excel Rewrite Rules (parseable) B->D
-			{
-				source: "/about/what-we-do/nice-international",
-				destination: "/what-nice-does/nice-international",
-				permanent: true,
-			}, // Generated from Excel Rewrite Rules (parseable) B->D
-			{
-				source: "/about/what-we-do/nice-international",
-				destination: "/what-nice-does/nice-international",
-				permanent: true,
-			}, // Generated from Excel Rewrite Rules (parseable) B->D
-			{
+																					{
 				source: "/about/what-we-do/our-research-work",
 				destination: "/what-nice-does/our-research-work",
 				permanent: true,
 			}, // Generated from Excel Rewrite Rules (parseable) B->D
-			{
-				source: "/about/what-we-do/our-research-work",
-				destination: "/what-nice-does/our-research-work",
-				permanent: true,
-			}, // Generated from Excel Rewrite Rules (parseable) B->D
-			{
+						{
 				source: "/about/what-we-do/evidence-services",
 				destination: "/what-nice-does/",
 				permanent: true,
@@ -4774,12 +3761,7 @@ const nextConfig = {
 				destination: "/Guidance",
 				permanent: true,
 			}, // Generated from Excel Rewrite Rules (parseable) B->D
-			{
-				source: "/about/what-we-do/our-research-work",
-				destination: "/what-nice-does/our-research-work",
-				permanent: true,
-			}, // Generated from Excel Rewrite Rules (parseable) B->D
-			{
+						{
 				source: "/about/nice-communities/social-care",
 				destination: "/what-nice-does",
 				permanent: true,
@@ -4789,22 +3771,12 @@ const nextConfig = {
 				destination: "/what-nice-does",
 				permanent: true,
 			}, // Generated from Excel Rewrite Rules (parseable) B->D
-			{
-				source: "/about/what-we-do/our-programmes",
-				destination: "/what-nice-does",
-				permanent: true,
-			}, // Generated from Excel Rewrite Rules (parseable) B->D
-			{
+						{
 				source: "/about/what-we-do/accreditation",
 				destination: "/what-nice-does",
 				permanent: true,
 			}, // Generated from Excel Rewrite Rules (parseable) B->D
-			{
-				source: "/about/what-we-do/accreditation",
-				destination: "/what-nice-does",
-				permanent: true,
-			}, // Generated from Excel Rewrite Rules (parseable) B->D
-			// TODO syntax of this needs converting to next-js format
+						// TODO syntax of this needs converting to next-js format
 			// {
 			// 	source:
 			// 		"/guidance/indevelopment/gid-$1?",
@@ -4846,17 +3818,7 @@ const nextConfig = {
 				destination: "/Guidance",
 				permanent: true,
 			}, // Generated from Excel Rewrite Rules (parseable) B->D
-			{
-				source: "/guidance/cg180/resources",
-				destination: "/Guidance",
-				permanent: true,
-			}, // Generated from Excel Rewrite Rules (parseable) B->D
-			{
-				source: "/guidance/cg180/resources",
-				destination: "/Guidance",
-				permanent: true,
-			}, // Generated from Excel Rewrite Rules (parseable) B->D
-			{
+									{
 				source: "/guidance/ng80/resources/",
 				destination: "/news",
 				permanent: true,
@@ -5017,37 +3979,7 @@ const nextConfig = {
 				destination: "/get-involved/our-committees",
 				permanent: true,
 			}, // Generated from Excel Rewrite Rules (parseable) B->D
-			{
-				source: "/get-involved/our-committees",
-				destination: "/get-involved/our-committees",
-				permanent: true,
-			}, // Generated from Excel Rewrite Rules (parseable) B->D
-			{
-				source: "/get-involved/our-committees",
-				destination: "/get-involved/our-committees",
-				permanent: true,
-			}, // Generated from Excel Rewrite Rules (parseable) B->D
-			{
-				source: "/get-involved/our-committees",
-				destination: "/get-involved/our-committees",
-				permanent: true,
-			}, // Generated from Excel Rewrite Rules (parseable) B->D
-			{
-				source: "/get-involved/our-committees",
-				destination: "/get-involved/our-committees",
-				permanent: true,
-			}, // Generated from Excel Rewrite Rules (parseable) B->D
-			{
-				source: "/get-involved/our-committees",
-				destination: "/get-involved/our-committees",
-				permanent: true,
-			}, // Generated from Excel Rewrite Rules (parseable) B->D
-			{
-				source: "/get-involved/our-committees",
-				destination: "/get-involved/our-committees",
-				permanent: true,
-			}, // Generated from Excel Rewrite Rules (parseable) B->D
-			{
+																					{
 				source: "/Get-Involved/our-committees",
 				destination: "/get-involved/our-committees",
 				permanent: true,
@@ -5172,12 +4104,7 @@ const nextConfig = {
 				destination: "/Guidance",
 				permanent: true,
 			}, // Generated from Excel Rewrite Rules (parseable) B->D
-			{
-				source: "/guidance/ta341",
-				destination: "/Guidance",
-				permanent: true,
-			}, // Generated from Excel Rewrite Rules (parseable) B->D
-			{
+						{
 				source: "/guidance/ta287",
 				destination: "/Guidance",
 				permanent: true,
@@ -5212,22 +4139,12 @@ const nextConfig = {
 				destination: "/Guidance",
 				permanent: true,
 			}, // Generated from Excel Rewrite Rules (parseable) B->D
-			{
-				source: "/guidance/cg101",
-				destination: "/Guidance",
-				permanent: true,
-			}, // Generated from Excel Rewrite Rules (parseable) B->D
-			{
+						{
 				source: "/guidance/cg161",
 				destination: "/Guidance",
 				permanent: true,
 			}, // Generated from Excel Rewrite Rules (parseable) B->D
-			{
-				source: "/guidance/cg156",
-				destination: "/Guidance",
-				permanent: true,
-			}, // Generated from Excel Rewrite Rules (parseable) B->D
-			{
+						{
 				source: "/guidance/hte1",
 				destination:
 					"/what-nice-does/life-sciences-how-to-get-your-product-to-market/models-for-the-evaluation-and-purchase-of-antimicrobials",
@@ -5244,12 +4161,7 @@ const nextConfig = {
 				destination: "/Guidance",
 				permanent: true,
 			}, // Generated from Excel Rewrite Rules (parseable) B->D
-			{
-				source: "/guidance/NG76",
-				destination: "/Guidance",
-				permanent: true,
-			}, // Generated from Excel Rewrite Rules (parseable) B->D
-			{
+						{
 				source: "/guidance/cg88",
 				destination: "/Guidance",
 				permanent: true,
@@ -5314,12 +4226,7 @@ const nextConfig = {
 				destination: "/Guidance",
 				permanent: true,
 			}, // Generated from Excel Rewrite Rules (parseable) B->D
-			{
-				source: "/guidance/cg27",
-				destination: "/Guidance",
-				permanent: true,
-			}, // Generated from Excel Rewrite Rules (parseable) B->D
-			{
+						{
 				source: "/guidance/cg26",
 				destination: "/Guidance",
 				permanent: true,
@@ -5349,17 +4256,7 @@ const nextConfig = {
 				destination: "/Guidance",
 				permanent: true,
 			}, // Generated from Excel Rewrite Rules (parseable) B->D
-			{
-				source: "/guidance/cg66",
-				destination: "/Guidance",
-				permanent: true,
-			}, // Generated from Excel Rewrite Rules (parseable) B->D
-			{
-				source: "/guidance/cg66",
-				destination: "/Guidance",
-				permanent: true,
-			}, // Generated from Excel Rewrite Rules (parseable) B->D
-			{
+									{
 				source: "/guidance/psg2",
 				destination: "/Guidance",
 				permanent: true,
@@ -5444,22 +4341,12 @@ const nextConfig = {
 				destination: "/Guidance",
 				permanent: true,
 			}, // Generated from Excel Rewrite Rules (parseable) B->D
-			{
-				source: "/guidance/cg55",
-				destination: "/Guidance",
-				permanent: true,
-			}, // Generated from Excel Rewrite Rules (parseable) B->D
-			{
+						{
 				source: "/guidance/cg45",
 				destination: "/Guidance",
 				permanent: true,
 			}, // Generated from Excel Rewrite Rules (parseable) B->D
-			{
-				source: "/guidance/cg53",
-				destination: "/Guidance",
-				permanent: true,
-			}, // Generated from Excel Rewrite Rules (parseable) B->D
-			{
+						{
 				source: "/guidance/cg59",
 				destination: "/Guidance",
 				permanent: true,
@@ -5474,12 +4361,7 @@ const nextConfig = {
 				destination: "/Guidance",
 				permanent: true,
 			}, // Generated from Excel Rewrite Rules (parseable) B->D
-			{
-				source: "/guidance/cg72",
-				destination: "/Guidance",
-				permanent: true,
-			}, // Generated from Excel Rewrite Rules (parseable) B->D
-			{
+						{
 				source: "/guidance/cg3",
 				destination: "/Guidance",
 				permanent: true,
@@ -5489,12 +4371,7 @@ const nextConfig = {
 				destination: "/Guidance",
 				permanent: true,
 			}, // Generated from Excel Rewrite Rules (parseable) B->D
-			{
-				source: "/guidance/cg3",
-				destination: "/Guidance",
-				permanent: true,
-			}, // Generated from Excel Rewrite Rules (parseable) B->D
-			{
+						{
 				source: "/guidance/NG6",
 				destination: "/Guidance",
 				permanent: true,
@@ -5524,12 +4401,7 @@ const nextConfig = {
 				destination: "/Guidance",
 				permanent: true,
 			}, // Generated from Excel Rewrite Rules (parseable) B->D
-			{
-				source: "/guidance/cg9",
-				destination: "/Guidance",
-				permanent: true,
-			}, // Generated from Excel Rewrite Rules (parseable) B->D
-			{
+						{
 				source: "/advice/es41",
 				destination: "/Guidance",
 				permanent: true,
@@ -5640,14 +4512,7 @@ const nextConfig = {
 					"/what-nice-does/our-guidance/about-technology-appraisal-guidance/technology-appraisal-and-highly-specialised-technologies-appeals",
 				permanent: true,
 			}, // Generated from Excel Migration Phase 2 URLs
-			{
-				source:
-					"/about/nice-communities/nice-and-the-public/public-involvement/support-for-vcs-organisations/help-us-develop-guidance/guides-to-developing-our-guidance",
-				destination:
-					"/get-involved/people-and-communities/getting-involved-as-a-voluntary-and-community-sector-organisation/contributing-to-the-development-of-our-guidelines",
-				permanent: true,
-			}, // Generated from Excel Migration Phase 2 URLs
-			{
+						{
 				source:
 					"/about/what-we-do/our-programmes/nice-guidance/about-technology-appraisal-guidance/technology-appraisal-submission-templates-and-supporting-documents",
 				destination:
@@ -5849,14 +4714,7 @@ const nextConfig = {
 			// 	destination: "n/a stay in Orchard until we figure out the TRAC embed",
 			// 	permanent: true,
 			// }, // Generated from Excel Migration Phase 2 URLs
-			{
-				source:
-					"/get-involved/our-committees/what-lay-members-do/lay-member-payments-and-expenses/how-lay-member-payments-affect-benefits",
-				destination:
-					"/get-involved/our-committees/your-role-as-a-nice-committee-member",
-				permanent: true,
-			}, // Generated from Excel Migration Phase 2 URLs
-			{
+						{
 				source:
 					"/about/what-we-do/our-programmes/nice-guidance/nice-about-technology-appraisal-guidance/data/appraisal-recommendations",
 				destination:
@@ -5895,14 +4753,7 @@ const nextConfig = {
 					"/implementing-nice-guidance/social-care/quick-guides-to-social-care-topics",
 				permanent: true,
 			}, // Generated from Excel Migration Phase 2 URLs
-			{
-				source:
-					"/get-involved/meetings-in-public/quality-standards-advisory-committee/quality-standards-advisory-committee-members",
-				destination:
-					"/get-involved/our-committees/nice-committee-meetings/quality-standards-advisory-committee/quality-standards-advisory-committee-members",
-				permanent: true,
-			}, // Generated from Excel Migration Phase 2 URLs
-			{
+						{
 				source:
 					"/about/nice-communities/social-care/quick-guides-for-social-care/promoting-independence-through-intermediate-care",
 				destination:
@@ -5937,14 +4788,7 @@ const nextConfig = {
 					"/what-nice-does/our-guidance/types-of-recommendation-nice-can-make",
 				permanent: true,
 			}, // Generated from Excel Migration Phase 2 URLs
-			{
-				source:
-					"/about/what-we-do/our-programmes/nice-guidance/nice-guidelines/maintaining-and-updating-our-guideline-portfolio",
-				destination:
-					"/what-nice-does/our-guidance/Prioritising-our-guidance-topics",
-				permanent: true,
-			}, // Generated from Excel Migration Phase 2 URLs
-			{
+						{
 				source:
 					"/about/what-we-do/our-programmes/nice-guidance/nice-interventional-procedures-guidance/coding-recommendations",
 				destination:
@@ -5986,14 +4830,7 @@ const nextConfig = {
 					"/implementing-nice-guidance/social-care/quick-guides-to-social-care-topics",
 				permanent: true,
 			}, // Generated from Excel Migration Phase 2 URLs
-			{
-				source:
-					"/about/what-we-do/life-sciences/scientific-advice/models-for-the-evaluation-and-purchase-of-antimicrobials",
-				destination:
-					"/what-nice-does/life-sciences-how-to-get-your-product-to-market/a-new-model-for-evaluating-and-purchasing-antimicrobials-in-the-uk",
-				permanent: true,
-			}, // Generated from Excel Migration Phase 2 URLs
-			{
+						{
 				source:
 					"/about/nice-communities/social-care/quick-guides/dementia-discussing-and-planning-support-after-diagnosis",
 				destination:
@@ -6070,21 +4907,7 @@ const nextConfig = {
 					"/implementing-nice-guidance/social-care/quick-guides-to-social-care-topics",
 				permanent: true,
 			}, // Generated from Excel Migration Phase 2 URLs
-			{
-				source:
-					"/about/what-we-do/our-programmes/nice-guidance/nice-guidelines/making-decisions-using-nice-guidelines",
-				destination:
-					"/what-nice-does/our-guidance/about-nice-guidelines/making-decisions-using-nice-guidelines",
-				permanent: true,
-			}, // Generated from Excel Migration Phase 2 URLs
-			{
-				source:
-					"/about/nice-communities/nice-and-the-public/public-involvement/patient-and-public-involvement-policy",
-				destination:
-					"/get-involved/people-and-communities/patient-and-public-involvement-policy",
-				permanent: true,
-			}, // Generated from Excel Migration Phase 2 URLs
-			{
+									{
 				source:
 					"/about/nice-communities/social-care/quick-guides/reducing-the-risk-violent-and-aggressive-behaviours",
 				destination:
@@ -6136,14 +4959,7 @@ const nextConfig = {
 				destination: "/about-us/our-board/public-board-meetings/2022",
 				permanent: true,
 			}, // Generated from Excel Migration Phase 2 URLs
-			{
-				source:
-					"/about/what-we-do/our-programmes/nice-guidance/interventional-procedures-guidance/recommendations",
-				destination:
-					"/what-nice-does/our-guidance/types-of-recommendation-nice-can-make",
-				permanent: true,
-			}, // Generated from Excel Migration Phase 2 URLs
-			{
+						{
 				source:
 					"/about/nice-communities/social-care/quick-guides/evidence-for-strengths-and-asset-based-outcomes",
 				destination:
@@ -6209,21 +5025,7 @@ const nextConfig = {
 					"/what-nice-does/life-sciences-how-to-get-your-product-to-market/our-role-in-the-innovative-licensing-and-access-pathway-ilap",
 				permanent: true,
 			}, // Generated from Excel Migration Phase 2 URLs
-			{
-				source:
-					"/about/what-we-do/our-programmes/evidence-standards-framework-for-digital-health-technologies",
-				destination:
-					"/what-nice-does/digital-health/evidence-standards-framework-esf-for-digital-health-technologies",
-				permanent: true,
-			}, // Generated from Excel Migration Phase 2 URLs
-			{
-				source:
-					"/about/what-we-do/our-programmes/nice-guidance/nice-guidelines/how-we-develop-nice-guidelines",
-				destination:
-					"/what-nice-does/our-guidance/about-nice-guidelines/how-we-develop-nice-guidelines",
-				permanent: true,
-			}, // Generated from Excel Migration Phase 2 URLs
-			{
+									{
 				source:
 					"/about/what-we-do/our-programmes/nice-guidance/nice-interventional-procedures-guidance/notify",
 				destination:
@@ -6297,14 +5099,7 @@ const nextConfig = {
 					"/what-nice-does/our-research-work/partnering-with-us-for-research-timescales-and-process",
 				permanent: true,
 			}, // Generated from Excel Migration Phase 2 URLs
-			{
-				source:
-					"/about/nice-communities/medicines-and-prescribing/nice-medicines-and-prescribing-associates",
-				destination:
-					"/implementing-nice-guidance/implementation-help-and-advice/nice-medicines-and-prescribing-associates",
-				permanent: true,
-			}, // Generated from Excel Migration Phase 2 URLs
-			{
+						{
 				source:
 					"/about/what-we-do/our-programmes/nice-guidance/about-technology-appraisal-guidance/eq-5d-5l",
 				destination:
@@ -6318,14 +5113,7 @@ const nextConfig = {
 					"/implementing-nice-guidance/social-care/quick-guides-to-social-care-topics",
 				permanent: true,
 			}, // Generated from Excel Migration Phase 2 URLs
-			{
-				source:
-					"/about/what-we-do/life-sciences/office-for-market-access/early-access-to-medicines-scheme",
-				destination:
-					"/what-nice-does/life-sciences-how-to-get-your-product-to-market/early-access-to-medicines-scheme-eams",
-				permanent: true,
-			}, // Generated from Excel Migration Phase 2 URLs
-			{
+						{
 				source:
 					"/about/what-we-do/our-programmes/nice-guidance/nice-diagnostics-guidance/process-timeline",
 				destination:
@@ -6406,14 +5194,7 @@ const nextConfig = {
 					"/get-involved/our-committees/nice-committee-meetings/interventional-procedures-advisory-committee/interventional-procedures-advisory-committee-members",
 				permanent: true,
 			}, // Generated from Excel Migration Phase 2 URLs
-			{
-				source:
-					"/about/what-we-do/our-programmes/nice-guidance/nice-guidelines/shared-decision-making",
-				destination:
-					"/what-nice-does/our-guidance/about-nice-guidelines/about-shared-decision-making",
-				permanent: true,
-			}, // Generated from Excel Migration Phase 2 URLs
-			// {
+						// {
 			// 	source:
 			// 		"/get-involved/our-committees/join-a-committee/apply-to-be-a-chair-on-a-nice-committee",
 			// 	destination: "n/a stay in Orchard until we figure out the TRAC embed",
@@ -6488,14 +5269,7 @@ const nextConfig = {
 					"/implementing-nice-guidance/social-care/quick-guides-to-social-care-topics",
 				permanent: true,
 			}, // Generated from Excel Migration Phase 2 URLs
-			{
-				source:
-					"/about/what-we-do/supporting-the-health-and-care-system-to-implement-virtual-wards",
-				destination:
-					"/implementing-nice-guidance/cost-saving-resource-planning-and-audit/supporting-the-health-care-system-to-implement-virtual-wards",
-				permanent: true,
-			}, // Generated from Excel Migration Phase 2 URLs
-			{
+						{
 				source:
 					"/get-involved/meetings-in-public/public-board-meetings/agenda-papers-december-2022",
 				destination:
@@ -6509,14 +5283,7 @@ const nextConfig = {
 					"/about-us/our-board/public-board-meetings/2024/public-board-meeting-agenda-and-papers-december-2024",
 				permanent: true,
 			}, // Generated from Excel Migration Phase 2 URLs
-			{
-				source:
-					"/get-involved/our-committees/what-lay-members-do/lay-member-payments-and-expenses",
-				destination:
-					"/get-involved/our-committees/your-role-as-a-nice-committee-member",
-				permanent: true,
-			}, // Generated from Excel Migration Phase 2 URLs
-			{
+						{
 				source:
 					"/Get-Involved/Meetings-in-public/Medical-Technologies-Advisory-Committee/Members",
 				destination:
@@ -6577,14 +5344,7 @@ const nextConfig = {
 				destination: "/about-us/our-board/public-board-meetings/2025",
 				permanent: true,
 			}, // Generated from Excel Migration Phase 2 URLs
-			{
-				source:
-					"/get-involved/our-committees/join-a-committee/how-to-apply-to-join-a-committee",
-				destination:
-					"/get-involved/our-committees/your-role-as-a-nice-committee-member",
-				permanent: true,
-			}, // Generated from Excel Migration Phase 2 URLs
-			{
+						{
 				source:
 					"/Get-Involved/Meetings-in-public/Interventional-Procedures-Advisory-Committee",
 				destination:
@@ -6644,28 +5404,7 @@ const nextConfig = {
 			}, // ORIGINAL
 
 			// === BLOCK GENERATED FROM EXCEL MIGRATION PHASE 2 ===
-			{
-				source:
-					"/about/who-we-are/board-executive-team-and-senior-leaders-interests-register",
-				destination:
-					"/about-us/our-board/board-executive-team-and-senior-leaders-interests-register",
-				permanent: true,
-			}, // Generated from Excel Migration Phase 2 URLs
-			{
-				source:
-					"/standards-and-indicators/selecting-and-prioritising-quality-standard-topics",
-				destination:
-					"/what-nice-does/standards-and-indicators/quality-standards/selecting-and-prioritising-quality-standard-topics",
-				permanent: true,
-			}, // Generated from Excel Migration Phase 2 URLs
-			{
-				source:
-					"/about/what-we-do/our-programmes/nice-guidance/types-of-nice-recommendation",
-				destination:
-					"/what-nice-does/our-guidance/types-of-recommendation-nice-can-make",
-				permanent: true,
-			}, // Generated from Excel Migration Phase 2 URLs
-			{
+												{
 				source:
 					"/get-involved/study-nice-and-lse-s-executive-msc-healthcare-decision-making",
 				destination:
@@ -6679,13 +5418,7 @@ const nextConfig = {
 					"/implementing-nice-guidance/social-care/quick-guides-to-social-care-topics",
 				permanent: true,
 			}, // Generated from Excel Migration Phase 2 URLs
-			{
-				source:
-					"/about/what-we-do/into-practice/resources-help-put-guidance-into-practice",
-				destination: "/implementing-nice-guidance/into-practice-resources",
-				permanent: true,
-			}, // Generated from Excel Migration Phase 2 URLs
-			{
+						{
 				source:
 					"/about/what-we-do/our-programmes/nice-advice/medtech-innovation-briefings",
 				destination:
@@ -6726,14 +5459,7 @@ const nextConfig = {
 					"/get-involved/our-committees/nice-committee-meetings/diagnostics-advisory-committee/diagnostics-advisory-committee-members",
 				permanent: true,
 			}, // Generated from Excel Migration Phase 2 URLs
-			{
-				source:
-					"/about/who-we-are/corporate-publications/the-nice-strategy-2021-to-2026",
-				destination:
-					"/about-us/corporate-publications/nice-transformation-plan",
-				permanent: true,
-			}, // Generated from Excel Migration Phase 2 URLs
-			{
+						{
 				source:
 					"/about/nice-communities/social-care/quick-guides/advance-care-planning",
 				destination:
@@ -6764,28 +5490,14 @@ const nextConfig = {
 			}, // ORIGINAL
 
 			// === BLOCK GENERATED FROM EXCEL MIGRATION PHASE 2 ===
-			{
-				source:
-					"/about/what-we-do/into-practice/measuring-the-uptake-of-nice-guidance",
-				destination:
-					"/implementing-nice-guidance/measuring-the-use-of-nice-guidance",
-				permanent: true,
-			}, // Generated from Excel Migration Phase 2 URLs
-			{
+						{
 				source:
 					"/get-involved/stakeholder-registration/tobacco-industry-organisations",
 				destination:
 					"/position-statements/position-statement-on-engagement-with-tobacco-industry-organisations",
 				permanent: true,
 			}, // Generated from Excel Migration Phase 2 URLs
-			{
-				source:
-					"/standards-and-indicators/get-involved/quality-standard-consultations",
-				destination:
-					"/get-involved/help-develop-quality-standards/quality-standard-consultations",
-				permanent: true,
-			}, // Generated from Excel Migration Phase 2 URLs
-			{
+						{
 				source:
 					"/get-involved/meetings-in-public/antimicrobials-evaluation-committee",
 				destination:
@@ -6821,22 +5533,9 @@ const nextConfig = {
 			}, // Generated from Excel Migration Phase 2 URLs
 
 			// === ORIGINAL REDIRECTS BLOCK ===
-			{
-				source:
-					"/get-involved/careers/our-benefits--rewards-and-work-life-balance",
-				destination: "/careers/our-benefits-rewards-and-work-life-balance",
-				permanent: true,
-			}, // ORIGINAL
 
 			// === BLOCK GENERATED FROM EXCEL MIGRATION PHASE 2 ===
-			{
-				source:
-					"/standards-and-indicators/get-involved/support-a-quality-standard",
-				destination:
-					"/get-involved/help-develop-quality-standards/support-a-quality-standard",
-				permanent: true,
-			}, // Generated from Excel Migration Phase 2 URLs
-			{
+						{
 				source:
 					"/About/What-we-do/Evidence-Services/Clinical-knowledge-summaries",
 				destination: "https://cks.nice.org.uk/",
@@ -6849,14 +5548,7 @@ const nextConfig = {
 					"/implementing-nice-guidance/social-care/child-abuse-and-neglect-guidance",
 				permanent: true,
 			}, // Generated from Excel Migration Phase 2 URLs
-			{
-				source:
-					"/about/nice-communities/social-care/quality-improvement-resource",
-				destination:
-					"/implementing-nice-guidance/social-care/quality-improvement-resource-for-adult-social-care",
-				permanent: true,
-			}, // Generated from Excel Migration Phase 2 URLs
-			{
+						{
 				source:
 					"/about/what-we-do/nice-international/knowledge-transfer-seminars",
 				destination:
@@ -6884,14 +5576,7 @@ const nextConfig = {
 					"/get-involved/our-committees/nice-committee-meetings/technology-appraisal-committees",
 				permanent: true,
 			}, // Generated from Excel Migration Phase 2 URLs
-			{
-				source:
-					"/about/what-we-do/our-programmes/cost-savings-resource-planning",
-				destination:
-					"/implementing-nice-guidance/cost-saving-resource-planning-and-audit",
-				permanent: true,
-			}, // Generated from Excel Migration Phase 2 URLs
-			{
+						{
 				source:
 					"/about/what-we-do/our-programmes/nice-advice/evidence-summaries",
 				destination: "/what-nice-does/our-guidance/about-evidence-summaries",
@@ -6911,13 +5596,7 @@ const nextConfig = {
 					"/about-us/policies-procedures-and-reports/edi-roadmap-and-annual-action-plan",
 				permanent: true,
 			}, // Generated from Excel Migration Phase 2 URLs
-			{
-				source:
-					"/about/nice-communities/nice-and-the-public/public-involvement",
-				destination: "/get-involved/people-and-communities",
-				permanent: true,
-			}, // Generated from Excel Migration Phase 2 URLs
-			{
+						{
 				source:
 					"/about/what-we-do/our-programmes/nice-guidance/modular-updates",
 				destination: "/what-nice-does/our-guidance/modular-updates",
@@ -6945,21 +5624,9 @@ const nextConfig = {
 			}, // Generated from Excel Migration Phase 2 URLs
 
 			// === ORIGINAL REDIRECTS BLOCK ===
-			{
-				source:
-					"/get-involved/jobs/our-benefits--rewards-and-work-life-balance",
-				destination: "/careers/our-benefits-rewards-and-work-life-balance",
-				permanent: true,
-			}, // ORIGINAL
 
 			// === BLOCK GENERATED FROM EXCEL MIGRATION PHASE 2 ===
-			{
-				source:
-					"/get-involved/our-committees/how-gps-help-develop-our-guidance",
-				destination: "/get-involved/gps-and-primary-care",
-				permanent: true,
-			}, // Generated from Excel Migration Phase 2 URLs
-			{
+						{
 				source: "/about/what-we-do/nice-international/about-nice-international",
 				destination:
 					"/what-nice-does/nice-international/about-nice-international",
@@ -7007,13 +5674,7 @@ const nextConfig = {
 				destination: "/what-nice-does/digital-health/office-for-digital-health",
 				permanent: true,
 			}, // Generated from Excel Migration Phase 2 URLs
-			{
-				source: "/about/what-we-do/into-practice/resource-impact-assessment",
-				destination:
-					"/implementing-nice-guidance/cost-saving-resource-planning-and-audit/assessing-the-resource-impact-of-nice-guidance",
-				permanent: true,
-			}, // Generated from Excel Migration Phase 2 URLs
-			{
+						{
 				source: "/about/what-we-do/bringing-our-guidance-together-by-topic",
 				destination:
 					"/what-nice-does/our-guidance/bringing-our-guidance-together-by-topic",
@@ -7029,19 +5690,7 @@ const nextConfig = {
 				destination: "/what-nice-does/nice-international/speaking-engagements",
 				permanent: true,
 			}, // Generated from Excel Migration Phase 2 URLs
-			{
-				source: "/get-involved/our-committees/what-professional-members-do",
-				destination:
-					"/get-involved/our-committees/your-role-as-a-nice-committee-member",
-				permanent: true,
-			}, // Generated from Excel Migration Phase 2 URLs
-			{
-				source: "/standards-and-indicators/quality-standards-topic-library",
-				destination:
-					"/what-nice-does/standards-and-indicators/quality-standards/selecting-and-prioritising-quality-standard-topics",
-				permanent: true,
-			}, // Generated from Excel Migration Phase 2 URLs
-			{
+									{
 				source: "/Get-Involved/Meetings-in-public/Appeal-panel-membership",
 				destination:
 					"/what-nice-does/our-guidance/about-technology-appraisal-guidance/technology-appraisal-and-highly-specialised-technologies-appeals/appeal-panel-membership",
@@ -7052,18 +5701,7 @@ const nextConfig = {
 				destination: "/about-us/executive-team/executive-team",
 				permanent: true,
 			}, // Generated from Excel Migration Phase 2 URLs
-			{
-				source: "/about/nice-communities/generalpractice/reference-panel",
-				destination: "/forms/subscribe-to-our-gp-reference-panel",
-				permanent: true,
-			}, // Generated from Excel Migration Phase 2 URLs
-			{
-				source: "/standards-and-indicators/get-involved/topic-engagement",
-				destination:
-					"/get-involved/help-develop-quality-standards/topic-engagement",
-				permanent: true,
-			}, // Generated from Excel Migration Phase 2 URLs
-			{
+									{
 				source: "/Get-Involved/Meetings-in-public/Public-board-meetings",
 				destination: "/about-us/our-board/public-board-meetings",
 				permanent: true,
@@ -7103,65 +5741,24 @@ const nextConfig = {
 					"/what-nice-does/life-sciences-how-to-get-your-product-to-market/tools-for-building-or-evaluating-an-evidence-base",
 				permanent: true,
 			}, // Generated from Excel Migration Phase 2 URLs
-			{
-				source: "/about/what-we-do/life-sciences/nice-advice-service",
-				destination:
-					"/what-nice-does/life-sciences-how-to-get-your-product-to-market/nice-advice-service",
-				permanent: true,
-			}, // Generated from Excel Migration Phase 2 URLs
-			{
+						{
 				source: "/about/what-we-do/commercial-liaison-team/services",
 				destination:
 					"/what-nice-does/patient-access-schemes-and-pricing-agreements/services",
 				permanent: true,
 			}, // Generated from Excel Migration Phase 2 URLs
-			{
-				source: "/about/what-we-do/prioritising-our-guidance-topics",
-				destination:
-					"/what-nice-does/our-guidance/prioritising-our-guidance-topics",
-				permanent: true,
-			}, // Generated from Excel Migration Phase 2 URLs
-			{
+						{
 				source: "/about/nice-communities/medicines-and-prescribing",
 				destination: "/implementing-nice-guidance/medicines-and-prescribin",
 				permanent: true,
 			}, // Generated from Excel Migration Phase 2 URLs
-			{
-				source: "/about/nice-communities/social-care/quick-guides",
-				destination:
-					"/implementing-nice-guidance/social-care/quick-guides-to-social-care-topics",
-				permanent: true,
-			}, // Generated from Excel Migration Phase 2 URLs
-			{
-				source: "/about/what-we-do/into-practice/resource-planner",
-				destination:
-					"/implementing-nice-guidance/cost-saving-resource-planning-and-audit/resource-planner",
-				permanent: true,
-			}, // Generated from Excel Migration Phase 2 URLs
-			{
-				source: "/about/what-we-do/our-research-work/nice-listens",
-				destination: "/what-nice-does/our-research-work/nice-listens",
-				permanent: true,
-			}, // Generated from Excel Migration Phase 2 URLs
-			{
-				source: "/get-involved/our-committees/what-lay-members-do",
-				destination:
-					"/get-involved/our-committees/your-role-as-a-nice-committee-member",
-				permanent: true,
-			}, // Generated from Excel Migration Phase 2 URLs
-			{
+															{
 				source: "/about/what-we-do/into-practice/nice-field-team",
 				destination:
 					"/implementing-nice-guidance/implementation-help-and-advice/helping-you-put-our-guidance-into-practice",
 				permanent: true,
 			}, // Generated from Excel Migration Phase 2 URLs
-			{
-				source: "/about/what-we-do/our-programmes/managed-access",
-				destination:
-					"/what-nice-does/patient-access-schemes-and-pricing-agreements/managed-access",
-				permanent: true,
-			}, // Generated from Excel Migration Phase 2 URLs
-			{
+						{
 				source: "/about/what-we-do/our-programmes/patient-safety",
 				destination: "/patient-safety",
 				permanent: true,
@@ -7171,75 +5768,21 @@ const nextConfig = {
 				destination: "/reusing-our-content/content-assurance-service",
 				permanent: true,
 			}, // Generated from Excel Migration Phase 2 URLs
-			{
-				source: "/about/what-we-do/nice-and-health-inequalities",
-				destination:
-					"/implementing-nice-guidance/cost-saving-resource-planning-and-audit/nice-and-health-inequalities",
-				permanent: true,
-			}, // Generated from Excel Migration Phase 2 URLs
-			{
-				source: "/about/what-we-do/our-programmes/nice-guidance",
-				destination: "/what-nice-does/our-guidance",
-				permanent: true,
-			}, // Generated from Excel Migration Phase 2 URLs
-			{
-				source: "/about/what-we-do/into-practice/adoption-team",
-				destination:
-					"/implementing-nice-guidance/implementation-help-and-advice/adoption-and-implementation-support",
-				permanent: true,
-			}, // Generated from Excel Migration Phase 2 URLs
 
 			// === ORIGINAL REDIRECTS BLOCK ===
-			{
-				source: "/get-involved/careers/diversity-and-inclusion",
-				destination: "/careers/diversity-and-inclusion",
-				permanent: true,
-			}, // ORIGINAL
-			{
-				source: "/get-involved/careers/we-care-about-our-staff",
-				destination: "/careers/we-care-about-our-staff",
-				permanent: true,
-			}, // ORIGINAL
 
 			// === BLOCK GENERATED FROM EXCEL MIGRATION PHASE 2 ===
-			{
-				source: "/re-using-our-content/uk-open-content-licence",
-				destination: "/forms/use-of-nice-content-in-the-uk-form",
-				permanent: true,
-			}, // Generated from Excel Migration Phase 2 URLs
-			{
+						{
 				source: "/about/what-we-do/our-research-work/hta-lab",
 				destination:
 					"/what-nice-does/our-research-work/health-technology-assessment-innovation-laboratory",
 				permanent: true,
 			}, // Generated from Excel Migration Phase 2 URLs
-			{
-				source: "/standards-and-indicators/quality-standards",
-				destination:
-					"/what-nice-does/standards-and-indicators/quality-standards",
-				permanent: true,
-			}, // Generated from Excel Migration Phase 2 URLs
 
 			// === ORIGINAL REDIRECTS BLOCK ===
-			{
-				source: "/get-involved/jobs/diversity-and-inclusion",
-				destination: "/careers/diversity-and-inclusion",
-				permanent: true,
-			}, // ORIGINAL
-			{
-				source: "/get-involved/jobs/we-care-about-our-staff",
-				destination: "/careers/we-care-about-our-staff",
-				permanent: true,
-			}, // ORIGINAL
 
 			// === BLOCK GENERATED FROM EXCEL MIGRATION PHASE 2 ===
-			{
-				source: "/about/what-we-do/commercial-liaison-team",
-				destination:
-					"/what-nice-does/patient-access-schemes-and-pricing-agreements",
-				permanent: true,
-			}, // Generated from Excel Migration Phase 2 URLs
-			{
+						{
 				source: "/about/who-we-are/policies-and-procedures",
 				destination: "/about-us/policies-procedures-and-reports",
 				permanent: true,
@@ -7259,13 +5802,7 @@ const nextConfig = {
 				destination: "/about-us/executive-team/",
 				permanent: true,
 			}, // Generated from Excel Migration Phase 2 URLs
-			{
-				source: "/about/nice-communities/generalpractice",
-				destination:
-					"/implementing-nice-guidance/general-practice-keep-your-practice-up-to-date",
-				permanent: true,
-			}, // Generated from Excel Migration Phase 2 URLs
-			{
+						{
 				source: "/About/Who-we-are/Board/Board-expenses",
 				destination: "/about-us/our-board/board-expenses",
 				permanent: true,
@@ -7276,26 +5813,11 @@ const nextConfig = {
 					"/get-involved/register-your-organisation-as-a-stakeholder",
 				permanent: true,
 			}, // Generated from Excel Migration Phase 2 URLs
-			{
-				source: "/about/what-we-do/nice-syndication-api",
-				destination: "/reusing-our-content/nice-syndication-api",
-				permanent: true,
-			}, // Generated from Excel Migration Phase 2 URLs
 
 			// === ORIGINAL REDIRECTS BLOCK ===
-			{
-				source: "/get-involved/careers/digital-at-nice",
-				destination: "/careers/digital-at-nice",
-				permanent: true,
-			}, // ORIGINAL
 
 			// === BLOCK GENERATED FROM EXCEL MIGRATION PHASE 2 ===
-			{
-				source: "/about/what-we-do/nice-international",
-				destination: "/what-nice-does/nice-international",
-				permanent: true,
-			}, // Generated from Excel Migration Phase 2 URLs
-			{
+						{
 				source: "/about/who-we-are/guidance-executive",
 				destination: "/about-us/guidance-executive",
 				permanent: true,
@@ -7305,17 +5827,7 @@ const nextConfig = {
 				destination: "/what-nice-does/standards-and-indicators/indicators",
 				permanent: true,
 			}, // Generated from Excel Migration Phase 2 URLs
-			{
-				source: "/about/nice-communities/social-care",
-				destination: "/implementing-nice-guidance/social-care/",
-				permanent: true,
-			}, // Generated from Excel Migration Phase 2 URLs
-			{
-				source: "/about/what-we-do/our-research-work",
-				destination: "/what-nice-does/our-research-work",
-				permanent: true,
-			}, // Generated from Excel Migration Phase 2 URLs
-			{
+									{
 				source: "/about/who-we-are/structure-of-nice",
 				destination: "/about-us/structure-of-nice",
 				permanent: true,
@@ -7333,11 +5845,6 @@ const nextConfig = {
 			}, // Generated from Excel Migration Phase 2 URLs
 
 			// === ORIGINAL REDIRECTS BLOCK ===
-			{
-				source: "/news/nice-newsletters-and-alerts",
-				destination: "/nice-newsletters-and-alerts",
-				permanent: true,
-			}, // ORIGINAL
 
 			// === BLOCK GENERATED FROM EXCEL MIGRATION PHASE 2 ===
 			{
@@ -7365,17 +5872,6 @@ const nextConfig = {
 				destination: "/about-us/sustainability",
 				permanent: true,
 			}, // Generated from Excel Migration Phase 2 URLs
-			{
-				source: "/about/what-we-do/accreditation",
-				destination: "/what-nice-does/accreditation",
-				permanent: true,
-			}, // Generated from Excel Migration Phase 2 URLs
-			{
-				source: "/about/what-we-do/life-sciences",
-				destination:
-					"/what-nice-does/life-sciences-how-to-get-your-product-to-market",
-				permanent: true,
-			}, // Generated from Excel Migration Phase 2 URLs
 
 			// === ORIGINAL REDIRECTS BLOCK ===
 			{
@@ -7395,12 +5891,7 @@ const nextConfig = {
 				destination: "/about-us/corporate-publications/our-charter",
 				permanent: true,
 			}, // Generated from Excel Migration Phase 2 URLs
-			{
-				source: "/Get-Involved/our-committees",
-				destination: "/get-involved/our-committees",
-				permanent: true,
-			}, // Generated from Excel Migration Phase 2 URLs
-			{
+						{
 				source: "/Get-Involved/Consultations",
 				destination: "/get-involved/consultations",
 				permanent: true,
@@ -7421,19 +5912,9 @@ const nextConfig = {
 				permanent: true,
 			}, // Generated from Excel Migration Phase 2 URLs
 			// === ORIGINAL REDIRECTS BLOCK ===
-			{
-				source: "/get-involved/careers",
-				destination: "/careers",
-				permanent: true,
-			}, // ORIGINAL
 
 			// === BLOCK GENERATED FROM EXCEL MIGRATION PHASE 2 ===
-			{
-				source: "/news/press-and-media",
-				destination: "/contact-us",
-				permanent: true,
-			}, // Generated from Excel Migration Phase 2 URLs
-			{
+						{
 				source: "/re-using-our-content",
 				destination: "/reusing-our-content",
 				permanent: true,
@@ -7445,12 +5926,7 @@ const nextConfig = {
 			}, // Generated from Excel Migration Phase 2 URLs
 
 			// === ORIGINAL REDIRECTS BLOCK ===
-			{
-				source: "/get-involved/jobs",
-				destination: "/careers",
-				permanent: true,
-			}, // ORIGINAL
-			{
+						{
 				source: "/guidance/proposed",
 				destination: "/guidance/awaiting-development",
 				permanent: true,
@@ -7467,19 +5943,9 @@ const nextConfig = {
 				destination: "/bnfc-via-nice-is-only-available-in-the-uk",
 				permanent: true,
 			}, // Generated from Excel Migration Phase 2 URLs
-			{
-				source: "/bnf-uk-only",
-				destination: "/bnf-via-nice-is-only-available-in-the-uk",
-				permanent: true,
-			}, // Generated from Excel Migration Phase 2 URLs
-			{
+						{
 				source: "/cks-uk-only",
 				destination: "/cks-is-only-available-in-the-uk",
-				permanent: true,
-			}, // Generated from Excel Migration Phase 2 URLs
-			{
-				source: "/news/events",
-				destination: "/events",
 				permanent: true,
 			}, // Generated from Excel Migration Phase 2 URLs
 
@@ -7499,11 +5965,6 @@ const nextConfig = {
 			{
 				source: "/about",
 				destination: "/about-us",
-				permanent: true,
-			}, // Generated from Excel Migration Phase 2 URLs
-			{
-				source: "/aac",
-				destination: "https://www.england.nhs.uk/aac/about-us/who-we-are/",
 				permanent: true,
 			}, // Generated from Excel Migration Phase 2 URLs
 
