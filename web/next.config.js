@@ -3776,24 +3776,26 @@ const nextConfig = {
 				destination: "/Guidance",
 				permanent: true,
 			}, // Generated from Excel Rewrite Rules (parseable) B->D
-			{
-				source:
-					"http://indepth.nice.org.uk/children-and-young-people-should-be-taught-simple-hygiene-measures-to-curb-the-spread-of-infections-says-nice/index.html",
-				destination: "/news",
-				permanent: true,
-			}, // Generated from Excel Rewrite Rules (parseable) B->D
+			// NOTE next-js can't redirect visits to external domains
+			// {
+			// 	source:
+			// 		"http://indepth.nice.org.uk/children-and-young-people-should-be-taught-simple-hygiene-measures-to-curb-the-spread-of-infections-says-nice/index.html",
+			// 	destination: "/news",
+			// 	permanent: true,
+			// }, // Generated from Excel Rewrite Rules (parseable) B->D
 			{
 				source:
 					"https://indepth.nice.org.uk/nice-guidelines-aim-to-improve-how-children-at-risk-of-abuse-or-neglect-are-helped-and-supported/index.html",
 				destination: "/news",
 				permanent: true,
 			}, // Generated from Excel Rewrite Rules (parseable) B->D
-			{
-				source:
-					"http://indepth.nice.org.uk/end-of-life-care-must-support-the-whole-family-not-just-the-dying-child-says-nice-in-new-guidance/index.html",
-				destination: "/news",
-				permanent: true,
-			}, // Generated from Excel Rewrite Rules (parseable) B->D
+			// NOTE next-js can't redirect visits to external domains
+			// {
+			// 	source:
+			// 		"http://indepth.nice.org.uk/end-of-life-care-must-support-the-whole-family-not-just-the-dying-child-says-nice-in-new-guidance/index.html",
+			// 	destination: "/news",
+			// 	permanent: true,
+			// }, // Generated from Excel Rewrite Rules (parseable) B->D
 			{
 				source:
 					"/about/what-we-do/into-practice/mapping-nice-guidelines-to-the-care-quality-commission-s-single-assessment-framework[L,R=301,NC]",
@@ -3807,12 +3809,13 @@ const nextConfig = {
 			// 		"/External - maintain",
 			// 	permanent: true,
 			// }, // Generated from Excel Rewrite Rules (parseable) B->D
-			{
-				source:
-					"http://indepth.nice.org.uk/no-idle-zones-can-help-protect-vulnerable-people-from-air-pollution-says-nice/index.html",
-				destination: "/news",
-				permanent: true,
-			}, // Generated from Excel Rewrite Rules (parseable) B->D
+			// NOTE next-js can't redirect visits to external domains
+			// {
+			// 	source:
+			// 		"http://indepth.nice.org.uk/no-idle-zones-can-help-protect-vulnerable-people-from-air-pollution-says-nice/index.html",
+			// 	destination: "/news",
+			// 	permanent: true,
+			// }, // Generated from Excel Rewrite Rules (parseable) B->D
 			{
 				source:
 					"https://indepth.nice.org.uk/nice-guidance-to-help-children-and-families-open-up-about-domestic-violence/index.html",
@@ -3864,12 +3867,13 @@ const nextConfig = {
 					"/what-nice-does/digital-health/ evidence-standards-framework-esf-for-digital-health-technologies",
 				permanent: true,
 			}, // Generated from Excel Rewrite Rules (parseable) B->D
-			{
-				source:
-					"http://indepth.nice.org.uk/responding-to-child-abuse-and-neglect-a-view-from-NICE/index.html",
-				destination: "/news",
-				permanent: true,
-			}, // Generated from Excel Rewrite Rules (parseable) B->D
+			// NOTE next-js can't redirect visits to external domains
+			// {
+			// 	source:
+			// 		"http://indepth.nice.org.uk/responding-to-child-abuse-and-neglect-a-view-from-NICE/index.html",
+			// 	destination: "/news",
+			// 	permanent: true,
+			// }, // Generated from Excel Rewrite Rules (parseable) B->D
 			{
 				source:
 					"/about/nice-communities/medicines-and-prescribing/nice-medicines-and-prescribing-associates",
@@ -3951,12 +3955,13 @@ const nextConfig = {
 					"/implementing-nice-guidance/implementation-help-and-advice/helping-you-put-our-guidance-into-practice",
 				permanent: true,
 			}, // Generated from Excel Rewrite Rules (parseable) B->D
-			{
-				source:
-					"http://indepth.nice.org.uk/are-statins-the-best-choice-for-me/index.html",
-				destination: "/news",
-				permanent: true,
-			}, // Generated from Excel Rewrite Rules (parseable) B->D
+			// NOTE next-js can't redirect visits to external domains
+			// {
+			// 	source:
+			// 		"http://indepth.nice.org.uk/are-statins-the-best-choice-for-me/index.html",
+			// 	destination: "/news",
+			// 	permanent: true,
+			// }, // Generated from Excel Rewrite Rules (parseable) B->D
 			{
 				source:
 					"https://indepth.nice.org.uk/nice-shared-learning-awards-2017/index.html",
@@ -4140,11 +4145,12 @@ const nextConfig = {
 				destination: "/what-nice-does",
 				permanent: true,
 			}, // Generated from Excel Rewrite Rules (parseable) B->D
-			{
-				source: "http://indepth.nice.org.uk/sepsis-what-nice-says/index.html",
-				destination: "/news",
-				permanent: true,
-			}, // Generated from Excel Rewrite Rules (parseable) B->D
+			// NOTE next-js can't redirect visits to external domains
+			// {
+			// 	source: "http://indepth.nice.org.uk/sepsis-what-nice-says/index.html",
+			// 	destination: "/news",
+			// 	permanent: true,
+			// }, // Generated from Excel Rewrite Rules (parseable) B->D
 			{
 				source: "/about/what-we-do/into-practice/local-practice-case-studies",
 				destination: "/what-nice-does",
@@ -4205,11 +4211,12 @@ const nextConfig = {
 			// 		"/External - maintain",
 			// 	permanent: true,
 			// }, // Generated from Excel Rewrite Rules (parseable) B->D
-			{
-				source: "http://indepth.nice.org.uk/20-years-of-NICE/index.html",
-				destination: "/news",
-				permanent: true,
-			}, // Generated from Excel Rewrite Rules (parseable) B->D
+			// NOTE next-js can't redirect visits to external domains
+			// {
+			// 	source: "http://indepth.nice.org.uk/20-years-of-NICE/index.html",
+			// 	destination: "/news",
+			// 	permanent: true,
+			// }, // Generated from Excel Rewrite Rules (parseable) B->D
 			{
 				source: "https://indepth.nice.org.uk/methods-review/index.html",
 				destination: "/what-nice-does",
@@ -4403,11 +4410,12 @@ const nextConfig = {
 			// 		"/External - maintain",
 			// 	permanent: true,
 			// }, // Generated from Excel Rewrite Rules (parseable) B->D
-			{
-				source: "http://indepth.nice.org.uk/cataracts/index.html",
-				destination: "/news",
-				permanent: true,
-			}, // Generated from Excel Rewrite Rules (parseable) B->D
+			// NOTE next-js can't redirect visits to external domains
+			// {
+			// 	source: "http://indepth.nice.org.uk/cataracts/index.html",
+			// 	destination: "/news",
+			// 	permanent: true,
+			// }, // Generated from Excel Rewrite Rules (parseable) B->D
 			{
 				source: "/about/what-we-do/our-programmes/managed-access",
 				destination: "/what-nice-does/managed-access",
