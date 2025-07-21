@@ -6,12 +6,13 @@ import { Button } from "@nice-digital/nds-button";
 import { Grid, GridItem } from "@nice-digital/nds-grid";
 
 import { Link } from "@/components/Link/Link";
-import { OnThisPage } from "@/components/OnThisPage/OnThisPage";
 import { ProductHorizontalNav } from "@/components/ProductHorizontalNav/ProductHorizontalNav";
 import { ProductPageHeading } from "@/components/ProductPageHeading/ProductPageHeading";
 import { PublicationsChapterMenu } from "@/components/PublicationsChapterMenu/PublicationsChapterMenu";
 import { PublicationsPrevNext } from "@/components/PublicationsPrevNext/PublicationsPrevNext";
 import { formatDateStr, stripTime } from "@/utils/datetime";
+
+import { OnThisPageBasic } from "../OnThisPageBasic/OnThisPageBasic";
 
 import { type ProductResourceChapterPageProps } from "./ProductResourceChapterPage.getServerSideProps";
 import styles from "./ProductResourceChapterPage.module.scss";
@@ -99,30 +100,24 @@ export const ProductResourceChapterPage: FC<
 				</GridItem>
 
 				<GridItem cols={12} md={8} lg={9} elementType="section">
-					<Grid reverse gutter="loose">
-						{hasOnThisPageMenu ? (
-							<GridItem cols={12} md={4} lg={3}>
-								<OnThisPage sections={chapterSections} />
-							</GridItem>
-						) : null}
-						<GridItem
-							cols={12}
-							md={hasOnThisPageMenu ? 8 : 12}
-							lg={hasOnThisPageMenu ? 9 : 12}
-						>
-							<h2 className={styles.heading}>{title}</h2>
-							<div dangerouslySetInnerHTML={{ __html: htmlBody }} />
-							{lastUpdated ? (
-								<p>
-									This page was last updated on{" "}
-									<time dateTime={stripTime(lastUpdated)}>
-										{formatDateStr(lastUpdated)}
-									</time>
-								</p>
-							) : null}
-							<PublicationsPrevNext chapters={chapters} />
-						</GridItem>
-					</Grid>
+					<h2 className={styles.heading}>{title}</h2>
+
+					{hasOnThisPageMenu ? (
+						<div>
+							<OnThisPageBasic sections={chapterSections} />
+						</div>
+					) : null}
+
+					<div dangerouslySetInnerHTML={{ __html: htmlBody }} />
+					{lastUpdated ? (
+						<p>
+							This page was last updated on{" "}
+							<time dateTime={stripTime(lastUpdated)}>
+								{formatDateStr(lastUpdated)}
+							</time>
+						</p>
+					) : null}
+					<PublicationsPrevNext chapters={chapters} />
 				</GridItem>
 			</Grid>
 		</>
