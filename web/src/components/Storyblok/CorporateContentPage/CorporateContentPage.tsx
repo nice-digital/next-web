@@ -18,7 +18,7 @@ export const CorporateContentPage = (
 			logger.error(
 				`Story is not available for additionalMetaTags in SlugCatchAllPage.`
 			);
-			return [];
+			return undefined;
 		}
 	}, [story]);
 	useEffect(() => {
