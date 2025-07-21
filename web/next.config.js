@@ -147,6 +147,10 @@ const nextConfig = {
 		//   3. SOURCE: /get-involved/our-committees/join-a-committee/apply-to-be-a-chair-on-a-nice-committee
 		//      DESTINATION: n/a stay in Orchard until we figure out the TRAC embed
 
+		// NOTE objects with comments appended B->D represent Orchard to NextWeb redirects
+		// NOTE objects with comments appended A->B represent legacy Orchard redirects
+		// A->B and B->D are the columns used from https://niceuk.sharepoint.com/:x:/s/Website_CMS/EaA-WRJw2BFEoH4nlNtci6gBvK5N4SmGlzs0oeGJRGbgJg?e=fyo1YH
+
 		return [
 			// === BLOCK GENERATED FROM LEGACY ORCHARD REDIRECTS ===
 			{
@@ -3057,13 +3061,6 @@ const nextConfig = {
 				destination: "/Guidance",
 				permanent: true,
 			}, // Generated from Excel Rewrite Rules (parseable) B->D
-			// {
-			// 	source:
-			// 		"/https://www.england.nhs.uk/aac/about-us/who-we-are/",
-			// 	destination:
-			// 		"/External - maintain",
-			// 	permanent: true,
-			// }, // Generated from Excel Rewrite Rules (parseable) B->D
 			{
 				source:
 					"/guidance/ph44/documents/physical-activity-brief-advice-in-primary-care-partial-update-of-ph2-economic-modelling-of-brief-advice-on-physical-activity-for-adults-in-primary-care2",
@@ -3097,13 +3094,6 @@ const nextConfig = {
 				destination: "/what-nice-does",
 				permanent: true,
 			}, // Generated from Excel Rewrite Rules (parseable) B->D
-			// {
-			// 	source:
-			// 		"https://indepth.nice.org.uk/nice-guidance-on-end-of-life-care-for-children-aims-to-end-inconsistences-in-treatment/index.html",
-			// 	destination:
-			// 		"/External - maintain",
-			// 	permanent: true,
-			// }, // Generated from Excel Rewrite Rules (parseable) B->D
 			// NOTE next-js can't redirect visits to external domains
 			// {
 			// 	source:
@@ -3380,20 +3370,6 @@ const nextConfig = {
 				destination: "/Guidance",
 				permanent: true,
 			}, // Generated from Excel Rewrite Rules (parseable) B->D
-						// {
-			// 	source:
-			// 		"http://indepth.nice.org.uk/transforming-nice/index.html",
-			// 	destination:
-			// 		"/External - maintain",
-			// 	permanent: true,
-			// }, // Generated from Excel Rewrite Rules (parseable) B->D
-			// {
-			// 	source:
-			// 		"http://indepth.nice.org.uk/transforming-nice/index.html",
-			// 	destination:
-			// 		"/External - maintain",
-			// 	permanent: true,
-			// }, // Generated from Excel Rewrite Rules (parseable) B->D
 			// NOTE next-js can't redirect visits to external domains
 			// {
 			// 	source: "http://indepth.nice.org.uk/20-years-of-NICE/index.html",
@@ -3412,27 +3388,13 @@ const nextConfig = {
 					"/what-nice-does/life-sciences-how-to-get-your-product-to-market/nice-advice-service",
 				permanent: true,
 			}, // Generated from Excel Rewrite Rules (parseable) B->D
-																																																									// {
-			// 	source:
-			// 		"https://indepth.nice.org.uk/NICE-at-25/index.html",
-			// 	destination:
-			// 		"/External - maintain",
-			// 	permanent: true,
-			// }, // Generated from Excel Rewrite Rules (parseable) B->D
-			// {
-			// 	source:
-			// 		"https://indepth.nice.org.uk/NICE-at-25/index.html",
-			// 	destination:
-			// 		"/External - maintain",
-			// 	permanent: true,
-			// }, // Generated from Excel Rewrite Rules (parseable) B->D
 			{
 				source: "/about/what-we-do/life-sciences/scientific-advice",
 				destination:
 					"/what-nice-does/life-sciences-how-to-get-your-product-to-market/nice-advice-service",
 				permanent: true,
 			}, // Generated from Excel Rewrite Rules (parseable) B->D
-						// NOTE next-js can't redirect visits to external domains
+			// NOTE next-js can't redirect visits to external domains
 			// {
 			// 	source: "https://indepth.nice.org.uk/our-brand/index.html",
 			// 	destination: "/Guidance",
@@ -3461,20 +3423,6 @@ const nextConfig = {
 					"/implementing-nice-guidance/social-care/quick-guides-to-social-care-topics",
 				permanent: true,
 			}, // Generated from Excel Rewrite Rules (parseable) B->D
-			// {
-			// 	source:
-			// 		"/https://library.hee.nhs.uk/resources/openathens",
-			// 	destination:
-			// 		"/External - maintain",
-			// 	permanent: true,
-			// }, // Generated from Excel Rewrite Rules (parseable) B->D
-			// {
-			// 	source:
-			// 		"/https://library.hee.nhs.uk/resources/openathens",
-			// 	destination:
-			// 		"/External - maintain",
-			// 	permanent: true,
-			// }, // Generated from Excel Rewrite Rules (parseable) B->D
 			// NOTE next-js can't redirect visits to external domains
 			// {
 			// 	source: "http://indepth.nice.org.uk/cataracts/index.html",
@@ -4456,20 +4404,6 @@ const nextConfig = {
 				destination: "/events",
 				permanent: true,
 			}, // Generated from Excel Rewrite Rules (parseable) B->D
-			// {
-			// 	source:
-			// 		"/aac",
-			// 	destination:
-			// 		"/External - maintain. Extra redirect to above.",
-			// 	permanent: true,
-			// }, // Generated from Excel Rewrite Rules (parseable) B->D
-			// {
-			// 	source:
-			// 		"/aac",
-			// 	destination:
-			// 		"/External - maintain. Extra redirect to above.",
-			// 	permanent: true,
-			// }, // Generated from Excel Rewrite Rules (parseable) B->D
 			// TODO Check if this redirect is still necessary or will it cause a loop?
 			// {
 			// 	source: "/",
