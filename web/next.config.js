@@ -5599,11 +5599,11 @@ const nextConfig = {
 			// 	permanent: true,
 			// }, // Generated from Excel Rewrite Rules (parseable) B->D
 			// TODO Check if this redirect is still necessary or will it cause a loop?
-			{
-				source: "/",
-				destination: "https://www.nice.org.uk",
-				permanent: true,
-			}, // Generated from Excel Rewrite Rules (parseable) B->D
+			// {
+			// 	source: "/",
+			// 	destination: "https://www.nice.org.uk",
+			// 	permanent: true,
+			// }, // Generated from Excel Rewrite Rules (parseable) B->D
 			// === BLOCK GENERATED FROM EXCEL MIGRATION PHASE 2 ===
 			{
 				source:
