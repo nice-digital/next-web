@@ -80,7 +80,7 @@ export const getCorporateContentGssp = <
 
 			if (
 				component === "infoPage" &&
-				storyResult.story?.content.hideSectionNav != "true" &&
+				storyResult.story?.content.hideSectionNav !== "true" &&
 				parentID !== null
 			) {
 				tree = await buildTree(parentID, slug, isRootPage);
