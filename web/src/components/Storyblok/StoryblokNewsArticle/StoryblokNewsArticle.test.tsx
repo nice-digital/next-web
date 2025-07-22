@@ -1,10 +1,6 @@
 import { render, screen } from "@testing-library/react";
 
 import { mockNewsArticle } from "@/test-utils/storyblok-data";
-import {
-	RelatedLinkStoryblok,
-	RelatedNewsLinkStoryblok,
-} from "@/types/storyblok";
 
 import {
 	StoryblokNewsArticle,
@@ -32,16 +28,6 @@ const newsArticleProps: StoryblokNewsArticleProps = {
 	],
 };
 
-jest.mock("@storyblok/react", () => ({
-	StoryblokComponent: ({
-		blok,
-	}: {
-		blok: RelatedLinkStoryblok | RelatedNewsLinkStoryblok;
-	}) => {
-		return <div data-testid={`mock-${blok.component}`}>{blok.title}</div>;
-	},
-}));
-
 describe("NewsArticle", () => {
 	it("renders the news article", () => {
 		render(<StoryblokNewsArticle blok={newsArticleProps.blok} />);
@@ -61,16 +47,22 @@ describe("NewsArticle", () => {
 
 	it("renders the news article with related links", () => {
 		render(<StoryblokNewsArticle blok={newsArticleProps.blok} />);
-		expect(screen.getByTestId("mock-relatedLink")).toBeInTheDocument();
+		expect(
+			screen.getByTestId("storyblok-component-relatedLink")
+		).toBeInTheDocument();
 	});
 
 	it("renders the news article with related news links", () => {
 		render(<StoryblokNewsArticle blok={newsArticleProps.blok} />);
-		expect(screen.getByTestId("mock-relatedNewsLink")).toBeInTheDocument();
+		expect(
+			screen.getByTestId("storyblok-component-relatedNewsLink")
+		).toBeInTheDocument();
 
 		if (mockNewsArticle.content && mockNewsArticle.content.relatedNews) {
 			const relatedNewsTitle = mockNewsArticle.content?.relatedNews[0].title;
-			expect(screen.getByText(relatedNewsTitle)).toBeInTheDocument();
+			expect(
+				screen.getByText(relatedNewsTitle, { exact: false })
+			).toBeInTheDocument();
 		}
 	});
 

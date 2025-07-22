@@ -23,9 +23,7 @@ export const Updates: FC<UpdatesProps> = ({
 							return (
 								<li key={`${product.title}_${index}`}>
 									<Link to={product.productPath}>
-										<a>
-											{product.title} ({product.id})
-										</a>
+										{`${product.title} (${product.id})`}
 									</Link>
 								</li>
 							);
@@ -42,9 +40,7 @@ export const Updates: FC<UpdatesProps> = ({
 							return (
 								<li key={`${product.title}_${index}`}>
 									<Link to={product.productPath}>
-										<a>
-											{product.title} ({product.id})
-										</a>
+										{`${product.title} (${product.id})`}
 									</Link>
 								</li>
 							);
