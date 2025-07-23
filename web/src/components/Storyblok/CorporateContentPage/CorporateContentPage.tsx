@@ -27,6 +27,10 @@ export const CorporateContentPage = (
 			"bnf-via-nice-is-only-available-in-the-uk",
 			"cks-is-only-available-in-the-uk",
 			"cks-end-user-licence-agreement",
+			"bnfc-uk-only",
+			"bnf-uk-only",
+			"cks-uk-only",
+			"terms-and-conditions/cks-end-user-licence-agreement",
 		];
 
 		const shouldNoIndex = noIndexPaths.includes(story?.full_slug);
