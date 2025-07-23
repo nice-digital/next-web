@@ -3770,8 +3770,8 @@ const nextConfig = {
 				destination: "/nice-newsletters-and-alerts",
 				permanent: true,
 			}, // Generated from Excel Rewrite Rules (parseable) B->D
-			 // Generated from Excel Rewrite Rules (parseable) B->D
-			 // Generated from Excel Rewrite Rules (parseable) B->D
+			// Generated from Excel Rewrite Rules (parseable) B->D
+			// Generated from Excel Rewrite Rules (parseable) B->D
 			// {
 			// 	source:
 			// 		"/forms/interventional-procedures-register-an-interest",
@@ -3779,8 +3779,8 @@ const nextConfig = {
 			// 		"/Jotform",
 			// 	permanent: true,
 			// }, // Generated from Excel Rewrite Rules (parseable) B->D
-			 // Generated from Excel Rewrite Rules (parseable) B->D
-			 // Generated from Excel Rewrite Rules (parseable) B->D
+			// Generated from Excel Rewrite Rules (parseable) B->D
+			// Generated from Excel Rewrite Rules (parseable) B->D
 			// {
 			// 	source:
 			// 		"/forms/interventional-procedures-notification",
@@ -3788,8 +3788,8 @@ const nextConfig = {
 			// 		"/Jotform",
 			// 	permanent: true,
 			// }, // Generated from Excel Rewrite Rules (parseable) B->D
-			 // Generated from Excel Rewrite Rules (parseable) B->D
-			 // Generated from Excel Rewrite Rules (parseable) B->D
+			// Generated from Excel Rewrite Rules (parseable) B->D
+			// Generated from Excel Rewrite Rules (parseable) B->D
 			{
 				source: "/standards-and-indicators/quality-standards",
 				destination: "/what-nice-does/standards-and-indicators",
@@ -3849,8 +3849,8 @@ const nextConfig = {
 				destination: "/library-and-knowledge-services",
 				permanent: true,
 			}, // Generated from Excel Rewrite Rules (parseable) B->D
-			 // Generated from Excel Rewrite Rules (parseable) B->D
-			 // Generated from Excel Rewrite Rules (parseable) B->D
+			// Generated from Excel Rewrite Rules (parseable) B->D
+			// Generated from Excel Rewrite Rules (parseable) B->D
 			// NOTE querystrings not allowed in next-js redirect source, converted version below
 			// {
 			// 	source: "/guidance/proposed?type=hst",
@@ -4266,26 +4266,26 @@ const nextConfig = {
 				destination: "/terms-and-conditions",
 				permanent: true,
 			}, // Generated from Excel Rewrite Rules (parseable) B->D
-			 // Generated from Excel Rewrite Rules (parseable) B->D
+			// Generated from Excel Rewrite Rules (parseable) B->D
 			{
 				source: "/NICE-Pathways-feedback",
 				destination: "/what-nice-does",
 				permanent: true,
 			}, // Generated from Excel Rewrite Rules (parseable) B->D
-			 // Generated from Excel Rewrite Rules (parseable) B->D
+			// Generated from Excel Rewrite Rules (parseable) B->D
 			{
 				source: "/leave-feedback",
 				destination: "/forms/leave-feedback",
 				permanent: true,
 			}, // Generated from Excel Rewrite Rules (parseable) B->D
-			 // Generated from Excel Rewrite Rules (parseable) B->D
+			// Generated from Excel Rewrite Rules (parseable) B->D
 			{
 				source: "/bnf-uk-only",
 				destination: "/bnf-via-nice-is-only-available-in-the-uk",
 				permanent: true,
 			}, // Generated from Excel Rewrite Rules (parseable) B->D
-			 // Generated from Excel Rewrite Rules (parseable) B->D
-			 // Generated from Excel Rewrite Rules (parseable) B->D
+			// Generated from Excel Rewrite Rules (parseable) B->D
+			// Generated from Excel Rewrite Rules (parseable) B->D
 			// TODO Check if this redirect is still necessary or will it cause a loop?
 			// {
 			// 	source: "/",
@@ -5668,7 +5668,7 @@ const nextConfig = {
 				destination: "/reusing-our-content/public-task",
 				permanent: true,
 			}, // Generated from Excel Migration Phase 2 URLs
-			 // Generated from Excel Migration Phase 2 URLs
+			// Generated from Excel Migration Phase 2 URLs
 			{
 				source: "/about/what-we-do/digital-health",
 				destination: "/what-nice-does/digital-health",
@@ -5703,7 +5703,7 @@ const nextConfig = {
 				destination: "/about-us/corporate-publications/our-charter",
 				permanent: true,
 			}, // Generated from Excel Migration Phase 2 URLs
-			 // Generated from Excel Migration Phase 2 URLs
+			// Generated from Excel Migration Phase 2 URLs
 			{
 				source: "/standards-and-indicators",
 				destination: "/what-nice-does/standards-and-indicators",
