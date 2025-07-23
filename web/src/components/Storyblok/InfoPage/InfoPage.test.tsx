@@ -8,18 +8,6 @@ import { InfoPageStoryblok } from "@/types/storyblok";
 
 import { InfoPage, type InfoPageBlokProps } from "./InfoPage";
 
-// test mocking the StoryblokComponent
-jest.mock("@storyblok/react", () => ({
-	// eslint-disable-next-line @typescript-eslint/no-explicit-any
-	StoryblokComponent: ({ blok }: { blok: any }) => {
-		return (
-			<div data-testid={`storyblok-component-${blok.component}`}>
-				<h2>{blok.component}</h2>
-			</div>
-		);
-	},
-}));
-
 const mockPageHeaderSectionNavData =
 	sampleDataPageHeaderSectionNav.story.content;
 const mockHeroInPageNavData = sampleDataHeroInPageNav.story.content;
@@ -60,9 +48,15 @@ describe("InfoPage", () => {
 
 	it("renders the Page Header through the StoryblokComponent if present", () => {
 		render(<InfoPage {...mockPropsWithPageHeaderAndSectionNav} />);
+		const { component, title } = mockPageHeaderSectionNavData.header[0];
+
 		expect(
-			screen.getByText(mockPageHeaderSectionNavData.header[0].component)
-		).toBeInTheDocument();
+			screen.getByTestId(`storyblok-component-${component}`)
+		).toHaveTextContent(component);
+
+		expect(
+			screen.getByTestId(`storyblok-component-${component}`)
+		).toHaveTextContent(title);
 	});
 
 	it("renders the Page Hero through the StoryblokComponent if present", () => {
@@ -97,10 +91,21 @@ describe("InfoPage", () => {
 		expect(screen.queryByText("On this page")).not.toBeInTheDocument();
 	});
 
-	it("renders In-Page Nav when hideSectionNav is 'true' and hideInPageNav is not 'true'", () => {
-		render(<InfoPage {...mockPropsWithHeroAndInPageNav} />);
-		expect(screen.getByText("On this page")).toBeInTheDocument();
-		expect(screen.queryByTestId("section-nav")).not.toBeInTheDocument();
+	describe("when testing In-Page Nav rendering", () => {
+		beforeEach(() => {
+			jest.resetModules();
+
+			jest.doMock("@nice-digital/nds-in-page-nav", () => ({
+				InPageNav: () => <div>On this page</div>,
+			}));
+		});
+
+		it("renders In-Page Nav when hideSectionNav is 'true' and hideInPageNav is not 'true'", async () => {
+			const { InfoPage } = await import("./InfoPage");
+			render(<InfoPage {...mockPropsWithHeroAndInPageNav} />);
+			expect(screen.getByText("On this page")).toBeInTheDocument();
+			expect(screen.queryByTestId("section-nav")).not.toBeInTheDocument();
+		});
 	});
 
 	it("does not render nav area when both hideSectionNav and hideInPageNav are 'true'", () => {

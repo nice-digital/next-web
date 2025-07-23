@@ -15,25 +15,32 @@ import { GENERIC_ERROR_MESSAGE } from "@/utils/storyblok";
 
 import BlogPostPage, { getServerSideProps } from "./[slug].page";
 
-jest.mock("@storyblok/react", () => {
-	const actual = jest.requireActual("@storyblok/react");
+// jest.mock("@storyblok/react", () => ({
+//   // eslint-disable-next-line @typescript-eslint/no-explicit-any
+//   StoryblokComponent: jest.fn(({ blok }: { blok: any }) => (
+//     <div data-testid={`storyblok-component-${blok.component}`}>
+//       {blok.component}
+//     </div>
+//   )),
+// }));
 
-	return {
-		...actual,
-		__esModule: true,
-		storyblokInit: jest.fn(),
-		// eslint-disable-next-line @typescript-eslint/no-explicit-any
-		StoryblokComponent: ({ blok }: { blok: any }) => (
-			<div data-testid={`storyblok-component-${blok.component}`}>
-				{blok.component}
-			</div>
-		),
-		getStoryblokApi: jest.fn(() => ({
-			get: jest.fn(),
-			getAll: jest.fn(),
-		})),
-	};
-});
+// jest.mock("@storyblok/react", () => ({
+// 	...jest.requireActual("@storyblok/react"),
+// 	__esModule: true,
+// 	// eslint-disable-next-line @typescript-eslint/no-explicit-any
+// 	StoryblokComponent: jest.fn(({ blok }: { blok: any }) => (
+// 		<div data-testid={`storyblok-component-${blok.component}`}>
+// 			{blok.component}
+// 		</div>
+// 	)),
+// 	getStoryblokApi: jest.fn().mockReturnValue({
+// 		get: jest.fn(),
+// 		getAll: jest.fn(),
+// 	}),
+// 	storyblokInit: jest.fn(),
+// 	apiPlugin: {},
+// }));
+
 //cast to unknown necessary due to some differences in response versus expected type from generate-ts
 const mockBlogPost = mockBlogPostSuccessResponse.data
 	.story as unknown as ISbStoryData<BlogPostStoryblok>;
