@@ -3770,18 +3770,8 @@ const nextConfig = {
 				destination: "/nice-newsletters-and-alerts",
 				permanent: true,
 			}, // Generated from Excel Rewrite Rules (parseable) B->D
-			{
-				source:
-					"/freedom-of-information/freedom-of-information-publication-scheme",
-				destination:
-					"/freedom-of-information/freedom-of-information-publication-scheme",
-				permanent: true,
-			}, // Generated from Excel Rewrite Rules (parseable) B->D
-			{
-				source: "/forms/subscribe-to-nice-news-for-health-and-social-care",
-				destination: "/forms/subscribe-to-nice-news-for-health-and-social-care",
-				permanent: true,
-			}, // Generated from Excel Rewrite Rules (parseable) B->D
+			 // Generated from Excel Rewrite Rules (parseable) B->D
+			 // Generated from Excel Rewrite Rules (parseable) B->D
 			// {
 			// 	source:
 			// 		"/forms/interventional-procedures-register-an-interest",
@@ -3789,16 +3779,8 @@ const nextConfig = {
 			// 		"/Jotform",
 			// 	permanent: true,
 			// }, // Generated from Excel Rewrite Rules (parseable) B->D
-			{
-				source: "/forms/subscribe-to-medicine-and-prescribing-alerts",
-				destination: "/forms/subscribe-to-medicine-and-prescribing-alerts",
-				permanent: true,
-			}, // Generated from Excel Rewrite Rules (parseable) B->D
-			{
-				source: "/forms/subscribe-to-nice-news-for-life-sciences",
-				destination: "/forms/subscribe-to-nice-news-for-life-sciences",
-				permanent: true,
-			}, // Generated from Excel Rewrite Rules (parseable) B->D
+			 // Generated from Excel Rewrite Rules (parseable) B->D
+			 // Generated from Excel Rewrite Rules (parseable) B->D
 			// {
 			// 	source:
 			// 		"/forms/interventional-procedures-notification",
@@ -3806,16 +3788,8 @@ const nextConfig = {
 			// 		"/Jotform",
 			// 	permanent: true,
 			// }, // Generated from Excel Rewrite Rules (parseable) B->D
-			{
-				source: "/forms/subscribe-to-update-for-primary-care",
-				destination: "/forms/subscribe-to-update-for-primary-care",
-				permanent: true,
-			}, // Generated from Excel Rewrite Rules (parseable) B->D
-			{
-				source: "/forms/subscribe-to-nice-news-international",
-				destination: "/forms/subscribe-to-nice-news-international",
-				permanent: true,
-			}, // Generated from Excel Rewrite Rules (parseable) B->D
+			 // Generated from Excel Rewrite Rules (parseable) B->D
+			 // Generated from Excel Rewrite Rules (parseable) B->D
 			{
 				source: "/standards-and-indicators/quality-standards",
 				destination: "/what-nice-does/standards-and-indicators",
@@ -3875,27 +3849,14 @@ const nextConfig = {
 				destination: "/library-and-knowledge-services",
 				permanent: true,
 			}, // Generated from Excel Rewrite Rules (parseable) B->D
-			{
-				source: "/get-involved/our-committees",
-				destination: "/get-involved/our-committees",
-				permanent: true,
-			}, // Generated from Excel Rewrite Rules (parseable) B->D
-			{
-				source: "/Get-Involved/our-committees",
-				destination: "/get-involved/our-committees",
-				permanent: true,
-			}, // Generated from Excel Rewrite Rules (parseable) B->D
+			 // Generated from Excel Rewrite Rules (parseable) B->D
+			 // Generated from Excel Rewrite Rules (parseable) B->D
 			// NOTE querystrings not allowed in next-js redirect source, converted version below
 			// {
 			// 	source: "/guidance/proposed?type=hst",
 			// 	destination: "/guidance",
 			// 	permanent: true,
 			// }, // Generated from Excel Rewrite Rules (parseable) B->D
-			{
-				source: "/guidance/topic-selection",
-				destination: "/Guidance",
-				permanent: true,
-			}, // Generated from Excel Rewrite Rules (parseable) B->D
 			{
 				source: "/get-involved/careers",
 				destination: "/careers",
@@ -4305,46 +4266,26 @@ const nextConfig = {
 				destination: "/terms-and-conditions",
 				permanent: true,
 			}, // Generated from Excel Rewrite Rules (parseable) B->D
-			{
-				source: "/nice-newsletters-and-alerts",
-				destination: "/nice-newsletters-and-alerts",
-				permanent: true,
-			}, // Generated from Excel Rewrite Rules (parseable) B->D
+			 // Generated from Excel Rewrite Rules (parseable) B->D
 			{
 				source: "/NICE-Pathways-feedback",
 				destination: "/what-nice-does",
 				permanent: true,
 			}, // Generated from Excel Rewrite Rules (parseable) B->D
-			{
-				source: "/terms-and-conditions",
-				destination: "/terms-and-conditions",
-				permanent: true,
-			}, // Generated from Excel Rewrite Rules (parseable) B->D
+			 // Generated from Excel Rewrite Rules (parseable) B->D
 			{
 				source: "/leave-feedback",
 				destination: "/forms/leave-feedback",
 				permanent: true,
 			}, // Generated from Excel Rewrite Rules (parseable) B->D
-			{
-				source: "/get-involved",
-				destination: "/get-involved",
-				permanent: true,
-			}, // Generated from Excel Rewrite Rules (parseable) B->D
+			 // Generated from Excel Rewrite Rules (parseable) B->D
 			{
 				source: "/bnf-uk-only",
 				destination: "/bnf-via-nice-is-only-available-in-the-uk",
 				permanent: true,
 			}, // Generated from Excel Rewrite Rules (parseable) B->D
-			{
-				source: "/guidance",
-				destination: "/Guidance",
-				permanent: true,
-			}, // Generated from Excel Rewrite Rules (parseable) B->D
-			{
-				source: "/events",
-				destination: "/events",
-				permanent: true,
-			}, // Generated from Excel Rewrite Rules (parseable) B->D
+			 // Generated from Excel Rewrite Rules (parseable) B->D
+			 // Generated from Excel Rewrite Rules (parseable) B->D
 			// TODO Check if this redirect is still necessary or will it cause a loop?
 			// {
 			// 	source: "/",
@@ -5727,11 +5668,7 @@ const nextConfig = {
 				destination: "/reusing-our-content/public-task",
 				permanent: true,
 			}, // Generated from Excel Migration Phase 2 URLs
-			{
-				source: "/Get-Involved/Meetings-in-public",
-				destination: "/get-involved/meetings-in-public",
-				permanent: true,
-			}, // Generated from Excel Migration Phase 2 URLs
+			 // Generated from Excel Migration Phase 2 URLs
 			{
 				source: "/about/what-we-do/digital-health",
 				destination: "/what-nice-does/digital-health",
@@ -5766,11 +5703,7 @@ const nextConfig = {
 				destination: "/about-us/corporate-publications/our-charter",
 				permanent: true,
 			}, // Generated from Excel Migration Phase 2 URLs
-			{
-				source: "/Get-Involved/Consultations",
-				destination: "/get-involved/consultations",
-				permanent: true,
-			}, // Generated from Excel Migration Phase 2 URLs
+			 // Generated from Excel Migration Phase 2 URLs
 			{
 				source: "/standards-and-indicators",
 				destination: "/what-nice-does/standards-and-indicators",
