@@ -2697,12 +2697,12 @@ const nextConfig = {
 					"/what-nice-does/our-guidance/about-technology-appraisal-guidance/our-methods-and-processes-health-technology-evaluation-manual/technology-appraisal-processes-and-timelines/single-technology-appraisal-timeline",
 				permanent: true,
 			}, // Generated from Excel Rewrite Rules (parseable) B->D
-			{
-				source:
-					"/guidance/mtg29/resources/nice-medical-technology-adoption-support-for-the-greenlight-xps-laser-system-for-treating-benign-prostatic-hyperplasia-insights-from-the-nhs-2603460493/chapter/1-Introduction",
-				destination: "/Guidance",
-				permanent: true,
-			}, // Generated from Excel Rewrite Rules (parseable) B->D
+			// {
+			// 	source:
+			// 		"/guidance/mtg29/resources/nice-medical-technology-adoption-support-for-the-greenlight-xps-laser-system-for-treating-benign-prostatic-hyperplasia-insights-from-the-nhs-2603460493/chapter/1-Introduction",
+			// 	destination: "/Guidance",
+			// 	permanent: true,
+			// }, // Generated from Excel Rewrite Rules (parseable) B->D
 			{
 				source:
 					"/about/what-we-do/our-programmes/nice-guidance/nice-technology-appraisal-guidance/consultation-on-changes-to-technology-appraisals-and-highly-specialised-technologies",
@@ -2831,18 +2831,18 @@ const nextConfig = {
 					"/what-nice-does/our-guidance/about-nice-guidelines/how-we-develop-nice-guidelines",
 				permanent: true,
 			}, // Generated from Excel Rewrite Rules (parseable) B->D
-			{
-				source:
-					"/guidance/cg155/update/cg155-update-1/consultation/html-content-2",
-				destination: "/Guidance",
-				permanent: true,
-			}, // Generated from Excel Rewrite Rules (parseable) B->D
-			{
-				source:
-					"/guidance/cg150/update/cg150-update-1/consultation/html-content",
-				destination: "/Guidance",
-				permanent: true,
-			}, // Generated from Excel Rewrite Rules (parseable) B->D
+			// {
+			// 	source:
+			// 		"/guidance/cg155/update/cg155-update-1/consultation/html-content-2",
+			// 	destination: "/Guidance",
+			// 	permanent: true,
+			// }, // Generated from Excel Rewrite Rules (parseable) B->D
+			// {
+			// 	source:
+			// 		"/guidance/cg150/update/cg150-update-1/consultation/html-content",
+			// 	destination: "/Guidance",
+			// 	permanent: true,
+			// }, // Generated from Excel Rewrite Rules (parseable) B->D
 			{
 				source:
 					"/about/what-we-do/evidence-and-best-practice-resources/evidence-search/evidence-search-service-closure-information",
@@ -2870,12 +2870,12 @@ const nextConfig = {
 					"/what-nice-does/life-sciences-how-to-get-your-product-to-market/nice-advice-service",
 				permanent: true,
 			}, // Generated from Excel Rewrite Rules (parseable) B->D
-			{
-				source:
-					"/Media/Default/Get-involved/stakeholder-registration/Stakeholder_registration_and_confidentiality_form.doc",
-				destination: "/Guidance",
-				permanent: true,
-			}, // Generated from Excel Rewrite Rules (parseable) B->D
+			// {
+			// 	source:
+			// 		"/Media/Default/Get-involved/stakeholder-registration/Stakeholder_registration_and_confidentiality_form.doc",
+			// 	destination: "/Guidance",
+			// 	permanent: true,
+			// }, // Generated from Excel Rewrite Rules (parseable) B->D
 			{
 				source:
 					"/about/nice-communities/nice-and-the-public/public-involvement/bursary-scheme-for-nice-annual-conference",
@@ -3009,12 +3009,12 @@ const nextConfig = {
 					"/what-nice-does/life-sciences-how-to-get-your-product-to-market/nice-advice-service",
 				permanent: true,
 			}, // Generated from Excel Rewrite Rules (parseable) B->D
-			{
-				source:
-					"/guidance/CG44/ifp/chapter/Treatment-and-care-for-women-with-heavy-periods",
-				destination: "/Guidance",
-				permanent: true,
-			}, // Generated from Excel Rewrite Rules (parseable) B->D
+			// {
+			// 	source:
+			// 		"/guidance/CG44/ifp/chapter/Treatment-and-care-for-women-with-heavy-periods",
+			// 	destination: "/Guidance",
+			// 	permanent: true,
+			// }, // Generated from Excel Rewrite Rules (parseable) B->D
 			{
 				source:
 					"/about/what-we-do/life-sciences/scientific-advice/light-scientific-advice",
@@ -3042,18 +3042,18 @@ const nextConfig = {
 				destination: "/what-nice-does",
 				permanent: true,
 			}, // Generated from Excel Rewrite Rules (parseable) B->D
-			{
-				source:
-					"/guidance/indevelopment/gid-scwave0708/consultation/html-content-2",
-				destination: "/Guidance",
-				permanent: true,
-			}, // Generated from Excel Rewrite Rules (parseable) B->D
-			{
-				source:
-					"/guidance/ph44/documents/physical-activity-brief-advice-in-primary-care-partial-update-of-ph2-economic-modelling-of-brief-advice-on-physical-activity-for-adults-in-primary-care2",
-				destination: "/Guidance",
-				permanent: true,
-			}, // Generated from Excel Rewrite Rules (parseable) B->D
+			// {
+			// 	source:
+			// 		"/guidance/indevelopment/gid-scwave0708/consultation/html-content-2",
+			// 	destination: "/Guidance",
+			// 	permanent: true,
+			// }, // Generated from Excel Rewrite Rules (parseable) B->D
+			// {
+			// 	source:
+			// 		"/guidance/ph44/documents/physical-activity-brief-advice-in-primary-care-partial-update-of-ph2-economic-modelling-of-brief-advice-on-physical-activity-for-adults-in-primary-care2",
+			// 	destination: "/Guidance",
+			// 	permanent: true,
+			// }, // Generated from Excel Rewrite Rules (parseable) B->D
 			// NOTE next-js can't redirect visits to external domains
 			// {
 			// 	source:
@@ -3102,24 +3102,24 @@ const nextConfig = {
 					"/get-involved/our-committees/nice-committee-meetings/quality-standards-advisory-committee/quality-standards-advisory-committee-members",
 				permanent: true,
 			}, // Generated from Excel Rewrite Rules (parseable) B->D
-			{
-				source:
-					"/guidance/ph17/evidence/ph17-promoting-physical-activity-for-children-and-young-people-evidence-update2",
-				destination: "/Guidance",
-				permanent: true,
-			}, // Generated from Excel Rewrite Rules (parseable) B->D
-			{
-				source:
-					"/process/pmg30/chapter/using-nice-guidance-and-related-quality-standards-in-provider-organisations",
-				destination: "/Guidance",
-				permanent: true,
-			}, // Generated from Excel Rewrite Rules (parseable) B->D
-			{
-				source:
-					"/guidance/conditions-and-diseases/cardiovascular-conditions/stroke-and-transient-ischaemic-attack",
-				destination: "/Guidance",
-				permanent: true,
-			}, // Generated from Excel Rewrite Rules (parseable) B->D
+			// {
+			// 	source:
+			// 		"/guidance/ph17/evidence/ph17-promoting-physical-activity-for-children-and-young-people-evidence-update2",
+			// 	destination: "/Guidance",
+			// 	permanent: true,
+			// }, // Generated from Excel Rewrite Rules (parseable) B->D
+			// {
+			// 	source:
+			// 		"/process/pmg30/chapter/using-nice-guidance-and-related-quality-standards-in-provider-organisations",
+			// 	destination: "/Guidance",
+			// 	permanent: true,
+			// }, // Generated from Excel Rewrite Rules (parseable) B->D
+			// {
+			// 	source:
+			// 		"/guidance/conditions-and-diseases/cardiovascular-conditions/stroke-and-transient-ischaemic-attack",
+			// 	destination: "/Guidance",
+			// 	permanent: true,
+			// }, // Generated from Excel Rewrite Rules (parseable) B->D
 			{
 				source:
 					"/about/what-we-do/our-programmes/evidence-standards-framework-for-digital-health-technologies",
@@ -3153,24 +3153,24 @@ const nextConfig = {
 				destination: "/what-nice-does",
 				permanent: true,
 			}, // Generated from Excel Rewrite Rules (parseable) B->D
-			{
-				source:
-					"/guidance/conditions-and-diseases/mental-health-and-behavioural-conditions/autism",
-				destination: "/Guidance",
-				permanent: true,
-			}, // Generated from Excel Rewrite Rules (parseable) B->D
-			{
-				source:
-					"/guidance/ng18/informationforpublic/type-1-diabetes-in-children-and-young-people",
-				destination: "/Guidance",
-				permanent: true,
-			}, // Generated from Excel Rewrite Rules (parseable) B->D
-			{
-				source:
-					"/guidance/ng18/informationforpublic/type-2-diabetes-in-children-and-young-people",
-				destination: "/Guidance",
-				permanent: true,
-			}, // Generated from Excel Rewrite Rules (parseable) B->D
+			// {
+			// 	source:
+			// 		"/guidance/conditions-and-diseases/mental-health-and-behavioural-conditions/autism",
+			// 	destination: "/Guidance",
+			// 	permanent: true,
+			// }, // Generated from Excel Rewrite Rules (parseable) B->D
+			// {
+			// 	source:
+			// 		"/guidance/ng18/informationforpublic/type-1-diabetes-in-children-and-young-people",
+			// 	destination: "/Guidance",
+			// 	permanent: true,
+			// }, // Generated from Excel Rewrite Rules (parseable) B->D
+			// {
+			// 	source:
+			// 		"/guidance/ng18/informationforpublic/type-2-diabetes-in-children-and-young-people",
+			// 	destination: "/Guidance",
+			// 	permanent: true,
+			// }, // Generated from Excel Rewrite Rules (parseable) B->D
 			// NOTE next-js can't redirect visits to external domains
 			// {
 			// 	source:
@@ -3185,12 +3185,12 @@ const nextConfig = {
 				destination: "/what-nice-does",
 				permanent: true,
 			}, // Generated from Excel Rewrite Rules (parseable) B->D
-			{
-				source:
-					"/guidance/health-protection/communicable-diseases/antimicrobial-stewardship",
-				destination: "/Guidance",
-				permanent: true,
-			}, // Generated from Excel Rewrite Rules (parseable) B->D
+			// {
+			// 	source:
+			// 		"/guidance/health-protection/communicable-diseases/antimicrobial-stewardship",
+			// 	destination: "/Guidance",
+			// 	permanent: true,
+			// }, // Generated from Excel Rewrite Rules (parseable) B->D
 			{
 				source:
 					"/about/what-we-do/our-programmes/our-endorsement-programme-has-now-closed",
@@ -3225,18 +3225,18 @@ const nextConfig = {
 					"/about-us/corporate-publications/nice-transformation-plan",
 				permanent: true,
 			}, // Generated from Excel Rewrite Rules (parseable) B->D
-			{
-				source:
-					"/guidance/cg180/resources/atrial-fibrillation-management-35109805981381",
-				destination: "/Guidance",
-				permanent: true,
-			}, // Generated from Excel Rewrite Rules (parseable) B->D
-			{
-				source:
-					"/guidance/GID-CGWAVE0658/documents/consultation-comments-and-responses",
-				destination: "/Guidance",
-				permanent: true,
-			}, // Generated from Excel Rewrite Rules (parseable) B->D
+			// {
+			// 	source:
+			// 		"/guidance/cg180/resources/atrial-fibrillation-management-35109805981381",
+			// 	destination: "/Guidance",
+			// 	permanent: true,
+			// }, // Generated from Excel Rewrite Rules (parseable) B->D
+			// {
+			// 	source:
+			// 		"/guidance/GID-CGWAVE0658/documents/consultation-comments-and-responses",
+			// 	destination: "/Guidance",
+			// 	permanent: true,
+			// }, // Generated from Excel Rewrite Rules (parseable) B->D
 			{
 				source:
 					"/about/what-we-do/into-practice/measuring-the-uptake-of-nice-guidance",
@@ -3264,24 +3264,24 @@ const nextConfig = {
 					"/implementing-nice-guidance/implementation-help-and-advice/adoption-and-implementation-support",
 				permanent: true,
 			}, // Generated from Excel Rewrite Rules (parseable) B->D
-			{
-				source:
-					"/guidance/conditions-and-diseases/skin-conditions/pressure-ulcers",
-				destination: "/Guidance",
-				permanent: true,
-			}, // Generated from Excel Rewrite Rules (parseable) B->D
+			// {
+			// 	source:
+			// 		"/guidance/conditions-and-diseases/skin-conditions/pressure-ulcers",
+			// 	destination: "/Guidance",
+			// 	permanent: true,
+			// }, // Generated from Excel Rewrite Rules (parseable) B->D
 			{
 				source:
 					"/about/what-we-do/our-programmes/commissioning-support-programme",
 				destination: "/what-nice-does",
 				permanent: true,
 			}, // Generated from Excel Rewrite Rules (parseable) B->D
-			{
-				source:
-					"/guidance/conditions-and-diseases/respiratory-conditions/covid19",
-				destination: "/Guidance",
-				permanent: true,
-			}, // Generated from Excel Rewrite Rules (parseable) B->D
+			// {
+			// 	source:
+			// 		"/guidance/conditions-and-diseases/respiratory-conditions/covid19",
+			// 	destination: "/Guidance",
+			// 	permanent: true,
+			// }, // Generated from Excel Rewrite Rules (parseable) B->D
 			{
 				source:
 					"/about/nice-communities/social-care/quality-improvement-resource",
@@ -3301,11 +3301,11 @@ const nextConfig = {
 				destination: "/get-involved/people-and-communities",
 				permanent: true,
 			}, // Generated from Excel Rewrite Rules (parseable) B->D
-			{
-				source: "/guidance/TA65/documents/appendix-a-static-list-review-paper2",
-				destination: "/Guidance",
-				permanent: true,
-			}, // Generated from Excel Rewrite Rules (parseable) B->D
+			// {
+			// 	source: "/guidance/TA65/documents/appendix-a-static-list-review-paper2",
+			// 	destination: "/Guidance",
+			// 	permanent: true,
+			// }, // Generated from Excel Rewrite Rules (parseable) B->D
 			{
 				source: "/about/what-we-do/into-practice/shared-learning-case-studies",
 				destination: "/what-nice-does",
@@ -3340,11 +3340,11 @@ const nextConfig = {
 					"/what-nice-does/life-sciences-how-to-get-your-product-to-market/nice-advice-service",
 				permanent: true,
 			}, // Generated from Excel Rewrite Rules (parseable) B->D
-			{
-				source: "/guidance/cg181/resources/patient-decision-aid-243780159",
-				destination: "/Guidance",
-				permanent: true,
-			}, // Generated from Excel Rewrite Rules (parseable) B->D
+			// {
+			// 	source: "/guidance/cg181/resources/patient-decision-aid-243780159",
+			// 	destination: "/Guidance",
+			// 	permanent: true,
+			// }, // Generated from Excel Rewrite Rules (parseable) B->D
 			// NOTE next-js can't redirect visits to external domains
 			// {
 			// 	source: "http://indepth.nice.org.uk/20-years-of-NICE/index.html",
@@ -3414,11 +3414,11 @@ const nextConfig = {
 				destination: "/what-nice-does/our-guidance",
 				permanent: true,
 			}, // Generated from Excel Rewrite Rules (parseable) B->D
-			{
-				source: "/guidance/GID-CGWAVE0658/documents/draft-scope",
-				destination: "/Guidance",
-				permanent: true,
-			}, // Generated from Excel Rewrite Rules (parseable) B->D
+			// {
+			// 	source: "/guidance/GID-CGWAVE0658/documents/draft-scope",
+			// 	destination: "/Guidance",
+			// 	permanent: true,
+			// }, // Generated from Excel Rewrite Rules (parseable) B->D
 			{
 				source: "/about/what-we-do/into-practice/adoption-team",
 				destination:
@@ -3431,31 +3431,31 @@ const nextConfig = {
 					"/what-nice-does/life-sciences-how-to-get-your-product-to-market/nice-advice-service",
 				permanent: true,
 			}, // Generated from Excel Rewrite Rules (parseable) B->D
-			{
-				source: "/guidance/ph8/documents/economics-modelling2",
-				destination: "/Guidance",
-				permanent: true,
-			}, // Generated from Excel Rewrite Rules (parseable) B->D
+			// {
+			// 	source: "/guidance/ph8/documents/economics-modelling2",
+			// 	destination: "/Guidance",
+			// 	permanent: true,
+			// }, // Generated from Excel Rewrite Rules (parseable) B->D
 			{
 				source: "/about/what-we-do/into-practice/endorsement",
 				destination: "/what-nice-does",
 				permanent: true,
 			}, // Generated from Excel Rewrite Rules (parseable) B->D
-			{
-				source: "/corporate/ecd1/chapter/1-using-this-guide",
-				destination: "/Guidance",
-				permanent: true,
-			}, // Generated from Excel Rewrite Rules (parseable) B->D
-			{
-				source: "/guidance/qs50/chapter/Quality-statements",
-				destination: "/Guidance",
-				permanent: true,
-			}, // Generated from Excel Rewrite Rules (parseable) B->D
-			{
-				source: "/corporate/ecd9/chapter/overview",
-				destination: "/Guidance",
-				permanent: true,
-			}, // Generated from Excel Rewrite Rules (parseable) B->D
+			// {
+			// 	source: "/corporate/ecd1/chapter/1-using-this-guide",
+			// 	destination: "/Guidance",
+			// 	permanent: true,
+			// }, // Generated from Excel Rewrite Rules (parseable) B->D
+			// {
+			// 	source: "/guidance/qs50/chapter/Quality-statements",
+			// 	destination: "/Guidance",
+			// 	permanent: true,
+			// }, // Generated from Excel Rewrite Rules (parseable) B->D
+			// {
+			// 	source: "/corporate/ecd9/chapter/overview",
+			// 	destination: "/Guidance",
+			// 	permanent: true,
+			// }, // Generated from Excel Rewrite Rules (parseable) B->D
 			{
 				source:
 					"/Standards-and-Indicators/QOFIndicators/the-percentage-of-patients-with-one-or-more-of-the-following-conditions-chd-atrial-fibrillation-chronic-heart-failure-stroke-or-tia-diabetes-or-dementia-who-have-been-screened-for-unsafe-drinking-using-the-fast-or-audit-c-tool-in-the-preceding-2-years",
@@ -3487,12 +3487,12 @@ const nextConfig = {
 					"/implementing-nice-guidance/cost-saving-resource-planning-and-audit/supporting-the-health-care-system-to-implement-virtual-wards",
 				permanent: true,
 			}, // Generated from Excel Rewrite Rules (parseable) B->D
-			{
-				source:
-					"/guidance/service-delivery--organisation-and-staffing/acute-and-critical-care",
-				destination: "/Guidance",
-				permanent: true,
-			}, // Generated from Excel Rewrite Rules (parseable) B->D
+			// {
+			// 	source:
+			// 		"/guidance/service-delivery--organisation-and-staffing/acute-and-critical-care",
+			// 	destination: "/Guidance",
+			// 	permanent: true,
+			// }, // Generated from Excel Rewrite Rules (parseable) B->D
 			{
 				source:
 					"/about/who-we-are/board-executive-team-and-senior-leaders-interests-register",
@@ -3524,12 +3524,12 @@ const nextConfig = {
 				destination: "/what-nice-does/standards-and-indicators",
 				permanent: true,
 			}, // Generated from Excel Rewrite Rules (parseable) B->D
-			{
-				source:
-					"/guidance/indevelopment/gid-mucopolysaccharidosiselosulfasealfaid744",
-				destination: "/Guidance",
-				permanent: true,
-			}, // Generated from Excel Rewrite Rules (parseable) B->D
+			// {
+			// 	source:
+			// 		"/guidance/indevelopment/gid-mucopolysaccharidosiselosulfasealfaid744",
+			// 	destination: "/Guidance",
+			// 	permanent: true,
+			// }, // Generated from Excel Rewrite Rules (parseable) B->D
 			{
 				source:
 					"/get-involved/careers/our-benefits--rewards-and-work-life-balance",
@@ -3617,31 +3617,31 @@ const nextConfig = {
 				destination: "/reusing-our-content/nice-syndication-api",
 				permanent: true,
 			}, // Generated from Excel Rewrite Rules (parseable) B->D
-			{
-				source: "/guidance/indevelopment/gid-sgwave0762",
-				destination: "/Guidance",
-				permanent: true,
-			}, // Generated from Excel Rewrite Rules (parseable) B->D
-			{
-				source: "/guidance/indevelopment/gid-sgwave0700",
-				destination: "/Guidance",
-				permanent: true,
-			}, // Generated from Excel Rewrite Rules (parseable) B->D
-			{
-				source: "/guidance/indevelopment/gid-sgwave0701",
-				destination: "/Guidance",
-				permanent: true,
-			}, // Generated from Excel Rewrite Rules (parseable) B->D
-			{
-				source: "/guidance/indevelopment/gid-sgwave0761",
-				destination: "/Guidance",
-				permanent: true,
-			}, // Generated from Excel Rewrite Rules (parseable) B->D
-			{
-				source: "/guidance/indevelopment/gid-sgwave0702",
-				destination: "/Guidance",
-				permanent: true,
-			}, // Generated from Excel Rewrite Rules (parseable) B->D
+			// {
+			// 	source: "/guidance/indevelopment/gid-sgwave0762",
+			// 	destination: "/Guidance",
+			// 	permanent: true,
+			// }, // Generated from Excel Rewrite Rules (parseable) B->D
+			// {
+			// 	source: "/guidance/indevelopment/gid-sgwave0700",
+			// 	destination: "/Guidance",
+			// 	permanent: true,
+			// }, // Generated from Excel Rewrite Rules (parseable) B->D
+			// {
+			// 	source: "/guidance/indevelopment/gid-sgwave0701",
+			// 	destination: "/Guidance",
+			// 	permanent: true,
+			// }, // Generated from Excel Rewrite Rules (parseable) B->D
+			// {
+			// 	source: "/guidance/indevelopment/gid-sgwave0761",
+			// 	destination: "/Guidance",
+			// 	permanent: true,
+			// }, // Generated from Excel Rewrite Rules (parseable) B->D
+			// {
+			// 	source: "/guidance/indevelopment/gid-sgwave0702",
+			// 	destination: "/Guidance",
+			// 	permanent: true,
+			// }, // Generated from Excel Rewrite Rules (parseable) B->D
 			{
 				source: "/get-involved/careers/digital-at-nice",
 				destination: "/careers/digital-at-nice",
@@ -3662,16 +3662,16 @@ const nextConfig = {
 				destination: "/what-nice-does/",
 				permanent: true,
 			}, // Generated from Excel Rewrite Rules (parseable) B->D
-			{
-				source: "/guidance/cg31/informationforpublic",
-				destination: "/Guidance",
-				permanent: true,
-			}, // Generated from Excel Rewrite Rules (parseable) B->D
-			{
-				source: "/guidance/CG16/informationforpublic",
-				destination: "/Guidance",
-				permanent: true,
-			}, // Generated from Excel Rewrite Rules (parseable) B->D
+			// {
+			// 	source: "/guidance/cg31/informationforpublic",
+			// 	destination: "/Guidance",
+			// 	permanent: true,
+			// }, // Generated from Excel Rewrite Rules (parseable) B->D
+			// {
+			// 	source: "/guidance/CG16/informationforpublic",
+			// 	destination: "/Guidance",
+			// 	permanent: true,
+			// }, // Generated from Excel Rewrite Rules (parseable) B->D
 			{
 				source: "/about/nice-communities/social-care",
 				destination: "/what-nice-does",
@@ -3714,31 +3714,31 @@ const nextConfig = {
 				destination: "/implementing-nice-guidance/into-practice-resources",
 				permanent: true,
 			}, // Generated from Excel Rewrite Rules (parseable) B->D
-			{
-				source: "/guidance/settings/care-homes",
-				destination: "/Guidance",
-				permanent: true,
-			}, // Generated from Excel Rewrite Rules (parseable) B->D
+			// {
+			// 	source: "/guidance/settings/care-homes",
+			// 	destination: "/Guidance",
+			// 	permanent: true,
+			// }, // Generated from Excel Rewrite Rules (parseable) B->D
 			{
 				source: "/get-involved/jobs/digital",
 				destination: "/careers/digital-at-nice",
 				permanent: true,
 			}, // Generated from Excel Rewrite Rules (parseable) B->D
-			{
-				source: "/guidance/cg180/resources",
-				destination: "/Guidance",
-				permanent: true,
-			}, // Generated from Excel Rewrite Rules (parseable) B->D
+			// {
+			// 	source: "/guidance/cg180/resources",
+			// 	destination: "/Guidance",
+			// 	permanent: true,
+			// }, // Generated from Excel Rewrite Rules (parseable) B->D
 			{
 				source: "/guidance/ng80/resources/",
 				destination: "/news",
 				permanent: true,
 			}, // Generated from Excel Rewrite Rules (parseable) B->D
-			{
-				source: "/guidance/cg26/resources",
-				destination: "/Guidance",
-				permanent: true,
-			}, // Generated from Excel Rewrite Rules (parseable) B->D
+			// {
+			// 	source: "/guidance/cg26/resources",
+			// 	destination: "/Guidance",
+			// 	permanent: true,
+			// }, // Generated from Excel Rewrite Rules (parseable) B->D
 			// NOTE querystrings are not allowed in next-js redirect source e.g. /savingsAndProductivity/collection?page=1&pageSize=2000&type=Do+not+do&published
 			// converted below
 			// {
@@ -3820,18 +3820,18 @@ const nextConfig = {
 			// 	destination: "/Guidance",
 			// 	permanent: true,
 			// }, // Generated from Excel Rewrite Rules (parseable) B->D
-			{
-				source: "/guidance/published",
-				has: [
-					{
-						type: "query",
-						key: "ndt",
-						value: "NICE advice",
-					},
-				],
-				destination: "/Guidance",
-				permanent: true,
-			},
+			// {
+			// 	source: "/guidance/published",
+			// 	has: [
+			// 		{
+			// 			type: "query",
+			// 			key: "ndt",
+			// 			value: "NICE advice",
+			// 		},
+			// 	],
+			// 	destination: "/Guidance",
+			// 	permanent: true,
+			// },
 			{
 				source: "/news/nice-newsletters-and-alerts",
 				destination: "/nice-newsletters-and-alerts",
@@ -3874,126 +3874,126 @@ const nextConfig = {
 				destination: "/news",
 				permanent: true,
 			}, // Generated from Excel Rewrite Rules (parseable) B->D
-			{
-				source: "/guidance/settings",
-				destination: "/Guidance",
-				permanent: true,
-			}, // Generated from Excel Rewrite Rules (parseable) B->D
+			// {
+			// 	source: "/guidance/settings",
+			// 	destination: "/Guidance",
+			// 	permanent: true,
+			// }, // Generated from Excel Rewrite Rules (parseable) B->D
 			{
 				source: "/about/who-we-are",
 				destination: "/about",
 				permanent: true,
 			}, // Generated from Excel Rewrite Rules (parseable) B->D
-			{
-				source: "/guidance/ipg524",
-				destination: "/Guidance",
-				permanent: true,
-			}, // Generated from Excel Rewrite Rules (parseable) B->D
-			{
-				source: "/guidance/ipg365",
-				destination: "/Guidance",
-				permanent: true,
-			}, // Generated from Excel Rewrite Rules (parseable) B->D
-			{
-				source: "/guidance/ipg306",
-				destination: "/Guidance",
-				permanent: true,
-			}, // Generated from Excel Rewrite Rules (parseable) B->D
-			{
-				source: "/guidance/ipg311",
-				destination: "/Guidance",
-				permanent: true,
-			}, // Generated from Excel Rewrite Rules (parseable) B->D
-			{
-				source: "/guidance/ipg332",
-				destination: "/Guidance",
-				permanent: true,
-			}, // Generated from Excel Rewrite Rules (parseable) B->D
-			{
-				source: "/guidance/cg117",
-				destination: "/Guidance",
-				permanent: true,
-			}, // Generated from Excel Rewrite Rules (parseable) B->D
-			{
-				source: "/guidance/cg127",
-				destination: "/Guidance",
-				permanent: true,
-			}, // Generated from Excel Rewrite Rules (parseable) B->D
-			{
-				source: "/guidance/cg160",
-				destination: "/Guidance",
-				permanent: true,
-			}, // Generated from Excel Rewrite Rules (parseable) B->D
-			{
-				source: "/guidance/cg144",
-				destination: "/Guidance",
-				permanent: true,
-			}, // Generated from Excel Rewrite Rules (parseable) B->D
-			{
-				source: "/guidance/cg101",
-				destination: "/Guidance",
-				permanent: true,
-			}, // Generated from Excel Rewrite Rules (parseable) B->D
-			{
-				source: "/guidance/ta341",
-				destination: "/Guidance",
-				permanent: true,
-			}, // Generated from Excel Rewrite Rules (parseable) B->D
-			{
-				source: "/guidance/cg137",
-				destination: "/Guidance",
-				permanent: true,
-			}, // Generated from Excel Rewrite Rules (parseable) B->D
-			{
-				source: "/guidance/cg178",
-				destination: "/Guidance",
-				permanent: true,
-			}, // Generated from Excel Rewrite Rules (parseable) B->D
-			{
-				source: "/guidance/cg191",
-				destination: "/Guidance",
-				permanent: true,
-			}, // Generated from Excel Rewrite Rules (parseable) B->D
-			{
-				source: "/guidance/ta287",
-				destination: "/Guidance",
-				permanent: true,
-			}, // Generated from Excel Rewrite Rules (parseable) B->D
-			{
-				source: "/guidance/cg185",
-				destination: "/Guidance",
-				permanent: true,
-			}, // Generated from Excel Rewrite Rules (parseable) B->D
-			{
-				source: "/guidance/cg150",
-				destination: "/Guidance",
-				permanent: true,
-			}, // Generated from Excel Rewrite Rules (parseable) B->D
-			{
-				source: "/guidance/cg122",
-				destination: "/Guidance",
-				permanent: true,
-			}, // Generated from Excel Rewrite Rules (parseable) B->D
-			{
-				source: "/guidance/csg10",
-				destination: "/Guidance",
-				permanent: true,
-			}, // Generated from Excel Rewrite Rules (parseable) B->D
-			{
-				source: "/guidance/cg184",
-				destination: "/Guidance",
-				permanent: true,
-			}, // Generated from Excel Rewrite Rules (parseable) B->D
-			{
-				source: "/guidance/cg156",
-				destination: "/Guidance",
-				permanent: true,
-			}, // Generated from Excel Rewrite Rules (parseable) B->D
-			{
-				source: "/guidance/cg161",
-				destination: "/Guidance",
-				permanent: true,
-			}, // Generated from Excel Rewrite Rules (parseable) B->D
+			// {
+			// 	source: "/guidance/ipg524",
+			// 	destination: "/Guidance",
+			// 	permanent: true,
+			// }, // Generated from Excel Rewrite Rules (parseable) B->D
+			// {
+			// 	source: "/guidance/ipg365",
+			// 	destination: "/Guidance",
+			// 	permanent: true,
+			// }, // Generated from Excel Rewrite Rules (parseable) B->D
+			// {
+			// 	source: "/guidance/ipg306",
+			// 	destination: "/Guidance",
+			// 	permanent: true,
+			// }, // Generated from Excel Rewrite Rules (parseable) B->D
+			// {
+			// 	source: "/guidance/ipg311",
+			// 	destination: "/Guidance",
+			// 	permanent: true,
+			// }, // Generated from Excel Rewrite Rules (parseable) B->D
+			// {
+			// 	source: "/guidance/ipg332",
+			// 	destination: "/Guidance",
+			// 	permanent: true,
+			// }, // Generated from Excel Rewrite Rules (parseable) B->D
+			// {
+			// 	source: "/guidance/cg117",
+			// 	destination: "/Guidance",
+			// 	permanent: true,
+			// }, // Generated from Excel Rewrite Rules (parseable) B->D
+			// {
+			// 	source: "/guidance/cg127",
+			// 	destination: "/Guidance",
+			// 	permanent: true,
+			// }, // Generated from Excel Rewrite Rules (parseable) B->D
+			// {
+			// 	source: "/guidance/cg160",
+			// 	destination: "/Guidance",
+			// 	permanent: true,
+			// }, // Generated from Excel Rewrite Rules (parseable) B->D
+			// {
+			// 	source: "/guidance/cg144",
+			// 	destination: "/Guidance",
+			// 	permanent: true,
+			// }, // Generated from Excel Rewrite Rules (parseable) B->D
+			// {
+			// 	source: "/guidance/cg101",
+			// 	destination: "/Guidance",
+			// 	permanent: true,
+			// }, // Generated from Excel Rewrite Rules (parseable) B->D
+			// {
+			// 	source: "/guidance/ta341",
+			// 	destination: "/Guidance",
+			// 	permanent: true,
+			// }, // Generated from Excel Rewrite Rules (parseable) B->D
+			// {
+			// 	source: "/guidance/cg137",
+			// 	destination: "/Guidance",
+			// 	permanent: true,
+			// }, // Generated from Excel Rewrite Rules (parseable) B->D
+			// {
+			// 	source: "/guidance/cg178",
+			// 	destination: "/Guidance",
+			// 	permanent: true,
+			// }, // Generated from Excel Rewrite Rules (parseable) B->D
+			// {
+			// 	source: "/guidance/cg191",
+			// 	destination: "/Guidance",
+			// 	permanent: true,
+			// }, // Generated from Excel Rewrite Rules (parseable) B->D
+			// {
+			// 	source: "/guidance/ta287",
+			// 	destination: "/Guidance",
+			// 	permanent: true,
+			// }, // Generated from Excel Rewrite Rules (parseable) B->D
+			// {
+			// 	source: "/guidance/cg185",
+			// 	destination: "/Guidance",
+			// 	permanent: true,
+			// }, // Generated from Excel Rewrite Rules (parseable) B->D
+			// {
+			// 	source: "/guidance/cg150",
+			// 	destination: "/Guidance",
+			// 	permanent: true,
+			// }, // Generated from Excel Rewrite Rules (parseable) B->D
+			// {
+			// 	source: "/guidance/cg122",
+			// 	destination: "/Guidance",
+			// 	permanent: true,
+			// }, // Generated from Excel Rewrite Rules (parseable) B->D
+			// {
+			// 	source: "/guidance/csg10",
+			// 	destination: "/Guidance",
+			// 	permanent: true,
+			// }, // Generated from Excel Rewrite Rules (parseable) B->D
+			// {
+			// 	source: "/guidance/cg184",
+			// 	destination: "/Guidance",
+			// 	permanent: true,
+			// }, // Generated from Excel Rewrite Rules (parseable) B->D
+			// {
+			// 	source: "/guidance/cg156",
+			// 	destination: "/Guidance",
+			// 	permanent: true,
+			// }, // Generated from Excel Rewrite Rules (parseable) B->D
+			// {
+			// 	source: "/guidance/cg161",
+			// 	destination: "/Guidance",
+			// 	permanent: true,
+			// }, // Generated from Excel Rewrite Rules (parseable) B->D
 			{
 				source: "/guidance/hte1",
 				destination:
@@ -4006,261 +4006,261 @@ const nextConfig = {
 					"/what-nice-does/life-sciences-how-to-get-your-product-to-market/models-for-the-evaluation-and-purchase-of-antimicrobials",
 				permanent: true,
 			}, // Generated from Excel Rewrite Rules (parseable) B->D
-			{
-				source: "/guidance/NG76",
-				destination: "/Guidance",
-				permanent: true,
-			}, // Generated from Excel Rewrite Rules (parseable) B->D
-			{
-				source: "/guidance/cg88",
-				destination: "/Guidance",
-				permanent: true,
-			}, // Generated from Excel Rewrite Rules (parseable) B->D
-			{
-				source: "/guidance/ng28",
-				destination: "/Guidance",
-				permanent: true,
-			}, // Generated from Excel Rewrite Rules (parseable) B->D
-			{
-				source: "/guidance/ng37",
-				destination: "/Guidance",
-				permanent: true,
-			}, // Generated from Excel Rewrite Rules (parseable) B->D
-			{
-				source: "/guidance/cg63",
-				destination: "/Guidance",
-				permanent: true,
-			}, // Generated from Excel Rewrite Rules (parseable) B->D
-			{
-				source: "/guidance/cg62",
-				destination: "/Guidance",
-				permanent: true,
-			}, // Generated from Excel Rewrite Rules (parseable) B->D
-			{
-				source: "/guidance/qs16",
-				destination: "/Guidance",
-				permanent: true,
-			}, // Generated from Excel Rewrite Rules (parseable) B->D
-			{
-				source: "/guidance/cg27",
-				destination: "/Guidance",
-				permanent: true,
-			}, // Generated from Excel Rewrite Rules (parseable) B->D
-			{
-				source: "/guidance/cg42",
-				destination: "/Guidance",
-				permanent: true,
-			}, // Generated from Excel Rewrite Rules (parseable) B->D
-			{
-				source: "/guidance/cg90",
-				destination: "/Guidance",
-				permanent: true,
-			}, // Generated from Excel Rewrite Rules (parseable) B->D
-			{
-				source: "/guidance/cg67",
-				destination: "/Guidance",
-				permanent: true,
-			}, // Generated from Excel Rewrite Rules (parseable) B->D
-			{
-				source: "/guidance/cg77",
-				destination: "/Guidance",
-				permanent: true,
-			}, // Generated from Excel Rewrite Rules (parseable) B->D
-			{
-				source: "/guidance/qs41",
-				destination: "/Guidance",
-				permanent: true,
-			}, // Generated from Excel Rewrite Rules (parseable) B->D
-			{
-				source: "/guidance/cg80",
-				destination: "/Guidance",
-				permanent: true,
-			}, // Generated from Excel Rewrite Rules (parseable) B->D
-			{
-				source: "/guidance/cg26",
-				destination: "/Guidance",
-				permanent: true,
-			}, // Generated from Excel Rewrite Rules (parseable) B->D
-			{
-				source: "/guidance/cg48",
-				destination: "/Guidance",
-				permanent: true,
-			}, // Generated from Excel Rewrite Rules (parseable) B->D
-			{
-				source: "/guidance/cg29",
-				destination: "/Guidance",
-				permanent: true,
-			}, // Generated from Excel Rewrite Rules (parseable) B->D
-			{
-				source: "/guidance/cg55",
-				destination: "/Guidance",
-				permanent: true,
-			}, // Generated from Excel Rewrite Rules (parseable) B->D
-			{
-				source: "/guidance/cg70",
-				destination: "/Guidance",
-				permanent: true,
-			}, // Generated from Excel Rewrite Rules (parseable) B->D
-			{
-				source: "/guidance/cg66",
-				destination: "/Guidance",
-				permanent: true,
-			}, // Generated from Excel Rewrite Rules (parseable) B->D
-			{
-				source: "/guidance/psg2",
-				destination: "/Guidance",
-				permanent: true,
-			}, // Generated from Excel Rewrite Rules (parseable) B->D
-			{
-				source: "/guidance/psg1",
-				destination: "/Guidance",
-				permanent: true,
-			}, // Generated from Excel Rewrite Rules (parseable) B->D
-			{
-				source: "/guidance/hst1",
-				destination: "/Guidance",
-				permanent: true,
-			}, // Generated from Excel Rewrite Rules (parseable) B->D
-			{
-				source: "/guidance/ng23",
-				destination: "/Guidance",
-				permanent: true,
-			}, // Generated from Excel Rewrite Rules (parseable) B->D
-			{
-				source: "/guidance/ng31",
-				destination: "/Guidance",
-				permanent: true,
-			}, // Generated from Excel Rewrite Rules (parseable) B->D
-			{
-				source: "/guidance/csg1",
-				destination: "/Guidance",
-				permanent: true,
-			}, // Generated from Excel Rewrite Rules (parseable) B->D
-			{
-				source: "/guidance/csg2",
-				destination: "/Guidance",
-				permanent: true,
-			}, // Generated from Excel Rewrite Rules (parseable) B->D
-			{
-				source: "/guidance/csg3",
-				destination: "/Guidance",
-				permanent: true,
-			}, // Generated from Excel Rewrite Rules (parseable) B->D
-			{
-				source: "/guidance/csg4",
-				destination: "/Guidance",
-				permanent: true,
-			}, // Generated from Excel Rewrite Rules (parseable) B->D
-			{
-				source: "/guidance/csg5",
-				destination: "/Guidance",
-				permanent: true,
-			}, // Generated from Excel Rewrite Rules (parseable) B->D
-			{
-				source: "/guidance/csg6",
-				destination: "/Guidance",
-				permanent: true,
-			}, // Generated from Excel Rewrite Rules (parseable) B->D
-			{
-				source: "/guidance/csg7",
-				destination: "/Guidance",
-				permanent: true,
-			}, // Generated from Excel Rewrite Rules (parseable) B->D
-			{
-				source: "/guidance/csg8",
-				destination: "/Guidance",
-				permanent: true,
-			}, // Generated from Excel Rewrite Rules (parseable) B->D
-			{
-				source: "/guidance/csg9",
-				destination: "/Guidance",
-				permanent: true,
-			}, // Generated from Excel Rewrite Rules (parseable) B->D
-			{
-				source: "/guidance/cg53",
-				destination: "/Guidance",
-				permanent: true,
-			}, // Generated from Excel Rewrite Rules (parseable) B->D
-			{
-				source: "/guidance/cg79",
-				destination: "/Guidance",
-				permanent: true,
-			}, // Generated from Excel Rewrite Rules (parseable) B->D
-			{
-				source: "/guidance/cg31",
-				destination: "/Guidance",
-				permanent: true,
-			}, // Generated from Excel Rewrite Rules (parseable) B->D
-			{
-				source: "/guidance/cg45",
-				destination: "/Guidance",
-				permanent: true,
-			}, // Generated from Excel Rewrite Rules (parseable) B->D
-			{
-				source: "/guidance/cg59",
-				destination: "/Guidance",
-				permanent: true,
-			}, // Generated from Excel Rewrite Rules (parseable) B->D
-			{
-				source: "/guidance/cg72",
-				destination: "/Guidance",
-				permanent: true,
-			}, // Generated from Excel Rewrite Rules (parseable) B->D
-			{
-				source: "/guidance/cg98",
-				destination: "/Guidance",
-				permanent: true,
-			}, // Generated from Excel Rewrite Rules (parseable) B->D
-			{
-				source: "/guidance/cg3",
-				destination: "/Guidance",
-				permanent: true,
-			}, // Generated from Excel Rewrite Rules (parseable) B->D
-			{
-				source: "/guidance/cg9",
-				destination: "/Guidance",
-				permanent: true,
-			}, // Generated from Excel Rewrite Rules (parseable) B->D
-			{
-				source: "/guidance/NG6",
-				destination: "/Guidance",
-				permanent: true,
-			}, // Generated from Excel Rewrite Rules (parseable) B->D
-			{
-				source: "/guidance/NG5",
-				destination: "/Guidance",
-				permanent: true,
-			}, // Generated from Excel Rewrite Rules (parseable) B->D
-			{
-				source: "/guidance/NG4",
-				destination: "/Guidance",
-				permanent: true,
-			}, // Generated from Excel Rewrite Rules (parseable) B->D
-			{
-				source: "/guidance/NG3",
-				destination: "/Guidance",
-				permanent: true,
-			}, // Generated from Excel Rewrite Rules (parseable) B->D
-			{
-				source: "/guidance/NG2",
-				destination: "/Guidance",
-				permanent: true,
-			}, // Generated from Excel Rewrite Rules (parseable) B->D
-			{
-				source: "/guidance/NG1",
-				destination: "/Guidance",
-				permanent: true,
-			}, // Generated from Excel Rewrite Rules (parseable) B->D
-			{
-				source: "/advice/es41",
-				destination: "/Guidance",
-				permanent: true,
-			}, // Generated from Excel Rewrite Rules (parseable) B->D
-			{
-				source: "/article/wg1",
-				destination: "/Guidance",
-				permanent: true,
-			}, // Generated from Excel Rewrite Rules (parseable) B->D
+			// {
+			// 	source: "/guidance/NG76",
+			// 	destination: "/Guidance",
+			// 	permanent: true,
+			// }, // Generated from Excel Rewrite Rules (parseable) B->D
+			// {
+			// 	source: "/guidance/cg88",
+			// 	destination: "/Guidance",
+			// 	permanent: true,
+			// }, // Generated from Excel Rewrite Rules (parseable) B->D
+			// {
+			// 	source: "/guidance/ng28",
+			// 	destination: "/Guidance",
+			// 	permanent: true,
+			// }, // Generated from Excel Rewrite Rules (parseable) B->D
+			// {
+			// 	source: "/guidance/ng37",
+			// 	destination: "/Guidance",
+			// 	permanent: true,
+			// }, // Generated from Excel Rewrite Rules (parseable) B->D
+			// {
+			// 	source: "/guidance/cg63",
+			// 	destination: "/Guidance",
+			// 	permanent: true,
+			// }, // Generated from Excel Rewrite Rules (parseable) B->D
+			// {
+			// 	source: "/guidance/cg62",
+			// 	destination: "/Guidance",
+			// 	permanent: true,
+			// }, // Generated from Excel Rewrite Rules (parseable) B->D
+			// {
+			// 	source: "/guidance/qs16",
+			// 	destination: "/Guidance",
+			// 	permanent: true,
+			// }, // Generated from Excel Rewrite Rules (parseable) B->D
+			// {
+			// 	source: "/guidance/cg27",
+			// 	destination: "/Guidance",
+			// 	permanent: true,
+			// }, // Generated from Excel Rewrite Rules (parseable) B->D
+			// {
+			// 	source: "/guidance/cg42",
+			// 	destination: "/Guidance",
+			// 	permanent: true,
+			// }, // Generated from Excel Rewrite Rules (parseable) B->D
+			// {
+			// 	source: "/guidance/cg90",
+			// 	destination: "/Guidance",
+			// 	permanent: true,
+			// }, // Generated from Excel Rewrite Rules (parseable) B->D
+			// {
+			// 	source: "/guidance/cg67",
+			// 	destination: "/Guidance",
+			// 	permanent: true,
+			// }, // Generated from Excel Rewrite Rules (parseable) B->D
+			// {
+			// 	source: "/guidance/cg77",
+			// 	destination: "/Guidance",
+			// 	permanent: true,
+			// }, // Generated from Excel Rewrite Rules (parseable) B->D
+			// {
+			// 	source: "/guidance/qs41",
+			// 	destination: "/Guidance",
+			// 	permanent: true,
+			// }, // Generated from Excel Rewrite Rules (parseable) B->D
+			// {
+			// 	source: "/guidance/cg80",
+			// 	destination: "/Guidance",
+			// 	permanent: true,
+			// }, // Generated from Excel Rewrite Rules (parseable) B->D
+			// {
+			// 	source: "/guidance/cg26",
+			// 	destination: "/Guidance",
+			// 	permanent: true,
+			// }, // Generated from Excel Rewrite Rules (parseable) B->D
+			// {
+			// 	source: "/guidance/cg48",
+			// 	destination: "/Guidance",
+			// 	permanent: true,
+			// }, // Generated from Excel Rewrite Rules (parseable) B->D
+			// {
+			// 	source: "/guidance/cg29",
+			// 	destination: "/Guidance",
+			// 	permanent: true,
+			// }, // Generated from Excel Rewrite Rules (parseable) B->D
+			// {
+			// 	source: "/guidance/cg55",
+			// 	destination: "/Guidance",
+			// 	permanent: true,
+			// }, // Generated from Excel Rewrite Rules (parseable) B->D
+			// {
+			// 	source: "/guidance/cg70",
+			// 	destination: "/Guidance",
+			// 	permanent: true,
+			// }, // Generated from Excel Rewrite Rules (parseable) B->D
+			// {
+			// 	source: "/guidance/cg66",
+			// 	destination: "/Guidance",
+			// 	permanent: true,
+			// }, // Generated from Excel Rewrite Rules (parseable) B->D
+			// {
+			// 	source: "/guidance/psg2",
+			// 	destination: "/Guidance",
+			// 	permanent: true,
+			// }, // Generated from Excel Rewrite Rules (parseable) B->D
+			// {
+			// 	source: "/guidance/psg1",
+			// 	destination: "/Guidance",
+			// 	permanent: true,
+			// }, // Generated from Excel Rewrite Rules (parseable) B->D
+			// {
+			// 	source: "/guidance/hst1",
+			// 	destination: "/Guidance",
+			// 	permanent: true,
+			// }, // Generated from Excel Rewrite Rules (parseable) B->D
+			// {
+			// 	source: "/guidance/ng23",
+			// 	destination: "/Guidance",
+			// 	permanent: true,
+			// }, // Generated from Excel Rewrite Rules (parseable) B->D
+			// {
+			// 	source: "/guidance/ng31",
+			// 	destination: "/Guidance",
+			// 	permanent: true,
+			// }, // Generated from Excel Rewrite Rules (parseable) B->D
+			// {
+			// 	source: "/guidance/csg1",
+			// 	destination: "/Guidance",
+			// 	permanent: true,
+			// }, // Generated from Excel Rewrite Rules (parseable) B->D
+			// {
+			// 	source: "/guidance/csg2",
+			// 	destination: "/Guidance",
+			// 	permanent: true,
+			// }, // Generated from Excel Rewrite Rules (parseable) B->D
+			// {
+			// 	source: "/guidance/csg3",
+			// 	destination: "/Guidance",
+			// 	permanent: true,
+			// }, // Generated from Excel Rewrite Rules (parseable) B->D
+			// {
+			// 	source: "/guidance/csg4",
+			// 	destination: "/Guidance",
+			// 	permanent: true,
+			// }, // Generated from Excel Rewrite Rules (parseable) B->D
+			// {
+			// 	source: "/guidance/csg5",
+			// 	destination: "/Guidance",
+			// 	permanent: true,
+			// }, // Generated from Excel Rewrite Rules (parseable) B->D
+			// {
+			// 	source: "/guidance/csg6",
+			// 	destination: "/Guidance",
+			// 	permanent: true,
+			// }, // Generated from Excel Rewrite Rules (parseable) B->D
+			// {
+			// 	source: "/guidance/csg7",
+			// 	destination: "/Guidance",
+			// 	permanent: true,
+			// }, // Generated from Excel Rewrite Rules (parseable) B->D
+			// {
+			// 	source: "/guidance/csg8",
+			// 	destination: "/Guidance",
+			// 	permanent: true,
+			// }, // Generated from Excel Rewrite Rules (parseable) B->D
+			// {
+			// 	source: "/guidance/csg9",
+			// 	destination: "/Guidance",
+			// 	permanent: true,
+			// }, // Generated from Excel Rewrite Rules (parseable) B->D
+			// {
+			// 	source: "/guidance/cg53",
+			// 	destination: "/Guidance",
+			// 	permanent: true,
+			// }, // Generated from Excel Rewrite Rules (parseable) B->D
+			// {
+			// 	source: "/guidance/cg79",
+			// 	destination: "/Guidance",
+			// 	permanent: true,
+			// }, // Generated from Excel Rewrite Rules (parseable) B->D
+			// {
+			// 	source: "/guidance/cg31",
+			// 	destination: "/Guidance",
+			// 	permanent: true,
+			// }, // Generated from Excel Rewrite Rules (parseable) B->D
+			// {
+			// 	source: "/guidance/cg45",
+			// 	destination: "/Guidance",
+			// 	permanent: true,
+			// }, // Generated from Excel Rewrite Rules (parseable) B->D
+			// {
+			// 	source: "/guidance/cg59",
+			// 	destination: "/Guidance",
+			// 	permanent: true,
+			// }, // Generated from Excel Rewrite Rules (parseable) B->D
+			// {
+			// 	source: "/guidance/cg72",
+			// 	destination: "/Guidance",
+			// 	permanent: true,
+			// }, // Generated from Excel Rewrite Rules (parseable) B->D
+			// {
+			// 	source: "/guidance/cg98",
+			// 	destination: "/Guidance",
+			// 	permanent: true,
+			// }, // Generated from Excel Rewrite Rules (parseable) B->D
+			// {
+			// 	source: "/guidance/cg3",
+			// 	destination: "/Guidance",
+			// 	permanent: true,
+			// }, // Generated from Excel Rewrite Rules (parseable) B->D
+			// {
+			// 	source: "/guidance/cg9",
+			// 	destination: "/Guidance",
+			// 	permanent: true,
+			// }, // Generated from Excel Rewrite Rules (parseable) B->D
+			// {
+			// 	source: "/guidance/NG6",
+			// 	destination: "/Guidance",
+			// 	permanent: true,
+			// }, // Generated from Excel Rewrite Rules (parseable) B->D
+			// {
+			// 	source: "/guidance/NG5",
+			// 	destination: "/Guidance",
+			// 	permanent: true,
+			// }, // Generated from Excel Rewrite Rules (parseable) B->D
+			// {
+			// 	source: "/guidance/NG4",
+			// 	destination: "/Guidance",
+			// 	permanent: true,
+			// }, // Generated from Excel Rewrite Rules (parseable) B->D
+			// {
+			// 	source: "/guidance/NG3",
+			// 	destination: "/Guidance",
+			// 	permanent: true,
+			// }, // Generated from Excel Rewrite Rules (parseable) B->D
+			// {
+			// 	source: "/guidance/NG2",
+			// 	destination: "/Guidance",
+			// 	permanent: true,
+			// }, // Generated from Excel Rewrite Rules (parseable) B->D
+			// {
+			// 	source: "/guidance/NG1",
+			// 	destination: "/Guidance",
+			// 	permanent: true,
+			// }, // Generated from Excel Rewrite Rules (parseable) B->D
+			// {
+			// 	source: "/advice/es41",
+			// 	destination: "/Guidance",
+			// 	permanent: true,
+			// }, // Generated from Excel Rewrite Rules (parseable) B->D
+			// {
+			// 	source: "/article/wg1",
+			// 	destination: "/Guidance",
+			// 	permanent: true,
+			// }, // Generated from Excel Rewrite Rules (parseable) B->D
 			{
 				source: "/terms-and-conditions#notice-of-rights",
 				destination: "/terms-and-conditions",
