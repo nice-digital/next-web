@@ -58,9 +58,11 @@ export const CardGrid: React.FC<CardGridProps> = ({ row }) => {
 				return <StoryblokCalloutCard blok={gridItem} />;
 			case "card":
 				return (
-					<Card headingText={heading} link={cardLink || undefined}>
-						{body}
-					</Card>
+					<Card
+						headingText={heading}
+						link={cardLink || undefined}
+						summary={body}
+					/>
 				);
 			default:
 				return null;

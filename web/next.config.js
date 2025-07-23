@@ -126,7 +126,7 @@ const nextConfig = {
 			},
 			{
 				source:
-					"/:productRoot(indicators|guidance|advice|process|corporate)/:path*",
+					"/:productRoot(indicators|guidance|advice|process|corporate)/:path+",
 				destination: "/indicators/:path*?productRoot=:productRoot",
 			},
 			{
