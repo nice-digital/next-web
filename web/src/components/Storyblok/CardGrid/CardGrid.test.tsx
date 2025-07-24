@@ -126,28 +126,28 @@ describe("GridSection", () => {
 	});
 	it("renders Card content heading level correctly", () => {
 		const mockProps: CardGridProps = {
-		row: {
-			_uid: "e6d4d18f-e8c3-40af-83e6-b2b6eaa95da3",
-			columns: "2",
-			component: "cardGridRowBasic",
-			gridItems: [
-				{
-					_uid: "9d9a77de-df8e-4030-a5fd-2e5caa319325",
-					body: "Basic card body",
-					link: {
-						fieldtype: "multilink",
-						id: "link1",
-						url: cardLinkUrl,
-						cached_url: cardLinkUrl,
-						linktype: "url",
+			row: {
+				_uid: "e6d4d18f-e8c3-40af-83e6-b2b6eaa95da3",
+				columns: "2",
+				component: "cardGridRowBasic",
+				gridItems: [
+					{
+						_uid: "9d9a77de-df8e-4030-a5fd-2e5caa319325",
+						body: "Basic card body",
+						link: {
+							fieldtype: "multilink",
+							id: "link1",
+							url: cardLinkUrl,
+							cached_url: cardLinkUrl,
+							linktype: "url",
+						},
+						heading: "Basic Card",
+						headingLevel: "3",
+						component: "card",
 					},
-					heading: "Basic Card",
-					headingLevel: "3",
-					component: "card",
-				},
-			],
-		},
-	};
+				],
+			},
+		};
 
 		render(<CardGrid {...mockProps} />);
 		const cardList = screen.getByRole("list");
