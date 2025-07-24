@@ -124,7 +124,46 @@ describe("GridSection", () => {
 		expect(cardListItems[0]).toHaveTextContent("Basic Card");
 		expect(card.length).toBe(1);
 	});
+	it("renders Card content heading level correctly", () => {
+		const mockProps: CardGridProps = {
+		row: {
+			_uid: "e6d4d18f-e8c3-40af-83e6-b2b6eaa95da3",
+			columns: "2",
+			component: "cardGridRowBasic",
+			gridItems: [
+				{
+					_uid: "9d9a77de-df8e-4030-a5fd-2e5caa319325",
+					body: "Basic card body",
+					link: {
+						fieldtype: "multilink",
+						id: "link1",
+						url: cardLinkUrl,
+						cached_url: cardLinkUrl,
+						linktype: "url",
+					},
+					heading: "Basic Card",
+					headingLevel: "3",
+					component: "card",
+				},
+			],
+		},
+	};
 
+		render(<CardGrid {...mockProps} />);
+		const cardList = screen.getByRole("list");
+		const cardListItems = screen.getAllByRole("listitem");
+		const card = screen.getAllByText("Basic Card");
+		expect(cardList).toBeInTheDocument();
+		expect(cardListItems.length).toBe(1);
+		expect(cardListItems[0]).toHaveTextContent("Basic Card");
+		expect(card.length).toBe(1);
+		expect(
+			screen.getByRole("heading", {
+				level: 3,
+				name: "Basic Card",
+			})
+		).toBeInTheDocument();
+	});
 	it("renders Callout Card content correctly", () => {
 		const mockCalloutProps: CardGridProps = {
 			row: {
