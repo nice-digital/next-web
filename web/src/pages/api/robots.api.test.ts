@@ -2,10 +2,7 @@ import { NextApiRequest, NextApiResponse } from "next";
 
 import { normaliseString } from "@/test-utils/string";
 
-const expectedRobotsAllowedString = `User-agent: bingbot\nCrawl-delay: 1\nUser-agent: *\nDisallow: /forms/* Disallow: /bnfc-via-nice-is-only-available-in-the-uk Disallow: /bnf-via-nice-is-only-available-in-the-uk Disallow: /cks-is-only-available-in-the-uk Disallow: /cks-end-user-licence-agreement Disallow: /bnfc-uk-only
-Disallow: /bnf-uk-only
-Disallow: /cks-uk-only
-Disallow: /terms-and-conditions/cks-end-user-licence-agreement\nAllow: /`;
+const expectedRobotsAllowedString = `User-agent: bingbot\nCrawl-delay: 1\nUser-agent: *\nDisallow: /forms/* Disallow: /cks-is-only-available-in-the-uk Disallow: /cks-end-user-licence-agreement \nAllow: /`;
 const expectedRobotsDeniedString = `User-agent: *\nDisallow: /`;
 
 describe("Robots txt API Handler Tests", () => {
