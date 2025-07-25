@@ -34,7 +34,10 @@ export const Spotlight: React.FC<SpotlightProps> = ({
 
 	// Resolve transparency
 	const transparentClass = isTransparent ? styles.transparent : undefined;
-
+	const cardHeadingLevel =
+		headingLevel && headingLevel < 6
+			? (headingLevel + 1).toString()
+			: undefined;
 	return (
 		<section
 			className={classnames(styles.spotlight, transparentClass, className)}
@@ -82,7 +85,7 @@ export const Spotlight: React.FC<SpotlightProps> = ({
 									<Card
 										key={id}
 										headingText={name}
-										headingLevel={"3"}
+										headingLevel={cardHeadingLevel}
 										elementType="li"
 										link={headingLink}
 										image={
