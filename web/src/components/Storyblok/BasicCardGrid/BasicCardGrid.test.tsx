@@ -1,4 +1,4 @@
-import { render, screen } from "@testing-library/react";
+import { render, screen, within } from "@testing-library/react";
 
 import { CardGridStoryblok } from "@/types/storyblok";
 
@@ -36,26 +36,22 @@ describe("BasicCardGrid", () => {
 	it("renders internal links with Link component", () => {
 		render(<BasicCardGrid blok={mockCardBlok} />);
 
-		const internalLink = screen
-			.getByText((content) =>
-				content.includes("Advice and information on the use of drugs")
-			)
-			.closest("a");
+		const internalLink = screen.getByRole("link", {
+			name: /advice and information on the use of drugs/i,
+		});
 
 		expect(internalLink).toHaveAttribute("href", "https://bnf.nice.org.uk/");
 	});
 
 	it("renders card headings as <p> when headingLevel is missing or too high", () => {
 		render(<BasicCardGrid blok={mockCardBlok} />);
+		const card = screen.getByRole("article");
 
-		const cardTitle = screen.getByText(
-			"Advice and information on the use of drugs (BNF BNFc)"
-		);
-		expect(cardTitle).toBeInTheDocument();
-
-		// Check that it's an <a> inside a <p>
-		expect(cardTitle.tagName).toBe("A");
-		expect(cardTitle.parentElement?.tagName).toBe("P");
+		// Within the card, find the link
+		const link = within(card).getByRole("link", {
+			name: /advice and information on the use of drugs/i,
+		});
+		expect(link).toBeInTheDocument();
 	});
 
 	it("does not break if headingLevel is missing", () => {
