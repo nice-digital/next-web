@@ -1,5 +1,4 @@
-/* eslint-disable testing-library/no-node-access */
-import { render, screen } from "@testing-library/react";
+import { render, screen, within } from "@testing-library/react";
 
 import { mockNewsArticle, mockBlogPost } from "@/test-utils/storyblok-data";
 
@@ -39,5 +38,30 @@ describe("Spotlight component", () => {
 		expect(
 			screen.getByRole("heading", { level: 5, name: "Mock spotlight title" })
 		).toBeInTheDocument();
+	});
+	it("should render each Card with a heading level one deeper than the Spotlight heading", () => {
+		const headingLevel = 3; // So Card headings should be level 4
+		render(<Spotlight {...mockSpotlight} headingLevel={headingLevel} />);
+
+		const cards = screen.getAllByRole("listitem");
+		for (const card of cards) {
+			const heading = within(card).getByRole("heading", {
+				level: headingLevel + 1,
+			});
+			expect(heading).toBeInTheDocument();
+		}
+	});
+
+	it("should not exceed heading level 6 for cards", () => {
+		const headingLevel = 6; // cardHeadingLevel becomes undefined
+		render(<Spotlight {...mockSpotlight} headingLevel={headingLevel} />);
+
+		const articleLink = screen.getByText("Test news article title");
+		expect(articleLink).toBeInTheDocument();
+		expect(articleLink.parentElement?.tagName).toBe("P");
+
+		const blogLink = screen.getByText("Test blog post title");
+		expect(blogLink).toBeInTheDocument();
+		expect(blogLink.parentElement?.tagName).toBe("P");
 	});
 });
