@@ -1919,11 +1919,6 @@ const nextConfig = {
 				permanent: true,
 			},
 			{
-				source: "/Glossary",
-				destination: "Not being created in StoryBlok leave live in Orchard",
-				permanent: true,
-			},
-			{
 				source: "/about",
 				destination: "/about-us",
 				permanent: true,
