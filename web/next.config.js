@@ -3149,6 +3149,11 @@ const nextConfig = {
 				permanent: true,
 			},
 			{
+				source: "/about/what-we-do/our-programmes/nice-guidance/nice-technology-appraisal-guidance/data",
+				destination: "/what-nice-does/our-guidance/about-technology-appraisal-guidance",
+				permanent: true,
+			},
+			{
 				source:
 					"/about/what-we-do/our-programmes/nice-guidance/nice-interventional-procedures-guidance/notify",
 				destination:
