@@ -680,8 +680,7 @@ const nextConfig = {
 				permanent: true,
 			},
 			{
-				source:
-					"/about/what-we-do/into-practice",
+				source: "/about/what-we-do/into-practice",
 				destination: "/implementing-nice-guidance",
 				permanent: true,
 			},
