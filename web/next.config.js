@@ -675,8 +675,13 @@ const nextConfig = {
 				permanent: true,
 			},
 			{
+				source: "/about/what-we-do/into-practice/implementing-nice-guidance",
+				destination: "/implementing-nice-guidance",
+				permanent: true,
+			},
+			{
 				source:
-					"/about/what-we-do/into-practice and /about/what-we-do/into-practice/implementing-nice-guidance",
+					"/about/what-we-do/into-practice",
 				destination: "/implementing-nice-guidance",
 				permanent: true,
 			},
