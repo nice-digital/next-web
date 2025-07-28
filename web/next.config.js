@@ -3545,7 +3545,6 @@ const nextConfig = {
 				permanent: true,
 			},
 
-
 			{
 				source:
 					"/about/nice-communities/library-and-knowledge-services-staff/buy-books--journals-and-databases/purchasing-steps--further-competition",
@@ -3855,7 +3854,6 @@ const nextConfig = {
 				permanent: true,
 			},
 
-
 			{
 				source:
 					"/about/what-we-do/evidence-services/journals-and-databases/openathens/openathens-registration-help",
@@ -3905,14 +3903,12 @@ const nextConfig = {
 				permanent: true,
 			},
 			{
-				source:
-					"/about/what-we-do/into-practice/implementing-nice-guidance",
+				source: "/about/what-we-do/into-practice/implementing-nice-guidance",
 				destination: "/implementing-nice-guidance",
 				permanent: true,
 			},
 			{
-				source:
-					"/about/what-we-do/into-practice",
+				source: "/about/what-we-do/into-practice",
 				destination: "/implementing-nice-guidance",
 				permanent: true,
 			},
@@ -4292,7 +4288,6 @@ const nextConfig = {
 				permanent: true,
 			},
 
-
 			{
 				source:
 					"/about/what-we-do/evidence-services/journals-and-databases/openathens/access",
@@ -4376,7 +4371,6 @@ const nextConfig = {
 					"/get-involved/our-committees/nice-committee-meetings/quality-standards-advisory-committee",
 				permanent: true,
 			},
-
 
 			{
 				source:
@@ -4793,7 +4787,6 @@ const nextConfig = {
 				destination: "/cks-is-only-available-in-the-uk",
 				permanent: true,
 			},
-
 
 			{
 				source: "/indicators",
