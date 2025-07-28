@@ -3143,7 +3143,11 @@ const nextConfig = {
 					"/what-nice-does/our-guidance/about-nice-guidelines/how-we-develop-nice-guidelines",
 				permanent: true,
 			},
-			//TODO fix broken source "/about/what-we-do/our-programmes/nice-guidance/nice-technology-appraisal-guidance/data",
+			{
+				source: "/about/what-we-do/our-programmes/nice-guidance/nice-technology-appraisal-guidance/summary-of-decisions",
+				destination: "/about/what-we-do/our-programmes/nice-guidance/nice-technology-appraisal-guidance/data",
+				permanent: true,
+			},
 			{
 				source:
 					"/about/what-we-do/our-programmes/nice-guidance/nice-interventional-procedures-guidance/notify",
