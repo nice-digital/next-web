@@ -2002,7 +2002,7 @@ const nextConfig = {
 			{
 				source:
 					"/about/what-we-do/our-programmes/commissioning-support-programme",
-				destination: "/what-nice-does",
+				destination: "/implementing-nice-guidance",
 				permanent: true,
 			},
 			{
@@ -2093,7 +2093,7 @@ const nextConfig = {
 			},
 			{
 				source: "/about/what-we-do/into-practice/local-practice-case-studies",
-				destination: "/what-nice-does",
+				destination: "/implementing-nice-guidance",
 				permanent: true,
 			},
 			{
