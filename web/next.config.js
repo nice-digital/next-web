@@ -1476,7 +1476,7 @@ const nextConfig = {
 				source:
 					"/about/who-we-are/corporate-publications/health-technology-evaluation-at-nice--what-happens-after-the-transition-period",
 				destination:
-					"/what-nice-does/our-guidance/Prioritising-our-guidance-topics",
+					"/what-nice-does/our-guidance/prioritising-our-guidance-topics",
 				permanent: true,
 			},
 			{
