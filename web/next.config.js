@@ -1791,11 +1791,6 @@ const nextConfig = {
 				permanent: true,
 			},
 			{
-				source: "/Get-Involved/Meetings-in-public",
-				destination: "/get-involved/meetings-in-public",
-				permanent: true,
-			},
-			{
 				source: "/about/what-we-do/digital-health",
 				destination: "/what-nice-does/digital-health",
 				permanent: true,
@@ -1834,11 +1829,6 @@ const nextConfig = {
 			{
 				source: "/about/who-we-are/our-charter",
 				destination: "/about-us/corporate-publications/our-charter",
-				permanent: true,
-			},
-			{
-				source: "/Get-Involved/our-committees",
-				destination: "/get-involved/our-committees",
 				permanent: true,
 			},
 			{
