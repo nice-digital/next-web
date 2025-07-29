@@ -737,7 +737,7 @@ const nextConfig = {
 				source:
 					"/about/what-we-do/our-research-work/use-of-ai-in-evidence-generation--nice-position-statement",
 				destination:
-					"/position-statements/use-of-AI-in-evidence-generation-NICE-position-statement",
+					"/position-statements/use-of-ai-in-evidence-generation-nice-position-statement",
 				permanent: true,
 			},
 			{
