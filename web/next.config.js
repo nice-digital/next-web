@@ -1672,12 +1672,6 @@ const nextConfig = {
 				permanent: true,
 			},
 			{
-				source: "/about/what-we-do/our-research-work/hta-lab",
-				destination:
-					"/what-nice-does/our-research-work/health-technology-assessment-innovation-laboratory",
-				permanent: true,
-			},
-			{
 				source: "/standards-and-indicators/quality-standards",
 				destination:
 					"/what-nice-does/standards-and-indicators/quality-standards",
