@@ -139,13 +139,6 @@ const nextConfig = {
 		return [
 			{
 				source:
-					"/about/what-we-do/our-programmes/nice-guidance/about-technology-appraisal-guidance/participation-in-clinical-trials-and-subsequent-access-to-drugs-appraised-by-nice-a-statement-on-the-applicability-of-about-technology-appraisal-guidance",
-				destination:
-					"/position-statements/participation-in-clinical-trials-and-subsequent-access-to-drugs-appraised-by-nice-a-statement-on-the-applicability-of-technology-appraisal-guidance",
-				permanent: true,
-			},
-			{
-				source:
 					"/about/what-we-do/our-programmes/nice-guidance/nice-about-technology-appraisal-guidance/technology-appraisal-and-highly-specialised-technologies-appeals/past-appeals-and-decisions",
 				destination:
 					"/what-nice-does/our-guidance/about-technology-appraisal-guidance/technology-appraisal-and-highly-specialised-technologies-appeals/past-appeals-and-decisions",
@@ -153,9 +146,86 @@ const nextConfig = {
 			},
 			{
 				source:
-					"/about/nice-communities/social-care/quick-guides/developing-a-positive-working-culture-for-supporting-disabled-children-and-young-people-with-severe-complex-needs",
+					"/about/nice-communities/nice-and-the-public/public-involvement/support-for-vcs-organisations/help-us-develop-guidance/guides-to-developing-our-guidance",
 				destination:
-					"/implementing-nice-guidance/social-care/quick-guides-to-social-care-topics",
+					"/get-involved/people-and-communities/getting-involved-as-a-voluntary-and-community-sector-organisation/contributing-to-the-development-of-our-guidelines",
+				permanent: true,
+			},
+			{
+				source:
+					"/about/what-we-do/our-programmes/nice-guidance/about-technology-appraisal-guidance/participation-in-clinical-trials-and-subsequent-access-to-drugs-appraised-by-nice-a-statement-on-the-applicability-of-about-technology-appraisal-guidance",
+				destination:
+					"/position-statements/participation-in-clinical-trials-and-subsequent-access-to-drugs-appraised-by-nice-a-statement-on-the-applicability-of-technology-appraisal-guidance",
+				permanent: true,
+			},
+			{
+				source:
+					"/about/what-we-do/our-programmes/nice-guidance/nice-about-technology-appraisal-guidance/data/cancer-appraisal-recommendations",
+				destination:
+					"/what-nice-does/our-guidance/about-technology-appraisal-guidance/technology-appraisal-data-cancer-appraisal-recommendations",
+				permanent: true,
+			},
+			{
+				source:
+					"/about/what-we-do/our-programmes/nice-guidance/nice-about-technology-appraisal-guidance/data/appraisal-recommendations",
+				destination:
+					"/what-nice-does/our-guidance/about-technology-appraisal-guidance/technology-appraisal-data-appraisal-recommendations",
+				permanent: true,
+			},
+			{
+				source:
+					"/about/what-we-do/our-programmes/nice-guidance/nice-about-technology-appraisal-guidance/charging/procedure-tahst",
+				destination:
+					"/what-nice-does/our-guidance/about-technology-appraisal-guidance/fees-for-technology-appraisals-and-highly-specialised-technologies/charging-procedure",
+				permanent: true,
+			},
+			{
+				source:
+					"/about/what-we-do/our-programmes/nice-guidance/nice-about-technology-appraisal-guidance/process/mta-timeline",
+				destination:
+					"/what-nice-does/our-guidance/about-technology-appraisal-guidance/our-methods-and-processes-health-technology-evaluation-manual/technology-appraisal-processes-and-timelines/multiple-technology-appraisal-process-timeline",
+				permanent: true,
+			},
+			{
+				source:
+					"/about/what-we-do/our-programmes/nice-guidance/nice-technology-appraisal-guidance/charging/procedure-hst",
+				destination:
+					"/what-nice-does/our-guidance/about-technology-appraisal-guidance/charging-for-technology-appraisals-and-highly-specialised-technologies/charging-procedure-technology-appraisal-and-highly-specialised-technologies-evaluations ",
+				permanent: true,
+			},
+			{
+				source:
+					"/about/what-we-do/our-programmes/nice-guidance/nice-technology-appraisal-guidance/charging/timelines-hst",
+				destination:
+					"/what-nice-does/our-guidance/about-technology-appraisal-guidance/charging-for-technology-appraisals-and-highly-specialised-technologies/charging-procedure-technology-appraisal-and-highly-specialised-technologies-evaluations ",
+				permanent: true,
+			},
+			{
+				source:
+					"/about/what-we-do/our-programmes/nice-guidance/about-technology-appraisal-guidance/process/sta-timeline",
+				destination:
+					"/what-nice-does/our-guidance/about-technology-appraisal-guidance/our-methods-and-processes-health-technology-evaluation-manual/technology-appraisal-processes-and-timelines/single-technology-appraisal-timeline",
+				permanent: true,
+			},
+			{
+				source:
+					"/about/what-we-do/our-programmes/nice-guidance/nice-technology-appraisal-guidance/charging/procedure-ta",
+				destination:
+					"/what-nice-does/our-guidance/about-technology-appraisal-guidance/charging-for-technology-appraisals-and-highly-specialised-technologies/charging-procedure-technology-appraisal-and-highly-specialised-technologies-evaluations ",
+				permanent: true,
+			},
+			{
+				source:
+					"/about/what-we-do/our-programmes/nice-guidance/nice-technology-appraisal-guidance/charging/timelines-ta",
+				destination:
+					"/what-nice-does/our-guidance/about-technology-appraisal-guidance/charging-for-technology-appraisals-and-highly-specialised-technologies/charging-procedure-technology-appraisal-and-highly-specialised-technologies-evaluations ",
+				permanent: true,
+			},
+			{
+				source:
+					"/about/what-we-do/our-programmes/nice-guidance/nice-technology-appraisal-guidance/process/sta-timeline",
+				destination:
+					"/what-nice-does/our-guidance/about-technology-appraisal-guidance/our-methods-and-processes-health-technology-evaluation-manual/technology-appraisal-processes-and-timelines/single-technology-appraisal-timeline",
 				permanent: true,
 			},
 			{
@@ -174,13 +244,6 @@ const nextConfig = {
 			},
 			{
 				source:
-					"/about/nice-communities/nice-and-the-public/public-involvement/support-for-vcs-organisations/help-us-develop-guidance/guides-to-developing-our-guidance",
-				destination:
-					"/get-involved/people-and-communities/getting-involved-as-a-voluntary-and-community-sector-organisation/contributing-to-the-development-of-our-guidelines",
-				permanent: true,
-			},
-			{
-				source:
 					"/about/what-we-do/our-programmes/nice-guidance/about-technology-appraisal-guidance/technology-appraisal-submission-templates-and-supporting-documents",
 				destination:
 					"/what-nice-does/our-guidance/about-technology-appraisal-guidance/technology-appraisal-submission-templates-and-supporting-documents",
@@ -188,9 +251,8 @@ const nextConfig = {
 			},
 			{
 				source:
-					"/about/nice-communities/social-care/quick-guides/improving-young-people-s-experiences-in-transition-to-and-from-inpatient-mental-health-settings",
-				destination:
-					"/implementing-nice-guidance/social-care/quick-guides-to-social-care-topics",
+					"/about/what-we-do/our-programmes/nice-guidance/nice-highly-specialised-technologies-guidance/proposed-highly-specialised-technology-evaluations",
+				destination: "/guidance/proposed?type=hst",
 				permanent: true,
 			},
 			{
@@ -216,13 +278,6 @@ const nextConfig = {
 			},
 			{
 				source:
-					"/about/nice-communities/library-and-knowledge-services-staff/buy-books--journals-and-databases/organisations-eligible-to-use-the-framework",
-				destination:
-					"/library-and-knowledge-services/buy-books-journals-and-databases",
-				permanent: true,
-			},
-			{
-				source:
 					"/about/nice-communities/library-and-knowledge-services-staff/buy-books--journals-and-databases/provider-information/core-standards--agents",
 				destination:
 					"/library-and-knowledge-services/buy-books-journals-and-databases",
@@ -230,15 +285,9 @@ const nextConfig = {
 			},
 			{
 				source:
-					"/about/nice-communities/social-care/quick-guides/promoting-wellbeing-and-positive-identity-for-a-child-or-young-person-who-is-looked-after",
+					"/about/what-we-do/our-programmes/nice-guidance/nice-technology-appraisal-guidance/cancer-drugs-fund-new-process-proposal-consultation-2015",
 				destination:
-					"/implementing-nice-guidance/social-care/quick-guides-to-social-care-topics",
-				permanent: true,
-			},
-			{
-				source:
-					"/standards-and-indicators/qofindicators/the-percentage-of-patients-with-dementia-with-the-contact-details-of-a-named-carer-on-their-record",
-				destination: "/indicators/IND114-dementia-named-carer",
+					"/what-nice-does/our-guidance/about-technology-appraisal-guidance",
 				permanent: true,
 			},
 			{
@@ -250,16 +299,16 @@ const nextConfig = {
 			},
 			{
 				source:
-					"/about/nice-communities/social-care/quick-guides/arranging-services-for-people-with-a-learning-disability-and-behaviour-that-challenges",
+					"/about/what-we-do/our-programmes/nice-guidance/nice-technology-appraisal-guidance/abbreviated-technology-appraisal-process-consultation-",
 				destination:
-					"/implementing-nice-guidance/social-care/quick-guides-to-social-care-topics",
+					"/what-nice-does/our-guidance/about-technology-appraisal-guidance",
 				permanent: true,
 			},
 			{
 				source:
-					"/about/nice-communities/social-care/quick-guides/supporting-people-who-provide-unpaid-care-for-adults-with-health-or-social-care-needs",
+					"/about/what-we-do/our-programmes/nice-guidance/nice-technology-appraisal-guidance/abbreviated-technology-appraisal-process-consultation",
 				destination:
-					"/implementing-nice-guidance/social-care/quick-guides-to-social-care-topics",
+					"/what-nice-does/our-guidance/about-technology-appraisal-guidance",
 				permanent: true,
 			},
 			{
@@ -271,16 +320,9 @@ const nextConfig = {
 			},
 			{
 				source:
-					"/about/nice-communities/library-and-knowledge-services-staff/buy-books--journals-and-databases/purchasing-steps--further-competition",
+					"/about/what-we-do/life-sciences/scientific-advice/models-for-the-evaluation-and-purchase-of-antimicrobials/ceftazidime-with-avibactam",
 				destination:
-					"/library-and-knowledge-services/buy-books-journals-and-databases/purchasing-steps-further-competition",
-				permanent: true,
-			},
-			{
-				source:
-					"/standards-and-indicators/qofindicators/the-percentage-of-patients-with-cvd-who-are-currently-treated-with-a-lipid-lowering-therapy",
-				destination:
-					"/indicators/IND230-cardiovascular-disease-prevention-secondary-prevention-with-lipid-lowering-therapies",
+					"/what-nice-does/life-sciences-how-to-get-your-product-to-market/models-for-the-evaluation-and-purchase-of-antimicrobials",
 				permanent: true,
 			},
 			{
@@ -299,23 +341,9 @@ const nextConfig = {
 			},
 			{
 				source:
-					"/get-involved/register-your-organisation-as-a-stakeholder/stakeholder-registration--guidelines--quality-standards-and-indicators",
-				destination:
-					"/get-involved/register-your-organisation-as-a-stakeholder/stakeholder-registration-guidelines-quality-standards-and-indicators",
-				permanent: true,
-			},
-			{
-				source:
 					"/about/what-we-do/our-programmes/nice-guidance/nice-about-technology-appraisal-guidance/changes-to-health-technology-evaluation",
 				destination:
 					"/what-nice-does/our-guidance/about-technology-appraisal-guidance/our-methods-and-processes-health-technology-evaluation-manual",
-				permanent: true,
-			},
-			{
-				source:
-					"/about/nice-communities/library-and-knowledge-services-staff/buy-books--journals-and-databases/purchasing-steps--direct-awards",
-				destination:
-					"/library-and-knowledge-services/buy-books-journals-and-databases/purchasing-steps-direct-awards",
 				permanent: true,
 			},
 			{
@@ -327,23 +355,16 @@ const nextConfig = {
 			},
 			{
 				source:
-					"/about/nice-communities/library-and-knowledge-services-staff/buy-books-journals-and-databases/purchasing-steps--direct-awards",
+					"/about/what-we-do/our-programmes/nice-guidance/nice-technology-appraisal-guidance/methods-of-technology-appraisal-consultation",
 				destination:
-					"/library-and-knowledge-services/buy-books-journals-and-databases/purchasing-steps-direct-awards",
+					"/what-nice-does/our-guidance/about-technology-appraisal-guidance",
 				permanent: true,
 			},
 			{
 				source:
-					"/about/what-we-do/our-programmes/nice-guidance/nice-about-technology-appraisal-guidance/data/cancer-appraisal-recommendations",
+					"/about/nice-communities/nice-and-the-public/public-involvement/public-involvement-programme/patient-public-involvement-policy",
 				destination:
-					"/what-nice-does/our-guidance/about-technology-appraisal-guidance/technology-appraisal-data-cancer-appraisal-recommendations",
-				permanent: true,
-			},
-			{
-				source:
-					"/about/nice-communities/social-care/quick-guides/helping-to-prevent-winter-deaths-and-illnesses-associated-with-cold-homes",
-				destination:
-					"/implementing-nice-guidance/social-care/quick-guides-to-social-care-topics",
+					"/get-involved/people-and-communities/patient-and-public-involvement-policy",
 				permanent: true,
 			},
 			{
@@ -355,16 +376,15 @@ const nextConfig = {
 			},
 			{
 				source:
-					"/get-involved/our-committees/what-lay-members-do/lay-member-payments-and-expenses/how-lay-member-payments-affect-benefits",
+					"/about/what-we-do/life-sciences/scientific-advice/models-for-the-evaluation-and-purchase-of-antimicrobials/cefiderocol",
 				destination:
-					"/get-involved/our-committees/your-role-as-a-nice-committee-member",
+					"/what-nice-does/life-sciences-how-to-get-your-product-to-market/models-for-the-evaluation-and-purchase-of-antimicrobials",
 				permanent: true,
 			},
 			{
 				source:
-					"/about/what-we-do/our-programmes/nice-guidance/nice-about-technology-appraisal-guidance/data/appraisal-recommendations",
-				destination:
-					"/what-nice-does/our-guidance/about-technology-appraisal-guidance/technology-appraisal-data-appraisal-recommendations",
+					"/about/what-we-do/our-programmes/nice-guidance/medical-technologies-guidance/medical-technologies-guidance-static-list",
+				destination: "/what-nice-does",
 				permanent: true,
 			},
 			{
@@ -376,9 +396,352 @@ const nextConfig = {
 			},
 			{
 				source:
-					"/about/what-we-do/into-practice/mapping-nice-guidelines-to-the-care-quality-commission-s-single-assessment-framework",
+					"/about/what-we-do/our-programmes/nice-guidance/nice-technology-appraisal-guidance/technology-appraisal-static-list",
 				destination:
-					"/implementing-nice-guidance/cost-saving-resource-planning-and-audit/mapping-nice-guidelines-to-the-cqc-s-single-assessment-framework",
+					"/what-nice-does/our-guidance/about-technology-appraisal-guidance",
+				permanent: true,
+			},
+			{
+				source:
+					"/about/what-we-do/our-programmes/nice-guidance/nice-about-technology-appraisal-guidance/data-collection-agreement",
+				destination:
+					"/what-nice-does/our-guidance/about-technology-appraisal-guidance/data-collection-agreement",
+				permanent: true,
+			},
+			{
+				source:
+					"/about/what-we-do/life-sciences/scientific-advice/scientific-advice-education-and-training-/speaking-engagements",
+				destination:
+					"/what-nice-does/life-sciences-how-to-get-your-product-to-market/nice-advice-service/educational-webinars-and-masterclasses",
+				permanent: true,
+			},
+			{
+				source:
+					"/about/what-we-do/our-programmes/nice-guidance/nice-about-technology-appraisal-guidance/types-of-recommendation",
+				destination:
+					"/what-nice-does/our-guidance/types-of-recommendation-nice-can-make",
+				permanent: true,
+			},
+			{
+				source:
+					"/about/what-we-do/our-programmes/nice-guidance/nice-guidelines/maintaining-and-updating-our-guideline-portfolio",
+				destination:
+					"/what-nice-does/our-guidance/prioritising-our-guidance-topics",
+				permanent: true,
+			},
+			{
+				source:
+					"/about/what-we-do/our-programmes/nice-guidance/nice-interventional-procedures-guidance/ip-register-an-interest",
+				destination: "/forms/interventional-procedures-register-an-interest",
+				permanent: true,
+			},
+			{
+				source:
+					"/about/what-we-do/our-programmes/nice-guidance/nice-interventional-procedures-guidance/coding-recommendations",
+				destination:
+					"/what-nice-does/our-guidance/about-interventional-procedures-guidance/clinical-coding-recommendations-for-nice-guidance",
+				permanent: true,
+			},
+			{
+				source:
+					"/about/what-we-do/our-programmes/nice-guidance/nice-interventional-procedures-guidance/ip-notification-form",
+				destination: "/forms/interventional-procedures-notification",
+				permanent: true,
+			},
+			{
+				source:
+					"/about/what-we-do/our-programmes/nice-guidance/nice-diagnostics-guidance/diagnostics-guidance-static-list",
+				destination: "/what-nice-does",
+				permanent: true,
+			},
+			{
+				source:
+					"/about/what-we-do/our-programmes/nice-guidance/nice-technology-appraisal-guidance/types-of-recommendation",
+				destination: "/what-nice-does/our-guidance/types-of-recommendation",
+				permanent: true,
+			},
+			{
+				source:
+					"/about/what-we-do/life-sciences/scientific-advice/scientific-advice-education-and-training-/site-visits",
+				destination:
+					"/what-nice-does/life-sciences-how-to-get-your-product-to-market/nice-advice-service/educational-webinars-and-masterclasses",
+				permanent: true,
+			},
+			{
+				source:
+					"/about/what-we-do/our-programmes/nice-guidance/medical-technologies-guidance/register-as-a-stakeholder",
+				destination:
+					"/get-involved/register-your-organisation-as-a-stakeholder/stakeholder-registration-medical-technologies",
+				permanent: true,
+			},
+			{
+				source:
+					"/about/what-we-do/our-programmes/nice-guidance/nice-guidelines/using-nice-guidelines-to-make-decisions",
+				destination:
+					"/what-nice-does/our-guidance/about-nice-guidelines/making-decisions-using-nice-guidelines",
+				permanent: true,
+			},
+			{
+				source:
+					"/about/what-we-do/our-programmes/nice-guidance/nice-technology-appraisal-guidance/summary-of-decisions",
+				destination:
+					"/what-nice-does/our-guidance/about-technology-appraisal-guidance",
+				permanent: true,
+			},
+			{
+				source:
+					"/about/what-we-do/our-programmes/nice-guidance/nice-guidelines/making-decisions-using-nice-guidelines",
+				destination:
+					"/what-nice-does/our-guidance/about-nice-guidelines/making-decisions-using-nice-guidelines",
+				permanent: true,
+			},
+			{
+				source:
+					"/about/what-we-do/our-programmes/nice-guidance/nice-diagnostics-guidance/dt-stakeholder-registration",
+				destination:
+					"/get-involved/register-your-organisation-as-a-stakeholder/stakeholder-registration-diagnostic-technologies",
+				permanent: true,
+			},
+			{
+				source:
+					"/about/what-we-do/life-sciences/scientific-advice/scientific-advice-education-and-training-/seminars",
+				destination:
+					"/what-nice-does/life-sciences-how-to-get-your-product-to-market/nice-advice-service/educational-webinars-and-masterclasses",
+				permanent: true,
+			},
+			{
+				source:
+					"/about/what-we-do/our-programmes/nice-guidance/nice-technology-appraisal-guidance/cancer-drugs-fund",
+				destination: "/what-nice-does/managed-access",
+				permanent: true,
+			},
+			{
+				source:
+					"/about/what-we-do/evidence-services/journals-and-databases/openathens/openathens-registration-help",
+				destination:
+					"/library-and-knowledge-services/openathens/openathens-registration-help",
+				permanent: true,
+			},
+			{
+				source:
+					"/about/what-we-do/our-programmes/nice-guidance/interventional-procedures-guidance/recommendations",
+				destination: "/what-nice-does/our-guidance/types-of-recommendation",
+				permanent: true,
+			},
+			{
+				source:
+					"/about/what-we-do/our-programmes/nice-guidance/nice-guidelines/nice-medicines-practice-guidelines",
+				destination:
+					"/what-nice-does/our-guidance/about-nice-guidelines/how-we-develop-nice-guidelines",
+				permanent: true,
+			},
+			{
+				source:
+					"/about/what-we-do/our-programmes/nice-guidance/nice-about-technology-appraisal-guidance/charging",
+				destination:
+					"/what-nice-does/our-guidance/about-technology-appraisal-guidance/fees-for-technology-appraisals-and-highly-specialised-technologies",
+				permanent: true,
+			},
+			{
+				source:
+					"/about/what-we-do/our-programmes/nice-guidance/about-medical-technologies-guidance/get-involved",
+				destination:
+					"/what-nice-does/our-guidance/about-medical-technologies-guidance/get-involved-with-medical-technologies-guidance",
+				permanent: true,
+			},
+			{
+				source:
+					"/about/what-we-do/our-programmes/nice-guidance/nice-guidelines/how-we-develop-nice-guidelines",
+				destination:
+					"/what-nice-does/our-guidance/about-nice-guidelines/how-we-develop-nice-guidelines",
+				permanent: true,
+			},
+			{
+				source:
+					"/about/what-we-do/our-programmes/nice-guidance/nice-interventional-procedures-guidance/notify",
+				destination:
+					"/what-nice-does/our-guidance/about-interventional-procedures-guidance/notify-an-interventional-procedure",
+				permanent: true,
+			},
+			{
+				source:
+					"/about/what-we-do/evidence-services/journals-and-databases/openathens/openathens-eligibility",
+				destination:
+					"/library-and-knowledge-services/openathens/openathens-eligibility",
+				permanent: true,
+			},
+			{
+				source:
+					"/about/what-we-do/our-programmes/nice-guidance/nice-about-technology-appraisal-guidance/data",
+				destination:
+					"/what-nice-does/our-guidance/about-technology-appraisal-guidance",
+				permanent: true,
+			},
+			{
+				source:
+					"/about/what-we-do/our-programmes/nice-guidance/nice-guidelines/nice-public-health-guidelines",
+				destination:
+					"/what-nice-does/our-guidance/about-nice-guidelines/how-we-develop-nice-guidelines",
+				permanent: true,
+			},
+			{
+				source:
+					"/about/what-we-do/our-programmes/nice-guidance/nice-guidelines/nice-safe-staffing-guidelines",
+				destination:
+					"/what-nice-does/our-guidance/about-nice-guidelines/how-we-develop-nice-guidelines",
+				permanent: true,
+			},
+			{
+				source:
+					"/about/what-we-do/our-programmes/nice-guidance/about-technology-appraisal-guidance/eq-5d-5l",
+				destination:
+					"/position-statements/position-statement-on-use-of-the-eq-5d-5l-value-set-for-england-updated-october-2019",
+				permanent: true,
+			},
+			{
+				source:
+					"/about/what-we-do/our-programmes/nice-guidance/nice-guidelines/nice-social-care-guidelines",
+				destination:
+					"/what-nice-does/our-guidance/about-nice-guidelines/how-we-develop-nice-guidelines",
+				permanent: true,
+			},
+			{
+				source:
+					"/about/what-we-do/our-programmes/nice-guidance/nice-diagnostics-guidance/process-timeline",
+				destination:
+					"/what-nice-does/our-guidance/about-diagnostics-guidance/diagnostics-assessment-programme-process-timeline",
+				permanent: true,
+			},
+			{
+				source:
+					"/about/what-we-do/our-programmes/nice-guidance/nice-technology-appraisal-guidance/process",
+				destination:
+					"/what-nice-does/our-guidance/about-technology-appraisal-guidance/our-methods-and-processes-health-technology-evaluation-manual/methods-and-processes-used-before-2022",
+				permanent: true,
+			},
+			{
+				source:
+					"/about/what-we-do/evidence-services/journals-and-databases/openathens/openathens-support",
+				destination:
+					"/library-and-knowledge-services/openathens/openathens-support",
+				permanent: true,
+			},
+			{
+				source:
+					"/about/what-we-do/our-programmes/nice-guidance/nice-guidelines/nice-clinical-guidelines",
+				destination:
+					"/what-nice-does/our-guidance/about-nice-guidelines/how-we-develop-nice-guidelines",
+				permanent: true,
+			},
+			{
+				source:
+					"/about/what-we-do/our-programmes/nice-guidance/nice-guidelines/shared-decision-making",
+				destination:
+					"/what-nice-does/our-guidance/about-nice-guidelines/about-shared-decision-making",
+				permanent: true,
+			},
+			{
+				source:
+					"/about/what-we-do/our-programmes/nice-guidance/nice-guidelines/types-of-guideline",
+				destination:
+					"/what-nice-does/our-guidance/about-nice-guidelines/how-we-develop-nice-guidelines",
+				permanent: true,
+			},
+			{
+				source:
+					"/about/what-we-do/evidence-services/journals-and-databases/openathens/access",
+				destination:
+					"/library-and-knowledge-services/openathens/openathens-access",
+				permanent: true,
+			},
+			{
+				source:
+					"/about/nice-communities/social-care/quick-guides/developing-a-positive-working-culture-for-supporting-disabled-children-and-young-people-with-severe-complex-needs",
+				destination:
+					"/implementing-nice-guidance/social-care/quick-guides-to-social-care-topics",
+				permanent: true,
+			},
+			{
+				source:
+					"/about/nice-communities/social-care/quick-guides/improving-young-people-s-experiences-in-transition-to-and-from-inpatient-mental-health-settings",
+				destination:
+					"/implementing-nice-guidance/social-care/quick-guides-to-social-care-topics",
+				permanent: true,
+			},
+			{
+				source:
+					"/about/nice-communities/library-and-knowledge-services-staff/buy-books--journals-and-databases/organisations-eligible-to-use-the-framework",
+				destination:
+					"/library-and-knowledge-services/buy-books-journals-and-databases",
+				permanent: true,
+			},
+			{
+				source:
+					"/about/nice-communities/social-care/quick-guides/promoting-wellbeing-and-positive-identity-for-a-child-or-young-person-who-is-looked-after",
+				destination:
+					"/implementing-nice-guidance/social-care/quick-guides-to-social-care-topics",
+				permanent: true,
+			},
+			{
+				source:
+					"/about/nice-communities/social-care/quick-guides/arranging-services-for-people-with-a-learning-disability-and-behaviour-that-challenges",
+				destination:
+					"/implementing-nice-guidance/social-care/quick-guides-to-social-care-topics",
+				permanent: true,
+			},
+			{
+				source:
+					"/about/nice-communities/social-care/quick-guides/supporting-people-who-provide-unpaid-care-for-adults-with-health-or-social-care-needs",
+				destination:
+					"/implementing-nice-guidance/social-care/quick-guides-to-social-care-topics",
+				permanent: true,
+			},
+			{
+				source:
+					"/about/nice-communities/library-and-knowledge-services-staff/buy-books--journals-and-databases/purchasing-steps--further-competition",
+				destination:
+					"/library-and-knowledge-services/buy-books-journals-and-databases/purchasing-steps-further-competition",
+				permanent: true,
+			},
+			{
+				source:
+					"/about/nice-communities/library-and-knowledge-services-staff/buy-books--journals-and-databases/purchasing-steps--direct-awards",
+				destination:
+					"/library-and-knowledge-services/buy-books-journals-and-databases/purchasing-steps-direct-awards",
+				permanent: true,
+			},
+			{
+				source:
+					"/about/nice-communities/library-and-knowledge-services-staff/buy-books-journals-and-databases/purchasing-steps--direct-awards",
+				destination:
+					"/library-and-knowledge-services/buy-books-journals-and-databases/purchasing-steps-direct-awards",
+				permanent: true,
+			},
+			{
+				source:
+					"/about/nice-communities/social-care/quick-guides/helping-to-prevent-winter-deaths-and-illnesses-associated-with-cold-homes",
+				destination:
+					"/implementing-nice-guidance/social-care/quick-guides-to-social-care-topics",
+				permanent: true,
+			},
+			{
+				source:
+					"/get-involved/our-committees/what-lay-members-do/lay-member-payments-and-expenses/how-lay-member-payments-affect-benefits",
+				destination: "/get-involved/our-committees",
+				permanent: true,
+			},
+			{
+				source:
+					"/about/what-we-do/life-sciences/scientific-advice/european-health-technology-assessment-and-regulatory-concurrent-advice",
+				destination:
+					"/what-nice-does/life-sciences-how-to-get-your-product-to-market/nice-advice-service",
+				permanent: true,
+			},
+			{
+				source:
+					"/about/what-we-do/our-programmes/nice-guidance/reviewing-our-process-for-health-technology-evaluation--consultation",
+				destination:
+					"/what-nice-does/our-guidance/about-technology-appraisal-guidance",
 				permanent: true,
 			},
 			{
@@ -397,23 +760,9 @@ const nextConfig = {
 			},
 			{
 				source:
-					"/get-involved/meetings-in-public/quality-standards-advisory-committee/quality-standards-advisory-committee-members",
-				destination:
-					"/get-involved/our-committees/nice-committee-meetings/quality-standards-advisory-committee/quality-standards-advisory-committee-members",
-				permanent: true,
-			},
-			{
-				source:
 					"/about/nice-communities/social-care/quick-guides-for-social-care/promoting-independence-through-intermediate-care",
 				destination:
 					"/implementing-nice-guidance/social-care/quick-guides-to-social-care-topics",
-				permanent: true,
-			},
-			{
-				source:
-					"/about/what-we-do/our-programmes/nice-guidance/nice-about-technology-appraisal-guidance/data-collection-agreement",
-				destination:
-					"/what-nice-does/our-guidance/about-technology-appraisal-guidance/data-collection-agreement",
 				permanent: true,
 			},
 			{
@@ -425,58 +774,9 @@ const nextConfig = {
 			},
 			{
 				source:
-					"/about/what-we-do/our-programmes/nice-guidance/nice-about-technology-appraisal-guidance/charging/procedure-tahst",
+					"/about/what-we-do/life-sciences/office-for-market-access/identify-the-most-appropriate-routes-to-nhs-access",
 				destination:
-					"/what-nice-does/our-guidance/about-technology-appraisal-guidance/fees-for-technology-appraisals-and-highly-specialised-technologies/charging-procedure",
-				permanent: true,
-			},
-			{
-				source:
-					"/about/what-we-do/our-programmes/nice-guidance/nice-about-technology-appraisal-guidance/types-of-recommendation",
-				destination:
-					"/what-nice-does/our-guidance/types-of-recommendation-nice-can-make",
-				permanent: true,
-			},
-			{
-				source:
-					"/about/what-we-do/our-programmes/nice-guidance/nice-guidelines/maintaining-and-updating-our-guideline-portfolio",
-				destination:
-					"/what-nice-does/our-guidance/Prioritising-our-guidance-topics",
-				permanent: true,
-			},
-			{
-				source:
-					"/about/what-we-do/our-programmes/nice-guidance/nice-interventional-procedures-guidance/coding-recommendations",
-				destination:
-					"/what-nice-does/our-guidance/about-interventional-procedures-guidance/clinical-coding-recommendations-for-nice-guidance",
-				permanent: true,
-			},
-			{
-				source:
-					"/get-involved/meetings-in-public/public-board-meetings/public-board-meeting-agenda-and-papers--september-2024",
-				destination:
-					"/about-us/our-board/public-board-meetings/2024/public-board-meetings-agenda-and-papers-september-2024",
-				permanent: true,
-			},
-			{
-				source:
-					"/about/what-we-do/our-programmes/nice-guidance/nice-about-technology-appraisal-guidance/process/mta-timeline",
-				destination:
-					"/what-nice-does/our-guidance/about-technology-appraisal-guidance/our-methods-and-processes-health-technology-evaluation-manual/technology-appraisal-processes-and-timelines/multiple-technology-appraisal-process-timeline",
-				permanent: true,
-			},
-			{
-				source:
-					"/get-involved/meetings-in-public/public-board-meetings/public-board-meeting-agenda-and-papers-september-2023",
-				destination:
-					"/about-us/our-board/public-board-meetings/2023/public-board-meeting-agenda-and-papers-september-2023",
-				permanent: true,
-			},
-			{
-				source:
-					"/get-involved/meetings-in-public/public-board-meetings/public-board-meeting-agenda-and-papers-december-2023",
-				destination:
-					"/about-us/our-board/public-board-meetings/2023/public-board-meeting-agenda-and-papers-december-2023",
+					"/what-nice-does/life-sciences-how-to-get-your-product-to-market/nice-advice-service",
 				permanent: true,
 			},
 			{
@@ -490,7 +790,14 @@ const nextConfig = {
 				source:
 					"/about/what-we-do/life-sciences/scientific-advice/models-for-the-evaluation-and-purchase-of-antimicrobials",
 				destination:
-					"/what-nice-does/life-sciences-how-to-get-your-product-to-market/a-new-model-for-evaluating-and-purchasing-antimicrobials-in-the-uk",
+					"/what-nice-does/life-sciences-how-to-get-your-product-to-market/nice-advice-service",
+				permanent: true,
+			},
+			{
+				source:
+					"/about/what-we-do/life-sciences/office-for-market-access/changing-healthcare-landscape-and-your-technology",
+				destination:
+					"/what-nice-does/life-sciences-how-to-get-your-product-to-market/nice-advice-service",
 				permanent: true,
 			},
 			{
@@ -516,34 +823,6 @@ const nextConfig = {
 			},
 			{
 				source:
-					"/get-involved/meetings-in-public/public-board-meetings/public-board-meeting-agenda-and-papers--july-2022",
-				destination:
-					"/about-us/our-board/public-board-meetings/2022/public-board-meeting-agenda-and-papers-july-2022",
-				permanent: true,
-			},
-			{
-				source:
-					"/get-involved/meetings-in-public/public-board-meetings/public-board-meeting-agenda-and-papers--july-2023",
-				destination:
-					"/about-us/our-board/public-board-meetings/2023/public-board-meeting-agenda-and-papers-july-2023",
-				permanent: true,
-			},
-			{
-				source:
-					"/get-involved/meetings-in-public/public-board-meetings/public-board-meeting-agenda-and-papers--july-2024",
-				destination:
-					"/about-us/our-board/public-board-meetings/2024/public-board-meeting-agenda-and-papers-july-2024",
-				permanent: true,
-			},
-			{
-				source:
-					"/about/what-we-do/our-programmes/nice-guidance/about-technology-appraisal-guidance/process/sta-timeline",
-				destination:
-					"/what-nice-does/our-guidance/about-technology-appraisal-guidance/our-methods-and-processes-health-technology-evaluation-manual/technology-appraisal-processes-and-timelines/single-technology-appraisal-timeline",
-				permanent: true,
-			},
-			{
-				source:
 					"/about/nice-communities/social-care/quick-guides/building-independence-through-planning-for-transition",
 				destination:
 					"/implementing-nice-guidance/social-care/quick-guides-to-social-care-topics",
@@ -558,23 +837,9 @@ const nextConfig = {
 			},
 			{
 				source:
-					"/about/what-we-do/our-programmes/nice-guidance/medical-technologies-guidance/register-as-a-stakeholder",
-				destination:
-					"/get-involved/register-your-organisation-as-a-stakeholder/stakeholder-registration-medical-technologies",
-				permanent: true,
-			},
-			{
-				source:
 					"/about/nice-communities/social-care/quick-guides/promoting-positive-mental-wellbeing-for-older-people",
 				destination:
 					"/implementing-nice-guidance/social-care/quick-guides-to-social-care-topics",
-				permanent: true,
-			},
-			{
-				source:
-					"/about/what-we-do/our-programmes/nice-guidance/nice-guidelines/making-decisions-using-nice-guidelines",
-				destination:
-					"/what-nice-does/our-guidance/about-nice-guidelines/making-decisions-using-nice-guidelines",
 				permanent: true,
 			},
 			{
@@ -593,16 +858,16 @@ const nextConfig = {
 			},
 			{
 				source:
-					"/about/what-we-do/our-programmes/nice-guidance/nice-diagnostics-guidance/dt-stakeholder-registration",
+					"/about/nice-communities/social-care/quick-guides/what-to-expect-during-assessment-and-care-planning",
 				destination:
-					"/get-involved/register-your-organisation-as-a-stakeholder/stakeholder-registration-diagnostic-technologies",
+					"/implementing-nice-guidance/social-care/quick-guides-to-social-care-topics",
 				permanent: true,
 			},
 			{
 				source:
-					"/about/nice-communities/social-care/quick-guides/what-to-expect-during-assessment-and-care-planning",
+					"/about/what-we-do/our-programmes/nice-advice/evidence-summaries-medicines-and-prescribing-briefings",
 				destination:
-					"/implementing-nice-guidance/social-care/quick-guides-to-social-care-topics",
+					"/what-nice-does/life-sciences-how-to-get-your-product-to-market/nice-advice-service",
 				permanent: true,
 			},
 			{
@@ -614,29 +879,21 @@ const nextConfig = {
 			},
 			{
 				source:
-					"/about/what-we-do/digital-health/multi-agency-advisory-service-for-ai-and-data-driven-technologies",
-				destination:
-					"/what-nice-does/digital-health/artificial-intelligence-ai-and-digital-regulations-service",
-				permanent: true,
-			},
-			{
-				source:
-					"/about/what-we-do/evidence-services/journals-and-databases/openathens/openathens-registration-help",
-				destination:
-					"/library-and-knowledge-services/openathens/openathens-registration-help",
-				permanent: true,
-			},
-			{
-				source:
 					"/about/who-we-are/board/public-board-meetings/public-board-meeting-agenda-and-papers--january-2022",
 				destination: "/about-us/our-board/public-board-meetings/2022",
 				permanent: true,
 			},
 			{
 				source:
-					"/about/what-we-do/our-programmes/nice-guidance/interventional-procedures-guidance/recommendations",
+					"/about/what-we-do/our-programmes/commissioning-support-programme/how-we-support-policy-development",
+				destination: "/what-nice-does",
+				permanent: true,
+			},
+			{
+				source:
+					"/about/what-we-do/our-programmes/nice-advice/evidence-summaries-unlicensed-or-off-label-medicines",
 				destination:
-					"/what-nice-does/our-guidance/types-of-recommendation-nice-can-make",
+					"/what-nice-does/life-sciences-how-to-get-your-product-to-market/nice-advice-service",
 				permanent: true,
 			},
 			{
@@ -644,13 +901,6 @@ const nextConfig = {
 					"/about/nice-communities/social-care/quick-guides/evidence-for-strengths-and-asset-based-outcomes",
 				destination:
 					"/implementing-nice-guidance/social-care/quick-guides-to-social-care-topics",
-				permanent: true,
-			},
-			{
-				source:
-					"/about/what-we-do/our-programmes/nice-guidance/nice-about-technology-appraisal-guidance/charging",
-				destination:
-					"/what-nice-does/our-guidance/about-technology-appraisal-guidance/fees-for-technology-appraisals-and-highly-specialised-technologies",
 				permanent: true,
 			},
 			{
@@ -669,61 +919,8 @@ const nextConfig = {
 			},
 			{
 				source:
-					"/about/what-we-do/our-programmes/nice-guidance/about-medical-technologies-guidance/get-involved",
-				destination:
-					"/what-nice-does/our-guidance/about-medical-technologies-guidance/get-involved-with-medical-technologies-guidance",
-				permanent: true,
-			},
-			{
-				source: "/about/what-we-do/into-practice/implementing-nice-guidance",
-				destination: "/implementing-nice-guidance",
-				permanent: true,
-			},
-			{
-				source: "/about/what-we-do/into-practice",
-				destination: "/implementing-nice-guidance",
-				permanent: true,
-			},
-			{
-				source:
-					"/Get-Involved/Meetings-in-public/Highly-Specialised-Technologies-Evaluation-Committee/Members",
-				destination:
-					"/get-involved/our-committees/nice-committee-meetings/highly-specialised-technologies-evaluation-committee/highly-specialised-technologies-evaluation-committee-members",
-				permanent: true,
-			},
-			{
-				source:
-					"/about/nice-communities/library-and-knowledge-services-staff/buy-books-journals-and-databases",
-				destination:
-					"/library-and-knowledge-services/buy-books-journals-and-databases",
-				permanent: true,
-			},
-			{
-				source:
-					"/about/what-we-do/life-sciences/our-role-in-the-innovative-licensing-and-access-pathway--ilap",
-				destination:
-					"/what-nice-does/life-sciences-how-to-get-your-product-to-market/our-role-in-the-innovative-licensing-and-access-pathway-ilap",
-				permanent: true,
-			},
-			{
-				source:
-					"/about/what-we-do/our-programmes/evidence-standards-framework-for-digital-health-technologies",
-				destination:
-					"/what-nice-does/digital-health/evidence-standards-framework-esf-for-digital-health-technologies",
-				permanent: true,
-			},
-			{
-				source:
-					"/about/what-we-do/our-programmes/nice-guidance/nice-guidelines/how-we-develop-nice-guidelines",
-				destination:
-					"/what-nice-does/our-guidance/about-nice-guidelines/how-we-develop-nice-guidelines",
-				permanent: true,
-			},
-			{
-				source:
-					"/about/what-we-do/our-programmes/nice-guidance/nice-interventional-procedures-guidance/notify",
-				destination:
-					"/what-nice-does/our-guidance/about-interventional-procedures-guidance/notify-an-interventional-procedure",
+					"/about/what-we-do/nice-international/about-nice-international/nice-international-advisory-group",
+				destination: "/what-nice-does/nice-international",
 				permanent: true,
 			},
 			{
@@ -731,13 +928,6 @@ const nextConfig = {
 					"/about/what-we-do/our-programmes/nice-guidance/nice-medical-technologies-evaluation-programme",
 				destination:
 					"/what-nice-does/our-guidance/about-medical-technologies-guidance/get-a-medical-technology-evaluated",
-				permanent: true,
-			},
-			{
-				source:
-					"/about/what-we-do/our-research-work/use-of-ai-in-evidence-generation--nice-position-statement",
-				destination:
-					"/position-statements/use-of-ai-in-evidence-generation-nice-position-statement",
 				permanent: true,
 			},
 			{
@@ -770,37 +960,14 @@ const nextConfig = {
 			},
 			{
 				source:
-					"/about/what-we-do/evidence-services/journals-and-databases/openathens/openathens-eligibility",
-				destination:
-					"/library-and-knowledge-services/openathens/openathens-eligibility",
+					"/about/nice-communities/nice-and-the-public/public-involvement/public-involvement-programme",
+				destination: "/get-involved/people-and-communities",
 				permanent: true,
 			},
 			{
 				source:
-					"/about/what-we-do/our-programmes/nice-guidance/nice-about-technology-appraisal-guidance/data",
-				destination:
-					"/what-nice-does/our-guidance/about-technology-appraisal-guidance",
-				permanent: true,
-			},
-			{
-				source:
-					"/about/what-we-do/our-research-work/partnering-with-us-for-research---timescales-and-process",
-				destination:
-					"/what-nice-does/our-research-work/partnering-with-us-for-research-timescales-and-process",
-				permanent: true,
-			},
-			{
-				source:
-					"/about/nice-communities/medicines-and-prescribing/nice-medicines-and-prescribing-associates",
-				destination:
-					"/implementing-nice-guidance/implementation-help-and-advice/nice-medicines-and-prescribing-associates",
-				permanent: true,
-			},
-			{
-				source:
-					"/about/what-we-do/our-programmes/nice-guidance/about-technology-appraisal-guidance/eq-5d-5l",
-				destination:
-					"/position-statements/position-statement-on-use-of-the-eq-5d-5l-value-set-for-england-updated-october-2019",
+					"/about/what-we-do/nice-international/about-nice-international/nice-international-associates",
+				destination: "/what-nice-does/nice-international",
 				permanent: true,
 			},
 			{
@@ -814,28 +981,21 @@ const nextConfig = {
 				source:
 					"/about/what-we-do/life-sciences/office-for-market-access/early-access-to-medicines-scheme",
 				destination:
-					"/what-nice-does/life-sciences-how-to-get-your-product-to-market/early-access-to-medicines-scheme-eams",
+					"/what-nice-does/life-sciences-how-to-get-your-product-to-market/nice-advice-service",
 				permanent: true,
 			},
 			{
 				source:
-					"/about/what-we-do/our-programmes/nice-guidance/nice-diagnostics-guidance/process-timeline",
+					"/about/what-we-do/life-sciences/office-for-market-access/exploring-your-value-proposition",
 				destination:
-					"/what-nice-does/our-guidance/about-diagnostics-guidance/diagnostics-assessment-programme-process-timeline",
+					"/what-nice-does/life-sciences-how-to-get-your-product-to-market/nice-advice-service",
 				permanent: true,
 			},
 			{
 				source:
-					"/about/what-we-do/our-programmes/nice-guidance/nice-technology-appraisal-guidance/process",
+					"/about/what-we-do/life-sciences/office-for-market-access/safe-harbour-engagement-meetings",
 				destination:
-					"/what-nice-does/our-guidance/about-technology-appraisal-guidance/our-methods-and-processes-health-technology-evaluation-manual/methods-and-processes-used-before-2022",
-				permanent: true,
-			},
-			{
-				source:
-					"/about/what-we-do/evidence-services/journals-and-databases/openathens/openathens-support",
-				destination:
-					"/library-and-knowledge-services/openathens/openathens-support",
+					"/what-nice-does/life-sciences-how-to-get-your-product-to-market/nice-advice-service",
 				permanent: true,
 			},
 			{
@@ -868,13 +1028,6 @@ const nextConfig = {
 			},
 			{
 				source:
-					"/about/who-we-are/corporate-publications/modern-slavery-and-human-trafficking-statement",
-				destination:
-					"/about-us/policies-procedures-and-reports/modern-slavery-and-human-trafficking-statement",
-				permanent: true,
-			},
-			{
-				source:
 					"/About/What-we-do/Our-Programmes/NICE-guidance/NICE-interventional-procedures-guidance",
 				destination:
 					"/what-nice-does/our-guidance/about-interventional-procedures-guidance",
@@ -882,23 +1035,15 @@ const nextConfig = {
 			},
 			{
 				source:
-					"/Get-Involved/Meetings-in-public/Highly-Specialised-Technologies-Evaluation-Committee",
-				destination:
-					"/get-involved/our-committees/nice-committee-meetings/highly-specialised-technologies-evaluation-committee",
+					"/about/what-we-do/our-programmes/commissioning-support-programme/policy-working-groups",
+				destination: "/what-nice-does",
 				permanent: true,
 			},
 			{
 				source:
-					"/Get-Involved/Meetings-in-public/Interventional-Procedures-Advisory-Committee/Members",
+					"/about/what-we-do/our-programmes/nice-guidance/chte-methods-and-processes-consultation",
 				destination:
-					"/get-involved/our-committees/nice-committee-meetings/interventional-procedures-advisory-committee/interventional-procedures-advisory-committee-members",
-				permanent: true,
-			},
-			{
-				source:
-					"/about/what-we-do/our-programmes/nice-guidance/nice-guidelines/shared-decision-making",
-				destination:
-					"/what-nice-does/our-guidance/about-nice-guidelines/about-shared-decision-making",
+					"/what-nice-does/our-guidance/about-technology-appraisal-guidance",
 				permanent: true,
 			},
 			{
@@ -910,9 +1055,467 @@ const nextConfig = {
 			},
 			{
 				source:
+					"/about/what-we-do/into-practice/measuring-the-impact-of-nice-guidance/uptake-reports",
+				destination:
+					"/implementing-nice-guidance/measuring-the-use-of-NICE-guidance",
+				permanent: true,
+			},
+			{
+				source:
+					"/about/nice-communities/social-care/quick-guides/helping-to-prevent-pressure-ulcers",
+				destination:
+					"/implementing-nice-guidance/social-care/quick-guides-to-social-care-topics",
+				permanent: true,
+			},
+			{
+				source:
+					"/about/what-we-do/our-programmes/nice-guidance/antimicrobial-prescribing-guidelines",
+				destination:
+					"/guidance/health-protection/communicable-diseases/antimicrobial-stewardship",
+				permanent: true,
+			},
+			{
+				source:
+					"/about/nice-communities/social-care/quick-guides/better-home-care-for-older-people",
+				destination:
+					"/implementing-nice-guidance/social-care/quick-guides-to-social-care-topics",
+				permanent: true,
+			},
+			{
+				source:
+					"/about/what-we-do/into-practice/measuring-the-uptake-of-nice-guidance/uptake-data",
+				destination:
+					"/implementing-nice-guidance/measuring-the-use-of-NICE-guidance",
+				permanent: true,
+			},
+			{
+				source:
+					"/about/what-we-do/our-programmes/local-practice-collection/shared-learning-awards",
+				destination: "/what-nice-does",
+				permanent: true,
+			},
+			{
+				source:
+					"/about/nice-communities/social-care/quick-guides/creating-a-safeguarding-culture",
+				destination:
+					"/implementing-nice-guidance/social-care/quick-guides-to-social-care-topics",
+				permanent: true,
+			},
+			{
+				source:
+					"/about/nice-communities/social-care/quick-guides/understanding-intermediate-care",
+				destination:
+					"/implementing-nice-guidance/social-care/quick-guides-to-social-care-topics",
+				permanent: true,
+			},
+			{
+				source:
+					"/about/what-we-do/into-practice/nice-resource-impact-assessments/learning-events",
+				destination:
+					"/implementing-nice-guidance/cost-saving-resource-planning-and-audit/assessing-the-resource-impact-of-nice-guidance",
+				permanent: true,
+			},
+			{
+				source:
+					"/about/what-we-do/our-programmes/commissioning-support-programme/working-with-us",
+				destination: "/what-nice-does",
+				permanent: true,
+			},
+			{
+				source:
+					"/about/nice-communities/social-care/quick-guides/getting-help-to-overcome-abuse",
+				destination:
+					"/implementing-nice-guidance/social-care/quick-guides-to-social-care-topics",
+				permanent: true,
+			},
+			{
+				source:
+					"/about/nice-communities/social-care/quick-guides/person-centred-future-planning",
+				destination:
+					"/implementing-nice-guidance/social-care/quick-guides-to-social-care-topics",
+				permanent: true,
+			},
+			{
+				source:
+					"/about/what-we-do/life-sciences/scientific-advice/set-scientific-advice-process",
+				destination:
+					"/what-nice-does/life-sciences-how-to-get-your-product-to-market/nice-advice-service",
+				permanent: true,
+			},
+			{
+				source:
+					"/about/what-we-do/life-sciences/scientific-advice/nice-cadth-scientific-advice",
+				destination:
+					"/what-nice-does/life-sciences-how-to-get-your-product-to-market/nice-advice-service",
+				permanent: true,
+			},
+			{
+				source:
+					"/about/what-we-do/our-programmes/commissioning-support-programme/our-documents",
+				destination: "/what-nice-does",
+				permanent: true,
+			},
+			{
+				source:
+					"/about/nice-communities/social-care/quick-guides/helping-to-prevent-infection",
+				destination:
+					"/implementing-nice-guidance/social-care/quick-guides-to-social-care-topics",
+				permanent: true,
+			},
+			{
+				source:
+					"/about/what-we-do/life-sciences/scientific-advice/nice-mhra-scientific-advice",
+				destination:
+					"/what-nice-does/life-sciences-how-to-get-your-product-to-market/nice-advice-service",
+				permanent: true,
+			},
+			{
+				source:
+					"/about/what-we-do/our-programmes/nice-advice/evidence-summaries-new-medicines",
+				destination:
+					"/what-nice-does/life-sciences-how-to-get-your-product-to-market/nice-advice-service",
+				permanent: true,
+			},
+			{
+				source:
+					"/about/nice-communities/nice-and-the-public/public-involvement/involving-you",
+				destination:
+					"/get-involved/people-and-communities/involving-you-in-the-development-of-our-guidance",
+				permanent: true,
+			},
+			{
+				source:
+					"/about/what-we-do/life-sciences/scientific-advice/frequently-asked-questions",
+				destination:
+					"/what-nice-does/life-sciences-how-to-get-your-product-to-market/nice-advice-service",
+				permanent: true,
+			},
+			{
+				source:
+					"/about/what-we-do/our-programmes/nice-guidance/types-of-nice-recommendation",
+				destination:
+					"/what-nice-does/our-guidance/types-of-recommendation-nice-can-make",
+				permanent: true,
+			},
+			{
+				source:
+					"/about/what-we-do/evidence-services/evidence-search/evidence-search-content",
+				destination: "/what-nice-does",
+				permanent: true,
+			},
+			{
+				source:
+					"/about/what-we-do/life-sciences/scientific-advice/express-scientific-advice",
+				destination: "/about/what-we-do/life-sciences/nice-advice-service",
+				permanent: true,
+			},
+			{
+				source:
+					"/about/nice-communities/social-care/quick-guides/giving-medicines-covertly",
+				destination:
+					"/implementing-nice-guidance/social-care/quick-guides-to-social-care-topics",
+				permanent: true,
+			},
+			{
+				source:
+					"/about/what-we-do/our-programmes/nice-advice/medtech-innovation-briefings",
+				destination:
+					"/what-nice-does/our-guidance/about-medical-technologies-guidance/medtech-innovation-briefings",
+				permanent: true,
+			},
+			{
+				source:
+					"/about/what-we-do/life-sciences/scientific-advice/devices-and-diagnostics",
+				destination:
+					"/what-nice-does/life-sciences-how-to-get-your-product-to-market/nice-advice-service",
+				permanent: true,
+			},
+			{
+				source:
+					"/about/what-we-do/life-sciences/scientific-advice/light-scientific-advice",
+				destination:
+					"/what-nice-does/life-sciences-how-to-get-your-product-to-market/nice-advice-service",
+				permanent: true,
+			},
+			{
+				source:
+					"/about/what-we-do/life-sciences/scientific-advice/pharmaceutical-products",
+				destination:
+					"/what-nice-does/life-sciences-how-to-get-your-product-to-market/nice-advice-service",
+				permanent: true,
+			},
+			{
+				source:
+					"/about/what-we-do/our-programmes/commissioning-support-programme/our-work",
+				destination: "/what-nice-does",
+				permanent: true,
+			},
+			{
+				source:
+					"/About/What-we-do/Our-Programmes/NICE-guidance/NICE-diagnostics-guidance",
+				destination: "/what-nice-does/our-guidance/about-diagnostics-guidance",
+				permanent: true,
+			},
+			{
+				source:
+					"/about/what-we-do/life-sciences/scientific-advice/education-and-training",
+				destination:
+					"/what-nice-does/life-sciences-how-to-get-your-product-to-market/nice-advice-service",
+				permanent: true,
+			},
+			{
+				source:
+					"/about/what-we-do/our-programmes/nice-guidance/chte-methods-consultation",
+				destination:
+					"/what-nice-does/our-guidance/about-technology-appraisal-guidance",
+				permanent: true,
+			},
+			{
+				source:
+					"/about/nice-communities/social-care/quick-guides/advance-care-planning",
+				destination:
+					"/implementing-nice-guidance/social-care/quick-guides-to-social-care-topics",
+				permanent: true,
+			},
+			{
+				source:
+					"/about/what-we-do/evidence-services/journals-and-databases/OpenAthens",
+				destination: "/library-and-knowledge-services/openathens",
+				permanent: true,
+			},
+			{
+				source:
+					"/about/what-we-do/evidence-services/evidence-search/how-to-search",
+				destination: "/what-nice-does",
+				permanent: true,
+			},
+			{
+				source:
+					"/about/what-we-do/life-sciences/scientific-advice/medtech-advice",
+				destination:
+					"/what-nice-does/life-sciences-how-to-get-your-product-to-market/nice-advice-service",
+				permanent: true,
+			},
+			{
+				source:
+					"/about/what-we-do/our-programmes/nice-advice/evidence-summaries",
+				destination: "/what-nice-does/our-guidance/about-evidence-summaries",
+				permanent: true,
+			},
+			{
+				source:
+					"/about/what-we-do/our-programmes/nice-guidance/modular-updates",
+				destination: "/what-nice-does/our-guidance/modular-updates",
+				permanent: true,
+			},
+			{
+				source:
+					"/about/what-we-do/our-programmes/nice-guidance/nice-guidelines",
+				destination: "/what-nice-does/our-guidance/about-nice-guidelines",
+				permanent: true,
+			},
+			{
+				source:
+					"/about/what-we-do/life-sciences/scientific-advice/case-studies",
+				destination:
+					"/what-nice-does/life-sciences-how-to-get-your-product-to-market/nice-advice-service",
+				permanent: true,
+			},
+			{
+				source: "/about/what-we-do/life-sciences/scientific-advice/prima",
+				destination:
+					"/what-nice-does/life-sciences-how-to-get-your-product-to-market/nice-advice-service",
+				permanent: true,
+			},
+			{
+				source:
+					"/about/who-we-are/corporate-publications/health-technology-evaluation-at-nice--what-happens-after-the-transition-period",
+				destination:
+					"/what-nice-does/our-guidance/Prioritising-our-guidance-topics",
+				permanent: true,
+			},
+			{
+				source:
+					"/about/what-we-do/into-practice/mapping-nice-guidelines-to-the-care-quality-commission-s-single-assessment-framework",
+				destination:
+					"/implementing-nice-guidance/cost-saving-resource-planning-and-audit/mapping-nice-guidelines-to-the-cqc-s-single-assessment-framework",
+				permanent: true,
+			},
+			{
+				source:
+					"/get-involved/meetings-in-public/quality-standards-advisory-committee/quality-standards-advisory-committee-members",
+				destination:
+					"/get-involved/our-committees/nice-committee-meetings/quality-standards-advisory-committee/quality-standards-advisory-committee-members",
+				permanent: true,
+			},
+			{
+				source:
+					"/about/what-we-do/patient-access-schemes-liaison-unit/list-of-technologies-with-approved-patient-access-schemes",
+				destination: "/what-nice-does/commercial-liaison-team",
+				permanent: true,
+			},
+			{
+				source:
+					"/get-involved/meetings-in-public/public-board-meetings/public-board-meeting-agenda-and-papers--september-2024",
+				destination:
+					"/about-us/our-board/public-board-meetings/2024/public-board-meetings-agenda-and-papers-september-2024",
+				permanent: true,
+			},
+			{
+				source:
+					"/get-involved/meetings-in-public/public-board-meetings/public-board-meeting-agenda-and-papers-september-2023",
+				destination:
+					"/about-us/our-board/public-board-meetings/2023/public-board-meeting-agenda-and-papers-september-2023",
+				permanent: true,
+			},
+			{
+				source:
+					"/get-involved/meetings-in-public/public-board-meetings/public-board-meeting-agenda-and-papers-december-2023",
+				destination:
+					"/about-us/our-board/public-board-meetings/2023/public-board-meeting-agenda-and-papers-december-2023",
+				permanent: true,
+			},
+			{
+				source:
+					"/get-involved/meetings-in-public/public-board-meetings/public-board-meeting-agenda-and-papers--july-2022",
+				destination:
+					"/about-us/our-board/public-board-meetings/2022/public-board-meeting-agenda-and-papers-july-2022",
+				permanent: true,
+			},
+			{
+				source:
+					"/get-involved/meetings-in-public/public-board-meetings/public-board-meeting-agenda-and-papers--july-2023",
+				destination:
+					"/about-us/our-board/public-board-meetings/2023/public-board-meeting-agenda-and-papers-july-2023",
+				permanent: true,
+			},
+			{
+				source:
+					"/get-involved/meetings-in-public/public-board-meetings/public-board-meeting-agenda-and-papers--july-2024",
+				destination:
+					"/about-us/our-board/public-board-meetings/2024/public-board-meeting-agenda-and-papers-july-2024",
+				permanent: true,
+			},
+			{
+				source:
+					"/about/what-we-do/research-and-development/research-recommendations/:slug*",
+				destination:
+					"/about/what-we-do/science-policy-research/research-recommendations",
+				permanent: true,
+			},
+			{
+				source:
+					"/about/what-we-do/digital-health/multi-agency-advisory-service-for-ai-and-data-driven-technologies",
+				destination:
+					"/what-nice-does/digital-health/artificial-intelligence-ai-and-digital-regulations-service",
+				permanent: true,
+			},
+			{
+				source:
+					"/Get-Involved/Meetings-in-public/Highly-Specialised-Technologies-Evaluation-Committee/Members",
+				destination:
+					"/get-involved/our-committees/nice-committee-meetings/highly-specialised-technologies-evaluation-committee/highly-specialised-technologies-evaluation-committee-members",
+				permanent: true,
+			},
+			{
+				source:
+					"/about/nice-communities/library-and-knowledge-services-staff/buy-books-journals-and-databases",
+				destination:
+					"/library-and-knowledge-services/buy-books-journals-and-databases",
+				permanent: true,
+			},
+			{
+				source:
+					"/about/what-we-do/life-sciences/our-role-in-the-innovative-licensing-and-access-pathway--ilap",
+				destination:
+					"/what-nice-does/life-sciences-how-to-get-your-product-to-market/our-role-in-the-innovative-licensing-and-access-pathway-ilap",
+				permanent: true,
+			},
+			{
+				source:
+					"/about/what-we-do/our-programmes/evidence-standards-framework-for-digital-health-technologies",
+				destination:
+					"/what-nice-does/digital-health/evidence-standards-framework-esf-for-digital-health-technologies",
+				permanent: true,
+			},
+			{
+				source:
+					"/about/what-we-do/our-research-work/use-of-ai-in-evidence-generation--nice-position-statement",
+				destination:
+					"/position-statements/use-of-ai-in-evidence-generation-nice-position-statement",
+				permanent: true,
+			},
+			{
+				source:
+					"/about/what-we-do/office-for-market-access/identify-the-most-appropriate-routes-to-nhs-access",
+				destination:
+					"/what-nice-does/life-sciences-how-to-get-your-product-to-market/nice-advice-service",
+				permanent: true,
+			},
+			{
+				source:
+					"/about/what-we-do/our-research-work/partnering-with-us-for-research---timescales-and-process",
+				destination:
+					"/what-nice-does/our-research-work/partnering-with-us-for-research-timescales-and-process",
+				permanent: true,
+			},
+			{
+				source:
+					"/about/what-we-do/office-for-market-access/changing-healthcare-landscape-and-your-technology",
+				destination:
+					"/what-nice-does/life-sciences-how-to-get-your-product-to-market/nice-advice-service",
+				permanent: true,
+			},
+			{
+				source:
+					"/about/nice-communities/medicines-and-prescribing/nice-medicines-and-prescribing-associates",
+				destination:
+					"/implementing-nice-guidance/implementation-help-and-advice/nice-medicines-and-prescribing-associates",
+				permanent: true,
+			},
+			{
+				source:
+					"/about/what-we-do/evidence-services/evidence-search-process-and-methods-manual-consultation",
+				destination: "/what-nice-does/",
+				permanent: true,
+			},
+			{
+				source:
+					"/about/nice-communities/library-and-knowledge-services-staff/resources-for-administrators",
+				destination: "https://library.hee.nhs.uk/resources/openathens",
+				permanent: true,
+			},
+			{
+				source:
+					"/about/who-we-are/corporate-publications/modern-slavery-and-human-trafficking-statement",
+				destination:
+					"/about-us/policies-procedures-and-reports/modern-slavery-and-human-trafficking-statement",
+				permanent: true,
+			},
+			{
+				source:
+					"/Get-Involved/Meetings-in-public/Interventional-Procedures-Advisory-Committee/Members",
+				destination:
+					"/get-involved/our-committees/nice-committee-meetings/interventional-procedures-advisory-committee/interventional-procedures-advisory-committee-members",
+				permanent: true,
+			},
+			{
+				source:
 					"/about/who-we-are/corporate-publications/appraisal-methodology-for-records-1999-2013",
 				destination:
 					"/about-us/policies-procedures-and-reports/appraisal-methodology-for-records-1999-2013",
+				permanent: true,
+			},
+			{
+				source:
+					"/about/nice-communities/public-involvement/bursary-scheme-for-nice-annual-conference",
+				destination: "/what-nice-does",
+				permanent: true,
+			},
+			{
+				source:
+					"/about/what-we-do/nice-syndication-api/syndication-case-study-elseviers-clinical-key",
+				destination: "/reusing-our-content/nice-syndication-api",
 				permanent: true,
 			},
 			{
@@ -945,13 +1548,6 @@ const nextConfig = {
 			},
 			{
 				source:
-					"/about/nice-communities/social-care/quick-guides/helping-to-prevent-pressure-ulcers",
-				destination:
-					"/implementing-nice-guidance/social-care/quick-guides-to-social-care-topics",
-				permanent: true,
-			},
-			{
-				source:
 					"/get-involved/meetings-in-public/public-board-meetings/agenda-and-papers-march-2024",
 				destination: "/about-us/our-board/public-board-meetings/2024",
 				permanent: true,
@@ -965,16 +1561,16 @@ const nextConfig = {
 			},
 			{
 				source:
-					"/about/nice-communities/social-care/quick-guides/better-home-care-for-older-people",
+					"/get-involved/meetings-in-public/quality-standards-advisory-committee/qsac2-members",
 				destination:
-					"/implementing-nice-guidance/social-care/quick-guides-to-social-care-topics",
+					"/get-involved/our-committees/nice-committee-meetings/quality-standards-advisory-committee/quality-standards-advisory-committee-members",
 				permanent: true,
 			},
 			{
 				source:
-					"/about/what-we-do/supporting-the-health-and-care-system-to-implement-virtual-wards",
+					"/get-involved/meetings-in-public/quality-standards-advisory-committee/qsac3-members",
 				destination:
-					"/implementing-nice-guidance/cost-saving-resource-planning-and-audit/supporting-the-health-care-system-to-implement-virtual-wards",
+					"/get-involved/our-committees/nice-committee-meetings/quality-standards-advisory-committee/quality-standards-advisory-committee-members",
 				permanent: true,
 			},
 			{
@@ -994,8 +1590,7 @@ const nextConfig = {
 			{
 				source:
 					"/get-involved/our-committees/what-lay-members-do/lay-member-payments-and-expenses",
-				destination:
-					"/get-involved/our-committees/your-role-as-a-nice-committee-member",
+				destination: "/get-involved/our-committees",
 				permanent: true,
 			},
 			{
@@ -1007,20 +1602,6 @@ const nextConfig = {
 			},
 			{
 				source:
-					"/about/nice-communities/social-care/quick-guides/creating-a-safeguarding-culture",
-				destination:
-					"/implementing-nice-guidance/social-care/quick-guides-to-social-care-topics",
-				permanent: true,
-			},
-			{
-				source:
-					"/about/nice-communities/social-care/quick-guides/understanding-intermediate-care",
-				destination:
-					"/implementing-nice-guidance/social-care/quick-guides-to-social-care-topics",
-				permanent: true,
-			},
-			{
-				source:
 					"/about/nice-communities/social-care/using-nice-guidance-principal-social-workers",
 				destination:
 					"/implementing-nice-guidance/social-care/using-nice-guidance-in-social-work-scenarios/families-and-relationships-settings/developing-relationships-with-parents",
@@ -1028,16 +1609,9 @@ const nextConfig = {
 			},
 			{
 				source:
-					"/about/nice-communities/social-care/quick-guides/getting-help-to-overcome-abuse",
+					"/about/nice-communities/public-involvement/patient-and-public-involvement-policy",
 				destination:
-					"/implementing-nice-guidance/social-care/quick-guides-to-social-care-topics",
-				permanent: true,
-			},
-			{
-				source:
-					"/about/nice-communities/social-care/quick-guides/person-centred-future-planning",
-				destination:
-					"/implementing-nice-guidance/social-care/quick-guides-to-social-care-topics",
+					"/get-involved/people-and-communities/patient-and-public-involvement-policy",
 				permanent: true,
 			},
 			{
@@ -1061,23 +1635,21 @@ const nextConfig = {
 			},
 			{
 				source:
+					"/about/nice-communities/library-and-knowledge-services-staff/training-materials",
+				destination: "https://library.hee.nhs.uk/resources/openathens",
+				permanent: true,
+			},
+			{
+				source:
 					"/get-involved/our-committees/join-a-committee/how-to-apply-to-join-a-committee",
-				destination:
-					"/get-involved/our-committees/your-role-as-a-nice-committee-member",
+				destination: "/get-involved/our-committees",
 				permanent: true,
 			},
 			{
 				source:
-					"/Get-Involved/Meetings-in-public/Interventional-Procedures-Advisory-Committee",
+					"/about/what-we-do/scientific-advice/european-early-dialogues-scientific-advice",
 				destination:
-					"/get-involved/our-committees/nice-committee-meetings/interventional-procedures-advisory-committee",
-				permanent: true,
-			},
-			{
-				source:
-					"/about/nice-communities/social-care/quick-guides/helping-to-prevent-infection",
-				destination:
-					"/implementing-nice-guidance/social-care/quick-guides-to-social-care-topics",
+					"/what-nice-does/life-sciences-how-to-get-your-product-to-market/nice-advice-service",
 				permanent: true,
 			},
 			{
@@ -1110,64 +1682,29 @@ const nextConfig = {
 			},
 			{
 				source:
-					"/about/nice-communities/nice-and-the-public/public-involvement/involving-you",
+					"/about/what-we-do/office-for-market-access/early-access-to-medicines-scheme",
 				destination:
-					"/get-involved/people-and-communities/involving-you-in-the-development-of-our-guidance",
+					"/what-nice-does/life-sciences-how-to-get-your-product-to-market/nice-advice-service",
 				permanent: true,
 			},
 			{
 				source:
-					"/about/what-we-do/evidence-services/journals-and-databases/openathens/access",
+					"/about/what-we-do/office-for-market-access/exploring-your-value-proposition",
 				destination:
-					"/library-and-knowledge-services/openathens/openathens-access",
+					"/what-nice-does/life-sciences-how-to-get-your-product-to-market/nice-advice-service",
 				permanent: true,
 			},
 			{
 				source:
-					"/about/who-we-are/board-executive-team-and-senior-leaders-interests-register",
+					"/about/what-we-do/office-for-market-access/safe-harbour-engagement-meetings",
 				destination:
-					"/about-us/our-board/board-executive-team-and-senior-leaders-interests-register",
-				permanent: true,
-			},
-			{
-				source:
-					"/standards-and-indicators/selecting-and-prioritising-quality-standard-topics",
-				destination:
-					"/what-nice-does/standards-and-indicators/quality-standards/selecting-and-prioritising-quality-standard-topics",
-				permanent: true,
-			},
-			{
-				source:
-					"/about/what-we-do/our-programmes/nice-guidance/types-of-nice-recommendation",
-				destination:
-					"/what-nice-does/our-guidance/types-of-recommendation-nice-can-make",
-				permanent: true,
-			},
-			{
-				source:
-					"/get-involved/study-nice-and-lse-s-executive-msc-healthcare-decision-making",
-				destination:
-					"/get-involved/nice-training-and-development-opportunities/study-nice-and-lse-s-executive-msc-healthcare-decision-making",
-				permanent: true,
-			},
-			{
-				source:
-					"/about/nice-communities/social-care/quick-guides/giving-medicines-covertly",
-				destination:
-					"/implementing-nice-guidance/social-care/quick-guides-to-social-care-topics",
+					"/what-nice-does/life-sciences-how-to-get-your-product-to-market/nice-advice-service",
 				permanent: true,
 			},
 			{
 				source:
 					"/about/what-we-do/into-practice/resources-help-put-guidance-into-practice",
 				destination: "/implementing-nice-guidance/into-practice-resources",
-				permanent: true,
-			},
-			{
-				source:
-					"/about/what-we-do/our-programmes/nice-advice/medtech-innovation-briefings",
-				destination:
-					"/what-nice-does/our-guidance/about-medical-technologies-guidance/medtech-innovation-briefings",
 				permanent: true,
 			},
 			{
@@ -1179,22 +1716,14 @@ const nextConfig = {
 			},
 			{
 				source:
-					"/get-involved/register-as-a-stakeholder/who-can-register-as-a-stakeholder",
-				destination:
-					"/get-involved/register-your-organisation-as-a-stakeholder/who-can-register-as-a-stakeholder",
+					"/about/nice-communities/public-involvement/putting-guidance-into-practice",
+				destination: "/get-involved/people-and-communities",
 				permanent: true,
 			},
 			{
 				source:
-					"/About/What-we-do/Our-Programmes/NICE-guidance/NICE-diagnostics-guidance",
-				destination: "/what-nice-does/our-guidance/about-diagnostics-guidance",
-				permanent: true,
-			},
-			{
-				source:
-					"/Get-Involved/Meetings-in-public/Medical-Technologies-Advisory-Committee",
-				destination:
-					"/get-involved/our-committees/nice-committee-meetings/medical-technologies-advisory-committee",
+					"/about/what-we-do/our-programmes/our-endorsement-programme-has-now-closed",
+				destination: "/what-nice-does",
 				permanent: true,
 			},
 			{
@@ -1213,9 +1742,8 @@ const nextConfig = {
 			},
 			{
 				source:
-					"/about/nice-communities/social-care/quick-guides/advance-care-planning",
-				destination:
-					"/implementing-nice-guidance/social-care/quick-guides-to-social-care-topics",
+					"/about/nice-communities/public-involvement/public-involvement-programme",
+				destination: "/get-involved/people-and-communities",
 				permanent: true,
 			},
 			{
@@ -1227,15 +1755,9 @@ const nextConfig = {
 			},
 			{
 				source:
-					"/Get-Involved/Meetings-in-public/Quality-Standards-Advisory-Committee",
+					"/about/what-we-do/into-practice/health-technologies-adoption-programme",
 				destination:
-					"/get-involved/our-committees/nice-committee-meetings/quality-standards-advisory-committee",
-				permanent: true,
-			},
-			{
-				source:
-					"/about/what-we-do/evidence-services/journals-and-databases/OpenAthens",
-				destination: "/library-and-knowledge-services/openathens",
+					"/implementing-nice-guidance/implementation-help-and-advice/adoption-and-implementation-support",
 				permanent: true,
 			},
 			{
@@ -1243,6 +1765,463 @@ const nextConfig = {
 					"/about/what-we-do/into-practice/measuring-the-uptake-of-nice-guidance",
 				destination:
 					"/implementing-nice-guidance/measuring-the-use-of-nice-guidance",
+				permanent: true,
+			},
+			{
+				source:
+					"/about/what-we-do/into-practice/measuring-the-impact-of-nice-guidance",
+				destination:
+					"/implementing-nice-guidance/measuring-the-use-of-NICE-guidance",
+				permanent: true,
+			},
+			{
+				source:
+					"/about/what-we-do/our-programmes/savings-and-productivity-collection",
+				destination:
+					"/implementing-nice-guidance/cost-saving-resource-planning-and-audit/resource-planner",
+				permanent: true,
+			},
+			{
+				source:
+					"/about/nice-communities/social-care/social-care-trainers-resource",
+				destination:
+					"/implementing-nice-guidance/social-care/social-care-trainers-resource",
+				permanent: true,
+			},
+			{
+				source:
+					"/about/what-we-do/our-research-work/methodological-research-areas",
+				destination: "/what-nice-does/our-research-work/methods-research-areas",
+				permanent: true,
+			},
+			{
+				source:
+					"/about/what-we-do/into-practice/health-technologies-adoption-team",
+				destination:
+					"/implementing-nice-guidance/implementation-help-and-advice/adoption-and-implementation-support",
+				permanent: true,
+			},
+			{
+				source:
+					"/about/what-we-do/nice-syndication-api/apply-for-nice-syndication",
+				destination: "/reusing-our-content/nice-syndication-api",
+				permanent: true,
+			},
+			{
+				source:
+					"/About/What-we-do/Evidence-Services/Clinical-knowledge-summaries",
+				destination: "https://cks.nice.org.uk/",
+				permanent: true,
+			},
+			{
+				source:
+					"/about/nice-communities/social-care/child-abuse-neglect-guidance",
+				destination:
+					"/implementing-nice-guidance/social-care/child-abuse-and-neglect-guidance",
+				permanent: true,
+			},
+			{
+				source:
+					"/about/nice-communities/social-care/quality-improvement-resource",
+				destination:
+					"/implementing-nice-guidance/social-care/quality-improvement-resource-for-adult-social-care",
+				permanent: true,
+			},
+			{
+				source:
+					"/about/what-we-do/nice-international/knowledge-transfer-seminars",
+				destination:
+					"/what-nice-does/nice-international/knowledge-transfer-seminars",
+				permanent: true,
+			},
+			{
+				source:
+					"/about/nice-communities/public-involvement/develop-nice-guidance",
+				destination:
+					"/get-involved/people-and-communities/getting-involved-as-a-voluntary-and-community-sector-organisation/how-voluntary-and-community-sector-organisations-can-help-us-develop-guidance",
+				permanent: true,
+			},
+			{
+				source:
+					"/about/what-we-do/accreditation/whats-happening-in-accreditation",
+				destination: "/what-nice-does",
+				permanent: true,
+			},
+			{
+				source:
+					"/about/what-we-do/our-programmes/commissioning-support-programme",
+				destination: "/what-nice-does",
+				permanent: true,
+			},
+			{
+				source:
+					"/about/what-we-do/our-programmes/cost-savings-resource-planning",
+				destination:
+					"/implementing-nice-guidance/cost-saving-resource-planning-and-audit",
+				permanent: true,
+			},
+			{
+				source:
+					"/about/what-we-do/scientific-advice/nice-mhra-scientific-advice",
+				destination:
+					"/what-nice-does/life-sciences-how-to-get-your-product-to-market/nice-advice-service",
+				permanent: true,
+			},
+			{
+				source:
+					"/About/Who-we-are/Policies-and-procedures/NICE-equality-scheme",
+				destination:
+					"/about-us/policies-procedures-and-reports/edi-roadmap-and-annual-action-plan",
+				permanent: true,
+			},
+			{
+				source:
+					"/about/nice-communities/nice-and-the-public/public-involvement",
+				destination: "/get-involved/people-and-communities",
+				permanent: true,
+			},
+			{
+				source:
+					"/about/who-we-are/corporate-publications/gender-pay-gap-report",
+				destination:
+					"/about-us/policies-procedures-and-reports/gender-pay-gap-report",
+				permanent: true,
+			},
+			{
+				source:
+					"/about/who-we-are/corporate-publications/transparency-of-spend",
+				destination:
+					"/about-us/policies-procedures-and-reports/transparency-of-spend",
+				permanent: true,
+			},
+			{
+				source:
+					"/about/what-we-do/scientific-advice/frequently-asked-questions",
+				destination:
+					"/what-nice-does/life-sciences-how-to-get-your-product-to-market/nice-advice-service",
+				permanent: true,
+			},
+			{
+				source: "/about/what-we-do/nice-international/about-nice-international",
+				destination:
+					"/what-nice-does/nice-international/about-nice-international",
+				permanent: true,
+			},
+			{
+				source: "/about/what-we-do/nice-international/adapting-nice-guidelines",
+				destination:
+					"/what-nice-does/nice-international/adapting-nice-guidelines",
+				permanent: true,
+			},
+			{
+				source: "/about/what-we-do/our-research-work/our-projects-and-partners",
+				destination:
+					"/what-nice-does/our-research-work/our-projects-and-partners",
+				permanent: true,
+			},
+			{
+				source: "/about/what-we-do/into-practice/help-implement-nice-guidance",
+				destination: "/get-involved/help-implement-nice-guidance",
+				permanent: true,
+			},
+			{
+				source: "/about/what-we-do/nice-international/nice-international-team",
+				destination: "/what-nice-does/nice-international",
+				permanent: true,
+			},
+			{
+				source: "/About/What-we-do/International-services/knowledge-transfer",
+				destination: "/what-nice-does/nice-international",
+				permanent: true,
+			},
+			{
+				source: "/about/what-we-do/into-practice/local-practice-case-studies",
+				destination: "/what-nice-does",
+				permanent: true,
+			},
+			{
+				source: "/about/what-we-do/scientific-advice/light-scientific-advice",
+				destination:
+					"/what-nice-does/life-sciences-how-to-get-your-product-to-market/nice-advice-service",
+				permanent: true,
+			},
+			{
+				source: "/about/what-we-do/into-practice/implementing-nice-guidance",
+				destination: "/implementing-nice-guidance",
+				permanent: true,
+			},
+			{
+				source: "/About/What-we-do/Evidence-Services/journals-and-databases",
+				destination: "/library-and-knowledge-services",
+				permanent: true,
+			},
+			{
+				source: "/about/what-we-do/digital-health/office-for-digital-health",
+				destination: "/what-nice-does/digital-health/office-for-digital-health",
+				permanent: true,
+			},
+			{
+				source: "/about/what-we-do/into-practice/resource-impact-assessment",
+				destination:
+					"/implementing-nice-guidance/cost-saving-resource-planning-and-audit/assessing-the-resource-impact-of-nice-guidance",
+				permanent: true,
+			},
+			{
+				source: "/about/what-we-do/our-programmes/local-practice-collection",
+				destination: "/what-nice-does",
+				permanent: true,
+			},
+			{
+				source: "/about/what-we-do/nice-international/consultancy-services",
+				destination: "/what-nice-does/nice-international/consultancy-services",
+				permanent: true,
+			},
+			{
+				source: "/about/what-we-do/nice-international/speaking-engagements",
+				destination: "/what-nice-does/nice-international/speaking-engagements",
+				permanent: true,
+			},
+			{
+				source: "/about/who-we-are/executive-team/executive-team-meetings",
+				destination: "/about-us/executive-team/executive-team",
+				permanent: true,
+			},
+			{
+				source: "/about/what-we-do/life-sciences/office-for-market-access",
+				destination:
+					"/what-nice-does/life-sciences-how-to-get-your-product-to-market/nice-advice-service",
+				permanent: true,
+			},
+			{
+				source: "/about/nice-communities/generalpractice/reference-panel",
+				destination: "/forms/subscribe-to-our-gp-reference-panel",
+				permanent: true,
+			},
+			{
+				source: "/about/what-we-do/accreditation/accreditation-decisions",
+				destination: "/what-nice-does",
+				permanent: true,
+			},
+			{
+				source: "/about/what-we-do/into-practice/commissioning-support",
+				destination:
+					"/implementing-nice-guidance/cost-saving-resource-planning-and-audit/assessing-the-resource-impact-of-nice-guidance",
+				permanent: true,
+			},
+			{
+				source: "/about/what-we-do/our-research-work/hta-lab-projects",
+				destination:
+					"/what-nice-does/our-research-work/hta-lab/hta-lab-projects",
+				permanent: true,
+			},
+			{
+				source: "/about/nice-communities/public-involvement/your-care",
+				destination: "/what-nice-does",
+				permanent: true,
+			},
+			{
+				source: "/about/what-we-do/life-sciences/life-sciences-tools",
+				destination:
+					"/what-nice-does/life-sciences-how-to-get-your-product-to-market/tools-for-building-or-evaluating-an-evidence-base",
+				permanent: true,
+			},
+			{
+				source: "/about/what-we-do/life-sciences/nice-advice-service",
+				destination:
+					"/what-nice-does/life-sciences-how-to-get-your-product-to-market/nice-advice-service",
+				permanent: true,
+			},
+			{
+				source: "/about/what-we-do/evidence-services/evidence-search",
+				destination: "/what-nice-does",
+				permanent: true,
+			},
+			{
+				source: "/about/what-we-do/into-practice/into-practice-guide",
+				destination: "/what-nice-does",
+				permanent: true,
+			},
+			{
+				source: "/about/what-we-do/commercial-liaison-team/services",
+				destination:
+					"/what-nice-does/patient-access-schemes-and-pricing-agreements/services",
+				permanent: true,
+			},
+			{
+				source: "/about/what-we-do/life-sciences/scientific-advice",
+				destination:
+					"/what-nice-does/life-sciences-how-to-get-your-product-to-market/nice-advice-service",
+				permanent: true,
+			},
+			{
+				source: "/about/nice-communities/social-care/quick-guides",
+				destination:
+					"/implementing-nice-guidance/social-care/quick-guides-to-social-care-topics",
+				permanent: true,
+			},
+			{
+				source: "/about/what-we-do/into-practice/resource-planner",
+				destination:
+					"/implementing-nice-guidance/cost-saving-resource-planning-and-audit/resource-planner",
+				permanent: true,
+			},
+			{
+				source: "/about/what-we-do/our-research-work/nice-listens",
+				destination: "/what-nice-does/our-research-work/nice-listens",
+				permanent: true,
+			},
+			{
+				source: "/about/what-we-do/our-programmes/topic-selection",
+				destination: "/guidance/topic-selection",
+				permanent: true,
+			},
+			{
+				source: "/about/what-we-do/our-research-work/get-in-touch",
+				destination: "/what-nice-does/our-research-work",
+				permanent: true,
+			},
+			{
+				source: "/about/what-we-do/into-practice/nice-field-team",
+				destination:
+					"/implementing-nice-guidance/implementation-help-and-advice/helping-you-put-our-guidance-into-practice",
+				permanent: true,
+			},
+			{
+				source: "/about/what-we-do/our-programmes/managed-access",
+				destination:
+					"/what-nice-does/patient-access-schemes-and-pricing-agreements/managed-access",
+				permanent: true,
+			},
+			{
+				source: "/about/what-we-do/our-programmes/patient-safety",
+				destination: "/patient-safety",
+				permanent: true,
+			},
+			{
+				source: "/about/what-we-do/into-practice/forward-planner",
+				destination:
+					"/implementing-nice-guidance/cost-saving-resource-planning-and-audit/resource-planner",
+				permanent: true,
+			},
+			{
+				source: "/about/what-we-do/life-sciences/contact-us-form",
+				destination: "/forms/life-sciences-contact-us",
+				permanent: true,
+			},
+			{
+				source: "/about/what-we-do/our-programmes/nice-guidance",
+				destination: "/what-nice-does/our-guidance",
+				permanent: true,
+			},
+			{
+				source: "/about/what-we-do/nice-syndication-api/content",
+				destination: "/reusing-our-content/nice-syndication-api",
+				permanent: true,
+			},
+			{
+				source: "/about/what-we-do/into-practice/adoption-team",
+				destination:
+					"/implementing-nice-guidance/implementation-help-and-advice/adoption-and-implementation-support",
+				permanent: true,
+			},
+			{
+				source: "/about/what-we-do/our-programmes/nice-advice",
+				destination: "/guidance/published?ndt=NICE+advice",
+				permanent: true,
+			},
+			{
+				source: "/about/what-we-do/our-research-work/hta-lab",
+				destination: "/what-nice-does/our-research-work/hta-lab",
+				permanent: true,
+			},
+			{
+				source: "/about/what-we-do/into-practice/endorsement",
+				destination: "/what-nice-does",
+				permanent: true,
+			},
+			{
+				source: "/about/who-we-are/board/interests-register",
+				destination:
+					"/about-us/board/board-executive-team-and-senior-leaders-interests-register",
+				permanent: true,
+			},
+			{
+				source: "/about/who-we-are/board/board-committees",
+				destination: "/about-us/our-board/board-committees",
+				permanent: true,
+			},
+			{
+				source:
+					"/standards-and-indicators/qofindicators/the-percentage-of-patients-with-dementia-with-the-contact-details-of-a-named-carer-on-their-record",
+				destination: "/indicators/IND114-dementia-named-carer",
+				permanent: true,
+			},
+			{
+				source: "/About/Who-we-are/Board/Board-expenses",
+				destination: "/about-us/our-board/board-expenses",
+				permanent: true,
+			},
+			{
+				source:
+					"/standards-and-indicators/qofindicators/the-percentage-of-patients-with-cvd-who-are-currently-treated-with-a-lipid-lowering-therapy",
+				destination:
+					"/indicators/IND230-cardiovascular-disease-prevention-secondary-prevention-with-lipid-lowering-therapies",
+				permanent: true,
+			},
+			{
+				source:
+					"/get-involved/register-your-organisation-as-a-stakeholder/stakeholder-registration--guidelines--quality-standards-and-indicators",
+				destination:
+					"/get-involved/register-your-organisation-as-a-stakeholder/stakeholder-registration-guidelines-quality-standards-and-indicators",
+				permanent: true,
+			},
+			{
+				source:
+					"/Get-Involved/Meetings-in-public/Highly-Specialised-Technologies-Evaluation-Committee",
+				destination:
+					"/get-involved/our-committees/nice-committee-meetings/highly-specialised-technologies-evaluation-committee",
+				permanent: true,
+			},
+			{
+				source:
+					"/about/what-we-do/supporting-the-health-and-care-system-to-implement-virtual-wards",
+				destination:
+					"/implementing-nice-guidance/cost-saving-resource-planning-and-audit/supporting-the-health-care-system-to-implement-virtual-wards",
+				permanent: true,
+			},
+			{
+				source:
+					"/Get-Involved/Meetings-in-public/Interventional-Procedures-Advisory-Committee",
+				destination:
+					"/get-involved/our-committees/nice-committee-meetings/interventional-procedures-advisory-committee",
+				permanent: true,
+			},
+			{
+				source:
+					"/about/who-we-are/board-executive-team-and-senior-leaders-interests-register",
+				destination:
+					"/about-us/our-board/board-executive-team-and-senior-leaders-interests-register",
+				permanent: true,
+			},
+			{
+				source:
+					"/get-involved/register-as-a-stakeholder/who-can-register-as-a-stakeholder",
+				destination:
+					"/get-involved/register-your-organisation-as-a-stakeholder/who-can-register-as-a-stakeholder",
+				permanent: true,
+			},
+			{
+				source:
+					"/Get-Involved/Meetings-in-public/Medical-Technologies-Advisory-Committee",
+				destination:
+					"/get-involved/our-committees/nice-committee-meetings/medical-technologies-advisory-committee",
+				permanent: true,
+			},
+			{
+				source:
+					"/Get-Involved/Meetings-in-public/Quality-Standards-Advisory-Committee",
+				destination:
+					"/get-involved/our-committees/nice-committee-meetings/quality-standards-advisory-committee",
 				permanent: true,
 			},
 			{
@@ -1275,19 +2254,6 @@ const nextConfig = {
 			},
 			{
 				source:
-					"/about/nice-communities/social-care/social-care-trainers-resource",
-				destination:
-					"/implementing-nice-guidance/social-care/social-care-trainers-resource",
-				permanent: true,
-			},
-			{
-				source:
-					"/about/what-we-do/our-research-work/methodological-research-areas",
-				destination: "/what-nice-does/our-research-work/methods-research-areas",
-				permanent: true,
-			},
-			{
-				source:
 					"/about/what-we-do/proportionate-approach-to-technology-appraisals",
 				destination:
 					"/what-nice-does/our-guidance/about-technology-appraisal-guidance/our-methods-and-processes-health-technology-evaluation-manual/taking-a-proportionate-approach-to-technology-appraisals",
@@ -1304,33 +2270,6 @@ const nextConfig = {
 					"/standards-and-indicators/get-involved/support-a-quality-standard",
 				destination:
 					"/get-involved/help-develop-quality-standards/support-a-quality-standard",
-				permanent: true,
-			},
-			{
-				source:
-					"/About/What-we-do/Evidence-Services/Clinical-knowledge-summaries",
-				destination: "https://cks.nice.org.uk/",
-				permanent: true,
-			},
-			{
-				source:
-					"/about/nice-communities/social-care/child-abuse-neglect-guidance",
-				destination:
-					"/implementing-nice-guidance/social-care/child-abuse-and-neglect-guidance",
-				permanent: true,
-			},
-			{
-				source:
-					"/about/nice-communities/social-care/quality-improvement-resource",
-				destination:
-					"/implementing-nice-guidance/social-care/quality-improvement-resource-for-adult-social-care",
-				permanent: true,
-			},
-			{
-				source:
-					"/about/what-we-do/nice-international/knowledge-transfer-seminars",
-				destination:
-					"/what-nice-does/nice-international/knowledge-transfer-seminars",
 				permanent: true,
 			},
 			{
@@ -1356,65 +2295,6 @@ const nextConfig = {
 			},
 			{
 				source:
-					"/about/what-we-do/our-programmes/cost-savings-resource-planning",
-				destination:
-					"/implementing-nice-guidance/cost-saving-resource-planning-and-audit",
-				permanent: true,
-			},
-			{
-				source:
-					"/about/what-we-do/our-programmes/nice-advice/evidence-summaries",
-				destination: "/what-nice-does/our-guidance/about-evidence-summaries",
-				permanent: true,
-			},
-			{
-				source:
-					"/standards-and-indicators/timeline-developing-quality-standards",
-				destination:
-					"/what-nice-does/standards-and-indicators/quality-standards/timeline-for-developing-quality-standards",
-				permanent: true,
-			},
-			{
-				source:
-					"/About/Who-we-are/Policies-and-procedures/NICE-equality-scheme",
-				destination:
-					"/about-us/policies-procedures-and-reports/edi-roadmap-and-annual-action-plan",
-				permanent: true,
-			},
-			{
-				source:
-					"/about/nice-communities/nice-and-the-public/public-involvement",
-				destination: "/get-involved/people-and-communities",
-				permanent: true,
-			},
-			{
-				source:
-					"/about/what-we-do/our-programmes/nice-guidance/modular-updates",
-				destination: "/what-nice-does/our-guidance/modular-updates",
-				permanent: true,
-			},
-			{
-				source:
-					"/about/what-we-do/our-programmes/nice-guidance/nice-guidelines",
-				destination: "/what-nice-does/our-guidance/about-nice-guidelines",
-				permanent: true,
-			},
-			{
-				source:
-					"/about/who-we-are/corporate-publications/gender-pay-gap-report",
-				destination:
-					"/about-us/policies-procedures-and-reports/gender-pay-gap-report",
-				permanent: true,
-			},
-			{
-				source:
-					"/about/who-we-are/corporate-publications/transparency-of-spend",
-				destination:
-					"/about-us/policies-procedures-and-reports/transparency-of-spend",
-				permanent: true,
-			},
-			{
-				source:
 					"/get-involved/jobs/our-benefits--rewards-and-work-life-balance",
 				destination: "/careers/our-benefits-rewards-and-work-life-balance",
 				permanent: true,
@@ -1422,25 +2302,7 @@ const nextConfig = {
 			{
 				source:
 					"/get-involved/our-committees/how-gps-help-develop-our-guidance",
-				destination: "/get-involved/gps-and-primary-care",
-				permanent: true,
-			},
-			{
-				source: "/about/what-we-do/nice-international/about-nice-international",
-				destination:
-					"/what-nice-does/nice-international/about-nice-international",
-				permanent: true,
-			},
-			{
-				source: "/about/what-we-do/nice-international/adapting-nice-guidelines",
-				destination:
-					"/what-nice-does/nice-international/adapting-nice-guidelines",
-				permanent: true,
-			},
-			{
-				source: "/about/what-we-do/our-research-work/our-projects-and-partners",
-				destination:
-					"/what-nice-does/our-research-work/our-projects-and-partners",
+				destination: "/get-involved/our-committees",
 				permanent: true,
 			},
 			{
@@ -1455,68 +2317,20 @@ const nextConfig = {
 				permanent: true,
 			},
 			{
-				source: "/about/what-we-do/into-practice/help-implement-nice-guidance",
-				destination: "/get-involved/help-implement-nice-guidance",
-				permanent: true,
-			},
-			{
-				source: "/About/What-we-do/Evidence-Services/journals-and-databases",
-				destination: "/library-and-knowledge-services",
-				permanent: true,
-			},
-			{
-				source: "/about/what-we-do/digital-health/office-for-digital-health",
-				destination: "/what-nice-does/digital-health/office-for-digital-health",
-				permanent: true,
-			},
-			{
-				source: "/about/what-we-do/into-practice/resource-impact-assessment",
-				destination:
-					"/implementing-nice-guidance/cost-saving-resource-planning-and-audit/assessing-the-resource-impact-of-nice-guidance",
-				permanent: true,
-			},
-			{
 				source: "/about/what-we-do/bringing-our-guidance-together-by-topic",
 				destination:
 					"/what-nice-does/our-guidance/bringing-our-guidance-together-by-topic",
 				permanent: true,
 			},
 			{
-				source: "/about/what-we-do/nice-international/consultancy-services",
-				destination: "/what-nice-does/nice-international/consultancy-services",
-				permanent: true,
-			},
-			{
-				source: "/about/what-we-do/nice-international/speaking-engagements",
-				destination: "/what-nice-does/nice-international/speaking-engagements",
-				permanent: true,
-			},
-			{
 				source: "/get-involved/our-committees/what-professional-members-do",
-				destination:
-					"/get-involved/our-committees/your-role-as-a-nice-committee-member",
-				permanent: true,
-			},
-			{
-				source: "/standards-and-indicators/quality-standards-topic-library",
-				destination:
-					"/what-nice-does/standards-and-indicators/quality-standards/selecting-and-prioritising-quality-standard-topics",
+				destination: "/get-involved/our-committees",
 				permanent: true,
 			},
 			{
 				source: "/Get-Involved/Meetings-in-public/Appeal-panel-membership",
 				destination:
 					"/what-nice-does/our-guidance/about-technology-appraisal-guidance/technology-appraisal-and-highly-specialised-technologies-appeals/appeal-panel-membership",
-				permanent: true,
-			},
-			{
-				source: "/about/who-we-are/executive-team/executive-team-meetings",
-				destination: "/about-us/executive-team/executive-team",
-				permanent: true,
-			},
-			{
-				source: "/about/nice-communities/generalpractice/reference-panel",
-				destination: "/forms/subscribe-to-our-gp-reference-panel",
 				permanent: true,
 			},
 			{
@@ -1531,9 +2345,8 @@ const nextConfig = {
 				permanent: true,
 			},
 			{
-				source: "/standards-and-indicators/how-to-use-quality-standards",
-				destination:
-					"/what-nice-does/standards-and-indicators/quality-standards/how-to-use-quality-standards",
+				source: "/about/what-we-do/patient-access-schemes-liaison-unit",
+				destination: "/what-nice-does/accreditation",
 				permanent: true,
 			},
 			{
@@ -1543,43 +2356,9 @@ const nextConfig = {
 				permanent: true,
 			},
 			{
-				source: "/about/what-we-do/our-research-work/hta-lab",
-				destination: "/what-nice-does/our-research-work/hta-lab",
-				permanent: true,
-			},
-			{
-				source: "/about/what-we-do/our-research-work/hta-lab-projects",
-				destination:
-					"/what-nice-does/our-research-work/hta-lab/hta-lab-projects",
-				permanent: true,
-			},
-			{
-				source: "/terms-and-conditions/cks-end-user-licence-agreement",
-				destination: "/cks-end-user-licence-agreement",
-				permanent: true,
-			},
-			{
 				source: "/about/what-we-do/late-stage-assessment-for-medtech",
 				destination:
 					"/what-nice-does/our-guidance/about-medical-technologies-guidance/late-stage-assessment-lsa-for-medtech",
-				permanent: true,
-			},
-			{
-				source: "/about/what-we-do/life-sciences/life-sciences-tools",
-				destination:
-					"/what-nice-does/life-sciences-how-to-get-your-product-to-market/tools-for-building-or-evaluating-an-evidence-base",
-				permanent: true,
-			},
-			{
-				source: "/about/what-we-do/life-sciences/nice-advice-service",
-				destination:
-					"/what-nice-does/life-sciences-how-to-get-your-product-to-market/nice-advice-service",
-				permanent: true,
-			},
-			{
-				source: "/about/what-we-do/commercial-liaison-team/services",
-				destination:
-					"/what-nice-does/patient-access-schemes-and-pricing-agreements/services",
 				permanent: true,
 			},
 			{
@@ -1594,65 +2373,19 @@ const nextConfig = {
 				permanent: true,
 			},
 			{
-				source: "/about/nice-communities/social-care/quick-guides",
-				destination:
-					"/implementing-nice-guidance/social-care/quick-guides-to-social-care-topics",
-				permanent: true,
-			},
-			{
-				source: "/about/what-we-do/into-practice/resource-planner",
-				destination:
-					"/implementing-nice-guidance/cost-saving-resource-planning-and-audit/resource-planner",
-				permanent: true,
-			},
-			{
-				source: "/about/what-we-do/our-research-work/nice-listens",
-				destination: "/what-nice-does/our-research-work/nice-listens",
-				permanent: true,
-			},
-			{
 				source: "/get-involved/our-committees/what-lay-members-do",
-				destination:
-					"/get-involved/our-committees/your-role-as-a-nice-committee-member",
+				destination: "/get-involved/our-committees",
 				permanent: true,
 			},
 			{
-				source: "/about/what-we-do/into-practice/nice-field-team",
-				destination:
-					"/implementing-nice-guidance/implementation-help-and-advice/helping-you-put-our-guidance-into-practice",
-				permanent: true,
-			},
-			{
-				source: "/about/what-we-do/our-programmes/managed-access",
-				destination:
-					"/what-nice-does/patient-access-schemes-and-pricing-agreements/managed-access",
-				permanent: true,
-			},
-			{
-				source: "/about/what-we-do/our-programmes/patient-safety",
-				destination: "/patient-safety",
-				permanent: true,
-			},
-			{
-				source: "/re-using-our-content/content-assurance-service",
-				destination: "/reusing-our-content/content-assurance-service",
+				source: "/about/what-we-do/real-world-evidence-framework",
+				destination: "/corporate/ecd9/chapter/overview",
 				permanent: true,
 			},
 			{
 				source: "/about/what-we-do/nice-and-health-inequalities",
 				destination:
 					"/implementing-nice-guidance/cost-saving-resource-planning-and-audit/nice-and-health-inequalities",
-				permanent: true,
-			},
-			{
-				source: "/about/what-we-do/our-programmes/nice-guidance",
-				destination: "/what-nice-does/our-guidance",
-				permanent: true,
-			},
-			{
-				source: "/about/what-we-do/into-practice/adoption-team",
-				destination:
-					"/implementing-nice-guidance/implementation-help-and-advice/adoption-and-implementation-support",
 				permanent: true,
 			},
 			{
@@ -1666,24 +2399,45 @@ const nextConfig = {
 				permanent: true,
 			},
 			{
-				source: "/re-using-our-content/uk-open-content-licence",
-				destination: "/forms/use-of-nice-content-in-the-uk-form",
+				source: "/about/nice-communities/general-practitioners",
+				destination:
+					"/implementing-nice-guidance/general-practice-keep-your-practice-up-to-date",
 				permanent: true,
 			},
 			{
-				source: "/standards-and-indicators/quality-standards",
-				destination:
-					"/what-nice-does/standards-and-indicators/quality-standards",
+				source: "/get-involved/our-committees/join-a-committee",
+				destination: "/get-involved/our-committees",
+				permanent: true,
+			},
+			{
+				source: "/get-involved/fellows-and-scholars/scholars",
+				destination: "/get-involved",
 				permanent: true,
 			},
 			{
 				source: "/get-involved/jobs/diversity-and-inclusion",
-				destination: "/careers/diversity-and-inclusion",
+				destination: "/careers",
 				permanent: true,
 			},
 			{
 				source: "/get-involved/jobs/we-care-about-our-staff",
-				destination: "/careers/we-care-about-our-staff",
+				destination: "/careers",
+				permanent: true,
+			},
+			{
+				source: "/about/nice-communities/public-involvement",
+				destination: "/what-nice-does",
+				permanent: true,
+			},
+			{
+				source: "/about/what-we-do/office-for-market-access",
+				destination:
+					"/what-nice-does/life-sciences-how-to-get-your-product-to-market/nice-advice-service",
+				permanent: true,
+			},
+			{
+				source: "/about/what-we-do/research-and-development",
+				destination: "/what-nice-does/our-research-work",
 				permanent: true,
 			},
 			{
@@ -1698,8 +2452,8 @@ const nextConfig = {
 				permanent: true,
 			},
 			{
-				source: "/about/who-we-are/board/board-committees",
-				destination: "/about-us/our-board/board-committees",
+				source: "/about/what-we-do/science-policy-research",
+				destination: "/what-nice-does/our-research-work",
 				permanent: true,
 			},
 			{
@@ -1713,20 +2467,14 @@ const nextConfig = {
 				permanent: true,
 			},
 			{
+				source: "/about/what-we-do/international-services",
+				destination: "/what-nice-does/nice-international",
+				permanent: true,
+			},
+			{
 				source: "/about/nice-communities/generalpractice",
 				destination:
 					"/implementing-nice-guidance/general-practice-keep-your-practice-up-to-date",
-				permanent: true,
-			},
-			{
-				source: "/About/Who-we-are/Board/Board-expenses",
-				destination: "/about-us/our-board/board-expenses",
-				permanent: true,
-			},
-			{
-				source: "/Get-Involved/stakeholder-registration",
-				destination:
-					"/get-involved/register-your-organisation-as-a-stakeholder",
 				permanent: true,
 			},
 			{
@@ -1750,11 +2498,6 @@ const nextConfig = {
 				permanent: true,
 			},
 			{
-				source: "/standards-and-indicators/indicators",
-				destination: "/what-nice-does/standards-and-indicators/indicators",
-				permanent: true,
-			},
-			{
 				source: "/about/nice-communities/social-care",
 				destination: "/implementing-nice-guidance/social-care/",
 				permanent: true,
@@ -1770,6 +2513,12 @@ const nextConfig = {
 				permanent: true,
 			},
 			{
+				source: "/about/what-we-do/scientific-advice",
+				destination:
+					"/what-nice-does/life-sciences-how-to-get-your-product-to-market/nice-advice-service",
+				permanent: true,
+			},
+			{
 				source: "/about/what-we-do/eva-for-medtech",
 				destination:
 					"/what-nice-does/our-guidance/about-medical-technologies-guidance/early-value-assessment-eva-for-medtech",
@@ -1778,16 +2527,6 @@ const nextConfig = {
 			{
 				source: "/about/who-we-are/history-of-nice",
 				destination: "/about-us/history-of-nice",
-				permanent: true,
-			},
-			{
-				source: "/news/nice-newsletters-and-alerts",
-				destination: "/nice-newsletters-and-alerts",
-				permanent: true,
-			},
-			{
-				source: "/re-using-our-content/public-task",
-				destination: "/reusing-our-content/public-task",
 				permanent: true,
 			},
 			{
@@ -1806,6 +2545,11 @@ const nextConfig = {
 				permanent: true,
 			},
 			{
+				source: "/about/what-we-do/into-practice",
+				destination: "/implementing-nice-guidance",
+				permanent: true,
+			},
+			{
 				source: "/about/what-we-do/accreditation",
 				destination: "/what-nice-does/accreditation",
 				permanent: true,
@@ -1814,6 +2558,122 @@ const nextConfig = {
 				source: "/about/what-we-do/life-sciences",
 				destination:
 					"/what-nice-does/life-sciences-how-to-get-your-product-to-market",
+				permanent: true,
+			},
+			{
+				source: "/about/who-we-are/nice-connect",
+				destination: "/about-us/corporate-publications",
+				permanent: true,
+			},
+			{
+				source: "/about/who-we-are/our-charter",
+				destination: "/about-us/corporate-publications/our-charter",
+				permanent: true,
+			},
+			{
+				source: "/about/who-we-are/our-vision",
+				destination: "/about",
+				permanent: true,
+			},
+			{
+				source: "/about/who-we-are/board",
+				destination: "/about-us/our-board/board-members",
+				permanent: true,
+			},
+			{
+				source: "/standards-and-indicators/gpqualityimprovements/:path*",
+				destination: "/indicators/published",
+				permanent: true,
+			},
+			{
+				source:
+					"/standards-and-indicators/selecting-and-prioritising-quality-standard-topics",
+				destination:
+					"/what-nice-does/standards-and-indicators/quality-standards/selecting-and-prioritising-quality-standard-topics",
+				permanent: true,
+			},
+			{
+				source:
+					"/get-involved/study-nice-and-lse-s-executive-msc-healthcare-decision-making",
+				destination:
+					"/get-involved/nice-training-and-development-opportunities/study-nice-and-lse-s-executive-msc-healthcare-decision-making",
+				permanent: true,
+			},
+			{
+				source: "/standards-and-indicators/ccgoisindicators/:path*",
+				destination: "/indicators/published",
+				permanent: true,
+			},
+			{
+				source:
+					"/aac/identifying-high-potential-products-and-accelerating-access-to-market",
+				destination: "https://www.england.nhs.uk/aac/about-us/who-we-are/",
+				permanent: true,
+			},
+			{
+				source: "/standards-and-indicators/qofindicators/:path*",
+				destination: "/indicators/published",
+				permanent: true,
+			},
+			{
+				source:
+					"/standards-and-indicators/timeline-developing-quality-standards",
+				destination:
+					"/what-nice-does/standards-and-indicators/quality-standards/timeline-for-developing-quality-standards",
+				permanent: true,
+			},
+			{
+				source: "/standards-and-indicators/quality-standards-topic-library",
+				destination:
+					"/what-nice-does/standards-and-indicators/quality-standards/selecting-and-prioritising-quality-standard-topics",
+				permanent: true,
+			},
+			{
+				source: "/standards-and-indicators/how-to-use-quality-standards",
+				destination:
+					"/what-nice-does/standards-and-indicators/quality-standards/how-to-use-quality-standards",
+				permanent: true,
+			},
+			{
+				source: "/terms-and-conditions/cks-end-user-licence-agreement",
+				destination: "/cks-end-user-licence-agreement",
+				permanent: true,
+			},
+			{
+				source: "/re-using-our-content/content-assurance-service",
+				destination: "/reusing-our-content/content-assurance-service",
+				permanent: true,
+			},
+			{
+				source: "/re-using-our-content/uk-open-content-licence",
+				destination: "/forms/use-of-nice-content-in-the-uk",
+				permanent: true,
+			},
+			{
+				source: "/standards-and-indicators/quality-standards",
+				destination:
+					"/what-nice-does/standards-and-indicators/quality-standards",
+				permanent: true,
+			},
+			{
+				source: "/Get-Involved/stakeholder-registration",
+				destination:
+					"/get-involved/register-your-organisation-as-a-stakeholder",
+				permanent: true,
+			},
+			{
+				source: "/standards-and-indicators/indicators",
+				destination: "/what-nice-does/standards-and-indicators/indicators",
+				permanent: true,
+			},
+			{
+				source: "/news/nice-newsletters-and-alerts",
+				destination: "/nice-newsletters-and-alerts",
+				permanent: true,
+			},
+			{
+				source: "/re-using-our-content/public-task",
+				destination: "/reusing-our-content/public-task",
 				permanent: true,
 			},
 			{
@@ -1827,13 +2687,18 @@ const nextConfig = {
 				permanent: true,
 			},
 			{
-				source: "/about/who-we-are/our-charter",
-				destination: "/about-us/corporate-publications/our-charter",
+				source: "/get-involved/citizens-council",
+				destination: "/get-involved",
 				permanent: true,
 			},
 			{
-				source: "/standards-and-indicators",
-				destination: "/what-nice-does/standards-and-indicators",
+				source: "/Get-Involved/join-a-committee",
+				destination: "/get-involved/our-committees",
+				permanent: true,
+			},
+			{
+				source: "/get-involved/nice-listens",
+				destination: "/what-nice-does/our-research-work/nice-listens",
 				permanent: true,
 			},
 			{
@@ -1842,8 +2707,8 @@ const nextConfig = {
 				permanent: true,
 			},
 			{
-				source: "/about/who-we-are/board",
-				destination: "/about-us/our-board/board-members",
+				source: "/get-involved/scholars",
+				destination: "/get-involved",
 				permanent: true,
 			},
 			{
@@ -1857,8 +2722,8 @@ const nextConfig = {
 				permanent: true,
 			},
 			{
-				source: "/re-using-our-content",
-				destination: "/reusing-our-content",
+				source: "/get-involved/fellows",
+				destination: "/get-involved",
 				permanent: true,
 			},
 			{
@@ -1882,6 +2747,26 @@ const nextConfig = {
 				permanent: true,
 			},
 			{
+				source: "/news/events",
+				destination: "/events",
+				permanent: true,
+			},
+			{
+				source: "/aac/about",
+				destination: "https://www.england.nhs.uk/aac/about-us/who-we-are/",
+				permanent: true,
+			},
+			{
+				source: "/standards-and-indicators",
+				destination: "/what-nice-does/standards-and-indicators",
+				permanent: true,
+			},
+			{
+				source: "/re-using-our-content",
+				destination: "/reusing-our-content",
+				permanent: true,
+			},
+			{
 				source: "/bnfc-uk-only",
 				destination: "/bnfc-via-nice-is-only-available-in-the-uk",
 				permanent: true,
@@ -1897,11 +2782,6 @@ const nextConfig = {
 				permanent: true,
 			},
 			{
-				source: "/news/events",
-				destination: "/events",
-				permanent: true,
-			},
-			{
 				source: "/indicators",
 				destination: "/indicators/published",
 				permanent: true,
@@ -1914,28 +2794,6 @@ const nextConfig = {
 			{
 				source: "/aac",
 				destination: "https://www.england.nhs.uk/aac/about-us/who-we-are/",
-				permanent: true,
-			},
-			{
-				source:
-					"/about/what-we-do/research-and-development/research-recommendations/:slug*",
-				destination:
-					"/about/what-we-do/science-policy-research/research-recommendations",
-				permanent: true,
-			},
-			{
-				source: "/standards-and-indicators/qofindicators/:path*",
-				destination: "/indicators/published",
-				permanent: true,
-			},
-			{
-				source: "/standards-and-indicators/gpqualityimprovements/:path*",
-				destination: "/indicators/published",
-				permanent: true,
-			},
-			{
-				source: "/standards-and-indicators/ccgoisindicators/:path*",
-				destination: "/indicators/published",
 				permanent: true,
 			},
 		];
