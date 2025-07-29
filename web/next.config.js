@@ -1935,13 +1935,6 @@ const nextConfig = {
 			},
 			{
 				source:
-					"/about/what-we-do/science-policy-research/research-recommendations",
-				destination:
-					"/about/what-we-do/science-policy-research/research-recommendations",
-				permanent: true,
-			},
-			{
-				source:
 					"/about/nice-communities/social-care/social-care-trainers-resource",
 				destination:
 					"/implementing-nice-guidance/social-care/social-care-trainers-resource",
