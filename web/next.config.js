@@ -1543,6 +1543,12 @@ const nextConfig = {
 				permanent: true,
 			},
 			{
+				source: "/about/what-we-do/our-research-work/hta-lab",
+				destination:
+					"/what-nice-does/our-research-work/hta-lab",
+				permanent: true,
+			},
+			{
 				source: "/about/what-we-do/our-research-work/hta-lab-projects",
 				destination:
 					"/what-nice-does/our-research-work/hta-lab/hta-lab-projects",
