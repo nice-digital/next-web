@@ -3175,7 +3175,7 @@ const nextConfig = {
 				source:
 					"/about/what-we-do/our-research-work/use-of-ai-in-evidence-generation--nice-position-statement",
 				destination:
-					"/position-statements/use-of-AI-in-evidence-generation-NICE-position-statement",
+					"/position-statements/use-of-ai-in-evidence-generation-nice-position-statement",
 				permanent: true,
 			},
 			{
@@ -5550,6 +5550,12 @@ const nextConfig = {
 				source: "/about/what-we-do/forward-view---our-priority-topics",
 				destination:
 					"/what-nice-does/our-guidance/prioritising-our-guidance-topics/forward-view-our-priority-topics",
+				permanent: true,
+			},
+			{
+				source: "/about/what-we-do/our-research-work/hta-lab",
+				destination:
+					"/what-nice-does/our-research-work/hta-lab",
 				permanent: true,
 			},
 			{
