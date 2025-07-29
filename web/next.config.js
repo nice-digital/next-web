@@ -1544,8 +1544,7 @@ const nextConfig = {
 			},
 			{
 				source: "/about/what-we-do/our-research-work/hta-lab",
-				destination:
-					"/what-nice-does/our-research-work/hta-lab",
+				destination: "/what-nice-does/our-research-work/hta-lab",
 				permanent: true,
 			},
 			{
@@ -1840,11 +1839,6 @@ const nextConfig = {
 			{
 				source: "/Get-Involved/our-committees",
 				destination: "/get-involved/our-committees",
-				permanent: true,
-			},
-			{
-				source: "/Get-Involved/Consultations",
-				destination: "/get-involved/consultations",
 				permanent: true,
 			},
 			{
