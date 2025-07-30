@@ -15,7 +15,7 @@ describe("next.config.js", () => {
 		Array [
 		  Object {
 		    "key": "Cache-Control",
-		    "value": "public, s-max-age=300, max-age=120, stale-while-revalidate=1800",
+		    "value": "public, s-max-age=300, max-age=480, stale-while-revalidate=1800",
 		  },
 		  Object {
 		    "key": "X-App",
