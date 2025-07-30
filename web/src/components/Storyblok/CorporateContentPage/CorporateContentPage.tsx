@@ -1,6 +1,6 @@
 import { StoryblokComponent } from "@storyblok/react";
 import { NextSeo } from "next-seo";
-import React, {useMemo } from "react";
+import React, { useMemo } from "react";
 
 import { ErrorPageContent } from "@/components/ErrorPageContent/ErrorPageContent";
 import { logger } from "@/logger";
