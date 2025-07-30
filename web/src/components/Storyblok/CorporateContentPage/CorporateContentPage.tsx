@@ -1,6 +1,6 @@
 import { StoryblokComponent } from "@storyblok/react";
 import { NextSeo } from "next-seo";
-import React, { useEffect, useMemo } from "react";
+import React, {useMemo } from "react";
 
 import { ErrorPageContent } from "@/components/ErrorPageContent/ErrorPageContent";
 import { logger } from "@/logger";
@@ -21,25 +21,6 @@ export const CorporateContentPage = (
 			return undefined;
 		}
 	}, [story]);
-	useEffect(() => {
-		const noIndexPaths = [
-			"cks-is-only-available-in-the-uk",
-			"cks-end-user-licence-agreement",
-		];
-
-		const shouldNoIndex = noIndexPaths.includes(story?.full_slug);
-
-		// Always remove existing robots tags
-		document
-			.querySelectorAll("meta[name='robots']")
-			.forEach((tag) => tag.remove());
-
-		// Add correct one
-		const robots = document.createElement("meta");
-		robots.name = "robots";
-		robots.content = shouldNoIndex ? "noindex,nofollow" : "index,follow";
-		document.head.appendChild(robots);
-	}, [story?.full_slug]);
 	if ("error" in props) {
 		const { error } = props;
 		return <ErrorPageContent title="Error" heading={error} />;
