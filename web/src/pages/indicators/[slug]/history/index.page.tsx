@@ -71,7 +71,11 @@ export default function HistoryPage({
 				hasHistory={hasHistory}
 			/>
 
-			<ResourceList title="History" groups={project.groups} />
+			<ResourceList
+				title="History"
+				lead="Documents created during the development process."
+				groups={project.groups}
+			/>
 		</>
 	);
 }
