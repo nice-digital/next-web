@@ -334,13 +334,6 @@ const nextConfig = {
 			},
 			{
 				source:
-					"/about/what-we-do/our-programmes/nice-guidance/nice-technology-appraisal-guidance/abbreviated-technology-appraisal-process-consultation-",
-				destination:
-					"/what-nice-does/our-guidance/about-technology-appraisal-guidance",
-				permanent: true,
-			},
-			{
-				source:
 					"/about/what-we-do/our-programmes/nice-guidance/nice-technology-appraisal-guidance/abbreviated-technology-appraisal-process-consultation",
 				destination:
 					"/what-nice-does/our-guidance/about-technology-appraisal-guidance",
@@ -575,7 +568,8 @@ const nextConfig = {
 			{
 				source:
 					"/about/what-we-do/our-programmes/nice-guidance/nice-technology-appraisal-guidance/cancer-drugs-fund",
-				destination: "/what-nice-does/managed-access",
+				destination:
+					"/what-nice-does/patient-access-schemes-and-pricing-agreements/managed-access",
 				permanent: true,
 			},
 			{
@@ -859,7 +853,7 @@ const nextConfig = {
 				source:
 					"/about/what-we-do/life-sciences/office-for-market-access/identify-the-most-appropriate-routes-to-nhs-access",
 				destination:
-					"/what-nice-does/life-sciences-how-to-get-your-product-to-market/nice-advice-service",
+					"/what-nice-does/life-sciences-how-to-get-your-product-to-market/nice-advice-service/nice-advice-working-on-your-objectives",
 				permanent: true,
 			},
 			{
@@ -1195,7 +1189,7 @@ const nextConfig = {
 				source:
 					"/about/what-we-do/into-practice/measuring-the-uptake-of-nice-guidance/uptake-data",
 				destination:
-					"/implementing-nice-guidance/measuring-the-use-of-NICE-guidance",
+					"/implementing-nice-guidance/measuring-the-use-of-nice-guidance",
 				permanent: true,
 			},
 			{
@@ -1337,7 +1331,8 @@ const nextConfig = {
 			{
 				source:
 					"/about/what-we-do/life-sciences/scientific-advice/express-scientific-advice",
-				destination: "/about/what-we-do/life-sciences/nice-advice-service",
+				destination:
+					"/what-nice-does/life-sciences-how-to-get-your-product-to-market/nice-advice-service",
 				permanent: true,
 			},
 			{
@@ -1653,12 +1648,6 @@ const nextConfig = {
 			},
 			{
 				source:
-					"/about/nice-communities/public-involvement/bursary-scheme-for-nice-annual-conference",
-				destination: "/what-nice-does",
-				permanent: true,
-			},
-			{
-				source:
 					"/about/what-we-do/nice-syndication-api/syndication-case-study-elseviers-clinical-key",
 				destination: "/reusing-our-content/nice-syndication-api",
 				permanent: true,
@@ -1870,12 +1859,6 @@ const nextConfig = {
 				source:
 					"/about/nice-communities/public-involvement/putting-guidance-into-practice",
 				destination: "/get-involved/people-and-communities",
-				permanent: true,
-			},
-			{
-				source:
-					"/about/what-we-do/our-programmes/our-endorsement-programme-has-now-closed",
-				destination: "/what-nice-does",
 				permanent: true,
 			},
 			{
@@ -2293,7 +2276,7 @@ const nextConfig = {
 			},
 			{
 				source: "/about/what-we-do/into-practice/endorsement",
-				destination: "/what-nice-does",
+				destination: "/implementing-nice-guidance",
 				permanent: true,
 			},
 			{
@@ -2756,7 +2739,7 @@ const nextConfig = {
 			},
 			{
 				source: "/about/who-we-are/our-vision",
-				destination: "/about",
+				destination: "/about-us",
 				permanent: true,
 			},
 			{
@@ -2948,7 +2931,7 @@ const nextConfig = {
 			},
 			{
 				source: "/about/who-we-are",
-				destination: "/about",
+				destination: "/about-us",
 				permanent: true,
 			},
 			{
