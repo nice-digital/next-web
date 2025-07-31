@@ -128,7 +128,7 @@ export function NewsIndexPage(props: NewsIndexProps): React.ReactElement {
 									<li key={podcast.id}>
 										<Card
 											headingText={name}
-											headingElementType="h3"
+											headingLevel={"3"}
 											link={{
 												destination: full_slug,
 												elementType: Link,

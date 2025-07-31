@@ -35,7 +35,7 @@ export const CardGrid: React.FC<CardGridProps> = ({ row }) => {
 			| CalloutCardWithImageStoryblok
 			| CardStoryblok;
 	}> = ({ gridItem }) => {
-		const { heading, body, link, component } = gridItem;
+		const { heading, headingLevel, body, link, component } = gridItem;
 
 		let cardLink: CardHeadingLinkProps | undefined = undefined;
 		const resolvedLink =
@@ -60,6 +60,7 @@ export const CardGrid: React.FC<CardGridProps> = ({ row }) => {
 				return (
 					<Card
 						headingText={heading}
+						headingLevel={headingLevel || undefined}
 						link={cardLink || undefined}
 						summary={body}
 					/>
