@@ -2309,6 +2309,36 @@ const nextConfig = {
 				permanent: true,
 			},
 			{
+				source: "/standards-and-indicators/developing-nice-quality-standards",
+				destination: "/what-nice-does/standards-and-indicators",
+				permanent: true,
+			},
+			{
+				source: "/standards-and-indicators/how-we-develop-ccg-ois",
+				destination: "/what-nice-does/standards-and-indicators",
+				permanent: true,
+			},
+			{
+				source: "/standards-and-indicators/how-we-develop-qof",
+				destination: "/what-nice-does/standards-and-indicators",
+				permanent: true,
+			},
+			{
+				source: "/standards-and-indicators/quality-standard-consultation",
+				destination: "/what-nice-does/standards-and-indicators",
+				permanent: true,
+			},
+			{
+				source: "/standards-and-indicators/support-a-quality-standard",
+				destination: "/what-nice-does/standards-and-indicators",
+				permanent: true,
+			},
+			{
+				source: "/standards-and-indicators/topic-engagement",
+				destination: "/what-nice-does/standards-and-indicators",
+				permanent: true,
+			},
+			{
 				source:
 					"/get-involved/register-your-organisation-as-a-stakeholder/stakeholder-registration--guidelines--quality-standards-and-indicators",
 				destination:
@@ -2977,6 +3007,12 @@ const nextConfig = {
 			{
 				source: "/cks-uk-only",
 				destination: "/cks-is-only-available-in-the-uk",
+				permanent: true,
+			},
+			{
+				source: "/covid-19",
+				destination:
+					"/guidance/conditions-and-diseases/respiratory-conditions/covid19",
 				permanent: true,
 			},
 			{
