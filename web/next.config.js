@@ -1214,13 +1214,6 @@ const nextConfig = {
 			},
 			{
 				source:
-					"/about/what-we-do/our-programmes/nice-guidance/nice-technology-appraisal-guidance",
-				destination:
-					"/what-nice-does/our-guidance/about-technology-appraisal-guidance",
-				permanent: true,
-			},
-			{
-				source:
 					"/about/nice-communities/social-care/quick-guides/creating-a-safeguarding-culture",
 				destination:
 					"/implementing-nice-guidance/social-care/quick-guides-to-social-care-topics",
