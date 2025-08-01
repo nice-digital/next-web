@@ -11,7 +11,6 @@ export const CorporateContentPage = (
 	props: SlugCatchAllProps
 ): React.ReactElement => {
 	const story = "story" in props ? props.story : null;
-
 	const additionalMetaTags = useMemo(() => {
 		if (story) {
 			return getAdditionalMetaTags(story);
@@ -22,7 +21,6 @@ export const CorporateContentPage = (
 			return undefined;
 		}
 	}, [story]);
-
 	if ("error" in props) {
 		const { error } = props;
 		return <ErrorPageContent title="Error" heading={error} />;
@@ -31,7 +29,6 @@ export const CorporateContentPage = (
 	const { story: storyData, breadcrumbs, tree, slug } = props;
 
 	const title = storyData?.name;
-
 	return (
 		<>
 			<NextSeo
