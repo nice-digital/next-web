@@ -14,6 +14,7 @@ $_on-this-page-scrollbar-thumb: global.$custom-grey-1;
   @include visibility.hide-print;
   display: flex;
   flex-direction: column;
+  margin: 0 0 utils.rem(spacing.$large);
   top: 0;
 
   @include media-queries.mq($from: lg) {
@@ -24,7 +25,6 @@ $_on-this-page-scrollbar-thumb: global.$custom-grey-1;
 
 .heading {
   @include typography.h4;
-  font-family: typography.get-font-family(sans);
   margin-top: utils.rem(spacing.$small);
 
   @include media-queries.mq($from: lg) {
@@ -33,8 +33,7 @@ $_on-this-page-scrollbar-thumb: global.$custom-grey-1;
 }
 
 .list {
-  list-style: none;
-  margin: 0 0 utils.rem(spacing.$medium);
+  list-style: disc;
 
   li {
     margin-bottom: utils.rem(spacing.$small);
@@ -43,7 +42,6 @@ $_on-this-page-scrollbar-thumb: global.$custom-grey-1;
   a {
     display: block;
     line-height: 1.3;
-    text-decoration: none;
 
     &:hover {
       text-decoration: underline;
@@ -53,7 +51,6 @@ $_on-this-page-scrollbar-thumb: global.$custom-grey-1;
 
   @include media-queries.mq($from: lg) {
     margin-bottom: 0;
-    overflow: auto;
     padding: utils.rem(spacing.$x-small); // To make room for focus ring
     padding-right: utils.rem(spacing.$small);
     scrollbar-width: utils.rem(spacing.$small);

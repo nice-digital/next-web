@@ -31,9 +31,8 @@ export const CardList: React.FC<CardListProps> = ({ blok }: CardListProps) => {
 						headingText={heading}
 						link={cardLink || undefined}
 						key={_uid}
-					>
-						<p>{body}</p>
-					</Card>
+						summary={body}
+					/>
 				);
 			})}
 		</ul>

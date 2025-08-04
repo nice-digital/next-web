@@ -289,7 +289,9 @@ exports[`/indicators/[slug]/history HistoryPage should match snapshot for main c
             >
               History
             </h2>
-            <p />
+            <p>
+              Documents created during the development process.
+            </p>
             <section
               aria-labelledby="committee-list-updated"
             >

@@ -1,11 +1,8 @@
-import classnames from "classnames";
 import React, { type FC } from "react";
 
-import { Button } from "@nice-digital/nds-button";
+import { Panel } from "@nice-digital/nds-panel";
 
 import { Link } from "../Link/Link";
-
-import styles from "./ProjectConsultationDocuments.module.scss";
 
 export type ProjectConsultationDocumentsLinkProps = {
 	consultationUrls: string[];
@@ -14,42 +11,25 @@ export type ProjectConsultationDocumentsLinkProps = {
 export const ProjectConsultationDocumentsLink: FC<
 	ProjectConsultationDocumentsLinkProps
 > = ({ consultationUrls }) => {
-	if (consultationUrls.length == 0) return null;
-
 	const hasMultipleConsultations =
 		consultationUrls && consultationUrls?.length > 1;
 
-	return hasMultipleConsultations ? (
-		<ul
-			className={classnames([
-				"list list--unstyled",
-				styles.consultationDocumentsLinkContainer,
-			])}
-		>
+	return (
+		<Panel>
+			<h3 className="h5">
+				{hasMultipleConsultations ? "Consultations" : "Consultation"} in
+				progress
+			</h3>
 			{consultationUrls.map((url, index) => (
-				<li key={`Read consultation ${index + 1} documents`}>
-					<Button
-						variant="cta"
-						to={url}
-						className={styles.consultationDocumentsLinkButton}
-						elementType={Link}
-					>
-						Read consultation {index + 1} documents
-					</Button>
-				</li>
+				<>
+					<Link to={url}>
+						{`Consultation ${
+							hasMultipleConsultations ? index + 1 : ""
+						} documents`}
+					</Link>
+					{index < consultationUrls.length - 1 && <hr className="mv--d" />}
+				</>
 			))}
-		</ul>
-	) : (
-		<div className={styles.consultationDocumentsLinkContainer}>
-			<Button
-				key={`Read consultation documents`}
-				variant="cta"
-				to={consultationUrls[0]}
-				className={styles.consultationDocumentsLinkButton}
-				elementType={Link}
-			>
-				Read the consultation documents
-			</Button>
-		</div>
+		</Panel>
 	);
 };
