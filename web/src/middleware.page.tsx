@@ -10,4 +10,4 @@ export const middleware = (req: NextRequest): NextResponse => {
 		new URL(url.origin + url.pathname.toLowerCase())
 	);
 };
-//Adding comment to test the commit
+
