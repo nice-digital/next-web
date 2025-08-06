@@ -390,7 +390,7 @@ const nextConfig = {
 			},
 			{
 				source:
-					"/about/what-we-do/our-programmes/nice-guidance/nice-about-technology-appraisal-guidance/achieving-and-demonstrating-compliance",
+					"/about/what-we-do/our-programmes/nice-guidance/nice-:about(about-)?technology-appraisal-guidance/achieving-and-demonstrating-compliance",
 				destination:
 					"/what-nice-does/our-guidance/about-technology-appraisal-guidance/compliance-with-nice-approved-medicine-or-treatment",
 				permanent: true,
