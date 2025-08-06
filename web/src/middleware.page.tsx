@@ -1,15 +1,14 @@
-// middleware.ts
 import { NextResponse, type NextRequest } from "next/server";
 
 const SKIP_REGEXES: RegExp[] = [
-	/^\/_next\//, // Next internals (chunks, assets)
-	/^\/static\//, // static folder if used
-	/^\/api\//, // API routes
-	/^\/favicon.ico$/, // favicon
-	/^\/sw.js$/, // service worker
-	/^\/manifest.json$/, // manifest
-	/^\/build-manifest.json$/, // next build manifest
-	/^\/react-loadable-manifest.json$/, // react loadable manifest
+	/^\/_next\//,
+	/^\/static\//,
+	/^\/api\//,
+	/^\/favicon.ico$/,
+	/^\/sw.js$/,
+	/^\/manifest.json$/,
+	/^\/build-manifest.json$/,
+	/^\/react-loadable-manifest.json$/,
 	/^\/.*\.[^/]+$/, // any path containing a dot (file with extension)
 ];
 
