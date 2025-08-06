@@ -1536,13 +1536,14 @@ const nextConfig = {
 					"/about-us/our-board/public-board-meetings/2024/public-board-meeting-agenda-and-papers-july-2024",
 				permanent: true,
 			},
-			{
-				source:
-					"/about/what-we-do/research-and-development/research-recommendations/:slug*",
-				destination:
-					"/about/what-we-do/science-policy-research/research-recommendations",
-				permanent: true,
-			},
+			// NOTE this is commented out until research recs go live
+			// {
+			// 	source:
+			// 		"/about/what-we-do/research-and-development/research-recommendations/:slug*",
+			// 	destination:
+			// 		"/about/what-we-do/science-policy-research/research-recommendations",
+			// 	permanent: true,
+			// },
 			{
 				source:
 					"/about/what-we-do/digital-health/multi-agency-advisory-service-for-ai-and-data-driven-technologies",
