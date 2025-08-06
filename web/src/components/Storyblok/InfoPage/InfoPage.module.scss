@@ -15,19 +15,19 @@
     }
   }
   // Standalone accordion default
-:global(.accordion) {
-  margin-bottom: 2rem;
-}
+  :global(.accordion) {
+    margin-bottom: 2rem;
+  }
 
-// Grouped accordions: apply to all except last
-:global([data-id="accordion-group"]) :global(.accordion) {
-  margin-bottom: 1rem;
-}
+  // Grouped accordions: apply to all except last
+  :global([data-id='accordion-group']) :global(.accordion) {
+    margin-bottom: 1rem;
+  }
 
-// Grouped accordions: last one gets 2rem
-:global([data-id="accordion-group"]) :global(.accordion:last-child) {
-  margin-bottom: 2rem;
-}
+  // Grouped accordions: last one gets 2rem
+  :global([data-id='accordion-group']) :global(.accordion:last-child) {
+    margin-bottom: 2rem;
+  }
   /* stylelint-disable-next-line selector-max-compound-selectors */
   .content > div > div > h2 {
     // Bit ugly, but deals with rich text headings getting nudged down the page
