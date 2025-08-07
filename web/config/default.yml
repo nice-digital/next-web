@@ -28,6 +28,7 @@ public:
     # The default cache-control header used for 'dynamic' responses - apis/pages with getServerSideProps
     # See https://nextjs.org/docs/going-to-production#caching for more details on cache headers with NextJS
     # Note the use of s-max-age to cache in varnish, max-age to cache on the client and SWR for background refreshes
+    # NOTE We have updated the max-age in default here as we are currently unable to override in production
     defaultCacheHeader: public, s-max-age=300, max-age=480, stale-while-revalidate=1800
   jotForm:
     baseURL: https://nice.jotform.com
