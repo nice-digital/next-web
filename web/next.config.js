@@ -1900,7 +1900,7 @@ const nextConfig = {
 				source:
 					"/about/what-we-do/into-practice/measuring-the-impact-of-nice-guidance",
 				destination:
-					"/implementing-nice-guidance/measuring-the-use-of-NICE-guidance",
+					"/implementing-nice-guidance/measuring-the-use-of-nice-guidance",
 				permanent: true,
 			},
 			{
