@@ -3,6 +3,7 @@
 @use '@nice-digital/nds-core/scss/spacing';
 @use '@nice-digital/nds-core/scss/typography';
 @use '@nice-digital/nds-core/scss/utils';
+@use '@nice-digital/nds-core/scss/layout';
 
 .infoPage {
   $self: &;
@@ -14,7 +15,14 @@
       margin-bottom: utils.rem(spacing.$large);
     }
   }
-
+  /* stylelint-disable-next-line selector-class-pattern */
+  :global(.list--unstyled) {
+    max-width: layout.$readable-width;
+  }
+  /* stylelint-disable-next-line selector-class-pattern */
+  :global(.list--unstyled .card:last-child) {
+    margin: utils.rem(0 0 spacing.$large 0);
+  }
   /* stylelint-disable-next-line selector-max-compound-selectors */
   .content > div > div > h2 {
     // Bit ugly, but deals with rich text headings getting nudged down the page
