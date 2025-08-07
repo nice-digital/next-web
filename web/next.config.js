@@ -341,13 +341,6 @@ const nextConfig = {
 			},
 			{
 				source:
-					"/about/what-we-do/our-programmes/nice-guidance/nice-technology-appraisal-guidance/abbreviated-technology-appraisal-process-consultation-",
-				destination:
-					"/what-nice-does/our-guidance/about-technology-appraisal-guidance",
-				permanent: true,
-			},
-			{
-				source:
 					"/about/what-we-do/our-programmes/nice-guidance/technology-appraisal-guidance/chemotherapy-dose-standardisation-nice-position-statement",
 				destination:
 					"/position-statements/chemotherapy-dose-standardisation-nice-position-statement",
