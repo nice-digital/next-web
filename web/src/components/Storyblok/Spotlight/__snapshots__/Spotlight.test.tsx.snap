@@ -87,7 +87,7 @@ exports[`Spotlight component should match snapshot 1`] = `
                 <header
                   class="card__header"
                 >
-                  <p
+                  <h3
                     class="card__heading"
                   >
                     <a
@@ -95,7 +95,7 @@ exports[`Spotlight component should match snapshot 1`] = `
                     >
                       Test news article title
                     </a>
-                  </p>
+                  </h3>
                 </header>
                 <span
                   class="tag tag--outline"
@@ -140,7 +140,7 @@ exports[`Spotlight component should match snapshot 1`] = `
                 <header
                   class="card__header"
                 >
-                  <p
+                  <h3
                     class="card__heading"
                   >
                     <a
@@ -148,7 +148,7 @@ exports[`Spotlight component should match snapshot 1`] = `
                     >
                       Test blog post title
                     </a>
-                  </p>
+                  </h3>
                 </header>
                 <span
                   class="tag tag--outline"
