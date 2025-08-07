@@ -2904,7 +2904,7 @@ const nextConfig = {
 				permanent: true,
 			},
 			{
-				source: "/what-we-do/evidence-services",
+				source: "/about/what-we-do/evidence-services",
 				destination: "/library-and-knowledge-services",
 				permanent: true,
 			},
