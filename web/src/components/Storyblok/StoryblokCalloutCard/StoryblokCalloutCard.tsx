@@ -43,6 +43,7 @@ export const StoryblokCalloutCard: React.FC<StoryblokCalloutCardProps> = ({
 	return (
 		<Card
 			headingText={heading}
+			className="card--flush"
 			callout
 			link={cardLink}
 			image={renderImage()}

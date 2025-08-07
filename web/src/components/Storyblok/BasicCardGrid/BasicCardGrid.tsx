@@ -32,6 +32,7 @@ export const BasicCardGrid = ({
 					<GridItem cols={12} md={{ cols: 4 }} key={_uid}>
 						<Card
 							headingText={heading}
+							className="card--flush"
 							link={cardLink || undefined}
 							summary={body}
 						/>
