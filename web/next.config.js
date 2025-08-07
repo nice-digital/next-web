@@ -1817,6 +1817,20 @@ const nextConfig = {
 			},
 			{
 				source:
+					"/about/nice-communities/nice-and-the-public/making-decisions-about-your-care/Information-for-the-public-on-medicines",
+				destination:
+					"/what-nice-does/our-guidance/about-nice-guidelines/about-shared-decision-making",
+				permanent: true,
+			},
+			{
+				source:
+					"/about/nice-communities/nice-and-the-public/making-decisions-about-your-care/patient-decision-aids",
+				destination:
+					"/what-nice-does/our-guidance/about-nice-guidelines/about-shared-decision-making",
+				permanent: true,
+			},
+			{
+				source:
 					"/about/what-we-do/office-for-market-access/early-access-to-medicines-scheme",
 				destination:
 					"/what-nice-does/life-sciences-how-to-get-your-product-to-market/nice-advice-service",
