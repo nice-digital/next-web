@@ -20,12 +20,12 @@
   }
 
   // Grouped accordions: apply to all except last
-  :global(.accordion-group-content) :global(.accordion) {
+  :global(.accordionGroup__content) :global(.accordion) {
     margin-bottom: 1rem;
   }
 
   // Grouped accordions: last one gets 2rem
-  :global(.accordion-group-content) :global(.accordion:last-child) {
+  :global(.accordionGroup__content) :global(.accordion:last-child) {
     margin-bottom: 2rem;
   }
   /* stylelint-disable-next-line selector-max-compound-selectors */
