@@ -82,7 +82,6 @@ export const Spotlight: React.FC<SpotlightProps> = ({
 									<Card
 										key={id}
 										headingText={name}
-										className="card--flush"
 										elementType="li"
 										link={headingLink}
 										image={
