@@ -16,17 +16,17 @@
   }
   // Standalone accordion default
   :global(.accordion) {
-    margin-bottom: 2rem;
+    margin-bottom: utils.rem(spacing.$large);
   }
 
   // Grouped accordions: apply to all except last
   :global(.accordionGroup__content) :global(.accordion) {
-    margin-bottom: 1rem;
+    margin-bottom: utils.rem(spacing.$medium);
   }
 
   // Grouped accordions: last one gets 2rem
   :global(.accordionGroup__content) :global(.accordion:last-child) {
-    margin-bottom: 2rem;
+    margin-bottom: utils.rem(spacing.$large);
   }
   /* stylelint-disable-next-line selector-max-compound-selectors */
   .content > div > div > h2 {
