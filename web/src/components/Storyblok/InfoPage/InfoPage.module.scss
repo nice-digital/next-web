@@ -14,7 +14,10 @@
       margin-bottom: utils.rem(spacing.$large);
     }
   }
-
+  /* stylelint-disable-next-line selector-class-pattern */
+  :global(.card__heading) {
+    margin: 0; /* ;no extra heading margins */
+  }
   /* stylelint-disable-next-line selector-max-compound-selectors */
   .content > div > div > h2 {
     // Bit ugly, but deals with rich text headings getting nudged down the page
