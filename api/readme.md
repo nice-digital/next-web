@@ -4,33 +4,32 @@
 
 <details>
 <summary><strong>Table of contents</strong></summary>
-<!-- START doctoc -->
-- [Ocelot API Layer](#ocelot-api-layer)
+<!-- START doctoc generated TOC please keep comment here to allow auto update -->
+<!-- DON'T EDIT THIS SECTION, INSTEAD RE-RUN doctoc TO UPDATE -->
 
-- [Next Web API](#next-web-api)
-	- [What is it?](#what-is-it)
-	- [Stack](#stack)
-		- [Software](#software)
-		- [Diagram](#diagram)
-	- [Local development setup](#local-development-setup)
-		- [.Net Core Locally stored secrets](#net-core-locally-stored-secrets)
-	- [Overview](#overview)
-		- [Ocelot](#ocelot)
-		- [Task Scheduler](#task-scheduler)
-		- [X-CacheManager-RefreshCache Header](#x-cachemanager-refreshcache-header)
-		- [Route config](#route-config)
-		- [Ocelot Pipeline](#ocelot-pipeline)
-		- [Redis cached content keys](#redis-cached-content-keys)
-			- [Redis Key naming](#redis-key-naming)
-			- [Key Generation Admin tool](#key-generation-admin-tool)
-			- [Redis Key storage](#redis-key-storage)
-			- [Enhanced Ocelot Logging](#enhanced-ocelot-logging)
-	- [Gotchas](#gotchas)
-		- [Redis SSL Connection](#redis-ssl-connection)
-		- [Running Redis on Docker - memory errors](#running-redis-on-docker---memory-errors)
-		- [Secrets.json](#secretsjson)
+- [What is it?](#what-is-it)
+- [Stack](#stack)
+  - [Software](#software)
+  - [Diagram](#diagram)
+- [Local development setup](#local-development-setup)
+  - [.Net Core Locally stored secrets](#net-core-locally-stored-secrets)
+- [Overview](#overview)
+  - [Ocelot](#ocelot)
+  - [Task Scheduler](#task-scheduler)
+  - [X-CacheManager-RefreshCache Header](#x-cachemanager-refreshcache-header)
+  - [Route config](#route-config)
+  - [Ocelot Pipeline](#ocelot-pipeline)
+  - [Redis cached content keys](#redis-cached-content-keys)
+    - [Redis Key naming](#redis-key-naming)
+    - [Key Generation Admin tool](#key-generation-admin-tool)
+    - [Redis Key storage](#redis-key-storage)
+    - [Enhanced Ocelot Logging](#enhanced-ocelot-logging)
+- [Gotchas](#gotchas)
+  - [Redis SSL Connection](#redis-ssl-connection)
+  - [Running Redis on Docker - memory errors](#running-redis-on-docker---memory-errors)
+  - [Secrets.json](#secretsjson)
 
-<!-- END doctoc -->
+<!-- END doctoc generated TOC please keep comment here to allow auto update -->
 </details>
 
 ## What is it?
