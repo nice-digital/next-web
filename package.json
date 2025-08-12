@@ -74,8 +74,5 @@
   },
   "volta": {
     "node": "18.16.0"
-  },
-  "dependencies": {
-    "save": "^2.9.0"
   }
 }
