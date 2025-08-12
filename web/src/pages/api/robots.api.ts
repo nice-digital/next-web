@@ -14,6 +14,9 @@ Disallow: /
 		res.send(`User-agent: bingbot
 Crawl-delay: 1
 User-agent: *
+Disallow: /forms/*
+Disallow: /cks-is-only-available-in-the-uk
+Disallow: /cks-end-user-licence-agreement
 Allow: /
 	`);
 	}

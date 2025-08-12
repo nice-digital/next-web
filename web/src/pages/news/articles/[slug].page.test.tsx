@@ -15,7 +15,6 @@ import NewsArticlePage, { getServerSideProps } from "./[slug].page";
 const mockArticle = {
 	...mockNewsArticle,
 };
-
 describe("NewsArticlePage", () => {
 	it("renders the page", () => {
 		render(
@@ -23,7 +22,9 @@ describe("NewsArticlePage", () => {
 				story={mockNewsArticle as ISbStoryData<NewsArticleStoryblok>}
 			/>
 		);
-		expect(screen.getByText(mockNewsArticle.content.title)).toBeInTheDocument();
+		expect(
+			screen.getByTestId("storyblok-component-newsArticle")
+		).toBeInTheDocument();
 		expect(document.body).toMatchSnapshot();
 	});
 

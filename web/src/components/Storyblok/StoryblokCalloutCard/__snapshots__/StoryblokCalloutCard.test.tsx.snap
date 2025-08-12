@@ -49,7 +49,11 @@ exports[`Callout card component should match snapshot when image prop is passed 
           </a>
         </p>
       </header>
-      Mock card summary
+      <p
+        class="card__summary"
+      >
+        Mock card summary
+      </p>
     </div>
   </article>
 </div>
@@ -75,7 +79,11 @@ exports[`Callout card component should match snapshot with default values 1`] = 
         </a>
       </p>
     </header>
-    Mock card summary
+    <p
+      class="card__summary"
+    >
+      Mock card summary
+    </p>
   </article>
 </div>
 `;

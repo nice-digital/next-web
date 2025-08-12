@@ -76,7 +76,13 @@ export const getCorporateContentGssp = <
 			const component = storyResult.story?.content?.component;
 			let tree: ExtendedSBLink[] = [];
 
-			if (component === "infoPage") {
+			// Build section navigation only for info pages where it's not explicitly hidden
+			if (
+				component === "infoPage" &&
+				storyResult.story?.content.hideSectionNav !== "true" &&
+				parentID !== null
+			) {
+				// Use memoised build with optional cache headers
 				tree = await buildTreeWithOptionalCache(
 					parentID,
 					slug,

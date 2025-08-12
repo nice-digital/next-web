@@ -8,6 +8,7 @@
     "orta.vscode-jest",
     "ExodiusStudios.comment-anchors",
     "ms-vscode.powershell",
-    "alexkrechik.cucumberautocomplete"
+    "alexkrechik.cucumberautocomplete",
+    "redhat.vscode-xml"
   ]
 }

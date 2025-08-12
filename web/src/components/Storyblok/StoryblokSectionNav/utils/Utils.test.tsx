@@ -1,4 +1,5 @@
 import { fetchLinks } from "@/utils/storyblok";
+import mockData from "@/mockData/storyblok/sectionNavData.json";
 
 import * as sectionNavUtils from "./Utils";
 
@@ -6,7 +7,7 @@ jest.mock("@/utils/storyblok", () => ({
 	fetchLinks: jest.fn(),
 }));
 
-describe("Utils Module", () => {
+describe("Storyblok Section Navigation Utils", () => {
 	beforeEach(() => {
 		jest.clearAllMocks();
 	});
@@ -134,6 +135,17 @@ describe("Utils Module", () => {
 
 			const result = await sectionNavUtils.buildTree(parentID, slug, false);
 			expect(result).toBeDefined();
+		});
+	});
+
+	describe("sectionNavIsPopulated", () => {
+		it("returns true for a non-empty array", () => {
+			const tree = (mockData as any).tree; // casting to avoid TS shape mismatch
+			expect(sectionNavUtils.sectionNavIsPopulated(tree)).toBe(true);
+		});
+
+		it("returns false for an empty array", () => {
+			expect(sectionNavUtils.sectionNavIsPopulated([])).toBe(false);
 		});
 	});
 });

@@ -32,8 +32,8 @@
     "extends @nice-digital/browserslist-config"
   ],
   "dependencies": {
-    "@nice-digital/design-system": "^5.5.0",
-    "@nice-digital/global-nav": "^7.1.1073",
+    "@nice-digital/design-system": "^5.5.4",
+    "@nice-digital/global-nav": "^7.1.1092",
     "@nice-digital/nds-prev-next": "^3.0.2",
     "@nice-digital/search-client": "^2.1.1540-SRCH-780-Research-Re",
     "@sindresorhus/slugify": "^1.1.2",
@@ -58,7 +58,7 @@
     "next": "^13.4.16",
     "next-logger": "^4.0.0",
     "next-plugin-node-config": "^1.0.2",
-    "next-seo": "^5.15.0",
+    "next-seo": "^6.8.0",
     "next-sitemap": "^3.1.29",
     "pino": "^6.14.0",
     "pino-mq": "^1.0.1",

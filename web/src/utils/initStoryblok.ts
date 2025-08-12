@@ -6,24 +6,33 @@ import {
 
 import { BasicCardGrid } from "@/components/Storyblok/BasicCardGrid/BasicCardGrid";
 import { Blockquote } from "@/components/Storyblok/Blockquote/Blockquote";
+import { CardGridRow } from "@/components/Storyblok/CardGridRow/CardGridRow";
 import { CardGridSection } from "@/components/Storyblok/CardGridSection/CardGridSection";
 import { CardList } from "@/components/Storyblok/CardList/CardList";
 import { CardListSection } from "@/components/Storyblok/CardListSection/CardListSection";
 import { CategoryLandingPage } from "@/components/Storyblok/CategoryLandingPage/CategoryLandingPage";
 import { CategoryNavigation } from "@/components/Storyblok/CategoryNavigation/CategoryNavigation";
+import { Homepage } from "@/components/Storyblok/Homepage/Homepage";
+import { HomepageHero } from "@/components/Storyblok/Homepage/HomepageHero/HomepageHero";
 import { InfoPage } from "@/components/Storyblok/InfoPage/InfoPage";
 import { Metadata } from "@/components/Storyblok/Metadata/Metadata";
 import { NestedRichText } from "@/components/Storyblok/NestedRichText/NestedRichText";
 import { PromoBox } from "@/components/Storyblok/PromoBox/PromoBox";
+import { Spotlight } from "@/components/Storyblok/Spotlight/Spotlight";
 import { StoryblokAccordion } from "@/components/Storyblok/StoryblokAccordion/StoryblokAccordion";
 import { StoryblokAccordionGroup } from "@/components/Storyblok/StoryblokAccordionGroup/StoryblokAccordionGroup";
 import { StoryblokActionBannerDefault } from "@/components/Storyblok/StoryblokActionBanner/StoryblokActionBannerDefault";
 import { StoryblokActionBannerFullWidth } from "@/components/Storyblok/StoryblokActionBanner/StoryblokActionBannerFullWidth";
+import { StoryblokBlogPost } from "@/components/Storyblok/StoryblokBlogPost/StoryblokBlogPost";
 import { StoryblokCalloutCard } from "@/components/Storyblok/StoryblokCalloutCard/StoryblokCalloutCard";
 import { StoryblokHero } from "@/components/Storyblok/StoryblokHero/StoryblokHero";
 import { StoryblokIframe } from "@/components/Storyblok/StoryblokIframe/StoryblokIframe";
 import { StoryblokImageRichText } from "@/components/Storyblok/StoryblokImageRichText/StoryblokImageRichText";
+import { ClientInfogramEmbed } from "@/components/Storyblok/StoryblokInfogramEmbed/ClientInfogramEmbed";
+import { StoryblokNewsArticle } from "@/components/Storyblok/StoryblokNewsArticle/StoryblokNewsArticle";
 import { StoryblokPageHeader } from "@/components/Storyblok/StoryblokPageHeader/StoryblokPageHeader";
+import { StoryblokRelatedLink } from "@/components/Storyblok/StoryblokRelatedLink/StoryblokRelatedLink";
+import { StoryblokRelatedNewsLink } from "@/components/Storyblok/StoryblokRelatedNewsLink/StoryblokRelatedNewsLink";
 import { StoryblokTable } from "@/components/Storyblok/StoryblokTable/StoryblokTable";
 import { StoryblokTestimonialFullWidth } from "@/components/Storyblok/StoryblokTestimonialFullWidth/StoryblokTestimonialFullWidth";
 import { StoryblokTestimonialGridItem } from "@/components/Storyblok/StoryblokTestimonialGridItem/StoryblokTestimonialGridItem";
@@ -39,6 +48,7 @@ const commonComponents = {
 	cardGrid: BasicCardGrid,
 	cardList: CardList,
 	hero: StoryblokHero,
+	iframe: StoryblokIframe,
 	metadata: Metadata,
 	nestedRichText: NestedRichText,
 	pageHeader: StoryblokPageHeader,
@@ -46,7 +56,16 @@ const commonComponents = {
 	youtubeEmbed: StoryblokYoutubeEmbed,
 };
 
-//TODO: add the rest of the components as we iterate through the page build
+const articleComponents = {
+	newsArticle: StoryblokNewsArticle,
+	relatedLink: StoryblokRelatedLink,
+	relatedNewsLink: StoryblokRelatedNewsLink,
+};
+
+const blogComponents = {
+	blogPost: StoryblokBlogPost,
+};
+
 const categoryLandingPageComponents = {
 	actionBanner: StoryblokActionBannerFullWidth,
 	calloutCard: StoryblokCalloutCard,
@@ -59,22 +78,39 @@ const categoryLandingPageComponents = {
 	testimonialGridItem: StoryblokTestimonialGridItem,
 };
 
-const infoPageComponents = {
-	iframe: StoryblokIframe,
-	imageRichText: StoryblokImageRichText,
-	infoPage: InfoPage,
-	nestedTable: StoryblokTable,
-};
-
 const categoryNavigationPageComponents = {
 	categoryNavigation: CategoryNavigation,
 };
 
+// TODO make homepage component names consistent with common component names
+const homepageComponents = {
+	basicCardGrid: BasicCardGrid,
+	homepage: Homepage,
+	homepageHero: HomepageHero,
+	promobox: PromoBox,
+	spotlight: Spotlight,
+	storyblokActionBannerFullWidth: StoryblokActionBannerFullWidth,
+	storyblokHero: StoryblokHero,
+};
+
+const infoPageComponents = {
+	cardGridRowBasic: CardGridRow,
+	cardGridRowCallout: CardGridRow,
+	cardGridRowCalloutWithImage: CardGridRow,
+	imageRichText: StoryblokImageRichText,
+	infogramEmbed: ClientInfogramEmbed,
+	infoPage: InfoPage,
+	nestedTable: StoryblokTable,
+};
+
 export const allComponents: SbReactComponentsMap = {
 	...commonComponents,
-	...infoPageComponents,
+	...articleComponents,
+	...blogComponents,
 	...categoryLandingPageComponents,
 	...categoryNavigationPageComponents,
+	...homepageComponents,
+	...infoPageComponents,
 };
 
 // Init connection to Storyblok

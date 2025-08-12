@@ -20,6 +20,26 @@ import { GENERIC_ERROR_MESSAGE } from "@/utils/storyblok";
 
 import Home, { type HomePageProps, getServerSideProps } from "./index.page";
 
+jest.mock("@storyblok/react", () => {
+	const actual = jest.requireActual("@storyblok/react");
+
+	return {
+		...actual,
+		__esModule: true,
+		storyblokInit: jest.fn(),
+		// eslint-disable-next-line @typescript-eslint/no-explicit-any
+		StoryblokComponent: ({ blok }: { blok: any }) => (
+			<div data-testid={`storyblok-component-${blok.component}`}>
+				{blok.component}
+			</div>
+		),
+		getStoryblokApi: jest.fn(() => ({
+			get: jest.fn(),
+			getAll: jest.fn(),
+		})),
+	};
+});
+
 // Mock a second article with a different ID so we avoid duplicate key warnings
 const secondNewsArticle = {
 	...mockNewsArticle,
@@ -50,8 +70,11 @@ const expectedErrorMessage = GENERIC_ERROR_MESSAGE;
 
 describe("Homepage", () => {
 	it("should match snapshot for main content", () => {
-		const { container } = render(<Home {...props} />);
-		expect(container).toMatchSnapshot();
+		render(<Home {...props} />);
+		expect(
+			screen.getByTestId("storyblok-component-homepage")
+		).toBeInTheDocument();
+		expect(document.body).toMatchSnapshot();
 	});
 
 	it("Should render error content when error is passed as a prop", async () => {
