@@ -300,7 +300,13 @@ process.env.NODE_TLS_REJECT_UNAUTHORIZED = "0";
 ```
    Replace `product` with the actual product ID from local Publications.
 
-### Debugging Next-Web locally
+## Design Sytem dependencies
+### Previewing changes from design sytem
+    - Navigate to the `web` directory in your termimal in Visual Studio code and install Nice Design Sytem alpha version.
+    - If you are facing issues with specific component install them seperately to the corresponding alpha versions.
+    - Once your compoent changes are release ,install the latest design system version
+
+## Debugging Next-Web locally
 To debug next-web locally, follow these steps:
 
 1. **Install required packages:**
