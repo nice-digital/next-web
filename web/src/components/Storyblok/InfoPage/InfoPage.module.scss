@@ -22,6 +22,10 @@
   /* stylelint-disable-next-line selector-class-pattern */
   :global(.list--unstyled .card:last-child) {
     margin: utils.rem(0 0 spacing.$large 0);
+  //target lite youtube embed wrapper - (video) is hardcoded at the start of every title
+  [data-title^='(video)'] {
+    margin: utils.rem(spacing.$large) 0 utils.rem(spacing.$large);
+    max-width: 66ch;
   }
   /* stylelint-disable-next-line selector-max-compound-selectors */
   .content > div > div > h2 {
