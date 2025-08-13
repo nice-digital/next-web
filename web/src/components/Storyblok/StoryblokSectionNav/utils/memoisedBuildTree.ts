@@ -21,13 +21,21 @@ function getFreshTTL(): number {
 	return getSectionNavCacheTTL_MS();
 }
 
+// NOTE remove this one minute stale code
+// function getStaleTTL(): number {
+// 	return getSectionNavCacheTTL_MS() + 60 * 1000; // 60s stale after fresh
+// }
+
 /**
  * Get the stale TTL (stale-while-revalidate window) in milliseconds
- * Allows serving stale content for 1 minute after fresh TTL expires
+ * Allows serving stale content for up to 6 hours after fresh TTL expires
  */
 function getStaleTTL(): number {
-	return getSectionNavCacheTTL_MS() + 60 * 1000; // 60s stale after fresh
+  const freshTTL = getSectionNavCacheTTL_MS();
+  const staleWindow = 6 * 60 * 60 * 1000; // 6 hours in ms
+  return freshTTL + staleWindow;
 }
+
 
 // Export these for backwards compatibility and testing
 export const sectionNavCacheTTL_MS = getSectionNavCacheTTL_MS();
