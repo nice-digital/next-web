@@ -5,19 +5,34 @@ import { logger } from "@/logger";
 
 import { buildTree, ExtendedSBLink } from "./Utils";
 
-// Default to 6 hours if env var is not set
-// export const sectionNavCacheTTL_MS =
-// 	(serverRuntimeConfig?.cache?.sectionNavCacheTTL ?? 21600) * 1000;
+/**
+ * Get the section navigation cache TTL in milliseconds from runtime config
+ * Falls back to 21600 seconds (6 hours) if not configured
+ */
+function getSectionNavCacheTTL_MS(): number {
+	const ttlSeconds = serverRuntimeConfig?.cache?.sectionNavCacheTTL ?? 21600;
+	return ttlSeconds * 1000;
+}
 
-// NOTE Hardcoded cache duration because serverRuntime is falsey for some reason...
-export const sectionNavCacheTTL_MS = 15 * 1000; // 15 seconds for dev testing
+/**
+ * Get the fresh TTL (cache expiry time) in milliseconds
+ */
+function getFreshTTL(): number {
+	return getSectionNavCacheTTL_MS();
+}
 
-// Stale-while-revalidate config:
-// Fresh window = standard TTL from config
-// Stale window = allow serving stale content for up to 1h after fresh window
-export const FRESH_TTL = sectionNavCacheTTL_MS; // fresh window
-// export const STALE_TTL = sectionNavCacheTTL_MS + 60 * 60 * 1000; // stale allowed for 1h after expiry
-export const STALE_TTL = sectionNavCacheTTL_MS + 60 * 1000; // 60s stale after fresh
+/**
+ * Get the stale TTL (stale-while-revalidate window) in milliseconds
+ * Allows serving stale content for 1 minute after fresh TTL expires
+ */
+function getStaleTTL(): number {
+	return getSectionNavCacheTTL_MS() + 60 * 1000; // 60s stale after fresh
+}
+
+// Export these for backwards compatibility and testing
+export const sectionNavCacheTTL_MS = getSectionNavCacheTTL_MS();
+export const FRESH_TTL = getFreshTTL();
+export const STALE_TTL = getStaleTTL();
 
 type CacheEntry<T> = {
 	data: T;
@@ -80,11 +95,9 @@ export const buildTreeWithOptionalCache = async (
 	isRootPage: boolean | undefined,
 	res?: GetServerSidePropsContext["res"]
 ): Promise<ExtendedSBLink[]> => {
-	// const ttl = serverRuntimeConfig?.cache?.sectionNavCacheTTL;
-	// const isCachingEnabled = !!ttl && ttl > 0;
-
-	// NOTE hardcoded ttl as server runtime is undefined for some reason...
-	 const isCachingEnabled = sectionNavCacheTTL_MS > 0;
+	// Get current TTL values dynamically from config
+	const currentTTL = getSectionNavCacheTTL_MS();
+	const isCachingEnabled = currentTTL > 0;
 
 	const start = Date.now();
 	let status = "UNKNOWN";
@@ -101,14 +114,16 @@ export const buildTreeWithOptionalCache = async (
 		tree = await rawBuildTree(parentID, slug, isRootPage);
 	} else {
 		const entry = cache.get(cacheKey);
+		const freshTTL = getFreshTTL();
+		const staleTTL = getStaleTTL();
 
 		if (entry) {
 			const age = now - entry.lastFetched;
 
-			if (age < FRESH_TTL) {
+			if (age < freshTTL) {
 				status = "HIT";
 				tree = entry.data;
-			} else if (age < STALE_TTL) {
+			} else if (age < staleTTL) {
 				status = "STALE";
 				tree = entry.data;
 				// Trigger background refresh but don't block
@@ -134,7 +149,7 @@ export const buildTreeWithOptionalCache = async (
 		res.setHeader("X-Section-Navigation-BuildTime", `${duration}ms`);
 		res.setHeader(
 			"X-Section-Navigation-Cache-TTL",
-			`${sectionNavCacheTTL_MS / 1000}s`
+			`${currentTTL / 1000}s`
 		);
 	}
 

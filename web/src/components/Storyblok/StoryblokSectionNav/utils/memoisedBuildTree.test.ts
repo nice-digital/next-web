@@ -1,8 +1,17 @@
 import { ServerResponse } from "http";
 import { logger } from "@/logger";
 
-// Import the exported TTLs
-import { sectionNavCacheTTL_MS, FRESH_TTL, STALE_TTL } from "./memoisedBuildTree";
+// Mock the config before importing the module under test
+const mockConfig = {
+	serverRuntimeConfig: {
+		cache: {
+			sectionNavCacheTTL: 1  // 1 second for tests
+		}
+	}
+};
+
+// Mock the config module
+jest.mock("@/config", () => mockConfig);
 
 // Mock Storyblok fetch
 jest.mock("@/utils/storyblok", () => ({
@@ -16,11 +25,6 @@ jest.mock("@/utils/storyblok", () => ({
 			published: true,
 		},
 	]),
-}));
-
-// Default TTL = 1 second for tests
-jest.mock("@/config", () => ({
-	serverRuntimeConfig: { cache: { sectionNavCacheTTL: 1 } },
 }));
 
 interface MockRes extends Partial<ServerResponse> {
@@ -66,8 +70,9 @@ describe("buildTreeWithOptionalCache SWR", () => {
 		expect(res1._headers["X-Section-Navigation-Cache"]).toBe("MISS");
 
 		// artificially advance time to between FRESH_TTL and STALE_TTL
+		// FRESH_TTL = 1 second (from mock config), STALE_TTL = 1 second + 60 seconds
 		jest.useFakeTimers();
-		jest.setSystemTime(Date.now() + FRESH_TTL + 10);
+		jest.setSystemTime(Date.now() + 1000 + 10); // Just past fresh TTL
 
 		const res2 = makeRes();
 		await buildTreeWithOptionalCache(1, "slug", false, res2 as ServerResponse);
@@ -84,7 +89,8 @@ describe("buildTreeWithOptionalCache SWR", () => {
 		expect(res1._headers["X-Section-Navigation-Cache"]).toBe("MISS");
 
 		jest.useFakeTimers();
-		jest.setSystemTime(Date.now() + STALE_TTL + 10);
+		// STALE_TTL = 1 second + 60 seconds = 61 seconds
+		jest.setSystemTime(Date.now() + 61000 + 10); // Just past stale TTL
 
 		const res2 = makeRes();
 		await buildTreeWithOptionalCache(1, "slug", false, res2 as ServerResponse);
@@ -93,20 +99,21 @@ describe("buildTreeWithOptionalCache SWR", () => {
 		jest.useRealTimers();
 	});
 
-	// TODO this test is skipped until the config being unavailable in runtime issue can be fixed
-	it.skip("bypasses cache when TTL=0", async () => {
-		jest.doMock("@/config", () => ({
-			serverRuntimeConfig: { cache: { sectionNavCacheTTL: 0 } },
-		}));
+	it("bypasses cache when TTL=0", async () => {
+		// Update the mock config to have TTL=0
+		mockConfig.serverRuntimeConfig.cache.sectionNavCacheTTL = 0;
+
+		// Clear the module cache to force re-evaluation with new config
 		jest.resetModules();
 
-		const { buildTreeWithOptionalCache: bypassed } = await import(
-			"./memoisedBuildTree"
-		);
+		const { buildTreeWithOptionalCache } = await import("./memoisedBuildTree");
 
 		const res = makeRes();
-		await bypassed(1, "slug", false, res as ServerResponse);
+		await buildTreeWithOptionalCache(1, "slug", false, res as ServerResponse);
 		expect(res._headers["X-Section-Navigation-Cache"]).toBe("BYPASSED");
+
+		// Reset config for other tests
+		mockConfig.serverRuntimeConfig.cache.sectionNavCacheTTL = 1;
 	});
 
 	it("always sets BuildTime and Cache-TTL headers", async () => {
