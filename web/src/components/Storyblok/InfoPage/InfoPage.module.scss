@@ -1,9 +1,10 @@
 @use '@nice-digital/nds-core/scss/colours';
+@use '@nice-digital/nds-core/scss/layout';
 @use '@nice-digital/nds-core/scss/media-queries';
 @use '@nice-digital/nds-core/scss/spacing';
 @use '@nice-digital/nds-core/scss/typography';
 @use '@nice-digital/nds-core/scss/utils';
-@use '@nice-digital/nds-core/scss/layout';
+
 
 .infoPage {
   $self: &;
@@ -16,17 +17,17 @@
     }
   }
   /* stylelint-disable-next-line selector-class-pattern */
-  :global(.list--unstyled) {
+  :global(.card-list) {
     max-width: layout.$readable-width;
   }
   /* stylelint-disable-next-line selector-class-pattern */
-  :global(.list--unstyled .card:last-child) {
+  :global(.card-list) {
     margin: utils.rem(0 0 spacing.$large 0);
   }
   //target lite youtube embed wrapper - (video) is hardcoded at the start of every title
   [data-title^='(video)'] {
     margin: utils.rem(spacing.$large) 0 utils.rem(spacing.$large);
-    max-width: 66ch;
+    max-width: layout.$readable-width;
   }
   /* stylelint-disable-next-line selector-max-compound-selectors */
   .content > div > div > h2 {
