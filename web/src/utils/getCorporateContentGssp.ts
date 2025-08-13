@@ -82,14 +82,13 @@ export const getCorporateContentGssp = <
 				storyResult.story?.content.hideSectionNav !== "true" &&
 				parentID !== null
 			) {
-				// Use memoised build with optional cache headers
+				// Use memoised build with SWR + background refresh + cache headers
 				tree = await buildTreeWithOptionalCache(
 					parentID,
 					slug,
 					isRootPage,
 					res
 				);
-				// TODO: move out of catchall page; would need API route as GSSP is not allowed in components whilst using pages router
 			}
 
 			res.setHeader(
@@ -111,10 +110,6 @@ export const getCorporateContentGssp = <
 
 			return result;
 		} catch (error) {
-			// {
-			// 	errorCause: error instanceof Error && error.cause,
-			// 	requestHeaders: context.req.headers,
-			// },
 			logger.error(
 				`Error fetching story for slug: ${slug} in SlugCatchAll page getServerSideProps.`
 			);

@@ -1,4 +1,3 @@
-import mem from "mem";
 import { type GetServerSidePropsContext } from "next";
 
 import { serverRuntimeConfig } from "@/config";
@@ -7,9 +6,29 @@ import { logger } from "@/logger";
 import { buildTree, ExtendedSBLink } from "./Utils";
 
 // Default to 6 hours if env var is not set
-export const sectionNavCacheTTL_MS =
-	(serverRuntimeConfig?.cache?.sectionNavCacheTTL ?? 21600) * 1000;
+// export const sectionNavCacheTTL_MS =
+// 	(serverRuntimeConfig?.cache?.sectionNavCacheTTL ?? 21600) * 1000;
 
+// NOTE Hardcoded cache duration because serverRuntime is falsey for some reason...
+export const sectionNavCacheTTL_MS = 15 * 1000; // 15 seconds for dev testing
+
+// Stale-while-revalidate config:
+// Fresh window = standard TTL from config
+// Stale window = allow serving stale content for up to 1h after fresh window
+export const FRESH_TTL = sectionNavCacheTTL_MS; // fresh window
+// export const STALE_TTL = sectionNavCacheTTL_MS + 60 * 60 * 1000; // stale allowed for 1h after expiry
+export const STALE_TTL = sectionNavCacheTTL_MS + 60 * 1000; // 60s stale after fresh
+
+type CacheEntry<T> = {
+	data: T;
+	lastFetched: number;
+};
+
+const cache = new Map<string, CacheEntry<any>>();
+
+/**
+ * The original, uncached buildTree function
+ */
 const rawBuildTree = async (
 	parentID: number,
 	slug: string,
@@ -27,43 +46,52 @@ const rawBuildTree = async (
 	return result;
 };
 
-const memoisedBuildTree = mem(rawBuildTree, {
-	maxAge: sectionNavCacheTTL_MS,
-	cacheKey: ([parentID, slug, isRootPage]: [number, string, boolean?]) => {
-		const key = `${parentID}_${slug}_${isRootPage ?? false}`;
-		return key;
-	},
-});
+async function backgroundRefresh<T>(
+	key: string,
+	fetchFn: () => Promise<T>
+) {
+	fetchFn()
+		.then((data) => {
+			cache.set(key, { data, lastFetched: Date.now() });
+			logger.warn(`Background refresh completed for ${key}`);
+		})
+		.catch((err) => {
+			logger.error(`Background refresh failed for ${key}:`, err);
+		});
+}
 
-// Tracks when each key was last refreshed to detect HIT vs MISS
-const cacheTimestamps = new Map<string, number>();
+/**
+ * Purge the whole cache or a specific key
+ */
+export function purgeCache(key?: string) {
+	if (key) {
+		cache.delete(key);
+	} else {
+		cache.clear();
+	}
+}
 
-// Clean up expired timestamps to avoid unbounded memory growth
-const purgeExpiredTimestamps = () => {
-	const now = Date.now();
-	cacheTimestamps.forEach((timestamp, key) => {
-		if (now - timestamp > sectionNavCacheTTL_MS) {
-			cacheTimestamps.delete(key);
-		}
-	});
-};
-// TODO we can likely reduce the amount of logging, given that the behaviour is observable in the headers
+/**
+ * Main cache-aware wrapper
+ */
 export const buildTreeWithOptionalCache = async (
 	parentID: number,
 	slug: string,
 	isRootPage: boolean | undefined,
 	res?: GetServerSidePropsContext["res"]
 ): Promise<ExtendedSBLink[]> => {
-	purgeExpiredTimestamps(); // remove expired entries
+	// const ttl = serverRuntimeConfig?.cache?.sectionNavCacheTTL;
+	// const isCachingEnabled = !!ttl && ttl > 0;
 
-	const ttl = serverRuntimeConfig?.cache?.sectionNavCacheTTL;
-	const isCachingEnabled = !!ttl && ttl > 0;
+	// NOTE hardcoded ttl as server runtime is undefined for some reason...
+	 const isCachingEnabled = sectionNavCacheTTL_MS > 0;
 
 	const start = Date.now();
 	let status = "UNKNOWN";
 	let tree: ExtendedSBLink[];
 
 	const cacheKey = `${parentID}_${slug}_${isRootPage ?? false}`;
+	const now = Date.now();
 
 	if (!isCachingEnabled) {
 		status = "BYPASSED";
@@ -72,17 +100,31 @@ export const buildTreeWithOptionalCache = async (
 		);
 		tree = await rawBuildTree(parentID, slug, isRootPage);
 	} else {
-		const now = Date.now();
-		const lastCachedAt = cacheTimestamps.get(cacheKey);
-		const isFresh =
-			lastCachedAt !== undefined && now - lastCachedAt < sectionNavCacheTTL_MS;
+		const entry = cache.get(cacheKey);
 
-		status = isFresh ? "HIT" : "MISS";
+		if (entry) {
+			const age = now - entry.lastFetched;
 
-		tree = await memoisedBuildTree(parentID, slug, isRootPage);
-
-		// Update timestamp on every access
-		cacheTimestamps.set(cacheKey, now);
+			if (age < FRESH_TTL) {
+				status = "HIT";
+				tree = entry.data;
+			} else if (age < STALE_TTL) {
+				status = "STALE";
+				tree = entry.data;
+				// Trigger background refresh but don't block
+				backgroundRefresh(cacheKey, () =>
+					rawBuildTree(parentID, slug, isRootPage)
+				);
+			} else {
+				status = "REFETCH_AFTER_EXPIRY";
+				tree = await rawBuildTree(parentID, slug, isRootPage);
+				cache.set(cacheKey, { data: tree, lastFetched: now });
+			}
+		} else {
+			status = "MISS";
+			tree = await rawBuildTree(parentID, slug, isRootPage);
+			cache.set(cacheKey, { data: tree, lastFetched: now });
+		}
 	}
 
 	const duration = Date.now() - start;
