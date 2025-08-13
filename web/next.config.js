@@ -376,7 +376,7 @@ const nextConfig = {
 			},
 			{
 				source:
-					"/about/what-we-do/our-programmes/nice-guidance/nice-about-technology-appraisal-guidance/changes-to-health-technology-evaluation",
+					"/about/what-we-do/our-programmes/nice-guidance/nice-:about(about-)?technology-appraisal-guidance/changes-to-health-technology-evaluation",
 				destination:
 					"/what-nice-does/our-guidance/about-technology-appraisal-guidance/our-methods-and-processes-health-technology-evaluation-manual",
 				permanent: true,
