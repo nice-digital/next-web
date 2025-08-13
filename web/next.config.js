@@ -587,6 +587,12 @@ const nextConfig = {
 			},
 			{
 				source:
+					"/about/what-we-do/our-programmes/nice-guidance/interventional-procedures-guidance/timeline",
+				destination: "/process/pmg28/chapter/introduction",
+				permanent: true,
+			},
+			{
+				source:
 					"/about/what-we-do/our-programmes/nice-guidance/nice-guidelines/nice-medicines-practice-guidelines",
 				destination:
 					"/what-nice-does/our-guidance/about-nice-guidelines/how-we-develop-nice-guidelines",
