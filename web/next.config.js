@@ -3008,16 +3008,6 @@ const nextConfig = {
 				permanent: true,
 			},
 			{
-				source: "/bnfc-uk-only",
-				destination: "/bnfc-via-nice-is-only-available-in-the-uk",
-				permanent: true,
-			},
-			{
-				source: "/bnf-uk-only",
-				destination: "/bnf-via-nice-is-only-available-in-the-uk",
-				permanent: true,
-			},
-			{
 				source: "/cks-uk-only",
 				destination: "/cks-is-only-available-in-the-uk",
 				permanent: true,
