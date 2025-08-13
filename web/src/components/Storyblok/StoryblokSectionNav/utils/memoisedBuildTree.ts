@@ -42,6 +42,68 @@ type CacheEntry<T> = {
 const cache = new Map<string, CacheEntry<any>>();
 
 /**
+ * Clean up expired cache entries
+ */
+function cleanupExpiredEntries(): number {
+	const now = Date.now();
+	const staleTTL = getStaleTTL();
+	let cleanedCount = 0;
+
+	// Use Array.from to convert iterator for compatibility
+	const entries = Array.from(cache.entries());
+	for (const [key, entry] of entries) {
+		if (now - entry.lastFetched > staleTTL) {
+			cache.delete(key);
+			cleanedCount++;
+		}
+	}
+
+	if (cleanedCount > 0) {
+		logger.warn(`Section navigation cache: cleaned up ${cleanedCount} expired entries`);
+	}
+
+	return cleanedCount;
+}
+
+/**
+ * Start periodic cleanup of expired cache entries
+ * Runs every hour to prevent memory leaks
+ */
+function startPeriodicCleanup(): NodeJS.Timeout {
+	const cleanupInterval = 60 * 60 * 1000; // 1 hour
+	logger.warn("Section navigation cache: starting periodic cleanup (every 1 hour)");
+
+	return setInterval(() => {
+		cleanupExpiredEntries();
+	}, cleanupInterval);
+}
+
+// Start the cleanup when module loads
+let cleanupTimer: NodeJS.Timeout | null = null;
+if (typeof global !== 'undefined') {
+	// Only start cleanup in server environment
+	cleanupTimer = startPeriodicCleanup();
+}
+
+/**
+ * Stop periodic cleanup (useful for testing or cleanup)
+ */
+export function stopPeriodicCleanup(): void {
+	if (cleanupTimer) {
+		clearInterval(cleanupTimer);
+		cleanupTimer = null;
+		logger.warn("Section navigation cache: stopped periodic cleanup");
+	}
+}
+
+/**
+ * Manually trigger cleanup and return count of cleaned entries
+ */
+export function manualCleanup(): number {
+	return cleanupExpiredEntries();
+}
+
+/**
  * The original, uncached buildTree function
  */
 const rawBuildTree = async (
@@ -132,6 +194,7 @@ export const buildTreeWithOptionalCache = async (
 				);
 			} else {
 				status = "REFETCH_AFTER_EXPIRY";
+				cache.delete(cacheKey); // Clean up expired entry
 				tree = await rawBuildTree(parentID, slug, isRootPage);
 				cache.set(cacheKey, { data: tree, lastFetched: now });
 			}
