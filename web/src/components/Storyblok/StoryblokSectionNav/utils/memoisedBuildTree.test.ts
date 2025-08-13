@@ -90,8 +90,8 @@ describe("buildTreeWithOptionalCache SWR", () => {
 		expect(res1._headers["X-Section-Navigation-Cache"]).toBe("MISS");
 
 		jest.useFakeTimers();
-		// STALE_TTL = 1 second + 60 seconds = 61 seconds
-		jest.setSystemTime(Date.now() + 61000 + 10); // Just past stale TTL
+		// STALE_TTL = 1 second (fresh) + 6 hours (21600 seconds) = 21601 seconds
+		jest.setSystemTime(Date.now() + 21601000 + 10); // Just past stale TTL
 
 		const res2 = makeRes();
 		await buildTreeWithOptionalCache(1, "slug", false, res2 as ServerResponse);
@@ -170,7 +170,7 @@ describe("buildTreeWithOptionalCache SWR", () => {
 
 			// Advance time past STALE_TTL to expire entries
 			jest.useFakeTimers();
-			jest.setSystemTime(Date.now() + 61000 + 1000); // Past stale TTL
+			jest.setSystemTime(Date.now() + 21601000 + 1000); // Past stale TTL (1s fresh + 6h stale + buffer)
 
 			// Manually trigger cleanup
 			const cleanedCount = manualCleanup();
@@ -239,7 +239,7 @@ describe("buildTreeWithOptionalCache SWR", () => {
 
 			// Advance time past STALE_TTL to expire entry
 			jest.useFakeTimers();
-			jest.setSystemTime(Date.now() + 61000 + 1000); // Past stale TTL
+			jest.setSystemTime(Date.now() + 21601000 + 1000); // Past stale TTL (1s fresh + 6h stale + buffer)
 
 			// Access expired entry (should refetch and clean up old entry)
 			const res3 = makeRes();
