@@ -60,6 +60,7 @@ export const CardGrid: React.FC<CardGridProps> = ({ row }) => {
 				return (
 					<Card
 						headingText={heading}
+						className="card--flush"
 						link={cardLink || undefined}
 						summary={body}
 					/>
