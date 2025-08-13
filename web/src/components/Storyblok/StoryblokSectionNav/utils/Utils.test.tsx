@@ -1,7 +1,8 @@
-import { fetchLinks } from "@/utils/storyblok";
 import mockData from "@/mockData/storyblok/sectionNavData.json";
+import { fetchLinks } from "@/utils/storyblok";
 
 import * as sectionNavUtils from "./Utils";
+import { ExtendedSBLink } from "./Utils";
 
 jest.mock("@/utils/storyblok", () => ({
 	fetchLinks: jest.fn(),
@@ -140,7 +141,7 @@ describe("Storyblok Section Navigation Utils", () => {
 
 	describe("sectionNavIsPopulated", () => {
 		it("returns true for a non-empty array", () => {
-			const tree = (mockData as any).tree; // casting to avoid TS shape mismatch
+			const tree = (mockData as { tree: ExtendedSBLink[] }).tree; // casting to avoid TS shape mismatch
 			expect(sectionNavUtils.sectionNavIsPopulated(tree)).toBe(true);
 		});
 

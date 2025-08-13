@@ -39,7 +39,7 @@ type CacheEntry<T> = {
 	lastFetched: number;
 };
 
-const cache = new Map<string, CacheEntry<any>>();
+const cache = new Map<string, CacheEntry<ExtendedSBLink[]>>();
 
 /**
  * Clean up expired cache entries
@@ -59,7 +59,9 @@ function cleanupExpiredEntries(): number {
 	}
 
 	if (cleanedCount > 0) {
-		logger.warn(`Section navigation cache: cleaned up ${cleanedCount} expired entries`);
+		logger.warn(
+			`Section navigation cache: cleaned up ${cleanedCount} expired entries`
+		);
 	}
 
 	return cleanedCount;
@@ -71,7 +73,9 @@ function cleanupExpiredEntries(): number {
  */
 function startPeriodicCleanup(): NodeJS.Timeout {
 	const cleanupInterval = 60 * 60 * 1000; // 1 hour
-	logger.warn("Section navigation cache: starting periodic cleanup (every 1 hour)");
+	logger.warn(
+		"Section navigation cache: starting periodic cleanup (every 1 hour)"
+	);
 
 	return setInterval(() => {
 		cleanupExpiredEntries();
@@ -80,7 +84,7 @@ function startPeriodicCleanup(): NodeJS.Timeout {
 
 // Start the cleanup when module loads
 let cleanupTimer: NodeJS.Timeout | null = null;
-if (typeof global !== 'undefined') {
+if (typeof global !== "undefined") {
 	// Only start cleanup in server environment
 	cleanupTimer = startPeriodicCleanup();
 }
@@ -123,10 +127,10 @@ const rawBuildTree = async (
 	return result;
 };
 
-async function backgroundRefresh<T>(
+async function backgroundRefresh(
 	key: string,
-	fetchFn: () => Promise<T>
-) {
+	fetchFn: () => Promise<ExtendedSBLink[]>
+): Promise<void> {
 	fetchFn()
 		.then((data) => {
 			cache.set(key, { data, lastFetched: Date.now() });
@@ -140,7 +144,7 @@ async function backgroundRefresh<T>(
 /**
  * Purge the whole cache or a specific key
  */
-export function purgeCache(key?: string) {
+export function purgeCache(key?: string): void {
 	if (key) {
 		cache.delete(key);
 	} else {
@@ -210,10 +214,7 @@ export const buildTreeWithOptionalCache = async (
 	if (res) {
 		res.setHeader("X-Section-Navigation-Cache", status);
 		res.setHeader("X-Section-Navigation-BuildTime", `${duration}ms`);
-		res.setHeader(
-			"X-Section-Navigation-Cache-TTL",
-			`${currentTTL / 1000}s`
-		);
+		res.setHeader("X-Section-Navigation-Cache-TTL", `${currentTTL / 1000}s`);
 	}
 
 	return tree;

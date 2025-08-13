@@ -1,13 +1,14 @@
 import { ServerResponse } from "http";
+
 import { logger } from "@/logger";
 
 // Mock the config before importing the module under test
 const mockConfig = {
 	serverRuntimeConfig: {
 		cache: {
-			sectionNavCacheTTL: 1  // 1 second for tests
-		}
-	}
+			sectionNavCacheTTL: 1, // 1 second for tests
+		},
+	},
 };
 
 // Mock the config module
@@ -94,7 +95,9 @@ describe("buildTreeWithOptionalCache SWR", () => {
 
 		const res2 = makeRes();
 		await buildTreeWithOptionalCache(1, "slug", false, res2 as ServerResponse);
-		expect(res2._headers["X-Section-Navigation-Cache"]).toBe("REFETCH_AFTER_EXPIRY");
+		expect(res2._headers["X-Section-Navigation-Cache"]).toBe(
+			"REFETCH_AFTER_EXPIRY"
+		);
 
 		jest.useRealTimers();
 	});
@@ -130,23 +133,39 @@ describe("buildTreeWithOptionalCache SWR", () => {
 
 	describe("Cache cleanup functionality", () => {
 		it("should manually clean up expired entries", async () => {
-			const { buildTreeWithOptionalCache, manualCleanup, purgeCache } = await import("./memoisedBuildTree");
+			const { buildTreeWithOptionalCache, manualCleanup, purgeCache } =
+				await import("./memoisedBuildTree");
 
 			// Clear any existing cache
 			purgeCache();
 
 			// Add some cache entries
 			const res1 = makeRes();
-			await buildTreeWithOptionalCache(1, "test1", false, res1 as ServerResponse);
+			await buildTreeWithOptionalCache(
+				1,
+				"test1",
+				false,
+				res1 as ServerResponse
+			);
 			expect(res1._headers["X-Section-Navigation-Cache"]).toBe("MISS");
 
 			const res2 = makeRes();
-			await buildTreeWithOptionalCache(2, "test2", false, res2 as ServerResponse);
+			await buildTreeWithOptionalCache(
+				2,
+				"test2",
+				false,
+				res2 as ServerResponse
+			);
 			expect(res2._headers["X-Section-Navigation-Cache"]).toBe("MISS");
 
 			// Verify entries are cached (should be HITs now)
 			const res3 = makeRes();
-			await buildTreeWithOptionalCache(1, "test1", false, res3 as ServerResponse);
+			await buildTreeWithOptionalCache(
+				1,
+				"test1",
+				false,
+				res3 as ServerResponse
+			);
 			expect(res3._headers["X-Section-Navigation-Cache"]).toBe("HIT");
 
 			// Advance time past STALE_TTL to expire entries
@@ -161,13 +180,19 @@ describe("buildTreeWithOptionalCache SWR", () => {
 		});
 
 		it("should not clean up fresh entries during manual cleanup", async () => {
-			const { buildTreeWithOptionalCache, manualCleanup, purgeCache } = await import("./memoisedBuildTree");
+			const { buildTreeWithOptionalCache, manualCleanup, purgeCache } =
+				await import("./memoisedBuildTree");
 
 			purgeCache();
 
 			// Add a cache entry
 			const res1 = makeRes();
-			await buildTreeWithOptionalCache(1, "test1", false, res1 as ServerResponse);
+			await buildTreeWithOptionalCache(
+				1,
+				"test1",
+				false,
+				res1 as ServerResponse
+			);
 			expect(res1._headers["X-Section-Navigation-Cache"]).toBe("MISS");
 
 			// Immediately try cleanup (entry should still be fresh)
@@ -176,23 +201,40 @@ describe("buildTreeWithOptionalCache SWR", () => {
 
 			// Verify entry is still cached
 			const res2 = makeRes();
-			await buildTreeWithOptionalCache(1, "test1", false, res2 as ServerResponse);
+			await buildTreeWithOptionalCache(
+				1,
+				"test1",
+				false,
+				res2 as ServerResponse
+			);
 			expect(res2._headers["X-Section-Navigation-Cache"]).toBe("HIT");
 		});
 
 		it("should clean up expired entry on access", async () => {
-			const { buildTreeWithOptionalCache, purgeCache } = await import("./memoisedBuildTree");
+			const { buildTreeWithOptionalCache, purgeCache } = await import(
+				"./memoisedBuildTree"
+			);
 
 			purgeCache();
 
 			// Add a cache entry
 			const res1 = makeRes();
-			await buildTreeWithOptionalCache(1, "test1", false, res1 as ServerResponse);
+			await buildTreeWithOptionalCache(
+				1,
+				"test1",
+				false,
+				res1 as ServerResponse
+			);
 			expect(res1._headers["X-Section-Navigation-Cache"]).toBe("MISS");
 
 			// Access while fresh (should be cache hit)
 			const res2 = makeRes();
-			await buildTreeWithOptionalCache(1, "test1", false, res2 as ServerResponse);
+			await buildTreeWithOptionalCache(
+				1,
+				"test1",
+				false,
+				res2 as ServerResponse
+			);
 			expect(res2._headers["X-Section-Navigation-Cache"]).toBe("HIT");
 
 			// Advance time past STALE_TTL to expire entry
@@ -201,8 +243,15 @@ describe("buildTreeWithOptionalCache SWR", () => {
 
 			// Access expired entry (should refetch and clean up old entry)
 			const res3 = makeRes();
-			await buildTreeWithOptionalCache(1, "test1", false, res3 as ServerResponse);
-			expect(res3._headers["X-Section-Navigation-Cache"]).toBe("REFETCH_AFTER_EXPIRY");
+			await buildTreeWithOptionalCache(
+				1,
+				"test1",
+				false,
+				res3 as ServerResponse
+			);
+			expect(res3._headers["X-Section-Navigation-Cache"]).toBe(
+				"REFETCH_AFTER_EXPIRY"
+			);
 
 			jest.useRealTimers();
 		});
