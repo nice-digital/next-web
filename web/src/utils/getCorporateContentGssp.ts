@@ -82,6 +82,7 @@ export const getCorporateContentGssp = <
 				storyResult.story?.content.hideSectionNav !== "true" &&
 				parentID !== null
 			) {
+				// TODO: move out of catchall page; would need API route as GSSP is not allowed in components whilst using pages router
 				// Use memoised build with SWR + background refresh + cache headers
 				tree = await buildTreeWithOptionalCache(
 					parentID,
