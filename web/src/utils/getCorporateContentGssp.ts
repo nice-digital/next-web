@@ -111,6 +111,10 @@ export const getCorporateContentGssp = <
 
 			return result;
 		} catch (error) {
+			// {
+			// 	errorCause: error instanceof Error && error.cause,
+			// 	requestHeaders: context.req.headers,
+			// },
 			logger.error(
 				`Error fetching story for slug: ${slug} in SlugCatchAll page getServerSideProps.`
 			);
