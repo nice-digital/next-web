@@ -14,17 +14,13 @@ export default function TopicSuggestionForm(props: FormProps): JSX.Element {
 			lead=""
 			parentPages={[
 				{
-					title: "Prioritising our guidance topics",
-					path: "/about/what-we-do/prioritising-our-guidance-topics",
-				},
-				{
 					title: "What we do",
-					path: "/about/what-we-do",
+					path: "/what-nice-does/prioritising-our-guidance-topics",
 				},
 				{
-					title: "About",
-					path: "/about",
-				},
+					title: "What NICE does",
+					path: "/what-nice-does",
+				}
 			]}
 		/>
 	);

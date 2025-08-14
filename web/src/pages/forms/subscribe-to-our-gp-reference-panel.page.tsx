@@ -89,16 +89,12 @@ export default function SubscribeToOurGPReferencePanelForm(
 			lead="Contribute to the development of NICE guidance in a quick and easy way."
 			parentPages={[
 				{
-					title: "General practice",
-					path: "/about/nice-communities/generalpractice",
+					title: "General practice - keep your practice up-to-date",
+					path: "/implementing-nice-guidance/general-practice-keep-your-practice-up-to-date",
 				},
 				{
-					title: "NICE Communities",
-					path: "/about/nice-communities",
-				},
-				{
-					title: "About",
-					path: "/about",
+					title: "Implementing NICE guidance",
+					path: "/implementing-nice-guidance",
 				},
 			]}
 			formHeader={<FormHeader />}

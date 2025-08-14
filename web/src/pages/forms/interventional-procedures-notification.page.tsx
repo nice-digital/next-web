@@ -47,29 +47,21 @@ export default function InterventionalProceduresNotificationForm(
 			lead="Tell us about an interventional procedure you think should be assessed by NICE. This can be a new procedure or a review of our existing guidance."
 			parentPages={[
 				{
-					title: "Notify a procedure",
-					path: "/about/what-we-do/our-programmes/nice-guidance/nice-interventional-procedures-guidance/notify",
+					title: "Notify an interventional procedure",
+					path: "what-nice-does/our-guidance/about-interventional-procedures-guidance/notify-an-interventional-procedure",
 				},
 				{
-					title: "NICE interventional procedures guidance",
-					path: "/about/what-we-do/our-programmes/nice-guidance/nice-interventional-procedures-guidance",
+					title: "About interventional procedures guidance",
+					path: "what-nice-does/our-guidance/about-interventional-procedures-guidance",
 				},
 				{
-					title: "NICE guidance",
-					path: "/about/what-we-do/our-programmes/nice-guidance",
+					title: "Our guidance",
+					path: "what-nice-does/our-guidance",
 				},
 				{
-					title: "Our programmes",
-					path: "/about/what-we-do/our-programmes",
-				},
-				{
-					title: "What we do",
-					path: "/about/what-we-do",
-				},
-				{
-					title: "About",
-					path: "/about",
-				},
+					title: "What NICE does",
+					path: "what-nice-does",
+				}
 			]}
 			informationPanel={<InformationPanel />}
 		/>
