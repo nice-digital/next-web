@@ -48,19 +48,19 @@ export default function InterventionalProceduresNotificationForm(
 			parentPages={[
 				{
 					title: "Notify an interventional procedure",
-					path: "what-nice-does/our-guidance/about-interventional-procedures-guidance/notify-an-interventional-procedure",
+					path: "/what-nice-does/our-guidance/about-interventional-procedures-guidance/notify-an-interventional-procedure",
 				},
 				{
 					title: "About interventional procedures guidance",
-					path: "what-nice-does/our-guidance/about-interventional-procedures-guidance",
+					path: "/what-nice-does/our-guidance/about-interventional-procedures-guidance",
 				},
 				{
 					title: "Our guidance",
-					path: "what-nice-does/our-guidance",
+					path: "/what-nice-does/our-guidance",
 				},
 				{
 					title: "What NICE does",
-					path: "what-nice-does",
+					path: "/what-nice-does",
 				}
 			]}
 			informationPanel={<InformationPanel />}

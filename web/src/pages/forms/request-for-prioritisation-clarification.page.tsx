@@ -28,7 +28,7 @@ export default function RequestForPrioritisationClarificationForm(
 					path: "/what-nice-does/our-guidance",
 				},
 				{
-					title: "What NICE Does",
+					title: "What NICE does",
 					path: "/what-nice-does",
 				},
 			]}
