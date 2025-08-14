@@ -23,36 +23,18 @@ exports[`InternationalEnquiryForm should match snapshot 1`] = `
         class="breadcrumbs__crumb"
       >
         <a
-          href="/about"
+          href="/what-nice-does"
         >
-          About
+          What NICE does
         </a>
       </li>
       <li
         class="breadcrumbs__crumb"
       >
         <a
-          href="/about/what-we-do"
-        >
-          What we do
-        </a>
-      </li>
-      <li
-        class="breadcrumbs__crumb"
-      >
-        <a
-          href="/about/what-we-do/nice-international"
+          href="/what-nice-does/nice-international"
         >
           NICE International
-        </a>
-      </li>
-      <li
-        class="breadcrumbs__crumb"
-      >
-        <a
-          href="/about/what-we-do/nice-international/about-nice-international"
-        >
-          About NICE International
         </a>
       </li>
       <li
@@ -83,37 +65,21 @@ exports[`InternationalEnquiryForm should match snapshot 1`] = `
       "@type": "ListItem",
       "position": 2,
       "item": {
-        "@id": "/about",
-        "name": "About"
+        "@id": "/what-nice-does",
+        "name": "What NICE does"
       }
     },
     {
       "@type": "ListItem",
       "position": 3,
       "item": {
-        "@id": "/about/what-we-do",
-        "name": "What we do"
-      }
-    },
-    {
-      "@type": "ListItem",
-      "position": 4,
-      "item": {
-        "@id": "/about/what-we-do/nice-international",
+        "@id": "/what-nice-does/nice-international",
         "name": "NICE International"
       }
     },
     {
       "@type": "ListItem",
-      "position": 5,
-      "item": {
-        "@id": "/about/what-we-do/nice-international/about-nice-international",
-        "name": "About NICE International"
-      }
-    },
-    {
-      "@type": "ListItem",
-      "position": 6,
+      "position": 4,
       "item": {
         "name": "NICE International enquiry form"
       }

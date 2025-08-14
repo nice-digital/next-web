@@ -23,15 +23,6 @@ exports[`PrimaryCareNewsletterForm should match snapshot 1`] = `
         class="breadcrumbs__crumb"
       >
         <a
-          href="/news"
-        >
-          News
-        </a>
-      </li>
-      <li
-        class="breadcrumbs__crumb"
-      >
-        <a
           href="/nice-newsletters-and-alerts"
         >
           Newsletters and alerts
@@ -65,21 +56,13 @@ exports[`PrimaryCareNewsletterForm should match snapshot 1`] = `
       "@type": "ListItem",
       "position": 2,
       "item": {
-        "@id": "/news",
-        "name": "News"
-      }
-    },
-    {
-      "@type": "ListItem",
-      "position": 3,
-      "item": {
         "@id": "/nice-newsletters-and-alerts",
         "name": "Newsletters and alerts"
       }
     },
     {
       "@type": "ListItem",
-      "position": 4,
+      "position": 3,
       "item": {
         "name": "Subscribe to update for Primary Care"
       }
