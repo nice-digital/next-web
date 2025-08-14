@@ -17,22 +17,21 @@ function shouldSkip(pathname: string): boolean {
 }
 
 export function middleware(req: NextRequest): NextResponse {
-	const url = req.nextUrl.clone();
+	const url = req.nextUrl;
 	const pathname = url.pathname;
 
 	// Skip static/asset/manifest/api/internal requests
 	if (shouldSkip(pathname)) {
 		return NextResponse.next();
 	}
-
 	// If the path is already lowercase, do nothing
 	if (pathname === pathname.toLowerCase()) {
 		return NextResponse.next();
 	}
 
-	// Otherwise redirect to the lowercased path and preserve search/hash
-	url.pathname = pathname.toLowerCase();
-	return NextResponse.redirect(url, 308);
+	// Otherwise redirect to the lowercased path and preserve search/hash, but only use relative path to avoid host leaks
+	const lowerPath = pathname.toLowerCase() + url.search + url.hash;
+	return NextResponse.redirect(lowerPath, 308);
 }
 
 // Optional: broad matcher; middleware code will itself skip assets
