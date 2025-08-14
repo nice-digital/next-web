@@ -23,45 +23,36 @@ exports[`InterventionalProceduresRegisterAnInterestForm should match snapshot 1`
         class="breadcrumbs__crumb"
       >
         <a
-          href="/about"
+          href="/what-nice-does"
         >
-          About
+          What NICE does
         </a>
       </li>
       <li
         class="breadcrumbs__crumb"
       >
         <a
-          href="/about/what-we-do"
+          href="/what-nice-does/our-guidance"
         >
-          What we do
+          Our guidance
         </a>
       </li>
       <li
         class="breadcrumbs__crumb"
       >
         <a
-          href="/about/what-we-do/our-programmes"
+          href="/what-nice-does/our-guidance/about-interventional-procedures-guidance"
         >
-          Our programmes
+          About interventional procedures guidance
         </a>
       </li>
       <li
         class="breadcrumbs__crumb"
       >
         <a
-          href="/about/what-we-do/our-programmes/nice-guidance"
+          href="/what-nice-does/our-guidance/about-interventional-procedures-guidance/notify-an-interventional-procedure"
         >
-          NICE guidance
-        </a>
-      </li>
-      <li
-        class="breadcrumbs__crumb"
-      >
-        <a
-          href="/about/what-we-do/our-programmes/nice-guidance/nice-interventional-procedures-guidance"
-        >
-          NICE interventional procedures guidance
+          Notify an interventional procedure
         </a>
       </li>
       <li
@@ -92,45 +83,37 @@ exports[`InterventionalProceduresRegisterAnInterestForm should match snapshot 1`
       "@type": "ListItem",
       "position": 2,
       "item": {
-        "@id": "/about",
-        "name": "About"
+        "@id": "/what-nice-does",
+        "name": "What NICE does"
       }
     },
     {
       "@type": "ListItem",
       "position": 3,
       "item": {
-        "@id": "/about/what-we-do",
-        "name": "What we do"
+        "@id": "/what-nice-does/our-guidance",
+        "name": "Our guidance"
       }
     },
     {
       "@type": "ListItem",
       "position": 4,
       "item": {
-        "@id": "/about/what-we-do/our-programmes",
-        "name": "Our programmes"
+        "@id": "/what-nice-does/our-guidance/about-interventional-procedures-guidance",
+        "name": "About interventional procedures guidance"
       }
     },
     {
       "@type": "ListItem",
       "position": 5,
       "item": {
-        "@id": "/about/what-we-do/our-programmes/nice-guidance",
-        "name": "NICE guidance"
+        "@id": "/what-nice-does/our-guidance/about-interventional-procedures-guidance/notify-an-interventional-procedure",
+        "name": "Notify an interventional procedure"
       }
     },
     {
       "@type": "ListItem",
       "position": 6,
-      "item": {
-        "@id": "/about/what-we-do/our-programmes/nice-guidance/nice-interventional-procedures-guidance",
-        "name": "NICE interventional procedures guidance"
-      }
-    },
-    {
-      "@type": "ListItem",
-      "position": 7,
       "item": {
         "name": "Interventional procedures register an interest form"
       }

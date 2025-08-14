@@ -16,21 +16,12 @@ export default function PublicInvolvementForm(props: FormProps): JSX.Element {
 				{
 					title:
 						"People and communities - putting you at the heart of our work",
-					path: "/about/nice-communities/nice-and-the-public/public-involvement",
-				},
-
-				{
-					title: "NICE and the public",
-					path: "/about/nice-communities/nice-and-the-public",
+					path: "/get-involved/people-and-communities",
 				},
 				{
-					title: "NICE Communities",
-					path: "/about/nice-communities",
-				},
-				{
-					title: "About",
-					path: "/about",
-				},
+					title: "Get involved",
+					path: "/get-involved",
+				}
 			]}
 		/>
 	);

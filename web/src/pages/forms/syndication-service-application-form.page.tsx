@@ -17,16 +17,12 @@ export default function SyndicationServiceApplicationForm(
 			parentPages={[
 				{
 					title: "NICE syndication API",
-					path: "/about/what-we-do/nice-syndication-api",
+					path: "/reusing-our-content/nice-syndication-api",
 				},
 				{
-					title: "What we do",
-					path: "/about/what-we-do",
-				},
-				{
-					title: "About",
-					path: "/about",
-				},
+					title: "Reusing our content",
+					path: "/reusing-our-content",
+				}
 			]}
 		/>
 	);
