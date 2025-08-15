@@ -14,7 +14,11 @@
       margin-bottom: utils.rem(spacing.$large);
     }
   }
-
+  //target lite youtube embed wrapper - (video) is hardcoded at the start of every title
+  [data-title^='(video)'] {
+    margin: utils.rem(spacing.$large) 0 utils.rem(spacing.$large);
+    max-width: 66ch;
+  }
   /* stylelint-disable-next-line selector-max-compound-selectors */
   .content > div > div > h2 {
     // Bit ugly, but deals with rich text headings getting nudged down the page

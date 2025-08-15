@@ -12,7 +12,9 @@ Feature: Users can page through the list of published guidance page
     Then I expect the first pagination option is "1"
     When I click the second pagination option
 		Then I expect the first pagination option is "Previous page"
+    When I scroll to pagination element
 		And I click the next page option
 		And I click the previous page option
+    When I scroll to pagination element
 		And I click the previous page option
 		Then I expect the first pagination option is "1"
