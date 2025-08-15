@@ -1,40 +1,45 @@
-import { NextResponse, type NextRequest } from "next/server";
+import { NextResponse } from "next/server";
+import type { NextRequest } from "next/server";
 
-const SKIP_REGEXES: RegExp[] = [
-	/^\/_next\//,
-	/^\/static\//,
-	/^\/api\//,
-	/^\/favicon.ico$/,
-	/^\/sw.js$/,
-	/^\/manifest.json$/,
-	/^\/build-manifest.json$/,
-	/^\/react-loadable-manifest.json$/,
-	/^\/.*\.[^/]+$/, // any path containing a dot (file with extension)
+const SKIP_REGEXES = [
+  /^\/_next\//,
+  /^\/static\//,
+  /^\/api\//,
+  /^\/favicon.ico$/,
+  /^\/sw.js$/,
+  /^\/manifest\.json$/,
+  /^\/build-manifest\.json$/,
+  /^\/react-loadable-manifest\.json$/,
+  /^\/.*\.[^/]+$/,
 ];
 
-function shouldSkip(pathname: string): boolean {
-	return SKIP_REGEXES.some((re) => re.test(pathname));
+const shouldSkip = (p: string) => SKIP_REGEXES.some(re => re.test(p));
+
+export function middleware(req: NextRequest) {
+  const { pathname } = req.nextUrl;
+
+  if (shouldSkip(pathname)) return NextResponse.next();
+
+  const lower = pathname.toLowerCase();
+  if (pathname === lower) return NextResponse.next();
+
+  // Build an absolute URL from the actual request URL
+  const dest = new URL(req.url);
+  dest.pathname = lower; // search is already on req.url; keep it
+
+  // (Optional) honor proxy headers if you’re behind a CDN/LB
+  const xfProto = req.headers.get("x-forwarded-proto");
+  const xfHost  = req.headers.get("x-forwarded-host");
+  if (xfProto) dest.protocol = xfProto + ":";
+  if (xfHost)  dest.host = xfHost;
+console.log("redirecting", { from: req.url, to: dest.href });
+
+  // (Optional) avoid HTTPS on localhost to prevent SSL protocol errors
+  if (dest.hostname === "localhost" || dest.hostname === "127.0.0.1") {
+    dest.protocol = "http:";
+  }
+
+  return NextResponse.redirect(dest.href, 308);
 }
 
-export function middleware(req: NextRequest): NextResponse {
-	const url = req.nextUrl;
-	const pathname = url.pathname;
-
-	// Skip static/asset/manifest/api/internal requests
-	if (shouldSkip(pathname)) {
-		return NextResponse.next();
-	}
-	// If the path is already lowercase, do nothing
-	if (pathname === pathname.toLowerCase()) {
-		return NextResponse.next();
-	}
-
-	// Otherwise redirect to the lowercased path and preserve search/hash, but only use relative path to avoid host leaks
-	const lowerPath = pathname.toLowerCase() + url.search + url.hash;
-	return NextResponse.redirect(lowerPath, 308);
-}
-
-// Optional: broad matcher; middleware code will itself skip assets
-export const config = {
-	matcher: "/:path*",
-};
+export const config = { matcher: "/:path*" };
