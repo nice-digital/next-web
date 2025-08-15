@@ -1,8 +1,9 @@
-@use '@nice-digital/nds-core/scss/typography';
-@use '@nice-digital/nds-core/scss/spacing';
-@use '@nice-digital/nds-core/scss/utils';
-@use '@nice-digital/nds-core/scss/glyphs';
 @use '@nice-digital/nds-core/scss/colours';
+@use '@nice-digital/nds-core/scss/glyphs';
+@use '@nice-digital/nds-core/scss/layout';
+@use '@nice-digital/nds-core/scss/spacing';
+@use '@nice-digital/nds-core/scss/typography';
+@use '@nice-digital/nds-core/scss/utils';
 
 
 .quote {
@@ -49,6 +50,6 @@
     @include typography.font-size($scale: 0);
     font-style: normal;
     font-weight: bold;
-    max-width: 66ch;
+    max-width: layout.$readable-width;
   }
 }
