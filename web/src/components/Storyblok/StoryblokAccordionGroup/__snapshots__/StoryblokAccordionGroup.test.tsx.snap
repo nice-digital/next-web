@@ -31,7 +31,6 @@ exports[`Storyblok accordion group component should match snapshot 1`] = `
   </button>
   <div
     class="accordionGroup__content"
-    data-id="accordion-group"
   >
     <div
       class="accordion accordion--subtle"
