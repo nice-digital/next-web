@@ -14,6 +14,10 @@
       margin-bottom: utils.rem(spacing.$large);
     }
   }
+  /* stylelint-disable-next-line selector-class-pattern */
+  :global(.card__heading) {
+    margin: 0; /* ;no extra heading margins */
+  }
   //target lite youtube embed wrapper - (video) is hardcoded at the start of every title
   [data-title^='(video)'] {
     margin: utils.rem(spacing.$large) 0 utils.rem(spacing.$large);
