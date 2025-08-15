@@ -28,6 +28,7 @@ export const CardList: React.FC<CardListProps> = ({ blok }: CardListProps) => {
 				return (
 					<Card
 						elementType="li"
+						className="card--flush"
 						headingText={heading}
 						headingLevel={headingLevel || undefined}
 						link={cardLink || undefined}

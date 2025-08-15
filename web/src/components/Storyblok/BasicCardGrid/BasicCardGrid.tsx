@@ -32,6 +32,7 @@ export const BasicCardGrid = ({
 						<Card
 							headingText={heading}
 							headingLevel={headingLevel || undefined}
+							className="card--flush"
 							link={cardLink || undefined}
 							summary={body}
 						/>

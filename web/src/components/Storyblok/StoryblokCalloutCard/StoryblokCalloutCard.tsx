@@ -44,6 +44,7 @@ export const StoryblokCalloutCard: React.FC<StoryblokCalloutCardProps> = ({
 		<Card
 			headingText={heading}
 			headingLevel={headingLevel || undefined}
+			className="card--flush"
 			callout
 			link={cardLink}
 			image={renderImage()}
