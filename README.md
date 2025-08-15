@@ -7,6 +7,7 @@
     - [Linting](#linting)
     - [Tests](#tests)
   - [JotForms Integration](#jotforms-integration)
+  - [Setting up Ocelot for Storyblok](#setting-up-ocelot-for-storyblok)
 
 <!-- END doctoc generated TOC please keep comment here to allow auto update -->
 
