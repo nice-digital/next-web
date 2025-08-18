@@ -1,5 +1,5 @@
 import { NextResponse, type NextRequest } from "next/server";
-
+import { logger } from "@/logger";
 const SKIP_REGEXES: RegExp[] = [
 	/^\/_next\//,
 	/^\/static\//,
@@ -19,7 +19,9 @@ function shouldSkip(pathname: string): boolean {
 export function middleware(req: NextRequest): NextResponse {
 	const url = req.nextUrl.clone();
 	const pathname = url.pathname;
-
+	logger.warn(`Request: ${JSON.stringify(req)}`);
+	logger.warn(`Request URL: ${url}`);
+	logger.warn(`Request pathname: ${pathname}`);
 	// Skip static/asset/manifest/api/internal requests
 	if (shouldSkip(pathname)) {
 		return NextResponse.next();
@@ -27,15 +29,16 @@ export function middleware(req: NextRequest): NextResponse {
 
 	// If the path is already lowercase, do nothing
 	if (pathname === pathname.toLowerCase()) {
+		logger.warn(`Request pathname is already lowercase: ${pathname}`);
 		return NextResponse.next();
 	}
 
 	// Otherwise redirect to the lowercased path and preserve search/hash
 	// url.pathname = pathname.toLowerCase();
 	// return NextResponse.redirect(url, 308);
-	return NextResponse.redirect(
-		new URL(url.origin + url.pathname.toLowerCase())
-	);
+	const redirectURL = new URL(url.origin + url.pathname.toLowerCase());
+	logger.warn(`Redirecting to lowercase pathname: ${redirectURL}`);
+	return NextResponse.redirect(redirectURL);
 }
 
 // Optional: broad matcher; middleware code will itself skip assets
