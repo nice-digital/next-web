@@ -18,11 +18,7 @@ export default function MedicinesAndPrescribingNewsletterForm(
 				{
 					title: "Newsletters and alerts",
 					path: "/nice-newsletters-and-alerts",
-				},
-				{
-					title: "News",
-					path: "/news",
-				},
+				}
 			]}
 			formHeader={
 				<>
