@@ -68,7 +68,25 @@ describe("Callout card component", () => {
 		expect(cardHeading).toHaveAttribute("href", cardLinkUrl);
 		expect(cardBody).toBeInTheDocument();
 	});
-
+	it("renders Card content heading level correctly", () => {
+		const mockCalloutCardPropsWithHeadingLevel = {
+			blok: {
+				...mockCalloutCardProps.blok,
+				headingLevel: "3",
+			},
+		};
+		render(
+			<StoryblokCalloutCard
+				{...(mockCalloutCardPropsWithHeadingLevel as StoryblokCalloutCardProps)}
+			/>
+		);
+		expect(
+			screen.getByRole("heading", {
+				level: 3,
+				name: "Mock card title",
+			})
+		).toBeInTheDocument();
+	});
 	it("should render a heading, body text and link for callout card component with internal link", () => {
 		const internalLink = {
 			id: "600c4173-54de-4d42-b7cb-92feb3c92228",

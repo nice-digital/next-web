@@ -181,6 +181,7 @@ export interface ButtonLinkStoryblok {
 
 export interface CalloutCardStoryblok {
   heading: string;
+  headingLevel?: "" | "2" | "3" | "4" | "5" | "6";
   body: string;
   link: Exclude<MultilinkStoryblok, {linktype?: "email"} | {linktype?: "asset"}>;
   component: "calloutCard";
@@ -190,6 +191,7 @@ export interface CalloutCardStoryblok {
 
 export interface CalloutCardWithImageStoryblok {
   heading: string;
+  headingLevel?: "" | "2" | "3" | "4" | "5" | "6";
   body: string;
   link: Exclude<MultilinkStoryblok, {linktype?: "email"} | {linktype?: "asset"}>;
   image: AssetStoryblok;
@@ -200,6 +202,7 @@ export interface CalloutCardWithImageStoryblok {
 
 export interface CardStoryblok {
   heading: string;
+  headingLevel?: "" | "2" | "3" | "4" | "5" | "6";
   body: string;
   link?: MultilinkStoryblok;
   component: "card";
@@ -286,6 +289,7 @@ export interface CardListSectionStoryblok {
 
 export interface CardListSectionItemStoryblok {
   heading: string;
+  headingLevel?: "" | "2" | "3" | "4" | "5" | "6";
   body: string;
   link: MultilinkStoryblok;
   component: "cardListSectionItem";
