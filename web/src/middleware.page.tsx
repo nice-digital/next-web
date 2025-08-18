@@ -1,6 +1,4 @@
-import { NextResponse } from "next/server";
-
-import type { NextRequest } from "next/server";
+import { NextResponse, type NextRequest } from "next/server";
 
 const SKIP_REGEXES: RegExp[] = [
 	/^\/_next\//,
@@ -8,28 +6,39 @@ const SKIP_REGEXES: RegExp[] = [
 	/^\/api\//,
 	/^\/favicon.ico$/,
 	/^\/sw.js$/,
-	/^\/manifest\.json$/,
-	/^\/build-manifest\.json$/,
-	/^\/react-loadable-manifest\.json$/,
-	/^\/.*\.[^/]+$/,
+	/^\/manifest.json$/,
+	/^\/build-manifest.json$/,
+	/^\/react-loadable-manifest.json$/,
+	/^\/.*\.[^/]+$/, // any path containing a dot (file with extension)
 ];
 
-const shouldSkip = (p: string): boolean =>
-	SKIP_REGEXES.some((re) => re.test(p));
-
-export function middleware(req: NextRequest): NextResponse {
-	const { pathname, search } = req.nextUrl;
-
-	if (shouldSkip(pathname)) return NextResponse.next();
-
-	const lower = pathname.toLowerCase();
-	if (pathname === lower) return NextResponse.next();
-
-	const dest = new URL(req.url);
-	dest.pathname = lower;
-	dest.search = search;
-
-	return NextResponse.redirect(dest.href, 308);
+function shouldSkip(pathname: string): boolean {
+	return SKIP_REGEXES.some((re) => re.test(pathname));
 }
 
-export const config = { matcher: "/:path*" };
+export function middleware(req: NextRequest): NextResponse {
+	const url = req.nextUrl.clone();
+	const pathname = url.pathname;
+
+	// Skip static/asset/manifest/api/internal requests
+	if (shouldSkip(pathname)) {
+		return NextResponse.next();
+	}
+
+	// If the path is already lowercase, do nothing
+	if (pathname === pathname.toLowerCase()) {
+		return NextResponse.next();
+	}
+
+	// Otherwise redirect to the lowercased path and preserve search/hash
+	// url.pathname = pathname.toLowerCase();
+	// return NextResponse.redirect(url, 308);
+	return NextResponse.redirect(
+		new URL(url.origin + url.pathname.toLowerCase())
+	);
+}
+
+// Optional: broad matcher; middleware code will itself skip assets
+export const config = {
+	matcher: "/:path*",
+};
