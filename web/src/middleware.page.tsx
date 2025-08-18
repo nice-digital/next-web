@@ -1,9 +1,9 @@
 import { NextResponse, type NextRequest } from "next/server";
 
 export const logger = {
-	info: (...args: unknown[]) => console.info("[Edge]", ...args),
-	warn: (...args: unknown[]) => console.warn("[Edge]", ...args),
-	error: (...args: unknown[]) => console.error("[Edge]", ...args),
+	info: (...args: unknown[]): void => console.info("[Edge]", ...args),
+	warn: (...args: unknown[]): void => console.warn("[Edge]", ...args),
+	error: (...args: unknown[]): void => console.error("[Edge]", ...args),
 };
 
 const SKIP_REGEXES: RegExp[] = [
