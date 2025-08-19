@@ -9,7 +9,7 @@ const SKIP_REGEXES: RegExp[] = [
 	/^\/manifest.json$/,
 	/^\/build-manifest.json$/,
 	/^\/react-loadable-manifest.json$/,
-	/^\/.*\.[^/]+$/, // any path containing a dot (file with extension)
+	/^\/.*\.[^/]+$/, // any path containing a dot (file with extension).
 ];
 
 function shouldSkip(pathname: string): boolean {
