@@ -41,7 +41,37 @@ describe("cardList component", () => {
 		expect(cardHeading).toHaveAttribute("href", cardLinkUrl);
 		expect(cardBody).toBeInTheDocument();
 	});
-
+	it("renders Card content heading level correctly", () => {
+		const mockCardListWithHeadingLevelProps: CardListProps = {
+			blok: {
+				cards: [
+					{
+						heading: "Mock card heading 1",
+						headingLevel: "3",
+						body: "Mock card summary 1",
+						link: {
+							id: "",
+							url: cardLinkUrl,
+							linktype: "url",
+							fieldtype: "multilink",
+							cached_url: cardLinkUrl,
+						},
+						component: "cardListSectionItem",
+						_uid: "123456877",
+					},
+				],
+				component: "cardList",
+				_uid: "1234578",
+			},
+		};
+		render(<CardList {...mockCardListWithHeadingLevelProps} />);
+		expect(
+			screen.getByRole("heading", {
+				level: 3,
+				name: "Mock card heading 1",
+			})
+		).toBeInTheDocument();
+	});
 	it("should render a heading, body text and link for nested card component with internal link", () => {
 		const internalLink = {
 			id: "",

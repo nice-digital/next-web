@@ -376,7 +376,7 @@ const nextConfig = {
 			},
 			{
 				source:
-					"/about/what-we-do/our-programmes/nice-guidance/nice-about-technology-appraisal-guidance/changes-to-health-technology-evaluation",
+					"/about/what-we-do/our-programmes/nice-guidance/nice-:about(about-)?technology-appraisal-guidance/changes-to-health-technology-evaluation",
 				destination:
 					"/what-nice-does/our-guidance/about-technology-appraisal-guidance/our-methods-and-processes-health-technology-evaluation-manual",
 				permanent: true,
@@ -583,6 +583,12 @@ const nextConfig = {
 				source:
 					"/about/what-we-do/our-programmes/nice-guidance/interventional-procedures-guidance/recommendations",
 				destination: "/what-nice-does/our-guidance/types-of-recommendation",
+				permanent: true,
+			},
+			{
+				source:
+					"/about/what-we-do/our-programmes/nice-guidance/interventional-procedures-guidance/timeline",
+				destination: "/process/pmg28/chapter/introduction",
 				permanent: true,
 			},
 			{
@@ -3005,16 +3011,6 @@ const nextConfig = {
 			{
 				source: "/leave-feedback",
 				destination: "/forms/leave-feedback",
-				permanent: true,
-			},
-			{
-				source: "/bnfc-uk-only",
-				destination: "/bnfc-via-nice-is-only-available-in-the-uk",
-				permanent: true,
-			},
-			{
-				source: "/bnf-uk-only",
-				destination: "/bnf-via-nice-is-only-available-in-the-uk",
 				permanent: true,
 			},
 			{
