@@ -10,25 +10,32 @@
 <!-- DON'T EDIT THIS SECTION, INSTEAD RE-RUN doctoc TO UPDATE -->
 - [Stack](#stack)
 
-- [Next Web](#next-web)
-	- [Stack](#stack)
-		- [Software](#software)
-		- [React and NextJS learning resources](#react-and-nextjs-learning-resources)
-		- [TypeScript path mapping](#typescript-path-mapping)
-		- [Logging](#logging)
-			- [RabbitMQ locally](#rabbitmq-locally)
-			- [Logging performance](#logging-performance)
-	- [Config](#config)
-		- [Secrets](#secrets)
-	- [:rocket: Set up](#rocket-set-up)
-	- [Production hosting](#production-hosting)
-		- [NextJS server](#nextjs-server)
-		- [AWS EC2](#aws-ec2)
-	- [Storyblok](#storyblok)
-		- [Updating types on the command line manually](#updating-types-on-the-command-line-manually)
-		- [The storyblok CLI script tools](#the-storyblok-cli-script-tools)
-			- [Setup](#setup)
-		- [Debugging Next-Web locally](#debugging-next-web-locally)
+- [Stack](#stack)
+  - [Software](#software)
+  - [React and NextJS learning resources](#react-and-nextjs-learning-resources)
+  - [TypeScript path mapping](#typescript-path-mapping)
+  - [Logging](#logging)
+    - [RabbitMQ locally](#rabbitmq-locally)
+    - [Logging performance](#logging-performance)
+- [Config](#config)
+  - [Secrets](#secrets)
+- [:rocket: Set up](#rocket-set-up)
+- [Production hosting](#production-hosting)
+  - [NextJS server](#nextjs-server)
+  - [AWS EC2](#aws-ec2)
+- [Storyblok](#storyblok)
+  - [Updating types on the command line manually](#updating-types-on-the-command-line-manually)
+  - [The storyblok CLI script tools](#the-storyblok-cli-script-tools)
+    - [Setup](#setup)
+  - [Updating types with the CLI script tool](#updating-types-with-the-cli-script-tool)
+  - [Push pull components between storyblok spaces](#push-pull-components-between-storyblok-spaces)
+  - [Syncing Types, Components, and Stories between Storyblok spaces](#syncing-types-components-and-stories-between-storyblok-spaces)
+- [Local setup between Next-Web and Publications](#local-setup-between-next-web-and-publications)
+  - [Publications setup](#publications-setup)
+  - [Next-Web setup](#next-web-setup)
+- [Design Sytem dependencies](#design-sytem-dependencies)
+  - [Previewing changes from design sytem](#previewing-changes-from-design-sytem)
+- [Debugging Next-Web locally](#debugging-next-web-locally)
 
 <!-- END doctoc generated TOC please keep comment here to allow auto update -->
 </details>
@@ -300,7 +307,13 @@ process.env.NODE_TLS_REJECT_UNAUTHORIZED = "0";
 ```
    Replace `product` with the actual product ID from local Publications.
 
-### Debugging Next-Web locally
+## Design Sytem dependencies
+### Previewing changes from design sytem
+    - Navigate to the `web` directory in your termimal in Visual Studio code and install Nice Design Sytem alpha version.
+    - If you are facing issues with specific component install them seperately to the corresponding alpha versions.
+    - Once your compoent changes are release ,install the latest design system version
+
+## Debugging Next-Web locally
 To debug next-web locally, follow these steps:
 
 1. **Install required packages:**
