@@ -1,6 +1,5 @@
 import { NextResponse, type NextRequest } from "next/server";
 
-
 const SKIP_REGEXES: RegExp[] = [
 	/^\/_next\//,
 	/^\/static\//,
