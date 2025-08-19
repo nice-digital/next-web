@@ -4,13 +4,13 @@
 
 <details>
 <summary><strong>Table of contents</strong></summary>
-<!-- START doctoc -->
-- [Ocelot API Layer](#ocelot-api-layer)
+<!-- START doctoc generated TOC please keep comment here to allow auto update -->
+<!-- DON'T EDIT THIS SECTION, INSTEAD RE-RUN doctoc TO UPDATE -->
 
 - [Stack](#stack)
 - [How to generate / update diagram](#how-to-generate--update-diagram)
 
-<!-- END doctoc -->
+<!-- END doctoc generated TOC please keep comment here to allow auto update -->
 </details>
 
 ## Stack
