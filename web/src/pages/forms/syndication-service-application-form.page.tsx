@@ -22,7 +22,7 @@ export default function SyndicationServiceApplicationForm(
 				{
 					title: "Reusing our content",
 					path: "/reusing-our-content",
-				}
+				},
 			]}
 		/>
 	);

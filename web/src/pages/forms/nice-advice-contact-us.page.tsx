@@ -36,7 +36,7 @@ export default function NiceAdviceContactUsForm(props: FormProps): JSX.Element {
 				{
 					title: "What NICE does",
 					path: "/what-nice-does",
-				}
+				},
 			]}
 			formHeader={<FormHeader />}
 			formFooter={

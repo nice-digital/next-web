@@ -24,7 +24,7 @@ export default function TopicSuggestionForm(props: FormProps): JSX.Element {
 				{
 					title: "What NICE does",
 					path: "/what-nice-does",
-				}
+				},
 			]}
 		/>
 	);

@@ -61,7 +61,7 @@ export default function InterventionalProceduresNotificationForm(
 				{
 					title: "What NICE does",
 					path: "/what-nice-does",
-				}
+				},
 			]}
 			informationPanel={<InformationPanel />}
 		/>

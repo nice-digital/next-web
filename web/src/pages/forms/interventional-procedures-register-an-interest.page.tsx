@@ -32,7 +32,7 @@ export default function InterventionalProceduresRegisterAnInterestForm(
 				{
 					title: "What NICE does",
 					path: "/what-nice-does",
-				}
+				},
 			]}
 			informationPanel={
 				<Panel>

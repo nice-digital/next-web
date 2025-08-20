@@ -21,7 +21,7 @@ export default function PublicInvolvementForm(props: FormProps): JSX.Element {
 				{
 					title: "Get involved",
 					path: "/get-involved",
-				}
+				},
 			]}
 		/>
 	);

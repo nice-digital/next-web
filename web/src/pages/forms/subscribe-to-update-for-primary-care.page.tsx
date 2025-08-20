@@ -18,7 +18,7 @@ export default function PrimaryCareNewsletterForm(
 				{
 					title: "Newsletters and alerts",
 					path: "/nice-newsletters-and-alerts",
-				}
+				},
 			]}
 		/>
 	);

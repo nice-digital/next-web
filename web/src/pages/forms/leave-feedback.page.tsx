@@ -15,8 +15,7 @@ export default function LeaveFeedbackForm(props: FormProps): JSX.Element {
 			{...props}
 			formName="Leave feedback"
 			lead="Thank you for taking a look at our website, we'd like to hear your views."
-			parentPages={[
-			]}
+			parentPages={[]}
 			formHeader={
 				<>
 					This form is only for website feedback, for all other enquiries please{" "}
