@@ -79,6 +79,7 @@
     "@types/inquirer": "^9.0.7",
     "@types/js-yaml": "^4.0.9",
     "@types/lodash.throttle": "^4.1.7",
+    "@types/needle": "^3.3.0",
     "@types/pluralize": "0.0.29",
     "@types/qs": "^6.9.7",
     "@types/react": "18.2.45",

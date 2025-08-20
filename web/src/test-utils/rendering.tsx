@@ -59,7 +59,9 @@ export const getMockRouter = (
 /**
  * Collect tags from next/head: https://edibleco.de/3Anu92S
  */
-const HeadProvider: React.FC = ({ children }) => {
+const HeadProvider: React.FC<{ children: React.ReactNode }> = ({
+	children,
+}) => {
 	let head: JSX.Element[];
 
 	useEffect(() => {
@@ -89,7 +91,7 @@ export type GetWrapperOptions = {
 };
 const getAppWrapper =
 	({ router, wrapper: Wrapper }: GetWrapperOptions) =>
-	({ children }: { children: ReactElement }) =>
+	({ children }: { children: React.ReactNode }) =>
 		(
 			<HeadProvider>
 				<RouterContext.Provider value={router}>

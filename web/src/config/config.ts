@@ -7,10 +7,10 @@ import type { InitialiseOptions as SearchClientInitOptions } from "@nice-digital
 const { publicRuntimeConfig } = getConfig() || { publicRuntimeConfig: {} };
 
 // Server-side YAML config loader that mimics the config package behavior
-function loadServerConfig() {
+function loadServerConfig(): ServerConfig {
 	// Only run on server side, but allow test environment
 	if (typeof window !== "undefined" && process.env.NODE_ENV !== "test") {
-		return {};
+		return getEmptyServerConfig();
 	}
 
 	// For test environment, return mock config
@@ -83,26 +83,62 @@ function loadServerConfig() {
 		}
 
 		// Return only the server portion
-		return (mergedConfig as any).server || {};
+		return (
+			(mergedConfig as { server?: ServerConfig }).server ||
+			getEmptyServerConfig()
+		);
 	} catch (error) {
 		console.error("Could not load server config from YAML:", error);
-		return {};
+		return getEmptyServerConfig();
 	}
 }
 
+// Helper function to provide a default empty server config
+function getEmptyServerConfig(): ServerConfig {
+	return {
+		cache: {
+			keyPrefix: "next-web:default",
+			filePath: "./.cache/",
+			defaultTTL: 300,
+			longTTL: 86400,
+			refreshThreshold: 150,
+		},
+		feeds: {
+			publications: {
+				origin: "",
+				apiKey: "",
+			},
+			inDev: {
+				origin: "",
+				apiKey: "",
+			},
+			jotForm: {
+				apiKey: "",
+			},
+		},
+	};
+}
+
 // Simple deep merge function for config objects
-function deepMerge(target: any, source: any): any {
+function deepMerge<T extends Record<string, unknown>>(
+	target: T,
+	source: Partial<T>
+): T {
 	const result = { ...target };
 
 	for (const key in source) {
+		const sourceValue = source[key];
 		if (
-			source[key] &&
-			typeof source[key] === "object" &&
-			!Array.isArray(source[key])
+			sourceValue &&
+			typeof sourceValue === "object" &&
+			!Array.isArray(sourceValue)
 		) {
-			result[key] = deepMerge(result[key] || {}, source[key]);
+			result[key] = deepMerge(
+				(result[key] || {}) as Record<string, unknown>,
+				sourceValue as Record<string, unknown>
+			) as T[Extract<keyof T, string>];
 		} else {
-			result[key] = source[key];
+			result[key] = sourceValue as T[Extract<keyof T, string>];
 		}
 	}
 
@@ -110,9 +146,9 @@ function deepMerge(target: any, source: any): any {
 }
 
 // Load server config once on server startup
-let _serverRuntimeConfig: any = null;
+let _serverRuntimeConfig: ServerConfig | null = null;
 
-function getServerRuntimeConfig() {
+function getServerRuntimeConfig(): ServerConfig {
 	if (_serverRuntimeConfig === null) {
 		_serverRuntimeConfig = loadServerConfig();
 	}
@@ -120,10 +156,10 @@ function getServerRuntimeConfig() {
 }
 
 // Export a getter that loads config lazily
-export const serverRuntimeConfig = new Proxy({} as any, {
-	get(target, prop) {
+export const serverRuntimeConfig = new Proxy({} as ServerConfig, {
+	get(target: ServerConfig, prop: string | symbol): unknown {
 		const config = getServerRuntimeConfig();
-		return config[prop];
+		return config[prop as keyof ServerConfig];
 	},
 });
 
