@@ -1,17 +1,6 @@
 // @ts-check
 const path = require("path");
 
-// Safely load config to avoid recursion issues
-let serverConfig = {};
-let publicConfig = {};
-try {
-	const config = require("config");
-	serverConfig = config.get("server") || {};
-	publicConfig = config.get("public") || {};
-} catch (error) {
-	console.warn("Could not load config:", error.message);
-}
-
 /**
  * A list of NICE Digital modules that should allow transpilation.
  * Most of our Design System components import SCSS.
@@ -81,27 +70,57 @@ const nextConfig = {
 	sassOptions: {
 		includePaths: [path.join(__dirname, "node_modules/@nice-digital")],
 	},
-	// Load public config directly from YAML files to avoid recursion
+	// Load public config directly from YAML files
 	publicRuntimeConfig: (() => {
 		try {
 			const fs = require("fs");
 			const yaml = require("js-yaml");
-			const configPath = path.join(__dirname, "config", "default.yml");
 
-			console.log("Loading config from:", configPath);
+			// Helper function to merge configs
+			const deepMerge = (target, source) => {
+				const result = { ...target };
+				for (const key in source) {
+					if (
+						source[key] &&
+						typeof source[key] === "object" &&
+						!Array.isArray(source[key])
+					) {
+						result[key] = deepMerge(result[key] || {}, source[key]);
+					} else {
+						result[key] = source[key];
+					}
+				}
+				return result;
+			};
 
-			if (fs.existsSync(configPath)) {
-				const configContent = fs.readFileSync(configPath, "utf8");
-				const config = yaml.load(configContent);
-				console.log(
-					"Loaded public config:",
-					JSON.stringify(config.public, null, 2)
-				);
-				return config.public || {};
+			// Load default config
+			const defaultConfigPath = path.join(__dirname, "config", "default.yml");
+			let mergedConfig = {};
+
+			if (fs.existsSync(defaultConfigPath)) {
+				const defaultContent = fs.readFileSync(defaultConfigPath, "utf8");
+				mergedConfig = yaml.load(defaultContent);
 			}
 
-			console.warn("Config file not found at:", configPath);
-			return {};
+			// Load environment-specific config
+			const nodeEnv = process.env.NODE_ENV || "development";
+			let envConfigPath = "";
+
+			if (nodeEnv === "development") {
+				envConfigPath = path.join(__dirname, "config", "local-development.yml");
+			} else if (nodeEnv === "production") {
+				envConfigPath = path.join(__dirname, "config", "local-production.yml");
+			}
+
+			if (envConfigPath && fs.existsSync(envConfigPath)) {
+				const envContent = fs.readFileSync(envConfigPath, "utf8");
+				const envConfig = yaml.load(envContent);
+				mergedConfig = deepMerge(mergedConfig, envConfig);
+			}
+
+			console.log("Loading public config from YAML files");
+
+			return mergedConfig.public || {};
 		} catch (error) {
 			console.warn("Could not load public config from YAML:", error);
 			return {};

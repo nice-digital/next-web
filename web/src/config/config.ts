@@ -6,30 +6,81 @@ import type { InitialiseOptions as SearchClientInitOptions } from "@nice-digital
 // Get public config from Next.js runtime config
 const { publicRuntimeConfig } = getConfig() || { publicRuntimeConfig: {} };
 
-// For now, provide basic server config structure to prevent destructuring errors
-// TODO: Implement proper server config loading that works with Next.js 15
-const serverRuntimeConfig = {
-	cache: {
-		keyPrefix: "next-web:local",
-		filePath: "./.cache/",
-		defaultTTL: 300,
-		longTTL: 86400,
-		refreshThreshold: 150,
-	},
-	feeds: {
-		publications: {
-			origin: process.env.PUBLICATIONS_ORIGIN || "SECRET",
-			apiKey: process.env.PUBLICATIONS_API_KEY || "SECRET",
-		},
-		inDev: {
-			origin: process.env.INDEV_ORIGIN || "SECRET",
-			apiKey: process.env.INDEV_API_KEY || "SECRET",
-		},
-		jotForm: {
-			apiKey: process.env.JOTFORM_API_KEY || "SECRET",
-		},
-	},
-};
+// Server-side YAML config loader that mimics the config package behavior
+function loadServerConfig() {
+	// Only run on server side
+	if (typeof window !== "undefined") {
+		return {};
+	}
+
+	try {
+		// Use dynamic require to avoid webpack bundling issues
+		const fs = eval("require")("fs");
+		const yaml = eval("require")("js-yaml");
+		const path = eval("require")("path");
+
+		// Determine the config directory relative to the project root
+		const configDir = path.join(process.cwd(), "config");
+
+		// Start with default.yml
+		const defaultConfigPath = path.join(configDir, "default.yml");
+		let mergedConfig = {};
+
+		if (fs.existsSync(defaultConfigPath)) {
+			const defaultContent = fs.readFileSync(defaultConfigPath, "utf8");
+			const defaultConfig = yaml.load(defaultContent);
+			mergedConfig = { ...defaultConfig };
+		}
+
+		// Determine environment-specific config file
+		const nodeEnv = process.env.NODE_ENV || "development";
+		let envConfigPath = "";
+
+		// Use local-development.yml for development, local-production.yml for production
+		if (nodeEnv === "development") {
+			envConfigPath = path.join(configDir, "local-development.yml");
+		} else if (nodeEnv === "production") {
+			envConfigPath = path.join(configDir, "local-production.yml");
+		}
+
+		// Load and merge environment-specific config if it exists
+		if (envConfigPath && fs.existsSync(envConfigPath)) {
+			const envContent = fs.readFileSync(envConfigPath, "utf8");
+			const envConfig = yaml.load(envContent);
+
+			// Deep merge the configs (environment config overrides default)
+			mergedConfig = deepMerge(mergedConfig, envConfig);
+		}
+
+		// Return only the server portion
+		return (mergedConfig as any).server || {};
+	} catch (error) {
+		console.error("Could not load server config from YAML:", error);
+		return {};
+	}
+}
+
+// Simple deep merge function for config objects
+function deepMerge(target: any, source: any): any {
+	const result = { ...target };
+
+	for (const key in source) {
+		if (
+			source[key] &&
+			typeof source[key] === "object" &&
+			!Array.isArray(source[key])
+		) {
+			result[key] = deepMerge(result[key] || {}, source[key]);
+		} else {
+			result[key] = source[key];
+		}
+	}
+
+	return result;
+}
+
+// Load server config once on server startup
+const serverRuntimeConfig = loadServerConfig();
 
 export interface SearchConfig {
 	/** The base URL of the Single Search Endpoint (SSE) e.g. https://beta-search-api.nice.org.uk/api/ */
