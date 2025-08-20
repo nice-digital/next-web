@@ -19,10 +19,6 @@ export default function HealthAndSocialCareNewsletterForm(
 					title: "Newsletters and alerts",
 					path: "/nice-newsletters-and-alerts",
 				},
-				{
-					title: "News",
-					path: "/news",
-				},
 			]}
 		/>
 	);

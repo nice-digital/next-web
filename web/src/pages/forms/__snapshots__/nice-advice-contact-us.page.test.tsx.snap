@@ -23,25 +23,16 @@ exports[`NiceAdviceContactUsForm should match snapshot 1`] = `
         class="breadcrumbs__crumb"
       >
         <a
-          href="/about"
+          href="/what-nice-does"
         >
-          About
+          What NICE does
         </a>
       </li>
       <li
         class="breadcrumbs__crumb"
       >
         <a
-          href="/about/what-we-do"
-        >
-          What we do
-        </a>
-      </li>
-      <li
-        class="breadcrumbs__crumb"
-      >
-        <a
-          href="/about/what-we-do/life-sciences"
+          href="/what-nice-does/life-sciences-how-to-get-your-product-to-market"
         >
           Life sciences: how to get your product to market
         </a>
@@ -74,29 +65,21 @@ exports[`NiceAdviceContactUsForm should match snapshot 1`] = `
       "@type": "ListItem",
       "position": 2,
       "item": {
-        "@id": "/about",
-        "name": "About"
+        "@id": "/what-nice-does",
+        "name": "What NICE does"
       }
     },
     {
       "@type": "ListItem",
       "position": 3,
       "item": {
-        "@id": "/about/what-we-do",
-        "name": "What we do"
-      }
-    },
-    {
-      "@type": "ListItem",
-      "position": 4,
-      "item": {
-        "@id": "/about/what-we-do/life-sciences",
+        "@id": "/what-nice-does/life-sciences-how-to-get-your-product-to-market",
         "name": "Life sciences: how to get your product to market"
       }
     },
     {
       "@type": "ListItem",
-      "position": 5,
+      "position": 4,
       "item": {
         "name": "NICE Advice contact us form"
       }

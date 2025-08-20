@@ -17,19 +17,19 @@ export default function RequestForPrioritisationClarificationForm(
 			parentPages={[
 				{
 					title: "Our prioritisation decisions",
-					path: "/about/what-we-do/prioritising-our-guidance-topics/our-prioritisation-decisions",
+					path: "/what-nice-does/our-guidance/prioritising-our-guidance-topics/our-prioritisation-decisions",
 				},
 				{
 					title: "Prioritising our guidance topics",
-					path: "/about/what-we-do/prioritising-our-guidance-topics",
+					path: "/what-nice-does/our-guidance/prioritising-our-guidance-topics",
 				},
 				{
-					title: "What we do",
-					path: "/about/what-we-do",
+					title: "Our guidance",
+					path: "/what-nice-does/our-guidance",
 				},
 				{
-					title: "About",
-					path: "/about",
+					title: "What NICE does",
+					path: "/what-nice-does",
 				},
 			]}
 		/>
