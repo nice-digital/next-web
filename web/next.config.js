@@ -106,7 +106,37 @@ const nextConfig = {
 			const nodeEnv = process.env.NODE_ENV || "development";
 			let envConfigPath = "";
 
-			if (nodeEnv === "development") {
+			if (nodeEnv === "test") {
+				// For test environment, return test-specific config
+				const testConfig = {
+					public: {
+						buildNumber: "TEST",
+						environment: "test",
+						authEnvironment: "test",
+						baseURL: "https://next-web-tests.nice.org.uk",
+						cookieBannerScriptURL:
+							"https://cdn.nice.org.uk/cookie-banner/cookie-banner.min.js",
+						publicBaseURL: "",
+						search: {
+							baseURL: "http://localhost:19332/api",
+						},
+						cacheControl: {
+							defaultCacheHeader:
+								"public, s-max-age=300, max-age=480, stale-while-revalidate=1800",
+						},
+						jotForm: {
+							baseURL: "https://next-web-tests.jotform.com",
+						},
+						storyblok: {
+							accessToken: "TEST_TOKEN",
+							ocelotEndpoint: "",
+							enableRootCatchAll: false,
+						},
+						denyRobots: true,
+					},
+				};
+				mergedConfig = deepMerge(mergedConfig, testConfig);
+			} else if (nodeEnv === "development") {
 				envConfigPath = path.join(__dirname, "config", "local-development.yml");
 			} else if (nodeEnv === "production") {
 				envConfigPath = path.join(__dirname, "config", "local-production.yml");
@@ -126,6 +156,65 @@ const nextConfig = {
 			return {};
 		}
 	})(),
+
+	async headers() {
+		return [
+			{
+				source: "/(.*)",
+				headers: [
+					{
+						key: "Cache-Control",
+						value:
+							"public, s-max-age=300, max-age=480, stale-while-revalidate=1800",
+					},
+					{
+						key: "X-App",
+						value: "next-web",
+					},
+					{
+						key: "X-DNS-Prefetch-Control",
+						value: "on",
+					},
+					{
+						key: "Strict-Transport-Security",
+						value: "max-age=31536000; includeSubDomains; preload",
+					},
+					{
+						key: "X-XSS-Protection",
+						value: "1; mode=block",
+					},
+					{
+						key: "Permissions-Policy",
+						value:
+							"camera=(), microphone=(), geolocation=(), interest-cohort=()",
+					},
+					{
+						key: "X-Content-Type-Options",
+						value: "nosniff",
+					},
+					{
+						key: "Referrer-Policy",
+						value: "strict-origin-when-cross-origin",
+					},
+					{
+						key: "Link",
+						value:
+							"<https://cdn.nice.org.uk/cookie-banner/cookie-banner.min.js>; rel=preload; as=script,<https://apikeys.civiccomputing.com>; rel=preconnect; crossorigin,<https://www.googletagmanager.com>; rel=preconnect",
+					},
+				],
+			},
+		];
+	},
+
+	async redirects() {
+		return [
+			{
+				source: "/guidance/proposed",
+				destination: "/guidance/awaiting-development",
+				permanent: true,
+			},
+		];
+	},
 };
 
 module.exports = nextConfig;

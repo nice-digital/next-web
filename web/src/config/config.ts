@@ -8,9 +8,40 @@ const { publicRuntimeConfig } = getConfig() || { publicRuntimeConfig: {} };
 
 // Server-side YAML config loader that mimics the config package behavior
 function loadServerConfig() {
-	// Only run on server side
-	if (typeof window !== "undefined") {
+	// Only run on server side, but allow test environment
+	if (typeof window !== "undefined" && process.env.NODE_ENV !== "test") {
 		return {};
+	}
+
+	// For test environment, return mock config
+	const nodeEnv = process.env.NODE_ENV || "development";
+
+	if (nodeEnv === "test") {
+		const testConfig = {
+			server: {
+				cache: {
+					keyPrefix: "next-web:tests",
+					filePath: "./.cache-test/",
+					defaultTTL: 300,
+					longTTL: 86400,
+					refreshThreshold: 150,
+				},
+				feeds: {
+					publications: {
+						origin: "http://publications.localhost:8080",
+						apiKey: "TEST_API_KEY",
+					},
+					inDev: {
+						origin: "http://indev.localhost:8080",
+						apiKey: "TEST_API_KEY",
+					},
+					jotForm: {
+						apiKey: "TEST_API_KEY",
+					},
+				},
+			},
+		};
+		return testConfig.server;
 	}
 
 	try {
@@ -33,7 +64,6 @@ function loadServerConfig() {
 		}
 
 		// Determine environment-specific config file
-		const nodeEnv = process.env.NODE_ENV || "development";
 		let envConfigPath = "";
 
 		// Use local-development.yml for development, local-production.yml for production
@@ -80,7 +110,22 @@ function deepMerge(target: any, source: any): any {
 }
 
 // Load server config once on server startup
-const serverRuntimeConfig = loadServerConfig();
+let _serverRuntimeConfig: any = null;
+
+function getServerRuntimeConfig() {
+	if (_serverRuntimeConfig === null) {
+		_serverRuntimeConfig = loadServerConfig();
+	}
+	return _serverRuntimeConfig;
+}
+
+// Export a getter that loads config lazily
+export const serverRuntimeConfig = new Proxy({} as any, {
+	get(target, prop) {
+		const config = getServerRuntimeConfig();
+		return config[prop];
+	},
+});
 
 export interface SearchConfig {
 	/** The base URL of the Single Search Endpoint (SSE) e.g. https://beta-search-api.nice.org.uk/api/ */
@@ -194,4 +239,4 @@ export interface ServerConfig {
 	feeds: FeedsConfig;
 }
 
-export { publicRuntimeConfig, serverRuntimeConfig };
+export { publicRuntimeConfig };

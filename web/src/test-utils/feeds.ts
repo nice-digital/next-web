@@ -2,7 +2,8 @@ import fs from "fs/promises";
 import path from "path";
 
 import MockAdapter from "axios-mock-adapter";
-import config from "config";
+
+import { serverRuntimeConfig } from "@/config";
 
 import { client } from "../feeds";
 
@@ -12,8 +13,12 @@ const mockDataBaseDirectory = path.resolve(
 		"__mocks__",
 		"__data__"
 	),
-	publicationsBaseUrl = new URL(config.get("server.feeds.publications.origin")),
-	inDevBaseUrl = new URL(config.get("server.feeds.inDev.origin"));
+	publicationsBaseUrl = new URL(
+		serverRuntimeConfig.feeds?.publications?.origin || "http://localhost:8080"
+	),
+	inDevBaseUrl = new URL(
+		serverRuntimeConfig.feeds?.inDev?.origin || "http://localhost:8080"
+	);
 
 export const axiosJSONMock = new MockAdapter(client, {
 	onNoMatch: "throwException",
