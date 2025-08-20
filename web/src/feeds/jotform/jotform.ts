@@ -6,8 +6,13 @@ import type { FormID, GetFormResponse } from "./types";
 
 export * from "./types";
 
-const { apiKey } = serverRuntimeConfig.feeds.jotForm,
-	{ baseURL } = publicRuntimeConfig.jotForm;
+// Handle the case where server config might be empty during Next.js 15 migration
+const apiKey =
+	(serverRuntimeConfig as any).feeds?.jotForm?.apiKey ||
+	process.env.JOTFORM_API_KEY ||
+	"SECRET";
+const baseURL =
+	(publicRuntimeConfig as any).jotForm?.baseURL || "https://nice.jotform.com";
 
 export const getForm = async (formID: FormID): Promise<GetFormResponse> => {
 	const response = await needle(

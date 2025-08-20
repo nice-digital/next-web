@@ -3,7 +3,33 @@ import getConfig from "next/config";
 
 import type { InitialiseOptions as SearchClientInitOptions } from "@nice-digital/search-client";
 
-const { publicRuntimeConfig, serverRuntimeConfig } = getConfig();
+// Get public config from Next.js runtime config
+const { publicRuntimeConfig } = getConfig() || { publicRuntimeConfig: {} };
+
+// For now, provide basic server config structure to prevent destructuring errors
+// TODO: Implement proper server config loading that works with Next.js 15
+const serverRuntimeConfig = {
+	cache: {
+		keyPrefix: "next-web:local",
+		filePath: "./.cache/",
+		defaultTTL: 300,
+		longTTL: 86400,
+		refreshThreshold: 150,
+	},
+	feeds: {
+		publications: {
+			origin: process.env.PUBLICATIONS_ORIGIN || "SECRET",
+			apiKey: process.env.PUBLICATIONS_API_KEY || "SECRET",
+		},
+		inDev: {
+			origin: process.env.INDEV_ORIGIN || "SECRET",
+			apiKey: process.env.INDEV_API_KEY || "SECRET",
+		},
+		jotForm: {
+			apiKey: process.env.JOTFORM_API_KEY || "SECRET",
+		},
+	},
+};
 
 export interface SearchConfig {
 	/** The base URL of the Single Search Endpoint (SSE) e.g. https://beta-search-api.nice.org.uk/api/ */

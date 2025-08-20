@@ -81,7 +81,32 @@ const nextConfig = {
 	sassOptions: {
 		includePaths: [path.join(__dirname, "node_modules/@nice-digital")],
 	},
-	// TODO: Add config injection back after confirming Next.js 15 works
+	// Load public config directly from YAML files to avoid recursion
+	publicRuntimeConfig: (() => {
+		try {
+			const fs = require("fs");
+			const yaml = require("js-yaml");
+			const configPath = path.join(__dirname, "config", "default.yml");
+
+			console.log("Loading config from:", configPath);
+
+			if (fs.existsSync(configPath)) {
+				const configContent = fs.readFileSync(configPath, "utf8");
+				const config = yaml.load(configContent);
+				console.log(
+					"Loaded public config:",
+					JSON.stringify(config.public, null, 2)
+				);
+				return config.public || {};
+			}
+
+			console.warn("Config file not found at:", configPath);
+			return {};
+		} catch (error) {
+			console.warn("Could not load public config from YAML:", error);
+			return {};
+		}
+	})(),
 };
 
 module.exports = nextConfig;
