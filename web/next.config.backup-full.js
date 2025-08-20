@@ -2,7 +2,8 @@
 const path = require("path");
 
 const config = require("config"),
-	glob = require("glob");
+	glob = require("glob"),
+	withNodeConfig = require("next-plugin-node-config");
 
 /**
  * A list of paths to hooks used in global nav that should allow transpilation.
@@ -3059,6 +3060,7 @@ const nextConfig = {
 		ignoreBuildErrors: process.env.NODE_ENV === "production",
 	},
 	sassOptions: {
+		fiber: false,
 		includePaths: [path.join(__dirname, "node_modules/@nice-digital")],
 	},
 	images: {
@@ -3080,26 +3082,9 @@ const nextConfig = {
 	},
 };
 
-// Manual config injection for Next.js 15 compatibility (replacing withNodeConfig)
-const serverConfig = config.get("server") || {};
-const publicConfig = config.get("public") || {};
-
 // The weird comment syntax below is a JSDoc TypeScript cast: https://edibleco.de/2UMm8nx
 /** @type {import('next').NextConfig} */
-const finalConfig = {
-	...nextConfig,
-	env: {
-		...nextConfig.env,
-		// Convert server config to environment variables
-		...Object.fromEntries(
-			Object.entries(serverConfig).map(([key, value]) => [
-				`SERVER_${key.toUpperCase()}`,
-				typeof value === "string" ? value : JSON.stringify(value),
-			])
-		),
-	},
-	publicRuntimeConfig: publicConfig,
-};
+const finalConfig = withNodeConfig(nextConfig);
 
 // Delete the following properties now we are finished with them or next-js will warn 'root value has an unexpected property xxx - which is not in the list of allowed properties'
 delete finalConfig["nodeConfigServerKey"];
