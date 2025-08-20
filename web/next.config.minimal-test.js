@@ -1,20 +1,11 @@
 // @ts-check
 const path = require("path");
 
-// Safely load config to avoid recursion issues
-let serverConfig = {};
-let publicConfig = {};
-try {
-	const config = require("config");
-	serverConfig = config.get("server") || {};
-	publicConfig = config.get("public") || {};
-} catch (error) {
-	console.warn("Could not load config:", error.message);
-}
+const config = require("config");
 
 /**
- * A list of NICE Digital modules that should allow transpilation.
- * Most of our Design System components import SCSS.
+ * A list of paths to NICE Digital modules that should allow transpilation.
+ * Most of our Design System components (and Global Nav) import SCSS.
  */
 const niceDigitalModulesToTranspile = [
 	"@nice-digital/design-system",
@@ -64,11 +55,15 @@ const globalNavHooksToTranspile = [
  * @type {import('next').NextConfig}
  **/
 const nextConfig = {
+	// Strict mode gives useful feedback in dev
 	reactStrictMode: true,
 	eslint: {
+		// We run ESLint ourselves at the root of this monorepo
 		ignoreDuringBuilds: true,
 	},
+	// Add page.tsx for test co-location
 	pageExtensions: ["page.tsx", "api.ts"],
+	// Don't send the x-powered-by header
 	poweredByHeader: false,
 	transpilePackages: [
 		...niceDigitalModulesToTranspile,
@@ -76,12 +71,22 @@ const nextConfig = {
 		...globalNavHooksToTranspile,
 	],
 	typescript: {
+		// We run our own typechecking so no need to do it twice
 		ignoreBuildErrors: process.env.NODE_ENV === "production",
 	},
 	sassOptions: {
 		includePaths: [path.join(__dirname, "node_modules/@nice-digital")],
 	},
-	// TODO: Add config injection back after confirming Next.js 15 works
+	// Manual config injection for Next.js 15 compatibility
+	env: {
+		...Object.fromEntries(
+			Object.entries(config.get("server") || {}).map(([key, value]) => [
+				`SERVER_${key.toUpperCase()}`,
+				typeof value === "string" ? value : JSON.stringify(value),
+			])
+		),
+	},
+	publicRuntimeConfig: config.get("public") || {},
 };
 
 module.exports = nextConfig;
