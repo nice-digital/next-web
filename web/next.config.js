@@ -77,6 +77,11 @@ const nextConfig = {
 			const yaml = require("js-yaml");
 
 			// Helper function to merge configs
+			/**
+			 * @param {Record<string, any>} target
+			 * @param {Record<string, any>} source
+			 * @returns {Record<string, any>}
+			 */
 			const deepMerge = (target, source) => {
 				const result = { ...target };
 				for (const key in source) {
@@ -99,7 +104,7 @@ const nextConfig = {
 
 			if (fs.existsSync(defaultConfigPath)) {
 				const defaultContent = fs.readFileSync(defaultConfigPath, "utf8");
-				mergedConfig = yaml.load(defaultContent);
+				mergedConfig = yaml.load(defaultContent) || {};
 			}
 
 			// Load environment-specific config
@@ -144,13 +149,17 @@ const nextConfig = {
 
 			if (envConfigPath && fs.existsSync(envConfigPath)) {
 				const envContent = fs.readFileSync(envConfigPath, "utf8");
-				const envConfig = yaml.load(envContent);
+				const envConfig = yaml.load(envContent) || {};
 				mergedConfig = deepMerge(mergedConfig, envConfig);
 			}
 
 			console.log("Loading public config from YAML files");
 
-			return mergedConfig.public || {};
+			return mergedConfig &&
+				typeof mergedConfig === "object" &&
+				"public" in mergedConfig
+				? mergedConfig.public || {}
+				: {};
 		} catch (error) {
 			console.warn("Could not load public config from YAML:", error);
 			return {};
