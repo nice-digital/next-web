@@ -23,17 +23,17 @@ export const StoryblokImage = forwardRef<HTMLImageElement, StoryblokImageProps>(
 			publicRuntimeConfig.publicBaseURL + "/fallback-image.png";
 
 		// Convert null values to empty strings for proper typing
-		const normalizedAlt = alt ?? "";
-		const normalizedSrc = src ?? "";
+		const normalisedAlt = alt ?? "";
+		const normalisedSrc = src ?? "";
 
 		// if no src is provided, we use a placeholder image
-		if (!normalizedSrc || normalizedSrc === "") {
+		if (!normalisedSrc || normalisedSrc === "") {
 			return (
 				<Image
 					{...rest}
 					ref={ref}
 					src={placeholderSrc}
-					alt={normalizedAlt}
+					alt={normalisedAlt}
 					layout="intrinsic"
 					width={rest.width ? parseInt(rest.width as string, 10) : 0}
 					height={rest.height ? parseInt(rest.height as string, 10) : 0}
@@ -41,38 +41,38 @@ export const StoryblokImage = forwardRef<HTMLImageElement, StoryblokImageProps>(
 			);
 		}
 
-		if (normalizedAlt.length === 0) {
+		if (normalisedAlt.length === 0) {
 			console.warn("No alt text provided for image");
 			rest.role = "presentation";
 		}
 		// construct the source urls for webp, avif and jpeg for the picture element
 		const webPSrc = constructStoryblokImageSrc(
-			normalizedSrc,
+			normalisedSrc,
 			serviceOptions,
 			"webp"
 		);
 		const avifSrc = constructStoryblokImageSrc(
-			normalizedSrc,
+			normalisedSrc,
 			serviceOptions,
 			"avif"
 		);
 		const jpgSrc = constructStoryblokImageSrc(
-			normalizedSrc,
+			normalisedSrc,
 			serviceOptions,
 			"jpeg"
 		);
 
 		// Set height & width to values provided from image service with fallback as square image at ~full size mobile resolution
 		// Will need updating if shape of image url changes; assumes https://a.storyblok.com/f/292509/648x349/be49eaa335/image-name.JPG/m/filters:format%28avif%29:quality%2880%29
-		const widthSubstr = normalizedSrc.match(
+		const widthSubstr = normalisedSrc.match(
 			/^https:\/\/a\.storyblok\.com\/f\/\d+\/\d{2,5}x\d{2,5}/gm
 		)
-			? normalizedSrc.split("/")[5].split("x")[0]
+			? normalisedSrc.split("/")[5].split("x")[0]
 			: "";
-		const heightSubstr = normalizedSrc.match(
+		const heightSubstr = normalisedSrc.match(
 			/^https:\/\/a\.storyblok\.com\/f\/\d+\/\d{2,5}x\d{2,5}/gm
 		)
-			? normalizedSrc.split("/")[5].split("x")[1]
+			? normalisedSrc.split("/")[5].split("x")[1]
 			: "";
 		const dimensions = {
 			width: !isNaN(parseFloat(widthSubstr)) ? widthSubstr : 600,
@@ -91,13 +91,13 @@ export const StoryblokImage = forwardRef<HTMLImageElement, StoryblokImageProps>(
 
 		return (
 			<picture>
-				<source srcSet={avifSrc || normalizedSrc} type="image/avif" />
-				<source srcSet={webPSrc || normalizedSrc} type="image/webp" />
+				<source srcSet={avifSrc || normalisedSrc} type="image/avif" />
+				<source srcSet={webPSrc || normalisedSrc} type="image/webp" />
 				<Image
 					{...rest}
 					ref={ref}
-					src={jpgSrc || normalizedSrc}
-					alt={normalizedAlt}
+					src={jpgSrc || normalisedSrc}
+					alt={normalisedAlt}
 					layout="intrinsic"
 					width={
 						typeof serviceOptions?.width == "number"
