@@ -17,6 +17,7 @@ User-agent: *
 Disallow: /forms/*
 Disallow: /cks-is-only-available-in-the-uk
 Disallow: /cks-end-user-licence-agreement
+Disallow: /api/config-test
 Allow: /
 	`);
 	}
