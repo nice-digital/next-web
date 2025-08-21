@@ -6,6 +6,40 @@ import type { InitialiseOptions as SearchClientInitOptions } from "@nice-digital
 // Get public config from Next.js runtime config
 const { publicRuntimeConfig } = getConfig() || { publicRuntimeConfig: {} };
 
+// Helper function to apply environment variable substitution
+function applyEnvironmentVariables(
+	config: Record<string, unknown>,
+	envMapping: Record<string, unknown>
+): Record<string, unknown> {
+	if (!config || !envMapping) return config;
+
+	const result = { ...config };
+
+	for (const key in envMapping) {
+		if (typeof envMapping[key] === "string") {
+			// This is an environment variable name
+			const envVarName = envMapping[key] as string;
+			const envValue = process.env[envVarName];
+			if (envValue !== undefined) {
+				result[key] = envValue;
+			}
+		} else if (
+			typeof envMapping[key] === "object" &&
+			envMapping[key] !== null
+		) {
+			// Recursively apply to nested objects
+			if (result[key] && typeof result[key] === "object") {
+				result[key] = applyEnvironmentVariables(
+					result[key] as Record<string, unknown>,
+					envMapping[key] as Record<string, unknown>
+				);
+			}
+		}
+	}
+
+	return result;
+}
+
 // Server-side YAML config loader that mimics the config package behavior
 function loadServerConfig(): ServerConfig {
 	// Only run on server side, but allow test environment
@@ -41,6 +75,46 @@ function loadServerConfig(): ServerConfig {
 				},
 			},
 		};
+
+		// Apply environment variable substitution only for functional tests (Docker environment)
+		// Check for Docker-specific environment variables to distinguish from Jest unit tests
+		const isDockerEnvironment =
+			process.env.SEARCH_BASE_URL ||
+			process.env.PUBLICATIONS_BASE_URL ||
+			process.env.INDEV_BASE_URL ||
+			process.env.HOSTNAME?.includes("next-web"); // Docker containers have specific hostnames
+
+		if (isDockerEnvironment) {
+			try {
+				const fs = eval("require")("fs");
+				const yaml = eval("require")("js-yaml");
+				const path = eval("require")("path");
+
+				const configDir = path.join(process.cwd(), "config");
+				const customEnvPath = path.join(
+					configDir,
+					"custom-environment-variables.yml"
+				);
+				if (fs.existsSync(customEnvPath)) {
+					const customEnvContent = fs.readFileSync(customEnvPath, "utf8");
+					const customEnvConfig = yaml.load(customEnvContent);
+					const mergedTestConfig = applyEnvironmentVariables(
+						testConfig as Record<string, unknown>,
+						customEnvConfig as Record<string, unknown>
+					);
+					return (
+						(mergedTestConfig as { server?: ServerConfig }).server ||
+						testConfig.server
+					);
+				}
+			} catch (error) {
+				console.warn(
+					"Warning: Could not load custom environment variables:",
+					error
+				);
+			}
+		}
+
 		return testConfig.server;
 	}
 

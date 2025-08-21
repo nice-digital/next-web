@@ -131,6 +131,42 @@ const nextConfig = {
 				return result;
 			};
 
+			// Helper function to apply environment variable substitution
+			/**
+			 * @param {Record<string, any>} config
+			 * @param {Record<string, any>} envMapping
+			 * @returns {Record<string, any>}
+			 */
+			const applyEnvironmentVariables = (config, envMapping) => {
+				if (!config || !envMapping) return config;
+
+				const result = { ...config };
+
+				for (const key in envMapping) {
+					if (typeof envMapping[key] === "string") {
+						// This is an environment variable name
+						const envVarName = envMapping[key];
+						const envValue = process.env[envVarName];
+						if (envValue !== undefined) {
+							result[key] = envValue;
+						}
+					} else if (
+						typeof envMapping[key] === "object" &&
+						envMapping[key] !== null
+					) {
+						// Recursively apply to nested objects
+						if (result[key] && typeof result[key] === "object") {
+							result[key] = applyEnvironmentVariables(
+								result[key],
+								envMapping[key]
+							);
+						}
+					}
+				}
+
+				return result;
+			};
+
 			// Load default config
 			const defaultConfigPath = path.join(__dirname, "config", "default.yml");
 			let mergedConfig = {};
@@ -174,6 +210,30 @@ const nextConfig = {
 					},
 				};
 				mergedConfig = deepMerge(mergedConfig, testConfig);
+
+				// Apply environment variable substitution only for functional tests (Docker environment)
+				// Check for Docker-specific environment variables to distinguish from Jest unit tests
+				const isDockerEnvironment =
+					process.env.SEARCH_BASE_URL ||
+					process.env.PUBLICATIONS_BASE_URL ||
+					process.env.INDEV_BASE_URL ||
+					(process.env.HOSTNAME && process.env.HOSTNAME.includes("next-web"));
+
+				if (isDockerEnvironment) {
+					const customEnvPath = path.join(
+						__dirname,
+						"config",
+						"custom-environment-variables.yml"
+					);
+					if (fs.existsSync(customEnvPath)) {
+						const customEnvContent = fs.readFileSync(customEnvPath, "utf8");
+						const customEnvConfig = yaml.load(customEnvContent) || {};
+						mergedConfig = applyEnvironmentVariables(
+							mergedConfig,
+							customEnvConfig
+						);
+					}
+				}
 			} else if (nodeEnv === "development") {
 				envConfigPath = path.join(__dirname, "config", "local-development.yml");
 			} else if (nodeEnv === "production") {
