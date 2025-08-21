@@ -45,7 +45,10 @@ export const config: WebdriverIO.Config = {
 
 	logLevel: "error",
 
-	baseUrl: "http://localhost:3000/",
+	baseUrl:
+		isInDocker || isTeamCity
+			? process.env.BASE_URL || "http://next-web-tests.nice.org.uk:3000/"
+			: "http://localhost:3000/",
 	reporters: [
 		"spec",
 		isTeamCity && "teamcity",
