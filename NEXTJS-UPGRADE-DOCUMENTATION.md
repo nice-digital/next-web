@@ -177,7 +177,7 @@ outputFileTracingRoot: path.join(__dirname, '../'),
 - **Environment-based access control**: Only accessible in development/test modes
 - **Production blocking**: Returns 404 in production to appear non-existent
 - **Enhanced diagnostics**: Provides detailed configuration inspection with actual values
-- **Proxy behavior explanation**: Explains why `serverConfigKeys` appears empty (JavaScript Proxy limitation)
+- **Proxy behaviour explanation**: Explains why `serverConfigKeys` appears empty (JavaScript Proxy limitation)
 - **Error handling**: Graceful handling of server config loading in development mode
 - **Robots.txt protection**: Blocked from search engine crawling
 
@@ -648,8 +648,8 @@ const nextConfig = {
 
 ## Key Learnings and Best Practices
 
-### 1. **Config-Test Endpoint Behavior** 
-- **Expected Behavior**: `serverConfigKeys: []` (empty array) is normal and expected
+### 1. **Config-Test Endpoint Behaviour** 
+- **Expected Behaviour**: `serverConfigKeys: []` (empty array) is normal and expected
 - **Root Cause**: Server config uses JavaScript Proxy objects, which don't enumerate keys via `Object.keys()`
 - **Verification**: Use `serverConfigDiagnostics` section to see actual config values
 - **Key Indicator**: If `serverFeeds` and `serverCache` have values, server config is working correctly

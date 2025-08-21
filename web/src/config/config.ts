@@ -61,7 +61,7 @@ export function isDockerEnvironment(): boolean {
 	);
 }
 
-// Server-side YAML config loader that mimics the config package behavior
+// Server-side YAML config loader that mimics the config package behaviour
 function loadServerConfig(): ServerConfig {
 	// Only run on server side, but allow test environment
 	if (typeof window !== "undefined" && process.env.NODE_ENV !== "test") {
