@@ -3,7 +3,254 @@ import getConfig from "next/config";
 
 import type { InitialiseOptions as SearchClientInitOptions } from "@nice-digital/search-client";
 
-const { publicRuntimeConfig, serverRuntimeConfig } = getConfig();
+// Get public config from Next.js runtime config (loaded in next.config.js)
+// NOTE: publicRuntimeConfig via next/config still works with Next.js 15, but we might need to move away from this
+// and load YAML at build time (as we do for serverRuntimeConfig). Next.js recommends environment variables instead,
+// but that conflicts with our "build once, deploy many" model.
+// Future approach: Load YAML at build time in next.config.js
+// const publicConfig = loadYamlAtBuildTime();
+// const nextConfig = {
+//   env: {
+//     // Inject public config as build-time constants
+//     PUBLIC_CONFIG: JSON.stringify(publicConfig),
+//   },
+// };
+const { publicRuntimeConfig } = getConfig() || { publicRuntimeConfig: {} };
+
+// Helper function to apply environment variable substitution
+export function applyEnvironmentVariables(
+	config: Record<string, unknown>,
+	envMapping: Record<string, unknown>
+): Record<string, unknown> {
+	if (!config || !envMapping) return config;
+
+	const result = { ...config };
+
+	for (const key in envMapping) {
+		if (typeof envMapping[key] === "string") {
+			// This is an environment variable name
+			const envVarName = envMapping[key] as string;
+			const envValue = process.env[envVarName];
+			if (envValue !== undefined) {
+				result[key] = envValue;
+			}
+		} else if (
+			typeof envMapping[key] === "object" &&
+			envMapping[key] !== null
+		) {
+			// Recursively apply to nested objects
+			if (result[key] && typeof result[key] === "object") {
+				result[key] = applyEnvironmentVariables(
+					result[key] as Record<string, unknown>,
+					envMapping[key] as Record<string, unknown>
+				);
+			}
+		}
+	}
+
+	return result;
+}
+
+// Helper function to detect Docker environment for functional tests
+export function isDockerEnvironment(): boolean {
+	return !!(
+		process.env.SEARCH_BASE_URL ||
+		process.env.PUBLICATIONS_BASE_URL ||
+		process.env.INDEV_BASE_URL ||
+		process.env.HOSTNAME?.includes("next-web")
+	);
+}
+
+// Server-side YAML config loader that mimics the config package behaviour
+function loadServerConfig(): ServerConfig {
+	// Only run on server side, but allow test environment
+	if (typeof window !== "undefined" && process.env.NODE_ENV !== "test") {
+		return getEmptyServerConfig();
+	}
+
+	// For test environment, return mock config
+	const nodeEnv = process.env.NODE_ENV || "development";
+
+	if (nodeEnv === "test") {
+		const testConfig = {
+			server: {
+				cache: {
+					keyPrefix: "next-web:tests",
+					filePath: "./.cache-test/",
+					defaultTTL: 300,
+					longTTL: 86400,
+					refreshThreshold: 150,
+				},
+				feeds: {
+					publications: {
+						origin: "http://publications.localhost:8080",
+						apiKey: "TEST_API_KEY",
+					},
+					inDev: {
+						origin: "http://indev.localhost:8080",
+						apiKey: "TEST_API_KEY",
+					},
+					jotForm: {
+						apiKey: "TEST_API_KEY",
+					},
+				},
+			},
+		};
+
+		// Apply environment variable substitution only for functional tests (Docker environment)
+		// Check for Docker-specific environment variables to distinguish from Jest unit tests
+		if (isDockerEnvironment()) {
+			try {
+				const fs = eval("require")("fs");
+				const yaml = eval("require")("js-yaml");
+				const path = eval("require")("path");
+
+				const configDir = path.join(process.cwd(), "config");
+				const customEnvPath = path.join(
+					configDir,
+					"custom-environment-variables.yml"
+				);
+				if (fs.existsSync(customEnvPath)) {
+					const customEnvContent = fs.readFileSync(customEnvPath, "utf8");
+					const customEnvConfig = yaml.load(customEnvContent);
+					const mergedTestConfig = applyEnvironmentVariables(
+						testConfig as Record<string, unknown>,
+						customEnvConfig as Record<string, unknown>
+					);
+					return (
+						(mergedTestConfig as { server?: ServerConfig }).server ||
+						testConfig.server
+					);
+				}
+			} catch (error) {
+				console.warn(
+					"Warning: Could not load custom environment variables:",
+					error
+				);
+			}
+		}
+
+		return testConfig.server;
+	}
+
+	try {
+		// Use dynamic require to avoid webpack bundling issues
+		const fs = eval("require")("fs");
+		const yaml = eval("require")("js-yaml");
+		const path = eval("require")("path");
+
+		// Determine the config directory relative to the project root
+		const configDir = path.join(process.cwd(), "config");
+
+		// Start with default.yml
+		const defaultConfigPath = path.join(configDir, "default.yml");
+		let mergedConfig = {};
+
+		if (fs.existsSync(defaultConfigPath)) {
+			const defaultContent = fs.readFileSync(defaultConfigPath, "utf8");
+			const defaultConfig = yaml.load(defaultContent);
+			mergedConfig = { ...defaultConfig };
+		}
+
+		// Determine environment-specific config file
+		let envConfigPath = "";
+
+		// Use local-development.yml for development, local-production.yml for production
+		if (nodeEnv === "development") {
+			envConfigPath = path.join(configDir, "local-development.yml");
+		} else if (nodeEnv === "production") {
+			envConfigPath = path.join(configDir, "local-production.yml");
+		}
+
+		// Load and merge environment-specific config if it exists
+		if (envConfigPath && fs.existsSync(envConfigPath)) {
+			const envContent = fs.readFileSync(envConfigPath, "utf8");
+			const envConfig = yaml.load(envContent);
+
+			// Deep merge the configs (environment config overrides default)
+			mergedConfig = deepMerge(mergedConfig, envConfig);
+		}
+
+		// Return only the server portion
+		return (
+			(mergedConfig as { server?: ServerConfig }).server ||
+			getEmptyServerConfig()
+		);
+	} catch (error) {
+		console.error("Could not load server config from YAML:", error);
+		return getEmptyServerConfig();
+	}
+}
+
+// Helper function to provide a default empty server config
+function getEmptyServerConfig(): ServerConfig {
+	return {
+		cache: {
+			keyPrefix: "next-web:default",
+			filePath: "./.cache/",
+			defaultTTL: 300,
+			longTTL: 86400,
+			refreshThreshold: 150,
+		},
+		feeds: {
+			publications: {
+				origin: "",
+				apiKey: "",
+			},
+			inDev: {
+				origin: "",
+				apiKey: "",
+			},
+			jotForm: {
+				apiKey: "",
+			},
+		},
+	};
+}
+
+// Simple deep merge function for config objects
+function deepMerge<T extends Record<string, unknown>>(
+	target: T,
+	source: Partial<T>
+): T {
+	const result = { ...target };
+
+	for (const key in source) {
+		const sourceValue = source[key];
+		if (
+			sourceValue &&
+			typeof sourceValue === "object" &&
+			!Array.isArray(sourceValue)
+		) {
+			result[key] = deepMerge(
+				(result[key] || {}) as Record<string, unknown>,
+				sourceValue as Record<string, unknown>
+			) as T[Extract<keyof T, string>];
+		} else {
+			result[key] = sourceValue as T[Extract<keyof T, string>];
+		}
+	}
+
+	return result;
+}
+
+// Load server config once on server startup
+let _serverRuntimeConfig: ServerConfig | null = null;
+
+function getServerRuntimeConfig(): ServerConfig {
+	if (_serverRuntimeConfig === null) {
+		_serverRuntimeConfig = loadServerConfig();
+	}
+	return _serverRuntimeConfig;
+}
+
+// Export a getter that loads config lazily
+export const serverRuntimeConfig = new Proxy({} as ServerConfig, {
+	get(target: ServerConfig, prop: string | symbol): unknown {
+		const config = getServerRuntimeConfig();
+		return config[prop as keyof ServerConfig];
+	},
+});
 
 export interface SearchConfig {
 	/** The base URL of the Single Search Endpoint (SSE) e.g. https://beta-search-api.nice.org.uk/api/ */
@@ -117,4 +364,4 @@ export interface ServerConfig {
 	feeds: FeedsConfig;
 }
 
-export { publicRuntimeConfig, serverRuntimeConfig };
+export { publicRuntimeConfig };

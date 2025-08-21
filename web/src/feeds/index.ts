@@ -35,7 +35,8 @@ export const getFeedBodyUnCached = async <TResponse>(
 	acceptHeader = "application/json"
 ): Promise<TResponse> => {
 	try {
-		const { data } = await client.get<TResponse>(origin + path, {
+		const requestUrl = origin + path;
+		const { data } = await client.get<TResponse>(requestUrl, {
 			headers: {
 				"Api-Key": apiKey,
 				Accept: acceptHeader,

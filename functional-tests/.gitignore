@@ -2,3 +2,8 @@ allure-results
 allure-report
 docker-output
 errorShots
+
+# Local environment files (do not commit secrets)
+local.env.js
+.env
+.env.local

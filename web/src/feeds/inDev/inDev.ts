@@ -20,8 +20,16 @@ import {
 export * from "./types";
 
 const cacheKeyPrefix = "indev",
-	{ defaultTTL, longTTL } = serverRuntimeConfig.cache,
-	{ origin, apiKey } = serverRuntimeConfig.feeds.inDev;
+	cacheConfig = serverRuntimeConfig.cache || {
+		defaultTTL: 300,
+		longTTL: 86400,
+	},
+	{ defaultTTL, longTTL } = cacheConfig,
+	feedsConfig = serverRuntimeConfig.feeds?.inDev || {
+		origin: "http://localhost:8080",
+		apiKey: "TEST_API_KEY",
+	},
+	{ origin, apiKey } = feedsConfig;
 
 export const getAllProjects = async (): Promise<Project[]> =>
 	await getFeedBodyCached<Project[]>(

@@ -22,12 +22,12 @@ export const mockRouter: NextRouter = {
 	route: "/",
 	asPath: "/",
 	query: {},
-	push: jest.fn(),
-	replace: jest.fn(),
+	push: jest.fn().mockResolvedValue(true),
+	replace: jest.fn().mockResolvedValue(true),
 	reload: jest.fn(),
 	back: jest.fn(),
 	forward: jest.fn(),
-	prefetch: jest.fn(),
+	prefetch: jest.fn().mockResolvedValue(void 0),
 	beforePopState: jest.fn(),
 	events: {
 		on: jest.fn(),
@@ -59,7 +59,9 @@ export const getMockRouter = (
 /**
  * Collect tags from next/head: https://edibleco.de/3Anu92S
  */
-const HeadProvider: React.FC = ({ children }) => {
+const HeadProvider: React.FC<{ children: React.ReactNode }> = ({
+	children,
+}) => {
 	let head: JSX.Element[];
 
 	useEffect(() => {
@@ -89,7 +91,7 @@ export type GetWrapperOptions = {
 };
 const getAppWrapper =
 	({ router, wrapper: Wrapper }: GetWrapperOptions) =>
-	({ children }: { children: ReactElement }) =>
+	({ children }: { children: React.ReactNode }) =>
 		(
 			<HeadProvider>
 				<RouterContext.Provider value={router}>

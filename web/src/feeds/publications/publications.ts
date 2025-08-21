@@ -25,8 +25,16 @@ import {
 export * from "./types";
 
 const cacheKeyPrefix = "publications",
-	{ defaultTTL, longTTL } = serverRuntimeConfig.cache,
-	{ origin, apiKey } = serverRuntimeConfig.feeds.publications;
+	cacheConfig = serverRuntimeConfig.cache || {
+		defaultTTL: 300,
+		longTTL: 86400,
+	},
+	{ defaultTTL, longTTL } = cacheConfig,
+	feedsConfig = serverRuntimeConfig.feeds?.publications || {
+		origin: "http://localhost:8080",
+		apiKey: "TEST_API_KEY",
+	},
+	{ origin, apiKey } = feedsConfig;
 
 /**
  * Gets a list of products from the 'products lite' endpoint.

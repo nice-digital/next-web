@@ -3,8 +3,15 @@ import store from "cache-manager-fs-hash";
 
 import { serverRuntimeConfig } from "@/config";
 
-const { keyPrefix, defaultTTL, refreshThreshold, filePath } =
-	serverRuntimeConfig.cache;
+// Provide fallback values for test environment or when config fails to load
+const cacheConfig = serverRuntimeConfig.cache || {
+	keyPrefix: "next-web:tests",
+	defaultTTL: 300,
+	refreshThreshold: 150,
+	filePath: "./.cache-test/",
+};
+
+const { keyPrefix, defaultTTL, refreshThreshold, filePath } = cacheConfig;
 
 /**
  * Returns a cache key generated from the given prefix and postfix.
