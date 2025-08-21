@@ -4,6 +4,17 @@ import getConfig from "next/config";
 import type { InitialiseOptions as SearchClientInitOptions } from "@nice-digital/search-client";
 
 // Get public config from Next.js runtime config (loaded in next.config.js)
+// NOTE: publicRuntimeConfig via next/config still works with Next.js 15, but we might need to move away from this
+// and load YAML at build time (as we do for serverRuntimeConfig). Next.js recommends environment variables instead,
+// but that conflicts with our "build once, deploy many" model.
+// Future approach: Load YAML at build time in next.config.js
+// const publicConfig = loadYamlAtBuildTime();
+// const nextConfig = {
+//   env: {
+//     // Inject public config as build-time constants
+//     PUBLIC_CONFIG: JSON.stringify(publicConfig),
+//   },
+// };
 const { publicRuntimeConfig } = getConfig() || { publicRuntimeConfig: {} };
 
 // Helper function to apply environment variable substitution

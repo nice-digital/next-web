@@ -694,6 +694,65 @@ const nextConfig = {
 - **Solution**: Implement configuration loading directly in Next.js config
 - **Benefits**: Better control, reduced dependencies, improved maintainability
 
+## Configuration Architecture & Future Migration
+
+### Current Public Configuration Strategy
+
+The current implementation uses Next.js `publicRuntimeConfig` via `next/config` which still works with Next.js 15, but may require migration in future versions.
+
+**Current Architecture** (`src/config/config.ts`):
+```typescript
+// NOTE: publicRuntimeConfig via next/config still works with Next.js 15, but we might need to move away from this
+// and load YAML at build time (as we do for serverRuntimeConfig). Next.js recommends environment variables instead,
+// but that conflicts with our "build once, deploy many" model.
+import getConfig from "next/config";
+const { publicRuntimeConfig } = getConfig() || { publicRuntimeConfig: {} };
+```
+
+**Why We Can't Use Next.js Recommended Approach**:
+- Next.js recommends `NEXT_PUBLIC_*` environment variables
+- Our deployment model is "build once, deploy many environments"
+- Environment variables would require separate builds per environment
+- Current YAML approach supports single build with runtime configuration
+
+### Future Migration Path
+
+When `publicRuntimeConfig` becomes deprecated, migrate to build-time YAML loading:
+
+```javascript
+// Future approach: Load YAML at build time in next.config.js
+const publicConfig = loadYamlAtBuildTime();
+const nextConfig = {
+  env: {
+    // Inject public config as build-time constants
+    PUBLIC_CONFIG: JSON.stringify(publicConfig),
+  },
+};
+```
+
+**Migration Benefits**:
+- ✅ Maintains "build once, deploy many" model
+- ✅ Better performance (no runtime config resolution)
+- ✅ Improved Next.js compatibility
+- ✅ Simplified deployment process
+
+**Migration Timeline**:
+- **Current (Next.js 15)**: Keep existing approach - fully functional
+- **Future (Next.js 16+)**: Plan migration when `publicRuntimeConfig` is deprecated
+- **Implementation**: Use existing YAML loading logic from `next.config.js`
+
+### Configuration System Summary
+
+**Server Config**: ✅ Already migrated to custom YAML loading
+- Uses `loadServerConfig()` function
+- Environment variable substitution for Docker environments
+- No dependency on Next.js runtime configuration
+
+**Public Config**: 🔄 Currently using Next.js `publicRuntimeConfig`
+- Works reliably with Next.js 15
+- Migration path planned for future versions
+- Maintains deployment architecture requirements
+
 ## Migration Checklist for Future Upgrades
 
 ### Pre-Upgrade
