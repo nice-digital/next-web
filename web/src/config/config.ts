@@ -3,7 +3,7 @@ import getConfig from "next/config";
 
 import type { InitialiseOptions as SearchClientInitOptions } from "@nice-digital/search-client";
 
-// Get public config from Next.js runtime config
+// Get public config from Next.js runtime config (loaded in next.config.js)
 const { publicRuntimeConfig } = getConfig() || { publicRuntimeConfig: {} };
 
 // Helper function to apply environment variable substitution
