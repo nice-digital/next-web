@@ -7,7 +7,7 @@ import type { InitialiseOptions as SearchClientInitOptions } from "@nice-digital
 const { publicRuntimeConfig } = getConfig() || { publicRuntimeConfig: {} };
 
 // Helper function to apply environment variable substitution
-function applyEnvironmentVariables(
+export function applyEnvironmentVariables(
 	config: Record<string, unknown>,
 	envMapping: Record<string, unknown>
 ): Record<string, unknown> {
@@ -38,6 +38,16 @@ function applyEnvironmentVariables(
 	}
 
 	return result;
+}
+
+// Helper function to detect Docker environment for functional tests
+export function isDockerEnvironment(): boolean {
+	return !!(
+		process.env.SEARCH_BASE_URL ||
+		process.env.PUBLICATIONS_BASE_URL ||
+		process.env.INDEV_BASE_URL ||
+		process.env.HOSTNAME?.includes("next-web")
+	);
 }
 
 // Server-side YAML config loader that mimics the config package behavior
@@ -78,13 +88,7 @@ function loadServerConfig(): ServerConfig {
 
 		// Apply environment variable substitution only for functional tests (Docker environment)
 		// Check for Docker-specific environment variables to distinguish from Jest unit tests
-		const isDockerEnvironment =
-			process.env.SEARCH_BASE_URL ||
-			process.env.PUBLICATIONS_BASE_URL ||
-			process.env.INDEV_BASE_URL ||
-			process.env.HOSTNAME?.includes("next-web"); // Docker containers have specific hostnames
-
-		if (isDockerEnvironment) {
+		if (isDockerEnvironment()) {
 			try {
 				const fs = eval("require")("fs");
 				const yaml = eval("require")("js-yaml");
