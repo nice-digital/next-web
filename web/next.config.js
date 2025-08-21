@@ -72,6 +72,9 @@ const nextConfig = {
 	},
 	pageExtensions: ["page.tsx", "api.ts"],
 	poweredByHeader: false,
+	// Set the output file tracing root to the monorepo web directory
+	// This silences the warning about multiple lockfiles in the monorepo
+	outputFileTracingRoot: path.join(__dirname),
 	// Suppress webpack cache serialization warnings in Next.js 15
 	webpack: (config, { dev }) => {
 		if (!dev) {
