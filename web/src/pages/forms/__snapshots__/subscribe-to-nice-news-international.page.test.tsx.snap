@@ -25,7 +25,7 @@ exports[`NewsInternationalNewsletterForm should match snapshot 1`] = `
         <a
           href="/nice-newsletters-and-alerts"
         >
-          Newsletters and alerts
+          NICE newsletters and alerts
         </a>
       </li>
       <li
@@ -57,7 +57,7 @@ exports[`NewsInternationalNewsletterForm should match snapshot 1`] = `
       "position": 2,
       "item": {
         "@id": "/nice-newsletters-and-alerts",
-        "name": "Newsletters and alerts"
+        "name": "NICE newsletters and alerts"
       }
     },
     {

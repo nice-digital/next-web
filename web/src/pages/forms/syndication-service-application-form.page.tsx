@@ -12,7 +12,7 @@ export default function SyndicationServiceApplicationForm(
 	return (
 		<JotFormPage
 			{...props}
-			formName="Syndication service application form"
+			formName="Syndication service application"
 			lead=""
 			parentPages={[
 				{

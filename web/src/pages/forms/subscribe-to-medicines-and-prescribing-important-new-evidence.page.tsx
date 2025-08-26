@@ -21,7 +21,7 @@ export default function MedicinesAndPrescribingNewsletterForm(): JSX.Element {
 	// 	// 	lead="Receive monthly updates on prescribing and medicines optimisation. Includes information from national bodies including NICE, SIGN and the MHRA."
 	// 	// 	parentPages={[
 	// 	// 		{
-	// 	// 			title: "Newsletters and alerts",
+	// 	// 			title: "NICE newsletters and alerts",
 	// 	// 			path: "/nice-newsletters-and-alerts",
 	// 	// 		},
 	// 	// 		{

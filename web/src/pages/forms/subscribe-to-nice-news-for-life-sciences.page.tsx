@@ -16,7 +16,7 @@ export default function LifeSciencesNewsletterForm(
 			lead="Keeping those working within the life sciences sector up-to-date with important developments."
 			parentPages={[
 				{
-					title: "Newsletters and alerts",
+					title: "NICE newsletters and alerts",
 					path: "/nice-newsletters-and-alerts",
 				},
 			]}

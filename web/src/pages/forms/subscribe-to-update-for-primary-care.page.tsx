@@ -16,7 +16,7 @@ export default function PrimaryCareNewsletterForm(
 			lead="Keeping GPs and others working in primary care up-to-date with important developments."
 			parentPages={[
 				{
-					title: "Newsletters and alerts",
+					title: "NICE newsletters and alerts",
 					path: "/nice-newsletters-and-alerts",
 				},
 			]}
