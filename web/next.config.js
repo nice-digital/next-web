@@ -214,7 +214,10 @@ const nextConfig = {
 						buildNumber: "TEST",
 						environment: "test",
 						authEnvironment: "test",
-						baseURL: "https://next-web-tests.nice.org.uk",
+						baseURL:
+							process.env.FUNCTIONAL_TESTS === "true"
+								? ""
+								: "https://next-web-tests.nice.org.uk",
 						cookieBannerScriptURL:
 							"https://cdn.nice.org.uk/cookie-banner/cookie-banner.min.js",
 						publicBaseURL: "",
