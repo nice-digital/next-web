@@ -1,5 +1,8 @@
 #!/bin/bash
 
+# set env var for the functional test step then env var config overrides work
+export FUNCTIONAL_TESTS=true
+
 # Runs functional tests via Docker
 
 # Avoid "Mount denied" errors for Chrome/Firefox containers on Windows

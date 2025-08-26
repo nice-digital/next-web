@@ -51,6 +51,7 @@ export function applyEnvironmentVariables(
 	return result;
 }
 
+// TODO check if this is valid
 // Helper function to detect Docker environment for functional tests
 export function isDockerEnvironment(): boolean {
 	return !!(
@@ -98,8 +99,8 @@ function loadServerConfig(): ServerConfig {
 		};
 
 		// Apply environment variable substitution only for functional tests (Docker environment)
-		// Check for Docker-specific environment variables to distinguish from Jest unit tests
-		if (isDockerEnvironment()) {
+		// Only apply if FUNCTIONAL_TESTS=true is set (prevents unit tests from picking up env vars)
+		if (process.env.FUNCTIONAL_TESTS === "true" && isDockerEnvironment()) {
 			try {
 				const fs = eval("require")("fs");
 				const yaml = eval("require")("js-yaml");
