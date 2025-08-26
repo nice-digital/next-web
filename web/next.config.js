@@ -120,6 +120,33 @@ const nextConfig = {
 			const fs = require("fs");
 			const yaml = require("js-yaml");
 
+			// Helper function to load YAML or JSON
+			/**
+			 * Loads a YAML or JSON config file and returns its contents as an object.
+			 * @param {string} filePathBase
+			 * @returns {Record<string, any>}
+			 */
+			const loadYamlOrJson = (filePathBase) => {
+				const ymlPath = `${filePathBase}.yml`;
+				const jsonPath = `${filePathBase}.json`;
+
+				if (fs.existsSync(ymlPath)) {
+					return (
+						/** @type {Record<string, any>} */ (
+							yaml.load(fs.readFileSync(ymlPath, "utf8"))
+						) || {}
+					);
+				} else if (fs.existsSync(jsonPath)) {
+					return (
+						/** @type {Record<string, any>} */ (
+							JSON.parse(fs.readFileSync(jsonPath, "utf8"))
+						) || {}
+					);
+				} else {
+					return {};
+				}
+			};
+
 			// Helper function to merge configs
 			/**
 			 * @param {Record<string, any>} target
@@ -174,16 +201,12 @@ const nextConfig = {
 			};
 
 			// Load default config
-			const defaultConfigPath = path.join(__dirname, "config", "default.yml");
 			let mergedConfig = {};
-			if (fs.existsSync(defaultConfigPath)) {
-				const defaultContent = fs.readFileSync(defaultConfigPath, "utf8");
-				mergedConfig = yaml.load(defaultContent) || {};
-			}
+			mergedConfig = loadYamlOrJson(path.join(__dirname, "config", "default"));
 
 			// Load environment-specific config
 			const nodeEnv = process.env.NODE_ENV || "development";
-			let envConfigPath = "";
+			let envConfigBase = "";
 			if (nodeEnv === "test") {
 				// For test environment, return test-specific config
 				const testConfig = {
@@ -222,38 +245,28 @@ const nextConfig = {
 					process.env.INDEV_BASE_URL ||
 					(process.env.HOSTNAME && process.env.HOSTNAME.includes("next-web"));
 				if (isDockerEnvironment) {
-					const customEnvPath = path.join(
-						__dirname,
-						"config",
-						"custom-environment-variables.yml"
+					const customEnv = loadYamlOrJson(
+						path.join(__dirname, "config", "custom-environment-variables")
 					);
-					if (fs.existsSync(customEnvPath)) {
-						const customEnvContent = fs.readFileSync(customEnvPath, "utf8");
-						const customEnvConfig = yaml.load(customEnvContent) || {};
-						mergedConfig = applyEnvironmentVariables(
-							mergedConfig,
-							customEnvConfig
-						);
-					}
+					mergedConfig = applyEnvironmentVariables(mergedConfig, customEnv);
 				}
 			} else if (nodeEnv === "development") {
-				envConfigPath = path.join(__dirname, "config", "local-development.yml");
+				envConfigBase = path.join(__dirname, "config", "local-development");
 			} else if (nodeEnv === "production") {
-				envConfigPath = path.join(__dirname, "config", "local-production.yml");
+				envConfigBase = path.join(__dirname, "config", "local-production");
 			}
-			if (envConfigPath && fs.existsSync(envConfigPath)) {
-				const envContent = fs.readFileSync(envConfigPath, "utf8");
-				const envConfig = yaml.load(envContent) || {};
+			if (envConfigBase) {
+				const envConfig = loadYamlOrJson(envConfigBase);
 				mergedConfig = deepMerge(mergedConfig, envConfig);
 			}
-			console.log("Loading public config from YAML files");
+			console.log("Loading public config from YAML/JSON files");
 			return mergedConfig &&
 				typeof mergedConfig === "object" &&
 				"public" in mergedConfig
 				? mergedConfig.public || {}
 				: {};
 		} catch (error) {
-			console.warn("Could not load public config from YAML:", error);
+			console.warn("Could not load public config:", error);
 			return {};
 		}
 	})(),

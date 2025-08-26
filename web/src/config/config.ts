@@ -144,30 +144,42 @@ function loadServerConfig(): ServerConfig {
 
 		// Start with default.yml
 		const defaultConfigPath = path.join(configDir, "default.yml");
+		const defaultJsonPath = path.join(configDir, "default.json"); // allow .json fallback
 		let mergedConfig = {};
 
 		if (fs.existsSync(defaultConfigPath)) {
 			const defaultContent = fs.readFileSync(defaultConfigPath, "utf8");
 			const defaultConfig = yaml.load(defaultContent);
 			mergedConfig = { ...defaultConfig };
+		} else if (fs.existsSync(defaultJsonPath)) {
+			// fallback to JSON if YAML missing
+			const defaultContent = fs.readFileSync(defaultJsonPath, "utf8");
+			const defaultConfig = JSON.parse(defaultContent);
+			mergedConfig = { ...defaultConfig };
 		}
 
 		// Determine environment-specific config file
 		let envConfigPath = "";
+		let envJsonPath = "";
 
 		// Use local-development.yml for development, local-production.yml for production
 		if (nodeEnv === "development") {
 			envConfigPath = path.join(configDir, "local-development.yml");
+			envJsonPath = path.join(configDir, "local-development.json"); // json fallback
 		} else if (nodeEnv === "production") {
 			envConfigPath = path.join(configDir, "local-production.yml");
+			envJsonPath = path.join(configDir, "local-production.json"); // json fallback
 		}
 
 		// Load and merge environment-specific config if it exists
 		if (envConfigPath && fs.existsSync(envConfigPath)) {
 			const envContent = fs.readFileSync(envConfigPath, "utf8");
 			const envConfig = yaml.load(envContent);
-
-			// Deep merge the configs (environment config overrides default)
+			mergedConfig = deepMerge(mergedConfig, envConfig);
+		} else if (envJsonPath && fs.existsSync(envJsonPath)) {
+			// fallback to JSON if YAML missing
+			const envContent = fs.readFileSync(envJsonPath, "utf8");
+			const envConfig = JSON.parse(envContent);
 			mergedConfig = deepMerge(mergedConfig, envConfig);
 		}
 
@@ -177,7 +189,7 @@ function loadServerConfig(): ServerConfig {
 			getEmptyServerConfig()
 		);
 	} catch (error) {
-		console.error("Could not load server config from YAML:", error);
+		console.error("Could not load server config from YAML/JSON:", error);
 		return getEmptyServerConfig();
 	}
 }
