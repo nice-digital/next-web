@@ -241,13 +241,8 @@ const nextConfig = {
 				};
 				mergedConfig = deepMerge(mergedConfig, testConfig);
 
-				// Apply environment variable substitution only for functional tests (Docker environment)
-				const isDockerEnvironment =
-					process.env.SEARCH_BASE_URL ||
-					process.env.PUBLICATIONS_BASE_URL ||
-					process.env.INDEV_BASE_URL ||
-					(process.env.HOSTNAME && process.env.HOSTNAME.includes("next-web"));
-				if (isDockerEnvironment) {
+				// Apply environment variable substitution only for functional tests
+				if (process.env.FUNCTIONAL_TESTS === "true") {
 					const customEnv = loadYamlOrJson(
 						path.join(__dirname, "config", "custom-environment-variables")
 					);

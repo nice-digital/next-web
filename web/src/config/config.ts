@@ -51,17 +51,6 @@ export function applyEnvironmentVariables(
 	return result;
 }
 
-// TODO check if this is valid
-// Helper function to detect Docker environment for functional tests
-export function isDockerEnvironment(): boolean {
-	return !!(
-		process.env.SEARCH_BASE_URL ||
-		process.env.PUBLICATIONS_BASE_URL ||
-		process.env.INDEV_BASE_URL ||
-		process.env.HOSTNAME?.includes("next-web")
-	);
-}
-
 // Server-side YAML config loader that mimics the config package behaviour
 function loadServerConfig(): ServerConfig {
 	// Only run on server side, but allow test environment
@@ -100,7 +89,7 @@ function loadServerConfig(): ServerConfig {
 
 		// Apply environment variable substitution only for functional tests (Docker environment)
 		// Only apply if FUNCTIONAL_TESTS=true is set (prevents unit tests from picking up env vars)
-		if (process.env.FUNCTIONAL_TESTS === "true" && isDockerEnvironment()) {
+		if (process.env.FUNCTIONAL_TESTS === "true") {
 			try {
 				const fs = eval("require")("fs");
 				const yaml = eval("require")("js-yaml");

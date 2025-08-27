@@ -1,6 +1,5 @@
 import {
 	applyEnvironmentVariables,
-	isDockerEnvironment,
 	serverRuntimeConfig,
 } from "../config/config";
 
@@ -129,42 +128,6 @@ describe("Config System", () => {
 			expect(applyEnvironmentVariables({}, null as any)).toEqual({});
 			// eslint-disable-next-line @typescript-eslint/no-explicit-any
 			expect(applyEnvironmentVariables(undefined as any, {})).toBeUndefined();
-		});
-	});
-
-	describe("Docker Environment Detection", () => {
-		it("should detect Docker environment when SEARCH_BASE_URL is set", () => {
-			process.env.SEARCH_BASE_URL = "https://mock-search.nice.org.uk";
-			expect(isDockerEnvironment()).toBe(true);
-		});
-
-		it("should detect Docker environment when PUBLICATIONS_BASE_URL is set", () => {
-			process.env.PUBLICATIONS_BASE_URL =
-				"https://mock-publications.nice.org.uk";
-			expect(isDockerEnvironment()).toBe(true);
-		});
-
-		it("should detect Docker environment when INDEV_BASE_URL is set", () => {
-			process.env.INDEV_BASE_URL = "https://mock-indev.nice.org.uk";
-			expect(isDockerEnvironment()).toBe(true);
-		});
-
-		it("should detect Docker environment when HOSTNAME contains next-web", () => {
-			process.env.HOSTNAME = "next-web-container-123";
-			expect(isDockerEnvironment()).toBe(true);
-		});
-
-		it("should NOT detect Docker environment in normal Jest tests", () => {
-			// No Docker-specific environment variables set
-			expect(isDockerEnvironment()).toBe(false);
-		});
-
-		it("should handle partial hostname matches correctly", () => {
-			process.env.HOSTNAME = "some-other-container";
-			expect(isDockerEnvironment()).toBe(false);
-
-			process.env.HOSTNAME = "my-next-web-app";
-			expect(isDockerEnvironment()).toBe(true);
 		});
 	});
 
