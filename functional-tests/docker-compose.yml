@@ -33,7 +33,7 @@ services:
     image: nextweb:latest
     ## Uncomment the two lines below to run with a specific image with a specific Teamcity build number
     # image: xxxxxxxxxxxx.dkr.ecr.eu-west-1.amazonaws.com/nextweb:nnnn
-    command: ["npm", "run", "host-console-logging"]
+    # command: ["npm", "run", "host-console-logging"]
     container_name: next-web
     build: ./../web/
     depends_on:
@@ -46,6 +46,7 @@ services:
     volumes:
       - ./../web:/web
     environment:
+      - FUNCTIONAL_TESTS
       - SEARCH_BASE_URL
       - PUBLICATIONS_BASE_URL
       - INDEV_BASE_URL
