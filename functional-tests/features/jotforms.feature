@@ -11,4 +11,4 @@ Feature: Individual jotforms page
 
   Scenario: User can navigate to Nice newsletters and alerts page
     Given I open the leave feedback page
-    Then I expect that element "h1" contains the text "Leave feedback"
+    Then I expect that element "h1" contains the text "Website feedback"
