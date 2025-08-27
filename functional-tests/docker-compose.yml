@@ -46,7 +46,7 @@ services:
     volumes:
       - ./../web:/web
     environment:
-      - FUNCTIONAL_TESTS
+      - TEST_TYPE
       - SEARCH_BASE_URL
       - PUBLICATIONS_BASE_URL
       - INDEV_BASE_URL

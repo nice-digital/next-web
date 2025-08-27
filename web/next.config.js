@@ -215,7 +215,7 @@ const nextConfig = {
 						environment: "test",
 						authEnvironment: "test",
 						baseURL:
-							process.env.FUNCTIONAL_TESTS === "true"
+							process.env.TEST_TYPE === "functional"
 								? "http://next-web-tests.nice.org.uk:3000"
 								: "https://next-web-tests.nice.org.uk",
 						cookieBannerScriptURL:
@@ -242,7 +242,7 @@ const nextConfig = {
 				mergedConfig = deepMerge(mergedConfig, testConfig);
 
 				// Apply environment variable substitution only for functional tests
-				if (process.env.FUNCTIONAL_TESTS === "true") {
+				if (process.env.TEST_TYPE === "functional") {
 					const customEnv = loadYamlOrJson(
 						path.join(__dirname, "config", "custom-environment-variables")
 					);

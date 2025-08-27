@@ -88,8 +88,8 @@ function loadServerConfig(): ServerConfig {
 		};
 
 		// Apply environment variable substitution only for functional tests (Docker environment)
-		// Only apply if FUNCTIONAL_TESTS=true is set (prevents unit tests from picking up env vars)
-		if (process.env.FUNCTIONAL_TESTS === "true") {
+		// Only apply if TEST_TYPE=functional is set (prevents unit tests from picking up env vars)
+		if (process.env.TEST_TYPE === "functional") {
 			try {
 				const fs = eval("require")("fs");
 				const yaml = eval("require")("js-yaml");
