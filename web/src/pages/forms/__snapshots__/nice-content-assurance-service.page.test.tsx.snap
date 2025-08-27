@@ -23,7 +23,7 @@ exports[`NiceContentAssuranceServiceForm should match snapshot 1`] = `
         class="breadcrumbs__crumb"
       >
         <a
-          href="/re-using-our-content"
+          href="/reusing-our-content"
         >
           Reusing our content
         </a>
@@ -32,7 +32,7 @@ exports[`NiceContentAssuranceServiceForm should match snapshot 1`] = `
         class="breadcrumbs__crumb"
       >
         <a
-          href="/re-using-our-content/content-assurance-service"
+          href="/reusing-our-content/content-assurance-service"
         >
           Content assurance service
         </a>
@@ -65,7 +65,7 @@ exports[`NiceContentAssuranceServiceForm should match snapshot 1`] = `
       "@type": "ListItem",
       "position": 2,
       "item": {
-        "@id": "/re-using-our-content",
+        "@id": "/reusing-our-content",
         "name": "Reusing our content"
       }
     },
@@ -73,7 +73,7 @@ exports[`NiceContentAssuranceServiceForm should match snapshot 1`] = `
       "@type": "ListItem",
       "position": 3,
       "item": {
-        "@id": "/re-using-our-content/content-assurance-service",
+        "@id": "/reusing-our-content/content-assurance-service",
         "name": "Content assurance service"
       }
     },
