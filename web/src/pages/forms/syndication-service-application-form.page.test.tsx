@@ -14,7 +14,7 @@ jest.mock("@/feeds/jotform/jotform", () => ({
 		content: {
 			id: "241983007673057",
 			username: "nice_teams",
-			title: "Syndication service application",
+			title: "Syndication service application form",
 			height: "539",
 			status: "ENABLED",
 			created_at: "2022-12-08 06:31:44",
