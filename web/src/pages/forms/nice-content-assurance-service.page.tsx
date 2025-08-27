@@ -40,11 +40,11 @@ export default function NiceContentAssuranceServiceForm(
 			parentPages={[
 				{
 					title: "Content assurance service",
-					path: "/re-using-our-content/content-assurance-service",
+					path: "/reusing-our-content/content-assurance-service",
 				},
 				{
 					title: "Reusing our content",
-					path: "/re-using-our-content",
+					path: "/reusing-our-content",
 				},
 			]}
 			formHeader={<FormHeader />}
