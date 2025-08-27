@@ -17,7 +17,7 @@ export default function UseOfNICEContentForAIForm(
 			parentPages={[
 				{
 					title: "Reusing our content",
-					path: "/re-using-our-content",
+					path: "/reusing-our-content",
 				},
 			]}
 		/>
