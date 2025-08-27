@@ -18,6 +18,12 @@ function runTests() {
   # Bring up images including the one that will be sent to AWS ECR
   docker-compose up -d
 
+  # Debug: print environment variables inside nxt-test-runner
+  echo "==== TeamCity ENV VARS inside nxt-test-runner ===="
+  docker-compose run --rm nxt-test-runner env | grep -E 'FUNCTIONAL_TESTS|SEARCH_BASE_URL|PUBLICATIONS_BASE_URL|INDEV_BASE_URL|STORYBLOK_TOKEN|JOTFORM'
+  echo "==============================================="
+
+
   # Wait for the web app to be up before running the tests
   docker-compose run -T nxt-test-runner npm run wait-then-test
   # Or for dev mode, uncomment:
