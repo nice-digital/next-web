@@ -12,7 +12,7 @@ export default function HelpImplementNiceGuidanceForm(
 	return (
 		<JotFormPage
 			{...props}
-			formName="Adoption and impact reference panel membership form"
+			formName="Adoption and impact reference panel membership"
 			lead="Join the NICE Adoption and Impact Reference Panel. Give your advice on tools and resources as they're being developed. Help us shape the commissioning and delivery of safe, effective and cost-efficient care."
 			parentPages={[
 				{

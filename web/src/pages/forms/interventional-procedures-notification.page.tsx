@@ -43,7 +43,7 @@ export default function InterventionalProceduresNotificationForm(
 	return (
 		<JotFormPage
 			{...props}
-			formName="Interventional procedures notification form"
+			formName="Interventional procedures notification"
 			lead="Tell us about an interventional procedure you think should be assessed by NICE. This can be a new procedure or a review of our existing guidance."
 			parentPages={[
 				{

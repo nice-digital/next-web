@@ -50,7 +50,7 @@ exports[`HelpImplementNiceGuidanceForm should match snapshot 1`] = `
         class="breadcrumbs__crumb"
       >
         <span>
-          Adoption and impact reference panel membership form
+          Adoption and impact reference panel membership
         </span>
       </li>
     </ol>
@@ -98,7 +98,7 @@ exports[`HelpImplementNiceGuidanceForm should match snapshot 1`] = `
       "@type": "ListItem",
       "position": 5,
       "item": {
-        "name": "Adoption and impact reference panel membership form"
+        "name": "Adoption and impact reference panel membership"
       }
     }
   ]
@@ -120,7 +120,7 @@ exports[`HelpImplementNiceGuidanceForm should match snapshot 1`] = `
         <h1
           class="page-header__heading "
         >
-          Adoption and impact reference panel membership form
+          Adoption and impact reference panel membership
         </h1>
         <p
           class="page-header__lead"
@@ -137,7 +137,7 @@ exports[`HelpImplementNiceGuidanceForm should match snapshot 1`] = `
         scrolling="no"
         src="https://next-web-tests.jotform.com/232203151110028?isIframeEmbed=1"
         style="height: 539px; overflow: hidden;"
-        title="Adoption and impact reference panel membership form"
+        title="Adoption and impact reference panel membership"
       />
     </div>
   </div>

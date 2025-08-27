@@ -26,7 +26,7 @@ export default function NiceAdviceContactUsForm(props: FormProps): JSX.Element {
 	return (
 		<JotFormPage
 			{...props}
-			formName="NICE Advice contact us form"
+			formName="NICE Advice contact us"
 			lead=""
 			parentPages={[
 				{

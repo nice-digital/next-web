@@ -12,7 +12,7 @@ export default function InternationalEnquiryForm(
 	return (
 		<JotFormPage
 			{...props}
-			formName="NICE International enquiry form"
+			formName="NICE International enquiry"
 			lead="Thank you for contacting the NICE International team. We will use the information you provide below to understand your enquiry and contact you about your requirements."
 			parentPages={[
 				{

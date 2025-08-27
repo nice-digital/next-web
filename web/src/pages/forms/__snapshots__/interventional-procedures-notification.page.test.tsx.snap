@@ -59,7 +59,7 @@ exports[`InterventionalProceduresNotificationForm should match snapshot 1`] = `
         class="breadcrumbs__crumb"
       >
         <span>
-          Interventional procedures notification form
+          Interventional procedures notification
         </span>
       </li>
     </ol>
@@ -115,7 +115,7 @@ exports[`InterventionalProceduresNotificationForm should match snapshot 1`] = `
       "@type": "ListItem",
       "position": 6,
       "item": {
-        "name": "Interventional procedures notification form"
+        "name": "Interventional procedures notification"
       }
     }
   ]
@@ -137,7 +137,7 @@ exports[`InterventionalProceduresNotificationForm should match snapshot 1`] = `
         <h1
           class="page-header__heading "
         >
-          Interventional procedures notification form
+          Interventional procedures notification
         </h1>
         <p
           class="page-header__lead"
@@ -154,7 +154,7 @@ exports[`InterventionalProceduresNotificationForm should match snapshot 1`] = `
         scrolling="no"
         src="https://next-web-tests.jotform.com/230793530776059?isIframeEmbed=1"
         style="height: 539px; overflow: hidden;"
-        title="Interventional procedures notification form"
+        title="Interventional procedures notification"
       />
     </div>
     <div

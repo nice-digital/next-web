@@ -41,7 +41,7 @@ exports[`InternationalEnquiryForm should match snapshot 1`] = `
         class="breadcrumbs__crumb"
       >
         <span>
-          NICE International enquiry form
+          NICE International enquiry
         </span>
       </li>
     </ol>
@@ -81,7 +81,7 @@ exports[`InternationalEnquiryForm should match snapshot 1`] = `
       "@type": "ListItem",
       "position": 4,
       "item": {
-        "name": "NICE International enquiry form"
+        "name": "NICE International enquiry"
       }
     }
   ]
@@ -103,7 +103,7 @@ exports[`InternationalEnquiryForm should match snapshot 1`] = `
         <h1
           class="page-header__heading "
         >
-          NICE International enquiry form
+          NICE International enquiry
         </h1>
         <p
           class="page-header__lead"
@@ -120,7 +120,7 @@ exports[`InternationalEnquiryForm should match snapshot 1`] = `
         scrolling="no"
         src="https://next-web-tests.jotform.com/251406008775355?isIframeEmbed=1"
         style="height: 539px; overflow: hidden;"
-        title="NICE International enquiry form"
+        title="NICE International enquiry"
       />
     </div>
   </div>

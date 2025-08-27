@@ -41,7 +41,7 @@ exports[`RequestASpeakerForm should match snapshot 1`] = `
         class="breadcrumbs__crumb"
       >
         <span>
-          Speaker request form
+          Speaker request
         </span>
       </li>
     </ol>
@@ -81,7 +81,7 @@ exports[`RequestASpeakerForm should match snapshot 1`] = `
       "@type": "ListItem",
       "position": 4,
       "item": {
-        "name": "Speaker request form"
+        "name": "Speaker request"
       }
     }
   ]
@@ -103,7 +103,7 @@ exports[`RequestASpeakerForm should match snapshot 1`] = `
         <h1
           class="page-header__heading "
         >
-          Speaker request form
+          Speaker request
         </h1>
       </div>
       <iframe
@@ -115,7 +115,7 @@ exports[`RequestASpeakerForm should match snapshot 1`] = `
         scrolling="no"
         src="https://next-web-tests.jotform.com/232203800035035?isIframeEmbed=1"
         style="height: 539px; overflow: hidden;"
-        title="Speaker request form"
+        title="Speaker request"
       />
     </div>
   </div>

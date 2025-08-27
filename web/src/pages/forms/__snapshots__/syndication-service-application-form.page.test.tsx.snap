@@ -41,7 +41,7 @@ exports[`SyndicationServiceApplicationForm should match snapshot 1`] = `
         class="breadcrumbs__crumb"
       >
         <span>
-          Syndication service application form
+          Syndication service application
         </span>
       </li>
     </ol>
@@ -81,7 +81,7 @@ exports[`SyndicationServiceApplicationForm should match snapshot 1`] = `
       "@type": "ListItem",
       "position": 4,
       "item": {
-        "name": "Syndication service application form"
+        "name": "Syndication service application"
       }
     }
   ]
@@ -103,7 +103,7 @@ exports[`SyndicationServiceApplicationForm should match snapshot 1`] = `
         <h1
           class="page-header__heading "
         >
-          Syndication service application form
+          Syndication service application
         </h1>
       </div>
       <iframe
@@ -115,7 +115,7 @@ exports[`SyndicationServiceApplicationForm should match snapshot 1`] = `
         scrolling="no"
         src="https://next-web-tests.jotform.com/241983007673057?isIframeEmbed=1"
         style="height: 539px; overflow: hidden;"
-        title="Syndication service application form"
+        title="Syndication service application"
       />
     </div>
   </div>

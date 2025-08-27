@@ -59,7 +59,7 @@ exports[`InterventionalProceduresRegisterAnInterestForm should match snapshot 1`
         class="breadcrumbs__crumb"
       >
         <span>
-          Interventional procedures register an interest form
+          Interventional procedures register an interest
         </span>
       </li>
     </ol>
@@ -115,7 +115,7 @@ exports[`InterventionalProceduresRegisterAnInterestForm should match snapshot 1`
       "@type": "ListItem",
       "position": 6,
       "item": {
-        "name": "Interventional procedures register an interest form"
+        "name": "Interventional procedures register an interest"
       }
     }
   ]
@@ -137,7 +137,7 @@ exports[`InterventionalProceduresRegisterAnInterestForm should match snapshot 1`
         <h1
           class="page-header__heading "
         >
-          Interventional procedures register an interest form
+          Interventional procedures register an interest
         </h1>
         <p
           class="page-header__lead"
@@ -168,7 +168,7 @@ exports[`InterventionalProceduresRegisterAnInterestForm should match snapshot 1`
         scrolling="no"
         src="https://next-web-tests.jotform.com/222271911976056?isIframeEmbed=1"
         style="height: 539px; overflow: hidden;"
-        title="Interventional procedures register an interest form"
+        title="Interventional procedures register an interest"
       />
       <p>
         We'll use the information you provide on this form to contact you about the procedures you want to stay up to date with.

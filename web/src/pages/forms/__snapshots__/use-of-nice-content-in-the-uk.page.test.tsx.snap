@@ -32,7 +32,7 @@ exports[`UseOfNICEContentInTheUKForm should match snapshot 1`] = `
         class="breadcrumbs__crumb"
       >
         <span>
-          Use of NICE content in the UK form
+          Use of NICE content in the UK
         </span>
       </li>
     </ol>
@@ -64,7 +64,7 @@ exports[`UseOfNICEContentInTheUKForm should match snapshot 1`] = `
       "@type": "ListItem",
       "position": 3,
       "item": {
-        "name": "Use of NICE content in the UK form"
+        "name": "Use of NICE content in the UK"
       }
     }
   ]
@@ -86,7 +86,7 @@ exports[`UseOfNICEContentInTheUKForm should match snapshot 1`] = `
         <h1
           class="page-header__heading "
         >
-          Use of NICE content in the UK form
+          Use of NICE content in the UK
         </h1>
         <p
           class="page-header__lead"
@@ -144,7 +144,7 @@ exports[`UseOfNICEContentInTheUKForm should match snapshot 1`] = `
         scrolling="no"
         src="https://next-web-tests.jotform.com/223412731228044?isIframeEmbed=1"
         style="height: 539px; overflow: hidden;"
-        title="Use of NICE content in the UK form"
+        title="Use of NICE content in the UK"
       />
       <h2>
         Content assurance service

@@ -14,7 +14,7 @@ jest.mock("@/feeds/jotform/jotform", () => ({
 		content: {
 			id: "230793530776059",
 			username: "nice_teams",
-			title: "Interventional procedures notification form",
+			title: "Interventional procedures notification",
 			height: "539",
 			status: "ENABLED",
 			created_at: "2023-03-21 09:27:18",

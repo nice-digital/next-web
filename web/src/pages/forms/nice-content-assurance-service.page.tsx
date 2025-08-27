@@ -35,7 +35,7 @@ export default function NiceContentAssuranceServiceForm(
 	return (
 		<JotFormPage
 			{...props}
-			formName="NICE content assurance service form"
+			formName="NICE content assurance service"
 			lead=""
 			parentPages={[
 				{

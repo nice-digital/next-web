@@ -14,7 +14,7 @@ export default function InterventionalProceduresRegisterAnInterestForm(
 	return (
 		<JotFormPage
 			{...props}
-			formName="Interventional procedures register an interest form"
+			formName="Interventional procedures register an interest"
 			lead="Sign up to receive email updates on interventional procedures guidance."
 			parentPages={[
 				{
