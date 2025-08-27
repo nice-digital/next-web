@@ -3,15 +3,6 @@
 # set env var for the functional test step then env var config overrides work
 export FUNCTIONAL_TESTS=true
 
-# Export all env vars TeamCity sets so Docker Compose sees them
-export SEARCH_BASE_URL=${SEARCH_BASE_URL}
-export PUBLICATIONS_BASE_URL=${PUBLICATIONS_BASE_URL}
-export INDEV_BASE_URL=${INDEV_BASE_URL}
-export STORYBLOK_TOKEN=${STORYBLOK_TOKEN}
-export STORYBLOK_ROUTE_CATCHALL=${STORYBLOK_ROUTE_CATCHALL}
-export JOTFORM_BASE_URL=${JOTFORM_BASE_URL}
-export JOTFORM_APIKEY=${JOTFORM_APIKEY}
-
 # Runs functional tests via Docker
 
 # Avoid "Mount denied" errors for Chrome/Firefox containers on Windows
@@ -26,12 +17,6 @@ function cleanupBeforeStart() {
 function runTests() {
   # Bring up images including the one that will be sent to AWS ECR
   docker-compose up -d
-
-  # Debug: print environment variables inside nxt-test-runner
-  echo "==== TeamCity ENV VARS inside nxt-test-runner ===="
-  docker-compose run --rm nxt-test-runner env | grep -E 'FUNCTIONAL_TESTS|SEARCH_BASE_URL|PUBLICATIONS_BASE_URL|INDEV_BASE_URL|STORYBLOK_TOKEN|JOTFORM'
-  echo "==============================================="
-
 
   # Wait for the web app to be up before running the tests
   docker-compose run -T nxt-test-runner npm run wait-then-test

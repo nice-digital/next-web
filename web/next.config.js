@@ -216,7 +216,7 @@ const nextConfig = {
 						authEnvironment: "test",
 						baseURL:
 							process.env.FUNCTIONAL_TESTS === "true"
-								? ""
+								? "http://next-web-tests.nice.org.uk:3000"
 								: "https://next-web-tests.nice.org.uk",
 						cookieBannerScriptURL:
 							"https://cdn.nice.org.uk/cookie-banner/cookie-banner.min.js",
