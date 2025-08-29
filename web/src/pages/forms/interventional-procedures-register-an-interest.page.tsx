@@ -14,28 +14,24 @@ export default function InterventionalProceduresRegisterAnInterestForm(
 	return (
 		<JotFormPage
 			{...props}
-			formName="Interventional procedures register an interest form"
+			formName="Interventional procedures register an interest"
 			lead="Sign up to receive email updates on interventional procedures guidance."
 			parentPages={[
 				{
-					title: "NICE interventional procedures guidance",
-					path: "/about/what-we-do/our-programmes/nice-guidance/nice-interventional-procedures-guidance",
+					title: "Notify an interventional procedure",
+					path: "/what-nice-does/our-guidance/about-interventional-procedures-guidance/notify-an-interventional-procedure",
 				},
 				{
-					title: "NICE guidance",
-					path: "/about/what-we-do/our-programmes/nice-guidance",
+					title: "About interventional procedures guidance",
+					path: "/what-nice-does/our-guidance/about-interventional-procedures-guidance",
 				},
 				{
-					title: "Our programmes",
-					path: "/about/what-we-do/our-programmes",
+					title: "Our guidance",
+					path: "/what-nice-does/our-guidance",
 				},
 				{
-					title: "What we do",
-					path: "/about/what-we-do",
-				},
-				{
-					title: "About",
-					path: "/about",
+					title: "What NICE does",
+					path: "/what-nice-does",
 				},
 			]}
 			informationPanel={

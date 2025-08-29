@@ -13,14 +13,9 @@ export default function LeaveFeedbackForm(props: FormProps): JSX.Element {
 	return (
 		<JotFormPage
 			{...props}
-			formName="Website feedback form"
+			formName="Website feedback"
 			lead="Thank you for taking a look at our website, we'd like to hear your views."
-			parentPages={[
-				{
-					title: "About",
-					path: "/about",
-				},
-			]}
+			parentPages={[]}
 			formHeader={
 				<>
 					This form is only for website feedback, for all other enquiries please{" "}

@@ -12,20 +12,16 @@ export default function SyndicationServiceApplicationForm(
 	return (
 		<JotFormPage
 			{...props}
-			formName="Syndication service application form"
+			formName="Syndication service application"
 			lead=""
 			parentPages={[
 				{
 					title: "NICE syndication API",
-					path: "/about/what-we-do/nice-syndication-api",
+					path: "/reusing-our-content/nice-syndication-api",
 				},
 				{
-					title: "What we do",
-					path: "/about/what-we-do",
-				},
-				{
-					title: "About",
-					path: "/about",
+					title: "Reusing our content",
+					path: "/reusing-our-content",
 				},
 			]}
 		/>

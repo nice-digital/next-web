@@ -14,7 +14,7 @@ jest.mock("@/feeds/jotform/jotform", () => ({
 		content: {
 			id: "241962582676065",
 			username: "nice_teams",
-			title: "Permission request form for international use of NICE content",
+			title: "Permission request for international use of NICE content",
 			height: "539",
 			status: "ENABLED",
 			created_at: "2022-12-08 06:31:44",
