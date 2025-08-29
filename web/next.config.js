@@ -513,7 +513,7 @@ const nextConfig = {
 			{
 				source:
 					"/about/what-we-do/our-programmes/nice-guidance/nice-technology-appraisal-guidance/types-of-recommendation",
-				destination: "/what-nice-does/our-guidance/types-of-recommendation",
+				destination: "/what-nice-does/our-guidance/types-of-recommendation-nice-can-make",
 				permanent: true,
 			},
 			{
@@ -582,7 +582,7 @@ const nextConfig = {
 			{
 				source:
 					"/about/what-we-do/our-programmes/nice-guidance/interventional-procedures-guidance/recommendations",
-				destination: "/what-nice-does/our-guidance/types-of-recommendation",
+				destination: "/what-nice-does/our-guidance/types-of-recommendation-nice-can-make",
 				permanent: true,
 			},
 			{
