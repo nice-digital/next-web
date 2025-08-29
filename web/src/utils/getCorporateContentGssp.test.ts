@@ -263,7 +263,7 @@ describe("getBasePathFromSlugAndUrl", () => {
 		).toBe("segment1");
 	});
 
-	it("returns normalized path when slug is undefined", () => {
+	it("returns normalised path when slug is undefined", () => {
 		expect(getBasePathFromSlugAndUrl("/about/", undefined)).toBe("about");
 		expect(getBasePathFromSlugAndUrl("/segment1/segment2/", undefined)).toBe(
 			"segment1/segment2"

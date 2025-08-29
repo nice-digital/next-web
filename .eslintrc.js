@@ -99,5 +99,11 @@ module.exports = {
 				"import/order": "off",
 			},
 		},
+		{
+			files: ["**/next-env.d.ts"],
+			rules: {
+				"@typescript-eslint/triple-slash-reference": "off",
+			},
+		},
 	],
 };
