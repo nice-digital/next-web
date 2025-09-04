@@ -123,7 +123,7 @@ describe("BlogPostPage", () => {
 				req: {
 					headers: {
 						"cache-control":
-							"public, s-max-age=300, max-age=120, stale-while-revalidate=1800",
+							"public, s-maxage=300, max-age=120, stale-while-revalidate=1800",
 					},
 					url: "/some-erroring-page",
 				},
@@ -157,7 +157,7 @@ describe("BlogPostPage", () => {
 				req: {
 					headers: {
 						"cache-control":
-							"public, s-max-age=300, max-age=120, stale-while-revalidate=1800",
+							"public, s-maxage=300, max-age=120, stale-while-revalidate=1800",
 					},
 				},
 			} as unknown as GetServerSidePropsContext<ParsedUrlQuery>;
