@@ -85,7 +85,7 @@ describe("NewsArticlePage", () => {
 				req: {
 					headers: {
 						"cache-control":
-							"public, s-max-age=300, max-age=120, stale-while-revalidate=1800",
+							"public, s-maxage=900, max-age=120, stale-while-revalidate=1800",
 					},
 					url: "/some-erroring-page",
 				},
@@ -119,7 +119,7 @@ describe("NewsArticlePage", () => {
 				req: {
 					headers: {
 						"cache-control":
-							"public, s-max-age=300, max-age=120, stale-while-revalidate=1800",
+							"public, s-maxage=900, max-age=120, stale-while-revalidate=1800",
 					},
 					url: "/some-erroring-page",
 				},
