@@ -19,7 +19,7 @@ export const CardGridRow: React.FC<CardGridRowProps> = ({
 }: CardGridRowProps) => {
 	return (
 		<>
-			<CardGrid row={blok as CardGridRow} />
+			<CardGrid row={blok as CardGridRow} className={blok.component} />
 		</>
 	);
 };

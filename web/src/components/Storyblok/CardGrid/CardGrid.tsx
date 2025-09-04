@@ -25,9 +25,10 @@ export interface CardGridProps {
 		| CardGridRowBasicStoryblok
 		| CardGridRowCalloutStoryblok
 		| CardGridRowCalloutWithImageStoryblok;
+	className?: string;
 }
 
-export const CardGrid: React.FC<CardGridProps> = ({ row }) => {
+export const CardGrid: React.FC<CardGridProps> = ({ row, className }) => {
 	const RenderCardGridComponent: React.FC<{
 		gridItem:
 			| TestimonialGridItemStoryblok
@@ -76,10 +77,15 @@ export const CardGrid: React.FC<CardGridProps> = ({ row }) => {
 	const gridElementType =
 		component !== "cardGridRowTestimonials" ? "ul" : "div";
 	const gridItemElementType = gridElementType === "ul" ? "li" : "div";
+
+	const gridClassName = className
+		? `${styles.cardGrid__cardGridRow} ${className}`
+		: styles.cardGrid__cardGridRow;
+
 	return (
 		<Grid
 			elementType={gridElementType}
-			className={styles.cardGrid__cardGridRow}
+			className={gridClassName}
 			gutter="loose"
 			equalHeight
 			key={_uid}
