@@ -25,10 +25,10 @@ export interface CardGridProps {
 		| CardGridRowBasicStoryblok
 		| CardGridRowCalloutStoryblok
 		| CardGridRowCalloutWithImageStoryblok;
-	className?: string;
+	pageType?: string;
 }
 
-export const CardGrid: React.FC<CardGridProps> = ({ row, className }) => {
+export const CardGrid: React.FC<CardGridProps> = ({ row, pageType }) => {
 	const RenderCardGridComponent: React.FC<{
 		gridItem:
 			| TestimonialGridItemStoryblok
@@ -78,15 +78,16 @@ export const CardGrid: React.FC<CardGridProps> = ({ row, className }) => {
 		component !== "cardGridRowTestimonials" ? "ul" : "div";
 	const gridItemElementType = gridElementType === "ul" ? "li" : "div";
 
-	const gridClassName = className
-		? `${styles.cardGrid__cardGridRow} ${className}`
+	//TODO: refactor to handle multiple page types
+	const gridClassName = pageType === "infoPage"
+		? `${styles.cardGrid__cardGridRow} ${styles['cardGrid__cardGridRow--isInfoPage']}`
 		: styles.cardGrid__cardGridRow;
 
 	return (
 		<Grid
 			elementType={gridElementType}
 			className={gridClassName}
-			gutter="loose"
+			gutter={pageType !== "infoPage" ? "loose" : undefined}
 			equalHeight
 			key={_uid}
 			data-testid="card-grid"

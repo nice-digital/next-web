@@ -19,6 +19,7 @@ export interface InfoPageBlokProps {
 	breadcrumbs?: Breadcrumb[];
 	tree: ExtendedSBLink[];
 	slug: string;
+	pageType?: string;
 }
 
 export const InfoPage = ({
@@ -26,7 +27,9 @@ export const InfoPage = ({
 	breadcrumbs,
 	tree,
 	slug,
+	pageType,
 }: InfoPageBlokProps): React.ReactElement => {
+
 	return (
 		<div className={styles.infoPage}>
 			{blok.metadata &&
@@ -82,7 +85,7 @@ export const InfoPage = ({
 					className={`${styles.infoPage__contentArea} inPageNavContainerSelector`}
 				>
 					<div className={styles.content}>
-						<StoryblokRichText content={blok.content} />
+						<StoryblokRichText content={blok.content} pageType={pageType}  />
 					</div>
 				</GridItem>
 			</Grid>
