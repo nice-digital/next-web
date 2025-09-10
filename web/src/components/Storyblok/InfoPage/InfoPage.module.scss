@@ -53,18 +53,6 @@
     margin-top: 0;
   }
 
-  :global(.cardGridRowBasic),
-  :global(.cardGridRowTestimonials),
-  :global(.cardGridRowCallout),
-  :global(.cardGridRowCalloutWithImage) {
-    --nds-grid-gutter: #{utils.rem(spacing.$medium)};
-    row-gap: utils.rem(spacing.$medium);
-
-    &:not(:last-child) {
-      margin-bottom: utils.rem(spacing.$large);
-    }
-  }
-
   @include media-queries.mq($from: sm) {
     &--reverse-order {
       #{ $self }__contentArea {
@@ -77,3 +65,5 @@
     }
   }
 }
+
+
