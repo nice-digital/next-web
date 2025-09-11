@@ -16,11 +16,11 @@ const defaultSortOrder = SortOrder.dateDescending,
 
 const tableBodyRender = (documents: Document[]) => (
 	<>
-		<caption className="visually-hidden">Guidance in topic selection</caption>
+		<caption className="visually-hidden">Topic prioritisation</caption>
 		<thead>
 			<tr>
-				<th scope="col">Title</th>
-				<th scope="col">Technology type</th>
+				<th scope="col">Topic title</th>
+				<th scope="col">Guidance programme</th>
 				<th scope="col">Decision</th>
 				<th scope="col">Decision date</th>
 			</tr>
@@ -43,7 +43,7 @@ const tableBodyRender = (documents: Document[]) => (
 									dangerouslySetInnerHTML={{ __html: title }}
 								/>
 							</td>
-							<td>{technologyType || "n/a"}</td>
+							<td>{technologyType}</td>
 							<td>{topicSelectionDecision || "n/a"}</td>
 							<td>
 								{topicSelectionDecisionDate ? (
@@ -68,17 +68,17 @@ export default getProductListPage({
 			NICE guidance
 		</Breadcrumb>,
 	],
-	currentBreadcrumb: "Topic selection",
+	currentBreadcrumb: "Topic prioritisation",
 	preheading: "",
-	heading: "Guidance in topic selection",
-	title: "Guidance in topic selection | Guidance",
+	heading: "Topic prioritisation",
+	title: "Topic prioritisation | Guidance",
 	defaultSort: {
 		order: defaultSortOrder,
 		label: "Decision date",
 	},
 	secondarySort: {
 		order: SortOrder.titleAscending,
-		label: "Title",
+		label: "Topic title",
 	},
 	showDateFilter: true,
 	useFutureDates: false,
@@ -89,7 +89,7 @@ export default getProductListPage({
 });
 
 export const getServerSideProps = getGetServerSidePropsFunc({
-	gstPreFilter: "Topic selection",
+	gstPreFilter: "Prioritisation",
 	defaultSortOrder,
 	dateFilterLabel,
 	textFilterLabel,
