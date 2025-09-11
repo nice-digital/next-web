@@ -23,11 +23,13 @@ import styles from "./StoryblokRichText.module.scss";
 export interface StoryblokRichTextProps {
 	content: RichtextStoryblok;
 	className?: string;
+	pageType?: string; // Added pageType prop
 }
 
 export const StoryblokRichText: React.FC<StoryblokRichTextProps> = ({
 	content,
 	className,
+	pageType,
 }) => {
 	const classes = [styles.storyblokRichTextWrapper, className].join(" ");
 	const imageClassName = [styles.imageMain, className].join(" ");
@@ -109,7 +111,13 @@ export const StoryblokRichText: React.FC<StoryblokRichTextProps> = ({
 				defaultBlokResolver: (name, props) => {
 					// resolves all other storyblok components to permissable components
 					const blok = { ...props, component: name };
-					return <StoryblokComponent blok={blok} key={blok._uid} />;
+					return (
+						<StoryblokComponent
+							blok={blok}
+							key={blok._uid}
+							pageType={pageType}
+						/>
+					);
 				},
 			})}
 		</div>

@@ -9,11 +9,18 @@
     &:not(:last-child) {
       margin-bottom: utils.rem(spacing.$x-large);
     }
+
+    &--isInfoPage {
+      row-gap: utils.rem(spacing.$medium);
+
+      &:not(:last-child) {
+        margin-bottom: utils.rem(spacing.$large);
+      }
+    }
   }
 
   &__cardGridItem {
     margin-bottom: 0;// Some components have their own margin-bottom which messes with grid layout
-
   }
 
 }

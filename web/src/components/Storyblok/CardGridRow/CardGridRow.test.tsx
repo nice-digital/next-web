@@ -132,12 +132,15 @@ describe("GridRow", () => {
 				gridItems: [
 					{
 						...mockCalloutCardProps.blok,
+						_uid: "1",
 					},
 					{
 						...mockCalloutCardProps.blok,
+						_uid: "2",
 					},
 					{
 						...mockCalloutCardProps.blok,
+						_uid: "3",
 					},
 				] as CalloutCardStoryblok[],
 				_uid: "row1",
@@ -161,9 +164,11 @@ describe("GridRow", () => {
 				gridItems: [
 					{
 						...mockCalloutCardWithImageProps.blok,
+						_uid: "1",
 					},
 					{
 						...mockCalloutCardWithImageProps.blok,
+						_uid: "2",
 					},
 				] as CalloutCardWithImageStoryblok[],
 				_uid: "row1",

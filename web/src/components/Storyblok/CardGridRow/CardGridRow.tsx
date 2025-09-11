@@ -12,14 +12,16 @@ export type CardGridRow =
 
 export interface CardGridRowProps {
 	blok: CardGridRow;
+	pageType?: string; // Added pageType prop
 }
 
 export const CardGridRow: React.FC<CardGridRowProps> = ({
 	blok,
+	pageType,
 }: CardGridRowProps) => {
 	return (
 		<>
-			<CardGrid row={blok as CardGridRow} />
+			<CardGrid row={blok as CardGridRow} pageType={pageType} />
 		</>
 	);
 };
