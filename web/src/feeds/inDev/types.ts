@@ -24,7 +24,7 @@ export enum ProjectStatus {
 	"Referred" = "Referred",
 	"InProgress" = "InProgress",
 	"Proposed" = "Proposed",
-	"TopicSelection" = "TopicSelection",
+	"Prioritisation" = "Prioritisation",
 	"ImpactedByCOVID19" = "ImpactedByCOVID19",
 }
 

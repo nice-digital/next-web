@@ -57,8 +57,8 @@ export const getProjectPath = (
 
 	if (project.status == ProjectStatus.Proposed)
 		statusSlug = "awaiting-development";
-	else if (project.status == ProjectStatus.TopicSelection)
-		statusSlug = "topic-selection";
+	else if (project.status == ProjectStatus.Prioritisation)
+		statusSlug = "prioritisation";
 	else if (project.status == ProjectStatus.Discontinued)
 		statusSlug = "discontinued";
 
