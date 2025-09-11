@@ -111,7 +111,13 @@ export const StoryblokRichText: React.FC<StoryblokRichTextProps> = ({
 				defaultBlokResolver: (name, props) => {
 					// resolves all other storyblok components to permissable components
 					const blok = { ...props, component: name };
-					return <StoryblokComponent blok={blok} key={blok._uid} pageType={pageType} />;
+					return (
+						<StoryblokComponent
+							blok={blok}
+							key={blok._uid}
+							pageType={pageType}
+						/>
+					);
 				},
 			})}
 		</div>

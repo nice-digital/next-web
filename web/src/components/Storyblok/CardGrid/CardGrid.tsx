@@ -79,9 +79,10 @@ export const CardGrid: React.FC<CardGridProps> = ({ row, pageType }) => {
 	const gridItemElementType = gridElementType === "ul" ? "li" : "div";
 
 	//TODO: refactor to handle multiple page types
-	const gridClassName = pageType === "infoPage"
-		? `${styles.cardGrid__cardGridRow} ${styles['cardGrid__cardGridRow--isInfoPage']}`
-		: styles.cardGrid__cardGridRow;
+	const gridClassName =
+		pageType === "infoPage"
+			? `${styles.cardGrid__cardGridRow} ${styles["cardGrid__cardGridRow--isInfoPage"]}`
+			: styles.cardGrid__cardGridRow;
 
 	return (
 		<Grid

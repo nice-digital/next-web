@@ -29,7 +29,6 @@ export const InfoPage = ({
 	slug,
 	pageType,
 }: InfoPageBlokProps): React.ReactElement => {
-
 	return (
 		<div className={styles.infoPage}>
 			{blok.metadata &&
@@ -85,7 +84,7 @@ export const InfoPage = ({
 					className={`${styles.infoPage__contentArea} inPageNavContainerSelector`}
 				>
 					<div className={styles.content}>
-						<StoryblokRichText content={blok.content} pageType={pageType}  />
+						<StoryblokRichText content={blok.content} pageType={pageType} />
 					</div>
 				</GridItem>
 			</Grid>
