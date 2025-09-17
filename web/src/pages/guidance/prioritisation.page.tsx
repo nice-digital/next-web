@@ -90,7 +90,7 @@ export default getProductListPage({
 });
 
 export const getServerSideProps = getGetServerSidePropsFunc({
-	gstPreFilter: "Prioritisation",
+	gstPreFilter: "Topic prioritisation",
 	defaultSortOrder,
 	dateFilterLabel,
 	textFilterLabel,
