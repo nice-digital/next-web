@@ -3,10 +3,10 @@ import { useRouter } from "next/router";
 
 import { SearchResultsSuccess, SearchUrl } from "@nice-digital/search-client";
 
-import sampleData from "@/mockData/search/guidance-topic-selection.json";
+import sampleData from "@/mockData/search/guidance-prioritisation.json";
 import { render } from "@/test-utils/rendering";
 
-import TopicSelectionPage from "../topic-selection.page";
+import TopicPrioritisationPage from "../prioritisation.page";
 
 (useRouter as jest.Mock).mockImplementation(() => ({
 	route: "/",
@@ -16,16 +16,16 @@ import TopicSelectionPage from "../topic-selection.page";
 	push: jest.fn(),
 }));
 
-describe("/guidance/topic-selection", () => {
+describe("/guidance/prioritisation", () => {
 	it("should match the snapshot", () => {
 		mockDate.set("2020-11-22");
 
 		expect(
 			render(
-				<TopicSelectionPage
+				<TopicPrioritisationPage
 					activeModifiers={[]}
 					results={sampleData as unknown as SearchResultsSuccess}
-					searchUrl={{ route: "/guidance/topic-selection" } as SearchUrl}
+					searchUrl={{ route: "/guidance/prioritisation" } as SearchUrl}
 				/>
 			).container
 		).toMatchSnapshot();

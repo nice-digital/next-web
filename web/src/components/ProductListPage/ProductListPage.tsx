@@ -72,6 +72,7 @@ export type GetProductListPageOptions = {
 	textFilterLabel?: string;
 	textFilterHeading?: string;
 	useFutureDates?: boolean;
+	navigatorShortNamesToExclude?: string;
 	tableBodyRender: (documents: Document[]) => JSX.Element;
 	searchInputPlaceholder: string;
 } & (
@@ -105,6 +106,7 @@ export const getProductListPage =
 		dateFilterLabel,
 		textFilterHeading,
 		useFutureDates,
+		navigatorShortNamesToExclude,
 		tableBodyRender,
 		searchInputPlaceholder,
 	}: GetProductListPageOptions): FC<ProductListPageProps> =>
@@ -210,7 +212,7 @@ export const getProductListPage =
 							queryText={q}
 							from={from}
 							to={to}
-							navigatorShortNamesToExclude="gst"
+							navigatorShortNamesToExclude={`gst,${navigatorShortNamesToExclude}`}
 							showDateFilter={showDateFilter}
 							showTextFilter={true}
 							dateFilterLabel={dateFilterLabel}
