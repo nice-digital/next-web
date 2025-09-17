@@ -169,9 +169,9 @@ exports[`/guidance/awaiting-development should match the snapshot 1`] = `
               <a
                 aria-current="false"
                 class="horizontal-nav__link"
-                href="/guidance/topic-selection"
+                href="/guidance/prioritisation"
               >
-                Topic selection
+                Topic prioritisation
               </a>
             </li>
           </ul>

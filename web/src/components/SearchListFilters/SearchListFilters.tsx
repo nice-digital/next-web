@@ -152,7 +152,7 @@ export const SearchListFilters: FC<SearchListFiltersProps> = ({
 			)}
 
 			{navigators
-				.filter((nav) => nav.shortName !== navigatorShortNamesToExclude)
+				.filter((nav) => !(navigatorShortNamesToExclude || "").split(',').includes(nav.shortName))
 				.sort(
 					(a, b) =>
 						navigatorsOrder.indexOf(a.shortName as KnownOrModifierKeys) -
