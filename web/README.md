@@ -287,7 +287,7 @@ server:
 ```
 Uncomment the relevant `origin` and `apiKey` based on your needs.
 
-**Note:** API keys can be obtained from [Octodeploy](https://deploy-aws.nice.org.uk/app#/Spaces-1/projects/publications/variables). Ensure you have the necessary permissions to access these keys. The `SECRET` in the "publications" section should match `Non-Idam-EndpointKey-NextWeb` and the `SECRET` in "inDev" section should match `ApiKey` in Octodeploy.
+**Note:** API keys can be obtained from [Octodeploy](https://deploy-aws.nice.org.uk/app#/Spaces-1/projects/publications/variables). Ensure you have the necessary permissions to access these keys. The `SECRET` in the "publications" section should match `Non-Idam-EndpointKey-NextWeb` and the `SECRET` in "inDev" section should match `Non-Idam-EndpointKey-NextWeb` in Octodeploy. If you are developing locally, then the two variables just need to match so adding 'MaryHasALittleLamb' in NextWeb secrets and Publications / Indev web.configs will also work.
 
 3. **Update `next.config.ts`:**
    - In the `next.config.ts` file, add the following line before the `module.exports` block
