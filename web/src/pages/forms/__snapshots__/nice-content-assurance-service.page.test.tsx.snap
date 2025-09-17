@@ -23,7 +23,7 @@ exports[`NiceContentAssuranceServiceForm should match snapshot 1`] = `
         class="breadcrumbs__crumb"
       >
         <a
-          href="/re-using-our-content"
+          href="/reusing-our-content"
         >
           Reusing our content
         </a>
@@ -32,7 +32,7 @@ exports[`NiceContentAssuranceServiceForm should match snapshot 1`] = `
         class="breadcrumbs__crumb"
       >
         <a
-          href="/re-using-our-content/content-assurance-service"
+          href="/reusing-our-content/content-assurance-service"
         >
           Content assurance service
         </a>
@@ -41,7 +41,7 @@ exports[`NiceContentAssuranceServiceForm should match snapshot 1`] = `
         class="breadcrumbs__crumb"
       >
         <span>
-          NICE content assurance service form
+          NICE content assurance service
         </span>
       </li>
     </ol>
@@ -65,7 +65,7 @@ exports[`NiceContentAssuranceServiceForm should match snapshot 1`] = `
       "@type": "ListItem",
       "position": 2,
       "item": {
-        "@id": "/re-using-our-content",
+        "@id": "/reusing-our-content",
         "name": "Reusing our content"
       }
     },
@@ -73,7 +73,7 @@ exports[`NiceContentAssuranceServiceForm should match snapshot 1`] = `
       "@type": "ListItem",
       "position": 3,
       "item": {
-        "@id": "/re-using-our-content/content-assurance-service",
+        "@id": "/reusing-our-content/content-assurance-service",
         "name": "Content assurance service"
       }
     },
@@ -81,7 +81,7 @@ exports[`NiceContentAssuranceServiceForm should match snapshot 1`] = `
       "@type": "ListItem",
       "position": 4,
       "item": {
-        "name": "NICE content assurance service form"
+        "name": "NICE content assurance service"
       }
     }
   ]
@@ -103,7 +103,7 @@ exports[`NiceContentAssuranceServiceForm should match snapshot 1`] = `
         <h1
           class="page-header__heading "
         >
-          NICE content assurance service form
+          NICE content assurance service
         </h1>
       </div>
       <p>
@@ -124,7 +124,7 @@ exports[`NiceContentAssuranceServiceForm should match snapshot 1`] = `
         scrolling="no"
         src="https://next-web-tests.jotform.com/241971910941055?isIframeEmbed=1"
         style="height: 539px; overflow: hidden;"
-        title="NICE content assurance service form"
+        title="NICE content assurance service"
       />
     </div>
   </div>

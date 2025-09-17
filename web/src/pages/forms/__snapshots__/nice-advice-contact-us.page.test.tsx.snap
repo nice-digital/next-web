@@ -23,25 +23,16 @@ exports[`NiceAdviceContactUsForm should match snapshot 1`] = `
         class="breadcrumbs__crumb"
       >
         <a
-          href="/about"
+          href="/what-nice-does"
         >
-          About
+          What NICE does
         </a>
       </li>
       <li
         class="breadcrumbs__crumb"
       >
         <a
-          href="/about/what-we-do"
-        >
-          What we do
-        </a>
-      </li>
-      <li
-        class="breadcrumbs__crumb"
-      >
-        <a
-          href="/about/what-we-do/life-sciences"
+          href="/what-nice-does/life-sciences-how-to-get-your-product-to-market"
         >
           Life sciences: how to get your product to market
         </a>
@@ -50,7 +41,7 @@ exports[`NiceAdviceContactUsForm should match snapshot 1`] = `
         class="breadcrumbs__crumb"
       >
         <span>
-          NICE Advice contact us form
+          NICE Advice contact us
         </span>
       </li>
     </ol>
@@ -74,31 +65,23 @@ exports[`NiceAdviceContactUsForm should match snapshot 1`] = `
       "@type": "ListItem",
       "position": 2,
       "item": {
-        "@id": "/about",
-        "name": "About"
+        "@id": "/what-nice-does",
+        "name": "What NICE does"
       }
     },
     {
       "@type": "ListItem",
       "position": 3,
       "item": {
-        "@id": "/about/what-we-do",
-        "name": "What we do"
+        "@id": "/what-nice-does/life-sciences-how-to-get-your-product-to-market",
+        "name": "Life sciences: how to get your product to market"
       }
     },
     {
       "@type": "ListItem",
       "position": 4,
       "item": {
-        "@id": "/about/what-we-do/life-sciences",
-        "name": "Life sciences: how to get your product to market"
-      }
-    },
-    {
-      "@type": "ListItem",
-      "position": 5,
-      "item": {
-        "name": "NICE Advice contact us form"
+        "name": "NICE Advice contact us"
       }
     }
   ]
@@ -120,7 +103,7 @@ exports[`NiceAdviceContactUsForm should match snapshot 1`] = `
         <h1
           class="page-header__heading "
         >
-          NICE Advice contact us form
+          NICE Advice contact us
         </h1>
       </div>
       <p>
@@ -144,7 +127,7 @@ exports[`NiceAdviceContactUsForm should match snapshot 1`] = `
         scrolling="no"
         src="https://next-web-tests.jotform.com/251264227537053?isIframeEmbed=1"
         style="height: 539px; overflow: hidden;"
-        title="NICE Advice contact us form"
+        title="NICE Advice contact us"
       />
       <p>
         As you have expressed an interest in NICE's support services, your details will be added to our mailing list so that you can receive the latest news about NICE's support for the life sciences sector. You can unsubscribe from this at any time. Our legal basis for processing your data in this way is that of public task. View our

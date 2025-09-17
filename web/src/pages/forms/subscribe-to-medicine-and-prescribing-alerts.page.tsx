@@ -16,12 +16,8 @@ export default function MedicinesAndPrescribingNewsletterForm(
 			lead="Get updates from our medicines and prescribing team."
 			parentPages={[
 				{
-					title: "Newsletters and alerts",
+					title: "NICE newsletters and alerts",
 					path: "/nice-newsletters-and-alerts",
-				},
-				{
-					title: "News",
-					path: "/news",
 				},
 			]}
 			formHeader={
