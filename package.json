@@ -37,7 +37,7 @@
   "homepage": "https://github.com/nice-digital/next-web#readme",
   "devDependencies": {
     "@next/eslint-plugin-next": "^14.2.32",
-    "@nice-digital/browserslist-config": "^2.0.1",
+    "@nice-digital/browserslist-config": "^3.0.0",
     "@testing-library/jest-dom": "^5.16.5",
     "@testing-library/react": "^14.0.0",
     "@testing-library/user-event": "^14.4.3",

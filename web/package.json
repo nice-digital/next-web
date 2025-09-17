@@ -71,7 +71,7 @@
     "striptags": "^3.2.0"
   },
   "devDependencies": {
-    "@nice-digital/browserslist-config": "^2.0.1",
+    "@nice-digital/browserslist-config": "^3.0.0",
     "@types/cache-manager": "^4.0.1",
     "@types/cache-manager-fs-hash": "0.0.1",
     "@types/form-serialize": "^0.7.2",
@@ -95,7 +95,6 @@
     "node": "22.19.0"
   },
   "overrides": {
-      "amqplib": "0.10.9"
+    "amqplib": "0.10.9"
   }
-
 }
