@@ -76,7 +76,7 @@ Object {
     },
     Object {
       "content": "yes",
-      "name": "apple-mobile-web-app-capable",
+      "name": "mobile-web-app-capable",
     },
     Object {
       "content": "NICE",

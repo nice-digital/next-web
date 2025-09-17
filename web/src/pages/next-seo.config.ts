@@ -125,7 +125,7 @@ export const getDefaultSeoConfig = (pathname: string): NextSeoProps => ({
 		},
 		// Apple specific as per https://edibleco.de/3jQIcIf
 		{
-			name: "apple-mobile-web-app-capable",
+			name: "mobile-web-app-capable",
 			content: "yes",
 		},
 		{

@@ -42,6 +42,7 @@ export const CorporateContentPage = (
 					breadcrumbs={breadcrumbs}
 					tree={tree}
 					slug={slug}
+					pageType={props.component}
 				/>
 			)}
 		</>
