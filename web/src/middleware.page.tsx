@@ -36,11 +36,11 @@ export function middleware(req: NextRequest): NextResponse {
 	);
 
 	// Only replace localhost:3000 with production domain for mixed-case redirects
-	if (redirectURL.hostname === "localhost" && redirectURL.port === "3000") {
-		redirectURL.hostname = "www.nice.org.uk";
-		redirectURL.protocol = "https";
-		redirectURL.port = "";
-	}
+	// if (redirectURL.hostname === "localhost" && redirectURL.port === "3000") {
+	// 	redirectURL.hostname = "www.nice.org.uk";
+	// 	redirectURL.protocol = "https";
+	// 	redirectURL.port = "";
+	// }//Commenting out to get localhost:3000 redirecting issue 
 
 	return NextResponse.redirect(redirectURL, 308);
 }
