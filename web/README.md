@@ -295,7 +295,7 @@ Uncomment the relevant `origin` and `apiKey` based on your needs.
 process.env.NODE_TLS_REJECT_UNAUTHORIZED = "0";
 ```
 4. **Install dependencies**
-   - Navigate to the `web` directory in your termimal in Visual Studio code and run `npm i`
+   - Navigate to the `web` directory in your terminal in Visual Studio code and run `npm ci`
 5. **Run the development server:**
    - Start the local Next-Web development server by running `npm run dev`
 6. **Access Next-Web:**
@@ -317,12 +317,8 @@ process.env.NODE_TLS_REJECT_UNAUTHORIZED = "0";
 To debug next-web locally, follow these steps:
 
 1. **Install required packages:**
-   Navigate to `web` folder in your terminal and run the following commands to install the necessary packages
-   ```
-   npm i next@latest react@latest react-dom@latest eslint-config-next@latest
-   npm install @types/react@latest @types/react-dom@latest
-   npm run dev
-   ```
+   Navigate to `web` folder in your terminal and run `npm ci`  to install the project's dependencies.
+   Run `npm run dev` to start the local development server.
 2. **Enable debugging in Chrome:**
    - Open Chrome and enter the following URL
    ```
