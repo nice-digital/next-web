@@ -1,22 +1,23 @@
+// middleware.ts
 import { NextResponse, type NextRequest } from "next/server";
 
 const SKIP_REGEXES: RegExp[] = [
-	/^\/_next\//,
-	/^\/static\//,
-	/^\/api\//,
-	/^\/favicon.ico$/,
-	/^\/sw.js$/,
-	/^\/manifest.json$/,
-	/^\/build-manifest.json$/,
-	/^\/react-loadable-manifest.json$/,
-	/^\/.*\.[^/]+$/, // any path containing a dot (file with extension).
+	/^\/_next\//, // Next internals (chunks, assets)
+	/^\/static\//, // static folder if used
+	/^\/api\//, // API routes
+	/^\/favicon\.ico$/, // favicon
+	/^\/sw\.js$/, // service worker
+	/^\/manifest\.json$/, // manifest
+	/^\/build-manifest\.json$/, // next build manifest
+	/^\/react-loadable-manifest\.json$/, // react loadable manifest
+	/^\/.*\.[^/]+$/, // any path containing a dot (file with extension)
 ];
 
 function shouldSkip(pathname: string): boolean {
 	return SKIP_REGEXES.some((re) => re.test(pathname));
 }
 
-export function middleware(req: NextRequest): NextResponse {
+export function middleware(req: NextRequest): NextResponse | void {
 	const url = req.nextUrl.clone();
 	const pathname = url.pathname;
 
@@ -31,18 +32,8 @@ export function middleware(req: NextRequest): NextResponse {
 	}
 
 	// Otherwise redirect to the lowercased path and preserve search/hash
-	const redirectURL = new URL(
-		url.origin + pathname.toLowerCase() + url.search + url.hash
-	);
-
-	// Only replace localhost:3000 with production domain for mixed-case redirects
-	// if (redirectURL.hostname === "localhost" && redirectURL.port === "3000") {
-	// 	redirectURL.hostname = "www.nice.org.uk";
-	// 	redirectURL.protocol = "https";
-	// 	redirectURL.port = "";
-	// }//Commenting out to get localhost:3000 redirecting issue
-
-	return NextResponse.redirect(redirectURL, 308);
+	url.pathname = pathname.toLowerCase();
+	return NextResponse.redirect(url, 308);
 }
 
 // Optional: broad matcher; middleware code will itself skip assets
