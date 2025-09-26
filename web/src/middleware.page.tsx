@@ -40,7 +40,7 @@ export function middleware(req: NextRequest): NextResponse {
 	// 	redirectURL.hostname = "www.nice.org.uk";
 	// 	redirectURL.protocol = "https";
 	// 	redirectURL.port = "";
-	// }//Commenting out to get localhost:3000 redirecting issue 
+	// }//Commenting out to get localhost:3000 redirecting issue
 
 	return NextResponse.redirect(redirectURL, 308);
 }
