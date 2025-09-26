@@ -266,7 +266,7 @@ See [organizing test suites](https://webdriver.io/docs/organizingsuites/) in the
 
 ### session not created: This version of ChromeDriver only supports Chrome version xx
 
-This usually occurrs after updating Chrome on your PC. When you run `npm i` (or `npm ci`), there's a package called _selenium-standalone_ that downloads the _latest_ ChromeDriver binaries at the point of install. This binary is tied to a specific Chrome version, so if you update Chrome there's then a mismatch. So run `npm rebuild selenium-standalone` to reinstall the package and update the Chromedriver binary to the latest.
+This usually occurrs after updating Chrome on your PC. When you run `npm ci` (or `npm i`), there's a package called _selenium-standalone_ that downloads the _latest_ ChromeDriver binaries at the point of install. This binary is tied to a specific Chrome version, so if you update Chrome there's then a mismatch. So run `npm rebuild selenium-standalone` to reinstall the package and update the Chromedriver binary to the latest.
 
 ### Port 4444 is already in use
 
