@@ -6,7 +6,7 @@ import { Grid, GridItem } from "@nice-digital/nds-grid";
 import { type CardGridStoryblok } from "@/types/storyblok";
 import { resolveStoryblokLink } from "@/utils/storyblok";
 
-import styles from './BasicCardGrid.module.scss';
+import styles from "./BasicCardGrid.module.scss";
 
 interface BasicCardGridBlokProps {
 	blok: CardGridStoryblok;
@@ -17,8 +17,7 @@ export const BasicCardGrid = ({
 }: BasicCardGridBlokProps): React.ReactElement => {
 	const { cards } = blok;
 	return (
-		<Grid gutter="loose"
-			className={styles.basicCardGrid__basicCardGridRow}>
+		<Grid gutter="loose" className={styles.basicCardGrid__basicCardGridRow}>
 			{cards.map(({ heading, headingLevel, body, link, _uid }) => {
 				let cardLink: CardHeadingLinkProps | undefined = undefined;
 				const resolvedLink = link ? resolveStoryblokLink(link) : undefined;
