@@ -21,6 +21,7 @@ export enum ResourceTypeSlug {
 	ToolsAndResources = "resources",
 	Evidence = "evidence",
 	InformationForThePublic = "information-for-the-public",
+	History = "history",
 }
 
 export type ResourceLinkViewModel = {
@@ -139,19 +140,24 @@ export const getInDevResourceLink = ({
 		};
 	} else {
 		const projectPath = getProjectPath(project);
+		const isIndevFile = Object.hasOwn(resource.embedded, "niceIndevFile");
 
-		const { mimeType, length, resourceTitleId, fileName } =
-				resource.embedded.niceIndevFile,
-			shouldUseNewConsultationComments =
-				resource.convertedDocument ||
+		const mimeType = resource.embedded.niceIndevFile?.mimeType || "text/html";
+		const length = resource.embedded.niceIndevFile?.length || 0;
+		const resourceTitleId = resource.embedded.niceIndevFile?.resourceTitleId || resource.embedded.niceIndevConvertedDocument?.resourceTitleId;
+		const fileName = resource.embedded.niceIndevFile?.resourceTitleId || "";
+
+		const shouldUseNewConsultationComments =
+				resource.convertedDocument && isIndevFile ||
 				resource.supportsComments ||
-				resource.supportsQuestions,
-			isHTML = mimeType === "text/html",
-			isConsultation =
-				resource.consultationId > 0 && panel.embedded.niceIndevConsultation,
-			fileSize = isHTML ? null : length,
-			fileTypeName = isHTML ? null : getFileTypeNameFromMime(mimeType),
-			href = shouldUseNewConsultationComments
+				resource.supportsQuestions;
+
+		const isHTML = mimeType === "text/html";
+		const isConsultation =
+				resource.consultationId > 0 && panel.embedded.niceIndevConsultation;
+		const fileSize = isHTML ? null : length;
+		const fileTypeName = isHTML ? null : getFileTypeNameFromMime(mimeType);
+		const href = shouldUseNewConsultationComments
 				? `/consultations/${resource.consultationId}/${resource.consultationDocumentId}`
 				: !isHTML
 				? `${projectPath}/downloads/${project.reference.toLowerCase()}-${resourceTitleId}.${
