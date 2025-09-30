@@ -6,7 +6,7 @@ import { Breadcrumb, Breadcrumbs } from "@nice-digital/nds-breadcrumbs";
 import { ProductHorizontalNav } from "@/components/ProductHorizontalNav/ProductHorizontalNav";
 import { ProductPageHeading } from "@/components/ProductPageHeading/ProductPageHeading";
 import { ResourceList } from "@/components/ResourceList/ResourceList";
-import { ProjectDetail } from "@/feeds/inDev/inDev";
+import { IndevConvertedDocument, IndevFile, ProjectDetail } from "@/feeds/inDev/inDev";
 import { ProductDetail } from "@/feeds/publications/types";
 import { arrayify, byTitleAlphabetically } from "@/utils/array";
 import { getFileTypeNameFromMime } from "@/utils/file";
@@ -129,16 +129,23 @@ export const getServerSideProps: GetServerSideProps<
 					subGroups.push(currentSubGroup);
 				}
 
-				const {
-						mimeType = "",
-						length = 0,
-						resourceTitleId = "",
-						fileName = "",
-					} = resource?.embedded?.niceIndevFile || {},
-					isHTML = mimeType === "text/html",
-					fileSize = isHTML ? null : length,
-					fileTypeName = isHTML ? null : getFileTypeNameFromMime(mimeType),
-					href = isHTML
+				let indevFile;
+
+				if (resource.embedded?.hasOwnProperty("niceIndevConvertedDocument")) {
+					indevFile = resource.embedded?.niceIndevConvertedDocument as IndevConvertedDocument;
+				} else {
+					indevFile = (resource.embedded?.niceIndevFile || resource?.embedded?.niceIndevGeneratedPdf) as IndevFile;
+				}
+
+				const mimeType = "mimeType" in indevFile ? indevFile.mimeType : "text/html";
+				const length = "length" in indevFile ? indevFile.length : 0;
+				const resourceTitleId = indevFile.resourceTitleId;
+				const fileName = "fileName" in indevFile ? indevFile.fileName : "";
+
+				const isHTML = mimeType === "text/html";
+				const fileSize = isHTML ? null : length;
+				const fileTypeName = isHTML ? null : getFileTypeNameFromMime(mimeType);
+				const href = isHTML
 						? `${productPath}/history/${resourceTitleId}`
 						: `${productPath}/history/downloads/${
 								product.id
