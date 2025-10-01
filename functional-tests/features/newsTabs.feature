@@ -9,7 +9,7 @@ Feature: News tabs
   Scenario: User can view news article tab
     When I click on the news article tab
     Then I expect the news articles tag contains the text "News"
-    And I expect the pagination shows the text "Page 1 of 34"
+    And I expect the pagination shows the text "Page 1 of 33"
 
   Scenario: User can view In-depth tab
     When I click on the in depth tab
