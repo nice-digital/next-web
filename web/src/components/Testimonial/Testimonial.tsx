@@ -44,7 +44,7 @@ export const Testimonial: React.FC<TestimonialProps> = (
 			[styles[`testimonial--${kebabCaseVariantClassName}`]]: variant,
 		},
 		className,
-		"testimonial"
+		"testimonial-max-width"
 	);
 
 	const cloneElementWithClassNames = <T extends ReactElement>(

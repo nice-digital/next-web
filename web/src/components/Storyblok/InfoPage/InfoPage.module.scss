@@ -16,7 +16,7 @@
     }
   }
 
-  :global(.testimonial) {
+  :global(.testimonial-max-width) {
     max-width: layout.$readable-width;
   }
   /* stylelint-disable-next-line selector-max-compound-selectors */
