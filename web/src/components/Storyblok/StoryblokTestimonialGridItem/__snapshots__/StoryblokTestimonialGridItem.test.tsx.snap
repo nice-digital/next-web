@@ -3,7 +3,7 @@
 exports[`Storyblok testimonial Default component should match snapshot for default variant 1`] = `
 <div>
   <div
-    class="testimonial testimonial--default testimonial"
+    class="testimonial testimonial--default testimonial-max-width"
     data-component="testimonial--default"
     data-testid="testimonial-default"
     data-tracking="testimonial"
@@ -94,7 +94,7 @@ exports[`Storyblok testimonial Default component should match snapshot for defau
 exports[`Storyblok testimonial Default component should match snapshot for the default transparent variant 1`] = `
 <div>
   <div
-    class="testimonial testimonial--transparent testimonial"
+    class="testimonial testimonial--transparent testimonial-max-width"
     data-component="testimonial--transparent"
     data-testid="testimonial-transparent"
     data-tracking="testimonial"
