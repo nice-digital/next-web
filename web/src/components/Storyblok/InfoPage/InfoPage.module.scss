@@ -48,7 +48,7 @@
     max-width: layout.$readable-width;
   }
   /* stylelint-disable-next-line selector-max-compound-selectors */
-  .content > div > div > h2 {
+  .content > div > div > h2:first-child {
     // Bit ugly, but deals with rich text headings getting nudged down the page
     margin-top: 0;
   }

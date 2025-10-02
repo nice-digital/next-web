@@ -8,6 +8,10 @@
   &__caption {
     text-align: left;
 
+    > :is(h2,h3,h4,h5,h6):first-child {
+      margin-top: 0;
+    }
+
     @include media-queries.mq($until: sm) {
       display: block;
     }
