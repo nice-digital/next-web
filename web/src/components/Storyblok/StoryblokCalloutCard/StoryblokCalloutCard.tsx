@@ -19,7 +19,7 @@ export interface StoryblokCalloutCardProps {
 export const StoryblokCalloutCard: React.FC<StoryblokCalloutCardProps> = ({
 	blok,
 }: StoryblokCalloutCardProps) => {
-	const { heading, body, link, image } = blok;
+	const { heading, headingLevel, body, link, image } = blok;
 	let cardLink: CardHeadingLinkProps | undefined = undefined;
 	const resolvedLink = resolveStoryblokLink(link);
 	if (resolvedLink?.url) {
@@ -43,6 +43,8 @@ export const StoryblokCalloutCard: React.FC<StoryblokCalloutCardProps> = ({
 	return (
 		<Card
 			headingText={heading}
+			headingLevel={headingLevel || undefined}
+			className="card--flush"
 			callout
 			link={cardLink}
 			image={renderImage()}

@@ -14,7 +14,7 @@ jest.mock("@/feeds/jotform/jotform", () => ({
 		content: {
 			id: "241971910941055",
 			username: "nice_teams",
-			title: "NICE content assurance service form",
+			title: "NICE content assurance service",
 			height: "539",
 			status: "ENABLED",
 			created_at: "2022-12-08 06:31:44",

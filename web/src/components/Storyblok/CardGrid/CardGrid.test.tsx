@@ -125,6 +125,47 @@ describe("GridSection", () => {
 		expect(card.length).toBe(1);
 	});
 
+	it("renders Card content heading level correctly", () => {
+		const mockProps: CardGridProps = {
+			row: {
+				_uid: "e6d4d18f-e8c3-40af-83e6-b2b6eaa95da3",
+				columns: "2",
+				component: "cardGridRowBasic",
+				gridItems: [
+					{
+						_uid: "9d9a77de-df8e-4030-a5fd-2e5caa319325",
+						body: "Basic card body",
+						link: {
+							fieldtype: "multilink",
+							id: "link1",
+							url: cardLinkUrl,
+							cached_url: cardLinkUrl,
+							linktype: "url",
+						},
+						heading: "Basic Card",
+						headingLevel: "3",
+						component: "card",
+					},
+				],
+			},
+		};
+
+		render(<CardGrid {...mockProps} />);
+		const cardList = screen.getByRole("list");
+		const cardListItems = screen.getAllByRole("listitem");
+		const card = screen.getAllByText("Basic Card");
+		expect(cardList).toBeInTheDocument();
+		expect(cardListItems.length).toBe(1);
+		expect(cardListItems[0]).toHaveTextContent("Basic Card");
+		expect(card.length).toBe(1);
+		expect(
+			screen.getByRole("heading", {
+				level: 3,
+				name: "Basic Card",
+			})
+		).toBeInTheDocument();
+	});
+
 	it("renders Callout Card content correctly", () => {
 		const mockCalloutProps: CardGridProps = {
 			row: {
@@ -133,12 +174,15 @@ describe("GridSection", () => {
 				gridItems: [
 					{
 						...mockCalloutCardProps.blok,
+						_uid: "1",
 					},
 					{
 						...mockCalloutCardProps.blok,
+						_uid: "2",
 					},
 					{
 						...mockCalloutCardProps.blok,
+						_uid: "3",
 					},
 				] as CalloutCardStoryblok[],
 				_uid: "row1",
@@ -162,9 +206,11 @@ describe("GridSection", () => {
 				gridItems: [
 					{
 						...mockCalloutCardWithImageProps.blok,
+						_uid: "1",
 					},
 					{
 						...mockCalloutCardWithImageProps.blok,
+						_uid: "2",
 					},
 				] as CalloutCardWithImageStoryblok[],
 				_uid: "row1",
@@ -214,6 +260,37 @@ describe("GridSection", () => {
 		const cardListItems = screen.queryByRole("listitem");
 		expect(cardList).not.toBeInTheDocument();
 		expect(cardListItems).not.toBeInTheDocument();
+	});
+
+	it("applies correct grid class for infoPage pageType", () => {
+		const mockInfoPageProps = {
+			...mockProps,
+			pageType: "infoPage",
+		};
+		render(<CardGrid {...mockInfoPageProps} />);
+		const cardGrid = screen.getByTestId("card-grid");
+		expect(cardGrid).toHaveClass("cardGrid__cardGridRow--isInfoPage");
+	});
+
+	it("removes the grid--loose class when pageType is infoPage", () => {
+		const mockInfoPageProps = {
+			...mockProps,
+			pageType: "infoPage",
+		};
+		render(<CardGrid {...mockInfoPageProps} />);
+		const cardGrid = screen.getByTestId("card-grid");
+		expect(cardGrid).not.toHaveClass("grid--loose");
+	});
+
+	it("applies correct grid class for non-infoPage pageType", () => {
+		const mockOtherPageProps = {
+			...mockProps,
+			pageType: "categoryNavigationPage",
+		};
+		render(<CardGrid {...mockOtherPageProps} />);
+		const cardGrid = screen.getByTestId("card-grid");
+		expect(cardGrid).not.toHaveClass("cardGrid__cardGridRow--isInfoPage");
+		expect(cardGrid).toHaveClass("grid--loose");
 	});
 
 	it("matches snapshot", () => {

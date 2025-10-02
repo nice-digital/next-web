@@ -12,12 +12,12 @@ export default function UseOfNICEContentInternationalForm(
 	return (
 		<JotFormPage
 			{...props}
-			formName="Permission request form for international use of NICE content"
+			formName="Permission request for international use of NICE content"
 			lead=""
 			parentPages={[
 				{
 					title: "Reusing our content",
-					path: "/re-using-our-content",
+					path: "/reusing-our-content",
 				},
 			]}
 		/>

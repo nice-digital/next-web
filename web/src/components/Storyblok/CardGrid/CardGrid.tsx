@@ -25,9 +25,10 @@ export interface CardGridProps {
 		| CardGridRowBasicStoryblok
 		| CardGridRowCalloutStoryblok
 		| CardGridRowCalloutWithImageStoryblok;
+	pageType?: string;
 }
 
-export const CardGrid: React.FC<CardGridProps> = ({ row }) => {
+export const CardGrid: React.FC<CardGridProps> = ({ row, pageType }) => {
 	const RenderCardGridComponent: React.FC<{
 		gridItem:
 			| TestimonialGridItemStoryblok
@@ -35,7 +36,7 @@ export const CardGrid: React.FC<CardGridProps> = ({ row }) => {
 			| CalloutCardWithImageStoryblok
 			| CardStoryblok;
 	}> = ({ gridItem }) => {
-		const { heading, body, link, component } = gridItem;
+		const { heading, headingLevel, body, link, component } = gridItem;
 
 		let cardLink: CardHeadingLinkProps | undefined = undefined;
 		const resolvedLink =
@@ -60,6 +61,8 @@ export const CardGrid: React.FC<CardGridProps> = ({ row }) => {
 				return (
 					<Card
 						headingText={heading}
+						headingLevel={headingLevel || undefined}
+						className="card--flush"
 						link={cardLink || undefined}
 						summary={body}
 					/>
@@ -74,11 +77,18 @@ export const CardGrid: React.FC<CardGridProps> = ({ row }) => {
 	const gridElementType =
 		component !== "cardGridRowTestimonials" ? "ul" : "div";
 	const gridItemElementType = gridElementType === "ul" ? "li" : "div";
+
+	//TODO: refactor to handle multiple page types
+	const gridClassName =
+		pageType === "infoPage"
+			? `${styles.cardGrid__cardGridRow} ${styles["cardGrid__cardGridRow--isInfoPage"]}`
+			: styles.cardGrid__cardGridRow;
+
 	return (
 		<Grid
 			elementType={gridElementType}
-			className={styles.cardGrid__cardGridRow}
-			gutter="loose"
+			className={gridClassName}
+			gutter={pageType !== "infoPage" ? "loose" : undefined}
 			equalHeight
 			key={_uid}
 			data-testid="card-grid"
