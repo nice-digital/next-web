@@ -11,6 +11,7 @@ export const NestedRichText = ({
 }: NestedRichTextBlokProps): React.ReactElement => {
 	return (
 		<div
+			className="nested-rich-text"
 			dangerouslySetInnerHTML={{ __html: renderRichText(blok.richText) }}
 		></div>
 	);
