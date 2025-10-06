@@ -3,7 +3,6 @@
 exports[`Storyblok testimonial full width component should match snapshot for full width variant 1`] = `
 <div>
   <div
-    class="testimonial testimonial--full-width testimonial-max-width"
     data-component="testimonial--fullWidth"
     data-testid="testimonial-fullWidth"
     data-tracking="testimonial"
@@ -94,7 +93,6 @@ exports[`Storyblok testimonial full width component should match snapshot for fu
 exports[`Storyblok testimonial full width component should match snapshot for full width variant with Link 1`] = `
 <div>
   <div
-    class="testimonial testimonial--full-width testimonial-max-width"
     data-component="testimonial--fullWidth"
     data-testid="testimonial-fullWidth"
     data-tracking="testimonial"
@@ -191,7 +189,6 @@ exports[`Storyblok testimonial full width component should match snapshot for fu
 exports[`Storyblok testimonial full width component should match snapshot for the full width white variant 1`] = `
 <div>
   <div
-    class="testimonial testimonial--full-width-white testimonial-max-width"
     data-component="testimonial--fullWidthWhite"
     data-testid="testimonial-fullWidthWhite"
     data-tracking="testimonial"
