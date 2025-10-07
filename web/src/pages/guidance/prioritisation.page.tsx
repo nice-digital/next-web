@@ -19,8 +19,8 @@ const tableBodyRender = (documents: Document[]) => (
 		<caption className="visually-hidden">Topic prioritisation</caption>
 		<thead>
 			<tr>
-				<th scope="col">Topic title</th>
-				<th scope="col">Guidance programme</th>
+				<th scope="col">Title</th>
+				<th scope="col">Process</th>
 				<th scope="col">Decision</th>
 				<th scope="col">Decision date</th>
 			</tr>
@@ -78,7 +78,7 @@ export default getProductListPage({
 	},
 	secondarySort: {
 		order: SortOrder.titleAscending,
-		label: "Topic title",
+		label: "Title",
 	},
 	showDateFilter: true,
 	useFutureDates: false,

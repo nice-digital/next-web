@@ -790,7 +790,7 @@ exports[`/guidance/prioritisation should match the snapshot 1`] = `
                   <option
                     value="Title"
                   >
-                    Topic title
+                    Title
                   </option>
                 </select>
               </div>
@@ -814,12 +814,12 @@ exports[`/guidance/prioritisation should match the snapshot 1`] = `
                     <th
                       scope="col"
                     >
-                      Topic title
+                      Title
                     </th>
                     <th
                       scope="col"
                     >
-                      Guidance programme
+                      Process
                     </th>
                     <th
                       scope="col"
