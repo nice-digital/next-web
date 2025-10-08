@@ -5,7 +5,6 @@
 @use '@nice-digital/nds-core/scss/typography';
 @use '@nice-digital/nds-core/scss/utils';
 
-
 .infoPage {
   $self: &;
   // page overrides for DS components
@@ -18,14 +17,15 @@
   }
 
   /* stylelint-disable-next-line selector-class-pattern */
-  :global(.card-list) {
+  :global(.card-list),
+  :global(.nested-rich-text),
+  [data-title^='(video)'] {
     max-width: layout.$readable-width;
   }
 
-  //target lite youtube embed wrapper - (video) is hardcoded at the start of every title
-  [data-title^='(video)'] {
-    margin: utils.rem(spacing.$large) 0 utils.rem(spacing.$large);
-    max-width: layout.$readable-width;
+  /* stylelint-disable-next-line selector-class-pattern */
+  :global(.card__heading) {
+    margin: 0; /* ;no extra heading margins */
   }
 
   @include media-queries.mq($from: sm) {
@@ -40,5 +40,3 @@
     }
   }
 }
-
-
