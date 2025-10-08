@@ -25,7 +25,7 @@ describe("testimonial component", () => {
 		[
 			["fullWidth", "testimonial testimonial--full-width"],
 			["fullWidthWhite", "testimonial testimonial--full-width-white"],
-			["default", "testimonial testimonial"],
+			["default", "testimonial"],
 			["transparent", " testimonial testimonial--transparent"],
 		]
 	)("Should render div with className '%s'", (variant, expectedClassName) => {

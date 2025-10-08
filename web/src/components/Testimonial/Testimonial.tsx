@@ -41,8 +41,9 @@ export const Testimonial: React.FC<TestimonialProps> = (
 	const testimonialClasses = classnames(
 		"testimonial",
 		styles.testimonial,
-		variant !== "default" && {
-			[styles[`testimonial--${kebabCaseVariantClassName}`]]: variant,
+		{
+			[styles[`testimonial--${kebabCaseVariantClassName}`]]:
+				variant && variant !== "default",
 		},
 		className
 	);
