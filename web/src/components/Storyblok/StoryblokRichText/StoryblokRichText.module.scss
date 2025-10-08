@@ -10,17 +10,9 @@
     max-width: max-content;
   }
 
-  > :is(h2,h3,h4,h5,h6):first-child {
+  > :is(h2,h3,h4,h5,h6,p):first-child {
     margin-top: 0;
   }
-
-  // h2,
-  // h3,
-  // h4,
-  // h5,
-  // h6 {
-  //   margin: utils.rem(spacing.$large) 0 utils.rem(spacing.$medium);
-  // }
 
   picture {
     display: block;
@@ -83,6 +75,6 @@
 
   // override the news section YT embed vertical margin in infoPages
    [data-title^='(video)'] {
-    margin: utils.rem(spacing.$large);
+    margin: utils.rem(spacing.$large) 0;
    }
 }
