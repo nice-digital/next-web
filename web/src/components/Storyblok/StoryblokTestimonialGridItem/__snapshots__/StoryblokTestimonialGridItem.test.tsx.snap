@@ -3,7 +3,7 @@
 exports[`Storyblok testimonial Default component should match snapshot for default variant 1`] = `
 <div>
   <div
-    class="testimonial testimonial testimonial--default"
+    class="testimonial testimonial"
     data-component="testimonial--default"
     data-testid="testimonial-default"
     data-tracking="testimonial"
