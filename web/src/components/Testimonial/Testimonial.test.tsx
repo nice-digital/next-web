@@ -25,7 +25,7 @@ describe("testimonial component", () => {
 		[
 			["fullWidth", "testimonial testimonial--full-width"],
 			["fullWidthWhite", "testimonial testimonial--full-width-white"],
-			["default", "testimonial testimonial--default"],
+			["default", "testimonial"],
 			["transparent", " testimonial testimonial--transparent"],
 		]
 	)("Should render div with className '%s'", (variant, expectedClassName) => {
@@ -50,7 +50,7 @@ describe("testimonial component", () => {
 			/>
 		);
 		expect(screen.getByTestId(`testimonial-default`)).toHaveClass(
-			"testimonial testimonial--default"
+			"testimonial testimonial"
 		);
 	});
 	it("Should render image", () => {
