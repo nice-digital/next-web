@@ -16,12 +16,15 @@
     }
   }
 
-  /* stylelint-disable-next-line selector-class-pattern */
+  //TODO: revisit stylelint rulesm needing to disable then re-enable stylelint for multiple selectors across multiple lines
+  /* stylelint-disable */
   :global(.card-list),
   :global(.nested-rich-text),
   [data-title^='(video)'] {
     max-width: layout.$readable-width;
   }
+  /* stylelint-enable */
+
 
   /* stylelint-disable-next-line selector-class-pattern */
   :global(.card__heading) {
