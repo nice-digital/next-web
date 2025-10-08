@@ -16,32 +16,12 @@
       margin-bottom: utils.rem(spacing.$large);
     }
   }
+
   /* stylelint-disable-next-line selector-class-pattern */
   :global(.card-list) {
     max-width: layout.$readable-width;
   }
-  /* stylelint-disable-next-line selector-class-pattern */
-  :global(.card-list) {
-  //  margin: utils.rem(0 0 spacing.$large 0);
-  }
-  // Standalone accordion default
-  :global(.accordion) {
-  //  margin-bottom: utils.rem(spacing.$large);
-  }
 
-  /* stylelint-disable-next-line selector-class-pattern */
-  :global(.accordionGroup__content) :global(.accordion) {
-  // margin-bottom: utils.rem(spacing.$medium); // Grouped accordions: apply to all except last
-  }
-
-  /* stylelint-disable-next-line selector-class-pattern */
-  :global(.accordionGroup__content) :global(.accordion:last-child) {
-  //  margin-bottom: utils.rem(spacing.$large); // Grouped accordions: last one gets 2rem
-  }
-  /* stylelint-disable-next-line selector-class-pattern */
-  :global(.card__heading) {
-   // margin: 0; /* ;no extra heading margins */
-  }
   //target lite youtube embed wrapper - (video) is hardcoded at the start of every title
   [data-title^='(video)'] {
     margin: utils.rem(spacing.$large) 0 utils.rem(spacing.$large);
