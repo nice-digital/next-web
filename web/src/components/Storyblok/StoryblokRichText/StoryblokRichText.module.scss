@@ -4,6 +4,7 @@
 /* stylelint-disable selector-class-pattern */
 
 .storyblokRichTextWrapper {
+
   p:has(img) {
     margin: utils.rem(spacing.$large 0);
     max-width: max-content;
@@ -13,13 +14,13 @@
     margin-top: 0;
   }
 
-  h2,
-  h3,
-  h4,
-  h5,
-  h6 {
-    margin: utils.rem(spacing.$large) 0 utils.rem(spacing.$medium);
-  }
+  // h2,
+  // h3,
+  // h4,
+  // h5,
+  // h6 {
+  //   margin: utils.rem(spacing.$large) 0 utils.rem(spacing.$medium);
+  // }
 
   picture {
     display: block;
@@ -44,8 +45,8 @@
   }
   // Add margin top and bottom to the transparent testimonial component in rich text
   :global([class*='testimonial--transparent']) {
-    margin-bottom: utils.rem(spacing.$large);
-    margin-top: utils.rem(spacing.$large);
+  //  margin-bottom: utils.rem(spacing.$large);
+  //  margin-top: utils.rem(spacing.$large);
   }
   // remove bottom margin on any last child in richtext bloks
   > *:last-child {
@@ -60,4 +61,21 @@
   margin: utils.rem(spacing.$large) 0;
   object-fit: cover;
   width: 100%;
+}
+
+
+
+.isInfoPage {
+  :global(.nested-rich-text:first-of-type > *:first-child) {
+    margin-top: 0;
+    margin-block-start: 0;
+  }
+
+  > *:not(:last-child, :empty) {
+    margin-bottom: utils.rem(spacing.$large);
+  }
+
+   [data-title^='(video)'] {
+    margin: utils.rem(spacing.$large);
+   }
 }

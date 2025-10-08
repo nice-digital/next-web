@@ -31,7 +31,15 @@ export const StoryblokRichText: React.FC<StoryblokRichTextProps> = ({
 	className,
 	pageType,
 }) => {
-	const classes = [styles.storyblokRichTextWrapper, className].join(" ");
+	//TODO: expand to handle other pageTypes so we can target RichText blok in it's page context
+	const isInfoPageClass =
+		pageType === "infoPage" ? styles.isInfoPage : undefined;
+
+	const classes = [
+		styles.storyblokRichTextWrapper,
+		isInfoPageClass,
+		className,
+	].join(" ");
 	const imageClassName = [styles.imageMain, className].join(" ");
 	return (
 		<div className={classes} data-testid="storyblok-rich-text">

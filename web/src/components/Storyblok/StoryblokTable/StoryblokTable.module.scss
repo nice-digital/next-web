@@ -8,6 +8,7 @@
   &__caption {
     text-align: left;
 
+    //TODO: revisit table caption heading spacing after or during NXT-569
     > :is(h2,h3,h4,h5,h6):first-child {
       margin-top: 0;
     }
