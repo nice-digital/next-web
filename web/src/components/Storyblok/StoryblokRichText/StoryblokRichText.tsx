@@ -1,4 +1,5 @@
 import { StoryblokComponent } from "@storyblok/react";
+import classnames from "classnames";
 import React, {
 	createElement,
 	ReactNode,
@@ -31,15 +32,15 @@ export const StoryblokRichText: React.FC<StoryblokRichTextProps> = ({
 	className,
 	pageType,
 }) => {
-	//TODO: expand to handle other pageTypes so we can target RichText blok in it's page context
-	const isInfoPageClass =
-		pageType === "infoPage" ? styles.isInfoPage : undefined;
+	//TODO: refactor if we need to handle other pageTypes so we can target RichText blok in it's page context
+	const isInfoPage = pageType === "infoPage";
 
-	const classes = [
+	const classes = classnames([
 		styles.storyblokRichTextWrapper,
-		isInfoPageClass,
+		{ [styles.isInfoPage]: isInfoPage },
 		className,
-	].join(" ");
+	]);
+
 	const imageClassName = [styles.imageMain, className].join(" ");
 	return (
 		<div className={classes} data-testid="storyblok-rich-text">
