@@ -2840,6 +2840,11 @@ const nextConfig = {
 				permanent: true,
 			},
 			{
+				source: "/forms/subscribe-to-medicine-and-prescribing-alerts",
+				destination: "/nice-newsletters-and-alerts",
+				permanent: true,
+			},
+			{
 				source:
 					"/standards-and-indicators/timeline-developing-quality-standards",
 				destination:
