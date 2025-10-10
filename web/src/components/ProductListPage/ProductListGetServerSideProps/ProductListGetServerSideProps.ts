@@ -29,7 +29,9 @@ export interface GetGetServerSidePropsOptions {
 		| "In consultation"
 		| "In development"
 		| "Awaiting development"
-		| "Topic selection";
+		| "Topic selection"
+		| "Terminated"
+		| "Deferred";
 	defaultSortOrder: SortOrder;
 	dateFilterLabel?: string;
 	textFilterLabel?: string;
