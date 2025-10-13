@@ -819,7 +819,7 @@ exports[`/guidance/prioritisation should match the snapshot 1`] = `
                     <th
                       scope="col"
                     >
-                      Process
+                      Prioritisation routing
                     </th>
                     <th
                       scope="col"

@@ -20,7 +20,7 @@ const tableBodyRender = (documents: Document[]) => (
 		<thead>
 			<tr>
 				<th scope="col">Title</th>
-				<th scope="col">Process</th>
+				<th scope="col">Prioritisation routing</th>
 				<th scope="col">Decision</th>
 				<th scope="col">Decision date</th>
 			</tr>
