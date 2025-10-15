@@ -188,9 +188,11 @@ describe("StoryblokTable", () => {
 	});
 	it("renders the alignment of data inside cell correctly", () => {
 		renderTable();
+		//eslint-disable-next-line testing-library/no-node-access
 		const headerCell = screen.getByText("Column 2").closest("th");
-		const dataCell = screen.getByText("Row 1").closest("td");
+		//eslint-disable-next-line testing-library/no-node-access
+		const dataCell = screen.getByText("Row 2 with a link to").closest("td");
 		expect(headerCell).toHaveAttribute("data-align", "right");
-		expect(dataCell).toHaveAttribute("data-align", "left");
+		expect(dataCell).toHaveAttribute("data-align", "right");
 	});
 });

@@ -8,29 +8,30 @@
   }
 
   &__caption {
+    margin-bottom: utils.rem(spacing.$small);
     text-align: left;
-    margin-bottom:utils.rem(spacing.$small) ;
 
     @include media-queries.mq($until: sm) {
       display: block;
     }
   }
-  /* Alignment rules based on Storyblok paragraph attrs */
+  /* stylelint-disable-next-line selector-no-qualifying-type */
   th[data-align='left'],
   td[data-align='left'] {
     text-align: left;
   }
-
+  /* stylelint-disable-next-line selector-no-qualifying-type */
   th[data-align='center'],
   td[data-align='center'] {
     text-align: center;
   }
-
+  /* stylelint-disable-next-line selector-no-qualifying-type */
   th[data-align='right'],
   td[data-align='right'] {
     text-align: right;
   }
-   th p,
+
+  th p,
   td p {
     margin-top: 0;
   }
