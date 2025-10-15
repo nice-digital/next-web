@@ -179,4 +179,18 @@ describe("StoryblokTable", () => {
 		renderTable({ summary: undefined });
 		expect(screen.queryByTestId("table-summary")).not.toBeInTheDocument();
 	});
+	it("renders the tagname of data inside cell correctly", () => {
+		renderTable();
+		const headerCell = screen.getByText("Column 2");
+		const dataCell = screen.getByText("Row 1");
+		expect(headerCell.tagName).toBe("B");
+		expect(dataCell.tagName).toBe("P");
+	});
+	it("renders the alignment of data inside cell correctly", () => {
+		renderTable();
+		const headerCell = screen.getByText("Column 2").closest("th");
+		const dataCell = screen.getByText("Row 1").closest("td");
+		expect(headerCell).toHaveAttribute("data-align", "right");
+		expect(dataCell).toHaveAttribute("data-align", "left");
+	});
 });
