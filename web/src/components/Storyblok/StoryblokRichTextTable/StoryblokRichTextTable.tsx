@@ -1,9 +1,12 @@
 import React, { useMemo } from "react";
+
 import { Table } from "@nice-digital/nds-table";
 
-import styles from "./StoryblokRichTextTable.module.scss";
-import { StoryblokRichText } from "../StoryblokRichText/StoryblokRichText";
 import { RichtextStoryblok } from "@/types/storyblok";
+
+import { StoryblokRichText } from "../StoryblokRichText/StoryblokRichText";
+
+import styles from "./StoryblokRichTextTable.module.scss";
 
 interface StoryblokRichTextTableProps {
 	blok: {

@@ -33,13 +33,13 @@ import { StoryblokNewsArticle } from "@/components/Storyblok/StoryblokNewsArticl
 import { StoryblokPageHeader } from "@/components/Storyblok/StoryblokPageHeader/StoryblokPageHeader";
 import { StoryblokRelatedLink } from "@/components/Storyblok/StoryblokRelatedLink/StoryblokRelatedLink";
 import { StoryblokRelatedNewsLink } from "@/components/Storyblok/StoryblokRelatedNewsLink/StoryblokRelatedNewsLink";
+import { StoryblokRichTextTable } from "@/components/Storyblok/StoryblokRichTextTable/StoryblokRichTextTable";
 import { StoryblokTable } from "@/components/Storyblok/StoryblokTable/StoryblokTable";
 import { StoryblokTestimonialFullWidth } from "@/components/Storyblok/StoryblokTestimonialFullWidth/StoryblokTestimonialFullWidth";
 import { StoryblokTestimonialGridItem } from "@/components/Storyblok/StoryblokTestimonialGridItem/StoryblokTestimonialGridItem";
 import { StoryblokYoutubeEmbed } from "@/components/Storyblok/StoryblokYoutubeEmbed/StoryblokYoutubeEmbed";
 import { publicRuntimeConfig } from "@/config";
 import { logger } from "@/logger";
-import { StoryblokRichTextTable } from "@/components/Storyblok/StoryblokRichTextTable/StoryblokRichTextTable";
 
 //TODO: consider a mix of static imports for common components and dynamic imports for lesser used components
 const commonComponents = {
