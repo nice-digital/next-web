@@ -1,0 +1,33 @@
+@use '@nice-digital/nds-core/scss/media-queries';
+@use '@nice-digital/nds-core/scss/spacing';
+@use '@nice-digital/nds-core/scss/utils';
+
+.table {
+  @include media-queries.mq($from: sm) {
+    display: table;
+  }
+
+  &__caption {
+    text-align: left;
+    margin-bottom:utils.rem(spacing.$small) ;
+
+    @include media-queries.mq($until: sm) {
+      display: block;
+    }
+  }
+  /* Alignment rules based on Storyblok paragraph attrs */
+  th[data-align='left'],
+  td[data-align='left'] {
+    text-align: left;
+  }
+
+  th[data-align='center'],
+  td[data-align='center'] {
+    text-align: center;
+  }
+
+  th[data-align='right'],
+  td[data-align='right'] {
+    text-align: right;
+  }
+}
