@@ -2,8 +2,7 @@ import { render, screen } from "@testing-library/react";
 import React from "react";
 
 import { StoryblokRichTextTable } from "./StoryblokRichTextTable";
-import mockBlok from '../../../__mocks__/__data__/storyblok/richTextTableData.json';
-
+import mockBlok from "@/mocks/__data__/storyblok/richTextTableData.json";
 
 describe("StoryblokTable", () => {
 	const renderTable = (overrides = {}) => {
