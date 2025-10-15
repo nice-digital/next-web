@@ -34,15 +34,19 @@
       margin-top: 0;
     }
 
-  //NOTE: Could we add a constrained variant to these components?
-  /* stylelint-disable */
-  :global(.card-list),
-  :global(.nested-rich-text),
-  :global(.testimonial)
-  [data-title^='(video)'] {
-    max-width: layout.$readable-width;
-  }
-  /* stylelint-enable */
+    // > :is(h2,h3,h4,h5,h6,p):first-child {
+    //   margin-top: 0;
+    // }
+
+    //NOTE: Could we add a constrained variant to these components?
+    /* stylelint-disable */
+    :global(.card-list),
+    :global(.nested-rich-text),
+    :global(.testimonial)
+    [data-title^='(video)'] {
+      max-width: layout.$readable-width;
+    }
+    /* stylelint-enable */
 
     //any blok that is added to the main rich text area, gets a margin bottom, unless empty or last child
     > *:is(:not(:last-child, :empty)) {
@@ -56,9 +60,9 @@
     }
 
     // override the news section YT embed vertical margin in infoPages
-    // [data-title^='(video)'] {
-    //   margin: utils.rem(spacing.$large) 0;
-    // }
+    [data-title^='(video)'] {
+      margin: utils.rem(spacing.$large) 0;
+    }
 }
 
   @include media-queries.mq($from: sm) {
