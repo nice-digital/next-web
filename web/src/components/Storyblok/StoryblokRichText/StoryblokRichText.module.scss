@@ -49,27 +49,3 @@
   object-fit: cover;
   width: 100%;
 }
-
-
-// target StoryblokRichText nested components when in infoPage
-.isInfoPage {
-  /*remove any top margin from the first element of the first nested-rich-text in the main rich text area.*/
-  :global(.nested-rich-text:first-of-type > *:first-child) {
-    margin-top: 0;
-  }
-
-  //any blok that is added to the main rich text area, gets a margin bottom, unless empty or last child
-  > *:is(:not(:last-child, :empty)) {
-    margin-bottom: utils.rem(spacing.$large);
-  }
-
-  //if the nested-text-blok only carries a heading level, remove the bottom margin
-  :global(.nested-rich-text:has(> :is(h2,h3,h4,h5,h6):only-child)) {
-    margin-bottom: 0;
-  }
-
-  // override the news section YT embed vertical margin in infoPages
-  [data-title^='(video)'] {
-    margin: utils.rem(spacing.$large) 0;
-  }
-}

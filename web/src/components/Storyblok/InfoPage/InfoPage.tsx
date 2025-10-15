@@ -84,7 +84,11 @@ export const InfoPage = ({
 					className={`${styles.infoPage__contentArea} inPageNavContainerSelector`}
 				>
 					<div className={styles.content}>
-						<StoryblokRichText content={blok.content} pageType={pageType} />
+						<StoryblokRichText
+							content={blok.content}
+							pageType={pageType}
+							className={styles.infoPage__richTextWrapper}
+						/>
 					</div>
 				</GridItem>
 			</Grid>

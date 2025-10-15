@@ -32,14 +32,7 @@ export const StoryblokRichText: React.FC<StoryblokRichTextProps> = ({
 	className,
 	pageType,
 }) => {
-	//TODO: refactor if we need to handle other pageTypes so we can target RichText blok in it's page context
-	const isInfoPage = pageType === "infoPage";
-
-	const classes = classnames([
-		styles.storyblokRichTextWrapper,
-		{ [styles.isInfoPage]: isInfoPage },
-		className,
-	]);
+	const classes = classnames([styles.storyblokRichTextWrapper, className]);
 
 	const imageClassName = [styles.imageMain, className].join(" ");
 	return (
