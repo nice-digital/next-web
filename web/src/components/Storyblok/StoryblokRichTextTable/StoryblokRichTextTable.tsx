@@ -26,8 +26,9 @@ export const StoryblokRichTextTable: React.FC<StoryblokRichTextTableProps> = ({
 
 	const HeadingElement = `h${headingLevel || 3}` as keyof JSX.IntrinsicElements;
 	const table = tableContent?.content?.[0];
-	const rows = table?.content || [];
-
+	const rows = useMemo(() => table?.content || [], [table]);
+	const headerCells = useMemo(() => rows[0]?.content || [], [rows]);
+	const bodyRows = useMemo(() => rows.slice(1), [rows]);
 	if (!rows.length) return null;
 
 	const getAlignment = (cell: RichtextStoryblok) => {
@@ -57,8 +58,7 @@ export const StoryblokRichTextTable: React.FC<StoryblokRichTextTableProps> = ({
 			</CellTag>
 		);
 	};
-	const headerCells = useMemo(() => rows[0]?.content || [], [rows]);
-	const bodyRows = useMemo(() => rows.slice(1), [rows]);
+
 	const renderHeader = () => (
 		<thead data-testid="table-head">
 			<tr>
