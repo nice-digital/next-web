@@ -16,15 +16,12 @@
     }
   }
 
-  //TODO: revisit stylelint rulesm needing to disable then re-enable stylelint for multiple selectors across multiple lines
-  /* stylelint-disable */
-  :global(.card-list),
-  :global(.nested-rich-text),
-  [data-title^='(video)'] {
-    max-width: layout.$readable-width;
-  }
-  /* stylelint-enable */
 
+
+  /* stylelint-disable-next-line selector-class-pattern */
+  // :global(.card-list) {
+  //   margin: utils.rem(0 0 spacing.$large 0);
+  // }
 
   /* stylelint-disable-next-line selector-class-pattern */
   :global(.card__heading) {
@@ -37,20 +34,31 @@
       margin-top: 0;
     }
 
+  //NOTE: Could we add a constrained variant to these components?
+  /* stylelint-disable */
+  :global(.card-list),
+  :global(.nested-rich-text),
+  :global(.testimonial)
+  [data-title^='(video)'] {
+    max-width: layout.$readable-width;
+  }
+  /* stylelint-enable */
+
     //any blok that is added to the main rich text area, gets a margin bottom, unless empty or last child
     > *:is(:not(:last-child, :empty)) {
       margin-bottom: utils.rem(spacing.$large);
     }
 
     //if the nested-text-blok only carries a heading level, remove the bottom margin
+    /* stylelint-disable-next-line selector-class-pattern */
     :global(.nested-rich-text:has(> :is(h2,h3,h4,h5,h6):only-child)) {
       margin-bottom: 0;
     }
 
     // override the news section YT embed vertical margin in infoPages
-    [data-title^='(video)'] {
-      margin: utils.rem(spacing.$large) 0;
-    }
+    // [data-title^='(video)'] {
+    //   margin: utils.rem(spacing.$large) 0;
+    // }
 }
 
   @include media-queries.mq($from: sm) {
