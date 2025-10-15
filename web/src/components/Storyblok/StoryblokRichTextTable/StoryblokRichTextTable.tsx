@@ -24,7 +24,7 @@ export const StoryblokRichTextTable: React.FC<StoryblokRichTextTableProps> = ({
 }) => {
 	const { tableContent, heading, headingLevel, summary } = blok;
 
-	const HeadingElement = `h${headingLevel || 3}` as keyof JSX.IntrinsicElements;
+	const HeadingElement = `h${headingLevel || 2}` as keyof JSX.IntrinsicElements;
 	const table = tableContent?.content?.[0];
 	const rows = useMemo(() => table?.content || [], [table]);
 	const headerCells = useMemo(() => rows[0]?.content || [], [rows]);
