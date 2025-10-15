@@ -43,8 +43,6 @@ export const StoryblokRichTextTable: React.FC<StoryblokRichTextTableProps> = ({
 		cellType: string
 	) => {
 		const align = getAlignment(cell);
-		console.log("cellIndex", cellIndex);
-		// need to add comment here?
 		const CellTag = isHeaderCell(cell) ? "th" : "td";
 		const scope = isHeaderCell(cell) ? cellType : undefined;
 
