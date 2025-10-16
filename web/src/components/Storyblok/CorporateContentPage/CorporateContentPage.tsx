@@ -1,6 +1,6 @@
-import { StoryblokComponent } from "@storyblok/react";
+import { StoryblokComponent, useStoryblokBridge } from "@storyblok/react";
 import { NextSeo } from "next-seo";
-import React, { useMemo } from "react";
+import React, { useMemo, useEffect } from "react";
 
 import { ErrorPageContent } from "@/components/ErrorPageContent/ErrorPageContent";
 import { logger } from "@/logger";
@@ -11,6 +11,14 @@ export const CorporateContentPage = (
 	props: SlugCatchAllProps
 ): React.ReactElement => {
 	const story = "story" in props ? props.story : null;
+
+	// Enable live updates in Visual Editor; only run bridge on client
+	// useEffect(() => {
+	// 	if (story?.id) {
+	// 		useStoryblokBridge(story.id, () => {});
+	// 	}
+	// }, [story?.id]);
+
 	const additionalMetaTags = useMemo(() => {
 		if (story) {
 			return getAdditionalMetaTags(story);
@@ -21,14 +29,15 @@ export const CorporateContentPage = (
 			return undefined;
 		}
 	}, [story]);
+
 	if ("error" in props) {
 		const { error } = props;
 		return <ErrorPageContent title="Error" heading={error} />;
 	}
 
 	const { story: storyData, breadcrumbs, tree, slug } = props;
-
 	const title = storyData?.name;
+
 	return (
 		<>
 			<NextSeo
