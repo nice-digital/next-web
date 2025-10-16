@@ -924,7 +924,7 @@ exports[`/guidance/deferred should match the snapshot 1`] = `
                       </a>
                     </td>
                     <td>
-                      n/a
+                      Diagnostics guidance
                     </td>
                     <td>
                       <abbr
@@ -943,7 +943,7 @@ exports[`/guidance/deferred should match the snapshot 1`] = `
                       </a>
                     </td>
                     <td>
-                      n/a
+                      Diagnostics guidance
                     </td>
                     <td>
                       <abbr
@@ -962,7 +962,7 @@ exports[`/guidance/deferred should match the snapshot 1`] = `
                       </a>
                     </td>
                     <td>
-                      n/a
+                      Technology appraisal guidance
                     </td>
                     <td>
                       <abbr
@@ -981,7 +981,7 @@ exports[`/guidance/deferred should match the snapshot 1`] = `
                       </a>
                     </td>
                     <td>
-                      n/a
+                      Interventional procedures guidance
                     </td>
                     <td>
                       <abbr
@@ -1000,7 +1000,7 @@ exports[`/guidance/deferred should match the snapshot 1`] = `
                       </a>
                     </td>
                     <td>
-                      n/a
+                      Diagnostics guidance
                     </td>
                     <td>
                       <abbr
@@ -1019,7 +1019,7 @@ exports[`/guidance/deferred should match the snapshot 1`] = `
                       </a>
                     </td>
                     <td>
-                      n/a
+                      Diagnostics guidance
                     </td>
                     <td>
                       <abbr
@@ -1038,7 +1038,7 @@ exports[`/guidance/deferred should match the snapshot 1`] = `
                       </a>
                     </td>
                     <td>
-                      n/a
+                      Interventional procedures guidance
                     </td>
                     <td>
                       <abbr
@@ -1057,7 +1057,7 @@ exports[`/guidance/deferred should match the snapshot 1`] = `
                       </a>
                     </td>
                     <td>
-                      n/a
+                      Diagnostics guidance
                     </td>
                     <td>
                       <abbr
@@ -1076,7 +1076,7 @@ exports[`/guidance/deferred should match the snapshot 1`] = `
                       </a>
                     </td>
                     <td>
-                      n/a
+                      Diagnostics guidance
                     </td>
                     <td>
                       <abbr
@@ -1095,7 +1095,7 @@ exports[`/guidance/deferred should match the snapshot 1`] = `
                       </a>
                     </td>
                     <td>
-                      n/a
+                      Medical technologies guidance
                     </td>
                     <td>
                       <abbr
