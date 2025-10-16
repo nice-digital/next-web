@@ -1,123 +1,113 @@
 {
-	"_uid": "1",
-	"heading": "Test Table",
-	"headingLevel": 3,
-	"summary": {
-		"type": "doc",
-		"content": [
-			{
-				"type": "paragraph",
-				"content": [
-					{
-						"text": "This is a summary of the table.",
-						"type": "text"
-					}
-				]
-			}
-		]
-	},
-	"tableContent": {
-		"type": "doc",
-		"content": [
-			{
-				"type": "table",
-				"content": [
-					{
-						"type": "tableRow",
-						"content": [
-							{
-								"type": "tableCell",
-								"content": [
-									{
-										"type": "paragraph",
-										"content": [
-											{
-												"text": "Coulmn1",
-												"type": "text",
-												"marks": [
-													{
-														"type": "bold"
-													}
-												]
-											}
-										]
-									}
-								]
-							},
-							{
-								"type": "tableCell",
-								"content": [
-									{
-										"type": "paragraph",
-										"attrs": {
-											"textAlign": "right"
-										},
-										"content": [
-											{
-												"text": "Column 2",
-												"type": "text",
-												"marks": [
-													{
-														"type": "bold"
-													}
-												]
-											}
-										]
-									}
-								]
-							}
-						]
-					},
-					{
-						"type": "tableRow",
-						"content": [
-							{
-								"type": "tableCell",
-								"content": [
-									{
-										"type": "paragraph",
-										"content": [
-											{
-												"text": "Row 1",
-												"type": "text"
-											}
-										]
-									}
-								]
-							},
-							{
-								"type": "tableCell",
-								"content": [
-									{
-										"type": "paragraph",
-										"attrs": {
-											"textAlign": "right"
-										},
-										"content": [
-											{
-												"text": "Row 2 with a link to ",
-												"type": "text",
-												"marks": [
-													{
-														"type": "link",
-														"attrs": {
-															"href": "/getting-involved-as-someone-with-lived-experience",
-															"linktype": "story",
-															"story": {
-																"name": "Getting involved as someone with lived experience"
-															}
-														}
-													}
-												]
-											}
-										]
-									}
-								]
-							}
-						]
-					}
-				]
-			}
-		]
-	}
+  "_uid": "1",
+  "heading": "Test Table",
+  "headingLevel": 3,
+  "summary": {
+    "type": "doc",
+    "content": [
+      {
+        "type": "paragraph",
+        "content": [
+          {
+            "text": "This is a summary of the table.",
+            "type": "text"
+          }
+        ]
+      }
+    ]
+  },
+  "tableContent": {
+    "type": "doc",
+    "content": [
+      {
+        "type": "table",
+        "content": [
+          {
+            "type": "tableRow",
+            "content": [
+              {
+                "type": "tableHeader",
+                "content": [
+                  {
+                    "type": "paragraph",
+                    "content": [
+                      {
+                        "text": "Coulmn1",
+                        "type": "text"
+                      }
+                    ]
+                  }
+                ]
+              },
+              {
+                "type": "tableHeader",
+                "content": [
+                  {
+                    "type": "paragraph",
+                    "attrs": {
+                      "textAlign": "right"
+                    },
+                    "content": [
+                      {
+                        "text": "Column 2",
+                        "type": "text"
+                      }
+                    ]
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "type": "tableRow",
+            "content": [
+              {
+                "type": "tableCell",
+                "content": [
+                  {
+                    "type": "paragraph",
+                    "content": [
+                      {
+                        "text": "Row 1",
+                        "type": "text"
+                      }
+                    ]
+                  }
+                ]
+              },
+              {
+                "type": "tableCell",
+                "content": [
+                  {
+                    "type": "paragraph",
+                    "attrs": {
+                      "textAlign": "right"
+                    },
+                    "content": [
+                      {
+                        "text": "Row 2 with a link to ",
+                        "type": "text",
+                        "marks": [
+                          {
+                            "type": "link",
+                            "attrs": {
+                              "href": "/getting-involved-as-someone-with-lived-experience",
+                              "linktype": "story",
+                              "story": {
+                                "name": "Getting involved as someone with lived experience"
+                              }
+                            }
+                          }
+                        ]
+                      }
+                    ]
+                  }
+                ]
+              }
+            ]
+          }
+        ]
+      }
+    ]
+  }
 }

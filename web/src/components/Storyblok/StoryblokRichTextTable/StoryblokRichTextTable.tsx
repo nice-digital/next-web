@@ -30,15 +30,19 @@ export const StoryblokRichTextTable: React.FC<StoryblokRichTextTableProps> = ({
 	const headerCells = useMemo(() => rows[0]?.content || [], [rows]);
 	const bodyRows = useMemo(() => rows.slice(1), [rows]);
 	if (!rows.length) return null;
-
 	const getAlignment = (cell: RichtextStoryblok) => {
 		const paragraph = cell?.content?.[0];
 		return paragraph?.attrs?.textAlign || "left";
 	};
-	const isHeaderCell = (cell: RichtextStoryblok) => {
-		const paragraph = cell?.content?.[0];
-		const firstTextNode = paragraph?.content?.[0];
-		return firstTextNode?.marks?.some((mark) => mark.type === "bold");
+	const addBoldMarkToHeader = (cell: RichtextStoryblok) => {
+		if (cell.type !== "tableHeader") return cell;
+
+		const textNode = cell.content?.[0]?.content?.[0];
+		if (textNode?.type === "text") {
+			textNode.marks = [{ type: "bold" }];
+		}
+
+		return cell;
 	};
 
 	const renderCells = (
@@ -47,13 +51,15 @@ export const StoryblokRichTextTable: React.FC<StoryblokRichTextTableProps> = ({
 		cellType: string
 	) => {
 		const align = getAlignment(cell);
-		const CellTag = isHeaderCell(cell) ? "th" : "td";
-		const scope = isHeaderCell(cell) ? cellType : undefined;
-
+		const CellTag = cell.type === "tableHeader" ? "th" : "td";
+		const scope = cell.type === "tableHeader" ? cellType : undefined;
+		const richTextData = addBoldMarkToHeader(cell);
 		return (
 			<CellTag key={cellIndex} scope={scope} data-align={align}>
-				{cell?.content && (
-					<StoryblokRichText content={{ type: "doc", content: cell.content }} />
+				{richTextData?.content && (
+					<StoryblokRichText
+						content={{ type: "doc", content: richTextData.content }}
+					/>
 				)}
 			</CellTag>
 		);
@@ -80,7 +86,6 @@ export const StoryblokRichTextTable: React.FC<StoryblokRichTextTableProps> = ({
 			))}
 		</tbody>
 	);
-
 	return (
 		<Table
 			data-testid="storyblok-table"
