@@ -17,33 +17,26 @@ export const StoryblokAccordionGroup: React.FC<
 	const { accordions } = blok;
 
 	return (
-		<div className="accordion-group__wrapper--sb">
-			<AccordionGroup>
-				{accordions.map((accordion, index) => {
-					const {
-						title,
-						content,
-						headingLevel,
-						displayTitleAsHeading,
-						variant,
-					} = accordion;
+		<AccordionGroup>
+			{accordions.map((accordion, index) => {
+				const { title, content, headingLevel, displayTitleAsHeading, variant } =
+					accordion;
 
-					return (
-						<Accordion
-							key={index}
-							title={title}
-							displayTitleAsHeading={displayTitleAsHeading}
-							headingLevel={headingLevel}
-							variant={variant}
-						>
-							<StoryblokRichText
-								content={content}
-								className={style.accordionRichText}
-							/>
-						</Accordion>
-					);
-				})}
-			</AccordionGroup>
-		</div>
+				return (
+					<Accordion
+						key={index}
+						title={title}
+						displayTitleAsHeading={displayTitleAsHeading}
+						headingLevel={headingLevel}
+						variant={variant}
+					>
+						<StoryblokRichText
+							content={content}
+							className={style.accordionRichText}
+						/>
+					</Accordion>
+				);
+			})}
+		</AccordionGroup>
 	);
 };
