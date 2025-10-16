@@ -10,10 +10,6 @@
   &__caption {
     margin-bottom: utils.rem(spacing.$medium);
     text-align: left;
-
-    @include media-queries.mq($until: sm) {
-      display: block;
-    }
   }
   /* stylelint-disable-next-line selector-no-qualifying-type */
   th[data-align='left'],
