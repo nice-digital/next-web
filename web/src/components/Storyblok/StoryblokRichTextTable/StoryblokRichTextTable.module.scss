@@ -8,7 +8,7 @@
   }
 
   &__caption {
-    margin-bottom: utils.rem(spacing.$small);
+    margin-bottom: utils.rem(spacing.$medium);
     text-align: left;
 
     @include media-queries.mq($until: sm) {
