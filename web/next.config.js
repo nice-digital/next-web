@@ -87,7 +87,7 @@ const commonHeaders = [
 ];
 
 // Prevent emebdding this site in frames in production, but allow it in dev so we can use the Storyblok preview editor
-if (process.env.NODE_ENV === "production") {
+// if (process.env.NODE_ENV === "production") {
 	commonHeaders.push(
 		{
 			key: "X-Frame-Options",
@@ -95,10 +95,10 @@ if (process.env.NODE_ENV === "production") {
 		},
 		{
 			key: "Content-Security-Policy",
-			value: "frame-ancestors 'self' https://*.infogram.com",
+			value: "frame-ancestors 'self' https://*.infogram.com https://app.storyblok.com",
 		}
 	);
-}
+// }
 
 /**
  * @type {import('next').NextConfig}
