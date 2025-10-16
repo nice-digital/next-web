@@ -3,7 +3,7 @@
 exports[`Storyblok accordion group component should match snapshot 1`] = `
 <div>
   <div
-    class="accordion-group__wrapper--sb"
+    class="accordionGroup"
   >
     <button
       aria-expanded="false"
