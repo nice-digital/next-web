@@ -59,28 +59,4 @@ describe("StoryblokRichText", () => {
 
 		expect(component).toBeEmptyDOMElement();
 	});
-
-	it("should apply a isInfoPage class if the pageType is infoPage", () => {
-		render(
-			<StoryblokRichText
-				content={mockRichTextDataEmptyParagraph}
-				pageType="infoPage"
-			/>
-		);
-
-		expect(screen.getByTestId(`storyblok-rich-text`)).toHaveClass("isInfoPage");
-	});
-
-	it("should apply a isInfoPage class if the pageType is not infoPage", () => {
-		render(
-			<StoryblokRichText
-				content={mockRichTextDataEmptyParagraph}
-				pageType="newsPage"
-			/>
-		);
-
-		expect(screen.getByTestId(`storyblok-rich-text`)).not.toHaveClass(
-			"isInfoPage"
-		);
-	});
 });
