@@ -15,19 +15,15 @@
     }
   }
 
-  /* stylelint-disable-next-line selector-class-pattern */
-  :global(.card__heading) {
-    margin: 0; /* ;no extra heading margins */
-  }
-
   &__richTextWrapper {
+    $vertical-spacing: utils.rem(spacing.$large);
+
     > :first-child > :first-child {
       margin-top: 0;
     }
 
     //any blok that is added to the main rich text area, gets a margin bottom, unless empty or last child
     > *:is(:not(:last-child, :empty)) {
-      $vertical-spacing: utils.rem(spacing.$large);
       margin-bottom: $vertical-spacing;
     }
 
@@ -46,6 +42,11 @@
       max-width: layout.$readable-width;
     }
     /* stylelint-enable */
+
+    /* stylelint-disable-next-line selector-class-pattern */
+    :global(.card__heading) {
+      margin: 0; /* ;no extra heading margins */
+    }
 
     // override the news section YT embed vertical margin in infoPages
     [data-title^='(video)'] {
