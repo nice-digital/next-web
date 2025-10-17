@@ -34,16 +34,6 @@ export const StoryblokRichTextTable: React.FC<StoryblokRichTextTableProps> = ({
 		const paragraph = cell?.content?.[0];
 		return paragraph?.attrs?.textAlign || "left";
 	};
-	const addBoldMarkToHeader = (cell: RichtextStoryblok) => {
-		if (cell.type !== "tableHeader") return cell;
-
-		const textNode = cell.content?.[0]?.content?.[0];
-		if (textNode?.type === "text") {
-			textNode.marks = [{ type: "bold" }];
-		}
-
-		return cell;
-	};
 
 	const renderCells = (
 		cell: RichtextStoryblok,
@@ -53,12 +43,16 @@ export const StoryblokRichTextTable: React.FC<StoryblokRichTextTableProps> = ({
 		const align = getAlignment(cell);
 		const CellTag = cell.type === "tableHeader" ? "th" : "td";
 		const scope = cell.type === "tableHeader" ? cellType : undefined;
-		const richTextData = addBoldMarkToHeader(cell);
 		return (
 			<CellTag key={cellIndex} scope={scope} data-align={align}>
-				{richTextData?.content && (
+				{cell.content && (
 					<StoryblokRichText
-						content={{ type: "doc", content: richTextData.content }}
+						content={{ type: "doc", content: cell.content }}
+						className={
+							cell.type === "tableHeader"
+								? styles.table__tableHeader
+								: undefined
+						}
 					/>
 				)}
 			</CellTag>

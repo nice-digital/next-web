@@ -54,7 +54,9 @@ describe("StoryblokTable", () => {
 		renderTable();
 		const headerCell = screen.getByText("Column 2");
 		const dataCell = screen.getByText("Row 1");
-		expect(headerCell.tagName).toBe("B");
+		//eslint-disable-next-line testing-library/no-node-access
+		const wrapper = headerCell.closest("div");
+		expect(wrapper).toHaveClass("table__tableHeader");
 		expect(dataCell.tagName).toBe("P");
 	});
 	it("renders the alignment of data inside cell correctly", () => {

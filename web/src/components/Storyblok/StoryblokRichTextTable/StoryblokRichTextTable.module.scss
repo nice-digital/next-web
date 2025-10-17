@@ -14,16 +14,23 @@
     margin-bottom: utils.rem(spacing.$medium);
     text-align: left;
   }
+
+  &__tableHeader {
+    font-weight: bold;
+  }
+
   /* stylelint-disable-next-line selector-no-qualifying-type */
   th[data-align='left'],
   td[data-align='left'] {
     text-align: left;
   }
+
   /* stylelint-disable-next-line selector-no-qualifying-type */
   th[data-align='center'],
   td[data-align='center'] {
     text-align: center;
   }
+
   /* stylelint-disable-next-line selector-no-qualifying-type */
   th[data-align='right'],
   td[data-align='right'] {
@@ -32,6 +39,7 @@
 
   th p,
   td p {
+    font-weight: unset;
     margin-top: 0;
   }
 }
