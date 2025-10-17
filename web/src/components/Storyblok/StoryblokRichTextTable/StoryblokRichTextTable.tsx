@@ -21,7 +21,6 @@ export const StoryblokRichTextTable: React.FC<StoryblokRichTextTableProps> = ({
 	blok,
 }) => {
 	const { tableContent, heading, headingLevel, summary } = blok;
-
 	const HeadingElement = `h${headingLevel || 2}` as keyof JSX.IntrinsicElements;
 
 	const table = tableContent?.content?.[0];
@@ -31,11 +30,22 @@ export const StoryblokRichTextTable: React.FC<StoryblokRichTextTableProps> = ({
 
 	const firstRow = rows[0];
 
-	const isFirstRowHeader = firstRow?.content?.every(
-		(cell) => cell.type === "tableHeader"
-	);
-	const isFirstColumnHeader = rows.every((row) => row.content?.[0]?.type === "tableHeader");
+	//Added a function to determine header configuration
+	const getTableHeaderConfig = () => {
+		const isFirstRowHeader = firstRow?.content?.every(
+			(cell) => cell.type === "tableHeader"
+		);
 
+		const isFirstColumnHeader = rows?.every(
+			(row) => row.content?.[0]?.type === "tableHeader"
+		);
+
+		return { isFirstRowHeader, isFirstColumnHeader };
+	};
+
+	const { isFirstRowHeader, isFirstColumnHeader } = getTableHeaderConfig();
+
+	const headerCells = isFirstRowHeader ? firstRow.content : [];
 	const bodyRows = isFirstRowHeader ? rows.slice(1) : rows;
 
 	const getAlignment = (cell: RichtextStoryblok) => {
@@ -56,29 +66,34 @@ export const StoryblokRichTextTable: React.FC<StoryblokRichTextTableProps> = ({
 				{cell?.content && (
 					<StoryblokRichText
 						content={{ type: "doc", content: cell.content }}
-						className={cell.type === "tableHeader" ? styles.table__tableHeader : undefined}
+						className={
+							cell.type === "tableHeader"
+								? styles.table__tableHeader
+								: undefined
+						}
 					/>
 				)}
 			</CellTag>
 		);
 	};
 
+	// render header
 	const renderHeader = () => {
-		if (!isFirstRowHeader) return null;
+		if (!headerCells?.length) return null;
 
 		return (
 			<thead data-testid="table-head">
 				<tr>
-					{firstRow.content?.map((cell, index) =>
-						renderCell(cell, index, "col")
-					)}
+					{headerCells.map((cell, index) => renderCell(cell, index, "col"))}
 				</tr>
 			</thead>
 		);
 	};
 
+	// render body
 	const renderBody = () => (
 		<tbody data-testid="table-body">
+			{/* Render the first row as normal data if it's not a header row */}
 			{!isFirstRowHeader && firstRow && (
 				<tr>
 					{firstRow.content?.map((cell, index) => {
@@ -88,6 +103,7 @@ export const StoryblokRichTextTable: React.FC<StoryblokRichTextTableProps> = ({
 				</tr>
 			)}
 
+			{/* Render the remaining body rows */}
 			{bodyRows.map((row, rowIndex) => (
 				<tr key={rowIndex}>
 					{row.content?.map((cell, cellIndex) => {
