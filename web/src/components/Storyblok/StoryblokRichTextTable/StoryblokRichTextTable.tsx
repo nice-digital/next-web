@@ -1,9 +1,7 @@
 import React, { useMemo } from "react";
-
 import { Table } from "@nice-digital/nds-table";
 
 import { RichtextStoryblok } from "@/types/storyblok";
-
 import { StoryblokRichText } from "../StoryblokRichText/StoryblokRichText";
 
 import styles from "./StoryblokRichTextTable.module.scss";
@@ -29,7 +27,9 @@ export const StoryblokRichTextTable: React.FC<StoryblokRichTextTableProps> = ({
 	const rows = useMemo(() => table?.content || [], [table]);
 	const headerCells = useMemo(() => rows[0]?.content || [], [rows]);
 	const bodyRows = useMemo(() => rows.slice(1), [rows]);
+
 	if (!rows.length) return null;
+
 	const getAlignment = (cell: RichtextStoryblok) => {
 		const paragraph = cell?.content?.[0];
 		return paragraph?.attrs?.textAlign || "left";
@@ -80,6 +80,7 @@ export const StoryblokRichTextTable: React.FC<StoryblokRichTextTableProps> = ({
 			))}
 		</tbody>
 	);
+
 	return (
 		<Table
 			data-testid="storyblok-table"
