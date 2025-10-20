@@ -37,7 +37,7 @@
     /* stylelint-disable */
     :global(.card-list),
     :global(.nested-rich-text),
-    :global(.testimonial)
+    :global(.testimonial),
     [data-title^='(video)'] {
       max-width: layout.$readable-width;
     }
