@@ -8,7 +8,8 @@
   }
 
   &__caption {
-    >:is(.table__heading) {
+    /* stylelint-disable-next-line selector-class-pattern */
+    .table__heading {
       margin-top: 0;
     }
     margin-bottom: utils.rem(spacing.$medium);

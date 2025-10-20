@@ -2,14 +2,16 @@ import { render, screen } from "@testing-library/react";
 import React from "react";
 
 import mockBlok from "@/mocks/__data__/storyblok/richTextTableData.json";
+import { RichTextTableStoryblok } from "@/types/storyblok";
 
 import { StoryblokRichTextTable } from "./StoryblokRichTextTable";
-import { RichTextTableStoryblok } from "@/types/storyblok";
 
 describe("StoryblokTable", () => {
 	const renderTable = (overrides = {}) => {
 		return render(
-			<StoryblokRichTextTable blok={{ ...mockBlok as RichTextTableStoryblok, ...overrides }} />
+			<StoryblokRichTextTable
+				blok={{ ...(mockBlok as RichTextTableStoryblok), ...overrides }}
+			/>
 		);
 	};
 
@@ -57,7 +59,7 @@ describe("StoryblokTable", () => {
 		const dataCell = screen.getByText("Row 1");
 		//eslint-disable-next-line testing-library/no-node-access
 		const wrapper = headerCell.closest("th");
-		expect(wrapper).toHaveAttribute("scope", "col");;
+		expect(wrapper).toHaveAttribute("scope", "col");
 		expect(dataCell.tagName).toBe("P");
 	});
 	it("renders the alignment of data inside cell correctly", () => {

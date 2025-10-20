@@ -3,11 +3,11 @@ import React, { useMemo } from "react";
 import { Table } from "@nice-digital/nds-table";
 
 import { RichtextStoryblok, RichTextTableStoryblok } from "@/types/storyblok";
+import { fieldHasValidContent } from "@/utils/storyblok";
 
 import { StoryblokRichText } from "../StoryblokRichText/StoryblokRichText";
 
 import styles from "./StoryblokRichTextTable.module.scss";
-import { fieldHasValidContent } from "@/utils/storyblok";
 
 export interface StoryblokRichTextTableProps {
 	blok: RichTextTableStoryblok;
