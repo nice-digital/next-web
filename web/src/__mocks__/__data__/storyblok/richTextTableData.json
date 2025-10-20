@@ -1,7 +1,8 @@
 {
   "_uid": "1",
+  "component": "richTextTable",
   "heading": "Test Table",
-  "headingLevel": 3,
+  "headingLevel": "3",
   "summary": {
     "type": "doc",
     "content": [

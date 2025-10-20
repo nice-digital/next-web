@@ -2,21 +2,15 @@ import React, { useMemo } from "react";
 
 import { Table } from "@nice-digital/nds-table";
 
-import { RichtextStoryblok } from "@/types/storyblok";
+import { RichtextStoryblok, RichTextTableStoryblok } from "@/types/storyblok";
 
 import { StoryblokRichText } from "../StoryblokRichText/StoryblokRichText";
 
 import styles from "./StoryblokRichTextTable.module.scss";
+import { fieldHasValidContent } from "@/utils/storyblok";
 
-interface StoryblokRichTextTableProps {
-	blok: {
-		heading: string;
-		headingLevel: number | string;
-		summary?: RichtextStoryblok;
-		tableContent: {
-			content?: RichtextStoryblok[];
-		};
-	};
+export interface StoryblokRichTextTableProps {
+	blok: RichTextTableStoryblok;
 }
 
 export const StoryblokRichTextTable: React.FC<StoryblokRichTextTableProps> = ({
@@ -27,12 +21,11 @@ export const StoryblokRichTextTable: React.FC<StoryblokRichTextTableProps> = ({
 
 	const table = tableContent?.content?.[0];
 	const rows = useMemo(() => table?.content || [], [table]);
-
+	console.log("summary", summary);
 	if (!rows.length) return null;
 
 	const firstRow = rows[0];
 
-	//Added a function to determine header configuration
 	const getTableHeaderConfig = () => {
 		const isFirstRowHeader = firstRow?.content?.every(
 			(cell) => cell.type === "tableHeader"
@@ -46,7 +39,6 @@ export const StoryblokRichTextTable: React.FC<StoryblokRichTextTableProps> = ({
 	};
 
 	const { isFirstRowHeader, isFirstColumnHeader } = getTableHeaderConfig();
-
 	const headerCells = isFirstRowHeader ? firstRow.content : [];
 	const bodyRows = isFirstRowHeader ? rows.slice(1) : rows;
 
@@ -66,20 +58,12 @@ export const StoryblokRichTextTable: React.FC<StoryblokRichTextTableProps> = ({
 		return (
 			<CellTag key={cellIndex} scope={scope} data-align={align}>
 				{cell?.content && (
-					<StoryblokRichText
-						content={{ type: "doc", content: cell.content }}
-						className={
-							cell.type === "tableHeader"
-								? styles.table__tableHeader
-								: undefined
-						}
-					/>
+					<StoryblokRichText content={{ type: "doc", content: cell.content }} />
 				)}
 			</CellTag>
 		);
 	};
 
-	// render header
 	const renderHeader = () => {
 		if (!headerCells?.length) return null;
 
@@ -92,20 +76,8 @@ export const StoryblokRichTextTable: React.FC<StoryblokRichTextTableProps> = ({
 		);
 	};
 
-	// render body
 	const renderBody = () => (
 		<tbody data-testid="table-body">
-			{/* Render the first row as normal data if it's not a header row */}
-			{!isFirstRowHeader && firstRow && (
-				<tr>
-					{firstRow.content?.map((cell, index) => {
-						const isRowHeader = index === 0 && isFirstColumnHeader;
-						return renderCell(cell, index, isRowHeader ? "row" : undefined);
-					})}
-				</tr>
-			)}
-
-			{/* Render the remaining body rows */}
 			{bodyRows.map((row, rowIndex) => (
 				<tr key={rowIndex}>
 					{row.content?.map((cell, cellIndex) => {
@@ -125,8 +97,15 @@ export const StoryblokRichTextTable: React.FC<StoryblokRichTextTableProps> = ({
 			className={styles.table}
 		>
 			<caption className={styles.table__caption} data-testid="table-caption">
-				<HeadingElement data-testid="table-heading">{heading}</HeadingElement>
-				{summary && <StoryblokRichText content={summary} />}
+				<HeadingElement
+					data-testid="table-heading"
+					className={styles.table__heading}
+				>
+					{heading}
+				</HeadingElement>
+				{summary && fieldHasValidContent(summary) && (
+					<StoryblokRichText content={summary} />
+				)}
 			</caption>
 
 			{renderHeader()}

@@ -8,15 +8,11 @@
   }
 
   &__caption {
-    > :is(h2, h3, h4, h5, h6):first-child {
+    >:is(.table__heading) {
       margin-top: 0;
     }
     margin-bottom: utils.rem(spacing.$medium);
     text-align: left;
-  }
-
-  &__tableHeader {
-    font-weight: bold;
   }
 
   /* stylelint-disable-next-line selector-no-qualifying-type */
