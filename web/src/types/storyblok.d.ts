@@ -384,6 +384,7 @@ export interface GridStoryblok {
     | QuoteStoryblok
     | RelatedLinkStoryblok
     | RelatedNewsLinkStoryblok
+    | RichTextTableStoryblok
     | SpotlightStoryblok
     | TestimonialFullWidthStoryblok
     | TestimonialGridItemStoryblok
@@ -672,6 +673,7 @@ export interface PageStoryblok {
     | QuoteStoryblok
     | RelatedLinkStoryblok
     | RelatedNewsLinkStoryblok
+    | RichTextTableStoryblok
     | SpotlightStoryblok
     | TestimonialFullWidthStoryblok
     | TestimonialGridItemStoryblok
@@ -745,6 +747,16 @@ export interface RelatedNewsLinkStoryblok {
   publisher: string;
   date: string;
   component: "relatedNewsLink";
+  _uid: string;
+  [k: string]: any;
+}
+
+export interface RichTextTableStoryblok {
+  heading: string;
+  headingLevel: "" | "2" | "3" | "4" | "5";
+  summary?: RichtextStoryblok;
+  tableContent: RichtextStoryblok;
+  component: "richTextTable";
   _uid: string;
   [k: string]: any;
 }
