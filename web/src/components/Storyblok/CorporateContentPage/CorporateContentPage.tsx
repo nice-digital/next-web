@@ -1,4 +1,4 @@
-import { StoryblokComponent, useStoryblokBridge } from "@storyblok/react";
+import { StoryblokComponent, storyblokEditable, useStoryblokBridge } from "@storyblok/react";
 import { NextSeo } from "next-seo";
 import React, { useMemo, useEffect } from "react";
 
@@ -13,11 +13,11 @@ export const CorporateContentPage = (
 	const story = "story" in props ? props.story : null;
 
 	// Enable live updates in Visual Editor; only run bridge on client
-	// useEffect(() => {
-	// 	if (story?.id) {
-	// 		useStoryblokBridge(story.id, () => {});
-	// 	}
-	// }, [story?.id]);
+	useEffect(() => {
+		if (story?.id) {
+			useStoryblokBridge(story.id, () => {});
+		}
+	}, [story?.id]);
 
 	const additionalMetaTags = useMemo(() => {
 		if (story) {
@@ -46,13 +46,15 @@ export const CorporateContentPage = (
 				additionalMetaTags={additionalMetaTags}
 			></NextSeo>
 			{storyData?.content && (
-				<StoryblokComponent
-					blok={storyData.content}
-					breadcrumbs={breadcrumbs}
-					tree={tree}
-					slug={slug}
-					pageType={props.component}
-				/>
+				<div {...storyblokEditable(storyData.content)}>
+					<StoryblokComponent
+						blok={storyData.content}
+						breadcrumbs={breadcrumbs}
+						tree={tree}
+						slug={slug}
+						pageType={props.component}
+					/>
+				</div>
 			)}
 		</>
 	);

@@ -1,3 +1,5 @@
+import { storyblokEditable } from "@storyblok/react";
+
 import { Breadcrumbs, Breadcrumb } from "@nice-digital/nds-breadcrumbs";
 import { PageHeader } from "@nice-digital/nds-page-header";
 
@@ -41,6 +43,7 @@ export const StoryblokPageHeader = ({
 
 	return (
 		<PageHeader
+			{...storyblokEditable(blok)}
 			heading={title}
 			lead={summary || undefined}
 			breadcrumbs={BreadcrumbComponent}
