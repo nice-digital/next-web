@@ -46,15 +46,14 @@ export const CorporateContentPage = (
 				additionalMetaTags={additionalMetaTags}
 			></NextSeo>
 			{storyData?.content && (
-				<div {...storyblokEditable(storyData.content)}>
 					<StoryblokComponent
+						{...storyblokEditable(storyData.content)}
 						blok={storyData.content}
 						breadcrumbs={breadcrumbs}
 						tree={tree}
 						slug={slug}
 						pageType={props.component}
 					/>
-				</div>
 			)}
 		</>
 	);
