@@ -3,7 +3,7 @@
   "version": "0.3.0",
   "private": true,
   "scripts": {
-    "dev": "cross-env NODE_OPTIONS=\" -r next-logger/presets/next-only --inspect\" next dev -p 4000 | pino-pretty",
+    "dev": "cross-env NODE_OPTIONS=\" -r next-logger/presets/next-only --inspect\" next dev -p 4000 --experimental-https | pino-pretty",
     "dev-debug": "next dev -p 4000",
     "build": "next build",
     "postbuild": "next-sitemap",
