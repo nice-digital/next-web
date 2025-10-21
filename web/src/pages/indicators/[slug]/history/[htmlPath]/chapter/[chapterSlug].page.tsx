@@ -11,21 +11,14 @@ import { type ResourceLinkViewModel } from "@/utils/resource";
 import { ConvertedDocument } from "@/components/ConvertedDocument/ConvertedDocument";
 import { ProductHorizontalNav } from "@/components/ProductHorizontalNav/ProductHorizontalNav";
 import { ProductPageHeading } from "@/components/ProductPageHeading/ProductPageHeading";
-import { ResourceLinkCard } from "@/components/ResourceLinkCard/ResourceLinkCard";
-import {
-	getConvertedDocumentHTML,
-	getResourceFileHTML
-} from "@/feeds/inDev/inDev";
-import {
-	type niceIndevConvertedDocument,
+import { getConvertedDocumentHTML } from "@/feeds/inDev/inDev";
+ import {
 	type niceIndevConvertedDocumentChapter,
 	type niceIndevConvertedDocumentSection
 } from "@/feeds/inDev/types";
 import { type ProductDetail } from "@/feeds/publications/types";
 
-import styles from "./index.page.module.scss";
-
-export type HistoryHTMLPageProps = {
+export type HistoryChapterHTMLPageProps = {
 	lastUpdated: string;
 	product: Pick<
 		ProductDetail,
@@ -50,18 +43,16 @@ export type HistoryHTMLPageProps = {
 		sections?: niceIndevConvertedDocumentSection[];
 		title: string;
 	};
-	resourceLinks: ResourceLinkViewModel[];
 };
 
-export default function HistoryHTMLPage({
+export default function HistoryChaperHTMLPage({
 	lastUpdated,
 	product,
 	productHorizontalNav,
 	productPath,
 	resource,
-	resourceLinks
-}: HistoryHTMLPageProps): JSX.Element {
-	const { htmlBody, isConvertedDocument, title } = resource;
+}: HistoryChapterHTMLPageProps): JSX.Element {
+	const { title } = resource;
 	const { id } = product;
 
 	return (
@@ -88,38 +79,17 @@ export default function HistoryHTMLPage({
 				{... productHorizontalNav}
 			/>
 
-			{isConvertedDocument ? (
-				<ConvertedDocument
-					lastUpdated={lastUpdated}
-					resource={resource}
-				/>
-			) : (
-				<>
-					<div
-						dangerouslySetInnerHTML={{ __html: htmlBody }}
-					></div>
-
-					{resourceLinks.length > 0 ? (
-						<div className={styles.resourceLinks}>
-							<hr className="mb--d" />
-							<ul className="list list--unstyled">
-								{resourceLinks.map((resourceLink) => (
-									<li key={resourceLink.href}>
-										<ResourceLinkCard resourceLink={resourceLink} />
-									</li>
-								))}
-							</ul>
-						</div>
-					) : null}
-				</>
-			)}
+			<ConvertedDocument
+				lastUpdated={lastUpdated}
+				resource={resource}
+			/>
 		</>
 	);
 }
 
 export const getServerSideProps: GetServerSideProps<
-	HistoryHTMLPageProps,
-	{ slug: string; htmlPath: string }
+	HistoryChapterHTMLPageProps,
+	{ slug: string; htmlPath: string; chapterSlug: string }
 > = async ({ params, resolvedUrl, query }) => {
 	if (!params || !params.htmlPath) return { notFound: true };
 
@@ -137,13 +107,18 @@ export const getServerSideProps: GetServerSideProps<
 			historyPanels,
 	} = result;
 
+	const chapterSlug =
+		(Array.isArray(params.chapterSlug)
+			? params.chapterSlug[0]
+			: params.chapterSlug) || "";
+
 	const resource = historyPanels
 		.flatMap((panel) =>
 			arrayify(panel.embedded.niceIndevResourceList.embedded.niceIndevResource)
 		)
 		.find(
 			(resource) => {
-				const indevFile = resource.embedded?.niceIndevFile || resource.embedded?.niceIndevConvertedDocument;
+				const indevFile = resource.embedded?.niceIndevConvertedDocument;
 
 				return indevFile?.resourceTitleId === params?.htmlPath &&
 				resource.showInDocList
@@ -152,18 +127,25 @@ export const getServerSideProps: GetServerSideProps<
 
 	if (!resource) return { notFound: true };
 
-	const isConvertedDocument = !!resource.embedded?.hasOwnProperty("niceIndevConvertedDocument");
-	const indevFile = resource.embedded?.niceIndevFile || resource.embedded?.niceIndevConvertedDocument;
+	const indevFile = resource.embedded?.niceIndevConvertedDocument;
 
 	if (!indevFile) return { notFound: true };
 
-	const resourceFilePath = indevFile.links.self[0].href;
+	let resourceFilePath = indevFile.links.self[0].href;
 
-	let resourceFileHTML = isConvertedDocument ? await getConvertedDocumentHTML(resourceFilePath) : await getResourceFileHTML(resourceFilePath);
+	const resourceFilePathHTMLIndex = resourceFilePath.lastIndexOf("/html");
 
-	if (resourceFileHTML !== null) {
-		resourceFileHTML = typeof resourceFileHTML === "string" ? { content: resourceFileHTML } as niceIndevConvertedDocument : resourceFileHTML;
-	} else {
+	resourceFilePath =
+		resourceFilePathHTMLIndex > -1
+			? `${resourceFilePath.slice(
+					0,
+					resourceFilePathHTMLIndex
+				)}/chapter/${chapterSlug}`
+			: resourceFilePath;
+
+	const resourceFileHTML = await getConvertedDocumentHTML(resourceFilePath);
+
+	if (resourceFileHTML === null) {
 		return { notFound: true };
 	}
 
@@ -175,36 +157,26 @@ export const getServerSideProps: GetServerSideProps<
 	const resourceLinks: ResourceLinkViewModel[] = panel
 		? arrayify(panel.embedded.niceIndevResourceList.embedded.niceIndevResource)
 			.filter(
-				(embeddedResource) => !embeddedResource.textOnly && embeddedResource.title !== panel.title
+				(embeddedResource) => {
+					const { embedded, textOnly, title } = embeddedResource;
+
+					return !textOnly
+						&& title !== panel.title
+						&& embedded?.hasOwnProperty("niceIndevGeneratedPdf");
+						// does this need to cater for other types - niceIndevConvertedDocument, niceIndevFile
+				}
 			)
 			.map((embeddedResource) => {
-				const resourceIsConvertedDocument = embeddedResource.embedded?.hasOwnProperty("niceIndevConvertedDocument");
-
-				let resourceIndevFile = resourceIsConvertedDocument
-					? embeddedResource.embedded?.niceIndevConvertedDocument
-					: embeddedResource.embedded?.niceIndevGeneratedPdf;
-
-				resourceIndevFile = (!resourceIndevFile ? resource.embedded?.niceIndevFile: resourceIndevFile)!;
-
-				const mimeType = "mimeType" in resourceIndevFile ? resourceIndevFile.mimeType : "text/html";
-				const length = "length" in resourceIndevFile ? resourceIndevFile.length : 0;
-				const fileName = "fileName" in resourceIndevFile ? resourceIndevFile.fileName : "";
-				const resourceTitleId = resourceIndevFile.resourceTitleId;
-
-				const isHTML = mimeType === "text/html";
-				const fileSize = isHTML ? null : length;
-				const fileTypeName = isHTML ? null : getFileTypeNameFromMime(mimeType);
-				const href = isHTML
-						? `${productPath}/history/${resourceTitleId}`
-						: `${productPath}/history/downloads/${
-								product.id
-							}-${resourceTitleId}.${fileName.split(".").slice(-1)[0]}`;
+				const resourceIndevFile = embeddedResource.embedded?.niceIndevGeneratedPdf!;
+				const href = `${productPath}/history/downloads/${
+						product.id
+					}-${resourceIndevFile.resourceTitleId}.${resourceIndevFile.fileName.split(".").slice(-1)[0]}`;
 
 				return {
 					title: embeddedResource.title,
 					href,
-					fileTypeName,
-					fileSize,
+					fileTypeName: getFileTypeNameFromMime(resourceIndevFile.mimeType),
+					fileSize: resourceIndevFile.length,
 					date: embeddedResource.publishedDate,
 					type: panel.title,
 				};
@@ -240,12 +212,11 @@ export const getServerSideProps: GetServerSideProps<
 			resource: {
 				chapters: resourceFileHTML.chapters || [],
 				htmlBody: resourceFileHTML.content,
-				isConvertedDocument,
+				isConvertedDocument: true,
 				pdfDownloadLink,
 				sections: resourceFileHTML.sections,
 				title: resource.title,
 			},
-			resourceLinks,
 		},
 	};
 };
