@@ -29,6 +29,7 @@ export const InfoPage = ({
 	slug,
 	pageType,
 }: InfoPageBlokProps): React.ReactElement => {
+	console.log("InfoPage blok:", blok);
 	return (
 		<div className={styles.infoPage}>
 			{blok.metadata &&
