@@ -21,7 +21,7 @@ export const StoryblokRichTextTable: React.FC<StoryblokRichTextTableProps> = ({
 
 	const table = tableContent?.content?.[0];
 	const rows = useMemo(() => table?.content || [], [table]);
-	console.log("summary", summary);
+
 	if (!rows.length) return null;
 
 	const firstRow = rows[0];
