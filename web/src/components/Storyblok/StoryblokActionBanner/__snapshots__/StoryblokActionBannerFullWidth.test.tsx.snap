@@ -28,7 +28,7 @@ exports[`Storyblok action banner full width component should match snapshot 1`] 
             class="action-banner__intro"
           >
             <div
-              class="storyblokRichTextWrapper "
+              class="storyblokRichTextWrapper"
               data-testid="storyblok-rich-text"
             />
           </div>
@@ -78,7 +78,7 @@ exports[`Storyblok action banner full width component should match snapshot for 
             class="action-banner__intro"
           >
             <div
-              class="storyblokRichTextWrapper "
+              class="storyblokRichTextWrapper"
               data-testid="storyblok-rich-text"
             />
           </div>
