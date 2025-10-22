@@ -8,14 +8,14 @@
   }
 
   &__caption {
-    /* stylelint-disable-next-line selector-class-pattern */
-    .table__heading {
-      margin-top: 0;
-    }
     margin-bottom: utils.rem(spacing.$medium);
     text-align: left;
   }
 
+  &__heading {
+    margin-top: 0;
+  }
+  
   /* stylelint-disable-next-line selector-no-qualifying-type */
   th[data-align='left'],
   td[data-align='left'] {
