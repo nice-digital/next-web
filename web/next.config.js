@@ -74,7 +74,7 @@ const commonHeaders = [
 	},
 	{
 		key: "Content-Security-Policy",
-		value: "frame-ancestors 'self' https://app.storyblok.com; frame-src https://*.infogram.com",
+		value: "frame-ancestors 'self' https://app.storyblok.com",
 	},
 	/**
 	 * Preload external assets and preconnecting external domains via Link header
@@ -99,7 +99,7 @@ if (process.env.HOSTNAME === 'www.nice.org.uk') {
 		},
 		{
 			key: "Content-Security-Policy",
-			value: "frame-ancestors 'none'; frame-src https://*.infogram.com",
+			value: "frame-ancestors 'none'",
 		},
 	);
 }
