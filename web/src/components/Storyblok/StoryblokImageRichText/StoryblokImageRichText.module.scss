@@ -3,13 +3,10 @@
 @use '@nice-digital/nds-core/scss/utils';
 
 .imageRichText {
-  h2,
-  h3,
-  h4,
-  h5,
-  h6 {
+  :is(h2,h3,h4,h5,h6):first-child {
     margin: 0 0 utils.rem(spacing.$medium);
   }
+
   container-name: imageRichText;
   container-type: inline-size;
   margin-bottom: utils.rem(spacing.$large);
