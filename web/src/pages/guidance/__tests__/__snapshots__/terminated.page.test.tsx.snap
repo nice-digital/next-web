@@ -1,6 +1,6 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`/guidance/topic-selection should match the snapshot 1`] = `
+exports[`/guidance/terminated should match the snapshot 1`] = `
 <div>
   <div
     class="undefined undefined"
@@ -41,7 +41,7 @@ exports[`/guidance/topic-selection should match the snapshot 1`] = `
               class="breadcrumbs__crumb"
             >
               <span>
-                Topic selection
+                Terminated
               </span>
             </li>
           </ol>
@@ -73,7 +73,7 @@ exports[`/guidance/topic-selection should match the snapshot 1`] = `
       "@type": "ListItem",
       "position": 3,
       "item": {
-        "name": "Topic selection"
+        "name": "Terminated"
       }
     }
   ]
@@ -88,7 +88,7 @@ exports[`/guidance/topic-selection should match the snapshot 1`] = `
           <h1
             class="page-header__heading "
           >
-            Guidance in topic selection
+            Terminated
           </h1>
           <p
             class="page-header__lead"
@@ -341,7 +341,7 @@ exports[`/guidance/topic-selection should match the snapshot 1`] = `
                       class="filter-group__heading"
                     >
                       <button
-                        aria-controls="group-decision-date"
+                        aria-controls="group-terminated-date"
                         aria-expanded="true"
                         type="button"
                       >
@@ -361,9 +361,9 @@ exports[`/guidance/topic-selection should match the snapshot 1`] = `
                           />
                         </svg>
                         <span
-                          id="group-heading-decision-date"
+                          id="group-heading-terminated-date"
                         >
-                          Decision date
+                          Terminated date
                            
                         </span>
                       </button>
@@ -371,10 +371,10 @@ exports[`/guidance/topic-selection should match the snapshot 1`] = `
                     <fieldset
                       aria-hidden="false"
                       class="filter-group__options"
-                      id="group-decision-date"
+                      id="group-terminated-date"
                     >
                       <legend>
-                        Decision date
+                        Terminated date
                       </legend>
                       <div
                         class="ph--c pt--c"
@@ -871,7 +871,7 @@ exports[`/guidance/topic-selection should match the snapshot 1`] = `
                     selected=""
                     value="Date"
                   >
-                    Decision date
+                    Terminated date
                   </option>
                   <option
                     value="Title"
@@ -893,7 +893,7 @@ exports[`/guidance/topic-selection should match the snapshot 1`] = `
                 <caption
                   class="visually-hidden"
                 >
-                  Guidance in topic selection
+                  Terminated
                 </caption>
                 <thead>
                   <tr>
@@ -905,17 +905,12 @@ exports[`/guidance/topic-selection should match the snapshot 1`] = `
                     <th
                       scope="col"
                     >
-                      Technology type
+                      Type
                     </th>
                     <th
                       scope="col"
                     >
-                      Decision
-                    </th>
-                    <th
-                      scope="col"
-                    >
-                      Decision date
+                      Terminated date
                     </th>
                   </tr>
                 </thead>
@@ -929,21 +924,14 @@ exports[`/guidance/topic-selection should match the snapshot 1`] = `
                       </a>
                     </td>
                     <td>
-                      n/a
+                      Diagnostics guidance
                     </td>
                     <td>
-                      Awaiting decision
-                    </td>
-                    <td>
-                      <time
-                        class="date"
-                        data-shortdate="29/6/2022"
-                        datetime="2022-06-29T12:00:00"
+                      <abbr
+                        title="To be confirmed"
                       >
-                        <span>
-                          29 June 2022
-                        </span>
-                      </time>
+                        TBC
+                      </abbr>
                     </td>
                   </tr>
                   <tr>
@@ -955,21 +943,14 @@ exports[`/guidance/topic-selection should match the snapshot 1`] = `
                       </a>
                     </td>
                     <td>
-                      n/a
+                      Diagnostics guidance
                     </td>
                     <td>
-                      Awaiting decision
-                    </td>
-                    <td>
-                      <time
-                        class="date"
-                        data-shortdate="22/11/2022"
-                        datetime="2022-11-22T12:00:00"
+                      <abbr
+                        title="To be confirmed"
                       >
-                        <span>
-                          22 November 2022
-                        </span>
-                      </time>
+                        TBC
+                      </abbr>
                     </td>
                   </tr>
                   <tr>
@@ -981,21 +962,14 @@ exports[`/guidance/topic-selection should match the snapshot 1`] = `
                       </a>
                     </td>
                     <td>
-                      n/a
+                      Technology appraisal guidance
                     </td>
                     <td>
-                      Further information required
-                    </td>
-                    <td>
-                      <time
-                        class="date"
-                        data-shortdate="8/4/2021"
-                        datetime="2021-04-08T12:00:00"
+                      <abbr
+                        title="To be confirmed"
                       >
-                        <span>
-                          8 April 2021
-                        </span>
-                      </time>
+                        TBC
+                      </abbr>
                     </td>
                   </tr>
                   <tr>
@@ -1007,21 +981,14 @@ exports[`/guidance/topic-selection should match the snapshot 1`] = `
                       </a>
                     </td>
                     <td>
-                      n/a
+                      Interventional procedures guidance
                     </td>
                     <td>
-                      Awaiting decision
-                    </td>
-                    <td>
-                      <time
-                        class="date"
-                        data-shortdate="9/9/2020"
-                        datetime="2020-09-09T12:00:00"
+                      <abbr
+                        title="To be confirmed"
                       >
-                        <span>
-                          9 September 2020
-                        </span>
-                      </time>
+                        TBC
+                      </abbr>
                     </td>
                   </tr>
                   <tr>
@@ -1033,21 +1000,14 @@ exports[`/guidance/topic-selection should match the snapshot 1`] = `
                       </a>
                     </td>
                     <td>
-                      Diagnostic
+                      Diagnostics guidance
                     </td>
                     <td>
-                      Awaiting decision
-                    </td>
-                    <td>
-                      <time
-                        class="date"
-                        data-shortdate="22/7/2021"
-                        datetime="2021-07-22T12:00:00"
+                      <abbr
+                        title="To be confirmed"
                       >
-                        <span>
-                          22 July 2021
-                        </span>
-                      </time>
+                        TBC
+                      </abbr>
                     </td>
                   </tr>
                   <tr>
@@ -1059,21 +1019,14 @@ exports[`/guidance/topic-selection should match the snapshot 1`] = `
                       </a>
                     </td>
                     <td>
-                      n/a
+                      Diagnostics guidance
                     </td>
                     <td>
-                      Awaiting decision
-                    </td>
-                    <td>
-                      <time
-                        class="date"
-                        data-shortdate="2/12/2022"
-                        datetime="2022-12-02T12:00:00"
+                      <abbr
+                        title="To be confirmed"
                       >
-                        <span>
-                          2 December 2022
-                        </span>
-                      </time>
+                        TBC
+                      </abbr>
                     </td>
                   </tr>
                   <tr>
@@ -1085,21 +1038,14 @@ exports[`/guidance/topic-selection should match the snapshot 1`] = `
                       </a>
                     </td>
                     <td>
-                      n/a
+                      Interventional procedures guidance
                     </td>
                     <td>
-                      Awaiting decision
-                    </td>
-                    <td>
-                      <time
-                        class="date"
-                        data-shortdate="23/2/2023"
-                        datetime="2023-02-23T12:00:00"
+                      <abbr
+                        title="To be confirmed"
                       >
-                        <span>
-                          23 February 2023
-                        </span>
-                      </time>
+                        TBC
+                      </abbr>
                     </td>
                   </tr>
                   <tr>
@@ -1111,21 +1057,14 @@ exports[`/guidance/topic-selection should match the snapshot 1`] = `
                       </a>
                     </td>
                     <td>
-                      Diagnostic
+                      Diagnostics guidance
                     </td>
                     <td>
-                      Awaiting decision
-                    </td>
-                    <td>
-                      <time
-                        class="date"
-                        data-shortdate="16/1/2023"
-                        datetime="2023-01-16T12:00:00"
+                      <abbr
+                        title="To be confirmed"
                       >
-                        <span>
-                          16 January 2023
-                        </span>
-                      </time>
+                        TBC
+                      </abbr>
                     </td>
                   </tr>
                   <tr>
@@ -1137,21 +1076,14 @@ exports[`/guidance/topic-selection should match the snapshot 1`] = `
                       </a>
                     </td>
                     <td>
-                      n/a
+                      Diagnostics guidance
                     </td>
                     <td>
-                      Awaiting decision
-                    </td>
-                    <td>
-                      <time
-                        class="date"
-                        data-shortdate="22/7/2021"
-                        datetime="2021-07-22T12:00:00"
+                      <abbr
+                        title="To be confirmed"
                       >
-                        <span>
-                          22 July 2021
-                        </span>
-                      </time>
+                        TBC
+                      </abbr>
                     </td>
                   </tr>
                   <tr>
@@ -1163,21 +1095,14 @@ exports[`/guidance/topic-selection should match the snapshot 1`] = `
                       </a>
                     </td>
                     <td>
-                      Device
+                      Medical technologies guidance
                     </td>
                     <td>
-                      Awaiting decision
-                    </td>
-                    <td>
-                      <time
-                        class="date"
-                        data-shortdate="1/3/2023"
-                        datetime="2023-03-01T12:00:00"
+                      <abbr
+                        title="To be confirmed"
                       >
-                        <span>
-                          1 March 2023
-                        </span>
-                      </time>
+                        TBC
+                      </abbr>
                     </td>
                   </tr>
                 </tbody>
