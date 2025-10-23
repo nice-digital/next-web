@@ -905,7 +905,7 @@ exports[`/guidance/deferred should match the snapshot 1`] = `
                     <th
                       scope="col"
                     >
-                      Guidance programme
+                      Type
                     </th>
                     <th
                       scope="col"
