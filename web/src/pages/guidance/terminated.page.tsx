@@ -20,13 +20,13 @@ const tableBodyRender = (documents: Document[]) => (
 		<thead>
 			<tr>
 				<th scope="col">Title</th>
-				<th scope="col">Guidance programme</th>
+				<th scope="col">Type</th>
 				<th scope="col">Terminated date</th>
 			</tr>
 		</thead>
 		<tbody>
 			{documents.map(
-				({ id, title, pathAndQuery, niceGuidanceType, terminatedDate }) => {
+				({ id, title, pathAndQuery, niceResultType, terminatedDate }) => {
 					return (
 						<tr key={id}>
 							<td>
@@ -35,7 +35,7 @@ const tableBodyRender = (documents: Document[]) => (
 									dangerouslySetInnerHTML={{ __html: title }}
 								/>
 							</td>
-							<td>{niceGuidanceType || "n/a"}</td>
+							<td>{niceResultType || "n/a"}</td>
 							<td>
 								{terminatedDate ? (
 									<ResponsiveDate isoDateTime={terminatedDate} />
