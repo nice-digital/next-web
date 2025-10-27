@@ -86,7 +86,7 @@ export const orderedListWithoutStartingNumber = {
 					},
 				],
 			},
-      type: "",
+			type: "",
 			component: "listItem",
 		},
 	],

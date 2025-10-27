@@ -1,11 +1,13 @@
-import React from "react";
 import { render, screen } from "@testing-library/react";
-import { StoryblokOrderedList } from "./StoryblokOrderedList";
+import React from "react";
+
 import {
 	orderedList,
 	orderedListWithoutStartingNumber,
 } from "@/mocks/__data__/storyblok/orderedList.js";
 import { OrderedListStoryblok } from "@/types/storyblok";
+
+import { StoryblokOrderedList } from "./StoryblokOrderedList";
 
 jest.mock("../StoryblokRichText/StoryblokRichText", () => ({
 	StoryblokRichText: ({ content }: { content: any }) => {

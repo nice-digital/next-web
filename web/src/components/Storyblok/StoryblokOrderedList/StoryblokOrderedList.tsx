@@ -1,7 +1,9 @@
 import React from "react";
-import { StoryblokRichText } from "../StoryblokRichText/StoryblokRichText";
+
 import { ListItemStoryblok, OrderedListStoryblok } from "@/types/storyblok";
 import { fieldHasValidContent } from "@/utils/storyblok";
+
+import { StoryblokRichText } from "../StoryblokRichText/StoryblokRichText";
 
 export const StoryblokOrderedList: React.FC<{ blok: OrderedListStoryblok }> = ({
 	blok,
