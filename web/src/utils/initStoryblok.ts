@@ -102,7 +102,7 @@ const infoPageComponents = {
 	infogramEmbed: ClientInfogramEmbed,
 	infoPage: InfoPage,
 	nestedTable: StoryblokTable,
-	orderedList:StoryblokOrderedList,
+	orderedList: StoryblokOrderedList,
 };
 
 export const allComponents: SbReactComponentsMap = {

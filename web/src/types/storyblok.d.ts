@@ -372,11 +372,13 @@ export interface GridStoryblok {
     | InDepthArticleStoryblok
     | InfogramEmbedStoryblok
     | InfoPageStoryblok
+    | ListItemStoryblok
     | MarkdownStoryblok
     | MetadataStoryblok
     | NestedRichTextStoryblok
     | NestedTableStoryblok
     | NewsArticleStoryblok
+    | OrderedListStoryblok
     | PageStoryblok
     | PageHeaderStoryblok
     | PodcastStoryblok
@@ -556,6 +558,14 @@ export interface InfoPageStoryblok {
   [k: string]: any;
 }
 
+export interface ListItemStoryblok {
+  text?: RichtextStoryblok;
+  children?: (OrderedListNewStoryblok | OrderedListStoryblok)[];
+  component: "listItem";
+  _uid: string;
+  [k: string]: any;
+}
+
 export interface MarkdownStoryblok {
   content: string;
   component: "markdown";
@@ -622,6 +632,15 @@ export interface NewsArticleStoryblok {
   [k: string]: any;
 }
 
+export interface OrderedListStoryblok {
+  startingNumber?: string;
+  listType?: "" | "1" | "a" | "A" | "i" | "I";
+  listItems?: ListItemStoryblok[];
+  component: "orderedList";
+  _uid: string;
+  [k: string]: any;
+}
+
 export interface PageStoryblok {
   body?: (
     | AccordionStoryblok
@@ -660,11 +679,13 @@ export interface PageStoryblok {
     | InDepthArticleStoryblok
     | InfogramEmbedStoryblok
     | InfoPageStoryblok
+    | ListItemStoryblok
     | MarkdownStoryblok
     | MetadataStoryblok
     | NestedRichTextStoryblok
     | NestedTableStoryblok
     | NewsArticleStoryblok
+    | OrderedListStoryblok
     | PageStoryblok
     | PageHeaderStoryblok
     | PodcastStoryblok
