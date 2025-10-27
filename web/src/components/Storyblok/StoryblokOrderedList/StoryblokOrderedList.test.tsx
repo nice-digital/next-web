@@ -5,12 +5,12 @@ import {
 	orderedList,
 	orderedListWithoutStartingNumber,
 } from "@/mocks/__data__/storyblok/orderedList.js";
-import { OrderedListStoryblok } from "@/types/storyblok";
+import { OrderedListStoryblok, RichtextStoryblok } from "@/types/storyblok";
 
 import { StoryblokOrderedList } from "./StoryblokOrderedList";
 
 jest.mock("../StoryblokRichText/StoryblokRichText", () => ({
-	StoryblokRichText: ({ content }: { content: any }) => {
+	StoryblokRichText: ({ content }: { content: RichtextStoryblok }) => {
 		const text = content?.content?.[0]?.content?.[0]?.text || "";
 		return <div data-testid="storyblok-rich-text">{text}</div>;
 	},
