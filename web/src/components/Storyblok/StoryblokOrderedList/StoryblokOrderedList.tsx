@@ -1,6 +1,7 @@
 import React from "react";
 import { StoryblokRichText } from "../StoryblokRichText/StoryblokRichText";
 import { ListItemStoryblok, OrderedListStoryblok } from "@/types/storyblok";
+import { fieldHasValidContent } from "@/utils/storyblok";
 
 export const StoryblokOrderedList: React.FC<{ blok: OrderedListStoryblok }> = ({
 	blok,
@@ -28,7 +29,9 @@ const ListItem: React.FC<{ blok: ListItemStoryblok }> = ({ blok }) => {
 
 	return (
 		<li>
-			<StoryblokRichText content={text ?? { type: "doc", content: [] }} />
+			{text && fieldHasValidContent(text) && (
+				<StoryblokRichText content={text} />
+			)}
 			{Array.isArray(children) && children.length > 0 && (
 				<StoryblokOrderedList blok={children[0]} />
 			)}
