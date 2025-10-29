@@ -3107,8 +3107,8 @@ module.exports = () => {
 
 	const config = withNodeConfig(nextConfig);
 
-	delete config.unwantedProp1;
-	delete config.unwantedProp2;
+	delete config["nodeConfigServerKey"];
+	delete config["nodeConfigPublicKey"];
 
 	return config;
 };
