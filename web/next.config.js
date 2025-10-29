@@ -91,7 +91,7 @@ const commonHeaders = [
 ];
 
 // Prevent the live site being embedded in iframes at all, as only test sites are used by the Storyblok preview editor
-if (process.env.NODE_ENV === "production") {
+if (config.get("server.cache.keyPrefix") === "next-web:test") {
 	commonHeaders.push(
 		{
 			key: "X-Frame-Options",
@@ -3102,6 +3102,5 @@ delete finalConfig["nodeConfigServerKey"];
 delete finalConfig["nodeConfigPublicKey"];
 
 console.log(process.env.HOSTNAME);
-console.log(process.env.NODE_ENV);
 
 module.exports = finalConfig;
