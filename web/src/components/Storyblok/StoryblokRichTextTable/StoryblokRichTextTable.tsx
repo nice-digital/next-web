@@ -46,7 +46,7 @@ export const StoryblokRichTextTable: React.FC<StoryblokRichTextTableProps> = ({
 		hideSummaryText === true || hideSummaryText === "true";
 
 	const summaryTextClassName = isSummaryHidden
-		? `${styles["table__summary--visually-hidden"]}`
+		? `${styles["table__summary"]} visually-hidden`
 		: `${styles["table__summary"]}`;
 
 	const getAlignment = (cell: RichtextStoryblok) => {
