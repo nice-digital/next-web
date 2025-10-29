@@ -42,9 +42,11 @@ export const StoryblokRichTextTable: React.FC<StoryblokRichTextTableProps> = ({
 	const { isFirstRowHeader, isFirstColumnHeader } = getTableHeaderConfig();
 	const headerCells = isFirstRowHeader ? firstRow.content : [];
 	const bodyRows = isFirstRowHeader ? rows.slice(1) : rows;
+	const isSummaryHidden =
+		hideSummaryText === true || hideSummaryText === "true";
 
-	const summaryTextClassName = hideSummaryText
-		? `${styles["table__summary"]} ${styles["table__summary--visually-hidden"]}`
+	const summaryTextClassName = isSummaryHidden
+		? `${styles["table__summary--visually-hidden"]}`
 		: `${styles["table__summary"]}`;
 
 	const getAlignment = (cell: RichtextStoryblok) => {
