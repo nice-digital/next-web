@@ -91,7 +91,7 @@ const commonHeaders = [
 ];
 
 // Prevent the live site being embedded in iframes at all, as only test sites are used by the Storyblok preview editor
-if (process.env.HOSTNAME === "test-next-feature.nice.org.uk") {
+if (process.env.NODE_ENV === "production") {
 	commonHeaders.push(
 		{
 			key: "X-Frame-Options",
