@@ -71,6 +71,10 @@ resource "aws_ecs_task_definition" "nextweb-main-task" {
         {
           name  = "NODE_ENV"
           value = var.node_env
+        },
+		{
+          name  = "HOSTNAME"
+          value = var.nextweb_hostname
         }
       ]
 	  entryPoint = ["npm", "run", "host", "--"],
