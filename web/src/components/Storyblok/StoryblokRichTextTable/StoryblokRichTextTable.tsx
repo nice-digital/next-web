@@ -16,7 +16,8 @@ export interface StoryblokRichTextTableProps {
 export const StoryblokRichTextTable: React.FC<StoryblokRichTextTableProps> = ({
 	blok,
 }) => {
-	const { tableContent, heading, headingLevel, summary } = blok;
+	const { tableContent, heading, headingLevel, summary, hideSummaryText } =
+		blok;
 	const HeadingElement = `h${headingLevel || 3}` as keyof JSX.IntrinsicElements;
 
 	const table = tableContent?.content?.[0];
@@ -41,6 +42,10 @@ export const StoryblokRichTextTable: React.FC<StoryblokRichTextTableProps> = ({
 	const { isFirstRowHeader, isFirstColumnHeader } = getTableHeaderConfig();
 	const headerCells = isFirstRowHeader ? firstRow.content : [];
 	const bodyRows = isFirstRowHeader ? rows.slice(1) : rows;
+
+	const summaryTextClassName = hideSummaryText
+		? `${styles["table__summary"]} ${styles["table__summary--visually-hidden"]}`
+		: `${styles["table__summary"]}`;
 
 	const getAlignment = (cell: RichtextStoryblok) => {
 		const paragraph = cell?.content?.[0];
@@ -106,7 +111,7 @@ export const StoryblokRichTextTable: React.FC<StoryblokRichTextTableProps> = ({
 				{summary && fieldHasValidContent(summary) && (
 					<StoryblokRichText
 						content={summary}
-						className={styles.table__summary}
+						className={summaryTextClassName}
 					/>
 				)}
 			</caption>
