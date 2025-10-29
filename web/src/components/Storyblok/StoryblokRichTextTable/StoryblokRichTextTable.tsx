@@ -96,7 +96,7 @@ export const StoryblokRichTextTable: React.FC<StoryblokRichTextTableProps> = ({
 			data-component="storyblok-table"
 			className={styles.table}
 		>
-			<caption className={styles.table__caption} data-testid="table-caption">
+			<caption data-testid="table-caption" className={styles.table__caption}>
 				<HeadingElement
 					data-testid="table-heading"
 					className={styles.table__heading}
@@ -104,7 +104,10 @@ export const StoryblokRichTextTable: React.FC<StoryblokRichTextTableProps> = ({
 					{heading}
 				</HeadingElement>
 				{summary && fieldHasValidContent(summary) && (
-					<StoryblokRichText content={summary} />
+					<StoryblokRichText
+						content={summary}
+						className={styles.table__summary}
+					/>
 				)}
 			</caption>
 
