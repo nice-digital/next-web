@@ -43,8 +43,11 @@ export const getServerSideProps: GetServerSideProps<
 				)
 			)
 			.find(
-				(resource) =>
-					resource.embedded?.niceIndevFile.resourceTitleId === resourceTitleId
+				(resource) => {
+					const indevFile = resource.embedded?.niceIndevFile || resource.embedded?.niceIndevGeneratedPdf;
+
+					return indevFile?.resourceTitleId === resourceTitleId
+				}
 			);
 
 	if (projectReference.toLowerCase() !== project.reference.toLowerCase()) {
@@ -63,14 +66,16 @@ export const getServerSideProps: GetServerSideProps<
 		return { notFound: true };
 	}
 
-	if (!resource.embedded?.niceIndevFile) {
+	// don't think this should include niceIndevConvertedDocument
+	const indevFile = resource.embedded?.niceIndevFile || resource.embedded?.niceIndevGeneratedPdf;
+
+	if (!indevFile) {
 		throw new Error(
 			`Could not find file resource for ID '${resourceTitleId}' in project ${project.reference}`
 		);
 	}
 
-	const { fileName, links, mimeType } = (resource as IndevFileResource).embedded
-		.niceIndevFile;
+	const { fileName, links, mimeType } = indevFile;
 
 	// It doesn't make sense to download an HTML file, so redirect to the correct document URL instead
 	if (mimeType === "text/html") {
