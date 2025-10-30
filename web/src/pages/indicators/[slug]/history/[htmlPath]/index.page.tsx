@@ -24,6 +24,7 @@ import {
 import { type ProductDetail } from "@/feeds/publications/types";
 
 import styles from "./index.page.module.scss";
+import { formatDateStr, stripTime } from "@/utils/datetime";
 
 export type HistoryHTMLPageProps = {
 	lastUpdated: string;
@@ -95,9 +96,13 @@ export default function HistoryHTMLPage({
 				/>
 			) : (
 				<>
-					<div
-						dangerouslySetInnerHTML={{ __html: htmlBody }}
-					></div>
+					<h2>{title}</h2>
+
+					{htmlBody && (
+						<div
+							dangerouslySetInnerHTML={{ __html: htmlBody }}
+						></div>
+					)}
 
 					{resourceLinks.length > 0 ? (
 						<div className={styles.resourceLinks}>
@@ -110,6 +115,15 @@ export default function HistoryHTMLPage({
 								))}
 							</ul>
 						</div>
+					) : null}
+
+					{lastUpdated ? (
+						<p>
+							This page was last updated on{" "}
+							<time dateTime={stripTime(lastUpdated)}>
+								{formatDateStr(lastUpdated)}
+							</time>
+						</p>
 					) : null}
 				</>
 			)}
@@ -184,7 +198,7 @@ export const getServerSideProps: GetServerSideProps<
 					? embeddedResource.embedded?.niceIndevConvertedDocument
 					: embeddedResource.embedded?.niceIndevGeneratedPdf;
 
-				resourceIndevFile = (!resourceIndevFile ? resource.embedded?.niceIndevFile: resourceIndevFile)!;
+				resourceIndevFile = (!resourceIndevFile ? embeddedResource.embedded?.niceIndevFile: resourceIndevFile)!;
 
 				const mimeType = "mimeType" in resourceIndevFile ? resourceIndevFile.mimeType : "text/html";
 				const length = "length" in resourceIndevFile ? resourceIndevFile.length : 0;
