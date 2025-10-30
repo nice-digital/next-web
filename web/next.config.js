@@ -90,22 +90,6 @@ const commonHeaders = [
 	},
 ];
 
-// Prevent the live site being embedded in iframes at all, as only test sites are used by the Storyblok preview editor
-if (
-	config.get("server:feeds:inDev:origin") === "https://test-indev.nice.org.uk"
-) {
-	commonHeaders.push(
-		{
-			key: "X-Frame-Options",
-			value: "DENY",
-		},
-		{
-			key: "Content-Security-Policy",
-			value: "frame-ancestors 'none'",
-		}
-	);
-}
-
 /**
  * @type {import('next').NextConfig}
  **/
