@@ -91,7 +91,7 @@ const commonHeaders = [
 ];
 
 // Prevent the live site being embedded in iframes at all, as only test sites are used by the Storyblok preview editor
-if (config.get("server.cache.keyPrefix") === "next-web:test") {
+if (config.get("public.cookieBannerScriptURL") === "https://cdn.nice.org.uk/cookie-banner/cookie-banner.min.js") {
 	commonHeaders.push(
 		{
 			key: "X-Frame-Options",
