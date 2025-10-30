@@ -92,8 +92,7 @@ const commonHeaders = [
 
 // Prevent the live site being embedded in iframes at all, as only test sites are used by the Storyblok preview editor
 if (
-	config.get("public.cookieBannerScriptURL") ===
-	"https://cdn.nice.org.uk/cookie-banner/cookie-banner.min.js"
+	config.get("server:feeds:inDev:origin") === "https://test-indev.nice.org.uk"
 ) {
 	commonHeaders.push(
 		{
