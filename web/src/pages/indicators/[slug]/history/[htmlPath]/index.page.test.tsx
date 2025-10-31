@@ -29,6 +29,52 @@ describe("/indicators/[slug]/history/[htmlPath]/index.page", () => {
 		});
 	});
 
+	describe("getServerSideProps", () => {
+		it("should return a correct props", async () => {
+			const result = await getServerSideProps(context);
+
+			expect(result).toMatchSnapshot();
+		});
+
+		it("should return a not found if resource title id doesn't match the htmlPath param", async () => {
+			const wrongHtmlPath = "non-existent-html-1";
+
+			const notFoundResult = await getServerSideProps({
+				...context,
+				params: { slug, htmlPath: wrongHtmlPath },
+				resolvedUrl: `/indicators/${slug}/history/${wrongHtmlPath}`,
+			} as HistoryHTMLPageGetServerSidePropsContext);
+
+			expect(notFoundResult).toStrictEqual({ notFound: true });
+		});
+
+		it("should return a not found if there are panels of type 'History'", async () => {
+			const notFoundResult = await getServerSideProps({
+				...context,
+				// Process and methods guides don't have history so a good product type to use here
+				resolvedUrl: "/process/pmg20/history",
+				params: {
+					slug: "pmg20",
+					htmlPath,
+				},
+				query: {
+					productRoot: "process",
+				},
+			});
+
+			expect(notFoundResult).toStrictEqual({ notFound: true });
+		});
+
+		it("should return not found if the resource html is null", async () => {
+			const notFoundResult = await getServerSideProps({
+				...context,
+				params: { slug, htmlPath: "not-found" },
+			});
+
+			expect(notFoundResult).toStrictEqual({ notFound: true });
+		});
+	});
+
 	describe("HistoryHTMLPage", () => {
 		let props: HistoryHTMLPageProps;
 		beforeEach(async () => {
@@ -68,6 +114,7 @@ describe("/indicators/[slug]/history/[htmlPath]/index.page", () => {
 			"should render resource links for %s with correct %s link and file info",
 			(linkText, href) => {
 				render(<HistoryHTMLPage {...props} />);
+
 
 				const resourceLink = screen.getByText(linkText);
 
@@ -117,51 +164,39 @@ describe("/indicators/[slug]/history/[htmlPath]/index.page", () => {
 				).toBeInTheDocument();
 			});
 		});
-	});
 
-	describe("getServerSideProps", () => {
-		it("should return a correct props", async () => {
-			const result = await getServerSideProps(context);
+		describe("ConvertedDocument", () => {
+			const convertedDocumentSlug = "ind999-indicator-history-tab-html-conversion",
+				convertedDocumentHtmlPath = "html-conversion",
+				convertedDocumentProductRoot = "indicators",
+				convertedDocumentResolvedUrl = `/${convertedDocumentProductRoot}/${convertedDocumentSlug}/history/${convertedDocumentHtmlPath}`;
 
-			expect(result).toMatchSnapshot();
-		});
-
-		it("should return a not found if resource title id doesn't match the htmlPath param", async () => {
-			const wrongHtmlPath = "non-existent-html-1";
-
-			const notFoundResult = await getServerSideProps({
-				...context,
-				params: { slug, htmlPath: wrongHtmlPath },
-				resolvedUrl: `/indicators/${slug}/history/${wrongHtmlPath}`,
-			} as HistoryHTMLPageGetServerSidePropsContext);
-
-			expect(notFoundResult).toStrictEqual({ notFound: true });
-		});
-
-		it("should return a not found if there are panels of type 'History'", async () => {
-			const notFoundResult = await getServerSideProps({
-				...context,
-				// Process and methods guides don't have history so a good product type to use here
-				resolvedUrl: "/process/pmg20/history",
-				params: {
-					slug: "pmg20",
-					htmlPath,
-				},
-				query: {
-					productRoot: "process",
-				},
+			beforeEach(async () => {
+				props = (
+					(await getServerSideProps({
+						...context,
+						params: { slug: convertedDocumentSlug, htmlPath: convertedDocumentHtmlPath },
+						resolvedUrl: convertedDocumentResolvedUrl,
+						query: { productRoot: convertedDocumentProductRoot }
+					})) as {
+						props: HistoryHTMLPageProps;
+					}
+				).props;
+				(useRouter as jest.Mock).mockReturnValue({ asPath: convertedDocumentResolvedUrl });
 			});
 
-			expect(notFoundResult).toStrictEqual({ notFound: true });
-		});
-
-		it("should return not found if the resource html is null", async () => {
-			const notFoundResult = await getServerSideProps({
-				...context,
-				params: { slug, htmlPath: "not-found" },
+			it("should match snapshot for converted document", () => {
+				render(<HistoryHTMLPage {...props} />);
+				expect(document.body).toMatchSnapshot();
 			});
 
-			expect(notFoundResult).toStrictEqual({ notFound: true });
+			it("should render the converted document chapter title as a heading", () => {
+				render(<HistoryHTMLPage {...props} />);
+				expect(
+					screen.getByRole("heading", { level: 2, name: "1 Recommendations" })
+				).toBeInTheDocument();
+			});
+
 		});
 	});
 });

@@ -1,0 +1,265 @@
+{
+    "Id": "IND999",
+    "LastModified": "2025-08-19T12:03:48.9387666Z",
+    "ProductType": "IND",
+    "Title": "INDICATOR HISTORY TAB HTML CONVERSION",
+    "ShortTitle": "TEST",
+    "InDevReference": "GID-IND10386",
+    "MetaDescription": "META",
+    "Summary": "<p>TEST SUMMARY</p>",
+    "WithdrawnNotes": "",
+    "ProductStatus": "Published",
+    "VersionNumber": 1,
+    "PublishedDate": "2025-08-19T00:00:00",
+    "LastMajorModificationDate": "2025-08-19T00:00:00",
+    "MajorChangeDate": "2025-08-19T00:00:00",
+    "NextReviewDate": "2025-08-19T00:00:00",
+    "CollectionTypesList": [],
+    "AuthorList": [
+        "National Institute for Health and Care Excellence (NICE)"
+    ],
+    "AdditionalAuthorList": [],
+    "PublisherList": [
+        "National Institute for Health and Care Excellence (NICE)"
+    ],
+    "AudienceList": [],
+    "EstimatedSavings": "",
+    "EstimatedSavingsDescription": "",
+    "EstimatedSavingsImpact": null,
+    "DevelopedAs": null,
+    "RelevantTo": [],
+    "TerminatedAppraisal": null,
+    "AreasOfInterestList": [],
+    "IndicatorSubTypeList": [],
+    "IndicatorOldCode": "",
+    "IndicatorOldUrl": "",
+    "TaxonomySubjectList": [],
+    "IPSV": "Health, well-being and care",
+    "ChapterHeadings": [
+        {
+            "Title": "Overview",
+            "Url": "/IND999"
+        },
+        {
+            "Title": "1 Communication and shared decision making",
+            "Url": "/IND999/chapter/1-communication-and-shared-decision-making"
+        },
+        {
+            "Title": "2 Assessment",
+            "Url": "/IND999/chapter/2-assessment"
+        },
+        {
+            "Title": "3 Management",
+            "Url": "/IND999/chapter/3-management"
+        },
+        {
+            "Title": "4 Therapeutics for COVID-19",
+            "Url": "/IND999/chapter/4-therapeutics-for-covid-19"
+        },
+        {
+            "Title": "5 Preventing and managing acute complications",
+            "Url": "/IND999/chapter/5-preventing-and-managing-acute-complications"
+        },
+        {
+            "Title": "6 Identifying and managing co-infections",
+            "Url": "/IND999/chapter/6-identifying-and-managing-co-infections"
+        },
+        {
+            "Title": "7 Follow‑up and rehabilitation",
+            "Url": "/IND999/chapter/7-followup-and-rehabilitation"
+        },
+        {
+            "Title": "8 Palliative care",
+            "Url": "/IND999/chapter/8-palliative-care"
+        },
+        {
+            "Title": "Terms used in the guideline",
+            "Url": "/IND999/chapter/terms-used-in-the-guideline"
+        },
+        {
+            "Title": "Recommendations for research",
+            "Url": "/IND999/chapter/recommendations-for-research"
+        },
+        {
+            "Title": "Rationales",
+            "Url": "/IND999/chapter/rationales"
+        },
+        {
+            "Title": "Context",
+            "Url": "/IND999/chapter/context"
+        },
+        {
+            "Title": "Finding more information and expert advisory panel details",
+            "Url": "/IND999/chapter/finding-more-information-and-expert-advisory-panel-details"
+        },
+        {
+            "Title": "Update information",
+            "Url": "/IND999/chapter/update-information"
+        }
+    ],
+    "RelatedExternalList": [],
+    "AccreditationList": [],
+    "EndorsementList": [],
+    "SupportingList": [],
+    "RelatedProductList": [],
+    "RelatedResourceList": [
+        {
+            "Id": "71137",
+            "Url": "/newfeeds/resource/71137",
+            "Relationship": "Supports",
+            "Title": "Tools and resources",
+            "ResourceType": "AuditAndServiceImprovement",
+            "ResourceGroupsList": [
+                "AuditAndServiceImprovement"
+            ],
+            "Status": "Published",
+            "Language": "English",
+            "Uid": 11805379
+        },
+        {
+            "Id": "71138",
+            "Url": "/newfeeds/resource/71138",
+            "Relationship": "Supports",
+            "Title": "EVIDENCE TEST",
+            "ResourceType": "EvidenceReview",
+            "ResourceGroupsList": [
+                "Evidence"
+            ],
+            "Status": "Published",
+            "Language": "English",
+            "Uid": 11805380
+        }
+    ],
+    "ContentPartsList": [
+        {
+            "TableOfContents": [
+                {
+                    "Url": "/newfeeds/product/IND999/part/1/chapter/overview",
+                    "Reference": "IND999",
+                    "PartId": 1,
+                    "ChapterSlug": "overview",
+                    "Title": "Overview"
+                },
+                {
+                    "Url": "/newfeeds/product/IND999/part/1/chapter/communication-and-shared-decision-making",
+                    "Reference": "IND999",
+                    "PartId": 1,
+                    "ChapterSlug": "communication-and-shared-decision-making",
+                    "Title": "1 Communication and shared decision making"
+                },
+                {
+                    "Url": "/newfeeds/product/IND999/part/1/chapter/assessment",
+                    "Reference": "IND999",
+                    "PartId": 1,
+                    "ChapterSlug": "assessment",
+                    "Title": "2 Assessment"
+                },
+                {
+                    "Url": "/newfeeds/product/IND999/part/1/chapter/management",
+                    "Reference": "IND999",
+                    "PartId": 1,
+                    "ChapterSlug": "management",
+                    "Title": "3 Management"
+                },
+                {
+                    "Url": "/newfeeds/product/IND999/part/1/chapter/therapeutics-for-covid-19",
+                    "Reference": "IND999",
+                    "PartId": 1,
+                    "ChapterSlug": "therapeutics-for-covid-19",
+                    "Title": "4 Therapeutics for COVID-19"
+                },
+                {
+                    "Url": "/newfeeds/product/IND999/part/1/chapter/preventing-and-managing-acute-complications",
+                    "Reference": "IND999",
+                    "PartId": 1,
+                    "ChapterSlug": "preventing-and-managing-acute-complications",
+                    "Title": "5 Preventing and managing acute complications"
+                },
+                {
+                    "Url": "/newfeeds/product/IND999/part/1/chapter/identifying-and-managing-co-infections",
+                    "Reference": "IND999",
+                    "PartId": 1,
+                    "ChapterSlug": "identifying-and-managing-co-infections",
+                    "Title": "6 Identifying and managing co-infections"
+                },
+                {
+                    "Url": "/newfeeds/product/IND999/part/1/chapter/followup-and-rehabilitation",
+                    "Reference": "IND999",
+                    "PartId": 1,
+                    "ChapterSlug": "followup-and-rehabilitation",
+                    "Title": "7 Follow‑up and rehabilitation"
+                },
+                {
+                    "Url": "/newfeeds/product/IND999/part/1/chapter/palliative-care",
+                    "Reference": "IND999",
+                    "PartId": 1,
+                    "ChapterSlug": "palliative-care",
+                    "Title": "8 Palliative care"
+                },
+                {
+                    "Url": "/newfeeds/product/IND999/part/1/chapter/terms-used-in-the-guideline",
+                    "Reference": "IND999",
+                    "PartId": 1,
+                    "ChapterSlug": "terms-used-in-the-guideline",
+                    "Title": "Terms used in the guideline"
+                },
+                {
+                    "Url": "/newfeeds/product/IND999/part/1/chapter/recommendations-for-research",
+                    "Reference": "IND999",
+                    "PartId": 1,
+                    "ChapterSlug": "recommendations-for-research",
+                    "Title": "Recommendations for research"
+                },
+                {
+                    "Url": "/newfeeds/product/IND999/part/1/chapter/rationales",
+                    "Reference": "IND999",
+                    "PartId": 1,
+                    "ChapterSlug": "rationales",
+                    "Title": "Rationales"
+                },
+                {
+                    "Url": "/newfeeds/product/IND999/part/1/chapter/context",
+                    "Reference": "IND999",
+                    "PartId": 1,
+                    "ChapterSlug": "context",
+                    "Title": "Context"
+                },
+                {
+                    "Url": "/newfeeds/product/IND999/part/1/chapter/finding-more-information-and-expert-advisory-panel-details",
+                    "Reference": "IND999",
+                    "PartId": 1,
+                    "ChapterSlug": "finding-more-information-and-expert-advisory-panel-details",
+                    "Title": "Finding more information and expert advisory panel details"
+                },
+                {
+                    "Url": "/newfeeds/product/IND999/part/1/chapter/update-information",
+                    "Reference": "IND999",
+                    "PartId": 1,
+                    "ChapterSlug": "update-information",
+                    "Title": "Update information"
+                }
+            ],
+            "Pdf": {
+                "Id": "83f9d5ff-019f-4458-9e93-92be7b4b2ded",
+                "MimeType": "application/pdf",
+                "FileName": "NG191 Guideline 20240618.pdf",
+                "Length": 389640,
+                "Hash": "B9BFFB1EB15EF50371436AF403486F7ACDC84E9F",
+                "Name": "default",
+                "Uid": 1894003632344005,
+                "Url": "/newfeeds/downloads/83f9d5ff-019f-4458-9e93-92be7b4b2ded"
+            },
+            "Url": "/newfeeds/product/IND999/part/1/html",
+            "Reference": "IND999",
+            "PartId": 1,
+            "Title": "INDICATOR HISTORY TAB HTML CONVERSION",
+            "LegacyId": null,
+            "Type": "UploadAndConvertContentPart",
+            "Uid": 1461422555821,
+            "MajorChangeDate": "2025-08-19T00:00:00"
+        }
+    ],
+    "ProductGroup": "Other",
+    "ProductTypeName": "NICE indicator",
+    "ProductTypeNamePlural": "NICE indicators"
+}
