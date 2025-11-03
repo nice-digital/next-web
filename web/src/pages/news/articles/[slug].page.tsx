@@ -1,19 +1,8 @@
-import {
-	type ISbStoryData,
-	StoryblokComponent,
-	setComponents,
-} from "@storyblok/react";
+import { type ISbStoryData, StoryblokComponent } from "@storyblok/react";
 import { NextSeo } from "next-seo";
 import React, { useMemo } from "react";
 
 import { ErrorPageContent } from "@/components/ErrorPageContent/ErrorPageContent";
-import { Blockquote } from "@/components/Storyblok/Blockquote/Blockquote";
-import { Metadata } from "@/components/Storyblok/Metadata/Metadata";
-import { StoryblokIframe } from "@/components/Storyblok/StoryblokIframe/StoryblokIframe";
-import { StoryblokNewsArticle } from "@/components/Storyblok/StoryblokNewsArticle/StoryblokNewsArticle";
-import { StoryblokRelatedLink } from "@/components/Storyblok/StoryblokRelatedLink/StoryblokRelatedLink";
-import { StoryblokRelatedNewsLink } from "@/components/Storyblok/StoryblokRelatedNewsLink/StoryblokRelatedNewsLink";
-import { StoryblokYoutubeEmbed } from "@/components/Storyblok/StoryblokYoutubeEmbed/StoryblokYoutubeEmbed";
 import { logger } from "@/logger";
 import { type Breadcrumb } from "@/types/Breadcrumb";
 import { NewsArticleStoryblok } from "@/types/storyblok";
@@ -44,15 +33,6 @@ type NewsArticlePageProps =
 export default function NewsArticlePage(
 	props: NewsArticlePageProps
 ): React.ReactElement {
-	setComponents({
-		newsArticle: StoryblokNewsArticle,
-		quote: Blockquote,
-		relatedLink: StoryblokRelatedLink,
-		relatedNewsLink: StoryblokRelatedNewsLink,
-		youtubeEmbed: StoryblokYoutubeEmbed,
-		iframe: StoryblokIframe,
-		metadata: Metadata,
-	});
 	// story for meta tags, allows for additionalMetaTags to be fetched in useMemo
 	const story = "story" in props ? props.story : null;
 

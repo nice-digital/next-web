@@ -3,7 +3,7 @@ import { render, screen } from "@testing-library/react";
 import { GetServerSidePropsContext } from "next";
 
 import { logger } from "@/logger";
-import { mockNewsArticle } from "@/test-utils/storyblok-data";
+import { mockNewsArticle, mockCvValue } from "@/test-utils/storyblok-data";
 import Mock404FromStoryblokApi from "@/test-utils/storyblok-not-found-response.json";
 import MockServerErrorResponse from "@/test-utils/storyblok-server-error-response.json";
 import { NewsArticleStoryblok } from "@/types/storyblok";
@@ -15,7 +15,6 @@ import NewsArticlePage, { getServerSideProps } from "./[slug].page";
 const mockArticle = {
 	...mockNewsArticle,
 };
-
 describe("NewsArticlePage", () => {
 	it("renders the page", () => {
 		render(
@@ -23,7 +22,9 @@ describe("NewsArticlePage", () => {
 				story={mockNewsArticle as ISbStoryData<NewsArticleStoryblok>}
 			/>
 		);
-		expect(screen.getByText(mockNewsArticle.content.title)).toBeInTheDocument();
+		expect(
+			screen.getByTestId("storyblok-component-newsArticle")
+		).toBeInTheDocument();
 		expect(document.body).toMatchSnapshot();
 	});
 
@@ -41,6 +42,9 @@ describe("NewsArticlePage", () => {
 		beforeEach(() => {
 			fetchStorySpy = jest.spyOn(storyblokUtils, "fetchStory");
 			getBreadcrumbs = jest.spyOn(storyblokUtils, "getBreadcrumbs");
+			jest
+				.spyOn(storyblokUtils, "fetchCacheVersion")
+				.mockResolvedValue(mockCvValue);
 		});
 
 		afterEach(() => {
@@ -81,7 +85,7 @@ describe("NewsArticlePage", () => {
 				req: {
 					headers: {
 						"cache-control":
-							"public, s-max-age=300, max-age=120, stale-while-revalidate=1800",
+							"public, s-maxage=900, max-age=120, stale-while-revalidate=1800",
 					},
 					url: "/some-erroring-page",
 				},
@@ -115,7 +119,7 @@ describe("NewsArticlePage", () => {
 				req: {
 					headers: {
 						"cache-control":
-							"public, s-max-age=300, max-age=120, stale-while-revalidate=1800",
+							"public, s-maxage=900, max-age=120, stale-while-revalidate=1800",
 					},
 					url: "/some-erroring-page",
 				},

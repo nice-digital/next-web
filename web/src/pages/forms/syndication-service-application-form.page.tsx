@@ -4,8 +4,6 @@ import {
 } from "@/components/JotFormPage/getGetServerSideProps";
 import { JotFormPage } from "@/components/JotFormPage/JotFormPage";
 
-import styles from "./forms.module.scss";
-
 export const getServerSideProps = getGetServerSideProps("241983007673057");
 
 export default function SyndicationServiceApplicationForm(
@@ -14,20 +12,16 @@ export default function SyndicationServiceApplicationForm(
 	return (
 		<JotFormPage
 			{...props}
-			formName="Syndication service application form"
+			formName="Syndication service application"
 			lead=""
 			parentPages={[
 				{
 					title: "NICE syndication API",
-					path: "/about/what-we-do/nice-syndication-api",
+					path: "/reusing-our-content/nice-syndication-api",
 				},
 				{
-					title: "What we do",
-					path: "/about/what-we-do",
-				},
-				{
-					title: "About",
-					path: "/about",
+					title: "Reusing our content",
+					path: "/reusing-our-content",
 				},
 			]}
 		/>

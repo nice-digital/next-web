@@ -255,7 +255,9 @@ exports[`Publication tools and resources page ToolsAndResourcesListPage should m
           >
             Tools and resources
           </h2>
-          <p />
+          <p>
+            Tools and resources to help you put the guidance into practice.
+          </p>
           <section
             aria-labelledby="audit-and-service-improvement"
           >
@@ -311,9 +313,9 @@ exports[`Publication tools and resources page ToolsAndResourcesListPage should m
                         </dt>
                         <dd>
                           <time
-                            datetime="2020-10-12"
+                            datetime="2021-10-12"
                           >
-                            12 October 2020
+                            12 October 2021
                           </time>
                         </dd>
                       </div>
@@ -498,9 +500,9 @@ exports[`Publication tools and resources page ToolsAndResourcesListPage should m
                         </dt>
                         <dd>
                           <time
-                            datetime="2018-07-11"
+                            datetime="2019-02-20"
                           >
-                            11 July 2018
+                            20 February 2019
                           </time>
                         </dd>
                       </div>
@@ -545,9 +547,9 @@ exports[`Publication tools and resources page ToolsAndResourcesListPage should m
                         </dt>
                         <dd>
                           <time
-                            datetime="2018-07-11"
+                            datetime="2019-02-13"
                           >
-                            11 July 2018
+                            13 February 2019
                           </time>
                         </dd>
                       </div>
@@ -585,7 +587,7 @@ Object {
           Object {
             "resourceLinks": Array [
               Object {
-                "date": "2020-10-12T00:00:00",
+                "date": "2021-10-12T00:00:00",
                 "fileSize": 47753,
                 "fileTypeName": "Excel",
                 "href": "/guidance/ng100/downloads/NG100-baseline-assessment-tool-3783315-4903176205.xlsx",
@@ -643,7 +645,7 @@ Object {
           Object {
             "resourceLinks": Array [
               Object {
-                "date": "2018-07-11T00:00:00",
+                "date": "2019-02-20T00:00:00",
                 "fileSize": 189451,
                 "fileTypeName": "PDF",
                 "href": "/guidance/ng100/downloads/NG100-rheumatoid-arthritis-management-and-monitoring-algorithm-3783313-4903173613.pdf",
@@ -651,7 +653,7 @@ Object {
                 "type": "Summary versions",
               },
               Object {
-                "date": "2018-07-11T00:00:00",
+                "date": "2019-02-13T00:00:00",
                 "fileSize": 192376,
                 "fileTypeName": "PDF",
                 "href": "/guidance/ng100/downloads/NG100-rheumatoid-arthritis-referral-diagnosis-and-investigations-algorithm-3783314-4903174909.pdf",

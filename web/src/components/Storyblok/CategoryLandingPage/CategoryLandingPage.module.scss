@@ -1,6 +1,8 @@
 
+
 .categoryLandingPage {
   // page overrides for DS components
+
   /* stylelint-disable-next-line selector-class-pattern */
   :global(.action-banner--full-width) {
     margin-bottom: 0;
@@ -11,4 +13,12 @@
     margin-bottom: 0;
   }
 
+  /* stylelint-disable-next-line selector-class-pattern */
+  :global(.page-header) {
+    margin-bottom: 0;
+  }
+
+  :global(.hero) {
+    margin-bottom: 0;
+  }
 }

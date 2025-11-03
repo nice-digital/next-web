@@ -1,0 +1,280 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Storyblok testimonial full width component should match snapshot for full width variant 1`] = `
+<div>
+  <div
+    class="testimonial testimonial testimonial--full-width"
+    data-component="testimonial--fullWidth"
+    data-testid="testimonial-fullWidth"
+    data-tracking="testimonial"
+  >
+    <div
+      class="testimonial__mainContent"
+    >
+      <figure
+        class="testimonial__content"
+      >
+        <blockquote
+          class="testimonial__quote"
+        >
+          Test Quote Text
+        </blockquote>
+        <figcaption
+          class="testimonial__person"
+        >
+          <picture>
+            <source
+              srcset="https://placekitten.com/408/287/m/440x440/filters:format%28avif%29:quality%2880%29"
+              type="image/avif"
+            />
+            <source
+              srcset="https://placekitten.com/408/287/m/440x440/filters:format%28webp%29:quality%2880%29"
+              type="image/webp"
+            />
+            <img
+              alt="some alt text"
+              class="testimonial__image testimonial__imageMobile"
+              data-nimg="1"
+              decoding="async"
+              height="440"
+              loading="lazy"
+              src="/_next/image?url=https%3A%2F%2Fplacekitten.com%2F408%2F287%2Fm%2F440x440%2Ffilters%3Aformat%2528jpeg%2529%3Aquality%252880%2529&w=1080&q=75"
+              srcset="/_next/image?url=https%3A%2F%2Fplacekitten.com%2F408%2F287%2Fm%2F440x440%2Ffilters%3Aformat%2528jpeg%2529%3Aquality%252880%2529&w=640&q=75 1x, /_next/image?url=https%3A%2F%2Fplacekitten.com%2F408%2F287%2Fm%2F440x440%2Ffilters%3Aformat%2528jpeg%2529%3Aquality%252880%2529&w=1080&q=75 2x"
+              style="color: transparent; max-width: 100%; height: auto;"
+              width="440"
+            />
+          </picture>
+          <p
+            class="testimonial__details"
+          >
+            <span
+              class="testimonial__name"
+            >
+              Test Name
+            </span>
+            <span
+              class="testimonial__job"
+            >
+              Test Role
+            </span>
+          </p>
+        </figcaption>
+      </figure>
+      <div
+        class="testimonial__mainImageContainer"
+      >
+        <picture>
+          <source
+            srcset="https://placekitten.com/408/287/m/440x440/filters:format%28avif%29:quality%2880%29"
+            type="image/avif"
+          />
+          <source
+            srcset="https://placekitten.com/408/287/m/440x440/filters:format%28webp%29:quality%2880%29"
+            type="image/webp"
+          />
+          <img
+            alt="some alt text"
+            class="testimonial__image"
+            data-nimg="1"
+            decoding="async"
+            height="440"
+            loading="lazy"
+            src="/_next/image?url=https%3A%2F%2Fplacekitten.com%2F408%2F287%2Fm%2F440x440%2Ffilters%3Aformat%2528jpeg%2529%3Aquality%252880%2529&w=1080&q=75"
+            srcset="/_next/image?url=https%3A%2F%2Fplacekitten.com%2F408%2F287%2Fm%2F440x440%2Ffilters%3Aformat%2528jpeg%2529%3Aquality%252880%2529&w=640&q=75 1x, /_next/image?url=https%3A%2F%2Fplacekitten.com%2F408%2F287%2Fm%2F440x440%2Ffilters%3Aformat%2528jpeg%2529%3Aquality%252880%2529&w=1080&q=75 2x"
+            style="color: transparent; max-width: 100%; height: auto;"
+            width="440"
+          />
+        </picture>
+      </div>
+    </div>
+  </div>
+</div>
+`;
+
+exports[`Storyblok testimonial full width component should match snapshot for full width variant with Link 1`] = `
+<div>
+  <div
+    class="testimonial testimonial testimonial--full-width"
+    data-component="testimonial--fullWidth"
+    data-testid="testimonial-fullWidth"
+    data-tracking="testimonial"
+  >
+    <div
+      class="testimonial__mainContent"
+    >
+      <figure
+        class="testimonial__content"
+      >
+        <blockquote
+          class="testimonial__quote"
+        >
+          Test Quote Text
+        </blockquote>
+        <figcaption
+          class="testimonial__person"
+        >
+          <picture>
+            <source
+              srcset="https://placekitten.com/408/287/m/440x440/filters:format%28avif%29:quality%2880%29"
+              type="image/avif"
+            />
+            <source
+              srcset="https://placekitten.com/408/287/m/440x440/filters:format%28webp%29:quality%2880%29"
+              type="image/webp"
+            />
+            <img
+              alt="some alt text"
+              class="testimonial__image testimonial__imageMobile"
+              data-nimg="1"
+              decoding="async"
+              height="440"
+              loading="lazy"
+              src="/_next/image?url=https%3A%2F%2Fplacekitten.com%2F408%2F287%2Fm%2F440x440%2Ffilters%3Aformat%2528jpeg%2529%3Aquality%252880%2529&w=1080&q=75"
+              srcset="/_next/image?url=https%3A%2F%2Fplacekitten.com%2F408%2F287%2Fm%2F440x440%2Ffilters%3Aformat%2528jpeg%2529%3Aquality%252880%2529&w=640&q=75 1x, /_next/image?url=https%3A%2F%2Fplacekitten.com%2F408%2F287%2Fm%2F440x440%2Ffilters%3Aformat%2528jpeg%2529%3Aquality%252880%2529&w=1080&q=75 2x"
+              style="color: transparent; max-width: 100%; height: auto;"
+              width="440"
+            />
+          </picture>
+          <p
+            class="testimonial__details"
+          >
+            <span
+              class="testimonial__name"
+            >
+              Test Name
+            </span>
+            <span
+              class="testimonial__job"
+            >
+              Test Role
+            </span>
+          </p>
+        </figcaption>
+        <a
+          class="testimonial__link"
+          href="/test-nick"
+        >
+          This is a link
+        </a>
+      </figure>
+      <div
+        class="testimonial__mainImageContainer"
+      >
+        <picture>
+          <source
+            srcset="https://placekitten.com/408/287/m/440x440/filters:format%28avif%29:quality%2880%29"
+            type="image/avif"
+          />
+          <source
+            srcset="https://placekitten.com/408/287/m/440x440/filters:format%28webp%29:quality%2880%29"
+            type="image/webp"
+          />
+          <img
+            alt="some alt text"
+            class="testimonial__image"
+            data-nimg="1"
+            decoding="async"
+            height="440"
+            loading="lazy"
+            src="/_next/image?url=https%3A%2F%2Fplacekitten.com%2F408%2F287%2Fm%2F440x440%2Ffilters%3Aformat%2528jpeg%2529%3Aquality%252880%2529&w=1080&q=75"
+            srcset="/_next/image?url=https%3A%2F%2Fplacekitten.com%2F408%2F287%2Fm%2F440x440%2Ffilters%3Aformat%2528jpeg%2529%3Aquality%252880%2529&w=640&q=75 1x, /_next/image?url=https%3A%2F%2Fplacekitten.com%2F408%2F287%2Fm%2F440x440%2Ffilters%3Aformat%2528jpeg%2529%3Aquality%252880%2529&w=1080&q=75 2x"
+            style="color: transparent; max-width: 100%; height: auto;"
+            width="440"
+          />
+        </picture>
+      </div>
+    </div>
+  </div>
+</div>
+`;
+
+exports[`Storyblok testimonial full width component should match snapshot for the full width white variant 1`] = `
+<div>
+  <div
+    class="testimonial testimonial testimonial--full-width-white"
+    data-component="testimonial--fullWidthWhite"
+    data-testid="testimonial-fullWidthWhite"
+    data-tracking="testimonial"
+  >
+    <div
+      class="testimonial__mainContent"
+    >
+      <figure
+        class="testimonial__content"
+      >
+        <blockquote
+          class="testimonial__quote"
+        >
+          Test Quote Text
+        </blockquote>
+        <figcaption
+          class="testimonial__person"
+        >
+          <picture>
+            <source
+              srcset="https://placekitten.com/408/287/m/440x440/filters:format%28avif%29:quality%2880%29"
+              type="image/avif"
+            />
+            <source
+              srcset="https://placekitten.com/408/287/m/440x440/filters:format%28webp%29:quality%2880%29"
+              type="image/webp"
+            />
+            <img
+              alt="some alt text"
+              class="testimonial__image testimonial__imageMobile"
+              data-nimg="1"
+              decoding="async"
+              height="440"
+              loading="lazy"
+              src="/_next/image?url=https%3A%2F%2Fplacekitten.com%2F408%2F287%2Fm%2F440x440%2Ffilters%3Aformat%2528jpeg%2529%3Aquality%252880%2529&w=1080&q=75"
+              srcset="/_next/image?url=https%3A%2F%2Fplacekitten.com%2F408%2F287%2Fm%2F440x440%2Ffilters%3Aformat%2528jpeg%2529%3Aquality%252880%2529&w=640&q=75 1x, /_next/image?url=https%3A%2F%2Fplacekitten.com%2F408%2F287%2Fm%2F440x440%2Ffilters%3Aformat%2528jpeg%2529%3Aquality%252880%2529&w=1080&q=75 2x"
+              style="color: transparent; max-width: 100%; height: auto;"
+              width="440"
+            />
+          </picture>
+          <p
+            class="testimonial__details"
+          >
+            <span
+              class="testimonial__name"
+            >
+              Test Name
+            </span>
+            <span
+              class="testimonial__job"
+            >
+              Test Role
+            </span>
+          </p>
+        </figcaption>
+      </figure>
+      <div
+        class="testimonial__mainImageContainer"
+      >
+        <picture>
+          <source
+            srcset="https://placekitten.com/408/287/m/440x440/filters:format%28avif%29:quality%2880%29"
+            type="image/avif"
+          />
+          <source
+            srcset="https://placekitten.com/408/287/m/440x440/filters:format%28webp%29:quality%2880%29"
+            type="image/webp"
+          />
+          <img
+            alt="some alt text"
+            class="testimonial__image"
+            data-nimg="1"
+            decoding="async"
+            height="440"
+            loading="lazy"
+            src="/_next/image?url=https%3A%2F%2Fplacekitten.com%2F408%2F287%2Fm%2F440x440%2Ffilters%3Aformat%2528jpeg%2529%3Aquality%252880%2529&w=1080&q=75"
+            srcset="/_next/image?url=https%3A%2F%2Fplacekitten.com%2F408%2F287%2Fm%2F440x440%2Ffilters%3Aformat%2528jpeg%2529%3Aquality%252880%2529&w=640&q=75 1x, /_next/image?url=https%3A%2F%2Fplacekitten.com%2F408%2F287%2Fm%2F440x440%2Ffilters%3Aformat%2528jpeg%2529%3Aquality%252880%2529&w=1080&q=75 2x"
+            style="color: transparent; max-width: 100%; height: auto;"
+            width="440"
+          />
+        </picture>
+      </div>
+    </div>
+  </div>
+</div>
+`;

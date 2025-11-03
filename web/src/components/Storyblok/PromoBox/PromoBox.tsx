@@ -7,43 +7,46 @@ import {
 	type PullOrPush,
 } from "@nice-digital/nds-grid";
 
+import { CardGrid } from "@/components/Storyblok/CardGrid/CardGrid";
+import { StoryblokActionBannerDefault } from "@/components/Storyblok/StoryblokActionBanner/StoryblokActionBannerDefault";
 import { StoryblokButtonLink } from "@/components/Storyblok/StoryblokButtonLink/StoryblokButtonLink";
 import { StoryblokRichText } from "@/components/Storyblok/StoryblokRichText/StoryblokRichText";
 import { StoryblokYoutubeEmbed } from "@/components/Storyblok/StoryblokYoutubeEmbed/StoryblokYoutubeEmbed";
 import {
+	ActionBannerDefaultStoryblok,
+	CardGridRowTestimonialsStoryblok,
 	YoutubeEmbedStoryblok,
 	type PromoBoxStoryblok,
 } from "@/types/storyblok";
 import { constructStoryblokImageSrc } from "@/utils/storyblok";
+import { toTitleCase } from "@/utils/string";
 
 import styles from "./PromoBox.module.scss";
 
 export interface PromoBoxProps {
 	blok: PromoBoxStoryblok;
-	headingLevel?: number;
 	className?: string;
 }
 
 export const PromoBox: React.FC<PromoBoxProps> = ({
 	blok,
-	headingLevel = 2,
 	className = undefined,
 }: PromoBoxProps) => {
 	const {
 		heading,
 		body,
 		cta,
-		image,
+		media,
 		swapMediaSide,
-		useVideo,
-		youtubeEmbed,
 		isTransparent,
+		headingLevel = "2",
+		verticalPadding = "medium",
+		imageAspectRatio = "landscape",
+		_uid,
 	} = blok;
 
-	// Resolve heading type
 	const HeadingElement = `h${headingLevel}` as keyof JSX.IntrinsicElements;
 
-	// Resolve grid
 	const contentGridConfig = {
 		cols: 7 as Columns,
 		push: swapMediaSide ? (5 as PullOrPush) : undefined,
@@ -54,16 +57,48 @@ export const PromoBox: React.FC<PromoBoxProps> = ({
 		pull: swapMediaSide ? (7 as PullOrPush) : undefined,
 	};
 
-	// Resolve transparency
 	const transparentClass = isTransparent ? styles.transparent : undefined;
 
-	const optimisedImage = image?.filename
-		? constructStoryblokImageSrc(image?.filename)
+	const isVideo = media.length && media[0].component === "youtubeEmbed";
+
+	const optimisedImage = !isVideo
+		? constructStoryblokImageSrc(media[0].image?.filename)
 		: undefined;
+
+	const verticalPaddingClass = `promoBox${toTitleCase(verticalPadding)}Spacing`;
+
+	const imageAspectRatioClass = `imageContainer${toTitleCase(
+		imageAspectRatio
+	)}`;
+	const RenderPromotionalChildComponent: React.FC<{
+		blok: CardGridRowTestimonialsStoryblok | ActionBannerDefaultStoryblok;
+	}> = ({ blok }) => {
+		const { component } = blok;
+		switch (component) {
+			case "cardGridRowTestimonials":
+				return <CardGrid row={blok as CardGridRowTestimonialsStoryblok} />;
+
+			case "actionBannerDefault":
+				return (
+					<StoryblokActionBannerDefault
+						blok={blok as ActionBannerDefaultStoryblok}
+						headingLevel={3}
+						isStandAlone={false}
+					/>
+				);
+			default:
+				return null;
+		}
+	};
 
 	return (
 		<article
-			className={classnames(styles.promoBox, transparentClass, className)}
+			className={classnames(
+				styles.promoBox,
+				transparentClass,
+				styles[verticalPaddingClass],
+				className
+			)}
 			data-tracking="promo-box"
 		>
 			<div className={styles.container}>
@@ -81,24 +116,33 @@ export const PromoBox: React.FC<PromoBoxProps> = ({
 								<StoryblokRichText content={body} />
 							</div>
 						)}
-						{cta?.length && <StoryblokButtonLink button={cta[0]} />}
+						{!!cta?.length && <StoryblokButtonLink button={cta[0]} />}
 					</GridItem>
 					<GridItem
 						cols={12}
 						md={mediaGridConfig}
 						className={styles.mediaContainer}
 					>
-						{useVideo && youtubeEmbed?.length ? (
-							<StoryblokYoutubeEmbed
-								blok={youtubeEmbed[0] as YoutubeEmbedStoryblok}
-							/>
-						) : (
+						{isVideo ? (
+							<StoryblokYoutubeEmbed blok={media[0] as YoutubeEmbedStoryblok} />
+						) : optimisedImage ? (
 							<div
-								className={styles.imageContainer}
+								className={classnames(
+									styles.imageContainer,
+									styles[imageAspectRatioClass],
+									className
+								)}
 								style={{ backgroundImage: `url(${optimisedImage})` }}
 							></div>
-						)}
+						) : null}
 					</GridItem>
+					{blok.promotionalContent?.length ? (
+						<GridItem cols={12} className={styles.promotionalChildContainer}>
+							{blok.promotionalContent.map((item) => (
+								<RenderPromotionalChildComponent blok={item} key={_uid} />
+							))}
+						</GridItem>
+					) : null}
 				</Grid>
 			</div>
 		</article>

@@ -3,7 +3,7 @@ import { render, screen } from "@testing-library/react";
 import { GetServerSidePropsContext } from "next";
 
 import { logger } from "@/logger";
-import { mockPodcastPage } from "@/test-utils/storyblok-data";
+import { mockCvValue, mockPodcastPage } from "@/test-utils/storyblok-data";
 import MockServerErrorResponse from "@/test-utils/storyblok-server-error-response.json";
 import { PodcastStoryblok } from "@/types/storyblok";
 import * as storyblokUtils from "@/utils/storyblok";
@@ -83,6 +83,9 @@ describe("PodcastPage", () => {
 		beforeEach(() => {
 			fetchStorySpy = jest.spyOn(storyblokUtils, "fetchStory");
 			getBreadCrumbsSpy = jest.spyOn(storyblokUtils, "getBreadcrumbs");
+			jest
+				.spyOn(storyblokUtils, "fetchCacheVersion")
+				.mockResolvedValue(mockCvValue);
 		});
 
 		afterEach(() => {
@@ -123,7 +126,7 @@ describe("PodcastPage", () => {
 				req: {
 					headers: {
 						"cache-control":
-							"public, s-max-age=300, max-age=120, stale-while-revalidate=1800",
+							"public, s-maxage=900, max-age=120, stale-while-revalidate=1800",
 					},
 				},
 			} as unknown as GetServerSidePropsContext;

@@ -5,6 +5,7 @@ import { render, screen } from "@testing-library/react";
 import { GetServerSidePropsContext } from "next";
 
 import { logger } from "@/logger";
+import { mockCvValue } from "@/test-utils/storyblok-data";
 import Mock404FromStoryblokApi from "@/test-utils/storyblok-not-found-response.json";
 import MockServerErrorResponse from "@/test-utils/storyblok-server-error-response.json";
 import mockBlogPostSuccessResponse from "@/test-utils/storyblok-single-blog-post-response.json";
@@ -13,6 +14,32 @@ import * as storyblokUtils from "@/utils/storyblok";
 import { GENERIC_ERROR_MESSAGE } from "@/utils/storyblok";
 
 import BlogPostPage, { getServerSideProps } from "./[slug].page";
+
+// jest.mock("@storyblok/react", () => ({
+//   // eslint-disable-next-line @typescript-eslint/no-explicit-any
+//   StoryblokComponent: jest.fn(({ blok }: { blok: any }) => (
+//     <div data-testid={`storyblok-component-${blok.component}`}>
+//       {blok.component}
+//     </div>
+//   )),
+// }));
+
+// jest.mock("@storyblok/react", () => ({
+// 	...jest.requireActual("@storyblok/react"),
+// 	__esModule: true,
+// 	// eslint-disable-next-line @typescript-eslint/no-explicit-any
+// 	StoryblokComponent: jest.fn(({ blok }: { blok: any }) => (
+// 		<div data-testid={`storyblok-component-${blok.component}`}>
+// 			{blok.component}
+// 		</div>
+// 	)),
+// 	getStoryblokApi: jest.fn().mockReturnValue({
+// 		get: jest.fn(),
+// 		getAll: jest.fn(),
+// 	}),
+// 	storyblokInit: jest.fn(),
+// 	apiPlugin: {},
+// }));
 
 //cast to unknown necessary due to some differences in response versus expected type from generate-ts
 const mockBlogPost = mockBlogPostSuccessResponse.data
@@ -27,8 +54,10 @@ const mockBreadcrumbs = [
 describe("BlogPostPage", () => {
 	it("renders the page", () => {
 		render(<BlogPostPage story={mockBlogPost} />);
-		expect(screen.getByText(mockBlogPost.content.title)).toBeInTheDocument();
 
+		expect(
+			screen.getByTestId("storyblok-component-blogPost")
+		).toBeInTheDocument();
 		expect(document.body).toMatchSnapshot();
 	});
 
@@ -46,6 +75,9 @@ describe("BlogPostPage", () => {
 		beforeEach(() => {
 			fetchStorySpy = jest.spyOn(storyblokUtils, "fetchStory");
 			getBreadcrumbs = jest.spyOn(storyblokUtils, "getBreadcrumbs");
+			jest
+				.spyOn(storyblokUtils, "fetchCacheVersion")
+				.mockResolvedValue(mockCvValue);
 		});
 
 		afterEach(() => {
@@ -91,7 +123,7 @@ describe("BlogPostPage", () => {
 				req: {
 					headers: {
 						"cache-control":
-							"public, s-max-age=300, max-age=120, stale-while-revalidate=1800",
+							"public, s-maxage=900, max-age=120, stale-while-revalidate=1800",
 					},
 					url: "/some-erroring-page",
 				},
@@ -125,7 +157,7 @@ describe("BlogPostPage", () => {
 				req: {
 					headers: {
 						"cache-control":
-							"public, s-max-age=300, max-age=120, stale-while-revalidate=1800",
+							"public, s-maxage=900, max-age=120, stale-while-revalidate=1800",
 					},
 				},
 			} as unknown as GetServerSidePropsContext<ParsedUrlQuery>;

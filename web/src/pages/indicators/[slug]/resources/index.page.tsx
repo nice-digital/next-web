@@ -67,7 +67,11 @@ export default function ToolsAndResourcesListPage({
 				hasHistory={hasHistory}
 			/>
 
-			<ResourceList title="Tools and resources" groups={resourceGroups} />
+			<ResourceList
+				title="Tools and resources"
+				lead="Tools and resources to help you put the guidance into practice."
+				groups={resourceGroups}
+			/>
 		</>
 	);
 }

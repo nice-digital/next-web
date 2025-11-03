@@ -25,6 +25,7 @@ import "@nice-digital/nds-table/scss/table.scss";
 import "@nice-digital/nds-panel/scss/panel.scss";
 
 import "./_app.page.scss";
+import { isArray } from "lodash";
 
 interface AppState {
 	/**
@@ -151,16 +152,19 @@ class NextWebApp extends App<{}, {}, AppState> {
 		const {
 			Component,
 			pageProps,
-			router: { pathname },
+			router: { pathname, query },
 		} = this.props;
+		const productRoot =
+			(isArray(query.productRoot) ? query.productRoot[0] : query.productRoot) ||
+			"";
 
 		let service: Service | undefined = undefined;
 
-		if (pathname.indexOf("/guidance") == 0) {
+		if (productRoot.indexOf("guidance") == 0) {
 			service = "guidance";
 		} else if (
-			pathname.indexOf("/standards-indicators") == 0 ||
-			pathname.indexOf("/indicators") == 0
+			productRoot.indexOf("standards-indicators") == 0 ||
+			productRoot.indexOf("indicators") == 0
 		) {
 			service = "standards-and-indicators";
 		}

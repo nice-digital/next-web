@@ -1,0 +1,15 @@
+@use '@nice-digital/nds-core/scss/media-queries';
+
+.table {
+  @include media-queries.mq($from: sm) {
+    display: table;
+  }
+
+  &__caption {
+    text-align: left;
+
+    @include media-queries.mq($until: sm) {
+      display: block;
+    }
+  }
+}

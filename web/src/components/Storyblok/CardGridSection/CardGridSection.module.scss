@@ -1,0 +1,48 @@
+@use '~/styles/colours';
+@use '~/styles/spacing' as *;
+@use '@nice-digital/nds-core/scss/layout';
+@use '@nice-digital/nds-core/scss/spacing';
+@use '@nice-digital/nds-core/scss/typography';
+@use '@nice-digital/nds-core/scss/utils';
+
+.cardGridSection {
+  @include layout.fullWidth();
+  background-color: colours.$card-section-background;
+  padding: $section-medium-spacing 0;
+
+  &__container {
+    @include layout.fullWidthContainer();
+  }
+
+  &__intro {
+    margin-bottom: utils.rem(spacing.$large);
+  }
+
+  &__heading {
+    margin-top: 0;
+  }
+
+  &__leadText {
+    p {
+      @include typography.font-size(lead);
+    }
+  }
+
+  &__leadTextSecondary {
+    p {
+      @include typography.font-size(p);
+    }
+  }
+
+  &--largeSpacing {
+    padding: $section-large-spacing 0;
+  }
+
+  &--smallSpacing {
+    padding: $section-small-spacing 0;
+  }
+
+  &--transparent {
+    background: transparent;
+  }
+}

@@ -1,0 +1,145 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`NiceAdviceContactUsForm should match snapshot 1`] = `
+<div>
+  <nav
+    aria-label="Breadcrumbs"
+    data-component="breadcrumbs"
+    role="navigation"
+  >
+    <ol
+      class="breadcrumbs"
+    >
+      <li
+        class="breadcrumbs__crumb"
+      >
+        <a
+          href="/"
+        >
+          Home
+        </a>
+      </li>
+      <li
+        class="breadcrumbs__crumb"
+      >
+        <a
+          href="/what-nice-does"
+        >
+          What NICE does
+        </a>
+      </li>
+      <li
+        class="breadcrumbs__crumb"
+      >
+        <a
+          href="/what-nice-does/life-sciences-how-to-get-your-product-to-market"
+        >
+          Life sciences: how to get your product to market
+        </a>
+      </li>
+      <li
+        class="breadcrumbs__crumb"
+      >
+        <span>
+          NICE Advice contact us
+        </span>
+      </li>
+    </ol>
+  </nav>
+  <script
+    type="application/ld+json"
+  >
+    {
+  "@context": "http://schema.org",
+  "@type": "BreadcrumbList",
+  "itemListElement": [
+    {
+      "@type": "ListItem",
+      "position": 1,
+      "item": {
+        "@id": "/",
+        "name": "Home"
+      }
+    },
+    {
+      "@type": "ListItem",
+      "position": 2,
+      "item": {
+        "@id": "/what-nice-does",
+        "name": "What NICE does"
+      }
+    },
+    {
+      "@type": "ListItem",
+      "position": 3,
+      "item": {
+        "@id": "/what-nice-does/life-sciences-how-to-get-your-product-to-market",
+        "name": "Life sciences: how to get your product to market"
+      }
+    },
+    {
+      "@type": "ListItem",
+      "position": 4,
+      "item": {
+        "name": "NICE Advice contact us"
+      }
+    }
+  ]
+}
+  </script>
+  <div
+    class="grid grid--loose"
+  >
+    <div
+      data-component="grid-item"
+      data-g="12 md:12 lg:12"
+    >
+      <div
+        class="page-header "
+        data-component="page-header"
+        data-testid="content-start"
+        id="content-start"
+      >
+        <h1
+          class="page-header__heading "
+        >
+          NICE Advice contact us
+        </h1>
+      </div>
+      <p>
+        Briefly tell us why you're getting in touch with
+         
+        <a
+          href="https://www.nice.org.uk/about/what-we-do/life-sciences/nice-advice-service?utm_medium=enquiry_form&utm_source=nice_website&utm_campaign=nice_advice_24"
+          rel="noreferrer"
+          target="_blank"
+        >
+          NICE Advice
+        </a>
+        . We'll then give you an indication of how we can support you. In most cases, we'll include estimated costs and timelines sent straight to your inbox.
+      </p>
+      <iframe
+        allow="geolocation; microphone; camera"
+        allowfullscreen=""
+        class="iframe"
+        data-jotform-id="251264227537053"
+        id="JotFormIFrame-251264227537053"
+        scrolling="no"
+        src="https://next-web-tests.jotform.com/251264227537053?isIframeEmbed=1"
+        style="height: 539px; overflow: hidden;"
+        title="NICE Advice contact us"
+      />
+      <p>
+        As you have expressed an interest in NICE's support services, your details will be added to our mailing list so that you can receive the latest news about NICE's support for the life sciences sector. You can unsubscribe from this at any time. Our legal basis for processing your data in this way is that of public task. View our
+         
+        <a
+          href="/privacy-notice"
+        >
+          privacy notice
+        </a>
+         for more information.
+      </p>
+    </div>
+  </div>
+</div>
+`;

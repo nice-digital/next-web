@@ -1,0 +1,190 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`CandidatesForModularUpdatesForm should match snapshot 1`] = `
+<div>
+  <nav
+    aria-label="Breadcrumbs"
+    data-component="breadcrumbs"
+    role="navigation"
+  >
+    <ol
+      class="breadcrumbs"
+    >
+      <li
+        class="breadcrumbs__crumb"
+      >
+        <a
+          href="/"
+        >
+          Home
+        </a>
+      </li>
+      <li
+        class="breadcrumbs__crumb"
+      >
+        <a
+          href="/what-nice-does"
+        >
+          What NICE does
+        </a>
+      </li>
+      <li
+        class="breadcrumbs__crumb"
+      >
+        <a
+          href="/what-nice-does/our-guidance"
+        >
+          Our guidance
+        </a>
+      </li>
+      <li
+        class="breadcrumbs__crumb"
+      >
+        <a
+          href="/what-nice-does/our-guidance/modular-updates"
+        >
+          Modular updates
+        </a>
+      </li>
+      <li
+        class="breadcrumbs__crumb"
+      >
+        <span>
+          Candidates for modular updates
+        </span>
+      </li>
+    </ol>
+  </nav>
+  <script
+    type="application/ld+json"
+  >
+    {
+  "@context": "http://schema.org",
+  "@type": "BreadcrumbList",
+  "itemListElement": [
+    {
+      "@type": "ListItem",
+      "position": 1,
+      "item": {
+        "@id": "/",
+        "name": "Home"
+      }
+    },
+    {
+      "@type": "ListItem",
+      "position": 2,
+      "item": {
+        "@id": "/what-nice-does",
+        "name": "What NICE does"
+      }
+    },
+    {
+      "@type": "ListItem",
+      "position": 3,
+      "item": {
+        "@id": "/what-nice-does/our-guidance",
+        "name": "Our guidance"
+      }
+    },
+    {
+      "@type": "ListItem",
+      "position": 4,
+      "item": {
+        "@id": "/what-nice-does/our-guidance/modular-updates",
+        "name": "Modular updates"
+      }
+    },
+    {
+      "@type": "ListItem",
+      "position": 5,
+      "item": {
+        "name": "Candidates for modular updates"
+      }
+    }
+  ]
+}
+  </script>
+  <div
+    class="grid grid--loose"
+  >
+    <div
+      data-component="grid-item"
+      data-g="12 md:12 lg:12"
+    >
+      <div
+        class="page-header "
+        data-component="page-header"
+        data-testid="content-start"
+        id="content-start"
+      >
+        <h1
+          class="page-header__heading "
+        >
+          Candidates for modular updates
+        </h1>
+      </div>
+      <p>
+        Tell us about a modular update that you think should be considered by NICE. Please do not include any confidential information in your responses. For information on how personal data is used, see
+         
+        <a
+          href="/privacy-notice"
+        >
+          NICE's privacy notice
+        </a>
+        . If your organisation or professional association is being engaged with separately then there is no need to complete this form.
+      </p>
+      <p>
+        You will not receive a formal response to your submission but we may get in touch if we require further detail or clarifications are required. In addition to considering your suggestion for a modular update, NICE will also consider whether it may be more suitable as the topic of an exploratory project led by the NICE Health Technology Assessment Innovation Laboratory (HTA Lab). For example, this could happen when:
+      </p>
+      <ul>
+        <li>
+          the suggested method is particularly novel and may still be maturing
+        </li>
+        <li>
+          there is at least one alternative new method that could also be considered alongside your suggestion
+        </li>
+        <li>
+          the method appears promising but has not yet been tested in the appropriate context.
+        </li>
+      </ul>
+      <p>
+        For more information and an overview visit the
+         
+        <a
+          href="/what-nice-does/our-research-work/hta-lab/hta-lab-projects"
+        >
+          HTA Lab projects page
+        </a>
+        .
+      </p>
+      <p>
+        The outcome of the modular updates selection process and information about modular updates in progress will be communicated on the
+         
+        <a
+          href="/what-nice-does/our-guidance/modular-updates"
+        >
+          modular update page
+        </a>
+        .
+      </p>
+      <p>
+        By submitting this form you agree to be contacted by NICE.
+      </p>
+      <p>
+        Fields marked with an asterisk (*) are mandatory.
+      </p>
+      <iframe
+        allow="geolocation; microphone; camera"
+        allowfullscreen=""
+        class="iframe"
+        data-jotform-id="242462190388056"
+        id="JotFormIFrame-242462190388056"
+        scrolling="no"
+        src="https://next-web-tests.jotform.com/242462190388056?isIframeEmbed=1"
+        style="height: 539px; overflow: hidden;"
+        title="Candidates for modular updates"
+      />
+    </div>
+  </div>
+</div>
+`;

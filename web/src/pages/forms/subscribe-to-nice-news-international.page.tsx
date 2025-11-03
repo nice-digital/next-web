@@ -16,12 +16,8 @@ export default function NewsInternationalNewsletterForm(
 			lead="Keeping you up-to-date with our worldwide collaborations, opportunities and developments."
 			parentPages={[
 				{
-					title: "Newsletters and alerts",
+					title: "NICE newsletters and alerts",
 					path: "/nice-newsletters-and-alerts",
-				},
-				{
-					title: "News",
-					path: "/news",
 				},
 			]}
 		/>

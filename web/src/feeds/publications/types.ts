@@ -272,6 +272,7 @@ export type BaseContentPart<T extends string = string> = {
 	legacyId: string | null;
 	type: T;
 	uid: number;
+	majorChangeDate: string | null;
 };
 
 export type UploadAndConvertContentPart =
@@ -321,6 +322,14 @@ export type RelatedResourceList = {
 	status: Status;
 	language: Language;
 	uid: number;
+};
+
+export type RelatedProductList = {
+	id: string;
+	url: string;
+	relationship: string;
+	title: string;
+	shortTitle: string;
 };
 
 export type RelatedResource = {
@@ -450,14 +459,6 @@ export enum ResourceType {
 	GuideToResources = "GuideToResources",
 }
 
-export type RelatedProductList = {
-	links: EmptySelfLinks;
-	embedded: {
-		relatedProduct: RelatedProduct | RelatedProduct[];
-	};
-	eTag: ETag;
-};
-
 export type RelatedProduct = {
 	links: EmptySelfLinks & {
 		relatedProductUri: [Link];
@@ -496,7 +497,7 @@ export type ProductAndResourceBase = {
 	contentPartsList?: ContentPart[];
 	contentPartList2?: ContentPartList2;
 	relatedResourceList?: RelatedResourceList;
-	relatedProductList?: RelatedProductList;
+	relatedProductList?: RelatedProductList[];
 	accreditationList: BadgingFields[];
 	endorsementList: BadgingFields[];
 	supportingList: BadgingFields[];

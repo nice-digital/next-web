@@ -40,18 +40,14 @@ export const StoryblokPageHeader = ({
 	}
 
 	return (
-		<>
-			<PageHeader
-				heading={title}
-				lead={summary || undefined}
-				breadcrumbs={BreadcrumbComponent}
-				description={description}
-				variant={theme === "impact" ? "fullWidthDark" : "fullWidthLight"}
-				verticalPadding="loose"
-				cta={
-					updatedCTA ? <StoryblokButtonLink button={updatedCTA} /> : undefined
-				}
-			/>
-		</>
+		<PageHeader
+			heading={title}
+			lead={summary || undefined}
+			breadcrumbs={BreadcrumbComponent}
+			description={description}
+			variant={theme === "impact" ? "fullWidthDark" : "fullWidthLight"}
+			verticalPadding="loose"
+			cta={updatedCTA ? <StoryblokButtonLink button={updatedCTA} /> : undefined}
+		/>
 	);
 };

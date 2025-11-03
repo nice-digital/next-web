@@ -1,9 +1,7 @@
 import "@testing-library/jest-dom";
+import { createElement } from "react";
 
 import { addDefaultJSONFeedMocks, axiosJSONMock } from "@/test-utils/feeds";
-
-//import * as matchers from "jest-extended/all";
-//expect.extend(matchers);
 
 expect.extend({
 	toHaveTextContentIgnoreTags(received, expected) {
@@ -37,8 +35,24 @@ jest.mock("@/logger", () => ({
 	})),
 }));
 
+type MockBlok = {
+	component: string;
+	title?: string;
+};
+
+//NOTE we use react.createElement to avoid putting jsx in jest.setup.ts - this would need a change of file extension and extra jest.config and tsconfig changes to make it work
+
 jest.mock("@storyblok/react", () => ({
 	...jest.requireActual("@storyblok/react"),
+	__esModule: true,
+	StoryblokComponent: jest.fn(({ blok }: { blok: MockBlok }) =>
+		createElement(
+			"div",
+			{ "data-testid": `storyblok-component-${blok.component}` },
+			blok.component,
+			blok.title
+		)
+	),
 	getStoryblokApi: jest.fn().mockReturnValue({
 		get: jest.fn(),
 		getAll: jest.fn(),

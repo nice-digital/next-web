@@ -1,4 +1,5 @@
 import { serverRuntimeConfig } from "@/config";
+import { logger } from "@/logger";
 
 import { getFeedBodyCached, getFeedBodyUnCached, getResponseStream } from "../";
 
@@ -144,21 +145,30 @@ export const getIndicatorMappings = async (): Promise<IndicatorMapping[]> =>
  */
 export const getProductDetail = async (
 	productId: string
-): Promise<ProductDetail | null> =>
-	await getFeedBodyCached<ProductDetail | null>(
-		cacheKeyPrefix,
-		FeedPath.ProductDetail + productId,
-		longTTL,
-		async () => {
-			const response = await getFeedBodyUnCached<ProductDetail | ErrorResponse>(
-				origin,
-				FeedPath.ProductDetail + productId,
-				apiKey
-			);
+): Promise<ProductDetail | null> => {
+	try {
+		return await getFeedBodyCached<ProductDetail | null>(
+			cacheKeyPrefix,
+			FeedPath.ProductDetail + productId,
+			longTTL,
+			async () => {
+				const response = await getFeedBodyUnCached<
+					ProductDetail | ErrorResponse
+				>(origin, FeedPath.ProductDetail + productId, apiKey);
 
-			return isSuccessResponse(response) ? response : null;
-		}
-	);
+				return isSuccessResponse(response) ? response : null;
+			}
+		);
+	} catch (error) {
+		logger.error(
+			`Failed to get product detail - productId: ${productId}, error: ${
+				error instanceof Error ? error.message : String(error)
+			}`
+		);
+
+		return null;
+	}
+};
 
 /**
  * Gets chapter HTML.
@@ -246,6 +256,34 @@ export const getResourceDetails = async (
 		.map((r) => r.resourceDetail)
 		.filter((r): r is ResourceDetail => r !== null);
 };
+
+export const getImage = async (url: string): Promise<Buffer> =>
+	await getFeedBodyCached<Buffer>(cacheKeyPrefix, url, longTTL, async () => {
+		// Construct the full URL and headers for the request
+		const logourl = origin + url;
+
+		const response = await fetch(logourl, {
+			method: "GET",
+			headers: {
+				"Api-Key": apiKey,
+				Accept: "application/json",
+			},
+		});
+
+		// Check if the response is OK
+		if (!response.ok) {
+			throw new Error(
+				`Failed to fetch image from ${url}: ${response.statusText}`
+			);
+		}
+
+		// Convert the response stream to a Blob
+		const blob = await response.blob();
+
+		const buffer = Buffer.from(await blob.arrayBuffer());
+
+		return buffer;
+	});
 
 /**
  * Gets a stream of a file from publications.

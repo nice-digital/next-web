@@ -13,7 +13,8 @@ const FormHeader = () => {
 			<p>
 				Our GP reference panel aims to gather the collective wisdom of GPs on
 				the ground who might not otherwise be heard. We welcome registration by
-				any GP currently on a performers list anywhere in the UK.
+				any GP currently on a performers list anywhere in the UK, and by GP
+				Speciality Trainees who are not yet on a performers list.
 			</p>
 			<h2>What&apos;s involved?</h2>
 			<p>
@@ -89,16 +90,12 @@ export default function SubscribeToOurGPReferencePanelForm(
 			lead="Contribute to the development of NICE guidance in a quick and easy way."
 			parentPages={[
 				{
-					title: "General practice",
-					path: "/about/nice-communities/generalpractice",
+					title: "General practice - keep your practice up-to-date",
+					path: "/implementing-nice-guidance/general-practice-keep-your-practice-up-to-date",
 				},
 				{
-					title: "NICE Communities",
-					path: "/about/nice-communities",
-				},
-				{
-					title: "About",
-					path: "/about",
+					title: "Implementing NICE guidance",
+					path: "/implementing-nice-guidance",
 				},
 			]}
 			formHeader={<FormHeader />}

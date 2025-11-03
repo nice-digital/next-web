@@ -6,7 +6,7 @@ import { Button } from "@nice-digital/nds-button";
 import { Grid, GridItem } from "@nice-digital/nds-grid";
 
 import { Link } from "@/components/Link/Link";
-import { OnThisPage } from "@/components/OnThisPage/OnThisPage";
+import { OnThisPageBasic } from "@/components/OnThisPageBasic/OnThisPageBasic";
 import { ProductHorizontalNav } from "@/components/ProductHorizontalNav/ProductHorizontalNav";
 import { ProductPageHeading } from "@/components/ProductPageHeading/ProductPageHeading";
 import { PublicationsChapterMenu } from "@/components/PublicationsChapterMenu/PublicationsChapterMenu";
@@ -115,30 +115,24 @@ export const ProductResourcePage: FC<ProductResourcePageProps> = ({
 					lg={hasChaptersOrDownloadButton ? 9 : 12}
 					elementType="section"
 				>
-					<Grid reverse gutter="loose">
-						{hasOnThisPageMenu ? (
-							<GridItem cols={12} md={4} lg={3}>
-								<OnThisPage sections={chapterSections} />
-							</GridItem>
-						) : null}
-						<GridItem
-							cols={12}
-							md={hasOnThisPageMenu ? 8 : 12}
-							lg={hasOnThisPageMenu ? 9 : 12}
-						>
-							<h2 className={styles.heading}>{title}</h2>
-							<div dangerouslySetInnerHTML={{ __html: htmlBody }} />
-							{lastUpdated ? (
-								<p>
-									This page was last updated on{" "}
-									<time dateTime={stripTime(lastUpdated)}>
-										{formatDateStr(lastUpdated)}
-									</time>
-								</p>
-							) : null}
-							<PublicationsPrevNext chapters={chapters} />
-						</GridItem>
-					</Grid>
+					<h2 className={styles.heading}>{title}</h2>
+
+					{hasOnThisPageMenu ? (
+						<div className="hide-print">
+							<OnThisPageBasic sections={chapterSections} />
+						</div>
+					) : null}
+
+					<div dangerouslySetInnerHTML={{ __html: htmlBody }} />
+					{lastUpdated ? (
+						<p>
+							This page was last updated on{" "}
+							<time dateTime={stripTime(lastUpdated)}>
+								{formatDateStr(lastUpdated)}
+							</time>
+						</p>
+					) : null}
+					<PublicationsPrevNext chapters={chapters} />
 				</GridItem>
 			</Grid>
 		</>

@@ -8,6 +8,10 @@
 terraform {
   required_version = ">= 0.14"
   required_providers {
+	aws = {
+		source = "hashicorp/aws"
+		version = "~>6.0.0"
+	}
   }
   //* Teamcity/Octopus Deploy Backend config *//
 }
@@ -69,6 +73,8 @@ resource "aws_ecs_task_definition" "nextweb-main-task" {
           value = var.node_env
         }
       ]
+	  entryPoint = ["npm", "run", "host", "--"],
+	  command = ["-H", "${var.nextweb_hostname}", "-p", "3000"],
       mountPoints = [
         {
           sourceVolume  = "config",

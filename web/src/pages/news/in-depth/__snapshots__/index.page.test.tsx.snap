@@ -187,8 +187,8 @@ exports[`/news/in-depth/index.page InDepthArticleIndexPage should match snapshot
           <a
             aria-hidden="true"
             class="imageContainer"
-            href="/news/articles/test-news-tomorrow"
-            style="background-image: url(https://local-host-test-nice-org.com/f/271255/788x443/b2d6d3a601/doctor-showing-results-on-tablet-computer-to-male-patient.jpg/m/868x0/filters:quality%2880%29);"
+            href="/news/articles/new-story"
+            style="background-image: url(https://local-host-test-nice-org.com/f/292509/805x453/42b7a1a419/nhs-team-16-9.JPG/m/868x0/filters:quality%2880%29);"
             tabindex="-1"
           >
              
@@ -198,13 +198,13 @@ exports[`/news/in-depth/index.page InDepthArticleIndexPage should match snapshot
               class="heading"
             >
               <a
-                href="/news/articles/test-news-tomorrow"
+                href="/news/articles/new-story"
               >
-                test news tomorrow
+                new story
               </a>
             </h3>
             <p>
-              intro
+              test
             </p>
             <footer>
               <div>
@@ -216,9 +216,9 @@ exports[`/news/in-depth/index.page InDepthArticleIndexPage should match snapshot
                 </span>
                 <time
                   class="date"
-                  datetime="2024-03-13 00:00"
+                  datetime="2025-05-10 00:00"
                 >
-                  13 March 2024
+                  10 May 2025
                 </time>
               </div>
             </footer>
@@ -234,8 +234,8 @@ exports[`/news/in-depth/index.page InDepthArticleIndexPage should match snapshot
           <a
             aria-hidden="true"
             class="imageContainer"
-            href="/news/articles/test-news-today"
-            style="background-image: url(https://local-host-test-nice-org.com/f/271255/788x443/b2d6d3a601/doctor-showing-results-on-tablet-computer-to-male-patient.jpg/m/868x0/filters:quality%2880%29);"
+            href="/news/articles/young-people-with-chronic-tic-disorders-and-tourette-syndrome"
+            style="background-image: url(https://local-host-test-nice-org.com/f/292509/x/43838fb421/storyblok_1.avif/m/868x0/filters:quality%2880%29);"
             tabindex="-1"
           >
              
@@ -245,13 +245,13 @@ exports[`/news/in-depth/index.page InDepthArticleIndexPage should match snapshot
               class="heading"
             >
               <a
-                href="/news/articles/test-news-today"
+                href="/news/articles/young-people-with-chronic-tic-disorders-and-tourette-syndrome"
               >
-                test news today
+                Young people with chronic tic disorders and Tourette syndrome
               </a>
             </h3>
             <p>
-              intro
+              Digital therapy to help children and young people manage their condition.
             </p>
             <footer>
               <div>
@@ -263,9 +263,9 @@ exports[`/news/in-depth/index.page InDepthArticleIndexPage should match snapshot
                 </span>
                 <time
                   class="date"
-                  datetime="2024-03-11 00:00"
+                  datetime="2025-05-09 00:00"
                 >
-                  11 March 2024
+                  09 May 2025
                 </time>
               </div>
             </footer>
@@ -281,8 +281,8 @@ exports[`/news/in-depth/index.page InDepthArticleIndexPage should match snapshot
           <a
             aria-hidden="true"
             class="imageContainer"
-            href="/news/articles/test-news-yesterday"
-            style="background-image: url(https://local-host-test-nice-org.com/f/271255/788x443/b2d6d3a601/doctor-showing-results-on-tablet-computer-to-male-patient.jpg/m/868x0/filters:quality%2880%29);"
+            href="/news/articles/technology-for-children-and-young-people-with-chronic-tic-disorders-and-tourette-syndrome-recommended"
+            style="background-image: url(https://local-host-test-nice-org.com/f/292509/x/43838fb421/storyblok_1.avif/m/868x0/filters:quality%2880%29);"
             tabindex="-1"
           >
              
@@ -292,13 +292,13 @@ exports[`/news/in-depth/index.page InDepthArticleIndexPage should match snapshot
               class="heading"
             >
               <a
-                href="/news/articles/test-news-yesterday"
+                href="/news/articles/technology-for-children-and-young-people-with-chronic-tic-disorders-and-tourette-syndrome-recommended"
               >
-                test news yesterday
+                Technology for children and young people with chronic tic disorders and Tourette syndrome recommended
               </a>
             </h3>
             <p>
-              intro
+              Final guidance recommends one digital therapy to help children and young people manage their condition.
             </p>
             <footer>
               <div>
@@ -310,9 +310,9 @@ exports[`/news/in-depth/index.page InDepthArticleIndexPage should match snapshot
                 </span>
                 <time
                   class="date"
-                  datetime="2024-03-10 00:00"
+                  datetime="2025-05-09 00:00"
                 >
-                  10 March 2024
+                  09 May 2025
                 </time>
               </div>
             </footer>
@@ -328,8 +328,8 @@ exports[`/news/in-depth/index.page InDepthArticleIndexPage should match snapshot
           <a
             aria-hidden="true"
             class="imageContainer"
-            href="/news/articles/mock-news-article"
-            style="background-image: url(https://local-host-test-nice-org.com/f/271255/788x443/b2d6d3a601/doctor-showing-results-on-tablet-computer-to-male-patient.jpg/m/868x0/filters:quality%2880%29);"
+            href="/news/articles/test-news-article-8th-may"
+            style="background-image: url(https://local-host-test-nice-org.com/f/292509/624x350/b118a9ebd8/0c34ac90-2a34-11f0-b26b-ab62c890638b-jpg.webp/m/868x0/filters:quality%2880%29);"
             tabindex="-1"
           >
              
@@ -339,13 +339,15 @@ exports[`/news/in-depth/index.page InDepthArticleIndexPage should match snapshot
               class="heading"
             >
               <a
-                href="/news/articles/mock-news-article"
+                href="/news/articles/test-news-article-8th-may"
               >
-                Mock News Article
+                Test news article 8th may
               </a>
             </h3>
             <p>
-              Some mock intro text to be displayed in the page header
+              intro text test
+Text update 09/05/25 10:15
+Text update 09/05 10:25
             </p>
             <footer>
               <div>
@@ -357,9 +359,9 @@ exports[`/news/in-depth/index.page InDepthArticleIndexPage should match snapshot
                 </span>
                 <time
                   class="date"
-                  datetime="2024-01-31 00:00"
+                  datetime="2025-05-08 00:00"
                 >
-                  31 January 2024
+                  08 May 2025
                 </time>
               </div>
             </footer>
@@ -375,8 +377,8 @@ exports[`/news/in-depth/index.page InDepthArticleIndexPage should match snapshot
           <a
             aria-hidden="true"
             class="imageContainer"
-            href="/news/articles/sample-test-article"
-            style="background-image: url(https://local-host-test-nice-org.com/f/243782/300x300/f85d11c365/breast-cancer-cells.jpg/m/868x0/filters:quality%2880%29);"
+            href="/news/articles/thousands-of-people-in-england-with-sight-loss-could-benefit-from-a-new-treatment-option"
+            style="background-image: url(https://local-host-test-nice-org.com/f/243782/8660x5773/c394fd5edb/sight-test.jpg/m/868x0/filters:quality%2880%29);"
             tabindex="-1"
           >
              
@@ -386,13 +388,14 @@ exports[`/news/in-depth/index.page InDepthArticleIndexPage should match snapshot
               class="heading"
             >
               <a
-                href="/news/articles/sample-test-article"
+                href="/news/articles/thousands-of-people-in-england-with-sight-loss-could-benefit-from-a-new-treatment-option"
               >
-                Sample test article 
+                Thousands of people in England with sight loss could benefit from a new treatment option
               </a>
             </h3>
             <p>
-              Test content and purpose of functionality fields 
+              Test text update 08/05/25 16:41
+Test text update 08/05/25 16:45
             </p>
             <footer>
               <div>
@@ -404,9 +407,9 @@ exports[`/news/in-depth/index.page InDepthArticleIndexPage should match snapshot
                 </span>
                 <time
                   class="date"
-                  datetime="2024-01-11 00:00"
+                  datetime="2025-05-08 00:00"
                 >
-                  11 January 2024
+                  08 May 2025
                 </time>
               </div>
             </footer>
@@ -422,8 +425,8 @@ exports[`/news/in-depth/index.page InDepthArticleIndexPage should match snapshot
           <a
             aria-hidden="true"
             class="imageContainer"
-            href="/news/articles/millions-of-people-with-cardiovascular-disease-could-benefit-from-a-new-cholesterol-treatment-target-recommendation"
-            style="background-image: url(https://local-host-test-nice-org.com/f/243782/385x215/8755f1f754/an-elderly-man-receiving-a-checkup-from-his-doctor-stock-image-385x215.jpg/m/868x0/filters:quality%2880%29);"
+            href="/news/articles/test-news-story-6-may-afternoon"
+            style="background-image: url(https://local-host-test-nice-org.com/f/292509/624x350/b118a9ebd8/0c34ac90-2a34-11f0-b26b-ab62c890638b-jpg.webp/m/868x0/filters:quality%2880%29);"
             tabindex="-1"
           >
              
@@ -433,13 +436,13 @@ exports[`/news/in-depth/index.page InDepthArticleIndexPage should match snapshot
               class="heading"
             >
               <a
-                href="/news/articles/millions-of-people-with-cardiovascular-disease-could-benefit-from-a-new-cholesterol-treatment-target-recommendation"
+                href="/news/articles/test-news-story-6-may-afternoon"
               >
-                Millions of people with cardiovascular disease could benefit from a new cholesterol treatment target recommendation
+                Test news story 6 may afternoon
               </a>
             </h3>
             <p>
-              Some text
+              Intro text
             </p>
             <footer>
               <div>
@@ -451,9 +454,9 @@ exports[`/news/in-depth/index.page InDepthArticleIndexPage should match snapshot
                 </span>
                 <time
                   class="date"
-                  datetime="2023-12-14 00:00"
+                  datetime="2025-05-06 00:00"
                 >
-                  14 December 2023
+                  06 May 2025
                 </time>
               </div>
             </footer>
@@ -677,14 +680,6 @@ exports[`/news/in-depth/index.page InDepthArticleIndexPage should render error p
             list organised by date or title
           </a>
           .
-        </li>
-        <li>
-          <a
-            href="http://www.evidence.nhs.uk/"
-          >
-            Try evidence search
-          </a>
-          . This is our unique index of authoritative, evidence-based information from hundreds of trustworthy and accredited sources.
         </li>
         <li>
           <a

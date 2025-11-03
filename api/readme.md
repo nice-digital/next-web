@@ -4,8 +4,8 @@
 
 <details>
 <summary><strong>Table of contents</strong></summary>
-<!-- START doctoc -->
-- [Ocelot API Layer](#ocelot-api-layer)
+<!-- START doctoc generated TOC please keep comment here to allow auto update -->
+<!-- DON'T EDIT THIS SECTION, INSTEAD RE-RUN doctoc TO UPDATE -->
 
 - [What is it?](#what-is-it)
 - [Stack](#stack)
@@ -23,24 +23,25 @@
     - [Redis Key naming](#redis-key-naming)
     - [Key Generation Admin tool](#key-generation-admin-tool)
     - [Redis Key storage](#redis-key-storage)
+    - [Enhanced Ocelot Logging](#enhanced-ocelot-logging)
 - [Gotchas](#gotchas)
   - [Redis SSL Connection](#redis-ssl-connection)
   - [Running Redis on Docker - memory errors](#running-redis-on-docker---memory-errors)
   - [Secrets.json](#secretsjson)
 
-<!-- END doctoc -->
+<!-- END doctoc generated TOC please keep comment here to allow auto update -->
 </details>
 
 ## What is it?
 
-Next Web API is a Redis backed .dotnet Core app which provides transparent read through caching for some aspects Guidance Web and (in the future) Next Web. It uses the Ocelot framework as a base with minimal modifications. It also provides last know good for cached content (depending on the config) which in turn will enhance the availability of dependant systems.
+NextWeb API is a Redis-backed .NET Core application that provides transparent read-through caching for certain aspects of both Guidance Web and NextWeb. It leverages the new WebApplicationBuilder interface and uses the Ocelot framework as its foundation, with minimal custom modifications. Additionally, it supports "last known good" caching (configurable), which helps improve the availability of dependent systems.
 
 ## Stack
 
 ### Software
 
-- [Visual Studio 2019](https://visualstudio.microsoft.com/vs/)
-- [.NET Core 3.1 LTS](https://dotnet.microsoft.com/)
+- [Visual Studio 2022](https://visualstudio.microsoft.com/vs/)
+- [.NET Core 6.0 LTS](https://dotnet.microsoft.com/)
 - [xUnit](https://xunit.net/) for tests
 - [Ocelot](https://ocelot.readthedocs.io/) API Framework
 - [CacheManager](https://cachemanager.michaco.net/) Caching framework form Ocelot
@@ -55,7 +56,7 @@ Next Web API is a Redis backed .dotnet Core app which provides transparent read 
 ## Local development setup
 
 1. Clone next-web project to local machine
-1. Open NICE.NextWeb.API project in Visual Studio 2019
+1. Open NICE.NextWeb.API project in Visual Studio 2022
 1. Restore nuget packages
 1. Restore locally stored secrets see [.Net Core Locally stored secrets](#.Net-Core-Locally-stored-secrets)
 2. To run Redis locally start docker using the command ```docker-compose up```
@@ -72,7 +73,7 @@ In the production environment (dev, test, alpha, beta, live) the config is read 
 
 ### Ocelot
 
-Ocelot is used by this project to provide basic API Gateway functionality. More information can be found here [Ocelot](https://ocelot.readthedocs.io/). This project is using version Ocelot 16.0.1 which is the highest version that supports .Net Core 3.1 LTS.
+Ocelot is used by this project to provide basic API Gateway functionality. More information can be found here [Ocelot](https://ocelot.readthedocs.io/). This project is using version Ocelot 18.0.10 which is the highest version that supports .Net Core 6.0 LTS.
 
 Ocelot is loaded from Nuget packages with some minor customisations. Mainly a custom Cache Manager is injected into the service collection. This custom Cache Manager is default except it inspects headers for the X-CacheManager-RefreshCache header which is described [here](#x-cachemanager-refreshcache-header).
 
@@ -134,6 +135,20 @@ If the API is running in pre-prod mode (set via environment var) then you can ac
 #### Redis Key storage
 
 Cached items are stored as [Redis hashes](https://redis.io/topics/data-types#hashes) which are able to store a set of key value pairs. The name of the key is the MD5 encoded url [as noted here](#redis-key-naming).
+
+#### Enhanced Ocelot Logging
+
+To enable enhanced logging for Ocelot upstream and downstream requests, set the EnableEnhancedOcelotLogging option in your appsettings.json file. This feature can be toggled on or off dynamically using Octo. By default, this setting is disabled (false) to avoid unnecessary performance overhead, especially in live production environments. Enhanced logging is intended for development or troubleshooting scenarios where detailed request and response information is required.
+
+The output from enhanced logging is written to the standard logging stack and can be filtered using the "LogType" field. This field will have one of the following values:
+
+- UpstreamRequests
+- DownstreamRequests
+- DownstreamRequestBody
+
+These values align with Ocelot's terminology for incoming and outgoing traffic as defined in its documentation.
+
+Downstream responses such as 401, 403, or 500 are logged at the Information level, as they reflect valid HTTP responses from the downstream API and not failures of the NextWeb.Api Ocelot itself.
 
 ## Gotchas
 

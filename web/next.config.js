@@ -95,7 +95,7 @@ if (process.env.NODE_ENV === "production") {
 		},
 		{
 			key: "Content-Security-Policy",
-			value: "frame-ancestors 'none'",
+			value: "frame-ancestors 'self' https://*.infogram.com",
 		}
 	);
 }
@@ -120,13 +120,13 @@ const nextConfig = {
 		return [
 			{
 				source:
-					"/:productRoot(indicators|guidance|hub)/:statusSlug(indevelopment|discontinued|awaiting-development|topic-selection)/:path*",
+					"/:productRoot(indicators|guidance)/:statusSlug(indevelopment|discontinued|awaiting-development|topic-selection)/:path*",
 				destination:
 					"/indicators/indevelopment/:path*?productRoot=:productRoot&statusSlug=:statusSlug",
 			},
 			{
 				source:
-					"/:productRoot(indicators|guidance|advice|process|corporate|hub)/:path*",
+					"/:productRoot(indicators|guidance|advice|process|corporate)/:path+",
 				destination: "/indicators/:path*?productRoot=:productRoot",
 			},
 			{
@@ -138,922 +138,2172 @@ const nextConfig = {
 	async redirects() {
 		return [
 			{
-				source: "/indicators",
-				destination: "/indicators/published",
+				source:
+					"/about/what-we-do/our-programmes/nice-guidance/nice-about-technology-appraisal-guidance/technology-appraisal-and-highly-specialised-technologies-appeals/past-appeals-and-decisions",
+				destination:
+					"/what-nice-does/our-guidance/about-technology-appraisal-guidance/technology-appraisal-and-highly-specialised-technologies-appeals/past-appeals-and-decisions",
+				permanent: true,
+			},
+			{
+				source:
+					"/about/nice-communities/nice-and-the-public/public-involvement/support-for-vcs-organisations/help-us-develop-guidance/guides-to-developing-our-guidance",
+				destination:
+					"/get-involved/people-and-communities/getting-involved-as-a-voluntary-and-community-sector-organisation/contributing-to-the-development-of-our-guidelines",
+				permanent: true,
+			},
+			{
+				source:
+					"/about/what-we-do/our-programmes/nice-guidance/about-technology-appraisal-guidance/participation-in-clinical-trials-and-subsequent-access-to-drugs-appraised-by-nice-a-statement-on-the-applicability-of-about-technology-appraisal-guidance",
+				destination:
+					"/position-statements/participation-in-clinical-trials-and-subsequent-access-to-drugs-appraised-by-nice-a-statement-on-the-applicability-of-technology-appraisal-guidance",
+				permanent: true,
+			},
+			{
+				source:
+					"/about/what-we-do/our-programmes/nice-guidance/nice-about-technology-appraisal-guidance/data/cancer-appraisal-recommendations",
+				destination:
+					"/what-nice-does/our-guidance/about-technology-appraisal-guidance/technology-appraisal-data-cancer-appraisal-recommendations",
+				permanent: true,
+			},
+			{
+				source:
+					"/about/what-we-do/our-programmes/nice-guidance/nice-about-technology-appraisal-guidance/data/appraisal-recommendations",
+				destination:
+					"/what-nice-does/our-guidance/about-technology-appraisal-guidance/technology-appraisal-data-appraisal-recommendations",
+				permanent: true,
+			},
+			{
+				source:
+					"/about/what-we-do/our-programmes/nice-guidance/nice-about-technology-appraisal-guidance/charging/procedure-tahst",
+				destination:
+					"/what-nice-does/our-guidance/about-technology-appraisal-guidance/fees-for-technology-appraisals-and-highly-specialised-technologies/charging-procedure",
+				permanent: true,
+			},
+			{
+				source:
+					"/about/what-we-do/our-programmes/nice-guidance/nice-about-technology-appraisal-guidance/process/mta-timeline",
+				destination:
+					"/what-nice-does/our-guidance/about-technology-appraisal-guidance/our-methods-and-processes-health-technology-evaluation-manual/technology-appraisal-processes-and-timelines/multiple-technology-appraisal-process-timeline",
+				permanent: true,
+			},
+			{
+				source:
+					"/about/what-we-do/our-programmes/nice-guidance/nice-technology-appraisal-guidance/charging/procedure-tahst",
+				destination:
+					"/what-nice-does/our-guidance/about-technology-appraisal-guidance/fees-for-technology-appraisals-and-highly-specialised-technologies/charging-procedure",
+				permanent: true,
+			},
+			{
+				source:
+					"/about/what-we-do/our-programmes/nice-guidance/nice-technology-appraisal-guidance/charging/procedure-hst",
+				destination:
+					"/what-nice-does/our-guidance/about-technology-appraisal-guidance/charging-for-technology-appraisals-and-highly-specialised-technologies/charging-procedure-technology-appraisal-and-highly-specialised-technologies-evaluations ",
+				permanent: true,
+			},
+			{
+				source:
+					"/about/what-we-do/our-programmes/nice-guidance/nice-technology-appraisal-guidance/charging/timelines-hst",
+				destination:
+					"/what-nice-does/our-guidance/about-technology-appraisal-guidance/charging-for-technology-appraisals-and-highly-specialised-technologies/charging-procedure-technology-appraisal-and-highly-specialised-technologies-evaluations ",
+				permanent: true,
+			},
+			{
+				source:
+					"/about/what-we-do/our-programmes/nice-guidance/about-technology-appraisal-guidance/process/sta-timeline",
+				destination:
+					"/what-nice-does/our-guidance/about-technology-appraisal-guidance/our-methods-and-processes-health-technology-evaluation-manual/technology-appraisal-processes-and-timelines/single-technology-appraisal-timeline",
+				permanent: true,
+			},
+			{
+				source:
+					"/about/what-we-do/our-programmes/nice-guidance/nice-technology-appraisal-guidance/charging/procedure-ta",
+				destination:
+					"/what-nice-does/our-guidance/about-technology-appraisal-guidance/charging-for-technology-appraisals-and-highly-specialised-technologies/charging-procedure-technology-appraisal-and-highly-specialised-technologies-evaluations ",
+				permanent: true,
+			},
+			{
+				source:
+					"/about/what-we-do/our-programmes/nice-guidance/nice-technology-appraisal-guidance/charging/timelines-ta",
+				destination:
+					"/what-nice-does/our-guidance/about-technology-appraisal-guidance/charging-for-technology-appraisals-and-highly-specialised-technologies/charging-procedure-technology-appraisal-and-highly-specialised-technologies-evaluations ",
+				permanent: true,
+			},
+			{
+				source:
+					"/about/what-we-do/our-programmes/nice-guidance/nice-technology-appraisal-guidance/process/sta-timeline",
+				destination:
+					"/what-nice-does/our-guidance/about-technology-appraisal-guidance/our-methods-and-processes-health-technology-evaluation-manual/technology-appraisal-processes-and-timelines/single-technology-appraisal-timeline",
+				permanent: true,
+			},
+			{
+				source:
+					"/about/what-we-do/our-programmes/nice-guidance/technology-appraisal-guidance/process/sta-timeline",
+				destination:
+					"/what-nice-does/our-guidance/about-technology-appraisal-guidance/our-methods-and-processes-health-technology-evaluation-manual/technology-appraisal-processes-and-timelines/single-technology-appraisal-timeline",
+				permanent: true,
+			},
+			{
+				source:
+					"/about/what-we-do/our-programmes/nice-guidance/nice-technology-appraisal-guidance/consultation-on-changes-to-technology-appraisals-and-highly-specialised-technologies",
+				destination:
+					"/what-nice-does/our-guidance/about-technology-appraisal-guidance/our-methods-and-processes-health-technology-evaluation-manual/methods-and-processes-used-before-2022/methods-and-processes-used-before-2022",
+				permanent: true,
+			},
+			{
+				source:
+					"/about/what-we-do/our-programmes/nice-guidance/about-technology-appraisal-guidance/biosimilar-technologies-nice-position-statement-information-for-the-public",
+				destination:
+					"/position-statements/biosimilar-technologies-nice-position-statement-information-for-the-public",
+				permanent: true,
+			},
+			{
+				source:
+					"/about/what-we-do/our-programmes/nice-guidance/technology-appraisal-guidance/costs--charging-for-technology-appraisals-and-highly-specialised-technologies/",
+				destination:
+					"/what-nice-does/our-guidance/about-technology-appraisal-guidance/fees-for-technology-appraisals-and-highly-specialised-technologies",
+				permanent: true,
+			},
+			{
+				source:
+					"/About/What-we-do/Our-Programmes/NICE-guidance/NICE-about-technology-appraisal-guidance/Technology-appraisal-and-Highly-specialised-technologies-appeals",
+				destination:
+					"/what-nice-does/our-guidance/about-technology-appraisal-guidance/technology-appraisal-and-highly-specialised-technologies-appeals",
+				permanent: true,
+			},
+			{
+				source:
+					"/about/what-we-do/our-programmes/nice-guidance/technology-appraisal-guidance/biosimilar-technologies-nice-position-statement-information-for-the-public",
+				destination:
+					"/position-statements/biosimilar-technologies-nice-position-statement-information-for-the-public",
+				permanent: true,
+			},
+			{
+				source:
+					"/about/what-we-do/our-programmes/nice-guidance/about-technology-appraisal-guidance/technology-appraisal-submission-templates-and-supporting-documents",
+				destination:
+					"/what-nice-does/our-guidance/about-technology-appraisal-guidance/technology-appraisal-submission-templates-and-supporting-documents",
+				permanent: true,
+			},
+			{
+				source:
+					"/about/what-we-do/our-programmes/nice-guidance/nice-highly-specialised-technologies-guidance/proposed-highly-specialised-technology-evaluations",
+				destination: "/guidance/proposed?type=hst",
+				permanent: true,
+			},
+			{
+				source:
+					"/about/nice-communities/library-and-knowledge-services-staff/buy-books--journals-and-databases/provider-information/core-standards--non-agents",
+				destination:
+					"/library-and-knowledge-services/buy-books-journals-and-databases",
+				permanent: true,
+			},
+			{
+				source:
+					"/about/what-we-do/our-programmes/nice-guidance/about-technology-appraisal-guidance/overview-how-we-develop-about-technology-appraisal-guidance",
+				destination:
+					"/what-nice-does/our-guidance/about-technology-appraisal-guidance/how-we-develop-technology-appraisal-guidance",
+				permanent: true,
+			},
+			{
+				source:
+					"/about/what-we-do/our-programmes/nice-guidance/about-technology-appraisal-guidance/chemotherapy-dose-standardisation-nice-position-statement",
+				destination:
+					"/position-statements/chemotherapy-dose-standardisation-nice-position-statement",
+				permanent: true,
+			},
+			{
+				source:
+					"/about/nice-communities/library-and-knowledge-services-staff/buy-books--journals-and-databases/provider-information/core-standards--agents",
+				destination:
+					"/library-and-knowledge-services/buy-books-journals-and-databases",
+				permanent: true,
+			},
+			{
+				source:
+					"/about/what-we-do/our-programmes/nice-guidance/nice-technology-appraisal-guidance/cancer-drugs-fund-new-process-proposal-consultation-2015",
+				destination:
+					"/what-nice-does/our-guidance/about-technology-appraisal-guidance",
 				permanent: true,
 			},
 			{
-				source: "/news/newsandfeatures",
-				destination: "/news/articles",
+				source:
+					"/about/nice-communities/library-and-knowledge-services-staff/buy-books--journals-and-databases/provider-information/sole-supplied-titles",
+				destination:
+					"/library-and-knowledge-services/buy-books-journals-and-databases/sole-supplied-titles",
 				permanent: true,
 			},
 			{
-				source: "/news/blog",
-				destination: "/news/blogs",
+				source:
+					"/about/what-we-do/our-programmes/nice-guidance/nice-technology-appraisal-guidance/abbreviated-technology-appraisal-process-consultation",
+				destination:
+					"/what-nice-does/our-guidance/about-technology-appraisal-guidance",
 				permanent: true,
 			},
 			{
-				source: "/news/features",
-				destination: "/news/in-depth",
+				source:
+					"/about/what-we-do/our-programmes/nice-guidance/technology-appraisal-guidance/chemotherapy-dose-standardisation-nice-position-statement",
+				destination:
+					"/position-statements/chemotherapy-dose-standardisation-nice-position-statement",
 				permanent: true,
 			},
 			{
-				source: "/news/nice-talks-podcasts",
-				destination: "/news/podcasts",
+				source:
+					"/about/what-we-do/our-programmes/nice-guidance/about-technology-appraisal-guidance/modular-updates-for-technology-appraisals-guidance",
+				destination:
+					"/what-nice-does/our-guidance/about-technology-appraisal-guidance/our-methods-and-processes-health-technology-evaluation-manual/modular-updates-for-our-technology-appraisal-guidance",
 				permanent: true,
 			},
 			{
-				source: "/news/press-and-media",
-				destination: "/press-and-media",
+				source:
+					"/about/what-we-do/life-sciences/scientific-advice/models-for-the-evaluation-and-purchase-of-antimicrobials/ceftazidime-with-avibactam",
+				destination:
+					"/what-nice-does/life-sciences-how-to-get-your-product-to-market/models-for-the-evaluation-and-purchase-of-antimicrobials",
 				permanent: true,
 			},
 			{
-				source: "/news/nice-newsletters-and-alerts",
-				destination: "/nice-newsletters-and-alerts",
+				source:
+					"/about/what-we-do/our-programmes/nice-guidance/about-technology-appraisal-guidance/biosimilar-technologies-nice-position-statement",
+				destination:
+					"/position-statements/biosimilar-technologies-nice-position-statement",
 				permanent: true,
 			},
 			{
-				source: "/news/events",
-				destination: "/events",
+				source:
+					"/about/what-we-do/our-programmes/nice-guidance/technology-appraisal-guidance/planning-your-technology-appraisal-submission-to-nice",
+				destination:
+					"/what-nice-does/our-guidance/about-technology-appraisal-guidance/planning-your-technology-appraisal-submission-to-nice",
 				permanent: true,
 			},
 			{
 				source:
-					"/news/article/1-4-million-more-people-at-risk-of-severe-covid-19-to-have-access-to-antiviral-paxlovid",
+					"/about/what-we-do/our-programmes/nice-guidance/nice-:about(about-)?technology-appraisal-guidance/changes-to-health-technology-evaluation",
 				destination:
-					"/news/articles/people-at-risk-of-severe-covid-19-to-have-access-to-antiviral-paxlovid",
+					"/what-nice-does/our-guidance/about-technology-appraisal-guidance/our-methods-and-processes-health-technology-evaluation-manual",
 				permanent: true,
 			},
 			{
 				source:
-					"/news/article/300-people-to-benefit-from-new-treatment-for-advanced-breast-cancer-recommended-by-nice-following-price-deal",
+					"/about/what-we-do/our-programmes/nice-guidance/nice-:about(about-)?technology-appraisal-guidance/achieving-and-demonstrating-compliance",
 				destination:
-					"/news/articles/new-treatment-for-advanced-breast-cancer-recommended-by-nice",
+					"/what-nice-does/our-guidance/about-technology-appraisal-guidance/compliance-with-nice-approved-medicine-or-treatment",
 				permanent: true,
 			},
 			{
 				source:
-					"/news/article/updated-nice-guidance-recommends-more-targeting-of-antibiotics-to-those-at-the-highest-risk-of-suspected-sepsis",
+					"/about/what-we-do/our-programmes/nice-guidance/nice-technology-appraisal-guidance/methods-of-technology-appraisal-consultation",
 				destination:
-					"/news/articles/nice-recommends-better-targeting-of-antibiotics-for-suspected-sepsis",
+					"/what-nice-does/our-guidance/about-technology-appraisal-guidance",
 				permanent: true,
 			},
 			{
 				source:
-					"/news/article/up-to-14-000-people-could-benefit-from-the-first-treatment-for-severe-alopecia-recommended-by-nice",
+					"/about/nice-communities/nice-and-the-public/public-involvement/public-involvement-programme/patient-public-involvement-policy",
 				destination:
-					"/news/articles/thousands-could-benefit-from-treatment-for-severe-alopecia",
+					"/get-involved/people-and-communities/patient-and-public-involvement-policy",
 				permanent: true,
 			},
 			{
 				source:
-					"/news/article/a-public-consultation-on-our-new-approach-to-prioritising-guidance-is-now-open",
+					"/about/what-we-do/our-programmes/nice-guidance/technology-appraisal-guidance/biosimilar-technologies-nice-position-statement",
 				destination:
-					"/news/articles/public-consultation-on-our-new-approach-to-prioritising-guidance-now-open",
+					"/position-statements/biosimilar-technologies-nice-position-statement",
 				permanent: true,
 			},
 			{
 				source:
-					"/news/article/new-treatment-option-available-today-for-womb-cancer",
+					"/about/what-we-do/our-programmes/nice-guidance/about-technology-appraisal-guidance/uk-licensing-and-technology-appraisals",
 				destination:
-					"/news/articles/new-treatment-option-available-for-womb-cancer",
+					"/what-nice-does/our-guidance/about-technology-appraisal-guidance/uk-licensing-and-technology-appraisals",
 				permanent: true,
 			},
 			{
 				source:
-					"/news/article/nice-publishes-final-draft-guidance-on-enhertu-after-commercial-discussions-conclude-without-a-price-to-make-it-a-cost-effective-use-of-nhs-resources",
+					"/about/what-we-do/our-programmes/nice-guidance/nice-technology-appraisal-guidance/achieving-and-demonstrating-compliance",
 				destination:
-					"/news/articles/nice-publishes-final-draft-guidance-on-enhertu-after-commercial-discussions-conclude",
+					"/what-nice-does/our-guidance/about-technology-appraisal-guidance/compliance-with-nice-approved-medicine-or-treatment",
 				permanent: true,
 			},
 			{
 				source:
-					"/news/article/25-000-people-to-benefit-after-nice-recommends-new-ulcerative-colitis-treatment",
+					"/about/what-we-do/life-sciences/scientific-advice/models-for-the-evaluation-and-purchase-of-antimicrobials/cefiderocol",
 				destination:
-					"/news/articles/25000-people-to-benefit-after-nice-recommends-new-ulcerative-colitis-treatment",
+					"/what-nice-does/life-sciences-how-to-get-your-product-to-market/models-for-the-evaluation-and-purchase-of-antimicrobials",
+				permanent: true,
+			},
+			{
+				source:
+					"/about/what-we-do/our-programmes/nice-guidance/medical-technologies-guidance/medical-technologies-guidance-static-list",
+				destination: "/what-nice-does",
 				permanent: true,
 			},
 			{
 				source:
-					"/news/article/children-and-young-adults-to-benefit-after-nice-recommends-personalised-immunotherapy-to-treat-blood-cancer-be-made-routinely-available-on-the-nhs",
+					"/about/nice-communities/nice-and-the-public/public-involvement/support-for-vcs-organisations/help-us-develop-guidance",
 				destination:
-					"/news/articles/nice-recommended-personalised-immunotherapy-to-treat-blood-cancer-in-children-and-young-adults-to-be-made-routinely-available-on-the-nhs",
+					"/get-involved/people-and-communities/getting-involved-as-a-voluntary-and-community-sector-organisation/how-voluntary-and-community-sector-organisations-can-help-us-develop-guidance",
 				permanent: true,
 			},
 			{
 				source:
-					"/news/article/children-and-teenagers-with-an-aggressive-form-of-brain-cancer-set-to-benefit-after-nice-recommends-new-life-extending-drug-combination-treatment",
+					"/about/what-we-do/our-programmes/nice-guidance/technology-appraisal-guidance/uk-licensing-and-technology-appraisals",
 				destination:
-					"/news/articles/new-life-extending-drug-treatment-for-children-and-teenagers-with-an-aggressive-form-of-brain-cancer",
+					"/what-nice-does/our-guidance/about-technology-appraisal-guidance/uk-licensing-and-technology-appraisals",
 				permanent: true,
 			},
 			{
 				source:
-					"/news/article/improved-deal-signals-nice-recommendation-of-sickle-cell-treatment-voxelotor",
+					"/about/what-we-do/our-programmes/nice-guidance/nice-technology-appraisal-guidance/technology-appraisal-static-list",
 				destination:
-					"/news/articles/around-4-000-people-with-sickle-cell-disease-could-benefit-from-a-new-treatment-recommended-by-nice",
+					"/what-nice-does/our-guidance/about-technology-appraisal-guidance",
 				permanent: true,
 			},
 			{
 				source:
-					"/news/article/tests-could-lead-to-fewer-people-having-unnecessary-chemotherapy-after-surgery-for-early-breast-cancer",
+					"/about/what-we-do/our-programmes/nice-guidance/nice-about-technology-appraisal-guidance/data-collection-agreement",
 				destination:
-					"/news/articles/new-tests-could-spare-people-with-early-breast-cancer-from-unnecessary-chemotherapy",
+					"/what-nice-does/our-guidance/about-technology-appraisal-guidance/data-collection-agreement",
 				permanent: true,
 			},
 			{
 				source:
-					"/news/article/home-testing-devices-could-increase-the-number-of-people-diagnosed-with-sleep-condition",
+					"/about/what-we-do/life-sciences/scientific-advice/scientific-advice-education-and-training-/speaking-engagements",
 				destination:
-					"/news/articles/home-testing-devices-could-increase-the-number-of-people-diagnosed-with-sleep-apnoea",
+					"/what-nice-does/life-sciences-how-to-get-your-product-to-market/nice-advice-service/educational-webinars-and-masterclasses",
 				permanent: true,
 			},
 			{
 				source:
-					"/news/article/statins-could-be-a-choice-for-more-people-to-reduce-their-risk-of-heart-attacks-and-strokes-says-nice",
+					"/about/what-we-do/our-programmes/nice-guidance/nice-about-technology-appraisal-guidance/types-of-recommendation",
 				destination:
-					"/news/articles/statins-a-choice-for-more-people-to-reduce-risk-of-heart-attacks-and-strokes",
+					"/what-nice-does/our-guidance/types-of-recommendation-nice-can-make",
 				permanent: true,
 			},
 			{
 				source:
-					"/news/article/first-treatment-for-acute-migraine-to-be-recommended-by-nice-set-to-benefit-thousands",
+					"/about/what-we-do/our-programmes/nice-guidance/nice-guidelines/maintaining-and-updating-our-guideline-portfolio",
 				destination:
-					"/news/articles/new-treatment-for-acute-migraine-set-to-benefit-thousands",
+					"/what-nice-does/our-guidance/prioritising-our-guidance-topics",
 				permanent: true,
 			},
 			{
-				source: "/news/blog/international-women-s-day-2024",
-				destination: "/news/blogs/women-inspiring-inclusion-nice-guidance",
+				source:
+					"/about/what-we-do/our-programmes/nice-guidance/nice-interventional-procedures-guidance/ip-register-an-interest",
+				destination: "/forms/interventional-procedures-register-an-interest",
 				permanent: true,
 			},
 			{
 				source:
-					"/news/blog/listening-to-patients-and-organisations-to-update-nice-s-quality-standard-on-transition-from-children-s-to-adults-services",
+					"/about/what-we-do/our-programmes/nice-guidance/nice-interventional-procedures-guidance/coding-recommendations",
 				destination:
-					"/news/blogs/listening-to-patients-and-organisations-to-update-nice-s-quality-standard-on-transition-from-children-s-to-adults-services",
+					"/what-nice-does/our-guidance/about-interventional-procedures-guidance/clinical-coding-recommendations-for-nice-guidance",
+				permanent: true,
+			},
+			{
+				source:
+					"/about/what-we-do/our-programmes/nice-guidance/nice-interventional-procedures-guidance/ip-notification-form",
+				destination: "/forms/interventional-procedures-notification",
+				permanent: true,
+			},
+			{
+				source:
+					"/about/what-we-do/our-programmes/nice-guidance/nice-diagnostics-guidance/diagnostics-guidance-static-list",
+				destination: "/what-nice-does",
 				permanent: true,
 			},
 			{
-				source: "/news/article/:slug",
-				destination: "/news/articles/:slug",
+				source:
+					"/about/what-we-do/our-programmes/nice-guidance/nice-technology-appraisal-guidance/types-of-recommendation",
+				destination:
+					"/what-nice-does/our-guidance/types-of-recommendation-nice-can-make",
 				permanent: true,
 			},
 			{
-				source: "/news/blog/:slug",
-				destination: "/news/blogs/:slug",
+				source:
+					"/about/what-we-do/life-sciences/scientific-advice/scientific-advice-education-and-training-/site-visits",
+				destination:
+					"/what-nice-does/life-sciences-how-to-get-your-product-to-market/nice-advice-service/educational-webinars-and-masterclasses",
 				permanent: true,
 			},
 			{
 				source:
-					"/about/what-we-do/research-and-development/research-recommendations/:slug*",
+					"/about/what-we-do/our-programmes/nice-guidance/medical-technologies-guidance/register-as-a-stakeholder",
 				destination:
-					"/about/what-we-do/science-policy-research/research-recommendations",
+					"/get-involved/register-your-organisation-as-a-stakeholder/stakeholder-registration-medical-technologies",
 				permanent: true,
 			},
 			{
-				source: "/standards-and-indicators/ccgoisindicators/cancer-ccg01",
+				source:
+					"/about/what-we-do/our-programmes/nice-guidance/nice-guidelines/using-nice-guidelines-to-make-decisions",
 				destination:
-					"/indicators/IND1-cancer-invasive-cancer-diagnosed-via-emergency-routes",
+					"/what-nice-does/our-guidance/about-nice-guidelines/making-decisions-using-nice-guidelines",
 				permanent: true,
 			},
 			{
-				source: "/standards-and-indicators/ccgoisindicators/cancer-ccg02",
-				destination: "/indicators/IND2-cancer-stage-at-diagnosis-recorded",
+				source:
+					"/about/what-we-do/our-programmes/nice-guidance/nice-technology-appraisal-guidance/summary-of-decisions",
+				destination:
+					"/what-nice-does/our-guidance/about-technology-appraisal-guidance",
 				permanent: true,
 			},
 			{
-				source: "/standards-and-indicators/ccgoisindicators/cancer-ccg03",
+				source:
+					"/about/what-we-do/our-programmes/nice-guidance/nice-guidelines/making-decisions-using-nice-guidelines",
 				destination:
-					"/indicators/IND3-cancer-detected-at-stage-1-or-2-all-cancer",
+					"/what-nice-does/our-guidance/about-nice-guidelines/making-decisions-using-nice-guidelines",
 				permanent: true,
 			},
 			{
 				source:
-					"/standards-and-indicators/ccgoisindicators/breast-cancer-mortality-rates-ccg04",
-				destination: "/indicators/IND4-cancer-breast-cancer-mortality-rate",
+					"/about/what-we-do/our-programmes/nice-guidance/nice-diagnostics-guidance/dt-stakeholder-registration",
+				destination:
+					"/get-involved/register-your-organisation-as-a-stakeholder/stakeholder-registration-diagnostic-technologies",
 				permanent: true,
 			},
 			{
-				source: "/standards-and-indicators/ccgoisindicators/lung-cancer-ccg06",
-				destination: "/indicators/IND5-cancer-lung-cancer-stage-at-diagnosis",
+				source:
+					"/about/what-we-do/life-sciences/scientific-advice/scientific-advice-education-and-training-/seminars",
+				destination:
+					"/what-nice-does/life-sciences-how-to-get-your-product-to-market/nice-advice-service/educational-webinars-and-masterclasses",
 				permanent: true,
 			},
 			{
-				source: "/standards-and-indicators/ccgoisindicators/copd-ccg08",
+				source:
+					"/about/what-we-do/our-programmes/nice-guidance/nice-technology-appraisal-guidance/cancer-drugs-fund",
 				destination:
-					"/indicators/IND6-copd-referral-for-pulmonary-rehabilitation",
+					"/what-nice-does/patient-access-schemes-and-pricing-agreements/managed-access",
 				permanent: true,
 			},
 			{
 				source:
-					"/standards-and-indicators/ccgoisindicators/heart-failure-ccg11",
+					"/about/what-we-do/evidence-services/journals-and-databases/openathens/openathens-registration-help",
 				destination:
-					"/indicators/IND8-heart-failure-mortality-within-12-months-of-admission",
+					"/library-and-knowledge-services/openathens/openathens-registration-help",
 				permanent: true,
 			},
 			{
-				source: "/standards-and-indicators/ccgoisindicators/diabetes-ccg12",
-				destination: "/indicators/IND9-diabetes-complications",
+				source:
+					"/about/what-we-do/our-programmes/nice-guidance/interventional-procedures-guidance/recommendations",
+				destination:
+					"/what-nice-does/our-guidance/types-of-recommendation-nice-can-make",
 				permanent: true,
 			},
 			{
-				source: "/standards-and-indicators/ccgoisindicators/diabetes-ccg13",
-				destination: "/indicators/IND10-diabetes-annual-care-processes",
+				source:
+					"/about/what-we-do/our-programmes/nice-guidance/interventional-procedures-guidance/timeline",
+				destination: "/process/pmg28/chapter/introduction",
 				permanent: true,
 			},
 			{
-				source: "/standards-and-indicators/ccgoisindicators/diabetes-ccg14",
+				source:
+					"/about/what-we-do/our-programmes/nice-guidance/nice-guidelines/nice-medicines-practice-guidelines",
 				destination:
-					"/indicators/IND11-diabetes-structured-education-within-12-months-of-diagnosis",
+					"/what-nice-does/our-guidance/about-nice-guidelines/how-we-develop-nice-guidelines",
 				permanent: true,
 			},
 			{
-				source: "/standards-and-indicators/ccgoisindicators/dementia-ccg18",
-				destination: "/indicators/IND12-dementia-anti-psychotic-prescriptions",
+				source:
+					"/about/what-we-do/our-programmes/nice-guidance/nice-about-technology-appraisal-guidance/charging",
+				destination:
+					"/what-nice-does/our-guidance/about-technology-appraisal-guidance/fees-for-technology-appraisals-and-highly-specialised-technologies",
 				permanent: true,
 			},
 			{
 				source:
-					"/standards-and-indicators/ccgoisindicators/the-proportion-of-people-with-hip-fracture-who-receive-a-formal-hip-fracture-programme-from-admission",
+					"/about/what-we-do/our-programmes/nice-guidance/about-medical-technologies-guidance/get-involved",
 				destination:
-					"/indicators/IND13-hip-fracture-formal-hip-fracture-programme-from-admission",
+					"/what-nice-does/our-guidance/about-medical-technologies-guidance/get-involved-with-medical-technologies-guidance",
 				permanent: true,
 			},
 			{
 				source:
-					"/standards-and-indicators/ccgoisindicators/the-proportion-of-people-with-hip-fracture-who-receive-surgery-on-the-day-of-or-the-day-after-admission",
+					"/about/what-we-do/our-programmes/nice-guidance/nice-guidelines/how-we-develop-nice-guidelines",
 				destination:
-					"/indicators/IND14-hip-fracture-surgery-on-the-day-or-day-after-admission",
+					"/what-nice-does/our-guidance/about-nice-guidelines/how-we-develop-nice-guidelines",
 				permanent: true,
 			},
 			{
-				source: "/standards-and-indicators/ccgoisindicators/hip-fracture-ccg22",
-				destination: "/indicators/IND15-hip-fracture-falls-risk-assessment",
+				source:
+					"/about/what-we-do/our-programmes/nice-guidance/nice-interventional-procedures-guidance/notify",
+				destination:
+					"/what-nice-does/our-guidance/about-interventional-procedures-guidance/notify-an-interventional-procedure",
 				permanent: true,
 			},
 			{
-				source: "/standards-and-indicators/ccgoisindicators/hip-fracture-ccg23",
-				destination: "/indicators/IND16-hip-fracture-composite-care-processes",
+				source:
+					"/about/what-we-do/evidence-services/journals-and-databases/openathens/openathens-eligibility",
+				destination:
+					"/library-and-knowledge-services/openathens/openathens-eligibility",
 				permanent: true,
 			},
 			{
-				source: "/standards-and-indicators/ccgoisindicators/hip-fracture-ccg24",
-				destination: "/indicators/IND17-hip-fracture-admission-rates",
+				source:
+					"/about/what-we-do/our-programmes/nice-guidance/nice-about-technology-appraisal-guidance/data",
+				destination:
+					"/what-nice-does/our-guidance/about-technology-appraisal-guidance",
 				permanent: true,
 			},
 			{
 				source:
-					"/standards-and-indicators/ccgoisindicators/proportion-of-pregnant-women-who-were-smokers-during-pregnancy",
+					"/about/what-we-do/our-programmes/nice-guidance/nice-guidelines/nice-public-health-guidelines",
 				destination:
-					"/indicators/IND18-pregnancy-and-neonates-smokers-at-booking-appointment",
+					"/what-nice-does/our-guidance/about-nice-guidelines/how-we-develop-nice-guidelines",
 				permanent: true,
 			},
 			{
-				source: "/standards-and-indicators/ccgoisindicators/maternity-ccg32",
+				source:
+					"/about/what-we-do/our-programmes/nice-guidance/nice-guidelines/nice-safe-staffing-guidelines",
 				destination:
-					"/indicators/IND19-pregnancy-and-neonates-smokers-at-delivery",
+					"/what-nice-does/our-guidance/about-nice-guidelines/how-we-develop-nice-guidelines",
 				permanent: true,
 			},
 			{
 				source:
-					"/standards-and-indicators/ccgoisindicators/proportion-of-successful-births-where-breast-feeding-is-initiated",
+					"/about/what-we-do/our-programmes/nice-guidance/about-technology-appraisal-guidance/eq-5d-5l",
 				destination:
-					"/indicators/IND20-pregnancy-and-neonates-breastfeeding-48-hours",
+					"/position-statements/position-statement-on-use-of-the-eq-5d-5l-value-set-for-england-updated-october-2019",
 				permanent: true,
 			},
 			{
 				source:
-					"/standards-and-indicators/ccgoisindicators/the-proportion-of-pregnancies-resulting-in-a-neonatal-or-still-birth",
+					"/about/what-we-do/our-programmes/nice-guidance/nice-guidelines/nice-social-care-guidelines",
 				destination:
-					"/indicators/IND21-pregnancy-and-neonates-neonatal-deaths-or-still-births",
+					"/what-nice-does/our-guidance/about-nice-guidelines/how-we-develop-nice-guidelines",
 				permanent: true,
 			},
 			{
-				source: "/standards-and-indicators/ccgoisindicators/maternity-ccg35",
+				source:
+					"/about/what-we-do/our-programmes/nice-guidance/nice-diagnostics-guidance/process-timeline",
 				destination:
-					"/indicators/IND22-pregnancy-and-neonates-low-birth-weight",
+					"/what-nice-does/our-guidance/about-diagnostics-guidance/diagnostics-assessment-programme-process-timeline",
 				permanent: true,
 			},
 			{
-				source: "/standards-and-indicators/ccgoisindicators/maternity-ccg36",
+				source:
+					"/about/what-we-do/our-programmes/nice-guidance/nice-technology-appraisal-guidance/process",
 				destination:
-					"/indicators/IND23-pregnancy-and-neonates-neonatal-admissions",
+					"/what-nice-does/our-guidance/about-technology-appraisal-guidance/our-methods-and-processes-health-technology-evaluation-manual/methods-and-processes-used-before-2022",
 				permanent: true,
 			},
 			{
-				source: "/standards-and-indicators/ccgoisindicators/maternity-ccg37",
+				source:
+					"/about/what-we-do/evidence-services/journals-and-databases/openathens/openathens-support",
 				destination:
-					"/indicators/IND24-pregnancy-and-neonates-planned-caesarean-after-39-weeks",
+					"/library-and-knowledge-services/openathens/openathens-support",
 				permanent: true,
 			},
 			{
-				source: "/standards-and-indicators/ccgoisindicators/postnatal-ccg38",
+				source:
+					"/about/what-we-do/our-programmes/nice-guidance/nice-guidelines/nice-clinical-guidelines",
 				destination:
-					"/indicators/IND25-pregnancy-and-neonates-6-to-8-week-breastfeeding",
+					"/what-nice-does/our-guidance/about-nice-guidelines/how-we-develop-nice-guidelines",
 				permanent: true,
 			},
 			{
 				source:
-					"/standards-and-indicators/ccgoisindicators/mental-health-ccg41",
+					"/about/what-we-do/our-programmes/nice-guidance/nice-technology-appraisal-guidance/data",
 				destination:
-					"/indicators/IND26-depression-and-anxiety-recovery-following-talking-therapies",
+					"/what-nice-does/our-guidance/about-technology-appraisal-guidance",
 				permanent: true,
 			},
 			{
-				source: "/standards-and-indicators/ccgoisindicators/smoking-ccg44",
+				source:
+					"/about/what-we-do/our-programmes/nice-guidance/nice-guidelines/shared-decision-making",
 				destination:
-					"/indicators/IND27-smoking-current-smokers-bipolar-schizophrenia-and-other-psychoses",
+					"/what-nice-does/our-guidance/about-nice-guidelines/about-shared-decision-making",
 				permanent: true,
 			},
 			{
-				source: "/standards-and-indicators/ccgoisindicators/stroke-ccg45",
+				source:
+					"/about/what-we-do/our-programmes/nice-guidance/nice-guidelines/types-of-guideline",
 				destination:
-					"/indicators/IND28-stroke-and-ischaemic-attack-mortality-within-30-days",
+					"/what-nice-does/our-guidance/about-nice-guidelines/how-we-develop-nice-guidelines",
 				permanent: true,
 			},
 			{
-				source: "/standards-and-indicators/ccgoisindicators/stroke-ccg47",
+				source:
+					"/about/what-we-do/evidence-services/journals-and-databases/openathens/access",
 				destination:
-					"/indicators/IND30-stroke-and-ischaemic-attack-care-plan-on-discharge",
+					"/library-and-knowledge-services/openathens/openathens-access",
 				permanent: true,
 			},
 			{
-				source: "/standards-and-indicators/ccgoisindicators/stroke-ccg48",
+				source:
+					"/about/nice-communities/social-care/quick-guides/developing-a-positive-working-culture-for-supporting-disabled-children-and-young-people-with-severe-complex-needs",
 				destination:
-					"/indicators/IND31-stroke-and-ischaemic-attack-review-6-months-after-discharge",
+					"/implementing-nice-guidance/social-care/quick-guides-to-social-care-topics",
 				permanent: true,
 			},
 			{
-				source: "/standards-and-indicators/ccgoisindicators/stroke-ccg49",
+				source:
+					"/about/nice-communities/social-care/quick-guides/improving-young-people-s-experiences-in-transition-to-and-from-inpatient-mental-health-settings",
 				destination:
-					"/indicators/IND32-stroke-and-ischaemic-attack-early-supported-discharge",
+					"/implementing-nice-guidance/social-care/quick-guides-to-social-care-topics",
 				permanent: true,
 			},
 			{
-				source: "/standards-and-indicators/ccgoisindicators/stroke-ccg50",
+				source:
+					"/about/nice-communities/library-and-knowledge-services-staff/buy-books--journals-and-databases/organisations-eligible-to-use-the-framework",
 				destination:
-					"/indicators/IND33-stroke-and-ischaemic-attack-thrombolysis",
+					"/library-and-knowledge-services/buy-books-journals-and-databases",
 				permanent: true,
 			},
 			{
-				source: "/standards-and-indicators/ccgoisindicators/stroke-ccg51",
+				source:
+					"/about/nice-communities/social-care/quick-guides/promoting-wellbeing-and-positive-identity-for-a-child-or-young-person-who-is-looked-after",
 				destination:
-					"/indicators/IND34-stroke-and-ischaemic-attack-4-hour-admission-to-a-stroke-unit",
+					"/implementing-nice-guidance/social-care/quick-guides-to-social-care-topics",
 				permanent: true,
 			},
 			{
-				source: "/standards-and-indicators/ccgoisindicators/stroke-ccg52",
+				source:
+					"/about/nice-communities/social-care/quick-guides/arranging-services-for-people-with-a-learning-disability-and-behaviour-that-challenges",
 				destination:
-					"/indicators/IND35-stroke-and-ischaemic-attack-90-of-time-on-a-stroke-unit",
+					"/implementing-nice-guidance/social-care/quick-guides-to-social-care-topics",
 				permanent: true,
 			},
 			{
-				source: "/standards-and-indicators/ccgoisindicators/stroke-ccg53",
+				source:
+					"/about/nice-communities/social-care/quick-guides/supporting-people-who-provide-unpaid-care-for-adults-with-health-or-social-care-needs",
 				destination:
-					"/indicators/IND36-stroke-and-ischaemic-attack-4-hour-swallowing-assessment",
+					"/implementing-nice-guidance/social-care/quick-guides-to-social-care-topics",
 				permanent: true,
 			},
 			{
 				source:
-					"/standards-and-indicators/ccgoisindicators/proportion-of-people-treated-by-iapt-for-anxiety-disorders-who-return-to-full-function",
+					"/about/nice-communities/library-and-knowledge-services-staff/buy-books--journals-and-databases/purchasing-steps--further-competition",
 				destination:
-					"/indicators/IND37-depression-and-anxiety-recovery-post-iapt",
+					"/library-and-knowledge-services/buy-books-journals-and-databases/purchasing-steps-further-competition",
 				permanent: true,
 			},
 			{
 				source:
-					"/standards-and-indicators/ccgoisindicators/proportion-of-patients-with-atrial-fibrillation-on-anticoagulation-admitted-to-hospital-for-stroke",
+					"/about/nice-communities/library-and-knowledge-services-staff/buy-books--journals-and-databases/purchasing-steps--direct-awards",
 				destination:
-					"/indicators/IND38-atrial-fibrillation-admission-rates-stroke-on-anticoagulation",
+					"/library-and-knowledge-services/buy-books-journals-and-databases/purchasing-steps-direct-awards",
 				permanent: true,
 			},
 			{
 				source:
-					"/standards-and-indicators/ccgoisindicators/proportion-of-patients-with-atrial-fibrillation-not-on-anticoagulation-admitted-to-hospital-for-stroke",
+					"/about/nice-communities/library-and-knowledge-services-staff/buy-books-journals-and-databases/purchasing-steps--direct-awards",
 				destination:
-					"/indicators/IND39-atrial-fibrillation-admission-rates-stroke-not-on-anticoagulation",
+					"/library-and-knowledge-services/buy-books-journals-and-databases/purchasing-steps-direct-awards",
 				permanent: true,
 			},
 			{
 				source:
-					"/standards-and-indicators/ccgoisindicators/admission-rates-for-people-with-diabetes-due-to-complications-associated-with-diabetes",
-				destination: "/indicators/IND40-diabetes-admission-rates-complications",
+					"/about/nice-communities/social-care/quick-guides/helping-to-prevent-winter-deaths-and-illnesses-associated-with-cold-homes",
+				destination:
+					"/implementing-nice-guidance/social-care/quick-guides-to-social-care-topics",
 				permanent: true,
 			},
 			{
 				source:
-					"/standards-and-indicators/ccgoisindicators/admissions-rates-due-to-angina-in-people-with-diabetes",
-				destination: "/indicators/IND41-diabetes-admission-rates-angina",
+					"/get-involved/our-committees/what-lay-members-do/lay-member-payments-and-expenses/how-lay-member-payments-affect-benefits",
+				destination: "/get-involved/our-committees",
 				permanent: true,
 			},
 			{
 				source:
-					"/standards-and-indicators/ccgoisindicators/admissions-rates-due-to-myocardial-infarction-in-people-with-diabetes",
-				destination: "/indicators/IND42-diabetes-admission-rates-mi",
+					"/about/what-we-do/life-sciences/scientific-advice/european-health-technology-assessment-and-regulatory-concurrent-advice",
+				destination:
+					"/what-nice-does/life-sciences-how-to-get-your-product-to-market/nice-advice-service",
 				permanent: true,
 			},
 			{
 				source:
-					"/standards-and-indicators/ccgoisindicators/admission-rates-due-to-heart-failure-in-people-with-diabetes",
-				destination: "/indicators/IND43-diabetes-admission-rates-heart-failure",
+					"/about/what-we-do/our-programmes/nice-guidance/reviewing-our-process-for-health-technology-evaluation--consultation",
+				destination:
+					"/what-nice-does/our-guidance/about-technology-appraisal-guidance",
 				permanent: true,
 			},
 			{
 				source:
-					"/standards-and-indicators/ccgoisindicators/admission-rates-due-to-stroke-in-people-with-diabetes",
-				destination: "/indicators/IND44-diabetes-admission-rates-stroke",
+					"/about/nice-communities/library-and-knowledge-services-staff/buy-books-journals-and-databases/provider-information",
+				destination:
+					"/library-and-knowledge-services/buy-books-journals-and-databases/provider-information",
 				permanent: true,
 			},
 			{
 				source:
-					"/standards-and-indicators/ccgoisindicators/admissions-rates-for-renal-replacement-therapy-in-people-with-diabetes",
+					"/about/nice-communities/social-care/quick-guides-for-social-care/therapeutic-interventions-after-abuse-and-neglect",
 				destination:
-					"/indicators/IND45-diabetes-admission-rates-renal-replacement-therapy",
+					"/implementing-nice-guidance/social-care/quick-guides-to-social-care-topics",
 				permanent: true,
 			},
 			{
 				source:
-					"/standards-and-indicators/ccgoisindicators/admission-rates-due-to-diabetic-ketoacidosis-in-people-with-diabetes",
-				destination: "/indicators/IND46-diabetes-admission-rates-ketoacidosis",
+					"/about/what-we-do/evidence-and-best-practice-resources/evidence-search/evidence-search-service-closure-information",
+				destination: "/library-and-knowledge-services",
 				permanent: true,
 			},
 			{
 				source:
-					"/standards-and-indicators/ccgoisindicators/admission-rates-due-to-lower-limb-amputations-in-people-with-diabetes",
+					"/about/nice-communities/social-care/quick-guides-for-social-care/promoting-independence-through-intermediate-care",
 				destination:
-					"/indicators/IND47-diabetes-admission-rates-lower-limb-amputation",
+					"/implementing-nice-guidance/social-care/quick-guides-to-social-care-topics",
 				permanent: true,
 			},
 			{
 				source:
-					"/standards-and-indicators/ccgoisindicators/proportion-of-children-and-young-people-with-diabetes-who-receive-the-following-individual-care-processes-in-the-past-12-months",
+					"/about/nice-communities/nice-and-the-public/public-involvement/getting-involved-as-someone-with-lived-experience",
 				destination:
-					"/indicators/IND48-diabetes-annual-care-processes-children",
+					"/get-involved/people-and-communities/getting-involved-as-someone-with-lived-experience",
 				permanent: true,
 			},
 			{
 				source:
-					"/standards-and-indicators/ccgoisindicators/proportion-of-children-and-young-people-with-diabetes-who-have-had-their-glycated-haemoglobin-a1c-hba1c-monitored-in-the-previous-12-months",
-				destination: "/indicators/IND49-diabetes-annual-hba1c-children",
+					"/about/what-we-do/life-sciences/nice-advice-service/models-for-the-evaluation-and-purchase-of-antimicrobials",
+				destination:
+					"/what-nice-does/life-sciences-how-to-get-your-product-to-market/a-new-model-for-evaluating-and-purchasing-antimicrobials-in-the-uk",
+				permanent: true,
+			},
+			{
+				source:
+					"/about/what-we-do/life-sciences/office-for-market-access/identify-the-most-appropriate-routes-to-nhs-access",
+				destination:
+					"/what-nice-does/life-sciences-how-to-get-your-product-to-market/nice-advice-service/nice-advice-working-on-your-objectives",
 				permanent: true,
 			},
 			{
 				source:
-					"/standards-and-indicators/ccgoisindicators/proportion-of-children-and-young-people-years-with-diabetes-who-have-had-their-body-mass-index-bmi-recorded",
-				destination: "/indicators/IND50-diabetes-annual-bmi-children",
+					"/about/nice-communities/social-care/quick-guides/recognising-and-responding-to-domestic-violence-and-abuse",
+				destination:
+					"/implementing-nice-guidance/social-care/quick-guides-to-social-care-topics",
 				permanent: true,
 			},
 			{
 				source:
-					"/standards-and-indicators/ccgoisindicators/proportion-of-young-people-aged-12-18-years-with-diabetes-who-have-had-their-blood-pressure-recorded-in-the-previous-12-months",
+					"/about/what-we-do/life-sciences/scientific-advice/models-for-the-evaluation-and-purchase-of-antimicrobials",
 				destination:
-					"/indicators/IND51-diabetes-annual-blood-pressure-children",
+					"/what-nice-does/life-sciences-how-to-get-your-product-to-market/nice-advice-service",
 				permanent: true,
 			},
 			{
 				source:
-					"/standards-and-indicators/ccgoisindicators/proportion-of-young-people-aged-12-18-years-with-diabetes-who-have-had-their-urinary-albumin-recorded-in-the-previous-12-months",
+					"/about/what-we-do/life-sciences/office-for-market-access/changing-healthcare-landscape-and-your-technology",
 				destination:
-					"/indicators/IND52-diabetes-annual-urinary-albumin-children",
+					"/what-nice-does/life-sciences-how-to-get-your-product-to-market/nice-advice-service",
 				permanent: true,
 			},
 			{
 				source:
-					"/standards-and-indicators/ccgoisindicators/proportion-of-young-people-aged-12-18-years-with-diabetes-who-have-a-record-of-eye-screening-in-the-previous-12-months",
-				destination: "/indicators/IND53-diabetes-annual-eye-screening-children",
+					"/about/nice-communities/social-care/quick-guides/dementia-discussing-and-planning-support-after-diagnosis",
+				destination:
+					"/implementing-nice-guidance/social-care/quick-guides-to-social-care-topics",
 				permanent: true,
 			},
 			{
 				source:
-					"/standards-and-indicators/ccgoisindicators/proportion-of-children-and-young-people-aged-12-18-years-with-diabetes-who-have-a-record-of-a-foot-examination-in-the-previous-12-months",
+					"/about/nice-communities/nice-and-the-public/public-involvement/nice-voluntary-and-community-sector-forum",
 				destination:
-					"/indicators/IND54-diabetes-annual-foot-examination-children",
+					"/get-involved/people-and-communities/getting-involved-as-a-voluntary-and-community-sector-organisation/nice-voluntary-and-community-sector-forum",
 				permanent: true,
 			},
 			{
 				source:
-					"/standards-and-indicators/ccgoisindicators/proportion-of-young-people-age-12-18-who-have-had-their-smoking-status-recorded-in-the-previous-12-months",
+					"/about/nice-communities/nice-and-the-public/public-involvement/public-involvement-programme-expert-panel",
 				destination:
-					"/indicators/IND55-diabetes-annual-smoking-status-children",
+					"/get-involved/people-and-communities/getting-involved-as-someone-with-lived-experience/join-our-people-and-communities-network",
 				permanent: true,
 			},
 			{
 				source:
-					"/standards-and-indicators/ccgoisindicators/proportion-of-children-and-young-people-with-type-1-diabetes-who-have-been-screened-for-thyroid-and-coeliac-disease",
+					"/about/nice-communities/social-care/quick-guides/building-independence-through-planning-for-transition",
 				destination:
-					"/indicators/IND56-diabetes-thyroid-disease-screening-children",
+					"/implementing-nice-guidance/social-care/quick-guides-to-social-care-topics",
 				permanent: true,
 			},
 			{
 				source:
-					"/standards-and-indicators/ccgoisindicators/proportion-of-children-and-young-people-with-diabetes-who-have-received-a-psychological-assessment-in-the-previous-12-months",
+					"/about/nice-communities/social-care/quick-guides/moving-between-hospital-and-home-including-care-homes",
 				destination:
-					"/indicators/IND57-diabetes-annual-psychological-assessment-children",
+					"/implementing-nice-guidance/social-care/quick-guides-to-social-care-topics",
 				permanent: true,
 			},
 			{
 				source:
-					"/standards-and-indicators/ccgoisindicators/rates-of-hysterectomy",
+					"/about/nice-communities/social-care/quick-guides/promoting-positive-mental-wellbeing-for-older-people",
 				destination:
-					"/indicators/IND58-gynaecological-conditions-rates-of-hysterectomy-heavy-menstrual-bleeding",
+					"/implementing-nice-guidance/social-care/quick-guides-to-social-care-topics",
 				permanent: true,
 			},
 			{
 				source:
-					"/standards-and-indicators/ccgoisindicators/rates-of-endometrial-ablation",
+					"/about/nice-communities/nice-and-the-public/public-involvement/patient-and-public-involvement-policy",
 				destination:
-					"/indicators/IND59-gynaecological-conditions-rates-of-endometrial-ablation-heavy-menstrual-bleeding",
+					"/get-involved/people-and-communities/patient-and-public-involvement-policy",
 				permanent: true,
 			},
 			{
 				source:
-					"/standards-and-indicators/ccgoisindicators/readmission-rates-for-surgical-site-infections-within-30-days-of-discharge-from-surgery",
+					"/about/nice-communities/social-care/quick-guides/reducing-the-risk-violent-and-aggressive-behaviours",
 				destination:
-					"/indicators/IND60-healthcare-associated-infections-readmission-rates",
+					"/implementing-nice-guidance/social-care/quick-guides-to-social-care-topics",
 				permanent: true,
 			},
 			{
 				source:
-					"/standards-and-indicators/ccgoisindicators/mortality-rates-directly-associated-with-vte",
+					"/about/nice-communities/social-care/quick-guides/what-to-expect-during-assessment-and-care-planning",
 				destination:
-					"/indicators/IND61-embolism-and-thrombosis-mortality-rates-from-vte",
+					"/implementing-nice-guidance/social-care/quick-guides-to-social-care-topics",
 				permanent: true,
 			},
 			{
 				source:
-					"/standards-and-indicators/ccgoisindicators/proportion-of-pregnant-women-accessing-antenatal-care-who-are-seen-for-booking-by-10-weeks-and-0-days",
-				destination: "/indicators/IND62-pregnancy-10-week-booking-appointment",
+					"/about/what-we-do/our-programmes/nice-advice/evidence-summaries-medicines-and-prescribing-briefings",
+				destination:
+					"/what-nice-does/life-sciences-how-to-get-your-product-to-market/nice-advice-service",
 				permanent: true,
 			},
 			{
 				source:
-					"/standards-and-indicators/ccgoisindicators/proportion-of-pregnant-women-who-were-asked-about-their-mental-health-at-their-first-booking-appointment",
+					"/about/nice-communities/social-care/quick-guides/assessment-and-diagnosis-of-autism-what-to-expect",
 				destination:
-					"/indicators/IND63-pregnancy-and-neonates-mental-health-at-booking-appointment",
+					"/implementing-nice-guidance/social-care/quick-guides-to-social-care-topics",
+				permanent: true,
+			},
+			{
+				source:
+					"/about/who-we-are/board/public-board-meetings/public-board-meeting-agenda-and-papers--january-2022",
+				destination: "/about-us/our-board/public-board-meetings/2022",
+				permanent: true,
+			},
+			{
+				source:
+					"/about/what-we-do/our-programmes/commissioning-support-programme/how-we-support-policy-development",
+				destination: "/what-nice-does",
 				permanent: true,
 			},
 			{
 				source:
-					"/standards-and-indicators/ccgoisindicators/the-proportion-of-eligible-people-aged-60-74-years-whose-record-shows-a-bowel-screening-test-has-been-performed-within-the-last-2-5-years",
-				destination: "/indicators/IND64-cancer-bowel-screening-60-to-74-years",
+					"/about/what-we-do/our-programmes/nice-advice/evidence-summaries-unlicensed-or-off-label-medicines",
+				destination:
+					"/what-nice-does/life-sciences-how-to-get-your-product-to-market/nice-advice-service",
 				permanent: true,
 			},
 			{
 				source:
-					"/standards-and-indicators/ccgoisindicators/the-proportion-of-women-aged-50-70-years-whose-record-shows-a-breast-screening-test-has-been-performed-within-the-last-3-years",
-				destination: "/indicators/IND65-cancer-breast-screening-50-to-70-years",
+					"/about/nice-communities/social-care/quick-guides/evidence-for-strengths-and-asset-based-outcomes",
+				destination:
+					"/implementing-nice-guidance/social-care/quick-guides-to-social-care-topics",
 				permanent: true,
 			},
 			{
 				source:
-					"/standards-and-indicators/ccgoisindicators/the-proportion-of-babies-with-a-not-suspected-result-for-all-the-conditions-tested-for-by-newborn-blood-spot-testing-who-have-a-results-letter-sent-to-their-parents-directly-from-the-child-health-information-service-chis-within-6-weeks-of-birth",
+					"/about/who-we-are/board/public-board-meetings/public-board-meeting-agenda-and-papers--march-2022",
 				destination:
-					"/indicators/IND66-pregnancy-and-neonates-newborn-blood-spot-test-communication-within-6-weeks-of-birth",
+					"/about-us/our-board/public-board-meetings/2022/public-board-meeting-agenda-and-papers-march-2022",
 				permanent: true,
 			},
 			{
 				source:
-					"/standards-and-indicators/ccgoisindicators/the-proportion-of-babies-with-a-not-suspected-result-for-all-the-conditions-tested-for-by-newborn-blood-spot-testing-who-have-a-results-letter-sent-to-their-parents-directly-from-the-child-health-information-service-chis-within-6-weeks-of-notification-of-",
+					"/about/nice-communities/social-care/quick-guides/improving-oral-health-for-adults-in-care-homes",
 				destination:
-					"/indicators/IND67-pregnancy-and-neonates-newborn-blood-spot-test-communication-with-6-weeks-of-movement-in",
+					"/implementing-nice-guidance/social-care/quick-guides-to-social-care-topics",
+				permanent: true,
+			},
+			{
+				source:
+					"/about/what-we-do/nice-international/about-nice-international/nice-international-advisory-group",
+				destination: "/what-nice-does/nice-international",
 				permanent: true,
 			},
 			{
 				source:
-					"/standards-and-indicators/ccgoisindicators/the-proportion-of-eligible-people-with-diabetes-who-have-not-attended-for-diabetic-eye-screening-in-the-previous-3-years",
+					"/about/what-we-do/our-programmes/nice-guidance/nice-medical-technologies-evaluation-programme",
 				destination:
-					"/indicators/IND68-diabetes-did-not-attend-retinal-screening",
+					"/what-nice-does/our-guidance/about-medical-technologies-guidance/get-a-medical-technology-evaluated",
 				permanent: true,
 			},
 			{
 				source:
-					"/standards-and-indicators/ccgoisindicators/the-proportion-of-eligible-people-with-diabetes-who-are-offered-an-appointment-for-diabetic-eye-screening",
-				destination: "/indicators/IND69-diabetes-offered-retinal-screening",
+					"/about/what-we-do/our-programmes/nice-guidance/nice-medical-technologies-guidance#static-list",
+				destination:
+					"/what-nice-does/our-guidance/about-medical-technologies-guidance/medical-technologies-guidance-static-list",
 				permanent: true,
 			},
 			{
 				source:
-					"/standards-and-indicators/ccgoisindicators/the-proportion-of-eligible-people-with-diabetes-who-are-suspended-from-diabetic-eye-screening-due-to-previous-screening-results",
+					"/About/What-we-do/Our-Programmes/NICE-guidance/NICE-highly-specialised-technologies-guidance",
 				destination:
-					"/indicators/IND70-diabetes-suspended-from-retinal-screening",
+					"/what-nice-does/our-guidance/about-highly-specialised-technologies-guidance",
 				permanent: true,
 			},
 			{
 				source:
-					"/standards-and-indicators/ccgoisindicators/the-proportion-of-eligible-people-with-diabetes-who-are-excluded-from-diabetic-eye-screening-as-they-have-opted-out-or-are-classed-as-medically-unfit",
+					"/about/nice-communities/nice-and-the-public/public-involvement/support-for-vcs-organisations",
 				destination:
-					"/indicators/IND71-diabetes-excluded-from-retinal-screening",
+					"/get-involved/people-and-communities/getting-involved-as-a-voluntary-and-community-sector-organisation",
 				permanent: true,
 			},
 			{
 				source:
-					"/standards-and-indicators/ccgoisindicators/the-proportion-of-patients-with-st-segment-elevation-myocardial-infarction-stemi-who-had-coronary-reperfusion-therapy",
+					"/about/nice-communities/social-care/quick-guides/effective-record-keeping-ordering-medicines",
 				destination:
-					"/indicators/IND72-myocardial-infarction-coronary-reperfusion",
+					"/implementing-nice-guidance/social-care/quick-guides-to-social-care-topics",
 				permanent: true,
 			},
 			{
 				source:
-					"/Standards-and-Indicators/CCGOISIndicators/the-proportion-of-patients-with-st-segment-elevation-myocardial-infarction-stemi-who-had-balloon-inflation-for-primary-percutaneous-coronary-intervention-pci-in-less-than-60-minutes-from-time-of-admission-at-a-centre-with-primary-pci-facilities",
+					"/about/nice-communities/social-care/quick-guides/enabling-positive-lives-for-autistic-adults",
 				destination:
-					"/indicators/IND73-myocardial-infarction-pci-in-less-than-60-minutes",
+					"/implementing-nice-guidance/social-care/quick-guides-to-social-care-topics",
 				permanent: true,
 			},
 			{
 				source:
-					"/standards-and-indicators/ccgoisindicators/the-proportion-of-patients-with-st-segment-elevation-myocardial-infarction-stemi-who-had-balloon-inflation-for-primary-percutaneous-coronary-intervention-pci-in-less-than-60-minutes-from-time-of-admission-at-a-centre-with-primary-pci-facilities",
+					"/about/what-we-do/life-sciences/scientific-advice/european-early-dialogues-scientific-advice",
 				destination:
-					"/indicators/IND73-myocardial-infarction-pci-in-less-than-60-minutes",
+					"/what-nice-does/life-sciences-how-to-get-your-product-to-market/nice-advice-service",
 				permanent: true,
 			},
 			{
 				source:
-					"/Standards-and-Indicators/CCGOISIndicators/the-time-between-call-for-help-and-balloon-inflation-for-patients-with-st-segment-elevation-myocardial-infarction-stemi-undergoing-reperfusion-by-primary-percutaneous-coronary-intervention-pci",
-				destination: "/indicators/IND74-myocardial-infarction-pci-rates",
+					"/about/nice-communities/nice-and-the-public/public-involvement/public-involvement-programme",
+				destination: "/get-involved/people-and-communities",
 				permanent: true,
 			},
 			{
 				source:
-					"/standards-and-indicators/ccgoisindicators/the-time-between-call-for-help-and-balloon-inflation-for-patients-with-st-segment-elevation-myocardial-infarction-stemi-undergoing-reperfusion-by-primary-percutaneous-coronary-intervention-pci",
-				destination: "/indicators/IND74-myocardial-infarction-pci-rates",
+					"/about/what-we-do/nice-international/about-nice-international/nice-international-associates",
+				destination: "/what-nice-does/nice-international",
 				permanent: true,
 			},
 			{
 				source:
-					"/standards-and-indicators/ccgoisindicators/the-proportion-of-patients-with-acute-myocardial-infarction-with-measurement-of-left-ventricular-ejection-fraction-before-discharge",
+					"/about/nice-communities/social-care/quick-guides/discussing-and-planning-medicines-support",
 				destination:
-					"/indicators/IND75-myocardial-infarction-measurement-of-ejection-fraction",
+					"/implementing-nice-guidance/social-care/quick-guides-to-social-care-topics",
 				permanent: true,
 			},
 			{
 				source:
-					"/Standards-and-Indicators/CCGOISIndicators/the-proportion-of-patients-with-acute-myocardial-infarction-who-were-discharged-on-dual-antiplatelet-therapy",
+					"/about/what-we-do/life-sciences/office-for-market-access/early-access-to-medicines-scheme",
 				destination:
-					"/indicators/IND76-myocardial-infarction-dual-antiplatelets",
+					"/what-nice-does/life-sciences-how-to-get-your-product-to-market/nice-advice-service",
 				permanent: true,
 			},
 			{
 				source:
-					"/standards-and-indicators/ccgoisindicators/the-proportion-of-patients-with-acute-myocardial-infarction-who-were-discharged-on-dual-antiplatelet-therapy",
+					"/about/what-we-do/life-sciences/office-for-market-access/exploring-your-value-proposition",
 				destination:
-					"/indicators/IND76-myocardial-infarction-dual-antiplatelets",
+					"/what-nice-does/life-sciences-how-to-get-your-product-to-market/nice-advice-service",
 				permanent: true,
 			},
 			{
 				source:
-					"/standards-and-indicators/ccgoisindicators/the-proportion-of-babies-with-a-screen-positive-newborn-hip-result-who-attend-for-ultrasound-scan-of-the-hips-within-the-designated-timescale",
-				destination: "/indicators/IND77-pregnancy-and-neonates-hip-screening",
+					"/about/what-we-do/life-sciences/office-for-market-access/safe-harbour-engagement-meetings",
+				destination:
+					"/what-nice-does/life-sciences-how-to-get-your-product-to-market/nice-advice-service",
 				permanent: true,
 			},
 			{
 				source:
-					"/standards-and-indicators/gpqualityimprovements/the-percentage-of-women-under-the-age-of-55-years-who-are-taking-antiepileptic-drugs",
+					"/About/What-we-do/Our-Programmes/NICE-guidance/NICE-about-medical-technologies-guidance",
 				destination:
-					"/indicators/IND78-contraception-advice-for-people-taking-anti-seizure-medication",
+					"/what-nice-does/our-guidance/about-medical-technologies-guidance",
 				permanent: true,
 			},
 			{
 				source:
-					"/standards-and-indicators/gpqualityimprovements/percentage-of-patients-on-the-learning-disability-register-with-down-s-syndrome-aged-18-and-over-who-have-a-record-of-blood-tsh-in-the-previous-15-months-excluding-those-who-are-on-the-thyroid-disease-register",
-				destination: "/indicators/IND79-learning-disabilities-annual-tsh-test",
+					"/About/What-we-do/Our-Programmes/NICE-guidance/NICE-about-technology-appraisal-guidance",
+				destination:
+					"/what-nice-does/our-guidance/about-technology-appraisal-guidance",
 				permanent: true,
 			},
 			{
 				source:
-					"/standards-and-indicators/gpqualityimprovements/the-percentage-of-patients-with-a-new-diagnosis-of-dementia-recorded-in-the-preceding-1-april-to-31-march-with-a-record-of-fbc-calcium-glucose-renal-and-liver-function-thyroid-function-tests-serum-vitamin-b12-and-folate-levels-recorded-between-6-months-be",
+					"/about/nice-communities/nice-and-the-public/public-involvement/making-a-positive-impact",
 				destination:
-					"/indicators/IND80-dementia-target-organ-damage-new-diagnoses",
+					"/get-involved/people-and-communities/making-a-positive-impact-people-and-communities-network-case-studies",
 				permanent: true,
 			},
 			{
 				source:
-					"/standards-and-indicators/qofindicators/the-percentage-of-patients-with-diabetes-with-a-record-of-a-foot-examination-and-risk-classification-1-low-risk-normal-sensation-palpable-pulses-2-increased-risk-neuropathy-or-absent-pulses-3-high-risk-neuropathy-or-absent-pulses-plus-deformity-or-skin-ch",
+					"/about/nice-communities/social-care/quick-guides/good-practice-in-safeguarding-training",
 				destination:
-					"/indicators/IND81-diabetes-annual-foot-exam-and-risk-classification",
+					"/implementing-nice-guidance/social-care/quick-guides-to-social-care-topics",
 				permanent: true,
 			},
 			{
 				source:
-					"/standards-and-indicators/qofindicators/the-percentage-of-patients-with-schizophrenia-bipolar-affective-disorder-and-other-psychoses-who-have-a-record-of-alcohol-consumption-in-the-preceding-15-months",
+					"/About/What-we-do/Our-Programmes/NICE-guidance/NICE-interventional-procedures-guidance",
 				destination:
-					"/indicators/IND82-bipolar-schizophrenia-and-other-psychoses-annual-record-of-alcohol-consumption",
+					"/what-nice-does/our-guidance/about-interventional-procedures-guidance",
+				permanent: true,
+			},
+			{
+				source:
+					"/about/what-we-do/our-programmes/commissioning-support-programme/policy-working-groups",
+				destination: "/what-nice-does",
 				permanent: true,
 			},
 			{
 				source:
-					"/standards-and-indicators/qofindicators/the-percentage-of-patients-with-schizophrenia-bipolar-affective-disorder-and-other-psychoses-who-have-a-record-of-bmi-in-the-preceding-15-months",
+					"/about/what-we-do/our-programmes/nice-guidance/chte-methods-and-processes-consultation",
 				destination:
-					"/indicators/IND83-bipolar-schizophrenia-and-other-psychoses-annual-bmi-recording",
+					"/what-nice-does/our-guidance/about-technology-appraisal-guidance",
 				permanent: true,
 			},
 			{
 				source:
-					"/standards-and-indicators/qofindicators/the-percentage-of-patients-with-schizophrenia-bipolar-affective-disorder-and-other-psychoses-who-have-a-record-of-blood-pressure-in-the-preceding-15-months",
+					"/about/nice-communities/social-care/quick-guides/recognising-and-preventing-delirium",
 				destination:
-					"/indicators/IND84-bipolar-schizophrenia-and-other-psychoses-annual-blood-pressure",
+					"/implementing-nice-guidance/social-care/quick-guides-to-social-care-topics",
 				permanent: true,
 			},
 			{
 				source:
-					"/standards-and-indicators/gpqualityimprovements/the-percentage-of-women-aged-25-or-over-and-who-have-not-attained-the-age-of-65-with-schizophrenia-bipolar-affective-disorder-and-other-psychoses-whose-notes-record-that-a-cervical-screening-test-has-been-performed-in-the-preceding-5-years",
+					"/about/what-we-do/into-practice/measuring-the-impact-of-nice-guidance/uptake-reports",
 				destination:
-					"/indicators/IND85-bipolar-schizophrenia-and-other-psychoses-cervical-screening",
+					"/implementing-nice-guidance/measuring-the-use-of-nice-guidance",
 				permanent: true,
 			},
 			{
 				source:
-					"/standards-and-indicators/gpqualityimprovements/the-percentage-of-patients-on-lithium-therapy-with-a-record-of-serum-creatinine-and-tsh-in-the-preceding-9-months",
+					"/about/what-we-do/life-sciences/nice-advice-service/early-access-to-medicines-scheme",
 				destination:
-					"/indicators/IND86-bipolar-schizophrenia-and-other-psychoses-target-organ-damage",
+					"/what-nice-does/life-sciences-how-to-get-your-product-to-market/early-access-to-medicines-scheme-eams",
 				permanent: true,
 			},
 			{
 				source:
-					"/standards-and-indicators/gpqualityimprovements/the-percentage-of-patients-on-lithium-therapy-with-a-record-of-lithium-levels-in-the-therapeutic-range-within-the-previous-4-months",
+					"/about/nice-communities/social-care/quick-guides/helping-to-prevent-pressure-ulcers",
 				destination:
-					"/indicators/IND87-bipolar-schizophrenia-and-other-psychoses-lithium-levels-in-therapeutic-range",
+					"/implementing-nice-guidance/social-care/quick-guides-to-social-care-topics",
 				permanent: true,
 			},
 			{
 				source:
-					"/standards-and-indicators/qofindicators/the-percentage-of-patients-newly-diagnosed-with-diabetes-on-the-register-in-the-preceding-1-april-to-31-march-who-have-a-record-of-being-referred-to-a-structured-education-programme-within-9-months-after-entry-on-to-the-diabetes-register",
+					"/about/what-we-do/our-programmes/nice-guidance/antimicrobial-prescribing-guidelines",
 				destination:
-					"/indicators/IND88-diabetes-referral-for-structured-education",
+					"/guidance/health-protection/communicable-diseases/antimicrobial-stewardship",
 				permanent: true,
 			},
 			{
 				source:
-					"/standards-and-indicators/qofindicators/the-percentage-of-patients-with-diabetes-who-have-a-record-of-a-dietary-review-by-a-suitably-competent-professional-in-the-preceding-15-months",
-				destination: "/indicators/IND89-diabetes-annual-dietary-review",
+					"/about/what-we-do/evidence-services/journals-and-databases/hdas-closure-information",
+				destination: "/library-and-knowledge-services",
 				permanent: true,
 			},
 			{
 				source:
-					"/standards-and-indicators/qofindicators/the-contractor-establishes-and-maintains-a-register-of-patients-1-aged-50-or-over-and-who-have-not-attained-the-age-of-75-with-a-record-of-a-fragility-fracture-on-or-after-1-april-2012-and-a-diagnosis-of-osteoporosis-confirmed-on-dxa-scan-and-2-aged-75-or",
-				destination: "/indicators/IND90-osteoporosis-register",
+					"/about/nice-communities/social-care/quick-guides/better-home-care-for-older-people",
+				destination:
+					"/implementing-nice-guidance/social-care/quick-guides-to-social-care-topics",
 				permanent: true,
 			},
 			{
 				source:
-					"/standards-and-indicators/gpqualityimprovements/the-percentage-of-patients-aged-50-or-over-and-who-have-not-attained-the-age-of-75-with-a-record-of-a-fragility-fracture-on-or-after-1-april-2012-in-whom-osteoporosis-is-confirmed-on-dxa-scan-who-are-currently-treated-with-an-appropriate-bone-sparing-agen",
+					"/about/what-we-do/into-practice/measuring-the-uptake-of-nice-guidance/uptake-data",
 				destination:
-					"/indicators/IND91-osteoporosis-bone-sparing-agents-50-74-years",
+					"/implementing-nice-guidance/measuring-the-use-of-nice-guidance",
+				permanent: true,
+			},
+			{
+				source:
+					"/about/what-we-do/our-programmes/local-practice-collection/shared-learning-awards",
+				destination: "/what-nice-does",
 				permanent: true,
 			},
 			{
 				source:
-					"/Standards-and-Indicators/GPQualityImprovements/the-percentage-of-patients-aged-75-or-over-with-a-fragility-fracture-on-or-after-1-april-2012-who-are-currently-treated-with-an-appropriate-bone-sparing-agent",
+					"/About/What-we-do/Our-Programmes/NICE-guidance/NICE-medical-technologies-guidance",
 				destination:
-					"/indicators/IND92-osteoporosis-bone-sparing-agents-75-years-and-over",
+					"/what-nice-does/our-guidance/about-medical-technologies-guidance",
 				permanent: true,
 			},
 			{
 				source:
-					"/standards-and-indicators/gpqualityimprovements/the-percentage-of-patients-aged-75-or-over-with-a-fragility-fracture-on-or-after-1-april-2012-who-are-currently-treated-with-an-appropriate-bone-sparing-agent",
+					"/About/What-we-do/Our-Programmes/NICE-guidance/NICE-technology-appraisal-guidance",
 				destination:
-					"/indicators/IND92-osteoporosis-bone-sparing-agents-75-years-and-over",
+					"/what-nice-does/our-guidance/about-technology-appraisal-guidance",
 				permanent: true,
 			},
 			{
 				source:
-					"/standards-and-indicators/qofindicators/the-contractor-establishes-and-maintains-a-register-of-patients-with-peripheral-arterial-disease",
-				destination: "/indicators/IND93-peripheral-arterial-disease-register",
+					"/about/nice-communities/social-care/quick-guides/creating-a-safeguarding-culture",
+				destination:
+					"/implementing-nice-guidance/social-care/quick-guides-to-social-care-topics",
 				permanent: true,
 			},
 			{
 				source:
-					"/standards-and-indicators/qofindicators/the-percentage-of-patients-with-peripheral-arterial-disease-with-a-record-in-the-preceding-15-months-that-aspirin-or-an-alternative-anti-platelet-is-being-taken",
+					"/about/nice-communities/social-care/quick-guides/understanding-intermediate-care",
 				destination:
-					"/indicators/IND94-peripheral-arterial-disease-antiplatelets",
+					"/implementing-nice-guidance/social-care/quick-guides-to-social-care-topics",
 				permanent: true,
 			},
 			{
 				source:
-					"/standards-and-indicators/qofindicators/the-percentage-of-patients-with-hypertension-aged-16-to-74-years-in-whom-there-is-an-annual-assessment-of-physical-activity-using-gppaq-in-the-preceding-15-months",
+					"/about/what-we-do/into-practice/nice-resource-impact-assessments/learning-events",
 				destination:
-					"/indicators/IND95-hypertension-assessment-of-physical-activity",
+					"/implementing-nice-guidance/cost-saving-resource-planning-and-audit/assessing-the-resource-impact-of-nice-guidance",
+				permanent: true,
+			},
+			{
+				source:
+					"/about/what-we-do/our-programmes/commissioning-support-programme/working-with-us",
+				destination: "/what-nice-does",
 				permanent: true,
 			},
 			{
 				source:
-					"/standards-and-indicators/qofindicators/the-percentage-of-patients-with-hypertension-aged-16-to-74-years-who-score-less-than-active-on-gppaq-in-the-preceding-15-months-who-also-have-a-record-of-a-brief-intervention-in-the-preceding-15-months",
+					"/about/nice-communities/social-care/quick-guides/getting-help-to-overcome-abuse",
 				destination:
-					"/indicators/IND96-hypertension-brief-intervention-to-increase-physical-activity",
+					"/implementing-nice-guidance/social-care/quick-guides-to-social-care-topics",
 				permanent: true,
 			},
 			{
 				source:
-					"/standards-and-indicators/qofindicators/the-percentage-of-patients-with-any-or-any-combination-of-the-following-conditions-chd-pad-stroke-or-tia-hypertension-diabetes-copd-ckd-asthma-schizophrenia-bipolar-affective-disorder-or-other-psychoses-who-are-recorded-as-current-smokers-who-have-a-recor",
+					"/about/nice-communities/social-care/quick-guides/person-centred-future-planning",
 				destination:
-					"/indicators/IND97-smoking-smoking-status-for-people-with-long-term-conditions",
+					"/implementing-nice-guidance/social-care/quick-guides-to-social-care-topics",
 				permanent: true,
 			},
 			{
 				source:
-					"/standards-and-indicators/qofindicators/the-percentage-of-patients-with-any-or-any-combination-of-the-following-conditions-chd-pad-stroke-or-tia-hypertension-diabetes-copd-ckd-asthma-schizophrenia-bipolar-affective-disorder-or-other-psychoses-who-smoke-whose-notes-contain-a-record-of-an-offer-o",
+					"/about/what-we-do/life-sciences/scientific-advice/set-scientific-advice-process",
 				destination:
-					"/indicators/IND98-smoking-support-and-treatment-for-people-with-long-term-conditions-or-smi",
+					"/what-nice-does/life-sciences-how-to-get-your-product-to-market/nice-advice-service",
 				permanent: true,
 			},
 			{
 				source:
-					"/standards-and-indicators/qofindicators/the-percentage-of-patients-aged-15-years-and-over-who-are-recorded-as-current-smokers-who-have-a-record-of-an-offer-of-support-and-treatment-within-the-preceding-24-months",
+					"/about/what-we-do/life-sciences/scientific-advice/nice-cadth-scientific-advice",
 				destination:
-					"/indicators/IND99-smoking-support-and-treatment-all-patients",
+					"/what-nice-does/life-sciences-how-to-get-your-product-to-market/nice-advice-service",
 				permanent: true,
 			},
 			{
 				source:
-					"/standards-and-indicators/qofindicators/the-contractor-establishes-and-maintains-a-register-of-all-patients-aged-17-or-over-with-diabetes-mellitus-which-specifies-the-type-of-diabetes-where-a-diagnosis-has-been-confirmed",
-				destination: "/indicators/IND100-diabetes-register-including-type",
+					"/about/what-we-do/our-programmes/commissioning-support-programme/our-documents",
+				destination: "/what-nice-does",
 				permanent: true,
 			},
 			{
 				source:
-					"/standards-and-indicators/qofindicators/the-percentage-of-patients-with-copd-and-medical-research-council-mrc-dyspnoea-scale--3-at-any-time-in-the-preceding-15-months-with-a-subsequent-record-of-an-offer-of-referral-to-a-pulmonary-rehabilitation-programme",
-				destination: "/indicators/IND101-copd-offered-pulmonary-rehabilitation",
+					"/about/nice-communities/social-care/quick-guides/helping-to-prevent-infection",
+				destination:
+					"/implementing-nice-guidance/social-care/quick-guides-to-social-care-topics",
 				permanent: true,
 			},
 			{
 				source:
-					"/standards-and-indicators/qofindicators/the-percentage-of-patients-with-heart-failure-diagnosed-within-the-preceding-15-months-with-a-record-of-an-offer-of-referral-for-an-exercise-based-rehabilitation-programme",
+					"/about/what-we-do/life-sciences/scientific-advice/nice-mhra-scientific-advice",
 				destination:
-					"/indicators/IND102-heart-failure-referral-for-cardiac-rehabilitation",
+					"/what-nice-does/life-sciences-how-to-get-your-product-to-market/nice-advice-service",
 				permanent: true,
 			},
 			{
 				source:
-					"/standards-and-indicators/qofindicators/the-percentage-of-patients-with-a-new-diagnosis-of-depression-in-the-preceding-1-april-to-31-march-who-have-had-a-bio-psychosocial-assessment-by-the-point-of-diagnosis",
+					"/about/what-we-do/our-programmes/nice-advice/evidence-summaries-new-medicines",
 				destination:
-					"/indicators/IND103-depression-and-anxiety-biopsychosocial-assessment-at-diagnosis",
+					"/what-nice-does/life-sciences-how-to-get-your-product-to-market/nice-advice-service",
 				permanent: true,
 			},
 			{
 				source:
-					"/standards-and-indicators/qofindicators/the-percentage-of-patients-with-a-new-diagnosis-of-depression-in-the-preceding-1-april-to-31-march-who-have-been-reviewed-within-10-35-days-of-the-date-of-diagnosis",
+					"/about/nice-communities/nice-and-the-public/public-involvement/involving-you",
 				destination:
-					"/indicators/IND104-depression-and-anxiety-review-within-10-to-35-days",
+					"/get-involved/people-and-communities/involving-you-in-the-development-of-our-guidance",
 				permanent: true,
 			},
 			{
 				source:
-					"/standards-and-indicators/qofindicators/the-percentage-of-male-patients-with-diabetes-with-a-record-of-being-asked-about-erectile-dysfunction-in-the-preceding-15-months",
+					"/about/what-we-do/life-sciences/scientific-advice/frequently-asked-questions",
 				destination:
-					"/indicators/IND105-diabetes-asking-about-erectile-dysfunction",
+					"/what-nice-does/life-sciences-how-to-get-your-product-to-market/nice-advice-service",
 				permanent: true,
 			},
 			{
 				source:
-					"/standards-and-indicators/qofindicators/the-percentage-of-male-patients-with-diabetes-who-have-a-record-of-erectile-dysfunction-with-a-record-of-advice-and-assessment-of-contributory-factors-and-treatment-options-in-the-preceding-15-months",
+					"/about/what-we-do/our-programmes/nice-guidance/types-of-nice-recommendation",
 				destination:
-					"/indicators/IND106-diabetes-advice-for-erectile-dysfunction",
+					"/what-nice-does/our-guidance/types-of-recommendation-nice-can-make",
+				permanent: true,
+			},
+			{
+				source:
+					"/about/what-we-do/evidence-services/evidence-search/evidence-search-content",
+				destination: "/what-nice-does",
 				permanent: true,
 			},
 			{
 				source:
-					"/standards-and-indicators/qofindicators/the-practice-can-produce-a-register-of-all-patients-aged-16-years-and-over-with-rheumatoid-arthritis",
-				destination: "/indicators/IND107-rheumatoid-arthritis-register",
+					"/about/what-we-do/life-sciences/scientific-advice/express-scientific-advice",
+				destination:
+					"/what-nice-does/life-sciences-how-to-get-your-product-to-market/nice-advice-service",
 				permanent: true,
 			},
 			{
 				source:
-					"/standards-and-indicators/qofindicators/the-percentage-of-patients-with-rheumatoid-arthritis-aged-30-84-years-who-have-had-a-cardiovascular-risk-assessment-using-a-cvd-risk-assessment-tool-adjusted-for-ra-in-the-preceding-15-months",
+					"/about/nice-communities/social-care/quick-guides/giving-medicines-covertly",
 				destination:
-					"/indicators/IND108-rheumatoid-arthritis-cardiovascular-risk-assessment",
+					"/implementing-nice-guidance/social-care/quick-guides-to-social-care-topics",
 				permanent: true,
 			},
 			{
 				source:
-					"/standards-and-indicators/qofindicators/the-percentage-of-patients-aged-50-90-years-with-rheumatoid-arthritis-who-have-had-an-assessment-of-fracture-risk-using-a-risk-assessment-tool-adjusted-for-ra-in-the-preceding-27-months",
+					"/about/what-we-do/our-programmes/nice-advice/medtech-innovation-briefings",
 				destination:
-					"/indicators/IND109-rheumatoid-arthritis-fracture-risk-assessment",
+					"/what-nice-does/our-guidance/about-medical-technologies-guidance/medtech-innovation-briefings",
 				permanent: true,
 			},
 			{
 				source:
-					"/standards-and-indicators/qofindicators/the-percentage-of-patients-with-rheumatoid-arthritis-on-the-register-who-have-had-a-face-to-face-review-in-the-preceding-12-months",
-				destination: "/indicators/IND110-rheumatoid-arthritis-annual-review",
+					"/about/what-we-do/life-sciences/scientific-advice/devices-and-diagnostics",
+				destination:
+					"/what-nice-does/life-sciences-how-to-get-your-product-to-market/nice-advice-service",
 				permanent: true,
 			},
 			{
 				source:
-					"/standards-and-indicators/qofindicators/the-percentage-of-patients-with-diabetes-who-have-a-record-of-an-albumin-creatinine-ratio-acr-test-in-the-preceding-15-months",
+					"/about/what-we-do/life-sciences/scientific-advice/light-scientific-advice",
 				destination:
-					"/indicators/IND111-diabetes-annual-albumin-creatinine-test",
+					"/what-nice-does/life-sciences-how-to-get-your-product-to-market/nice-advice-service",
 				permanent: true,
 			},
 			{
 				source:
-					"/standards-and-indicators/qofindicators/the-percentage-of-patients-aged-40-years-and-over-with-a-blood-pressure-measurement-recorded-in-the-preceding-5-years",
+					"/about/what-we-do/life-sciences/scientific-advice/pharmaceutical-products",
 				destination:
-					"/indicators/IND112-cardiovascular-disease-prevention-blood-pressure-measurement-every-5-years",
+					"/what-nice-does/life-sciences-how-to-get-your-product-to-market/nice-advice-service",
+				permanent: true,
+			},
+			{
+				source:
+					"/about/what-we-do/our-programmes/commissioning-support-programme/our-work",
+				destination: "/what-nice-does",
+				permanent: true,
+			},
+			{
+				source:
+					"/About/What-we-do/Our-Programmes/NICE-guidance/NICE-diagnostics-guidance",
+				destination: "/what-nice-does/our-guidance/about-diagnostics-guidance",
 				permanent: true,
 			},
 			{
 				source:
-					"/standards-and-indicators/qofindicators/the-percentage-of-patients-with-cancer-diagnosed-within-the-preceding-15-months-who-have-a-review-recorded-as-occurring-within-3-months-of-the-practice-receiving-confirmation-of-the-diagnosis",
-				destination: "/indicators/IND113-cancer-3-month-review",
+					"/about/what-we-do/life-sciences/scientific-advice/education-and-training",
+				destination:
+					"/what-nice-does/life-sciences-how-to-get-your-product-to-market/nice-advice-service",
+				permanent: true,
+			},
+			{
+				source:
+					"/about/what-we-do/our-programmes/nice-guidance/chte-methods-consultation",
+				destination:
+					"/what-nice-does/our-guidance/about-technology-appraisal-guidance",
+				permanent: true,
+			},
+			{
+				source:
+					"/about/nice-communities/social-care/quick-guides/advance-care-planning",
+				destination:
+					"/implementing-nice-guidance/social-care/quick-guides-to-social-care-topics",
+				permanent: true,
+			},
+			{
+				source:
+					"/about/what-we-do/evidence-services/journals-and-databases/OpenAthens",
+				destination: "/library-and-knowledge-services/openathens",
+				permanent: true,
+			},
+			{
+				source:
+					"/about/what-we-do/into-practice/return-on-investment-tools/feedback",
+				destination:
+					"/implementing-nice-guidance/cost-saving-resource-planning-and-audit/assessing-the-resource-impact-of-nice-guidance",
+				permanent: true,
+			},
+			{
+				source:
+					"/About/What-we-do/Our-Programmes/NICE-Advice/Key-therapeutic-topics",
+				destination:
+					"/what-nice-does/life-sciences-how-to-get-your-product-to-market/nice-advice-service",
+				permanent: true,
+			},
+			{
+				source:
+					"/about/what-we-do/evidence-services/evidence-search/how-to-search",
+				destination: "/what-nice-does",
+				permanent: true,
+			},
+			{
+				source:
+					"/about/what-we-do/life-sciences/scientific-advice/medtech-advice",
+				destination:
+					"/what-nice-does/life-sciences-how-to-get-your-product-to-market/nice-advice-service",
+				permanent: true,
+			},
+			{
+				source:
+					"/about/what-we-do/our-programmes/nice-advice/evidence-summaries",
+				destination: "/what-nice-does/our-guidance/about-evidence-summaries",
+				permanent: true,
+			},
+			{
+				source:
+					"/about/what-we-do/our-programmes/nice-guidance/modular-updates",
+				destination: "/what-nice-does/our-guidance/modular-updates",
+				permanent: true,
+			},
+			{
+				source:
+					"/about/what-we-do/our-programmes/nice-guidance/nice-guidelines",
+				destination: "/what-nice-does/our-guidance/about-nice-guidelines",
+				permanent: true,
+			},
+			{
+				source:
+					"/about/what-we-do/life-sciences/scientific-advice/case-studies",
+				destination:
+					"/what-nice-does/life-sciences-how-to-get-your-product-to-market/nice-advice-service",
+				permanent: true,
+			},
+			{
+				source: "/about/what-we-do/life-sciences/scientific-advice/prima",
+				destination:
+					"/what-nice-does/life-sciences-how-to-get-your-product-to-market/nice-advice-service",
+				permanent: true,
+			},
+			{
+				source:
+					"/about/who-we-are/corporate-publications/health-technology-evaluation-at-nice--what-happens-after-the-transition-period",
+				destination:
+					"/what-nice-does/our-guidance/prioritising-our-guidance-topics",
+				permanent: true,
+			},
+			{
+				source:
+					"/about/what-we-do/into-practice/mapping-nice-guidelines-to-the-care-quality-commission-s-single-assessment-framework",
+				destination:
+					"/implementing-nice-guidance/cost-saving-resource-planning-and-audit/mapping-nice-guidelines-to-the-cqc-s-single-assessment-framework",
+				permanent: true,
+			},
+			{
+				source:
+					"/get-involved/meetings-in-public/quality-standards-advisory-committee/quality-standards-advisory-committee-members",
+				destination:
+					"/get-involved/our-committees/nice-committee-meetings/quality-standards-advisory-committee/quality-standards-advisory-committee-members",
+				permanent: true,
+			},
+			{
+				source:
+					"/about/what-we-do/patient-access-schemes-liaison-unit/list-of-technologies-with-approved-patient-access-schemes",
+				destination: "/what-nice-does/commercial-liaison-team",
+				permanent: true,
+			},
+			{
+				source:
+					"/get-involved/meetings-in-public/public-board-meetings/public-board-meeting-agenda-and-papers--september-2024",
+				destination:
+					"/about-us/our-board/public-board-meetings/2024/public-board-meetings-agenda-and-papers-september-2024",
+				permanent: true,
+			},
+			{
+				source:
+					"/get-involved/meetings-in-public/public-board-meetings/public-board-meeting-agenda-and-papers-september-2023",
+				destination:
+					"/about-us/our-board/public-board-meetings/2023/public-board-meeting-agenda-and-papers-september-2023",
+				permanent: true,
+			},
+			{
+				source:
+					"/get-involved/meetings-in-public/public-board-meetings/public-board-meeting-agenda-and-papers-december-2023",
+				destination:
+					"/about-us/our-board/public-board-meetings/2023/public-board-meeting-agenda-and-papers-december-2023",
+				permanent: true,
+			},
+			{
+				source:
+					"/get-involved/meetings-in-public/public-board-meetings/public-board-meeting-agenda-and-papers--july-2022",
+				destination:
+					"/about-us/our-board/public-board-meetings/2022/public-board-meeting-agenda-and-papers-july-2022",
+				permanent: true,
+			},
+			{
+				source:
+					"/get-involved/meetings-in-public/public-board-meetings/public-board-meeting-agenda-and-papers--july-2023",
+				destination:
+					"/about-us/our-board/public-board-meetings/2023/public-board-meeting-agenda-and-papers-july-2023",
+				permanent: true,
+			},
+			{
+				source:
+					"/get-involved/meetings-in-public/public-board-meetings/public-board-meeting-agenda-and-papers--july-2024",
+				destination:
+					"/about-us/our-board/public-board-meetings/2024/public-board-meeting-agenda-and-papers-july-2024",
+				permanent: true,
+			},
+			// NOTE this is commented out until research recs go live
+			// {
+			// 	source:
+			// 		"/about/what-we-do/research-and-development/research-recommendations/:slug*",
+			// 	destination:
+			// 		"/about/what-we-do/science-policy-research/research-recommendations",
+			// 	permanent: true,
+			// },
+			{
+				source:
+					"/about/what-we-do/digital-health/multi-agency-advisory-service-for-ai-and-data-driven-technologies",
+				destination:
+					"/what-nice-does/digital-health/artificial-intelligence-ai-and-digital-regulations-service",
+				permanent: true,
+			},
+			{
+				source:
+					"/Get-Involved/Meetings-in-public/Highly-Specialised-Technologies-Evaluation-Committee/Members",
+				destination:
+					"/get-involved/our-committees/nice-committee-meetings/highly-specialised-technologies-evaluation-committee/highly-specialised-technologies-evaluation-committee-members",
+				permanent: true,
+			},
+			{
+				source:
+					"/about/nice-communities/library-and-knowledge-services-staff/buy-books-journals-and-databases",
+				destination:
+					"/library-and-knowledge-services/buy-books-journals-and-databases",
+				permanent: true,
+			},
+			{
+				source:
+					"/about/what-we-do/life-sciences/our-role-in-the-innovative-licensing-and-access-pathway--ilap",
+				destination:
+					"/what-nice-does/life-sciences-how-to-get-your-product-to-market/our-role-in-the-innovative-licensing-and-access-pathway-ilap",
+				permanent: true,
+			},
+			{
+				source:
+					"/about/what-we-do/our-programmes/evidence-standards-framework-for-digital-health-technologies",
+				destination:
+					"/what-nice-does/digital-health/evidence-standards-framework-esf-for-digital-health-technologies",
+				permanent: true,
+			},
+			{
+				source:
+					"/about/what-we-do/our-research-work/use-of-ai-in-evidence-generation--nice-position-statement",
+				destination:
+					"/position-statements/use-of-ai-in-evidence-generation-nice-position-statement",
+				permanent: true,
+			},
+			{
+				source:
+					"/about/what-we-do/office-for-market-access/identify-the-most-appropriate-routes-to-nhs-access",
+				destination:
+					"/what-nice-does/life-sciences-how-to-get-your-product-to-market/nice-advice-service",
+				permanent: true,
+			},
+			{
+				source:
+					"/about/what-we-do/our-research-work/partnering-with-us-for-research---timescales-and-process",
+				destination:
+					"/what-nice-does/our-research-work/partnering-with-us-for-research-timescales-and-process",
+				permanent: true,
+			},
+			{
+				source:
+					"/about/what-we-do/office-for-market-access/changing-healthcare-landscape-and-your-technology",
+				destination:
+					"/what-nice-does/life-sciences-how-to-get-your-product-to-market/nice-advice-service",
+				permanent: true,
+			},
+			{
+				source:
+					"/about/nice-communities/medicines-and-prescribing/nice-medicines-and-prescribing-associates",
+				destination:
+					"/implementing-nice-guidance/implementation-help-and-advice/nice-medicines-and-prescribing-associates",
+				permanent: true,
+			},
+			{
+				source:
+					"/about/what-we-do/evidence-services/evidence-search-process-and-methods-manual-consultation",
+				destination: "/what-nice-does/",
+				permanent: true,
+			},
+			{
+				source:
+					"/about/nice-communities/library-and-knowledge-services-staff/resources-for-administrators",
+				destination: "https://library.hee.nhs.uk/resources/openathens",
+				permanent: true,
+			},
+			{
+				source:
+					"/about/who-we-are/corporate-publications/modern-slavery-and-human-trafficking-statement",
+				destination:
+					"/about-us/policies-procedures-and-reports/modern-slavery-and-human-trafficking-statement",
+				permanent: true,
+			},
+			{
+				source:
+					"/Get-Involved/Meetings-in-public/Interventional-Procedures-Advisory-Committee/Members",
+				destination:
+					"/get-involved/our-committees/nice-committee-meetings/interventional-procedures-advisory-committee/interventional-procedures-advisory-committee-members",
+				permanent: true,
+			},
+			{
+				source:
+					"/about/who-we-are/corporate-publications/appraisal-methodology-for-records-1999-2013",
+				destination:
+					"/about-us/policies-procedures-and-reports/appraisal-methodology-for-records-1999-2013",
+				permanent: true,
+			},
+			{
+				source:
+					"/about/what-we-do/nice-syndication-api/syndication-case-study-elseviers-clinical-key",
+				destination: "/reusing-our-content/nice-syndication-api",
+				permanent: true,
+			},
+			{
+				source:
+					"/Get-Involved/Meetings-in-public/Technology-appraisal-Committee/Committee-A-Members",
+				destination:
+					"/get-involved/our-committees/nice-committee-meetings/technology-appraisal-committees/tac-a-members",
+				permanent: true,
+			},
+			{
+				source:
+					"/Get-Involved/Meetings-in-public/Technology-appraisal-Committee/Committee-B-Members",
+				destination:
+					"/get-involved/our-committees/nice-committee-meetings/technology-appraisal-committees/tac-b-members",
+				permanent: true,
+			},
+			{
+				source:
+					"/Get-Involved/Meetings-in-public/Technology-appraisal-Committee/Committee-C-Members",
+				destination:
+					"/get-involved/our-committees/nice-committee-meetings/technology-appraisal-committees/tac-c-members",
+				permanent: true,
+			},
+			{
+				source:
+					"/Get-Involved/Meetings-in-public/Technology-appraisal-Committee/Committee-D-Members",
+				destination:
+					"/get-involved/our-committees/nice-committee-meetings/technology-appraisal-committees/tac-d-members",
+				permanent: true,
+			},
+			{
+				source:
+					"/get-involved/meetings-in-public/public-board-meetings/agenda-and-papers-march-2024",
+				destination: "/about-us/our-board/public-board-meetings/2024",
+				permanent: true,
+			},
+			{
+				source:
+					"/get-involved/meetings-in-public/public-board-meetings/agenda-papers-september-2022",
+				destination:
+					"/about-us/our-board/public-board-meetings/2022/public-board-meeting-agenda-and-papers-september-2022",
+				permanent: true,
+			},
+			{
+				source:
+					"/get-involved/meetings-in-public/quality-standards-advisory-committee/qsac2-members",
+				destination:
+					"/get-involved/our-committees/nice-committee-meetings/quality-standards-advisory-committee/quality-standards-advisory-committee-members",
+				permanent: true,
+			},
+			{
+				source:
+					"/get-involved/meetings-in-public/quality-standards-advisory-committee/qsac3-members",
+				destination:
+					"/get-involved/our-committees/nice-committee-meetings/quality-standards-advisory-committee/quality-standards-advisory-committee-members",
+				permanent: true,
+			},
+			{
+				source:
+					"/get-involved/meetings-in-public/public-board-meetings/agenda-papers-december-2022",
+				destination:
+					"/about-us/our-board/public-board-meetings/2022/public-board-meeting-agenda-and-papers-december-2022",
+				permanent: true,
+			},
+			{
+				source:
+					"/get-involved/meetings-in-public/public-board-meetings/agenda-papers-december-2024",
+				destination:
+					"/about-us/our-board/public-board-meetings/2024/public-board-meeting-agenda-and-papers-december-2024",
+				permanent: true,
+			},
+			{
+				source:
+					"/get-involved/our-committees/what-lay-members-do/lay-member-payments-and-expenses",
+				destination: "/get-involved/our-committees",
+				permanent: true,
+			},
+			{
+				source:
+					"/Get-Involved/Meetings-in-public/Medical-Technologies-Advisory-Committee/Members",
+				destination:
+					"/get-involved/our-committees/nice-committee-meetings/medical-technologies-advisory-committee/medical-technologies-advisory-committee-members",
+				permanent: true,
+			},
+			{
+				source:
+					"/about/nice-communities/social-care/using-nice-guidance-principal-social-workers",
+				destination:
+					"/implementing-nice-guidance/social-care/using-nice-guidance-in-social-work-scenarios/families-and-relationships-settings/developing-relationships-with-parents",
+				permanent: true,
+			},
+			{
+				source:
+					"/about/nice-communities/public-involvement/patient-and-public-involvement-policy",
+				destination:
+					"/get-involved/people-and-communities/patient-and-public-involvement-policy",
+				permanent: true,
+			},
+			{
+				source:
+					"/about/what-we-do/prioritising-our-guidance-topics/our-prioritisation-decisions",
+				destination:
+					"/what-nice-does/our-guidance/prioritising-our-guidance-topics/our-prioritisation-decisions",
+				permanent: true,
+			},
+			{
+				source:
+					"/get-involved/meetings-in-public/public-board-meetings/agenda-papers-march-2023",
+				destination: "/about-us/our-board/public-board-meetings/2023",
+				permanent: true,
+			},
+			{
+				source:
+					"/get-involved/meetings-in-public/public-board-meetings/agenda-papers-march-2025",
+				destination: "/about-us/our-board/public-board-meetings/2025",
+				permanent: true,
+			},
+			{
+				source:
+					"/about/nice-communities/library-and-knowledge-services-staff/training-materials",
+				destination: "https://library.hee.nhs.uk/resources/openathens",
+				permanent: true,
+			},
+			{
+				source:
+					"/get-involved/our-committees/join-a-committee/how-to-apply-to-join-a-committee",
+				destination: "/get-involved/our-committees",
+				permanent: true,
+			},
+			{
+				source:
+					"/about/what-we-do/scientific-advice/european-early-dialogues-scientific-advice",
+				destination:
+					"/what-nice-does/life-sciences-how-to-get-your-product-to-market/nice-advice-service",
+				permanent: true,
+			},
+			{
+				source:
+					"/get-involved/meetings-in-public/indicator-advisory-committee-iac/iac-members",
+				destination:
+					"/get-involved/our-committees/nice-committee-meetings/indicator-advisory-committee/indicator-advisory-committee-members",
+				permanent: true,
+			},
+			{
+				source:
+					"/get-involved/meetings-in-public/public-board-meetings/agenda-papers-may-2022",
+				destination:
+					"/about-us/our-board/public-board-meetings/2022/public-board-meeting-agenda-and-papers-may-2022",
+				permanent: true,
+			},
+			{
+				source:
+					"/get-involved/meetings-in-public/public-board-meetings/agenda-papers-may-2023",
+				destination:
+					"/about-us/our-board/public-board-meetings/2023/public-board-meeting-agenda-and-papers-may-2023",
+				permanent: true,
+			},
+			{
+				source:
+					"/get-involved/meetings-in-public/public-board-meetings/agenda-papers-may-2024",
+				destination:
+					"/about-us/our-board/public-board-meetings/2024/public-board-meeting-agenda-and-papers-may-2024",
+				permanent: true,
+			},
+			{
+				source:
+					"/about/nice-communities/nice-and-the-public/making-decisions-about-your-care",
+				destination:
+					"/what-nice-does/our-guidance/about-nice-guidelines/about-shared-decision-making",
+				permanent: true,
+			},
+			{
+				source:
+					"/about/nice-communities/nice-and-the-public/making-decisions-about-your-care/Information-for-the-public-on-medicines",
+				destination:
+					"/what-nice-does/our-guidance/about-nice-guidelines/about-shared-decision-making",
+				permanent: true,
+			},
+			{
+				source:
+					"/about/nice-communities/nice-and-the-public/making-decisions-about-your-care/patient-decision-aids",
+				destination:
+					"/what-nice-does/our-guidance/about-nice-guidelines/about-shared-decision-making",
+				permanent: true,
+			},
+			{
+				source:
+					"/about/what-we-do/office-for-market-access/early-access-to-medicines-scheme",
+				destination:
+					"/what-nice-does/life-sciences-how-to-get-your-product-to-market/nice-advice-service",
+				permanent: true,
+			},
+			{
+				source:
+					"/about/what-we-do/office-for-market-access/exploring-your-value-proposition",
+				destination:
+					"/what-nice-does/life-sciences-how-to-get-your-product-to-market/nice-advice-service",
+				permanent: true,
+			},
+			{
+				source:
+					"/about/what-we-do/office-for-market-access/safe-harbour-engagement-meetings",
+				destination:
+					"/what-nice-does/life-sciences-how-to-get-your-product-to-market/nice-advice-service",
+				permanent: true,
+			},
+			{
+				source:
+					"/about/what-we-do/into-practice/resources-help-put-guidance-into-practice",
+				destination: "/implementing-nice-guidance/into-practice-resources",
+				permanent: true,
+			},
+			{
+				source:
+					"/about/who-we-are/corporate-publications/trade-union-facility-time-report",
+				destination:
+					"/about-us/policies-procedures-and-reports/trade-union-facility-time-report",
+				permanent: true,
+			},
+			{
+				source:
+					"/about/nice-communities/public-involvement/putting-guidance-into-practice",
+				destination: "/get-involved/people-and-communities",
+				permanent: true,
+			},
+			{
+				source:
+					"/Get-Involved/Meetings-in-public/Diagnostics-Advisory-Committee/Members",
+				destination:
+					"/get-involved/our-committees/nice-committee-meetings/diagnostics-advisory-committee/diagnostics-advisory-committee-members",
+				permanent: true,
+			},
+			{
+				source:
+					"/about/who-we-are/corporate-publications/the-nice-strategy-2021-to-2026",
+				destination:
+					"/about-us/corporate-publications/nice-transformation-plan",
+				permanent: true,
+			},
+			{
+				source:
+					"/about/nice-communities/public-involvement/public-involvement-programme",
+				destination: "/get-involved/people-and-communities",
+				permanent: true,
+			},
+			{
+				source:
+					"/about/nice-communities/social-care/using-nice-guidance-in-social-work",
+				destination:
+					"/implementing-nice-guidance/social-care/using-nice-guidance-in-social-work-scenarios",
+				permanent: true,
+			},
+			{
+				source:
+					"/about/what-we-do/into-practice/health-technologies-adoption-programme",
+				destination:
+					"/implementing-nice-guidance/implementation-help-and-advice/adoption-and-implementation-support",
+				permanent: true,
+			},
+			{
+				source:
+					"/about/what-we-do/into-practice/measuring-the-uptake-of-nice-guidance",
+				destination:
+					"/implementing-nice-guidance/measuring-the-use-of-nice-guidance",
+				permanent: true,
+			},
+			{
+				source:
+					"/about/what-we-do/into-practice/measuring-the-impact-of-nice-guidance",
+				destination:
+					"/implementing-nice-guidance/measuring-the-use-of-nice-guidance",
+				permanent: true,
+			},
+			{
+				source:
+					"/about/what-we-do/our-programmes/savings-and-productivity-collection",
+				destination:
+					"/implementing-nice-guidance/cost-saving-resource-planning-and-audit/resource-planner",
+				permanent: true,
+			},
+			{
+				source:
+					"/about/nice-communities/social-care/social-care-trainers-resource",
+				destination:
+					"/implementing-nice-guidance/social-care/social-care-trainers-resource",
+				permanent: true,
+			},
+			{
+				source:
+					"/about/what-we-do/our-research-work/methodological-research-areas",
+				destination: "/what-nice-does/our-research-work/methods-research-areas",
+				permanent: true,
+			},
+			{
+				source:
+					"/about/what-we-do/into-practice/health-technologies-adoption-team",
+				destination:
+					"/implementing-nice-guidance/implementation-help-and-advice/adoption-and-implementation-support",
+				permanent: true,
+			},
+			{
+				source:
+					"/about/what-we-do/nice-syndication-api/apply-for-nice-syndication",
+				destination: "/reusing-our-content/nice-syndication-api",
+				permanent: true,
+			},
+			{
+				source:
+					"/About/What-we-do/Evidence-Services/Clinical-knowledge-summaries",
+				destination: "https://cks.nice.org.uk/",
+				permanent: true,
+			},
+			{
+				source:
+					"/about/nice-communities/social-care/child-abuse-neglect-guidance",
+				destination:
+					"/implementing-nice-guidance/social-care/child-abuse-and-neglect-guidance",
+				permanent: true,
+			},
+			{
+				source:
+					"/about/nice-communities/social-care/quality-improvement-resource",
+				destination:
+					"/implementing-nice-guidance/social-care/quality-improvement-resource-for-adult-social-care",
+				permanent: true,
+			},
+			{
+				source:
+					"/about/what-we-do/nice-international/knowledge-transfer-seminars",
+				destination:
+					"/what-nice-does/nice-international/knowledge-transfer-seminars",
+				permanent: true,
+			},
+			{
+				source:
+					"/about/nice-communities/public-involvement/develop-nice-guidance",
+				destination:
+					"/get-involved/people-and-communities/getting-involved-as-a-voluntary-and-community-sector-organisation/how-voluntary-and-community-sector-organisations-can-help-us-develop-guidance",
+				permanent: true,
+			},
+			{
+				source:
+					"/about/what-we-do/accreditation/whats-happening-in-accreditation",
+				destination: "/what-nice-does",
+				permanent: true,
+			},
+			{
+				source:
+					"/about/what-we-do/our-programmes/commissioning-support-programme",
+				destination: "/implementing-nice-guidance",
+				permanent: true,
+			},
+			{
+				source:
+					"/about/what-we-do/our-programmes/cost-savings-resource-planning",
+				destination:
+					"/implementing-nice-guidance/cost-saving-resource-planning-and-audit",
+				permanent: true,
+			},
+			{
+				source:
+					"/about/what-we-do/scientific-advice/nice-mhra-scientific-advice",
+				destination:
+					"/what-nice-does/life-sciences-how-to-get-your-product-to-market/nice-advice-service",
+				permanent: true,
+			},
+			{
+				source:
+					"/About/Who-we-are/Policies-and-procedures/NICE-equality-scheme",
+				destination:
+					"/about-us/policies-procedures-and-reports/edi-roadmap-and-annual-action-plan",
+				permanent: true,
+			},
+			{
+				source:
+					"/about/nice-communities/nice-and-the-public/public-involvement",
+				destination: "/get-involved/people-and-communities",
+				permanent: true,
+			},
+			{
+				source:
+					"/about/who-we-are/corporate-publications/gender-pay-gap-report",
+				destination:
+					"/about-us/policies-procedures-and-reports/gender-pay-gap-report",
+				permanent: true,
+			},
+			{
+				source:
+					"/about/who-we-are/corporate-publications/transparency-of-spend",
+				destination:
+					"/about-us/policies-procedures-and-reports/transparency-of-spend",
+				permanent: true,
+			},
+			{
+				source:
+					"/about/what-we-do/scientific-advice/frequently-asked-questions",
+				destination:
+					"/what-nice-does/life-sciences-how-to-get-your-product-to-market/nice-advice-service",
+				permanent: true,
+			},
+			{
+				source: "/about/what-we-do/nice-international/about-nice-international",
+				destination:
+					"/what-nice-does/nice-international/about-nice-international",
+				permanent: true,
+			},
+			{
+				source: "/about/what-we-do/nice-international/adapting-nice-guidelines",
+				destination:
+					"/what-nice-does/nice-international/adapting-nice-guidelines",
+				permanent: true,
+			},
+			{
+				source: "/about/what-we-do/our-research-work/our-projects-and-partners",
+				destination:
+					"/what-nice-does/our-research-work/our-projects-and-partners",
+				permanent: true,
+			},
+			{
+				source: "/about/what-we-do/into-practice/help-implement-nice-guidance",
+				destination: "/get-involved/help-implement-nice-guidance",
+				permanent: true,
+			},
+			{
+				source: "/about/what-we-do/nice-international/nice-international-team",
+				destination: "/what-nice-does/nice-international",
+				permanent: true,
+			},
+			{
+				source: "/about/what-we-do/into-practice/shared-learning-case-studies",
+				destination: "/implementing-nice-guidance",
+				permanent: true,
+			},
+			{
+				source: "/About/What-we-do/International-services/knowledge-transfer",
+				destination: "/what-nice-does/nice-international",
+				permanent: true,
+			},
+			{
+				source: "/about/what-we-do/into-practice/local-practice-case-studies",
+				destination: "/implementing-nice-guidance",
+				permanent: true,
+			},
+			{
+				source: "/about/what-we-do/scientific-advice/light-scientific-advice",
+				destination:
+					"/what-nice-does/life-sciences-how-to-get-your-product-to-market/nice-advice-service",
+				permanent: true,
+			},
+			{
+				source: "/about/what-we-do/into-practice/implementing-nice-guidance",
+				destination: "/implementing-nice-guidance",
+				permanent: true,
+			},
+			{
+				source: "/About/What-we-do/Evidence-Services/journals-and-databases",
+				destination: "/library-and-knowledge-services",
+				permanent: true,
+			},
+			{
+				source: "/about/what-we-do/digital-health/office-for-digital-health",
+				destination: "/what-nice-does/digital-health/office-for-digital-health",
+				permanent: true,
+			},
+			{
+				source: "/about/what-we-do/into-practice/resource-impact-assessment",
+				destination:
+					"/implementing-nice-guidance/cost-saving-resource-planning-and-audit/assessing-the-resource-impact-of-nice-guidance",
+				permanent: true,
+			},
+			{
+				source: "/about/what-we-do/our-programmes/local-practice-collection",
+				destination: "/what-nice-does",
+				permanent: true,
+			},
+			{
+				source: "/about/what-we-do/nice-international/consultancy-services",
+				destination: "/what-nice-does/nice-international/consultancy-services",
+				permanent: true,
+			},
+			{
+				source: "/about/what-we-do/nice-international/speaking-engagements",
+				destination: "/what-nice-does/nice-international/speaking-engagements",
+				permanent: true,
+			},
+			{
+				source: "/about/who-we-are/executive-team/executive-team-meetings",
+				destination: "/about-us/executive-team/executive-team",
+				permanent: true,
+			},
+			{
+				source: "/about/what-we-do/life-sciences/office-for-market-access",
+				destination:
+					"/what-nice-does/life-sciences-how-to-get-your-product-to-market/nice-advice-service",
+				permanent: true,
+			},
+			{
+				source: "/about/nice-communities/generalpractice/reference-panel",
+				destination: "/forms/subscribe-to-our-gp-reference-panel",
+				permanent: true,
+			},
+			{
+				source: "/about/what-we-do/accreditation/accreditation-decisions",
+				destination: "/what-nice-does",
+				permanent: true,
+			},
+			{
+				source: "/about/what-we-do/into-practice/commissioning-support",
+				destination:
+					"/implementing-nice-guidance/cost-saving-resource-planning-and-audit/assessing-the-resource-impact-of-nice-guidance",
+				permanent: true,
+			},
+			{
+				source: "/about/what-we-do/our-research-work/hta-lab-projects",
+				destination:
+					"/what-nice-does/our-research-work/hta-lab/hta-lab-projects",
+				permanent: true,
+			},
+			{
+				source: "/about/nice-communities/public-involvement/your-care",
+				destination: "/what-nice-does",
+				permanent: true,
+			},
+			{
+				source: "/about/what-we-do/life-sciences/life-sciences-tools",
+				destination:
+					"/what-nice-does/life-sciences-how-to-get-your-product-to-market/tools-for-building-or-evaluating-an-evidence-base",
+				permanent: true,
+			},
+			{
+				source: "/about/what-we-do/life-sciences/nice-advice-service",
+				destination:
+					"/what-nice-does/life-sciences-how-to-get-your-product-to-market/nice-advice-service",
+				permanent: true,
+			},
+			{
+				source: "/about/what-we-do/evidence-services/evidence-search",
+				destination: "/what-nice-does",
+				permanent: true,
+			},
+			{
+				source: "/about/what-we-do/into-practice/into-practice-guide",
+				destination: "/what-nice-does",
+				permanent: true,
+			},
+			{
+				source: "/about/what-we-do/commercial-liaison-team/services",
+				destination:
+					"/what-nice-does/patient-access-schemes-and-pricing-agreements/services",
+				permanent: true,
+			},
+			{
+				source: "/about/what-we-do/life-sciences/scientific-advice",
+				destination:
+					"/what-nice-does/life-sciences-how-to-get-your-product-to-market/nice-advice-service",
+				permanent: true,
+			},
+			{
+				source: "/about/nice-communities/social-care/quick-guides",
+				destination:
+					"/implementing-nice-guidance/social-care/quick-guides-to-social-care-topics",
+				permanent: true,
+			},
+			{
+				source: "/about/what-we-do/into-practice/resource-planner",
+				destination:
+					"/implementing-nice-guidance/cost-saving-resource-planning-and-audit/resource-planner",
+				permanent: true,
+			},
+			{
+				source: "/about/what-we-do/our-research-work/nice-listens",
+				destination: "/what-nice-does/our-research-work/nice-listens",
+				permanent: true,
+			},
+			{
+				source: "/about/what-we-do/our-programmes/topic-selection",
+				destination: "/guidance/topic-selection",
+				permanent: true,
+			},
+			{
+				source: "/about/what-we-do/our-research-work/get-in-touch",
+				destination: "/what-nice-does/our-research-work",
+				permanent: true,
+			},
+			{
+				source: "/about/what-we-do/into-practice/nice-field-team",
+				destination:
+					"/implementing-nice-guidance/implementation-help-and-advice/helping-you-put-our-guidance-into-practice",
+				permanent: true,
+			},
+			{
+				source: "/about/what-we-do/our-programmes/managed-access",
+				destination:
+					"/what-nice-does/patient-access-schemes-and-pricing-agreements/managed-access",
+				permanent: true,
+			},
+			{
+				source: "/about/what-we-do/our-programmes/patient-safety",
+				destination: "/patient-safety",
+				permanent: true,
+			},
+			{
+				source: "/about/what-we-do/into-practice/forward-planner",
+				destination:
+					"/implementing-nice-guidance/cost-saving-resource-planning-and-audit/resource-planner",
+				permanent: true,
+			},
+			{
+				source: "/about/what-we-do/life-sciences/contact-us-form",
+				destination: "/forms/life-sciences-contact-us",
+				permanent: true,
+			},
+			{
+				source: "/about/what-we-do/our-programmes/nice-guidance",
+				destination: "/what-nice-does/our-guidance",
+				permanent: true,
+			},
+			{
+				source: "/about/what-we-do/nice-syndication-api/content",
+				destination: "/reusing-our-content/nice-syndication-api",
+				permanent: true,
+			},
+			{
+				source: "/about/what-we-do/into-practice/adoption-team",
+				destination:
+					"/implementing-nice-guidance/implementation-help-and-advice/adoption-and-implementation-support",
+				permanent: true,
+			},
+			{
+				source: "/about/what-we-do/our-programmes/nice-advice",
+				destination: "/guidance/published?ndt=NICE+advice",
+				permanent: true,
+			},
+			{
+				source: "/about/what-we-do/our-research-work/hta-lab",
+				destination: "/what-nice-does/our-research-work/hta-lab",
+				permanent: true,
+			},
+			{
+				source: "/about/what-we-do/into-practice/endorsement",
+				destination: "/implementing-nice-guidance",
+				permanent: true,
+			},
+			{
+				source: "/about/who-we-are/board/interests-register",
+				destination:
+					"/about-us/board/board-executive-team-and-senior-leaders-interests-register",
+				permanent: true,
+			},
+			{
+				source: "/about/who-we-are/board/board-committees",
+				destination: "/about-us/our-board/board-committees",
 				permanent: true,
 			},
 			{
@@ -1063,766 +2313,8 @@ const nextConfig = {
 				permanent: true,
 			},
 			{
-				source:
-					"/standards-and-indicators/qofindicators/the-percentage-of-patients-with-a-new-diagnosis-of-hypertension-diagnosed-on-or-after-1-april-2014-which-has-been-confirmed-by-ambulatory-blood-pressure-monitoring-abpm-or-home-blood-pressure-monitoring-hbpm-in-the-three-months-before-entering-on-to-the-r",
-				destination:
-					"/indicators/IND115-hypertension-confirming-diagnosis-with-hbpm-or-abpm",
-				permanent: true,
-			},
-			{
-				source:
-					"/standards-and-indicators/qofindicators/the-percentage-of-women-with-diabetes-aged-17-or-over-and-who-have-not-attained-the-age-of-45-who-have-a-record-of-being-given-information-and-advice-about-pregnancy-or-conception-or-contraception-tailored-to-their-pregnancy-and-contraceptive-intentions-r",
-				destination:
-					"/indicators/IND116-contraception-advice-for-people-with-diabetes",
-				permanent: true,
-			},
-			{
-				source:
-					"/standards-and-indicators/gpqualityimprovements/the-percentage-of-women-with-epilepsy-who-are-aged-18-or-over-but-under-45-who-are-taking-anti-epileptic-drug",
-				destination:
-					"/indicators/IND117-contraception-advice-for-people-with-epilepsy",
-				permanent: true,
-			},
-			{
-				source:
-					"/Standards-and-Indicators/GPQualityImprovements/the-percentage-of-patients-with-dementia-diagnosed-on-or-after-1-april-2014-with-a-record-of-fbc-calcium-glucose-renal-and-liver-function-thyroid-function-tests-serum-vitamin-b12-and-folate-levels-recorded-up-to-12-months-before-entering-on-to-the-registe",
-				destination:
-					"/indicators/IND118-dementia-target-organ-damage-all-patients",
-				permanent: true,
-			},
-			{
-				source:
-					"/standards-and-indicators/gpqualityimprovements/the-percentage-of-patients-with-dementia-diagnosed-on-or-after-1-april-2014-with-a-record-of-fbc-calcium-glucose-renal-and-liver-function-thyroid-function-tests-serum-vitamin-b12-and-folate-levels-recorded-up-to-12-months-before-entering-on-to-the-registe",
-				destination:
-					"/indicators/IND118-dementia-target-organ-damage-all-patients",
-				permanent: true,
-			},
-			{
-				source:
-					"/standards-and-indicators/qofindicators/the-contractor-establishes-and-maintains-a-register-of-patients-with-learning-disabilities",
-				destination: "/indicators/IND119-learning-disabilities-register",
-				permanent: true,
-			},
-			{
-				source:
-					"/standards-and-indicators/qofindicators/the-percentage-of-patients-with-diabetes-who-have-had-the-following-care-processes-performed-in-the-preceding-12-months---bmi-measurement---bp-measurement--hba1c-measurement---cholesterol-measurement---record-of-smoking-status---foot-examination---albumin",
-				destination:
-					"/indicators/IND120-diabetes-annual-general-practice-checks",
-				permanent: true,
-			},
-			{
-				source:
-					"/standards-and-indicators/qofindicators/the-percentage-of-patients-with-a-new-diagnosis-of-hypertension-in-the-preceding-1st-april-to-31st-march-who-have-a-record-of-urinary-albumin-creatinine-ratio-test-in-the-three-months-before-or-after-the-date-of-entry-to-the-hypertension-register",
-				destination:
-					"/indicators/IND121-hypertension-urinary-albumin-for-target-organ-damage",
-				permanent: true,
-			},
-			{
-				source:
-					"/standards-and-indicators/qofindicators/the-percentage-of-patients-with-a-new-diagnosis-of-hypertension-in-the-preceding-1st-april-to-31st-march-who-have-a-record-of-a-test-for-haematuria-in-the-three-months-before-or-after-the-date-of-entry-to-the-hypertension-register",
-				destination:
-					"/indicators/IND122-hypertension-haematuria-for-target-organ-damage",
-				permanent: true,
-			},
-			{
-				source:
-					"/standards-and-indicators/qofindicators/the-percentage-of-patients-with-a-new-diagnosis-of-hypertension-in-the-preceding-1st-april-to-31st-march-who-have-a-record-of-a-12-lead-ecg-performed-in-the-three-months-before-or-after-the-date-of-entry-to-the-hypertension-register",
-				destination:
-					"/indicators/IND123-hypertension-ecg-for-target-organ-damage",
-				permanent: true,
-			},
-			{
-				source:
-					"/standards-and-indicators/gpqualityimprovements/the-percentage-of-women-with-schizophrenia-bipolar-affective-disorder-or-other-psychoses-under-the-age-of-45-years-who-have-been-given-information-and-advice-in-the-previous-12-months",
-				destination:
-					"/indicators/IND124-contraception-advice-for-people-with-bipolar-schizophrenia-or-other-psychoses",
-				permanent: true,
-			},
-			{
-				source:
-					"/Standards-and-Indicators/GPQualityImprovements/the-percentage-of-patients-who-had-a-myocardial-infarction-in-the-preceding-1-april-to-31-march-and-who-are-currently-being-treated-with-ace-i-or-arb-if-ace-i-intolerant-dual-anti-platelet-therapy-a-statin-and-a-beta-blocker-for-those-patients-with-left-v",
-				destination:
-					"/indicators/IND125-myocardial-infarction-medication-for-mi-in-preceding-12-months",
-				permanent: true,
-			},
-			{
-				source:
-					"/standards-and-indicators/gpqualityimprovements/the-percentage-of-patients-who-had-a-myocardial-infarction-in-the-preceding-1-april-to-31-march-and-who-are-currently-being-treated-with-ace-i-or-arb-if-ace-i-intolerant-dual-anti-platelet-therapy-a-statin-and-a-beta-blocker-for-those-patients-with-left-v",
-				destination:
-					"/indicators/IND125-myocardial-infarction-medication-for-mi-in-preceding-12-months",
-				permanent: true,
-			},
-			{
-				source:
-					"/standards-and-indicators/qofindicators/the-percentage-of-patients-with-a-history-of-myocardial-infarction-more-than-12-months-ago-currently-treated-with-an-ace-i-or-arb-if-ace-i-intolerant-aspirin-or-anticoagulant-and-a-statin",
-				destination:
-					"/indicators/IND126-myocardial-infarction-medication-for-mi-more-than-12-months-ago",
-				permanent: true,
-			},
-			{
-				source:
-					"/standards-and-indicators/qofindicators/the-percentage-of-patients-with-atrial-fibrillation-in-whom-stroke-risk-has-been-assessed-using-the-cha2ds2-vasc-score-risk-stratification-scoring-system-in-the-preceding-12-months-excluding-those-whose-previous-cha2ds2-vasc-score-of-2-or-above",
-				destination:
-					"/indicators/IND127-atrial-fibrillation-annual-stroke-risk-assessment",
-				permanent: true,
-			},
-			{
-				source:
-					"/standards-and-indicators/qofindicators/in-those-patients-with-atrial-fibrillation-whose-latest-record-of-a-cha2ds2-vasc-score-is-2-or-above-the-percentage-of-patients-who-are-currently-treated-with-anti-coagulation-drug-therapy",
-				destination:
-					"/indicators/IND128-atrial-fibrillation-current-treatment-with-anticoagulation",
-				permanent: true,
-			},
-			{
-				source:
-					"/standards-and-indicators/qofindicators/the-contractor-establishes-and-maintains-a-register-of-patients-aged-18-years-or-over-with-ckd-with-classification-of-categories-g3a-to-g5-previously-stage-3-to-5",
-				destination:
-					"/indicators/IND129-kidney-conditions-ckd-register-3a-to-5",
-				permanent: true,
-			},
-			{
-				source:
-					"/standards-and-indicators/qofindicators/the-percentage-of-patients-on-the-ckd-register-who-have-hypertension-and-proteinuria-and-who-are-currently-being-treated-with-renin-angiotensin-system-antagonists",
-				destination:
-					"/indicators/IND130-kidney-conditions-ckd-and-reninangiotensin-system-antagonists",
-				permanent: true,
-			},
-			{
-				source:
-					"/standards-and-indicators/qofindicators/the-percentage-of-patients-with-coronary-heart-disease-who-have-had-influenza-immunisation-in-the-preceding-1-august-to-31-march-nm87",
-				destination:
-					"/indicators/IND131-immunisation-flu-vaccine-for-people-with-chd",
-				permanent: true,
-			},
-			{
-				source:
-					"/standards-and-indicators/qofindicators/the-percentage-of-patients-with-coronary-heart-disease-with-a-record-in-the-preceding-12-months-that-aspirin-an-alternative-anti-platelet-therapy-or-an-anti-coagulant-is-being-taken-nm88",
-				destination:
-					"/indicators/IND132-angina-and-coronary-heart-disease-anti-platelet-or-anticoagulation",
-				permanent: true,
-			},
-			{
-				source:
-					"/standards-and-indicators/qofindicators/the-percentage-of-patients-with-a-stroke-shown-to-be-non-haemorrhagic-or-a-history-of-tia-who-have-a-record-in-the-preceding-12-months-that-an-anti-platelet-agent-or-an-anti-coagulant-is-being-taken-nm94",
-				destination:
-					"/indicators/IND133-stroke-and-ischaemic-attack-anti-platelet-or-anticoagulation",
-				permanent: true,
-			},
-			{
-				source:
-					"/standards-and-indicators/qofindicators/the-percentage-of-patients-with-diabetes-on-the-register-with-a-diagnosis-of-nephropathy-clinical-proteinuria-or-micro-albuminuria-who-are-currently-treated-with-an-ace-i-or-arbs-nm95",
-				destination: "/indicators/IND134-diabetes-acei-or-arbs",
-				permanent: true,
-			},
-			{
-				source:
-					"/standards-and-indicators/qofindicators/the-percentage-of-patients-with-diabetes-on-the-register-in-whom-the-last-ifcc-hba1c-is-64-mmol-mol-or-less-in-the-preceding-12-months-nm96",
-				destination: "/indicators/IND135-diabetes-ifcc-hba1c-64mmolmol-or-less",
-				permanent: true,
-			},
-			{
-				source:
-					"/standards-and-indicators/qofindicators/the-percentage-of-patients-with-diabetes-on-the-register-in-whom-the-last-ifcc-hba1c-is-75-mmol-mol-or-less-in-the-preceding-12-months-nm97",
-				destination: "/indicators/IND136-diabetes-ifcc-hba1c-75mmolmol-or-less",
-				permanent: true,
-			},
-			{
-				source:
-					"/standards-and-indicators/qofindicators/the-percentage-of-patients-with-diabetes-on-the-register-who-have-a-record-of-retinal-screening-in-the-preceding-12-months-nm98",
-				destination: "/indicators/IND137-diabetes-annual-retinal-screening",
-				permanent: true,
-			},
-			{
-				source:
-					"/standards-and-indicators/qofindicators/the-contractor-establishes-and-maintains-a-register-of-patients-with-hypothyroidism-who-are-currently-treated-with-levothyroxine-nm99",
-				destination: "/indicators/IND138-hypothyroidism-register",
-				permanent: true,
-			},
-			{
-				source:
-					"/standards-and-indicators/qofindicators/the-percentage-of-patients-with-hypothyroidism-on-the-register-with-thyroid-function-tests-recorded-in-the-preceding-12-months-nm100",
-				destination:
-					"/indicators/IND139-hypothyroidism-annual-thyroid-function-test",
-				permanent: true,
-			},
-			{
-				source:
-					"/standards-and-indicators/qofindicators/the-percentage-of-patients-with-copd-with-a-record-of-fev1-in-the-preceding-12-months-nm105",
-				destination: "/indicators/IND140-copd-fev1",
-				permanent: true,
-			},
-			{
-				source:
-					"/standards-and-indicators/qofindicators/the-percentage-of-patients-with-copd-who-have-had-influenza-immunisation-in-the-preceding-1-august-to-31-march-nm106",
-				destination:
-					"/indicators/IND141-immunisation-flu-vaccine-for-people-with-copd",
-				permanent: true,
-			},
-			{
-				source:
-					"/standards-and-indicators/qofindicators/the-percentage-of-patients-diagnosed-with-dementia-whose-care-plan-has-been-reviewed-in-a-face-to-face-review-in-the-preceding-12-months-nm107",
-				destination: "/indicators/IND142-dementia-care-planning",
-				permanent: true,
-			},
-			{
-				source:
-					"/standards-and-indicators/qofindicators/the-percentage-of-patients-with-schizophrenia-bipolar-affective-disorder-and-other-psychoses-who-have-a-comprehensive-care-plan-documented-in-the-record-in-the-preceding-12-months-agreed-between-individuals-their-family-and-or-carers-as-appropriate-nm108",
-				destination:
-					"/indicators/IND143-bipolar-schizophrenia-and-other-psychoses-care-planning",
-				permanent: true,
-			},
-			{
-				source:
-					"/standards-and-indicators/qofindicators/the-percentage-of-patients-on-the-ckd-register-whose-notes-have-a-record-of-a-urine-albumin-creatinine-ratio-or-protein-creatinine-ratio-test-in-the-preceding-12-months-nm109",
-				destination:
-					"/indicators/IND144-kidney-conditions-ckd-urine-albumincreatinine-ratio",
-				permanent: true,
-			},
-			{
-				source:
-					"/standards-and-indicators/qofindicators/the-percentage-of-patients-aged-18-or-over-on-drug-treatment-for-epilepsy-who-have-been-seizure-free-for-the-last-12-months-recorded-in-the-preceding-12-months-inherited-nm110",
-				destination:
-					"/indicators/IND145-epilepsy-seizure-free-in-preceding-12-months",
-				permanent: true,
-			},
-			{
-				source:
-					"/standards-and-indicators/qofindicators/the-percentage-of-patients-diagnosed-with-hypertension-diagnosed-on-or-after-1-april-2009-who-are-given-lifestyle-advice-in-the-preceding-12-months-for-smoking-cessation-safe-alcohol-consumption-and-healthy-diet",
-				destination: "/indicators/IND146-hypertension-lifestyle-advice",
-				permanent: true,
-			},
-			{
-				source:
-					"/standards-and-indicators/qofindicators/the-percentage-of-women-on-the-register-prescribed-an-oral-or-patch-contraceptive-method-in-the-preceding-12-months-who-also-received-information-from-the-contractor-about-long-acting-reversible-methods-of-contraception-in-the-preceding-12-months-nm114",
-				destination:
-					"/indicators/IND148-contraception-larc-for-people-on-oral-or-patch-contraceptives",
-				permanent: true,
-			},
-			{
-				source:
-					"/standards-and-indicators/gpqualityimprovements/the-percentage-of-women-on-the-register-prescribed-emergency-hormonal-contraception-1-or-more-times-in-the-preceding-12-months-by-the-contractor-who-have-received-information-from-the-contractor-about-long-acting-reversible-methods-of-contraception-nm115",
-				destination:
-					"/indicators/IND149-contraception-larc-for-people-using-emergency-contraception",
-				permanent: true,
-			},
-			{
-				source:
-					"/standards-and-indicators/qofindicators/the-percentage-of-patients-with-schizophrenia-bipolar-affective-disorder-and-other-psychoses-aged-25-84-excluding-those-with-pre-existing-chd-diabetes-stroke-and-or-tia-who-have-had-a-cvd-risk-assessment-performed-in-the-preceding-12-months-nm120",
-				destination:
-					"/indicators/IND150-cardiovascular-disease-prevention-cardiovascular-risk-assessment-for-people-with-bipolar-schizophrenia-or-other-psychoses",
-				permanent: true,
-			},
-			{
-				source:
-					"/standards-and-indicators/qofindicators/the-percentage-of-patients-with-coronary-heart-disease-stroke-or-tia-diabetes-hypertension-peripheral-arterial-disease-heart-failure-copd-asthma-and-or-rheumatoid-arthritis-who-have-had-a-bmi-recorded-in-the-preceding-12-months-nm121",
-				destination:
-					"/indicators/IND151-weight-management-bmi-recording-long-term-conditions",
-				permanent: true,
-			},
-			{
-				source:
-					"/standards-and-indicators/qofindicators/the-percentage-of-patients-with-coronary-heart-disease-stroke-or-transient-ischemic-attack-diabetes-and-or-chronic-obstructive-pulmonary-disease-who-have-influenza-immunisation-in-the-preceding-1-august-and-31-march-nm122",
-				destination:
-					"/indicators/IND152-immunisation-flu-vaccine-for-people-with-long-term-conditions",
-				permanent: true,
-			},
-			{
-				source:
-					"/standards-and-indicators/qofindicators/the-percentage-of-patients-with-schizophrenia-bipolar-affective-disorder-or-other-psychoses-whose-notes-record-smoking-status-in-the-preceding-12-months-nm124",
-				destination:
-					"/indicators/IND154-smoking-smoking-status-of-people-with-bipolar-schizophrenia-and-other-psychoses",
-				permanent: true,
-			},
-			{
-				source:
-					"/standards-and-indicators/qofindicators/the-percentage-of-patients-with-schizophrenia-bipolar-affective-disorder-or-other-psychoses-who-are-recorded-as-current-smokers-who-have-a-record-of-an-offer-of-support-and-treatment-within-the-preceding-12-months-nm125",
-				destination:
-					"/indicators/IND155-smoking-support-and-treatment-for-people-with-bipolar-schizophrenia-and-other-psychoses",
-				permanent: true,
-			},
-			{
-				source:
-					"/standards-and-indicators/qofindicators/the-percentage-of-patients-with-any-or-any-combination-conditions-chd-pad-stroke-or-tia-hypertension-diabetes-copd-ckd-or-asthma-whose-notes-record-smoking-status-in-preceding-12-months-nm126",
-				destination:
-					"/indicators/IND156-smoking-smoking-status-of-people-with-long-term-conditions",
-				permanent: true,
-			},
-			{
-				source:
-					"/standards-and-indicators/qofindicators/the-percentage-of-patients-with-any-or-any-combination-of-the-following-conditions-chd-pad-stroke-or-tia-hypertension-diabetes-copd-ckd-asthma-recorded-as-current-smokers-with-offer-of-support-and-treatment-within-12-months-nm127",
-				destination:
-					"/indicators/IND157-smoking-support-and-treatment-for-people-with-long-term-conditions",
-				permanent: true,
-			},
-			{
-				source:
-					"/standards-and-indicators/qofindicators/the-percentage-of-patients-aged-18-and-over-with-schizophrenia-bipolar-affective-disorder-and-other-psychoses-who-have-a-record-of-total-cholesterol-hdl-ratio-in-the-preceding-12-months-nm129",
-				destination:
-					"/indicators/IND158-bipolar-schizophrenia-and-other-psychoses-annual-cholesterol",
-				permanent: true,
-			},
-			{
-				source:
-					"/standards-and-indicators/qofindicators/the-percentage-of-patients-aged-18-years-and-over-with-schizophrenia-bipolar-affective-disorder-and-other-psychoses-who-have-a-record-of-blood-glucose-or-hba1c-in-the-preceding-12-months-nm130",
-				destination:
-					"/indicators/IND159-bipolar-schizophrenia-and-other-psychoses-annual-blood-glucose-or-hba1c",
-				permanent: true,
-			},
-			{
-				source:
-					"/standards-and-indicators/qofindicators/the-percentage-of-patients-with-diabetes-with-a-record-of-testing-of-foot-sensation-using-a-10g-monofilament-within-the-preceding-12-months",
-				destination:
-					"/indicators/IND160-diabetes-annual-examination-of-foot-sensation",
-				permanent: true,
-			},
-			{
-				source:
-					"/standards-and-indicators/qofindicators/the-percentage-of-patients-aged-25-84-years-with-a-new-diagnosis-of-hypertension-or-type-2-diabetes-recorded-between-the-preceding-1-april-to-31-march-excluding-those-with-pre-existing-chd-type1-diabetes-stroke-and-or-tia-who-have-had-a-consultation-nm132",
-				destination:
-					"/indicators/IND161-cardiovascular-disease-prevention-cardiovascular-risk-assessment-for-people-newly-diagnosed-with-hypertension-or-t2dm",
-				permanent: true,
-			},
-			{
-				source:
-					"/standards-and-indicators/qofindicators/in-those-patients-with-a-new-diagnosis-of-hypertension-or-type-2-diabetes-aged-25-84-years-recorded-between-the-preceding-1-april-to-31-march-excluding-those-with-pre-existing-chd-diabetes-stroke-and-or-tia-who-have-a-recorded-cvd-risk-assessment-nm133",
-				destination:
-					"/indicators/IND162-cardiovascular-disease-prevention-statins-for-people-newly-diagnosed-with-hypertension-or-t2dm",
-				permanent: true,
-			},
-			{
-				source:
-					"/standards-and-indicators/qofindicators/the-percentage-of-patients-with-diabetes-on-the-register-who-have-had-influenza-immunisation-in-the-preceding-1-august-to-31-march-nm139",
-				destination:
-					"/indicators/IND163-immunisation-flu-vaccine-for-people-with-diabetes",
-				permanent: true,
-			},
-			{
-				source:
-					"/standards-and-indicators/qofindicators/the-percentage-of-patients-with-stroke-or-tia-who-have-had-influenza-immunisation-in-the-preceding-1-august-to-31-march-nm140",
-				destination:
-					"/indicators/IND164-immunisation-flu-vaccine-for-people-with-stroke-or-tia",
-				permanent: true,
-			},
-			{
-				source:
-					"/standards-and-indicators/qofindicators/the-percentage-of-patients-with-diabetes-on-the-register-in-whom-the-last-ifcc-hba1c-is-58-mmol-mol-or-less-in-the-preceding-12-months",
-				destination: "/indicators/IND165-diabetes-ifcc-hba1c-58mmolmol-or-less",
-				permanent: true,
-			},
-			{
-				source:
-					"/standards-and-indicators/qofindicators/percentage-of-patients-with-type1-diabetes-over-40-years-currently-treated-with-a-statin",
-				destination: "/indicators/IND166-diabetes-t1dm-and-statins",
-				permanent: true,
-			},
-			{
-				source:
-					"/standards-and-indicators/qofindicators/the-percentage-of-patients-aged-18-or-over-on-or-after-1-april-2017-who-have-had-a-record-of-a-bmi-being-calculated-in-the-preceding-5-years-and-after-their-18th-birthday",
-				destination:
-					"/indicators/IND167-weight-management-bmi-calculation-in-preceding-5-years",
-				permanent: true,
-			},
-			{
-				source:
-					"/standards-and-indicators/qofindicators/the-percentage-of-patients-registered-at-the-practice-aged-65-years-and-over-who-have-been-diagnosed-with-one-or-more-of-the-following-conditions-coronary-heart-disease-heart-failure-hypertension-diabetes-ckd-pad-or-stroke-tia-who-have-had-a-pulse-rhythm-",
-				destination:
-					"/indicators/IND168-atrial-fibrillation-pulse-rhythm-assessment-in-people-at-risk",
-				permanent: true,
-			},
-			{
-				source:
-					"/standards-and-indicators/qofindicators/the-percentage-of-patients-with-atrial-fibrillation-currently-treated-with-an-anticoagulant-who-have-had-a-review-in-the-preceding-12-months-which-included-a-assessment-of-stroke-vte-risk-b-assessment-of-bleeding-risk-c-assessment-of-renal-function-creati",
-				destination:
-					"/indicators/IND169-atrial-fibrillation-review-of-anticoagulation",
-				permanent: true,
-			},
-			{
-				source:
-					"/standards-and-indicators/qofindicators/the-practice-establishes-and-maintains-a-register-of-all-patients-with-a-diagnosis-of-non-diabetic-hyperglycaemia",
-				destination: "/indicators/IND170-diabetes-ndh-register",
-				permanent: true,
-			},
-			{
-				source:
-					"/standards-and-indicators/qofindicators/the-percentage-of-patients-newly-diagnosed-with-non-diabetic-hyperglycaemia-in-the-preceding-12-months-who-have-been-referred-to-a-healthier-you-nhs-diabetes-prevention-programme-for-intensive-lifestyle-advice-ndpp-areas-only",
-				destination:
-					"/indicators/IND171-diabetes-ndh-diabetes-prevention-programme",
-				permanent: true,
-			},
-			{
-				source:
-					"/standards-and-indicators/qofindicators/the-percentage-of-patients-with-non-diabetic-hyperglycaemia-who-have-had-an-hba1c-or-fpg-test-in-the-preceding-12-months",
-				destination: "/indicators/IND172-diabetes-ndh-annual-hba1c-or-fpg-test",
-				permanent: true,
-			},
-			{
-				source:
-					"/standards-and-indicators/qofindicators/the-percentage-of-women-who-have-had-gestational-diabetes-diagnosed-more-than-12-months-ago-who-have-had-an-hba1c-test-in-the-preceding-12-months",
-				destination:
-					"/indicators/IND173-diabetes-gestational-diabetes-annual-hba1c-test",
-				permanent: true,
-			},
-			{
-				source:
-					"/standards-and-indicators/qofindicators/the-practice-establishes-and-maintains-a-register-of-all-patients-who-have-had-an-episode-of-aki",
-				destination: "/indicators/IND174-kidney-conditions-aki-register",
-				permanent: true,
-			},
-			{
-				source:
-					"/standards-and-indicators/qofindicators/the-practice-establishes-and-maintains-a-register-of-all-patients-with-a-diagnosis-of-autism",
-				destination: "/indicators/IND175-autism-register",
-				permanent: true,
-			},
-			{
-				source:
-					"/standards-and-indicators/qofindicators/the-proportion-of-women-eligible-for-screening-and-aged-25-49-years-at-end-of-period-reported-whose-notes-record-that-an-adequate-cervical-screening-test-has-been-performed-in-the-previous-3-5-years",
-				destination:
-					"/indicators/IND176-screening-cervical-screening-25-to-49-years",
-				permanent: true,
-			},
-			{
-				source:
-					"/standards-and-indicators/qofindicators/the-proportion-of-women-eligible-for-screening-and-aged-50-64-years-at-end-of-period-reported-whose-notes-record-that-an-adequate-cervical-screening-test-has-been-performed-in-the-previous-5-5-years",
-				destination:
-					"/indicators/IND177-screening-cervical-screening-50-to-64-years",
-				permanent: true,
-			},
-			{
-				source:
-					"/standards-and-indicators/qofindicators/the-percentage-of-women-who-have-given-birth-in-the-preceding-12-months-who-have-had-an-enquiry-about-their-mental-health-between-4-16-weeks-postpartum",
-				destination:
-					"/indicators/IND178-pregnancy-and-neonates-postnatal-mental-health",
-				permanent: true,
-			},
-			{
-				source:
-					"/standards-and-indicators/qofindicators/the-percentage-of-patients-with-diabetes-without-moderate-or-severe-frailty-on-the-register-in-whom-the-last-ifcc-hba1c-is-58-mmol-mol-or-less-in-the-preceding-12-months",
-				destination: "/indicators/IND179-diabetes-hba1c-58-mmolmol",
-				permanent: true,
-			},
-			{
-				source:
-					"/standards-and-indicators/qofindicators/the-percentage-of-patients-with-diabetes-with-moderate-or-severe-frailty-on-the-register-in-whom-the-last-ifcc-hba1c-is-75-mmol-mol-or-less-in-the-preceding-12-months",
-				destination: "/indicators/IND180-diabetes-hba1c-75-mmolmol",
-				permanent: true,
-			},
-			{
-				source:
-					"/standards-and-indicators/qofindicators/the-percentage-of-patients-aged-25-84-years-with-a-diagnosis-of-type-2-diabetes-without-moderate-or-severe-frailty-not-currently-treated-with-a-statin-who-have-had-a-consultation-for-a-cardiovascular-risk-assessment-using-a-risk-assessment-tool-agreed-wit",
-				destination: "/indicators/IND181-diabetes-cvd-risk-assessment",
-				permanent: true,
-			},
-			{
-				source:
-					"/standards-and-indicators/qofindicators/the-percentage-of-patients-with-a-diagnosis-of-type-2-diabetes-and-a-recorded-cvd-risk-assessment-score-of-10-without-moderate-or-severe-frailty-who-are-currently-treated-with-a-statin-unless-there-is-a-contraindication-or-statin-therapy-is-declined",
-				destination:
-					"/indicators/IND182-diabetes-statins-for-primary-prevention-of-cvd-t2dm-and-10-risk",
-				permanent: true,
-			},
-			{
-				source:
-					"/standards-and-indicators/qofindicators/the-percentage-of-patients-with-diabetes-aged-40-years-and-over-with-no-history-of-cvd-and-without-moderate-or-severe-frailty-who-are-currently-treated-with-a-statin-excluding-patients-with-type-2-diabetes-and-a-cvd-risk-score-of-10-recorded-in-the-preced",
-				destination:
-					"/indicators/IND183-diabetes-statins-for-primary-prevention-of-cvd-40-years-and-over",
-				permanent: true,
-			},
-			{
-				source:
-					"/standards-and-indicators/qofindicators/the-percentage-of-patients-with-diabetes-and-a-history-of-cvd-excluding-a-history-of-haemorrhagic-stroke-who-are-currently-treated-with-a-statin",
-				destination:
-					"/indicators/IND184-diabetes-statins-for-secondary-prevention-of-cvd",
-				permanent: true,
-			},
-			{
-				source:
-					"/standards-and-indicators/qofindicators/the-contractor-establishes-and-maintains-a-register-of-patients-with-atrial-fibrillation-including-patients-with-af-resolved",
-				destination: "/indicators/IND185-atrial-fibrillation-register",
-				permanent: true,
-			},
-			{
-				source:
-					"/standards-and-indicators/qofindicators/the-contractor-establishes-and-maintains-a-register-of-patients-with-asthma-aged-5-or-over",
-				destination: "/indicators/IND186-asthma-register",
-				permanent: true,
-			},
-			{
-				source:
-					"/standards-and-indicators/qofindicators/the-percentage-of-patients-with-asthma-on-the-register-from-start-date-with-a-record-of-spirometry-and-one-other-objective-test-feno-or-reversibility-or-variability-between-3-months-before-or-3-months-after-diagnosis",
-				destination: "/indicators/IND187-asthma-objective-tests",
-				permanent: true,
-			},
-			{
-				source:
-					"/standards-and-indicators/qofindicators/the-percentage-of-patients-with-asthma-on-the-register-who-have-had-an-asthma-review-in-the-preceding-12-months-that-includes-an-assessment-of-asthma-control-using-a-validated-asthma-control-questionnaire-including-assessment-of-short-acting-beta-agonist-",
-				destination: "/indicators/IND188-asthma-annual-review",
-				permanent: true,
-			},
-			{
-				source:
-					"/standards-and-indicators/qofindicators/the-percentage-of-patients-with-asthma-on-the-register-aged-19-or-under-in-whom-there-is-a-record-of-smoking-status-active-or-passive-in-the-preceding-12-months",
-				destination: "/indicators/IND189-asthma-smoking-status-under-19",
-				permanent: true,
-			},
-			{
-				source:
-					"/standards-and-indicators/qofindicators/the-contractor-establishes-and-maintains-a-register-of-1-patients-with-a-clinical-diagnosis-of-copd-before-start-date-and-2-patients-with-a-clinical-diagnosis-of-copd-on-or-after-start-date-whose-diagnosis-has-been-confirmed-by-a-quality-assured-post-bron",
-				destination: "/indicators/IND190-copd-register",
-				permanent: true,
-			},
-			{
-				source:
-					"/standards-and-indicators/qofindicators/the-percentage-of-patients-with-copd-on-the-register-who-have-had-a-review-in-the-preceding-12-months-including-a-record-of-the-number-of-exacerbations-and-an-assessment-of-breathlessness-using-the-medical-research-council-dyspnoea-scale",
-				destination: "/indicators/IND191-copd-annual-review",
-				permanent: true,
-			},
-			{
-				source:
-					"/standards-and-indicators/qofindicators/the-percentage-of-patients-with-a-diagnosis-of-heart-failure-after-start-date-which-has-been-confirmed-by-an-echocardiogram-or-by-specialist-assessment-between-3-months-before-or-3-months-after-entering-on-to-the-register",
-				destination:
-					"/indicators/IND192-heart-failure-confirmation-of-diagnosis",
-				permanent: true,
-			},
-			{
-				source:
-					"/standards-and-indicators/qofindicators/the-percentage-of-patients-with-a-current-diagnosis-of-heart-failure-due-to-left-ventricular-systolic-dysfunction-who-are-currently-treated-with-an-ace-i-or-arb",
-				destination: "/indicators/IND193-heart-failure-acei-or-arbs",
-				permanent: true,
-			},
-			{
-				source:
-					"/standards-and-indicators/qofindicators/the-percentage-of-patients-with-a-current-diagnosis-of-heart-failure-due-to-left-ventricular-systolic-dysfunction-who-are-currently-treated-with-a-beta-blocker-licensed-for-heart-failure",
-				destination: "/indicators/IND194-heart-failure-beta-blockers",
-				permanent: true,
-			},
-			{
-				source:
-					"/standards-and-indicators/qofindicators/the-percentage-of-patients-with-heart-failure-on-the-register-who-had-a-review-in-the-preceding-12-months-including-an-assessment-of-functional-capacity-using-the-new-york-heart-association-classification-and-a-review-of-medication",
-				destination: "/indicators/IND195-heart-failure-annual-review",
-				permanent: true,
-			},
-			{
-				source:
-					"/standards-and-indicators/qofindicators/the-percentage-of-patients-with-a-new-diagnosis-of-hypertension-in-the-preceding-12-months-who-have-been-screened-for-unsafe-drinking-using-the-fast-or-audit-c-tool-in-the-3-months-before-or-after-the-date-of-entry-on-the-hypertension-register",
-				destination:
-					"/indicators/IND196-alcohol-use-risk-assessment-for-people-with-hypertension",
-				permanent: true,
-			},
-			{
-				source:
-					"/standards-and-indicators/qofindicators/the-percentage-of-patients-with-a-new-diagnosis-of-hypertension-in-the-preceding-12-months-with-a-fast-score-of-3-or-audit-c-score-of-5-who-have-received-brief-intervention-to-help-them-reduce-their-alcohol-related-risk-within-3-months-of-the-score-being-",
-				destination:
-					"/indicators/IND197-alcohol-use-brief-intervention-for-people-with-hypertension",
-				permanent: true,
-			},
-			{
-				source:
-					"/standards-and-indicators/qofindicators/the-percentage-of-patients-with-a-new-diagnosis-of-depression-or-anxiety-in-the-preceding-12-months-who-have-been-screened-for-unsafe-drinking-using-the-fast-or-audit-c-tool-in-the-3-months-before-or-after-their-diagnosis-being-recorded",
-				destination:
-					"/indicators/IND198-alcohol-use-risk-assessment-for-people-with-depression-or-anxiety",
-				permanent: true,
-			},
-			{
-				source:
-					"/standards-and-indicators/qofindicators/the-percentage-of-patients-with-a-new-diagnosis-of-depression-or-anxiety-and-a-fast-score-of-3-or-audit-c-score-of-5-in-the-preceding-12-months-who-have-received-brief-intervention-to-help-them-reduce-their-alcohol-related-risk-within-3-months-of-the-scor",
-				destination:
-					"/indicators/IND199-alcohol-use-brief-intervention-for-people-with-depression-or-anxiety",
-				permanent: true,
-			},
-			{
-				source:
-					"/standards-and-indicators/gpqualityimprovements/the-percentage-of-patients-with-schizophrenia-bipolar-affective-disorder-and-other-psychoses-with-a-fast-score-of-3-or-audit-c-score-of-5-in-the-preceding-12-months-who-have-received-a-brief-intervention-to-help-them-reduce-their-alcohol-related-risk-with",
-				destination:
-					"/indicators/IND200-alcohol-use-brief-intervention-for-people-with-smi",
-				permanent: true,
-			},
-			{
-				source:
-					"/standards-and-indicators/qofindicators/the-percentage-of-patients-with-one-or-more-of-the-following-conditions-chd-atrial-fibrillation-chronic-heart-failure-stroke-or-tia-diabetes-or-dementia-who-have-been-screened-for-unsafe-drinking-using-the-fast-or-audit-c-tool-in-the-preceding-2-years",
-				destination:
-					"/indicators/IND201-alcohol-use-risk-assessment-for-people-with-a-long-term-condition",
-				permanent: true,
-			},
-			{
-				source:
-					"/standards-and-indicators/qofindicators/the-percentage-of-patients-with-one-or-more-of-the-following-conditions-chd-atrial-fibrillation-chronic-heart-failure-stroke-or-tia-diabetes-or-dementia-with-a-fast-score-of-3-or-audit-c-score-of-5-in-the-preceding-2-years-who-have-received-brief-interven",
-				destination:
-					"/indicators/IND202-alcohol-use-brief-intervention-for-people-with-a-long-term-condition",
-				permanent: true,
-			},
-			{
-				source:
-					"/standards-and-indicators/gpqualityimprovements/the-percentage-of-people-aged-29-years-and-under-with-a-total-cholesterol-concentration-greater-than-7-5-mmol-l-that-are-assessed-against-the-simon-broome-or-dutch-lipid-clinic-network-dlcn-criteria",
-				destination:
-					"/indicators/IND203-lipids-disorders-fh-assessment-29-years-and-under",
-				permanent: true,
-			},
-			{
-				source:
-					"/standards-and-indicators/gpqualityimprovements/the-percentage-of-people-aged-30-years-and-older-with-a-total-cholesterol-concentration-greater-than-9-0mmol-l-that-are-assessed-against-the-simon-broome-or-dutch-lipid-clinic-network-dlcn-criteria",
-				destination:
-					"/indicators/IND204-lipids-disorders-fh-assessment-30-years-and-over",
-				permanent: true,
-			},
-			{
-				source:
-					"/standards-and-indicators/qofindicators/the-practice-can-produce-a-register-of-people-with-multimorbidity-who-would-benefit-from-a-tailored-approach-to-care",
-				destination:
-					"/indicators/IND205-multiple-long-term-conditions-multimorbidity-register",
-				permanent: true,
-			},
-			{
-				source:
-					"/standards-and-indicators/qofindicators/the-practice-can-produce-a-register-of-people-with-moderate-to-severe-frailty",
-				destination:
-					"/indicators/IND206-multiple-long-term-conditions-frailty-register",
-				permanent: true,
-			},
-			{
-				source:
-					"/standards-and-indicators/qofindicators/the-percentage-of-patients-with-moderate-or-severe-frailty-and-or-multimorbidity-who-have-received-a-medication-review-in-the-last-12-months-which-is-structured-has-considered-the-use-of-a-recognised-tool-and-taken-place-as-a-shared-discussion",
-				destination:
-					"/indicators/IND207-multiple-long-term-conditions-medication-review",
-				permanent: true,
-			},
-			{
-				source:
-					"/standards-and-indicators/qofindicators/the-percentage-of-patients-aged-65-years-and-over-with-moderate-or-severe-frailty-who-have-been-asked-whether-they-have-had-a-fall-about-the-total-number-of-falls-and-about-the-type-of-falls-in-the-last-12-months",
-				destination:
-					"/indicators/IND208-multiple-long-term-conditions-falls-risk-assessment",
-				permanent: true,
-			},
-			{
-				source:
-					"/standards-and-indicators/qofindicators/the-percentage-of-patients-aged-65-years-and-over-with-moderate-or-severe-frailty-who-have-been-asked-whether-they-have-had-a-fall-about-the-total-number-of-falls-and-about-the-type-of-falls-in-the-last-12-months-were-found-to-be-at-risk-and-have-been-pro",
-				destination:
-					"/indicators/IND209-multiple-long-term-conditions-falls-prevention-advice",
-				permanent: true,
-			},
-			{
-				source:
-					"/standards-and-indicators/gpqualityimprovements/the-percentage-of-adults-and-young-people-newly-registered-with-a-gp-in-an-area-of-high-or-extremely-high-hiv-prevalence-who-receive-an-hiv-test-within-3-months-of-registration",
-				destination: "/indicators/IND210-hiv-testing-at-registration",
-				permanent: true,
-			},
-			{
-				source:
-					"/standards-and-indicators/gpqualityimprovements/the-percentage-of-adults-and-young-people-at-a-gp-surgery-in-an-area-of-high-or-extremely-high-hiv-prevalence-who-have-not-had-an-hiv-test-in-the-last-12-months-who-are-having-a-blood-test-and-receive-an-hiv-test-at-the-same-time",
-				destination: "/indicators/IND211-hiv-routine-blood-tests",
-				permanent: true,
-			},
-			{
-				source:
-					"/standards-and-indicators/qofindicators/the-percentage-of-patients-with-very-severe-chronic-obstructive-pulmonary-disease-copd-with-a-record-of-oxygen-saturation-value-within-the-preceding-12-months",
-				destination: "/indicators/IND212-copd-oxygen-saturation-recording",
-				permanent: true,
-			},
-			{
-				source:
-					"/standards-and-indicators/gpqualityimprovements/the-percentage-of-women-aged-25-or-over-and-who-have-not-attained-the-age-of-50-with-schizophrenia-bipolar-affective-disorder-and-other-psychoses-whose-notes-record-that-a-cervical-screening-test-has-been-performed-in-the-preceding-3-years-and-6-months",
-				destination:
-					"/indicators/IND213-bipolar-schizophrenia-and-other-psychoses-cervical-screening-25-to-49-years",
-				permanent: true,
-			},
-			{
-				source:
-					"/standards-and-indicators/gpqualityimprovements/the-percentage-of-women-aged-50-or-over-and-who-have-not-attained-the-age-of-65-with-schizophrenia-bipolar-affective-disorder-and-other-psychoses-whose-notes-record-that-a-cervical-screening-test-has-been-performed-in-the-preceding-5-years-and-6-months",
-				destination:
-					"/indicators/IND214-bipolar-schizophrenia-and-other-psychoses-cervical-screening-50-to-64-years",
-				permanent: true,
-			},
-			{
-				source:
-					"/standards-and-indicators/qofindicators/the-percentage-of-babies-who-reached-8-months-old-in-the-preceding-12-months-who-have-received-at-least-3-doses-of-a-diphtheria-tetanus-and-pertussis-containing-vaccine-before-the-age-of-8-months",
-				destination: "/indicators/IND215-immunisation-dtap-18-months",
-				permanent: true,
-			},
-			{
-				source:
-					"/standards-and-indicators/qofindicators/the-percentage-of-children-who-reached-18-months-old-in-the-preceding-12-months-who-have-received-at-least-1-dose-of-mmr-between-the-ages-of-12-and-18-months",
-				destination: "/indicators/IND216-immunisation-mmr-18-months",
-				permanent: true,
-			},
-			{
-				source:
-					"/standards-and-indicators/qofindicators/the-percentage-of-children-who-reached-5-years-old-in-the-preceding-12-months-who-have-received-a-reinforcing-dose-of-dtap-ipv-and-at-least-2-doses-of-mmr-between-the-ages-of-1-and-5-years",
-				destination: "/indicators/IND217-immunisation-dtapipv-and-mmr-5-years",
-				permanent: true,
-			},
-			{
-				source:
-					"/standards-and-indicators/qofindicators/the-percentage-of-children-who-reached-5-years-old-in-the-preceding-12-months-who-have-received-1-dose-of-mmr-between-the-ages-of-1-and-5-years",
-				destination: "/indicators/IND218-immunisation-mmr-5-years",
-				permanent: true,
-			},
-			{
-				source:
-					"/standards-and-indicators/qofindicators/the-percentage-of-patients-who-reached-75-years-old-in-the-preceding-12-months-who-have-received-a-shingles-vaccine-between-the-ages-of-70-and-75-years",
-				destination: "/indicators/IND219-immunisation-shingles",
-				permanent: true,
-			},
-			{
-				source:
-					"/standards-and-indicators/qofindicators/the-percentage-of-patients-with-a-bmi-of-27-5-kg-m2-or-more-or-30-kg-m2-or-more-if-ethnicity-is-recorded-as-white-in-the-preceding-12-months-who-have-been-offered-referral-to-a-weight-management-programme-within-90-days-of-the-bmi-being-recorded",
-				destination:
-					"/indicators/IND220-weight-management-referral-to-weight-management-programmes-for-obesity",
-				permanent: true,
-			},
-			{
-				source:
-					"/standards-and-indicators/qofindicators/the-percentage-of-patients-with-hypertension-or-diabetes-and-a-bmi-of-27-5-kg-m2-or-more-or-30-kg-m2-or-more-if-ethnicity-is-recorded-as-white-in-the-preceding-12-months-who-have-been-referred-to-a-weight-management-programme-within-90-days-of-the-bmi-bei",
-				destination:
-					"/indicators/IND221-weight-management-referral-to-weight-management-programmes-for-obesity-co-existing-hypertension-or-diabetes",
-				permanent: true,
-			},
-			{
-				source:
-					"/standards-and-indicators/qofindicators/the-percentage-of-patients-with-cancer-diagnosed-within-the-preceding-12-months-who-have-had-a-discussion-within-3-months-of-diagnosis-about-the-support-available-from-primary-care",
-				destination: "/indicators/IND222-cancer-review-within-3-months",
-				permanent: true,
-			},
-			{
-				source:
-					"/standards-and-indicators/qofindicators/the-percentage-of-patients-with-cancer-diagnosed-within-the-preceding-24-months-who-have-a-patient-cancer-care-review-using-a-structured-template-within-12-months-of-diagnosis",
-				destination: "/indicators/IND223-cancer-review-within-12-months",
-				permanent: true,
-			},
-			{
-				source:
-					"/standards-and-indicators/qofindicators/the-percentage-of-babies-who-reached-24-weeks-old-in-the-preceding-12-months-who-have-received-2-doses-of-rotavirus-vaccine-before-the-age-of-24-weeks",
-				destination: "/indicators/IND224-immunisation-rotavirus-24-weeks",
-				permanent: true,
-			},
-			{
-				source:
-					"/standards-and-indicators/qofindicators/the-percentage-of-babies-who-reached-8-months-old-in-the-preceding-12-months-who-have-received-2-doses-of-a-meningitis-b-vaccine-before-the-age-of-8-months",
-				destination: "/indicators/IND225-immunisation-meningitis-b-8-months",
-				permanent: true,
-			},
-			{
-				source:
-					"/standards-and-indicators/qofindicators/the-percentage-of-babies-who-reached-18-months-old-in-the-preceding-12-months-who-have-received-2-primary-doses-and-1-booster-dose-of-a-meningitis-b-vaccine-before-the-age-of-18-months",
-				destination: "/indicators/IND226-immunisation-meningitis-b-18-months",
-				permanent: true,
-			},
-			{
-				source:
-					"/standards-and-indicators/qofindicators/the-percentage-of-adults-receiving-drug-treatment-for-epilepsy-who-had-a-structured-review-in-the-preceding-12-months",
-				destination: "/indicators/IND227-epilepsy-annual-review",
-				permanent: true,
-			},
-			{
-				source:
-					"/standards-and-indicators/qofindicators/the-percentage-of-patients-with-a-cvd-risk-assessment-score-of-10-or-more-identified-in-the-preceding-12-months-who-are-offered-advice-and-support-for-smoking-cessation-safe-alcohol-consumption-healthy-diet-and-exercise-within-3-months-of-the-score-being-",
-				destination:
-					"/indicators/IND228-cardiovascular-disease-prevention-primary-prevention-with-lifestyle-changes",
-				permanent: true,
-			},
-			{
-				source:
-					"/standards-and-indicators/qofindicators/the-percentage-of-patients-with-a-cvd-risk-assessment-score-of-10-or-more-who-are-currently-treated-with-a-lipid-lowering-therapy",
-				destination:
-					"/indicators/IND229-cardiovascular-disease-prevention-primary-prevention-with-lipid-lowering-therapies",
+				source: "/About/Who-we-are/Board/Board-expenses",
+				destination: "/about-us/our-board/board-expenses",
 				permanent: true,
 			},
 			{
@@ -1833,356 +2325,654 @@ const nextConfig = {
 				permanent: true,
 			},
 			{
+				source: "/standards-and-indicators/developing-nice-quality-standards",
+				destination: "/what-nice-does/standards-and-indicators",
+				permanent: true,
+			},
+			{
+				source: "/standards-and-indicators/how-we-develop-ccg-ois",
+				destination: "/what-nice-does/standards-and-indicators",
+				permanent: true,
+			},
+			{
+				source: "/standards-and-indicators/how-we-develop-qof",
+				destination: "/what-nice-does/standards-and-indicators",
+				permanent: true,
+			},
+			{
+				source: "/standards-and-indicators/quality-standard-consultation",
+				destination: "/what-nice-does/standards-and-indicators",
+				permanent: true,
+			},
+			{
+				source: "/standards-and-indicators/support-a-quality-standard",
+				destination: "/what-nice-does/standards-and-indicators",
+				permanent: true,
+			},
+			{
+				source: "/standards-and-indicators/topic-engagement",
+				destination: "/what-nice-does/standards-and-indicators",
+				permanent: true,
+			},
+			{
 				source:
-					"/standards-and-indicators/qofindicators/the-percentage-of-patients-with-ckd-on-the-register-who-are-currently-treated-with-a-lipid-lowering-therapy",
+					"/get-involved/register-your-organisation-as-a-stakeholder/stakeholder-registration--guidelines--quality-standards-and-indicators",
 				destination:
-					"/indicators/IND231-kidney-conditions-ckd-and-lipid-lowering-therapies",
+					"/get-involved/register-your-organisation-as-a-stakeholder/stakeholder-registration-guidelines-quality-standards-and-indicators",
 				permanent: true,
 			},
 			{
 				source:
-					"/standards-and-indicators/qofindicators/the-percentage-of-patients-excluding-those-on-the-ckd-register-prescribed-long-term-chronic-oral-non-steroidal-anti-inflammatory-drugs-nsaids-who-have-had-an-egfr-measurement-in-the-preceding-12-months",
+					"/Get-Involved/Meetings-in-public/Highly-Specialised-Technologies-Evaluation-Committee",
 				destination:
-					"/indicators/IND232-kidney-conditions-egfr-for-long-term-nsaid-use",
+					"/get-involved/our-committees/nice-committee-meetings/highly-specialised-technologies-evaluation-committee",
 				permanent: true,
 			},
 			{
 				source:
-					"/standards-and-indicators/qofindicators/the-percentage-of-patients-with-a-new-diagnosis-of-ckd-stage-g3a-g5-on-the-register-within-the-preceding-12-months-who-had-egfr-measured-on-at-least-2-occasions-separated-by-at-least-90-days-and-the-second-test-within-90-days-before-the-diagnosis",
-				destination: "/indicators/IND233-kidney-conditions-ckd-and-egfr",
-				permanent: true,
-			},
-			{
-				source:
-					"/standards-and-indicators/qofindicators/the-percentage-of-patients-with-a-new-diagnosis-of-ckd-stage-g3a-g5-on-the-register-within-the-preceding-12-months-who-had-egfr-and-acr-urine-albumin-to-creatinine-ratio-measurements-recorded-within-90-days-before-or-after-diagnosis",
-				destination: "/indicators/IND234-kidney-conditions-ckd-egfr-and-acr",
-				permanent: true,
-			},
-			{
-				source:
-					"/standards-and-indicators/qofindicators/the-percentage-of-patients-on-the-ckd-register-and-with-an-albumin-to-creatinine-ratio-acr-of-less-than-70-mg-mmol-without-moderate-or-severe-frailty-in-whom-the-last-blood-pressure-reading-measured-in-the-preceding-12-months-is-less-than-135-85-mmhg-if-u",
+					"/about/what-we-do/supporting-the-health-and-care-system-to-implement-virtual-wards",
 				destination:
-					"/indicators/IND235-kidney-conditions-ckd-and-blood-pressure-when-acr-less-than-70",
+					"/implementing-nice-guidance/cost-saving-resource-planning-and-audit/supporting-the-health-care-system-to-implement-virtual-wards",
 				permanent: true,
 			},
 			{
 				source:
-					"/standards-and-indicators/qofindicators/the-contractor-establishes-and-maintains-a-register-of-patients-aged-18-or-over-with-a-bmi-of-23-kg-m2-or-more-or-25-kg-m2-or-more-if-ethnicity-is-recorded-as-white-in-the-preceding-12-months",
-				destination: "/indicators/IND237-weight-management-overweight-register",
-				permanent: true,
-			},
-			{
-				source:
-					"/Standards-and-Indicators/QOFIndicators/the-contractor-establishes-and-maintains-a-register-of-patients-aged-18-or-over-with-a-bmi-of-27-5-kg-m2-or-more-or-30-kg-m2-or-more-if-ethnicity-is-recorded-as-white-in-the-preceding-12-months",
-				destination: "/indicators/IND238-weight-management-obesity-register",
-				permanent: true,
-			},
-			{
-				source:
-					"/standards-and-indicators/qofindicators/the-contractor-establishes-and-maintains-a-register-of-patients-aged-18-or-over-with-a-bmi-of-27-5-kg-m2-or-more-or-30-kg-m2-or-more-if-ethnicity-is-recorded-as-white-in-the-preceding-12-months",
-				destination: "/indicators/IND238-weight-management-obesity-register",
-				permanent: true,
-			},
-			{
-				source:
-					"/standards-and-indicators/qofindicators/the-percentage-of-patients-aged-79-years-or-under-with-hypertension-in-whom-the-last-blood-pressure-reading-measured-in-the-preceding-12-months-is-less-than-135-85-mmhg-if-using-ambulatory-or-home-monitoring-or-less-than-140-90-mmhg-if-monitored-in-clinic",
+					"/Get-Involved/Meetings-in-public/Interventional-Procedures-Advisory-Committee",
 				destination:
-					"/indicators/IND239-hypertension-blood-pressure-79-years-and-under",
+					"/get-involved/our-committees/nice-committee-meetings/interventional-procedures-advisory-committee",
 				permanent: true,
 			},
 			{
 				source:
-					"/standards-and-indicators/qofindicators/the-percentage-of-patients-aged-80-years-or-over-with-hypertension-in-whom-the-last-blood-pressure-reading-measured-in-the-preceding-12-months-is-less-than-145-85-mmhg-if-using-ambulatory-or-home-monitoring-or-less-than-150-90-mmhg-if-monitored-in-clinic",
+					"/about/who-we-are/board-executive-team-and-senior-leaders-interests-register",
 				destination:
-					"/indicators/IND240-hypertension-blood-pressure-80-years-and-over",
+					"/about-us/our-board/board-executive-team-and-senior-leaders-interests-register",
 				permanent: true,
 			},
 			{
 				source:
-					"/standards-and-indicators/qofindicators/the-percentage-of-patients-aged-79-years-or-under-with-coronary-heart-disease-in-whom-the-last-blood-pressure-reading-measured-in-the-preceding-12-months-is-less-than-135-85-mmhg-if-using-ambulatory-or-home-monitoring-or-less-than-140-90-mmhg-if-monitored",
+					"/about/what-we-do/patient-access-schemes-liaison-unit#list-of-arrangements",
 				destination:
-					"/indicators/IND241-angina-and-coronary-heart-disease-blood-pressure-79-years-and-under",
+					"/what-nice-does/patient-access-schemes-and-pricing-agreements",
 				permanent: true,
 			},
 			{
 				source:
-					"/standards-and-indicators/qofindicators/the-percentage-of-patients-aged-80-years-or-over-with-coronary-heart-disease-in-whom-the-last-blood-pressure-reading-measured-in-the-preceding-12-months-is-less-than-145-85-mmhg-if-using-ambulatory-or-home-monitoring-or-less-than-150-90-mmhg-if-monitored-",
+					"/get-involved/register-as-a-stakeholder/who-can-register-as-a-stakeholder",
 				destination:
-					"/indicators/IND242-angina-and-coronary-heart-disease-blood-pressure-80-years-and-over",
+					"/get-involved/register-your-organisation-as-a-stakeholder/who-can-register-as-a-stakeholder",
 				permanent: true,
 			},
 			{
 				source:
-					"/standards-and-indicators/qofindicators/the-percentage-of-patients-aged-79-years-or-under-with-a-history-of-stroke-or-tia-in-whom-the-last-blood-pressure-reading-measured-in-the-preceding-12-months-is-less-than-135-85-mmhg-if-using-ambulatory-or-home-monitoring-or-less-than-140-90-mmhg-if-monit",
+					"/Get-Involved/Meetings-in-public/Medical-Technologies-Advisory-Committee",
 				destination:
-					"/indicators/IND243-stroke-and-ischaemic-attack-blood-pressure-79-years-and-under",
+					"/get-involved/our-committees/nice-committee-meetings/medical-technologies-advisory-committee",
 				permanent: true,
 			},
 			{
 				source:
-					"/standards-and-indicators/qofindicators/the-percentage-of-patients-aged-80-years-or-over-with-a-history-of-stroke-or-tia-in-whom-the-last-blood-pressure-reading-measured-in-the-preceding-12-months-is-less-than-145-85-mmhg-if-using-ambulatory-or-home-monitoring-or-less-than-150-90-mmhg-if-monito",
+					"/Get-Involved/Meetings-in-public/Quality-Standards-Advisory-Committee",
 				destination:
-					"/indicators/IND244-stroke-and-ischaemic-attack-blood-pressure-80-years-and-over",
+					"/get-involved/our-committees/nice-committee-meetings/quality-standards-advisory-committee",
 				permanent: true,
 			},
 			{
 				source:
-					"/standards-and-indicators/qofindicators/the-percentage-of-patients-aged-79-years-or-under-with-peripheral-arterial-disease-in-whom-the-last-blood-pressure-reading-measured-in-the-preceding-12-months-is-less-than-135-85-mmhg-if-using-ambulatory-or-home-monitoring-or-less-than-140-90-mmhg-if-moni",
+					"/get-involved/stakeholder-registration/tobacco-industry-organisations",
 				destination:
-					"/indicators/IND245-peripheral-arterial-disease-blood-pressure-79-years-and-under",
+					"/position-statements/position-statement-on-engagement-with-tobacco-industry-organisations",
 				permanent: true,
 			},
 			{
 				source:
-					"/standards-and-indicators/gpqualityimprovements/the-percentage-of-patients-aged-80-years-or-over-with-peripheral-arterial-disease-in-whom-the-last-blood-pressure-reading-measured-in-the-preceding-12-months-is-less-than-145-85-mmhg-if-using-ambulatory-or-home-monitoring-or-less-than-150-90-mmhg-if-monit",
+					"/standards-and-indicators/get-involved/quality-standard-consultations",
 				destination:
-					"/indicators/IND246-peripheral-arterial-disease-blood-pressure-80-years-and-over",
+					"/get-involved/help-develop-quality-standards/quality-standard-consultations",
 				permanent: true,
 			},
 			{
 				source:
-					"/standards-and-indicators/qofindicators/percentage-of-patients-with-atrial-fibrillation-and-a-last-recorded-cha2ds2-vasc-score-of-2-or-more-who-are-currently-prescribed-a-direct-acting-oral-anticoagulant-doac-if-eligible-or-a-vitamin-k-antagonist-if-not-eligible-for-a-doac-or-a-doac-is-declined",
+					"/get-involved/meetings-in-public/antimicrobials-evaluation-committee",
 				destination:
-					"/indicators/IND247-atrial-fibrillation-doacs-and-vitamin-k-antagonists",
+					"/get-involved/our-committees/nice-committee-meetings/antimicrobial-evaluation-committee",
 				permanent: true,
 			},
 			{
 				source:
-					"/standards-and-indicators/qofindicators/percentage-of-patients-with-schizophrenia-bipolar-affective-disorder-and-other-psychoses-who-in-the-preceding-12-months-received-all-six-elements-of-physical-health-checks-for-people-with-severe-mental-illness",
+					"/get-involved/meetings-in-public/public-health-advisory-committees",
 				destination:
-					"/indicators/IND248-bipolar-schizophrenia-and-other-psychoses-6-physical-health-checks",
+					"/get-involved/our-committees/nice-committee-meetings/public-health-advisory-committees",
 				permanent: true,
 			},
 			{
 				source:
-					"/standards-and-indicators/qofindicators/the-percentage-of-patients-with-diabetes-on-the-register-aged-79-years-and-under-without-moderate-or-severe-frailty-in-whom-the-last-blood-pressure-reading-measured-in-the-preceding-12-months-is-less-than-135-85-mmhg-if-using-ambulatory-or-home-monitoring",
+					"/about/what-we-do/proportionate-approach-to-technology-appraisals",
 				destination:
-					"/indicators/IND249-diabetes-blood-pressure-without-moderate-or-severe-frailty",
+					"/what-nice-does/our-guidance/about-technology-appraisal-guidance/our-methods-and-processes-health-technology-evaluation-manual/taking-a-proportionate-approach-to-technology-appraisals",
 				permanent: true,
 			},
 			{
 				source:
-					"/Standards-and-Indicators/QOFIndicators/the-contractor-establishes-and-maintains-a-register-of-all-cancer-patients-excluding-non-melanotic-skin-cancers",
-				destination: "/indicators/IND250-cancer-register",
+					"/get-involved/careers/our-benefits--rewards-and-work-life-balance",
+				destination: "/careers/our-benefits-rewards-and-work-life-balance",
 				permanent: true,
 			},
 			{
 				source:
-					"/standards-and-indicators/qofindicators/the-contractor-establishes-and-maintains-a-register-of-all-cancer-patients-excluding-non-melanotic-skin-cancers",
-				destination: "/indicators/IND250-cancer-register",
-				permanent: true,
-			},
-			{
-				source:
-					"/Standards-and-Indicators/QOFIndicators/the-contractor-establishes-and-maintains-a-register-of-patients-with-coronary-heart-disease",
-				destination: "/indicators/IND251-coronary-heart-disease-register",
-				permanent: true,
-			},
-			{
-				source:
-					"/standards-and-indicators/qofindicators/the-contractor-establishes-and-maintains-a-register-of-patients-with-coronary-heart-disease",
-				destination: "/indicators/IND251-coronary-heart-disease-register",
-				permanent: true,
-			},
-			{
-				source:
-					"/Standards-and-Indicators/QOFIndicators/the-contractor-establishes-and-maintains-a-register-of-patients-diagnosed-with-dementia",
-				destination: "/indicators/IND252-dementia-register",
-				permanent: true,
-			},
-			{
-				source:
-					"/standards-and-indicators/qofindicators/the-contractor-establishes-and-maintains-a-register-of-patients-diagnosed-with-dementia",
-				destination: "/indicators/IND252-dementia-register",
-				permanent: true,
-			},
-			{
-				source:
-					"/Standards-and-Indicators/QOFIndicators/the-contractor-establishes-and-maintains-a-register-of-patients-aged-18-or-over-receiving-drug-treatment-for-epilepsy",
-				destination: "/indicators/IND253-epilepsy-register",
-				permanent: true,
-			},
-			{
-				source:
-					"/standards-and-indicators/qofindicators/the-contractor-establishes-and-maintains-a-register-of-patients-aged-18-or-over-receiving-drug-treatment-for-epilepsy",
-				destination: "/indicators/IND253-epilepsy-register",
-				permanent: true,
-			},
-			{
-				source:
-					"/standards-and-indicators/qofindicators/the-contractor-establishes-and-maintains-a-register-of-patients-aged-18-or-over-with-heart-failure",
-				destination: "/indicators/IND254-heart-failure-register",
-				permanent: true,
-			},
-			{
-				source:
-					"/Standards-and-Indicators/QOFIndicators/the-contractor-establishes-and-maintains-a-register-of-patients-with-established-hypertension",
-				destination: "/indicators/IND255-hypertension-register",
-				permanent: true,
-			},
-			{
-				source:
-					"/standards-and-indicators/qofindicators/the-contractor-establishes-and-maintains-a-register-of-patients-with-established-hypertension",
-				destination: "/indicators/IND255-hypertension-register",
-				permanent: true,
-			},
-			{
-				source:
-					"/Standards-and-Indicators/QOFIndicators/the-contractor-establishes-and-maintains-a-register-of-patients-with-schizophrenia-bipolar-affective-disorder-and-other-psychoses-and-other-patients-on-lithium-therapy",
+					"/standards-and-indicators/get-involved/support-a-quality-standard",
 				destination:
-					"/indicators/IND256-bipolar-schizophrenia-and-other-psychoses-register-lithium-therapy",
+					"/get-involved/help-develop-quality-standards/support-a-quality-standard",
 				permanent: true,
 			},
 			{
 				source:
-					"/standards-and-indicators/qofindicators/the-contractor-establishes-and-maintains-a-register-of-patients-with-schizophrenia-bipolar-affective-disorder-and-other-psychoses-and-other-patients-on-lithium-therapy",
+					"/get-involved/stakeholder-registration/confidentiality-agreement",
 				destination:
-					"/indicators/IND256-bipolar-schizophrenia-and-other-psychoses-register-lithium-therapy",
+					"/get-involved/register-your-organisation-as-a-stakeholder/stakeholder-registration-confidentiality-agreement",
 				permanent: true,
 			},
 			{
 				source:
-					"/Standards-and-Indicators/QOFIndicators/the-contractor-establishes-and-maintains-a-register-of-patients-with-schizophrenia-bipolar-affective-disorder-and-other-psychoses",
+					"/Get-Involved/Meetings-in-public/Diagnostics-Advisory-Committee",
 				destination:
-					"/indicators/IND257-bipolar-schizophrenia-and-other-psychoses-register",
+					"/get-involved/our-committees/nice-committee-meetings/diagnostics-advisory-committee",
 				permanent: true,
 			},
 			{
 				source:
-					"/standards-and-indicators/qofindicators/the-contractor-establishes-and-maintains-a-register-of-patients-with-schizophrenia-bipolar-affective-disorder-and-other-psychoses",
+					"/Get-Involved/Meetings-in-public/Technology-Appraisal-Committee",
 				destination:
-					"/indicators/IND257-bipolar-schizophrenia-and-other-psychoses-register",
+					"/get-involved/our-committees/nice-committee-meetings/technology-appraisal-committees",
 				permanent: true,
 			},
 			{
 				source:
-					"/Standards-and-Indicators/QOFIndicators/the-contractor-establishes-and-maintains-a-register-of-patients-in-need-of-palliative-care-or-support",
-				destination: "/indicators/IND258-gp-services-palliative-care-register",
+					"/get-involved/jobs/our-benefits--rewards-and-work-life-balance",
+				destination: "/careers/our-benefits-rewards-and-work-life-balance",
 				permanent: true,
 			},
 			{
 				source:
-					"/standards-and-indicators/qofindicators/the-contractor-establishes-and-maintains-a-register-of-patients-in-need-of-palliative-care-or-support",
-				destination: "/indicators/IND258-gp-services-palliative-care-register",
+					"/get-involved/our-committees/how-gps-help-develop-our-guidance",
+				destination: "/get-involved/our-committees",
 				permanent: true,
 			},
 			{
-				source:
-					"/standards-and-indicators/qofindicators/the-contractor-establishes-and-maintains-a-register-of-patients-with-stroke-or-transient-ischaemic-attack-tia",
-				destination: "/indicators/IND259-stroke-and-ischaemic-attack-register",
-				permanent: true,
-			},
-			{
-				source:
-					"/Standards-and-Indicators/QOFIndicators/the-percentage-of-patients-with-a-total-cholesterol-reading-greater-than-7-5-mmol-litre-when-aged-29-years-or-under-or-greater-than-9-0-mmol-litre-when-aged-30-years-or-over-who-have-been-diagnosed-with-secondary-hyperlipidaemia-or-clinically-assessed-for",
+				source: "/get-involved/meetings-in-public/indicator-advisory-committee",
 				destination:
-					"/indicators/IND260-lipid-disorders-fh-assessment-and-diagnosis-historical-readings",
+					"/get-involved/our-committees/nice-committee-meetings/indicator-advisory-committee",
 				permanent: true,
 			},
 			{
-				source:
-					"/standards-and-indicators/qofindicators/the-percentage-of-patients-with-a-total-cholesterol-reading-greater-than-7-5-mmol-litre-when-aged-29-years-or-under-or-greater-than-9-0-mmol-litre-when-aged-30-years-or-over-who-have-been-diagnosed-with-secondary-hyperlipidaemia-or-clinically-assessed-for",
+				source: "/about/nice-communities/library-and-knowledge-services-staff",
+				destination: "/library-and-knowledge-services",
+				permanent: true,
+			},
+			{
+				source: "/about/what-we-do/bringing-our-guidance-together-by-topic",
 				destination:
-					"/indicators/IND260-lipid-disorders-fh-assessment-and-diagnosis-historical-readings",
+					"/what-nice-does/our-guidance/bringing-our-guidance-together-by-topic",
 				permanent: true,
 			},
 			{
-				source:
-					"/Standards-and-Indicators/QOFIndicators/the-percentage-of-patients-with-a-total-cholesterol-reading-in-the-preceding-12-months-greater-than-7-5-mmol-litre-who-have-been-diagnosed-with-secondary-hyperlipidaemia-or-clinically-assessed-for-familial-hypercholesterolaemia-or-referred-for-assessment-        ",
+				source: "/get-involved/our-committees/what-professional-members-do",
+				destination: "/get-involved/our-committees",
+				permanent: true,
+			},
+			{
+				source: "/Get-Involved/Meetings-in-public/Appeal-panel-membership",
 				destination:
-					"/indicators/IND261-lipid-disorders-fh-assessment-and-diagnosis-new-readings",
+					"/what-nice-does/our-guidance/about-technology-appraisal-guidance/technology-appraisal-and-highly-specialised-technologies-appeals/appeal-panel-membership",
 				permanent: true,
 			},
 			{
-				source:
-					"/standards-and-indicators/qofindicators/the-percentage-of-patients-with-a-total-cholesterol-reading-in-the-preceding-12-months-greater-than-7-5-mmol-litre-who-have-been-diagnosed-with-secondary-hyperlipidaemia-or-clinically-assessed-for-familial-hypercholesterolaemia-or-referred-for-assessment-",
+				source: "/standards-and-indicators/get-involved/topic-engagement",
 				destination:
-					"/indicators/IND261-lipid-disorders-fh-assessment-and-diagnosis-new-readings",
+					"/get-involved/help-develop-quality-standards/topic-engagement",
 				permanent: true,
 			},
 			{
-				source:
-					"/standards-and-indicators/gpqualityimprovements/the-percentage-of-patients-on-the-ckd-register-and-currently-treated-with-an-arb-or-an-ace-inhibitor-who-are-also-currently-treated-with-an-sglt2-inhibitor-if-they-have-either-no-type-2-diabetes-and-a-urine-acr-of-22-6-mg-mmol-or-more-or-type-2-diabetes-a",
+				source: "/Get-Involved/Meetings-in-public/Public-board-meetings",
+				destination: "/about-us/our-board/public-board-meetings",
+				permanent: true,
+			},
+			{
+				source: "/about/what-we-do/patient-access-schemes-liaison-unit",
+				destination: "/what-nice-does/accreditation",
+				permanent: true,
+			},
+			{
+				source: "/about/what-we-do/forward-view---our-priority-topics",
 				destination:
-					"/indicators/IND262-kidney-conditions-ckd-and-sglt2-inhibitors",
+					"/what-nice-does/our-guidance/prioritising-our-guidance-topics/forward-view-our-priority-topics",
 				permanent: true,
 			},
 			{
-				source:
-					"/Standards-and-Indicators/GPQualityImprovements/the-percentage-of-patients-on-the-ckd-register-and-with-an-albumin-to-creatinine-ratio-acr-of-70-mg-mmol-or-more-without-diabetes-who-are-currently-treated-with-an-arb-or-an-ace-inhibitor",
-				destination: "/indicators/IND263-kidney-conditions-ckd-acei-and-arb",
-				permanent: true,
-			},
-			{
-				source:
-					"/standards-and-indicators/gpqualityimprovements/the-percentage-of-patients-on-the-ckd-register-and-with-an-albumin-to-creatinine-ratio-acr-of-70-mg-mmol-or-more-without-diabetes-who-are-currently-treated-with-an-arb-or-an-ace-inhibitor",
-				destination: "/indicators/IND263-kidney-conditions-ckd-acei-and-arb",
-				permanent: true,
-			},
-			{
-				source:
-					"/Standards-and-Indicators/GPQualityImprovements/the-percentage-of-patients-on-the-ckd-register-and-with-an-albumin-to-creatinine-ratio-acr-of-70-mg-mmol-or-more-without-moderate-or-severe-frailty-in-whom-the-last-blood-pressure-reading-measured-in-the-preceding-12-months-is-less-than-125-75-mmhg-if-usi",
+				source: "/about/what-we-do/late-stage-assessment-for-medtech",
 				destination:
-					"/indicators/IND264-kidney-conditions-ckd-and-blood-pressure-when-acr-70-or-more",
+					"/what-nice-does/our-guidance/about-medical-technologies-guidance/late-stage-assessment-lsa-for-medtech",
 				permanent: true,
 			},
 			{
-				source:
-					"/standards-and-indicators/gpqualityimprovements/the-percentage-of-patients-on-the-ckd-register-and-with-an-albumin-to-creatinine-ratio-acr-of-70-mg-mmol-or-more-without-moderate-or-severe-frailty-in-whom-the-last-blood-pressure-reading-measured-in-the-preceding-12-months-is-less-than-125-75-mmhg-if-usi",
+				source: "/about/what-we-do/prioritising-our-guidance-topics",
 				destination:
-					"/indicators/IND264-kidney-conditions-ckd-and-blood-pressure-when-acr-70-or-more",
+					"/what-nice-does/our-guidance/prioritising-our-guidance-topics",
 				permanent: true,
 			},
 			{
-				source:
-					"/standards-and-indicators/qofindicators/the-percentage-of-patients-on-the-learning-disability-register-who-received-a-learning-disability-health-check-and-had-a-completed-health-action-plan-in-the-preceding-12-months",
+				source: "/about/nice-communities/medicines-and-prescribing",
+				destination: "/implementing-nice-guidance/medicines-and-prescribing",
+				permanent: true,
+			},
+			{
+				source: "/get-involved/our-committees/what-lay-members-do",
+				destination: "/get-involved/our-committees",
+				permanent: true,
+			},
+			{
+				source: "/about/what-we-do/real-world-evidence-framework",
+				destination: "/corporate/ecd9/chapter/overview",
+				permanent: true,
+			},
+			{
+				source: "/about/what-we-do/nice-and-health-inequalities",
 				destination:
-					"/indicators/IND265-learning-disabilities-health-checks-and-action-plans",
+					"/implementing-nice-guidance/cost-saving-resource-planning-and-audit/nice-and-health-inequalities",
 				permanent: true,
 			},
 			{
-				source:
-					"/standards-and-indicators/qofindicators/the-percentage-of-patients-on-the-learning-disability-register-who-received-a-learning-disability-health-check-and-had-a-completed-health-action-plan-in-the-preceding-12-months-and-have-a-recording-of-ethnicity",
+				source: "/get-involved/careers/diversity-and-inclusion",
+				destination: "/careers/diversity-and-inclusion",
+				permanent: true,
+			},
+			{
+				source: "/get-involved/careers/we-care-about-our-staff",
+				destination: "/careers/we-care-about-our-staff",
+				permanent: true,
+			},
+			{
+				source: "/about/nice-communities/general-practitioners",
 				destination:
-					"/indicators/IND266-learning-disabilities-health-checks-action-plans-and-ethnicity",
+					"/implementing-nice-guidance/general-practice-keep-your-practice-up-to-date",
 				permanent: true,
 			},
 			{
-				source:
-					"/standards-and-indicators/qofindicators/the-percentage-of-urgent-suspected-colorectal-cancer-referrals-accompanied-by-a-faecal-immunochemical-test-fit-result-with-the-result-recorded-in-the-twenty-one-days-leading-up-to-the-referral",
-				destination: "/indicators/IND267-cancer-faecal-immunochemical-testing",
+				source: "/get-involved/our-committees/join-a-committee",
+				destination: "/get-involved/our-committees",
 				permanent: true,
 			},
 			{
-				source:
-					"/standards-and-indicators/qofindicators/the-percentage-of-patients-with-cvd-in-whom-the-last-recorded-ldl-cholesterol-level-is-2-0-mmol-per-litre-or-less-or-last-recorded-non-hdl-cholesterol-level-is-2-6-mmol-per-litre-or-less-if-ldl-cholesterol-is-not-recorded",
+				source: "/get-involved/fellows-and-scholars/scholars",
+				destination: "/get-involved",
+				permanent: true,
+			},
+			{
+				source: "/about/nice-communities/nice-and-the-public",
+				destination: "/get-involved/people-and-communities",
+				permanent: true,
+			},
+			{
+				source: "/get-involved/jobs/diversity-and-inclusion",
+				destination: "/careers",
+				permanent: true,
+			},
+			{
+				source: "/get-involved/jobs/we-care-about-our-staff",
+				destination: "/careers",
+				permanent: true,
+			},
+			{
+				source: "/about/nice-communities/public-involvement",
+				destination: "/what-nice-does",
+				permanent: true,
+			},
+			{
+				source: "/about/what-we-do/office-for-market-access",
 				destination:
-					"/indicators/IND268-cardiovascular-disease-prevention-cholesterol-treatment-target-secondary-prevention",
+					"/what-nice-does/life-sciences-how-to-get-your-product-to-market/nice-advice-service",
 				permanent: true,
 			},
 			{
-				source: "/hub/published",
-				destination: "/guidance/indevelopment?ngt=NICE+guidelines",
+				source: "/about/what-we-do/research-and-development",
+				destination: "/what-nice-does/our-research-work",
 				permanent: true,
 			},
 			{
-				source: "/hub/inconsultation",
-				destination: "/guidance/indevelopment?ngt=NICE+guidelines",
+				source: "/about/what-we-do/commercial-liaison-team",
+				destination:
+					"/what-nice-does/patient-access-schemes-and-pricing-agreements",
 				permanent: true,
 			},
 			{
-				source: "/hub/indevelopment",
-				destination: "/guidance/indevelopment?ngt=NICE+guidelines",
+				source: "/about/who-we-are/policies-and-procedures",
+				destination: "/about-us/policies-procedures-and-reports",
 				permanent: true,
 			},
 			{
-				source: "/hub/awaiting-development",
-				destination: "/guidance/indevelopment?ngt=NICE+guidelines",
+				source: "/about/what-we-do/science-policy-research",
+				destination: "/what-nice-does/our-research-work",
 				permanent: true,
 			},
 			{
-				source: "/hub/topic-selection",
-				destination: "/guidance/indevelopment?ngt=NICE+guidelines",
+				source: "/about/who-we-are/corporate-publications",
+				destination: "/about-us/corporate-publications",
+				permanent: true,
+			},
+			{
+				source: "/about/who-we-are/senior-management-team",
+				destination: "/about-us/executive-team/",
+				permanent: true,
+			},
+			{
+				source: "/about/what-we-do/international-services",
+				destination: "/what-nice-does/nice-international",
+				permanent: true,
+			},
+			{
+				source: "/get-involved/jobs/executive-recruitment",
+				destination: "/careers",
+				permanent: true,
+			},
+			{
+				source: "/about/nice-communities/generalpractice",
+				destination:
+					"/implementing-nice-guidance/general-practice-keep-your-practice-up-to-date",
+				permanent: true,
+			},
+			{
+				source: "/about/what-we-do/nice-syndication-api",
+				destination: "/reusing-our-content/nice-syndication-api",
+				permanent: true,
+			},
+			{
+				source: "/get-involved/careers/digital-at-nice",
+				destination: "/careers/digital-at-nice",
+				permanent: true,
+			},
+			{
+				source: "/about/what-we-do/nice-international",
+				destination: "/what-nice-does/nice-international",
+				permanent: true,
+			},
+			{
+				source: "/about/who-we-are/guidance-executive",
+				destination: "/about-us/guidance-executive",
+				permanent: true,
+			},
+			{
+				source: "/about/nice-communities/social-care",
+				destination: "/implementing-nice-guidance/social-care/",
+				permanent: true,
+			},
+			{
+				source: "/about/what-we-do/our-research-work",
+				destination: "/what-nice-does/our-research-work",
+				permanent: true,
+			},
+			{
+				source: "/about/who-we-are/structure-of-nice",
+				destination: "/about-us/structure-of-nice",
+				permanent: true,
+			},
+			{
+				source: "/about/what-we-do/scientific-advice",
+				destination:
+					"/what-nice-does/life-sciences-how-to-get-your-product-to-market/nice-advice-service",
+				permanent: true,
+			},
+			{
+				source: "/about/what-we-do/evidence-services",
+				destination: "/what-nice-does",
+				permanent: true,
+			},
+			{
+				source: "/about/what-we-do/eva-for-medtech",
+				destination:
+					"/what-nice-does/our-guidance/about-medical-technologies-guidance/early-value-assessment-eva-for-medtech",
+				permanent: true,
+			},
+			{
+				source: "/about/who-we-are/history-of-nice",
+				destination: "/about-us/history-of-nice",
+				permanent: true,
+			},
+			{
+				source: "/about/what-we-do/digital-health",
+				destination: "/what-nice-does/digital-health",
+				permanent: true,
+			},
+			{
+				source: "/about/who-we-are/our-principles",
+				destination: "/about-us/our-principles",
+				permanent: true,
+			},
+			{
+				source: "/about/who-we-are/sustainability",
+				destination: "/about-us/sustainability",
+				permanent: true,
+			},
+			{
+				source: "/about/what-we-do/our-programmes",
+				destination: "/what-nice-does",
+				permanent: true,
+			},
+			{
+				source: "/about/what-we-do/into-practice",
+				destination: "/implementing-nice-guidance",
+				permanent: true,
+			},
+			{
+				source: "/about/what-we-do/accreditation",
+				destination: "/what-nice-does/accreditation",
+				permanent: true,
+			},
+			{
+				source: "/about/what-we-do/life-sciences",
+				destination:
+					"/what-nice-does/life-sciences-how-to-get-your-product-to-market",
+				permanent: true,
+			},
+			{
+				source: "/about/who-we-are/nice-connect",
+				destination: "/about-us/corporate-publications",
+				permanent: true,
+			},
+			{
+				source: "/about/who-we-are/our-charter",
+				destination: "/about-us/corporate-publications/our-charter",
+				permanent: true,
+			},
+			{
+				source: "/about/who-we-are/our-vision",
+				destination: "/about-us",
+				permanent: true,
+			},
+			{
+				source: "/about/who-we-are/board",
+				destination: "/about-us/our-board/board-members",
+				permanent: true,
+			},
+			{
+				source: "/standards-and-indicators/quality-standard-consultations",
+				destination: "/what-nice-does/standards-and-indicators",
+				permanent: true,
+			},
+			{
+				source: "/standards-and-indicators/gpqualityimprovements/:path*",
+				destination: "/indicators/published",
+				permanent: true,
+			},
+			{
+				source:
+					"/standards-and-indicators/selecting-and-prioritising-quality-standard-topics",
+				destination:
+					"/what-nice-does/standards-and-indicators/quality-standards/selecting-and-prioritising-quality-standard-topics",
+				permanent: true,
+			},
+			{
+				source:
+					"/get-involved/study-nice-and-lse-s-executive-msc-healthcare-decision-making",
+				destination:
+					"/get-involved/nice-training-and-development-opportunities/study-nice-and-lse-s-executive-msc-healthcare-decision-making",
+				permanent: true,
+			},
+			{
+				source: "/standards-and-indicators/ccgoisindicators/:path*",
+				destination: "/indicators/published",
+				permanent: true,
+			},
+			{
+				source:
+					"/aac/identifying-high-potential-products-and-accelerating-access-to-market",
+				destination: "https://www.england.nhs.uk/aac/about-us/who-we-are/",
+				permanent: true,
+			},
+			{
+				source: "/standards-and-indicators/qofindicators/:path*",
+				destination: "/indicators/published",
+				permanent: true,
+			},
+			{
+				source:
+					"/forms/subscribe-to-medicines-and-prescribing-important-new-evidence",
+				destination: "/nice-newsletters-and-alerts",
+				permanent: true,
+			},
+			{
+				source: "/forms/subscribe-to-medicine-and-prescribing-alerts",
+				destination: "/nice-newsletters-and-alerts",
+				permanent: true,
+			},
+			{
+				source:
+					"/standards-and-indicators/timeline-developing-quality-standards",
+				destination:
+					"/what-nice-does/standards-and-indicators/quality-standards/timeline-for-developing-quality-standards",
+				permanent: true,
+			},
+			{
+				source: "/standards-and-indicators/quality-standards-topic-library",
+				destination:
+					"/what-nice-does/standards-and-indicators/quality-standards/selecting-and-prioritising-quality-standard-topics",
+				permanent: true,
+			},
+			{
+				source: "/standards-and-indicators/how-to-use-quality-standards",
+				destination:
+					"/what-nice-does/standards-and-indicators/quality-standards/how-to-use-quality-standards",
+				permanent: true,
+			},
+			{
+				source: "/terms-and-conditions/cks-end-user-licence-agreement",
+				destination: "/cks-end-user-licence-agreement",
+				permanent: true,
+			},
+			{
+				source: "/re-using-our-content/content-assurance-service",
+				destination: "/reusing-our-content/content-assurance-service",
+				permanent: true,
+			},
+			{
+				source: "/re-using-our-content/uk-open-content-licence",
+				destination: "/forms/use-of-nice-content-in-the-uk",
+				permanent: true,
+			},
+			{
+				source: "/standards-and-indicators/quality-standards",
+				destination:
+					"/what-nice-does/standards-and-indicators/quality-standards",
+				permanent: true,
+			},
+			{
+				source: "/Get-Involved/stakeholder-registration",
+				destination:
+					"/get-involved/register-your-organisation-as-a-stakeholder",
+				permanent: true,
+			},
+			{
+				source: "/standards-and-indicators/get-involved",
+				destination: "/what-nice-does/standards-and-indicators",
+				permanent: true,
+			},
+			{
+				source: "/standards-and-indicators/indicators",
+				destination: "/what-nice-does/standards-and-indicators/indicators",
+				permanent: true,
+			},
+			{
+				source: "/news/nice-newsletters-and-alerts",
+				destination: "/nice-newsletters-and-alerts",
+				permanent: true,
+			},
+			{
+				source: "/re-using-our-content/public-task",
+				destination: "/reusing-our-content/public-task",
+				permanent: true,
+			},
+			{
+				source: "/forms/life-sciences-contact-us",
+				destination: "/forms/nice-advice-contact-us",
+				permanent: true,
+			},
+			{
+				source: "/standards-and-indicators/index",
+				destination: "/indicators/published",
+				permanent: true,
+			},
+			{
+				source: "/get-involved/citizens-council",
+				destination: "/get-involved",
+				permanent: true,
+			},
+			{
+				source: "/Get-Involved/join-a-committee",
+				destination: "/get-involved/our-committees",
+				permanent: true,
+			},
+			{
+				source: "/about/what-we-do/evidence-services",
+				destination: "/library-and-knowledge-services",
+				permanent: true,
+			},
+			{
+				source: "/get-involved/nice-listens",
+				destination: "/what-nice-does/our-research-work/nice-listens",
+				permanent: true,
+			},
+			{
+				source: "/get-involved/contact-us",
+				destination: "/contact-us",
+				permanent: true,
+			},
+			{
+				source: "/get-involved/scholars",
+				destination: "/get-involved",
+				permanent: true,
+			},
+			{
+				source: "/get-involved/careers",
+				destination: "/careers",
+				permanent: true,
+			},
+			{
+				source: "/news/press-and-media",
+				destination: "/contact-us",
+				permanent: true,
+			},
+			{
+				source: "/get-involved/fellows",
+				destination: "/get-involved",
+				permanent: true,
+			},
+			{
+				source: "/covid-19/rapid-c19",
+				destination: "/rapid-c-19",
+				permanent: true,
+			},
+			{
+				source: "/get-involved/jobs",
+				destination: "/careers",
 				permanent: true,
 			},
 			{
@@ -2191,8 +2981,69 @@ const nextConfig = {
 				permanent: true,
 			},
 			{
-				source: "/standards-and-indicators/index",
+				source: "/about/what-we-do",
+				destination: "/what-nice-does",
+				permanent: true,
+			},
+			{
+				source: "/about/who-we-are",
+				destination: "/about-us",
+				permanent: true,
+			},
+			{
+				source: "/news/events",
+				destination: "/events",
+				permanent: true,
+			},
+			{
+				source: "/aac/about",
+				destination: "https://www.england.nhs.uk/aac/about-us/who-we-are/",
+				permanent: true,
+			},
+			{
+				source: "/terms-and-conditions#notice-of-rights",
+				destination: "/terms-and-conditions",
+				permanent: true,
+			},
+			{
+				source: "/standards-and-indicators",
+				destination: "/what-nice-does/standards-and-indicators",
+				permanent: true,
+			},
+			{
+				source: "/re-using-our-content",
+				destination: "/reusing-our-content",
+				permanent: true,
+			},
+			{
+				source: "/leave-feedback",
+				destination: "/forms/leave-feedback",
+				permanent: true,
+			},
+			{
+				source: "/cks-uk-only",
+				destination: "/cks-is-only-available-in-the-uk",
+				permanent: true,
+			},
+			{
+				source: "/covid-19",
+				destination:
+					"/guidance/conditions-and-diseases/respiratory-conditions/covid19",
+				permanent: true,
+			},
+			{
+				source: "/indicators",
 				destination: "/indicators/published",
+				permanent: true,
+			},
+			{
+				source: "/about",
+				destination: "/about-us",
+				permanent: true,
+			},
+			{
+				source: "/aac",
+				destination: "https://www.england.nhs.uk/aac/about-us/who-we-are/",
 				permanent: true,
 			},
 		];
@@ -2224,7 +3075,14 @@ const nextConfig = {
 		remotePatterns: [
 			{
 				protocol: "https",
+
 				hostname: "**.nice.org.uk",
+				port: "",
+			},
+			{
+				protocol: "https",
+
+				hostname: "a.storyblok.com",
 				port: "",
 			},
 		],

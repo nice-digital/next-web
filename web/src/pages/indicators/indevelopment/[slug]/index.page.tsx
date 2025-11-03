@@ -2,9 +2,11 @@ import { type GetServerSideProps } from "next/types";
 import { NextSeo } from "next-seo";
 
 import { Breadcrumbs, Breadcrumb } from "@nice-digital/nds-breadcrumbs";
+import { Grid, GridItem } from "@nice-digital/nds-grid";
 
 import { DefinitionList } from "@/components/DefinitionList/DefinitionList";
 import { Link } from "@/components/Link/Link";
+import { ProjectConsultationDocumentsLink } from "@/components/ProjectConsultationDocumentsLink/ProjectConsultationDocuments";
 import { ProjectHorizontalNav } from "@/components/ProjectHorizontalNav/ProjectHorizontalNav";
 import { ProjectInformation } from "@/components/ProjectInformation/ProjectInformation";
 import { ProjectPageHeading } from "@/components/ProjectPageHeading/ProjectPageHeading";
@@ -79,6 +81,7 @@ export default function InDevelopmentPage(
 ): JSX.Element {
 	const {
 		alert,
+		consultationUrls,
 		evidenceAssessmentGroup,
 		fullUpdates,
 		indevCommentators,
@@ -91,19 +94,19 @@ export default function InDevelopmentPage(
 		indevScheduleItems,
 		indevTimelineItems,
 		indevTopicItems,
+		isGuidanceHubPage,
 		partialUpdates,
 		projectPath,
 		reference,
 		title,
-		isGuidanceHubPage,
 	} = props;
 
 	// If it's a hub page, the middle breadcrumbs need swapping out
 	const MiddleBreadcrumbs = () =>
 		isGuidanceHubPage ? (
 			<>
-				<Breadcrumb>Hub</Breadcrumb>
-				<Breadcrumb>In development</Breadcrumb>
+				<Breadcrumb to="/guidance">NICE guidance</Breadcrumb>
+				<Breadcrumb to="/guidance/indevelopment">In development</Breadcrumb>
 			</>
 		) : (
 			<>
@@ -145,109 +148,140 @@ export default function InDevelopmentPage(
 				consultationUrls={props.consultationUrls}
 			/>
 
-			<ProjectInformation {...props} />
+			<Grid gutter="loose">
+				<GridItem cols={12} md={8} lg={9} elementType="section">
+					<ProjectInformation {...props} />
 
-			{!isGuidanceHubPage && (
-				<>
-					{indevTopicItems && indevTopicItems.length > 0 ? (
+					{!isGuidanceHubPage && (
 						<>
-							<p>Topic area:</p>
-							<ul aria-label="Topic areas" className="list list--unstyled">
-								{indevTopicItems.map((topicItem, index) => (
-									<li key={`${topicItem.item}_${index}`}>{topicItem.item}</li>
-								))}
-							</ul>
-						</>
-					) : null}
-					<Updates fullUpdates={fullUpdates} partialUpdates={partialUpdates} />
-					{indevScheduleItems && indevScheduleItems.length > 0 ? (
-						<>
-							<h3>Provisional Schedule</h3>
-							<DefinitionList ariaLabel="Provisional schedule">
-								{indevScheduleItems?.map((item, index) => {
-									return (
-										<div key={`provisionalschedulelist_${index}`}>
-											<dt key={`sched_dt_${index}`}>{item.column1}</dt>
-											<dd
-												key={`sched_dd_${index}`}
-												dangerouslySetInnerHTML={{ __html: item.column2 }}
-											/>
-										</div>
-									);
-								})}
-							</DefinitionList>
-						</>
-					) : null}
-					{indevProjectTeamMembers && indevProjectTeamMembers?.length > 0 ? (
-						<>
-							<h3>Project Team</h3>
-							<DefinitionList ariaLabel="Project team">
-								{indevProjectTeamMembers?.map((member, index) => {
-									return (
-										<div key={`teamlist_${index}`}>
-											<dt key={`member_dt_${index}`}>{member.column1}</dt>
-											<dd key={`member_dd_${index}`}>{member.column2}</dd>
-										</div>
-									);
-								})}
-							</DefinitionList>
-						</>
-					) : null}
-
-					{indevProjectRelatedLinks && indevProjectRelatedLinks?.length > 0 ? (
-						<>
-							<h3>Related Links</h3>
-							<ul aria-label="Related links" className="list list--unstyled">
-								{indevProjectRelatedLinks?.map((link, index) => {
-									return (
-										<li key={`link_dd_${index}`}>
-											<Link to={link.column2}>{link.column1}</Link>
-										</li>
-									);
-								})}
-							</ul>
-						</>
-					) : null}
-					{indevEmailEnquiries && indevEmailEnquiries.length > 0 ? (
-						<>
-							<h3>Email enquiries</h3>
-							<span>If you have any queries please email</span>
-							<ul className="list list--unstyled">
-								{indevEmailEnquiries &&
-									indevEmailEnquiries.map((enquiry) => {
-										return (
-											<li key={enquiry.item}>
-												<a href={`mailto:${enquiry.item}`}>{enquiry.item}</a>
+							{indevTopicItems && indevTopicItems.length > 0 ? (
+								<>
+									<p>Topic area:</p>
+									<ul aria-label="Topic areas" className="list list--unstyled">
+										{indevTopicItems.map((topicItem, index) => (
+											<li key={`${topicItem.item}_${index}`}>
+												{topicItem.item}
 											</li>
-										);
-									})}
-							</ul>
+										))}
+									</ul>
+								</>
+							) : null}
+							<Updates
+								fullUpdates={fullUpdates}
+								partialUpdates={partialUpdates}
+							/>
+							{indevScheduleItems && indevScheduleItems.length > 0 ? (
+								<>
+									<h3>Provisional Schedule</h3>
+									<DefinitionList ariaLabel="Provisional schedule">
+										{indevScheduleItems?.map((item, index) => {
+											return (
+												<div key={`provisionalschedulelist_${index}`}>
+													<dt key={`sched_dt_${index}`}>{item.column1}</dt>
+													<dd
+														key={`sched_dd_${index}`}
+														dangerouslySetInnerHTML={{ __html: item.column2 }}
+													/>
+												</div>
+											);
+										})}
+									</DefinitionList>
+								</>
+							) : null}
+							{indevProjectTeamMembers &&
+							indevProjectTeamMembers?.length > 0 ? (
+								<>
+									<h3>Project Team</h3>
+									<DefinitionList ariaLabel="Project team">
+										{indevProjectTeamMembers?.map((member, index) => {
+											return (
+												<div key={`teamlist_${index}`}>
+													<dt key={`member_dt_${index}`}>{member.column1}</dt>
+													<dd key={`member_dd_${index}`}>{member.column2}</dd>
+												</div>
+											);
+										})}
+									</DefinitionList>
+								</>
+							) : null}
+
+							{indevProjectRelatedLinks &&
+							indevProjectRelatedLinks?.length > 0 ? (
+								<>
+									<h3>Related Links</h3>
+									<ul aria-label="Related links">
+										{indevProjectRelatedLinks?.map((link, index) => {
+											return (
+												<li key={`link_dd_${index}`}>
+													<Link to={link.column2}>{link.column1}</Link>
+												</li>
+											);
+										})}
+									</ul>
+								</>
+							) : null}
+							{indevEmailEnquiries && indevEmailEnquiries.length > 0 ? (
+								<>
+									<h3>Email enquiries</h3>
+									{indevEmailEnquiries.length === 1 ? (
+										<p>
+											If you have any queries please email{" "}
+											<a href={`mailto:${indevEmailEnquiries[0].item}`}>
+												{indevEmailEnquiries[0].item}
+											</a>
+										</p>
+									) : (
+										<>
+											<span>If you have any queries please email</span>
+											<ul className="list list--unstyled">
+												{indevEmailEnquiries &&
+													indevEmailEnquiries.map((enquiry) => {
+														return (
+															<li key={enquiry.item}>
+																<a href={`mailto:${enquiry.item}`}>
+																	{enquiry.item}
+																</a>
+															</li>
+														);
+													})}
+											</ul>
+										</>
+									)}
+								</>
+							) : null}
+							{evidenceAssessmentGroup && (
+								<DefinitionList ariaLabel="External assessment group">
+									<dd>External Assessment Group</dd>
+									<dt>{evidenceAssessmentGroup}</dt>
+								</DefinitionList>
+							)}
+							<Stakeholders
+								legacyStakeholders={indevLegacyStakeholders}
+								consultees={indevConsultees}
+								commentators={indevCommentators}
+							/>
+							{indevTimelineItems && indevTimelineItems.length > 0 ? (
+								<Timeline data={indevTimelineItems} />
+							) : null}
+							{indevProcessHomepage ? (
+								<p>
+									{indevProcessHomepage.description}{" "}
+									<a href={indevProcessHomepage.links.self[0].href}>
+										{indevProcessHomepage.linkText}
+									</a>
+								</p>
+							) : null}
 						</>
-					) : null}
-					{evidenceAssessmentGroup && (
-						<DefinitionList ariaLabel="External assessment group">
-							<dd>External Assessment Group</dd>
-							<dt>{evidenceAssessmentGroup}</dt>
-						</DefinitionList>
 					)}
-					<Stakeholders
-						legacyStakeholders={indevLegacyStakeholders}
-						consultees={indevConsultees}
-						commentators={indevCommentators}
-					/>
-					{indevTimelineItems && indevTimelineItems.length > 0 ? (
-						<Timeline data={indevTimelineItems} />
-					) : null}
-					{indevProcessHomepage ? (
-						<p>
-							{indevProcessHomepage.description}{" "}
-							<a href={indevProcessHomepage.links.self[0].href}>
-								{indevProcessHomepage.linkText}
-							</a>
-						</p>
-					) : null}
-				</>
-			)}
+				</GridItem>
+				{consultationUrls.length > 0 && (
+					<GridItem cols={12} md={4} lg={3}>
+						<ProjectConsultationDocumentsLink
+							consultationUrls={consultationUrls}
+						/>
+					</GridItem>
+				)}
+			</Grid>
 		</div>
 	);
 }
