@@ -1,4 +1,10 @@
-import { IndevPanel, IndevResource, ProjectDetail } from "@/feeds/inDev/inDev";
+import {
+	IndevConvertedDocument,
+	IndevFile,
+	IndevPanel,
+	IndevResource,
+	ProjectDetail,
+} from "@/feeds/inDev/inDev";
 import {
 	BaseContentPart,
 	ContentPart,
@@ -145,34 +151,40 @@ export const getInDevResourceLink = ({
 	} else {
 		const projectPath = getProjectPath(project),
 			resourceEmbedded = resource.embedded,
-			resourceIsConvertedDocument = resourceEmbedded.hasOwnProperty("niceIndevConvertedDocument");
+			resourceIsConvertedDocument = Object.hasOwn(
+				resourceEmbedded,
+				"niceIndevConvertedDocument"
+			);
 
-			let resourceIndevFile = !!resourceEmbedded.niceIndevConvertedDocument
-				? resourceEmbedded.niceIndevConvertedDocument
-				: resourceEmbedded.niceIndevGeneratedPdf;
+		let resourceIndevFile;
 
-			resourceIndevFile = (!resourceIndevFile ? resource.embedded?.niceIndevFile: resourceIndevFile)!;
-
-		// if (resourceEmbedded.niceIndevGeneratedPdf) {
-		// 	indevResourceLink.href = `${projectPath}/documents/${resourceEmbedded.niceIndevGeneratedPdf.resourceTitleId}`;
-		// }
+		if (resourceIsConvertedDocument) {
+			resourceIndevFile =
+				resourceEmbedded.niceIndevConvertedDocument as IndevConvertedDocument;
+		} else {
+			resourceIndevFile = (resourceEmbedded.niceIndevFile ||
+				resourceEmbedded.niceIndevGeneratedPdf) as IndevFile;
+		}
 
 		if (resourceEmbedded.niceIndevConvertedDocument) {
 			indevResourceLink.href = `${projectPath}/documents/${resourceIndevFile.resourceTitleId}`;
 		} else {
-			// const { mimeType, length, resourceTitleId, fileName } =
-			// 	resourceIndevFile,
-			const mimeType = "mimeType" in resourceIndevFile ? resourceIndevFile.mimeType : "text/html";
-			const length = "length" in resourceIndevFile ? resourceIndevFile.length : 0;
-			const fileName = "fileName" in resourceIndevFile ? resourceIndevFile.fileName : "";
+			const mimeType =
+				"mimeType" in resourceIndevFile
+					? resourceIndevFile.mimeType
+					: "text/html";
+			const length =
+				"length" in resourceIndevFile ? resourceIndevFile.length : 0;
+			const fileName =
+				"fileName" in resourceIndevFile ? resourceIndevFile.fileName : "";
 			const resourceTitleId = resourceIndevFile.resourceTitleId;
 			const shouldUseNewConsultationComments =
-				resource.convertedDocument ||
-				resource.supportsComments ||
-				resource.supportsQuestions,
-			isHTML = mimeType === "text/html",
-			isConsultation =
-				resource.consultationId > 0 && panel.embedded.niceIndevConsultation;
+					resource.convertedDocument ||
+					resource.supportsComments ||
+					resource.supportsQuestions,
+				isHTML = mimeType === "text/html",
+				isConsultation =
+					resource.consultationId > 0 && panel.embedded.niceIndevConsultation;
 
 			Object.assign(indevResourceLink, {
 				fileSize: isHTML ? null : length,

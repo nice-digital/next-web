@@ -7,11 +7,12 @@ import HistoryChapterHTMLPage, {
 	HistoryChapterHTMLPageProps,
 } from "./[chapterSlug].page";
 
-type HistoryChapterHTMLPageGetServerSidePropsContext = GetServerSidePropsContext<{
-	slug: string;
-	htmlPath: string;
-	chapterSlug: string;
-}>;
+type HistoryChapterHTMLPageGetServerSidePropsContext =
+	GetServerSidePropsContext<{
+		slug: string;
+		htmlPath: string;
+		chapterSlug: string;
+	}>;
 
 const slug = "ind999-indicator-history-tab-html-conversion",
 	htmlPath = "html-conversion",
@@ -58,7 +59,7 @@ describe("/indicators/[slug]/history/[htmlPath]/chapter/[chapterSlug].page", () 
 				params: {
 					slug: "pmg20",
 					htmlPath,
-					chapterSlug
+					chapterSlug,
 				},
 				query: {
 					productRoot: "process",
@@ -101,11 +102,11 @@ describe("/indicators/[slug]/history/[htmlPath]/chapter/[chapterSlug].page", () 
 		// });
 
 		it("should render the converted document chapter title as a heading", () => {
-				render(<HistoryChapterHTMLPage {...props} />);
-				expect(
-					screen.getByRole("heading", { level: 2, name: "2 The technologies" })
-				).toBeInTheDocument();
-			});
+			render(<HistoryChapterHTMLPage {...props} />);
+			expect(
+				screen.getByRole("heading", { level: 2, name: "2 The technologies" })
+			).toBeInTheDocument();
+		});
 
 		it("should display the lastUpdated date", () => {
 			render(<HistoryChapterHTMLPage {...props} />);
@@ -150,31 +151,29 @@ describe("/indicators/[slug]/history/[htmlPath]/chapter/[chapterSlug].page", () 
 		});
 
 		// describe("ConvertedDocument", () => {
-			// const convertedDocumentSlug = "ind999-indicator-history-tab-html-conversion",
-			// 	convertedDocumentHtmlPath = "html-conversion",
-			// 	convertedDocumentProductRoot = "indicators",
-			// 	convertedDocumentResolvedUrl = `/${convertedDocumentProductRoot}/${convertedDocumentSlug}/history/${convertedDocumentHtmlPath}`;
+		// const convertedDocumentSlug = "ind999-indicator-history-tab-html-conversion",
+		// 	convertedDocumentHtmlPath = "html-conversion",
+		// 	convertedDocumentProductRoot = "indicators",
+		// 	convertedDocumentResolvedUrl = `/${convertedDocumentProductRoot}/${convertedDocumentSlug}/history/${convertedDocumentHtmlPath}`;
 
-			// beforeEach(async () => {
-			// 	props = (
-			// 		(await getServerSideProps({
-			// 			...context,
-			// 			params: { slug: convertedDocumentSlug, htmlPath: convertedDocumentHtmlPath, chapterSlug },
-			// 			resolvedUrl: convertedDocumentResolvedUrl,
-			// 			query: { productRoot: convertedDocumentProductRoot }
-			// 		})) as {
-			// 			props: HistoryChapterHTMLPageProps;
-			// 		}
-			// 	).props;
-			// 	(useRouter as jest.Mock).mockReturnValue({ asPath: convertedDocumentResolvedUrl });
-			// });
+		// beforeEach(async () => {
+		// 	props = (
+		// 		(await getServerSideProps({
+		// 			...context,
+		// 			params: { slug: convertedDocumentSlug, htmlPath: convertedDocumentHtmlPath, chapterSlug },
+		// 			resolvedUrl: convertedDocumentResolvedUrl,
+		// 			query: { productRoot: convertedDocumentProductRoot }
+		// 		})) as {
+		// 			props: HistoryChapterHTMLPageProps;
+		// 		}
+		// 	).props;
+		// 	(useRouter as jest.Mock).mockReturnValue({ asPath: convertedDocumentResolvedUrl });
+		// });
 
-			// it("should match snapshot for converted document", () => {
-			// 	render(<HistoryChapterHTMLPage {...props} />);
-			// 	expect(document.body).toMatchSnapshot();
-			// });
-
-
+		// it("should match snapshot for converted document", () => {
+		// 	render(<HistoryChapterHTMLPage {...props} />);
+		// 	expect(document.body).toMatchSnapshot();
+		// });
 
 		// });
 	});

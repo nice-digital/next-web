@@ -4,15 +4,14 @@ import React from "react";
 
 import { Breadcrumbs, Breadcrumb } from "@nice-digital/nds-breadcrumbs";
 
+import { ConvertedDocument } from "@/components/ConvertedDocument/ConvertedDocument";
 import { Link } from "@/components/Link/Link";
 import { ProjectHorizontalNav } from "@/components/ProjectHorizontalNav/ProjectHorizontalNav";
 import { ProjectPageHeading } from "@/components/ProjectPageHeading/ProjectPageHeading";
-import { ResourceLinkCard } from "@/components/ResourceLinkCard/ResourceLinkCard";
-import { getConvertedDocumentHTML, getResourceFileHTML } from "@/feeds/inDev/inDev";
+import { getConvertedDocumentHTML } from "@/feeds/inDev/inDev";
 import {
 	IndevFileResource,
 	IndevSchedule,
-	niceIndevConvertedDocument,
 	niceIndevConvertedDocumentChapter,
 	niceIndevConvertedDocumentSection,
 	ProjectDetail,
@@ -20,8 +19,7 @@ import {
 import { logger } from "@/logger";
 import { arrayify } from "@/utils/array";
 import { generateInPageNavArray, validateRouteParams } from "@/utils/project";
-import { getInDevResourceLink, ResourceLinkViewModel } from "@/utils/resource";
-import { ConvertedDocument } from "@/components/ConvertedDocument/ConvertedDocument";
+import { getInDevResourceLink } from "@/utils/resource";
 
 export type DocumentsChapterHTMLPageProps = {
 	consultationUrls: string[];
@@ -98,18 +96,14 @@ export default function DocumentsChapterHTMLPage({
 				consultationUrls={consultationUrls}
 			/>
 
-			<ConvertedDocument
-				lastUpdated={lastUpdated}
-				resource={resource}
-			/>
-
+			<ConvertedDocument lastUpdated={lastUpdated} resource={resource} />
 		</>
 	);
 }
 
 export const getServerSideProps: GetServerSideProps<
 	DocumentsChapterHTMLPageProps,
-	{ slug: string; resourceTitleId: string; chapterSlug: string; }
+	{ slug: string; resourceTitleId: string; chapterSlug: string }
 > = async ({ params, resolvedUrl, query }) => {
 	if (!params?.resourceTitleId) return { notFound: true };
 
@@ -199,8 +193,7 @@ export const getServerSideProps: GetServerSideProps<
 			resourceLink.title.replace("(pdf)", "").trim() === resource.title
 	);
 
-	const pdfDownloadLink =
-		pdfDownload.length > 0 ? pdfDownload[0].href : null;
+	const pdfDownloadLink = pdfDownload.length > 0 ? pdfDownload[0].href : null;
 
 	return {
 		props: {

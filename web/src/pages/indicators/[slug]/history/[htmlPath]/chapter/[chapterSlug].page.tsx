@@ -1,22 +1,23 @@
-import { NextSeo } from "next-seo";
 import { type GetServerSideProps } from "next/types";
+import { NextSeo } from "next-seo";
 import React from "react";
 
 import { Breadcrumbs, Breadcrumb } from "@nice-digital/nds-breadcrumbs";
 
-import { arrayify } from "@/utils/array";
-import { getFileTypeNameFromMime } from "@/utils/file";
-import { validateRouteParams } from "@/utils/product";
-import { type ResourceLinkViewModel } from "@/utils/resource";
 import { ConvertedDocument } from "@/components/ConvertedDocument/ConvertedDocument";
 import { ProductHorizontalNav } from "@/components/ProductHorizontalNav/ProductHorizontalNav";
 import { ProductPageHeading } from "@/components/ProductPageHeading/ProductPageHeading";
 import { getConvertedDocumentHTML } from "@/feeds/inDev/inDev";
- import {
+import {
+	IndevFile,
 	type niceIndevConvertedDocumentChapter,
-	type niceIndevConvertedDocumentSection
+	type niceIndevConvertedDocumentSection,
 } from "@/feeds/inDev/types";
 import { type ProductDetail } from "@/feeds/publications/types";
+import { arrayify } from "@/utils/array";
+import { getFileTypeNameFromMime } from "@/utils/file";
+import { validateRouteParams } from "@/utils/product";
+import { type ResourceLinkViewModel } from "@/utils/resource";
 
 export type HistoryChapterHTMLPageProps = {
 	lastUpdated: string;
@@ -27,7 +28,7 @@ export type HistoryChapterHTMLPageProps = {
 		| "productTypeName"
 		| "publishedDate"
 		| "lastMajorModificationDate"
-		>;
+	>;
 	productHorizontalNav: {
 		hasEvidenceResources: boolean;
 		hasHistory: boolean;
@@ -57,9 +58,7 @@ export default function HistoryChaperHTMLPage({
 
 	return (
 		<>
-			<NextSeo
-				title={`${title} | History | ${id} | Indicators`}
-			/>
+			<NextSeo title={`${title} | History | ${id} | Indicators`} />
 
 			<Breadcrumbs>
 				<Breadcrumb to="/">Home</Breadcrumb>
@@ -76,13 +75,10 @@ export default function HistoryChaperHTMLPage({
 			<ProductHorizontalNav
 				productTypeName="Indicator"
 				productPath={productPath}
-				{... productHorizontalNav}
+				{...productHorizontalNav}
 			/>
 
-			<ConvertedDocument
-				lastUpdated={lastUpdated}
-				resource={resource}
-			/>
+			<ConvertedDocument lastUpdated={lastUpdated} resource={resource} />
 		</>
 	);
 }
@@ -98,13 +94,13 @@ export const getServerSideProps: GetServerSideProps<
 	if ("notFound" in result || "redirect" in result) return result;
 
 	const {
-			product,
-			productPath,
-			hasEvidenceResources,
-			hasHistory,
-			hasInfoForPublicResources,
-			hasToolsAndResources,
-			historyPanels,
+		product,
+		productPath,
+		hasEvidenceResources,
+		hasHistory,
+		hasInfoForPublicResources,
+		hasToolsAndResources,
+		historyPanels,
 	} = result;
 
 	const chapterSlug =
@@ -116,14 +112,14 @@ export const getServerSideProps: GetServerSideProps<
 		.flatMap((panel) =>
 			arrayify(panel.embedded.niceIndevResourceList.embedded.niceIndevResource)
 		)
-		.find(
-			(resource) => {
-				const indevFile = resource.embedded?.niceIndevConvertedDocument;
+		.find((resource) => {
+			const indevFile = resource.embedded?.niceIndevConvertedDocument;
 
-				return indevFile?.resourceTitleId === params?.htmlPath &&
+			return (
+				indevFile?.resourceTitleId === params?.htmlPath &&
 				resource.showInDocList
-			}
-		);
+			);
+		});
 
 	if (!resource) return { notFound: true };
 
@@ -140,7 +136,7 @@ export const getServerSideProps: GetServerSideProps<
 			? `${resourceFilePath.slice(
 					0,
 					resourceFilePathHTMLIndex
-				)}/chapter/${chapterSlug}`
+			  )}/chapter/${chapterSlug}`
 			: resourceFilePath;
 
 	const resourceFileHTML = await getConvertedDocumentHTML(resourceFilePath);
@@ -150,37 +146,48 @@ export const getServerSideProps: GetServerSideProps<
 	}
 
 	const panel = historyPanels.find((panel) => {
-		const indevResource = arrayify(panel.embedded.niceIndevResourceList.embedded.niceIndevResource);
+		const indevResource = arrayify(
+			panel.embedded.niceIndevResourceList.embedded.niceIndevResource
+		);
 		return indevResource[0].title === resource.title;
 	});
 
 	const resourceLinks: ResourceLinkViewModel[] = panel
 		? arrayify(panel.embedded.niceIndevResourceList.embedded.niceIndevResource)
-			.filter(
-				(embeddedResource) => {
+				.filter((embeddedResource) => {
 					const { embedded, textOnly, title } = embeddedResource;
+					const resourceIsGeneratedPdf = Object.hasOwn(
+						embedded,
+						"niceIndevGeneratedPdf"
+					);
 
-					return !textOnly
-						&& title !== panel.title
-						&& embedded?.hasOwnProperty("niceIndevGeneratedPdf");
-						// does this need to cater for other types - niceIndevConvertedDocument, niceIndevFile
-				}
-			)
-			.map((embeddedResource) => {
-				const resourceIndevFile = embeddedResource.embedded?.niceIndevGeneratedPdf!;
-				const href = `${productPath}/history/downloads/${
-						product.id
-					}-${resourceIndevFile.resourceTitleId}.${resourceIndevFile.fileName.split(".").slice(-1)[0]}`;
+					return !textOnly && title !== panel.title && resourceIsGeneratedPdf;
+				})
+				.map((embeddedResource) => {
+					const { embedded, publishedDate, title } = embeddedResource;
 
-				return {
-					title: embeddedResource.title,
-					href,
-					fileTypeName: getFileTypeNameFromMime(resourceIndevFile.mimeType),
-					fileSize: resourceIndevFile.length,
-					date: embeddedResource.publishedDate,
-					type: panel.title,
-				};
-			})
+					const resourceIndevFile =
+						embedded.niceIndevGeneratedPdf || ({} as IndevFile);
+					const resourceIsGeneratedPdf = Object.hasOwn(
+						embedded,
+						"niceIndevGeneratedPdf"
+					);
+
+					if (!resourceIsGeneratedPdf) return false;
+
+					const href = `${productPath}/history/downloads/${product.id}-${
+						resourceIndevFile.resourceTitleId
+					}.${resourceIndevFile.fileName.split(".").slice(-1)[0]}`;
+
+					return {
+						title: title,
+						href,
+						fileTypeName: getFileTypeNameFromMime(resourceIndevFile.mimeType),
+						fileSize: resourceIndevFile.length,
+						date: publishedDate,
+						type: panel.title,
+					};
+				})
 		: [];
 
 	const pdfDownload = resourceLinks.filter(
@@ -189,8 +196,7 @@ export const getServerSideProps: GetServerSideProps<
 			resourceLink.title.replace("(pdf)", "").trim() === resource.title
 	);
 
-	const pdfDownloadLink =
-		pdfDownload.length > 0 ? pdfDownload[0].href : null;
+	const pdfDownloadLink = pdfDownload.length > 0 ? pdfDownload[0].href : null;
 
 	return {
 		props: {

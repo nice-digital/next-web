@@ -4,11 +4,15 @@ import React from "react";
 
 import { Breadcrumbs, Breadcrumb } from "@nice-digital/nds-breadcrumbs";
 
+import { ConvertedDocument } from "@/components/ConvertedDocument/ConvertedDocument";
 import { Link } from "@/components/Link/Link";
 import { ProjectHorizontalNav } from "@/components/ProjectHorizontalNav/ProjectHorizontalNav";
 import { ProjectPageHeading } from "@/components/ProjectPageHeading/ProjectPageHeading";
 import { ResourceLinkCard } from "@/components/ResourceLinkCard/ResourceLinkCard";
-import { getConvertedDocumentHTML, getResourceFileHTML } from "@/feeds/inDev/inDev";
+import {
+	getConvertedDocumentHTML,
+	getResourceFileHTML,
+} from "@/feeds/inDev/inDev";
 import {
 	IndevFileResource,
 	IndevSchedule,
@@ -21,7 +25,6 @@ import { logger } from "@/logger";
 import { arrayify } from "@/utils/array";
 import { generateInPageNavArray, validateRouteParams } from "@/utils/project";
 import { getInDevResourceLink, ResourceLinkViewModel } from "@/utils/resource";
-import { ConvertedDocument } from "@/components/ConvertedDocument/ConvertedDocument";
 
 export type DocumentsHTMLPageProps = {
 	consultationUrls: string[];
@@ -101,18 +104,13 @@ export default function DocumentsHTMLPage({
 			/>
 
 			{isConvertedDocument ? (
-				<ConvertedDocument
-					lastUpdated={lastUpdated}
-					resource={resource}
-				/>
+				<ConvertedDocument lastUpdated={lastUpdated} resource={resource} />
 			) : (
 				<>
 					<h2>{title}</h2>
 
 					{htmlBody && (
-						<div
-							dangerouslySetInnerHTML={{ __html: htmlBody }}
-						></div>
+						<div dangerouslySetInnerHTML={{ __html: htmlBody }}></div>
 					)}
 
 					{resourceLinks.length > 0 ? (
@@ -221,8 +219,7 @@ export const getServerSideProps: GetServerSideProps<
 			resourceLink.title.replace("(pdf)", "").trim() === resource.title
 	);
 
-	const pdfDownloadLink =
-		pdfDownload.length > 0 ? pdfDownload[0].href : null;
+	const pdfDownloadLink = pdfDownload.length > 0 ? pdfDownload[0].href : null;
 
 	return {
 		props: {

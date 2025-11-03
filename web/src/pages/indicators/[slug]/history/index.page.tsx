@@ -6,7 +6,11 @@ import { Breadcrumb, Breadcrumbs } from "@nice-digital/nds-breadcrumbs";
 import { ProductHorizontalNav } from "@/components/ProductHorizontalNav/ProductHorizontalNav";
 import { ProductPageHeading } from "@/components/ProductPageHeading/ProductPageHeading";
 import { ResourceList } from "@/components/ResourceList/ResourceList";
-import { IndevConvertedDocument, IndevFile, ProjectDetail } from "@/feeds/inDev/inDev";
+import {
+	IndevConvertedDocument,
+	IndevFile,
+	ProjectDetail,
+} from "@/feeds/inDev/inDev";
 import { ProductDetail } from "@/feeds/publications/types";
 import { arrayify, byTitleAlphabetically } from "@/utils/array";
 import { getFileTypeNameFromMime } from "@/utils/file";
@@ -120,8 +124,10 @@ export const getServerSideProps: GetServerSideProps<
 		let currentSubGroup: ResourceSubGroupViewModel;
 
 		indevResources.forEach((resource) => {
-			if (resource.textOnly) {
-				currentSubGroup = { title: resource.title, resourceLinks: [] };
+			const { embedded, textOnly, title, publishedDate } = resource;
+
+			if (textOnly) {
+				currentSubGroup = { title: title, resourceLinks: [] };
 				subGroups.push(currentSubGroup);
 			} else {
 				if (!currentSubGroup) {
@@ -131,13 +137,16 @@ export const getServerSideProps: GetServerSideProps<
 
 				let indevFile;
 
-				if (resource.embedded?.hasOwnProperty("niceIndevConvertedDocument")) {
-					indevFile = resource.embedded?.niceIndevConvertedDocument as IndevConvertedDocument;
+				if (Object.hasOwn(embedded, "niceIndevConvertedDocument")) {
+					indevFile =
+						embedded.niceIndevConvertedDocument as IndevConvertedDocument;
 				} else {
-					indevFile = (resource.embedded?.niceIndevFile || resource?.embedded?.niceIndevGeneratedPdf) as IndevFile;
+					indevFile = (embedded.niceIndevFile ||
+						embedded.niceIndevGeneratedPdf) as IndevFile;
 				}
 
-				const mimeType = "mimeType" in indevFile ? indevFile.mimeType : "text/html";
+				const mimeType =
+					"mimeType" in indevFile ? indevFile.mimeType : "text/html";
 				const length = "length" in indevFile ? indevFile.length : 0;
 				const resourceTitleId = indevFile.resourceTitleId;
 				const fileName = "fileName" in indevFile ? indevFile.fileName : "";
@@ -146,17 +155,17 @@ export const getServerSideProps: GetServerSideProps<
 				const fileSize = isHTML ? null : length;
 				const fileTypeName = isHTML ? null : getFileTypeNameFromMime(mimeType);
 				const href = isHTML
-						? `${productPath}/history/${resourceTitleId}`
-						: `${productPath}/history/downloads/${
-								product.id
-						  }-${resourceTitleId}.${fileName.split(".").slice(-1)[0]}`;
+					? `${productPath}/history/${resourceTitleId}`
+					: `${productPath}/history/downloads/${
+							product.id
+					  }-${resourceTitleId}.${fileName.split(".").slice(-1)[0]}`;
 
 				currentSubGroup.resourceLinks.push({
-					title: resource.title,
+					title: title,
 					href,
 					fileTypeName,
 					fileSize,
-					date: resource.publishedDate,
+					date: publishedDate,
 					type: panel.title,
 				});
 			}

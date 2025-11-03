@@ -11,10 +11,9 @@ export type ConvertedDocumentChapterMenuProps = {
 	chapters: niceIndevConvertedDocumentChapter[];
 };
 
-export const ConvertedDocumentChapterMenu: FC<ConvertedDocumentChapterMenuProps> = ({
-	ariaLabel,
-	chapters
-}) => {
+export const ConvertedDocumentChapterMenu: FC<
+	ConvertedDocumentChapterMenuProps
+> = ({ ariaLabel, chapters }) => {
 	const { asPath } = useRouter();
 
 	// strip hash from asPath due to difference between client and ssr https://github.com/vercel/next.js/issues/25202

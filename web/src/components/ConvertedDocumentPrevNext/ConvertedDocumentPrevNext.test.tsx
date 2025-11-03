@@ -1,7 +1,8 @@
 import { render, screen } from "@testing-library/react";
 import { NextRouter, useRouter } from "next/router";
 
-import { ConvertedDocumentPrevNext,
+import {
+	ConvertedDocumentPrevNext,
 	type ConvertedDocumentPrevNextProps,
 } from "./ConvertedDocumentPrevNext";
 
@@ -12,29 +13,29 @@ const mockRouterPath = (asPath: string) => {
 };
 
 const indicatorSlug = "ind999-indicator-history-tab-html-conversion",
-		firstOverviewChapterPath = `/indicators/${indicatorSlug}/html-conversion`,
-		secondChapterPath = `/indicators/${indicatorSlug}/html-conversion/chapter/the-technologies`,
-		thirdAndLastChapterPath = `/indicators/${indicatorSlug}/html-conversion/chapter/committee-discussion`;
+	firstOverviewChapterPath = `/indicators/${indicatorSlug}/html-conversion`,
+	secondChapterPath = `/indicators/${indicatorSlug}/html-conversion/chapter/the-technologies`,
+	thirdAndLastChapterPath = `/indicators/${indicatorSlug}/html-conversion/chapter/committee-discussion`;
 
-	const props: ConvertedDocumentPrevNextProps = {
-		chapters: [
-			{
-				href: "/guidance/IND999/documents/html-conversion/chapter/recommendations",
-				slug: "recommendations",
-				title: "1 Recommendations"
-			},
-			{
-				href: "/guidance/IND999/documents/html-conversion/chapter/the-technologies",
-				slug: "the-technologies",
-				title: "2 The technologies"
-			},
-			{
-				href: "/guidance/IND999/documents/html-conversion/chapter/committee-discussion",
-				slug: "committee-discussion",
-				title: "3 Committee discussion"
-			}
-		]
-	};
+const props: ConvertedDocumentPrevNextProps = {
+	chapters: [
+		{
+			href: "/guidance/IND999/documents/html-conversion/chapter/recommendations",
+			slug: "recommendations",
+			title: "1 Recommendations",
+		},
+		{
+			href: "/guidance/IND999/documents/html-conversion/chapter/the-technologies",
+			slug: "the-technologies",
+			title: "2 The technologies",
+		},
+		{
+			href: "/guidance/IND999/documents/html-conversion/chapter/committee-discussion",
+			slug: "committee-discussion",
+			title: "3 Committee discussion",
+		},
+	],
+};
 
 describe("ConvertedDocumentPrevNext", () => {
 	it("should render the next chapter page pagination link", () => {

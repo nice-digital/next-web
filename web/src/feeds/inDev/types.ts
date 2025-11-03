@@ -232,7 +232,7 @@ export type IndevResource = {
 	links: {
 		self: [Link];
 	};
-	embedded?: {
+	embedded: {
 		niceIndevFile?: IndevFile;
 		niceIndevConvertedDocument?: IndevConvertedDocument;
 		niceIndevGeneratedPdf?: IndevGeneratedPdf;

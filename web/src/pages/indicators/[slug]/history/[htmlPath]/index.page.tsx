@@ -1,30 +1,32 @@
-import { NextSeo } from "next-seo";
 import { type GetServerSideProps } from "next/types";
+import { NextSeo } from "next-seo";
 import React from "react";
 
 import { Breadcrumbs, Breadcrumb } from "@nice-digital/nds-breadcrumbs";
 
-import { arrayify } from "@/utils/array";
-import { getFileTypeNameFromMime } from "@/utils/file";
-import { validateRouteParams } from "@/utils/product";
-import { type ResourceLinkViewModel } from "@/utils/resource";
 import { ConvertedDocument } from "@/components/ConvertedDocument/ConvertedDocument";
 import { ProductHorizontalNav } from "@/components/ProductHorizontalNav/ProductHorizontalNav";
 import { ProductPageHeading } from "@/components/ProductPageHeading/ProductPageHeading";
 import { ResourceLinkCard } from "@/components/ResourceLinkCard/ResourceLinkCard";
 import {
 	getConvertedDocumentHTML,
-	getResourceFileHTML
+	getResourceFileHTML,
 } from "@/feeds/inDev/inDev";
 import {
+	IndevConvertedDocument,
+	IndevFile,
 	type niceIndevConvertedDocument,
 	type niceIndevConvertedDocumentChapter,
-	type niceIndevConvertedDocumentSection
+	type niceIndevConvertedDocumentSection,
 } from "@/feeds/inDev/types";
 import { type ProductDetail } from "@/feeds/publications/types";
+import { arrayify } from "@/utils/array";
+import { formatDateStr, stripTime } from "@/utils/datetime";
+import { getFileTypeNameFromMime } from "@/utils/file";
+import { validateRouteParams } from "@/utils/product";
+import { type ResourceLinkViewModel } from "@/utils/resource";
 
 import styles from "./index.page.module.scss";
-import { formatDateStr, stripTime } from "@/utils/datetime";
 
 export type HistoryHTMLPageProps = {
 	lastUpdated: string;
@@ -35,7 +37,7 @@ export type HistoryHTMLPageProps = {
 		| "productTypeName"
 		| "publishedDate"
 		| "lastMajorModificationDate"
-		>;
+	>;
 	productHorizontalNav: {
 		hasEvidenceResources: boolean;
 		hasHistory: boolean;
@@ -60,16 +62,14 @@ export default function HistoryHTMLPage({
 	productHorizontalNav,
 	productPath,
 	resource,
-	resourceLinks
+	resourceLinks,
 }: HistoryHTMLPageProps): JSX.Element {
 	const { htmlBody, isConvertedDocument, title } = resource;
 	const { id } = product;
 
 	return (
 		<>
-			<NextSeo
-				title={`${title} | History | ${id} | Indicators`}
-			/>
+			<NextSeo title={`${title} | History | ${id} | Indicators`} />
 
 			<Breadcrumbs>
 				<Breadcrumb to="/">Home</Breadcrumb>
@@ -86,22 +86,17 @@ export default function HistoryHTMLPage({
 			<ProductHorizontalNav
 				productTypeName="Indicator"
 				productPath={productPath}
-				{... productHorizontalNav}
+				{...productHorizontalNav}
 			/>
 
 			{isConvertedDocument ? (
-				<ConvertedDocument
-					lastUpdated={lastUpdated}
-					resource={resource}
-				/>
+				<ConvertedDocument lastUpdated={lastUpdated} resource={resource} />
 			) : (
 				<>
 					<h2>{title}</h2>
 
 					{htmlBody && (
-						<div
-							dangerouslySetInnerHTML={{ __html: htmlBody }}
-						></div>
+						<div dangerouslySetInnerHTML={{ __html: htmlBody }}></div>
 					)}
 
 					{resourceLinks.length > 0 ? (
@@ -142,87 +137,118 @@ export const getServerSideProps: GetServerSideProps<
 	if ("notFound" in result || "redirect" in result) return result;
 
 	const {
-			product,
-			productPath,
-			hasEvidenceResources,
-			hasHistory,
-			hasInfoForPublicResources,
-			hasToolsAndResources,
-			historyPanels,
+		product,
+		productPath,
+		hasEvidenceResources,
+		hasHistory,
+		hasInfoForPublicResources,
+		hasToolsAndResources,
+		historyPanels,
 	} = result;
 
 	const resource = historyPanels
 		.flatMap((panel) =>
 			arrayify(panel.embedded.niceIndevResourceList.embedded.niceIndevResource)
 		)
-		.find(
-			(resource) => {
-				const indevFile = resource.embedded?.niceIndevFile || resource.embedded?.niceIndevConvertedDocument;
+		.find((resource) => {
+			const indevFile =
+				resource.embedded?.niceIndevFile ||
+				resource.embedded?.niceIndevConvertedDocument;
 
-				return indevFile?.resourceTitleId === params?.htmlPath &&
+			return (
+				indevFile?.resourceTitleId === params?.htmlPath &&
 				resource.showInDocList
-			}
-		);
+			);
+		});
 
 	if (!resource) return { notFound: true };
 
-	const isConvertedDocument = !!resource.embedded?.hasOwnProperty("niceIndevConvertedDocument");
-	const indevFile = resource.embedded?.niceIndevFile || resource.embedded?.niceIndevConvertedDocument;
+	const isConvertedDocument = Object.hasOwn(
+		resource.embedded,
+		"niceIndevConvertedDocument"
+	);
+
+	const indevFile = isConvertedDocument
+		? resource.embedded.niceIndevConvertedDocument
+		: resource.embedded.niceIndevFile;
 
 	if (!indevFile) return { notFound: true };
 
 	const resourceFilePath = indevFile.links.self[0].href;
 
-	let resourceFileHTML = isConvertedDocument ? await getConvertedDocumentHTML(resourceFilePath) : await getResourceFileHTML(resourceFilePath);
+	let resourceFileHTML = isConvertedDocument
+		? await getConvertedDocumentHTML(resourceFilePath)
+		: await getResourceFileHTML(resourceFilePath);
 
 	if (resourceFileHTML !== null) {
-		resourceFileHTML = typeof resourceFileHTML === "string" ? { content: resourceFileHTML } as niceIndevConvertedDocument : resourceFileHTML;
+		resourceFileHTML =
+			typeof resourceFileHTML === "string"
+				? ({ content: resourceFileHTML } as niceIndevConvertedDocument)
+				: resourceFileHTML;
 	} else {
 		return { notFound: true };
 	}
 
 	const panel = historyPanels.find((panel) => {
-		const indevResource = arrayify(panel.embedded.niceIndevResourceList.embedded.niceIndevResource);
+		const indevResource = arrayify(
+			panel.embedded.niceIndevResourceList.embedded.niceIndevResource
+		);
 		return indevResource[0].title === resource.title;
 	});
 
 	const resourceLinks: ResourceLinkViewModel[] = panel
 		? arrayify(panel.embedded.niceIndevResourceList.embedded.niceIndevResource)
-			.filter(
-				(embeddedResource) => !embeddedResource.textOnly && embeddedResource.title !== panel.title
-			)
-			.map((embeddedResource) => {
-				const resourceIsConvertedDocument = embeddedResource.embedded?.hasOwnProperty("niceIndevConvertedDocument");
+				.filter(
+					(embeddedResource) =>
+						!embeddedResource.textOnly && embeddedResource.title !== panel.title
+				)
+				.map((embeddedResource) => {
+					const { embedded, publishedDate, title } = embeddedResource;
+					const resourceIsConvertedDocument = Object.hasOwn(
+						embedded,
+						"niceIndevConvertedDocument"
+					);
 
-				let resourceIndevFile = resourceIsConvertedDocument
-					? embeddedResource.embedded?.niceIndevConvertedDocument
-					: embeddedResource.embedded?.niceIndevGeneratedPdf;
+					let resourceIndevFile;
 
-				resourceIndevFile = (!resourceIndevFile ? embeddedResource.embedded?.niceIndevFile: resourceIndevFile)!;
+					if (resourceIsConvertedDocument) {
+						resourceIndevFile =
+							embedded.niceIndevConvertedDocument as IndevConvertedDocument;
+					} else {
+						resourceIndevFile = (embedded.niceIndevFile ||
+							embedded.niceIndevGeneratedPdf) as IndevFile;
+					}
 
-				const mimeType = "mimeType" in resourceIndevFile ? resourceIndevFile.mimeType : "text/html";
-				const length = "length" in resourceIndevFile ? resourceIndevFile.length : 0;
-				const fileName = "fileName" in resourceIndevFile ? resourceIndevFile.fileName : "";
-				const resourceTitleId = resourceIndevFile.resourceTitleId;
+					const mimeType =
+						"mimeType" in resourceIndevFile
+							? resourceIndevFile.mimeType
+							: "text/html";
+					const length =
+						"length" in resourceIndevFile ? resourceIndevFile.length : 0;
+					const fileName =
+						"fileName" in resourceIndevFile ? resourceIndevFile.fileName : "";
+					const resourceTitleId = resourceIndevFile.resourceTitleId;
 
-				const isHTML = mimeType === "text/html";
-				const fileSize = isHTML ? null : length;
-				const fileTypeName = isHTML ? null : getFileTypeNameFromMime(mimeType);
-				const href = isHTML
+					const isHTML = mimeType === "text/html";
+					const fileSize = isHTML ? null : length;
+					const fileTypeName = isHTML
+						? null
+						: getFileTypeNameFromMime(mimeType);
+					const href = isHTML
 						? `${productPath}/history/${resourceTitleId}`
 						: `${productPath}/history/downloads/${
 								product.id
-							}-${resourceTitleId}.${fileName.split(".").slice(-1)[0]}`;
+						  }-${resourceTitleId}.${fileName.split(".").slice(-1)[0]}`;
 
-				return {
-					title: embeddedResource.title,
-					href,
-					fileTypeName,
-					fileSize,
-					date: embeddedResource.publishedDate,
-					type: panel.title,
-				};
-			})
+					return {
+						title: title,
+						href,
+						fileTypeName,
+						fileSize,
+						date: publishedDate,
+						type: panel.title,
+					};
+				})
 		: [];
 
 	const pdfDownload = resourceLinks.filter(
@@ -231,8 +257,7 @@ export const getServerSideProps: GetServerSideProps<
 			resourceLink.title.replace("(pdf)", "").trim() === resource.title
 	);
 
-	const pdfDownloadLink =
-		pdfDownload.length > 0 ? pdfDownload[0].href : null;
+	const pdfDownloadLink = pdfDownload.length > 0 ? pdfDownload[0].href : null;
 
 	return {
 		props: {

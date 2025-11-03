@@ -16,7 +16,7 @@ const props: ConvertedDocumentProps = {
 		pdfDownloadLink: "/guidance/GID-DG10086/documents/final-scope-pdf",
 		sections: [], // mockConvertedDocumentFeed.sections
 		title: "Test converted document",
-	}
+	},
 };
 
 const useRouterMock = jest.mocked(useRouter);
@@ -24,7 +24,8 @@ const useRouterMock = jest.mocked(useRouter);
 describe("ConvertedDocument", () => {
 	beforeEach(() => {
 		useRouterMock.mockReturnValue({
-			asPath: "/guidance/topic-selection/gid-dg10086/documents/final-scope-html-conversion",
+			asPath:
+				"/guidance/topic-selection/gid-dg10086/documents/final-scope-html-conversion",
 		} as ReturnType<typeof useRouter>);
 	});
 
@@ -54,7 +55,8 @@ describe("ConvertedDocument", () => {
 
 	it("should render the correct chapter menu item as active with chapter name as slug", () => {
 		useRouterMock.mockReturnValue({
-			asPath: "/guidance/topic-selection/gid-dg10086/documents/final-scope-html-conversion/chapter/recommendations",
+			asPath:
+				"/guidance/topic-selection/gid-dg10086/documents/final-scope-html-conversion/chapter/recommendations",
 		} as ReturnType<typeof useRouter>);
 
 		render(<ConvertedDocument {...props} />);
@@ -99,7 +101,8 @@ describe("ConvertedDocument", () => {
 
 	it("should have only previous link when in last chapter", () => {
 		useRouterMock.mockReturnValue({
-			asPath: "/guidance/topic-selection/gid-dg10086/documents/final-scope-html-conversion/chapter/recommendations",
+			asPath:
+				"/guidance/topic-selection/gid-dg10086/documents/final-scope-html-conversion/chapter/recommendations",
 		} as ReturnType<typeof useRouter>);
 
 		render(<ConvertedDocument {...props} />);

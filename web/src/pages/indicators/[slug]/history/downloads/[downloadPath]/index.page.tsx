@@ -47,12 +47,11 @@ export const getServerSideProps: GetServerSideProps<
 					panel.embedded.niceIndevResourceList.embedded.niceIndevResource
 				)
 			)
-			.find(
-				(resource) => {
-					const indevFile = (resource.embedded?.niceIndevFile || resource.embedded?.niceIndevGeneratedPdf) as IndevFile;
-					return indevFile?.resourceTitleId === resourceTitleId;
-				}
-			);
+			.find((resource) => {
+				const indevFile = (resource.embedded?.niceIndevFile ||
+					resource.embedded?.niceIndevGeneratedPdf) as IndevFile;
+				return indevFile?.resourceTitleId === resourceTitleId;
+			});
 
 	if (productID.toLowerCase() !== product.id.toLowerCase()) {
 		logger.info(
@@ -70,7 +69,8 @@ export const getServerSideProps: GetServerSideProps<
 		return { notFound: true };
 	}
 
-	const indevFile = (resource.embedded?.niceIndevFile || resource.embedded?.niceIndevGeneratedPdf) as IndevFile;
+	const indevFile = (resource.embedded?.niceIndevFile ||
+		resource.embedded?.niceIndevGeneratedPdf) as IndevFile;
 
 	const { fileName, links, mimeType } = indevFile;
 

@@ -11,7 +11,7 @@ export type ConvertedDocumentPrevNextProps = {
 };
 
 export const ConvertedDocumentPrevNext: FC<ConvertedDocumentPrevNextProps> = ({
-	chapters
+	chapters,
 }) => {
 	const { asPath } = useRouter();
 
@@ -30,7 +30,8 @@ export const ConvertedDocumentPrevNext: FC<ConvertedDocumentPrevNextProps> = ({
 	let currentChapterArrayIndex = chapters.findIndex(
 		({ slug }) => currentUrl.indexOf(`/chapter/${slug}`) > -1
 	);
-	currentChapterArrayIndex = currentChapterArrayIndex === -1 ? 0 : currentChapterArrayIndex;
+	currentChapterArrayIndex =
+		currentChapterArrayIndex === -1 ? 0 : currentChapterArrayIndex;
 
 	const nextPageLink = chapters[currentChapterArrayIndex + 1],
 		previousPageLink = chapters[currentChapterArrayIndex - 1];
@@ -38,15 +39,16 @@ export const ConvertedDocumentPrevNext: FC<ConvertedDocumentPrevNextProps> = ({
 	const getPageLink = (
 		chapter: niceIndevConvertedDocumentChapter | undefined
 	): PrevNextLink | undefined => {
-		const chapterSlug = chapters[0] === chapter ? "" : `/chapter/${chapter?.slug}`;
+		const chapterSlug =
+			chapters[0] === chapter ? "" : `/chapter/${chapter?.slug}`;
 		const destination = currentUrlNoChapterSlug + chapterSlug;
 
 		return chapter
 			? {
-				text: chapter.title,
-				destination,
-				elementType: ScrollToContentStartLink,
-			}
+					text: chapter.title,
+					destination,
+					elementType: ScrollToContentStartLink,
+			  }
 			: undefined;
 	};
 

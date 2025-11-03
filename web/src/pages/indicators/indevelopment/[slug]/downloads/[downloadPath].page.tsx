@@ -1,6 +1,6 @@
 import { GetServerSideProps } from "next/types";
 
-import { IndevFileResource, getFileStream } from "@/feeds/inDev/inDev";
+import { getFileStream } from "@/feeds/inDev/inDev";
 import { logger } from "@/logger";
 import { arrayify } from "@/utils/array";
 import { validateRouteParams } from "@/utils/project";
@@ -42,13 +42,13 @@ export const getServerSideProps: GetServerSideProps<
 					panel.embedded.niceIndevResourceList.embedded.niceIndevResource
 				)
 			)
-			.find(
-				(resource) => {
-					const indevFile = resource.embedded?.niceIndevFile || resource.embedded?.niceIndevGeneratedPdf;
+			.find((resource) => {
+				const indevFile =
+					resource.embedded?.niceIndevFile ||
+					resource.embedded?.niceIndevGeneratedPdf;
 
-					return indevFile?.resourceTitleId === resourceTitleId
-				}
-			);
+				return indevFile?.resourceTitleId === resourceTitleId;
+			});
 
 	if (projectReference.toLowerCase() !== project.reference.toLowerCase()) {
 		logger.info(
@@ -67,7 +67,9 @@ export const getServerSideProps: GetServerSideProps<
 	}
 
 	// don't think this should include niceIndevConvertedDocument
-	const indevFile = resource.embedded?.niceIndevFile || resource.embedded?.niceIndevGeneratedPdf;
+	const indevFile =
+		resource.embedded?.niceIndevFile ||
+		resource.embedded?.niceIndevGeneratedPdf;
 
 	if (!indevFile) {
 		throw new Error(

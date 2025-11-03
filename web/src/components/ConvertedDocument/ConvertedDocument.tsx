@@ -3,11 +3,14 @@ import { FC } from "react";
 import { Button } from "@nice-digital/nds-button";
 import { Grid, GridItem } from "@nice-digital/nds-grid";
 
-import { formatDateStr, stripTime } from "@/utils/datetime";
-import { ConvertedDocumentPrevNext } from "@/components/ConvertedDocumentPrevNext/ConvertedDocumentPrevNext";
 import { ConvertedDocumentChapterMenu } from "@/components/ConvertedDocumentChapterMenu/ConvertedDocumentChapterMenu";
+import { ConvertedDocumentPrevNext } from "@/components/ConvertedDocumentPrevNext/ConvertedDocumentPrevNext";
 import { OnThisPageBasic } from "@/components/OnThisPageBasic/OnThisPageBasic";
-import { niceIndevConvertedDocumentChapter, niceIndevConvertedDocumentSection } from "@/feeds/inDev/inDev";
+import {
+	niceIndevConvertedDocumentChapter,
+	niceIndevConvertedDocumentSection,
+} from "@/feeds/inDev/inDev";
+import { formatDateStr, stripTime } from "@/utils/datetime";
 
 import styles from "./ConvertedDocument.module.scss";
 
@@ -57,7 +60,10 @@ export const ConvertedDocument: FC<ConvertedDocumentProps> = ({
 						) : null}
 
 						{hasChapters ? (
-							<ConvertedDocumentChapterMenu ariaLabel="chapters" chapters={chapters} />
+							<ConvertedDocumentChapterMenu
+								ariaLabel="chapters"
+								chapters={chapters}
+							/>
 						) : null}
 					</GridItem>
 				) : null}

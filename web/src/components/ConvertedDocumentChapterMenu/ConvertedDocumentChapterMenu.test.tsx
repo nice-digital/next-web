@@ -1,7 +1,8 @@
 import { render, screen, within } from "@testing-library/react";
 import { useRouter } from "next/router";
 
-import { ConvertedDocumentChapterMenu,
+import {
+	ConvertedDocumentChapterMenu,
 	type ConvertedDocumentChapterMenuProps,
 } from "./ConvertedDocumentChapterMenu";
 
@@ -12,13 +13,13 @@ describe("ConvertedDocumentChapterMenu", () => {
 			{
 				href: "/guidance/IND999/documents/html-conversion/chapter/recommendations",
 				slug: "recommendations",
-				title: "1 Recommendations"
+				title: "1 Recommendations",
 			},
 			{
 				href: "/guidance/IND999/documents/html-conversion/chapter/the-technologies",
 				slug: "the-technologies",
-				title: "2 The technologies"
-			}
+				title: "2 The technologies",
+			},
 		],
 	};
 
@@ -36,7 +37,7 @@ describe("ConvertedDocumentChapterMenu", () => {
 	});
 
 	it("should render one linked menu item when there is only one chapter", () => {
-		let propsOneChapter = {...props};
+		const propsOneChapter = { ...props };
 		propsOneChapter.chapters = [propsOneChapter.chapters[0]];
 
 		render(<ConvertedDocumentChapterMenu {...propsOneChapter} />);

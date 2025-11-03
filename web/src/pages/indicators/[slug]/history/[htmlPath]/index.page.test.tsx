@@ -115,7 +115,6 @@ describe("/indicators/[slug]/history/[htmlPath]/index.page", () => {
 			(linkText, href) => {
 				render(<HistoryHTMLPage {...props} />);
 
-
 				const resourceLink = screen.getByText(linkText);
 
 				expect(resourceLink).toBeInTheDocument();
@@ -166,7 +165,8 @@ describe("/indicators/[slug]/history/[htmlPath]/index.page", () => {
 		});
 
 		describe("ConvertedDocument", () => {
-			const convertedDocumentSlug = "ind999-indicator-history-tab-html-conversion",
+			const convertedDocumentSlug =
+					"ind999-indicator-history-tab-html-conversion",
 				convertedDocumentHtmlPath = "html-conversion",
 				convertedDocumentProductRoot = "indicators",
 				convertedDocumentResolvedUrl = `/${convertedDocumentProductRoot}/${convertedDocumentSlug}/history/${convertedDocumentHtmlPath}`;
@@ -175,14 +175,19 @@ describe("/indicators/[slug]/history/[htmlPath]/index.page", () => {
 				props = (
 					(await getServerSideProps({
 						...context,
-						params: { slug: convertedDocumentSlug, htmlPath: convertedDocumentHtmlPath },
+						params: {
+							slug: convertedDocumentSlug,
+							htmlPath: convertedDocumentHtmlPath,
+						},
 						resolvedUrl: convertedDocumentResolvedUrl,
-						query: { productRoot: convertedDocumentProductRoot }
+						query: { productRoot: convertedDocumentProductRoot },
 					})) as {
 						props: HistoryHTMLPageProps;
 					}
 				).props;
-				(useRouter as jest.Mock).mockReturnValue({ asPath: convertedDocumentResolvedUrl });
+				(useRouter as jest.Mock).mockReturnValue({
+					asPath: convertedDocumentResolvedUrl,
+				});
 			});
 
 			it("should match snapshot for converted document", () => {
@@ -196,7 +201,6 @@ describe("/indicators/[slug]/history/[htmlPath]/index.page", () => {
 					screen.getByRole("heading", { level: 2, name: "1 Recommendations" })
 				).toBeInTheDocument();
 			});
-
 		});
 	});
 });
