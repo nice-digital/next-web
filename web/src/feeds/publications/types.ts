@@ -1,5 +1,3 @@
-import type { Except } from "type-fest";
-
 export enum FeedPath {
 	ProductsLite = "/newfeeds/products-lite",
 	ProductTypes = "/newfeeds/producttypes",
@@ -153,10 +151,6 @@ export type NewBaseFeedItem = {
 /**
  * The raw object that comes back from the feed
  */
-export type NewProductLite = ProductLite & {
-	url: string;
-};
-
 export type ProductLite = BaseFeedItem & {
 	id: string;
 	title: string;
@@ -172,7 +166,12 @@ export type ProductLite = BaseFeedItem & {
 	productGroup: ProductGroup;
 };
 
-/** A product lite from the feed, but with redundant properties removed */
+/**
+ * The raw object that comes back from the new feed
+ */
+export type NewProductLite = ProductLite & {
+	url: string;
+};
 
 export type ProductType = NewBaseFeedItem & {
 	enabled: boolean;
@@ -193,30 +192,6 @@ export type AreaOfInterest = NewBaseFeedItem & {
 export type IndicatorSubType = AreaOfInterest;
 
 // axios-case-converter maps key property names like nice.publications:area-of-interest-type-list to areaOfInterestTypeList
-type EmbeddedKey = `${string}`;
-
-type Embedded<TKey extends EmbeddedKey, TInner> = {
-	embedded: { [key in TKey]: TInner };
-};
-
-type FeedContentInner<TEmbeddedInner extends EmbeddedKey, TItemType> = {
-	links: {
-		self: [Link];
-	};
-	eTag: ETag;
-} & Embedded<TEmbeddedInner, TItemType[]>;
-
-type FeedContent<
-	TEmbeddedOuter extends EmbeddedKey,
-	TEmbeddedInner extends EmbeddedKey,
-	TItemType
-> = {
-	links: {
-		self: [Link];
-	};
-	eTag: ETag;
-	lastModified: string;
-} & Embedded<TEmbeddedOuter, FeedContentInner<TEmbeddedInner, TItemType>>;
 
 export type AreaOfInterestTypes = NewBaseFeedItem & {
 	areaOfInterestTypes: AreaOfInterest[];
