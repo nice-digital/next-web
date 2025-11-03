@@ -10,7 +10,7 @@ export default function RequestASpeakerForm(props: FormProps): JSX.Element {
 	return (
 		<JotFormPage
 			{...props}
-			formName="Speaker request form"
+			formName="Speaker request"
 			lead=""
 			parentPages={[
 				{

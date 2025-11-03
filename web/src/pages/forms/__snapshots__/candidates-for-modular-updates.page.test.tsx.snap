@@ -50,7 +50,7 @@ exports[`CandidatesForModularUpdatesForm should match snapshot 1`] = `
         class="breadcrumbs__crumb"
       >
         <span>
-          Candidates for modular updates form
+          Candidates for modular updates
         </span>
       </li>
     </ol>
@@ -98,7 +98,7 @@ exports[`CandidatesForModularUpdatesForm should match snapshot 1`] = `
       "@type": "ListItem",
       "position": 5,
       "item": {
-        "name": "Candidates for modular updates form"
+        "name": "Candidates for modular updates"
       }
     }
   ]
@@ -120,7 +120,7 @@ exports[`CandidatesForModularUpdatesForm should match snapshot 1`] = `
         <h1
           class="page-header__heading "
         >
-          Candidates for modular updates form
+          Candidates for modular updates
         </h1>
       </div>
       <p>
@@ -182,7 +182,7 @@ exports[`CandidatesForModularUpdatesForm should match snapshot 1`] = `
         scrolling="no"
         src="https://next-web-tests.jotform.com/242462190388056?isIframeEmbed=1"
         style="height: 539px; overflow: hidden;"
-        title="Candidates for modular updates form"
+        title="Candidates for modular updates"
       />
     </div>
   </div>

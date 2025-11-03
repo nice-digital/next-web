@@ -56,9 +56,7 @@ export const ProjectPageHeading: FC<ProjectPageHeadingProps> = ({
 		) : null;
 
 	const indevStakeholderRegistrationLink =
-		!isGuidanceHubPage &&
-		indevStakeholderRegistration &&
-		indevStakeholderRegistration.length > 0 ? (
+		indevStakeholderRegistration && indevStakeholderRegistration.length > 0 ? (
 			<>
 				{indevRegisterAnInterestLink && <> | </>}
 				<a

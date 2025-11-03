@@ -14,7 +14,7 @@ jest.mock("@/feeds/jotform/jotform", () => ({
 		content: {
 			id: "232203800035035",
 			username: "nice_teams",
-			title: "Speaker request form",
+			title: "Speaker request",
 			height: "539",
 			status: "ENABLED",
 			created_at: "2022-12-08 06:31:44",

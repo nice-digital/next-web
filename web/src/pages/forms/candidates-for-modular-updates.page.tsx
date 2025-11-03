@@ -64,7 +64,7 @@ export default function CandidatesForModularUpdatesForm(
 	return (
 		<JotFormPage
 			{...props}
-			formName="Candidates for modular updates form"
+			formName="Candidates for modular updates"
 			lead=""
 			parentPages={[
 				{

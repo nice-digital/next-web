@@ -9,7 +9,7 @@ exports[`cardListSection component should match snapshot when card section list 
       class="container"
     >
       <ul
-        class="list list--unstyled"
+        class="list list--unstyled card-list"
       >
         <li
           class="card card--flush"
@@ -74,7 +74,7 @@ exports[`cardListSection component should match snapshot with default values 1`]
         </div>
       </div>
       <ul
-        class="list list--unstyled"
+        class="list list--unstyled card-list"
       >
         <li
           class="card card--flush"
@@ -139,7 +139,7 @@ exports[`cardListSection component should match snapshot with transparent theme 
         </div>
       </div>
       <ul
-        class="list list--unstyled"
+        class="list list--unstyled card-list"
       >
         <li
           class="card card--flush"

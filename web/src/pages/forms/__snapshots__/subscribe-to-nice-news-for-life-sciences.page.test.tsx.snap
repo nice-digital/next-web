@@ -23,18 +23,9 @@ exports[`LifeSciencesNewsletterForm should match snapshot 1`] = `
         class="breadcrumbs__crumb"
       >
         <a
-          href="/news"
-        >
-          News
-        </a>
-      </li>
-      <li
-        class="breadcrumbs__crumb"
-      >
-        <a
           href="/nice-newsletters-and-alerts"
         >
-          Newsletters and alerts
+          NICE newsletters and alerts
         </a>
       </li>
       <li
@@ -65,21 +56,13 @@ exports[`LifeSciencesNewsletterForm should match snapshot 1`] = `
       "@type": "ListItem",
       "position": 2,
       "item": {
-        "@id": "/news",
-        "name": "News"
+        "@id": "/nice-newsletters-and-alerts",
+        "name": "NICE newsletters and alerts"
       }
     },
     {
       "@type": "ListItem",
       "position": 3,
-      "item": {
-        "@id": "/nice-newsletters-and-alerts",
-        "name": "Newsletters and alerts"
-      }
-    },
-    {
-      "@type": "ListItem",
-      "position": 4,
       "item": {
         "name": "Subscribe to NICE news for life sciences"
       }

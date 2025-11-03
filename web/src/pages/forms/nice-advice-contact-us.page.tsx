@@ -26,20 +26,16 @@ export default function NiceAdviceContactUsForm(props: FormProps): JSX.Element {
 	return (
 		<JotFormPage
 			{...props}
-			formName="NICE Advice contact us form"
+			formName="NICE Advice contact us"
 			lead=""
 			parentPages={[
 				{
 					title: "Life sciences: how to get your product to market",
-					path: "/about/what-we-do/life-sciences",
+					path: "/what-nice-does/life-sciences-how-to-get-your-product-to-market",
 				},
 				{
-					title: "What we do",
-					path: "/about/what-we-do",
-				},
-				{
-					title: "About",
-					path: "/about",
+					title: "What NICE does",
+					path: "/what-nice-does",
 				},
 			]}
 			formHeader={<FormHeader />}

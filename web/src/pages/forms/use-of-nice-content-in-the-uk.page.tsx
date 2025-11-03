@@ -58,7 +58,7 @@ const FormFooter = () => {
 				<li>fast turnaround</li>
 				<li>approval of artwork.</li>
 			</ul>
-			<a href="https://www.nice.org.uk/re-using-our-content/content-assurance-service">
+			<a href="https://www.nice.org.uk/reusing-our-content/content-assurance-service">
 				Find out more about our content assurance service.
 			</a>
 			<details id="licence" className={styles.details}>
@@ -437,12 +437,12 @@ export default function UseOfNICEContentInTheUKForm(
 	return (
 		<JotFormPage
 			{...props}
-			formName="Use of NICE content in the UK form"
+			formName="Use of NICE content in the UK"
 			lead="This licence allows individuals, commercial organisations and non-commercial organisations to reuse NICE content free of charge in their publications, products and systems. It applies to requests to use our content in a UK setting only."
 			parentPages={[
 				{
 					title: "Reusing our content",
-					path: "/re-using-our-content",
+					path: "/reusing-our-content",
 				},
 			]}
 			formHeader={<FormHeader />}
