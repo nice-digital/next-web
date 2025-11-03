@@ -90,6 +90,20 @@ const commonHeaders = [
 	},
 ];
 
+// TODO: Prevent the live site being embedded in iframes at all, as only test sites are used by the Storyblok preview editor. Not currently possible due to env var limitations within build/deploy workflow; var used in logic may need tweaking.
+// if (process.env.HOSTNAME === "www.nice.org.uk") {
+// 	commonHeaders.push(
+// 		{
+// 			key: "X-Frame-Options",
+// 			value: "DENY",
+// 		},
+// 		{
+// 			key: "Content-Security-Policy",
+// 			value: "frame-ancestors 'none'",
+// 		}
+// 	);
+// }
+
 /**
  * @type {import('next').NextConfig}
  **/
