@@ -8,17 +8,15 @@ import { StoryblokRichText } from "../StoryblokRichText/StoryblokRichText";
 export const StoryblokOrderedList: React.FC<{ blok: OrderedListStoryblok }> = ({
 	blok,
 }) => {
-	const { startingNumber, listType, listItems } = blok;
+	if (!blok.listItems?.length) return null;
 
-	const start = Number(startingNumber) || 1;
-	const type = listType || "1";
-
-	if (!listItems?.length) return null;
+	const start = Number(blok.startingNumber) || 1;
+	const type = blok.listType || "1";
 
 	return (
 		<div data-component="ordered-list" data-testid="ordered-list">
 			<ol start={start} type={type}>
-				{listItems.map((item) => (
+				{blok.listItems.map((item) => (
 					<ListItem key={item._uid} blok={item} />
 				))}
 			</ol>
@@ -27,15 +25,18 @@ export const StoryblokOrderedList: React.FC<{ blok: OrderedListStoryblok }> = ({
 };
 
 const ListItem: React.FC<{ blok: ListItemStoryblok }> = ({ blok }) => {
-	const { text, children } = blok;
-
 	return (
 		<li>
-			{text && fieldHasValidContent(text) && (
-				<StoryblokRichText content={text} />
+			{blok.text && fieldHasValidContent(blok.text) && (
+				<StoryblokRichText content={blok.text} />
 			)}
-			{Array.isArray(children) && children.length > 0 && (
-				<StoryblokOrderedList blok={children[0]} />
+
+			{/* render any nested ordered lists */}
+			{blok.children?.map(
+				(child) =>
+					child.component === "orderedList" && (
+						<StoryblokOrderedList key={child._uid} blok={child} />
+					)
 			)}
 		</li>
 	);
