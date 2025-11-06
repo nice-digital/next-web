@@ -1,4 +1,5 @@
 import { StoryblokComponent } from "@storyblok/react";
+import classnames from "classnames";
 import React, {
 	createElement,
 	ReactNode,
@@ -31,7 +32,8 @@ export const StoryblokRichText: React.FC<StoryblokRichTextProps> = ({
 	className,
 	pageType,
 }) => {
-	const classes = [styles.storyblokRichTextWrapper, className].join(" ");
+	const classes = classnames([styles.storyblokRichTextWrapper, className]);
+
 	const imageClassName = [styles.imageMain, className].join(" ");
 	return (
 		<div className={classes} data-testid="storyblok-rich-text">

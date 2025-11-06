@@ -34,6 +34,7 @@ import { StoryblokOrderedList } from "@/components/Storyblok/StoryblokOrderedLis
 import { StoryblokPageHeader } from "@/components/Storyblok/StoryblokPageHeader/StoryblokPageHeader";
 import { StoryblokRelatedLink } from "@/components/Storyblok/StoryblokRelatedLink/StoryblokRelatedLink";
 import { StoryblokRelatedNewsLink } from "@/components/Storyblok/StoryblokRelatedNewsLink/StoryblokRelatedNewsLink";
+import { StoryblokRichTextTable } from "@/components/Storyblok/StoryblokRichTextTable/StoryblokRichTextTable";
 import { StoryblokTable } from "@/components/Storyblok/StoryblokTable/StoryblokTable";
 import { StoryblokTestimonialFullWidth } from "@/components/Storyblok/StoryblokTestimonialFullWidth/StoryblokTestimonialFullWidth";
 import { StoryblokTestimonialGridItem } from "@/components/Storyblok/StoryblokTestimonialGridItem/StoryblokTestimonialGridItem";
@@ -103,6 +104,7 @@ const infoPageComponents = {
 	infoPage: InfoPage,
 	nestedTable: StoryblokTable,
 	orderedList: StoryblokOrderedList,
+	richTextTable: StoryblokRichTextTable,
 };
 
 export const allComponents: SbReactComponentsMap = {
