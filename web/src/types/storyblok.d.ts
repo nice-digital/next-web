@@ -653,7 +653,6 @@ export interface PageStoryblok {
     | CalloutCardStoryblok
     | CalloutCardWithImageStoryblok
     | CardStoryblok
-    | CardContentStoryblok
     | CardGridStoryblok
     | CardGridRowBasicStoryblok
     | CardGridRowCalloutStoryblok
