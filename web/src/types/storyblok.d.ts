@@ -560,7 +560,7 @@ export interface InfoPageStoryblok {
 
 export interface ListItemStoryblok {
   text?: RichtextStoryblok;
-  children?: (OrderedListNewStoryblok | OrderedListStoryblok)[];
+  children?: OrderedListStoryblok[];
   component: "listItem";
   _uid: string;
   [k: string]: any;
@@ -635,7 +635,7 @@ export interface NewsArticleStoryblok {
 export interface OrderedListStoryblok {
   startingNumber?: string;
   listType?: "" | "1" | "a" | "A" | "i" | "I";
-  listItems?: ListItemStoryblok[];
+  listItems: ListItemStoryblok[];
   component: "orderedList";
   _uid: string;
   [k: string]: any;
@@ -653,6 +653,7 @@ export interface PageStoryblok {
     | CalloutCardStoryblok
     | CalloutCardWithImageStoryblok
     | CardStoryblok
+    | CardContentStoryblok
     | CardGridStoryblok
     | CardGridRowBasicStoryblok
     | CardGridRowCalloutStoryblok
