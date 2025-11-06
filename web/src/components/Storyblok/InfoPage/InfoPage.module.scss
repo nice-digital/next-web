@@ -5,52 +5,53 @@
 @use '@nice-digital/nds-core/scss/typography';
 @use '@nice-digital/nds-core/scss/utils';
 
-
 .infoPage {
   $self: &;
   // page overrides for DS components
-
   /* stylelint-disable-next-line selector-class-pattern */
   :global(.page-header) {
     @include media-queries.mq($until: sm) {
       margin-bottom: utils.rem(spacing.$large);
     }
   }
-  /* stylelint-disable-next-line selector-class-pattern */
-  :global(.card-list) {
-    max-width: layout.$readable-width;
-  }
-  /* stylelint-disable-next-line selector-class-pattern */
-  :global(.card-list) {
-    margin: utils.rem(0 0 spacing.$large 0);
-  }
-  // Standalone accordion default
-  :global(.accordion) {
-    margin-bottom: utils.rem(spacing.$large);
-  }
 
-  /* stylelint-disable-next-line selector-class-pattern */
-  :global(.accordionGroup__content) :global(.accordion) {
-    margin-bottom: utils.rem(spacing.$medium); // Grouped accordions: apply to all except last
-  }
+  &__richTextWrapper {
+    $vertical-spacing: utils.rem(spacing.$large);
 
-  /* stylelint-disable-next-line selector-class-pattern */
-  :global(.accordionGroup__content) :global(.accordion:last-child) {
-    margin-bottom: utils.rem(spacing.$large); // Grouped accordions: last one gets 2rem
-  }
-  /* stylelint-disable-next-line selector-class-pattern */
-  :global(.card__heading) {
-    margin: 0; /* ;no extra heading margins */
-  }
-  //target lite youtube embed wrapper - (video) is hardcoded at the start of every title
-  [data-title^='(video)'] {
-    margin: utils.rem(spacing.$large) 0 utils.rem(spacing.$large);
-    max-width: layout.$readable-width;
-  }
-  /* stylelint-disable-next-line selector-max-compound-selectors */
-  .content > div > div > h2 {
-    // Bit ugly, but deals with rich text headings getting nudged down the page
-    margin-top: 0;
+    > :first-child > :first-child {
+      margin-top: 0;
+    }
+
+    //any blok that is added to the main rich text area, gets a margin bottom, unless empty or last child
+    > *:is(:not(:last-child, :empty)) {
+      margin-bottom: $vertical-spacing;
+    }
+
+    //if the nested-text-blok carries only 1 heading level, remove the bottom margin of the block
+    /* stylelint-disable-next-line selector-class-pattern */
+    :global(.nested-rich-text:has(> :is(h2,h3,h4,h5,h6):only-child)) {
+      margin-bottom: 0;
+    }
+
+    //NOTE: Could we add a constrained variant to these components?
+    /* stylelint-disable */
+    :global(.card-list),
+    :global(.nested-rich-text),
+    :global(.testimonial),
+    [data-title^='(video)'] {
+      max-width: layout.$readable-width;
+    }
+    /* stylelint-enable */
+
+    /* stylelint-disable-next-line selector-class-pattern */
+    :global(.card__heading) {
+      margin: 0; /* ;no extra heading margins */
+    }
+
+    // override the news section YT embed vertical margin in infoPages
+    [data-title^='(video)'] {
+      margin: utils.rem(spacing.$large) 0;
+    }
   }
 
   @include media-queries.mq($from: sm) {
@@ -65,5 +66,6 @@
     }
   }
 }
+
 
 

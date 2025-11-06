@@ -46,3 +46,6 @@ variable "ecs_task_role" {
 variable "server_count" {
   type = number
 }
+variable "nextweb_hostname" {
+  type = string
+}

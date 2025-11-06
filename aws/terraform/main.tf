@@ -73,6 +73,8 @@ resource "aws_ecs_task_definition" "nextweb-main-task" {
           value = var.node_env
         }
       ]
+	  entryPoint = ["npm", "run", "host", "--"],
+	  command = ["-H", "${var.nextweb_hostname}", "-p", "3000"],
       mountPoints = [
         {
           sourceVolume  = "config",

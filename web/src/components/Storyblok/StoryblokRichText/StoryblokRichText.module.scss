@@ -4,17 +4,10 @@
 /* stylelint-disable selector-class-pattern */
 
 .storyblokRichTextWrapper {
+  //TODO: add :only-child to this selector? - e.g. too much spacing applied here: /news/articles/newsarticle_regression-test-03102025
   p:has(img) {
     margin: utils.rem(spacing.$large 0);
     max-width: max-content;
-  }
-
-  h2,
-  h3,
-  h4,
-  h5,
-  h6 {
-    margin: utils.rem(spacing.$large) 0 utils.rem(spacing.$medium);
   }
 
   picture {
@@ -31,18 +24,22 @@
   }
 
   // override the margin for accordion heading levels in rich text
+  //TODO: sanity check and remove, now we handle the heading tag spacing from the global DS heading styles
   :global(.accordion__heading) {
     margin: 0;
   }
+
   // override the margin for action banner heading levels in rich text
   :global(.action-banner__title) {
     margin: 0;
   }
-  // Add margin top and bottom to the transparent testimonial component in rich text
+
+  //NXT-552 Add margin top and bottom to the transparent testimonial component in rich text
   :global([class*='testimonial--transparent']) {
     margin-bottom: utils.rem(spacing.$large);
     margin-top: utils.rem(spacing.$large);
   }
+
   // remove bottom margin on any last child in richtext bloks
   > *:last-child {
     margin-bottom: 0;
