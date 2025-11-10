@@ -3101,6 +3101,4 @@ const finalConfig = withNodeConfig(nextConfig);
 delete finalConfig["nodeConfigServerKey"];
 delete finalConfig["nodeConfigPublicKey"];
 
-console.log(process.env.HOSTNAME);
-
 module.exports = finalConfig;
