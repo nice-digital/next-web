@@ -1,0 +1,45 @@
+@use '@nice-digital/nds-core/scss/media-queries';
+@use '@nice-digital/nds-core/scss/spacing';
+@use '@nice-digital/nds-core/scss/utils';
+
+.table {
+  @include media-queries.mq($from: sm) {
+    display: table;
+  }
+
+  &__caption {
+    text-align: left;
+  }
+
+  &__summary {
+    margin-bottom: utils.rem(spacing.$medium);
+  }
+
+  &__heading {
+    margin-top: 0;
+  }
+
+  /* stylelint-disable-next-line selector-no-qualifying-type */
+  th[data-align='left'],
+  td[data-align='left'] {
+    text-align: left;
+  }
+
+  /* stylelint-disable-next-line selector-no-qualifying-type */
+  th[data-align='center'],
+  td[data-align='center'] {
+    text-align: center;
+  }
+
+  /* stylelint-disable-next-line selector-no-qualifying-type */
+  th[data-align='right'],
+  td[data-align='right'] {
+    text-align: right;
+  }
+
+  th p,
+  td p {
+    font-weight: unset;
+    margin-top: 0;
+  }
+}

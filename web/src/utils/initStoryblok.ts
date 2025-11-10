@@ -30,9 +30,11 @@ import { StoryblokIframe } from "@/components/Storyblok/StoryblokIframe/Storyblo
 import { StoryblokImageRichText } from "@/components/Storyblok/StoryblokImageRichText/StoryblokImageRichText";
 import { ClientInfogramEmbed } from "@/components/Storyblok/StoryblokInfogramEmbed/ClientInfogramEmbed";
 import { StoryblokNewsArticle } from "@/components/Storyblok/StoryblokNewsArticle/StoryblokNewsArticle";
+import { StoryblokOrderedList } from "@/components/Storyblok/StoryblokOrderedList/StoryblokOrderedList";
 import { StoryblokPageHeader } from "@/components/Storyblok/StoryblokPageHeader/StoryblokPageHeader";
 import { StoryblokRelatedLink } from "@/components/Storyblok/StoryblokRelatedLink/StoryblokRelatedLink";
 import { StoryblokRelatedNewsLink } from "@/components/Storyblok/StoryblokRelatedNewsLink/StoryblokRelatedNewsLink";
+import { StoryblokRichTextTable } from "@/components/Storyblok/StoryblokRichTextTable/StoryblokRichTextTable";
 import { StoryblokTable } from "@/components/Storyblok/StoryblokTable/StoryblokTable";
 import { StoryblokTestimonialFullWidth } from "@/components/Storyblok/StoryblokTestimonialFullWidth/StoryblokTestimonialFullWidth";
 import { StoryblokTestimonialGridItem } from "@/components/Storyblok/StoryblokTestimonialGridItem/StoryblokTestimonialGridItem";
@@ -101,6 +103,8 @@ const infoPageComponents = {
 	infogramEmbed: ClientInfogramEmbed,
 	infoPage: InfoPage,
 	nestedTable: StoryblokTable,
+	orderedList: StoryblokOrderedList,
+	richTextTable: StoryblokRichTextTable,
 };
 
 export const allComponents: SbReactComponentsMap = {
