@@ -160,14 +160,22 @@ export const getServerSideProps: GetServerSideProps<
 							product.id
 					  }-${resourceTitleId}.${fileName.split(".").slice(-1)[0]}`;
 
-				currentSubGroup.resourceLinks.push({
-					title: title,
-					href,
-					fileTypeName,
-					fileSize,
-					date: publishedDate,
-					type: panel.title,
-				});
+				const convertedHtmlAlreadyInArray = currentSubGroup.resourceLinks.some(
+					(resourceLink) =>
+						resourceLink.title === resource.title.replace("(pdf)", "").trim()
+				);
+
+				// don't show converted html pdf download docs here
+				if (!convertedHtmlAlreadyInArray) {
+					currentSubGroup.resourceLinks.push({
+						title: title,
+						href,
+						fileTypeName,
+						fileSize,
+						date: publishedDate,
+						type: panel.title,
+					});
+				}
 			}
 		});
 
