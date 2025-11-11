@@ -90,8 +90,8 @@ const commonHeaders = [
 	},
 ];
 
-// TODO: Prevent the live site being embedded in iframes at all, as only test sites are used by the Storyblok preview editor. Not currently possible due to env var limitations within build/deploy workflow; var used in logic may need tweaking.
-// if (process.env.NODE_ENV === "production") {
+// TODO: Prevent the live site being embedded in iframes at all, as only test sites are used by the Storyblok preview editor. Not currently possible due to env var limitations within build/deploy workflow; var used in logic may need tweaking and will need adding to configs etc.
+// if (process.env.HOSTNAME === "www.nice.org.uk") {
 // 	commonHeaders.push(
 // 		{
 // 			key: "X-Frame-Options",
@@ -99,7 +99,7 @@ const commonHeaders = [
 // 		},
 // 		{
 // 			key: "Content-Security-Policy",
-// 			value: "frame-ancestors 'self' https://*.infogram.com",
+// 			value: "frame-ancestors 'none'",
 // 		}
 // 	);
 // }
