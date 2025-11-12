@@ -46,6 +46,10 @@ describe("next.config.js", () => {
 		    "value": "strict-origin-when-cross-origin",
 		  },
 		  Object {
+		    "key": "Content-Security-Policy",
+		    "value": "frame-ancestors 'self' https://app.storyblok.com",
+		  },
+		  Object {
 		    "key": "Link",
 		    "value": "<https://cdn.nice.org.uk/cookie-banner/cookie-banner.min.js>; rel=preload; as=script,<https://apikeys.civiccomputing.com>; rel=preconnect; crossorigin,<https://www.googletagmanager.com>; rel=preconnect",
 		  },
