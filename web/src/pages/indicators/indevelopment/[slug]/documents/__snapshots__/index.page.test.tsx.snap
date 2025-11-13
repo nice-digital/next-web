@@ -376,13 +376,6 @@ exports[`/indicators/indevelopment/[slug]/documents DocumentsPage should match s
                             href="/consultations/1567/1"
                           >
                             Diagnostics consultation document (Online commenting)
-                             
-                            (
-                            Word
-                            ,
-                             
-                            62 kB
-                            )
                           </a>
                         </p>
                       </header>
@@ -1158,8 +1151,8 @@ Object {
                 },
                 Object {
                   "date": "2022-12-09T00:00:00",
-                  "fileSize": 62456,
-                  "fileTypeName": "Word",
+                  "fileSize": null,
+                  "fileTypeName": null,
                   "href": "/consultations/1567/1",
                   "title": "Diagnostics consultation document (Online commenting)",
                   "type": "Diagnostics consultation",

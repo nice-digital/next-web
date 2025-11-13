@@ -151,10 +151,22 @@ export const getServerSideProps: GetServerSideProps<
 				const resourceTitleId = indevFile.resourceTitleId;
 				const fileName = "fileName" in indevFile ? indevFile.fileName : "";
 
+				const shouldUseNewConsultationComments =
+					resource.convertedDocument ||
+					resource.supportsComments ||
+					resource.supportsQuestions;
+				//const isConsultation = resource.consultationId > 0 && panel.embedded.niceIndevConsultation;
+
 				const isHTML = mimeType === "text/html";
-				const fileSize = isHTML ? null : length;
-				const fileTypeName = isHTML ? null : getFileTypeNameFromMime(mimeType);
-				const href = isHTML
+				const fileSize =
+					isHTML || shouldUseNewConsultationComments ? null : length;
+				const fileTypeName =
+					isHTML || shouldUseNewConsultationComments
+						? null
+						: getFileTypeNameFromMime(mimeType);
+				const href = shouldUseNewConsultationComments
+					? `/consultations/${resource.consultationId}/${resource.consultationDocumentId}`
+					: isHTML
 					? `${productPath}/history/${resourceTitleId}`
 					: `${productPath}/history/downloads/${
 							product.id

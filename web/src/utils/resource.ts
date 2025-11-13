@@ -187,8 +187,11 @@ export const getInDevResourceLink = ({
 					resource.consultationId > 0 && panel.embedded.niceIndevConsultation;
 
 			Object.assign(indevResourceLink, {
-				fileSize: isHTML ? null : length,
-				fileTypeName: isHTML ? null : getFileTypeNameFromMime(mimeType),
+				fileSize: isHTML || shouldUseNewConsultationComments ? null : length,
+				fileTypeName:
+					isHTML || shouldUseNewConsultationComments
+						? null
+						: getFileTypeNameFromMime(mimeType),
 				href: shouldUseNewConsultationComments
 					? `/consultations/${resource.consultationId}/${resource.consultationDocumentId}`
 					: !isHTML
