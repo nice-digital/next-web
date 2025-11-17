@@ -16,12 +16,14 @@
     }
   }
   /* stylelint-disable-next-line selector-class-pattern */
-  :global(.card-list) {
+  :global(.testimonial) {
     max-width: layout.$readable-width;
   }
+  
   /* stylelint-disable-next-line selector-class-pattern */
   :global(.card-list) {
     margin: utils.rem(0 0 spacing.$large 0);
+    max-width: layout.$readable-width;
   }
   // Standalone accordion default
   :global(.accordion) {
