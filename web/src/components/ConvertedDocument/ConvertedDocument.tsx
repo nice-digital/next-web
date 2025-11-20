@@ -21,7 +21,7 @@ export type ConvertedDocumentProps = {
 		htmlBody: string;
 		isConvertedDocument: boolean;
 		pdfDownloadLink: string | null;
-		sections?: niceIndevConvertedDocumentSection[];
+		sections: niceIndevConvertedDocumentSection[];
 		title: string;
 	};
 };
@@ -34,7 +34,7 @@ export const ConvertedDocument: FC<ConvertedDocumentProps> = ({
 
 	const hasChapters = chapters.length > 0,
 		hasDownloadButton = !!pdfDownloadLink,
-		hasOnThisPageMenu = !!sections;
+		hasOnThisPageMenu = sections.length > 0;
 
 	return (
 		<>

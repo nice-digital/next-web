@@ -250,9 +250,6 @@ exports[`[resourceTitleId].page DocumentsHTMLPage ConvertedDocument should match
           Final scope (html conversion)
         </h2>
         <div
-          class="hide-print"
-        />
-        <div
           class="chapterContent"
         >
           <div

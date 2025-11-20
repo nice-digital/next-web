@@ -152,10 +152,7 @@ export const getServerSideProps: GetServerSideProps<
 				const fileName = "fileName" in indevFile ? indevFile.fileName : "";
 
 				const shouldUseNewConsultationComments =
-					resource.convertedDocument ||
-					resource.supportsComments ||
-					resource.supportsQuestions;
-				//const isConsultation = resource.consultationId > 0 && panel.embedded.niceIndevConsultation;
+					resource.supportsComments || resource.supportsQuestions;
 
 				const isHTML = mimeType === "text/html";
 				const fileSize =

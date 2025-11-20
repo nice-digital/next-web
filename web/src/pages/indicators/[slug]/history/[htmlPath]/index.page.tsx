@@ -50,7 +50,7 @@ export type HistoryHTMLPageProps = {
 		htmlBody: string;
 		isConvertedDocument: boolean;
 		pdfDownloadLink: string | null;
-		sections?: niceIndevConvertedDocumentSection[];
+		sections: niceIndevConvertedDocumentSection[];
 		title: string;
 	};
 	resourceLinks: ResourceLinkViewModel[];
@@ -281,7 +281,7 @@ export const getServerSideProps: GetServerSideProps<
 				htmlBody: resourceFileHTML.content,
 				isConvertedDocument,
 				pdfDownloadLink,
-				sections: resourceFileHTML.sections,
+				sections: resourceFileHTML.sections || [],
 				title: resource.title,
 			},
 			resourceLinks,

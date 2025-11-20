@@ -68,9 +68,6 @@ exports[`ConvertedDocument should match snapshot for all nav items 1`] = `
         Test converted document
       </h2>
       <div
-        class="hide-print"
-      />
-      <div
         class="chapterContent"
       >
         <div

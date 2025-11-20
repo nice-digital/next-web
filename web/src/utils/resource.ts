@@ -179,9 +179,7 @@ export const getInDevResourceLink = ({
 				"fileName" in resourceIndevFile ? resourceIndevFile.fileName : "";
 			const resourceTitleId = resourceIndevFile.resourceTitleId;
 			const shouldUseNewConsultationComments =
-					resource.convertedDocument ||
-					resource.supportsComments ||
-					resource.supportsQuestions,
+					resource.supportsComments || resource.supportsQuestions,
 				isHTML = mimeType === "text/html",
 				isConsultation =
 					resource.consultationId > 0 && panel.embedded.niceIndevConsultation;

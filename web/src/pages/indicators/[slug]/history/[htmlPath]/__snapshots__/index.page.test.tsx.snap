@@ -2076,7 +2076,7 @@ Object {
 <p><strong>Deadline:</strong><strong>15 July 2016</strong>, <strong>5pm</strong></p>",
       "isConvertedDocument": false,
       "pdfDownloadLink": null,
-      "sections": undefined,
+      "sections": Array [],
       "title": "Draft scope consultation",
     },
     "resourceLinks": Array [
