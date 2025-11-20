@@ -1,6 +1,6 @@
 import { GetServerSideProps } from "next/types";
 
-import { getFileStream } from "@/feeds/inDev/inDev";
+import { getFileStream, IndevFile } from "@/feeds/inDev/inDev";
 import { logger } from "@/logger";
 import { arrayify } from "@/utils/array";
 import { validateRouteParams } from "@/utils/product";
@@ -47,10 +47,11 @@ export const getServerSideProps: GetServerSideProps<
 					panel.embedded.niceIndevResourceList.embedded.niceIndevResource
 				)
 			)
-			.find(
-				(resource) =>
-					resource.embedded?.niceIndevFile.resourceTitleId === resourceTitleId
-			);
+			.find((resource) => {
+				const indevFile = (resource.embedded?.niceIndevFile ||
+					resource.embedded?.niceIndevGeneratedPdf) as IndevFile;
+				return indevFile?.resourceTitleId === resourceTitleId;
+			});
 
 	if (productID.toLowerCase() !== product.id.toLowerCase()) {
 		logger.info(
@@ -68,8 +69,12 @@ export const getServerSideProps: GetServerSideProps<
 		return { notFound: true };
 	}
 
-	const { fileName, links, mimeType } = resource.embedded.niceIndevFile,
-		expectedExtension = fileName.split(".").slice(-1)[0].toLowerCase();
+	const indevFile = (resource.embedded?.niceIndevFile ||
+		resource.embedded?.niceIndevGeneratedPdf) as IndevFile;
+
+	const { fileName, links, mimeType } = indevFile;
+
+	const expectedExtension = fileName.split(".").slice(-1)[0].toLowerCase();
 
 	if (expectedExtension.toLowerCase() !== extension.toLowerCase()) {
 		logger.info(

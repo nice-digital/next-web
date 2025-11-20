@@ -1,0 +1,981 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`/indicators/[slug]/history/[htmlPath]/chapter/[chapterSlug].page HistoryChapterHTMLPage should match snapshot for main content 1`] = `
+<body>
+  <div>
+    <nav
+      aria-label="Breadcrumbs"
+      data-component="breadcrumbs"
+      role="navigation"
+    >
+      <ol
+        class="breadcrumbs"
+      >
+        <li
+          class="breadcrumbs__crumb"
+        >
+          <a
+            href="/"
+          >
+            Home
+          </a>
+        </li>
+        <li
+          class="breadcrumbs__crumb"
+        >
+          <a
+            href="/standards-and-indicators/indicators"
+          >
+            Indicators
+          </a>
+        </li>
+        <li
+          class="breadcrumbs__crumb"
+        >
+          <a
+            href="/indicators/ind999-indicator-history-tab-html-conversion"
+          >
+            IND999
+          </a>
+        </li>
+        <li
+          class="breadcrumbs__crumb"
+        >
+          <a
+            href="/indicators/ind999-indicator-history-tab-html-conversion/history"
+          >
+            History
+          </a>
+        </li>
+        <li
+          class="breadcrumbs__crumb"
+        >
+          <span>
+            Html conversion document
+          </span>
+        </li>
+      </ol>
+    </nav>
+    <script
+      type="application/ld+json"
+    >
+      {
+  "@context": "http://schema.org",
+  "@type": "BreadcrumbList",
+  "itemListElement": [
+    {
+      "@type": "ListItem",
+      "position": 1,
+      "item": {
+        "@id": "/",
+        "name": "Home"
+      }
+    },
+    {
+      "@type": "ListItem",
+      "position": 2,
+      "item": {
+        "@id": "/standards-and-indicators/indicators",
+        "name": "Indicators"
+      }
+    },
+    {
+      "@type": "ListItem",
+      "position": 3,
+      "item": {
+        "@id": "/indicators/ind999-indicator-history-tab-html-conversion",
+        "name": "IND999"
+      }
+    },
+    {
+      "@type": "ListItem",
+      "position": 4,
+      "item": {
+        "@id": "/indicators/ind999-indicator-history-tab-html-conversion/history",
+        "name": "History"
+      }
+    },
+    {
+      "@type": "ListItem",
+      "position": 5,
+      "item": {
+        "name": "Html conversion document"
+      }
+    }
+  ]
+}
+    </script>
+    <div
+      class="page-header "
+      data-component="page-header"
+      id="content-start"
+    >
+      <h1
+        class="page-header__heading page-header__heading--alt"
+      >
+        INDICATOR HISTORY TAB HTML CONVERSION
+      </h1>
+      <ul
+        class="page-header__metadata"
+      >
+        <li>
+          NICE indicator
+        </li>
+        <li>
+          IND999
+        </li>
+        <li>
+          Published:
+          <time
+            datetime="2025-08-19"
+          >
+             
+            19 August 2025
+          </time>
+        </li>
+      </ul>
+    </div>
+    <nav
+      class="horizontal-nav"
+    >
+      <ul
+        class="horizontal-nav__list"
+      >
+        <li
+          class="horizontal-nav__item"
+          data-component="horizontal-nav"
+        >
+          <a
+            aria-current="false"
+            class="horizontal-nav__link"
+            href="/indicators/ind999-indicator-history-tab-html-conversion"
+          >
+            Indicator
+          </a>
+        </li>
+        <li
+          class="horizontal-nav__item"
+          data-component="horizontal-nav"
+        >
+          <a
+            aria-current="false"
+            class="horizontal-nav__link"
+            href="/indicators/ind999-indicator-history-tab-html-conversion/resources"
+          >
+            Tools and resources
+          </a>
+        </li>
+        <li
+          class="horizontal-nav__item"
+          data-component="horizontal-nav"
+        >
+          <a
+            aria-current="false"
+            class="horizontal-nav__link"
+            href="/indicators/ind999-indicator-history-tab-html-conversion/evidence"
+          >
+            Evidence
+          </a>
+        </li>
+        <li
+          class="horizontal-nav__item"
+          data-component="horizontal-nav"
+        >
+          <a
+            aria-current="true"
+            class="horizontal-nav__link"
+            href="/indicators/ind999-indicator-history-tab-html-conversion/history"
+          >
+            History
+          </a>
+        </li>
+      </ul>
+    </nav>
+    <div
+      class="grid grid--loose"
+    >
+      <section
+        aria-label="Chapters"
+        data-component="grid-item"
+        data-g="12 md:4 lg:3"
+      >
+        <a
+          aria-label="Download PDF"
+          class="btn btn--cta download"
+          data-component="button--cta"
+          href="/indicators/ind999-indicator-history-tab-html-conversion/history/downloads/IND999-html-to-pdf.pdf"
+          target="_blank"
+        >
+          Download (PDF)
+        </a>
+        <nav
+          aria-label="chapters"
+          class="stacked-nav"
+          data-component="stacked-nav"
+        >
+          <ul
+            class="stacked-nav__list"
+          >
+            <li
+              class="stacked-nav__list-item"
+            >
+              <a
+                aria-current="false"
+                href="/indicators/ind999-indicator-history-tab-html-conversion/history/html-conversion"
+              >
+                <span
+                  class="stacked-nav__content-wrapper"
+                >
+                  1 Recommendations
+                </span>
+              </a>
+            </li>
+            <li
+              class="stacked-nav__list-item"
+            >
+              <a
+                aria-current="true"
+                href="/indicators/ind999-indicator-history-tab-html-conversion/history/html-conversion/chapter/the-technologies"
+              >
+                <span
+                  class="stacked-nav__content-wrapper"
+                >
+                  2 The technologies
+                </span>
+              </a>
+            </li>
+            <li
+              class="stacked-nav__list-item"
+            >
+              <a
+                aria-current="false"
+                href="/indicators/ind999-indicator-history-tab-html-conversion/history/html-conversion/chapter/committee-discussion"
+              >
+                <span
+                  class="stacked-nav__content-wrapper"
+                >
+                  3 Committee discussion
+                </span>
+              </a>
+            </li>
+            <li
+              class="stacked-nav__list-item"
+            >
+              <a
+                aria-current="false"
+                href="/indicators/ind999-indicator-history-tab-html-conversion/history/html-conversion/chapter/committee-members-and-nice-project-team"
+              >
+                <span
+                  class="stacked-nav__content-wrapper"
+                >
+                  4 Committee members and NICE project team
+                </span>
+              </a>
+            </li>
+            <li
+              class="stacked-nav__list-item"
+            >
+              <a
+                aria-current="false"
+                href="/indicators/ind999-indicator-history-tab-html-conversion/history/html-conversion/chapter/update-information"
+              >
+                <span
+                  class="stacked-nav__content-wrapper"
+                >
+                  Update information
+                </span>
+              </a>
+            </li>
+          </ul>
+        </nav>
+      </section>
+      <section
+        data-component="grid-item"
+        data-g="12 md:8 lg:9"
+      >
+        <h2
+          class="mt--0"
+        >
+          Html conversion document
+        </h2>
+        <div
+          class="hide-print"
+        >
+          <nav
+            aria-labelledby="on-this-page"
+            class="in-page-nav in-page-nav--no-scroll"
+          >
+            <h2
+              class="in-page-nav__title"
+              id="on-this-page"
+            >
+              On this page
+            </h2>
+            <ol
+              aria-label="Jump links to sections on this page"
+              class="in-page-nav__list"
+            >
+              <li
+                class="in-page-nav__item"
+              >
+                <a
+                  href="#0-1-care-pathway"
+                  id="inpagenav-0-1-care-pathway"
+                >
+                  Care pathway
+                </a>
+              </li>
+              <li
+                class="in-page-nav__item"
+              >
+                <a
+                  href="#0-1-the-comparator"
+                  id="inpagenav-0-1-the-comparator"
+                >
+                  The comparator
+                </a>
+              </li>
+            </ol>
+          </nav>
+        </div>
+        <div
+          class="chapterContent"
+        >
+          <div
+            class="chapter"
+            id="0-1-2-the-technologies"
+            title="2 The technologies"
+            xmlns="http://www.w3.org/1999/xhtml"
+          >
+            
+  
+            <h2
+              class="title"
+            >
+              
+    
+              <a
+                class="annotator-chapter"
+                data-heading-type="chapter"
+                id="the-technologies"
+                style="position:relative"
+                xmlns=""
+              >
+                2 The technologies
+                <span
+                  class="annotator-adder"
+                />
+              </a>
+              
+  
+            </h2>
+            
+  
+            <article
+              class="numbered-paragraph annotator-numbered-paragraph"
+              data-heading-type="numbered-paragraph"
+              id="0-1-2.1"
+              title="Comment on numbered paragraph"
+            >
+              
+    
+              <h3>
+                2.1
+              </h3>
+              
+    
+              <div>
+                
+      
+                <p>
+                  Digital weight-management technologies can be used to deliver multidisciplinary weight-management services. They can be accessed online or through an app, and provide a multidisciplinary programme and support from the service's multidisciplinary team (MDT) of healthcare professionals. Some technologies offer weight-management medicine prescribing and medicine reviews with a prescribing clinician, alongside regular reviews with other members of the service's MDT. The frequency of reviews may vary depending on the technology, user preference and stage of the programme. These technologies can be used to support multidisciplinary weight-management services, including treatment with weight-management medicine. NICE has assessed 12 technologies that can deliver multidisciplinary weight-management services. The criteria for including technologies in this early value assessment (EVA) and further details for technologies that prescribe and monitor weight-management medicine are in 
+                  <a
+                    class="link"
+                    href="https://www.nice.org.uk/guidance/hte14/history"
+                    target="_top"
+                  >
+                    Section 2.2, Table 2 and Appendix E of the assessment report, and in the assessment report addendum on the NICE website
+                  </a>
+                  . For technologies that deliver multidisciplinary weight-management services when they are not used to prescribe and monitor weight-management medicine, further details are in the 
+                  <a
+                    class="link"
+                    href="https://www.nice.org.uk/guidance/gid-hte10023/documents/final-scope"
+                    target="_top"
+                  >
+                    final scope
+                  </a>
+                   for the assessment. The technologies are:
+                </p>
+                
+      
+                <ul
+                  class="itemizedlist indented"
+                >
+                  
+        
+                  <li
+                    class="listitem"
+                  >
+                    
+          
+                    <p>
+                      CheqUp (CheqUp Health): this is an online platform that provides a multidisciplinary weight-management programme and weight-management medicine prescribing. 
+                    </p>
+                    
+        
+                  </li>
+                  
+        
+                  <li
+                    class="listitem"
+                  >
+                    
+          
+                    <p>
+                      Counterweight (Counterweight): this is an app that provides a multidisciplinary weight-management programme. 
+                    </p>
+                    
+        
+                  </li>
+                  
+        
+                  <li
+                    class="listitem"
+                  >
+                    
+          
+                    <p>
+                      Gro Health W8Buddy (DDM Health): this is an online platform that provides a multidisciplinary weight-management programme and weight-management medicine prescribing. 
+                    </p>
+                    
+        
+                  </li>
+                  
+        
+                  <li
+                    class="listitem"
+                  >
+                    
+          
+                    <p>
+                      Gloji (Thrive Tribe): this is an app that provides a multidisciplinary weight-management programme. 
+                    </p>
+                    
+        
+                  </li>
+                  
+        
+                  <li
+                    class="listitem"
+                  >
+                    
+          
+                    <p>
+                      Habitual (Habitual Health Ltd): this is an app that provides a multidisciplinary weight-management programme. 
+                    </p>
+                    
+        
+                  </li>
+                  
+        
+                  <li
+                    class="listitem"
+                  >
+                    
+          
+                    <p>
+                      Juniper (Juniper Technologies UK): this is an app that provides a multidisciplinary weight-management programme and weight-management medicine prescribing. 
+                    </p>
+                    
+        
+                  </li>
+                  
+        
+                  <li
+                    class="listitem"
+                  >
+                    
+          
+                    <p>
+                      Liva (Liva): this is an app that provides a multidisciplinary weight-management programme and weight-management medicine prescribing
+                    </p>
+                    
+        
+                  </li>
+                  
+        
+                  <li
+                    class="listitem"
+                  >
+                    
+          
+                    <p>
+                      Oviva (Oviva): this is an app that provides a multidisciplinary weight-management programme and weight-management medicine prescribing. 
+                    </p>
+                    
+        
+                  </li>
+                  
+        
+                  <li
+                    class="listitem"
+                  >
+                    
+          
+                    <p>
+                      Roczen (Reset Health): this is an online platform that provides a multidisciplinary weight-management programme and weight-management medicine prescribing. 
+                    </p>
+                    
+        
+                  </li>
+                  
+        
+                  <li
+                    class="listitem"
+                  >
+                    
+          
+                    <p>
+                      Second Nature (Second Nature): this is an app that provides a multidisciplinary weight-management programme and weight-management medicine prescribing. 
+                    </p>
+                    
+        
+                  </li>
+                  
+        
+                  <li
+                    class="listitem"
+                  >
+                    
+          
+                    <p>
+                      Wellbeing Way (Xyla Health and Wellbeing): this is an online platform that provides a multidisciplinary weight-management programme and weight-management medicine prescribing. 
+                    </p>
+                    
+        
+                  </li>
+                  
+        
+                  <li
+                    class="listitem"
+                  >
+                    
+          
+                    <p>
+                      Weight Loss Clinic (Virtual Health Partners): this is an online platform that provides a multidisciplinary weight-management programme. 
+                    </p>
+                    
+        
+                  </li>
+                  
+      
+                </ul>
+                
+    
+              </div>
+              
+  
+            </article>
+            
+  
+            <div
+              class="section"
+              id="0-1-care-pathway"
+              title="Care pathway"
+            >
+              
+    
+              <h3
+                class="title"
+              >
+                
+      
+                <a
+                  class="annotator-chapter"
+                  data-heading-type="section"
+                  id="care-pathway"
+                  style="position:relative"
+                  xmlns=""
+                >
+                  Care pathway
+                  <span
+                    class="annotator-adder"
+                  />
+                </a>
+                
+    
+              </h3>
+              
+    
+              <article
+                class="numbered-paragraph annotator-numbered-paragraph"
+                data-heading-type="numbered-paragraph"
+                id="0-1-2.2"
+                title="Comment on numbered paragraph"
+              >
+                
+      
+                <h4>
+                  2.2
+                </h4>
+                
+      
+                <div>
+                  
+        
+                  <p>
+                    Semaglutide for managing overweight and obesity must be used within a specialist weight-management service that provides multidisciplinary management of overweight or obesity, including but not limited to tier 3 and tier 4 services (see 
+                    <a
+                      class="link"
+                      data-original-url="https://www.nice.org.uk/guidance/ta875"
+                      href="https://www.nice.org.uk/guidance/ta875"
+                      target="_top"
+                    >
+                      NICE's technology appraisal guidance on semaglutide for managing overweight and obesity
+                    </a>
+                    ). Liraglutide for managing overweight and obesity must be prescribed in secondary care by a specialist multidisciplinary tier 3 weight-management service (see 
+                    <a
+                      class="link"
+                      data-original-url="https://www.nice.org.uk/guidance/ta664"
+                      href="https://www.nice.org.uk/guidance/ta664"
+                      target="_top"
+                    >
+                      NICE's technology appraisal guidance on liraglutide for managing overweight and obesity
+                    </a>
+                    ).
+                  </p>
+                  
+      
+                </div>
+                
+    
+              </article>
+              
+    
+              <article
+                class="numbered-paragraph annotator-numbered-paragraph"
+                data-heading-type="numbered-paragraph"
+                id="0-1-2.3"
+                title="Comment on numbered paragraph"
+              >
+                
+      
+                <h4>
+                  2.3
+                </h4>
+                
+      
+                <div>
+                  
+        
+                  <p>
+                    A typical multidisciplinary weight-management service could include an obesity doctor, specialist nurse, specialist dietitian, psychologist and physiotherapist. It may also have access to healthcare professionals with expertise in surgical assessments. The intensity, frequency and variety of support from an MDT of healthcare professionals varies between NHS multidisciplinary weight-management services. Services may be offered in person, remotely by telephone or video call, or as a combination of in-person and remote support. The criteria for accessing these services may also vary depending on the geographical area and local funding. 
+                    <a
+                      class="link"
+                      data-original-url="https://www.nice.org.uk/guidance/cg189/"
+                      href="https://www.nice.org.uk/guidance/cg189"
+                      target="_top"
+                    >
+                      NICE's guideline on obesity: identification, assessment and management
+                    </a>
+                     defines specialist multidisciplinary weight-management services as a specialist primary, community or secondary care-based multidisciplinary team offering a combination of surgical, dietetic, pharmacological and psychological obesity management interventions, including but not limited to tier 3 and tier 4 services.
+                  </p>
+                  
+      
+                </div>
+                
+    
+              </article>
+              
+  
+            </div>
+            
+  
+            <div
+              class="section"
+              id="0-1-the-comparator"
+              title="The comparator"
+            >
+              
+    
+              <h3
+                class="title"
+              >
+                
+      
+                <a
+                  class="annotator-chapter"
+                  data-heading-type="section"
+                  id="the-comparator"
+                  style="position:relative"
+                  xmlns=""
+                >
+                  The comparator
+                  <span
+                    class="annotator-adder"
+                  />
+                </a>
+                
+    
+              </h3>
+              
+    
+              <article
+                class="numbered-paragraph annotator-numbered-paragraph"
+                data-heading-type="numbered-paragraph"
+                id="0-1-2.4"
+                title="Comment on numbered paragraph"
+              >
+                
+      
+                <h4>
+                  2.4
+                </h4>
+                
+      
+                <div>
+                  
+        
+                  <p>
+                    The comparator is standard care, including managing treatment with weight-management medicine for adults who are eligible. Standard care includes multidisciplinary weight-management programmes (including, but not limited to tier 3 and 4 services). They may be delivered face to face, remotely or as a combination of remote and in-person support.
+                  </p>
+                  
+      
+                </div>
+                
+    
+              </article>
+              
+    
+              <article
+                class="numbered-paragraph annotator-numbered-paragraph"
+                data-heading-type="numbered-paragraph"
+                id="0-1-2.5"
+                title="Comment on numbered paragraph"
+              >
+                
+      
+                <h4>
+                  2.5
+                </h4>
+                
+      
+                <div>
+                  
+        
+                  <p>
+                    No or delayed treatment is also a relevant comparator. Some people are on waiting lists to access services or have no access at all.
+                  </p>
+                  
+      
+                </div>
+                
+    
+              </article>
+              
+  
+            </div>
+            
+
+          </div>
+        </div>
+        <p>
+          This page was last updated on
+           
+          <time
+            datetime="2025-08-19"
+          >
+            19 August 2025
+          </time>
+        </p>
+        <hr />
+        <div
+          class="prev-next"
+        >
+          <nav
+            aria-label="Previous and next pages"
+          >
+            <a
+              class="prev-next__link"
+              href="/indicators/ind999-indicator-history-tab-html-conversion/history/html-conversion/chapter/committee-discussion"
+            >
+              <span
+                class="prev-next__link-intro"
+              >
+                Next page
+              </span>
+              <span
+                class="prev-next__link-text"
+              >
+                3 Committee discussion
+              </span>
+            </a>
+            <a
+              class="prev-next__link"
+              href="/indicators/ind999-indicator-history-tab-html-conversion/history/html-conversion"
+            >
+              <span
+                class="prev-next__link-intro"
+              >
+                Previous page
+              </span>
+              <span
+                class="prev-next__link-text"
+              >
+                1 Recommendations
+              </span>
+            </a>
+          </nav>
+        </div>
+      </section>
+    </div>
+  </div>
+</body>
+`;
+
+exports[`/indicators/[slug]/history/[htmlPath]/chapter/[chapterSlug].page getServerSideProps should return a correct props 1`] = `
+Object {
+  "props": Object {
+    "lastUpdated": "2025-08-19T13:04:00",
+    "product": Object {
+      "id": "IND999",
+      "lastMajorModificationDate": "2025-08-19T00:00:00",
+      "productTypeName": "NICE indicator",
+      "publishedDate": "2025-08-19T00:00:00",
+      "title": "INDICATOR HISTORY TAB HTML CONVERSION",
+    },
+    "productHorizontalNav": Object {
+      "hasEvidenceResources": true,
+      "hasHistory": true,
+      "hasInfoForPublicResources": false,
+      "hasToolsAndResources": true,
+    },
+    "productPath": "/indicators/ind999-indicator-history-tab-html-conversion",
+    "resource": Object {
+      "chapters": Array [
+        Object {
+          "href": "/guidance/IND999/documents/html-conversion/chapter/recommendations",
+          "slug": "recommendations",
+          "title": "1 Recommendations",
+        },
+        Object {
+          "href": "/guidance/IND999/documents/html-conversion/chapter/the-technologies",
+          "slug": "the-technologies",
+          "title": "2 The technologies",
+        },
+        Object {
+          "href": "/guidance/IND999/documents/html-conversion/chapter/committee-discussion",
+          "slug": "committee-discussion",
+          "title": "3 Committee discussion",
+        },
+        Object {
+          "href": "/guidance/IND999/documents/html-conversion/chapter/committee-members-and-nice-project-team",
+          "slug": "committee-members-and-nice-project-team",
+          "title": "4 Committee members and NICE project team",
+        },
+        Object {
+          "href": "/guidance/IND999/documents/html-conversion/chapter/update-information",
+          "slug": "update-information",
+          "title": "Update information",
+        },
+      ],
+      "htmlBody": "<div class=\\"chapter\\" title=\\"2 The technologies\\" id=\\"0-1-2-the-technologies\\" xmlns=\\"http://www.w3.org/1999/xhtml\\">
+  <h2 class=\\"title\\">
+    <a id=\\"the-technologies\\" style=\\"position:relative\\" class=\\"annotator-chapter\\" data-heading-type=\\"chapter\\" xmlns=\\"\\">2 The technologies<span class=\\"annotator-adder\\" /></a>
+  </h2>
+  <article id=\\"0-1-2.1\\" class=\\"numbered-paragraph annotator-numbered-paragraph\\" data-heading-type=\\"numbered-paragraph\\" title=\\"Comment on numbered paragraph\\">
+    <h3>2.1</h3>
+    <div>
+      <p>Digital weight-management technologies can be used to deliver multidisciplinary weight-management services. They can be accessed online or through an app, and provide a multidisciplinary programme and support from the service's multidisciplinary team (MDT) of healthcare professionals. Some technologies offer weight-management medicine prescribing and medicine reviews with a prescribing clinician, alongside regular reviews with other members of the service's MDT. The frequency of reviews may vary depending on the technology, user preference and stage of the programme. These technologies can be used to support multidisciplinary weight-management services, including treatment with weight-management medicine. NICE has assessed 12 technologies that can deliver multidisciplinary weight-management services. The criteria for including technologies in this early value assessment (EVA) and further details for technologies that prescribe and monitor weight-management medicine are in <a class=\\"link\\" href=\\"https://www.nice.org.uk/guidance/hte14/history\\" target=\\"_top\\">Section 2.2, Table 2 and Appendix E of the assessment report, and in the assessment report addendum on the NICE website</a>. For technologies that deliver multidisciplinary weight-management services when they are not used to prescribe and monitor weight-management medicine, further details are in the <a class=\\"link\\" href=\\"https://www.nice.org.uk/guidance/gid-hte10023/documents/final-scope\\" target=\\"_top\\">final scope</a> for the assessment. The technologies are:</p>
+      <ul class=\\"itemizedlist indented\\">
+        <li class=\\"listitem\\">
+          <p>CheqUp (CheqUp Health): this is an online platform that provides a multidisciplinary weight-management programme and weight-management medicine prescribing. </p>
+        </li>
+        <li class=\\"listitem\\">
+          <p>Counterweight (Counterweight): this is an app that provides a multidisciplinary weight-management programme. </p>
+        </li>
+        <li class=\\"listitem\\">
+          <p>Gro Health W8Buddy (DDM Health): this is an online platform that provides a multidisciplinary weight-management programme and weight-management medicine prescribing. </p>
+        </li>
+        <li class=\\"listitem\\">
+          <p>Gloji (Thrive Tribe): this is an app that provides a multidisciplinary weight-management programme. </p>
+        </li>
+        <li class=\\"listitem\\">
+          <p>Habitual (Habitual Health Ltd): this is an app that provides a multidisciplinary weight-management programme. </p>
+        </li>
+        <li class=\\"listitem\\">
+          <p>Juniper (Juniper Technologies UK): this is an app that provides a multidisciplinary weight-management programme and weight-management medicine prescribing. </p>
+        </li>
+        <li class=\\"listitem\\">
+          <p>Liva (Liva): this is an app that provides a multidisciplinary weight-management programme and weight-management medicine prescribing</p>
+        </li>
+        <li class=\\"listitem\\">
+          <p>Oviva (Oviva): this is an app that provides a multidisciplinary weight-management programme and weight-management medicine prescribing. </p>
+        </li>
+        <li class=\\"listitem\\">
+          <p>Roczen (Reset Health): this is an online platform that provides a multidisciplinary weight-management programme and weight-management medicine prescribing. </p>
+        </li>
+        <li class=\\"listitem\\">
+          <p>Second Nature (Second Nature): this is an app that provides a multidisciplinary weight-management programme and weight-management medicine prescribing. </p>
+        </li>
+        <li class=\\"listitem\\">
+          <p>Wellbeing Way (Xyla Health and Wellbeing): this is an online platform that provides a multidisciplinary weight-management programme and weight-management medicine prescribing. </p>
+        </li>
+        <li class=\\"listitem\\">
+          <p>Weight Loss Clinic (Virtual Health Partners): this is an online platform that provides a multidisciplinary weight-management programme. </p>
+        </li>
+      </ul>
+    </div>
+  </article>
+  <div class=\\"section\\" title=\\"Care pathway\\" id=\\"0-1-care-pathway\\">
+    <h3 class=\\"title\\">
+      <a id=\\"care-pathway\\" style=\\"position:relative\\" class=\\"annotator-chapter\\" data-heading-type=\\"section\\" xmlns=\\"\\">Care pathway<span class=\\"annotator-adder\\" /></a>
+    </h3>
+    <article id=\\"0-1-2.2\\" class=\\"numbered-paragraph annotator-numbered-paragraph\\" data-heading-type=\\"numbered-paragraph\\" title=\\"Comment on numbered paragraph\\">
+      <h4>2.2</h4>
+      <div>
+        <p>Semaglutide for managing overweight and obesity must be used within a specialist weight-management service that provides multidisciplinary management of overweight or obesity, including but not limited to tier 3 and tier 4 services (see <a class=\\"link\\" href=\\"https://www.nice.org.uk/guidance/ta875\\" target=\\"_top\\" data-original-url=\\"https://www.nice.org.uk/guidance/ta875\\">NICE's technology appraisal guidance on semaglutide for managing overweight and obesity</a>). Liraglutide for managing overweight and obesity must be prescribed in secondary care by a specialist multidisciplinary tier 3 weight-management service (see <a class=\\"link\\" href=\\"https://www.nice.org.uk/guidance/ta664\\" target=\\"_top\\" data-original-url=\\"https://www.nice.org.uk/guidance/ta664\\">NICE's technology appraisal guidance on liraglutide for managing overweight and obesity</a>).</p>
+      </div>
+    </article>
+    <article id=\\"0-1-2.3\\" class=\\"numbered-paragraph annotator-numbered-paragraph\\" data-heading-type=\\"numbered-paragraph\\" title=\\"Comment on numbered paragraph\\">
+      <h4>2.3</h4>
+      <div>
+        <p>A typical multidisciplinary weight-management service could include an obesity doctor, specialist nurse, specialist dietitian, psychologist and physiotherapist. It may also have access to healthcare professionals with expertise in surgical assessments. The intensity, frequency and variety of support from an MDT of healthcare professionals varies between NHS multidisciplinary weight-management services. Services may be offered in person, remotely by telephone or video call, or as a combination of in-person and remote support. The criteria for accessing these services may also vary depending on the geographical area and local funding. <a class=\\"link\\" href=\\"https://www.nice.org.uk/guidance/cg189\\" target=\\"_top\\" data-original-url=\\"https://www.nice.org.uk/guidance/cg189/\\">NICE's guideline on obesity: identification, assessment and management</a> defines specialist multidisciplinary weight-management services as a specialist primary, community or secondary care-based multidisciplinary team offering a combination of surgical, dietetic, pharmacological and psychological obesity management interventions, including but not limited to tier 3 and tier 4 services.</p>
+      </div>
+    </article>
+  </div>
+  <div class=\\"section\\" title=\\"The comparator\\" id=\\"0-1-the-comparator\\">
+    <h3 class=\\"title\\">
+      <a id=\\"the-comparator\\" style=\\"position:relative\\" class=\\"annotator-chapter\\" data-heading-type=\\"section\\" xmlns=\\"\\">The comparator<span class=\\"annotator-adder\\" /></a>
+    </h3>
+    <article id=\\"0-1-2.4\\" class=\\"numbered-paragraph annotator-numbered-paragraph\\" data-heading-type=\\"numbered-paragraph\\" title=\\"Comment on numbered paragraph\\">
+      <h4>2.4</h4>
+      <div>
+        <p>The comparator is standard care, including managing treatment with weight-management medicine for adults who are eligible. Standard care includes multidisciplinary weight-management programmes (including, but not limited to tier 3 and 4 services). They may be delivered face to face, remotely or as a combination of remote and in-person support.</p>
+      </div>
+    </article>
+    <article id=\\"0-1-2.5\\" class=\\"numbered-paragraph annotator-numbered-paragraph\\" data-heading-type=\\"numbered-paragraph\\" title=\\"Comment on numbered paragraph\\">
+      <h4>2.5</h4>
+      <div>
+        <p>No or delayed treatment is also a relevant comparator. Some people are on waiting lists to access services or have no access at all.</p>
+      </div>
+    </article>
+  </div>
+</div>",
+      "isConvertedDocument": true,
+      "pdfDownloadLink": "/indicators/ind999-indicator-history-tab-html-conversion/history/downloads/IND999-html-to-pdf.pdf",
+      "sections": Array [
+        Object {
+          "slug": "0-1-care-pathway",
+          "title": "Care pathway",
+        },
+        Object {
+          "slug": "0-1-the-comparator",
+          "title": "The comparator",
+        },
+      ],
+      "title": "Html conversion document",
+    },
+  },
+}
+`;

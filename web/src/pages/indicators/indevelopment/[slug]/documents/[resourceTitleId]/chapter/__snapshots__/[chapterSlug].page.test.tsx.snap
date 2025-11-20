@@ -1,0 +1,1309 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`[chapterSlug].page DocumentsHTMLPage should match the snapshot for main content 1`] = `
+<body>
+  <div>
+    <nav
+      aria-label="Breadcrumbs"
+      data-component="breadcrumbs"
+      role="navigation"
+    >
+      <ol
+        class="breadcrumbs"
+      >
+        <li
+          class="breadcrumbs__crumb"
+        >
+          <a
+            href="/"
+          >
+            Home
+          </a>
+        </li>
+        <li
+          class="breadcrumbs__crumb"
+        >
+          <a
+            href="/standards-and-indicators/indicators"
+          >
+            Indicators
+          </a>
+        </li>
+        <li
+          class="breadcrumbs__crumb"
+        >
+          <a
+            href="/indicators/indevelopment"
+          >
+            In development
+          </a>
+        </li>
+        <li
+          class="breadcrumbs__crumb"
+        >
+          <a
+            href="/indicators/indevelopment/gid-dg10086"
+          >
+            GID-DG10086
+          </a>
+        </li>
+        <li
+          class="breadcrumbs__crumb"
+        >
+          <a
+            href="/indicators/indevelopment/gid-dg10086/documents"
+          >
+            Project documents
+          </a>
+        </li>
+        <li
+          class="breadcrumbs__crumb"
+        >
+          <span>
+            Final scope (html conversion)
+          </span>
+        </li>
+      </ol>
+    </nav>
+    <script
+      type="application/ld+json"
+    >
+      {
+  "@context": "http://schema.org",
+  "@type": "BreadcrumbList",
+  "itemListElement": [
+    {
+      "@type": "ListItem",
+      "position": 1,
+      "item": {
+        "@id": "/",
+        "name": "Home"
+      }
+    },
+    {
+      "@type": "ListItem",
+      "position": 2,
+      "item": {
+        "@id": "/standards-and-indicators/indicators",
+        "name": "Indicators"
+      }
+    },
+    {
+      "@type": "ListItem",
+      "position": 3,
+      "item": {
+        "@id": "/indicators/indevelopment",
+        "name": "In development"
+      }
+    },
+    {
+      "@type": "ListItem",
+      "position": 4,
+      "item": {
+        "@id": "/indicators/indevelopment/gid-dg10086",
+        "name": "GID-DG10086"
+      }
+    },
+    {
+      "@type": "ListItem",
+      "position": 5,
+      "item": {
+        "@id": "/indicators/indevelopment/gid-dg10086/documents",
+        "name": "Project documents"
+      }
+    },
+    {
+      "@type": "ListItem",
+      "position": 6,
+      "item": {
+        "name": "Final scope (html conversion)"
+      }
+    }
+  ]
+}
+    </script>
+    <div
+      class="page-header "
+      data-component="page-header"
+      id="content-start"
+    >
+      <h1
+        class="page-header__heading page-header__heading--alt"
+      >
+        Test Conversion John H
+      </h1>
+      <ul
+        class="page-header__metadata"
+      >
+        <li>
+          In development GID-DG10086
+        </li>
+        <li>
+          Expected publication date: TBC
+        </li>
+      </ul>
+      <p
+        class="page-header__cta"
+      >
+        <a
+          href="https://www.nice.org.uk/about/what-we-do/our-programmes/nice-guidance/nice-diagnostics-guidance/dt-stakeholder-registration?t=&p=GID-DG10086&returnUrl=/guidance/topic-selection/gid-dg10086"
+        >
+          Register as a stakeholder
+        </a>
+      </p>
+    </div>
+    <nav
+      class="horizontal-nav"
+    >
+      <ul
+        class="horizontal-nav__list"
+      >
+        <li
+          class="horizontal-nav__item"
+          data-component="horizontal-nav"
+        >
+          <a
+            aria-current="false"
+            class="horizontal-nav__link"
+            href="/guidance/topic-selection/gid-dg10086"
+          >
+            Project information
+          </a>
+        </li>
+        <li
+          class="horizontal-nav__item"
+          data-component="horizontal-nav"
+        >
+          <a
+            aria-current="true"
+            class="horizontal-nav__link"
+            href="/guidance/topic-selection/gid-dg10086/documents"
+          >
+            Project documents
+          </a>
+        </li>
+      </ul>
+    </nav>
+    <div
+      class="grid grid--loose"
+    >
+      <section
+        aria-label="Chapters"
+        data-component="grid-item"
+        data-g="12 md:4 lg:3"
+      >
+        <a
+          aria-label="Download PDF"
+          class="btn btn--cta download"
+          data-component="button--cta"
+          href="/guidance/topic-selection/gid-dg10086/downloads/gid-dg10086-final-scope-pdf.pdf"
+          target="_blank"
+        >
+          Download (PDF)
+        </a>
+        <nav
+          aria-label="chapters"
+          class="stacked-nav"
+          data-component="stacked-nav"
+        >
+          <ul
+            class="stacked-nav__list"
+          >
+            <li
+              class="stacked-nav__list-item"
+            >
+              <a
+                aria-current="false"
+                href="/guidance/topic-selection/gid-dg10086/documents/final-scope-html-conversion"
+              >
+                <span
+                  class="stacked-nav__content-wrapper"
+                >
+                  Overview
+                </span>
+              </a>
+            </li>
+            <li
+              class="stacked-nav__list-item"
+            >
+              <a
+                aria-current="false"
+                href="/guidance/topic-selection/gid-dg10086/documents/final-scope-html-conversion/chapter/recommendations"
+              >
+                <span
+                  class="stacked-nav__content-wrapper"
+                >
+                  Recommendations
+                </span>
+              </a>
+            </li>
+          </ul>
+        </nav>
+      </section>
+      <section
+        data-component="grid-item"
+        data-g="12 md:8 lg:9"
+      >
+        <h2
+          class="mt--0"
+        >
+          Final scope (html conversion)
+        </h2>
+        <div
+          class="hide-print"
+        >
+          <nav
+            aria-labelledby="on-this-page"
+            class="in-page-nav in-page-nav--no-scroll"
+          >
+            <h2
+              class="in-page-nav__title"
+              id="on-this-page"
+            >
+              On this page
+            </h2>
+            <ol
+              aria-label="Jump links to sections on this page"
+              class="in-page-nav__list"
+            >
+              <li
+                class="in-page-nav__item"
+              >
+                <a
+                  href="#expulsion-at-home-for-medical-abortion-up-to-and-including-100-weeks"
+                  id="inpagenav-expulsion-at-home-for-medical-abortion-up-to-and-including-100-weeks"
+                >
+                  1.1 Expulsion at home for medical abortion up to and including 10+0 weeks
+                </a>
+              </li>
+              <li
+                class="in-page-nav__item"
+              >
+                <a
+                  href="#medical-abortion-up-to-and-including-100-weeks"
+                  id="inpagenav-medical-abortion-up-to-and-including-100-weeks"
+                >
+                  1.2 Medical abortion up to and including 10+0 weeks
+                </a>
+              </li>
+              <li
+                class="in-page-nav__item"
+              >
+                <a
+                  href="#medical-abortion-between-101-and-236-weeks"
+                  id="inpagenav-medical-abortion-between-101-and-236-weeks"
+                >
+                  1.3 Medical abortion between 10+1 and 23+6 weeks
+                </a>
+              </li>
+            </ol>
+          </nav>
+        </div>
+        <div
+          class="chapterContent"
+        >
+          <div
+            class="chapter"
+            id="0-1-recommendations"
+            title="Recommendations"
+            xmlns="http://www.w3.org/1999/xhtml"
+          >
+            
+  
+            <h2
+              class="title"
+            >
+              
+    
+              <a
+                class="annotator-chapter"
+                data-heading-type="chapter"
+                id="recommendations"
+                style="position:relative"
+              />
+              
+    
+              <a
+                id="Text13"
+              />
+              Recommendations
+              <span
+                class="annotator-adder"
+              />
+            </h2>
+            
+  
+            <div
+              class="section"
+              id="0-1-1.1-expulsion-at-home-for-medical-abortion-up-to-and-including-100-weeks"
+              title="1.1 Expulsion at home for medical abortion up to and including 10+0 weeks"
+            >
+              
+    
+              <h3
+                class="title"
+              >
+                
+      
+                <a
+                  class="annotator-chapter"
+                  data-heading-type="section"
+                  id="expulsion-at-home-for-medical-abortion-up-to-and-including-100-weeks"
+                  style="position:relative"
+                />
+                1.1 
+                <a
+                  id="expulsionathome"
+                />
+                Expulsion at home for medical abortion up to and including 10
+                <sup>
+                  +0
+                </sup>
+                 weeks
+                <span
+                  class="annotator-adder"
+                />
+              </h3>
+              
+    
+              <div
+                class="section"
+                id="0-1-up-to-and-including-96-weeks-gestation"
+                title="Up to and including 9+6 weeks' gestation"
+              >
+                
+      
+                <h4
+                  class="title"
+                >
+                  
+        
+                  <a
+                    class="annotator-chapter"
+                    data-heading-type="section"
+                    id="up-to-and-including-96-weeks-gestation"
+                    style="position:relative"
+                  />
+                  Up to and including 9
+                  <sup>
+                    +6
+                  </sup>
+                   weeks' gestation
+                  <span
+                    class="annotator-adder"
+                  />
+                </h4>
+                
+      
+                <p
+                  class="numbered-paragraph annotator-numbered-paragraph"
+                  data-heading-type="numbered-paragraph"
+                  id="np-1-1-1"
+                  title="Comment on numbered paragraph"
+                >
+                  
+        
+                  <span
+                    class="paragraph-number"
+                  >
+                    1.1.1 
+                  </span>
+                  For women who are having a medical abortion and will be taking the mifepristone up to and including 9
+                  <sup>
+                    +6
+                  </sup>
+                   weeks' gestation, offer the option of expulsion at home. Mifepristone and misoprostol can be taken at home or in the clinic or hospital.
+                  <br />
+                  <!--[I] - Information: Soft return used in paragraph-->
+                  <br />
+                  This recommendation is based on the evidence for the safety of home expulsion. The legal limit for the gestational age at which mifepristone  and misoprostol can be taken at home is specified in the 
+                  <a
+                    class="link"
+                    href="https://www.legislation.gov.uk/ukpga/1967/87/contents"
+                    target="_top"
+                  >
+                    Abortion Act 1967
+                  </a>
+                  . 
+                </p>
+                
+    
+              </div>
+              
+    
+              <div
+                class="section"
+                id="0-1-at-100-weeks-gestation"
+                title="At 10+0 weeks' gestation"
+              >
+                
+      
+                <h4
+                  class="title"
+                >
+                  
+        
+                  <a
+                    class="annotator-chapter"
+                    data-heading-type="section"
+                    id="at-100-weeks-gestation"
+                    style="position:relative"
+                  />
+                  At 10
+                  <sup>
+                    +0
+                  </sup>
+                   weeks' gestation
+                  <span
+                    class="annotator-adder"
+                  />
+                </h4>
+                
+      
+                <p
+                  class="numbered-paragraph annotator-numbered-paragraph"
+                  data-heading-type="numbered-paragraph"
+                  id="np-1-1-2"
+                  title="Comment on numbered paragraph"
+                >
+                  
+        
+                  <span
+                    class="paragraph-number"
+                  >
+                    1.1.2 
+                  </span>
+                  For women who are having a medical abortion and will be taking the mifepristone at 10
+                  <sup>
+                    +0
+                  </sup>
+                   weeks' gestation, offer the option of expulsion at home after they have taken the misoprostol. Misoprostol can be taken in the clinic or hospital.
+                </p>
+                
+      
+                <div
+                  class="panel indented"
+                >
+                  
+        
+                  <p>
+                    To find out why the committee made the recommendations and how they might affect practice, see the 
+                    <a
+                      class="link"
+                      data-original-url="_Expulsion_at_home"
+                      href="https://www.nice.org.uk/proxy/?sourceUrl=_Expulsion_at_home"
+                      target="_top"
+                    >
+                      rationale and impact section on expulsion at home for medical abortion up to and including 10
+                      <sup>
+                        +0
+                      </sup>
+                       weeks
+                    </a>
+                    .
+                  </p>
+                  
+        
+                  <p>
+                    Full details of the evidence and the committee's discussion are in 
+                    <a
+                      class="link"
+                      href="https://www.nice.org.uk/guidance/ng140/evidence/g-expulsion-at-home-for-early-medical-abortion-pdf-6905052979"
+                      target="_top"
+                    >
+                      evidence review G: expulsion at home for early medical abortion
+                    </a>
+                    .
+                  </p>
+                  
+      
+                </div>
+                
+    
+              </div>
+              
+  
+            </div>
+            
+  
+            <div
+              class="section"
+              id="0-1-1.2-medical-abortion-up-to-and-including-100-weeks"
+              title="1.2 Medical abortion up to and including 10+0 weeks"
+            >
+              
+    
+              <h3
+                class="title"
+              >
+                
+      
+                <a
+                  class="annotator-chapter"
+                  data-heading-type="section"
+                  id="medical-abortion-up-to-and-including-100-weeks"
+                  style="position:relative"
+                />
+                1.2 
+                <a
+                  id="Medbefore10wks"
+                />
+                Medical abortion up to and including 10
+                <sup>
+                  +0
+                </sup>
+                 weeks
+                <span
+                  class="annotator-adder"
+                />
+              </h3>
+              
+    
+              <div
+                class="panel panel--primary"
+              >
+                
+      
+                <p>
+                  In September 2019, mifepristone for abortion only has a UK marketing authorisation for: 
+                </p>
+                
+      
+                <div
+                  class="itemizedlist"
+                >
+                  
+        
+                  <ul
+                    class="itemizedlist"
+                  >
+                    
+          
+                    <li
+                      class="listitem"
+                    >
+                      
+            
+                      <p>
+                        600 mg orally for medical abortion of developing intrauterine pregnancy, followed 36 to 48 hours later by 400 micrograms misoprostol orally or 1 mg gemeprost vaginally, up to and including 49 days of amenorrhoea
+                      </p>
+                      
+          
+                    </li>
+                    
+          
+                    <li
+                      class="listitem"
+                    >
+                      
+            
+                      <p>
+                        600 mg orally for medical abortion of developing intrauterine pregnancy, followed 36 to 48 hours later by 1 mg gemeprost vaginally, between 50 days and 63 days of amenorrhoea
+                      </p>
+                      
+          
+                    </li>
+                    
+          
+                    <li
+                      class="listitem"
+                    >
+                      
+            
+                      <p>
+                        200 mg orally for medical abortion of developing intrauterine pregnancy, followed 36 to 48 hours later by 1 mg gemeprost vaginally, between 50 days and 63 days of amenorrhoea
+                      </p>
+                      
+          
+                    </li>
+                    
+          
+                    <li
+                      class="listitem"
+                    >
+                      
+            
+                      <p>
+                        200 mg orally for medical abortion of developing intrauterine pregnancy, followed 36 to 48 hours later by 800 micrograms misoprostol vaginally, up to and including 63 days of amenorrhoea
+                      </p>
+                      
+          
+                    </li>
+                    
+          
+                    <li
+                      class="listitem"
+                    >
+                      
+            
+                      <p>
+                        600 mg orally for medical abortion for medical reasons, followed 36 to 48 hours later by prostaglandin administration, beyond the first trimester
+                      </p>
+                      
+          
+                    </li>
+                    
+          
+                    <li
+                      class="listitem"
+                    >
+                      
+            
+                      <p>
+                        200 mg orally for cervical priming, 36 to 48 hours before first trimester surgical abortion.
+                      </p>
+                      
+          
+                    </li>
+                    
+        
+                  </ul>
+                  
+      
+                </div>
+                
+      
+                <p>
+                  
+        
+                  <a
+                    id="_Hlk44421256"
+                  />
+                  All other uses of mifepristone are off label. See 
+                  <a
+                    class="link"
+                    href="https://www.nice.org.uk/about/what-we-do/our-programmes/nice-guidance/nice-guidelines/making-decisions-using-nice-guidelines#prescribing-medicines"
+                    target="_top"
+                  >
+                    NICE's information on prescribing medicines
+                  </a>
+                  .
+                </p>
+                
+      
+                <p>
+                  In September 2019, misoprostol for medical abortion only has a UK marketing authorisation for:
+                </p>
+                
+      
+                <div
+                  class="itemizedlist"
+                >
+                  
+        
+                  <ul
+                    class="itemizedlist"
+                  >
+                    
+          
+                    <li
+                      class="listitem"
+                    >
+                      
+            
+                      <p>
+                        400 micrograms orally as an initial dose for medical abortion of developing intrauterine pregnancy, 36 to 48 hours after 600 mg mifepristone orally, up to and including 49 days of amenorrhoea
+                      </p>
+                      
+          
+                    </li>
+                    
+          
+                    <li
+                      class="listitem"
+                    >
+                      
+            
+                      <p>
+                        800 micrograms vaginally as an initial dose for medical abortion of developing intrauterine pregnancy, 36 to 48 hours after 200 mg mifepristone orally, up to and including 63 days of amenorrhoea.
+                      </p>
+                      
+          
+                    </li>
+                    
+        
+                  </ul>
+                  
+      
+                </div>
+                
+      
+                <p>
+                  All other uses of misoprostol (including for cervical priming and for abortion at later gestations) are off label. See 
+                  <a
+                    class="link"
+                    href="https://www.nice.org.uk/about/what-we-do/our-programmes/nice-guidance/nice-guidelines/making-decisions-using-nice-guidelines#prescribing-medicines"
+                    target="_top"
+                  >
+                    NICE's information on prescribing medicines
+                  </a>
+                  . 
+                </p>
+                
+    
+              </div>
+              
+    
+              <p
+                class="numbered-paragraph annotator-numbered-paragraph"
+                data-heading-type="numbered-paragraph"
+                id="np-1-2-1"
+                title="Comment on numbered paragraph"
+              >
+                
+      
+                <span
+                  class="paragraph-number"
+                >
+                  1.2.1 
+                </span>
+                Offer interval treatment (usually 24 to 48 hours) with mifepristone and misoprostol to women who are having a medical abortion up to and including 10
+                <sup>
+                  +0
+                </sup>
+                 weeks' gestation.
+              </p>
+              
+    
+              <p
+                class="numbered-paragraph annotator-numbered-paragraph"
+                data-heading-type="numbered-paragraph"
+                id="np-1-2-2"
+                title="Comment on numbered paragraph"
+              >
+                
+      
+                <span
+                  class="paragraph-number"
+                >
+                  1.2.2 
+                </span>
+                For women who are having a medical abortion up to and including 9
+                <sup>
+                  +0
+                </sup>
+                 weeks' gestation, give them the choice of having mifepristone and vaginal misoprostol at the same time, but explain that:
+              </p>
+              
+    
+              <div
+                class="itemizedlist indented"
+              >
+                
+      
+                <ul
+                  class="itemizedlist"
+                >
+                  
+        
+                  <li
+                    class="listitem"
+                  >
+                    
+          
+                    <p>
+                      the risk of ongoing pregnancy may be higher, and it may increase with gestation
+                    </p>
+                    
+        
+                  </li>
+                  
+        
+                  <li
+                    class="listitem"
+                  >
+                    
+          
+                    <p>
+                      it may take longer for the bleeding and pain to start 
+                    </p>
+                    
+        
+                  </li>
+                  
+        
+                  <li
+                    class="listitem"
+                  >
+                    
+          
+                    <p>
+                      it is important for them to complete the same follow-up programme that is recommended for all medical abortions up to and including 10
+                      <sup>
+                        +0
+                      </sup>
+                       weeks (
+                      <a
+                        class="link"
+                        data-original-url="_Follow-up_after_medical"
+                        href="https://www.nice.org.uk/proxy/?sourceUrl=_Follow-up_after_medical"
+                        target="_top"
+                      >
+                        recommendations 1.14.1 and 1.14.2
+                      </a>
+                      ).
+                    </p>
+                    
+        
+                  </li>
+                  
+      
+                </ul>
+                
+    
+              </div>
+              
+    
+              <div
+                class="panel indented"
+              >
+                
+      
+                <p>
+                  To find out why the committee made the recommendations and how they might affect practice, see the 
+                  <a
+                    class="link"
+                    data-original-url="_Medical_abortion_up"
+                    href="https://www.nice.org.uk/proxy/?sourceUrl=_Medical_abortion_up"
+                    target="_top"
+                  >
+                    rationale and impact section on the interval between mifepristone and misoprostol for medical abortion up to and including 10
+                    <sup>
+                      +0
+                    </sup>
+                     weeks
+                  </a>
+                  .
+                </p>
+                
+      
+                <p>
+                  Full details of the evidence and the committee's discussion are in 
+                  <a
+                    class="link"
+                    href="https://www.nice.org.uk/guidance/ng140/evidence/h-simultaneous-versus-delayed-mifepristone-misoprostol-administration-for-medical-abortion-up-to-100-weeks-gestation-pdf-6905052980"
+                    target="_top"
+                  >
+                    evidence review H: medical abortion up to 10
+                    <sup>
+                      +0
+                    </sup>
+                     weeks' gestation
+                  </a>
+                  .
+                </p>
+                
+    
+              </div>
+              
+  
+            </div>
+            
+  
+            <div
+              class="section"
+              id="0-1-1.3-medical-abortion-between-101-and-236-weeks"
+              title="1.3 Medical abortion between 10+1 and 23+6 weeks"
+            >
+              
+    
+              <h3
+                class="title"
+              >
+                
+      
+                <a
+                  class="annotator-chapter"
+                  data-heading-type="section"
+                  id="medical-abortion-between-101-and-236-weeks"
+                  style="position:relative"
+                />
+                1.3 
+                <a
+                  id="Med10to24wks"
+                />
+                Medical abortion between 10
+                <sup>
+                  +1
+                </sup>
+                 and 23
+                <sup>
+                  +6
+                </sup>
+                 weeks
+                <span
+                  class="annotator-adder"
+                />
+              </h3>
+              
+    
+              <div
+                class="panel panel--primary"
+              >
+                
+      
+                <p>
+                  In September 2019, mifepristone for abortion only has a UK marketing authorisation for: 
+                </p>
+                
+      
+                <div
+                  class="itemizedlist"
+                >
+                  
+        
+                  <ul
+                    class="itemizedlist"
+                  >
+                    
+          
+                    <li
+                      class="listitem"
+                    >
+                      
+            
+                      <p>
+                        600 mg orally for medical abortion of developing intrauterine pregnancy, followed 36 to 48 hours later by 400 micrograms misoprostol orally or 1 mg gemeprost vaginally, up to and including 49 days of amenorrhoea
+                      </p>
+                      
+          
+                    </li>
+                    
+          
+                    <li
+                      class="listitem"
+                    >
+                      
+            
+                      <p>
+                        600 mg orally for medical abortion of developing intrauterine pregnancy, followed 36 to 48 hours later by 1 mg gemeprost vaginally, between 50 days and 63 days of amenorrhoea
+                      </p>
+                      
+          
+                    </li>
+                    
+          
+                    <li
+                      class="listitem"
+                    >
+                      
+            
+                      <p>
+                        200 mg orally for medical abortion of developing intrauterine pregnancy, followed 36 to 48 hours later by 1 mg gemeprost vaginally, between 50 days and 63 days of amenorrhoea
+                      </p>
+                      
+          
+                    </li>
+                    
+          
+                    <li
+                      class="listitem"
+                    >
+                      
+            
+                      <p>
+                        200 mg orally for medical abortion of developing intrauterine pregnancy, followed 36 to 48 hours later by 800 micrograms misoprostol vaginally, up to and including 63 days of amenorrhoea
+                      </p>
+                      
+          
+                    </li>
+                    
+          
+                    <li
+                      class="listitem"
+                    >
+                      
+            
+                      <p>
+                        600 mg orally for medical abortion for medical reasons, followed 36 to 48 hours later by prostaglandin administration, beyond the first trimester
+                      </p>
+                      
+          
+                    </li>
+                    
+          
+                    <li
+                      class="listitem"
+                    >
+                      
+            
+                      <p>
+                        200 mg orally for cervical priming, 36 to 48 hours before first trimester surgical abortion.
+                      </p>
+                      
+          
+                    </li>
+                    
+        
+                  </ul>
+                  
+      
+                </div>
+                
+      
+                <p>
+                  All other uses of mifepristone are off label. See 
+                  <a
+                    class="link"
+                    href="https://www.nice.org.uk/about/what-we-do/our-programmes/nice-guidance/nice-guidelines/making-decisions-using-nice-guidelines#prescribing-medicines"
+                    target="_top"
+                  >
+                    NICE's information on prescribing medicines
+                  </a>
+                  .
+                </p>
+                
+      
+                <p>
+                  In September 2019, misoprostol for medical abortion only has a UK marketing authorisation for:
+                </p>
+                
+      
+                <div
+                  class="itemizedlist"
+                >
+                  
+        
+                  <ul
+                    class="itemizedlist"
+                  >
+                    
+          
+                    <li
+                      class="listitem"
+                    >
+                      
+            
+                      <p>
+                        400 micrograms orally as an initial dose for medical abortion of developing intrauterine pregnancy, 36 to 48 hours after 600 mg mifepristone orally, up to and including 49 days of amenorrhoea
+                      </p>
+                      
+          
+                    </li>
+                    
+          
+                    <li
+                      class="listitem"
+                    >
+                      
+            
+                      <p>
+                        800 micrograms vaginally as an initial dose for medical abortion of developing intrauterine pregnancy, 36 to 48 hours after 200 mg mifepristone orally, up to and including 63 days of amenorrhoea.
+                      </p>
+                      
+          
+                    </li>
+                    
+        
+                  </ul>
+                  
+      
+                </div>
+                
+      
+                <p>
+                  All other uses of misoprostol (including for cervical priming and for abortion at later gestations) are off label. See 
+                  <a
+                    class="link"
+                    href="https://www.nice.org.uk/about/what-we-do/our-programmes/nice-guidance/nice-guidelines/making-decisions-using-nice-guidelines#prescribing-medicines"
+                    target="_top"
+                  >
+                    NICE's information on prescribing medicines
+                  </a>
+                  . 
+                </p>
+                
+    
+              </div>
+              
+    
+              <p
+                class="numbered-paragraph annotator-numbered-paragraph"
+                data-heading-type="numbered-paragraph"
+                id="np-1-3-1"
+                title="Comment on numbered paragraph"
+              >
+                
+      
+                <span
+                  class="paragraph-number"
+                >
+                  1.3.1 
+                </span>
+                For women who are having a medical abortion between 10
+                <sup>
+                  +1
+                </sup>
+                 and 23
+                <sup>
+                  +6
+                </sup>
+                 weeks' gestation and who have taken 200 mg mifepristone, offer an initial dose (36 to 48 hours after the mifepristone) of:
+              </p>
+              
+    
+              <div
+                class="itemizedlist indented"
+              >
+                
+      
+                <ul
+                  class="itemizedlist"
+                >
+                  
+        
+                  <li
+                    class="listitem"
+                  >
+                    
+          
+                    <p>
+                      800 micrograms misoprostol, given vaginally, 
+                      <strong>
+                        or
+                      </strong>
+                    </p>
+                    
+        
+                  </li>
+                  
+        
+                  <li
+                    class="listitem"
+                  >
+                    
+          
+                    <p>
+                      600 micrograms of misoprostol, given sublingually, for women who decline vaginal misoprostol.
+                      <br />
+                      <!--[I] - Information: Soft return used in paragraph-->
+                      <br />
+                      Follow the initial dose with 400 microgram doses of misoprostol (vaginal, sublingual or buccal), given every 3 hours until expulsion.
+                    </p>
+                    
+        
+                  </li>
+                  
+      
+                </ul>
+                
+    
+              </div>
+              
+    
+              <p
+                class="numbered-paragraph annotator-numbered-paragraph"
+                data-heading-type="numbered-paragraph"
+                id="np-1-3-2"
+                title="Comment on numbered paragraph"
+              >
+                
+      
+                <span
+                  class="paragraph-number"
+                >
+                  1.3.2 
+                </span>
+                Use a shorter interval between mifepristone and misoprostol if the woman prefers this, but explain that it may take a longer time from taking the first misoprostol dose to complete the abortion.
+              </p>
+              
+    
+              <div
+                class="panel indented"
+              >
+                
+      
+                <p>
+                  
+        
+                  <a
+                    id="_Hlk43127219"
+                  />
+                  To find out why the committee made the recommendations and how they might affect practice, see the 
+                  <a
+                    class="link"
+                    data-original-url="_Medical_abortion_between"
+                    href="https://www.nice.org.uk/proxy/?sourceUrl=_Medical_abortion_between"
+                    target="_top"
+                  >
+                    rationale and impact section on medical abortion between 10
+                    <sup>
+                      +1
+                    </sup>
+                     and 23
+                    <sup>
+                      +6
+                    </sup>
+                     weeks
+                  </a>
+                  .
+                </p>
+                
+      
+                <p>
+                  Full details of the evidence and the committee's discussion are in 
+                  <a
+                    class="link"
+                    href="https://www.nice.org.uk/guidance/ng140/evidence/j-misoprostol-after-mifepristone-for-inducing-medical-abortion-between-101-and-240-weeks-gestation-pdf-248581907028"
+                    target="_top"
+                  >
+                    evidence review J: medical abortion between 10
+                    <sup>
+                      +1
+                    </sup>
+                     and 24
+                    <sup>
+                      +0
+                    </sup>
+                     weeks' gestation
+                  </a>
+                  .
+                </p>
+                
+    
+              </div>
+              
+  
+            </div>
+            
+
+          </div>
+        </div>
+        <p>
+          This page was last updated on
+           
+          <time
+            datetime="2023-09-04"
+          >
+            4 September 2023
+          </time>
+        </p>
+        <hr />
+        <div
+          class="prev-next"
+        >
+          <nav
+            aria-label="Previous and next pages"
+          >
+            <a
+              class="prev-next__link"
+              href="/guidance/topic-selection/gid-dg10086/documents/final-scope-html-conversion/chapter/recommendations"
+            >
+              <span
+                class="prev-next__link-intro"
+              >
+                Next page
+              </span>
+              <span
+                class="prev-next__link-text"
+              >
+                Recommendations
+              </span>
+            </a>
+          </nav>
+        </div>
+      </section>
+    </div>
+  </div>
+</body>
+`;

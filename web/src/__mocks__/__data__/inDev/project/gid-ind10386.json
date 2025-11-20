@@ -1,0 +1,499 @@
+{
+    "_links": {
+        "nice.indev:stakeholder-registration": [
+            {
+                "href": "https://alpha.nice.org.uk/get-involved/register-your-organisation-as-a-stakeholder"
+            }
+        ],
+        "self": [
+            {
+                "href": "/project/IND999"
+            }
+        ]
+    },
+    "_embedded": {
+        "nice.indev:timeline-list": {
+            "_links": {
+                "self": [
+                    {}
+                ]
+            },
+            "_embedded": {
+                "nice.indev:timeline": [
+                    {
+                        "_links": {
+                            "self": [
+                                {}
+                            ]
+                        },
+                        "ETag": null,
+                        "AdditionalInfoLabel": null,
+                        "AdditionalInfo": null,
+                        "Hidden": false,
+                        "Column1": "19 August 2025",
+                        "Column2": "Expected publication"
+                    },
+                    {
+                        "_links": {
+                            "self": [
+                                {}
+                            ]
+                        },
+                        "ETag": null,
+                        "AdditionalInfoLabel": null,
+                        "AdditionalInfo": null,
+                        "Hidden": false,
+                        "Column1": "19 August 2025",
+                        "Column2": "Statement"
+                    },
+                    {
+                        "_links": {
+                            "self": [
+                                {}
+                            ]
+                        },
+                        "ETag": null,
+                        "AdditionalInfoLabel": "Meeting number",
+                        "AdditionalInfo": null,
+                        "Hidden": false,
+                        "Column1": "19 August 2025",
+                        "Column2": "Committee meeting"
+                    },
+                    {
+                        "_links": {
+                            "self": [
+                                {}
+                            ]
+                        },
+                        "ETag": null,
+                        "AdditionalInfoLabel": null,
+                        "AdditionalInfo": null,
+                        "Hidden": false,
+                        "Column1": "19 August 2025",
+                        "Column2": "Project published"
+                    }
+                ]
+            },
+            "ETag": null
+        },
+        "nice.indev:panel-list": {
+            "_links": {
+                "self": [
+                    {}
+                ]
+            },
+            "_embedded": {
+                "nice.indev:panel": [
+                    {
+                        "_links": {
+                            "self": [
+                                {}
+                            ]
+                        },
+                        "_embedded": {
+                            "nice.indev:resource-list": {
+                                "_links": {
+                                    "self": [
+                                        {}
+                                    ]
+                                },
+                                "_embedded": {
+                                    "nice.indev:resource": [
+                                        {
+                                            "_links": {
+                                                "self": [
+                                                    {}
+                                                ]
+                                            },
+                                            "_embedded": {
+                                                "nice.indev:converted-document": {
+                                                    "_links": {
+                                                        "self": [
+                                                            {
+                                                                "href": "/guidance/IND999/documents/html-conversion/html"
+                                                            }
+                                                        ]
+                                                    },
+                                                    "ETag": null,
+                                                    "Reference": "IND999",
+                                                    "Title": "Html conversion document",
+                                                    "ResourceTitleId": "html-conversion",
+                                                    "ProjectType": "IND",
+                                                    "ProductTypeName": "NICE indicator"
+                                                }
+                                            },
+                                            "ETag": null,
+                                            "Title": "Html conversion document",
+                                            "Level": 1,
+                                            "PublishedDate": "2025-08-19T13:04:00",
+                                            "MajorChangeDate": null,
+                                            "ExternalUrl": null,
+                                            "ShowInDocList": true,
+                                            "TextOnly": false,
+                                            "ConsultationId": 0,
+                                            "ConsultationDocumentId": 0,
+                                            "IsCurrentViewableConsultationMarkup": false,
+                                            "ConvertedDocument": true,
+                                            "SupportsComments": false
+                                        },
+                                        {
+                                            "_links": {
+                                                "self": [
+                                                    {}
+                                                ]
+                                            },
+                                            "_embedded": {
+                                                "nice.indev:generated-pdf": {
+                                                    "_links": {
+                                                        "self": [
+                                                            {
+                                                                "href": "/guidance/IND999/documents/html-to-pdf"
+                                                            }
+                                                        ]
+                                                    },
+                                                    "ETag": null,
+                                                    "Id": "5989968f-05b9-4286-b80c-600332757923",
+                                                    "MimeType": "application/pdf",
+                                                    "FileName": "Html conversion document.pdf",
+                                                    "Length": 121119,
+                                                    "Hash": "EB49AF137B3B8D471964B8D1AA4C36D4E4A4E059",
+                                                    "Name": null,
+                                                    "Reference": "IND999",
+                                                    "ResourceTitleId": "html-to-pdf",
+                                                    "ConsultationDocumentId": 0
+                                                }
+                                            },
+                                            "ETag": null,
+                                            "Title": "Html conversion document (pdf)",
+                                            "Level": 1,
+                                            "PublishedDate": "2025-08-19T13:04:00",
+                                            "MajorChangeDate": null,
+                                            "ExternalUrl": null,
+                                            "ShowInDocList": true,
+                                            "TextOnly": false,
+                                            "ConsultationId": 0,
+                                            "ConsultationDocumentId": 0,
+                                            "IsCurrentViewableConsultationMarkup": false,
+                                            "ConvertedDocument": false,
+                                            "SupportsComments": false
+                                        }
+                                    ]
+                                },
+                                "ETag": null,
+                                "HasResources": true
+                            }
+                        },
+                        "ETag": null,
+                        "Title": "Expected publication",
+                        "PanelType": "History",
+                        "LegacyPanel": false,
+                        "OriginalReference": null,
+                        "UpdateReference": null,
+                        "ShowPanel": true
+                    },
+                    {
+                        "_links": {
+                            "self": [
+                                {}
+                            ]
+                        },
+                        "_embedded": {
+                            "nice.indev:resource-list": {
+                                "_links": {
+                                    "self": [
+                                        {}
+                                    ]
+                                },
+                                "_embedded": {
+                                    "nice.indev:resource": {
+                                        "_links": {
+                                            "self": [
+                                                {}
+                                            ]
+                                        },
+                                        "_embedded": {
+                                            "nice.indev:file": {
+                                                "_links": {
+                                                    "self": [
+                                                        {
+                                                            "href": "/guidance/IND999/documents/consultation-document"
+                                                        }
+                                                    ]
+                                                },
+                                                "ETag": null,
+                                                "Id": "9f7f5122-5cb6-45bc-b158-942c806dfd38",
+                                                "MimeType": "application/vnd.openxmlformats-officedocument.wordprocessingml.document",
+                                                "FileName": "HTE19 Evidence generation plan 20250204.docx",
+                                                "Length": 76665,
+                                                "Hash": "B2E814BF7489BA7649ED5FBBD21A4DB28C732CEC",
+                                                "Name": "default",
+                                                "Reference": "IND999",
+                                                "ResourceTitleId": "consultation-document",
+                                                "ConsultationDocumentId": 0
+                                            }
+                                        },
+                                        "ETag": null,
+                                        "Title": "Draft consultation document (downloadable version)",
+                                        "Level": 1,
+                                        "PublishedDate": "2025-08-19T13:04:00",
+                                        "MajorChangeDate": null,
+                                        "ExternalUrl": null,
+                                        "ShowInDocList": true,
+                                        "TextOnly": false,
+                                        "ConsultationId": 0,
+                                        "ConsultationDocumentId": 0,
+                                        "IsCurrentViewableConsultationMarkup": false,
+                                        "ConvertedDocument": false,
+                                        "SupportsComments": false
+                                    }
+                                },
+                                "ETag": null,
+                                "HasResources": true
+                            }
+                        },
+                        "ETag": null,
+                        "Title": "Statement",
+                        "PanelType": "History",
+                        "LegacyPanel": false,
+                        "OriginalReference": null,
+                        "UpdateReference": null,
+                        "ShowPanel": true
+                    },
+                    {
+                        "_links": {
+                            "self": [
+                                {}
+                            ]
+                        },
+                        "_embedded": {
+                            "nice.indev:resource-list": {
+                                "_links": {
+                                    "self": [
+                                        {}
+                                    ]
+                                },
+                                "_embedded": {
+                                    "nice.indev:resource": [
+                                        {
+                                            "_links": {
+                                                "self": [
+                                                    {}
+                                                ]
+                                            },
+                                            "ETag": null,
+                                            "Title": "Committee meeting",
+                                            "Level": 3,
+                                            "PublishedDate": null,
+                                            "MajorChangeDate": null,
+                                            "ExternalUrl": null,
+                                            "ShowInDocList": true,
+                                            "TextOnly": true,
+                                            "ConsultationId": 0,
+                                            "ConsultationDocumentId": 0,
+                                            "IsCurrentViewableConsultationMarkup": false,
+                                            "ConvertedDocument": false,
+                                            "SupportsComments": false
+                                        },
+                                        {
+                                            "_links": {
+                                                "self": [
+                                                    {}
+                                                ]
+                                            },
+                                            "_embedded": {
+                                                "nice.indev:file": {
+                                                    "_links": {
+                                                        "self": [
+                                                            {
+                                                                "href": "/guidance/IND999/documents/agenda"
+                                                            }
+                                                        ]
+                                                    },
+                                                    "ETag": null,
+                                                    "Id": "b8b7d6a7-e892-43cf-aec2-3cd5a5d8bad2",
+                                                    "MimeType": "application/vnd.openxmlformats-officedocument.wordprocessingml.document",
+                                                    "FileName": "HTE19 Evidence generation plan 20250204.docx",
+                                                    "Length": 76665,
+                                                    "Hash": "B2E814BF7489BA7649ED5FBBD21A4DB28C732CEC",
+                                                    "Name": "default",
+                                                    "Reference": "IND999",
+                                                    "ResourceTitleId": "agenda",
+                                                    "ConsultationDocumentId": 0
+                                                }
+                                            },
+                                            "ETag": null,
+                                            "Title": "Agenda",
+                                            "Level": 4,
+                                            "PublishedDate": "2025-08-19T13:04:00",
+                                            "MajorChangeDate": null,
+                                            "ExternalUrl": null,
+                                            "ShowInDocList": true,
+                                            "TextOnly": false,
+                                            "ConsultationId": 0,
+                                            "ConsultationDocumentId": 0,
+                                            "IsCurrentViewableConsultationMarkup": false,
+                                            "ConvertedDocument": false,
+                                            "SupportsComments": false
+                                        }
+                                    ]
+                                },
+                                "ETag": null,
+                                "HasResources": true
+                            }
+                        },
+                        "ETag": null,
+                        "Title": "Committee meetings",
+                        "PanelType": "History",
+                        "LegacyPanel": false,
+                        "OriginalReference": null,
+                        "UpdateReference": null,
+                        "ShowPanel": true
+                    },
+                    {
+                        "_links": {
+                            "self": [
+                                {}
+                            ]
+                        },
+                        "_embedded": {
+                            "nice.indev:resource-list": {
+                                "_links": {
+                                    "self": [
+                                        {}
+                                    ]
+                                },
+                                "_embedded": {
+                                    "nice.indev:resource": [
+                                        {
+                                            "_links": {
+                                                "self": [
+                                                    {}
+                                                ]
+                                            },
+                                            "_embedded": {
+                                                "nice.indev:converted-document": {
+                                                    "_links": {
+                                                        "self": [
+                                                            {
+                                                                "href": "/guidance/IND999/documents/html-conversion/html"
+                                                            }
+                                                        ]
+                                                    },
+                                                    "ETag": null,
+                                                    "Reference": "IND999",
+                                                    "Title": "Html conversion document",
+                                                    "ResourceTitleId": "html-conversion",
+                                                    "ProjectType": "IND",
+                                                    "ProductTypeName": "NICE indicator"
+                                                }
+                                            },
+                                            "ETag": null,
+                                            "Title": "Html conversion document",
+                                            "Level": 1,
+                                            "PublishedDate": "2025-08-19T13:04:00",
+                                            "MajorChangeDate": null,
+                                            "ExternalUrl": null,
+                                            "ShowInDocList": true,
+                                            "TextOnly": false,
+                                            "ConsultationId": 0,
+                                            "ConsultationDocumentId": 0,
+                                            "IsCurrentViewableConsultationMarkup": false,
+                                            "ConvertedDocument": true,
+                                            "SupportsComments": false
+                                        },
+                                        {
+                                            "_links": {
+                                                "self": [
+                                                    {}
+                                                ]
+                                            },
+                                            "_embedded": {
+                                                "nice.indev:generated-pdf": {
+                                                    "_links": {
+                                                        "self": [
+                                                            {
+                                                                "href": "/guidance/IND999/documents/html-to-pdf"
+                                                            }
+                                                        ]
+                                                    },
+                                                    "ETag": null,
+                                                    "Id": "5989968f-05b9-4286-b80c-600332757923",
+                                                    "MimeType": "application/pdf",
+                                                    "FileName": "Html conversion document.pdf",
+                                                    "Length": 121119,
+                                                    "Hash": "EB49AF137B3B8D471964B8D1AA4C36D4E4A4E059",
+                                                    "Name": null,
+                                                    "Reference": "IND999",
+                                                    "ResourceTitleId": "html-to-pdf",
+                                                    "ConsultationDocumentId": 0
+                                                }
+                                            },
+                                            "ETag": null,
+                                            "Title": "Html conversion document (pdf)",
+                                            "Level": 1,
+                                            "PublishedDate": "2025-08-19T13:04:00",
+                                            "MajorChangeDate": null,
+                                            "ExternalUrl": null,
+                                            "ShowInDocList": true,
+                                            "TextOnly": false,
+                                            "ConsultationId": 0,
+                                            "ConsultationDocumentId": 0,
+                                            "IsCurrentViewableConsultationMarkup": false,
+                                            "ConvertedDocument": false,
+                                            "SupportsComments": false
+                                        }
+                                    ]
+                                },
+                                "ETag": null,
+                                "HasResources": true
+                            }
+                        },
+                        "ETag": null,
+                        "Title": "Expected publication",
+                        "PanelType": "Evidence",
+                        "LegacyPanel": false,
+                        "OriginalReference": null,
+                        "UpdateReference": null,
+                        "ShowPanel": true
+                    }
+                ]
+            },
+            "ETag": null
+        }
+    },
+    "ETag": "01000000-0000-019D-0000-00000000000F",
+    "Summary": null,
+    "Description": null,
+    "ReferralDate": null,
+    "SuspendDiscontinuedReason": null,
+    "SuspendDiscontinuedUrl": null,
+    "SuspendDiscontinuedUrlText": null,
+    "LegacyModel": false,
+    "ProductReference": null,
+    "EvidenceAssessmentGroup": null,
+    "Alert": null,
+    "Content": null,
+    "Reference": "IND999",
+    "ProjectType": "IND",
+    "TechnologyType": null,
+    "ProductTypeName": "NICE indicator",
+    "Process": "IND",
+    "Title": "INDICATOR HISTORY TAB ISSUE",
+    "Status": "Complete",
+    "ProjectGroup": "Other",
+    "PublishedDate": "2025-08-19T00:00:00",
+    "LastModifiedDate": "2025-08-19T13:04:57.7654998",
+    "FirstGoLiveDate": "2025-08-19T13:04:57.7654998",
+    "CreatedDate": "2025-08-19T12:54:25.8766547",
+    "DevelopedAs": null,
+    "RelevantTo": null,
+    "IdNumber": null,
+    "AreasOfInterestList": [],
+    "TopicSelectionDecision": "AwaitingDecision",
+    "TopicSelectionReason": null,
+    "PrioritisationRouting": null,
+    "TopicSelectionDecisionDate": "2025-08-19T12:54:25.8766547",
+    "TopicSelectionFurtherInfo": null,
+    "IndicatorSubTypes": [],
+    "TaxonomySubjectList": []
+}

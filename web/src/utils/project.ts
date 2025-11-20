@@ -1,11 +1,13 @@
 import { ParsedUrlQuery } from "querystring";
 
 import { type Redirect } from "next";
+import striptags from "striptags";
 
 import {
 	getProjectDetail,
 	IndevConsultationPanel,
 	IndevPanel,
+	niceIndevConvertedDocumentSection,
 	ProjectDetail,
 	ProjectStatus,
 } from "@/feeds/inDev/inDev";
@@ -31,6 +33,26 @@ export type ValidateRouteParamsResult =
 			panels: IndevPanel[];
 			hasPanels: boolean;
 	  };
+
+export const generateInPageNavArray = (
+	htmlString: string,
+	regex: RegExp
+): niceIndevConvertedDocumentSection[] => {
+	const resourceFileSectionsHeadings = htmlString.match(regex);
+
+	if (!resourceFileSectionsHeadings) return [];
+
+	const resourceFileSectionsArray = resourceFileSectionsHeadings.map(
+		(section) => {
+			const sectionAnchorIndex = section.indexOf("<a");
+			const title = striptags(section, ["sup", "sub"]).trim();
+			const slug = `${section.slice(sectionAnchorIndex).split('"')[1]}`;
+			return { slug, title };
+		}
+	);
+
+	return resourceFileSectionsArray;
+};
 
 export const validateRouteParams = async ({
 	params,

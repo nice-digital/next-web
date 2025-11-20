@@ -1,5 +1,1501 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
+exports[`/indicators/[slug]/history/[htmlPath]/index.page HistoryHTMLPage ConvertedDocument should match snapshot for converted document 1`] = `
+<body>
+  <div>
+    <nav
+      aria-label="Breadcrumbs"
+      data-component="breadcrumbs"
+      role="navigation"
+    >
+      <ol
+        class="breadcrumbs"
+      >
+        <li
+          class="breadcrumbs__crumb"
+        >
+          <a
+            href="/"
+          >
+            Home
+          </a>
+        </li>
+        <li
+          class="breadcrumbs__crumb"
+        >
+          <a
+            href="/standards-and-indicators/indicators"
+          >
+            Indicators
+          </a>
+        </li>
+        <li
+          class="breadcrumbs__crumb"
+        >
+          <a
+            href="/indicators/ind999-indicator-history-tab-html-conversion"
+          >
+            IND999
+          </a>
+        </li>
+        <li
+          class="breadcrumbs__crumb"
+        >
+          <a
+            href="/indicators/ind999-indicator-history-tab-html-conversion/history"
+          >
+            History
+          </a>
+        </li>
+        <li
+          class="breadcrumbs__crumb"
+        >
+          <span>
+            Html conversion document
+          </span>
+        </li>
+      </ol>
+    </nav>
+    <script
+      type="application/ld+json"
+    >
+      {
+  "@context": "http://schema.org",
+  "@type": "BreadcrumbList",
+  "itemListElement": [
+    {
+      "@type": "ListItem",
+      "position": 1,
+      "item": {
+        "@id": "/",
+        "name": "Home"
+      }
+    },
+    {
+      "@type": "ListItem",
+      "position": 2,
+      "item": {
+        "@id": "/standards-and-indicators/indicators",
+        "name": "Indicators"
+      }
+    },
+    {
+      "@type": "ListItem",
+      "position": 3,
+      "item": {
+        "@id": "/indicators/ind999-indicator-history-tab-html-conversion",
+        "name": "IND999"
+      }
+    },
+    {
+      "@type": "ListItem",
+      "position": 4,
+      "item": {
+        "@id": "/indicators/ind999-indicator-history-tab-html-conversion/history",
+        "name": "History"
+      }
+    },
+    {
+      "@type": "ListItem",
+      "position": 5,
+      "item": {
+        "name": "Html conversion document"
+      }
+    }
+  ]
+}
+    </script>
+    <div
+      class="page-header "
+      data-component="page-header"
+      id="content-start"
+    >
+      <h1
+        class="page-header__heading page-header__heading--alt"
+      >
+        INDICATOR HISTORY TAB HTML CONVERSION
+      </h1>
+      <ul
+        class="page-header__metadata"
+      >
+        <li>
+          NICE indicator
+        </li>
+        <li>
+          IND999
+        </li>
+        <li>
+          Published:
+          <time
+            datetime="2025-08-19"
+          >
+             
+            19 August 2025
+          </time>
+        </li>
+      </ul>
+    </div>
+    <nav
+      class="horizontal-nav"
+    >
+      <ul
+        class="horizontal-nav__list"
+      >
+        <li
+          class="horizontal-nav__item"
+          data-component="horizontal-nav"
+        >
+          <a
+            aria-current="false"
+            class="horizontal-nav__link"
+            href="/indicators/ind999-indicator-history-tab-html-conversion"
+          >
+            Indicator
+          </a>
+        </li>
+        <li
+          class="horizontal-nav__item"
+          data-component="horizontal-nav"
+        >
+          <a
+            aria-current="false"
+            class="horizontal-nav__link"
+            href="/indicators/ind999-indicator-history-tab-html-conversion/resources"
+          >
+            Tools and resources
+          </a>
+        </li>
+        <li
+          class="horizontal-nav__item"
+          data-component="horizontal-nav"
+        >
+          <a
+            aria-current="false"
+            class="horizontal-nav__link"
+            href="/indicators/ind999-indicator-history-tab-html-conversion/evidence"
+          >
+            Evidence
+          </a>
+        </li>
+        <li
+          class="horizontal-nav__item"
+          data-component="horizontal-nav"
+        >
+          <a
+            aria-current="true"
+            class="horizontal-nav__link"
+            href="/indicators/ind999-indicator-history-tab-html-conversion/history"
+          >
+            History
+          </a>
+        </li>
+      </ul>
+    </nav>
+    <div
+      class="grid grid--loose"
+    >
+      <section
+        aria-label="Chapters"
+        data-component="grid-item"
+        data-g="12 md:4 lg:3"
+      >
+        <a
+          aria-label="Download PDF"
+          class="btn btn--cta download"
+          data-component="button--cta"
+          href="/indicators/ind999-indicator-history-tab-html-conversion/history/downloads/IND999-html-to-pdf.pdf"
+          target="_blank"
+        >
+          Download (PDF)
+        </a>
+        <nav
+          aria-label="chapters"
+          class="stacked-nav"
+          data-component="stacked-nav"
+        >
+          <ul
+            class="stacked-nav__list"
+          >
+            <li
+              class="stacked-nav__list-item"
+            >
+              <a
+                aria-current="true"
+                href="/indicators/ind999-indicator-history-tab-html-conversion/history/html-conversion"
+              >
+                <span
+                  class="stacked-nav__content-wrapper"
+                >
+                  1 Recommendations
+                </span>
+              </a>
+            </li>
+            <li
+              class="stacked-nav__list-item"
+            >
+              <a
+                aria-current="false"
+                href="/indicators/ind999-indicator-history-tab-html-conversion/history/html-conversion/chapter/the-technologies"
+              >
+                <span
+                  class="stacked-nav__content-wrapper"
+                >
+                  2 The technologies
+                </span>
+              </a>
+            </li>
+            <li
+              class="stacked-nav__list-item"
+            >
+              <a
+                aria-current="false"
+                href="/indicators/ind999-indicator-history-tab-html-conversion/history/html-conversion/chapter/committee-discussion"
+              >
+                <span
+                  class="stacked-nav__content-wrapper"
+                >
+                  3 Committee discussion
+                </span>
+              </a>
+            </li>
+            <li
+              class="stacked-nav__list-item"
+            >
+              <a
+                aria-current="false"
+                href="/indicators/ind999-indicator-history-tab-html-conversion/history/html-conversion/chapter/committee-members-and-nice-project-team"
+              >
+                <span
+                  class="stacked-nav__content-wrapper"
+                >
+                  4 Committee members and NICE project team
+                </span>
+              </a>
+            </li>
+            <li
+              class="stacked-nav__list-item"
+            >
+              <a
+                aria-current="false"
+                href="/indicators/ind999-indicator-history-tab-html-conversion/history/html-conversion/chapter/update-information"
+              >
+                <span
+                  class="stacked-nav__content-wrapper"
+                >
+                  Update information
+                </span>
+              </a>
+            </li>
+          </ul>
+        </nav>
+      </section>
+      <section
+        data-component="grid-item"
+        data-g="12 md:8 lg:9"
+      >
+        <h2
+          class="mt--0"
+        >
+          Html conversion document
+        </h2>
+        <div
+          class="hide-print"
+        >
+          <nav
+            aria-labelledby="on-this-page"
+            class="in-page-nav in-page-nav--no-scroll"
+          >
+            <h2
+              class="in-page-nav__title"
+              id="on-this-page"
+            >
+              On this page
+            </h2>
+            <ol
+              aria-label="Jump links to sections on this page"
+              class="in-page-nav__list"
+            >
+              <li
+                class="in-page-nav__item"
+              >
+                <a
+                  href="#0-1-can-be-used-in-the-nhs-with-evidence-generation"
+                  id="inpagenav-0-1-can-be-used-in-the-nhs-with-evidence-generation"
+                >
+                  Can be used in the NHS with evidence generation
+                </a>
+              </li>
+              <li
+                class="in-page-nav__item"
+              >
+                <a
+                  href="#0-1-when-technologies-prescribe-and-monitor-weight-management-medicine"
+                  id="inpagenav-0-1-when-technologies-prescribe-and-monitor-weight-management-medicine"
+                >
+                  When technologies prescribe and monitor weight-management medicine
+                </a>
+              </li>
+              <li
+                class="in-page-nav__item"
+              >
+                <a
+                  href="#0-1-when-technologies-are-not-used-to-prescribe-and-monitor-weight-management-medicine"
+                  id="inpagenav-0-1-when-technologies-are-not-used-to-prescribe-and-monitor-weight-management-medicine"
+                >
+                  When technologies are not used to prescribe and monitor weight-management medicine
+                </a>
+              </li>
+              <li
+                class="in-page-nav__item"
+              >
+                <a
+                  href="#0-1-can-only-be-used-in-research"
+                  id="inpagenav-0-1-can-only-be-used-in-research"
+                >
+                  Can only be used in research
+                </a>
+              </li>
+              <li
+                class="in-page-nav__item"
+              >
+                <a
+                  href="#0-1-evidence-generation-and-research"
+                  id="inpagenav-0-1-evidence-generation-and-research"
+                >
+                  Evidence generation and research
+                </a>
+              </li>
+            </ol>
+          </nav>
+        </div>
+        <div
+          class="chapterContent"
+        >
+          <div
+            class="chapter"
+            id="0-1-1-recommendations"
+            title="1 Recommendations"
+            xmlns="http://www.w3.org/1999/xhtml"
+          >
+            
+  
+            <h2
+              class="title"
+            >
+              
+    
+              <a
+                class="annotator-chapter"
+                data-heading-type="chapter"
+                id="recommendations"
+                style="position:relative"
+                xmlns=""
+              >
+                1 Recommendations
+                <span
+                  class="annotator-adder"
+                />
+              </a>
+              
+  
+            </h2>
+            
+  
+            <div
+              class="section"
+              id="0-1-can-be-used-in-the-nhs-with-evidence-generation"
+              title="Can be used in the NHS with evidence generation"
+            >
+              
+    
+              <h3
+                class="title"
+              >
+                
+      
+                <a
+                  class="annotator-chapter"
+                  data-heading-type="section"
+                  id="can-be-used-in-the-nhs-with-evidence-generation"
+                  style="position:relative"
+                  xmlns=""
+                >
+                  Can be used in the NHS with evidence generation
+                  <span
+                    class="annotator-adder"
+                  />
+                </a>
+                
+    
+              </h3>
+              
+    
+              <div
+                class="section"
+                id="0-1-when-technologies-prescribe-and-monitor-weight-management-medicine"
+                title="When technologies prescribe and monitor weight-management medicine"
+              >
+                
+      
+                <h4
+                  class="title"
+                >
+                  
+        
+                  <a
+                    class="annotator-chapter"
+                    data-heading-type="section"
+                    id="when-technologies-prescribe-and-monitor-weight-management-medicine"
+                    style="position:relative"
+                    xmlns=""
+                  >
+                    When technologies prescribe and monitor weight-management medicine
+                    <span
+                      class="annotator-adder"
+                    />
+                  </a>
+                  
+      
+                </h4>
+                
+      
+                <article
+                  class="numbered-paragraph annotator-numbered-paragraph recommendation"
+                  data-heading-type="numbered-paragraph"
+                  id="0-1-1.1"
+                  title="Comment on numbered paragraph"
+                >
+                  
+        
+                  <h5
+                    class="recommendation__number"
+                  >
+                    1.1
+                  </h5>
+                  
+        
+                  <div
+                    class="recommendation__body"
+                  >
+                    
+          
+                    <p>
+                      
+            
+                      <a
+                        id="_Hlk157779499"
+                      />
+                      Seven digital weight-management technologies can be used in the NHS, while more evidence is generated. They can be used to prescribe and monitor weight-management medicine and deliver multidisciplinary weight-management services for managing overweight and obesity in adults. The technologies are:
+                    </p>
+                    
+          
+                    <ul
+                      class="itemizedlist indented"
+                    >
+                      
+            
+                      <li
+                        class="listitem"
+                      >
+                        
+              
+                        <p>
+                          CheqUp
+                        </p>
+                        
+            
+                      </li>
+                      
+            
+                      <li
+                        class="listitem"
+                      >
+                        
+              
+                        <p>
+                          Gro Health W8Buddy
+                        </p>
+                        
+            
+                      </li>
+                      
+            
+                      <li
+                        class="listitem"
+                      >
+                        
+              
+                        <p>
+                          Juniper
+                        </p>
+                        
+            
+                      </li>
+                      
+            
+                      <li
+                        class="listitem"
+                      >
+                        
+              
+                        <p>
+                          Liva
+                        </p>
+                        
+            
+                      </li>
+                      
+            
+                      <li
+                        class="listitem"
+                      >
+                        
+              
+                        <p>
+                          Oviva
+                        </p>
+                        
+            
+                      </li>
+                      
+            
+                      <li
+                        class="listitem"
+                      >
+                        
+              
+                        <p>
+                          Roczen
+                        </p>
+                        
+            
+                      </li>
+                      
+            
+                      <li
+                        class="listitem"
+                      >
+                        
+              
+                        <p>
+                          Second Nature.
+                        </p>
+                        
+            
+                      </li>
+                      
+          
+                    </ul>
+                    
+        
+                  </div>
+                  
+      
+                </article>
+                
+    
+              </div>
+              
+    
+              <div
+                class="section"
+                id="0-1-when-technologies-are-not-used-to-prescribe-and-monitor-weight-management-medicine"
+                title="When technologies are not used to prescribe and monitor weight-management medicine"
+              >
+                
+      
+                <h4
+                  class="title"
+                >
+                  
+        
+                  <a
+                    class="annotator-chapter"
+                    data-heading-type="section"
+                    id="when-technologies-are-not-used-to-prescribe-and-monitor-weight-management-medicine"
+                    style="position:relative"
+                    xmlns=""
+                  >
+                    When technologies are not used to prescribe and monitor weight-management medicine
+                    <span
+                      class="annotator-adder"
+                    />
+                  </a>
+                  
+      
+                </h4>
+                
+      
+                <article
+                  class="numbered-paragraph annotator-numbered-paragraph recommendation"
+                  data-heading-type="numbered-paragraph"
+                  id="0-1-1.2"
+                  title="Comment on numbered paragraph"
+                >
+                  
+        
+                  <h5
+                    class="recommendation__number"
+                  >
+                    1.2
+                  </h5>
+                  
+        
+                  <div
+                    class="recommendation__body"
+                  >
+                    
+          
+                    <p>
+                      Nine digital weight-management technologies can be used in the NHS, while more evidence is generated. They can be used to deliver multidisciplinary weight-management services for managing overweight and obesity in adults, when they are not used to prescribe and monitor weight-management medicine. The technologies are:
+                    </p>
+                    
+          
+                    <ul
+                      class="itemizedlist indented"
+                    >
+                      
+            
+                      <li
+                        class="listitem"
+                      >
+                        
+              
+                        <p>
+                          
+                
+                          <a
+                            id="_Hlk140485545"
+                          />
+                          CheqUp
+                        </p>
+                        
+            
+                      </li>
+                      
+            
+                      <li
+                        class="listitem"
+                      >
+                        
+              
+                        <p>
+                          Counterweight
+                        </p>
+                        
+            
+                      </li>
+                      
+            
+                      <li
+                        class="listitem"
+                      >
+                        
+              
+                        <p>
+                          Gro Health W8Buddy
+                        </p>
+                        
+            
+                      </li>
+                      
+            
+                      <li
+                        class="listitem"
+                      >
+                        
+              
+                        <p>
+                          Juniper
+                        </p>
+                        
+            
+                      </li>
+                      
+            
+                      <li
+                        class="listitem"
+                      >
+                        
+              
+                        <p>
+                          Liva
+                        </p>
+                        
+            
+                      </li>
+                      
+            
+                      <li
+                        class="listitem"
+                      >
+                        
+              
+                        <p>
+                          Oviva
+                        </p>
+                        
+            
+                      </li>
+                      
+            
+                      <li
+                        class="listitem"
+                      >
+                        
+              
+                        <p>
+                          Roczen
+                        </p>
+                        
+            
+                      </li>
+                      
+            
+                      <li
+                        class="listitem"
+                      >
+                        
+              
+                        <p>
+                          Second Nature
+                        </p>
+                        
+            
+                      </li>
+                      
+            
+                      <li
+                        class="listitem"
+                      >
+                        
+              
+                        <p>
+                          Weight Loss Clinic.
+                          <br />
+                          <!--[I] - Information: Soft return used in paragraph-->
+                          <br />
+                          These technologies provide multidisciplinary programmes to increase physical activity levels and improve eating behaviour and diet.
+                        </p>
+                        
+            
+                      </li>
+                      
+          
+                    </ul>
+                    
+        
+                  </div>
+                  
+      
+                </article>
+                
+      
+                <article
+                  class="numbered-paragraph annotator-numbered-paragraph recommendation"
+                  data-heading-type="numbered-paragraph"
+                  id="0-1-1.3"
+                  title="Comment on numbered paragraph"
+                >
+                  
+        
+                  <h5
+                    class="recommendation__number"
+                  >
+                    1.3
+                  </h5>
+                  
+        
+                  <div
+                    class="recommendation__body"
+                  >
+                    
+          
+                    <p>
+                      The technologies in sections 1.1 and 1.2 can only be used once they have appropriate regulatory approval, including Digital Technology Assessment Criteria (DTAC) approval. The CE mark regulatory classification for the 12 digital weight-management technologies varies. The classification can depend on the levels of monitoring, decision making attributed to the technology rather than the healthcare professional using the technology, and the direct impact of the technology on clinical outcomes. The regulatory requirements for services involving these technologies, such as CQC approval, should also be considered before use. 
+                    </p>
+                    
+        
+                  </div>
+                  
+      
+                </article>
+                
+      
+                <article
+                  class="numbered-paragraph annotator-numbered-paragraph recommendation"
+                  data-heading-type="numbered-paragraph"
+                  id="0-1-1.4"
+                  title="Comment on numbered paragraph"
+                >
+                  
+        
+                  <h5
+                    class="recommendation__number"
+                  >
+                    1.4
+                  </h5>
+                  
+        
+                  <div
+                    class="recommendation__body"
+                  >
+                    
+          
+                    <p>
+                      The company must confirm that agreements are in place to generate the evidence (as outlined in NICE's evidence generation plan) and contact NICE annually to confirm that evidence is being generated and analysed as planned. NICE may withdraw the guidance if these conditions are not met.
+                    </p>
+                    
+        
+                  </div>
+                  
+      
+                </article>
+                
+      
+                <article
+                  class="numbered-paragraph annotator-numbered-paragraph recommendation"
+                  data-heading-type="numbered-paragraph"
+                  id="0-1-1.5"
+                  title="Comment on numbered paragraph"
+                >
+                  
+        
+                  <h5
+                    class="recommendation__number"
+                  >
+                    1.5
+                  </h5>
+                  
+        
+                  <div
+                    class="recommendation__body"
+                  >
+                    
+          
+                    <p>
+                      At the end of the evidence generation period (4 years), the company should submit the evidence to NICE in a form that can be used for decision making. NICE will review the evidence and assess if the technologies can be routinely adopted in the NHS.
+                    </p>
+                    
+        
+                  </div>
+                  
+      
+                </article>
+                
+    
+              </div>
+              
+  
+            </div>
+            
+  
+            <div
+              class="section"
+              id="0-1-can-only-be-used-in-research"
+              title="Can only be used in research"
+            >
+              
+    
+              <h3
+                class="title"
+              >
+                
+      
+                <a
+                  class="annotator-chapter"
+                  data-heading-type="section"
+                  id="can-only-be-used-in-research"
+                  style="position:relative"
+                  xmlns=""
+                >
+                  Can only be used in research
+                  <span
+                    class="annotator-adder"
+                  />
+                </a>
+                
+    
+              </h3>
+              
+    
+              <article
+                class="numbered-paragraph annotator-numbered-paragraph recommendation"
+                data-heading-type="numbered-paragraph"
+                id="0-1-1.6"
+                title="Comment on numbered paragraph"
+              >
+                
+      
+                <h4
+                  class="recommendation__number"
+                >
+                  1.6
+                </h4>
+                
+      
+                <div
+                  class="recommendation__body"
+                >
+                  
+        
+                  <p>
+                    More research is needed on using the following digital weight-management technologies:
+                  </p>
+                  
+        
+                  <ul
+                    class="itemizedlist indented"
+                  >
+                    
+          
+                    <li
+                      class="listitem"
+                    >
+                      
+            
+                      <p>
+                        Gloji
+                      </p>
+                      
+          
+                    </li>
+                    
+          
+                    <li
+                      class="listitem"
+                    >
+                      
+            
+                      <p>
+                        Habitual
+                      </p>
+                      
+          
+                    </li>
+                    
+          
+                    <li
+                      class="listitem"
+                    >
+                      
+            
+                      <p>
+                        Wellbeing Way.
+                      </p>
+                      
+          
+                    </li>
+                    
+        
+                  </ul>
+                  
+      
+                </div>
+                
+    
+              </article>
+              
+    
+              <article
+                class="numbered-paragraph annotator-numbered-paragraph recommendation"
+                data-heading-type="numbered-paragraph"
+                id="0-1-1.7"
+                title="Comment on numbered paragraph"
+              >
+                
+      
+                <h4
+                  class="recommendation__number"
+                >
+                  1.7
+                </h4>
+                
+      
+                <div
+                  class="recommendation__body"
+                >
+                  
+        
+                  <p>
+                    Access to the technologies in section 1.6 should be through company, research, or non-core NHS funding, and clinical and financial risks should be appropriately managed.
+                  </p>
+                  
+      
+                </div>
+                
+    
+              </article>
+              
+  
+            </div>
+            
+  
+            <div
+              class="section"
+              id="0-1-evidence-generation-and-research"
+              title="Evidence generation and research"
+            >
+              
+    
+              <h3
+                class="title"
+              >
+                
+      
+                <a
+                  class="annotator-chapter"
+                  data-heading-type="section"
+                  id="evidence-generation-and-research"
+                  style="position:relative"
+                  xmlns=""
+                >
+                  Evidence generation and research
+                  <span
+                    class="annotator-adder"
+                  />
+                </a>
+                
+    
+              </h3>
+              
+    
+              <article
+                class="numbered-paragraph annotator-numbered-paragraph recommendation"
+                data-heading-type="numbered-paragraph"
+                id="0-1-1.8"
+                title="Comment on numbered paragraph"
+              >
+                
+      
+                <h4
+                  class="recommendation__number"
+                >
+                  1.8
+                </h4>
+                
+      
+                <div
+                  class="recommendation__body"
+                >
+                  
+        
+                  <p>
+                    More evidence generation and research are needed on:
+                  </p>
+                  
+        
+                  <ul
+                    class="itemizedlist indented"
+                  >
+                    
+          
+                    <li
+                      class="listitem"
+                    >
+                      
+            
+                      <p>
+                        change in weight
+                      </p>
+                      
+          
+                    </li>
+                    
+          
+                    <li
+                      class="listitem"
+                    >
+                      
+            
+                      <p>
+                        adherence and completion rates, including reasons for stopping a programme
+                      </p>
+                      
+          
+                    </li>
+                    
+          
+                    <li
+                      class="listitem"
+                    >
+                      
+            
+                      <p>
+                        how the technologies monitor and report adverse events
+                      </p>
+                      
+          
+                    </li>
+                    
+          
+                    <li
+                      class="listitem"
+                    >
+                      
+            
+                      <p>
+                        health-related quality-of-life and psychological outcomes
+                      </p>
+                      
+          
+                    </li>
+                    
+          
+                    <li
+                      class="listitem"
+                    >
+                      
+            
+                      <p>
+                        impact on resource use, including the number and type of healthcare appointments, cost of the medicine and NHS staff time needed to support using the digital technologies.
+                        <br />
+                        <!--[I] - Information: Soft return used in paragraph-->
+                        <br />
+                        The 
+                        <a
+                          class="link"
+                          href="https://www.nice.org.uk/guidance/hte14/resources/evidence-generation-plan-for-digital-technologies-for-delivering-specialist-weightmanagement-services-to-manage-weightmanagement-medicine-13242140461/chapter/1-Purpose-of-this-document"
+                          target="_top"
+                        >
+                          evidence generation plan
+                        </a>
+                         gives further information on the prioritised evidence gaps and outcomes, ongoing studies and potential real-world data sources. It includes how the evidence gaps could be resolved through real-world evidence studies. 
+                      </p>
+                      
+          
+                    </li>
+                    
+        
+                  </ul>
+                  
+      
+                </div>
+                
+    
+              </article>
+              
+    
+              <div
+                class="panel panel--primary"
+              >
+                
+      
+                <p>
+                  
+        
+                  <a
+                    id="_Hlk41463321"
+                  />
+                  
+        
+                  <strong>
+                    Potential benefits of use in the NHS with evidence generation
+                  </strong>
+                  
+      
+                </p>
+                
+      
+                <div
+                  class="itemizedlist"
+                >
+                  
+        
+                  <ul
+                    class="itemizedlist"
+                  >
+                    
+          
+                    <li
+                      class="listitem"
+                    >
+                      
+            
+                      <p>
+                        
+              
+                        <strong>
+                          Unmet need: 
+                        </strong>
+                        Digital weight-management technologies are an option for delivering multidisciplinary weight-management services. Some provide weight-management programmes that prescribe and monitor weight-management medicine. They can be used for managing overweight and obesity in adults who are eligible for multidisciplinary weight-management services after referral and clinical assessment. They will particularly benefit people who do not have access to multidisciplinary weight-management services in their area or who are on a waiting list, so are not currently supported by a multidisciplinary weight-management service. Weight-management medicine can only be accessed alongside a multidisciplinary weight-management service, such as specialist weight-management services. So, the technologies may also improve access to medicine by providing these services.
+                      </p>
+                      
+          
+                    </li>
+                    
+          
+                    <li
+                      class="listitem"
+                    >
+                      
+            
+                      <p>
+                        
+              
+                        <strong>
+                          Clinical benefit:
+                        </strong>
+                         Early evidence suggests that weight loss with the technologies is similar at 2 years, compared with in-person multidisciplinary weight-management services.
+                      </p>
+                      
+          
+                    </li>
+                    
+          
+                    <li
+                      class="listitem"
+                    >
+                      
+            
+                      <p>
+                        
+              
+                        <strong>
+                          Resources
+                        </strong>
+                        : The technologies could reduce the demand for in-person multidisciplinary weight-management services. This may release resources and increase access or reduce waiting times. 
+                      </p>
+                      
+          
+                    </li>
+                    
+          
+                    <li
+                      class="listitem"
+                    >
+                      
+            
+                      <p>
+                        
+              
+                        <strong>
+                          Access: 
+                        </strong>
+                        The technologies may provide more flexible access to services for people who are unable to travel or who prefer to access services remotely.
+                      </p>
+                      
+          
+                    </li>
+                    
+        
+                  </ul>
+                  
+      
+                </div>
+                
+      
+                <p>
+                  
+        
+                  <strong>
+                    Managing the risk of use in the NHS with evidence generation
+                  </strong>
+                  
+      
+                </p>
+                
+      
+                <div
+                  class="itemizedlist"
+                >
+                  
+        
+                  <ul
+                    class="itemizedlist"
+                  >
+                    
+          
+                    <li
+                      class="listitem"
+                    >
+                      
+            
+                      <p>
+                        
+              
+                        <a
+                          id="_Hlk146197660"
+                        />
+                        
+              
+                        <strong>
+                          Prescribing:
+                        </strong>
+                         Weight-management medicine that is prescribed through the technologies should only be used in line with 
+                        <a
+                          class="link"
+                          href="https://www.nice.org.uk/guidance/conditions-and-diseases/diabetes-and-other-endocrinal--nutritional-and-metabolic-conditions/obesity/products?GuidanceProgramme=TA&Status=Published"
+                          target="_top"
+                        >
+                          NICE's technology appraisal guidance for overweight and obesity
+                        </a>
+                         and the 
+                        <a
+                          class="link"
+                          href="https://bnf.nice.org.uk/treatment-summaries/obesity/#related-drugs"
+                          target="_top"
+                        >
+                          British National Formulary (BNF)'s prescribing information for drugs for obesity
+                        </a>
+                        . Prescribing must be done by a suitably qualified healthcare professional. When prescribing weight-management medicine remotely through a technology, healthcare professionals should follow the 
+                        <a
+                          class="link"
+                          href="https://www.gmc-uk.org/ethical-guidance/learning-materials/remote-prescribing-high-level-principles"
+                          target="_top"
+                        >
+                          General Medical Council's remote prescribing high level principles
+                        </a>
+                        .
+                      </p>
+                      
+          
+                    </li>
+                    
+          
+                    <li
+                      class="listitem"
+                    >
+                      
+            
+                      <p>
+                        
+              
+                        <strong>
+                          Clinical assessment: 
+                        </strong>
+                        An NHS healthcare professional with experience in obesity management should do a full clinical assessment and referral before offering access to these technologies, to make sure the technologies are suitable. Referral to these services should be in line with national and local guidelines. Some people may choose not to use a digital service and may prefer another treatment option. Everyone has the right to make informed decisions about their care.
+                      </p>
+                      
+          
+                    </li>
+                    
+          
+                    <li
+                      class="listitem"
+                    >
+                      
+            
+                      <p>
+                        
+              
+                        <strong>
+                          Resource: 
+                        </strong>
+                        There is a lack of evidence relating to the impact of implementing the technologies alongside current NHS services. Further evidence is needed.
+                      </p>
+                      
+          
+                    </li>
+                    
+          
+                    <li
+                      class="listitem"
+                    >
+                      
+            
+                      <p>
+                        
+              
+                        <strong>
+                          Multidisciplinary support: 
+                        </strong>
+                        The technologies provide support from a multidisciplinary team of qualified healthcare professionals. The team must include, or have access to, psychological support and monitoring to reduce the risk of harm, including from disordered eating.
+                      </p>
+                      
+          
+                    </li>
+                    
+          
+                    <li
+                      class="listitem"
+                    >
+                      
+            
+                      <p>
+                        
+              
+                        <strong>
+                          Equality: 
+                        </strong>
+                        Some people are less comfortable or skilled in using digital technology, or may have limited access to equipment and the internet. These people may be less able to benefit from the technologies and may need additional support or prefer a different treatment option. Some people may need additional support because of a visual, hearing or cognitive impairment, reduced manual dexterity, a learning disability or being unable to read English or understand health-related information. Autistic people may also find the technologies unsuitable or may need additional support. The technologies may not be suitable for some people, even with additional support.
+                      </p>
+                      
+          
+                    </li>
+                    
+          
+                    <li
+                      class="listitem"
+                    >
+                      
+            
+                      <p>
+                        
+              
+                        <strong>
+                          Costs:
+                        </strong>
+                         Early results from the economic modelling show that the technologies could be cost effective. This guidance will be reviewed within 4 years and the recommendations may change. Take this into account when negotiating the length of contracts and licence costs. 
+                      </p>
+                      
+          
+                    </li>
+                    
+        
+                  </ul>
+                  
+      
+                </div>
+                
+    
+              </div>
+              
+  
+            </div>
+            
+
+          </div>
+        </div>
+        <p>
+          This page was last updated on
+           
+          <time
+            datetime="2025-08-19"
+          >
+            19 August 2025
+          </time>
+        </p>
+        <hr />
+        <div
+          class="prev-next"
+        >
+          <nav
+            aria-label="Previous and next pages"
+          >
+            <a
+              class="prev-next__link"
+              href="/indicators/ind999-indicator-history-tab-html-conversion/history/html-conversion/chapter/the-technologies"
+            >
+              <span
+                class="prev-next__link-intro"
+              >
+                Next page
+              </span>
+              <span
+                class="prev-next__link-text"
+              >
+                2 The technologies
+              </span>
+            </a>
+          </nav>
+        </div>
+      </section>
+    </div>
+  </div>
+</body>
+`;
+
 exports[`/indicators/[slug]/history/[htmlPath]/index.page HistoryHTMLPage should match snapshot for main content 1`] = `
 <body>
   <div>
@@ -201,6 +1697,9 @@ exports[`/indicators/[slug]/history/[htmlPath]/index.page HistoryHTMLPage should
         </li>
       </ul>
     </nav>
+    <h2>
+      Draft scope consultation
+    </h2>
     <div>
       <p>
         You can now comment on this draft scope. The scope defines what the guideline will (and will not) cover.
@@ -534,10 +2033,6 @@ exports[`/indicators/[slug]/history/[htmlPath]/index.page HistoryHTMLPage should
 exports[`/indicators/[slug]/history/[htmlPath]/index.page getServerSideProps should return a correct props 1`] = `
 Object {
   "props": Object {
-    "hasEvidenceResources": true,
-    "hasHistory": true,
-    "hasInfoForPublicResources": true,
-    "hasToolsAndResources": true,
     "lastUpdated": "2016-07-19T08:56:00",
     "product": Object {
       "id": "NG100",
@@ -546,9 +2041,16 @@ Object {
       "publishedDate": "2018-07-11T00:00:00",
       "title": "Rheumatoid arthritis in adults: management",
     },
+    "productHorizontalNav": Object {
+      "hasEvidenceResources": true,
+      "hasHistory": true,
+      "hasInfoForPublicResources": true,
+      "hasToolsAndResources": true,
+    },
     "productPath": "/guidance/ng100",
     "resource": Object {
-      "resourceFileHTML": "<p>You can now comment on this draft scope. The scope defines what the guideline will (and will not) cover.</p>
+      "chapters": Array [],
+      "htmlBody": "<p>You can now comment on this draft scope. The scope defines what the guideline will (and will not) cover.</p>
 <p><strong>The consultation closes on </strong><strong>15 July 2016</strong> <strong>at 5pm</strong></p>
 <h3>How to comment</h3>
 <h2>1. Register your organisation</h2>
@@ -572,6 +2074,9 @@ Object {
 <h2>4. Email the form to us</h2>
 <p>Email: <a href=\\"mailto:RAupdate@nice.org.uk\\">RAupdate@nice.org.uk</a></p>
 <p><strong>Deadline:</strong><strong>15 July 2016</strong>, <strong>5pm</strong></p>",
+      "isConvertedDocument": false,
+      "pdfDownloadLink": null,
+      "sections": Array [],
       "title": "Draft scope consultation",
     },
     "resourceLinks": Array [

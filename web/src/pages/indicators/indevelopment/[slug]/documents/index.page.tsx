@@ -122,9 +122,17 @@ export const getServerSideProps: GetServerSideProps<
 					subGroups.push(currentSubGroup);
 				}
 
-				currentSubGroup.resourceLinks.push(
-					getInDevResourceLink({ resource, panel, project })
+				const convertedHtmlAlreadyInArray = currentSubGroup.resourceLinks.some(
+					(resourceLink) =>
+						resourceLink.title === resource.title.replace("(pdf)", "").trim()
 				);
+
+				// don't show converted html pdf download docs here
+				if (!convertedHtmlAlreadyInArray) {
+					currentSubGroup.resourceLinks.push(
+						getInDevResourceLink({ resource, panel, project })
+					);
+				}
 			}
 		});
 
