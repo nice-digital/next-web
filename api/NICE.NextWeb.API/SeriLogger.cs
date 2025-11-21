@@ -44,7 +44,7 @@ namespace NICE.NextWeb.API
             // Write logs to file
             if (loggingSettings.UseFile)
             {
-                serilogConfiguration.WriteTo.RollingFile(serilogFormatter,
+                serilogConfiguration.WriteTo.File(serilogFormatter,
                     loggingSettings.SerilogFilePath,
                     fileSizeLimitBytes: 5000000,
                     retainedFileCountLimit: 5,

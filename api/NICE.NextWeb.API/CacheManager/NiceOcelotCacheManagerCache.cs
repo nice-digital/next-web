@@ -51,5 +51,10 @@ namespace NICE.NextWeb.API.CacheManager
         {
             _cacheManager.ClearRegion(region);
         }
+
+        public bool TryGetValue(string key, string region, out T value)
+        {
+            return _cacheManager.TryGetOrAdd(key, region, (a, b) => default, out value);
+        }
     }
 }
