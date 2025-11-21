@@ -42,7 +42,6 @@ import { StoryblokYoutubeEmbed } from "@/components/Storyblok/StoryblokYoutubeEm
 import { publicRuntimeConfig } from "@/config";
 import { logger } from "@/logger";
 
-
 //TODO: consider a mix of static imports for common components and dynamic imports for lesser used components
 const commonComponents = {
 	accordion: StoryblokAccordion,
