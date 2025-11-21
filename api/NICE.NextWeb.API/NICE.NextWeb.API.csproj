@@ -10,6 +10,7 @@
     <UserSecretsId>b5d07038-31e1-4d34-9f6c-5c29afce8651</UserSecretsId>
     <EnvironmentName>Production</EnvironmentName>
 	<ImplicitUsings>enable</ImplicitUsings>
+	<OutputType>Exe</OutputType>
   </PropertyGroup>
 
   <ItemGroup>
@@ -19,7 +20,7 @@
     <PackageReference Include="CacheManager.Serialization.Json" Version="2.0.0" />
     <PackageReference Include="CacheManager.StackExchange.Redis" Version="2.0.0" />
     <PackageReference Include="Cronos" Version="0.11.1" />
-    <PackageReference Include="NICE.Logging" Version="8.0.102" />
+    <PackageReference Include="NICE.Logging" Version="8.0.103" />
     <PackageReference Include="Ocelot" Version="24.0.1" />
     <PackageReference Include="Serilog" Version="4.3.0" />
     <PackageReference Include="Serilog.Sinks.Console" Version="6.0.0" />
