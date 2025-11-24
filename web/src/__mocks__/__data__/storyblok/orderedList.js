@@ -1,0 +1,94 @@
+export const orderedList = {
+	_uid: "i-66f71a91-3220-476c-bba9-226b66908787",
+	listType: "1",
+	component: "orderedList",
+	listItems: [
+		{
+			_uid: "f31bfb3b-500b-4d66-b198-167824d2f43a",
+			text: {
+				type: "doc",
+				content: [
+					{
+						type: "paragraph",
+						attrs: {
+							textAlign: null,
+						},
+						content: [
+							{
+								text: "test list item 1",
+								type: "text",
+							},
+						],
+					},
+				],
+			},
+			type: "",
+			children: [
+				{
+					_uid: "fecf470c-3fdb-4a9f-9350-2b0bc5de1c22",
+					listType: "a",
+					component: "orderedList",
+					listItems: [
+						{
+							_uid: "54d48f04-39a1-4d58-bfc3-92bd54df54c9",
+							text: {
+								type: "doc",
+								content: [
+									{
+										type: "paragraph",
+										attrs: {
+											textAlign: null,
+										},
+										content: [
+											{
+												text: "nested list item of 1",
+												type: "text",
+											},
+										],
+									},
+								],
+							},
+							type: "",
+							children: [],
+							component: "listItem",
+						},
+					],
+					startingNumber: "1",
+				},
+			],
+			component: "listItem",
+		},
+	],
+	startingNumber: "1",
+};
+
+export const orderedListWithoutStartingNumber = {
+	_uid: "a1b2c3d4-e5f6-7890-abcd-ef1234567890",
+	listType: "",
+	component: "orderedList",
+	listItems: [
+		{
+			_uid: "item-1-uid",
+			text: {
+				type: "doc",
+				content: [
+					{
+						type: "paragraph",
+						attrs: {
+							textAlign: null,
+						},
+						content: [
+							{
+								text: "test list item 1",
+								type: "text",
+							},
+						],
+					},
+				],
+			},
+			type: "",
+			component: "listItem",
+		},
+	],
+	startingNumber: "",
+};
