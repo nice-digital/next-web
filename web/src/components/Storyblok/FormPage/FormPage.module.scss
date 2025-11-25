@@ -1,0 +1,71 @@
+@use '@nice-digital/nds-core/scss/colours';
+@use '@nice-digital/nds-core/scss/layout';
+@use '@nice-digital/nds-core/scss/media-queries';
+@use '@nice-digital/nds-core/scss/spacing';
+@use '@nice-digital/nds-core/scss/typography';
+@use '@nice-digital/nds-core/scss/utils';
+
+.infoPage {
+  $self: &;
+  // page overrides for DS components
+  /* stylelint-disable-next-line selector-class-pattern */
+  :global(.page-header) {
+    @include media-queries.mq($until: sm) {
+      margin-bottom: utils.rem(spacing.$large);
+    }
+  }
+
+  &__richTextWrapper {
+    $vertical-spacing: utils.rem(spacing.$large);
+
+    > :first-child > :first-child {
+      margin-top: 0;
+    }
+
+    //any blok that is added to the main rich text area, gets a margin bottom, unless empty or last child
+    > *:is(:not(:last-child, :empty)) {
+      margin-bottom: $vertical-spacing;
+    }
+
+    //if the nested-text-blok carries only 1 heading level, remove the bottom margin of the block
+    /* stylelint-disable-next-line selector-class-pattern */
+    :global(.nested-rich-text:has(> :is(h2,h3,h4,h5,h6):only-child)) {
+      margin-bottom: 0;
+    }
+
+    //NOTE: Could we add a constrained variant to these components?
+    /* stylelint-disable */
+    :global(.card-list),
+    :global(.nested-rich-text),
+    :global(.testimonial),
+    [data-title^='(video)'] {
+      max-width: layout.$readable-width;
+    }
+    /* stylelint-enable */
+
+    /* stylelint-disable-next-line selector-class-pattern */
+    :global(.card__heading) {
+      margin: 0; /* ;no extra heading margins */
+    }
+
+    // override the news section YT embed vertical margin in infoPages
+    [data-title^='(video)'] {
+      margin: utils.rem(spacing.$large) 0;
+    }
+  }
+
+  @include media-queries.mq($from: sm) {
+    &--reverse-order {
+      #{ $self }__contentArea {
+        order: 1;
+      }
+
+      #{ $self }__navArea {
+        order: 2;
+      }
+    }
+  }
+}
+
+
+
