@@ -8,15 +8,10 @@ import { ConvertedDocument } from "@/components/ConvertedDocument/ConvertedDocum
 import { Link } from "@/components/Link/Link";
 import { ProjectHorizontalNav } from "@/components/ProjectHorizontalNav/ProjectHorizontalNav";
 import { ProjectPageHeading } from "@/components/ProjectPageHeading/ProjectPageHeading";
-import { ResourceLinkCard } from "@/components/ResourceLinkCard/ResourceLinkCard";
-import {
-	getConvertedDocumentHTML,
-	getResourceFileHTML,
-} from "@/feeds/inDev/inDev";
+import { getConvertedDocumentHTML } from "@/feeds/inDev/inDev";
 import {
 	IndevFileResource,
 	IndevSchedule,
-	niceIndevConvertedDocument,
 	niceIndevConvertedDocumentChapter,
 	niceIndevConvertedDocumentSection,
 	ProjectDetail,
@@ -24,9 +19,9 @@ import {
 import { logger } from "@/logger";
 import { arrayify } from "@/utils/array";
 import { generateInPageNavArray, validateRouteParams } from "@/utils/project";
-import { getInDevResourceLink, ResourceLinkViewModel } from "@/utils/resource";
+import { getInDevResourceLink } from "@/utils/resource";
 
-export type DocumentsHTMLPageProps = {
+export type DocumentsChapterHTMLPageProps = {
 	consultationUrls: string[];
 	indevScheduleItems?: IndevSchedule[];
 	indevStakeholderRegistration: Record<string, unknown>[];
@@ -44,10 +39,9 @@ export type DocumentsHTMLPageProps = {
 		sections?: niceIndevConvertedDocumentSection[];
 		title: string;
 	};
-	resourceLinks: ResourceLinkViewModel[];
 };
 
-export default function DocumentsHTMLPage({
+export default function DocumentsChapterHTMLPage({
 	consultationUrls,
 	indevScheduleItems,
 	indevStakeholderRegistration,
@@ -55,9 +49,8 @@ export default function DocumentsHTMLPage({
 	project,
 	projectPath,
 	resource,
-	resourceLinks,
-}: DocumentsHTMLPageProps): JSX.Element {
-	const { isConvertedDocument, htmlBody, title } = resource;
+}: DocumentsChapterHTMLPageProps): JSX.Element {
+	const { title } = resource;
 
 	return (
 		<>
@@ -103,36 +96,14 @@ export default function DocumentsHTMLPage({
 				consultationUrls={consultationUrls}
 			/>
 
-			{isConvertedDocument ? (
-				<ConvertedDocument lastUpdated={lastUpdated} resource={resource} />
-			) : (
-				<>
-					<h2>{title}</h2>
-
-					{htmlBody && (
-						<div dangerouslySetInnerHTML={{ __html: htmlBody }}></div>
-					)}
-
-					{resourceLinks.length > 0 ? (
-						<>
-							<ul className="list list--unstyled">
-								{resourceLinks.map((resourceLink) => (
-									<li key={resourceLink.href}>
-										<ResourceLinkCard resourceLink={resourceLink} />
-									</li>
-								))}
-							</ul>
-						</>
-					) : null}
-				</>
-			)}
+			<ConvertedDocument lastUpdated={lastUpdated} resource={resource} />
 		</>
 	);
 }
 
 export const getServerSideProps: GetServerSideProps<
-	DocumentsHTMLPageProps,
-	{ slug: string; resourceTitleId: string }
+	DocumentsChapterHTMLPageProps,
+	{ slug: string; resourceTitleId: string; chapterSlug: string }
 > = async ({ params, resolvedUrl, query }) => {
 	if (!params?.resourceTitleId) return { notFound: true };
 
@@ -142,6 +113,11 @@ export const getServerSideProps: GetServerSideProps<
 
 	const { project, panels, projectPath, consultationUrls } = result;
 	const { projectType, reference, status, title } = project;
+
+	const chapterSlug =
+		(Array.isArray(params.chapterSlug)
+			? params.chapterSlug[0]
+			: params.chapterSlug) || "";
 
 	const resourceAndPanel = panels
 		.flatMap((panel) =>
@@ -169,23 +145,21 @@ export const getServerSideProps: GetServerSideProps<
 	}
 
 	const { panel, resource } = resourceAndPanel,
-		indevFile = resource.embedded.niceIndevFile,
 		indevConvertedDocument = resource.embedded.niceIndevConvertedDocument;
 
-	let resourceFilePath, resourceFileHTML;
+	let resourceFilePath, resourceFilePathHTMLIndex, resourceFileHTML;
 
 	if (indevConvertedDocument) {
 		resourceFilePath = indevConvertedDocument.links.self[0].href;
-		resourceFileHTML = await getConvertedDocumentHTML(
-			indevConvertedDocument.links.self[0].href
-		);
-	}
-
-	if (indevFile) {
-		resourceFilePath = indevFile.links.self[0].href;
-		resourceFileHTML = {
-			content: await getResourceFileHTML(indevFile.links.self[0].href),
-		} as niceIndevConvertedDocument;
+		resourceFilePathHTMLIndex = resourceFilePath.lastIndexOf("/html");
+		resourceFilePath =
+			resourceFilePathHTMLIndex > -1
+				? `${resourceFilePath.slice(
+						0,
+						resourceFilePathHTMLIndex
+				  )}/chapter/${chapterSlug}`
+				: resourceFilePath;
+		resourceFileHTML = await getConvertedDocumentHTML(resourceFilePath);
 	}
 
 	if (!resourceFileHTML || resourceFileHTML.content === null) {
@@ -242,7 +216,6 @@ export const getServerSideProps: GetServerSideProps<
 				sections: sections,
 				title: resource.title,
 			},
-			resourceLinks,
 		},
 	};
 };
