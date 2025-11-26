@@ -1,18 +1,15 @@
-import Script from "next/script";
-import React, { useEffect } from "react";
-import { render } from "storyblok-rich-text-react-renderer";
+import React from "react";
 import { JotFormEmbed } from "@/components/JotFormEmbed/JotFormEmbed";
-// import { FormEmbed } from "@/types/storyblok";
-
-import styles from "./FormEmbed.module.scss";
-
-// interface FormEmbedBlokProps {
-// 	blok: FormEmbed;
-// }
+import { FormEmbedStoryblok } from "@/types/storyblok";
 
 
+interface FormEmbedBlokProps {
+	blok: FormEmbedStoryblok;
+}
 
-export const FormEmbed = ({ blok }: any): React.ReactElement => {
+
+
+export const FormEmbed = ({ blok }: FormEmbedBlokProps): React.ReactElement => {
 	const { title, jotFormID } = blok;
 
 	return (

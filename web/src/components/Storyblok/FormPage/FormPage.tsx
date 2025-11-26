@@ -1,19 +1,19 @@
 import { StoryblokComponent } from "@storyblok/react";
 
 import { type Breadcrumb } from "@/types/Breadcrumb";
-import { type CategoryLandingPageStoryblok } from "@/types/storyblok";
+import { type FormPageStoryblok} from "@/types/storyblok";
 
 import styles from "./FormPage.module.scss";
 
-export interface CategoryLandindPageBlokProps {
-	blok: CategoryLandingPageStoryblok;
+export interface FormPageProps {
+	blok: FormPageStoryblok;
 	breadcrumbs?: Breadcrumb[];
 }
 
 export const FormPage = ({
 	blok,
 	breadcrumbs,
-}: CategoryLandindPageBlokProps): React.ReactElement => {
+}: FormPageProps): React.ReactElement => {
 	return (
 		<div className={styles.categoryLandingPage}>
 			{blok.metadata &&
