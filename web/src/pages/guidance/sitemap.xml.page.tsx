@@ -9,9 +9,7 @@ import {
 } from "@nice-digital/search-client";
 
 import { publicRuntimeConfig } from "@/config";
-import {
-	type ProjectDetail,
-} from "@/feeds/inDev/inDev";
+import { type ProjectDetail } from "@/feeds/inDev/inDev";
 import {
 	type ProductLite,
 	ProductGroup,
@@ -21,7 +19,9 @@ import { getProductPath, getProjectPath } from "@/utils/url";
 
 const toSitemapURL = (document: Document): ISitemapField => {
 	const isProduct = document.guidanceStatus[0] === "Published";
-	const productOrProjectType = document.guidanceRef ? document.guidanceRef.replace(/[0-9]/g, '') : null;
+	const productOrProjectType = document.guidanceRef
+		? document.guidanceRef.replace(/[0-9]/g, "")
+		: null;
 	const groupFromSearchFeed = document.niceDocType[0];
 
 	let productOrProject, path, productOrProjectGroup;
@@ -45,7 +45,9 @@ const toSitemapURL = (document: Document): ISitemapField => {
 			productOrProjectGroup = ProductGroup.Guideline;
 			break;
 		default:
-			throw `Unsupported product group ${document.niceDocType[0]} ${JSON.stringify(document)}`;
+			throw `Unsupported product group ${
+				document.niceDocType[0]
+			} ${JSON.stringify(document)}`;
 	}
 
 	if (isProduct) {
