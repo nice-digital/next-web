@@ -2,7 +2,7 @@ import { render, screen } from "@testing-library/react";
 
 import { QuoteStoryblok } from "@/types/storyblok";
 
-import { Blockquote } from "./FormEmbed";
+import { FormEmbed } from "./FormEmbed";
 
 const mockBlockquote: QuoteStoryblok = {
 	quoteText: {

@@ -58,7 +58,7 @@ const commonComponents = {
 	pageHeader: StoryblokPageHeader,
 	quote: Blockquote,
 	youtubeEmbed: StoryblokYoutubeEmbed,
-	jotFormEmbed: FormEmbed,
+	formEmbed: FormEmbed,
 	formPage: FormPage,
 };
 
