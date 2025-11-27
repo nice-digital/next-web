@@ -11,6 +11,9 @@ jest.mock("@/config", () => ({
 			ocelotEndpoint: "testEndpoint",
 			accessToken: "testApiKey",
 		},
+		jotForm: {
+			baseURL: "testendpoint",
+		},
 	},
 }));
 
