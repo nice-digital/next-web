@@ -11,6 +11,7 @@ import styles from "./FormPage.module.scss";
 export interface FormPageProps {
 	blok: FormPageStoryblok;
 	breadcrumbs?: Breadcrumb[];
+	slug: string;
 }
 
 export const FormPage = ({

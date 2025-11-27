@@ -1,54 +1,49 @@
 import { screen } from "@testing-library/react";
 
-import sampleDataHeroInPageNav from "@/mockData/storyblok/infoPageWithHeroAndInPageNav.json";
-import sampleDataNoNav from "@/mockData/storyblok/infoPageWithNoNav.json";
-import sampleDataPageHeaderSectionNav from "@/mockData/storyblok/infoPageWithPageHeaderAndSectionNav.json";
+// import sampleDataHeroInPageNav from "@/mockData/storyblok/infoPageWithHeroAndInPageNav.json";
+// import sampleDataNoNav from "@/mockData/storyblok/infoPageWithNoNav.json";
+// import sampleDataPageHeaderSectionNav from "@/mockData/storyblok/infoPageWithPageHeaderAndSectionNav.json";
+
+import sampleDataWithMeta from "@/mockData/storyblok/formPageWithMeta.json";
+import sampleDataWithPageHeader from "@/mockData/storyblok/formPageWithPageHeader.json";
 import { render } from "@/test-utils/rendering";
-import { InfoPageStoryblok } from "@/types/storyblok";
+import { FormPageStoryblok } from "@/types/storyblok";
 
-import { InfoPage, type InfoPageBlokProps } from "./FormPage";
+import { FormPage, type FormPageProps } from "./FormPage";
 
-const mockPageHeaderSectionNavData =
-	sampleDataPageHeaderSectionNav.story.content;
-const mockHeroInPageNavData = sampleDataHeroInPageNav.story.content;
-const mockNoNavData = sampleDataNoNav.story.content;
+const mockPageHeaderSectionAndPanel = sampleDataWithPageHeader.story.content;
 
-const mockPropsWithPageHeaderAndSectionNav: InfoPageBlokProps = {
-	blok: mockPageHeaderSectionNavData as InfoPageStoryblok,
-	breadcrumbs: sampleDataPageHeaderSectionNav.breadcrumbs,
-	tree: sampleDataPageHeaderSectionNav.tree,
-	slug: sampleDataPageHeaderSectionNav.slug,
+const mockFormPageWithMetadata = sampleDataWithMeta.story.content;
+// const mockHeroInPageNavData = sampleDataHeroInPageNav.story.content;
+// const mockNoNavData = sampleDataNoNav.story.content;
+
+const mockPropsWithPageHeaderAndPanel: FormPageProps = {
+	blok: mockPageHeaderSectionAndPanel as FormPageStoryblok,
+	breadcrumbs: sampleDataWithPageHeader.breadcrumbs,
+	slug: sampleDataWithPageHeader.slug,
 };
 
-const mockPropsWithHeroAndInPageNav: InfoPageBlokProps = {
-	blok: mockHeroInPageNavData as InfoPageStoryblok,
-	breadcrumbs: sampleDataHeroInPageNav.breadcrumbs,
-	tree: sampleDataHeroInPageNav.tree,
-	slug: sampleDataHeroInPageNav.slug,
+const mockPropsWithMetadata: FormPageProps = {
+	blok: mockFormPageWithMetadata as FormPageStoryblok,
+	breadcrumbs: sampleDataWithMeta.breadcrumbs,
+	slug: sampleDataWithMeta.slug,
 };
 
-const mockPropsWithNoNav: InfoPageBlokProps = {
-	blok: mockNoNavData as InfoPageStoryblok,
-	breadcrumbs: sampleDataNoNav.breadcrumbs,
-	tree: sampleDataNoNav.tree,
-	slug: sampleDataNoNav.slug,
-};
-
-describe("InfoPage", () => {
+describe("FormPage", () => {
 	afterEach(() => {
 		jest.clearAllMocks();
 	});
 
 	it("renders all metadata StoryblokComponents if present", () => {
-		render(<InfoPage {...mockPropsWithPageHeaderAndSectionNav} />);
+		render(<FormPage {...mockPropsWithMetadata} />);
 		expect(
-			screen.getByText(mockPageHeaderSectionNavData.metadata[0].component)
+			screen.getByText(mockFormPageWithMetadata.metadata[0].component)
 		).toBeInTheDocument();
 	});
 
 	it("renders the Page Header through the StoryblokComponent if present", () => {
-		render(<InfoPage {...mockPropsWithPageHeaderAndSectionNav} />);
-		const { component, title } = mockPageHeaderSectionNavData.header[0];
+		render(<FormPage {...mockPropsWithPageHeaderAndPanel} />);
+		const { component, title } = mockPageHeaderSectionAndPanel.header[0];
 
 		expect(
 			screen.getByTestId(`storyblok-component-${component}`)
@@ -59,59 +54,39 @@ describe("InfoPage", () => {
 		).toHaveTextContent(title);
 	});
 
-	it("renders the Page Hero through the StoryblokComponent if present", () => {
-		render(<InfoPage {...mockPropsWithHeroAndInPageNav} />);
-		expect(screen.getByTestId("storyblok-component-hero")).toBeInTheDocument();
+	xit("renders the Panel through the StoryblokComponent if present", () => {
+		render(<FormPage {...mockPropsWithPageHeaderAndPanel} />);
+		const { component } = mockPageHeaderSectionAndPanel.panel[0];
+		console.log(component);
+
+		// const panel = screen.get
+	});
+
+	it("should render FormEmbed through the StoryblokComponent", () => {
+		render(<FormPage {...mockPropsWithPageHeaderAndPanel} />);
+		expect(
+			screen.getByTestId("storyblok-component-formEmbed")
+		).toBeInTheDocument();
 	});
 
 	it("handles missing metadata gracefully", () => {
 		const blok = {
-			...mockPropsWithHeroAndInPageNav.blok,
+			...mockPropsWithPageHeaderAndPanel.blok,
 			metadata: undefined,
 		};
-		render(<InfoPage {...mockPropsWithHeroAndInPageNav} blok={blok} />);
-		expect(screen.getByTestId("storyblok-rich-text")).toBeInTheDocument();
-	});
-
-	it("renders content using StoryblokRichText", () => {
-		render(<InfoPage {...mockPropsWithPageHeaderAndSectionNav} />);
-		expect(screen.getByTestId("storyblok-rich-text")).toBeInTheDocument();
-	});
-
-	it("renders Section Nav when hideSectionNav is not 'true' and Section Nav tree is populated", () => {
-		render(<InfoPage {...mockPropsWithPageHeaderAndSectionNav} />);
-		expect(screen.getByTestId("section-nav")).toBeInTheDocument();
-		expect(screen.queryByText("On this page")).not.toBeInTheDocument();
-	});
-
-	it("does not try to render Section Nav if tree is empty", () => {
-		render(<InfoPage {...mockPropsWithPageHeaderAndSectionNav} tree={[]} />);
-		expect(screen.getByTestId("storyblok-rich-text")).toBeInTheDocument();
-		expect(screen.queryByTestId("section-nav")).not.toBeInTheDocument();
-		expect(screen.queryByText("On this page")).not.toBeInTheDocument();
-	});
-
-	describe("when testing In-Page Nav rendering", () => {
-		beforeEach(() => {
-			jest.resetModules();
-
-			jest.doMock("@nice-digital/nds-in-page-nav", () => ({
-				InPageNav: () => <div>On this page</div>,
-			}));
-		});
-
-		it("renders In-Page Nav when hideSectionNav is 'true' and hideInPageNav is not 'true'", async () => {
-			const { InfoPage } = await import("./FormPage");
-			render(<InfoPage {...mockPropsWithHeroAndInPageNav} />);
-			expect(screen.getByText("On this page")).toBeInTheDocument();
-			expect(screen.queryByTestId("section-nav")).not.toBeInTheDocument();
-		});
-	});
-
-	it("does not render nav area when both hideSectionNav and hideInPageNav are 'true'", () => {
-		render(<InfoPage {...mockPropsWithNoNav} />);
+		render(<FormPage {...mockPropsWithPageHeaderAndPanel} blok={blok} />);
 		expect(
-			screen.queryByTestId("info-page-nav-wrapper")
+			screen.queryByText(mockFormPageWithMetadata.metadata[0].component)
 		).not.toBeInTheDocument();
+		expect(
+			screen.getByTestId("storyblok-component-formEmbed")
+		).toBeInTheDocument();
+	});
+
+	it("renders content using nestedRichText through the StoryblokComponent", () => {
+		render(<FormPage {...mockPropsWithPageHeaderAndPanel} />);
+		expect(
+			screen.getAllByTestId("storyblok-component-nestedRichText").length
+		).toBeGreaterThan(1);
 	});
 });
