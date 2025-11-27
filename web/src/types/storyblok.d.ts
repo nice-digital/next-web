@@ -384,78 +384,10 @@ export interface FormEmbedStoryblok {
 }
 
 export interface FormPageStoryblok {
-  header?: (
-    | AccordionStoryblok
-    | AccordionGroupStoryblok
-    | ActionBannerStoryblok
-    | ActionBannerDefaultStoryblok
-    | AuthorStoryblok
-    | BlogPostStoryblok
-    | ButtonLinkStoryblok
-    | CalloutCardStoryblok
-    | CalloutCardDemoStoryblok
-    | CalloutCardWithImageStoryblok
-    | CardStoryblok
-    | CardGridStoryblok
-    | CardGridRowStoryblok
-    | CardGridRowBasicStoryblok
-    | CardGridRowCalloutStoryblok
-    | CardGridRowCalloutWithImageStoryblok
-    | CardGridRowTestimonialsStoryblok
-    | CardGridSectionStoryblok
-    | CardListSectionStoryblok
-    | CardListSectionItemStoryblok
-    | CategoryLandingPageStoryblok
-    | CategoryNavigationStoryblok
-    | ConfigStoryblok
-    | FormEmbedStoryblok
-    | FormPageStoryblok
-    | FullWidthSectionStoryblok
-    | GridStoryblok
-    | GridItemStoryblok
-    | GridSectionStoryblok
-    | GridSectionItemStoryblok
-    | HeroStoryblok
-    | HomepageStoryblok
-    | HomepageHeroStoryblok
-    | IframeStoryblok
-    | ImageEmbedStoryblok
-    | ImageOrVideoStoryblok
-    | InDepthArticleStoryblok
-    | InfogramEmbedNewStoryblok
-    | InfogramRichTextStoryblok
-    | InfoPageStoryblok
-    | ListItemStoryblok
-    | ListItemNewStoryblok
-    | MarkdownStoryblok
-    | MenuLinkStoryblok
-    | MetadataStoryblok
-    | NestedOrderedListStoryblok
-    | NestedRichTextStoryblok
-    | NestedTableStoryblok
-    | NewsArticleStoryblok
-    | OrderedListStoryblok
-    | OrderedListItemStoryblok
-    | OrderedListNewStoryblok
-    | OrderedListWithStartingNo2Storyblok
-    | PageStoryblok
-    | PageHeaderStoryblok
-    | PodcastStoryblok
-    | PromoBoxStoryblok
-    | QuoteStoryblok
-    | RelatedLinkStoryblok
-    | RelatedNewsLinkStoryblok
-    | RichTextTableStoryblok
-    | SpotlightStoryblok
-    | TableStoryblok
-    | TestimonialFullWidthStoryblok
-    | TestimonialGridItemStoryblok
-    | TestListItemStoryblok
-    | TestOrderedListStoryblok
-    | YoutubeEmbedStoryblok
-  )[];
+  header?: PageHeaderStoryblok[];
   metadata?: MetadataStoryblok[];
   content?: (NestedRichTextStoryblok | ButtonLinkStoryblok | FormEmbedStoryblok)[];
+  panel?: NestedRichTextStoryblok[];
   component: "formPage";
   _uid: string;
   [k: string]: any;
