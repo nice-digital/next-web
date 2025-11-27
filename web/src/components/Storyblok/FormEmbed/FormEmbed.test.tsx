@@ -1,39 +1,23 @@
 import { render, screen } from "@testing-library/react";
 
-import { QuoteStoryblok } from "@/types/storyblok";
+import { FormEmbedStoryblok } from "@/types/storyblok";
 
 import { FormEmbed } from "./FormEmbed";
 
-const mockBlockquote: QuoteStoryblok = {
-	quoteText: {
-		type: "doc",
-		content: [
-			{
-				type: "paragraph",
-				content: [
-					{
-						type: "text",
-						text: "Test quote text",
-					},
-				],
-			},
-		],
-	},
-	quoteAuthor: "Test quote author",
-	_uid: "123",
-	component: "quote",
-} as QuoteStoryblok;
+const mockFormEmbed: FormEmbedStoryblok = {
+	_uid: "341e187273",
+	title: "NICE Advice contact us",
+	formId: "10000",
+	component: "formEmbed",
+} as FormEmbedStoryblok;
 
-xdescribe("Blockquote", () => {
-	it("should render the quote ", () => {
-		render(<Blockquote blok={mockBlockquote} />);
+describe("FormEmbed", () => {
+	it("should render JotFormEmbed through the Storyblok FormEmbed component", () => {
+		render(<FormEmbed blok={mockFormEmbed} />);
 
-		expect(screen.getByText("Test quote text")).toBeInTheDocument();
-	});
-
-	it("should render the quote author", () => {
-		render(<Blockquote blok={mockBlockquote} />);
-
-		expect(screen.getByText("Test quote author")).toBeInTheDocument();
+		expect(screen.getByTitle(mockFormEmbed.title)).toHaveAttribute(
+			"src",
+			`https://next-web-tests.jotform.com/${mockFormEmbed.formId}?isIframeEmbed=1`
+		);
 	});
 });
