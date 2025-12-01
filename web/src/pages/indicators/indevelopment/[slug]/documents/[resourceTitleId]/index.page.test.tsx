@@ -7,7 +7,7 @@ import { logger } from "@/logger";
 import { addDefaultJSONFeedMocks, axiosJSONMock } from "@/test-utils/feeds";
 
 import DocumentsHTMLPage, {
-	DocumentHTMLPageProps,
+	DocumentsHTMLPageProps,
 	getServerSideProps,
 } from "./index.page";
 
@@ -32,49 +32,6 @@ type DocumentHTMLPagePropsContext = GetServerSidePropsContext<{
 	slug: string;
 	resourceTitleId: string;
 }>;
-
-describe("[resourceTitleId].page", () => {
-	describe("getServerSideProps", () => {
-		it("should return not found when project doesn't exist", async () => {
-			const notFoundIdSlug = "gid-abc123";
-
-			axiosJSONMock.reset();
-			axiosJSONMock.onGet(new RegExp(FeedPath.ProjectDetail)).reply(404, {
-				Message: "Not found",
-				StatusCode: "NotFound",
-			});
-			addDefaultJSONFeedMocks();
-
-			expect(
-				await getServerSideProps({
-					...getServerSidePropsContext,
-					params: {
-						slug: notFoundIdSlug,
-						resourceTitleId: resourceTitleId,
-					},
-				})
-			).toStrictEqual({
-				notFound: true,
-			});
-		});
-
-		it("should return not found when no resource matches resourceTitleId in URL", async () => {
-			const notFoundResourceTitleId = "non-existent-html-content";
-			expect(
-				await getServerSideProps({
-					...getServerSidePropsContext,
-					params: {
-						slug: "gid-ta10730",
-						resourceTitleId: notFoundResourceTitleId,
-					},
-					query: { productRoot: "guidance", statusSlug },
-				})
-			).toStrictEqual({
-				notFound: true,
-			});
-		});
-	});
-});
 
 describe("[resourceTitleId].page", () => {
 	describe("getServerSideProps", () => {
@@ -145,8 +102,6 @@ describe("[resourceTitleId].page", () => {
 				"Could not find resource HTML at /guidance/GID-TA10730/documents/html-content"
 			);
 		});
-
-		it.todo("should return props for valid documents");
 	});
 
 	describe("DocumentsHTMLPage", () => {
@@ -164,11 +119,11 @@ describe("[resourceTitleId].page", () => {
 				resolvedUrl,
 			} as unknown as DocumentHTMLPagePropsContext;
 
-		let props: DocumentHTMLPageProps;
+		let props: DocumentsHTMLPageProps;
 		beforeEach(async () => {
 			props = (
 				(await getServerSideProps(context)) as {
-					props: DocumentHTMLPageProps;
+					props: DocumentsHTMLPageProps;
 				}
 			).props;
 			(useRouter as jest.Mock).mockReturnValue({ asPath: resolvedUrl });
@@ -184,7 +139,14 @@ describe("[resourceTitleId].page", () => {
 				render(
 					<DocumentsHTMLPage
 						{...props}
-						resource={{ title: "Test resource title", resourceFileHTML: "" }}
+						resource={{
+							chapters: [],
+							htmlBody: "",
+							isConvertedDocument: false,
+							pdfDownloadLink: null,
+							sections: [],
+							title: "Test resource title",
+						}}
 					/>
 				);
 
@@ -208,7 +170,14 @@ describe("[resourceTitleId].page", () => {
 				render(
 					<DocumentsHTMLPage
 						{...props}
-						resource={{ title: "Test resource title", resourceFileHTML: "" }}
+						resource={{
+							chapters: [],
+							htmlBody: "",
+							isConvertedDocument: false,
+							pdfDownloadLink: null,
+							sections: [],
+							title: "Test resource title",
+						}}
 					/>
 				);
 
@@ -225,7 +194,11 @@ describe("[resourceTitleId].page", () => {
 				<DocumentsHTMLPage
 					{...props}
 					resource={{
-						resourceFileHTML: "",
+						chapters: [],
+						htmlBody: "",
+						isConvertedDocument: false,
+						pdfDownloadLink: null,
+						sections: [],
 						title: "Test resource title",
 					}}
 				/>
@@ -283,12 +256,54 @@ describe("[resourceTitleId].page", () => {
 				<DocumentsHTMLPage
 					{...props}
 					resource={{
-						resourceFileHTML: "<p>hello</p>",
+						chapters: [],
+						htmlBody: "<p>hello</p>",
+						isConvertedDocument: false,
+						pdfDownloadLink: null,
+						sections: [],
 						title: "anything",
 					}}
 				/>
 			);
 			expect(screen.getByText("hello")).toHaveProperty("tagName", "P");
+		});
+
+		describe("ConvertedDocument", () => {
+			const slug = "gid-dg10086",
+				resourceTitleId = "final-scope-html-conversion",
+				productRoot = "guidance",
+				statusSlug = "topic-selection",
+				resolvedUrl = `/${productRoot}/${statusSlug}/${slug}/documents/${resourceTitleId}`,
+				context: DocumentHTMLPagePropsContext = {
+					params: { slug, resourceTitleId },
+					query: {
+						productRoot,
+						statusSlug,
+					},
+					resolvedUrl,
+				} as unknown as DocumentHTMLPagePropsContext;
+
+			let props: DocumentsHTMLPageProps;
+			beforeEach(async () => {
+				props = (
+					(await getServerSideProps(context)) as {
+						props: DocumentsHTMLPageProps;
+					}
+				).props;
+				(useRouter as jest.Mock).mockReturnValue({ asPath: resolvedUrl });
+			});
+
+			it("should match snapshot for converted document", () => {
+				render(<DocumentsHTMLPage {...props} />);
+				expect(document.body).toMatchSnapshot();
+			});
+
+			it("should render the converted document chapter title as a heading", () => {
+				render(<DocumentsHTMLPage {...props} />);
+				expect(
+					screen.getByRole("heading", { level: 2, name: "Overview" })
+				).toHaveTextContent("Overview");
+			});
 		});
 	});
 });

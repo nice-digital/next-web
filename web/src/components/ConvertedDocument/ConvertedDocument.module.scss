@@ -1,0 +1,38 @@
+@use '@nice-digital/nds-core/scss/spacing';
+@use '@nice-digital/nds-core/scss/utils';
+
+// .heading {
+//   margin-top: 0;
+// }
+
+.chapterContent {
+  margin-bottom: utils.rem(spacing.$large);
+
+  > div > :first-child {
+    margin-top: 0;
+  }
+
+  h2,
+  h3,
+  h4,
+  h5,
+  h6 {
+    a {
+      color: initial;
+      text-decoration-line: none;
+    }
+  }
+}
+
+.download {
+  display: block;
+  margin-bottom: utils.rem(spacing.$medium);
+  margin-right: 0;
+  text-align: center;
+}
+
+.inPageNavNoScroll > nav {
+  margin: utils.rem(0 0 spacing.$large);
+  max-height: none;
+  position: relative;
+}

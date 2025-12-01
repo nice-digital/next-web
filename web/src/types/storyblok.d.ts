@@ -372,11 +372,13 @@ export interface GridStoryblok {
     | InDepthArticleStoryblok
     | InfogramEmbedStoryblok
     | InfoPageStoryblok
+    | ListItemStoryblok
     | MarkdownStoryblok
     | MetadataStoryblok
     | NestedRichTextStoryblok
     | NestedTableStoryblok
     | NewsArticleStoryblok
+    | OrderedListStoryblok
     | PageStoryblok
     | PageHeaderStoryblok
     | PodcastStoryblok
@@ -384,6 +386,7 @@ export interface GridStoryblok {
     | QuoteStoryblok
     | RelatedLinkStoryblok
     | RelatedNewsLinkStoryblok
+    | RichTextTableStoryblok
     | SpotlightStoryblok
     | TestimonialFullWidthStoryblok
     | TestimonialGridItemStoryblok
@@ -556,6 +559,14 @@ export interface InfoPageStoryblok {
   [k: string]: any;
 }
 
+export interface ListItemStoryblok {
+  text?: RichtextStoryblok;
+  children?: OrderedListStoryblok[];
+  component: "listItem";
+  _uid: string;
+  [k: string]: any;
+}
+
 export interface MarkdownStoryblok {
   content: string;
   component: "markdown";
@@ -622,6 +633,15 @@ export interface NewsArticleStoryblok {
   [k: string]: any;
 }
 
+export interface OrderedListStoryblok {
+  startingNumber?: string;
+  listType?: "" | "1" | "a" | "A" | "i" | "I";
+  listItems: ListItemStoryblok[];
+  component: "orderedList";
+  _uid: string;
+  [k: string]: any;
+}
+
 export interface PageStoryblok {
   body?: (
     | AccordionStoryblok
@@ -660,11 +680,13 @@ export interface PageStoryblok {
     | InDepthArticleStoryblok
     | InfogramEmbedStoryblok
     | InfoPageStoryblok
+    | ListItemStoryblok
     | MarkdownStoryblok
     | MetadataStoryblok
     | NestedRichTextStoryblok
     | NestedTableStoryblok
     | NewsArticleStoryblok
+    | OrderedListStoryblok
     | PageStoryblok
     | PageHeaderStoryblok
     | PodcastStoryblok
@@ -672,6 +694,7 @@ export interface PageStoryblok {
     | QuoteStoryblok
     | RelatedLinkStoryblok
     | RelatedNewsLinkStoryblok
+    | RichTextTableStoryblok
     | SpotlightStoryblok
     | TestimonialFullWidthStoryblok
     | TestimonialGridItemStoryblok
@@ -745,6 +768,16 @@ export interface RelatedNewsLinkStoryblok {
   publisher: string;
   date: string;
   component: "relatedNewsLink";
+  _uid: string;
+  [k: string]: any;
+}
+
+export interface RichTextTableStoryblok {
+  heading: string;
+  headingLevel: "" | "2" | "3" | "4" | "5";
+  summary?: RichtextStoryblok;
+  tableContent: RichtextStoryblok;
+  component: "richTextTable";
   _uid: string;
   [k: string]: any;
 }

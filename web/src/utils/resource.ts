@@ -1,4 +1,10 @@
-import { IndevPanel, IndevResource, ProjectDetail } from "@/feeds/inDev/inDev";
+import {
+	IndevConvertedDocument,
+	IndevFile,
+	IndevPanel,
+	IndevResource,
+	ProjectDetail,
+} from "@/feeds/inDev/inDev";
 import {
 	BaseContentPart,
 	ContentPart,
@@ -21,6 +27,7 @@ export enum ResourceTypeSlug {
 	ToolsAndResources = "resources",
 	Evidence = "evidence",
 	InformationForThePublic = "information-for-the-public",
+	History = "history",
 }
 
 export type ResourceLinkViewModel = {
@@ -123,52 +130,79 @@ export const getInDevResourceLink = ({
 	panel,
 	project,
 }: GetInDevResourceLinkArgs): ResourceLinkViewModel => {
+	const indevResourceLink = {
+		title: resource.title,
+		href: "",
+		fileTypeName: null,
+		fileSize: null,
+		date: resource.publishedDate,
+		type: panel.title,
+	};
+
 	if (!resource.embedded) {
 		if (!resource.externalUrl)
 			throw Error(
 				`Found resource (${resource.title}) with nothing embedded and no external URL`
 			);
 
-		return {
-			title: resource.title,
-			href: resource.externalUrl,
-			fileTypeName: null,
-			fileSize: null,
-			date: resource.publishedDate,
-			type: panel.title,
-		};
+		indevResourceLink.href = resource.externalUrl;
+
+		return indevResourceLink;
 	} else {
-		const projectPath = getProjectPath(project);
+		const projectPath = getProjectPath(project),
+			resourceEmbedded = resource.embedded,
+			resourceIsConvertedDocument = Object.hasOwn(
+				resourceEmbedded,
+				"niceIndevConvertedDocument"
+			);
 
-		const { mimeType, length, resourceTitleId, fileName } =
-				resource.embedded.niceIndevFile,
-			shouldUseNewConsultationComments =
-				resource.convertedDocument ||
-				resource.supportsComments ||
-				resource.supportsQuestions,
-			isHTML = mimeType === "text/html",
-			isConsultation =
-				resource.consultationId > 0 && panel.embedded.niceIndevConsultation,
-			fileSize = isHTML ? null : length,
-			fileTypeName = isHTML ? null : getFileTypeNameFromMime(mimeType),
-			href = shouldUseNewConsultationComments
-				? `/consultations/${resource.consultationId}/${resource.consultationDocumentId}`
-				: !isHTML
-				? `${projectPath}/downloads/${project.reference.toLowerCase()}-${resourceTitleId}.${
-						fileName.split(".").slice(-1)[0]
-				  }`
-				: isConsultation
-				? `${projectPath}/consultations/${resourceTitleId}`
-				: `${projectPath}/documents/${resourceTitleId}`;
+		let resourceIndevFile;
 
-		return {
-			title: resource.title,
-			href,
-			fileTypeName,
-			fileSize,
-			date: resource.publishedDate,
-			type: panel.title,
-		};
+		if (resourceIsConvertedDocument) {
+			resourceIndevFile =
+				resourceEmbedded.niceIndevConvertedDocument as IndevConvertedDocument;
+		} else {
+			resourceIndevFile = (resourceEmbedded.niceIndevFile ||
+				resourceEmbedded.niceIndevGeneratedPdf) as IndevFile;
+		}
+
+		if (resourceEmbedded.niceIndevConvertedDocument) {
+			indevResourceLink.href = `${projectPath}/documents/${resourceIndevFile.resourceTitleId}`;
+		} else {
+			const mimeType =
+				"mimeType" in resourceIndevFile
+					? resourceIndevFile.mimeType
+					: "text/html";
+			const length =
+				"length" in resourceIndevFile ? resourceIndevFile.length : 0;
+			const fileName =
+				"fileName" in resourceIndevFile ? resourceIndevFile.fileName : "";
+			const resourceTitleId = resourceIndevFile.resourceTitleId;
+			const shouldUseNewConsultationComments =
+					resource.supportsComments || resource.supportsQuestions,
+				isHTML = mimeType === "text/html",
+				isConsultation =
+					resource.consultationId > 0 && panel.embedded.niceIndevConsultation;
+
+			Object.assign(indevResourceLink, {
+				fileSize: isHTML || shouldUseNewConsultationComments ? null : length,
+				fileTypeName:
+					isHTML || shouldUseNewConsultationComments
+						? null
+						: getFileTypeNameFromMime(mimeType),
+				href: shouldUseNewConsultationComments
+					? `/consultations/${resource.consultationId}/${resource.consultationDocumentId}`
+					: !isHTML
+					? `${projectPath}/downloads/${project.reference.toLowerCase()}-${resourceTitleId}.${
+							fileName.split(".").slice(-1)[0]
+					  }`
+					: isConsultation
+					? `${projectPath}/consultations/${resourceTitleId}`
+					: `${projectPath}/documents/${resourceTitleId}`,
+			});
+		}
+
+		return indevResourceLink;
 	}
 };
 

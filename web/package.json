@@ -3,7 +3,8 @@
   "version": "0.3.0",
   "private": true,
   "scripts": {
-    "dev": "cross-env NODE_OPTIONS=\"-r next-logger/presets/next-only --inspect\" next dev -p 4000 | pino-pretty",
+    "dev": "cross-env NODE_OPTIONS=\" -r next-logger/presets/next-only --inspect\" next dev -p 4000 --experimental-https | pino-pretty",
+    "dev-http": "cross-env NODE_OPTIONS=\" -r next-logger/presets/next-only --inspect\" next dev -p 4000 | pino-pretty",
     "dev-debug": "next dev -p 4000",
     "build": "next build",
     "postbuild": "next-sitemap",
@@ -32,7 +33,7 @@
     "extends @nice-digital/browserslist-config"
   ],
   "dependencies": {
-    "@nice-digital/design-system": "^5.5.6",
+    "@nice-digital/design-system": "^5.5.8",
     "@nice-digital/global-nav": "^7.1.1097",
     "@nice-digital/nds-prev-next": "^3.0.2",
     "@nice-digital/search-client": "^2.1.1540-SRCH-780-Research-Re",
@@ -43,7 +44,7 @@
     "cache-manager": "^4.1.0",
     "cache-manager-fs-hash": "^1.0.0",
     "clipboard-polyfill": "^3.0.3",
-    "config": "^3.3.6",
+    "config": "^3.3.12",
     "dayjs": "^1.11.4",
     "eslint-config-next": "^14.2.32",
     "fast-sort": "^3.0.2",
@@ -71,7 +72,7 @@
     "striptags": "^3.2.0"
   },
   "devDependencies": {
-    "@nice-digital/browserslist-config": "^2.0.1",
+    "@nice-digital/browserslist-config": "^3.0.0",
     "@types/cache-manager": "^4.0.1",
     "@types/cache-manager-fs-hash": "0.0.1",
     "@types/form-serialize": "^0.7.2",
@@ -92,6 +93,9 @@
     "type-fest": "^2.17.0"
   },
   "volta": {
-    "node": "18.18.2"
+    "node": "22.19.0"
+  },
+  "overrides": {
+    "amqplib": "0.10.9"
   }
 }

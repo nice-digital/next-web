@@ -1,0 +1,874 @@
+{
+    "_links": {
+        "self": [
+            {}
+        ]
+    },
+    "_embedded": {
+        "nice.publications:chapter-heading-list": {
+            "_links": {
+                "self": [
+                    {}
+                ]
+            },
+            "_embedded": {
+                "nice.publications:chapter-heading": [
+                    {
+                        "_links": {
+                            "self": [
+                                {}
+                            ]
+                        },
+                        "ETag": null,
+                        "Title": "Overview",
+                        "Url": "/IND999"
+                    },
+                    {
+                        "_links": {
+                            "self": [
+                                {}
+                            ]
+                        },
+                        "ETag": null,
+                        "Title": "1 Communication and shared decision making",
+                        "Url": "/IND999/chapter/1-communication-and-shared-decision-making"
+                    },
+                    {
+                        "_links": {
+                            "self": [
+                                {}
+                            ]
+                        },
+                        "ETag": null,
+                        "Title": "2 Assessment",
+                        "Url": "/IND999/chapter/2-assessment"
+                    },
+                    {
+                        "_links": {
+                            "self": [
+                                {}
+                            ]
+                        },
+                        "ETag": null,
+                        "Title": "3 Management",
+                        "Url": "/IND999/chapter/3-management"
+                    },
+                    {
+                        "_links": {
+                            "self": [
+                                {}
+                            ]
+                        },
+                        "ETag": null,
+                        "Title": "4 Therapeutics for COVID-19",
+                        "Url": "/IND999/chapter/4-therapeutics-for-covid-19"
+                    },
+                    {
+                        "_links": {
+                            "self": [
+                                {}
+                            ]
+                        },
+                        "ETag": null,
+                        "Title": "5 Preventing and managing acute complications",
+                        "Url": "/IND999/chapter/5-preventing-and-managing-acute-complications"
+                    },
+                    {
+                        "_links": {
+                            "self": [
+                                {}
+                            ]
+                        },
+                        "ETag": null,
+                        "Title": "6 Identifying and managing co-infections",
+                        "Url": "/IND999/chapter/6-identifying-and-managing-co-infections"
+                    },
+                    {
+                        "_links": {
+                            "self": [
+                                {}
+                            ]
+                        },
+                        "ETag": null,
+                        "Title": "7 Follow‑up and rehabilitation",
+                        "Url": "/IND999/chapter/7-followup-and-rehabilitation"
+                    },
+                    {
+                        "_links": {
+                            "self": [
+                                {}
+                            ]
+                        },
+                        "ETag": null,
+                        "Title": "8 Palliative care",
+                        "Url": "/IND999/chapter/8-palliative-care"
+                    },
+                    {
+                        "_links": {
+                            "self": [
+                                {}
+                            ]
+                        },
+                        "ETag": null,
+                        "Title": "Terms used in the guideline",
+                        "Url": "/IND999/chapter/terms-used-in-the-guideline"
+                    },
+                    {
+                        "_links": {
+                            "self": [
+                                {}
+                            ]
+                        },
+                        "ETag": null,
+                        "Title": "Recommendations for research",
+                        "Url": "/IND999/chapter/recommendations-for-research"
+                    },
+                    {
+                        "_links": {
+                            "self": [
+                                {}
+                            ]
+                        },
+                        "ETag": null,
+                        "Title": "Rationales",
+                        "Url": "/IND999/chapter/rationales"
+                    },
+                    {
+                        "_links": {
+                            "self": [
+                                {}
+                            ]
+                        },
+                        "ETag": null,
+                        "Title": "Context",
+                        "Url": "/IND999/chapter/context"
+                    },
+                    {
+                        "_links": {
+                            "self": [
+                                {}
+                            ]
+                        },
+                        "ETag": null,
+                        "Title": "Finding more information and expert advisory panel details",
+                        "Url": "/IND999/chapter/finding-more-information-and-expert-advisory-panel-details"
+                    },
+                    {
+                        "_links": {
+                            "self": [
+                                {}
+                            ]
+                        },
+                        "ETag": null,
+                        "Title": "Update information",
+                        "Url": "/IND999/chapter/update-information"
+                    }
+                ]
+            },
+            "ETag": null
+        },
+        "nice.publications:accreditation-list": {
+            "_links": {
+                "self": [
+                    {}
+                ]
+            },
+            "ETag": null
+        },
+        "nice.publications:endorsement-list": {
+            "_links": {
+                "self": [
+                    {}
+                ]
+            },
+            "ETag": null
+        },
+        "nice.publications:supporting-list": {
+            "_links": {
+                "self": [
+                    {}
+                ]
+            },
+            "ETag": null
+        },
+        "nice.publications:content-part-list": {
+            "_links": {
+                "self": [
+                    {}
+                ]
+            },
+            "_embedded": {
+                "nice.publications:upload-and-convert-content-part": {
+                    "_links": {
+                        "self": [
+                            {}
+                        ]
+                    },
+                    "_embedded": {
+                        "nice.publications:html-content": {
+                            "_links": {
+                                "self": [
+                                    {
+                                        "href": "/feeds/product/IND999/content/1/html"
+                                    }
+                                ]
+                            },
+                            "_embedded": {
+                                "nice.publications:html-chapter-content-info": [
+                                    {
+                                        "_links": {
+                                            "self": [
+                                                {
+                                                    "href": "/feeds/product/IND999/part/1/chapter/overview"
+                                                }
+                                            ]
+                                        },
+                                        "ETag": null,
+                                        "Title": "Overview",
+                                        "Reference": "IND999",
+                                        "PartId": 1,
+                                        "ChapterSlug": "overview"
+                                    },
+                                    {
+                                        "_links": {
+                                            "self": [
+                                                {
+                                                    "href": "/feeds/product/IND999/part/1/chapter/communication-and-shared-decision-making"
+                                                }
+                                            ]
+                                        },
+                                        "ETag": null,
+                                        "Title": "1 Communication and shared decision making",
+                                        "Reference": "IND999",
+                                        "PartId": 1,
+                                        "ChapterSlug": "communication-and-shared-decision-making"
+                                    },
+                                    {
+                                        "_links": {
+                                            "self": [
+                                                {
+                                                    "href": "/feeds/product/IND999/part/1/chapter/assessment"
+                                                }
+                                            ]
+                                        },
+                                        "ETag": null,
+                                        "Title": "2 Assessment",
+                                        "Reference": "IND999",
+                                        "PartId": 1,
+                                        "ChapterSlug": "assessment"
+                                    },
+                                    {
+                                        "_links": {
+                                            "self": [
+                                                {
+                                                    "href": "/feeds/product/IND999/part/1/chapter/management"
+                                                }
+                                            ]
+                                        },
+                                        "ETag": null,
+                                        "Title": "3 Management",
+                                        "Reference": "IND999",
+                                        "PartId": 1,
+                                        "ChapterSlug": "management"
+                                    },
+                                    {
+                                        "_links": {
+                                            "self": [
+                                                {
+                                                    "href": "/feeds/product/IND999/part/1/chapter/therapeutics-for-covid-19"
+                                                }
+                                            ]
+                                        },
+                                        "ETag": null,
+                                        "Title": "4 Therapeutics for COVID-19",
+                                        "Reference": "IND999",
+                                        "PartId": 1,
+                                        "ChapterSlug": "therapeutics-for-covid-19"
+                                    },
+                                    {
+                                        "_links": {
+                                            "self": [
+                                                {
+                                                    "href": "/feeds/product/IND999/part/1/chapter/preventing-and-managing-acute-complications"
+                                                }
+                                            ]
+                                        },
+                                        "ETag": null,
+                                        "Title": "5 Preventing and managing acute complications",
+                                        "Reference": "IND999",
+                                        "PartId": 1,
+                                        "ChapterSlug": "preventing-and-managing-acute-complications"
+                                    },
+                                    {
+                                        "_links": {
+                                            "self": [
+                                                {
+                                                    "href": "/feeds/product/IND999/part/1/chapter/identifying-and-managing-co-infections"
+                                                }
+                                            ]
+                                        },
+                                        "ETag": null,
+                                        "Title": "6 Identifying and managing co-infections",
+                                        "Reference": "IND999",
+                                        "PartId": 1,
+                                        "ChapterSlug": "identifying-and-managing-co-infections"
+                                    },
+                                    {
+                                        "_links": {
+                                            "self": [
+                                                {
+                                                    "href": "/feeds/product/IND999/part/1/chapter/followup-and-rehabilitation"
+                                                }
+                                            ]
+                                        },
+                                        "ETag": null,
+                                        "Title": "7 Follow‑up and rehabilitation",
+                                        "Reference": "IND999",
+                                        "PartId": 1,
+                                        "ChapterSlug": "followup-and-rehabilitation"
+                                    },
+                                    {
+                                        "_links": {
+                                            "self": [
+                                                {
+                                                    "href": "/feeds/product/IND999/part/1/chapter/palliative-care"
+                                                }
+                                            ]
+                                        },
+                                        "ETag": null,
+                                        "Title": "8 Palliative care",
+                                        "Reference": "IND999",
+                                        "PartId": 1,
+                                        "ChapterSlug": "palliative-care"
+                                    },
+                                    {
+                                        "_links": {
+                                            "self": [
+                                                {
+                                                    "href": "/feeds/product/IND999/part/1/chapter/terms-used-in-the-guideline"
+                                                }
+                                            ]
+                                        },
+                                        "ETag": null,
+                                        "Title": "Terms used in the guideline",
+                                        "Reference": "IND999",
+                                        "PartId": 1,
+                                        "ChapterSlug": "terms-used-in-the-guideline"
+                                    },
+                                    {
+                                        "_links": {
+                                            "self": [
+                                                {
+                                                    "href": "/feeds/product/IND999/part/1/chapter/recommendations-for-research"
+                                                }
+                                            ]
+                                        },
+                                        "ETag": null,
+                                        "Title": "Recommendations for research",
+                                        "Reference": "IND999",
+                                        "PartId": 1,
+                                        "ChapterSlug": "recommendations-for-research"
+                                    },
+                                    {
+                                        "_links": {
+                                            "self": [
+                                                {
+                                                    "href": "/feeds/product/IND999/part/1/chapter/rationales"
+                                                }
+                                            ]
+                                        },
+                                        "ETag": null,
+                                        "Title": "Rationales",
+                                        "Reference": "IND999",
+                                        "PartId": 1,
+                                        "ChapterSlug": "rationales"
+                                    },
+                                    {
+                                        "_links": {
+                                            "self": [
+                                                {
+                                                    "href": "/feeds/product/IND999/part/1/chapter/context"
+                                                }
+                                            ]
+                                        },
+                                        "ETag": null,
+                                        "Title": "Context",
+                                        "Reference": "IND999",
+                                        "PartId": 1,
+                                        "ChapterSlug": "context"
+                                    },
+                                    {
+                                        "_links": {
+                                            "self": [
+                                                {
+                                                    "href": "/feeds/product/IND999/part/1/chapter/finding-more-information-and-expert-advisory-panel-details"
+                                                }
+                                            ]
+                                        },
+                                        "ETag": null,
+                                        "Title": "Finding more information and expert advisory panel details",
+                                        "Reference": "IND999",
+                                        "PartId": 1,
+                                        "ChapterSlug": "finding-more-information-and-expert-advisory-panel-details"
+                                    },
+                                    {
+                                        "_links": {
+                                            "self": [
+                                                {
+                                                    "href": "/feeds/product/IND999/part/1/chapter/update-information"
+                                                }
+                                            ]
+                                        },
+                                        "ETag": null,
+                                        "Title": "Update information",
+                                        "Reference": "IND999",
+                                        "PartId": 1,
+                                        "ChapterSlug": "update-information"
+                                    }
+                                ]
+                            },
+                            "ETag": null,
+                            "Reference": "IND999",
+                            "PartId": 1
+                        },
+                        "nice.publications:pdf-file": {
+                            "_links": {
+                                "self": [
+                                    {
+                                        "href": "/feeds/downloads/83f9d5ff-019f-4458-9e93-92be7b4b2ded"
+                                    }
+                                ]
+                            },
+                            "ETag": null,
+                            "Id": "83f9d5ff-019f-4458-9e93-92be7b4b2ded",
+                            "MimeType": "application/pdf",
+                            "FileName": "NG191 Guideline 20240618.pdf",
+                            "Length": 389640,
+                            "Hash": "B9BFFB1EB15EF50371436AF403486F7ACDC84E9F",
+                            "Name": "default",
+                            "Uid": 1894003632344005
+                        }
+                    },
+                    "ETag": null,
+                    "Title": "INDICATOR HISTORY TAB HTML CONVERSION",
+                    "Type": "UploadAndConvertContentPart",
+                    "Uid": 1461422555821,
+                    "LegacyId": null,
+                    "MajorChangeDate": "2025-08-19T00:00:00"
+                }
+            },
+            "ETag": null
+        },
+        "nice.publications:content-part-list2": {
+            "_links": {
+                "self": [
+                    {}
+                ]
+            },
+            "_embedded": {
+                "nice.publications:content-parts": {
+                    "_links": {
+                        "self": [
+                            {}
+                        ]
+                    },
+                    "_embedded": {
+                        "nice.publications:html-content": {
+                            "_links": {
+                                "self": [
+                                    {
+                                        "href": "/feeds/product/IND999/content/1/html"
+                                    }
+                                ]
+                            },
+                            "_embedded": {
+                                "nice.publications:html-chapter-content-info": [
+                                    {
+                                        "_links": {
+                                            "self": [
+                                                {
+                                                    "href": "/feeds/product/IND999/part/1/chapter/overview"
+                                                }
+                                            ]
+                                        },
+                                        "ETag": null,
+                                        "Title": "Overview",
+                                        "Reference": "IND999",
+                                        "PartId": 1,
+                                        "ChapterSlug": "overview"
+                                    },
+                                    {
+                                        "_links": {
+                                            "self": [
+                                                {
+                                                    "href": "/feeds/product/IND999/part/1/chapter/communication-and-shared-decision-making"
+                                                }
+                                            ]
+                                        },
+                                        "ETag": null,
+                                        "Title": "1 Communication and shared decision making",
+                                        "Reference": "IND999",
+                                        "PartId": 1,
+                                        "ChapterSlug": "communication-and-shared-decision-making"
+                                    },
+                                    {
+                                        "_links": {
+                                            "self": [
+                                                {
+                                                    "href": "/feeds/product/IND999/part/1/chapter/assessment"
+                                                }
+                                            ]
+                                        },
+                                        "ETag": null,
+                                        "Title": "2 Assessment",
+                                        "Reference": "IND999",
+                                        "PartId": 1,
+                                        "ChapterSlug": "assessment"
+                                    },
+                                    {
+                                        "_links": {
+                                            "self": [
+                                                {
+                                                    "href": "/feeds/product/IND999/part/1/chapter/management"
+                                                }
+                                            ]
+                                        },
+                                        "ETag": null,
+                                        "Title": "3 Management",
+                                        "Reference": "IND999",
+                                        "PartId": 1,
+                                        "ChapterSlug": "management"
+                                    },
+                                    {
+                                        "_links": {
+                                            "self": [
+                                                {
+                                                    "href": "/feeds/product/IND999/part/1/chapter/therapeutics-for-covid-19"
+                                                }
+                                            ]
+                                        },
+                                        "ETag": null,
+                                        "Title": "4 Therapeutics for COVID-19",
+                                        "Reference": "IND999",
+                                        "PartId": 1,
+                                        "ChapterSlug": "therapeutics-for-covid-19"
+                                    },
+                                    {
+                                        "_links": {
+                                            "self": [
+                                                {
+                                                    "href": "/feeds/product/IND999/part/1/chapter/preventing-and-managing-acute-complications"
+                                                }
+                                            ]
+                                        },
+                                        "ETag": null,
+                                        "Title": "5 Preventing and managing acute complications",
+                                        "Reference": "IND999",
+                                        "PartId": 1,
+                                        "ChapterSlug": "preventing-and-managing-acute-complications"
+                                    },
+                                    {
+                                        "_links": {
+                                            "self": [
+                                                {
+                                                    "href": "/feeds/product/IND999/part/1/chapter/identifying-and-managing-co-infections"
+                                                }
+                                            ]
+                                        },
+                                        "ETag": null,
+                                        "Title": "6 Identifying and managing co-infections",
+                                        "Reference": "IND999",
+                                        "PartId": 1,
+                                        "ChapterSlug": "identifying-and-managing-co-infections"
+                                    },
+                                    {
+                                        "_links": {
+                                            "self": [
+                                                {
+                                                    "href": "/feeds/product/IND999/part/1/chapter/followup-and-rehabilitation"
+                                                }
+                                            ]
+                                        },
+                                        "ETag": null,
+                                        "Title": "7 Follow‑up and rehabilitation",
+                                        "Reference": "IND999",
+                                        "PartId": 1,
+                                        "ChapterSlug": "followup-and-rehabilitation"
+                                    },
+                                    {
+                                        "_links": {
+                                            "self": [
+                                                {
+                                                    "href": "/feeds/product/IND999/part/1/chapter/palliative-care"
+                                                }
+                                            ]
+                                        },
+                                        "ETag": null,
+                                        "Title": "8 Palliative care",
+                                        "Reference": "IND999",
+                                        "PartId": 1,
+                                        "ChapterSlug": "palliative-care"
+                                    },
+                                    {
+                                        "_links": {
+                                            "self": [
+                                                {
+                                                    "href": "/feeds/product/IND999/part/1/chapter/terms-used-in-the-guideline"
+                                                }
+                                            ]
+                                        },
+                                        "ETag": null,
+                                        "Title": "Terms used in the guideline",
+                                        "Reference": "IND999",
+                                        "PartId": 1,
+                                        "ChapterSlug": "terms-used-in-the-guideline"
+                                    },
+                                    {
+                                        "_links": {
+                                            "self": [
+                                                {
+                                                    "href": "/feeds/product/IND999/part/1/chapter/recommendations-for-research"
+                                                }
+                                            ]
+                                        },
+                                        "ETag": null,
+                                        "Title": "Recommendations for research",
+                                        "Reference": "IND999",
+                                        "PartId": 1,
+                                        "ChapterSlug": "recommendations-for-research"
+                                    },
+                                    {
+                                        "_links": {
+                                            "self": [
+                                                {
+                                                    "href": "/feeds/product/IND999/part/1/chapter/rationales"
+                                                }
+                                            ]
+                                        },
+                                        "ETag": null,
+                                        "Title": "Rationales",
+                                        "Reference": "IND999",
+                                        "PartId": 1,
+                                        "ChapterSlug": "rationales"
+                                    },
+                                    {
+                                        "_links": {
+                                            "self": [
+                                                {
+                                                    "href": "/feeds/product/IND999/part/1/chapter/context"
+                                                }
+                                            ]
+                                        },
+                                        "ETag": null,
+                                        "Title": "Context",
+                                        "Reference": "IND999",
+                                        "PartId": 1,
+                                        "ChapterSlug": "context"
+                                    },
+                                    {
+                                        "_links": {
+                                            "self": [
+                                                {
+                                                    "href": "/feeds/product/IND999/part/1/chapter/finding-more-information-and-expert-advisory-panel-details"
+                                                }
+                                            ]
+                                        },
+                                        "ETag": null,
+                                        "Title": "Finding more information and expert advisory panel details",
+                                        "Reference": "IND999",
+                                        "PartId": 1,
+                                        "ChapterSlug": "finding-more-information-and-expert-advisory-panel-details"
+                                    },
+                                    {
+                                        "_links": {
+                                            "self": [
+                                                {
+                                                    "href": "/feeds/product/IND999/part/1/chapter/update-information"
+                                                }
+                                            ]
+                                        },
+                                        "ETag": null,
+                                        "Title": "Update information",
+                                        "Reference": "IND999",
+                                        "PartId": 1,
+                                        "ChapterSlug": "update-information"
+                                    }
+                                ]
+                            },
+                            "ETag": null,
+                            "Reference": "IND999",
+                            "PartId": 1
+                        },
+                        "nice.publications:pdf-file": {
+                            "_links": {
+                                "self": [
+                                    {
+                                        "href": "/feeds/downloads/83f9d5ff-019f-4458-9e93-92be7b4b2ded"
+                                    }
+                                ]
+                            },
+                            "ETag": null,
+                            "Id": "83f9d5ff-019f-4458-9e93-92be7b4b2ded",
+                            "MimeType": "application/pdf",
+                            "FileName": "NG191 Guideline 20240618.pdf",
+                            "Length": 389640,
+                            "Hash": "B9BFFB1EB15EF50371436AF403486F7ACDC84E9F",
+                            "Name": "default",
+                            "Uid": 1894003632344005
+                        }
+                    },
+                    "ETag": null,
+                    "Title": "INDICATOR HISTORY TAB HTML CONVERSION",
+                    "Type": "UploadAndConvertContentPart",
+                    "Uid": 1461422555821,
+                    "LegacyId": null,
+                    "MajorChangeDate": "2025-08-19T00:00:00"
+                }
+            },
+            "ETag": null
+        },
+        "nice.publications:related-resource-list": {
+            "_links": {
+                "self": [
+                    {}
+                ]
+            },
+            "_embedded": {
+                "nice.publications:related-resource": [
+                    {
+                        "_links": {
+                            "self": [
+                                {
+                                    "href": "/feeds/resource/71137"
+                                },
+                                {}
+                            ],
+                            "nice.publications:related-resource-uri": [
+                                {
+                                    "href": "/feeds/resource/71137"
+                                }
+                            ]
+                        },
+                        "_embedded": {
+                            "nice.publications:resource-group-list": {
+                                "_links": {
+                                    "self": [
+                                        {}
+                                    ]
+                                },
+                                "_embedded": {
+                                    "nice.publications:resource-group": {
+                                        "_links": {
+                                            "self": [
+                                                {}
+                                            ]
+                                        },
+                                        "ETag": null,
+                                        "Name": "AuditAndServiceImprovement"
+                                    }
+                                },
+                                "ETag": null
+                            }
+                        },
+                        "ETag": null,
+                        "Title": "Tools and resources",
+                        "ResourceType": "AuditAndServiceImprovement",
+                        "Status": "Published",
+                        "Language": "English",
+                        "Uid": 11805379
+                    },
+                    {
+                        "_links": {
+                            "self": [
+                                {
+                                    "href": "/feeds/resource/71138"
+                                },
+                                {}
+                            ],
+                            "nice.publications:related-resource-uri": [
+                                {
+                                    "href": "/feeds/resource/71138"
+                                }
+                            ]
+                        },
+                        "_embedded": {
+                            "nice.publications:resource-group-list": {
+                                "_links": {
+                                    "self": [
+                                        {}
+                                    ]
+                                },
+                                "_embedded": {
+                                    "nice.publications:resource-group": {
+                                        "_links": {
+                                            "self": [
+                                                {}
+                                            ]
+                                        },
+                                        "ETag": null,
+                                        "Name": "Evidence"
+                                    }
+                                },
+                                "ETag": null
+                            }
+                        },
+                        "ETag": null,
+                        "Title": "EVIDENCE TEST",
+                        "ResourceType": "EvidenceReview",
+                        "Status": "Published",
+                        "Language": "English",
+                        "Uid": 11805380
+                    }
+                ]
+            },
+            "ETag": null
+        },
+        "nice.publications:related-product-list": {
+            "_links": {
+                "self": [
+                    {}
+                ]
+            },
+            "ETag": null
+        }
+    },
+    "ETag": "01000000-0000-0002-0000-000000015919",
+    "Id": "IND999",
+    "LastModified": "2025-08-19T12:03:48.9387666Z",
+    "ProductType": "IND",
+    "Title": "INDICATOR HISTORY TAB HTML CONVERSION",
+    "ShortTitle": "TEST",
+    "InDevReference": "GID-IND10386",
+    "MetaDescription": "META",
+    "Summary": "<p>TEST SUMMARY</p>",
+    "WithdrawnNotes": "",
+    "ProductStatus": "Published",
+    "VersionNumber": 1,
+    "PublishedDate": "2025-08-19T00:00:00",
+    "LastMajorModificationDate": "2025-08-19T00:00:00",
+    "MajorChangeDate": "2025-08-19T00:00:00",
+    "NextReviewDate": "2025-08-19T00:00:00",
+    "CollectionTypesList": [],
+    "AuthorList": [
+        "National Institute for Health and Care Excellence (NICE)"
+    ],
+    "PublisherList": [
+        "National Institute for Health and Care Excellence (NICE)"
+    ],
+    "AudienceList": [],
+    "EstimatedSavings": "",
+    "EstimatedSavingsDescription": "",
+    "EstimatedSavingsImpact": null,
+    "DevelopedAs": null,
+    "RelevantTo": [],
+    "TerminatedAppraisal": null,
+    "AreasOfInterestList": [],
+    "IndicatorSubTypeList": [],
+    "IndicatorOldCode": "",
+    "IndicatorOldUrl": "",
+    "TaxonomySubjectList": [],
+    "IPSV": "Health, well-being and care",
+    "ProductGroup": "Other",
+    "ProductTypeName": "NICE indicator",
+    "ProductTypeNamePlural": "NICE indicators"
+}
