@@ -12,7 +12,7 @@ import ConvertedDocumentPage, {
 } from "./[chapterSlug].page";
 
 const productRoot = "guidance",
-	statusSlug = "topic-selection",
+	statusSlug = "prioritisation",
 	resourceTitleId = "final-scope-html-conversion",
 	slug = "gid-dg10086",
 	chapterSlug = "recommendations",
@@ -114,7 +114,7 @@ describe("[chapterSlug].page", () => {
 		const slug = "gid-dg10086",
 			resourceTitleId = "final-scope-html-conversion",
 			productRoot = "guidance",
-			statusSlug = "topic-selection",
+			statusSlug = "prioritisation",
 			chapterSlug = "recommendations",
 			resolvedUrl = `/${productRoot}/${statusSlug}/${slug}/documents/${resourceTitleId}/chapter/${slug}/`,
 			context: DocumentsChapterHTMLPagePropsContext = {
