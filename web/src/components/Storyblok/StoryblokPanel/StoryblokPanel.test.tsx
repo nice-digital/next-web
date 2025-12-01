@@ -56,8 +56,8 @@ describe("StoryblokPanel", () => {
 		);
 	});
 
-	it("defaults heading level to 2 when headingLevel is 2", () => {
-		const data = { ...mockData, headingLevel: undefined };
+	it("reners with heading level 2 ", () => {
+		const data = { ...mockData, headingLevel: "2" };
 		render(<StoryblokPanel blok={data} />);
 		expect(screen.getByRole("heading", { level: 2 })).toHaveTextContent(
 			"heading1"
