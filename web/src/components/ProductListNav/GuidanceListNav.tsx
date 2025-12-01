@@ -43,6 +43,6 @@ export const GuidanceListNav: FC = () => (
 		<NavLink href="/guidance/awaiting-development">
 			Awaiting development
 		</NavLink>
-		<NavLink href="/guidance/prioritisation">Topic prioritisation</NavLink>
+		<NavLink href="/guidance/topic-selection">Topic selection</NavLink>
 	</HorizontalNav>
 );

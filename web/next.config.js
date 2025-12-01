@@ -124,7 +124,7 @@ const nextConfig = {
 		return [
 			{
 				source:
-					"/:productRoot(indicators|guidance)/:statusSlug(indevelopment|discontinued|awaiting-development|prioritisation)/:path*",
+					"/:productRoot(indicators|guidance)/:statusSlug(indevelopment|discontinued|awaiting-development|topic-selection)/:path*",
 				destination:
 					"/indicators/indevelopment/:path*?productRoot=:productRoot&statusSlug=:statusSlug",
 			},
@@ -2232,7 +2232,7 @@ const nextConfig = {
 			},
 			{
 				source: "/about/what-we-do/our-programmes/topic-selection",
-				destination: "/guidance/prioritisation",
+				destination: "/guidance/topic-selection",
 				permanent: true,
 			},
 			{

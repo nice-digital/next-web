@@ -169,9 +169,9 @@ exports[`/guidance/published should match the snapshot 1`] = `
               <a
                 aria-current="false"
                 class="horizontal-nav__link"
-                href="/guidance/prioritisation"
+                href="/guidance/topic-selection"
               >
-                Topic prioritisation
+                Topic selection
               </a>
             </li>
           </ul>

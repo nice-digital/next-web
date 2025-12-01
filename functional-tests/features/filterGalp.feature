@@ -18,8 +18,8 @@ Feature: The list of guidance list page is reduced when user filter by name
     And I pause for 5000ms
     Then I expect the result list count contains "Showing 1 to 1 of 1"
 
-  Scenario: User can apply keyword filter topic prioritisation list page
-    Given I open the topic prioritisation list page
+  Scenario: User can apply keyword filter topic selection list page
+    Given I open the topic selection list page
     And I enter keyword or reference number "testingst" to filter page list
     Then I expect the result list count shows "No results found"
 
@@ -33,6 +33,6 @@ Feature: The list of guidance list page is reduced when user filter by name
     And I enter From date "01/01/2024" to filter page list
     And I pause for 2000ms
     # Then I expect the result list count contains "Showing 1 to 10 of 111"
-    Given I open the topic prioritisation list page
+    Given I open the topic selection list page
     And I enter From date "02/02/2024" to filter page list
     # Then I expect the result list count contains "Showing 1 to 10 of 23"

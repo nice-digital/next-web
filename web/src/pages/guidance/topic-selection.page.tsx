@@ -16,11 +16,11 @@ const defaultSortOrder = SortOrder.dateDescending,
 
 const tableBodyRender = (documents: Document[]) => (
 	<>
-		<caption className="visually-hidden">Topic prioritisation</caption>
+		<caption className="visually-hidden">Guidance in topic selection</caption>
 		<thead>
 			<tr>
 				<th scope="col">Title</th>
-				<th scope="col">Prioritisation routing</th>
+				<th scope="col">Technology type</th>
 				<th scope="col">Decision</th>
 				<th scope="col">Decision date</th>
 			</tr>
@@ -43,7 +43,7 @@ const tableBodyRender = (documents: Document[]) => (
 									dangerouslySetInnerHTML={{ __html: title }}
 								/>
 							</td>
-							<td>{technologyType}</td>
+							<td>{technologyType || "n/a"}</td>
 							<td>{topicSelectionDecision || "n/a"}</td>
 							<td>
 								{topicSelectionDecisionDate ? (
@@ -68,10 +68,10 @@ export default getProductListPage({
 			NICE guidance
 		</Breadcrumb>,
 	],
-	currentBreadcrumb: "Topic prioritisation",
+	currentBreadcrumb: "Topic selection",
 	preheading: "",
-	heading: "Topic prioritisation",
-	title: "Topic prioritisation | Guidance",
+	heading: "Guidance in topic selection",
+	title: "Guidance in topic selection | Guidance",
 	defaultSort: {
 		order: defaultSortOrder,
 		label: "Decision date",
@@ -84,13 +84,12 @@ export default getProductListPage({
 	useFutureDates: false,
 	dateFilterLabel,
 	textFilterHeading,
-	navigatorShortNamesToExclude: "nai,ndt",
 	tableBodyRender,
 	searchInputPlaceholder: "E.g. 'diabetes' or 'NG28'",
 });
 
 export const getServerSideProps = getGetServerSidePropsFunc({
-	gstPreFilter: "Topic prioritisation",
+	gstPreFilter: "Topic selection",
 	defaultSortOrder,
 	dateFilterLabel,
 	textFilterLabel,
