@@ -362,8 +362,7 @@ export const getServerSideProps: GetServerSideProps<
 		projectStatusDisplayName = (status: ProjectStatus) => {
 			if (status == ProjectStatus.Proposed) return "Awaiting development";
 			if (status == ProjectStatus.InProgress) return "In progress";
-			if (status == ProjectStatus.TopicPrioritisation)
-				return "Topic prioritisation";
+			if (status == ProjectStatus.TopicSelection) return "Topic selection";
 			if (status == ProjectStatus.ImpactedByCOVID19)
 				return "Impacted by COVID-19";
 			else return status;

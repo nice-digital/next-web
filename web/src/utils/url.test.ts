@@ -49,7 +49,7 @@ describe("URL utils", () => {
 					[ProjectStatus.Proposed, "awaiting-development"],
 					[ProjectStatus.Referred, "indevelopment"],
 					[ProjectStatus.Suspended, "indevelopment"],
-					[ProjectStatus.TopicPrioritisation, "prioritisation"],
+					[ProjectStatus.TopicSelection, "topic-selection"],
 				])(
 					"should return correct path for status %s of %s",
 					(status, expectedPathSegment) => {
