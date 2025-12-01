@@ -751,9 +751,9 @@ export interface PageHeaderStoryblok {
   [k: string]: any;
 }
 export interface PanelStoryblok {
-  heading?: string;
-  headingLevel?: string;
-  content?: RichtextStoryblok;
+  heading: string;
+  headingLevel: string;
+  content: RichtextStoryblok;
   variant?: "supporting" | "primary" | "impact";
   component: "panel";
   _uid: string;
