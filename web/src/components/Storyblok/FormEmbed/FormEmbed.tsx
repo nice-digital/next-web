@@ -10,9 +10,10 @@ export interface FormEmbedBlokProps {
 export const FormEmbed = ({ blok }: FormEmbedBlokProps): React.ReactElement => {
 	const { title, formId } = blok;
 
-	return (
-		<>
-			<JotFormEmbed title={title} jotFormID={`${Number(formId)}`} />
-		</>
-	);
+	if (!title?.trim() || !formId?.trim()) {
+		console.error("Form Embed is missing required properties");
+		return <div>This form is not avialable at the moment</div>;
+	}
+
+	return <JotFormEmbed title={title} jotFormID={`${Number(formId)}`} />;
 };
