@@ -48,3 +48,5 @@ components.*.json
 
 # JSON component backups from CLI scripts
 temp-components-backup-*/**
+
+certificates
