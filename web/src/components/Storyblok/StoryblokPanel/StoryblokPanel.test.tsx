@@ -1,11 +1,13 @@
 import { render, screen } from "@testing-library/react";
 import React from "react";
 
+import { PanelStoryblok, RichtextStoryblok } from "@/types/storyblok";
+import { fieldHasValidContent } from "@/utils/storyblok";
+
 import { StoryblokPanel } from "./StoryblokPanel";
-import { PanelStoryblok } from "@/types/storyblok";
 
 jest.mock("../StoryblokRichText/StoryblokRichText", () => ({
-	StoryblokRichText: ({ content }: { content: any }) => {
+	StoryblokRichText: ({ content }: { content: RichtextStoryblok }) => {
 		const text = content?.content?.[0]?.content?.[0]?.text || "";
 		return <div data-testid="storyblok-rich-text">{text}</div>;
 	},
@@ -14,7 +16,6 @@ jest.mock("../StoryblokRichText/StoryblokRichText", () => ({
 jest.mock("@/utils/storyblok", () => ({
 	fieldHasValidContent: jest.fn(),
 }));
-import { fieldHasValidContent } from "@/utils/storyblok";
 const mockData: PanelStoryblok = {
 	_uid: "i-e384a8c2-5338-4c7a-b8ef-c2d6b1572e76",
 	content: {
@@ -75,15 +76,19 @@ describe("StoryblokPanel", () => {
 			...mockData,
 			variant: "supporting" as "supporting" | "primary" | "impact",
 		};
-		const { container } = render(<StoryblokPanel blok={data} />);
-		expect(container.querySelector(".panel--supporting")).toBeInTheDocument();
+		render(<StoryblokPanel blok={data} />);
+
+		const panel = screen.getByTestId("storyblok-panel");
+		expect(panel).toHaveClass("panel--supporting");
 	});
 	it("renders with default variant ", () => {
 		const data = {
 			...mockData,
 			variant: "primary" as "supporting" | "primary" | "impact",
 		};
-		const { container } = render(<StoryblokPanel blok={data} />);
-		expect(container.querySelector(".panel--primary")).toBeInTheDocument();
+		render(<StoryblokPanel blok={data} />);
+
+		const panel = screen.getByTestId("storyblok-panel");
+		expect(panel).toHaveClass("panel--primary");
 	});
 });
