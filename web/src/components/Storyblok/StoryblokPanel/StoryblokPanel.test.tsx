@@ -74,6 +74,7 @@ describe("StoryblokPanel", () => {
 	it.each([
 		["supporting", "panel--supporting"],
 		["primary", "panel--primary"],
+		["impact", "panel--impact"],
 	])("renders with %s variant", (variant, expectedClass) => {
 		const data = {
 			...mockData,
