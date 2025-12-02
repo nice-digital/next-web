@@ -72,6 +72,10 @@ const commonHeaders = [
 		key: "Referrer-Policy",
 		value: "strict-origin-when-cross-origin",
 	},
+	{
+		key: "Content-Security-Policy",
+		value: "frame-ancestors 'self' https://app.storyblok.com",
+	},
 	/**
 	 * Preload external assets and preconnecting external domains via Link header
 	 */
@@ -86,19 +90,19 @@ const commonHeaders = [
 	},
 ];
 
-// Prevent emebdding this site in frames in production, but allow it in dev so we can use the Storyblok preview editor
-if (process.env.NODE_ENV === "production") {
-	commonHeaders.push(
-		{
-			key: "X-Frame-Options",
-			value: "DENY",
-		},
-		{
-			key: "Content-Security-Policy",
-			value: "frame-ancestors 'self' https://*.infogram.com",
-		}
-	);
-}
+// TODO: Prevent the live site being embedded in iframes at all, as only test sites are used by the Storyblok preview editor. Not currently possible due to env var limitations within build/deploy workflow; var used in logic may need tweaking and will need adding to configs etc.
+// if (process.env.HOSTNAME === "www.nice.org.uk") {
+// 	commonHeaders.push(
+// 		{
+// 			key: "X-Frame-Options",
+// 			value: "DENY",
+// 		},
+// 		{
+// 			key: "Content-Security-Policy",
+// 			value: "frame-ancestors 'none'",
+// 		}
+// 	);
+// }
 
 /**
  * @type {import('next').NextConfig}
@@ -120,7 +124,7 @@ const nextConfig = {
 		return [
 			{
 				source:
-					"/:productRoot(indicators|guidance)/:statusSlug(indevelopment|discontinued|awaiting-development|topic-selection)/:path*",
+					"/:productRoot(indicators|guidance)/:statusSlug(indevelopment|discontinued|awaiting-development|prioritisation)/:path*",
 				destination:
 					"/indicators/indevelopment/:path*?productRoot=:productRoot&statusSlug=:statusSlug",
 			},
@@ -2228,7 +2232,7 @@ const nextConfig = {
 			},
 			{
 				source: "/about/what-we-do/our-programmes/topic-selection",
-				destination: "/guidance/topic-selection",
+				destination: "/guidance/prioritisation",
 				permanent: true,
 			},
 			{

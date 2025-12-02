@@ -4,7 +4,7 @@ export const pagePaths = {
 	"in consultation guidance list": "/guidance/inconsultation",
 	"in development guidance list": "/guidance/indevelopment",
 	"awaiting development guidance list": "/guidance/awaiting-development",
-	"topic selection list": "/guidance/topic-selection",
+	"topic prioritisation list": "/guidance/prioritisation",
 	status: "/status",
 	"published indicators list": "/indicators/published",
 	"in consultation indicators list": "/indicators/inconsultation",

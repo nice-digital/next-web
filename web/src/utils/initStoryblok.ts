@@ -30,9 +30,11 @@ import { StoryblokIframe } from "@/components/Storyblok/StoryblokIframe/Storyblo
 import { StoryblokImageRichText } from "@/components/Storyblok/StoryblokImageRichText/StoryblokImageRichText";
 import { ClientInfogramEmbed } from "@/components/Storyblok/StoryblokInfogramEmbed/ClientInfogramEmbed";
 import { StoryblokNewsArticle } from "@/components/Storyblok/StoryblokNewsArticle/StoryblokNewsArticle";
+import { StoryblokOrderedList } from "@/components/Storyblok/StoryblokOrderedList/StoryblokOrderedList";
 import { StoryblokPageHeader } from "@/components/Storyblok/StoryblokPageHeader/StoryblokPageHeader";
 import { StoryblokRelatedLink } from "@/components/Storyblok/StoryblokRelatedLink/StoryblokRelatedLink";
 import { StoryblokRelatedNewsLink } from "@/components/Storyblok/StoryblokRelatedNewsLink/StoryblokRelatedNewsLink";
+import { StoryblokRichTextTable } from "@/components/Storyblok/StoryblokRichTextTable/StoryblokRichTextTable";
 import { StoryblokTable } from "@/components/Storyblok/StoryblokTable/StoryblokTable";
 import { StoryblokTestimonialFullWidth } from "@/components/Storyblok/StoryblokTestimonialFullWidth/StoryblokTestimonialFullWidth";
 import { StoryblokTestimonialGridItem } from "@/components/Storyblok/StoryblokTestimonialGridItem/StoryblokTestimonialGridItem";
@@ -46,6 +48,7 @@ const commonComponents = {
 	accordionGroup: StoryblokAccordionGroup,
 	actionBannerDefault: StoryblokActionBannerDefault,
 	cardGrid: BasicCardGrid,
+	cardGridRowBasic: CardGridRow,
 	cardList: CardList,
 	hero: StoryblokHero,
 	iframe: StoryblokIframe,
@@ -84,7 +87,6 @@ const categoryNavigationPageComponents = {
 
 // TODO make homepage component names consistent with common component names
 const homepageComponents = {
-	basicCardGrid: BasicCardGrid,
 	homepage: Homepage,
 	homepageHero: HomepageHero,
 	promobox: PromoBox,
@@ -94,13 +96,14 @@ const homepageComponents = {
 };
 
 const infoPageComponents = {
-	cardGridRowBasic: CardGridRow,
 	cardGridRowCallout: CardGridRow,
 	cardGridRowCalloutWithImage: CardGridRow,
 	imageRichText: StoryblokImageRichText,
 	infogramEmbed: ClientInfogramEmbed,
 	infoPage: InfoPage,
 	nestedTable: StoryblokTable,
+	orderedList: StoryblokOrderedList,
+	richTextTable: StoryblokRichTextTable,
 };
 
 export const allComponents: SbReactComponentsMap = {
