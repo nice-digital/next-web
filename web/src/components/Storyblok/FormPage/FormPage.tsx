@@ -11,7 +11,6 @@ import styles from "./FormPage.module.scss";
 export interface FormPageProps {
 	blok: FormPageStoryblok;
 	breadcrumbs?: Breadcrumb[];
-	slug: string;
 }
 
 export const FormPage = ({
@@ -41,6 +40,7 @@ export const FormPage = ({
 							<StoryblokComponent blok={nestedBlok} key={nestedBlok._uid} />
 						))}
 				</GridItem>
+				{/* TODO: bring in Panel from NXT-501 */}
 				{blok.panel && (
 					<GridItem cols={12} md={4}>
 						{blok.panel.map((nestedBlok) => (
