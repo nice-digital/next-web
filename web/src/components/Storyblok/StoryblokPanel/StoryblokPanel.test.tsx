@@ -71,24 +71,18 @@ describe("StoryblokPanel", () => {
 		expect(screen.queryByTestId("storyblok-rich-text")).not.toBeInTheDocument();
 	});
 
-	it("renders with default variant", () => {
+	it.each([
+		["supporting", "panel--supporting"],
+		["primary", "panel--primary"],
+	])("renders with %s variant", (variant, expectedClass) => {
 		const data = {
 			...mockData,
-			variant: "supporting" as "supporting" | "primary" | "impact",
+			variant: variant as "supporting" | "primary" | "impact",
 		};
+
 		render(<StoryblokPanel blok={data} />);
 
 		const panel = screen.getByTestId("storyblok-panel");
-		expect(panel).toHaveClass("panel--supporting");
-	});
-	it("renders with default variant ", () => {
-		const data = {
-			...mockData,
-			variant: "primary" as "supporting" | "primary" | "impact",
-		};
-		render(<StoryblokPanel blok={data} />);
-
-		const panel = screen.getByTestId("storyblok-panel");
-		expect(panel).toHaveClass("panel--primary");
+		expect(panel).toHaveClass(expectedClass);
 	});
 });
