@@ -1,0 +1,17 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Indicators sitemap XML should exclude withdrawn products and non-indicators from sitemap 1`] = `
+"<?xml version=\\"1.0\\" encoding=\\"UTF-8\\"?>
+<urlset xmlns=\\"http://www.sitemaps.org/schemas/sitemap/0.9\\" xmlns:news=\\"http://www.google.com/schemas/sitemap-news/0.9\\" xmlns:xhtml=\\"http://www.w3.org/1999/xhtml\\" xmlns:mobile=\\"http://www.google.com/schemas/sitemap-mobile/1.0\\" xmlns:image=\\"http://www.google.com/schemas/sitemap-image/1.1\\" xmlns:video=\\"http://www.google.com/schemas/sitemap-video/1.1\\">
+<url><loc>https://next-web-tests.nice.org.uk/indicators/ind278-cardiovascular-disease-prevention-cholesterol-treatment-target-secondary-prevention</loc><lastmod>2024-11-27T12:00:00</lastmod></url>
+<url><loc>https://next-web-tests.nice.org.uk/indicators/ind274-diabetes-lipid-lowering-therapies-for-primary-prevention-of-cvd-t2-dm-and-10-risk</loc><lastmod>2024-11-27T12:00:00</lastmod></url>
+<url><loc>https://next-web-tests.nice.org.uk/indicators/ind277-diabetes-t1-dm-and-lipid-lowering-therapies</loc><lastmod>2024-11-27T12:00:00</lastmod></url>
+<url><loc>https://next-web-tests.nice.org.uk/indicators/ind273-asthma-annual-review</loc><lastmod>2024-11-27T12:00:00</lastmod></url>
+<url><loc>https://next-web-tests.nice.org.uk/indicators/ind276-diabetes-lipid-lowering-therapies-for-secondary-prevention-of-cvd</loc><lastmod>2024-11-27T12:00:00</lastmod></url>
+<url><loc>https://next-web-tests.nice.org.uk/indicators/indevelopment/gid-ind10226</loc><lastmod>2023-07-03T10:30:22</lastmod></url>
+<url><loc>https://next-web-tests.nice.org.uk/indicators/indevelopment/gid-ind10227</loc><lastmod>2023-07-03T10:28:34</lastmod></url>
+<url><loc>https://next-web-tests.nice.org.uk/indicators/indevelopment/gid-ind10243</loc><lastmod>2023-07-03T05:27:57</lastmod></url>
+<url><loc>https://next-web-tests.nice.org.uk/indicators/indevelopment/gid-ind10244</loc><lastmod>2023-07-03T05:26:27</lastmod></url>
+<url><loc>https://next-web-tests.nice.org.uk/indicators/indevelopment/gid-ind10242</loc><lastmod>2023-07-03T02:26:12</lastmod></url>
+</urlset>"
+`;
