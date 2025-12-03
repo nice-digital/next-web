@@ -20,7 +20,7 @@ jest.mock("./FormEmbed", () => ({
 describe("ClientFormEmbed", () => {
 	it("renders loading placeholder initially", () => {
 		render(<ClientFormEmbed blok={mockFormEmbed} />);
-		expect(screen.getByText("Loading")).toBeInTheDocument();
+		expect(screen.getByText("Loading form, please wait")).toBeInTheDocument();
 	});
 
 	it("loads and renders InfogramEmbed", async () => {
