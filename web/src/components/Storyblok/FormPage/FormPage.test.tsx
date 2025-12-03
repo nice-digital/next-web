@@ -1,9 +1,5 @@
 import { screen } from "@testing-library/react";
 
-// import sampleDataHeroInPageNav from "@/mockData/storyblok/infoPageWithHeroAndInPageNav.json";
-// import sampleDataNoNav from "@/mockData/storyblok/infoPageWithNoNav.json";
-// import sampleDataPageHeaderSectionNav from "@/mockData/storyblok/infoPageWithPageHeaderAndSectionNav.json";
-
 import sampleDataWithMeta from "@/mockData/storyblok/formPageWithMeta.json";
 import sampleDataWithPageHeader from "@/mockData/storyblok/formPageWithPageHeader.json";
 import { render } from "@/test-utils/rendering";
@@ -14,19 +10,15 @@ import { FormPage, type FormPageProps } from "./FormPage";
 const mockPageHeaderSectionAndPanel = sampleDataWithPageHeader.story.content;
 
 const mockFormPageWithMetadata = sampleDataWithMeta.story.content;
-// const mockHeroInPageNavData = sampleDataHeroInPageNav.story.content;
-// const mockNoNavData = sampleDataNoNav.story.content;
 
 const mockPropsWithPageHeaderAndPanel: FormPageProps = {
 	blok: mockPageHeaderSectionAndPanel as FormPageStoryblok,
 	breadcrumbs: sampleDataWithPageHeader.breadcrumbs,
-	slug: sampleDataWithPageHeader.slug,
 };
 
 const mockPropsWithMetadata: FormPageProps = {
 	blok: mockFormPageWithMetadata as FormPageStoryblok,
 	breadcrumbs: sampleDataWithMeta.breadcrumbs,
-	slug: sampleDataWithMeta.slug,
 };
 
 describe("FormPage", () => {
@@ -58,8 +50,6 @@ describe("FormPage", () => {
 		render(<FormPage {...mockPropsWithPageHeaderAndPanel} />);
 		const { component } = mockPageHeaderSectionAndPanel.panel[0];
 		console.log(component);
-
-		// const panel = screen.get
 	});
 
 	it("should render FormEmbed through the StoryblokComponent", () => {
