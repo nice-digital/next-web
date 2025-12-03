@@ -21,14 +21,21 @@ const mockMissingTitle: FormEmbedStoryblok = {
 const mockMissingFormID: FormEmbedStoryblok = {
 	_uid: "341e187273",
 	title: "NICE Advice contact us",
-	formId: " ",
+	formId: "",
 	component: "formEmbed",
 };
 
 const mockMissingBothProps: FormEmbedStoryblok = {
 	_uid: "341e187273",
-	title: " ",
-	formId: " ",
+	title: "",
+	formId: "",
+	component: "formEmbed",
+};
+
+const mockMissingBothWithEmptyStringsProps: FormEmbedStoryblok = {
+	_uid: "341e187273",
+	title: "   ",
+	formId: "   ",
 	component: "formEmbed",
 };
 
@@ -45,21 +52,28 @@ describe("FormEmbed", () => {
 	it("renders a fallback UI message when the title is missing", () => {
 		render(<FormEmbed blok={mockMissingTitle} />);
 		expect(
-			screen.getByText("This form is not avialable at the moment")
+			screen.getByText("This form is not available at the moment")
 		).toBeInTheDocument();
 	});
 
 	it("renders a fallback message when the formID is missing", () => {
 		render(<FormEmbed blok={mockMissingFormID} />);
 		expect(
-			screen.getByText("This form is not avialable at the moment")
+			screen.getByText("This form is not available at the moment")
 		).toBeInTheDocument();
 	});
 
 	it("renders a fallback message when both title and formID are missing", () => {
 		render(<FormEmbed blok={mockMissingBothProps} />);
 		expect(
-			screen.getByText("This form is not avialable at the moment")
+			screen.getByText("This form is not available at the moment")
+		).toBeInTheDocument();
+	});
+
+	it("renders a fallback message when both title and formID are passed as empty strings", () => {
+		render(<FormEmbed blok={mockMissingBothWithEmptyStringsProps} />);
+		expect(
+			screen.getByText("This form is not available at the moment")
 		).toBeInTheDocument();
 	});
 });
