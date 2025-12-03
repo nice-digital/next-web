@@ -12,7 +12,7 @@ import { CardList } from "@/components/Storyblok/CardList/CardList";
 import { CardListSection } from "@/components/Storyblok/CardListSection/CardListSection";
 import { CategoryLandingPage } from "@/components/Storyblok/CategoryLandingPage/CategoryLandingPage";
 import { CategoryNavigation } from "@/components/Storyblok/CategoryNavigation/CategoryNavigation";
-import { FormEmbed } from "@/components/Storyblok/FormEmbed/FormEmbed";
+import { ClientFormEmbed } from "@/components/Storyblok/FormEmbed/ClientFormEmbed";
 import { FormPage } from "@/components/Storyblok/FormPage/FormPage";
 import { Homepage } from "@/components/Storyblok/Homepage/Homepage";
 import { HomepageHero } from "@/components/Storyblok/Homepage/HomepageHero/HomepageHero";
@@ -58,7 +58,7 @@ const commonComponents = {
 	pageHeader: StoryblokPageHeader,
 	quote: Blockquote,
 	youtubeEmbed: StoryblokYoutubeEmbed,
-	formEmbed: FormEmbed,
+	formEmbed: ClientFormEmbed,
 	formPage: FormPage,
 };
 
