@@ -68,7 +68,9 @@ Use the command line instead if you need more granular control:
 
 ## JotForms Integration
 
-We use an enterprise edition of JotForms, [https://nice.jotform.com/myforms/](https://nice.jotform.com/myforms/) to host forms on the NICE Website. For further information, please see [docs/jotforms-integration.md](docs/jotforms-integration.md).
+We use an enterprise edition of JotForms, [https://nice.jotform.com/myforms/](https://nice.jotform.com/myforms/) to host forms on the NICE Website through Storyblok.
+
+For further information, please see [docs/jotforms-integration.md](docs/jotforms-integration.md).
 
 ## Setting up Ocelot for Storyblok
 
