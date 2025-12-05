@@ -1,0 +1,717 @@
+{
+  "_links": {
+    "nice.indev:stakeholder-registration": [
+      {
+        "href": "https://www.nice.org.uk/get-involved/register-your-organisation-as-a-stakeholder"
+      }
+    ],
+    "self": [
+      {
+        "href": "/project/GID-DG10017"
+      }
+    ]
+  },
+  "_embedded": {
+    "nice.indev:provisional-schedule-list": {
+      "_links": {
+        "self": [
+          {
+
+          }
+        ]
+      },
+      "_embedded": {
+        "nice.indev:provisional-schedule": {
+          "_links": {
+            "self": [
+              {
+
+              }
+            ]
+          },
+          "ETag": null,
+          "AdditionalInfoLabel": null,
+          "AdditionalInfo": null,
+          "Hidden": false,
+          "Column1": "Diagnostics consultation",
+          "Column2": "19 November 2025 - 31 December 2025"
+        }
+      },
+      "ETag": null
+    },
+    "nice.indev:timeline-list": {
+      "_links": {
+        "self": [
+          {
+
+          }
+        ]
+      },
+      "_embedded": {
+        "nice.indev:timeline": [
+          {
+            "_links": {
+              "self": [
+                {
+
+                }
+              ]
+            },
+            "ETag": null,
+            "AdditionalInfoLabel": null,
+            "AdditionalInfo": null,
+            "Hidden": false,
+            "Column1": "27 November 2025",
+            "Column2": "Declaration of interests"
+          },
+          {
+            "_links": {
+              "self": [
+                {
+
+                }
+              ]
+            },
+            "ETag": null,
+            "AdditionalInfoLabel": "Meeting number",
+            "AdditionalInfo": null,
+            "Hidden": false,
+            "Column1": "27 November 2025",
+            "Column2": "Committee meeting"
+          },
+          {
+            "_links": {
+              "self": [
+                {
+
+                }
+              ]
+            },
+            "ETag": null,
+            "AdditionalInfoLabel": null,
+            "AdditionalInfo": null,
+            "Hidden": false,
+            "Column1": "27 November 2025",
+            "Column2": "Main note"
+          }
+        ]
+      },
+      "ETag": null
+    },
+    "nice.indev:process-homepage": {
+      "_links": {
+        "self": [
+          {
+            "href": "https://www.nice.org.uk/about/what-we-do/our-programmes/topic-selection"
+          },
+          {
+
+          }
+        ]
+      },
+      "ETag": null,
+      "Description": "For further information on how we select topics for development, please see our page about",
+      "LinkText": "topic prioritisation"
+    },
+    "nice.indev:panel-list": {
+      "_links": {
+        "self": [
+          {
+
+          }
+        ]
+      },
+      "_embedded": {
+        "nice.indev:panel": [
+          {
+            "_links": {
+              "self": [
+                {
+
+                }
+              ]
+            },
+            "_embedded": {
+              "nice.indev:resource-list": {
+                "_links": {
+                  "self": [
+                    {
+
+                    }
+                  ]
+                },
+                "_embedded": {
+                  "nice.indev:resource": [
+                    {
+                      "_links": {
+                        "self": [
+                          {
+
+                          }
+                        ]
+                      },
+                      "_embedded": {
+                        "nice.indev:file": {
+                          "_links": {
+                            "self": [
+                              {
+                                "href": "/guidance/GID-DG10017/documents/consultation-document"
+                              }
+                            ]
+                          },
+                          "ETag": null,
+                          "Id": "b6a7f34c-314b-4515-9217-0b9e4ff2b101",
+                          "MimeType": "application/vnd.openxmlformats-officedocument.wordprocessingml.document",
+                          "FileName": "CG32 1.docx",
+                          "Length": 68634,
+                          "Hash": "178F117583152AE4DB00CF03900DB8F772B54B3C",
+                          "Name": "default",
+                          "Reference": "GID-DG10017",
+                          "ResourceTitleId": "consultation-document",
+                          "ConsultationDocumentId": 0
+                        }
+                      },
+                      "ETag": null,
+                      "Title": "Draft consultation document (downloadable version)",
+                      "Level": 1,
+                      "PublishedDate": "2025-11-28T19:06:00",
+                      "MajorChangeDate": null,
+                      "ExternalUrl": null,
+                      "ShowInDocList": true,
+                      "TextOnly": false,
+                      "ConsultationId": 19,
+                      "ConsultationDocumentId": 0,
+                      "IsCurrentViewableConsultationMarkup": false,
+                      "ConvertedDocument": false,
+                      "SupportsComments": false,
+                      "ExternalLinks": []
+                    },
+                    {
+                      "_links": {
+                        "self": [
+                          {
+
+                          }
+                        ]
+                      },
+                      "ETag": null,
+                      "Title": "Diagnostics consultation",
+                      "Level": 1,
+                      "PublishedDate": null,
+                      "MajorChangeDate": null,
+                      "ExternalUrl": null,
+                      "ShowInDocList": true,
+                      "TextOnly": false,
+                      "ConsultationId": 0,
+                      "ConsultationDocumentId": 0,
+                      "IsCurrentViewableConsultationMarkup": false,
+                      "ConvertedDocument": false,
+                      "SupportsComments": false,
+                      "ExternalLinks": [
+                        {
+                          "Id": 0,
+                          "Url": "https://www.test-external-links7.co.uk/",
+                          "DisplayText": "External link 7"
+                        },
+                        {
+                          "Id": 1,
+                          "Url": "https://www.test-external-links8.co.uk/",
+                          "DisplayText": "External link 8"
+                        }
+                      ]
+                    }
+                  ]
+                },
+                "ETag": null,
+                "HasResources": true
+              }
+            },
+            "ETag": null,
+            "Title": "Diagnostics consultation",
+            "PanelType": "History",
+            "LegacyPanel": false,
+            "OriginalReference": null,
+            "UpdateReference": null,
+            "ShowPanel": true
+          },
+          {
+            "_links": {
+              "self": [
+                {
+
+                }
+              ]
+            },
+            "_embedded": {
+              "nice.indev:resource-list": {
+                "_links": {
+                  "self": [
+                    {
+
+                    }
+                  ]
+                },
+                "_embedded": {
+                  "nice.indev:resource": [
+                    {
+                      "_links": {
+                        "self": [
+                          {
+
+                          }
+                        ]
+                      },
+                      "_embedded": {
+                        "nice.indev:converted-document": {
+                          "_links": {
+                            "self": [
+                              {
+                                "href": "/guidance/GID-DG10017/documents/html-conversion/html"
+                              }
+                            ]
+                          },
+                          "ETag": null,
+                          "Reference": "GID-DG10017",
+                          "Title": "Html conversion document",
+                          "ResourceTitleId": "html-conversion",
+                          "ProjectType": "DG",
+                          "ProductTypeName": "Diagnostics guidance"
+                        }
+                      },
+                      "ETag": null,
+                      "Title": "Html conversion document",
+                      "Level": 1,
+                      "PublishedDate": "2025-11-28T19:06:00",
+                      "MajorChangeDate": null,
+                      "ExternalUrl": null,
+                      "ShowInDocList": true,
+                      "TextOnly": false,
+                      "ConsultationId": 0,
+                      "ConsultationDocumentId": 0,
+                      "IsCurrentViewableConsultationMarkup": false,
+                      "ConvertedDocument": true,
+                      "SupportsComments": false,
+                      "ExternalLinks": []
+                    },
+                    {
+                      "_links": {
+                        "self": [
+                          {
+
+                          }
+                        ]
+                      },
+                      "_embedded": {
+                        "nice.indev:file": {
+                          "_links": {
+                            "self": [
+                              {
+                                "href": "/guidance/GID-DG10017/documents/html-content"
+                              }
+                            ]
+                          },
+                          "ETag": null,
+                          "Id": "be304235-0dc0-48cb-8750-1e4bc940c3c8",
+                          "MimeType": "text/html",
+                          "FileName": "HtmlContent",
+                          "Length": 50,
+                          "Hash": "49F623A3258E1003A1EAA2B20298C9A4346EE4F7",
+                          "Name": "default",
+                          "Reference": "GID-DG10017",
+                          "ResourceTitleId": "html-content",
+                          "ConsultationDocumentId": 0
+                        }
+                      },
+                      "ETag": null,
+                      "Title": "Declaration of interests",
+                      "Level": 1,
+                      "PublishedDate": "2025-11-28T19:06:00",
+                      "MajorChangeDate": null,
+                      "ExternalUrl": null,
+                      "ShowInDocList": true,
+                      "TextOnly": false,
+                      "ConsultationId": 0,
+                      "ConsultationDocumentId": 0,
+                      "IsCurrentViewableConsultationMarkup": false,
+                      "ConvertedDocument": false,
+                      "SupportsComments": false,
+                      "ExternalLinks": []
+                    },
+                    {
+                      "_links": {
+                        "self": [
+                          {
+
+                          }
+                        ]
+                      },
+                      "_embedded": {
+                        "nice.indev:generated-pdf": {
+                          "_links": {
+                            "self": [
+                              {
+                                "href": "/guidance/GID-DG10017/documents/html-to-pdf"
+                              }
+                            ]
+                          },
+                          "ETag": null,
+                          "Id": "910cec9f-b224-4cbc-99be-5a0352a28680",
+                          "MimeType": "application/pdf",
+                          "FileName": "Html conversion document.pdf",
+                          "Length": 249956,
+                          "Hash": "7AF02DC2F2B3202D0DCDEC70D1D420E34ABB60F4",
+                          "Name": null,
+                          "Reference": "GID-DG10017",
+                          "ResourceTitleId": "html-to-pdf",
+                          "ConsultationDocumentId": 0
+                        }
+                      },
+                      "ETag": null,
+                      "Title": "Html conversion document (pdf)",
+                      "Level": 1,
+                      "PublishedDate": "2025-11-28T19:06:00",
+                      "MajorChangeDate": null,
+                      "ExternalUrl": null,
+                      "ShowInDocList": true,
+                      "TextOnly": false,
+                      "ConsultationId": 0,
+                      "ConsultationDocumentId": 0,
+                      "IsCurrentViewableConsultationMarkup": false,
+                      "ConvertedDocument": false,
+                      "SupportsComments": false,
+                      "ExternalLinks": []
+                    },
+                    {
+                      "_links": {
+                        "self": [
+                          {
+
+                          }
+                        ]
+                      },
+                      "ETag": null,
+                      "Title": "Declaration of interests",
+                      "Level": 1,
+                      "PublishedDate": null,
+                      "MajorChangeDate": null,
+                      "ExternalUrl": null,
+                      "ShowInDocList": true,
+                      "TextOnly": false,
+                      "ConsultationId": 0,
+                      "ConsultationDocumentId": 0,
+                      "IsCurrentViewableConsultationMarkup": false,
+                      "ConvertedDocument": false,
+                      "SupportsComments": false,
+                      "ExternalLinks": [
+                        {
+                          "Id": 0,
+                          "Url": "https://www.test-external-link.co.uk/",
+                          "DisplayText": "External link 1"
+                        },
+                        {
+                          "Id": 1,
+                          "Url": "https://www.test-external-link2.co.uk/",
+                          "DisplayText": "External link 2"
+                        }
+                      ]
+                    }
+                  ]
+                },
+                "ETag": null,
+                "HasResources": true
+              }
+            },
+            "ETag": null,
+            "Title": "Declaration of interests",
+            "PanelType": "History",
+            "LegacyPanel": false,
+            "OriginalReference": null,
+            "UpdateReference": null,
+            "ShowPanel": true
+          },
+          {
+            "_links": {
+              "self": [
+                {
+
+                }
+              ]
+            },
+            "_embedded": {
+              "nice.indev:resource-list": {
+                "_links": {
+                  "self": [
+                    {
+
+                    }
+                  ]
+                },
+                "_embedded": {
+                  "nice.indev:resource": [
+                    {
+                      "_links": {
+                        "self": [
+                          {
+
+                          }
+                        ]
+                      },
+                      "ETag": null,
+                      "Title": "Committee meeting",
+                      "Level": 3,
+                      "PublishedDate": null,
+                      "MajorChangeDate": null,
+                      "ExternalUrl": null,
+                      "ShowInDocList": true,
+                      "TextOnly": true,
+                      "ConsultationId": 0,
+                      "ConsultationDocumentId": 0,
+                      "IsCurrentViewableConsultationMarkup": false,
+                      "ConvertedDocument": false,
+                      "SupportsComments": false,
+                      "ExternalLinks": []
+                    },
+                    {
+                      "_links": {
+                        "self": [
+                          {
+
+                          }
+                        ]
+                      },
+                      "_embedded": {
+                        "nice.indev:file": {
+                          "_links": {
+                            "self": [
+                              {
+                                "href": "/guidance/GID-DG10017/documents/agenda"
+                              }
+                            ]
+                          },
+                          "ETag": null,
+                          "Id": "7429d113-c99e-4bda-b948-e07606d7a625",
+                          "MimeType": "application/vnd.openxmlformats-officedocument.wordprocessingml.document",
+                          "FileName": "NG240 Guideline 20240620.docx",
+                          "Length": 158344,
+                          "Hash": "3CD092B681798C3319F1808C8A8F319753F72B64",
+                          "Name": "default",
+                          "Reference": "GID-DG10017",
+                          "ResourceTitleId": "agenda",
+                          "ConsultationDocumentId": 0
+                        }
+                      },
+                      "ETag": null,
+                      "Title": "Agenda",
+                      "Level": 4,
+                      "PublishedDate": "2025-11-28T19:06:00",
+                      "MajorChangeDate": null,
+                      "ExternalUrl": null,
+                      "ShowInDocList": true,
+                      "TextOnly": false,
+                      "ConsultationId": 0,
+                      "ConsultationDocumentId": 0,
+                      "IsCurrentViewableConsultationMarkup": false,
+                      "ConvertedDocument": false,
+                      "SupportsComments": false,
+                      "ExternalLinks": []
+                    },
+                    {
+                      "_links": {
+                        "self": [
+                          {
+
+                          }
+                        ]
+                      },
+                      "ETag": null,
+                      "Title": "Committee meeting",
+                      "Level": 4,
+                      "PublishedDate": null,
+                      "MajorChangeDate": null,
+                      "ExternalUrl": null,
+                      "ShowInDocList": true,
+                      "TextOnly": false,
+                      "ConsultationId": 0,
+                      "ConsultationDocumentId": 0,
+                      "IsCurrentViewableConsultationMarkup": false,
+                      "ConvertedDocument": false,
+                      "SupportsComments": false,
+                      "ExternalLinks": [
+                        {
+                          "Id": 0,
+                          "Url": "https://www.test-external-link3.co.uk/",
+                          "DisplayText": "External link 3"
+                        },
+                        {
+                          "Id": 1,
+                          "Url": "https://www.test-external-link4.co.uk/",
+                          "DisplayText": "External link 4"
+                        }
+                      ]
+                    }
+                  ]
+                },
+                "ETag": null,
+                "HasResources": true
+              }
+            },
+            "ETag": null,
+            "Title": "Committee meetings",
+            "PanelType": "History",
+            "LegacyPanel": false,
+            "OriginalReference": null,
+            "UpdateReference": null,
+            "ShowPanel": true
+          },
+          {
+            "_links": {
+              "self": [
+                {
+
+                }
+              ]
+            },
+            "_embedded": {
+              "nice.indev:resource-list": {
+                "_links": {
+                  "self": [
+                    {
+
+                    }
+                  ]
+                },
+                "_embedded": {
+                  "nice.indev:resource": [
+                    {
+                      "_links": {
+                        "self": [
+                          {
+
+                          }
+                        ]
+                      },
+                      "_embedded": {
+                        "nice.indev:file": {
+                          "_links": {
+                            "self": [
+                              {
+                                "href": "/guidance/GID-DG10017/documents/html-content-2"
+                              }
+                            ]
+                          },
+                          "ETag": null,
+                          "Id": "bc64ecad-0310-4bb6-a084-19f94e9c170a",
+                          "MimeType": "text/html",
+                          "FileName": "HtmlContent",
+                          "Length": 32,
+                          "Hash": "DDF248B29E89C5219EDF513045395A6374BD2101",
+                          "Name": "default",
+                          "Reference": "GID-DG10017",
+                          "ResourceTitleId": "html-content-2",
+                          "ConsultationDocumentId": 0
+                        }
+                      },
+                      "ETag": null,
+                      "Title": "Note",
+                      "Level": 3,
+                      "PublishedDate": "2025-11-28T19:06:00",
+                      "MajorChangeDate": null,
+                      "ExternalUrl": null,
+                      "ShowInDocList": true,
+                      "TextOnly": false,
+                      "ConsultationId": 0,
+                      "ConsultationDocumentId": 0,
+                      "IsCurrentViewableConsultationMarkup": false,
+                      "ConvertedDocument": false,
+                      "SupportsComments": false,
+                      "ExternalLinks": []
+                    },
+                    {
+                      "_links": {
+                        "self": [
+                          {
+
+                          }
+                        ]
+                      },
+                      "ETag": null,
+                      "Title": "Note",
+                      "Level": 3,
+                      "PublishedDate": null,
+                      "MajorChangeDate": null,
+                      "ExternalUrl": null,
+                      "ShowInDocList": true,
+                      "TextOnly": false,
+                      "ConsultationId": 0,
+                      "ConsultationDocumentId": 0,
+                      "IsCurrentViewableConsultationMarkup": false,
+                      "ConvertedDocument": false,
+                      "SupportsComments": false,
+                      "ExternalLinks": [
+                        {
+                          "Id": 0,
+                          "Url": "https://www.test-external-link5.co.uk/",
+                          "DisplayText": "External link 5"
+                        },
+                        {
+                          "Id": 1,
+                          "Url": "https://www.test-external-link6.co.uk/",
+                          "DisplayText": "External link 6"
+                        }
+                      ]
+                    }
+                  ]
+                },
+                "ETag": null,
+                "HasResources": true
+              }
+            },
+            "ETag": null,
+            "Title": "Notes",
+            "PanelType": "History",
+            "LegacyPanel": false,
+            "OriginalReference": null,
+            "UpdateReference": null,
+            "ShowPanel": true
+          }
+        ]
+      },
+      "ETag": null
+    }
+  },
+  "ETag": "01000000-0000-0104-0000-000000000018",
+  "Summary": null,
+  "Description": null,
+  "ReferralDate": null,
+  "SuspendDiscontinuedReason": null,
+  "SuspendDiscontinuedUrl": null,
+  "SuspendDiscontinuedUrlText": null,
+  "LegacyModel": false,
+  "ProductReference": null,
+  "EvidenceAssessmentGroup": null,
+  "Alert": null,
+  "Content": null,
+  "Reference": "GID-DG10017",
+  "ProjectType": "DG",
+  "TechnologyType": "Device",
+  "ProductTypeName": "Diagnostics guidance",
+  "Process": "DG",
+  "Title": "External links test data",
+  "Status": "TopicSelection",
+  "ProjectGroup": "Guidance",
+  "PublishedDate": null,
+  "LastModifiedDate": "2025-11-28T19:07:48.867008",
+  "FirstGoLiveDate": "2025-11-28T19:07:48.867008",
+  "CreatedDate": "2025-11-28T18:49:17.9146298",
+  "DevelopedAs": null,
+  "RelevantTo": null,
+  "IdNumber": null,
+  "AreasOfInterestList": [],
+  "TopicSelectionDecision": "AwaitingDecision",
+  "TopicSelectionReason": null,
+  "TopicSelectionDecisionDate": "2025-11-28T18:49:17.9146298",
+  "TopicSelectionFurtherInfo": null,
+  "SuspendDiscontinuedDate": null,
+  "IndicatorSubTypes": [],
+  "TaxonomySubjectList": []
+}
