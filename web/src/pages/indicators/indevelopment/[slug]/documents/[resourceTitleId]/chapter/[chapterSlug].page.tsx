@@ -183,8 +183,8 @@ export const getServerSideProps: GetServerSideProps<
 		otherResources = arrayify(
 			panel.embedded.niceIndevResourceList.embedded.niceIndevResource
 		).filter((r) => r !== resource && !r.textOnly),
-		resourceLinks = otherResources.map((resource) =>
-			getInDevResourceLink({ resource, project, panel })
+		resourceLinks = otherResources.flatMap((resource) =>
+			arrayify(getInDevResourceLink({ resource, project, panel }))
 		);
 
 	const pdfDownload = resourceLinks.filter(

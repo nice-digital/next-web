@@ -129,8 +129,8 @@ export const getInDevResourceLink = ({
 	resource,
 	panel,
 	project,
-}: GetInDevResourceLinkArgs): ResourceLinkViewModel => {
-	const indevResourceLink = {
+}: GetInDevResourceLinkArgs): ResourceLinkViewModel[] => {
+	const indevResourceLink: ResourceLinkViewModel = {
 		title: resource.title,
 		href: "",
 		fileTypeName: null,
@@ -140,14 +140,18 @@ export const getInDevResourceLink = ({
 	};
 
 	if (!resource.embedded) {
-		if (!resource.externalUrl)
-			throw Error(
-				`Found resource (${resource.title}) with nothing embedded and no external URL`
-			);
+		const links = (resource.externalLinks || []).map((link) => ({
+			title: link.displayText || resource.title,
+			href: link.url,
+			fileTypeName: null,
+			fileSize: null,
+			date: resource.publishedDate,
+			type: panel.title,
+		}));
 
-		indevResourceLink.href = resource.externalUrl;
+		if (links.length > 0) return links;
 
-		return indevResourceLink;
+		return [];
 	} else {
 		const projectPath = getProjectPath(project),
 			resourceEmbedded = resource.embedded,
@@ -202,7 +206,7 @@ export const getInDevResourceLink = ({
 			});
 		}
 
-		return indevResourceLink;
+		return [indevResourceLink];
 	}
 };
 
