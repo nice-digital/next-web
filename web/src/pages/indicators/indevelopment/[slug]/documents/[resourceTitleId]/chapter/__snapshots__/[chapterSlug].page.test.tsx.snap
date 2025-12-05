@@ -146,7 +146,7 @@ exports[`[chapterSlug].page DocumentsHTMLPage should match the snapshot for main
         class="page-header__cta"
       >
         <a
-          href="https://www.nice.org.uk/about/what-we-do/our-programmes/nice-guidance/nice-diagnostics-guidance/dt-stakeholder-registration?t=&p=GID-DG10086&returnUrl=/guidance/topic-selection/gid-dg10086"
+          href="https://www.nice.org.uk/about/what-we-do/our-programmes/nice-guidance/nice-diagnostics-guidance/dt-stakeholder-registration?t=&p=GID-DG10086&returnUrl=/guidance/prioritisation/gid-dg10086"
         >
           Register as a stakeholder
         </a>
@@ -165,7 +165,7 @@ exports[`[chapterSlug].page DocumentsHTMLPage should match the snapshot for main
           <a
             aria-current="false"
             class="horizontal-nav__link"
-            href="/guidance/topic-selection/gid-dg10086"
+            href="/guidance/prioritisation/gid-dg10086"
           >
             Project information
           </a>
@@ -177,7 +177,7 @@ exports[`[chapterSlug].page DocumentsHTMLPage should match the snapshot for main
           <a
             aria-current="true"
             class="horizontal-nav__link"
-            href="/guidance/topic-selection/gid-dg10086/documents"
+            href="/guidance/prioritisation/gid-dg10086/documents"
           >
             Project documents
           </a>
@@ -196,7 +196,7 @@ exports[`[chapterSlug].page DocumentsHTMLPage should match the snapshot for main
           aria-label="Download PDF"
           class="btn btn--cta download"
           data-component="button--cta"
-          href="/guidance/topic-selection/gid-dg10086/downloads/gid-dg10086-final-scope-pdf.pdf"
+          href="/guidance/prioritisation/gid-dg10086/downloads/gid-dg10086-final-scope-pdf.pdf"
           target="_blank"
         >
           Download (PDF)
@@ -214,7 +214,7 @@ exports[`[chapterSlug].page DocumentsHTMLPage should match the snapshot for main
             >
               <a
                 aria-current="false"
-                href="/guidance/topic-selection/gid-dg10086/documents/final-scope-html-conversion"
+                href="/guidance/prioritisation/gid-dg10086/documents/final-scope-html-conversion"
               >
                 <span
                   class="stacked-nav__content-wrapper"
@@ -228,7 +228,7 @@ exports[`[chapterSlug].page DocumentsHTMLPage should match the snapshot for main
             >
               <a
                 aria-current="false"
-                href="/guidance/topic-selection/gid-dg10086/documents/final-scope-html-conversion/chapter/recommendations"
+                href="/guidance/prioritisation/gid-dg10086/documents/final-scope-html-conversion/chapter/recommendations"
               >
                 <span
                   class="stacked-nav__content-wrapper"
@@ -1287,7 +1287,7 @@ exports[`[chapterSlug].page DocumentsHTMLPage should match the snapshot for main
           >
             <a
               class="prev-next__link"
-              href="/guidance/topic-selection/gid-dg10086/documents/final-scope-html-conversion/chapter/recommendations"
+              href="/guidance/prioritisation/gid-dg10086/documents/final-scope-html-conversion/chapter/recommendations"
             >
               <span
                 class="prev-next__link-intro"
