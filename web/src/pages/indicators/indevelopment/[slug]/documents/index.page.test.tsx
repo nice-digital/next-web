@@ -85,10 +85,10 @@ describe("/indicators/indevelopment/[slug]/documents", () => {
 	});
 });
 
-describe("/indicators/topic-selection/[slug]/documents - getServerSideProps for External links", () => {
+describe("/indicators/prioritisation/[slug]/documents - getServerSideProps for External links", () => {
 	const slug = "gid-dg10017",
 		productRoot = "guidance",
-		statusSlug = "topic-selection",
+		statusSlug = "prioritisation",
 		resolvedUrl = `/${productRoot}/${statusSlug}/${slug}/documents`,
 		context: DocumentsPageGetServerSidePropsContext = {
 			params: { slug },
@@ -160,10 +160,10 @@ describe("/indicators/topic-selection/[slug]/documents - getServerSideProps for 
 	});
 });
 
-describe("/indicators/topic-selection/[slug]/documents - DocumentsPage with external links", () => {
+describe("/indicators/prioritisation/[slug]/documents - DocumentsPage with external links", () => {
 	const slug = "gid-dg10017",
 		productRoot = "guidance",
-		statusSlug = "topic-selection",
+		statusSlug = "prioritisation",
 		resolvedUrl = `/${productRoot}/${statusSlug}/${slug}/documents`,
 		context: DocumentsPageGetServerSidePropsContext = {
 			params: { slug },

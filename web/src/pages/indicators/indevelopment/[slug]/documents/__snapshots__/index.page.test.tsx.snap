@@ -1334,16 +1334,7 @@ Object {
 }
 `;
 
-exports[`/indicators/prioritisation/[slug]/documents - getServerSideProps for External links getServerSideProps should return a correct props for external links 1`] = `
-Object {
-  "redirect": Object {
-    "destination": "/guidance/topic-selection/gid-dg10017/documents",
-    "permanent": true,
-  },
-}
-`;
-
-exports[`/indicators/topic-selection/[slug]/documents - DocumentsPage with external links DocumentsPage with external links should match snapshot for project documents content 1`] = `
+exports[`/indicators/prioritisation/[slug]/documents - DocumentsPage with external links DocumentsPage with external links should match snapshot for project documents content 1`] = `
 <body>
   <div>
     <nav
@@ -1472,7 +1463,7 @@ exports[`/indicators/topic-selection/[slug]/documents - DocumentsPage with exter
         class="page-header__cta"
       >
         <a
-          href="https://www.nice.org.uk/get-involved/register-your-organisation-as-a-stakeholder?t=&p=GID-DG10017&returnUrl=/guidance/topic-selection/gid-dg10017"
+          href="https://www.nice.org.uk/get-involved/register-your-organisation-as-a-stakeholder?t=&p=GID-DG10017&returnUrl=/guidance/prioritisation/gid-dg10017"
         >
           Register as a stakeholder
         </a>
@@ -1491,7 +1482,7 @@ exports[`/indicators/topic-selection/[slug]/documents - DocumentsPage with exter
           <a
             aria-current="false"
             class="horizontal-nav__link"
-            href="/guidance/topic-selection/gid-dg10017"
+            href="/guidance/prioritisation/gid-dg10017"
           >
             Project information
           </a>
@@ -1503,7 +1494,7 @@ exports[`/indicators/topic-selection/[slug]/documents - DocumentsPage with exter
           <a
             aria-current="true"
             class="horizontal-nav__link"
-            href="/guidance/topic-selection/gid-dg10017/documents"
+            href="/guidance/prioritisation/gid-dg10017/documents"
           >
             Project documents
           </a>
@@ -1614,7 +1605,7 @@ exports[`/indicators/topic-selection/[slug]/documents - DocumentsPage with exter
                           class="card__heading"
                         >
                           <a
-                            href="/guidance/topic-selection/gid-dg10017/downloads/gid-dg10017-agenda.docx"
+                            href="/guidance/prioritisation/gid-dg10017/downloads/gid-dg10017-agenda.docx"
                           >
                             Agenda
                              
@@ -1721,7 +1712,7 @@ exports[`/indicators/topic-selection/[slug]/documents - DocumentsPage with exter
                           class="card__heading"
                         >
                           <a
-                            href="/guidance/topic-selection/gid-dg10017/documents/html-conversion"
+                            href="/guidance/prioritisation/gid-dg10017/documents/html-conversion"
                           >
                             Html conversion document
                           </a>
@@ -1761,7 +1752,7 @@ exports[`/indicators/topic-selection/[slug]/documents - DocumentsPage with exter
                           class="card__heading"
                         >
                           <a
-                            href="/guidance/topic-selection/gid-dg10017/documents/html-content"
+                            href="/guidance/prioritisation/gid-dg10017/documents/html-content"
                           >
                             Declaration of interests
                           </a>
@@ -1861,7 +1852,7 @@ exports[`/indicators/topic-selection/[slug]/documents - DocumentsPage with exter
                           class="card__heading"
                         >
                           <a
-                            href="/guidance/topic-selection/gid-dg10017/downloads/gid-dg10017-consultation-document.docx"
+                            href="/guidance/prioritisation/gid-dg10017/downloads/gid-dg10017-consultation-document.docx"
                           >
                             Draft consultation document (downloadable version)
                              
@@ -1968,7 +1959,7 @@ exports[`/indicators/topic-selection/[slug]/documents - DocumentsPage with exter
                           class="card__heading"
                         >
                           <a
-                            href="/guidance/topic-selection/gid-dg10017/documents/html-content-2"
+                            href="/guidance/prioritisation/gid-dg10017/documents/html-content-2"
                           >
                             Note
                           </a>
@@ -2047,7 +2038,7 @@ exports[`/indicators/topic-selection/[slug]/documents - DocumentsPage with exter
 </body>
 `;
 
-exports[`/indicators/topic-selection/[slug]/documents - getServerSideProps for External links getServerSideProps should return a correct props for external links 1`] = `
+exports[`/indicators/prioritisation/[slug]/documents - getServerSideProps for External links getServerSideProps should return a correct props for external links 1`] = `
 Object {
   "props": Object {
     "alert": null,
@@ -2082,7 +2073,7 @@ Object {
                   "date": "2025-11-28T19:06:00",
                   "fileSize": 158344,
                   "fileTypeName": "Word",
-                  "href": "/guidance/topic-selection/gid-dg10017/downloads/gid-dg10017-agenda.docx",
+                  "href": "/guidance/prioritisation/gid-dg10017/downloads/gid-dg10017-agenda.docx",
                   "title": "Agenda",
                   "type": "Committee meetings",
                 },
@@ -2116,7 +2107,7 @@ Object {
                   "date": "2025-11-28T19:06:00",
                   "fileSize": null,
                   "fileTypeName": null,
-                  "href": "/guidance/topic-selection/gid-dg10017/documents/html-conversion",
+                  "href": "/guidance/prioritisation/gid-dg10017/documents/html-conversion",
                   "title": "Html conversion document",
                   "type": "Declaration of interests",
                 },
@@ -2124,7 +2115,7 @@ Object {
                   "date": "2025-11-28T19:06:00",
                   "fileSize": null,
                   "fileTypeName": null,
-                  "href": "/guidance/topic-selection/gid-dg10017/documents/html-content",
+                  "href": "/guidance/prioritisation/gid-dg10017/documents/html-content",
                   "title": "Declaration of interests",
                   "type": "Declaration of interests",
                 },
@@ -2158,7 +2149,7 @@ Object {
                   "date": "2025-11-28T19:06:00",
                   "fileSize": 68634,
                   "fileTypeName": "Word",
-                  "href": "/guidance/topic-selection/gid-dg10017/downloads/gid-dg10017-consultation-document.docx",
+                  "href": "/guidance/prioritisation/gid-dg10017/downloads/gid-dg10017-consultation-document.docx",
                   "title": "Draft consultation document (downloadable version)",
                   "type": "Diagnostics consultation",
                 },
@@ -2192,7 +2183,7 @@ Object {
                   "date": "2025-11-28T19:06:00",
                   "fileSize": null,
                   "fileTypeName": null,
-                  "href": "/guidance/topic-selection/gid-dg10017/documents/html-content-2",
+                  "href": "/guidance/prioritisation/gid-dg10017/documents/html-content-2",
                   "title": "Note",
                   "type": "Notes",
                 },
@@ -2224,7 +2215,7 @@ Object {
       "status": "TopicSelection",
       "title": "External links test data",
     },
-    "projectPath": "/guidance/topic-selection/gid-dg10017",
+    "projectPath": "/guidance/prioritisation/gid-dg10017",
   },
 }
 `;
