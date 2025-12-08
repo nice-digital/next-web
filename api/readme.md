@@ -41,7 +41,7 @@ NextWeb API is a Redis-backed .NET Core application that provides transparent re
 ### Software
 
 - [Visual Studio 2022](https://visualstudio.microsoft.com/vs/)
-- [.NET Core 6.0 LTS](https://dotnet.microsoft.com/)
+- [.NET Core 8.0 LTS](https://dotnet.microsoft.com/)
 - [xUnit](https://xunit.net/) for tests
 - [Ocelot](https://ocelot.readthedocs.io/) API Framework
 - [CacheManager](https://cachemanager.michaco.net/) Caching framework form Ocelot
@@ -73,7 +73,7 @@ In the production environment (dev, test, alpha, beta, live) the config is read 
 
 ### Ocelot
 
-Ocelot is used by this project to provide basic API Gateway functionality. More information can be found here [Ocelot](https://ocelot.readthedocs.io/). This project is using version Ocelot 18.0.10 which is the highest version that supports .Net Core 6.0 LTS.
+Ocelot is used by this project to provide basic API Gateway functionality. More information can be found here [Ocelot](https://ocelot.readthedocs.io/). This project is using version Ocelot 24 which is the highest version that supports .Net Core 8.0 LTS.
 
 Ocelot is loaded from Nuget packages with some minor customisations. Mainly a custom Cache Manager is injected into the service collection. This custom Cache Manager is default except it inspects headers for the X-CacheManager-RefreshCache header which is described [here](#x-cachemanager-refreshcache-header).
 
