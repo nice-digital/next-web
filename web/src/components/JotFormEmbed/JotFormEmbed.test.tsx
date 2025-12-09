@@ -21,6 +21,22 @@ describe("JotFormEmbed", () => {
 		);
 	});
 
+	it("should add a prefillId to the iframe src URL if one is passed", () => {
+		const prefillId = "8908098das8908655das123gh";
+		render(
+			<JotFormEmbed
+				jotFormID="1234"
+				title="This is a prefill title"
+				prefillId={prefillId}
+			/>
+		);
+
+		expect(screen.getByTitle("This is a prefill title")).toHaveAttribute(
+			"src",
+			`https://next-web-tests.jotform.com/1234/prefill/${prefillId}?isIframeEmbed=1`
+		);
+	});
+
 	it("should allow full screen on iframe", () => {
 		render(<JotFormEmbed jotFormID="1234" title="This is a title" />);
 
