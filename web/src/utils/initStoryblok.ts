@@ -49,6 +49,7 @@ const commonComponents = {
 	accordionGroup: StoryblokAccordionGroup,
 	actionBannerDefault: StoryblokActionBannerDefault,
 	cardGrid: BasicCardGrid,
+	cardGridRowBasic: CardGridRow,
 	cardList: CardList,
 	hero: StoryblokHero,
 	iframe: StoryblokIframe,
@@ -87,7 +88,6 @@ const categoryNavigationPageComponents = {
 
 // TODO make homepage component names consistent with common component names
 const homepageComponents = {
-	basicCardGrid: BasicCardGrid,
 	homepage: Homepage,
 	homepageHero: HomepageHero,
 	promobox: PromoBox,
@@ -97,7 +97,6 @@ const homepageComponents = {
 };
 
 const infoPageComponents = {
-	cardGridRowBasic: CardGridRow,
 	cardGridRowCallout: CardGridRow,
 	cardGridRowCalloutWithImage: CardGridRow,
 	imageRichText: StoryblokImageRichText,

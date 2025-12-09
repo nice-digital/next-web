@@ -119,7 +119,7 @@ export const ProjectInformation: FC<ProjectInformationProps> = ({
 								<dd>{topicSelectionFurtherInfo}</dd>
 							</>
 						)}
-						{process && status !== ProjectStatus.TopicSelection ? (
+						{process && status !== ProjectStatus.TopicPrioritisation ? (
 							projectType == ProductTypeAcronym.NG ? (
 								<>
 									<dt>Developed as:</dt> <dd>{process}</dd>

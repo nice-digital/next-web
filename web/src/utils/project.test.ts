@@ -52,7 +52,7 @@ describe("project utils", () => {
 			it.each([
 				["InProgress", "indevelopment"],
 				["Proposed", "awaiting-development"],
-				["TopicSelection", "topic-selection"],
+				["TopicSelection", "prioritisation"],
 				["Discontinued", "discontinued"],
 			])(
 				"should redirect to correct url path for status %s and status slug %s when url path does not match project status",
@@ -89,7 +89,7 @@ describe("project utils", () => {
 			it.each([
 				["InProgress", "indevelopment"],
 				["Proposed", "awaiting-development"],
-				["TopicSelection", "topic-selection"],
+				["TopicSelection", "prioritisation"],
 				["Discontinued", "discontinued"],
 			])(
 				"should redirect to correct url path for status %s and status slug %s when group slug is incorrect",
@@ -126,7 +126,7 @@ describe("project utils", () => {
 			it.each([
 				["InProgress", "indevelopment"],
 				["Proposed", "awaiting-development"],
-				["TopicSelection", "topic-selection"],
+				["TopicSelection", "prioritisation"],
 				["Discontinued", "discontinued"],
 			])(
 				"should redirect to correct url path for status %s and status slug %s when both group slug and status slug are incorrect",

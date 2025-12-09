@@ -125,6 +125,7 @@ try
 catch (Exception ex)
 {
     Log.Fatal(ex, "Application start-up failed");
+    Console.WriteLine("Application start-up failed: " + ex.Message);
 }
 finally
 {

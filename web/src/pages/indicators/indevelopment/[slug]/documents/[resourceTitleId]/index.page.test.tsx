@@ -272,7 +272,7 @@ describe("[resourceTitleId].page", () => {
 			const slug = "gid-dg10086",
 				resourceTitleId = "final-scope-html-conversion",
 				productRoot = "guidance",
-				statusSlug = "topic-selection",
+				statusSlug = "prioritisation",
 				resolvedUrl = `/${productRoot}/${statusSlug}/${slug}/documents/${resourceTitleId}`,
 				context: DocumentHTMLPagePropsContext = {
 					params: { slug, resourceTitleId },
