@@ -221,7 +221,7 @@ export const getHistoryResourceLink = ({
 	resource,
 	panel,
 	productPath,
-	product
+	product,
 }: GetHistoryResourceLinkArgs): ResourceLinkViewModel[] => {
 	const indevResourceLink: ResourceLinkViewModel = {
 		title: resource.title,
@@ -262,8 +262,7 @@ export const getHistoryResourceLink = ({
 				resourceEmbedded.niceIndevGeneratedPdf) as IndevFile;
 		}
 
-		const mimeType =
-			"mimeType" in indevFile ? indevFile.mimeType : "text/html";
+		const mimeType = "mimeType" in indevFile ? indevFile.mimeType : "text/html";
 		const length = "length" in indevFile ? indevFile.length : 0;
 		const resourceTitleId = indevFile.resourceTitleId;
 		const fileName = "fileName" in indevFile ? indevFile.fileName : "";
@@ -272,8 +271,7 @@ export const getHistoryResourceLink = ({
 			resource.supportsComments || resource.supportsQuestions;
 
 		const isHTML = mimeType === "text/html";
-		const fileSize =
-			isHTML || shouldUseNewConsultationComments ? null : length;
+		const fileSize = isHTML || shouldUseNewConsultationComments ? null : length;
 		const fileTypeName =
 			isHTML || shouldUseNewConsultationComments
 				? null
@@ -282,9 +280,9 @@ export const getHistoryResourceLink = ({
 			? `/consultations/${resource.consultationId}/${resource.consultationDocumentId}`
 			: isHTML
 			? `${productPath}/history/${resourceTitleId}`
-			: `${productPath}/history/downloads/${
-					product.id
-				}-${resourceTitleId}.${fileName.split(".").slice(-1)[0]}`;
+			: `${productPath}/history/downloads/${product.id}-${resourceTitleId}.${
+					fileName.split(".").slice(-1)[0]
+			  }`;
 
 		indevResourceLink.href = href;
 		indevResourceLink.fileTypeName = fileTypeName;
