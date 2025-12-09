@@ -613,6 +613,13 @@ const nextConfig = {
 			},
 			{
 				source:
+					"/what-nice-does/our-guidance/about-medical-technologies-guidance",
+				destination:
+					"/what-nice-does/our-guidance/about-healthtech-guidance",
+				permanent: true,
+			},
+			{
+				source:
 					"/about/what-we-do/our-programmes/nice-guidance/about-medical-technologies-guidance/get-involved",
 				destination:
 					"/what-nice-does/our-guidance/about-medical-technologies-guidance/get-involved-with-medical-technologies-guidance",
@@ -672,6 +679,13 @@ const nextConfig = {
 					"/about/what-we-do/our-programmes/nice-guidance/nice-guidelines/nice-social-care-guidelines",
 				destination:
 					"/what-nice-does/our-guidance/about-nice-guidelines/how-we-develop-nice-guidelines",
+				permanent: true,
+			},
+			{
+				source:
+					"/what-nice-does/our-guidance/about-diagnostics-guidance/diagnostics-assessment-programme-process-timeline",
+				destination:
+					"/what-nice-does/our-guidance/about-healthtech-guidance/process-timeline-for-healthtech-guidance",
 				permanent: true,
 			},
 			{
