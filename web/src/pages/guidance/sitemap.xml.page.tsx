@@ -9,14 +9,9 @@ import {
 } from "@nice-digital/search-client";
 
 import { publicRuntimeConfig } from "@/config";
-import {
-	type ProjectDetail,
-	ProjectType,
-	ProjectGroup,
-} from "@/feeds/inDev/inDev";
+import { type ProjectDetail } from "@/feeds/inDev/inDev";
 import {
 	type ProductLite,
-	ProductTypeAcronym,
 	ProductGroup,
 } from "@/feeds/publications/publications";
 import { logger } from "@/logger";
@@ -24,27 +19,59 @@ import { getProductPath, getProjectPath } from "@/utils/url";
 
 const toSitemapURL = (document: Document): ISitemapField => {
 	const isProduct = document.guidanceStatus[0] === "Published";
+	const productOrProjectType = document.guidanceRef
+		? document.guidanceRef.replace(/[0-9]/g, "")
+		: null;
+	const groupFromSearchFeed = document.niceDocType[0];
 
-	let productOrProject, path;
+	let productOrProject, path, productOrProjectGroup;
+
+	// convert niceDocType from search api feed to ProductGroup enum string
+	// nb. couldn't see 'Corporate' or 'Guideline' in live data
+	switch (groupFromSearchFeed) {
+		case "Guidance":
+			productOrProjectGroup = ProductGroup.Guidance;
+			break;
+		case "NICE advice":
+			productOrProjectGroup = ProductGroup.Advice;
+			break;
+		case "Quality standard":
+			productOrProjectGroup = ProductGroup.Standard;
+			break;
+		case "Corporate":
+			productOrProjectGroup = ProductGroup.Corporate;
+			break;
+		case "Guideline":
+			productOrProjectGroup = ProductGroup.Guideline;
+			break;
+		default:
+			throw `Unsupported product group ${
+				document.niceDocType[0]
+			} ${JSON.stringify(document)}`;
+	}
 
 	if (isProduct) {
 		productOrProject = {
-			productGroup: ProductGroup.Other,
+			productGroup: productOrProjectGroup,
 			id: document.guidanceRef,
-			productType: ProductTypeAcronym.IND,
+			productType: productOrProjectType,
 			title: document.title,
 		} as ProductLite;
 
 		path = getProductPath(productOrProject);
 	} else {
 		productOrProject = {
-			projectGroup: ProjectGroup.Other,
+			projectGroup: productOrProjectGroup,
 			status: document.guidanceStatus,
 			reference: document.guidanceRef,
-			projectType: ProjectType.IND,
+			projectType: productOrProjectType,
 		} as unknown as ProjectDetail;
 
-		path = getProjectPath(productOrProject);
+		if (productOrProject.reference) {
+			path = getProjectPath(productOrProject);
+		} else {
+			path = document.pathAndQuery;
+		}
 	}
 
 	return {
@@ -56,7 +83,7 @@ const toSitemapURL = (document: Document): ISitemapField => {
 export const getServerSideProps: GetServerSideProps = async (context) => {
 	initSearchClient({
 		baseURL: publicRuntimeConfig.search.baseURL,
-		index: "indicators",
+		index: "guidance",
 	});
 
 	const startTime = process.hrtime.bigint(),
