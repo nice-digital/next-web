@@ -1397,6 +1397,12 @@ const nextConfig = {
 			},
 			{
 				source:
+					"/what-nice-does/our-guidance/about-diagnostics-guidance",
+				destination: "/what-nice-does/our-guidance/about-healthtech-guidance",
+				permanent: true,
+			},
+			{
+				source:
 					"/About/What-we-do/Our-Programmes/NICE-guidance/NICE-diagnostics-guidance",
 				destination: "/what-nice-does/our-guidance/about-healthtech-guidance",
 				permanent: true,
