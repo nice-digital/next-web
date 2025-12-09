@@ -692,7 +692,7 @@ const nextConfig = {
 				source:
 					"/about/what-we-do/our-programmes/nice-guidance/nice-diagnostics-guidance/process-timeline",
 				destination:
-					"/what-nice-does/our-guidance/about-diagnostics-guidance/diagnostics-assessment-programme-process-timeline",
+					"/what-nice-does/our-guidance/about-healthtech-guidance/process-timeline-for-healthtech-guidance",
 				permanent: true,
 			},
 			{
@@ -1119,7 +1119,7 @@ const nextConfig = {
 				source:
 					"/About/What-we-do/Our-Programmes/NICE-guidance/NICE-about-medical-technologies-guidance",
 				destination:
-					"/what-nice-does/our-guidance/about-medical-technologies-guidance",
+					"/what-nice-does/our-guidance/about-healthtech-guidance",
 				permanent: true,
 			},
 			{
@@ -1228,7 +1228,7 @@ const nextConfig = {
 				source:
 					"/About/What-we-do/Our-Programmes/NICE-guidance/NICE-medical-technologies-guidance",
 				destination:
-					"/what-nice-does/our-guidance/about-medical-technologies-guidance",
+					"/what-nice-does/our-guidance/about-healthtech-guidance",
 				permanent: true,
 			},
 			{
@@ -1398,7 +1398,7 @@ const nextConfig = {
 			{
 				source:
 					"/About/What-we-do/Our-Programmes/NICE-guidance/NICE-diagnostics-guidance",
-				destination: "/what-nice-does/our-guidance/about-diagnostics-guidance",
+				destination: "/what-nice-does/our-guidance/about-healthtech-guidance",
 				permanent: true,
 			},
 			{
