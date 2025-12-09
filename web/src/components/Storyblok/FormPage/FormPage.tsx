@@ -42,9 +42,7 @@ export const FormPage = ({
 							<StoryblokComponent blok={nestedBlok} key={nestedBlok._uid} />
 						))}
 				</GridItem>
-				{/*TODO: bring in Panel from NXT-501
-				 * TODO: update grid logic if required in NXT-501
-				 */}
+				{/*TODO: bring in Panel from NXT-501 */}
 				{panel && panel.length > 0 && (
 					<GridItem cols={12} md={4}>
 						{panel.map((nestedBlok) => (
