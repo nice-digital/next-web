@@ -148,42 +148,9 @@ From this iframe src URL.
 `230793530776059` is the ID for the form, and should always be the first path segment of the iframes src URL.
 
 
-<!-- TODO: remove legacy gudiance once SB guidance is complete in NXT-839 -->
-<!-- **(DEPRECATED) Generating a New Form Page (DEPRECATED)**
-
-To create a new form page:
-
-1. Copy and paste an existing page and associated snapshot test file in '/web/src/pages/forms'.
-2. Rename it to match the desired final path under '/forms/'.
-3. Modify necessary items in the page component (e.g., formID, title, etc.).
-4. Modify the necessary items in the page test - update the id, title and url only. The rest of the attributes can be safely left as is (e.g. height, status, date of submission etc), unless you have specific testing requirements. 
-5. Update the snapshot and check it matches the desired form.
-
-Example: **leave-feedback.page.tsx, leave-feedback.page.test.tsx**
-
-The **Page** component accepts the following properties:
-
-- **formName** : string;
-- **parentPages** : { title: string; path?: string }[];
-- **lead** : string;
-- **informationPanel?: JSX.Element** ;
-- **formHeader?: JSX.Element** ;
-- **formFooter?: JSX.Element** ;
-- **InformationPanel?** : Renders HTML content in a panel adjacent to the form, adjusting column widths accordingly.
-- **FormHeader?: JSX.Element** : Renders HTML content before the form.
-- **FormFooter?: JSX.Element** : Renders HTML content after the form.
-
-**Template Content Placement**
-
-Whenever possible, template content should be hosted on Next Web rather than JotForms for ease of eventual transition to the Storyblok CMS. In cases of multipage forms or content interspersed with form sections, this content will remain on JotForms as this is most practical given the iframe setup. -->
-
-
-<!-- TODO: keep debugging guidance -->
 **Debugging and Direct Form Submission**
 
 JotForms on Next Web are embedded via iframe from [nice.jotform.com](https://nice.jotform.com/), with the unique form ID completing the path, for example: [https://nice.jotform.com/220684821482963](https://nice.jotform.com/220684821482963). When debugging, it can help to submit a form directly from JotForm which can help to eliminate Next Web as a factor in failed mailchimp submissions, for example.
-
-
 
 
 # Next Web reusable components for form pages
