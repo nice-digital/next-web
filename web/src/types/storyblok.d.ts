@@ -323,31 +323,6 @@ export interface CategoryNavigationStoryblok {
   [k: string]: any;
 }
 
-export interface ConfigStoryblok {
-  header_menu?: MenuLinkStoryblok[];
-  component: "config";
-  _uid: string;
-  [k: string]: any;
-}
-
-export interface FormEmbedStoryblok {
-  title: string;
-  formId: string;
-  component: "formEmbed";
-  _uid: string;
-  [k: string]: any;
-}
-
-export interface FormPageStoryblok {
-  header?: PageHeaderStoryblok[];
-  metadata?: MetadataStoryblok[];
-  content?: (NestedRichTextStoryblok | ButtonLinkStoryblok | FormEmbedStoryblok)[];
-  panel?: (NestedRichTextStoryblok | PanelStoryblok)[];
-  component: "formPage";
-  _uid: string;
-  [k: string]: any;
-}
-
 export interface FullWidthSectionStoryblok {
   heading?: string;
   lead?: RichtextStoryblok;
@@ -382,9 +357,6 @@ export interface GridStoryblok {
     | CardListSectionItemStoryblok
     | CategoryLandingPageStoryblok
     | CategoryNavigationStoryblok
-    | ConfigStoryblok
-    | FormEmbedStoryblok
-    | FormPageStoryblok
     | FullWidthSectionStoryblok
     | GridStoryblok
     | GridItemStoryblok
@@ -409,7 +381,6 @@ export interface GridStoryblok {
     | OrderedListStoryblok
     | PageStoryblok
     | PageHeaderStoryblok
-    | PanelStoryblok
     | PodcastStoryblok
     | PromoBoxStoryblok
     | QuoteStoryblok
@@ -694,9 +665,6 @@ export interface PageStoryblok {
     | CardListSectionItemStoryblok
     | CategoryLandingPageStoryblok
     | CategoryNavigationStoryblok
-    | ConfigStoryblok
-    | FormEmbedStoryblok
-    | FormPageStoryblok
     | FullWidthSectionStoryblok
     | GridStoryblok
     | GridItemStoryblok
@@ -721,7 +689,6 @@ export interface PageStoryblok {
     | OrderedListStoryblok
     | PageStoryblok
     | PageHeaderStoryblok
-    | PanelStoryblok
     | PodcastStoryblok
     | PromoBoxStoryblok
     | QuoteStoryblok
@@ -747,15 +714,6 @@ export interface PageHeaderStoryblok {
   cta?: ButtonLinkStoryblok[];
   theme?: "subtle" | "impact";
   component: "pageHeader";
-  _uid: string;
-  [k: string]: any;
-}
-export interface PanelStoryblok {
-  heading: string;
-  headingLevel: string;
-  content: RichtextStoryblok;
-  variant?: "supporting" | "primary" | "impact";
-  component: "panel";
   _uid: string;
   [k: string]: any;
 }
