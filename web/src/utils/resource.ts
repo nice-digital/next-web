@@ -12,6 +12,7 @@ import {
 	ExternalUrlContentPart,
 	FileContent,
 	ProductAndResourceBase,
+	ProductDetail,
 	ResourceType,
 	UploadAndConvertContentPart,
 	UploadContentPart,
@@ -205,6 +206,89 @@ export const getInDevResourceLink = ({
 					: `${projectPath}/documents/${resourceTitleId}`,
 			});
 		}
+
+		return [indevResourceLink];
+	}
+};
+
+export type GetHistoryResourceLinkArgs = {
+	resource: IndevResource;
+	panel: IndevPanel;
+	productPath: string;
+	product: ProductDetail;
+};
+export const getHistoryResourceLink = ({
+	resource,
+	panel,
+	productPath,
+	product
+}: GetHistoryResourceLinkArgs): ResourceLinkViewModel[] => {
+	const indevResourceLink: ResourceLinkViewModel = {
+		title: resource.title,
+		href: "",
+		fileTypeName: null,
+		fileSize: null,
+		date: resource.publishedDate,
+		type: panel.title,
+	};
+
+	if (!resource.embedded) {
+		const links = (resource.externalLinks || []).map((link) => ({
+			title: link.displayText || resource.title,
+			href: link.url,
+			fileTypeName: null,
+			fileSize: null,
+			date: resource.publishedDate,
+			type: panel.title,
+		}));
+
+		if (links.length > 0) return links;
+
+		return [];
+	} else {
+		const resourceEmbedded = resource.embedded,
+			resourceIsConvertedDocument = Object.hasOwn(
+				resourceEmbedded,
+				"niceIndevConvertedDocument"
+			);
+
+		let indevFile;
+
+		if (resourceIsConvertedDocument) {
+			indevFile =
+				resourceEmbedded.niceIndevConvertedDocument as IndevConvertedDocument;
+		} else {
+			indevFile = (resourceEmbedded.niceIndevFile ||
+				resourceEmbedded.niceIndevGeneratedPdf) as IndevFile;
+		}
+
+		const mimeType =
+			"mimeType" in indevFile ? indevFile.mimeType : "text/html";
+		const length = "length" in indevFile ? indevFile.length : 0;
+		const resourceTitleId = indevFile.resourceTitleId;
+		const fileName = "fileName" in indevFile ? indevFile.fileName : "";
+
+		const shouldUseNewConsultationComments =
+			resource.supportsComments || resource.supportsQuestions;
+
+		const isHTML = mimeType === "text/html";
+		const fileSize =
+			isHTML || shouldUseNewConsultationComments ? null : length;
+		const fileTypeName =
+			isHTML || shouldUseNewConsultationComments
+				? null
+				: getFileTypeNameFromMime(mimeType);
+		const href = shouldUseNewConsultationComments
+			? `/consultations/${resource.consultationId}/${resource.consultationDocumentId}`
+			: isHTML
+			? `${productPath}/history/${resourceTitleId}`
+			: `${productPath}/history/downloads/${
+					product.id
+				}-${resourceTitleId}.${fileName.split(".").slice(-1)[0]}`;
+
+		indevResourceLink.href = href;
+		indevResourceLink.fileTypeName = fileTypeName;
+		indevResourceLink.fileSize = fileSize;
 
 		return [indevResourceLink];
 	}
