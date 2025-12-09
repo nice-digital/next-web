@@ -614,8 +614,7 @@ const nextConfig = {
 			{
 				source:
 					"/what-nice-does/our-guidance/about-medical-technologies-guidance",
-				destination:
-					"/what-nice-does/our-guidance/about-healthtech-guidance",
+				destination: "/what-nice-does/our-guidance/about-healthtech-guidance",
 				permanent: true,
 			},
 			{
@@ -1118,8 +1117,7 @@ const nextConfig = {
 			{
 				source:
 					"/About/What-we-do/Our-Programmes/NICE-guidance/NICE-about-medical-technologies-guidance",
-				destination:
-					"/what-nice-does/our-guidance/about-healthtech-guidance",
+				destination: "/what-nice-does/our-guidance/about-healthtech-guidance",
 				permanent: true,
 			},
 			{
@@ -1227,8 +1225,7 @@ const nextConfig = {
 			{
 				source:
 					"/About/What-we-do/Our-Programmes/NICE-guidance/NICE-medical-technologies-guidance",
-				destination:
-					"/what-nice-does/our-guidance/about-healthtech-guidance",
+				destination: "/what-nice-does/our-guidance/about-healthtech-guidance",
 				permanent: true,
 			},
 			{
@@ -1396,8 +1393,7 @@ const nextConfig = {
 				permanent: true,
 			},
 			{
-				source:
-					"/what-nice-does/our-guidance/about-diagnostics-guidance",
+				source: "/what-nice-does/our-guidance/about-diagnostics-guidance",
 				destination: "/what-nice-does/our-guidance/about-healthtech-guidance",
 				permanent: true,
 			},
