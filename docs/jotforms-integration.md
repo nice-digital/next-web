@@ -172,7 +172,7 @@ This component outputs a page that includes a NextSeo component for SEO optimiza
 **FormEmbed**
 The FormEmbed component is a passthrough component to the JotFormEmbed component.  It maps fields from Storybloks FormEmbed block to the underlying JotFormEmbed component
 
-<!-- TODO: keep JotFormEmbed Component docs -->
+
 #
 **JotFormEmbed Component**
 
