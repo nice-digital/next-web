@@ -17,15 +17,17 @@ export const FormPage = ({
 	blok,
 	breadcrumbs,
 }: FormPageProps): React.ReactElement => {
+	const { metadata, header, content, panel } = blok;
+
 	return (
 		<div className={styles.formPage}>
-			{blok.metadata &&
-				blok.metadata.length > 0 &&
-				blok.metadata?.map((nestedBlok) => (
+			{metadata &&
+				metadata.length > 0 &&
+				metadata?.map((nestedBlok) => (
 					<StoryblokComponent blok={nestedBlok} key={nestedBlok._uid} />
 				))}
-			{blok.header &&
-				blok.header.map((nestedBlok) => (
+			{header &&
+				header.map((nestedBlok) => (
 					<StoryblokComponent
 						blok={nestedBlok}
 						key={nestedBlok._uid}
@@ -34,16 +36,18 @@ export const FormPage = ({
 				))}
 
 			<Grid gutter="loose">
-				<GridItem cols={12} md={blok.panel ? 8 : 12}>
-					{blok.content &&
-						blok.content.map((nestedBlok) => (
+				<GridItem cols={12} md={panel && panel.length > 0 ? 8 : 12}>
+					{content &&
+						content.map((nestedBlok) => (
 							<StoryblokComponent blok={nestedBlok} key={nestedBlok._uid} />
 						))}
 				</GridItem>
-				{/* TODO: bring in Panel from NXT-501 */}
-				{blok.panel && (
+				{/*TODO: bring in Panel from NXT-501
+				 * TODO: update grid logic if required in NXT-501
+				 */}
+				{panel && panel.length > 0 && (
 					<GridItem cols={12} md={4}>
-						{blok.panel.map((nestedBlok) => (
+						{panel.map((nestedBlok) => (
 							<Panel key={nestedBlok._uid}>
 								<StoryblokComponent blok={nestedBlok} />
 							</Panel>
