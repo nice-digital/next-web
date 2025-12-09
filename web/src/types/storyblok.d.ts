@@ -249,6 +249,7 @@ export interface CardGridRowStoryblok {
     | OrderedListWithStartingNo2Storyblok
     | PageStoryblok
     | PageHeaderStoryblok
+    | PanelStoryblok
     | PodcastStoryblok
     | PromoBoxStoryblok
     | QuoteStoryblok
@@ -378,6 +379,7 @@ export interface ConfigStoryblok {
 export interface FormEmbedStoryblok {
   title: string;
   formId: string;
+  prefillId?: string;
   component: "formEmbed";
   _uid: string;
   [k: string]: any;
@@ -387,7 +389,7 @@ export interface FormPageStoryblok {
   header?: PageHeaderStoryblok[];
   metadata?: MetadataStoryblok[];
   content?: (NestedRichTextStoryblok | ButtonLinkStoryblok | FormEmbedStoryblok)[];
-  panel?: NestedRichTextStoryblok[];
+  panel?: PanelStoryblok[];
   component: "formPage";
   _uid: string;
   [k: string]: any;
@@ -461,6 +463,7 @@ export interface GridStoryblok {
     | OrderedListWithStartingNo2Storyblok
     | PageStoryblok
     | PageHeaderStoryblok
+    | PanelStoryblok
     | PodcastStoryblok
     | PromoBoxStoryblok
     | QuoteStoryblok
@@ -814,6 +817,7 @@ export interface PageStoryblok {
     | OrderedListWithStartingNo2Storyblok
     | PageStoryblok
     | PageHeaderStoryblok
+    | PanelStoryblok
     | PodcastStoryblok
     | PromoBoxStoryblok
     | QuoteStoryblok
@@ -842,6 +846,16 @@ export interface PageHeaderStoryblok {
   cta?: ButtonLinkStoryblok[];
   theme?: "subtle" | "impact";
   component: "pageHeader";
+  _uid: string;
+  [k: string]: any;
+}
+
+export interface PanelStoryblok {
+  heading: string;
+  headingLevel: string;
+  content: RichtextStoryblok;
+  variant?: "supporting" | "primary" | "impact";
+  component: "panel";
   _uid: string;
   [k: string]: any;
 }
