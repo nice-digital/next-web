@@ -47,7 +47,7 @@ export const StoryblokPageHeader = ({
 			description={description}
 			variant={theme === "impact" ? "fullWidthDark" : "fullWidthLight"}
 			verticalPadding="loose"
-			cta={updatedCTA ? <StoryblokButtonLink button={updatedCTA} /> : undefined}
+			cta={updatedCTA ? <StoryblokButtonLink blok={updatedCTA} /> : undefined}
 		/>
 	);
 };
