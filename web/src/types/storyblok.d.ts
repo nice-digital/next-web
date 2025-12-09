@@ -249,6 +249,7 @@ export interface CardGridRowStoryblok {
     | OrderedListWithStartingNo2Storyblok
     | PageStoryblok
     | PageHeaderStoryblok
+    | PanelStoryblok
     | PodcastStoryblok
     | PromoBoxStoryblok
     | QuoteStoryblok
@@ -378,6 +379,7 @@ export interface ConfigStoryblok {
 export interface FormEmbedStoryblok {
   title: string;
   formId: string;
+  prefillId?: string;
   component: "formEmbed";
   _uid: string;
   [k: string]: any;
@@ -847,6 +849,16 @@ export interface PageHeaderStoryblok {
   _uid: string;
   [k: string]: any;
 }
+export interface PanelStoryblok {
+  heading: string;
+  headingLevel: string;
+  content: RichtextStoryblok;
+  variant?: "supporting" | "primary" | "impact";
+  component: "panel";
+  _uid: string;
+  [k: string]: any;
+}
+
 export interface PanelStoryblok {
   heading: string;
   headingLevel: string;
