@@ -12,6 +12,7 @@ import { CardList } from "@/components/Storyblok/CardList/CardList";
 import { CardListSection } from "@/components/Storyblok/CardListSection/CardListSection";
 import { CategoryLandingPage } from "@/components/Storyblok/CategoryLandingPage/CategoryLandingPage";
 import { CategoryNavigation } from "@/components/Storyblok/CategoryNavigation/CategoryNavigation";
+import { ClientFormEmbed } from "@/components/Storyblok/FormEmbed/ClientFormEmbed";
 import { Homepage } from "@/components/Storyblok/Homepage/Homepage";
 import { HomepageHero } from "@/components/Storyblok/Homepage/HomepageHero/HomepageHero";
 import { InfoPage } from "@/components/Storyblok/InfoPage/InfoPage";
@@ -32,6 +33,7 @@ import { ClientInfogramEmbed } from "@/components/Storyblok/StoryblokInfogramEmb
 import { StoryblokNewsArticle } from "@/components/Storyblok/StoryblokNewsArticle/StoryblokNewsArticle";
 import { StoryblokOrderedList } from "@/components/Storyblok/StoryblokOrderedList/StoryblokOrderedList";
 import { StoryblokPageHeader } from "@/components/Storyblok/StoryblokPageHeader/StoryblokPageHeader";
+import { StoryblokPanel } from "@/components/Storyblok/StoryblokPanel/StoryblokPanel";
 import { StoryblokRelatedLink } from "@/components/Storyblok/StoryblokRelatedLink/StoryblokRelatedLink";
 import { StoryblokRelatedNewsLink } from "@/components/Storyblok/StoryblokRelatedNewsLink/StoryblokRelatedNewsLink";
 import { StoryblokRichTextTable } from "@/components/Storyblok/StoryblokRichTextTable/StoryblokRichTextTable";
@@ -103,7 +105,12 @@ const infoPageComponents = {
 	infoPage: InfoPage,
 	nestedTable: StoryblokTable,
 	orderedList: StoryblokOrderedList,
+	panel: StoryblokPanel,
 	richTextTable: StoryblokRichTextTable,
+};
+
+const formPageComponents = {
+	formEmbed: ClientFormEmbed,
 };
 
 export const allComponents: SbReactComponentsMap = {
@@ -114,6 +121,7 @@ export const allComponents: SbReactComponentsMap = {
 	...categoryNavigationPageComponents,
 	...homepageComponents,
 	...infoPageComponents,
+	...formPageComponents,
 };
 
 // Init connection to Storyblok
