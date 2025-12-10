@@ -628,7 +628,7 @@ const nextConfig = {
 				source:
 					"/about/what-we-do/our-programmes/nice-guidance/about-medical-technologies-guidance/get-involved",
 				destination:
-					"/what-nice-does/our-guidance/about-medical-technologies-guidance/get-involved-with-medical-technologies-guidance",
+					"/what-nice-does/our-guidance/about-healthtech-guidance/get-involved-with-healthtech-guidance",
 				permanent: true,
 			},
 			{
@@ -1046,7 +1046,7 @@ const nextConfig = {
 				source:
 					"/about/what-we-do/our-programmes/nice-guidance/nice-medical-technologies-evaluation-programme",
 				destination:
-					"/what-nice-does/our-guidance/about-medical-technologies-guidance/get-a-medical-technology-evaluated",
+					"/what-nice-does/our-guidance/about-healthtech-guidance/get-a-healthtech-evaluated",
 				permanent: true,
 			},
 			{
