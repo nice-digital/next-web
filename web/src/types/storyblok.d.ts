@@ -380,6 +380,7 @@ export interface GridStoryblok {
     | OrderedListStoryblok
     | PageStoryblok
     | PageHeaderStoryblok
+    | PanelStoryblok
     | PodcastStoryblok
     | PromoBoxStoryblok
     | QuoteStoryblok
@@ -679,6 +680,7 @@ export interface PageStoryblok {
     | OrderedListStoryblok
     | PageStoryblok
     | PageHeaderStoryblok
+    | PanelStoryblok
     | PodcastStoryblok
     | PromoBoxStoryblok
     | QuoteStoryblok
@@ -704,6 +706,16 @@ export interface PageHeaderStoryblok {
   cta?: ButtonLinkStoryblok[];
   theme?: "subtle" | "impact";
   component: "pageHeader";
+  _uid: string;
+  [k: string]: any;
+}
+
+export interface PanelStoryblok {
+  heading: string;
+  headingLevel: string;
+  content: RichtextStoryblok;
+  variant?: "supporting" | "primary" | "impact";
+  component: "panel";
   _uid: string;
   [k: string]: any;
 }
