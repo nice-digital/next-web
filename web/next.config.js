@@ -1033,13 +1033,17 @@ const nextConfig = {
 				permanent: true,
 			},
 			{
-				source: "/what-nice-does/our-guidance/about-medical-technologies-guidance/how-we-develop-medical-technologies-guidance",
-				destination: "/what-nice-does/our-guidance/about-healthtech-guidance/how-we-develop-healthtech-guidance",
+				source:
+					"/what-nice-does/our-guidance/about-medical-technologies-guidance/how-we-develop-medical-technologies-guidance",
+				destination:
+					"/what-nice-does/our-guidance/about-healthtech-guidance/how-we-develop-healthtech-guidance",
 				permanent: true,
 			},
 			{
-				source: "/what-nice-does/our-guidance/about-medical-technologies-guidance/get-a-medical-technology-evaluated",
-				destination: "/what-nice-does/our-guidance/about-healthtech-guidance/get-a-healthtech-evaluated",
+				source:
+					"/what-nice-does/our-guidance/about-medical-technologies-guidance/get-a-medical-technology-evaluated",
+				destination:
+					"/what-nice-does/our-guidance/about-healthtech-guidance/get-a-healthtech-evaluated",
 				permanent: true,
 			},
 			{
