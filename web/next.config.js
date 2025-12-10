@@ -1051,13 +1051,6 @@ const nextConfig = {
 			},
 			{
 				source:
-					"/about/what-we-do/our-programmes/nice-guidance/nice-medical-technologies-guidance#static-list",
-				destination:
-					"/what-nice-does/our-guidance/about-medical-technologies-guidance/medical-technologies-guidance-static-list",
-				permanent: true,
-			},
-			{
-				source:
 					"/About/What-we-do/Our-Programmes/NICE-guidance/NICE-highly-specialised-technologies-guidance",
 				destination:
 					"/what-nice-does/our-guidance/about-highly-specialised-technologies-guidance",
@@ -1373,13 +1366,6 @@ const nextConfig = {
 					"/about/nice-communities/social-care/quick-guides/giving-medicines-covertly",
 				destination:
 					"/implementing-nice-guidance/social-care/quick-guides-to-social-care-topics",
-				permanent: true,
-			},
-			{
-				source:
-					"/about/what-we-do/our-programmes/nice-advice/medtech-innovation-briefings",
-				destination:
-					"/what-nice-does/our-guidance/about-medical-technologies-guidance/medtech-innovation-briefings",
 				permanent: true,
 			},
 			{
@@ -2586,12 +2572,6 @@ const nextConfig = {
 				permanent: true,
 			},
 			{
-				source: "/about/what-we-do/late-stage-assessment-for-medtech",
-				destination:
-					"/what-nice-does/our-guidance/about-medical-technologies-guidance/late-stage-assessment-lsa-for-medtech",
-				permanent: true,
-			},
-			{
 				source: "/about/what-we-do/prioritising-our-guidance-topics",
 				destination:
 					"/what-nice-does/our-guidance/prioritising-our-guidance-topics",
@@ -2761,12 +2741,6 @@ const nextConfig = {
 			{
 				source: "/about/what-we-do/evidence-services",
 				destination: "/what-nice-does",
-				permanent: true,
-			},
-			{
-				source: "/about/what-we-do/eva-for-medtech",
-				destination:
-					"/what-nice-does/our-guidance/about-medical-technologies-guidance/early-value-assessment-eva-for-medtech",
 				permanent: true,
 			},
 			{
