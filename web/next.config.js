@@ -613,9 +613,22 @@ const nextConfig = {
 			},
 			{
 				source:
+					"/what-nice-does/our-guidance/about-medical-technologies-guidance",
+				destination: "/what-nice-does/our-guidance/about-healthtech-guidance",
+				permanent: true,
+			},
+			{
+				source:
+					"/what-nice-does/our-guidance/about-medical-technologies-guidance/get-involved-with-medical-technologies-guidance",
+				destination:
+					"/what-nice-does/our-guidance/about-healthtech-guidance/get-involved-with-healthtech-guidance",
+				permanent: true,
+			},
+			{
+				source:
 					"/about/what-we-do/our-programmes/nice-guidance/about-medical-technologies-guidance/get-involved",
 				destination:
-					"/what-nice-does/our-guidance/about-medical-technologies-guidance/get-involved-with-medical-technologies-guidance",
+					"/what-nice-does/our-guidance/about-healthtech-guidance/get-involved-with-healthtech-guidance",
 				permanent: true,
 			},
 			{
@@ -676,9 +689,16 @@ const nextConfig = {
 			},
 			{
 				source:
+					"/what-nice-does/our-guidance/about-diagnostics-guidance/diagnostics-assessment-programme-process-timeline",
+				destination:
+					"/what-nice-does/our-guidance/about-healthtech-guidance/process-timeline-for-healthtech-guidance",
+				permanent: true,
+			},
+			{
+				source:
 					"/about/what-we-do/our-programmes/nice-guidance/nice-diagnostics-guidance/process-timeline",
 				destination:
-					"/what-nice-does/our-guidance/about-diagnostics-guidance/diagnostics-assessment-programme-process-timeline",
+					"/what-nice-does/our-guidance/about-healthtech-guidance/process-timeline-for-healthtech-guidance",
 				permanent: true,
 			},
 			{
@@ -1014,16 +1034,23 @@ const nextConfig = {
 			},
 			{
 				source:
-					"/about/what-we-do/our-programmes/nice-guidance/nice-medical-technologies-evaluation-programme",
+					"/what-nice-does/our-guidance/about-medical-technologies-guidance/how-we-develop-medical-technologies-guidance",
 				destination:
-					"/what-nice-does/our-guidance/about-medical-technologies-guidance/get-a-medical-technology-evaluated",
+					"/what-nice-does/our-guidance/about-healthtech-guidance/how-we-develop-healthtech-guidance",
 				permanent: true,
 			},
 			{
 				source:
-					"/about/what-we-do/our-programmes/nice-guidance/nice-medical-technologies-guidance#static-list",
+					"/what-nice-does/our-guidance/about-medical-technologies-guidance/get-a-medical-technology-evaluated",
 				destination:
-					"/what-nice-does/our-guidance/about-medical-technologies-guidance/medical-technologies-guidance-static-list",
+					"/what-nice-does/our-guidance/about-healthtech-guidance/get-a-healthtech-evaluated",
+				permanent: true,
+			},
+			{
+				source:
+					"/about/what-we-do/our-programmes/nice-guidance/nice-medical-technologies-evaluation-programme",
+				destination:
+					"/what-nice-does/our-guidance/about-healthtech-guidance/get-a-healthtech-evaluated",
 				permanent: true,
 			},
 			{
@@ -1104,8 +1131,7 @@ const nextConfig = {
 			{
 				source:
 					"/About/What-we-do/Our-Programmes/NICE-guidance/NICE-about-medical-technologies-guidance",
-				destination:
-					"/what-nice-does/our-guidance/about-medical-technologies-guidance",
+				destination: "/what-nice-does/our-guidance/about-healthtech-guidance",
 				permanent: true,
 			},
 			{
@@ -1213,8 +1239,7 @@ const nextConfig = {
 			{
 				source:
 					"/About/What-we-do/Our-Programmes/NICE-guidance/NICE-medical-technologies-guidance",
-				destination:
-					"/what-nice-does/our-guidance/about-medical-technologies-guidance",
+				destination: "/what-nice-does/our-guidance/about-healthtech-guidance",
 				permanent: true,
 			},
 			{
@@ -1349,13 +1374,6 @@ const nextConfig = {
 			},
 			{
 				source:
-					"/about/what-we-do/our-programmes/nice-advice/medtech-innovation-briefings",
-				destination:
-					"/what-nice-does/our-guidance/about-medical-technologies-guidance/medtech-innovation-briefings",
-				permanent: true,
-			},
-			{
-				source:
 					"/about/what-we-do/life-sciences/scientific-advice/devices-and-diagnostics",
 				destination:
 					"/what-nice-does/life-sciences-how-to-get-your-product-to-market/nice-advice-service",
@@ -1382,9 +1400,14 @@ const nextConfig = {
 				permanent: true,
 			},
 			{
+				source: "/what-nice-does/our-guidance/about-diagnostics-guidance",
+				destination: "/what-nice-does/our-guidance/about-healthtech-guidance",
+				permanent: true,
+			},
+			{
 				source:
 					"/About/What-we-do/Our-Programmes/NICE-guidance/NICE-diagnostics-guidance",
-				destination: "/what-nice-does/our-guidance/about-diagnostics-guidance",
+				destination: "/what-nice-does/our-guidance/about-healthtech-guidance",
 				permanent: true,
 			},
 			{
@@ -2553,12 +2576,6 @@ const nextConfig = {
 				permanent: true,
 			},
 			{
-				source: "/about/what-we-do/late-stage-assessment-for-medtech",
-				destination:
-					"/what-nice-does/our-guidance/about-medical-technologies-guidance/late-stage-assessment-lsa-for-medtech",
-				permanent: true,
-			},
-			{
 				source: "/about/what-we-do/prioritising-our-guidance-topics",
 				destination:
 					"/what-nice-does/our-guidance/prioritising-our-guidance-topics",
@@ -2728,12 +2745,6 @@ const nextConfig = {
 			{
 				source: "/about/what-we-do/evidence-services",
 				destination: "/what-nice-does",
-				permanent: true,
-			},
-			{
-				source: "/about/what-we-do/eva-for-medtech",
-				destination:
-					"/what-nice-does/our-guidance/about-medical-technologies-guidance/early-value-assessment-eva-for-medtech",
 				permanent: true,
 			},
 			{
