@@ -146,6 +146,7 @@ export interface ButtonLinkStoryblok {
 
 export interface CalloutCardStoryblok {
   heading: string;
+  headingLevel?: "" | "2" | "3" | "4" | "5" | "6";
   body: string;
   link: Exclude<MultilinkStoryblok, {linktype?: "email"} | {linktype?: "asset"}>;
   component: "calloutCard";
@@ -153,17 +154,9 @@ export interface CalloutCardStoryblok {
   [k: string]: any;
 }
 
-export interface CalloutCardDemoStoryblok {
-  heading: string;
-  body: string;
-  link?: MultilinkStoryblok;
-  component: "calloutCardDemo";
-  _uid: string;
-  [k: string]: any;
-}
-
 export interface CalloutCardWithImageStoryblok {
   heading: string;
+  headingLevel?: "" | "2" | "3" | "4" | "5" | "6";
   body: string;
   link: Exclude<MultilinkStoryblok, {linktype?: "email"} | {linktype?: "asset"}>;
   image: AssetStoryblok;
@@ -174,6 +167,7 @@ export interface CalloutCardWithImageStoryblok {
 
 export interface CardStoryblok {
   heading: string;
+  headingLevel?: "" | "2" | "3" | "4" | "5" | "6";
   body: string;
   link?: MultilinkStoryblok;
   component: "card";
@@ -184,88 +178,6 @@ export interface CardStoryblok {
 export interface CardGridStoryblok {
   cards: CardStoryblok[];
   component: "cardGrid";
-  _uid: string;
-  [k: string]: any;
-}
-
-export interface CardGridRowStoryblok {
-  componentType: "" | "card" | "calloutCard" | "testimonial";
-  singleColumn?: boolean;
-  columns?: "2" | "3";
-  Testimonials: TestimonialGridItemStoryblok[];
-  Cards: (
-    | AccordionStoryblok
-    | AccordionGroupStoryblok
-    | ActionBannerStoryblok
-    | ActionBannerDefaultStoryblok
-    | AuthorStoryblok
-    | BlogPostStoryblok
-    | ButtonLinkStoryblok
-    | CalloutCardStoryblok
-    | CalloutCardDemoStoryblok
-    | CalloutCardWithImageStoryblok
-    | CardStoryblok
-    | CardGridStoryblok
-    | CardGridRowStoryblok
-    | CardGridRowBasicStoryblok
-    | CardGridRowCalloutStoryblok
-    | CardGridRowCalloutWithImageStoryblok
-    | CardGridRowTestimonialsStoryblok
-    | CardGridSectionStoryblok
-    | CardListSectionStoryblok
-    | CardListSectionItemStoryblok
-    | CategoryLandingPageStoryblok
-    | CategoryNavigationStoryblok
-    | ConfigStoryblok
-    | FormEmbedStoryblok
-    | FormPageStoryblok
-    | FullWidthSectionStoryblok
-    | GridStoryblok
-    | GridItemStoryblok
-    | GridSectionStoryblok
-    | GridSectionItemStoryblok
-    | HeroStoryblok
-    | HomepageStoryblok
-    | HomepageHeroStoryblok
-    | IframeStoryblok
-    | ImageEmbedStoryblok
-    | ImageOrVideoStoryblok
-    | InDepthArticleStoryblok
-    | InfogramEmbedNewStoryblok
-    | InfogramRichTextStoryblok
-    | InfoPageStoryblok
-    | ListItemStoryblok
-    | ListItemNewStoryblok
-    | MarkdownStoryblok
-    | MenuLinkStoryblok
-    | MetadataStoryblok
-    | NestedOrderedListStoryblok
-    | NestedRichTextStoryblok
-    | NestedTableStoryblok
-    | NewsArticleStoryblok
-    | OrderedListStoryblok
-    | OrderedListItemStoryblok
-    | OrderedListNewStoryblok
-    | OrderedListWithStartingNo2Storyblok
-    | PageStoryblok
-    | PageHeaderStoryblok
-    | PanelStoryblok
-    | PodcastStoryblok
-    | PromoBoxStoryblok
-    | QuoteStoryblok
-    | RelatedLinkStoryblok
-    | RelatedNewsLinkStoryblok
-    | RichTextTableStoryblok
-    | SpotlightStoryblok
-    | TableStoryblok
-    | TestimonialFullWidthStoryblok
-    | TestimonialGridItemStoryblok
-    | TestListItemStoryblok
-    | TestOrderedListStoryblok
-    | YoutubeEmbedStoryblok
-  )[];
-  calloutCards: CalloutCardDemoStoryblok[];
-  component: "cardGridRow";
   _uid: string;
   [k: string]: any;
 }
@@ -320,6 +232,13 @@ export interface CardGridSectionStoryblok {
   [k: string]: any;
 }
 
+export interface CardListStoryblok {
+  cards: CardListSectionItemStoryblok[];
+  component: "cardList";
+  _uid: string;
+  [k: string]: any;
+}
+
 export interface CardListSectionStoryblok {
   heading?: string;
   headingLevel: string;
@@ -335,6 +254,7 @@ export interface CardListSectionStoryblok {
 
 export interface CardListSectionItemStoryblok {
   heading: string;
+  headingLevel?: "" | "2" | "3" | "4" | "5" | "6";
   body: string;
   link: MultilinkStoryblok;
   component: "cardListSectionItem";
@@ -353,7 +273,6 @@ export interface CategoryLandingPageStoryblok {
     | CardListSectionStoryblok
     | TestimonialFullWidthStoryblok
     | CardGridSectionStoryblok
-    | CardGridRowBasicStoryblok
   )[];
   component: "categoryLandingPage";
   _uid: string;
@@ -365,13 +284,6 @@ export interface CategoryNavigationStoryblok {
   cardGrid: CardGridStoryblok[];
   metadata?: MetadataStoryblok[];
   component: "categoryNavigation";
-  _uid: string;
-  [k: string]: any;
-}
-
-export interface ConfigStoryblok {
-  header_menu?: MenuLinkStoryblok[];
-  component: "config";
   _uid: string;
   [k: string]: any;
 }
@@ -389,7 +301,7 @@ export interface FormPageStoryblok {
   header?: PageHeaderStoryblok[];
   metadata?: MetadataStoryblok[];
   content?: (NestedRichTextStoryblok | ButtonLinkStoryblok | FormEmbedStoryblok)[];
-  panel?: PanelStoryblok[];
+  panel?: NestedRichTextStoryblok[];
   component: "formPage";
   _uid: string;
   [k: string]: any;
@@ -416,21 +328,19 @@ export interface GridStoryblok {
     | BlogPostStoryblok
     | ButtonLinkStoryblok
     | CalloutCardStoryblok
-    | CalloutCardDemoStoryblok
     | CalloutCardWithImageStoryblok
     | CardStoryblok
     | CardGridStoryblok
-    | CardGridRowStoryblok
     | CardGridRowBasicStoryblok
     | CardGridRowCalloutStoryblok
     | CardGridRowCalloutWithImageStoryblok
     | CardGridRowTestimonialsStoryblok
     | CardGridSectionStoryblok
+    | CardListStoryblok
     | CardListSectionStoryblok
     | CardListSectionItemStoryblok
     | CategoryLandingPageStoryblok
     | CategoryNavigationStoryblok
-    | ConfigStoryblok
     | FormEmbedStoryblok
     | FormPageStoryblok
     | FullWidthSectionStoryblok
@@ -444,26 +354,18 @@ export interface GridStoryblok {
     | IframeStoryblok
     | ImageEmbedStoryblok
     | ImageOrVideoStoryblok
+    | ImageRichTextStoryblok
     | InDepthArticleStoryblok
-    | InfogramEmbedNewStoryblok
-    | InfogramRichTextStoryblok
+    | InfogramEmbedStoryblok
     | InfoPageStoryblok
-    | ListItemStoryblok
-    | ListItemNewStoryblok
     | MarkdownStoryblok
-    | MenuLinkStoryblok
     | MetadataStoryblok
-    | NestedOrderedListStoryblok
     | NestedRichTextStoryblok
     | NestedTableStoryblok
     | NewsArticleStoryblok
     | OrderedListStoryblok
-    | OrderedListItemStoryblok
-    | OrderedListNewStoryblok
-    | OrderedListWithStartingNo2Storyblok
     | PageStoryblok
     | PageHeaderStoryblok
-    | PanelStoryblok
     | PodcastStoryblok
     | PromoBoxStoryblok
     | QuoteStoryblok
@@ -471,11 +373,8 @@ export interface GridStoryblok {
     | RelatedNewsLinkStoryblok
     | RichTextTableStoryblok
     | SpotlightStoryblok
-    | TableStoryblok
     | TestimonialFullWidthStoryblok
     | TestimonialGridItemStoryblok
-    | TestListItemStoryblok
-    | TestOrderedListStoryblok
     | YoutubeEmbedStoryblok
   )[];
   component: "grid";
@@ -583,6 +482,18 @@ export interface ImageOrVideoStoryblok {
   [k: string]: any;
 }
 
+export interface ImageRichTextStoryblok {
+  imagePosition?: "" | "left" | "right";
+  imageSize?: "small" | "medium" | "large";
+  hideImagesOnSmallScreens?: "true" | "false";
+  mainImage: AssetStoryblok;
+  smallScreenImage?: AssetStoryblok;
+  content: RichtextStoryblok;
+  component: "imageRichText";
+  _uid: string;
+  [k: string]: any;
+}
+
 export interface InDepthArticleStoryblok {
   title: string;
   link: Exclude<MultilinkStoryblok, {linktype?: "email"} | {linktype?: "asset"}>;
@@ -594,26 +505,15 @@ export interface InDepthArticleStoryblok {
   [k: string]: any;
 }
 
-export interface InfogramEmbedNewStoryblok {
+export interface InfogramEmbedStoryblok {
   displayMode: "withRichText" | "standalone";
   infogramUrl: string;
   layoutVariant: "constrained" | "fullwidth";
-  content?: RichtextStoryblok;
-  infogramPosition?: "left" | "right";
-  infogramSize?: "medium" | "large";
-  hideInfogramOnSmallScreens?: "true" | "false";
-  component: "infogramEmbed-NEW";
-  _uid: string;
-  [k: string]: any;
-}
-
-export interface InfogramRichTextStoryblok {
-  infogramPosition?: "left" | "right";
-  infogramSize?: "medium" | "large";
-  hideInfogramOnSmallScreens?: "true" | "false";
   content: RichtextStoryblok;
-  infogram: InfogramEmbedNewStoryblok[];
-  component: "infogramRichText";
+  infogramPosition?: "left" | "right";
+  infogramSize?: "medium" | "large";
+  hideInfogramOnSmallScreens?: "true" | "false";
+  component: "infogramEmbed";
   _uid: string;
   [k: string]: any;
 }
@@ -621,25 +521,10 @@ export interface InfogramRichTextStoryblok {
 export interface InfoPageStoryblok {
   header: (PageHeaderStoryblok | HeroStoryblok)[];
   metadata?: MetadataStoryblok[];
-  hideSectionNav?: "" | "true" | "false";
-  hideInPageNav?: "" | "true" | "false";
+  hideSectionNav?: "true" | "false";
+  hideInPageNav?: "true" | "false";
   content: RichtextStoryblok;
   component: "infoPage";
-  _uid: string;
-  [k: string]: any;
-}
-
-export interface ListItemStoryblok {
-  ListItemText?: string;
-  component: "ListItem";
-  _uid: string;
-  [k: string]: any;
-}
-
-export interface ListItemNewStoryblok {
-  text?: RichtextStoryblok;
-  children?: OrderedListNewStoryblok[];
-  component: "listItemNew";
   _uid: string;
   [k: string]: any;
 }
@@ -651,27 +536,10 @@ export interface MarkdownStoryblok {
   [k: string]: any;
 }
 
-export interface MenuLinkStoryblok {
-  link?: Exclude<MultilinkStoryblok, {linktype?: "email"} | {linktype?: "asset"}>;
-  name?: string;
-  component: "menu_link";
-  _uid: string;
-  [k: string]: any;
-}
-
 export interface MetadataStoryblok {
   description?: string;
   creator?: string;
   component: "metadata";
-  _uid: string;
-  [k: string]: any;
-}
-
-export interface NestedOrderedListStoryblok {
-  startingNumber?: string;
-  type?: any;
-  listItems?: RichtextStoryblok;
-  component: "nestedOrderedList";
   _uid: string;
   [k: string]: any;
 }
@@ -728,34 +596,10 @@ export interface NewsArticleStoryblok {
 }
 
 export interface OrderedListStoryblok {
-  StartingNumber?: string;
-  ListItems?: ListItemStoryblok[];
-  component: "OrderedList";
-  _uid: string;
-  [k: string]: any;
-}
-
-export interface OrderedListItemStoryblok {
-  startingNumber?: string;
-  type?: "" | "1" | "A" | "a";
-  items?: RichtextStoryblok;
-  component: "orderedListItem";
-  _uid: string;
-  [k: string]: any;
-}
-
-export interface OrderedListNewStoryblok {
   startingNumber?: string;
   listType?: "" | "1" | "a" | "A" | "i" | "I";
-  listItems?: ListItemNewStoryblok[];
-  component: "orderedListNew";
-  _uid: string;
-  [k: string]: any;
-}
-
-export interface OrderedListWithStartingNo2Storyblok {
-  listItems?: (OrderedListItemStoryblok | NestedRichTextStoryblok)[];
-  component: "orderedListWithStartingNo2";
+  listItems: ListItemStoryblok[];
+  component: "orderedList";
   _uid: string;
   [k: string]: any;
 }
@@ -770,21 +614,19 @@ export interface PageStoryblok {
     | BlogPostStoryblok
     | ButtonLinkStoryblok
     | CalloutCardStoryblok
-    | CalloutCardDemoStoryblok
     | CalloutCardWithImageStoryblok
     | CardStoryblok
     | CardGridStoryblok
-    | CardGridRowStoryblok
     | CardGridRowBasicStoryblok
     | CardGridRowCalloutStoryblok
     | CardGridRowCalloutWithImageStoryblok
     | CardGridRowTestimonialsStoryblok
     | CardGridSectionStoryblok
+    | CardListStoryblok
     | CardListSectionStoryblok
     | CardListSectionItemStoryblok
     | CategoryLandingPageStoryblok
     | CategoryNavigationStoryblok
-    | ConfigStoryblok
     | FormEmbedStoryblok
     | FormPageStoryblok
     | FullWidthSectionStoryblok
@@ -798,26 +640,18 @@ export interface PageStoryblok {
     | IframeStoryblok
     | ImageEmbedStoryblok
     | ImageOrVideoStoryblok
+    | ImageRichTextStoryblok
     | InDepthArticleStoryblok
-    | InfogramEmbedNewStoryblok
-    | InfogramRichTextStoryblok
+    | InfogramEmbedStoryblok
     | InfoPageStoryblok
-    | ListItemStoryblok
-    | ListItemNewStoryblok
     | MarkdownStoryblok
-    | MenuLinkStoryblok
     | MetadataStoryblok
-    | NestedOrderedListStoryblok
     | NestedRichTextStoryblok
     | NestedTableStoryblok
     | NewsArticleStoryblok
     | OrderedListStoryblok
-    | OrderedListItemStoryblok
-    | OrderedListNewStoryblok
-    | OrderedListWithStartingNo2Storyblok
     | PageStoryblok
     | PageHeaderStoryblok
-    | PanelStoryblok
     | PodcastStoryblok
     | PromoBoxStoryblok
     | QuoteStoryblok
@@ -825,11 +659,8 @@ export interface PageStoryblok {
     | RelatedNewsLinkStoryblok
     | RichTextTableStoryblok
     | SpotlightStoryblok
-    | TableStoryblok
     | TestimonialFullWidthStoryblok
     | TestimonialGridItemStoryblok
-    | TestListItemStoryblok
-    | TestOrderedListStoryblok
     | YoutubeEmbedStoryblok
   )[];
   metadata?: MetadataStoryblok[];
@@ -846,16 +677,6 @@ export interface PageHeaderStoryblok {
   cta?: ButtonLinkStoryblok[];
   theme?: "subtle" | "impact";
   component: "pageHeader";
-  _uid: string;
-  [k: string]: any;
-}
-
-export interface PanelStoryblok {
-  heading: string;
-  headingLevel: string;
-  content: RichtextStoryblok;
-  variant?: "supporting" | "primary" | "impact";
-  component: "panel";
   _uid: string;
   [k: string]: any;
 }
@@ -915,10 +736,11 @@ export interface RelatedNewsLinkStoryblok {
 }
 
 export interface RichTextTableStoryblok {
-  Heading?: string;
-  Summary?: string;
-  headingLevel?: any;
-  Table?: RichtextStoryblok;
+  heading: string;
+  headingLevel: "" | "2" | "3" | "4" | "5";
+  summary?: RichtextStoryblok;
+  hideSummaryText?: "" | "true" | "false";
+  tableContent: RichtextStoryblok;
   component: "richTextTable";
   _uid: string;
   [k: string]: any;
@@ -941,22 +763,11 @@ export interface SpotlightStoryblok {
   [k: string]: any;
 }
 
-export interface TableStoryblok {
-  heading?: string;
-  headingLevel?: any;
-  summary?: string;
-  hasRowHeaders?: any;
-  tableContent?: RichtextStoryblok;
-  component: "table";
-  _uid: string;
-  [k: string]: any;
-}
-
 export interface TestimonialFullWidthStoryblok {
   quoteText: string;
   quoteName: string;
   quoteRole: string;
-  image: AssetStoryblok;
+  image?: AssetStoryblok;
   link?: RelatedLinkStoryblok[];
   variant: "fullWidth" | "fullWidthWhite";
   component: "testimonialFullWidth";
@@ -968,26 +779,9 @@ export interface TestimonialGridItemStoryblok {
   quoteText: string;
   quoteName: string;
   quoteRole: string;
-  image: AssetStoryblok;
+  image?: AssetStoryblok;
   variant: "default" | "transparent";
   component: "testimonialGridItem";
-  _uid: string;
-  [k: string]: any;
-}
-
-export interface TestListItemStoryblok {
-  listItemContent?: RichtextStoryblok;
-  nestedList?: TestOrderedListStoryblok[];
-  component: "testListItem";
-  _uid: string;
-  [k: string]: any;
-}
-
-export interface TestOrderedListStoryblok {
-  startingPoint?: string;
-  listStyle?: any;
-  listItems?: TestListItemStoryblok[];
-  component: "testOrderedList";
   _uid: string;
   [k: string]: any;
 }
