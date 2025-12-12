@@ -1,0 +1,17 @@
+@use '@nice-digital/nds-core/scss/media-queries';
+@use '@nice-digital/nds-core/scss/spacing';
+@use '@nice-digital/nds-core/scss/utils';
+
+.formPage {
+  $self: &;
+  // page overrides for DS components
+  /* stylelint-disable-next-line selector-class-pattern */
+  :global(.page-header) {
+    @include media-queries.mq($until: sm) {
+      margin-bottom: utils.rem(spacing.$large);
+    }
+  }
+}
+
+
+
