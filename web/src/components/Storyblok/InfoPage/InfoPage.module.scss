@@ -38,6 +38,7 @@
     :global(.card-list),
     :global(.nested-rich-text),
     :global(.testimonial),
+    :global(.panel),
     [data-title^='(video)'] {
       max-width: layout.$readable-width;
     }
