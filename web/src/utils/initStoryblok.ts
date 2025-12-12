@@ -13,6 +13,7 @@ import { CardListSection } from "@/components/Storyblok/CardListSection/CardList
 import { CategoryLandingPage } from "@/components/Storyblok/CategoryLandingPage/CategoryLandingPage";
 import { CategoryNavigation } from "@/components/Storyblok/CategoryNavigation/CategoryNavigation";
 import { ClientFormEmbed } from "@/components/Storyblok/FormEmbed/ClientFormEmbed";
+import { FormPage } from "@/components/Storyblok/FormPage/FormPage";
 import { Homepage } from "@/components/Storyblok/Homepage/Homepage";
 import { HomepageHero } from "@/components/Storyblok/Homepage/HomepageHero/HomepageHero";
 import { InfoPage } from "@/components/Storyblok/InfoPage/InfoPage";
@@ -109,6 +110,7 @@ const infoPageComponents = {
 
 const formPageComponents = {
 	formEmbed: ClientFormEmbed,
+	formPage: FormPage,
 };
 
 export const allComponents: SbReactComponentsMap = {
