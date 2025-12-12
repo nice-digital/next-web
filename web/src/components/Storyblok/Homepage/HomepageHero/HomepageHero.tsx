@@ -40,7 +40,7 @@ export const HomepageHero = ({
 			title={title}
 			intro={description}
 			image={randomImage}
-			actions={<StoryblokButtonLink button={updatedCTA} />}
+			actions={<StoryblokButtonLink blok={updatedCTA} />}
 			className={styles.hero}
 		/>
 	);

@@ -116,7 +116,7 @@ export const PromoBox: React.FC<PromoBoxProps> = ({
 								<StoryblokRichText content={body} />
 							</div>
 						)}
-						{!!cta?.length && <StoryblokButtonLink button={cta[0]} />}
+						{!!cta?.length && <StoryblokButtonLink blok={cta[0]} />}
 					</GridItem>
 					<GridItem
 						cols={12}
