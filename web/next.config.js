@@ -3050,6 +3050,48 @@ const nextConfig = {
 				destination: "https://www.england.nhs.uk/aac/about-us/who-we-are/",
 				permanent: true,
 			},
+			{
+				source:
+					"/position-statements/use-of-ai-in-evidence-generation-nice-position-statement",
+				destination: "/corporate/ecd11/chapter/overview",
+				permanent: true,
+			},
+			{
+				source:
+					"/position-statements/position-statement-on-engagement-with-tobacco-industry-organisations",
+				destination: "corporate/ecd13/chapter/position-statement",
+				permanent: true,
+			},
+			{
+				source:
+					"/position-statements/biosimilar-technologies-nice-position-statement",
+				destination: "/corporate/ecd14/chapter/position-statement",
+				permanent: true,
+			},
+			{
+				source:
+					"/position-statements/biosimilar-technologies-nice-position-statement-information-for-the-public",
+				destination: "/corporate/ecd14/informationforpublic",
+				permanent: true,
+			},
+			{
+				source:
+					"/position-statements/chemotherapy-dose-standardisation-nice-position-statement",
+				destination: "/corporate/ecd15/chapter/position-statement",
+				permanent: true,
+			},
+			{
+				source:
+					"/position-statements/position-statement-on-use-of-the-eq-5d-5l-value-set-for-england-updated-october-2019",
+				destination: "/corporate/ecd16/chapter/introduction",
+				permanent: true,
+			},
+			{
+				source:
+					"position-statements/participation-in-clinical-trials-and-subsequent-access-to-drugs-appraised-by-nice-a-statement-on-the-applicability-of-technology-appraisal-guidance",
+				destination: "/corporate/ecd17/chapter/position-statement",
+				permanent: true,
+			},
 		];
 	},
 	async headers() {
