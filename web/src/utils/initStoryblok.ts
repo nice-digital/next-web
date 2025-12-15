@@ -113,6 +113,7 @@ const infoPageComponents = {
 const formPageComponents = {
 	formEmbed: ClientFormEmbed,
 	formPage: FormPage,
+	panel: StoryblokPanel,
 };
 
 export const allComponents: SbReactComponentsMap = {
