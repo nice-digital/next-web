@@ -301,7 +301,7 @@ export interface FormPageStoryblok {
   header?: PageHeaderStoryblok[];
   metadata?: MetadataStoryblok[];
   content?: (NestedRichTextStoryblok | ButtonLinkStoryblok | FormEmbedStoryblok)[];
-  panel?: NestedRichTextStoryblok[];
+  panel?: PanelStoryblok[];
   component: "formPage";
   _uid: string;
   [k: string]: any;
