@@ -3066,7 +3066,7 @@ const nextConfig = {
 			{
 				source:
 					"/position-statements/position-statement-on-engagement-with-tobacco-industry-organisations",
-				destination: "corporate/ecd13/chapter/position-statement",
+				destination: "/corporate/ecd13/chapter/position-statement",
 				permanent: true,
 			},
 			{
@@ -3095,7 +3095,7 @@ const nextConfig = {
 			},
 			{
 				source:
-					"position-statements/participation-in-clinical-trials-and-subsequent-access-to-drugs-appraised-by-nice-a-statement-on-the-applicability-of-technology-appraisal-guidance",
+					"/position-statements/participation-in-clinical-trials-and-subsequent-access-to-drugs-appraised-by-nice-a-statement-on-the-applicability-of-technology-appraisal-guidance",
 				destination: "/corporate/ecd17/chapter/position-statement",
 				permanent: true,
 			},
