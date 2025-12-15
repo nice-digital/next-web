@@ -2790,8 +2790,7 @@ const nextConfig = {
 			{
 				source:
 					"/about/what-we-do/our-programmes/nice-guidance/technology-appraisal-guidance/eq-5d-5l",
-				destination:
-					"/corporate/ecd16/chapter/introduction",
+				destination: "/corporate/ecd16/chapter/introduction",
 				permanent: true,
 			},
 			{
