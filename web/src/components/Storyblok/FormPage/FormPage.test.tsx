@@ -1,23 +1,24 @@
 import { screen } from "@testing-library/react";
 
 import sampleDataWithPanel from "@/mockData/storyblok/formPageWithPanel.json"; //https://api.storyblok.com/v2/cdn/stories/unit-test-data/test-form-page?resolve_links=url&token=ALPHA_PUBLIC&version=published
-import sampleDataWithoutPanel from "@/mockData/storyblok/formPageWithoutPanel.json"; //https://api.storyblok.com/v2/cdn/stories/unit-test-data/test-form-page?resolve_links=url&token=ALPHA_PUBLIC&version=published
+import sampleDataNoMeta from "@/mockData/storyblok/formPageNoMeta.json"; //https://api.storyblok.com/v2/cdn/stories/unit-test-data/form-page-no-meta?resolve_links=url&token=4W1k8jiLtTFLtx5Tgh9k1Qtt&version=published
 import { render } from "@/test-utils/rendering";
 import { FormPageStoryblok } from "@/types/storyblok";
 
 import { FormPage, type FormPageProps } from "./FormPage";
 
 const mockFormPageWithPanel = sampleDataWithPanel.story.content;
+const mockFormPageNoMetaData = sampleDataNoMeta.story.content;
 
 const mockPropsWithPanel: FormPageProps = {
 	blok: mockFormPageWithPanel as FormPageStoryblok,
 	// breadcrumbs: sampleDataWithPanel.breadcrumbs,
 };
 
-// const mockPropsWithoutPanel: FormPageProps = {
-// 	blok: mockFormPageWithoutPanel as FormPageStoryblok,
-// 	breadcrumbs: sampleDataWithMeta.breadcrumbs,
-// };
+const mockPropsNoMetaData: FormPageProps = {
+	blok: mockFormPageNoMetaData as FormPageStoryblok,
+	// breadcrumbs: sampleDataNoMeta.breadcrumbs,
+};
 
 describe("FormPage", () => {
 	afterEach(() => {
@@ -44,10 +45,11 @@ describe("FormPage", () => {
 		).toHaveTextContent(title);
 	});
 
-	// TODO: Add test coverage when NXT-501 is ready to implement on FormPage
-	xit("renders the Panel through the StoryblokComponent if present", () => {
-		// render(<FormPage {...mockPropsWithPageHeaderAndPanel} />);
-		// const { component } = mockPageHeaderSectionAndPanel.panel[0];
+	it("renders the Panel through the StoryblokComponent if present", () => {
+		render(<FormPage {...mockPropsWithPanel} />);
+		expect(
+			screen.getByTestId("storyblok-component-panel")
+		).toBeInTheDocument();
 	});
 
 	it("should render FormEmbed through the StoryblokComponent", () => {
@@ -59,10 +61,10 @@ describe("FormPage", () => {
 
 	it("handles missing metadata gracefully", () => {
 		const blok = {
-			...mockPropsWithPanel.blok,
+			...mockPropsNoMetaData.blok,
 			metadata: undefined,
 		};
-		render(<FormPage {...mockPropsWithPanel} blok={blok} />);
+		render(<FormPage {...mockPropsNoMetaData} blok={blok} />);
 		expect(
 			screen.queryByText(mockFormPageWithPanel.metadata[0].component)
 		).not.toBeInTheDocument();
