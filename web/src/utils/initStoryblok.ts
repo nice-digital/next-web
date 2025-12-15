@@ -12,6 +12,8 @@ import { CardList } from "@/components/Storyblok/CardList/CardList";
 import { CardListSection } from "@/components/Storyblok/CardListSection/CardListSection";
 import { CategoryLandingPage } from "@/components/Storyblok/CategoryLandingPage/CategoryLandingPage";
 import { CategoryNavigation } from "@/components/Storyblok/CategoryNavigation/CategoryNavigation";
+import { ClientFormEmbed } from "@/components/Storyblok/FormEmbed/ClientFormEmbed";
+import { FormPage } from "@/components/Storyblok/FormPage/FormPage";
 import { Homepage } from "@/components/Storyblok/Homepage/Homepage";
 import { HomepageHero } from "@/components/Storyblok/Homepage/HomepageHero/HomepageHero";
 import { InfoPage } from "@/components/Storyblok/InfoPage/InfoPage";
@@ -108,6 +110,11 @@ const infoPageComponents = {
 	richTextTable: StoryblokRichTextTable,
 };
 
+const formPageComponents = {
+	formEmbed: ClientFormEmbed,
+	formPage: FormPage,
+};
+
 export const allComponents: SbReactComponentsMap = {
 	...commonComponents,
 	...articleComponents,
@@ -116,6 +123,7 @@ export const allComponents: SbReactComponentsMap = {
 	...categoryNavigationPageComponents,
 	...homepageComponents,
 	...infoPageComponents,
+	...formPageComponents,
 };
 
 // Init connection to Storyblok

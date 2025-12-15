@@ -18,6 +18,8 @@ const jotFormBaseURL = publicRuntimeConfig.jotForm.baseURL;
 interface JotFormEmbedProps {
 	jotFormID: FormID;
 	title: string;
+	/**An optional prefill ID for prefilled form content */
+	prefillId?: string;
 	/** An optional, initial height */
 	height?: number;
 	onSubmit?: () => void;
@@ -45,6 +47,7 @@ export const JotFormEmbed: FC<JotFormEmbedProps> = ({
 	jotFormID,
 	title,
 	height,
+	prefillId,
 	onSubmit,
 }) => {
 	const iframeRef = useRef<HTMLIFrameElement>(null),
@@ -175,7 +178,9 @@ export const JotFormEmbed: FC<JotFormEmbedProps> = ({
 			id={`JotFormIFrame-${jotFormID}`}
 			data-jotform-id={jotFormID}
 			ref={iframeRef}
-			src={`${jotFormBaseURL}/${jotFormID}?isIframeEmbed=1`}
+			src={`${jotFormBaseURL}/${jotFormID}${
+				prefillId && prefillId.length > 0 ? `/prefill/${prefillId}` : ``
+			}?isIframeEmbed=1`}
 			title={title}
 			allowFullScreen
 			allow="geolocation; microphone; camera"
