@@ -323,6 +323,25 @@ export interface CategoryNavigationStoryblok {
   [k: string]: any;
 }
 
+export interface FormEmbedStoryblok {
+  title: string;
+  formId: string;
+  prefillId?: string;
+  component: "formEmbed";
+  _uid: string;
+  [k: string]: any;
+}
+
+export interface FormPageStoryblok {
+  header?: PageHeaderStoryblok[];
+  metadata?: MetadataStoryblok[];
+  content?: (NestedRichTextStoryblok | ButtonLinkStoryblok | FormEmbedStoryblok)[];
+  panel?: NestedRichTextStoryblok[];
+  component: "formPage";
+  _uid: string;
+  [k: string]: any;
+}
+
 export interface FullWidthSectionStoryblok {
   heading?: string;
   lead?: RichtextStoryblok;
@@ -357,6 +376,8 @@ export interface GridStoryblok {
     | CardListSectionItemStoryblok
     | CategoryLandingPageStoryblok
     | CategoryNavigationStoryblok
+    | FormEmbedStoryblok
+    | FormPageStoryblok
     | FullWidthSectionStoryblok
     | GridStoryblok
     | GridItemStoryblok
@@ -657,6 +678,8 @@ export interface PageStoryblok {
     | CardListSectionItemStoryblok
     | CategoryLandingPageStoryblok
     | CategoryNavigationStoryblok
+    | FormEmbedStoryblok
+    | FormPageStoryblok
     | FullWidthSectionStoryblok
     | GridStoryblok
     | GridItemStoryblok
