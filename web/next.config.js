@@ -158,8 +158,7 @@ const nextConfig = {
 			{
 				source:
 					"/about/what-we-do/our-programmes/nice-guidance/about-technology-appraisal-guidance/participation-in-clinical-trials-and-subsequent-access-to-drugs-appraised-by-nice-a-statement-on-the-applicability-of-about-technology-appraisal-guidance",
-				destination:
-					"/position-statements/participation-in-clinical-trials-and-subsequent-access-to-drugs-appraised-by-nice-a-statement-on-the-applicability-of-technology-appraisal-guidance",
+				destination: "/corporate/ecd17/chapter/position-statement",
 				permanent: true,
 			},
 			{
@@ -256,8 +255,7 @@ const nextConfig = {
 			{
 				source:
 					"/about/what-we-do/our-programmes/nice-guidance/about-technology-appraisal-guidance/biosimilar-technologies-nice-position-statement-information-for-the-public",
-				destination:
-					"/position-statements/biosimilar-technologies-nice-position-statement-information-for-the-public",
+				destination: "/corporate/ecd14/informationforpublic",
 				permanent: true,
 			},
 			{
@@ -277,8 +275,7 @@ const nextConfig = {
 			{
 				source:
 					"/about/what-we-do/our-programmes/nice-guidance/technology-appraisal-guidance/biosimilar-technologies-nice-position-statement-information-for-the-public",
-				destination:
-					"/position-statements/biosimilar-technologies-nice-position-statement-information-for-the-public",
+				destination: "/corporate/ecd14/informationforpublic",
 				permanent: true,
 			},
 			{
@@ -311,8 +308,7 @@ const nextConfig = {
 			{
 				source:
 					"/about/what-we-do/our-programmes/nice-guidance/about-technology-appraisal-guidance/chemotherapy-dose-standardisation-nice-position-statement",
-				destination:
-					"/position-statements/chemotherapy-dose-standardisation-nice-position-statement",
+				destination: "/corporate/ecd15/chapter/position-statement",
 				permanent: true,
 			},
 			{
@@ -346,8 +342,7 @@ const nextConfig = {
 			{
 				source:
 					"/about/what-we-do/our-programmes/nice-guidance/technology-appraisal-guidance/chemotherapy-dose-standardisation-nice-position-statement",
-				destination:
-					"/position-statements/chemotherapy-dose-standardisation-nice-position-statement",
+				destination: "/corporate/ecd15/chapter/position-statement",
 				permanent: true,
 			},
 			{
@@ -367,8 +362,7 @@ const nextConfig = {
 			{
 				source:
 					"/about/what-we-do/our-programmes/nice-guidance/about-technology-appraisal-guidance/biosimilar-technologies-nice-position-statement",
-				destination:
-					"/position-statements/biosimilar-technologies-nice-position-statement",
+				destination: "/corporate/ecd14/chapter/position-statement",
 				permanent: true,
 			},
 			{
@@ -409,8 +403,7 @@ const nextConfig = {
 			{
 				source:
 					"/about/what-we-do/our-programmes/nice-guidance/technology-appraisal-guidance/biosimilar-technologies-nice-position-statement",
-				destination:
-					"/position-statements/biosimilar-technologies-nice-position-statement",
+				destination: "/corporate/ecd14/chapter/position-statement",
 				permanent: true,
 			},
 			{
@@ -663,8 +656,7 @@ const nextConfig = {
 			{
 				source:
 					"/about/what-we-do/our-programmes/nice-guidance/about-technology-appraisal-guidance/eq-5d-5l",
-				destination:
-					"/corporate/ecd16/chapter/introduction",
+				destination: "/corporate/ecd16/chapter/introduction",
 				permanent: true,
 			},
 			{
@@ -1587,8 +1579,7 @@ const nextConfig = {
 			{
 				source:
 					"/about/what-we-do/our-research-work/use-of-ai-in-evidence-generation--nice-position-statement",
-				destination:
-					"/position-statements/use-of-ai-in-evidence-generation-nice-position-statement",
+				destination: "/corporate/ecd11",
 				permanent: true,
 			},
 			{
@@ -2424,8 +2415,7 @@ const nextConfig = {
 			{
 				source:
 					"/get-involved/stakeholder-registration/tobacco-industry-organisations",
-				destination:
-					"/position-statements/position-statement-on-engagement-with-tobacco-industry-organisations",
+				destination: "/corporate/ecd13/chapter/position-statement",
 				permanent: true,
 			},
 			{
@@ -3059,7 +3049,7 @@ const nextConfig = {
 			{
 				source:
 					"/position-statements/use-of-ai-in-evidence-generation-nice-position-statement",
-				destination: "/corporate/ecd11/chapter/overview",
+				destination: "/corporate/ecd11",
 				permanent: true,
 			},
 			{
