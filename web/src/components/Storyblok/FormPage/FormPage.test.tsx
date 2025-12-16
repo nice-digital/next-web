@@ -47,9 +47,7 @@ describe("FormPage", () => {
 
 	it("renders the Panel through the StoryblokComponent if present", () => {
 		render(<FormPage {...mockPropsWithPanel} />);
-		expect(
-			screen.getByTestId("storyblok-component-panel")
-		).toBeInTheDocument();
+		expect(screen.getByTestId("storyblok-component-panel")).toBeInTheDocument();
 	});
 
 	it("should render FormEmbed through the StoryblokComponent", () => {
