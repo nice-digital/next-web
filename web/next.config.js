@@ -664,7 +664,7 @@ const nextConfig = {
 				source:
 					"/about/what-we-do/our-programmes/nice-guidance/about-technology-appraisal-guidance/eq-5d-5l",
 				destination:
-					"/position-statements/position-statement-on-use-of-the-eq-5d-5l-value-set-for-england-updated-october-2019",
+					"/corporate/ecd16/chapter/introduction",
 				permanent: true,
 			},
 			{
