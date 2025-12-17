@@ -170,7 +170,8 @@ export const validateRouteParams = async ({
 
 	const absoluteURL = new URL(resolvedUrl, `https://anything.com`),
 		actualPathSegments = absoluteURL.pathname.split("/"),
-		expectedPathSegments = productPath.split("/");
+		expectedPathSegments = productPath.split("/"),
+		isRetiredProduct = product.productStatus === Status.Retired;
 
 	if (!query.productRoot || Array.isArray(query.productRoot))
 		throw Error(
@@ -218,6 +219,10 @@ export const validateRouteParams = async ({
 	// All 'product' URLs follow a format like "/indicators/ind1-some-title/anything/here"
 	// So by replacing the slug (2nd) segment we can support redirects to pages at any level
 	// For example from "/indicators/ind1-wrong-title/anything/here" to /indicators/ind1-correct-title/anything/here
+
+	if (isRetiredProduct) {
+		actualPathSegments.splice(2, 0, "retired");
+	}
 
 	// Retain the 'search' (querystring) part of the URL to retain things like utm params if present
 	const destination =

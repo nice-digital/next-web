@@ -13,6 +13,7 @@ export enum Status {
 	Published = "Published",
 	Withdrawn = "Withdrawn",
 	TemporarilyWithdrawn = "TemporarilyWithdrawn",
+	Retired = "Retired",
 }
 
 export enum ProductGroup {
