@@ -1,6 +1,6 @@
 import { screen } from "@testing-library/react";
 
-import sampleDataNoMeta from "@/mockData/storyblok/formPageNoMeta.json"; //https://api.storyblok.com/v2/cdn/stories/unit-test-data/form-page-no-meta?resolve_links=url&token=4W1k8jiLtTFLtx5Tgh9k1Qtt&version=published
+import sampleDataNoMeta from "@/mockData/storyblok/formPageNoMeta.json"; //https://api.storyblok.com/v2/cdn/stories/unit-test-data/form-page-no-meta?resolve_links=url&token=ALPHA_PUBLIC&version=published
 import sampleDataWithPanel from "@/mockData/storyblok/formPageWithPanel.json"; //https://api.storyblok.com/v2/cdn/stories/unit-test-data/test-form-page?resolve_links=url&token=ALPHA_PUBLIC&version=published
 import { render } from "@/test-utils/rendering";
 import { FormPageStoryblok } from "@/types/storyblok";
