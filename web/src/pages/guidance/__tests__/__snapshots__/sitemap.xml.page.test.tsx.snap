@@ -1,0 +1,17 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Guidance sitemap XML should exclude withdrawn products and indicators from sitemap 1`] = `
+"<?xml version=\\"1.0\\" encoding=\\"UTF-8\\"?>
+<urlset xmlns=\\"http://www.sitemaps.org/schemas/sitemap/0.9\\" xmlns:news=\\"http://www.google.com/schemas/sitemap-news/0.9\\" xmlns:xhtml=\\"http://www.w3.org/1999/xhtml\\" xmlns:mobile=\\"http://www.google.com/schemas/sitemap-mobile/1.0\\" xmlns:image=\\"http://www.google.com/schemas/sitemap-image/1.1\\" xmlns:video=\\"http://www.google.com/schemas/sitemap-video/1.1\\">
+<url><loc>https://next-web-tests.nice.org.uk/not_a_real_url/gid-mib10315</loc><lastmod>1066-01-01T12:00:00</lastmod></url>
+<url><loc>https://next-web-tests.nice.org.uk/guidance/topic-selection/gid-ta10679</loc><lastmod>2020-12-01T12:00:00</lastmod></url>
+<url><loc>https://next-web-tests.nice.org.uk/guidance/topic-selection/gid-ta10659</loc><lastmod>2020-09-01T12:00:00</lastmod></url>
+<url><loc>https://next-web-tests.nice.org.uk/guidance/topic-selection/gid-ta10720</loc><lastmod>2020-11-05T12:00:00</lastmod></url>
+<url><loc>https://next-web-tests.nice.org.uk/guidance/topic-selection/gid-ta10821</loc><lastmod>2022-11-09T12:00:00</lastmod></url>
+<url><loc>https://next-web-tests.nice.org.uk/guidance/topic-selection/gid-ta10983</loc><lastmod>2022-07-20T12:00:00</lastmod></url>
+<url><loc>https://next-web-tests.nice.org.uk/guidance/topic-selection/gid-ta10952</loc><lastmod>2022-11-09T12:00:00</lastmod></url>
+<url><loc>https://next-web-tests.nice.org.uk/guidance/topic-selection/gid-ta11056</loc><lastmod>2022-07-27T12:00:00</lastmod></url>
+<url><loc>https://next-web-tests.nice.org.uk/guidance/topic-selection/gid-ta11013</loc><lastmod>2023-02-16T12:00:00</lastmod></url>
+<url><loc>https://next-web-tests.nice.org.uk/guidance/topic-selection/gid-ta10336</loc><lastmod>2018-09-20T12:00:00</lastmod></url>
+</urlset>"
+`;

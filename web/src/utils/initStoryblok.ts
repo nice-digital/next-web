@@ -12,6 +12,8 @@ import { CardList } from "@/components/Storyblok/CardList/CardList";
 import { CardListSection } from "@/components/Storyblok/CardListSection/CardListSection";
 import { CategoryLandingPage } from "@/components/Storyblok/CategoryLandingPage/CategoryLandingPage";
 import { CategoryNavigation } from "@/components/Storyblok/CategoryNavigation/CategoryNavigation";
+import { ClientFormEmbed } from "@/components/Storyblok/FormEmbed/ClientFormEmbed";
+import { FormPage } from "@/components/Storyblok/FormPage/FormPage";
 import { Homepage } from "@/components/Storyblok/Homepage/Homepage";
 import { HomepageHero } from "@/components/Storyblok/Homepage/HomepageHero/HomepageHero";
 import { InfoPage } from "@/components/Storyblok/InfoPage/InfoPage";
@@ -24,6 +26,7 @@ import { StoryblokAccordionGroup } from "@/components/Storyblok/StoryblokAccordi
 import { StoryblokActionBannerDefault } from "@/components/Storyblok/StoryblokActionBanner/StoryblokActionBannerDefault";
 import { StoryblokActionBannerFullWidth } from "@/components/Storyblok/StoryblokActionBanner/StoryblokActionBannerFullWidth";
 import { StoryblokBlogPost } from "@/components/Storyblok/StoryblokBlogPost/StoryblokBlogPost";
+import { StoryblokButtonLink } from "@/components/Storyblok/StoryblokButtonLink/StoryblokButtonLink";
 import { StoryblokCalloutCard } from "@/components/Storyblok/StoryblokCalloutCard/StoryblokCalloutCard";
 import { StoryblokHero } from "@/components/Storyblok/StoryblokHero/StoryblokHero";
 import { StoryblokIframe } from "@/components/Storyblok/StoryblokIframe/StoryblokIframe";
@@ -32,6 +35,7 @@ import { ClientInfogramEmbed } from "@/components/Storyblok/StoryblokInfogramEmb
 import { StoryblokNewsArticle } from "@/components/Storyblok/StoryblokNewsArticle/StoryblokNewsArticle";
 import { StoryblokOrderedList } from "@/components/Storyblok/StoryblokOrderedList/StoryblokOrderedList";
 import { StoryblokPageHeader } from "@/components/Storyblok/StoryblokPageHeader/StoryblokPageHeader";
+import { StoryblokPanel } from "@/components/Storyblok/StoryblokPanel/StoryblokPanel";
 import { StoryblokRelatedLink } from "@/components/Storyblok/StoryblokRelatedLink/StoryblokRelatedLink";
 import { StoryblokRelatedNewsLink } from "@/components/Storyblok/StoryblokRelatedNewsLink/StoryblokRelatedNewsLink";
 import { StoryblokRichTextTable } from "@/components/Storyblok/StoryblokRichTextTable/StoryblokRichTextTable";
@@ -47,6 +51,7 @@ const commonComponents = {
 	accordion: StoryblokAccordion,
 	accordionGroup: StoryblokAccordionGroup,
 	actionBannerDefault: StoryblokActionBannerDefault,
+	buttonLink: StoryblokButtonLink,
 	cardGrid: BasicCardGrid,
 	cardGridRowBasic: CardGridRow,
 	cardList: CardList,
@@ -103,7 +108,13 @@ const infoPageComponents = {
 	infoPage: InfoPage,
 	nestedTable: StoryblokTable,
 	orderedList: StoryblokOrderedList,
+	panel: StoryblokPanel,
 	richTextTable: StoryblokRichTextTable,
+};
+
+const formPageComponents = {
+	formEmbed: ClientFormEmbed,
+	formPage: FormPage,
 };
 
 export const allComponents: SbReactComponentsMap = {
@@ -114,6 +125,7 @@ export const allComponents: SbReactComponentsMap = {
 	...categoryNavigationPageComponents,
 	...homepageComponents,
 	...infoPageComponents,
+	...formPageComponents,
 };
 
 // Init connection to Storyblok

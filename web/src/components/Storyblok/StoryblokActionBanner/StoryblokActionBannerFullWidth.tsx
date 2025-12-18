@@ -20,7 +20,7 @@ export const StoryblokActionBannerFullWidth: React.FC<
 		<ActionBanner
 			title={heading}
 			variant={variant === "fullWidthSubtle" ? "fullWidthSubtle" : "fullWidth"}
-			cta={<StoryblokButtonLink button={cta[0]} />}
+			cta={<StoryblokButtonLink blok={cta[0]} />}
 			image={
 				image.filename
 					? constructStoryblokImageSrc(image.filename, { width: 899 })

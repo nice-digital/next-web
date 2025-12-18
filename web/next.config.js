@@ -164,8 +164,7 @@ const nextConfig = {
 			{
 				source:
 					"/about/what-we-do/our-programmes/nice-guidance/about-technology-appraisal-guidance/participation-in-clinical-trials-and-subsequent-access-to-drugs-appraised-by-nice-a-statement-on-the-applicability-of-about-technology-appraisal-guidance",
-				destination:
-					"/position-statements/participation-in-clinical-trials-and-subsequent-access-to-drugs-appraised-by-nice-a-statement-on-the-applicability-of-technology-appraisal-guidance",
+				destination: "/corporate/ecd17/chapter/position-statement",
 				permanent: true,
 			},
 			{
@@ -262,8 +261,7 @@ const nextConfig = {
 			{
 				source:
 					"/about/what-we-do/our-programmes/nice-guidance/about-technology-appraisal-guidance/biosimilar-technologies-nice-position-statement-information-for-the-public",
-				destination:
-					"/position-statements/biosimilar-technologies-nice-position-statement-information-for-the-public",
+				destination: "/corporate/ecd14/informationforpublic",
 				permanent: true,
 			},
 			{
@@ -283,8 +281,7 @@ const nextConfig = {
 			{
 				source:
 					"/about/what-we-do/our-programmes/nice-guidance/technology-appraisal-guidance/biosimilar-technologies-nice-position-statement-information-for-the-public",
-				destination:
-					"/position-statements/biosimilar-technologies-nice-position-statement-information-for-the-public",
+				destination: "/corporate/ecd14/informationforpublic",
 				permanent: true,
 			},
 			{
@@ -317,8 +314,7 @@ const nextConfig = {
 			{
 				source:
 					"/about/what-we-do/our-programmes/nice-guidance/about-technology-appraisal-guidance/chemotherapy-dose-standardisation-nice-position-statement",
-				destination:
-					"/position-statements/chemotherapy-dose-standardisation-nice-position-statement",
+				destination: "/corporate/ecd15/chapter/position-statement",
 				permanent: true,
 			},
 			{
@@ -352,8 +348,7 @@ const nextConfig = {
 			{
 				source:
 					"/about/what-we-do/our-programmes/nice-guidance/technology-appraisal-guidance/chemotherapy-dose-standardisation-nice-position-statement",
-				destination:
-					"/position-statements/chemotherapy-dose-standardisation-nice-position-statement",
+				destination: "/corporate/ecd15/chapter/position-statement",
 				permanent: true,
 			},
 			{
@@ -373,8 +368,7 @@ const nextConfig = {
 			{
 				source:
 					"/about/what-we-do/our-programmes/nice-guidance/about-technology-appraisal-guidance/biosimilar-technologies-nice-position-statement",
-				destination:
-					"/position-statements/biosimilar-technologies-nice-position-statement",
+				destination: "/corporate/ecd14/chapter/position-statement",
 				permanent: true,
 			},
 			{
@@ -415,8 +409,7 @@ const nextConfig = {
 			{
 				source:
 					"/about/what-we-do/our-programmes/nice-guidance/technology-appraisal-guidance/biosimilar-technologies-nice-position-statement",
-				destination:
-					"/position-statements/biosimilar-technologies-nice-position-statement",
+				destination: "/corporate/ecd14/chapter/position-statement",
 				permanent: true,
 			},
 			{
@@ -619,9 +612,22 @@ const nextConfig = {
 			},
 			{
 				source:
+					"/what-nice-does/our-guidance/about-medical-technologies-guidance",
+				destination: "/what-nice-does/our-guidance/about-healthtech-guidance",
+				permanent: true,
+			},
+			{
+				source:
+					"/what-nice-does/our-guidance/about-medical-technologies-guidance/get-involved-with-medical-technologies-guidance",
+				destination:
+					"/what-nice-does/our-guidance/about-healthtech-guidance/get-involved-with-healthtech-guidance",
+				permanent: true,
+			},
+			{
+				source:
 					"/about/what-we-do/our-programmes/nice-guidance/about-medical-technologies-guidance/get-involved",
 				destination:
-					"/what-nice-does/our-guidance/about-medical-technologies-guidance/get-involved-with-medical-technologies-guidance",
+					"/what-nice-does/our-guidance/about-healthtech-guidance/get-involved-with-healthtech-guidance",
 				permanent: true,
 			},
 			{
@@ -669,8 +675,7 @@ const nextConfig = {
 			{
 				source:
 					"/about/what-we-do/our-programmes/nice-guidance/about-technology-appraisal-guidance/eq-5d-5l",
-				destination:
-					"/position-statements/position-statement-on-use-of-the-eq-5d-5l-value-set-for-england-updated-october-2019",
+				destination: "/corporate/ecd16/chapter/introduction",
 				permanent: true,
 			},
 			{
@@ -682,9 +687,16 @@ const nextConfig = {
 			},
 			{
 				source:
+					"/what-nice-does/our-guidance/about-diagnostics-guidance/diagnostics-assessment-programme-process-timeline",
+				destination:
+					"/what-nice-does/our-guidance/about-healthtech-guidance/process-timeline-for-healthtech-guidance",
+				permanent: true,
+			},
+			{
+				source:
 					"/about/what-we-do/our-programmes/nice-guidance/nice-diagnostics-guidance/process-timeline",
 				destination:
-					"/what-nice-does/our-guidance/about-diagnostics-guidance/diagnostics-assessment-programme-process-timeline",
+					"/what-nice-does/our-guidance/about-healthtech-guidance/process-timeline-for-healthtech-guidance",
 				permanent: true,
 			},
 			{
@@ -1020,16 +1032,23 @@ const nextConfig = {
 			},
 			{
 				source:
-					"/about/what-we-do/our-programmes/nice-guidance/nice-medical-technologies-evaluation-programme",
+					"/what-nice-does/our-guidance/about-medical-technologies-guidance/how-we-develop-medical-technologies-guidance",
 				destination:
-					"/what-nice-does/our-guidance/about-medical-technologies-guidance/get-a-medical-technology-evaluated",
+					"/what-nice-does/our-guidance/about-healthtech-guidance/how-we-develop-healthtech-guidance",
 				permanent: true,
 			},
 			{
 				source:
-					"/about/what-we-do/our-programmes/nice-guidance/nice-medical-technologies-guidance#static-list",
+					"/what-nice-does/our-guidance/about-medical-technologies-guidance/get-a-medical-technology-evaluated",
 				destination:
-					"/what-nice-does/our-guidance/about-medical-technologies-guidance/medical-technologies-guidance-static-list",
+					"/what-nice-does/our-guidance/about-healthtech-guidance/get-a-healthtech-evaluated",
+				permanent: true,
+			},
+			{
+				source:
+					"/about/what-we-do/our-programmes/nice-guidance/nice-medical-technologies-evaluation-programme",
+				destination:
+					"/what-nice-does/our-guidance/about-healthtech-guidance/get-a-healthtech-evaluated",
 				permanent: true,
 			},
 			{
@@ -1110,8 +1129,7 @@ const nextConfig = {
 			{
 				source:
 					"/About/What-we-do/Our-Programmes/NICE-guidance/NICE-about-medical-technologies-guidance",
-				destination:
-					"/what-nice-does/our-guidance/about-medical-technologies-guidance",
+				destination: "/what-nice-does/our-guidance/about-healthtech-guidance",
 				permanent: true,
 			},
 			{
@@ -1219,8 +1237,7 @@ const nextConfig = {
 			{
 				source:
 					"/About/What-we-do/Our-Programmes/NICE-guidance/NICE-medical-technologies-guidance",
-				destination:
-					"/what-nice-does/our-guidance/about-medical-technologies-guidance",
+				destination: "/what-nice-does/our-guidance/about-healthtech-guidance",
 				permanent: true,
 			},
 			{
@@ -1355,13 +1372,6 @@ const nextConfig = {
 			},
 			{
 				source:
-					"/about/what-we-do/our-programmes/nice-advice/medtech-innovation-briefings",
-				destination:
-					"/what-nice-does/our-guidance/about-medical-technologies-guidance/medtech-innovation-briefings",
-				permanent: true,
-			},
-			{
-				source:
 					"/about/what-we-do/life-sciences/scientific-advice/devices-and-diagnostics",
 				destination:
 					"/what-nice-does/life-sciences-how-to-get-your-product-to-market/nice-advice-service",
@@ -1388,9 +1398,14 @@ const nextConfig = {
 				permanent: true,
 			},
 			{
+				source: "/what-nice-does/our-guidance/about-diagnostics-guidance",
+				destination: "/what-nice-does/our-guidance/about-healthtech-guidance",
+				permanent: true,
+			},
+			{
 				source:
 					"/About/What-we-do/Our-Programmes/NICE-guidance/NICE-diagnostics-guidance",
-				destination: "/what-nice-does/our-guidance/about-diagnostics-guidance",
+				destination: "/what-nice-does/our-guidance/about-healthtech-guidance",
 				permanent: true,
 			},
 			{
@@ -1593,8 +1608,7 @@ const nextConfig = {
 			{
 				source:
 					"/about/what-we-do/our-research-work/use-of-ai-in-evidence-generation--nice-position-statement",
-				destination:
-					"/position-statements/use-of-ai-in-evidence-generation-nice-position-statement",
+				destination: "/corporate/ecd11",
 				permanent: true,
 			},
 			{
@@ -2430,8 +2444,7 @@ const nextConfig = {
 			{
 				source:
 					"/get-involved/stakeholder-registration/tobacco-industry-organisations",
-				destination:
-					"/position-statements/position-statement-on-engagement-with-tobacco-industry-organisations",
+				destination: "/corporate/ecd13/chapter/position-statement",
 				permanent: true,
 			},
 			{
@@ -2556,12 +2569,6 @@ const nextConfig = {
 				source: "/about/what-we-do/forward-view---our-priority-topics",
 				destination:
 					"/what-nice-does/our-guidance/prioritising-our-guidance-topics/forward-view-our-priority-topics",
-				permanent: true,
-			},
-			{
-				source: "/about/what-we-do/late-stage-assessment-for-medtech",
-				destination:
-					"/what-nice-does/our-guidance/about-medical-technologies-guidance/late-stage-assessment-lsa-for-medtech",
 				permanent: true,
 			},
 			{
@@ -2737,12 +2744,6 @@ const nextConfig = {
 				permanent: true,
 			},
 			{
-				source: "/about/what-we-do/eva-for-medtech",
-				destination:
-					"/what-nice-does/our-guidance/about-medical-technologies-guidance/early-value-assessment-eva-for-medtech",
-				permanent: true,
-			},
-			{
 				source: "/about/who-we-are/history-of-nice",
 				destination: "/about-us/history-of-nice",
 				permanent: true,
@@ -2791,6 +2792,12 @@ const nextConfig = {
 			{
 				source: "/about/who-we-are/our-charter",
 				destination: "/about-us/corporate-publications/our-charter",
+				permanent: true,
+			},
+			{
+				source:
+					"/about/what-we-do/our-programmes/nice-guidance/technology-appraisal-guidance/eq-5d-5l",
+				destination: "/corporate/ecd16/chapter/introduction",
 				permanent: true,
 			},
 			{
@@ -3054,6 +3061,48 @@ const nextConfig = {
 			{
 				source: "/aac",
 				destination: "https://www.england.nhs.uk/aac/about-us/who-we-are/",
+				permanent: true,
+			},
+			{
+				source:
+					"/position-statements/use-of-ai-in-evidence-generation-nice-position-statement",
+				destination: "/corporate/ecd11",
+				permanent: true,
+			},
+			{
+				source:
+					"/position-statements/position-statement-on-engagement-with-tobacco-industry-organisations",
+				destination: "/corporate/ecd13/chapter/position-statement",
+				permanent: true,
+			},
+			{
+				source:
+					"/position-statements/biosimilar-technologies-nice-position-statement",
+				destination: "/corporate/ecd14/chapter/position-statement",
+				permanent: true,
+			},
+			{
+				source:
+					"/position-statements/biosimilar-technologies-nice-position-statement-information-for-the-public",
+				destination: "/corporate/ecd14/informationforpublic",
+				permanent: true,
+			},
+			{
+				source:
+					"/position-statements/chemotherapy-dose-standardisation-nice-position-statement",
+				destination: "/corporate/ecd15/chapter/position-statement",
+				permanent: true,
+			},
+			{
+				source:
+					"/position-statements/position-statement-on-use-of-the-eq-5d-5l-value-set-for-england-updated-october-2019",
+				destination: "/corporate/ecd16/chapter/introduction",
+				permanent: true,
+			},
+			{
+				source:
+					"/position-statements/participation-in-clinical-trials-and-subsequent-access-to-drugs-appraised-by-nice-a-statement-on-the-applicability-of-technology-appraisal-guidance",
+				destination: "/corporate/ecd17/chapter/position-statement",
 				permanent: true,
 			},
 		];
