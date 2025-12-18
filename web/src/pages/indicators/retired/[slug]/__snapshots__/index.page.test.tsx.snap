@@ -1,0 +1,197 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`/indicators/retired/[slug]/index.page RetiredDetailPage should match snapshot for main content 1`] = `
+<body>
+  <div>
+    <nav
+      aria-label="Breadcrumbs"
+      data-component="breadcrumbs"
+      role="navigation"
+    >
+      <ol
+        class="breadcrumbs"
+      >
+        <li
+          class="breadcrumbs__crumb"
+        >
+          <a
+            href="/"
+          >
+            Home
+          </a>
+        </li>
+        <li
+          class="breadcrumbs__crumb"
+        >
+          <a
+            href="/standards-and-indicators/indicators"
+          >
+            Indicators
+          </a>
+        </li>
+        <li
+          class="breadcrumbs__crumb"
+        >
+          <span>
+            IND1111
+          </span>
+        </li>
+      </ol>
+    </nav>
+    <script
+      type="application/ld+json"
+    >
+      {
+  "@context": "http://schema.org",
+  "@type": "BreadcrumbList",
+  "itemListElement": [
+    {
+      "@type": "ListItem",
+      "position": 1,
+      "item": {
+        "@id": "/",
+        "name": "Home"
+      }
+    },
+    {
+      "@type": "ListItem",
+      "position": 2,
+      "item": {
+        "@id": "/standards-and-indicators/indicators",
+        "name": "Indicators"
+      }
+    },
+    {
+      "@type": "ListItem",
+      "position": 3,
+      "item": {
+        "name": "IND1111"
+      }
+    }
+  ]
+}
+    </script>
+    <div
+      class="page-header "
+      data-component="page-header"
+      id="content-start"
+    >
+      <h1
+        class="page-header__heading page-header__heading--alt"
+      >
+        Indicator - Master Accordion Panels Test
+      </h1>
+      <ul
+        class="page-header__metadata"
+      >
+        <li>
+          NICE indicator
+        </li>
+        <li>
+          IND1111
+        </li>
+        <li>
+          Published:
+          <time
+            datetime="2025-08-05"
+          >
+             
+            5 August 2025
+          </time>
+        </li>
+      </ul>
+    </div>
+    <hr
+      class="hrCustomTab"
+    />
+    <div
+      class="grid grid--loose"
+    >
+      <section
+        aria-label="Chapters"
+        data-component="grid-item"
+        data-g="12 sm:5 md:3"
+      >
+        <a
+          aria-label="Download retired indicator PDF file"
+          class="btn btn--cta download downloadButton"
+          data-component="button--cta"
+          href="/indicators/retired/ind1111-indicator-master-accordion-panels-test/IND1111-20251209.pdf"
+          target="_blank"
+        >
+          Download retired indicator
+           (PDF)
+        </a>
+      </section>
+      <section
+        data-component="grid-item"
+        data-g="12 sm:7 md:9"
+      >
+        <div
+          class="summary"
+        >
+          <p>
+            Indicator Summary test on Master Accordions
+          </p>
+        </div>
+      </section>
+    </div>
+  </div>
+</body>
+`;
+
+exports[`/indicators/retired/[slug]/index.page getServerSideProps should return a correct props when supplied with a valid slug 1`] = `
+Object {
+  "props": Object {
+    "guidanceOrIndicatorBreadcrumb": Object {
+      "label": "Indicators",
+      "slug": "/indicators",
+      "url": "/standards-and-indicators/indicators",
+    },
+    "indicatorSubTypes": Array [
+      Object {
+        "enabled": true,
+        "identifierPrefix": "CCG",
+        "lastModified": "2022-07-12T00:00:00",
+        "name": "Clinical commissioning group indicator",
+        "pluralName": "Clinical commissioning group indicators",
+      },
+      Object {
+        "enabled": true,
+        "identifierPrefix": "GPIQ",
+        "lastModified": "2022-07-12T00:00:00",
+        "name": "General practice indicator suitable for use in QOF",
+        "pluralName": "General practice indicators suitable for use in QOF",
+      },
+      Object {
+        "enabled": true,
+        "identifierPrefix": "GPINQ",
+        "lastModified": "2022-07-12T00:00:00",
+        "name": "General practice indicator suitable for use outside of QOF",
+        "pluralName": "General practice indicators suitable for use outside of QOF",
+      },
+      Object {
+        "enabled": true,
+        "identifierPrefix": "NLQ",
+        "lastModified": "2022-07-12T00:00:00",
+        "name": "National library of quality indicators",
+        "pluralName": "National library of quality indicators",
+      },
+    ],
+    "pdfDownloadPath": "/indicators/retired/ind1111-indicator-master-accordion-panels-test/IND1111-20251209.pdf",
+    "product": Object {
+      "id": "IND1111",
+      "indicatorSubTypeList": Array [
+        "GPIQ",
+      ],
+      "lastMajorModificationDate": "2025-08-05T00:00:00",
+      "metaDescription": "Indicator Meta Description",
+      "productStatus": "Retired",
+      "productTypeName": "NICE indicator",
+      "publishedDate": "2025-08-05T00:00:00",
+      "summary": "<p>Indicator Summary test on Master Accordions</p>",
+      "title": "Indicator - Master Accordion Panels Test",
+    },
+  },
+}
+`;
