@@ -26,6 +26,7 @@ import { StoryblokAccordionGroup } from "@/components/Storyblok/StoryblokAccordi
 import { StoryblokActionBannerDefault } from "@/components/Storyblok/StoryblokActionBanner/StoryblokActionBannerDefault";
 import { StoryblokActionBannerFullWidth } from "@/components/Storyblok/StoryblokActionBanner/StoryblokActionBannerFullWidth";
 import { StoryblokBlogPost } from "@/components/Storyblok/StoryblokBlogPost/StoryblokBlogPost";
+import { StoryblokButtonLink } from "@/components/Storyblok/StoryblokButtonLink/StoryblokButtonLink";
 import { StoryblokCalloutCard } from "@/components/Storyblok/StoryblokCalloutCard/StoryblokCalloutCard";
 import { StoryblokHero } from "@/components/Storyblok/StoryblokHero/StoryblokHero";
 import { StoryblokIframe } from "@/components/Storyblok/StoryblokIframe/StoryblokIframe";
@@ -50,6 +51,7 @@ const commonComponents = {
 	accordion: StoryblokAccordion,
 	accordionGroup: StoryblokAccordionGroup,
 	actionBannerDefault: StoryblokActionBannerDefault,
+	buttonLink: StoryblokButtonLink,
 	cardGrid: BasicCardGrid,
 	cardGridRowBasic: CardGridRow,
 	cardList: CardList,
