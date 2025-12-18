@@ -220,7 +220,7 @@ export const validateRouteParams = async ({
 	// So by replacing the slug (2nd) segment we can support redirects to pages at any level
 	// For example from "/indicators/ind1-wrong-title/anything/here" to /indicators/ind1-correct-title/anything/here
 
-	if (isRetiredProduct) {
+	if (isRetiredProduct && actualPathSegments[2] !== "retired") {
 		actualPathSegments.splice(2, 0, "retired");
 	}
 
