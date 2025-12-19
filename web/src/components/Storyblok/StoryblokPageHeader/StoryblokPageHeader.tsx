@@ -12,11 +12,13 @@ import { StoryblokButtonLink } from "../StoryblokButtonLink/StoryblokButtonLink"
 interface PageHeaderBlokProps {
 	blok: PageHeaderStoryblok;
 	breadcrumbs?: TypeBreadcrumb[];
+	preheading:string
 }
 
 export const StoryblokPageHeader = ({
 	blok,
 	breadcrumbs,
+	preheading
 }: PageHeaderBlokProps): React.ReactElement => {
 	const BreadcrumbComponent = breadcrumbs?.length ? (
 		<Breadcrumbs>
@@ -42,6 +44,7 @@ export const StoryblokPageHeader = ({
 	return (
 		<PageHeader
 			heading={title}
+			preheading={preheading}
 			lead={summary || undefined}
 			breadcrumbs={BreadcrumbComponent}
 			description={description}

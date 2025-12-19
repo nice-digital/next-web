@@ -29,6 +29,10 @@ export const InfoPage = ({
 	slug,
 	pageType,
 }: InfoPageBlokProps): React.ReactElement => {
+	const preheading =
+		sectionNavIsPopulated(tree) && blok.hideSectionNav !== "true"
+			? tree[0].name
+			: "";
 	return (
 		<div className={styles.infoPage}>
 			{blok.metadata &&
@@ -42,6 +46,7 @@ export const InfoPage = ({
 						blok={nestedBlok}
 						key={nestedBlok._uid}
 						breadcrumbs={breadcrumbs}
+						preheading={preheading}
 					/>
 				);
 			})}
