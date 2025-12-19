@@ -8,7 +8,7 @@ import { StoryblokSectionNav } from "@/components/Storyblok/StoryblokSectionNav/
 import {
 	type ExtendedSBLink,
 	sectionNavIsPopulated,
-} from "@/components/Storyblok/StoryblokSectionNav/utils/Utils";
+} from "@/utils/storyblok/SectionNavUtils";
 import { type Breadcrumb } from "@/types/Breadcrumb";
 import { type InfoPageStoryblok } from "@/types/storyblok";
 

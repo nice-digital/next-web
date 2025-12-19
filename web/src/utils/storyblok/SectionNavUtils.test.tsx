@@ -2,7 +2,7 @@
 
 import mockData from "@/mockData/storyblok/sectionNavData.json";
 
-import { sectionNavIsPopulated } from "./Utils";
+import { sectionNavIsPopulated } from "./SectionNavUtils";
 
 describe("sectionNavIsNotEmpty", () => {
 	it("returns true for a non-empty array", () => {

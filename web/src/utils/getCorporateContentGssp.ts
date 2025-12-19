@@ -1,7 +1,7 @@
 import {
 	buildTree,
 	type ExtendedSBLink,
-} from "@/components/Storyblok/StoryblokSectionNav/utils/Utils";
+} from "@/utils/storyblok/SectionNavUtils";
 import { logger } from "@/logger";
 import {
 	InfoPageStoryblok,
