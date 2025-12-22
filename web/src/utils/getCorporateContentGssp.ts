@@ -1,7 +1,3 @@
-import {
-	buildTree,
-	type ExtendedSBLink,
-} from "@/utils/storyblok/SectionNavUtils";
 import { logger } from "@/logger";
 import {
 	InfoPageStoryblok,
@@ -14,6 +10,10 @@ import {
 	getSlugFromParams,
 	getStoryVersionFromQuery,
 } from "@/utils/storyblok";
+import {
+	buildTree,
+	type ExtendedSBLink,
+} from "@/utils/storyblok/SectionNavUtils";
 
 import type { GetServerSidePropsContext, GetServerSideProps } from "next";
 

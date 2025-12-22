@@ -1,4 +1,3 @@
-import * as SectionNavUtils from "@/utils/storyblok/SectionNavUtils";
 import { logger } from "@/logger";
 import {
 	getCorporateContentGssp,
@@ -11,6 +10,7 @@ import {
 	getStoryVersionFromQuery,
 	GENERIC_ERROR_MESSAGE,
 } from "@/utils/storyblok";
+import * as SectionNavUtils from "@/utils/storyblok/SectionNavUtils";
 
 import type { GetServerSidePropsContext } from "next";
 
