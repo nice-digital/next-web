@@ -36,7 +36,7 @@ export const StoryblokActionBannerDefault: React.FC<
 		<ActionBanner
 			title={heading}
 			variant={variant === "subtle" ? "subtle" : "default"}
-			cta={<StoryblokButtonLink button={cta[0]} />}
+			cta={<StoryblokButtonLink blok={cta[0]} />}
 			className={defaultActionBannerClasses}
 			headingLevel={headingLevel}
 		>
