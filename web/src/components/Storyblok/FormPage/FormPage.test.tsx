@@ -12,12 +12,10 @@ const mockFormPageNoMetaData = sampleDataNoMeta.story.content;
 
 const mockPropsWithPanel: FormPageProps = {
 	blok: mockFormPageWithPanel as FormPageStoryblok,
-	// breadcrumbs: sampleDataWithPanel.breadcrumbs,
 };
 
 const mockPropsNoMetaData: FormPageProps = {
 	blok: mockFormPageNoMetaData as FormPageStoryblok,
-	// breadcrumbs: sampleDataNoMeta.breadcrumbs,
 };
 
 describe("FormPage", () => {
