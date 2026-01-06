@@ -82,7 +82,7 @@ export const PodcastIndexPage = (
 							<h2 className="h3">Other ways to listen</h2>
 							<p>
 								Our NICE talks podcasts are available{" "}
-								<a href="https://linktr.ee/nicetalks">
+								<a href="https://linktr.ee/nicecomms">
 									on a variety of different platforms.
 								</a>
 							</p>
