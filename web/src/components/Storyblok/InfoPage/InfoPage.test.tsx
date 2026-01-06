@@ -139,21 +139,22 @@ describe("InfoPage", () => {
 			{}
 		);
 	});
-	//commented out this test as we are no longer passing tree when section nav is hidden
-	// it("passes empty preheading when section nav is not populated", () => {
-	// 	(ContentStructureUtils.sectionNavIsPopulated as jest.Mock).mockReturnValue(false);
-	// 	const mockPropsWithNoSectionNav = {
-	// 		...mockPropsWithPageHeaderAndSectionNav,
-	// 		hideSectionNav: "true",
-	// 	};
-	// 	render(<InfoPage {...mockPropsWithNoSectionNav} />);
-	// 	expect(mockedStoryblokComponent).toHaveBeenCalledWith(
-	// 		expect.objectContaining({
-	// 			preheading: "Info Page with Hero and In Page Nav",
-	// 		}),
-	// 		{}
-	// 	);
-	// });
+	it("passes preheading when section nav is hidden", () => {
+		(ContentStructureUtils.sectionNavIsPopulated as jest.Mock).mockReturnValue(
+			true
+		);
+		const mockPropsWithSectionNav = {
+			...mockPropsWithPageHeaderAndSectionNav,
+			hideSectionNav: "true",
+		};
+		render(<InfoPage {...mockPropsWithSectionNav} />);
+		expect(mockedStoryblokComponent).toHaveBeenCalledWith(
+			expect.objectContaining({
+				preheading: "Info Page with Hero and In Page Nav",
+			}),
+			{}
+		);
+	});
 	it("passes empty preheading when section name matches header title", () => {
 		(ContentStructureUtils.sectionNavIsPopulated as jest.Mock).mockReturnValue(
 			true
