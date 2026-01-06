@@ -126,7 +126,9 @@ describe("InfoPage", () => {
 		).not.toBeInTheDocument();
 	});
 	it("passes preheading when section nav is populated and title differs", () => {
-		(ContentStructureUtils.sectionNavIsPopulated as jest.Mock).mockReturnValue(true);
+		(ContentStructureUtils.sectionNavIsPopulated as jest.Mock).mockReturnValue(
+			true
+		);
 
 		render(<InfoPage {...mockPropsWithPageHeaderAndSectionNav} />);
 
@@ -153,7 +155,9 @@ describe("InfoPage", () => {
 	// 	);
 	// });
 	it("passes empty preheading when section name matches header title", () => {
-		(ContentStructureUtils.sectionNavIsPopulated as jest.Mock).mockReturnValue(true);
+		(ContentStructureUtils.sectionNavIsPopulated as jest.Mock).mockReturnValue(
+			true
+		);
 
 		const mockPropsWithSameTitleandPreheading = {
 			...mockPropsWithPageHeaderAndSectionNav,
@@ -194,7 +198,9 @@ describe("InfoPage", () => {
 		);
 	});
 	it("passes empty preheading when pageHeader is missing", () => {
-		(ContentStructureUtils.sectionNavIsPopulated as jest.Mock).mockReturnValue(true);
+		(ContentStructureUtils.sectionNavIsPopulated as jest.Mock).mockReturnValue(
+			true
+		);
 		render(<InfoPage {...mockPropsWithHeroAndInPageNav} />);
 
 		expect(mockedStoryblokComponent).toHaveBeenCalledWith(
