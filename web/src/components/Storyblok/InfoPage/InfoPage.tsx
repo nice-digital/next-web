@@ -10,7 +10,7 @@ import { type InfoPageStoryblok } from "@/types/storyblok";
 import {
 	type ExtendedSBLink,
 	sectionNavIsPopulated,
-} from "@/utils/storyblok/SectionNavUtils";
+} from "@/utils/storyblok/ContentStructureUtils";
 
 import styles from "./InfoPage.module.scss";
 

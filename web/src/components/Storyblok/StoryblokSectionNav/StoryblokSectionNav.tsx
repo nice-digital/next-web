@@ -2,8 +2,8 @@ import React from "react";
 
 import { StackedNav, StackedNavLink } from "@nice-digital/nds-stacked-nav";
 
-import { sectionNavIsPopulated } from "../../../utils/storyblok/SectionNavUtils";
-import { type ExtendedSBLink } from "../../../utils/storyblok/SectionNavUtils";
+import { sectionNavIsPopulated } from "../../../utils/storyblok/ContentStructureUtils";
+import { type ExtendedSBLink } from "../../../utils/storyblok/ContentStructureUtils";
 
 type StoryblokSectionNavProps = {
 	tree: ExtendedSBLink[];

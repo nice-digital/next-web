@@ -1,4 +1,4 @@
-import { ExtendedSBLink } from "@/utils/storyblok/SectionNavUtils";
+import { ExtendedSBLink } from "@/utils/storyblok/ContentStructureUtils";
 
 export type SlugCatchAllSuccessProps = {
 	story: ISbStoryData<InfoPageStoryblok | CategoryNavigationStoryblok>;
