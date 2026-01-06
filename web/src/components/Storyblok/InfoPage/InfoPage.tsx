@@ -9,6 +9,7 @@ import { type Breadcrumb } from "@/types/Breadcrumb";
 import { type InfoPageStoryblok } from "@/types/storyblok";
 import {
 	type ExtendedSBLink,
+	getSectionnavTitle,
 	sectionNavIsPopulated,
 } from "@/utils/storyblok/ContentStructureUtils";
 
@@ -30,7 +31,7 @@ const getPreheading = (
 
 	const headerTitle =
 		blok.header?.[0]?.component === "pageHeader" ? blok.header?.[0]?.title : "";
-	const sectionName = tree[0]?.name;
+	const sectionName = getSectionnavTitle(tree)?.name;
 
 	if (!headerTitle || !sectionName) return "";
 
