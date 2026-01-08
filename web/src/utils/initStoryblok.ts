@@ -26,6 +26,7 @@ import { StoryblokAccordionGroup } from "@/components/Storyblok/StoryblokAccordi
 import { StoryblokActionBannerDefault } from "@/components/Storyblok/StoryblokActionBanner/StoryblokActionBannerDefault";
 import { StoryblokActionBannerFullWidth } from "@/components/Storyblok/StoryblokActionBanner/StoryblokActionBannerFullWidth";
 import { StoryblokBlogPost } from "@/components/Storyblok/StoryblokBlogPost/StoryblokBlogPost";
+import { StoryblokButtonLink } from "@/components/Storyblok/StoryblokButtonLink/StoryblokButtonLink";
 import { StoryblokCalloutCard } from "@/components/Storyblok/StoryblokCalloutCard/StoryblokCalloutCard";
 import { StoryblokHero } from "@/components/Storyblok/StoryblokHero/StoryblokHero";
 import { StoryblokIframe } from "@/components/Storyblok/StoryblokIframe/StoryblokIframe";
@@ -34,6 +35,7 @@ import { ClientInfogramEmbed } from "@/components/Storyblok/StoryblokInfogramEmb
 import { StoryblokNewsArticle } from "@/components/Storyblok/StoryblokNewsArticle/StoryblokNewsArticle";
 import { StoryblokOrderedList } from "@/components/Storyblok/StoryblokOrderedList/StoryblokOrderedList";
 import { StoryblokPageHeader } from "@/components/Storyblok/StoryblokPageHeader/StoryblokPageHeader";
+import { StoryblokPanel } from "@/components/Storyblok/StoryblokPanel/StoryblokPanel";
 import { StoryblokRelatedLink } from "@/components/Storyblok/StoryblokRelatedLink/StoryblokRelatedLink";
 import { StoryblokRelatedNewsLink } from "@/components/Storyblok/StoryblokRelatedNewsLink/StoryblokRelatedNewsLink";
 import { StoryblokRichTextTable } from "@/components/Storyblok/StoryblokRichTextTable/StoryblokRichTextTable";
@@ -49,6 +51,7 @@ const commonComponents = {
 	accordion: StoryblokAccordion,
 	accordionGroup: StoryblokAccordionGroup,
 	actionBannerDefault: StoryblokActionBannerDefault,
+	buttonLink: StoryblokButtonLink,
 	cardGrid: BasicCardGrid,
 	cardGridRowBasic: CardGridRow,
 	cardList: CardList,
@@ -105,12 +108,14 @@ const infoPageComponents = {
 	infoPage: InfoPage,
 	nestedTable: StoryblokTable,
 	orderedList: StoryblokOrderedList,
+	panel: StoryblokPanel,
 	richTextTable: StoryblokRichTextTable,
 };
 
 const formPageComponents = {
 	formEmbed: ClientFormEmbed,
 	formPage: FormPage,
+	panel: StoryblokPanel,
 };
 
 export const allComponents: SbReactComponentsMap = {

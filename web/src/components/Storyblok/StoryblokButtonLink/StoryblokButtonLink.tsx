@@ -5,13 +5,13 @@ import { ButtonLinkStoryblok, MultilinkStoryblok } from "@/types/storyblok";
 import { resolveStoryblokLink } from "@/utils/storyblok";
 
 interface StoryblokButtonLinkProps {
-	button: ButtonLinkStoryblok;
+	blok: ButtonLinkStoryblok;
 }
 
 export const StoryblokButtonLink: React.FC<StoryblokButtonLinkProps> = ({
-	button,
+	blok,
 }: StoryblokButtonLinkProps) => {
-	const { text, link, variant } = button;
+	const { text, link, variant } = blok;
 
 	// Resolve CTA & link
 	let linkType,

@@ -34,7 +34,7 @@ export const StoryblokHero = ({
 		: undefined;
 
 	const action = cta?.length ? (
-		<StoryblokButtonLink button={cta[0]} />
+		<StoryblokButtonLink blok={cta[0]} />
 	) : undefined;
 
 	return (

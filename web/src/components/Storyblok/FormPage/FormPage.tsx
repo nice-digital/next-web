@@ -1,7 +1,6 @@
 import { StoryblokComponent } from "@storyblok/react";
 
 import { Grid, GridItem } from "@nice-digital/nds-grid";
-import { Panel } from "@nice-digital/nds-panel";
 
 import { type Breadcrumb } from "@/types/Breadcrumb";
 import { type FormPageStoryblok } from "@/types/storyblok";
@@ -42,13 +41,11 @@ export const FormPage = ({
 							<StoryblokComponent blok={nestedBlok} key={nestedBlok._uid} />
 						))}
 				</GridItem>
-				{/*TODO: bring in Panel from NXT-501 */}
+
 				{panel && panel.length > 0 && (
 					<GridItem cols={12} md={4}>
 						{panel.map((nestedBlok) => (
-							<Panel key={nestedBlok._uid}>
-								<StoryblokComponent blok={nestedBlok} />
-							</Panel>
+							<StoryblokComponent blok={nestedBlok} key={nestedBlok._uid} />
 						))}
 					</GridItem>
 				)}
