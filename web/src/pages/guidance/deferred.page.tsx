@@ -20,13 +20,21 @@ const tableBodyRender = (documents: Document[]) => (
 		<thead>
 			<tr>
 				<th scope="col">Title</th>
-				<th scope="col">Type</th>
+				<th scope="col">Deferred ID</th>
+				<th scope="col">Guidance programme</th>
 				<th scope="col">Deferred date</th>
 			</tr>
 		</thead>
 		<tbody>
 			{documents.map(
-				({ id, title, pathAndQuery, niceResultType, deferredDate }) => {
+				({
+					deferredDate,
+					deferredId,
+					id,
+					niceResultType,
+					pathAndQuery,
+					title,
+				}) => {
 					return (
 						<tr key={id}>
 							<td>
@@ -35,6 +43,7 @@ const tableBodyRender = (documents: Document[]) => (
 									dangerouslySetInnerHTML={{ __html: title }}
 								/>
 							</td>
+							<td>{deferredId}</td>
 							<td>{niceResultType || "n/a"}</td>
 							<td>
 								{deferredDate ? (

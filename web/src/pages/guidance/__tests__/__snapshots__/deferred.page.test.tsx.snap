@@ -193,9 +193,9 @@ exports[`/guidance/deferred should match the snapshot 1`] = `
               <a
                 aria-current="false"
                 class="horizontal-nav__link"
-                href="/guidance/topic-selection"
+                href="/guidance/prioritisation"
               >
-                Topic selection
+                Topic prioritisation
               </a>
             </li>
           </ul>
@@ -502,7 +502,7 @@ exports[`/guidance/deferred should match the snapshot 1`] = `
                       class="filter-group__heading"
                     >
                       <button
-                        aria-controls="group-tt"
+                        aria-controls="group-ndt"
                         aria-expanded="true"
                         type="button"
                       >
@@ -522,9 +522,9 @@ exports[`/guidance/deferred should match the snapshot 1`] = `
                           />
                         </svg>
                         <span
-                          id="group-heading-tt"
+                          id="group-heading-ndt"
                         >
-                          Technology type
+                          Type
                            
                         </span>
                       </button>
@@ -532,161 +532,45 @@ exports[`/guidance/deferred should match the snapshot 1`] = `
                     <fieldset
                       aria-hidden="false"
                       class="filter-group__options"
-                      id="group-tt"
+                      id="group-ndt"
                     >
                       <legend>
-                        Technology type
+                        Type
                       </legend>
                       <label
                         class="filter-option"
                         data-component="filter-option"
-                        for="filter_tt_device"
+                        for="filter_ndt_guidance"
                       >
                         <input
-                          id="filter_tt_device"
-                          name="tt"
-                          title="Technology type - Device (2)"
+                          id="filter_ndt_guidance"
+                          name="ndt"
+                          title="Type - Guidance (10)"
                           type="checkbox"
-                          value="Device"
+                          value="Guidance"
                         />
                         <span
                           class="filter-option__text"
                         >
-                          Device (2)
+                          Guidance (10)
                         </span>
                       </label>
                       <label
                         class="filter-option"
                         data-component="filter-option"
-                        for="filter_tt_diagnostic"
+                        for="filter_ndt_quality-standard"
                       >
                         <input
-                          id="filter_tt_diagnostic"
-                          name="tt"
-                          title="Technology type - Diagnostic (2)"
+                          id="filter_ndt_quality-standard"
+                          name="ndt"
+                          title="Type - Quality standard (1)"
                           type="checkbox"
-                          value="Diagnostic"
+                          value="Quality standard"
                         />
                         <span
                           class="filter-option__text"
                         >
-                          Diagnostic (2)
-                        </span>
-                      </label>
-                      <label
-                        class="filter-option"
-                        data-component="filter-option"
-                        for="filter_tt_medicine"
-                      >
-                        <input
-                          id="filter_tt_medicine"
-                          name="tt"
-                          title="Technology type - Medicine (1)"
-                          type="checkbox"
-                          value="Medicine"
-                        />
-                        <span
-                          class="filter-option__text"
-                        >
-                          Medicine (1)
-                        </span>
-                      </label>
-                      <label
-                        class="filter-option"
-                        data-component="filter-option"
-                        for="filter_tt_procedure"
-                      >
-                        <input
-                          id="filter_tt_procedure"
-                          name="tt"
-                          title="Technology type - Procedure (1)"
-                          type="checkbox"
-                          value="Procedure"
-                        />
-                        <span
-                          class="filter-option__text"
-                        >
-                          Procedure (1)
-                        </span>
-                      </label>
-                    </fieldset>
-                  </div>
-                  <div
-                    class="filter-group"
-                  >
-                    <h3
-                      class="filter-group__heading"
-                    >
-                      <button
-                        aria-controls="group-tsd"
-                        aria-expanded="true"
-                        type="button"
-                      >
-                        <svg
-                          aria-hidden="true"
-                          class="filter-group__heading-icon filter-group__heading-icon--expanded"
-                          fill="none"
-                          focusable="false"
-                          height="1em"
-                          viewBox="0 0 512 512"
-                          width="1em"
-                          xmlns="http://www.w3.org/2000/svg"
-                        >
-                          <path
-                            d="M478.152 174c0 10.091-3.525 18.661-10.576 25.712l-186 186c-7.243 7.243-15.909 10.864-26 10.864-10.283 0-18.853-3.621-25.712-10.864l-186-186C36.621 192.853 33 184.283 33 174c0-10.091 3.621-18.757 10.864-26L65 126.576C72.424 119.525 81.09 116 91 116c10.091 0 18.661 3.525 25.712 10.576L255.576 265.44 394.44 126.576c7.051-7.051 15.621-10.576 25.712-10.576 9.909 0 18.576 3.525 26 10.576L467.576 148c7.051 7.424 10.576 16.091 10.576 26Z"
-                            fill="currentColor"
-                          />
-                        </svg>
-                        <span
-                          id="group-heading-tsd"
-                        >
-                          Topic selection decision
-                           
-                        </span>
-                      </button>
-                    </h3>
-                    <fieldset
-                      aria-hidden="false"
-                      class="filter-group__options"
-                      id="group-tsd"
-                    >
-                      <legend>
-                        Topic selection decision
-                      </legend>
-                      <label
-                        class="filter-option"
-                        data-component="filter-option"
-                        for="filter_tsd_awaiting-decision"
-                      >
-                        <input
-                          id="filter_tsd_awaiting-decision"
-                          name="tsd"
-                          title="Topic selection decision - Awaiting decision (12)"
-                          type="checkbox"
-                          value="Awaiting decision"
-                        />
-                        <span
-                          class="filter-option__text"
-                        >
-                          Awaiting decision (12)
-                        </span>
-                      </label>
-                      <label
-                        class="filter-option"
-                        data-component="filter-option"
-                        for="filter_tsd_further-information-required"
-                      >
-                        <input
-                          id="filter_tsd_further-information-required"
-                          name="tsd"
-                          title="Topic selection decision - Further information required (1)"
-                          type="checkbox"
-                          value="Further information required"
-                        />
-                        <span
-                          class="filter-option__text"
-                        >
-                          Further information required (1)
+                          Quality standard (1)
                         </span>
                       </label>
                     </fieldset>
@@ -736,19 +620,73 @@ exports[`/guidance/deferred should match the snapshot 1`] = `
                       <label
                         class="filter-option"
                         data-component="filter-option"
+                        for="filter_ngt_antimicrobial-resistance-guidance"
+                      >
+                        <input
+                          id="filter_ngt_antimicrobial-resistance-guidance"
+                          name="ngt"
+                          title="Guidance programme - Antimicrobial resistance guidance (2)"
+                          type="checkbox"
+                          value="Antimicrobial resistance guidance"
+                        />
+                        <span
+                          class="filter-option__text"
+                        >
+                          Antimicrobial resistance guidance (2)
+                        </span>
+                      </label>
+                      <label
+                        class="filter-option"
+                        data-component="filter-option"
                         for="filter_ngt_diagnostics-guidance"
                       >
                         <input
                           id="filter_ngt_diagnostics-guidance"
                           name="ngt"
-                          title="Guidance programme - Diagnostics guidance (6)"
+                          title="Guidance programme - Diagnostics guidance (1)"
                           type="checkbox"
                           value="Diagnostics guidance"
                         />
                         <span
                           class="filter-option__text"
                         >
-                          Diagnostics guidance (6)
+                          Diagnostics guidance (1)
+                        </span>
+                      </label>
+                      <label
+                        class="filter-option"
+                        data-component="filter-option"
+                        for="filter_ngt_health-technology-evaluations"
+                      >
+                        <input
+                          id="filter_ngt_health-technology-evaluations"
+                          name="ngt"
+                          title="Guidance programme - Health technology evaluations (1)"
+                          type="checkbox"
+                          value="Health technology evaluations"
+                        />
+                        <span
+                          class="filter-option__text"
+                        >
+                          Health technology evaluations (1)
+                        </span>
+                      </label>
+                      <label
+                        class="filter-option"
+                        data-component="filter-option"
+                        for="filter_ngt_healthtech-guidance"
+                      >
+                        <input
+                          id="filter_ngt_healthtech-guidance"
+                          name="ngt"
+                          title="Guidance programme - HealthTech guidance (2)"
+                          type="checkbox"
+                          value="HealthTech guidance"
+                        />
+                        <span
+                          class="filter-option__text"
+                        >
+                          HealthTech guidance (2)
                         </span>
                       </label>
                       <label
@@ -759,50 +697,32 @@ exports[`/guidance/deferred should match the snapshot 1`] = `
                         <input
                           id="filter_ngt_highly-specialised-technologies-guidance"
                           name="ngt"
-                          title="Guidance programme - Highly specialised technologies guidance (1)"
+                          title="Guidance programme - Highly specialised technologies guidance (2)"
                           type="checkbox"
                           value="Highly specialised technologies guidance"
                         />
                         <span
                           class="filter-option__text"
                         >
-                          Highly specialised technologies guidance (1)
+                          Highly specialised technologies guidance (2)
                         </span>
                       </label>
                       <label
                         class="filter-option"
                         data-component="filter-option"
-                        for="filter_ngt_interventional-procedures-guidance"
+                        for="filter_ngt_nice-guidelines"
                       >
                         <input
-                          id="filter_ngt_interventional-procedures-guidance"
+                          id="filter_ngt_nice-guidelines"
                           name="ngt"
-                          title="Guidance programme - Interventional procedures guidance (3)"
+                          title="Guidance programme - NICE guidelines (1)"
                           type="checkbox"
-                          value="Interventional procedures guidance"
+                          value="NICE guidelines"
                         />
                         <span
                           class="filter-option__text"
                         >
-                          Interventional procedures guidance (3)
-                        </span>
-                      </label>
-                      <label
-                        class="filter-option"
-                        data-component="filter-option"
-                        for="filter_ngt_medical-technologies-guidance"
-                      >
-                        <input
-                          id="filter_ngt_medical-technologies-guidance"
-                          name="ngt"
-                          title="Guidance programme - Medical technologies guidance (2)"
-                          type="checkbox"
-                          value="Medical technologies guidance"
-                        />
-                        <span
-                          class="filter-option__text"
-                        >
-                          Medical technologies guidance (2)
+                          NICE guidelines (1)
                         </span>
                       </label>
                       <label
@@ -850,7 +770,7 @@ exports[`/guidance/deferred should match the snapshot 1`] = `
                    to 
                   10
                    of 
-                  13
+                  11
                 </h2>
               </div>
               <div
@@ -905,7 +825,12 @@ exports[`/guidance/deferred should match the snapshot 1`] = `
                     <th
                       scope="col"
                     >
-                      Type
+                      Deferred ID
+                    </th>
+                    <th
+                      scope="col"
+                    >
+                      Guidance programme
                     </th>
                     <th
                       scope="col"
@@ -918,191 +843,261 @@ exports[`/guidance/deferred should match the snapshot 1`] = `
                   <tr>
                     <td>
                       <a
-                        href="https://next-web-tests.nice.org.uk/guidance/indevelopment/GID-DG10162"
+                        href="https://next-web-tests.nice.org.uk/guidance/indevelopment/GID-HTG10020"
                       >
-                        DG11
+                        HTG Deferred from TS
                       </a>
                     </td>
                     <td>
-                      Diagnostics guidance
+                      D101
                     </td>
                     <td>
-                      <abbr
-                        title="To be confirmed"
+                      HealthTech guidance
+                    </td>
+                    <td>
+                      <time
+                        class="date"
+                        data-shortdate="31/12/2025"
+                        datetime="2025-12-31T12:00:00"
                       >
-                        TBC
-                      </abbr>
+                        <span>
+                          31 December 2025
+                        </span>
+                      </time>
                     </td>
                   </tr>
                   <tr>
                     <td>
                       <a
-                        href="https://next-web-tests.nice.org.uk/guidance/indevelopment/GID-DG10161"
+                        href="https://next-web-tests.nice.org.uk/guidance/indevelopment/GID-HTE10019"
                       >
-                        DG-ID322
+                        Test HTE
                       </a>
                     </td>
                     <td>
-                      Diagnostics guidance
+                      D102
                     </td>
                     <td>
-                      <abbr
-                        title="To be confirmed"
+                      Health technology evaluation
+                    </td>
+                    <td>
+                      <time
+                        class="date"
+                        data-shortdate="31/12/2025"
+                        datetime="2025-12-31T12:00:00"
                       >
-                        TBC
-                      </abbr>
+                        <span>
+                          31 December 2025
+                        </span>
+                      </time>
                     </td>
                   </tr>
                   <tr>
                     <td>
                       <a
-                        href="https://next-web-tests.nice.org.uk/guidance/indevelopment/GID-TA10409"
+                        href="https://next-web-tests.nice.org.uk/guidance/indevelopment/GID-AMR10057"
                       >
-                        TAID330
+                        Clone Deferred - AMR
                       </a>
+                    </td>
+                    <td>
+                      D103
+                    </td>
+                    <td>
+                      Antimicrobial resistance guidance
+                    </td>
+                    <td>
+                      <time
+                        class="date"
+                        data-shortdate="31/12/2025"
+                        datetime="2025-12-31T12:00:00"
+                      >
+                        <span>
+                          31 December 2025
+                        </span>
+                      </time>
+                    </td>
+                  </tr>
+                  <tr>
+                    <td>
+                      <a
+                        href="https://next-web-tests.nice.org.uk/guidance/indevelopment/GID-QS10007"
+                      >
+                        QS Deferred test from AWD
+                      </a>
+                    </td>
+                    <td>
+                      D104
+                    </td>
+                    <td>
+                      Quality standard
+                    </td>
+                    <td>
+                      <time
+                        class="date"
+                        data-shortdate="31/12/2025"
+                        datetime="2025-12-31T12:00:00"
+                      >
+                        <span>
+                          31 December 2025
+                        </span>
+                      </time>
+                    </td>
+                  </tr>
+                  <tr>
+                    <td>
+                      <a
+                        href="https://next-web-tests.nice.org.uk/guidance/indevelopment/HTG900"
+                      >
+                        HTE - Neurological Conditions - to address the variation of care experienced by millions of people with chronic neurological conditions
+                      </a>
+                    </td>
+                    <td>
+                      D105
+                    </td>
+                    <td>
+                      HealthTech guidance
+                    </td>
+                    <td>
+                      <time
+                        class="date"
+                        data-shortdate="31/12/2025"
+                        datetime="2025-12-31T12:00:00"
+                      >
+                        <span>
+                          31 December 2025
+                        </span>
+                      </time>
+                    </td>
+                  </tr>
+                  <tr>
+                    <td>
+                      <a
+                        href="https://next-web-tests.nice.org.uk/guidance/indevelopment/GID-HST10002"
+                      >
+                        Deferred tests
+                      </a>
+                    </td>
+                    <td>
+                      D106
+                    </td>
+                    <td>
+                      Highly specialised technology
+                    </td>
+                    <td>
+                      <time
+                        class="date"
+                        data-shortdate="31/12/2025"
+                        datetime="2025-12-31T12:00:00"
+                      >
+                        <span>
+                          31 December 2025
+                        </span>
+                      </time>
+                    </td>
+                  </tr>
+                  <tr>
+                    <td>
+                      <a
+                        href="https://next-web-tests.nice.org.uk/guidance/indevelopment/DG456"
+                      >
+                        DG end to end testing
+                      </a>
+                    </td>
+                    <td>
+                      D107
+                    </td>
+                    <td>
+                      Diagnostics guidance
+                    </td>
+                    <td>
+                      <time
+                        class="date"
+                        data-shortdate="31/12/2025"
+                        datetime="2025-12-31T12:00:00"
+                      >
+                        <span>
+                          31 December 2025
+                        </span>
+                      </time>
+                    </td>
+                  </tr>
+                  <tr>
+                    <td>
+                      <a
+                        href="https://next-web-tests.nice.org.uk/guidance/indevelopment/GID-NG10014"
+                      >
+                        NG Deferred from Inprogress test
+                      </a>
+                    </td>
+                    <td>
+                      D108
+                    </td>
+                    <td>
+                      NICE guideline
+                    </td>
+                    <td>
+                      <time
+                        class="date"
+                        data-shortdate="31/12/2025"
+                        datetime="2025-12-31T12:00:00"
+                      >
+                        <span>
+                          31 December 2025
+                        </span>
+                      </time>
+                    </td>
+                  </tr>
+                  <tr>
+                    <td>
+                      <a
+                        href="https://next-web-tests.nice.org.uk/guidance/indevelopment/GID-HST10025"
+                      >
+                        HST Deferred from Suspended
+                      </a>
+                    </td>
+                    <td>
+                      D109
+                    </td>
+                    <td>
+                      Highly specialised technology
+                    </td>
+                    <td>
+                      <time
+                        class="date"
+                        data-shortdate="31/12/2025"
+                        datetime="2025-12-31T12:00:00"
+                      >
+                        <span>
+                          31 December 2025
+                        </span>
+                      </time>
+                    </td>
+                  </tr>
+                  <tr>
+                    <td>
+                      <a
+                        href="https://next-web-tests.nice.org.uk/guidance/indevelopment/GID-TA10030"
+                      >
+                        TA Deferred from Discontinued test
+                      </a>
+                    </td>
+                    <td>
+                      D110
                     </td>
                     <td>
                       Technology appraisal guidance
                     </td>
                     <td>
-                      <abbr
-                        title="To be confirmed"
+                      <time
+                        class="date"
+                        data-shortdate="31/12/2025"
+                        datetime="2025-12-31T12:00:00"
                       >
-                        TBC
-                      </abbr>
-                    </td>
-                  </tr>
-                  <tr>
-                    <td>
-                      <a
-                        href="https://next-web-tests.nice.org.uk/guidance/indevelopment/GID-IPG10126"
-                      >
-                        TEST Project IP
-                      </a>
-                    </td>
-                    <td>
-                      Interventional procedures guidance
-                    </td>
-                    <td>
-                      <abbr
-                        title="To be confirmed"
-                      >
-                        TBC
-                      </abbr>
-                    </td>
-                  </tr>
-                  <tr>
-                    <td>
-                      <a
-                        href="https://next-web-tests.nice.org.uk/guidance/indevelopment/GID-DG10175"
-                      >
-                        Idam476Nov112021a
-                      </a>
-                    </td>
-                    <td>
-                      Diagnostics guidance
-                    </td>
-                    <td>
-                      <abbr
-                        title="To be confirmed"
-                      >
-                        TBC
-                      </abbr>
-                    </td>
-                  </tr>
-                  <tr>
-                    <td>
-                      <a
-                        href="https://next-web-tests.nice.org.uk/guidance/indevelopment/GID-DG10167"
-                      >
-                        DG321
-                      </a>
-                    </td>
-                    <td>
-                      Diagnostics guidance
-                    </td>
-                    <td>
-                      <abbr
-                        title="To be confirmed"
-                      >
-                        TBC
-                      </abbr>
-                    </td>
-                  </tr>
-                  <tr>
-                    <td>
-                      <a
-                        href="https://next-web-tests.nice.org.uk/guidance/indevelopment/GID-IPG10130"
-                      >
-                        TA321-2
-                      </a>
-                    </td>
-                    <td>
-                      Interventional procedures guidance
-                    </td>
-                    <td>
-                      <abbr
-                        title="To be confirmed"
-                      >
-                        TBC
-                      </abbr>
-                    </td>
-                  </tr>
-                  <tr>
-                    <td>
-                      <a
-                        href="https://next-web-tests.nice.org.uk/guidance/indevelopment/GID-DG10177"
-                      >
-                        DG329
-                      </a>
-                    </td>
-                    <td>
-                      Diagnostics guidance
-                    </td>
-                    <td>
-                      <abbr
-                        title="To be confirmed"
-                      >
-                        TBC
-                      </abbr>
-                    </td>
-                  </tr>
-                  <tr>
-                    <td>
-                      <a
-                        href="https://next-web-tests.nice.org.uk/guidance/indevelopment/GID-DG10172"
-                      >
-                        DG323
-                      </a>
-                    </td>
-                    <td>
-                      Diagnostics guidance
-                    </td>
-                    <td>
-                      <abbr
-                        title="To be confirmed"
-                      >
-                        TBC
-                      </abbr>
-                    </td>
-                  </tr>
-                  <tr>
-                    <td>
-                      <a
-                        href="https://next-web-tests.nice.org.uk/guidance/indevelopment/GID-MT590"
-                      >
-                        MTG323
-                      </a>
-                    </td>
-                    <td>
-                      Medical technologies guidance
-                    </td>
-                    <td>
-                      <abbr
-                        title="To be confirmed"
-                      >
-                        TBC
-                      </abbr>
+                        <span>
+                          31 December 2025
+                        </span>
+                      </time>
                     </td>
                   </tr>
                 </tbody>
