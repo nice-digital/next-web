@@ -242,6 +242,7 @@ export type IndevResource = {
 	level: number;
 	publishedDate: string;
 	externalUrl: string | null;
+	externalLinks: IndevExternalLinks[] | null;
 	showInDocList: boolean;
 	textOnly: boolean;
 	consultationId: number;
@@ -250,6 +251,12 @@ export type IndevResource = {
 	convertedDocument: boolean;
 	supportsComments: boolean;
 	supportsQuestions?: boolean;
+};
+
+export type IndevExternalLinks = {
+	id: string;
+	url: string;
+	displayText: string;
 };
 
 export type IndevFileResource = IndevResource & {

@@ -1333,3 +1333,889 @@ Object {
   },
 }
 `;
+
+exports[`/indicators/prioritisation/[slug]/documents - DocumentsPage with external links DocumentsPage with external links should match snapshot for project documents content 1`] = `
+<body>
+  <div>
+    <nav
+      aria-label="Breadcrumbs"
+      data-component="breadcrumbs"
+      role="navigation"
+    >
+      <ol
+        class="breadcrumbs"
+      >
+        <li
+          class="breadcrumbs__crumb"
+        >
+          <a
+            href="/"
+          >
+            Home
+          </a>
+        </li>
+        <li
+          class="breadcrumbs__crumb"
+        >
+          <a
+            href="/standards-and-indicators/indicators"
+          >
+            Indicators
+          </a>
+        </li>
+        <li
+          class="breadcrumbs__crumb"
+        >
+          <a
+            href="/indicators/indevelopment"
+          >
+            In development
+          </a>
+        </li>
+        <li
+          class="breadcrumbs__crumb"
+        >
+          <a
+            href="/indicators/indevelopment/gid-dg10017"
+          >
+            GID-DG10017
+          </a>
+        </li>
+        <li
+          class="breadcrumbs__crumb"
+        >
+          <span>
+            Project documents
+          </span>
+        </li>
+      </ol>
+    </nav>
+    <script
+      type="application/ld+json"
+    >
+      {
+  "@context": "http://schema.org",
+  "@type": "BreadcrumbList",
+  "itemListElement": [
+    {
+      "@type": "ListItem",
+      "position": 1,
+      "item": {
+        "@id": "/",
+        "name": "Home"
+      }
+    },
+    {
+      "@type": "ListItem",
+      "position": 2,
+      "item": {
+        "@id": "/standards-and-indicators/indicators",
+        "name": "Indicators"
+      }
+    },
+    {
+      "@type": "ListItem",
+      "position": 3,
+      "item": {
+        "@id": "/indicators/indevelopment",
+        "name": "In development"
+      }
+    },
+    {
+      "@type": "ListItem",
+      "position": 4,
+      "item": {
+        "@id": "/indicators/indevelopment/gid-dg10017",
+        "name": "GID-DG10017"
+      }
+    },
+    {
+      "@type": "ListItem",
+      "position": 5,
+      "item": {
+        "name": "Project documents"
+      }
+    }
+  ]
+}
+    </script>
+    <div
+      class="page-header "
+      data-component="page-header"
+      id="content-start"
+    >
+      <h1
+        class="page-header__heading page-header__heading--alt"
+      >
+        External links test data
+      </h1>
+      <ul
+        class="page-header__metadata"
+      >
+        <li>
+          In development GID-DG10017
+        </li>
+        <li>
+          Expected publication date: TBC
+        </li>
+      </ul>
+      <p
+        class="page-header__cta"
+      >
+        <a
+          href="https://www.nice.org.uk/get-involved/register-your-organisation-as-a-stakeholder?t=&p=GID-DG10017&returnUrl=/guidance/prioritisation/gid-dg10017"
+        >
+          Register as a stakeholder
+        </a>
+      </p>
+    </div>
+    <nav
+      class="horizontal-nav"
+    >
+      <ul
+        class="horizontal-nav__list"
+      >
+        <li
+          class="horizontal-nav__item"
+          data-component="horizontal-nav"
+        >
+          <a
+            aria-current="false"
+            class="horizontal-nav__link"
+            href="/guidance/prioritisation/gid-dg10017"
+          >
+            Project information
+          </a>
+        </li>
+        <li
+          class="horizontal-nav__item"
+          data-component="horizontal-nav"
+        >
+          <a
+            aria-current="true"
+            class="horizontal-nav__link"
+            href="/guidance/prioritisation/gid-dg10017/documents"
+          >
+            Project documents
+          </a>
+        </li>
+      </ul>
+    </nav>
+    <div
+      class="grid grid--loose"
+    >
+      <section
+        data-component="grid-item"
+        data-g="12 md:12 lg:12"
+      >
+        <div
+          class="grid grid--rev grid--loose"
+        >
+          <div
+            data-component="grid-item"
+            data-g="12 md:4 lg:3"
+          >
+            <nav
+              aria-labelledby="on-this-page"
+              class="wrapper"
+            >
+              <h2
+                class="heading"
+                id="on-this-page"
+              >
+                On this page
+              </h2>
+              <ol
+                aria-label="Jump links to sections on this page"
+                class="list"
+              >
+                <li>
+                  <a
+                    class=""
+                    href="#committee-meetings"
+                  >
+                    Committee meetings
+                  </a>
+                </li>
+                <li>
+                  <a
+                    class=""
+                    href="#declaration-of-interests"
+                  >
+                    Declaration of interests
+                  </a>
+                </li>
+                <li>
+                  <a
+                    class=""
+                    href="#diagnostics-consultation"
+                  >
+                    Diagnostics consultation
+                  </a>
+                </li>
+                <li>
+                  <a
+                    class="activeHeading"
+                    href="#notes"
+                  >
+                    Notes
+                  </a>
+                </li>
+              </ol>
+            </nav>
+          </div>
+          <div
+            data-component="grid-item"
+            data-g="12 md:8 lg:9"
+          >
+            <h2
+              class="title"
+            >
+              Project documents
+            </h2>
+            <p>
+              Documents created during the development process.
+            </p>
+            <section
+              aria-labelledby="committee-meetings"
+            >
+              <h3
+                id="committee-meetings"
+              >
+                Committee meetings
+              </h3>
+              <section>
+                <h4
+                  class=""
+                >
+                  Committee meeting
+                </h4>
+                <ul
+                  class="list list--unstyled"
+                >
+                  <li>
+                    <article
+                      class="card"
+                      data-component="card"
+                    >
+                      <header
+                        class="card__header"
+                      >
+                        <p
+                          class="card__heading"
+                        >
+                          <a
+                            href="/guidance/prioritisation/gid-dg10017/downloads/gid-dg10017-agenda.docx"
+                          >
+                            Agenda
+                             
+                            (
+                            Word
+                            ,
+                             
+                            158 kB
+                            )
+                          </a>
+                        </p>
+                      </header>
+                      <dl
+                        class="card__metadata"
+                      >
+                        <div
+                          class="card__metadatum"
+                        >
+                          <dt
+                            class="visually-hidden"
+                          >
+                            Date
+                          </dt>
+                          <dd>
+                            <time
+                              datetime="2025-11-28"
+                            >
+                              28 November 2025
+                            </time>
+                          </dd>
+                        </div>
+                      </dl>
+                    </article>
+                  </li>
+                  <li>
+                    <article
+                      class="card"
+                      data-component="card"
+                    >
+                      <header
+                        class="card__header"
+                      >
+                        <p
+                          class="card__heading"
+                        >
+                          <a
+                            href="https://www.test-external-link3.co.uk/"
+                          >
+                            External link 3
+                          </a>
+                        </p>
+                      </header>
+                    </article>
+                  </li>
+                  <li>
+                    <article
+                      class="card"
+                      data-component="card"
+                    >
+                      <header
+                        class="card__header"
+                      >
+                        <p
+                          class="card__heading"
+                        >
+                          <a
+                            href="https://www.test-external-link4.co.uk/"
+                          >
+                            External link 4
+                          </a>
+                        </p>
+                      </header>
+                    </article>
+                  </li>
+                </ul>
+              </section>
+            </section>
+            <section
+              aria-labelledby="declaration-of-interests"
+            >
+              <h3
+                id="declaration-of-interests"
+              >
+                Declaration of interests
+              </h3>
+              <section>
+                <h4
+                  class="visually-hidden"
+                >
+                  Declaration of interests
+                </h4>
+                <ul
+                  class="list list--unstyled"
+                >
+                  <li>
+                    <article
+                      class="card"
+                      data-component="card"
+                    >
+                      <header
+                        class="card__header"
+                      >
+                        <p
+                          class="card__heading"
+                        >
+                          <a
+                            href="/guidance/prioritisation/gid-dg10017/documents/html-conversion"
+                          >
+                            Html conversion document
+                          </a>
+                        </p>
+                      </header>
+                      <dl
+                        class="card__metadata"
+                      >
+                        <div
+                          class="card__metadatum"
+                        >
+                          <dt
+                            class="visually-hidden"
+                          >
+                            Date
+                          </dt>
+                          <dd>
+                            <time
+                              datetime="2025-11-28"
+                            >
+                              28 November 2025
+                            </time>
+                          </dd>
+                        </div>
+                      </dl>
+                    </article>
+                  </li>
+                  <li>
+                    <article
+                      class="card"
+                      data-component="card"
+                    >
+                      <header
+                        class="card__header"
+                      >
+                        <p
+                          class="card__heading"
+                        >
+                          <a
+                            href="/guidance/prioritisation/gid-dg10017/documents/html-content"
+                          >
+                            Declaration of interests
+                          </a>
+                        </p>
+                      </header>
+                      <dl
+                        class="card__metadata"
+                      >
+                        <div
+                          class="card__metadatum"
+                        >
+                          <dt
+                            class="visually-hidden"
+                          >
+                            Date
+                          </dt>
+                          <dd>
+                            <time
+                              datetime="2025-11-28"
+                            >
+                              28 November 2025
+                            </time>
+                          </dd>
+                        </div>
+                      </dl>
+                    </article>
+                  </li>
+                  <li>
+                    <article
+                      class="card"
+                      data-component="card"
+                    >
+                      <header
+                        class="card__header"
+                      >
+                        <p
+                          class="card__heading"
+                        >
+                          <a
+                            href="https://www.test-external-link.co.uk/"
+                          >
+                            External link 1
+                          </a>
+                        </p>
+                      </header>
+                    </article>
+                  </li>
+                  <li>
+                    <article
+                      class="card"
+                      data-component="card"
+                    >
+                      <header
+                        class="card__header"
+                      >
+                        <p
+                          class="card__heading"
+                        >
+                          <a
+                            href="https://www.test-external-link2.co.uk/"
+                          >
+                            External link 2
+                          </a>
+                        </p>
+                      </header>
+                    </article>
+                  </li>
+                </ul>
+              </section>
+            </section>
+            <section
+              aria-labelledby="diagnostics-consultation"
+            >
+              <h3
+                id="diagnostics-consultation"
+              >
+                Diagnostics consultation
+              </h3>
+              <section>
+                <h4
+                  class="visually-hidden"
+                >
+                  Diagnostics consultation
+                </h4>
+                <ul
+                  class="list list--unstyled"
+                >
+                  <li>
+                    <article
+                      class="card"
+                      data-component="card"
+                    >
+                      <header
+                        class="card__header"
+                      >
+                        <p
+                          class="card__heading"
+                        >
+                          <a
+                            href="/guidance/prioritisation/gid-dg10017/downloads/gid-dg10017-consultation-document.docx"
+                          >
+                            Draft consultation document (downloadable version)
+                             
+                            (
+                            Word
+                            ,
+                             
+                            69 kB
+                            )
+                          </a>
+                        </p>
+                      </header>
+                      <dl
+                        class="card__metadata"
+                      >
+                        <div
+                          class="card__metadatum"
+                        >
+                          <dt
+                            class="visually-hidden"
+                          >
+                            Date
+                          </dt>
+                          <dd>
+                            <time
+                              datetime="2025-11-28"
+                            >
+                              28 November 2025
+                            </time>
+                          </dd>
+                        </div>
+                      </dl>
+                    </article>
+                  </li>
+                  <li>
+                    <article
+                      class="card"
+                      data-component="card"
+                    >
+                      <header
+                        class="card__header"
+                      >
+                        <p
+                          class="card__heading"
+                        >
+                          <a
+                            href="https://www.test-external-links7.co.uk/"
+                          >
+                            External link 7
+                          </a>
+                        </p>
+                      </header>
+                    </article>
+                  </li>
+                  <li>
+                    <article
+                      class="card"
+                      data-component="card"
+                    >
+                      <header
+                        class="card__header"
+                      >
+                        <p
+                          class="card__heading"
+                        >
+                          <a
+                            href="https://www.test-external-links8.co.uk/"
+                          >
+                            External link 8
+                          </a>
+                        </p>
+                      </header>
+                    </article>
+                  </li>
+                </ul>
+              </section>
+            </section>
+            <section
+              aria-labelledby="notes"
+            >
+              <h3
+                id="notes"
+              >
+                Notes
+              </h3>
+              <section>
+                <h4
+                  class="visually-hidden"
+                >
+                  Notes
+                </h4>
+                <ul
+                  class="list list--unstyled"
+                >
+                  <li>
+                    <article
+                      class="card"
+                      data-component="card"
+                    >
+                      <header
+                        class="card__header"
+                      >
+                        <p
+                          class="card__heading"
+                        >
+                          <a
+                            href="/guidance/prioritisation/gid-dg10017/documents/html-content-2"
+                          >
+                            Note
+                          </a>
+                        </p>
+                      </header>
+                      <dl
+                        class="card__metadata"
+                      >
+                        <div
+                          class="card__metadatum"
+                        >
+                          <dt
+                            class="visually-hidden"
+                          >
+                            Date
+                          </dt>
+                          <dd>
+                            <time
+                              datetime="2025-11-28"
+                            >
+                              28 November 2025
+                            </time>
+                          </dd>
+                        </div>
+                      </dl>
+                    </article>
+                  </li>
+                  <li>
+                    <article
+                      class="card"
+                      data-component="card"
+                    >
+                      <header
+                        class="card__header"
+                      >
+                        <p
+                          class="card__heading"
+                        >
+                          <a
+                            href="https://www.test-external-link5.co.uk/"
+                          >
+                            External link 5
+                          </a>
+                        </p>
+                      </header>
+                    </article>
+                  </li>
+                  <li>
+                    <article
+                      class="card"
+                      data-component="card"
+                    >
+                      <header
+                        class="card__header"
+                      >
+                        <p
+                          class="card__heading"
+                        >
+                          <a
+                            href="https://www.test-external-link6.co.uk/"
+                          >
+                            External link 6
+                          </a>
+                        </p>
+                      </header>
+                    </article>
+                  </li>
+                </ul>
+              </section>
+            </section>
+          </div>
+        </div>
+      </section>
+    </div>
+  </div>
+</body>
+`;
+
+exports[`/indicators/prioritisation/[slug]/documents - getServerSideProps for External links getServerSideProps should return a correct props for external links 1`] = `
+Object {
+  "props": Object {
+    "alert": null,
+    "consultationUrls": Array [],
+    "indevScheduleItems": Array [
+      Object {
+        "additionalInfo": null,
+        "additionalInfoLabel": null,
+        "column1": "Diagnostics consultation",
+        "column2": "19 November 2025 - 31 December 2025",
+        "eTag": null,
+        "hidden": false,
+        "links": Object {
+          "self": Array [
+            Object {},
+          ],
+        },
+      },
+    ],
+    "indevStakeholderRegistration": Array [
+      Object {
+        "href": "https://www.nice.org.uk/get-involved/register-your-organisation-as-a-stakeholder",
+      },
+    ],
+    "project": Object {
+      "groups": Array [
+        Object {
+          "subGroups": Array [
+            Object {
+              "resourceLinks": Array [
+                Object {
+                  "date": "2025-11-28T19:06:00",
+                  "fileSize": 158344,
+                  "fileTypeName": "Word",
+                  "href": "/guidance/prioritisation/gid-dg10017/downloads/gid-dg10017-agenda.docx",
+                  "title": "Agenda",
+                  "type": "Committee meetings",
+                },
+                Object {
+                  "date": null,
+                  "fileSize": null,
+                  "fileTypeName": null,
+                  "href": "https://www.test-external-link3.co.uk/",
+                  "title": "External link 3",
+                  "type": "Committee meetings",
+                },
+                Object {
+                  "date": null,
+                  "fileSize": null,
+                  "fileTypeName": null,
+                  "href": "https://www.test-external-link4.co.uk/",
+                  "title": "External link 4",
+                  "type": "Committee meetings",
+                },
+              ],
+              "title": "Committee meeting",
+            },
+          ],
+          "title": "Committee meetings",
+        },
+        Object {
+          "subGroups": Array [
+            Object {
+              "resourceLinks": Array [
+                Object {
+                  "date": "2025-11-28T19:06:00",
+                  "fileSize": null,
+                  "fileTypeName": null,
+                  "href": "/guidance/prioritisation/gid-dg10017/documents/html-conversion",
+                  "title": "Html conversion document",
+                  "type": "Declaration of interests",
+                },
+                Object {
+                  "date": "2025-11-28T19:06:00",
+                  "fileSize": null,
+                  "fileTypeName": null,
+                  "href": "/guidance/prioritisation/gid-dg10017/documents/html-content",
+                  "title": "Declaration of interests",
+                  "type": "Declaration of interests",
+                },
+                Object {
+                  "date": null,
+                  "fileSize": null,
+                  "fileTypeName": null,
+                  "href": "https://www.test-external-link.co.uk/",
+                  "title": "External link 1",
+                  "type": "Declaration of interests",
+                },
+                Object {
+                  "date": null,
+                  "fileSize": null,
+                  "fileTypeName": null,
+                  "href": "https://www.test-external-link2.co.uk/",
+                  "title": "External link 2",
+                  "type": "Declaration of interests",
+                },
+              ],
+              "title": "Declaration of interests",
+            },
+          ],
+          "title": "Declaration of interests",
+        },
+        Object {
+          "subGroups": Array [
+            Object {
+              "resourceLinks": Array [
+                Object {
+                  "date": "2025-11-28T19:06:00",
+                  "fileSize": 68634,
+                  "fileTypeName": "Word",
+                  "href": "/guidance/prioritisation/gid-dg10017/downloads/gid-dg10017-consultation-document.docx",
+                  "title": "Draft consultation document (downloadable version)",
+                  "type": "Diagnostics consultation",
+                },
+                Object {
+                  "date": null,
+                  "fileSize": null,
+                  "fileTypeName": null,
+                  "href": "https://www.test-external-links7.co.uk/",
+                  "title": "External link 7",
+                  "type": "Diagnostics consultation",
+                },
+                Object {
+                  "date": null,
+                  "fileSize": null,
+                  "fileTypeName": null,
+                  "href": "https://www.test-external-links8.co.uk/",
+                  "title": "External link 8",
+                  "type": "Diagnostics consultation",
+                },
+              ],
+              "title": "Diagnostics consultation",
+            },
+          ],
+          "title": "Diagnostics consultation",
+        },
+        Object {
+          "subGroups": Array [
+            Object {
+              "resourceLinks": Array [
+                Object {
+                  "date": "2025-11-28T19:06:00",
+                  "fileSize": null,
+                  "fileTypeName": null,
+                  "href": "/guidance/prioritisation/gid-dg10017/documents/html-content-2",
+                  "title": "Note",
+                  "type": "Notes",
+                },
+                Object {
+                  "date": null,
+                  "fileSize": null,
+                  "fileTypeName": null,
+                  "href": "https://www.test-external-link5.co.uk/",
+                  "title": "External link 5",
+                  "type": "Notes",
+                },
+                Object {
+                  "date": null,
+                  "fileSize": null,
+                  "fileTypeName": null,
+                  "href": "https://www.test-external-link6.co.uk/",
+                  "title": "External link 6",
+                  "type": "Notes",
+                },
+              ],
+              "title": "Notes",
+            },
+          ],
+          "title": "Notes",
+        },
+      ],
+      "projectType": "DG",
+      "reference": "GID-DG10017",
+      "status": "TopicSelection",
+      "title": "External links test data",
+    },
+    "projectPath": "/guidance/prioritisation/gid-dg10017",
+  },
+}
+`;

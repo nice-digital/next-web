@@ -19,6 +19,7 @@ import {
 	validateRouteParams,
 } from "@/utils/product";
 import {
+	getHistoryResourceLink,
 	ResourceGroupViewModel,
 	ResourceSubGroupViewModel,
 } from "@/utils/resource";
@@ -124,7 +125,7 @@ export const getServerSideProps: GetServerSideProps<
 		let currentSubGroup: ResourceSubGroupViewModel;
 
 		indevResources.forEach((resource) => {
-			const { embedded, textOnly, title, publishedDate } = resource;
+			const { textOnly, title } = resource;
 
 			if (textOnly) {
 				currentSubGroup = { title: title, resourceLinks: [] };
@@ -135,55 +136,22 @@ export const getServerSideProps: GetServerSideProps<
 					subGroups.push(currentSubGroup);
 				}
 
-				let indevFile;
-
-				if (Object.hasOwn(embedded, "niceIndevConvertedDocument")) {
-					indevFile =
-						embedded.niceIndevConvertedDocument as IndevConvertedDocument;
-				} else {
-					indevFile = (embedded.niceIndevFile ||
-						embedded.niceIndevGeneratedPdf) as IndevFile;
-				}
-
-				const mimeType =
-					"mimeType" in indevFile ? indevFile.mimeType : "text/html";
-				const length = "length" in indevFile ? indevFile.length : 0;
-				const resourceTitleId = indevFile.resourceTitleId;
-				const fileName = "fileName" in indevFile ? indevFile.fileName : "";
-
-				const shouldUseNewConsultationComments =
-					resource.supportsComments || resource.supportsQuestions;
-
-				const isHTML = mimeType === "text/html";
-				const fileSize =
-					isHTML || shouldUseNewConsultationComments ? null : length;
-				const fileTypeName =
-					isHTML || shouldUseNewConsultationComments
-						? null
-						: getFileTypeNameFromMime(mimeType);
-				const href = shouldUseNewConsultationComments
-					? `/consultations/${resource.consultationId}/${resource.consultationDocumentId}`
-					: isHTML
-					? `${productPath}/history/${resourceTitleId}`
-					: `${productPath}/history/downloads/${
-							product.id
-					  }-${resourceTitleId}.${fileName.split(".").slice(-1)[0]}`;
-
-				const convertedHtmlAlreadyInArray = currentSubGroup.resourceLinks.some(
-					(resourceLink) =>
-						resourceLink.title === resource.title.replace("(pdf)", "").trim()
-				);
+				const convertedHtmlAlreadyInArray =
+					resource.externalLinks && resource.externalLinks.length > 0
+						? false
+						: currentSubGroup.resourceLinks.some(
+								(resourceLink) =>
+									resourceLink.title ===
+									resource.title.replace("(pdf)", "").trim()
+						  );
 
 				// don't show converted html pdf download docs here
 				if (!convertedHtmlAlreadyInArray) {
-					currentSubGroup.resourceLinks.push({
-						title: title,
-						href,
-						fileTypeName,
-						fileSize,
-						date: publishedDate,
-						type: panel.title,
-					});
+					currentSubGroup.resourceLinks.push(
+						...arrayify(
+							getHistoryResourceLink({ resource, panel, productPath, product })
+						)
+					);
 				}
 			}
 		});
