@@ -117,3 +117,9 @@ export const buildTree = async (
 export function sectionNavIsPopulated(tree: ExtendedSBLink[]): boolean {
 	return (tree ?? []).length > 0;
 }
+
+export const getSectionnavTitle = (
+	tree: ExtendedSBLink[]
+): ExtendedSBLink | null => {
+	return sectionNavIsPopulated(tree) ? tree[0] : null;
+};
