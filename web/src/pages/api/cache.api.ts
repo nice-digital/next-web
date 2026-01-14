@@ -2,10 +2,10 @@ import { type NextApiRequest, type NextApiResponse } from "next";
 
 import { cache, getCacheKey } from "@/cache";
 
-export default function handler(
+export default async function handler(
 	req: NextApiRequest,
 	res: NextApiResponse
-): void {
+): Promise<void> {
 	const action = req.query["action"];
 	const expectedGroupKeys = ["publications", "indev"];
 
@@ -22,6 +22,11 @@ export default function handler(
 
 				if (expectedGroupKeys.includes(groupKey)) {
 					try {
+						await cache.get(cacheKey).then((res) => {
+							if (!res) {
+								throw Error(`itemKey param not found in cache: ${itemKey}`);
+							}
+						});
 						cache.del(cacheKey);
 						res.status(200).json({
 							message: `Successfully wiped cache for route: ${cacheKey}`,
