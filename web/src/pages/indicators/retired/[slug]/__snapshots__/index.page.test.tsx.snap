@@ -113,13 +113,13 @@ exports[`/indicators/retired/[slug]/index.page RetiredDetailPage should match sn
         data-g="12 sm:5 md:3"
       >
         <a
-          aria-label="Download retired indicator PDF file"
+          aria-label="Download retired  PDF file"
           class="btn btn--cta download downloadButton"
           data-component="button--cta"
           href="/indicators/retired/ind1111-indicator-master-accordion-panels-test/IND1111-20251209.pdf"
           target="_blank"
         >
-          Download retired indicator
+          Download retired 
            (PDF)
         </a>
       </section>

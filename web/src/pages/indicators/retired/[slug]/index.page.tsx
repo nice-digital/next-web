@@ -41,6 +41,7 @@ export default function RetiredDetailsPage({
 	pdfDownloadPath,
 }: RetiredDetailsPageProps): JSX.Element {
 	const { label, slug, url } = guidanceOrIndicatorBreadcrumb;
+	const indicatorText = slug === "/indicator" ? "indicator" : "";
 
 	return (
 		<>
@@ -106,11 +107,11 @@ export default function RetiredDetailsPage({
 					aria-label="Chapters"
 				>
 					<PublicationsDownloadLink
-						ariaLabel="Download retired indicator PDF file"
+						ariaLabel={`Download retired ${indicatorText + " "}PDF file`}
 						downloadLink={pdfDownloadPath}
 						className={styles.downloadButton}
 					>
-						Download retired indicator
+						Download retired {indicatorText}
 					</PublicationsDownloadLink>
 				</GridItem>
 
