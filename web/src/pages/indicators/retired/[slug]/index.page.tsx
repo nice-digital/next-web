@@ -40,8 +40,10 @@ export default function RetiredDetailsPage({
 	indicatorSubTypes,
 	pdfDownloadPath,
 }: RetiredDetailsPageProps): JSX.Element {
-	const { label, slug, url } = guidanceOrIndicatorBreadcrumb;
-	const indicatorText = slug === "/indicator" ? "indicator" : "";
+	const { label, slug, url } = guidanceOrIndicatorBreadcrumb,
+		indicatorText = slug === "/indicators" ? "indicator" : "",
+		pdfFileText =
+			(indicatorText !== "" ? indicatorText + " " : "") + "PDF file";
 
 	return (
 		<>
@@ -107,7 +109,7 @@ export default function RetiredDetailsPage({
 					aria-label="Chapters"
 				>
 					<PublicationsDownloadLink
-						ariaLabel={`Download retired ${indicatorText + " "}PDF file`}
+						ariaLabel={`Download retired ${pdfFileText}`}
 						downloadLink={pdfDownloadPath}
 						className={styles.downloadButton}
 					>
