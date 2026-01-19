@@ -33,8 +33,10 @@
     "extends @nice-digital/browserslist-config"
   ],
   "dependencies": {
-    "@nice-digital/design-system": "^5.5.8",
+    "@nice-digital/design-system": "^5.5.10-alpha.15",
     "@nice-digital/global-nav": "^7.1.1114",
+    "@nice-digital/nds-core": "^4.0.16",
+    "@nice-digital/nds-filters": "^5.0.22-alpha.15",
     "@nice-digital/nds-prev-next": "^3.0.2",
     "@nice-digital/search-client": "^2.1.1540-SRCH-780-Research-Re",
     "@sindresorhus/slugify": "^1.1.2",
