@@ -58,6 +58,7 @@ export async function getServerSideProps({ res }: { res: NextApiResponse }) {
 		"rapid-c-19",
 		"reusing-our-content",
 		"terms-and-conditions",
+		"website-feedback",
 		"what-nice-does",
 	];
 	const links: SBLink[] = [];
