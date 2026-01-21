@@ -485,7 +485,8 @@ const nextConfig = {
 			{
 				source:
 					"/about/what-we-do/our-programmes/nice-guidance/nice-interventional-procedures-guidance/ip-register-an-interest",
-				destination: "/forms/interventional-procedures-register-an-interest",
+				destination:
+					"/what-nice-does/our-guidance/about-interventional-procedures-guidance/interventional-procedures-register-an-interest",
 				permanent: true,
 			},
 			{
@@ -498,7 +499,7 @@ const nextConfig = {
 			{
 				source:
 					"/about/what-we-do/our-programmes/nice-guidance/nice-interventional-procedures-guidance/ip-notification-form",
-				destination: "/forms/interventional-procedures-notification",
+				destination: "/get-involved/interventional-procedures-notification",
 				permanent: true,
 			},
 			{
@@ -2168,7 +2169,8 @@ const nextConfig = {
 			},
 			{
 				source: "/about/nice-communities/generalpractice/reference-panel",
-				destination: "/forms/subscribe-to-our-gp-reference-panel",
+				destination:
+					"/implementing-nice-guidance/subscribe-to-our-gp-reference-panel",
 				permanent: true,
 			},
 			{
@@ -2886,7 +2888,7 @@ const nextConfig = {
 			},
 			{
 				source: "/re-using-our-content/uk-open-content-licence",
-				destination: "/forms/use-of-nice-content-in-the-uk",
+				destination: "/reusing-our-content/use-of-nice-content-in-the-uk",
 				permanent: true,
 			},
 			{
@@ -2923,7 +2925,8 @@ const nextConfig = {
 			},
 			{
 				source: "/forms/life-sciences-contact-us",
-				destination: "/forms/nice-advice-contact-us",
+				destination:
+					"/what-nice-does/life-sciences-how-to-get-your-product-to-market/nice-advice-service/nice-advice-contact-us",
 				permanent: true,
 			},
 			{
@@ -3028,7 +3031,7 @@ const nextConfig = {
 			},
 			{
 				source: "/leave-feedback",
-				destination: "/forms/leave-feedback",
+				destination: "/website-feedback",
 				permanent: true,
 			},
 			{
