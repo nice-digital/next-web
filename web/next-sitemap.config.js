@@ -24,7 +24,6 @@ module.exports = {
 		"/guidance",
 		"/guidance/errortest",
 		"/indicators/sitemap.xml",
-		"/nice-newsletters-and-alerts",
 		"/patient-safety",
 		"/privacy-notice",
 		"/rapid-c-19",
