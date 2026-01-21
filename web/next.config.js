@@ -2281,7 +2281,8 @@ const nextConfig = {
 			},
 			{
 				source: "/about/what-we-do/life-sciences/contact-us-form",
-				destination: "/forms/life-sciences-contact-us",
+				destination:
+					"/what-nice-does/life-sciences-how-to-get-your-product-to-market/nice-advice-service/nice-advice-contact-us",
 				permanent: true,
 			},
 			{
