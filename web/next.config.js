@@ -3139,7 +3139,7 @@ const nextConfig = {
 			},
 			{
 				source: "/forms/nice-content-assurance-service",
-				destination: "/reusing-our-content/nice-content-assurance-service-form",
+				destination: "/reusing-our-content/nice-content-assurance-service",
 				permanent: true,
 			},
 			{
