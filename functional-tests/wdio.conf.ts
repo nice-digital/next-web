@@ -19,7 +19,7 @@ export const config: WebdriverIO.Config = {
 		"./features/**/researchPagination.feature",
 		"./features/**/filterRrlp.feature",
 		"./features/**/hubPage.feature",
-		"./features/**/jotform.feature",
+		"./features/**/jotforms.feature",
 	],
 
 	capabilities: [
