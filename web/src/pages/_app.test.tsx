@@ -72,7 +72,7 @@ describe("NextWebApp", () => {
 			});
 
 			it("should set open graph url meta tag", async () => {
-				renderApp({ pathname: "/test" });
+				renderApp({ asPath: "/test" });
 
 				expect(
 					document.querySelector("meta[property='og:url']")

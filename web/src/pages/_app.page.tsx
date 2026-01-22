@@ -152,7 +152,7 @@ class NextWebApp extends App<{}, {}, AppState> {
 		const {
 			Component,
 			pageProps,
-			router: { pathname, query },
+			router: { query },
 		} = this.props;
 		const productRoot =
 			(isArray(query.productRoot) ? query.productRoot[0] : query.productRoot) ||
@@ -169,10 +169,7 @@ class NextWebApp extends App<{}, {}, AppState> {
 			service = "standards-and-indicators";
 		}
 
-		const canonicalPathname = pathname.includes("[slug]")
-			? this.props.router.asPath.split("?")[0]
-			: pathname;
-
+		const canonicalPathname = this.props.router.asPath.split("?")[0];
 		return (
 			<>
 				<DefaultSeo {...getDefaultSeoConfig(canonicalPathname)} />
