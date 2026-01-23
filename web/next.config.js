@@ -130,6 +130,12 @@ const nextConfig = {
 			},
 			{
 				source:
+					"/:productRoot(indicators|guidance)/:statusSlug(retired)/:path*",
+				destination:
+					"/indicators/retired/:path*?productRoot=:productRoot&statusSlug=:statusSlug",
+			},
+			{
+				source:
 					"/:productRoot(indicators|guidance|advice|process|corporate)/:path+",
 				destination: "/indicators/:path*?productRoot=:productRoot",
 			},
