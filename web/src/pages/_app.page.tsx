@@ -169,7 +169,8 @@ class NextWebApp extends App<{}, {}, AppState> {
 			service = "standards-and-indicators";
 		}
 
-		const canonicalPathname = this.props.router.asPath.split("?")[0];
+		const canonicalPathname = this.props.router.asPath.split(/[?#]/)[0];
+
 		return (
 			<>
 				<DefaultSeo {...getDefaultSeoConfig(canonicalPathname)} />
