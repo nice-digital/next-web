@@ -54,6 +54,30 @@ describe("NextWebApp", () => {
 			);
 		});
 
+		it("should add canonical meta tag for dynamic slug page with hash removed", async () => {
+			renderApp({
+				pathname: "/what-nice-does/[[...slug]]",
+				asPath: "/what-nice-does/our-guidance#step-2",
+			});
+
+			expect(document.querySelector("link[rel='canonical']")).toHaveAttribute(
+				"href",
+				"https://next-web-tests.nice.org.uk/what-nice-does/our-guidance"
+			);
+		});
+
+		it("should add canonical meta tag for dynamic slug page with query string and hash removed", async () => {
+			renderApp({
+				pathname: "/what-nice-does/[[...slug]]",
+				asPath: "/what-nice-does/our-guidance?action=test#step-2",
+			});
+
+			expect(document.querySelector("link[rel='canonical']")).toHaveAttribute(
+				"href",
+				"https://next-web-tests.nice.org.uk/what-nice-does/our-guidance"
+			);
+		});
+
 		describe("open graph", () => {
 			it("should set en_GB open graph locale meta tag", async () => {
 				renderApp();
