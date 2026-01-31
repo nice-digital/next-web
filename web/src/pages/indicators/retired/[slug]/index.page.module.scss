@@ -1,0 +1,18 @@
+@use '@nice-digital/nds-core/scss/spacing';
+@use '@nice-digital/nds-core/scss/utils';
+
+.summary {
+  margin-bottom: utils.rem(spacing.$large);
+
+  > :first-child {
+    margin-top: 0;
+  }
+}
+
+.hrCustomTab {
+  border-bottom: 3px solid #0e0e0e;
+}
+
+.downloadButton {
+  font-size: 0.9375rem;
+}

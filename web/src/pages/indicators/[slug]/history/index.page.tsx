@@ -6,14 +6,9 @@ import { Breadcrumb, Breadcrumbs } from "@nice-digital/nds-breadcrumbs";
 import { ProductHorizontalNav } from "@/components/ProductHorizontalNav/ProductHorizontalNav";
 import { ProductPageHeading } from "@/components/ProductPageHeading/ProductPageHeading";
 import { ResourceList } from "@/components/ResourceList/ResourceList";
-import {
-	IndevConvertedDocument,
-	IndevFile,
-	ProjectDetail,
-} from "@/feeds/inDev/inDev";
+import { ProjectDetail } from "@/feeds/inDev/inDev";
 import { ProductDetail } from "@/feeds/publications/types";
 import { arrayify, byTitleAlphabetically } from "@/utils/array";
-import { getFileTypeNameFromMime } from "@/utils/file";
 import {
 	redirectWithdrawnProducts,
 	validateRouteParams,
