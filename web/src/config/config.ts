@@ -98,9 +98,6 @@ export interface FeedsConfig {
 
 	/** Feed config for indev */
 	readonly inDev: FeedConfig;
-
-	/** Feed config for JotForm */
-	readonly jotForm: Pick<FeedConfig, "apiKey">;
 }
 
 export interface StoryblokConfig {
