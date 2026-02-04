@@ -20,6 +20,12 @@ Object {
       "type": "image/png",
     },
     Object {
+      "href": "/icons/icon-48x48.png",
+      "rel": "icon",
+      "sizes": "48x48",
+      "type": "image/png",
+    },
+    Object {
       "href": "/icons/icon-120x120.png",
       "rel": "apple-touch-icon",
       "sizes": "120x120",
