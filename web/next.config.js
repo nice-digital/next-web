@@ -3232,6 +3232,14 @@ const nextConfig = {
 				destination: "/reusing-our-content/use-of-nice-content-in-the-uk",
 				permanent: true,
 			},
+			// Health Inequalities restructure 01/26
+			{
+				source:
+					"/implementing-nice-guidance/cost-saving-resource-planning-and-audit/nice-and-health-inequalities/:slug(what-are-health-inequalites|approaches-to-addressing-health-inequalities|nice-and-core20plus5-children-and-young-people(?:/.*)?|nice-and-core20plus5-adults(?:/.*)?|nice-and-the-adapted-labonte-model(?:/.*)?|nice-and-the-marmot-review(?:/.*)?)",
+				destination:
+					"/implementing-nice-guidance/cost-saving-resource-planning-and-audit/nice-and-health-inequalities/health-inequalities-the-wider-picture",
+				permanent: true,
+			},
 		];
 	},
 	async headers() {
