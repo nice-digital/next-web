@@ -141,6 +141,8 @@ const nextConfig = {
 	},
 	async redirects() {
 		return [
+			// Redirects should be periodically rationalised and pruned. See comments highlighting go-live dates for redirect blocks
+			// Migration from Orchard to Storyblok 08/25
 			{
 				source:
 					"/about/what-we-do/our-programmes/nice-guidance/nice-about-technology-appraisal-guidance/technology-appraisal-and-highly-specialised-technologies-appeals/past-appeals-and-decisions",
@@ -3061,6 +3063,7 @@ const nextConfig = {
 				destination: "https://www.england.nhs.uk/aac/about-us/who-we-are/",
 				permanent: true,
 			},
+			// Position statements into guidance 12/25
 			{
 				source:
 					"/position-statements/use-of-ai-in-evidence-generation-nice-position-statement",
@@ -3103,6 +3106,7 @@ const nextConfig = {
 				destination: "/corporate/ecd17/chapter/position-statement",
 				permanent: true,
 			},
+			// Jotform pages migration to Storyblok 01/26
 			{
 				source: "/forms/candidates-for-modular-updates",
 				destination:
