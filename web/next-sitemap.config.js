@@ -20,7 +20,6 @@ module.exports = {
 		"/contact-us",
 		"/cookies",
 		"/events",
-		"/forms/*",
 		"/guidance",
 		"/guidance/errortest",
 		"/indicators/sitemap.xml",
