@@ -9,9 +9,11 @@ import {
 import {
 	ProductGroup,
 	ProductTypeAcronym,
+	Status as ProductStatus,
 	UploadAndConvertContentPart,
 	type ProductDetail,
 	type ProductLite,
+	UploadContentPart,
 } from "@/feeds/publications/types";
 
 import { fetchAndMapContentParts } from "./contentparts";
@@ -79,11 +81,17 @@ export const getProductSlug = (
  * @returns The path of the product, relative to the root
  */
 export const getProductPath = (
-	product: Pick<ProductLite, "productGroup" | "id" | "productType" | "title">
+	product: Pick<
+		ProductLite,
+		"id" | "productGroup" | "productStatus" | "productType" | "title"
+	>
 ): string => {
+	const { productGroup, productStatus, productType } = product;
+	const retiredProductPath =
+		productStatus === ProductStatus.Retired ? "retired/" : "";
 	let rootPath: string;
 
-	switch (product.productGroup) {
+	switch (productGroup) {
 		case ProductGroup.Guideline:
 		case ProductGroup.Guidance:
 		case ProductGroup.Standard:
@@ -95,24 +103,20 @@ export const getProductPath = (
 		case ProductGroup.Corporate:
 			// There are 2 types of corporate products that have different URLs: corporate vs process and methods
 			rootPath =
-				product.productType === ProductTypeAcronym.ECD
-					? "corporate"
-					: "process";
+				productType === ProductTypeAcronym.ECD ? "corporate" : "process";
 			break;
 		case ProductGroup.Other:
-			if (product.productType !== ProductTypeAcronym.IND)
-				throw Error(
-					`Unsupported 'other' product type of ${product.productType}`
-				);
+			if (productType !== ProductTypeAcronym.IND)
+				throw Error(`Unsupported 'other' product type of ${productType}`);
 			rootPath = "indicators";
 			break;
 		default:
-			throw `Unsupported product group ${product.productGroup} ${JSON.stringify(
+			throw `Unsupported product group ${productGroup} ${JSON.stringify(
 				product
 			)}`;
 	}
 
-	return `/${rootPath}/${getProductSlug(product)}`;
+	return `/${rootPath}/${retiredProductPath}${getProductSlug(product)}`;
 };
 
 export const getPublicationPdfDownloadPath = (
@@ -122,13 +126,15 @@ export const getPublicationPdfDownloadPath = (
 ): string | null => {
 	if (!product.contentPartsList) return null;
 
-	const contentParts = product.contentPartsList;
+	const { contentPartsList, id, productStatus } = product;
+	const isRetiredProduct = productStatus === ProductStatus.Retired;
 
-	const uploadAndConvertContentPart =
-		fetchAndMapContentParts<UploadAndConvertContentPart>(
-			contentParts,
-			"UploadAndConvertContentPart"
-		);
+	const uploadAndConvertContentPart = fetchAndMapContentParts<
+		UploadAndConvertContentPart | UploadContentPart
+	>(
+		contentPartsList,
+		isRetiredProduct ? "UploadContentPart" : "UploadAndConvertContentPart"
+	);
 
 	if (!uploadAndConvertContentPart) {
 		return null;
@@ -139,7 +145,5 @@ export const getPublicationPdfDownloadPath = (
 		productGroup,
 	});
 
-	return `${rootPath}/${product.id}-${lastModified
-		.slice(0, 10)
-		.replace(/-/g, "")}.pdf`;
+	return `${rootPath}/${id}-${lastModified.slice(0, 10).replace(/-/g, "")}.pdf`;
 };
