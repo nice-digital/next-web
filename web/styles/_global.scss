@@ -14,6 +14,7 @@ footer {
 
 html {
   scroll-behavior: smooth;
+  scroll-padding-bottom: utils.rem(spacing.$xx-large);
 
   @media (prefers-reduced-motion) {
     scroll-behavior: auto;
@@ -22,7 +23,6 @@ html {
   @include media-queries.mq($until: 300px) {
     font-size: $narrow-viewport-root-font-size;
   }
-
 }
 
 main {
