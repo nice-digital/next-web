@@ -29,9 +29,9 @@ export const pagePaths = {
 	blogs: "/news/blogs/nextweb-automation-blog-donotuse",
 	"news articles": "/news/articles/nextweb-automation-news-1-donotuse",
 	podcasts: "/news/podcasts/nextweb-automation-podcasts-1-donotuse",
-	"leave feedback": "/forms/leave-feedback",
+	"leave feedback": "/website-feedback",
 	"subscribe to NICE news for health and social care":
-		"/forms/subscribe-to-nice-news-for-health-and-social-care",
+		"/nice-newsletters-and-alerts/subscribe-to-nice-news-for-health-and-social-care",
 	"recommendation for research list":
 		"/about/what-we-do/science-policy-research/research-recommendations",
 } as const;

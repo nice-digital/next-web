@@ -1,0 +1,79 @@
+{
+  "Id": "IND1111",
+  "LastModified": "2025-12-09T11:27:15.2944838Z",
+  "ProductType": "IND",
+  "Title": "Indicator - Master Accordion Panels Test",
+  "ShortTitle": null,
+  "InDevReference": "gid-na",
+  "MetaDescription": "Indicator Meta Description",
+  "Summary": "\u003Cp\u003EIndicator Summary test on Master Accordions\u003C/p\u003E",
+  "WithdrawnNotes": "",
+  "ProductStatus": "Retired",
+  "VersionNumber": 6,
+  "PublishedDate": "2025-08-05T00:00:00",
+  "LastMajorModificationDate": "2025-08-05T00:00:00",
+  "MajorChangeDate": null,
+  "NextReviewDate": null,
+  "CollectionTypesList": [],
+  "AuthorList": [
+    "National Institute for Health and Care Excellence (NICE)",
+    "Royal College of General Practitioners (RCGP)"
+  ],
+  "AdditionalAuthorList": [],
+  "PublisherList": [
+    "National Institute for Health and Care Excellence (NICE)",
+    "Royal College of Obstetricians and Gynaecologists"
+  ],
+  "AudienceList": [
+    "Directors of Public Health"
+  ],
+  "EstimatedSavings": "",
+  "EstimatedSavingsDescription": "",
+  "EstimatedSavingsImpact": null,
+  "Approach": [],
+  "DevelopedAs": null,
+  "RelevantTo": [],
+  "TerminatedAppraisal": null,
+  "AreasOfInterestList": [],
+  "IndicatorSubTypeList": [
+    "GPIQ"
+  ],
+  "IndicatorOldCode": "",
+  "IndicatorOldUrl": "",
+  "OldGuidanceNumber": "",
+  "OldGuidanceUrl": "",
+  "NewGuidanceNumber": "",
+  "TaxonomySubjectList": [],
+  "IPSV": "Health, well-being and care",
+  "ChapterHeadings": [],
+  "RelatedExternalList": [],
+  "AccreditationList": [],
+  "EndorsementList": [],
+  "SupportingList": [],
+  "RelatedProductList": [],
+  "RelatedResourceList": [],
+  "ContentPartsList": [
+    {
+      "File": {
+        "Id": "2487ee92-1296-4077-8736-5ff4f134ebdc",
+        "MimeType": "application/pdf",
+        "FileName": "IND05 Indicator 20240430.pdf",
+        "Length": 94980,
+        "Hash": "A267228730217E7E6E160DACD3E951E00971A197",
+        "Name": "default",
+        "Uid": 52610714472494,
+        "Url": "/newfeeds/downloads/2487ee92-1296-4077-8736-5ff4f134ebdc"
+      },
+      "Reference": "IND1111",
+      "PartId": 2,
+      "Title": "Indicator - Master Accordion Panels Test",
+      "LegacyId": null,
+      "Type": "UploadContentPart",
+      "Uid": 52610714472494,
+      "MajorChangeDate": null
+    }
+  ],
+  "ProductGroup": "Other",
+  "ProductTypeName": "NICE indicator",
+  "ProductTypeNamePlural": "NICE indicators"
+}
