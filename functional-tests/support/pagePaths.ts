@@ -29,9 +29,9 @@ export const pagePaths = {
 	blogs: "/news/blogs/nextweb-automation-blog-donotuse",
 	"news articles": "/news/articles/nextweb-automation-news-1-donotuse",
 	podcasts: "/news/podcasts/nextweb-automation-podcasts-1-donotuse",
-	"leave feedback": "/website-feedback",
-	"subscribe to NICE news for health and social care":
-		"/nice-newsletters-and-alerts/subscribe-to-nice-news-for-health-and-social-care",
+	"website feedback": "/website-feedback-automation-jotform-donotuse",
+	"subscribe to update for Primary Care":
+		"/nice-newsletters-and-alerts-automation-jotform-donotuse/subscribe-to-update-for-primary-care-automation-jotform-donotuse",
 	"recommendation for research list":
 		"/about/what-we-do/science-policy-research/research-recommendations",
 } as const;
