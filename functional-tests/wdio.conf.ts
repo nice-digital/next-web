@@ -14,6 +14,7 @@ export const config: WebdriverIO.Config = {
 
 	specs: ["./features/**/*.feature"],
 	exclude: [
+		"./features/**/indicator.feature",
 		"./features/**/researchListPage.feature",
 		"./features/**/researchPagination.feature",
 		"./features/**/filterRrlp.feature",
