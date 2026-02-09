@@ -71,7 +71,7 @@ export function Search({
 	const [announcement, setAnnouncement] = useState("");
 	const [loading, setLoading] = useState<boolean>();
 	const { failed } = data;
-	const resultsRef = useRef(null);
+	const resultsRef = useRef<HTMLDivElement | null>(null);
 	const { events, push, query } = useRouter();
 
 	const { documents, navigators, pageSize, unfilteredResultsUrl } =
@@ -119,7 +119,7 @@ export function Search({
 		if (resultsRef.current) {
 			resultsRef.current.focus();
 		}
-	}, [loading, failed, data?.resultCount]);
+	}, [loading, failed]);
 
 	if (failed) return <ErrorPageContent />;
 
@@ -311,7 +311,7 @@ export function Search({
 									id="search-results"
 									ref={resultsRef}
 									tabIndex={-1}
-									className="search-results-container"
+									className="searchResultsContainer"
 									aria-label="Search results"
 								>
 									<SearchCardList documents={documents} />
