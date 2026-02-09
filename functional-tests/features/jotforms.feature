@@ -10,13 +10,12 @@ Feature: Individual jotforms page
     Given I open the subscribe to update for Primary Care page
     Then I expect that element "h1" contains the text "Subscribe to update for Primary Care"
     And I pause for 2000ms
-    And I expect the jotform Id to exist
-    # Given the element "#label_6" matches the text "Email address"
-    # Given the element "#input_4" matches the text "Subscribe"
+    And I expect subscribe to update for primary care jotform Id to exist
+    Given I enter name details in the jotform field
 
   Scenario: User can navigate to Website feedback page
     Given I open the website feedback page
     Then I expect that element "h1" contains the text "Website-feedback-automation-jotform-1-donotuse"
-    # Given the element "#label_4" matches the text "Email"
-    # Given the element "#input_5" matches the text "Submit"
-    # Then(/^I expect the jotform field contains the text "([^"]*)"$/
+    And I expect website feedback page jotform Id to exist
+    Given I enter email address details in the jotform field
+

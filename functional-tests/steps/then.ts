@@ -166,27 +166,24 @@ Then(
 		await pause("2000");
 	}
 );
-Then(/^I expect the jotform Id to exist$/, async () => {
+Then(
+	/^I expect subscribe to update for primary care jotform Id to exist$/,
+	async () => {
+		const iframe = await $(`iframe`);
+		await iframe.waitForExist({ timeout: 20000 });
+		await iframe.scrollIntoView();
+		await $("#JotFormIFrame-232421799357869").waitForExist({
+			timeout: 20000,
+		});
+		await expect(await $("#JotFormIFrame-232421799357869")).toBeDisplayed();
+	}
+);
+Then(/^I expect website feedback page jotform Id to exist$/, async () => {
 	const iframe = await $(`iframe`);
 	await iframe.waitForExist({ timeout: 20000 });
 	await iframe.scrollIntoView();
-	// await iframe.waitForDisplayed({ timeout: 20000 });
-	// await browser.switchToFrame(iframe);
-	// await expect(await $("form").isExisting()).toBe(true);
-	await $("#JotFormIFrame-232421799357869").waitForExist({
+	await $("#JotFormIFrame-222773673466870").waitForExist({
 		timeout: 20000,
 	});
-	await expect(await $("#JotFormIFrame-232421799357869")).toBeDisplayed();
-	// await expect(await $(".jotform-form").isExisting()).toBe(true);
-	// const elem = await $(".form-submit-button");
-	// await waitForDisplayed("[for='input_6'] iframe", "");
-	// await checkContainsText("element", "[for='input_6'] iframe", "", text);
-	// await expect(iframe).toHaveText("text");
-	// const elem = await $('.form-submit-button');
-	// await elem.scrollIntoView({ block: "end", inline: "center" });
-	// // await waitForDisplayed("elem", "");
-	// await checkContainsText("button", "elem", "", text);
-	// await expect(elem).toHaveText("text");
-	// await pause("2000");
-	// $("[for='input_6'] iframe");
+	await expect(await $("#JotFormIFrame-222773673466870")).toBeDisplayed();
 });

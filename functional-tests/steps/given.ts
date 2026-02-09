@@ -1,4 +1,5 @@
 import { Given } from "@wdio/cucumber-framework";
+import { expect } from "expect-webdriverio";
 
 import { clickElement } from "@nice-digital/wdio-cucumber-steps/lib/support/action/clickElement.js";
 import { pause } from "@nice-digital/wdio-cucumber-steps/lib/support/action/pause.js";
@@ -63,3 +64,23 @@ Given(
 );
 
 Given(/^I enter From date "([^"]*)" to filter page list$/, indicatorFilterDate);
+
+Given(/^I enter name details in the jotform field$/, async () => {
+	const iframe = await $(`iframe`);
+	await iframe.waitForExist({ timeout: 20000 });
+	await iframe.scrollIntoView();
+	await browser.switchToFrame(iframe);
+	await expect(await $("#label_7").isExisting()).toBe(true);
+	await $("#label_7").addValue("Test Data");
+	await browser.pause(5000);
+});
+
+Given(/^I enter email address details in the jotform field$/, async () => {
+	const iframe = await $(`iframe`);
+	await iframe.waitForExist({ timeout: 20000 });
+	await iframe.scrollIntoView();
+	await browser.switchToFrame(iframe);
+	await expect(await $("#input_4").isExisting()).toBe(true);
+	await $("#input_4").addValue("testData@yahoo.co.uk");
+	await browser.pause(5000);
+});
