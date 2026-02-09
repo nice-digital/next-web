@@ -2,7 +2,7 @@ import dayjs from "dayjs";
 import { GetServerSidePropsContext, GetServerSidePropsResult } from "next";
 import { useRouter } from "next/router";
 import { NextSeo } from "next-seo";
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useRef, useState } from "react";
 
 import { FilterSummary } from "@nice-digital/nds-filters";
 import { Grid, GridItem } from "@nice-digital/nds-grid";
@@ -71,7 +71,7 @@ export function Search({
 	const [announcement, setAnnouncement] = useState("");
 	const [loading, setLoading] = useState<boolean>();
 	const { failed } = data;
-
+	const resultsRef = useRef(null);
 	const { events, push, query } = useRouter();
 
 	const { documents, navigators, pageSize, unfilteredResultsUrl } =
@@ -113,6 +113,13 @@ export function Search({
 			events.off("routeChangeError", handleStop);
 		};
 	}, [events]);
+
+	useEffect(() => {
+		if (loading || failed) return;
+		if (resultsRef.current) {
+			resultsRef.current.focus();
+		}
+	}, [loading, failed, data?.resultCount]);
 
 	if (failed) return <ErrorPageContent />;
 
@@ -300,13 +307,19 @@ export function Search({
 									and starting again.
 								</p>
 							) : (
-								<>
+								<div
+									id="search-results"
+									ref={resultsRef}
+									tabIndex={-1}
+									className="search-results-container"
+									aria-label="Search results"
+								>
 									<SearchCardList documents={documents} />
 									<SearchPagination
 										results={data}
 										scrollTargetId="filter-summary"
 									/>
-								</>
+								</div>
 							)}
 						</GridItem>
 					</Grid>

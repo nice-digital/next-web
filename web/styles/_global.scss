@@ -22,7 +22,6 @@ html {
   @include media-queries.mq($until: 300px) {
     font-size: $narrow-viewport-root-font-size;
   }
-
 }
 
 main {
@@ -32,4 +31,8 @@ main {
 main a {
   // This is to ensure that we can't tab into a link that's hidden by the "back to top" sticky element
   scroll-margin: utils.rem(60px);
+}
+
+.search-results-container:focus {
+  outline: none !important;
 }
