@@ -365,7 +365,7 @@ export const getServerSideProps = async (
 	if (results.failed) {
 		logger.error(
 			`Error loading results from search on page ${context.resolvedUrl}: ${results.errorMessage}`,
-			results.debug?.rawResponse
+			results.debug?.rawResponse as undefined
 		);
 		context.res.statusCode = 500;
 	} else if (searchUrl.from && searchUrl.to) {
