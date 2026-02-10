@@ -70,8 +70,8 @@ Given(/^I enter name details in the jotform field$/, async () => {
 	await iframe.waitForExist({ timeout: 20000 });
 	await iframe.scrollIntoView();
 	await browser.switchToFrame(iframe);
-	await expect(await $("#label_7").isExisting()).toBe(true);
-	await $("#label_7").addValue("Test Data");
+	await expect(await $("#first_7").isExisting()).toBe(true);
+	await $("#first_7").addValue("Test Data");
 	await browser.pause(5000);
 });
 
