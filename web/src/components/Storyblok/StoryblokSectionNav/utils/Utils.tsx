@@ -5,13 +5,19 @@ export type ExtendedSBLink = SBLink & {
 	childLinks?: ExtendedSBLink[];
 };
 
+// Folders are included in the API response even if they are not published, so we need logic on our side to only include published content. We should use this whenever we're using the output of fetchLinks
+const itemIsPublished = (item: ExtendedSBLink): boolean =>
+	item.published === true;
+
 export const getCurrentFolderItems = async (
 	parentID: number
 ): Promise<ExtendedSBLink[]> => {
 	// Get all items in current folder (current page and its siblings or, if current page is a root page, current page and its children)
-	return await fetchLinks({
-		with_parent: parentID,
-	});
+	return Object.values(
+		await fetchLinks({
+			with_parent: parentID,
+		})
+	).filter(itemIsPublished);
 };
 
 export const assignChildrenToParent = (
@@ -37,7 +43,7 @@ export const fetchAndBuildParentAndChildTree = async (
 	const currentFolderItems = await getCurrentFolderItems(parentID);
 
 	// Get all items starting with the current folder slug - this is the only way to access the folder object
-	const startsWithCurrentFolderSlugItems = await fetchLinks({
+	let startsWithCurrentFolderSlugItems = await fetchLinks({
 		starts_with: slug,
 	});
 
@@ -53,9 +59,11 @@ export const fetchAndBuildParentAndChildTree = async (
 	if (!currentFolder || !currentFolder.parent_id) return currentFolderItems;
 
 	// Get all items in current folder's parent folder (current "page" and its siblings OR parent page and its siblings, depending on current position in tree)
-	const parentFolderItems = await fetchLinks({
-		with_parent: currentFolder.parent_id,
-	});
+	const parentFolderItems = Object.values(
+		await fetchLinks({
+			with_parent: currentFolder.parent_id,
+		})
+	).filter(itemIsPublished);
 	tree = parentFolderItems;
 
 	// If current page has no children, use current level and level above to create the parent/child tree structure
