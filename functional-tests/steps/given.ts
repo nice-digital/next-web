@@ -72,6 +72,7 @@ Given(/^I enter name details in the jotform field$/, async () => {
 	await browser.switchToFrame(iframe);
 	await expect(await $("#first_7").isExisting()).toBe(true);
 	await $("#first_7").addValue("Test Data");
+	await expect(await $("#first_7")).toHaveValue("Test Data");
 	await browser.pause(5000);
 });
 
@@ -82,5 +83,6 @@ Given(/^I enter email address details in the jotform field$/, async () => {
 	await browser.switchToFrame(iframe);
 	await expect(await $("#input_4").isExisting()).toBe(true);
 	await $("#input_4").addValue("testData@yahoo.co.uk");
+	await expect(await $("#input_4")).toHaveValue("testData@yahoo.co.uk");
 	await browser.pause(5000);
 });

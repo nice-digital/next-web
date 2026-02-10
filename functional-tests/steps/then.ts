@@ -169,21 +169,15 @@ Then(
 Then(
 	/^I expect subscribe to update for primary care jotform Id to exist$/,
 	async () => {
-		const iframe = await $(`iframe`);
+		const iframe = await $("#JotFormIFrame-232421799357869");
 		await iframe.waitForExist({ timeout: 20000 });
 		await iframe.scrollIntoView();
-		await $("#JotFormIFrame-232421799357869").waitForExist({
-			timeout: 20000,
-		});
-		await expect(await $("#JotFormIFrame-232421799357869")).toBeDisplayed();
+		await expect(await $(iframe)).toBeDisplayed();
 	}
 );
 Then(/^I expect website feedback page jotform Id to exist$/, async () => {
-	const iframe = await $(`iframe`);
+	const iframe = await $("#JotFormIFrame-222773673466870");
 	await iframe.waitForExist({ timeout: 20000 });
 	await iframe.scrollIntoView();
-	await $("#JotFormIFrame-222773673466870").waitForExist({
-		timeout: 20000,
-	});
-	await expect(await $("#JotFormIFrame-222773673466870")).toBeDisplayed();
+	await expect(await $(iframe)).toBeDisplayed();
 });
