@@ -96,7 +96,10 @@ export function Search({
 
 	useEffect(() => {
 		if (loading || failed) return;
+		if (typeof window === "undefined") return;
 
+		const el = document.getElementById("filters");
+		if (!el || typeof el.scrollIntoView !== "function") return;
 		focusAndScrollToTarget("filters");
 	}, [loading, failed]);
 
