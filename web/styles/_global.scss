@@ -33,6 +33,7 @@ main a {
   scroll-margin: utils.rem(60px);
 }
 
-.searchResultsContainer:focus {
-  outline: none !important;
+div:focus,
+form:focus {
+  outline: none;
 }
