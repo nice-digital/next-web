@@ -25,6 +25,7 @@ import { SearchCardList } from "@/components/SearchCard/SearchCardList";
 import { SearchListFilters } from "@/components/SearchListFilters/SearchListFilters";
 import { SearchNoResults } from "@/components/SearchNoResults/SearchNoResults";
 import { SearchPagination } from "@/components/SearchPagination/SearchPagination";
+import { focusAndScrollToTarget } from "@/components/SkipLink/SkipLink";
 import { publicRuntimeConfig } from "@/config";
 import { logger } from "@/logger";
 import { dateFormatShort } from "@/utils/datetime";
@@ -71,7 +72,6 @@ export function Search({
 	const [announcement, setAnnouncement] = useState("");
 	const [loading, setLoading] = useState<boolean>();
 	const { failed } = data;
-	const resultsRef = useRef<HTMLDivElement | null>(null);
 	const { events, push, query } = useRouter();
 
 	const { documents, navigators, pageSize, unfilteredResultsUrl } =
@@ -95,6 +95,12 @@ export function Search({
 	}, [data, loading]);
 
 	useEffect(() => {
+		if (loading || failed) return;
+
+		focusAndScrollToTarget("filters");
+	}, [loading, failed]);
+
+	useEffect(() => {
 		const handleStart = () => {
 			setLoading(true);
 		};
@@ -113,13 +119,6 @@ export function Search({
 			events.off("routeChangeError", handleStop);
 		};
 	}, [events]);
-
-	useEffect(() => {
-		if (loading || failed) return;
-		if (resultsRef.current) {
-			resultsRef.current.focus();
-		}
-	}, [loading, failed]);
 
 	if (failed) return <ErrorPageContent />;
 
@@ -296,7 +295,7 @@ export function Search({
 							</FilterSummary>
 
 							{documents.length === 0 ? (
-								<p id="results">
+								<p>
 									We can&apos;t find any results. Try{" "}
 									<Link
 										to={unfilteredResultsUrl?.fullUrl as string}
@@ -307,13 +306,7 @@ export function Search({
 									and starting again.
 								</p>
 							) : (
-								<div
-									id="search-results"
-									ref={resultsRef}
-									tabIndex={-1}
-									className="searchResultsContainer"
-									aria-label="Search results"
-								>
+								<div id="results">
 									<SearchCardList documents={documents} />
 									<SearchPagination
 										results={data}
