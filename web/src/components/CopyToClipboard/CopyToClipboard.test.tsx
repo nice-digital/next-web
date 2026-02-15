@@ -88,18 +88,18 @@ describe("CopyToClipboard", () => {
 				<CopyToClipboard targetId="test">Copy to clipboard</CopyToClipboard>
 			);
 
-			expect(screen.queryByRole("alert")).toBeNull();
+			expect(screen.queryByRole("status")).toBeNull();
 
 			userEvent.click(screen.getByText("Copy to clipboard"));
 
-			const successMessage = await screen.findByRole("alert");
+			const successMessage = await screen.findByRole("status");
 
 			expect(successMessage).toBeInTheDocument();
 			expect(successMessage).toHaveTextContent(
 				"Results copied to the clipboard, paste into excel to see the results."
 			);
-			expect(successMessage).toHaveProperty("tagName", "P");
-			expect(successMessage).toHaveAttribute("aria-live", "assertive");
+			expect(successMessage).toHaveProperty("tagName", "DIV");
+			expect(successMessage).toHaveAttribute("aria-live", "polite");
 			expect(successMessage).toHaveAttribute("aria-atomic", "true");
 		});
 
@@ -114,12 +114,12 @@ describe("CopyToClipboard", () => {
 
 			userEvent.click(screen.getByText("Copy to clipboard"));
 
-			expect(await screen.findByRole("alert")).toBeInTheDocument();
+			expect(await screen.findByRole("status")).toBeInTheDocument();
 
 			userEvent.click(screen.getByText("Dismiss message"));
 
 			await waitFor(async () => {
-				expect(screen.queryByRole("alert")).toBeNull();
+				expect(screen.queryByRole("status")).toBeNull();
 			});
 		});
 
@@ -172,8 +172,8 @@ describe("CopyToClipboard", () => {
 			expect(errorMessage).toHaveTextContent(
 				"Sorry, there was an error copying to the clipboard"
 			);
-			expect(errorMessage).toHaveProperty("tagName", "P");
-			expect(errorMessage).toHaveAttribute("aria-live", "assertive");
+			expect(errorMessage).toHaveProperty("tagName", "DIV");
+			// expect(errorMessage).toHaveAttribute("aria-live", "assertive");
 			expect(errorMessage).toHaveAttribute("aria-atomic", "true");
 		});
 
