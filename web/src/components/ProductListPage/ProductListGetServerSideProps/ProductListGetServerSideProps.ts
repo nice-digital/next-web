@@ -30,6 +30,7 @@ export interface GetGetServerSidePropsOptions {
 		| "In development"
 		| "Awaiting development"
 		| "Topic prioritisation"
+		| "Terminated"
 		| "Deferred";
 	defaultSortOrder: SortOrder;
 	dateFilterLabel?: string;
