@@ -5,12 +5,13 @@ import { InPageNav } from "@nice-digital/nds-in-page-nav";
 
 import { StoryblokRichText } from "@/components/Storyblok/StoryblokRichText/StoryblokRichText";
 import { StoryblokSectionNav } from "@/components/Storyblok/StoryblokSectionNav/StoryblokSectionNav";
-import {
-	type ExtendedSBLink,
-	sectionNavIsPopulated,
-} from "@/components/Storyblok/StoryblokSectionNav/utils/Utils";
 import { type Breadcrumb } from "@/types/Breadcrumb";
 import { type InfoPageStoryblok } from "@/types/storyblok";
+import {
+	type ExtendedSBLink,
+	getSectionnavTitle,
+	sectionNavIsPopulated,
+} from "@/utils/storyblok/contentStructureUtils";
 
 import styles from "./InfoPage.module.scss";
 
@@ -22,6 +23,21 @@ export interface InfoPageBlokProps {
 	pageType?: string;
 }
 
+const getPreheading = (
+	tree: ExtendedSBLink[],
+	blok: InfoPageStoryblok
+): string => {
+	if (!sectionNavIsPopulated(tree)) return "";
+
+	const headerTitle =
+		blok.header?.[0]?.component === "pageHeader" ? blok.header?.[0]?.title : "";
+	const sectionName = getSectionnavTitle(tree)?.name;
+
+	if (!headerTitle || !sectionName) return "";
+
+	return sectionName !== headerTitle ? sectionName : "";
+};
+
 export const InfoPage = ({
 	blok,
 	breadcrumbs,
@@ -29,6 +45,7 @@ export const InfoPage = ({
 	slug,
 	pageType,
 }: InfoPageBlokProps): React.ReactElement => {
+	const preheading = getPreheading(tree, blok);
 	return (
 		<div className={styles.infoPage}>
 			{blok.metadata &&
@@ -42,6 +59,7 @@ export const InfoPage = ({
 						blok={nestedBlok}
 						key={nestedBlok._uid}
 						breadcrumbs={breadcrumbs}
+						preheading={preheading}
 					/>
 				);
 			})}
