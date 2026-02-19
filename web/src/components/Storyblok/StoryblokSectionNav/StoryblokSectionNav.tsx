@@ -3,10 +3,10 @@ import React from "react";
 import { StackedNav, StackedNavLink } from "@nice-digital/nds-stacked-nav";
 
 import {
+	type ExtendedSBLink,
 	getSectionnavTitle,
 	sectionNavIsPopulated,
-} from "../../../utils/storyblok/contentStructureUtils";
-import { type ExtendedSBLink } from "../../../utils/storyblok/contentStructureUtils";
+} from "@/utils/storyblok/contentStructureUtils";
 
 type StoryblokSectionNavProps = {
 	tree: ExtendedSBLink[];
