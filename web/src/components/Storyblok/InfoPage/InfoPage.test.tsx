@@ -6,7 +6,7 @@ import sampleDataNoNav from "@/mockData/storyblok/infoPageWithNoNav.json";
 import sampleDataPageHeaderSectionNav from "@/mockData/storyblok/infoPageWithPageHeaderAndSectionNav.json";
 import { render } from "@/test-utils/rendering";
 import { InfoPageStoryblok } from "@/types/storyblok";
-import * as ContentStructureUtils from "@/utils/storyblok/contentStructureUtils";
+import * as contentStructureUtils from "@/utils/storyblok/contentStructureUtils";
 
 import { InfoPage, type InfoPageBlokProps } from "./InfoPage";
 
@@ -44,7 +44,7 @@ const mockedStoryblokComponent = StoryblokComponent as unknown as jest.Mock;
 
 describe("InfoPage", () => {
 	beforeAll(() => {
-		jest.spyOn(ContentStructureUtils, "sectionNavIsPopulated");
+		jest.spyOn(contentStructureUtils, "sectionNavIsPopulated");
 	});
 	afterEach(() => {
 		jest.clearAllMocks();
@@ -126,7 +126,7 @@ describe("InfoPage", () => {
 		).not.toBeInTheDocument();
 	});
 	it("passes preheading when section nav is populated and title differs", () => {
-		(ContentStructureUtils.sectionNavIsPopulated as jest.Mock).mockReturnValue(
+		(contentStructureUtils.sectionNavIsPopulated as jest.Mock).mockReturnValue(
 			true
 		);
 
@@ -140,7 +140,7 @@ describe("InfoPage", () => {
 		);
 	});
 	it("passes preheading when section nav is hidden", () => {
-		(ContentStructureUtils.sectionNavIsPopulated as jest.Mock).mockReturnValue(
+		(contentStructureUtils.sectionNavIsPopulated as jest.Mock).mockReturnValue(
 			true
 		);
 		const mockPropsWithSectionNav = {
@@ -156,7 +156,7 @@ describe("InfoPage", () => {
 		);
 	});
 	it("passes empty preheading when section name matches header title", () => {
-		(ContentStructureUtils.sectionNavIsPopulated as jest.Mock).mockReturnValue(
+		(contentStructureUtils.sectionNavIsPopulated as jest.Mock).mockReturnValue(
 			true
 		);
 
@@ -199,7 +199,7 @@ describe("InfoPage", () => {
 		);
 	});
 	it("passes empty preheading when pageHeader is missing", () => {
-		(ContentStructureUtils.sectionNavIsPopulated as jest.Mock).mockReturnValue(
+		(contentStructureUtils.sectionNavIsPopulated as jest.Mock).mockReturnValue(
 			true
 		);
 		render(<InfoPage {...mockPropsWithHeroAndInPageNav} />);
