@@ -11,7 +11,7 @@ import {
 	type ExtendedSBLink,
 	getSectionnavTitle,
 	sectionNavIsPopulated,
-} from "@/utils/storyblok/ContentStructureUtils";
+} from "@/utils/storyblok/contentStructureUtils";
 
 import styles from "./InfoPage.module.scss";
 

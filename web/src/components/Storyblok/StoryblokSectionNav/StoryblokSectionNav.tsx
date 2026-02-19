@@ -5,8 +5,8 @@ import { StackedNav, StackedNavLink } from "@nice-digital/nds-stacked-nav";
 import {
 	getSectionnavTitle,
 	sectionNavIsPopulated,
-} from "../../../utils/storyblok/ContentStructureUtils";
-import { type ExtendedSBLink } from "../../../utils/storyblok/ContentStructureUtils";
+} from "../../../utils/storyblok/contentStructureUtils";
+import { type ExtendedSBLink } from "../../../utils/storyblok/contentStructureUtils";
 
 type StoryblokSectionNavProps = {
 	tree: ExtendedSBLink[];

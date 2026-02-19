@@ -6,7 +6,7 @@ import sampleDataNoNav from "@/mockData/storyblok/infoPageWithNoNav.json";
 import sampleDataPageHeaderSectionNav from "@/mockData/storyblok/infoPageWithPageHeaderAndSectionNav.json";
 import { render } from "@/test-utils/rendering";
 import { InfoPageStoryblok } from "@/types/storyblok";
-import * as ContentStructureUtils from "@/utils/storyblok/ContentStructureUtils";
+import * as ContentStructureUtils from "@/utils/storyblok/contentStructureUtils";
 
 import { InfoPage, type InfoPageBlokProps } from "./InfoPage";
 

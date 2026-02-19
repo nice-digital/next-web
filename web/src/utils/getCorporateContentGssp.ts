@@ -13,7 +13,7 @@ import {
 import {
 	buildTree,
 	type ExtendedSBLink,
-} from "@/utils/storyblok/ContentStructureUtils";
+} from "@/utils/storyblok/contentStructureUtils";
 
 import type { GetServerSidePropsContext, GetServerSideProps } from "next";
 

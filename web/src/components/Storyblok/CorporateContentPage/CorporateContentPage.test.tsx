@@ -5,7 +5,7 @@ import React from "react";
 
 import { logger } from "@/logger";
 import { getAdditionalMetaTags } from "@/utils/storyblok";
-import { type ExtendedSBLink } from "@/utils/storyblok/ContentStructureUtils";
+import { type ExtendedSBLink } from "@/utils/storyblok/contentStructureUtils";
 
 import { CorporateContentPage } from "./CorporateContentPage";
 

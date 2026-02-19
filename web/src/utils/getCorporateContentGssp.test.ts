@@ -10,7 +10,7 @@ import {
 	getStoryVersionFromQuery,
 	GENERIC_ERROR_MESSAGE,
 } from "@/utils/storyblok";
-import * as ContentStructureUtils from "@/utils/storyblok/ContentStructureUtils";
+import * as ContentStructureUtils from "@/utils/storyblok/contentStructureUtils";
 
 import type { GetServerSidePropsContext } from "next";
 
