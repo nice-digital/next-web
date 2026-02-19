@@ -2,7 +2,7 @@ import dayjs from "dayjs";
 import { GetServerSidePropsContext, GetServerSidePropsResult } from "next";
 import { useRouter } from "next/router";
 import { NextSeo } from "next-seo";
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useRef, useState } from "react";
 
 import { FilterSummary } from "@nice-digital/nds-filters";
 import { Grid, GridItem } from "@nice-digital/nds-grid";
@@ -25,6 +25,7 @@ import { SearchCardList } from "@/components/SearchCard/SearchCardList";
 import { SearchListFilters } from "@/components/SearchListFilters/SearchListFilters";
 import { SearchNoResults } from "@/components/SearchNoResults/SearchNoResults";
 import { SearchPagination } from "@/components/SearchPagination/SearchPagination";
+import { focusAndScrollToTarget } from "@/components/SkipLink/SkipLink";
 import { publicRuntimeConfig } from "@/config";
 import { logger } from "@/logger";
 import { dateFormatShort } from "@/utils/datetime";
@@ -71,7 +72,6 @@ export function Search({
 	const [announcement, setAnnouncement] = useState("");
 	const [loading, setLoading] = useState<boolean>();
 	const { failed } = data;
-
 	const { events, push, query } = useRouter();
 
 	const { documents, navigators, pageSize, unfilteredResultsUrl } =
@@ -93,6 +93,15 @@ export function Search({
 			!loading && setAnnouncement(summary + spellcheck);
 		}
 	}, [data, loading]);
+
+	useEffect(() => {
+		if (loading || failed) return;
+		if (typeof window === "undefined") return;
+
+		const el = document.getElementById("filters");
+		if (!el || typeof el.scrollIntoView !== "function") return;
+		focusAndScrollToTarget("filters");
+	}, [loading, failed]);
 
 	useEffect(() => {
 		const handleStart = () => {
@@ -289,7 +298,7 @@ export function Search({
 							</FilterSummary>
 
 							{documents.length === 0 ? (
-								<p id="results">
+								<p>
 									We can&apos;t find any results. Try{" "}
 									<Link
 										to={unfilteredResultsUrl?.fullUrl as string}
@@ -300,13 +309,13 @@ export function Search({
 									and starting again.
 								</p>
 							) : (
-								<>
+								<div id="results">
 									<SearchCardList documents={documents} />
 									<SearchPagination
 										results={data}
 										scrollTargetId="filter-summary"
 									/>
-								</>
+								</div>
 							)}
 						</GridItem>
 					</Grid>
@@ -352,7 +361,7 @@ export const getServerSideProps = async (
 	if (results.failed) {
 		logger.error(
 			`Error loading results from search on page ${context.resolvedUrl}: ${results.errorMessage}`,
-			results.debug?.rawResponse
+			results.debug?.rawResponse as undefined
 		);
 		context.res.statusCode = 500;
 	} else if (searchUrl.from && searchUrl.to) {
