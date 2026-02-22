@@ -37,7 +37,7 @@ import { StoryblokTable } from "@/components/Storyblok/StoryblokTable/StoryblokT
 import { StoryblokTestimonialFullWidth } from "@/components/Storyblok/StoryblokTestimonialFullWidth/StoryblokTestimonialFullWidth";
 import { StoryblokTestimonialGridItem } from "@/components/Storyblok/StoryblokTestimonialGridItem/StoryblokTestimonialGridItem";
 import { StoryblokYoutubeEmbed } from "@/components/Storyblok/StoryblokYoutubeEmbed/StoryblokYoutubeEmbed";
-import { TracEmbed } from "@/components/Storyblok/TracEmbed/TracEmbed";
+import { ClientTracEmbed } from "@/components/Storyblok/TracEmbed/ClientTracEmbed";
 import { publicRuntimeConfig } from "@/config";
 import { logger } from "@/logger";
 
@@ -102,7 +102,7 @@ const infoPageComponents = {
 	infogramEmbed: ClientInfogramEmbed,
 	infoPage: InfoPage,
 	nestedTable: StoryblokTable,
-	tracEmbed: TracEmbed,
+	tracEmbed: ClientTracEmbed,
 };
 
 export const allComponents: SbReactComponentsMap = {
