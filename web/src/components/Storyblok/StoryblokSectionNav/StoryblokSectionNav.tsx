@@ -4,7 +4,7 @@ import { StackedNav, StackedNavLink } from "@nice-digital/nds-stacked-nav";
 
 import {
 	type ExtendedSBLink,
-	getSectionnavTitle,
+	getSectionNavTitle,
 	sectionNavIsPopulated,
 } from "@/utils/storyblok/contentStructureUtils";
 
@@ -17,7 +17,7 @@ export const StoryblokSectionNav = ({
 	tree,
 	slug,
 }: StoryblokSectionNavProps): JSX.Element => {
-	const sectionNavLabel = getSectionnavTitle(tree);
+	const sectionNavLabel = getSectionNavTitle(tree);
 	const sectionNavTreeWithoutLabel = sectionNavIsPopulated(tree)
 		? tree.slice(1)
 		: [];

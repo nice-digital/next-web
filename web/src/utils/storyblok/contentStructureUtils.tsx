@@ -119,7 +119,7 @@ export function sectionNavIsPopulated(tree: ExtendedSBLink[]): boolean {
 	return (tree ?? []).length > 0;
 }
 
-export const getSectionnavTitle = (
+export const getSectionNavTitle = (
 	tree: ExtendedSBLink[]
 ): ExtendedSBLink | null => {
 	return sectionNavIsPopulated(tree) ? tree[0] : null;
@@ -133,7 +133,7 @@ export const getPreheading = (
 
 	const headerTitle =
 		blok.header?.[0]?.component === "pageHeader" ? blok.header?.[0]?.title : "";
-	const sectionName = getSectionnavTitle(tree)?.name;
+	const sectionName = getSectionNavTitle(tree)?.name;
 
 	if (!headerTitle || !sectionName) return "";
 
