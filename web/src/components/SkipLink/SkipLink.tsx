@@ -7,14 +7,25 @@ export interface SkipLinkProps {
 	targetId: string;
 }
 
-export const focusAndScrollToTarget = (targetId: string): void => {
+type FocusAndScrollOptions = {
+	preventScroll?: boolean;
+	scroll?: boolean;
+};
+
+export const focusAndScrollToTarget = (
+	targetId: string,
+	options: FocusAndScrollOptions = {}
+): void => {
+	const { preventScroll = false, scroll = true } = options;
 	const targetElement = document.getElementById(targetId) as HTMLElement | null;
 
 	if (!targetElement) return;
 
 	targetElement.setAttribute("tabIndex", "-1");
-	targetElement.focus();
-	targetElement.scrollIntoView();
+	targetElement.focus({ preventScroll });
+	if (scroll && typeof targetElement.scrollIntoView === "function") {
+		targetElement.scrollIntoView();
+	}
 };
 export const SkipLink: FC<SkipLinkProps> = ({ children, targetId }) => {
 	const clickHandler = useCallback(

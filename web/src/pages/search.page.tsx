@@ -100,7 +100,10 @@ export function Search({
 
 		const el = document.getElementById("filters");
 		if (!el || typeof el.scrollIntoView !== "function") return;
-		focusAndScrollToTarget("filters");
+		focusAndScrollToTarget("filters", {
+			preventScroll: true,
+			scroll: false,
+		});
 	}, [loading, failed]);
 
 	useEffect(() => {
