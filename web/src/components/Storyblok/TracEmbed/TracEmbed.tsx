@@ -43,7 +43,7 @@ export const TracEmbed: React.FC<TracEmbedProps> = ({ blok }) => {
 		script.setAttribute("data-JobsBoardID", `${board_id}`);
 		script.setAttribute("data-crossorigin", "anonymous");
 		script.setAttribute("data-integrity", `${integrity_hash}`);
-		script.setAttribute("data-IncludeCSS", "true");
+		script.setAttribute("data-IncludeCSS", "false");
 		tracRef.current?.appendChild(script);
 	}, []);
 
