@@ -23,8 +23,8 @@ const board_id = 101965,
 export const TracEmbed: React.FC<TracEmbedProps> = ({ blok }) => {
 	const tracRef = useRef<HTMLDivElement | null>(null);
 
-	const { content } = blok;
-
+	const { jobBoardsID, integrityKey } = blok;
+	console.log("TracEmbed content:", blok);
 	/**NOTE:
 	 * useEffect vs Script > nextJS will move the Script lower in DOM by default, which can cause embed injection to be placed below footer.
 	 * By creating a script inline within the specific container, injected embed content remains contained where it should be
@@ -40,9 +40,9 @@ export const TracEmbed: React.FC<TracEmbedProps> = ({ blok }) => {
 		script.async = true;
 		script.src = `${TRAC_SCRIPT}`;
 		script.setAttribute("id", "TracFeed");
-		script.setAttribute("data-JobsBoardID", `${board_id}`);
+		script.setAttribute("data-JobsBoardID", `${jobBoardsID}`);
 		script.setAttribute("data-crossorigin", "anonymous");
-		script.setAttribute("data-integrity", `${integrity_hash}`);
+		script.setAttribute("data-integrity", `${integrityKey || integrity_hash}`);
 		script.setAttribute("data-IncludeCSS", "false");
 		tracRef.current?.appendChild(script);
 	}, []);

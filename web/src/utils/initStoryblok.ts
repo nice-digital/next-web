@@ -111,13 +111,13 @@ const infoPageComponents = {
 	orderedList: StoryblokOrderedList,
 	panel: StoryblokPanel,
 	richTextTable: StoryblokRichTextTable,
+	tracEmbed: ClientTracEmbed,
 };
 
 const formPageComponents = {
 	formEmbed: ClientFormEmbed,
 	formPage: FormPage,
 	panel: StoryblokPanel,
-	tracEmbed: ClientTracEmbed,
 };
 
 export const allComponents: SbReactComponentsMap = {
