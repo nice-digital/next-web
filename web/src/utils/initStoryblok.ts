@@ -43,6 +43,7 @@ import { StoryblokTable } from "@/components/Storyblok/StoryblokTable/StoryblokT
 import { StoryblokTestimonialFullWidth } from "@/components/Storyblok/StoryblokTestimonialFullWidth/StoryblokTestimonialFullWidth";
 import { StoryblokTestimonialGridItem } from "@/components/Storyblok/StoryblokTestimonialGridItem/StoryblokTestimonialGridItem";
 import { StoryblokYoutubeEmbed } from "@/components/Storyblok/StoryblokYoutubeEmbed/StoryblokYoutubeEmbed";
+import { ClientTracEmbed } from "@/components/Storyblok/TracEmbed/ClientTracEmbed";
 import { publicRuntimeConfig } from "@/config";
 import { logger } from "@/logger";
 
@@ -116,6 +117,7 @@ const formPageComponents = {
 	formEmbed: ClientFormEmbed,
 	formPage: FormPage,
 	panel: StoryblokPanel,
+	tracEmbed: ClientTracEmbed,
 };
 
 export const allComponents: SbReactComponentsMap = {
