@@ -40,11 +40,12 @@ export const TracEmbed: React.FC<TracEmbedProps> = ({ blok }) => {
 		script.setAttribute("data-crossorigin", "anonymous");
 		script.setAttribute(
 			"data-integrity",
-			"sha384-cbOYURIX2N9r4jpVDJ6a/26KtiH5SEH/OVD8xCrZpv/g54sYppB5Ci39vXvOXhNX"
+			integrityKey ??
+				"sha384-cbOYURIX2N9r4jpVDJ6a/26KtiH5SEH/OVD8xCrZpv/g54sYppB5Ci39vXvOXhNX"
 		);
 		script.setAttribute("data-IncludeCSS", "false");
 		tracRef.current?.appendChild(script);
-	}, [jobBoardsID]);
+	}, [jobBoardsID, integrityKey]);
 	return (
 		<div>
 			<div
