@@ -98,9 +98,8 @@ describe("CopyToClipboard", () => {
 			expect(successMessage).toHaveTextContent(
 				"Results copied to the clipboard, paste into excel to see the results."
 			);
-			expect(successMessage).toHaveProperty("tagName", "P");
-			expect(successMessage).toHaveAttribute("aria-live", "assertive");
-			expect(successMessage).toHaveAttribute("aria-atomic", "true");
+			expect(successMessage).toHaveProperty("tagName", "DIV");
+			expect(successMessage).toHaveAttribute("role", "alert");
 		});
 
 		it("should dismiss success message on dismiss button click", async () => {
@@ -172,9 +171,8 @@ describe("CopyToClipboard", () => {
 			expect(errorMessage).toHaveTextContent(
 				"Sorry, there was an error copying to the clipboard"
 			);
-			expect(errorMessage).toHaveProperty("tagName", "P");
-			expect(errorMessage).toHaveAttribute("aria-live", "assertive");
-			expect(errorMessage).toHaveAttribute("aria-atomic", "true");
+			expect(errorMessage).toHaveProperty("tagName", "DIV");
+			expect(errorMessage).toHaveAttribute("role", "alert");
 		});
 
 		it("should display error message if writing to clipboard fails", async () => {
