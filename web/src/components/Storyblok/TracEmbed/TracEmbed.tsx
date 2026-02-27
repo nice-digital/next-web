@@ -1,7 +1,6 @@
 import React, { useEffect, useRef, useState } from "react";
 
 // import { TracEmbedblok } from "@/types/storyblok";
-// import styles from "./TracEmbed.module.scss";
 
 // TODO: hook up actual types from SB
 export interface TracEmbedStoryblok {
@@ -27,7 +26,10 @@ export const TracEmbed: React.FC<TracEmbedProps> = ({ blok }) => {
 	 * Using useEffect, creating and inserting the script inside the div container, maintains the trac embed position on page.
 	 * */
 	useEffect(() => {
-		if (!tracRef.current || document.getElementById("hj-feed-wrapper")) return;
+		const container = tracRef.current;
+		if (!container) return; //check if ref is attached to a DOM element
+		if (document.getElementById("hj-feed-wrapper")) return; //check if script has already loaded and if so dont add it again
+		if (container.querySelector<HTMLScriptElement>("#TracFeed")) return; //avoid adding multiple script tags if component re-renders
 
 		const script = document.createElement("script");
 		script.id = "TracFeed";
