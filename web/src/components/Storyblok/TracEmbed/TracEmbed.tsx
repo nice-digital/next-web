@@ -44,6 +44,7 @@ export const TracEmbed: React.FC<TracEmbedProps> = ({ blok }) => {
 				"sha384-cbOYURIX2N9r4jpVDJ6a/26KtiH5SEH/OVD8xCrZpv/g54sYppB5Ci39vXvOXhNX"
 		);
 		script.setAttribute("data-IncludeCSS", "false");
+		script.setAttribute("data-testid", "trac-feed-script");
 		tracRef.current?.appendChild(script);
 	}, [jobBoardsID, integrityKey]);
 	return (
