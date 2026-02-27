@@ -1,24 +1,18 @@
-"use client";
-import Script from "next/script";
 import React, { useEffect, useRef, useState } from "react";
 
 // import { TracEmbedblok } from "@/types/storyblok";
 // import styles from "./TracEmbed.module.scss";
 
 // TODO: hook up actual types from SB
-export interface TestTracEmbedStoryblok {
-	content: string;
+export interface TracEmbedStoryblok {
+	jobBoardsID: string;
+	integrityKey?: string;
 }
 export interface TracEmbedProps {
-	blok: TestTracEmbedStoryblok;
+	blok: TracEmbedStoryblok;
 }
 
 const TRAC_SCRIPT = "https://feeds.trac.jobs/js/v18/EmbeddedJobsBoard.js";
-
-const board_id = 101965,
-	aria_label = "test title",
-	integrity_hash =
-		"sha384-cbOYURIX2N9r4jpVDJ6a/26KtiH5SEH/OVD8xCrZpv/g54sYppB5Ci39vXvOXhNX";
 
 export const TracEmbed: React.FC<TracEmbedProps> = ({ blok }) => {
 	const tracRef = useRef<HTMLDivElement | null>(null);
@@ -42,18 +36,20 @@ export const TracEmbed: React.FC<TracEmbedProps> = ({ blok }) => {
 		script.setAttribute("id", "TracFeed");
 		script.setAttribute("data-JobsBoardID", `${jobBoardsID}`);
 		script.setAttribute("data-crossorigin", "anonymous");
-		script.setAttribute("data-integrity", `${integrityKey || integrity_hash}`);
+		script.setAttribute(
+			"data-integrity",
+			"sha384-cbOYURIX2N9r4jpVDJ6a/26KtiH5SEH/OVD8xCrZpv/g54sYppB5Ci39vXvOXhNX"
+		);
 		script.setAttribute("data-IncludeCSS", "false");
 		tracRef.current?.appendChild(script);
-	}, []);
-
+	}, [jobBoardsID]);
 	return (
 		<div>
 			<div
 				ref={tracRef}
 				aria-live="polite"
 				id="trac-jobs-container"
-				aria-label={aria_label}
+				aria-label="Trac Jobs Board"
 			></div>
 		</div>
 	);
