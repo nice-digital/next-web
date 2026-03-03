@@ -376,6 +376,7 @@ export interface GridStoryblok {
     | SpotlightStoryblok
     | TestimonialFullWidthStoryblok
     | TestimonialGridItemStoryblok
+    | TracEmbedStoryblok
     | YoutubeEmbedStoryblok
   )[];
   component: "grid";
@@ -794,6 +795,13 @@ export interface TestimonialGridItemStoryblok {
   image?: AssetStoryblok;
   variant: "default" | "transparent";
   component: "testimonialGridItem";
+  _uid: string;
+  [k: string]: any;
+}
+export interface TracEmbedStoryblok {
+  jobBoardsID: string;
+  integrityKey?: string;
+  component: "tracEmbed";
   _uid: string;
   [k: string]: any;
 }
