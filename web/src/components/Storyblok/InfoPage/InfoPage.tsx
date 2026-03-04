@@ -3,6 +3,7 @@ import { StoryblokComponent } from "@storyblok/react";
 import { Grid, GridItem } from "@nice-digital/nds-grid";
 import { InPageNav } from "@nice-digital/nds-in-page-nav";
 
+import { getPreheading } from "@/components/Storyblok/StoryblokPageHeader/StoryblokPageHeader";
 import { StoryblokRichText } from "@/components/Storyblok/StoryblokRichText/StoryblokRichText";
 import { StoryblokSectionNav } from "@/components/Storyblok/StoryblokSectionNav/StoryblokSectionNav";
 import { type Breadcrumb } from "@/types/Breadcrumb";
@@ -11,8 +12,6 @@ import {
 	type ExtendedSBLink,
 	treeHasItems,
 } from "@/utils/storyblok/contentStructureUtils";
-
-import { getPreheading } from "../StoryblokPageHeader/StoryblokPageHeader";
 
 import styles from "./InfoPage.module.scss";
 
