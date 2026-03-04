@@ -44,7 +44,7 @@ const mockedStoryblokComponent = StoryblokComponent as unknown as jest.Mock;
 
 describe("InfoPage", () => {
 	beforeAll(() => {
-		jest.spyOn(contentStructureUtils, "sectionNavIsPopulated");
+		jest.spyOn(contentStructureUtils, "treeHasItems");
 	});
 	afterEach(() => {
 		jest.clearAllMocks();
@@ -126,9 +126,7 @@ describe("InfoPage", () => {
 		).not.toBeInTheDocument();
 	});
 	it("passes preheading when section nav is populated and title differs", () => {
-		(contentStructureUtils.sectionNavIsPopulated as jest.Mock).mockReturnValue(
-			true
-		);
+		(contentStructureUtils.treeHasItems as jest.Mock).mockReturnValue(true);
 
 		render(<InfoPage {...mockPropsWithPageHeaderAndSectionNav} />);
 
@@ -140,9 +138,7 @@ describe("InfoPage", () => {
 		);
 	});
 	it("passes preheading when section nav is hidden", () => {
-		(contentStructureUtils.sectionNavIsPopulated as jest.Mock).mockReturnValue(
-			true
-		);
+		(contentStructureUtils.treeHasItems as jest.Mock).mockReturnValue(true);
 		const mockPropsWithSectionNav = {
 			...mockPropsWithPageHeaderAndSectionNav,
 			hideSectionNav: "true",
@@ -156,9 +152,7 @@ describe("InfoPage", () => {
 		);
 	});
 	it("passes empty preheading when section name matches header title", () => {
-		(contentStructureUtils.sectionNavIsPopulated as jest.Mock).mockReturnValue(
-			true
-		);
+		(contentStructureUtils.treeHasItems as jest.Mock).mockReturnValue(true);
 
 		const mockPropsWithSameTitleandPreheading = {
 			...mockPropsWithPageHeaderAndSectionNav,
@@ -199,9 +193,7 @@ describe("InfoPage", () => {
 		);
 	});
 	it("passes empty preheading when pageHeader is missing", () => {
-		(contentStructureUtils.sectionNavIsPopulated as jest.Mock).mockReturnValue(
-			true
-		);
+		(contentStructureUtils.treeHasItems as jest.Mock).mockReturnValue(true);
 		render(<InfoPage {...mockPropsWithHeroAndInPageNav} />);
 
 		expect(mockedStoryblokComponent).toHaveBeenCalledWith(

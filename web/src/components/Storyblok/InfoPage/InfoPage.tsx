@@ -9,9 +9,10 @@ import { type Breadcrumb } from "@/types/Breadcrumb";
 import { type InfoPageStoryblok } from "@/types/storyblok";
 import {
 	type ExtendedSBLink,
-	getPreheading,
-	sectionNavIsPopulated,
+	treeHasItems,
 } from "@/utils/storyblok/contentStructureUtils";
+
+import { getPreheading } from "../StoryblokPageHeader/StoryblokPageHeader";
 
 import styles from "./InfoPage.module.scss";
 
@@ -52,12 +53,12 @@ export const InfoPage = ({
 			<Grid
 				gutter="loose"
 				className={
-					!sectionNavIsPopulated(tree) || blok.hideSectionNav === "true"
+					!treeHasItems(tree) || blok.hideSectionNav === "true"
 						? styles["infoPage--reverse-order"]
 						: undefined
 				}
 			>
-				{((blok.hideSectionNav !== "true" && sectionNavIsPopulated(tree)) ||
+				{((blok.hideSectionNav !== "true" && treeHasItems(tree)) ||
 					blok.hideInPageNav !== "true") && (
 					<GridItem
 						cols={12}

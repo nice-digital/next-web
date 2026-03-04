@@ -5,7 +5,7 @@ import { StackedNav, StackedNavLink } from "@nice-digital/nds-stacked-nav";
 import {
 	type ExtendedSBLink,
 	getSectionTitle,
-	sectionNavIsPopulated,
+	treeHasItems,
 } from "@/utils/storyblok/contentStructureUtils";
 
 type StoryblokSectionNavProps = {
@@ -18,12 +18,10 @@ export const StoryblokSectionNav = ({
 	slug,
 }: StoryblokSectionNavProps): JSX.Element => {
 	const sectionTitle = getSectionTitle(tree);
-	const sectionNavTreeWithoutLabel = sectionNavIsPopulated(tree)
-		? tree.slice(1)
-		: [];
+	const sectionNavTreeWithoutLabel = treeHasItems(tree) ? tree.slice(1) : [];
 	return (
 		<>
-			{sectionNavIsPopulated(tree) && (
+			{treeHasItems(tree) && (
 				<StackedNav
 					label={sectionTitle?.name}
 					aria-label={`Section navigation: ${sectionTitle?.name ?? "Section"}`}

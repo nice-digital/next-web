@@ -1,5 +1,4 @@
 import { SBLink } from "@/types/SBLink";
-import { InfoPageStoryblok } from "@/types/storyblok";
 import { fetchLinks } from "@/utils/storyblok";
 
 export type ExtendedSBLink = SBLink & {
@@ -115,27 +114,12 @@ export const buildTree = async (
 	return tree;
 };
 
-export function sectionNavIsPopulated(tree: ExtendedSBLink[]): boolean {
+export function treeHasItems(tree: ExtendedSBLink[]): boolean {
 	return (tree ?? []).length > 0;
 }
 
 export const getSectionTitle = (
 	tree: ExtendedSBLink[]
 ): ExtendedSBLink | null => {
-	return sectionNavIsPopulated(tree) ? tree[0] : null;
-};
-
-export const getPreheading = (
-	tree: ExtendedSBLink[],
-	blok: InfoPageStoryblok
-): string => {
-	if (!sectionNavIsPopulated(tree)) return "";
-
-	const headerTitle =
-		blok.header?.[0]?.component === "pageHeader" ? blok.header?.[0]?.title : "";
-	const sectionTitle = getSectionTitle(tree)?.name;
-
-	if (!headerTitle || !sectionTitle) return "";
-
-	return sectionTitle !== headerTitle ? sectionTitle : "";
+	return treeHasItems(tree) ? tree[0] : null;
 };
