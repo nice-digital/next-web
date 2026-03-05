@@ -6,7 +6,7 @@ export interface TracEmbedProps {
 	blok: TracEmbedStoryblok;
 }
 
-const TRAC_SCRIPT = "https://feeds.trac.jobs/js/v18/EmbeddedJobsBoard.js";
+const tracScript = "https://feeds.trac.jobs/js/v18/EmbeddedJobsBoard.js";
 
 export const StoryblokTracEmbed: React.FC<TracEmbedProps> = ({ blok }) => {
 	const tracRef = useRef<HTMLDivElement | null>(null);
@@ -28,7 +28,7 @@ export const StoryblokTracEmbed: React.FC<TracEmbedProps> = ({ blok }) => {
 		const script = document.createElement("script");
 		script.id = "TracFeed";
 		script.async = true;
-		script.src = `${TRAC_SCRIPT}`;
+		script.src = `${tracScript}`;
 		script.setAttribute("id", "TracFeed");
 		script.setAttribute("data-JobsBoardID", `${jobBoardsID}`);
 		script.setAttribute("data-crossorigin", "anonymous");
