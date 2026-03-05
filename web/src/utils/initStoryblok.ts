@@ -42,8 +42,8 @@ import { StoryblokRichTextTable } from "@/components/Storyblok/StoryblokRichText
 import { StoryblokTable } from "@/components/Storyblok/StoryblokTable/StoryblokTable";
 import { StoryblokTestimonialFullWidth } from "@/components/Storyblok/StoryblokTestimonialFullWidth/StoryblokTestimonialFullWidth";
 import { StoryblokTestimonialGridItem } from "@/components/Storyblok/StoryblokTestimonialGridItem/StoryblokTestimonialGridItem";
+import { ClientTracEmbed } from "@/components/Storyblok/StoryblokTracEmbed/ClientTracEmbed";
 import { StoryblokYoutubeEmbed } from "@/components/Storyblok/StoryblokYoutubeEmbed/StoryblokYoutubeEmbed";
-import { ClientTracEmbed } from "@/components/Storyblok/TracEmbed/ClientTracEmbed";
 import { publicRuntimeConfig } from "@/config";
 import { logger } from "@/logger";
 

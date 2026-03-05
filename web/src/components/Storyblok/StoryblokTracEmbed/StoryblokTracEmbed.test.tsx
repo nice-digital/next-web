@@ -1,22 +1,22 @@
 import { render, screen } from "@testing-library/react";
 
-import { TracEmbed, TracEmbedStoryblok } from "./TracEmbed";
+import { StoryblokTracEmbed, TracEmbedStoryblok } from "./StoryblokTracEmbed";
 
 const mockTracEmbed: TracEmbedStoryblok = {
 	jobBoardsID: "123456",
 	integrityKey: "xxxintegritykeyxxx",
 };
 
-describe("TracEmbed", () => {
+describe("StoryblokTracEmbed", () => {
 	it("should render the quote ", () => {
-		render(<TracEmbed blok={mockTracEmbed} />);
+		render(<StoryblokTracEmbed blok={mockTracEmbed} />);
 		const container = screen.getByLabelText("Trac Jobs Board");
 		expect(container).toBeInTheDocument();
 		expect(container).toHaveAttribute("id", "trac-jobs-container");
 		expect(container).toHaveAttribute("aria-live", "polite");
 	});
 	it("should load the Trac embed script with correct attributes", () => {
-		render(<TracEmbed blok={mockTracEmbed} />);
+		render(<StoryblokTracEmbed blok={mockTracEmbed} />);
 		const script = screen.getByTestId("trac-feed-script");
 		expect(script).toBeInTheDocument();
 		expect(script).toHaveAttribute(
@@ -29,11 +29,11 @@ describe("TracEmbed", () => {
 		expect(script).toHaveAttribute("data-IncludeCSS", "false");
 	});
 	it("should not load the script multiple times on re-render", () => {
-		const { rerender } = render(<TracEmbed blok={mockTracEmbed} />);
+		const { rerender } = render(<StoryblokTracEmbed blok={mockTracEmbed} />);
 		const initialScript = screen.getByTestId("trac-feed-script");
 		expect(initialScript).toBeInTheDocument();
 
-		rerender(<TracEmbed blok={mockTracEmbed} />);
+		rerender(<StoryblokTracEmbed blok={mockTracEmbed} />);
 		const scripts = screen.getAllByTestId("trac-feed-script");
 		expect(scripts).toHaveLength(1);
 	});
