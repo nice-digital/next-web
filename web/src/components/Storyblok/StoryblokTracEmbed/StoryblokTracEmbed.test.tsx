@@ -1,10 +1,14 @@
 import { render, screen } from "@testing-library/react";
 
-import { StoryblokTracEmbed, TracEmbedStoryblok } from "./StoryblokTracEmbed";
+import { TracEmbedStoryblok } from "@/types/storyblok";
+
+import { StoryblokTracEmbed } from "./StoryblokTracEmbed";
 
 const mockTracEmbed: TracEmbedStoryblok = {
 	jobBoardsID: "123456",
 	integrityKey: "xxxintegritykeyxxx",
+	component: "tracEmbed",
+	_uid: "",
 };
 
 describe("StoryblokTracEmbed", () => {

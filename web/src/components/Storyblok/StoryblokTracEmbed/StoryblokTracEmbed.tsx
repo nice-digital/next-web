@@ -1,12 +1,7 @@
 import React, { useEffect, useRef } from "react";
 
-// import { TracEmbedblok } from "@/types/storyblok";
+import { TracEmbedStoryblok } from "@/types/storyblok";
 
-// TODO: hook up actual types from SB
-export interface TracEmbedStoryblok {
-	jobBoardsID: string;
-	integrityKey?: string;
-}
 export interface TracEmbedProps {
 	blok: TracEmbedStoryblok;
 }
