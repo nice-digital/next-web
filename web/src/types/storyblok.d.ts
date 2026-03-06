@@ -664,6 +664,7 @@ export interface PageStoryblok {
     | SpotlightStoryblok
     | TestimonialFullWidthStoryblok
     | TestimonialGridItemStoryblok
+    | TracEmbedStoryblok
     | YoutubeEmbedStoryblok
   )[];
   metadata?: MetadataStoryblok[];
@@ -798,6 +799,7 @@ export interface TestimonialGridItemStoryblok {
   _uid: string;
   [k: string]: any;
 }
+
 export interface TracEmbedStoryblok {
   jobBoardsID: string;
   integrityKey?: string;
