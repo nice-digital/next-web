@@ -21,6 +21,7 @@ import { PageHeader } from "@nice-digital/nds-page-header";
 import { Table } from "@nice-digital/nds-table";
 import {
 	Document,
+	KnownOrModifierKeys,
 	removeQueryParam,
 	SearchResultsSuccess,
 	SortOrder,
@@ -72,7 +73,8 @@ export type GetProductListPageOptions = {
 	textFilterLabel?: string;
 	textFilterHeading?: string;
 	useFutureDates?: boolean;
-	navigatorShortNamesToExclude?: string;
+	navigatorsOrder?: KnownOrModifierKeys[];
+	navigatorsToCollapse?: KnownOrModifierKeys[];
 	tableBodyRender: (documents: Document[]) => JSX.Element;
 	searchInputPlaceholder: string;
 } & (
@@ -106,7 +108,8 @@ export const getProductListPage =
 		dateFilterLabel,
 		textFilterHeading,
 		useFutureDates,
-		navigatorShortNamesToExclude,
+		navigatorsOrder = ["nai", "tt", "tsd", "ndt", "ngt", "nat", "rty", "sub"],
+		navigatorsToCollapse = ["ngt", "nat"],
 		tableBodyRender,
 		searchInputPlaceholder,
 	}: GetProductListPageOptions): FC<ProductListPageProps> =>
@@ -212,22 +215,13 @@ export const getProductListPage =
 							queryText={q}
 							from={from}
 							to={to}
-							navigatorShortNamesToExclude={`gst,${navigatorShortNamesToExclude}`}
 							showDateFilter={showDateFilter}
 							showTextFilter={true}
 							dateFilterLabel={dateFilterLabel}
 							textFilterHeading={textFilterHeading}
 							useFutureDates={useFutureDates}
-							navigatorsOrder={[
-								"nai",
-								"tt",
-								"tsd",
-								"ndt",
-								"ngt",
-								"nat",
-								"rty",
-								"sub",
-							]}
+							navigatorsOrder={navigatorsOrder}
+							navigatorsToCollapse={navigatorsToCollapse}
 							searchInputPlaceholder={searchInputPlaceholder}
 						/>
 					</GridItem>
