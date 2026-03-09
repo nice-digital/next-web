@@ -2222,7 +2222,7 @@ const nextConfig = {
 			},
 			{
 				source: "/about/what-we-do/into-practice/into-practice-guide",
-				destination: "implementing-nice-guidance/into-practice-resources",
+				destination: "/implementing-nice-guidance/into-practice-resources",
 				permanent: true,
 			},
 			{
