@@ -37,6 +37,25 @@ export const StoryblokTracEmbed: React.FC<TracEmbedProps> = ({ blok }) => {
 		script.setAttribute("data-testid", "trac-feed-script");
 		tracRef.current?.appendChild(script);
 	}, [jobBoardsID, integrityKey]);
+
+	useEffect(() => {
+		const handleHashChange = () => {
+			const hash = window.location.hash;
+
+			window.dataLayer?.push({
+				event: "tracjobs-hashchange",
+				hash: hash,
+				url: window.location.href,
+			});
+		};
+
+		window.addEventListener("hashchange", handleHashChange);
+
+		return () => {
+			window.removeEventListener("hashchange", handleHashChange);
+		};
+	}, []);
+
 	return (
 		<div>
 			<div
