@@ -1,4 +1,4 @@
-import { render, screen } from "@testing-library/react";
+import { render, screen, fireEvent } from "@testing-library/react";
 
 import { TracEmbedStoryblok } from "@/types/storyblok";
 
@@ -12,6 +12,14 @@ const mockTracEmbed: TracEmbedStoryblok = {
 };
 
 describe("StoryblokTracEmbed", () => {
+	beforeEach(() => {
+		window.dataLayer = { push: jest.fn() } as unknown as DataLayerEntry[];
+	});
+
+	afterEach(() => {
+		jest.resetAllMocks();
+	});
+
 	it("should render the quote ", () => {
 		render(<StoryblokTracEmbed blok={mockTracEmbed} />);
 		const container = screen.getByLabelText("Trac Jobs Board");
@@ -40,5 +48,31 @@ describe("StoryblokTracEmbed", () => {
 		rerender(<StoryblokTracEmbed blok={mockTracEmbed} />);
 		const scripts = screen.getAllByTestId("trac-feed-script");
 		expect(scripts).toHaveLength(1);
+	});
+
+	it("should push a tracjobs-hashchange event to dataLayer when the hash changes", () => {
+		const dataLayerPush = jest.spyOn(window.dataLayer, "push");
+
+		render(<StoryblokTracEmbed blok={mockTracEmbed} />);
+
+		window.location.hash = "#job_123";
+		fireEvent(window, new HashChangeEvent("hashchange"));
+
+		expect(dataLayerPush).toHaveBeenCalledWith({
+			event: "tracjobs-hashchange",
+			hash: "#job_123",
+			url: window.location.href,
+		});
+	});
+	it("should remove event listener on unmount", () => {
+		const removeEventListenerSpy = jest.spyOn(window, "removeEventListener");
+		const { unmount } = render(<StoryblokTracEmbed blok={mockTracEmbed} />);
+
+		unmount();
+
+		expect(removeEventListenerSpy).toHaveBeenCalledWith(
+			"hashchange",
+			expect.any(Function)
+		);
 	});
 });
