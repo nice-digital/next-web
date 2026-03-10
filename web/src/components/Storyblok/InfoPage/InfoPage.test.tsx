@@ -208,7 +208,7 @@ describe("InfoPage", () => {
 			...mockPropsWithPageHeaderAndSectionNav,
 			blok: {
 				...mockPropsWithPageHeaderAndSectionNav.blok,
-				hidePreHeader: "true",
+				hidePreHeader: "true" as "true" | "false",
 			},
 		};
 
@@ -227,7 +227,7 @@ describe("InfoPage", () => {
 			...mockPropsWithPageHeaderAndSectionNav,
 			blok: {
 				...mockPropsWithPageHeaderAndSectionNav.blok,
-				hidePreHeader: "false",
+				hidePreHeader: "false" as "true" | "false",
 			},
 		};
 
