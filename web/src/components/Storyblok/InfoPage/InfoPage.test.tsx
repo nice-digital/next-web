@@ -203,4 +203,41 @@ describe("InfoPage", () => {
 			{}
 		);
 	});
+	it("returns undefined preheading when hidePreHeader is 'true'", () => {
+		const mockProps = {
+			...mockPropsWithPageHeaderAndSectionNav,
+			blok: {
+				...mockPropsWithPageHeaderAndSectionNav.blok,
+				hidePreHeader: "true",
+			},
+		};
+
+		render(<InfoPage {...mockProps} />);
+
+		expect(mockedStoryblokComponent).toHaveBeenCalledWith(
+			expect.objectContaining({
+				preheading: undefined,
+			}),
+			{}
+		);
+	});
+
+	it("calls getPreheading when hidePreHeader is not 'true'", () => {
+		const mockProps = {
+			...mockPropsWithPageHeaderAndSectionNav,
+			blok: {
+				...mockPropsWithPageHeaderAndSectionNav.blok,
+				hidePreHeader: "false",
+			},
+		};
+
+		render(<InfoPage {...mockProps} />);
+
+		expect(mockedStoryblokComponent).toHaveBeenCalledWith(
+			expect.objectContaining({
+				preheading: expect.any(String),
+			}),
+			{}
+		);
+	});
 });

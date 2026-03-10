@@ -30,7 +30,8 @@ export const InfoPage = ({
 	slug,
 	pageType,
 }: InfoPageBlokProps): React.ReactElement => {
-	const preheading = getPreheading(tree, blok);
+	const preheading =
+		blok.hidePreHeader === "true" ? undefined : getPreheading(tree, blok);
 	return (
 		<div className={styles.infoPage}>
 			{blok.metadata &&
