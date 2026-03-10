@@ -1,4 +1,5 @@
 import { Then } from "@wdio/cucumber-framework";
+import { expect } from "expect-webdriverio";
 
 import { pause } from "@nice-digital/wdio-cucumber-steps/lib/support/action/pause.js";
 import { waitForDisplayed } from "@nice-digital/wdio-cucumber-steps/lib/support/action/waitForDisplayed.js";
@@ -165,3 +166,18 @@ Then(
 		await pause("2000");
 	}
 );
+Then(
+	/^I expect subscribe to update for primary care jotform Id to exist$/,
+	async () => {
+		const iframe = await $("#JotFormIFrame-232421799357869");
+		await iframe.waitForExist({ timeout: 20000 });
+		await iframe.scrollIntoView();
+		await expect(await $(iframe)).toBeDisplayed();
+	}
+);
+Then(/^I expect website feedback page jotform Id to exist$/, async () => {
+	const iframe = await $("#JotFormIFrame-222773673466870");
+	await iframe.waitForExist({ timeout: 20000 });
+	await iframe.scrollIntoView();
+	await expect(await $(iframe)).toBeDisplayed();
+});

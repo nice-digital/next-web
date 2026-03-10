@@ -1,24 +1,21 @@
 import { screen } from "@testing-library/react";
 
-import sampleDataWithMeta from "@/mockData/storyblok/formPageWithMeta.json";
-import sampleDataWithPageHeader from "@/mockData/storyblok/formPageWithPageHeader.json";
+import sampleDataNoMeta from "@/mockData/storyblok/formPageNoMeta.json"; //https://api.storyblok.com/v2/cdn/stories/unit-test-data/form-page-no-meta?resolve_links=url&token=ALPHA_PUBLIC&version=published
+import sampleDataWithPanel from "@/mockData/storyblok/formPageWithPanel.json"; //https://api.storyblok.com/v2/cdn/stories/unit-test-data/test-form-page?resolve_links=url&token=ALPHA_PUBLIC&version=published
 import { render } from "@/test-utils/rendering";
 import { FormPageStoryblok } from "@/types/storyblok";
 
 import { FormPage, type FormPageProps } from "./FormPage";
 
-const mockPageHeaderSectionAndPanel = sampleDataWithPageHeader.story.content;
+const mockFormPageWithPanel = sampleDataWithPanel.story.content;
+const mockFormPageNoMetaData = sampleDataNoMeta.story.content;
 
-const mockFormPageWithMetadata = sampleDataWithMeta.story.content;
-
-const mockPropsWithPageHeaderAndPanel: FormPageProps = {
-	blok: mockPageHeaderSectionAndPanel as FormPageStoryblok,
-	breadcrumbs: sampleDataWithPageHeader.breadcrumbs,
+const mockPropsWithPanel: FormPageProps = {
+	blok: mockFormPageWithPanel as FormPageStoryblok,
 };
 
-const mockPropsWithMetadata: FormPageProps = {
-	blok: mockFormPageWithMetadata as FormPageStoryblok,
-	breadcrumbs: sampleDataWithMeta.breadcrumbs,
+const mockPropsNoMetaData: FormPageProps = {
+	blok: mockFormPageNoMetaData as FormPageStoryblok,
 };
 
 describe("FormPage", () => {
@@ -27,15 +24,15 @@ describe("FormPage", () => {
 	});
 
 	it("renders all metadata StoryblokComponents if present", () => {
-		render(<FormPage {...mockPropsWithMetadata} />);
+		render(<FormPage {...mockPropsWithPanel} />);
 		expect(
-			screen.getByText(mockFormPageWithMetadata.metadata[0].component)
+			screen.getByText(mockFormPageWithPanel.metadata[0].component)
 		).toBeInTheDocument();
 	});
 
 	it("renders the Page Header through the StoryblokComponent if present", () => {
-		render(<FormPage {...mockPropsWithPageHeaderAndPanel} />);
-		const { component, title } = mockPageHeaderSectionAndPanel.header[0];
+		render(<FormPage {...mockPropsWithPanel} />);
+		const { component, title } = mockFormPageWithPanel.header[0];
 
 		expect(
 			screen.getByTestId(`storyblok-component-${component}`)
@@ -46,14 +43,13 @@ describe("FormPage", () => {
 		).toHaveTextContent(title);
 	});
 
-	// TODO: Add test coverage when NXT-501 is ready to implement on FormPage
-	xit("renders the Panel through the StoryblokComponent if present", () => {
-		// render(<FormPage {...mockPropsWithPageHeaderAndPanel} />);
-		// const { component } = mockPageHeaderSectionAndPanel.panel[0];
+	it("renders the Panel through the StoryblokComponent if present", () => {
+		render(<FormPage {...mockPropsWithPanel} />);
+		expect(screen.getByTestId("storyblok-component-panel")).toBeInTheDocument();
 	});
 
 	it("should render FormEmbed through the StoryblokComponent", () => {
-		render(<FormPage {...mockPropsWithPageHeaderAndPanel} />);
+		render(<FormPage {...mockPropsWithPanel} />);
 		expect(
 			screen.getByTestId("storyblok-component-formEmbed")
 		).toBeInTheDocument();
@@ -61,12 +57,12 @@ describe("FormPage", () => {
 
 	it("handles missing metadata gracefully", () => {
 		const blok = {
-			...mockPropsWithPageHeaderAndPanel.blok,
+			...mockPropsNoMetaData.blok,
 			metadata: undefined,
 		};
-		render(<FormPage {...mockPropsWithPageHeaderAndPanel} blok={blok} />);
+		render(<FormPage {...mockPropsNoMetaData} blok={blok} />);
 		expect(
-			screen.queryByText(mockFormPageWithMetadata.metadata[0].component)
+			screen.queryByText(mockFormPageWithPanel.metadata[0].component)
 		).not.toBeInTheDocument();
 		expect(
 			screen.getByTestId("storyblok-component-formEmbed")
@@ -74,7 +70,7 @@ describe("FormPage", () => {
 	});
 
 	it("renders content using nestedRichText through the StoryblokComponent", () => {
-		render(<FormPage {...mockPropsWithPageHeaderAndPanel} />);
+		render(<FormPage {...mockPropsWithPanel} />);
 		expect(
 			screen.getAllByTestId("storyblok-component-nestedRichText").length
 		).toBeGreaterThan(1);

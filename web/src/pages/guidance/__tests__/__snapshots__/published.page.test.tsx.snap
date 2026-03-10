@@ -157,6 +157,18 @@ exports[`/guidance/published should match the snapshot 1`] = `
               <a
                 aria-current="false"
                 class="horizontal-nav__link"
+                href="/guidance/deferred"
+              >
+                Deferred
+              </a>
+            </li>
+            <li
+              class="horizontal-nav__item"
+              data-component="horizontal-nav"
+            >
+              <a
+                aria-current="false"
+                class="horizontal-nav__link"
                 href="/guidance/awaiting-development"
               >
                 Awaiting development

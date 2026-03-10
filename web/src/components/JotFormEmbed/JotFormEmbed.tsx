@@ -8,12 +8,13 @@ import React, {
 } from "react";
 
 import { publicRuntimeConfig } from "@/config";
-import type { FormID } from "@/feeds/jotform/jotform";
 import { logger } from "@/logger";
 
 import styles from "./JotFormEmbed.module.scss";
 
 const jotFormBaseURL = publicRuntimeConfig.jotForm.baseURL;
+
+export type FormID = `${number}`;
 
 interface JotFormEmbedProps {
 	jotFormID: FormID;

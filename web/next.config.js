@@ -130,6 +130,12 @@ const nextConfig = {
 			},
 			{
 				source:
+					"/:productRoot(indicators|guidance)/:statusSlug(retired)/:path*",
+				destination:
+					"/indicators/retired/:path*?productRoot=:productRoot&statusSlug=:statusSlug",
+			},
+			{
+				source:
 					"/:productRoot(indicators|guidance|advice|process|corporate)/:path+",
 				destination: "/indicators/:path*?productRoot=:productRoot",
 			},
@@ -141,6 +147,8 @@ const nextConfig = {
 	},
 	async redirects() {
 		return [
+			// Redirects should be periodically rationalised and pruned. See comments highlighting go-live dates for redirect blocks
+			// Migration from Orchard to Storyblok 08/25
 			{
 				source:
 					"/about/what-we-do/our-programmes/nice-guidance/nice-about-technology-appraisal-guidance/technology-appraisal-and-highly-specialised-technologies-appeals/past-appeals-and-decisions",
@@ -158,8 +166,7 @@ const nextConfig = {
 			{
 				source:
 					"/about/what-we-do/our-programmes/nice-guidance/about-technology-appraisal-guidance/participation-in-clinical-trials-and-subsequent-access-to-drugs-appraised-by-nice-a-statement-on-the-applicability-of-about-technology-appraisal-guidance",
-				destination:
-					"/position-statements/participation-in-clinical-trials-and-subsequent-access-to-drugs-appraised-by-nice-a-statement-on-the-applicability-of-technology-appraisal-guidance",
+				destination: "/corporate/ecd17/chapter/position-statement",
 				permanent: true,
 			},
 			{
@@ -256,8 +263,7 @@ const nextConfig = {
 			{
 				source:
 					"/about/what-we-do/our-programmes/nice-guidance/about-technology-appraisal-guidance/biosimilar-technologies-nice-position-statement-information-for-the-public",
-				destination:
-					"/position-statements/biosimilar-technologies-nice-position-statement-information-for-the-public",
+				destination: "/corporate/ecd14/informationforpublic",
 				permanent: true,
 			},
 			{
@@ -277,8 +283,7 @@ const nextConfig = {
 			{
 				source:
 					"/about/what-we-do/our-programmes/nice-guidance/technology-appraisal-guidance/biosimilar-technologies-nice-position-statement-information-for-the-public",
-				destination:
-					"/position-statements/biosimilar-technologies-nice-position-statement-information-for-the-public",
+				destination: "/corporate/ecd14/informationforpublic",
 				permanent: true,
 			},
 			{
@@ -311,8 +316,7 @@ const nextConfig = {
 			{
 				source:
 					"/about/what-we-do/our-programmes/nice-guidance/about-technology-appraisal-guidance/chemotherapy-dose-standardisation-nice-position-statement",
-				destination:
-					"/position-statements/chemotherapy-dose-standardisation-nice-position-statement",
+				destination: "/corporate/ecd15/chapter/position-statement",
 				permanent: true,
 			},
 			{
@@ -346,8 +350,7 @@ const nextConfig = {
 			{
 				source:
 					"/about/what-we-do/our-programmes/nice-guidance/technology-appraisal-guidance/chemotherapy-dose-standardisation-nice-position-statement",
-				destination:
-					"/position-statements/chemotherapy-dose-standardisation-nice-position-statement",
+				destination: "/corporate/ecd15/chapter/position-statement",
 				permanent: true,
 			},
 			{
@@ -367,8 +370,7 @@ const nextConfig = {
 			{
 				source:
 					"/about/what-we-do/our-programmes/nice-guidance/about-technology-appraisal-guidance/biosimilar-technologies-nice-position-statement",
-				destination:
-					"/position-statements/biosimilar-technologies-nice-position-statement",
+				destination: "/corporate/ecd14/chapter/position-statement",
 				permanent: true,
 			},
 			{
@@ -409,8 +411,7 @@ const nextConfig = {
 			{
 				source:
 					"/about/what-we-do/our-programmes/nice-guidance/technology-appraisal-guidance/biosimilar-technologies-nice-position-statement",
-				destination:
-					"/position-statements/biosimilar-technologies-nice-position-statement",
+				destination: "/corporate/ecd14/chapter/position-statement",
 				permanent: true,
 			},
 			{
@@ -492,7 +493,8 @@ const nextConfig = {
 			{
 				source:
 					"/about/what-we-do/our-programmes/nice-guidance/nice-interventional-procedures-guidance/ip-register-an-interest",
-				destination: "/forms/interventional-procedures-register-an-interest",
+				destination:
+					"/what-nice-does/our-guidance/about-interventional-procedures-guidance/interventional-procedures-register-an-interest",
 				permanent: true,
 			},
 			{
@@ -505,7 +507,7 @@ const nextConfig = {
 			{
 				source:
 					"/about/what-we-do/our-programmes/nice-guidance/nice-interventional-procedures-guidance/ip-notification-form",
-				destination: "/forms/interventional-procedures-notification",
+				destination: "/get-involved/interventional-procedures-notification",
 				permanent: true,
 			},
 			{
@@ -676,8 +678,7 @@ const nextConfig = {
 			{
 				source:
 					"/about/what-we-do/our-programmes/nice-guidance/about-technology-appraisal-guidance/eq-5d-5l",
-				destination:
-					"/position-statements/position-statement-on-use-of-the-eq-5d-5l-value-set-for-england-updated-october-2019",
+				destination: "/corporate/ecd16/chapter/introduction",
 				permanent: true,
 			},
 			{
@@ -1610,8 +1611,7 @@ const nextConfig = {
 			{
 				source:
 					"/about/what-we-do/our-research-work/use-of-ai-in-evidence-generation--nice-position-statement",
-				destination:
-					"/position-statements/use-of-ai-in-evidence-generation-nice-position-statement",
+				destination: "/corporate/ecd11",
 				permanent: true,
 			},
 			{
@@ -2177,7 +2177,8 @@ const nextConfig = {
 			},
 			{
 				source: "/about/nice-communities/generalpractice/reference-panel",
-				destination: "/forms/subscribe-to-our-gp-reference-panel",
+				destination:
+					"/implementing-nice-guidance/subscribe-to-our-gp-reference-panel",
 				permanent: true,
 			},
 			{
@@ -2288,7 +2289,8 @@ const nextConfig = {
 			},
 			{
 				source: "/about/what-we-do/life-sciences/contact-us-form",
-				destination: "/forms/life-sciences-contact-us",
+				destination:
+					"/what-nice-does/life-sciences-how-to-get-your-product-to-market/nice-advice-service/nice-advice-contact-us",
 				permanent: true,
 			},
 			{
@@ -2447,8 +2449,7 @@ const nextConfig = {
 			{
 				source:
 					"/get-involved/stakeholder-registration/tobacco-industry-organisations",
-				destination:
-					"/position-statements/position-statement-on-engagement-with-tobacco-industry-organisations",
+				destination: "/corporate/ecd13/chapter/position-statement",
 				permanent: true,
 			},
 			{
@@ -2799,6 +2800,12 @@ const nextConfig = {
 				permanent: true,
 			},
 			{
+				source:
+					"/about/what-we-do/our-programmes/nice-guidance/technology-appraisal-guidance/eq-5d-5l",
+				destination: "/corporate/ecd16/chapter/introduction",
+				permanent: true,
+			},
+			{
 				source: "/about/who-we-are/our-vision",
 				destination: "/about-us",
 				permanent: true,
@@ -2890,7 +2897,7 @@ const nextConfig = {
 			},
 			{
 				source: "/re-using-our-content/uk-open-content-licence",
-				destination: "/forms/use-of-nice-content-in-the-uk",
+				destination: "/reusing-our-content/use-of-nice-content-in-the-uk",
 				permanent: true,
 			},
 			{
@@ -2927,7 +2934,8 @@ const nextConfig = {
 			},
 			{
 				source: "/forms/life-sciences-contact-us",
-				destination: "/forms/nice-advice-contact-us",
+				destination:
+					"/what-nice-does/life-sciences-how-to-get-your-product-to-market/nice-advice-service/nice-advice-contact-us",
 				permanent: true,
 			},
 			{
@@ -3032,7 +3040,7 @@ const nextConfig = {
 			},
 			{
 				source: "/leave-feedback",
-				destination: "/forms/leave-feedback",
+				destination: "/website-feedback",
 				permanent: true,
 			},
 			{
@@ -3059,6 +3067,187 @@ const nextConfig = {
 			{
 				source: "/aac",
 				destination: "https://www.england.nhs.uk/aac/about-us/who-we-are/",
+				permanent: true,
+			},
+			// Position statements into guidance 12/25
+			{
+				source:
+					"/position-statements/use-of-ai-in-evidence-generation-nice-position-statement",
+				destination: "/corporate/ecd11",
+				permanent: true,
+			},
+			{
+				source:
+					"/position-statements/position-statement-on-engagement-with-tobacco-industry-organisations",
+				destination: "/corporate/ecd13/chapter/position-statement",
+				permanent: true,
+			},
+			{
+				source:
+					"/position-statements/biosimilar-technologies-nice-position-statement",
+				destination: "/corporate/ecd14/chapter/position-statement",
+				permanent: true,
+			},
+			{
+				source:
+					"/position-statements/biosimilar-technologies-nice-position-statement-information-for-the-public",
+				destination: "/corporate/ecd14/informationforpublic",
+				permanent: true,
+			},
+			{
+				source:
+					"/position-statements/chemotherapy-dose-standardisation-nice-position-statement",
+				destination: "/corporate/ecd15/chapter/position-statement",
+				permanent: true,
+			},
+			{
+				source:
+					"/position-statements/position-statement-on-use-of-the-eq-5d-5l-value-set-for-england-updated-october-2019",
+				destination: "/corporate/ecd16/chapter/introduction",
+				permanent: true,
+			},
+			{
+				source:
+					"/position-statements/participation-in-clinical-trials-and-subsequent-access-to-drugs-appraised-by-nice-a-statement-on-the-applicability-of-technology-appraisal-guidance",
+				destination: "/corporate/ecd17/chapter/position-statement",
+				permanent: true,
+			},
+			// Jotform pages migration to Storyblok 01/26
+			{
+				source: "/forms/candidates-for-modular-updates",
+				destination:
+					"/what-nice-does/our-guidance/candidates-for-modular-updates",
+				permanent: true,
+			},
+			{
+				source: "/forms/help-implement-nice-guidance",
+				destination:
+					"/get-involved/adoption-and-impact-reference-panel-membership",
+				permanent: true,
+			},
+			{
+				source: "/forms/interventional-procedures-notification",
+				destination: "/get-involved/interventional-procedures-notification",
+				permanent: true,
+			},
+			{
+				source: "/forms/interventional-procedures-register-an-interest",
+				destination:
+					"/what-nice-does/our-guidance/about-interventional-procedures-guidance/interventional-procedures-register-an-interest",
+				permanent: true,
+			},
+			{
+				source: "/forms/leave-feedback",
+				destination: "/website-feedback",
+				permanent: true,
+			},
+			{
+				source: "/forms/nice-advice-contact-us",
+				destination:
+					"/what-nice-does/life-sciences-how-to-get-your-product-to-market/nice-advice-service/nice-advice-contact-us",
+				permanent: true,
+			},
+			{
+				source: "/forms/nice-content-assurance-service",
+				destination: "/reusing-our-content/nice-content-assurance-service",
+				permanent: true,
+			},
+			{
+				source:
+					"/forms/nice-health-technology-assessment-training-registration",
+				destination:
+					"/get-involved/nice-training-and-development-opportunities/nice-health-technology-assessment-training-registration",
+				permanent: true,
+			},
+			{
+				source: "/forms/nice-international-enquiry-form",
+				destination:
+					"/what-nice-does/nice-international/nice-international-enquiry",
+				permanent: true,
+			},
+			{
+				source:
+					"/forms/permission-request-form-for-international-use-of-nice-content",
+				destination:
+					"/reusing-our-content/permission-request-for-international-use-of-nice-content",
+				permanent: true,
+			},
+			{
+				source:
+					"/forms/permission-to-use-nice-content-for-artificial-intelligence-ai-purposes",
+				destination:
+					"/reusing-our-content/use-of-our-content-for-ai-purposes/permission-to-use-nice-content-for-ai-purposes",
+				permanent: true,
+			},
+			{
+				source: "/forms/public-involvement-programme-expert-panel-application",
+				destination:
+					"/get-involved/people-and-communities/people-and-communities-network-application",
+				permanent: true,
+			},
+			{
+				source: "/forms/request-a-speaker",
+				destination: "/events/speaker-request",
+				permanent: true,
+			},
+			{
+				source: "/forms/request-for-prioritisation-clarification",
+				destination:
+					"/what-nice-does/our-guidance/prioritising-our-guidance-topics/our-prioritisation-decisions/request-for-prioritisation-clarification",
+				permanent: true,
+			},
+			{
+				source: "/forms/subscribe-to-nice-news-for-health-and-social-care",
+				destination:
+					"/nice-newsletters-and-alerts/subscribe-to-nice-news-for-health-and-social-care",
+				permanent: true,
+			},
+			{
+				source: "/forms/subscribe-to-nice-news-for-life-sciences",
+				destination:
+					"/nice-newsletters-and-alerts/subscribe-to-nice-news-for-life-sciences",
+				permanent: true,
+			},
+			{
+				source: "/forms/subscribe-to-nice-news-international",
+				destination:
+					"/nice-newsletters-and-alerts/subscribe-to-nice-news-international",
+				permanent: true,
+			},
+			{
+				source: "/forms/subscribe-to-our-gp-reference-panel",
+				destination:
+					"/implementing-nice-guidance/subscribe-to-our-gp-reference-panel",
+				permanent: true,
+			},
+			{
+				source: "/forms/subscribe-to-update-for-primary-care",
+				destination:
+					"/nice-newsletters-and-alerts/subscribe-to-update-for-primary-care",
+				permanent: true,
+			},
+			{
+				source: "/forms/syndication-service-application-form",
+				destination: "/reusing-our-content/syndication-service-application",
+				permanent: true,
+			},
+			{
+				source: "/forms/topic-suggestion",
+				destination:
+					"/what-nice-does/our-guidance/prioritising-our-guidance-topics/topic-suggestion",
+				permanent: true,
+			},
+			{
+				source: "/forms/use-of-nice-content-in-the-uk",
+				destination: "/reusing-our-content/use-of-nice-content-in-the-uk",
+				permanent: true,
+			},
+			// Health Inequalities restructure 01/26
+			{
+				source:
+					"/implementing-nice-guidance/cost-saving-resource-planning-and-audit/nice-and-health-inequalities/:slug(what-are-health-inequalites|approaches-to-addressing-health-inequalities|nice-and-core20plus5-children-and-young-people(?:/.*)?|nice-and-core20plus5-adults(?:/.*)?|nice-and-the-adapted-labonte-model(?:/.*)?|nice-and-the-marmot-review(?:/.*)?)",
+				destination:
+					"/implementing-nice-guidance/cost-saving-resource-planning-and-audit/nice-and-health-inequalities/health-inequalities-the-wider-picture",
 				permanent: true,
 			},
 		];

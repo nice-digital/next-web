@@ -63,7 +63,11 @@
 
     @container testimonial (min-width: #{media-queries.$sm}) {
       height: 90px;
-      width: 90px;
+      min-width: 90px;
+
+      &__details {
+        margin-left: utils.rem(spacing.$medium);
+      }
     }
 
     @container testimonial (min-width: #{media-queries.$md}) {

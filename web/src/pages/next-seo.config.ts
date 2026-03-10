@@ -61,6 +61,12 @@ export const getDefaultSeoConfig = (pathname: string): NextSeoProps => ({
 			sizes: "32x32",
 			href: publicRuntimeConfig.publicBaseURL + "/icons/icon-32x32.png",
 		},
+		{
+			rel: "icon",
+			type: "image/png",
+			sizes: "48x48",
+			href: publicRuntimeConfig.publicBaseURL + "/icons/icon-48x48.png",
+		},
 		// Apple icons
 		{
 			// iPhone (X/Plus)
