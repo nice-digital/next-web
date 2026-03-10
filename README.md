@@ -19,11 +19,11 @@
 
 The repository is set up as a monorepo. That is, there are various sub folders providing different parts of the project e.g. the web app and functional tests:
 
-| Folder                      | Purpose                                |
-| --------------------------- | ---------------------------------------|
-| [web](web#readme)           | NextJS web app                         |
-| [aws](aws#readme)           | AWS ECS hosting for the NextJS web app |
-| [api](api#readme)           | Ocelot Api Cache                       |
+| Folder            | Purpose                                |
+| ----------------- | -------------------------------------- |
+| [web](web#readme) | NextJS web app                         |
+| [aws](aws#readme) | AWS ECS hosting for the NextJS web app |
+| [api](api#readme) | Ocelot Api Cache                       |
 
 ## Stack
 
@@ -90,3 +90,36 @@ Ocelot has been added as an alternative to Storybloks own inbuilt caching. To se
 5. Open next-web/api/NICE.NextWeb.API.sln in Visual Studio and Run. You should be presented with a web page that says 'Not found'.
 6. Ensure that in the Storyblok's .env file STORYBLOK_OCELOT_ENDPOINT correctly matches your local Ocelot endpoint URL and has a suffix of /storyblok. i.e. `STORYBLOK_OCELOT_ENDPOINT=http://localhost:45127/storyblok`
 7. Run Storyblok, it should now use Ocelot for it's caching.
+
+## TRAC Integration
+
+We have integrated Trac job boards with Nextweb using Storyblok. The integration allows the web content team to embed and render Trac jobs directly on the website.
+
+### Trac Component in Storyblok
+
+A Trac Embed component is available in the Storyblok space. This component is used to render a specific Trac job board on a page.
+
+### Component Fields
+
+Job Board ID
+
+1.  Required field.
+2.  This value populates the data-JobsBoardID attribute in the Trac embed script within the Nextweb TracEmbed component.
+    Example: 10000 can be used initially to test the integration with sample vacancies.
+
+Integrity Key
+
+1.  This value ensures the security and integrity of the Trac JavaScript file.
+2.  It is the same across all Trac embed scripts referencing the same version of the Trac script.
+3.  Whenever the version of the Trac script changes, the integrity key in Storyblok must also be updated.
+
+### Script
+
+We currently use the following script to render Trac job boards:
+
+`<script src="https://feeds.trac.jobs/js/v18/EmbeddedJobsBoard.js" integrity="<INTEGRITY_KEY>"></script>`
+
+Notes:
+
+- If the integrity key changes, the version in the script URL may need to be updated.
+- The data-JobsBoardID attribute is dynamically populated from the Storyblok Trac component.
