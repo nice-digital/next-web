@@ -59,13 +59,15 @@ export const StoryblokTracEmbed: React.FC<TracEmbedProps> = ({ blok }) => {
 			window.removeEventListener("hashchange", handleHashChange);
 		};
 	}, []);
-
 	if (!version || !integrityKey || !jobBoardsID) {
 		return <div>Invalid trac configuration</div>;
 	}
 
 	return (
 		<div>
+			<p>version: {version}</p>
+			<p>integrityKey: {integrityKey}</p>
+			<p>jobBoardsID: {jobBoardsID}</p>
 			<div
 				ref={tracRef}
 				aria-live="polite"
