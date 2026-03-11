@@ -65,9 +65,6 @@ export const StoryblokTracEmbed: React.FC<TracEmbedProps> = ({ blok }) => {
 
 	return (
 		<div>
-			<p>version: {version}</p>
-			<p>integrityKey: {integrityKey}</p>
-			<p>jobBoardsID: {jobBoardsID}</p>
 			<div
 				ref={tracRef}
 				aria-live="polite"
