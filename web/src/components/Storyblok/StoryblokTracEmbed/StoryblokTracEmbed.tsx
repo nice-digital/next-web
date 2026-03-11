@@ -5,12 +5,13 @@ import { TracEmbedStoryblok } from "@/types/storyblok";
 export interface TracEmbedProps {
 	blok: TracEmbedStoryblok;
 }
-const version = process.env.TRAC_VERSION;
-const integrityKey = process.env.TRAC_INTEGRITY_KEY || "";
-
-const tracScript = `https://feeds.trac.jobs/js/${version}/EmbeddedJobsBoard.js`;
 
 export const StoryblokTracEmbed: React.FC<TracEmbedProps> = ({ blok }) => {
+	const version = process.env.TRAC_VERSION;
+	const integrityKey = process.env.TRAC_INTEGRITY_KEY || "";
+
+	const tracScript = `https://feeds.trac.jobs/js/${version}/EmbeddedJobsBoard.js`;
+
 	const tracRef = useRef<HTMLDivElement | null>(null);
 
 	const { jobBoardsID } = blok;
