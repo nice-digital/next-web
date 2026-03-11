@@ -1,5 +1,6 @@
 import React, { useEffect, useRef } from "react";
 
+import { publicRuntimeConfig } from "@/config";
 import { TracEmbedStoryblok } from "@/types/storyblok";
 
 export interface TracEmbedProps {
@@ -7,9 +8,8 @@ export interface TracEmbedProps {
 }
 
 export const StoryblokTracEmbed: React.FC<TracEmbedProps> = ({ blok }) => {
-	const version = process.env.TRAC_VERSION;
-	const integrityKey = process.env.TRAC_INTEGRITY_KEY || "";
-
+	const version = publicRuntimeConfig.trac.version;
+	const integrityKey = publicRuntimeConfig.trac.integrityKey;
 	const tracScript = `https://feeds.trac.jobs/js/${version}/EmbeddedJobsBoard.js`;
 
 	const tracRef = useRef<HTMLDivElement | null>(null);
@@ -40,7 +40,7 @@ export const StoryblokTracEmbed: React.FC<TracEmbedProps> = ({ blok }) => {
 		script.setAttribute("data-IncludeCSS", "false");
 		script.setAttribute("data-testid", "trac-feed-script");
 		tracRef.current?.appendChild(script);
-	}, [jobBoardsID]);
+	}, [jobBoardsID, integrityKey, tracScript]);
 
 	useEffect(() => {
 		const handleHashChange = () => {
