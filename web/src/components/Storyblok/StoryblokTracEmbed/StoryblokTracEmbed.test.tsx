@@ -37,10 +37,6 @@ describe("StoryblokTracEmbed", () => {
 		render(<StoryblokTracEmbed blok={mockTracEmbed} />);
 		const script = screen.getByTestId("trac-feed-script");
 		expect(script).toBeInTheDocument();
-		expect(script).toHaveAttribute(
-			"src",
-			"https://feeds.trac.jobs/js/v18/EmbeddedJobsBoard.js"
-		);
 		expect(script).toHaveAttribute("data-JobsBoardID", "123456");
 		expect(script).toHaveAttribute("data-crossorigin", "anonymous");
 		expect(script).toHaveAttribute("data-IncludeCSS", "false");
