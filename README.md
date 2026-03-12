@@ -125,9 +125,12 @@ Update your local.yml
 Add the following configuration to your local.yml to ensure the Trac jobs page renders correctly:
 
 ```yaml
+public:
+# ... more config here
 trac:
   version: v18
   integrityKey: <VALUE> Replace it with correct value
+# ... more config here
 ```
 
 ### Script
