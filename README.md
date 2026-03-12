@@ -107,11 +107,26 @@ Job Board ID
 2.  This value populates the data-JobsBoardID attribute in the Trac embed script within the Nextweb TracEmbed component.
     Example: 10000 can be used initially to test the integration with sample vacancies.
 
+### Environment Variables Setup
+
+Version
+
+1. This is the current version of the JavaScript file referenced in the script URL. At the moment, it is v18.
+2. If the version changes in the future, you must update the value in local.yml, TeamCity, and Octopus.
+
 Integrity Key
 
-1.  This value ensures the security and integrity of the Trac JavaScript file.
-2.  It is the same across all Trac embed scripts referencing the same version of the Trac script.
-3.  Whenever the version of the Trac script changes, the integrity key in Storyblok must also be updated.
+1. The integrity key ensures the security and integrity of the Trac JavaScript file.
+2. This value remains the same across all Trac embed scripts that reference the same version of the Trac script.
+3. Whenever the Trac script version is updated, the integrity key must also be updated in local.yml, TeamCity, and Octopus.
+
+Update your local.yml
+
+Add the following configuration to your local.yml to ensure the Trac jobs page renders correctly:
+
+`trac:
+    version: v18
+    integrityKey:<VALUE> Replace it with correct value`
 
 ### Script
 
