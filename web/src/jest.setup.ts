@@ -3,9 +3,6 @@ import { createElement } from "react";
 
 import { addDefaultJSONFeedMocks, axiosJSONMock } from "@/test-utils/feeds";
 
-process.env.TRAC_VERSION = "v18";
-process.env.TRAC_INTEGRITY_KEY = "sha384-abc123";
-
 expect.extend({
 	toHaveTextContentIgnoreTags(received, expected) {
 		const strippedReceived = received.replace(/(<([^>]+)>)/gi, "");
