@@ -1,8 +1,13 @@
 import { render, screen, fireEvent } from "@testing-library/react";
 
+import { publicRuntimeConfig } from "@/config";
 import { TracEmbedStoryblok } from "@/types/storyblok";
 
 import { StoryblokTracEmbed } from "./StoryblokTracEmbed";
+
+type Writable<T> = {
+	-readonly [K in keyof T]: Writable<T[K]>;
+};
 
 const mockTracEmbed: TracEmbedStoryblok = {
 	jobBoardsID: "123456",
@@ -10,20 +15,22 @@ const mockTracEmbed: TracEmbedStoryblok = {
 	_uid: "",
 };
 
-describe("StoryblokTracEmbed", () => {
-	const ORIGINAL_ENV = process.env;
+jest.mock("@/config", () => ({
+	publicRuntimeConfig: {
+		trac: {
+			version: "v18",
+			integrityKey: "integrityKey123",
+		},
+	},
+}));
 
+describe("StoryblokTracEmbed", () => {
 	beforeEach(() => {
 		window.dataLayer = { push: jest.fn() } as unknown as DataLayerEntry[];
-		process.env = { ...ORIGINAL_ENV };
 	});
 
 	afterEach(() => {
 		jest.resetAllMocks();
-	});
-
-	afterAll(() => {
-		process.env = ORIGINAL_ENV;
 	});
 
 	it("should render Trac Embed div", () => {
@@ -76,17 +83,22 @@ describe("StoryblokTracEmbed", () => {
 			expect.any(Function)
 		);
 	});
-	it("should return invalid trac configuration message if the version undefined", () => {
-		const originalEnv = process.env;
 
-		process.env = { ...originalEnv };
-		delete process.env.TRAC_VERSION;
-		delete process.env.TRAC_INTEGRITY_KEY;
+	it("should return invalid trac configuration message if version undefined", () => {
+		const config = publicRuntimeConfig as Writable<typeof publicRuntimeConfig>;
+		config.trac.version = undefined as unknown as string;
 
 		render(<StoryblokTracEmbed blok={mockTracEmbed} />);
 
 		expect(screen.getByText("Invalid trac configuration")).toBeInTheDocument();
+	});
 
-		process.env = originalEnv;
+	it("should return invalid trac configuration message if integrity key undefined", () => {
+		const config = publicRuntimeConfig as Writable<typeof publicRuntimeConfig>;
+		config.trac.integrityKey = undefined as unknown as string;
+
+		render(<StoryblokTracEmbed blok={mockTracEmbed} />);
+
+		expect(screen.getByText("Invalid trac configuration")).toBeInTheDocument();
 	});
 });
