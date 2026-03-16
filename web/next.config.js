@@ -2222,7 +2222,7 @@ const nextConfig = {
 			},
 			{
 				source: "/about/what-we-do/into-practice/into-practice-guide",
-				destination: "/what-nice-does",
+				destination: "/implementing-nice-guidance/into-practice-resources",
 				permanent: true,
 			},
 			{
@@ -2599,8 +2599,7 @@ const nextConfig = {
 			},
 			{
 				source: "/about/what-we-do/nice-and-health-inequalities",
-				destination:
-					"/implementing-nice-guidance/cost-saving-resource-planning-and-audit/nice-and-health-inequalities",
+				destination: "/implementing-nice-guidance/nice-and-health-inequalities",
 				permanent: true,
 			},
 			{
@@ -3247,7 +3246,34 @@ const nextConfig = {
 				source:
 					"/implementing-nice-guidance/cost-saving-resource-planning-and-audit/nice-and-health-inequalities/:slug(what-are-health-inequalites|approaches-to-addressing-health-inequalities|nice-and-core20plus5-children-and-young-people(?:/.*)?|nice-and-core20plus5-adults(?:/.*)?|nice-and-the-adapted-labonte-model(?:/.*)?|nice-and-the-marmot-review(?:/.*)?)",
 				destination:
+					"/implementing-nice-guidance/nice-and-health-inequalities/why-address-health-inequalities",
+				permanent: true,
+			},
+			{
+				source:
+					"/implementing-nice-guidance/cost-saving-resource-planning-and-audit/nice-and-health-inequalities/using-our-recommendations-cardiovascular-disease",
+				destination:
+					"/implementing-nice-guidance/nice-and-health-inequalities/using-our-recommendations-cardiovascular-disease",
+				permanent: true,
+			},
+			{
+				source:
+					"/implementing-nice-guidance/cost-saving-resource-planning-and-audit/nice-and-health-inequalities/using-our-recommendations-maternity-and-neonatal-health",
+				destination:
+					"/implementing-nice-guidance/nice-and-health-inequalities/using-our-recommendations-maternity-and-neonatal-health",
+				permanent: true,
+			},
+			{
+				source:
 					"/implementing-nice-guidance/cost-saving-resource-planning-and-audit/nice-and-health-inequalities/health-inequalities-the-wider-picture",
+				destination:
+					"/implementing-nice-guidance/nice-and-health-inequalities/why-address-health-inequalities",
+				permanent: true,
+			},
+			{
+				source:
+					"/implementing-nice-guidance/cost-saving-resource-planning-and-audit/nice-and-health-inequalities",
+				destination: "/implementing-nice-guidance/nice-and-health-inequalities",
 				permanent: true,
 			},
 		];

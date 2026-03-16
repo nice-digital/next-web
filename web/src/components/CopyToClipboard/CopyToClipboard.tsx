@@ -113,7 +113,7 @@ export const CopyToClipboard: FC<CopyToClipboardProps> = ({
 			</Button>
 			{success === true ? (
 				<Alert type="success">
-					<p role="alert" aria-live="assertive" aria-atomic="true">
+					<p>
 						Results copied to the clipboard, paste into excel to see the
 						results.
 					</p>
@@ -123,9 +123,7 @@ export const CopyToClipboard: FC<CopyToClipboardProps> = ({
 				</Alert>
 			) : success === false ? (
 				<Alert type="error">
-					<p role="alert" aria-live="assertive" aria-atomic="true">
-						Sorry, there was an error copying to the clipboard
-					</p>
+					<p>Sorry, there was an error copying to the clipboard</p>
 					<Button variant="inverse" onClick={dismissClickHandler}>
 						Dismiss message
 					</Button>
