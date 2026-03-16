@@ -92,12 +92,14 @@ describe("CopyToClipboard", () => {
 
 			userEvent.click(screen.getByText("Copy to clipboard"));
 
-			const successMessage = await screen.findByText(
-				"Results copied to the clipboard, paste into excel to see the results."
-			);
+			const successMessage = await screen.findByRole("alert");
 
 			expect(successMessage).toBeInTheDocument();
-			expect(successMessage).toHaveProperty("tagName", "P");
+			expect(successMessage).toHaveTextContent(
+				"Results copied to the clipboard, paste into excel to see the results."
+			);
+			expect(successMessage).toHaveProperty("tagName", "DIV");
+			expect(successMessage).toHaveAttribute("role", "alert");
 		});
 
 		it("should dismiss success message on dismiss button click", async () => {
@@ -111,19 +113,12 @@ describe("CopyToClipboard", () => {
 
 			userEvent.click(screen.getByText("Copy to clipboard"));
 
-			const successMessage = await screen.findByText(
-				"Results copied to the clipboard, paste into excel to see the results."
-			);
-			expect(successMessage).toBeInTheDocument();
+			expect(await screen.findByRole("alert")).toBeInTheDocument();
 
 			userEvent.click(screen.getByText("Dismiss message"));
 
-			await waitFor(() => {
-				expect(
-					screen.queryByText(
-						"Results copied to the clipboard, paste into excel to see the results."
-					)
-				).toBeNull();
+			await waitFor(async () => {
+				expect(screen.queryByRole("alert")).toBeNull();
 			});
 		});
 
@@ -170,15 +165,14 @@ describe("CopyToClipboard", () => {
 
 			userEvent.click(screen.getByText("Copy to clipboard"));
 
-			const errorMessage = await screen.findByText(
-				"Sorry, there was an error copying to the clipboard"
-			);
+			const errorMessage = await screen.findByRole("alert");
 
 			expect(errorMessage).toBeInTheDocument();
 			expect(errorMessage).toHaveTextContent(
 				"Sorry, there was an error copying to the clipboard"
 			);
-			expect(errorMessage).toHaveProperty("tagName", "P");
+			expect(errorMessage).toHaveProperty("tagName", "DIV");
+			expect(errorMessage).toHaveAttribute("role", "alert");
 		});
 
 		it("should display error message if writing to clipboard fails", async () => {
@@ -201,11 +195,11 @@ describe("CopyToClipboard", () => {
 
 			userEvent.click(screen.getByText("Copy to clipboard"));
 
-			const errorMessage = await screen.findByText(
+			const errorMessage = await screen.findByRole("alert");
+
+			expect(errorMessage).toHaveTextContent(
 				"Sorry, there was an error copying to the clipboard"
 			);
-
-			expect(errorMessage).toBeInTheDocument();
 		});
 	});
 });
