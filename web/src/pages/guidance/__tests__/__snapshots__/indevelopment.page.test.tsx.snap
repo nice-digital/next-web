@@ -428,165 +428,6 @@ exports[`/guidance/indevelopment should match the snapshot 1`] = `
                       class="filter-group__heading"
                     >
                       <button
-                        aria-controls="group-nai"
-                        aria-expanded="true"
-                        type="button"
-                      >
-                        <svg
-                          aria-hidden="true"
-                          class="filter-group__heading-icon filter-group__heading-icon--expanded"
-                          fill="none"
-                          focusable="false"
-                          height="1em"
-                          viewBox="0 0 512 512"
-                          width="1em"
-                          xmlns="http://www.w3.org/2000/svg"
-                        >
-                          <path
-                            d="M478.152 174c0 10.091-3.525 18.661-10.576 25.712l-186 186c-7.243 7.243-15.909 10.864-26 10.864-10.283 0-18.853-3.621-25.712-10.864l-186-186C36.621 192.853 33 184.283 33 174c0-10.091 3.621-18.757 10.864-26L65 126.576C72.424 119.525 81.09 116 91 116c10.091 0 18.661 3.525 25.712 10.576L255.576 265.44 394.44 126.576c7.051-7.051 15.621-10.576 25.712-10.576 9.909 0 18.576 3.525 26 10.576L467.576 148c7.051 7.424 10.576 16.091 10.576 26Z"
-                            fill="currentColor"
-                          />
-                        </svg>
-                        <span
-                          id="group-heading-nai"
-                        >
-                          Area of interest
-                           
-                        </span>
-                      </button>
-                    </h3>
-                    <fieldset
-                      aria-hidden="false"
-                      class="filter-group__options"
-                      id="group-nai"
-                    >
-                      <legend>
-                        Area of interest
-                      </legend>
-                      <label
-                        class="filter-option"
-                        data-component="filter-option"
-                        for="filter_nai_antimicrobial-prescribing"
-                      >
-                        <input
-                          id="filter_nai_antimicrobial-prescribing"
-                          name="nai"
-                          title="Area of interest - Antimicrobial prescribing (4)"
-                          type="checkbox"
-                          value="Antimicrobial prescribing"
-                        />
-                        <span
-                          class="filter-option__text"
-                        >
-                          Antimicrobial prescribing (4)
-                        </span>
-                      </label>
-                      <label
-                        class="filter-option"
-                        data-component="filter-option"
-                        for="filter_nai_covid-19"
-                      >
-                        <input
-                          id="filter_nai_covid-19"
-                          name="nai"
-                          title="Area of interest - COVID-19 (2)"
-                          type="checkbox"
-                          value="COVID-19"
-                        />
-                        <span
-                          class="filter-option__text"
-                        >
-                          COVID-19 (2)
-                        </span>
-                      </label>
-                    </fieldset>
-                  </div>
-                  <div
-                    class="filter-group"
-                  >
-                    <h3
-                      class="filter-group__heading"
-                    >
-                      <button
-                        aria-controls="group-ndt"
-                        aria-expanded="true"
-                        type="button"
-                      >
-                        <svg
-                          aria-hidden="true"
-                          class="filter-group__heading-icon filter-group__heading-icon--expanded"
-                          fill="none"
-                          focusable="false"
-                          height="1em"
-                          viewBox="0 0 512 512"
-                          width="1em"
-                          xmlns="http://www.w3.org/2000/svg"
-                        >
-                          <path
-                            d="M478.152 174c0 10.091-3.525 18.661-10.576 25.712l-186 186c-7.243 7.243-15.909 10.864-26 10.864-10.283 0-18.853-3.621-25.712-10.864l-186-186C36.621 192.853 33 184.283 33 174c0-10.091 3.621-18.757 10.864-26L65 126.576C72.424 119.525 81.09 116 91 116c10.091 0 18.661 3.525 25.712 10.576L255.576 265.44 394.44 126.576c7.051-7.051 15.621-10.576 25.712-10.576 9.909 0 18.576 3.525 26 10.576L467.576 148c7.051 7.424 10.576 16.091 10.576 26Z"
-                            fill="currentColor"
-                          />
-                        </svg>
-                        <span
-                          id="group-heading-ndt"
-                        >
-                          Type
-                           
-                        </span>
-                        <span
-                          class="filter-group__count"
-                        >
-                          <span
-                            class="visually-hidden"
-                          >
-                            (
-                          </span>
-                          1
-                           selected
-                          <span
-                            class="visually-hidden"
-                          >
-                            )
-                          </span>
-                        </span>
-                      </button>
-                    </h3>
-                    <fieldset
-                      aria-hidden="false"
-                      class="filter-group__options"
-                      id="group-ndt"
-                    >
-                      <legend>
-                        Type
-                      </legend>
-                      <label
-                        class="filter-option"
-                        data-component="filter-option"
-                        for="filter_ndt_guidance"
-                      >
-                        <input
-                          checked=""
-                          id="filter_ndt_guidance"
-                          name="ndt"
-                          title="Type - Guidance (65)"
-                          type="checkbox"
-                          value="Guidance"
-                        />
-                        <span
-                          class="filter-option__text"
-                        >
-                          Guidance (65)
-                        </span>
-                      </label>
-                    </fieldset>
-                  </div>
-                  <div
-                    class="filter-group"
-                  >
-                    <h3
-                      class="filter-group__heading"
-                    >
-                      <button
                         aria-controls="group-ngt"
                         aria-expanded="true"
                         type="button"
@@ -817,6 +658,86 @@ exports[`/guidance/indevelopment should match the snapshot 1`] = `
                           class="filter-option__text"
                         >
                           Technology appraisal guidance (437)
+                        </span>
+                      </label>
+                    </fieldset>
+                  </div>
+                  <div
+                    class="filter-group"
+                  >
+                    <h3
+                      class="filter-group__heading"
+                    >
+                      <button
+                        aria-controls="group-nai"
+                        aria-expanded="false"
+                        type="button"
+                      >
+                        <svg
+                          aria-hidden="true"
+                          class="filter-group__heading-icon"
+                          fill="none"
+                          focusable="false"
+                          height="1em"
+                          viewBox="0 0 512 512"
+                          width="1em"
+                          xmlns="http://www.w3.org/2000/svg"
+                        >
+                          <path
+                            d="M478.152 174c0 10.091-3.525 18.661-10.576 25.712l-186 186c-7.243 7.243-15.909 10.864-26 10.864-10.283 0-18.853-3.621-25.712-10.864l-186-186C36.621 192.853 33 184.283 33 174c0-10.091 3.621-18.757 10.864-26L65 126.576C72.424 119.525 81.09 116 91 116c10.091 0 18.661 3.525 25.712 10.576L255.576 265.44 394.44 126.576c7.051-7.051 15.621-10.576 25.712-10.576 9.909 0 18.576 3.525 26 10.576L467.576 148c7.051 7.424 10.576 16.091 10.576 26Z"
+                            fill="currentColor"
+                          />
+                        </svg>
+                        <span
+                          id="group-heading-nai"
+                        >
+                          Area of interest
+                           
+                        </span>
+                      </button>
+                    </h3>
+                    <fieldset
+                      aria-hidden="true"
+                      class="filter-group__options"
+                      id="group-nai"
+                    >
+                      <legend>
+                        Area of interest
+                      </legend>
+                      <label
+                        class="filter-option"
+                        data-component="filter-option"
+                        for="filter_nai_antimicrobial-prescribing"
+                      >
+                        <input
+                          id="filter_nai_antimicrobial-prescribing"
+                          name="nai"
+                          title="Area of interest - Antimicrobial prescribing (4)"
+                          type="checkbox"
+                          value="Antimicrobial prescribing"
+                        />
+                        <span
+                          class="filter-option__text"
+                        >
+                          Antimicrobial prescribing (4)
+                        </span>
+                      </label>
+                      <label
+                        class="filter-option"
+                        data-component="filter-option"
+                        for="filter_nai_covid-19"
+                      >
+                        <input
+                          id="filter_nai_covid-19"
+                          name="nai"
+                          title="Area of interest - COVID-19 (2)"
+                          type="checkbox"
+                          value="COVID-19"
+                        />
+                        <span
+                          class="filter-option__text"
+                        >
+                          COVID-19 (2)
                         </span>
                       </label>
                     </fieldset>

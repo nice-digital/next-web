@@ -14,6 +14,7 @@ import { render, screen, within } from "@/test-utils/rendering";
 import { SearchListFilters } from "./SearchListFilters";
 
 const guidanceNavigatorsOrder: KnownOrModifierKeys[] = [
+	"gst",
 	"nai",
 	"tt",
 	"tsd",
@@ -262,13 +263,15 @@ describe("SearchListFilters", () => {
 
 	describe("Checkbox filters", () => {
 		it("should not render checkboxes for guidance status navigators", () => {
+			const guidanceNavigatorsOrderNoGST = guidanceNavigatorsOrder.slice(1);
+
 			rerender(
 				<SearchListFilters
 					numActiveModifiers={2}
 					navigators={sampleData.navigators as unknown as Navigator[]}
 					showDateFilter={false}
 					showTextFilter={false}
-					navigatorsOrder={guidanceNavigatorsOrder}
+					navigatorsOrder={guidanceNavigatorsOrderNoGST}
 					navigatorsToCollapse={guidanceNavigatorsToCollapse}
 				/>
 			);
@@ -278,13 +281,16 @@ describe("SearchListFilters", () => {
 
 		it("should push an event to the data layer when checkbox checked", async () => {
 			window.dataLayer = [];
+
+			const guidanceNavigatorsOrderNoGST = guidanceNavigatorsOrder.slice(1);
+
 			rerender(
 				<SearchListFilters
 					numActiveModifiers={2}
 					navigators={sampleData.navigators as unknown as Navigator[]}
 					showDateFilter={false}
 					showTextFilter={false}
-					navigatorsOrder={guidanceNavigatorsOrder}
+					navigatorsOrder={guidanceNavigatorsOrderNoGST}
 					navigatorsToCollapse={guidanceNavigatorsToCollapse}
 				/>
 			);
