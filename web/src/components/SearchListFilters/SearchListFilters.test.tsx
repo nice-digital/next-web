@@ -23,6 +23,8 @@ const guidanceNavigatorsOrder: KnownOrModifierKeys[] = [
 	"nat",
 ];
 
+const guidanceNavigatorsOrderNoGST = guidanceNavigatorsOrder.slice(1);
+
 const guidanceNavigatorsToCollapse: KnownOrModifierKeys[] = ["ngt", "nat"];
 
 describe("SearchListFilters", () => {
@@ -263,8 +265,6 @@ describe("SearchListFilters", () => {
 
 	describe("Checkbox filters", () => {
 		it("should not render checkboxes for guidance status navigators", () => {
-			const guidanceNavigatorsOrderNoGST = guidanceNavigatorsOrder.slice(1);
-
 			rerender(
 				<SearchListFilters
 					numActiveModifiers={2}
@@ -281,8 +281,6 @@ describe("SearchListFilters", () => {
 
 		it("should push an event to the data layer when checkbox checked", async () => {
 			window.dataLayer = [];
-
-			const guidanceNavigatorsOrderNoGST = guidanceNavigatorsOrder.slice(1);
 
 			rerender(
 				<SearchListFilters
