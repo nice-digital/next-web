@@ -37,8 +37,8 @@ public:
     enableRootCatchAll: false
   denyRobots: false
   trac:
-    version: 'v123'
-    integrityKey: 'ssh-1234567'
+    version: SECRET
+    integrityKey: SECRET
 
 # ! This is a PUBLIC repo so please don't put any sensitive info or secrets in here
 # ! Use local-development.yml or local-development.json to override settings locally instead: https://edibleco.de/3dLJKiP
