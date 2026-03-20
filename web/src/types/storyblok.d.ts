@@ -801,7 +801,7 @@ export interface TestimonialGridItemStoryblok {
 }
 
 export interface TracEmbedStoryblok {
-  jobBoardsID: string;
+  jobBoardID: string;
   component: "tracEmbed";
   _uid: string;
   [k: string]: any;

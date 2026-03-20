@@ -14,7 +14,7 @@ export const StoryblokTracEmbed: React.FC<TracEmbedProps> = ({ blok }) => {
 
 	const tracRef = useRef<HTMLDivElement | null>(null);
 
-	const { jobBoardsID } = blok;
+	const { jobBoardID } = blok;
 	/**NOTE:
 	 * useEffect vs Script > nextJS will move the Script lower in DOM by default, which can cause embed injection to be placed below footer.
 	 * By creating a script inline within the specific container, injected embed content remains contained where it should be
@@ -34,13 +34,13 @@ export const StoryblokTracEmbed: React.FC<TracEmbedProps> = ({ blok }) => {
 		script.async = true;
 		script.src = `${tracScript}`;
 		script.setAttribute("id", "TracFeed");
-		script.setAttribute("data-JobsBoardID", `${jobBoardsID}`);
+		script.setAttribute("data-JobsBoardID", `${jobBoardID}`);
 		script.setAttribute("data-crossorigin", "anonymous");
 		script.setAttribute("data-integrity", integrityKey || "");
 		script.setAttribute("data-IncludeCSS", "false");
 		script.setAttribute("data-testid", "trac-feed-script");
 		tracRef.current?.appendChild(script);
-	}, [jobBoardsID, integrityKey, tracScript]);
+	}, [jobBoardID, integrityKey, tracScript]);
 
 	useEffect(() => {
 		const handleHashChange = () => {
@@ -59,7 +59,7 @@ export const StoryblokTracEmbed: React.FC<TracEmbedProps> = ({ blok }) => {
 			window.removeEventListener("hashchange", handleHashChange);
 		};
 	}, []);
-	if (!version || !integrityKey || !jobBoardsID) {
+	if (!version || !integrityKey || !jobBoardID) {
 		return <div>Invalid trac configuration</div>;
 	}
 

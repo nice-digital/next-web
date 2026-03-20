@@ -10,7 +10,7 @@ type Writable<T> = {
 };
 
 const mockTracEmbed: TracEmbedStoryblok = {
-	jobBoardsID: "123456",
+	jobBoardID: "123456",
 	component: "tracEmbed",
 	_uid: "",
 };
