@@ -1565,6 +1565,12 @@ const nextConfig = {
 					"/about-us/our-board/public-board-meetings/2024/public-board-meeting-agenda-and-papers-july-2024",
 				permanent: true,
 			},
+			{
+				source: "/productivity",
+				destination:
+					"/implementing-nice-guidance/cost-saving-resource-planning-and-audit",
+				permanent: true,
+			},
 			// NOTE this is commented out until research recs go live
 			// {
 			// 	source:
