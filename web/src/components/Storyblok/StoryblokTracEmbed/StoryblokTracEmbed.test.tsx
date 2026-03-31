@@ -45,7 +45,7 @@ describe("StoryblokTracEmbed", () => {
 		const script = screen.getByTestId("trac-feed-script");
 		expect(script).toBeInTheDocument();
 		expect(script).toHaveAttribute("data-JobsBoardID", "123456");
-		expect(script).toHaveAttribute("data-crossorigin", "anonymous");
+		expect(script).toHaveAttribute("crossorigin", "anonymous");
 		expect(script).toHaveAttribute("data-IncludeCSS", "false");
 	});
 	it("should not load the script multiple times on re-render", () => {
