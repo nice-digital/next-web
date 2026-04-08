@@ -231,6 +231,7 @@ export function Search({
 								showDateFilter={false}
 								showTextFilter={false}
 								navigatorsOrder={["nai", "ndt", "gst", "drm", "ngt", "nat"]}
+								navigatorsToCollapse={["ngt", "nat"]}
 							/>
 						</GridItem>
 

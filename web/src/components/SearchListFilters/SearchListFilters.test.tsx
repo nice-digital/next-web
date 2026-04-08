@@ -14,6 +14,7 @@ import { render, screen, within } from "@/test-utils/rendering";
 import { SearchListFilters } from "./SearchListFilters";
 
 const guidanceNavigatorsOrder: KnownOrModifierKeys[] = [
+	"gst",
 	"nai",
 	"tt",
 	"tsd",
@@ -21,6 +22,10 @@ const guidanceNavigatorsOrder: KnownOrModifierKeys[] = [
 	"ngt",
 	"nat",
 ];
+
+const guidanceNavigatorsOrderNoGST = guidanceNavigatorsOrder.slice(1);
+
+const guidanceNavigatorsToCollapse: KnownOrModifierKeys[] = ["ngt", "nat"];
 
 describe("SearchListFilters", () => {
 	let routerPush: jest.Mock, rerender: ReturnType<typeof render>["rerender"];
@@ -46,6 +51,7 @@ describe("SearchListFilters", () => {
 				showTextFilter={true}
 				dateFilterLabel="Last updated date"
 				navigatorsOrder={guidanceNavigatorsOrder}
+				navigatorsToCollapse={guidanceNavigatorsToCollapse}
 			/>
 		).rerender;
 	});
@@ -69,6 +75,7 @@ describe("SearchListFilters", () => {
 					showDateFilter={false}
 					showTextFilter={true}
 					navigatorsOrder={guidanceNavigatorsOrder}
+					navigatorsToCollapse={guidanceNavigatorsToCollapse}
 				/>
 			);
 
@@ -96,6 +103,7 @@ describe("SearchListFilters", () => {
 					showTextFilter={false}
 					queryText="diabetes"
 					navigatorsOrder={guidanceNavigatorsOrder}
+					navigatorsToCollapse={guidanceNavigatorsToCollapse}
 				/>
 			);
 
@@ -118,6 +126,7 @@ describe("SearchListFilters", () => {
 					showTextFilter={false}
 					queryText="diabetes"
 					navigatorsOrder={guidanceNavigatorsOrder}
+					navigatorsToCollapse={guidanceNavigatorsToCollapse}
 				/>
 			);
 
@@ -142,6 +151,7 @@ describe("SearchListFilters", () => {
 					showTextFilter={false}
 					queryText="diabetes"
 					navigatorsOrder={guidanceNavigatorsOrder}
+					navigatorsToCollapse={guidanceNavigatorsToCollapse}
 				/>
 			);
 			const input = screen.getByLabelText("Antimicrobial prescribing (21)");
@@ -166,6 +176,7 @@ describe("SearchListFilters", () => {
 					showTextFilter={false}
 					queryText="diabetes"
 					navigatorsOrder={guidanceNavigatorsOrder}
+					navigatorsToCollapse={guidanceNavigatorsToCollapse}
 				/>
 			);
 
@@ -195,6 +206,7 @@ describe("SearchListFilters", () => {
 					showTextFilter={true}
 					queryText="diabetes"
 					navigatorsOrder={guidanceNavigatorsOrder}
+					navigatorsToCollapse={guidanceNavigatorsToCollapse}
 				/>
 			);
 			expect(
@@ -211,6 +223,7 @@ describe("SearchListFilters", () => {
 					showTextFilter={true}
 					queryText="diabetes"
 					navigatorsOrder={guidanceNavigatorsOrder}
+					navigatorsToCollapse={guidanceNavigatorsToCollapse}
 					searchInputPlaceholder="Some placeholder text"
 				/>
 			);
@@ -258,8 +271,8 @@ describe("SearchListFilters", () => {
 					navigators={sampleData.navigators as unknown as Navigator[]}
 					showDateFilter={false}
 					showTextFilter={false}
-					navigatorShortNamesToExclude="gst"
-					navigatorsOrder={guidanceNavigatorsOrder}
+					navigatorsOrder={guidanceNavigatorsOrderNoGST}
+					navigatorsToCollapse={guidanceNavigatorsToCollapse}
 				/>
 			);
 
@@ -268,14 +281,15 @@ describe("SearchListFilters", () => {
 
 		it("should push an event to the data layer when checkbox checked", async () => {
 			window.dataLayer = [];
+
 			rerender(
 				<SearchListFilters
 					numActiveModifiers={2}
 					navigators={sampleData.navigators as unknown as Navigator[]}
 					showDateFilter={false}
 					showTextFilter={false}
-					navigatorShortNamesToExclude="gst"
-					navigatorsOrder={guidanceNavigatorsOrder}
+					navigatorsOrder={guidanceNavigatorsOrderNoGST}
+					navigatorsToCollapse={guidanceNavigatorsToCollapse}
 				/>
 			);
 

@@ -20,13 +20,13 @@ const tableBodyRender = (documents: Document[]) => (
 		<thead>
 			<tr>
 				<th scope="col">Title</th>
-				<th scope="col">Type</th>
+				<th scope="col">Reference number</th>
 				<th scope="col">Terminated date</th>
 			</tr>
 		</thead>
 		<tbody>
 			{documents.map(
-				({ id, title, pathAndQuery, niceResultType, terminatedDate }) => {
+				({ guidanceRef, id, pathAndQuery, terminatedDate, title }) => {
 					return (
 						<tr key={id}>
 							<td>
@@ -35,7 +35,7 @@ const tableBodyRender = (documents: Document[]) => (
 									dangerouslySetInnerHTML={{ __html: title }}
 								/>
 							</td>
-							<td>{niceResultType || "n/a"}</td>
+							<td>{guidanceRef}</td>
 							<td>
 								{terminatedDate ? (
 									<ResponsiveDate isoDateTime={terminatedDate} />
@@ -75,6 +75,8 @@ export default getProductListPage({
 	useFutureDates: false,
 	dateFilterLabel,
 	textFilterHeading,
+	navigatorsOrder: ["ngt", "aty"],
+	navigatorsToCollapse: [],
 	tableBodyRender,
 	searchInputPlaceholder: "E.g. 'diabetes' or 'NG28'",
 });
