@@ -4,37 +4,31 @@ import { PageHeader } from "@nice-digital/nds-page-header";
 import { type Breadcrumb as TypeBreadcrumb } from "@/types/Breadcrumb";
 import {
 	ButtonLinkStoryblok,
-	InfoPageStoryblok,
 	type PageHeaderStoryblok,
 } from "@/types/storyblok";
-import {
-	ExtendedSBLink,
-	getSectionTitle,
-	treeHasItems,
-} from "@/utils/storyblok/contentStructureUtils";
 
 import { StoryblokButtonLink } from "../StoryblokButtonLink/StoryblokButtonLink";
 
 interface PageHeaderBlokProps {
 	blok: PageHeaderStoryblok;
 	breadcrumbs?: TypeBreadcrumb[];
-	preheading: string;
+	preheading: string | null;
 }
 
-export const getPreheading = (
-	tree: ExtendedSBLink[],
-	blok: InfoPageStoryblok
-): string => {
-	if (!treeHasItems(tree)) return "";
+// export const getPreheading = (
+// 	tree: ExtendedSBLink[],
+// 	blok: InfoPageStoryblok
+// ): string => {
+// 	if (!treeHasItems(tree)) return "";
 
-	const headerTitle =
-		blok.header?.[0]?.component === "pageHeader" ? blok.header?.[0]?.title : "";
-	const sectionTitle = getSectionTitle(tree)?.name;
+// 	const headerTitle =
+// 		blok.header?.[0]?.component === "pageHeader" ? blok.header?.[0]?.title : "";
+// 	const sectionTitle = getSectionTitle(tree)?.name;
 
-	if (!headerTitle || !sectionTitle) return "";
+// 	if (!headerTitle || !sectionTitle) return "";
 
-	return sectionTitle !== headerTitle ? sectionTitle : "";
-};
+// 	return sectionTitle !== headerTitle ? sectionTitle : "";
+// };
 
 export const StoryblokPageHeader = ({
 	blok,

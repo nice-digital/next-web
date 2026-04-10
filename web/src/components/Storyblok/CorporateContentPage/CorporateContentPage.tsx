@@ -26,9 +26,10 @@ export const CorporateContentPage = (
 		return <ErrorPageContent title="Error" heading={error} />;
 	}
 
-	const { story: storyData, breadcrumbs, tree, slug } = props;
+	const { story: storyData, breadcrumbs, preheading, tree, slug } = props;
 
 	const title = storyData?.name;
+
 	return (
 		<>
 			<NextSeo
@@ -40,6 +41,7 @@ export const CorporateContentPage = (
 				<StoryblokComponent
 					blok={storyData.content}
 					breadcrumbs={breadcrumbs}
+					preheading={preheading}
 					tree={tree}
 					slug={slug}
 					pageType={props.component}

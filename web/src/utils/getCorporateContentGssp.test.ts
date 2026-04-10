@@ -19,6 +19,7 @@ jest.mock("@/logger");
 //TODO do we need a better mock for the tree?
 jest.mock("@/utils/storyblok/contentStructureUtils", () => ({
 	buildTree: jest.fn(),
+	derivePreheadingFromBreadcrumbs: jest.fn(),
 }));
 
 const mockFetchStory = fetchStory as jest.Mock;
@@ -28,6 +29,9 @@ const mockGetStoryVersionFromQuery = getStoryVersionFromQuery as jest.Mock;
 const mockLoggerError = logger.error as jest.Mock;
 
 const mockBuildTree = contentStructureUtils.buildTree as jest.Mock;
+
+const mockDerivePreheading =
+	contentStructureUtils.derivePreheadingFromBreadcrumbs as jest.Mock;
 
 describe("getCorporateContentGssp", () => {
 	const templateId = "test-template";
@@ -116,6 +120,8 @@ describe("getCorporateContentGssp", () => {
 		mockGetBreadcrumbs.mockResolvedValue(["breadcrumb"]);
 		mockBuildTree.mockResolvedValue([]);
 
+		mockDerivePreheading.mockResolvedValue("test preheading");
+
 		const context = makeContext();
 		const handler = getCorporateContentGssp(templateId);
 		const result = await handler(context);
@@ -124,6 +130,7 @@ describe("getCorporateContentGssp", () => {
 			"X-Page-Template-ID",
 			"component: infoPage, template: test-template"
 		);
+
 		expect(result).toMatchObject({
 			props: expect.objectContaining({
 				component: "infoPage",
