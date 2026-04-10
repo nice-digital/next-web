@@ -3,10 +3,10 @@ import { StoryblokComponent } from "@storyblok/react";
 import { Grid, GridItem } from "@nice-digital/nds-grid";
 import { InPageNav } from "@nice-digital/nds-in-page-nav";
 
-import { getPreheading } from "@/components/Storyblok/StoryblokPageHeader/StoryblokPageHeader";
 import { StoryblokRichText } from "@/components/Storyblok/StoryblokRichText/StoryblokRichText";
 import { StoryblokSectionNav } from "@/components/Storyblok/StoryblokSectionNav/StoryblokSectionNav";
 import { type Breadcrumb } from "@/types/Breadcrumb";
+import { PreHeader } from "@/types/SBCorporateContent";
 import { type InfoPageStoryblok } from "@/types/storyblok";
 import {
 	type ExtendedSBLink,
@@ -18,6 +18,7 @@ import styles from "./InfoPage.module.scss";
 export interface InfoPageBlokProps {
 	blok: InfoPageStoryblok;
 	breadcrumbs?: Breadcrumb[];
+	preheading: PreHeader;
 	tree: ExtendedSBLink[];
 	slug: string;
 	pageType?: string;
@@ -26,12 +27,13 @@ export interface InfoPageBlokProps {
 export const InfoPage = ({
 	blok,
 	breadcrumbs,
+	preheading,
 	tree,
 	slug,
 	pageType,
 }: InfoPageBlokProps): React.ReactElement => {
-	const preheading =
-		blok.hidePreHeader === "true" ? undefined : getPreheading(tree, blok);
+	preheading = blok.hidePreHeader === "true" ? null : preheading;
+
 	return (
 		<div className={styles.infoPage}>
 			{blok.metadata &&
