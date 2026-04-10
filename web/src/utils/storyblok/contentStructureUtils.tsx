@@ -1,3 +1,4 @@
+import { type Breadcrumb as TypeBreadcrumb } from "@/types/Breadcrumb";
 import { SBLink } from "@/types/SBLink";
 import { fetchLinks } from "@/utils/storyblok";
 
@@ -122,4 +123,19 @@ export const getSectionTitle = (
 	tree: ExtendedSBLink[]
 ): ExtendedSBLink | null => {
 	return treeHasItems(tree) ? tree[0] : null;
+};
+
+export const derivePreheaderFromBreadcrumbs = (
+	breadcrumbs: TypeBreadcrumb[] | undefined
+): string | null => {
+	// if we have no items or one item (likely Home) return null
+	if (!breadcrumbs?.length || breadcrumbs.length <= 1) return null;
+
+	// pick the last item in the array
+	const candidate = breadcrumbs[breadcrumbs.length - 1].title;
+
+	// if the candidate is Home return undefined
+	if (!candidate || candidate === "Home") return null;
+
+	return candidate;
 };
