@@ -13,7 +13,7 @@ import {
 } from "@/utils/storyblok";
 import {
 	buildTree,
-	derivePreheaderFromBreadcrumbs,
+	derivePreheadingFromBreadcrumbs,
 	type ExtendedSBLink,
 } from "@/utils/storyblok/contentStructureUtils";
 
@@ -79,11 +79,11 @@ export const getCorporateContentGssp = <
 
 			const component = storyResult.story?.content?.component;
 			let tree: ExtendedSBLink[] = [];
-			let preheader: PreHeader = null;
+			let preheading: PreHeader = null;
 
 			if (component === "infoPage" && parentID !== null) {
 				tree = await buildTree(parentID, slug, isRootPage);
-				preheader = derivePreheaderFromBreadcrumbs(breadcrumbs);
+				preheading = derivePreheadingFromBreadcrumbs(breadcrumbs);
 				// TODO: move out of catchall page; would need API route as GSSP is not allowed in components whilst using pages router
 			}
 
@@ -99,7 +99,7 @@ export const getCorporateContentGssp = <
 					...storyResult,
 					breadcrumbs,
 					component,
-					preheader,
+					preheading,
 					tree,
 					slug,
 				} as unknown as T,

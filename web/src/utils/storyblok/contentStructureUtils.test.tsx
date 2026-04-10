@@ -4,7 +4,7 @@ import { fetchLinks } from "@/utils/storyblok";
 
 import {
 	treeHasItems,
-	derivePreheaderFromBreadcrumbs,
+	derivePreheadingFromBreadcrumbs,
 } from "./contentStructureUtils";
 
 jest.mock("@/utils/storyblok", () => ({
@@ -24,13 +24,13 @@ describe("sectionNavIsNotEmpty", () => {
 
 describe("derivePreheaderFromBreadcrumbs", () => {
 	it("should return undefined if breadcrumbs are undefined", () => {
-		expect(derivePreheaderFromBreadcrumbs(undefined)).toBeUndefined();
+		expect(derivePreheadingFromBreadcrumbs(undefined)).toBeUndefined();
 	});
 
 	it("should return undefined if breadcrumbs only contains one item", () => {
 		const mockBreadcrumbs: TypeBreadcrumb[] = [{ title: "Home", path: "/" }];
 
-		expect(derivePreheaderFromBreadcrumbs(mockBreadcrumbs)).toBeUndefined();
+		expect(derivePreheadingFromBreadcrumbs(mockBreadcrumbs)).toBeUndefined();
 	});
 
 	it("should return undefined when the derived candidate is Home", () => {
@@ -39,13 +39,13 @@ describe("derivePreheaderFromBreadcrumbs", () => {
 			{ title: "Home", path: "/" },
 		];
 
-		expect(derivePreheaderFromBreadcrumbs(mockBreadcrumbs)).toBeUndefined();
+		expect(derivePreheadingFromBreadcrumbs(mockBreadcrumbs)).toBeUndefined();
 	});
 
 	it("should return undefined breadcrumbs are empty", () => {
 		const mockBreadcrumbs: TypeBreadcrumb[] = [];
 
-		expect(derivePreheaderFromBreadcrumbs(mockBreadcrumbs)).toBeUndefined();
+		expect(derivePreheadingFromBreadcrumbs(mockBreadcrumbs)).toBeUndefined();
 	});
 
 	it("should return the last breadcrumb title", () => {
@@ -66,7 +66,7 @@ describe("derivePreheaderFromBreadcrumbs", () => {
 			},
 		];
 
-		expect(derivePreheaderFromBreadcrumbs(mockBreadcrumbs)).toEqual(
+		expect(derivePreheadingFromBreadcrumbs(mockBreadcrumbs)).toEqual(
 			mockBreadcrumbs[mockBreadcrumbs.length - 1].title
 		);
 	});

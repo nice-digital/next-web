@@ -26,7 +26,7 @@ export const CorporateContentPage = (
 		return <ErrorPageContent title="Error" heading={error} />;
 	}
 
-	const { story: storyData, breadcrumbs, preheader, tree, slug } = props;
+	const { story: storyData, breadcrumbs, preheading, tree, slug } = props;
 
 	const title = storyData?.name;
 
@@ -41,7 +41,7 @@ export const CorporateContentPage = (
 				<StoryblokComponent
 					blok={storyData.content}
 					breadcrumbs={breadcrumbs}
-					preheader={preheader}
+					preheading={preheading}
 					tree={tree}
 					slug={slug}
 					pageType={props.component}

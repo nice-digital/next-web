@@ -125,7 +125,7 @@ export const getSectionTitle = (
 	return treeHasItems(tree) ? tree[0] : null;
 };
 
-export const derivePreheaderFromBreadcrumbs = (
+export const derivePreheadingFromBreadcrumbs = (
 	breadcrumbs: TypeBreadcrumb[] | undefined
 ): string | null => {
 	// if we have no items or one item (likely Home) return null
