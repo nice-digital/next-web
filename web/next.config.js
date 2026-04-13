@@ -2797,6 +2797,13 @@ const nextConfig = {
 				permanent: true,
 			},
 			{
+				source:
+					"/about/what-we-do/our-programmes/nice-guidance/technology-appraisal-guidance/technology-appraisal-submission-templates-and-supporting-documents",
+				destination:
+					"/what-nice-does/our-guidance/about-technology-appraisal-guidance/technology-appraisal-submission-templates-and-supporting-documents",
+				permanent: true,
+			},
+			{
 				source: "/about/who-we-are/our-vision",
 				destination: "/about-us",
 				permanent: true,
@@ -3268,6 +3275,7 @@ const nextConfig = {
 				destination: "/implementing-nice-guidance/nice-and-health-inequalities",
 				permanent: true,
 			},
+			// Technology Appraisal
 		];
 	},
 	async headers() {
