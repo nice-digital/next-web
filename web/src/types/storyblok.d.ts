@@ -522,6 +522,7 @@ export interface InfogramEmbedStoryblok {
 export interface InfoPageStoryblok {
   header: (PageHeaderStoryblok | HeroStoryblok)[];
   metadata?: MetadataStoryblok[];
+  hidePreHeader?: "true" | "false";
   hideSectionNav?: "true" | "false";
   hideInPageNav?: "true" | "false";
   content: RichtextStoryblok;

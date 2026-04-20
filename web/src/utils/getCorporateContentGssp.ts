@@ -1,7 +1,3 @@
-import {
-	buildTree,
-	type ExtendedSBLink,
-} from "@/components/Storyblok/StoryblokSectionNav/utils/Utils";
 import { logger } from "@/logger";
 import {
 	InfoPageStoryblok,
@@ -14,6 +10,10 @@ import {
 	getSlugFromParams,
 	getStoryVersionFromQuery,
 } from "@/utils/storyblok";
+import {
+	buildTree,
+	type ExtendedSBLink,
+} from "@/utils/storyblok/contentStructureUtils";
 
 import type { GetServerSidePropsContext, GetServerSideProps } from "next";
 
@@ -78,11 +78,7 @@ export const getCorporateContentGssp = <
 			const component = storyResult.story?.content?.component;
 			let tree: ExtendedSBLink[] = [];
 
-			if (
-				component === "infoPage" &&
-				storyResult.story?.content.hideSectionNav !== "true" &&
-				parentID !== null
-			) {
+			if (component === "infoPage" && parentID !== null) {
 				tree = await buildTree(parentID, slug, isRootPage);
 				// TODO: move out of catchall page; would need API route as GSSP is not allowed in components whilst using pages router
 			}
