@@ -36,7 +36,7 @@
     "@nice-digital/design-system": "^5.6.1",
     "@nice-digital/global-nav": "^7.1.1149",
     "@nice-digital/nds-prev-next": "^3.0.2",
-    "@nice-digital/search-client": "^2.0.1645-SRCH-998-update-node",
+    "@nice-digital/search-client": "^2.0.1650",
     "@sindresorhus/slugify": "^1.1.2",
     "@storyblok/react": "^3.0.14",
     "axios": "1.14.0",
