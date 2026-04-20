@@ -8,8 +8,19 @@ import { Link } from "@/components/Link/Link";
 import { StoryblokImage } from "@/components/Storyblok/StoryblokImage/StoryblokImage";
 import { StoryblokYoutubeEmbed } from "@/components/Storyblok/StoryblokYoutubeEmbed/StoryblokYoutubeEmbed";
 import { NewsStory } from "@/types/News";
-import { SpotlightStoryblok, YoutubeEmbedStoryblok } from "@/types/storyblok";
-import { defaultPodcastImage, getNewsType, newsTypes } from "@/utils/storyblok";
+import {
+	RichtextStoryblok,
+	SpotlightStoryblok,
+	YoutubeEmbedStoryblok,
+} from "@/types/storyblok";
+import {
+	defaultPodcastImage,
+	getNewsType,
+	newsTypes,
+	fieldHasValidContent,
+} from "@/utils/storyblok";
+
+import { StoryblokRichText } from "../StoryblokRichText/StoryblokRichText";
 
 import styles from "./Spotlight.module.scss";
 
@@ -25,6 +36,8 @@ export const Spotlight: React.FC<SpotlightProps> = ({
 	className,
 }: SpotlightProps) => {
 	const { heading, mediaDescription, youtubeEmbed, isTransparent } = blok;
+
+	console.log(fieldHasValidContent(mediaDescription));
 
 	// Resolve heading type
 	const HeadingElement = `h${headingLevel}` as keyof JSX.IntrinsicElements;
@@ -51,12 +64,10 @@ export const Spotlight: React.FC<SpotlightProps> = ({
 							<StoryblokYoutubeEmbed
 								blok={youtubeEmbed[0] as YoutubeEmbedStoryblok}
 							/>
-							{mediaDescription && (
-								<figcaption className={styles.caption}>
-									{mediaDescription}
-								</figcaption>
-							)}
 						</figure>
+						<StoryblokRichText
+							content={mediaDescription as RichtextStoryblok}
+						/>
 					</div>
 					<div className={styles.stories}>
 						<ul className={styles.storyList}>
