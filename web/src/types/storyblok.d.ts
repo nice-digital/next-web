@@ -932,7 +932,8 @@ export interface RichTextTableStoryblok {
 
 export interface SpotlightStoryblok {
   heading: string;
-  mediaDescription?: string;
+	mediaDescription?: string;
+  mediaDescriptionRichtext?: RichtextStoryblok;
   stories: (
     | ISbStoryData<BlogPostStoryblok>
     | ISbStoryData<NewsArticleStoryblok>
