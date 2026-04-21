@@ -18,6 +18,7 @@ import {
 	getNewsType,
 	newsTypes,
 	fieldHasValidContent,
+	textFieldHasValidContent,
 } from "@/utils/storyblok";
 
 import { StoryblokRichText } from "../StoryblokRichText/StoryblokRichText";
@@ -35,12 +36,25 @@ export const Spotlight: React.FC<SpotlightProps> = ({
 	headingLevel = 2,
 	className,
 }: SpotlightProps) => {
-	const { heading, mediaDescription, youtubeEmbed, isTransparent } = blok;
-
-	console.log(fieldHasValidContent(mediaDescription));
+	const {
+		heading,
+		mediaDescription,
+		mediaDescriptionRichtext,
+		youtubeEmbed,
+		isTransparent,
+	} = blok;
 
 	// Resolve heading type
 	const HeadingElement = `h${headingLevel}` as keyof JSX.IntrinsicElements;
+
+	const validMediaDescriptionRichText =
+		mediaDescriptionRichtext && fieldHasValidContent(mediaDescriptionRichtext)
+			? mediaDescriptionRichtext
+			: undefined;
+
+	console.log({ mediaDescriptionRichtext }); //[ { type: 'paragraph', attrs: { textAlign: null } } ]
+
+	const hasLegacyText = textFieldHasValidContent(mediaDescription);
 
 	// Resolve stories
 	const stories = blok.stories as ISbStoryData<NewsStory>[];
@@ -64,10 +78,16 @@ export const Spotlight: React.FC<SpotlightProps> = ({
 							<StoryblokYoutubeEmbed
 								blok={youtubeEmbed[0] as YoutubeEmbedStoryblok}
 							/>
+							{validMediaDescriptionRichText ? (
+								<figcaption className={styles.caption}>
+									<StoryblokRichText content={validMediaDescriptionRichText} />
+								</figcaption>
+							) : hasLegacyText ? (
+								<figcaption className={styles.caption}>
+									{mediaDescription}
+								</figcaption>
+							) : null}
 						</figure>
-						<StoryblokRichText
-							content={mediaDescription as RichtextStoryblok}
-						/>
 					</div>
 					<div className={styles.stories}>
 						<ul className={styles.storyList}>
