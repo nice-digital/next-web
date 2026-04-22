@@ -36,6 +36,7 @@ export type HistoryPageProps = {
 	hasInfoForPublicResources: boolean;
 	hasToolsAndResources: boolean;
 	hasHistory: boolean;
+	alert: string | null;
 };
 
 export default function HistoryPage({
@@ -46,6 +47,7 @@ export default function HistoryPage({
 	hasInfoForPublicResources,
 	hasToolsAndResources,
 	hasHistory,
+	alert
 }: HistoryPageProps): JSX.Element {
 	return (
 		<>
@@ -61,6 +63,14 @@ export default function HistoryPage({
 			</Breadcrumbs>
 
 			<ProductPageHeading product={product} />
+
+			{alert && (
+				<div 
+					className="alert-message alert alert--info"
+					data-component="alert--info" role="alert"
+					dangerouslySetInnerHTML={{ __html: alert }}
+				/>
+			)}
 
 			<ProductHorizontalNav
 				productTypeName="Indicator"
@@ -176,6 +186,7 @@ export const getServerSideProps: GetServerSideProps<
 				title: project.title,
 				groups,
 			},
+			alert: project.alert
 		},
 	};
 };

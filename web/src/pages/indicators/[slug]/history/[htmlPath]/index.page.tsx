@@ -54,6 +54,7 @@ export type HistoryHTMLPageProps = {
 		title: string;
 	};
 	resourceLinks: ResourceLinkViewModel[];
+	alert: string | null;
 };
 
 export default function HistoryHTMLPage({
@@ -63,6 +64,7 @@ export default function HistoryHTMLPage({
 	productPath,
 	resource,
 	resourceLinks,
+	alert,
 }: HistoryHTMLPageProps): JSX.Element {
 	const { htmlBody, isConvertedDocument, title } = resource;
 	const { id } = product;
@@ -82,6 +84,14 @@ export default function HistoryHTMLPage({
 			</Breadcrumbs>
 
 			<ProductPageHeading product={product} />
+
+			{alert && (
+				<div 
+					className="alert-message alert alert--info"
+					data-component="alert--info" role="alert"
+					dangerouslySetInnerHTML={{ __html: alert }}
+				/>
+			)}
 
 			<ProductHorizontalNav
 				productTypeName="Indicator"
@@ -285,6 +295,7 @@ export const getServerSideProps: GetServerSideProps<
 				title: resource.title,
 			},
 			resourceLinks,
+			alert: product.alert
 		},
 	};
 };

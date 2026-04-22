@@ -30,6 +30,7 @@ export type ToolsAndResourcesListPageProps = {
 	hasInfoForPublicResources: boolean;
 	hasEvidenceResources: boolean;
 	hasHistory: boolean;
+	alert: string | null;
 };
 
 export default function ToolsAndResourcesListPage({
@@ -40,6 +41,7 @@ export default function ToolsAndResourcesListPage({
 	hasInfoForPublicResources,
 	hasEvidenceResources,
 	hasHistory,
+	alert
 }: ToolsAndResourcesListPageProps): JSX.Element {
 	return (
 		<>
@@ -57,6 +59,14 @@ export default function ToolsAndResourcesListPage({
 			</Breadcrumbs>
 
 			<ProductPageHeading product={product} />
+
+			{alert && (
+				<div 
+					className="alert-message alert alert--info"
+					data-component="alert--info" role="alert"
+					dangerouslySetInnerHTML={{ __html: alert }}
+				/>
+			)}
 
 			<ProductHorizontalNav
 				productTypeName="Indicator"
@@ -133,6 +143,7 @@ export const getServerSideProps: GetServerSideProps<
 				publishedDate: product.publishedDate,
 				title: product.title,
 			},
+			alert: product.alert
 		},
 	};
 };

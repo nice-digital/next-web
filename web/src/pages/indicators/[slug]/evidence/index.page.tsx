@@ -31,6 +31,7 @@ export type EvidenceResourcesListPageProps = {
 	hasInfoForPublicResources: boolean;
 	hasEvidenceResources: boolean;
 	hasHistory: boolean;
+	alert: string | null;
 };
 
 export default function EvidenceResourcesListPage({
@@ -41,6 +42,7 @@ export default function EvidenceResourcesListPage({
 	hasInfoForPublicResources,
 	hasEvidenceResources,
 	hasHistory,
+	alert,
 }: EvidenceResourcesListPageProps): JSX.Element {
 	return (
 		<>
@@ -58,6 +60,14 @@ export default function EvidenceResourcesListPage({
 			</Breadcrumbs>
 
 			<ProductPageHeading product={product} />
+
+			{alert && (
+				<div 
+					className="alert-message alert alert--info"
+					data-component="alert--info" role="alert"
+					dangerouslySetInnerHTML={{ __html: alert }}
+				/>
+			)}
 
 			<ProductHorizontalNav
 				productTypeName="Indicator"
@@ -146,6 +156,7 @@ export const getServerSideProps: GetServerSideProps<
 				publishedDate: product.publishedDate,
 				title: product.title,
 			},
+			alert: product.alert
 		},
 	};
 };

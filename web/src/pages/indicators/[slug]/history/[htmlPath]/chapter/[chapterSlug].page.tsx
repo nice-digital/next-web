@@ -44,6 +44,7 @@ export type HistoryChapterHTMLPageProps = {
 		sections?: niceIndevConvertedDocumentSection[];
 		title: string;
 	};
+	alert: string | null;
 };
 
 export default function HistoryChaperHTMLPage({
@@ -52,6 +53,7 @@ export default function HistoryChaperHTMLPage({
 	productHorizontalNav,
 	productPath,
 	resource,
+	alert,
 }: HistoryChapterHTMLPageProps): JSX.Element {
 	const { title } = resource;
 	const { id } = product;
@@ -71,6 +73,14 @@ export default function HistoryChaperHTMLPage({
 			</Breadcrumbs>
 
 			<ProductPageHeading product={product} />
+
+			{alert && (
+				<div 
+					className="alert-message alert alert--info"
+					data-component="alert--info" role="alert"
+					dangerouslySetInnerHTML={{ __html: alert }}
+				/>
+			)}
 
 			<ProductHorizontalNav
 				productTypeName="Indicator"
@@ -223,6 +233,7 @@ export const getServerSideProps: GetServerSideProps<
 				sections: resourceFileHTML.sections,
 				title: resource.title,
 			},
+			alert: product.alert
 		},
 	};
 };
