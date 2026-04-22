@@ -175,6 +175,16 @@ export interface CardStoryblok {
   [k: string]: any;
 }
 
+export interface CardContentStoryblok {
+  title?: string;
+  body?: string;
+  link?: Exclude<MultilinkStoryblok, {linktype?: "email"} | {linktype?: "asset"}>;
+  image?: AssetStoryblok;
+  component: "cardContent";
+  _uid: string;
+  [k: string]: any;
+}
+
 export interface CardGridStoryblok {
   cards: CardStoryblok[];
   component: "cardGrid";
@@ -330,6 +340,7 @@ export interface GridStoryblok {
     | CalloutCardStoryblok
     | CalloutCardWithImageStoryblok
     | CardStoryblok
+    | CardContentStoryblok
     | CardGridStoryblok
     | CardGridRowBasicStoryblok
     | CardGridRowCalloutStoryblok
@@ -358,6 +369,7 @@ export interface GridStoryblok {
     | InDepthArticleStoryblok
     | InfogramEmbedStoryblok
     | InfoPageStoryblok
+    | ListItemStoryblok
     | MarkdownStoryblok
     | MetadataStoryblok
     | NestedRichTextStoryblok
@@ -374,8 +386,11 @@ export interface GridStoryblok {
     | RelatedNewsLinkStoryblok
     | RichTextTableStoryblok
     | SpotlightStoryblok
+    | SpotlightCopyStoryblok
     | TestimonialFullWidthStoryblok
     | TestimonialGridItemStoryblok
+    | TracEmbedStoryblok
+    | TracPageStoryblok
     | YoutubeEmbedStoryblok
   )[];
   component: "grid";
@@ -522,10 +537,19 @@ export interface InfogramEmbedStoryblok {
 export interface InfoPageStoryblok {
   header: (PageHeaderStoryblok | HeroStoryblok)[];
   metadata?: MetadataStoryblok[];
+  hidePreHeader?: "true" | "false";
   hideSectionNav?: "true" | "false";
   hideInPageNav?: "true" | "false";
   content: RichtextStoryblok;
   component: "infoPage";
+  _uid: string;
+  [k: string]: any;
+}
+
+export interface ListItemStoryblok {
+  text?: RichtextStoryblok;
+  children?: OrderedListStoryblok[];
+  component: "listItem";
   _uid: string;
   [k: string]: any;
 }
@@ -617,6 +641,7 @@ export interface PageStoryblok {
     | CalloutCardStoryblok
     | CalloutCardWithImageStoryblok
     | CardStoryblok
+    | CardContentStoryblok
     | CardGridStoryblok
     | CardGridRowBasicStoryblok
     | CardGridRowCalloutStoryblok
@@ -645,6 +670,7 @@ export interface PageStoryblok {
     | InDepthArticleStoryblok
     | InfogramEmbedStoryblok
     | InfoPageStoryblok
+    | ListItemStoryblok
     | MarkdownStoryblok
     | MetadataStoryblok
     | NestedRichTextStoryblok
@@ -661,8 +687,11 @@ export interface PageStoryblok {
     | RelatedNewsLinkStoryblok
     | RichTextTableStoryblok
     | SpotlightStoryblok
+    | SpotlightCopyStoryblok
     | TestimonialFullWidthStoryblok
     | TestimonialGridItemStoryblok
+    | TracEmbedStoryblok
+    | TracPageStoryblok
     | YoutubeEmbedStoryblok
   )[];
   metadata?: MetadataStoryblok[];
@@ -760,7 +789,7 @@ export interface RichTextTableStoryblok {
 
 export interface SpotlightStoryblok {
   heading: string;
-	mediaDescription?: string;
+  mediaDescription?: string;
   mediaDescriptionRichtext?: RichtextStoryblok;
   stories: (
     | ISbStoryData<BlogPostStoryblok>
@@ -772,6 +801,23 @@ export interface SpotlightStoryblok {
   youtubeEmbed: YoutubeEmbedStoryblok[];
   isTransparent?: boolean;
   component: "spotlight";
+  _uid: string;
+  [k: string]: any;
+}
+
+export interface SpotlightCopyStoryblok {
+  heading: string;
+  mediaDescription?: RichtextStoryblok;
+  stories: (
+    | ISbStoryData<BlogPostStoryblok>
+    | ISbStoryData<NewsArticleStoryblok>
+    | ISbStoryData<InDepthArticleStoryblok>
+    | ISbStoryData<PodcastStoryblok>
+    | string
+  )[];
+  youtubeEmbed: YoutubeEmbedStoryblok[];
+  isTransparent?: boolean;
+  component: "spotlight_copy";
   _uid: string;
   [k: string]: any;
 }
@@ -795,6 +841,23 @@ export interface TestimonialGridItemStoryblok {
   image?: AssetStoryblok;
   variant: "default" | "transparent";
   component: "testimonialGridItem";
+  _uid: string;
+  [k: string]: any;
+}
+
+export interface TracEmbedStoryblok {
+  jobBoardID: string;
+  component: "tracEmbed";
+  _uid: string;
+  [k: string]: any;
+}
+
+export interface TracPageStoryblok {
+  header?: PageHeaderStoryblok[];
+  metadata?: MetadataStoryblok[];
+  content?: (NestedRichTextStoryblok | ButtonLinkStoryblok | TracEmbedStoryblok)[];
+  panel?: PanelStoryblok[];
+  component: "tracPage";
   _uid: string;
   [k: string]: any;
 }
