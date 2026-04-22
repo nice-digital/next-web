@@ -33,8 +33,8 @@
 - [Local setup between Next-Web and Publications](#local-setup-between-next-web-and-publications)
   - [Publications setup](#publications-setup)
   - [Next-Web setup](#next-web-setup)
-- [Design Sytem dependencies](#design-sytem-dependencies)
-  - [Previewing changes from design sytem](#previewing-changes-from-design-sytem)
+- [Design System dependencies](#design-system-dependencies)
+  - [Previewing changes from design system](#previewing-changes-from-design-system)
 - [Debugging Next-Web locally](#debugging-next-web-locally)
 
 <!-- END doctoc generated TOC please keep comment here to allow auto update -->
@@ -319,11 +319,11 @@ process.env.NODE_TLS_REJECT_UNAUTHORIZED = "0";
 
 Replace `product` with the actual product ID from local Publications.
 
-## Design Sytem dependencies
+## Design System dependencies
 
-### Previewing changes from design sytem
+### Previewing changes from design system
 
-    - Navigate to the `web` directory in your termimal in Visual Studio code and install Nice Design Sytem alpha version.
+    - Navigate to the `web` directory in your termimal in Visual Studio code and install Nice Design System alpha version.
     - If you are facing issues with specific component install them seperately to the corresponding alpha versions.
     - Once your compoent changes are release ,install the latest design system version
 
