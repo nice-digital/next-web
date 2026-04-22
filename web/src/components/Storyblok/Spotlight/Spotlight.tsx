@@ -52,8 +52,6 @@ export const Spotlight: React.FC<SpotlightProps> = ({
 			? mediaDescriptionRichtext
 			: undefined;
 
-	console.log({ mediaDescriptionRichtext }); //[ { type: 'paragraph', attrs: { textAlign: null } } ]
-
 	const hasLegacyText = textFieldHasValidContent(mediaDescription);
 
 	// Resolve stories
