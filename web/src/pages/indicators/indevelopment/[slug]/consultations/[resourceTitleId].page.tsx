@@ -73,8 +73,9 @@ export default function ConsultationHTMLPage({
 				shouldUseNewConsultationComments={shouldUseNewConsultationComments}
 			/>
 			{alert && (
-				<div
-					className="alert-message"
+				<div 
+					className="alert-message alert alert--info"
+					data-component="alert--info" role="alert"
 					dangerouslySetInnerHTML={{ __html: alert }}
 				/>
 			)}

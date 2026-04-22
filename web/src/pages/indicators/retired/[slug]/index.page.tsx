@@ -98,6 +98,14 @@ export default function RetiredDetailsPage({
 
 			<ProductPageHeading product={product} />
 
+			{product.alert && (
+				<div 
+					className="alert-message alert alert--info"
+					data-component="alert--info" role="alert"
+					dangerouslySetInnerHTML={{ __html: product.alert }}
+				/>
+			)}
+
 			<hr className={styles.hrCustomTab} />
 
 			<Grid gutter="loose">
@@ -159,6 +167,7 @@ export const getServerSideProps: GetServerSideProps<
 				metaDescription: product.metaDescription,
 				summary: product.summary,
 				productStatus: product.productStatus,
+				alert: product.alert
 			},
 			guidanceOrIndicatorBreadcrumb,
 			indicatorSubTypes,

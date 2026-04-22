@@ -130,6 +130,14 @@ export default function IndicatorsDetailsPage({
 
 			<ProductPageHeading product={product} />
 
+			{product.alert && (
+				<div 
+					className="alert-message alert alert--info"
+					data-component="alert--info" role="alert"
+					dangerouslySetInnerHTML={{ __html: product.alert }}
+				/>
+			)}
+
 			<ProductHorizontalNav
 				productTypeName="Indicator"
 				productPath={productPath}
@@ -268,6 +276,7 @@ export const getServerSideProps: GetServerSideProps<
 				authorList: product.authorList,
 				accreditationList: product.accreditationList,
 				relatedProductList: product.relatedProductList,
+				alert: product.alert
 			},
 			indicatorSubTypes,
 			pdfDownloadPath,

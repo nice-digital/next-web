@@ -62,8 +62,9 @@ export default function DocumentsPage(props: DocumentsPageProps): JSX.Element {
 				indevStakeholderRegistration={props.indevStakeholderRegistration}
 			/>
 			{props.alert && (
-				<div
-					className="alert-message"
+				<div 
+					className="alert-message alert alert--info"
+					data-component="alert--info" role="alert"
 					dangerouslySetInnerHTML={{ __html: props.alert }}
 				/>
 			)}
