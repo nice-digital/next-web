@@ -44,6 +44,7 @@ export type IndicatorsDetailsPageProps = {
 			| "accreditationList"
 			| "productTypeName"
 			| "relatedProductList"
+			| "alert"
 		>;
 	indicatorSubTypes: IndicatorSubType[];
 	pdfDownloadPath: string | null;
