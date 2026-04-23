@@ -13,6 +13,7 @@ import { fetchAndMapContentParts } from "@/utils/contentparts";
 import { validateRouteParams } from "@/utils/product";
 import { ResourceTypeSlug } from "@/utils/resource";
 import { slugify } from "@/utils/url";
+import { ProductDetail } from "@/feeds/publications/types"
 
 import { OnThisPageSection } from "../OnThisPage/OnThisPage";
 import { type ProductPageHeadingProps } from "../ProductPageHeading/ProductPageHeading";
@@ -23,7 +24,7 @@ const resourcePathRegex =
 
 export type ProductResourceChapterPageProps = {
 	productPath: string;
-	product: ProductPageHeadingProps["product"];
+	product: ProductPageHeadingProps["product"] & Pick< ProductDetail, | "alert" >;
 	hasToolsAndResources: boolean;
 	hasInfoForPublicResources: boolean;
 	hasEvidenceResources: boolean;
@@ -201,6 +202,7 @@ export const getGetServerSidePropsFunc =
 					productTypeName: product.productTypeName,
 					publishedDate: product.publishedDate,
 					title: product.title,
+					alert: product.alert,
 				},
 				title,
 				htmlBody,

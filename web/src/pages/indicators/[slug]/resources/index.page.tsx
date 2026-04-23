@@ -63,7 +63,7 @@ export default function ToolsAndResourcesListPage({
 				<div 
 					className="alert-message alert alert--info"
 					data-component="alert--info" role="alert"
-					dangerouslySetInnerHTML={{ __html: product.alert + "indicators\\slug\\resources - not seen yet" }}
+					dangerouslySetInnerHTML={{ __html: product.alert + "indicators\\slug\\resources - seen for publications" }}
 				/>
 			)}
 

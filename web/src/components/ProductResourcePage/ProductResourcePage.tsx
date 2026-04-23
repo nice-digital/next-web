@@ -71,6 +71,14 @@ export const ProductResourcePage: FC<ProductResourcePageProps> = ({
 
 			<ProductPageHeading product={product} />
 
+			{product.alert && (
+				<div 
+					className="alert-message alert alert--info"
+					data-component="alert--info" role="alert"
+					dangerouslySetInnerHTML={{ __html: product.alert + "Product resource page - seen for publications" }}
+				/>
+			)}
+
 			<ProductHorizontalNav
 				productTypeName="Indicator"
 				productPath={productPath}
