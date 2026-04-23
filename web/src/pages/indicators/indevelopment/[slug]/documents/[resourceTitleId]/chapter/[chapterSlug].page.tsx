@@ -28,7 +28,7 @@ export type DocumentsChapterHTMLPageProps = {
 	lastUpdated: string;
 	project: Pick<
 		ProjectDetail,
-		"projectType" | "reference" | "title" | "status" | "alert"
+		"projectType" | "reference" | "title" | "status"
 	>;
 	projectPath: string;
 	resource: {
@@ -89,14 +89,6 @@ export default function DocumentsChapterHTMLPage({
 				indevScheduleItems={indevScheduleItems}
 				indevStakeholderRegistration={indevStakeholderRegistration}
 			/>
-
-			{project.alert && (
-				<div 
-					className="alert-message alert alert--info"
-					data-component="alert--info" role="alert"
-					dangerouslySetInnerHTML={{ __html: project.alert + "indicators\\indevelopment\\slug\\documents\\resourcetitleid\\chapter\\xchapterslug - not seen yet" }}
-				/>
-			)}
 
 			<ProjectHorizontalNav
 				projectPath={projectPath}
@@ -215,7 +207,6 @@ export const getServerSideProps: GetServerSideProps<
 				reference,
 				status,
 				title,
-				alert: project.alert
 			},
 			resource: {
 				chapters: resourceFileHTML.chapters || [],

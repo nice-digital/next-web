@@ -62,7 +62,7 @@ export default function HistoryPage({
 				<div 
 					className="alert-message alert alert--info"
 					data-component="alert--info" role="alert"
-					dangerouslySetInnerHTML={{ __html: product.alert+"indicators\\slug\\history - not seen yet" }}
+					dangerouslySetInnerHTML={{ __html: product.alert+"indicators\\slug\\history - seen for publications" }}
 				/>
 			)}
 

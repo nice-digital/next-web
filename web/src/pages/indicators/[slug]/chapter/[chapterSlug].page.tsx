@@ -79,7 +79,7 @@ export default function IndicatorChapterPage({
 				<div 
 					className="alert-message alert alert--info"
 					data-component="alert--info" role="alert"
-					dangerouslySetInnerHTML={{ __html: product.alert + "indicators\\slug\\history\\htmlpath - not seen yet"}}
+					dangerouslySetInnerHTML={{ __html: product.alert + "indicators\\slug\\chapter\\chapterslug - seen for publications"}}
 				/>
 			)}
 

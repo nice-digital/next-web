@@ -135,7 +135,7 @@ export default function IndicatorsDetailsPage({
 				<div 
 					className="alert-message alert alert--info"
 					data-component="alert--info" role="alert"
-					dangerouslySetInnerHTML={{ __html: product.alert + "indicators\\[slug] - not seen yet" }}
+					dangerouslySetInnerHTML={{ __html: product.alert + "indicators\\[slug] - seen for publications" }}
 				/>
 			)}
 
