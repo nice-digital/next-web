@@ -11,6 +11,7 @@ import {
 } from "@/components/ProductPageHeading/ProductPageHeading";
 import { ResourceList } from "@/components/ResourceList/ResourceList";
 import { getResourceDetails } from "@/feeds/publications/publications";
+import { ProductDetail } from "@/feeds/publications/types"
 import { logger } from "@/logger";
 import {
 	redirectWithdrawnProducts,
@@ -25,12 +26,11 @@ import {
 export type ToolsAndResourcesListPageProps = {
 	resourceGroups: ResourceGroupViewModel[];
 	productPath: string;
-	product: ProductPageHeadingProps["product"];
+	product: ProductPageHeadingProps["product"] & Pick< ProductDetail, | "alert" >;
 	hasToolsAndResources: boolean;
 	hasInfoForPublicResources: boolean;
 	hasEvidenceResources: boolean;
 	hasHistory: boolean;
-	alert: string | null;
 };
 
 export default function ToolsAndResourcesListPage({
@@ -41,7 +41,6 @@ export default function ToolsAndResourcesListPage({
 	hasInfoForPublicResources,
 	hasEvidenceResources,
 	hasHistory,
-	alert
 }: ToolsAndResourcesListPageProps): JSX.Element {
 	return (
 		<>
@@ -60,11 +59,11 @@ export default function ToolsAndResourcesListPage({
 
 			<ProductPageHeading product={product} />
 
-			{alert && (
+			{product.alert && (
 				<div 
 					className="alert-message alert alert--info"
 					data-component="alert--info" role="alert"
-					dangerouslySetInnerHTML={{ __html: alert }}
+					dangerouslySetInnerHTML={{ __html: product.alert + "indicators\\slug\\resources - not seen yet" }}
 				/>
 			)}
 
@@ -142,8 +141,8 @@ export const getServerSideProps: GetServerSideProps<
 				productTypeName: product.productTypeName,
 				publishedDate: product.publishedDate,
 				title: product.title,
+				alert: product.alert,
 			},
-			alert: product.alert
 		},
 	};
 };

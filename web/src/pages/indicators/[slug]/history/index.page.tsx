@@ -4,7 +4,10 @@ import { NextSeo } from "next-seo";
 import { Breadcrumb, Breadcrumbs } from "@nice-digital/nds-breadcrumbs";
 
 import { ProductHorizontalNav } from "@/components/ProductHorizontalNav/ProductHorizontalNav";
-import { ProductPageHeading } from "@/components/ProductPageHeading/ProductPageHeading";
+import {
+	ProductPageHeading,
+	type ProductPageHeadingProps,
+} from "@/components/ProductPageHeading/ProductPageHeading";
 import { ResourceList } from "@/components/ResourceList/ResourceList";
 import { ProjectDetail } from "@/feeds/inDev/inDev";
 import { ProductDetail } from "@/feeds/publications/types";
@@ -21,14 +24,7 @@ import {
 
 export type HistoryPageProps = {
 	productPath: string;
-	product: Pick<
-		ProductDetail,
-		| "id"
-		| "title"
-		| "productTypeName"
-		| "publishedDate"
-		| "lastMajorModificationDate"
-	>;
+	product: ProductPageHeadingProps["product"] & Pick< ProductDetail, | "alert" >;
 	project: Pick<ProjectDetail, "reference" | "title"> & {
 		groups: ResourceGroupViewModel[];
 	};
@@ -36,7 +32,6 @@ export type HistoryPageProps = {
 	hasInfoForPublicResources: boolean;
 	hasToolsAndResources: boolean;
 	hasHistory: boolean;
-	alert: string | null;
 };
 
 export default function HistoryPage({
@@ -47,7 +42,6 @@ export default function HistoryPage({
 	hasInfoForPublicResources,
 	hasToolsAndResources,
 	hasHistory,
-	alert
 }: HistoryPageProps): JSX.Element {
 	return (
 		<>
@@ -64,11 +58,11 @@ export default function HistoryPage({
 
 			<ProductPageHeading product={product} />
 
-			{alert && (
+			{product.alert && (
 				<div 
 					className="alert-message alert alert--info"
 					data-component="alert--info" role="alert"
-					dangerouslySetInnerHTML={{ __html: alert }}
+					dangerouslySetInnerHTML={{ __html: product.alert+"indicators\\slug\\history - not seen yet" }}
 				/>
 			)}
 
@@ -180,13 +174,13 @@ export const getServerSideProps: GetServerSideProps<
 				productTypeName: product.productTypeName,
 				publishedDate: product.publishedDate,
 				lastMajorModificationDate: product.lastMajorModificationDate,
+				alert: product.alert,
 			},
 			project: {
 				reference: project.reference,
 				title: project.title,
 				groups,
 			},
-			alert: project.alert
 		},
-	};
+	}; 
 };

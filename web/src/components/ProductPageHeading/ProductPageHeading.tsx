@@ -13,7 +13,6 @@ export type ProductPageHeadingProps = {
 		| "productTypeName"
 		| "publishedDate"
 		| "lastMajorModificationDate"
-		| "alert"
 	>;
 	children?: never;
 };
@@ -25,7 +24,6 @@ export const ProductPageHeading: FC<ProductPageHeadingProps> = ({
 		productTypeName,
 		publishedDate,
 		title,
-		alert,
 	},
 }) => (
 	<PageHeader

@@ -65,7 +65,7 @@ export default function DocumentsPage(props: DocumentsPageProps): JSX.Element {
 				<div 
 					className="alert-message alert alert--info"
 					data-component="alert--info" role="alert"
-					dangerouslySetInnerHTML={{ __html: props.alert }}
+					dangerouslySetInnerHTML={{ __html: props.alert + "indicators\\indevelopment\\slug\\documents - not been seen yet" }}
 				/>
 			)}
 			<ProjectHorizontalNav

@@ -16,6 +16,7 @@ import {
 import { PublicationsChapterMenu } from "@/components/PublicationsChapterMenu/PublicationsChapterMenu";
 import { PublicationsDownloadLink } from "@/components/PublicationsDownloadLink/PublicationsDownloadLink";
 import { PublicationsPrevNext } from "@/components/PublicationsPrevNext/PublicationsPrevNext";
+import { ProductDetail } from "@/feeds/publications/types";
 import {
 	ChapterHeading,
 	getChapterContent,
@@ -33,7 +34,7 @@ import styles from "./[chapterSlug].page.module.scss";
 
 export type IndicatorChapterPageProps = {
 	productPath: string;
-	product: ProductPageHeadingProps["product"];
+	product: ProductPageHeadingProps["product"] & Pick < ProductDetail, | "alert" >;
 	chapterHTML: string;
 	chapterTitle: string;
 	pdfDownloadPath: string | null;
@@ -73,6 +74,14 @@ export default function IndicatorChapterPage({
 			</Breadcrumbs>
 
 			<ProductPageHeading product={product} />
+
+			{product.alert && (
+				<div 
+					className="alert-message alert alert--info"
+					data-component="alert--info" role="alert"
+					dangerouslySetInnerHTML={{ __html: product.alert + "indicators\\slug\\history\\htmlpath - not seen yet"}}
+				/>
+			)}
 
 			<ProductHorizontalNav
 				productTypeName="Indicator"
@@ -202,6 +211,7 @@ export const getServerSideProps: GetServerSideProps<
 				productTypeName,
 				publishedDate,
 				title,
+				alert: product.alert
 			},
 			chapters,
 			chapterHTML: chapterContent.content,

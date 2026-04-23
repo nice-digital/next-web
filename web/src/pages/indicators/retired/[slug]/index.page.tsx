@@ -23,7 +23,7 @@ export type RetiredDetailsPageProps = {
 	product: ProductPageHeadingProps["product"] &
 		Pick<
 			ProductDetail,
-			"metaDescription" | "indicatorSubTypeList" | "summary" | "productStatus"
+			"metaDescription" | "indicatorSubTypeList" | "summary" | "productStatus" | "alert"
 		>;
 	guidanceOrIndicatorBreadcrumb: {
 		label: string;
@@ -102,7 +102,7 @@ export default function RetiredDetailsPage({
 				<div 
 					className="alert-message alert alert--info"
 					data-component="alert--info" role="alert"
-					dangerouslySetInnerHTML={{ __html: product.alert }}
+					dangerouslySetInnerHTML={{ __html: product.alert + "indicators\\retired\\slug - not been seen yet"}}
 				/>
 			)}
 

@@ -134,7 +134,7 @@ export default function IndicatorsDetailsPage({
 				<div 
 					className="alert-message alert alert--info"
 					data-component="alert--info" role="alert"
-					dangerouslySetInnerHTML={{ __html: product.alert }}
+					dangerouslySetInnerHTML={{ __html: product.alert + "indicators\\[slug] - not seen yet" }}
 				/>
 			)}
 
@@ -276,7 +276,7 @@ export const getServerSideProps: GetServerSideProps<
 				authorList: product.authorList,
 				accreditationList: product.accreditationList,
 				relatedProductList: product.relatedProductList,
-				alert: product.alert
+				alert: product.alert,
 			},
 			indicatorSubTypes,
 			pdfDownloadPath,

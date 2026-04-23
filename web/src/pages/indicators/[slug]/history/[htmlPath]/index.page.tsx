@@ -6,7 +6,10 @@ import { Breadcrumbs, Breadcrumb } from "@nice-digital/nds-breadcrumbs";
 
 import { ConvertedDocument } from "@/components/ConvertedDocument/ConvertedDocument";
 import { ProductHorizontalNav } from "@/components/ProductHorizontalNav/ProductHorizontalNav";
-import { ProductPageHeading } from "@/components/ProductPageHeading/ProductPageHeading";
+import {
+	ProductPageHeading,
+	type ProductPageHeadingProps,
+} from "@/components/ProductPageHeading/ProductPageHeading";
 import { ResourceLinkCard } from "@/components/ResourceLinkCard/ResourceLinkCard";
 import {
 	getConvertedDocumentHTML,
@@ -30,14 +33,7 @@ import styles from "./index.page.module.scss";
 
 export type HistoryHTMLPageProps = {
 	lastUpdated: string;
-	product: Pick<
-		ProductDetail,
-		| "id"
-		| "title"
-		| "productTypeName"
-		| "publishedDate"
-		| "lastMajorModificationDate"
-	>;
+	product: ProductPageHeadingProps["product"] & Pick < ProductDetail, | "alert" >;
 	productHorizontalNav: {
 		hasEvidenceResources: boolean;
 		hasHistory: boolean;
@@ -54,7 +50,6 @@ export type HistoryHTMLPageProps = {
 		title: string;
 	};
 	resourceLinks: ResourceLinkViewModel[];
-	alert: string | null;
 };
 
 export default function HistoryHTMLPage({
@@ -64,7 +59,6 @@ export default function HistoryHTMLPage({
 	productPath,
 	resource,
 	resourceLinks,
-	alert,
 }: HistoryHTMLPageProps): JSX.Element {
 	const { htmlBody, isConvertedDocument, title } = resource;
 	const { id } = product;
@@ -85,11 +79,11 @@ export default function HistoryHTMLPage({
 
 			<ProductPageHeading product={product} />
 
-			{alert && (
+			{product.alert && (
 				<div 
 					className="alert-message alert alert--info"
 					data-component="alert--info" role="alert"
-					dangerouslySetInnerHTML={{ __html: alert }}
+					dangerouslySetInnerHTML={{ __html: product.alert + "indicators\\slug\\history\\htmlpath - not seen yet"}}
 				/>
 			)}
 
@@ -278,6 +272,7 @@ export const getServerSideProps: GetServerSideProps<
 				productTypeName: product.productTypeName,
 				publishedDate: product.publishedDate,
 				lastMajorModificationDate: product.lastMajorModificationDate,
+				alert: product.alert,
 			},
 			productHorizontalNav: {
 				hasEvidenceResources,
@@ -295,7 +290,6 @@ export const getServerSideProps: GetServerSideProps<
 				title: resource.title,
 			},
 			resourceLinks,
-			alert: product.alert
 		},
 	};
 };

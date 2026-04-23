@@ -139,7 +139,7 @@ export default function InDevelopmentPage(
 				<div 
 					className="alert-message alert alert--info"
 					data-component="alert--info" role="alert"
-					dangerouslySetInnerHTML={{ __html: alert }}
+					dangerouslySetInnerHTML={{ __html: alert + "indicators\\indevelopment\\slug - not been seen yet"}}
 				/>
 			)}
 
