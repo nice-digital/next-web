@@ -73,12 +73,8 @@ export default function ConsultationHTMLPage({
 				indevStakeholderRegistration={indevStakeholderRegistration}
 				shouldUseNewConsultationComments={shouldUseNewConsultationComments}
 			/>
-			<InfoAlert
-				alert={
-					alert +
-					"indicators\\indevelopment\\slug\\consultations - not been seen yet"
-				}
-			/>
+			{/* not been seen yet */}
+			<InfoAlert alert={alert} />
 			<ProjectHorizontalNav
 				projectPath={projectPath}
 				hasDocuments

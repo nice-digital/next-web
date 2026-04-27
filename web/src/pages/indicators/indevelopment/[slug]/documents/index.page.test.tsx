@@ -1,4 +1,4 @@
-import { render, waitFor } from "@testing-library/react";
+import { render, screen, waitFor } from "@testing-library/react";
 import { type GetServerSidePropsContext } from "next";
 import { useRouter } from "next/router";
 
@@ -50,6 +50,25 @@ describe("/indicators/indevelopment/[slug]/documents", () => {
 				expect(document.title).toEqual(
 					`Project documents | GID-DG10049 | Indicators`
 				);
+			});
+		});
+
+		describe("InfoAlert", () => {
+			it("should not appear when alert is null", () => {
+				render(<DocumentsPage {...props} />);
+				expect(screen.queryByText("Info alert")).not.toBeInTheDocument();
+			});
+
+			it("should appear when we have an alert", () => {
+				const propsWithAlert = {
+					...props,
+					project: {
+						...props.project,
+						alert: "Info alert",
+					},
+				};
+				render(<DocumentsPage {...propsWithAlert} />);
+				expect(screen.getByText("Info alert")).toBeInTheDocument();
 			});
 		});
 	});

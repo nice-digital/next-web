@@ -103,9 +103,8 @@ export default function RetiredDetailsPage({
 
 			<ProductPageHeading product={product} />
 
-			<InfoAlert
-				alert={product.alert + "indicators\\retired\\slug - not been seen yet"}
-			/>
+			{/* not been seen yet */}
+			<InfoAlert alert={product.alert} />
 
 			<hr className={styles.hrCustomTab} />
 

@@ -1,4 +1,4 @@
-import { render, waitFor } from "@testing-library/react";
+import { render, screen, waitFor } from "@testing-library/react";
 import { type GetServerSidePropsContext } from "next";
 import { useRouter } from "next/router";
 
@@ -57,6 +57,25 @@ describe("/indicators/[slug]/history", () => {
 			render(<HistoryPage {...props} />);
 			await waitFor(() => {
 				expect(document.title).toEqual(`History | NG100 | Indicators`);
+			});
+		});
+
+		describe("InfoAlert", () => {
+			it("should not appear when alert is null", () => {
+				render(<HistoryPage {...props} />);
+				expect(screen.queryByText("Info alert")).not.toBeInTheDocument();
+			});
+
+			it("should appear when we have an alert", () => {
+				const propsWithAlert = {
+					...props,
+					product: {
+						...props.product,
+						alert: "Info alert",
+					},
+				};
+				render(<HistoryPage {...propsWithAlert} />);
+				expect(screen.getByText("Info alert")).toBeInTheDocument();
 			});
 		});
 	});

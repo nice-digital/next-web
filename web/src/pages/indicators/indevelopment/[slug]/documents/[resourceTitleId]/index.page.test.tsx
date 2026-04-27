@@ -189,6 +189,25 @@ describe("[resourceTitleId].page", () => {
 			});
 		});
 
+		describe("InfoAlert", () => {
+			it("should not appear when alert is null", () => {
+				render(<DocumentsHTMLPage {...props} />);
+				expect(screen.queryByText("Info alert")).not.toBeInTheDocument();
+			});
+
+			it("should apper when we have an alert", () => {
+				const propsWithAlert = {
+					...props,
+					project: {
+						...props.project,
+						alert: "Info alert",
+					},
+				};
+				render(<DocumentsHTMLPage {...propsWithAlert} />);
+				expect(screen.getByText("Info alert")).toBeInTheDocument();
+			});
+		});
+
 		it("should render the resource title as a heading", () => {
 			render(
 				<DocumentsHTMLPage

@@ -2035,6 +2035,7 @@ Object {
   "props": Object {
     "lastUpdated": "2016-07-19T08:56:00",
     "product": Object {
+      "alert": undefined,
       "id": "NG100",
       "lastMajorModificationDate": "2020-10-12T00:00:00",
       "productTypeName": "NICE guideline",

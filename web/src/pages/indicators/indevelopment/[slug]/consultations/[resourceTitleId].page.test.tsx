@@ -178,6 +178,25 @@ describe("[resourceTitleId].page", () => {
 			});
 		});
 
+		describe("InfoAlert", () => {
+			it("should not appear when alert is null", () => {
+				render(<ConsultationHTMLPage {...props} />);
+				expect(screen.queryByText("Info alert")).not.toBeInTheDocument();
+			});
+
+			it("should appear when we have an alert", () => {
+				const propsWithAlert = {
+					...props,
+					project: {
+						...props.project,
+						alert: "Info alert",
+					},
+				};
+				render(<ConsultationHTMLPage {...propsWithAlert} />);
+				expect(screen.getByText("Info alert")).toBeInTheDocument();
+			});
+		});
+
 		it("should render the consultation heading", () => {
 			render(<ConsultationHTMLPage {...props} />);
 			expect(screen.getByRole("heading", { level: 2 })).toHaveTextContent(
