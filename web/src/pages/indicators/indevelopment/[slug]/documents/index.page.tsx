@@ -18,14 +18,13 @@ import {
 } from "@/utils/resource";
 
 export type DocumentsPageProps = {
-	alert: string | null;
 	consultationUrls: string[];
 	indevScheduleItems?: IndevSchedule[];
 	indevStakeholderRegistration: Record<string, unknown>[];
 	projectPath: string;
 	project: Pick<
 		ProjectDetail,
-		"projectType" | "reference" | "title" | "status"
+		"projectType" | "reference" | "title" | "status" | "alert"
 	> & {
 		groups: ResourceGroupViewModel[];
 	};
@@ -62,7 +61,7 @@ export default function DocumentsPage(props: DocumentsPageProps): JSX.Element {
 				indevScheduleItems={props.indevScheduleItems}
 				indevStakeholderRegistration={props.indevStakeholderRegistration}
 			/>
-			<InfoAlert alert={props.alert} />
+			<InfoAlert alert={props.project.alert} />
 			<ProjectHorizontalNav
 				projectPath={props.projectPath}
 				hasDocuments
@@ -155,6 +154,7 @@ export const getServerSideProps: GetServerSideProps<
 				status,
 				title,
 				groups,
+				alert,
 			},
 		},
 	};

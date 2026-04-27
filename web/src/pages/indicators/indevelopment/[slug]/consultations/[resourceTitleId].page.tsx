@@ -16,13 +16,17 @@ import { formatDateStr, stripTime } from "@/utils/datetime";
 import { validateRouteParams } from "@/utils/project";
 
 export type ConsultationHTMLPageProps = {
-	alert: string | null;
 	consultationUrls: string[];
 	indevScheduleItems?: IndevSchedule[];
 	indevStakeholderRegistration: Record<string, unknown>[];
 	project: Pick<
 		ProjectDetail,
-		"projectType" | "reference" | "title" | "status" | "lastModifiedDate"
+		| "projectType"
+		| "reference"
+		| "title"
+		| "status"
+		| "lastModifiedDate"
+		| "alert"
 	>;
 	projectPath: string;
 	consultation: {
@@ -33,7 +37,6 @@ export type ConsultationHTMLPageProps = {
 };
 
 export default function ConsultationHTMLPage({
-	alert,
 	consultation,
 	consultationUrls,
 	indevStakeholderRegistration,
@@ -74,7 +77,7 @@ export default function ConsultationHTMLPage({
 				shouldUseNewConsultationComments={shouldUseNewConsultationComments}
 			/>
 			{/* not been seen yet */}
-			<InfoAlert alert={alert} />
+			<InfoAlert alert={project.alert} />
 			<ProjectHorizontalNav
 				projectPath={projectPath}
 				hasDocuments
@@ -159,6 +162,7 @@ export const getServerSideProps: GetServerSideProps<
 				status,
 				title,
 				lastModifiedDate,
+				alert,
 			},
 			projectPath,
 			consultation: {
