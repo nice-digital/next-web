@@ -1,6 +1,7 @@
 import React, { useEffect, useRef } from "react";
 
 import { publicRuntimeConfig } from "@/config";
+import { logger } from "@/logger";
 import { TracEmbedStoryblok } from "@/types/storyblok";
 
 export interface TracEmbedProps {
@@ -66,7 +67,15 @@ export const StoryblokTracEmbed: React.FC<TracEmbedProps> = ({ blok }) => {
 	}, []);
 
 	if (isInvalidConfig) {
-		return <div>Invalid trac configuration</div>;
+		logger.error(
+			{
+				version,
+				integrityKey: Boolean(integrityKey),
+				jobBoardID: Boolean(jobBoardID),
+			},
+			"TRAC embed configuration invalid or missing"
+		);
+		return <div>We are unable to load job listings at the moment.</div>;
 	}
 
 	return (

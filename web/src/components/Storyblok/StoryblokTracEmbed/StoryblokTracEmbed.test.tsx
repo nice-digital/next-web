@@ -1,9 +1,14 @@
 import { render, screen, fireEvent } from "@testing-library/react";
 
 import { publicRuntimeConfig } from "@/config";
+import { logger } from "@/logger";
 import { TracEmbedStoryblok } from "@/types/storyblok";
 
 import { StoryblokTracEmbed } from "./StoryblokTracEmbed";
+
+jest.mock("@/logger", () => ({
+	logger: { error: jest.fn(), info: jest.fn() },
+}));
 
 type Writable<T> = {
 	-readonly [K in keyof T]: Writable<T[K]>;
@@ -84,21 +89,56 @@ describe("StoryblokTracEmbed", () => {
 		);
 	});
 
-	it("should return invalid trac configuration message if version undefined", () => {
+	it("should return unable to load message if version undefined", () => {
 		const config = publicRuntimeConfig as Writable<typeof publicRuntimeConfig>;
 		config.trac.version = undefined as unknown as string;
 
 		render(<StoryblokTracEmbed blok={mockTracEmbed} />);
 
-		expect(screen.getByText("Invalid trac configuration")).toBeInTheDocument();
+		expect(
+			screen.getByText("We are unable to load job listings at the moment.")
+		).toBeInTheDocument();
 	});
 
-	it("should return invalid trac configuration message if integrity key undefined", () => {
+	it("should return unable to load message if integrity key undefined", () => {
 		const config = publicRuntimeConfig as Writable<typeof publicRuntimeConfig>;
 		config.trac.integrityKey = undefined as unknown as string;
 
 		render(<StoryblokTracEmbed blok={mockTracEmbed} />);
 
-		expect(screen.getByText("Invalid trac configuration")).toBeInTheDocument();
+		expect(
+			screen.getByText("We are unable to load job listings at the moment.")
+		).toBeInTheDocument();
+	});
+
+	it("should log error if trac integrity key undefined", () => {
+		const config = publicRuntimeConfig as Writable<typeof publicRuntimeConfig>;
+		config.trac.integrityKey = undefined as unknown as string;
+
+		render(<StoryblokTracEmbed blok={mockTracEmbed} />);
+
+		expect(logger.error as jest.Mock).toHaveBeenCalled();
+		expect(logger.error).toHaveBeenCalledWith(
+			expect.objectContaining({
+				integrityKey: false,
+			}),
+			"TRAC embed configuration invalid or missing"
+		);
+	});
+
+	it("should log error if trac version undefined", () => {
+		const config = publicRuntimeConfig as Writable<typeof publicRuntimeConfig>;
+		config.trac.version = undefined as unknown as string;
+		config.trac.integrityKey = undefined as unknown as string;
+
+		render(<StoryblokTracEmbed blok={mockTracEmbed} />);
+
+		expect(logger.error as jest.Mock).toHaveBeenCalled();
+		expect(logger.error).toHaveBeenCalledWith(
+			expect.objectContaining({
+				version: undefined,
+			}),
+			"TRAC embed configuration invalid or missing"
+		);
 	});
 });
