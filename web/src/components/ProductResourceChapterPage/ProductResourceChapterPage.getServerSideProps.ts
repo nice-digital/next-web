@@ -7,13 +7,13 @@ import {
 	BaseContentPart,
 	UploadAndConvertContentPart,
 } from "@/feeds/publications/publications";
+import { ProductDetail } from "@/feeds/publications/types";
 import { logger } from "@/logger";
 import { arrayify } from "@/utils/array";
 import { fetchAndMapContentParts } from "@/utils/contentparts";
 import { validateRouteParams } from "@/utils/product";
 import { ResourceTypeSlug } from "@/utils/resource";
 import { slugify } from "@/utils/url";
-import { ProductDetail } from "@/feeds/publications/types"
 
 import { OnThisPageSection } from "../OnThisPage/OnThisPage";
 import { type ProductPageHeadingProps } from "../ProductPageHeading/ProductPageHeading";
@@ -24,7 +24,7 @@ const resourcePathRegex =
 
 export type ProductResourceChapterPageProps = {
 	productPath: string;
-	product: ProductPageHeadingProps["product"] & Pick< ProductDetail, | "alert" >;
+	product: ProductPageHeadingProps["product"] & Pick<ProductDetail, "alert">;
 	hasToolsAndResources: boolean;
 	hasInfoForPublicResources: boolean;
 	hasEvidenceResources: boolean;

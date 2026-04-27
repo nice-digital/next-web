@@ -11,7 +11,7 @@ import {
 } from "@/components/ProductPageHeading/ProductPageHeading";
 import { ResourceList } from "@/components/ResourceList/ResourceList";
 import { getResourceDetails } from "@/feeds/publications/publications";
-import { ProductDetail } from "@/feeds/publications/types"
+import { ProductDetail } from "@/feeds/publications/types";
 import {
 	redirectWithdrawnProducts,
 	validateRouteParams,
@@ -27,7 +27,7 @@ import {
 export type EvidenceResourcesListPageProps = {
 	resourceGroups: ResourceGroupViewModel[];
 	productPath: string;
-	product: ProductPageHeadingProps["product"] & Pick < ProductDetail, | "alert" >;
+	product: ProductPageHeadingProps["product"] & Pick<ProductDetail, "alert">;
 	hasToolsAndResources: boolean;
 	hasInfoForPublicResources: boolean;
 	hasEvidenceResources: boolean;
@@ -61,10 +61,11 @@ export default function EvidenceResourcesListPage({
 			<ProductPageHeading product={product} />
 
 			{product.alert && (
-				<div 
+				<div
 					className="alert-message alert alert--info"
-					data-component="alert--info" role="alert"
-					dangerouslySetInnerHTML={{ __html: product.alert + "indicators\\[slug]\\evidence - seen for publications" }}
+					data-component="alert--info"
+					role="alert"
+					dangerouslySetInnerHTML={{ __html: product.alert }}
 				/>
 			)}
 

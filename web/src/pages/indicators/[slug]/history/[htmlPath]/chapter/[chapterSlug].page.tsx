@@ -24,7 +24,7 @@ import { type ResourceLinkViewModel } from "@/utils/resource";
 
 export type HistoryChapterHTMLPageProps = {
 	lastUpdated: string;
-	product: ProductPageHeadingProps["product"] & Pick < ProductDetail, | "alert" >;
+	product: ProductPageHeadingProps["product"] & Pick<ProductDetail, "alert">;
 	productHorizontalNav: {
 		hasEvidenceResources: boolean;
 		hasHistory: boolean;
@@ -69,10 +69,11 @@ export default function HistoryChaperHTMLPage({
 			<ProductPageHeading product={product} />
 
 			{product.alert && (
-				<div 
+				<div
 					className="alert-message alert alert--info"
-					data-component="alert--info" role="alert"
-					dangerouslySetInnerHTML={{ __html: product.alert +"indicators\\slug\\history\\htmlpath\\chapter\\chapterslug - seen for publications" }}
+					data-component="alert--info"
+					role="alert"
+					dangerouslySetInnerHTML={{ __html: product.alert }}
 				/>
 			)}
 

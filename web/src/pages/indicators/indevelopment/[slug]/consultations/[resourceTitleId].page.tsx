@@ -73,10 +73,15 @@ export default function ConsultationHTMLPage({
 				shouldUseNewConsultationComments={shouldUseNewConsultationComments}
 			/>
 			{alert && (
-				<div 
+				<div
 					className="alert-message alert alert--info"
-					data-component="alert--info" role="alert"
-					dangerouslySetInnerHTML={{ __html: alert + "indicators\\indevelopment\\slug\\consultations - not been seen yet"}}
+					data-component="alert--info"
+					role="alert"
+					dangerouslySetInnerHTML={{
+						__html:
+							alert +
+							"indicators\\indevelopment\\slug\\consultations - not been seen yet",
+					}}
 				/>
 			)}
 			<ProjectHorizontalNav

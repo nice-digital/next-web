@@ -98,10 +98,11 @@ export default function DocumentsHTMLPage({
 			/>
 
 			{project.alert && (
-				<div 
+				<div
 					className="alert-message alert alert--info"
-					data-component="alert--info" role="alert"
-					dangerouslySetInnerHTML={{ __html: project.alert + "indicators\\indevelopment\\slug\\documents\\resourcetitleid - seen for Indev" }}
+					data-component="alert--info"
+					role="alert"
+					dangerouslySetInnerHTML={{ __html: project.alert }}
 				/>
 			)}
 

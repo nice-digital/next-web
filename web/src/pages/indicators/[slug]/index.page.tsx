@@ -132,10 +132,11 @@ export default function IndicatorsDetailsPage({
 			<ProductPageHeading product={product} />
 
 			{product.alert && (
-				<div 
+				<div
 					className="alert-message alert alert--info"
-					data-component="alert--info" role="alert"
-					dangerouslySetInnerHTML={{ __html: product.alert + "indicators\\[slug] - seen for publications" }}
+					data-component="alert--info"
+					role="alert"
+					dangerouslySetInnerHTML={{ __html: product.alert }}
 				/>
 			)}
 

@@ -136,10 +136,11 @@ export default function InDevelopmentPage(
 			<ProjectPageHeading {...props} />
 
 			{alert && (
-				<div 
+				<div
 					className="alert-message alert alert--info"
-					data-component="alert--info" role="alert"
-					dangerouslySetInnerHTML={{ __html: alert + "indicators\\indevelopment\\slug - seen for indev"}}
+					data-component="alert--info"
+					role="alert"
+					dangerouslySetInnerHTML={{ __html: alert }}
 				/>
 			)}
 

@@ -9,6 +9,7 @@ import {
 	UploadAndConvertContentPart,
 	FileContent,
 } from "@/feeds/publications/publications";
+import { ProductDetail } from "@/feeds/publications/types";
 import { logger } from "@/logger";
 import { arrayify } from "@/utils/array";
 import { fetchAndMapContentParts } from "@/utils/contentparts";
@@ -18,7 +19,6 @@ import { slugify } from "@/utils/url";
 
 import { OnThisPageSection } from "../OnThisPage/OnThisPage";
 import { type ProductPageHeadingProps } from "../ProductPageHeading/ProductPageHeading";
-import { ProductDetail } from "@/feeds/publications/types"
 
 // Resource download links are in the form "IND123-some-title-123-456.xls"
 const resourcePathRegex =
@@ -26,7 +26,7 @@ const resourcePathRegex =
 
 export type ProductResourcePageProps = {
 	productPath: string;
-	product: ProductPageHeadingProps["product"] & Pick< ProductDetail, | "alert" >;
+	product: ProductPageHeadingProps["product"] & Pick<ProductDetail, "alert">;
 	hasToolsAndResources: boolean;
 	hasInfoForPublicResources: boolean;
 	hasEvidenceResources: boolean;
@@ -198,7 +198,7 @@ export const getGetServerSidePropsFunc =
 					productTypeName: product.productTypeName,
 					publishedDate: product.publishedDate,
 					title: product.title,
-					alert: product.alert
+					alert: product.alert,
 				},
 				title,
 				htmlBody,

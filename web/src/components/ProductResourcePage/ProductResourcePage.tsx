@@ -14,7 +14,6 @@ import { PublicationsPrevNext } from "@/components/PublicationsPrevNext/Publicat
 import { formatDateStr, stripTime } from "@/utils/datetime";
 import { ResourceTypeSlug } from "@/utils/resource";
 
-import { type ProductResourcePageProps } from "./ProductResourcePage.getServerSideProps";
 import styles from "./ProductResourcePage.module.scss";
 
 export { type ProductResourcePageProps } from "./ProductResourcePage.getServerSideProps";
@@ -72,10 +71,11 @@ export const ProductResourcePage: FC<ProductResourcePageProps> = ({
 			<ProductPageHeading product={product} />
 
 			{product.alert && (
-				<div 
+				<div
 					className="alert-message alert alert--info"
-					data-component="alert--info" role="alert"
-					dangerouslySetInnerHTML={{ __html: product.alert + "Product resource page - seen for publications" }}
+					data-component="alert--info"
+					role="alert"
+					dangerouslySetInnerHTML={{ __html: product.alert }}
 				/>
 			)}
 

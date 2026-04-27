@@ -66,10 +66,11 @@ export const ProductResourceChapterPage: FC<
 			<ProductPageHeading product={product} />
 
 			{product.alert && (
-				<div 
+				<div
 					className="alert-message alert alert--info"
-					data-component="alert--info" role="alert"
-					dangerouslySetInnerHTML={{ __html: product.alert + "Product resource chapter page - seen for publications" }}
+					data-component="alert--info"
+					role="alert"
+					dangerouslySetInnerHTML={{ __html: product.alert }}
 				/>
 			)}
 

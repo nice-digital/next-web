@@ -16,12 +16,12 @@ import {
 import { PublicationsChapterMenu } from "@/components/PublicationsChapterMenu/PublicationsChapterMenu";
 import { PublicationsDownloadLink } from "@/components/PublicationsDownloadLink/PublicationsDownloadLink";
 import { PublicationsPrevNext } from "@/components/PublicationsPrevNext/PublicationsPrevNext";
-import { ProductDetail } from "@/feeds/publications/types";
 import {
 	ChapterHeading,
 	getChapterContent,
 	UploadAndConvertContentPart,
 } from "@/feeds/publications/publications";
+import { ProductDetail } from "@/feeds/publications/types";
 import { arrayify } from "@/utils/array";
 import { fetchAndMapContentParts } from "@/utils/contentparts";
 import {
@@ -34,7 +34,7 @@ import styles from "./[chapterSlug].page.module.scss";
 
 export type IndicatorChapterPageProps = {
 	productPath: string;
-	product: ProductPageHeadingProps["product"] & Pick < ProductDetail, | "alert" >;
+	product: ProductPageHeadingProps["product"] & Pick<ProductDetail, "alert">;
 	chapterHTML: string;
 	chapterTitle: string;
 	pdfDownloadPath: string | null;
@@ -76,10 +76,11 @@ export default function IndicatorChapterPage({
 			<ProductPageHeading product={product} />
 
 			{product.alert && (
-				<div 
+				<div
 					className="alert-message alert alert--info"
-					data-component="alert--info" role="alert"
-					dangerouslySetInnerHTML={{ __html: product.alert + "indicators\\slug\\chapter\\chapterslug - seen for publications"}}
+					data-component="alert--info"
+					role="alert"
+					dangerouslySetInnerHTML={{ __html: product.alert }}
 				/>
 			)}
 
@@ -211,7 +212,7 @@ export const getServerSideProps: GetServerSideProps<
 				productTypeName,
 				publishedDate,
 				title,
-				alert: product.alert
+				alert: product.alert,
 			},
 			chapters,
 			chapterHTML: chapterContent.content,

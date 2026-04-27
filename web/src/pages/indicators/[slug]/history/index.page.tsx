@@ -24,7 +24,7 @@ import {
 
 export type HistoryPageProps = {
 	productPath: string;
-	product: ProductPageHeadingProps["product"] & Pick< ProductDetail, | "alert" >;
+	product: ProductPageHeadingProps["product"] & Pick<ProductDetail, "alert">;
 	project: Pick<ProjectDetail, "reference" | "title"> & {
 		groups: ResourceGroupViewModel[];
 	};
@@ -59,10 +59,11 @@ export default function HistoryPage({
 			<ProductPageHeading product={product} />
 
 			{product.alert && (
-				<div 
+				<div
 					className="alert-message alert alert--info"
-					data-component="alert--info" role="alert"
-					dangerouslySetInnerHTML={{ __html: product.alert+"indicators\\slug\\history - seen for publications" }}
+					data-component="alert--info"
+					role="alert"
+					dangerouslySetInnerHTML={{ __html: product.alert }}
 				/>
 			)}
 

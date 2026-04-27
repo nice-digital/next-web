@@ -91,10 +91,11 @@ export default function DocumentsChapterHTMLPage({
 			/>
 
 			{project.alert && (
-				<div 
+				<div
 					className="alert-message alert alert--info"
-					data-component="alert--info" role="alert"
-					dangerouslySetInnerHTML={{ __html: project.alert + "indicators\\indevelopment\\slug\\documents\\resourcetitleid\\chapter\\xchapterslug - seen for indev" }}
+					data-component="alert--info"
+					role="alert"
+					dangerouslySetInnerHTML={{ __html: project.alert }}
 				/>
 			)}
 
@@ -215,7 +216,7 @@ export const getServerSideProps: GetServerSideProps<
 				reference,
 				status,
 				title,
-				alert: project.alert
+				alert: project.alert,
 			},
 			resource: {
 				chapters: resourceFileHTML.chapters || [],

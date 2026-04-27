@@ -33,7 +33,7 @@ import styles from "./index.page.module.scss";
 
 export type HistoryHTMLPageProps = {
 	lastUpdated: string;
-	product: ProductPageHeadingProps["product"] & Pick < ProductDetail, | "alert" >;
+	product: ProductPageHeadingProps["product"] & Pick<ProductDetail, "alert">;
 	productHorizontalNav: {
 		hasEvidenceResources: boolean;
 		hasHistory: boolean;
@@ -80,10 +80,11 @@ export default function HistoryHTMLPage({
 			<ProductPageHeading product={product} />
 
 			{product.alert && (
-				<div 
+				<div
 					className="alert-message alert alert--info"
-					data-component="alert--info" role="alert"
-					dangerouslySetInnerHTML={{ __html: product.alert + "indicators\\slug\\history\\htmlpath - seen for publications"}}
+					data-component="alert--info"
+					role="alert"
+					dangerouslySetInnerHTML={{ __html: product.alert }}
 				/>
 			)}
 

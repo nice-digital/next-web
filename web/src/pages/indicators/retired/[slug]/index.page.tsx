@@ -23,7 +23,11 @@ export type RetiredDetailsPageProps = {
 	product: ProductPageHeadingProps["product"] &
 		Pick<
 			ProductDetail,
-			"metaDescription" | "indicatorSubTypeList" | "summary" | "productStatus" | "alert"
+			| "metaDescription"
+			| "indicatorSubTypeList"
+			| "summary"
+			| "productStatus"
+			| "alert"
 		>;
 	guidanceOrIndicatorBreadcrumb: {
 		label: string;
@@ -99,10 +103,14 @@ export default function RetiredDetailsPage({
 			<ProductPageHeading product={product} />
 
 			{product.alert && (
-				<div 
+				<div
 					className="alert-message alert alert--info"
-					data-component="alert--info" role="alert"
-					dangerouslySetInnerHTML={{ __html: product.alert + "indicators\\retired\\slug - not been seen yet"}}
+					data-component="alert--info"
+					role="alert"
+					dangerouslySetInnerHTML={{
+						__html:
+							product.alert + "indicators\\retired\\slug - not been seen yet",
+					}}
 				/>
 			)}
 
@@ -167,7 +175,7 @@ export const getServerSideProps: GetServerSideProps<
 				metaDescription: product.metaDescription,
 				summary: product.summary,
 				productStatus: product.productStatus,
-				alert: product.alert
+				alert: product.alert,
 			},
 			guidanceOrIndicatorBreadcrumb,
 			indicatorSubTypes,
