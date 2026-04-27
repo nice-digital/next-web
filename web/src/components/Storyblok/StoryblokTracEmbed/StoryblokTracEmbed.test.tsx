@@ -122,7 +122,7 @@ describe("StoryblokTracEmbed", () => {
 			expect.objectContaining({
 				integrityKey: false,
 			}),
-			"TRAC embed configuration invalid or missing"
+			"Job board embed configuration missing or incorrect"
 		);
 	});
 
@@ -138,7 +138,7 @@ describe("StoryblokTracEmbed", () => {
 			expect.objectContaining({
 				version: undefined,
 			}),
-			"TRAC embed configuration invalid or missing"
+			"Job board embed configuration missing or incorrect"
 		);
 	});
 });

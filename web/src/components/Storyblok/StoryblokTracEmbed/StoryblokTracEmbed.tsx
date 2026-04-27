@@ -73,7 +73,7 @@ export const StoryblokTracEmbed: React.FC<TracEmbedProps> = ({ blok }) => {
 				integrityKey: Boolean(integrityKey),
 				jobBoardID: Boolean(jobBoardID),
 			},
-			"TRAC embed configuration invalid or missing"
+			"Job board embed configuration missing or incorrect"
 		);
 		return <div>We are unable to load job listings at the moment.</div>;
 	}
