@@ -4,6 +4,7 @@ import React from "react";
 
 import { Breadcrumbs, Breadcrumb } from "@nice-digital/nds-breadcrumbs";
 
+import { InfoAlert } from "@/components/InfoAlert/InfoAlert";
 import { Link } from "@/components/Link/Link";
 import { ProjectHorizontalNav } from "@/components/ProjectHorizontalNav/ProjectHorizontalNav";
 import { ProjectPageHeading } from "@/components/ProjectPageHeading/ProjectPageHeading";
@@ -72,18 +73,12 @@ export default function ConsultationHTMLPage({
 				indevStakeholderRegistration={indevStakeholderRegistration}
 				shouldUseNewConsultationComments={shouldUseNewConsultationComments}
 			/>
-			{alert && (
-				<div
-					className="alert-message alert alert--info"
-					data-component="alert--info"
-					role="alert"
-					dangerouslySetInnerHTML={{
-						__html:
-							alert +
-							"indicators\\indevelopment\\slug\\consultations - not been seen yet",
-					}}
-				/>
-			)}
+			<InfoAlert
+				alert={
+					alert +
+					"indicators\\indevelopment\\slug\\consultations - not been seen yet"
+				}
+			/>
 			<ProjectHorizontalNav
 				projectPath={projectPath}
 				hasDocuments

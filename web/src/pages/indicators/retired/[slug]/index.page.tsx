@@ -4,6 +4,7 @@ import { NextSeo } from "next-seo";
 import { Breadcrumb, Breadcrumbs } from "@nice-digital/nds-breadcrumbs";
 import { Grid, GridItem } from "@nice-digital/nds-grid";
 
+import { InfoAlert } from "@/components/InfoAlert/InfoAlert";
 import {
 	ProductPageHeading,
 	type ProductPageHeadingProps,
@@ -102,17 +103,9 @@ export default function RetiredDetailsPage({
 
 			<ProductPageHeading product={product} />
 
-			{product.alert && (
-				<div
-					className="alert-message alert alert--info"
-					data-component="alert--info"
-					role="alert"
-					dangerouslySetInnerHTML={{
-						__html:
-							product.alert + "indicators\\retired\\slug - not been seen yet",
-					}}
-				/>
-			)}
+			<InfoAlert
+				alert={product.alert + "indicators\\retired\\slug - not been seen yet"}
+			/>
 
 			<hr className={styles.hrCustomTab} />
 

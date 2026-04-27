@@ -1,0 +1,15 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`InfoAlert should match snapshot when alert is null 1`] = `<div />`;
+
+exports[`InfoAlert should match snapshot when we have an alert 1`] = `
+<div>
+  <div
+    class="alert alert--info"
+    data-component="alert--info"
+    role="alert"
+  >
+    Test Info Alert
+  </div>
+</div>
+`;

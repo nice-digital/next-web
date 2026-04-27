@@ -14,6 +14,8 @@ import { PublicationsPrevNext } from "@/components/PublicationsPrevNext/Publicat
 import { formatDateStr, stripTime } from "@/utils/datetime";
 import { ResourceTypeSlug } from "@/utils/resource";
 
+import { InfoAlert } from "../InfoAlert/InfoAlert";
+
 import styles from "./ProductResourcePage.module.scss";
 
 export { type ProductResourcePageProps } from "./ProductResourcePage.getServerSideProps";
@@ -70,14 +72,7 @@ export const ProductResourcePage: FC<ProductResourcePageProps> = ({
 
 			<ProductPageHeading product={product} />
 
-			{product.alert && (
-				<div
-					className="alert-message alert alert--info"
-					data-component="alert--info"
-					role="alert"
-					dangerouslySetInnerHTML={{ __html: product.alert }}
-				/>
-			)}
+			<InfoAlert alert={product.alert} />
 
 			<ProductHorizontalNav
 				productTypeName="Indicator"

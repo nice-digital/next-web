@@ -5,6 +5,7 @@ import React from "react";
 import { Breadcrumbs, Breadcrumb } from "@nice-digital/nds-breadcrumbs";
 
 import { ConvertedDocument } from "@/components/ConvertedDocument/ConvertedDocument";
+import { InfoAlert } from "@/components/InfoAlert/InfoAlert";
 import { Link } from "@/components/Link/Link";
 import { ProjectHorizontalNav } from "@/components/ProjectHorizontalNav/ProjectHorizontalNav";
 import { ProjectPageHeading } from "@/components/ProjectPageHeading/ProjectPageHeading";
@@ -90,14 +91,7 @@ export default function DocumentsChapterHTMLPage({
 				indevStakeholderRegistration={indevStakeholderRegistration}
 			/>
 
-			{project.alert && (
-				<div
-					className="alert-message alert alert--info"
-					data-component="alert--info"
-					role="alert"
-					dangerouslySetInnerHTML={{ __html: project.alert }}
-				/>
-			)}
+			<InfoAlert alert={project.alert} />
 
 			<ProjectHorizontalNav
 				projectPath={projectPath}

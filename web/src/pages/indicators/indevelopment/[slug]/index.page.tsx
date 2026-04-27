@@ -5,6 +5,7 @@ import { Breadcrumbs, Breadcrumb } from "@nice-digital/nds-breadcrumbs";
 import { Grid, GridItem } from "@nice-digital/nds-grid";
 
 import { DefinitionList } from "@/components/DefinitionList/DefinitionList";
+import { InfoAlert } from "@/components/InfoAlert/InfoAlert";
 import { Link } from "@/components/Link/Link";
 import { ProjectConsultationDocumentsLink } from "@/components/ProjectConsultationDocumentsLink/ProjectConsultationDocuments";
 import { ProjectHorizontalNav } from "@/components/ProjectHorizontalNav/ProjectHorizontalNav";
@@ -135,14 +136,7 @@ export default function InDevelopmentPage(
 
 			<ProjectPageHeading {...props} />
 
-			{alert && (
-				<div
-					className="alert-message alert alert--info"
-					data-component="alert--info"
-					role="alert"
-					dangerouslySetInnerHTML={{ __html: alert }}
-				/>
-			)}
+			<InfoAlert alert={alert} />
 
 			<ProjectHorizontalNav
 				projectPath={projectPath}

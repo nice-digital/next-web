@@ -12,6 +12,7 @@ import { PublicationsChapterMenu } from "@/components/PublicationsChapterMenu/Pu
 import { PublicationsPrevNext } from "@/components/PublicationsPrevNext/PublicationsPrevNext";
 import { formatDateStr, stripTime } from "@/utils/datetime";
 
+import { InfoAlert } from "../InfoAlert/InfoAlert";
 import { OnThisPageBasic } from "../OnThisPageBasic/OnThisPageBasic";
 
 import { type ProductResourceChapterPageProps } from "./ProductResourceChapterPage.getServerSideProps";
@@ -65,14 +66,7 @@ export const ProductResourceChapterPage: FC<
 
 			<ProductPageHeading product={product} />
 
-			{product.alert && (
-				<div
-					className="alert-message alert alert--info"
-					data-component="alert--info"
-					role="alert"
-					dangerouslySetInnerHTML={{ __html: product.alert }}
-				/>
-			)}
+			<InfoAlert alert={product.alert} />
 
 			<ProductHorizontalNav
 				productTypeName="Indicator"

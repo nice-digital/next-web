@@ -4,6 +4,7 @@ import { NextSeo } from "next-seo";
 import { Breadcrumb, Breadcrumbs } from "@nice-digital/nds-breadcrumbs";
 import { Grid, GridItem } from "@nice-digital/nds-grid";
 
+import { InfoAlert } from "@/components/InfoAlert/InfoAlert";
 import {
 	OnThisPageBasic,
 	type OnThisPageBasicSection,
@@ -75,14 +76,7 @@ export default function IndicatorChapterPage({
 
 			<ProductPageHeading product={product} />
 
-			{product.alert && (
-				<div
-					className="alert-message alert alert--info"
-					data-component="alert--info"
-					role="alert"
-					dangerouslySetInnerHTML={{ __html: product.alert }}
-				/>
-			)}
+			<InfoAlert alert={product.alert} />
 
 			<ProductHorizontalNav
 				productTypeName="Indicator"

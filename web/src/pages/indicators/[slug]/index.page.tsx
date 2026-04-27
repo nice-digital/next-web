@@ -5,6 +5,7 @@ import { Breadcrumb, Breadcrumbs } from "@nice-digital/nds-breadcrumbs";
 import { Grid, GridItem } from "@nice-digital/nds-grid";
 
 import { EndorsingOrganisations } from "@/components/EndorsingOrganisations/EndorsingOrganisations";
+import { InfoAlert } from "@/components/InfoAlert/InfoAlert";
 import { LogosList } from "@/components/LogosList/LogosList";
 import { ProductHorizontalNav } from "@/components/ProductHorizontalNav/ProductHorizontalNav";
 import {
@@ -131,14 +132,7 @@ export default function IndicatorsDetailsPage({
 
 			<ProductPageHeading product={product} />
 
-			{product.alert && (
-				<div
-					className="alert-message alert alert--info"
-					data-component="alert--info"
-					role="alert"
-					dangerouslySetInnerHTML={{ __html: product.alert }}
-				/>
-			)}
+			<InfoAlert alert={product.alert} />
 
 			<ProductHorizontalNav
 				productTypeName="Indicator"
