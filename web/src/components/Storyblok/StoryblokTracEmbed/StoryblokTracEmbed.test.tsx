@@ -7,7 +7,7 @@ import { TracEmbedStoryblok } from "@/types/storyblok";
 import { StoryblokTracEmbed } from "./StoryblokTracEmbed";
 
 jest.mock("@/logger", () => ({
-	logger: { error: jest.fn(), info: jest.fn() },
+	logger: { error: jest.fn(), info: jest.fn(), warn: jest.fn() },
 }));
 
 type Writable<T> = {
@@ -117,8 +117,8 @@ describe("StoryblokTracEmbed", () => {
 
 		render(<StoryblokTracEmbed blok={mockTracEmbed} />);
 
-		expect(logger.error as jest.Mock).toHaveBeenCalled();
-		expect(logger.error).toHaveBeenCalledWith(
+		expect(logger.warn as jest.Mock).toHaveBeenCalled();
+		expect(logger.warn).toHaveBeenCalledWith(
 			expect.objectContaining({
 				integrityKey: false,
 			}),
@@ -133,8 +133,8 @@ describe("StoryblokTracEmbed", () => {
 
 		render(<StoryblokTracEmbed blok={mockTracEmbed} />);
 
-		expect(logger.error as jest.Mock).toHaveBeenCalled();
-		expect(logger.error).toHaveBeenCalledWith(
+		expect(logger.warn as jest.Mock).toHaveBeenCalled();
+		expect(logger.warn).toHaveBeenCalledWith(
 			expect.objectContaining({
 				version: undefined,
 			}),

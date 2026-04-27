@@ -67,7 +67,7 @@ export const StoryblokTracEmbed: React.FC<TracEmbedProps> = ({ blok }) => {
 	}, []);
 
 	if (isInvalidConfig) {
-		logger.error(
+		logger.warn(
 			{
 				version,
 				integrityKey: Boolean(integrityKey),
