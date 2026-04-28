@@ -103,7 +103,6 @@ export default function RetiredDetailsPage({
 
 			<ProductPageHeading product={product} />
 
-			{/* not been seen yet */}
 			<InfoAlert alert={product.alert} />
 
 			<hr className={styles.hrCustomTab} />

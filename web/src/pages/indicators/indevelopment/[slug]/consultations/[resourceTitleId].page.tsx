@@ -76,7 +76,6 @@ export default function ConsultationHTMLPage({
 				indevStakeholderRegistration={indevStakeholderRegistration}
 				shouldUseNewConsultationComments={shouldUseNewConsultationComments}
 			/>
-			{/* not been seen yet */}
 			<InfoAlert alert={project.alert} />
 			<ProjectHorizontalNav
 				projectPath={projectPath}
