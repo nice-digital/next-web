@@ -283,6 +283,8 @@ export interface CategoryLandingPageStoryblok {
     | CardListSectionStoryblok
     | TestimonialFullWidthStoryblok
     | CardGridSectionStoryblok
+    | YoutubeEmbedStoryblok
+    | NestedRichTextStoryblok
   )[];
   component: "categoryLandingPage";
   _uid: string;
