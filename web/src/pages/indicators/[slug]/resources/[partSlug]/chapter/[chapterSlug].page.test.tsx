@@ -52,7 +52,7 @@ describe("/product/[slug]/resources/[partSlug]/chapter/[chapterSlug].page", () =
 		});
 
 		describe("InfoAlert", () => {
-			it("should not appear when alert is null", async () => {
+			it("should not appear when alert is null or undefined", async () => {
 				const result = await getServerSideProps(getServerSidePropsContext);
 
 				if ("notFound" in result || "redirect" in result) {
@@ -60,7 +60,14 @@ describe("/product/[slug]/resources/[partSlug]/chapter/[chapterSlug].page", () =
 				}
 
 				const props = await Promise.resolve(result.props);
-				render(<ProductResourceChapterPage {...props} />);
+				const propsWithoutAlert = {
+					...props,
+					product: {
+						...props.product,
+						alert: null,
+					},
+				};
+				render(<ProductResourceChapterPage {...propsWithoutAlert} />);
 				expect(screen.queryByText("Info alert")).not.toBeInTheDocument();
 			});
 

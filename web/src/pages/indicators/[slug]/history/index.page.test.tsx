@@ -61,8 +61,15 @@ describe("/indicators/[slug]/history", () => {
 		});
 
 		describe("InfoAlert", () => {
-			it("should not appear when alert is null", () => {
-				render(<HistoryPage {...props} />);
+			it("should not appear when alert is null or undefined", () => {
+				const propsWithoutAlert = {
+					...props,
+					product: {
+						...props.product,
+						alert: null,
+					},
+				};
+				render(<HistoryPage {...propsWithoutAlert} />);
 				expect(screen.queryByText("Info alert")).not.toBeInTheDocument();
 			});
 

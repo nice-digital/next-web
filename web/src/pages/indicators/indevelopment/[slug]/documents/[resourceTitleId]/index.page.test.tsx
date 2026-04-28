@@ -190,8 +190,15 @@ describe("[resourceTitleId].page", () => {
 		});
 
 		describe("InfoAlert", () => {
-			it("should not appear when alert is null", () => {
-				render(<DocumentsHTMLPage {...props} />);
+			it("should not appear when alert is null or undefined", () => {
+				const propsWithoutAlert = {
+					...props,
+					project: {
+						...props.project,
+						alert: null,
+					},
+				};
+				render(<DocumentsHTMLPage {...propsWithoutAlert} />);
 				expect(screen.queryByText("Info alert")).not.toBeInTheDocument();
 			});
 

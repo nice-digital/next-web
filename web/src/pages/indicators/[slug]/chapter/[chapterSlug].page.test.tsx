@@ -69,8 +69,15 @@ describe("/indicators/[slug]/chapter/[chapterSlug].page", () => {
 		});
 
 		describe("InfoAlert", () => {
-			it("should not appear when alert is null", () => {
-				render(<IndicatorChapterPage {...props} />);
+			it("should not appear when alert is null or undefined", () => {
+				const propsWithoutAlert = {
+					...props,
+					product: {
+						...props.product,
+						alert: null,
+					},
+				};
+				render(<IndicatorChapterPage {...propsWithoutAlert} />);
 				expect(screen.queryByText("Info alert")).not.toBeInTheDocument();
 			});
 

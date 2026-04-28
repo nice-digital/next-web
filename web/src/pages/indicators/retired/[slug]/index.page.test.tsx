@@ -54,8 +54,15 @@ describe("/indicators/retired/[slug]/index.page", () => {
 		});
 
 		describe("InfoAlert", () => {
-			it("should not appear when alert is null", () => {
-				render(<RetiredDetailsPage {...props} />);
+			it("should not appear when alert is null or undefined", () => {
+				const propsWithoutAlert = {
+					...props,
+					product: {
+						...props.product,
+						alert: null,
+					},
+				};
+				render(<RetiredDetailsPage {...propsWithoutAlert} />);
 				expect(screen.queryByText("Info alert")).not.toBeInTheDocument();
 			});
 

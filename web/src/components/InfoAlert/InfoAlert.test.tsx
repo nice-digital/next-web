@@ -16,7 +16,7 @@ describe("InfoAlert", () => {
 		expect(container).toMatchSnapshot();
 	});
 
-	it("should match snapshot when alert is null", () => {
+	it("should match snapshot when alert is null or undefined", () => {
 		const { container } = render(<InfoAlert {...propsWithoutAlert} />);
 		expect(container).toMatchSnapshot();
 	});

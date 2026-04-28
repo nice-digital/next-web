@@ -118,8 +118,15 @@ describe("Publication tools and resources page", () => {
 		});
 
 		describe("InfoAlert", () => {
-			it("should not appear when alert is null", () => {
-				render(<ToolsAndResourcesListPage {...props} />);
+			it("should not appear when alert is null or undefined", () => {
+				const propsWithoutAlert = {
+					...props,
+					product: {
+						...props.product,
+						alert: null,
+					},
+				};
+				render(<ToolsAndResourcesListPage {...propsWithoutAlert} />);
 				expect(screen.queryByText("Info alert")).not.toBeInTheDocument();
 			});
 

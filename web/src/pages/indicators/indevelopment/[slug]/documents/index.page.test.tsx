@@ -54,8 +54,15 @@ describe("/indicators/indevelopment/[slug]/documents", () => {
 		});
 
 		describe("InfoAlert", () => {
-			it("should not appear when alert is null", () => {
-				render(<DocumentsPage {...props} />);
+			it("should not appear when alert is null or undefined", () => {
+				const propsWithoutAlert = {
+					...props,
+					project: {
+						...props.project,
+						alert: null,
+					},
+				};
+				render(<DocumentsPage {...propsWithoutAlert} />);
 				expect(screen.queryByText("Info alert")).not.toBeInTheDocument();
 			});
 

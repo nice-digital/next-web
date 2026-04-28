@@ -173,8 +173,15 @@ describe("[chapterSlug].page", () => {
 		});
 
 		describe("InfoAlert", () => {
-			it("should not appear when alert is null", () => {
-				render(<ConvertedDocumentPage {...props} />);
+			it("should not appear when alert is null or undefined", () => {
+				const propsWithoutAlert = {
+					...props,
+					project: {
+						...props.project,
+						alert: null,
+					},
+				};
+				render(<ConvertedDocumentPage {...propsWithoutAlert} />);
 				expect(screen.queryByText("Info alert")).not.toBeInTheDocument();
 			});
 

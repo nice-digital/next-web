@@ -59,8 +59,15 @@ describe("ProductResourcePage", () => {
 	});
 
 	describe("InfoAlert", () => {
-		it("should not appear when alert is null", () => {
-			render(<ProductResourcePage {...props} />);
+		it("should not appear when alert is null or undefined", () => {
+			const propsWithoutAlert = {
+				...props,
+				product: {
+					...props.product,
+					alert: null,
+				},
+			};
+			render(<ProductResourcePage {...propsWithoutAlert} />);
 			expect(screen.queryByText("Info alert")).not.toBeInTheDocument();
 		});
 
