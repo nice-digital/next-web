@@ -1,11 +1,13 @@
+import { render, screen } from "@testing-library/react";
 import { type GetServerSidePropsContext } from "next";
+import { useRouter } from "next/router";
 
 import { FeedPath } from "@/feeds/publications/types";
 import { logger } from "@/logger";
 import ng100 from "@/mockData/publications/feeds/product/ng100.json";
 import { addDefaultJSONFeedMocks, axiosJSONMock } from "@/test-utils/feeds";
 
-import { getServerSideProps } from "./index.page";
+import ProductResourcePage, { getServerSideProps } from "./index.page";
 
 jest.mock("@/logger", () => ({
 	logger: { info: jest.fn(), warn: jest.fn() },
@@ -40,6 +42,47 @@ const getServerSidePropsContext = {
 } as unknown as GetServerSidePropsContext<Params>;
 
 describe("/indicators/resources/[partSlug]", () => {
+	beforeEach(() => {
+		(useRouter as jest.Mock).mockReturnValue({
+			asPath: resolvedUrl,
+		});
+	});
+	describe("ProductResourcePage", () => {
+		describe("InfoAlert", () => {
+			it("should not appear when alert is null", async () => {
+				const result = await getServerSideProps(getServerSidePropsContext);
+
+				if ("notFound" in result || "redirect" in result) {
+					throw Error(`Expected props not notFound or redirect`);
+				}
+
+				const props = await Promise.resolve(result.props);
+				render(<ProductResourcePage {...props} />);
+				expect(screen.queryByText("Info alert")).not.toBeInTheDocument();
+			});
+
+			it("should appear when we have an alert", async () => {
+				const result = await getServerSideProps(getServerSidePropsContext);
+
+				if ("notFound" in result || "redirect" in result) {
+					throw Error(`Expected props not notFound or redirect`);
+				}
+
+				const props = await Promise.resolve(result.props);
+				const propsWithAlert = {
+					...props,
+					product: {
+						...props.product,
+						alert: "Info alert",
+					},
+				};
+
+				render(<ProductResourcePage {...propsWithAlert} />);
+				expect(screen.getByText("Info alert")).toBeInTheDocument();
+			});
+		});
+	});
+
 	describe("getServerSideProps", () => {
 		it("should return not found when product has no resources", async () => {
 			axiosJSONMock.reset();
