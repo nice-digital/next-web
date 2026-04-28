@@ -3,6 +3,7 @@ import { NextSeo } from "next-seo";
 
 import { Breadcrumb, Breadcrumbs } from "@nice-digital/nds-breadcrumbs";
 
+import { InfoAlert } from "@/components/InfoAlert/InfoAlert";
 import { Link } from "@/components/Link/Link";
 import { ProductHorizontalNav } from "@/components/ProductHorizontalNav/ProductHorizontalNav";
 import {
@@ -11,6 +12,7 @@ import {
 } from "@/components/ProductPageHeading/ProductPageHeading";
 import { ResourceList } from "@/components/ResourceList/ResourceList";
 import { getResourceDetails } from "@/feeds/publications/publications";
+import { ProductDetail } from "@/feeds/publications/types";
 import { logger } from "@/logger";
 import {
 	redirectWithdrawnProducts,
@@ -25,7 +27,7 @@ import {
 export type ToolsAndResourcesListPageProps = {
 	resourceGroups: ResourceGroupViewModel[];
 	productPath: string;
-	product: ProductPageHeadingProps["product"];
+	product: ProductPageHeadingProps["product"] & Pick<ProductDetail, "alert">;
 	hasToolsAndResources: boolean;
 	hasInfoForPublicResources: boolean;
 	hasEvidenceResources: boolean;
@@ -57,6 +59,8 @@ export default function ToolsAndResourcesListPage({
 			</Breadcrumbs>
 
 			<ProductPageHeading product={product} />
+
+			<InfoAlert alert={product.alert} />
 
 			<ProductHorizontalNav
 				productTypeName="Indicator"
@@ -132,6 +136,7 @@ export const getServerSideProps: GetServerSideProps<
 				productTypeName: product.productTypeName,
 				publishedDate: product.publishedDate,
 				title: product.title,
+				alert: product.alert,
 			},
 		},
 	};

@@ -174,6 +174,32 @@ describe("/indicators/[slug].page", () => {
 			});
 		});
 
+		describe("InfoAlert", () => {
+			it("should not appear when alert is null or undefined", () => {
+				const propsWithoutAlert = {
+					...props,
+					product: {
+						...props.product,
+						alert: null,
+					},
+				};
+				render(<IndicatorsDetailsPage {...propsWithoutAlert} />);
+				expect(screen.queryByText("Info alert")).not.toBeInTheDocument();
+			});
+
+			it("should appear when we have an alert", () => {
+				const propsWithAlert = {
+					...props,
+					product: {
+						...props.product,
+						alert: "Info alert",
+					},
+				};
+				render(<IndicatorsDetailsPage {...propsWithAlert} />);
+				expect(screen.getByText("Info alert")).toBeInTheDocument();
+			});
+		});
+
 		describe("Chapter menu", () => {
 			it("should render overview chapter link when summary provided", () => {
 				render(

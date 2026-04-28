@@ -14,7 +14,8 @@ import { PublicationsPrevNext } from "@/components/PublicationsPrevNext/Publicat
 import { formatDateStr, stripTime } from "@/utils/datetime";
 import { ResourceTypeSlug } from "@/utils/resource";
 
-import { type ProductResourcePageProps } from "./ProductResourcePage.getServerSideProps";
+import { InfoAlert } from "../InfoAlert/InfoAlert";
+
 import styles from "./ProductResourcePage.module.scss";
 
 export { type ProductResourcePageProps } from "./ProductResourcePage.getServerSideProps";
@@ -70,6 +71,8 @@ export const ProductResourcePage: FC<ProductResourcePageProps> = ({
 			</Breadcrumbs>
 
 			<ProductPageHeading product={product} />
+
+			<InfoAlert alert={product.alert} />
 
 			<ProductHorizontalNav
 				productTypeName="Indicator"

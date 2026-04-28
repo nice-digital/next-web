@@ -58,6 +58,32 @@ describe("ProductResourcePage", () => {
 		expect(container).toMatchSnapshot();
 	});
 
+	describe("InfoAlert", () => {
+		it("should not appear when alert is null or undefined", () => {
+			const propsWithoutAlert = {
+				...props,
+				product: {
+					...props.product,
+					alert: null,
+				},
+			};
+			render(<ProductResourcePage {...propsWithoutAlert} />);
+			expect(screen.queryByText("Info alert")).not.toBeInTheDocument();
+		});
+
+		it("should appear when we have an alert", () => {
+			const propsWithAlert = {
+				...props,
+				product: {
+					...props.product,
+					alert: "Info alert",
+				},
+			};
+			render(<ProductResourcePage {...propsWithAlert} />);
+			expect(screen.getByText("Info alert")).toBeInTheDocument();
+		});
+	});
+
 	it.each([
 		[ResourceTypeSlug.ToolsAndResources, "Tools and resources"],
 		[ResourceTypeSlug.Evidence, "Evidence"],

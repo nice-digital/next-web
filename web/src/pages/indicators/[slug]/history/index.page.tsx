@@ -3,8 +3,12 @@ import { NextSeo } from "next-seo";
 
 import { Breadcrumb, Breadcrumbs } from "@nice-digital/nds-breadcrumbs";
 
+import { InfoAlert } from "@/components/InfoAlert/InfoAlert";
 import { ProductHorizontalNav } from "@/components/ProductHorizontalNav/ProductHorizontalNav";
-import { ProductPageHeading } from "@/components/ProductPageHeading/ProductPageHeading";
+import {
+	ProductPageHeading,
+	type ProductPageHeadingProps,
+} from "@/components/ProductPageHeading/ProductPageHeading";
 import { ResourceList } from "@/components/ResourceList/ResourceList";
 import { ProjectDetail } from "@/feeds/inDev/inDev";
 import { ProductDetail } from "@/feeds/publications/types";
@@ -21,14 +25,7 @@ import {
 
 export type HistoryPageProps = {
 	productPath: string;
-	product: Pick<
-		ProductDetail,
-		| "id"
-		| "title"
-		| "productTypeName"
-		| "publishedDate"
-		| "lastMajorModificationDate"
-	>;
+	product: ProductPageHeadingProps["product"] & Pick<ProductDetail, "alert">;
 	project: Pick<ProjectDetail, "reference" | "title"> & {
 		groups: ResourceGroupViewModel[];
 	};
@@ -61,6 +58,8 @@ export default function HistoryPage({
 			</Breadcrumbs>
 
 			<ProductPageHeading product={product} />
+
+			<InfoAlert alert={product.alert} />
 
 			<ProductHorizontalNav
 				productTypeName="Indicator"
@@ -170,6 +169,7 @@ export const getServerSideProps: GetServerSideProps<
 				productTypeName: product.productTypeName,
 				publishedDate: product.publishedDate,
 				lastMajorModificationDate: product.lastMajorModificationDate,
+				alert: product.alert,
 			},
 			project: {
 				reference: project.reference,

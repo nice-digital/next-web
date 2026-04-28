@@ -1,4 +1,4 @@
-import { render } from "@testing-library/react";
+import { render, screen } from "@testing-library/react";
 import { GetServerSidePropsContext } from "next";
 import { useRouter } from "next/router";
 
@@ -49,6 +49,47 @@ describe("/product/[slug]/resources/[partSlug]/chapter/[chapterSlug].page", () =
 				{ container } = render(<ProductResourceChapterPage {...props} />);
 
 			expect(container).toMatchSnapshot();
+		});
+
+		describe("InfoAlert", () => {
+			it("should not appear when alert is null or undefined", async () => {
+				const result = await getServerSideProps(getServerSidePropsContext);
+
+				if ("notFound" in result || "redirect" in result) {
+					throw Error(`Expected props not notFound or redirect`);
+				}
+
+				const props = await Promise.resolve(result.props);
+				const propsWithoutAlert = {
+					...props,
+					product: {
+						...props.product,
+						alert: null,
+					},
+				};
+				render(<ProductResourceChapterPage {...propsWithoutAlert} />);
+				expect(screen.queryByText("Info alert")).not.toBeInTheDocument();
+			});
+
+			it("should appear when we have an alert", async () => {
+				const result = await getServerSideProps(getServerSidePropsContext);
+
+				if ("notFound" in result || "redirect" in result) {
+					throw Error(`Expected props not notFound or redirect`);
+				}
+
+				const props = await Promise.resolve(result.props);
+				const propsWithAlert = {
+					...props,
+					product: {
+						...props.product,
+						alert: "Info alert",
+					},
+				};
+
+				render(<ProductResourceChapterPage {...propsWithAlert} />);
+				expect(screen.getByText("Info alert")).toBeInTheDocument();
+			});
 		});
 	});
 
