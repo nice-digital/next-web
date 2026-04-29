@@ -8,8 +8,20 @@ import { Link } from "@/components/Link/Link";
 import { StoryblokImage } from "@/components/Storyblok/StoryblokImage/StoryblokImage";
 import { StoryblokYoutubeEmbed } from "@/components/Storyblok/StoryblokYoutubeEmbed/StoryblokYoutubeEmbed";
 import { NewsStory } from "@/types/News";
-import { SpotlightStoryblok, YoutubeEmbedStoryblok } from "@/types/storyblok";
-import { defaultPodcastImage, getNewsType, newsTypes } from "@/utils/storyblok";
+import {
+	RichtextStoryblok,
+	SpotlightStoryblok,
+	YoutubeEmbedStoryblok,
+} from "@/types/storyblok";
+import {
+	defaultPodcastImage,
+	getNewsType,
+	newsTypes,
+	fieldHasValidContent,
+	textFieldHasValidContent,
+} from "@/utils/storyblok";
+
+import { StoryblokRichText } from "../StoryblokRichText/StoryblokRichText";
 
 import styles from "./Spotlight.module.scss";
 
@@ -24,10 +36,23 @@ export const Spotlight: React.FC<SpotlightProps> = ({
 	headingLevel = 2,
 	className,
 }: SpotlightProps) => {
-	const { heading, mediaDescription, youtubeEmbed, isTransparent } = blok;
+	const {
+		heading,
+		mediaDescription,
+		mediaDescriptionRichtext,
+		youtubeEmbed,
+		isTransparent,
+	} = blok;
 
 	// Resolve heading type
 	const HeadingElement = `h${headingLevel}` as keyof JSX.IntrinsicElements;
+
+	const validMediaDescriptionRichText =
+		mediaDescriptionRichtext && fieldHasValidContent(mediaDescriptionRichtext)
+			? mediaDescriptionRichtext
+			: undefined;
+
+	const hasLegacyText = textFieldHasValidContent(mediaDescription);
 
 	// Resolve stories
 	const stories = blok.stories as ISbStoryData<NewsStory>[];
@@ -51,11 +76,15 @@ export const Spotlight: React.FC<SpotlightProps> = ({
 							<StoryblokYoutubeEmbed
 								blok={youtubeEmbed[0] as YoutubeEmbedStoryblok}
 							/>
-							{mediaDescription && (
+							{validMediaDescriptionRichText ? (
+								<figcaption className={styles.caption}>
+									<StoryblokRichText content={validMediaDescriptionRichText} />
+								</figcaption>
+							) : hasLegacyText ? (
 								<figcaption className={styles.caption}>
 									{mediaDescription}
 								</figcaption>
-							)}
+							) : null}
 						</figure>
 					</div>
 					<div className={styles.stories}>
