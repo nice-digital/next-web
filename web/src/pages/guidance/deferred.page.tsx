@@ -84,8 +84,8 @@ export default getProductListPage({
 	useFutureDates: false,
 	dateFilterLabel,
 	textFilterHeading,
-	navigatorsOrder: ["ngt"],
-	navigatorsToCollapse: [],
+	navigatorsOrder: ["ngt", "aty"],
+	navigatorsToCollapse: ["aty"],
 	tableBodyRender,
 	searchInputPlaceholder: "E.g. 'diabetes' or 'NG28'",
 });
