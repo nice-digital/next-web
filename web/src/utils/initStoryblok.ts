@@ -42,6 +42,8 @@ import { StoryblokRichTextTable } from "@/components/Storyblok/StoryblokRichText
 import { StoryblokTable } from "@/components/Storyblok/StoryblokTable/StoryblokTable";
 import { StoryblokTestimonialFullWidth } from "@/components/Storyblok/StoryblokTestimonialFullWidth/StoryblokTestimonialFullWidth";
 import { StoryblokTestimonialGridItem } from "@/components/Storyblok/StoryblokTestimonialGridItem/StoryblokTestimonialGridItem";
+import { ClientTracEmbed } from "@/components/Storyblok/StoryblokTracEmbed/ClientTracEmbed";
+import { StoryblokTracPage } from "@/components/Storyblok/StoryblokTracPage/StoryblokTracPage";
 import { StoryblokYoutubeEmbed } from "@/components/Storyblok/StoryblokYoutubeEmbed/StoryblokYoutubeEmbed";
 import { publicRuntimeConfig } from "@/config";
 import { logger } from "@/logger";
@@ -110,11 +112,18 @@ const infoPageComponents = {
 	orderedList: StoryblokOrderedList,
 	panel: StoryblokPanel,
 	richTextTable: StoryblokRichTextTable,
+	tracEmbed: ClientTracEmbed,
 };
 
 const formPageComponents = {
 	formEmbed: ClientFormEmbed,
 	formPage: FormPage,
+	panel: StoryblokPanel,
+};
+
+const tracPageComponents = {
+	tracPage: StoryblokTracPage,
+	tracEmbed: ClientTracEmbed,
 	panel: StoryblokPanel,
 };
 
@@ -127,6 +136,7 @@ export const allComponents: SbReactComponentsMap = {
 	...homepageComponents,
 	...infoPageComponents,
 	...formPageComponents,
+	...tracPageComponents,
 };
 
 // Init connection to Storyblok
