@@ -10,31 +10,23 @@ import { ResponsiveDate } from "@/components/ResponsiveDate/ResponsiveDate";
 import { publicRuntimeConfig } from "@/config";
 
 const defaultSortOrder = SortOrder.dateDescending,
-	dateFilterLabel = "Decision date",
+	dateFilterLabel = "Terminated date",
 	textFilterHeading = "Keyword or reference number",
 	textFilterLabel = "Keyword or reference number";
 
 const tableBodyRender = (documents: Document[]) => (
 	<>
-		<caption className="visually-hidden">Topic prioritisation</caption>
+		<caption className="visually-hidden">Terminated</caption>
 		<thead>
 			<tr>
 				<th scope="col">Title</th>
-				<th scope="col">Prioritisation programme</th>
-				<th scope="col">Decision</th>
-				<th scope="col">Decision date</th>
+				<th scope="col">Reference number</th>
+				<th scope="col">Terminated date</th>
 			</tr>
 		</thead>
 		<tbody>
 			{documents.map(
-				({
-					id,
-					title,
-					pathAndQuery,
-					technologyType,
-					topicSelectionDecision,
-					topicSelectionDecisionDate,
-				}) => {
+				({ guidanceRef, id, pathAndQuery, terminatedDate, title }) => {
 					return (
 						<tr key={id}>
 							<td>
@@ -43,11 +35,10 @@ const tableBodyRender = (documents: Document[]) => (
 									dangerouslySetInnerHTML={{ __html: title }}
 								/>
 							</td>
-							<td>{technologyType}</td>
-							<td>{topicSelectionDecision || "n/a"}</td>
+							<td>{guidanceRef}</td>
 							<td>
-								{topicSelectionDecisionDate ? (
-									<ResponsiveDate isoDateTime={topicSelectionDecisionDate} />
+								{terminatedDate ? (
+									<ResponsiveDate isoDateTime={terminatedDate} />
 								) : (
 									<abbr title="To be confirmed">TBC</abbr>
 								)}
@@ -61,20 +52,20 @@ const tableBodyRender = (documents: Document[]) => (
 );
 
 export default getProductListPage({
-	metaDescription: "Find out what guidance is being considered for development",
+	metaDescription: "Find out what guidance has been terminated",
 	listNavType: GuidanceListNav,
 	breadcrumbTrail: [
 		<Breadcrumb to="/guidance" key="NICE guidance">
 			NICE guidance
 		</Breadcrumb>,
 	],
-	currentBreadcrumb: "Topic prioritisation",
+	currentBreadcrumb: "Terminated",
 	preheading: "",
-	heading: "Topic prioritisation",
-	title: "Topic prioritisation | Guidance",
+	heading: "Terminated",
+	title: "Terminated | Guidance",
 	defaultSort: {
 		order: defaultSortOrder,
-		label: "Decision date",
+		label: "Terminated date",
 	},
 	secondarySort: {
 		order: SortOrder.titleAscending,
@@ -84,13 +75,14 @@ export default getProductListPage({
 	useFutureDates: false,
 	dateFilterLabel,
 	textFilterHeading,
-	navigatorsOrder: ["tsd", "tt"],
+	navigatorsOrder: ["ngt", "aty"],
+	navigatorsToCollapse: [],
 	tableBodyRender,
 	searchInputPlaceholder: "E.g. 'diabetes' or 'NG28'",
 });
 
 export const getServerSideProps = getGetServerSidePropsFunc({
-	gstPreFilter: "Topic prioritisation",
+	gstPreFilter: "Terminated",
 	defaultSortOrder,
 	dateFilterLabel,
 	textFilterLabel,
