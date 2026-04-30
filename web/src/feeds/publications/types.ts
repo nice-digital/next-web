@@ -572,7 +572,6 @@ export type ProductDetail = ProductAndResourceBase & {
 	audienceList: string[];
 	developedAs: string | null;
 	relevantTo: string[];
-	terminatedAppraisal: null;
 	areasOfInterestList: AreaOfInterest[];
 	indicatorSubTypeList: string[];
 	indicatorOldCode: string;
