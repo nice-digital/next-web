@@ -1,0 +1,295 @@
+/* stylelint-disable selector-class-pattern */
+/* stylelint-disable selector-max-id */
+@use '@nice-digital/nds-core/scss/spacing';
+@use '@nice-digital/nds-core/scss/utils';
+@use '@nice-digital/nds-core/scss/colours';
+@use '@nice-digital/nds-core/scss/typography';
+@use '@nice-digital/nds-core/scss/media-queries';
+
+// Hide the 'my account button' with the assumption that comms can add this in manually into the page outside the Trac snippet
+#hj-account-menu {
+  display: none;
+}
+
+#hj-loading-section {
+  display: none;
+}
+
+#hj-main-section {
+  .breadcrumbs {
+    a {
+      @include typography.link-default;
+
+      &::before {
+        content: 'View ';
+      }
+    }
+
+    .current {
+      display: none;
+    }
+  }
+}
+
+.hj-alert {
+  @include typography.font-size(p);
+  border: 1px solid;
+  font-weight: bold;
+  margin-bottom: utils.rem(spacing.$medium);
+  padding: utils.rem(spacing.$medium);
+
+  p {
+    font-weight: bold;
+  }
+
+  > :first-child {
+    margin-top: 0;
+  }
+
+  > :last-child {
+    margin-bottom: 0;
+  }
+
+  &.hj-alert-info {
+    background-color: colours.$info-background;
+    border-color: colours.$info;
+  }
+
+  &.hj-alert-warning {
+    background-color: colours.$caution-background;
+    border-color: colours.$caution;
+  }
+
+  &.hj-alert-danger {
+    background-color: colours.$error-background;
+    border-color: colours.$error;
+  }
+}
+
+.hj-sorter {
+  margin: utils.rem(spacing.$large 0);
+
+  .form-group {
+    align-items: center;
+    border: 0;
+    display: flex;
+    padding: 0;
+  }
+
+  label {
+    margin-right: utils.rem(spacing.$medium);
+  }
+
+  select {
+    margin: 0;
+  }
+}
+
+.hj-job-list {
+  ol {
+    list-style: none;
+    margin: 0;
+    max-width: none;
+    padding: 0;
+  }
+}
+
+.hj-job {
+  border-bottom: 1px solid colours.$border;
+  margin-bottom: utils.rem(spacing.$medium);
+  padding-bottom: utils.rem(spacing.$medium);
+
+  a {
+    text-decoration: none;
+  }
+}
+
+.hj-jobtitle {
+  @include typography.link-default;
+  @include typography.font-size(1);
+  font-weight: 600;
+  margin-bottom: utils.rem(spacing.$small);
+}
+
+.hj-job-details {
+  @include typography.font-size(-1);
+  color: colours.$card-metadata;
+  display: flex;
+  flex-direction: column;
+
+  .hj-job-detail,
+  .hj-warning {
+    display: flex;
+    margin: utils.rem(0 spacing.$medium spacing.$x-small 0);
+  }
+
+  .hj-locationtown,
+  .hj-salary {
+    display: none;
+  }
+
+  .hj-closingdate {
+    order: 0;
+  }
+
+  .hj-empjobref {
+    order: 5;
+  }
+
+  .hj-field-caption {
+    margin-right: utils.rem(spacing.$small);
+  }
+
+  @include media-queries.mq($from: md) {
+    flex-flow: row wrap;
+  }
+}
+
+#hj-job-summary {
+  .row {
+    display: flex;
+    flex-direction: column;
+  }
+
+  .col-sm-6 {
+    width: 100%;
+  }
+
+  @include media-queries.mq($from: md) {
+    .row {
+      display: flex;
+      flex-flow: row nowrap;
+      gap: utils.rem(spacing.$large);
+
+      &::before,
+      &::after {
+        display: none;
+      }
+    }
+
+    .col-sm-6 {
+      width: 50%;
+    }
+  }
+}
+
+.hj-dl-float {
+  display: flex;
+  flex-flow: row wrap;
+  margin: 0;
+  max-width: utils.rem(650);
+
+  dt,
+  dd {
+    margin: utils.rem(0 0 spacing.$small 0);
+  }
+
+  dt {
+    flex: 0 0 25%;
+    font-weight: bold;
+  }
+
+  dd {
+    flex: 0 0 75%;
+  }
+}
+
+.hj-employer-icons {
+  align-items: center;
+  display: flex;
+  flex-wrap: wrap;
+
+  h3 {
+    flex: 0 0 100%;
+  }
+
+  a {
+    margin-bottom: utils.rem(spacing.$large);
+    margin-right: utils.rem(spacing.$large);
+  }
+
+  @include media-queries.mq($from: md) {
+    a {
+      margin-bottom: 0;
+    }
+  }
+}
+
+.hj-standard-box {
+  margin: utils.rem(0 0 spacing.$large 0);
+}
+
+.hj-apply-online {
+  @include typography.font-size(0);
+  appearance: none;
+  background: colours.$btn-cta;
+  border: utils.rem(1px) solid colours.$btn-cta-border;
+  border-radius: utils.rem(3px);
+  box-shadow: 4px 4px 8px rgb(0 0 0 / 20%);
+  color: colours.$btn-cta-text !important;
+  cursor: pointer;
+  display: inline-block;
+  font-family: inherit;
+  margin: 0;
+  padding: utils.rem(spacing.$small spacing.$medium);
+  position: relative;
+  text-align: left;
+  text-decoration: none !important;
+  vertical-align: top;
+  white-space: nowrap;
+
+  &:visited {
+    color: colours.$btn-cta-text !important;
+  }
+
+  &:hover {
+    background: colours.$btn-cta-hover;
+    box-shadow: 4px 4px 8px rgb(0 0 0 / 20%);
+    color: colours.$btn-cta-text !important;
+  }
+
+  &:focus {
+    background: colours.$btn-cta-hover;
+    color: colours.$btn-cta-text !important;
+  }
+
+  &:active {
+    background: colours.$btn-cta-hover;
+    color: colours.$btn-cta-text !important;
+  }
+}
+
+.hj-job-pager {
+  .pagination {
+    &::before,
+    &::after {
+      display: none;
+    }
+  }
+
+  .page-link {
+    display: none;
+  }
+
+  .ic-pager-next,
+  .ic-pager-previous {
+    @include typography.link-default;
+    background: none;
+    display: block;
+    font-family: typography.get-font-family(sans);
+    padding: utils.rem(spacing.$small 0);
+    text-align: left;
+
+    &:hover {
+      background: none;
+    }
+  }
+}
+
+.hj-job-list > h2:first-of-type {
+  display: none;
+}
+
+.hj-sorter {
+  display: none;
+}
