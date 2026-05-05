@@ -17,11 +17,9 @@ import { InlineTextFilter } from "@/components/InlineTextFilter/InlineTextFilter
 import { SkipLink } from "@/components/SkipLink/SkipLink";
 import { ToFromDateFilters } from "@/components/ToFromDateFilters/ToFromDateFilters";
 
-/** Search returns the order of navigators depending on what's selected but we want them in a consistent order */
-// const navigatorsOrder = ["nai", "tt", "tsd", "ndt", "ngt", "nat"];
-
-/** Some navigators are less used than others so collapse them by default */
-const navigatorsCollapsedByDefault = ["ngt", "nat"];
+/** navigatorsOrder and navigatorsToCollapse props control what filters are included, what order they are in and which are collapsed
+ *  default values are populated in ProductListPage
+ */
 
 export interface SearchListFiltersProps {
 	numActiveModifiers: number;
@@ -31,13 +29,13 @@ export interface SearchListFiltersProps {
 	queryText?: string;
 	from?: string;
 	to?: string;
-	navigatorShortNamesToExclude?: string;
 	showDateFilter: boolean;
 	showTextFilter: boolean;
 	dateFilterLabel?: string;
 	textFilterHeading?: string;
 	useFutureDates?: boolean;
 	navigatorsOrder: KnownOrModifierKeys[];
+	navigatorsToCollapse: KnownOrModifierKeys[];
 	searchInputPlaceholder?: string;
 }
 
@@ -49,13 +47,13 @@ export const SearchListFilters: FC<SearchListFiltersProps> = ({
 	queryText,
 	from,
 	to,
-	navigatorShortNamesToExclude,
 	showDateFilter,
 	showTextFilter,
 	dateFilterLabel,
 	textFilterHeading,
 	useFutureDates,
 	navigatorsOrder,
+	navigatorsToCollapse,
 	searchInputPlaceholder = "E.g. 'diabetes' or 'NG28'",
 }) => {
 	const router = useRouter(),
@@ -152,11 +150,8 @@ export const SearchListFilters: FC<SearchListFiltersProps> = ({
 			)}
 
 			{navigators
-				.filter(
-					(nav) =>
-						!(navigatorShortNamesToExclude || "")
-							.split(",")
-							.includes(nav.shortName)
+				.filter((nav) =>
+					navigatorsOrder.find((order) => nav.shortName === order)
 				)
 				.sort(
 					(a, b) =>
@@ -168,7 +163,9 @@ export const SearchListFilters: FC<SearchListFiltersProps> = ({
 						key={shortName}
 						heading={displayName}
 						id={shortName}
-						collapseByDefault={navigatorsCollapsedByDefault.includes(shortName)}
+						collapseByDefault={navigatorsToCollapse.includes(
+							shortName as KnownOrModifierKeys
+						)}
 						selectedCount={
 							modifiers.filter((modifier) => modifier.active).length
 						}

@@ -84,7 +84,7 @@ export default getProductListPage({
 	useFutureDates: false,
 	dateFilterLabel,
 	textFilterHeading,
-	navigatorShortNamesToExclude: "nai,ndt",
+	navigatorsOrder: ["tsd", "tt"],
 	tableBodyRender,
 	searchInputPlaceholder: "E.g. 'diabetes' or 'NG28'",
 });
