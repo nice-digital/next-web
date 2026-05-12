@@ -62,6 +62,9 @@ server:
     inDev:
       origin: SECRET
       apiKey: SECRET
+    taxonomy:
+      origin: SECRET
+      apiKey: SECRET
     jotForm:
       # Notice how the JotForm base URL is public as it's used in iframes, unlike our internal services. But the API key is still secret as it's used server side
       apiKey: SECRET
