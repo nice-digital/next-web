@@ -87,8 +87,10 @@ export const getProductPath = (
 	>
 ): string => {
 	const { productGroup, productStatus, productType } = product;
-	const retiredProductPath =
-		productStatus === ProductStatus.Retired ? "retired/" : "";
+	const retiredOrTerminated = [ProductStatus.Retired, ProductStatus.Terminated];
+	const retiredOrTerminatedPath = retiredOrTerminated.includes(productStatus)
+		? `${productStatus.toLowerCase()}/`
+		: "";
 	let rootPath: string;
 
 	switch (productGroup) {
@@ -116,7 +118,7 @@ export const getProductPath = (
 			)}`;
 	}
 
-	return `/${rootPath}/${retiredProductPath}${getProductSlug(product)}`;
+	return `/${rootPath}/${retiredOrTerminatedPath}${getProductSlug(product)}`;
 };
 
 export const getPublicationPdfDownloadPath = (
