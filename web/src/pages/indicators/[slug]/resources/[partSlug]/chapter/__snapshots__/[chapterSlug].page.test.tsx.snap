@@ -3434,6 +3434,7 @@ Object {
 </div>",
     "lastUpdated": "2022-01-18T00:00:00",
     "product": Object {
+      "alert": undefined,
       "id": "PMG20",
       "lastMajorModificationDate": "2024-05-29T00:00:00",
       "productTypeName": "NICE process and methods",

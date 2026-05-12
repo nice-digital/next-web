@@ -5,6 +5,7 @@ import React from "react";
 import { Breadcrumbs, Breadcrumb } from "@nice-digital/nds-breadcrumbs";
 
 import { ConvertedDocument } from "@/components/ConvertedDocument/ConvertedDocument";
+import { InfoAlert } from "@/components/InfoAlert/InfoAlert";
 import { Link } from "@/components/Link/Link";
 import { ProjectHorizontalNav } from "@/components/ProjectHorizontalNav/ProjectHorizontalNav";
 import { ProjectPageHeading } from "@/components/ProjectPageHeading/ProjectPageHeading";
@@ -28,7 +29,7 @@ export type DocumentsChapterHTMLPageProps = {
 	lastUpdated: string;
 	project: Pick<
 		ProjectDetail,
-		"projectType" | "reference" | "title" | "status"
+		"projectType" | "reference" | "title" | "status" | "alert"
 	>;
 	projectPath: string;
 	resource: {
@@ -89,6 +90,8 @@ export default function DocumentsChapterHTMLPage({
 				indevScheduleItems={indevScheduleItems}
 				indevStakeholderRegistration={indevStakeholderRegistration}
 			/>
+
+			<InfoAlert alert={project.alert} />
 
 			<ProjectHorizontalNav
 				projectPath={projectPath}
@@ -207,6 +210,7 @@ export const getServerSideProps: GetServerSideProps<
 				reference,
 				status,
 				title,
+				alert: project.alert,
 			},
 			resource: {
 				chapters: resourceFileHTML.chapters || [],

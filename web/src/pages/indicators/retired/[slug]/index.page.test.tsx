@@ -1,4 +1,4 @@
-import { render, waitFor } from "@testing-library/react";
+import { render, screen, waitFor } from "@testing-library/react";
 import { type GetServerSidePropsContext } from "next";
 import { useRouter } from "next/router";
 
@@ -50,6 +50,32 @@ describe("/indicators/retired/[slug]/index.page", () => {
 			render(<RetiredDetailsPage {...props} />);
 			await waitFor(() => {
 				expect(document.title).toEqual(`${ind1111.Title} | Indicators`);
+			});
+		});
+
+		describe("InfoAlert", () => {
+			it("should not appear when alert is null or undefined", () => {
+				const propsWithoutAlert = {
+					...props,
+					product: {
+						...props.product,
+						alert: null,
+					},
+				};
+				render(<RetiredDetailsPage {...propsWithoutAlert} />);
+				expect(screen.queryByText("Info alert")).not.toBeInTheDocument();
+			});
+
+			it("should appear when we have an alert", () => {
+				const propsWithAlert = {
+					...props,
+					product: {
+						...props.product,
+						alert: "Info alert",
+					},
+				};
+				render(<RetiredDetailsPage {...propsWithAlert} />);
+				expect(screen.getByText("Info alert")).toBeInTheDocument();
 			});
 		});
 

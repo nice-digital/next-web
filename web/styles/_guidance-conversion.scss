@@ -144,3 +144,7 @@ $nds-panel-border-color: #adadad;
     border-color: $white;
   }
 }
+
+.alert p {
+  max-width: calc(100% - 2rem);
+}

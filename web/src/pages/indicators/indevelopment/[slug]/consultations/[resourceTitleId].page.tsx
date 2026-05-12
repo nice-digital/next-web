@@ -4,6 +4,7 @@ import React from "react";
 
 import { Breadcrumbs, Breadcrumb } from "@nice-digital/nds-breadcrumbs";
 
+import { InfoAlert } from "@/components/InfoAlert/InfoAlert";
 import { Link } from "@/components/Link/Link";
 import { ProjectHorizontalNav } from "@/components/ProjectHorizontalNav/ProjectHorizontalNav";
 import { ProjectPageHeading } from "@/components/ProjectPageHeading/ProjectPageHeading";
@@ -15,13 +16,17 @@ import { formatDateStr, stripTime } from "@/utils/datetime";
 import { validateRouteParams } from "@/utils/project";
 
 export type ConsultationHTMLPageProps = {
-	alert: string | null;
 	consultationUrls: string[];
 	indevScheduleItems?: IndevSchedule[];
 	indevStakeholderRegistration: Record<string, unknown>[];
 	project: Pick<
 		ProjectDetail,
-		"projectType" | "reference" | "title" | "status" | "lastModifiedDate"
+		| "projectType"
+		| "reference"
+		| "title"
+		| "status"
+		| "lastModifiedDate"
+		| "alert"
 	>;
 	projectPath: string;
 	consultation: {
@@ -32,7 +37,6 @@ export type ConsultationHTMLPageProps = {
 };
 
 export default function ConsultationHTMLPage({
-	alert,
 	consultation,
 	consultationUrls,
 	indevStakeholderRegistration,
@@ -72,12 +76,7 @@ export default function ConsultationHTMLPage({
 				indevStakeholderRegistration={indevStakeholderRegistration}
 				shouldUseNewConsultationComments={shouldUseNewConsultationComments}
 			/>
-			{alert && (
-				<div
-					className="alert-message"
-					dangerouslySetInnerHTML={{ __html: alert }}
-				/>
-			)}
+			<InfoAlert alert={project.alert} />
 			<ProjectHorizontalNav
 				projectPath={projectPath}
 				hasDocuments
@@ -162,6 +161,7 @@ export const getServerSideProps: GetServerSideProps<
 				status,
 				title,
 				lastModifiedDate,
+				alert,
 			},
 			projectPath,
 			consultation: {
