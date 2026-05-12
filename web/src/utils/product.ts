@@ -21,13 +21,19 @@ import {
 	ProductType,
 	RelatedResourceList,
 } from "@/feeds/publications/types";
+import {
+	getTaxonomyProductMappings,
+	TaxonomyBreadcrumb,
+	TaxonomyBreadcrumbObject,
+	TaxonomyProductMappings,
+} from "@/feeds/taxonomy/taxonomy";
 import { logger } from "@/logger";
 import { getProductPath, getPublicationPdfDownloadPath } from "@/utils/url";
 
 import { arrayify } from "./array";
 import { fetchAndMapContentParts } from "./contentparts";
 
-/** The title of the ovreview page */
+/** The title of the overview page */
 export const overviewTitle = "Overview";
 
 /**
@@ -114,6 +120,7 @@ export type ValidateRouteParamsSuccess = {
 	project: ProjectDetail | null;
 	historyPanels: IndevPanel[];
 	hasHistory: boolean;
+	taxonomyBreadcrumb: TaxonomyBreadcrumb[];
 };
 
 export type ValidateRouteParamsResult =
@@ -131,10 +138,13 @@ export const validateRouteParams = async ({
 	// Slug is something like "NG100" or "IND123-a-slugified-title"
 	const productId = params.slug.split("-")[0];
 
-	const [product, allProductTypes] = await Promise.all([
-		getProductDetail(productId),
-		getAllProductTypes(),
-	]);
+	const [product, allProductTypes, taxonomyProductMappings] = await Promise.all(
+		[
+			getProductDetail(productId),
+			getAllProductTypes(),
+			getTaxonomyProductMappings(),
+		]
+	);
 
 	if (!product) {
 		logger.info(`Product with id ${productId} could not be found`);
@@ -156,7 +166,11 @@ export const validateRouteParams = async ({
 		}),
 		toolsAndResources = getPublishedToolsAndResources(product),
 		evidenceResources = getPublishedEvidenceResources(product),
-		infoForPublicResources = getPublishedIFPResources(product);
+		infoForPublicResources = getPublishedIFPResources(product),
+		taxonomyBreadcrumb =
+			Object.keys(taxonomyProductMappings).length > 0
+				? getTaxonomyBreadcrumb(taxonomyProductMappings, product)
+				: [];
 
 	const project = product.inDevReference
 		? await getProjectDetail(product.inDevReference)
@@ -170,9 +184,12 @@ export const validateRouteParams = async ({
 
 	const absoluteURL = new URL(resolvedUrl, `https://anything.com`),
 		actualPathSegments = absoluteURL.pathname.split("/"),
-		expectedPathSegments = productPath.split("/"),
-		isRetiredProduct = product.productStatus === Status.Retired,
-		retiredInUrl = actualPathSegments[2] === "retired";
+		expectedPathSegments = productPath.split("/");
+
+	const status = product.productStatus,
+		retiredOrTerminated = [Status.Retired, Status.Terminated],
+		statusIsRetiredOrTerminated = retiredOrTerminated.includes(status),
+		retiredOrTerminatedInUrl = actualPathSegments[2] === status.toLowerCase(); // must be same status
 
 	if (!query.productRoot || Array.isArray(query.productRoot))
 		throw Error(
@@ -215,15 +232,16 @@ export const validateRouteParams = async ({
 			project,
 			historyPanels,
 			hasHistory: historyPanels.length > 0,
+			taxonomyBreadcrumb,
 		};
 
 	// All 'product' URLs follow a format like "/indicators/ind1-some-title/anything/here"
 	// So by replacing the slug (2nd) segment we can support redirects to pages at any level
 	// For example from "/indicators/ind1-wrong-title/anything/here" to /indicators/ind1-correct-title/anything/here
 
-	if (isRetiredProduct !== retiredInUrl) {
-		if (isRetiredProduct) {
-			actualPathSegments.splice(2, 0, "retired");
+	if (statusIsRetiredOrTerminated !== retiredOrTerminatedInUrl) {
+		if (statusIsRetiredOrTerminated) {
+			actualPathSegments.splice(2, 0, status.toLowerCase());
 			actualPathSegments.splice(4);
 		} else {
 			actualPathSegments.splice(2, 1);
@@ -329,3 +347,60 @@ export const getPublishedIFPResources = (
 			(resource.resourceGroupsList?.[0] || "") ===
 			ResourceGroupType.InformationForThePublic
 	);
+
+/**
+ * Extracts related product taxonomy into a breadcrumnb, if there is any
+ *
+ * @param taxonomyProductMappings The full topicBrowseProductMappings response from taxonomy service
+ * @param product The full product response from publicaitons
+ * @returns An array of breadcrumb objects - titles and urls
+ */
+export const getTaxonomyBreadcrumb = (
+	taxonomyProductMappings: TaxonomyProductMappings,
+	product: ProductDetail
+): TaxonomyBreadcrumb[] => {
+	const targetProductId = product.id;
+	const results = [] as TaxonomyBreadcrumbObject[];
+
+	function traverse(
+		node: TaxonomyProductMappings,
+		path = [] as TaxonomyBreadcrumb[]
+	) {
+		if (!node || typeof node !== "object") return;
+
+		const currentItem = {
+			title: node.name,
+			url: node.slug ? `/${node.slug.replace(/\/$/, "")}` : "", // clean trailing slash
+		};
+
+		const currentPath = [...path, currentItem];
+
+		// Check if this node has a productIds array containing any of the targets
+		if (Array.isArray(node.productIds)) {
+			const matchingProducts = node.productIds.filter(
+				(id: string) => targetProductId === id
+			);
+
+			if (matchingProducts.length > 0) {
+				results.push({
+					breadcrumb: currentPath,
+					//breadcrumbString: currentPath.map((item) => item.title).join(" > "),
+				});
+			}
+		}
+
+		// Recurse into child categories
+		if (Array.isArray(node.categories)) {
+			for (const child of node.categories) {
+				traverse(child, currentPath);
+			}
+		}
+	}
+
+	traverse(taxonomyProductMappings);
+
+	// get first object/result from array and return breadcrumb array from the same object
+	const breadcrumbArray = results.length ? results[0].breadcrumb : [];
+
+	return breadcrumbArray;
+};
