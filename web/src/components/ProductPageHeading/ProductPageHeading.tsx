@@ -13,6 +13,7 @@ export type ProductPageHeadingProps = {
 		| "productTypeName"
 		| "publishedDate"
 		| "lastMajorModificationDate"
+		| "terminatedDate"
 	>;
 	children?: never;
 };
@@ -23,25 +24,28 @@ export const ProductPageHeading: FC<ProductPageHeadingProps> = ({
 		lastMajorModificationDate,
 		productTypeName,
 		publishedDate,
+		terminatedDate,
 		title,
 	},
-}) => (
-	<PageHeader
-		heading={title}
-		useAltHeading
-		id="content-start"
-		metadata={[
-			productTypeName,
-			id,
-			publishedDate ? (
+}) => {
+	const dates = terminatedDate ? (
+		<>
+			Terminated:
+			<time dateTime={stripTime(terminatedDate)}>
+				&nbsp;{formatDateStr(terminatedDate)}
+			</time>
+		</>
+	) : (
+		<>
+			{publishedDate && (
 				<>
 					Published:
 					<time dateTime={stripTime(publishedDate)}>
 						&nbsp;{formatDateStr(publishedDate)}
 					</time>
 				</>
-			) : null,
-			lastMajorModificationDate != publishedDate ? (
+			)}
+			{lastMajorModificationDate != publishedDate && (
 				<>
 					Last updated:
 					<time dateTime={stripTime(lastMajorModificationDate)}>
@@ -49,7 +53,16 @@ export const ProductPageHeading: FC<ProductPageHeadingProps> = ({
 						&nbsp;{formatDateStr(lastMajorModificationDate)}
 					</time>
 				</>
-			) : null,
-		].filter(Boolean)}
-	/>
-);
+			)}
+		</>
+	);
+
+	return (
+		<PageHeader
+			heading={title}
+			useAltHeading
+			id="content-start"
+			metadata={[productTypeName, id, dates].filter(Boolean)}
+		/>
+	);
+};
