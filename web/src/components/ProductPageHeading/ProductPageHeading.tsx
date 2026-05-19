@@ -13,8 +13,8 @@ export type ProductPageHeadingProps = {
 		| "productTypeName"
 		| "publishedDate"
 		| "lastMajorModificationDate"
-		| "terminatedDate"
-	>;
+	> &
+		Partial<Pick<ProductDetail, "terminatedDate">>;
 	children?: never;
 };
 
