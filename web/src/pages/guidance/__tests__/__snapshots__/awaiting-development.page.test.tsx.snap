@@ -410,12 +410,12 @@ exports[`/guidance/awaiting-development should match the snapshot 1`] = `
                     >
                       <button
                         aria-controls="group-ngt"
-                        aria-expanded="true"
+                        aria-expanded="false"
                         type="button"
                       >
                         <svg
                           aria-hidden="true"
-                          class="filter-group__heading-icon filter-group__heading-icon--expanded"
+                          class="filter-group__heading-icon"
                           fill="none"
                           focusable="false"
                           height="1em"
@@ -437,7 +437,7 @@ exports[`/guidance/awaiting-development should match the snapshot 1`] = `
                       </button>
                     </h3>
                     <fieldset
-                      aria-hidden="false"
+                      aria-hidden="true"
                       class="filter-group__options"
                       id="group-ngt"
                     >
