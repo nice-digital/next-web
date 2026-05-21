@@ -491,12 +491,12 @@ exports[`/guidance/inconsultation should match the snapshot 1`] = `
                     >
                       <button
                         aria-controls="group-ngt"
-                        aria-expanded="false"
+                        aria-expanded="true"
                         type="button"
                       >
                         <svg
                           aria-hidden="true"
-                          class="filter-group__heading-icon"
+                          class="filter-group__heading-icon filter-group__heading-icon--expanded"
                           fill="none"
                           focusable="false"
                           height="1em"
@@ -518,7 +518,7 @@ exports[`/guidance/inconsultation should match the snapshot 1`] = `
                       </button>
                     </h3>
                     <fieldset
-                      aria-hidden="true"
+                      aria-hidden="false"
                       class="filter-group__options"
                       id="group-ngt"
                     >
