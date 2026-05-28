@@ -1,3 +1,4 @@
+import { useRouter } from "next/router";
 import { FC, ReactElement } from "react";
 
 import {
@@ -10,6 +11,7 @@ import { Link } from "@/components/Link/Link";
 import { TaxonomyBreadcrumb } from "@/feeds/taxonomy/types";
 
 export interface GuidanceBreadcrumbProps {
+	currentTab?: string; // should be capitalised
 	id: string;
 	override?: ReactElement<BreadcrumbsProps>[];
 	taxonomy?: TaxonomyBreadcrumb[];
@@ -17,14 +19,24 @@ export interface GuidanceBreadcrumbProps {
 }
 
 export const GuidanceBreadcrumb: FC<GuidanceBreadcrumbProps> = ({
+	currentTab = "",
 	id,
 	override,
 	taxonomy = [],
 	type,
 }) => {
+	const { asPath } = useRouter();
+	// strip hash from asPath due to difference between client and ssr https://github.com/vercel/next.js/issues/25202
+	const currentUrl = asPath.replace(/#.*/, "");
+	const tabUrlIndex = currentUrl.lastIndexOf(`/${currentTab.toLowerCase()}`);
+	const productHomeUrl =
+		tabUrlIndex > -1 ? currentUrl.slice(0, tabUrlIndex) : currentUrl;
+
 	const isGuidance = type === "guidance";
 	const isIndev = /gid-/.test(id);
 	let breadcrumbTrail;
+
+
 
 	if (taxonomy.length > 0) {
 		breadcrumbTrail = taxonomy.map((crumb) => (
@@ -60,6 +72,21 @@ export const GuidanceBreadcrumb: FC<GuidanceBreadcrumbProps> = ({
 		}
 	}
 
+	if (currentTab.length > 0) {
+		breadcrumbTrail.push(
+			<Breadcrumb
+				key="product home page"
+				to={productHomeUrl}
+				elementType={Link}
+			>
+				{id}
+			</Breadcrumb>,
+			<Breadcrumb key="current page">{currentTab}</Breadcrumb>
+		);
+	} else {
+		breadcrumbTrail.push(<Breadcrumb key="current page">{id}</Breadcrumb>);
+	}
+
 	return (
 		<Breadcrumbs>
 			{override
@@ -69,7 +96,6 @@ export const GuidanceBreadcrumb: FC<GuidanceBreadcrumbProps> = ({
 							Home
 						</Breadcrumb>,
 						...breadcrumbTrail,
-						<Breadcrumb key="current page">{id}</Breadcrumb>,
 				  ]}
 		</Breadcrumbs>
 	);
