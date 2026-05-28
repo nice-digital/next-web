@@ -1,0 +1,47 @@
+@use '@nice-digital/nds-core/scss/media-queries';
+@use '@nice-digital/nds-core/scss/spacing';
+@use '@nice-digital/nds-core/scss/typography';
+@use '@nice-digital/nds-core/scss/utils';
+
+.tableWrapper {
+  overflow-x: auto;
+  overflow-y: hidden;
+  width: 100%;
+}
+
+.table {
+  // Default NDS table expects to scroll and be less than 100% width for narrow tables.
+  // But we want to force a 100% width so we add the above extra wrapper div that handles the scroll
+  display: table;
+}
+
+.pageHeader {
+  margin-bottom: utils.rem(spacing.$large);
+  padding-bottom: 0;
+
+  h1 {
+    margin-bottom: utils.rem(spacing.$large);
+  }
+}
+
+@include media-queries.mq($from: md) {
+  .sectionWrapper {
+    padding-top: utils.rem(spacing.$large);
+    position: relative;
+  }
+
+  .panelWrapper {
+    position: initial;
+  }
+}
+
+.resultsPerPageHeading {
+  @include typography.p;
+  font-family: typography.get-font-family(sans);
+  margin: 0;
+}
+
+.resultsPerPageList {
+  justify-content: flex-end;
+  margin: 0;
+}
