@@ -8,11 +8,7 @@ import { Link } from "@/components/Link/Link";
 import { StoryblokImage } from "@/components/Storyblok/StoryblokImage/StoryblokImage";
 import { StoryblokYoutubeEmbed } from "@/components/Storyblok/StoryblokYoutubeEmbed/StoryblokYoutubeEmbed";
 import { NewsStory } from "@/types/News";
-import {
-	RichtextStoryblok,
-	SpotlightStoryblok,
-	YoutubeEmbedStoryblok,
-} from "@/types/storyblok";
+import { SpotlightStoryblok, YoutubeEmbedStoryblok } from "@/types/storyblok";
 import {
 	defaultPodcastImage,
 	getNewsType,
