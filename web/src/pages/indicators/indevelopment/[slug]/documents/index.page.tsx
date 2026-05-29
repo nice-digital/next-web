@@ -3,6 +3,7 @@ import { NextSeo } from "next-seo";
 
 import { Breadcrumbs, Breadcrumb } from "@nice-digital/nds-breadcrumbs";
 
+import { InfoAlert } from "@/components/InfoAlert/InfoAlert";
 import { Link } from "@/components/Link/Link";
 import { ProjectHorizontalNav } from "@/components/ProjectHorizontalNav/ProjectHorizontalNav";
 import { ProjectPageHeading } from "@/components/ProjectPageHeading/ProjectPageHeading";
@@ -17,14 +18,13 @@ import {
 } from "@/utils/resource";
 
 export type DocumentsPageProps = {
-	alert: string | null;
 	consultationUrls: string[];
 	indevScheduleItems?: IndevSchedule[];
 	indevStakeholderRegistration: Record<string, unknown>[];
 	projectPath: string;
 	project: Pick<
 		ProjectDetail,
-		"projectType" | "reference" | "title" | "status"
+		"projectType" | "reference" | "title" | "status" | "alert"
 	> & {
 		groups: ResourceGroupViewModel[];
 	};
@@ -61,12 +61,7 @@ export default function DocumentsPage(props: DocumentsPageProps): JSX.Element {
 				indevScheduleItems={props.indevScheduleItems}
 				indevStakeholderRegistration={props.indevStakeholderRegistration}
 			/>
-			{props.alert && (
-				<div
-					className="alert-message"
-					dangerouslySetInnerHTML={{ __html: props.alert }}
-				/>
-			)}
+			<InfoAlert alert={props.project.alert} />
 			<ProjectHorizontalNav
 				projectPath={props.projectPath}
 				hasDocuments
@@ -159,6 +154,7 @@ export const getServerSideProps: GetServerSideProps<
 				status,
 				title,
 				groups,
+				alert,
 			},
 		},
 	};

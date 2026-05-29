@@ -90,6 +90,8 @@ export default getProductListPage({
 	useFutureDates: true,
 	dateFilterLabel,
 	textFilterHeading,
+	navigatorsOrder: ["ngt", "aty", "nat", "nai"],
+	navigatorsToCollapse: ["ngt", "nat", "nai"],
 	tableBodyRender,
 	searchInputPlaceholder: "E.g. 'diabetes' or 'NG28'",
 });

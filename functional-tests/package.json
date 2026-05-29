@@ -43,5 +43,8 @@
   "dependencies": {
     "@types/node": "^14.18.23",
     "axe-core": "^4.9.1"
+  },
+   "overrides": {
+    "axios": "0.30.3"
   }
 }

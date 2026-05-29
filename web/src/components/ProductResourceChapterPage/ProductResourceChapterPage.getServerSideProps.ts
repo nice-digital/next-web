@@ -26,6 +26,7 @@ const resourcePathRegex =
 export type ProductResourceChapterPageProps = {
 	productPath: string;
 	product: ProductPageHeadingProps["product"] &
+		Pick<ProductDetail, "alert"> &
 		Partial<Pick<ProductDetail, "productType">>;
 	hasToolsAndResources: boolean;
 	hasInfoForPublicResources: boolean;
@@ -201,12 +202,13 @@ export const getGetServerSidePropsFunc =
 				hasHistory,
 				productPath,
 				product: {
+					alert: product.alert,
 					id: product.id,
 					lastMajorModificationDate: product.lastMajorModificationDate,
 					productTypeName: product.productTypeName,
 					publishedDate: product.publishedDate,
-					title: product.title,
 					terminatedDate: product.terminatedDate,
+					title: product.title,
 				},
 				title,
 				htmlBody,

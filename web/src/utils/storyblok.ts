@@ -559,3 +559,6 @@ export const constructStoryblokImageSrc = (
 
 export const fieldHasValidContent = (field: RichtextStoryblok): boolean =>
 	Array.isArray(field.content) && "content" in field.content[0];
+
+export const textFieldHasValidContent = (value?: string): boolean =>
+	Boolean(value?.trim());

@@ -12,6 +12,7 @@ import { ProductTypeAcronym } from "@/feeds/publications/types";
 import { formatDateStr, stripTime } from "@/utils/datetime";
 
 import { GuidanceBreadcrumb } from "../GuidanceBreadcrumb/GuidanceBreadcrumb";
+import { InfoAlert } from "../InfoAlert/InfoAlert";
 import { OnThisPageBasic } from "../OnThisPageBasic/OnThisPageBasic";
 
 import { type ProductResourceChapterPageProps } from "./ProductResourceChapterPage.getServerSideProps";
@@ -79,6 +80,8 @@ export const ProductResourceChapterPage: FC<
 			/>
 
 			<ProductPageHeading product={product} />
+
+			<InfoAlert alert={product.alert} />
 
 			<ProductHorizontalNav
 				productTypeName={isIndicator ? "Indicator" : "Guidance"}

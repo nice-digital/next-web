@@ -62,6 +62,9 @@ export interface PublicConfig {
 
 	/** Public config for Storyblok */
 	readonly storyblok: StoryblokConfig;
+
+	/** Public config for trac jobs */
+	readonly trac: TracConfig;
 }
 
 /**
@@ -109,6 +112,10 @@ export interface StoryblokConfig {
 	readonly enableRootCatchAll: string;
 }
 
+export interface TracConfig {
+	readonly version: string;
+	readonly integrityKey: string;
+}
 /**
  * Server-only run time config, useful for secrets etc
  */

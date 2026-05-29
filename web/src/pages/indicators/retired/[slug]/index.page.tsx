@@ -4,6 +4,7 @@ import { NextSeo } from "next-seo";
 import { Grid, GridItem } from "@nice-digital/nds-grid";
 
 import { GuidanceBreadcrumb } from "@/components/GuidanceBreadcrumb/GuidanceBreadcrumb";
+import { InfoAlert } from "@/components/InfoAlert/InfoAlert";
 import {
 	ProductPageHeading,
 	type ProductPageHeadingProps,
@@ -25,8 +26,9 @@ export type RetiredDetailsPageProps = {
 	product: ProductPageHeadingProps["product"] &
 		Pick<
 			ProductDetail,
-			| "metaDescription"
+			| "alert"
 			| "indicatorSubTypeList"
+			| "metaDescription"
 			| "summary"
 			| "productStatus"
 			| "productType"
@@ -100,6 +102,8 @@ export default function RetiredDetailsPage({
 
 			<ProductPageHeading product={product} />
 
+			<InfoAlert alert={product.alert} />
+
 			<hr className={styles.hrCustomTab} />
 
 			<Grid gutter="loose">
@@ -158,6 +162,7 @@ export const getServerSideProps: GetServerSideProps<
 				metaDescription: product.metaDescription,
 				summary: product.summary,
 				productStatus: product.productStatus,
+				alert: product.alert,
 			},
 			productPath,
 		},

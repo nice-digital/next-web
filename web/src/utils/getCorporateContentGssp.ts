@@ -6,6 +6,7 @@ import { logger } from "@/logger";
 import {
 	InfoPageStoryblok,
 	CategoryNavigationStoryblok,
+	TracPageStoryblok,
 } from "@/types/storyblok";
 import {
 	fetchStory,
@@ -57,10 +58,9 @@ export const getCorporateContentGssp = <
 			const version = getStoryVersionFromQuery(query);
 
 			const [storyResult, breadcrumbs] = await Promise.all([
-				fetchStory<CategoryNavigationStoryblok | InfoPageStoryblok>(
-					slug,
-					version
-				),
+				fetchStory<
+					CategoryNavigationStoryblok | InfoPageStoryblok | TracPageStoryblok
+				>(slug, version),
 				getBreadcrumbs(slug, version),
 			]);
 

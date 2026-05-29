@@ -23,6 +23,7 @@ import { publicRuntimeConfig } from "@/config";
 
 import "@nice-digital/nds-table/scss/table.scss";
 import "@nice-digital/nds-panel/scss/panel.scss";
+import "@nice-digital/nds-alert/scss/alert.scss";
 
 import "./_app.page.scss";
 import { isArray } from "lodash";
