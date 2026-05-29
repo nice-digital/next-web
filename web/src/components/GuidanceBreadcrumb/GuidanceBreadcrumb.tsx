@@ -39,8 +39,6 @@ export const GuidanceBreadcrumb: FC<GuidanceBreadcrumbProps> = ({
 	taxonomy = [],
 	type,
 }) => {
-	// console.log(productPath);
-
 	const isGuidance = type === "guidance";
 	const statusCheck = status
 		? status
