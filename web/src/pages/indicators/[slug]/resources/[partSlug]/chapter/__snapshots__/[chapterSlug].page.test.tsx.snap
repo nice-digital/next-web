@@ -23,9 +23,18 @@ exports[`/product/[slug]/resources/[partSlug]/chapter/[chapterSlug].page Product
         class="breadcrumbs__crumb"
       >
         <a
-          href="/standards-and-indicators/indicators"
+          href="/guidance"
         >
-          Indicators
+          NICE guidance
+        </a>
+      </li>
+      <li
+        class="breadcrumbs__crumb"
+      >
+        <a
+          href="/guidance/terminated"
+        >
+          Terminated
         </a>
       </li>
       <li
@@ -40,17 +49,8 @@ exports[`/product/[slug]/resources/[partSlug]/chapter/[chapterSlug].page Product
       <li
         class="breadcrumbs__crumb"
       >
-        <a
-          href="/process/pmg20/resources"
-        >
-          Tools and resources
-        </a>
-      </li>
-      <li
-        class="breadcrumbs__crumb"
-      >
         <span>
-          Developing NICE guidelines: the manual – appendices
+          Evidence
         </span>
       </li>
     </ol>
@@ -74,13 +74,21 @@ exports[`/product/[slug]/resources/[partSlug]/chapter/[chapterSlug].page Product
       "@type": "ListItem",
       "position": 2,
       "item": {
-        "@id": "/standards-and-indicators/indicators",
-        "name": "Indicators"
+        "@id": "/guidance",
+        "name": "NICE guidance"
       }
     },
     {
       "@type": "ListItem",
       "position": 3,
+      "item": {
+        "@id": "/guidance/terminated",
+        "name": "Terminated"
+      }
+    },
+    {
+      "@type": "ListItem",
+      "position": 4,
       "item": {
         "@id": "/process/pmg20",
         "name": "PMG20"
@@ -88,17 +96,9 @@ exports[`/product/[slug]/resources/[partSlug]/chapter/[chapterSlug].page Product
     },
     {
       "@type": "ListItem",
-      "position": 4,
-      "item": {
-        "@id": "/process/pmg20/resources",
-        "name": "Tools and resources"
-      }
-    },
-    {
-      "@type": "ListItem",
       "position": 5,
       "item": {
-        "name": "Developing NICE guidelines: the manual – appendices"
+        "name": "Evidence"
       }
     }
   ]
@@ -159,7 +159,7 @@ exports[`/product/[slug]/resources/[partSlug]/chapter/[chapterSlug].page Product
           class="horizontal-nav__link"
           href="/process/pmg20"
         >
-          Indicator
+          Guidance
         </a>
       </li>
       <li
@@ -3438,6 +3438,7 @@ Object {
       "lastMajorModificationDate": "2024-05-29T00:00:00",
       "productTypeName": "NICE process and methods",
       "publishedDate": "2014-10-31T00:00:00",
+      "terminatedDate": undefined,
       "title": "Developing NICE guidelines: the manual ",
     },
     "productPath": "/process/pmg20",
@@ -3445,6 +3446,7 @@ Object {
     "resourceDownloadSizeBytes": 394577,
     "resourceTypeName": "Tools and resources",
     "resourceTypeSlug": "resources",
+    "taxonomyBreadcrumb": Array [],
     "title": "Developing NICE guidelines: the manual – appendices",
   },
 }

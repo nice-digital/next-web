@@ -3,6 +3,7 @@ import { NextSeo } from "next-seo";
 import React from "react";
 
 import { ConvertedDocument } from "@/components/ConvertedDocument/ConvertedDocument";
+import { GuidanceBreadcrumb } from "@/components/GuidanceBreadcrumb/GuidanceBreadcrumb";
 import { ProductHorizontalNav } from "@/components/ProductHorizontalNav/ProductHorizontalNav";
 import { ProductPageHeading } from "@/components/ProductPageHeading/ProductPageHeading";
 import { getConvertedDocumentHTML } from "@/feeds/inDev/inDev";
@@ -12,12 +13,11 @@ import {
 	type niceIndevConvertedDocumentSection,
 } from "@/feeds/inDev/types";
 import { ProductDetail, ProductTypeAcronym } from "@/feeds/publications/types";
+import { TaxonomyBreadcrumb } from "@/feeds/taxonomy/types";
 import { arrayify } from "@/utils/array";
 import { getFileTypeNameFromMime } from "@/utils/file";
 import { validateRouteParams } from "@/utils/product";
 import { type ResourceLinkViewModel } from "@/utils/resource";
-import { GuidanceBreadcrumb } from "@/components/GuidanceBreadcrumb/GuidanceBreadcrumb";
-import { TaxonomyBreadcrumb } from "@/feeds/taxonomy/types";
 
 export type HistoryChapterHTMLPageProps = {
 	lastUpdated: string;
@@ -65,7 +65,7 @@ export default function HistoryChaperHTMLPage({
 
 	return (
 		<>
-			<NextSeo title={`${title} | History | ${id} | Indicators`} />
+			<NextSeo title={`${title} | History | ${id} | ${label}`} />
 
 			<GuidanceBreadcrumb
 				append={[{ title: "History", url: "/history" }, { title: title }]}

@@ -8,6 +8,7 @@ import {
 	UploadAndConvertContentPart,
 } from "@/feeds/publications/publications";
 import { ProductDetail } from "@/feeds/publications/types";
+import { TaxonomyBreadcrumb } from "@/feeds/taxonomy/types";
 import { logger } from "@/logger";
 import { arrayify } from "@/utils/array";
 import { fetchAndMapContentParts } from "@/utils/contentparts";
@@ -17,7 +18,6 @@ import { slugify } from "@/utils/url";
 
 import { OnThisPageSection } from "../OnThisPage/OnThisPage";
 import { type ProductPageHeadingProps } from "../ProductPageHeading/ProductPageHeading";
-import { TaxonomyBreadcrumb } from "@/feeds/taxonomy/types";
 
 // Resource download links are in the form "IND123-some-title-123-456.xls"
 const resourcePathRegex =

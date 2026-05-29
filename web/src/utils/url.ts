@@ -21,7 +21,10 @@ import { fetchAndMapContentParts } from "./contentparts";
 /** A custom exported version of @sindresorhus/slugify we use everywhere in case we introduce custom replacement */
 export const slugify = libSlugify;
 
-export const getStatusBreadcrumb = (statusSlug: string, type: string) => {
+export const getStatusBreadcrumb = (
+	statusSlug: string,
+	type: string
+): { title: string; url: string; slug: string } | undefined => {
 	const statusBreadrcumbs = {
 		published: {
 			title: "Published",

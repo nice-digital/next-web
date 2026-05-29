@@ -28,24 +28,32 @@ export const ProductPageHeading: FC<ProductPageHeadingProps> = ({
 		title,
 	},
 }) => {
-	const dates = terminatedDate ? (
-		<>
-			Terminated:
-			<time dateTime={stripTime(terminatedDate)}>
-				&nbsp;{formatDateStr(terminatedDate)}
-			</time>
-		</>
-	) : (
-		<>
-			{publishedDate && (
+	//const dates = terminatedDate ? (
+	const dateArray = [];
+
+	if (terminatedDate) {
+		dateArray.push(
+			<>
+				Terminated:
+				<time dateTime={stripTime(terminatedDate)}>
+					&nbsp;{formatDateStr(terminatedDate)}
+				</time>
+			</>
+		);
+	} else {
+		if (publishedDate) {
+			dateArray.push(
 				<>
 					Published:
 					<time dateTime={stripTime(publishedDate)}>
 						&nbsp;{formatDateStr(publishedDate)}
 					</time>
 				</>
-			)}
-			{lastMajorModificationDate != publishedDate && (
+			);
+		}
+
+		if (lastMajorModificationDate != publishedDate) {
+			dateArray.push(
 				<>
 					Last updated:
 					<time dateTime={stripTime(lastMajorModificationDate)}>
@@ -53,16 +61,16 @@ export const ProductPageHeading: FC<ProductPageHeadingProps> = ({
 						&nbsp;{formatDateStr(lastMajorModificationDate)}
 					</time>
 				</>
-			)}
-		</>
-	);
+			);
+		}
+	}
 
 	return (
 		<PageHeader
 			heading={title}
 			useAltHeading
 			id="content-start"
-			metadata={[productTypeName, id, dates].filter(Boolean)}
+			metadata={[productTypeName, id, ...dateArray].filter(Boolean)}
 		/>
 	);
 };

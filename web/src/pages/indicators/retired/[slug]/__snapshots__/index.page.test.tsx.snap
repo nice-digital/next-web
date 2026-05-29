@@ -24,7 +24,7 @@ exports[`/indicators/retired/[slug]/index.page RetiredDetailPage should match sn
           class="breadcrumbs__crumb"
         >
           <a
-            href="/standards-and-indicators/indicators"
+            href="/what-nice-does/standards-and-indicators/indicators"
           >
             Indicators
           </a>
@@ -57,7 +57,7 @@ exports[`/indicators/retired/[slug]/index.page RetiredDetailPage should match sn
       "@type": "ListItem",
       "position": 2,
       "item": {
-        "@id": "/standards-and-indicators/indicators",
+        "@id": "/what-nice-does/standards-and-indicators/indicators",
         "name": "Indicators"
       }
     },
@@ -119,8 +119,8 @@ exports[`/indicators/retired/[slug]/index.page RetiredDetailPage should match sn
           href="/indicators/retired/ind1111-indicator-master-accordion-panels-test/IND1111-20251209.pdf"
           target="_blank"
         >
-          Download retired 
-          indicator
+          Download 
+          retired indicator
            (PDF)
         </a>
       </section>
@@ -144,11 +144,6 @@ exports[`/indicators/retired/[slug]/index.page RetiredDetailPage should match sn
 exports[`/indicators/retired/[slug]/index.page getServerSideProps should return a correct props when supplied with a valid slug 1`] = `
 Object {
   "props": Object {
-    "guidanceOrIndicatorBreadcrumb": Object {
-      "label": "Indicators",
-      "slug": "/indicators",
-      "url": "/standards-and-indicators/indicators",
-    },
     "indicatorSubTypes": Array [
       Object {
         "enabled": true,
@@ -188,11 +183,13 @@ Object {
       "lastMajorModificationDate": "2025-08-05T00:00:00",
       "metaDescription": "Indicator Meta Description",
       "productStatus": "Retired",
+      "productType": "IND",
       "productTypeName": "NICE indicator",
       "publishedDate": "2025-08-05T00:00:00",
       "summary": "<p>Indicator Summary test on Master Accordions</p>",
       "title": "Indicator - Master Accordion Panels Test",
     },
+    "productPath": "/indicators/retired/ind1111-indicator-master-accordion-panels-test",
   },
 }
 `;

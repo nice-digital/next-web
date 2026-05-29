@@ -3,6 +3,7 @@ import { NextSeo } from "next-seo";
 import React from "react";
 
 import { ConvertedDocument } from "@/components/ConvertedDocument/ConvertedDocument";
+import { GuidanceBreadcrumb } from "@/components/GuidanceBreadcrumb/GuidanceBreadcrumb";
 import { ProductHorizontalNav } from "@/components/ProductHorizontalNav/ProductHorizontalNav";
 import { ProductPageHeading } from "@/components/ProductPageHeading/ProductPageHeading";
 import { ResourceLinkCard } from "@/components/ResourceLinkCard/ResourceLinkCard";
@@ -18,6 +19,7 @@ import {
 	type niceIndevConvertedDocumentSection,
 } from "@/feeds/inDev/types";
 import { ProductDetail, ProductTypeAcronym } from "@/feeds/publications/types";
+import { TaxonomyBreadcrumb } from "@/feeds/taxonomy/types";
 import { arrayify } from "@/utils/array";
 import { formatDateStr, stripTime } from "@/utils/datetime";
 import { getFileTypeNameFromMime } from "@/utils/file";
@@ -25,8 +27,6 @@ import { validateRouteParams } from "@/utils/product";
 import { type ResourceLinkViewModel } from "@/utils/resource";
 
 import styles from "./index.page.module.scss";
-import { TaxonomyBreadcrumb } from "@/feeds/taxonomy/types";
-import { GuidanceBreadcrumb } from "@/components/GuidanceBreadcrumb/GuidanceBreadcrumb";
 
 export type HistoryHTMLPageProps = {
 	lastUpdated: string;

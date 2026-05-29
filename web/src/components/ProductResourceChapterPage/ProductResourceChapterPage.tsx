@@ -8,14 +8,14 @@ import { ProductHorizontalNav } from "@/components/ProductHorizontalNav/ProductH
 import { ProductPageHeading } from "@/components/ProductPageHeading/ProductPageHeading";
 import { PublicationsChapterMenu } from "@/components/PublicationsChapterMenu/PublicationsChapterMenu";
 import { PublicationsPrevNext } from "@/components/PublicationsPrevNext/PublicationsPrevNext";
+import { ProductTypeAcronym } from "@/feeds/publications/types";
 import { formatDateStr, stripTime } from "@/utils/datetime";
 
+import { GuidanceBreadcrumb } from "../GuidanceBreadcrumb/GuidanceBreadcrumb";
 import { OnThisPageBasic } from "../OnThisPageBasic/OnThisPageBasic";
 
 import { type ProductResourceChapterPageProps } from "./ProductResourceChapterPage.getServerSideProps";
 import styles from "./ProductResourceChapterPage.module.scss";
-import { GuidanceBreadcrumb } from "../GuidanceBreadcrumb/GuidanceBreadcrumb";
-import { ProductTypeAcronym } from "@/feeds/publications/types";
 
 export { type ProductResourceChapterPageProps } from "./ProductResourceChapterPage.getServerSideProps";
 
@@ -33,7 +33,7 @@ export const ProductResourceChapterPage: FC<
 	htmlBody,
 	title,
 	lastUpdated,
-	resourceTypeSlug,
+	//resourceTypeSlug,
 	resourceTypeName,
 	resourceDownloadPath,
 	taxonomyBreadcrumb,

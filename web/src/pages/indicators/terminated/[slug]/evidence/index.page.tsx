@@ -1,6 +1,7 @@
 import { type GetServerSideProps } from "next";
 import { NextSeo } from "next-seo";
 
+import { GuidanceBreadcrumb } from "@/components/GuidanceBreadcrumb/GuidanceBreadcrumb";
 import { ProductHorizontalNav } from "@/components/ProductHorizontalNav/ProductHorizontalNav";
 import {
 	ProductPageHeading,
@@ -9,6 +10,7 @@ import {
 import { ResourceList } from "@/components/ResourceList/ResourceList";
 import { getResourceDetails } from "@/feeds/publications/publications";
 import { ProductDetail, ProductTypeAcronym } from "@/feeds/publications/types";
+import { TaxonomyBreadcrumb } from "@/feeds/taxonomy/types";
 import {
 	redirectWithdrawnProducts,
 	validateRouteParams,
@@ -20,8 +22,6 @@ import {
 	ResourceTypeSlug,
 	type ResourceGroupViewModel,
 } from "@/utils/resource";
-import { TaxonomyBreadcrumb } from "@/feeds/taxonomy/types";
-import { GuidanceBreadcrumb } from "@/components/GuidanceBreadcrumb/GuidanceBreadcrumb";
 
 export type EvidenceResourcesListPageProps = {
 	resourceGroups: ResourceGroupViewModel[];
