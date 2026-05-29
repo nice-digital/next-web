@@ -20,6 +20,8 @@ import { validateRouteParams } from "@/utils/product";
 import styles from "./index.page.module.scss";
 
 export type RetiredDetailsPageProps = {
+	indicatorSubTypes: IndicatorSubType[];
+	pdfDownloadPath: string | null;
 	product: ProductPageHeadingProps["product"] &
 		Pick<
 			ProductDetail,
@@ -29,14 +31,14 @@ export type RetiredDetailsPageProps = {
 			| "productStatus"
 			| "productType"
 		>;
-	indicatorSubTypes: IndicatorSubType[];
-	pdfDownloadPath: string | null;
+	productPath: string;
 };
 
 export default function RetiredDetailsPage({
-	product,
 	indicatorSubTypes,
 	pdfDownloadPath,
+	product,
+	productPath,
 }: RetiredDetailsPageProps): JSX.Element {
 	const isIndicator = product.productType === ProductTypeAcronym.IND;
 	const type = isIndicator ? "indicators" : "guidance";
@@ -90,7 +92,11 @@ export default function RetiredDetailsPage({
 			/>
 
 			{/* retired doesn't use taxonomy, so no props passed in */}
-			<GuidanceBreadcrumb id={product.id} type={type} />
+			<GuidanceBreadcrumb
+				id={product.id}
+				productPath={productPath}
+				type={type}
+			/>
 
 			<ProductPageHeading product={product} />
 
@@ -134,11 +140,13 @@ export const getServerSideProps: GetServerSideProps<
 
 	if ("notFound" in result || "redirect" in result) return result;
 
-	const { product, pdfDownloadPath } = result;
+	const { pdfDownloadPath, product, productPath } = result;
 	const indicatorSubTypes = await getAllIndicatorSubTypes();
 
 	return {
 		props: {
+			indicatorSubTypes,
+			pdfDownloadPath,
 			product: {
 				id: product.id,
 				lastMajorModificationDate: product.lastMajorModificationDate,
@@ -151,8 +159,7 @@ export const getServerSideProps: GetServerSideProps<
 				summary: product.summary,
 				productStatus: product.productStatus,
 			},
-			indicatorSubTypes,
-			pdfDownloadPath,
+			productPath,
 		},
 	};
 };

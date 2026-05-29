@@ -19,7 +19,7 @@ import {
 	type niceIndevConvertedDocumentChapter,
 	type niceIndevConvertedDocumentSection,
 } from "@/feeds/inDev/types";
-import { type ProductDetail } from "@/feeds/publications/types";
+import { ProductDetail, ProductTypeAcronym } from "@/feeds/publications/types";
 import { arrayify } from "@/utils/array";
 import { formatDateStr, stripTime } from "@/utils/datetime";
 import { getFileTypeNameFromMime } from "@/utils/file";
@@ -27,6 +27,8 @@ import { validateRouteParams } from "@/utils/product";
 import { type ResourceLinkViewModel } from "@/utils/resource";
 
 import styles from "./index.page.module.scss";
+import { TaxonomyBreadcrumb } from "@/feeds/taxonomy/types";
+import { GuidanceBreadcrumb } from "@/components/GuidanceBreadcrumb/GuidanceBreadcrumb";
 
 export type HistoryHTMLPageProps = {
 	lastUpdated: string;
@@ -37,7 +39,9 @@ export type HistoryHTMLPageProps = {
 		| "productTypeName"
 		| "publishedDate"
 		| "lastMajorModificationDate"
-	>;
+		| "terminatedDate"
+	> &
+		Partial<Pick<ProductDetail, "productType">>;
 	productHorizontalNav: {
 		hasEvidenceResources: boolean;
 		hasHistory: boolean;
@@ -54,6 +58,7 @@ export type HistoryHTMLPageProps = {
 		title: string;
 	};
 	resourceLinks: ResourceLinkViewModel[];
+	taxonomyBreadcrumb: TaxonomyBreadcrumb[];
 };
 
 export default function HistoryHTMLPage({
@@ -63,28 +68,32 @@ export default function HistoryHTMLPage({
 	productPath,
 	resource,
 	resourceLinks,
+	taxonomyBreadcrumb,
 }: HistoryHTMLPageProps): JSX.Element {
 	const { htmlBody, isConvertedDocument, title } = resource;
 	const { id } = product;
 
+	const isIndicator = product.productType === ProductTypeAcronym.IND;
+	const type = isIndicator ? "indicators" : "guidance";
+	const label = isIndicator ? "Indicators" : "NICE guidance";
+
 	return (
 		<>
-			<NextSeo title={`${title} | History | ${id} | Indicators`} />
+			<NextSeo title={`${title} | History | ${id} | ${label}`} />
 
-			<Breadcrumbs>
-				<Breadcrumb to="/">Home</Breadcrumb>
-				<Breadcrumb to="/standards-and-indicators/indicators">
-					Indicators
-				</Breadcrumb>
-				<Breadcrumb to={productPath}>{id}</Breadcrumb>
-				<Breadcrumb to={`${productPath}/history`}>History</Breadcrumb>
-				<Breadcrumb>{title}</Breadcrumb>
-			</Breadcrumbs>
+			<GuidanceBreadcrumb
+				append={[{ title: "History", url: "/history" }, { title: title }]}
+				id={product.id}
+				productPath={productPath}
+				status="terminated"
+				taxonomy={taxonomyBreadcrumb}
+				type={type}
+			/>
 
 			<ProductPageHeading product={product} />
 
 			<ProductHorizontalNav
-				productTypeName="Indicator"
+				productTypeName={isIndicator ? "Indicator" : "Guidance"}
 				productPath={productPath}
 				{...productHorizontalNav}
 			/>
@@ -144,6 +153,7 @@ export const getServerSideProps: GetServerSideProps<
 		hasInfoForPublicResources,
 		hasToolsAndResources,
 		historyPanels,
+		taxonomyBreadcrumb,
 	} = result;
 
 	const resource = historyPanels
@@ -268,6 +278,7 @@ export const getServerSideProps: GetServerSideProps<
 				productTypeName: product.productTypeName,
 				publishedDate: product.publishedDate,
 				lastMajorModificationDate: product.lastMajorModificationDate,
+				terminatedDate: product.terminatedDate,
 			},
 			productHorizontalNav: {
 				hasEvidenceResources,
@@ -285,6 +296,7 @@ export const getServerSideProps: GetServerSideProps<
 				title: resource.title,
 			},
 			resourceLinks,
+			taxonomyBreadcrumb,
 		},
 	};
 };

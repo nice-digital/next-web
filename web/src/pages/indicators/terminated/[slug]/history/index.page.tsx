@@ -30,6 +30,7 @@ export type HistoryPageProps = {
 		| "productTypeName"
 		| "publishedDate"
 		| "lastMajorModificationDate"
+		| "terminatedDate"
 	> &
 		Partial<Pick<ProductDetail, "productType">>;
 	project: Pick<ProjectDetail, "reference" | "title"> & {
@@ -51,24 +52,16 @@ export default function HistoryPage({
 	const isIndicator = product.productType === ProductTypeAcronym.IND;
 	const type = isIndicator ? "indicators" : "guidance";
 	const label = isIndicator ? "Indicators" : "NICE guidance";
-	//const downloadButtonText = type === "indicators" ? type.slice(0, -1) : type;
 
 	return (
 		<>
 			<NextSeo title={`History | ${product.id} | ${label}`} />
 
-			{/* <Breadcrumbs>
-				<Breadcrumb to="/">Home</Breadcrumb>
-				<Breadcrumb to="/standards-and-indicators/indicators">
-					Indicators
-				</Breadcrumb>
-				<Breadcrumb to={`/indicators/${product.id}`}>{product.id}</Breadcrumb>
-				<Breadcrumb>History</Breadcrumb>
-			</Breadcrumbs> */}
-
 			<GuidanceBreadcrumb
-				currentTab="History"
+				append={[{ title: "History" }]}
 				id={product.id}
+				productPath={productPath}
+				status="terminated"
 				taxonomy={taxonomyBreadcrumb}
 				type={type}
 			/>
@@ -181,6 +174,7 @@ export const getServerSideProps: GetServerSideProps<
 				publishedDate: product.publishedDate,
 				lastMajorModificationDate: product.lastMajorModificationDate,
 				productType: product.productType,
+				terminatedDate: product.terminatedDate,
 			},
 			project: {
 				reference: project.reference,

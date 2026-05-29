@@ -1,4 +1,3 @@
-import { useRouter } from "next/router";
 import { FC, ReactElement } from "react";
 
 import {
@@ -9,39 +8,55 @@ import {
 
 import { Link } from "@/components/Link/Link";
 import { TaxonomyBreadcrumb } from "@/feeds/taxonomy/types";
+import { getStatusBreadcrumb } from "@/utils/url";
 
-export interface GuidanceBreadcrumbProps {
-	currentTab?: string; // should be capitalised
+export type appendArrayType = Pick<TaxonomyBreadcrumb, "title"> &
+	Partial<Pick<TaxonomyBreadcrumb, "url">>;
+
+export type GuidanceBreadcrumbProps = {
+	append?: appendArrayType[];
 	id: string;
 	override?: ReactElement<BreadcrumbsProps>[];
+	productPath: string;
+	status?:
+		| "published"
+		| "terminated"
+		| "inconsultation"
+		| "indevelopment"
+		| "deferred"
+		| "awaiting-development"
+		| "prioritisation";
 	taxonomy?: TaxonomyBreadcrumb[];
 	type: "guidance" | "indicators";
-}
+};
 
 export const GuidanceBreadcrumb: FC<GuidanceBreadcrumbProps> = ({
-	currentTab = "",
+	append = [],
 	id,
 	override,
+	productPath,
+	status,
 	taxonomy = [],
 	type,
 }) => {
-	const { asPath } = useRouter();
-	// strip hash from asPath due to difference between client and ssr https://github.com/vercel/next.js/issues/25202
-	const currentUrl = asPath.replace(/#.*/, "");
-	const tabUrlIndex = currentUrl.lastIndexOf(`/${currentTab.toLowerCase()}`);
-	const productHomeUrl =
-		tabUrlIndex > -1 ? currentUrl.slice(0, tabUrlIndex) : currentUrl;
+	// console.log(productPath);
 
 	const isGuidance = type === "guidance";
-	const isIndev = /gid-/.test(id);
+	const statusCheck = status
+		? status
+		: /gid-/.test(id)
+		? "indevelopment"
+		: undefined;
+	const statusBreadcrumb = statusCheck
+		? getStatusBreadcrumb(statusCheck, type)
+		: undefined;
+
 	let breadcrumbTrail;
 
-
-
 	if (taxonomy.length > 0) {
-		breadcrumbTrail = taxonomy.map((crumb) => (
-			<Breadcrumb key={crumb.title} to={crumb.url}>
-				{crumb.title}
+		breadcrumbTrail = taxonomy.map(({ title, url }) => (
+			<Breadcrumb key={title} to={url}>
+				{title}
 			</Breadcrumb>
 		));
 	} else {
@@ -59,30 +74,36 @@ export const GuidanceBreadcrumb: FC<GuidanceBreadcrumbProps> = ({
 			</Breadcrumb>,
 		];
 
-		if (isIndev) {
+		if (statusBreadcrumb) {
 			breadcrumbTrail.push(
 				<Breadcrumb
-					key="in development"
-					to={`/${type}/indevelopment`}
+					key={statusBreadcrumb.title.toLowerCase()}
+					to={statusBreadcrumb.url}
 					elementType={Link}
 				>
-					In development
+					{statusBreadcrumb.title}
 				</Breadcrumb>
 			);
 		}
 	}
 
-	if (currentTab.length > 0) {
+	if (append.length > 0) {
 		breadcrumbTrail.push(
-			<Breadcrumb
-				key="product home page"
-				to={productHomeUrl}
-				elementType={Link}
-			>
+			<Breadcrumb key="product home page" to={productPath} elementType={Link}>
 				{id}
-			</Breadcrumb>,
-			<Breadcrumb key="current page">{currentTab}</Breadcrumb>
+			</Breadcrumb>
 		);
+		append.forEach(({ title, url }) => {
+			breadcrumbTrail.push(
+				<Breadcrumb
+					key={title}
+					to={url ? productPath + url : undefined}
+					elementType={url ? Link : undefined}
+				>
+					{title}
+				</Breadcrumb>
+			);
+		});
 	} else {
 		breadcrumbTrail.push(<Breadcrumb key="current page">{id}</Breadcrumb>);
 	}

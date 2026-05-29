@@ -39,7 +39,6 @@ export type TerminatedDetailsPageProps = {
 			| "indicatorSubTypeList"
 			| "summary"
 			| "productStatus"
-			| "withdrawnNotes"
 			| "supportingList"
 			| "endorsementList"
 			| "additionalAuthorList"
@@ -68,8 +67,6 @@ export default function TerminatedDetailsPage({
 	taxonomyBreadcrumb,
 }: TerminatedDetailsPageProps): JSX.Element {
 	const hasLeftColumn = pdfDownloadPath || chapters.length > 0;
-	const isFullyWithdrawn = product.productStatus === "Withdrawn";
-	const isTempWithdrawn = product.productStatus === "TemporarilyWithdrawn";
 	const relatedqs = product.relatedProductList?.filter(
 		(relatedProduct) =>
 			relatedProduct.id.toLowerCase().startsWith("qs") &&
@@ -129,6 +126,8 @@ export default function TerminatedDetailsPage({
 
 			<GuidanceBreadcrumb
 				id={product.id}
+				productPath={productPath}
+				status="terminated"
 				taxonomy={taxonomyBreadcrumb}
 				type={type}
 			/>
@@ -142,7 +141,6 @@ export default function TerminatedDetailsPage({
 				hasToolsAndResources={false}
 				hasInfoForPublicResources={false}
 				hasHistory={hasHistory}
-				isWithdrawn={isFullyWithdrawn || isTempWithdrawn}
 			/>
 
 			<Grid gutter="loose">
@@ -257,7 +255,6 @@ export const getServerSideProps: GetServerSideProps<
 				metaDescription: product.metaDescription,
 				summary: product.summary,
 				productStatus: product.productStatus,
-				withdrawnNotes: product.withdrawnNotes,
 				supportingList: product.supportingList,
 				endorsementList: product.endorsementList,
 				additionalAuthorList: product.additionalAuthorList,

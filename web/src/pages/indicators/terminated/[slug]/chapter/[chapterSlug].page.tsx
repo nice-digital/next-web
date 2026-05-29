@@ -37,7 +37,7 @@ import {
 export type TerminatedChapterPageProps = {
 	productPath: string;
 	product: ProductPageHeadingProps["product"] &
-		Pick<ProductDetail, "productType">;
+		Pick<ProductDetail, "productType" | "terminatedDate">;
 	chapterHTML: string;
 	chapterTitle: string;
 	pdfDownloadPath: string | null;
@@ -73,6 +73,8 @@ export default function TerminatedChapterPage({
 
 			<GuidanceBreadcrumb
 				id={product.id}
+				productPath={productPath}
+				status="terminated"
 				taxonomy={taxonomyBreadcrumb}
 				type={type}
 			/>
@@ -204,6 +206,7 @@ export const getServerSideProps: GetServerSideProps<
 				productType: product.productType,
 				productTypeName,
 				publishedDate,
+				terminatedDate: product.terminatedDate,
 				title,
 			},
 			chapters,
