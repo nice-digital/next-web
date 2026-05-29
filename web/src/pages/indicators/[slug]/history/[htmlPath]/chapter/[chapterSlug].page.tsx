@@ -168,12 +168,6 @@ export const getServerSideProps: GetServerSideProps<
 
 					const resourceIndevFile =
 						embedded.niceIndevGeneratedPdf || ({} as IndevFile);
-					const resourceIsGeneratedPdf = Object.hasOwn(
-						embedded,
-						"niceIndevGeneratedPdf"
-					);
-
-					if (!resourceIsGeneratedPdf) return false;
 
 					const href = `${productPath}/history/downloads/${product.id}-${
 						resourceIndevFile.resourceTitleId

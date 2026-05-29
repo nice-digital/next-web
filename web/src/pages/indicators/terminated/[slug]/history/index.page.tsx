@@ -1,8 +1,6 @@
 import { type GetServerSideProps } from "next/types";
 import { NextSeo } from "next-seo";
 
-import { Breadcrumb, Breadcrumbs } from "@nice-digital/nds-breadcrumbs";
-
 import { GuidanceBreadcrumb } from "@/components/GuidanceBreadcrumb/GuidanceBreadcrumb";
 import { ProductHorizontalNav } from "@/components/ProductHorizontalNav/ProductHorizontalNav";
 import { ProductPageHeading } from "@/components/ProductPageHeading/ProductPageHeading";

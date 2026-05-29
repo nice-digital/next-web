@@ -2,8 +2,6 @@ import { type GetServerSideProps } from "next/types";
 import { NextSeo } from "next-seo";
 import React from "react";
 
-import { Breadcrumbs, Breadcrumb } from "@nice-digital/nds-breadcrumbs";
-
 import { ConvertedDocument } from "@/components/ConvertedDocument/ConvertedDocument";
 import { ProductHorizontalNav } from "@/components/ProductHorizontalNav/ProductHorizontalNav";
 import { ProductPageHeading } from "@/components/ProductPageHeading/ProductPageHeading";

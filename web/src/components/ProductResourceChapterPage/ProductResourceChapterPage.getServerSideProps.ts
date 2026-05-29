@@ -7,6 +7,7 @@ import {
 	BaseContentPart,
 	UploadAndConvertContentPart,
 } from "@/feeds/publications/publications";
+import { ProductDetail } from "@/feeds/publications/types";
 import { logger } from "@/logger";
 import { arrayify } from "@/utils/array";
 import { fetchAndMapContentParts } from "@/utils/contentparts";
@@ -16,6 +17,7 @@ import { slugify } from "@/utils/url";
 
 import { OnThisPageSection } from "../OnThisPage/OnThisPage";
 import { type ProductPageHeadingProps } from "../ProductPageHeading/ProductPageHeading";
+import { TaxonomyBreadcrumb } from "@/feeds/taxonomy/types";
 
 // Resource download links are in the form "IND123-some-title-123-456.xls"
 const resourcePathRegex =
@@ -23,7 +25,8 @@ const resourcePathRegex =
 
 export type ProductResourceChapterPageProps = {
 	productPath: string;
-	product: ProductPageHeadingProps["product"];
+	product: ProductPageHeadingProps["product"] &
+		Partial<Pick<ProductDetail, "productType">>;
 	hasToolsAndResources: boolean;
 	hasInfoForPublicResources: boolean;
 	hasEvidenceResources: boolean;
@@ -37,6 +40,7 @@ export type ProductResourceChapterPageProps = {
 	resourceTypeName: string;
 	resourceDownloadPath: string | null;
 	resourceDownloadSizeBytes: number | null;
+	taxonomyBreadcrumb: TaxonomyBreadcrumb[];
 };
 
 export const getGetServerSidePropsFunc =
@@ -74,6 +78,7 @@ export const getGetServerSidePropsFunc =
 				hasEvidenceResources,
 				evidenceResources,
 				hasHistory,
+				taxonomyBreadcrumb,
 			} = result,
 			resources =
 				resourceTypeSlug === ResourceTypeSlug.ToolsAndResources
@@ -201,6 +206,7 @@ export const getGetServerSidePropsFunc =
 					productTypeName: product.productTypeName,
 					publishedDate: product.publishedDate,
 					title: product.title,
+					terminatedDate: product.terminatedDate,
 				},
 				title,
 				htmlBody,
@@ -211,6 +217,7 @@ export const getGetServerSidePropsFunc =
 				resourceTypeName,
 				resourceDownloadPath,
 				resourceDownloadSizeBytes,
+				taxonomyBreadcrumb,
 			},
 		};
 	};

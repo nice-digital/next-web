@@ -1,7 +1,6 @@
 import { GetServerSideProps } from "next";
 import { NextSeo } from "next-seo";
 
-import { Breadcrumb, Breadcrumbs } from "@nice-digital/nds-breadcrumbs";
 import { Grid, GridItem } from "@nice-digital/nds-grid";
 
 import { GuidanceBreadcrumb } from "@/components/GuidanceBreadcrumb/GuidanceBreadcrumb";
