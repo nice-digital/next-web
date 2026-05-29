@@ -21,6 +21,50 @@ import { fetchAndMapContentParts } from "./contentparts";
 /** A custom exported version of @sindresorhus/slugify we use everywhere in case we introduce custom replacement */
 export const slugify = libSlugify;
 
+export const getStatusBreadcrumb = (statusSlug: string, type: string) => {
+	const statusBreadrcumbs = {
+		published: {
+			title: "Published",
+			url: `/${type}/published`,
+			slug: "published",
+		},
+		terminated: {
+			title: "Terminated",
+			url: `/${type}/terminated`,
+			slug: "terminated",
+		},
+		inconsultation: {
+			title: "In consultation",
+			url: `/${type}/inconsultation`,
+			slug: "inconsultation",
+		},
+		indevelopment: {
+			title: "In development",
+			url: `/${type}/indevelopment`,
+			slug: "indevelopment",
+		},
+		deferred: {
+			title: "Deferred",
+			url: `/${type}/deferred`,
+			slug: "deferred",
+		},
+		awaitingDevelopment: {
+			title: "Awaiting development",
+			url: `/${type}/awaiting-development`,
+			slug: "awaiting-development",
+		},
+		topicPrioritisation: {
+			title: "Topic prioritisation",
+			url: `/${type}/prioritisation`,
+			slug: "prioritisation",
+		},
+	};
+
+	return Object.values(statusBreadrcumbs).find(
+		(item) => item.slug === statusSlug
+	);
+};
+
 /**
  * Gets the path, relative to the root, of an indevelopment project overview page.
  *
