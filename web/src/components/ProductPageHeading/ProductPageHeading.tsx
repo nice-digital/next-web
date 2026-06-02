@@ -13,7 +13,8 @@ export type ProductPageHeadingProps = {
 		| "productTypeName"
 		| "publishedDate"
 		| "lastMajorModificationDate"
-	>;
+	> &
+		Partial<Pick<ProductDetail, "terminatedDate">>;
 	children?: never;
 };
 
@@ -23,25 +24,36 @@ export const ProductPageHeading: FC<ProductPageHeadingProps> = ({
 		lastMajorModificationDate,
 		productTypeName,
 		publishedDate,
+		terminatedDate,
 		title,
 	},
-}) => (
-	<PageHeader
-		heading={title}
-		useAltHeading
-		id="content-start"
-		metadata={[
-			productTypeName,
-			id,
-			publishedDate ? (
+}) => {
+	//const dates = terminatedDate ? (
+	const dateArray = [];
+
+	if (terminatedDate) {
+		dateArray.push(
+			<>
+				Terminated:
+				<time dateTime={stripTime(terminatedDate)}>
+					&nbsp;{formatDateStr(terminatedDate)}
+				</time>
+			</>
+		);
+	} else {
+		if (publishedDate) {
+			dateArray.push(
 				<>
 					Published:
 					<time dateTime={stripTime(publishedDate)}>
 						&nbsp;{formatDateStr(publishedDate)}
 					</time>
 				</>
-			) : null,
-			lastMajorModificationDate != publishedDate ? (
+			);
+		}
+
+		if (lastMajorModificationDate != publishedDate) {
+			dateArray.push(
 				<>
 					Last updated:
 					<time dateTime={stripTime(lastMajorModificationDate)}>
@@ -49,7 +61,16 @@ export const ProductPageHeading: FC<ProductPageHeadingProps> = ({
 						&nbsp;{formatDateStr(lastMajorModificationDate)}
 					</time>
 				</>
-			) : null,
-		].filter(Boolean)}
-	/>
-);
+			);
+		}
+	}
+
+	return (
+		<PageHeader
+			heading={title}
+			useAltHeading
+			id="content-start"
+			metadata={[productTypeName, id, ...dateArray].filter(Boolean)}
+		/>
+	);
+};

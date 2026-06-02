@@ -2,22 +2,18 @@ import { type GetServerSideProps } from "next/types";
 import { NextSeo } from "next-seo";
 import React from "react";
 
-import { Breadcrumbs, Breadcrumb } from "@nice-digital/nds-breadcrumbs";
-
 import { ConvertedDocument } from "@/components/ConvertedDocument/ConvertedDocument";
-import { InfoAlert } from "@/components/InfoAlert/InfoAlert";
+import { GuidanceBreadcrumb } from "@/components/GuidanceBreadcrumb/GuidanceBreadcrumb";
 import { ProductHorizontalNav } from "@/components/ProductHorizontalNav/ProductHorizontalNav";
-import {
-	ProductPageHeading,
-	type ProductPageHeadingProps,
-} from "@/components/ProductPageHeading/ProductPageHeading";
+import { ProductPageHeading } from "@/components/ProductPageHeading/ProductPageHeading";
 import { getConvertedDocumentHTML } from "@/feeds/inDev/inDev";
 import {
 	IndevFile,
 	type niceIndevConvertedDocumentChapter,
 	type niceIndevConvertedDocumentSection,
 } from "@/feeds/inDev/types";
-import { type ProductDetail } from "@/feeds/publications/types";
+import { ProductDetail, ProductTypeAcronym } from "@/feeds/publications/types";
+import { TaxonomyBreadcrumb } from "@/feeds/taxonomy/types";
 import { arrayify } from "@/utils/array";
 import { getFileTypeNameFromMime } from "@/utils/file";
 import { validateRouteParams } from "@/utils/product";
@@ -25,7 +21,15 @@ import { type ResourceLinkViewModel } from "@/utils/resource";
 
 export type HistoryChapterHTMLPageProps = {
 	lastUpdated: string;
-	product: ProductPageHeadingProps["product"] & Pick<ProductDetail, "alert">;
+	product: Pick<
+		ProductDetail,
+		| "id"
+		| "title"
+		| "productTypeName"
+		| "publishedDate"
+		| "lastMajorModificationDate"
+	> &
+		Partial<Pick<ProductDetail, "productType">>;
 	productHorizontalNav: {
 		hasEvidenceResources: boolean;
 		hasHistory: boolean;
@@ -41,6 +45,7 @@ export type HistoryChapterHTMLPageProps = {
 		sections?: niceIndevConvertedDocumentSection[];
 		title: string;
 	};
+	taxonomyBreadcrumb: TaxonomyBreadcrumb[];
 };
 
 export default function HistoryChaperHTMLPage({
@@ -49,30 +54,32 @@ export default function HistoryChaperHTMLPage({
 	productHorizontalNav,
 	productPath,
 	resource,
+	taxonomyBreadcrumb,
 }: HistoryChapterHTMLPageProps): JSX.Element {
 	const { title } = resource;
 	const { id } = product;
 
+	const isIndicator = product.productType === ProductTypeAcronym.IND;
+	const type = isIndicator ? "indicators" : "guidance";
+	const label = isIndicator ? "Indicators" : "NICE guidance";
+
 	return (
 		<>
-			<NextSeo title={`${title} | History | ${id} | Indicators`} />
+			<NextSeo title={`${title} | History | ${id} | ${label}`} />
 
-			<Breadcrumbs>
-				<Breadcrumb to="/">Home</Breadcrumb>
-				<Breadcrumb to="/standards-and-indicators/indicators">
-					Indicators
-				</Breadcrumb>
-				<Breadcrumb to={productPath}>{id}</Breadcrumb>
-				<Breadcrumb to={`${productPath}/history`}>History</Breadcrumb>
-				<Breadcrumb>{title}</Breadcrumb>
-			</Breadcrumbs>
+			<GuidanceBreadcrumb
+				append={[{ title: "History", url: "/history" }, { title: title }]}
+				id={product.id}
+				productPath={productPath}
+				status="terminated"
+				taxonomy={taxonomyBreadcrumb}
+				type={type}
+			/>
 
 			<ProductPageHeading product={product} />
 
-			<InfoAlert alert={product.alert} />
-
 			<ProductHorizontalNav
-				productTypeName="Indicator"
+				productTypeName={isIndicator ? "Indicator" : "Guidance"}
 				productPath={productPath}
 				{...productHorizontalNav}
 			/>
@@ -100,6 +107,7 @@ export const getServerSideProps: GetServerSideProps<
 		hasInfoForPublicResources,
 		hasToolsAndResources,
 		historyPanels,
+		taxonomyBreadcrumb,
 	} = result;
 
 	const chapterSlug =
@@ -200,7 +208,6 @@ export const getServerSideProps: GetServerSideProps<
 				productTypeName: product.productTypeName,
 				publishedDate: product.publishedDate,
 				lastMajorModificationDate: product.lastMajorModificationDate,
-				alert: product.alert,
 			},
 			productHorizontalNav: {
 				hasEvidenceResources,
@@ -217,6 +224,7 @@ export const getServerSideProps: GetServerSideProps<
 				sections: resourceFileHTML.sections,
 				title: resource.title,
 			},
+			taxonomyBreadcrumb,
 		},
 	};
 };

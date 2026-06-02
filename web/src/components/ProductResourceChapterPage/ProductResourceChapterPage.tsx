@@ -1,17 +1,17 @@
 import { NextSeo } from "next-seo";
 import { FC } from "react";
 
-import { Breadcrumb, Breadcrumbs } from "@nice-digital/nds-breadcrumbs";
 import { Button } from "@nice-digital/nds-button";
 import { Grid, GridItem } from "@nice-digital/nds-grid";
 
-import { Link } from "@/components/Link/Link";
 import { ProductHorizontalNav } from "@/components/ProductHorizontalNav/ProductHorizontalNav";
 import { ProductPageHeading } from "@/components/ProductPageHeading/ProductPageHeading";
 import { PublicationsChapterMenu } from "@/components/PublicationsChapterMenu/PublicationsChapterMenu";
 import { PublicationsPrevNext } from "@/components/PublicationsPrevNext/PublicationsPrevNext";
+import { ProductTypeAcronym } from "@/feeds/publications/types";
 import { formatDateStr, stripTime } from "@/utils/datetime";
 
+import { GuidanceBreadcrumb } from "../GuidanceBreadcrumb/GuidanceBreadcrumb";
 import { InfoAlert } from "../InfoAlert/InfoAlert";
 import { OnThisPageBasic } from "../OnThisPageBasic/OnThisPageBasic";
 
@@ -34,20 +34,26 @@ export const ProductResourceChapterPage: FC<
 	htmlBody,
 	title,
 	lastUpdated,
-	resourceTypeSlug,
+	//resourceTypeSlug,
 	resourceTypeName,
 	resourceDownloadPath,
+	taxonomyBreadcrumb,
 }) => {
-	const hasOnThisPageMenu = chapterSections.length > 1,
-		hasDownloadButton = !!resourceDownloadPath;
+	const hasOnThisPageMenu = chapterSections.length > 1;
+	const hasDownloadButton = !!resourceDownloadPath;
+
+	const isIndicator = product.productType === ProductTypeAcronym.IND;
+	const type = isIndicator ? "indicators" : "guidance";
+	const label = isIndicator ? "Indicators" : "NICE guidance";
 
 	return (
 		<>
 			<NextSeo
-				title={`${title} | ${resourceTypeName} | ${product.id} | Indicators`}
+				title={`${title} | ${resourceTypeName} | ${product.id} | ${label}`}
 			/>
 
-			<Breadcrumbs>
+			{/* fallback */}
+			{/* <Breadcrumbs>
 				<Breadcrumb to="/">Home</Breadcrumb>
 				<Breadcrumb to="/standards-and-indicators/indicators">
 					Indicators
@@ -62,14 +68,23 @@ export const ProductResourceChapterPage: FC<
 					{resourceTypeName}
 				</Breadcrumb>
 				<Breadcrumb>{title}</Breadcrumb>
-			</Breadcrumbs>
+			</Breadcrumbs> */}
+
+			<GuidanceBreadcrumb
+				append={[{ title: "Evidence" }]}
+				id={product.id}
+				productPath={productPath}
+				status="terminated"
+				taxonomy={taxonomyBreadcrumb}
+				type={type}
+			/>
 
 			<ProductPageHeading product={product} />
 
 			<InfoAlert alert={product.alert} />
 
 			<ProductHorizontalNav
-				productTypeName="Indicator"
+				productTypeName={isIndicator ? "Indicator" : "Guidance"}
 				productPath={productPath}
 				hasToolsAndResources={hasToolsAndResources}
 				hasInfoForPublicResources={hasInfoForPublicResources}

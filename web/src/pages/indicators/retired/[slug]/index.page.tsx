@@ -1,9 +1,9 @@
 import { type GetServerSideProps } from "next/types";
 import { NextSeo } from "next-seo";
 
-import { Breadcrumb, Breadcrumbs } from "@nice-digital/nds-breadcrumbs";
 import { Grid, GridItem } from "@nice-digital/nds-grid";
 
+import { GuidanceBreadcrumb } from "@/components/GuidanceBreadcrumb/GuidanceBreadcrumb";
 import { InfoAlert } from "@/components/InfoAlert/InfoAlert";
 import {
 	ProductPageHeading,
@@ -21,34 +21,32 @@ import { validateRouteParams } from "@/utils/product";
 import styles from "./index.page.module.scss";
 
 export type RetiredDetailsPageProps = {
+	indicatorSubTypes: IndicatorSubType[];
+	pdfDownloadPath: string | null;
 	product: ProductPageHeadingProps["product"] &
 		Pick<
 			ProductDetail,
-			| "metaDescription"
+			| "alert"
 			| "indicatorSubTypeList"
+			| "metaDescription"
 			| "summary"
 			| "productStatus"
-			| "alert"
+			| "productType"
 		>;
-	guidanceOrIndicatorBreadcrumb: {
-		label: string;
-		slug: string;
-		url: string;
-	};
-	indicatorSubTypes: IndicatorSubType[];
-	pdfDownloadPath: string | null;
+	productPath: string;
 };
 
 export default function RetiredDetailsPage({
-	product,
-	guidanceOrIndicatorBreadcrumb,
 	indicatorSubTypes,
 	pdfDownloadPath,
+	product,
+	productPath,
 }: RetiredDetailsPageProps): JSX.Element {
-	const { label, slug, url } = guidanceOrIndicatorBreadcrumb,
-		indicatorText = slug === "/indicators" ? "indicator" : "",
-		pdfFileText =
-			(indicatorText !== "" ? indicatorText + " " : "") + "PDF file";
+	const isIndicator = product.productType === ProductTypeAcronym.IND;
+	const type = isIndicator ? "indicators" : "guidance";
+	const label = isIndicator ? "Indicators" : "NICE guidance";
+	const downloadButtonText =
+		type === "indicators" ? `retired indicator` : "retired";
 
 	return (
 		<>
@@ -59,7 +57,7 @@ export default function RetiredDetailsPage({
 					{
 						rel: "sitemap",
 						type: "application/xml",
-						href: `${slug}/sitemap.xml`,
+						href: `/${type}/sitemap.xml`,
 					},
 					{
 						rel: "schema.DCTERMS",
@@ -95,11 +93,12 @@ export default function RetiredDetailsPage({
 				]}
 			/>
 
-			<Breadcrumbs>
-				<Breadcrumb to="/">Home</Breadcrumb>
-				<Breadcrumb to={url}>{label}</Breadcrumb>
-				<Breadcrumb>{product.id}</Breadcrumb>
-			</Breadcrumbs>
+			{/* retired doesn't use taxonomy, so no props passed in */}
+			<GuidanceBreadcrumb
+				id={product.id}
+				productPath={productPath}
+				type={type}
+			/>
 
 			<ProductPageHeading product={product} />
 
@@ -116,11 +115,11 @@ export default function RetiredDetailsPage({
 					aria-label="Chapters"
 				>
 					<PublicationsDownloadLink
-						ariaLabel={`Download retired ${pdfFileText}`}
+						ariaLabel={`Download ${downloadButtonText} PDF file`}
 						downloadLink={pdfDownloadPath}
 						className={styles.downloadButton}
 					>
-						Download retired {indicatorText}
+						Download {downloadButtonText}
 					</PublicationsDownloadLink>
 				</GridItem>
 
@@ -145,20 +144,17 @@ export const getServerSideProps: GetServerSideProps<
 
 	if ("notFound" in result || "redirect" in result) return result;
 
-	const { product, pdfDownloadPath } = result;
-	const isIndicator = product.productType === ProductTypeAcronym.IND;
-	const guidanceOrIndicatorBreadcrumb = {
-		label: isIndicator ? "Indicators" : "NICE guidance",
-		slug: isIndicator ? "/indicators" : "/guidance",
-		url: isIndicator ? "/standards-and-indicators/indicators" : "/guidance",
-	};
+	const { pdfDownloadPath, product, productPath } = result;
 	const indicatorSubTypes = await getAllIndicatorSubTypes();
 
 	return {
 		props: {
+			indicatorSubTypes,
+			pdfDownloadPath,
 			product: {
 				id: product.id,
 				lastMajorModificationDate: product.lastMajorModificationDate,
+				productType: product.productType,
 				productTypeName: product.productTypeName,
 				publishedDate: product.publishedDate,
 				title: product.title,
@@ -168,9 +164,7 @@ export const getServerSideProps: GetServerSideProps<
 				productStatus: product.productStatus,
 				alert: product.alert,
 			},
-			guidanceOrIndicatorBreadcrumb,
-			indicatorSubTypes,
-			pdfDownloadPath,
+			productPath,
 		},
 	};
 };

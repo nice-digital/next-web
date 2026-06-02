@@ -8,6 +8,7 @@ import {
 	UploadAndConvertContentPart,
 } from "@/feeds/publications/publications";
 import { ProductDetail } from "@/feeds/publications/types";
+import { TaxonomyBreadcrumb } from "@/feeds/taxonomy/types";
 import { logger } from "@/logger";
 import { arrayify } from "@/utils/array";
 import { fetchAndMapContentParts } from "@/utils/contentparts";
@@ -24,7 +25,9 @@ const resourcePathRegex =
 
 export type ProductResourceChapterPageProps = {
 	productPath: string;
-	product: ProductPageHeadingProps["product"] & Pick<ProductDetail, "alert">;
+	product: ProductPageHeadingProps["product"] &
+		Pick<ProductDetail, "alert"> &
+		Partial<Pick<ProductDetail, "productType">>;
 	hasToolsAndResources: boolean;
 	hasInfoForPublicResources: boolean;
 	hasEvidenceResources: boolean;
@@ -38,6 +41,7 @@ export type ProductResourceChapterPageProps = {
 	resourceTypeName: string;
 	resourceDownloadPath: string | null;
 	resourceDownloadSizeBytes: number | null;
+	taxonomyBreadcrumb: TaxonomyBreadcrumb[];
 };
 
 export const getGetServerSidePropsFunc =
@@ -75,6 +79,7 @@ export const getGetServerSidePropsFunc =
 				hasEvidenceResources,
 				evidenceResources,
 				hasHistory,
+				taxonomyBreadcrumb,
 			} = result,
 			resources =
 				resourceTypeSlug === ResourceTypeSlug.ToolsAndResources
@@ -197,12 +202,13 @@ export const getGetServerSidePropsFunc =
 				hasHistory,
 				productPath,
 				product: {
+					alert: product.alert,
 					id: product.id,
 					lastMajorModificationDate: product.lastMajorModificationDate,
 					productTypeName: product.productTypeName,
 					publishedDate: product.publishedDate,
+					terminatedDate: product.terminatedDate,
 					title: product.title,
-					alert: product.alert,
 				},
 				title,
 				htmlBody,
@@ -213,6 +219,7 @@ export const getGetServerSidePropsFunc =
 				resourceTypeName,
 				resourceDownloadPath,
 				resourceDownloadSizeBytes,
+				taxonomyBreadcrumb,
 			},
 		};
 	};

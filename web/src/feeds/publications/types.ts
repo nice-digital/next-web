@@ -12,6 +12,7 @@ export enum Status {
 	Withdrawn = "Withdrawn",
 	TemporarilyWithdrawn = "TemporarilyWithdrawn",
 	Retired = "Retired",
+	Terminated = "Terminated",
 }
 
 export enum ProductGroup {
@@ -573,6 +574,7 @@ export type ProductDetail = ProductAndResourceBase & {
 	developedAs: string | null;
 	relevantTo: string[];
 	terminatedAppraisal: null;
+	terminatedDate: string | null;
 	areasOfInterestList: AreaOfInterest[];
 	indicatorSubTypeList: string[];
 	indicatorOldCode: string;
