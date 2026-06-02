@@ -12,6 +12,7 @@ import { PublicationsChapterMenu } from "@/components/PublicationsChapterMenu/Pu
 import { PublicationsPrevNext } from "@/components/PublicationsPrevNext/PublicationsPrevNext";
 import { formatDateStr, stripTime } from "@/utils/datetime";
 
+import { InfoAlert } from "../InfoAlert/InfoAlert";
 import { OnThisPageBasic } from "../OnThisPageBasic/OnThisPageBasic";
 
 import { type ProductResourceChapterPageProps } from "./ProductResourceChapterPage.getServerSideProps";
@@ -64,6 +65,8 @@ export const ProductResourceChapterPage: FC<
 			</Breadcrumbs>
 
 			<ProductPageHeading product={product} />
+
+			<InfoAlert alert={product.alert} />
 
 			<ProductHorizontalNav
 				productTypeName="Indicator"

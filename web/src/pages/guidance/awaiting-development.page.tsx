@@ -61,7 +61,7 @@ export default getProductListPage({
 	showDateFilter: false,
 	textFilterHeading,
 	navigatorsOrder: ["ndt", "ngt", "aty", "nai"],
-	navigatorsToCollapse: ["ndt", "nai"],
+	navigatorsToCollapse: ["ngt", "ndt", "nai"],
 	tableBodyRender,
 	searchInputPlaceholder: "E.g. 'diabetes' or 'NG28'",
 });

@@ -5,6 +5,7 @@ import { Breadcrumb, Breadcrumbs } from "@nice-digital/nds-breadcrumbs";
 import { Grid, GridItem } from "@nice-digital/nds-grid";
 
 import { EndorsingOrganisations } from "@/components/EndorsingOrganisations/EndorsingOrganisations";
+import { InfoAlert } from "@/components/InfoAlert/InfoAlert";
 import { LogosList } from "@/components/LogosList/LogosList";
 import { ProductHorizontalNav } from "@/components/ProductHorizontalNav/ProductHorizontalNav";
 import {
@@ -44,6 +45,7 @@ export type IndicatorsDetailsPageProps = {
 			| "accreditationList"
 			| "productTypeName"
 			| "relatedProductList"
+			| "alert"
 		>;
 	indicatorSubTypes: IndicatorSubType[];
 	pdfDownloadPath: string | null;
@@ -129,6 +131,8 @@ export default function IndicatorsDetailsPage({
 			</Breadcrumbs>
 
 			<ProductPageHeading product={product} />
+
+			<InfoAlert alert={product.alert} />
 
 			<ProductHorizontalNav
 				productTypeName="Indicator"
@@ -268,6 +272,7 @@ export const getServerSideProps: GetServerSideProps<
 				authorList: product.authorList,
 				accreditationList: product.accreditationList,
 				relatedProductList: product.relatedProductList,
+				alert: product.alert,
 			},
 			indicatorSubTypes,
 			pdfDownloadPath,

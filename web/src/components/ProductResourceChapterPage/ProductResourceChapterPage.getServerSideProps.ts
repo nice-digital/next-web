@@ -7,6 +7,7 @@ import {
 	BaseContentPart,
 	UploadAndConvertContentPart,
 } from "@/feeds/publications/publications";
+import { ProductDetail } from "@/feeds/publications/types";
 import { logger } from "@/logger";
 import { arrayify } from "@/utils/array";
 import { fetchAndMapContentParts } from "@/utils/contentparts";
@@ -23,7 +24,7 @@ const resourcePathRegex =
 
 export type ProductResourceChapterPageProps = {
 	productPath: string;
-	product: ProductPageHeadingProps["product"];
+	product: ProductPageHeadingProps["product"] & Pick<ProductDetail, "alert">;
 	hasToolsAndResources: boolean;
 	hasInfoForPublicResources: boolean;
 	hasEvidenceResources: boolean;
@@ -201,6 +202,7 @@ export const getGetServerSidePropsFunc =
 					productTypeName: product.productTypeName,
 					publishedDate: product.publishedDate,
 					title: product.title,
+					alert: product.alert,
 				},
 				title,
 				htmlBody,

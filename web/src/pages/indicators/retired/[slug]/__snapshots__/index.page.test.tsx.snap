@@ -181,6 +181,7 @@ Object {
     ],
     "pdfDownloadPath": "/indicators/retired/ind1111-indicator-master-accordion-panels-test/IND1111-20251209.pdf",
     "product": Object {
+      "alert": undefined,
       "id": "IND1111",
       "indicatorSubTypeList": Array [
         "GPIQ",
