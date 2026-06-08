@@ -1,5 +1,8 @@
+import parse from "html-react-parser";
 import { type GetServerSideProps } from "next/types";
 import { NextSeo } from "next-seo";
+
+import { Alert } from "@nice-digital/nds-alert";
 
 import { GuidanceBreadcrumb } from "@/components/GuidanceBreadcrumb/GuidanceBreadcrumb";
 import { ProductHorizontalNav } from "@/components/ProductHorizontalNav/ProductHorizontalNav";
@@ -29,6 +32,7 @@ export type HistoryPageProps = {
 		| "publishedDate"
 		| "lastMajorModificationDate"
 		| "terminatedDate"
+		| "alert"
 	> &
 		Partial<Pick<ProductDetail, "productType">>;
 	project: Pick<ProjectDetail, "reference" | "title"> & {
@@ -65,6 +69,8 @@ export default function HistoryPage({
 			/>
 
 			<ProductPageHeading product={product} />
+
+			{product.alert ? <Alert type="info">{parse(product.alert)}</Alert> : null}
 
 			<ProductHorizontalNav
 				productTypeName={isIndicator ? "Indicator" : "Guidance"}
@@ -114,7 +120,7 @@ export const getServerSideProps: GetServerSideProps<
 
 	const groups = historyPanels.sort(byTitleAlphabetically).map((panel) => {
 		const indevResource =
-			panel.embedded.niceIndevResourceList.embedded.niceIndevResource;
+			panel.embedded?.niceIndevResourceList?.embedded?.niceIndevResource;
 
 		const indevResources = arrayify(indevResource);
 
@@ -166,6 +172,7 @@ export const getServerSideProps: GetServerSideProps<
 			hasEvidenceResources,
 			hasHistory,
 			product: {
+				alert: product.alert,
 				id: product.id,
 				title: product.title,
 				productTypeName: product.productTypeName,

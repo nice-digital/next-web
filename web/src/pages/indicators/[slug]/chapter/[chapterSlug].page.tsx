@@ -1,10 +1,11 @@
+import parse from "html-react-parser";
 import { GetServerSideProps } from "next";
 import { NextSeo } from "next-seo";
 
+import { Alert } from "@nice-digital/nds-alert";
 import { Breadcrumb, Breadcrumbs } from "@nice-digital/nds-breadcrumbs";
 import { Grid, GridItem } from "@nice-digital/nds-grid";
 
-import { InfoAlert } from "@/components/InfoAlert/InfoAlert";
 import {
 	OnThisPageBasic,
 	type OnThisPageBasicSection,
@@ -76,7 +77,7 @@ export default function IndicatorChapterPage({
 
 			<ProductPageHeading product={product} />
 
-			<InfoAlert alert={product.alert} />
+			{product.alert ? <Alert type="info">{parse(product.alert)}</Alert> : null}
 
 			<ProductHorizontalNav
 				productTypeName="Indicator"

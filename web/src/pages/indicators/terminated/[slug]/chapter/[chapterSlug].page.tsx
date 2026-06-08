@@ -1,6 +1,8 @@
+import parse from "html-react-parser";
 import { GetServerSideProps } from "next";
 import { NextSeo } from "next-seo";
 
+import { Alert } from "@nice-digital/nds-alert";
 import { Grid, GridItem } from "@nice-digital/nds-grid";
 
 import { GuidanceBreadcrumb } from "@/components/GuidanceBreadcrumb/GuidanceBreadcrumb";
@@ -31,12 +33,12 @@ import {
 	validateRouteParams,
 } from "@/utils/product";
 
-//import styles from "./[chapterSlug].page.module.scss";
+import styles from "./[chapterSlug].page.module.scss";
 
 export type TerminatedChapterPageProps = {
 	productPath: string;
 	product: ProductPageHeadingProps["product"] &
-		Pick<ProductDetail, "productType" | "terminatedDate">;
+		Pick<ProductDetail, "productType" | "terminatedDate" | "alert">;
 	chapterHTML: string;
 	chapterTitle: string;
 	pdfDownloadPath: string | null;
@@ -80,6 +82,8 @@ export default function TerminatedChapterPage({
 
 			<ProductPageHeading product={product} />
 
+			{product.alert ? <Alert type="info">{parse(product.alert)}</Alert> : null}
+
 			<ProductHorizontalNav
 				productTypeName={isIndicator ? "Indicator" : "Guidance"}
 				productPath={productPath}
@@ -119,7 +123,7 @@ export default function TerminatedChapterPage({
 
 					<div
 						dangerouslySetInnerHTML={{ __html: chapterHTML }}
-						//className={styles.chapterContent}
+						className={styles.chapterContent}
 					/>
 					<PublicationsPrevNext chapters={chapters} />
 				</GridItem>
@@ -199,6 +203,7 @@ export const getServerSideProps: GetServerSideProps<
 			hasHistory,
 			product: {
 				// Don't bloat the serialized JSON with all the response data: just pick the fields we need
+				alert: product.alert,
 				id,
 				indicatorSubTypeList,
 				lastMajorModificationDate,

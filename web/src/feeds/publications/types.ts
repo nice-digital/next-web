@@ -15,6 +15,15 @@ export enum Status {
 	Terminated = "Terminated",
 }
 
+export type BreadcrumbStatus =
+	| "published"
+	| "terminated"
+	| "inconsultation"
+	| "indevelopment"
+	| "deferred"
+	| "awaiting-development"
+	| "prioritisation";
+
 export enum ProductGroup {
 	Guideline = "Guideline",
 	Guidance = "Guidance",

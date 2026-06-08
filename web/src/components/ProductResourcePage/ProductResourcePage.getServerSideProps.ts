@@ -10,6 +10,7 @@ import {
 	FileContent,
 } from "@/feeds/publications/publications";
 import { ProductDetail } from "@/feeds/publications/types";
+import { TaxonomyBreadcrumb } from "@/feeds/taxonomy/types";
 import { logger } from "@/logger";
 import { arrayify } from "@/utils/array";
 import { fetchAndMapContentParts } from "@/utils/contentparts";
@@ -26,7 +27,9 @@ const resourcePathRegex =
 
 export type ProductResourcePageProps = {
 	productPath: string;
-	product: ProductPageHeadingProps["product"] & Pick<ProductDetail, "alert">;
+	product: ProductPageHeadingProps["product"] &
+		Pick<ProductDetail, "alert" | "productStatus"> &
+		Partial<Pick<ProductDetail, "productType">>;
 	hasToolsAndResources: boolean;
 	hasInfoForPublicResources: boolean;
 	hasEvidenceResources: boolean;
@@ -39,6 +42,7 @@ export type ProductResourcePageProps = {
 	resourceTypeSlug: ResourceTypeSlug;
 	resourceDownloadPath: string | null;
 	resourceDownloadSizeBytes: number | null;
+	taxonomyBreadcrumb: TaxonomyBreadcrumb[];
 };
 
 export const getGetServerSidePropsFunc =
@@ -74,6 +78,7 @@ export const getGetServerSidePropsFunc =
 				hasEvidenceResources,
 				evidenceResources,
 				hasHistory,
+				taxonomyBreadcrumb,
 			} = result,
 			resources =
 				resourceTypeSlug === ResourceTypeSlug.ToolsAndResources
@@ -193,12 +198,14 @@ export const getGetServerSidePropsFunc =
 				hasHistory,
 				productPath,
 				product: {
+					alert: product.alert,
 					id: product.id,
 					lastMajorModificationDate: product.lastMajorModificationDate,
+					productStatus: product.productStatus,
 					productTypeName: product.productTypeName,
 					publishedDate: product.publishedDate,
+					terminatedDate: product.terminatedDate,
 					title: product.title,
-					alert: product.alert,
 				},
 				title,
 				htmlBody,
@@ -210,6 +217,7 @@ export const getGetServerSidePropsFunc =
 					? `${productPath}/downloads/${product.id}-${params.partSlug}.pdf`
 					: null,
 				resourceDownloadSizeBytes: pdfFile ? pdfFile.length : null,
+				taxonomyBreadcrumb,
 			},
 		};
 	};

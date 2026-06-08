@@ -1,6 +1,9 @@
+import parse from "html-react-parser";
 import { type GetServerSideProps } from "next/types";
 import { NextSeo } from "next-seo";
 import React from "react";
+
+import { Alert } from "@nice-digital/nds-alert";
 
 import { ConvertedDocument } from "@/components/ConvertedDocument/ConvertedDocument";
 import { GuidanceBreadcrumb } from "@/components/GuidanceBreadcrumb/GuidanceBreadcrumb";
@@ -32,6 +35,7 @@ export type HistoryHTMLPageProps = {
 	lastUpdated: string;
 	product: Pick<
 		ProductDetail,
+		| "alert"
 		| "id"
 		| "title"
 		| "productTypeName"
@@ -89,6 +93,8 @@ export default function HistoryHTMLPage({
 			/>
 
 			<ProductPageHeading product={product} />
+
+			{product.alert ? <Alert type="info">{parse(product.alert)}</Alert> : null}
 
 			<ProductHorizontalNav
 				productTypeName={isIndicator ? "Indicator" : "Guidance"}
@@ -156,7 +162,9 @@ export const getServerSideProps: GetServerSideProps<
 
 	const resource = historyPanels
 		.flatMap((panel) =>
-			arrayify(panel.embedded.niceIndevResourceList.embedded.niceIndevResource)
+			arrayify(
+				panel.embedded?.niceIndevResourceList?.embedded?.niceIndevResource
+			)
 		)
 		.find((resource) => {
 			const indevFile =
@@ -177,8 +185,8 @@ export const getServerSideProps: GetServerSideProps<
 	);
 
 	const indevFile = isConvertedDocument
-		? resource.embedded.niceIndevConvertedDocument
-		: resource.embedded.niceIndevFile;
+		? resource.embedded?.niceIndevConvertedDocument
+		: resource.embedded?.niceIndevFile;
 
 	if (!indevFile) return { notFound: true };
 
@@ -199,13 +207,15 @@ export const getServerSideProps: GetServerSideProps<
 
 	const panel = historyPanels.find((panel) => {
 		const indevResource = arrayify(
-			panel.embedded.niceIndevResourceList.embedded.niceIndevResource
+			panel.embedded?.niceIndevResourceList?.embedded?.niceIndevResource
 		);
 		return indevResource[0].title === resource.title;
 	});
 
 	const resourceLinks: ResourceLinkViewModel[] = panel
-		? arrayify(panel.embedded.niceIndevResourceList.embedded.niceIndevResource)
+		? arrayify(
+				panel.embedded?.niceIndevResourceList?.embedded?.niceIndevResource
+		  )
 				.filter(
 					(embeddedResource) =>
 						!embeddedResource.textOnly && embeddedResource.title !== panel.title
@@ -271,6 +281,7 @@ export const getServerSideProps: GetServerSideProps<
 		props: {
 			lastUpdated: resource.publishedDate,
 			product: {
+				alert: product.alert,
 				id: product.id,
 				title: product.title,
 				productTypeName: product.productTypeName,

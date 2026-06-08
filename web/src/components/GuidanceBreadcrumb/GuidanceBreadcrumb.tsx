@@ -7,6 +7,7 @@ import {
 } from "@nice-digital/nds-breadcrumbs";
 
 import { Link } from "@/components/Link/Link";
+import { BreadcrumbStatus } from "@/feeds/publications/types";
 import { TaxonomyBreadcrumb } from "@/feeds/taxonomy/types";
 import { getStatusBreadcrumb } from "@/utils/url";
 
@@ -18,14 +19,7 @@ export type GuidanceBreadcrumbProps = {
 	id: string;
 	override?: ReactElement<BreadcrumbsProps>[];
 	productPath: string;
-	status?:
-		| "published"
-		| "terminated"
-		| "inconsultation"
-		| "indevelopment"
-		| "deferred"
-		| "awaiting-development"
-		| "prioritisation";
+	status?: BreadcrumbStatus;
 	taxonomy?: TaxonomyBreadcrumb[];
 	type: "guidance" | "indicators";
 };
