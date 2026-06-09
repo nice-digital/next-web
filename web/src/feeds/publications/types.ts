@@ -599,7 +599,7 @@ export type ProductDetail = ProductAndResourceBase & {
 	productTypeName: string;
 	/** The plural name of the product type e.g. "NICE indicators" */
 	productTypeNamePlural: string;
-	alert: string;
+	alert: string | null;
 };
 
 /** The type of the response from a chapter endpoint e.g. /feeds/product/ind69/part/1/chapter/overview */
