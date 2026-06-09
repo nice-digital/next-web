@@ -32,9 +32,9 @@ exports[`/product/[slug]/resources/[partSlug]/chapter/[chapterSlug].page Product
         class="breadcrumbs__crumb"
       >
         <a
-          href="/guidance/terminated"
+          href="/guidance/published"
         >
-          Terminated
+          Published
         </a>
       </li>
       <li
@@ -49,8 +49,17 @@ exports[`/product/[slug]/resources/[partSlug]/chapter/[chapterSlug].page Product
       <li
         class="breadcrumbs__crumb"
       >
+        <a
+          href="/process/pmg20/resources"
+        >
+          Tools and resources
+        </a>
+      </li>
+      <li
+        class="breadcrumbs__crumb"
+      >
         <span>
-          Evidence
+          Developing NICE guidelines: the manual – appendices
         </span>
       </li>
     </ol>
@@ -82,8 +91,8 @@ exports[`/product/[slug]/resources/[partSlug]/chapter/[chapterSlug].page Product
       "@type": "ListItem",
       "position": 3,
       "item": {
-        "@id": "/guidance/terminated",
-        "name": "Terminated"
+        "@id": "/guidance/published",
+        "name": "Published"
       }
     },
     {
@@ -98,7 +107,15 @@ exports[`/product/[slug]/resources/[partSlug]/chapter/[chapterSlug].page Product
       "@type": "ListItem",
       "position": 5,
       "item": {
-        "name": "Evidence"
+        "@id": "/process/pmg20/resources",
+        "name": "Tools and resources"
+      }
+    },
+    {
+      "@type": "ListItem",
+      "position": 6,
+      "item": {
+        "name": "Developing NICE guidelines: the manual – appendices"
       }
     }
   ]
@@ -3437,6 +3454,7 @@ Object {
       "alert": undefined,
       "id": "PMG20",
       "lastMajorModificationDate": "2024-05-29T00:00:00",
+      "productStatus": "Published",
       "productTypeName": "NICE process and methods",
       "publishedDate": "2014-10-31T00:00:00",
       "terminatedDate": undefined,
@@ -3445,7 +3463,6 @@ Object {
     "productPath": "/process/pmg20",
     "resourceDownloadPath": "/process/pmg20/downloads/PMG20-developing-nice-guidelines-the-manual-appendices-1967369-2549710189.pdf",
     "resourceDownloadSizeBytes": 394577,
-    "resourceTypeName": "Tools and resources",
     "resourceTypeSlug": "resources",
     "taxonomyBreadcrumb": Array [],
     "title": "Developing NICE guidelines: the manual – appendices",

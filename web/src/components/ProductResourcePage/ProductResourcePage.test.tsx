@@ -96,7 +96,7 @@ describe("ProductResourcePage", () => {
 			);
 
 			expect(document.title).toBe(
-				`Resource impact statement | ${expectedTitleSegment} | NG100 | Indicators`
+				`Resource impact statement | ${expectedTitleSegment} | NG100 | NICE guidance`
 			);
 		}
 	);
