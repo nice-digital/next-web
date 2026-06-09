@@ -44,7 +44,7 @@ export const getServerSideProps: GetServerSideProps<
 		resource = historyPanels
 			.flatMap((panel) =>
 				arrayify(
-					panel.embedded.niceIndevResourceList.embedded.niceIndevResource
+					panel.embedded?.niceIndevResourceList?.embedded?.niceIndevResource
 				)
 			)
 			.find((resource) => {
@@ -85,7 +85,7 @@ export const getServerSideProps: GetServerSideProps<
 	}
 
 	return getServerSideFile(
-		await getFileStream(links.self[0].href),
+		await getFileStream(links.self[0]?.href),
 		res,
 		mimeType
 	);

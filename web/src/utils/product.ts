@@ -160,6 +160,13 @@ export const validateRouteParams = async ({
 		return { notFound: true };
 	}
 
+	let taxonomyProductMappingsFallback = taxonomyProductMappings;
+
+	if (!taxonomyProductMappings) {
+		logger.info(`Product type ${product.productType} not found`);
+		taxonomyProductMappingsFallback = {} as TaxonomyProductMappings;
+	}
+
 	const productPath = getProductPath({
 			...product,
 			productGroup: productType.group,
@@ -168,8 +175,8 @@ export const validateRouteParams = async ({
 		evidenceResources = getPublishedEvidenceResources(product),
 		infoForPublicResources = getPublishedIFPResources(product),
 		taxonomyBreadcrumb =
-			Object.keys(taxonomyProductMappings).length > 0
-				? getTaxonomyBreadcrumb(taxonomyProductMappings, product)
+			Object.keys(taxonomyProductMappingsFallback).length > 0
+				? getTaxonomyBreadcrumb(taxonomyProductMappingsFallback, product)
 				: [];
 
 	const project = product.inDevReference
@@ -178,7 +185,7 @@ export const validateRouteParams = async ({
 
 	const historyPanels = project
 		? arrayify(
-				project.embedded.niceIndevPanelList?.embedded?.niceIndevPanel
+				project.embedded?.niceIndevPanelList?.embedded?.niceIndevPanel
 		  ).filter((panel) => panel.showPanel && panel.panelType == "History")
 		: [];
 
@@ -384,7 +391,6 @@ export const getTaxonomyBreadcrumb = (
 			if (matchingProducts.length > 0) {
 				results.push({
 					breadcrumb: currentPath,
-					//breadcrumbString: currentPath.map((item) => item.title).join(" > "),
 				});
 			}
 		}

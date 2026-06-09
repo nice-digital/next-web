@@ -28,7 +28,6 @@ export const ProductPageHeading: FC<ProductPageHeadingProps> = ({
 		title,
 	},
 }) => {
-	//const dates = terminatedDate ? (
 	const dateArray = [];
 
 	if (terminatedDate) {

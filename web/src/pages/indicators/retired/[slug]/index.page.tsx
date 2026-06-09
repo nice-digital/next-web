@@ -1,10 +1,11 @@
+import parse from "html-react-parser";
 import { type GetServerSideProps } from "next/types";
 import { NextSeo } from "next-seo";
 
+import { Alert } from "@nice-digital/nds-alert";
 import { Grid, GridItem } from "@nice-digital/nds-grid";
 
 import { GuidanceBreadcrumb } from "@/components/GuidanceBreadcrumb/GuidanceBreadcrumb";
-import { InfoAlert } from "@/components/InfoAlert/InfoAlert";
 import {
 	ProductPageHeading,
 	type ProductPageHeadingProps,
@@ -102,7 +103,7 @@ export default function RetiredDetailsPage({
 
 			<ProductPageHeading product={product} />
 
-			<InfoAlert alert={product.alert} />
+			{product.alert ? <Alert type="info">{parse(product.alert)}</Alert> : null}
 
 			<hr className={styles.hrCustomTab} />
 

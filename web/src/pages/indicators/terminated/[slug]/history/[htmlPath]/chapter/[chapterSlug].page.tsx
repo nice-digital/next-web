@@ -1,6 +1,9 @@
+import parse from "html-react-parser";
 import { type GetServerSideProps } from "next/types";
 import { NextSeo } from "next-seo";
 import React from "react";
+
+import { Alert } from "@nice-digital/nds-alert";
 
 import { ConvertedDocument } from "@/components/ConvertedDocument/ConvertedDocument";
 import { GuidanceBreadcrumb } from "@/components/GuidanceBreadcrumb/GuidanceBreadcrumb";
@@ -23,6 +26,7 @@ export type HistoryChapterHTMLPageProps = {
 	lastUpdated: string;
 	product: Pick<
 		ProductDetail,
+		| "alert"
 		| "id"
 		| "title"
 		| "productTypeName"
@@ -77,6 +81,8 @@ export default function HistoryChaperHTMLPage({
 			/>
 
 			<ProductPageHeading product={product} />
+
+			{product.alert ? <Alert type="info">{parse(product.alert)}</Alert> : null}
 
 			<ProductHorizontalNav
 				productTypeName={isIndicator ? "Indicator" : "Guidance"}
@@ -154,13 +160,15 @@ export const getServerSideProps: GetServerSideProps<
 
 	const panel = historyPanels.find((panel) => {
 		const indevResource = arrayify(
-			panel.embedded.niceIndevResourceList.embedded.niceIndevResource
+			panel.embedded?.niceIndevResourceList?.embedded?.niceIndevResource
 		);
 		return indevResource[0].title === resource.title;
 	});
 
 	const resourceLinks: ResourceLinkViewModel[] = panel
-		? arrayify(panel.embedded.niceIndevResourceList.embedded.niceIndevResource)
+		? arrayify(
+				panel.embedded?.niceIndevResourceList?.embedded?.niceIndevResource
+		  )
 				.filter((embeddedResource) => {
 					const { embedded, textOnly, title } = embeddedResource;
 					const resourceIsGeneratedPdf = Object.hasOwn(
@@ -203,6 +211,7 @@ export const getServerSideProps: GetServerSideProps<
 		props: {
 			lastUpdated: resource.publishedDate,
 			product: {
+				alert: product.alert,
 				id: product.id,
 				title: product.title,
 				productTypeName: product.productTypeName,

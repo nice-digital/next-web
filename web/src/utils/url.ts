@@ -25,7 +25,7 @@ export const getStatusBreadcrumb = (
 	statusSlug: string,
 	type: string
 ): { title: string; url: string; slug: string } | undefined => {
-	const statusBreadrcumbs = {
+	const statusBreadrcrumbs = {
 		published: {
 			title: "Published",
 			url: `/${type}/published`,
@@ -63,7 +63,7 @@ export const getStatusBreadcrumb = (
 		},
 	};
 
-	return Object.values(statusBreadrcumbs).find(
+	return Object.values(statusBreadrcrumbs).find(
 		(item) => item.slug === statusSlug
 	);
 };

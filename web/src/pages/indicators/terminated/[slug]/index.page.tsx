@@ -1,6 +1,8 @@
+import parse from "html-react-parser";
 import { type GetServerSideProps } from "next/types";
 import { NextSeo } from "next-seo";
 
+import { Alert } from "@nice-digital/nds-alert";
 import { Grid, GridItem } from "@nice-digital/nds-grid";
 
 import { EndorsingOrganisations } from "@/components/EndorsingOrganisations/EndorsingOrganisations";
@@ -47,6 +49,7 @@ export type TerminatedDetailsPageProps = {
 			| "productTypeName"
 			| "relatedProductList"
 			| "terminatedDate"
+			| "alert"
 		>;
 	indicatorSubTypes: IndicatorSubType[];
 	pdfDownloadPath: string | null;
@@ -133,6 +136,8 @@ export default function TerminatedDetailsPage({
 			/>
 
 			<ProductPageHeading product={product} />
+
+			{product.alert ? <Alert type="info">{parse(product.alert)}</Alert> : null}
 
 			<ProductHorizontalNav
 				productTypeName={isIndicator ? "Indicator" : "Guidance"}
@@ -262,6 +267,7 @@ export const getServerSideProps: GetServerSideProps<
 				accreditationList: product.accreditationList,
 				relatedProductList: product.relatedProductList,
 				terminatedDate: product.terminatedDate,
+				alert: product.alert,
 			},
 			indicatorSubTypes,
 			pdfDownloadPath,

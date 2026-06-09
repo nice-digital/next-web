@@ -1,5 +1,8 @@
+import parse from "html-react-parser";
 import { type GetServerSideProps } from "next";
 import { NextSeo } from "next-seo";
+
+import { Alert } from "@nice-digital/nds-alert";
 
 import { GuidanceBreadcrumb } from "@/components/GuidanceBreadcrumb/GuidanceBreadcrumb";
 import { ProductHorizontalNav } from "@/components/ProductHorizontalNav/ProductHorizontalNav";
@@ -27,7 +30,7 @@ export type EvidenceResourcesListPageProps = {
 	resourceGroups: ResourceGroupViewModel[];
 	productPath: string;
 	product: ProductPageHeadingProps["product"] &
-		Partial<Pick<ProductDetail, "productType">>;
+		Partial<Pick<ProductDetail, "productType" | "alert">>;
 	hasToolsAndResources: boolean;
 	hasInfoForPublicResources: boolean;
 	hasEvidenceResources: boolean;
@@ -63,6 +66,8 @@ export default function EvidenceResourcesListPage({
 			/>
 
 			<ProductPageHeading product={product} />
+
+			{product.alert ? <Alert type="info">{parse(product.alert)}</Alert> : null}
 
 			<ProductHorizontalNav
 				productTypeName={isIndicator ? "Indicator" : "Guidance"}
@@ -146,6 +151,7 @@ export const getServerSideProps: GetServerSideProps<
 			hasHistory,
 			productPath,
 			product: {
+				alert: product.alert,
 				id: product.id,
 				lastMajorModificationDate: product.lastMajorModificationDate,
 				productTypeName: product.productTypeName,
