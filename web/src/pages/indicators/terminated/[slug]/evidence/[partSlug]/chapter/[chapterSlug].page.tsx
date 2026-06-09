@@ -12,4 +12,4 @@ export default ProductResourceChapterPage;
 export const getServerSideProps: GetServerSideProps<
 	ProductResourceChapterPageProps,
 	{ slug: string; partSlug: string; chapterSlug: string }
-> = getGetServerSidePropsFunc("Evidence", ResourceTypeSlug.Evidence);
+> = getGetServerSidePropsFunc(ResourceTypeSlug.Evidence);
