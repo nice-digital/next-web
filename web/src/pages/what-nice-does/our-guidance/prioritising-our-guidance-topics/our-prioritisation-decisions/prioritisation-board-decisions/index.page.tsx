@@ -7,6 +7,7 @@ import {
 	getPrioritisationListPage,
 } from "@/components/PrioritisationListPage/PrioritisationListPage";
 import { ResponsiveDate } from "@/components/ResponsiveDate/ResponsiveDate";
+import { publicRuntimeConfig } from "@/config";
 
 const defaultSortOrder = SortOrder.dateDescending,
 	dateFilterLabel = "Decision publication date",
@@ -20,10 +21,11 @@ const tableBodyRender = (documents: Document[]) => (
 		</caption>
 		<thead>
 			<tr>
+				<th scope="col">Prioritisation board meeting date</th>
 				<th scope="col">Topic title</th>
-				<th scope="col">Decision</th>
-				<th scope="col">Routing decision</th>
+				<th scope="col">Prioritisation decision</th>
 				<th scope="col">Rationale</th>
+				<th scope="col">Prioritisation programme</th>
 				<th scope="col">Decision publication date</th>
 			</tr>
 		</thead>
@@ -39,19 +41,17 @@ const tableBodyRender = (documents: Document[]) => (
 				}) => {
 					return (
 						<tr key={id}>
+							<td>todo: pb meeting date</td>
 							<td>
-								<Link href={pathAndQuery}>
-									<span dangerouslySetInnerHTML={{ __html: title }} />
-								</Link>
+								<a
+									href={publicRuntimeConfig.baseURL + pathAndQuery}
+									dangerouslySetInnerHTML={{ __html: title }}
+								/>
 							</td>
-							<td>{guidanceRef}</td>
-							<td>
-								<ResponsiveDate isoDateTime={String(publicationDate)} />
-							</td>
-							<td>
-								<ResponsiveDate isoDateTime={String(lastUpdated)} />
-							</td>
-							<td></td>
+							<td>todo: prioritisation decsion</td>
+							<td>todo: rationale</td>
+							<td>todo: prioritisation programme</td>
+							<td>todo: decision publication date</td>
 						</tr>
 					);
 				}
@@ -96,7 +96,7 @@ export default getPrioritisationListPage({
 		"This ensures that we produce guidance that's relevant, timely, accessible, and has demonstrable impact.",
 	defaultSort: {
 		order: defaultSortOrder,
-		label: "Date",
+		label: "Prioritisation board meeting date",
 	},
 	secondarySort: {
 		order: SortOrder.titleAscending,
