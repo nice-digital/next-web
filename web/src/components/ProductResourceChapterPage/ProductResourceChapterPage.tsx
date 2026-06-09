@@ -15,7 +15,7 @@ import {
 	ProductTypeAcronym,
 } from "@/feeds/publications/types";
 import { formatDateStr, stripTime } from "@/utils/datetime";
-import { toTitleCase } from "@/utils/string";
+import { ResourceTypeSlug } from "@/utils/resource";
 
 import { GuidanceBreadcrumb } from "../GuidanceBreadcrumb/GuidanceBreadcrumb";
 import { OnThisPageBasic } from "../OnThisPageBasic/OnThisPageBasic";
@@ -40,25 +40,34 @@ export const ProductResourceChapterPage: FC<
 	title,
 	lastUpdated,
 	resourceTypeSlug,
-	resourceTypeName,
 	resourceDownloadPath,
 	taxonomyBreadcrumb,
 }) => {
 	const hasOnThisPageMenu = chapterSections.length > 1;
 	const hasDownloadButton = !!resourceDownloadPath;
 
+	const parentPageTitle =
+		resourceTypeSlug === ResourceTypeSlug.ToolsAndResources
+			? "Tools and resources"
+			: resourceTypeSlug === ResourceTypeSlug.Evidence
+			? "Evidence"
+			: "Information for the public";
+
 	const isIndicator = product.productType === ProductTypeAcronym.IND;
 	const type = isIndicator ? "indicators" : "guidance";
 	const label = isIndicator ? "Indicators" : "NICE guidance";
 
-	const breadcrumbAppend = [{ title: toTitleCase(resourceTypeSlug) }];
+	const breadcrumbAppend = [
+		{ title: parentPageTitle, url: `/${resourceTypeSlug}` },
+		{ title },
+	];
 	const breadcrumbStatus =
 		product.productStatus.toLowerCase() as BreadcrumbStatus;
 
 	return (
 		<>
 			<NextSeo
-				title={`${title} | ${resourceTypeName} | ${product.id} | ${label}`}
+				title={`${title} | ${parentPageTitle} | ${product.id} | ${label}`}
 			/>
 
 			<GuidanceBreadcrumb

@@ -38,7 +38,6 @@ export type ProductResourceChapterPageProps = {
 	title: string;
 	lastUpdated: string | null;
 	resourceTypeSlug: ResourceTypeSlug;
-	resourceTypeName: string;
 	resourceDownloadPath: string | null;
 	resourceDownloadSizeBytes: number | null;
 	taxonomyBreadcrumb: TaxonomyBreadcrumb[];
@@ -46,8 +45,7 @@ export type ProductResourceChapterPageProps = {
 
 export const getGetServerSidePropsFunc =
 	(
-		resourceTypeSlug: ResourceTypeSlug,
-		resourceTypeName: string
+		resourceTypeSlug: ResourceTypeSlug
 	): GetServerSideProps<
 		ProductResourceChapterPageProps,
 		{ slug: string; partSlug: string; chapterSlug: string }
@@ -70,24 +68,29 @@ export const getGetServerSidePropsFunc =
 		}
 
 		const {
-				product,
-				productPath,
-				toolsAndResources,
-				hasToolsAndResources,
-				hasInfoForPublicResources,
-				infoForPublicResources,
-				hasEvidenceResources,
-				evidenceResources,
-				hasHistory,
-				taxonomyBreadcrumb,
-			} = result,
-			resources =
-				resourceTypeSlug === ResourceTypeSlug.ToolsAndResources
-					? toolsAndResources
-					: resourceTypeSlug === ResourceTypeSlug.Evidence
-					? evidenceResources
-					: infoForPublicResources,
-			{ partTitleSlug, resourceUID, partUID } = pathRegexMatch.groups,
+			product,
+			productPath,
+			toolsAndResources,
+			hasToolsAndResources,
+			hasInfoForPublicResources,
+			infoForPublicResources,
+			hasEvidenceResources,
+			evidenceResources,
+			hasHistory,
+			taxonomyBreadcrumb,
+		} = result;
+
+		let resources;
+
+		if (resourceTypeSlug === ResourceTypeSlug.ToolsAndResources) {
+			resources = toolsAndResources;
+		} else if (resourceTypeSlug === ResourceTypeSlug.Evidence) {
+			resources = evidenceResources;
+		} else {
+			resources = infoForPublicResources;
+		}
+
+		const { partTitleSlug, resourceUID, partUID } = pathRegexMatch.groups,
 			resource = resources.find(({ uid }) => uid === Number(resourceUID));
 
 		if (!resource) {
@@ -217,7 +220,6 @@ export const getGetServerSidePropsFunc =
 				chapterSections,
 				lastUpdated: fullResource.lastMajorModificationDate,
 				resourceTypeSlug,
-				resourceTypeName,
 				resourceDownloadPath,
 				resourceDownloadSizeBytes,
 				taxonomyBreadcrumb,

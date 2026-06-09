@@ -17,7 +17,6 @@ import {
 } from "@/feeds/publications/types";
 import { formatDateStr, stripTime } from "@/utils/datetime";
 import { ResourceTypeSlug } from "@/utils/resource";
-import { toTitleCase } from "@/utils/string";
 
 import { GuidanceBreadcrumb } from "../GuidanceBreadcrumb/GuidanceBreadcrumb";
 
@@ -58,7 +57,10 @@ export const ProductResourcePage: FC<ProductResourcePageProps> = ({
 	const type = isIndicator ? "indicators" : "guidance";
 	const label = isIndicator ? "Indicators" : "NICE guidance";
 
-	const breadcrumbAppend = [{ title: toTitleCase(resourceTypeSlug) }];
+	const breadcrumbAppend = [
+		{ title: parentPageTitle, url: `/${resourceTypeSlug}` },
+		{ title },
+	];
 	const breadcrumbStatus =
 		product.productStatus.toLowerCase() as BreadcrumbStatus;
 
