@@ -13,7 +13,6 @@ import {
 	SortOrder,
 } from "@nice-digital/search-client";
 
-import { getRedirectUrl } from "@/components/PrioritisationListPage/redirects";
 import { publicRuntimeConfig } from "@/config";
 import { logger } from "@/logger";
 import { dateFormatShort } from "@/utils/datetime";
@@ -51,11 +50,6 @@ export const getGetServerSidePropsFunc =
 	async (
 		context: GetServerSidePropsContext
 	): Promise<GetServerSidePropsResult<PrioritisationListPageProps>> => {
-		const redirectUrl = getRedirectUrl(context);
-
-		if (redirectUrl)
-			return { redirect: { destination: redirectUrl, permanent: true } };
-
 		initSearchClient({
 			baseURL: publicRuntimeConfig.search.baseURL,
 			index: index,
