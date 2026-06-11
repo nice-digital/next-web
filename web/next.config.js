@@ -3249,7 +3249,7 @@ const nextConfig = {
 			},
 			{
 				source:
-					"/what nice-does/our-guidance/about-healthtech-guidance/nice-backing-the-healthtech-that-changes-lives/how-we-support-healthtech-commissioning",
+					"/what-nice-does/our-guidance/about-healthtech-guidance/nice-backing-the-healthtech-that-changes-lives/how-we-support-healthtech-commissioning",
 				destination:
 					"/what-nice-does/our-guidance/about-healthtech-guidance/how-we-support-healthtech-commissioning",
 				permanent: true,
@@ -3258,7 +3258,7 @@ const nextConfig = {
 				source:
 					"/what-nice-does/our-guidance/about-healthtech-guidance/nice-backing-the-healthtech-that-changes-lives/how-we-support-healthtech-developers",
 				destination:
-					"/our-guidance/about-healthtech-guidance/how-we-support-healthtech-developers",
+					"/what-nice-does/our-guidance/about-healthtech-guidance/how-we-support-healthtech-developers",
 				permanent: true,
 			},
 			// Health Inequalities restructure 01/26
