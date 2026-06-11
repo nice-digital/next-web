@@ -3240,6 +3240,27 @@ const nextConfig = {
 				destination: "/reusing-our-content/use-of-nice-content-in-the-uk",
 				permanent: true,
 			},
+			// Healthtech campaign redirects 06/26
+			{
+				source:
+					"/what-nice-does/our-guidance/about-healthtech-guidance/nice-backing-the-healthtech-that-changes-lives",
+				destination: "/what-nice-does/our-guidance/about-healthtech-guidance",
+				permanent: true,
+			},
+			{
+				source:
+					"/what nice-does/our-guidance/about-healthtech-guidance/nice-backing-the-healthtech-that-changes-lives/how-we-support-healthtech-commissioning",
+				destination:
+					"/what-nice-does/our-guidance/about-healthtech-guidance/how-we-support-healthtech-commissioning",
+				permanent: true,
+			},
+			{
+				source:
+					"/what-nice-does/our-guidance/about-healthtech-guidance/nice-backing-the-healthtech-that-changes-lives/how-we-support-healthtech-developers",
+				destination:
+					"/our-guidance/about-healthtech-guidance/how-we-support-healthtech-developers",
+				permanent: true,
+			},
 			// Health Inequalities restructure 01/26
 			{
 				source:
