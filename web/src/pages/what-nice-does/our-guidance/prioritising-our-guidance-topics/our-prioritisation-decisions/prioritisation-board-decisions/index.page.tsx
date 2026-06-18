@@ -10,9 +10,9 @@ import { ResponsiveDate } from "@/components/ResponsiveDate/ResponsiveDate";
 import { publicRuntimeConfig } from "@/config";
 
 const defaultSortOrder = SortOrder.dateDescending,
-	dateFilterLabel = "Decision publication date",
-	textFilterHeading = "Keyword or reference number",
-	textFilterLabel = "Keyword or reference number";
+	dateFilterLabel = "Prioritisation board meeting date",
+	textFilterHeading = "Topic title",
+	textFilterLabel = "Topic title";
 
 const tableBodyRender = (documents: Document[]) => (
 	<>
@@ -91,9 +91,9 @@ export default getPrioritisationListPage({
 	heading: <>Prioritisation board decisions</>,
 	title: "Prioritisation board decisions",
 	intro:
-		"We've developed a centralised approach to prioritising our guidance topics.",
+		"We've developed a centralised approach to prioritising our guidance topics.\nThis ensures that we produce guidance that's relevant, timely, accessible, and has demonstrable impact.",
 	description:
-		"This ensures that we produce guidance that's relevant, timely, accessible, and has demonstrable impact.",
+		"",
 	defaultSort: {
 		order: defaultSortOrder,
 		label: "Prioritisation board meeting date",
