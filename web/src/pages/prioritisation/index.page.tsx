@@ -9,19 +9,21 @@ import {
 import { ResponsiveDate } from "@/components/ResponsiveDate/ResponsiveDate";
 
 const defaultSortOrder = SortOrder.dateDescending,
-	dateFilterLabel = "Last updated date",
-	textFilterHeading = "Keyword or reference number",
-	textFilterLabel = "Keyword or reference number";
+	dateFilterLabel = "Prioritisation board meeting date",
+	textFilterHeading = "Topic title",
+	textFilterLabel = "Topic title";
 
 const tableBodyRender = (documents: Document[]) => (
 	<>
-		<caption className="visually-hidden">List of published indicators</caption>
+		<caption className="visually-hidden">Our prioritisation decisions</caption>
 		<thead>
 			<tr>
-				<th scope="col">Title</th>
-				<th scope="col">Reference number</th>
-				<th scope="col">Published</th>
-				<th scope="col">Last updated</th>
+				<th scope="col">Prioritisation board meeting date</th>
+				<th scope="col">Topic title</th>
+				<th scope="col">Prioritisation decision</th>
+				<th scope="col">Rationale</th>
+				<th scope="col">Prioritisation programme</th>
+				<th scope="col">Decision publication date</th>
 			</tr>
 		</thead>
 		<tbody>
@@ -37,14 +39,16 @@ const tableBodyRender = (documents: Document[]) => (
 					return (
 						<tr key={id}>
 							<td>
+								<ResponsiveDate isoDateTime={String(publicationDate)} />
+							</td>
+							<td>
 								<Link href={pathAndQuery}>
 									<span dangerouslySetInnerHTML={{ __html: title }} />
 								</Link>
 							</td>
-							<td>{guidanceRef}</td>
-							<td>
-								<ResponsiveDate isoDateTime={String(publicationDate)} />
-							</td>
+							<td></td>
+							<td></td>
+							<td></td>
 							<td>
 								<ResponsiveDate isoDateTime={String(lastUpdated)} />
 							</td>
@@ -58,33 +62,52 @@ const tableBodyRender = (documents: Document[]) => (
 
 export default getPrioritisationListPage({
 	metaDescription:
-		"The complete list of all our published indicators, for measuring outcomes that reflect the quality of care or processes, linked by evidence to improved outcomes.",
+		"We've developed a centralised approach to prioritising our guidance topics. This ensures that we produce guidance that's relevant, timely, accessible, and has demonstrable impact.",
 	breadcrumbTrail: [
+		<Breadcrumb to="/what-nice-does" key="/what-nice-does">
+			What NICE does
+		</Breadcrumb>,
 		<Breadcrumb
-			to="/standards-and-indicators/indicators"
-			key="/standards-and-indicators/indicators"
+			to="/what-nice-does/our-guidance"
+			key="/what-nice-does/our-guidance"
 		>
-			Indicators
+			Our guidance
+		</Breadcrumb>,
+		<Breadcrumb
+			to="/what-nice-does/our-guidance/prioritising-our-guidance-topics"
+			key="/what-nice-does/our-guidance/prioritising-our-guidance-topics"
+		>
+			Prioritising our guidance topics
+		</Breadcrumb>,
+		<Breadcrumb
+			to="/what-nice-does/our-guidance/prioritising-our-guidance-topics/our-prioritisation-decisions"
+			key="/what-nice-does/our-guidance/prioritising-our-guidance-topics/our-prioritisation-decisions"
+		>
+			Our prioritisation decisions
 		</Breadcrumb>,
 	],
-	currentBreadcrumb: "Published indicators",
+	currentBreadcrumb: "Prioritisation board decisions",
 	preheading: "",
-	heading: <>Published: Indicators</>,
-	title: "Published | Indicators",
+	heading: <>Prioritisation board decisions</>,
+	title: "Prioritisation board decisions",
+	intro:
+		"We've developed a centralised approach to prioritising our guidance topics.",
+	description:
+		"This ensures that we produce guidance that's relevant, timely, accessible, and has demonstrable impact.",
 	defaultSort: {
 		order: defaultSortOrder,
-		label: "Date",
+		label: "Prioritisation board meeting date",
 	},
 	secondarySort: {
 		order: SortOrder.titleAscending,
-		label: "Title",
+		label: "Topic title",
 	},
 	showDateFilter: true,
 	useFutureDates: false,
 	dateFilterLabel,
 	textFilterHeading,
 	tableBodyRender,
-	searchInputPlaceholder: "E.g. 'diabetes' or 'IND28'",
+	searchInputPlaceholder: "E.g. 'diabetes'",
 });
 
 export const getServerSideProps = getGetServerSidePropsFunc({

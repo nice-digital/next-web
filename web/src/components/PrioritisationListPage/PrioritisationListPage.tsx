@@ -57,6 +57,7 @@ export type GetPrioritisationListPageOptions = {
 	preheading: ReactChild;
 	heading: ReactChild;
 	intro?: ReactChild;
+	description?: ReactChild;
 	title: string;
 	defaultSort: {
 		order: SortOrder;
@@ -99,6 +100,7 @@ export const getPrioritisationListPage =
 		preheading,
 		heading,
 		intro,
+		description,
 		title,
 		defaultSort,
 		secondarySort,
@@ -177,9 +179,9 @@ export const getPrioritisationListPage =
 
 				<Announcer announcement={announcement} />
 
-				{breadcrumbs}
-
 				<PageHeader
+					variant="fullWidthLight"
+					breadcrumbs={breadcrumbs}
 					preheading={preheading}
 					heading={heading}
 					id="content-start"
@@ -192,6 +194,8 @@ export const getPrioritisationListPage =
 							{intro}
 						</>
 					}
+					description={description}
+					verticalPadding="loose"
 				/>
 
 				<Grid gutter="loose" className={styles.sectionWrapper}>
