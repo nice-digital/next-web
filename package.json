@@ -76,6 +76,6 @@
     "node": "22.19.0"
   },
   "dependencies": {
-    "@nice-digital/search-client": "^2.0.1721-SRCH-1021-prioritisa"
+    "@nice-digital/search-client": "^2.0.1722-SRCH-1021-prioritisa"
   }
 }
