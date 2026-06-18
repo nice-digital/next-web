@@ -30,11 +30,16 @@ const tableBodyRender = (documents: Document[]) => (
 			{documents.map(
 				({
 					id,
+					//prioritisation_board_meeting_date,
 					title,
 					guidanceRef,
 					publicationDate,
 					lastUpdated,
 					pathAndQuery,
+					//prioritisationdecision,
+					content,
+					//prioritisationprogramme,
+					//prioritisation_board_decision_date,
 				}) => {
 					return (
 						<tr key={id}>
@@ -79,17 +84,11 @@ export default getPrioritisationListPage({
 		>
 			Prioritising our guidance topics
 		</Breadcrumb>,
-		<Breadcrumb
-			to="/what-nice-does/our-guidance/prioritising-our-guidance-topics/our-prioritisation-decisions"
-			key="/what-nice-does/our-guidance/prioritising-our-guidance-topics/our-prioritisation-decisions"
-		>
-			Our prioritisation decisions
-		</Breadcrumb>,
 	],
-	currentBreadcrumb: "Prioritisation board decisions",
+	currentBreadcrumb: "Our prioritisation decisions",
 	preheading: "",
-	heading: <>Prioritisation board decisions</>,
-	title: "Prioritisation board decisions",
+	heading: <>Our prioritisation decisions</>,
+	title: "Our prioritisation decisions",
 	intro:
 		"We've developed a centralised approach to prioritising our guidance topics.",
 	description:
