@@ -62,7 +62,7 @@ const tableBodyRender = (documents: Document[]) => (
 
 export default getPrioritisationListPage({
 	metaDescription:
-		"We've developed a centralised approach to prioritising our guidance topics. This ensures that we produce guidance that's relevant, timely, accessible, and has demonstrable impact.",
+		"We have a centralised approach to prioritising our guidance topics. This ensures that we produce guidance that is relevant, timely, accessible, and has demonstrable impact.",
 	breadcrumbTrail: [
 		<Breadcrumb to="/what-nice-does" key="/what-nice-does">
 			What NICE does
@@ -91,9 +91,9 @@ export default getPrioritisationListPage({
 	heading: <>Prioritisation board decisions</>,
 	title: "Prioritisation board decisions",
 	intro1:
-		"We've developed a centralised approach to prioritising our guidance topics.",
+		"We have a centralised approach to prioritising our guidance topics.",
 	intro2:
-		"This ensures that we produce guidance that's relevant, timely, accessible, and has demonstrable impact.",
+		"This ensures that we produce guidance that is relevant, timely, accessible, and has demonstrable impact.",
 	description:
 		"",
 	defaultSort: {
