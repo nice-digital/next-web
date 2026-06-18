@@ -196,11 +196,47 @@ export const getPrioritisationListPage =
 					description={description}
 					verticalPadding="loose"
 				/>
-
 				<Container>
+					<h2>Medicines</h2>
+					<p>
+						The
+						<a href="https://www.gov.uk/government/publications/2024-voluntary-scheme-for-branded-medicines-pricing-access-and-growth">
+							2024 voluntary scheme for branded medicines, pricing, access and
+							growth
+						</a>
+						states that NICE will continue to evaluate all new active substances
+						and significant indications, except where there is a clear rationale
+						not to do so.
+					</p>
+					<p>
+						These new active substances and significant indications will not go
+						through the NICE-wide topic prioritisation process and will be
+						routed to technology appraisal guidance, except when there is a
+						clear rationale not to do so.
+					</p>
+					<h2>Interventional procedures</h2>
+					<p>
+						All selected interventional procedures are directly routed to health
+						technology guidance (HTG) for an assessment of the safety, efficacy,
+						evidence or cost. All these topics will be shared with the
+						<a href="https://www.nice.org.uk/process/pmg46/chapter/eligibility-criteria-for-using-the-prioritisation-framework-and-direct-routing-to-guidance#topics-that-involve-use-of-new-interventional-procedures">
+							NICE prioritisation board
+						</a>
+						so it will have the oversight of the whole NICE guidance portfolio.
+					</p>
+					<p>
+						In some circumstances, where there is uncertainty on a new topic
+						that needs ratification or further
+						<a href="https://www.nice.org.uk/process/pmg46/chapter/terms-used-in-this-manual#routing">
+							routing
+						</a>
+						decision from the NICE prioritisation board, a topic briefing will
+						be developed for use with the prioritisation framework.
+					</p>
 					<p>
 						Decisions will only be reviewed where there are factual errors or
-						when significant new evidence comes to light following publication.
+						when significant new evidence comes to light following publication
+						of the decision.
 					</p>
 					<p>
 						Stakeholders can seek clarification within 20 working days following
@@ -210,7 +246,7 @@ export const getPrioritisationListPage =
 						<li>
 							<p>
 								<a
-									href="https://www.nice.org.uk/forms/request-for-prioritisation-clarification"
+									href="https://www.nice.org.uk/what-nice-does/our-guidance/prioritising-our-guidance-topics/our-prioritisation-decisions/request-for-prioritisation-clarification"
 									target="_self"
 								>
 									Request prioritisation clarification
