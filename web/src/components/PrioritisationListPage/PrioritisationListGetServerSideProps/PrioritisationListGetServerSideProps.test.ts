@@ -1,11 +1,11 @@
 import {
 	search,
-	SearchResultsError,
-	SortOrder,
+		SearchResultsError,
+		SortOrder,
 } from "@nice-digital/search-client";
 
 import { logger } from "@/logger";
-import sampleData from "@/mockData/search/guidance-published.json";
+import sampleData from "@/mockData/search/prioritisation.json"; // here
 
 import { PrioritisationListPageProps } from "../PrioritisationListPageProps";
 
@@ -30,7 +30,7 @@ describe("getGetServerSidePropsFunc", () => {
 	describe("Redirects", () => {
 		it("should return permanent redirect object from old page style URL to new style URL", async () => {
 			const redirectResult = (await getServerSideProps({
-				resolvedUrl: "/guidance/published?title=test",
+				resolvedUrl: "/prioritisation?title=test",
 				query: {
 					title: "test",
 				} as ParsedUrlQuery,
@@ -40,7 +40,7 @@ describe("getGetServerSidePropsFunc", () => {
 
 			expect(redirectResult).toStrictEqual({
 				redirect: {
-					destination: "/guidance/published?q=test",
+					destination: "/prioritisation?q=test",
 					permanent: true,
 				},
 			});
@@ -58,14 +58,14 @@ describe("getGetServerSidePropsFunc", () => {
 
 		it("should log error and debug response on search failure", async () => {
 			await getServerSideProps({
-				resolvedUrl: "/guidance/published?q=test",
+				resolvedUrl: "/prioritisation?q=test",
 				res: {
 					setHeader: jest.fn() as GetServerSidePropsContext["res"]["setHeader"],
 				},
 			} as GetServerSidePropsContext);
 
 			expect(logger.error as jest.Mock).toHaveBeenCalledWith(
-				"Error loading guidance from search on page /guidance/published?q=test: Some server side error message",
+				"Error loading guidance from search on page /prioritisation?q=test: Some server side error message",
 				"Some raw debug response"
 			);
 		});
@@ -77,7 +77,7 @@ describe("getGetServerSidePropsFunc", () => {
 			};
 
 			await getServerSideProps({
-				resolvedUrl: "/guidance/published?q=test",
+				resolvedUrl: "/prioritisation?q=test",
 				res,
 			} as GetServerSidePropsContext);
 
@@ -88,7 +88,7 @@ describe("getGetServerSidePropsFunc", () => {
 	describe("Success", () => {
 		let result: { props: PrioritisationListPageProps };
 		const resolvedUrl =
-			"/guidance/published?q=test&ndt=Guidance&from=2020-07-28&to=2021-06-04";
+			"/prioritisation?q=test&ndt=Guidance&from=2020-07-28&to=2021-06-04";
 		const setHeader = jest.fn();
 		beforeEach(async () => {
 			(search as jest.Mock).mockImplementation(
@@ -123,26 +123,26 @@ describe("getGetServerSidePropsFunc", () => {
 				{
 					displayName: "Keyword or reference number: test",
 					toggleUrl:
-						"/guidance/published?ndt=Guidance&from=2020-07-28&to=2021-06-04",
+						"/prioritisation?ndt=Guidance&from=2020-07-28&to=2021-06-04",
 				},
 				{
 					displayName: "Last updated date between: 28/7/2020 and 4/6/2021",
-					toggleUrl: "/guidance/published?q=test&ndt=Guidance&sp=on",
+					toggleUrl: "/prioritisation?q=test&ndt=Guidance&sp=on",
 				},
 				{
 					displayName: "Type: Guidance",
-					toggleUrl: "/guidance/published?sp=on&ngt=NICE%20guidelines",
+					toggleUrl: "/prioritisation?sp=on&ngt=NICE%20guidelines",
 				},
 				{
 					displayName: "Guidance programme: NICE guidelines",
-					toggleUrl: "/guidance/published?sp=on&ndt=Guidance",
+					toggleUrl: "/prioritisation?sp=on&ndt=Guidance",
 				},
 			]);
 		});
 
 		it("should return search url prop", async () => {
 			expect(result.props.searchUrl).toStrictEqual({
-				route: "/guidance/published",
+				route: "/prioritisation",
 				q: "test",
 				from: "2020-07-28",
 				to: "2021-06-04",

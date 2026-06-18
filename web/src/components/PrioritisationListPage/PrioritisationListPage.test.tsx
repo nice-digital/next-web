@@ -8,10 +8,8 @@ import {
 	SortOrder,
 } from "@nice-digital/search-client";
 
-import sampleData from "@/mockData/search/guidance-published.json";
+import sampleData from "@/mockData/search/prioritisation.json";
 import { cleanup, render, screen, waitFor } from "@/test-utils/rendering";
-
-import { GuidanceListNav } from "../PrioritisationListNav/GuidanceListNav";
 
 import { getPrioritisationListPage } from "./PrioritisationListPage";
 
@@ -20,18 +18,37 @@ jest.mock("@/logger", () => ({
 	useLogger: jest.fn(() => ({ error: jest.fn() })),
 }));
 
-describe("/guidance/published", () => {
+describe("/prioritisation", () => {
 	const PrioritisationListPage = getPrioritisationListPage({
-		metaDescription: "A list of all published guidance",
+		metaDescription:
+			"We've developed a centralised approach to prioritising our guidance topics. This ensures that we produce guidance that's relevant, timely, accessible, and has demonstrable impact.",
 		breadcrumbTrail: [
-			<Breadcrumb to="/guidance" key="NICE guidance">
-				NICE guidance
+			<Breadcrumb to="/what-nice-does" key="/what-nice-does">
+				What NICE does
+			</Breadcrumb>,
+			<Breadcrumb
+				to="/what-nice-does/our-guidance"
+				key="/what-nice-does/our-guidance"
+			>
+				Our guidance
+			</Breadcrumb>,
+			<Breadcrumb
+				to="/what-nice-does/our-guidance/prioritising-our-guidance-topics"
+				key="/what-nice-does/our-guidance/prioritising-our-guidance-topics"
+			>
+				Prioritising our guidance topics
+			</Breadcrumb>,
+			<Breadcrumb
+				to="/what-nice-does/our-guidance/prioritising-our-guidance-topics/our-prioritisation-decisions"
+				key="/what-nice-does/our-guidance/prioritising-our-guidance-topics/our-prioritisation-decisions"
+			>
+				Our prioritisation decisions
 			</Breadcrumb>,
 		],
-		currentBreadcrumb: "Published",
-		preheading: "Published ",
-		heading: <>Guidance, NICE advice and quality&nbsp;standards</>,
-		title: "Published guidance, NICE advice and quality standards | Guidance",
+		currentBreadcrumb: "Prioritisation board decisions",
+		preheading: "",
+		heading: <>Prioritisation board decisions</>,
+		title: "Prioritisation board decisions",
 		defaultSort: {
 			order: SortOrder.dateDescending,
 			label: "Date",
@@ -42,7 +59,7 @@ describe("/guidance/published", () => {
 		},
 		showDateFilter: true,
 		useFutureDates: false,
-		dateFilterLabel: "Last updated date",
+		dateFilterLabel: "Decision publication date",
 		searchInputPlaceholder: "Search published guidance",
 		tableBodyRender: (_docs) => (
 			<tbody>
@@ -62,7 +79,7 @@ describe("/guidance/published", () => {
 
 		mockRouter = {
 			route: "/",
-			pathname: "/guidance/published",
+			pathname: "/prioritisation",
 			query: "",
 			asPath: "",
 			push: routerPush,
@@ -85,7 +102,7 @@ describe("/guidance/published", () => {
 			<PrioritisationListPage
 				activeModifiers={[]}
 				results={sampleData as unknown as SearchResultsSuccess}
-				searchUrl={{ route: "/guidance/published" } as SearchUrl}
+				searchUrl={{ route: "/prioritised" } as SearchUrl}
 			/>
 		);
 	});
@@ -98,15 +115,13 @@ describe("/guidance/published", () => {
 			).toBeInTheDocument();
 			expect(document.querySelector("meta[name='description']")).toHaveProperty(
 				"content",
-				"A list of all published guidance"
+				"We've developed a centralised approach to prioritising our guidance topics. This ensures that we produce guidance that's relevant, timely, accessible, and has demonstrable impact."
 			);
 			/* eslint-enable testing-library/no-node-access */
 		});
 
 		it("should set page title", () => {
-			expect(document.title).toBe(
-				"Published guidance, NICE advice and quality standards | Guidance | NICE"
-			);
+			expect(document.title).toBe("Prioritisation board decisions | NICE");
 		});
 
 		it("should not set noindex meta tag when there are results", () => {
@@ -129,7 +144,7 @@ describe("/guidance/published", () => {
 					results={
 						{ ...sampleData, documents: [] } as unknown as SearchResultsSuccess
 					}
-					searchUrl={{ route: "/guidance/published" } as SearchUrl}
+					searchUrl={{ route: "/prioritisation" } as SearchUrl}
 				/>
 			);
 			expect(document.querySelector("meta[name='robots']")).toBeInTheDocument();

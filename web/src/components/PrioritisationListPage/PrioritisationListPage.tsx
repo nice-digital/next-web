@@ -16,6 +16,7 @@ import {
 	Breadcrumbs,
 	type BreadcrumbsProps,
 } from "@nice-digital/nds-breadcrumbs";
+import { Container } from "@nice-digital/nds-container";
 import { Grid, GridItem } from "@nice-digital/nds-grid";
 import { PageHeader } from "@nice-digital/nds-page-header";
 import { Table } from "@nice-digital/nds-table";
@@ -88,9 +89,9 @@ export type GetPrioritisationListPageOptions = {
 );
 
 /**
- * Gets a guidance or indicator list page component with the given options
+ * Gets the prioritisation board decisions list page component with the given options
  *
- * @returns A guidance or indicator list page component
+ * @returns A prioritisation board decisions list page component
  */
 export const getPrioritisationListPage =
 	({
@@ -197,6 +198,29 @@ export const getPrioritisationListPage =
 					description={description}
 					verticalPadding="loose"
 				/>
+
+					<Container>
+						<p>
+							Decisions will only be reviewed where there are factual errors or
+							when significant new evidence comes to light following publication.
+						</p>
+						<p>
+							Stakeholders can seek clarification within 20 working days following
+							the publication of the prioritisation board's decisions.
+						</p>
+						<ul>
+							<li>
+								<p>
+									<a
+										href="https://www.nice.org.uk/forms/request-for-prioritisation-clarification"
+										target="_self"
+									>
+										Request prioritisation clarification
+									</a>
+								</p>
+							</li>
+						</ul>
+					</Container>
 
 				<Grid gutter="loose" className={styles.sectionWrapper}>
 					<GridItem
