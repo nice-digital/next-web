@@ -90,8 +90,10 @@ export default getPrioritisationListPage({
 	preheading: "",
 	heading: <>Prioritisation board decisions</>,
 	title: "Prioritisation board decisions",
-	intro:
-		"We've developed a centralised approach to prioritising our guidance topics.\nThis ensures that we produce guidance that's relevant, timely, accessible, and has demonstrable impact.",
+	intro1:
+		"We've developed a centralised approach to prioritising our guidance topics.",
+	intro2:
+		"This ensures that we produce guidance that's relevant, timely, accessible, and has demonstrable impact.",
 	description:
 		"",
 	defaultSort: {

@@ -56,7 +56,8 @@ export type GetPrioritisationListPageOptions = {
 	currentBreadcrumb: string;
 	preheading: ReactChild;
 	heading: ReactChild;
-	intro?: ReactChild;
+	intro1?: ReactChild;
+	intro2?: ReactChild;
 	description?: ReactChild;
 	title: string;
 	defaultSort: {
@@ -99,7 +100,8 @@ export const getPrioritisationListPage =
 		currentBreadcrumb,
 		preheading,
 		heading,
-		intro,
+		intro1,
+		intro2,
 		description,
 		title,
 		defaultSort,
@@ -190,7 +192,9 @@ export const getPrioritisationListPage =
 						<>
 							<SkipLink targetId="filters">Skip to filters</SkipLink>
 							<SkipLink targetId="results">Skip to results</SkipLink>
-							{intro}
+							{intro1}
+							<br/><br/>
+							{intro2}
 						</>
 					}
 					description={description}
@@ -199,12 +203,12 @@ export const getPrioritisationListPage =
 				<Container>
 					<h2>Medicines</h2>
 					<p>
-						The
+						The&nbsp;
 						<a href="https://www.gov.uk/government/publications/2024-voluntary-scheme-for-branded-medicines-pricing-access-and-growth">
 							2024 voluntary scheme for branded medicines, pricing, access and
 							growth
 						</a>
-						states that NICE will continue to evaluate all new active substances
+						&nbsp;states that NICE will continue to evaluate all new active substances
 						and significant indications, except where there is a clear rationale
 						not to do so.
 					</p>
@@ -218,19 +222,19 @@ export const getPrioritisationListPage =
 					<p>
 						All selected interventional procedures are directly routed to health
 						technology guidance (HTG) for an assessment of the safety, efficacy,
-						evidence or cost. All these topics will be shared with the
+						evidence or cost. All these topics will be shared with the&nbsp;
 						<a href="https://www.nice.org.uk/process/pmg46/chapter/eligibility-criteria-for-using-the-prioritisation-framework-and-direct-routing-to-guidance#topics-that-involve-use-of-new-interventional-procedures">
 							NICE prioritisation board
 						</a>
-						so it will have the oversight of the whole NICE guidance portfolio.
+						&nbsp;so it will have the oversight of the whole NICE guidance portfolio.
 					</p>
 					<p>
 						In some circumstances, where there is uncertainty on a new topic
-						that needs ratification or further
+						that needs ratification or further&nbsp;
 						<a href="https://www.nice.org.uk/process/pmg46/chapter/terms-used-in-this-manual#routing">
 							routing
 						</a>
-						decision from the NICE prioritisation board, a topic briefing will
+						&nbsp;decision from the NICE prioritisation board, a topic briefing will
 						be developed for use with the prioritisation framework.
 					</p>
 					<p>
