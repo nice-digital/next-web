@@ -4,19 +4,42 @@ import { PageHeader } from "@nice-digital/nds-page-header";
 import { type Breadcrumb as TypeBreadcrumb } from "@/types/Breadcrumb";
 import {
 	ButtonLinkStoryblok,
+	InfoPageStoryblok,
 	type PageHeaderStoryblok,
 } from "@/types/storyblok";
+import {
+	ExtendedSBLink,
+	getSectionTitle,
+	treeHasItems,
+} from "@/utils/storyblok/contentStructureUtils";
 
 import { StoryblokButtonLink } from "../StoryblokButtonLink/StoryblokButtonLink";
 
 interface PageHeaderBlokProps {
 	blok: PageHeaderStoryblok;
 	breadcrumbs?: TypeBreadcrumb[];
+	preheading: string;
 }
+
+export const getPreheading = (
+	tree: ExtendedSBLink[],
+	blok: InfoPageStoryblok
+): string => {
+	if (!treeHasItems(tree)) return "";
+
+	const headerTitle =
+		blok.header?.[0]?.component === "pageHeader" ? blok.header?.[0]?.title : "";
+	const sectionTitle = getSectionTitle(tree)?.name;
+
+	if (!headerTitle || !sectionTitle) return "";
+
+	return sectionTitle !== headerTitle ? sectionTitle : "";
+};
 
 export const StoryblokPageHeader = ({
 	blok,
 	breadcrumbs,
+	preheading,
 }: PageHeaderBlokProps): React.ReactElement => {
 	const BreadcrumbComponent = breadcrumbs?.length ? (
 		<Breadcrumbs>
@@ -42,6 +65,7 @@ export const StoryblokPageHeader = ({
 	return (
 		<PageHeader
 			heading={title}
+			preheading={preheading}
 			lead={summary || undefined}
 			breadcrumbs={BreadcrumbComponent}
 			description={description}

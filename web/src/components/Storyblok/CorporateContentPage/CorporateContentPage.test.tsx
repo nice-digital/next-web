@@ -3,9 +3,9 @@ import { render, screen } from "@testing-library/react";
 import { NextSeo } from "next-seo";
 import React from "react";
 
-import { type ExtendedSBLink } from "@/components/Storyblok/StoryblokSectionNav/utils/Utils";
 import { logger } from "@/logger";
 import { getAdditionalMetaTags } from "@/utils/storyblok";
+import { type ExtendedSBLink } from "@/utils/storyblok/contentStructureUtils";
 
 import { CorporateContentPage } from "./CorporateContentPage";
 

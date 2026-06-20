@@ -2,8 +2,11 @@ import React from "react";
 
 import { StackedNav, StackedNavLink } from "@nice-digital/nds-stacked-nav";
 
-import { sectionNavIsPopulated } from "./utils/Utils";
-import { type ExtendedSBLink } from "./utils/Utils";
+import {
+	type ExtendedSBLink,
+	getSectionTitle,
+	treeHasItems,
+} from "@/utils/storyblok/contentStructureUtils";
 
 type StoryblokSectionNavProps = {
 	tree: ExtendedSBLink[];
@@ -14,18 +17,14 @@ export const StoryblokSectionNav = ({
 	tree,
 	slug,
 }: StoryblokSectionNavProps): JSX.Element => {
-	const sectionNavLabel = sectionNavIsPopulated(tree) ? tree[0] : null;
-	const sectionNavTreeWithoutLabel = sectionNavIsPopulated(tree)
-		? tree.slice(1)
-		: [];
+	const sectionTitle = getSectionTitle(tree);
+	const sectionNavTreeWithoutLabel = treeHasItems(tree) ? tree.slice(1) : [];
 	return (
 		<>
-			{sectionNavIsPopulated(tree) && (
+			{treeHasItems(tree) && (
 				<StackedNav
-					label={sectionNavLabel?.name}
-					aria-label={`Section navigation: ${
-						sectionNavLabel?.name ?? "Section"
-					}`}
+					label={sectionTitle?.name}
+					aria-label={`Section navigation: ${sectionTitle?.name ?? "Section"}`}
 					data-testid="section-nav"
 				>
 					{sectionNavTreeWithoutLabel?.map((parent) => (
