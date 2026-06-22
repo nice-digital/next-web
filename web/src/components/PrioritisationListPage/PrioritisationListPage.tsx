@@ -15,7 +15,6 @@ import {
 	Breadcrumbs,
 	type BreadcrumbsProps,
 } from "@nice-digital/nds-breadcrumbs";
-import { Container } from "@nice-digital/nds-container";
 import { Grid, GridItem } from "@nice-digital/nds-grid";
 import { PageHeader } from "@nice-digital/nds-page-header";
 import { Table } from "@nice-digital/nds-table";

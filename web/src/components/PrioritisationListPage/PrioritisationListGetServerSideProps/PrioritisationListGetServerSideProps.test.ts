@@ -98,7 +98,7 @@ describe("getGetServerSidePropsFunc", () => {
 			expect(result.props.results).toBe(sampleData);
 		});
 
-		it("should set active modifiers from navigators and from/to dates and q title query", () => {
+		it("should set active modifiers from navigators and from/to dates and q topic title query", () => {
 			expect(result.props.activeModifiers).toStrictEqual([
 				{
 					displayName: "Topic title: diabetes",

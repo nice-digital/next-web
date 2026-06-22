@@ -123,7 +123,7 @@ describe("/what-nice-does/our-guidance/prioritising-our-guidance-topics/our-prio
 				document.querySelector("meta[name='description']")
 			).toBeInTheDocument();
 			expect(document.querySelector("meta[name='description']")).toHaveProperty(
-				"metaDescription",
+				"content",
 				"We have a centralised approach to prioritising our guidance topics. This ensures that we produce guidance that is relevant, timely, accessible, and has demonstrable impact."
 			);
 			/* eslint-enable testing-library/no-node-access */
