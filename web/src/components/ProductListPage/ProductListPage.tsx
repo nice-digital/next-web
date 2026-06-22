@@ -108,8 +108,8 @@ export const getProductListPage =
 		dateFilterLabel,
 		textFilterHeading,
 		useFutureDates,
-		navigatorsOrder = ["nai", "tt", "tsd", "ndt", "ngt", "nat", "rty", "sub"],
-		navigatorsToCollapse = ["ngt", "nat"],
+		navigatorsOrder = ["pde", "ppr"],
+		navigatorsToCollapse = [],
 		tableBodyRender,
 		searchInputPlaceholder,
 	}: GetProductListPageOptions): FC<ProductListPageProps> =>

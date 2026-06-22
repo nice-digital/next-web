@@ -25,14 +25,6 @@ import {
 export const defaultPageSize = 10;
 
 export interface GetGetServerSidePropsOptions {
-	/** Pre-filter for the guidance status type (gst) 'or modifier' that gets passed to search */
-	gstPreFilter?:
-		| "Published"
-		| "In consultation"
-		| "In development"
-		| "Awaiting development"
-		| "Topic prioritisation"
-		| "Deferred";
 	defaultSortOrder: SortOrder;
 	dateFilterLabel?: string;
 	textFilterLabel?: string;
@@ -41,7 +33,6 @@ export interface GetGetServerSidePropsOptions {
 
 export const getGetServerSidePropsFunc =
 	({
-		gstPreFilter,
 		defaultSortOrder,
 		dateFilterLabel,
 		textFilterLabel = "Keyword or reference number",
@@ -62,7 +53,7 @@ export const getGetServerSidePropsFunc =
 				defaultSortOrder,
 				defaultPageSize,
 				usePrettyUrls: true,
-				orModifierPreFilter: { gst: [gstPreFilter] },
+				orModifierPreFilter: null,
 			}),
 			searchEndTime = process.hrtime.bigint();
 
