@@ -33,25 +33,39 @@ const tableBodyRender = (documents: Document[]) => (
 			{documents.map(
 				({
 					id,
-					title,
-					guidanceRef,
-					publicationDate,
-					lastUpdated,
+					prioritisationBoardMeetingDate,
 					pathAndQuery,
+					title,
+					prioritisationDecision,
+					metaDescription,
+					prioritisationProgramme,
+					prioritisationBoardDecisionDate,
 				}) => {
 					return (
 						<tr key={id}>
-							<td>todo: pb meeting date</td>
+							<td>
+								{prioritisationBoardMeetingDate ? (
+									<ResponsiveDate
+										isoDateTime={String(prioritisationBoardMeetingDate)}
+									/>
+								) : (
+									<span>Unknown</span>
+								)}
+							</td>
 							<td>
 								<a
 									href={publicRuntimeConfig.baseURL + pathAndQuery}
 									dangerouslySetInnerHTML={{ __html: title }}
 								/>
 							</td>
-							<td>todo: prioritisation decsion</td>
-							<td>todo: rationale</td>
-							<td>todo: prioritisation programme</td>
-							<td>todo: decision publication date</td>
+							<td>{prioritisationDecision}</td>
+							<td>{metaDescription}</td>
+							<td>{prioritisationProgramme}</td>
+							<td>
+								<ResponsiveDate
+									isoDateTime={String(prioritisationBoardDecisionDate)}
+								/>
+							</td>
 						</tr>
 					);
 				}
@@ -90,10 +104,9 @@ export default getPrioritisationListPage({
 	preheading: "",
 	heading: <>Prioritisation board decisions</>,
 	title: "Prioritisation board decisions",
-	intro1: "We have a centralised approach to prioritising our guidance topics.",
-	intro2:
+	intro: "We have a centralised approach to prioritising our guidance topics.",
+	description:
 		"This ensures that we produce guidance that is relevant, timely, accessible, and has demonstrable impact.",
-	description: "",
 	defaultSort: {
 		order: defaultSortOrder,
 		label: "Prioritisation board meeting date",
@@ -107,13 +120,12 @@ export default getPrioritisationListPage({
 	dateFilterLabel,
 	textFilterHeading,
 	tableBodyRender,
-	searchInputPlaceholder: "E.g. 'diabetes' or 'IND28'",
+	searchInputPlaceholder: "E.g. 'diabetes'",
 });
 
 export const getServerSideProps = getGetServerSidePropsFunc({
-	gstPreFilter: "Published",
 	defaultSortOrder,
 	dateFilterLabel,
 	textFilterLabel,
-	index: "indicators",
+	index: "prioritisation",
 });
