@@ -90,12 +90,10 @@ export default getPrioritisationListPage({
 	preheading: "",
 	heading: <>Prioritisation board decisions</>,
 	title: "Prioritisation board decisions",
-	intro1:
-		"We have a centralised approach to prioritising our guidance topics.",
+	intro1: "We have a centralised approach to prioritising our guidance topics.",
 	intro2:
 		"This ensures that we produce guidance that is relevant, timely, accessible, and has demonstrable impact.",
-	description:
-		"",
+	description: "",
 	defaultSort: {
 		order: defaultSortOrder,
 		label: "Prioritisation board meeting date",

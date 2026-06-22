@@ -193,7 +193,8 @@ export const getPrioritisationListPage =
 							<SkipLink targetId="filters">Skip to filters</SkipLink>
 							<SkipLink targetId="results">Skip to results</SkipLink>
 							{intro1}
-							<br/><br/>
+							<br />
+							<br />
 							{intro2}
 						</>
 					}
@@ -208,9 +209,9 @@ export const getPrioritisationListPage =
 							2024 voluntary scheme for branded medicines, pricing, access and
 							growth
 						</a>
-						&nbsp;states that NICE will continue to evaluate all new active substances
-						and significant indications, except where there is a clear rationale
-						not to do so.
+						&nbsp;states that NICE will continue to evaluate all new active
+						substances and significant indications, except where there is a
+						clear rationale clear rationale not to do so.
 					</p>
 					<p>
 						These new active substances and significant indications will not go
@@ -226,7 +227,8 @@ export const getPrioritisationListPage =
 						<a href="https://www.nice.org.uk/process/pmg46/chapter/eligibility-criteria-for-using-the-prioritisation-framework-and-direct-routing-to-guidance#topics-that-involve-use-of-new-interventional-procedures">
 							NICE prioritisation board
 						</a>
-						&nbsp;so it will have the oversight of the whole NICE guidance portfolio.
+						&nbsp;so it will have the oversight of the whole NICE guidance
+						portfolio.
 					</p>
 					<p>
 						In some circumstances, where there is uncertainty on a new topic
@@ -234,8 +236,9 @@ export const getPrioritisationListPage =
 						<a href="https://www.nice.org.uk/process/pmg46/chapter/terms-used-in-this-manual#routing">
 							routing
 						</a>
-						&nbsp;decision from the NICE prioritisation board, a topic briefing will
-						be developed for use with the prioritisation framework.
+						will &nbsp;decision from the NICE prioritisation board, a topic
+						briefing will be developed for use with the prioritisation
+						framework.
 					</p>
 					<p>
 						Decisions will only be reviewed where there are factual errors or
@@ -244,7 +247,7 @@ export const getPrioritisationListPage =
 					</p>
 					<p>
 						Stakeholders can seek clarification within 20 working days following
-						the publication of the prioritisation board's decisions.
+						the publication of the prioritisation board&#39;s decisions.
 					</p>
 					<ul>
 						<li>
