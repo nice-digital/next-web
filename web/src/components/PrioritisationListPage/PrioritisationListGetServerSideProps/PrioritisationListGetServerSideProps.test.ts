@@ -11,8 +11,7 @@ import { PrioritisationListPageProps } from "../PrioritisationListPageProps";
 
 import { getGetServerSidePropsFunc } from "./PrioritisationListGetServerSideProps";
 
-import type { GetServerSidePropsContext, Redirect } from "next";
-import type { ParsedUrlQuery } from "querystring";
+import type { GetServerSidePropsContext } from "next";
 
 jest.mock("@/logger", () => ({
 	logger: { error: jest.fn() },
@@ -22,29 +21,8 @@ jest.mock("@/logger", () => ({
 describe("getGetServerSidePropsFunc", () => {
 	const getServerSideProps = getGetServerSidePropsFunc({
 		defaultSortOrder: SortOrder.dateDescending,
-		gstPreFilter: "Published",
-		dateFilterLabel: "Last updated date",
-		index: "guidance",
-	});
-
-	describe("Redirects", () => {
-		it("should return permanent redirect object from old page style URL to new style URL", async () => {
-			const redirectResult = (await getServerSideProps({
-				resolvedUrl: "/prioritisation?title=test",
-				query: {
-					title: "test",
-				} as ParsedUrlQuery,
-			} as GetServerSidePropsContext)) as {
-				redirect: Redirect;
-			};
-
-			expect(redirectResult).toStrictEqual({
-				redirect: {
-					destination: "/prioritisation?q=test",
-					permanent: true,
-				},
-			});
-		});
+		dateFilterLabel: "Prioritisation board meeting date",
+		index: "prioritisation",
 	});
 
 	describe("Error", () => {
@@ -58,14 +36,15 @@ describe("getGetServerSidePropsFunc", () => {
 
 		it("should log error and debug response on search failure", async () => {
 			await getServerSideProps({
-				resolvedUrl: "/prioritisation?q=test",
+				resolvedUrl:
+					"/what-nice-does/our-guidance/prioritising-our-guidance-topics/our-prioritisation-decisions/prioritisation-board-decisions?q=diabetes",
 				res: {
 					setHeader: jest.fn() as GetServerSidePropsContext["res"]["setHeader"],
 				},
 			} as GetServerSidePropsContext);
 
 			expect(logger.error as jest.Mock).toHaveBeenCalledWith(
-				"Error loading guidance from search on page /prioritisation?q=test: Some server side error message",
+				"Error loading guidance from search on page /what-nice-does/our-guidance/prioritising-our-guidance-topics/our-prioritisation-decisions/prioritisation-board-decisions?q=diabetes: Some server side error message",
 				"Some raw debug response"
 			);
 		});
@@ -77,7 +56,8 @@ describe("getGetServerSidePropsFunc", () => {
 			};
 
 			await getServerSideProps({
-				resolvedUrl: "/prioritisation?q=test",
+				resolvedUrl:
+					"/what-nice-does/our-guidance/prioritising-our-guidance-topics/our-prioritisation-decisions/prioritisation-board-decisions?q=diabetes",
 				res,
 			} as GetServerSidePropsContext);
 
@@ -88,7 +68,7 @@ describe("getGetServerSidePropsFunc", () => {
 	describe("Success", () => {
 		let result: { props: PrioritisationListPageProps };
 		const resolvedUrl =
-			"/prioritisation?q=test&ndt=Guidance&from=2020-07-28&to=2021-06-04";
+			"/what-nice-does/our-guidance/prioritising-our-guidance-topics/our-prioritisation-decisions/prioritisation-board-decisions?q=diabetes&from=2026-01-01&to=2026-06-22&ppr=Guidelines";
 		const setHeader = jest.fn();
 		beforeEach(async () => {
 			(search as jest.Mock).mockImplementation(
@@ -121,33 +101,38 @@ describe("getGetServerSidePropsFunc", () => {
 		it("should set active modifiers from navigators and from/to dates and q title query", () => {
 			expect(result.props.activeModifiers).toStrictEqual([
 				{
-					displayName: "Keyword or reference number: test",
+					displayName: "Topic title: diabetes",
 					toggleUrl:
-						"/prioritisation?ndt=Guidance&from=2020-07-28&to=2021-06-04",
+						"/what-nice-does/our-guidance/prioritising-our-guidance-topics/our-prioritisation-decisions/prioritisation-board-decisions?q=diabetes",
 				},
 				{
-					displayName: "Last updated date between: 28/7/2020 and 4/6/2021",
-					toggleUrl: "/prioritisation?q=test&ndt=Guidance&sp=on",
+					displayName:
+						"Prioritisation board meeting date between: 1/1/2026 and 22/6/2026",
+					toggleUrl:
+						"/what-nice-does/our-guidance/prioritising-our-guidance-topics/our-prioritisation-decisions/prioritisation-board-decisions?from=2026-01-01&to=2026-06-22",
 				},
 				{
-					displayName: "Type: Guidance",
-					toggleUrl: "/prioritisation?sp=on&ngt=NICE%20guidelines",
+					displayName: "Prioritisation decision: NotSelected",
+					toggleUrl:
+						"/what-nice-does/our-guidance/prioritising-our-guidance-topics/our-prioritisation-decisions/prioritisation-board-decisions?pde=NotSelected",
 				},
 				{
-					displayName: "Guidance programme: NICE guidelines",
-					toggleUrl: "/prioritisation?sp=on&ndt=Guidance",
+					displayName: "Prioritisation programme: Guidelines",
+					toggleUrl:
+						"/what-nice-does/our-guidance/prioritising-our-guidance-topics/our-prioritisation-decisions/prioritisation-board-decisions?ppr=Guidelines",
 				},
 			]);
 		});
 
 		it("should return search url prop", async () => {
 			expect(result.props.searchUrl).toStrictEqual({
-				route: "/prioritisation",
-				q: "test",
-				from: "2020-07-28",
-				to: "2021-06-04",
+				route:
+					"/what-nice-does/our-guidance/prioritising-our-guidance-topics/our-prioritisation-decisions/prioritisation-board-decisions",
+				q: "diabetes",
+				from: "2026-01-01",
+				to: "2026-06-22",
 				fullUrl: resolvedUrl,
-				ndt: "Guidance",
+				ppr: "Guidelines",
 			});
 		});
 	});

@@ -1,7 +1,6 @@
 import { Breadcrumb } from "@nice-digital/nds-breadcrumbs";
 import { Document, SortOrder } from "@nice-digital/search-client";
 
-import { Link } from "@/components/Link/Link";
 import {
 	getGetServerSidePropsFunc,
 	getPrioritisationListPage,

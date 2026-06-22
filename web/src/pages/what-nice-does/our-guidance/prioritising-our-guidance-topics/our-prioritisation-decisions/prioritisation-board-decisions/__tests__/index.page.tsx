@@ -17,17 +17,22 @@ import IndexPage from "./../index.page";
 	push: jest.fn(),
 }));
 
-describe("/prioritisation", () => {
+describe("/what-nice-does/our-guidance/prioritising-our-guidance-topics/our-prioritisation-decisions/prioritisation-board-decisions", () => {
 	let container: HTMLElement;
 	beforeEach(() => {
-		mockDate.set("2020-11-22");
+		mockDate.set("2025-06-17");
 
 		// eslint-disable-next-line testing-library/no-render-in-setup
 		container = render(
 			<IndexPage
 				activeModifiers={[]}
 				results={sampleData as unknown as SearchResultsSuccess}
-				searchUrl={{ route: "/prioritisation" } as SearchUrl}
+				searchUrl={
+					{
+						route:
+							"/what-nice-does/our-guidance/prioritising-our-guidance-topics/our-prioritisation-decisions/prioritisation-board-decisions",
+					} as SearchUrl
+				}
 			/>
 		).container;
 	});
@@ -39,11 +44,12 @@ describe("/prioritisation", () => {
 	describe("Table", () => {
 		describe("Column headings", () => {
 			it.each([
-				["Topic title", 1],
-				["Decision", 2],
-				["Routing decision", 3],
+				["Prioritisation board meeting date", 1],
+				["Topic title", 2],
+				["Prioritisation decision", 3],
 				["Rationale", 4],
-				["Decision publication date", 5],
+				["Prioritisation programme", 5],
+				["Decision publication date", 6],
 			])(
 				"should set column header '%s' at column %i",
 				(headingText, columnIndex) => {
@@ -57,7 +63,7 @@ describe("/prioritisation", () => {
 		});
 
 		it("should have a visually hidden caption describing the content of the table", () => {
-			const caption = screen.getByText("Prioritisation board decisions", {
+			const caption = screen.getByText("List of priorition board decisions", {
 				selector: "caption",
 			});
 			expect(caption).toBeInTheDocument();
@@ -69,14 +75,22 @@ describe("/prioritisation", () => {
 		});
 
 		describe("First row data", () => {
-			const { title, guidanceRef, publicationDate, lastUpdated } =
-				sampleData.documents[0];
+			const {
+				prioritisationBoardMeetingDate,
+				title,
+				prioritisationDecision,
+				metaDescription,
+				prioritisationProgramme,
+				prioritisationBoardDecisionDate,
+			} = sampleData.documents[0];
 
 			it.each([
+				[formatDateStr(String(prioritisationBoardMeetingDate))],
 				[title],
-				[guidanceRef],
-				[formatDateStr(String(publicationDate))],
-				[formatDateStr(String(lastUpdated))],
+				[prioritisationDecision],
+				[metaDescription],
+				[prioritisationProgramme],
+				[formatDateStr(String(prioritisationBoardDecisionDate))],
 			])("should set data cell to '%s'", (text) => {
 				const row = screen.getAllByRole("row")[1];
 				expect(
@@ -88,22 +102,22 @@ describe("/prioritisation", () => {
 		describe("Date formatting", () => {
 			it("should render the date in the NICE style format", () => {
 				expect(
-					screen.getAllByRole("cell", { name: "16 February 2023" })[0]
+					screen.getAllByRole("cell", { name: "21 March 2025" })[0]
 				).toBeInTheDocument();
 			});
 			it("should render the datetime attribute in ISO standard", () => {
 				const time = screen
-					.getAllByRole("cell", { name: "16 February 2023" })[0]
+					.getAllByRole("cell", { name: "21 March 2025" })[0]
 					// eslint-disable-next-line testing-library/no-node-access
 					.querySelector("time");
-				expect(time).toHaveAttribute("datetime", "2023-02-16T12:00:00");
+				expect(time).toHaveAttribute("datetime", "2025-03-21T12:00:00");
 			});
 			it("should render a short version of the date as a data attribute for display on small screens with CSS", () => {
 				const time = screen
-					.getAllByRole("cell", { name: "16 February 2023" })[0]
+					.getAllByRole("cell", { name: "21 March 2025" })[0]
 					// eslint-disable-next-line testing-library/no-node-access
 					.querySelector("time");
-				expect(time).toHaveAttribute("data-shortdate", "16/2/2023");
+				expect(time).toHaveAttribute("data-shortdate", "21/3/2025");
 			});
 		});
 	});

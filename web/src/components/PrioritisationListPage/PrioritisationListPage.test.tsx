@@ -18,10 +18,14 @@ jest.mock("@/logger", () => ({
 	useLogger: jest.fn(() => ({ error: jest.fn() })),
 }));
 
-describe("/prioritisation", () => {
+const defaultSortOrder = SortOrder.dateDescending,
+	dateFilterLabel = "Prioritisation board meeting date",
+	textFilterLabel = "Topic title";
+
+describe("/what-nice-does/our-guidance/prioritising-our-guidance-topics/our-prioritisation-decisions/prioritisation-board-decisions", () => {
 	const PrioritisationListPage = getPrioritisationListPage({
 		metaDescription:
-			"We've developed a centralised approach to prioritising our guidance topics. This ensures that we produce guidance that's relevant, timely, accessible, and has demonstrable impact.",
+			"We have a centralised approach to prioritising our guidance topics. This ensures that we produce guidance that is relevant, timely, accessible, and has demonstrable impact.",
 		breadcrumbTrail: [
 			<Breadcrumb to="/what-nice-does" key="/what-nice-does">
 				What NICE does
@@ -49,18 +53,22 @@ describe("/prioritisation", () => {
 		preheading: "",
 		heading: <>Prioritisation board decisions</>,
 		title: "Prioritisation board decisions",
+		intro:
+			"We have a centralised approach to prioritising our guidance topics.",
+		description:
+			"This ensures that we produce guidance that is relevant, timely, accessible, and has demonstrable impact.",
 		defaultSort: {
-			order: SortOrder.dateDescending,
-			label: "Date",
+			order: defaultSortOrder,
+			label: "Prioritisation board meeting date",
 		},
 		secondarySort: {
 			order: SortOrder.titleAscending,
-			label: "Title",
+			label: textFilterLabel,
 		},
 		showDateFilter: true,
 		useFutureDates: false,
-		dateFilterLabel: "Decision publication date",
-		searchInputPlaceholder: "Search published guidance",
+		dateFilterLabel: dateFilterLabel,
+		searchInputPlaceholder: "E.g. diabetes",
 		tableBodyRender: (_docs) => (
 			<tbody>
 				<tr>
@@ -79,7 +87,8 @@ describe("/prioritisation", () => {
 
 		mockRouter = {
 			route: "/",
-			pathname: "/prioritisation",
+			pathname:
+				"/what-nice-does/our-guidance/prioritising-our-guidance-topics/our-prioritisation-decisions/prioritisation-board-decisions",
 			query: "",
 			asPath: "",
 			push: routerPush,
@@ -114,8 +123,8 @@ describe("/prioritisation", () => {
 				document.querySelector("meta[name='description']")
 			).toBeInTheDocument();
 			expect(document.querySelector("meta[name='description']")).toHaveProperty(
-				"content",
-				"We've developed a centralised approach to prioritising our guidance topics. This ensures that we produce guidance that's relevant, timely, accessible, and has demonstrable impact."
+				"metaDescription",
+				"We have a centralised approach to prioritising our guidance topics. This ensures that we produce guidance that is relevant, timely, accessible, and has demonstrable impact."
 			);
 			/* eslint-enable testing-library/no-node-access */
 		});
@@ -144,7 +153,12 @@ describe("/prioritisation", () => {
 					results={
 						{ ...sampleData, documents: [] } as unknown as SearchResultsSuccess
 					}
-					searchUrl={{ route: "/prioritisation" } as SearchUrl}
+					searchUrl={
+						{
+							route:
+								"/what-nice-does/our-guidance/prioritising-our-guidance-topics/our-prioritisation-decisions/prioritisation-board-decisions",
+						} as SearchUrl
+					}
 				/>
 			);
 			expect(document.querySelector("meta[name='robots']")).toBeInTheDocument();
