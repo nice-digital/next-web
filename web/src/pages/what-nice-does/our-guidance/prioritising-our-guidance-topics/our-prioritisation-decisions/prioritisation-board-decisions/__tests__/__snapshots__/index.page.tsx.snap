@@ -70,15 +70,6 @@ exports[`/what-nice-does/our-guidance/prioritising-our-guidance-topics/our-prior
                   <li
                     class="breadcrumbs__crumb"
                   >
-                    <a
-                      href="/what-nice-does/our-guidance/prioritising-our-guidance-topics/our-prioritisation-decisions"
-                    >
-                      Our prioritisation decisions
-                    </a>
-                  </li>
-                  <li
-                    class="breadcrumbs__crumb"
-                  >
                     <span>
                       Prioritisation board decisions
                     </span>
@@ -127,14 +118,6 @@ exports[`/what-nice-does/our-guidance/prioritising-our-guidance-topics/our-prior
     {
       "@type": "ListItem",
       "position": 5,
-      "item": {
-        "@id": "/what-nice-does/our-guidance/prioritising-our-guidance-topics/our-prioritisation-decisions",
-        "name": "Our prioritisation decisions"
-      }
-    },
-    {
-      "@type": "ListItem",
-      "position": 6,
       "item": {
         "name": "Prioritisation board decisions"
       }

@@ -92,12 +92,6 @@ export default getPrioritisationListPage({
 		>
 			Prioritising our guidance topics
 		</Breadcrumb>,
-		<Breadcrumb
-			to="/what-nice-does/our-guidance/prioritising-our-guidance-topics/our-prioritisation-decisions"
-			key="/what-nice-does/our-guidance/prioritising-our-guidance-topics/our-prioritisation-decisions"
-		>
-			Our prioritisation decisions
-		</Breadcrumb>,
 	],
 	currentBreadcrumb: "Prioritisation board decisions",
 	preheading: "",
