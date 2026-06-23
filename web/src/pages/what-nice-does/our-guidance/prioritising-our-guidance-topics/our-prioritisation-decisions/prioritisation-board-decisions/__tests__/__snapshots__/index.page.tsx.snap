@@ -884,7 +884,9 @@ exports[`/what-nice-does/our-guidance/prioritising-our-guidance-topics/our-prior
                       Prioritised
                     </td>
                     <td>
-                      &lt;p&gt;Test Rationale description&lt;/p&gt;
+                      <p>
+                        Test Rationale description
+                      </p>
                     </td>
                     <td>
                       HealthTech
@@ -918,7 +920,9 @@ exports[`/what-nice-does/our-guidance/prioritising-our-guidance-topics/our-prior
                       Prioritised
                     </td>
                     <td>
-                      &lt;p&gt;Test Rationale&lt;/p&gt;
+                      <p>
+                        Test Rationale
+                      </p>
                     </td>
                     <td>
                       MedicinesEvaluation
@@ -952,7 +956,9 @@ exports[`/what-nice-does/our-guidance/prioritising-our-guidance-topics/our-prior
                       Prioritised
                     </td>
                     <td>
-                      &lt;p&gt;test&lt;/p&gt;
+                      <p>
+                        test
+                      </p>
                     </td>
                     <td>
                       HealthTech
@@ -992,7 +998,31 @@ exports[`/what-nice-does/our-guidance/prioritising-our-guidance-topics/our-prior
                       NotSelected
                     </td>
                     <td>
-                      &lt;p&gt;The NICE-Wide Prioritisation Board met on 16 April 2026 and concluded that an evaluation would&nbsp;&lt;strong&gt;not&lt;/strong&gt;&nbsp;be appropriate&nbsp;for this product. &lt;a href="https://www.gov.uk/government/publications/2024-voluntary-scheme-for-branded-medicines-pricing-access-and-growth"&gt;The 2024 voluntary scheme for branded medicines, pricing, access and growth&lt;/a&gt;&nbsp;states that NICE will continue to evaluate all new active substances and significant indications, except where there is a clear rationale not to do so. Decision makers concluded that the clear rationale to not evaluate&nbsp;this product is due to the proposed extension being a new dosing regimen that is not expected to impact the cost and clinical effectiveness of the published guidance within &lt;a href="https://www.nice.org.uk/guidance/ta915"&gt;TA915&lt;/a&gt;. Please see&nbsp;&lt;a href="https://www.nice.org.uk/process/pmg46/chapter/eligibility-criteria-for-using-the-prioritisation-framework-and-direct-routing-to-guidance"&gt;eligibility criteria&nbsp;&lt;/a&gt;within the prioritisation manual for further information.&lt;/p&gt;
+                      <p>
+                        The NICE-Wide Prioritisation Board met on 16 April 2026 and concluded that an evaluation would 
+                        <strong>
+                          not
+                        </strong>
+                         be appropriate for this product. 
+                        <a
+                          href="https://www.gov.uk/government/publications/2024-voluntary-scheme-for-branded-medicines-pricing-access-and-growth"
+                        >
+                          The 2024 voluntary scheme for branded medicines, pricing, access and growth
+                        </a>
+                         states that NICE will continue to evaluate all new active substances and significant indications, except where there is a clear rationale not to do so. Decision makers concluded that the clear rationale to not evaluate this product is due to the proposed extension being a new dosing regimen that is not expected to impact the cost and clinical effectiveness of the published guidance within 
+                        <a
+                          href="https://www.nice.org.uk/guidance/ta915"
+                        >
+                          TA915
+                        </a>
+                        . Please see 
+                        <a
+                          href="https://www.nice.org.uk/process/pmg46/chapter/eligibility-criteria-for-using-the-prioritisation-framework-and-direct-routing-to-guidance"
+                        >
+                          eligibility criteria 
+                        </a>
+                        within the prioritisation manual for further information.
+                      </p>
                     </td>
                     <td>
                       MedicinesEvaluation
@@ -1026,7 +1056,9 @@ exports[`/what-nice-does/our-guidance/prioritising-our-guidance-topics/our-prior
                       NotSelected
                     </td>
                     <td>
-                      &lt;p&gt;The 2024 voluntary scheme for branded medicines, pricing, access and growth states that NICE will continue to evaluate all new active substances and significant indications, except where there is a clear rationale not to do so. Decision makers have concluded that the clear rationale to not evaluate your product is due to commissioning under the NHS England commissioning medicines for children in specialised services policy being appropriate with Dabrafenib with trametinib being a paediatric extension of TA396. Please see eligibility criteria within the prioritisation manual for further information.&lt;/p&gt;
+                      <p>
+                        The 2024 voluntary scheme for branded medicines, pricing, access and growth states that NICE will continue to evaluate all new active substances and significant indications, except where there is a clear rationale not to do so. Decision makers have concluded that the clear rationale to not evaluate your product is due to commissioning under the NHS England commissioning medicines for children in specialised services policy being appropriate with Dabrafenib with trametinib being a paediatric extension of TA396. Please see eligibility criteria within the prioritisation manual for further information.
+                      </p>
                     </td>
                     <td>
                       MedicinesEvaluation
@@ -1066,7 +1098,9 @@ exports[`/what-nice-does/our-guidance/prioritising-our-guidance-topics/our-prior
                       NotSelected
                     </td>
                     <td>
-                      &lt;p&gt;The 2024 voluntary scheme for branded medicines, pricing, access and growth states that NICE will continue to evaluate all new active substances and significant indications, except where there is a clear rationale not to do so. Decision makers have concluded that the clear rationale to not evaluate your product is due to commissioning under the NHS England commissioning medicines for children in specialised services policy being appropriate with Dabrafenib being a paediatric extension of TA321.&lt;/p&gt;
+                      <p>
+                        The 2024 voluntary scheme for branded medicines, pricing, access and growth states that NICE will continue to evaluate all new active substances and significant indications, except where there is a clear rationale not to do so. Decision makers have concluded that the clear rationale to not evaluate your product is due to commissioning under the NHS England commissioning medicines for children in specialised services policy being appropriate with Dabrafenib being a paediatric extension of TA321.
+                      </p>
                     </td>
                     <td>
                       MedicinesEvaluation

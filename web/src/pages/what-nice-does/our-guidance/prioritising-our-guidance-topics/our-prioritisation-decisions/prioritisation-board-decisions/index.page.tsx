@@ -58,7 +58,15 @@ const tableBodyRender = (documents: Document[]) => (
 								/>
 							</td>
 							<td>{prioritisationDecision}</td>
-							<td>{metaDescription}</td>
+							{metaDescription ? (
+								<td
+									dangerouslySetInnerHTML={{
+										__html: metaDescription,
+									}}
+								></td>
+							) : (
+								<td>No rationaleText</td>
+							)}
 							<td>{prioritisationProgramme}</td>
 							<td>
 								<ResponsiveDate
