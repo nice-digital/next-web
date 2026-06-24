@@ -44,7 +44,7 @@ describe("/what-nice-does/our-guidance/prioritising-our-guidance-topics/our-prio
 	describe("Table", () => {
 		describe("Column headings", () => {
 			it.each([
-				["Prioritisation board meeting date", 1],
+				["Meeting date", 1],
 				["Topic title", 2],
 				["Prioritisation decision", 3],
 				["Rationale", 4],
@@ -79,7 +79,7 @@ describe("/what-nice-does/our-guidance/prioritising-our-guidance-topics/our-prio
 				prioritisationBoardMeetingDate,
 				title,
 				prioritisationDecision,
-				metaDescription,
+				rationale,
 				prioritisationProgramme,
 				prioritisationBoardDecisionDate,
 			} = sampleData.documents[0];
@@ -88,7 +88,7 @@ describe("/what-nice-does/our-guidance/prioritising-our-guidance-topics/our-prio
 				[formatDateStr(String(prioritisationBoardMeetingDate))],
 				[title],
 				[prioritisationDecision],
-				[metaDescription],
+				[rationale],
 				[prioritisationProgramme],
 				[formatDateStr(String(prioritisationBoardDecisionDate))],
 			])("should set data cell to '%s'", (text) => {

@@ -35,7 +35,7 @@ export const getGetServerSidePropsFunc =
 	({
 		defaultSortOrder,
 		dateFilterLabel,
-		textFilterLabel = "Keyword or reference number",
+		textFilterLabel = "Topic title",
 		index,
 	}: GetGetServerSidePropsOptions) =>
 	async (

@@ -19,7 +19,7 @@ jest.mock("@/logger", () => ({
 }));
 
 const defaultSortOrder = SortOrder.dateDescending,
-	dateFilterLabel = "Prioritisation board meeting date",
+	dateFilterLabel = "Meeting date",
 	textFilterLabel = "Topic title";
 
 describe("/what-nice-does/our-guidance/prioritising-our-guidance-topics/our-prioritisation-decisions/prioritisation-board-decisions", () => {
@@ -58,7 +58,7 @@ describe("/what-nice-does/our-guidance/prioritising-our-guidance-topics/our-prio
 			"This ensures that we produce guidance that is relevant, timely, accessible, and has demonstrable impact.",
 		defaultSort: {
 			order: defaultSortOrder,
-			label: "Prioritisation board meeting date",
+			label: "Meeting date",
 		},
 		secondarySort: {
 			order: SortOrder.titleAscending,

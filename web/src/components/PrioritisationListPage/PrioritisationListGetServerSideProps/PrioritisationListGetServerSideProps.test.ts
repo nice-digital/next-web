@@ -21,7 +21,7 @@ jest.mock("@/logger", () => ({
 describe("getGetServerSidePropsFunc", () => {
 	const getServerSideProps = getGetServerSidePropsFunc({
 		defaultSortOrder: SortOrder.dateDescending,
-		dateFilterLabel: "Prioritisation board meeting date",
+		dateFilterLabel: "Meeting date",
 		index: "prioritisation",
 	});
 
@@ -106,8 +106,7 @@ describe("getGetServerSidePropsFunc", () => {
 						"/what-nice-does/our-guidance/prioritising-our-guidance-topics/our-prioritisation-decisions/prioritisation-board-decisions?q=diabetes",
 				},
 				{
-					displayName:
-						"Prioritisation board meeting date between: 1/1/2026 and 22/6/2026",
+					displayName: "Meeting date between: 1/1/2026 and 22/6/2026",
 					toggleUrl:
 						"/what-nice-does/our-guidance/prioritising-our-guidance-topics/our-prioritisation-decisions/prioritisation-board-decisions?from=2026-01-01&to=2026-06-22",
 				},
@@ -119,7 +118,7 @@ describe("getGetServerSidePropsFunc", () => {
 				{
 					displayName: "Prioritisation programme: Guidelines",
 					toggleUrl:
-						"/what-nice-does/our-guidance/prioritising-our-guidance-topics/our-prioritisation-decisions/prioritisation-board-decisions?ppr=Guidelines",
+						"/what-nice-does/our-guidance/prioritising-our-guidance-topics/our-prioritisation-decisions/prioritisation-board-decisions?q=diabetes&ppr=Guidelines&sp=on",
 				},
 			]);
 		});

@@ -70,9 +70,11 @@ exports[`/what-nice-does/our-guidance/prioritising-our-guidance-topics/our-prior
                   <li
                     class="breadcrumbs__crumb"
                   >
-                    <span>
-                      Prioritisation board decisions
-                    </span>
+                    <a
+                      href="/what-nice-does/our-guidance/prioritising-our-guidance-topics/our-prioritisation-decisions"
+                    >
+                      Our prioritisation decisions
+                    </a>
                   </li>
                 </ol>
               </nav>
@@ -119,7 +121,8 @@ exports[`/what-nice-does/our-guidance/prioritising-our-guidance-topics/our-prior
       "@type": "ListItem",
       "position": 5,
       "item": {
-        "name": "Prioritisation board decisions"
+        "@id": "/what-nice-does/our-guidance/prioritising-our-guidance-topics/our-prioritisation-decisions",
+        "name": "Our prioritisation decisions"
       }
     }
   ]
@@ -296,7 +299,7 @@ exports[`/what-nice-does/our-guidance/prioritising-our-guidance-topics/our-prior
                       class="filter-group__heading"
                     >
                       <button
-                        aria-controls="group-prioritisation-board-meeting-date"
+                        aria-controls="group-meeting-date"
                         aria-expanded="true"
                         type="button"
                       >
@@ -316,9 +319,9 @@ exports[`/what-nice-does/our-guidance/prioritising-our-guidance-topics/our-prior
                           />
                         </svg>
                         <span
-                          id="group-heading-prioritisation-board-meeting-date"
+                          id="group-heading-meeting-date"
                         >
-                          Prioritisation board meeting date
+                          Meeting date
                            
                         </span>
                       </button>
@@ -326,10 +329,10 @@ exports[`/what-nice-does/our-guidance/prioritising-our-guidance-topics/our-prior
                     <fieldset
                       aria-hidden="false"
                       class="filter-group__options"
-                      id="group-prioritisation-board-meeting-date"
+                      id="group-meeting-date"
                     >
                       <legend>
-                        Prioritisation board meeting date
+                        Meeting date
                       </legend>
                       <div
                         class="ph--c pt--c"
@@ -433,37 +436,37 @@ exports[`/what-nice-does/our-guidance/prioritising-our-guidance-topics/our-prior
                       <label
                         class="filter-option"
                         data-component="filter-option"
-                        for="filter_pde_notprioritised"
+                        for="filter_pde_not-prioritised"
                       >
                         <input
-                          id="filter_pde_notprioritised"
+                          id="filter_pde_not-prioritised"
                           name="pde"
-                          title="Prioritisation decision - NotPrioritised (1)"
+                          title="Prioritisation decision - Not prioritised (1)"
                           type="checkbox"
-                          value="NotPrioritised"
+                          value="Not prioritised"
                         />
                         <span
                           class="filter-option__text"
                         >
-                          NotPrioritised (1)
+                          Not prioritised (1)
                         </span>
                       </label>
                       <label
                         class="filter-option"
                         data-component="filter-option"
-                        for="filter_pde_notselected"
+                        for="filter_pde_not-selected"
                       >
                         <input
-                          id="filter_pde_notselected"
+                          id="filter_pde_not-selected"
                           name="pde"
-                          title="Prioritisation decision - NotSelected (123)"
+                          title="Prioritisation decision - Not selected (139)"
                           type="checkbox"
-                          value="NotSelected"
+                          value="Not selected"
                         />
                         <span
                           class="filter-option__text"
                         >
-                          NotSelected (123)
+                          Not selected (139)
                         </span>
                       </label>
                       <label
@@ -567,55 +570,55 @@ exports[`/what-nice-does/our-guidance/prioritising-our-guidance-topics/our-prior
                       <label
                         class="filter-option"
                         data-component="filter-option"
-                        for="filter_ppr_interventionalprocedures"
+                        for="filter_ppr_interventional-procedures"
                       >
                         <input
-                          id="filter_ppr_interventionalprocedures"
+                          id="filter_ppr_interventional-procedures"
                           name="ppr"
-                          title="Prioritisation programme - InterventionalProcedures (1)"
+                          title="Prioritisation programme - Interventional procedures (1)"
                           type="checkbox"
-                          value="InterventionalProcedures"
+                          value="Interventional procedures"
                         />
                         <span
                           class="filter-option__text"
                         >
-                          InterventionalProcedures (1)
+                          Interventional procedures (1)
                         </span>
                       </label>
                       <label
                         class="filter-option"
                         data-component="filter-option"
-                        for="filter_ppr_medicinesevaluation"
+                        for="filter_ppr_medicines-evaluation"
                       >
                         <input
-                          id="filter_ppr_medicinesevaluation"
+                          id="filter_ppr_medicines-evaluation"
                           name="ppr"
-                          title="Prioritisation programme - MedicinesEvaluation (27)"
+                          title="Prioritisation programme - Medicines evaluation (27)"
                           type="checkbox"
-                          value="MedicinesEvaluation"
+                          value="Medicines evaluation"
                         />
                         <span
                           class="filter-option__text"
                         >
-                          MedicinesEvaluation (27)
+                          Medicines evaluation (27)
                         </span>
                       </label>
                       <label
                         class="filter-option"
                         data-component="filter-option"
-                        for="filter_ppr_multiprogrammeassessment"
+                        for="filter_ppr_multi-programme-assessment"
                       >
                         <input
-                          id="filter_ppr_multiprogrammeassessment"
+                          id="filter_ppr_multi-programme-assessment"
                           name="ppr"
-                          title="Prioritisation programme - MultiProgrammeAssessment (2)"
+                          title="Prioritisation programme - Multi-programme assessment (2)"
                           type="checkbox"
-                          value="MultiProgrammeAssessment"
+                          value="Multi-programme assessment"
                         />
                         <span
                           class="filter-option__text"
                         >
-                          MultiProgrammeAssessment (2)
+                          Multi-programme assessment (2)
                         </span>
                       </label>
                     </fieldset>
@@ -645,7 +648,7 @@ exports[`/what-nice-does/our-guidance/prioritising-our-guidance-topics/our-prior
                    to 
                   10
                    of 
-                  154
+                  170
                 </h2>
               </div>
               <div
@@ -666,7 +669,7 @@ exports[`/what-nice-does/our-guidance/prioritising-our-guidance-topics/our-prior
                     selected=""
                     value="Date"
                   >
-                    Prioritisation board meeting date
+                    Meeting date
                   </option>
                   <option
                     value="Title"
@@ -695,7 +698,7 @@ exports[`/what-nice-does/our-guidance/prioritising-our-guidance-topics/our-prior
                     <th
                       scope="col"
                     >
-                      Prioritisation board meeting date
+                      Meeting date
                     </th>
                     <th
                       scope="col"
@@ -729,17 +732,17 @@ exports[`/what-nice-does/our-guidance/prioritising-our-guidance-topics/our-prior
                     <td>
                       <time
                         class="date"
-                        data-shortdate="1/3/2025"
-                        datetime="2025-02-29T12:00:00"
+                        data-shortdate="26/2/2025"
+                        datetime="2025-02-26T12:00:00"
                       >
                         <span>
-                          1 March 2025
+                          26 February 2025
                         </span>
                       </time>
                     </td>
                     <td>
                       <a
-                        href="https://next-web-tests.nice.org.uk/project/ng24"
+                        href="https://next-web-tests.nice.org.uk/guidance/ng24"
                       >
                         Blood transfusion
                       </a>
@@ -767,13 +770,19 @@ exports[`/what-nice-does/our-guidance/prioritising-our-guidance-topics/our-prior
                   </tr>
                   <tr>
                     <td>
-                      <span>
-                        Unknown
-                      </span>
+                      <time
+                        class="date"
+                        data-shortdate="8/7/2024"
+                        datetime="2024-07-08T12:00:00"
+                      >
+                        <span>
+                          8 July 2024
+                        </span>
+                      </time>
                     </td>
                     <td>
                       <a
-                        href="https://next-web-tests.nice.org.uk/project/ng28"
+                        href="https://next-web-tests.nice.org.uk/guidance/ng28"
                       >
                         Type 2 diabetes
                       </a>
@@ -801,13 +810,19 @@ exports[`/what-nice-does/our-guidance/prioritising-our-guidance-topics/our-prior
                   </tr>
                   <tr>
                     <td>
-                      <span>
-                        Unknown
-                      </span>
+                      <time
+                        class="date"
+                        data-shortdate="10/6/2024"
+                        datetime="2024-06-10T12:00:00"
+                      >
+                        <span>
+                          10 June 2024
+                        </span>
+                      </time>
                     </td>
                     <td>
                       <a
-                        href="https://next-web-tests.nice.org.uk/project/htg768"
+                        href="https://next-web-tests.nice.org.uk/guidance/htg768"
                       >
                         Digital self-help for eating disorders: early value assessment
                       </a>
@@ -841,7 +856,7 @@ exports[`/what-nice-does/our-guidance/prioritising-our-guidance-topics/our-prior
                     </td>
                     <td>
                       <a
-                        href="https://next-web-tests.nice.org.uk/project/htg1048"
+                        href="https://next-web-tests.nice.org.uk/guidance/htg1048"
                       >
                         Digital Health Technologies (DHT’s) for the delivery of cognitive behaviour therapy (CBT) to help manage the symptoms of menopause
                       </a>
@@ -875,7 +890,7 @@ exports[`/what-nice-does/our-guidance/prioritising-our-guidance-topics/our-prior
                     </td>
                     <td>
                       <a
-                        href="https://next-web-tests.nice.org.uk/project/htg1017"
+                        href="https://next-web-tests.nice.org.uk/guidance/htg1017"
                       >
                         Master Alert test
                       </a>
@@ -911,7 +926,7 @@ exports[`/what-nice-does/our-guidance/prioritising-our-guidance-topics/our-prior
                     </td>
                     <td>
                       <a
-                        href="https://next-web-tests.nice.org.uk/project/hst159"
+                        href="https://next-web-tests.nice.org.uk/guidance/hst159"
                       >
                         Alert Indev test-3
                       </a>
@@ -925,7 +940,7 @@ exports[`/what-nice-does/our-guidance/prioritising-our-guidance-topics/our-prior
                       </p>
                     </td>
                     <td>
-                      MedicinesEvaluation
+                      Medicines evaluation
                     </td>
                     <td>
                       <time
@@ -947,7 +962,7 @@ exports[`/what-nice-does/our-guidance/prioritising-our-guidance-topics/our-prior
                     </td>
                     <td>
                       <a
-                        href="https://next-web-tests.nice.org.uk/project/gid-ta12260"
+                        href="https://next-web-tests.nice.org.uk/guidance/awaiting-development/gid-ta12260"
                       >
                         ID-929: Topic prioritisation set on website when blank in Indev (2)
                       </a>
@@ -989,13 +1004,13 @@ exports[`/what-nice-does/our-guidance/prioritising-our-guidance-topics/our-prior
                     </td>
                     <td>
                       <a
-                        href="https://next-web-tests.nice.org.uk/project/gid-ta11994"
+                        href="https://next-web-tests.nice.org.uk/guidance/prioritisation/gid-ta11994"
                       >
                         Pegunigalsidase alfa every 4 weeks for treating Fabry disease [TSID12346]
                       </a>
                     </td>
                     <td>
-                      NotSelected
+                      Not selected
                     </td>
                     <td>
                       <p>
@@ -1025,7 +1040,7 @@ exports[`/what-nice-does/our-guidance/prioritising-our-guidance-topics/our-prior
                       </p>
                     </td>
                     <td>
-                      MedicinesEvaluation
+                      Medicines evaluation
                     </td>
                     <td>
                       <time
@@ -1047,13 +1062,13 @@ exports[`/what-nice-does/our-guidance/prioritising-our-guidance-topics/our-prior
                     </td>
                     <td>
                       <a
-                        href="https://next-web-tests.nice.org.uk/project/gid-ta11990"
+                        href="https://next-web-tests.nice.org.uk/guidance/prioritisation/gid-ta11990"
                       >
                         Dabrafenib with trametinib for treating unresectable or metastatic BRAF V600 mutation positive melanoma in people 12 to 17 years [TSID12398]
                       </a>
                     </td>
                     <td>
-                      NotSelected
+                      Not selected
                     </td>
                     <td>
                       <p>
@@ -1061,7 +1076,7 @@ exports[`/what-nice-does/our-guidance/prioritising-our-guidance-topics/our-prior
                       </p>
                     </td>
                     <td>
-                      MedicinesEvaluation
+                      Medicines evaluation
                     </td>
                     <td>
                       <time
@@ -1089,13 +1104,13 @@ exports[`/what-nice-does/our-guidance/prioritising-our-guidance-topics/our-prior
                     </td>
                     <td>
                       <a
-                        href="https://next-web-tests.nice.org.uk/project/gid-ta11989"
+                        href="https://next-web-tests.nice.org.uk/guidance/prioritisation/gid-ta11989"
                       >
                         Dabrafenib for treating unresectable or metastatic BRAF V600 mutation positive melanoma in people 12 to 17 years [TSID12399]
                       </a>
                     </td>
                     <td>
-                      NotSelected
+                      Not selected
                     </td>
                     <td>
                       <p>
@@ -1103,7 +1118,7 @@ exports[`/what-nice-does/our-guidance/prioritising-our-guidance-topics/our-prior
                       </p>
                     </td>
                     <td>
-                      MedicinesEvaluation
+                      Medicines evaluation
                     </td>
                     <td>
                       <time
@@ -1179,11 +1194,11 @@ exports[`/what-nice-does/our-guidance/prioritising-our-guidance-topics/our-prior
                   class="pagination__item"
                 >
                   <a
-                    aria-label="Go to page 16"
+                    aria-label="Go to page 17"
                     class="pagination__link"
-                    href="/?pa=16"
+                    href="/?pa=17"
                   >
-                    16
+                    17
                   </a>
                 </li>
                 <li
@@ -1196,7 +1211,7 @@ exports[`/what-nice-does/our-guidance/prioritising-our-guidance-topics/our-prior
                     </strong>
                      of 
                     <strong>
-                      16
+                      17
                     </strong>
                   </span>
                 </li>
