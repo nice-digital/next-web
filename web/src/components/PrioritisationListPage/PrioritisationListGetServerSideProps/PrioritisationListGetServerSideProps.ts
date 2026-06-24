@@ -53,7 +53,6 @@ export const getGetServerSidePropsFunc =
 				defaultSortOrder,
 				defaultPageSize,
 				usePrettyUrls: true,
-				orModifierPreFilter: null,
 			}),
 			searchEndTime = process.hrtime.bigint();
 
@@ -81,9 +80,9 @@ export const getGetServerSidePropsFunc =
 			};
 		}
 
-		const activeModifiers = getActiveModifiers(results)
-			.filter(withoutGuidanceStatusModifier)
-			.map(toActiveModifier(results.navigators));
+		const activeModifiers = getActiveModifiers(results).map(
+			toActiveModifier(results.navigators)
+		);
 
 		if (searchUrl.from && searchUrl.to) {
 			// Add an active modifier for the date range to allow users to easily toggle it
@@ -121,16 +120,6 @@ export const getGetServerSidePropsFunc =
 			},
 		};
 	};
-
-/**
- * Returns true if the given modifier is not filtering by guidance status, otherwise false.
- *
- * We pre filter by guidance status so don't want to be able to toggle it in the UI
- *
- * @returns A boolean indicating whether the given modifier is not guidance status
- */
-const withoutGuidanceStatusModifier = (modifier: Modifier) =>
-	modifier.navigatorShortName !== "gst";
 
 /**
  * Gets a function that maps a modifier into an active modifier
