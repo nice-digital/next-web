@@ -68,7 +68,7 @@ describe("getGetServerSidePropsFunc", () => {
 	describe("Success", () => {
 		let result: { props: PrioritisationListPageProps };
 		const resolvedUrl =
-			"/what-nice-does/our-guidance/prioritising-our-guidance-topics/our-prioritisation-decisions/prioritisation-board-decisions?q=diabetes&from=2026-01-01&to=2026-06-22&ppr=Guidelines";
+			"/what-nice-does/our-guidance/prioritising-our-guidance-topics/our-prioritisation-decisions/prioritisation-board-decisions?q=diabetes&from=2024-01-01&to=2024-12-31&pde=NotSelected&ppr=Guidelines";
 		const setHeader = jest.fn();
 		beforeEach(async () => {
 			(search as jest.Mock).mockImplementation(
@@ -103,22 +103,22 @@ describe("getGetServerSidePropsFunc", () => {
 				{
 					displayName: "Topic title: diabetes",
 					toggleUrl:
-						"/what-nice-does/our-guidance/prioritising-our-guidance-topics/our-prioritisation-decisions/prioritisation-board-decisions?q=diabetes",
+						"/what-nice-does/our-guidance/prioritising-our-guidance-topics/our-prioritisation-decisions/prioritisation-board-decisions?from=2024-01-01&to=2024-12-31&pde=NotSelected&ppr=Guidelines",
 				},
 				{
-					displayName: "Meeting date between: 1/1/2026 and 22/6/2026",
+					displayName: "Meeting date between: 1/1/2024 and 31/12/2024",
 					toggleUrl:
-						"/what-nice-does/our-guidance/prioritising-our-guidance-topics/our-prioritisation-decisions/prioritisation-board-decisions?from=2026-01-01&to=2026-06-22",
+						"/what-nice-does/our-guidance/prioritising-our-guidance-topics/our-prioritisation-decisions/prioritisation-board-decisions?q=diabetes&pde=NotSelected&ppr=Guidelines",
 				},
 				{
 					displayName: "Prioritisation decision: NotSelected",
 					toggleUrl:
-						"/what-nice-does/our-guidance/prioritising-our-guidance-topics/our-prioritisation-decisions/prioritisation-board-decisions?pde=NotSelected",
+						"/what-nice-does/our-guidance/prioritising-our-guidance-topics/our-prioritisation-decisions/prioritisation-board-decisions?q=diabetes&from=2024-01-01&to=2024-12-31&ppr=Guidelines",
 				},
 				{
 					displayName: "Prioritisation programme: Guidelines",
 					toggleUrl:
-						"/what-nice-does/our-guidance/prioritising-our-guidance-topics/our-prioritisation-decisions/prioritisation-board-decisions?q=diabetes&ppr=Guidelines&sp=on",
+						"/what-nice-does/our-guidance/prioritising-our-guidance-topics/our-prioritisation-decisions/prioritisation-board-decisions?q=diabetes&from=2024-01-01&to=2024-12-31&pde=NotSelected",
 				},
 			]);
 		});
@@ -128,10 +128,11 @@ describe("getGetServerSidePropsFunc", () => {
 				route:
 					"/what-nice-does/our-guidance/prioritising-our-guidance-topics/our-prioritisation-decisions/prioritisation-board-decisions",
 				q: "diabetes",
-				from: "2026-01-01",
-				to: "2026-06-22",
-				fullUrl: resolvedUrl,
+				from: "2024-01-01",
+				to: "2024-12-31",
+				pde: "NotSelected",
 				ppr: "Guidelines",
+				fullUrl: resolvedUrl,
 			});
 		});
 	});
