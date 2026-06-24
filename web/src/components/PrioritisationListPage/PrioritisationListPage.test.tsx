@@ -49,7 +49,6 @@ describe("/what-nice-does/our-guidance/prioritising-our-guidance-topics/our-prio
 				Our prioritisation decisions
 			</Breadcrumb>,
 		],
-		currentBreadcrumb: "Prioritisation board decisions",
 		preheading: "",
 		heading: <>Prioritisation board decisions</>,
 		title: "Prioritisation board decisions",

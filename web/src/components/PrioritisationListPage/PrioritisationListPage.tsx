@@ -52,7 +52,6 @@ const resultsPerPage = [
 export type GetPrioritisationListPageOptions = {
 	metaDescription: string;
 	breadcrumbTrail: ReactElement<BreadcrumbsProps>[];
-	currentBreadcrumb: string;
 	preheading: ReactChild;
 	heading: ReactChild;
 	intro?: ReactChild;
@@ -95,7 +94,6 @@ export const getPrioritisationListPage =
 	({
 		metaDescription,
 		breadcrumbTrail,
-		currentBreadcrumb,
 		preheading,
 		heading,
 		intro,
@@ -129,7 +127,6 @@ export const getPrioritisationListPage =
 								Home
 							</Breadcrumb>,
 							...breadcrumbTrail,
-							<Breadcrumb key="current page">{currentBreadcrumb}</Breadcrumb>,
 						]}
 					</Breadcrumbs>
 				);

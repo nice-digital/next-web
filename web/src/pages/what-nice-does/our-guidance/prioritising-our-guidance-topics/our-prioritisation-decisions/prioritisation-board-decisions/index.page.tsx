@@ -9,7 +9,7 @@ import { ResponsiveDate } from "@/components/ResponsiveDate/ResponsiveDate";
 import { publicRuntimeConfig } from "@/config";
 
 const defaultSortOrder = SortOrder.dateDescending,
-	dateFilterLabel = "Prioritisation board meeting date",
+	dateFilterLabel = "Meeting date",
 	textFilterHeading = "Topic title",
 	textFilterLabel = "Topic title";
 
@@ -20,7 +20,7 @@ const tableBodyRender = (documents: Document[]) => (
 		</caption>
 		<thead>
 			<tr>
-				<th scope="col">Prioritisation board meeting date</th>
+				<th scope="col">Meeting date</th>
 				<th scope="col">Topic title</th>
 				<th scope="col">Prioritisation decision</th>
 				<th scope="col">Rationale</th>
@@ -36,7 +36,7 @@ const tableBodyRender = (documents: Document[]) => (
 					pathAndQuery,
 					title,
 					prioritisationDecision,
-					metaDescription,
+					rationale,
 					prioritisationProgramme,
 					prioritisationBoardDecisionDate,
 				}) => {
@@ -58,10 +58,10 @@ const tableBodyRender = (documents: Document[]) => (
 								/>
 							</td>
 							<td>{prioritisationDecision}</td>
-							{metaDescription ? (
+							{rationale ? (
 								<td
 									dangerouslySetInnerHTML={{
-										__html: metaDescription,
+										__html: rationale,
 									}}
 								></td>
 							) : (
@@ -100,8 +100,13 @@ export default getPrioritisationListPage({
 		>
 			Prioritising our guidance topics
 		</Breadcrumb>,
+		<Breadcrumb
+			to="/what-nice-does/our-guidance/prioritising-our-guidance-topics/our-prioritisation-decisions"
+			key="/what-nice-does/our-guidance/prioritising-our-guidance-topics/our-prioritisation-decisions"
+		>
+			Our prioritisation decisions
+		</Breadcrumb>,
 	],
-	currentBreadcrumb: "Prioritisation board decisions",
 	preheading: "",
 	heading: <>Prioritisation board decisions</>,
 	title: "Prioritisation board decisions",
@@ -110,7 +115,7 @@ export default getPrioritisationListPage({
 		"This ensures that we produce guidance that is relevant, timely, accessible, and has demonstrable impact.",
 	defaultSort: {
 		order: defaultSortOrder,
-		label: "Prioritisation board meeting date",
+		label: "Meeting date",
 	},
 	secondarySort: {
 		order: SortOrder.titleAscending,
