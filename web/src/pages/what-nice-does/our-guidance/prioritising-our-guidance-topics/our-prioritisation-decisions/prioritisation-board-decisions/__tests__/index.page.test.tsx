@@ -7,7 +7,7 @@ import sampleData from "@/mockData/search/prioritisation.json";
 import { render, screen, within } from "@/test-utils/rendering";
 import { formatDateStr } from "@/utils/datetime";
 
-import IndexPage from "./../index.page";
+import IndexPage from "../index.page";
 
 (useRouter as jest.Mock).mockImplementation(() => ({
 	route: "/",
