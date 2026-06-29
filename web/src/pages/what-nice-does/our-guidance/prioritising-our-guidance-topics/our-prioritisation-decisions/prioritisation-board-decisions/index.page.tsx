@@ -3,8 +3,8 @@ import { Document, SortOrder } from "@nice-digital/search-client";
 
 import {
 	getGetServerSidePropsFunc,
-	getPrioritisationListPage,
-} from "@/components/PrioritisationListPage/PrioritisationListPage";
+	getProductListPage,
+} from "@/components/ProductListPage/ProductListPage";
 import { ResponsiveDate } from "@/components/ResponsiveDate/ResponsiveDate";
 import { publicRuntimeConfig } from "@/config";
 
@@ -81,7 +81,7 @@ const tableBodyRender = (documents: Document[]) => (
 	</>
 );
 
-export default getPrioritisationListPage({
+export default getProductListPage({
 	metaDescription:
 		"We have a centralised approach to prioritising our guidance topics. This ensures that we produce guidance that is relevant, timely, accessible, and has demonstrable impact.",
 	breadcrumbTrail: [
@@ -107,8 +107,9 @@ export default getPrioritisationListPage({
 			Our prioritisation decisions
 		</Breadcrumb>,
 	],
+	currentBreadcrumb: "Prioritisation board decisions",
 	preheading: "",
-	heading: <>Prioritisation board decisions</>,
+	heading: "Prioritisation board decisions",
 	title: "Prioritisation board decisions",
 	intro: "We have a centralised approach to prioritising our guidance topics.",
 	description:
@@ -126,7 +127,10 @@ export default getPrioritisationListPage({
 	dateFilterLabel,
 	textFilterHeading,
 	tableBodyRender,
+	navigatorsOrder: ["pde", "ppr"],
+	navigatorsToCollapse: [],
 	searchInputPlaceholder: "E.g. 'diabetes'",
+	variant: true,
 });
 
 export const getServerSideProps = getGetServerSidePropsFunc({

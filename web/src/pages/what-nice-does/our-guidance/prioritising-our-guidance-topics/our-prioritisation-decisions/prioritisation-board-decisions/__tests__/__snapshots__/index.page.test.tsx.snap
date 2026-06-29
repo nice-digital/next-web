@@ -76,6 +76,13 @@ exports[`/what-nice-does/our-guidance/prioritising-our-guidance-topics/our-prior
                       Our prioritisation decisions
                     </a>
                   </li>
+                  <li
+                    class="breadcrumbs__crumb"
+                  >
+                    <span>
+                      Prioritisation board decisions
+                    </span>
+                  </li>
                 </ol>
               </nav>
               <script
@@ -123,6 +130,13 @@ exports[`/what-nice-does/our-guidance/prioritising-our-guidance-topics/our-prior
       "item": {
         "@id": "/what-nice-does/our-guidance/prioritising-our-guidance-topics/our-prioritisation-decisions",
         "name": "Our prioritisation decisions"
+      }
+    },
+    {
+      "@type": "ListItem",
+      "position": 6,
+      "item": {
+        "name": "Prioritisation board decisions"
       }
     }
   ]
