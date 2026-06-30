@@ -3114,7 +3114,7 @@ const nextConfig = {
 			{
 				source: "/forms/candidates-for-modular-updates",
 				destination:
-					"/what-nice-does/our-guidance/candidates-for-modular-updates",
+					"/what-nice-does/our-guidance/modular-updates/candidates-for-modular-updates",
 				permanent: true,
 			},
 			{
