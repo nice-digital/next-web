@@ -1,9 +1,10 @@
+import parse from "html-react-parser";
 import { type GetServerSideProps } from "next/types";
 import { NextSeo } from "next-seo";
 
+import { Alert } from "@nice-digital/nds-alert";
 import { Breadcrumb, Breadcrumbs } from "@nice-digital/nds-breadcrumbs";
 
-import { InfoAlert } from "@/components/InfoAlert/InfoAlert";
 import { ProductHorizontalNav } from "@/components/ProductHorizontalNav/ProductHorizontalNav";
 import {
 	ProductPageHeading,
@@ -59,7 +60,7 @@ export default function HistoryPage({
 
 			<ProductPageHeading product={product} />
 
-			<InfoAlert alert={product.alert} />
+			{product.alert ? <Alert type="info">{parse(product.alert)}</Alert> : null}
 
 			<ProductHorizontalNav
 				productTypeName="Indicator"
