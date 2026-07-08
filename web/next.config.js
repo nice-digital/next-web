@@ -1558,18 +1558,18 @@ const nextConfig = {
 				permanent: true,
 			},
 			{
-			 	source:
-			 		"/about/what-we-do/science-policy-research/research-recommendations",
-			 	destination:
-			 		"/what-nice-does/our-research-work/research-recommendations",
-			 	permanent: true,
+				source:
+					"/about/what-we-do/science-policy-research/research-recommendations",
+				destination:
+					"/what-nice-does/our-research-work/research-recommendations",
+				permanent: true,
 			},
 			{
-			 	source:
-			 		"/about/what-we-do/research-and-development/research-recommendations/:slug*",
-			 	destination:
-			 		"/what-nice-does/our-research-work/research-recommendations",
-			 	permanent: true,
+				source:
+					"/about/what-we-do/research-and-development/research-recommendations/:slug*",
+				destination:
+					"/what-nice-does/our-research-work/research-recommendations",
+				permanent: true,
 			},
 			{
 				source:
