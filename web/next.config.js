@@ -1557,14 +1557,20 @@ const nextConfig = {
 					"/implementing-nice-guidance/cost-saving-resource-planning-and-audit",
 				permanent: true,
 			},
-			// NOTE this is commented out until research recs go live
-			// {
-			// 	source:
-			// 		"/about/what-we-do/research-and-development/research-recommendations/:slug*",
-			// 	destination:
-			// 		"/about/what-we-do/science-policy-research/research-recommendations",
-			// 	permanent: true,
-			// },
+			{
+			 	source:
+			 		"/about/what-we-do/science-policy-research/research-recommendations",
+			 	destination:
+			 		"/what-nice-does/our-research-work/research-recommendations",
+			 	permanent: true,
+			},
+			{
+			 	source:
+			 		"/about/what-we-do/research-and-development/research-recommendations/:slug*",
+			 	destination:
+			 		"/what-nice-does/our-research-work/research-recommendations",
+			 	permanent: true,
+			},
 			{
 				source:
 					"/about/what-we-do/digital-health/multi-agency-advisory-service-for-ai-and-data-driven-technologies",
