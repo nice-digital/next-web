@@ -52,12 +52,13 @@ const resultsPerPage = [
 
 export type GetProductListPageOptions = {
 	metaDescription: string;
-	listNavType: ElementType;
+	listNavType?: ElementType;
 	breadcrumbTrail: ReactElement<BreadcrumbsProps>[];
 	currentBreadcrumb: string;
 	preheading: ReactChild;
 	heading: ReactChild;
 	intro?: ReactChild;
+	description?: ReactChild;
 	title: string;
 	defaultSort: {
 		order: SortOrder;
@@ -77,6 +78,7 @@ export type GetProductListPageOptions = {
 	navigatorsToCollapse?: KnownOrModifierKeys[];
 	tableBodyRender: (documents: Document[]) => JSX.Element;
 	searchInputPlaceholder: string;
+	variant?: boolean;
 } & (
 	| {
 			showDateFilter: true;
@@ -101,6 +103,7 @@ export const getProductListPage =
 		preheading,
 		heading,
 		intro,
+		description,
 		title,
 		defaultSort,
 		secondarySort,
@@ -112,6 +115,7 @@ export const getProductListPage =
 		navigatorsToCollapse = ["ngt", "nat"],
 		tableBodyRender,
 		searchInputPlaceholder,
+		variant = false,
 	}: GetProductListPageOptions): FC<ProductListPageProps> =>
 	({
 		results,
@@ -169,6 +173,16 @@ export const getProductListPage =
 				</>
 			);
 
+		const variantProps = variant
+			? ({
+					variant: "fullWidthLight",
+					verticalPadding: "loose",
+					breadcrumbs,
+			  } as const)
+			: {
+					className: `page-header ${styles.pageHeader}`,
+			  };
+
 		return (
 			<>
 				<NextSeo
@@ -179,13 +193,12 @@ export const getProductListPage =
 
 				<Announcer announcement={announcement} />
 
-				{breadcrumbs}
+				{!variant && breadcrumbs}
 
 				<PageHeader
 					preheading={preheading}
 					heading={heading}
 					id="content-start"
-					className={`page-header ${styles.pageHeader}`}
 					data-testid="content-start"
 					lead={
 						<>
@@ -194,9 +207,11 @@ export const getProductListPage =
 							{intro}
 						</>
 					}
+					description={description}
+					{...variantProps}
 				/>
 
-				<ListNavType />
+				{ListNavType && <ListNavType />}
 
 				<Grid gutter="loose" className={styles.sectionWrapper}>
 					<GridItem
