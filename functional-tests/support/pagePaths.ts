@@ -33,7 +33,7 @@ export const pagePaths = {
 	"subscribe to update for Primary Care":
 		"/nice-newsletters-and-alerts-automation-jotform-donotuse/subscribe-to-update-for-primary-care-automation-jotform-donotuse",
 	"recommendation for research list":
-		"/about/what-we-do/science-policy-research/research-recommendations",
+		"/what-nice-does/our-research-work/research-recommendations",
 } as const;
 
 export type PageName = keyof typeof pagePaths;
