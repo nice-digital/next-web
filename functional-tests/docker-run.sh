@@ -6,6 +6,10 @@
 # See https://github.com/docker/for-win/issues/1829#issuecomment-376328022
 export COMPOSE_CONVERT_WINDOWS_PATHS=1
 
+# On TeamCity the fresh CodeArtifact token arrives as NPM_TOKEN_CODEARTIFACT;
+# fall back to an already-set NPM_TOKEN for local runs
+export NPM_TOKEN="${NPM_TOKEN:-$NPM_TOKEN_CODEARTIFACT}"
+
 function cleanupBeforeStart() {
   # Clean up before we start
   rm -rf docker-output && rm -rf allure-results && rm -rf allure-report
