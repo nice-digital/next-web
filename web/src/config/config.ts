@@ -101,6 +101,9 @@ export interface FeedsConfig {
 
 	/** Feed config for indev */
 	readonly inDev: FeedConfig;
+
+	/** Feed config for taxonomy */
+	readonly taxonomy: FeedConfig;
 }
 
 export interface StoryblokConfig {
