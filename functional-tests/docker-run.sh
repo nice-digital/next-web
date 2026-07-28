@@ -6,9 +6,10 @@
 # See https://github.com/docker/for-win/issues/1829#issuecomment-376328022
 export COMPOSE_CONVERT_WINDOWS_PATHS=1
 
-# On TeamCity the fresh CodeArtifact token arrives as NPM_TOKEN_CODEARTIFACT;
-# fall back to an already-set NPM_TOKEN for local runs
-export NPM_TOKEN="${NPM_TOKEN:-$NPM_TOKEN_CODEARTIFACT}"
+# Prefer the fresh CodeArtifact token from TeamCity (NPM_TOKEN_CODEARTIFACT):
+# the root project also injects an env.NPM_TOKEN which is stale, so it must NOT
+# take precedence. Locally NPM_TOKEN_CODEARTIFACT is unset and NPM_TOKEN wins.
+export NPM_TOKEN="${NPM_TOKEN_CODEARTIFACT:-$NPM_TOKEN}"
 
 function cleanupBeforeStart() {
   # Clean up before we start
@@ -16,8 +17,11 @@ function cleanupBeforeStart() {
 }
 
 function runTests() {
-  # Bring up images including the one that will be sent to AWS ECR
-  docker-compose up -d
+  # Bring up images including the one that will be sent to AWS ECR.
+  # --build ensures a stale image can never be silently reused: it's a
+  # near-instant no-op when layers are fresh, and a proper tokened rebuild
+  # (failing loudly) when they aren't.
+  docker-compose up -d --build
 
   # Wait for the web app to be up before running the tests
   docker-compose run -T nxt-test-runner npm run wait-then-test
