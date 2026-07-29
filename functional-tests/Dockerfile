@@ -2,6 +2,13 @@ FROM node:22.19-alpine
 
 ENV IN_DOCKER=true
 
+# Node >=22.12 enables require(esm) by default, which breaks @cucumber/cucumber 9
+# require()ing @wdio/cucumber-framework's formatter (an ESM graph with top-level
+# await): the hard TLA error replaces the catchable ERR_REQUIRE_ESM that used to
+# trigger cucumber's import() fallback. Disable it until the wdio/cucumber stack
+# is upgraded past this.
+ENV NODE_OPTIONS="--no-experimental-require-module"
+
 # Install Java (for Allure) see https://stackoverflow.com/a/44154721/486434
 RUN apk add openjdk8
 
