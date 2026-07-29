@@ -1,4 +1,4 @@
-FROM node:22.19-alpine
+FROM node:24.18-alpine
 
 ENV IN_DOCKER=true
 
