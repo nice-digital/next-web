@@ -2,7 +2,6 @@ import { Given } from "@wdio/cucumber-framework";
 import { expect } from "expect-webdriverio";
 
 import { clickElement } from "@nice-digital/wdio-cucumber-steps/lib/support/action/clickElement.js";
-import { pause } from "@nice-digital/wdio-cucumber-steps/lib/support/action/pause.js";
 import { waitForDisplayed } from "@nice-digital/wdio-cucumber-steps/lib/support/action/waitForDisplayed.js";
 
 import {
@@ -55,7 +54,6 @@ Given(/^I open the (.*) page$/, async (pageName: PageName) => {
 Given(/^I click on the home breadcrumb link$/, async () => {
 	await waitForDisplayed(".breadcrumbs__crumb a", "");
 	await clickElement("click", "selector", ".breadcrumbs__crumb a");
-	await pause("2000");
 });
 
 Given(

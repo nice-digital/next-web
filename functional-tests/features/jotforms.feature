@@ -4,12 +4,10 @@ Feature: Individual jotforms page
 
   Background:
     Given I open the home page
-    And I pause for 2000ms
 
   Scenario: User can navigate to Subscribe to update for Primary Care page
     Given I open the subscribe to update for Primary Care page
     Then I expect that element "h1" contains the text "Subscribe to update for Primary Care"
-    And I pause for 2000ms
     And I expect subscribe to update for primary care jotform Id to exist
     Given I enter name details in the jotform field
 

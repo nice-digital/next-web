@@ -4,7 +4,6 @@ Feature: News tabs
 
   Background:
     Given I open the news, blogs and podcasts page
-    And I pause for 2000ms
 
   Scenario: User can view news article tab
     When I click on the news article tab
