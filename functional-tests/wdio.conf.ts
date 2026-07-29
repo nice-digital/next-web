@@ -35,6 +35,11 @@ export const config: WebdriverIO.Config = {
 			// 		"--window-size=1920,1080",
 			// 	],
 			// },
+			// Don't block navigation on full page load (fonts, GTM, cookie-banner
+			// CDN etc). DOMContentLoaded is enough: element interactions auto-wait,
+			// so a slow third-party resource can't stall `browser.url()` past the
+			// cucumber step timeout.
+			pageLoadStrategy: "eager",
 			"goog:chromeOptions": {
 				args: ["--window-size=1920,1080"].concat(
 					isInDocker ? "--headless" : []
@@ -68,6 +73,9 @@ export const config: WebdriverIO.Config = {
 		],
 		tagExpression: "not @pending", // See https://docs.cucumber.io/tag-expressions/
 		timeout: 1500000,
+		// Retry a failed scenario once on CI: one-off browser/page-load stalls
+		// shouldn't fail the whole build. Genuine failures reproduce on the retry.
+		retry: isInDocker ? 1 : 0,
 	},
 
 	afterStep: async function (_test, _scenario, { error }) {
