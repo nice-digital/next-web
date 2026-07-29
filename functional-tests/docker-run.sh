@@ -21,7 +21,7 @@ function runTests() {
   # --build ensures a stale image can never be silently reused: it's a
   # near-instant no-op when layers are fresh, and a proper tokened rebuild
   # (failing loudly) when they aren't.
-  docker-compose up -d --build
+  docker-compose up -d --build --scale selenium-chrome=3
 
   # Wait for the web app to be up before running the tests
   docker-compose run -T nxt-test-runner npm run wait-then-test
