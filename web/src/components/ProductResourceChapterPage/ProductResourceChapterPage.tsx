@@ -1,18 +1,23 @@
+import parse from "html-react-parser";
 import { NextSeo } from "next-seo";
 import { FC } from "react";
 
-import { Breadcrumb, Breadcrumbs } from "@nice-digital/nds-breadcrumbs";
+import { Alert } from "@nice-digital/nds-alert";
 import { Button } from "@nice-digital/nds-button";
 import { Grid, GridItem } from "@nice-digital/nds-grid";
 
-import { Link } from "@/components/Link/Link";
 import { ProductHorizontalNav } from "@/components/ProductHorizontalNav/ProductHorizontalNav";
 import { ProductPageHeading } from "@/components/ProductPageHeading/ProductPageHeading";
 import { PublicationsChapterMenu } from "@/components/PublicationsChapterMenu/PublicationsChapterMenu";
 import { PublicationsPrevNext } from "@/components/PublicationsPrevNext/PublicationsPrevNext";
+import {
+	BreadcrumbStatus,
+	ProductTypeAcronym,
+} from "@/feeds/publications/types";
 import { formatDateStr, stripTime } from "@/utils/datetime";
+import { ResourceTypeSlug } from "@/utils/resource";
 
-import { InfoAlert } from "../InfoAlert/InfoAlert";
+import { GuidanceBreadcrumb } from "../GuidanceBreadcrumb/GuidanceBreadcrumb";
 import { OnThisPageBasic } from "../OnThisPageBasic/OnThisPageBasic";
 
 import { type ProductResourceChapterPageProps } from "./ProductResourceChapterPage.getServerSideProps";
@@ -35,41 +40,51 @@ export const ProductResourceChapterPage: FC<
 	title,
 	lastUpdated,
 	resourceTypeSlug,
-	resourceTypeName,
 	resourceDownloadPath,
+	taxonomyBreadcrumb,
 }) => {
-	const hasOnThisPageMenu = chapterSections.length > 1,
-		hasDownloadButton = !!resourceDownloadPath;
+	const hasOnThisPageMenu = chapterSections.length > 1;
+	const hasDownloadButton = !!resourceDownloadPath;
+
+	const parentPageTitle =
+		resourceTypeSlug === ResourceTypeSlug.ToolsAndResources
+			? "Tools and resources"
+			: resourceTypeSlug === ResourceTypeSlug.Evidence
+			? "Evidence"
+			: "Information for the public";
+
+	const isIndicator = product.productType === ProductTypeAcronym.IND;
+	const type = isIndicator ? "indicators" : "guidance";
+	const label = isIndicator ? "Indicators" : "NICE guidance";
+
+	const breadcrumbAppend = [
+		{ title: parentPageTitle, url: `/${resourceTypeSlug}` },
+		{ title },
+	];
+	const breadcrumbStatus =
+		product.productStatus.toLowerCase() as BreadcrumbStatus;
 
 	return (
 		<>
 			<NextSeo
-				title={`${title} | ${resourceTypeName} | ${product.id} | Indicators`}
+				title={`${title} | ${parentPageTitle} | ${product.id} | ${label}`}
 			/>
 
-			<Breadcrumbs>
-				<Breadcrumb to="/">Home</Breadcrumb>
-				<Breadcrumb to="/standards-and-indicators/indicators">
-					Indicators
-				</Breadcrumb>
-				<Breadcrumb to={productPath} elementType={Link}>
-					{product.id}
-				</Breadcrumb>
-				<Breadcrumb
-					to={productPath + "/" + resourceTypeSlug}
-					elementType={Link}
-				>
-					{resourceTypeName}
-				</Breadcrumb>
-				<Breadcrumb>{title}</Breadcrumb>
-			</Breadcrumbs>
+			<GuidanceBreadcrumb
+				append={breadcrumbAppend}
+				id={product.id}
+				productPath={productPath}
+				status={breadcrumbStatus}
+				taxonomy={taxonomyBreadcrumb}
+				type={type}
+			/>
 
 			<ProductPageHeading product={product} />
 
-			<InfoAlert alert={product.alert} />
+			{product.alert ? <Alert type="info">{parse(product.alert)}</Alert> : null}
 
 			<ProductHorizontalNav
-				productTypeName="Indicator"
+				productTypeName={isIndicator ? "Indicator" : "Guidance"}
 				productPath={productPath}
 				hasToolsAndResources={hasToolsAndResources}
 				hasInfoForPublicResources={hasInfoForPublicResources}
