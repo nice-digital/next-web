@@ -38,6 +38,7 @@ const NavLink: FC<NavLinkProps> = ({ children, href }) => {
 export const GuidanceListNav: FC = () => (
 	<HorizontalNav aria-label="Stages of guidance development">
 		<NavLink href="/guidance/published">Published</NavLink>
+		<NavLink href="/guidance/terminated">Terminated</NavLink>
 		<NavLink href="/guidance/inconsultation">In consultation</NavLink>
 		<NavLink href="/guidance/indevelopment">In development</NavLink>
 		<NavLink href="/guidance/deferred">Deferred</NavLink>

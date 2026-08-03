@@ -11,9 +11,8 @@ export default function handler(
 Disallow: /
 	`);
 	} else {
-		res.send(`User-agent: bingbot
+		res.send(`User-agent: *
 Crawl-delay: 1
-User-agent: *
 Disallow: /cks-is-only-available-in-the-uk
 Disallow: /cks-end-user-licence-agreement
 Allow: /

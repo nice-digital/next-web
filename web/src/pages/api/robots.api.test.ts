@@ -2,7 +2,7 @@ import { NextApiRequest, NextApiResponse } from "next";
 
 import { normaliseString } from "@/test-utils/string";
 
-const expectedRobotsAllowedString = `User-agent: bingbot\nCrawl-delay: 1\nUser-agent: *\nDisallow: /cks-is-only-available-in-the-uk Disallow: /cks-end-user-licence-agreement \nAllow: /`;
+const expectedRobotsAllowedString = `User-agent: *\nCrawl-delay: 1\nDisallow: /cks-is-only-available-in-the-uk\nDisallow: /cks-end-user-licence-agreement\nAllow: /`;
 const expectedRobotsDeniedString = `User-agent: *\nDisallow: /`;
 
 describe("Robots txt API Handler Tests", () => {
@@ -38,7 +38,7 @@ describe("Robots txt API Handler Tests", () => {
 		);
 	});
 
-	it('should return "Allow: /" and "Crawl-delay: 1" for bingbot when denyRobots is not "true"', async () => {
+	it('should return "Allow: /" and "Crawl-delay: 1" when denyRobots is not "true"', async () => {
 		jest.doMock("@/config", () => ({
 			publicRuntimeConfig: {
 				denyRobots: "false",
@@ -58,7 +58,7 @@ describe("Robots txt API Handler Tests", () => {
 		);
 	});
 
-	it('should return "Allow: /" and "Crawl-delay: 1" for bingbot when denyRobots is not set', async () => {
+	it('should return "Allow: /" and "Crawl-delay: 1" when denyRobots is not set', async () => {
 		jest.doMock("@/config", () => ({
 			publicRuntimeConfig: {
 				// DenyRobots not set
@@ -78,7 +78,7 @@ describe("Robots txt API Handler Tests", () => {
 		);
 	});
 
-	it('should return "Allow: /" and "Crawl-delay: 1" for bingbot when denyRobots is set to garbage value', async () => {
+	it('should return "Allow: /" and "Crawl-delay: 1" when denyRobots is set to garbage value', async () => {
 		jest.doMock("@/config", () => ({
 			publicRuntimeConfig: {
 				denyRobots: "garbage",
@@ -98,7 +98,7 @@ describe("Robots txt API Handler Tests", () => {
 		);
 	});
 
-	it('should return "Allow: /" and "Crawl-delay: 1" for bingbot when denyRobots is undefined', async () => {
+	it('should return "Allow: /" and "Crawl-delay: 1" when denyRobots is undefined', async () => {
 		jest.doMock("@/config", () => ({
 			publicRuntimeConfig: {
 				denyRobots: undefined,
@@ -118,7 +118,7 @@ describe("Robots txt API Handler Tests", () => {
 		);
 	});
 
-	it('should return "Allow: /" and "Crawl-delay: 1" for bingbot when denyRobots is set to null', async () => {
+	it('should return "Allow: /" and "Crawl-delay: 1" when denyRobots is set to null', async () => {
 		jest.doMock("@/config", () => ({
 			publicRuntimeConfig: {
 				denyRobots: null,
