@@ -8,7 +8,7 @@ import styles from "./publicationsDownloadLink.module.scss";
 export type PublicationsDownloadLinkProps = PropsWithChildren<{
 	ariaLabel?: string;
 	downloadLink: string | null;
-	className: string | null;
+	className?: string | null;
 }>;
 
 export const PublicationsDownloadLink: FC<PublicationsDownloadLinkProps> = ({

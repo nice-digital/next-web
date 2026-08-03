@@ -12,7 +12,4 @@ export default ProductResourceChapterPage;
 export const getServerSideProps: GetServerSideProps<
 	ProductResourceChapterPageProps,
 	{ slug: string; partSlug: string; chapterSlug: string }
-> = getGetServerSidePropsFunc(
-	ResourceTypeSlug.ToolsAndResources,
-	"Tools and resources"
-);
+> = getGetServerSidePropsFunc(ResourceTypeSlug.ToolsAndResources);
