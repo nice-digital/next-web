@@ -23,9 +23,18 @@ exports[`/product/[slug]/resources/[partSlug]/chapter/[chapterSlug].page Product
         class="breadcrumbs__crumb"
       >
         <a
-          href="/standards-and-indicators/indicators"
+          href="/guidance"
         >
-          Indicators
+          NICE guidance
+        </a>
+      </li>
+      <li
+        class="breadcrumbs__crumb"
+      >
+        <a
+          href="/guidance/published"
+        >
+          Published
         </a>
       </li>
       <li
@@ -74,13 +83,21 @@ exports[`/product/[slug]/resources/[partSlug]/chapter/[chapterSlug].page Product
       "@type": "ListItem",
       "position": 2,
       "item": {
-        "@id": "/standards-and-indicators/indicators",
-        "name": "Indicators"
+        "@id": "/guidance",
+        "name": "NICE guidance"
       }
     },
     {
       "@type": "ListItem",
       "position": 3,
+      "item": {
+        "@id": "/guidance/published",
+        "name": "Published"
+      }
+    },
+    {
+      "@type": "ListItem",
+      "position": 4,
       "item": {
         "@id": "/process/pmg20",
         "name": "PMG20"
@@ -88,7 +105,7 @@ exports[`/product/[slug]/resources/[partSlug]/chapter/[chapterSlug].page Product
     },
     {
       "@type": "ListItem",
-      "position": 4,
+      "position": 5,
       "item": {
         "@id": "/process/pmg20/resources",
         "name": "Tools and resources"
@@ -96,7 +113,7 @@ exports[`/product/[slug]/resources/[partSlug]/chapter/[chapterSlug].page Product
     },
     {
       "@type": "ListItem",
-      "position": 5,
+      "position": 6,
       "item": {
         "name": "Developing NICE guidelines: the manual – appendices"
       }
@@ -159,7 +176,7 @@ exports[`/product/[slug]/resources/[partSlug]/chapter/[chapterSlug].page Product
           class="horizontal-nav__link"
           href="/process/pmg20"
         >
-          Indicator
+          Guidance
         </a>
       </li>
       <li
@@ -3437,15 +3454,17 @@ Object {
       "alert": undefined,
       "id": "PMG20",
       "lastMajorModificationDate": "2024-05-29T00:00:00",
+      "productStatus": "Published",
       "productTypeName": "NICE process and methods",
       "publishedDate": "2014-10-31T00:00:00",
+      "terminatedDate": undefined,
       "title": "Developing NICE guidelines: the manual ",
     },
     "productPath": "/process/pmg20",
     "resourceDownloadPath": "/process/pmg20/downloads/PMG20-developing-nice-guidelines-the-manual-appendices-1967369-2549710189.pdf",
     "resourceDownloadSizeBytes": 394577,
-    "resourceTypeName": "Tools and resources",
     "resourceTypeSlug": "resources",
+    "taxonomyBreadcrumb": Array [],
     "title": "Developing NICE guidelines: the manual – appendices",
   },
 }

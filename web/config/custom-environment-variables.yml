@@ -13,5 +13,8 @@ server:
       origin: PUBLICATIONS_BASE_URL
     inDev:
       origin: INDEV_BASE_URL
+    taxonomy:
+      origin: TAXONOMYSERVICE_BASE_URL
+      apiKey: TAXONOMYSERVICE_APIKEY
     jotForm:
       apiKey: JOTFORM_APIKEY
