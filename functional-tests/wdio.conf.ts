@@ -173,9 +173,6 @@ export const config: WebdriverIO.Config = {
 		],
 		tagExpression: "not @pending", // See https://docs.cucumber.io/tag-expressions/
 		timeout: 60000,
-		// Retry a failed scenario once on CI: one-off browser/page-load stalls
-		// shouldn't fail the whole build. Genuine failures reproduce on the retry.
-		retry: isInDocker ? 1 : 0,
 	},
 
 	beforeCommand: function (commandName) {
