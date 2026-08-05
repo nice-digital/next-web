@@ -124,14 +124,6 @@ export const config: WebdriverIO.Config = {
 			// acceptSslCerts: true,
 			maxInstances: 3,
 			browserName: "chrome",
-			// "goog:chromeOptions": {
-			// 	args: [
-			// 		"--headless",
-			// 		"--disable-dev-shm-usage",
-			// 		"--no-sandbox",
-			// 		"--window-size=1920,1080",
-			// 	],
-			// },
 			// Don't block navigation on full page load (fonts, GTM, cookie-banner
 			// CDN etc). DOMContentLoaded is enough: element interactions auto-wait,
 			// so a slow third-party resource can't stall `browser.url()` past the
@@ -141,9 +133,16 @@ export const config: WebdriverIO.Config = {
 			// when a step fails. Failed resource fetches log at SEVERE.
 			"goog:loggingPrefs": { browser: "ALL" },
 			"goog:chromeOptions": {
-				args: ["--window-size=1920,1080"].concat(
-					isInDocker ? "--headless" : []
-				),
+				args: [
+					"--window-size=1920,1080",
+					// Automation optimizations as per https://github.com/GoogleChrome/chrome-launcher/blob/master/docs/chrome-flags-for-tools.md
+					"--disable-dev-shm-usage",
+					"--enable-automation",
+					"--disable-extensions",
+					"--disable-component-extensions-with-background-pages",
+					"--disable-background-networking",
+					"--disable-sync",
+				].concat(isInDocker ? "--headless" : []),
 			},
 		},
 	] as ChromeCapabilities[],

@@ -8,7 +8,7 @@ services:
   selenium-chrome:
     image: selenium/node-chrome:3.141.59-20210713
     # scaling needs unnamed containers >>>> container_name: nxt-selenium-chrome
-    shm_size: '1gb'
+    shm_size: '2gb'
     depends_on:
       - selenium-hub
     environment:
