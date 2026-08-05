@@ -1,5 +1,5 @@
 import { useRouter } from "next/router";
-import { FC } from "react";
+import { FC, ReactChild } from "react";
 
 import { FilterSummary, FilterSummaryProps } from "@nice-digital/nds-filters";
 import { SearchResultsSuccess, SortOrder } from "@nice-digital/search-client";
@@ -24,6 +24,7 @@ export interface ProductListFilterSummaryProps {
 		order: SortOrder;
 		label: string;
 	};
+	description?: ReactChild;
 }
 
 export const ProductListFilterSummary: FC<ProductListFilterSummaryProps> = ({
@@ -32,6 +33,7 @@ export const ProductListFilterSummary: FC<ProductListFilterSummaryProps> = ({
 	currentSortOrder,
 	defaultSort,
 	secondarySort,
+	description,
 }) => {
 	const { push, query, events } = useRouter();
 	const scrollToTarget = useScrollToTarget("filter-summary");
@@ -87,6 +89,11 @@ export const ProductListFilterSummary: FC<ProductListFilterSummaryProps> = ({
 			{resultCount > 0 && (
 				<>
 					Showing {firstResult} to {lastResult} of {resultCount}
+				</>
+			)}
+			{description && (
+				<>
+					<p>{description}</p>
 				</>
 			)}
 		</FilterSummary>

@@ -79,6 +79,7 @@ export type GetProductListPageOptions = {
 	tableBodyRender: (documents: Document[]) => JSX.Element;
 	searchInputPlaceholder: string;
 	variant?: boolean;
+	filterSummaryDescription?: ReactChild;
 } & (
 	| {
 			showDateFilter: true;
@@ -116,6 +117,7 @@ export const getProductListPage =
 		tableBodyRender,
 		searchInputPlaceholder,
 		variant = false,
+		filterSummaryDescription,
 	}: GetProductListPageOptions): FC<ProductListPageProps> =>
 	({
 		results,
@@ -254,6 +256,7 @@ export const getProductListPage =
 							currentSortOrder={s}
 							defaultSort={defaultSort}
 							secondarySort={secondarySort}
+							description={filterSummaryDescription}
 						/>
 
 						{documents.length === 0 ? (

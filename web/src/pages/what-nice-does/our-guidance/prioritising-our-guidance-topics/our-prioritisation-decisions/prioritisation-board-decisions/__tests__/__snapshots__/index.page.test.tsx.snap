@@ -243,7 +243,7 @@ exports[`/what-nice-does/our-guidance/prioritising-our-guidance-topics/our-prior
                       class="filter-group__heading"
                     >
                       <button
-                        aria-controls="group-topic-title"
+                        aria-controls="group-topic-title-and-rationale"
                         aria-expanded="true"
                         type="button"
                       >
@@ -263,9 +263,9 @@ exports[`/what-nice-does/our-guidance/prioritising-our-guidance-topics/our-prior
                           />
                         </svg>
                         <span
-                          id="group-heading-topic-title"
+                          id="group-heading-topic-title-and-rationale"
                         >
-                          Topic title
+                          Topic title and rationale
                            
                         </span>
                       </button>
@@ -273,10 +273,10 @@ exports[`/what-nice-does/our-guidance/prioritising-our-guidance-topics/our-prior
                     <fieldset
                       aria-hidden="false"
                       class="filter-group__options"
-                      id="group-topic-title"
+                      id="group-topic-title-and-rationale"
                     >
                       <legend>
-                        Topic title
+                        Topic title and rationale
                       </legend>
                       <div
                         class="ph--c pt--c"
@@ -663,6 +663,13 @@ exports[`/what-nice-does/our-guidance/prioritising-our-guidance-topics/our-prior
                   10
                    of 
                   170
+                  <p>
+                    Detailed 
+                    <strong>
+                      rational
+                    </strong>
+                     for each prioritisation decision is available via the topic titles in the second column of the table below
+                  </p>
                 </h2>
               </div>
               <div
@@ -688,7 +695,7 @@ exports[`/what-nice-does/our-guidance/prioritising-our-guidance-topics/our-prior
                   <option
                     value="Title"
                   >
-                    Topic title
+                    Topic title and rationale
                   </option>
                 </select>
               </div>
@@ -717,17 +724,12 @@ exports[`/what-nice-does/our-guidance/prioritising-our-guidance-topics/our-prior
                     <th
                       scope="col"
                     >
-                      Topic title
+                      Topic title and rationale
                     </th>
                     <th
                       scope="col"
                     >
                       Prioritisation decision
-                    </th>
-                    <th
-                      scope="col"
-                    >
-                      Rationale
                     </th>
                     <th
                       scope="col"
@@ -763,9 +765,6 @@ exports[`/what-nice-does/our-guidance/prioritising-our-guidance-topics/our-prior
                     </td>
                     <td>
                       Prioritised
-                    </td>
-                    <td>
-                      Prioritisation Board recognised that there is good quality evidence to support expanding the population who could receive tranexamic acid during surgery. There also appear to be potential resource savings for the NHS.
                     </td>
                     <td>
                       Guidelines
@@ -805,9 +804,6 @@ exports[`/what-nice-does/our-guidance/prioritising-our-guidance-topics/our-prior
                       Prioritised
                     </td>
                     <td>
-                      Prioritisation board agreed that there are important clinical questions to address for the system regarding which insulin to use for this population, and when it should be offered.
-                    </td>
-                    <td>
                       Guidelines
                     </td>
                     <td>
@@ -845,9 +841,6 @@ exports[`/what-nice-does/our-guidance/prioritising-our-guidance-topics/our-prior
                       Prioritised
                     </td>
                     <td>
-                      Prioritisation board agreed that digital technologies for this group have the potential to address current system challenges.
-                    </td>
-                    <td>
                       HealthTech
                     </td>
                     <td>
@@ -877,9 +870,6 @@ exports[`/what-nice-does/our-guidance/prioritising-our-guidance-topics/our-prior
                     </td>
                     <td>
                       Prioritised
-                    </td>
-                    <td>
-                      The Prioritisation Board agreed that the topic had the potential for benefit in terms of patient experience and acceptability, and reduced waiting times. Consequently, they agreed that the topic should be prioritised.
                     </td>
                     <td>
                       HealthTech
@@ -913,11 +903,6 @@ exports[`/what-nice-does/our-guidance/prioritising-our-guidance-topics/our-prior
                       Prioritised
                     </td>
                     <td>
-                      <p>
-                        Test Rationale description
-                      </p>
-                    </td>
-                    <td>
                       HealthTech
                     </td>
                     <td>
@@ -949,11 +934,6 @@ exports[`/what-nice-does/our-guidance/prioritising-our-guidance-topics/our-prior
                       Prioritised
                     </td>
                     <td>
-                      <p>
-                        Test Rationale
-                      </p>
-                    </td>
-                    <td>
                       Medicines evaluation
                     </td>
                     <td>
@@ -983,11 +963,6 @@ exports[`/what-nice-does/our-guidance/prioritising-our-guidance-topics/our-prior
                     </td>
                     <td>
                       Prioritised
-                    </td>
-                    <td>
-                      <p>
-                        test
-                      </p>
                     </td>
                     <td>
                       HealthTech
@@ -1027,33 +1002,6 @@ exports[`/what-nice-does/our-guidance/prioritising-our-guidance-topics/our-prior
                       Not selected
                     </td>
                     <td>
-                      <p>
-                        The NICE-Wide Prioritisation Board met on 16 April 2026 and concluded that an evaluation would 
-                        <strong>
-                          not
-                        </strong>
-                         be appropriate for this product. 
-                        <a
-                          href="https://www.gov.uk/government/publications/2024-voluntary-scheme-for-branded-medicines-pricing-access-and-growth"
-                        >
-                          The 2024 voluntary scheme for branded medicines, pricing, access and growth
-                        </a>
-                         states that NICE will continue to evaluate all new active substances and significant indications, except where there is a clear rationale not to do so. Decision makers concluded that the clear rationale to not evaluate this product is due to the proposed extension being a new dosing regimen that is not expected to impact the cost and clinical effectiveness of the published guidance within 
-                        <a
-                          href="https://www.nice.org.uk/guidance/ta915"
-                        >
-                          TA915
-                        </a>
-                        . Please see 
-                        <a
-                          href="https://www.nice.org.uk/process/pmg46/chapter/eligibility-criteria-for-using-the-prioritisation-framework-and-direct-routing-to-guidance"
-                        >
-                          eligibility criteria 
-                        </a>
-                        within the prioritisation manual for further information.
-                      </p>
-                    </td>
-                    <td>
                       Medicines evaluation
                     </td>
                     <td>
@@ -1083,11 +1031,6 @@ exports[`/what-nice-does/our-guidance/prioritising-our-guidance-topics/our-prior
                     </td>
                     <td>
                       Not selected
-                    </td>
-                    <td>
-                      <p>
-                        The 2024 voluntary scheme for branded medicines, pricing, access and growth states that NICE will continue to evaluate all new active substances and significant indications, except where there is a clear rationale not to do so. Decision makers have concluded that the clear rationale to not evaluate your product is due to commissioning under the NHS England commissioning medicines for children in specialised services policy being appropriate with Dabrafenib with trametinib being a paediatric extension of TA396. Please see eligibility criteria within the prioritisation manual for further information.
-                      </p>
                     </td>
                     <td>
                       Medicines evaluation
@@ -1125,11 +1068,6 @@ exports[`/what-nice-does/our-guidance/prioritising-our-guidance-topics/our-prior
                     </td>
                     <td>
                       Not selected
-                    </td>
-                    <td>
-                      <p>
-                        The 2024 voluntary scheme for branded medicines, pricing, access and growth states that NICE will continue to evaluate all new active substances and significant indications, except where there is a clear rationale not to do so. Decision makers have concluded that the clear rationale to not evaluate your product is due to commissioning under the NHS England commissioning medicines for children in specialised services policy being appropriate with Dabrafenib being a paediatric extension of TA321.
-                      </p>
                     </td>
                     <td>
                       Medicines evaluation

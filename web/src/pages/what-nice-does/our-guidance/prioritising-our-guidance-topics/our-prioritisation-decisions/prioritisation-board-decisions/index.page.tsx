@@ -10,8 +10,8 @@ import { publicRuntimeConfig } from "@/config";
 
 const defaultSortOrder = SortOrder.dateDescending,
 	dateFilterLabel = "Meeting date",
-	textFilterHeading = "Topic title",
-	textFilterLabel = "Topic title";
+	textFilterHeading = "Topic title and rationale",
+	textFilterLabel = "Topic title and rationale";
 
 const tableBodyRender = (documents: Document[]) => (
 	<>
@@ -21,9 +21,8 @@ const tableBodyRender = (documents: Document[]) => (
 		<thead>
 			<tr>
 				<th scope="col">Meeting date</th>
-				<th scope="col">Topic title</th>
+				<th scope="col">Topic title and rationale</th>
 				<th scope="col">Prioritisation decision</th>
-				<th scope="col">Rationale</th>
 				<th scope="col">Prioritisation programme</th>
 				<th scope="col">Decision publication date</th>
 			</tr>
@@ -36,7 +35,6 @@ const tableBodyRender = (documents: Document[]) => (
 					pathAndQuery,
 					title,
 					prioritisationDecision,
-					rationale,
 					prioritisationProgramme,
 					prioritisationBoardDecisionDate,
 				}) => {
@@ -58,15 +56,6 @@ const tableBodyRender = (documents: Document[]) => (
 								/>
 							</td>
 							<td>{prioritisationDecision}</td>
-							{rationale ? (
-								<td
-									dangerouslySetInnerHTML={{
-										__html: rationale,
-									}}
-								></td>
-							) : (
-								<td>No rationaleText</td>
-							)}
 							<td>{prioritisationProgramme}</td>
 							<td>
 								<ResponsiveDate
@@ -120,7 +109,7 @@ export default getProductListPage({
 	},
 	secondarySort: {
 		order: SortOrder.titleAscending,
-		label: "Topic title",
+		label: "Topic title and rationale",
 	},
 	showDateFilter: true,
 	useFutureDates: false,
@@ -131,6 +120,12 @@ export default getProductListPage({
 	navigatorsToCollapse: [],
 	searchInputPlaceholder: "E.g. 'diabetes'",
 	variant: true,
+	filterSummaryDescription: (
+		<>
+			Detailed <strong>rational</strong> for each prioritisation decision is
+			available via the topic titles in the second column of the table below
+		</>
+	),
 });
 
 export const getServerSideProps = getGetServerSidePropsFunc({
