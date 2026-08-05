@@ -45,11 +45,10 @@ describe("/what-nice-does/our-guidance/prioritising-our-guidance-topics/our-prio
 		describe("Column headings", () => {
 			it.each([
 				["Meeting date", 1],
-				["Topic title", 2],
+				["Topic title and rationale", 2],
 				["Prioritisation decision", 3],
-				["Rationale", 4],
-				["Prioritisation programme", 5],
-				["Decision publication date", 6],
+				["Prioritisation programme", 4],
+				["Decision publication date", 5],
 			])(
 				"should set column header '%s' at column %i",
 				(headingText, columnIndex) => {
@@ -79,7 +78,6 @@ describe("/what-nice-does/our-guidance/prioritising-our-guidance-topics/our-prio
 				prioritisationBoardMeetingDate,
 				title,
 				prioritisationDecision,
-				rationale,
 				prioritisationProgramme,
 				prioritisationBoardDecisionDate,
 			} = sampleData.documents[0];
@@ -88,7 +86,6 @@ describe("/what-nice-does/our-guidance/prioritising-our-guidance-topics/our-prio
 				[formatDateStr(String(prioritisationBoardMeetingDate))],
 				[title],
 				[prioritisationDecision],
-				[rationale],
 				[prioritisationProgramme],
 				[formatDateStr(String(prioritisationBoardDecisionDate))],
 			])("should set data cell to '%s'", (text) => {
