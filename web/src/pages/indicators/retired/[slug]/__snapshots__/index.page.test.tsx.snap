@@ -142,31 +142,31 @@ exports[`/indicators/retired/[slug]/index.page RetiredDetailPage should match sn
 `;
 
 exports[`/indicators/retired/[slug]/index.page getServerSideProps should return a correct props when supplied with a valid slug 1`] = `
-Object {
-  "props": Object {
-    "indicatorSubTypes": Array [
-      Object {
+{
+  "props": {
+    "indicatorSubTypes": [
+      {
         "enabled": true,
         "identifierPrefix": "CCG",
         "lastModified": "2022-07-12T00:00:00",
         "name": "Clinical commissioning group indicator",
         "pluralName": "Clinical commissioning group indicators",
       },
-      Object {
+      {
         "enabled": true,
         "identifierPrefix": "GPIQ",
         "lastModified": "2022-07-12T00:00:00",
         "name": "General practice indicator suitable for use in QOF",
         "pluralName": "General practice indicators suitable for use in QOF",
       },
-      Object {
+      {
         "enabled": true,
         "identifierPrefix": "GPINQ",
         "lastModified": "2022-07-12T00:00:00",
         "name": "General practice indicator suitable for use outside of QOF",
         "pluralName": "General practice indicators suitable for use outside of QOF",
       },
-      Object {
+      {
         "enabled": true,
         "identifierPrefix": "NLQ",
         "lastModified": "2022-07-12T00:00:00",
@@ -175,10 +175,10 @@ Object {
       },
     ],
     "pdfDownloadPath": "/indicators/retired/ind1111-indicator-master-accordion-panels-test/IND1111-20251209.pdf",
-    "product": Object {
+    "product": {
       "alert": undefined,
       "id": "IND1111",
-      "indicatorSubTypeList": Array [
+      "indicatorSubTypeList": [
         "GPIQ",
       ],
       "lastMajorModificationDate": "2025-08-05T00:00:00",

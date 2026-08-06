@@ -1090,51 +1090,51 @@ exports[`/indicators/indevelopment/[slug]/documents DocumentsPage should match s
 `;
 
 exports[`/indicators/indevelopment/[slug]/documents getServerSideProps should return a correct props 1`] = `
-Object {
-  "props": Object {
+{
+  "props": {
     "alert": undefined,
-    "consultationUrls": Array [],
-    "indevScheduleItems": Array [
-      Object {
+    "consultationUrls": [],
+    "indevScheduleItems": [
+      {
         "additionalInfo": "2",
         "additionalInfoLabel": "Meeting number",
         "column1": "Committee meeting: 2",
         "column2": "16 February 2023",
         "eTag": null,
         "hidden": false,
-        "links": Object {
-          "self": Array [
-            Object {},
+        "links": {
+          "self": [
+            {},
           ],
         },
       },
-      Object {
+      {
         "additionalInfo": null,
         "additionalInfoLabel": null,
         "column1": "Expected publication",
         "column2": "17 May 2023",
         "eTag": null,
         "hidden": false,
-        "links": Object {
-          "self": Array [
-            Object {},
+        "links": {
+          "self": [
+            {},
           ],
         },
       },
     ],
-    "indevStakeholderRegistration": Array [
-      Object {
+    "indevStakeholderRegistration": [
+      {
         "href": "https://www.nice.org.uk/about/what-we-do/our-programmes/nice-guidance/nice-diagnostics-guidance/dt-stakeholder-registration",
       },
     ],
-    "project": Object {
+    "project": {
       "alert": undefined,
-      "groups": Array [
-        Object {
-          "subGroups": Array [
-            Object {
-              "resourceLinks": Array [
-                Object {
+      "groups": [
+        {
+          "subGroups": [
+            {
+              "resourceLinks": [
+                {
                   "date": "2022-12-09T08:00:00",
                   "fileSize": null,
                   "fileTypeName": null,
@@ -1142,7 +1142,7 @@ Object {
                   "title": "Diagnostics consultation",
                   "type": "Diagnostics consultation",
                 },
-                Object {
+                {
                   "date": "2022-12-09T00:00:00",
                   "fileSize": 282746,
                   "fileTypeName": "PDF",
@@ -1150,7 +1150,7 @@ Object {
                   "title": "Diagnostics consultation document (PDF)",
                   "type": "Diagnostics consultation",
                 },
-                Object {
+                {
                   "date": "2022-12-09T00:00:00",
                   "fileSize": null,
                   "fileTypeName": null,
@@ -1158,7 +1158,7 @@ Object {
                   "title": "Diagnostics consultation document (Online commenting)",
                   "type": "Diagnostics consultation",
                 },
-                Object {
+                {
                   "date": "2022-12-09T00:00:00",
                   "fileSize": 3693733,
                   "fileTypeName": "PDF",
@@ -1166,7 +1166,7 @@ Object {
                   "title": "Diagnostics assessment report",
                   "type": "Diagnostics consultation",
                 },
-                Object {
+                {
                   "date": "2022-12-09T00:00:00",
                   "fileSize": 602181,
                   "fileTypeName": "PDF",
@@ -1174,7 +1174,7 @@ Object {
                   "title": "Overview",
                   "type": "Diagnostics consultation",
                 },
-                Object {
+                {
                   "date": "2022-12-09T00:00:00",
                   "fileSize": 483618,
                   "fileTypeName": "PDF",
@@ -1182,7 +1182,7 @@ Object {
                   "title": "DAR Comments table and EAG response",
                   "type": "Diagnostics consultation",
                 },
-                Object {
+                {
                   "date": "2022-12-09T00:00:00",
                   "fileSize": 573126,
                   "fileTypeName": "PDF",
@@ -1190,7 +1190,7 @@ Object {
                   "title": "DAR Addendum",
                   "type": "Diagnostics consultation",
                 },
-                Object {
+                {
                   "date": "2022-12-09T00:00:00",
                   "fileSize": 259803,
                   "fileTypeName": "PDF",
@@ -1204,11 +1204,11 @@ Object {
           ],
           "title": "Diagnostics consultation",
         },
-        Object {
-          "subGroups": Array [
-            Object {
-              "resourceLinks": Array [
-                Object {
+        {
+          "subGroups": [
+            {
+              "resourceLinks": [
+                {
                   "date": null,
                   "fileSize": null,
                   "fileTypeName": null,
@@ -1222,11 +1222,11 @@ Object {
           ],
           "title": "Expected publication",
         },
-        Object {
-          "subGroups": Array [
-            Object {
-              "resourceLinks": Array [
-                Object {
+        {
+          "subGroups": [
+            {
+              "resourceLinks": [
+                {
                   "date": null,
                   "fileSize": null,
                   "fileTypeName": null,
@@ -1234,7 +1234,7 @@ Object {
                   "title": "Launch",
                   "type": "Launch",
                 },
-                Object {
+                {
                   "date": "2021-12-20T00:00:00",
                   "fileSize": 87561,
                   "fileTypeName": "PDF",
@@ -1248,11 +1248,11 @@ Object {
           ],
           "title": "Launch",
         },
-        Object {
-          "subGroups": Array [
-            Object {
-              "resourceLinks": Array [
-                Object {
+        {
+          "subGroups": [
+            {
+              "resourceLinks": [
+                {
                   "date": null,
                   "fileSize": null,
                   "fileTypeName": null,
@@ -1260,7 +1260,7 @@ Object {
                   "title": "Scope published",
                   "type": "Scope published",
                 },
-                Object {
+                {
                   "date": "2022-04-13T00:00:00",
                   "fileSize": 414199,
                   "fileTypeName": "PDF",
@@ -1268,7 +1268,7 @@ Object {
                   "title": "Final scope",
                   "type": "Scope published",
                 },
-                Object {
+                {
                   "date": "2022-04-13T00:00:00",
                   "fileSize": 523323,
                   "fileTypeName": "PDF",
@@ -1276,7 +1276,7 @@ Object {
                   "title": "Final protocol",
                   "type": "Scope published",
                 },
-                Object {
+                {
                   "date": "2022-04-13T00:00:00",
                   "fileSize": 150397,
                   "fileTypeName": "PDF",
@@ -1284,7 +1284,7 @@ Object {
                   "title": "Equality impact assessment",
                   "type": "Scope published",
                 },
-                Object {
+                {
                   "date": "2022-04-13T00:00:00",
                   "fileSize": 116494,
                   "fileTypeName": "PDF",
@@ -1292,7 +1292,7 @@ Object {
                   "title": "Specialist committee members",
                   "type": "Scope published",
                 },
-                Object {
+                {
                   "date": "2022-10-13T00:00:00",
                   "fileSize": 114419,
                   "fileTypeName": "PDF",
@@ -1306,11 +1306,11 @@ Object {
           ],
           "title": "Scope published",
         },
-        Object {
-          "subGroups": Array [
-            Object {
-              "resourceLinks": Array [
-                Object {
+        {
+          "subGroups": [
+            {
+              "resourceLinks": [
+                {
                   "date": null,
                   "fileSize": null,
                   "fileTypeName": null,
@@ -2040,38 +2040,38 @@ exports[`/indicators/prioritisation/[slug]/documents - DocumentsPage with extern
 `;
 
 exports[`/indicators/prioritisation/[slug]/documents - getServerSideProps for External links getServerSideProps should return a correct props for external links 1`] = `
-Object {
-  "props": Object {
+{
+  "props": {
     "alert": null,
-    "consultationUrls": Array [],
-    "indevScheduleItems": Array [
-      Object {
+    "consultationUrls": [],
+    "indevScheduleItems": [
+      {
         "additionalInfo": null,
         "additionalInfoLabel": null,
         "column1": "Diagnostics consultation",
         "column2": "19 November 2025 - 31 December 2025",
         "eTag": null,
         "hidden": false,
-        "links": Object {
-          "self": Array [
-            Object {},
+        "links": {
+          "self": [
+            {},
           ],
         },
       },
     ],
-    "indevStakeholderRegistration": Array [
-      Object {
+    "indevStakeholderRegistration": [
+      {
         "href": "https://www.nice.org.uk/get-involved/register-your-organisation-as-a-stakeholder",
       },
     ],
-    "project": Object {
+    "project": {
       "alert": null,
-      "groups": Array [
-        Object {
-          "subGroups": Array [
-            Object {
-              "resourceLinks": Array [
-                Object {
+      "groups": [
+        {
+          "subGroups": [
+            {
+              "resourceLinks": [
+                {
                   "date": "2025-11-28T19:06:00",
                   "fileSize": 158344,
                   "fileTypeName": "Word",
@@ -2079,7 +2079,7 @@ Object {
                   "title": "Agenda",
                   "type": "Committee meetings",
                 },
-                Object {
+                {
                   "date": null,
                   "fileSize": null,
                   "fileTypeName": null,
@@ -2087,7 +2087,7 @@ Object {
                   "title": "External link 3",
                   "type": "Committee meetings",
                 },
-                Object {
+                {
                   "date": null,
                   "fileSize": null,
                   "fileTypeName": null,
@@ -2101,11 +2101,11 @@ Object {
           ],
           "title": "Committee meetings",
         },
-        Object {
-          "subGroups": Array [
-            Object {
-              "resourceLinks": Array [
-                Object {
+        {
+          "subGroups": [
+            {
+              "resourceLinks": [
+                {
                   "date": "2025-11-28T19:06:00",
                   "fileSize": null,
                   "fileTypeName": null,
@@ -2113,7 +2113,7 @@ Object {
                   "title": "Html conversion document",
                   "type": "Declaration of interests",
                 },
-                Object {
+                {
                   "date": "2025-11-28T19:06:00",
                   "fileSize": null,
                   "fileTypeName": null,
@@ -2121,7 +2121,7 @@ Object {
                   "title": "Declaration of interests",
                   "type": "Declaration of interests",
                 },
-                Object {
+                {
                   "date": null,
                   "fileSize": null,
                   "fileTypeName": null,
@@ -2129,7 +2129,7 @@ Object {
                   "title": "External link 1",
                   "type": "Declaration of interests",
                 },
-                Object {
+                {
                   "date": null,
                   "fileSize": null,
                   "fileTypeName": null,
@@ -2143,11 +2143,11 @@ Object {
           ],
           "title": "Declaration of interests",
         },
-        Object {
-          "subGroups": Array [
-            Object {
-              "resourceLinks": Array [
-                Object {
+        {
+          "subGroups": [
+            {
+              "resourceLinks": [
+                {
                   "date": "2025-11-28T19:06:00",
                   "fileSize": 68634,
                   "fileTypeName": "Word",
@@ -2155,7 +2155,7 @@ Object {
                   "title": "Draft consultation document (downloadable version)",
                   "type": "Diagnostics consultation",
                 },
-                Object {
+                {
                   "date": null,
                   "fileSize": null,
                   "fileTypeName": null,
@@ -2163,7 +2163,7 @@ Object {
                   "title": "External link 7",
                   "type": "Diagnostics consultation",
                 },
-                Object {
+                {
                   "date": null,
                   "fileSize": null,
                   "fileTypeName": null,
@@ -2177,11 +2177,11 @@ Object {
           ],
           "title": "Diagnostics consultation",
         },
-        Object {
-          "subGroups": Array [
-            Object {
-              "resourceLinks": Array [
-                Object {
+        {
+          "subGroups": [
+            {
+              "resourceLinks": [
+                {
                   "date": "2025-11-28T19:06:00",
                   "fileSize": null,
                   "fileTypeName": null,
@@ -2189,7 +2189,7 @@ Object {
                   "title": "Note",
                   "type": "Notes",
                 },
-                Object {
+                {
                   "date": null,
                   "fileSize": null,
                   "fileTypeName": null,
@@ -2197,7 +2197,7 @@ Object {
                   "title": "External link 5",
                   "type": "Notes",
                 },
-                Object {
+                {
                   "date": null,
                   "fileSize": null,
                   "fileTypeName": null,

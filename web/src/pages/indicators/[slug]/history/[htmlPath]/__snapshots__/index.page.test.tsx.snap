@@ -2031,10 +2031,10 @@ exports[`/indicators/[slug]/history/[htmlPath]/index.page HistoryHTMLPage should
 `;
 
 exports[`/indicators/[slug]/history/[htmlPath]/index.page getServerSideProps should return a correct props 1`] = `
-Object {
-  "props": Object {
+{
+  "props": {
     "lastUpdated": "2016-07-19T08:56:00",
-    "product": Object {
+    "product": {
       "alert": undefined,
       "id": "NG100",
       "lastMajorModificationDate": "2020-10-12T00:00:00",
@@ -2042,46 +2042,46 @@ Object {
       "publishedDate": "2018-07-11T00:00:00",
       "title": "Rheumatoid arthritis in adults: management",
     },
-    "productHorizontalNav": Object {
+    "productHorizontalNav": {
       "hasEvidenceResources": true,
       "hasHistory": true,
       "hasInfoForPublicResources": true,
       "hasToolsAndResources": true,
     },
     "productPath": "/guidance/ng100",
-    "resource": Object {
-      "chapters": Array [],
+    "resource": {
+      "chapters": [],
       "htmlBody": "<p>You can now comment on this draft scope. The scope defines what the guideline will (and will not) cover.</p>
 <p><strong>The consultation closes on </strong><strong>15 July 2016</strong> <strong>at 5pm</strong></p>
 <h3>How to comment</h3>
 <h2>1. Register your organisation</h2>
-<p>Your organisation needs to be <a href=\\"https://www.nice.org.uk/get-involved/stakeholder-registration\\">registered as a stakeholder</a> before we can accept comments.</p>
-<p>Not eligible? Contact the <a href=\\"https://www.nice.org.uk/guidance/GID-NG10014/documents/stakeholder-list\\">stakeholder organisation</a> that most closely represents your interests and pass your comments to them.</p>
+<p>Your organisation needs to be <a href="https://www.nice.org.uk/get-involved/stakeholder-registration">registered as a stakeholder</a> before we can accept comments.</p>
+<p>Not eligible? Contact the <a href="https://www.nice.org.uk/guidance/GID-NG10014/documents/stakeholder-list">stakeholder organisation</a> that most closely represents your interests and pass your comments to them.</p>
 <h2>2. Read the consultation documents</h2>
 <ul>
-<li><a href=\\"/guidance/GID-NG10014/documents/draft-scope\\">Draft scope</a></li>
+<li><a href="/guidance/GID-NG10014/documents/draft-scope">Draft scope</a></li>
 </ul>
 <p><strong>Background documents</strong></p>
 <ul>
-<li><a href=\\"/guidance/GID-NG10014/documents/equality-impact-assessment\\">Equality impact assessment</a></li>
-<li><a href=\\"http://www.nice.org.uk/article/pmg22/chapter/3-how-you-can-get-involved\\">Developing NICE guidelines: how to get involved</a><strong>&nbsp;</strong></li>
+<li><a href="/guidance/GID-NG10014/documents/equality-impact-assessment">Equality impact assessment</a></li>
+<li><a href="http://www.nice.org.uk/article/pmg22/chapter/3-how-you-can-get-involved">Developing NICE guidelines: how to get involved</a><strong>&nbsp;</strong></li>
 </ul>
 <h2>3. Make your comments</h2>
 <ul>
-<li>You must use the <a href=\\"/guidance/GID-NG10014/documents/comments-form\\">Comments form</a></li>
+<li>You must use the <a href="/guidance/GID-NG10014/documents/comments-form">Comments form</a></li>
 <li>You must declare any links with, or funding from, the tobacco industry</li>
 </ul>
 <p>If you share similar views with another registered organisation, send a joint response.</p>
 <h2>4. Email the form to us</h2>
-<p>Email: <a href=\\"mailto:RAupdate@nice.org.uk\\">RAupdate@nice.org.uk</a></p>
+<p>Email: <a href="mailto:RAupdate@nice.org.uk">RAupdate@nice.org.uk</a></p>
 <p><strong>Deadline:</strong><strong>15 July 2016</strong>, <strong>5pm</strong></p>",
       "isConvertedDocument": false,
       "pdfDownloadLink": null,
-      "sections": Array [],
+      "sections": [],
       "title": "Draft scope consultation",
     },
-    "resourceLinks": Array [
-      Object {
+    "resourceLinks": [
+      {
         "date": "2016-06-14T08:06:00",
         "fileSize": 64512,
         "fileTypeName": "Word",
@@ -2089,7 +2089,7 @@ Object {
         "title": "Comments form",
         "type": "Draft scope consultation",
       },
-      Object {
+      {
         "date": "2016-06-17T01:01:00",
         "fileSize": 123626,
         "fileTypeName": "PDF",
@@ -2097,7 +2097,7 @@ Object {
         "title": "Draft scope",
         "type": "Draft scope consultation",
       },
-      Object {
+      {
         "date": "2020-03-31T16:01:00",
         "fileSize": 233482,
         "fileTypeName": "PDF",

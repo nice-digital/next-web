@@ -631,8 +631,8 @@ exports[`/indicators/[slug].page IndicatorDetailPage should match snapshot for m
 `;
 
 exports[`/indicators/[slug].page getServerSideProps should return a correct props when supplied with a valid slug 1`] = `
-Object {
-  "redirect": Object {
+{
+  "redirect": {
     "destination": "/guidance/ng100",
     "permanent": true,
   },

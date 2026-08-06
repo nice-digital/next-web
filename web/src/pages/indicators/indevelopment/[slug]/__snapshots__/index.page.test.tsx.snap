@@ -329,199 +329,199 @@ exports[`/indevelopment/[slug].page IndevelopmentPage should match snapshot for 
 `;
 
 exports[`/indevelopment/[slug].page getServerSideProps should return a correct props when supplied with a valid slug 1`] = `
-Object {
-  "props": Object {
+{
+  "props": {
     "alert": undefined,
-    "consultationUrls": Array [],
+    "consultationUrls": [],
     "content": undefined,
     "description": null,
     "developedAs": "CG",
     "evidenceAssessmentGroup": null,
-    "fullUpdates": Array [],
+    "fullUpdates": [],
     "hasPanels": true,
     "idNumber": null,
-    "indevCommentators": Array [],
-    "indevConsultees": Array [],
-    "indevEmailEnquiries": Array [
-      Object {
+    "indevCommentators": [],
+    "indevConsultees": [],
+    "indevEmailEnquiries": [
+      {
         "eTag": null,
         "item": "hypoadrenalism@nice.org.uk",
-        "links": Object {
-          "self": Array [
-            Object {},
+        "links": {
+          "self": [
+            {},
           ],
         },
       },
     ],
-    "indevLegacyStakeholders": Array [],
-    "indevProcessHomepage": Object {
+    "indevLegacyStakeholders": [],
+    "indevProcessHomepage": {
       "description": "For further information on the guideline development process, please read",
       "eTag": null,
       "linkText": "how we develop NICE guidelines",
-      "links": Object {
-        "self": Array [
-          Object {
+      "links": {
+        "self": [
+          {
             "href": "https://www.nice.org.uk/about/what-we-do/our-programmes/nice-guidance/nice-guidelines/how-we-develop-nice-guidelines",
           },
-          Object {},
+          {},
         ],
       },
     },
-    "indevProjectRelatedLinks": Array [],
-    "indevProjectTeamMembers": Array [
-      Object {
+    "indevProjectRelatedLinks": [],
+    "indevProjectTeamMembers": [
+      {
         "column1": "Developer",
         "column2": "National Guideline Centre",
         "eTag": null,
-        "links": Object {
-          "self": Array [
-            Object {},
+        "links": {
+          "self": [
+            {},
           ],
         },
       },
     ],
-    "indevScheduleItems": Array [
-      Object {
+    "indevScheduleItems": [
+      {
         "additionalInfo": null,
         "additionalInfoLabel": null,
         "column1": "Expected publication",
         "column2": "11 April 2024",
         "eTag": null,
         "hidden": false,
-        "links": Object {
-          "self": Array [
-            Object {},
+        "links": {
+          "self": [
+            {},
           ],
         },
       },
     ],
-    "indevStakeholderRegistration": Array [
-      Object {
+    "indevStakeholderRegistration": [
+      {
         "href": "https://alpha.nice.org.uk/get-involved/stakeholder-registration/register",
       },
     ],
-    "indevTimelineItems": Array [
-      Object {
+    "indevTimelineItems": [
+      {
         "additionalInfo": null,
         "additionalInfoLabel": null,
         "column1": "13 September 2022",
         "column2": "Stakeholder list updated",
         "eTag": null,
         "hidden": false,
-        "links": Object {
-          "self": Array [
-            Object {},
+        "links": {
+          "self": [
+            {},
           ],
         },
       },
-      Object {
+      {
         "additionalInfo": null,
         "additionalInfoLabel": null,
         "column1": "07 July 2022",
         "column2": "Committee list updated",
         "eTag": null,
         "hidden": false,
-        "links": Object {
-          "self": Array [
-            Object {},
+        "links": {
+          "self": [
+            {},
           ],
         },
       },
-      Object {
+      {
         "additionalInfo": null,
         "additionalInfoLabel": "Meeting number",
         "column1": "25 May 2022",
         "column2": "Committee meeting",
         "eTag": null,
         "hidden": false,
-        "links": Object {
-          "self": Array [
-            Object {},
+        "links": {
+          "self": [
+            {},
           ],
         },
       },
-      Object {
+      {
         "additionalInfo": null,
         "additionalInfoLabel": null,
         "column1": "14 April 2022",
         "column2": "Scope published",
         "eTag": null,
         "hidden": false,
-        "links": Object {
-          "self": Array [
-            Object {},
+        "links": {
+          "self": [
+            {},
           ],
         },
       },
-      Object {
+      {
         "additionalInfo": null,
         "additionalInfoLabel": null,
         "column1": "01 February 2022 - 01 March 2022",
         "column2": "Draft scope consultation",
         "eTag": null,
         "hidden": false,
-        "links": Object {
-          "self": Array [
-            Object {},
+        "links": {
+          "self": [
+            {},
           ],
         },
       },
-      Object {
+      {
         "additionalInfo": null,
         "additionalInfoLabel": null,
         "column1": "01 February 2022 - 01 March 2022",
         "column2": "Committee member recruitment",
         "eTag": null,
         "hidden": false,
-        "links": Object {
-          "self": Array [
-            Object {},
+        "links": {
+          "self": [
+            {},
           ],
         },
       },
-      Object {
+      {
         "additionalInfo": null,
         "additionalInfoLabel": null,
         "column1": "01 February 2022",
         "column2": "Guideline title changed from Hypoadrenalism: acute and long-term management to Adrenal insufficiency: acute and long-term management.",
         "eTag": null,
         "hidden": false,
-        "links": Object {
-          "self": Array [
-            Object {},
+        "links": {
+          "self": [
+            {},
           ],
         },
       },
-      Object {
+      {
         "additionalInfo": null,
         "additionalInfoLabel": "Location of meeting",
         "column1": "05 January 2022",
         "column2": "Scoping workshop",
         "eTag": null,
         "hidden": false,
-        "links": Object {
-          "self": Array [
-            Object {},
+        "links": {
+          "self": [
+            {},
           ],
         },
       },
-      Object {
+      {
         "additionalInfo": null,
         "additionalInfoLabel": null,
         "column1": "18 October 2021 - 25 October 2021",
         "column2": "Topic expert committee member recruitment",
         "eTag": null,
         "hidden": false,
-        "links": Object {
-          "self": Array [
-            Object {},
+        "links": {
+          "self": [
+            {},
           ],
         },
       },
     ],
-    "indevTopicItems": Array [],
+    "indevTopicItems": [],
     "isGuidanceHubPage": false,
-    "partialUpdates": Array [],
+    "partialUpdates": [],
     "process": "CG",
     "projectPath": "/guidance/indevelopment/gid-ng10237",
     "projectType": "NG",
