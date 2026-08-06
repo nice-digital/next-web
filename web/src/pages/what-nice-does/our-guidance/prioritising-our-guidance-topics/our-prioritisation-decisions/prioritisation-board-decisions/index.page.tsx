@@ -123,7 +123,7 @@ export default getProductListPage({
 	filterSummaryDescription: (
 		<>
 			Detailed <strong>rationale</strong> for each prioritisation decision is
-			available via the topic titles in the second column of the table below
+			available via the topic titles in the second column of the table below.
 		</>
 	),
 });

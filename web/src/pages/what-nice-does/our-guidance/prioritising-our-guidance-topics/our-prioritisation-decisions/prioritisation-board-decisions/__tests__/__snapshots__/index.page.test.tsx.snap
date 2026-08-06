@@ -663,13 +663,6 @@ exports[`/what-nice-does/our-guidance/prioritising-our-guidance-topics/our-prior
                   10
                    of 
                   170
-                  <p>
-                    Detailed 
-                    <strong>
-                      rationale
-                    </strong>
-                     for each prioritisation decision is available via the topic titles in the second column of the table below
-                  </p>
                 </h2>
               </div>
               <div
@@ -700,6 +693,13 @@ exports[`/what-nice-does/our-guidance/prioritising-our-guidance-topics/our-prior
                 </select>
               </div>
             </div>
+            <p>
+              Detailed 
+              <strong>
+                rationale
+              </strong>
+               for each prioritisation decision is available via the topic titles in the second column of the table below.
+            </p>
             <div
               class="tableWrapper"
             >
