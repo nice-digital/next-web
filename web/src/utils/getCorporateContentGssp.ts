@@ -1,7 +1,5 @@
-import {
-	buildTree,
-	type ExtendedSBLink,
-} from "@/components/Storyblok/StoryblokSectionNav/utils/Utils";
+import { buildTreeWithOptionalCache } from "@/components/Storyblok/StoryblokSectionNav/utils/memoisedBuildTree";
+import { type ExtendedSBLink } from "@/components/Storyblok/StoryblokSectionNav/utils/Utils";
 import { logger } from "@/logger";
 import {
 	InfoPageStoryblok,
@@ -78,13 +76,20 @@ export const getCorporateContentGssp = <
 			const component = storyResult.story?.content?.component;
 			let tree: ExtendedSBLink[] = [];
 
+			// Build section navigation only for info pages where it's not explicitly hidden
 			if (
 				component === "infoPage" &&
 				storyResult.story?.content.hideSectionNav !== "true" &&
 				parentID !== null
 			) {
-				tree = await buildTree(parentID, slug, isRootPage);
 				// TODO: move out of catchall page; would need API route as GSSP is not allowed in components whilst using pages router
+				// Use memoised build with SWR + background refresh + cache headers
+				tree = await buildTreeWithOptionalCache(
+					parentID,
+					slug,
+					isRootPage,
+					res
+				);
 			}
 
 			res.setHeader(
