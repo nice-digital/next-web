@@ -121,10 +121,7 @@ export default getProductListPage({
 	searchInputPlaceholder: "E.g. 'diabetes'",
 	variant: true,
 	filterSummaryDescription: (
-		<>
-			Detailed <strong>rationale</strong> for each prioritisation decision is
-			available via the topic titles in the second column of the table below.
-		</>
+		<>Select a topic title to read why the prioritisation decision was made.</>
 	),
 });
 
