@@ -26,8 +26,7 @@ const resourceUID = 8635576,
 	downloadPath = `IND1002-evidence-statement-${resourceUID}-${partUID}.pdf`,
 	slug =
 		"ind1002-test-terminated-indicator-ind-1002-the-percentage-of-patients-with-diabetes-who-have-received-a-foot-examination",
-	resourcePDFHref =
-		"/newfeeds/downloads/a1b2c3d4-e5f6-7890-abcd-ef1234567890";
+	resourcePDFHref = "/newfeeds/downloads/a1b2c3d4-e5f6-7890-abcd-ef1234567890";
 
 const getServerSidePropsContext = {
 	params: {

@@ -37,10 +37,12 @@ describe("/indicators/terminated/[slug]/history/[htmlPath]/chapter/[chapterSlug]
 
 		// Override ind999 to have Terminated status so the /terminated/ URL path matches
 		axiosJSONMock.reset();
-		axiosJSONMock.onGet(new RegExp(FeedPath.ProductDetail + "IND999", "i")).reply(200, {
-			...ind999,
-			ProductStatus: "Terminated",
-		});
+		axiosJSONMock
+			.onGet(new RegExp(FeedPath.ProductDetail + "IND999", "i"))
+			.reply(200, {
+				...ind999,
+				ProductStatus: "Terminated",
+			});
 		addDefaultJSONFeedMocks();
 	});
 
@@ -142,10 +144,7 @@ describe("/indicators/terminated/[slug]/history/[htmlPath]/chapter/[chapterSlug]
 					screen.queryByText("History", {
 						selector: ".breadcrumbs a",
 					})
-				).toHaveAttribute(
-					"href",
-					`/${productRoot}/terminated/${slug}/history`
-				);
+				).toHaveAttribute("href", `/${productRoot}/terminated/${slug}/history`);
 			});
 
 			it("should render given title as current page breadcrumb without link", () => {

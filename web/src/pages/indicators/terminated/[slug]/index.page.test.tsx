@@ -189,9 +189,7 @@ describe("/indicators/terminated/[slug].page", () => {
 			});
 
 			it("should render default breadcrumbs when taxonomyBreadcrumb is empty", () => {
-				render(
-					<TerminatedDetailsPage {...props} taxonomyBreadcrumb={[]} />
-				);
+				render(<TerminatedDetailsPage {...props} taxonomyBreadcrumb={[]} />);
 
 				const breadcrumbNav = screen.getByRole("navigation", {
 					name: "Breadcrumbs",
@@ -201,23 +199,17 @@ describe("/indicators/terminated/[slug].page", () => {
 			});
 
 			it("should render the product id as the final breadcrumb", () => {
-				render(
-					<TerminatedDetailsPage {...props} taxonomyBreadcrumb={[]} />
-				);
+				render(<TerminatedDetailsPage {...props} taxonomyBreadcrumb={[]} />);
 
 				const breadcrumbNav = screen.getByRole("navigation", {
 					name: "Breadcrumbs",
 				});
 
-				expect(
-					within(breadcrumbNav).getByText(ind1002.Id)
-				).toBeInTheDocument();
+				expect(within(breadcrumbNav).getByText(ind1002.Id)).toBeInTheDocument();
 			});
 
 			it("should pass terminated status to GuidanceBreadcrumb", () => {
-				render(
-					<TerminatedDetailsPage {...props} taxonomyBreadcrumb={[]} />
-				);
+				render(<TerminatedDetailsPage {...props} taxonomyBreadcrumb={[]} />);
 
 				const breadcrumbNav = screen.getByRole("navigation", {
 					name: "Breadcrumbs",

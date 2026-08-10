@@ -43,10 +43,12 @@ describe("/indicators/terminated/[slug]/history/downloads/[downloadPath]", () =>
 	beforeEach(() => {
 		// Override ind999 to have Terminated status so the /terminated/ URL path matches
 		axiosJSONMock.reset();
-		axiosJSONMock.onGet(new RegExp(FeedPath.ProductDetail + "IND999", "i")).reply(200, {
-			...ind999,
-			ProductStatus: "Terminated",
-		});
+		axiosJSONMock
+			.onGet(new RegExp(FeedPath.ProductDetail + "IND999", "i"))
+			.reply(200, {
+				...ind999,
+				ProductStatus: "Terminated",
+			});
 		addDefaultJSONFeedMocks();
 	});
 

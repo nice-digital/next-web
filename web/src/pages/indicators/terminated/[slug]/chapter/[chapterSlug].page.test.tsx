@@ -90,9 +90,7 @@ describe("/indicators/terminated/[slug]/chapter/[chapterSlug].page", () => {
 			});
 
 			it("should render terminated status breadcrumb when taxonomyBreadcrumb is empty", () => {
-				render(
-					<TerminatedChapterPage {...props} taxonomyBreadcrumb={[]} />
-				);
+				render(<TerminatedChapterPage {...props} taxonomyBreadcrumb={[]} />);
 
 				const breadcrumbNav = screen.getByRole("navigation", {
 					name: "Breadcrumbs",
