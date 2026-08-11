@@ -4,8 +4,8 @@ import pluralize from "pluralize";
 import {
 	ElementType,
 	FC,
-	ReactChild,
 	ReactElement,
+	ReactNode,
 	useEffect,
 	useMemo,
 	useState,
@@ -55,10 +55,10 @@ export type GetProductListPageOptions = {
 	listNavType?: ElementType;
 	breadcrumbTrail: ReactElement<BreadcrumbsProps>[];
 	currentBreadcrumb: string;
-	preheading: ReactChild;
-	heading: ReactChild;
-	intro?: ReactChild;
-	description?: ReactChild;
+	preheading: ReactNode;
+	heading: ReactNode;
+	intro?: ReactNode;
+	description?: ReactNode;
 	title: string;
 	defaultSort: {
 		order: SortOrder;
@@ -79,6 +79,7 @@ export type GetProductListPageOptions = {
 	tableBodyRender: (documents: Document[]) => JSX.Element;
 	searchInputPlaceholder: string;
 	variant?: boolean;
+	filterSummaryDescription?: ReactNode;
 } & (
 	| {
 			showDateFilter: true;
@@ -116,6 +117,7 @@ export const getProductListPage =
 		tableBodyRender,
 		searchInputPlaceholder,
 		variant = false,
+		filterSummaryDescription,
 	}: GetProductListPageOptions): FC<ProductListPageProps> =>
 	({
 		results,
@@ -255,6 +257,10 @@ export const getProductListPage =
 							defaultSort={defaultSort}
 							secondarySort={secondarySort}
 						/>
+
+						{filterSummaryDescription ? (
+							<p>{filterSummaryDescription}</p>
+						) : null}
 
 						{documents.length === 0 ? (
 							<div id="results">

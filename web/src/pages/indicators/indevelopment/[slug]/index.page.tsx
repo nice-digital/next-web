@@ -1,11 +1,12 @@
+import parse from "html-react-parser";
 import { type GetServerSideProps } from "next/types";
 import { NextSeo } from "next-seo";
 
+import { Alert } from "@nice-digital/nds-alert";
 import { Breadcrumbs, Breadcrumb } from "@nice-digital/nds-breadcrumbs";
 import { Grid, GridItem } from "@nice-digital/nds-grid";
 
 import { DefinitionList } from "@/components/DefinitionList/DefinitionList";
-import { InfoAlert } from "@/components/InfoAlert/InfoAlert";
 import { Link } from "@/components/Link/Link";
 import { ProjectConsultationDocumentsLink } from "@/components/ProjectConsultationDocumentsLink/ProjectConsultationDocuments";
 import { ProjectHorizontalNav } from "@/components/ProjectHorizontalNav/ProjectHorizontalNav";
@@ -136,7 +137,7 @@ export default function InDevelopmentPage(
 
 			<ProjectPageHeading {...props} />
 
-			<InfoAlert alert={alert} />
+			{alert ? <Alert type="info">{parse(alert)}</Alert> : null}
 
 			<ProjectHorizontalNav
 				projectPath={projectPath}
