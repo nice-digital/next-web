@@ -6,6 +6,7 @@ Feature: Home page
     Given I open the news, blogs and podcasts page
 
   Scenario: User can view news, blogs and podcasts page
+    And I pause for 2000ms
     Then I expect that element "h1" contains the text "News, blogs and podcasts"
     Given I click on the home breadcrumb link
     Then I expect the url is "/"

@@ -5,6 +5,7 @@ Feature: Individual news articles
 
   Background:
     Given I open the news articles page
+    And I pause for 2000ms
 
   Scenario: User can view news article page
     Then I expect that element "h1" contains the text "NextWeb-automation-News-1-DONOTUSE"
